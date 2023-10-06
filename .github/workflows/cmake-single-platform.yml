@@ -27,5 +27,5 @@ jobs:
 
     - uses: actions/upload-artifact@v3
       with:
-        name: libcounterstrikesharp.so
+        name: plugin
         path: build/libcounterstrikesharp.so
