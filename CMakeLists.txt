@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.18)
 
-Project(vspdotnet C CXX)
+Project(counterstrikesharp C CXX)
 
 include("makefiles/shared.cmake")
 
@@ -25,4 +25,4 @@ include("makefiles/linux.base.cmake")
 
 
 # Libraries
-target_link_libraries(${PROJECT_NAME} ${VSPDOTNET_LINK_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${COUNTER_STRIKE_SHARP_LINK_LIBRARIES})

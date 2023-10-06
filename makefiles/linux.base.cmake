@@ -21,7 +21,7 @@ Set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mfpmath=sse -msse -fno-strict-aliasing"
 Set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -fno-threadsafe-statics -v -fvisibility=hidden")
 
 SET(
-        VSPDOTNET_LINK_LIBRARIES
+        COUNTER_STRIKE_SHARP_LINK_LIBRARIES
         ${SOURCESDK_LIB}/linux64/libtier0.so
         ${SOURCESDK_LIB}/linux64/tier1.a
         ${SOURCESDK_LIB}/linux64/interfaces.a

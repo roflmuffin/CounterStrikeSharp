@@ -28,4 +28,4 @@ include_directories(
 
 SET(ASMJIT_STATIC 1)
 
-Project(vspdotnet C CXX)
+Project(counterstrikesharp C CXX)
