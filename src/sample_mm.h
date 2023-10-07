@@ -22,6 +22,8 @@
 #include <iplayerinfo.h>
 #include <sh_vector.h>
 
+namespace counterstrikesharp
+{
 class SamplePlugin : public ISmmPlugin, public IMetamodListener
 {
   public:
@@ -65,3 +67,4 @@ PLUGIN_GLOBALVARS();
 #endif //_INCLUDE_METAMOD_SOURCE_STUB_PLUGIN_H_
 
 #pragma clang diagnostic pop
+}

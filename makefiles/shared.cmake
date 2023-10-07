@@ -24,6 +24,7 @@ include_directories(
         ${SOURCESDK}/public/game/server
         ${METAMOD_DIR}/core
         ${METAMOD_DIR}/core/sourcehook
+        libraries
 )
 
 SET(ASMJIT_STATIC 1)

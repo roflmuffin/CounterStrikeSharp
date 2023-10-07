@@ -9,6 +9,18 @@ SET(SOURCE_FILES
         src/sample_mm.h
         libraries/hl2sdk-cs2/tier1/convar.cpp
         libraries/hl2sdk-cs2/public/tier0/memoverride.cpp
+        libraries/dotnet/hostfxr.h
+        libraries/dotnet/coreclr_delegates.h
+        "libraries/metamod-source/core/sourcehook/sourcehook.cpp"
+        "libraries/metamod-source/core/sourcehook/sourcehook_impl_chookidman.cpp"
+        "libraries/metamod-source/core/sourcehook/sourcehook_impl_chookmaninfo.cpp"
+        "libraries/metamod-source/core/sourcehook/sourcehook_impl_cvfnptr.cpp"
+        "libraries/metamod-source/core/sourcehook/sourcehook_impl_cproto.cpp"
+        src/scripting/dotnet_host.h
+        src/scripting/dotnet_host.cpp
+        src/core/utils.h
+        src/core/globals.h
+        src/core/globals.cpp
 )
 
 

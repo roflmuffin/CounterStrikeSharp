@@ -17,8 +17,11 @@
 
 #include <cstdio>
 
+#include "core/utils.h"
 #include "iserver.h"
 
+namespace counterstrikesharp
+{
 SH_DECL_HOOK3_void(IServerGameDLL, GameFrame, SH_NOATTRIB, 0, bool, bool, bool);
 SH_DECL_HOOK4_void(IServerGameClients, ClientActive, SH_NOATTRIB, 0, CPlayerSlot, bool, const char *, uint64);
 SH_DECL_HOOK5_void(IServerGameClients, ClientDisconnect, SH_NOATTRIB, 0, CPlayerSlot, int, const char *, uint64,
@@ -34,11 +37,7 @@ SH_DECL_HOOK2(IGameEventManager2, FireEvent, SH_NOATTRIB, 0, bool, IGameEvent *,
 SH_DECL_HOOK2_void(IServerGameClients, ClientCommand, SH_NOATTRIB, 0, CPlayerSlot, const CCommand &);
 
 SamplePlugin g_SamplePlugin;
-IServerGameDLL *server = nullptr;
-IServerGameClients *gameclients = nullptr;
-IVEngineServer *engine = nullptr;
 IGameEventManager2 *gameevents = nullptr;
-ICvar *icvar = nullptr;
 
 // Should only be called within the active game loop (i e map should be loaded
 // and active) otherwise that'll be nullptr!
@@ -59,7 +58,8 @@ ConVar sample_cvar("sample_cvar", "42", 0);
 
 CON_COMMAND_F(sample_command, "Sample command", FCVAR_NONE)
 {
-    META_CONPRINTF("Sample command called by %d. Command: %s\n", context.GetPlayerSlot(), args.GetCommandString());
+    META_CONPRINTF("Sample command called by %d. Command: %s\n", context.GetPlayerSlot(),
+                   utils::PluginDirectory().c_str());
 }
 
 PLUGIN_EXPOSE(SamplePlugin, g_SamplePlugin);
@@ -67,34 +67,38 @@ bool SamplePlugin::Load(PluginId id, ISmmAPI *ismm, char *error, size_t maxlen, 
 {
     PLUGIN_SAVEVARS();
 
-    GET_V_IFACE_CURRENT(GetEngineFactory, engine, IVEngineServer, INTERFACEVERSION_VENGINESERVER);
-    GET_V_IFACE_CURRENT(GetEngineFactory, icvar, ICvar, CVAR_INTERFACE_VERSION);
-    GET_V_IFACE_ANY(GetServerFactory, server, IServerGameDLL, INTERFACEVERSION_SERVERGAMEDLL);
-    GET_V_IFACE_ANY(GetServerFactory, gameclients, IServerGameClients, INTERFACEVERSION_SERVERGAMECLIENTS);
-    GET_V_IFACE_ANY(GetEngineFactory, g_pNetworkServerService, INetworkServerService,
-                    NETWORKSERVERSERVICE_INTERFACE_VERSION);
+    META_CONPRINTF("ISMM: %d", ismm);
 
-    // Currently doesn't work from within mm side, use GetGameGlobals() in the
-    // mean time instead gpGlobals = ismm->GetCGlobals();
+    GET_V_IFACE_CURRENT(GetEngineFactory, globals::engine, IVEngineServer, INTERFACEVERSION_VENGINESERVER);
+    GET_V_IFACE_CURRENT(GetEngineFactory, globals::cvars, ICvar, CVAR_INTERFACE_VERSION);
+    GET_V_IFACE_ANY(GetServerFactory, globals::server, IServerGameDLL, INTERFACEVERSION_SERVERGAMEDLL);
+    GET_V_IFACE_ANY(GetServerFactory, globals::serverGameClients, IServerGameClients,
+                    INTERFACEVERSION_SERVERGAMECLIENTS);
+    GET_V_IFACE_ANY(GetEngineFactory, globals::networkServerService, INetworkServerService,
+                    NETWORKSERVERSERVICE_INTERFACE_VERSION);
 
     META_CONPRINTF("Starting plugin.\n");
 
-    SH_ADD_HOOK_MEMFUNC(IServerGameDLL, GameFrame, server, this, &SamplePlugin::Hook_GameFrame, true);
-    SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientActive, gameclients, this, &SamplePlugin::Hook_ClientActive, true);
-    SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientDisconnect, gameclients, this, &SamplePlugin::Hook_ClientDisconnect,
-                        true);
-    SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientPutInServer, gameclients, this, &SamplePlugin::Hook_ClientPutInServer,
-                        true);
-    SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientSettingsChanged, gameclients, this,
+    SH_ADD_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this, &SamplePlugin::Hook_GameFrame, true);
+    SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientActive, globals::serverGameClients, this,
+                        &SamplePlugin::Hook_ClientActive, true);
+    SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientDisconnect, globals::serverGameClients, this,
+                        &SamplePlugin::Hook_ClientDisconnect, true);
+    SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientPutInServer, globals::serverGameClients, this,
+                        &SamplePlugin::Hook_ClientPutInServer, true);
+    SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientSettingsChanged, globals::serverGameClients, this,
                         &SamplePlugin::Hook_ClientSettingsChanged, false);
-    SH_ADD_HOOK_MEMFUNC(IServerGameClients, OnClientConnected, gameclients, this, &SamplePlugin::Hook_OnClientConnected,
-                        false);
-    SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientConnect, gameclients, this, &SamplePlugin::Hook_ClientConnect, false);
-    SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientCommand, gameclients, this, &SamplePlugin::Hook_ClientCommand, false);
+    SH_ADD_HOOK_MEMFUNC(IServerGameClients, OnClientConnected, globals::serverGameClients, this,
+                        &SamplePlugin::Hook_OnClientConnected, false);
+    SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientConnect, globals::serverGameClients, this,
+                        &SamplePlugin::Hook_ClientConnect, false);
+    SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientCommand, globals::serverGameClients, this,
+                        &SamplePlugin::Hook_ClientCommand, false);
 
     META_CONPRINTF("All hooks started!\n");
 
-    g_pCVar = icvar;
+    // Used by Metamod Console Commands
+    g_pCVar = globals::cvars;
     ConVar_Register(FCVAR_RELEASE | FCVAR_CLIENT_CAN_EXECUTE | FCVAR_GAMEDLL);
 
     return true;
@@ -102,21 +106,21 @@ bool SamplePlugin::Load(PluginId id, ISmmAPI *ismm, char *error, size_t maxlen, 
 
 bool SamplePlugin::Unload(char *error, size_t maxlen)
 {
-    SH_REMOVE_HOOK_MEMFUNC(IServerGameDLL, GameFrame, server, this, &SamplePlugin::Hook_GameFrame, true);
-    SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, ClientActive, gameclients, this, &SamplePlugin::Hook_ClientActive, true);
-    SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, ClientDisconnect, gameclients, this,
+    SH_REMOVE_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this, &SamplePlugin::Hook_GameFrame, true);
+    SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, ClientActive, globals::serverGameClients, this,
+                           &SamplePlugin::Hook_ClientActive, true);
+    SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, ClientDisconnect, globals::serverGameClients, this,
                            &SamplePlugin::Hook_ClientDisconnect, true);
-    SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, ClientPutInServer, gameclients, this,
+    SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, ClientPutInServer, globals::serverGameClients, this,
                            &SamplePlugin::Hook_ClientPutInServer, true);
-    SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, ClientSettingsChanged, gameclients, this,
+    SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, ClientSettingsChanged, globals::serverGameClients, this,
                            &SamplePlugin::Hook_ClientSettingsChanged, false);
-    SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, OnClientConnected, gameclients, this,
+    SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, OnClientConnected, globals::serverGameClients, this,
                            &SamplePlugin::Hook_OnClientConnected, false);
-    SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, ClientConnect, gameclients, this, &SamplePlugin::Hook_ClientConnect,
-                           false);
-    SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, ClientCommand, gameclients, this, &SamplePlugin::Hook_ClientCommand,
-                           false);
-
+    SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, ClientConnect, globals::serverGameClients, this,
+                           &SamplePlugin::Hook_ClientConnect, false);
+    SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, ClientCommand, globals::serverGameClients, this,
+                           &SamplePlugin::Hook_ClientCommand, false);
     return true;
 }
 
@@ -241,3 +245,4 @@ const char *SamplePlugin::GetURL()
 {
     return "http://www.sourcemm.net/";
 }
+} // namespace counterstrikesharp
