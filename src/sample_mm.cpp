@@ -157,30 +157,30 @@ void SamplePlugin::AllPluginsLoaded()
 
 void SamplePlugin::Hook_ClientActive(CPlayerSlot slot, bool bLoadGame, const char *pszName, uint64 xuid)
 {
-    META_CONPRINTF("Hook_ClientActive(%d, %d, \"%s\", %d)\n", slot, bLoadGame, pszName, xuid);
+    CSSHARP_CORE_INFO("Hook_ClientActive({0}, {1}, \"{2}\", {3})", slot.Get(), bLoadGame, pszName, xuid);
 }
 
 void SamplePlugin::Hook_ClientCommand(CPlayerSlot slot, const CCommand &args)
 {
-    META_CONPRINTF("Hook_ClientCommand(%d, \"%s\")\n", slot, args.GetCommandString());
+    CSSHARP_CORE_INFO("Hook_ClientCommand({0}, \"{1}\")", slot.Get(), args.GetCommandString());
 }
 
 void SamplePlugin::Hook_ClientSettingsChanged(CPlayerSlot slot)
 {
-    META_CONPRINTF("Hook_ClientSettingsChanged(%d)\n", slot);
+    CSSHARP_CORE_INFO("Hook_ClientSettingsChanged({0})\n", slot.Get());
 }
 
 void SamplePlugin::Hook_OnClientConnected(CPlayerSlot slot, const char *pszName, uint64 xuid, const char *pszNetworkID,
                                           const char *pszAddress, bool bFakePlayer)
 {
-    META_CONPRINTF("Hook_OnClientConnected(%d, \"%s\", %d, \"%s\", \"%s\", %d)\n", slot, pszName, xuid, pszNetworkID,
+    CSSHARP_CORE_INFO("Hook_OnClientConnected({}, \"{}\", {}, \"{}\", \"{}\", {})\n", slot.Get(), pszName, xuid, pszNetworkID,
                    pszAddress, bFakePlayer);
 }
 
 bool SamplePlugin::Hook_ClientConnect(CPlayerSlot slot, const char *pszName, uint64 xuid, const char *pszNetworkID,
                                       bool unk1, CBufferString *pRejectReason)
 {
-    META_CONPRINTF("Hook_ClientConnect(%d, \"%s\", %d, \"%s\", %d, \"%s\")\n", slot, pszName, xuid, pszNetworkID, unk1,
+    CSSHARP_CORE_INFO("Hook_ClientConnect({}, \"{}\", {}, \"{}\", {}, \"{}\")\n", slot.Get(), pszName, xuid, pszNetworkID, unk1,
                    pRejectReason->ToGrowable()->Get());
 
     RETURN_META_VALUE(MRES_IGNORED, true);
@@ -188,13 +188,13 @@ bool SamplePlugin::Hook_ClientConnect(CPlayerSlot slot, const char *pszName, uin
 
 void SamplePlugin::Hook_ClientPutInServer(CPlayerSlot slot, char const *pszName, int type, uint64 xuid)
 {
-    META_CONPRINTF("Hook_ClientPutInServer(%d, \"%s\", %d, %d, %d)\n", slot, pszName, type, xuid);
+    CSSHARP_CORE_INFO("Hook_ClientPutInServer({}, \"{}\", {}, {}, {})\n", slot.Get(), pszName, type, xuid);
 }
 
 void SamplePlugin::Hook_ClientDisconnect(CPlayerSlot slot, int reason, const char *pszName, uint64 xuid,
                                          const char *pszNetworkID)
 {
-    META_CONPRINTF("Hook_ClientDisconnect(%d, %d, \"%s\", %d, \"%s\")\n", slot, reason, pszName, xuid, pszNetworkID);
+    CSSHARP_CORE_INFO("Hook_ClientDisconnect({}, {}, \"{}\", {}, \"{}\")\n", slot.Get(), reason, pszName, xuid, pszNetworkID);
 }
 
 void SamplePlugin::Hook_GameFrame(bool simulating, bool bFirstTick, bool bLastTick)
