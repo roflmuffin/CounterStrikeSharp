@@ -13,7 +13,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+
     steps:
+    - name: Prepare env
+      shell: bash
+      run: echo "GITHUB_SHA_SHORT=${GITHUB_SHA::7}" >> $GITHUB_ENV
+
     - uses: actions/checkout@v3
       with:
         submodules: 'recursive'
@@ -30,5 +35,5 @@ jobs:
 
     - uses: actions/upload-artifact@v3
       with:
-        name: counterstrikesharp-${GITHUB_SHA::7}
+        name: counterstrikesharp-${{ env.GITHUB_SHA_SHORT }}
         path: build/output/
