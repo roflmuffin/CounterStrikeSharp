@@ -32,6 +32,11 @@ jobs:
       - name: Clean build directory
         run: mkdir --parents build/output/; mv build/addons $_
 
+      - uses: actions/upload-artifact@v3
+        with:
+          name: counterstrikesharp-${{ env.GITHUB_SHA_SHORT }}
+          path: build/output/
+
       - name: Add dotnet runtime
         run: |
           mkdir -p build/output/addons/counterstrikesharp/dotnet
@@ -40,6 +45,6 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: counterstrikesharp-${{ env.GITHUB_SHA_SHORT }}
+          name: counterstrikesharp-with-runtime-${{ env.GITHUB_SHA_SHORT }}
           path: build/output/
 
