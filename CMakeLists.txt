@@ -42,3 +42,4 @@ include("makefiles/linux.base.cmake")
 
 # Libraries
 target_link_libraries(${PROJECT_NAME} ${COUNTER_STRIKE_SHARP_LINK_LIBRARIES})
+set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "")
