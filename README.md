@@ -24,29 +24,11 @@ _(Note, these were features in the previous VSP.NET project, but have not been i
 
 These features are the core of the platform and work pretty well/have a low risk of causing issues.
 
-- [x] Console Variables, Console Commands, Server Commands (e.g. sv_customvar)
-- [x] Game Event Handlers & Custom Events (e.g. player_death)
-- [x] Game Tick Based Timers (e.g. repeating map timers)
-- [x] Listeners (e.g. client connected, disconnected, map start etc.)
-- [x] Server Information (current map, game time, tick rate, model precaching)
-- [x] Radio Menus (create menus and respond to selections)
-
-## What kind of works?
-
-These features have a rudimentary implementation but have not been thoroughly tested.
-
-- [x] Entity Manipulation
-    - Basic manipulation of networked entity props/sendinfo e.g. position, team, ground entity, position, velocity etc.
-    - Currently missing entity input/output functionality, for things like func_door "Open" inputs etc.
-- [x] Engine Raycasts
-    - Can do basic raycasts with predicate filter to match entities
-- [x] Poor Memory Functionality
-    - It is possible to hook and call virtual functions by supplying the int offset & parameters of the method.
-    - Might cause crashes if you use the wrong parameters :(
-    - These are things that are traditionally provided by SDK_Hooks or SDK_Tools in SourceMod
-- [x] Multi Threading & Game Frames
-    - Game Event Listeners & Command Handlers happen synchronously in the game frame
-    - If you spawn a new thread/task in .NET you will need to queue your game actions for the next in-game frame or some things might crash.
+- [ ] **(In Progress)** Console Variables, Console Commands, Server Commands (e.g. sv_customvar)
+- [ ] **(In Progress)** Game Event Handlers & Custom Events (e.g. player_death)
+- [ ] **(In Progress)** Game Tick Based Timers (e.g. repeating map timers)
+- [ ] **(In Progress)** Listeners (e.g. client connected, disconnected, map start etc.)
+- [ ] **(In Progress)** Server Information (current map, game time, tick rate, model precaching)
 
 ## Examples
 
