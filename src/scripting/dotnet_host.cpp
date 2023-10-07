@@ -21,6 +21,7 @@
 #include <cassert>
 #include <iostream>
 
+#include "core/log.h"
 #include "core/utils.h"
 
 std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
@@ -77,7 +78,9 @@ bool load_hostfxr()
 {
     std::string baseDir = counterstrikesharp::utils::PluginDirectory();
 
-    std::string buffer = std::string(baseDir + "/dotnet/host/fxr/8.0.0-rc.1.23419.4/hostfxr.dll");
+    std::string buffer = std::string(baseDir + "/dotnet/host/fxr/8.0.0-rc.1.23419.4/libhostfxr.so");
+
+    CSSHARP_CORE_TRACE("Loading hostfxr from {0}", buffer.c_str());
 
     // Load hostfxr and get desired exports
     void *lib = load_library(buffer.c_str());
@@ -128,10 +131,11 @@ bool CDotNetManager::Initialize()
 
     if (!load_hostfxr())
     {
-        // // VSPDN_CORE_ERROR("Failed to initialize .NET");
+        CSSHARP_CORE_ERROR("Failed to initialize .NET");
         return false;
     }
 
+    /*
     std::string wideStr = std::string((baseDir + "/api/CounterStrikeSharp.API.runtimeconfig.json").c_str());
 
     load_assembly_and_get_function_pointer_fn load_assembly_and_get_function_pointer = nullptr;
@@ -145,18 +149,19 @@ bool CDotNetManager::Initialize()
     typedef int(CORECLR_DELEGATE_CALLTYPE * custom_entry_point_fn)();
     custom_entry_point_fn entry_point = nullptr;
     int rc =
-        load_assembly_and_get_function_pointer(dotnetlib_path.c_str(), dotnet_type, "LoadAllPlugins" /*method_name*/,
+        load_assembly_and_get_function_pointer(dotnetlib_path.c_str(), dotnet_type, "LoadAllPlugins",
                                                UNMANAGEDCALLERSONLY_METHOD, nullptr, (void **)&entry_point);
     assert(rc == 0 && entry_point != nullptr && "Failure: load_assembly_and_get_function_pointer()");
 
     const bool success = entry_point();
     if (!success)
     {
-        // VSPDN_CORE_ERROR("Failed to initialize .NET");
+        CSSHARP_CORE_ERROR("Failed to initialize .NET");
         return false;
     }
+    */
 
-    // VSPDN_CORE_INFO(".NET Initialized.");
+    CSSHARP_CORE_INFO(".NET Initialized.");
     return true;
 }
 

@@ -18,7 +18,7 @@ void Log::Init()
 
     m_core_logger = std::make_shared<spdlog::logger>("CSSharp", begin(logSinks), end(logSinks));
     spdlog::register_logger(m_core_logger);
-    m_core_logger->set_level(spdlog::level::info);
+    m_core_logger->set_level(spdlog::level::trace);
     m_core_logger->flush_on(spdlog::level::info);
 }
 

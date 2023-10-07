@@ -20,6 +20,7 @@
 #include "core/log.h"
 #include "core/utils.h"
 #include "iserver.h"
+#include "scripting/dotnet_host.h"
 
 namespace counterstrikesharp
 {
@@ -81,6 +82,12 @@ bool SamplePlugin::Load(PluginId id, ISmmAPI *ismm, char *error, size_t maxlen, 
                     NETWORKSERVERSERVICE_INTERFACE_VERSION);
 
     CSSHARP_CORE_INFO("Globals loaded.");
+
+    if (!globals::dotnetManager.Initialize())
+    {
+        CSSHARP_CORE_ERROR("Failed to initialize .NET runtime");
+        return false;
+    }
 
     SH_ADD_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this, &SamplePlugin::Hook_GameFrame, true);
     SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientActive, globals::serverGameClients, this,
