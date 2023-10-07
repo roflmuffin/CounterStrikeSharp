@@ -24,6 +24,7 @@ class IVoiceServer;
 class CGlobalEntityList;
 class CDotNetManager;
 class ICvar;
+class IGameEventSystem;
 
 namespace counterstrikesharp
 {
@@ -43,7 +44,7 @@ namespace globals
 {
 
 extern IVEngineServer *engine;
-extern IGameEventManager2 *gameeventmanager;
+// extern IGameEventManager2 *gameEventManager; // Disabled until we can figure out how to hook it.
 extern IPlayerInfoManager *playerinfoManager;
 extern IBotManager *botManager;
 extern IServerPluginHelpers *helpers;
@@ -79,6 +80,7 @@ extern ChatCommands chatCommands;
 extern HookManager hookManager;
 extern SourceHook::ISourceHook *source_hook;
 extern int source_hook_pluginid;
+extern IGameEventSystem *gameEventSystem;
 } // namespace globals
 
 } // namespace counterstrikesharp

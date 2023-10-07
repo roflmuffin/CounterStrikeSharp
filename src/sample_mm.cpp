@@ -20,6 +20,7 @@
 #include "core/global_listener.h"
 #include "core/log.h"
 #include "core/utils.h"
+#include "igameeventsystem.h"
 #include "iserver.h"
 #include "scripting/callback_manager.h"
 #include "scripting/dotnet_host.h"
@@ -47,12 +48,10 @@ SH_DECL_HOOK6_void(IServerGameClients, OnClientConnected, SH_NOATTRIB, 0, CPlaye
                    const char *, const char *, bool);
 SH_DECL_HOOK6(IServerGameClients, ClientConnect, SH_NOATTRIB, 0, bool, CPlayerSlot, const char *, uint64, const char *,
               bool, CBufferString *);
-SH_DECL_HOOK2(IGameEventManager2, FireEvent, SH_NOATTRIB, 0, bool, IGameEvent *, bool);
 
 SH_DECL_HOOK2_void(IServerGameClients, ClientCommand, SH_NOATTRIB, 0, CPlayerSlot, const CCommand &);
 
 SamplePlugin g_SamplePlugin;
-IGameEventManager2 *gameevents = nullptr;
 
 // Should only be called within the active game loop (i e map should be loaded
 // and active) otherwise that'll be nullptr!
@@ -92,6 +91,7 @@ bool SamplePlugin::Load(PluginId id, ISmmAPI *ismm, char *error, size_t maxlen, 
                     INTERFACEVERSION_SERVERGAMECLIENTS);
     GET_V_IFACE_ANY(GetEngineFactory, globals::networkServerService, INetworkServerService,
                     NETWORKSERVERSERVICE_INTERFACE_VERSION);
+    GET_V_IFACE_ANY(GetEngineFactory, globals::gameEventSystem, IGameEventSystem, GAMEEVENTSYSTEM_INTERFACE_VERSION);
 
     CSSHARP_CORE_INFO("Globals loaded.");
 
@@ -173,15 +173,15 @@ void SamplePlugin::Hook_ClientSettingsChanged(CPlayerSlot slot)
 void SamplePlugin::Hook_OnClientConnected(CPlayerSlot slot, const char *pszName, uint64 xuid, const char *pszNetworkID,
                                           const char *pszAddress, bool bFakePlayer)
 {
-    CSSHARP_CORE_INFO("Hook_OnClientConnected({}, \"{}\", {}, \"{}\", \"{}\", {})\n", slot.Get(), pszName, xuid, pszNetworkID,
-                   pszAddress, bFakePlayer);
+    CSSHARP_CORE_INFO("Hook_OnClientConnected({}, \"{}\", {}, \"{}\", \"{}\", {})\n", slot.Get(), pszName, xuid,
+                      pszNetworkID, pszAddress, bFakePlayer);
 }
 
 bool SamplePlugin::Hook_ClientConnect(CPlayerSlot slot, const char *pszName, uint64 xuid, const char *pszNetworkID,
                                       bool unk1, CBufferString *pRejectReason)
 {
-    CSSHARP_CORE_INFO("Hook_ClientConnect({}, \"{}\", {}, \"{}\", {}, \"{}\")\n", slot.Get(), pszName, xuid, pszNetworkID, unk1,
-                   pRejectReason->ToGrowable()->Get());
+    CSSHARP_CORE_INFO("Hook_ClientConnect({}, \"{}\", {}, \"{}\", {}, \"{}\")\n", slot.Get(), pszName, xuid,
+                      pszNetworkID, unk1, pRejectReason->ToGrowable()->Get());
 
     RETURN_META_VALUE(MRES_IGNORED, true);
 }
@@ -194,7 +194,8 @@ void SamplePlugin::Hook_ClientPutInServer(CPlayerSlot slot, char const *pszName,
 void SamplePlugin::Hook_ClientDisconnect(CPlayerSlot slot, int reason, const char *pszName, uint64 xuid,
                                          const char *pszNetworkID)
 {
-    CSSHARP_CORE_INFO("Hook_ClientDisconnect({}, {}, \"{}\", {}, \"{}\")\n", slot.Get(), reason, pszName, xuid, pszNetworkID);
+    CSSHARP_CORE_INFO("Hook_ClientDisconnect({}, {}, \"{}\", {}, \"{}\")\n", slot.Get(), reason, pszName, xuid,
+                      pszNetworkID);
 }
 
 void SamplePlugin::Hook_GameFrame(bool simulating, bool bFirstTick, bool bLastTick)

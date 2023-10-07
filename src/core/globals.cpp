@@ -1,5 +1,6 @@
 #include "core/globals.h"
 #include "iserver.h"
+#include "managers/event_manager.h"
 #include "scripting/callback_manager.h"
 #include "scripting/dotnet_host.h"
 
@@ -16,6 +17,7 @@ namespace globals
 {
 IVEngineServer *engine = nullptr;
 IGameEventManager2 *gameEventManager = nullptr;
+IGameEventSystem *gameEventSystem = nullptr;
 IPlayerInfoManager *playerinfoManager = nullptr;
 IBotManager *botManager = nullptr;
 IServerPluginHelpers *helpers = nullptr;
@@ -43,6 +45,7 @@ SourceHook::ISourceHook *source_hook = &source_hook_impl;
 
 // Custom Managers
 CallbackManager callbackManager;
+EventManager eventManager;
 int source_hook_pluginid = 0;
 
 } // namespace globals

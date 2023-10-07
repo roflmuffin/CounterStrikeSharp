@@ -30,6 +30,8 @@ SET(SOURCE_FILES
         src/core/global_listener.h
         src/scripting/callback_manager.h
         src/scripting/callback_manager.cpp
+        src/core/managers/event_manager.h
+        src/core/managers/event_manager.cpp
 )
 
 
