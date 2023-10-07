@@ -13,27 +13,33 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-
     steps:
-    - name: Prepare env
-      shell: bash
-      run: echo "GITHUB_SHA_SHORT=${GITHUB_SHA::7}" >> $GITHUB_ENV
+      - name: Prepare env
+        shell: bash
+        run: echo "GITHUB_SHA_SHORT=${GITHUB_SHA::7}" >> $GITHUB_ENV
 
-    - uses: actions/checkout@v3
-      with:
-        submodules: 'recursive'
+      - uses: actions/checkout@v3
+        with:
+          submodules: 'recursive'
 
-    - name: Configure CMake
-      run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+      - name: Configure CMake
+        run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
-    - name: Build
-      # Build your program with the given configuration
-      run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+      - name: Build
+        # Build your program with the given configuration
+        run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
 
-    - name: Clean build directory
-      run: mkdir --parents build/output/; mv build/addons $_
+      - name: Clean build directory
+        run: mkdir --parents build/output/; mv build/addons $_
 
-    - uses: actions/upload-artifact@v3
-      with:
-        name: counterstrikesharp-${{ env.GITHUB_SHA_SHORT }}
-        path: build/output/
+      - name: Add dotnet runtime
+        run: |
+          mkdir -p build/output/addons/dotnet
+          curl -s -L https://download.visualstudio.microsoft.com/download/pr/02f4c6c2-c137-448d-a189-9ee3a3f6f99f/192f2c750089fa0194f04f5a805bd21e/aspnetcore-runtime-8.0.0-rc.1.23421.29-linux-x64.tar.gz \
+          | tar xvz -C build/output/addons/dotnet
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: counterstrikesharp-${{ env.GITHUB_SHA_SHORT }}
+          path: build/output/
+
