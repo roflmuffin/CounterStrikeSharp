@@ -28,6 +28,9 @@ These features are the core of the platform and work pretty well/have a low risk
 - [x] Server Information (current map, game time, tick rate, model precaching)
 - [x] Radio Menus (create menus and respond to selections)
 
+## Use
+Development builds are currently available through GitHub actions, you can download the latest build from [there](https://github.com/roflmuffin/CounterStrikeSharp/actions).
+
 ## What kind of works?
 
 These features have a rudimentary implementation but have not been thoroughly tested.
