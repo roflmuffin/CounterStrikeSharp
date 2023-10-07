@@ -21,6 +21,15 @@
 #include "core/utils.h"
 #include "iserver.h"
 #include "scripting/dotnet_host.h"
+#include "scripting/script_engine.h"
+
+extern "C" void InvokeNative(counterstrikesharp::fxNativeContext &context)
+{
+    if (context.nativeIdentifier == 0)
+        return;
+    
+    counterstrikesharp::ScriptEngine::InvokeNative(context);
+}
 
 namespace counterstrikesharp
 {

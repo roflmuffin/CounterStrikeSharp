@@ -25,6 +25,8 @@ SET(SOURCE_FILES
         src/core/globals.cpp
         src/core/log.h
         src/core/log.cpp
+        src/scripting/script_engine.h
+        src/scripting/script_engine.cpp
 )
 
 

@@ -50,7 +50,7 @@ namespace CounterStrikeSharp.API.Core
                 .ToArray();   
         }
 
-        private const string dllPath = "vspdotnet";
+        private const string dllPath = "counterstrikesharp";
 
         [SecurityCritical]
         [DllImport(dllPath, EntryPoint = "InvokeNative")]

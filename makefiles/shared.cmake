@@ -28,6 +28,7 @@ include_directories(
         ${METAMOD_DIR}/core
         ${METAMOD_DIR}/core/sourcehook
         libraries/spdlog/include
+        libraries/tl
         libraries
 )
 
