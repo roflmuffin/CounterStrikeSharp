@@ -78,7 +78,7 @@ bool load_hostfxr()
 {
     std::string baseDir = counterstrikesharp::utils::PluginDirectory();
 
-    std::string buffer = std::string(baseDir + "/dotnet/host/fxr/8.0.0-rc.1.23419.4/libhostfxr.so");
+    std::string buffer = std::string(baseDir + "/dotnet/host/fxr/7.0.11/libhostfxr.so");
 
     CSSHARP_CORE_TRACE("Loading hostfxr from {0}", buffer.c_str());
 
@@ -135,7 +135,8 @@ bool CDotNetManager::Initialize()
         return false;
     }
 
-    /*
+    CSSHARP_CORE_INFO(".NET Runtime Initialised.");
+
     std::string wideStr = std::string((baseDir + "/api/CounterStrikeSharp.API.runtimeconfig.json").c_str());
 
     load_assembly_and_get_function_pointer_fn load_assembly_and_get_function_pointer = nullptr;
@@ -148,9 +149,8 @@ bool CDotNetManager::Initialize()
 
     typedef int(CORECLR_DELEGATE_CALLTYPE * custom_entry_point_fn)();
     custom_entry_point_fn entry_point = nullptr;
-    int rc =
-        load_assembly_and_get_function_pointer(dotnetlib_path.c_str(), dotnet_type, "LoadAllPlugins",
-                                               UNMANAGEDCALLERSONLY_METHOD, nullptr, (void **)&entry_point);
+    int rc = load_assembly_and_get_function_pointer(dotnetlib_path.c_str(), dotnet_type, "LoadAllPlugins",
+                                                    UNMANAGEDCALLERSONLY_METHOD, nullptr, (void **)&entry_point);
     assert(rc == 0 && entry_point != nullptr && "Failure: load_assembly_and_get_function_pointer()");
 
     const bool success = entry_point();
@@ -159,9 +159,8 @@ bool CDotNetManager::Initialize()
         CSSHARP_CORE_ERROR("Failed to initialize .NET");
         return false;
     }
-    */
 
-    CSSHARP_CORE_INFO(".NET Initialized.");
+    CSSHARP_CORE_INFO("CounterStrikeSharp.API Loaded Successfully.");
     return true;
 }
 
