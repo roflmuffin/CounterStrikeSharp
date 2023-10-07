@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CounterStrikeSharp.API": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
