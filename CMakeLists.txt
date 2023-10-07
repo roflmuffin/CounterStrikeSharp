@@ -4,6 +4,8 @@ Project(counterstrikesharp C CXX)
 
 include("makefiles/shared.cmake")
 
+add_subdirectory(libraries/spdlog)
+
 SET(SOURCE_FILES
         src/sample_mm.cpp
         src/sample_mm.h
@@ -21,6 +23,8 @@ SET(SOURCE_FILES
         src/core/utils.h
         src/core/globals.h
         src/core/globals.cpp
+        src/core/log.h
+        src/core/log.cpp
 )
 
 

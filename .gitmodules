@@ -5,3 +5,6 @@
 [submodule "libraries/metamod-source"]
 	path = libraries/metamod-source
 	url = https://github.com/alliedmodders/metamod-source
+[submodule "libraries/spdlog"]
+	path = libraries/spdlog
+	url = https://github.com/gabime/spdlog

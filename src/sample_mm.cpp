@@ -17,6 +17,7 @@
 
 #include <cstdio>
 
+#include "core/log.h"
 #include "core/utils.h"
 #include "iserver.h"
 
@@ -58,8 +59,8 @@ ConVar sample_cvar("sample_cvar", "42", 0);
 
 CON_COMMAND_F(sample_command, "Sample command", FCVAR_NONE)
 {
-    META_CONPRINTF("Sample command called by %d. Command: %s\n", context.GetPlayerSlot(),
-                   utils::PluginDirectory().c_str());
+    CSSHARP_CORE_INFO("Sample command called by {0}. Command: {1}", context.GetPlayerSlot().Get(),
+                      utils::PluginDirectory().c_str());
 }
 
 PLUGIN_EXPOSE(SamplePlugin, g_SamplePlugin);
@@ -67,7 +68,9 @@ bool SamplePlugin::Load(PluginId id, ISmmAPI *ismm, char *error, size_t maxlen, 
 {
     PLUGIN_SAVEVARS();
 
-    META_CONPRINTF("ISMM: %d", ismm);
+    Log::Init();
+
+    CSSHARP_CORE_INFO("Initializing");
 
     GET_V_IFACE_CURRENT(GetEngineFactory, globals::engine, IVEngineServer, INTERFACEVERSION_VENGINESERVER);
     GET_V_IFACE_CURRENT(GetEngineFactory, globals::cvars, ICvar, CVAR_INTERFACE_VERSION);
@@ -77,7 +80,7 @@ bool SamplePlugin::Load(PluginId id, ISmmAPI *ismm, char *error, size_t maxlen, 
     GET_V_IFACE_ANY(GetEngineFactory, globals::networkServerService, INetworkServerService,
                     NETWORKSERVERSERVICE_INTERFACE_VERSION);
 
-    META_CONPRINTF("Starting plugin.\n");
+    CSSHARP_CORE_INFO("Globals loaded.");
 
     SH_ADD_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this, &SamplePlugin::Hook_GameFrame, true);
     SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientActive, globals::serverGameClients, this,
@@ -95,7 +98,7 @@ bool SamplePlugin::Load(PluginId id, ISmmAPI *ismm, char *error, size_t maxlen, 
     SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientCommand, globals::serverGameClients, this,
                         &SamplePlugin::Hook_ClientCommand, false);
 
-    META_CONPRINTF("All hooks started!\n");
+    CSSHARP_CORE_INFO("Hooks added.");
 
     // Used by Metamod Console Commands
     g_pCVar = globals::cvars;

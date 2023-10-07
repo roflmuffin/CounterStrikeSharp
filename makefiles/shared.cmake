@@ -3,6 +3,8 @@ Set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING
         FORCE
 )
 
+Set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
+
 Set(SOURCESDK_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2)
 Set(METAMOD_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libraries/metamod-source)
 
@@ -24,9 +26,8 @@ include_directories(
         ${SOURCESDK}/public/game/server
         ${METAMOD_DIR}/core
         ${METAMOD_DIR}/core/sourcehook
+        libraries/spdlog/include
         libraries
 )
-
-SET(ASMJIT_STATIC 1)
 
 Project(counterstrikesharp C CXX)
