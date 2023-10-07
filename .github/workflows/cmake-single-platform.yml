@@ -27,5 +27,5 @@ jobs:
 
     - uses: actions/upload-artifact@v3
       with:
-        name: plugin
-        path: build/libcounterstrikesharp.so
+        name: counterstrikesharp-${{ env.GITHUB_SHA_SHORT }}
+        path: build/addons
