@@ -27,6 +27,9 @@ SET(SOURCE_FILES
         src/core/log.cpp
         src/scripting/script_engine.h
         src/scripting/script_engine.cpp
+        src/core/global_listener.h
+        src/scripting/callback_manager.h
+        src/scripting/callback_manager.cpp
 )
 
 

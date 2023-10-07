@@ -17,11 +17,15 @@
 
 #include <cstdio>
 
+#include "core/global_listener.h"
 #include "core/log.h"
 #include "core/utils.h"
 #include "iserver.h"
+#include "scripting/callback_manager.h"
 #include "scripting/dotnet_host.h"
 #include "scripting/script_engine.h"
+
+counterstrikesharp::GlobalClass *counterstrikesharp::GlobalClass::head = nullptr;
 
 extern "C" void InvokeNative(counterstrikesharp::fxNativeContext &context)
 {
@@ -69,8 +73,7 @@ ConVar sample_cvar("sample_cvar", "42", 0);
 
 CON_COMMAND_F(sample_command, "Sample command", FCVAR_NONE)
 {
-    CSSHARP_CORE_INFO("Sample command called by {0}. Command: {1}", context.GetPlayerSlot().Get(),
-                      utils::PluginDirectory().c_str());
+    globals::callbackManager.PrintCallbackDebug();
 }
 
 PLUGIN_EXPOSE(SamplePlugin, g_SamplePlugin);
@@ -91,6 +94,8 @@ bool SamplePlugin::Load(PluginId id, ISmmAPI *ismm, char *error, size_t maxlen, 
                     NETWORKSERVERSERVICE_INTERFACE_VERSION);
 
     CSSHARP_CORE_INFO("Globals loaded.");
+
+    CALL_GLOBAL_LISTENER(OnAllInitialized());
 
     if (!globals::dotnetManager.Initialize())
     {
@@ -203,16 +208,37 @@ void SamplePlugin::Hook_GameFrame(bool simulating, bool bFirstTick, bool bLastTi
 }
 
 // Potentially might not work
+static ScriptCallback *on_map_end_callback;
+static bool NewLevelStarted = false;
 void SamplePlugin::OnLevelInit(char const *pMapName, char const *pMapEntities, char const *pOldLevel,
                                char const *pLandmarkName, bool loadGame, bool background)
 {
-    META_CONPRINTF("OnLevelInit(%s)\n", pMapName);
+    CSSHARP_CORE_TRACE("name={0},mapname={1}", "LevelInit", pMapName);
+    NewLevelStarted = true;
+
+    if (!on_map_end_callback)
+    {
+        on_map_end_callback = globals::callbackManager.CreateCallback("OnMapEnd");
+    }
 }
 
-// Potentially might not work
 void SamplePlugin::OnLevelShutdown()
 {
-    META_CONPRINTF("OnLevelShutdown()\n");
+    if (NewLevelStarted)
+    {
+        CALL_GLOBAL_LISTENER(OnLevelEnd());
+
+        if (on_map_end_callback && on_map_end_callback->GetFunctionCount())
+        {
+            on_map_end_callback->ScriptContext().Reset();
+            on_map_end_callback->Execute();
+        }
+
+        // globals::timer_system.RemoveMapChangeTimers();
+
+        CSSHARP_CORE_TRACE("name={0}", "LevelShutdown");
+        NewLevelStarted = false;
+    }
 }
 
 bool SamplePlugin::Pause(char *error, size_t maxlen)

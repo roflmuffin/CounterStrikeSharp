@@ -1,5 +1,6 @@
 #include "core/globals.h"
 #include "iserver.h"
+#include "scripting/callback_manager.h"
 #include "scripting/dotnet_host.h"
 
 #include <ISmmPlugin.h>
@@ -39,6 +40,9 @@ ISource2Server *server = nullptr;
 CGlobalEntityList *globalEntityList = nullptr;
 SourceHook::Impl::CSourceHookImpl source_hook_impl;
 SourceHook::ISourceHook *source_hook = &source_hook_impl;
+
+// Custom Managers
+CallbackManager callbackManager;
 int source_hook_pluginid = 0;
 
 } // namespace globals
