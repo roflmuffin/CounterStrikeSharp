@@ -29,7 +29,6 @@ namespace CounterStrikeSharp.API.Core
 {
     public sealed class GlobalContext
     {
-
         private static GlobalContext _instance = null;
         public static GlobalContext Instance => _instance;
 
@@ -66,11 +65,12 @@ namespace CounterStrikeSharp.API.Core
             DirectoryInfo modules_directory_info;
             try
             {
-                modules_directory_info = new DirectoryInfo(Path.Combine(rootDir.FullName, "modules"));
+                modules_directory_info = new DirectoryInfo(Path.Combine(rootDir.FullName, "plugins"));
             }
             catch (Exception e)
             {
-                Console.WriteLine("Unable to access .NET modules directory: " + e.GetType().ToString() + " " + e.Message);
+                Console.WriteLine(
+                    "Unable to access .NET modules directory: " + e.GetType().ToString() + " " + e.Message);
                 return;
             }
 
@@ -105,7 +105,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
-            Console.WriteLine("All managed modules were loaded.");
+            Console.WriteLine($"All managed modules were loaded. {_loadedPlugins.Count} plugins loaded.");
         }
 
         public PluginContext FindPluginByType(Type moduleClass)

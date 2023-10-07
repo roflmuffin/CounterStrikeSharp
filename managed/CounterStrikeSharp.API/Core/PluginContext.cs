@@ -41,7 +41,6 @@ namespace CounterStrikeSharp.API.Core
         public PluginContext(string path)
         {
             _path = path;
-            Console.WriteLine($"Initializing plugin context for path: {_path}");
 
             _assemblyLoader = PluginLoader.CreateFromAssemblyFile(path, new[] {typeof(IPlugin) }, config =>
             {

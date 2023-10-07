@@ -147,6 +147,7 @@ bool CDotNetManager::Initialize()
     const char_t *dotnet_type = "CounterStrikeSharp.API.Core.Helpers, CounterStrikeSharp.API";
     // Namespace, assembly name
 
+
     typedef int(CORECLR_DELEGATE_CALLTYPE * custom_entry_point_fn)();
     custom_entry_point_fn entry_point = nullptr;
     int rc = load_assembly_and_get_function_pointer(dotnetlib_path.c_str(), dotnet_type, "LoadAllPlugins",

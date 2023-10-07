@@ -27,7 +27,7 @@ extern "C" void InvokeNative(counterstrikesharp::fxNativeContext &context)
 {
     if (context.nativeIdentifier == 0)
         return;
-    
+
     counterstrikesharp::ScriptEngine::InvokeNative(context);
 }
 

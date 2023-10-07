@@ -14,6 +14,7 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
+using System;
 using CounterStrikeSharp.API.Core;
 
 namespace TestPlugin
@@ -22,5 +23,10 @@ namespace TestPlugin
     {
         public override string ModuleName => "Sample Plugin";
         public override string ModuleVersion => "v1.0.0";
+
+        public override void Load(bool hotReload)
+        {
+            Console.WriteLine($"Test Plugin has been loaded, and the hot reload flag was {hotReload}");
+        }
     }
 }
