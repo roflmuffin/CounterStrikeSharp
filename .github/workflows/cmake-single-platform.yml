@@ -34,9 +34,9 @@ jobs:
 
       - name: Add dotnet runtime
         run: |
-          mkdir -p build/output/addons/dotnet
+          mkdir -p build/output/addons/counterstrikesharp/dotnet
           curl -s -L https://download.visualstudio.microsoft.com/download/pr/02f4c6c2-c137-448d-a189-9ee3a3f6f99f/192f2c750089fa0194f04f5a805bd21e/aspnetcore-runtime-8.0.0-rc.1.23421.29-linux-x64.tar.gz \
-          | tar xvz -C build/output/addons/dotnet
+          | tar xvz -C build/output/addons/counterstrikesharp/dotnet
 
       - uses: actions/upload-artifact@v3
         with:
