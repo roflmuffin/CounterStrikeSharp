@@ -37,6 +37,11 @@ jobs:
       - name: Clean build directory
         run: mkdir --parents build/output/; mv build/addons $_
 
+      - name: Add API to Artifacts
+        run: |
+          mkdir -p build/output/addons/counterstrikesharp/api
+          cp -r managed/CounterStrikeSharp.API/bin/Release/net7.0/* build/output/addons/counterstrikesharp/api
+
       - uses: actions/upload-artifact@v3
         with:
           name: counterstrikesharp-${{ env.GITHUB_SHA_SHORT }}
@@ -49,13 +54,7 @@ jobs:
           | tar xvz -C build/output/addons/counterstrikesharp/dotnet
           mv build/output/addons/counterstrikesharp/dotnet/shared/Microsoft.NETCore.App/7.0.11/* build/output/addons/counterstrikesharp/dotnet/shared/Microsoft.NETCore.App/
 
-      - name: Add API to Artifacts
-        run: |
-          mkdir -p build/output/addons/counterstrikesharp/api
-          cp -r managed/CounterStrikeSharp.API/bin/Release/net7.0/* build/output/addons/counterstrikesharp/api
-
       - uses: actions/upload-artifact@v3
         with:
           name: counterstrikesharp-with-runtime-${{ env.GITHUB_SHA_SHORT }}
           path: build/output/
-
