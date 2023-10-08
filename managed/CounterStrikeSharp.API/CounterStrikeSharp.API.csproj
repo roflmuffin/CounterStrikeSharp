@@ -6,6 +6,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Modules\Commands\CommandInfo" />
+    <None Remove="Modules\Disabled\**" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="McMaster.NETCore.Plugins" Version="1.3.1" />
@@ -15,6 +16,12 @@
   <ItemGroup>
     <Folder Include="Modules\Errors" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Modules\Disabled\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Modules\Disabled\**" />
+  </ItemGroup>
   <PropertyGroup />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -22,4 +29,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="dotnet run --project ../../tooling/CodeGen.Natives" />
+  </Target>
 </Project>
