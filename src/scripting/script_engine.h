@@ -91,6 +91,27 @@ class ScriptContext
     void Reset();
 
   public:
+
+    template<int... Is> struct index {};
+
+    template<int N, int... Is>
+    struct gen_seq : gen_seq<N-1, N-1, Is...> {};
+
+    template<int... Is>
+    struct gen_seq<0, Is...> : index<Is...> {};
+
+    template<typename... Ts>
+    inline const std::tuple<Ts...> GetArguments()
+    {
+        return GetArgumentsImpl<Ts...>(gen_seq<sizeof...(Ts)>());
+    }
+
+    template<typename... Ts, int... Is>
+    inline const std::tuple<Ts...> GetArgumentsImpl(index<Is...>)
+    {
+        return std::make_tuple(GetArgument<Ts>(Is)...);
+    }
+
     template <typename T> inline const T &GetArgument(int index)
     {
         auto functionData = (uint64_t *)m_argumentBuffer;

@@ -81,7 +81,8 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI *ismm, char *error, s
         return false;
     }
 
-    SH_ADD_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this, &CounterStrikeSharpMMPlugin::Hook_GameFrame, true);
+    SH_ADD_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this, &CounterStrikeSharpMMPlugin::Hook_GameFrame,
+                        true);
 
     CSSHARP_CORE_INFO("Hooks added.");
 
@@ -94,7 +95,8 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI *ismm, char *error, s
 
 bool CounterStrikeSharpMMPlugin::Unload(char *error, size_t maxlen)
 {
-    SH_REMOVE_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this, &CounterStrikeSharpMMPlugin::Hook_GameFrame, true);
+    SH_REMOVE_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this,
+                           &CounterStrikeSharpMMPlugin::Hook_GameFrame, true);
 
     return true;
 }

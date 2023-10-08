@@ -30,7 +30,8 @@ namespace counterstrikesharp
 
 const char *GetMapName(ScriptContext &script_context)
 {
-    if (globals::getGlobalVars() == nullptr) return nullptr;
+    if (globals::getGlobalVars() == nullptr)
+        return nullptr;
 
     return globals::getGlobalVars()->mapname.ToCStr();
 }
@@ -88,8 +89,7 @@ void PrecacheModel(ScriptContext &script_context)
 
 bool PrecacheSound(ScriptContext &script_context)
 {
-    auto name = script_context.GetArgument<const char *>(0);
-    auto preload = script_context.GetArgument<bool>(1);
+    auto [name, preload] = script_context.GetArguments<const char *, bool>();
 
     return globals::engineSound->PrecacheSound(name, preload);
 }
@@ -203,9 +203,7 @@ void TraceFilterProxySetTraceTypeCallback(ScriptContext &script_context)
 
 void TraceFilterProxySetShouldHitEntityCallback(ScriptContext &script_context)
 {
-    auto trace_filter = script_context.GetArgument<TraceFilterProxy *>(0);
-    auto callback = script_context.GetArgument<CallbackT>(1);
-
+    auto [trace_filter, callback] = script_context.GetArguments<TraceFilterProxy *, CallbackT>();
     trace_filter->SetShouldHitEntityCallback(callback);
 }
 
