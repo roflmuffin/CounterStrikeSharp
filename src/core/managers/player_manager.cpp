@@ -162,7 +162,7 @@ bool PlayerManager::OnClientConnect_Post(CPlayerSlot slot, const char *pszName, 
     if (orig_value)
     {
         m_on_client_connected_callback->ScriptContext().Reset();
-        m_on_client_connected_callback->ScriptContext().Push(pPlayer->m_slot);
+        m_on_client_connected_callback->ScriptContext().Push(pPlayer->m_slot.Get());
         m_on_client_connected_callback->Execute();
 
         if (!pPlayer->IsFakeClient() && m_is_listen_server && strncmp(pszNetworkID, "127.0.0.1", 9) == 0)
@@ -196,7 +196,7 @@ void PlayerManager::OnClientPutInServer(CPlayerSlot slot, char const *pszName, i
         }
 
         m_on_client_connected_callback->ScriptContext().Reset();
-        m_on_client_connected_callback->ScriptContext().Push(pPlayer->m_slot);
+        m_on_client_connected_callback->ScriptContext().Push(pPlayer->m_slot.Get());
         m_on_client_connected_callback->Execute();
     }
 
@@ -212,7 +212,7 @@ void PlayerManager::OnClientPutInServer(CPlayerSlot slot, char const *pszName, i
     //    globals::entityListener.HandleEntitySpawned(pPlayer->GetBaseEntity(), client);
 
     m_on_client_put_in_server_callback->ScriptContext().Reset();
-    m_on_client_put_in_server_callback->ScriptContext().Push(pPlayer->m_slot);
+    m_on_client_put_in_server_callback->ScriptContext().Push(pPlayer->m_slot.Get());
     m_on_client_put_in_server_callback->Execute();
 }
 
@@ -227,7 +227,7 @@ void PlayerManager::OnClientDisconnect(CPlayerSlot slot, /* ENetworkDisconnectio
     if (pPlayer->IsConnected())
     {
         m_on_client_disconnect_callback->ScriptContext().Reset();
-        m_on_client_disconnect_callback->ScriptContext().Push(pPlayer->m_slot);
+        m_on_client_disconnect_callback->ScriptContext().Push(pPlayer->m_slot.Get());
         m_on_client_disconnect_callback->Execute();
     }
 
@@ -255,7 +255,7 @@ void PlayerManager::OnClientDisconnect_Post(CPlayerSlot slot, /* ENetworkDisconn
     InvalidatePlayer(pPlayer);
 
     m_on_client_disconnect_post_callback->ScriptContext().Reset();
-    m_on_client_disconnect_post_callback->ScriptContext().Push(pPlayer->m_slot);
+    m_on_client_disconnect_post_callback->ScriptContext().Push(pPlayer->m_slot.Get());
     m_on_client_disconnect_post_callback->Execute();
 }
 
