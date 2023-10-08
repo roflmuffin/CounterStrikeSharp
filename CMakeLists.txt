@@ -34,6 +34,7 @@ SET(SOURCE_FILES
         src/core/managers/event_manager.cpp
         src/core/timer_system.h
         src/core/timer_system.cpp
+        src/scripting/autonative.h
 )
 
 
