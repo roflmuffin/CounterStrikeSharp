@@ -29,12 +29,12 @@ namespace CounterStrikeSharp.API.Modules.Engine.Trace
 
         public TraceResult() : base(NativeAPI.NewTraceResult())
         {
-
         }
 
         public bool DidHit()
         {
-            return NativeAPI.TraceDidHit(Handle);
+            // return NativeAPI.TraceDidHit(Handle);
+            return false;
         }
 
         public BaseEntity Entity
