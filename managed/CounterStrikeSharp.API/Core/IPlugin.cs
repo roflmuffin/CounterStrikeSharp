@@ -17,7 +17,7 @@
 namespace CounterStrikeSharp.API.Core
 {
     /// <summary>
-    /// Interface which every CSGONET plugin must implement. Module will be created with parameterless constructor and then Load method will be called.
+    /// Interface which every CounterStrikeSharp plugin must implement. Module will be created with parameterless constructor and then Load method will be called.
     /// </summary>
     public interface IPlugin
     {
@@ -36,11 +36,11 @@ namespace CounterStrikeSharp.API.Core
             get;
         }
         /// <summary>
-        /// This method is called by CSGONET on plugin load and should be treated as plugin constructor.
+        /// This method is called by CounterStrikeSharp on plugin load and should be treated as plugin constructor.
         /// </summary>
         void Load(bool hotReload);
         /// <summary>
-        /// Will be called by CSGONET on plugin unload. In this method plugin must cleanup and unregister with CSGO native data.
+        /// Will be called by CounterStrikeSharp on plugin unload. In this method plugin must cleanup and unregister with CSGO native data.
         /// </summary>
         void Unload(bool hotReload);
     }
