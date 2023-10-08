@@ -1,4 +1,5 @@
 #include "core/globals.h"
+#include "core/managers/player_manager.h"
 #include "iserver.h"
 #include "managers/event_manager.h"
 #include "scripting/callback_manager.h"
@@ -47,6 +48,7 @@ SourceHook::ISourceHook *source_hook = &source_hook_impl;
 // Custom Managers
 CallbackManager callbackManager;
 EventManager eventManager;
+PlayerManager playerManager;
 TimerSystem timerSystem;
 
 int source_hook_pluginid = 0;

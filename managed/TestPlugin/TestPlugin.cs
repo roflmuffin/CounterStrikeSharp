@@ -27,6 +27,8 @@ namespace TestPlugin
         public override void Load(bool hotReload)
         {
             Console.WriteLine($"Test Plugin has been loaded, and the hot reload flag was {hotReload}");
+
+            OnClientConnect += args => { Console.WriteLine($"Client {args.Name} from {args.Address} has connected!"); };
         }
     }
 }
