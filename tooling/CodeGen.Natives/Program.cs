@@ -54,12 +54,7 @@ namespace CodeGen.Natives
                             );
                     }
 
-                    natives.Add(new()
-                    {
-                        Name = nativeName,
-                        ReturnType = returnType,
-                        Arguments = parameters
-                    });
+                    natives.Add(new(nativeName, parameters, returnType));
                 }
             }
 
