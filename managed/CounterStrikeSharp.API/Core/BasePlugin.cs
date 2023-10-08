@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -223,13 +223,7 @@ namespace CounterStrikeSharp.API.Core
                     args.PlayerIndex = context.GetArgument<int>(0);
                     args.Name = context.GetArgument<string>(1);
                     args.Address = context.GetArgument<string>(2);
-                },
-                ((args, context) =>
-                {
-                    context.Reset();
-                    context.Push(args.Cancel);
-                    context.Push(args.CancelReason);
-                })
+                }
             );
             remove => RemoveListener("OnClientConnect", value);
         }

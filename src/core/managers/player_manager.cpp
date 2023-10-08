@@ -125,24 +125,24 @@ bool PlayerManager::OnClientConnect(CPlayerSlot slot, const char *pszName, uint6
     m_on_client_connect_callback->ScriptContext().Push(client);
     m_on_client_connect_callback->ScriptContext().Push(pszName);
     m_on_client_connect_callback->ScriptContext().Push(pszNetworkID);
-    m_on_client_connect_callback->Execute(false);
+    m_on_client_connect_callback->Execute();
 
     if (m_on_client_connect_callback->GetFunctionCount() > 0)
     {
-        auto cancel = m_on_client_connect_callback->ScriptContext().GetArgument<bool>(0);
-        auto cancelReason = m_on_client_connect_callback->ScriptContext().GetArgument<const char *>(1);
-
-        m_on_client_connect_callback->ResetContext();
-
-        if (cancel)
-        {
-            pRejectReason->AppendFormat("%s", cancelReason);
-
-            if (!pPlayer->IsFakeClient())
-            {
-                RETURN_META_VALUE(MRES_SUPERCEDE, false);
-            }
-        }
+//        auto cancel = m_on_client_connect_callback->ScriptContext().GetArgument<bool>(0);
+//        auto cancelReason = m_on_client_connect_callback->ScriptContext().GetArgument<const char *>(1);
+//
+//        CSSHARP_CORE_TRACE("On Client Connect Callback Results: {}, {}", cancel, cancelReason);
+//
+//        if (cancel)
+//        {
+//            pRejectReason->AppendFormat("%s", cancelReason);
+//
+//            if (!pPlayer->IsFakeClient())
+//            {
+//                RETURN_META_VALUE(MRES_SUPERCEDE, false);
+//            }
+//        }
     }
 
     m_user_id_lookup[globals::engine->GetPlayerUserId(slot).Get()] = client;
