@@ -24,7 +24,7 @@
 
 namespace counterstrikesharp
 {
-class SamplePlugin : public ISmmPlugin, public IMetamodListener
+class CounterStrikeSharpMMPlugin : public ISmmPlugin, public IMetamodListener
 {
   public:
     bool Load(PluginId id, ISmmAPI *ismm, char *error, size_t maxlen, bool late) override;
@@ -60,7 +60,7 @@ class SamplePlugin : public ISmmPlugin, public IMetamodListener
     const char *GetLogTag() override;
 };
 
-extern SamplePlugin g_SamplePlugin;
+extern CounterStrikeSharpMMPlugin g_SamplePlugin;
 
 PLUGIN_GLOBALVARS();
 

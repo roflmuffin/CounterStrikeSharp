@@ -7,8 +7,8 @@ include("makefiles/shared.cmake")
 add_subdirectory(libraries/spdlog)
 
 SET(SOURCE_FILES
-        src/sample_mm.cpp
-        src/sample_mm.h
+        src/mm_plugin.cpp
+        src/mm_plugin.h
         libraries/hl2sdk-cs2/tier1/convar.cpp
         libraries/hl2sdk-cs2/public/tier0/memoverride.cpp
         libraries/dotnet/hostfxr.h

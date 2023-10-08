@@ -13,7 +13,7 @@
  * This sample plugin is public domain.
  */
 
-#include "sample_mm.h"
+#include "mm_plugin.h"
 
 #include <cstdio>
 
@@ -52,7 +52,7 @@ SH_DECL_HOOK6(IServerGameClients, ClientConnect, SH_NOATTRIB, 0, bool, CPlayerSl
 
 SH_DECL_HOOK2_void(IServerGameClients, ClientCommand, SH_NOATTRIB, 0, CPlayerSlot, const CCommand &);
 
-SamplePlugin g_SamplePlugin;
+CounterStrikeSharpMMPlugin g_SamplePlugin;
 
 #if 0
 // Currently unavailable, requires hl2sdk work!
@@ -64,8 +64,8 @@ CON_COMMAND_F(sample_command, "Sample command", FCVAR_NONE)
     globals::callbackManager.PrintCallbackDebug();
 }
 
-PLUGIN_EXPOSE(SamplePlugin, g_SamplePlugin);
-bool SamplePlugin::Load(PluginId id, ISmmAPI *ismm, char *error, size_t maxlen, bool late)
+PLUGIN_EXPOSE(CounterStrikeSharpMMPlugin, g_SamplePlugin);
+bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI *ismm, char *error, size_t maxlen, bool late)
 {
     PLUGIN_SAVEVARS();
 
@@ -92,21 +92,21 @@ bool SamplePlugin::Load(PluginId id, ISmmAPI *ismm, char *error, size_t maxlen, 
         return false;
     }
 
-    SH_ADD_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this, &SamplePlugin::Hook_GameFrame, true);
+    SH_ADD_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this, &CounterStrikeSharpMMPlugin::Hook_GameFrame, true);
     SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientActive, globals::serverGameClients, this,
-                        &SamplePlugin::Hook_ClientActive, true);
+                        &CounterStrikeSharpMMPlugin::Hook_ClientActive, true);
     SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientDisconnect, globals::serverGameClients, this,
-                        &SamplePlugin::Hook_ClientDisconnect, true);
+                        &CounterStrikeSharpMMPlugin::Hook_ClientDisconnect, true);
     SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientPutInServer, globals::serverGameClients, this,
-                        &SamplePlugin::Hook_ClientPutInServer, true);
+                        &CounterStrikeSharpMMPlugin::Hook_ClientPutInServer, true);
     SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientSettingsChanged, globals::serverGameClients, this,
-                        &SamplePlugin::Hook_ClientSettingsChanged, false);
+                        &CounterStrikeSharpMMPlugin::Hook_ClientSettingsChanged, false);
     SH_ADD_HOOK_MEMFUNC(IServerGameClients, OnClientConnected, globals::serverGameClients, this,
-                        &SamplePlugin::Hook_OnClientConnected, false);
+                        &CounterStrikeSharpMMPlugin::Hook_OnClientConnected, false);
     SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientConnect, globals::serverGameClients, this,
-                        &SamplePlugin::Hook_ClientConnect, false);
+                        &CounterStrikeSharpMMPlugin::Hook_ClientConnect, false);
     SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientCommand, globals::serverGameClients, this,
-                        &SamplePlugin::Hook_ClientCommand, false);
+                        &CounterStrikeSharpMMPlugin::Hook_ClientCommand, false);
 
     CSSHARP_CORE_INFO("Hooks added.");
 
@@ -117,56 +117,56 @@ bool SamplePlugin::Load(PluginId id, ISmmAPI *ismm, char *error, size_t maxlen, 
     return true;
 }
 
-bool SamplePlugin::Unload(char *error, size_t maxlen)
+bool CounterStrikeSharpMMPlugin::Unload(char *error, size_t maxlen)
 {
-    SH_REMOVE_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this, &SamplePlugin::Hook_GameFrame, true);
+    SH_REMOVE_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this, &CounterStrikeSharpMMPlugin::Hook_GameFrame, true);
     SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, ClientActive, globals::serverGameClients, this,
-                           &SamplePlugin::Hook_ClientActive, true);
+                           &CounterStrikeSharpMMPlugin::Hook_ClientActive, true);
     SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, ClientDisconnect, globals::serverGameClients, this,
-                           &SamplePlugin::Hook_ClientDisconnect, true);
+                           &CounterStrikeSharpMMPlugin::Hook_ClientDisconnect, true);
     SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, ClientPutInServer, globals::serverGameClients, this,
-                           &SamplePlugin::Hook_ClientPutInServer, true);
+                           &CounterStrikeSharpMMPlugin::Hook_ClientPutInServer, true);
     SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, ClientSettingsChanged, globals::serverGameClients, this,
-                           &SamplePlugin::Hook_ClientSettingsChanged, false);
+                           &CounterStrikeSharpMMPlugin::Hook_ClientSettingsChanged, false);
     SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, OnClientConnected, globals::serverGameClients, this,
-                           &SamplePlugin::Hook_OnClientConnected, false);
+                           &CounterStrikeSharpMMPlugin::Hook_OnClientConnected, false);
     SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, ClientConnect, globals::serverGameClients, this,
-                           &SamplePlugin::Hook_ClientConnect, false);
+                           &CounterStrikeSharpMMPlugin::Hook_ClientConnect, false);
     SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, ClientCommand, globals::serverGameClients, this,
-                           &SamplePlugin::Hook_ClientCommand, false);
+                           &CounterStrikeSharpMMPlugin::Hook_ClientCommand, false);
     return true;
 }
 
-void SamplePlugin::AllPluginsLoaded()
+void CounterStrikeSharpMMPlugin::AllPluginsLoaded()
 {
     /* This is where we'd do stuff that relies on the mod or other plugins
      * being initialized (for example, cvars added and events registered).
      */
 }
 
-void SamplePlugin::Hook_ClientActive(CPlayerSlot slot, bool bLoadGame, const char *pszName, uint64 xuid)
+void CounterStrikeSharpMMPlugin::Hook_ClientActive(CPlayerSlot slot, bool bLoadGame, const char *pszName, uint64 xuid)
 {
     CSSHARP_CORE_INFO("Hook_ClientActive({0}, {1}, \"{2}\", {3})", slot.Get(), bLoadGame, pszName, xuid);
 }
 
-void SamplePlugin::Hook_ClientCommand(CPlayerSlot slot, const CCommand &args)
+void CounterStrikeSharpMMPlugin::Hook_ClientCommand(CPlayerSlot slot, const CCommand &args)
 {
     CSSHARP_CORE_INFO("Hook_ClientCommand({0}, \"{1}\")", slot.Get(), args.GetCommandString());
 }
 
-void SamplePlugin::Hook_ClientSettingsChanged(CPlayerSlot slot)
+void CounterStrikeSharpMMPlugin::Hook_ClientSettingsChanged(CPlayerSlot slot)
 {
     CSSHARP_CORE_INFO("Hook_ClientSettingsChanged({0})\n", slot.Get());
 }
 
-void SamplePlugin::Hook_OnClientConnected(CPlayerSlot slot, const char *pszName, uint64 xuid, const char *pszNetworkID,
+void CounterStrikeSharpMMPlugin::Hook_OnClientConnected(CPlayerSlot slot, const char *pszName, uint64 xuid, const char *pszNetworkID,
                                           const char *pszAddress, bool bFakePlayer)
 {
     CSSHARP_CORE_INFO("Hook_OnClientConnected({}, \"{}\", {}, \"{}\", \"{}\", {})\n", slot.Get(), pszName, xuid,
                       pszNetworkID, pszAddress, bFakePlayer);
 }
 
-bool SamplePlugin::Hook_ClientConnect(CPlayerSlot slot, const char *pszName, uint64 xuid, const char *pszNetworkID,
+bool CounterStrikeSharpMMPlugin::Hook_ClientConnect(CPlayerSlot slot, const char *pszName, uint64 xuid, const char *pszNetworkID,
                                       bool unk1, CBufferString *pRejectReason)
 {
     CSSHARP_CORE_INFO("Hook_ClientConnect({}, \"{}\", {}, \"{}\", {}, \"{}\")\n", slot.Get(), pszName, xuid,
@@ -175,19 +175,19 @@ bool SamplePlugin::Hook_ClientConnect(CPlayerSlot slot, const char *pszName, uin
     RETURN_META_VALUE(MRES_IGNORED, true);
 }
 
-void SamplePlugin::Hook_ClientPutInServer(CPlayerSlot slot, char const *pszName, int type, uint64 xuid)
+void CounterStrikeSharpMMPlugin::Hook_ClientPutInServer(CPlayerSlot slot, char const *pszName, int type, uint64 xuid)
 {
     CSSHARP_CORE_INFO("Hook_ClientPutInServer({}, \"{}\", {}, {}, {})\n", slot.Get(), pszName, type, xuid);
 }
 
-void SamplePlugin::Hook_ClientDisconnect(CPlayerSlot slot, int reason, const char *pszName, uint64 xuid,
+void CounterStrikeSharpMMPlugin::Hook_ClientDisconnect(CPlayerSlot slot, int reason, const char *pszName, uint64 xuid,
                                          const char *pszNetworkID)
 {
     CSSHARP_CORE_INFO("Hook_ClientDisconnect({}, {}, \"{}\", {}, \"{}\")\n", slot.Get(), reason, pszName, xuid,
                       pszNetworkID);
 }
 
-void SamplePlugin::Hook_GameFrame(bool simulating, bool bFirstTick, bool bLastTick)
+void CounterStrikeSharpMMPlugin::Hook_GameFrame(bool simulating, bool bFirstTick, bool bLastTick)
 {
     /**
      * simulating:
@@ -201,7 +201,7 @@ void SamplePlugin::Hook_GameFrame(bool simulating, bool bFirstTick, bool bLastTi
 // Potentially might not work
 static ScriptCallback *on_map_end_callback;
 static bool NewLevelStarted = false;
-void SamplePlugin::OnLevelInit(char const *pMapName, char const *pMapEntities, char const *pOldLevel,
+void CounterStrikeSharpMMPlugin::OnLevelInit(char const *pMapName, char const *pMapEntities, char const *pOldLevel,
                                char const *pLandmarkName, bool loadGame, bool background)
 {
     CSSHARP_CORE_TRACE("name={0},mapname={1}", "LevelInit", pMapName);
@@ -213,7 +213,7 @@ void SamplePlugin::OnLevelInit(char const *pMapName, char const *pMapEntities, c
     }
 }
 
-void SamplePlugin::OnLevelShutdown()
+void CounterStrikeSharpMMPlugin::OnLevelShutdown()
 {
     if (NewLevelStarted)
     {
@@ -232,53 +232,53 @@ void SamplePlugin::OnLevelShutdown()
     }
 }
 
-bool SamplePlugin::Pause(char *error, size_t maxlen)
+bool CounterStrikeSharpMMPlugin::Pause(char *error, size_t maxlen)
 {
     return true;
 }
 
-bool SamplePlugin::Unpause(char *error, size_t maxlen)
+bool CounterStrikeSharpMMPlugin::Unpause(char *error, size_t maxlen)
 {
     return true;
 }
 
-const char *SamplePlugin::GetLicense()
+const char *CounterStrikeSharpMMPlugin::GetLicense()
 {
-    return "Public Domain";
+    return "GNU GPLv3";
 }
 
-const char *SamplePlugin::GetVersion()
+const char *CounterStrikeSharpMMPlugin::GetVersion()
 {
-    return "1.0.0.0";
+    return "0.1.0";
 }
 
-const char *SamplePlugin::GetDate()
+const char *CounterStrikeSharpMMPlugin::GetDate()
 {
     return __DATE__;
 }
 
-const char *SamplePlugin::GetLogTag()
+const char *CounterStrikeSharpMMPlugin::GetLogTag()
 {
-    return "SAMPLE";
+    return "CSSHARP";
 }
 
-const char *SamplePlugin::GetAuthor()
+const char *CounterStrikeSharpMMPlugin::GetAuthor()
 {
-    return "AlliedModders LLC";
+    return "Roflmuffin";
 }
 
-const char *SamplePlugin::GetDescription()
+const char *CounterStrikeSharpMMPlugin::GetDescription()
 {
-    return "Sample basic plugin";
+    return "Counter Strike .NET Scripting Runtime";
 }
 
-const char *SamplePlugin::GetName()
+const char *CounterStrikeSharpMMPlugin::GetName()
 {
-    return "Sample Plugin";
+    return "CounterStrikeSharp";
 }
 
-const char *SamplePlugin::GetURL()
+const char *CounterStrikeSharpMMPlugin::GetURL()
 {
-    return "http://www.sourcemm.net/";
+    return "https://github.com/roflmuffin/CounterStrikeSharp";
 }
 } // namespace counterstrikesharp
