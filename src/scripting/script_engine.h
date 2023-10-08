@@ -57,7 +57,7 @@ struct fxNativeContext
     uint64_t result;
 };
 
-typedef void(*CallbackT)(fxNativeContext *);
+typedef void (*CallbackT)(fxNativeContext *);
 
 class ScriptContext
 {
@@ -235,10 +235,10 @@ class ScriptEngine
         RegisterNativeHandlerInt(hash_string(nativeName), lambda);
     }
 
-//    template <> static void RegisterNativeHandler(const char *nativeName, TypedTNativeHandler<void> function)
-//    {
-//        RegisterNativeHandlerInt(hash_string(nativeName), function);
-//    }
+    static void RegisterNativeHandler(const char *nativeName, TypedTNativeHandler<void> function)
+    {
+        RegisterNativeHandlerInt(hash_string(nativeName), function);
+    }
 
     static void InvokeNative(counterstrikesharp::fxNativeContext &context);
 

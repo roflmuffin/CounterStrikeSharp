@@ -20,10 +20,10 @@
 #include "core/globals.h"
 #include "scripting/script_engine.h"
 
-#define REGISTER_NATIVE(name, func) vspdotnet::ScriptEngine::RegisterNativeHandler(#name, func);
+#define REGISTER_NATIVE(name, func) counterstrikesharp::ScriptEngine::RegisterNativeHandler(#name, func);
 
 #define REGISTER_NATIVES(name, method)                                                                                 \
-    class Natives##name : public vspdotnet::GlobalClass                                                                \
+    class Natives##name : public counterstrikesharp::GlobalClass                                                                \
     {                                                                                                                  \
       public:                                                                                                          \
         void OnAllInitialized() override method                                                                        \
