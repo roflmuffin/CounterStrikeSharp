@@ -41,7 +41,7 @@ namespace counterstrikesharp
 {
 SH_DECL_HOOK3_void(IServerGameDLL, GameFrame, SH_NOATTRIB, 0, bool, bool, bool);
 
-CounterStrikeSharpMMPlugin g_SamplePlugin;
+CounterStrikeSharpMMPlugin gPlugin;
 
 #if 0
 // Currently unavailable, requires hl2sdk work!
@@ -53,7 +53,7 @@ CON_COMMAND_F(sample_command, "Sample command", FCVAR_NONE)
     globals::callbackManager.PrintCallbackDebug();
 }
 
-PLUGIN_EXPOSE(CounterStrikeSharpMMPlugin, g_SamplePlugin);
+PLUGIN_EXPOSE(CounterStrikeSharpMMPlugin, gPlugin);
 bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI *ismm, char *error, size_t maxlen, bool late)
 {
     PLUGIN_SAVEVARS();
@@ -72,6 +72,7 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI *ismm, char *error, s
     GET_V_IFACE_ANY(GetEngineFactory, globals::gameEventSystem, IGameEventSystem, GAMEEVENTSYSTEM_INTERFACE_VERSION);
 
     CSSHARP_CORE_INFO("Globals loaded.");
+    globals::mmPlugin = &gPlugin;
 
     CALL_GLOBAL_LISTENER(OnAllInitialized());
 
@@ -108,48 +109,9 @@ void CounterStrikeSharpMMPlugin::AllPluginsLoaded()
      */
 }
 
-void CounterStrikeSharpMMPlugin::Hook_ClientActive(CPlayerSlot slot, bool bLoadGame, const char *pszName, uint64 xuid)
+void CounterStrikeSharpMMPlugin::AddTaskForNextFrame(std::function<void()> &&task)
 {
-    CSSHARP_CORE_INFO("Hook_ClientActive({0}, {1}, \"{2}\", {3})", slot.Get(), bLoadGame, pszName, xuid);
-}
-
-void CounterStrikeSharpMMPlugin::Hook_ClientCommand(CPlayerSlot slot, const CCommand &args)
-{
-    CSSHARP_CORE_INFO("Hook_ClientCommand({0}, \"{1}\")", slot.Get(), args.GetCommandString());
-}
-
-void CounterStrikeSharpMMPlugin::Hook_ClientSettingsChanged(CPlayerSlot slot)
-{
-    CSSHARP_CORE_INFO("Hook_ClientSettingsChanged({0})\n", slot.Get());
-}
-
-void CounterStrikeSharpMMPlugin::Hook_OnClientConnected(CPlayerSlot slot, const char *pszName, uint64 xuid,
-                                                        const char *pszNetworkID, const char *pszAddress,
-                                                        bool bFakePlayer)
-{
-    CSSHARP_CORE_INFO("Hook_OnClientConnected({}, \"{}\", {}, \"{}\", \"{}\", {})\n", slot.Get(), pszName, xuid,
-                      pszNetworkID, pszAddress, bFakePlayer);
-}
-
-bool CounterStrikeSharpMMPlugin::Hook_ClientConnect(CPlayerSlot slot, const char *pszName, uint64 xuid,
-                                                    const char *pszNetworkID, bool unk1, CBufferString *pRejectReason)
-{
-    CSSHARP_CORE_INFO("Hook_ClientConnect({}, \"{}\", {}, \"{}\", {}, \"{}\")\n", slot.Get(), pszName, xuid,
-                      pszNetworkID, unk1, pRejectReason->ToGrowable()->Get());
-
-    RETURN_META_VALUE(MRES_IGNORED, true);
-}
-
-void CounterStrikeSharpMMPlugin::Hook_ClientPutInServer(CPlayerSlot slot, char const *pszName, int type, uint64 xuid)
-{
-    CSSHARP_CORE_INFO("Hook_ClientPutInServer({}, \"{}\", {}, {}, {})\n", slot.Get(), pszName, type, xuid);
-}
-
-void CounterStrikeSharpMMPlugin::Hook_ClientDisconnect(CPlayerSlot slot, int reason, const char *pszName, uint64 xuid,
-                                                       const char *pszNetworkID)
-{
-    CSSHARP_CORE_INFO("Hook_ClientDisconnect({}, {}, \"{}\", {}, \"{}\")\n", slot.Get(), reason, pszName, xuid,
-                      pszNetworkID);
+    m_nextTasks.push_back(std::forward<decltype(task)>(task));
 }
 
 void CounterStrikeSharpMMPlugin::Hook_GameFrame(bool simulating, bool bFirstTick, bool bLastTick)
@@ -161,6 +123,19 @@ void CounterStrikeSharpMMPlugin::Hook_GameFrame(bool simulating, bool bFirstTick
      * false | game is not ticking
      */
     globals::timerSystem.OnGameFrame(simulating);
+
+    if (m_nextTasks.empty())
+        return;
+
+    CSSHARP_CORE_TRACE("Executing queued tasks of size: {0} on tick number {1}", m_nextTasks.size(),
+                       globals::getGlobalVars()->tickcount);
+
+    for (int i = 0; i < m_nextTasks.size(); i++)
+    {
+        m_nextTasks[i]();
+    }
+
+    m_nextTasks.clear();
 }
 
 // Potentially might not work

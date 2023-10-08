@@ -25,6 +25,7 @@ class CGlobalEntityList;
 class CDotNetManager;
 class ICvar;
 class IGameEventSystem;
+class CounterStrikeSharpMMPlugin;
 
 namespace counterstrikesharp
 {
@@ -81,6 +82,7 @@ extern HookManager hookManager;
 extern SourceHook::ISourceHook *source_hook;
 extern int source_hook_pluginid;
 extern IGameEventSystem *gameEventSystem;
+extern CounterStrikeSharpMMPlugin *mmPlugin;
 
 // Should only be called within the active game loop (i e map should be loaded
 // and active) otherwise that'll be nullptr!

@@ -19,3 +19,5 @@ NEW_TRACE_FILTER_PROXY: -> pointer
 TRACE_FILTER_PROXY_SET_TRACE_TYPE_CALLBACK: trace_filter:pointer, callback:pointer -> void
 TRACE_FILTER_PROXY_SET_SHOULD_HIT_ENTITY_CALLBACK: trace_filter:pointer, callback:pointer -> void
 NEW_TRACE_RESULT: -> pointer
+GET_TICKED_TIME: -> double
+QUEUE_TASK_FOR_NEXT_FRAME: callback:pointer -> void

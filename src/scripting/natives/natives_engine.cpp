@@ -20,10 +20,14 @@
 #include <filesystem.h>
 #include <public/worldsize.h>
 
+// clang-format off
+#include "mm_plugin.h"
 #include "core/engine_trace.h"
+#include "core/timer_system.h"
 #include "core/utils.h"
 #include "scripting/autonative.h"
 #include "scripting/script_engine.h"
+// clang-format on
 
 namespace counterstrikesharp
 {
@@ -212,6 +216,19 @@ CGameTrace *NewTraceResult(ScriptContext &script_context)
     return new CGameTrace();
 }
 
+double GetTickedTime(ScriptContext &script_context)
+{
+    return globals::timerSystem.GetTickedTime();
+}
+
+void QueueTaskForNextFrame(ScriptContext &script_context)
+{
+    auto func = script_context.GetArgument<void *>(0);
+
+    typedef void(voidfunc)(void);
+    globals::mmPlugin->AddTaskForNextFrame([func]() { reinterpret_cast<voidfunc *>(func)(); });
+}
+
 CREATE_GETTER_FUNCTION(Trace, bool, DidHit, CGameTrace *, obj->DidHit());
 CREATE_GETTER_FUNCTION(TraceResult, CBaseEntity *, Entity, CGameTrace *, obj->m_pEnt);
 
@@ -245,5 +262,7 @@ REGISTER_NATIVES(engine, {
     ScriptEngine::RegisterNativeHandler("CREATE_RAY_1", CreateRay1);
     ScriptEngine::RegisterNativeHandler("CREATE_RAY_2", CreateRay2);
     ScriptEngine::RegisterNativeHandler("TRACE_RAY", TraceRay);
+    ScriptEngine::RegisterNativeHandler("GET_TICKED_TIME", GetTickedTime);
+    ScriptEngine::RegisterNativeHandler("QUEUE_TASK_FOR_NEXT_FRAME", QueueTaskForNextFrame);
 })
 } // namespace counterstrikesharp

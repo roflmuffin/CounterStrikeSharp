@@ -18,9 +18,11 @@
 #define _INCLUDE_METAMOD_SOURCE_STUB_PLUGIN_H_
 
 #include <ISmmPlugin.h>
+#include <functional>
 #include <igameevents.h>
 #include <iplayerinfo.h>
 #include <sh_vector.h>
+#include <vector>
 
 namespace counterstrikesharp
 {
@@ -38,16 +40,7 @@ class CounterStrikeSharpMMPlugin : public ISmmPlugin, public IMetamodListener
                      bool loadGame, bool background) override;
     void OnLevelShutdown() override;
     void Hook_GameFrame(bool simulating, bool bFirstTick, bool bLastTick);
-    void Hook_ClientActive(CPlayerSlot slot, bool bLoadGame, const char *pszName, uint64 xuid);
-    void Hook_ClientDisconnect(CPlayerSlot slot, int reason, const char *pszName, uint64 xuid,
-                               const char *pszNetworkID);
-    void Hook_ClientPutInServer(CPlayerSlot slot, char const *pszName, int type, uint64 xuid);
-    void Hook_ClientSettingsChanged(CPlayerSlot slot);
-    void Hook_OnClientConnected(CPlayerSlot slot, const char *pszName, uint64 xuid, const char *pszNetworkID,
-                                const char *pszAddress, bool bFakePlayer);
-    bool Hook_ClientConnect(CPlayerSlot slot, const char *pszName, uint64 xuid, const char *pszNetworkID, bool unk1,
-                            CBufferString *pRejectReason);
-    void Hook_ClientCommand(CPlayerSlot nSlot, const CCommand &_cmd);
+    void AddTaskForNextFrame(std::function<void()> &&task);
 
   public:
     const char *GetAuthor() override;
@@ -58,9 +51,12 @@ class CounterStrikeSharpMMPlugin : public ISmmPlugin, public IMetamodListener
     const char *GetVersion() override;
     const char *GetDate() override;
     const char *GetLogTag() override;
+
+  private:
+    std::vector<std::function<void()>> m_nextTasks;
 };
 
-extern CounterStrikeSharpMMPlugin g_SamplePlugin;
+extern CounterStrikeSharpMMPlugin gPlugin;
 
 PLUGIN_GLOBALVARS();
 

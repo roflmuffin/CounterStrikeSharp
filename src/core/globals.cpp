@@ -42,6 +42,7 @@ CDotNetManager dotnetManager;
 ICvar *cvars = nullptr;
 ISource2Server *server = nullptr;
 CGlobalEntityList *globalEntityList = nullptr;
+CounterStrikeSharpMMPlugin *mmPlugin = nullptr;
 SourceHook::Impl::CSourceHookImpl source_hook_impl;
 SourceHook::ISourceHook *source_hook = &source_hook_impl;
 
