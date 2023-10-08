@@ -28,9 +28,9 @@ These features are the core of the platform and work pretty well/have a low risk
 
 - [ ] **(In Progress)** Console Variables, Console Commands, Server Commands (e.g. sv_customvar)
 - [ ] **(In Progress)** Game Event Handlers & Custom Events (e.g. player_death)
-- [ ] **(In Progress)** Game Tick Based Timers (e.g. repeating map timers)
-- [ ] **(In Progress)** Listeners (e.g. client connected, disconnected, map start etc.)
-- [ ] **(In Progress)** Server Information (current map, game time, tick rate, model precaching)
+- [x] Game Tick Based Timers (e.g. repeating map timers)
+- [x] **(Partially)** Listeners (e.g. client connected, disconnected, map start etc.)
+- [x] Server Information (current map, game time, tick rate, model precaching)
 
 
 ## Examples
