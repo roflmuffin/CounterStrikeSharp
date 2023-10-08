@@ -1,0 +1,21 @@
+GET_MAP_NAME: -> string
+GET_GAME_DIRECTORY: -> string
+IS_MAP_VALID: mapname:string -> bool
+GET_TICK_INTERVAL: -> float
+GET_CURRENT_TIME: -> float
+GET_TICK_COUNT: -> int
+GET_GAME_FRAME_TIME: -> float
+GET_ENGINE_TIME: -> double
+SERVER_COMMAND: command:string -> void
+PRECACHE_MODEL: name:string -> void
+PRECACHE_SOUND: name:string, preload:bool -> bool
+IS_SOUND_PRECACHED: name:string -> bool
+GET_SOUND_DURATION: name:string -> float
+CREATE_RAY_1: ray_type:int, vec1:pointer, vec2:pointer -> pointer
+CREATE_RAY_2: vec1:pointer, vec2:pointer, vec3:pointer, vec4:pointer -> pointer
+TRACE_RAY: ray:pointer, pTrace:pointer, trace_filter:pointer, flags:uint -> void
+NEW_SIMPLE_TRACE_FILTER: index_to_ignore:int -> pointer
+NEW_TRACE_FILTER_PROXY: -> pointer
+TRACE_FILTER_PROXY_SET_TRACE_TYPE_CALLBACK: trace_filter:pointer, callback:pointer -> void
+TRACE_FILTER_PROXY_SET_SHOULD_HIT_ENTITY_CALLBACK: trace_filter:pointer, callback:pointer -> void
+NEW_TRACE_RESULT: -> pointer
