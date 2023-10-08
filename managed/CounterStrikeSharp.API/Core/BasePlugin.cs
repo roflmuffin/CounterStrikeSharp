@@ -18,19 +18,15 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Runtime.Loader;
-using CounterStrikeSharp.API.Modules.Commands;
-using CounterStrikeSharp.API.Modules.Cvars;
-using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Listeners;
-using CounterStrikeSharp.API.Modules.Players;
 using CounterStrikeSharp.API.Modules.Timers;
 
 namespace CounterStrikeSharp.API.Core
-{ public abstract class BasePlugin : IPlugin
+{
+    public abstract class BasePlugin : IPlugin
     {
         public BasePlugin()
         {
-
         }
 
         public abstract string ModuleName { get; }
@@ -77,16 +73,23 @@ namespace CounterStrikeSharp.API.Core
             {
                 return _value;
             }
-
         }
 
-        public readonly Dictionary<Delegate, CallbackSubscriber> Handlers = new Dictionary<Delegate, CallbackSubscriber>();
-        public readonly Dictionary<Delegate, CallbackSubscriber> CommandHandlers = new Dictionary<Delegate, CallbackSubscriber>();
-        public readonly Dictionary<Delegate, CallbackSubscriber> ConvarChangeHandlers = new Dictionary<Delegate, CallbackSubscriber>();
-        public readonly Dictionary<Delegate, CallbackSubscriber> Listeners = new Dictionary<Delegate, CallbackSubscriber>();
+        public readonly Dictionary<Delegate, CallbackSubscriber> Handlers =
+            new Dictionary<Delegate, CallbackSubscriber>();
+
+        public readonly Dictionary<Delegate, CallbackSubscriber> CommandHandlers =
+            new Dictionary<Delegate, CallbackSubscriber>();
+
+        public readonly Dictionary<Delegate, CallbackSubscriber> ConvarChangeHandlers =
+            new Dictionary<Delegate, CallbackSubscriber>();
+
+        public readonly Dictionary<Delegate, CallbackSubscriber> Listeners =
+            new Dictionary<Delegate, CallbackSubscriber>();
+
         public readonly List<Timer> Timers = new List<Timer>();
 
-        public void RegisterEventHandler(string name, Action<GameEvent> handler, bool post = false)
+        /*public void RegisterEventHandler(string name, Action<GameEvent> handler, bool post = false)
         {
             var wrappedHandler = new Action<IntPtr>((IntPtr pointer) =>
             {
@@ -149,7 +152,7 @@ namespace CounterStrikeSharp.API.Core
             NativeAPI.HookConvarChange(convar.Handle, subscriber.GetInputArgument());
             ConvarChangeHandlers[handler] = subscriber;
         }
-        
+
         public void UnhookConVarChange(ConVar convar, ConVar.ConVarChangedCallback handler)
         {
             if (ConvarChangeHandlers.ContainsKey(handler))
@@ -160,9 +163,10 @@ namespace CounterStrikeSharp.API.Core
                 FunctionReference.Remove(subscriber.GetReferenceIdentifier());
                 CommandHandlers.Remove(handler);
             }
-        }
+        }*/
 
-        private void AddListener<T>(string name, Listeners.SourceEventHandler<T> handler, Action<T, ScriptContext> input = null, Action<T, ScriptContext> output = null) where T : EventArgs, new()
+        private void AddListener<T>(string name, Listeners.SourceEventHandler<T> handler,
+            Action<T, ScriptContext> input = null, Action<T, ScriptContext> output = null) where T : EventArgs, new()
         {
             var wrappedHandler = new Action<ScriptContext>((ScriptContext context) =>
             {
@@ -231,14 +235,14 @@ namespace CounterStrikeSharp.API.Core
         public event Listeners.SourceEventHandler<Listeners.PlayerArgs> OnClientConnected
         {
             add => AddListener("OnClientConnected", value,
-                (args, context) =>  args.Player = new Player(context.GetArgument<IntPtr>(0)));
+                (args, context) => args.PlayerSlot = context.GetArgument<int>(0));
             remove => RemoveListener("OnClientConnected", value);
         }
 
         public event Listeners.SourceEventHandler<Listeners.PlayerArgs> OnClientDisconnect
         {
             add => AddListener("OnClientDisconnect", value,
-                (args, context) =>  args.Player = new Player(context.GetArgument<IntPtr>(0)));
+                (args, context) => args.PlayerSlot = context.GetArgument<int>(0));
             remove => RemoveListener("OnClientDisconnect", value);
         }
 
@@ -264,14 +268,14 @@ namespace CounterStrikeSharp.API.Core
         public event Listeners.SourceEventHandler<Listeners.PlayerArgs> OnClientDisconnectPost
         {
             add => AddListener("OnClientDisconnectPost", value,
-                (args, context) => args.Player = new Player(context.GetArgument<IntPtr>(0)));
+                (args, context) => args.PlayerSlot = context.GetArgument<int>(0));
             remove => RemoveListener("OnClientDisconnectPost", value);
         }
 
         public event Listeners.SourceEventHandler<Listeners.PlayerArgs> OnClientPutInServer
         {
             add => AddListener("OnClientPutInServer", value,
-                (args, context) => args.Player = new Player(context.GetArgument<IntPtr>(0)));
+                (args, context) => args.PlayerSlot = context.GetArgument<int>(0));
             remove => RemoveListener("OnClientPutInServer", value);
         }
 
@@ -300,10 +304,7 @@ namespace CounterStrikeSharp.API.Core
         public event Listeners.SourceEventHandler<Listeners.EntityArgs> OnEntityDeleted
         {
             add => AddListener("OnEntityDeleted", value,
-                (args, context) =>
-                {
-                    args.EntityIndex = context.GetArgument<int>(0);
-                });
+                (args, context) => { args.EntityIndex = context.GetArgument<int>(0); });
             remove => RemoveListener("OnEntityDeleted", value);
         }
     }

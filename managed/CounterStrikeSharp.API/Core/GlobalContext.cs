@@ -19,11 +19,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
-using CounterStrikeSharp.API.Core;
-using CounterStrikeSharp.API.Modules.Events;
-using CounterStrikeSharp.API.Modules.Listeners;
-using McMaster.NETCore.Plugins;
 
 namespace CounterStrikeSharp.API.Core
 {

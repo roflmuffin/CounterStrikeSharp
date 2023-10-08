@@ -20,7 +20,6 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using CounterStrikeSharp.API.Core;
-using CounterStrikeSharp.API.Modules.Sound;
 
 namespace CounterStrikeSharp.API
 {
@@ -28,19 +27,20 @@ namespace CounterStrikeSharp.API
     {
         public static float TickInterval => NativeAPI.GetTickInterval();
 
-        public static void ExecuteCommand(string command) => NativeAPI.IssueServerCommand(command);
+        public static void ExecuteCommand(string command) => NativeAPI.ServerCommand(command);
 
         public static string MapName => NativeAPI.GetMapName();
-        public static void PrintToConsole(string message) => NativeAPI.PrintToConsole(message);
+        // public static void PrintToConsole(string message) => NativeAPI.PrintToConsole(message);
 
         public static double TickedTime => NativeAPI.GetTickedTime();
         public static float CurrentTime => NativeAPI.GetCurrentTime();
         public static int TickCount => NativeAPI.GetTickCount();
-        public static float GameFrameTime => NativeAPI.GetGameframeTime();
+        public static float GameFrameTime => NativeAPI.GetGameFrameTime();
         public static double EngineTime => NativeAPI.GetEngineTime();
         public static void PrecacheModel(string name) => NativeAPI.PrecacheModel(name);
-        public static void PrecacheSound(string name) => Sound.PrecacheSound(name);
+        // public static void PrecacheSound(string name) => Sound.PrecacheSound(name);
 
+        // Currently only used to keep the delegate from being garbage collected
         private static List<Action> nextFrameTasks = new List<Action>();
 
         public static void NextFrame(Action task)

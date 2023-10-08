@@ -15,20 +15,13 @@
  */
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.Text;
-using CounterStrikeSharp.API.Modules.Commands;
-using CounterStrikeSharp.API.Modules.Players;
 
 namespace CounterStrikeSharp.API.Modules.Listeners
 {
     public partial class Listeners
     {
         public delegate void SourceEventHandler(object e);
+
         public delegate void SourceEventHandler<T>(T e);
 
         public class MapStartArgs : EventArgs
@@ -38,7 +31,7 @@ namespace CounterStrikeSharp.API.Modules.Listeners
 
         public class PlayerArgs : EventArgs
         {
-            public Player Player { get; internal set; }
+            public int PlayerSlot { get; internal set; }
             public bool Cancel { get; set; }
             public string CancelReason { get; set; }
         }

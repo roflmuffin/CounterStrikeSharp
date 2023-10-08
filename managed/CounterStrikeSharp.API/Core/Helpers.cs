@@ -15,14 +15,10 @@
  */
 
 using System;
-using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security;
-using CounterStrikeSharp.API.Modules.Events;
-using CounterStrikeSharp.API.Modules.Listeners;
 
 namespace CounterStrikeSharp.API.Core
 {

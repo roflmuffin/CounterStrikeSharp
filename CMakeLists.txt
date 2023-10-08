@@ -41,6 +41,8 @@ SET(SOURCE_FILES
         src/scripting/natives/natives_callbacks.cpp
         src/core/managers/player_manager.h
         src/core/managers/player_manager.cpp
+        src/scripting/natives/natives_vector.cpp
+        src/scripting/natives/natives_timers.cpp
 )
 
 

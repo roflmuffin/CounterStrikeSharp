@@ -15,14 +15,8 @@
  */
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Loader;
 using System.Threading.Tasks;
-using CounterStrikeSharp.API.Modules.Commands;
-using CounterStrikeSharp.API.Modules.Cvars;
-using CounterStrikeSharp.API.Modules.Events;
-using CounterStrikeSharp.API.Modules.Listeners;
 using McMaster.NETCore.Plugins;
 
 namespace CounterStrikeSharp.API.Core
@@ -42,7 +36,7 @@ namespace CounterStrikeSharp.API.Core
         {
             _path = path;
 
-            _assemblyLoader = PluginLoader.CreateFromAssemblyFile(path, new[] {typeof(IPlugin) }, config =>
+            _assemblyLoader = PluginLoader.CreateFromAssemblyFile(path, new[] { typeof(IPlugin) }, config =>
             {
                 config.EnableHotReload = true;
                 config.IsUnloadable = true;
@@ -71,7 +65,7 @@ namespace CounterStrikeSharp.API.Core
                 if (pluginType == null) throw new Exception("Unable to find plugin in DLL");
 
                 Console.WriteLine($"Loading plugin: {pluginType.Name}");
-                _plugin = (BasePlugin) Activator.CreateInstance(pluginType);
+                _plugin = (BasePlugin)Activator.CreateInstance(pluginType);
                 _plugin.Load(hotReload);
 
                 Console.WriteLine($"Finished loading plugin: {Name}");
@@ -89,24 +83,25 @@ namespace CounterStrikeSharp.API.Core
             foreach (var kv in _plugin.Handlers)
             {
                 var data = kv.Value.GetValue() as object[];
-                _plugin.DeregisterEventHandler(data[0].ToString(), (Action<GameEvent>)kv.Key, Convert.ToBoolean(data[1]));
+                // _plugin.DeregisterEventHandler(data[0].ToString(), (Action<GameEvent>)kv.Key,
+                //     Convert.ToBoolean(data[1]));
             }
 
             foreach (var kv in _plugin.CommandHandlers)
             {
-                _plugin.RemoveCommand((string)kv.Value.GetValue(), (CommandInfo.CommandCallback) kv.Key);
+                // _plugin.RemoveCommand((string)kv.Value.GetValue(), (CommandInfo.CommandCallback)kv.Key);
             }
 
             foreach (var kv in _plugin.ConvarChangeHandlers)
             {
-                var convar = (ConVar) kv.Value.GetValue();
-                _plugin.UnhookConVarChange((ConVar)kv.Value.GetValue(), (ConVar.ConVarChangedCallback)kv.Key);
-                convar.Unregister();
+                // var convar = (ConVar)kv.Value.GetValue();
+                // _plugin.UnhookConVarChange((ConVar)kv.Value.GetValue(), (ConVar.ConVarChangedCallback)kv.Key);
+                // convar.Unregister();
             }
 
             foreach (var kv in _plugin.Listeners)
             {
-                _plugin.RemoveListener((string) kv.Value.GetValue(), kv.Key);
+                _plugin.RemoveListener((string)kv.Value.GetValue(), kv.Key);
             }
 
             foreach (var timer in _plugin.Timers)
