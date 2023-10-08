@@ -40,6 +40,7 @@ jobs:
       - name: Add API to Artifacts
         run: |
           mkdir -p build/output/addons/counterstrikesharp/api
+          mkdir -p build/output/addons/counterstrikesharp/plugins
           cp -r managed/CounterStrikeSharp.API/bin/Release/net7.0/* build/output/addons/counterstrikesharp/api
 
       - uses: actions/upload-artifact@v3
