@@ -38,6 +38,7 @@ SET(SOURCE_FILES
         src/scripting/natives/natives_engine.cpp
         src/core/engine_trace.h
         src/core/engine_trace.cpp
+        src/scripting/natives/natives_callbacks.cpp
 )
 
 

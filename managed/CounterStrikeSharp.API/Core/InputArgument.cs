@@ -111,13 +111,13 @@ namespace CounterStrikeSharp.API.Core
         {
             var functionReference = FunctionReference.Create(value);
             IntPtr cb = functionReference.GetFunctionPointer();
-            return new InputArgument(cb.ToInt32());
+            return new InputArgument(cb.ToInt64());
         }
 
         public static implicit operator InputArgument(FunctionReference value)
         {
             IntPtr cb = value.GetFunctionPointer();
-            return new InputArgument(cb.ToInt32());
+            return new InputArgument(cb.ToInt64());
         }
 
         [SecurityCritical]
