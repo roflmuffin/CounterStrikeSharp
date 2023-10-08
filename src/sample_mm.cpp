@@ -19,6 +19,7 @@
 
 #include "core/global_listener.h"
 #include "core/log.h"
+#include "core/timer_system.h"
 #include "core/utils.h"
 #include "igameeventsystem.h"
 #include "iserver.h"
@@ -52,18 +53,6 @@ SH_DECL_HOOK6(IServerGameClients, ClientConnect, SH_NOATTRIB, 0, bool, CPlayerSl
 SH_DECL_HOOK2_void(IServerGameClients, ClientCommand, SH_NOATTRIB, 0, CPlayerSlot, const CCommand &);
 
 SamplePlugin g_SamplePlugin;
-
-// Should only be called within the active game loop (i e map should be loaded
-// and active) otherwise that'll be nullptr!
-CGlobalVars *getGameGlobals()
-{
-    INetworkGameServer *server = g_pNetworkServerService->GetIGameServer();
-
-    if (!server)
-        return nullptr;
-
-    return g_pNetworkServerService->GetIGameServer()->GetGlobals();
-}
 
 #if 0
 // Currently unavailable, requires hl2sdk work!
@@ -206,6 +195,7 @@ void SamplePlugin::Hook_GameFrame(bool simulating, bool bFirstTick, bool bLastTi
      * true  | game is ticking
      * false | game is not ticking
      */
+    globals::timerSystem.OnGameFrame(bLastTick);
 }
 
 // Potentially might not work
@@ -235,7 +225,7 @@ void SamplePlugin::OnLevelShutdown()
             on_map_end_callback->Execute();
         }
 
-        // globals::timer_system.RemoveMapChangeTimers();
+        globals::timerSystem.RemoveMapChangeTimers();
 
         CSSHARP_CORE_TRACE("name={0}", "LevelShutdown");
         NewLevelStarted = false;

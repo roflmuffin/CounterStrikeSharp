@@ -81,6 +81,11 @@ extern HookManager hookManager;
 extern SourceHook::ISourceHook *source_hook;
 extern int source_hook_pluginid;
 extern IGameEventSystem *gameEventSystem;
+
+// Should only be called within the active game loop (i e map should be loaded
+// and active) otherwise that'll be nullptr!
+CGlobalVars *getGlobalVars();
+
 } // namespace globals
 
 } // namespace counterstrikesharp

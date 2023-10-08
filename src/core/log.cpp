@@ -10,11 +10,14 @@ std::shared_ptr<spdlog::logger> Log::m_core_logger;
 void Log::Init()
 {
     std::vector<spdlog::sink_ptr> logSinks;
-    logSinks.emplace_back(std::make_shared<spdlog::sinks::ansicolor_stdout_sink_mt>());
+    auto ansiColorSink = std::make_shared<spdlog::sinks::ansicolor_stderr_sink_mt>();
+    ansiColorSink->set_color(spdlog::level::trace, ansiColorSink->yellow);
+    logSinks.emplace_back(ansiColorSink);
     logSinks.emplace_back(std::make_shared<spdlog::sinks::basic_file_sink_mt>("counterstrikesharp.log", true));
 
     logSinks[0]->set_pattern("%^[%T.%e] %n: %v%$");
     logSinks[1]->set_pattern("[%T.%e] [%l] %n: %v");
+
 
     m_core_logger = std::make_shared<spdlog::logger>("CSSharp", begin(logSinks), end(logSinks));
     spdlog::register_logger(m_core_logger);

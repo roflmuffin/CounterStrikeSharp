@@ -3,6 +3,7 @@
 #include "managers/event_manager.h"
 #include "scripting/callback_manager.h"
 #include "scripting/dotnet_host.h"
+#include "timer_system.h"
 
 #include <ISmmPlugin.h>
 #include <sourcehook/sourcehook.h>
@@ -46,7 +47,18 @@ SourceHook::ISourceHook *source_hook = &source_hook_impl;
 // Custom Managers
 CallbackManager callbackManager;
 EventManager eventManager;
+TimerSystem timerSystem;
+
 int source_hook_pluginid = 0;
+CGlobalVars *getGlobalVars()
+{
+    INetworkGameServer *server = networkServerService->GetIGameServer();
+
+    if (!server)
+        return nullptr;
+
+    return networkServerService->GetIGameServer()->GetGlobals();
+}
 
 } // namespace globals
 } // namespace counterstrikesharp

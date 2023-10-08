@@ -32,6 +32,8 @@ SET(SOURCE_FILES
         src/scripting/callback_manager.cpp
         src/core/managers/event_manager.h
         src/core/managers/event_manager.cpp
+        src/core/timer_system.h
+        src/core/timer_system.cpp
 )
 
 

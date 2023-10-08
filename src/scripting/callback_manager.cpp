@@ -73,6 +73,7 @@ CallbackManager::CallbackManager()
 
 ScriptCallback *CallbackManager::CreateCallback(const char *name)
 {
+    CSSHARP_CORE_TRACE("Creating callback {0}", name);
     auto *callback = new ScriptCallback(name);
     m_managed.push_back(callback);
 
