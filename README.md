@@ -16,8 +16,10 @@ As a result, there are a few key philosophies and trade-offs that drive the proj
 - Most dedicated servers are hosted on Linux, and there are no real plans to support Windows.
 - The scripting runtime will only support C#/.NET at this time, but there is no reason it cannot be extended in the future to support other languages by utilising the native bindings created by this plugin (in JS, Rust or Go for example).
 
-## Use
+## Install
 Development builds are currently available through GitHub actions, you can download the latest build from [there](https://github.com/roflmuffin/CounterStrikeSharp/actions).
+
+Detailed installation instructions can be found at [INSTALL.md](INSTALL.md).
 
 ## What works?
 _(Note, these were features in the previous VSP.NET project, but have not been implemented yet in this project)_
@@ -29,6 +31,7 @@ These features are the core of the platform and work pretty well/have a low risk
 - [ ] **(In Progress)** Game Tick Based Timers (e.g. repeating map timers)
 - [ ] **(In Progress)** Listeners (e.g. client connected, disconnected, map start etc.)
 - [ ] **(In Progress)** Server Information (current map, game time, tick rate, model precaching)
+
 
 ## Examples
 
