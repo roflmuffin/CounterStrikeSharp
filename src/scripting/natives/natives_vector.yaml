@@ -1,0 +1,15 @@
+VECTOR_NEW: -> pointer
+ANGLE_NEW: -> pointer
+VECTOR_GET_X: vector:pointer -> float
+VECTOR_GET_Y: vector:pointer -> float
+VECTOR_GET_Z: vector:pointer -> float
+VECTOR_SET_X: vector:pointer, value:float -> void
+VECTOR_SET_Y: vector:pointer, value:float -> void
+VECTOR_SET_Z: vector:pointer, value:float -> void
+VECTOR_ANGLES: vector:pointer, pseudoUp:pointer, outAngle:pointer -> void
+ANGLE_VECTORS: vector:pointer, forwardOut:pointer, rightOut:pointer, upOut:pointer -> void
+VECTOR_LENGTH: vector:pointer -> float
+VECTOR_LENGTH_2D: vector:pointer -> float
+VECTOR_LENGTH_SQR: vector:pointer -> float
+VECTOR_LENGTH_2d_SQR: vector:pointer -> float
+VECTOR_IS_ZERO: vector:pointer -> bool
