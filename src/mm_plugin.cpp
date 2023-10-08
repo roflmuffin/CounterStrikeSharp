@@ -92,22 +92,6 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI *ismm, char *error, s
         return false;
     }
 
-    SH_ADD_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this, &CounterStrikeSharpMMPlugin::Hook_GameFrame, true);
-    SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientActive, globals::serverGameClients, this,
-                        &CounterStrikeSharpMMPlugin::Hook_ClientActive, true);
-    SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientDisconnect, globals::serverGameClients, this,
-                        &CounterStrikeSharpMMPlugin::Hook_ClientDisconnect, true);
-    SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientPutInServer, globals::serverGameClients, this,
-                        &CounterStrikeSharpMMPlugin::Hook_ClientPutInServer, true);
-    SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientSettingsChanged, globals::serverGameClients, this,
-                        &CounterStrikeSharpMMPlugin::Hook_ClientSettingsChanged, false);
-    SH_ADD_HOOK_MEMFUNC(IServerGameClients, OnClientConnected, globals::serverGameClients, this,
-                        &CounterStrikeSharpMMPlugin::Hook_OnClientConnected, false);
-    SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientConnect, globals::serverGameClients, this,
-                        &CounterStrikeSharpMMPlugin::Hook_ClientConnect, false);
-    SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientCommand, globals::serverGameClients, this,
-                        &CounterStrikeSharpMMPlugin::Hook_ClientCommand, false);
-
     CSSHARP_CORE_INFO("Hooks added.");
 
     // Used by Metamod Console Commands
@@ -119,21 +103,6 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI *ismm, char *error, s
 
 bool CounterStrikeSharpMMPlugin::Unload(char *error, size_t maxlen)
 {
-    SH_REMOVE_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this, &CounterStrikeSharpMMPlugin::Hook_GameFrame, true);
-    SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, ClientActive, globals::serverGameClients, this,
-                           &CounterStrikeSharpMMPlugin::Hook_ClientActive, true);
-    SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, ClientDisconnect, globals::serverGameClients, this,
-                           &CounterStrikeSharpMMPlugin::Hook_ClientDisconnect, true);
-    SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, ClientPutInServer, globals::serverGameClients, this,
-                           &CounterStrikeSharpMMPlugin::Hook_ClientPutInServer, true);
-    SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, ClientSettingsChanged, globals::serverGameClients, this,
-                           &CounterStrikeSharpMMPlugin::Hook_ClientSettingsChanged, false);
-    SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, OnClientConnected, globals::serverGameClients, this,
-                           &CounterStrikeSharpMMPlugin::Hook_OnClientConnected, false);
-    SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, ClientConnect, globals::serverGameClients, this,
-                           &CounterStrikeSharpMMPlugin::Hook_ClientConnect, false);
-    SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, ClientCommand, globals::serverGameClients, this,
-                           &CounterStrikeSharpMMPlugin::Hook_ClientCommand, false);
     return true;
 }
 
@@ -159,15 +128,16 @@ void CounterStrikeSharpMMPlugin::Hook_ClientSettingsChanged(CPlayerSlot slot)
     CSSHARP_CORE_INFO("Hook_ClientSettingsChanged({0})\n", slot.Get());
 }
 
-void CounterStrikeSharpMMPlugin::Hook_OnClientConnected(CPlayerSlot slot, const char *pszName, uint64 xuid, const char *pszNetworkID,
-                                          const char *pszAddress, bool bFakePlayer)
+void CounterStrikeSharpMMPlugin::Hook_OnClientConnected(CPlayerSlot slot, const char *pszName, uint64 xuid,
+                                                        const char *pszNetworkID, const char *pszAddress,
+                                                        bool bFakePlayer)
 {
     CSSHARP_CORE_INFO("Hook_OnClientConnected({}, \"{}\", {}, \"{}\", \"{}\", {})\n", slot.Get(), pszName, xuid,
                       pszNetworkID, pszAddress, bFakePlayer);
 }
 
-bool CounterStrikeSharpMMPlugin::Hook_ClientConnect(CPlayerSlot slot, const char *pszName, uint64 xuid, const char *pszNetworkID,
-                                      bool unk1, CBufferString *pRejectReason)
+bool CounterStrikeSharpMMPlugin::Hook_ClientConnect(CPlayerSlot slot, const char *pszName, uint64 xuid,
+                                                    const char *pszNetworkID, bool unk1, CBufferString *pRejectReason)
 {
     CSSHARP_CORE_INFO("Hook_ClientConnect({}, \"{}\", {}, \"{}\", {}, \"{}\")\n", slot.Get(), pszName, xuid,
                       pszNetworkID, unk1, pRejectReason->ToGrowable()->Get());
@@ -181,7 +151,7 @@ void CounterStrikeSharpMMPlugin::Hook_ClientPutInServer(CPlayerSlot slot, char c
 }
 
 void CounterStrikeSharpMMPlugin::Hook_ClientDisconnect(CPlayerSlot slot, int reason, const char *pszName, uint64 xuid,
-                                         const char *pszNetworkID)
+                                                       const char *pszNetworkID)
 {
     CSSHARP_CORE_INFO("Hook_ClientDisconnect({}, {}, \"{}\", {}, \"{}\")\n", slot.Get(), reason, pszName, xuid,
                       pszNetworkID);
@@ -202,7 +172,7 @@ void CounterStrikeSharpMMPlugin::Hook_GameFrame(bool simulating, bool bFirstTick
 static ScriptCallback *on_map_end_callback;
 static bool NewLevelStarted = false;
 void CounterStrikeSharpMMPlugin::OnLevelInit(char const *pMapName, char const *pMapEntities, char const *pOldLevel,
-                               char const *pLandmarkName, bool loadGame, bool background)
+                                             char const *pLandmarkName, bool loadGame, bool background)
 {
     CSSHARP_CORE_TRACE("name={0},mapname={1}", "LevelInit", pMapName);
     NewLevelStarted = true;
