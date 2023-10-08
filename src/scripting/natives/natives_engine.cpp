@@ -30,6 +30,8 @@ namespace counterstrikesharp
 
 const char *GetMapName(ScriptContext &script_context)
 {
+    if (globals::getGlobalVars() == nullptr) return nullptr;
+
     return globals::getGlobalVars()->mapname.ToCStr();
 }
 
