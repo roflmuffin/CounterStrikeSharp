@@ -1,0 +1,2 @@
+CREATE_TIMER: interval:float, callback:callback, flags:int -> pointer
+KILL_TIMER: timer:pointer -> void
