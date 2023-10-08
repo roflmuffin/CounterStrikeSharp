@@ -17,6 +17,7 @@ public class Mapping
             case "double":
                 return "Push(";
             case "func":
+            case "callback":
                 return "Push((InputArgument)";
             case "charPtr":
                 return "PushString(";
@@ -49,6 +50,7 @@ public class Mapping
             case "void":
                 return "void";
             case "func":
+            case "callback":
                 return "InputArgument";
             case "object[]":
                 return "object[]";

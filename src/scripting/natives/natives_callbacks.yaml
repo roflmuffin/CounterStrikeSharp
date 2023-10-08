@@ -1,0 +1,2 @@
+ADD_LISTENER: name:string, callback:callback -> bool
+REMOVE_LISTENER: name:string, callback:callback -> bool
