@@ -40,17 +40,6 @@ extern "C" void InvokeNative(counterstrikesharp::fxNativeContext &context)
 namespace counterstrikesharp
 {
 SH_DECL_HOOK3_void(IServerGameDLL, GameFrame, SH_NOATTRIB, 0, bool, bool, bool);
-SH_DECL_HOOK4_void(IServerGameClients, ClientActive, SH_NOATTRIB, 0, CPlayerSlot, bool, const char *, uint64);
-SH_DECL_HOOK5_void(IServerGameClients, ClientDisconnect, SH_NOATTRIB, 0, CPlayerSlot, int, const char *, uint64,
-                   const char *);
-SH_DECL_HOOK4_void(IServerGameClients, ClientPutInServer, SH_NOATTRIB, 0, CPlayerSlot, char const *, int, uint64);
-SH_DECL_HOOK1_void(IServerGameClients, ClientSettingsChanged, SH_NOATTRIB, 0, CPlayerSlot);
-SH_DECL_HOOK6_void(IServerGameClients, OnClientConnected, SH_NOATTRIB, 0, CPlayerSlot, const char *, uint64,
-                   const char *, const char *, bool);
-SH_DECL_HOOK6(IServerGameClients, ClientConnect, SH_NOATTRIB, 0, bool, CPlayerSlot, const char *, uint64, const char *,
-              bool, CBufferString *);
-
-SH_DECL_HOOK2_void(IServerGameClients, ClientCommand, SH_NOATTRIB, 0, CPlayerSlot, const CCommand &);
 
 CounterStrikeSharpMMPlugin g_SamplePlugin;
 
@@ -92,6 +81,8 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI *ismm, char *error, s
         return false;
     }
 
+    SH_ADD_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this, &CounterStrikeSharpMMPlugin::Hook_GameFrame, true);
+
     CSSHARP_CORE_INFO("Hooks added.");
 
     // Used by Metamod Console Commands
@@ -103,6 +94,8 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI *ismm, char *error, s
 
 bool CounterStrikeSharpMMPlugin::Unload(char *error, size_t maxlen)
 {
+    SH_REMOVE_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this, &CounterStrikeSharpMMPlugin::Hook_GameFrame, true);
+
     return true;
 }
 
@@ -165,7 +158,7 @@ void CounterStrikeSharpMMPlugin::Hook_GameFrame(bool simulating, bool bFirstTick
      * true  | game is ticking
      * false | game is not ticking
      */
-    globals::timerSystem.OnGameFrame(bLastTick);
+    globals::timerSystem.OnGameFrame(simulating);
 }
 
 // Potentially might not work
