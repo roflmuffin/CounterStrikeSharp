@@ -90,12 +90,14 @@ namespace CounterStrikeSharp.API.Core
 
         public readonly List<Timer> Timers = new List<Timer>();
 
-        public void RegisterEventHandler(string name, Action<GameEvent> handler, bool post = false)
+        public void RegisterEventHandler<T>(string name, Action<T> handler, bool post = false) where T : GameEvent, new()
         {
             var wrappedHandler = new Action<IntPtr>((IntPtr pointer) =>
             {
                 Console.WriteLine("Received pointer on C# side: " + String.Format("0x{0:X}", pointer));
-                handler.Invoke(new GameEvent(pointer));
+                var @event = new T();
+                @event.Handle = pointer;
+                handler.Invoke(@event);
             });
 
             var data = new object[] { name, post };

@@ -16,6 +16,8 @@
 
 using System;
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Modules.Events;
 
 namespace TestPlugin
 {
@@ -35,10 +37,10 @@ namespace TestPlugin
                 Console.ResetColor();
             };
             
-            RegisterEventHandler("player_connect", @event =>
+            RegisterEventHandler<PlayerConnect>("player_connect", (@event) =>
             {
                 Console.BackgroundColor = ConsoleColor.Red;
-                Console.WriteLine($"Event found {@event.Handle:X}, player name: {@event.GetString("name")}, bot: ${@event.GetBool("bot")}");
+                Console.WriteLine($"Event found {@event.Handle:X}, player name: {@event.Name}, bot: ${@event.Bot}");
                 Console.ResetColor();
             });
         }

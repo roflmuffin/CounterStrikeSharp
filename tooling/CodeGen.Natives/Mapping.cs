@@ -58,4 +58,45 @@ public class Mapping
 
         return "object";
     }
+
+    public static string GetCSharpTypeFromGameEventType(string type)
+    {
+        switch (type)
+        {
+            case "1":
+            case "short":
+            case "byte":
+            case "player_controller":
+            case "player_pawn":
+            case "player_controller_and_pawn":
+            case "local": // unknown
+                return "int";
+            case "ehandle":
+                return "IntPtr";
+            case "uint64":
+                return "ulong";
+            default:
+                return type;
+        }
+    }
+
+    public static string GetEventGetterFromType(string mappedType)
+    {
+        switch (mappedType)
+        {
+            case "int":
+            case "IntPtr":
+                return "GetInt";
+            case "bool":
+                return "GetBool";
+            case "string":
+                return "GetString";
+            case "float":
+                return "GetFloat";
+            case "ulong":
+                return "GetUint64";
+            default:
+                return "GetInt";
+        }
+    }
 }

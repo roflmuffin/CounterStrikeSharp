@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ namespace CounterStrikeSharp.API.Modules.Events
 
     public class GameEvent
     {
-        public IntPtr Handle { get; private set; }
+        public IntPtr Handle { get; internal set; }
 
         protected GameEvent()
         {
@@ -52,6 +52,8 @@ namespace CounterStrikeSharp.API.Modules.Events
         public float GetFloat(string name) => NativeAPI.GetEventFloat(Handle, name);
         public string GetString(string name) => NativeAPI.GetEventString(Handle, name);
         public int GetInt(string name) => NativeAPI.GetEventInt(Handle, name);
+
+        public ulong GetUint64(string name) => 0;
 
         // public Player GetPlayer(string name) => Player.FromUserId(GetInt(name));
 
