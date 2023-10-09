@@ -29,7 +29,7 @@ These features are the core of the platform and work pretty well/have a low risk
 - [ ] **(In Progress)** Console Variables, Console Commands, Server Commands (e.g. sv_customvar)
 - [x] Game Event Handlers & Custom Events (e.g. player_death)
   - [x] Basic event value get/set (string, bool, int32, float)
-  - [] Complex event values get/set (ehandle, pawn, player controller)
+  - [ ] Complex event values get/set (ehandle, pawn, player controller)
 - [x] Game Tick Based Timers (e.g. repeating map timers)
   - [x] Timer Flags (REPEAT, STOP_ON_MAPCHANGE)
 - [x] **(Partially)** Listeners (e.g. client connected, disconnected, map start etc.)
@@ -38,6 +38,12 @@ These features are the core of the platform and work pretty well/have a low risk
   - [x] OnTick
 - [x] Server Information (current map, game time, tick rate, model precaching)
 
+## Links
+- [Join the Discord](https://discord.gg/X7r3PmuYKq): Ask questions, provide suggestions
+- [Issue tracker](https://github.com/roflmuffin/CounterStrikeSharp/issues): Raise any issues here
+- [Builds](https://github.com/roflmuffin/CounterStrikeSharp/actions): Download latest unstable dev snapshot
+- [Install Docs](INSTALL.md): Installation instructions
+- [Example Plugin](managed/TestPlugin/TestPlugin.cs): Test plugin with basic functionality
 
 ## Examples
 
@@ -46,7 +52,7 @@ You can view the [example Warcraft plugin](https://github.com/roflmuffin/vspdotn
 ## Credits
 
 A lot of code has been borrowed from SourceMod as well as Source.Python, two pioneering source engine plugin frameworks which this project lends a lot of its credit to.
-I've also used the scripting context & native system that is implemented in FiveM for GTA5.
+I've also used the scripting context & native system that is implemented in FiveM for GTA5. Also shoutout to the [CS2Fixes](https://github.com/Source2ZE/CS2Fixes) project for providing good reverse-engineering information so shortly after CS2 release.
 
 ## How to Build
 
