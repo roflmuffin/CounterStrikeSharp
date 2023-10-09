@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Runtime.Loader;
+using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Listeners;
 using CounterStrikeSharp.API.Modules.Timers;
 
@@ -89,7 +90,7 @@ namespace CounterStrikeSharp.API.Core
 
         public readonly List<Timer> Timers = new List<Timer>();
 
-        /*public void RegisterEventHandler(string name, Action<GameEvent> handler, bool post = false)
+        public void RegisterEventHandler(string name, Action<GameEvent> handler, bool post = false)
         {
             var wrappedHandler = new Action<IntPtr>((IntPtr pointer) =>
             {
@@ -97,7 +98,7 @@ namespace CounterStrikeSharp.API.Core
                 handler.Invoke(new GameEvent(pointer));
             });
 
-            var data = new object[] {name, post};
+            var data = new object[] { name, post };
             var subscriber = new CallbackSubscriber(data, handler, wrappedHandler);
             NativeAPI.HookEvent(name, subscriber.GetInputArgument(), post);
             Handlers[handler] = subscriber;
@@ -114,6 +115,8 @@ namespace CounterStrikeSharp.API.Core
                 Handlers.Remove(handler);
             }
         }
+
+        /*
 
         public void AddCommand(string name, string description, CommandInfo.CommandCallback handler)
         {
