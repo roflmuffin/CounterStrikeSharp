@@ -8,3 +8,6 @@
 [submodule "libraries/spdlog"]
 	path = libraries/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "libraries/funchook"]
+	path = libraries/funchook
+	url = https://github.com/kubo/funchook

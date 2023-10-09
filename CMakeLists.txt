@@ -5,6 +5,7 @@ Project(counterstrikesharp C CXX)
 include("makefiles/shared.cmake")
 
 add_subdirectory(libraries/spdlog)
+add_subdirectory(libraries/funchook)
 
 SET(SOURCE_FILES
         src/mm_plugin.cpp
