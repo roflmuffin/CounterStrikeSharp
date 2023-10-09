@@ -55,12 +55,17 @@ namespace CounterStrikeSharp.API.Modules.Events
 
         public ulong GetUint64(string name) => 0;
 
+        public void SetUint64(string name, ulong value)
+        {
+        }
+
         // public Player GetPlayer(string name) => Player.FromUserId(GetInt(name));
 
         public void SetBool(string name, bool value) => NativeAPI.SetEventBool(Handle, name, value);
         public void SetFloat(string name, float value) => NativeAPI.SetEventFloat(Handle, name, value);
         public void SetString(string name, string value) => NativeAPI.SetEventString(Handle, name, value);
         public void SetInt(string name, int value) => NativeAPI.SetEventInt(Handle, name, value);
+        public void SetInt(string name, long value) => SetInt(name, (int)value);
 
         public void FireEvent(bool dontBroadcast) => NativeAPI.FireEvent(Handle, dontBroadcast);
         // public void FireEventToClient(int clientId, bool dontBroadcast) => NativeAPI.FireEventToClient(Handle, clientId);

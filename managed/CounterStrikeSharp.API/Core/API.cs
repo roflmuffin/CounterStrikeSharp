@@ -5,6 +5,30 @@ namespace CounterStrikeSharp.API.Core
 {
     public class NativeAPI {
         
+        public static bool AddListener(string name, InputArgument callback){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(name);
+			ScriptContext.GlobalScriptContext.Push((InputArgument)callback);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x8E7D0305);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (bool)ScriptContext.GlobalScriptContext.GetResult(typeof(bool));
+			}
+		}
+
+        public static bool RemoveListener(string name, InputArgument callback){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(name);
+			ScriptContext.GlobalScriptContext.Push((InputArgument)callback);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x47C507A2);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (bool)ScriptContext.GlobalScriptContext.GetResult(typeof(bool));
+			}
+		}
+
         public static string GetMapName(){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
@@ -253,27 +277,192 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
-        public static bool AddListener(string name, InputArgument callback){
+        public static void HookEvent(string name, InputArgument callback, bool ispost){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
 			ScriptContext.GlobalScriptContext.Push(name);
 			ScriptContext.GlobalScriptContext.Push((InputArgument)callback);
-			ScriptContext.GlobalScriptContext.SetIdentifier(0x8E7D0305);
+			ScriptContext.GlobalScriptContext.Push(ispost);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xE71F04D5);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static void UnhookEvent(string name, InputArgument callback, bool ispost){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(name);
+			ScriptContext.GlobalScriptContext.Push((InputArgument)callback);
+			ScriptContext.GlobalScriptContext.Push(ispost);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x2154AFAE);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static IntPtr CreateEvent(string name, bool force){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(name);
+			ScriptContext.GlobalScriptContext.Push(force);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x7B472432);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			}
+		}
+
+        public static void FireEvent(IntPtr gameevent, bool dontbroadcast){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(gameevent);
+			ScriptContext.GlobalScriptContext.Push(dontbroadcast);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x2D52AEE);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static string GetEventName(IntPtr gameevent){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(gameevent);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xDFF86998);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (string)ScriptContext.GlobalScriptContext.GetResult(typeof(string));
+			}
+		}
+
+        public static bool GetEventBool(IntPtr gameevent, string name){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(gameevent);
+			ScriptContext.GlobalScriptContext.Push(name);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xDFFEE451);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
 			return (bool)ScriptContext.GlobalScriptContext.GetResult(typeof(bool));
 			}
 		}
 
-        public static bool RemoveListener(string name, InputArgument callback){
+        public static int GetEventInt(IntPtr gameevent, string name){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(gameevent);
 			ScriptContext.GlobalScriptContext.Push(name);
-			ScriptContext.GlobalScriptContext.Push((InputArgument)callback);
-			ScriptContext.GlobalScriptContext.SetIdentifier(0x47C507A2);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xB17427CC);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (bool)ScriptContext.GlobalScriptContext.GetResult(typeof(bool));
+			return (int)ScriptContext.GlobalScriptContext.GetResult(typeof(int));
+			}
+		}
+
+        public static float GetEventFloat(IntPtr gameevent, string name){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(gameevent);
+			ScriptContext.GlobalScriptContext.Push(name);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xDF96CB6F);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (float)ScriptContext.GlobalScriptContext.GetResult(typeof(float));
+			}
+		}
+
+        public static string GetEventString(IntPtr gameevent, string name){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(gameevent);
+			ScriptContext.GlobalScriptContext.Push(name);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xB4EBC50A);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (string)ScriptContext.GlobalScriptContext.GetResult(typeof(string));
+			}
+		}
+
+        public static void SetEventBool(IntPtr gameevent, string name, bool value){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(gameevent);
+			ScriptContext.GlobalScriptContext.Push(name);
+			ScriptContext.GlobalScriptContext.Push(value);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x31859DC5);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static void SetEventFloat(IntPtr gameevent, string name, float value){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(gameevent);
+			ScriptContext.GlobalScriptContext.Push(name);
+			ScriptContext.GlobalScriptContext.Push(value);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x627CF47B);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static void SetEventString(IntPtr gameevent, string name, string value){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(gameevent);
+			ScriptContext.GlobalScriptContext.Push(name);
+			ScriptContext.GlobalScriptContext.Push(value);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xCB7E7B9E);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static void SetEventInt(IntPtr gameevent, string name, int value){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(gameevent);
+			ScriptContext.GlobalScriptContext.Push(name);
+			ScriptContext.GlobalScriptContext.Push(value);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x4F1363D8);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static int LoadEventsFromFile(string path, bool searchall){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(path);
+			ScriptContext.GlobalScriptContext.Push(searchall);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xED480293);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (int)ScriptContext.GlobalScriptContext.GetResult(typeof(int));
+			}
+		}
+
+        public static IntPtr CreateTimer(float interval, InputArgument callback, int flags){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(interval);
+			ScriptContext.GlobalScriptContext.Push((InputArgument)callback);
+			ScriptContext.GlobalScriptContext.Push(flags);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x7A5BAE39);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			}
+		}
+
+        public static void KillTimer(IntPtr timer){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(timer);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x32313EDF);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
 			}
 		}
 
@@ -440,195 +629,6 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
 			return (bool)ScriptContext.GlobalScriptContext.GetResult(typeof(bool));
-			}
-		}
-
-        public static IntPtr CreateTimer(float interval, InputArgument callback, int flags){
-			lock (ScriptContext.GlobalScriptContext.Lock) {
-			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.Push(interval);
-			ScriptContext.GlobalScriptContext.Push((InputArgument)callback);
-			ScriptContext.GlobalScriptContext.Push(flags);
-			ScriptContext.GlobalScriptContext.SetIdentifier(0x7A5BAE39);
-			ScriptContext.GlobalScriptContext.Invoke();
-			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
-			}
-		}
-
-        public static void KillTimer(IntPtr timer){
-			lock (ScriptContext.GlobalScriptContext.Lock) {
-			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.Push(timer);
-			ScriptContext.GlobalScriptContext.SetIdentifier(0x32313EDF);
-			ScriptContext.GlobalScriptContext.Invoke();
-			ScriptContext.GlobalScriptContext.CheckErrors();
-			}
-		}
-
-        public static void HookEvent(string name, InputArgument callback, bool ispost){
-			lock (ScriptContext.GlobalScriptContext.Lock) {
-			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.Push(name);
-			ScriptContext.GlobalScriptContext.Push((InputArgument)callback);
-			ScriptContext.GlobalScriptContext.Push(ispost);
-			ScriptContext.GlobalScriptContext.SetIdentifier(0xE71F04D5);
-			ScriptContext.GlobalScriptContext.Invoke();
-			ScriptContext.GlobalScriptContext.CheckErrors();
-			}
-		}
-
-        public static void UnhookEvent(string name, InputArgument callback, bool ispost){
-			lock (ScriptContext.GlobalScriptContext.Lock) {
-			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.Push(name);
-			ScriptContext.GlobalScriptContext.Push((InputArgument)callback);
-			ScriptContext.GlobalScriptContext.Push(ispost);
-			ScriptContext.GlobalScriptContext.SetIdentifier(0x2154AFAE);
-			ScriptContext.GlobalScriptContext.Invoke();
-			ScriptContext.GlobalScriptContext.CheckErrors();
-			}
-		}
-
-        public static IntPtr CreateEvent(string name, bool force){
-			lock (ScriptContext.GlobalScriptContext.Lock) {
-			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.Push(name);
-			ScriptContext.GlobalScriptContext.Push(force);
-			ScriptContext.GlobalScriptContext.SetIdentifier(0x7B472432);
-			ScriptContext.GlobalScriptContext.Invoke();
-			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
-			}
-		}
-
-        public static void FireEvent(IntPtr gameevent, bool dontbroadcast){
-			lock (ScriptContext.GlobalScriptContext.Lock) {
-			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.Push(gameevent);
-			ScriptContext.GlobalScriptContext.Push(dontbroadcast);
-			ScriptContext.GlobalScriptContext.SetIdentifier(0x2D52AEE);
-			ScriptContext.GlobalScriptContext.Invoke();
-			ScriptContext.GlobalScriptContext.CheckErrors();
-			}
-		}
-
-        public static string GetEventName(IntPtr gameevent){
-			lock (ScriptContext.GlobalScriptContext.Lock) {
-			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.Push(gameevent);
-			ScriptContext.GlobalScriptContext.SetIdentifier(0xDFF86998);
-			ScriptContext.GlobalScriptContext.Invoke();
-			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (string)ScriptContext.GlobalScriptContext.GetResult(typeof(string));
-			}
-		}
-
-        public static bool GetEventBool(IntPtr gameevent, string name){
-			lock (ScriptContext.GlobalScriptContext.Lock) {
-			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.Push(gameevent);
-			ScriptContext.GlobalScriptContext.Push(name);
-			ScriptContext.GlobalScriptContext.SetIdentifier(0xDFFEE451);
-			ScriptContext.GlobalScriptContext.Invoke();
-			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (bool)ScriptContext.GlobalScriptContext.GetResult(typeof(bool));
-			}
-		}
-
-        public static int GetEventInt(IntPtr gameevent, string name){
-			lock (ScriptContext.GlobalScriptContext.Lock) {
-			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.Push(gameevent);
-			ScriptContext.GlobalScriptContext.Push(name);
-			ScriptContext.GlobalScriptContext.SetIdentifier(0xB17427CC);
-			ScriptContext.GlobalScriptContext.Invoke();
-			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (int)ScriptContext.GlobalScriptContext.GetResult(typeof(int));
-			}
-		}
-
-        public static float GetEventFloat(IntPtr gameevent, string name){
-			lock (ScriptContext.GlobalScriptContext.Lock) {
-			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.Push(gameevent);
-			ScriptContext.GlobalScriptContext.Push(name);
-			ScriptContext.GlobalScriptContext.SetIdentifier(0xDF96CB6F);
-			ScriptContext.GlobalScriptContext.Invoke();
-			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (float)ScriptContext.GlobalScriptContext.GetResult(typeof(float));
-			}
-		}
-
-        public static string GetEventString(IntPtr gameevent, string name){
-			lock (ScriptContext.GlobalScriptContext.Lock) {
-			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.Push(gameevent);
-			ScriptContext.GlobalScriptContext.Push(name);
-			ScriptContext.GlobalScriptContext.SetIdentifier(0xB4EBC50A);
-			ScriptContext.GlobalScriptContext.Invoke();
-			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (string)ScriptContext.GlobalScriptContext.GetResult(typeof(string));
-			}
-		}
-
-        public static void SetEventBool(IntPtr gameevent, string name, bool value){
-			lock (ScriptContext.GlobalScriptContext.Lock) {
-			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.Push(gameevent);
-			ScriptContext.GlobalScriptContext.Push(name);
-			ScriptContext.GlobalScriptContext.Push(value);
-			ScriptContext.GlobalScriptContext.SetIdentifier(0x31859DC5);
-			ScriptContext.GlobalScriptContext.Invoke();
-			ScriptContext.GlobalScriptContext.CheckErrors();
-			}
-		}
-
-        public static void SetEventFloat(IntPtr gameevent, string name, float value){
-			lock (ScriptContext.GlobalScriptContext.Lock) {
-			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.Push(gameevent);
-			ScriptContext.GlobalScriptContext.Push(name);
-			ScriptContext.GlobalScriptContext.Push(value);
-			ScriptContext.GlobalScriptContext.SetIdentifier(0x627CF47B);
-			ScriptContext.GlobalScriptContext.Invoke();
-			ScriptContext.GlobalScriptContext.CheckErrors();
-			}
-		}
-
-        public static void SetEventString(IntPtr gameevent, string name, string value){
-			lock (ScriptContext.GlobalScriptContext.Lock) {
-			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.Push(gameevent);
-			ScriptContext.GlobalScriptContext.Push(name);
-			ScriptContext.GlobalScriptContext.Push(value);
-			ScriptContext.GlobalScriptContext.SetIdentifier(0xCB7E7B9E);
-			ScriptContext.GlobalScriptContext.Invoke();
-			ScriptContext.GlobalScriptContext.CheckErrors();
-			}
-		}
-
-        public static void SetEventInt(IntPtr gameevent, string name, int value){
-			lock (ScriptContext.GlobalScriptContext.Lock) {
-			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.Push(gameevent);
-			ScriptContext.GlobalScriptContext.Push(name);
-			ScriptContext.GlobalScriptContext.Push(value);
-			ScriptContext.GlobalScriptContext.SetIdentifier(0x4F1363D8);
-			ScriptContext.GlobalScriptContext.Invoke();
-			ScriptContext.GlobalScriptContext.CheckErrors();
-			}
-		}
-
-        public static int LoadEventsFromFile(string path, bool searchall){
-			lock (ScriptContext.GlobalScriptContext.Lock) {
-			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.Push(path);
-			ScriptContext.GlobalScriptContext.Push(searchall);
-			ScriptContext.GlobalScriptContext.SetIdentifier(0xED480293);
-			ScriptContext.GlobalScriptContext.Invoke();
-			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (int)ScriptContext.GlobalScriptContext.GetResult(typeof(int));
 			}
 		}
     }

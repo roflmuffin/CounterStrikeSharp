@@ -21,7 +21,7 @@ public partial class Generators
         public string Type { get; set; }
         public string MappedType => Mapping.GetCSharpTypeFromGameEventType(Type);
         public string Comment { get; set; }
-        public string MappedGetter => Mapping.GetEventGetterFromType(MappedType);
+        public string AccessorPostfix => Mapping.GetEventAccessorPostfixFromType(MappedType);
     }
 
     private static List<GameEvent> GetGameEvents()
@@ -29,7 +29,6 @@ public partial class Generators
         // temporary, not committing resource files directly to git for now
         var pathToSearch = @"/home/michael/Steam/cs2-ds/game/csgo/events/resource";
         if (!Directory.Exists(pathToSearch)) Environment.Exit(0);
-        
         var allGameEvents = new Dictionary<string, GameEvent>();
 
         foreach (string file in Directory.EnumerateFiles(pathToSearch, "*.gameevents", SearchOption.AllDirectories).OrderBy(x => x))
@@ -49,7 +48,7 @@ public partial class Generators
 
                 foreach (var kvp in eventProperties.Children())
                 {
-                    if (kvp is VValue || kvp is VProperty)
+                    if (kvp is VValue or VProperty)
                     {
                         if (kvp is VValue asComment)
                         {
@@ -60,10 +59,11 @@ public partial class Generators
                         }
                         else if (kvp is VProperty asKvp)
                         {
-                            var gameEventKey = new GameEventKey();
-
-                            gameEventKey.Name = asKvp.Key;
-                            gameEventKey.Type = asKvp.Value.ToString().Trim();
+                            var gameEventKey = new GameEventKey
+                            {
+                                Name = asKvp.Key,
+                                Type = asKvp.Value.ToString().Trim()
+                            };
 
                             gameEvent.Keys.Add(gameEventKey);
                         }
@@ -89,14 +89,25 @@ public partial class Generators
                 var propertyName = key.NamePascalCase == gameEvent.NamePascalCase
                     ? $"{key.NamePascalCase}Param"
                     : key.NamePascalCase;
+
+                var postFix = key.AccessorPostfix;
                 
                 return $@"
+                
                 {(!string.IsNullOrEmpty(key.Comment) ? "// " + key.Comment : "")}
-                public {key.MappedType} {propertyName} => {key.MappedGetter}(""{key.Name}"");";
+                public {key.MappedType} {propertyName} 
+                {{
+                    get => Get{postFix}(""{key.Name}"");
+                    set => Set{postFix}(""{key.Name}"", value);
+                }}";
             });
             return $@"
             public class {gameEvent.NamePascalCase} : GameEvent
-            {{{string.Join("\n", propertyDefinition)}
+            {{
+                public {gameEvent.NamePascalCase}() : base(){{}}
+                public {gameEvent.NamePascalCase}(bool force) : base(""{gameEvent.Name}"", force){{}}
+
+                {string.Join("\n", propertyDefinition)}
             }}";
         }));
         
