@@ -37,7 +37,10 @@ jobs:
         run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
 
       - name: Clean build directory
-        run: mkdir --parents build/output/; mv build/addons build/output
+        run: |
+          ls -al
+          mkdir build/output/
+          mv build/addons build/output
 
       - name: Add API to Artifacts
         run: |
