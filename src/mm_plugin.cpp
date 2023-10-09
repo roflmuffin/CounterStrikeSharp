@@ -90,6 +90,11 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI *ismm, char *error, s
     SH_ADD_HOOK_MEMFUNC(INetworkServerService, StartupServer, globals::networkServerService, this,
                         &CounterStrikeSharpMMPlugin::Hook_StartupServer, true);
 
+    if (!globals::dotnetManager.Initialize())
+    {
+        CSSHARP_CORE_ERROR("Failed to initialize .NET runtime");
+    }
+
     CSSHARP_CORE_INFO("Hooks added.");
 
     // Used by Metamod Console Commands
@@ -102,10 +107,6 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI *ismm, char *error, s
 void CounterStrikeSharpMMPlugin::Hook_StartupServer(const GameSessionConfiguration_t &config, ISource2WorldSession *,
                                                     const char *)
 {
-    if (!globals::dotnetManager.Initialize())
-    {
-        CSSHARP_CORE_ERROR("Failed to initialize .NET runtime");
-    }
 }
 
 bool CounterStrikeSharpMMPlugin::Unload(char *error, size_t maxlen)
