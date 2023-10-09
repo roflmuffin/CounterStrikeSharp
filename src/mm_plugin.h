@@ -19,6 +19,7 @@
 
 #include <ISmmPlugin.h>
 #include <functional>
+#include <iserver.h>
 #include <igameevents.h>
 #include <iplayerinfo.h>
 #include <sh_vector.h>
@@ -40,6 +41,7 @@ class CounterStrikeSharpMMPlugin : public ISmmPlugin, public IMetamodListener
                      bool loadGame, bool background) override;
     void OnLevelShutdown() override;
     void Hook_GameFrame(bool simulating, bool bFirstTick, bool bLastTick);
+    void Hook_StartupServer(const GameSessionConfiguration_t& config, ISource2WorldSession*, const char*);
     void AddTaskForNextFrame(std::function<void()> &&task);
 
   public:

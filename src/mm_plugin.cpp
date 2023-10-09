@@ -37,9 +37,16 @@ extern "C" void InvokeNative(counterstrikesharp::fxNativeContext &context)
     counterstrikesharp::ScriptEngine::InvokeNative(context);
 }
 
+class GameSessionConfiguration_t
+{
+};
+
 namespace counterstrikesharp
 {
+
 SH_DECL_HOOK3_void(IServerGameDLL, GameFrame, SH_NOATTRIB, 0, bool, bool, bool);
+SH_DECL_HOOK3_void(INetworkServerService, StartupServer, SH_NOATTRIB, 0, const GameSessionConfiguration_t &,
+                   ISource2WorldSession *, const char *);
 
 CounterStrikeSharpMMPlugin gPlugin;
 
@@ -78,14 +85,10 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI *ismm, char *error, s
 
     CALL_GLOBAL_LISTENER(OnAllInitialized());
 
-    if (!globals::dotnetManager.Initialize())
-    {
-        CSSHARP_CORE_ERROR("Failed to initialize .NET runtime");
-        return false;
-    }
-
     SH_ADD_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this, &CounterStrikeSharpMMPlugin::Hook_GameFrame,
                         true);
+    SH_ADD_HOOK_MEMFUNC(INetworkServerService, StartupServer, globals::networkServerService, this,
+                        &CounterStrikeSharpMMPlugin::Hook_StartupServer, true);
 
     CSSHARP_CORE_INFO("Hooks added.");
 
@@ -96,10 +99,21 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI *ismm, char *error, s
     return true;
 }
 
+void CounterStrikeSharpMMPlugin::Hook_StartupServer(const GameSessionConfiguration_t &config, ISource2WorldSession *,
+                                                    const char *)
+{
+    if (!globals::dotnetManager.Initialize())
+    {
+        CSSHARP_CORE_ERROR("Failed to initialize .NET runtime");
+    }
+}
+
 bool CounterStrikeSharpMMPlugin::Unload(char *error, size_t maxlen)
 {
     SH_REMOVE_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this,
                            &CounterStrikeSharpMMPlugin::Hook_GameFrame, true);
+    SH_REMOVE_HOOK_MEMFUNC(INetworkServerService, StartupServer, globals::networkServerService, this,
+                           &CounterStrikeSharpMMPlugin::Hook_StartupServer, true);
 
     return true;
 }
