@@ -33,8 +33,8 @@
 
 class CUtlString;
 
-#include <public/igameevents.h>
 #include <igameeventsystem.h>
+#include <public/igameevents.h>
 
 #include <map>
 #include <string>
@@ -42,7 +42,6 @@ class CUtlString;
 #include "core/global_listener.h"
 #include "core/globals.h"
 #include "scripting/script_engine.h"
-
 
 namespace counterstrikesharp
 {
