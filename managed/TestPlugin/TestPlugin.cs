@@ -28,7 +28,19 @@ namespace TestPlugin
         {
             Console.WriteLine($"Test Plugin has been loaded, and the hot reload flag was {hotReload}");
 
-            OnClientConnect += args => { Console.WriteLine($"Client {args.Name} from {args.Address} has connected!"); };
+            OnClientConnect += args =>
+            {
+                Console.BackgroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine($"Client {args.Name} from {args.Address} has connected!");
+                Console.ResetColor();
+            };
+            
+            RegisterEventHandler("player_connect", @event =>
+            {
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Event found {@event.Handle:X}, player name: {@event.GetString("name")}, bot: ${@event.GetBool("bot")}");
+                Console.ResetColor();
+            });
         }
     }
 }
