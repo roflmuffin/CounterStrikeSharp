@@ -10,6 +10,8 @@
 #include <sourcehook/sourcehook.h>
 #include <sourcehook/sourcehook_impl.h>
 
+#include "log.h"
+#include "utils/virtual.h"
 #include <public/game/server/iplayerinfo.h>
 
 namespace counterstrikesharp
@@ -51,6 +53,13 @@ CallbackManager callbackManager;
 EventManager eventManager;
 PlayerManager playerManager;
 TimerSystem timerSystem;
+
+void Initialize()
+{
+    gameEventManager = (IGameEventManager2 *)(CALL_VIRTUAL(uintptr_t, 91, server) - 8);
+
+    CSSHARP_CORE_TRACE("[GLOBALS] globals::gameEventManager: {0}", (void *)gameEventManager);
+}
 
 int source_hook_pluginid = 0;
 CGlobalVars *getGlobalVars()

@@ -11,6 +11,7 @@ SET(SOURCE_FILES
         src/mm_plugin.cpp
         src/mm_plugin.h
         libraries/hl2sdk-cs2/tier1/convar.cpp
+        libraries/hl2sdk-cs2/tier1/generichash.cpp
         libraries/hl2sdk-cs2/public/tier0/memoverride.cpp
         libraries/dotnet/hostfxr.h
         libraries/dotnet/coreclr_delegates.h
@@ -44,6 +45,8 @@ SET(SOURCE_FILES
         src/core/managers/player_manager.cpp
         src/scripting/natives/natives_vector.cpp
         src/scripting/natives/natives_timers.cpp
+        src/utils/virtual.h
+        src/scripting/natives/natives_events.cpp
 )
 
 

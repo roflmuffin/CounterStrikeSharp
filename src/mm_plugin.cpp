@@ -71,6 +71,8 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI *ismm, char *error, s
                     NETWORKSERVERSERVICE_INTERFACE_VERSION);
     GET_V_IFACE_ANY(GetEngineFactory, globals::gameEventSystem, IGameEventSystem, GAMEEVENTSYSTEM_INTERFACE_VERSION);
 
+    globals::Initialize();
+
     CSSHARP_CORE_INFO("Globals loaded.");
     globals::mmPlugin = &gPlugin;
 

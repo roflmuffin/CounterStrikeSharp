@@ -53,14 +53,20 @@ void EventManager::OnStartup()
 
 void EventManager::OnAllInitialized()
 {
-    CSSHARP_CORE_TRACE("EventManager::OnAllInitialized");
+    SH_ADD_HOOK(IGameEventManager2, FireEvent, globals::gameEventManager, SH_MEMBER(this, &EventManager::OnFireEvent),
+                false);
+    SH_ADD_HOOK(IGameEventManager2, FireEvent, globals::gameEventManager,
+                SH_MEMBER(this, &EventManager::OnFireEvent_Post), true);
 }
 
 void EventManager::OnShutdown()
 {
-    // globals::gameEventManager->RemoveListener(this);
+    SH_REMOVE_HOOK(IGameEventManager2, FireEvent, globals::gameEventManager,
+                   SH_MEMBER(this, &EventManager::OnFireEvent), false);
+    SH_REMOVE_HOOK(IGameEventManager2, FireEvent, globals::gameEventManager,
+                   SH_MEMBER(this, &EventManager::OnFireEvent_Post), true);
 
-    CSSHARP_CORE_TRACE("EventManager::OnShutdown");
+    globals::gameEventManager->RemoveListener(this);
 }
 
 void EventManager::FireGameEvent(IGameEvent *event)
@@ -71,14 +77,14 @@ bool EventManager::HookEvent(const char *name, CallbackT callback, bool post)
 {
     EventHook *p_hook;
 
-    //    if (!globals::gameEventManager->FindListener(this, name))
-    //    {
-    //        if (!globals::gameEventManager->AddListener(this, name, true))
-    //        {
-    //            // Event doesn't exist.
-    //            return false;
-    //        }
-    //    }
+    if (!globals::gameEventManager->FindListener(this, name))
+    {
+        if (!globals::gameEventManager->AddListener(this, name, true))
+        {
+            // Event doesn't exist.
+            return false;
+        }
+    }
 
     CSSHARP_CORE_INFO("Hooking event: {0} with callback pointer: {1}", name, (void *)callback);
 
@@ -207,13 +213,10 @@ bool EventManager::OnFireEvent(IGameEvent *pEvent, bool bDontBroadcast)
     }
 
     RETURN_META_VALUE(MRES_IGNORED, true);
-
-    return true;
 }
 
 bool EventManager::OnFireEvent_Post(IGameEvent *pEvent, bool bDontBroadcast)
 {
-    return true;
-    /*RETURN_META_VALUE(MRES_IGNORED, true);*/
+    RETURN_META_VALUE(MRES_IGNORED, true);
 }
 } // namespace counterstrikesharp

@@ -45,7 +45,7 @@ namespace globals
 {
 
 extern IVEngineServer *engine;
-// extern IGameEventManager2 *gameEventManager; // Disabled until we can figure out how to hook it.
+extern IGameEventManager2 *gameEventManager;
 extern IPlayerInfoManager *playerinfoManager;
 extern IBotManager *botManager;
 extern IServerPluginHelpers *helpers;
@@ -84,6 +84,7 @@ extern int source_hook_pluginid;
 extern IGameEventSystem *gameEventSystem;
 extern CounterStrikeSharpMMPlugin *mmPlugin;
 
+void Initialize();
 // Should only be called within the active game loop (i e map should be loaded
 // and active) otherwise that'll be nullptr!
 CGlobalVars *getGlobalVars();

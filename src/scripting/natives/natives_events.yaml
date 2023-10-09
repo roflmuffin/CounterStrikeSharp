@@ -1,0 +1,15 @@
+HOOK_EVENT: name:string, callback:func, isPost:bool -> void
+UNHOOK_EVENT: name:string, callback:func, isPost:bool -> void
+CREATE_EVENT: name:string, force:bool -> pointer
+FIRE_EVENT: gameEvent:pointer, dontBroadcast:bool -> void
+# FIRE_EVENT_TO_CLIENT: gameEvent:pointer, clientIndex:int -> void
+GET_EVENT_NAME: gameEvent:pointer -> string
+GET_EVENT_BOOL: gameEvent:pointer, name:string -> bool
+GET_EVENT_INT: gameEvent:pointer, name:string -> int
+GET_EVENT_FLOAT: gameEvent:pointer, name:string -> float
+GET_EVENT_STRING: gameEvent:pointer, name:string -> string
+SET_EVENT_BOOL: gameEvent:pointer, name:string, value:bool -> void
+SET_EVENT_FLOAT: gameEvent:pointer, name:string, value:float -> void
+SET_EVENT_STRING: gameEvent:pointer, name:string, value:string -> void
+SET_EVENT_INT: gameEvent:pointer, name:string, value:int -> void
+LOAD_EVENTS_FROM_FILE: path:string, searchAll:bool -> int
