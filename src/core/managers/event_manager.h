@@ -64,7 +64,7 @@ struct EventHook
 namespace counterstrikesharp
 {
 
-class EventManager : public GlobalClass, public IGameEventListener2
+class EventManager : public IGameEventListener2, public GlobalClass
 {
   public:
     EventManager();

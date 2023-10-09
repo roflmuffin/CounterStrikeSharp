@@ -17,6 +17,7 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using CounterStrikeSharp.API.Modules.Events;
 using McMaster.NETCore.Plugins;
 
 namespace CounterStrikeSharp.API.Core
@@ -83,8 +84,8 @@ namespace CounterStrikeSharp.API.Core
             foreach (var kv in _plugin.Handlers)
             {
                 var data = kv.Value.GetValue() as object[];
-                // _plugin.DeregisterEventHandler(data[0].ToString(), (Action<GameEvent>)kv.Key,
-                //     Convert.ToBoolean(data[1]));
+                _plugin.DeregisterEventHandler(data[0].ToString(), (Action<GameEvent>)kv.Key,
+                    Convert.ToBoolean(data[1]));
             }
 
             foreach (var kv in _plugin.CommandHandlers)

@@ -79,11 +79,7 @@ bool EventManager::HookEvent(const char *name, CallbackT callback, bool post)
 
     if (!globals::gameEventManager->FindListener(this, name))
     {
-        if (!globals::gameEventManager->AddListener(this, name, true))
-        {
-            // Event doesn't exist.
-            return false;
-        }
+        globals::gameEventManager->AddListener(this, name, true);
     }
 
     CSSHARP_CORE_INFO("Hooking event: {0} with callback pointer: {1}", name, (void *)callback);
