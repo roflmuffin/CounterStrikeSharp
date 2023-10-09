@@ -37,10 +37,17 @@ namespace TestPlugin
                 Console.ResetColor();
             };
             
-            RegisterEventHandler<PlayerConnect>("player_connect", (@event) =>
+            RegisterEventHandler<PlayerSpawn>("player_spawn", (@event) =>
             {
                 Console.BackgroundColor = ConsoleColor.Red;
-                Console.WriteLine($"Event found {@event.Handle:X}, player name: {@event.Name}, bot: ${@event.Bot}");
+                Console.WriteLine($"Event found {@event.Handle:X}, player name: {@event.Name}, userid: {@event.Userid}");
+                Console.ResetColor();
+            });
+            
+            RegisterEventHandler<PlayerJump>("player_jump", (@event) =>
+            {
+                Console.BackgroundColor = ConsoleColor.Blue;
+                Console.WriteLine($"Event found {@event.Handle:X}, player name: {@event.Name}, userid: {@event.Userid}");
                 Console.ResetColor();
             });
         }

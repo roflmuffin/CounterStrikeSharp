@@ -106,7 +106,7 @@ namespace CounterStrikeSharp.API.Core
             Handlers[handler] = subscriber;
         }
 
-        public void DeregisterEventHandler(string name, Action<GameEvent> handler, bool post)
+        public void DeregisterEventHandler(string name, Delegate handler, bool post)
         {
             if (Handlers.ContainsKey(handler))
             {

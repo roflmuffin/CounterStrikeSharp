@@ -84,7 +84,7 @@ namespace CounterStrikeSharp.API.Core
             foreach (var kv in _plugin.Handlers)
             {
                 var data = kv.Value.GetValue() as object[];
-                _plugin.DeregisterEventHandler(data[0].ToString(), (Action<GameEvent>)kv.Key,
+                _plugin.DeregisterEventHandler(data[0].ToString(), kv.Key,
                     Convert.ToBoolean(data[1]));
             }
 
