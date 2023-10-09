@@ -27,25 +27,17 @@ jobs:
       - uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '7.0.x'
-      - run: |
-          dotnet build -c Release managed/CounterStrikeSharp.API
-          ls -al
-          pwd
+      - run: dotnet build -c Release managed/CounterStrikeSharp.API
 
       - name: Configure CMake
         run: cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
       - name: Build
         # Build your program with the given configuration
-        run: |
-          cmake --build build --config ${{env.BUILD_TYPE}}
-          ls -al
-          pwd
+        run: cmake --build build --config ${{env.BUILD_TYPE}}
 
       - name: Clean build directory
         run: |
-          ls -al
-          pwd
           mkdir build/output/
           mv build/addons build/output
 
