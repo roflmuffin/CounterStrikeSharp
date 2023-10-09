@@ -80,23 +80,23 @@ public class Mapping
         }
     }
 
-    public static string GetEventGetterFromType(string mappedType)
+    public static string GetEventAccessorPostfixFromType(string mappedType)
     {
         switch (mappedType)
         {
             case "int":
             case "IntPtr":
-                return "GetInt";
+                return "Int";
             case "bool":
-                return "GetBool";
+                return "Bool";
             case "string":
-                return "GetString";
+                return "String";
             case "float":
-                return "GetFloat";
+                return "Float";
             case "ulong":
-                return "GetUint64";
+                return "Uint64";
             default:
-                return "GetInt";
+                return "Int";
         }
     }
 }

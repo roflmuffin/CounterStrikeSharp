@@ -40,14 +40,14 @@ namespace TestPlugin
             RegisterEventHandler<PlayerSpawn>("player_spawn", (@event) =>
             {
                 Console.BackgroundColor = ConsoleColor.Red;
-                Console.WriteLine($"Event found {@event.Handle:X}, player name: {@event.EventName}, userid: {@event.Userid}");
+                Console.WriteLine($"Event found {@event.Handle:X}, event name: {@event.EventName}, userid: {@event.Userid}");
                 Console.ResetColor();
             });
             
             RegisterEventHandler<PlayerJump>("player_jump", (@event) =>
             {
                 Console.BackgroundColor = ConsoleColor.Blue;
-                Console.WriteLine($"Event found {@event.Handle:X}, player name: {@event.EventName}, userid: {@event.Userid}");
+                Console.WriteLine($"Event found {@event.Handle:X}, event name: {@event.EventName}, userid: {@event.Userid}");
                 Console.ResetColor();
             });
         }
