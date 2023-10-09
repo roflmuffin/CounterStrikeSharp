@@ -29,9 +29,10 @@ public partial class Generators
         // temporary, not committing resource files directly to git for now
         var pathToSearch = @"/home/michael/Steam/cs2-ds/game/csgo/events/resource";
         if (!Directory.Exists(pathToSearch)) Environment.Exit(0);
+        
         var allGameEvents = new Dictionary<string, GameEvent>();
 
-        foreach (string file in Directory.EnumerateFiles(pathToSearch, "*.gameevents", SearchOption.AllDirectories))
+        foreach (string file in Directory.EnumerateFiles(pathToSearch, "*.gameevents", SearchOption.AllDirectories).OrderBy(x => x))
         {
             var deserialized = VdfConvert.Deserialize(File.ReadAllText(file));
 

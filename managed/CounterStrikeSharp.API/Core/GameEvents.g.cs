@@ -259,15 +259,6 @@ namespace CounterStrikeSharp.API.Core
 
                 
                 public int Userid => GetInt("userid");
-
-                
-                public bool PlayerHeld => GetBool("player_held");
-
-                
-                public bool PlayerThrown => GetBool("player_thrown");
-
-                
-                public bool PlayerDropped => GetBool("player_dropped");
             }
 
             public class BrokenBreakable : GameEvent
@@ -757,7 +748,7 @@ namespace CounterStrikeSharp.API.Core
                 public int Userid => GetInt("userid");
 
                 // Entindex of the entity they see
-                public long Subject => GetInt("subject");
+                public int Subject => GetInt("subject");
 
                 // Classname of the entity they see
                 public string Classname => GetString("classname");
@@ -864,9 +855,6 @@ namespace CounterStrikeSharp.API.Core
             {
                 // map name
                 public string Mapname => GetString("mapname");
-
-                // true if this is a transition from one map to another
-                public bool Transition => GetBool("transition");
             }
 
             public class GamePhaseChanged : GameEvent
@@ -1240,9 +1228,6 @@ namespace CounterStrikeSharp.API.Core
                 // user ID of the player that triggered the hint
                 public int Userid => GetInt("userid");
 
-                // entity id of the env_instructor_hint that fired the event
-                public long HintEntindex => GetInt("hint_entindex");
-
                 // what to name the hint. For referencing it again later (e.g. a kill command for the hint instead of a timeout)
                 public string HintName => GetString("hint_name");
 
@@ -1252,7 +1237,7 @@ namespace CounterStrikeSharp.API.Core
                 // entity id that the hint should display at
                 public long HintTarget => GetInt("hint_target");
 
-                // playerslot of the activator
+                // userid id of the activator
                 public int HintActivatorUserid => GetInt("hint_activator_userid");
 
                 // how long in seconds until the hint automatically times out, 0 = never
@@ -1285,6 +1270,9 @@ namespace CounterStrikeSharp.API.Core
                 // bindings to use when use_binding is the onscreen icon
                 public string HintBinding => GetString("hint_binding");
 
+                // gamepad bindings to use when use_binding is the onscreen icon
+                public string HintGamepadBinding => GetString("hint_gamepad_binding");
+
                 // if false, the hint will dissappear if the target entity is invisible
                 public bool HintAllowNodrawTarget => GetBool("hint_allow_nodraw_target");
 
@@ -1296,36 +1284,12 @@ namespace CounterStrikeSharp.API.Core
 
                 // if true, only the local player will see the hint
                 public bool HintLocalPlayerOnly => GetBool("hint_local_player_only");
-
-                // Game sound to play
-                public string HintStartSound => GetString("hint_start_sound");
-
-                // Path for Panorama layout file
-                public string HintLayoutfile => GetString("hint_layoutfile");
-
-                // Attachment type for the Panorama panel
-                public int HintVrPanelType => GetInt("hint_vr_panel_type");
-
-                // Height offset for attached panels
-                public float HintVrHeightOffset => GetFloat("hint_vr_height_offset");
-
-                // offset for attached panels
-                public float HintVrOffsetX => GetFloat("hint_vr_offset_x");
-
-                // offset for attached panels
-                public float HintVrOffsetY => GetFloat("hint_vr_offset_y");
-
-                // offset for attached panels
-                public float HintVrOffsetZ => GetFloat("hint_vr_offset_z");
             }
 
             public class InstructorServerHintStop : GameEvent
             {
                 // The hint to stop. Will stop ALL hints with this name
                 public string HintName => GetString("hint_name");
-
-                // entity id of the env_instructor_hint that fired the event
-                public long HintEntindex => GetInt("hint_entindex");
             }
 
             public class InstructorStartLesson : GameEvent
@@ -1351,11 +1315,6 @@ namespace CounterStrikeSharp.API.Core
 
             public class InventoryUpdated : GameEvent
             {
-                
-                public int Itemdef => GetInt("itemdef");
-
-                
-                public long Itemid => GetInt("itemid");
             }
 
             public class ItemEquip : GameEvent
@@ -1715,9 +1674,6 @@ namespace CounterStrikeSharp.API.Core
                 // chatting player
                 public int Userid => GetInt("userid");
 
-                // chatting player ID
-                public int Playerid => GetInt("playerid");
-
                 // chat text
                 public string Text => GetString("text");
             }
@@ -1751,11 +1707,68 @@ namespace CounterStrikeSharp.API.Core
 
             public class PlayerDeath : GameEvent
             {
-                // user ID who died
+                // user who died
                 public int Userid => GetInt("userid");
 
-                // user ID who killed
+                // player who killed
                 public int Attacker => GetInt("attacker");
+
+                // player who assisted in the kill
+                public int Assister => GetInt("assister");
+
+                // assister helped with a flash
+                public bool Assistedflash => GetBool("assistedflash");
+
+                // weapon name killer used
+                public string Weapon => GetString("weapon");
+
+                // inventory item id of weapon killer used
+                public string WeaponItemid => GetString("weapon_itemid");
+
+                // faux item id of weapon killer used
+                public string WeaponFauxitemid => GetString("weapon_fauxitemid");
+
+                
+                public string WeaponOriginalownerXuid => GetString("weapon_originalowner_xuid");
+
+                // singals a headshot
+                public bool Headshot => GetBool("headshot");
+
+                // did killer dominate victim with this kill
+                public int Dominated => GetInt("dominated");
+
+                // did killer get revenge on victim with this kill
+                public int Revenge => GetInt("revenge");
+
+                // is the kill resulting in squad wipe
+                public int Wipe => GetInt("wipe");
+
+                // number of objects shot penetrated before killing target
+                public int Penetrated => GetInt("penetrated");
+
+                // if replay data is unavailable, this will be present and set to false
+                public bool Noreplay => GetBool("noreplay");
+
+                // kill happened without a scope, used for death notice icon
+                public bool Noscope => GetBool("noscope");
+
+                // hitscan weapon went through smoke grenade
+                public bool Thrusmoke => GetBool("thrusmoke");
+
+                // attacker was blind from flashbang
+                public bool Attackerblind => GetBool("attackerblind");
+
+                // distance to victim in meters
+                public float Distance => GetFloat("distance");
+
+                // damage done to health
+                public int DmgHealth => GetInt("dmg_health");
+
+                // damage done to armor
+                public int DmgArmor => GetInt("dmg_armor");
+
+                // hitgroup that was damaged
+                public int Hitgroup => GetInt("hitgroup");
             }
 
             public class PlayerDecal : GameEvent
@@ -1823,14 +1836,29 @@ namespace CounterStrikeSharp.API.Core
 
             public class PlayerHurt : GameEvent
             {
-                // player who was hurt
+                // player index who was hurt
                 public int Userid => GetInt("userid");
 
-                // player who attacked
+                // player index who attacked
                 public int Attacker => GetInt("attacker");
 
                 // remaining health points
                 public int Health => GetInt("health");
+
+                // remaining armor points
+                public int Armor => GetInt("armor");
+
+                // weapon name attacker used, if not the world
+                public string Weapon => GetString("weapon");
+
+                // damage done to health
+                public int DmgHealth => GetInt("dmg_health");
+
+                // damage done to armor
+                public int DmgArmor => GetInt("dmg_armor");
+
+                // hitgroup that was damaged
+                public int Hitgroup => GetInt("hitgroup");
             }
 
             public class PlayerInfo : GameEvent
@@ -1964,7 +1992,7 @@ namespace CounterStrikeSharp.API.Core
 
             public class PlayerTeam : GameEvent
             {
-                
+                // player
                 public int Userid => GetInt("userid");
 
                 // team id
@@ -1979,10 +2007,7 @@ namespace CounterStrikeSharp.API.Core
                 
                 public bool Silent => GetBool("silent");
 
-                
-                public string Name => GetString("name");
-
-                
+                // true if player is a bot
                 public bool Isbot => GetBool("isbot");
             }
 
@@ -2041,8 +2066,14 @@ namespace CounterStrikeSharp.API.Core
                 // end round message
                 public string Message => GetString("message");
 
-                
-                public float Time => GetFloat("time");
+                // server-generated legacy value
+                public int Legacy => GetInt("legacy");
+
+                // total number of players alive at the end of round, used for statistics gathering, computed on the server in the event client is in replay when receiving this message
+                public int PlayerCount => GetInt("player_count");
+
+                // if set, don't play round end music, because action is still on-going
+                public int Nomusic => GetInt("nomusic");
             }
 
             public class RoundEndUploadStats : GameEvent
@@ -2304,7 +2335,7 @@ namespace CounterStrikeSharp.API.Core
 
             public class SpecModeUpdated : GameEvent
             {
-                // spectating player
+                // entindex of the player
                 public int Userid => GetInt("userid");
             }
 
@@ -2599,10 +2630,19 @@ namespace CounterStrikeSharp.API.Core
             public class VoteChanged : GameEvent
             {
                 
-                public int Yesvotes => GetInt("yesVotes");
+                public int VoteOption1 => GetInt("vote_option1");
 
                 
-                public int Novotes => GetInt("noVotes");
+                public int VoteOption2 => GetInt("vote_option2");
+
+                
+                public int VoteOption3 => GetInt("vote_option3");
+
+                
+                public int VoteOption4 => GetInt("vote_option4");
+
+                
+                public int VoteOption5 => GetInt("vote_option5");
 
                 
                 public int Potentialvotes => GetInt("potentialVotes");
@@ -2666,16 +2706,10 @@ namespace CounterStrikeSharp.API.Core
                 public string Param1 => GetString("param1");
 
                 
-                public string Votedata => GetString("votedata");
-
-                
                 public int Team => GetInt("team");
 
                 // entity id of the player who initiated the vote
                 public long Initiator => GetInt("initiator");
-
-                // this event is reliable
-                public int Reliable => GetInt("reliable");
             }
 
             public class WeaponFire : GameEvent
