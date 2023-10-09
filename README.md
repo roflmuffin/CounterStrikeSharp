@@ -40,10 +40,10 @@ These features are the core of the platform and work pretty well/have a low risk
 
 ## Links
 - [Join the Discord](https://discord.gg/X7r3PmuYKq): Ask questions, provide suggestions
-- [Issue tracker](https://github.com/alliedmodders/sourcemod/issues): Raise any issues here
+- [Issue tracker](https://github.com/roflmuffin/CounterStrikeSharp/issues): Raise any issues here
 - [Builds](https://github.com/roflmuffin/CounterStrikeSharp/actions): Download latest unstable dev snapshot
-- [Install Docs](INSTALL.MD): Installation instructions
-- [Example Plugin](src/managed/TestPlugin): Test plugin with basic functionality
+- [Install Docs](INSTALL.md): Installation instructions
+- [Example Plugin](managed/TestPlugin/TestPlugin.cs): Test plugin with basic functionality
 
 ## Examples
 
