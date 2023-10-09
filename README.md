@@ -27,9 +27,15 @@ _(Note, these were features in the previous VSP.NET project, but have not been i
 These features are the core of the platform and work pretty well/have a low risk of causing issues.
 
 - [ ] **(In Progress)** Console Variables, Console Commands, Server Commands (e.g. sv_customvar)
-- [ ] **(In Progress)** Game Event Handlers & Custom Events (e.g. player_death)
+- [x] Game Event Handlers & Custom Events (e.g. player_death)
+  - [x] Basic event value get/set (string, bool, int32, float)
+  - [] Complex event values get/set (ehandle, pawn, player controller)
 - [x] Game Tick Based Timers (e.g. repeating map timers)
+  - [x] Timer Flags (REPEAT, STOP_ON_MAPCHANGE)
 - [x] **(Partially)** Listeners (e.g. client connected, disconnected, map start etc.)
+  - [x] Client Listeners (e.g. connect, disconnect, put in server)
+  - [x] OnMapStart
+  - [x] OnTick
 - [x] Server Information (current map, game time, tick rate, model precaching)
 
 
