@@ -41,7 +41,7 @@ These features are the core of the platform and work pretty well/have a low risk
 
 ## Examples
 
-You can view the example Warcraft plugin located in the managed folder under "ClassLibrary2" (until it gets renamed). This plugin shows how you can hook events, create commands & console variables, use third party libraries (SQLite) and do basic entity manipulation.
+You can view the [example Warcraft plugin](https://github.com/roflmuffin/vspdotnet/tree/master/managed/ClassLibrary2) from the previous VSP.NET project to give you an idea of the kind of power this scripting runtime is capable of. This plugin shows how you can hook events, create commands & console variables, use third party libraries (SQLite) and do basic entity manipulation.
 
 ## Credits
 
