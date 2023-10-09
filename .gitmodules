@@ -11,3 +11,6 @@
 [submodule "libraries/funchook"]
 	path = libraries/funchook
 	url = https://github.com/kubo/funchook
+[submodule "libraries/dyncall"]
+	path = libraries/dyncall
+	url = https://github.com/LWJGL-CI/dyncall
