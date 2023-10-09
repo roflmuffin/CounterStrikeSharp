@@ -46,7 +46,7 @@ namespace CounterStrikeSharp.API.Modules.Events
             Handle = pointer;
         }
 
-        public string Name => NativeAPI.GetEventName(Handle);
+        public string EventName => NativeAPI.GetEventName(Handle);
 
         public bool GetBool(string name) => NativeAPI.GetEventBool(Handle, name);
         public float GetFloat(string name) => NativeAPI.GetEventFloat(Handle, name);
