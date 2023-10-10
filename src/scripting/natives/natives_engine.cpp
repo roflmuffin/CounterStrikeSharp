@@ -42,7 +42,7 @@ const char *GetMapName(ScriptContext &script_context)
 
 const char *GetGameDirectory(ScriptContext &script_context)
 {
-    return strdup(utils::GameDirectory().c_str());
+    return strdup(Plat_GetGameDirectory());
 }
 
 bool IsMapValid(ScriptContext &script_context)
