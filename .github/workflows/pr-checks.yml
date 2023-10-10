@@ -12,20 +12,35 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: registry.gitlab.steamos.cloud/steamrt/sniper/sdk:latest
+    permissions:
+      pull-requests: read
 
     steps:
       - uses: actions/checkout@v3
         with:
           submodules: 'recursive'
 
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            csharp:
+              - managed/**/*
+              - src/scripting/natives/**/*
+            cpp:
+              - src/**/*
+
       - uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '7.0.x'
-      - run: dotnet build -c Release managed/CounterStrikeSharp.API
+        if: steps.changes.outputs.csharp == 'true'
+        run: dotnet build -c Release managed/CounterStrikeSharp.API
 
       - name: Configure CMake
+        if: steps.changes.outputs.cpp == 'true'
         run: cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
       - name: Build
         # Build your program with the given configuration
+        if: steps.changes.outputs.cpp == 'true'
         run: cmake --build build --config ${{env.BUILD_TYPE}}
