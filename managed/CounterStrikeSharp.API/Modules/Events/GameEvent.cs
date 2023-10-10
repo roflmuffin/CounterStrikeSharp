@@ -70,22 +70,22 @@ namespace CounterStrikeSharp.API.Modules.Events
             var type = typeof(T);
             switch (type)
             {
-                case var _ when type == typeof(float):
-                    SetFloat(name, (float)(object)value);
+                case var _ when value is float f:
+                    SetFloat(name, f);
                     break;
-                case var _ when type == typeof(int):
-                    SetInt(name, (int)(object)value);
+                case var _ when value is int i:
+                    SetInt(name, i);
                     break;
-                case var _ when type == typeof(IntPtr):
+                case var _ when value is IntPtr:
                     throw new NotImplementedException("IntPtr event arguments are not supported yet.");
-                case var _ when type == typeof(string):
-                    SetString(name, (string)(object)value);
+                case var _ when value is string s:
+                    SetString(name, s);
                     break;
-                case var _ when type == typeof(bool):
-                    SetBool(name, (bool)(object)value);
+                case var _ when value is bool b:
+                    SetBool(name, b);
                     break;
-                case var _ when type == typeof(ulong):
-                    SetUint64(name, (ulong)(object)value);
+                case var _ when value is ulong ul:
+                    SetUint64(name, ul);
                     break;
                 default:
                     throw new NotSupportedException();
