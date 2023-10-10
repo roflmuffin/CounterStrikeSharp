@@ -1,10 +1,12 @@
 
 using System;
 using CounterStrikeSharp.API.Modules.Events;
+using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core
 {
     
+            [EventName("achievement_earned")]
             public class AchievementEarned : GameEvent
             {
                 public AchievementEarned() : base(){}
@@ -28,6 +30,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("achievement_earned_local")]
             public class AchievementEarnedLocal : GameEvent
             {
                 public AchievementEarnedLocal() : base(){}
@@ -51,6 +54,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("achievement_event")]
             public class AchievementEvent : GameEvent
             {
                 public AchievementEvent() : base(){}
@@ -82,6 +86,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("achievement_info_loaded")]
             public class AchievementInfoLoaded : GameEvent
             {
                 public AchievementInfoLoaded() : base(){}
@@ -90,6 +95,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("achievement_write_failed")]
             public class AchievementWriteFailed : GameEvent
             {
                 public AchievementWriteFailed() : base(){}
@@ -98,6 +104,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("add_bullet_hit_marker")]
             public class AddBulletHitMarker : GameEvent
             {
                 public AddBulletHitMarker() : base(){}
@@ -201,6 +208,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("add_player_sonar_icon")]
             public class AddPlayerSonarIcon : GameEvent
             {
                 public AddPlayerSonarIcon() : base(){}
@@ -240,6 +248,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("ammo_pickup")]
             public class AmmoPickup : GameEvent
             {
                 public AmmoPickup() : base(){}
@@ -271,6 +280,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("ammo_refill")]
             public class AmmoRefill : GameEvent
             {
                 public AmmoRefill() : base(){}
@@ -294,6 +304,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("announce_phase_end")]
             public class AnnouncePhaseEnd : GameEvent
             {
                 public AnnouncePhaseEnd() : base(){}
@@ -302,6 +313,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("begin_new_match")]
             public class BeginNewMatch : GameEvent
             {
                 public BeginNewMatch() : base(){}
@@ -310,6 +322,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("bomb_abortdefuse")]
             public class BombAbortdefuse : GameEvent
             {
                 public BombAbortdefuse() : base(){}
@@ -325,6 +338,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("bomb_abortplant")]
             public class BombAbortplant : GameEvent
             {
                 public BombAbortplant() : base(){}
@@ -348,6 +362,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("bomb_beep")]
             public class BombBeep : GameEvent
             {
                 public BombBeep() : base(){}
@@ -363,6 +378,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("bomb_begindefuse")]
             public class BombBegindefuse : GameEvent
             {
                 public BombBegindefuse() : base(){}
@@ -386,6 +402,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("bomb_beginplant")]
             public class BombBeginplant : GameEvent
             {
                 public BombBeginplant() : base(){}
@@ -409,6 +426,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("bomb_defused")]
             public class BombDefused : GameEvent
             {
                 public BombDefused() : base(){}
@@ -432,6 +450,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("bomb_dropped")]
             public class BombDropped : GameEvent
             {
                 public BombDropped() : base(){}
@@ -455,6 +474,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("bomb_exploded")]
             public class BombExploded : GameEvent
             {
                 public BombExploded() : base(){}
@@ -478,6 +498,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("bomb_pickup")]
             public class BombPickup : GameEvent
             {
                 public BombPickup() : base(){}
@@ -493,6 +514,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("bomb_planted")]
             public class BombPlanted : GameEvent
             {
                 public BombPlanted() : base(){}
@@ -516,6 +538,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("bonus_updated")]
             public class BonusUpdated : GameEvent
             {
                 public BonusUpdated() : base(){}
@@ -555,6 +578,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("bot_takeover")]
             public class BotTakeover : GameEvent
             {
                 public BotTakeover() : base(){}
@@ -602,6 +626,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("break_breakable")]
             public class BreakBreakable : GameEvent
             {
                 public BreakBreakable() : base(){}
@@ -633,6 +658,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("break_prop")]
             public class BreakProp : GameEvent
             {
                 public BreakProp() : base(){}
@@ -656,6 +682,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("broken_breakable")]
             public class BrokenBreakable : GameEvent
             {
                 public BrokenBreakable() : base(){}
@@ -687,6 +714,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("bullet_flight_resolution")]
             public class BulletFlightResolution : GameEvent
             {
                 public BulletFlightResolution() : base(){}
@@ -774,6 +802,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("bullet_impact")]
             public class BulletImpact : GameEvent
             {
                 public BulletImpact() : base(){}
@@ -813,6 +842,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("buymenu_close")]
             public class BuymenuClose : GameEvent
             {
                 public BuymenuClose() : base(){}
@@ -828,6 +858,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("buymenu_open")]
             public class BuymenuOpen : GameEvent
             {
                 public BuymenuOpen() : base(){}
@@ -836,6 +867,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("buytime_ended")]
             public class BuytimeEnded : GameEvent
             {
                 public BuytimeEnded() : base(){}
@@ -844,6 +876,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("cart_updated")]
             public class CartUpdated : GameEvent
             {
                 public CartUpdated() : base(){}
@@ -852,6 +885,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("choppers_incoming_warning")]
             public class ChoppersIncomingWarning : GameEvent
             {
                 public ChoppersIncomingWarning() : base(){}
@@ -867,6 +901,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("client_disconnect")]
             public class ClientDisconnect : GameEvent
             {
                 public ClientDisconnect() : base(){}
@@ -875,6 +910,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("client_loadout_changed")]
             public class ClientLoadoutChanged : GameEvent
             {
                 public ClientLoadoutChanged() : base(){}
@@ -883,6 +919,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("clientside_lesson_closed")]
             public class ClientsideLessonClosed : GameEvent
             {
                 public ClientsideLessonClosed() : base(){}
@@ -898,6 +935,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("cs_game_disconnected")]
             public class CsGameDisconnected : GameEvent
             {
                 public CsGameDisconnected() : base(){}
@@ -906,6 +944,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("cs_intermission")]
             public class CsIntermission : GameEvent
             {
                 public CsIntermission() : base(){}
@@ -914,6 +953,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("cs_match_end_restart")]
             public class CsMatchEndRestart : GameEvent
             {
                 public CsMatchEndRestart() : base(){}
@@ -922,6 +962,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("cs_pre_restart")]
             public class CsPreRestart : GameEvent
             {
                 public CsPreRestart() : base(){}
@@ -930,6 +971,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("cs_prev_next_spectator")]
             public class CsPrevNextSpectator : GameEvent
             {
                 public CsPrevNextSpectator() : base(){}
@@ -945,6 +987,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("cs_round_final_beep")]
             public class CsRoundFinalBeep : GameEvent
             {
                 public CsRoundFinalBeep() : base(){}
@@ -953,6 +996,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("cs_round_start_beep")]
             public class CsRoundStartBeep : GameEvent
             {
                 public CsRoundStartBeep() : base(){}
@@ -961,6 +1005,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("cs_win_panel_match")]
             public class CsWinPanelMatch : GameEvent
             {
                 public CsWinPanelMatch() : base(){}
@@ -969,6 +1014,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("cs_win_panel_round")]
             public class CsWinPanelRound : GameEvent
             {
                 public CsWinPanelRound() : base(){}
@@ -1048,6 +1094,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("decoy_detonate")]
             public class DecoyDetonate : GameEvent
             {
                 public DecoyDetonate() : base(){}
@@ -1095,6 +1142,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("decoy_firing")]
             public class DecoyFiring : GameEvent
             {
                 public DecoyFiring() : base(){}
@@ -1142,6 +1190,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("decoy_started")]
             public class DecoyStarted : GameEvent
             {
                 public DecoyStarted() : base(){}
@@ -1189,6 +1238,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("defuser_dropped")]
             public class DefuserDropped : GameEvent
             {
                 public DefuserDropped() : base(){}
@@ -1204,6 +1254,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("defuser_pickup")]
             public class DefuserPickup : GameEvent
             {
                 public DefuserPickup() : base(){}
@@ -1227,6 +1278,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("demo_skip")]
             public class DemoSkip : GameEvent
             {
                 public DemoSkip() : base(){}
@@ -1274,6 +1326,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("demo_start")]
             public class DemoStart : GameEvent
             {
                 public DemoStart() : base(){}
@@ -1313,6 +1366,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("demo_stop")]
             public class DemoStop : GameEvent
             {
                 public DemoStop() : base(){}
@@ -1321,6 +1375,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("difficulty_changed")]
             public class DifficultyChanged : GameEvent
             {
                 public DifficultyChanged() : base(){}
@@ -1352,6 +1407,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("dm_bonus_weapon_start")]
             public class DmBonusWeaponStart : GameEvent
             {
                 public DmBonusWeaponStart() : base(){}
@@ -1375,6 +1431,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("door_break")]
             public class DoorBreak : GameEvent
             {
                 public DoorBreak() : base(){}
@@ -1398,6 +1455,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("door_close")]
             public class DoorClose : GameEvent
             {
                 public DoorClose() : base(){}
@@ -1421,6 +1479,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("door_closed")]
             public class DoorClosed : GameEvent
             {
                 public DoorClosed() : base(){}
@@ -1444,6 +1503,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("door_moving")]
             public class DoorMoving : GameEvent
             {
                 public DoorMoving() : base(){}
@@ -1467,6 +1527,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("door_open")]
             public class DoorOpen : GameEvent
             {
                 public DoorOpen() : base(){}
@@ -1490,6 +1551,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("drone_above_roof")]
             public class DroneAboveRoof : GameEvent
             {
                 public DroneAboveRoof() : base(){}
@@ -1513,6 +1575,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("drone_cargo_detached")]
             public class DroneCargoDetached : GameEvent
             {
                 public DroneCargoDetached() : base(){}
@@ -1544,6 +1607,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("drone_dispatched")]
             public class DroneDispatched : GameEvent
             {
                 public DroneDispatched() : base(){}
@@ -1575,6 +1639,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("dronegun_attack")]
             public class DronegunAttack : GameEvent
             {
                 public DronegunAttack() : base(){}
@@ -1590,6 +1655,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("drop_rate_modified")]
             public class DropRateModified : GameEvent
             {
                 public DropRateModified() : base(){}
@@ -1598,6 +1664,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("dynamic_shadow_light_changed")]
             public class DynamicShadowLightChanged : GameEvent
             {
                 public DynamicShadowLightChanged() : base(){}
@@ -1606,6 +1673,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("dz_item_interaction")]
             public class DzItemInteraction : GameEvent
             {
                 public DzItemInteraction() : base(){}
@@ -1637,6 +1705,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("enable_restart_voting")]
             public class EnableRestartVoting : GameEvent
             {
                 public EnableRestartVoting() : base(){}
@@ -1652,6 +1721,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("endmatch_cmm_start_reveal_items")]
             public class EndmatchCmmStartRevealItems : GameEvent
             {
                 public EndmatchCmmStartRevealItems() : base(){}
@@ -1660,6 +1730,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("endmatch_mapvote_selecting_map")]
             public class EndmatchMapvoteSelectingMap : GameEvent
             {
                 public EndmatchMapvoteSelectingMap() : base(){}
@@ -1755,6 +1826,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("enter_bombzone")]
             public class EnterBombzone : GameEvent
             {
                 public EnterBombzone() : base(){}
@@ -1786,6 +1858,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("enter_buyzone")]
             public class EnterBuyzone : GameEvent
             {
                 public EnterBuyzone() : base(){}
@@ -1809,6 +1882,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("enter_rescue_zone")]
             public class EnterRescueZone : GameEvent
             {
                 public EnterRescueZone() : base(){}
@@ -1824,6 +1898,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("entity_killed")]
             public class EntityKilled : GameEvent
             {
                 public EntityKilled() : base(){}
@@ -1863,6 +1938,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("entity_visible")]
             public class EntityVisible : GameEvent
             {
                 public EntityVisible() : base(){}
@@ -1902,6 +1978,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("event_ticket_modified")]
             public class EventTicketModified : GameEvent
             {
                 public EventTicketModified() : base(){}
@@ -1910,6 +1987,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("exit_bombzone")]
             public class ExitBombzone : GameEvent
             {
                 public ExitBombzone() : base(){}
@@ -1941,6 +2019,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("exit_buyzone")]
             public class ExitBuyzone : GameEvent
             {
                 public ExitBuyzone() : base(){}
@@ -1964,6 +2043,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("exit_rescue_zone")]
             public class ExitRescueZone : GameEvent
             {
                 public ExitRescueZone() : base(){}
@@ -1979,6 +2059,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("finale_start")]
             public class FinaleStart : GameEvent
             {
                 public FinaleStart() : base(){}
@@ -1994,6 +2075,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("firstbombs_incoming_warning")]
             public class FirstbombsIncomingWarning : GameEvent
             {
                 public FirstbombsIncomingWarning() : base(){}
@@ -2009,6 +2091,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("flare_ignite_npc")]
             public class FlareIgniteNpc : GameEvent
             {
                 public FlareIgniteNpc() : base(){}
@@ -2024,6 +2107,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("flashbang_detonate")]
             public class FlashbangDetonate : GameEvent
             {
                 public FlashbangDetonate() : base(){}
@@ -2071,6 +2155,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("game_end")]
             public class GameEnd : GameEvent
             {
                 public GameEnd() : base(){}
@@ -2086,6 +2171,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("game_init")]
             public class GameInit : GameEvent
             {
                 public GameInit() : base(){}
@@ -2094,6 +2180,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("gameinstructor_draw")]
             public class GameinstructorDraw : GameEvent
             {
                 public GameinstructorDraw() : base(){}
@@ -2102,6 +2189,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("gameinstructor_nodraw")]
             public class GameinstructorNodraw : GameEvent
             {
                 public GameinstructorNodraw() : base(){}
@@ -2110,6 +2198,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("game_message")]
             public class GameMessage : GameEvent
             {
                 public GameMessage() : base(){}
@@ -2133,6 +2222,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("game_newmap")]
             public class GameNewmap : GameEvent
             {
                 public GameNewmap() : base(){}
@@ -2148,6 +2238,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("game_phase_changed")]
             public class GamePhaseChanged : GameEvent
             {
                 public GamePhaseChanged() : base(){}
@@ -2163,6 +2254,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("game_start")]
             public class GameStart : GameEvent
             {
                 public GameStart() : base(){}
@@ -2202,6 +2294,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("gameui_hidden")]
             public class GameuiHidden : GameEvent
             {
                 public GameuiHidden() : base(){}
@@ -2210,6 +2303,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("gc_connected")]
             public class GcConnected : GameEvent
             {
                 public GcConnected() : base(){}
@@ -2218,6 +2312,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("gg_killed_enemy")]
             public class GgKilledEnemy : GameEvent
             {
                 public GgKilledEnemy() : base(){}
@@ -2265,6 +2360,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("grenade_bounce")]
             public class GrenadeBounce : GameEvent
             {
                 public GrenadeBounce() : base(){}
@@ -2280,6 +2376,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("grenade_thrown")]
             public class GrenadeThrown : GameEvent
             {
                 public GrenadeThrown() : base(){}
@@ -2303,6 +2400,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("guardian_wave_restart")]
             public class GuardianWaveRestart : GameEvent
             {
                 public GuardianWaveRestart() : base(){}
@@ -2311,6 +2409,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("hegrenade_detonate")]
             public class HegrenadeDetonate : GameEvent
             {
                 public HegrenadeDetonate() : base(){}
@@ -2358,6 +2457,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("helicopter_grenade_punt_miss")]
             public class HelicopterGrenadePuntMiss : GameEvent
             {
                 public HelicopterGrenadePuntMiss() : base(){}
@@ -2366,6 +2466,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("hide_deathpanel")]
             public class HideDeathpanel : GameEvent
             {
                 public HideDeathpanel() : base(){}
@@ -2374,6 +2475,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("hltv_cameraman")]
             public class HltvCameraman : GameEvent
             {
                 public HltvCameraman() : base(){}
@@ -2389,6 +2491,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("hltv_changed_mode")]
             public class HltvChangedMode : GameEvent
             {
                 public HltvChangedMode() : base(){}
@@ -2420,6 +2523,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("hltv_chase")]
             public class HltvChase : GameEvent
             {
                 public HltvChase() : base(){}
@@ -2483,6 +2587,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("hltv_chat")]
             public class HltvChat : GameEvent
             {
                 public HltvChat() : base(){}
@@ -2506,6 +2611,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("hltv_fixed")]
             public class HltvFixed : GameEvent
             {
                 public HltvFixed() : base(){}
@@ -2577,6 +2683,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("hltv_message")]
             public class HltvMessage : GameEvent
             {
                 public HltvMessage() : base(){}
@@ -2592,6 +2699,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("hltv_rank_camera")]
             public class HltvRankCamera : GameEvent
             {
                 public HltvRankCamera() : base(){}
@@ -2623,6 +2731,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("hltv_rank_entity")]
             public class HltvRankEntity : GameEvent
             {
                 public HltvRankEntity() : base(){}
@@ -2654,6 +2763,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("hltv_replay")]
             public class HltvReplay : GameEvent
             {
                 public HltvReplay() : base(){}
@@ -2677,6 +2787,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("hltv_replay_status")]
             public class HltvReplayStatus : GameEvent
             {
                 public HltvReplayStatus() : base(){}
@@ -2692,6 +2803,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("hltv_status")]
             public class HltvStatus : GameEvent
             {
                 public HltvStatus() : base(){}
@@ -2731,6 +2843,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("hltv_title")]
             public class HltvTitle : GameEvent
             {
                 public HltvTitle() : base(){}
@@ -2746,6 +2859,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("hltv_versioninfo")]
             public class HltvVersioninfo : GameEvent
             {
                 public HltvVersioninfo() : base(){}
@@ -2761,6 +2875,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("hostage_call_for_help")]
             public class HostageCallForHelp : GameEvent
             {
                 public HostageCallForHelp() : base(){}
@@ -2776,6 +2891,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("hostage_follows")]
             public class HostageFollows : GameEvent
             {
                 public HostageFollows() : base(){}
@@ -2799,6 +2915,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("hostage_hurt")]
             public class HostageHurt : GameEvent
             {
                 public HostageHurt() : base(){}
@@ -2822,6 +2939,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("hostage_killed")]
             public class HostageKilled : GameEvent
             {
                 public HostageKilled() : base(){}
@@ -2845,6 +2963,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("hostage_rescued")]
             public class HostageRescued : GameEvent
             {
                 public HostageRescued() : base(){}
@@ -2876,6 +2995,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("hostage_rescued_all")]
             public class HostageRescuedAll : GameEvent
             {
                 public HostageRescuedAll() : base(){}
@@ -2884,6 +3004,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("hostage_stops_following")]
             public class HostageStopsFollowing : GameEvent
             {
                 public HostageStopsFollowing() : base(){}
@@ -2907,6 +3028,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("hostname_changed")]
             public class HostnameChanged : GameEvent
             {
                 public HostnameChanged() : base(){}
@@ -2922,6 +3044,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("inferno_expire")]
             public class InfernoExpire : GameEvent
             {
                 public InfernoExpire() : base(){}
@@ -2961,6 +3084,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("inferno_extinguish")]
             public class InfernoExtinguish : GameEvent
             {
                 public InfernoExtinguish() : base(){}
@@ -3000,6 +3124,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("inferno_startburn")]
             public class InfernoStartburn : GameEvent
             {
                 public InfernoStartburn() : base(){}
@@ -3039,6 +3164,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("inspect_weapon")]
             public class InspectWeapon : GameEvent
             {
                 public InspectWeapon() : base(){}
@@ -3054,6 +3180,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("instructor_close_lesson")]
             public class InstructorCloseLesson : GameEvent
             {
                 public InstructorCloseLesson() : base(){}
@@ -3077,6 +3204,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("instructor_server_hint_create")]
             public class InstructorServerHintCreate : GameEvent
             {
                 public InstructorServerHintCreate() : base(){}
@@ -3244,6 +3372,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("instructor_server_hint_stop")]
             public class InstructorServerHintStop : GameEvent
             {
                 public InstructorServerHintStop() : base(){}
@@ -3259,6 +3388,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("instructor_start_lesson")]
             public class InstructorStartLesson : GameEvent
             {
                 public InstructorStartLesson() : base(){}
@@ -3314,6 +3444,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("inventory_updated")]
             public class InventoryUpdated : GameEvent
             {
                 public InventoryUpdated() : base(){}
@@ -3322,6 +3453,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("item_equip")]
             public class ItemEquip : GameEvent
             {
                 public ItemEquip() : base(){}
@@ -3401,6 +3533,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("item_pickup")]
             public class ItemPickup : GameEvent
             {
                 public ItemPickup() : base(){}
@@ -3440,6 +3573,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("item_pickup_failed")]
             public class ItemPickupFailed : GameEvent
             {
                 public ItemPickupFailed() : base(){}
@@ -3479,6 +3613,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("item_pickup_slerp")]
             public class ItemPickupSlerp : GameEvent
             {
                 public ItemPickupSlerp() : base(){}
@@ -3510,6 +3645,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("item_purchase")]
             public class ItemPurchase : GameEvent
             {
                 public ItemPurchase() : base(){}
@@ -3549,6 +3685,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("item_remove")]
             public class ItemRemove : GameEvent
             {
                 public ItemRemove() : base(){}
@@ -3580,6 +3717,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("item_schema_initialized")]
             public class ItemSchemaInitialized : GameEvent
             {
                 public ItemSchemaInitialized() : base(){}
@@ -3588,6 +3726,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("items_gifted")]
             public class ItemsGifted : GameEvent
             {
                 public ItemsGifted() : base(){}
@@ -3635,6 +3774,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("jointeam_failed")]
             public class JointeamFailed : GameEvent
             {
                 public JointeamFailed() : base(){}
@@ -3658,6 +3798,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("local_player_controller_team")]
             public class LocalPlayerControllerTeam : GameEvent
             {
                 public LocalPlayerControllerTeam() : base(){}
@@ -3666,6 +3807,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("local_player_pawn_changed")]
             public class LocalPlayerPawnChanged : GameEvent
             {
                 public LocalPlayerPawnChanged() : base(){}
@@ -3674,6 +3816,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("local_player_team")]
             public class LocalPlayerTeam : GameEvent
             {
                 public LocalPlayerTeam() : base(){}
@@ -3682,6 +3825,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("loot_crate_opened")]
             public class LootCrateOpened : GameEvent
             {
                 public LootCrateOpened() : base(){}
@@ -3705,6 +3849,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("loot_crate_visible")]
             public class LootCrateVisible : GameEvent
             {
                 public LootCrateVisible() : base(){}
@@ -3736,6 +3881,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("map_shutdown")]
             public class MapShutdown : GameEvent
             {
                 public MapShutdown() : base(){}
@@ -3744,6 +3890,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("map_transition")]
             public class MapTransition : GameEvent
             {
                 public MapTransition() : base(){}
@@ -3752,6 +3899,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("match_end_conditions")]
             public class MatchEndConditions : GameEvent
             {
                 public MatchEndConditions() : base(){}
@@ -3791,6 +3939,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("material_default_complete")]
             public class MaterialDefaultComplete : GameEvent
             {
                 public MaterialDefaultComplete() : base(){}
@@ -3799,6 +3948,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("mb_input_lock_cancel")]
             public class MbInputLockCancel : GameEvent
             {
                 public MbInputLockCancel() : base(){}
@@ -3807,6 +3957,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("mb_input_lock_success")]
             public class MbInputLockSuccess : GameEvent
             {
                 public MbInputLockSuccess() : base(){}
@@ -3815,6 +3966,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("molotov_detonate")]
             public class MolotovDetonate : GameEvent
             {
                 public MolotovDetonate() : base(){}
@@ -3854,6 +4006,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("nav_blocked")]
             public class NavBlocked : GameEvent
             {
                 public NavBlocked() : base(){}
@@ -3877,6 +4030,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("nav_generate")]
             public class NavGenerate : GameEvent
             {
                 public NavGenerate() : base(){}
@@ -3885,6 +4039,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("nextlevel_changed")]
             public class NextlevelChanged : GameEvent
             {
                 public NextlevelChanged() : base(){}
@@ -3916,6 +4071,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("open_crate_instr")]
             public class OpenCrateInstr : GameEvent
             {
                 public OpenCrateInstr() : base(){}
@@ -3947,6 +4103,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("other_death")]
             public class OtherDeath : GameEvent
             {
                 public OtherDeath() : base(){}
@@ -4050,6 +4207,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("parachute_deploy")]
             public class ParachuteDeploy : GameEvent
             {
                 public ParachuteDeploy() : base(){}
@@ -4065,6 +4223,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("parachute_pickup")]
             public class ParachutePickup : GameEvent
             {
                 public ParachutePickup() : base(){}
@@ -4080,6 +4239,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("physgun_pickup")]
             public class PhysgunPickup : GameEvent
             {
                 public PhysgunPickup() : base(){}
@@ -4095,6 +4255,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("player_activate")]
             public class PlayerActivate : GameEvent
             {
                 public PlayerActivate() : base(){}
@@ -4110,6 +4271,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("player_avenged_teammate")]
             public class PlayerAvengedTeammate : GameEvent
             {
                 public PlayerAvengedTeammate() : base(){}
@@ -4133,6 +4295,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("player_blind")]
             public class PlayerBlind : GameEvent
             {
                 public PlayerBlind() : base(){}
@@ -4172,6 +4335,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("player_changename")]
             public class PlayerChangename : GameEvent
             {
                 public PlayerChangename() : base(){}
@@ -4203,6 +4367,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("player_chat")]
             public class PlayerChat : GameEvent
             {
                 public PlayerChat() : base(){}
@@ -4234,6 +4399,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("player_connect")]
             public class PlayerConnect : GameEvent
             {
                 public PlayerConnect() : base(){}
@@ -4289,6 +4455,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("player_connect_full")]
             public class PlayerConnectFull : GameEvent
             {
                 public PlayerConnectFull() : base(){}
@@ -4304,6 +4471,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("player_death")]
             public class PlayerDeath : GameEvent
             {
                 public PlayerDeath() : base(){}
@@ -4479,6 +4647,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("player_decal")]
             public class PlayerDecal : GameEvent
             {
                 public PlayerDecal() : base(){}
@@ -4494,6 +4663,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("player_disconnect")]
             public class PlayerDisconnect : GameEvent
             {
                 public PlayerDisconnect() : base(){}
@@ -4549,6 +4719,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("player_falldamage")]
             public class PlayerFalldamage : GameEvent
             {
                 public PlayerFalldamage() : base(){}
@@ -4572,6 +4743,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("player_footstep")]
             public class PlayerFootstep : GameEvent
             {
                 public PlayerFootstep() : base(){}
@@ -4587,6 +4759,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("player_full_update")]
             public class PlayerFullUpdate : GameEvent
             {
                 public PlayerFullUpdate() : base(){}
@@ -4610,6 +4783,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("player_given_c4")]
             public class PlayerGivenC4 : GameEvent
             {
                 public PlayerGivenC4() : base(){}
@@ -4625,6 +4799,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("player_hintmessage")]
             public class PlayerHintmessage : GameEvent
             {
                 public PlayerHintmessage() : base(){}
@@ -4640,6 +4815,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("player_hurt")]
             public class PlayerHurt : GameEvent
             {
                 public PlayerHurt() : base(){}
@@ -4711,6 +4887,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("player_info")]
             public class PlayerInfo : GameEvent
             {
                 public PlayerInfo() : base(){}
@@ -4750,6 +4927,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("player_jump")]
             public class PlayerJump : GameEvent
             {
                 public PlayerJump() : base(){}
@@ -4765,6 +4943,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("player_ping")]
             public class PlayerPing : GameEvent
             {
                 public PlayerPing() : base(){}
@@ -4820,6 +4999,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("player_ping_stop")]
             public class PlayerPingStop : GameEvent
             {
                 public PlayerPingStop() : base(){}
@@ -4835,6 +5015,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("player_radio")]
             public class PlayerRadio : GameEvent
             {
                 public PlayerRadio() : base(){}
@@ -4858,6 +5039,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("player_reset_vote")]
             public class PlayerResetVote : GameEvent
             {
                 public PlayerResetVote() : base(){}
@@ -4881,6 +5063,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("player_score")]
             public class PlayerScore : GameEvent
             {
                 public PlayerScore() : base(){}
@@ -4920,6 +5103,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("player_shoot")]
             public class PlayerShoot : GameEvent
             {
                 public PlayerShoot() : base(){}
@@ -4951,6 +5135,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("player_sound")]
             public class PlayerSound : GameEvent
             {
                 public PlayerSound() : base(){}
@@ -4990,6 +5175,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("player_spawn")]
             public class PlayerSpawn : GameEvent
             {
                 public PlayerSpawn() : base(){}
@@ -5005,6 +5191,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("player_spawned")]
             public class PlayerSpawned : GameEvent
             {
                 public PlayerSpawned() : base(){}
@@ -5028,6 +5215,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("player_stats_updated")]
             public class PlayerStatsUpdated : GameEvent
             {
                 public PlayerStatsUpdated() : base(){}
@@ -5043,6 +5231,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("player_team")]
             public class PlayerTeam : GameEvent
             {
                 public PlayerTeam() : base(){}
@@ -5098,6 +5287,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("ragdoll_dissolved")]
             public class RagdollDissolved : GameEvent
             {
                 public RagdollDissolved() : base(){}
@@ -5113,6 +5303,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("read_game_titledata")]
             public class ReadGameTitledata : GameEvent
             {
                 public ReadGameTitledata() : base(){}
@@ -5128,6 +5319,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("repost_xbox_achievements")]
             public class RepostXboxAchievements : GameEvent
             {
                 public RepostXboxAchievements() : base(){}
@@ -5143,6 +5335,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("reset_game_titledata")]
             public class ResetGameTitledata : GameEvent
             {
                 public ResetGameTitledata() : base(){}
@@ -5158,6 +5351,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("round_announce_final")]
             public class RoundAnnounceFinal : GameEvent
             {
                 public RoundAnnounceFinal() : base(){}
@@ -5166,6 +5360,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("round_announce_last_round_half")]
             public class RoundAnnounceLastRoundHalf : GameEvent
             {
                 public RoundAnnounceLastRoundHalf() : base(){}
@@ -5174,6 +5369,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("round_announce_match_point")]
             public class RoundAnnounceMatchPoint : GameEvent
             {
                 public RoundAnnounceMatchPoint() : base(){}
@@ -5182,6 +5378,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("round_announce_match_start")]
             public class RoundAnnounceMatchStart : GameEvent
             {
                 public RoundAnnounceMatchStart() : base(){}
@@ -5190,6 +5387,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("round_announce_warmup")]
             public class RoundAnnounceWarmup : GameEvent
             {
                 public RoundAnnounceWarmup() : base(){}
@@ -5198,6 +5396,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("round_end")]
             public class RoundEnd : GameEvent
             {
                 public RoundEnd() : base(){}
@@ -5253,6 +5452,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("round_end_upload_stats")]
             public class RoundEndUploadStats : GameEvent
             {
                 public RoundEndUploadStats() : base(){}
@@ -5261,6 +5461,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("round_freeze_end")]
             public class RoundFreezeEnd : GameEvent
             {
                 public RoundFreezeEnd() : base(){}
@@ -5269,6 +5470,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("round_mvp")]
             public class RoundMvp : GameEvent
             {
                 public RoundMvp() : base(){}
@@ -5324,6 +5526,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("round_officially_ended")]
             public class RoundOfficiallyEnded : GameEvent
             {
                 public RoundOfficiallyEnded() : base(){}
@@ -5332,6 +5535,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("round_poststart")]
             public class RoundPoststart : GameEvent
             {
                 public RoundPoststart() : base(){}
@@ -5340,6 +5544,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("round_prestart")]
             public class RoundPrestart : GameEvent
             {
                 public RoundPrestart() : base(){}
@@ -5348,6 +5553,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("round_start")]
             public class RoundStart : GameEvent
             {
                 public RoundStart() : base(){}
@@ -5379,6 +5585,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("round_start_post_nav")]
             public class RoundStartPostNav : GameEvent
             {
                 public RoundStartPostNav() : base(){}
@@ -5387,6 +5594,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("round_start_pre_entity")]
             public class RoundStartPreEntity : GameEvent
             {
                 public RoundStartPreEntity() : base(){}
@@ -5395,6 +5603,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("round_time_warning")]
             public class RoundTimeWarning : GameEvent
             {
                 public RoundTimeWarning() : base(){}
@@ -5403,6 +5612,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("seasoncoin_levelup")]
             public class SeasoncoinLevelup : GameEvent
             {
                 public SeasoncoinLevelup() : base(){}
@@ -5434,6 +5644,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("server_cvar")]
             public class ServerCvar : GameEvent
             {
                 public ServerCvar() : base(){}
@@ -5457,6 +5668,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("server_message")]
             public class ServerMessage : GameEvent
             {
                 public ServerMessage() : base(){}
@@ -5472,6 +5684,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("server_pre_shutdown")]
             public class ServerPreShutdown : GameEvent
             {
                 public ServerPreShutdown() : base(){}
@@ -5487,6 +5700,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("server_shutdown")]
             public class ServerShutdown : GameEvent
             {
                 public ServerShutdown() : base(){}
@@ -5502,6 +5716,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("server_spawn")]
             public class ServerSpawn : GameEvent
             {
                 public ServerSpawn() : base(){}
@@ -5589,6 +5804,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("set_instructor_group_enabled")]
             public class SetInstructorGroupEnabled : GameEvent
             {
                 public SetInstructorGroupEnabled() : base(){}
@@ -5612,6 +5828,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("sfuievent")]
             public class Sfuievent : GameEvent
             {
                 public Sfuievent() : base(){}
@@ -5643,6 +5860,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("show_deathpanel")]
             public class ShowDeathpanel : GameEvent
             {
                 public ShowDeathpanel() : base(){}
@@ -5706,6 +5924,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("show_survival_respawn_status")]
             public class ShowSurvivalRespawnStatus : GameEvent
             {
                 public ShowSurvivalRespawnStatus() : base(){}
@@ -5737,6 +5956,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("silencer_detach")]
             public class SilencerDetach : GameEvent
             {
                 public SilencerDetach() : base(){}
@@ -5752,6 +5972,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("silencer_off")]
             public class SilencerOff : GameEvent
             {
                 public SilencerOff() : base(){}
@@ -5767,6 +5988,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("silencer_on")]
             public class SilencerOn : GameEvent
             {
                 public SilencerOn() : base(){}
@@ -5782,6 +6004,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("smoke_beacon_paradrop")]
             public class SmokeBeaconParadrop : GameEvent
             {
                 public SmokeBeaconParadrop() : base(){}
@@ -5805,6 +6028,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("smokegrenade_detonate")]
             public class SmokegrenadeDetonate : GameEvent
             {
                 public SmokegrenadeDetonate() : base(){}
@@ -5852,6 +6076,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("smokegrenade_expired")]
             public class SmokegrenadeExpired : GameEvent
             {
                 public SmokegrenadeExpired() : base(){}
@@ -5899,6 +6124,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("spec_mode_updated")]
             public class SpecModeUpdated : GameEvent
             {
                 public SpecModeUpdated() : base(){}
@@ -5914,6 +6140,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("spec_target_updated")]
             public class SpecTargetUpdated : GameEvent
             {
                 public SpecTargetUpdated() : base(){}
@@ -5937,6 +6164,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("start_halftime")]
             public class StartHalftime : GameEvent
             {
                 public StartHalftime() : base(){}
@@ -5945,6 +6173,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("start_vote")]
             public class StartVote : GameEvent
             {
                 public StartVote() : base(){}
@@ -5976,6 +6205,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("store_pricesheet_updated")]
             public class StorePricesheetUpdated : GameEvent
             {
                 public StorePricesheetUpdated() : base(){}
@@ -5984,6 +6214,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("survival_announce_phase")]
             public class SurvivalAnnouncePhase : GameEvent
             {
                 public SurvivalAnnouncePhase() : base(){}
@@ -5999,6 +6230,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("survival_no_respawns_final")]
             public class SurvivalNoRespawnsFinal : GameEvent
             {
                 public SurvivalNoRespawnsFinal() : base(){}
@@ -6014,6 +6246,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("survival_no_respawns_warning")]
             public class SurvivalNoRespawnsWarning : GameEvent
             {
                 public SurvivalNoRespawnsWarning() : base(){}
@@ -6029,6 +6262,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("survival_paradrop_break")]
             public class SurvivalParadropBreak : GameEvent
             {
                 public SurvivalParadropBreak() : base(){}
@@ -6044,6 +6278,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("survival_paradrop_spawn")]
             public class SurvivalParadropSpawn : GameEvent
             {
                 public SurvivalParadropSpawn() : base(){}
@@ -6059,6 +6294,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("survival_teammate_respawn")]
             public class SurvivalTeammateRespawn : GameEvent
             {
                 public SurvivalTeammateRespawn() : base(){}
@@ -6074,6 +6310,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("switch_team")]
             public class SwitchTeam : GameEvent
             {
                 public SwitchTeam() : base(){}
@@ -6121,6 +6358,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("tagrenade_detonate")]
             public class TagrenadeDetonate : GameEvent
             {
                 public TagrenadeDetonate() : base(){}
@@ -6168,6 +6406,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("teamchange_pending")]
             public class TeamchangePending : GameEvent
             {
                 public TeamchangePending() : base(){}
@@ -6191,6 +6430,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("team_info")]
             public class TeamInfo : GameEvent
             {
                 public TeamInfo() : base(){}
@@ -6214,6 +6454,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("team_intro_end")]
             public class TeamIntroEnd : GameEvent
             {
                 public TeamIntroEnd() : base(){}
@@ -6222,6 +6463,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("team_intro_start")]
             public class TeamIntroStart : GameEvent
             {
                 public TeamIntroStart() : base(){}
@@ -6230,6 +6472,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("teamplay_broadcast_audio")]
             public class TeamplayBroadcastAudio : GameEvent
             {
                 public TeamplayBroadcastAudio() : base(){}
@@ -6253,6 +6496,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("teamplay_round_start")]
             public class TeamplayRoundStart : GameEvent
             {
                 public TeamplayRoundStart() : base(){}
@@ -6268,6 +6512,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("team_score")]
             public class TeamScore : GameEvent
             {
                 public TeamScore() : base(){}
@@ -6291,6 +6536,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("tournament_reward")]
             public class TournamentReward : GameEvent
             {
                 public TournamentReward() : base(){}
@@ -6322,6 +6568,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("tr_exit_hint_trigger")]
             public class TrExitHintTrigger : GameEvent
             {
                 public TrExitHintTrigger() : base(){}
@@ -6330,6 +6577,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("trial_time_expired")]
             public class TrialTimeExpired : GameEvent
             {
                 public TrialTimeExpired() : base(){}
@@ -6345,6 +6593,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("tr_mark_best_time")]
             public class TrMarkBestTime : GameEvent
             {
                 public TrMarkBestTime() : base(){}
@@ -6360,6 +6609,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("tr_mark_complete")]
             public class TrMarkComplete : GameEvent
             {
                 public TrMarkComplete() : base(){}
@@ -6375,6 +6625,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("tr_player_flashbanged")]
             public class TrPlayerFlashbanged : GameEvent
             {
                 public TrPlayerFlashbanged() : base(){}
@@ -6390,6 +6641,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("tr_show_exit_msgbox")]
             public class TrShowExitMsgbox : GameEvent
             {
                 public TrShowExitMsgbox() : base(){}
@@ -6398,6 +6650,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("tr_show_finish_msgbox")]
             public class TrShowFinishMsgbox : GameEvent
             {
                 public TrShowFinishMsgbox() : base(){}
@@ -6406,6 +6659,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("ugc_file_download_finished")]
             public class UgcFileDownloadFinished : GameEvent
             {
                 public UgcFileDownloadFinished() : base(){}
@@ -6421,6 +6675,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("ugc_file_download_start")]
             public class UgcFileDownloadStart : GameEvent
             {
                 public UgcFileDownloadStart() : base(){}
@@ -6444,6 +6699,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("ugc_map_download_error")]
             public class UgcMapDownloadError : GameEvent
             {
                 public UgcMapDownloadError() : base(){}
@@ -6467,6 +6723,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("ugc_map_info_received")]
             public class UgcMapInfoReceived : GameEvent
             {
                 public UgcMapInfoReceived() : base(){}
@@ -6482,6 +6739,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("ugc_map_unsubscribed")]
             public class UgcMapUnsubscribed : GameEvent
             {
                 public UgcMapUnsubscribed() : base(){}
@@ -6497,6 +6755,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("update_matchmaking_stats")]
             public class UpdateMatchmakingStats : GameEvent
             {
                 public UpdateMatchmakingStats() : base(){}
@@ -6505,6 +6764,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("user_data_downloaded")]
             public class UserDataDownloaded : GameEvent
             {
                 public UserDataDownloaded() : base(){}
@@ -6513,6 +6773,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("vip_escaped")]
             public class VipEscaped : GameEvent
             {
                 public VipEscaped() : base(){}
@@ -6528,6 +6789,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("vip_killed")]
             public class VipKilled : GameEvent
             {
                 public VipKilled() : base(){}
@@ -6551,6 +6813,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("vote_cast")]
             public class VoteCast : GameEvent
             {
                 public VoteCast() : base(){}
@@ -6582,6 +6845,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("vote_cast_no")]
             public class VoteCastNo : GameEvent
             {
                 public VoteCastNo() : base(){}
@@ -6605,6 +6869,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("vote_cast_yes")]
             public class VoteCastYes : GameEvent
             {
                 public VoteCastYes() : base(){}
@@ -6628,6 +6893,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("vote_changed")]
             public class VoteChanged : GameEvent
             {
                 public VoteChanged() : base(){}
@@ -6683,6 +6949,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("vote_ended")]
             public class VoteEnded : GameEvent
             {
                 public VoteEnded() : base(){}
@@ -6691,6 +6958,7 @@ namespace CounterStrikeSharp.API.Core
                 
             }
 
+            [EventName("vote_failed")]
             public class VoteFailed : GameEvent
             {
                 public VoteFailed() : base(){}
@@ -6714,6 +6982,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("vote_options")]
             public class VoteOptions : GameEvent
             {
                 public VoteOptions() : base(){}
@@ -6769,6 +7038,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("vote_passed")]
             public class VotePassed : GameEvent
             {
                 public VotePassed() : base(){}
@@ -6808,6 +7078,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("vote_started")]
             public class VoteStarted : GameEvent
             {
                 public VoteStarted() : base(){}
@@ -6847,6 +7118,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("weapon_fire")]
             public class WeaponFire : GameEvent
             {
                 public WeaponFire() : base(){}
@@ -6878,6 +7150,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("weapon_fire_on_empty")]
             public class WeaponFireOnEmpty : GameEvent
             {
                 public WeaponFireOnEmpty() : base(){}
@@ -6901,6 +7174,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("weaponhud_selection")]
             public class WeaponhudSelection : GameEvent
             {
                 public WeaponhudSelection() : base(){}
@@ -6932,6 +7206,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("weapon_outofammo")]
             public class WeaponOutofammo : GameEvent
             {
                 public WeaponOutofammo() : base(){}
@@ -6947,6 +7222,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("weapon_reload")]
             public class WeaponReload : GameEvent
             {
                 public WeaponReload() : base(){}
@@ -6962,6 +7238,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("weapon_zoom")]
             public class WeaponZoom : GameEvent
             {
                 public WeaponZoom() : base(){}
@@ -6977,6 +7254,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("weapon_zoom_rifle")]
             public class WeaponZoomRifle : GameEvent
             {
                 public WeaponZoomRifle() : base(){}
@@ -6992,6 +7270,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("write_game_titledata")]
             public class WriteGameTitledata : GameEvent
             {
                 public WriteGameTitledata() : base(){}
@@ -7007,6 +7286,7 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("write_profile_data")]
             public class WriteProfileData : GameEvent
             {
                 public WriteProfileData() : base(){}

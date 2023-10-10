@@ -99,6 +99,7 @@ public partial class Generators
                 }}";
             });
             return $@"
+            [EventName(""{gameEvent.Name}"")]
             public class {gameEvent.NamePascalCase} : GameEvent
             {{
                 public {gameEvent.NamePascalCase}() : base(){{}}
@@ -112,6 +113,7 @@ public partial class Generators
         var result = $@"
 using System;
 using CounterStrikeSharp.API.Modules.Events;
+using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core
 {{
