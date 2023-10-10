@@ -21,7 +21,6 @@ public partial class Generators
         public string Type { get; set; }
         public string MappedType => Mapping.GetCSharpTypeFromGameEventType(Type);
         public string Comment { get; set; }
-        public string AccessorPostfix => Mapping.GetEventAccessorPostfixFromType(MappedType);
     }
 
     private static List<GameEvent> GetGameEvents()
@@ -90,15 +89,13 @@ public partial class Generators
                     ? $"{key.NamePascalCase}Param"
                     : key.NamePascalCase;
 
-                var postFix = key.AccessorPostfix;
-                
                 return $@"
                 
                 {(!string.IsNullOrEmpty(key.Comment) ? "// " + key.Comment : "")}
                 public {key.MappedType} {propertyName} 
                 {{
-                    get => Get{postFix}(""{key.Name}"");
-                    set => Set{postFix}(""{key.Name}"", value);
+                    get => Get<{key.MappedType}>(""{key.Name}"");
+                    set => Set<{key.MappedType}>(""{key.Name}"", value);
                 }}";
             });
             return $@"

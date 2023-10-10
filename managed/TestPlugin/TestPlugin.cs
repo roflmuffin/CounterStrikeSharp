@@ -36,20 +36,18 @@ namespace TestPlugin
                 Console.WriteLine($"Client {args.Name} from {args.Address} has connected!");
                 Console.ResetColor();
             };
-            
-            RegisterEventHandler<PlayerSpawn>("player_spawn", (@event) =>
-            {
-                Console.BackgroundColor = ConsoleColor.Red;
-                Console.WriteLine($"Event found {@event.Handle:X}, event name: {@event.EventName}, userid: {@event.Userid}");
-                Console.ResetColor();
-            });
-            
-            RegisterEventHandler<PlayerJump>("player_jump", (@event) =>
-            {
-                Console.BackgroundColor = ConsoleColor.Blue;
-                Console.WriteLine($"Event found {@event.Handle:X}, event name: {@event.EventName}, userid: {@event.Userid}");
-                Console.ResetColor();
-            });
+
+            RegisterEventHandler<PlayerConnect>("player_connect", GenericEventHandler);
+            RegisterEventHandler<PlayerConnect>("player_spawn", GenericEventHandler);
+            RegisterEventHandler<PlayerConnect>("player_jump", GenericEventHandler);
+        }
+
+        private void GenericEventHandler<T>(T @event) where T : GameEvent
+        {
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.WriteLine(
+                $"Event found {@event.Handle:X}, event name: {@event.EventName}");
+            Console.ResetColor();
         }
     }
 }

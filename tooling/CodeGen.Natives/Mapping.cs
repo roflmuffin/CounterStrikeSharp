@@ -79,24 +79,4 @@ public class Mapping
                 return type;
         }
     }
-
-    public static string GetEventAccessorPostfixFromType(string mappedType)
-    {
-        switch (mappedType)
-        {
-            case "int":
-            case "IntPtr":
-                return "Int";
-            case "bool":
-                return "Bool";
-            case "string":
-                return "String";
-            case "float":
-                return "Float";
-            case "ulong":
-                return "Uint64";
-            default:
-                return "Int";
-        }
-    }
 }

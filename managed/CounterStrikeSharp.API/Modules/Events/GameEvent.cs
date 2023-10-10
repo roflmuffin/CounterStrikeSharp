@@ -40,7 +40,7 @@ namespace CounterStrikeSharp.API.Modules.Events
         public GameEvent(string name, bool force) : this(NativeAPI.CreateEvent(name, force))
         {
         }
-
+        
         internal GameEvent(IntPtr pointer)
         {
             Handle = pointer;
@@ -48,24 +48,68 @@ namespace CounterStrikeSharp.API.Modules.Events
 
         public string EventName => NativeAPI.GetEventName(Handle);
 
-        public bool GetBool(string name) => NativeAPI.GetEventBool(Handle, name);
-        public float GetFloat(string name) => NativeAPI.GetEventFloat(Handle, name);
-        public string GetString(string name) => NativeAPI.GetEventString(Handle, name);
-        public int GetInt(string name) => NativeAPI.GetEventInt(Handle, name);
+        public T Get<T>(string name)
+        {
+            var type = typeof(T);
+            object result = type switch
+            {
+                _ when type == typeof(float) => GetFloat(name),
+                _ when type == typeof(int) => GetInt(name),
+                _ when type == typeof(string) => GetString(name),
+                _ when type == typeof(bool) => GetBool(name),
+                _ when type == typeof(ulong) => GetUint64(name),
+                _ when type == typeof(IntPtr) => throw new NotImplementedException("IntPtr event arguments are not supported yet."),
+                _ => throw new NotSupportedException(),
+            };
 
-        public ulong GetUint64(string name) => 0;
+            return (T)result;
+        }
+        
+        public void Set<T>(string name, T value)
+        {
+            var type = typeof(T);
+            switch (type)
+            {
+                case var _ when type == typeof(float):
+                    SetFloat(name, (float)(object)value);
+                    break;
+                case var _ when type == typeof(int):
+                    SetInt(name, (int)(object)value);
+                    break;
+                case var _ when type == typeof(IntPtr):
+                    throw new NotImplementedException("IntPtr event arguments are not supported yet.");
+                case var _ when type == typeof(string):
+                    SetString(name, (string)(object)value);
+                    break;
+                case var _ when type == typeof(bool):
+                    SetBool(name, (bool)(object)value);
+                    break;
+                case var _ when type == typeof(ulong):
+                    SetUint64(name, (ulong)(object)value);
+                    break;
+                default:
+                    throw new NotSupportedException();
+            }
+        }
 
-        public void SetUint64(string name, ulong value)
+        protected bool GetBool(string name) => NativeAPI.GetEventBool(Handle, name);
+        protected float GetFloat(string name) => NativeAPI.GetEventFloat(Handle, name);
+        protected string GetString(string name) => NativeAPI.GetEventString(Handle, name);
+        protected int GetInt(string name) => NativeAPI.GetEventInt(Handle, name);
+
+        protected ulong GetUint64(string name) => 0;
+
+        protected void SetUint64(string name, ulong value)
         {
         }
 
         // public Player GetPlayer(string name) => Player.FromUserId(GetInt(name));
 
-        public void SetBool(string name, bool value) => NativeAPI.SetEventBool(Handle, name, value);
-        public void SetFloat(string name, float value) => NativeAPI.SetEventFloat(Handle, name, value);
-        public void SetString(string name, string value) => NativeAPI.SetEventString(Handle, name, value);
-        public void SetInt(string name, int value) => NativeAPI.SetEventInt(Handle, name, value);
-        public void SetInt(string name, long value) => SetInt(name, (int)value);
+        protected void SetBool(string name, bool value) => NativeAPI.SetEventBool(Handle, name, value);
+        protected void SetFloat(string name, float value) => NativeAPI.SetEventFloat(Handle, name, value);
+        protected void SetString(string name, string value) => NativeAPI.SetEventString(Handle, name, value);
+        protected void SetInt(string name, int value) => NativeAPI.SetEventInt(Handle, name, value);
+        protected void SetInt(string name, long value) => SetInt(name, (int)value);
 
         public void FireEvent(bool dontBroadcast) => NativeAPI.FireEvent(Handle, dontBroadcast);
         // public void FireEventToClient(int clientId, bool dontBroadcast) => NativeAPI.FireEventToClient(Handle, clientId);
