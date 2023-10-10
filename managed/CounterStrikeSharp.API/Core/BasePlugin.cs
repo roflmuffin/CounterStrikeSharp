@@ -27,8 +27,10 @@ using CounterStrikeSharp.API.Modules.Timers;
 
 namespace CounterStrikeSharp.API.Core
 {
-    public abstract class BasePlugin : IPlugin
+    public abstract class BasePlugin : IPlugin, IDisposable
     {
+        private bool _disposed;
+
         public BasePlugin()
         {
         }
@@ -44,17 +46,17 @@ namespace CounterStrikeSharp.API.Core
         {
         }
 
-        public class CallbackSubscriber
+        public class CallbackSubscriber : IDisposable
         {
             private Delegate _underlyingMethod;
             private readonly int _functionReferenceIdentifier;
-            private readonly object _value;
 
             private readonly InputArgument _inputArgument;
+            private readonly Action _dispose;
 
-            public CallbackSubscriber(object value, Delegate underlyingMethod, Delegate wrapperMethod)
+            public CallbackSubscriber(Delegate underlyingMethod, Delegate wrapperMethod, Action dispose)
             {
-                _value = value;
+                _dispose = dispose;
                 _underlyingMethod = underlyingMethod;
 
                 var functionReference = FunctionReference.Create(wrapperMethod);
@@ -73,9 +75,9 @@ namespace CounterStrikeSharp.API.Core
                 return _functionReferenceIdentifier;
             }
 
-            public object GetValue()
+            public void Dispose()
             {
-                return _value;
+                _dispose();
             }
         }
 
@@ -96,15 +98,18 @@ namespace CounterStrikeSharp.API.Core
         private void RegisterEventHandlerInternal<T>(string name, Action<T> handler, bool post = false)
             where T : GameEvent, new()
         {
-            var wrappedHandler = new Action<IntPtr>((IntPtr pointer) =>
+            var wrappedHandler = new Action<IntPtr>(pointer =>
             {
-                var @event = new T();
-                @event.Handle = pointer;
+                var @event = new T
+                {
+                    Handle = pointer
+                };
                 handler.Invoke(@event);
             });
 
-            var data = new object[] { name, post };
-            var subscriber = new CallbackSubscriber(data, handler, wrappedHandler);
+            var subscriber = new CallbackSubscriber(handler, wrappedHandler,
+                () => DeregisterEventHandler(name, handler, post));
+
             NativeAPI.HookEvent(name, subscriber.GetInputArgument(), post);
             Handlers[handler] = subscriber;
         }
@@ -117,14 +122,11 @@ namespace CounterStrikeSharp.API.Core
 
         public void DeregisterEventHandler(string name, Delegate handler, bool post)
         {
-            if (Handlers.ContainsKey(handler))
-            {
-                var subscriber = Handlers[handler];
+            if (!Handlers.TryGetValue(handler, out var subscriber)) return;
 
-                NativeAPI.UnhookEvent(name, subscriber.GetInputArgument(), post);
-                FunctionReference.Remove(subscriber.GetReferenceIdentifier());
-                Handlers.Remove(handler);
-            }
+            NativeAPI.UnhookEvent(name, subscriber.GetInputArgument(), post);
+            FunctionReference.Remove(subscriber.GetReferenceIdentifier());
+            Handlers.Remove(handler);
         }
 
         /*
@@ -182,7 +184,7 @@ namespace CounterStrikeSharp.API.Core
         private void AddListener<T>(string name, Listeners.SourceEventHandler<T> handler,
             Action<T, ScriptContext> input = null, Action<T, ScriptContext> output = null) where T : EventArgs, new()
         {
-            var wrappedHandler = new Action<ScriptContext>((ScriptContext context) =>
+            var wrappedHandler = new Action<ScriptContext>(context =>
             {
                 var eventArgs = new T();
 
@@ -196,7 +198,8 @@ namespace CounterStrikeSharp.API.Core
                 output?.Invoke(eventArgs, context);
             });
 
-            var subscriber = new CallbackSubscriber(name, handler, wrappedHandler);
+            var subscriber = new CallbackSubscriber(handler, wrappedHandler, () => { RemoveListener(name, handler); });
+
             NativeAPI.AddListener(name, subscriber.GetInputArgument());
             Listeners[handler] = subscriber;
         }
@@ -204,26 +207,20 @@ namespace CounterStrikeSharp.API.Core
         public void RemoveListener<T>(string name, Listeners.SourceEventHandler<T> handler)
             where T : EventArgs, new()
         {
-            if (Listeners.ContainsKey(handler))
-            {
-                var subscriber = Listeners[handler];
+            if (!Listeners.TryGetValue(handler, out var subscriber)) return;
 
-                NativeAPI.RemoveListener(name, subscriber.GetInputArgument());
-                FunctionReference.Remove(subscriber.GetReferenceIdentifier());
-                Listeners.Remove(handler);
-            }
+            NativeAPI.RemoveListener(name, subscriber.GetInputArgument());
+            FunctionReference.Remove(subscriber.GetReferenceIdentifier());
+            Listeners.Remove(handler);
         }
 
         public void RemoveListener(string name, Delegate handler)
         {
-            if (Listeners.ContainsKey(handler))
-            {
-                var subscriber = Listeners[handler];
+            if (!Listeners.TryGetValue(handler, out var subscriber)) return;
 
-                NativeAPI.RemoveListener(name, subscriber.GetInputArgument());
-                FunctionReference.Remove(subscriber.GetReferenceIdentifier());
-                Listeners.Remove(handler);
-            }
+            NativeAPI.RemoveListener(name, subscriber.GetInputArgument());
+            FunctionReference.Remove(subscriber.GetReferenceIdentifier());
+            Listeners.Remove(handler);
         }
 
         public Timer AddTimer(float interval, Action callback, TimerFlags? flags = null)
@@ -325,14 +322,17 @@ namespace CounterStrikeSharp.API.Core
         /**
          * Automatically registers all game event handlers that are decorated with the [GameEventHandler] attribute.
          */
-        public void RegisterAttributeHandlers()
+        public void RegisterAttributeHandlers(object instance)
         {
-            var eventHandlers = this.GetType()
+            var eventHandlers = instance.GetType()
                 .GetMethods()
                 .Where(method => method.GetCustomAttribute<GameEventHandlerAttribute>() != null)
                 .Where(method =>
                     method.GetParameters().FirstOrDefault()?.ParameterType.IsSubclassOf(typeof(GameEvent)) == true)
                 .ToArray();
+
+            var method = typeof(BasePlugin).GetMethod("RegisterEventHandlerInternal", BindingFlags.NonPublic |
+                BindingFlags.Instance)!;
 
             foreach (var eventHandler in eventHandlers)
             {
@@ -340,13 +340,51 @@ namespace CounterStrikeSharp.API.Core
                 var eventName = parameterType.GetCustomAttribute<EventNameAttribute>()?.Name;
 
                 var actionType = typeof(Action<>).MakeGenericType(parameterType);
-                var action = eventHandler.CreateDelegate(actionType, this);
-
-                var method = typeof(BasePlugin).GetMethod("RegisterEventHandlerInternal", BindingFlags.NonPublic |
-                    BindingFlags.Instance);
+                var action = eventHandler.CreateDelegate(actionType, instance);
+                
                 var generic = method.MakeGenericMethod(parameterType);
                 generic.Invoke(this, new object[] { eventName, action, false });
             }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed) return;
+            if (!disposing) return;
+
+            foreach (var subscriber in Handlers.Values)
+            {
+                subscriber.Dispose();
+            }
+
+            foreach (var kv in CommandHandlers)
+            {
+                // _plugin.RemoveCommand((string)kv.Value.GetValue(), (CommandInfo.CommandCallback)kv.Key);
+            }
+
+            foreach (var kv in ConvarChangeHandlers)
+            {
+                // var convar = (ConVar)kv.Value.GetValue();
+                // _plugin.UnhookConVarChange((ConVar)kv.Value.GetValue(), (ConVar.ConVarChangedCallback)kv.Key);
+                // convar.Unregister();
+            }
+
+            foreach (var subscriber in Listeners.Values)
+            {
+                subscriber.Dispose();
+            }
+
+            foreach (var timer in Timers)
+            {
+                timer.Kill();
+            }
+
+            _disposed = true;
         }
     }
 }

@@ -66,8 +66,8 @@ namespace CounterStrikeSharp.API.Core
                 if (pluginType == null) throw new Exception("Unable to find plugin in DLL");
 
                 Console.WriteLine($"Loading plugin: {pluginType.Name}");
-                _plugin = (BasePlugin)Activator.CreateInstance(pluginType);
-                _plugin.RegisterAttributeHandlers();
+                _plugin = (BasePlugin)Activator.CreateInstance(pluginType)!;
+                _plugin.RegisterAttributeHandlers(_plugin);
                 _plugin.Load(hotReload);
 
                 Console.WriteLine($"Finished loading plugin: {Name}");
@@ -82,34 +82,7 @@ namespace CounterStrikeSharp.API.Core
 
             _plugin.Unload(hotReload);
 
-            foreach (var kv in _plugin.Handlers)
-            {
-                var data = kv.Value.GetValue() as object[];
-                _plugin.DeregisterEventHandler(data[0].ToString(), kv.Key,
-                    Convert.ToBoolean(data[1]));
-            }
-
-            foreach (var kv in _plugin.CommandHandlers)
-            {
-                // _plugin.RemoveCommand((string)kv.Value.GetValue(), (CommandInfo.CommandCallback)kv.Key);
-            }
-
-            foreach (var kv in _plugin.ConvarChangeHandlers)
-            {
-                // var convar = (ConVar)kv.Value.GetValue();
-                // _plugin.UnhookConVarChange((ConVar)kv.Value.GetValue(), (ConVar.ConVarChangedCallback)kv.Key);
-                // convar.Unregister();
-            }
-
-            foreach (var kv in _plugin.Listeners)
-            {
-                _plugin.RemoveListener((string)kv.Value.GetValue(), kv.Key);
-            }
-
-            foreach (var timer in _plugin.Timers)
-            {
-                timer.Kill();
-            }
+            _plugin.Dispose();
 
             if (!hotReload) _assemblyLoader.Dispose();
 
