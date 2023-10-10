@@ -15,16 +15,16 @@ namespace CounterStrikeSharp.API.Core
                 // entindex of the player
                 public int Player 
                 {
-                    get => GetInt("player");
-                    set => SetInt("player", value);
+                    get => Get<int>("player");
+                    set => Set<int>("player", value);
                 }
 
                 
                 // achievement ID
                 public int Achievement 
                 {
-                    get => GetInt("achievement");
-                    set => SetInt("achievement", value);
+                    get => Get<int>("achievement");
+                    set => Set<int>("achievement", value);
                 }
             }
 
@@ -38,16 +38,16 @@ namespace CounterStrikeSharp.API.Core
                 // achievement ID
                 public int Achievement 
                 {
-                    get => GetInt("achievement");
-                    set => SetInt("achievement", value);
+                    get => Get<int>("achievement");
+                    set => Set<int>("achievement", value);
                 }
 
                 
                 // splitscreen ID
                 public int Splitscreenplayer 
                 {
-                    get => GetInt("splitscreenplayer");
-                    set => SetInt("splitscreenplayer", value);
+                    get => Get<int>("splitscreenplayer");
+                    set => Set<int>("splitscreenplayer", value);
                 }
             }
 
@@ -61,24 +61,24 @@ namespace CounterStrikeSharp.API.Core
                 // non-localized name of achievement
                 public string AchievementName 
                 {
-                    get => GetString("achievement_name");
-                    set => SetString("achievement_name", value);
+                    get => Get<string>("achievement_name");
+                    set => Set<string>("achievement_name", value);
                 }
 
                 
                 // # of steps toward achievement
                 public int CurVal 
                 {
-                    get => GetInt("cur_val");
-                    set => SetInt("cur_val", value);
+                    get => Get<int>("cur_val");
+                    set => Set<int>("cur_val", value);
                 }
 
                 
                 // total # of steps in achievement
                 public int MaxVal 
                 {
-                    get => GetInt("max_val");
-                    set => SetInt("max_val", value);
+                    get => Get<int>("max_val");
+                    set => Set<int>("max_val", value);
                 }
             }
 
@@ -108,96 +108,96 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public int Bone 
                 {
-                    get => GetInt("bone");
-                    set => SetInt("bone", value);
+                    get => Get<int>("bone");
+                    set => Set<int>("bone", value);
                 }
 
                 
                 
                 public int PosX 
                 {
-                    get => GetInt("pos_x");
-                    set => SetInt("pos_x", value);
+                    get => Get<int>("pos_x");
+                    set => Set<int>("pos_x", value);
                 }
 
                 
                 
                 public int PosY 
                 {
-                    get => GetInt("pos_y");
-                    set => SetInt("pos_y", value);
+                    get => Get<int>("pos_y");
+                    set => Set<int>("pos_y", value);
                 }
 
                 
                 
                 public int PosZ 
                 {
-                    get => GetInt("pos_z");
-                    set => SetInt("pos_z", value);
+                    get => Get<int>("pos_z");
+                    set => Set<int>("pos_z", value);
                 }
 
                 
                 
                 public int AngX 
                 {
-                    get => GetInt("ang_x");
-                    set => SetInt("ang_x", value);
+                    get => Get<int>("ang_x");
+                    set => Set<int>("ang_x", value);
                 }
 
                 
                 
                 public int AngY 
                 {
-                    get => GetInt("ang_y");
-                    set => SetInt("ang_y", value);
+                    get => Get<int>("ang_y");
+                    set => Set<int>("ang_y", value);
                 }
 
                 
                 
                 public int AngZ 
                 {
-                    get => GetInt("ang_z");
-                    set => SetInt("ang_z", value);
+                    get => Get<int>("ang_z");
+                    set => Set<int>("ang_z", value);
                 }
 
                 
                 
                 public int StartX 
                 {
-                    get => GetInt("start_x");
-                    set => SetInt("start_x", value);
+                    get => Get<int>("start_x");
+                    set => Set<int>("start_x", value);
                 }
 
                 
                 
                 public int StartY 
                 {
-                    get => GetInt("start_y");
-                    set => SetInt("start_y", value);
+                    get => Get<int>("start_y");
+                    set => Set<int>("start_y", value);
                 }
 
                 
                 
                 public int StartZ 
                 {
-                    get => GetInt("start_z");
-                    set => SetInt("start_z", value);
+                    get => Get<int>("start_z");
+                    set => Set<int>("start_z", value);
                 }
 
                 
                 
                 public bool Hit 
                 {
-                    get => GetBool("hit");
-                    set => SetBool("hit", value);
+                    get => Get<bool>("hit");
+                    set => Set<bool>("hit", value);
                 }
             }
 
@@ -211,32 +211,32 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public float PosX 
                 {
-                    get => GetFloat("pos_x");
-                    set => SetFloat("pos_x", value);
+                    get => Get<float>("pos_x");
+                    set => Set<float>("pos_x", value);
                 }
 
                 
                 
                 public float PosY 
                 {
-                    get => GetFloat("pos_y");
-                    set => SetFloat("pos_y", value);
+                    get => Get<float>("pos_y");
+                    set => Set<float>("pos_y", value);
                 }
 
                 
                 
                 public float PosZ 
                 {
-                    get => GetFloat("pos_z");
-                    set => SetFloat("pos_z", value);
+                    get => Get<float>("pos_z");
+                    set => Set<float>("pos_z", value);
                 }
             }
 
@@ -250,24 +250,24 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // either a weapon such as 'tmp' or 'hegrenade', or an item such as 'nvgs'
                 public string Item 
                 {
-                    get => GetString("item");
-                    set => SetString("item", value);
+                    get => Get<string>("item");
+                    set => Set<string>("item", value);
                 }
 
                 
                 // the weapon entindex
                 public long Index 
                 {
-                    get => GetInt("index");
-                    set => SetInt("index", value);
+                    get => Get<long>("index");
+                    set => Set<long>("index", value);
                 }
             }
 
@@ -281,16 +281,16 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public bool Success 
                 {
-                    get => GetBool("success");
-                    set => SetBool("success", value);
+                    get => Get<bool>("success");
+                    set => Set<bool>("success", value);
                 }
             }
 
@@ -320,8 +320,8 @@ namespace CounterStrikeSharp.API.Core
                 // player who was defusing
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -335,16 +335,16 @@ namespace CounterStrikeSharp.API.Core
                 // player who is planting the bomb
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // bombsite index
                 public int Site 
                 {
-                    get => GetInt("site");
-                    set => SetInt("site", value);
+                    get => Get<int>("site");
+                    set => Set<int>("site", value);
                 }
             }
 
@@ -358,8 +358,8 @@ namespace CounterStrikeSharp.API.Core
                 // c4 entity
                 public long Entindex 
                 {
-                    get => GetInt("entindex");
-                    set => SetInt("entindex", value);
+                    get => Get<long>("entindex");
+                    set => Set<long>("entindex", value);
                 }
             }
 
@@ -373,16 +373,16 @@ namespace CounterStrikeSharp.API.Core
                 // player who is defusing
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public bool Haskit 
                 {
-                    get => GetBool("haskit");
-                    set => SetBool("haskit", value);
+                    get => Get<bool>("haskit");
+                    set => Set<bool>("haskit", value);
                 }
             }
 
@@ -396,16 +396,16 @@ namespace CounterStrikeSharp.API.Core
                 // player who is planting the bomb
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // bombsite index
                 public int Site 
                 {
-                    get => GetInt("site");
-                    set => SetInt("site", value);
+                    get => Get<int>("site");
+                    set => Set<int>("site", value);
                 }
             }
 
@@ -419,16 +419,16 @@ namespace CounterStrikeSharp.API.Core
                 // player who defused the bomb
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // bombsite index
                 public int Site 
                 {
-                    get => GetInt("site");
-                    set => SetInt("site", value);
+                    get => Get<int>("site");
+                    set => Set<int>("site", value);
                 }
             }
 
@@ -442,16 +442,16 @@ namespace CounterStrikeSharp.API.Core
                 // player who dropped the bomb
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public long Entindex 
                 {
-                    get => GetInt("entindex");
-                    set => SetInt("entindex", value);
+                    get => Get<long>("entindex");
+                    set => Set<long>("entindex", value);
                 }
             }
 
@@ -465,16 +465,16 @@ namespace CounterStrikeSharp.API.Core
                 // player who planted the bomb
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // bombsite index
                 public int Site 
                 {
-                    get => GetInt("site");
-                    set => SetInt("site", value);
+                    get => Get<int>("site");
+                    set => Set<int>("site", value);
                 }
             }
 
@@ -488,8 +488,8 @@ namespace CounterStrikeSharp.API.Core
                 // player pawn who picked up the bomb
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -503,16 +503,16 @@ namespace CounterStrikeSharp.API.Core
                 // player who planted the bomb
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // bombsite index
                 public int Site 
                 {
-                    get => GetInt("site");
-                    set => SetInt("site", value);
+                    get => Get<int>("site");
+                    set => Set<int>("site", value);
                 }
             }
 
@@ -526,32 +526,32 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Numadvanced 
                 {
-                    get => GetInt("numadvanced");
-                    set => SetInt("numadvanced", value);
+                    get => Get<int>("numadvanced");
+                    set => Set<int>("numadvanced", value);
                 }
 
                 
                 
                 public int Numbronze 
                 {
-                    get => GetInt("numbronze");
-                    set => SetInt("numbronze", value);
+                    get => Get<int>("numbronze");
+                    set => Set<int>("numbronze", value);
                 }
 
                 
                 
                 public int Numsilver 
                 {
-                    get => GetInt("numsilver");
-                    set => SetInt("numsilver", value);
+                    get => Get<int>("numsilver");
+                    set => Set<int>("numsilver", value);
                 }
 
                 
                 
                 public int Numgold 
                 {
-                    get => GetInt("numgold");
-                    set => SetInt("numgold", value);
+                    get => Get<int>("numgold");
+                    set => Set<int>("numgold", value);
                 }
             }
 
@@ -565,40 +565,40 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public int Botid 
                 {
-                    get => GetInt("botid");
-                    set => SetInt("botid", value);
+                    get => Get<int>("botid");
+                    set => Set<int>("botid", value);
                 }
 
                 
                 
                 public float P 
                 {
-                    get => GetFloat("p");
-                    set => SetFloat("p", value);
+                    get => Get<float>("p");
+                    set => Set<float>("p", value);
                 }
 
                 
                 
                 public float Y 
                 {
-                    get => GetFloat("y");
-                    set => SetFloat("y", value);
+                    get => Get<float>("y");
+                    set => Set<float>("y", value);
                 }
 
                 
                 
                 public float R 
                 {
-                    get => GetFloat("r");
-                    set => SetFloat("r", value);
+                    get => Get<float>("r");
+                    set => Set<float>("r", value);
                 }
             }
 
@@ -612,24 +612,24 @@ namespace CounterStrikeSharp.API.Core
                 
                 public long Entindex 
                 {
-                    get => GetInt("entindex");
-                    set => SetInt("entindex", value);
+                    get => Get<long>("entindex");
+                    set => Set<long>("entindex", value);
                 }
 
                 
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // BREAK_GLASS, BREAK_WOOD, etc
                 public int Material 
                 {
-                    get => GetInt("material");
-                    set => SetInt("material", value);
+                    get => Get<int>("material");
+                    set => Set<int>("material", value);
                 }
             }
 
@@ -643,16 +643,16 @@ namespace CounterStrikeSharp.API.Core
                 
                 public long Entindex 
                 {
-                    get => GetInt("entindex");
-                    set => SetInt("entindex", value);
+                    get => Get<long>("entindex");
+                    set => Set<long>("entindex", value);
                 }
 
                 
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -666,24 +666,24 @@ namespace CounterStrikeSharp.API.Core
                 
                 public long Entindex 
                 {
-                    get => GetInt("entindex");
-                    set => SetInt("entindex", value);
+                    get => Get<long>("entindex");
+                    set => Set<long>("entindex", value);
                 }
 
                 
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // BREAK_GLASS, BREAK_WOOD, etc
                 public int Material 
                 {
-                    get => GetInt("material");
-                    set => SetInt("material", value);
+                    get => Get<int>("material");
+                    set => Set<int>("material", value);
                 }
             }
 
@@ -697,80 +697,80 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public int PosX 
                 {
-                    get => GetInt("pos_x");
-                    set => SetInt("pos_x", value);
+                    get => Get<int>("pos_x");
+                    set => Set<int>("pos_x", value);
                 }
 
                 
                 
                 public int PosY 
                 {
-                    get => GetInt("pos_y");
-                    set => SetInt("pos_y", value);
+                    get => Get<int>("pos_y");
+                    set => Set<int>("pos_y", value);
                 }
 
                 
                 
                 public int PosZ 
                 {
-                    get => GetInt("pos_z");
-                    set => SetInt("pos_z", value);
+                    get => Get<int>("pos_z");
+                    set => Set<int>("pos_z", value);
                 }
 
                 
                 
                 public int AngX 
                 {
-                    get => GetInt("ang_x");
-                    set => SetInt("ang_x", value);
+                    get => Get<int>("ang_x");
+                    set => Set<int>("ang_x", value);
                 }
 
                 
                 
                 public int AngY 
                 {
-                    get => GetInt("ang_y");
-                    set => SetInt("ang_y", value);
+                    get => Get<int>("ang_y");
+                    set => Set<int>("ang_y", value);
                 }
 
                 
                 
                 public int AngZ 
                 {
-                    get => GetInt("ang_z");
-                    set => SetInt("ang_z", value);
+                    get => Get<int>("ang_z");
+                    set => Set<int>("ang_z", value);
                 }
 
                 
                 
                 public int StartX 
                 {
-                    get => GetInt("start_x");
-                    set => SetInt("start_x", value);
+                    get => Get<int>("start_x");
+                    set => Set<int>("start_x", value);
                 }
 
                 
                 
                 public int StartY 
                 {
-                    get => GetInt("start_y");
-                    set => SetInt("start_y", value);
+                    get => Get<int>("start_y");
+                    set => Set<int>("start_y", value);
                 }
 
                 
                 
                 public int StartZ 
                 {
-                    get => GetInt("start_z");
-                    set => SetInt("start_z", value);
+                    get => Get<int>("start_z");
+                    set => Set<int>("start_z", value);
                 }
             }
 
@@ -784,32 +784,32 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public float X 
                 {
-                    get => GetFloat("x");
-                    set => SetFloat("x", value);
+                    get => Get<float>("x");
+                    set => Set<float>("x", value);
                 }
 
                 
                 
                 public float Y 
                 {
-                    get => GetFloat("y");
-                    set => SetFloat("y", value);
+                    get => Get<float>("y");
+                    set => Set<float>("y", value);
                 }
 
                 
                 
                 public float Z 
                 {
-                    get => GetFloat("z");
-                    set => SetFloat("z", value);
+                    get => Get<float>("z");
+                    set => Set<float>("z", value);
                 }
             }
 
@@ -823,8 +823,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -862,8 +862,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public bool Global 
                 {
-                    get => GetBool("global");
-                    set => SetBool("global", value);
+                    get => Get<bool>("global");
+                    set => Set<bool>("global", value);
                 }
             }
 
@@ -893,8 +893,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public string LessonName 
                 {
-                    get => GetString("lesson_name");
-                    set => SetString("lesson_name", value);
+                    get => Get<string>("lesson_name");
+                    set => Set<string>("lesson_name", value);
                 }
             }
 
@@ -940,8 +940,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public bool Next 
                 {
-                    get => GetBool("next");
-                    set => SetBool("next", value);
+                    get => Get<bool>("next");
+                    set => Set<bool>("next", value);
                 }
             }
 
@@ -979,72 +979,72 @@ namespace CounterStrikeSharp.API.Core
                 
                 public bool ShowTimerDefend 
                 {
-                    get => GetBool("show_timer_defend");
-                    set => SetBool("show_timer_defend", value);
+                    get => Get<bool>("show_timer_defend");
+                    set => Set<bool>("show_timer_defend", value);
                 }
 
                 
                 
                 public bool ShowTimerAttack 
                 {
-                    get => GetBool("show_timer_attack");
-                    set => SetBool("show_timer_attack", value);
+                    get => Get<bool>("show_timer_attack");
+                    set => Set<bool>("show_timer_attack", value);
                 }
 
                 
                 
                 public int TimerTime 
                 {
-                    get => GetInt("timer_time");
-                    set => SetInt("timer_time", value);
+                    get => Get<int>("timer_time");
+                    set => Set<int>("timer_time", value);
                 }
 
                 
                 // define in cs_gamerules.h
                 public int FinalEvent 
                 {
-                    get => GetInt("final_event");
-                    set => SetInt("final_event", value);
+                    get => Get<int>("final_event");
+                    set => Set<int>("final_event", value);
                 }
 
                 
                 
                 public string FunfactToken 
                 {
-                    get => GetString("funfact_token");
-                    set => SetString("funfact_token", value);
+                    get => Get<string>("funfact_token");
+                    set => Set<string>("funfact_token", value);
                 }
 
                 
                 
                 public int FunfactPlayer 
                 {
-                    get => GetInt("funfact_player");
-                    set => SetInt("funfact_player", value);
+                    get => Get<int>("funfact_player");
+                    set => Set<int>("funfact_player", value);
                 }
 
                 
                 
                 public long FunfactData1 
                 {
-                    get => GetInt("funfact_data1");
-                    set => SetInt("funfact_data1", value);
+                    get => Get<long>("funfact_data1");
+                    set => Set<long>("funfact_data1", value);
                 }
 
                 
                 
                 public long FunfactData2 
                 {
-                    get => GetInt("funfact_data2");
-                    set => SetInt("funfact_data2", value);
+                    get => Get<long>("funfact_data2");
+                    set => Set<long>("funfact_data2", value);
                 }
 
                 
                 
                 public long FunfactData3 
                 {
-                    get => GetInt("funfact_data3");
-                    set => SetInt("funfact_data3", value);
+                    get => Get<long>("funfact_data3");
+                    set => Set<long>("funfact_data3", value);
                 }
             }
 
@@ -1058,40 +1058,40 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public int Entityid 
                 {
-                    get => GetInt("entityid");
-                    set => SetInt("entityid", value);
+                    get => Get<int>("entityid");
+                    set => Set<int>("entityid", value);
                 }
 
                 
                 
                 public float X 
                 {
-                    get => GetFloat("x");
-                    set => SetFloat("x", value);
+                    get => Get<float>("x");
+                    set => Set<float>("x", value);
                 }
 
                 
                 
                 public float Y 
                 {
-                    get => GetFloat("y");
-                    set => SetFloat("y", value);
+                    get => Get<float>("y");
+                    set => Set<float>("y", value);
                 }
 
                 
                 
                 public float Z 
                 {
-                    get => GetFloat("z");
-                    set => SetFloat("z", value);
+                    get => Get<float>("z");
+                    set => Set<float>("z", value);
                 }
             }
 
@@ -1105,40 +1105,40 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public int Entityid 
                 {
-                    get => GetInt("entityid");
-                    set => SetInt("entityid", value);
+                    get => Get<int>("entityid");
+                    set => Set<int>("entityid", value);
                 }
 
                 
                 
                 public float X 
                 {
-                    get => GetFloat("x");
-                    set => SetFloat("x", value);
+                    get => Get<float>("x");
+                    set => Set<float>("x", value);
                 }
 
                 
                 
                 public float Y 
                 {
-                    get => GetFloat("y");
-                    set => SetFloat("y", value);
+                    get => Get<float>("y");
+                    set => Set<float>("y", value);
                 }
 
                 
                 
                 public float Z 
                 {
-                    get => GetFloat("z");
-                    set => SetFloat("z", value);
+                    get => Get<float>("z");
+                    set => Set<float>("z", value);
                 }
             }
 
@@ -1152,40 +1152,40 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public int Entityid 
                 {
-                    get => GetInt("entityid");
-                    set => SetInt("entityid", value);
+                    get => Get<int>("entityid");
+                    set => Set<int>("entityid", value);
                 }
 
                 
                 
                 public float X 
                 {
-                    get => GetFloat("x");
-                    set => SetFloat("x", value);
+                    get => Get<float>("x");
+                    set => Set<float>("x", value);
                 }
 
                 
                 
                 public float Y 
                 {
-                    get => GetFloat("y");
-                    set => SetFloat("y", value);
+                    get => Get<float>("y");
+                    set => Set<float>("y", value);
                 }
 
                 
                 
                 public float Z 
                 {
-                    get => GetFloat("z");
-                    set => SetFloat("z", value);
+                    get => Get<float>("z");
+                    set => Set<float>("z", value);
                 }
             }
 
@@ -1199,8 +1199,8 @@ namespace CounterStrikeSharp.API.Core
                 // defuser's entity ID
                 public long Entityid 
                 {
-                    get => GetInt("entityid");
-                    set => SetInt("entityid", value);
+                    get => Get<long>("entityid");
+                    set => Set<long>("entityid", value);
                 }
             }
 
@@ -1214,16 +1214,16 @@ namespace CounterStrikeSharp.API.Core
                 // defuser's entity ID
                 public long Entityid 
                 {
-                    get => GetInt("entityid");
-                    set => SetInt("entityid", value);
+                    get => Get<long>("entityid");
+                    set => Set<long>("entityid", value);
                 }
 
                 
                 // player who picked up the defuser
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -1237,40 +1237,40 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Local 
                 {
-                    get => GetInt("local");
-                    set => SetInt("local", value);
+                    get => Get<int>("local");
+                    set => Set<int>("local", value);
                 }
 
                 
                 // current playback tick
                 public long PlaybackTick 
                 {
-                    get => GetInt("playback_tick");
-                    set => SetInt("playback_tick", value);
+                    get => Get<long>("playback_tick");
+                    set => Set<long>("playback_tick", value);
                 }
 
                 
                 // tick we're going to
                 public long SkiptoTick 
                 {
-                    get => GetInt("skipto_tick");
-                    set => SetInt("skipto_tick", value);
+                    get => Get<long>("skipto_tick");
+                    set => Set<long>("skipto_tick", value);
                 }
 
                 
                 // CSVCMsgList_UserMessages
                 public int UserMessageList 
                 {
-                    get => GetInt("user_message_list");
-                    set => SetInt("user_message_list", value);
+                    get => Get<int>("user_message_list");
+                    set => Set<int>("user_message_list", value);
                 }
 
                 
                 // CSVCMsgList_GameEvents
                 public int DotaHeroChaseList 
                 {
-                    get => GetInt("dota_hero_chase_list");
-                    set => SetInt("dota_hero_chase_list", value);
+                    get => Get<int>("dota_hero_chase_list");
+                    set => Set<int>("dota_hero_chase_list", value);
                 }
             }
 
@@ -1284,32 +1284,32 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Local 
                 {
-                    get => GetInt("local");
-                    set => SetInt("local", value);
+                    get => Get<int>("local");
+                    set => Set<int>("local", value);
                 }
 
                 
                 // CSVCMsgList_GameEvents that are combat log events
                 public int DotaCombatlogList 
                 {
-                    get => GetInt("dota_combatlog_list");
-                    set => SetInt("dota_combatlog_list", value);
+                    get => Get<int>("dota_combatlog_list");
+                    set => Set<int>("dota_combatlog_list", value);
                 }
 
                 
                 // CSVCMsgList_GameEvents
                 public int DotaHeroChaseList 
                 {
-                    get => GetInt("dota_hero_chase_list");
-                    set => SetInt("dota_hero_chase_list", value);
+                    get => Get<int>("dota_hero_chase_list");
+                    set => Set<int>("dota_hero_chase_list", value);
                 }
 
                 
                 // CSVCMsgList_GameEvents
                 public int DotaPickHeroList 
                 {
-                    get => GetInt("dota_pick_hero_list");
-                    set => SetInt("dota_pick_hero_list", value);
+                    get => Get<int>("dota_pick_hero_list");
+                    set => Set<int>("dota_pick_hero_list", value);
                 }
             }
 
@@ -1331,24 +1331,24 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Newdifficulty 
                 {
-                    get => GetInt("newDifficulty");
-                    set => SetInt("newDifficulty", value);
+                    get => Get<int>("newDifficulty");
+                    set => Set<int>("newDifficulty", value);
                 }
 
                 
                 
                 public int Olddifficulty 
                 {
-                    get => GetInt("oldDifficulty");
-                    set => SetInt("oldDifficulty", value);
+                    get => Get<int>("oldDifficulty");
+                    set => Set<int>("oldDifficulty", value);
                 }
 
                 
                 // new difficulty as string
                 public string Strdifficulty 
                 {
-                    get => GetString("strDifficulty");
-                    set => SetString("strDifficulty", value);
+                    get => Get<string>("strDifficulty");
+                    set => Set<string>("strDifficulty", value);
                 }
             }
 
@@ -1362,16 +1362,16 @@ namespace CounterStrikeSharp.API.Core
                 // The length of time that this bonus lasts
                 public int Time 
                 {
-                    get => GetInt("time");
-                    set => SetInt("time", value);
+                    get => Get<int>("time");
+                    set => Set<int>("time", value);
                 }
 
                 
                 // Loadout position of the bonus weapon
                 public int Pos 
                 {
-                    get => GetInt("Pos");
-                    set => SetInt("Pos", value);
+                    get => Get<int>("Pos");
+                    set => Set<int>("Pos", value);
                 }
             }
 
@@ -1385,16 +1385,16 @@ namespace CounterStrikeSharp.API.Core
                 
                 public long Entindex 
                 {
-                    get => GetInt("entindex");
-                    set => SetInt("entindex", value);
+                    get => Get<long>("entindex");
+                    set => Set<long>("entindex", value);
                 }
 
                 
                 
                 public long Dmgstate 
                 {
-                    get => GetInt("dmgstate");
-                    set => SetInt("dmgstate", value);
+                    get => Get<long>("dmgstate");
+                    set => Set<long>("dmgstate", value);
                 }
             }
 
@@ -1408,16 +1408,16 @@ namespace CounterStrikeSharp.API.Core
                 // Who closed the door
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // Is the door a checkpoint door
                 public bool Checkpoint 
                 {
-                    get => GetBool("checkpoint");
-                    set => SetBool("checkpoint", value);
+                    get => Get<bool>("checkpoint");
+                    set => Set<bool>("checkpoint", value);
                 }
             }
 
@@ -1431,16 +1431,16 @@ namespace CounterStrikeSharp.API.Core
                 // Who closed the door
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public long Entindex 
                 {
-                    get => GetInt("entindex");
-                    set => SetInt("entindex", value);
+                    get => Get<long>("entindex");
+                    set => Set<long>("entindex", value);
                 }
             }
 
@@ -1454,16 +1454,16 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public long Entindex 
                 {
-                    get => GetInt("entindex");
-                    set => SetInt("entindex", value);
+                    get => Get<long>("entindex");
+                    set => Set<long>("entindex", value);
                 }
             }
 
@@ -1477,16 +1477,16 @@ namespace CounterStrikeSharp.API.Core
                 // Who closed the door
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public long Entindex 
                 {
-                    get => GetInt("entindex");
-                    set => SetInt("entindex", value);
+                    get => Get<long>("entindex");
+                    set => Set<long>("entindex", value);
                 }
             }
 
@@ -1500,16 +1500,16 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public int Cargo 
                 {
-                    get => GetInt("cargo");
-                    set => SetInt("cargo", value);
+                    get => Get<int>("cargo");
+                    set => Set<int>("cargo", value);
                 }
             }
 
@@ -1523,24 +1523,24 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public int Cargo 
                 {
-                    get => GetInt("cargo");
-                    set => SetInt("cargo", value);
+                    get => Get<int>("cargo");
+                    set => Set<int>("cargo", value);
                 }
 
                 
                 
                 public bool Delivered 
                 {
-                    get => GetBool("delivered");
-                    set => SetBool("delivered", value);
+                    get => Get<bool>("delivered");
+                    set => Set<bool>("delivered", value);
                 }
             }
 
@@ -1554,24 +1554,24 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public int Priority 
                 {
-                    get => GetInt("priority");
-                    set => SetInt("priority", value);
+                    get => Get<int>("priority");
+                    set => Set<int>("priority", value);
                 }
 
                 
                 
                 public int DroneDispatchedParam 
                 {
-                    get => GetInt("drone_dispatched");
-                    set => SetInt("drone_dispatched", value);
+                    get => Get<int>("drone_dispatched");
+                    set => Set<int>("drone_dispatched", value);
                 }
             }
 
@@ -1585,8 +1585,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -1616,24 +1616,24 @@ namespace CounterStrikeSharp.API.Core
                 // player entindex
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // crate entindex
                 public int Subject 
                 {
-                    get => GetInt("subject");
-                    set => SetInt("subject", value);
+                    get => Get<int>("subject");
+                    set => Set<int>("subject", value);
                 }
 
                 
                 // type of crate (metal, wood, or paradrop)
                 public string Type 
                 {
-                    get => GetString("type");
-                    set => SetString("type", value);
+                    get => Get<string>("type");
+                    set => Set<string>("type", value);
                 }
             }
 
@@ -1647,8 +1647,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public bool Enable 
                 {
-                    get => GetBool("enable");
-                    set => SetBool("enable", value);
+                    get => Get<bool>("enable");
+                    set => Set<bool>("enable", value);
                 }
             }
 
@@ -1670,88 +1670,88 @@ namespace CounterStrikeSharp.API.Core
                 // Number of "ties"
                 public int Count 
                 {
-                    get => GetInt("count");
-                    set => SetInt("count", value);
+                    get => Get<int>("count");
+                    set => Set<int>("count", value);
                 }
 
                 
                 
                 public int Slot1 
                 {
-                    get => GetInt("slot1");
-                    set => SetInt("slot1", value);
+                    get => Get<int>("slot1");
+                    set => Set<int>("slot1", value);
                 }
 
                 
                 
                 public int Slot2 
                 {
-                    get => GetInt("slot2");
-                    set => SetInt("slot2", value);
+                    get => Get<int>("slot2");
+                    set => Set<int>("slot2", value);
                 }
 
                 
                 
                 public int Slot3 
                 {
-                    get => GetInt("slot3");
-                    set => SetInt("slot3", value);
+                    get => Get<int>("slot3");
+                    set => Set<int>("slot3", value);
                 }
 
                 
                 
                 public int Slot4 
                 {
-                    get => GetInt("slot4");
-                    set => SetInt("slot4", value);
+                    get => Get<int>("slot4");
+                    set => Set<int>("slot4", value);
                 }
 
                 
                 
                 public int Slot5 
                 {
-                    get => GetInt("slot5");
-                    set => SetInt("slot5", value);
+                    get => Get<int>("slot5");
+                    set => Set<int>("slot5", value);
                 }
 
                 
                 
                 public int Slot6 
                 {
-                    get => GetInt("slot6");
-                    set => SetInt("slot6", value);
+                    get => Get<int>("slot6");
+                    set => Set<int>("slot6", value);
                 }
 
                 
                 
                 public int Slot7 
                 {
-                    get => GetInt("slot7");
-                    set => SetInt("slot7", value);
+                    get => Get<int>("slot7");
+                    set => Set<int>("slot7", value);
                 }
 
                 
                 
                 public int Slot8 
                 {
-                    get => GetInt("slot8");
-                    set => SetInt("slot8", value);
+                    get => Get<int>("slot8");
+                    set => Set<int>("slot8", value);
                 }
 
                 
                 
                 public int Slot9 
                 {
-                    get => GetInt("slot9");
-                    set => SetInt("slot9", value);
+                    get => Get<int>("slot9");
+                    set => Set<int>("slot9", value);
                 }
 
                 
                 
                 public int Slot10 
                 {
-                    get => GetInt("slot10");
-                    set => SetInt("slot10", value);
+                    get => Get<int>("slot10");
+                    set => Set<int>("slot10", value);
                 }
             }
 
@@ -1765,24 +1765,24 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public bool Hasbomb 
                 {
-                    get => GetBool("hasbomb");
-                    set => SetBool("hasbomb", value);
+                    get => Get<bool>("hasbomb");
+                    set => Set<bool>("hasbomb", value);
                 }
 
                 
                 
                 public bool Isplanted 
                 {
-                    get => GetBool("isplanted");
-                    set => SetBool("isplanted", value);
+                    get => Get<bool>("isplanted");
+                    set => Set<bool>("isplanted", value);
                 }
             }
 
@@ -1796,16 +1796,16 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public bool Canbuy 
                 {
-                    get => GetBool("canbuy");
-                    set => SetBool("canbuy", value);
+                    get => Get<bool>("canbuy");
+                    set => Set<bool>("canbuy", value);
                 }
             }
 
@@ -1819,8 +1819,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -1834,32 +1834,32 @@ namespace CounterStrikeSharp.API.Core
                 
                 public long EntindexKilled 
                 {
-                    get => GetInt("entindex_killed");
-                    set => SetInt("entindex_killed", value);
+                    get => Get<long>("entindex_killed");
+                    set => Set<long>("entindex_killed", value);
                 }
 
                 
                 
                 public long EntindexAttacker 
                 {
-                    get => GetInt("entindex_attacker");
-                    set => SetInt("entindex_attacker", value);
+                    get => Get<long>("entindex_attacker");
+                    set => Set<long>("entindex_attacker", value);
                 }
 
                 
                 
                 public long EntindexInflictor 
                 {
-                    get => GetInt("entindex_inflictor");
-                    set => SetInt("entindex_inflictor", value);
+                    get => Get<long>("entindex_inflictor");
+                    set => Set<long>("entindex_inflictor", value);
                 }
 
                 
                 
                 public long Damagebits 
                 {
-                    get => GetInt("damagebits");
-                    set => SetInt("damagebits", value);
+                    get => Get<long>("damagebits");
+                    set => Set<long>("damagebits", value);
                 }
             }
 
@@ -1873,32 +1873,32 @@ namespace CounterStrikeSharp.API.Core
                 // The player who sees the entity
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // Entindex of the entity they see
                 public int Subject 
                 {
-                    get => GetInt("subject");
-                    set => SetInt("subject", value);
+                    get => Get<int>("subject");
+                    set => Set<int>("subject", value);
                 }
 
                 
                 // Classname of the entity they see
                 public string Classname 
                 {
-                    get => GetString("classname");
-                    set => SetString("classname", value);
+                    get => Get<string>("classname");
+                    set => Set<string>("classname", value);
                 }
 
                 
                 // name of the entity they see
                 public string Entityname 
                 {
-                    get => GetString("entityname");
-                    set => SetString("entityname", value);
+                    get => Get<string>("entityname");
+                    set => Set<string>("entityname", value);
                 }
             }
 
@@ -1920,24 +1920,24 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public bool Hasbomb 
                 {
-                    get => GetBool("hasbomb");
-                    set => SetBool("hasbomb", value);
+                    get => Get<bool>("hasbomb");
+                    set => Set<bool>("hasbomb", value);
                 }
 
                 
                 
                 public bool Isplanted 
                 {
-                    get => GetBool("isplanted");
-                    set => SetBool("isplanted", value);
+                    get => Get<bool>("isplanted");
+                    set => Set<bool>("isplanted", value);
                 }
             }
 
@@ -1951,16 +1951,16 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public bool Canbuy 
                 {
-                    get => GetBool("canbuy");
-                    set => SetBool("canbuy", value);
+                    get => Get<bool>("canbuy");
+                    set => Set<bool>("canbuy", value);
                 }
             }
 
@@ -1974,8 +1974,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -1989,8 +1989,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Rushes 
                 {
-                    get => GetInt("rushes");
-                    set => SetInt("rushes", value);
+                    get => Get<int>("rushes");
+                    set => Set<int>("rushes", value);
                 }
             }
 
@@ -2004,8 +2004,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public bool Global 
                 {
-                    get => GetBool("global");
-                    set => SetBool("global", value);
+                    get => Get<bool>("global");
+                    set => Set<bool>("global", value);
                 }
             }
 
@@ -2019,8 +2019,8 @@ namespace CounterStrikeSharp.API.Core
                 // entity ignited
                 public long Entindex 
                 {
-                    get => GetInt("entindex");
-                    set => SetInt("entindex", value);
+                    get => Get<long>("entindex");
+                    set => Set<long>("entindex", value);
                 }
             }
 
@@ -2034,40 +2034,40 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public int Entityid 
                 {
-                    get => GetInt("entityid");
-                    set => SetInt("entityid", value);
+                    get => Get<int>("entityid");
+                    set => Set<int>("entityid", value);
                 }
 
                 
                 
                 public float X 
                 {
-                    get => GetFloat("x");
-                    set => SetFloat("x", value);
+                    get => Get<float>("x");
+                    set => Set<float>("x", value);
                 }
 
                 
                 
                 public float Y 
                 {
-                    get => GetFloat("y");
-                    set => SetFloat("y", value);
+                    get => Get<float>("y");
+                    set => Set<float>("y", value);
                 }
 
                 
                 
                 public float Z 
                 {
-                    get => GetFloat("z");
-                    set => SetFloat("z", value);
+                    get => Get<float>("z");
+                    set => Set<float>("z", value);
                 }
             }
 
@@ -2081,8 +2081,8 @@ namespace CounterStrikeSharp.API.Core
                 // winner team/user id
                 public int Winner 
                 {
-                    get => GetInt("winner");
-                    set => SetInt("winner", value);
+                    get => Get<int>("winner");
+                    set => Set<int>("winner", value);
                 }
             }
 
@@ -2120,16 +2120,16 @@ namespace CounterStrikeSharp.API.Core
                 // 0 = console, 1 = HUD
                 public int Target 
                 {
-                    get => GetInt("target");
-                    set => SetInt("target", value);
+                    get => Get<int>("target");
+                    set => Set<int>("target", value);
                 }
 
                 
                 // the message text
                 public string Text 
                 {
-                    get => GetString("text");
-                    set => SetString("text", value);
+                    get => Get<string>("text");
+                    set => Set<string>("text", value);
                 }
             }
 
@@ -2143,8 +2143,8 @@ namespace CounterStrikeSharp.API.Core
                 // map name
                 public string Mapname 
                 {
-                    get => GetString("mapname");
-                    set => SetString("mapname", value);
+                    get => Get<string>("mapname");
+                    set => Set<string>("mapname", value);
                 }
             }
 
@@ -2158,8 +2158,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int NewPhase 
                 {
-                    get => GetInt("new_phase");
-                    set => SetInt("new_phase", value);
+                    get => Get<int>("new_phase");
+                    set => Set<int>("new_phase", value);
                 }
             }
 
@@ -2173,32 +2173,32 @@ namespace CounterStrikeSharp.API.Core
                 // max round
                 public long Roundslimit 
                 {
-                    get => GetInt("roundslimit");
-                    set => SetInt("roundslimit", value);
+                    get => Get<long>("roundslimit");
+                    set => Set<long>("roundslimit", value);
                 }
 
                 
                 // time limit
                 public long Timelimit 
                 {
-                    get => GetInt("timelimit");
-                    set => SetInt("timelimit", value);
+                    get => Get<long>("timelimit");
+                    set => Set<long>("timelimit", value);
                 }
 
                 
                 // frag limit
                 public long Fraglimit 
                 {
-                    get => GetInt("fraglimit");
-                    set => SetInt("fraglimit", value);
+                    get => Get<long>("fraglimit");
+                    set => Set<long>("fraglimit", value);
                 }
 
                 
                 // round objective
                 public string Objective 
                 {
-                    get => GetString("objective");
-                    set => SetString("objective", value);
+                    get => Get<string>("objective");
+                    set => Set<string>("objective", value);
                 }
             }
 
@@ -2228,40 +2228,40 @@ namespace CounterStrikeSharp.API.Core
                 // user ID who died
                 public int Victimid 
                 {
-                    get => GetInt("victimid");
-                    set => SetInt("victimid", value);
+                    get => Get<int>("victimid");
+                    set => Set<int>("victimid", value);
                 }
 
                 
                 // user ID who killed
                 public int Attackerid 
                 {
-                    get => GetInt("attackerid");
-                    set => SetInt("attackerid", value);
+                    get => Get<int>("attackerid");
+                    set => Set<int>("attackerid", value);
                 }
 
                 
                 // did killer dominate victim with this kill
                 public int Dominated 
                 {
-                    get => GetInt("dominated");
-                    set => SetInt("dominated", value);
+                    get => Get<int>("dominated");
+                    set => Set<int>("dominated", value);
                 }
 
                 
                 // did killer get revenge on victim with this kill
                 public int Revenge 
                 {
-                    get => GetInt("revenge");
-                    set => SetInt("revenge", value);
+                    get => Get<int>("revenge");
+                    set => Set<int>("revenge", value);
                 }
 
                 
                 // did killer kill with a bonus weapon?
                 public bool Bonus 
                 {
-                    get => GetBool("bonus");
-                    set => SetBool("bonus", value);
+                    get => Get<bool>("bonus");
+                    set => Set<bool>("bonus", value);
                 }
             }
 
@@ -2275,8 +2275,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -2290,16 +2290,16 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // weapon name used
                 public string Weapon 
                 {
-                    get => GetString("weapon");
-                    set => SetString("weapon", value);
+                    get => Get<string>("weapon");
+                    set => Set<string>("weapon", value);
                 }
             }
 
@@ -2321,40 +2321,40 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public int Entityid 
                 {
-                    get => GetInt("entityid");
-                    set => SetInt("entityid", value);
+                    get => Get<int>("entityid");
+                    set => Set<int>("entityid", value);
                 }
 
                 
                 
                 public float X 
                 {
-                    get => GetFloat("x");
-                    set => SetFloat("x", value);
+                    get => Get<float>("x");
+                    set => Set<float>("x", value);
                 }
 
                 
                 
                 public float Y 
                 {
-                    get => GetFloat("y");
-                    set => SetFloat("y", value);
+                    get => Get<float>("y");
+                    set => Set<float>("y", value);
                 }
 
                 
                 
                 public float Z 
                 {
-                    get => GetFloat("z");
-                    set => SetFloat("z", value);
+                    get => Get<float>("z");
+                    set => Set<float>("z", value);
                 }
             }
 
@@ -2384,8 +2384,8 @@ namespace CounterStrikeSharp.API.Core
                 // camera man entity index
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -2399,24 +2399,24 @@ namespace CounterStrikeSharp.API.Core
                 
                 public long Oldmode 
                 {
-                    get => GetInt("oldmode");
-                    set => SetInt("oldmode", value);
+                    get => Get<long>("oldmode");
+                    set => Set<long>("oldmode", value);
                 }
 
                 
                 
                 public long Newmode 
                 {
-                    get => GetInt("newmode");
-                    set => SetInt("newmode", value);
+                    get => Get<long>("newmode");
+                    set => Set<long>("newmode", value);
                 }
 
                 
                 
                 public long ObsTarget 
                 {
-                    get => GetInt("obs_target");
-                    set => SetInt("obs_target", value);
+                    get => Get<long>("obs_target");
+                    set => Set<long>("obs_target", value);
                 }
             }
 
@@ -2430,56 +2430,56 @@ namespace CounterStrikeSharp.API.Core
                 // primary traget index
                 public int Target1 
                 {
-                    get => GetInt("target1");
-                    set => SetInt("target1", value);
+                    get => Get<int>("target1");
+                    set => Set<int>("target1", value);
                 }
 
                 
                 // secondary traget index or 0
                 public int Target2 
                 {
-                    get => GetInt("target2");
-                    set => SetInt("target2", value);
+                    get => Get<int>("target2");
+                    set => Set<int>("target2", value);
                 }
 
                 
                 // camera distance
                 public int Distance 
                 {
-                    get => GetInt("distance");
-                    set => SetInt("distance", value);
+                    get => Get<int>("distance");
+                    set => Set<int>("distance", value);
                 }
 
                 
                 // view angle horizontal
                 public int Theta 
                 {
-                    get => GetInt("theta");
-                    set => SetInt("theta", value);
+                    get => Get<int>("theta");
+                    set => Set<int>("theta", value);
                 }
 
                 
                 // view angle vertical
                 public int Phi 
                 {
-                    get => GetInt("phi");
-                    set => SetInt("phi", value);
+                    get => Get<int>("phi");
+                    set => Set<int>("phi", value);
                 }
 
                 
                 // camera inertia
                 public int Inertia 
                 {
-                    get => GetInt("inertia");
-                    set => SetInt("inertia", value);
+                    get => Get<int>("inertia");
+                    set => Set<int>("inertia", value);
                 }
 
                 
                 // diretcor suggests to show ineye
                 public int Ineye 
                 {
-                    get => GetInt("ineye");
-                    set => SetInt("ineye", value);
+                    get => Get<int>("ineye");
+                    set => Set<int>("ineye", value);
                 }
             }
 
@@ -2493,16 +2493,16 @@ namespace CounterStrikeSharp.API.Core
                 
                 public string Text 
                 {
-                    get => GetString("text");
-                    set => SetString("text", value);
+                    get => Get<string>("text");
+                    set => Set<string>("text", value);
                 }
 
                 
                 // steam id
                 public ulong Steamid 
                 {
-                    get => GetUint64("steamID");
-                    set => SetUint64("steamID", value);
+                    get => Get<ulong>("steamID");
+                    set => Set<ulong>("steamID", value);
                 }
             }
 
@@ -2516,64 +2516,64 @@ namespace CounterStrikeSharp.API.Core
                 // camera position in world
                 public long Posx 
                 {
-                    get => GetInt("posx");
-                    set => SetInt("posx", value);
+                    get => Get<long>("posx");
+                    set => Set<long>("posx", value);
                 }
 
                 
                 
                 public long Posy 
                 {
-                    get => GetInt("posy");
-                    set => SetInt("posy", value);
+                    get => Get<long>("posy");
+                    set => Set<long>("posy", value);
                 }
 
                 
                 
                 public long Posz 
                 {
-                    get => GetInt("posz");
-                    set => SetInt("posz", value);
+                    get => Get<long>("posz");
+                    set => Set<long>("posz", value);
                 }
 
                 
                 // camera angles
                 public int Theta 
                 {
-                    get => GetInt("theta");
-                    set => SetInt("theta", value);
+                    get => Get<int>("theta");
+                    set => Set<int>("theta", value);
                 }
 
                 
                 
                 public int Phi 
                 {
-                    get => GetInt("phi");
-                    set => SetInt("phi", value);
+                    get => Get<int>("phi");
+                    set => Set<int>("phi", value);
                 }
 
                 
                 
                 public int Offset 
                 {
-                    get => GetInt("offset");
-                    set => SetInt("offset", value);
+                    get => Get<int>("offset");
+                    set => Set<int>("offset", value);
                 }
 
                 
                 
                 public float Fov 
                 {
-                    get => GetFloat("fov");
-                    set => SetFloat("fov", value);
+                    get => Get<float>("fov");
+                    set => Set<float>("fov", value);
                 }
 
                 
                 // follow this player
                 public int Target 
                 {
-                    get => GetInt("target");
-                    set => SetInt("target", value);
+                    get => Get<int>("target");
+                    set => Set<int>("target", value);
                 }
             }
 
@@ -2587,8 +2587,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public string Text 
                 {
-                    get => GetString("text");
-                    set => SetString("text", value);
+                    get => Get<string>("text");
+                    set => Set<string>("text", value);
                 }
             }
 
@@ -2602,24 +2602,24 @@ namespace CounterStrikeSharp.API.Core
                 // fixed camera index
                 public int Index 
                 {
-                    get => GetInt("index");
-                    set => SetInt("index", value);
+                    get => Get<int>("index");
+                    set => Set<int>("index", value);
                 }
 
                 
                 // ranking, how interesting is this camera view
                 public float Rank 
                 {
-                    get => GetFloat("rank");
-                    set => SetFloat("rank", value);
+                    get => Get<float>("rank");
+                    set => Set<float>("rank", value);
                 }
 
                 
                 // best/closest target entity
                 public int Target 
                 {
-                    get => GetInt("target");
-                    set => SetInt("target", value);
+                    get => Get<int>("target");
+                    set => Set<int>("target", value);
                 }
             }
 
@@ -2633,24 +2633,24 @@ namespace CounterStrikeSharp.API.Core
                 // player slot
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // ranking, how interesting is this entity to view
                 public float Rank 
                 {
-                    get => GetFloat("rank");
-                    set => SetFloat("rank", value);
+                    get => Get<float>("rank");
+                    set => Set<float>("rank", value);
                 }
 
                 
                 // best/closest target entity
                 public int Target 
                 {
-                    get => GetInt("target");
-                    set => SetInt("target", value);
+                    get => Get<int>("target");
+                    set => Set<int>("target", value);
                 }
             }
 
@@ -2664,16 +2664,16 @@ namespace CounterStrikeSharp.API.Core
                 // number of seconds in killer replay delay
                 public long Delay 
                 {
-                    get => GetInt("delay");
-                    set => SetInt("delay", value);
+                    get => Get<long>("delay");
+                    set => Set<long>("delay", value);
                 }
 
                 
                 // reason for replay	(ReplayEventType_t)
                 public long Reason 
                 {
-                    get => GetInt("reason");
-                    set => SetInt("reason", value);
+                    get => Get<long>("reason");
+                    set => Set<long>("reason", value);
                 }
             }
 
@@ -2687,8 +2687,8 @@ namespace CounterStrikeSharp.API.Core
                 // reason for hltv replay status change ()
                 public long Reason 
                 {
-                    get => GetInt("reason");
-                    set => SetInt("reason", value);
+                    get => Get<long>("reason");
+                    set => Set<long>("reason", value);
                 }
             }
 
@@ -2702,32 +2702,32 @@ namespace CounterStrikeSharp.API.Core
                 // number of HLTV spectators
                 public long Clients 
                 {
-                    get => GetInt("clients");
-                    set => SetInt("clients", value);
+                    get => Get<long>("clients");
+                    set => Set<long>("clients", value);
                 }
 
                 
                 // number of HLTV slots
                 public long Slots 
                 {
-                    get => GetInt("slots");
-                    set => SetInt("slots", value);
+                    get => Get<long>("slots");
+                    set => Set<long>("slots", value);
                 }
 
                 
                 // number of HLTV proxies
                 public int Proxies 
                 {
-                    get => GetInt("proxies");
-                    set => SetInt("proxies", value);
+                    get => Get<int>("proxies");
+                    set => Set<int>("proxies", value);
                 }
 
                 
                 // disptach master IP:port
                 public string Master 
                 {
-                    get => GetString("master");
-                    set => SetString("master", value);
+                    get => Get<string>("master");
+                    set => Set<string>("master", value);
                 }
             }
 
@@ -2741,8 +2741,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public string Text 
                 {
-                    get => GetString("text");
-                    set => SetString("text", value);
+                    get => Get<string>("text");
+                    set => Set<string>("text", value);
                 }
             }
 
@@ -2756,8 +2756,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public long Version 
                 {
-                    get => GetInt("version");
-                    set => SetInt("version", value);
+                    get => Get<long>("version");
+                    set => Set<long>("version", value);
                 }
             }
 
@@ -2771,8 +2771,8 @@ namespace CounterStrikeSharp.API.Core
                 // hostage entity index
                 public int Hostage 
                 {
-                    get => GetInt("hostage");
-                    set => SetInt("hostage", value);
+                    get => Get<int>("hostage");
+                    set => Set<int>("hostage", value);
                 }
             }
 
@@ -2786,16 +2786,16 @@ namespace CounterStrikeSharp.API.Core
                 // player who touched the hostage
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // hostage entity index
                 public int Hostage 
                 {
-                    get => GetInt("hostage");
-                    set => SetInt("hostage", value);
+                    get => Get<int>("hostage");
+                    set => Set<int>("hostage", value);
                 }
             }
 
@@ -2809,16 +2809,16 @@ namespace CounterStrikeSharp.API.Core
                 // player who hurt the hostage
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // hostage entity index
                 public int Hostage 
                 {
-                    get => GetInt("hostage");
-                    set => SetInt("hostage", value);
+                    get => Get<int>("hostage");
+                    set => Set<int>("hostage", value);
                 }
             }
 
@@ -2832,16 +2832,16 @@ namespace CounterStrikeSharp.API.Core
                 // player who killed the hostage
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // hostage entity index
                 public int Hostage 
                 {
-                    get => GetInt("hostage");
-                    set => SetInt("hostage", value);
+                    get => Get<int>("hostage");
+                    set => Set<int>("hostage", value);
                 }
             }
 
@@ -2855,24 +2855,24 @@ namespace CounterStrikeSharp.API.Core
                 // player who rescued the hostage
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // hostage entity index
                 public int Hostage 
                 {
-                    get => GetInt("hostage");
-                    set => SetInt("hostage", value);
+                    get => Get<int>("hostage");
+                    set => Set<int>("hostage", value);
                 }
 
                 
                 // rescue site index
                 public int Site 
                 {
-                    get => GetInt("site");
-                    set => SetInt("site", value);
+                    get => Get<int>("site");
+                    set => Set<int>("site", value);
                 }
             }
 
@@ -2894,16 +2894,16 @@ namespace CounterStrikeSharp.API.Core
                 // player who rescued the hostage
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // hostage entity index
                 public int Hostage 
                 {
-                    get => GetInt("hostage");
-                    set => SetInt("hostage", value);
+                    get => Get<int>("hostage");
+                    set => Set<int>("hostage", value);
                 }
             }
 
@@ -2917,8 +2917,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public string Hostname 
                 {
-                    get => GetString("hostname");
-                    set => SetString("hostname", value);
+                    get => Get<string>("hostname");
+                    set => Set<string>("hostname", value);
                 }
             }
 
@@ -2932,32 +2932,32 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Entityid 
                 {
-                    get => GetInt("entityid");
-                    set => SetInt("entityid", value);
+                    get => Get<int>("entityid");
+                    set => Set<int>("entityid", value);
                 }
 
                 
                 
                 public float X 
                 {
-                    get => GetFloat("x");
-                    set => SetFloat("x", value);
+                    get => Get<float>("x");
+                    set => Set<float>("x", value);
                 }
 
                 
                 
                 public float Y 
                 {
-                    get => GetFloat("y");
-                    set => SetFloat("y", value);
+                    get => Get<float>("y");
+                    set => Set<float>("y", value);
                 }
 
                 
                 
                 public float Z 
                 {
-                    get => GetFloat("z");
-                    set => SetFloat("z", value);
+                    get => Get<float>("z");
+                    set => Set<float>("z", value);
                 }
             }
 
@@ -2971,32 +2971,32 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Entityid 
                 {
-                    get => GetInt("entityid");
-                    set => SetInt("entityid", value);
+                    get => Get<int>("entityid");
+                    set => Set<int>("entityid", value);
                 }
 
                 
                 
                 public float X 
                 {
-                    get => GetFloat("x");
-                    set => SetFloat("x", value);
+                    get => Get<float>("x");
+                    set => Set<float>("x", value);
                 }
 
                 
                 
                 public float Y 
                 {
-                    get => GetFloat("y");
-                    set => SetFloat("y", value);
+                    get => Get<float>("y");
+                    set => Set<float>("y", value);
                 }
 
                 
                 
                 public float Z 
                 {
-                    get => GetFloat("z");
-                    set => SetFloat("z", value);
+                    get => Get<float>("z");
+                    set => Set<float>("z", value);
                 }
             }
 
@@ -3010,32 +3010,32 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Entityid 
                 {
-                    get => GetInt("entityid");
-                    set => SetInt("entityid", value);
+                    get => Get<int>("entityid");
+                    set => Set<int>("entityid", value);
                 }
 
                 
                 
                 public float X 
                 {
-                    get => GetFloat("x");
-                    set => SetFloat("x", value);
+                    get => Get<float>("x");
+                    set => Set<float>("x", value);
                 }
 
                 
                 
                 public float Y 
                 {
-                    get => GetFloat("y");
-                    set => SetFloat("y", value);
+                    get => Get<float>("y");
+                    set => Set<float>("y", value);
                 }
 
                 
                 
                 public float Z 
                 {
-                    get => GetFloat("z");
-                    set => SetFloat("z", value);
+                    get => Get<float>("z");
+                    set => Set<float>("z", value);
                 }
             }
 
@@ -3049,8 +3049,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -3064,16 +3064,16 @@ namespace CounterStrikeSharp.API.Core
                 // The player who this lesson is intended for
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // Name of the lesson to start.  Must match instructor_lesson.txt
                 public string HintName 
                 {
-                    get => GetString("hint_name");
-                    set => SetString("hint_name", value);
+                    get => Get<string>("hint_name");
+                    set => Set<string>("hint_name", value);
                 }
             }
 
@@ -3087,160 +3087,160 @@ namespace CounterStrikeSharp.API.Core
                 // user ID of the player that triggered the hint
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // what to name the hint. For referencing it again later (e.g. a kill command for the hint instead of a timeout)
                 public string HintName 
                 {
-                    get => GetString("hint_name");
-                    set => SetString("hint_name", value);
+                    get => Get<string>("hint_name");
+                    set => Set<string>("hint_name", value);
                 }
 
                 
                 // type name so that messages of the same type will replace each other
                 public string HintReplaceKey 
                 {
-                    get => GetString("hint_replace_key");
-                    set => SetString("hint_replace_key", value);
+                    get => Get<string>("hint_replace_key");
+                    set => Set<string>("hint_replace_key", value);
                 }
 
                 
                 // entity id that the hint should display at
                 public long HintTarget 
                 {
-                    get => GetInt("hint_target");
-                    set => SetInt("hint_target", value);
+                    get => Get<long>("hint_target");
+                    set => Set<long>("hint_target", value);
                 }
 
                 
                 // userid id of the activator
                 public int HintActivatorUserid 
                 {
-                    get => GetInt("hint_activator_userid");
-                    set => SetInt("hint_activator_userid", value);
+                    get => Get<int>("hint_activator_userid");
+                    set => Set<int>("hint_activator_userid", value);
                 }
 
                 
                 // how long in seconds until the hint automatically times out, 0 = never
                 public int HintTimeout 
                 {
-                    get => GetInt("hint_timeout");
-                    set => SetInt("hint_timeout", value);
+                    get => Get<int>("hint_timeout");
+                    set => Set<int>("hint_timeout", value);
                 }
 
                 
                 // the hint icon to use when the hint is onscreen. e.g. "icon_alert_red"
                 public string HintIconOnscreen 
                 {
-                    get => GetString("hint_icon_onscreen");
-                    set => SetString("hint_icon_onscreen", value);
+                    get => Get<string>("hint_icon_onscreen");
+                    set => Set<string>("hint_icon_onscreen", value);
                 }
 
                 
                 // the hint icon to use when the hint is offscreen. e.g. "icon_alert"
                 public string HintIconOffscreen 
                 {
-                    get => GetString("hint_icon_offscreen");
-                    set => SetString("hint_icon_offscreen", value);
+                    get => Get<string>("hint_icon_offscreen");
+                    set => Set<string>("hint_icon_offscreen", value);
                 }
 
                 
                 // the hint caption. e.g. "#ThisIsDangerous"
                 public string HintCaption 
                 {
-                    get => GetString("hint_caption");
-                    set => SetString("hint_caption", value);
+                    get => Get<string>("hint_caption");
+                    set => Set<string>("hint_caption", value);
                 }
 
                 
                 // the hint caption that only the activator sees e.g. "#YouPushedItGood"
                 public string HintActivatorCaption 
                 {
-                    get => GetString("hint_activator_caption");
-                    set => SetString("hint_activator_caption", value);
+                    get => Get<string>("hint_activator_caption");
+                    set => Set<string>("hint_activator_caption", value);
                 }
 
                 
                 // the hint color in "r,g,b" format where each component is 0-255
                 public string HintColor 
                 {
-                    get => GetString("hint_color");
-                    set => SetString("hint_color", value);
+                    get => Get<string>("hint_color");
+                    set => Set<string>("hint_color", value);
                 }
 
                 
                 // how far on the z axis to offset the hint from entity origin
                 public float HintIconOffset 
                 {
-                    get => GetFloat("hint_icon_offset");
-                    set => SetFloat("hint_icon_offset", value);
+                    get => Get<float>("hint_icon_offset");
+                    set => Set<float>("hint_icon_offset", value);
                 }
 
                 
                 // range before the hint is culled
                 public float HintRange 
                 {
-                    get => GetFloat("hint_range");
-                    set => SetFloat("hint_range", value);
+                    get => Get<float>("hint_range");
+                    set => Set<float>("hint_range", value);
                 }
 
                 
                 // hint flags
                 public long HintFlags 
                 {
-                    get => GetInt("hint_flags");
-                    set => SetInt("hint_flags", value);
+                    get => Get<long>("hint_flags");
+                    set => Set<long>("hint_flags", value);
                 }
 
                 
                 // bindings to use when use_binding is the onscreen icon
                 public string HintBinding 
                 {
-                    get => GetString("hint_binding");
-                    set => SetString("hint_binding", value);
+                    get => Get<string>("hint_binding");
+                    set => Set<string>("hint_binding", value);
                 }
 
                 
                 // gamepad bindings to use when use_binding is the onscreen icon
                 public string HintGamepadBinding 
                 {
-                    get => GetString("hint_gamepad_binding");
-                    set => SetString("hint_gamepad_binding", value);
+                    get => Get<string>("hint_gamepad_binding");
+                    set => Set<string>("hint_gamepad_binding", value);
                 }
 
                 
                 // if false, the hint will dissappear if the target entity is invisible
                 public bool HintAllowNodrawTarget 
                 {
-                    get => GetBool("hint_allow_nodraw_target");
-                    set => SetBool("hint_allow_nodraw_target", value);
+                    get => Get<bool>("hint_allow_nodraw_target");
+                    set => Set<bool>("hint_allow_nodraw_target", value);
                 }
 
                 
                 // if true, the hint will not show when outside the player view
                 public bool HintNooffscreen 
                 {
-                    get => GetBool("hint_nooffscreen");
-                    set => SetBool("hint_nooffscreen", value);
+                    get => Get<bool>("hint_nooffscreen");
+                    set => Set<bool>("hint_nooffscreen", value);
                 }
 
                 
                 // if true, the hint caption will show even if the hint is occluded
                 public bool HintForcecaption 
                 {
-                    get => GetBool("hint_forcecaption");
-                    set => SetBool("hint_forcecaption", value);
+                    get => Get<bool>("hint_forcecaption");
+                    set => Set<bool>("hint_forcecaption", value);
                 }
 
                 
                 // if true, only the local player will see the hint
                 public bool HintLocalPlayerOnly 
                 {
-                    get => GetBool("hint_local_player_only");
-                    set => SetBool("hint_local_player_only", value);
+                    get => Get<bool>("hint_local_player_only");
+                    set => Set<bool>("hint_local_player_only", value);
                 }
             }
 
@@ -3254,8 +3254,8 @@ namespace CounterStrikeSharp.API.Core
                 // The hint to stop. Will stop ALL hints with this name
                 public string HintName 
                 {
-                    get => GetString("hint_name");
-                    set => SetString("hint_name", value);
+                    get => Get<string>("hint_name");
+                    set => Set<string>("hint_name", value);
                 }
             }
 
@@ -3269,48 +3269,48 @@ namespace CounterStrikeSharp.API.Core
                 // The player who this lesson is intended for
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // Name of the lesson to start.  Must match instructor_lesson.txt
                 public string HintName 
                 {
-                    get => GetString("hint_name");
-                    set => SetString("hint_name", value);
+                    get => Get<string>("hint_name");
+                    set => Set<string>("hint_name", value);
                 }
 
                 
                 // entity id that the hint should display at. Leave empty if controller target
                 public long HintTarget 
                 {
-                    get => GetInt("hint_target");
-                    set => SetInt("hint_target", value);
+                    get => Get<long>("hint_target");
+                    set => Set<long>("hint_target", value);
                 }
 
                 
                 
                 public int VrMovementType 
                 {
-                    get => GetInt("vr_movement_type");
-                    set => SetInt("vr_movement_type", value);
+                    get => Get<int>("vr_movement_type");
+                    set => Set<int>("vr_movement_type", value);
                 }
 
                 
                 
                 public bool VrSingleController 
                 {
-                    get => GetBool("vr_single_controller");
-                    set => SetBool("vr_single_controller", value);
+                    get => Get<bool>("vr_single_controller");
+                    set => Set<bool>("vr_single_controller", value);
                 }
 
                 
                 
                 public int VrControllerType 
                 {
-                    get => GetInt("vr_controller_type");
-                    set => SetInt("vr_controller_type", value);
+                    get => Get<int>("vr_controller_type");
+                    set => Set<int>("vr_controller_type", value);
                 }
             }
 
@@ -3332,72 +3332,72 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // either a weapon such as 'tmp' or 'hegrenade', or an item such as 'nvgs'
                 public string Item 
                 {
-                    get => GetString("item");
-                    set => SetString("item", value);
+                    get => Get<string>("item");
+                    set => Set<string>("item", value);
                 }
 
                 
                 
                 public long Defindex 
                 {
-                    get => GetInt("defindex");
-                    set => SetInt("defindex", value);
+                    get => Get<long>("defindex");
+                    set => Set<long>("defindex", value);
                 }
 
                 
                 
                 public bool Canzoom 
                 {
-                    get => GetBool("canzoom");
-                    set => SetBool("canzoom", value);
+                    get => Get<bool>("canzoom");
+                    set => Set<bool>("canzoom", value);
                 }
 
                 
                 
                 public bool Hassilencer 
                 {
-                    get => GetBool("hassilencer");
-                    set => SetBool("hassilencer", value);
+                    get => Get<bool>("hassilencer");
+                    set => Set<bool>("hassilencer", value);
                 }
 
                 
                 
                 public bool Issilenced 
                 {
-                    get => GetBool("issilenced");
-                    set => SetBool("issilenced", value);
+                    get => Get<bool>("issilenced");
+                    set => Set<bool>("issilenced", value);
                 }
 
                 
                 
                 public bool Hastracers 
                 {
-                    get => GetBool("hastracers");
-                    set => SetBool("hastracers", value);
+                    get => Get<bool>("hastracers");
+                    set => Set<bool>("hastracers", value);
                 }
 
                 
                 
                 public int Weptype 
                 {
-                    get => GetInt("weptype");
-                    set => SetInt("weptype", value);
+                    get => Get<int>("weptype");
+                    set => Set<int>("weptype", value);
                 }
 
                 
                 
                 public bool Ispainted 
                 {
-                    get => GetBool("ispainted");
-                    set => SetBool("ispainted", value);
+                    get => Get<bool>("ispainted");
+                    set => Set<bool>("ispainted", value);
                 }
             }
 
@@ -3411,32 +3411,32 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // either a weapon such as 'tmp' or 'hegrenade', or an item such as 'nvgs'
                 public string Item 
                 {
-                    get => GetString("item");
-                    set => SetString("item", value);
+                    get => Get<string>("item");
+                    set => Set<string>("item", value);
                 }
 
                 
                 
                 public bool Silent 
                 {
-                    get => GetBool("silent");
-                    set => SetBool("silent", value);
+                    get => Get<bool>("silent");
+                    set => Set<bool>("silent", value);
                 }
 
                 
                 
                 public long Defindex 
                 {
-                    get => GetInt("defindex");
-                    set => SetInt("defindex", value);
+                    get => Get<long>("defindex");
+                    set => Set<long>("defindex", value);
                 }
             }
 
@@ -3450,32 +3450,32 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public string Item 
                 {
-                    get => GetString("item");
-                    set => SetString("item", value);
+                    get => Get<string>("item");
+                    set => Set<string>("item", value);
                 }
 
                 
                 
                 public int Reason 
                 {
-                    get => GetInt("reason");
-                    set => SetInt("reason", value);
+                    get => Get<int>("reason");
+                    set => Set<int>("reason", value);
                 }
 
                 
                 
                 public int Limit 
                 {
-                    get => GetInt("limit");
-                    set => SetInt("limit", value);
+                    get => Get<int>("limit");
+                    set => Set<int>("limit", value);
                 }
             }
 
@@ -3489,24 +3489,24 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public int Index 
                 {
-                    get => GetInt("index");
-                    set => SetInt("index", value);
+                    get => Get<int>("index");
+                    set => Set<int>("index", value);
                 }
 
                 
                 
                 public int Behavior 
                 {
-                    get => GetInt("behavior");
-                    set => SetInt("behavior", value);
+                    get => Get<int>("behavior");
+                    set => Set<int>("behavior", value);
                 }
             }
 
@@ -3520,32 +3520,32 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public int Team 
                 {
-                    get => GetInt("team");
-                    set => SetInt("team", value);
+                    get => Get<int>("team");
+                    set => Set<int>("team", value);
                 }
 
                 
                 
                 public int Loadout 
                 {
-                    get => GetInt("loadout");
-                    set => SetInt("loadout", value);
+                    get => Get<int>("loadout");
+                    set => Set<int>("loadout", value);
                 }
 
                 
                 
                 public string Weapon 
                 {
-                    get => GetString("weapon");
-                    set => SetString("weapon", value);
+                    get => Get<string>("weapon");
+                    set => Set<string>("weapon", value);
                 }
             }
 
@@ -3559,24 +3559,24 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // either a weapon such as 'tmp' or 'hegrenade', or an item such as 'nvgs'
                 public string Item 
                 {
-                    get => GetString("item");
-                    set => SetString("item", value);
+                    get => Get<string>("item");
+                    set => Set<string>("item", value);
                 }
 
                 
                 
                 public long Defindex 
                 {
-                    get => GetInt("defindex");
-                    set => SetInt("defindex", value);
+                    get => Get<long>("defindex");
+                    set => Set<long>("defindex", value);
                 }
             }
 
@@ -3598,40 +3598,40 @@ namespace CounterStrikeSharp.API.Core
                 // entity used by player
                 public int Player 
                 {
-                    get => GetInt("player");
-                    set => SetInt("player", value);
+                    get => Get<int>("player");
+                    set => Set<int>("player", value);
                 }
 
                 
                 
                 public long Itemdef 
                 {
-                    get => GetInt("itemdef");
-                    set => SetInt("itemdef", value);
+                    get => Get<long>("itemdef");
+                    set => Set<long>("itemdef", value);
                 }
 
                 
                 
                 public int Numgifts 
                 {
-                    get => GetInt("numgifts");
-                    set => SetInt("numgifts", value);
+                    get => Get<int>("numgifts");
+                    set => Set<int>("numgifts", value);
                 }
 
                 
                 
                 public long Giftidx 
                 {
-                    get => GetInt("giftidx");
-                    set => SetInt("giftidx", value);
+                    get => Get<long>("giftidx");
+                    set => Set<long>("giftidx", value);
                 }
 
                 
                 
                 public long Accountid 
                 {
-                    get => GetInt("accountid");
-                    set => SetInt("accountid", value);
+                    get => Get<long>("accountid");
+                    set => Set<long>("accountid", value);
                 }
             }
 
@@ -3645,16 +3645,16 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // 0 = team_full
                 public int Reason 
                 {
-                    get => GetInt("reason");
-                    set => SetInt("reason", value);
+                    get => Get<int>("reason");
+                    set => Set<int>("reason", value);
                 }
             }
 
@@ -3692,16 +3692,16 @@ namespace CounterStrikeSharp.API.Core
                 // player entindex
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // type of crate (metal, wood, or paradrop)
                 public string Type 
                 {
-                    get => GetString("type");
-                    set => SetString("type", value);
+                    get => Get<string>("type");
+                    set => Set<string>("type", value);
                 }
             }
 
@@ -3715,24 +3715,24 @@ namespace CounterStrikeSharp.API.Core
                 // player entindex
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // crate entindex
                 public int Subject 
                 {
-                    get => GetInt("subject");
-                    set => SetInt("subject", value);
+                    get => Get<int>("subject");
+                    set => Set<int>("subject", value);
                 }
 
                 
                 // type of crate (metal, wood, or paradrop)
                 public string Type 
                 {
-                    get => GetString("type");
-                    set => SetString("type", value);
+                    get => Get<string>("type");
+                    set => Set<string>("type", value);
                 }
             }
 
@@ -3762,32 +3762,32 @@ namespace CounterStrikeSharp.API.Core
                 
                 public long Frags 
                 {
-                    get => GetInt("frags");
-                    set => SetInt("frags", value);
+                    get => Get<long>("frags");
+                    set => Set<long>("frags", value);
                 }
 
                 
                 
                 public long MaxRounds 
                 {
-                    get => GetInt("max_rounds");
-                    set => SetInt("max_rounds", value);
+                    get => Get<long>("max_rounds");
+                    set => Set<long>("max_rounds", value);
                 }
 
                 
                 
                 public long WinRounds 
                 {
-                    get => GetInt("win_rounds");
-                    set => SetInt("win_rounds", value);
+                    get => Get<long>("win_rounds");
+                    set => Set<long>("win_rounds", value);
                 }
 
                 
                 
                 public long Time 
                 {
-                    get => GetInt("time");
-                    set => SetInt("time", value);
+                    get => Get<long>("time");
+                    set => Set<long>("time", value);
                 }
             }
 
@@ -3825,32 +3825,32 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public float X 
                 {
-                    get => GetFloat("x");
-                    set => SetFloat("x", value);
+                    get => Get<float>("x");
+                    set => Set<float>("x", value);
                 }
 
                 
                 
                 public float Y 
                 {
-                    get => GetFloat("y");
-                    set => SetFloat("y", value);
+                    get => Get<float>("y");
+                    set => Set<float>("y", value);
                 }
 
                 
                 
                 public float Z 
                 {
-                    get => GetFloat("z");
-                    set => SetFloat("z", value);
+                    get => Get<float>("z");
+                    set => Set<float>("z", value);
                 }
             }
 
@@ -3864,16 +3864,16 @@ namespace CounterStrikeSharp.API.Core
                 
                 public long Area 
                 {
-                    get => GetInt("area");
-                    set => SetInt("area", value);
+                    get => Get<long>("area");
+                    set => Set<long>("area", value);
                 }
 
                 
                 
                 public bool Blocked 
                 {
-                    get => GetBool("blocked");
-                    set => SetBool("blocked", value);
+                    get => Get<bool>("blocked");
+                    set => Set<bool>("blocked", value);
                 }
             }
 
@@ -3895,24 +3895,24 @@ namespace CounterStrikeSharp.API.Core
                 
                 public string Nextlevel 
                 {
-                    get => GetString("nextlevel");
-                    set => SetString("nextlevel", value);
+                    get => Get<string>("nextlevel");
+                    set => Set<string>("nextlevel", value);
                 }
 
                 
                 
                 public string Mapgroup 
                 {
-                    get => GetString("mapgroup");
-                    set => SetString("mapgroup", value);
+                    get => Get<string>("mapgroup");
+                    set => Set<string>("mapgroup", value);
                 }
 
                 
                 
                 public string Skirmishmode 
                 {
-                    get => GetString("skirmishmode");
-                    set => SetString("skirmishmode", value);
+                    get => Get<string>("skirmishmode");
+                    set => Set<string>("skirmishmode", value);
                 }
             }
 
@@ -3926,24 +3926,24 @@ namespace CounterStrikeSharp.API.Core
                 // player entindex
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // crate entindex
                 public int Subject 
                 {
-                    get => GetInt("subject");
-                    set => SetInt("subject", value);
+                    get => Get<int>("subject");
+                    set => Set<int>("subject", value);
                 }
 
                 
                 // type of crate (metal, wood, or paradrop)
                 public string Type 
                 {
-                    get => GetString("type");
-                    set => SetString("type", value);
+                    get => Get<string>("type");
+                    set => Set<string>("type", value);
                 }
             }
 
@@ -3957,96 +3957,96 @@ namespace CounterStrikeSharp.API.Core
                 // other entity ID who died
                 public int Otherid 
                 {
-                    get => GetInt("otherid");
-                    set => SetInt("otherid", value);
+                    get => Get<int>("otherid");
+                    set => Set<int>("otherid", value);
                 }
 
                 
                 // other entity type
                 public string Othertype 
                 {
-                    get => GetString("othertype");
-                    set => SetString("othertype", value);
+                    get => Get<string>("othertype");
+                    set => Set<string>("othertype", value);
                 }
 
                 
                 // user ID who killed
                 public int Attacker 
                 {
-                    get => GetInt("attacker");
-                    set => SetInt("attacker", value);
+                    get => Get<int>("attacker");
+                    set => Set<int>("attacker", value);
                 }
 
                 
                 // weapon name killer used
                 public string Weapon 
                 {
-                    get => GetString("weapon");
-                    set => SetString("weapon", value);
+                    get => Get<string>("weapon");
+                    set => Set<string>("weapon", value);
                 }
 
                 
                 // inventory item id of weapon killer used
                 public string WeaponItemid 
                 {
-                    get => GetString("weapon_itemid");
-                    set => SetString("weapon_itemid", value);
+                    get => Get<string>("weapon_itemid");
+                    set => Set<string>("weapon_itemid", value);
                 }
 
                 
                 // faux item id of weapon killer used
                 public string WeaponFauxitemid 
                 {
-                    get => GetString("weapon_fauxitemid");
-                    set => SetString("weapon_fauxitemid", value);
+                    get => Get<string>("weapon_fauxitemid");
+                    set => Set<string>("weapon_fauxitemid", value);
                 }
 
                 
                 
                 public string WeaponOriginalownerXuid 
                 {
-                    get => GetString("weapon_originalowner_xuid");
-                    set => SetString("weapon_originalowner_xuid", value);
+                    get => Get<string>("weapon_originalowner_xuid");
+                    set => Set<string>("weapon_originalowner_xuid", value);
                 }
 
                 
                 // singals a headshot
                 public bool Headshot 
                 {
-                    get => GetBool("headshot");
-                    set => SetBool("headshot", value);
+                    get => Get<bool>("headshot");
+                    set => Set<bool>("headshot", value);
                 }
 
                 
                 // number of objects shot penetrated before killing target
                 public int Penetrated 
                 {
-                    get => GetInt("penetrated");
-                    set => SetInt("penetrated", value);
+                    get => Get<int>("penetrated");
+                    set => Set<int>("penetrated", value);
                 }
 
                 
                 // kill happened without a scope, used for death notice icon
                 public bool Noscope 
                 {
-                    get => GetBool("noscope");
-                    set => SetBool("noscope", value);
+                    get => Get<bool>("noscope");
+                    set => Set<bool>("noscope", value);
                 }
 
                 
                 // hitscan weapon went through smoke grenade
                 public bool Thrusmoke 
                 {
-                    get => GetBool("thrusmoke");
-                    set => SetBool("thrusmoke", value);
+                    get => Get<bool>("thrusmoke");
+                    set => Set<bool>("thrusmoke", value);
                 }
 
                 
                 // attacker was blind from flashbang
                 public bool Attackerblind 
                 {
-                    get => GetBool("attackerblind");
-                    set => SetBool("attackerblind", value);
+                    get => Get<bool>("attackerblind");
+                    set => Set<bool>("attackerblind", value);
                 }
             }
 
@@ -4060,8 +4060,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -4075,8 +4075,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -4090,8 +4090,8 @@ namespace CounterStrikeSharp.API.Core
                 // entity picked up
                 public IntPtr Target 
                 {
-                    get => GetInt("target");
-                    set => SetInt("target", value);
+                    get => Get<IntPtr>("target");
+                    set => Set<IntPtr>("target", value);
                 }
             }
 
@@ -4105,8 +4105,8 @@ namespace CounterStrikeSharp.API.Core
                 // user ID on server
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -4120,16 +4120,16 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int AvengerId 
                 {
-                    get => GetInt("avenger_id");
-                    set => SetInt("avenger_id", value);
+                    get => Get<int>("avenger_id");
+                    set => Set<int>("avenger_id", value);
                 }
 
                 
                 
                 public int AvengedPlayerId 
                 {
-                    get => GetInt("avenged_player_id");
-                    set => SetInt("avenged_player_id", value);
+                    get => Get<int>("avenged_player_id");
+                    set => Set<int>("avenged_player_id", value);
                 }
             }
 
@@ -4143,32 +4143,32 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // user ID who threw the flash
                 public int Attacker 
                 {
-                    get => GetInt("attacker");
-                    set => SetInt("attacker", value);
+                    get => Get<int>("attacker");
+                    set => Set<int>("attacker", value);
                 }
 
                 
                 // the flashbang going off
                 public int Entityid 
                 {
-                    get => GetInt("entityid");
-                    set => SetInt("entityid", value);
+                    get => Get<int>("entityid");
+                    set => Set<int>("entityid", value);
                 }
 
                 
                 
                 public float BlindDuration 
                 {
-                    get => GetFloat("blind_duration");
-                    set => SetFloat("blind_duration", value);
+                    get => Get<float>("blind_duration");
+                    set => Set<float>("blind_duration", value);
                 }
             }
 
@@ -4182,24 +4182,24 @@ namespace CounterStrikeSharp.API.Core
                 // user ID on server
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // players old (current) name
                 public string Oldname 
                 {
-                    get => GetString("oldname");
-                    set => SetString("oldname", value);
+                    get => Get<string>("oldname");
+                    set => Set<string>("oldname", value);
                 }
 
                 
                 // players new name
                 public string Newname 
                 {
-                    get => GetString("newname");
-                    set => SetString("newname", value);
+                    get => Get<string>("newname");
+                    set => Set<string>("newname", value);
                 }
             }
 
@@ -4213,24 +4213,24 @@ namespace CounterStrikeSharp.API.Core
                 // true if team only chat
                 public bool Teamonly 
                 {
-                    get => GetBool("teamonly");
-                    set => SetBool("teamonly", value);
+                    get => Get<bool>("teamonly");
+                    set => Set<bool>("teamonly", value);
                 }
 
                 
                 // chatting player
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // chat text
                 public string Text 
                 {
-                    get => GetString("text");
-                    set => SetString("text", value);
+                    get => Get<string>("text");
+                    set => Set<string>("text", value);
                 }
             }
 
@@ -4244,48 +4244,48 @@ namespace CounterStrikeSharp.API.Core
                 // player name
                 public string Name 
                 {
-                    get => GetString("name");
-                    set => SetString("name", value);
+                    get => Get<string>("name");
+                    set => Set<string>("name", value);
                 }
 
                 
                 // user ID on server (unique on server)
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // player network (i.e steam) id
                 public string Networkid 
                 {
-                    get => GetString("networkid");
-                    set => SetString("networkid", value);
+                    get => Get<string>("networkid");
+                    set => Set<string>("networkid", value);
                 }
 
                 
                 // steam id
                 public ulong Xuid 
                 {
-                    get => GetUint64("xuid");
-                    set => SetUint64("xuid", value);
+                    get => Get<ulong>("xuid");
+                    set => Set<ulong>("xuid", value);
                 }
 
                 
                 // ip:port
                 public string Address 
                 {
-                    get => GetString("address");
-                    set => SetString("address", value);
+                    get => Get<string>("address");
+                    set => Set<string>("address", value);
                 }
 
                 
                 
                 public bool Bot 
                 {
-                    get => GetBool("bot");
-                    set => SetBool("bot", value);
+                    get => Get<bool>("bot");
+                    set => Set<bool>("bot", value);
                 }
             }
 
@@ -4299,8 +4299,8 @@ namespace CounterStrikeSharp.API.Core
                 // user ID on server (unique on server)
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -4314,168 +4314,168 @@ namespace CounterStrikeSharp.API.Core
                 // user who died
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // player who killed
                 public int Attacker 
                 {
-                    get => GetInt("attacker");
-                    set => SetInt("attacker", value);
+                    get => Get<int>("attacker");
+                    set => Set<int>("attacker", value);
                 }
 
                 
                 // player who assisted in the kill
                 public int Assister 
                 {
-                    get => GetInt("assister");
-                    set => SetInt("assister", value);
+                    get => Get<int>("assister");
+                    set => Set<int>("assister", value);
                 }
 
                 
                 // assister helped with a flash
                 public bool Assistedflash 
                 {
-                    get => GetBool("assistedflash");
-                    set => SetBool("assistedflash", value);
+                    get => Get<bool>("assistedflash");
+                    set => Set<bool>("assistedflash", value);
                 }
 
                 
                 // weapon name killer used
                 public string Weapon 
                 {
-                    get => GetString("weapon");
-                    set => SetString("weapon", value);
+                    get => Get<string>("weapon");
+                    set => Set<string>("weapon", value);
                 }
 
                 
                 // inventory item id of weapon killer used
                 public string WeaponItemid 
                 {
-                    get => GetString("weapon_itemid");
-                    set => SetString("weapon_itemid", value);
+                    get => Get<string>("weapon_itemid");
+                    set => Set<string>("weapon_itemid", value);
                 }
 
                 
                 // faux item id of weapon killer used
                 public string WeaponFauxitemid 
                 {
-                    get => GetString("weapon_fauxitemid");
-                    set => SetString("weapon_fauxitemid", value);
+                    get => Get<string>("weapon_fauxitemid");
+                    set => Set<string>("weapon_fauxitemid", value);
                 }
 
                 
                 
                 public string WeaponOriginalownerXuid 
                 {
-                    get => GetString("weapon_originalowner_xuid");
-                    set => SetString("weapon_originalowner_xuid", value);
+                    get => Get<string>("weapon_originalowner_xuid");
+                    set => Set<string>("weapon_originalowner_xuid", value);
                 }
 
                 
                 // singals a headshot
                 public bool Headshot 
                 {
-                    get => GetBool("headshot");
-                    set => SetBool("headshot", value);
+                    get => Get<bool>("headshot");
+                    set => Set<bool>("headshot", value);
                 }
 
                 
                 // did killer dominate victim with this kill
                 public int Dominated 
                 {
-                    get => GetInt("dominated");
-                    set => SetInt("dominated", value);
+                    get => Get<int>("dominated");
+                    set => Set<int>("dominated", value);
                 }
 
                 
                 // did killer get revenge on victim with this kill
                 public int Revenge 
                 {
-                    get => GetInt("revenge");
-                    set => SetInt("revenge", value);
+                    get => Get<int>("revenge");
+                    set => Set<int>("revenge", value);
                 }
 
                 
                 // is the kill resulting in squad wipe
                 public int Wipe 
                 {
-                    get => GetInt("wipe");
-                    set => SetInt("wipe", value);
+                    get => Get<int>("wipe");
+                    set => Set<int>("wipe", value);
                 }
 
                 
                 // number of objects shot penetrated before killing target
                 public int Penetrated 
                 {
-                    get => GetInt("penetrated");
-                    set => SetInt("penetrated", value);
+                    get => Get<int>("penetrated");
+                    set => Set<int>("penetrated", value);
                 }
 
                 
                 // if replay data is unavailable, this will be present and set to false
                 public bool Noreplay 
                 {
-                    get => GetBool("noreplay");
-                    set => SetBool("noreplay", value);
+                    get => Get<bool>("noreplay");
+                    set => Set<bool>("noreplay", value);
                 }
 
                 
                 // kill happened without a scope, used for death notice icon
                 public bool Noscope 
                 {
-                    get => GetBool("noscope");
-                    set => SetBool("noscope", value);
+                    get => Get<bool>("noscope");
+                    set => Set<bool>("noscope", value);
                 }
 
                 
                 // hitscan weapon went through smoke grenade
                 public bool Thrusmoke 
                 {
-                    get => GetBool("thrusmoke");
-                    set => SetBool("thrusmoke", value);
+                    get => Get<bool>("thrusmoke");
+                    set => Set<bool>("thrusmoke", value);
                 }
 
                 
                 // attacker was blind from flashbang
                 public bool Attackerblind 
                 {
-                    get => GetBool("attackerblind");
-                    set => SetBool("attackerblind", value);
+                    get => Get<bool>("attackerblind");
+                    set => Set<bool>("attackerblind", value);
                 }
 
                 
                 // distance to victim in meters
                 public float Distance 
                 {
-                    get => GetFloat("distance");
-                    set => SetFloat("distance", value);
+                    get => Get<float>("distance");
+                    set => Set<float>("distance", value);
                 }
 
                 
                 // damage done to health
                 public int DmgHealth 
                 {
-                    get => GetInt("dmg_health");
-                    set => SetInt("dmg_health", value);
+                    get => Get<int>("dmg_health");
+                    set => Set<int>("dmg_health", value);
                 }
 
                 
                 // damage done to armor
                 public int DmgArmor 
                 {
-                    get => GetInt("dmg_armor");
-                    set => SetInt("dmg_armor", value);
+                    get => Get<int>("dmg_armor");
+                    set => Set<int>("dmg_armor", value);
                 }
 
                 
                 // hitgroup that was damaged
                 public int Hitgroup 
                 {
-                    get => GetInt("hitgroup");
-                    set => SetInt("hitgroup", value);
+                    get => Get<int>("hitgroup");
+                    set => Set<int>("hitgroup", value);
                 }
             }
 
@@ -4489,8 +4489,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -4504,48 +4504,48 @@ namespace CounterStrikeSharp.API.Core
                 // user ID on server
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // see networkdisconnect enum protobuf
                 public int Reason 
                 {
-                    get => GetInt("reason");
-                    set => SetInt("reason", value);
+                    get => Get<int>("reason");
+                    set => Set<int>("reason", value);
                 }
 
                 
                 // player name
                 public string Name 
                 {
-                    get => GetString("name");
-                    set => SetString("name", value);
+                    get => Get<string>("name");
+                    set => Set<string>("name", value);
                 }
 
                 
                 // player network (i.e steam) id
                 public string Networkid 
                 {
-                    get => GetString("networkid");
-                    set => SetString("networkid", value);
+                    get => Get<string>("networkid");
+                    set => Set<string>("networkid", value);
                 }
 
                 
                 // steam id
                 public ulong Xuid 
                 {
-                    get => GetUint64("xuid");
-                    set => SetUint64("xuid", value);
+                    get => Get<ulong>("xuid");
+                    set => Set<ulong>("xuid", value);
                 }
 
                 
                 
                 public int Playerid 
                 {
-                    get => GetInt("PlayerID");
-                    set => SetInt("PlayerID", value);
+                    get => Get<int>("PlayerID");
+                    set => Set<int>("PlayerID", value);
                 }
             }
 
@@ -4559,16 +4559,16 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public float Damage 
                 {
-                    get => GetFloat("damage");
-                    set => SetFloat("damage", value);
+                    get => Get<float>("damage");
+                    set => Set<float>("damage", value);
                 }
             }
 
@@ -4582,8 +4582,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -4597,16 +4597,16 @@ namespace CounterStrikeSharp.API.Core
                 // user ID on server
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // Number of this full update
                 public int Count 
                 {
-                    get => GetInt("count");
-                    set => SetInt("count", value);
+                    get => Get<int>("count");
+                    set => Set<int>("count", value);
                 }
             }
 
@@ -4620,8 +4620,8 @@ namespace CounterStrikeSharp.API.Core
                 // user ID who received the c4
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -4635,8 +4635,8 @@ namespace CounterStrikeSharp.API.Core
                 // localizable string of a hint
                 public string Hintmessage 
                 {
-                    get => GetString("hintmessage");
-                    set => SetString("hintmessage", value);
+                    get => Get<string>("hintmessage");
+                    set => Set<string>("hintmessage", value);
                 }
             }
 
@@ -4650,64 +4650,64 @@ namespace CounterStrikeSharp.API.Core
                 // player index who was hurt
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // player index who attacked
                 public int Attacker 
                 {
-                    get => GetInt("attacker");
-                    set => SetInt("attacker", value);
+                    get => Get<int>("attacker");
+                    set => Set<int>("attacker", value);
                 }
 
                 
                 // remaining health points
                 public int Health 
                 {
-                    get => GetInt("health");
-                    set => SetInt("health", value);
+                    get => Get<int>("health");
+                    set => Set<int>("health", value);
                 }
 
                 
                 // remaining armor points
                 public int Armor 
                 {
-                    get => GetInt("armor");
-                    set => SetInt("armor", value);
+                    get => Get<int>("armor");
+                    set => Set<int>("armor", value);
                 }
 
                 
                 // weapon name attacker used, if not the world
                 public string Weapon 
                 {
-                    get => GetString("weapon");
-                    set => SetString("weapon", value);
+                    get => Get<string>("weapon");
+                    set => Set<string>("weapon", value);
                 }
 
                 
                 // damage done to health
                 public int DmgHealth 
                 {
-                    get => GetInt("dmg_health");
-                    set => SetInt("dmg_health", value);
+                    get => Get<int>("dmg_health");
+                    set => Set<int>("dmg_health", value);
                 }
 
                 
                 // damage done to armor
                 public int DmgArmor 
                 {
-                    get => GetInt("dmg_armor");
-                    set => SetInt("dmg_armor", value);
+                    get => Get<int>("dmg_armor");
+                    set => Set<int>("dmg_armor", value);
                 }
 
                 
                 // hitgroup that was damaged
                 public int Hitgroup 
                 {
-                    get => GetInt("hitgroup");
-                    set => SetInt("hitgroup", value);
+                    get => Get<int>("hitgroup");
+                    set => Set<int>("hitgroup", value);
                 }
             }
 
@@ -4721,32 +4721,32 @@ namespace CounterStrikeSharp.API.Core
                 // player name
                 public string Name 
                 {
-                    get => GetString("name");
-                    set => SetString("name", value);
+                    get => Get<string>("name");
+                    set => Set<string>("name", value);
                 }
 
                 
                 // user ID on server (unique on server)
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // player network (i.e steam) id
                 public ulong Steamid 
                 {
-                    get => GetUint64("steamid");
-                    set => SetUint64("steamid", value);
+                    get => Get<ulong>("steamid");
+                    set => Set<ulong>("steamid", value);
                 }
 
                 
                 // true if player is a AI bot
                 public bool Bot 
                 {
-                    get => GetBool("bot");
-                    set => SetBool("bot", value);
+                    get => Get<bool>("bot");
+                    set => Set<bool>("bot", value);
                 }
             }
 
@@ -4760,8 +4760,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -4775,48 +4775,48 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public int Entityid 
                 {
-                    get => GetInt("entityid");
-                    set => SetInt("entityid", value);
+                    get => Get<int>("entityid");
+                    set => Set<int>("entityid", value);
                 }
 
                 
                 
                 public float X 
                 {
-                    get => GetFloat("x");
-                    set => SetFloat("x", value);
+                    get => Get<float>("x");
+                    set => Set<float>("x", value);
                 }
 
                 
                 
                 public float Y 
                 {
-                    get => GetFloat("y");
-                    set => SetFloat("y", value);
+                    get => Get<float>("y");
+                    set => Set<float>("y", value);
                 }
 
                 
                 
                 public float Z 
                 {
-                    get => GetFloat("z");
-                    set => SetFloat("z", value);
+                    get => Get<float>("z");
+                    set => Set<float>("z", value);
                 }
 
                 
                 
                 public bool Urgent 
                 {
-                    get => GetBool("urgent");
-                    set => SetBool("urgent", value);
+                    get => Get<bool>("urgent");
+                    set => Set<bool>("urgent", value);
                 }
             }
 
@@ -4830,8 +4830,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Entityid 
                 {
-                    get => GetInt("entityid");
-                    set => SetInt("entityid", value);
+                    get => Get<int>("entityid");
+                    set => Set<int>("entityid", value);
                 }
             }
 
@@ -4845,16 +4845,16 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public int Slot 
                 {
-                    get => GetInt("slot");
-                    set => SetInt("slot", value);
+                    get => Get<int>("slot");
+                    set => Set<int>("slot", value);
                 }
             }
 
@@ -4868,16 +4868,16 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public bool Vote 
                 {
-                    get => GetBool("vote");
-                    set => SetBool("vote", value);
+                    get => Get<bool>("vote");
+                    set => Set<bool>("vote", value);
                 }
             }
 
@@ -4891,32 +4891,32 @@ namespace CounterStrikeSharp.API.Core
                 // user ID on server
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // # of kills
                 public int Kills 
                 {
-                    get => GetInt("kills");
-                    set => SetInt("kills", value);
+                    get => Get<int>("kills");
+                    set => Set<int>("kills", value);
                 }
 
                 
                 // # of deaths
                 public int Deaths 
                 {
-                    get => GetInt("deaths");
-                    set => SetInt("deaths", value);
+                    get => Get<int>("deaths");
+                    set => Set<int>("deaths", value);
                 }
 
                 
                 // total game score
                 public int Score 
                 {
-                    get => GetInt("score");
-                    set => SetInt("score", value);
+                    get => Get<int>("score");
+                    set => Set<int>("score", value);
                 }
             }
 
@@ -4930,24 +4930,24 @@ namespace CounterStrikeSharp.API.Core
                 // user ID on server
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // weapon ID
                 public int Weapon 
                 {
-                    get => GetInt("weapon");
-                    set => SetInt("weapon", value);
+                    get => Get<int>("weapon");
+                    set => Set<int>("weapon", value);
                 }
 
                 
                 // weapon mode
                 public int Mode 
                 {
-                    get => GetInt("mode");
-                    set => SetInt("mode", value);
+                    get => Get<int>("mode");
+                    set => Set<int>("mode", value);
                 }
             }
 
@@ -4961,32 +4961,32 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public int Radius 
                 {
-                    get => GetInt("radius");
-                    set => SetInt("radius", value);
+                    get => Get<int>("radius");
+                    set => Set<int>("radius", value);
                 }
 
                 
                 
                 public float Duration 
                 {
-                    get => GetFloat("duration");
-                    set => SetFloat("duration", value);
+                    get => Get<float>("duration");
+                    set => Set<float>("duration", value);
                 }
 
                 
                 
                 public bool Step 
                 {
-                    get => GetBool("step");
-                    set => SetBool("step", value);
+                    get => Get<bool>("step");
+                    set => Set<bool>("step", value);
                 }
             }
 
@@ -5000,8 +5000,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -5015,16 +5015,16 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // true if restart is pending
                 public bool Inrestart 
                 {
-                    get => GetBool("inrestart");
-                    set => SetBool("inrestart", value);
+                    get => Get<bool>("inrestart");
+                    set => Set<bool>("inrestart", value);
                 }
             }
 
@@ -5038,8 +5038,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public bool Forceupload 
                 {
-                    get => GetBool("forceupload");
-                    set => SetBool("forceupload", value);
+                    get => Get<bool>("forceupload");
+                    set => Set<bool>("forceupload", value);
                 }
             }
 
@@ -5053,48 +5053,48 @@ namespace CounterStrikeSharp.API.Core
                 // player
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // team id
                 public int Team 
                 {
-                    get => GetInt("team");
-                    set => SetInt("team", value);
+                    get => Get<int>("team");
+                    set => Set<int>("team", value);
                 }
 
                 
                 // old team id
                 public int Oldteam 
                 {
-                    get => GetInt("oldteam");
-                    set => SetInt("oldteam", value);
+                    get => Get<int>("oldteam");
+                    set => Set<int>("oldteam", value);
                 }
 
                 
                 // team change because player disconnects
                 public bool Disconnect 
                 {
-                    get => GetBool("disconnect");
-                    set => SetBool("disconnect", value);
+                    get => Get<bool>("disconnect");
+                    set => Set<bool>("disconnect", value);
                 }
 
                 
                 
                 public bool Silent 
                 {
-                    get => GetBool("silent");
-                    set => SetBool("silent", value);
+                    get => Get<bool>("silent");
+                    set => Set<bool>("silent", value);
                 }
 
                 
                 // true if player is a bot
                 public bool Isbot 
                 {
-                    get => GetBool("isbot");
-                    set => SetBool("isbot", value);
+                    get => Get<bool>("isbot");
+                    set => Set<bool>("isbot", value);
                 }
             }
 
@@ -5108,8 +5108,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public long Entindex 
                 {
-                    get => GetInt("entindex");
-                    set => SetInt("entindex", value);
+                    get => Get<long>("entindex");
+                    set => Set<long>("entindex", value);
                 }
             }
 
@@ -5123,8 +5123,8 @@ namespace CounterStrikeSharp.API.Core
                 // Controller id of user
                 public int Controllerid 
                 {
-                    get => GetInt("controllerId");
-                    set => SetInt("controllerId", value);
+                    get => Get<int>("controllerId");
+                    set => Set<int>("controllerId", value);
                 }
             }
 
@@ -5138,8 +5138,8 @@ namespace CounterStrikeSharp.API.Core
                 // splitscreen ID
                 public int Splitscreenplayer 
                 {
-                    get => GetInt("splitscreenplayer");
-                    set => SetInt("splitscreenplayer", value);
+                    get => Get<int>("splitscreenplayer");
+                    set => Set<int>("splitscreenplayer", value);
                 }
             }
 
@@ -5153,8 +5153,8 @@ namespace CounterStrikeSharp.API.Core
                 // Controller id of user
                 public int Controllerid 
                 {
-                    get => GetInt("controllerId");
-                    set => SetInt("controllerId", value);
+                    get => Get<int>("controllerId");
+                    set => Set<int>("controllerId", value);
                 }
             }
 
@@ -5208,48 +5208,48 @@ namespace CounterStrikeSharp.API.Core
                 // winner team/user i
                 public int Winner 
                 {
-                    get => GetInt("winner");
-                    set => SetInt("winner", value);
+                    get => Get<int>("winner");
+                    set => Set<int>("winner", value);
                 }
 
                 
                 // reson why team won
                 public int Reason 
                 {
-                    get => GetInt("reason");
-                    set => SetInt("reason", value);
+                    get => Get<int>("reason");
+                    set => Set<int>("reason", value);
                 }
 
                 
                 // end round message
                 public string Message 
                 {
-                    get => GetString("message");
-                    set => SetString("message", value);
+                    get => Get<string>("message");
+                    set => Set<string>("message", value);
                 }
 
                 
                 // server-generated legacy value
                 public int Legacy 
                 {
-                    get => GetInt("legacy");
-                    set => SetInt("legacy", value);
+                    get => Get<int>("legacy");
+                    set => Set<int>("legacy", value);
                 }
 
                 
                 // total number of players alive at the end of round, used for statistics gathering, computed on the server in the event client is in replay when receiving this message
                 public int PlayerCount 
                 {
-                    get => GetInt("player_count");
-                    set => SetInt("player_count", value);
+                    get => Get<int>("player_count");
+                    set => Set<int>("player_count", value);
                 }
 
                 
                 // if set, don't play round end music, because action is still on-going
                 public int Nomusic 
                 {
-                    get => GetInt("nomusic");
-                    set => SetInt("nomusic", value);
+                    get => Get<int>("nomusic");
+                    set => Set<int>("nomusic", value);
                 }
             }
 
@@ -5279,48 +5279,48 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public int Reason 
                 {
-                    get => GetInt("reason");
-                    set => SetInt("reason", value);
+                    get => Get<int>("reason");
+                    set => Set<int>("reason", value);
                 }
 
                 
                 
                 public long Value 
                 {
-                    get => GetInt("value");
-                    set => SetInt("value", value);
+                    get => Get<long>("value");
+                    set => Set<long>("value", value);
                 }
 
                 
                 
                 public long Musickitmvps 
                 {
-                    get => GetInt("musickitmvps");
-                    set => SetInt("musickitmvps", value);
+                    get => Get<long>("musickitmvps");
+                    set => Set<long>("musickitmvps", value);
                 }
 
                 
                 
                 public int Nomusic 
                 {
-                    get => GetInt("nomusic");
-                    set => SetInt("nomusic", value);
+                    get => Get<int>("nomusic");
+                    set => Set<int>("nomusic", value);
                 }
 
                 
                 
                 public long Musickitid 
                 {
-                    get => GetInt("musickitid");
-                    set => SetInt("musickitid", value);
+                    get => Get<long>("musickitid");
+                    set => Set<long>("musickitid", value);
                 }
             }
 
@@ -5358,24 +5358,24 @@ namespace CounterStrikeSharp.API.Core
                 // round time limit in seconds
                 public long Timelimit 
                 {
-                    get => GetInt("timelimit");
-                    set => SetInt("timelimit", value);
+                    get => Get<long>("timelimit");
+                    set => Set<long>("timelimit", value);
                 }
 
                 
                 // frag limit in seconds
                 public long Fraglimit 
                 {
-                    get => GetInt("fraglimit");
-                    set => SetInt("fraglimit", value);
+                    get => Get<long>("fraglimit");
+                    set => Set<long>("fraglimit", value);
                 }
 
                 
                 // round objective
                 public string Objective 
                 {
-                    get => GetString("objective");
-                    set => SetString("objective", value);
+                    get => Get<string>("objective");
+                    set => Set<string>("objective", value);
                 }
             }
 
@@ -5413,24 +5413,24 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public int Category 
                 {
-                    get => GetInt("category");
-                    set => SetInt("category", value);
+                    get => Get<int>("category");
+                    set => Set<int>("category", value);
                 }
 
                 
                 
                 public int Rank 
                 {
-                    get => GetInt("rank");
-                    set => SetInt("rank", value);
+                    get => Get<int>("rank");
+                    set => Set<int>("rank", value);
                 }
             }
 
@@ -5444,16 +5444,16 @@ namespace CounterStrikeSharp.API.Core
                 // cvar name, eg "mp_roundtime"
                 public string Cvarname 
                 {
-                    get => GetString("cvarname");
-                    set => SetString("cvarname", value);
+                    get => Get<string>("cvarname");
+                    set => Set<string>("cvarname", value);
                 }
 
                 
                 // new cvar value
                 public string Cvarvalue 
                 {
-                    get => GetString("cvarvalue");
-                    set => SetString("cvarvalue", value);
+                    get => Get<string>("cvarvalue");
+                    set => Set<string>("cvarvalue", value);
                 }
             }
 
@@ -5467,8 +5467,8 @@ namespace CounterStrikeSharp.API.Core
                 // the message text
                 public string Text 
                 {
-                    get => GetString("text");
-                    set => SetString("text", value);
+                    get => Get<string>("text");
+                    set => Set<string>("text", value);
                 }
             }
 
@@ -5482,8 +5482,8 @@ namespace CounterStrikeSharp.API.Core
                 // reason why server is about to be shut down
                 public string Reason 
                 {
-                    get => GetString("reason");
-                    set => SetString("reason", value);
+                    get => Get<string>("reason");
+                    set => Set<string>("reason", value);
                 }
             }
 
@@ -5497,8 +5497,8 @@ namespace CounterStrikeSharp.API.Core
                 // reason why server was shut down
                 public string Reason 
                 {
-                    get => GetString("reason");
-                    set => SetString("reason", value);
+                    get => Get<string>("reason");
+                    set => Set<string>("reason", value);
                 }
             }
 
@@ -5512,80 +5512,80 @@ namespace CounterStrikeSharp.API.Core
                 // public host name
                 public string Hostname 
                 {
-                    get => GetString("hostname");
-                    set => SetString("hostname", value);
+                    get => Get<string>("hostname");
+                    set => Set<string>("hostname", value);
                 }
 
                 
                 // hostame, IP or DNS name
                 public string Address 
                 {
-                    get => GetString("address");
-                    set => SetString("address", value);
+                    get => Get<string>("address");
+                    set => Set<string>("address", value);
                 }
 
                 
                 // server port
                 public int Port 
                 {
-                    get => GetInt("port");
-                    set => SetInt("port", value);
+                    get => Get<int>("port");
+                    set => Set<int>("port", value);
                 }
 
                 
                 // game dir
                 public string Game 
                 {
-                    get => GetString("game");
-                    set => SetString("game", value);
+                    get => Get<string>("game");
+                    set => Set<string>("game", value);
                 }
 
                 
                 // map name
                 public string Mapname 
                 {
-                    get => GetString("mapname");
-                    set => SetString("mapname", value);
+                    get => Get<string>("mapname");
+                    set => Set<string>("mapname", value);
                 }
 
                 
                 // addon name
                 public string Addonname 
                 {
-                    get => GetString("addonname");
-                    set => SetString("addonname", value);
+                    get => Get<string>("addonname");
+                    set => Set<string>("addonname", value);
                 }
 
                 
                 // max players
                 public long Maxplayers 
                 {
-                    get => GetInt("maxplayers");
-                    set => SetInt("maxplayers", value);
+                    get => Get<long>("maxplayers");
+                    set => Set<long>("maxplayers", value);
                 }
 
                 
                 // WIN32, LINUX
                 public string Os 
                 {
-                    get => GetString("os");
-                    set => SetString("os", value);
+                    get => Get<string>("os");
+                    set => Set<string>("os", value);
                 }
 
                 
                 // true if dedicated server
                 public bool Dedicated 
                 {
-                    get => GetBool("dedicated");
-                    set => SetBool("dedicated", value);
+                    get => Get<bool>("dedicated");
+                    set => Set<bool>("dedicated", value);
                 }
 
                 
                 // true if password protected
                 public bool Password 
                 {
-                    get => GetBool("password");
-                    set => SetBool("password", value);
+                    get => Get<bool>("password");
+                    set => Set<bool>("password", value);
                 }
             }
 
@@ -5599,16 +5599,16 @@ namespace CounterStrikeSharp.API.Core
                 
                 public string Group 
                 {
-                    get => GetString("group");
-                    set => SetString("group", value);
+                    get => Get<string>("group");
+                    set => Set<string>("group", value);
                 }
 
                 
                 
                 public int Enabled 
                 {
-                    get => GetInt("enabled");
-                    set => SetInt("enabled", value);
+                    get => Get<int>("enabled");
+                    set => Set<int>("enabled", value);
                 }
             }
 
@@ -5622,24 +5622,24 @@ namespace CounterStrikeSharp.API.Core
                 
                 public string Action 
                 {
-                    get => GetString("action");
-                    set => SetString("action", value);
+                    get => Get<string>("action");
+                    set => Set<string>("action", value);
                 }
 
                 
                 
                 public string Data 
                 {
-                    get => GetString("data");
-                    set => SetString("data", value);
+                    get => Get<string>("data");
+                    set => Set<string>("data", value);
                 }
 
                 
                 
                 public int Slot 
                 {
-                    get => GetInt("slot");
-                    set => SetInt("slot", value);
+                    get => Get<int>("slot");
+                    set => Set<int>("slot", value);
                 }
             }
 
@@ -5653,56 +5653,56 @@ namespace CounterStrikeSharp.API.Core
                 // endindex of the one who was killed
                 public int Victim 
                 {
-                    get => GetInt("victim");
-                    set => SetInt("victim", value);
+                    get => Get<int>("victim");
+                    set => Set<int>("victim", value);
                 }
 
                 
                 // entindex of the killer entity
                 public IntPtr Killer 
                 {
-                    get => GetInt("killer");
-                    set => SetInt("killer", value);
+                    get => Get<IntPtr>("killer");
+                    set => Set<IntPtr>("killer", value);
                 }
 
                 
                 
                 public int KillerController 
                 {
-                    get => GetInt("killer_controller");
-                    set => SetInt("killer_controller", value);
+                    get => Get<int>("killer_controller");
+                    set => Set<int>("killer_controller", value);
                 }
 
                 
                 
                 public int HitsTaken 
                 {
-                    get => GetInt("hits_taken");
-                    set => SetInt("hits_taken", value);
+                    get => Get<int>("hits_taken");
+                    set => Set<int>("hits_taken", value);
                 }
 
                 
                 
                 public int DamageTaken 
                 {
-                    get => GetInt("damage_taken");
-                    set => SetInt("damage_taken", value);
+                    get => Get<int>("damage_taken");
+                    set => Set<int>("damage_taken", value);
                 }
 
                 
                 
                 public int HitsGiven 
                 {
-                    get => GetInt("hits_given");
-                    set => SetInt("hits_given", value);
+                    get => Get<int>("hits_given");
+                    set => Set<int>("hits_given", value);
                 }
 
                 
                 
                 public int DamageGiven 
                 {
-                    get => GetInt("damage_given");
-                    set => SetInt("damage_given", value);
+                    get => Get<int>("damage_given");
+                    set => Set<int>("damage_given", value);
                 }
             }
 
@@ -5716,24 +5716,24 @@ namespace CounterStrikeSharp.API.Core
                 
                 public string LocToken 
                 {
-                    get => GetString("loc_token");
-                    set => SetString("loc_token", value);
+                    get => Get<string>("loc_token");
+                    set => Set<string>("loc_token", value);
                 }
 
                 
                 
                 public long Duration 
                 {
-                    get => GetInt("duration");
-                    set => SetInt("duration", value);
+                    get => Get<long>("duration");
+                    set => Set<long>("duration", value);
                 }
 
                 
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -5747,8 +5747,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -5762,8 +5762,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -5777,8 +5777,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -5792,16 +5792,16 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public int Paradrop 
                 {
-                    get => GetInt("paradrop");
-                    set => SetInt("paradrop", value);
+                    get => Get<int>("paradrop");
+                    set => Set<int>("paradrop", value);
                 }
             }
 
@@ -5815,40 +5815,40 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public int Entityid 
                 {
-                    get => GetInt("entityid");
-                    set => SetInt("entityid", value);
+                    get => Get<int>("entityid");
+                    set => Set<int>("entityid", value);
                 }
 
                 
                 
                 public float X 
                 {
-                    get => GetFloat("x");
-                    set => SetFloat("x", value);
+                    get => Get<float>("x");
+                    set => Set<float>("x", value);
                 }
 
                 
                 
                 public float Y 
                 {
-                    get => GetFloat("y");
-                    set => SetFloat("y", value);
+                    get => Get<float>("y");
+                    set => Set<float>("y", value);
                 }
 
                 
                 
                 public float Z 
                 {
-                    get => GetFloat("z");
-                    set => SetFloat("z", value);
+                    get => Get<float>("z");
+                    set => Set<float>("z", value);
                 }
             }
 
@@ -5862,40 +5862,40 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public int Entityid 
                 {
-                    get => GetInt("entityid");
-                    set => SetInt("entityid", value);
+                    get => Get<int>("entityid");
+                    set => Set<int>("entityid", value);
                 }
 
                 
                 
                 public float X 
                 {
-                    get => GetFloat("x");
-                    set => SetFloat("x", value);
+                    get => Get<float>("x");
+                    set => Set<float>("x", value);
                 }
 
                 
                 
                 public float Y 
                 {
-                    get => GetFloat("y");
-                    set => SetFloat("y", value);
+                    get => Get<float>("y");
+                    set => Set<float>("y", value);
                 }
 
                 
                 
                 public float Z 
                 {
-                    get => GetFloat("z");
-                    set => SetFloat("z", value);
+                    get => Get<float>("z");
+                    set => Set<float>("z", value);
                 }
             }
 
@@ -5909,8 +5909,8 @@ namespace CounterStrikeSharp.API.Core
                 // entindex of the player
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -5924,16 +5924,16 @@ namespace CounterStrikeSharp.API.Core
                 // spectating player
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // ehandle of the target
                 public IntPtr Target 
                 {
-                    get => GetInt("target");
-                    set => SetInt("target", value);
+                    get => Get<IntPtr>("target");
+                    set => Set<IntPtr>("target", value);
                 }
             }
 
@@ -5955,24 +5955,24 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public int Type 
                 {
-                    get => GetInt("type");
-                    set => SetInt("type", value);
+                    get => Get<int>("type");
+                    set => Set<int>("type", value);
                 }
 
                 
                 
                 public int VoteParameter 
                 {
-                    get => GetInt("vote_parameter");
-                    set => SetInt("vote_parameter", value);
+                    get => Get<int>("vote_parameter");
+                    set => Set<int>("vote_parameter", value);
                 }
             }
 
@@ -5994,8 +5994,8 @@ namespace CounterStrikeSharp.API.Core
                 // The phase #
                 public int Phase 
                 {
-                    get => GetInt("phase");
-                    set => SetInt("phase", value);
+                    get => Get<int>("phase");
+                    set => Set<int>("phase", value);
                 }
             }
 
@@ -6009,8 +6009,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -6024,8 +6024,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -6039,8 +6039,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Entityid 
                 {
-                    get => GetInt("entityid");
-                    set => SetInt("entityid", value);
+                    get => Get<int>("entityid");
+                    set => Set<int>("entityid", value);
                 }
             }
 
@@ -6054,8 +6054,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Entityid 
                 {
-                    get => GetInt("entityid");
-                    set => SetInt("entityid", value);
+                    get => Get<int>("entityid");
+                    set => Set<int>("entityid", value);
                 }
             }
 
@@ -6069,8 +6069,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -6084,40 +6084,40 @@ namespace CounterStrikeSharp.API.Core
                 // number of active players on both T and CT
                 public int Numplayers 
                 {
-                    get => GetInt("numPlayers");
-                    set => SetInt("numPlayers", value);
+                    get => Get<int>("numPlayers");
+                    set => Set<int>("numPlayers", value);
                 }
 
                 
                 // number of spectators
                 public int Numspectators 
                 {
-                    get => GetInt("numSpectators");
-                    set => SetInt("numSpectators", value);
+                    get => Get<int>("numSpectators");
+                    set => Set<int>("numSpectators", value);
                 }
 
                 
                 // average rank of human players
                 public int AvgRank 
                 {
-                    get => GetInt("avg_rank");
-                    set => SetInt("avg_rank", value);
+                    get => Get<int>("avg_rank");
+                    set => Set<int>("avg_rank", value);
                 }
 
                 
                 
                 public int Numtslotsfree 
                 {
-                    get => GetInt("numTSlotsFree");
-                    set => SetInt("numTSlotsFree", value);
+                    get => Get<int>("numTSlotsFree");
+                    set => Set<int>("numTSlotsFree", value);
                 }
 
                 
                 
                 public int Numctslotsfree 
                 {
-                    get => GetInt("numCTSlotsFree");
-                    set => SetInt("numCTSlotsFree", value);
+                    get => Get<int>("numCTSlotsFree");
+                    set => Set<int>("numCTSlotsFree", value);
                 }
             }
 
@@ -6131,40 +6131,40 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public int Entityid 
                 {
-                    get => GetInt("entityid");
-                    set => SetInt("entityid", value);
+                    get => Get<int>("entityid");
+                    set => Set<int>("entityid", value);
                 }
 
                 
                 
                 public float X 
                 {
-                    get => GetFloat("x");
-                    set => SetFloat("x", value);
+                    get => Get<float>("x");
+                    set => Set<float>("x", value);
                 }
 
                 
                 
                 public float Y 
                 {
-                    get => GetFloat("y");
-                    set => SetFloat("y", value);
+                    get => Get<float>("y");
+                    set => Set<float>("y", value);
                 }
 
                 
                 
                 public float Z 
                 {
-                    get => GetFloat("z");
-                    set => SetFloat("z", value);
+                    get => Get<float>("z");
+                    set => Set<float>("z", value);
                 }
             }
 
@@ -6178,16 +6178,16 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 
                 public int Toteam 
                 {
-                    get => GetInt("toteam");
-                    set => SetInt("toteam", value);
+                    get => Get<int>("toteam");
+                    set => Set<int>("toteam", value);
                 }
             }
 
@@ -6201,16 +6201,16 @@ namespace CounterStrikeSharp.API.Core
                 // unique team id
                 public int Teamid 
                 {
-                    get => GetInt("teamid");
-                    set => SetInt("teamid", value);
+                    get => Get<int>("teamid");
+                    set => Set<int>("teamid", value);
                 }
 
                 
                 // team name eg "Team Blue"
                 public string Teamname 
                 {
-                    get => GetString("teamname");
-                    set => SetString("teamname", value);
+                    get => Get<string>("teamname");
+                    set => Set<string>("teamname", value);
                 }
             }
 
@@ -6240,16 +6240,16 @@ namespace CounterStrikeSharp.API.Core
                 // unique team id
                 public int Team 
                 {
-                    get => GetInt("team");
-                    set => SetInt("team", value);
+                    get => Get<int>("team");
+                    set => Set<int>("team", value);
                 }
 
                 
                 // name of the sound to emit
                 public string Sound 
                 {
-                    get => GetString("sound");
-                    set => SetString("sound", value);
+                    get => Get<string>("sound");
+                    set => Set<string>("sound", value);
                 }
             }
 
@@ -6263,8 +6263,8 @@ namespace CounterStrikeSharp.API.Core
                 // is this a full reset of the map
                 public bool FullReset 
                 {
-                    get => GetBool("full_reset");
-                    set => SetBool("full_reset", value);
+                    get => Get<bool>("full_reset");
+                    set => Set<bool>("full_reset", value);
                 }
             }
 
@@ -6278,16 +6278,16 @@ namespace CounterStrikeSharp.API.Core
                 // team id
                 public int Teamid 
                 {
-                    get => GetInt("teamid");
-                    set => SetInt("teamid", value);
+                    get => Get<int>("teamid");
+                    set => Set<int>("teamid", value);
                 }
 
                 
                 // total team score
                 public int Score 
                 {
-                    get => GetInt("score");
-                    set => SetInt("score", value);
+                    get => Get<int>("score");
+                    set => Set<int>("score", value);
                 }
             }
 
@@ -6301,24 +6301,24 @@ namespace CounterStrikeSharp.API.Core
                 
                 public long Defindex 
                 {
-                    get => GetInt("defindex");
-                    set => SetInt("defindex", value);
+                    get => Get<long>("defindex");
+                    set => Set<long>("defindex", value);
                 }
 
                 
                 
                 public long Totalrewards 
                 {
-                    get => GetInt("totalrewards");
-                    set => SetInt("totalrewards", value);
+                    get => Get<long>("totalrewards");
+                    set => Set<long>("totalrewards", value);
                 }
 
                 
                 
                 public long Accountid 
                 {
-                    get => GetInt("accountid");
-                    set => SetInt("accountid", value);
+                    get => Get<long>("accountid");
+                    set => Set<long>("accountid", value);
                 }
             }
 
@@ -6340,8 +6340,8 @@ namespace CounterStrikeSharp.API.Core
                 // player whose time has expired
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -6355,8 +6355,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public long Time 
                 {
-                    get => GetInt("time");
-                    set => SetInt("time", value);
+                    get => Get<long>("time");
+                    set => Set<long>("time", value);
                 }
             }
 
@@ -6370,8 +6370,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Complete 
                 {
-                    get => GetInt("complete");
-                    set => SetInt("complete", value);
+                    get => Get<int>("complete");
+                    set => Set<int>("complete", value);
                 }
             }
 
@@ -6385,8 +6385,8 @@ namespace CounterStrikeSharp.API.Core
                 // user ID of the player banged
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -6416,8 +6416,8 @@ namespace CounterStrikeSharp.API.Core
                 // id of this specific content (may be image or map)
                 public ulong Hcontent 
                 {
-                    get => GetUint64("hcontent");
-                    set => SetUint64("hcontent", value);
+                    get => Get<ulong>("hcontent");
+                    set => Set<ulong>("hcontent", value);
                 }
             }
 
@@ -6431,16 +6431,16 @@ namespace CounterStrikeSharp.API.Core
                 // id of this specific content (may be image or map)
                 public ulong Hcontent 
                 {
-                    get => GetUint64("hcontent");
-                    set => SetUint64("hcontent", value);
+                    get => Get<ulong>("hcontent");
+                    set => Set<ulong>("hcontent", value);
                 }
 
                 
                 // id of the associated content package
                 public ulong PublishedFileId 
                 {
-                    get => GetUint64("published_file_id");
-                    set => SetUint64("published_file_id", value);
+                    get => Get<ulong>("published_file_id");
+                    set => Set<ulong>("published_file_id", value);
                 }
             }
 
@@ -6454,16 +6454,16 @@ namespace CounterStrikeSharp.API.Core
                 
                 public ulong PublishedFileId 
                 {
-                    get => GetUint64("published_file_id");
-                    set => SetUint64("published_file_id", value);
+                    get => Get<ulong>("published_file_id");
+                    set => Set<ulong>("published_file_id", value);
                 }
 
                 
                 
                 public long ErrorCode 
                 {
-                    get => GetInt("error_code");
-                    set => SetInt("error_code", value);
+                    get => Get<long>("error_code");
+                    set => Set<long>("error_code", value);
                 }
             }
 
@@ -6477,8 +6477,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public ulong PublishedFileId 
                 {
-                    get => GetUint64("published_file_id");
-                    set => SetUint64("published_file_id", value);
+                    get => Get<ulong>("published_file_id");
+                    set => Set<ulong>("published_file_id", value);
                 }
             }
 
@@ -6492,8 +6492,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public ulong PublishedFileId 
                 {
-                    get => GetUint64("published_file_id");
-                    set => SetUint64("published_file_id", value);
+                    get => Get<ulong>("published_file_id");
+                    set => Set<ulong>("published_file_id", value);
                 }
             }
 
@@ -6523,8 +6523,8 @@ namespace CounterStrikeSharp.API.Core
                 // player who was the VIP
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -6538,16 +6538,16 @@ namespace CounterStrikeSharp.API.Core
                 // player who was the VIP
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // user ID who killed the VIP
                 public int Attacker 
                 {
-                    get => GetInt("attacker");
-                    set => SetInt("attacker", value);
+                    get => Get<int>("attacker");
+                    set => Set<int>("attacker", value);
                 }
             }
 
@@ -6561,24 +6561,24 @@ namespace CounterStrikeSharp.API.Core
                 // which option the player voted on
                 public int VoteOption 
                 {
-                    get => GetInt("vote_option");
-                    set => SetInt("vote_option", value);
+                    get => Get<int>("vote_option");
+                    set => Set<int>("vote_option", value);
                 }
 
                 
                 
                 public int Team 
                 {
-                    get => GetInt("team");
-                    set => SetInt("team", value);
+                    get => Get<int>("team");
+                    set => Set<int>("team", value);
                 }
 
                 
                 // player who voted
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -6592,16 +6592,16 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Team 
                 {
-                    get => GetInt("team");
-                    set => SetInt("team", value);
+                    get => Get<int>("team");
+                    set => Set<int>("team", value);
                 }
 
                 
                 // entity id of the voter
                 public long Entityid 
                 {
-                    get => GetInt("entityid");
-                    set => SetInt("entityid", value);
+                    get => Get<long>("entityid");
+                    set => Set<long>("entityid", value);
                 }
             }
 
@@ -6615,16 +6615,16 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Team 
                 {
-                    get => GetInt("team");
-                    set => SetInt("team", value);
+                    get => Get<int>("team");
+                    set => Set<int>("team", value);
                 }
 
                 
                 // entity id of the voter
                 public long Entityid 
                 {
-                    get => GetInt("entityid");
-                    set => SetInt("entityid", value);
+                    get => Get<long>("entityid");
+                    set => Set<long>("entityid", value);
                 }
             }
 
@@ -6638,48 +6638,48 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int VoteOption1 
                 {
-                    get => GetInt("vote_option1");
-                    set => SetInt("vote_option1", value);
+                    get => Get<int>("vote_option1");
+                    set => Set<int>("vote_option1", value);
                 }
 
                 
                 
                 public int VoteOption2 
                 {
-                    get => GetInt("vote_option2");
-                    set => SetInt("vote_option2", value);
+                    get => Get<int>("vote_option2");
+                    set => Set<int>("vote_option2", value);
                 }
 
                 
                 
                 public int VoteOption3 
                 {
-                    get => GetInt("vote_option3");
-                    set => SetInt("vote_option3", value);
+                    get => Get<int>("vote_option3");
+                    set => Set<int>("vote_option3", value);
                 }
 
                 
                 
                 public int VoteOption4 
                 {
-                    get => GetInt("vote_option4");
-                    set => SetInt("vote_option4", value);
+                    get => Get<int>("vote_option4");
+                    set => Set<int>("vote_option4", value);
                 }
 
                 
                 
                 public int VoteOption5 
                 {
-                    get => GetInt("vote_option5");
-                    set => SetInt("vote_option5", value);
+                    get => Get<int>("vote_option5");
+                    set => Set<int>("vote_option5", value);
                 }
 
                 
                 
                 public int Potentialvotes 
                 {
-                    get => GetInt("potentialVotes");
-                    set => SetInt("potentialVotes", value);
+                    get => Get<int>("potentialVotes");
+                    set => Set<int>("potentialVotes", value);
                 }
             }
 
@@ -6701,16 +6701,16 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Team 
                 {
-                    get => GetInt("team");
-                    set => SetInt("team", value);
+                    get => Get<int>("team");
+                    set => Set<int>("team", value);
                 }
 
                 
                 // this event is reliable
                 public int Reliable 
                 {
-                    get => GetInt("reliable");
-                    set => SetInt("reliable", value);
+                    get => Get<int>("reliable");
+                    set => Set<int>("reliable", value);
                 }
             }
 
@@ -6724,48 +6724,48 @@ namespace CounterStrikeSharp.API.Core
                 // Number of options - up to MAX_VOTE_OPTIONS
                 public int Count 
                 {
-                    get => GetInt("count");
-                    set => SetInt("count", value);
+                    get => Get<int>("count");
+                    set => Set<int>("count", value);
                 }
 
                 
                 
                 public string Option1 
                 {
-                    get => GetString("option1");
-                    set => SetString("option1", value);
+                    get => Get<string>("option1");
+                    set => Set<string>("option1", value);
                 }
 
                 
                 
                 public string Option2 
                 {
-                    get => GetString("option2");
-                    set => SetString("option2", value);
+                    get => Get<string>("option2");
+                    set => Set<string>("option2", value);
                 }
 
                 
                 
                 public string Option3 
                 {
-                    get => GetString("option3");
-                    set => SetString("option3", value);
+                    get => Get<string>("option3");
+                    set => Set<string>("option3", value);
                 }
 
                 
                 
                 public string Option4 
                 {
-                    get => GetString("option4");
-                    set => SetString("option4", value);
+                    get => Get<string>("option4");
+                    set => Set<string>("option4", value);
                 }
 
                 
                 
                 public string Option5 
                 {
-                    get => GetString("option5");
-                    set => SetString("option5", value);
+                    get => Get<string>("option5");
+                    set => Set<string>("option5", value);
                 }
             }
 
@@ -6779,32 +6779,32 @@ namespace CounterStrikeSharp.API.Core
                 
                 public string Details 
                 {
-                    get => GetString("details");
-                    set => SetString("details", value);
+                    get => Get<string>("details");
+                    set => Set<string>("details", value);
                 }
 
                 
                 
                 public string Param1 
                 {
-                    get => GetString("param1");
-                    set => SetString("param1", value);
+                    get => Get<string>("param1");
+                    set => Set<string>("param1", value);
                 }
 
                 
                 
                 public int Team 
                 {
-                    get => GetInt("team");
-                    set => SetInt("team", value);
+                    get => Get<int>("team");
+                    set => Set<int>("team", value);
                 }
 
                 
                 // this event is reliable
                 public int Reliable 
                 {
-                    get => GetInt("reliable");
-                    set => SetInt("reliable", value);
+                    get => Get<int>("reliable");
+                    set => Set<int>("reliable", value);
                 }
             }
 
@@ -6818,32 +6818,32 @@ namespace CounterStrikeSharp.API.Core
                 
                 public string Issue 
                 {
-                    get => GetString("issue");
-                    set => SetString("issue", value);
+                    get => Get<string>("issue");
+                    set => Set<string>("issue", value);
                 }
 
                 
                 
                 public string Param1 
                 {
-                    get => GetString("param1");
-                    set => SetString("param1", value);
+                    get => Get<string>("param1");
+                    set => Set<string>("param1", value);
                 }
 
                 
                 
                 public int Team 
                 {
-                    get => GetInt("team");
-                    set => SetInt("team", value);
+                    get => Get<int>("team");
+                    set => Set<int>("team", value);
                 }
 
                 
                 // entity id of the player who initiated the vote
                 public long Initiator 
                 {
-                    get => GetInt("initiator");
-                    set => SetInt("initiator", value);
+                    get => Get<long>("initiator");
+                    set => Set<long>("initiator", value);
                 }
             }
 
@@ -6857,24 +6857,24 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // weapon name used
                 public string Weapon 
                 {
-                    get => GetString("weapon");
-                    set => SetString("weapon", value);
+                    get => Get<string>("weapon");
+                    set => Set<string>("weapon", value);
                 }
 
                 
                 // is weapon silenced
                 public bool Silenced 
                 {
-                    get => GetBool("silenced");
-                    set => SetBool("silenced", value);
+                    get => Get<bool>("silenced");
+                    set => Set<bool>("silenced", value);
                 }
             }
 
@@ -6888,16 +6888,16 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // weapon name used
                 public string Weapon 
                 {
-                    get => GetString("weapon");
-                    set => SetString("weapon", value);
+                    get => Get<string>("weapon");
+                    set => Set<string>("weapon", value);
                 }
             }
 
@@ -6911,24 +6911,24 @@ namespace CounterStrikeSharp.API.Core
                 // Player who this event applies to
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
                 
                 // EWeaponHudSelectionMode (switch / pickup / drop)
                 public int Mode 
                 {
-                    get => GetInt("mode");
-                    set => SetInt("mode", value);
+                    get => Get<int>("mode");
+                    set => Set<int>("mode", value);
                 }
 
                 
                 // Weapon entity index
                 public long Entindex 
                 {
-                    get => GetInt("entindex");
-                    set => SetInt("entindex", value);
+                    get => Get<long>("entindex");
+                    set => Set<long>("entindex", value);
                 }
             }
 
@@ -6942,8 +6942,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -6957,8 +6957,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -6972,8 +6972,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -6987,8 +6987,8 @@ namespace CounterStrikeSharp.API.Core
                 
                 public int Userid 
                 {
-                    get => GetInt("userid");
-                    set => SetInt("userid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
             }
 
@@ -7002,8 +7002,8 @@ namespace CounterStrikeSharp.API.Core
                 // Controller id of user
                 public int Controllerid 
                 {
-                    get => GetInt("controllerId");
-                    set => SetInt("controllerId", value);
+                    get => Get<int>("controllerId");
+                    set => Set<int>("controllerId", value);
                 }
             }
 
