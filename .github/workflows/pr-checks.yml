@@ -31,9 +31,11 @@ jobs:
               - src/**/*
 
       - uses: actions/setup-dotnet@v3
+        if: steps.changes.outputs.csharp == 'true'
         with:
           dotnet-version: '7.0.x'
-        if: steps.changes.outputs.csharp == 'true'
+
+      - if: steps.changes.outputs.csharp == 'true'
         run: dotnet build -c Release managed/CounterStrikeSharp.API
 
       - name: Configure CMake
