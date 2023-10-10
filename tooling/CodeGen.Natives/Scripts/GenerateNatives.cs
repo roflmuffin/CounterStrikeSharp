@@ -13,7 +13,8 @@ public partial class Generators
             .Build();
 
         var natives = new List<NativeDefinition>();
-        foreach (string file in Directory.EnumerateFiles(pathToSearch, "natives*yaml", SearchOption.AllDirectories).OrderBy(x => x))
+        foreach (string file in Directory.EnumerateFiles(pathToSearch, "natives*yaml", SearchOption.AllDirectories)
+                     .OrderBy(Path.GetFileName))
         {
             var deserialized = deserializer.Deserialize<Dictionary<string, string>>(File.ReadAllText(file));
 

@@ -31,7 +31,7 @@ public partial class Generators
         if (!Directory.Exists(pathToSearch)) Environment.Exit(0);
         var allGameEvents = new Dictionary<string, GameEvent>();
 
-        foreach (string file in Directory.EnumerateFiles(pathToSearch, "*.gameevents", SearchOption.AllDirectories).OrderBy(x => x))
+        foreach (string file in Directory.EnumerateFiles(pathToSearch, "*.gameevents", SearchOption.AllDirectories).OrderBy(Path.GetFileName))
         {
             var deserialized = VdfConvert.Deserialize(File.ReadAllText(file));
 
