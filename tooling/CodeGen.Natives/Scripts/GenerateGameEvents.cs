@@ -100,10 +100,10 @@ public partial class Generators
             });
             return $@"
             [EventName(""{gameEvent.Name}"")]
-            public class {gameEvent.NamePascalCase} : GameEvent
+            public class Event{gameEvent.NamePascalCase} : GameEvent
             {{
-                public {gameEvent.NamePascalCase}() : base(){{}}
-                public {gameEvent.NamePascalCase}(bool force) : base(""{gameEvent.Name}"", force){{}}
+                public Event{gameEvent.NamePascalCase}() : base(){{}}
+                public Event{gameEvent.NamePascalCase}(bool force) : base(""{gameEvent.Name}"", force){{}}
 
                 {string.Join("\n", propertyDefinition)}
             }}";

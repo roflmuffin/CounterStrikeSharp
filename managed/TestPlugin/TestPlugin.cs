@@ -17,6 +17,7 @@
 using System;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Modules.Events;
 
 namespace TestPlugin
@@ -37,9 +38,17 @@ namespace TestPlugin
                 Console.ResetColor();
             };
 
-            RegisterEventHandler<PlayerConnect>("player_connect", GenericEventHandler);
-            RegisterEventHandler<PlayerConnect>("player_spawn", GenericEventHandler);
-            RegisterEventHandler<PlayerConnect>("player_jump", GenericEventHandler);
+            RegisterEventHandler<EventPlayerConnect>(GenericEventHandler);
+            RegisterEventHandler<EventPlayerSpawn>(GenericEventHandler);
+            RegisterEventHandler<EventPlayerBlind>(GenericEventHandler);
+        }
+
+        [GameEventHandler]
+        public void OnPlayerConnect(EventPlayerConnect @event)
+        {
+            Console.BackgroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine($"Player {@event.Name} has connected!");
+            Console.ResetColor();
         }
 
         private void GenericEventHandler<T>(T @event) where T : GameEvent

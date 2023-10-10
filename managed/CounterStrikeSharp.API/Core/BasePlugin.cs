@@ -16,8 +16,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Runtime.Loader;
+using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Listeners;
 using CounterStrikeSharp.API.Modules.Timers;
@@ -90,11 +93,11 @@ namespace CounterStrikeSharp.API.Core
 
         public readonly List<Timer> Timers = new List<Timer>();
 
-        public void RegisterEventHandler<T>(string name, Action<T> handler, bool post = false) where T : GameEvent, new()
+        private void RegisterEventHandlerInternal<T>(string name, Action<T> handler, bool post = false)
+            where T : GameEvent, new()
         {
             var wrappedHandler = new Action<IntPtr>((IntPtr pointer) =>
             {
-                Console.WriteLine("Received pointer on C# side: " + String.Format("0x{0:X}", pointer));
                 var @event = new T();
                 @event.Handle = pointer;
                 handler.Invoke(@event);
@@ -104,6 +107,12 @@ namespace CounterStrikeSharp.API.Core
             var subscriber = new CallbackSubscriber(data, handler, wrappedHandler);
             NativeAPI.HookEvent(name, subscriber.GetInputArgument(), post);
             Handlers[handler] = subscriber;
+        }
+
+        public void RegisterEventHandler<T>(Action<T> handler, bool post = false) where T : GameEvent, new()
+        {
+            var name = typeof(T).GetCustomAttribute<EventNameAttribute>()?.Name;
+            RegisterEventHandlerInternal(name, handler, post);
         }
 
         public void DeregisterEventHandler(string name, Delegate handler, bool post)
@@ -311,6 +320,33 @@ namespace CounterStrikeSharp.API.Core
             add => AddListener("OnEntityDeleted", value,
                 (args, context) => { args.EntityIndex = context.GetArgument<int>(0); });
             remove => RemoveListener("OnEntityDeleted", value);
+        }
+
+        /**
+         * Automatically registers all game event handlers that are decorated with the [GameEventHandler] attribute.
+         */
+        public void RegisterAttributeHandlers()
+        {
+            var eventHandlers = this.GetType()
+                .GetMethods()
+                .Where(method => method.GetCustomAttribute<GameEventHandlerAttribute>() != null)
+                .Where(method =>
+                    method.GetParameters().FirstOrDefault()?.ParameterType.IsSubclassOf(typeof(GameEvent)) == true)
+                .ToArray();
+
+            foreach (var eventHandler in eventHandlers)
+            {
+                var parameterType = eventHandler.GetParameters().First().ParameterType;
+                var eventName = parameterType.GetCustomAttribute<EventNameAttribute>()?.Name;
+
+                var actionType = typeof(Action<>).MakeGenericType(parameterType);
+                var action = eventHandler.CreateDelegate(actionType, this);
+
+                var method = typeof(BasePlugin).GetMethod("RegisterEventHandlerInternal", BindingFlags.NonPublic |
+                    BindingFlags.Instance);
+                var generic = method.MakeGenericMethod(parameterType);
+                generic.Invoke(this, new object[] { eventName, action, false });
+            }
         }
     }
 }
