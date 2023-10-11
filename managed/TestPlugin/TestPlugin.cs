@@ -1,4 +1,4 @@
-/*
+﻿/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -15,9 +15,6 @@
  */
 
 using System;
-using System.IO;
-using CounterStrikeSharp.API;
-using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Modules.Events;
@@ -48,7 +45,10 @@ namespace TestPlugin
             };
 
             RegisterEventHandler<EventPlayerConnect>(GenericEventHandler);
-            RegisterEventHandler<EventPlayerSpawn>(GenericEventHandler);
+            RegisterEventHandler<EventPlayerSpawn>((@event =>
+            {
+                Console.WriteLine($"Handle of userid player controller: {@event.Userid}");
+            }));
             RegisterEventHandler<EventPlayerBlind>(GenericEventHandler);
         }
 

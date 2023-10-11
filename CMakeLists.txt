@@ -49,6 +49,27 @@ SET(SOURCE_FILES
         src/scripting/natives/natives_events.cpp
         src/core/memory.cpp
         src/core/memory.h
+        src/core/memory_module.h
+        src/core/cs2_sdk/entity/cbaseentity.h
+        src/core/cs2_sdk/entity/cbasemodelentity.h
+        src/core/cs2_sdk/entity/cbaseplayercontroller.h
+        src/core/cs2_sdk/entity/cbaseplayerpawn.h
+        src/core/cs2_sdk/entity/ccollisionproperty.h
+        src/core/cs2_sdk/entity/ccsplayercontroller.h
+        src/core/cs2_sdk/entity/ccsplayerpawn.h
+        src/core/cs2_sdk/entity/centityidentity.h
+        src/core/cs2_sdk/entity/cglowproperty.h
+        src/core/cs2_sdk/entity/ccsweaponbase.h
+        src/core/cs2_sdk/entity/services.h
+        src/core/cs2_sdk/interfaces/cgameresourceserviceserver.h
+        src/core/cs2_sdk/interfaces/cschemasystem.h
+        src/core/cs2_sdk/interfaces/centitysystem.cpp
+        src/core/cs2_sdk/interfaces/cs2_interfaces.h
+        src/core/cs2_sdk/interfaces/cs2_interfaces.cpp
+        src/core/cs2_sdk/schema.h
+        src/core/cs2_sdk/schema.cpp
+        src/core/addresses.h
+        src/core/addresses.cpp
 )
 
 
@@ -59,6 +80,7 @@ target_include_directories(
         ${PROJECT_NAME}
         PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/src
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/core/cs2_sdk
 )
 
 include("makefiles/linux.base.cmake")

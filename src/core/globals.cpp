@@ -12,6 +12,8 @@
 
 #include "log.h"
 #include "utils/virtual.h"
+#include "memory_module.h"
+#include "interfaces/cs2_interfaces.h"
 #include <public/game/server/iplayerinfo.h>
 
 namespace counterstrikesharp {
@@ -54,6 +56,11 @@ PlayerManager playerManager;
 TimerSystem timerSystem;
 
 void Initialize() {
+    addresses::Initialize();
+    interfaces::Initialize();
+
+    CSSHARP_CORE_INFO("Found the thing {}", (void*)interfaces::pGameResourceServiceServer);
+
     gameEventManager = (IGameEventManager2 *)(CALL_VIRTUAL(uintptr_t, 91, server) - 8);
 
     CSSHARP_CORE_TRACE("[GLOBALS] globals::gameEventManager: {0}", (void *)gameEventManager);

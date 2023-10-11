@@ -214,4 +214,12 @@ const char *CounterStrikeSharpMMPlugin::GetName() { return "CounterStrikeSharp";
 const char *CounterStrikeSharpMMPlugin::GetURL() {
     return "https://github.com/roflmuffin/CounterStrikeSharp";
 }
+
+CGlobalVars *GetGameGlobals() {
+    INetworkGameServer *server = g_pNetworkServerService->GetIGameServer();
+
+    if (!server) return nullptr;
+
+    return g_pNetworkServerService->GetIGameServer()->GetGlobals();
+}
 }  // namespace counterstrikesharp

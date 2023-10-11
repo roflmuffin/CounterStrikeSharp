@@ -87,7 +87,6 @@ void Initialize();
 // Should only be called within the active game loop (i e map should be loaded
 // and active) otherwise that'll be nullptr!
 CGlobalVars *getGlobalVars();
-
 }  // namespace globals
 
 }  // namespace counterstrikesharp
