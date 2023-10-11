@@ -27,8 +27,7 @@ class ICvar;
 class IGameEventSystem;
 class CounterStrikeSharpMMPlugin;
 
-namespace counterstrikesharp
-{
+namespace counterstrikesharp {
 class EntityListener;
 class EventManager;
 class UserMessageManager;
@@ -41,8 +40,7 @@ class TimerSystem;
 class ChatCommands;
 class HookManager;
 
-namespace globals
-{
+namespace globals {
 
 extern IVEngineServer *engine;
 extern IGameEventManager2 *gameEventManager;
@@ -90,9 +88,9 @@ void Initialize();
 // and active) otherwise that'll be nullptr!
 CGlobalVars *getGlobalVars();
 
-} // namespace globals
+}  // namespace globals
 
-} // namespace counterstrikesharp
+}  // namespace counterstrikesharp
 
 #undef SH_GLOB_SHPTR
 #define SH_GLOB_SHPTR counterstrikesharp::globals::source_hook

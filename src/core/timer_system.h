@@ -36,21 +36,18 @@
 #include "core/global_listener.h"
 #include "scripting/script_engine.h"
 
-namespace counterstrikesharp
-{
+namespace counterstrikesharp {
 class TimerSystem;
 class ScriptCallback;
 
-namespace timers
-{
+namespace timers {
 #define TIMER_FLAG_REPEAT (1 << 0)       /**< Timer will repeat until stopped */
 #define TIMER_FLAG_NO_MAPCHANGE (1 << 1) /**< Timer will not carry over mapchanges */
 
-class Timer
-{
+class Timer {
     friend class TimerSystem;
 
-  public:
+public:
     Timer(float interval, float exec_time, CallbackT callback, int flags);
     ~Timer();
 
@@ -62,13 +59,12 @@ class Timer
     bool m_kill_me;
 };
 
-} // namespace timers
+}  // namespace timers
 
 class ScriptCallback;
 
-class TimerSystem : public GlobalClass
-{
-  public:
+class TimerSystem : public GlobalClass {
+public:
     TimerSystem();
     void OnAllInitialized() override;
     void OnLevelEnd() override;
@@ -80,7 +76,7 @@ class TimerSystem : public GlobalClass
     void KillTimer(timers::Timer *timer);
     double GetTickedTime();
 
-  private:
+private:
     bool m_has_map_ticked = false;
     bool m_has_map_simulated = false;
     float m_last_ticked_time = 0.0f;
@@ -89,4 +85,4 @@ class TimerSystem : public GlobalClass
     std::vector<timers::Timer *> m_once_off_timers;
     std::vector<timers::Timer *> m_repeat_timers;
 };
-} // namespace counterstrikesharp
+}  // namespace counterstrikesharp

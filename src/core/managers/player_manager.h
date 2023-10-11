@@ -41,19 +41,17 @@ class INetChannelInfo;
 class IPlayerInfo;
 struct edict_t;
 
-namespace counterstrikesharp
-{
+namespace counterstrikesharp {
 class ScriptCallback;
 class CBaseEntityWrapper;
 
-class CPlayer
-{
+class CPlayer {
     friend class PlayerManager;
 
-  public:
+public:
     CPlayer();
 
-  public:
+public:
     void Initialize(const char *name, const char *ip, CPlayerSlot slot);
     void Connect();
     void Disconnect();
@@ -63,7 +61,7 @@ class CPlayer
     bool IsAuthStringValidated() const;
     void Authorize();
 
-  public:
+public:
     const char *GetName() const;
     const char *GetAuthString();
     bool IsConnected() const;
@@ -94,7 +92,7 @@ class CPlayer
     float GetTimeConnected() const;
     float GetLatency() const;
 
-  public:
+public:
     std::string m_name;
     IPlayerInfo *m_info = nullptr;
     std::string m_auth_id;
@@ -109,23 +107,36 @@ class CPlayer
     INetChannelInfo *GetNetInfo() const;
 };
 
-class PlayerManager : public GlobalClass
-{
+class PlayerManager : public GlobalClass {
     friend class CPlayer;
 
-  public:
+public:
     PlayerManager();
     void OnStartup() override;
     void OnAllInitialized() override;
-    bool OnClientConnect(CPlayerSlot slot, const char *pszName, uint64 xuid, const char *pszNetworkID, bool unk1,
+    bool OnClientConnect(CPlayerSlot slot,
+                         const char *pszName,
+                         uint64 xuid,
+                         const char *pszNetworkID,
+                         bool unk1,
                          CBufferString *pRejectReason);
-    bool OnClientConnect_Post(CPlayerSlot slot, const char *pszName, uint64 xuid, const char *pszNetworkID, bool unk1,
+    bool OnClientConnect_Post(CPlayerSlot slot,
+                              const char *pszName,
+                              uint64 xuid,
+                              const char *pszNetworkID,
+                              bool unk1,
                               CBufferString *pRejectReason);
     void OnClientPutInServer(CPlayerSlot slot, char const *pszName, int type, uint64 xuid);
-    void OnClientDisconnect(CPlayerSlot slot, /* ENetworkDisconnectionReason */ int reason, const char *pszName,
-                            uint64 xuid, const char *pszNetworkID);
-    void OnClientDisconnect_Post(CPlayerSlot slot, /* ENetworkDisconnectionReason */ int reason, const char *pszName,
-                                 uint64 xuid, const char *pszNetworkID) const;
+    void OnClientDisconnect(CPlayerSlot slot,
+                            /* ENetworkDisconnectionReason */ int reason,
+                            const char *pszName,
+                            uint64 xuid,
+                            const char *pszNetworkID);
+    void OnClientDisconnect_Post(CPlayerSlot slot,
+                                 /* ENetworkDisconnectionReason */ int reason,
+                                 const char *pszName,
+                                 uint64 xuid,
+                                 const char *pszNetworkID) const;
     void OnServerActivate(edict_t *pEdictList, int edictCount, int clientMax) const;
     void OnThink(bool last_tick) const;
     void OnShutdown() override;
@@ -133,13 +144,13 @@ class PlayerManager : public GlobalClass
     void OnClientCommand(CPlayerSlot slot, const CCommand &args) const;
     int ListenClient() const;
 
-  public:
+public:
     int NumPlayers() const;
     int MaxClients() const;
     CPlayer *GetPlayerByIndex(int client) const;
     CPlayer *GetClientOfUserId(int user_id) const;
 
-  private:
+private:
     void InvalidatePlayer(CPlayer *pPlayer) const;
 
     CPlayer *m_players;
@@ -157,4 +168,4 @@ class PlayerManager : public GlobalClass
     ScriptCallback *m_on_activate_callback;
 };
 
-} // namespace counterstrikesharp
+}  // namespace counterstrikesharp

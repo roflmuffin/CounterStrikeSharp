@@ -20,46 +20,33 @@
 
 #include "scripting/callback_manager.h"
 
-namespace counterstrikesharp
-{
-class TraceFilterProxy : public ITraceFilter
-{
-  public:
-    TraceFilterProxy()
-    {
-    }
+namespace counterstrikesharp {
+class TraceFilterProxy : public ITraceFilter {
+public:
+    TraceFilterProxy() {}
     bool ShouldHitEntity(IHandleEntity *pServerEntity, int contentsMask);
     TraceType_t GetTraceType() const;
 
     void SetShouldHitEntityCallback(CallbackT cb);
     void SetGetTraceTypeCallback(CallbackT cb);
 
-  private:
+private:
     CallbackT m_cb_should_hit_entity;
     CallbackT m_cb_get_trace_type;
 };
 
-class CSimpleTraceFilter : public ITraceFilter
-{
-  public:
-    CSimpleTraceFilter(int index) : m_index_to_exclude(index)
-    {
-    }
+class CSimpleTraceFilter : public ITraceFilter {
+public:
+    CSimpleTraceFilter(int index)
+        : m_index_to_exclude(index) {}
     bool ShouldHitEntity(IHandleEntity *pServerEntity, int contentsMask);
 
-    TraceType_t GetTraceType() const
-    {
-        return TRACE_EVERYTHING;
-    }
+    TraceType_t GetTraceType() const { return TRACE_EVERYTHING; }
 
-  private:
+private:
     int m_index_to_exclude = -1;
 };
 
-enum RayType
-{
-    RayType_EndPoint,
-    RayType_Infinite
-};
+enum RayType { RayType_EndPoint, RayType_Infinite };
 
-} // namespace counterstrikesharp
+}  // namespace counterstrikesharp

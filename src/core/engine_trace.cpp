@@ -18,13 +18,11 @@
 
 #include "core/log.h"
 
-namespace counterstrikesharp
-{
+namespace counterstrikesharp {
 
 CTraceFilterHitAll g_HitAllFilter;
 
-bool CSimpleTraceFilter::ShouldHitEntity(IHandleEntity *pServerEntity, int contentsMask)
-{
+bool CSimpleTraceFilter::ShouldHitEntity(IHandleEntity *pServerEntity, int contentsMask) {
     //    int index = ExcIndexFromBaseHandle(pServerEntity->GetRefEHandle());
     //    if (index == m_index_to_exclude)
     //        return false;
@@ -32,9 +30,7 @@ bool CSimpleTraceFilter::ShouldHitEntity(IHandleEntity *pServerEntity, int conte
     return true;
 }
 
-TraceType_t TraceFilterProxy::GetTraceType() const
-{
-
+TraceType_t TraceFilterProxy::GetTraceType() const {
     auto nativeContext = fxNativeContext{};
     auto scriptContext = ScriptContextRaw(nativeContext);
 
@@ -43,8 +39,7 @@ TraceType_t TraceFilterProxy::GetTraceType() const
     return scriptContext.GetResult<TraceType_t>();
 }
 
-bool TraceFilterProxy::ShouldHitEntity(IHandleEntity *pServerEntity, int contentsMask)
-{
+bool TraceFilterProxy::ShouldHitEntity(IHandleEntity *pServerEntity, int contentsMask) {
     return true;
     //    auto entity = ExcIndexFromBaseHandle(pServerEntity->GetRefEHandle());
     //    if (entity < 0)
@@ -67,14 +62,8 @@ bool TraceFilterProxy::ShouldHitEntity(IHandleEntity *pServerEntity, int content
     return true;*/
 }
 
-void TraceFilterProxy::SetShouldHitEntityCallback(CallbackT cb)
-{
-    m_cb_should_hit_entity = cb;
-}
+void TraceFilterProxy::SetShouldHitEntityCallback(CallbackT cb) { m_cb_should_hit_entity = cb; }
 
-void TraceFilterProxy::SetGetTraceTypeCallback(CallbackT cb)
-{
-    m_cb_get_trace_type = cb;
-}
+void TraceFilterProxy::SetGetTraceTypeCallback(CallbackT cb) { m_cb_get_trace_type = cb; }
 
-} // namespace counterstrikesharp
+}  // namespace counterstrikesharp

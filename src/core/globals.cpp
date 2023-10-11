@@ -14,11 +14,9 @@
 #include "utils/virtual.h"
 #include <public/game/server/iplayerinfo.h>
 
-namespace counterstrikesharp
-{
+namespace counterstrikesharp {
 
-namespace globals
-{
+namespace globals {
 IVEngineServer *engine = nullptr;
 IGameEventManager2 *gameEventManager = nullptr;
 IGameEventSystem *gameEventSystem = nullptr;
@@ -47,7 +45,7 @@ CGlobalEntityList *globalEntityList = nullptr;
 CounterStrikeSharpMMPlugin *mmPlugin = nullptr;
 SourceHook::Impl::CSourceHookImpl source_hook_impl;
 SourceHook::ISourceHook *source_hook = &source_hook_impl;
-ISmmAPI* ismm = nullptr;
+ISmmAPI *ismm = nullptr;
 
 // Custom Managers
 CallbackManager callbackManager;
@@ -55,23 +53,20 @@ EventManager eventManager;
 PlayerManager playerManager;
 TimerSystem timerSystem;
 
-void Initialize()
-{
+void Initialize() {
     gameEventManager = (IGameEventManager2 *)(CALL_VIRTUAL(uintptr_t, 91, server) - 8);
 
     CSSHARP_CORE_TRACE("[GLOBALS] globals::gameEventManager: {0}", (void *)gameEventManager);
 }
 
 int source_hook_pluginid = 0;
-CGlobalVars *getGlobalVars()
-{
+CGlobalVars *getGlobalVars() {
     INetworkGameServer *server = networkServerService->GetIGameServer();
 
-    if (!server)
-        return nullptr;
+    if (!server) return nullptr;
 
     return networkServerService->GetIGameServer()->GetGlobals();
 }
 
-} // namespace globals
-} // namespace counterstrikesharp
+}  // namespace globals
+}  // namespace counterstrikesharp

@@ -32,55 +32,38 @@
 #include "core/log.h"
 // clang-format on
 
-namespace counterstrikesharp
-{
+namespace counterstrikesharp {
 
-const char *GetMapName(ScriptContext &script_context)
-{
-    if (globals::getGlobalVars() == nullptr)
-        return nullptr;
+const char *GetMapName(ScriptContext &script_context) {
+    if (globals::getGlobalVars() == nullptr) return nullptr;
 
     return globals::getGlobalVars()->mapname.ToCStr();
 }
 
-const char *GetGameDirectory(ScriptContext &script_context)
-{
+const char *GetGameDirectory(ScriptContext &script_context) {
     return strdup(Plat_GetGameDirectory());
 }
 
-bool IsMapValid(ScriptContext &script_context)
-{
+bool IsMapValid(ScriptContext &script_context) {
     auto mapname = script_context.GetArgument<const char *>(0);
     return globals::engine->IsMapValid(mapname) != 0;
 }
 
-float GetTickInterval(ScriptContext &script_context)
-{
+float GetTickInterval(ScriptContext &script_context) {
     return globals::getGlobalVars()->interval_per_tick;
 }
 
-float GetCurrentTime(ScriptContext &script_context)
-{
-    return globals::getGlobalVars()->curtime;
-}
+float GetCurrentTime(ScriptContext &script_context) { return globals::getGlobalVars()->curtime; }
 
-int GetTickCount(ScriptContext &script_context)
-{
-    return globals::getGlobalVars()->tickcount;
-}
+int GetTickCount(ScriptContext &script_context) { return globals::getGlobalVars()->tickcount; }
 
-float GetGameFrameTime(ScriptContext &script_context)
-{
+float GetGameFrameTime(ScriptContext &script_context) {
     return globals::getGlobalVars()->frametime;
 }
 
-double GetEngineTime(ScriptContext &script_context)
-{
-    return Plat_FloatTime();
-}
+double GetEngineTime(ScriptContext &script_context) { return Plat_FloatTime(); }
 
-void ServerCommand(ScriptContext &script_context)
-{
+void ServerCommand(ScriptContext &script_context) {
     auto command = script_context.GetArgument<const char *>(0);
 
     auto clean_command = std::string(command);
@@ -88,28 +71,24 @@ void ServerCommand(ScriptContext &script_context)
     globals::engine->ServerCommand(clean_command.c_str());
 }
 
-void PrecacheModel(ScriptContext &script_context)
-{
+void PrecacheModel(ScriptContext &script_context) {
     auto name = script_context.GetArgument<const char *>(0);
     globals::engine->PrecacheGeneric(name);
 }
 
-bool PrecacheSound(ScriptContext &script_context)
-{
+bool PrecacheSound(ScriptContext &script_context) {
     auto [name, preload] = script_context.GetArguments<const char *, bool>();
 
     return globals::engineSound->PrecacheSound(name, preload);
 }
 
-bool IsSoundPrecached(ScriptContext &script_context)
-{
+bool IsSoundPrecached(ScriptContext &script_context) {
     auto name = script_context.GetArgument<const char *>(0);
 
     return globals::engineSound->IsSoundPrecached(name);
 }
 
-float GetSoundDuration(ScriptContext &script_context)
-{
+float GetSoundDuration(ScriptContext &script_context) {
     auto name = script_context.GetArgument<const char *>(0);
 
     return globals::engineSound->GetSoundDuration(name);
@@ -136,21 +115,17 @@ float GetSoundDuration(ScriptContext &script_context)
 //                                     attenuation, 0, flags, pitch, origin, direction);
 // }
 
-Ray_t *CreateRay1(ScriptContext &script_context)
-{
+Ray_t *CreateRay1(ScriptContext &script_context) {
     auto ray_type = script_context.GetArgument<RayType>(0);
     auto vec1 = script_context.GetArgument<Vector *>(1);
     auto vec2 = script_context.GetArgument<Vector *>(2);
 
     Ray_t *pRay = new Ray_t;
 
-    if (ray_type == RayType_EndPoint)
-    {
+    if (ray_type == RayType_EndPoint) {
         pRay->Init(*vec1, *vec2);
         return pRay;
-    }
-    else if (ray_type == RayType_Infinite)
-    {
+    } else if (ray_type == RayType_Infinite) {
         QAngle angles;
         Vector endVec;
         angles.Init(vec2->x, vec2->y, vec2->z);
@@ -166,8 +141,7 @@ Ray_t *CreateRay1(ScriptContext &script_context)
     return nullptr;
 }
 
-Ray_t *CreateRay2(ScriptContext &script_context)
-{
+Ray_t *CreateRay2(ScriptContext &script_context) {
     auto vec1 = script_context.GetArgument<Vector *>(0);
     auto vec2 = script_context.GetArgument<Vector *>(1);
     auto vec3 = script_context.GetArgument<Vector *>(2);
@@ -178,8 +152,7 @@ Ray_t *CreateRay2(ScriptContext &script_context)
     return pRay;
 }
 
-void TraceRay(ScriptContext &script_context)
-{
+void TraceRay(ScriptContext &script_context) {
     auto ray = script_context.GetArgument<Ray_t *>(0);
     auto pTrace = script_context.GetArgument<CGameTrace *>(1);
     auto trace_filter = script_context.GetArgument<ITraceFilter *>(2);
@@ -188,57 +161,44 @@ void TraceRay(ScriptContext &script_context)
     globals::engineTrace->TraceRay(*ray, flags, trace_filter, pTrace);
 }
 
-CSimpleTraceFilter *NewSimpleTraceFilter(ScriptContext &script_context)
-{
+CSimpleTraceFilter *NewSimpleTraceFilter(ScriptContext &script_context) {
     auto index_to_ignore = script_context.GetArgument<int>(0);
 
     return new CSimpleTraceFilter(index_to_ignore);
 }
 
-TraceFilterProxy *NewTraceFilterProxy(ScriptContext &script_context)
-{
+TraceFilterProxy *NewTraceFilterProxy(ScriptContext &script_context) {
     return new TraceFilterProxy();
 }
 
-void TraceFilterProxySetTraceTypeCallback(ScriptContext &script_context)
-{
+void TraceFilterProxySetTraceTypeCallback(ScriptContext &script_context) {
     auto trace_filter = script_context.GetArgument<TraceFilterProxy *>(0);
     auto callback = script_context.GetArgument<CallbackT>(1);
 
     trace_filter->SetGetTraceTypeCallback(callback);
 }
 
-void TraceFilterProxySetShouldHitEntityCallback(ScriptContext &script_context)
-{
+void TraceFilterProxySetShouldHitEntityCallback(ScriptContext &script_context) {
     auto [trace_filter, callback] = script_context.GetArguments<TraceFilterProxy *, CallbackT>();
     trace_filter->SetShouldHitEntityCallback(callback);
 }
 
-CGameTrace *NewTraceResult(ScriptContext &script_context)
-{
-    return new CGameTrace();
-}
+CGameTrace *NewTraceResult(ScriptContext &script_context) { return new CGameTrace(); }
 
-double GetTickedTime(ScriptContext &script_context)
-{
-    return globals::timerSystem.GetTickedTime();
-}
+double GetTickedTime(ScriptContext &script_context) { return globals::timerSystem.GetTickedTime(); }
 
-void QueueTaskForNextFrame(ScriptContext &script_context)
-{
+void QueueTaskForNextFrame(ScriptContext &script_context) {
     auto func = script_context.GetArgument<void *>(0);
 
     typedef void(voidfunc)(void);
     globals::mmPlugin->AddTaskForNextFrame([func]() { reinterpret_cast<voidfunc *>(func)(); });
 }
 
-byte *ConvertToByteArray(const char *str, size_t *outLength)
-{
-    size_t len = strlen(str) / 4; // Every byte is represented as \xHH
+byte *ConvertToByteArray(const char *str, size_t *outLength) {
+    size_t len = strlen(str) / 4;  // Every byte is represented as \xHH
     byte *result = (byte *)malloc(len);
 
-    for (size_t i = 0, j = 0; i < len; ++i, j += 4)
-    {
+    for (size_t i = 0, j = 0; i < len; ++i, j += 4) {
         sscanf(str + j, "\\x%2hhx", &result[i]);
     }
 
@@ -246,8 +206,7 @@ byte *ConvertToByteArray(const char *str, size_t *outLength)
     return result;
 }
 
-void *FindSignature(ScriptContext &scriptContext)
-{
+void *FindSignature(ScriptContext &scriptContext) {
     auto moduleName = scriptContext.GetArgument<const char *>(0);
     auto bytesStr = scriptContext.GetArgument<const char *>(1);
 
@@ -255,8 +214,7 @@ void *FindSignature(ScriptContext &scriptContext)
     auto sigBytes = ConvertToByteArray(bytesStr, &iSigLength);
 
     auto module = dlopen(moduleName, RTLD_NOW);
-    if (module == nullptr)
-    {
+    if (module == nullptr) {
         scriptContext.ThrowNativeError("Could not find module");
         return nullptr;
     }
@@ -264,64 +222,49 @@ void *FindSignature(ScriptContext &scriptContext)
     void *moduleBase;
     size_t moduleSize;
 
-    if (GetModuleInformation(module, &moduleBase, &moduleSize) != 0)
+    if (GetModuleInformation(module, &moduleBase, &moduleSize) != 0) {
         scriptContext.ThrowNativeError("Failed to get module info");
+        return nullptr;
+    }
 
     unsigned char *pMemory;
     void *returnAddr = nullptr;
 
-    CSSHARP_CORE_INFO("Module name {}, module base: {}, bytes {}, sigbytes {:X}, sigLength: {}, modulesize: {}",
-                      moduleName, moduleBase, bytesStr, sigBytes[0], iSigLength, moduleSize);
-
     pMemory = (byte *)moduleBase;
 
-    for (size_t i = 0; i < moduleSize; i++)
-    {
+    for (size_t i = 0; i < moduleSize; i++) {
         size_t matches = 0;
-        while (*(pMemory + i + matches) == sigBytes[matches] || sigBytes[matches] == '\x2A')
-        {
+        while (*(pMemory + i + matches) == sigBytes[matches] || sigBytes[matches] == '\x2A') {
             matches++;
-            if (matches == iSigLength)
-            {
+            if (matches == iSigLength) {
                 returnAddr = (void *)(pMemory + i);
             }
         }
     }
 
-    CSSHARP_CORE_TRACE("Return Addr {}", returnAddr);
-
-    if (returnAddr == nullptr)
-    {
+    if (returnAddr == nullptr) {
         scriptContext.ThrowNativeError("Could not find signature");
+        return nullptr;
     }
 
-    scriptContext.SetResult(returnAddr);
+    return returnAddr;
 }
 
-enum InterfaceType
-{
-    Engine,
-    Server
-};
+enum InterfaceType { Engine, Server };
 
-void *GetValveInterface(ScriptContext &scriptContext)
-{
+void *GetValveInterface(ScriptContext &scriptContext) {
     auto [interfaceType, interfaceName] = scriptContext.GetArguments<InterfaceType, const char *>();
 
     CreateInterfaceFn factoryFn;
-    if (interfaceType == Server)
-    {
+    if (interfaceType == Server) {
         factoryFn = globals::ismm->GetServerFactory();
-    }
-    else if (interfaceType == Engine)
-    {
+    } else if (interfaceType == Engine) {
         factoryFn = globals::ismm->GetEngineFactory();
     }
 
     auto foundInterface = globals::ismm->VInterfaceMatch(factoryFn, interfaceName);
 
-    if (foundInterface == nullptr)
-    {
+    if (foundInterface == nullptr) {
         scriptContext.ThrowNativeError("Could not find interface");
     }
 
@@ -366,4 +309,4 @@ REGISTER_NATIVES(engine, {
     ScriptEngine::RegisterNativeHandler("GET_VALVE_INTERFACE", GetValveInterface);
     ScriptEngine::RegisterNativeHandler("FIND_SIGNATURE", FindSignature);
 })
-} // namespace counterstrikesharp
+}  // namespace counterstrikesharp

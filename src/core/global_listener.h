@@ -31,50 +31,34 @@
 
 #pragma once
 
-namespace counterstrikesharp
-{
-class GlobalClass
-{
-  public:
+namespace counterstrikesharp {
+class GlobalClass {
+public:
     virtual ~GlobalClass() = default;
 
-    GlobalClass()
-    {
+    GlobalClass() {
         m_pGlobalClassNext = GlobalClass::head;
         GlobalClass::head = this;
     }
 
-  public:
-    virtual void OnStartup()
-    {
-    }
-    virtual void OnShutdown()
-    {
-    }
-    virtual void OnAllInitialized()
-    {
-    }
-    virtual void OnAllInitialized_Post()
-    {
-    }
-    virtual void OnLevelChange(const char *mapName)
-    {
-    }
-    virtual void OnLevelEnd()
-    {
-    }
+public:
+    virtual void OnStartup() {}
+    virtual void OnShutdown() {}
+    virtual void OnAllInitialized() {}
+    virtual void OnAllInitialized_Post() {}
+    virtual void OnLevelChange(const char *mapName) {}
+    virtual void OnLevelEnd() {}
 
-  public:
+public:
     GlobalClass *m_pGlobalClassNext;
     static GlobalClass *head;
 };
-} // namespace counterstrikesharp
+}  // namespace counterstrikesharp
 
-#define CALL_GLOBAL_LISTENER(func)                                                                                     \
-    GlobalClass *pBase = GlobalClass::head;                                                                            \
-    pBase = GlobalClass::head;                                                                                         \
-    while (pBase)                                                                                                      \
-    {                                                                                                                  \
-        pBase->func;                                                                                                   \
-        pBase = pBase->m_pGlobalClassNext;                                                                             \
+#define CALL_GLOBAL_LISTENER(func)          \
+    GlobalClass *pBase = GlobalClass::head; \
+    pBase = GlobalClass::head;              \
+    while (pBase) {                         \
+        pBase->func;                        \
+        pBase = pBase->m_pGlobalClassNext;  \
     }

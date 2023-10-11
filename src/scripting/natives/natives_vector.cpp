@@ -19,8 +19,7 @@
 #include "scripting/autonative.h"
 #include "scripting/script_engine.h"
 
-namespace counterstrikesharp
-{
+namespace counterstrikesharp {
 
 CREATE_GETTER_FUNCTION(Vector, float, Length, Vector *, obj->Length());
 CREATE_GETTER_FUNCTION(Vector, float, Length2D, Vector *, obj->Length2D());
@@ -38,36 +37,27 @@ CREATE_SETTER_FUNCTION(Vector, float, Z, Vector *, obj->z = value);
 
 std::vector<Vector *> managed_vectors;
 
-Vector *VectorNew(ScriptContext &script_context)
-{
+Vector *VectorNew(ScriptContext &script_context) {
     auto vec = new Vector();
     managed_vectors.push_back(vec);
     return vec;
 }
 
-QAngle *AngleNew(ScriptContext &script_context)
-{
-    return new QAngle();
-}
+QAngle *AngleNew(ScriptContext &script_context) { return new QAngle(); }
 
-void NativeVectorAngles(ScriptContext &script_context)
-{
+void NativeVectorAngles(ScriptContext &script_context) {
     auto vec = script_context.GetArgument<Vector *>(0);
     auto pseudoUpVector = script_context.GetArgument<Vector *>(1);
     auto outAngle = script_context.GetArgument<QAngle *>(2);
 
-    if (!pseudoUpVector)
-    {
+    if (!pseudoUpVector) {
         VectorAngles(*vec, *outAngle);
-    }
-    else
-    {
+    } else {
         VectorAngles(*vec, *pseudoUpVector, *outAngle);
     }
 }
 
-void NativeAngleVectors(ScriptContext &script_context)
-{
+void NativeAngleVectors(ScriptContext &script_context) {
     auto vec = script_context.GetArgument<QAngle *>(0);
     auto fwd = script_context.GetArgument<Vector *>(1);
     auto right = script_context.GetArgument<Vector *>(2);
@@ -96,4 +86,4 @@ REGISTER_NATIVES(vector, {
     ScriptEngine::RegisterNativeHandler("VECTOR_LENGTH_2D_SQR", VectorGetLength2DSqr);
     ScriptEngine::RegisterNativeHandler("VECTOR_IS_ZERO", VectorGetLengthSqr);
 })
-} // namespace counterstrikesharp
+}  // namespace counterstrikesharp

@@ -18,19 +18,16 @@
 #include "scripting/autonative.h"
 #include "scripting/script_engine.h"
 
-namespace counterstrikesharp
-{
+namespace counterstrikesharp {
 
-static bool AddListener(ScriptContext &script_context)
-{
+static bool AddListener(ScriptContext &script_context) {
     auto name = script_context.GetArgument<const char *>(0);
     auto callback = script_context.GetArgument<CallbackT>(1);
 
     return globals::callbackManager.TryAddFunction(name, callback);
 }
 
-static bool RemoveListener(ScriptContext &script_context)
-{
+static bool RemoveListener(ScriptContext &script_context) {
     auto name = script_context.GetArgument<const char *>(0);
     auto callback = script_context.GetArgument<CallbackT>(1);
 
@@ -41,4 +38,4 @@ REGISTER_NATIVES(callbacks, {
     ScriptEngine::RegisterNativeHandler("ADD_LISTENER", AddListener);
     ScriptEngine::RegisterNativeHandler("REMOVE_LISTENER", RemoveListener);
 })
-} // namespace counterstrikesharp
+}  // namespace counterstrikesharp

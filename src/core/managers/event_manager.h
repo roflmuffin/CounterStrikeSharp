@@ -43,16 +43,13 @@ class CUtlString;
 #include "core/globals.h"
 #include "scripting/script_engine.h"
 
-namespace counterstrikesharp
-{
+namespace counterstrikesharp {
 class ScriptCallback;
 class PluginFunction;
-} // namespace counterstrikesharp
+}  // namespace counterstrikesharp
 
-struct EventHook
-{
-    EventHook()
-    {
+struct EventHook {
+    EventHook() {
         PreHook = nullptr;
         PostHook = nullptr;
     }
@@ -61,33 +58,31 @@ struct EventHook
     std::string name;
 };
 
-namespace counterstrikesharp
-{
+namespace counterstrikesharp {
 
-class EventManager : public IGameEventListener2, public GlobalClass
-{
-  public:
+class EventManager : public IGameEventListener2, public GlobalClass {
+public:
     EventManager();
     ~EventManager();
 
-  public: // GlobalClass
+public:  // GlobalClass
     void OnShutdown() override;
     void OnAllInitialized() override;
     void OnStartup() override;
 
-  public: // IGameEventListener2
+public:  // IGameEventListener2
     void FireGameEvent(IGameEvent *event) override;
 
-  public:
+public:
     bool UnhookEvent(const char *name, CallbackT callback, bool post);
     bool HookEvent(const char *name, CallbackT callback, bool post);
 
-  private:
+private:
     bool OnFireEvent(IGameEvent *pEvent, bool bDontBroadcast);
     bool OnFireEvent_Post(IGameEvent *pEvent, bool bDontBroadcast);
 
-  private:
+private:
     std::map<std::string, EventHook *> m_hooks;
 };
 
-} // namespace counterstrikesharp
+}  // namespace counterstrikesharp
