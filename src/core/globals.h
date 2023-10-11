@@ -83,6 +83,7 @@ extern SourceHook::ISourceHook *source_hook;
 extern int source_hook_pluginid;
 extern IGameEventSystem *gameEventSystem;
 extern CounterStrikeSharpMMPlugin *mmPlugin;
+extern ISmmAPI *ismm;
 
 void Initialize();
 // Should only be called within the active game loop (i e map should be loaded

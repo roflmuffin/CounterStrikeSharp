@@ -27,6 +27,7 @@
 #include "core/utils.h"
 #include "scripting/autonative.h"
 #include "scripting/script_engine.h"
+#include "core/log.h"
 // clang-format on
 
 namespace counterstrikesharp
@@ -229,6 +230,36 @@ void QueueTaskForNextFrame(ScriptContext &script_context)
     globals::mmPlugin->AddTaskForNextFrame([func]() { reinterpret_cast<voidfunc *>(func)(); });
 }
 
+enum InterfaceType
+{
+    Engine,
+    Server
+};
+
+void *GetValveInterface(ScriptContext &scriptContext)
+{
+    auto [interfaceType, interfaceName] = scriptContext.GetArguments<InterfaceType, const char *>();
+
+    CreateInterfaceFn factoryFn;
+    if (interfaceType == Server)
+    {
+        factoryFn = globals::ismm->GetServerFactory();
+    }
+    else if (interfaceType == Engine)
+    {
+        factoryFn = globals::ismm->GetEngineFactory();
+    }
+
+    auto foundInterface = globals::ismm->VInterfaceMatch(factoryFn, interfaceName);
+
+    if (foundInterface == nullptr)
+    {
+        scriptContext.ThrowNativeError("Could not find interface");
+    }
+
+    return foundInterface;
+}
+
 CREATE_GETTER_FUNCTION(Trace, bool, DidHit, CGameTrace *, obj->DidHit());
 CREATE_GETTER_FUNCTION(TraceResult, CBaseEntity *, Entity, CGameTrace *, obj->m_pEnt);
 
@@ -264,5 +295,6 @@ REGISTER_NATIVES(engine, {
     ScriptEngine::RegisterNativeHandler("TRACE_RAY", TraceRay);
     ScriptEngine::RegisterNativeHandler("GET_TICKED_TIME", GetTickedTime);
     ScriptEngine::RegisterNativeHandler("QUEUE_TASK_FOR_NEXT_FRAME", QueueTaskForNextFrame);
+    ScriptEngine::RegisterNativeHandler("GET_VALVE_INTERFACE", GetValveInterface);
 })
 } // namespace counterstrikesharp

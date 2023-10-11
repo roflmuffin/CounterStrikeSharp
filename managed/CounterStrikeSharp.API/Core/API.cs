@@ -277,6 +277,18 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static IntPtr GetValveInterface(int interfacetype, string interfacename){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(interfacetype);
+			ScriptContext.GlobalScriptContext.Push(interfacename);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xDFAED2BE);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			}
+		}
+
         public static void HookEvent(string name, InputArgument callback, bool ispost){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();

@@ -21,3 +21,4 @@ TRACE_FILTER_PROXY_SET_SHOULD_HIT_ENTITY_CALLBACK: trace_filter:pointer, callbac
 NEW_TRACE_RESULT: -> pointer
 GET_TICKED_TIME: -> double
 QUEUE_TASK_FOR_NEXT_FRAME: callback:pointer -> void
+GET_VALVE_INTERFACE: interfaceType:int, interfaceName:string -> pointer

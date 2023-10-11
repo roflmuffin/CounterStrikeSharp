@@ -64,6 +64,7 @@ PLUGIN_EXPOSE(CounterStrikeSharpMMPlugin, gPlugin);
 bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI *ismm, char *error, size_t maxlen, bool late)
 {
     PLUGIN_SAVEVARS();
+    globals::ismm = ismm;
 
     Log::Init();
 
