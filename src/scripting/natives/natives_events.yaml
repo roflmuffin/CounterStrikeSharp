@@ -13,3 +13,7 @@ SET_EVENT_FLOAT: gameEvent:pointer, name:string, value:float -> void
 SET_EVENT_STRING: gameEvent:pointer, name:string, value:string -> void
 SET_EVENT_INT: gameEvent:pointer, name:string, value:int -> void
 LOAD_EVENTS_FROM_FILE: path:string, searchAll:bool -> int
+GET_EVENT_PLAYER_CONTROLLER: gameEvent:pointer, name:string -> pointer
+SET_EVENT_PLAYER_CONTROLLER: gameEvent:pointer, name:string, value:pointer -> void
+GET_EVENT_UINT64: gameEvent:pointer, name:string -> uint64
+SET_EVENT_UINT64: gameEvent:pointer, name:string, value:uint64 -> void

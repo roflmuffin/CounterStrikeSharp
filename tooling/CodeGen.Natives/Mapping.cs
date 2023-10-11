@@ -49,6 +49,8 @@ public class Mapping
                 return "double";
             case "void":
                 return "void";
+            case "uint64":
+                return "ulong";
             case "func":
             case "callback":
                 return "InputArgument";

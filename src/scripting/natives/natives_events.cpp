@@ -171,6 +171,50 @@ static void SetEventString(ScriptContext &script_context) {
     }
 }
 
+static void *GetPlayerController(ScriptContext &scriptContext) {
+    IGameEvent *gameEvent = scriptContext.GetArgument<IGameEvent *>(0);
+    const char *keyName = scriptContext.GetArgument<const char *>(1);
+
+    if (gameEvent == nullptr) {
+        scriptContext.ThrowNativeError("Invalid game event");
+        return nullptr;
+    }
+
+    return gameEvent->GetPlayerController(keyName);
+}
+
+static void *SetPlayerController(ScriptContext &scriptContext) {
+    IGameEvent *gameEvent = scriptContext.GetArgument<IGameEvent *>(0);
+    const char *keyName = scriptContext.GetArgument<const char *>(1);
+    auto *value = scriptContext.GetArgument<IHandleEntity *>(2);
+
+    if (gameEvent != nullptr) {
+        gameEvent->SetPlayer(keyName, value);
+    }
+}
+
+static uint64 GetUint64(ScriptContext &scriptContext) {
+    IGameEvent *gameEvent = scriptContext.GetArgument<IGameEvent *>(0);
+    const char *keyName = scriptContext.GetArgument<const char *>(1);
+
+    if (gameEvent == nullptr) {
+        scriptContext.ThrowNativeError("Invalid game event");
+        return 0;
+    }
+
+    return gameEvent->GetUint64(keyName);
+}
+
+static void *SetUint64(ScriptContext &scriptContext) {
+    IGameEvent *gameEvent = scriptContext.GetArgument<IGameEvent *>(0);
+    const char *keyName = scriptContext.GetArgument<const char *>(1);
+    auto value = scriptContext.GetArgument<uint64>(2);
+
+    if (gameEvent != nullptr) {
+        gameEvent->SetUint64(keyName, value);
+    }
+}
+
 static int LoadEventsFromFile(ScriptContext &script_context) {
     auto [path, searchAll] = script_context.GetArguments<const char *, bool>();
 
@@ -194,6 +238,12 @@ REGISTER_NATIVES(events, {
     ScriptEngine::RegisterNativeHandler("SET_EVENT_FLOAT", SetEventFloat);
     ScriptEngine::RegisterNativeHandler("SET_EVENT_STRING", SetEventString);
     ScriptEngine::RegisterNativeHandler("SET_EVENT_INT", SetEventInt);
+
+    ScriptEngine::RegisterNativeHandler("GET_EVENT_PLAYER_CONTROLLER", GetPlayerController);
+    ScriptEngine::RegisterNativeHandler("SET_EVENT_PLAYER_CONTROLLER", SetPlayerController);
+
+    ScriptEngine::RegisterNativeHandler("GET_EVENT_UINT64", GetUint64);
+    ScriptEngine::RegisterNativeHandler("SET_EVENT_UINT64", SetUint64);
 
     ScriptEngine::RegisterNativeHandler("LOAD_EVENTS_FROM_FILE", LoadEventsFromFile);
 })

@@ -58,7 +58,7 @@ namespace CounterStrikeSharp.API.Modules.Events
                 _ when type == typeof(string) => GetString(name),
                 _ when type == typeof(bool) => GetBool(name),
                 _ when type == typeof(ulong) => GetUint64(name),
-                _ when type == typeof(IntPtr) => throw new NotImplementedException("IntPtr event arguments are not supported yet."),
+                _ when type == typeof(IntPtr) => GetPlayerController(name),
                 _ => throw new NotSupportedException(),
             };
 
@@ -76,8 +76,11 @@ namespace CounterStrikeSharp.API.Modules.Events
                 case var _ when value is int i:
                     SetInt(name, i);
                     break;
-                case var _ when value is IntPtr:
-                    throw new NotImplementedException("IntPtr event arguments are not supported yet.");
+                case var _ when value is IntPtr ptr:
+                    // Currently treating all IntPtrs as Player Controllers 
+                    // but this will need to be revisited once we have pawns & ehandles
+                    SetPlayerController(name, ptr);
+                    break;
                 case var _ when value is string s:
                     SetString(name, s);
                     break;
@@ -96,12 +99,12 @@ namespace CounterStrikeSharp.API.Modules.Events
         protected float GetFloat(string name) => NativeAPI.GetEventFloat(Handle, name);
         protected string GetString(string name) => NativeAPI.GetEventString(Handle, name);
         protected int GetInt(string name) => NativeAPI.GetEventInt(Handle, name);
+        
+        protected IntPtr GetPlayerController(string name) => NativeAPI.GetEventPlayerController(Handle, name);
 
-        protected ulong GetUint64(string name) => 0;
+        protected ulong GetUint64(string name) => NativeAPI.GetEventUint64(Handle, name);
 
-        protected void SetUint64(string name, ulong value)
-        {
-        }
+        protected void SetUint64(string name, ulong value) => NativeAPI.SetEventUint64(Handle, name, value);
 
         // public Player GetPlayer(string name) => Player.FromUserId(GetInt(name));
 
@@ -110,6 +113,8 @@ namespace CounterStrikeSharp.API.Modules.Events
         protected void SetString(string name, string value) => NativeAPI.SetEventString(Handle, name, value);
         protected void SetInt(string name, int value) => NativeAPI.SetEventInt(Handle, name, value);
         protected void SetInt(string name, long value) => SetInt(name, (int)value);
+        
+        protected void SetPlayerController(string name, IntPtr value) => NativeAPI.SetEventPlayerController(Handle, name, value);
 
         public void FireEvent(bool dontBroadcast) => NativeAPI.FireEvent(Handle, dontBroadcast);
         // public void FireEventToClient(int clientId, bool dontBroadcast) => NativeAPI.FireEventToClient(Handle, clientId);
