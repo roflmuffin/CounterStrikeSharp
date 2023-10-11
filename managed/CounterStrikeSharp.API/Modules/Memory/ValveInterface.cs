@@ -24,7 +24,7 @@ public record ValveInterface
 
     public override string ToString()
     {
-        return this.Pointer.ToString();
+        return $"[ValveInterface: Name={Name}, Pointer={Pointer:X}]";
     }
 
     public static ValveInterface Engine => new(ValveInterfaceType.Engine, "Source2EngineToServer001");
