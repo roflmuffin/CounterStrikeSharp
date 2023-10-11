@@ -27,7 +27,7 @@ namespace CounterStrikeSharp.API
     {
         public static float TickInterval => NativeAPI.GetTickInterval();
 
-        public static void ExecuteCommand(string command) => NativeAPI.ServerCommand(command);
+        public static void ExecuteCommand(string command) => NativeAPI.IssueServerCommand(command);
 
         public static string MapName => NativeAPI.GetMapName();
         // public static void PrintToConsole(string message) => NativeAPI.PrintToConsole(message);

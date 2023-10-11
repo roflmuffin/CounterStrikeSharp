@@ -6,7 +6,7 @@ GET_CURRENT_TIME: -> float
 GET_TICK_COUNT: -> int
 GET_GAME_FRAME_TIME: -> float
 GET_ENGINE_TIME: -> double
-SERVER_COMMAND: command:string -> void
+ISSUE_SERVER_COMMAND: command:string -> void
 PRECACHE_MODEL: name:string -> void
 PRECACHE_SOUND: name:string, preload:bool -> bool
 IS_SOUND_PRECACHED: name:string -> bool

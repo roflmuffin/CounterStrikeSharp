@@ -110,11 +110,11 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
-        public static void ServerCommand(string command){
+        public static void IssueServerCommand(string command){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
 			ScriptContext.GlobalScriptContext.Push(command);
-			ScriptContext.GlobalScriptContext.SetIdentifier(0xCD0A5AB8);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xA5901A5E);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
 			}
