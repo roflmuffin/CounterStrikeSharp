@@ -88,6 +88,8 @@ bool CounterStrikeSharpMMPlugin::Load(
 
     CALL_GLOBAL_LISTENER(OnAllInitialized());
 
+    on_activate_callback = globals::callbackManager.CreateCallback("OnMapStart");
+
     SH_ADD_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this,
                         &CounterStrikeSharpMMPlugin::Hook_GameFrame, true);
     SH_ADD_HOOK_MEMFUNC(INetworkServerService, StartupServer, globals::networkServerService, this,
@@ -108,13 +110,19 @@ bool CounterStrikeSharpMMPlugin::Load(
 
 void CounterStrikeSharpMMPlugin::Hook_StartupServer(const GameSessionConfiguration_t &config,
                                                     ISource2WorldSession *,
-                                                    const char *) {}
+                                                    const char *) {
+    on_activate_callback->ScriptContext().Reset();
+    on_activate_callback->ScriptContext().Push(globals::getGlobalVars()->mapname);
+    on_activate_callback->Execute();
+}
 
 bool CounterStrikeSharpMMPlugin::Unload(char *error, size_t maxlen) {
     SH_REMOVE_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this,
                            &CounterStrikeSharpMMPlugin::Hook_GameFrame, true);
     SH_REMOVE_HOOK_MEMFUNC(INetworkServerService, StartupServer, globals::networkServerService,
                            this, &CounterStrikeSharpMMPlugin::Hook_StartupServer, true);
+
+    globals::callbackManager.ReleaseCallback(on_activate_callback);
 
     return true;
 }

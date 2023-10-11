@@ -165,7 +165,6 @@ private:
     ScriptCallback *m_on_client_connected_callback;
     ScriptCallback *m_on_client_disconnect_callback;
     ScriptCallback *m_on_client_disconnect_post_callback;
-    ScriptCallback *m_on_activate_callback;
 };
 
 }  // namespace counterstrikesharp

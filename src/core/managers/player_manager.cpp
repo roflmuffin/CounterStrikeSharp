@@ -104,7 +104,6 @@ void PlayerManager::OnAllInitialized() {
     m_on_client_disconnect_callback = globals::callbackManager.CreateCallback("OnClientDisconnect");
     m_on_client_disconnect_post_callback =
         globals::callbackManager.CreateCallback("OnClientDisconnectPost");
-    m_on_activate_callback = globals::callbackManager.CreateCallback("OnMapStart");
 }
 
 void PlayerManager::OnShutdown() {
@@ -126,7 +125,6 @@ void PlayerManager::OnShutdown() {
     globals::callbackManager.ReleaseCallback(m_on_client_put_in_server_callback);
     globals::callbackManager.ReleaseCallback(m_on_client_disconnect_callback);
     globals::callbackManager.ReleaseCallback(m_on_client_disconnect_post_callback);
-    globals::callbackManager.ReleaseCallback(m_on_activate_callback);
 }
 
 bool PlayerManager::OnClientConnect(CPlayerSlot slot,
@@ -291,12 +289,6 @@ void PlayerManager::OnClientDisconnect_Post(CPlayerSlot slot,
     m_on_client_disconnect_post_callback->ScriptContext().Reset();
     m_on_client_disconnect_post_callback->ScriptContext().Push(pPlayer->m_slot.Get());
     m_on_client_disconnect_post_callback->Execute();
-}
-
-void PlayerManager::OnServerActivate(edict_t *pEdictList, int edictCount, int clientMax) const {
-    m_on_activate_callback->ScriptContext().Reset();
-    m_on_activate_callback->ScriptContext().Push(globals::getGlobalVars()->mapname);
-    m_on_activate_callback->Execute();
 }
 
 void PlayerManager::OnLevelEnd() {

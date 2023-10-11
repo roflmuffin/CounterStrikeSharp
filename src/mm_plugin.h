@@ -26,6 +26,8 @@
     #include <vector>
 
 namespace counterstrikesharp {
+class ScriptCallback;
+
 class CounterStrikeSharpMMPlugin : public ISmmPlugin, public IMetamodListener {
 public:
     bool Load(PluginId id, ISmmAPI *ismm, char *error, size_t maxlen, bool late) override;
@@ -62,6 +64,7 @@ private:
     std::vector<std::function<void()>> m_nextTasks;
 };
 
+static ScriptCallback *on_activate_callback;
 extern CounterStrikeSharpMMPlugin gPlugin;
 
 PLUGIN_GLOBALVARS();

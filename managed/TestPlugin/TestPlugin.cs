@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -15,6 +15,8 @@
  */
 
 using System;
+using System.IO;
+using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes;
@@ -30,6 +32,13 @@ namespace TestPlugin
         public override void Load(bool hotReload)
         {
             Console.WriteLine($"Test Plugin has been loaded, and the hot reload flag was {hotReload}");
+
+            OnMapStart += args =>
+            {
+                Console.BackgroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine($"Map {args.MapName} has started!");
+                Console.ResetColor();
+            };
 
             OnClientConnect += args =>
             {
