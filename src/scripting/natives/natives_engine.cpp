@@ -15,6 +15,7 @@
  */
 
 #include <IEngineSound.h>
+#include <dlfcn.h>
 #include <edict.h>
 #include <eiface.h>
 #include <filesystem.h>
@@ -27,6 +28,7 @@
 #include "core/utils.h"
 #include "scripting/autonative.h"
 #include "scripting/script_engine.h"
+#include "core/memory.h"
 #include "core/log.h"
 // clang-format on
 
@@ -230,6 +232,72 @@ void QueueTaskForNextFrame(ScriptContext &script_context)
     globals::mmPlugin->AddTaskForNextFrame([func]() { reinterpret_cast<voidfunc *>(func)(); });
 }
 
+byte *ConvertToByteArray(const char *str, size_t *outLength)
+{
+    size_t len = strlen(str) / 4; // Every byte is represented as \xHH
+    byte *result = (byte *)malloc(len);
+
+    for (size_t i = 0, j = 0; i < len; ++i, j += 4)
+    {
+        sscanf(str + j, "\\x%2hhx", &result[i]);
+    }
+
+    *outLength = len;
+    return result;
+}
+
+void *FindSignature(ScriptContext &scriptContext)
+{
+    auto moduleName = scriptContext.GetArgument<const char *>(0);
+    auto bytesStr = scriptContext.GetArgument<const char *>(1);
+
+    size_t iSigLength;
+    auto sigBytes = ConvertToByteArray(bytesStr, &iSigLength);
+
+    auto module = dlopen(moduleName, RTLD_NOW);
+    if (module == nullptr)
+    {
+        scriptContext.ThrowNativeError("Could not find module");
+        return nullptr;
+    }
+
+    void *moduleBase;
+    size_t moduleSize;
+
+    if (GetModuleInformation(module, &moduleBase, &moduleSize) != 0)
+        scriptContext.ThrowNativeError("Failed to get module info");
+
+    unsigned char *pMemory;
+    void *returnAddr = nullptr;
+
+    CSSHARP_CORE_INFO("Module name {}, module base: {}, bytes {}, sigbytes {:X}, sigLength: {}, modulesize: {}",
+                      moduleName, moduleBase, bytesStr, sigBytes[0], iSigLength, moduleSize);
+
+    pMemory = (byte *)moduleBase;
+
+    for (size_t i = 0; i < moduleSize; i++)
+    {
+        size_t matches = 0;
+        while (*(pMemory + i + matches) == sigBytes[matches] || sigBytes[matches] == '\x2A')
+        {
+            matches++;
+            if (matches == iSigLength)
+            {
+                returnAddr = (void *)(pMemory + i);
+            }
+        }
+    }
+
+    CSSHARP_CORE_TRACE("Return Addr {}", returnAddr);
+
+    if (returnAddr == nullptr)
+    {
+        scriptContext.ThrowNativeError("Could not find signature");
+    }
+
+    scriptContext.SetResult(returnAddr);
+}
+
 enum InterfaceType
 {
     Engine,
@@ -296,5 +364,6 @@ REGISTER_NATIVES(engine, {
     ScriptEngine::RegisterNativeHandler("GET_TICKED_TIME", GetTickedTime);
     ScriptEngine::RegisterNativeHandler("QUEUE_TASK_FOR_NEXT_FRAME", QueueTaskForNextFrame);
     ScriptEngine::RegisterNativeHandler("GET_VALVE_INTERFACE", GetValveInterface);
+    ScriptEngine::RegisterNativeHandler("FIND_SIGNATURE", FindSignature);
 })
 } // namespace counterstrikesharp

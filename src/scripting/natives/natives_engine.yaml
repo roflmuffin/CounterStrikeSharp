@@ -22,3 +22,4 @@ NEW_TRACE_RESULT: -> pointer
 GET_TICKED_TIME: -> double
 QUEUE_TASK_FOR_NEXT_FRAME: callback:pointer -> void
 GET_VALVE_INTERFACE: interfaceType:int, interfaceName:string -> pointer
+FIND_SIGNATURE: modulePath:string, signature:string -> pointer

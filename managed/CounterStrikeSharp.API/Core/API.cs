@@ -289,6 +289,18 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static IntPtr FindSignature(string modulepath, string signature){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(modulepath);
+			ScriptContext.GlobalScriptContext.Push(signature);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xE9E1819B);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			}
+		}
+
         public static void HookEvent(string name, InputArgument callback, bool ispost){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();

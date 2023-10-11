@@ -47,6 +47,8 @@ SET(SOURCE_FILES
         src/scripting/natives/natives_timers.cpp
         src/utils/virtual.h
         src/scripting/natives/natives_events.cpp
+        src/core/memory.cpp
+        src/core/memory.h
 )
 
 
