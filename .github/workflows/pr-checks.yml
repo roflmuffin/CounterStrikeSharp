@@ -38,6 +38,11 @@ jobs:
       - if: steps.changes.outputs.csharp == 'true'
         run: dotnet build -c Release managed/CounterStrikeSharp.API
 
+      - name: Setup protobuf
+        shell: bash
+        if: steps.changes.outputs.cpp == 'true'
+        run: sudo apt-get update && sudo apt install -y protobuf-compiler
+
       - name: Configure CMake
         if: steps.changes.outputs.cpp == 'true'
         run: cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}

@@ -5,11 +5,11 @@ mkdir -p temp generated
 mkdir -p generated
 
 cp ../../libraries/GameTracking-CS2/Protobufs/*.proto temp/
+cp -r google/ temp/
 
 for file in temp/*.proto; do
-    echo 'syntax = "proto2";' | cat - $file > temp/tempfile && mv temp/tempfile $file
+    echo 'syntax = "proto2";' | cat - $file > temp/tempfile && mv temp/tempfile $file;
+    protoc --cpp_out=generated -I temp $file
 done
-
-./protoc --cpp_out=../generated -I=temp -I=. temp/*.proto > /dev/null 2>&1
 
 rm -r temp

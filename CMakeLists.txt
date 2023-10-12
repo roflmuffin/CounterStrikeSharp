@@ -51,7 +51,10 @@ SET(SOURCE_FILES
         src/core/memory.h
 )
 
-# Generate protobuf source & headers
+set(PROTO_DIRS -I${CMAKE_CURRENT_SOURCE_DIR}/libraries/GameTracking-CS2/Protobufs)
+file(GLOB PROTOS "${CMAKE_CURRENT_SOURCE_DIR}/libraries/GameTracking-CS2/Protobufs/*.proto")
+
+## Generate protobuf source & headers
 add_custom_command(
         OUTPUT protobuf_output_stamp
         COMMAND bash ${CMAKE_CURRENT_SOURCE_DIR}/src/protobuf/compile.sh
@@ -62,7 +65,6 @@ add_custom_command(
 )
 
 SET(SOURCE_FILES ${SOURCE_FILES} protobuf_output_stamp)
-
 # Sources
 add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${NATIVES_SOURCES} ${CONVERSIONS_SOURCES} ${CONVERSIONS_HEADERS})
 
