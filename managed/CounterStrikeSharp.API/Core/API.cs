@@ -29,6 +29,88 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static IntPtr AddCommand(string name, string description, bool serveronly, int flags, InputArgument callback){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(name);
+			ScriptContext.GlobalScriptContext.Push(description);
+			ScriptContext.GlobalScriptContext.Push(serveronly);
+			ScriptContext.GlobalScriptContext.Push(flags);
+			ScriptContext.GlobalScriptContext.Push((InputArgument)callback);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x807C6B9C);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			}
+		}
+
+        public static void RemoveCommand(string name, InputArgument callback){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(name);
+			ScriptContext.GlobalScriptContext.Push((InputArgument)callback);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xEC2412DB);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static int CommandGetArgCount(IntPtr command){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(command);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xAD28109C);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (int)ScriptContext.GlobalScriptContext.GetResult(typeof(int));
+			}
+		}
+
+        public static string CommandGetArgString(IntPtr command){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(command);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x2E52E8EA);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (string)ScriptContext.GlobalScriptContext.GetResult(typeof(string));
+			}
+		}
+
+        public static string CommandGetCommandString(IntPtr command){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(command);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x8FABC059);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (string)ScriptContext.GlobalScriptContext.GetResult(typeof(string));
+			}
+		}
+
+        public static string CommandGetArgByIndex(IntPtr command, int index){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(command);
+			ScriptContext.GlobalScriptContext.Push(index);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x3E8D9805);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (string)ScriptContext.GlobalScriptContext.GetResult(typeof(string));
+			}
+		}
+
+        public static void IssueClientCommand(int clientindex, string command){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(clientindex);
+			ScriptContext.GlobalScriptContext.Push(command);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xCA5BA982);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
         public static string GetMapName(){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();

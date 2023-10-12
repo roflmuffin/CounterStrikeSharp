@@ -1,0 +1,7 @@
+ADD_COMMAND: name:string,description:string,serverOnly:bool,flags:int,callback:callback -> pointer
+REMOVE_COMMAND: name:string,callback:callback -> void
+COMMAND_GET_ARG_COUNT: command:pointer -> int
+COMMAND_GET_ARG_STRING: command:pointer -> string
+COMMAND_GET_COMMAND_STRING: command:pointer -> string
+COMMAND_GET_ARG_BY_INDEX: command:pointer,index:int -> string
+ISSUE_CLIENT_COMMAND: clientIndex:int,command:string -> void

@@ -1,7 +1,5 @@
 using Gameloop.Vdf;
-using Gameloop.Vdf.JsonConverter;
 using Gameloop.Vdf.Linq;
-using YamlDotNet.Core.Tokens;
 
 namespace CodeGen.Natives.Scripts;
 
@@ -9,18 +7,27 @@ public partial class Generators
 {
     public class GameEvent
     {
-        public string Name { get; set; }
+        public GameEvent(string name)
+        {
+            Name = name;
+        }
+        public string Name { get; init; }
         public string NamePascalCase => Name.ToPascalCase();
         public List<GameEventKey> Keys { get; set; } = new();
     }
 
     public class GameEventKey
     {
-        public string Name { get; set; }
+        public GameEventKey(string name, string type)
+        {
+            Name = name;
+            Type = type;
+        }
+        public string Name { get; init; }
+        public string Type { get; init; }
         public string NamePascalCase => Name.ToPascalCase();
-        public string Type { get; set; }
         public string MappedType => Mapping.GetCSharpTypeFromGameEventType(Type);
-        public string Comment { get; set; }
+        public string? Comment { get; set; }
     }
 
     private static List<GameEvent> GetGameEvents()
@@ -43,9 +50,9 @@ public partial class Generators
                 var eventName = property.Key;
                 var eventProperties = property.Value as VObject;
 
-                var gameEvent = new GameEvent() { Name = eventName };
+                var gameEvent = new GameEvent(eventName);
 
-                foreach (var kvp in eventProperties.Children())
+                foreach (var kvp in eventProperties?.Children()!)
                 {
                     if (kvp is VValue or VProperty)
                     {
@@ -58,11 +65,7 @@ public partial class Generators
                         }
                         else if (kvp is VProperty asKvp)
                         {
-                            var gameEventKey = new GameEventKey
-                            {
-                                Name = asKvp.Key,
-                                Type = asKvp.Value.ToString().Trim()
-                            };
+                            var gameEventKey = new GameEventKey(asKvp.Key, asKvp.Value.ToString().Trim());
 
                             gameEvent.Keys.Add(gameEventKey);
                         }

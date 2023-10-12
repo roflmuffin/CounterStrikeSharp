@@ -14,3 +14,6 @@
 [submodule "libraries/dyncall"]
 	path = libraries/dyncall
 	url = https://github.com/LWJGL-CI/dyncall
+[submodule "libraries/GameTracking-CS2"]
+	path = libraries/GameTracking-CS2
+	url = https://github.com/SteamDatabase/GameTracking-CS2

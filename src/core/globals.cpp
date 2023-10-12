@@ -12,6 +12,7 @@
 
 #include "log.h"
 #include "utils/virtual.h"
+#include "core/managers/con_command_manager.h"
 #include "memory_module.h"
 #include "interfaces/cs2_interfaces.h"
 #include <public/game/server/iplayerinfo.h>
@@ -54,6 +55,7 @@ CallbackManager callbackManager;
 EventManager eventManager;
 PlayerManager playerManager;
 TimerSystem timerSystem;
+ConCommandManager conCommandManager;
 
 void Initialize() {
     addresses::Initialize();
