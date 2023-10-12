@@ -321,6 +321,12 @@ namespace CounterStrikeSharp.API.Core
             remove => RemoveListener("OnEntityDeleted", value);
         }
 
+        public void RegisterAllAttributes(object instance)
+        {
+            this.RegisterAttributeHandlers(instance);
+            this.RegisterConsoleCommandAttributeHandlers(instance);
+        }
+
         /**
          * Automatically registers all game event handlers that are decorated with the [GameEventHandler] attribute.
          */
@@ -346,6 +352,20 @@ namespace CounterStrikeSharp.API.Core
 
                 var generic = method.MakeGenericMethod(parameterType);
                 generic.Invoke(this, new object[] { eventName, action, false });
+            }
+        }
+
+        public void RegisterConsoleCommandAttributeHandlers(object instance)
+        {
+            var eventHandlers = instance.GetType()
+                .GetMethods()
+                .Where(method => method.GetCustomAttribute<ConsoleCommandAttribute>() != null)
+                .ToArray();
+
+            foreach (var eventHandler in eventHandlers)
+            {
+                var commandInfo = eventHandler.GetCustomAttribute<ConsoleCommandAttribute>();
+                AddCommand(commandInfo.Command, commandInfo.Description, eventHandler.CreateDelegate<CommandInfo.CommandCallback>(instance));
             }
         }
 

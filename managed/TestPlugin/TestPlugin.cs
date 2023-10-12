@@ -20,6 +20,7 @@ using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes;
+using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Events;
 
 namespace TestPlugin
@@ -63,6 +64,12 @@ namespace TestPlugin
             Console.BackgroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine($"Player {@event.Name} has connected!");
             Console.ResetColor();
+        }
+
+        [ConsoleCommand("cssharp_attribute", "This is a custom attribute event")]
+        public void OnCommand(int client, CommandInfo command)
+        {
+            Console.WriteLine("cssharp_attribute called!");
         }
 
         private void GenericEventHandler<T>(T @event) where T : GameEvent
