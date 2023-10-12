@@ -29,11 +29,11 @@ namespace CounterStrikeSharp.API.Modules.Commands
             Handle = pointer;
         }
 
-        public int ArgCount() => NativeAPI.CommandGetArgCount(Handle);
+        public int ArgCount => NativeAPI.CommandGetArgCount(Handle);
 
-        public string ArgString() => NativeAPI.CommandGetArgString(Handle);
+        public string ArgString => NativeAPI.CommandGetArgString(Handle);
 
-        public string GetCommandString() => NativeAPI.CommandGetCommandString(Handle);
+        public string GetCommandString => NativeAPI.CommandGetCommandString(Handle);
 
         public string ArgByIndex(int index) => NativeAPI.CommandGetArgByIndex(Handle, index);
     }

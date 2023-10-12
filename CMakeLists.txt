@@ -49,6 +49,9 @@ SET(SOURCE_FILES
         src/scripting/natives/natives_events.cpp
         src/core/memory.cpp
         src/core/memory.h
+        src/core/managers/con_command_manager.cpp
+        src/core/managers/con_command_manager.h
+        src/scripting/natives/natives_commands.cpp
 )
 
 set(PROTO_DIRS -I${CMAKE_CURRENT_SOURCE_DIR}/libraries/GameTracking-CS2/Protobufs)
@@ -65,6 +68,7 @@ add_custom_command(
 )
 
 SET(SOURCE_FILES ${SOURCE_FILES} protobuf_output_stamp)
+
 # Sources
 add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${NATIVES_SOURCES} ${CONVERSIONS_SOURCES} ${CONVERSIONS_HEADERS})
 

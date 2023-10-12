@@ -32,6 +32,11 @@ namespace TestPlugin
         public override void Load(bool hotReload)
         {
             Console.WriteLine($"Test Plugin has been loaded, and the hot reload flag was {hotReload}");
+            
+            AddCommand("cssharp_info", "A test command", (clientIndex, info) =>
+            {
+                Console.WriteLine($"CounterStrikeSharp - a test command was called by {clientIndex} with {info.ArgString}");
+            });
 
             OnMapStart += args =>
             {

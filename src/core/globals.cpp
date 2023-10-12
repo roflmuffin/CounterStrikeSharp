@@ -12,6 +12,7 @@
 
 #include "log.h"
 #include "utils/virtual.h"
+#include "core/managers/con_command_manager.h"
 #include <public/game/server/iplayerinfo.h>
 
 namespace counterstrikesharp {
@@ -52,6 +53,7 @@ CallbackManager callbackManager;
 EventManager eventManager;
 PlayerManager playerManager;
 TimerSystem timerSystem;
+ConCommandManager conCommandManager;
 
 void Initialize() {
     gameEventManager = (IGameEventManager2 *)(CALL_VIRTUAL(uintptr_t, 91, server) - 8);

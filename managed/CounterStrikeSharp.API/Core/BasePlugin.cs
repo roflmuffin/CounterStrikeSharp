@@ -21,6 +21,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Runtime.Loader;
 using CounterStrikeSharp.API.Core.Attributes;
+using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Listeners;
 using CounterStrikeSharp.API.Modules.Timers;
@@ -129,7 +130,6 @@ namespace CounterStrikeSharp.API.Core
             Handlers.Remove(handler);
         }
 
-        /*
 
         public void AddCommand(string name, string description, CommandInfo.CommandCallback handler)
         {
@@ -139,7 +139,7 @@ namespace CounterStrikeSharp.API.Core
                 handler?.Invoke(i, command);
             });
 
-            var subscriber = new CallbackSubscriber(name, handler, wrappedHandler);
+            var subscriber = new CallbackSubscriber(handler, wrappedHandler, () => { RemoveCommand(name, handler); });
             NativeAPI.AddCommand(name, description, false, 0, subscriber.GetInputArgument());
             CommandHandlers[handler] = subscriber;
         }
@@ -156,6 +156,8 @@ namespace CounterStrikeSharp.API.Core
                 CommandHandlers.Remove(handler);
             }
         }
+
+        /*
 
         public void HookConVarChange(ConVar convar, ConVar.ConVarChangedCallback handler)
         {
@@ -341,7 +343,7 @@ namespace CounterStrikeSharp.API.Core
 
                 var actionType = typeof(Action<>).MakeGenericType(parameterType);
                 var action = eventHandler.CreateDelegate(actionType, instance);
-                
+
                 var generic = method.MakeGenericMethod(parameterType);
                 generic.Invoke(this, new object[] { eventName, action, false });
             }
@@ -362,8 +364,9 @@ namespace CounterStrikeSharp.API.Core
                 subscriber.Dispose();
             }
 
-            foreach (var kv in CommandHandlers)
+            foreach (var subscriber in CommandHandlers.Values)
             {
+                subscriber.Dispose();
                 // _plugin.RemoveCommand((string)kv.Value.GetValue(), (CommandInfo.CommandCallback)kv.Key);
             }
 
