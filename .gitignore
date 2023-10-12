@@ -3,6 +3,7 @@
 cmake-build-debug/
 .kdev4/
 .vscode/
+generated/
 
 libraries/mono/
 

@@ -51,6 +51,17 @@ SET(SOURCE_FILES
         src/core/memory.h
 )
 
+# Generate protobuf source & headers
+add_custom_command(
+        OUTPUT protobuf_output_stamp
+        COMMAND bash ${CMAKE_CURRENT_SOURCE_DIR}/src/protobuf/compile.sh
+        COMMENT "Generating protobuf files using compile.sh script"
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/protobuf
+        DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/src/protobuf/compile.sh
+        VERBATIM
+)
+
+SET(SOURCE_FILES ${SOURCE_FILES} protobuf_output_stamp)
 
 # Sources
 add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${NATIVES_SOURCES} ${CONVERSIONS_SOURCES} ${CONVERSIONS_HEADERS})
