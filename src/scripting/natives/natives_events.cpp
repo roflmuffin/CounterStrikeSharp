@@ -186,7 +186,7 @@ static void *GetPlayerController(ScriptContext &scriptContext) {
 static void *SetPlayerController(ScriptContext &scriptContext) {
     IGameEvent *gameEvent = scriptContext.GetArgument<IGameEvent *>(0);
     const char *keyName = scriptContext.GetArgument<const char *>(1);
-    auto *value = scriptContext.GetArgument<IHandleEntity *>(2);
+    auto *value = scriptContext.GetArgument<CEntityInstance *>(2);
 
     if (gameEvent != nullptr) {
         gameEvent->SetPlayer(keyName, value);

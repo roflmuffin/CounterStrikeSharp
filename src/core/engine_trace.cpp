@@ -22,7 +22,7 @@ namespace counterstrikesharp {
 
 CTraceFilterHitAll g_HitAllFilter;
 
-bool CSimpleTraceFilter::ShouldHitEntity(IHandleEntity *pServerEntity, int contentsMask) {
+bool CSimpleTraceFilter::ShouldHitEntity(CEntityInstance *pServerEntity, int contentsMask) {
     //    int index = ExcIndexFromBaseHandle(pServerEntity->GetRefEHandle());
     //    if (index == m_index_to_exclude)
     //        return false;
@@ -39,7 +39,7 @@ TraceType_t TraceFilterProxy::GetTraceType() const {
     return scriptContext.GetResult<TraceType_t>();
 }
 
-bool TraceFilterProxy::ShouldHitEntity(IHandleEntity *pServerEntity, int contentsMask) {
+bool TraceFilterProxy::ShouldHitEntity(CEntityInstance *pServerEntity, int contentsMask) {
     return true;
     //    auto entity = ExcIndexFromBaseHandle(pServerEntity->GetRefEHandle());
     //    if (entity < 0)

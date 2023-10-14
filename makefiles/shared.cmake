@@ -25,6 +25,7 @@ include_directories(
         ${SOURCESDK}/public/tier0
         ${SOURCESDK}/public/tier1
         ${SOURCESDK}/public/game/server
+        ${SOURCESDK}/public/entity2
         ${METAMOD_DIR}/core
         ${METAMOD_DIR}/core/sourcehook
         libraries/spdlog/include

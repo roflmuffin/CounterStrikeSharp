@@ -18,7 +18,7 @@ Set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-invalid-offsetof -Wno-reorder")
 
 # Others
 Set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mfpmath=sse -msse -fno-strict-aliasing")
-Set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -fno-threadsafe-statics -v -fvisibility=default")
+Set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -fno-threadsafe-statics -v -fvisibility=default")
 
 SET(
         COUNTER_STRIKE_SHARP_LINK_LIBRARIES
