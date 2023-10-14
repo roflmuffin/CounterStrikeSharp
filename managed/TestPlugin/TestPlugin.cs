@@ -15,6 +15,7 @@
  */
 
 using System;
+using System.IO;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Modules.Commands;
@@ -30,67 +31,67 @@ namespace TestPlugin
 
         public override void Load(bool hotReload)
         {
-            Console.WriteLine($"Test Plugin has been loaded, and the hot reload flag was {hotReload}");
+            Console.WriteLine(
+                $"Test Plugin has been loaded, and the hot reload flag was {hotReload}, path is {ModulePath}");
 
+            // Register Game Event Handlers
+            RegisterEventHandler<EventPlayerConnect>(GenericEventHandler);
+            RegisterEventHandler<EventPlayerSpawn>(GenericEventHandler);
+            RegisterEventHandler<EventPlayerBlind>(GenericEventHandler);
+
+            // Hook global listeners defined by CounterStrikeSharp
+            OnMapStart += args => { Log($"Map {args.MapName} has started!"); };
+            OnClientConnect += args => { Log($"Client {args.Name} from {args.Address} has connected!"); };
+
+            // You can use `ModuleDirectory` to get the directory of the plugin (for storing config files, saving database files etc.)
+            File.WriteAllText(Path.Join(ModuleDirectory, "example.txt"),
+                $"Test file created by TestPlugin at {DateTime.Now}");
+
+            // ValveInterface provides pointers to loaded modules via Interface Name exposed from the engine (e.g. Source2Server001)
             var server = ValveInterface.Server;
-            Console.WriteLine($"Found server ptr: {server.Pointer:X}");
+            Log($"Server pointer found @ {server.Pointer:X}");
 
             // Example vfunc call that usually gets the game event manager pointer
             // by calling the func at offset 91 then subtracting 8 from the result pointer.
             // This value is asserted against the native code that points to the same function.
             var virtualFunc = VirtualFunction.CreateFunc<IntPtr>(server.Pointer, 91);
             var result = virtualFunc.Invoke() - 8;
-            Console.WriteLine($"Result is {result:X}");
+            Log($"Result of virtual func call is {result:X}");
 
             // 	inline void(FASTCALL *ClientPrint)(CBasePlayerController *player, int msg_dest, const char *msg_name, const char *param1, const char *param2, const char *param3, const char *param4);
-            var sigVirtualFunc = VirtualFunction.Create<IntPtr, int, string, IntPtr, IntPtr, IntPtr, IntPtr>(server.Pointer,
+            var sigVirtualFunc = VirtualFunction.Create<IntPtr, int, string, IntPtr, IntPtr, IntPtr, IntPtr>(
+                server.Pointer,
                 @"\x55\x48\x89\xE5\x41\x57\x49\x89\xCF\x41\x56\x49\x89\xD6\x41\x55\x41\x89\xF5\x41\x54\x4C\x8D\xA5\xA0\xFE\xFF\xFF");
 
             AddCommand("cssharp_info", "A test command",
                 (clientIndex, info) =>
                 {
-                    Console.WriteLine(
-                        $"CounterStrikeSharp - a test command was called by {clientIndex} with {info.ArgString}");
+                    Log($"CounterStrikeSharp - a test command was called by {clientIndex} with {info.ArgString}");
                 });
-
-            OnMapStart += args =>
-            {
-                Console.BackgroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine($"Map {args.MapName} has started!");
-                Console.ResetColor();
-            };
-
-            OnClientConnect += args =>
-            {
-                Console.BackgroundColor = ConsoleColor.DarkGreen;
-                Console.WriteLine($"Client {args.Name} from {args.Address} has connected!");
-                Console.ResetColor();
-            };
-
-            RegisterEventHandler<EventPlayerConnect>(GenericEventHandler);
-            RegisterEventHandler<EventPlayerSpawn>(GenericEventHandler);
-            RegisterEventHandler<EventPlayerBlind>(GenericEventHandler);
         }
 
         [GameEventHandler]
         public void OnPlayerConnect(EventPlayerConnect @event)
         {
-            Console.BackgroundColor = ConsoleColor.DarkMagenta;
-            Console.WriteLine($"Player {@event.Name} has connected!");
-            Console.ResetColor();
+            Log($"Player {@event.Name} has connected!");
         }
 
         [ConsoleCommand("cssharp_attribute", "This is a custom attribute event")]
         public void OnCommand(int client, CommandInfo command)
         {
-            Console.WriteLine("cssharp_attribute called!");
+            Log("cssharp_attribute called!");
         }
 
         private void GenericEventHandler<T>(T @event) where T : GameEvent
         {
-            Console.BackgroundColor = ConsoleColor.Blue;
-            Console.WriteLine(
-                $"Event found {@event.Handle:X}, event name: {@event.EventName}");
+            Log($"Event found {@event.Handle:X}, event name: {@event.EventName}");
+        }
+
+        private void Log(string message)
+        {
+            Console.BackgroundColor = ConsoleColor.DarkGray;
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine(message);
             Console.ResetColor();
         }
     }

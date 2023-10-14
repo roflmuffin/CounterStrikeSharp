@@ -67,6 +67,7 @@ namespace CounterStrikeSharp.API.Core
 
                 Console.WriteLine($"Loading plugin: {pluginType.Name}");
                 _plugin = (BasePlugin)Activator.CreateInstance(pluginType)!;
+                _plugin.ModulePath = _path;
                 _plugin.RegisterAllAttributes(_plugin);
                 _plugin.Load(hotReload);
 

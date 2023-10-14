@@ -16,6 +16,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -38,6 +39,10 @@ namespace CounterStrikeSharp.API.Core
 
         public abstract string ModuleName { get; }
         public abstract string ModuleVersion { get; }
+        
+        public string ModulePath { get; internal set; }
+
+        public string ModuleDirectory => Path.GetDirectoryName(ModulePath);
 
         public virtual void Load(bool hotReload)
         {
