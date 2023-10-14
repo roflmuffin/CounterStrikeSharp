@@ -28,6 +28,8 @@ include_directories(
         ${SOURCESDK}/public/entity2
         ${METAMOD_DIR}/core
         ${METAMOD_DIR}/core/sourcehook
+        libraries/dyncall/dynload
+        libraries/dyncall/dyncall
         libraries/spdlog/include
         libraries/tl
         libraries/funchook/include

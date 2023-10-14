@@ -5,6 +5,7 @@ Project(counterstrikesharp C CXX)
 include("makefiles/shared.cmake")
 
 add_subdirectory(libraries/spdlog)
+add_subdirectory(libraries/dyncall)
 add_subdirectory(libraries/funchook)
 
 SET(SOURCE_FILES
@@ -52,6 +53,9 @@ SET(SOURCE_FILES
         src/core/managers/con_command_manager.cpp
         src/core/managers/con_command_manager.h
         src/scripting/natives/natives_commands.cpp
+        src/core/function.cpp
+        src/core/function.h
+        src/scripting/natives/natives_memory.cpp
 )
 
 set(PROTO_DIRS -I${CMAKE_CURRENT_SOURCE_DIR}/libraries/GameTracking-CS2/Protobufs)

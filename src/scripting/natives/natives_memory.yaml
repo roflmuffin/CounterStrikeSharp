@@ -1,0 +1,4 @@
+CREATE_VIRTUAL_FUNCTION: pointer:pointer,vtableOffset:int,numArguments:int,returnType:int,arguments:object[] -> pointer
+CREATE_VIRTUAL_FUNCTION_BY_SIGNATURE: pointer:pointer,binaryName:string,signature:string,numArguments:int,returnType:int,arguments:object[] -> pointer
+EXECUTE_VIRTUAL_FUNCTION: function:pointer,arguments:object[] -> object
+FIND_SIGNATURE: modulePath:string, signature:string -> pointer

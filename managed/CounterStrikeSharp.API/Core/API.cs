@@ -371,18 +371,6 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
-        public static IntPtr FindSignature(string modulepath, string signature){
-			lock (ScriptContext.GlobalScriptContext.Lock) {
-			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.Push(modulepath);
-			ScriptContext.GlobalScriptContext.Push(signature);
-			ScriptContext.GlobalScriptContext.SetIdentifier(0xE9E1819B);
-			ScriptContext.GlobalScriptContext.Invoke();
-			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
-			}
-		}
-
         public static void HookEvent(string name, InputArgument callback, bool ispost){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
@@ -594,6 +582,70 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xD0C2D3CF);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static IntPtr CreateVirtualFunction(IntPtr pointer, int vtableoffset, int numarguments, int returntype, object[] arguments){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(pointer);
+			ScriptContext.GlobalScriptContext.Push(vtableoffset);
+			ScriptContext.GlobalScriptContext.Push(numarguments);
+			ScriptContext.GlobalScriptContext.Push(returntype);
+			foreach (var obj in arguments)
+			{
+				ScriptContext.GlobalScriptContext.Push(obj);
+			}
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x2531DA2);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			}
+		}
+
+        public static IntPtr CreateVirtualFunctionBySignature(IntPtr pointer, string binaryname, string signature, int numarguments, int returntype, object[] arguments){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(pointer);
+			ScriptContext.GlobalScriptContext.Push(binaryname);
+			ScriptContext.GlobalScriptContext.Push(signature);
+			ScriptContext.GlobalScriptContext.Push(numarguments);
+			ScriptContext.GlobalScriptContext.Push(returntype);
+			foreach (var obj in arguments)
+			{
+				ScriptContext.GlobalScriptContext.Push(obj);
+			}
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x8D25187D);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			}
+		}
+
+        public static object ExecuteVirtualFunction(IntPtr function, object[] arguments){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(function);
+			foreach (var obj in arguments)
+			{
+				ScriptContext.GlobalScriptContext.Push(obj);
+			}
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x376A0359);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (object)ScriptContext.GlobalScriptContext.GetResult(typeof(object));
+			}
+		}
+
+        public static IntPtr FindSignature(string modulepath, string signature){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(modulepath);
+			ScriptContext.GlobalScriptContext.Push(signature);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xE9E1819B);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
 			}
 		}
 

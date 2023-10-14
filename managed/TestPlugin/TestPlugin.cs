@@ -19,6 +19,7 @@ using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Events;
+using CounterStrikeSharp.API.Modules.Memory;
 
 namespace TestPlugin
 {
@@ -30,11 +31,27 @@ namespace TestPlugin
         public override void Load(bool hotReload)
         {
             Console.WriteLine($"Test Plugin has been loaded, and the hot reload flag was {hotReload}");
-            
-            AddCommand("cssharp_info", "A test command", (clientIndex, info) =>
-            {
-                Console.WriteLine($"CounterStrikeSharp - a test command was called by {clientIndex} with {info.ArgString}");
-            });
+
+            var server = ValveInterface.Server;
+            Console.WriteLine($"Found server ptr: {server.Pointer:X}");
+
+            // Example vfunc call that usually gets the game event manager pointer
+            // by calling the func at offset 91 then subtracting 8 from the result pointer.
+            // This value is asserted against the native code that points to the same function.
+            var virtualFunc = VirtualFunction.CreateFunc<IntPtr>(server.Pointer, 91);
+            var result = virtualFunc.Invoke() - 8;
+            Console.WriteLine($"Result is {result:X}");
+
+            // 	inline void(FASTCALL *ClientPrint)(CBasePlayerController *player, int msg_dest, const char *msg_name, const char *param1, const char *param2, const char *param3, const char *param4);
+            var sigVirtualFunc = VirtualFunction.Create<IntPtr, int, string, IntPtr, IntPtr, IntPtr, IntPtr>(server.Pointer,
+                @"\x55\x48\x89\xE5\x41\x57\x49\x89\xCF\x41\x56\x49\x89\xD6\x41\x55\x41\x89\xF5\x41\x54\x4C\x8D\xA5\xA0\xFE\xFF\xFF");
+
+            AddCommand("cssharp_info", "A test command",
+                (clientIndex, info) =>
+                {
+                    Console.WriteLine(
+                        $"CounterStrikeSharp - a test command was called by {clientIndex} with {info.ArgString}");
+                });
 
             OnMapStart += args =>
             {

@@ -17,17 +17,18 @@
 using System;
 using System.Linq;
 using CounterStrikeSharp.API.Core;
-using CounterStrikeSharp.API.Modules.Memory.Constants;
 
 namespace CounterStrikeSharp.API.Modules.Memory
 {
     public class VirtualFunctionVoid<TArg1> : VirtualFunction
     {
-        public VirtualFunctionVoid(IntPtr objPtr, string signature, DataType?[] arguments, DataType returnType) : base(objPtr, signature, arguments, returnType)
+        public VirtualFunctionVoid(IntPtr objPtr, string signature, DataType?[] arguments, DataType returnType) : base(
+            objPtr, signature, arguments, returnType)
         {
         }
 
-        public VirtualFunctionVoid(IntPtr objPtr, int offset, DataType?[] arguments, DataType returnType) : base(objPtr, offset, arguments, returnType)
+        public VirtualFunctionVoid(IntPtr objPtr, int offset, DataType?[] arguments, DataType returnType) : base(objPtr,
+            offset, arguments, returnType)
         {
         }
 
@@ -39,20 +40,17 @@ namespace CounterStrikeSharp.API.Modules.Memory
         {
             this.InvokeInternal(new object[] { arg1 });
         }
-
-        public void Hook(int entityIndex, bool post, Action<TArg1> callback)
-        {
-            NativeAPI.HookFunction(Handle, entityIndex, post, callback);
-        }
     }
 
     public class VirtualFunctionVoid<TArg1, TArg2> : VirtualFunction
     {
-        public VirtualFunctionVoid(IntPtr objPtr, int offset, DataType?[] arguments, DataType returnType) : base(objPtr, offset, arguments, returnType)
+        public VirtualFunctionVoid(IntPtr objPtr, int offset, DataType?[] arguments, DataType returnType) : base(objPtr,
+            offset, arguments, returnType)
         {
         }
 
-        public VirtualFunctionVoid(IntPtr objPtr, string signature, DataType?[] arguments, DataType returnType) : base(objPtr, signature, arguments, returnType)
+        public VirtualFunctionVoid(IntPtr objPtr, string signature, DataType?[] arguments, DataType returnType) : base(
+            objPtr, signature, arguments, returnType)
         {
         }
 
@@ -64,16 +62,12 @@ namespace CounterStrikeSharp.API.Modules.Memory
         {
             this.InvokeInternal(new object[] { arg1, arg2 });
         }
-
-        public void Hook(int entityIndex, bool post, Action<TArg1, TArg2> callback)
-        {
-            NativeAPI.HookFunction(Handle, entityIndex, post, callback);
-        }
     }
 
     public class VirtualFunctionVoid<TArg1, TArg2, TArg3> : VirtualFunction
     {
-        public VirtualFunctionVoid(IntPtr objPtr, int offset, DataType?[] arguments, DataType returnType) : base(objPtr, offset, arguments, returnType)
+        public VirtualFunctionVoid(IntPtr objPtr, int offset, DataType?[] arguments, DataType returnType) : base(objPtr,
+            offset, arguments, returnType)
         {
         }
 
@@ -85,21 +79,12 @@ namespace CounterStrikeSharp.API.Modules.Memory
         {
             this.InvokeInternal(new object[] { arg1, arg2, arg3 });
         }
-
-        public void Hook(int entityIndex, bool post, Action<TArg1, TArg2, TArg3> callback)
-        {
-            NativeAPI.HookFunction(Handle, entityIndex, post, callback);
-        }
-
-        public void Unhook(int entityIndex, bool post, Action<TArg1, TArg2, TArg3> callback)
-        {
-            NativeAPI.UnhookFunction(Handle, entityIndex, post, callback);
-        }
     }
 
     public class VirtualFunction<TArg1, TReturnType> : VirtualFunction
     {
-        public VirtualFunction(IntPtr objPtr, int offset, DataType?[] arguments, DataType returnType) : base(objPtr, offset, arguments, returnType)
+        public VirtualFunction(IntPtr objPtr, int offset, DataType?[] arguments, DataType returnType) : base(objPtr,
+            offset, arguments, returnType)
         {
         }
 
@@ -114,38 +99,43 @@ namespace CounterStrikeSharp.API.Modules.Memory
     }
 
 
-
     public class VirtualFunction : NativeObject
     {
         private DataType?[] _arguments;
-        private object[] _convertedArguments => _arguments.Where(x => x.HasValue).Select(x => x.Value).Cast<object>().ToArray();
+
+        private object[] _convertedArguments =>
+            _arguments.Where(x => x.HasValue).Select(x => x.Value).Cast<object>().ToArray();
 
         private DataType _returnType;
         private IntPtr _entityPointer;
         private int _offset;
         private string _signature;
 
-        public VirtualFunction(IntPtr objPtr, int offset, DataType?[] arguments, DataType returnType) : base(IntPtr.Zero)
+        public VirtualFunction(IntPtr objPtr, int offset, DataType?[] arguments, DataType returnType) : base(
+            IntPtr.Zero)
         {
             _entityPointer = objPtr;
             _offset = offset;
             _arguments = arguments;
             _returnType = returnType;
 
-            Handle = NativeAPI.CreateVirtualFunction(_entityPointer, _offset, _arguments.Length, (int)_returnType, _convertedArguments);
+            Handle = NativeAPI.CreateVirtualFunction(_entityPointer, _offset, _arguments.Length, (int)_returnType,
+                _convertedArguments);
         }
 
-        public VirtualFunction(IntPtr objPtr, string signature, DataType?[] arguments, DataType returnType) : base(IntPtr.Zero)
+        public VirtualFunction(IntPtr objPtr, string signature, DataType?[] arguments, DataType returnType) : base(
+            IntPtr.Zero)
         {
             _entityPointer = objPtr;
             _signature = signature;
             _arguments = arguments;
             _returnType = returnType;
 
-            Handle = NativeAPI.CreateVirtualFunctionBySignature(_entityPointer, "server", signature, _arguments.Length, (int)_returnType, _convertedArguments);
+            Handle = NativeAPI.CreateVirtualFunctionBySignature(_entityPointer, "server", signature, _arguments.Length,
+                (int)_returnType, _convertedArguments);
         }
 
-        protected T InvokeInternal<T>(object[] arguments)
+        public T InvokeInternal<T>(object[] arguments)
         {
             NativeAPI.ExecuteVirtualFunction(Handle, arguments);
             return ScriptContext.GlobalScriptContext.GetResult<T>();
@@ -156,7 +146,8 @@ namespace CounterStrikeSharp.API.Modules.Memory
             NativeAPI.ExecuteVirtualFunction(Handle, arguments);
         }
 
-        private static void ExecuteFunction(IntPtr objPtr, int offset, DataType?[] argumentTypes, DataType returnType, object[] arguments)
+        private static void ExecuteFunction(IntPtr objPtr, int offset, DataType?[] argumentTypes, DataType returnType,
+            object[] arguments)
         {
             var convertedArguments = argumentTypes.Where(x => x.HasValue).Select(x => x.Value).Cast<object>().ToArray();
 
@@ -165,12 +156,14 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 throw new Exception("Invalid arguments provided.");
             }
 
-            var ptr = NativeAPI.CreateVirtualFunction(objPtr, offset, convertedArguments.Length, (int)returnType, convertedArguments);
+            var ptr = NativeAPI.CreateVirtualFunction(objPtr, offset, convertedArguments.Length, (int)returnType,
+                convertedArguments);
 
             NativeAPI.ExecuteVirtualFunction(ptr, arguments);
         }
 
-        private static void ExecuteFunction(IntPtr objPtr, string signature, DataType?[] argumentTypes, DataType returnType, object[] arguments)
+        private static void ExecuteFunction(IntPtr objPtr, string signature, DataType?[] argumentTypes,
+            DataType returnType, object[] arguments)
         {
             var convertedArguments = argumentTypes.Where(x => x.HasValue).Select(x => x.Value).Cast<object>().ToArray();
 
@@ -179,12 +172,14 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 throw new Exception("Invalid arguments provided.");
             }
 
-            var ptr = NativeAPI.CreateVirtualFunctionBySignature(objPtr, "server", signature, convertedArguments.Length, (int)returnType, convertedArguments);
+            var ptr = NativeAPI.CreateVirtualFunctionBySignature(objPtr, Addresses.ServerPath, signature,
+                convertedArguments.Length, (int)returnType, convertedArguments);
 
             NativeAPI.ExecuteVirtualFunction(ptr, arguments);
         }
 
-        public static VirtualFunctionVoid<TArg1, TArg2, TArg3> CreateObject<TArg1, TArg2, TArg3>(IntPtr objPtr, int offset)
+        public static VirtualFunctionVoid<TArg1, TArg2, TArg3> CreateObject<TArg1, TArg2, TArg3>(IntPtr objPtr,
+            int offset)
         {
             var arguments = new[]
             {
@@ -268,6 +263,27 @@ namespace CounterStrikeSharp.API.Modules.Memory
             });
         }
 
+        public static Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7> Create<TArg1, TArg2, TArg3, TArg4, TArg5,
+            TArg6, TArg7>(IntPtr objPtr, string signature)
+        {
+            return new((arg1, arg2, arg3, arg4, arg5, arg6, arg7) =>
+            {
+                var arguments = new[]
+                {
+                    typeof(TArg1).ToDataType(),
+                    typeof(TArg2).ToDataType(),
+                    typeof(TArg3).ToDataType(),
+                    typeof(TArg4).ToDataType(),
+                    typeof(TArg5).ToDataType(),
+                    typeof(TArg6).ToDataType(),
+                    typeof(TArg7).ToDataType(),
+                };
+
+                ExecuteFunction(objPtr, signature, arguments, DataType.DATA_TYPE_VOID,
+                    new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7 });
+            });
+        }
+
         public static Action<TArg1, TArg2> Create<TArg1, TArg2>(IntPtr objPtr, string signature)
         {
             return new((arg1, arg2) =>
@@ -307,7 +323,20 @@ namespace CounterStrikeSharp.API.Modules.Memory
                     typeof(TArg2).ToDataType()
                 };
 
-                ExecuteFunction(objPtr, signature, arguments, typeof(TResult).ToDataType().Value, new object[] { arg1, arg2 });
+                ExecuteFunction(objPtr, signature, arguments, typeof(TResult).ToDataType().Value,
+                    new object[] { arg1, arg2 });
+
+                return ScriptContext.GlobalScriptContext.GetResult<TResult>();
+            });
+        }
+
+        public static Func<TResult> CreateFunc<TResult>(IntPtr objPtr, int offset)
+        {
+            return new(() =>
+            {
+                var arguments = Array.Empty<DataType?>();
+
+                ExecuteFunction(objPtr, offset, arguments, typeof(TResult).ToDataType().Value, new object[] { });
 
                 return ScriptContext.GlobalScriptContext.GetResult<TResult>();
             });
@@ -323,13 +352,15 @@ namespace CounterStrikeSharp.API.Modules.Memory
                     typeof(TArg2).ToDataType()
                 };
 
-                ExecuteFunction(objPtr, offset, arguments, typeof(TResult).ToDataType().Value, new object[] { arg1, arg2 });
+                ExecuteFunction(objPtr, offset, arguments, typeof(TResult).ToDataType().Value,
+                    new object[] { arg1, arg2 });
 
                 return ScriptContext.GlobalScriptContext.GetResult<TResult>();
             });
         }
 
-        public static Func<TArg1, TArg2, TArg3, TResult> CreateFunc<TArg1, TArg2, TArg3, TResult>(IntPtr objPtr, string signature)
+        public static Func<TArg1, TArg2, TArg3, TResult> CreateFunc<TArg1, TArg2, TArg3, TResult>(IntPtr objPtr,
+            string signature)
         {
             return new((arg1, arg2, arg3) =>
             {
@@ -340,13 +371,15 @@ namespace CounterStrikeSharp.API.Modules.Memory
                     typeof(TArg3).ToDataType()
                 };
 
-                ExecuteFunction(objPtr, signature, arguments, typeof(TResult).ToDataType().Value, new object[] { arg1, arg2, arg3 });
+                ExecuteFunction(objPtr, signature, arguments, typeof(TResult).ToDataType().Value,
+                    new object[] { arg1, arg2, arg3 });
 
                 return ScriptContext.GlobalScriptContext.GetResult<TResult>();
             });
         }
 
-        public static Func<TArg1, TArg2, TArg3, TResult> CreateFunc<TArg1, TArg2, TArg3, TResult>(IntPtr objPtr, int offset)
+        public static Func<TArg1, TArg2, TArg3, TResult> CreateFunc<TArg1, TArg2, TArg3, TResult>(IntPtr objPtr,
+            int offset)
         {
             return new((arg1, arg2, arg3) =>
             {
@@ -357,13 +390,15 @@ namespace CounterStrikeSharp.API.Modules.Memory
                     typeof(TArg3).ToDataType()
                 };
 
-                ExecuteFunction(objPtr, offset, arguments, typeof(TResult).ToDataType().Value, new object[] { arg1, arg2, arg3 });
+                ExecuteFunction(objPtr, offset, arguments, typeof(TResult).ToDataType().Value,
+                    new object[] { arg1, arg2, arg3 });
 
                 return ScriptContext.GlobalScriptContext.GetResult<TResult>();
             });
         }
 
-        public static Func<TArg1, TArg2, TArg3, TArg4, TResult> CreateFunc<TArg1, TArg2, TArg3, TArg4, TResult>(IntPtr objPtr, int offset)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TResult> CreateFunc<TArg1, TArg2, TArg3, TArg4, TResult>(
+            IntPtr objPtr, int offset)
         {
             return new((arg1, arg2, arg3, arg4) =>
             {
@@ -375,13 +410,15 @@ namespace CounterStrikeSharp.API.Modules.Memory
                     typeof(TArg4).ToDataType()
                 };
 
-                ExecuteFunction(objPtr, offset, arguments, typeof(TResult).ToDataType().Value, new object[] { arg1, arg2, arg3, arg4});
+                ExecuteFunction(objPtr, offset, arguments, typeof(TResult).ToDataType().Value,
+                    new object[] { arg1, arg2, arg3, arg4 });
 
                 return ScriptContext.GlobalScriptContext.GetResult<TResult>();
             });
         }
 
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TResult> CreateFunc<TArg1, TArg2, TArg3, TArg4, TArg5, TResult>(IntPtr objPtr, int offset)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TResult> CreateFunc<TArg1, TArg2, TArg3, TArg4, TArg5,
+            TResult>(IntPtr objPtr, int offset)
         {
             return new((arg1, arg2, arg3, arg4, arg5) =>
             {
@@ -394,13 +431,15 @@ namespace CounterStrikeSharp.API.Modules.Memory
                     typeof(TArg5).ToDataType()
                 };
 
-                ExecuteFunction(objPtr, offset, arguments, typeof(TResult).ToDataType().Value, new object[] { arg1, arg2, arg3, arg4, arg5 });
+                ExecuteFunction(objPtr, offset, arguments, typeof(TResult).ToDataType().Value,
+                    new object[] { arg1, arg2, arg3, arg4, arg5 });
 
                 return ScriptContext.GlobalScriptContext.GetResult<TResult>();
             });
         }
 
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TResult> CreateFunc<TArg1, TArg2, TArg3, TArg4, TArg5, TResult>(IntPtr objPtr, string signature)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TResult> CreateFunc<TArg1, TArg2, TArg3, TArg4, TArg5,
+            TResult>(IntPtr objPtr, string signature)
         {
             return new((arg1, arg2, arg3, arg4, arg5) =>
             {
@@ -413,13 +452,15 @@ namespace CounterStrikeSharp.API.Modules.Memory
                     typeof(TArg5).ToDataType()
                 };
 
-                ExecuteFunction(objPtr, signature, arguments, typeof(TResult).ToDataType().Value, new object[] { arg1, arg2, arg3, arg4, arg5 });
+                ExecuteFunction(objPtr, signature, arguments, typeof(TResult).ToDataType().Value,
+                    new object[] { arg1, arg2, arg3, arg4, arg5 });
 
                 return ScriptContext.GlobalScriptContext.GetResult<TResult>();
             });
         }
 
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TResult> CreateFunc<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TResult>(IntPtr objPtr, string signature)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TResult> CreateFunc<TArg1, TArg2, TArg3, TArg4,
+            TArg5, TArg6, TResult>(IntPtr objPtr, string signature)
         {
             return new((arg1, arg2, arg3, arg4, arg5, arg6) =>
             {
@@ -433,13 +474,15 @@ namespace CounterStrikeSharp.API.Modules.Memory
                     typeof(TArg6).ToDataType()
                 };
 
-                ExecuteFunction(objPtr, signature, arguments, typeof(TResult).ToDataType().Value, new object[] { arg1, arg2, arg3, arg4, arg5, arg6});
+                ExecuteFunction(objPtr, signature, arguments, typeof(TResult).ToDataType().Value,
+                    new object[] { arg1, arg2, arg3, arg4, arg5, arg6 });
 
                 return ScriptContext.GlobalScriptContext.GetResult<TResult>();
             });
         }
 
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TResult> CreateFunc<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TResult>(IntPtr objPtr, int offset)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TResult> CreateFunc<TArg1, TArg2, TArg3, TArg4,
+            TArg5, TArg6, TResult>(IntPtr objPtr, int offset)
         {
             return new((arg1, arg2, arg3, arg4, arg5, arg6) =>
             {
@@ -453,7 +496,8 @@ namespace CounterStrikeSharp.API.Modules.Memory
                     typeof(TArg6).ToDataType()
                 };
 
-                ExecuteFunction(objPtr, offset, arguments, typeof(TResult).ToDataType().Value, new object[] { arg1, arg2, arg3, arg4, arg5, arg6 });
+                ExecuteFunction(objPtr, offset, arguments, typeof(TResult).ToDataType().Value,
+                    new object[] { arg1, arg2, arg3, arg4, arg5, arg6 });
 
                 return ScriptContext.GlobalScriptContext.GetResult<TResult>();
             });
@@ -471,11 +515,13 @@ namespace CounterStrikeSharp.API.Modules.Memory
                     typeof(TArg4).ToDataType()
                 };
 
-                ExecuteFunction(objPtr, offset, arguments, DataType.DATA_TYPE_VOID, new object[] {arg1, arg2, arg3, arg4});
+                ExecuteFunction(objPtr, offset, arguments, DataType.DATA_TYPE_VOID,
+                    new object[] { arg1, arg2, arg3, arg4 });
             });
         }
 
-        public static Action<TArg1, TArg2, TArg3, TArg4, TArg5> Create<TArg1, TArg2, TArg3, TArg4, TArg5>(IntPtr objPtr, int offset)
+        public static Action<TArg1, TArg2, TArg3, TArg4, TArg5> Create<TArg1, TArg2, TArg3, TArg4, TArg5>(IntPtr objPtr,
+            int offset)
         {
             return new((arg1, arg2, arg3, arg4, arg5) =>
             {
@@ -488,7 +534,49 @@ namespace CounterStrikeSharp.API.Modules.Memory
                     typeof(TArg5).ToDataType()
                 };
 
-                ExecuteFunction(objPtr, offset, arguments, DataType.DATA_TYPE_VOID, new object[] { arg1, arg2, arg3, arg4, arg5});
+                ExecuteFunction(objPtr, offset, arguments, DataType.DATA_TYPE_VOID,
+                    new object[] { arg1, arg2, arg3, arg4, arg5 });
+            });
+        }
+
+        public static Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6> Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(
+            IntPtr objPtr, int offset)
+        {
+            return new((arg1, arg2, arg3, arg4, arg5, arg6) =>
+            {
+                var arguments = new[]
+                {
+                    typeof(TArg1).ToDataType(),
+                    typeof(TArg2).ToDataType(),
+                    typeof(TArg3).ToDataType(),
+                    typeof(TArg4).ToDataType(),
+                    typeof(TArg5).ToDataType(),
+                    typeof(TArg6).ToDataType()
+                };
+
+                ExecuteFunction(objPtr, offset, arguments, DataType.DATA_TYPE_VOID,
+                    new object[] { arg1, arg2, arg3, arg4, arg5, arg6 });
+            });
+        }
+
+        public static Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7> Create<TArg1, TArg2, TArg3, TArg4, TArg5,
+            TArg6, TArg7>(IntPtr objPtr, int offset)
+        {
+            return new((arg1, arg2, arg3, arg4, arg5, arg6, arg7) =>
+            {
+                var arguments = new[]
+                {
+                    typeof(TArg1).ToDataType(),
+                    typeof(TArg2).ToDataType(),
+                    typeof(TArg3).ToDataType(),
+                    typeof(TArg4).ToDataType(),
+                    typeof(TArg5).ToDataType(),
+                    typeof(TArg6).ToDataType(),
+                    typeof(TArg7).ToDataType()
+                };
+
+                ExecuteFunction(objPtr, offset, arguments, DataType.DATA_TYPE_VOID,
+                    new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7 });
             });
         }
 

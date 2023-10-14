@@ -194,62 +194,6 @@ void QueueTaskForNextFrame(ScriptContext &script_context) {
     globals::mmPlugin->AddTaskForNextFrame([func]() { reinterpret_cast<voidfunc *>(func)(); });
 }
 
-byte *ConvertToByteArray(const char *str, size_t *outLength) {
-    size_t len = strlen(str) / 4;  // Every byte is represented as \xHH
-    byte *result = (byte *)malloc(len);
-
-    for (size_t i = 0, j = 0; i < len; ++i, j += 4) {
-        sscanf(str + j, "\\x%2hhx", &result[i]);
-    }
-
-    *outLength = len;
-    return result;
-}
-
-void *FindSignature(ScriptContext &scriptContext) {
-    auto moduleName = scriptContext.GetArgument<const char *>(0);
-    auto bytesStr = scriptContext.GetArgument<const char *>(1);
-
-    size_t iSigLength;
-    auto sigBytes = ConvertToByteArray(bytesStr, &iSigLength);
-
-    auto module = dlopen(moduleName, RTLD_NOW);
-    if (module == nullptr) {
-        scriptContext.ThrowNativeError("Could not find module");
-        return nullptr;
-    }
-
-    void *moduleBase;
-    size_t moduleSize;
-
-    if (GetModuleInformation(module, &moduleBase, &moduleSize) != 0) {
-        scriptContext.ThrowNativeError("Failed to get module info");
-        return nullptr;
-    }
-
-    unsigned char *pMemory;
-    void *returnAddr = nullptr;
-
-    pMemory = (byte *)moduleBase;
-
-    for (size_t i = 0; i < moduleSize; i++) {
-        size_t matches = 0;
-        while (*(pMemory + i + matches) == sigBytes[matches] || sigBytes[matches] == '\x2A') {
-            matches++;
-            if (matches == iSigLength) {
-                returnAddr = (void *)(pMemory + i);
-            }
-        }
-    }
-
-    if (returnAddr == nullptr) {
-        scriptContext.ThrowNativeError("Could not find signature");
-        return nullptr;
-    }
-
-    return returnAddr;
-}
-
 enum InterfaceType { Engine, Server };
 
 void *GetValveInterface(ScriptContext &scriptContext) {
@@ -307,6 +251,5 @@ REGISTER_NATIVES(engine, {
     ScriptEngine::RegisterNativeHandler("GET_TICKED_TIME", GetTickedTime);
     ScriptEngine::RegisterNativeHandler("QUEUE_TASK_FOR_NEXT_FRAME", QueueTaskForNextFrame);
     ScriptEngine::RegisterNativeHandler("GET_VALVE_INTERFACE", GetValveInterface);
-    ScriptEngine::RegisterNativeHandler("FIND_SIGNATURE", FindSignature);
 })
 }  // namespace counterstrikesharp

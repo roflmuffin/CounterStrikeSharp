@@ -17,11 +17,11 @@
 using System;
 using System.Collections.Generic;
 
-namespace CounterStrikeSharp.API.Modules.Memory.Constants
+namespace CounterStrikeSharp.API.Modules.Memory
 {
     public enum DataType
     {
-		DATA_TYPE_VOID,
+        DATA_TYPE_VOID,
         DATA_TYPE_BOOL,
         DATA_TYPE_CHAR,
         DATA_TYPE_UCHAR,
@@ -44,13 +44,13 @@ namespace CounterStrikeSharp.API.Modules.Memory.Constants
     {
         private static Dictionary<Type, DataType> types = new Dictionary<Type, DataType>()
         {
-            {typeof(float), DataType.DATA_TYPE_FLOAT},
-            {typeof(IntPtr), DataType.DATA_TYPE_POINTER},
-            {typeof(int), DataType.DATA_TYPE_INT},
-            {typeof(bool), DataType.DATA_TYPE_BOOL},
-            {typeof(string), DataType.DATA_TYPE_STRING},
-            {typeof(ulong), DataType.DATA_TYPE_ULONG },
-            {typeof(short), DataType.DATA_TYPE_VARIANT }
+            { typeof(float), DataType.DATA_TYPE_FLOAT },
+            { typeof(IntPtr), DataType.DATA_TYPE_POINTER },
+            { typeof(int), DataType.DATA_TYPE_INT },
+            { typeof(bool), DataType.DATA_TYPE_BOOL },
+            { typeof(string), DataType.DATA_TYPE_STRING },
+            { typeof(ulong), DataType.DATA_TYPE_ULONG },
+            { typeof(short), DataType.DATA_TYPE_VARIANT }
         };
 
         public static DataType? ToDataType(this Type type)
