@@ -39,7 +39,7 @@
 #include "core/log.h"
 #include "scripting/callback_manager.h"
 #include <iplayerinfo.h>
-//extern CEntitySystem *g_pEntitySystem;
+// extern CEntitySystem *g_pEntitySystem;
 
 SH_DECL_HOOK4_void(
     IServerGameClients, ClientActive, SH_NOATTRIB, 0, CPlayerSlot, bool, const char *, uint64);
@@ -212,10 +212,6 @@ void PlayerManager::OnClientPutInServer(CPlayerSlot slot,
                                         uint64 xuid) {
     CSSHARP_CORE_TRACE("[PlayerManager][OnClientPutInServer] - {}, {}, {}", slot.Get(), pszName,
                        type);
-
-    //CCSPlayerController* player = (CCSPlayerController*)g_pEntitySystem->GetBaseEntity((CEntityIndex)(slot.Get() + 1));
-
-    // CSSHARP_CORE_INFO("Player put in server: {}", player->GetPlayerName());
 
     int client = slot.Get();
     CPlayer *pPlayer = &m_players[client];

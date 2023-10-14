@@ -66,8 +66,6 @@ void Initialize() {
     globals::entitySystem = interfaces::pGameResourceServiceServer->GetGameEntitySystem();
 
     gameEventManager = (IGameEventManager2 *)(CALL_VIRTUAL(uintptr_t, 91, server) - 8);
-
-    CSSHARP_CORE_TRACE("[GLOBALS] globals::gameEventManager: {0}", (void *)gameEventManager);
 }
 
 int source_hook_pluginid = 0;
