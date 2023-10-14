@@ -193,6 +193,18 @@ static void *SetPlayerController(ScriptContext &scriptContext) {
     }
 }
 
+static void *GetPlayerPawn(ScriptContext& scriptContext) {
+    IGameEvent *gameEvent = scriptContext.GetArgument<IGameEvent *>(0);
+    const char *keyName = scriptContext.GetArgument<const char *>(1);
+
+    if (gameEvent == nullptr) {
+        scriptContext.ThrowNativeError("Invalid game event");
+        return nullptr;
+    }
+
+    return gameEvent->GetPlayerPawn(keyName);
+}
+
 static uint64 GetUint64(ScriptContext &scriptContext) {
     IGameEvent *gameEvent = scriptContext.GetArgument<IGameEvent *>(0);
     const char *keyName = scriptContext.GetArgument<const char *>(1);
@@ -241,6 +253,7 @@ REGISTER_NATIVES(events, {
 
     ScriptEngine::RegisterNativeHandler("GET_EVENT_PLAYER_CONTROLLER", GetPlayerController);
     ScriptEngine::RegisterNativeHandler("SET_EVENT_PLAYER_CONTROLLER", SetPlayerController);
+    ScriptEngine::RegisterNativeHandler("GET_EVENT_PLAYER_PAWN", GetPlayerPawn);
 
     ScriptEngine::RegisterNativeHandler("GET_EVENT_UINT64", GetUint64);
     ScriptEngine::RegisterNativeHandler("SET_EVENT_UINT64", SetUint64);

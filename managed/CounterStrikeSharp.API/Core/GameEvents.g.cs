@@ -1,6 +1,7 @@
 
 using System;
 using CounterStrikeSharp.API.Modules.Events;
+using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core
@@ -15,10 +16,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // entindex of the player
-                public int Player 
+                public Player Player 
                 {
-                    get => Get<int>("player");
-                    set => Set<int>("player", value);
+                    get => Get<Player>("player");
+                    set => Set<Player>("player", value);
                 }
 
                 
@@ -113,10 +114,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -217,10 +218,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -257,10 +258,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -289,10 +290,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -331,10 +332,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player who was defusing
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -347,10 +348,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player who is planting the bomb
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -387,10 +388,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player who is defusing
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -411,10 +412,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player who is planting the bomb
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -435,10 +436,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player who defused the bomb
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -459,10 +460,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player who dropped the bomb
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -483,10 +484,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player who planted the bomb
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -507,10 +508,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player pawn who picked up the bomb
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -523,10 +524,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player who planted the bomb
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -587,18 +588,18 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
                 
-                public int Botid 
+                public Player Botid 
                 {
-                    get => Get<int>("botid");
-                    set => Set<int>("botid", value);
+                    get => Get<Player>("botid");
+                    set => Set<Player>("botid", value);
                 }
 
                 
@@ -643,10 +644,10 @@ namespace CounterStrikeSharp.API.Core
 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -675,10 +676,10 @@ namespace CounterStrikeSharp.API.Core
 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -699,10 +700,10 @@ namespace CounterStrikeSharp.API.Core
 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -723,10 +724,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -811,10 +812,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -851,10 +852,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -1063,10 +1064,10 @@ namespace CounterStrikeSharp.API.Core
 
                 
                 
-                public int FunfactPlayer 
+                public Player FunfactPlayer 
                 {
-                    get => Get<int>("funfact_player");
-                    set => Set<int>("funfact_player", value);
+                    get => Get<Player>("funfact_player");
+                    set => Set<Player>("funfact_player", value);
                 }
 
                 
@@ -1103,10 +1104,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -1151,10 +1152,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -1199,10 +1200,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -1271,10 +1272,10 @@ namespace CounterStrikeSharp.API.Core
 
                 
                 // player who picked up the defuser
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -1464,10 +1465,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // Who closed the door
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -1488,10 +1489,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // Who closed the door
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -1512,10 +1513,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -1536,10 +1537,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // Who closed the door
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -1560,10 +1561,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -1584,10 +1585,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -1616,10 +1617,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -1648,10 +1649,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -1682,10 +1683,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player entindex
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -1835,10 +1836,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -1867,10 +1868,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -1891,10 +1892,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -1947,10 +1948,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // The player who sees the entity
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -1996,10 +1997,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -2028,10 +2029,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -2052,10 +2053,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -2116,10 +2117,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -2321,18 +2322,18 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // user ID who died
-                public int Victimid 
+                public Player Victimid 
                 {
-                    get => Get<int>("victimid");
-                    set => Set<int>("victimid", value);
+                    get => Get<Player>("victimid");
+                    set => Set<Player>("victimid", value);
                 }
 
                 
                 // user ID who killed
-                public int Attackerid 
+                public Player Attackerid 
                 {
-                    get => Get<int>("attackerid");
-                    set => Set<int>("attackerid", value);
+                    get => Get<Player>("attackerid");
+                    set => Set<Player>("attackerid", value);
                 }
 
                 
@@ -2369,10 +2370,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -2385,10 +2386,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -2418,10 +2419,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -2484,10 +2485,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // camera man entity index
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -2532,18 +2533,18 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // primary traget index
-                public int Target1 
+                public Player Target1 
                 {
-                    get => Get<int>("target1");
-                    set => Set<int>("target1", value);
+                    get => Get<Player>("target1");
+                    set => Set<Player>("target1", value);
                 }
 
                 
                 // secondary traget index or 0
-                public int Target2 
+                public Player Target2 
                 {
-                    get => Get<int>("target2");
-                    set => Set<int>("target2", value);
+                    get => Get<Player>("target2");
+                    set => Set<Player>("target2", value);
                 }
 
                 
@@ -2676,10 +2677,10 @@ namespace CounterStrikeSharp.API.Core
 
                 
                 // follow this player
-                public int Target 
+                public Player Target 
                 {
-                    get => Get<int>("target");
-                    set => Set<int>("target", value);
+                    get => Get<Player>("target");
+                    set => Set<Player>("target", value);
                 }
             }
 
@@ -2724,10 +2725,10 @@ namespace CounterStrikeSharp.API.Core
 
                 
                 // best/closest target entity
-                public int Target 
+                public Player Target 
                 {
-                    get => Get<int>("target");
-                    set => Set<int>("target", value);
+                    get => Get<Player>("target");
+                    set => Set<Player>("target", value);
                 }
             }
 
@@ -2740,10 +2741,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player slot
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -2756,10 +2757,10 @@ namespace CounterStrikeSharp.API.Core
 
                 
                 // best/closest target entity
-                public int Target 
+                public Player Target 
                 {
-                    get => Get<int>("target");
-                    set => Set<int>("target", value);
+                    get => Get<Player>("target");
+                    set => Set<Player>("target", value);
                 }
             }
 
@@ -2900,10 +2901,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player who touched the hostage
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -2924,10 +2925,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player who hurt the hostage
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -2948,10 +2949,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player who killed the hostage
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -2972,10 +2973,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player who rescued the hostage
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -3013,10 +3014,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player who rescued the hostage
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -3173,10 +3174,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -3189,10 +3190,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // The player who this lesson is intended for
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -3213,10 +3214,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // user ID of the player that triggered the hint
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -3245,10 +3246,10 @@ namespace CounterStrikeSharp.API.Core
 
                 
                 // userid id of the activator
-                public int HintActivatorUserid 
+                public Player HintActivatorUserid 
                 {
-                    get => Get<int>("hint_activator_userid");
-                    set => Set<int>("hint_activator_userid", value);
+                    get => Get<Player>("hint_activator_userid");
+                    set => Set<Player>("hint_activator_userid", value);
                 }
 
                 
@@ -3397,10 +3398,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // The player who this lesson is intended for
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -3462,10 +3463,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -3542,10 +3543,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -3582,10 +3583,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -3622,10 +3623,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -3654,10 +3655,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -3694,10 +3695,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -3735,10 +3736,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // entity used by player
-                public int Player 
+                public Player Player 
                 {
-                    get => Get<int>("player");
-                    set => Set<int>("player", value);
+                    get => Get<Player>("player");
+                    set => Set<Player>("player", value);
                 }
 
                 
@@ -3783,10 +3784,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -3834,10 +3835,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player entindex
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -3858,10 +3859,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player entindex
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -3975,10 +3976,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -4080,10 +4081,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player entindex
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -4216,10 +4217,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -4232,10 +4233,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -4264,10 +4265,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // user ID on server
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -4280,18 +4281,18 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int AvengerId 
+                public Player AvengerId 
                 {
-                    get => Get<int>("avenger_id");
-                    set => Set<int>("avenger_id", value);
+                    get => Get<Player>("avenger_id");
+                    set => Set<Player>("avenger_id", value);
                 }
 
                 
                 
-                public int AvengedPlayerId 
+                public Player AvengedPlayerId 
                 {
-                    get => Get<int>("avenged_player_id");
-                    set => Set<int>("avenged_player_id", value);
+                    get => Get<Player>("avenged_player_id");
+                    set => Set<Player>("avenged_player_id", value);
                 }
             }
 
@@ -4304,18 +4305,18 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
                 // user ID who threw the flash
-                public int Attacker 
+                public Player Attacker 
                 {
-                    get => Get<int>("attacker");
-                    set => Set<int>("attacker", value);
+                    get => Get<Player>("attacker");
+                    set => Set<Player>("attacker", value);
                 }
 
                 
@@ -4344,10 +4345,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // user ID on server
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -4416,10 +4417,10 @@ namespace CounterStrikeSharp.API.Core
 
                 
                 // user ID on server (unique on server)
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -4464,10 +4465,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // user ID on server (unique on server)
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -4480,26 +4481,26 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // user who died
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
                 // player who killed
-                public int Attacker 
+                public Player Attacker 
                 {
-                    get => Get<int>("attacker");
-                    set => Set<int>("attacker", value);
+                    get => Get<Player>("attacker");
+                    set => Set<Player>("attacker", value);
                 }
 
                 
                 // player who assisted in the kill
-                public int Assister 
+                public Player Assister 
                 {
-                    get => Get<int>("assister");
-                    set => Set<int>("assister", value);
+                    get => Get<Player>("assister");
+                    set => Set<Player>("assister", value);
                 }
 
                 
@@ -4656,10 +4657,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -4672,10 +4673,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // user ID on server
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -4728,10 +4729,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -4752,10 +4753,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -4768,10 +4769,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // user ID on server
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -4792,10 +4793,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // user ID who received the c4
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -4824,18 +4825,18 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player index who was hurt
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
                 // player index who attacked
-                public int Attacker 
+                public Player Attacker 
                 {
-                    get => Get<int>("attacker");
-                    set => Set<int>("attacker", value);
+                    get => Get<Player>("attacker");
+                    set => Set<Player>("attacker", value);
                 }
 
                 
@@ -4904,10 +4905,10 @@ namespace CounterStrikeSharp.API.Core
 
                 
                 // user ID on server (unique on server)
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -4936,10 +4937,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -4952,10 +4953,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -5024,10 +5025,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -5048,10 +5049,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -5072,10 +5073,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // user ID on server
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -5112,10 +5113,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // user ID on server
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -5144,10 +5145,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -5184,10 +5185,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -5200,10 +5201,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -5240,10 +5241,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -5479,10 +5480,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -5621,10 +5622,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -5869,10 +5870,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // endindex of the one who was killed
-                public int Victim 
+                public Player Victim 
                 {
-                    get => Get<int>("victim");
-                    set => Set<int>("victim", value);
+                    get => Get<Player>("victim");
+                    set => Set<Player>("victim", value);
                 }
 
                 
@@ -5885,10 +5886,10 @@ namespace CounterStrikeSharp.API.Core
 
                 
                 
-                public int KillerController 
+                public Player KillerController 
                 {
-                    get => Get<int>("killer_controller");
-                    set => Set<int>("killer_controller", value);
+                    get => Get<Player>("killer_controller");
+                    set => Set<Player>("killer_controller", value);
                 }
 
                 
@@ -5949,10 +5950,10 @@ namespace CounterStrikeSharp.API.Core
 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -5965,10 +5966,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -5981,10 +5982,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -5997,10 +5998,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -6013,10 +6014,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -6037,10 +6038,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -6085,10 +6086,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -6133,10 +6134,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // entindex of the player
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -6149,10 +6150,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // spectating player
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -6182,10 +6183,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -6239,10 +6240,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -6255,10 +6256,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -6303,10 +6304,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -6367,10 +6368,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -6415,10 +6416,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -6586,10 +6587,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player whose time has expired
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -6634,10 +6635,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // user ID of the player banged
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -6782,10 +6783,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player who was the VIP
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -6798,18 +6799,18 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player who was the VIP
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
                 // user ID who killed the VIP
-                public int Attacker 
+                public Player Attacker 
                 {
-                    get => Get<int>("attacker");
-                    set => Set<int>("attacker", value);
+                    get => Get<Player>("attacker");
+                    set => Set<Player>("attacker", value);
                 }
             }
 
@@ -6838,10 +6839,10 @@ namespace CounterStrikeSharp.API.Core
 
                 
                 // player who voted
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -7127,10 +7128,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -7159,10 +7160,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -7183,10 +7184,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // Player who this event applies to
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
 
                 
@@ -7215,10 +7216,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -7231,10 +7232,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -7247,10 +7248,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 
@@ -7263,10 +7264,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public int Userid 
+                public Player Userid 
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => Get<Player>("userid");
+                    set => Set<Player>("userid", value);
                 }
             }
 

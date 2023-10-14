@@ -39,6 +39,10 @@ namespace TestPlugin
             RegisterEventHandler<EventPlayerConnect>(GenericEventHandler);
             RegisterEventHandler<EventPlayerSpawn>(GenericEventHandler);
             RegisterEventHandler<EventPlayerBlind>(GenericEventHandler);
+            RegisterEventHandler<EventBulletImpact>(@event =>
+            {
+                Log($"{@event.Userid}, {@event.X},{@event.Y},{@event.Z}");
+            });
 
             // Hook global listeners defined by CounterStrikeSharp
             OnMapStart += args => { Log($"Map {args.MapName} has started!"); };
@@ -51,10 +55,10 @@ namespace TestPlugin
             // ValveInterface provides pointers to loaded modules via Interface Name exposed from the engine (e.g. Source2Server001)
             var server = ValveInterface.Server;
             Log($"Server pointer found @ {server.Pointer:X}");
-            
+
             // Execute a server command as if typed into the server console.
             Server.ExecuteCommand("find \"cssharp\"");
-            
+
             // Adds a new server console command
             AddCommand("cssharp_info", "A test command",
                 (clientIndex, info) =>

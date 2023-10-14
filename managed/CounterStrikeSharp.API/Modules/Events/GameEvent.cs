@@ -16,6 +16,7 @@
 
 using System;
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Modules.Entities;
 
 namespace CounterStrikeSharp.API.Modules.Events
 {
@@ -40,7 +41,7 @@ namespace CounterStrikeSharp.API.Modules.Events
         public GameEvent(string name, bool force) : this(NativeAPI.CreateEvent(name, force))
         {
         }
-        
+
         internal GameEvent(IntPtr pointer)
         {
             Handle = pointer;
@@ -58,13 +59,13 @@ namespace CounterStrikeSharp.API.Modules.Events
                 _ when type == typeof(string) => GetString(name),
                 _ when type == typeof(bool) => GetBool(name),
                 _ when type == typeof(ulong) => GetUint64(name),
-                _ when type == typeof(IntPtr) => GetPlayerController(name),
+                _ when type == typeof(Player) => GetPlayer(name),
                 _ => throw new NotSupportedException(),
             };
 
             return (T)result;
         }
-        
+
         public void Set<T>(string name, T value)
         {
             var type = typeof(T);
@@ -76,10 +77,10 @@ namespace CounterStrikeSharp.API.Modules.Events
                 case var _ when value is int i:
                     SetInt(name, i);
                     break;
-                case var _ when value is IntPtr ptr:
+                case var _ when value is Player player:
                     // Currently treating all IntPtrs as Player Controllers 
                     // but this will need to be revisited once we have pawns & ehandles
-                    SetPlayerController(name, ptr);
+                    SetPlayer(name, player.Handle);
                     break;
                 case var _ when value is string s:
                     SetString(name, s);
@@ -99,8 +100,15 @@ namespace CounterStrikeSharp.API.Modules.Events
         protected float GetFloat(string name) => NativeAPI.GetEventFloat(Handle, name);
         protected string GetString(string name) => NativeAPI.GetEventString(Handle, name);
         protected int GetInt(string name) => NativeAPI.GetEventInt(Handle, name);
-        
-        protected IntPtr GetPlayerController(string name) => NativeAPI.GetEventPlayerController(Handle, name);
+
+        protected Player GetPlayer(string name)
+        {
+            return new Player(
+                NativeAPI.GetEventInt(Handle, name),
+                NativeAPI.GetEventPlayerController(Handle, name),
+                NativeAPI.GetEventPlayerPawn(Handle, name)
+            );
+        }
 
         protected ulong GetUint64(string name) => NativeAPI.GetEventUint64(Handle, name);
 
@@ -113,8 +121,9 @@ namespace CounterStrikeSharp.API.Modules.Events
         protected void SetString(string name, string value) => NativeAPI.SetEventString(Handle, name, value);
         protected void SetInt(string name, int value) => NativeAPI.SetEventInt(Handle, name, value);
         protected void SetInt(string name, long value) => SetInt(name, (int)value);
-        
-        protected void SetPlayerController(string name, IntPtr value) => NativeAPI.SetEventPlayerController(Handle, name, value);
+
+        protected void SetPlayer(string name, IntPtr value) =>
+            NativeAPI.SetEventPlayerController(Handle, name, value);
 
         public void FireEvent(bool dontBroadcast) => NativeAPI.FireEvent(Handle, dontBroadcast);
         // public void FireEventToClient(int clientId, bool dontBroadcast) => NativeAPI.FireEventToClient(Handle, clientId);
