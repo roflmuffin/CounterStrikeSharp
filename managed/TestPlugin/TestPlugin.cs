@@ -19,6 +19,7 @@ using System.IO;
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes;
+using CounterStrikeSharp.API.Core.Attributes.Registration;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Memory;
@@ -43,10 +44,16 @@ namespace TestPlugin
             {
                 Log($"{@event.Userid}, {@event.X},{@event.Y},{@event.Z}");
             });
-
+            
             // Hook global listeners defined by CounterStrikeSharp
-            OnMapStart += args => { Log($"Map {args.MapName} has started!"); };
-            OnClientConnect += args => { Log($"Client {args.Name} from {args.Address} has connected!"); };
+            RegisterListener<Listeners.OnMapStart>(mapName =>
+            {
+                Log($"Map {mapName} has started!");
+            });
+            RegisterListener<Listeners.OnClientConnect>((index, name, ip) =>
+            {
+                Log($"Client {name} from {ip} has connected!");
+            });
 
             // You can use `ModuleDirectory` to get the directory of the plugin (for storing config files, saving database files etc.)
             File.WriteAllText(Path.Join(ModuleDirectory, "example.txt"),

@@ -1,0 +1,5 @@
+OnClientConnect: index:int, name:string, ipAddress:string
+OnClientConnected: index:int
+OnClientPutInServer: index:int
+OnClientDisconnect: index:int
+OnClientDisconnectPost: index:int

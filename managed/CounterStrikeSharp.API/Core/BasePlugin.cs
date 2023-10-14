@@ -18,10 +18,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Runtime.Loader;
 using CounterStrikeSharp.API.Core.Attributes;
+using CounterStrikeSharp.API.Core.Attributes.Registration;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Listeners;
@@ -187,41 +189,38 @@ namespace CounterStrikeSharp.API.Core
                 CommandHandlers.Remove(handler);
             }
         }*/
-
-        private void AddListener<T>(string name, Listeners.SourceEventHandler<T> handler,
-            Action<T, ScriptContext> input = null, Action<T, ScriptContext> output = null) where T : EventArgs, new()
+        
+        // Adds global listener, e.g. OnTick, OnClientConnect
+        protected void RegisterListener<T>(T handler) where T : Delegate
         {
+            var listenerName = typeof(T).GetCustomAttribute<ListenerNameAttribute>()?.Name;
+            if (string.IsNullOrEmpty(listenerName))
+            {
+                throw new Exception("Listener of type T is invalid and does not have a name attribute");
+            }
+            
+            var parameterTypes = typeof(T).GetMethod("Invoke").GetParameters().Select(p => p.ParameterType).ToArray();
+
+            Console.WriteLine($"Registering listener for {listenerName} with {parameterTypes.Length}");
+            
             var wrappedHandler = new Action<ScriptContext>(context =>
             {
-                var eventArgs = new T();
+                var args = new object[parameterTypes.Length];
+                for (int i = 0; i < parameterTypes.Length; i++)
+                {
+                    args[i] = context.GetArgument(parameterTypes[i], i);
+                }
 
-                // Before crossing the border, gets all the correct data from the context
-                input?.Invoke(eventArgs, context);
-
-                // Invoke the actual event.
-                handler?.Invoke(eventArgs);
-
-                // After crossing the border, puts all the correct "return" data back onto the context
-                output?.Invoke(eventArgs, context);
+                handler.DynamicInvoke(args);
             });
+            
+            var subscriber = new CallbackSubscriber(handler, wrappedHandler, () => { RemoveListener(listenerName, handler); });
 
-            var subscriber = new CallbackSubscriber(handler, wrappedHandler, () => { RemoveListener(name, handler); });
-
-            NativeAPI.AddListener(name, subscriber.GetInputArgument());
+            NativeAPI.AddListener(listenerName, subscriber.GetInputArgument());
             Listeners[handler] = subscriber;
         }
 
-        public void RemoveListener<T>(string name, Listeners.SourceEventHandler<T> handler)
-            where T : EventArgs, new()
-        {
-            if (!Listeners.TryGetValue(handler, out var subscriber)) return;
-
-            NativeAPI.RemoveListener(name, subscriber.GetInputArgument());
-            FunctionReference.Remove(subscriber.GetReferenceIdentifier());
-            Listeners.Remove(handler);
-        }
-
-        public void RemoveListener(string name, Delegate handler)
+        protected void RemoveListener(string name, Delegate handler)
         {
             if (!Listeners.TryGetValue(handler, out var subscriber)) return;
 
@@ -236,95 +235,7 @@ namespace CounterStrikeSharp.API.Core
             Timers.Add(timer);
             return timer;
         }
-
-        public event Listeners.SourceEventHandler<Listeners.PlayerConnectArgs> OnClientConnect
-        {
-            add => AddListener("OnClientConnect", value,
-                (args, context) =>
-                {
-                    args.PlayerIndex = context.GetArgument<int>(0);
-                    args.Name = context.GetArgument<string>(1);
-                    args.Address = context.GetArgument<string>(2);
-                }
-            );
-            remove => RemoveListener("OnClientConnect", value);
-        }
-
-        public event Listeners.SourceEventHandler<Listeners.PlayerArgs> OnClientConnected
-        {
-            add => AddListener("OnClientConnected", value,
-                (args, context) => args.PlayerSlot = context.GetArgument<int>(0));
-            remove => RemoveListener("OnClientConnected", value);
-        }
-
-        public event Listeners.SourceEventHandler<Listeners.PlayerArgs> OnClientDisconnect
-        {
-            add => AddListener("OnClientDisconnect", value,
-                (args, context) => args.PlayerSlot = context.GetArgument<int>(0));
-            remove => RemoveListener("OnClientDisconnect", value);
-        }
-
-        public event Listeners.SourceEventHandler<Listeners.MapStartArgs> OnMapStart
-        {
-            add => AddListener("OnMapStart", value,
-                (args, context) => args.MapName = context.GetArgument<string>(0));
-            remove => RemoveListener("OnMapStart", value);
-        }
-
-        public event Listeners.SourceEventHandler<EventArgs> OnTick
-        {
-            add => AddListener("OnTick", value);
-            remove => RemoveListener("OnTick", value);
-        }
-
-        public event Listeners.SourceEventHandler<EventArgs> OnMapEnd
-        {
-            add => AddListener("OnMapEnd", value);
-            remove => RemoveListener("OnMapEnd", value);
-        }
-
-        public event Listeners.SourceEventHandler<Listeners.PlayerArgs> OnClientDisconnectPost
-        {
-            add => AddListener("OnClientDisconnectPost", value,
-                (args, context) => args.PlayerSlot = context.GetArgument<int>(0));
-            remove => RemoveListener("OnClientDisconnectPost", value);
-        }
-
-        public event Listeners.SourceEventHandler<Listeners.PlayerArgs> OnClientPutInServer
-        {
-            add => AddListener("OnClientPutInServer", value,
-                (args, context) => args.PlayerSlot = context.GetArgument<int>(0));
-            remove => RemoveListener("OnClientPutInServer", value);
-        }
-
-        public event Listeners.SourceEventHandler<Listeners.EntityArgs> OnEntityCreated
-        {
-            add => AddListener("OnEntityCreated", value,
-                (args, context) =>
-                {
-                    args.EntityIndex = context.GetArgument<int>(0);
-                    args.Classname = context.GetArgument<string>(1);
-                });
-            remove => RemoveListener("OnEntityCreated", value);
-        }
-
-        public event Listeners.SourceEventHandler<Listeners.EntityArgs> OnEntitySpawned
-        {
-            add => AddListener("OnEntitySpawned", value,
-                (args, context) =>
-                {
-                    args.EntityIndex = context.GetArgument<int>(0);
-                    args.Classname = context.GetArgument<string>(1);
-                });
-            remove => RemoveListener("OnEntitySpawned", value);
-        }
-
-        public event Listeners.SourceEventHandler<Listeners.EntityArgs> OnEntityDeleted
-        {
-            add => AddListener("OnEntityDeleted", value,
-                (args, context) => { args.EntityIndex = context.GetArgument<int>(0); });
-            remove => RemoveListener("OnEntityDeleted", value);
-        }
+        
 
         public void RegisterAllAttributes(object instance)
         {
