@@ -16,6 +16,7 @@
 #include "memory_module.h"
 #include "interfaces/cs2_interfaces.h"
 #include <public/game/server/iplayerinfo.h>
+#include <public/entity2/entitysystem.h>
 
 namespace counterstrikesharp {
 
@@ -49,6 +50,7 @@ CounterStrikeSharpMMPlugin *mmPlugin = nullptr;
 SourceHook::Impl::CSourceHookImpl source_hook_impl;
 SourceHook::ISourceHook *source_hook = &source_hook_impl;
 ISmmAPI *ismm = nullptr;
+CEntitySystem* entitySystem = nullptr;
 
 // Custom Managers
 CallbackManager callbackManager;
@@ -61,7 +63,7 @@ void Initialize() {
     addresses::Initialize();
     interfaces::Initialize();
 
-    CSSHARP_CORE_INFO("Found the thing {}", (void*)interfaces::pGameResourceServiceServer);
+    globals::entitySystem = interfaces::pGameResourceServiceServer->GetGameEntitySystem();
 
     gameEventManager = (IGameEventManager2 *)(CALL_VIRTUAL(uintptr_t, 91, server) - 8);
 
