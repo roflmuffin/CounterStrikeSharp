@@ -16,6 +16,7 @@
 
 using System;
 using System.IO;
+using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Modules.Commands;
@@ -50,6 +51,16 @@ namespace TestPlugin
             // ValveInterface provides pointers to loaded modules via Interface Name exposed from the engine (e.g. Source2Server001)
             var server = ValveInterface.Server;
             Log($"Server pointer found @ {server.Pointer:X}");
+            
+            // Execute a server command as if typed into the server console.
+            Server.ExecuteCommand("find \"cssharp\"");
+            
+            // Adds a new server console command
+            AddCommand("cssharp_info", "A test command",
+                (clientIndex, info) =>
+                {
+                    Log($"CounterStrikeSharp - a test command was called by {clientIndex} with {info.ArgString}");
+                });
 
             // Example vfunc call that usually gets the game event manager pointer
             // by calling the func at offset 91 then subtracting 8 from the result pointer.
@@ -62,12 +73,6 @@ namespace TestPlugin
             var sigVirtualFunc = VirtualFunction.Create<IntPtr, int, string, IntPtr, IntPtr, IntPtr, IntPtr>(
                 server.Pointer,
                 @"\x55\x48\x89\xE5\x41\x57\x49\x89\xCF\x41\x56\x49\x89\xD6\x41\x55\x41\x89\xF5\x41\x54\x4C\x8D\xA5\xA0\xFE\xFF\xFF");
-
-            AddCommand("cssharp_info", "A test command",
-                (clientIndex, info) =>
-                {
-                    Log($"CounterStrikeSharp - a test command was called by {clientIndex} with {info.ArgString}");
-                });
         }
 
         [GameEventHandler]
