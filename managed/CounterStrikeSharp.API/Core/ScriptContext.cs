@@ -422,11 +422,11 @@ namespace CounterStrikeSharp.API.Core
 
 			if (type == typeof(object))
 			{
-				var dataPtr = *(IntPtr*)&ptr[0];
-				var dataLength = *(long*)&ptr[8];
-
-				byte[] data = new byte[dataLength];
-				Marshal.Copy(dataPtr, data, 0, (int)dataLength);
+				// var dataPtr = *(IntPtr*)&ptr[0];
+				// var dataLength = *(long*)&ptr[8];
+				//
+				// byte[] data = new byte[dataLength];
+				// Marshal.Copy(dataPtr, data, 0, (int)dataLength);
 
 				return null;
 				//return MsgPackDeserializer.Deserialize(data);

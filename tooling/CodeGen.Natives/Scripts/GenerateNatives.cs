@@ -49,7 +49,7 @@ public partial class Generators
                 native.Arguments.Select(pair => $"{Mapping.GetCSharpType(pair.Value)} {pair.Key}"));
 
             var returnStr = new StringBuilder($@"
-        public static {Mapping.GetCSharpType(native.ReturnType)} {native.NameCamelCase}({arguments}){{{Environment.NewLine}");
+        public static {Mapping.GetCSharpType(native.ReturnType)} {native.NameCamelCase}{(native.ReturnType == "any" ? "<T>" : "")}({arguments}){{{Environment.NewLine}");
 
             returnStr.Append("\t\t\tlock (ScriptContext.GlobalScriptContext.Lock) {\n");
             returnStr.Append("\t\t\tScriptContext.GlobalScriptContext.Reset();\n");

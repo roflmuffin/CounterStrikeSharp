@@ -77,6 +77,7 @@ SET(SOURCE_FILES
         src/core/function.cpp
         src/core/function.h
         src/scripting/natives/natives_memory.cpp
+        src/scripting/natives/natives_schema.cpp
 )
 
 set(PROTO_DIRS -I${CMAKE_CURRENT_SOURCE_DIR}/libraries/GameTracking-CS2/Protobufs)
