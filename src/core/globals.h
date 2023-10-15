@@ -91,6 +91,16 @@ void Initialize();
 CGlobalVars *getGlobalVars();
 }  // namespace globals
 
+namespace modules {
+class CModule;
+
+extern CModule *engine;
+extern CModule *tier0;
+extern CModule *server;
+extern CModule *schemasystem;
+extern CModule *vscript;
+}  // namespace modules
+
 }  // namespace counterstrikesharp
 
 #undef SH_GLOB_SHPTR

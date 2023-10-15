@@ -43,7 +43,7 @@ static bool InitSchemaFieldsForClass(SchemaTableMap_t* tableMap,
                                      const char* className,
                                      uint32_t classKey) {
     CSchemaSystemTypeScope* pType =
-        interfaces::pSchemaSystem->FindTypeScopeForModule(MODULE_PREFIX "server" MODULE_EXT);
+        counterstrikesharp::interfaces::pSchemaSystem->FindTypeScopeForModule(MODULE_PREFIX "server" MODULE_EXT);
 
     if (!pType) return false;
 
@@ -76,7 +76,7 @@ static bool InitSchemaFieldsForClass(SchemaTableMap_t* tableMap,
 
 int16_t schema::FindChainOffset(const char* className) {
     CSchemaSystemTypeScope* pType =
-        interfaces::pSchemaSystem->FindTypeScopeForModule(MODULE_PREFIX "server" MODULE_EXT);
+        counterstrikesharp::interfaces::pSchemaSystem->FindTypeScopeForModule(MODULE_PREFIX "server" MODULE_EXT);
 
     if (!pType) return false;
 

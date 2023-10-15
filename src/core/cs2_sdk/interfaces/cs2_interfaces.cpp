@@ -21,7 +21,10 @@
 #include "interfaces/interfaces.h"
 
 #include "tier0/memdbgon.h"
+#include "core/memory_module.h"
+#include "core/globals.h"
 
+namespace counterstrikesharp {
 void interfaces::Initialize() {
     pGameResourceServiceServer = (CGameResourceService*)modules::engine->FindInterface(
         GAMERESOURCESERVICESERVER_INTERFACE_VERSION);
@@ -31,3 +34,4 @@ void interfaces::Initialize() {
     pSchemaSystem =
         (CSchemaSystem*)modules::schemasystem->FindInterface(SCHEMASYSTEM_INTERFACE_VERSION);
 }
+}  // namespace counterstrikesharp

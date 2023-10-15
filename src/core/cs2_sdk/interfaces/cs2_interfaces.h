@@ -22,10 +22,11 @@
 #include "cgameresourceserviceserver.h"
 #include "cschemasystem.h"
 
-namespace interfaces
-{
-	void Initialize();
+namespace counterstrikesharp {
+namespace interfaces {
+void Initialize();
 
-	inline CGameResourceService *pGameResourceServiceServer = nullptr;
-	inline CSchemaSystem *pSchemaSystem = nullptr;
-}
+inline CGameResourceService *pGameResourceServiceServer = nullptr;
+inline CSchemaSystem *pSchemaSystem = nullptr;
+}  // namespace interfaces
+}  // namespace counterstrikesharp

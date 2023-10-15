@@ -61,8 +61,6 @@ SET(SOURCE_FILES
         src/core/cs2_sdk/interfaces/cs2_interfaces.cpp
         src/core/cs2_sdk/schema.h
         src/core/cs2_sdk/schema.cpp
-        src/core/addresses.h
-        src/core/addresses.cpp
         src/core/function.cpp
         src/core/function.h
         src/scripting/natives/natives_memory.cpp

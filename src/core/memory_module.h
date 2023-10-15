@@ -27,6 +27,8 @@
 #ifdef _WIN32
     #include <Psapi.h>
 #endif
+namespace counterstrikesharp {
+namespace modules {
 
 class CModule {
 public:
@@ -91,3 +93,5 @@ public:
     void *m_base;
     size_t m_size;
 };
+}  // namespace modules
+}  // namespace counterstrikesharp

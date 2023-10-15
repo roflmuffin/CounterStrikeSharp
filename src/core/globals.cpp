@@ -20,6 +20,14 @@
 
 namespace counterstrikesharp {
 
+namespace modules {
+CModule *engine = nullptr;
+CModule *tier0 = nullptr;
+CModule *server = nullptr;
+CModule *schemasystem = nullptr;
+CModule *vscript = nullptr;
+}  // namespace modules
+
 namespace globals {
 IVEngineServer *engine = nullptr;
 IGameEventManager2 *gameEventManager = nullptr;
@@ -60,7 +68,12 @@ TimerSystem timerSystem;
 ConCommandManager conCommandManager;
 
 void Initialize() {
-    addresses::Initialize();
+    modules::engine = new modules::CModule(ROOTBIN, "engine2");
+    modules::tier0 = new modules::CModule(ROOTBIN, "tier0");
+    modules::server = new modules::CModule(GAMEBIN, "server");
+    modules::schemasystem = new modules::CModule(ROOTBIN, "schemasystem");
+    modules::vscript = new modules::CModule(ROOTBIN, "vscript");
+
     interfaces::Initialize();
 
     globals::entitySystem = interfaces::pGameResourceServiceServer->GetGameEntitySystem();
