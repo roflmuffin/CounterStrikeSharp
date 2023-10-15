@@ -1,6 +1,7 @@
 
 using System;
 using CounterStrikeSharp.API.Core.Attributes;
+using CounterStrikeSharp.API.Modules.Entities;
 
 namespace CounterStrikeSharp.API.Core
 {
@@ -29,5 +30,8 @@ namespace CounterStrikeSharp.API.Core
 
         [ListenerName("OnClientDisconnectPost")]
         public delegate void OnClientDisconnectPost(int index);
+
+        [ListenerName("OnClientAuthorized")]
+        public delegate void OnClientAuthorized(int index, [CastFrom(typeof(ulong))]SteamID steamId);
     }
 }

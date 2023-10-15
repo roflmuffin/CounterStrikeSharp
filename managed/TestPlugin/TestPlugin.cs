@@ -21,6 +21,7 @@ using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
 using CounterStrikeSharp.API.Modules.Commands;
+using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Memory;
 
@@ -54,7 +55,11 @@ namespace TestPlugin
             {
                 Log($"Client {name} from {ip} has connected!");
             });
-
+            RegisterListener<Listeners.OnClientAuthorized>((index, id) =>
+            {
+                Log($"Client {index} with address {id}");
+            });
+            
             // You can use `ModuleDirectory` to get the directory of the plugin (for storing config files, saving database files etc.)
             File.WriteAllText(Path.Join(ModuleDirectory, "example.txt"),
                 $"Test file created by TestPlugin at {DateTime.Now}");

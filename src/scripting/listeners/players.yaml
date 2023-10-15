@@ -3,3 +3,4 @@ OnClientConnected: index:int
 OnClientPutInServer: index:int
 OnClientDisconnect: index:int
 OnClientDisconnectPost: index:int
+OnClientAuthorized: index:int, steamId:SteamID

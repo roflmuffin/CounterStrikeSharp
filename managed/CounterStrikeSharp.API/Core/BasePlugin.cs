@@ -41,7 +41,7 @@ namespace CounterStrikeSharp.API.Core
 
         public abstract string ModuleName { get; }
         public abstract string ModuleVersion { get; }
-        
+
         public string ModulePath { get; internal set; }
 
         public string ModuleDirectory => Path.GetDirectoryName(ModulePath);
@@ -189,7 +189,7 @@ namespace CounterStrikeSharp.API.Core
                 CommandHandlers.Remove(handler);
             }
         }*/
-        
+
         // Adds global listener, e.g. OnTick, OnClientConnect
         protected void RegisterListener<T>(T handler) where T : Delegate
         {
@@ -198,23 +198,29 @@ namespace CounterStrikeSharp.API.Core
             {
                 throw new Exception("Listener of type T is invalid and does not have a name attribute");
             }
-            
+
             var parameterTypes = typeof(T).GetMethod("Invoke").GetParameters().Select(p => p.ParameterType).ToArray();
+            var castedParameterTypes = typeof(T).GetMethod("Invoke").GetParameters()
+                .Select(p => p.GetCustomAttribute<CastFromAttribute>()?.Type)
+                .ToArray();
 
             Console.WriteLine($"Registering listener for {listenerName} with {parameterTypes.Length}");
-            
+
             var wrappedHandler = new Action<ScriptContext>(context =>
             {
                 var args = new object[parameterTypes.Length];
                 for (int i = 0; i < parameterTypes.Length; i++)
                 {
-                    args[i] = context.GetArgument(parameterTypes[i], i);
+                    args[i] = context.GetArgument(castedParameterTypes[i] ?? parameterTypes[i], i);
+                    if (castedParameterTypes[i] != null)
+                        args[i] = Activator.CreateInstance(parameterTypes[i], new[] { args[i] });
                 }
 
                 handler.DynamicInvoke(args);
             });
-            
-            var subscriber = new CallbackSubscriber(handler, wrappedHandler, () => { RemoveListener(listenerName, handler); });
+
+            var subscriber =
+                new CallbackSubscriber(handler, wrappedHandler, () => { RemoveListener(listenerName, handler); });
 
             NativeAPI.AddListener(listenerName, subscriber.GetInputArgument());
             Listeners[handler] = subscriber;
@@ -235,7 +241,7 @@ namespace CounterStrikeSharp.API.Core
             Timers.Add(timer);
             return timer;
         }
-        
+
 
         public void RegisterAllAttributes(object instance)
         {
@@ -281,7 +287,8 @@ namespace CounterStrikeSharp.API.Core
             foreach (var eventHandler in eventHandlers)
             {
                 var commandInfo = eventHandler.GetCustomAttribute<ConsoleCommandAttribute>();
-                AddCommand(commandInfo.Command, commandInfo.Description, eventHandler.CreateDelegate<CommandInfo.CommandCallback>(instance));
+                AddCommand(commandInfo.Command, commandInfo.Description,
+                    eventHandler.CreateDelegate<CommandInfo.CommandCallback>(instance));
             }
         }
 

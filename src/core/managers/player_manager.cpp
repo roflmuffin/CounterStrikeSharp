@@ -104,6 +104,7 @@ void PlayerManager::OnAllInitialized() {
     m_on_client_disconnect_callback = globals::callbackManager.CreateCallback("OnClientDisconnect");
     m_on_client_disconnect_post_callback =
         globals::callbackManager.CreateCallback("OnClientDisconnectPost");
+    m_on_client_authorized_callback = globals::callbackManager.CreateCallback("OnClientAuthorized");
 }
 
 void PlayerManager::OnShutdown() {
@@ -125,6 +126,7 @@ void PlayerManager::OnShutdown() {
     globals::callbackManager.ReleaseCallback(m_on_client_put_in_server_callback);
     globals::callbackManager.ReleaseCallback(m_on_client_disconnect_callback);
     globals::callbackManager.ReleaseCallback(m_on_client_disconnect_post_callback);
+    globals::callbackManager.ReleaseCallback(m_on_client_authorized_callback);
 }
 
 bool PlayerManager::OnClientConnect(CPlayerSlot slot,
@@ -397,8 +399,6 @@ IPlayerInfo *CPlayer::GetPlayerInfo() const { return m_info; }
 
 const char *CPlayer::GetName() const { return strdup(m_name.c_str()); }
 
-const char *CPlayer::GetAuthString() { return ""; }
-
 bool CPlayer::IsConnected() const { return m_is_connected; }
 
 bool CPlayer::IsFakeClient() const { return m_is_fake_client; }
@@ -451,6 +451,36 @@ PlayerManager::PlayerManager() {
     m_player_count = 0;
     m_user_id_lookup = new int[USHRT_MAX + 1];
     memset(m_user_id_lookup, 0, sizeof(int) * (USHRT_MAX + 1));
+}
+
+void PlayerManager::RunAuthChecks() {
+    if (globals::getGlobalVars()->curtime - m_last_auth_check_time < 0.5F) {
+        return;
+    }
+
+    m_last_auth_check_time = globals::getGlobalVars()->curtime;
+
+    for (int i = 1; i <= m_max_clients; i++) {
+        if (m_players[i].IsConnected()) {
+            if (m_players[i].IsAuthorized() || m_players[i].IsFakeClient()) continue;
+
+            if (globals::engine->IsClientFullyAuthenticated(i)) {
+                m_players[i].Authorize();
+                m_players[i].SetSteamId(globals::engine->GetClientSteamID(i));
+                OnAuthorized(&m_players[i]);
+            }
+        }
+    }
+}
+
+void PlayerManager::OnAuthorized(CPlayer *player) const {
+    CSSHARP_CORE_TRACE("[PlayerManager][OnAuthorized] - {} {}", player->GetName(),
+                       player->GetSteamId()->ConvertToUint64());
+
+    m_on_client_authorized_callback->ScriptContext().Reset();
+    m_on_client_authorized_callback->ScriptContext().Push(player->m_slot.Get());
+    m_on_client_authorized_callback->ScriptContext().Push(player->GetSteamId()->ConvertToUint64());
+    m_on_client_authorized_callback->Execute();
 }
 
 bool CPlayer::WasCountedAsInGame() const { return m_is_in_game; }
@@ -543,5 +573,7 @@ bool CPlayer::IsAlive() const {
 
     return !m_info->IsDead();
 }
+const CSteamID *CPlayer::GetSteamId() { return m_steamId; }
+void CPlayer::SetSteamId(const CSteamID *steam_id) { m_steamId = steam_id; }
 
 }  // namespace counterstrikesharp

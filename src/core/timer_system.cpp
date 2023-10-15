@@ -37,6 +37,7 @@
 #include "core/globals.h"
 #include "core/log.h"
 #include "scripting/callback_manager.h"
+#include "core/managers/player_manager.h"
 
 namespace counterstrikesharp {
 namespace timers {
@@ -95,6 +96,8 @@ void TimerSystem::OnGameFrame(bool simulating) {
         m_on_tick_callback_->ScriptContext().Reset();
         m_on_tick_callback_->Execute();
     }
+
+    globals::playerManager.RunAuthChecks();
 }
 
 double TimerSystem::CalculateNextThink(double last_think_time, float interval) {

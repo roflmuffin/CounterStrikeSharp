@@ -56,6 +56,8 @@ public class Mapping
                 return "InputArgument";
             case "object[]":
                 return "object[]";
+            case "SteamID":
+                return "[CastFrom(typeof(ulong))]SteamID";
         }
 
         return "object";
