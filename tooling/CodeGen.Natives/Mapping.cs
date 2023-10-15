@@ -56,6 +56,8 @@ public class Mapping
                 return "InputArgument";
             case "object[]":
                 return "object[]";
+            case "SteamID":
+                return "[CastFrom(typeof(ulong))]SteamID";
         }
 
         return "object";
@@ -68,11 +70,12 @@ public class Mapping
             case "1":
             case "short":
             case "byte":
+            case "local": // unknown
+                return "int";
             case "player_controller":
             case "player_pawn":
             case "player_controller_and_pawn":
-            case "local": // unknown
-                return "int";
+                return "Player";
             case "ehandle":
                 return "IntPtr";
             case "uint64":

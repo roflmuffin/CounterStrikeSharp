@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -15,10 +15,15 @@
  */
 
 using System;
+using System.IO;
+using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes;
+using CounterStrikeSharp.API.Core.Attributes.Registration;
 using CounterStrikeSharp.API.Modules.Commands;
+using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Events;
+using CounterStrikeSharp.API.Modules.Memory;
 
 namespace TestPlugin
 {
@@ -29,54 +34,85 @@ namespace TestPlugin
 
         public override void Load(bool hotReload)
         {
-            Console.WriteLine($"Test Plugin has been loaded, and the hot reload flag was {hotReload}");
-            
-            AddCommand("cssharp_info", "A test command", (clientIndex, info) =>
-            {
-                Console.WriteLine($"CounterStrikeSharp - a test command was called by {clientIndex} with {info.ArgString}");
-            });
+            Console.WriteLine(
+                $"Test Plugin has been loaded, and the hot reload flag was {hotReload}, path is {ModulePath}");
 
-            OnMapStart += args =>
-            {
-                Console.BackgroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine($"Map {args.MapName} has started!");
-                Console.ResetColor();
-            };
-
-            OnClientConnect += args =>
-            {
-                Console.BackgroundColor = ConsoleColor.DarkGreen;
-                Console.WriteLine($"Client {args.Name} from {args.Address} has connected!");
-                Console.ResetColor();
-            };
-
+            // Register Game Event Handlers
             RegisterEventHandler<EventPlayerConnect>(GenericEventHandler);
-            RegisterEventHandler<EventPlayerSpawn>((@event =>
-            {
-                Console.WriteLine($"Handle of userid player controller: {@event.Userid}");
-            }));
+            RegisterEventHandler<EventPlayerSpawn>(GenericEventHandler);
             RegisterEventHandler<EventPlayerBlind>(GenericEventHandler);
+            RegisterEventHandler<EventBulletImpact>(@event =>
+            {
+                Log($"{@event.Userid}, {@event.X},{@event.Y},{@event.Z}");
+            });
+            
+            // Hook global listeners defined by CounterStrikeSharp
+            RegisterListener<Listeners.OnMapStart>(mapName =>
+            {
+                Log($"Map {mapName} has started!");
+            });
+            RegisterListener<Listeners.OnClientConnect>((index, name, ip) =>
+            {
+                Log($"Client {name} from {ip} has connected!");
+            });
+            RegisterListener<Listeners.OnClientAuthorized>((index, id) =>
+            {
+                Log($"Client {index} with address {id}");
+            });
+            
+            // You can use `ModuleDirectory` to get the directory of the plugin (for storing config files, saving database files etc.)
+            File.WriteAllText(Path.Join(ModuleDirectory, "example.txt"),
+                $"Test file created by TestPlugin at {DateTime.Now}");
+
+            // ValveInterface provides pointers to loaded modules via Interface Name exposed from the engine (e.g. Source2Server001)
+            var server = ValveInterface.Server;
+            Log($"Server pointer found @ {server.Pointer:X}");
+
+            // Execute a server command as if typed into the server console.
+            Server.ExecuteCommand("find \"cssharp\"");
+
+            // Adds a new server console command
+            AddCommand("cssharp_info", "A test command",
+                (clientIndex, info) =>
+                {
+                    Log($"CounterStrikeSharp - a test command was called by {clientIndex} with {info.ArgString}");
+                });
+
+            // Example vfunc call that usually gets the game event manager pointer
+            // by calling the func at offset 91 then subtracting 8 from the result pointer.
+            // This value is asserted against the native code that points to the same function.
+            var virtualFunc = VirtualFunction.CreateFunc<IntPtr>(server.Pointer, 91);
+            var result = virtualFunc.Invoke() - 8;
+            Log($"Result of virtual func call is {result:X}");
+
+            // 	inline void(FASTCALL *ClientPrint)(CBasePlayerController *player, int msg_dest, const char *msg_name, const char *param1, const char *param2, const char *param3, const char *param4);
+            var sigVirtualFunc = VirtualFunction.Create<IntPtr, int, string, IntPtr, IntPtr, IntPtr, IntPtr>(
+                server.Pointer,
+                @"\x55\x48\x89\xE5\x41\x57\x49\x89\xCF\x41\x56\x49\x89\xD6\x41\x55\x41\x89\xF5\x41\x54\x4C\x8D\xA5\xA0\xFE\xFF\xFF");
         }
 
         [GameEventHandler]
         public void OnPlayerConnect(EventPlayerConnect @event)
         {
-            Console.BackgroundColor = ConsoleColor.DarkMagenta;
-            Console.WriteLine($"Player {@event.Name} has connected!");
-            Console.ResetColor();
+            Log($"Player {@event.Name} has connected!");
         }
 
         [ConsoleCommand("cssharp_attribute", "This is a custom attribute event")]
         public void OnCommand(int client, CommandInfo command)
         {
-            Console.WriteLine("cssharp_attribute called!");
+            Log("cssharp_attribute called!");
         }
 
         private void GenericEventHandler<T>(T @event) where T : GameEvent
         {
-            Console.BackgroundColor = ConsoleColor.Blue;
-            Console.WriteLine(
-                $"Event found {@event.Handle:X}, event name: {@event.EventName}");
+            Log($"Event found {@event.Handle:X}, event name: {@event.EventName}");
+        }
+
+        private void Log(string message)
+        {
+            Console.BackgroundColor = ConsoleColor.DarkGray;
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine(message);
             Console.ResetColor();
         }
     }

@@ -24,7 +24,7 @@ namespace counterstrikesharp {
 class TraceFilterProxy : public ITraceFilter {
 public:
     TraceFilterProxy() {}
-    bool ShouldHitEntity(IHandleEntity *pServerEntity, int contentsMask);
+    bool ShouldHitEntity(CEntityInstance *pServerEntity, int contentsMask);
     TraceType_t GetTraceType() const;
 
     void SetShouldHitEntityCallback(CallbackT cb);
@@ -39,7 +39,7 @@ class CSimpleTraceFilter : public ITraceFilter {
 public:
     CSimpleTraceFilter(int index)
         : m_index_to_exclude(index) {}
-    bool ShouldHitEntity(IHandleEntity *pServerEntity, int contentsMask);
+    bool ShouldHitEntity(CEntityInstance *pServerEntity, int contentsMask);
 
     TraceType_t GetTraceType() const { return TRACE_EVERYTHING; }
 

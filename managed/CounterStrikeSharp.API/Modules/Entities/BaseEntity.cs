@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -14,17 +14,22 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using CodeGen.Natives.Scripts;
+using System;
 
-namespace CodeGen.Natives
+namespace CounterStrikeSharp.API.Modules.Entities
 {
-    class Program
+    public class BaseEntity : NativeObject
     {
-        static void Main(string[] args)
+        public int Index { get; init; }
+
+        public BaseEntity(int index, IntPtr handle) : base(handle)
         {
-            Generators.GenerateNatives();
-            Generators.GenerateGameEvents();
-            Generators.GenerateListeners();
+            Index = index;
+        }
+
+        public override string ToString()
+        {
+            return string.Format($"[BaseEntity index={Index}, handle={Handle}");
         }
     }
 }

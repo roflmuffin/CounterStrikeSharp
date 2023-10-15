@@ -1,7 +1,6 @@
 using System;
-using CounterStrikeSharp.API.Modules.Events;
 
-namespace CounterStrikeSharp.API.Core.Attributes;
+namespace CounterStrikeSharp.API.Core.Attributes.Registration;
 
 [AttributeUsage(AttributeTargets.Method)]
 public class GameEventHandlerAttribute : Attribute

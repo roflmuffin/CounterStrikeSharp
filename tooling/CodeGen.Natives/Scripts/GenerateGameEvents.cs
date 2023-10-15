@@ -116,6 +116,7 @@ public partial class Generators
         var result = $@"
 using System;
 using CounterStrikeSharp.API.Modules.Events;
+using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core

@@ -75,7 +75,7 @@ void ConCommandManager::OnShutdown() {}
 
 void CommandCallback(const CCommandContext& context, const CCommand& command) {
     bool rval = globals::conCommandManager.InternalDispatch(
-        globals::conCommandManager.GetCommandClient(), &command);
+        context.GetPlayerSlot(), &command);
 
     if (rval) {
         RETURN_META(MRES_SUPERCEDE);
@@ -124,6 +124,9 @@ ConCommandInfo* ConCommandManager::AddOrFindCommand(const char* name,
             p_info->callback_pre = globals::callbackManager.CreateCallback(name);
             p_info->callback_post = globals::callbackManager.CreateCallback(name);
             p_info->server_only = server_only;
+
+            SH_ADD_HOOK(ConCommandHandle, Dispatch, &pointerConCommand->handle, SH_STATIC(CommandCallback), false);
+            SH_ADD_HOOK(ConCommandHandle, Dispatch, &pointerConCommand->handle, SH_STATIC(CommandCallback_Post), true);
         } else {
             //            p_info->callback_pre = globals::callbackManager.CreateCallback(name);
             //            p_info->callback_post = globals::callbackManager.CreateCallback(name);
@@ -211,9 +214,6 @@ ConCommandInfo* ConCommandManager::FindCommand(const char* name) {
         p_info->callback_post = globals::callbackManager.CreateCallback(name);
         p_info->server_only = false;
 
-        SH_ADD_HOOK(ConCommandHandle, Dispatch, &p_cmd, SH_STATIC(CommandCallback), false);
-        SH_ADD_HOOK(ConCommandHandle, Dispatch, &p_cmd, SH_STATIC(CommandCallback_Post), true);
-
         if (p_cmd.IsValid()) {
             // p_info->p_cmd = p_cmd.IsValid()
 
@@ -232,23 +232,19 @@ int ConCommandManager::GetCommandClient() { return last_command_client; }
 void ConCommandManager::SetCommandClient(int client) { last_command_client = client + 1; }
 
 bool ConCommandManager::InternalDispatch(CPlayerSlot slot, const CCommand* args) {
-    const char* cmd = args->Arg(0);
+    const char* cmd = args->GetCommandString();
 
     ConCommandInfo* p_info = m_cmd_lookup[cmd];
     if (p_info == nullptr) {
         if (slot.Get() == 0 && !globals::engine->IsDedicatedServer()) return false;
 
-        auto found = std::find_if(
-            m_cmd_list.begin(), m_cmd_list.end(),
-            [cmd](ConCommandInfo* info) { return V_strcasecmp(info->command->GetName(), cmd); });
-        if (found == m_cmd_list.end()) {
-            return false;
+        for (ConCommandInfo* cmdInfo : m_cmd_list) {
+            if ((cmdInfo != nullptr) && strcasecmp(cmdInfo->command->GetName(), cmd) == 0) {
+                p_info = cmdInfo;
+                continue;
+            }
         }
-
-        p_info = *found;
     }
-
-    int argc = args->ArgC() - 1;
 
     int realClient = slot.Get();
 
@@ -266,23 +262,19 @@ bool ConCommandManager::InternalDispatch(CPlayerSlot slot, const CCommand* args)
 }
 
 bool ConCommandManager::InternalDispatch_Post(CPlayerSlot slot, const CCommand* args) {
-    const char* cmd = args->Arg(0);
+    const char* cmd = args->GetCommandString();
 
     ConCommandInfo* p_info = m_cmd_lookup[cmd];
     if (p_info == nullptr) {
         if (slot.Get() == 0 && !globals::engine->IsDedicatedServer()) return false;
 
-        auto found = std::find_if(
-            m_cmd_list.begin(), m_cmd_list.end(),
-            [cmd](ConCommandInfo* info) { return V_strcasecmp(info->command->GetName(), cmd); });
-        if (found == m_cmd_list.end()) {
-            return false;
+        for (ConCommandInfo* cmdInfo : m_cmd_list) {
+            if ((cmdInfo != nullptr) && strcasecmp(cmdInfo->command->GetName(), cmd) == 0) {
+                p_info = cmdInfo;
+                continue;
+            }
         }
-
-        p_info = *found;
     }
-
-    int argc = args->ArgC() - 1;
 
     int realClient = slot.Get();
 

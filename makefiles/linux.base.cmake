@@ -27,6 +27,8 @@ SET(
         ${SOURCESDK_LIB}/linux64/interfaces.a
         ${SOURCESDK_LIB}/linux64/mathlib.a
         spdlog
+        dynload_s
+        dyncall_s
         distorm
         funchook-shared
 )

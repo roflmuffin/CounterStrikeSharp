@@ -15,6 +15,7 @@
  */
 
 using System;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using CounterStrikeSharp.API.Modules.Events;
@@ -32,6 +33,7 @@ namespace CounterStrikeSharp.API.Core
         public Type PluginType => _plugin?.GetType();
 
         private readonly string _path;
+        private readonly FileSystemWatcher _fileWatcher;
 
         public PluginContext(string path)
         {
@@ -43,6 +45,22 @@ namespace CounterStrikeSharp.API.Core
                 config.IsUnloadable = true;
             });
 
+            _fileWatcher = new FileSystemWatcher
+            {
+                Path = Path.GetDirectoryName(path)
+            };
+
+            _fileWatcher.Deleted += async (s, e) =>
+            {
+                if (e.FullPath == path)
+                {
+                    Console.WriteLine($"Plugin {Name} has been deleted, unloading...");
+                    Unload(true);
+                }
+            };
+
+            _fileWatcher.Filter = "*.dll";
+            _fileWatcher.EnableRaisingEvents = true;
             _assemblyLoader.Reloaded += async (s, e) => await OnReloadedAsync(s, e);
         }
 
@@ -67,6 +85,7 @@ namespace CounterStrikeSharp.API.Core
 
                 Console.WriteLine($"Loading plugin: {pluginType.Name}");
                 _plugin = (BasePlugin)Activator.CreateInstance(pluginType)!;
+                _plugin.ModulePath = _path;
                 _plugin.RegisterAllAttributes(_plugin);
                 _plugin.Load(hotReload);
 
@@ -84,7 +103,11 @@ namespace CounterStrikeSharp.API.Core
 
             _plugin.Dispose();
 
-            if (!hotReload) _assemblyLoader.Dispose();
+            if (!hotReload)
+            {
+                _assemblyLoader.Dispose();
+                _fileWatcher.Dispose();
+            }
 
             Console.WriteLine($"Finished unloading plugin {cachedName}");
         }

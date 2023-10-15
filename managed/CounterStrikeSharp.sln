@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPlugin", "TestPlugin\TestPlugin.csproj", "{57E64289-5D69-4AA1-BEF0-D0D96A55EE8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CounterStrikeSharp.API", "CounterStrikeSharp.API\CounterStrikeSharp.API.csproj", "{55B47E41-61AA-4D75-9069-CB14328107B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGen.Natives", "..\tooling\CodeGen.Natives\CodeGen.Natives.csproj", "{5C873ECF-A943-45AA-A3C0-E442EB4477BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{57E64289-5D69-4AA1-BEF0-D0D96A55EE8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57E64289-5D69-4AA1-BEF0-D0D96A55EE8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57E64289-5D69-4AA1-BEF0-D0D96A55EE8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57E64289-5D69-4AA1-BEF0-D0D96A55EE8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55B47E41-61AA-4D75-9069-CB14328107B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55B47E41-61AA-4D75-9069-CB14328107B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55B47E41-61AA-4D75-9069-CB14328107B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55B47E41-61AA-4D75-9069-CB14328107B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C873ECF-A943-45AA-A3C0-E442EB4477BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C873ECF-A943-45AA-A3C0-E442EB4477BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C873ECF-A943-45AA-A3C0-E442EB4477BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C873ECF-A943-45AA-A3C0-E442EB4477BD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

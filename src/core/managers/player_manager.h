@@ -63,7 +63,8 @@ public:
 
 public:
     const char *GetName() const;
-    const char *GetAuthString();
+    const CSteamID *GetSteamId();
+    void SetSteamId(const CSteamID *steam_id);
     bool IsConnected() const;
     bool IsFakeClient() const;
     bool IsAuthorized() const;
@@ -102,6 +103,7 @@ public:
     bool m_is_authorized = false;
     int m_user_id = 1;
     CPlayerSlot m_slot = CPlayerSlot(-1);
+    const CSteamID* m_steamId;
     std::string m_ip_address;
     void SetName(const char *name);
     INetChannelInfo *GetNetInfo() const;
@@ -137,12 +139,14 @@ public:
                                  const char *pszName,
                                  uint64 xuid,
                                  const char *pszNetworkID) const;
+    void OnAuthorized(CPlayer* player) const;
     void OnServerActivate(edict_t *pEdictList, int edictCount, int clientMax) const;
     void OnThink(bool last_tick) const;
     void OnShutdown() override;
     void OnLevelEnd() override;
     void OnClientCommand(CPlayerSlot slot, const CCommand &args) const;
     int ListenClient() const;
+    void RunAuthChecks();
 
 public:
     int NumPlayers() const;
@@ -159,12 +163,14 @@ private:
     int *m_user_id_lookup;
     int m_listen_client;
     bool m_is_listen_server;
+    float m_last_auth_check_time = 0;
 
     ScriptCallback *m_on_client_connect_callback;
     ScriptCallback *m_on_client_put_in_server_callback;
     ScriptCallback *m_on_client_connected_callback;
     ScriptCallback *m_on_client_disconnect_callback;
     ScriptCallback *m_on_client_disconnect_post_callback;
+    ScriptCallback *m_on_client_authorized_callback;
 };
 
 }  // namespace counterstrikesharp
