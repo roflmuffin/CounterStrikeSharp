@@ -17,37 +17,21 @@
  * this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#pragma once
-#include "platform.h"
+#include "cs2_interfaces.h"
+#include "interfaces/interfaces.h"
 
-#define CALL_VIRTUAL(retType, idx, ...) vmt::CallVirtual<retType>(idx, __VA_ARGS__)
+#include "tier0/memdbgon.h"
+#include "core/memory_module.h"
+#include "core/globals.h"
 
-namespace vmt {
-template <typename T = void *>
-inline T GetVMethod(uint32 uIndex, void *pClass) {
-    if (!pClass) {
-        return T();
-    }
-
-    void **pVTable = *static_cast<void ***>(pClass);
-    if (!pVTable) {
-        return T();
-    }
-
-    return reinterpret_cast<T>(pVTable[uIndex]);
+namespace counterstrikesharp {
+void interfaces::Initialize() {
+    pGameResourceServiceServer = (CGameResourceService*)modules::engine->FindInterface(
+        GAMERESOURCESERVICESERVER_INTERFACE_VERSION);
+    g_pCVar = (ICvar*)modules::tier0->FindInterface(CVAR_INTERFACE_VERSION);
+    g_pSource2GameEntities = (ISource2GameEntities*)modules::server->FindInterface(
+        SOURCE2GAMEENTITIES_INTERFACE_VERSION);
+    pSchemaSystem =
+        (CSchemaSystem*)modules::schemasystem->FindInterface(SCHEMASYSTEM_INTERFACE_VERSION);
 }
-
-template <typename T, typename... Args>
-inline T CallVirtual(uint32 uIndex, void *pClass, Args... args) {
-#ifdef _WIN32
-    auto pFunc = GetVMethod<T(__thiscall *)(void *, Args...)>(uIndex, pClass);
-#else
-    auto pFunc = GetVMethod<T(*)(void *, Args...)>(uIndex, pClass);
-#endif
-    if (!pFunc) {
-        return T();
-    }
-
-    return pFunc(pClass, args...);
-}
-}  // namespace vmt
+}  // namespace counterstrikesharp

@@ -39,6 +39,7 @@
 #include "core/log.h"
 #include "scripting/callback_manager.h"
 #include <iplayerinfo.h>
+// extern CEntitySystem *g_pEntitySystem;
 
 SH_DECL_HOOK4_void(
     IServerGameClients, ClientActive, SH_NOATTRIB, 0, CPlayerSlot, bool, const char *, uint64);

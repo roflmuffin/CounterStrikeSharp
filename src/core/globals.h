@@ -26,6 +26,7 @@ class CDotNetManager;
 class ICvar;
 class IGameEventSystem;
 class CounterStrikeSharpMMPlugin;
+class CEntitySystem;
 
 namespace counterstrikesharp {
 class EntityListener;
@@ -67,6 +68,7 @@ extern ICvar *cvars;
 extern ISource2Server *server;
 extern CGlobalEntityList *globalEntityList;
 extern EntityListener entityListener;
+extern CEntitySystem *entitySystem;
 extern EventManager eventManager;
 extern UserMessageManager userMessageManager;
 extern ConCommandManager conCommandManager;
@@ -87,8 +89,17 @@ void Initialize();
 // Should only be called within the active game loop (i e map should be loaded
 // and active) otherwise that'll be nullptr!
 CGlobalVars *getGlobalVars();
-
 }  // namespace globals
+
+namespace modules {
+class CModule;
+
+extern CModule *engine;
+extern CModule *tier0;
+extern CModule *server;
+extern CModule *schemasystem;
+extern CModule *vscript;
+}  // namespace modules
 
 }  // namespace counterstrikesharp
 

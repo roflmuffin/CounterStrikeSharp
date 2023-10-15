@@ -43,14 +43,22 @@ namespace TestPlugin
             RegisterEventHandler<EventPlayerBlind>(GenericEventHandler);
             RegisterEventHandler<EventBulletImpact>(@event =>
             {
+                var steamId = NativeAPI.GetSchemaValueByName<ulong>(@event.Userid.Handle,
+                    (int)DataType.DATA_TYPE_ULONG_LONG,
+                    "CBasePlayerController", "m_steamID");
+
+                var playerName = NativeAPI.GetSchemaValueByName<string>(@event.Userid.Handle,
+                    (int)DataType.DATA_TYPE_STRING, "CBasePlayerController", "m_iszPlayerName");
+                var playerHealth = NativeAPI.GetSchemaValueByName<int>(@event.Userid.PawnHandle,
+                    (int)DataType.DATA_TYPE_INT, "CBaseEntity", "m_iHealth");
+                NativeAPI.SetSchemaValueByName<int>(@event.Userid.PawnHandle, (int)DataType.DATA_TYPE_INT,
+                    "CBaseEntity", "m_iHealth", playerHealth + 5);
+                Log($"Found steamID {new SteamID(steamId)} for player {playerName}:{playerHealth}");
                 Log($"{@event.Userid}, {@event.X},{@event.Y},{@event.Z}");
             });
-            
+
             // Hook global listeners defined by CounterStrikeSharp
-            RegisterListener<Listeners.OnMapStart>(mapName =>
-            {
-                Log($"Map {mapName} has started!");
-            });
+            RegisterListener<Listeners.OnMapStart>(mapName => { Log($"Map {mapName} has started!"); });
             RegisterListener<Listeners.OnClientConnect>((index, name, ip) =>
             {
                 Log($"Client {name} from {ip} has connected!");
@@ -59,7 +67,7 @@ namespace TestPlugin
             {
                 Log($"Client {index} with address {id}");
             });
-            
+
             // You can use `ModuleDirectory` to get the directory of the plugin (for storing config files, saving database files etc.)
             File.WriteAllText(Path.Join(ModuleDirectory, "example.txt"),
                 $"Test file created by TestPlugin at {DateTime.Now}");

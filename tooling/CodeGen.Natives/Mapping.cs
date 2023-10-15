@@ -58,6 +58,8 @@ public class Mapping
                 return "object[]";
             case "SteamID":
                 return "[CastFrom(typeof(ulong))]SteamID";
+            case "any":
+                return "T";
         }
 
         return "object";

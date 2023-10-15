@@ -48,8 +48,9 @@ public partial class Generators
             var arguments = string.Join(", ",
                 native.Arguments.Select(pair => $"{Mapping.GetCSharpType(pair.Value)} {pair.Key}"));
 
+            var hasGenerics = native.ReturnType == "any" || native.Arguments.Any(pair => pair.Value == "any");
             var returnStr = new StringBuilder($@"
-        public static {Mapping.GetCSharpType(native.ReturnType)} {native.NameCamelCase}({arguments}){{{Environment.NewLine}");
+        public static {Mapping.GetCSharpType(native.ReturnType)} {native.NameCamelCase}{(hasGenerics ? "<T>" : "")}({arguments}){{{Environment.NewLine}");
 
             returnStr.Append("\t\t\tlock (ScriptContext.GlobalScriptContext.Lock) {\n");
             returnStr.Append("\t\t\tScriptContext.GlobalScriptContext.Reset();\n");

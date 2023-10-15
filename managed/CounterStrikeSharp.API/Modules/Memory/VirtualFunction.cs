@@ -137,13 +137,12 @@ namespace CounterStrikeSharp.API.Modules.Memory
 
         public T InvokeInternal<T>(object[] arguments)
         {
-            NativeAPI.ExecuteVirtualFunction(Handle, arguments);
-            return ScriptContext.GlobalScriptContext.GetResult<T>();
+            return NativeAPI.ExecuteVirtualFunction<T>(Handle, arguments);
         }
 
         protected void InvokeInternal(object[] arguments)
         {
-            NativeAPI.ExecuteVirtualFunction(Handle, arguments);
+            NativeAPI.ExecuteVirtualFunction<object>(Handle, arguments);
         }
 
         private static void ExecuteFunction(IntPtr objPtr, int offset, DataType?[] argumentTypes, DataType returnType,
@@ -159,7 +158,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
             var ptr = NativeAPI.CreateVirtualFunction(objPtr, offset, convertedArguments.Length, (int)returnType,
                 convertedArguments);
 
-            NativeAPI.ExecuteVirtualFunction(ptr, arguments);
+            NativeAPI.ExecuteVirtualFunction<object>(ptr, arguments);
         }
 
         private static void ExecuteFunction(IntPtr objPtr, string signature, DataType?[] argumentTypes,
@@ -175,7 +174,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
             var ptr = NativeAPI.CreateVirtualFunctionBySignature(objPtr, Addresses.ServerPath, signature,
                 convertedArguments.Length, (int)returnType, convertedArguments);
 
-            NativeAPI.ExecuteVirtualFunction(ptr, arguments);
+            NativeAPI.ExecuteVirtualFunction<object>(ptr, arguments);
         }
 
         public static VirtualFunctionVoid<TArg1, TArg2, TArg3> CreateObject<TArg1, TArg2, TArg3>(IntPtr objPtr,

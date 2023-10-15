@@ -26,6 +26,8 @@
 #include "scripting/callback_manager.h"
 #include "scripting/dotnet_host.h"
 #include "scripting/script_engine.h"
+#include "entity2/entitysystem.h"
+#include "interfaces/cs2_interfaces.h"
 
 counterstrikesharp::GlobalClass *counterstrikesharp::GlobalClass::head = nullptr;
 
@@ -114,6 +116,8 @@ void CounterStrikeSharpMMPlugin::Hook_StartupServer(const GameSessionConfigurati
     on_activate_callback->ScriptContext().Reset();
     on_activate_callback->ScriptContext().Push(globals::getGlobalVars()->mapname);
     on_activate_callback->Execute();
+
+    globals::entitySystem = interfaces::pGameResourceServiceServer->GetGameEntitySystem();
 }
 
 bool CounterStrikeSharpMMPlugin::Unload(char *error, size_t maxlen) {
@@ -136,6 +140,7 @@ void CounterStrikeSharpMMPlugin::AllPluginsLoaded() {
 void CounterStrikeSharpMMPlugin::AddTaskForNextFrame(std::function<void()> &&task) {
     m_nextTasks.push_back(std::forward<decltype(task)>(task));
 }
+
 
 void CounterStrikeSharpMMPlugin::Hook_GameFrame(bool simulating, bool bFirstTick, bool bLastTick) {
     /**

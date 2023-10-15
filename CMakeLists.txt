@@ -53,25 +53,34 @@ SET(SOURCE_FILES
         src/core/managers/con_command_manager.cpp
         src/core/managers/con_command_manager.h
         src/scripting/natives/natives_commands.cpp
+        src/core/memory_module.h
+        src/core/cs2_sdk/interfaces/cgameresourceserviceserver.h
+        src/core/cs2_sdk/interfaces/cschemasystem.h
+        src/core/cs2_sdk/interfaces/centitysystem.cpp
+        src/core/cs2_sdk/interfaces/cs2_interfaces.h
+        src/core/cs2_sdk/interfaces/cs2_interfaces.cpp
+        src/core/cs2_sdk/schema.h
+        src/core/cs2_sdk/schema.cpp
         src/core/function.cpp
         src/core/function.h
         src/scripting/natives/natives_memory.cpp
+        src/scripting/natives/natives_schema.cpp
 )
 
 set(PROTO_DIRS -I${CMAKE_CURRENT_SOURCE_DIR}/libraries/GameTracking-CS2/Protobufs)
 file(GLOB PROTOS "${CMAKE_CURRENT_SOURCE_DIR}/libraries/GameTracking-CS2/Protobufs/*.proto")
 
 ## Generate protobuf source & headers
-add_custom_command(
-        OUTPUT protobuf_output_stamp
-        COMMAND bash ${CMAKE_CURRENT_SOURCE_DIR}/src/protobuf/compile.sh
-        COMMENT "Generating protobuf files using compile.sh script"
-        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/protobuf
-        DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/src/protobuf/compile.sh
-        VERBATIM
-)
-
-SET(SOURCE_FILES ${SOURCE_FILES} protobuf_output_stamp)
+#add_custom_command(
+#        OUTPUT protobuf_output_stamp
+#        COMMAND bash ${CMAKE_CURRENT_SOURCE_DIR}/src/protobuf/compile.sh
+#        COMMENT "Generating protobuf files using compile.sh script"
+#        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/protobuf
+#        DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/src/protobuf/compile.sh
+#        VERBATIM
+#)
+#
+#SET(SOURCE_FILES ${SOURCE_FILES} protobuf_output_stamp)
 
 # Sources
 add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${NATIVES_SOURCES} ${CONVERSIONS_SOURCES} ${CONVERSIONS_HEADERS})
@@ -80,6 +89,7 @@ target_include_directories(
         ${PROJECT_NAME}
         PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/src
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/core/cs2_sdk
 )
 
 include("makefiles/linux.base.cmake")

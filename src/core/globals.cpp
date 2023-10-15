@@ -13,9 +13,20 @@
 #include "log.h"
 #include "utils/virtual.h"
 #include "core/managers/con_command_manager.h"
+#include "memory_module.h"
+#include "interfaces/cs2_interfaces.h"
 #include <public/game/server/iplayerinfo.h>
+#include <public/entity2/entitysystem.h>
 
 namespace counterstrikesharp {
+
+namespace modules {
+CModule *engine = nullptr;
+CModule *tier0 = nullptr;
+CModule *server = nullptr;
+CModule *schemasystem = nullptr;
+CModule *vscript = nullptr;
+}  // namespace modules
 
 namespace globals {
 IVEngineServer *engine = nullptr;
@@ -47,6 +58,7 @@ CounterStrikeSharpMMPlugin *mmPlugin = nullptr;
 SourceHook::Impl::CSourceHookImpl source_hook_impl;
 SourceHook::ISourceHook *source_hook = &source_hook_impl;
 ISmmAPI *ismm = nullptr;
+CEntitySystem* entitySystem = nullptr;
 
 // Custom Managers
 CallbackManager callbackManager;
@@ -56,9 +68,17 @@ TimerSystem timerSystem;
 ConCommandManager conCommandManager;
 
 void Initialize() {
-    gameEventManager = (IGameEventManager2 *)(CALL_VIRTUAL(uintptr_t, 91, server) - 8);
+    modules::engine = new modules::CModule(ROOTBIN, "engine2");
+    modules::tier0 = new modules::CModule(ROOTBIN, "tier0");
+    modules::server = new modules::CModule(GAMEBIN, "server");
+    modules::schemasystem = new modules::CModule(ROOTBIN, "schemasystem");
+    modules::vscript = new modules::CModule(ROOTBIN, "vscript");
 
-    CSSHARP_CORE_TRACE("[GLOBALS] globals::gameEventManager: {0}", (void *)gameEventManager);
+    interfaces::Initialize();
+
+    globals::entitySystem = interfaces::pGameResourceServiceServer->GetGameEntitySystem();
+
+    gameEventManager = (IGameEventManager2 *)(CALL_VIRTUAL(uintptr_t, 91, server) - 8);
 }
 
 int source_hook_pluginid = 0;
