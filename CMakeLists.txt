@@ -13,6 +13,7 @@ SET(SOURCE_FILES
         src/mm_plugin.h
         libraries/hl2sdk-cs2/tier1/convar.cpp
         libraries/hl2sdk-cs2/tier1/generichash.cpp
+        libraries/hl2sdk-cs2/entity2/entitysystem.cpp
         libraries/hl2sdk-cs2/public/tier0/memoverride.cpp
         libraries/dotnet/hostfxr.h
         libraries/dotnet/coreclr_delegates.h
@@ -56,7 +57,6 @@ SET(SOURCE_FILES
         src/core/memory_module.h
         src/core/cs2_sdk/interfaces/cgameresourceserviceserver.h
         src/core/cs2_sdk/interfaces/cschemasystem.h
-        src/core/cs2_sdk/interfaces/centitysystem.cpp
         src/core/cs2_sdk/interfaces/cs2_interfaces.h
         src/core/cs2_sdk/interfaces/cs2_interfaces.cpp
         src/core/cs2_sdk/schema.h

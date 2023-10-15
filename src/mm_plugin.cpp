@@ -41,6 +41,8 @@ class GameSessionConfiguration_t {};
 
 namespace counterstrikesharp {
 
+CEntityListener entityListener;
+
 SH_DECL_HOOK3_void(IServerGameDLL, GameFrame, SH_NOATTRIB, 0, bool, bool, bool);
 SH_DECL_HOOK3_void(INetworkServerService,
                    StartupServer,
@@ -91,6 +93,7 @@ bool CounterStrikeSharpMMPlugin::Load(
     CALL_GLOBAL_LISTENER(OnAllInitialized());
 
     on_activate_callback = globals::callbackManager.CreateCallback("OnMapStart");
+    on_entity_spawned_callback = globals::callbackManager.CreateCallback("OnEntitySpawned");
 
     SH_ADD_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this,
                         &CounterStrikeSharpMMPlugin::Hook_GameFrame, true);
@@ -113,11 +116,13 @@ bool CounterStrikeSharpMMPlugin::Load(
 void CounterStrikeSharpMMPlugin::Hook_StartupServer(const GameSessionConfiguration_t &config,
                                                     ISource2WorldSession *,
                                                     const char *) {
+    globals::entitySystem = interfaces::pGameResourceServiceServer->GetGameEntitySystem();
+    globals::entitySystem->AddListenerEntity(&entityListener);
+
     on_activate_callback->ScriptContext().Reset();
     on_activate_callback->ScriptContext().Push(globals::getGlobalVars()->mapname);
     on_activate_callback->Execute();
 
-    globals::entitySystem = interfaces::pGameResourceServiceServer->GetGameEntitySystem();
 }
 
 bool CounterStrikeSharpMMPlugin::Unload(char *error, size_t maxlen) {
@@ -126,7 +131,10 @@ bool CounterStrikeSharpMMPlugin::Unload(char *error, size_t maxlen) {
     SH_REMOVE_HOOK_MEMFUNC(INetworkServerService, StartupServer, globals::networkServerService,
                            this, &CounterStrikeSharpMMPlugin::Hook_StartupServer, true);
 
+    globals::callbackManager.ReleaseCallback(on_entity_spawned_callback);
     globals::callbackManager.ReleaseCallback(on_activate_callback);
+
+    globals::entitySystem->RemoveListenerEntity(&entityListener);
 
     return true;
 }
@@ -140,7 +148,6 @@ void CounterStrikeSharpMMPlugin::AllPluginsLoaded() {
 void CounterStrikeSharpMMPlugin::AddTaskForNextFrame(std::function<void()> &&task) {
     m_nextTasks.push_back(std::forward<decltype(task)>(task));
 }
-
 
 void CounterStrikeSharpMMPlugin::Hook_GameFrame(bool simulating, bool bFirstTick, bool bLastTick) {
     /**
@@ -218,5 +225,12 @@ const char *CounterStrikeSharpMMPlugin::GetName() { return "CounterStrikeSharp";
 
 const char *CounterStrikeSharpMMPlugin::GetURL() {
     return "https://github.com/roflmuffin/CounterStrikeSharp";
+}
+void CEntityListener::OnEntitySpawned(CEntityInstance *pEntity) {
+    if (on_entity_spawned_callback && on_entity_spawned_callback->GetFunctionCount()) {
+        on_entity_spawned_callback->ScriptContext().Reset();
+        on_entity_spawned_callback->ScriptContext().Push(pEntity);
+        on_entity_spawned_callback->Execute();
+    }
 }
 }  // namespace counterstrikesharp

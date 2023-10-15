@@ -58,7 +58,7 @@ CounterStrikeSharpMMPlugin *mmPlugin = nullptr;
 SourceHook::Impl::CSourceHookImpl source_hook_impl;
 SourceHook::ISourceHook *source_hook = &source_hook_impl;
 ISmmAPI *ismm = nullptr;
-CEntitySystem* entitySystem = nullptr;
+CGameEntitySystem* entitySystem = nullptr;
 
 // Custom Managers
 CallbackManager callbackManager;

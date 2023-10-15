@@ -26,7 +26,7 @@ class CDotNetManager;
 class ICvar;
 class IGameEventSystem;
 class CounterStrikeSharpMMPlugin;
-class CEntitySystem;
+class CGameEntitySystem;
 
 namespace counterstrikesharp {
 class EntityListener;
@@ -68,7 +68,8 @@ extern ICvar *cvars;
 extern ISource2Server *server;
 extern CGlobalEntityList *globalEntityList;
 extern EntityListener entityListener;
-extern CEntitySystem *entitySystem;
+extern CGameEntitySystem *entitySystem;
+
 extern EventManager eventManager;
 extern UserMessageManager userMessageManager;
 extern ConCommandManager conCommandManager;

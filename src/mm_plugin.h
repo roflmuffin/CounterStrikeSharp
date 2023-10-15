@@ -24,6 +24,7 @@
     #include <iplayerinfo.h>
     #include <sh_vector.h>
     #include <vector>
+    #include "entitysystem.h"
 
 namespace counterstrikesharp {
 class ScriptCallback;
@@ -65,9 +66,15 @@ private:
 };
 
 static ScriptCallback *on_activate_callback;
+static ScriptCallback* on_entity_spawned_callback;
 extern CounterStrikeSharpMMPlugin gPlugin;
 
 PLUGIN_GLOBALVARS();
+
+class CEntityListener : public IEntityListener
+{
+    void OnEntitySpawned(CEntityInstance* pEntity) override;
+};
 
 #endif  //_INCLUDE_METAMOD_SOURCE_STUB_PLUGIN_H_
 

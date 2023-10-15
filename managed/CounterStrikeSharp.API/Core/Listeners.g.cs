@@ -16,6 +16,9 @@ namespace CounterStrikeSharp.API.Core
         [ListenerName("OnMapEnd")]
         public delegate void OnMapEnd();
 
+        [ListenerName("OnEntitySpawned")]
+        public delegate void OnEntitySpawned(IntPtr entity);
+
         [ListenerName("OnClientConnect")]
         public delegate void OnClientConnect(int index, string name, string ipAddress);
 
