@@ -32,7 +32,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
     /// </summary>
     public class Vector : NativeObject
     {
-        internal Vector(IntPtr pointer) : base(pointer)
+        public Vector(IntPtr pointer) : base(pointer)
         {
         }
 

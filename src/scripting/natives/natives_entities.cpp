@@ -20,6 +20,7 @@
 #include "scripting/autonative.h"
 #include "scripting/script_engine.h"
 #include "core/memory.h"
+#include "core/log.h"
 #include <public/entity2/entitysystem.h>
 
 namespace counterstrikesharp {
@@ -30,7 +31,13 @@ CBaseEntity* GetEntityFromIndex(ScriptContext& script_context) {
     return globals::entitySystem->GetBaseEntity(CEntityIndex(entityIndex));
 }
 
+const char* GetDesignerName(ScriptContext& scriptContext){
+    auto entity = scriptContext.GetArgument<CBaseEntity*>(0);
+    return entity->GetClassname();
+}
+
 REGISTER_NATIVES(entities, {
     ScriptEngine::RegisterNativeHandler("GET_ENTITY_FROM_INDEX", GetEntityFromIndex);
+    ScriptEngine::RegisterNativeHandler("GET_DESIGNER_NAME", GetDesignerName);
 })
 }  // namespace counterstrikesharp
