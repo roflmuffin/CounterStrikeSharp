@@ -24,13 +24,13 @@
 // #include <unordered_map>
 #include "tier1/utlmap.h"
 #include "tier0/memdbgon.h"
-#include "entity/cbaseentity.h"
 #include "../memory.h"
+#include "core/log.h"
 
 using SchemaKeyValueMap_t = CUtlMap<uint32_t, SchemaKey>;
 using SchemaTableMap_t = CUtlMap<uint32_t, SchemaKeyValueMap_t*>;
 
-static bool IsFieldNetworked(SchemaClassFieldData_t& field) {
+bool IsFieldNetworked(SchemaClassFieldData_t& field) {
     for (int i = 0; i < field.m_metadata_size; i++) {
         static auto networkEnabled = hash_32_fnv1a_const("MNetworkEnable");
         if (networkEnabled == hash_32_fnv1a_const(field.m_metadata[i].m_name)) return true;
@@ -124,7 +124,7 @@ void SetStateChanged(Z_CBaseEntity* pEntity, int offset) {
     // addresses::StateChanged(pEntity->m_NetworkTransmitComponent(), pEntity, offset, -1, -1);
     auto vars = counterstrikesharp::globals::getGlobalVars();
 
-    if (vars) pEntity->m_lastNetworkChange = vars->curtime;
+    // if (vars) pEntity->m_lastNetworkChange = vars->curtime;
 
     // pEntity->m_isSteadyState().ClearAll();
 };

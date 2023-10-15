@@ -675,6 +675,20 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static void SetSchemaValueByName<T>(IntPtr instance, int returntype, string classname, string propname, T value){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(instance);
+			ScriptContext.GlobalScriptContext.Push(returntype);
+			ScriptContext.GlobalScriptContext.Push(classname);
+			ScriptContext.GlobalScriptContext.Push(propname);
+			ScriptContext.GlobalScriptContext.Push(value);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xAB9AA921);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
         public static IntPtr CreateTimer(float interval, InputArgument callback, int flags){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();

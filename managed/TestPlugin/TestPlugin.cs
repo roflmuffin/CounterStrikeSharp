@@ -44,17 +44,19 @@ namespace TestPlugin
             RegisterEventHandler<EventBulletImpact>(@event =>
             {
                 Log(@event.Userid.Handle.ToString());
-                var steamId = NativeAPI.GetSchemaValueByName<ulong>(@event.Userid.Handle, (int)DataType.DATA_TYPE_ULONG_LONG,
+
+                var steamId = NativeAPI.GetSchemaValueByName<ulong>(@event.Userid.Handle,
+                    (int)DataType.DATA_TYPE_ULONG_LONG,
                     "CBasePlayerController", "m_steamID");
-                Log($"Found value {new SteamID(steamId)}");
+
+                var playerName = NativeAPI.GetSchemaValueByName<string>(@event.Userid.Handle,
+                    (int)DataType.DATA_TYPE_STRING, "CBasePlayerController", "m_iszPlayerName");
+                Log($"Found value {new SteamID(steamId)} for player {playerName}");
                 Log($"{@event.Userid}, {@event.X},{@event.Y},{@event.Z}");
             });
-            
+
             // Hook global listeners defined by CounterStrikeSharp
-            RegisterListener<Listeners.OnMapStart>(mapName =>
-            {
-                Log($"Map {mapName} has started!");
-            });
+            RegisterListener<Listeners.OnMapStart>(mapName => { Log($"Map {mapName} has started!"); });
             RegisterListener<Listeners.OnClientConnect>((index, name, ip) =>
             {
                 Log($"Client {name} from {ip} has connected!");
@@ -63,7 +65,7 @@ namespace TestPlugin
             {
                 Log($"Client {index} with address {id}");
             });
-            
+
             // You can use `ModuleDirectory` to get the directory of the plugin (for storing config files, saving database files etc.)
             File.WriteAllText(Path.Join(ModuleDirectory, "example.txt"),
                 $"Test file created by TestPlugin at {DateTime.Now}");
