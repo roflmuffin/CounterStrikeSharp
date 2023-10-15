@@ -1,0 +1,1 @@
+GET_ENTITY_FROM_INDEX: index:int -> pointer

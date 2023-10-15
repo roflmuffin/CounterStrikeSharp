@@ -104,7 +104,7 @@ namespace CounterStrikeSharp.API.Modules.Events
         protected Player GetPlayer(string name)
         {
             return new Player(
-                NativeAPI.GetEventInt(Handle, name),
+                NativeAPI.GetEventInt(Handle, name) + 1,
                 NativeAPI.GetEventPlayerController(Handle, name),
                 NativeAPI.GetEventPlayerPawn(Handle, name)
             );
