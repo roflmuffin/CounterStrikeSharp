@@ -75,6 +75,8 @@ public partial class Generators
         {
             case "int32":
                 return "int";
+            case "int64":
+                return "long";
             case "uint8":
                 return "sbyte";
             case "float32":
@@ -82,7 +84,7 @@ public partial class Generators
             case "char":
                 return "string";
             case "uint32":
-                return "long";
+                return "uint";
             case "uint64":
                 return "ulong";
             default:
