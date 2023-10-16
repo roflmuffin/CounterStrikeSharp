@@ -43,17 +43,13 @@ namespace TestPlugin
             RegisterEventHandler<EventPlayerBlind>(GenericEventHandler);
             RegisterEventHandler<EventBulletImpact>(@event =>
             {
-                var steamId = NativeAPI.GetSchemaValueByName<ulong>(@event.Userid.Handle,
-                    (int)DataType.DATA_TYPE_ULONG_LONG,
-                    "CBasePlayerController", "m_steamID");
+                var player = new CCSPlayerController(@event.Userid.Handle);
+                var pawn = new CCSPlayerPawn(@event.Userid.PawnHandle);
 
-                var playerName = NativeAPI.GetSchemaValueByName<string>(@event.Userid.Handle,
-                    (int)DataType.DATA_TYPE_STRING, "CBasePlayerController", "m_iszPlayerName");
-                var playerHealth = NativeAPI.GetSchemaValueByName<int>(@event.Userid.PawnHandle,
-                    (int)DataType.DATA_TYPE_INT, "CBaseEntity", "m_iHealth");
-                NativeAPI.SetSchemaValueByName<int>(@event.Userid.PawnHandle, (int)DataType.DATA_TYPE_INT,
-                    "CBaseEntity", "m_iHealth", playerHealth + 5);
-                Log($"Found steamID {new SteamID(steamId)} for player {playerName}:{playerHealth}");
+                pawn.m_iHealth += 5;
+
+                Log(
+                    $"Found steamID {new SteamID(player.m_steamID)} for player {player.m_iszPlayerName}:{pawn.m_iHealth}|{pawn.m_bInBuyZone}");
                 Log($"{@event.Userid}, {@event.X},{@event.Y},{@event.Z}");
             });
 
@@ -66,6 +62,22 @@ namespace TestPlugin
             RegisterListener<Listeners.OnClientAuthorized>((index, id) =>
             {
                 Log($"Client {index} with address {id}");
+            });
+
+            RegisterListener<Listeners.OnEntitySpawned>(entity =>
+            {
+                var designerName = NativeAPI.GetDesignerName(entity);
+                if (designerName != "smokegrenade_projectile") return;
+
+                var projectile = new CSmokeGrenadeProjectile(entity);
+
+                Server.NextFrame(() =>
+                {
+                    projectile.m_vSmokeColor.X = Random.Shared.NextSingle() * 255.0f;
+                    projectile.m_vSmokeColor.X = Random.Shared.NextSingle() * 255.0f;
+                    projectile.m_vSmokeColor.X = Random.Shared.NextSingle() * 255.0f;
+                    Log($"Smoke grenade spawned with color {projectile.m_vSmokeColor}");
+                });
             });
 
             // You can use `ModuleDirectory` to get the directory of the plugin (for storing config files, saving database files etc.)
