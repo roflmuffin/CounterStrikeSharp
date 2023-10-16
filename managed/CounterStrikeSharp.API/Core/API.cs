@@ -404,6 +404,17 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static IntPtr GetEntityPointerFromHandle(IntPtr entityhandlepointer){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(entityhandlepointer);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xEE3A8DEF);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			}
+		}
+
         public static void HookEvent(string name, InputArgument callback, bool ispost){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();

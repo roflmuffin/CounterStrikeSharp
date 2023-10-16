@@ -43,9 +43,21 @@ const char* GetDesignerName(ScriptContext& scriptContext){
     return entity->GetClassname();
 }
 
+void* GetEntityPointerFromHandle(ScriptContext& scriptContext) {
+    auto handle = scriptContext.GetArgument<CEntityHandle*>(0);
+
+    if (!handle->IsValid()) {
+        scriptContext.ThrowNativeError("Invalid handle.");
+        return nullptr;
+    }
+
+    return handle->Get();
+}
+
 REGISTER_NATIVES(entities, {
     ScriptEngine::RegisterNativeHandler("GET_ENTITY_FROM_INDEX", GetEntityFromIndex);
     ScriptEngine::RegisterNativeHandler("GET_USERID_FROM_INDEX", GetUserIdFromIndex);
     ScriptEngine::RegisterNativeHandler("GET_DESIGNER_NAME", GetDesignerName);
+    ScriptEngine::RegisterNativeHandler("GET_ENTITY_POINTER_FROM_HANDLE", GetEntityPointerFromHandle);
 })
 }  // namespace counterstrikesharp
