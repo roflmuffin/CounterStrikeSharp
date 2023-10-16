@@ -1,6 +1,6 @@
-OnClientConnect: index:int, name:string, ipAddress:string
-OnClientConnected: index:int
-OnClientPutInServer: index:int
-OnClientDisconnect: index:int
-OnClientDisconnectPost: index:int
-OnClientAuthorized: index:int, steamId:SteamID
+OnClientConnect: playerSlot:int, name:string, ipAddress:string
+OnClientConnected: playerSlot:int
+OnClientPutInServer: playerSlot:int
+OnClientDisconnect: playerSlot:int
+OnClientDisconnectPost: playerSlot:int
+OnClientAuthorized: playerSlot:int, steamId:SteamID

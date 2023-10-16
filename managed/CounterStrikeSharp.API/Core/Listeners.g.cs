@@ -29,21 +29,21 @@ namespace CounterStrikeSharp.API.Core
         public delegate void OnMapEnd();
 
         [ListenerName("OnClientConnect")]
-        public delegate void OnClientConnect(int index, string name, string ipAddress);
+        public delegate void OnClientConnect(int playerSlot, string name, string ipAddress);
 
         [ListenerName("OnClientConnected")]
-        public delegate void OnClientConnected(int index);
+        public delegate void OnClientConnected(int playerSlot);
 
         [ListenerName("OnClientPutInServer")]
-        public delegate void OnClientPutInServer(int index);
+        public delegate void OnClientPutInServer(int playerSlot);
 
         [ListenerName("OnClientDisconnect")]
-        public delegate void OnClientDisconnect(int index);
+        public delegate void OnClientDisconnect(int playerSlot);
 
         [ListenerName("OnClientDisconnectPost")]
-        public delegate void OnClientDisconnectPost(int index);
+        public delegate void OnClientDisconnectPost(int playerSlot);
 
         [ListenerName("OnClientAuthorized")]
-        public delegate void OnClientAuthorized(int index, [CastFrom(typeof(ulong))]SteamID steamId);
+        public delegate void OnClientAuthorized(int playerSlot, [CastFrom(typeof(ulong))]SteamID steamId);
     }
 }
