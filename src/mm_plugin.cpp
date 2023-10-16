@@ -21,6 +21,7 @@
 #include "core/log.h"
 #include "core/timer_system.h"
 #include "core/utils.h"
+#include "core/managers/entity_manager.h"
 #include "igameeventsystem.h"
 #include "iserver.h"
 #include "scripting/callback_manager.h"
@@ -40,8 +41,6 @@ extern "C" void InvokeNative(counterstrikesharp::fxNativeContext &context) {
 class GameSessionConfiguration_t {};
 
 namespace counterstrikesharp {
-
-CEntityListener entityListener;
 
 SH_DECL_HOOK3_void(IServerGameDLL, GameFrame, SH_NOATTRIB, 0, bool, bool, bool);
 SH_DECL_HOOK3_void(INetworkServerService,
@@ -93,7 +92,6 @@ bool CounterStrikeSharpMMPlugin::Load(
     CALL_GLOBAL_LISTENER(OnAllInitialized());
 
     on_activate_callback = globals::callbackManager.CreateCallback("OnMapStart");
-    on_entity_spawned_callback = globals::callbackManager.CreateCallback("OnEntitySpawned");
 
     SH_ADD_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this,
                         &CounterStrikeSharpMMPlugin::Hook_GameFrame, true);
@@ -117,7 +115,7 @@ void CounterStrikeSharpMMPlugin::Hook_StartupServer(const GameSessionConfigurati
                                                     ISource2WorldSession *,
                                                     const char *) {
     globals::entitySystem = interfaces::pGameResourceServiceServer->GetGameEntitySystem();
-    globals::entitySystem->AddListenerEntity(&entityListener);
+    globals::entitySystem->AddListenerEntity(&globals::entityManager.entityListener);
 
     on_activate_callback->ScriptContext().Reset();
     on_activate_callback->ScriptContext().Push(globals::getGlobalVars()->mapname);
@@ -131,10 +129,7 @@ bool CounterStrikeSharpMMPlugin::Unload(char *error, size_t maxlen) {
     SH_REMOVE_HOOK_MEMFUNC(INetworkServerService, StartupServer, globals::networkServerService,
                            this, &CounterStrikeSharpMMPlugin::Hook_StartupServer, true);
 
-    globals::callbackManager.ReleaseCallback(on_entity_spawned_callback);
     globals::callbackManager.ReleaseCallback(on_activate_callback);
-
-    globals::entitySystem->RemoveListenerEntity(&entityListener);
 
     return true;
 }
@@ -225,12 +220,5 @@ const char *CounterStrikeSharpMMPlugin::GetName() { return "CounterStrikeSharp";
 
 const char *CounterStrikeSharpMMPlugin::GetURL() {
     return "https://github.com/roflmuffin/CounterStrikeSharp";
-}
-void CEntityListener::OnEntitySpawned(CEntityInstance *pEntity) {
-    if (on_entity_spawned_callback && on_entity_spawned_callback->GetFunctionCount()) {
-        on_entity_spawned_callback->ScriptContext().Reset();
-        on_entity_spawned_callback->ScriptContext().Push(pEntity);
-        on_entity_spawned_callback->Execute();
-    }
 }
 }  // namespace counterstrikesharp

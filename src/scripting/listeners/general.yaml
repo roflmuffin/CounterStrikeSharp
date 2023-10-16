@@ -1,4 +1,3 @@
 OnTick:
 OnMapStart: mapName:string
 OnMapEnd:
-OnEntitySpawned: entity:pointer

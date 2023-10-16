@@ -66,6 +66,8 @@ SET(SOURCE_FILES
         src/scripting/natives/natives_memory.cpp
         src/scripting/natives/natives_schema.cpp
         src/scripting/natives/natives_entities.cpp
+        src/core/managers/entity_manager.cpp
+        src/core/managers/entity_manager.h
 )
 
 set(PROTO_DIRS -I${CMAKE_CURRENT_SOURCE_DIR}/libraries/GameTracking-CS2/Protobufs)

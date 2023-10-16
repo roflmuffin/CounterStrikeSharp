@@ -40,6 +40,7 @@ class MenuManager;
 class TimerSystem;
 class ChatCommands;
 class HookManager;
+class EntityManager;
 
 namespace globals {
 
@@ -77,6 +78,7 @@ extern CallbackManager callbackManager;
 extern ConVarManager convarManager;
 extern PlayerManager playerManager;
 extern MenuManager menuManager;
+extern EntityManager entityManager;
 extern TimerSystem timerSystem;
 extern ChatCommands chatCommands;
 extern HookManager hookManager;
