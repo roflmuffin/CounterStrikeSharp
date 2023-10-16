@@ -31,6 +31,13 @@ CBaseEntity* GetEntityFromIndex(ScriptContext& script_context) {
     return globals::entitySystem->GetBaseEntity(CEntityIndex(entityIndex));
 }
 
+int GetUserIdFromIndex(ScriptContext& scriptContext) {
+    auto entityIndex = scriptContext.GetArgument<int>(0);
+
+    // CPlayerSlot is 1 less than index
+    return globals::engine->GetPlayerUserId(CPlayerSlot(entityIndex - 1)).Get();
+}
+
 const char* GetDesignerName(ScriptContext& scriptContext){
     auto entity = scriptContext.GetArgument<CBaseEntity*>(0);
     return entity->GetClassname();
@@ -38,6 +45,7 @@ const char* GetDesignerName(ScriptContext& scriptContext){
 
 REGISTER_NATIVES(entities, {
     ScriptEngine::RegisterNativeHandler("GET_ENTITY_FROM_INDEX", GetEntityFromIndex);
+    ScriptEngine::RegisterNativeHandler("GET_USERID_FROM_INDEX", GetUserIdFromIndex);
     ScriptEngine::RegisterNativeHandler("GET_DESIGNER_NAME", GetDesignerName);
 })
 }  // namespace counterstrikesharp

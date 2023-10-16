@@ -1,2 +1,3 @@
 GET_ENTITY_FROM_INDEX: index:int -> pointer
+GET_USERID_FROM_INDEX: index:int -> int
 GET_DESIGNER_NAME: pointer:pointer -> string
