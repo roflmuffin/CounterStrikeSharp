@@ -81,6 +81,9 @@ public partial class Generators
 
     public static void GenerateGameEvents()
     {
+        var pathToSearch = @"/home/michael/Steam/cs2-ds/game/csgo/events/resource";
+        if (!Directory.Exists(pathToSearch)) return;
+            
         var allGameEvents = GetGameEvents();
 
         var gameEventsString = string.Join("\n", allGameEvents.OrderBy(x => x.NamePascalCase).Select(gameEvent =>
