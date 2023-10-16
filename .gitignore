@@ -4,6 +4,8 @@ cmake-build-debug/
 .kdev4/
 .vscode/
 generated/
+Objects.g.cs
+Enums.g.cs
 
 libraries/mono/
 

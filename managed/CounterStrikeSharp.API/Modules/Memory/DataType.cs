@@ -49,6 +49,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
             { typeof(int), DataType.DATA_TYPE_INT },
             { typeof(bool), DataType.DATA_TYPE_BOOL },
             { typeof(string), DataType.DATA_TYPE_STRING },
+            { typeof(long), DataType.DATA_TYPE_LONG },
             { typeof(ulong), DataType.DATA_TYPE_ULONG },
             { typeof(short), DataType.DATA_TYPE_VARIANT }
         };
@@ -61,6 +62,8 @@ namespace CounterStrikeSharp.API.Modules.Memory
             {
                 return DataType.DATA_TYPE_POINTER;
             }
+            
+            Console.WriteLine("Error retrieving data type for type" + type.FullName);
 
             return null;
         }
