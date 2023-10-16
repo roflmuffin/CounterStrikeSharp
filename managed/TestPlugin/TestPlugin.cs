@@ -43,17 +43,12 @@ namespace TestPlugin
             RegisterEventHandler<EventPlayerBlind>(GenericEventHandler);
             RegisterEventHandler<EventBulletImpact>(@event =>
             {
-                var steamId = NativeAPI.GetSchemaValueByName<ulong>(@event.Userid.Handle,
-                    (int)DataType.DATA_TYPE_ULONG_LONG,
-                    "CBasePlayerController", "m_steamID");
+                var player = new CCSPlayerController(@event.Userid.Handle);
+                var pawn = new CCSPlayerPawn(@event.Userid.PawnHandle);
 
-                var playerName = NativeAPI.GetSchemaValueByName<string>(@event.Userid.Handle,
-                    (int)DataType.DATA_TYPE_STRING, "CBasePlayerController", "m_iszPlayerName");
-                var playerHealth = NativeAPI.GetSchemaValueByName<int>(@event.Userid.PawnHandle,
-                    (int)DataType.DATA_TYPE_INT, "CBaseEntity", "m_iHealth");
-                NativeAPI.SetSchemaValueByName<int>(@event.Userid.PawnHandle, (int)DataType.DATA_TYPE_INT,
-                    "CBaseEntity", "m_iHealth", playerHealth + 5);
-                Log($"Found steamID {new SteamID(steamId)} for player {playerName}:{playerHealth}");
+                pawn.m_iHealth += 5;
+                
+                Log($"Found steamID {new SteamID(player.m_steamID)} for player {player.m_iszPlayerName}:{player.m_iHealth}");
                 Log($"{@event.Userid}, {@event.X},{@event.Y},{@event.Z}");
             });
 
