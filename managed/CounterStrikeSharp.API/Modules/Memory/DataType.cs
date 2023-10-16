@@ -47,6 +47,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
             { typeof(float), DataType.DATA_TYPE_FLOAT },
             { typeof(IntPtr), DataType.DATA_TYPE_POINTER },
             { typeof(int), DataType.DATA_TYPE_INT },
+            { typeof(uint), DataType.DATA_TYPE_UINT },
             { typeof(bool), DataType.DATA_TYPE_BOOL },
             { typeof(string), DataType.DATA_TYPE_STRING },
             { typeof(long), DataType.DATA_TYPE_LONG },
