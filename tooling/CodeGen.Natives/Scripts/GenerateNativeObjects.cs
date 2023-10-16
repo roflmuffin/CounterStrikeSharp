@@ -104,7 +104,7 @@ public partial class Generators
         var allClasses = allSchemas.Where(x => x.SchemaName != "client.dll").SelectMany(s => s.Classes);
         
         var supportedTypes =
-            new HashSet<string>(new[] { "int", "int32", "float", "bool", "uint8", "float32", "char", "uint32", "uint64" });
+            new HashSet<string>(new[] { "int", "int32", "float", "bool", "uint8", "float32", "char", "uint32", "uint64", "Vector" });
         
         foreach (var name in allSchemas.SelectMany(x => x.Enums ?? Enumerable.Empty<Enum>()).DistinctBy(x => x.EnumName)
                      .Select(x => CleanName(x.EnumName)))
@@ -184,10 +184,10 @@ namespace CounterStrikeSharp.API.Core
     }}";
             });
         
-        Console.WriteLine($"Generated C# bindings for {allClassDefinitions.Length} native object classes successfully.");
-
         File.WriteAllText(Path.Join(Helpers.GetRootDirectory(), "managed/CounterStrikeSharp.API/Objects.g.cs"),
             result.Replace("[[template]]", string.Join("\n", allClassDefinitions)));
+        
+        Console.WriteLine($"Generated C# bindings for {allClassDefinitions.Length} native object classes successfully.");
         
         File.WriteAllText(Path.Join(Helpers.GetRootDirectory(), "managed/CounterStrikeSharp.API/Enums.g.cs"), 
             result.Replace("[[template]]",  string.Join("\n", allEnums)));
