@@ -51,7 +51,8 @@ namespace CounterStrikeSharp.API.Modules.Memory
             { typeof(string), DataType.DATA_TYPE_STRING },
             { typeof(long), DataType.DATA_TYPE_LONG },
             { typeof(ulong), DataType.DATA_TYPE_ULONG },
-            { typeof(short), DataType.DATA_TYPE_VARIANT }
+            { typeof(short), DataType.DATA_TYPE_VARIANT },
+            { typeof(sbyte), DataType.DATA_TYPE_UCHAR },
         };
 
         public static DataType? ToDataType(this Type type)
@@ -61,6 +62,11 @@ namespace CounterStrikeSharp.API.Modules.Memory
             if (typeof(NativeObject).IsAssignableFrom(type))
             {
                 return DataType.DATA_TYPE_POINTER;
+            }
+
+            if (type.IsEnum && types.ContainsKey(Enum.GetUnderlyingType(type)))
+            {
+                return types[Enum.GetUnderlyingType(type)];
             }
             
             Console.WriteLine("Error retrieving data type for type" + type.FullName);
