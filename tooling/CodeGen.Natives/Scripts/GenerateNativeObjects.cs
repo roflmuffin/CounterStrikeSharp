@@ -184,12 +184,12 @@ namespace CounterStrikeSharp.API.Core
     }}";
             });
         
-        File.WriteAllText(Path.Join(Helpers.GetRootDirectory(), "managed/CounterStrikeSharp.API/Objects.g.cs"),
+        File.WriteAllText(Path.Join(Helpers.GetRootDirectory(), "managed/CounterStrikeSharp.API/Core/Objects.g.cs"),
             result.Replace("[[template]]", string.Join("\n", allClassDefinitions)));
         
         Console.WriteLine($"Generated C# bindings for {allClassDefinitions.Length} native object classes successfully.");
         
-        File.WriteAllText(Path.Join(Helpers.GetRootDirectory(), "managed/CounterStrikeSharp.API/Enums.g.cs"), 
+        File.WriteAllText(Path.Join(Helpers.GetRootDirectory(), "managed/CounterStrikeSharp.API/Core/Enums.g.cs"), 
             result.Replace("[[template]]",  string.Join("\n", allEnums)));
     }
 }
