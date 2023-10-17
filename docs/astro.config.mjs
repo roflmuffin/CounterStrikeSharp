@@ -28,6 +28,7 @@ export default defineConfig({
 			  },
 		}),
 	],
+	base: '/',
 	site: 'https://docs.cssharp.dev',
 	markdown: {
 		shikiConfig: {

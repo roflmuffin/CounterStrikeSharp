@@ -1,0 +1,43 @@
+---
+title: CounterStrikeSharp
+description: Write Counter-Strike 2 server plugins in C#.
+template: splash
+hero:
+  tagline: <code class="csharp">CounterStrikeSharp</code> is a simpler way to write CS2 server plugins.
+  actions:
+    - text: Get started
+      link: ./guides/getting-started/
+      icon: right-arrow
+      variant: primary
+    - text: Browse source
+      link: https://github.com/roflmuffin/CounterStrikeSharp/
+      icon: github
+---
+```csharp
+using CounterStrikeSharp.API.Core;
+
+namespace HelloWorldPlugin;
+public class HelloWorldPlugin : BasePlugin
+{
+    public override string ModuleName => "Hello World Plugin";
+
+    public override string ModuleVersion => "0.0.1";
+
+    public override void Load(bool hotReload)
+    {
+        Console.WriteLine("Hello World!");
+    }
+
+    [GameEventHandler]
+    public void OnPlayerConnect(EventPlayerConnect @event)
+    {
+        Log($"Player {@event.Name} has connected!");
+    }
+
+    [ConsoleCommand("issue_warning", "Issue warning to player")]
+    public void OnCommand(int client, CommandInfo command)
+    {
+        Log("You shouldn't be doing that!");
+    }
+}
+```

@@ -3,3 +3,18 @@
     --sl-font-mono: 'Jetbrains Mono', monospace;
     --sl-text-code-sm: 1rem;
 }
+
+.hero {
+  grid-template-columns: 1fr;
+}
+
+.hero .copy {
+  align-items: center;
+}
+
+.hero .actions {
+  justify-content: center;
+}
+
+.hero {
+}
