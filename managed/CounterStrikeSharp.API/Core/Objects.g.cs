@@ -10,7 +10,7 @@ namespace CounterStrikeSharp.API.Core
 {
     
     // !GlobalTypes
-    public class CSchemaSystemInternalRegistration : NativeObject {
+    public partial class CSchemaSystemInternalRegistration : NativeObject {
         private const string ThisClassName = "CSchemaSystemInternalRegistration";
 
         public CSchemaSystemInternalRegistration (IntPtr pointer) : base(pointer) {}
@@ -19,7 +19,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCResourceManifestInternal : NativeObject {
+    public partial class InfoForResourceTypeCResourceManifestInternal : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCResourceManifestInternal";
 
         public InfoForResourceTypeCResourceManifestInternal (IntPtr pointer) : base(pointer) {}
@@ -28,7 +28,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ResourceId_t : NativeObject {
+    public partial class ResourceId_t : NativeObject {
         private const string ThisClassName = "ResourceId_t";
 
         public ResourceId_t (IntPtr pointer) : base(pointer) {}
@@ -37,7 +37,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CExampleSchemaVData_Monomorphic : NativeObject {
+    public partial class CExampleSchemaVData_Monomorphic : NativeObject {
         private const string ThisClassName = "CExampleSchemaVData_Monomorphic";
 
         public CExampleSchemaVData_Monomorphic (IntPtr pointer) : base(pointer) {}
@@ -46,7 +46,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CExampleSchemaVData_PolymorphicBase : NativeObject {
+    public partial class CExampleSchemaVData_PolymorphicBase : NativeObject {
         private const string ThisClassName = "CExampleSchemaVData_PolymorphicBase";
 
         public CExampleSchemaVData_PolymorphicBase (IntPtr pointer) : base(pointer) {}
@@ -55,7 +55,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CExampleSchemaVData_PolymorphicDerivedA : CExampleSchemaVData_PolymorphicBase {
+    public partial class CExampleSchemaVData_PolymorphicDerivedA : CExampleSchemaVData_PolymorphicBase {
         private const string ThisClassName = "CExampleSchemaVData_PolymorphicDerivedA";
 
         public CExampleSchemaVData_PolymorphicDerivedA (IntPtr pointer) : base(pointer) {}
@@ -64,7 +64,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CExampleSchemaVData_PolymorphicDerivedB : CExampleSchemaVData_PolymorphicBase {
+    public partial class CExampleSchemaVData_PolymorphicDerivedB : CExampleSchemaVData_PolymorphicBase {
         private const string ThisClassName = "CExampleSchemaVData_PolymorphicDerivedB";
 
         public CExampleSchemaVData_PolymorphicDerivedB (IntPtr pointer) : base(pointer) {}
@@ -73,7 +73,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class TestResource_t : NativeObject {
+    public partial class TestResource_t : NativeObject {
         private const string ThisClassName = "TestResource_t";
 
         public TestResource_t (IntPtr pointer) : base(pointer) {}
@@ -82,7 +82,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeTestResource_t : NativeObject {
+    public partial class InfoForResourceTypeTestResource_t : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeTestResource_t";
 
         public InfoForResourceTypeTestResource_t (IntPtr pointer) : base(pointer) {}
@@ -91,7 +91,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeProceduralTestResource_t : NativeObject {
+    public partial class InfoForResourceTypeProceduralTestResource_t : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeProceduralTestResource_t";
 
         public InfoForResourceTypeProceduralTestResource_t (IntPtr pointer) : base(pointer) {}
@@ -100,7 +100,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeManifestTestResource_t : NativeObject {
+    public partial class InfoForResourceTypeManifestTestResource_t : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeManifestTestResource_t";
 
         public InfoForResourceTypeManifestTestResource_t (IntPtr pointer) : base(pointer) {}
@@ -109,7 +109,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ManifestTestResource_t : NativeObject {
+    public partial class ManifestTestResource_t : NativeObject {
         private const string ThisClassName = "ManifestTestResource_t";
 
         public ManifestTestResource_t (IntPtr pointer) : base(pointer) {}
@@ -118,7 +118,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCVDataResource : NativeObject {
+    public partial class InfoForResourceTypeCVDataResource : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCVDataResource";
 
         public InfoForResourceTypeCVDataResource (IntPtr pointer) : base(pointer) {}
@@ -127,7 +127,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeIPulseGraphDef : NativeObject {
+    public partial class InfoForResourceTypeIPulseGraphDef : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeIPulseGraphDef";
 
         public InfoForResourceTypeIPulseGraphDef (IntPtr pointer) : base(pointer) {}
@@ -136,7 +136,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCTypeScriptResource : NativeObject {
+    public partial class InfoForResourceTypeCTypeScriptResource : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCTypeScriptResource";
 
         public InfoForResourceTypeCTypeScriptResource (IntPtr pointer) : base(pointer) {}
@@ -145,7 +145,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCJavaScriptResource : NativeObject {
+    public partial class InfoForResourceTypeCJavaScriptResource : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCJavaScriptResource";
 
         public InfoForResourceTypeCJavaScriptResource (IntPtr pointer) : base(pointer) {}
@@ -154,7 +154,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeIParticleSystemDefinition : NativeObject {
+    public partial class InfoForResourceTypeIParticleSystemDefinition : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeIParticleSystemDefinition";
 
         public InfoForResourceTypeIParticleSystemDefinition (IntPtr pointer) : base(pointer) {}
@@ -163,7 +163,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeIParticleSnapshot : NativeObject {
+    public partial class InfoForResourceTypeIParticleSnapshot : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeIParticleSnapshot";
 
         public InfoForResourceTypeIParticleSnapshot (IntPtr pointer) : base(pointer) {}
@@ -172,7 +172,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCAnimData : NativeObject {
+    public partial class InfoForResourceTypeCAnimData : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCAnimData";
 
         public InfoForResourceTypeCAnimData (IntPtr pointer) : base(pointer) {}
@@ -181,7 +181,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCAnimationGroup : NativeObject {
+    public partial class InfoForResourceTypeCAnimationGroup : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCAnimationGroup";
 
         public InfoForResourceTypeCAnimationGroup (IntPtr pointer) : base(pointer) {}
@@ -190,7 +190,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCSequenceGroupData : NativeObject {
+    public partial class InfoForResourceTypeCSequenceGroupData : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCSequenceGroupData";
 
         public InfoForResourceTypeCSequenceGroupData (IntPtr pointer) : base(pointer) {}
@@ -199,7 +199,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeIMaterial2 : NativeObject {
+    public partial class InfoForResourceTypeIMaterial2 : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeIMaterial2";
 
         public InfoForResourceTypeIMaterial2 (IntPtr pointer) : base(pointer) {}
@@ -208,7 +208,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCMorphSetData : NativeObject {
+    public partial class InfoForResourceTypeCMorphSetData : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCMorphSetData";
 
         public InfoForResourceTypeCMorphSetData (IntPtr pointer) : base(pointer) {}
@@ -217,7 +217,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCRenderMesh : NativeObject {
+    public partial class InfoForResourceTypeCRenderMesh : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCRenderMesh";
 
         public InfoForResourceTypeCRenderMesh (IntPtr pointer) : base(pointer) {}
@@ -226,7 +226,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCModel : NativeObject {
+    public partial class InfoForResourceTypeCModel : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCModel";
 
         public InfoForResourceTypeCModel (IntPtr pointer) : base(pointer) {}
@@ -235,7 +235,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCTextureBase : NativeObject {
+    public partial class InfoForResourceTypeCTextureBase : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCTextureBase";
 
         public InfoForResourceTypeCTextureBase (IntPtr pointer) : base(pointer) {}
@@ -244,7 +244,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeIVectorGraphic : NativeObject {
+    public partial class InfoForResourceTypeIVectorGraphic : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeIVectorGraphic";
 
         public InfoForResourceTypeIVectorGraphic (IntPtr pointer) : base(pointer) {}
@@ -253,7 +253,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCVSoundEventScriptList : NativeObject {
+    public partial class InfoForResourceTypeCVSoundEventScriptList : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCVSoundEventScriptList";
 
         public InfoForResourceTypeCVSoundEventScriptList (IntPtr pointer) : base(pointer) {}
@@ -262,7 +262,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCVSoundStackScriptList : NativeObject {
+    public partial class InfoForResourceTypeCVSoundStackScriptList : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCVSoundStackScriptList";
 
         public InfoForResourceTypeCVSoundStackScriptList (IntPtr pointer) : base(pointer) {}
@@ -271,7 +271,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeVSound_t : NativeObject {
+    public partial class InfoForResourceTypeVSound_t : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeVSound_t";
 
         public InfoForResourceTypeVSound_t (IntPtr pointer) : base(pointer) {}
@@ -280,7 +280,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCVMixListResource : NativeObject {
+    public partial class InfoForResourceTypeCVMixListResource : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCVMixListResource";
 
         public InfoForResourceTypeCVMixListResource (IntPtr pointer) : base(pointer) {}
@@ -289,7 +289,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCPhysAggregateData : NativeObject {
+    public partial class InfoForResourceTypeCPhysAggregateData : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCPhysAggregateData";
 
         public InfoForResourceTypeCPhysAggregateData (IntPtr pointer) : base(pointer) {}
@@ -298,7 +298,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCVPhysXSurfacePropertiesList : NativeObject {
+    public partial class InfoForResourceTypeCVPhysXSurfacePropertiesList : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCVPhysXSurfacePropertiesList";
 
         public InfoForResourceTypeCVPhysXSurfacePropertiesList (IntPtr pointer) : base(pointer) {}
@@ -307,7 +307,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCEntityLump : NativeObject {
+    public partial class InfoForResourceTypeCEntityLump : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCEntityLump";
 
         public InfoForResourceTypeCEntityLump (IntPtr pointer) : base(pointer) {}
@@ -316,7 +316,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCWorldNode : NativeObject {
+    public partial class InfoForResourceTypeCWorldNode : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCWorldNode";
 
         public InfoForResourceTypeCWorldNode (IntPtr pointer) : base(pointer) {}
@@ -325,7 +325,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeWorld_t : NativeObject {
+    public partial class InfoForResourceTypeWorld_t : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeWorld_t";
 
         public InfoForResourceTypeWorld_t (IntPtr pointer) : base(pointer) {}
@@ -334,7 +334,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCVoxelVisibility : NativeObject {
+    public partial class InfoForResourceTypeCVoxelVisibility : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCVoxelVisibility";
 
         public InfoForResourceTypeCVoxelVisibility (IntPtr pointer) : base(pointer) {}
@@ -343,7 +343,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCPostProcessingResource : NativeObject {
+    public partial class InfoForResourceTypeCPostProcessingResource : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCPostProcessingResource";
 
         public InfoForResourceTypeCPostProcessingResource (IntPtr pointer) : base(pointer) {}
@@ -352,7 +352,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCPanoramaStyle : NativeObject {
+    public partial class InfoForResourceTypeCPanoramaStyle : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCPanoramaStyle";
 
         public InfoForResourceTypeCPanoramaStyle (IntPtr pointer) : base(pointer) {}
@@ -361,7 +361,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCPanoramaLayout : NativeObject {
+    public partial class InfoForResourceTypeCPanoramaLayout : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCPanoramaLayout";
 
         public InfoForResourceTypeCPanoramaLayout (IntPtr pointer) : base(pointer) {}
@@ -370,7 +370,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCPanoramaDynamicImages : NativeObject {
+    public partial class InfoForResourceTypeCPanoramaDynamicImages : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCPanoramaDynamicImages";
 
         public InfoForResourceTypeCPanoramaDynamicImages (IntPtr pointer) : base(pointer) {}
@@ -379,7 +379,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCDotaItemDefinitionResource : NativeObject {
+    public partial class InfoForResourceTypeCDotaItemDefinitionResource : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCDotaItemDefinitionResource";
 
         public InfoForResourceTypeCDotaItemDefinitionResource (IntPtr pointer) : base(pointer) {}
@@ -388,7 +388,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCDOTAPatchNotesList : NativeObject {
+    public partial class InfoForResourceTypeCDOTAPatchNotesList : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCDOTAPatchNotesList";
 
         public InfoForResourceTypeCDOTAPatchNotesList (IntPtr pointer) : base(pointer) {}
@@ -397,7 +397,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCDOTANovelsList : NativeObject {
+    public partial class InfoForResourceTypeCDOTANovelsList : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCDOTANovelsList";
 
         public InfoForResourceTypeCDOTANovelsList (IntPtr pointer) : base(pointer) {}
@@ -406,7 +406,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeIAnimGraphModelBinding : NativeObject {
+    public partial class InfoForResourceTypeIAnimGraphModelBinding : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeIAnimGraphModelBinding";
 
         public InfoForResourceTypeIAnimGraphModelBinding (IntPtr pointer) : base(pointer) {}
@@ -415,7 +415,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCChoreoSceneFileData : NativeObject {
+    public partial class InfoForResourceTypeCChoreoSceneFileData : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCChoreoSceneFileData";
 
         public InfoForResourceTypeCChoreoSceneFileData (IntPtr pointer) : base(pointer) {}
@@ -424,7 +424,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCDACGameDefsData : NativeObject {
+    public partial class InfoForResourceTypeCDACGameDefsData : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCDACGameDefsData";
 
         public InfoForResourceTypeCDACGameDefsData (IntPtr pointer) : base(pointer) {}
@@ -433,7 +433,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCCompositeMaterialKit : NativeObject {
+    public partial class InfoForResourceTypeCCompositeMaterialKit : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCCompositeMaterialKit";
 
         public InfoForResourceTypeCCompositeMaterialKit (IntPtr pointer) : base(pointer) {}
@@ -442,7 +442,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCSmartProp : NativeObject {
+    public partial class InfoForResourceTypeCSmartProp : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCSmartProp";
 
         public InfoForResourceTypeCSmartProp (IntPtr pointer) : base(pointer) {}
@@ -451,7 +451,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCCSGOEconItem : NativeObject {
+    public partial class InfoForResourceTypeCCSGOEconItem : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCCSGOEconItem";
 
         public InfoForResourceTypeCCSGOEconItem (IntPtr pointer) : base(pointer) {}
@@ -460,7 +460,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCResponseRulesList : NativeObject {
+    public partial class InfoForResourceTypeCResponseRulesList : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCResponseRulesList";
 
         public InfoForResourceTypeCResponseRulesList (IntPtr pointer) : base(pointer) {}
@@ -469,7 +469,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCNmSkeleton : NativeObject {
+    public partial class InfoForResourceTypeCNmSkeleton : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCNmSkeleton";
 
         public InfoForResourceTypeCNmSkeleton (IntPtr pointer) : base(pointer) {}
@@ -478,7 +478,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeCNmClip : NativeObject {
+    public partial class InfoForResourceTypeCNmClip : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeCNmClip";
 
         public InfoForResourceTypeCNmClip (IntPtr pointer) : base(pointer) {}
@@ -487,7 +487,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FuseVariableIndex_t : NativeObject {
+    public partial class FuseVariableIndex_t : NativeObject {
         private const string ThisClassName = "FuseVariableIndex_t";
 
         public FuseVariableIndex_t (IntPtr pointer) : base(pointer) {}
@@ -496,7 +496,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FuseFunctionIndex_t : NativeObject {
+    public partial class FuseFunctionIndex_t : NativeObject {
         private const string ThisClassName = "FuseFunctionIndex_t";
 
         public FuseFunctionIndex_t (IntPtr pointer) : base(pointer) {}
@@ -505,7 +505,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ConstantInfo_t : NativeObject {
+    public partial class ConstantInfo_t : NativeObject {
         private const string ThisClassName = "ConstantInfo_t";
 
         public ConstantInfo_t (IntPtr pointer) : base(pointer) {}
@@ -514,7 +514,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VariableInfo_t : NativeObject {
+    public partial class VariableInfo_t : NativeObject {
         private const string ThisClassName = "VariableInfo_t";
 
         public VariableInfo_t (IntPtr pointer) : base(pointer) {}
@@ -523,7 +523,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FunctionInfo_t : NativeObject {
+    public partial class FunctionInfo_t : NativeObject {
         private const string ThisClassName = "FunctionInfo_t";
 
         public FunctionInfo_t (IntPtr pointer) : base(pointer) {}
@@ -532,7 +532,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFuseProgram : NativeObject {
+    public partial class CFuseProgram : NativeObject {
         private const string ThisClassName = "CFuseProgram";
 
         public CFuseProgram (IntPtr pointer) : base(pointer) {}
@@ -541,7 +541,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFuseSymbolTable : NativeObject {
+    public partial class CFuseSymbolTable : NativeObject {
         private const string ThisClassName = "CFuseSymbolTable";
 
         public CFuseSymbolTable (IntPtr pointer) : base(pointer) {}
@@ -550,7 +550,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class AABB_t : NativeObject {
+    public partial class AABB_t : NativeObject {
         private const string ThisClassName = "AABB_t";
 
         public AABB_t (IntPtr pointer) : base(pointer) {}
@@ -559,7 +559,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class PackedAABB_t : NativeObject {
+    public partial class PackedAABB_t : NativeObject {
         private const string ThisClassName = "PackedAABB_t";
 
         public PackedAABB_t (IntPtr pointer) : base(pointer) {}
@@ -568,7 +568,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FourQuaternions : NativeObject {
+    public partial class FourQuaternions : NativeObject {
         private const string ThisClassName = "FourQuaternions";
 
         public FourQuaternions (IntPtr pointer) : base(pointer) {}
@@ -577,7 +577,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class RenderInputLayoutField_t : NativeObject {
+    public partial class RenderInputLayoutField_t : NativeObject {
         private const string ThisClassName = "RenderInputLayoutField_t";
 
         public RenderInputLayoutField_t (IntPtr pointer) : base(pointer) {}
@@ -586,7 +586,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VsInputSignatureElement_t : NativeObject {
+    public partial class VsInputSignatureElement_t : NativeObject {
         private const string ThisClassName = "VsInputSignatureElement_t";
 
         public VsInputSignatureElement_t (IntPtr pointer) : base(pointer) {}
@@ -595,7 +595,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VsInputSignature_t : NativeObject {
+    public partial class VsInputSignature_t : NativeObject {
         private const string ThisClassName = "VsInputSignature_t";
 
         public VsInputSignature_t (IntPtr pointer) : base(pointer) {}
@@ -604,7 +604,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EngineLoopState_t : NativeObject {
+    public partial class EngineLoopState_t : NativeObject {
         private const string ThisClassName = "EngineLoopState_t";
 
         public EngineLoopState_t (IntPtr pointer) : base(pointer) {}
@@ -613,7 +613,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventModInitialized_t : NativeObject {
+    public partial class EventModInitialized_t : NativeObject {
         private const string ThisClassName = "EventModInitialized_t";
 
         public EventModInitialized_t (IntPtr pointer) : base(pointer) {}
@@ -622,7 +622,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventFrameBoundary_t : NativeObject {
+    public partial class EventFrameBoundary_t : NativeObject {
         private const string ThisClassName = "EventFrameBoundary_t";
 
         public EventFrameBoundary_t (IntPtr pointer) : base(pointer) {}
@@ -631,7 +631,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventProfileStorageAvailable_t : NativeObject {
+    public partial class EventProfileStorageAvailable_t : NativeObject {
         private const string ThisClassName = "EventProfileStorageAvailable_t";
 
         public EventProfileStorageAvailable_t (IntPtr pointer) : base(pointer) {}
@@ -640,7 +640,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventSplitScreenStateChanged_t : NativeObject {
+    public partial class EventSplitScreenStateChanged_t : NativeObject {
         private const string ThisClassName = "EventSplitScreenStateChanged_t";
 
         public EventSplitScreenStateChanged_t (IntPtr pointer) : base(pointer) {}
@@ -649,7 +649,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventSetTime_t : NativeObject {
+    public partial class EventSetTime_t : NativeObject {
         private const string ThisClassName = "EventSetTime_t";
 
         public EventSetTime_t (IntPtr pointer) : base(pointer) {}
@@ -658,7 +658,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventClientPollInput_t : NativeObject {
+    public partial class EventClientPollInput_t : NativeObject {
         private const string ThisClassName = "EventClientPollInput_t";
 
         public EventClientPollInput_t (IntPtr pointer) : base(pointer) {}
@@ -667,7 +667,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventClientProcessInput_t : NativeObject {
+    public partial class EventClientProcessInput_t : NativeObject {
         private const string ThisClassName = "EventClientProcessInput_t";
 
         public EventClientProcessInput_t (IntPtr pointer) : base(pointer) {}
@@ -676,7 +676,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventClientProcessGameInput_t : NativeObject {
+    public partial class EventClientProcessGameInput_t : NativeObject {
         private const string ThisClassName = "EventClientProcessGameInput_t";
 
         public EventClientProcessGameInput_t (IntPtr pointer) : base(pointer) {}
@@ -685,7 +685,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventClientPreOutput_t : NativeObject {
+    public partial class EventClientPreOutput_t : NativeObject {
         private const string ThisClassName = "EventClientPreOutput_t";
 
         public EventClientPreOutput_t (IntPtr pointer) : base(pointer) {}
@@ -694,7 +694,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventClientSceneSystemThreadStateChange_t : NativeObject {
+    public partial class EventClientSceneSystemThreadStateChange_t : NativeObject {
         private const string ThisClassName = "EventClientSceneSystemThreadStateChange_t";
 
         public EventClientSceneSystemThreadStateChange_t (IntPtr pointer) : base(pointer) {}
@@ -703,7 +703,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventClientOutput_t : NativeObject {
+    public partial class EventClientOutput_t : NativeObject {
         private const string ThisClassName = "EventClientOutput_t";
 
         public EventClientOutput_t (IntPtr pointer) : base(pointer) {}
@@ -712,7 +712,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventClientPostOutput_t : NativeObject {
+    public partial class EventClientPostOutput_t : NativeObject {
         private const string ThisClassName = "EventClientPostOutput_t";
 
         public EventClientPostOutput_t (IntPtr pointer) : base(pointer) {}
@@ -721,7 +721,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventClientFrameSimulate_t : NativeObject {
+    public partial class EventClientFrameSimulate_t : NativeObject {
         private const string ThisClassName = "EventClientFrameSimulate_t";
 
         public EventClientFrameSimulate_t (IntPtr pointer) : base(pointer) {}
@@ -730,7 +730,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventSimpleLoopFrameUpdate_t : NativeObject {
+    public partial class EventSimpleLoopFrameUpdate_t : NativeObject {
         private const string ThisClassName = "EventSimpleLoopFrameUpdate_t";
 
         public EventSimpleLoopFrameUpdate_t (IntPtr pointer) : base(pointer) {}
@@ -739,7 +739,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventSimulate_t : NativeObject {
+    public partial class EventSimulate_t : NativeObject {
         private const string ThisClassName = "EventSimulate_t";
 
         public EventSimulate_t (IntPtr pointer) : base(pointer) {}
@@ -748,7 +748,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventAdvanceTick_t : EventSimulate_t {
+    public partial class EventAdvanceTick_t : EventSimulate_t {
         private const string ThisClassName = "EventAdvanceTick_t";
 
         public EventAdvanceTick_t (IntPtr pointer) : base(pointer) {}
@@ -757,7 +757,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventPostAdvanceTick_t : EventSimulate_t {
+    public partial class EventPostAdvanceTick_t : EventSimulate_t {
         private const string ThisClassName = "EventPostAdvanceTick_t";
 
         public EventPostAdvanceTick_t (IntPtr pointer) : base(pointer) {}
@@ -766,7 +766,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventServerAdvanceTick_t : EventAdvanceTick_t {
+    public partial class EventServerAdvanceTick_t : EventAdvanceTick_t {
         private const string ThisClassName = "EventServerAdvanceTick_t";
 
         public EventServerAdvanceTick_t (IntPtr pointer) : base(pointer) {}
@@ -775,7 +775,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventServerPostAdvanceTick_t : EventPostAdvanceTick_t {
+    public partial class EventServerPostAdvanceTick_t : EventPostAdvanceTick_t {
         private const string ThisClassName = "EventServerPostAdvanceTick_t";
 
         public EventServerPostAdvanceTick_t (IntPtr pointer) : base(pointer) {}
@@ -784,7 +784,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventClientAdvanceTick_t : EventAdvanceTick_t {
+    public partial class EventClientAdvanceTick_t : EventAdvanceTick_t {
         private const string ThisClassName = "EventClientAdvanceTick_t";
 
         public EventClientAdvanceTick_t (IntPtr pointer) : base(pointer) {}
@@ -793,7 +793,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventClientPostAdvanceTick_t : EventPostAdvanceTick_t {
+    public partial class EventClientPostAdvanceTick_t : EventPostAdvanceTick_t {
         private const string ThisClassName = "EventClientPostAdvanceTick_t";
 
         public EventClientPostAdvanceTick_t (IntPtr pointer) : base(pointer) {}
@@ -802,7 +802,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventClientSendInput_t : NativeObject {
+    public partial class EventClientSendInput_t : NativeObject {
         private const string ThisClassName = "EventClientSendInput_t";
 
         public EventClientSendInput_t (IntPtr pointer) : base(pointer) {}
@@ -811,7 +811,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventClientPredictionPostNetupdate_t : NativeObject {
+    public partial class EventClientPredictionPostNetupdate_t : NativeObject {
         private const string ThisClassName = "EventClientPredictionPostNetupdate_t";
 
         public EventClientPredictionPostNetupdate_t (IntPtr pointer) : base(pointer) {}
@@ -820,7 +820,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventClientPollNetworking_t : NativeObject {
+    public partial class EventClientPollNetworking_t : NativeObject {
         private const string ThisClassName = "EventClientPollNetworking_t";
 
         public EventClientPollNetworking_t (IntPtr pointer) : base(pointer) {}
@@ -829,7 +829,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventClientProcessNetworking_t : NativeObject {
+    public partial class EventClientProcessNetworking_t : NativeObject {
         private const string ThisClassName = "EventClientProcessNetworking_t";
 
         public EventClientProcessNetworking_t (IntPtr pointer) : base(pointer) {}
@@ -838,7 +838,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventClientPreSimulate_t : EventSimulate_t {
+    public partial class EventClientPreSimulate_t : EventSimulate_t {
         private const string ThisClassName = "EventClientPreSimulate_t";
 
         public EventClientPreSimulate_t (IntPtr pointer) : base(pointer) {}
@@ -847,7 +847,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventClientSimulate_t : EventSimulate_t {
+    public partial class EventClientSimulate_t : EventSimulate_t {
         private const string ThisClassName = "EventClientSimulate_t";
 
         public EventClientSimulate_t (IntPtr pointer) : base(pointer) {}
@@ -856,7 +856,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventServerPollNetworking_t : EventSimulate_t {
+    public partial class EventServerPollNetworking_t : EventSimulate_t {
         private const string ThisClassName = "EventServerPollNetworking_t";
 
         public EventServerPollNetworking_t (IntPtr pointer) : base(pointer) {}
@@ -865,7 +865,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventServerProcessNetworking_t : EventSimulate_t {
+    public partial class EventServerProcessNetworking_t : EventSimulate_t {
         private const string ThisClassName = "EventServerProcessNetworking_t";
 
         public EventServerProcessNetworking_t (IntPtr pointer) : base(pointer) {}
@@ -874,7 +874,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventServerSimulate_t : EventSimulate_t {
+    public partial class EventServerSimulate_t : EventSimulate_t {
         private const string ThisClassName = "EventServerSimulate_t";
 
         public EventServerSimulate_t (IntPtr pointer) : base(pointer) {}
@@ -883,7 +883,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventServerPostSimulate_t : EventSimulate_t {
+    public partial class EventServerPostSimulate_t : EventSimulate_t {
         private const string ThisClassName = "EventServerPostSimulate_t";
 
         public EventServerPostSimulate_t (IntPtr pointer) : base(pointer) {}
@@ -892,7 +892,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventClientPostSimulate_t : EventSimulate_t {
+    public partial class EventClientPostSimulate_t : EventSimulate_t {
         private const string ThisClassName = "EventClientPostSimulate_t";
 
         public EventClientPostSimulate_t (IntPtr pointer) : base(pointer) {}
@@ -901,7 +901,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventClientPauseSimulate_t : EventSimulate_t {
+    public partial class EventClientPauseSimulate_t : EventSimulate_t {
         private const string ThisClassName = "EventClientPauseSimulate_t";
 
         public EventClientPauseSimulate_t (IntPtr pointer) : base(pointer) {}
@@ -910,7 +910,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventPostDataUpdate_t : NativeObject {
+    public partial class EventPostDataUpdate_t : NativeObject {
         private const string ThisClassName = "EventPostDataUpdate_t";
 
         public EventPostDataUpdate_t (IntPtr pointer) : base(pointer) {}
@@ -919,7 +919,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventPreDataUpdate_t : NativeObject {
+    public partial class EventPreDataUpdate_t : NativeObject {
         private const string ThisClassName = "EventPreDataUpdate_t";
 
         public EventPreDataUpdate_t (IntPtr pointer) : base(pointer) {}
@@ -928,7 +928,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EventAppShutdown_t : NativeObject {
+    public partial class EventAppShutdown_t : NativeObject {
         private const string ThisClassName = "EventAppShutdown_t";
 
         public EventAppShutdown_t (IntPtr pointer) : base(pointer) {}
@@ -937,7 +937,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CNetworkVarChainer : NativeObject {
+    public partial class CNetworkVarChainer : NativeObject {
         private const string ThisClassName = "CNetworkVarChainer";
 
         public CNetworkVarChainer (IntPtr pointer) : base(pointer) {}
@@ -946,7 +946,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CVariantDefaultAllocator : NativeObject {
+    public partial class CVariantDefaultAllocator : NativeObject {
         private const string ThisClassName = "CVariantDefaultAllocator";
 
         public CVariantDefaultAllocator (IntPtr pointer) : base(pointer) {}
@@ -955,7 +955,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EntOutput_t : NativeObject {
+    public partial class EntOutput_t : NativeObject {
         private const string ThisClassName = "EntOutput_t";
 
         public EntOutput_t (IntPtr pointer) : base(pointer) {}
@@ -964,7 +964,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EntComponentInfo_t : NativeObject {
+    public partial class EntComponentInfo_t : NativeObject {
         private const string ThisClassName = "EntComponentInfo_t";
 
         public EntComponentInfo_t (IntPtr pointer) : base(pointer) {}
@@ -973,7 +973,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EntInput_t : NativeObject {
+    public partial class EntInput_t : NativeObject {
         private const string ThisClassName = "EntInput_t";
 
         public EntInput_t (IntPtr pointer) : base(pointer) {}
@@ -982,7 +982,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CEntityComponentHelper : NativeObject {
+    public partial class CEntityComponentHelper : NativeObject {
         private const string ThisClassName = "CEntityComponentHelper";
 
         public CEntityComponentHelper (IntPtr pointer) : base(pointer) {}
@@ -991,7 +991,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CEmptyEntityInstance : NativeObject {
+    public partial class CEmptyEntityInstance : NativeObject {
         private const string ThisClassName = "CEmptyEntityInstance";
 
         public CEmptyEntityInstance (IntPtr pointer) : base(pointer) {}
@@ -1000,7 +1000,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CEntityIOOutput : NativeObject {
+    public partial class CEntityIOOutput : NativeObject {
         private const string ThisClassName = "CEntityIOOutput";
 
         public CEntityIOOutput (IntPtr pointer) : base(pointer) {}
@@ -1009,7 +1009,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class MaterialParam_t : NativeObject {
+    public partial class MaterialParam_t : NativeObject {
         private const string ThisClassName = "MaterialParam_t";
 
         public MaterialParam_t (IntPtr pointer) : base(pointer) {}
@@ -1018,7 +1018,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class MaterialParamInt_t : MaterialParam_t {
+    public partial class MaterialParamInt_t : MaterialParam_t {
         private const string ThisClassName = "MaterialParamInt_t";
 
         public MaterialParamInt_t (IntPtr pointer) : base(pointer) {}
@@ -1027,7 +1027,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class MaterialParamFloat_t : MaterialParam_t {
+    public partial class MaterialParamFloat_t : MaterialParam_t {
         private const string ThisClassName = "MaterialParamFloat_t";
 
         public MaterialParamFloat_t (IntPtr pointer) : base(pointer) {}
@@ -1036,7 +1036,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class MaterialParamVector_t : MaterialParam_t {
+    public partial class MaterialParamVector_t : MaterialParam_t {
         private const string ThisClassName = "MaterialParamVector_t";
 
         public MaterialParamVector_t (IntPtr pointer) : base(pointer) {}
@@ -1045,7 +1045,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class MaterialParamTexture_t : MaterialParam_t {
+    public partial class MaterialParamTexture_t : MaterialParam_t {
         private const string ThisClassName = "MaterialParamTexture_t";
 
         public MaterialParamTexture_t (IntPtr pointer) : base(pointer) {}
@@ -1054,7 +1054,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class MaterialParamString_t : MaterialParam_t {
+    public partial class MaterialParamString_t : MaterialParam_t {
         private const string ThisClassName = "MaterialParamString_t";
 
         public MaterialParamString_t (IntPtr pointer) : base(pointer) {}
@@ -1063,7 +1063,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class MaterialParamBuffer_t : MaterialParam_t {
+    public partial class MaterialParamBuffer_t : MaterialParam_t {
         private const string ThisClassName = "MaterialParamBuffer_t";
 
         public MaterialParamBuffer_t (IntPtr pointer) : base(pointer) {}
@@ -1072,7 +1072,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class MaterialResourceData_t : NativeObject {
+    public partial class MaterialResourceData_t : NativeObject {
         private const string ThisClassName = "MaterialResourceData_t";
 
         public MaterialResourceData_t (IntPtr pointer) : base(pointer) {}
@@ -1081,7 +1081,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class PostProcessingTonemapParameters_t : NativeObject {
+    public partial class PostProcessingTonemapParameters_t : NativeObject {
         private const string ThisClassName = "PostProcessingTonemapParameters_t";
 
         public PostProcessingTonemapParameters_t (IntPtr pointer) : base(pointer) {}
@@ -1090,7 +1090,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class PostProcessingBloomParameters_t : NativeObject {
+    public partial class PostProcessingBloomParameters_t : NativeObject {
         private const string ThisClassName = "PostProcessingBloomParameters_t";
 
         public PostProcessingBloomParameters_t (IntPtr pointer) : base(pointer) {}
@@ -1099,7 +1099,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class PostProcessingVignetteParameters_t : NativeObject {
+    public partial class PostProcessingVignetteParameters_t : NativeObject {
         private const string ThisClassName = "PostProcessingVignetteParameters_t";
 
         public PostProcessingVignetteParameters_t (IntPtr pointer) : base(pointer) {}
@@ -1108,7 +1108,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class PostProcessingLocalContrastParameters_t : NativeObject {
+    public partial class PostProcessingLocalContrastParameters_t : NativeObject {
         private const string ThisClassName = "PostProcessingLocalContrastParameters_t";
 
         public PostProcessingLocalContrastParameters_t (IntPtr pointer) : base(pointer) {}
@@ -1117,7 +1117,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class PostProcessingResource_t : NativeObject {
+    public partial class PostProcessingResource_t : NativeObject {
         private const string ThisClassName = "PostProcessingResource_t";
 
         public PostProcessingResource_t (IntPtr pointer) : base(pointer) {}
@@ -1126,7 +1126,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ChangeAccessorFieldPathIndex_t : NativeObject {
+    public partial class ChangeAccessorFieldPathIndex_t : NativeObject {
         private const string ThisClassName = "ChangeAccessorFieldPathIndex_t";
 
         public ChangeAccessorFieldPathIndex_t (IntPtr pointer) : base(pointer) {}
@@ -1135,7 +1135,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class MoodAnimation_t : NativeObject {
+    public partial class MoodAnimation_t : NativeObject {
         private const string ThisClassName = "MoodAnimation_t";
 
         public MoodAnimation_t (IntPtr pointer) : base(pointer) {}
@@ -1144,7 +1144,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class MoodAnimationLayer_t : NativeObject {
+    public partial class MoodAnimationLayer_t : NativeObject {
         private const string ThisClassName = "MoodAnimationLayer_t";
 
         public MoodAnimationLayer_t (IntPtr pointer) : base(pointer) {}
@@ -1153,7 +1153,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CMoodVData : NativeObject {
+    public partial class CMoodVData : NativeObject {
         private const string ThisClassName = "CMoodVData";
 
         public CMoodVData (IntPtr pointer) : base(pointer) {}
@@ -1162,7 +1162,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class AnimationDecodeDebugDumpElement_t : NativeObject {
+    public partial class AnimationDecodeDebugDumpElement_t : NativeObject {
         private const string ThisClassName = "AnimationDecodeDebugDumpElement_t";
 
         public AnimationDecodeDebugDumpElement_t (IntPtr pointer) : base(pointer) {}
@@ -1171,7 +1171,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class AnimationDecodeDebugDump_t : NativeObject {
+    public partial class AnimationDecodeDebugDump_t : NativeObject {
         private const string ThisClassName = "AnimationDecodeDebugDump_t";
 
         public AnimationDecodeDebugDump_t (IntPtr pointer) : base(pointer) {}
@@ -1180,7 +1180,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class AnimationSnapshotBase_t : NativeObject {
+    public partial class AnimationSnapshotBase_t : NativeObject {
         private const string ThisClassName = "AnimationSnapshotBase_t";
 
         public AnimationSnapshotBase_t (IntPtr pointer) : base(pointer) {}
@@ -1189,7 +1189,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class AnimationSnapshot_t : AnimationSnapshotBase_t {
+    public partial class AnimationSnapshot_t : AnimationSnapshotBase_t {
         private const string ThisClassName = "AnimationSnapshot_t";
 
         public AnimationSnapshot_t (IntPtr pointer) : base(pointer) {}
@@ -1198,7 +1198,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimBoneDifference : NativeObject {
+    public partial class CAnimBoneDifference : NativeObject {
         private const string ThisClassName = "CAnimBoneDifference";
 
         public CAnimBoneDifference (IntPtr pointer) : base(pointer) {}
@@ -1207,7 +1207,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimMorphDifference : NativeObject {
+    public partial class CAnimMorphDifference : NativeObject {
         private const string ThisClassName = "CAnimMorphDifference";
 
         public CAnimMorphDifference (IntPtr pointer) : base(pointer) {}
@@ -1216,7 +1216,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimUserDifference : NativeObject {
+    public partial class CAnimUserDifference : NativeObject {
         private const string ThisClassName = "CAnimUserDifference";
 
         public CAnimUserDifference (IntPtr pointer) : base(pointer) {}
@@ -1225,7 +1225,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimEncodeDifference : NativeObject {
+    public partial class CAnimEncodeDifference : NativeObject {
         private const string ThisClassName = "CAnimEncodeDifference";
 
         public CAnimEncodeDifference (IntPtr pointer) : base(pointer) {}
@@ -1234,7 +1234,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimEventDefinition : NativeObject {
+    public partial class CAnimEventDefinition : NativeObject {
         private const string ThisClassName = "CAnimEventDefinition";
 
         public CAnimEventDefinition (IntPtr pointer) : base(pointer) {}
@@ -1243,7 +1243,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimMovement : NativeObject {
+    public partial class CAnimMovement : NativeObject {
         private const string ThisClassName = "CAnimMovement";
 
         public CAnimMovement (IntPtr pointer) : base(pointer) {}
@@ -1252,7 +1252,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimLocalHierarchy : NativeObject {
+    public partial class CAnimLocalHierarchy : NativeObject {
         private const string ThisClassName = "CAnimLocalHierarchy";
 
         public CAnimLocalHierarchy (IntPtr pointer) : base(pointer) {}
@@ -1261,7 +1261,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimDecoder : NativeObject {
+    public partial class CAnimDecoder : NativeObject {
         private const string ThisClassName = "CAnimDecoder";
 
         public CAnimDecoder (IntPtr pointer) : base(pointer) {}
@@ -1270,7 +1270,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimFrameSegment : NativeObject {
+    public partial class CAnimFrameSegment : NativeObject {
         private const string ThisClassName = "CAnimFrameSegment";
 
         public CAnimFrameSegment (IntPtr pointer) : base(pointer) {}
@@ -1279,7 +1279,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimFrameBlockAnim : NativeObject {
+    public partial class CAnimFrameBlockAnim : NativeObject {
         private const string ThisClassName = "CAnimFrameBlockAnim";
 
         public CAnimFrameBlockAnim (IntPtr pointer) : base(pointer) {}
@@ -1288,7 +1288,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimEncodedFrames : NativeObject {
+    public partial class CAnimEncodedFrames : NativeObject {
         private const string ThisClassName = "CAnimEncodedFrames";
 
         public CAnimEncodedFrames (IntPtr pointer) : base(pointer) {}
@@ -1297,7 +1297,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimDesc_Flag : NativeObject {
+    public partial class CAnimDesc_Flag : NativeObject {
         private const string ThisClassName = "CAnimDesc_Flag";
 
         public CAnimDesc_Flag (IntPtr pointer) : base(pointer) {}
@@ -1306,7 +1306,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimSequenceParams : NativeObject {
+    public partial class CAnimSequenceParams : NativeObject {
         private const string ThisClassName = "CAnimSequenceParams";
 
         public CAnimSequenceParams (IntPtr pointer) : base(pointer) {}
@@ -1315,7 +1315,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimDesc : NativeObject {
+    public partial class CAnimDesc : NativeObject {
         private const string ThisClassName = "CAnimDesc";
 
         public CAnimDesc (IntPtr pointer) : base(pointer) {}
@@ -1324,7 +1324,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimActivity : NativeObject {
+    public partial class CAnimActivity : NativeObject {
         private const string ThisClassName = "CAnimActivity";
 
         public CAnimActivity (IntPtr pointer) : base(pointer) {}
@@ -1333,7 +1333,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimData : NativeObject {
+    public partial class CAnimData : NativeObject {
         private const string ThisClassName = "CAnimData";
 
         public CAnimData (IntPtr pointer) : base(pointer) {}
@@ -1342,7 +1342,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimBone : NativeObject {
+    public partial class CAnimBone : NativeObject {
         private const string ThisClassName = "CAnimBone";
 
         public CAnimBone (IntPtr pointer) : base(pointer) {}
@@ -1351,7 +1351,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimUser : NativeObject {
+    public partial class CAnimUser : NativeObject {
         private const string ThisClassName = "CAnimUser";
 
         public CAnimUser (IntPtr pointer) : base(pointer) {}
@@ -1360,7 +1360,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimDataChannelDesc : NativeObject {
+    public partial class CAnimDataChannelDesc : NativeObject {
         private const string ThisClassName = "CAnimDataChannelDesc";
 
         public CAnimDataChannelDesc (IntPtr pointer) : base(pointer) {}
@@ -1369,7 +1369,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimKeyData : NativeObject {
+    public partial class CAnimKeyData : NativeObject {
         private const string ThisClassName = "CAnimKeyData";
 
         public CAnimKeyData (IntPtr pointer) : base(pointer) {}
@@ -1378,7 +1378,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimationGroup : NativeObject {
+    public partial class CAnimationGroup : NativeObject {
         private const string ThisClassName = "CAnimationGroup";
 
         public CAnimationGroup (IntPtr pointer) : base(pointer) {}
@@ -1387,7 +1387,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSeqAutoLayerFlag : NativeObject {
+    public partial class CSeqAutoLayerFlag : NativeObject {
         private const string ThisClassName = "CSeqAutoLayerFlag";
 
         public CSeqAutoLayerFlag (IntPtr pointer) : base(pointer) {}
@@ -1396,7 +1396,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSeqAutoLayer : NativeObject {
+    public partial class CSeqAutoLayer : NativeObject {
         private const string ThisClassName = "CSeqAutoLayer";
 
         public CSeqAutoLayer (IntPtr pointer) : base(pointer) {}
@@ -1405,7 +1405,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSeqIKLock : NativeObject {
+    public partial class CSeqIKLock : NativeObject {
         private const string ThisClassName = "CSeqIKLock";
 
         public CSeqIKLock (IntPtr pointer) : base(pointer) {}
@@ -1414,7 +1414,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSeqBoneMaskList : NativeObject {
+    public partial class CSeqBoneMaskList : NativeObject {
         private const string ThisClassName = "CSeqBoneMaskList";
 
         public CSeqBoneMaskList (IntPtr pointer) : base(pointer) {}
@@ -1423,7 +1423,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSeqScaleSet : NativeObject {
+    public partial class CSeqScaleSet : NativeObject {
         private const string ThisClassName = "CSeqScaleSet";
 
         public CSeqScaleSet (IntPtr pointer) : base(pointer) {}
@@ -1432,7 +1432,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSeqMultiFetchFlag : NativeObject {
+    public partial class CSeqMultiFetchFlag : NativeObject {
         private const string ThisClassName = "CSeqMultiFetchFlag";
 
         public CSeqMultiFetchFlag (IntPtr pointer) : base(pointer) {}
@@ -1441,7 +1441,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSeqMultiFetch : NativeObject {
+    public partial class CSeqMultiFetch : NativeObject {
         private const string ThisClassName = "CSeqMultiFetch";
 
         public CSeqMultiFetch (IntPtr pointer) : base(pointer) {}
@@ -1450,7 +1450,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSeqSeqDescFlag : NativeObject {
+    public partial class CSeqSeqDescFlag : NativeObject {
         private const string ThisClassName = "CSeqSeqDescFlag";
 
         public CSeqSeqDescFlag (IntPtr pointer) : base(pointer) {}
@@ -1459,7 +1459,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSeqTransition : NativeObject {
+    public partial class CSeqTransition : NativeObject {
         private const string ThisClassName = "CSeqTransition";
 
         public CSeqTransition (IntPtr pointer) : base(pointer) {}
@@ -1468,7 +1468,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSeqS1SeqDesc : NativeObject {
+    public partial class CSeqS1SeqDesc : NativeObject {
         private const string ThisClassName = "CSeqS1SeqDesc";
 
         public CSeqS1SeqDesc (IntPtr pointer) : base(pointer) {}
@@ -1477,7 +1477,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSeqSynthAnimDesc : NativeObject {
+    public partial class CSeqSynthAnimDesc : NativeObject {
         private const string ThisClassName = "CSeqSynthAnimDesc";
 
         public CSeqSynthAnimDesc (IntPtr pointer) : base(pointer) {}
@@ -1486,7 +1486,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSeqCmdLayer : NativeObject {
+    public partial class CSeqCmdLayer : NativeObject {
         private const string ThisClassName = "CSeqCmdLayer";
 
         public CSeqCmdLayer (IntPtr pointer) : base(pointer) {}
@@ -1495,7 +1495,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSeqPoseSetting : NativeObject {
+    public partial class CSeqPoseSetting : NativeObject {
         private const string ThisClassName = "CSeqPoseSetting";
 
         public CSeqPoseSetting (IntPtr pointer) : base(pointer) {}
@@ -1504,7 +1504,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSeqCmdSeqDesc : NativeObject {
+    public partial class CSeqCmdSeqDesc : NativeObject {
         private const string ThisClassName = "CSeqCmdSeqDesc";
 
         public CSeqCmdSeqDesc (IntPtr pointer) : base(pointer) {}
@@ -1513,7 +1513,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSeqPoseParamDesc : NativeObject {
+    public partial class CSeqPoseParamDesc : NativeObject {
         private const string ThisClassName = "CSeqPoseParamDesc";
 
         public CSeqPoseParamDesc (IntPtr pointer) : base(pointer) {}
@@ -1522,7 +1522,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSequenceGroupData : NativeObject {
+    public partial class CSequenceGroupData : NativeObject {
         private const string ThisClassName = "CSequenceGroupData";
 
         public CSequenceGroupData (IntPtr pointer) : base(pointer) {}
@@ -1531,7 +1531,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CCompressorGroup : NativeObject {
+    public partial class CCompressorGroup : NativeObject {
         private const string ThisClassName = "CCompressorGroup";
 
         public CCompressorGroup (IntPtr pointer) : base(pointer) {}
@@ -1540,7 +1540,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class HSequence : NativeObject {
+    public partial class HSequence : NativeObject {
         private const string ThisClassName = "HSequence";
 
         public HSequence (IntPtr pointer) : base(pointer) {}
@@ -1549,7 +1549,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimEnum : NativeObject {
+    public partial class CAnimEnum : NativeObject {
         private const string ThisClassName = "CAnimEnum";
 
         public CAnimEnum (IntPtr pointer) : base(pointer) {}
@@ -1558,7 +1558,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class AnimNodeID : NativeObject {
+    public partial class AnimNodeID : NativeObject {
         private const string ThisClassName = "AnimNodeID";
 
         public AnimNodeID (IntPtr pointer) : base(pointer) {}
@@ -1567,7 +1567,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class AnimNodeOutputID : NativeObject {
+    public partial class AnimNodeOutputID : NativeObject {
         private const string ThisClassName = "AnimNodeOutputID";
 
         public AnimNodeOutputID (IntPtr pointer) : base(pointer) {}
@@ -1576,7 +1576,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class AnimStateID : NativeObject {
+    public partial class AnimStateID : NativeObject {
         private const string ThisClassName = "AnimStateID";
 
         public AnimStateID (IntPtr pointer) : base(pointer) {}
@@ -1585,7 +1585,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class AnimParamID : NativeObject {
+    public partial class AnimParamID : NativeObject {
         private const string ThisClassName = "AnimParamID";
 
         public AnimParamID (IntPtr pointer) : base(pointer) {}
@@ -1594,7 +1594,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class AnimTagID : NativeObject {
+    public partial class AnimTagID : NativeObject {
         private const string ThisClassName = "AnimTagID";
 
         public AnimTagID (IntPtr pointer) : base(pointer) {}
@@ -1603,7 +1603,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class AnimComponentID : NativeObject {
+    public partial class AnimComponentID : NativeObject {
         private const string ThisClassName = "AnimComponentID";
 
         public AnimComponentID (IntPtr pointer) : base(pointer) {}
@@ -1612,7 +1612,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class AnimScriptHandle : NativeObject {
+    public partial class AnimScriptHandle : NativeObject {
         private const string ThisClassName = "AnimScriptHandle";
 
         public AnimScriptHandle (IntPtr pointer) : base(pointer) {}
@@ -1621,7 +1621,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimAttachment : NativeObject {
+    public partial class CAnimAttachment : NativeObject {
         private const string ThisClassName = "CAnimAttachment";
 
         public CAnimAttachment (IntPtr pointer) : base(pointer) {}
@@ -1630,7 +1630,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VPhysics2ShapeDef_t : NativeObject {
+    public partial class VPhysics2ShapeDef_t : NativeObject {
         private const string ThisClassName = "VPhysics2ShapeDef_t";
 
         public VPhysics2ShapeDef_t (IntPtr pointer) : base(pointer) {}
@@ -1639,7 +1639,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VPhysXBodyPart_t : NativeObject {
+    public partial class VPhysXBodyPart_t : NativeObject {
         private const string ThisClassName = "VPhysXBodyPart_t";
 
         public VPhysXBodyPart_t (IntPtr pointer) : base(pointer) {}
@@ -1648,7 +1648,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VPhysXCollisionAttributes_t : NativeObject {
+    public partial class VPhysXCollisionAttributes_t : NativeObject {
         private const string ThisClassName = "VPhysXCollisionAttributes_t";
 
         public VPhysXCollisionAttributes_t (IntPtr pointer) : base(pointer) {}
@@ -1657,7 +1657,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VPhysXRange_t : NativeObject {
+    public partial class VPhysXRange_t : NativeObject {
         private const string ThisClassName = "VPhysXRange_t";
 
         public VPhysXRange_t (IntPtr pointer) : base(pointer) {}
@@ -1666,7 +1666,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VPhysXConstraintParams_t : NativeObject {
+    public partial class VPhysXConstraintParams_t : NativeObject {
         private const string ThisClassName = "VPhysXConstraintParams_t";
 
         public VPhysXConstraintParams_t (IntPtr pointer) : base(pointer) {}
@@ -1675,7 +1675,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VPhysXConstraint2_t : NativeObject {
+    public partial class VPhysXConstraint2_t : NativeObject {
         private const string ThisClassName = "VPhysXConstraint2_t";
 
         public VPhysXConstraint2_t (IntPtr pointer) : base(pointer) {}
@@ -1684,7 +1684,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VPhysXJoint_t : NativeObject {
+    public partial class VPhysXJoint_t : NativeObject {
         private const string ThisClassName = "VPhysXJoint_t";
 
         public VPhysXJoint_t (IntPtr pointer) : base(pointer) {}
@@ -1693,7 +1693,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class PhysSoftbodyDesc_t : NativeObject {
+    public partial class PhysSoftbodyDesc_t : NativeObject {
         private const string ThisClassName = "PhysSoftbodyDesc_t";
 
         public PhysSoftbodyDesc_t (IntPtr pointer) : base(pointer) {}
@@ -1702,7 +1702,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VPhysXAggregateData_t : NativeObject {
+    public partial class VPhysXAggregateData_t : NativeObject {
         private const string ThisClassName = "VPhysXAggregateData_t";
 
         public VPhysXAggregateData_t (IntPtr pointer) : base(pointer) {}
@@ -1711,7 +1711,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPhysSurfacePropertiesPhysics : NativeObject {
+    public partial class CPhysSurfacePropertiesPhysics : NativeObject {
         private const string ThisClassName = "CPhysSurfacePropertiesPhysics";
 
         public CPhysSurfacePropertiesPhysics (IntPtr pointer) : base(pointer) {}
@@ -1720,7 +1720,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPhysSurfacePropertiesAudio : NativeObject {
+    public partial class CPhysSurfacePropertiesAudio : NativeObject {
         private const string ThisClassName = "CPhysSurfacePropertiesAudio";
 
         public CPhysSurfacePropertiesAudio (IntPtr pointer) : base(pointer) {}
@@ -1729,7 +1729,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPhysSurfacePropertiesSoundNames : NativeObject {
+    public partial class CPhysSurfacePropertiesSoundNames : NativeObject {
         private const string ThisClassName = "CPhysSurfacePropertiesSoundNames";
 
         public CPhysSurfacePropertiesSoundNames (IntPtr pointer) : base(pointer) {}
@@ -1738,7 +1738,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPhysSurfaceProperties : NativeObject {
+    public partial class CPhysSurfaceProperties : NativeObject {
         private const string ThisClassName = "CPhysSurfaceProperties";
 
         public CPhysSurfaceProperties (IntPtr pointer) : base(pointer) {}
@@ -1747,7 +1747,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CVPhysXSurfacePropertiesList : NativeObject {
+    public partial class CVPhysXSurfacePropertiesList : NativeObject {
         private const string ThisClassName = "CVPhysXSurfacePropertiesList";
 
         public CVPhysXSurfacePropertiesList (IntPtr pointer) : base(pointer) {}
@@ -1756,7 +1756,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class MaterialGroup_t : NativeObject {
+    public partial class MaterialGroup_t : NativeObject {
         private const string ThisClassName = "MaterialGroup_t";
 
         public MaterialGroup_t (IntPtr pointer) : base(pointer) {}
@@ -1765,7 +1765,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ModelSkeletonData_t : NativeObject {
+    public partial class ModelSkeletonData_t : NativeObject {
         private const string ThisClassName = "ModelSkeletonData_t";
 
         public ModelSkeletonData_t (IntPtr pointer) : base(pointer) {}
@@ -1774,7 +1774,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class PermModelInfo_t : NativeObject {
+    public partial class PermModelInfo_t : NativeObject {
         private const string ThisClassName = "PermModelInfo_t";
 
         public PermModelInfo_t (IntPtr pointer) : base(pointer) {}
@@ -1783,7 +1783,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class PermModelExtPart_t : NativeObject {
+    public partial class PermModelExtPart_t : NativeObject {
         private const string ThisClassName = "PermModelExtPart_t";
 
         public PermModelExtPart_t (IntPtr pointer) : base(pointer) {}
@@ -1792,7 +1792,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ModelBoneFlexDriverControl_t : NativeObject {
+    public partial class ModelBoneFlexDriverControl_t : NativeObject {
         private const string ThisClassName = "ModelBoneFlexDriverControl_t";
 
         public ModelBoneFlexDriverControl_t (IntPtr pointer) : base(pointer) {}
@@ -1801,7 +1801,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ModelBoneFlexDriver_t : NativeObject {
+    public partial class ModelBoneFlexDriver_t : NativeObject {
         private const string ThisClassName = "ModelBoneFlexDriver_t";
 
         public ModelBoneFlexDriver_t (IntPtr pointer) : base(pointer) {}
@@ -1810,7 +1810,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class PermModelDataAnimatedMaterialAttribute_t : NativeObject {
+    public partial class PermModelDataAnimatedMaterialAttribute_t : NativeObject {
         private const string ThisClassName = "PermModelDataAnimatedMaterialAttribute_t";
 
         public PermModelDataAnimatedMaterialAttribute_t (IntPtr pointer) : base(pointer) {}
@@ -1819,7 +1819,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class PermModelData_t : NativeObject {
+    public partial class PermModelData_t : NativeObject {
         private const string ThisClassName = "PermModelData_t";
 
         public PermModelData_t (IntPtr pointer) : base(pointer) {}
@@ -1828,7 +1828,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class AttachmentHandle_t : NativeObject {
+    public partial class AttachmentHandle_t : NativeObject {
         private const string ThisClassName = "AttachmentHandle_t";
 
         public AttachmentHandle_t (IntPtr pointer) : base(pointer) {}
@@ -1837,7 +1837,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CModelConfigElement : NativeObject {
+    public partial class CModelConfigElement : NativeObject {
         private const string ThisClassName = "CModelConfigElement";
 
         public CModelConfigElement (IntPtr pointer) : base(pointer) {}
@@ -1846,7 +1846,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CModelConfigElement_AttachedModel : CModelConfigElement {
+    public partial class CModelConfigElement_AttachedModel : CModelConfigElement {
         private const string ThisClassName = "CModelConfigElement_AttachedModel";
 
         public CModelConfigElement_AttachedModel (IntPtr pointer) : base(pointer) {}
@@ -1855,7 +1855,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CModelConfigElement_UserPick : CModelConfigElement {
+    public partial class CModelConfigElement_UserPick : CModelConfigElement {
         private const string ThisClassName = "CModelConfigElement_UserPick";
 
         public CModelConfigElement_UserPick (IntPtr pointer) : base(pointer) {}
@@ -1864,7 +1864,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CModelConfigElement_RandomPick : CModelConfigElement {
+    public partial class CModelConfigElement_RandomPick : CModelConfigElement {
         private const string ThisClassName = "CModelConfigElement_RandomPick";
 
         public CModelConfigElement_RandomPick (IntPtr pointer) : base(pointer) {}
@@ -1873,7 +1873,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CModelConfigElement_SetMaterialGroup : CModelConfigElement {
+    public partial class CModelConfigElement_SetMaterialGroup : CModelConfigElement {
         private const string ThisClassName = "CModelConfigElement_SetMaterialGroup";
 
         public CModelConfigElement_SetMaterialGroup (IntPtr pointer) : base(pointer) {}
@@ -1882,7 +1882,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CModelConfigElement_SetMaterialGroupOnAttachedModels : CModelConfigElement {
+    public partial class CModelConfigElement_SetMaterialGroupOnAttachedModels : CModelConfigElement {
         private const string ThisClassName = "CModelConfigElement_SetMaterialGroupOnAttachedModels";
 
         public CModelConfigElement_SetMaterialGroupOnAttachedModels (IntPtr pointer) : base(pointer) {}
@@ -1891,7 +1891,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CModelConfigElement_SetRenderColor : CModelConfigElement {
+    public partial class CModelConfigElement_SetRenderColor : CModelConfigElement {
         private const string ThisClassName = "CModelConfigElement_SetRenderColor";
 
         public CModelConfigElement_SetRenderColor (IntPtr pointer) : base(pointer) {}
@@ -1900,7 +1900,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CModelConfigElement_RandomColor : CModelConfigElement {
+    public partial class CModelConfigElement_RandomColor : CModelConfigElement {
         private const string ThisClassName = "CModelConfigElement_RandomColor";
 
         public CModelConfigElement_RandomColor (IntPtr pointer) : base(pointer) {}
@@ -1909,7 +1909,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CModelConfigElement_SetBodygroup : CModelConfigElement {
+    public partial class CModelConfigElement_SetBodygroup : CModelConfigElement {
         private const string ThisClassName = "CModelConfigElement_SetBodygroup";
 
         public CModelConfigElement_SetBodygroup (IntPtr pointer) : base(pointer) {}
@@ -1918,7 +1918,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CModelConfigElement_SetBodygroupOnAttachedModels : CModelConfigElement {
+    public partial class CModelConfigElement_SetBodygroupOnAttachedModels : CModelConfigElement {
         private const string ThisClassName = "CModelConfigElement_SetBodygroupOnAttachedModels";
 
         public CModelConfigElement_SetBodygroupOnAttachedModels (IntPtr pointer) : base(pointer) {}
@@ -1927,7 +1927,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CModelConfigElement_Command : CModelConfigElement {
+    public partial class CModelConfigElement_Command : CModelConfigElement {
         private const string ThisClassName = "CModelConfigElement_Command";
 
         public CModelConfigElement_Command (IntPtr pointer) : base(pointer) {}
@@ -1936,7 +1936,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CModelConfig : NativeObject {
+    public partial class CModelConfig : NativeObject {
         private const string ThisClassName = "CModelConfig";
 
         public CModelConfig (IntPtr pointer) : base(pointer) {}
@@ -1945,7 +1945,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CModelConfigList : NativeObject {
+    public partial class CModelConfigList : NativeObject {
         private const string ThisClassName = "CModelConfigList";
 
         public CModelConfigList (IntPtr pointer) : base(pointer) {}
@@ -1954,7 +1954,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CRenderBufferBinding : NativeObject {
+    public partial class CRenderBufferBinding : NativeObject {
         private const string ThisClassName = "CRenderBufferBinding";
 
         public CRenderBufferBinding (IntPtr pointer) : base(pointer) {}
@@ -1963,7 +1963,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class SkeletonBoneBounds_t : NativeObject {
+    public partial class SkeletonBoneBounds_t : NativeObject {
         private const string ThisClassName = "SkeletonBoneBounds_t";
 
         public SkeletonBoneBounds_t (IntPtr pointer) : base(pointer) {}
@@ -1972,7 +1972,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class RenderSkeletonBone_t : NativeObject {
+    public partial class RenderSkeletonBone_t : NativeObject {
         private const string ThisClassName = "RenderSkeletonBone_t";
 
         public RenderSkeletonBone_t (IntPtr pointer) : base(pointer) {}
@@ -1981,7 +1981,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CRenderSkeleton : NativeObject {
+    public partial class CRenderSkeleton : NativeObject {
         private const string ThisClassName = "CRenderSkeleton";
 
         public CRenderSkeleton (IntPtr pointer) : base(pointer) {}
@@ -1990,7 +1990,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CDrawCullingData : NativeObject {
+    public partial class CDrawCullingData : NativeObject {
         private const string ThisClassName = "CDrawCullingData";
 
         public CDrawCullingData (IntPtr pointer) : base(pointer) {}
@@ -1999,7 +1999,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CMaterialDrawDescriptor : NativeObject {
+    public partial class CMaterialDrawDescriptor : NativeObject {
         private const string ThisClassName = "CMaterialDrawDescriptor";
 
         public CMaterialDrawDescriptor (IntPtr pointer) : base(pointer) {}
@@ -2008,7 +2008,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CMeshletDescriptor : NativeObject {
+    public partial class CMeshletDescriptor : NativeObject {
         private const string ThisClassName = "CMeshletDescriptor";
 
         public CMeshletDescriptor (IntPtr pointer) : base(pointer) {}
@@ -2017,7 +2017,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSceneObjectData : NativeObject {
+    public partial class CSceneObjectData : NativeObject {
         private const string ThisClassName = "CSceneObjectData";
 
         public CSceneObjectData (IntPtr pointer) : base(pointer) {}
@@ -2026,7 +2026,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAttachment : NativeObject {
+    public partial class CAttachment : NativeObject {
         private const string ThisClassName = "CAttachment";
 
         public CAttachment (IntPtr pointer) : base(pointer) {}
@@ -2035,7 +2035,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CHitBox : NativeObject {
+    public partial class CHitBox : NativeObject {
         private const string ThisClassName = "CHitBox";
 
         public CHitBox (IntPtr pointer) : base(pointer) {}
@@ -2044,7 +2044,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CHitBoxSet : NativeObject {
+    public partial class CHitBoxSet : NativeObject {
         private const string ThisClassName = "CHitBoxSet";
 
         public CHitBoxSet (IntPtr pointer) : base(pointer) {}
@@ -2053,7 +2053,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CHitBoxSetList : NativeObject {
+    public partial class CHitBoxSetList : NativeObject {
         private const string ThisClassName = "CHitBoxSetList";
 
         public CHitBoxSetList (IntPtr pointer) : base(pointer) {}
@@ -2062,7 +2062,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CRenderMesh : NativeObject {
+    public partial class CRenderMesh : NativeObject {
         private const string ThisClassName = "CRenderMesh";
 
         public CRenderMesh (IntPtr pointer) : base(pointer) {}
@@ -2071,7 +2071,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CConstraintTarget : NativeObject {
+    public partial class CConstraintTarget : NativeObject {
         private const string ThisClassName = "CConstraintTarget";
 
         public CConstraintTarget (IntPtr pointer) : base(pointer) {}
@@ -2080,7 +2080,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CConstraintSlave : NativeObject {
+    public partial class CConstraintSlave : NativeObject {
         private const string ThisClassName = "CConstraintSlave";
 
         public CConstraintSlave (IntPtr pointer) : base(pointer) {}
@@ -2089,7 +2089,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CBoneConstraintBase : NativeObject {
+    public partial class CBoneConstraintBase : NativeObject {
         private const string ThisClassName = "CBoneConstraintBase";
 
         public CBoneConstraintBase (IntPtr pointer) : base(pointer) {}
@@ -2098,7 +2098,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CBaseConstraint : CBoneConstraintBase {
+    public partial class CBaseConstraint : CBoneConstraintBase {
         private const string ThisClassName = "CBaseConstraint";
 
         public CBaseConstraint (IntPtr pointer) : base(pointer) {}
@@ -2107,7 +2107,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPointConstraint : CBaseConstraint {
+    public partial class CPointConstraint : CBaseConstraint {
         private const string ThisClassName = "CPointConstraint";
 
         public CPointConstraint (IntPtr pointer) : base(pointer) {}
@@ -2116,7 +2116,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class COrientConstraint : CBaseConstraint {
+    public partial class COrientConstraint : CBaseConstraint {
         private const string ThisClassName = "COrientConstraint";
 
         public COrientConstraint (IntPtr pointer) : base(pointer) {}
@@ -2125,7 +2125,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAimConstraint : CBaseConstraint {
+    public partial class CAimConstraint : CBaseConstraint {
         private const string ThisClassName = "CAimConstraint";
 
         public CAimConstraint (IntPtr pointer) : base(pointer) {}
@@ -2134,7 +2134,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CTwistConstraint : CBaseConstraint {
+    public partial class CTwistConstraint : CBaseConstraint {
         private const string ThisClassName = "CTwistConstraint";
 
         public CTwistConstraint (IntPtr pointer) : base(pointer) {}
@@ -2143,7 +2143,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CTiltTwistConstraint : CBaseConstraint {
+    public partial class CTiltTwistConstraint : CBaseConstraint {
         private const string ThisClassName = "CTiltTwistConstraint";
 
         public CTiltTwistConstraint (IntPtr pointer) : base(pointer) {}
@@ -2152,7 +2152,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CMorphConstraint : CBaseConstraint {
+    public partial class CMorphConstraint : CBaseConstraint {
         private const string ThisClassName = "CMorphConstraint";
 
         public CMorphConstraint (IntPtr pointer) : base(pointer) {}
@@ -2161,7 +2161,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CParentConstraint : CBaseConstraint {
+    public partial class CParentConstraint : CBaseConstraint {
         private const string ThisClassName = "CParentConstraint";
 
         public CParentConstraint (IntPtr pointer) : base(pointer) {}
@@ -2170,7 +2170,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CBoneConstraintPoseSpaceMorph : CBoneConstraintBase {
+    public partial class CBoneConstraintPoseSpaceMorph : CBoneConstraintBase {
         private const string ThisClassName = "CBoneConstraintPoseSpaceMorph";
 
         public CBoneConstraintPoseSpaceMorph (IntPtr pointer) : base(pointer) {}
@@ -2179,7 +2179,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CBoneConstraintPoseSpaceMorph__Input_t : NativeObject {
+    public partial class CBoneConstraintPoseSpaceMorph__Input_t : NativeObject {
         private const string ThisClassName = "CBoneConstraintPoseSpaceMorph__Input_t";
 
         public CBoneConstraintPoseSpaceMorph__Input_t (IntPtr pointer) : base(pointer) {}
@@ -2188,7 +2188,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CBoneConstraintPoseSpaceBone : CBaseConstraint {
+    public partial class CBoneConstraintPoseSpaceBone : CBaseConstraint {
         private const string ThisClassName = "CBoneConstraintPoseSpaceBone";
 
         public CBoneConstraintPoseSpaceBone (IntPtr pointer) : base(pointer) {}
@@ -2197,7 +2197,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CBoneConstraintPoseSpaceBone__Input_t : NativeObject {
+    public partial class CBoneConstraintPoseSpaceBone__Input_t : NativeObject {
         private const string ThisClassName = "CBoneConstraintPoseSpaceBone__Input_t";
 
         public CBoneConstraintPoseSpaceBone__Input_t (IntPtr pointer) : base(pointer) {}
@@ -2206,7 +2206,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CBoneConstraintDotToMorph : CBoneConstraintBase {
+    public partial class CBoneConstraintDotToMorph : CBoneConstraintBase {
         private const string ThisClassName = "CBoneConstraintDotToMorph";
 
         public CBoneConstraintDotToMorph (IntPtr pointer) : base(pointer) {}
@@ -2215,7 +2215,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFlexOp : NativeObject {
+    public partial class CFlexOp : NativeObject {
         private const string ThisClassName = "CFlexOp";
 
         public CFlexOp (IntPtr pointer) : base(pointer) {}
@@ -2224,7 +2224,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFlexRule : NativeObject {
+    public partial class CFlexRule : NativeObject {
         private const string ThisClassName = "CFlexRule";
 
         public CFlexRule (IntPtr pointer) : base(pointer) {}
@@ -2233,7 +2233,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFlexDesc : NativeObject {
+    public partial class CFlexDesc : NativeObject {
         private const string ThisClassName = "CFlexDesc";
 
         public CFlexDesc (IntPtr pointer) : base(pointer) {}
@@ -2242,7 +2242,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFlexController : NativeObject {
+    public partial class CFlexController : NativeObject {
         private const string ThisClassName = "CFlexController";
 
         public CFlexController (IntPtr pointer) : base(pointer) {}
@@ -2251,7 +2251,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CMorphBundleData : NativeObject {
+    public partial class CMorphBundleData : NativeObject {
         private const string ThisClassName = "CMorphBundleData";
 
         public CMorphBundleData (IntPtr pointer) : base(pointer) {}
@@ -2260,7 +2260,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CMorphRectData : NativeObject {
+    public partial class CMorphRectData : NativeObject {
         private const string ThisClassName = "CMorphRectData";
 
         public CMorphRectData (IntPtr pointer) : base(pointer) {}
@@ -2269,7 +2269,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CMorphData : NativeObject {
+    public partial class CMorphData : NativeObject {
         private const string ThisClassName = "CMorphData";
 
         public CMorphData (IntPtr pointer) : base(pointer) {}
@@ -2278,7 +2278,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CMorphSetData : NativeObject {
+    public partial class CMorphSetData : NativeObject {
         private const string ThisClassName = "CMorphSetData";
 
         public CMorphSetData (IntPtr pointer) : base(pointer) {}
@@ -2287,7 +2287,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimFoot : NativeObject {
+    public partial class CAnimFoot : NativeObject {
         private const string ThisClassName = "CAnimFoot";
 
         public CAnimFoot (IntPtr pointer) : base(pointer) {}
@@ -2296,7 +2296,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimSkeleton : NativeObject {
+    public partial class CAnimSkeleton : NativeObject {
         private const string ThisClassName = "CAnimSkeleton";
 
         public CAnimSkeleton (IntPtr pointer) : base(pointer) {}
@@ -2305,7 +2305,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFootDefinition : NativeObject {
+    public partial class CFootDefinition : NativeObject {
         private const string ThisClassName = "CFootDefinition";
 
         public CFootDefinition (IntPtr pointer) : base(pointer) {}
@@ -2314,7 +2314,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CCycleBase : NativeObject {
+    public partial class CCycleBase : NativeObject {
         private const string ThisClassName = "CCycleBase";
 
         public CCycleBase (IntPtr pointer) : base(pointer) {}
@@ -2323,7 +2323,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimCycle : CCycleBase {
+    public partial class CAnimCycle : CCycleBase {
         private const string ThisClassName = "CAnimCycle";
 
         public CAnimCycle (IntPtr pointer) : base(pointer) {}
@@ -2332,7 +2332,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFootCycle : CCycleBase {
+    public partial class CFootCycle : CCycleBase {
         private const string ThisClassName = "CFootCycle";
 
         public CFootCycle (IntPtr pointer) : base(pointer) {}
@@ -2341,7 +2341,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFootCycleDefinition : NativeObject {
+    public partial class CFootCycleDefinition : NativeObject {
         private const string ThisClassName = "CFootCycleDefinition";
 
         public CFootCycleDefinition (IntPtr pointer) : base(pointer) {}
@@ -2350,7 +2350,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFootTrajectory : NativeObject {
+    public partial class CFootTrajectory : NativeObject {
         private const string ThisClassName = "CFootTrajectory";
 
         public CFootTrajectory (IntPtr pointer) : base(pointer) {}
@@ -2359,7 +2359,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFootTrajectories : NativeObject {
+    public partial class CFootTrajectories : NativeObject {
         private const string ThisClassName = "CFootTrajectories";
 
         public CFootTrajectories (IntPtr pointer) : base(pointer) {}
@@ -2368,7 +2368,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFootStride : NativeObject {
+    public partial class CFootStride : NativeObject {
         private const string ThisClassName = "CFootStride";
 
         public CFootStride (IntPtr pointer) : base(pointer) {}
@@ -2377,7 +2377,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFootMotion : NativeObject {
+    public partial class CFootMotion : NativeObject {
         private const string ThisClassName = "CFootMotion";
 
         public CFootMotion (IntPtr pointer) : base(pointer) {}
@@ -2386,7 +2386,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFingerSource : NativeObject {
+    public partial class CFingerSource : NativeObject {
         private const string ThisClassName = "CFingerSource";
 
         public CFingerSource (IntPtr pointer) : base(pointer) {}
@@ -2395,7 +2395,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFingerBone : NativeObject {
+    public partial class CFingerBone : NativeObject {
         private const string ThisClassName = "CFingerBone";
 
         public CFingerBone (IntPtr pointer) : base(pointer) {}
@@ -2404,7 +2404,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFingerChain : NativeObject {
+    public partial class CFingerChain : NativeObject {
         private const string ThisClassName = "CFingerChain";
 
         public CFingerChain (IntPtr pointer) : base(pointer) {}
@@ -2413,7 +2413,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CWristBone : NativeObject {
+    public partial class CWristBone : NativeObject {
         private const string ThisClassName = "CWristBone";
 
         public CWristBone (IntPtr pointer) : base(pointer) {}
@@ -2422,7 +2422,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CVrSkeletalInputSettings : NativeObject {
+    public partial class CVrSkeletalInputSettings : NativeObject {
         private const string ThisClassName = "CVrSkeletalInputSettings";
 
         public CVrSkeletalInputSettings (IntPtr pointer) : base(pointer) {}
@@ -2431,7 +2431,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class BoneDemoCaptureSettings_t : NativeObject {
+    public partial class BoneDemoCaptureSettings_t : NativeObject {
         private const string ThisClassName = "BoneDemoCaptureSettings_t";
 
         public BoneDemoCaptureSettings_t (IntPtr pointer) : base(pointer) {}
@@ -2440,7 +2440,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class IKDemoCaptureSettings_t : NativeObject {
+    public partial class IKDemoCaptureSettings_t : NativeObject {
         private const string ThisClassName = "IKDemoCaptureSettings_t";
 
         public IKDemoCaptureSettings_t (IntPtr pointer) : base(pointer) {}
@@ -2449,7 +2449,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimDemoCaptureSettings : NativeObject {
+    public partial class CAnimDemoCaptureSettings : NativeObject {
         private const string ThisClassName = "CAnimDemoCaptureSettings";
 
         public CAnimDemoCaptureSettings (IntPtr pointer) : base(pointer) {}
@@ -2458,7 +2458,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimReplayFrame : NativeObject {
+    public partial class CAnimReplayFrame : NativeObject {
         private const string ThisClassName = "CAnimReplayFrame";
 
         public CAnimReplayFrame (IntPtr pointer) : base(pointer) {}
@@ -2467,7 +2467,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimGraphDebugReplay : NativeObject {
+    public partial class CAnimGraphDebugReplay : NativeObject {
         private const string ThisClassName = "CAnimGraphDebugReplay";
 
         public CAnimGraphDebugReplay (IntPtr pointer) : base(pointer) {}
@@ -2476,7 +2476,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimGraphModelBinding : NativeObject {
+    public partial class CAnimGraphModelBinding : NativeObject {
         private const string ThisClassName = "CAnimGraphModelBinding";
 
         public CAnimGraphModelBinding (IntPtr pointer) : base(pointer) {}
@@ -2485,7 +2485,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimInputDamping : NativeObject {
+    public partial class CAnimInputDamping : NativeObject {
         private const string ThisClassName = "CAnimInputDamping";
 
         public CAnimInputDamping (IntPtr pointer) : base(pointer) {}
@@ -2494,7 +2494,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimParamHandle : NativeObject {
+    public partial class CAnimParamHandle : NativeObject {
         private const string ThisClassName = "CAnimParamHandle";
 
         public CAnimParamHandle (IntPtr pointer) : base(pointer) {}
@@ -2503,7 +2503,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimParamHandleMap : NativeObject {
+    public partial class CAnimParamHandleMap : NativeObject {
         private const string ThisClassName = "CAnimParamHandleMap";
 
         public CAnimParamHandleMap (IntPtr pointer) : base(pointer) {}
@@ -2512,7 +2512,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimParameterManagerUpdater : NativeObject {
+    public partial class CAnimParameterManagerUpdater : NativeObject {
         private const string ThisClassName = "CAnimParameterManagerUpdater";
 
         public CAnimParameterManagerUpdater (IntPtr pointer) : base(pointer) {}
@@ -2521,7 +2521,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimUpdateSharedData : NativeObject {
+    public partial class CAnimUpdateSharedData : NativeObject {
         private const string ThisClassName = "CAnimUpdateSharedData";
 
         public CAnimUpdateSharedData (IntPtr pointer) : base(pointer) {}
@@ -2530,7 +2530,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CBlendCurve : NativeObject {
+    public partial class CBlendCurve : NativeObject {
         private const string ThisClassName = "CBlendCurve";
 
         public CBlendCurve (IntPtr pointer) : base(pointer) {}
@@ -2539,7 +2539,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ParamSpanSample_t : NativeObject {
+    public partial class ParamSpanSample_t : NativeObject {
         private const string ThisClassName = "ParamSpanSample_t";
 
         public ParamSpanSample_t (IntPtr pointer) : base(pointer) {}
@@ -2548,7 +2548,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ParamSpan_t : NativeObject {
+    public partial class ParamSpan_t : NativeObject {
         private const string ThisClassName = "ParamSpan_t";
 
         public ParamSpan_t (IntPtr pointer) : base(pointer) {}
@@ -2557,7 +2557,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CParamSpanUpdater : NativeObject {
+    public partial class CParamSpanUpdater : NativeObject {
         private const string ThisClassName = "CParamSpanUpdater";
 
         public CParamSpanUpdater (IntPtr pointer) : base(pointer) {}
@@ -2566,7 +2566,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimGraphSettingsGroup : NativeObject {
+    public partial class CAnimGraphSettingsGroup : NativeObject {
         private const string ThisClassName = "CAnimGraphSettingsGroup";
 
         public CAnimGraphSettingsGroup (IntPtr pointer) : base(pointer) {}
@@ -2575,7 +2575,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimGraphSettingsManager : NativeObject {
+    public partial class CAnimGraphSettingsManager : NativeObject {
         private const string ThisClassName = "CAnimGraphSettingsManager";
 
         public CAnimGraphSettingsManager (IntPtr pointer) : base(pointer) {}
@@ -2584,7 +2584,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CCachedPose : NativeObject {
+    public partial class CCachedPose : NativeObject {
         private const string ThisClassName = "CCachedPose";
 
         public CCachedPose (IntPtr pointer) : base(pointer) {}
@@ -2593,7 +2593,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CStaticPoseCache : NativeObject {
+    public partial class CStaticPoseCache : NativeObject {
         private const string ThisClassName = "CStaticPoseCache";
 
         public CStaticPoseCache (IntPtr pointer) : base(pointer) {}
@@ -2602,7 +2602,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CStaticPoseCacheBuilder : CStaticPoseCache {
+    public partial class CStaticPoseCacheBuilder : CStaticPoseCache {
         private const string ThisClassName = "CStaticPoseCacheBuilder";
 
         public CStaticPoseCacheBuilder (IntPtr pointer) : base(pointer) {}
@@ -2611,7 +2611,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimActionUpdater : NativeObject {
+    public partial class CAnimActionUpdater : NativeObject {
         private const string ThisClassName = "CAnimActionUpdater";
 
         public CAnimActionUpdater (IntPtr pointer) : base(pointer) {}
@@ -2620,7 +2620,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CEmitTagActionUpdater : CAnimActionUpdater {
+    public partial class CEmitTagActionUpdater : CAnimActionUpdater {
         private const string ThisClassName = "CEmitTagActionUpdater";
 
         public CEmitTagActionUpdater (IntPtr pointer) : base(pointer) {}
@@ -2629,7 +2629,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSetParameterActionUpdater : CAnimActionUpdater {
+    public partial class CSetParameterActionUpdater : CAnimActionUpdater {
         private const string ThisClassName = "CSetParameterActionUpdater";
 
         public CSetParameterActionUpdater (IntPtr pointer) : base(pointer) {}
@@ -2638,7 +2638,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CToggleComponentActionUpdater : CAnimActionUpdater {
+    public partial class CToggleComponentActionUpdater : CAnimActionUpdater {
         private const string ThisClassName = "CToggleComponentActionUpdater";
 
         public CToggleComponentActionUpdater (IntPtr pointer) : base(pointer) {}
@@ -2647,7 +2647,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CExpressionActionUpdater : CAnimActionUpdater {
+    public partial class CExpressionActionUpdater : CAnimActionUpdater {
         private const string ThisClassName = "CExpressionActionUpdater";
 
         public CExpressionActionUpdater (IntPtr pointer) : base(pointer) {}
@@ -2656,7 +2656,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimTagBase : NativeObject {
+    public partial class CAnimTagBase : NativeObject {
         private const string ThisClassName = "CAnimTagBase";
 
         public CAnimTagBase (IntPtr pointer) : base(pointer) {}
@@ -2665,7 +2665,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimTagManagerUpdater : NativeObject {
+    public partial class CAnimTagManagerUpdater : NativeObject {
         private const string ThisClassName = "CAnimTagManagerUpdater";
 
         public CAnimTagManagerUpdater (IntPtr pointer) : base(pointer) {}
@@ -2674,7 +2674,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAudioAnimTag : CAnimTagBase {
+    public partial class CAudioAnimTag : CAnimTagBase {
         private const string ThisClassName = "CAudioAnimTag";
 
         public CAudioAnimTag (IntPtr pointer) : base(pointer) {}
@@ -2683,7 +2683,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CBodyGroupSetting : NativeObject {
+    public partial class CBodyGroupSetting : NativeObject {
         private const string ThisClassName = "CBodyGroupSetting";
 
         public CBodyGroupSetting (IntPtr pointer) : base(pointer) {}
@@ -2692,7 +2692,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CBodyGroupAnimTag : CAnimTagBase {
+    public partial class CBodyGroupAnimTag : CAnimTagBase {
         private const string ThisClassName = "CBodyGroupAnimTag";
 
         public CBodyGroupAnimTag (IntPtr pointer) : base(pointer) {}
@@ -2701,7 +2701,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CClothSettingsAnimTag : CAnimTagBase {
+    public partial class CClothSettingsAnimTag : CAnimTagBase {
         private const string ThisClassName = "CClothSettingsAnimTag";
 
         public CClothSettingsAnimTag (IntPtr pointer) : base(pointer) {}
@@ -2710,7 +2710,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFootFallAnimTag : CAnimTagBase {
+    public partial class CFootFallAnimTag : CAnimTagBase {
         private const string ThisClassName = "CFootFallAnimTag";
 
         public CFootFallAnimTag (IntPtr pointer) : base(pointer) {}
@@ -2719,7 +2719,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFootstepLandedAnimTag : CAnimTagBase {
+    public partial class CFootstepLandedAnimTag : CAnimTagBase {
         private const string ThisClassName = "CFootstepLandedAnimTag";
 
         public CFootstepLandedAnimTag (IntPtr pointer) : base(pointer) {}
@@ -2728,7 +2728,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CMaterialAttributeAnimTag : CAnimTagBase {
+    public partial class CMaterialAttributeAnimTag : CAnimTagBase {
         private const string ThisClassName = "CMaterialAttributeAnimTag";
 
         public CMaterialAttributeAnimTag (IntPtr pointer) : base(pointer) {}
@@ -2737,7 +2737,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CParticleAnimTag : CAnimTagBase {
+    public partial class CParticleAnimTag : CAnimTagBase {
         private const string ThisClassName = "CParticleAnimTag";
 
         public CParticleAnimTag (IntPtr pointer) : base(pointer) {}
@@ -2746,7 +2746,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CRagdollAnimTag : CAnimTagBase {
+    public partial class CRagdollAnimTag : CAnimTagBase {
         private const string ThisClassName = "CRagdollAnimTag";
 
         public CRagdollAnimTag (IntPtr pointer) : base(pointer) {}
@@ -2755,7 +2755,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSequenceFinishedAnimTag : CAnimTagBase {
+    public partial class CSequenceFinishedAnimTag : CAnimTagBase {
         private const string ThisClassName = "CSequenceFinishedAnimTag";
 
         public CSequenceFinishedAnimTag (IntPtr pointer) : base(pointer) {}
@@ -2764,7 +2764,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CStringAnimTag : CAnimTagBase {
+    public partial class CStringAnimTag : CAnimTagBase {
         private const string ThisClassName = "CStringAnimTag";
 
         public CStringAnimTag (IntPtr pointer) : base(pointer) {}
@@ -2773,7 +2773,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CTaskStatusAnimTag : CAnimTagBase {
+    public partial class CTaskStatusAnimTag : CAnimTagBase {
         private const string ThisClassName = "CTaskStatusAnimTag";
 
         public CTaskStatusAnimTag (IntPtr pointer) : base(pointer) {}
@@ -2782,7 +2782,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimComponentUpdater : NativeObject {
+    public partial class CAnimComponentUpdater : NativeObject {
         private const string ThisClassName = "CAnimComponentUpdater";
 
         public CAnimComponentUpdater (IntPtr pointer) : base(pointer) {}
@@ -2791,7 +2791,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimScriptComponentUpdater : CAnimComponentUpdater {
+    public partial class CAnimScriptComponentUpdater : CAnimComponentUpdater {
         private const string ThisClassName = "CAnimScriptComponentUpdater";
 
         public CAnimScriptComponentUpdater (IntPtr pointer) : base(pointer) {}
@@ -2800,7 +2800,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CCPPScriptComponentUpdater : CAnimComponentUpdater {
+    public partial class CCPPScriptComponentUpdater : CAnimComponentUpdater {
         private const string ThisClassName = "CCPPScriptComponentUpdater";
 
         public CCPPScriptComponentUpdater (IntPtr pointer) : base(pointer) {}
@@ -2809,7 +2809,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CDampedValueUpdateItem : NativeObject {
+    public partial class CDampedValueUpdateItem : NativeObject {
         private const string ThisClassName = "CDampedValueUpdateItem";
 
         public CDampedValueUpdateItem (IntPtr pointer) : base(pointer) {}
@@ -2818,7 +2818,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CDampedValueComponentUpdater : CAnimComponentUpdater {
+    public partial class CDampedValueComponentUpdater : CAnimComponentUpdater {
         private const string ThisClassName = "CDampedValueComponentUpdater";
 
         public CDampedValueComponentUpdater (IntPtr pointer) : base(pointer) {}
@@ -2827,7 +2827,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CDemoSettingsComponentUpdater : CAnimComponentUpdater {
+    public partial class CDemoSettingsComponentUpdater : CAnimComponentUpdater {
         private const string ThisClassName = "CDemoSettingsComponentUpdater";
 
         public CDemoSettingsComponentUpdater (IntPtr pointer) : base(pointer) {}
@@ -2836,7 +2836,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CLODComponentUpdater : CAnimComponentUpdater {
+    public partial class CLODComponentUpdater : CAnimComponentUpdater {
         private const string ThisClassName = "CLODComponentUpdater";
 
         public CLODComponentUpdater (IntPtr pointer) : base(pointer) {}
@@ -2845,7 +2845,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CLookComponentUpdater : CAnimComponentUpdater {
+    public partial class CLookComponentUpdater : CAnimComponentUpdater {
         private const string ThisClassName = "CLookComponentUpdater";
 
         public CLookComponentUpdater (IntPtr pointer) : base(pointer) {}
@@ -2854,7 +2854,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CMovementMode : NativeObject {
+    public partial class CMovementMode : NativeObject {
         private const string ThisClassName = "CMovementMode";
 
         public CMovementMode (IntPtr pointer) : base(pointer) {}
@@ -2863,7 +2863,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CMovementComponentUpdater : CAnimComponentUpdater {
+    public partial class CMovementComponentUpdater : CAnimComponentUpdater {
         private const string ThisClassName = "CMovementComponentUpdater";
 
         public CMovementComponentUpdater (IntPtr pointer) : base(pointer) {}
@@ -2872,7 +2872,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class WeightList : NativeObject {
+    public partial class WeightList : NativeObject {
         private const string ThisClassName = "WeightList";
 
         public WeightList (IntPtr pointer) : base(pointer) {}
@@ -2881,7 +2881,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CRagdollComponentUpdater : CAnimComponentUpdater {
+    public partial class CRagdollComponentUpdater : CAnimComponentUpdater {
         private const string ThisClassName = "CRagdollComponentUpdater";
 
         public CRagdollComponentUpdater (IntPtr pointer) : base(pointer) {}
@@ -2890,7 +2890,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSlopeComponentUpdater : CAnimComponentUpdater {
+    public partial class CSlopeComponentUpdater : CAnimComponentUpdater {
         private const string ThisClassName = "CSlopeComponentUpdater";
 
         public CSlopeComponentUpdater (IntPtr pointer) : base(pointer) {}
@@ -2899,7 +2899,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CVRInputComponentUpdater : CAnimComponentUpdater {
+    public partial class CVRInputComponentUpdater : CAnimComponentUpdater {
         private const string ThisClassName = "CVRInputComponentUpdater";
 
         public CVRInputComponentUpdater (IntPtr pointer) : base(pointer) {}
@@ -2908,7 +2908,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CStateMachineComponentUpdater : CAnimComponentUpdater {
+    public partial class CStateMachineComponentUpdater : CAnimComponentUpdater {
         private const string ThisClassName = "CStateMachineComponentUpdater";
 
         public CStateMachineComponentUpdater (IntPtr pointer) : base(pointer) {}
@@ -2917,7 +2917,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CMotionDataSet : NativeObject {
+    public partial class CMotionDataSet : NativeObject {
         private const string ThisClassName = "CMotionDataSet";
 
         public CMotionDataSet (IntPtr pointer) : base(pointer) {}
@@ -2926,7 +2926,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CMotionGraphGroup : NativeObject {
+    public partial class CMotionGraphGroup : NativeObject {
         private const string ThisClassName = "CMotionGraphGroup";
 
         public CMotionGraphGroup (IntPtr pointer) : base(pointer) {}
@@ -2935,7 +2935,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class SampleCode : NativeObject {
+    public partial class SampleCode : NativeObject {
         private const string ThisClassName = "SampleCode";
 
         public SampleCode (IntPtr pointer) : base(pointer) {}
@@ -2944,7 +2944,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class MotionDBIndex : NativeObject {
+    public partial class MotionDBIndex : NativeObject {
         private const string ThisClassName = "MotionDBIndex";
 
         public MotionDBIndex (IntPtr pointer) : base(pointer) {}
@@ -2953,7 +2953,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CVectorQuantizer : NativeObject {
+    public partial class CVectorQuantizer : NativeObject {
         private const string ThisClassName = "CVectorQuantizer";
 
         public CVectorQuantizer (IntPtr pointer) : base(pointer) {}
@@ -2962,7 +2962,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CProductQuantizer : NativeObject {
+    public partial class CProductQuantizer : NativeObject {
         private const string ThisClassName = "CProductQuantizer";
 
         public CProductQuantizer (IntPtr pointer) : base(pointer) {}
@@ -2971,7 +2971,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CMotionSearchNode : NativeObject {
+    public partial class CMotionSearchNode : NativeObject {
         private const string ThisClassName = "CMotionSearchNode";
 
         public CMotionSearchNode (IntPtr pointer) : base(pointer) {}
@@ -2980,7 +2980,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CMotionSearchDB : NativeObject {
+    public partial class CMotionSearchDB : NativeObject {
         private const string ThisClassName = "CMotionSearchDB";
 
         public CMotionSearchDB (IntPtr pointer) : base(pointer) {}
@@ -2989,7 +2989,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CMotionGraph : NativeObject {
+    public partial class CMotionGraph : NativeObject {
         private const string ThisClassName = "CMotionGraph";
 
         public CMotionGraph (IntPtr pointer) : base(pointer) {}
@@ -2998,7 +2998,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CEditableMotionGraph : CMotionGraph {
+    public partial class CEditableMotionGraph : CMotionGraph {
         private const string ThisClassName = "CEditableMotionGraph";
 
         public CEditableMotionGraph (IntPtr pointer) : base(pointer) {}
@@ -3007,7 +3007,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CMotionNode : NativeObject {
+    public partial class CMotionNode : NativeObject {
         private const string ThisClassName = "CMotionNode";
 
         public CMotionNode (IntPtr pointer) : base(pointer) {}
@@ -3016,7 +3016,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CMotionNodeSequence : CMotionNode {
+    public partial class CMotionNodeSequence : CMotionNode {
         private const string ThisClassName = "CMotionNodeSequence";
 
         public CMotionNodeSequence (IntPtr pointer) : base(pointer) {}
@@ -3025,7 +3025,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class MotionBlendItem : NativeObject {
+    public partial class MotionBlendItem : NativeObject {
         private const string ThisClassName = "MotionBlendItem";
 
         public MotionBlendItem (IntPtr pointer) : base(pointer) {}
@@ -3034,7 +3034,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CMotionNodeBlend1D : CMotionNode {
+    public partial class CMotionNodeBlend1D : CMotionNode {
         private const string ThisClassName = "CMotionNodeBlend1D";
 
         public CMotionNodeBlend1D (IntPtr pointer) : base(pointer) {}
@@ -3043,7 +3043,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CMotionMetricEvaluator : NativeObject {
+    public partial class CMotionMetricEvaluator : NativeObject {
         private const string ThisClassName = "CMotionMetricEvaluator";
 
         public CMotionMetricEvaluator (IntPtr pointer) : base(pointer) {}
@@ -3052,7 +3052,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CBlockSelectionMetricEvaluator : CMotionMetricEvaluator {
+    public partial class CBlockSelectionMetricEvaluator : CMotionMetricEvaluator {
         private const string ThisClassName = "CBlockSelectionMetricEvaluator";
 
         public CBlockSelectionMetricEvaluator (IntPtr pointer) : base(pointer) {}
@@ -3061,7 +3061,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CBonePositionMetricEvaluator : CMotionMetricEvaluator {
+    public partial class CBonePositionMetricEvaluator : CMotionMetricEvaluator {
         private const string ThisClassName = "CBonePositionMetricEvaluator";
 
         public CBonePositionMetricEvaluator (IntPtr pointer) : base(pointer) {}
@@ -3070,7 +3070,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CBoneVelocityMetricEvaluator : CMotionMetricEvaluator {
+    public partial class CBoneVelocityMetricEvaluator : CMotionMetricEvaluator {
         private const string ThisClassName = "CBoneVelocityMetricEvaluator";
 
         public CBoneVelocityMetricEvaluator (IntPtr pointer) : base(pointer) {}
@@ -3079,7 +3079,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CCurrentRotationVelocityMetricEvaluator : CMotionMetricEvaluator {
+    public partial class CCurrentRotationVelocityMetricEvaluator : CMotionMetricEvaluator {
         private const string ThisClassName = "CCurrentRotationVelocityMetricEvaluator";
 
         public CCurrentRotationVelocityMetricEvaluator (IntPtr pointer) : base(pointer) {}
@@ -3088,7 +3088,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CCurrentVelocityMetricEvaluator : CMotionMetricEvaluator {
+    public partial class CCurrentVelocityMetricEvaluator : CMotionMetricEvaluator {
         private const string ThisClassName = "CCurrentVelocityMetricEvaluator";
 
         public CCurrentVelocityMetricEvaluator (IntPtr pointer) : base(pointer) {}
@@ -3097,7 +3097,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CDistanceRemainingMetricEvaluator : CMotionMetricEvaluator {
+    public partial class CDistanceRemainingMetricEvaluator : CMotionMetricEvaluator {
         private const string ThisClassName = "CDistanceRemainingMetricEvaluator";
 
         public CDistanceRemainingMetricEvaluator (IntPtr pointer) : base(pointer) {}
@@ -3106,7 +3106,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFootCycleMetricEvaluator : CMotionMetricEvaluator {
+    public partial class CFootCycleMetricEvaluator : CMotionMetricEvaluator {
         private const string ThisClassName = "CFootCycleMetricEvaluator";
 
         public CFootCycleMetricEvaluator (IntPtr pointer) : base(pointer) {}
@@ -3115,7 +3115,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFootPositionMetricEvaluator : CMotionMetricEvaluator {
+    public partial class CFootPositionMetricEvaluator : CMotionMetricEvaluator {
         private const string ThisClassName = "CFootPositionMetricEvaluator";
 
         public CFootPositionMetricEvaluator (IntPtr pointer) : base(pointer) {}
@@ -3124,7 +3124,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFutureFacingMetricEvaluator : CMotionMetricEvaluator {
+    public partial class CFutureFacingMetricEvaluator : CMotionMetricEvaluator {
         private const string ThisClassName = "CFutureFacingMetricEvaluator";
 
         public CFutureFacingMetricEvaluator (IntPtr pointer) : base(pointer) {}
@@ -3133,7 +3133,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFutureVelocityMetricEvaluator : CMotionMetricEvaluator {
+    public partial class CFutureVelocityMetricEvaluator : CMotionMetricEvaluator {
         private const string ThisClassName = "CFutureVelocityMetricEvaluator";
 
         public CFutureVelocityMetricEvaluator (IntPtr pointer) : base(pointer) {}
@@ -3142,7 +3142,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPathMetricEvaluator : CMotionMetricEvaluator {
+    public partial class CPathMetricEvaluator : CMotionMetricEvaluator {
         private const string ThisClassName = "CPathMetricEvaluator";
 
         public CPathMetricEvaluator (IntPtr pointer) : base(pointer) {}
@@ -3151,7 +3151,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CStepsRemainingMetricEvaluator : CMotionMetricEvaluator {
+    public partial class CStepsRemainingMetricEvaluator : CMotionMetricEvaluator {
         private const string ThisClassName = "CStepsRemainingMetricEvaluator";
 
         public CStepsRemainingMetricEvaluator (IntPtr pointer) : base(pointer) {}
@@ -3160,7 +3160,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CTimeRemainingMetricEvaluator : CMotionMetricEvaluator {
+    public partial class CTimeRemainingMetricEvaluator : CMotionMetricEvaluator {
         private const string ThisClassName = "CTimeRemainingMetricEvaluator";
 
         public CTimeRemainingMetricEvaluator (IntPtr pointer) : base(pointer) {}
@@ -3169,7 +3169,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimMotorUpdaterBase : NativeObject {
+    public partial class CAnimMotorUpdaterBase : NativeObject {
         private const string ThisClassName = "CAnimMotorUpdaterBase";
 
         public CAnimMotorUpdaterBase (IntPtr pointer) : base(pointer) {}
@@ -3178,7 +3178,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPathAnimMotorUpdaterBase : CAnimMotorUpdaterBase {
+    public partial class CPathAnimMotorUpdaterBase : CAnimMotorUpdaterBase {
         private const string ThisClassName = "CPathAnimMotorUpdaterBase";
 
         public CPathAnimMotorUpdaterBase (IntPtr pointer) : base(pointer) {}
@@ -3187,7 +3187,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CDampedPathAnimMotorUpdater : CPathAnimMotorUpdaterBase {
+    public partial class CDampedPathAnimMotorUpdater : CPathAnimMotorUpdaterBase {
         private const string ThisClassName = "CDampedPathAnimMotorUpdater";
 
         public CDampedPathAnimMotorUpdater (IntPtr pointer) : base(pointer) {}
@@ -3196,7 +3196,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPathAnimMotorUpdater : CPathAnimMotorUpdaterBase {
+    public partial class CPathAnimMotorUpdater : CPathAnimMotorUpdaterBase {
         private const string ThisClassName = "CPathAnimMotorUpdater";
 
         public CPathAnimMotorUpdater (IntPtr pointer) : base(pointer) {}
@@ -3205,7 +3205,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPlayerInputAnimMotorUpdater : CAnimMotorUpdaterBase {
+    public partial class CPlayerInputAnimMotorUpdater : CAnimMotorUpdaterBase {
         private const string ThisClassName = "CPlayerInputAnimMotorUpdater";
 
         public CPlayerInputAnimMotorUpdater (IntPtr pointer) : base(pointer) {}
@@ -3214,7 +3214,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class AimMatrixOpFixedSettings_t : NativeObject {
+    public partial class AimMatrixOpFixedSettings_t : NativeObject {
         private const string ThisClassName = "AimMatrixOpFixedSettings_t";
 
         public AimMatrixOpFixedSettings_t (IntPtr pointer) : base(pointer) {}
@@ -3223,7 +3223,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FollowAttachmentSettings_t : NativeObject {
+    public partial class FollowAttachmentSettings_t : NativeObject {
         private const string ThisClassName = "FollowAttachmentSettings_t";
 
         public FollowAttachmentSettings_t (IntPtr pointer) : base(pointer) {}
@@ -3232,7 +3232,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FootLockPoseOpFixedSettings : NativeObject {
+    public partial class FootLockPoseOpFixedSettings : NativeObject {
         private const string ThisClassName = "FootLockPoseOpFixedSettings";
 
         public FootLockPoseOpFixedSettings (IntPtr pointer) : base(pointer) {}
@@ -3241,7 +3241,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FootPinningPoseOpFixedData_t : NativeObject {
+    public partial class FootPinningPoseOpFixedData_t : NativeObject {
         private const string ThisClassName = "FootPinningPoseOpFixedData_t";
 
         public FootPinningPoseOpFixedData_t (IntPtr pointer) : base(pointer) {}
@@ -3250,7 +3250,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class HitReactFixedSettings_t : NativeObject {
+    public partial class HitReactFixedSettings_t : NativeObject {
         private const string ThisClassName = "HitReactFixedSettings_t";
 
         public HitReactFixedSettings_t (IntPtr pointer) : base(pointer) {}
@@ -3259,7 +3259,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class JiggleBoneSettings_t : NativeObject {
+    public partial class JiggleBoneSettings_t : NativeObject {
         private const string ThisClassName = "JiggleBoneSettings_t";
 
         public JiggleBoneSettings_t (IntPtr pointer) : base(pointer) {}
@@ -3268,7 +3268,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class JiggleBoneSettingsList_t : NativeObject {
+    public partial class JiggleBoneSettingsList_t : NativeObject {
         private const string ThisClassName = "JiggleBoneSettingsList_t";
 
         public JiggleBoneSettingsList_t (IntPtr pointer) : base(pointer) {}
@@ -3277,7 +3277,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class LookAtBone_t : NativeObject {
+    public partial class LookAtBone_t : NativeObject {
         private const string ThisClassName = "LookAtBone_t";
 
         public LookAtBone_t (IntPtr pointer) : base(pointer) {}
@@ -3286,7 +3286,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class LookAtOpFixedSettings_t : NativeObject {
+    public partial class LookAtOpFixedSettings_t : NativeObject {
         private const string ThisClassName = "LookAtOpFixedSettings_t";
 
         public LookAtOpFixedSettings_t (IntPtr pointer) : base(pointer) {}
@@ -3295,7 +3295,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FingerSource_t : NativeObject {
+    public partial class FingerSource_t : NativeObject {
         private const string ThisClassName = "FingerSource_t";
 
         public FingerSource_t (IntPtr pointer) : base(pointer) {}
@@ -3304,7 +3304,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FingerBone_t : NativeObject {
+    public partial class FingerBone_t : NativeObject {
         private const string ThisClassName = "FingerBone_t";
 
         public FingerBone_t (IntPtr pointer) : base(pointer) {}
@@ -3313,7 +3313,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FingerChain_t : NativeObject {
+    public partial class FingerChain_t : NativeObject {
         private const string ThisClassName = "FingerChain_t";
 
         public FingerChain_t (IntPtr pointer) : base(pointer) {}
@@ -3322,7 +3322,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class WristBone_t : NativeObject {
+    public partial class WristBone_t : NativeObject {
         private const string ThisClassName = "WristBone_t";
 
         public WristBone_t (IntPtr pointer) : base(pointer) {}
@@ -3331,7 +3331,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class SkeletalInputOpFixedSettings_t : NativeObject {
+    public partial class SkeletalInputOpFixedSettings_t : NativeObject {
         private const string ThisClassName = "SkeletalInputOpFixedSettings_t";
 
         public SkeletalInputOpFixedSettings_t (IntPtr pointer) : base(pointer) {}
@@ -3340,7 +3340,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ChainToSolveData_t : NativeObject {
+    public partial class ChainToSolveData_t : NativeObject {
         private const string ThisClassName = "ChainToSolveData_t";
 
         public ChainToSolveData_t (IntPtr pointer) : base(pointer) {}
@@ -3349,7 +3349,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class SolveIKChainPoseOpFixedSettings_t : NativeObject {
+    public partial class SolveIKChainPoseOpFixedSettings_t : NativeObject {
         private const string ThisClassName = "SolveIKChainPoseOpFixedSettings_t";
 
         public SolveIKChainPoseOpFixedSettings_t (IntPtr pointer) : base(pointer) {}
@@ -3358,7 +3358,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimParameterBase : NativeObject {
+    public partial class CAnimParameterBase : NativeObject {
         private const string ThisClassName = "CAnimParameterBase";
 
         public CAnimParameterBase (IntPtr pointer) : base(pointer) {}
@@ -3367,7 +3367,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CConcreteAnimParameter : CAnimParameterBase {
+    public partial class CConcreteAnimParameter : CAnimParameterBase {
         private const string ThisClassName = "CConcreteAnimParameter";
 
         public CConcreteAnimParameter (IntPtr pointer) : base(pointer) {}
@@ -3376,7 +3376,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CVirtualAnimParameter : CAnimParameterBase {
+    public partial class CVirtualAnimParameter : CAnimParameterBase {
         private const string ThisClassName = "CVirtualAnimParameter";
 
         public CVirtualAnimParameter (IntPtr pointer) : base(pointer) {}
@@ -3385,7 +3385,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CBoolAnimParameter : CConcreteAnimParameter {
+    public partial class CBoolAnimParameter : CConcreteAnimParameter {
         private const string ThisClassName = "CBoolAnimParameter";
 
         public CBoolAnimParameter (IntPtr pointer) : base(pointer) {}
@@ -3394,7 +3394,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CEnumAnimParameter : CConcreteAnimParameter {
+    public partial class CEnumAnimParameter : CConcreteAnimParameter {
         private const string ThisClassName = "CEnumAnimParameter";
 
         public CEnumAnimParameter (IntPtr pointer) : base(pointer) {}
@@ -3403,7 +3403,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CIntAnimParameter : CConcreteAnimParameter {
+    public partial class CIntAnimParameter : CConcreteAnimParameter {
         private const string ThisClassName = "CIntAnimParameter";
 
         public CIntAnimParameter (IntPtr pointer) : base(pointer) {}
@@ -3412,7 +3412,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFloatAnimParameter : CConcreteAnimParameter {
+    public partial class CFloatAnimParameter : CConcreteAnimParameter {
         private const string ThisClassName = "CFloatAnimParameter";
 
         public CFloatAnimParameter (IntPtr pointer) : base(pointer) {}
@@ -3421,7 +3421,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CVectorAnimParameter : CConcreteAnimParameter {
+    public partial class CVectorAnimParameter : CConcreteAnimParameter {
         private const string ThisClassName = "CVectorAnimParameter";
 
         public CVectorAnimParameter (IntPtr pointer) : base(pointer) {}
@@ -3430,7 +3430,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CQuaternionAnimParameter : CConcreteAnimParameter {
+    public partial class CQuaternionAnimParameter : CConcreteAnimParameter {
         private const string ThisClassName = "CQuaternionAnimParameter";
 
         public CQuaternionAnimParameter (IntPtr pointer) : base(pointer) {}
@@ -3439,7 +3439,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ScriptInfo_t : NativeObject {
+    public partial class ScriptInfo_t : NativeObject {
         private const string ThisClassName = "ScriptInfo_t";
 
         public ScriptInfo_t (IntPtr pointer) : base(pointer) {}
@@ -3448,7 +3448,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimScriptManager : NativeObject {
+    public partial class CAnimScriptManager : NativeObject {
         private const string ThisClassName = "CAnimScriptManager";
 
         public CAnimScriptManager (IntPtr pointer) : base(pointer) {}
@@ -3457,7 +3457,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CStateActionUpdater : NativeObject {
+    public partial class CStateActionUpdater : NativeObject {
         private const string ThisClassName = "CStateActionUpdater";
 
         public CStateActionUpdater (IntPtr pointer) : base(pointer) {}
@@ -3466,7 +3466,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CTransitionUpdateData : NativeObject {
+    public partial class CTransitionUpdateData : NativeObject {
         private const string ThisClassName = "CTransitionUpdateData";
 
         public CTransitionUpdateData (IntPtr pointer) : base(pointer) {}
@@ -3475,7 +3475,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CStateUpdateData : NativeObject {
+    public partial class CStateUpdateData : NativeObject {
         private const string ThisClassName = "CStateUpdateData";
 
         public CStateUpdateData (IntPtr pointer) : base(pointer) {}
@@ -3484,7 +3484,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimStateMachineUpdater : NativeObject {
+    public partial class CAnimStateMachineUpdater : NativeObject {
         private const string ThisClassName = "CAnimStateMachineUpdater";
 
         public CAnimStateMachineUpdater (IntPtr pointer) : base(pointer) {}
@@ -3493,7 +3493,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimUpdateNodeRef : NativeObject {
+    public partial class CAnimUpdateNodeRef : NativeObject {
         private const string ThisClassName = "CAnimUpdateNodeRef";
 
         public CAnimUpdateNodeRef (IntPtr pointer) : base(pointer) {}
@@ -3502,7 +3502,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimUpdateNodeBase : NativeObject {
+    public partial class CAnimUpdateNodeBase : NativeObject {
         private const string ThisClassName = "CAnimUpdateNodeBase";
 
         public CAnimUpdateNodeBase (IntPtr pointer) : base(pointer) {}
@@ -3511,7 +3511,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CBinaryUpdateNode : CAnimUpdateNodeBase {
+    public partial class CBinaryUpdateNode : CAnimUpdateNodeBase {
         private const string ThisClassName = "CBinaryUpdateNode";
 
         public CBinaryUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -3520,7 +3520,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CBlendUpdateNode : CAnimUpdateNodeBase {
+    public partial class CBlendUpdateNode : CAnimUpdateNodeBase {
         private const string ThisClassName = "CBlendUpdateNode";
 
         public CBlendUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -3529,7 +3529,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class BlendItem_t : NativeObject {
+    public partial class BlendItem_t : NativeObject {
         private const string ThisClassName = "BlendItem_t";
 
         public BlendItem_t (IntPtr pointer) : base(pointer) {}
@@ -3538,7 +3538,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CBlend2DUpdateNode : CAnimUpdateNodeBase {
+    public partial class CBlend2DUpdateNode : CAnimUpdateNodeBase {
         private const string ThisClassName = "CBlend2DUpdateNode";
 
         public CBlend2DUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -3547,7 +3547,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CBoneMaskUpdateNode : CBinaryUpdateNode {
+    public partial class CBoneMaskUpdateNode : CBinaryUpdateNode {
         private const string ThisClassName = "CBoneMaskUpdateNode";
 
         public CBoneMaskUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -3556,7 +3556,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CChoiceUpdateNode : CAnimUpdateNodeBase {
+    public partial class CChoiceUpdateNode : CAnimUpdateNodeBase {
         private const string ThisClassName = "CChoiceUpdateNode";
 
         public CChoiceUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -3565,7 +3565,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CDirectPlaybackTagData : NativeObject {
+    public partial class CDirectPlaybackTagData : NativeObject {
         private const string ThisClassName = "CDirectPlaybackTagData";
 
         public CDirectPlaybackTagData (IntPtr pointer) : base(pointer) {}
@@ -3574,7 +3574,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FootFixedData_t : NativeObject {
+    public partial class FootFixedData_t : NativeObject {
         private const string ThisClassName = "FootFixedData_t";
 
         public FootFixedData_t (IntPtr pointer) : base(pointer) {}
@@ -3583,7 +3583,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class TraceSettings_t : NativeObject {
+    public partial class TraceSettings_t : NativeObject {
         private const string ThisClassName = "TraceSettings_t";
 
         public TraceSettings_t (IntPtr pointer) : base(pointer) {}
@@ -3592,7 +3592,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FootFixedSettings : NativeObject {
+    public partial class FootFixedSettings : NativeObject {
         private const string ThisClassName = "FootFixedSettings";
 
         public FootFixedSettings (IntPtr pointer) : base(pointer) {}
@@ -3601,7 +3601,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FootStepTrigger : NativeObject {
+    public partial class FootStepTrigger : NativeObject {
         private const string ThisClassName = "FootStepTrigger";
 
         public FootStepTrigger (IntPtr pointer) : base(pointer) {}
@@ -3610,7 +3610,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CLeafUpdateNode : CAnimUpdateNodeBase {
+    public partial class CLeafUpdateNode : CAnimUpdateNodeBase {
         private const string ThisClassName = "CLeafUpdateNode";
 
         public CLeafUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -3619,7 +3619,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CLeanMatrixUpdateNode : CLeafUpdateNode {
+    public partial class CLeanMatrixUpdateNode : CLeafUpdateNode {
         private const string ThisClassName = "CLeanMatrixUpdateNode";
 
         public CLeanMatrixUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -3628,7 +3628,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CMotionGraphUpdateNode : CLeafUpdateNode {
+    public partial class CMotionGraphUpdateNode : CLeafUpdateNode {
         private const string ThisClassName = "CMotionGraphUpdateNode";
 
         public CMotionGraphUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -3637,7 +3637,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CMotionMatchingUpdateNode : CLeafUpdateNode {
+    public partial class CMotionMatchingUpdateNode : CLeafUpdateNode {
         private const string ThisClassName = "CMotionMatchingUpdateNode";
 
         public CMotionMatchingUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -3646,7 +3646,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSelectorUpdateNode : CAnimUpdateNodeBase {
+    public partial class CSelectorUpdateNode : CAnimUpdateNodeBase {
         private const string ThisClassName = "CSelectorUpdateNode";
 
         public CSelectorUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -3655,7 +3655,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSequenceUpdateNode : CLeafUpdateNode {
+    public partial class CSequenceUpdateNode : CLeafUpdateNode {
         private const string ThisClassName = "CSequenceUpdateNode";
 
         public CSequenceUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -3664,7 +3664,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSingleFrameUpdateNode : CLeafUpdateNode {
+    public partial class CSingleFrameUpdateNode : CLeafUpdateNode {
         private const string ThisClassName = "CSingleFrameUpdateNode";
 
         public CSingleFrameUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -3673,7 +3673,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSkeletalInputUpdateNode : CLeafUpdateNode {
+    public partial class CSkeletalInputUpdateNode : CLeafUpdateNode {
         private const string ThisClassName = "CSkeletalInputUpdateNode";
 
         public CSkeletalInputUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -3682,7 +3682,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSolveIKTargetHandle_t : NativeObject {
+    public partial class CSolveIKTargetHandle_t : NativeObject {
         private const string ThisClassName = "CSolveIKTargetHandle_t";
 
         public CSolveIKTargetHandle_t (IntPtr pointer) : base(pointer) {}
@@ -3691,7 +3691,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class StanceInfo_t : NativeObject {
+    public partial class StanceInfo_t : NativeObject {
         private const string ThisClassName = "StanceInfo_t";
 
         public StanceInfo_t (IntPtr pointer) : base(pointer) {}
@@ -3700,7 +3700,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CStateNodeTransitionData : NativeObject {
+    public partial class CStateNodeTransitionData : NativeObject {
         private const string ThisClassName = "CStateNodeTransitionData";
 
         public CStateNodeTransitionData (IntPtr pointer) : base(pointer) {}
@@ -3709,7 +3709,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CStateNodeStateData : NativeObject {
+    public partial class CStateNodeStateData : NativeObject {
         private const string ThisClassName = "CStateNodeStateData";
 
         public CStateNodeStateData (IntPtr pointer) : base(pointer) {}
@@ -3718,7 +3718,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CStateMachineUpdateNode : CAnimUpdateNodeBase {
+    public partial class CStateMachineUpdateNode : CAnimUpdateNodeBase {
         private const string ThisClassName = "CStateMachineUpdateNode";
 
         public CStateMachineUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -3727,7 +3727,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSubtractUpdateNode : CBinaryUpdateNode {
+    public partial class CSubtractUpdateNode : CBinaryUpdateNode {
         private const string ThisClassName = "CSubtractUpdateNode";
 
         public CSubtractUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -3736,7 +3736,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class TwoBoneIKSettings_t : NativeObject {
+    public partial class TwoBoneIKSettings_t : NativeObject {
         private const string ThisClassName = "TwoBoneIKSettings_t";
 
         public TwoBoneIKSettings_t (IntPtr pointer) : base(pointer) {}
@@ -3745,7 +3745,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CUnaryUpdateNode : CAnimUpdateNodeBase {
+    public partial class CUnaryUpdateNode : CAnimUpdateNodeBase {
         private const string ThisClassName = "CUnaryUpdateNode";
 
         public CUnaryUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -3754,7 +3754,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CWayPointHelperUpdateNode : CUnaryUpdateNode {
+    public partial class CWayPointHelperUpdateNode : CUnaryUpdateNode {
         private const string ThisClassName = "CWayPointHelperUpdateNode";
 
         public CWayPointHelperUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -3763,7 +3763,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CZeroPoseUpdateNode : CLeafUpdateNode {
+    public partial class CZeroPoseUpdateNode : CLeafUpdateNode {
         private const string ThisClassName = "CZeroPoseUpdateNode";
 
         public CZeroPoseUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -3772,7 +3772,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class TagSpan_t : NativeObject {
+    public partial class TagSpan_t : NativeObject {
         private const string ThisClassName = "TagSpan_t";
 
         public TagSpan_t (IntPtr pointer) : base(pointer) {}
@@ -3781,7 +3781,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimNodePath : NativeObject {
+    public partial class CAnimNodePath : NativeObject {
         private const string ThisClassName = "CAnimNodePath";
 
         public CAnimNodePath (IntPtr pointer) : base(pointer) {}
@@ -3790,7 +3790,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ConfigIndex : NativeObject {
+    public partial class ConfigIndex : NativeObject {
         private const string ThisClassName = "ConfigIndex";
 
         public ConfigIndex (IntPtr pointer) : base(pointer) {}
@@ -3799,7 +3799,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class MotionIndex : NativeObject {
+    public partial class MotionIndex : NativeObject {
         private const string ThisClassName = "MotionIndex";
 
         public MotionIndex (IntPtr pointer) : base(pointer) {}
@@ -3808,7 +3808,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CMotionGraphConfig : NativeObject {
+    public partial class CMotionGraphConfig : NativeObject {
         private const string ThisClassName = "CMotionGraphConfig";
 
         public CMotionGraphConfig (IntPtr pointer) : base(pointer) {}
@@ -3817,7 +3817,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPoseHandle : NativeObject {
+    public partial class CPoseHandle : NativeObject {
         private const string ThisClassName = "CPoseHandle";
 
         public CPoseHandle (IntPtr pointer) : base(pointer) {}
@@ -3826,7 +3826,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimationGraphVisualizerPrimitiveBase : NativeObject {
+    public partial class CAnimationGraphVisualizerPrimitiveBase : NativeObject {
         private const string ThisClassName = "CAnimationGraphVisualizerPrimitiveBase";
 
         public CAnimationGraphVisualizerPrimitiveBase (IntPtr pointer) : base(pointer) {}
@@ -3835,7 +3835,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimationGraphVisualizerText : CAnimationGraphVisualizerPrimitiveBase {
+    public partial class CAnimationGraphVisualizerText : CAnimationGraphVisualizerPrimitiveBase {
         private const string ThisClassName = "CAnimationGraphVisualizerText";
 
         public CAnimationGraphVisualizerText (IntPtr pointer) : base(pointer) {}
@@ -3844,7 +3844,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimationGraphVisualizerSphere : CAnimationGraphVisualizerPrimitiveBase {
+    public partial class CAnimationGraphVisualizerSphere : CAnimationGraphVisualizerPrimitiveBase {
         private const string ThisClassName = "CAnimationGraphVisualizerSphere";
 
         public CAnimationGraphVisualizerSphere (IntPtr pointer) : base(pointer) {}
@@ -3853,7 +3853,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimationGraphVisualizerLine : CAnimationGraphVisualizerPrimitiveBase {
+    public partial class CAnimationGraphVisualizerLine : CAnimationGraphVisualizerPrimitiveBase {
         private const string ThisClassName = "CAnimationGraphVisualizerLine";
 
         public CAnimationGraphVisualizerLine (IntPtr pointer) : base(pointer) {}
@@ -3862,7 +3862,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimationGraphVisualizerPie : CAnimationGraphVisualizerPrimitiveBase {
+    public partial class CAnimationGraphVisualizerPie : CAnimationGraphVisualizerPrimitiveBase {
         private const string ThisClassName = "CAnimationGraphVisualizerPie";
 
         public CAnimationGraphVisualizerPie (IntPtr pointer) : base(pointer) {}
@@ -3871,7 +3871,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimationGraphVisualizerAxis : CAnimationGraphVisualizerPrimitiveBase {
+    public partial class CAnimationGraphVisualizerAxis : CAnimationGraphVisualizerPrimitiveBase {
         private const string ThisClassName = "CAnimationGraphVisualizerAxis";
 
         public CAnimationGraphVisualizerAxis (IntPtr pointer) : base(pointer) {}
@@ -3880,7 +3880,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class IKBoneNameAndIndex_t : NativeObject {
+    public partial class IKBoneNameAndIndex_t : NativeObject {
         private const string ThisClassName = "IKBoneNameAndIndex_t";
 
         public IKBoneNameAndIndex_t (IntPtr pointer) : base(pointer) {}
@@ -3889,7 +3889,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class IKSolverSettings_t : NativeObject {
+    public partial class IKSolverSettings_t : NativeObject {
         private const string ThisClassName = "IKSolverSettings_t";
 
         public IKSolverSettings_t (IntPtr pointer) : base(pointer) {}
@@ -3898,7 +3898,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class IKTargetSettings_t : NativeObject {
+    public partial class IKTargetSettings_t : NativeObject {
         private const string ThisClassName = "IKTargetSettings_t";
 
         public IKTargetSettings_t (IntPtr pointer) : base(pointer) {}
@@ -3907,7 +3907,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimGraphNetworkSettings : CAnimGraphSettingsGroup {
+    public partial class CAnimGraphNetworkSettings : CAnimGraphSettingsGroup {
         private const string ThisClassName = "CAnimGraphNetworkSettings";
 
         public CAnimGraphNetworkSettings (IntPtr pointer) : base(pointer) {}
@@ -3916,7 +3916,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CActionComponentUpdater : CAnimComponentUpdater {
+    public partial class CActionComponentUpdater : CAnimComponentUpdater {
         private const string ThisClassName = "CActionComponentUpdater";
 
         public CActionComponentUpdater (IntPtr pointer) : base(pointer) {}
@@ -3925,7 +3925,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAddUpdateNode : CBinaryUpdateNode {
+    public partial class CAddUpdateNode : CBinaryUpdateNode {
         private const string ThisClassName = "CAddUpdateNode";
 
         public CAddUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -3934,7 +3934,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAimMatrixUpdateNode : CUnaryUpdateNode {
+    public partial class CAimMatrixUpdateNode : CUnaryUpdateNode {
         private const string ThisClassName = "CAimMatrixUpdateNode";
 
         public CAimMatrixUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -3943,7 +3943,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CBindPoseUpdateNode : CLeafUpdateNode {
+    public partial class CBindPoseUpdateNode : CLeafUpdateNode {
         private const string ThisClassName = "CBindPoseUpdateNode";
 
         public CBindPoseUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -3952,7 +3952,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CChoreoUpdateNode : CUnaryUpdateNode {
+    public partial class CChoreoUpdateNode : CUnaryUpdateNode {
         private const string ThisClassName = "CChoreoUpdateNode";
 
         public CChoreoUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -3961,7 +3961,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CCycleControlUpdateNode : CUnaryUpdateNode {
+    public partial class CCycleControlUpdateNode : CUnaryUpdateNode {
         private const string ThisClassName = "CCycleControlUpdateNode";
 
         public CCycleControlUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -3970,7 +3970,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CCycleControlClipUpdateNode : CLeafUpdateNode {
+    public partial class CCycleControlClipUpdateNode : CLeafUpdateNode {
         private const string ThisClassName = "CCycleControlClipUpdateNode";
 
         public CCycleControlClipUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -3979,7 +3979,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CDirectionalBlendUpdateNode : CLeafUpdateNode {
+    public partial class CDirectionalBlendUpdateNode : CLeafUpdateNode {
         private const string ThisClassName = "CDirectionalBlendUpdateNode";
 
         public CDirectionalBlendUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -3988,7 +3988,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CDirectPlaybackUpdateNode : CUnaryUpdateNode {
+    public partial class CDirectPlaybackUpdateNode : CUnaryUpdateNode {
         private const string ThisClassName = "CDirectPlaybackUpdateNode";
 
         public CDirectPlaybackUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -3997,7 +3997,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFollowPathUpdateNode : CUnaryUpdateNode {
+    public partial class CFollowPathUpdateNode : CUnaryUpdateNode {
         private const string ThisClassName = "CFollowPathUpdateNode";
 
         public CFollowPathUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -4006,7 +4006,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFollowAttachmentUpdateNode : CUnaryUpdateNode {
+    public partial class CFollowAttachmentUpdateNode : CUnaryUpdateNode {
         private const string ThisClassName = "CFollowAttachmentUpdateNode";
 
         public CFollowAttachmentUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -4015,7 +4015,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFootAdjustmentUpdateNode : CUnaryUpdateNode {
+    public partial class CFootAdjustmentUpdateNode : CUnaryUpdateNode {
         private const string ThisClassName = "CFootAdjustmentUpdateNode";
 
         public CFootAdjustmentUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -4024,7 +4024,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFootLockUpdateNode : CUnaryUpdateNode {
+    public partial class CFootLockUpdateNode : CUnaryUpdateNode {
         private const string ThisClassName = "CFootLockUpdateNode";
 
         public CFootLockUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -4033,7 +4033,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFootPinningUpdateNode : CUnaryUpdateNode {
+    public partial class CFootPinningUpdateNode : CUnaryUpdateNode {
         private const string ThisClassName = "CFootPinningUpdateNode";
 
         public CFootPinningUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -4042,7 +4042,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFootStepTriggerUpdateNode : CUnaryUpdateNode {
+    public partial class CFootStepTriggerUpdateNode : CUnaryUpdateNode {
         private const string ThisClassName = "CFootStepTriggerUpdateNode";
 
         public CFootStepTriggerUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -4051,7 +4051,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CHitReactUpdateNode : CUnaryUpdateNode {
+    public partial class CHitReactUpdateNode : CUnaryUpdateNode {
         private const string ThisClassName = "CHitReactUpdateNode";
 
         public CHitReactUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -4060,7 +4060,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CInputStreamUpdateNode : CLeafUpdateNode {
+    public partial class CInputStreamUpdateNode : CLeafUpdateNode {
         private const string ThisClassName = "CInputStreamUpdateNode";
 
         public CInputStreamUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -4069,7 +4069,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CJiggleBoneUpdateNode : CUnaryUpdateNode {
+    public partial class CJiggleBoneUpdateNode : CUnaryUpdateNode {
         private const string ThisClassName = "CJiggleBoneUpdateNode";
 
         public CJiggleBoneUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -4078,7 +4078,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CJumpHelperUpdateNode : CSequenceUpdateNode {
+    public partial class CJumpHelperUpdateNode : CSequenceUpdateNode {
         private const string ThisClassName = "CJumpHelperUpdateNode";
 
         public CJumpHelperUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -4087,7 +4087,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CLookAtUpdateNode : CUnaryUpdateNode {
+    public partial class CLookAtUpdateNode : CUnaryUpdateNode {
         private const string ThisClassName = "CLookAtUpdateNode";
 
         public CLookAtUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -4096,7 +4096,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CMoverUpdateNode : CUnaryUpdateNode {
+    public partial class CMoverUpdateNode : CUnaryUpdateNode {
         private const string ThisClassName = "CMoverUpdateNode";
 
         public CMoverUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -4105,7 +4105,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPathHelperUpdateNode : CUnaryUpdateNode {
+    public partial class CPathHelperUpdateNode : CUnaryUpdateNode {
         private const string ThisClassName = "CPathHelperUpdateNode";
 
         public CPathHelperUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -4114,7 +4114,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CRagdollUpdateNode : CUnaryUpdateNode {
+    public partial class CRagdollUpdateNode : CUnaryUpdateNode {
         private const string ThisClassName = "CRagdollUpdateNode";
 
         public CRagdollUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -4123,7 +4123,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CRootUpdateNode : CUnaryUpdateNode {
+    public partial class CRootUpdateNode : CUnaryUpdateNode {
         private const string ThisClassName = "CRootUpdateNode";
 
         public CRootUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -4132,7 +4132,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSetFacingUpdateNode : CUnaryUpdateNode {
+    public partial class CSetFacingUpdateNode : CUnaryUpdateNode {
         private const string ThisClassName = "CSetFacingUpdateNode";
 
         public CSetFacingUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -4141,7 +4141,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSlowDownOnSlopesUpdateNode : CUnaryUpdateNode {
+    public partial class CSlowDownOnSlopesUpdateNode : CUnaryUpdateNode {
         private const string ThisClassName = "CSlowDownOnSlopesUpdateNode";
 
         public CSlowDownOnSlopesUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -4150,7 +4150,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSolveIKChainUpdateNode : CUnaryUpdateNode {
+    public partial class CSolveIKChainUpdateNode : CUnaryUpdateNode {
         private const string ThisClassName = "CSolveIKChainUpdateNode";
 
         public CSolveIKChainUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -4159,7 +4159,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSpeedScaleUpdateNode : CUnaryUpdateNode {
+    public partial class CSpeedScaleUpdateNode : CUnaryUpdateNode {
         private const string ThisClassName = "CSpeedScaleUpdateNode";
 
         public CSpeedScaleUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -4168,7 +4168,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CStanceOverrideUpdateNode : CUnaryUpdateNode {
+    public partial class CStanceOverrideUpdateNode : CUnaryUpdateNode {
         private const string ThisClassName = "CStanceOverrideUpdateNode";
 
         public CStanceOverrideUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -4177,7 +4177,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CStanceScaleUpdateNode : CUnaryUpdateNode {
+    public partial class CStanceScaleUpdateNode : CUnaryUpdateNode {
         private const string ThisClassName = "CStanceScaleUpdateNode";
 
         public CStanceScaleUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -4186,7 +4186,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CStopAtGoalUpdateNode : CUnaryUpdateNode {
+    public partial class CStopAtGoalUpdateNode : CUnaryUpdateNode {
         private const string ThisClassName = "CStopAtGoalUpdateNode";
 
         public CStopAtGoalUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -4195,7 +4195,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CTurnHelperUpdateNode : CUnaryUpdateNode {
+    public partial class CTurnHelperUpdateNode : CUnaryUpdateNode {
         private const string ThisClassName = "CTurnHelperUpdateNode";
 
         public CTurnHelperUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -4204,7 +4204,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CTwoBoneIKUpdateNode : CUnaryUpdateNode {
+    public partial class CTwoBoneIKUpdateNode : CUnaryUpdateNode {
         private const string ThisClassName = "CTwoBoneIKUpdateNode";
 
         public CTwoBoneIKUpdateNode (IntPtr pointer) : base(pointer) {}
@@ -4213,7 +4213,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class constraint_breakableparams_t : NativeObject {
+    public partial class constraint_breakableparams_t : NativeObject {
         private const string ThisClassName = "constraint_breakableparams_t";
 
         public constraint_breakableparams_t (IntPtr pointer) : base(pointer) {}
@@ -4222,7 +4222,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class constraint_axislimit_t : NativeObject {
+    public partial class constraint_axislimit_t : NativeObject {
         private const string ThisClassName = "constraint_axislimit_t";
 
         public constraint_axislimit_t (IntPtr pointer) : base(pointer) {}
@@ -4231,7 +4231,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class constraint_hingeparams_t : NativeObject {
+    public partial class constraint_hingeparams_t : NativeObject {
         private const string ThisClassName = "constraint_hingeparams_t";
 
         public constraint_hingeparams_t (IntPtr pointer) : base(pointer) {}
@@ -4240,7 +4240,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class IPhysicsPlayerController : NativeObject {
+    public partial class IPhysicsPlayerController : NativeObject {
         private const string ThisClassName = "IPhysicsPlayerController";
 
         public IPhysicsPlayerController (IntPtr pointer) : base(pointer) {}
@@ -4249,7 +4249,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFeJiggleBone : NativeObject {
+    public partial class CFeJiggleBone : NativeObject {
         private const string ThisClassName = "CFeJiggleBone";
 
         public CFeJiggleBone (IntPtr pointer) : base(pointer) {}
@@ -4258,7 +4258,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFeNamedJiggleBone : NativeObject {
+    public partial class CFeNamedJiggleBone : NativeObject {
         private const string ThisClassName = "CFeNamedJiggleBone";
 
         public CFeNamedJiggleBone (IntPtr pointer) : base(pointer) {}
@@ -4267,7 +4267,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFeIndexedJiggleBone : NativeObject {
+    public partial class CFeIndexedJiggleBone : NativeObject {
         private const string ThisClassName = "CFeIndexedJiggleBone";
 
         public CFeIndexedJiggleBone (IntPtr pointer) : base(pointer) {}
@@ -4276,7 +4276,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class PhysFeModelDesc_t : NativeObject {
+    public partial class PhysFeModelDesc_t : NativeObject {
         private const string ThisClassName = "PhysFeModelDesc_t";
 
         public PhysFeModelDesc_t (IntPtr pointer) : base(pointer) {}
@@ -4285,7 +4285,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FourVectors2D : NativeObject {
+    public partial class FourVectors2D : NativeObject {
         private const string ThisClassName = "FourVectors2D";
 
         public FourVectors2D (IntPtr pointer) : base(pointer) {}
@@ -4294,7 +4294,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeEdgeDesc_t : NativeObject {
+    public partial class FeEdgeDesc_t : NativeObject {
         private const string ThisClassName = "FeEdgeDesc_t";
 
         public FeEdgeDesc_t (IntPtr pointer) : base(pointer) {}
@@ -4303,7 +4303,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class OldFeEdge_t : NativeObject {
+    public partial class OldFeEdge_t : NativeObject {
         private const string ThisClassName = "OldFeEdge_t";
 
         public OldFeEdge_t (IntPtr pointer) : base(pointer) {}
@@ -4312,7 +4312,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeWeightedNode_t : NativeObject {
+    public partial class FeWeightedNode_t : NativeObject {
         private const string ThisClassName = "FeWeightedNode_t";
 
         public FeWeightedNode_t (IntPtr pointer) : base(pointer) {}
@@ -4321,7 +4321,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeKelagerBend2_t : NativeObject {
+    public partial class FeKelagerBend2_t : NativeObject {
         private const string ThisClassName = "FeKelagerBend2_t";
 
         public FeKelagerBend2_t (IntPtr pointer) : base(pointer) {}
@@ -4330,7 +4330,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeStiffHingeBuild_t : NativeObject {
+    public partial class FeStiffHingeBuild_t : NativeObject {
         private const string ThisClassName = "FeStiffHingeBuild_t";
 
         public FeStiffHingeBuild_t (IntPtr pointer) : base(pointer) {}
@@ -4339,7 +4339,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeTri_t : NativeObject {
+    public partial class FeTri_t : NativeObject {
         private const string ThisClassName = "FeTri_t";
 
         public FeTri_t (IntPtr pointer) : base(pointer) {}
@@ -4348,7 +4348,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeSimdTri_t : NativeObject {
+    public partial class FeSimdTri_t : NativeObject {
         private const string ThisClassName = "FeSimdTri_t";
 
         public FeSimdTri_t (IntPtr pointer) : base(pointer) {}
@@ -4357,7 +4357,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeQuad_t : NativeObject {
+    public partial class FeQuad_t : NativeObject {
         private const string ThisClassName = "FeQuad_t";
 
         public FeQuad_t (IntPtr pointer) : base(pointer) {}
@@ -4366,7 +4366,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeNodeBase_t : NativeObject {
+    public partial class FeNodeBase_t : NativeObject {
         private const string ThisClassName = "FeNodeBase_t";
 
         public FeNodeBase_t (IntPtr pointer) : base(pointer) {}
@@ -4375,7 +4375,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeNodeWindBase_t : NativeObject {
+    public partial class FeNodeWindBase_t : NativeObject {
         private const string ThisClassName = "FeNodeWindBase_t";
 
         public FeNodeWindBase_t (IntPtr pointer) : base(pointer) {}
@@ -4384,7 +4384,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeNodeReverseOffset_t : NativeObject {
+    public partial class FeNodeReverseOffset_t : NativeObject {
         private const string ThisClassName = "FeNodeReverseOffset_t";
 
         public FeNodeReverseOffset_t (IntPtr pointer) : base(pointer) {}
@@ -4393,7 +4393,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeSimdQuad_t : NativeObject {
+    public partial class FeSimdQuad_t : NativeObject {
         private const string ThisClassName = "FeSimdQuad_t";
 
         public FeSimdQuad_t (IntPtr pointer) : base(pointer) {}
@@ -4402,7 +4402,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeAxialEdgeBend_t : NativeObject {
+    public partial class FeAxialEdgeBend_t : NativeObject {
         private const string ThisClassName = "FeAxialEdgeBend_t";
 
         public FeAxialEdgeBend_t (IntPtr pointer) : base(pointer) {}
@@ -4411,7 +4411,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeBandBendLimit_t : NativeObject {
+    public partial class FeBandBendLimit_t : NativeObject {
         private const string ThisClassName = "FeBandBendLimit_t";
 
         public FeBandBendLimit_t (IntPtr pointer) : base(pointer) {}
@@ -4420,7 +4420,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeRodConstraint_t : NativeObject {
+    public partial class FeRodConstraint_t : NativeObject {
         private const string ThisClassName = "FeRodConstraint_t";
 
         public FeRodConstraint_t (IntPtr pointer) : base(pointer) {}
@@ -4429,7 +4429,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeTwistConstraint_t : NativeObject {
+    public partial class FeTwistConstraint_t : NativeObject {
         private const string ThisClassName = "FeTwistConstraint_t";
 
         public FeTwistConstraint_t (IntPtr pointer) : base(pointer) {}
@@ -4438,7 +4438,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeSimdRodConstraint_t : NativeObject {
+    public partial class FeSimdRodConstraint_t : NativeObject {
         private const string ThisClassName = "FeSimdRodConstraint_t";
 
         public FeSimdRodConstraint_t (IntPtr pointer) : base(pointer) {}
@@ -4447,7 +4447,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeAnimStrayRadius_t : NativeObject {
+    public partial class FeAnimStrayRadius_t : NativeObject {
         private const string ThisClassName = "FeAnimStrayRadius_t";
 
         public FeAnimStrayRadius_t (IntPtr pointer) : base(pointer) {}
@@ -4456,7 +4456,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeSimdAnimStrayRadius_t : NativeObject {
+    public partial class FeSimdAnimStrayRadius_t : NativeObject {
         private const string ThisClassName = "FeSimdAnimStrayRadius_t";
 
         public FeSimdAnimStrayRadius_t (IntPtr pointer) : base(pointer) {}
@@ -4465,7 +4465,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeSimdNodeBase_t : NativeObject {
+    public partial class FeSimdNodeBase_t : NativeObject {
         private const string ThisClassName = "FeSimdNodeBase_t";
 
         public FeSimdNodeBase_t (IntPtr pointer) : base(pointer) {}
@@ -4474,7 +4474,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeNodeIntegrator_t : NativeObject {
+    public partial class FeNodeIntegrator_t : NativeObject {
         private const string ThisClassName = "FeNodeIntegrator_t";
 
         public FeNodeIntegrator_t (IntPtr pointer) : base(pointer) {}
@@ -4483,7 +4483,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeSpringIntegrator_t : NativeObject {
+    public partial class FeSpringIntegrator_t : NativeObject {
         private const string ThisClassName = "FeSpringIntegrator_t";
 
         public FeSpringIntegrator_t (IntPtr pointer) : base(pointer) {}
@@ -4492,7 +4492,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeSimdSpringIntegrator_t : NativeObject {
+    public partial class FeSimdSpringIntegrator_t : NativeObject {
         private const string ThisClassName = "FeSimdSpringIntegrator_t";
 
         public FeSimdSpringIntegrator_t (IntPtr pointer) : base(pointer) {}
@@ -4501,7 +4501,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeCtrlOffset_t : NativeObject {
+    public partial class FeCtrlOffset_t : NativeObject {
         private const string ThisClassName = "FeCtrlOffset_t";
 
         public FeCtrlOffset_t (IntPtr pointer) : base(pointer) {}
@@ -4510,7 +4510,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeSoftParent_t : NativeObject {
+    public partial class FeSoftParent_t : NativeObject {
         private const string ThisClassName = "FeSoftParent_t";
 
         public FeSoftParent_t (IntPtr pointer) : base(pointer) {}
@@ -4519,7 +4519,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeCtrlSoftOffset_t : NativeObject {
+    public partial class FeCtrlSoftOffset_t : NativeObject {
         private const string ThisClassName = "FeCtrlSoftOffset_t";
 
         public FeCtrlSoftOffset_t (IntPtr pointer) : base(pointer) {}
@@ -4528,7 +4528,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeCtrlOsOffset_t : NativeObject {
+    public partial class FeCtrlOsOffset_t : NativeObject {
         private const string ThisClassName = "FeCtrlOsOffset_t";
 
         public FeCtrlOsOffset_t (IntPtr pointer) : base(pointer) {}
@@ -4537,7 +4537,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeFollowNode_t : NativeObject {
+    public partial class FeFollowNode_t : NativeObject {
         private const string ThisClassName = "FeFollowNode_t";
 
         public FeFollowNode_t (IntPtr pointer) : base(pointer) {}
@@ -4546,7 +4546,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeCollisionPlane_t : NativeObject {
+    public partial class FeCollisionPlane_t : NativeObject {
         private const string ThisClassName = "FeCollisionPlane_t";
 
         public FeCollisionPlane_t (IntPtr pointer) : base(pointer) {}
@@ -4555,7 +4555,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeWorldCollisionParams_t : NativeObject {
+    public partial class FeWorldCollisionParams_t : NativeObject {
         private const string ThisClassName = "FeWorldCollisionParams_t";
 
         public FeWorldCollisionParams_t (IntPtr pointer) : base(pointer) {}
@@ -4564,7 +4564,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeTreeChildren_t : NativeObject {
+    public partial class FeTreeChildren_t : NativeObject {
         private const string ThisClassName = "FeTreeChildren_t";
 
         public FeTreeChildren_t (IntPtr pointer) : base(pointer) {}
@@ -4573,7 +4573,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeTaperedCapsuleRigid_t : NativeObject {
+    public partial class FeTaperedCapsuleRigid_t : NativeObject {
         private const string ThisClassName = "FeTaperedCapsuleRigid_t";
 
         public FeTaperedCapsuleRigid_t (IntPtr pointer) : base(pointer) {}
@@ -4582,7 +4582,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeSphereRigid_t : NativeObject {
+    public partial class FeSphereRigid_t : NativeObject {
         private const string ThisClassName = "FeSphereRigid_t";
 
         public FeSphereRigid_t (IntPtr pointer) : base(pointer) {}
@@ -4591,7 +4591,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeTaperedCapsuleStretch_t : NativeObject {
+    public partial class FeTaperedCapsuleStretch_t : NativeObject {
         private const string ThisClassName = "FeTaperedCapsuleStretch_t";
 
         public FeTaperedCapsuleStretch_t (IntPtr pointer) : base(pointer) {}
@@ -4600,7 +4600,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeBoxRigid_t : NativeObject {
+    public partial class FeBoxRigid_t : NativeObject {
         private const string ThisClassName = "FeBoxRigid_t";
 
         public FeBoxRigid_t (IntPtr pointer) : base(pointer) {}
@@ -4609,7 +4609,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CovMatrix3 : NativeObject {
+    public partial class CovMatrix3 : NativeObject {
         private const string ThisClassName = "CovMatrix3";
 
         public CovMatrix3 (IntPtr pointer) : base(pointer) {}
@@ -4618,7 +4618,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FourCovMatrices3 : NativeObject {
+    public partial class FourCovMatrices3 : NativeObject {
         private const string ThisClassName = "FourCovMatrices3";
 
         public FourCovMatrices3 (IntPtr pointer) : base(pointer) {}
@@ -4627,7 +4627,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeFitWeight_t : NativeObject {
+    public partial class FeFitWeight_t : NativeObject {
         private const string ThisClassName = "FeFitWeight_t";
 
         public FeFitWeight_t (IntPtr pointer) : base(pointer) {}
@@ -4636,7 +4636,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeFitInfluence_t : NativeObject {
+    public partial class FeFitInfluence_t : NativeObject {
         private const string ThisClassName = "FeFitInfluence_t";
 
         public FeFitInfluence_t (IntPtr pointer) : base(pointer) {}
@@ -4645,7 +4645,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeFitMatrix_t : NativeObject {
+    public partial class FeFitMatrix_t : NativeObject {
         private const string ThisClassName = "FeFitMatrix_t";
 
         public FeFitMatrix_t (IntPtr pointer) : base(pointer) {}
@@ -4654,7 +4654,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeRigidColliderIndices_t : NativeObject {
+    public partial class FeRigidColliderIndices_t : NativeObject {
         private const string ThisClassName = "FeRigidColliderIndices_t";
 
         public FeRigidColliderIndices_t (IntPtr pointer) : base(pointer) {}
@@ -4663,7 +4663,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeBuildTaperedCapsuleRigid_t : FeTaperedCapsuleRigid_t {
+    public partial class FeBuildTaperedCapsuleRigid_t : FeTaperedCapsuleRigid_t {
         private const string ThisClassName = "FeBuildTaperedCapsuleRigid_t";
 
         public FeBuildTaperedCapsuleRigid_t (IntPtr pointer) : base(pointer) {}
@@ -4672,7 +4672,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeBuildBoxRigid_t : FeBoxRigid_t {
+    public partial class FeBuildBoxRigid_t : FeBoxRigid_t {
         private const string ThisClassName = "FeBuildBoxRigid_t";
 
         public FeBuildBoxRigid_t (IntPtr pointer) : base(pointer) {}
@@ -4681,7 +4681,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeBuildSphereRigid_t : FeSphereRigid_t {
+    public partial class FeBuildSphereRigid_t : FeSphereRigid_t {
         private const string ThisClassName = "FeBuildSphereRigid_t";
 
         public FeBuildSphereRigid_t (IntPtr pointer) : base(pointer) {}
@@ -4690,7 +4690,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeSourceEdge_t : NativeObject {
+    public partial class FeSourceEdge_t : NativeObject {
         private const string ThisClassName = "FeSourceEdge_t";
 
         public FeSourceEdge_t (IntPtr pointer) : base(pointer) {}
@@ -4699,7 +4699,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeEffectDesc_t : NativeObject {
+    public partial class FeEffectDesc_t : NativeObject {
         private const string ThisClassName = "FeEffectDesc_t";
 
         public FeEffectDesc_t (IntPtr pointer) : base(pointer) {}
@@ -4708,7 +4708,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeVertexMapBuild_t : NativeObject {
+    public partial class FeVertexMapBuild_t : NativeObject {
         private const string ThisClassName = "FeVertexMapBuild_t";
 
         public FeVertexMapBuild_t (IntPtr pointer) : base(pointer) {}
@@ -4717,7 +4717,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFeVertexMapBuildArray : NativeObject {
+    public partial class CFeVertexMapBuildArray : NativeObject {
         private const string ThisClassName = "CFeVertexMapBuildArray";
 
         public CFeVertexMapBuildArray (IntPtr pointer) : base(pointer) {}
@@ -4726,7 +4726,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeProxyVertexMap_t : NativeObject {
+    public partial class FeProxyVertexMap_t : NativeObject {
         private const string ThisClassName = "FeProxyVertexMap_t";
 
         public FeProxyVertexMap_t (IntPtr pointer) : base(pointer) {}
@@ -4735,7 +4735,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeVertexMapDesc_t : NativeObject {
+    public partial class FeVertexMapDesc_t : NativeObject {
         private const string ThisClassName = "FeVertexMapDesc_t";
 
         public FeVertexMapDesc_t (IntPtr pointer) : base(pointer) {}
@@ -4744,7 +4744,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FeMorphLayerDepr_t : NativeObject {
+    public partial class FeMorphLayerDepr_t : NativeObject {
         private const string ThisClassName = "FeMorphLayerDepr_t";
 
         public FeMorphLayerDepr_t (IntPtr pointer) : base(pointer) {}
@@ -4753,7 +4753,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFeMorphLayer : NativeObject {
+    public partial class CFeMorphLayer : NativeObject {
         private const string ThisClassName = "CFeMorphLayer";
 
         public CFeMorphLayer (IntPtr pointer) : base(pointer) {}
@@ -4762,7 +4762,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class Dop26_t : NativeObject {
+    public partial class Dop26_t : NativeObject {
         private const string ThisClassName = "Dop26_t";
 
         public Dop26_t (IntPtr pointer) : base(pointer) {}
@@ -4771,7 +4771,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class RnSphere_t : NativeObject {
+    public partial class RnSphere_t : NativeObject {
         private const string ThisClassName = "RnSphere_t";
 
         public RnSphere_t (IntPtr pointer) : base(pointer) {}
@@ -4780,7 +4780,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class RnCapsule_t : NativeObject {
+    public partial class RnCapsule_t : NativeObject {
         private const string ThisClassName = "RnCapsule_t";
 
         public RnCapsule_t (IntPtr pointer) : base(pointer) {}
@@ -4789,7 +4789,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class RnPlane_t : NativeObject {
+    public partial class RnPlane_t : NativeObject {
         private const string ThisClassName = "RnPlane_t";
 
         public RnPlane_t (IntPtr pointer) : base(pointer) {}
@@ -4798,7 +4798,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class RnHalfEdge_t : NativeObject {
+    public partial class RnHalfEdge_t : NativeObject {
         private const string ThisClassName = "RnHalfEdge_t";
 
         public RnHalfEdge_t (IntPtr pointer) : base(pointer) {}
@@ -4807,7 +4807,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class RnFace_t : NativeObject {
+    public partial class RnFace_t : NativeObject {
         private const string ThisClassName = "RnFace_t";
 
         public RnFace_t (IntPtr pointer) : base(pointer) {}
@@ -4816,7 +4816,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CRegionSVM : NativeObject {
+    public partial class CRegionSVM : NativeObject {
         private const string ThisClassName = "CRegionSVM";
 
         public CRegionSVM (IntPtr pointer) : base(pointer) {}
@@ -4825,7 +4825,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class RnHull_t : NativeObject {
+    public partial class RnHull_t : NativeObject {
         private const string ThisClassName = "RnHull_t";
 
         public RnHull_t (IntPtr pointer) : base(pointer) {}
@@ -4834,7 +4834,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class RnTriangle_t : NativeObject {
+    public partial class RnTriangle_t : NativeObject {
         private const string ThisClassName = "RnTriangle_t";
 
         public RnTriangle_t (IntPtr pointer) : base(pointer) {}
@@ -4843,7 +4843,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class RnWing_t : NativeObject {
+    public partial class RnWing_t : NativeObject {
         private const string ThisClassName = "RnWing_t";
 
         public RnWing_t (IntPtr pointer) : base(pointer) {}
@@ -4852,7 +4852,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class RnNode_t : NativeObject {
+    public partial class RnNode_t : NativeObject {
         private const string ThisClassName = "RnNode_t";
 
         public RnNode_t (IntPtr pointer) : base(pointer) {}
@@ -4861,7 +4861,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class RnMesh_t : NativeObject {
+    public partial class RnMesh_t : NativeObject {
         private const string ThisClassName = "RnMesh_t";
 
         public RnMesh_t (IntPtr pointer) : base(pointer) {}
@@ -4870,7 +4870,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class RnShapeDesc_t : NativeObject {
+    public partial class RnShapeDesc_t : NativeObject {
         private const string ThisClassName = "RnShapeDesc_t";
 
         public RnShapeDesc_t (IntPtr pointer) : base(pointer) {}
@@ -4879,7 +4879,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class RnSphereDesc_t : RnShapeDesc_t {
+    public partial class RnSphereDesc_t : RnShapeDesc_t {
         private const string ThisClassName = "RnSphereDesc_t";
 
         public RnSphereDesc_t (IntPtr pointer) : base(pointer) {}
@@ -4888,7 +4888,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class RnCapsuleDesc_t : RnShapeDesc_t {
+    public partial class RnCapsuleDesc_t : RnShapeDesc_t {
         private const string ThisClassName = "RnCapsuleDesc_t";
 
         public RnCapsuleDesc_t (IntPtr pointer) : base(pointer) {}
@@ -4897,7 +4897,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class RnHullDesc_t : RnShapeDesc_t {
+    public partial class RnHullDesc_t : RnShapeDesc_t {
         private const string ThisClassName = "RnHullDesc_t";
 
         public RnHullDesc_t (IntPtr pointer) : base(pointer) {}
@@ -4906,7 +4906,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class RnMeshDesc_t : RnShapeDesc_t {
+    public partial class RnMeshDesc_t : RnShapeDesc_t {
         private const string ThisClassName = "RnMeshDesc_t";
 
         public RnMeshDesc_t (IntPtr pointer) : base(pointer) {}
@@ -4915,7 +4915,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class RnSoftbodyParticle_t : NativeObject {
+    public partial class RnSoftbodyParticle_t : NativeObject {
         private const string ThisClassName = "RnSoftbodyParticle_t";
 
         public RnSoftbodyParticle_t (IntPtr pointer) : base(pointer) {}
@@ -4924,7 +4924,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class RnSoftbodySpring_t : NativeObject {
+    public partial class RnSoftbodySpring_t : NativeObject {
         private const string ThisClassName = "RnSoftbodySpring_t";
 
         public RnSoftbodySpring_t (IntPtr pointer) : base(pointer) {}
@@ -4933,7 +4933,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class RnSoftbodyCapsule_t : NativeObject {
+    public partial class RnSoftbodyCapsule_t : NativeObject {
         private const string ThisClassName = "RnSoftbodyCapsule_t";
 
         public RnSoftbodyCapsule_t (IntPtr pointer) : base(pointer) {}
@@ -4942,7 +4942,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class RnBlendVertex_t : NativeObject {
+    public partial class RnBlendVertex_t : NativeObject {
         private const string ThisClassName = "RnBlendVertex_t";
 
         public RnBlendVertex_t (IntPtr pointer) : base(pointer) {}
@@ -4951,7 +4951,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CastSphereSATParams_t : NativeObject {
+    public partial class CastSphereSATParams_t : NativeObject {
         private const string ThisClassName = "CastSphereSATParams_t";
 
         public CastSphereSATParams_t (IntPtr pointer) : base(pointer) {}
@@ -4960,7 +4960,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class RnBodyDesc_t : NativeObject {
+    public partial class RnBodyDesc_t : NativeObject {
         private const string ThisClassName = "RnBodyDesc_t";
 
         public RnBodyDesc_t (IntPtr pointer) : base(pointer) {}
@@ -4969,7 +4969,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VertexPositionNormal_t : NativeObject {
+    public partial class VertexPositionNormal_t : NativeObject {
         private const string ThisClassName = "VertexPositionNormal_t";
 
         public VertexPositionNormal_t (IntPtr pointer) : base(pointer) {}
@@ -4978,7 +4978,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VertexPositionColor_t : NativeObject {
+    public partial class VertexPositionColor_t : NativeObject {
         private const string ThisClassName = "VertexPositionColor_t";
 
         public VertexPositionColor_t (IntPtr pointer) : base(pointer) {}
@@ -4987,7 +4987,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class vphysics_save_cphysicsbody_t : RnBodyDesc_t {
+    public partial class vphysics_save_cphysicsbody_t : RnBodyDesc_t {
         private const string ThisClassName = "vphysics_save_cphysicsbody_t";
 
         public vphysics_save_cphysicsbody_t (IntPtr pointer) : base(pointer) {}
@@ -4996,7 +4996,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSosGroupActionSchema : NativeObject {
+    public partial class CSosGroupActionSchema : NativeObject {
         private const string ThisClassName = "CSosGroupActionSchema";
 
         public CSosGroupActionSchema (IntPtr pointer) : base(pointer) {}
@@ -5005,7 +5005,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSosGroupActionLimitSchema : CSosGroupActionSchema {
+    public partial class CSosGroupActionLimitSchema : CSosGroupActionSchema {
         private const string ThisClassName = "CSosGroupActionLimitSchema";
 
         public CSosGroupActionLimitSchema (IntPtr pointer) : base(pointer) {}
@@ -5014,7 +5014,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSosGroupActionTimeLimitSchema : CSosGroupActionSchema {
+    public partial class CSosGroupActionTimeLimitSchema : CSosGroupActionSchema {
         private const string ThisClassName = "CSosGroupActionTimeLimitSchema";
 
         public CSosGroupActionTimeLimitSchema (IntPtr pointer) : base(pointer) {}
@@ -5023,7 +5023,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSosGroupActionSetSoundeventParameterSchema : CSosGroupActionSchema {
+    public partial class CSosGroupActionSetSoundeventParameterSchema : CSosGroupActionSchema {
         private const string ThisClassName = "CSosGroupActionSetSoundeventParameterSchema";
 
         public CSosGroupActionSetSoundeventParameterSchema (IntPtr pointer) : base(pointer) {}
@@ -5032,7 +5032,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSosGroupBranchPattern : NativeObject {
+    public partial class CSosGroupBranchPattern : NativeObject {
         private const string ThisClassName = "CSosGroupBranchPattern";
 
         public CSosGroupBranchPattern (IntPtr pointer) : base(pointer) {}
@@ -5041,7 +5041,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSosGroupMatchPattern : CSosGroupBranchPattern {
+    public partial class CSosGroupMatchPattern : CSosGroupBranchPattern {
         private const string ThisClassName = "CSosGroupMatchPattern";
 
         public CSosGroupMatchPattern (IntPtr pointer) : base(pointer) {}
@@ -5050,7 +5050,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSosSoundEventGroupSchema : NativeObject {
+    public partial class CSosSoundEventGroupSchema : NativeObject {
         private const string ThisClassName = "CSosSoundEventGroupSchema";
 
         public CSosSoundEventGroupSchema (IntPtr pointer) : base(pointer) {}
@@ -5059,7 +5059,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSosSoundEventGroupListSchema : NativeObject {
+    public partial class CSosSoundEventGroupListSchema : NativeObject {
         private const string ThisClassName = "CSosSoundEventGroupListSchema";
 
         public CSosSoundEventGroupListSchema (IntPtr pointer) : base(pointer) {}
@@ -5068,7 +5068,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class SosEditItemInfo_t : NativeObject {
+    public partial class SosEditItemInfo_t : NativeObject {
         private const string ThisClassName = "SosEditItemInfo_t";
 
         public SosEditItemInfo_t (IntPtr pointer) : base(pointer) {}
@@ -5077,7 +5077,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class SelectedEditItemInfo_t : NativeObject {
+    public partial class SelectedEditItemInfo_t : NativeObject {
         private const string ThisClassName = "SelectedEditItemInfo_t";
 
         public SelectedEditItemInfo_t (IntPtr pointer) : base(pointer) {}
@@ -5086,7 +5086,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSoundEventMetaData : NativeObject {
+    public partial class CSoundEventMetaData : NativeObject {
         private const string ThisClassName = "CSoundEventMetaData";
 
         public CSoundEventMetaData (IntPtr pointer) : base(pointer) {}
@@ -5095,7 +5095,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CDSPMixgroupModifier : NativeObject {
+    public partial class CDSPMixgroupModifier : NativeObject {
         private const string ThisClassName = "CDSPMixgroupModifier";
 
         public CDSPMixgroupModifier (IntPtr pointer) : base(pointer) {}
@@ -5104,7 +5104,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CDspPresetModifierList : NativeObject {
+    public partial class CDspPresetModifierList : NativeObject {
         private const string ThisClassName = "CDspPresetModifierList";
 
         public CDspPresetModifierList (IntPtr pointer) : base(pointer) {}
@@ -5113,7 +5113,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CDSPPresetMixgroupModifierTable : NativeObject {
+    public partial class CDSPPresetMixgroupModifierTable : NativeObject {
         private const string ThisClassName = "CDSPPresetMixgroupModifierTable";
 
         public CDSPPresetMixgroupModifierTable (IntPtr pointer) : base(pointer) {}
@@ -5122,7 +5122,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VMixFilterDesc_t : NativeObject {
+    public partial class VMixFilterDesc_t : NativeObject {
         private const string ThisClassName = "VMixFilterDesc_t";
 
         public VMixFilterDesc_t (IntPtr pointer) : base(pointer) {}
@@ -5131,7 +5131,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VMixEQ8Desc_t : NativeObject {
+    public partial class VMixEQ8Desc_t : NativeObject {
         private const string ThisClassName = "VMixEQ8Desc_t";
 
         public VMixEQ8Desc_t (IntPtr pointer) : base(pointer) {}
@@ -5140,7 +5140,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VMixDelayDesc_t : NativeObject {
+    public partial class VMixDelayDesc_t : NativeObject {
         private const string ThisClassName = "VMixDelayDesc_t";
 
         public VMixDelayDesc_t (IntPtr pointer) : base(pointer) {}
@@ -5149,7 +5149,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VMixPannerDesc_t : NativeObject {
+    public partial class VMixPannerDesc_t : NativeObject {
         private const string ThisClassName = "VMixPannerDesc_t";
 
         public VMixPannerDesc_t (IntPtr pointer) : base(pointer) {}
@@ -5158,7 +5158,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VMixModDelayDesc_t : NativeObject {
+    public partial class VMixModDelayDesc_t : NativeObject {
         private const string ThisClassName = "VMixModDelayDesc_t";
 
         public VMixModDelayDesc_t (IntPtr pointer) : base(pointer) {}
@@ -5167,7 +5167,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VMixDiffusorDesc_t : NativeObject {
+    public partial class VMixDiffusorDesc_t : NativeObject {
         private const string ThisClassName = "VMixDiffusorDesc_t";
 
         public VMixDiffusorDesc_t (IntPtr pointer) : base(pointer) {}
@@ -5176,7 +5176,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VMixBoxverbDesc_t : NativeObject {
+    public partial class VMixBoxverbDesc_t : NativeObject {
         private const string ThisClassName = "VMixBoxverbDesc_t";
 
         public VMixBoxverbDesc_t (IntPtr pointer) : base(pointer) {}
@@ -5185,7 +5185,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VMixFreeverbDesc_t : NativeObject {
+    public partial class VMixFreeverbDesc_t : NativeObject {
         private const string ThisClassName = "VMixFreeverbDesc_t";
 
         public VMixFreeverbDesc_t (IntPtr pointer) : base(pointer) {}
@@ -5194,7 +5194,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VMixPlateverbDesc_t : NativeObject {
+    public partial class VMixPlateverbDesc_t : NativeObject {
         private const string ThisClassName = "VMixPlateverbDesc_t";
 
         public VMixPlateverbDesc_t (IntPtr pointer) : base(pointer) {}
@@ -5203,7 +5203,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VMixDynamicsDesc_t : NativeObject {
+    public partial class VMixDynamicsDesc_t : NativeObject {
         private const string ThisClassName = "VMixDynamicsDesc_t";
 
         public VMixDynamicsDesc_t (IntPtr pointer) : base(pointer) {}
@@ -5212,7 +5212,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VMixDynamicsCompressorDesc_t : NativeObject {
+    public partial class VMixDynamicsCompressorDesc_t : NativeObject {
         private const string ThisClassName = "VMixDynamicsCompressorDesc_t";
 
         public VMixDynamicsCompressorDesc_t (IntPtr pointer) : base(pointer) {}
@@ -5221,7 +5221,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VMixDynamicsBand_t : NativeObject {
+    public partial class VMixDynamicsBand_t : NativeObject {
         private const string ThisClassName = "VMixDynamicsBand_t";
 
         public VMixDynamicsBand_t (IntPtr pointer) : base(pointer) {}
@@ -5230,7 +5230,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VMixDynamics3BandDesc_t : NativeObject {
+    public partial class VMixDynamics3BandDesc_t : NativeObject {
         private const string ThisClassName = "VMixDynamics3BandDesc_t";
 
         public VMixDynamics3BandDesc_t (IntPtr pointer) : base(pointer) {}
@@ -5239,7 +5239,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VMixEnvelopeDesc_t : NativeObject {
+    public partial class VMixEnvelopeDesc_t : NativeObject {
         private const string ThisClassName = "VMixEnvelopeDesc_t";
 
         public VMixEnvelopeDesc_t (IntPtr pointer) : base(pointer) {}
@@ -5248,7 +5248,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VMixPitchShiftDesc_t : NativeObject {
+    public partial class VMixPitchShiftDesc_t : NativeObject {
         private const string ThisClassName = "VMixPitchShiftDesc_t";
 
         public VMixPitchShiftDesc_t (IntPtr pointer) : base(pointer) {}
@@ -5257,7 +5257,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VMixConvolutionDesc_t : NativeObject {
+    public partial class VMixConvolutionDesc_t : NativeObject {
         private const string ThisClassName = "VMixConvolutionDesc_t";
 
         public VMixConvolutionDesc_t (IntPtr pointer) : base(pointer) {}
@@ -5266,7 +5266,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VMixVocoderDesc_t : NativeObject {
+    public partial class VMixVocoderDesc_t : NativeObject {
         private const string ThisClassName = "VMixVocoderDesc_t";
 
         public VMixVocoderDesc_t (IntPtr pointer) : base(pointer) {}
@@ -5275,7 +5275,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VMixShaperDesc_t : NativeObject {
+    public partial class VMixShaperDesc_t : NativeObject {
         private const string ThisClassName = "VMixShaperDesc_t";
 
         public VMixShaperDesc_t (IntPtr pointer) : base(pointer) {}
@@ -5284,7 +5284,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VMixUtilityDesc_t : NativeObject {
+    public partial class VMixUtilityDesc_t : NativeObject {
         private const string ThisClassName = "VMixUtilityDesc_t";
 
         public VMixUtilityDesc_t (IntPtr pointer) : base(pointer) {}
@@ -5293,7 +5293,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VMixAutoFilterDesc_t : NativeObject {
+    public partial class VMixAutoFilterDesc_t : NativeObject {
         private const string ThisClassName = "VMixAutoFilterDesc_t";
 
         public VMixAutoFilterDesc_t (IntPtr pointer) : base(pointer) {}
@@ -5302,7 +5302,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VMixOscDesc_t : NativeObject {
+    public partial class VMixOscDesc_t : NativeObject {
         private const string ThisClassName = "VMixOscDesc_t";
 
         public VMixOscDesc_t (IntPtr pointer) : base(pointer) {}
@@ -5311,7 +5311,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VMixEffectChainDesc_t : NativeObject {
+    public partial class VMixEffectChainDesc_t : NativeObject {
         private const string ThisClassName = "VMixEffectChainDesc_t";
 
         public VMixEffectChainDesc_t (IntPtr pointer) : base(pointer) {}
@@ -5320,7 +5320,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VMixSubgraphSwitchDesc_t : NativeObject {
+    public partial class VMixSubgraphSwitchDesc_t : NativeObject {
         private const string ThisClassName = "VMixSubgraphSwitchDesc_t";
 
         public VMixSubgraphSwitchDesc_t (IntPtr pointer) : base(pointer) {}
@@ -5329,7 +5329,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSSDSEndFrameViewInfo : NativeObject {
+    public partial class CSSDSEndFrameViewInfo : NativeObject {
         private const string ThisClassName = "CSSDSEndFrameViewInfo";
 
         public CSSDSEndFrameViewInfo (IntPtr pointer) : base(pointer) {}
@@ -5338,7 +5338,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSSDSMsg_EndFrame : NativeObject {
+    public partial class CSSDSMsg_EndFrame : NativeObject {
         private const string ThisClassName = "CSSDSMsg_EndFrame";
 
         public CSSDSMsg_EndFrame (IntPtr pointer) : base(pointer) {}
@@ -5347,7 +5347,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class SceneViewId_t : NativeObject {
+    public partial class SceneViewId_t : NativeObject {
         private const string ThisClassName = "SceneViewId_t";
 
         public SceneViewId_t (IntPtr pointer) : base(pointer) {}
@@ -5356,7 +5356,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSSDSMsg_ViewRender : NativeObject {
+    public partial class CSSDSMsg_ViewRender : NativeObject {
         private const string ThisClassName = "CSSDSMsg_ViewRender";
 
         public CSSDSMsg_ViewRender (IntPtr pointer) : base(pointer) {}
@@ -5365,7 +5365,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSSDSMsg_LayerBase : NativeObject {
+    public partial class CSSDSMsg_LayerBase : NativeObject {
         private const string ThisClassName = "CSSDSMsg_LayerBase";
 
         public CSSDSMsg_LayerBase (IntPtr pointer) : base(pointer) {}
@@ -5374,7 +5374,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSSDSMsg_ViewTarget : NativeObject {
+    public partial class CSSDSMsg_ViewTarget : NativeObject {
         private const string ThisClassName = "CSSDSMsg_ViewTarget";
 
         public CSSDSMsg_ViewTarget (IntPtr pointer) : base(pointer) {}
@@ -5383,7 +5383,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSSDSMsg_ViewTargetList : NativeObject {
+    public partial class CSSDSMsg_ViewTargetList : NativeObject {
         private const string ThisClassName = "CSSDSMsg_ViewTargetList";
 
         public CSSDSMsg_ViewTargetList (IntPtr pointer) : base(pointer) {}
@@ -5392,7 +5392,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSSDSMsg_PreLayer : CSSDSMsg_LayerBase {
+    public partial class CSSDSMsg_PreLayer : CSSDSMsg_LayerBase {
         private const string ThisClassName = "CSSDSMsg_PreLayer";
 
         public CSSDSMsg_PreLayer (IntPtr pointer) : base(pointer) {}
@@ -5401,7 +5401,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSSDSMsg_PostLayer : CSSDSMsg_LayerBase {
+    public partial class CSSDSMsg_PostLayer : CSSDSMsg_LayerBase {
         private const string ThisClassName = "CSSDSMsg_PostLayer";
 
         public CSSDSMsg_PostLayer (IntPtr pointer) : base(pointer) {}
@@ -5410,7 +5410,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EntityIOConnectionData_t : NativeObject {
+    public partial class EntityIOConnectionData_t : NativeObject {
         private const string ThisClassName = "EntityIOConnectionData_t";
 
         public EntityIOConnectionData_t (IntPtr pointer) : base(pointer) {}
@@ -5419,7 +5419,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EntityKeyValueData_t : NativeObject {
+    public partial class EntityKeyValueData_t : NativeObject {
         private const string ThisClassName = "EntityKeyValueData_t";
 
         public EntityKeyValueData_t (IntPtr pointer) : base(pointer) {}
@@ -5428,7 +5428,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class PermEntityLumpData_t : NativeObject {
+    public partial class PermEntityLumpData_t : NativeObject {
         private const string ThisClassName = "PermEntityLumpData_t";
 
         public PermEntityLumpData_t (IntPtr pointer) : base(pointer) {}
@@ -5437,7 +5437,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class SceneObject_t : NativeObject {
+    public partial class SceneObject_t : NativeObject {
         private const string ThisClassName = "SceneObject_t";
 
         public SceneObject_t (IntPtr pointer) : base(pointer) {}
@@ -5446,7 +5446,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class BaseSceneObjectOverride_t : NativeObject {
+    public partial class BaseSceneObjectOverride_t : NativeObject {
         private const string ThisClassName = "BaseSceneObjectOverride_t";
 
         public BaseSceneObjectOverride_t (IntPtr pointer) : base(pointer) {}
@@ -5455,7 +5455,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ExtraVertexStreamOverride_t : BaseSceneObjectOverride_t {
+    public partial class ExtraVertexStreamOverride_t : BaseSceneObjectOverride_t {
         private const string ThisClassName = "ExtraVertexStreamOverride_t";
 
         public ExtraVertexStreamOverride_t (IntPtr pointer) : base(pointer) {}
@@ -5464,7 +5464,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class MaterialOverride_t : BaseSceneObjectOverride_t {
+    public partial class MaterialOverride_t : BaseSceneObjectOverride_t {
         private const string ThisClassName = "MaterialOverride_t";
 
         public MaterialOverride_t (IntPtr pointer) : base(pointer) {}
@@ -5473,7 +5473,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoOverlayData_t : NativeObject {
+    public partial class InfoOverlayData_t : NativeObject {
         private const string ThisClassName = "InfoOverlayData_t";
 
         public InfoOverlayData_t (IntPtr pointer) : base(pointer) {}
@@ -5482,7 +5482,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class BakedLightingInfo_t : NativeObject {
+    public partial class BakedLightingInfo_t : NativeObject {
         private const string ThisClassName = "BakedLightingInfo_t";
 
         public BakedLightingInfo_t (IntPtr pointer) : base(pointer) {}
@@ -5491,7 +5491,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class WorldNodeOnDiskBufferData_t : NativeObject {
+    public partial class WorldNodeOnDiskBufferData_t : NativeObject {
         private const string ThisClassName = "WorldNodeOnDiskBufferData_t";
 
         public WorldNodeOnDiskBufferData_t (IntPtr pointer) : base(pointer) {}
@@ -5500,7 +5500,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class AggregateMeshInfo_t : NativeObject {
+    public partial class AggregateMeshInfo_t : NativeObject {
         private const string ThisClassName = "AggregateMeshInfo_t";
 
         public AggregateMeshInfo_t (IntPtr pointer) : base(pointer) {}
@@ -5509,7 +5509,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class AggregateLODSetup_t : NativeObject {
+    public partial class AggregateLODSetup_t : NativeObject {
         private const string ThisClassName = "AggregateLODSetup_t";
 
         public AggregateLODSetup_t (IntPtr pointer) : base(pointer) {}
@@ -5518,7 +5518,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class AggregateSceneObject_t : NativeObject {
+    public partial class AggregateSceneObject_t : NativeObject {
         private const string ThisClassName = "AggregateSceneObject_t";
 
         public AggregateSceneObject_t (IntPtr pointer) : base(pointer) {}
@@ -5527,7 +5527,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ClutterTile_t : NativeObject {
+    public partial class ClutterTile_t : NativeObject {
         private const string ThisClassName = "ClutterTile_t";
 
         public ClutterTile_t (IntPtr pointer) : base(pointer) {}
@@ -5536,7 +5536,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ClutterSceneObject_t : NativeObject {
+    public partial class ClutterSceneObject_t : NativeObject {
         private const string ThisClassName = "ClutterSceneObject_t";
 
         public ClutterSceneObject_t (IntPtr pointer) : base(pointer) {}
@@ -5545,7 +5545,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class WorldNode_t : NativeObject {
+    public partial class WorldNode_t : NativeObject {
         private const string ThisClassName = "WorldNode_t";
 
         public WorldNode_t (IntPtr pointer) : base(pointer) {}
@@ -5554,7 +5554,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class WorldBuilderParams_t : NativeObject {
+    public partial class WorldBuilderParams_t : NativeObject {
         private const string ThisClassName = "WorldBuilderParams_t";
 
         public WorldBuilderParams_t (IntPtr pointer) : base(pointer) {}
@@ -5563,7 +5563,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class NodeData_t : NativeObject {
+    public partial class NodeData_t : NativeObject {
         private const string ThisClassName = "NodeData_t";
 
         public NodeData_t (IntPtr pointer) : base(pointer) {}
@@ -5572,7 +5572,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class World_t : NativeObject {
+    public partial class World_t : NativeObject {
         private const string ThisClassName = "World_t";
 
         public World_t (IntPtr pointer) : base(pointer) {}
@@ -5581,7 +5581,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VoxelVisBlockOffset_t : NativeObject {
+    public partial class VoxelVisBlockOffset_t : NativeObject {
         private const string ThisClassName = "VoxelVisBlockOffset_t";
 
         public VoxelVisBlockOffset_t (IntPtr pointer) : base(pointer) {}
@@ -5590,7 +5590,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CVoxelVisibility : NativeObject {
+    public partial class CVoxelVisibility : NativeObject {
         private const string ThisClassName = "CVoxelVisibility";
 
         public CVoxelVisibility (IntPtr pointer) : base(pointer) {}
@@ -5599,7 +5599,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VMapResourceData_t : NativeObject {
+    public partial class VMapResourceData_t : NativeObject {
         private const string ThisClassName = "VMapResourceData_t";
 
         public VMapResourceData_t (IntPtr pointer) : base(pointer) {}
@@ -5608,7 +5608,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class InfoForResourceTypeVMapResourceData_t : NativeObject {
+    public partial class InfoForResourceTypeVMapResourceData_t : NativeObject {
         private const string ThisClassName = "InfoForResourceTypeVMapResourceData_t";
 
         public InfoForResourceTypeVMapResourceData_t (IntPtr pointer) : base(pointer) {}
@@ -5617,7 +5617,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseTestFuncs_LibraryA : NativeObject {
+    public partial class CPulseTestFuncs_LibraryA : NativeObject {
         private const string ThisClassName = "CPulseTestFuncs_LibraryA";
 
         public CPulseTestFuncs_LibraryA (IntPtr pointer) : base(pointer) {}
@@ -5626,7 +5626,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseExecCursor : NativeObject {
+    public partial class CPulseExecCursor : NativeObject {
         private const string ThisClassName = "CPulseExecCursor";
 
         public CPulseExecCursor (IntPtr pointer) : base(pointer) {}
@@ -5635,7 +5635,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulse_RegisterInfo : NativeObject {
+    public partial class CPulse_RegisterInfo : NativeObject {
         private const string ThisClassName = "CPulse_RegisterInfo";
 
         public CPulse_RegisterInfo (IntPtr pointer) : base(pointer) {}
@@ -5644,7 +5644,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulse_Chunk : NativeObject {
+    public partial class CPulse_Chunk : NativeObject {
         private const string ThisClassName = "CPulse_Chunk";
 
         public CPulse_Chunk (IntPtr pointer) : base(pointer) {}
@@ -5653,7 +5653,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulse_Variable : NativeObject {
+    public partial class CPulse_Variable : NativeObject {
         private const string ThisClassName = "CPulse_Variable";
 
         public CPulse_Variable (IntPtr pointer) : base(pointer) {}
@@ -5662,7 +5662,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulse_PublicOutput : NativeObject {
+    public partial class CPulse_PublicOutput : NativeObject {
         private const string ThisClassName = "CPulse_PublicOutput";
 
         public CPulse_PublicOutput (IntPtr pointer) : base(pointer) {}
@@ -5671,7 +5671,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulse_OutputConnection : NativeObject {
+    public partial class CPulse_OutputConnection : NativeObject {
         private const string ThisClassName = "CPulse_OutputConnection";
 
         public CPulse_OutputConnection (IntPtr pointer) : base(pointer) {}
@@ -5680,7 +5680,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulse_InvokeBinding : NativeObject {
+    public partial class CPulse_InvokeBinding : NativeObject {
         private const string ThisClassName = "CPulse_InvokeBinding";
 
         public CPulse_InvokeBinding (IntPtr pointer) : base(pointer) {}
@@ -5689,7 +5689,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulse_CallInfo : NativeObject {
+    public partial class CPulse_CallInfo : NativeObject {
         private const string ThisClassName = "CPulse_CallInfo";
 
         public CPulse_CallInfo (IntPtr pointer) : base(pointer) {}
@@ -5698,7 +5698,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseGraphDef : NativeObject {
+    public partial class CPulseGraphDef : NativeObject {
         private const string ThisClassName = "CPulseGraphDef";
 
         public CPulseGraphDef (IntPtr pointer) : base(pointer) {}
@@ -5707,7 +5707,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CBasePulseGraphInstance : NativeObject {
+    public partial class CBasePulseGraphInstance : NativeObject {
         private const string ThisClassName = "CBasePulseGraphInstance";
 
         public CBasePulseGraphInstance (IntPtr pointer) : base(pointer) {}
@@ -5716,7 +5716,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseMathlib : NativeObject {
+    public partial class CPulseMathlib : NativeObject {
         private const string ThisClassName = "CPulseMathlib";
 
         public CPulseMathlib (IntPtr pointer) : base(pointer) {}
@@ -5725,7 +5725,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseTestScriptLib : NativeObject {
+    public partial class CPulseTestScriptLib : NativeObject {
         private const string ThisClassName = "CPulseTestScriptLib";
 
         public CPulseTestScriptLib (IntPtr pointer) : base(pointer) {}
@@ -5734,7 +5734,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class PulseRuntimeChunkIndex_t : NativeObject {
+    public partial class PulseRuntimeChunkIndex_t : NativeObject {
         private const string ThisClassName = "PulseRuntimeChunkIndex_t";
 
         public PulseRuntimeChunkIndex_t (IntPtr pointer) : base(pointer) {}
@@ -5743,7 +5743,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class PulseRuntimeCallInfoIndex_t : NativeObject {
+    public partial class PulseRuntimeCallInfoIndex_t : NativeObject {
         private const string ThisClassName = "PulseRuntimeCallInfoIndex_t";
 
         public PulseRuntimeCallInfoIndex_t (IntPtr pointer) : base(pointer) {}
@@ -5752,7 +5752,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class PulseRuntimeVarIndex_t : NativeObject {
+    public partial class PulseRuntimeVarIndex_t : NativeObject {
         private const string ThisClassName = "PulseRuntimeVarIndex_t";
 
         public PulseRuntimeVarIndex_t (IntPtr pointer) : base(pointer) {}
@@ -5761,7 +5761,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class PulseRuntimeOutputIndex_t : NativeObject {
+    public partial class PulseRuntimeOutputIndex_t : NativeObject {
         private const string ThisClassName = "PulseRuntimeOutputIndex_t";
 
         public PulseRuntimeOutputIndex_t (IntPtr pointer) : base(pointer) {}
@@ -5770,7 +5770,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class PulseRuntimeStateOffset_t : NativeObject {
+    public partial class PulseRuntimeStateOffset_t : NativeObject {
         private const string ThisClassName = "PulseRuntimeStateOffset_t";
 
         public PulseRuntimeStateOffset_t (IntPtr pointer) : base(pointer) {}
@@ -5779,7 +5779,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class PulseRuntimeRegisterIndex_t : NativeObject {
+    public partial class PulseRuntimeRegisterIndex_t : NativeObject {
         private const string ThisClassName = "PulseRuntimeRegisterIndex_t";
 
         public PulseRuntimeRegisterIndex_t (IntPtr pointer) : base(pointer) {}
@@ -5788,7 +5788,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class PulseRuntimeCellIndex_t : NativeObject {
+    public partial class PulseRuntimeCellIndex_t : NativeObject {
         private const string ThisClassName = "PulseRuntimeCellIndex_t";
 
         public PulseRuntimeCellIndex_t (IntPtr pointer) : base(pointer) {}
@@ -5797,7 +5797,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class PulseRuntimeInvokeIndex_t : NativeObject {
+    public partial class PulseRuntimeInvokeIndex_t : NativeObject {
         private const string ThisClassName = "PulseRuntimeInvokeIndex_t";
 
         public PulseRuntimeInvokeIndex_t (IntPtr pointer) : base(pointer) {}
@@ -5806,7 +5806,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class PulseDocNodeID_t : NativeObject {
+    public partial class PulseDocNodeID_t : NativeObject {
         private const string ThisClassName = "PulseDocNodeID_t";
 
         public PulseDocNodeID_t (IntPtr pointer) : base(pointer) {}
@@ -5815,7 +5815,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class PulseRuntimeEntrypointIndex_t : NativeObject {
+    public partial class PulseRuntimeEntrypointIndex_t : NativeObject {
         private const string ThisClassName = "PulseRuntimeEntrypointIndex_t";
 
         public PulseRuntimeEntrypointIndex_t (IntPtr pointer) : base(pointer) {}
@@ -5824,7 +5824,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class PulseRegisterMap_t : NativeObject {
+    public partial class PulseRegisterMap_t : NativeObject {
         private const string ThisClassName = "PulseRegisterMap_t";
 
         public PulseRegisterMap_t (IntPtr pointer) : base(pointer) {}
@@ -5833,7 +5833,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class PGDInstruction_t : NativeObject {
+    public partial class PGDInstruction_t : NativeObject {
         private const string ThisClassName = "PGDInstruction_t";
 
         public PGDInstruction_t (IntPtr pointer) : base(pointer) {}
@@ -5842,7 +5842,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulse_OutflowConnection : NativeObject {
+    public partial class CPulse_OutflowConnection : NativeObject {
         private const string ThisClassName = "CPulse_OutflowConnection";
 
         public CPulse_OutflowConnection (IntPtr pointer) : base(pointer) {}
@@ -5851,7 +5851,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulse_ResumePoint : CPulse_OutflowConnection {
+    public partial class CPulse_ResumePoint : CPulse_OutflowConnection {
         private const string ThisClassName = "CPulse_ResumePoint";
 
         public CPulse_ResumePoint (IntPtr pointer) : base(pointer) {}
@@ -5860,7 +5860,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Base : NativeObject {
+    public partial class CPulseCell_Base : NativeObject {
         private const string ThisClassName = "CPulseCell_Base";
 
         public CPulseCell_Base (IntPtr pointer) : base(pointer) {}
@@ -5869,7 +5869,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_BaseFlow : CPulseCell_Base {
+    public partial class CPulseCell_BaseFlow : CPulseCell_Base {
         private const string ThisClassName = "CPulseCell_BaseFlow";
 
         public CPulseCell_BaseFlow (IntPtr pointer) : base(pointer) {}
@@ -5878,7 +5878,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Inflow_BaseEntrypoint : CPulseCell_BaseFlow {
+    public partial class CPulseCell_Inflow_BaseEntrypoint : CPulseCell_BaseFlow {
         private const string ThisClassName = "CPulseCell_Inflow_BaseEntrypoint";
 
         public CPulseCell_Inflow_BaseEntrypoint (IntPtr pointer) : base(pointer) {}
@@ -5887,7 +5887,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseRuntimeMethodArg : NativeObject {
+    public partial class CPulseRuntimeMethodArg : NativeObject {
         private const string ThisClassName = "CPulseRuntimeMethodArg";
 
         public CPulseRuntimeMethodArg (IntPtr pointer) : base(pointer) {}
@@ -5896,7 +5896,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Inflow_Method : CPulseCell_Inflow_BaseEntrypoint {
+    public partial class CPulseCell_Inflow_Method : CPulseCell_Inflow_BaseEntrypoint {
         private const string ThisClassName = "CPulseCell_Inflow_Method";
 
         public CPulseCell_Inflow_Method (IntPtr pointer) : base(pointer) {}
@@ -5905,7 +5905,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Inflow_EventHandler : CPulseCell_Inflow_BaseEntrypoint {
+    public partial class CPulseCell_Inflow_EventHandler : CPulseCell_Inflow_BaseEntrypoint {
         private const string ThisClassName = "CPulseCell_Inflow_EventHandler";
 
         public CPulseCell_Inflow_EventHandler (IntPtr pointer) : base(pointer) {}
@@ -5914,7 +5914,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Inflow_GraphHook : CPulseCell_Inflow_BaseEntrypoint {
+    public partial class CPulseCell_Inflow_GraphHook : CPulseCell_Inflow_BaseEntrypoint {
         private const string ThisClassName = "CPulseCell_Inflow_GraphHook";
 
         public CPulseCell_Inflow_GraphHook (IntPtr pointer) : base(pointer) {}
@@ -5923,7 +5923,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Inflow_EntOutputHandler : CPulseCell_Inflow_BaseEntrypoint {
+    public partial class CPulseCell_Inflow_EntOutputHandler : CPulseCell_Inflow_BaseEntrypoint {
         private const string ThisClassName = "CPulseCell_Inflow_EntOutputHandler";
 
         public CPulseCell_Inflow_EntOutputHandler (IntPtr pointer) : base(pointer) {}
@@ -5932,7 +5932,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_BaseYieldingInflow : CPulseCell_BaseFlow {
+    public partial class CPulseCell_BaseYieldingInflow : CPulseCell_BaseFlow {
         private const string ThisClassName = "CPulseCell_BaseYieldingInflow";
 
         public CPulseCell_BaseYieldingInflow (IntPtr pointer) : base(pointer) {}
@@ -5941,7 +5941,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_BaseValue : CPulseCell_Base {
+    public partial class CPulseCell_BaseValue : CPulseCell_Base {
         private const string ThisClassName = "CPulseCell_BaseValue";
 
         public CPulseCell_BaseValue (IntPtr pointer) : base(pointer) {}
@@ -5950,7 +5950,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Step_PublicOutput : CPulseCell_BaseFlow {
+    public partial class CPulseCell_Step_PublicOutput : CPulseCell_BaseFlow {
         private const string ThisClassName = "CPulseCell_Step_PublicOutput";
 
         public CPulseCell_Step_PublicOutput (IntPtr pointer) : base(pointer) {}
@@ -5959,7 +5959,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Inflow_Yield : CPulseCell_BaseYieldingInflow {
+    public partial class CPulseCell_Inflow_Yield : CPulseCell_BaseYieldingInflow {
         private const string ThisClassName = "CPulseCell_Inflow_Yield";
 
         public CPulseCell_Inflow_Yield (IntPtr pointer) : base(pointer) {}
@@ -5968,7 +5968,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Inflow_Wait : CPulseCell_BaseYieldingInflow {
+    public partial class CPulseCell_Inflow_Wait : CPulseCell_BaseYieldingInflow {
         private const string ThisClassName = "CPulseCell_Inflow_Wait";
 
         public CPulseCell_Inflow_Wait (IntPtr pointer) : base(pointer) {}
@@ -5977,7 +5977,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Outflow_StringSwitch : CPulseCell_BaseFlow {
+    public partial class CPulseCell_Outflow_StringSwitch : CPulseCell_BaseFlow {
         private const string ThisClassName = "CPulseCell_Outflow_StringSwitch";
 
         public CPulseCell_Outflow_StringSwitch (IntPtr pointer) : base(pointer) {}
@@ -5986,7 +5986,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Outflow_IntSwitch : CPulseCell_BaseFlow {
+    public partial class CPulseCell_Outflow_IntSwitch : CPulseCell_BaseFlow {
         private const string ThisClassName = "CPulseCell_Outflow_IntSwitch";
 
         public CPulseCell_Outflow_IntSwitch (IntPtr pointer) : base(pointer) {}
@@ -5995,7 +5995,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Outflow_CycleOrdered : CPulseCell_BaseFlow {
+    public partial class CPulseCell_Outflow_CycleOrdered : CPulseCell_BaseFlow {
         private const string ThisClassName = "CPulseCell_Outflow_CycleOrdered";
 
         public CPulseCell_Outflow_CycleOrdered (IntPtr pointer) : base(pointer) {}
@@ -6004,7 +6004,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Outflow_CycleOrdered__InstanceState_t : NativeObject {
+    public partial class CPulseCell_Outflow_CycleOrdered__InstanceState_t : NativeObject {
         private const string ThisClassName = "CPulseCell_Outflow_CycleOrdered__InstanceState_t";
 
         public CPulseCell_Outflow_CycleOrdered__InstanceState_t (IntPtr pointer) : base(pointer) {}
@@ -6013,7 +6013,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Outflow_CycleRandom : CPulseCell_BaseFlow {
+    public partial class CPulseCell_Outflow_CycleRandom : CPulseCell_BaseFlow {
         private const string ThisClassName = "CPulseCell_Outflow_CycleRandom";
 
         public CPulseCell_Outflow_CycleRandom (IntPtr pointer) : base(pointer) {}
@@ -6022,7 +6022,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Outflow_CycleShuffled : CPulseCell_BaseFlow {
+    public partial class CPulseCell_Outflow_CycleShuffled : CPulseCell_BaseFlow {
         private const string ThisClassName = "CPulseCell_Outflow_CycleShuffled";
 
         public CPulseCell_Outflow_CycleShuffled (IntPtr pointer) : base(pointer) {}
@@ -6031,7 +6031,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Outflow_CycleShuffled__InstanceState_t : NativeObject {
+    public partial class CPulseCell_Outflow_CycleShuffled__InstanceState_t : NativeObject {
         private const string ThisClassName = "CPulseCell_Outflow_CycleShuffled__InstanceState_t";
 
         public CPulseCell_Outflow_CycleShuffled__InstanceState_t (IntPtr pointer) : base(pointer) {}
@@ -6040,7 +6040,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Outflow_SimultaneousParallel : CPulseCell_BaseFlow {
+    public partial class CPulseCell_Outflow_SimultaneousParallel : CPulseCell_BaseFlow {
         private const string ThisClassName = "CPulseCell_Outflow_SimultaneousParallel";
 
         public CPulseCell_Outflow_SimultaneousParallel (IntPtr pointer) : base(pointer) {}
@@ -6049,7 +6049,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Outflow_TestRandomYesNo : CPulseCell_BaseFlow {
+    public partial class CPulseCell_Outflow_TestRandomYesNo : CPulseCell_BaseFlow {
         private const string ThisClassName = "CPulseCell_Outflow_TestRandomYesNo";
 
         public CPulseCell_Outflow_TestRandomYesNo (IntPtr pointer) : base(pointer) {}
@@ -6058,7 +6058,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Outflow_TestExplicitYesNo : CPulseCell_BaseFlow {
+    public partial class CPulseCell_Outflow_TestExplicitYesNo : CPulseCell_BaseFlow {
         private const string ThisClassName = "CPulseCell_Outflow_TestExplicitYesNo";
 
         public CPulseCell_Outflow_TestExplicitYesNo (IntPtr pointer) : base(pointer) {}
@@ -6067,7 +6067,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Value_TestValue50 : CPulseCell_BaseValue {
+    public partial class CPulseCell_Value_TestValue50 : CPulseCell_BaseValue {
         private const string ThisClassName = "CPulseCell_Value_TestValue50";
 
         public CPulseCell_Value_TestValue50 (IntPtr pointer) : base(pointer) {}
@@ -6076,7 +6076,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Value_RandomInt : CPulseCell_BaseValue {
+    public partial class CPulseCell_Value_RandomInt : CPulseCell_BaseValue {
         private const string ThisClassName = "CPulseCell_Value_RandomInt";
 
         public CPulseCell_Value_RandomInt (IntPtr pointer) : base(pointer) {}
@@ -6085,7 +6085,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Step_DebugLog : CPulseCell_BaseFlow {
+    public partial class CPulseCell_Step_DebugLog : CPulseCell_BaseFlow {
         private const string ThisClassName = "CPulseCell_Step_DebugLog";
 
         public CPulseCell_Step_DebugLog (IntPtr pointer) : base(pointer) {}
@@ -6094,7 +6094,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Step_CallExternalMethod : CPulseCell_BaseFlow {
+    public partial class CPulseCell_Step_CallExternalMethod : CPulseCell_BaseFlow {
         private const string ThisClassName = "CPulseCell_Step_CallExternalMethod";
 
         public CPulseCell_Step_CallExternalMethod (IntPtr pointer) : base(pointer) {}
@@ -6103,7 +6103,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class PulseTestEHandle_t : NativeObject {
+    public partial class PulseTestEHandle_t : NativeObject {
         private const string ThisClassName = "PulseTestEHandle_t";
 
         public PulseTestEHandle_t (IntPtr pointer) : base(pointer) {}
@@ -6112,7 +6112,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FakeEntity_t : NativeObject {
+    public partial class FakeEntity_t : NativeObject {
         private const string ThisClassName = "FakeEntity_t";
 
         public FakeEntity_t (IntPtr pointer) : base(pointer) {}
@@ -6121,7 +6121,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseGraphInstance_TestDomain : CBasePulseGraphInstance {
+    public partial class CPulseGraphInstance_TestDomain : CBasePulseGraphInstance {
         private const string ThisClassName = "CPulseGraphInstance_TestDomain";
 
         public CPulseGraphInstance_TestDomain (IntPtr pointer) : base(pointer) {}
@@ -6130,7 +6130,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Step_TestDomainTracepoint : CPulseCell_BaseFlow {
+    public partial class CPulseCell_Step_TestDomainTracepoint : CPulseCell_BaseFlow {
         private const string ThisClassName = "CPulseCell_Step_TestDomainTracepoint";
 
         public CPulseCell_Step_TestDomainTracepoint (IntPtr pointer) : base(pointer) {}
@@ -6139,7 +6139,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Step_TestDomainCreateFakeEntity : CPulseCell_BaseFlow {
+    public partial class CPulseCell_Step_TestDomainCreateFakeEntity : CPulseCell_BaseFlow {
         private const string ThisClassName = "CPulseCell_Step_TestDomainCreateFakeEntity";
 
         public CPulseCell_Step_TestDomainCreateFakeEntity (IntPtr pointer) : base(pointer) {}
@@ -6148,7 +6148,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Step_TestDomainDestroyFakeEntity : CPulseCell_BaseFlow {
+    public partial class CPulseCell_Step_TestDomainDestroyFakeEntity : CPulseCell_BaseFlow {
         private const string ThisClassName = "CPulseCell_Step_TestDomainDestroyFakeEntity";
 
         public CPulseCell_Step_TestDomainDestroyFakeEntity (IntPtr pointer) : base(pointer) {}
@@ -6157,7 +6157,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Step_TestDomainEntFire : CPulseCell_BaseFlow {
+    public partial class CPulseCell_Step_TestDomainEntFire : CPulseCell_BaseFlow {
         private const string ThisClassName = "CPulseCell_Step_TestDomainEntFire";
 
         public CPulseCell_Step_TestDomainEntFire (IntPtr pointer) : base(pointer) {}
@@ -6166,7 +6166,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Val_TestDomainGetEntityName : CPulseCell_BaseValue {
+    public partial class CPulseCell_Val_TestDomainGetEntityName : CPulseCell_BaseValue {
         private const string ThisClassName = "CPulseCell_Val_TestDomainGetEntityName";
 
         public CPulseCell_Val_TestDomainGetEntityName (IntPtr pointer) : base(pointer) {}
@@ -6175,7 +6175,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Val_TestDomainFindEntityByName : CPulseCell_BaseValue {
+    public partial class CPulseCell_Val_TestDomainFindEntityByName : CPulseCell_BaseValue {
         private const string ThisClassName = "CPulseCell_Val_TestDomainFindEntityByName";
 
         public CPulseCell_Val_TestDomainFindEntityByName (IntPtr pointer) : base(pointer) {}
@@ -6184,7 +6184,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CTestDomainDerived_Cursor : CPulseExecCursor {
+    public partial class CTestDomainDerived_Cursor : CPulseExecCursor {
         private const string ThisClassName = "CTestDomainDerived_Cursor";
 
         public CTestDomainDerived_Cursor (IntPtr pointer) : base(pointer) {}
@@ -6193,7 +6193,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseGraphInstance_TestDomain_Derived : CPulseGraphInstance_TestDomain {
+    public partial class CPulseGraphInstance_TestDomain_Derived : CPulseGraphInstance_TestDomain {
         private const string ThisClassName = "CPulseGraphInstance_TestDomain_Derived";
 
         public CPulseGraphInstance_TestDomain_Derived (IntPtr pointer) : base(pointer) {}
@@ -6202,7 +6202,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseTestFuncs_DerivedDomain : NativeObject {
+    public partial class CPulseTestFuncs_DerivedDomain : NativeObject {
         private const string ThisClassName = "CPulseTestFuncs_DerivedDomain";
 
         public CPulseTestFuncs_DerivedDomain (IntPtr pointer) : base(pointer) {}
@@ -6211,7 +6211,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Test_NoInflow : CPulseCell_BaseFlow {
+    public partial class CPulseCell_Test_NoInflow : CPulseCell_BaseFlow {
         private const string ThisClassName = "CPulseCell_Test_NoInflow";
 
         public CPulseCell_Test_NoInflow (IntPtr pointer) : base(pointer) {}
@@ -6220,7 +6220,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Test_MultiInflow_WithDefault : CPulseCell_BaseFlow {
+    public partial class CPulseCell_Test_MultiInflow_WithDefault : CPulseCell_BaseFlow {
         private const string ThisClassName = "CPulseCell_Test_MultiInflow_WithDefault";
 
         public CPulseCell_Test_MultiInflow_WithDefault (IntPtr pointer) : base(pointer) {}
@@ -6229,7 +6229,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Test_MultiInflow_NoDefault : CPulseCell_BaseFlow {
+    public partial class CPulseCell_Test_MultiInflow_NoDefault : CPulseCell_BaseFlow {
         private const string ThisClassName = "CPulseCell_Test_MultiInflow_NoDefault";
 
         public CPulseCell_Test_MultiInflow_NoDefault (IntPtr pointer) : base(pointer) {}
@@ -6238,7 +6238,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseTurtleGraphicsCursor : CPulseExecCursor {
+    public partial class CPulseTurtleGraphicsCursor : CPulseExecCursor {
         private const string ThisClassName = "CPulseTurtleGraphicsCursor";
 
         public CPulseTurtleGraphicsCursor (IntPtr pointer) : base(pointer) {}
@@ -6247,7 +6247,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseGraphInstance_TurtleGraphics : CBasePulseGraphInstance {
+    public partial class CPulseGraphInstance_TurtleGraphics : CBasePulseGraphInstance {
         private const string ThisClassName = "CPulseGraphInstance_TurtleGraphics";
 
         public CPulseGraphInstance_TurtleGraphics (IntPtr pointer) : base(pointer) {}
@@ -6256,7 +6256,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CRandomNumberGeneratorParameters : NativeObject {
+    public partial class CRandomNumberGeneratorParameters : NativeObject {
         private const string ThisClassName = "CRandomNumberGeneratorParameters";
 
         public CRandomNumberGeneratorParameters (IntPtr pointer) : base(pointer) {}
@@ -6265,7 +6265,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class MaterialVariable_t : NativeObject {
+    public partial class MaterialVariable_t : NativeObject {
         private const string ThisClassName = "MaterialVariable_t";
 
         public MaterialVariable_t (IntPtr pointer) : base(pointer) {}
@@ -6274,7 +6274,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ParticleAttributeIndex_t : NativeObject {
+    public partial class ParticleAttributeIndex_t : NativeObject {
         private const string ThisClassName = "ParticleAttributeIndex_t";
 
         public ParticleAttributeIndex_t (IntPtr pointer) : base(pointer) {}
@@ -6283,7 +6283,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ParticlePreviewBodyGroup_t : NativeObject {
+    public partial class ParticlePreviewBodyGroup_t : NativeObject {
         private const string ThisClassName = "ParticlePreviewBodyGroup_t";
 
         public ParticlePreviewBodyGroup_t (IntPtr pointer) : base(pointer) {}
@@ -6292,7 +6292,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ParticlePreviewState_t : NativeObject {
+    public partial class ParticlePreviewState_t : NativeObject {
         private const string ThisClassName = "ParticlePreviewState_t";
 
         public ParticlePreviewState_t (IntPtr pointer) : base(pointer) {}
@@ -6301,7 +6301,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ParticleControlPointDriver_t : NativeObject {
+    public partial class ParticleControlPointDriver_t : NativeObject {
         private const string ThisClassName = "ParticleControlPointDriver_t";
 
         public ParticleControlPointDriver_t (IntPtr pointer) : base(pointer) {}
@@ -6310,7 +6310,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ParticleControlPointConfiguration_t : NativeObject {
+    public partial class ParticleControlPointConfiguration_t : NativeObject {
         private const string ThisClassName = "ParticleControlPointConfiguration_t";
 
         public ParticleControlPointConfiguration_t (IntPtr pointer) : base(pointer) {}
@@ -6319,7 +6319,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class IParticleCollection : NativeObject {
+    public partial class IParticleCollection : NativeObject {
         private const string ThisClassName = "IParticleCollection";
 
         public IParticleCollection (IntPtr pointer) : base(pointer) {}
@@ -6328,7 +6328,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class IControlPointEditorData : NativeObject {
+    public partial class IControlPointEditorData : NativeObject {
         private const string ThisClassName = "IControlPointEditorData";
 
         public IControlPointEditorData (IntPtr pointer) : base(pointer) {}
@@ -6337,7 +6337,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class IParticleSystemDefinition : NativeObject {
+    public partial class IParticleSystemDefinition : NativeObject {
         private const string ThisClassName = "IParticleSystemDefinition";
 
         public IParticleSystemDefinition (IntPtr pointer) : base(pointer) {}
@@ -6346,7 +6346,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CParticleVisibilityInputs : NativeObject {
+    public partial class CParticleVisibilityInputs : NativeObject {
         private const string ThisClassName = "CParticleVisibilityInputs";
 
         public CParticleVisibilityInputs (IntPtr pointer) : base(pointer) {}
@@ -6355,7 +6355,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPathParameters : NativeObject {
+    public partial class CPathParameters : NativeObject {
         private const string ThisClassName = "CPathParameters";
 
         public CPathParameters (IntPtr pointer) : base(pointer) {}
@@ -6364,7 +6364,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ParticleChildrenInfo_t : NativeObject {
+    public partial class ParticleChildrenInfo_t : NativeObject {
         private const string ThisClassName = "ParticleChildrenInfo_t";
 
         public ParticleChildrenInfo_t (IntPtr pointer) : base(pointer) {}
@@ -6373,7 +6373,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ControlPointReference_t : NativeObject {
+    public partial class ControlPointReference_t : NativeObject {
         private const string ThisClassName = "ControlPointReference_t";
 
         public ControlPointReference_t (IntPtr pointer) : base(pointer) {}
@@ -6382,7 +6382,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ModelReference_t : NativeObject {
+    public partial class ModelReference_t : NativeObject {
         private const string ThisClassName = "ModelReference_t";
 
         public ModelReference_t (IntPtr pointer) : base(pointer) {}
@@ -6391,7 +6391,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class SequenceWeightedList_t : NativeObject {
+    public partial class SequenceWeightedList_t : NativeObject {
         private const string ThisClassName = "SequenceWeightedList_t";
 
         public SequenceWeightedList_t (IntPtr pointer) : base(pointer) {}
@@ -6400,7 +6400,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CollisionGroupContext_t : NativeObject {
+    public partial class CollisionGroupContext_t : NativeObject {
         private const string ThisClassName = "CollisionGroupContext_t";
 
         public CollisionGroupContext_t (IntPtr pointer) : base(pointer) {}
@@ -6409,7 +6409,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class PointDefinition_t : NativeObject {
+    public partial class PointDefinition_t : NativeObject {
         private const string ThisClassName = "PointDefinition_t";
 
         public PointDefinition_t (IntPtr pointer) : base(pointer) {}
@@ -6418,7 +6418,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class PointDefinitionWithTimeValues_t : PointDefinition_t {
+    public partial class PointDefinitionWithTimeValues_t : PointDefinition_t {
         private const string ThisClassName = "PointDefinitionWithTimeValues_t";
 
         public PointDefinitionWithTimeValues_t (IntPtr pointer) : base(pointer) {}
@@ -6427,7 +6427,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CParticleSystemDefinition : IParticleSystemDefinition {
+    public partial class CParticleSystemDefinition : IParticleSystemDefinition {
         private const string ThisClassName = "CParticleSystemDefinition";
 
         public CParticleSystemDefinition (IntPtr pointer) : base(pointer) {}
@@ -6436,7 +6436,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CParticleFunction : NativeObject {
+    public partial class CParticleFunction : NativeObject {
         private const string ThisClassName = "CParticleFunction";
 
         public CParticleFunction (IntPtr pointer) : base(pointer) {}
@@ -6445,7 +6445,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CParticleFunctionInitializer : CParticleFunction {
+    public partial class CParticleFunctionInitializer : CParticleFunction {
         private const string ThisClassName = "CParticleFunctionInitializer";
 
         public CParticleFunctionInitializer (IntPtr pointer) : base(pointer) {}
@@ -6454,7 +6454,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CParticleFunctionEmitter : CParticleFunction {
+    public partial class CParticleFunctionEmitter : CParticleFunction {
         private const string ThisClassName = "CParticleFunctionEmitter";
 
         public CParticleFunctionEmitter (IntPtr pointer) : base(pointer) {}
@@ -6463,7 +6463,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CParticleFunctionConstraint : CParticleFunction {
+    public partial class CParticleFunctionConstraint : CParticleFunction {
         private const string ThisClassName = "CParticleFunctionConstraint";
 
         public CParticleFunctionConstraint (IntPtr pointer) : base(pointer) {}
@@ -6472,7 +6472,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CParticleFunctionOperator : CParticleFunction {
+    public partial class CParticleFunctionOperator : CParticleFunction {
         private const string ThisClassName = "CParticleFunctionOperator";
 
         public CParticleFunctionOperator (IntPtr pointer) : base(pointer) {}
@@ -6481,7 +6481,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CParticleFunctionForce : CParticleFunction {
+    public partial class CParticleFunctionForce : CParticleFunction {
         private const string ThisClassName = "CParticleFunctionForce";
 
         public CParticleFunctionForce (IntPtr pointer) : base(pointer) {}
@@ -6490,7 +6490,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CParticleFunctionPreEmission : CParticleFunctionOperator {
+    public partial class CParticleFunctionPreEmission : CParticleFunctionOperator {
         private const string ThisClassName = "CParticleFunctionPreEmission";
 
         public CParticleFunctionPreEmission (IntPtr pointer) : base(pointer) {}
@@ -6499,7 +6499,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CParticleFunctionRenderer : CParticleFunction {
+    public partial class CParticleFunctionRenderer : CParticleFunction {
         private const string ThisClassName = "CParticleFunctionRenderer";
 
         public CParticleFunctionRenderer (IntPtr pointer) : base(pointer) {}
@@ -6508,7 +6508,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class TextureControls_t : NativeObject {
+    public partial class TextureControls_t : NativeObject {
         private const string ThisClassName = "TextureControls_t";
 
         public TextureControls_t (IntPtr pointer) : base(pointer) {}
@@ -6517,7 +6517,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class TextureGroup_t : NativeObject {
+    public partial class TextureGroup_t : NativeObject {
         private const string ThisClassName = "TextureGroup_t";
 
         public TextureGroup_t (IntPtr pointer) : base(pointer) {}
@@ -6526,7 +6526,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CBaseRendererSource2 : CParticleFunctionRenderer {
+    public partial class CBaseRendererSource2 : CParticleFunctionRenderer {
         private const string ThisClassName = "CBaseRendererSource2";
 
         public CBaseRendererSource2 (IntPtr pointer) : base(pointer) {}
@@ -6535,7 +6535,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RenderSprites : CBaseRendererSource2 {
+    public partial class C_OP_RenderSprites : CBaseRendererSource2 {
         private const string ThisClassName = "C_OP_RenderSprites";
 
         public C_OP_RenderSprites (IntPtr pointer) : base(pointer) {}
@@ -6544,7 +6544,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class FloatInputMaterialVariable_t : NativeObject {
+    public partial class FloatInputMaterialVariable_t : NativeObject {
         private const string ThisClassName = "FloatInputMaterialVariable_t";
 
         public FloatInputMaterialVariable_t (IntPtr pointer) : base(pointer) {}
@@ -6553,7 +6553,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VecInputMaterialVariable_t : NativeObject {
+    public partial class VecInputMaterialVariable_t : NativeObject {
         private const string ThisClassName = "VecInputMaterialVariable_t";
 
         public VecInputMaterialVariable_t (IntPtr pointer) : base(pointer) {}
@@ -6562,7 +6562,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RenderCables : CParticleFunctionRenderer {
+    public partial class C_OP_RenderCables : CParticleFunctionRenderer {
         private const string ThisClassName = "C_OP_RenderCables";
 
         public C_OP_RenderCables (IntPtr pointer) : base(pointer) {}
@@ -6571,7 +6571,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CParticleInput : NativeObject {
+    public partial class CParticleInput : NativeObject {
         private const string ThisClassName = "CParticleInput";
 
         public CParticleInput (IntPtr pointer) : base(pointer) {}
@@ -6580,7 +6580,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CParticleFloatInput : CParticleInput {
+    public partial class CParticleFloatInput : CParticleInput {
         private const string ThisClassName = "CParticleFloatInput";
 
         public CParticleFloatInput (IntPtr pointer) : base(pointer) {}
@@ -6589,7 +6589,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPerParticleFloatInput : CParticleFloatInput {
+    public partial class CPerParticleFloatInput : CParticleFloatInput {
         private const string ThisClassName = "CPerParticleFloatInput";
 
         public CPerParticleFloatInput (IntPtr pointer) : base(pointer) {}
@@ -6598,7 +6598,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CParticleCollectionFloatInput : CParticleFloatInput {
+    public partial class CParticleCollectionFloatInput : CParticleFloatInput {
         private const string ThisClassName = "CParticleCollectionFloatInput";
 
         public CParticleCollectionFloatInput (IntPtr pointer) : base(pointer) {}
@@ -6607,7 +6607,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CParticleCollectionRendererFloatInput : CParticleCollectionFloatInput {
+    public partial class CParticleCollectionRendererFloatInput : CParticleCollectionFloatInput {
         private const string ThisClassName = "CParticleCollectionRendererFloatInput";
 
         public CParticleCollectionRendererFloatInput (IntPtr pointer) : base(pointer) {}
@@ -6616,7 +6616,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CParticleRemapFloatInput : CParticleFloatInput {
+    public partial class CParticleRemapFloatInput : CParticleFloatInput {
         private const string ThisClassName = "CParticleRemapFloatInput";
 
         public CParticleRemapFloatInput (IntPtr pointer) : base(pointer) {}
@@ -6625,7 +6625,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CParticleTransformInput : CParticleInput {
+    public partial class CParticleTransformInput : CParticleInput {
         private const string ThisClassName = "CParticleTransformInput";
 
         public CParticleTransformInput (IntPtr pointer) : base(pointer) {}
@@ -6634,7 +6634,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CParticleModelInput : CParticleInput {
+    public partial class CParticleModelInput : CParticleInput {
         private const string ThisClassName = "CParticleModelInput";
 
         public CParticleModelInput (IntPtr pointer) : base(pointer) {}
@@ -6643,7 +6643,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CParticleVecInput : CParticleInput {
+    public partial class CParticleVecInput : CParticleInput {
         private const string ThisClassName = "CParticleVecInput";
 
         public CParticleVecInput (IntPtr pointer) : base(pointer) {}
@@ -6652,7 +6652,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPerParticleVecInput : CParticleVecInput {
+    public partial class CPerParticleVecInput : CParticleVecInput {
         private const string ThisClassName = "CPerParticleVecInput";
 
         public CPerParticleVecInput (IntPtr pointer) : base(pointer) {}
@@ -6661,7 +6661,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CParticleCollectionVecInput : CParticleVecInput {
+    public partial class CParticleCollectionVecInput : CParticleVecInput {
         private const string ThisClassName = "CParticleCollectionVecInput";
 
         public CParticleCollectionVecInput (IntPtr pointer) : base(pointer) {}
@@ -6670,7 +6670,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CParticleCollectionRendererVecInput : CParticleCollectionVecInput {
+    public partial class CParticleCollectionRendererVecInput : CParticleCollectionVecInput {
         private const string ThisClassName = "CParticleCollectionRendererVecInput";
 
         public CParticleCollectionRendererVecInput (IntPtr pointer) : base(pointer) {}
@@ -6679,7 +6679,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class PARTICLE_EHANDLE__ : NativeObject {
+    public partial class PARTICLE_EHANDLE__ : NativeObject {
         private const string ThisClassName = "PARTICLE_EHANDLE__";
 
         public PARTICLE_EHANDLE__ (IntPtr pointer) : base(pointer) {}
@@ -6688,7 +6688,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class PARTICLE_WORLD_HANDLE__ : NativeObject {
+    public partial class PARTICLE_WORLD_HANDLE__ : NativeObject {
         private const string ThisClassName = "PARTICLE_WORLD_HANDLE__";
 
         public PARTICLE_WORLD_HANDLE__ (IntPtr pointer) : base(pointer) {}
@@ -6697,7 +6697,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class IParticleEffect : NativeObject {
+    public partial class IParticleEffect : NativeObject {
         private const string ThisClassName = "IParticleEffect";
 
         public IParticleEffect (IntPtr pointer) : base(pointer) {}
@@ -6706,7 +6706,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CParticleCollectionBindingInstance : CBasePulseGraphInstance {
+    public partial class CParticleCollectionBindingInstance : CBasePulseGraphInstance {
         private const string ThisClassName = "CParticleCollectionBindingInstance";
 
         public CParticleCollectionBindingInstance (IntPtr pointer) : base(pointer) {}
@@ -6715,7 +6715,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ParticleNamedValueConfiguration_t : NativeObject {
+    public partial class ParticleNamedValueConfiguration_t : NativeObject {
         private const string ThisClassName = "ParticleNamedValueConfiguration_t";
 
         public ParticleNamedValueConfiguration_t (IntPtr pointer) : base(pointer) {}
@@ -6724,7 +6724,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ParticleNamedValueSource_t : NativeObject {
+    public partial class ParticleNamedValueSource_t : NativeObject {
         private const string ThisClassName = "ParticleNamedValueSource_t";
 
         public ParticleNamedValueSource_t (IntPtr pointer) : base(pointer) {}
@@ -6733,7 +6733,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CParticleVariableRef : NativeObject {
+    public partial class CParticleVariableRef : NativeObject {
         private const string ThisClassName = "CParticleVariableRef";
 
         public CParticleVariableRef (IntPtr pointer) : base(pointer) {}
@@ -6742,7 +6742,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CParticleProperty : NativeObject {
+    public partial class CParticleProperty : NativeObject {
         private const string ThisClassName = "CParticleProperty";
 
         public CParticleProperty (IntPtr pointer) : base(pointer) {}
@@ -6751,7 +6751,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CNewParticleEffect : IParticleEffect {
+    public partial class CNewParticleEffect : IParticleEffect {
         private const string ThisClassName = "CNewParticleEffect";
 
         public CNewParticleEffect (IntPtr pointer) : base(pointer) {}
@@ -6760,7 +6760,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_ConstrainDistance : CParticleFunctionConstraint {
+    public partial class C_OP_ConstrainDistance : CParticleFunctionConstraint {
         private const string ThisClassName = "C_OP_ConstrainDistance";
 
         public C_OP_ConstrainDistance (IntPtr pointer) : base(pointer) {}
@@ -6769,7 +6769,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_CollideWithSelf : CParticleFunctionConstraint {
+    public partial class C_OP_CollideWithSelf : CParticleFunctionConstraint {
         private const string ThisClassName = "C_OP_CollideWithSelf";
 
         public C_OP_CollideWithSelf (IntPtr pointer) : base(pointer) {}
@@ -6778,7 +6778,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_CollideWithParentParticles : CParticleFunctionConstraint {
+    public partial class C_OP_CollideWithParentParticles : CParticleFunctionConstraint {
         private const string ThisClassName = "C_OP_CollideWithParentParticles";
 
         public C_OP_CollideWithParentParticles (IntPtr pointer) : base(pointer) {}
@@ -6787,7 +6787,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_ConstrainDistanceToPath : CParticleFunctionConstraint {
+    public partial class C_OP_ConstrainDistanceToPath : CParticleFunctionConstraint {
         private const string ThisClassName = "C_OP_ConstrainDistanceToPath";
 
         public C_OP_ConstrainDistanceToPath (IntPtr pointer) : base(pointer) {}
@@ -6796,7 +6796,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_ConstrainDistanceToUserSpecifiedPath : CParticleFunctionConstraint {
+    public partial class C_OP_ConstrainDistanceToUserSpecifiedPath : CParticleFunctionConstraint {
         private const string ThisClassName = "C_OP_ConstrainDistanceToUserSpecifiedPath";
 
         public C_OP_ConstrainDistanceToUserSpecifiedPath (IntPtr pointer) : base(pointer) {}
@@ -6805,7 +6805,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_PlanarConstraint : CParticleFunctionConstraint {
+    public partial class C_OP_PlanarConstraint : CParticleFunctionConstraint {
         private const string ThisClassName = "C_OP_PlanarConstraint";
 
         public C_OP_PlanarConstraint (IntPtr pointer) : base(pointer) {}
@@ -6814,7 +6814,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_WorldCollideConstraint : CParticleFunctionConstraint {
+    public partial class C_OP_WorldCollideConstraint : CParticleFunctionConstraint {
         private const string ThisClassName = "C_OP_WorldCollideConstraint";
 
         public C_OP_WorldCollideConstraint (IntPtr pointer) : base(pointer) {}
@@ -6823,7 +6823,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_WorldTraceConstraint : CParticleFunctionConstraint {
+    public partial class C_OP_WorldTraceConstraint : CParticleFunctionConstraint {
         private const string ThisClassName = "C_OP_WorldTraceConstraint";
 
         public C_OP_WorldTraceConstraint (IntPtr pointer) : base(pointer) {}
@@ -6832,7 +6832,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_BoxConstraint : CParticleFunctionConstraint {
+    public partial class C_OP_BoxConstraint : CParticleFunctionConstraint {
         private const string ThisClassName = "C_OP_BoxConstraint";
 
         public C_OP_BoxConstraint (IntPtr pointer) : base(pointer) {}
@@ -6841,7 +6841,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_ShapeMatchingConstraint : CParticleFunctionConstraint {
+    public partial class C_OP_ShapeMatchingConstraint : CParticleFunctionConstraint {
         private const string ThisClassName = "C_OP_ShapeMatchingConstraint";
 
         public C_OP_ShapeMatchingConstraint (IntPtr pointer) : base(pointer) {}
@@ -6850,7 +6850,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RopeSpringConstraint : CParticleFunctionConstraint {
+    public partial class C_OP_RopeSpringConstraint : CParticleFunctionConstraint {
         private const string ThisClassName = "C_OP_RopeSpringConstraint";
 
         public C_OP_RopeSpringConstraint (IntPtr pointer) : base(pointer) {}
@@ -6859,7 +6859,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SpringToVectorConstraint : CParticleFunctionConstraint {
+    public partial class C_OP_SpringToVectorConstraint : CParticleFunctionConstraint {
         private const string ThisClassName = "C_OP_SpringToVectorConstraint";
 
         public C_OP_SpringToVectorConstraint (IntPtr pointer) : base(pointer) {}
@@ -6868,7 +6868,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_ConstrainLineLength : CParticleFunctionConstraint {
+    public partial class C_OP_ConstrainLineLength : CParticleFunctionConstraint {
         private const string ThisClassName = "C_OP_ConstrainLineLength";
 
         public C_OP_ConstrainLineLength (IntPtr pointer) : base(pointer) {}
@@ -6877,7 +6877,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RingWave : CParticleFunctionInitializer {
+    public partial class C_INIT_RingWave : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_RingWave";
 
         public C_INIT_RingWave (IntPtr pointer) : base(pointer) {}
@@ -6886,7 +6886,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_CreateSpiralSphere : CParticleFunctionInitializer {
+    public partial class C_INIT_CreateSpiralSphere : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_CreateSpiralSphere";
 
         public C_INIT_CreateSpiralSphere (IntPtr pointer) : base(pointer) {}
@@ -6895,7 +6895,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_CreateInEpitrochoid : CParticleFunctionInitializer {
+    public partial class C_INIT_CreateInEpitrochoid : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_CreateInEpitrochoid";
 
         public C_INIT_CreateInEpitrochoid (IntPtr pointer) : base(pointer) {}
@@ -6904,7 +6904,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_CreatePhyllotaxis : CParticleFunctionInitializer {
+    public partial class C_INIT_CreatePhyllotaxis : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_CreatePhyllotaxis";
 
         public C_INIT_CreatePhyllotaxis (IntPtr pointer) : base(pointer) {}
@@ -6913,7 +6913,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_CreateOnModel : CParticleFunctionInitializer {
+    public partial class C_INIT_CreateOnModel : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_CreateOnModel";
 
         public C_INIT_CreateOnModel (IntPtr pointer) : base(pointer) {}
@@ -6922,7 +6922,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_CreateOnModelAtHeight : CParticleFunctionInitializer {
+    public partial class C_INIT_CreateOnModelAtHeight : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_CreateOnModelAtHeight";
 
         public C_INIT_CreateOnModelAtHeight (IntPtr pointer) : base(pointer) {}
@@ -6931,7 +6931,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_SetHitboxToClosest : CParticleFunctionInitializer {
+    public partial class C_INIT_SetHitboxToClosest : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_SetHitboxToClosest";
 
         public C_INIT_SetHitboxToClosest (IntPtr pointer) : base(pointer) {}
@@ -6940,7 +6940,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_SetHitboxToModel : CParticleFunctionInitializer {
+    public partial class C_INIT_SetHitboxToModel : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_SetHitboxToModel";
 
         public C_INIT_SetHitboxToModel (IntPtr pointer) : base(pointer) {}
@@ -6949,7 +6949,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_CreateWithinSphereTransform : CParticleFunctionInitializer {
+    public partial class C_INIT_CreateWithinSphereTransform : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_CreateWithinSphereTransform";
 
         public C_INIT_CreateWithinSphereTransform (IntPtr pointer) : base(pointer) {}
@@ -6958,7 +6958,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_CreateWithinBox : CParticleFunctionInitializer {
+    public partial class C_INIT_CreateWithinBox : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_CreateWithinBox";
 
         public C_INIT_CreateWithinBox (IntPtr pointer) : base(pointer) {}
@@ -6967,7 +6967,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_CreateOnGrid : CParticleFunctionInitializer {
+    public partial class C_INIT_CreateOnGrid : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_CreateOnGrid";
 
         public C_INIT_CreateOnGrid (IntPtr pointer) : base(pointer) {}
@@ -6976,7 +6976,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_PositionOffset : CParticleFunctionInitializer {
+    public partial class C_INIT_PositionOffset : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_PositionOffset";
 
         public C_INIT_PositionOffset (IntPtr pointer) : base(pointer) {}
@@ -6985,7 +6985,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_PositionOffsetToCP : CParticleFunctionInitializer {
+    public partial class C_INIT_PositionOffsetToCP : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_PositionOffsetToCP";
 
         public C_INIT_PositionOffsetToCP (IntPtr pointer) : base(pointer) {}
@@ -6994,7 +6994,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_PositionPlaceOnGround : CParticleFunctionInitializer {
+    public partial class C_INIT_PositionPlaceOnGround : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_PositionPlaceOnGround";
 
         public C_INIT_PositionPlaceOnGround (IntPtr pointer) : base(pointer) {}
@@ -7003,7 +7003,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_VelocityFromNormal : CParticleFunctionInitializer {
+    public partial class C_INIT_VelocityFromNormal : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_VelocityFromNormal";
 
         public C_INIT_VelocityFromNormal (IntPtr pointer) : base(pointer) {}
@@ -7012,7 +7012,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_VelocityRandom : CParticleFunctionInitializer {
+    public partial class C_INIT_VelocityRandom : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_VelocityRandom";
 
         public C_INIT_VelocityRandom (IntPtr pointer) : base(pointer) {}
@@ -7021,7 +7021,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_InitialVelocityNoise : CParticleFunctionInitializer {
+    public partial class C_INIT_InitialVelocityNoise : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_InitialVelocityNoise";
 
         public C_INIT_InitialVelocityNoise (IntPtr pointer) : base(pointer) {}
@@ -7030,7 +7030,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_InitialVelocityFromHitbox : CParticleFunctionInitializer {
+    public partial class C_INIT_InitialVelocityFromHitbox : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_InitialVelocityFromHitbox";
 
         public C_INIT_InitialVelocityFromHitbox (IntPtr pointer) : base(pointer) {}
@@ -7039,7 +7039,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_VelocityRadialRandom : CParticleFunctionInitializer {
+    public partial class C_INIT_VelocityRadialRandom : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_VelocityRadialRandom";
 
         public C_INIT_VelocityRadialRandom (IntPtr pointer) : base(pointer) {}
@@ -7048,7 +7048,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RandomLifeTime : CParticleFunctionInitializer {
+    public partial class C_INIT_RandomLifeTime : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_RandomLifeTime";
 
         public C_INIT_RandomLifeTime (IntPtr pointer) : base(pointer) {}
@@ -7057,7 +7057,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RandomScalar : CParticleFunctionInitializer {
+    public partial class C_INIT_RandomScalar : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_RandomScalar";
 
         public C_INIT_RandomScalar (IntPtr pointer) : base(pointer) {}
@@ -7066,7 +7066,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RandomVector : CParticleFunctionInitializer {
+    public partial class C_INIT_RandomVector : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_RandomVector";
 
         public C_INIT_RandomVector (IntPtr pointer) : base(pointer) {}
@@ -7075,7 +7075,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RandomVectorComponent : CParticleFunctionInitializer {
+    public partial class C_INIT_RandomVectorComponent : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_RandomVectorComponent";
 
         public C_INIT_RandomVectorComponent (IntPtr pointer) : base(pointer) {}
@@ -7084,7 +7084,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_AddVectorToVector : CParticleFunctionInitializer {
+    public partial class C_INIT_AddVectorToVector : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_AddVectorToVector";
 
         public C_INIT_AddVectorToVector (IntPtr pointer) : base(pointer) {}
@@ -7093,7 +7093,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RandomAlphaWindowThreshold : CParticleFunctionInitializer {
+    public partial class C_INIT_RandomAlphaWindowThreshold : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_RandomAlphaWindowThreshold";
 
         public C_INIT_RandomAlphaWindowThreshold (IntPtr pointer) : base(pointer) {}
@@ -7102,7 +7102,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RandomRadius : CParticleFunctionInitializer {
+    public partial class C_INIT_RandomRadius : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_RandomRadius";
 
         public C_INIT_RandomRadius (IntPtr pointer) : base(pointer) {}
@@ -7111,7 +7111,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RandomAlpha : CParticleFunctionInitializer {
+    public partial class C_INIT_RandomAlpha : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_RandomAlpha";
 
         public C_INIT_RandomAlpha (IntPtr pointer) : base(pointer) {}
@@ -7120,7 +7120,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CGeneralRandomRotation : CParticleFunctionInitializer {
+    public partial class CGeneralRandomRotation : CParticleFunctionInitializer {
         private const string ThisClassName = "CGeneralRandomRotation";
 
         public CGeneralRandomRotation (IntPtr pointer) : base(pointer) {}
@@ -7129,7 +7129,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RandomRotation : CGeneralRandomRotation {
+    public partial class C_INIT_RandomRotation : CGeneralRandomRotation {
         private const string ThisClassName = "C_INIT_RandomRotation";
 
         public C_INIT_RandomRotation (IntPtr pointer) : base(pointer) {}
@@ -7138,7 +7138,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_Orient2DRelToCP : CParticleFunctionInitializer {
+    public partial class C_INIT_Orient2DRelToCP : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_Orient2DRelToCP";
 
         public C_INIT_Orient2DRelToCP (IntPtr pointer) : base(pointer) {}
@@ -7147,7 +7147,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RandomRotationSpeed : CGeneralRandomRotation {
+    public partial class C_INIT_RandomRotationSpeed : CGeneralRandomRotation {
         private const string ThisClassName = "C_INIT_RandomRotationSpeed";
 
         public C_INIT_RandomRotationSpeed (IntPtr pointer) : base(pointer) {}
@@ -7156,7 +7156,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RandomYaw : CGeneralRandomRotation {
+    public partial class C_INIT_RandomYaw : CGeneralRandomRotation {
         private const string ThisClassName = "C_INIT_RandomYaw";
 
         public C_INIT_RandomYaw (IntPtr pointer) : base(pointer) {}
@@ -7165,7 +7165,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RandomColor : CParticleFunctionInitializer {
+    public partial class C_INIT_RandomColor : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_RandomColor";
 
         public C_INIT_RandomColor (IntPtr pointer) : base(pointer) {}
@@ -7174,7 +7174,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_ColorLitPerParticle : CParticleFunctionInitializer {
+    public partial class C_INIT_ColorLitPerParticle : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_ColorLitPerParticle";
 
         public C_INIT_ColorLitPerParticle (IntPtr pointer) : base(pointer) {}
@@ -7183,7 +7183,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RandomTrailLength : CParticleFunctionInitializer {
+    public partial class C_INIT_RandomTrailLength : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_RandomTrailLength";
 
         public C_INIT_RandomTrailLength (IntPtr pointer) : base(pointer) {}
@@ -7192,7 +7192,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RandomSequence : CParticleFunctionInitializer {
+    public partial class C_INIT_RandomSequence : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_RandomSequence";
 
         public C_INIT_RandomSequence (IntPtr pointer) : base(pointer) {}
@@ -7201,7 +7201,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_SequenceFromCP : CParticleFunctionInitializer {
+    public partial class C_INIT_SequenceFromCP : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_SequenceFromCP";
 
         public C_INIT_SequenceFromCP (IntPtr pointer) : base(pointer) {}
@@ -7210,7 +7210,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RandomModelSequence : CParticleFunctionInitializer {
+    public partial class C_INIT_RandomModelSequence : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_RandomModelSequence";
 
         public C_INIT_RandomModelSequence (IntPtr pointer) : base(pointer) {}
@@ -7219,7 +7219,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_ScaleVelocity : CParticleFunctionInitializer {
+    public partial class C_INIT_ScaleVelocity : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_ScaleVelocity";
 
         public C_INIT_ScaleVelocity (IntPtr pointer) : base(pointer) {}
@@ -7228,7 +7228,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_PositionWarp : CParticleFunctionInitializer {
+    public partial class C_INIT_PositionWarp : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_PositionWarp";
 
         public C_INIT_PositionWarp (IntPtr pointer) : base(pointer) {}
@@ -7237,7 +7237,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_PositionWarpScalar : CParticleFunctionInitializer {
+    public partial class C_INIT_PositionWarpScalar : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_PositionWarpScalar";
 
         public C_INIT_PositionWarpScalar (IntPtr pointer) : base(pointer) {}
@@ -7246,7 +7246,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_CreationNoise : CParticleFunctionInitializer {
+    public partial class C_INIT_CreationNoise : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_CreationNoise";
 
         public C_INIT_CreationNoise (IntPtr pointer) : base(pointer) {}
@@ -7255,7 +7255,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_CreateAlongPath : CParticleFunctionInitializer {
+    public partial class C_INIT_CreateAlongPath : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_CreateAlongPath";
 
         public C_INIT_CreateAlongPath (IntPtr pointer) : base(pointer) {}
@@ -7264,7 +7264,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_MoveBetweenPoints : CParticleFunctionInitializer {
+    public partial class C_INIT_MoveBetweenPoints : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_MoveBetweenPoints";
 
         public C_INIT_MoveBetweenPoints (IntPtr pointer) : base(pointer) {}
@@ -7273,7 +7273,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RemapScalar : CParticleFunctionInitializer {
+    public partial class C_INIT_RemapScalar : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_RemapScalar";
 
         public C_INIT_RemapScalar (IntPtr pointer) : base(pointer) {}
@@ -7282,7 +7282,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RemapParticleCountToScalar : CParticleFunctionInitializer {
+    public partial class C_INIT_RemapParticleCountToScalar : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_RemapParticleCountToScalar";
 
         public C_INIT_RemapParticleCountToScalar (IntPtr pointer) : base(pointer) {}
@@ -7291,7 +7291,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RemapParticleCountToNamedModelElementScalar : C_INIT_RemapParticleCountToScalar {
+    public partial class C_INIT_RemapParticleCountToNamedModelElementScalar : C_INIT_RemapParticleCountToScalar {
         private const string ThisClassName = "C_INIT_RemapParticleCountToNamedModelElementScalar";
 
         public C_INIT_RemapParticleCountToNamedModelElementScalar (IntPtr pointer) : base(pointer) {}
@@ -7300,7 +7300,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RemapParticleCountToNamedModelSequenceScalar : C_INIT_RemapParticleCountToNamedModelElementScalar {
+    public partial class C_INIT_RemapParticleCountToNamedModelSequenceScalar : C_INIT_RemapParticleCountToNamedModelElementScalar {
         private const string ThisClassName = "C_INIT_RemapParticleCountToNamedModelSequenceScalar";
 
         public C_INIT_RemapParticleCountToNamedModelSequenceScalar (IntPtr pointer) : base(pointer) {}
@@ -7309,7 +7309,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RemapParticleCountToNamedModelBodyPartScalar : C_INIT_RemapParticleCountToNamedModelElementScalar {
+    public partial class C_INIT_RemapParticleCountToNamedModelBodyPartScalar : C_INIT_RemapParticleCountToNamedModelElementScalar {
         private const string ThisClassName = "C_INIT_RemapParticleCountToNamedModelBodyPartScalar";
 
         public C_INIT_RemapParticleCountToNamedModelBodyPartScalar (IntPtr pointer) : base(pointer) {}
@@ -7318,7 +7318,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RemapParticleCountToNamedModelMeshGroupScalar : C_INIT_RemapParticleCountToNamedModelElementScalar {
+    public partial class C_INIT_RemapParticleCountToNamedModelMeshGroupScalar : C_INIT_RemapParticleCountToNamedModelElementScalar {
         private const string ThisClassName = "C_INIT_RemapParticleCountToNamedModelMeshGroupScalar";
 
         public C_INIT_RemapParticleCountToNamedModelMeshGroupScalar (IntPtr pointer) : base(pointer) {}
@@ -7327,7 +7327,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_InheritVelocity : CParticleFunctionInitializer {
+    public partial class C_INIT_InheritVelocity : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_InheritVelocity";
 
         public C_INIT_InheritVelocity (IntPtr pointer) : base(pointer) {}
@@ -7336,7 +7336,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_VelocityFromCP : CParticleFunctionInitializer {
+    public partial class C_INIT_VelocityFromCP : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_VelocityFromCP";
 
         public C_INIT_VelocityFromCP (IntPtr pointer) : base(pointer) {}
@@ -7345,7 +7345,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_AgeNoise : CParticleFunctionInitializer {
+    public partial class C_INIT_AgeNoise : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_AgeNoise";
 
         public C_INIT_AgeNoise (IntPtr pointer) : base(pointer) {}
@@ -7354,7 +7354,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_SequenceLifeTime : CParticleFunctionInitializer {
+    public partial class C_INIT_SequenceLifeTime : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_SequenceLifeTime";
 
         public C_INIT_SequenceLifeTime (IntPtr pointer) : base(pointer) {}
@@ -7363,7 +7363,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RemapScalarToVector : CParticleFunctionInitializer {
+    public partial class C_INIT_RemapScalarToVector : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_RemapScalarToVector";
 
         public C_INIT_RemapScalarToVector (IntPtr pointer) : base(pointer) {}
@@ -7372,7 +7372,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_OffsetVectorToVector : CParticleFunctionInitializer {
+    public partial class C_INIT_OffsetVectorToVector : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_OffsetVectorToVector";
 
         public C_INIT_OffsetVectorToVector (IntPtr pointer) : base(pointer) {}
@@ -7381,7 +7381,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_CreateSequentialPathV2 : CParticleFunctionInitializer {
+    public partial class C_INIT_CreateSequentialPathV2 : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_CreateSequentialPathV2";
 
         public C_INIT_CreateSequentialPathV2 (IntPtr pointer) : base(pointer) {}
@@ -7390,7 +7390,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_CreateSequentialPath : CParticleFunctionInitializer {
+    public partial class C_INIT_CreateSequentialPath : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_CreateSequentialPath";
 
         public C_INIT_CreateSequentialPath (IntPtr pointer) : base(pointer) {}
@@ -7399,7 +7399,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_InitialRepulsionVelocity : CParticleFunctionInitializer {
+    public partial class C_INIT_InitialRepulsionVelocity : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_InitialRepulsionVelocity";
 
         public C_INIT_InitialRepulsionVelocity (IntPtr pointer) : base(pointer) {}
@@ -7408,7 +7408,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RandomYawFlip : CParticleFunctionInitializer {
+    public partial class C_INIT_RandomYawFlip : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_RandomYawFlip";
 
         public C_INIT_RandomYawFlip (IntPtr pointer) : base(pointer) {}
@@ -7417,7 +7417,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RandomSecondSequence : CParticleFunctionInitializer {
+    public partial class C_INIT_RandomSecondSequence : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_RandomSecondSequence";
 
         public C_INIT_RandomSecondSequence (IntPtr pointer) : base(pointer) {}
@@ -7426,7 +7426,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RemapCPtoScalar : CParticleFunctionInitializer {
+    public partial class C_INIT_RemapCPtoScalar : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_RemapCPtoScalar";
 
         public C_INIT_RemapCPtoScalar (IntPtr pointer) : base(pointer) {}
@@ -7435,7 +7435,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RemapTransformToVector : CParticleFunctionInitializer {
+    public partial class C_INIT_RemapTransformToVector : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_RemapTransformToVector";
 
         public C_INIT_RemapTransformToVector (IntPtr pointer) : base(pointer) {}
@@ -7444,7 +7444,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_ChaoticAttractor : CParticleFunctionInitializer {
+    public partial class C_INIT_ChaoticAttractor : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_ChaoticAttractor";
 
         public C_INIT_ChaoticAttractor (IntPtr pointer) : base(pointer) {}
@@ -7453,7 +7453,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_CreateFromParentParticles : CParticleFunctionInitializer {
+    public partial class C_INIT_CreateFromParentParticles : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_CreateFromParentParticles";
 
         public C_INIT_CreateFromParentParticles (IntPtr pointer) : base(pointer) {}
@@ -7462,7 +7462,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_InheritFromParentParticles : CParticleFunctionInitializer {
+    public partial class C_INIT_InheritFromParentParticles : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_InheritFromParentParticles";
 
         public C_INIT_InheritFromParentParticles (IntPtr pointer) : base(pointer) {}
@@ -7471,7 +7471,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_CreateFromCPs : CParticleFunctionInitializer {
+    public partial class C_INIT_CreateFromCPs : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_CreateFromCPs";
 
         public C_INIT_CreateFromCPs (IntPtr pointer) : base(pointer) {}
@@ -7480,7 +7480,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_DistanceToCPInit : CParticleFunctionInitializer {
+    public partial class C_INIT_DistanceToCPInit : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_DistanceToCPInit";
 
         public C_INIT_DistanceToCPInit (IntPtr pointer) : base(pointer) {}
@@ -7489,7 +7489,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_LifespanFromVelocity : CParticleFunctionInitializer {
+    public partial class C_INIT_LifespanFromVelocity : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_LifespanFromVelocity";
 
         public C_INIT_LifespanFromVelocity (IntPtr pointer) : base(pointer) {}
@@ -7498,7 +7498,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_CreateFromPlaneCache : CParticleFunctionInitializer {
+    public partial class C_INIT_CreateFromPlaneCache : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_CreateFromPlaneCache";
 
         public C_INIT_CreateFromPlaneCache (IntPtr pointer) : base(pointer) {}
@@ -7507,7 +7507,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_ModelCull : CParticleFunctionInitializer {
+    public partial class C_INIT_ModelCull : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_ModelCull";
 
         public C_INIT_ModelCull (IntPtr pointer) : base(pointer) {}
@@ -7516,7 +7516,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_DistanceCull : CParticleFunctionInitializer {
+    public partial class C_INIT_DistanceCull : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_DistanceCull";
 
         public C_INIT_DistanceCull (IntPtr pointer) : base(pointer) {}
@@ -7525,7 +7525,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_PlaneCull : CParticleFunctionInitializer {
+    public partial class C_INIT_PlaneCull : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_PlaneCull";
 
         public C_INIT_PlaneCull (IntPtr pointer) : base(pointer) {}
@@ -7534,7 +7534,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_DistanceToNeighborCull : CParticleFunctionInitializer {
+    public partial class C_INIT_DistanceToNeighborCull : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_DistanceToNeighborCull";
 
         public C_INIT_DistanceToNeighborCull (IntPtr pointer) : base(pointer) {}
@@ -7543,7 +7543,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RtEnvCull : CParticleFunctionInitializer {
+    public partial class C_INIT_RtEnvCull : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_RtEnvCull";
 
         public C_INIT_RtEnvCull (IntPtr pointer) : base(pointer) {}
@@ -7552,7 +7552,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_NormalAlignToCP : CParticleFunctionInitializer {
+    public partial class C_INIT_NormalAlignToCP : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_NormalAlignToCP";
 
         public C_INIT_NormalAlignToCP (IntPtr pointer) : base(pointer) {}
@@ -7561,7 +7561,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_NormalOffset : CParticleFunctionInitializer {
+    public partial class C_INIT_NormalOffset : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_NormalOffset";
 
         public C_INIT_NormalOffset (IntPtr pointer) : base(pointer) {}
@@ -7570,7 +7570,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RemapSpeedToScalar : CParticleFunctionInitializer {
+    public partial class C_INIT_RemapSpeedToScalar : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_RemapSpeedToScalar";
 
         public C_INIT_RemapSpeedToScalar (IntPtr pointer) : base(pointer) {}
@@ -7579,7 +7579,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_InitFromCPSnapshot : CParticleFunctionInitializer {
+    public partial class C_INIT_InitFromCPSnapshot : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_InitFromCPSnapshot";
 
         public C_INIT_InitFromCPSnapshot (IntPtr pointer) : base(pointer) {}
@@ -7588,7 +7588,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_InitSkinnedPositionFromCPSnapshot : CParticleFunctionInitializer {
+    public partial class C_INIT_InitSkinnedPositionFromCPSnapshot : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_InitSkinnedPositionFromCPSnapshot";
 
         public C_INIT_InitSkinnedPositionFromCPSnapshot (IntPtr pointer) : base(pointer) {}
@@ -7597,7 +7597,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_InitFromParentKilled : CParticleFunctionInitializer {
+    public partial class C_INIT_InitFromParentKilled : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_InitFromParentKilled";
 
         public C_INIT_InitFromParentKilled (IntPtr pointer) : base(pointer) {}
@@ -7606,7 +7606,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_InitFromVectorFieldSnapshot : CParticleFunctionInitializer {
+    public partial class C_INIT_InitFromVectorFieldSnapshot : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_InitFromVectorFieldSnapshot";
 
         public C_INIT_InitFromVectorFieldSnapshot (IntPtr pointer) : base(pointer) {}
@@ -7615,7 +7615,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RemapInitialDirectionToTransformToVector : CParticleFunctionInitializer {
+    public partial class C_INIT_RemapInitialDirectionToTransformToVector : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_RemapInitialDirectionToTransformToVector";
 
         public C_INIT_RemapInitialDirectionToTransformToVector (IntPtr pointer) : base(pointer) {}
@@ -7624,7 +7624,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RemapInitialTransformDirectionToRotation : CParticleFunctionInitializer {
+    public partial class C_INIT_RemapInitialTransformDirectionToRotation : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_RemapInitialTransformDirectionToRotation";
 
         public C_INIT_RemapInitialTransformDirectionToRotation (IntPtr pointer) : base(pointer) {}
@@ -7633,7 +7633,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RemapQAnglesToRotation : CParticleFunctionInitializer {
+    public partial class C_INIT_RemapQAnglesToRotation : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_RemapQAnglesToRotation";
 
         public C_INIT_RemapQAnglesToRotation (IntPtr pointer) : base(pointer) {}
@@ -7642,7 +7642,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RemapTransformOrientationToRotations : CParticleFunctionInitializer {
+    public partial class C_INIT_RemapTransformOrientationToRotations : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_RemapTransformOrientationToRotations";
 
         public C_INIT_RemapTransformOrientationToRotations (IntPtr pointer) : base(pointer) {}
@@ -7651,7 +7651,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_SetRigidAttachment : CParticleFunctionInitializer {
+    public partial class C_INIT_SetRigidAttachment : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_SetRigidAttachment";
 
         public C_INIT_SetRigidAttachment (IntPtr pointer) : base(pointer) {}
@@ -7660,7 +7660,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RemapInitialVisibilityScalar : CParticleFunctionInitializer {
+    public partial class C_INIT_RemapInitialVisibilityScalar : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_RemapInitialVisibilityScalar";
 
         public C_INIT_RemapInitialVisibilityScalar (IntPtr pointer) : base(pointer) {}
@@ -7669,7 +7669,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RadiusFromCPObject : CParticleFunctionInitializer {
+    public partial class C_INIT_RadiusFromCPObject : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_RadiusFromCPObject";
 
         public C_INIT_RadiusFromCPObject (IntPtr pointer) : base(pointer) {}
@@ -7678,7 +7678,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_InitialSequenceFromModel : CParticleFunctionInitializer {
+    public partial class C_INIT_InitialSequenceFromModel : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_InitialSequenceFromModel";
 
         public C_INIT_InitialSequenceFromModel (IntPtr pointer) : base(pointer) {}
@@ -7687,7 +7687,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_GlobalScale : CParticleFunctionInitializer {
+    public partial class C_INIT_GlobalScale : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_GlobalScale";
 
         public C_INIT_GlobalScale (IntPtr pointer) : base(pointer) {}
@@ -7696,7 +7696,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_PointList : CParticleFunctionInitializer {
+    public partial class C_INIT_PointList : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_PointList";
 
         public C_INIT_PointList (IntPtr pointer) : base(pointer) {}
@@ -7705,7 +7705,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RandomNamedModelElement : CParticleFunctionInitializer {
+    public partial class C_INIT_RandomNamedModelElement : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_RandomNamedModelElement";
 
         public C_INIT_RandomNamedModelElement (IntPtr pointer) : base(pointer) {}
@@ -7714,7 +7714,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RandomNamedModelSequence : C_INIT_RandomNamedModelElement {
+    public partial class C_INIT_RandomNamedModelSequence : C_INIT_RandomNamedModelElement {
         private const string ThisClassName = "C_INIT_RandomNamedModelSequence";
 
         public C_INIT_RandomNamedModelSequence (IntPtr pointer) : base(pointer) {}
@@ -7723,7 +7723,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RandomNamedModelBodyPart : C_INIT_RandomNamedModelElement {
+    public partial class C_INIT_RandomNamedModelBodyPart : C_INIT_RandomNamedModelElement {
         private const string ThisClassName = "C_INIT_RandomNamedModelBodyPart";
 
         public C_INIT_RandomNamedModelBodyPart (IntPtr pointer) : base(pointer) {}
@@ -7732,7 +7732,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RandomNamedModelMeshGroup : C_INIT_RandomNamedModelElement {
+    public partial class C_INIT_RandomNamedModelMeshGroup : C_INIT_RandomNamedModelElement {
         private const string ThisClassName = "C_INIT_RandomNamedModelMeshGroup";
 
         public C_INIT_RandomNamedModelMeshGroup (IntPtr pointer) : base(pointer) {}
@@ -7741,7 +7741,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RemapNamedModelElementToScalar : CParticleFunctionInitializer {
+    public partial class C_INIT_RemapNamedModelElementToScalar : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_RemapNamedModelElementToScalar";
 
         public C_INIT_RemapNamedModelElementToScalar (IntPtr pointer) : base(pointer) {}
@@ -7750,7 +7750,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RemapNamedModelSequenceToScalar : C_INIT_RemapNamedModelElementToScalar {
+    public partial class C_INIT_RemapNamedModelSequenceToScalar : C_INIT_RemapNamedModelElementToScalar {
         private const string ThisClassName = "C_INIT_RemapNamedModelSequenceToScalar";
 
         public C_INIT_RemapNamedModelSequenceToScalar (IntPtr pointer) : base(pointer) {}
@@ -7759,7 +7759,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RemapNamedModelBodyPartToScalar : C_INIT_RemapNamedModelElementToScalar {
+    public partial class C_INIT_RemapNamedModelBodyPartToScalar : C_INIT_RemapNamedModelElementToScalar {
         private const string ThisClassName = "C_INIT_RemapNamedModelBodyPartToScalar";
 
         public C_INIT_RemapNamedModelBodyPartToScalar (IntPtr pointer) : base(pointer) {}
@@ -7768,7 +7768,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_RemapNamedModelMeshGroupToScalar : C_INIT_RemapNamedModelElementToScalar {
+    public partial class C_INIT_RemapNamedModelMeshGroupToScalar : C_INIT_RemapNamedModelElementToScalar {
         private const string ThisClassName = "C_INIT_RemapNamedModelMeshGroupToScalar";
 
         public C_INIT_RemapNamedModelMeshGroupToScalar (IntPtr pointer) : base(pointer) {}
@@ -7777,7 +7777,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_StatusEffect : CParticleFunctionInitializer {
+    public partial class C_INIT_StatusEffect : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_StatusEffect";
 
         public C_INIT_StatusEffect (IntPtr pointer) : base(pointer) {}
@@ -7786,7 +7786,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_StatusEffectCitadel : CParticleFunctionInitializer {
+    public partial class C_INIT_StatusEffectCitadel : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_StatusEffectCitadel";
 
         public C_INIT_StatusEffectCitadel (IntPtr pointer) : base(pointer) {}
@@ -7795,7 +7795,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_CreateParticleImpulse : CParticleFunctionInitializer {
+    public partial class C_INIT_CreateParticleImpulse : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_CreateParticleImpulse";
 
         public C_INIT_CreateParticleImpulse (IntPtr pointer) : base(pointer) {}
@@ -7804,7 +7804,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_QuantizeFloat : CParticleFunctionInitializer {
+    public partial class C_INIT_QuantizeFloat : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_QuantizeFloat";
 
         public C_INIT_QuantizeFloat (IntPtr pointer) : base(pointer) {}
@@ -7813,7 +7813,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_SetVectorAttributeToVectorExpression : CParticleFunctionInitializer {
+    public partial class C_INIT_SetVectorAttributeToVectorExpression : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_SetVectorAttributeToVectorExpression";
 
         public C_INIT_SetVectorAttributeToVectorExpression (IntPtr pointer) : base(pointer) {}
@@ -7822,7 +7822,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_InitFloatCollection : CParticleFunctionInitializer {
+    public partial class C_INIT_InitFloatCollection : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_InitFloatCollection";
 
         public C_INIT_InitFloatCollection (IntPtr pointer) : base(pointer) {}
@@ -7831,7 +7831,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_InitFloat : CParticleFunctionInitializer {
+    public partial class C_INIT_InitFloat : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_InitFloat";
 
         public C_INIT_InitFloat (IntPtr pointer) : base(pointer) {}
@@ -7840,7 +7840,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_InitVecCollection : CParticleFunctionInitializer {
+    public partial class C_INIT_InitVecCollection : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_InitVecCollection";
 
         public C_INIT_InitVecCollection (IntPtr pointer) : base(pointer) {}
@@ -7849,7 +7849,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_INIT_InitVec : CParticleFunctionInitializer {
+    public partial class C_INIT_InitVec : CParticleFunctionInitializer {
         private const string ThisClassName = "C_INIT_InitVec";
 
         public C_INIT_InitVec (IntPtr pointer) : base(pointer) {}
@@ -7858,7 +7858,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_InstantaneousEmitter : CParticleFunctionEmitter {
+    public partial class C_OP_InstantaneousEmitter : CParticleFunctionEmitter {
         private const string ThisClassName = "C_OP_InstantaneousEmitter";
 
         public C_OP_InstantaneousEmitter (IntPtr pointer) : base(pointer) {}
@@ -7867,7 +7867,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_ContinuousEmitter : CParticleFunctionEmitter {
+    public partial class C_OP_ContinuousEmitter : CParticleFunctionEmitter {
         private const string ThisClassName = "C_OP_ContinuousEmitter";
 
         public C_OP_ContinuousEmitter (IntPtr pointer) : base(pointer) {}
@@ -7876,7 +7876,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_NoiseEmitter : CParticleFunctionEmitter {
+    public partial class C_OP_NoiseEmitter : CParticleFunctionEmitter {
         private const string ThisClassName = "C_OP_NoiseEmitter";
 
         public C_OP_NoiseEmitter (IntPtr pointer) : base(pointer) {}
@@ -7885,7 +7885,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_MaintainEmitter : CParticleFunctionEmitter {
+    public partial class C_OP_MaintainEmitter : CParticleFunctionEmitter {
         private const string ThisClassName = "C_OP_MaintainEmitter";
 
         public C_OP_MaintainEmitter (IntPtr pointer) : base(pointer) {}
@@ -7894,7 +7894,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RandomForce : CParticleFunctionForce {
+    public partial class C_OP_RandomForce : CParticleFunctionForce {
         private const string ThisClassName = "C_OP_RandomForce";
 
         public C_OP_RandomForce (IntPtr pointer) : base(pointer) {}
@@ -7903,7 +7903,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_CPVelocityForce : CParticleFunctionForce {
+    public partial class C_OP_CPVelocityForce : CParticleFunctionForce {
         private const string ThisClassName = "C_OP_CPVelocityForce";
 
         public C_OP_CPVelocityForce (IntPtr pointer) : base(pointer) {}
@@ -7912,7 +7912,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_ParentVortices : CParticleFunctionForce {
+    public partial class C_OP_ParentVortices : CParticleFunctionForce {
         private const string ThisClassName = "C_OP_ParentVortices";
 
         public C_OP_ParentVortices (IntPtr pointer) : base(pointer) {}
@@ -7921,7 +7921,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_TwistAroundAxis : CParticleFunctionForce {
+    public partial class C_OP_TwistAroundAxis : CParticleFunctionForce {
         private const string ThisClassName = "C_OP_TwistAroundAxis";
 
         public C_OP_TwistAroundAxis (IntPtr pointer) : base(pointer) {}
@@ -7930,7 +7930,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_AttractToControlPoint : CParticleFunctionForce {
+    public partial class C_OP_AttractToControlPoint : CParticleFunctionForce {
         private const string ThisClassName = "C_OP_AttractToControlPoint";
 
         public C_OP_AttractToControlPoint (IntPtr pointer) : base(pointer) {}
@@ -7939,7 +7939,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_ForceBasedOnDistanceToPlane : CParticleFunctionForce {
+    public partial class C_OP_ForceBasedOnDistanceToPlane : CParticleFunctionForce {
         private const string ThisClassName = "C_OP_ForceBasedOnDistanceToPlane";
 
         public C_OP_ForceBasedOnDistanceToPlane (IntPtr pointer) : base(pointer) {}
@@ -7948,7 +7948,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_TimeVaryingForce : CParticleFunctionForce {
+    public partial class C_OP_TimeVaryingForce : CParticleFunctionForce {
         private const string ThisClassName = "C_OP_TimeVaryingForce";
 
         public C_OP_TimeVaryingForce (IntPtr pointer) : base(pointer) {}
@@ -7957,7 +7957,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_TurbulenceForce : CParticleFunctionForce {
+    public partial class C_OP_TurbulenceForce : CParticleFunctionForce {
         private const string ThisClassName = "C_OP_TurbulenceForce";
 
         public C_OP_TurbulenceForce (IntPtr pointer) : base(pointer) {}
@@ -7966,7 +7966,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_CurlNoiseForce : CParticleFunctionForce {
+    public partial class C_OP_CurlNoiseForce : CParticleFunctionForce {
         private const string ThisClassName = "C_OP_CurlNoiseForce";
 
         public C_OP_CurlNoiseForce (IntPtr pointer) : base(pointer) {}
@@ -7975,7 +7975,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_PerParticleForce : CParticleFunctionForce {
+    public partial class C_OP_PerParticleForce : CParticleFunctionForce {
         private const string ThisClassName = "C_OP_PerParticleForce";
 
         public C_OP_PerParticleForce (IntPtr pointer) : base(pointer) {}
@@ -7984,7 +7984,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_WindForce : CParticleFunctionForce {
+    public partial class C_OP_WindForce : CParticleFunctionForce {
         private const string ThisClassName = "C_OP_WindForce";
 
         public C_OP_WindForce (IntPtr pointer) : base(pointer) {}
@@ -7993,7 +7993,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_ExternalWindForce : CParticleFunctionForce {
+    public partial class C_OP_ExternalWindForce : CParticleFunctionForce {
         private const string ThisClassName = "C_OP_ExternalWindForce";
 
         public C_OP_ExternalWindForce (IntPtr pointer) : base(pointer) {}
@@ -8002,7 +8002,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_ExternalGameImpulseForce : CParticleFunctionForce {
+    public partial class C_OP_ExternalGameImpulseForce : CParticleFunctionForce {
         private const string ThisClassName = "C_OP_ExternalGameImpulseForce";
 
         public C_OP_ExternalGameImpulseForce (IntPtr pointer) : base(pointer) {}
@@ -8011,7 +8011,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_LocalAccelerationForce : CParticleFunctionForce {
+    public partial class C_OP_LocalAccelerationForce : CParticleFunctionForce {
         private const string ThisClassName = "C_OP_LocalAccelerationForce";
 
         public C_OP_LocalAccelerationForce (IntPtr pointer) : base(pointer) {}
@@ -8020,7 +8020,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_DensityForce : CParticleFunctionForce {
+    public partial class C_OP_DensityForce : CParticleFunctionForce {
         private const string ThisClassName = "C_OP_DensityForce";
 
         public C_OP_DensityForce (IntPtr pointer) : base(pointer) {}
@@ -8029,7 +8029,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_BasicMovement : CParticleFunctionOperator {
+    public partial class C_OP_BasicMovement : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_BasicMovement";
 
         public C_OP_BasicMovement (IntPtr pointer) : base(pointer) {}
@@ -8038,7 +8038,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_FadeAndKill : CParticleFunctionOperator {
+    public partial class C_OP_FadeAndKill : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_FadeAndKill";
 
         public C_OP_FadeAndKill (IntPtr pointer) : base(pointer) {}
@@ -8047,7 +8047,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_FadeAndKillForTracers : CParticleFunctionOperator {
+    public partial class C_OP_FadeAndKillForTracers : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_FadeAndKillForTracers";
 
         public C_OP_FadeAndKillForTracers (IntPtr pointer) : base(pointer) {}
@@ -8056,7 +8056,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_FadeIn : CParticleFunctionOperator {
+    public partial class C_OP_FadeIn : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_FadeIn";
 
         public C_OP_FadeIn (IntPtr pointer) : base(pointer) {}
@@ -8065,7 +8065,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_FadeOut : CParticleFunctionOperator {
+    public partial class C_OP_FadeOut : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_FadeOut";
 
         public C_OP_FadeOut (IntPtr pointer) : base(pointer) {}
@@ -8074,7 +8074,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_FadeInSimple : CParticleFunctionOperator {
+    public partial class C_OP_FadeInSimple : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_FadeInSimple";
 
         public C_OP_FadeInSimple (IntPtr pointer) : base(pointer) {}
@@ -8083,7 +8083,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_FadeOutSimple : CParticleFunctionOperator {
+    public partial class C_OP_FadeOutSimple : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_FadeOutSimple";
 
         public C_OP_FadeOutSimple (IntPtr pointer) : base(pointer) {}
@@ -8092,7 +8092,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_ClampScalar : CParticleFunctionOperator {
+    public partial class C_OP_ClampScalar : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_ClampScalar";
 
         public C_OP_ClampScalar (IntPtr pointer) : base(pointer) {}
@@ -8101,7 +8101,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_ClampVector : CParticleFunctionOperator {
+    public partial class C_OP_ClampVector : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_ClampVector";
 
         public C_OP_ClampVector (IntPtr pointer) : base(pointer) {}
@@ -8110,7 +8110,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_OscillateScalar : CParticleFunctionOperator {
+    public partial class C_OP_OscillateScalar : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_OscillateScalar";
 
         public C_OP_OscillateScalar (IntPtr pointer) : base(pointer) {}
@@ -8119,7 +8119,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_OscillateScalarSimple : CParticleFunctionOperator {
+    public partial class C_OP_OscillateScalarSimple : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_OscillateScalarSimple";
 
         public C_OP_OscillateScalarSimple (IntPtr pointer) : base(pointer) {}
@@ -8128,7 +8128,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_OscillateVector : CParticleFunctionOperator {
+    public partial class C_OP_OscillateVector : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_OscillateVector";
 
         public C_OP_OscillateVector (IntPtr pointer) : base(pointer) {}
@@ -8137,7 +8137,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_OscillateVectorSimple : CParticleFunctionOperator {
+    public partial class C_OP_OscillateVectorSimple : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_OscillateVectorSimple";
 
         public C_OP_OscillateVectorSimple (IntPtr pointer) : base(pointer) {}
@@ -8146,7 +8146,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_DifferencePreviousParticle : CParticleFunctionOperator {
+    public partial class C_OP_DifferencePreviousParticle : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_DifferencePreviousParticle";
 
         public C_OP_DifferencePreviousParticle (IntPtr pointer) : base(pointer) {}
@@ -8155,7 +8155,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_PointVectorAtNextParticle : CParticleFunctionOperator {
+    public partial class C_OP_PointVectorAtNextParticle : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_PointVectorAtNextParticle";
 
         public C_OP_PointVectorAtNextParticle (IntPtr pointer) : base(pointer) {}
@@ -8164,7 +8164,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapScalar : CParticleFunctionOperator {
+    public partial class C_OP_RemapScalar : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RemapScalar";
 
         public C_OP_RemapScalar (IntPtr pointer) : base(pointer) {}
@@ -8173,7 +8173,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapDensityToVector : CParticleFunctionOperator {
+    public partial class C_OP_RemapDensityToVector : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RemapDensityToVector";
 
         public C_OP_RemapDensityToVector (IntPtr pointer) : base(pointer) {}
@@ -8182,7 +8182,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_Diffusion : CParticleFunctionOperator {
+    public partial class C_OP_Diffusion : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_Diffusion";
 
         public C_OP_Diffusion (IntPtr pointer) : base(pointer) {}
@@ -8191,7 +8191,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapScalarEndCap : CParticleFunctionOperator {
+    public partial class C_OP_RemapScalarEndCap : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RemapScalarEndCap";
 
         public C_OP_RemapScalarEndCap (IntPtr pointer) : base(pointer) {}
@@ -8200,7 +8200,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_ReinitializeScalarEndCap : CParticleFunctionOperator {
+    public partial class C_OP_ReinitializeScalarEndCap : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_ReinitializeScalarEndCap";
 
         public C_OP_ReinitializeScalarEndCap (IntPtr pointer) : base(pointer) {}
@@ -8209,7 +8209,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapScalarOnceTimed : CParticleFunctionOperator {
+    public partial class C_OP_RemapScalarOnceTimed : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RemapScalarOnceTimed";
 
         public C_OP_RemapScalarOnceTimed (IntPtr pointer) : base(pointer) {}
@@ -8218,7 +8218,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapParticleCountOnScalarEndCap : CParticleFunctionOperator {
+    public partial class C_OP_RemapParticleCountOnScalarEndCap : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RemapParticleCountOnScalarEndCap";
 
         public C_OP_RemapParticleCountOnScalarEndCap (IntPtr pointer) : base(pointer) {}
@@ -8227,7 +8227,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapParticleCountToScalar : CParticleFunctionOperator {
+    public partial class C_OP_RemapParticleCountToScalar : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RemapParticleCountToScalar";
 
         public C_OP_RemapParticleCountToScalar (IntPtr pointer) : base(pointer) {}
@@ -8236,7 +8236,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapVisibilityScalar : CParticleFunctionOperator {
+    public partial class C_OP_RemapVisibilityScalar : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RemapVisibilityScalar";
 
         public C_OP_RemapVisibilityScalar (IntPtr pointer) : base(pointer) {}
@@ -8245,7 +8245,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapTransformVisibilityToScalar : CParticleFunctionOperator {
+    public partial class C_OP_RemapTransformVisibilityToScalar : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RemapTransformVisibilityToScalar";
 
         public C_OP_RemapTransformVisibilityToScalar (IntPtr pointer) : base(pointer) {}
@@ -8254,7 +8254,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapTransformVisibilityToVector : CParticleFunctionOperator {
+    public partial class C_OP_RemapTransformVisibilityToVector : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RemapTransformVisibilityToVector";
 
         public C_OP_RemapTransformVisibilityToVector (IntPtr pointer) : base(pointer) {}
@@ -8263,7 +8263,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_LerpScalar : CParticleFunctionOperator {
+    public partial class C_OP_LerpScalar : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_LerpScalar";
 
         public C_OP_LerpScalar (IntPtr pointer) : base(pointer) {}
@@ -8272,7 +8272,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_LerpEndCapScalar : CParticleFunctionOperator {
+    public partial class C_OP_LerpEndCapScalar : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_LerpEndCapScalar";
 
         public C_OP_LerpEndCapScalar (IntPtr pointer) : base(pointer) {}
@@ -8281,7 +8281,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_LerpEndCapVector : CParticleFunctionOperator {
+    public partial class C_OP_LerpEndCapVector : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_LerpEndCapVector";
 
         public C_OP_LerpEndCapVector (IntPtr pointer) : base(pointer) {}
@@ -8290,7 +8290,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_LerpVector : CParticleFunctionOperator {
+    public partial class C_OP_LerpVector : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_LerpVector";
 
         public C_OP_LerpVector (IntPtr pointer) : base(pointer) {}
@@ -8299,7 +8299,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_LerpToOtherAttribute : CParticleFunctionOperator {
+    public partial class C_OP_LerpToOtherAttribute : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_LerpToOtherAttribute";
 
         public C_OP_LerpToOtherAttribute (IntPtr pointer) : base(pointer) {}
@@ -8308,7 +8308,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapSpeed : CParticleFunctionOperator {
+    public partial class C_OP_RemapSpeed : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RemapSpeed";
 
         public C_OP_RemapSpeed (IntPtr pointer) : base(pointer) {}
@@ -8317,7 +8317,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapVectortoCP : CParticleFunctionOperator {
+    public partial class C_OP_RemapVectortoCP : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RemapVectortoCP";
 
         public C_OP_RemapVectortoCP (IntPtr pointer) : base(pointer) {}
@@ -8326,7 +8326,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RampScalarLinear : CParticleFunctionOperator {
+    public partial class C_OP_RampScalarLinear : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RampScalarLinear";
 
         public C_OP_RampScalarLinear (IntPtr pointer) : base(pointer) {}
@@ -8335,7 +8335,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RampScalarSpline : CParticleFunctionOperator {
+    public partial class C_OP_RampScalarSpline : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RampScalarSpline";
 
         public C_OP_RampScalarSpline (IntPtr pointer) : base(pointer) {}
@@ -8344,7 +8344,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RampScalarLinearSimple : CParticleFunctionOperator {
+    public partial class C_OP_RampScalarLinearSimple : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RampScalarLinearSimple";
 
         public C_OP_RampScalarLinearSimple (IntPtr pointer) : base(pointer) {}
@@ -8353,7 +8353,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RampScalarSplineSimple : CParticleFunctionOperator {
+    public partial class C_OP_RampScalarSplineSimple : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RampScalarSplineSimple";
 
         public C_OP_RampScalarSplineSimple (IntPtr pointer) : base(pointer) {}
@@ -8362,7 +8362,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_ChladniWave : CParticleFunctionOperator {
+    public partial class C_OP_ChladniWave : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_ChladniWave";
 
         public C_OP_ChladniWave (IntPtr pointer) : base(pointer) {}
@@ -8371,7 +8371,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_Noise : CParticleFunctionOperator {
+    public partial class C_OP_Noise : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_Noise";
 
         public C_OP_Noise (IntPtr pointer) : base(pointer) {}
@@ -8380,7 +8380,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_VectorNoise : CParticleFunctionOperator {
+    public partial class C_OP_VectorNoise : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_VectorNoise";
 
         public C_OP_VectorNoise (IntPtr pointer) : base(pointer) {}
@@ -8389,7 +8389,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_Decay : CParticleFunctionOperator {
+    public partial class C_OP_Decay : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_Decay";
 
         public C_OP_Decay (IntPtr pointer) : base(pointer) {}
@@ -8398,7 +8398,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_DecayOffscreen : CParticleFunctionOperator {
+    public partial class C_OP_DecayOffscreen : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_DecayOffscreen";
 
         public C_OP_DecayOffscreen (IntPtr pointer) : base(pointer) {}
@@ -8407,7 +8407,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_EndCapTimedFreeze : CParticleFunctionOperator {
+    public partial class C_OP_EndCapTimedFreeze : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_EndCapTimedFreeze";
 
         public C_OP_EndCapTimedFreeze (IntPtr pointer) : base(pointer) {}
@@ -8416,7 +8416,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_EndCapTimedDecay : CParticleFunctionOperator {
+    public partial class C_OP_EndCapTimedDecay : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_EndCapTimedDecay";
 
         public C_OP_EndCapTimedDecay (IntPtr pointer) : base(pointer) {}
@@ -8425,7 +8425,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_EndCapDecay : CParticleFunctionOperator {
+    public partial class C_OP_EndCapDecay : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_EndCapDecay";
 
         public C_OP_EndCapDecay (IntPtr pointer) : base(pointer) {}
@@ -8434,7 +8434,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_VelocityDecay : CParticleFunctionOperator {
+    public partial class C_OP_VelocityDecay : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_VelocityDecay";
 
         public C_OP_VelocityDecay (IntPtr pointer) : base(pointer) {}
@@ -8443,7 +8443,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_AlphaDecay : CParticleFunctionOperator {
+    public partial class C_OP_AlphaDecay : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_AlphaDecay";
 
         public C_OP_AlphaDecay (IntPtr pointer) : base(pointer) {}
@@ -8452,7 +8452,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RadiusDecay : CParticleFunctionOperator {
+    public partial class C_OP_RadiusDecay : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RadiusDecay";
 
         public C_OP_RadiusDecay (IntPtr pointer) : base(pointer) {}
@@ -8461,7 +8461,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_DecayMaintainCount : CParticleFunctionOperator {
+    public partial class C_OP_DecayMaintainCount : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_DecayMaintainCount";
 
         public C_OP_DecayMaintainCount (IntPtr pointer) : base(pointer) {}
@@ -8470,7 +8470,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_DecayClampCount : CParticleFunctionOperator {
+    public partial class C_OP_DecayClampCount : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_DecayClampCount";
 
         public C_OP_DecayClampCount (IntPtr pointer) : base(pointer) {}
@@ -8479,7 +8479,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_Cull : CParticleFunctionOperator {
+    public partial class C_OP_Cull : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_Cull";
 
         public C_OP_Cull (IntPtr pointer) : base(pointer) {}
@@ -8488,7 +8488,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CGeneralSpin : CParticleFunctionOperator {
+    public partial class CGeneralSpin : CParticleFunctionOperator {
         private const string ThisClassName = "CGeneralSpin";
 
         public CGeneralSpin (IntPtr pointer) : base(pointer) {}
@@ -8497,7 +8497,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSpinUpdateBase : CParticleFunctionOperator {
+    public partial class CSpinUpdateBase : CParticleFunctionOperator {
         private const string ThisClassName = "CSpinUpdateBase";
 
         public CSpinUpdateBase (IntPtr pointer) : base(pointer) {}
@@ -8506,7 +8506,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_Spin : CGeneralSpin {
+    public partial class C_OP_Spin : CGeneralSpin {
         private const string ThisClassName = "C_OP_Spin";
 
         public C_OP_Spin (IntPtr pointer) : base(pointer) {}
@@ -8515,7 +8515,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SpinUpdate : CSpinUpdateBase {
+    public partial class C_OP_SpinUpdate : CSpinUpdateBase {
         private const string ThisClassName = "C_OP_SpinUpdate";
 
         public C_OP_SpinUpdate (IntPtr pointer) : base(pointer) {}
@@ -8524,7 +8524,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SpinYaw : CGeneralSpin {
+    public partial class C_OP_SpinYaw : CGeneralSpin {
         private const string ThisClassName = "C_OP_SpinYaw";
 
         public C_OP_SpinYaw (IntPtr pointer) : base(pointer) {}
@@ -8533,7 +8533,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_InterpolateRadius : CParticleFunctionOperator {
+    public partial class C_OP_InterpolateRadius : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_InterpolateRadius";
 
         public C_OP_InterpolateRadius (IntPtr pointer) : base(pointer) {}
@@ -8542,7 +8542,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_ColorInterpolate : CParticleFunctionOperator {
+    public partial class C_OP_ColorInterpolate : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_ColorInterpolate";
 
         public C_OP_ColorInterpolate (IntPtr pointer) : base(pointer) {}
@@ -8551,7 +8551,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_ColorInterpolateRandom : CParticleFunctionOperator {
+    public partial class C_OP_ColorInterpolateRandom : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_ColorInterpolateRandom";
 
         public C_OP_ColorInterpolateRandom (IntPtr pointer) : base(pointer) {}
@@ -8560,7 +8560,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_PositionLock : CParticleFunctionOperator {
+    public partial class C_OP_PositionLock : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_PositionLock";
 
         public C_OP_PositionLock (IntPtr pointer) : base(pointer) {}
@@ -8569,7 +8569,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_ControlpointLight : CParticleFunctionOperator {
+    public partial class C_OP_ControlpointLight : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_ControlpointLight";
 
         public C_OP_ControlpointLight (IntPtr pointer) : base(pointer) {}
@@ -8578,7 +8578,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_GlobalLight : CParticleFunctionOperator {
+    public partial class C_OP_GlobalLight : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_GlobalLight";
 
         public C_OP_GlobalLight (IntPtr pointer) : base(pointer) {}
@@ -8587,7 +8587,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetChildControlPoints : CParticleFunctionOperator {
+    public partial class C_OP_SetChildControlPoints : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_SetChildControlPoints";
 
         public C_OP_SetChildControlPoints (IntPtr pointer) : base(pointer) {}
@@ -8596,7 +8596,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetControlPointsToParticle : CParticleFunctionOperator {
+    public partial class C_OP_SetControlPointsToParticle : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_SetControlPointsToParticle";
 
         public C_OP_SetControlPointsToParticle (IntPtr pointer) : base(pointer) {}
@@ -8605,7 +8605,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetControlPointsToModelParticles : CParticleFunctionOperator {
+    public partial class C_OP_SetControlPointsToModelParticles : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_SetControlPointsToModelParticles";
 
         public C_OP_SetControlPointsToModelParticles (IntPtr pointer) : base(pointer) {}
@@ -8614,7 +8614,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetPerChildControlPoint : CParticleFunctionOperator {
+    public partial class C_OP_SetPerChildControlPoint : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_SetPerChildControlPoint";
 
         public C_OP_SetPerChildControlPoint (IntPtr pointer) : base(pointer) {}
@@ -8623,7 +8623,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetPerChildControlPointFromAttribute : CParticleFunctionOperator {
+    public partial class C_OP_SetPerChildControlPointFromAttribute : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_SetPerChildControlPointFromAttribute";
 
         public C_OP_SetPerChildControlPointFromAttribute (IntPtr pointer) : base(pointer) {}
@@ -8632,7 +8632,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapTransformOrientationToYaw : CParticleFunctionOperator {
+    public partial class C_OP_RemapTransformOrientationToYaw : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RemapTransformOrientationToYaw";
 
         public C_OP_RemapTransformOrientationToYaw (IntPtr pointer) : base(pointer) {}
@@ -8641,7 +8641,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_DampenToCP : CParticleFunctionOperator {
+    public partial class C_OP_DampenToCP : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_DampenToCP";
 
         public C_OP_DampenToCP (IntPtr pointer) : base(pointer) {}
@@ -8650,7 +8650,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetToCP : CParticleFunctionOperator {
+    public partial class C_OP_SetToCP : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_SetToCP";
 
         public C_OP_SetToCP (IntPtr pointer) : base(pointer) {}
@@ -8659,7 +8659,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_PinParticleToCP : CParticleFunctionOperator {
+    public partial class C_OP_PinParticleToCP : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_PinParticleToCP";
 
         public C_OP_PinParticleToCP (IntPtr pointer) : base(pointer) {}
@@ -8668,7 +8668,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_MovementRigidAttachToCP : CParticleFunctionOperator {
+    public partial class C_OP_MovementRigidAttachToCP : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_MovementRigidAttachToCP";
 
         public C_OP_MovementRigidAttachToCP (IntPtr pointer) : base(pointer) {}
@@ -8677,7 +8677,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_LerpToInitialPosition : CParticleFunctionOperator {
+    public partial class C_OP_LerpToInitialPosition : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_LerpToInitialPosition";
 
         public C_OP_LerpToInitialPosition (IntPtr pointer) : base(pointer) {}
@@ -8686,7 +8686,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_DistanceBetweenTransforms : CParticleFunctionOperator {
+    public partial class C_OP_DistanceBetweenTransforms : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_DistanceBetweenTransforms";
 
         public C_OP_DistanceBetweenTransforms (IntPtr pointer) : base(pointer) {}
@@ -8695,7 +8695,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_PercentageBetweenTransforms : CParticleFunctionOperator {
+    public partial class C_OP_PercentageBetweenTransforms : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_PercentageBetweenTransforms";
 
         public C_OP_PercentageBetweenTransforms (IntPtr pointer) : base(pointer) {}
@@ -8704,7 +8704,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_PercentageBetweenTransformsVector : CParticleFunctionOperator {
+    public partial class C_OP_PercentageBetweenTransformsVector : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_PercentageBetweenTransformsVector";
 
         public C_OP_PercentageBetweenTransformsVector (IntPtr pointer) : base(pointer) {}
@@ -8713,7 +8713,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_PercentageBetweenTransformLerpCPs : CParticleFunctionOperator {
+    public partial class C_OP_PercentageBetweenTransformLerpCPs : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_PercentageBetweenTransformLerpCPs";
 
         public C_OP_PercentageBetweenTransformLerpCPs (IntPtr pointer) : base(pointer) {}
@@ -8722,7 +8722,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_DistanceBetweenVecs : CParticleFunctionOperator {
+    public partial class C_OP_DistanceBetweenVecs : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_DistanceBetweenVecs";
 
         public C_OP_DistanceBetweenVecs (IntPtr pointer) : base(pointer) {}
@@ -8731,7 +8731,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_DirectionBetweenVecsToVec : CParticleFunctionOperator {
+    public partial class C_OP_DirectionBetweenVecsToVec : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_DirectionBetweenVecsToVec";
 
         public C_OP_DirectionBetweenVecsToVec (IntPtr pointer) : base(pointer) {}
@@ -8740,7 +8740,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_DistanceToTransform : CParticleFunctionOperator {
+    public partial class C_OP_DistanceToTransform : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_DistanceToTransform";
 
         public C_OP_DistanceToTransform (IntPtr pointer) : base(pointer) {}
@@ -8749,7 +8749,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_CylindricalDistanceToTransform : CParticleFunctionOperator {
+    public partial class C_OP_CylindricalDistanceToTransform : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_CylindricalDistanceToTransform";
 
         public C_OP_CylindricalDistanceToTransform (IntPtr pointer) : base(pointer) {}
@@ -8758,7 +8758,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RtEnvCull : CParticleFunctionOperator {
+    public partial class C_OP_RtEnvCull : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RtEnvCull";
 
         public C_OP_RtEnvCull (IntPtr pointer) : base(pointer) {}
@@ -8767,7 +8767,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_MovementLoopInsideSphere : CParticleFunctionOperator {
+    public partial class C_OP_MovementLoopInsideSphere : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_MovementLoopInsideSphere";
 
         public C_OP_MovementLoopInsideSphere (IntPtr pointer) : base(pointer) {}
@@ -8776,7 +8776,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_MoveToHitbox : CParticleFunctionOperator {
+    public partial class C_OP_MoveToHitbox : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_MoveToHitbox";
 
         public C_OP_MoveToHitbox (IntPtr pointer) : base(pointer) {}
@@ -8785,7 +8785,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_LockToBone : CParticleFunctionOperator {
+    public partial class C_OP_LockToBone : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_LockToBone";
 
         public C_OP_LockToBone (IntPtr pointer) : base(pointer) {}
@@ -8794,7 +8794,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SnapshotRigidSkinToBones : CParticleFunctionOperator {
+    public partial class C_OP_SnapshotRigidSkinToBones : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_SnapshotRigidSkinToBones";
 
         public C_OP_SnapshotRigidSkinToBones (IntPtr pointer) : base(pointer) {}
@@ -8803,7 +8803,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SnapshotSkinToBones : CParticleFunctionOperator {
+    public partial class C_OP_SnapshotSkinToBones : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_SnapshotSkinToBones";
 
         public C_OP_SnapshotSkinToBones (IntPtr pointer) : base(pointer) {}
@@ -8812,7 +8812,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_CPOffsetToPercentageBetweenCPs : CParticleFunctionOperator {
+    public partial class C_OP_CPOffsetToPercentageBetweenCPs : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_CPOffsetToPercentageBetweenCPs";
 
         public C_OP_CPOffsetToPercentageBetweenCPs (IntPtr pointer) : base(pointer) {}
@@ -8821,7 +8821,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_PlaneCull : CParticleFunctionOperator {
+    public partial class C_OP_PlaneCull : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_PlaneCull";
 
         public C_OP_PlaneCull (IntPtr pointer) : base(pointer) {}
@@ -8830,7 +8830,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_DistanceCull : CParticleFunctionOperator {
+    public partial class C_OP_DistanceCull : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_DistanceCull";
 
         public C_OP_DistanceCull (IntPtr pointer) : base(pointer) {}
@@ -8839,7 +8839,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_ModelCull : CParticleFunctionOperator {
+    public partial class C_OP_ModelCull : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_ModelCull";
 
         public C_OP_ModelCull (IntPtr pointer) : base(pointer) {}
@@ -8848,7 +8848,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_ModelDampenMovement : CParticleFunctionOperator {
+    public partial class C_OP_ModelDampenMovement : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_ModelDampenMovement";
 
         public C_OP_ModelDampenMovement (IntPtr pointer) : base(pointer) {}
@@ -8857,7 +8857,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SequenceFromModel : CParticleFunctionOperator {
+    public partial class C_OP_SequenceFromModel : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_SequenceFromModel";
 
         public C_OP_SequenceFromModel (IntPtr pointer) : base(pointer) {}
@@ -8866,7 +8866,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_VelocityMatchingForce : CParticleFunctionOperator {
+    public partial class C_OP_VelocityMatchingForce : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_VelocityMatchingForce";
 
         public C_OP_VelocityMatchingForce (IntPtr pointer) : base(pointer) {}
@@ -8875,7 +8875,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_MovementMaintainOffset : CParticleFunctionOperator {
+    public partial class C_OP_MovementMaintainOffset : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_MovementMaintainOffset";
 
         public C_OP_MovementMaintainOffset (IntPtr pointer) : base(pointer) {}
@@ -8884,7 +8884,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_MovementPlaceOnGround : CParticleFunctionOperator {
+    public partial class C_OP_MovementPlaceOnGround : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_MovementPlaceOnGround";
 
         public C_OP_MovementPlaceOnGround (IntPtr pointer) : base(pointer) {}
@@ -8893,7 +8893,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_InheritFromParentParticles : CParticleFunctionOperator {
+    public partial class C_OP_InheritFromParentParticles : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_InheritFromParentParticles";
 
         public C_OP_InheritFromParentParticles (IntPtr pointer) : base(pointer) {}
@@ -8902,7 +8902,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_InheritFromParentParticlesV2 : CParticleFunctionOperator {
+    public partial class C_OP_InheritFromParentParticlesV2 : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_InheritFromParentParticlesV2";
 
         public C_OP_InheritFromParentParticlesV2 (IntPtr pointer) : base(pointer) {}
@@ -8911,7 +8911,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_ReadFromNeighboringParticle : CParticleFunctionOperator {
+    public partial class C_OP_ReadFromNeighboringParticle : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_ReadFromNeighboringParticle";
 
         public C_OP_ReadFromNeighboringParticle (IntPtr pointer) : base(pointer) {}
@@ -8920,7 +8920,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_InheritFromPeerSystem : CParticleFunctionOperator {
+    public partial class C_OP_InheritFromPeerSystem : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_InheritFromPeerSystem";
 
         public C_OP_InheritFromPeerSystem (IntPtr pointer) : base(pointer) {}
@@ -8929,7 +8929,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapVectorComponentToScalar : CParticleFunctionOperator {
+    public partial class C_OP_RemapVectorComponentToScalar : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RemapVectorComponentToScalar";
 
         public C_OP_RemapVectorComponentToScalar (IntPtr pointer) : base(pointer) {}
@@ -8938,7 +8938,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_OrientTo2dDirection : CParticleFunctionOperator {
+    public partial class C_OP_OrientTo2dDirection : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_OrientTo2dDirection";
 
         public C_OP_OrientTo2dDirection (IntPtr pointer) : base(pointer) {}
@@ -8947,7 +8947,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RestartAfterDuration : CParticleFunctionOperator {
+    public partial class C_OP_RestartAfterDuration : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RestartAfterDuration";
 
         public C_OP_RestartAfterDuration (IntPtr pointer) : base(pointer) {}
@@ -8956,7 +8956,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_Orient2DRelToCP : CParticleFunctionOperator {
+    public partial class C_OP_Orient2DRelToCP : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_Orient2DRelToCP";
 
         public C_OP_Orient2DRelToCP (IntPtr pointer) : base(pointer) {}
@@ -8965,7 +8965,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_MovementRotateParticleAroundAxis : CParticleFunctionOperator {
+    public partial class C_OP_MovementRotateParticleAroundAxis : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_MovementRotateParticleAroundAxis";
 
         public C_OP_MovementRotateParticleAroundAxis (IntPtr pointer) : base(pointer) {}
@@ -8974,7 +8974,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RotateVector : CParticleFunctionOperator {
+    public partial class C_OP_RotateVector : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RotateVector";
 
         public C_OP_RotateVector (IntPtr pointer) : base(pointer) {}
@@ -8983,7 +8983,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_MaxVelocity : CParticleFunctionOperator {
+    public partial class C_OP_MaxVelocity : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_MaxVelocity";
 
         public C_OP_MaxVelocity (IntPtr pointer) : base(pointer) {}
@@ -8992,7 +8992,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_LagCompensation : CParticleFunctionOperator {
+    public partial class C_OP_LagCompensation : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_LagCompensation";
 
         public C_OP_LagCompensation (IntPtr pointer) : base(pointer) {}
@@ -9001,7 +9001,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_MaintainSequentialPath : CParticleFunctionOperator {
+    public partial class C_OP_MaintainSequentialPath : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_MaintainSequentialPath";
 
         public C_OP_MaintainSequentialPath (IntPtr pointer) : base(pointer) {}
@@ -9010,7 +9010,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_LockToSavedSequentialPathV2 : CParticleFunctionOperator {
+    public partial class C_OP_LockToSavedSequentialPathV2 : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_LockToSavedSequentialPathV2";
 
         public C_OP_LockToSavedSequentialPathV2 (IntPtr pointer) : base(pointer) {}
@@ -9019,7 +9019,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_LockToSavedSequentialPath : CParticleFunctionOperator {
+    public partial class C_OP_LockToSavedSequentialPath : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_LockToSavedSequentialPath";
 
         public C_OP_LockToSavedSequentialPath (IntPtr pointer) : base(pointer) {}
@@ -9028,7 +9028,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapDotProductToScalar : CParticleFunctionOperator {
+    public partial class C_OP_RemapDotProductToScalar : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RemapDotProductToScalar";
 
         public C_OP_RemapDotProductToScalar (IntPtr pointer) : base(pointer) {}
@@ -9037,7 +9037,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapCPtoScalar : CParticleFunctionOperator {
+    public partial class C_OP_RemapCPtoScalar : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RemapCPtoScalar";
 
         public C_OP_RemapCPtoScalar (IntPtr pointer) : base(pointer) {}
@@ -9046,7 +9046,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_NormalLock : CParticleFunctionOperator {
+    public partial class C_OP_NormalLock : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_NormalLock";
 
         public C_OP_NormalLock (IntPtr pointer) : base(pointer) {}
@@ -9055,7 +9055,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapCPtoVector : CParticleFunctionOperator {
+    public partial class C_OP_RemapCPtoVector : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RemapCPtoVector";
 
         public C_OP_RemapCPtoVector (IntPtr pointer) : base(pointer) {}
@@ -9064,7 +9064,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetCPtoVector : CParticleFunctionOperator {
+    public partial class C_OP_SetCPtoVector : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_SetCPtoVector";
 
         public C_OP_SetCPtoVector (IntPtr pointer) : base(pointer) {}
@@ -9073,7 +9073,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapTransformToVelocity : CParticleFunctionOperator {
+    public partial class C_OP_RemapTransformToVelocity : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RemapTransformToVelocity";
 
         public C_OP_RemapTransformToVelocity (IntPtr pointer) : base(pointer) {}
@@ -9082,7 +9082,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapVelocityToVector : CParticleFunctionOperator {
+    public partial class C_OP_RemapVelocityToVector : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RemapVelocityToVector";
 
         public C_OP_RemapVelocityToVector (IntPtr pointer) : base(pointer) {}
@@ -9091,7 +9091,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapCPVelocityToVector : CParticleFunctionOperator {
+    public partial class C_OP_RemapCPVelocityToVector : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RemapCPVelocityToVector";
 
         public C_OP_RemapCPVelocityToVector (IntPtr pointer) : base(pointer) {}
@@ -9100,7 +9100,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetCPOrientationToDirection : CParticleFunctionOperator {
+    public partial class C_OP_SetCPOrientationToDirection : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_SetCPOrientationToDirection";
 
         public C_OP_SetCPOrientationToDirection (IntPtr pointer) : base(pointer) {}
@@ -9109,7 +9109,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapDirectionToCPToVector : CParticleFunctionOperator {
+    public partial class C_OP_RemapDirectionToCPToVector : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RemapDirectionToCPToVector";
 
         public C_OP_RemapDirectionToCPToVector (IntPtr pointer) : base(pointer) {}
@@ -9118,7 +9118,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapCrossProductOfTwoVectorsToVector : CParticleFunctionOperator {
+    public partial class C_OP_RemapCrossProductOfTwoVectorsToVector : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RemapCrossProductOfTwoVectorsToVector";
 
         public C_OP_RemapCrossProductOfTwoVectorsToVector (IntPtr pointer) : base(pointer) {}
@@ -9127,7 +9127,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_NormalizeVector : CParticleFunctionOperator {
+    public partial class C_OP_NormalizeVector : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_NormalizeVector";
 
         public C_OP_NormalizeVector (IntPtr pointer) : base(pointer) {}
@@ -9136,7 +9136,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapControlPointDirectionToVector : CParticleFunctionOperator {
+    public partial class C_OP_RemapControlPointDirectionToVector : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RemapControlPointDirectionToVector";
 
         public C_OP_RemapControlPointDirectionToVector (IntPtr pointer) : base(pointer) {}
@@ -9145,7 +9145,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetCPOrientationToGroundNormal : CParticleFunctionOperator {
+    public partial class C_OP_SetCPOrientationToGroundNormal : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_SetCPOrientationToGroundNormal";
 
         public C_OP_SetCPOrientationToGroundNormal (IntPtr pointer) : base(pointer) {}
@@ -9154,7 +9154,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapTransformOrientationToRotations : CParticleFunctionOperator {
+    public partial class C_OP_RemapTransformOrientationToRotations : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RemapTransformOrientationToRotations";
 
         public C_OP_RemapTransformOrientationToRotations (IntPtr pointer) : base(pointer) {}
@@ -9163,7 +9163,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapControlPointOrientationToRotation : CParticleFunctionOperator {
+    public partial class C_OP_RemapControlPointOrientationToRotation : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RemapControlPointOrientationToRotation";
 
         public C_OP_RemapControlPointOrientationToRotation (IntPtr pointer) : base(pointer) {}
@@ -9172,7 +9172,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_LockToPointList : CParticleFunctionOperator {
+    public partial class C_OP_LockToPointList : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_LockToPointList";
 
         public C_OP_LockToPointList (IntPtr pointer) : base(pointer) {}
@@ -9181,7 +9181,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapNamedModelElementOnceTimed : CParticleFunctionOperator {
+    public partial class C_OP_RemapNamedModelElementOnceTimed : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RemapNamedModelElementOnceTimed";
 
         public C_OP_RemapNamedModelElementOnceTimed (IntPtr pointer) : base(pointer) {}
@@ -9190,7 +9190,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapNamedModelSequenceOnceTimed : C_OP_RemapNamedModelElementOnceTimed {
+    public partial class C_OP_RemapNamedModelSequenceOnceTimed : C_OP_RemapNamedModelElementOnceTimed {
         private const string ThisClassName = "C_OP_RemapNamedModelSequenceOnceTimed";
 
         public C_OP_RemapNamedModelSequenceOnceTimed (IntPtr pointer) : base(pointer) {}
@@ -9199,7 +9199,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapNamedModelBodyPartOnceTimed : C_OP_RemapNamedModelElementOnceTimed {
+    public partial class C_OP_RemapNamedModelBodyPartOnceTimed : C_OP_RemapNamedModelElementOnceTimed {
         private const string ThisClassName = "C_OP_RemapNamedModelBodyPartOnceTimed";
 
         public C_OP_RemapNamedModelBodyPartOnceTimed (IntPtr pointer) : base(pointer) {}
@@ -9208,7 +9208,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapNamedModelMeshGroupOnceTimed : C_OP_RemapNamedModelElementOnceTimed {
+    public partial class C_OP_RemapNamedModelMeshGroupOnceTimed : C_OP_RemapNamedModelElementOnceTimed {
         private const string ThisClassName = "C_OP_RemapNamedModelMeshGroupOnceTimed";
 
         public C_OP_RemapNamedModelMeshGroupOnceTimed (IntPtr pointer) : base(pointer) {}
@@ -9217,7 +9217,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapNamedModelElementEndCap : CParticleFunctionOperator {
+    public partial class C_OP_RemapNamedModelElementEndCap : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RemapNamedModelElementEndCap";
 
         public C_OP_RemapNamedModelElementEndCap (IntPtr pointer) : base(pointer) {}
@@ -9226,7 +9226,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapNamedModelSequenceEndCap : C_OP_RemapNamedModelElementEndCap {
+    public partial class C_OP_RemapNamedModelSequenceEndCap : C_OP_RemapNamedModelElementEndCap {
         private const string ThisClassName = "C_OP_RemapNamedModelSequenceEndCap";
 
         public C_OP_RemapNamedModelSequenceEndCap (IntPtr pointer) : base(pointer) {}
@@ -9235,7 +9235,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapNamedModelBodyPartEndCap : C_OP_RemapNamedModelElementEndCap {
+    public partial class C_OP_RemapNamedModelBodyPartEndCap : C_OP_RemapNamedModelElementEndCap {
         private const string ThisClassName = "C_OP_RemapNamedModelBodyPartEndCap";
 
         public C_OP_RemapNamedModelBodyPartEndCap (IntPtr pointer) : base(pointer) {}
@@ -9244,7 +9244,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapNamedModelMeshGroupEndCap : C_OP_RemapNamedModelElementEndCap {
+    public partial class C_OP_RemapNamedModelMeshGroupEndCap : C_OP_RemapNamedModelElementEndCap {
         private const string ThisClassName = "C_OP_RemapNamedModelMeshGroupEndCap";
 
         public C_OP_RemapNamedModelMeshGroupEndCap (IntPtr pointer) : base(pointer) {}
@@ -9253,7 +9253,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetFromCPSnapshot : CParticleFunctionOperator {
+    public partial class C_OP_SetFromCPSnapshot : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_SetFromCPSnapshot";
 
         public C_OP_SetFromCPSnapshot (IntPtr pointer) : base(pointer) {}
@@ -9262,7 +9262,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_VectorFieldSnapshot : CParticleFunctionOperator {
+    public partial class C_OP_VectorFieldSnapshot : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_VectorFieldSnapshot";
 
         public C_OP_VectorFieldSnapshot (IntPtr pointer) : base(pointer) {}
@@ -9271,7 +9271,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetAttributeToScalarExpression : CParticleFunctionOperator {
+    public partial class C_OP_SetAttributeToScalarExpression : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_SetAttributeToScalarExpression";
 
         public C_OP_SetAttributeToScalarExpression (IntPtr pointer) : base(pointer) {}
@@ -9280,7 +9280,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetVectorAttributeToVectorExpression : CParticleFunctionOperator {
+    public partial class C_OP_SetVectorAttributeToVectorExpression : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_SetVectorAttributeToVectorExpression";
 
         public C_OP_SetVectorAttributeToVectorExpression (IntPtr pointer) : base(pointer) {}
@@ -9289,7 +9289,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetFloatAttributeToVectorExpression : CParticleFunctionOperator {
+    public partial class C_OP_SetFloatAttributeToVectorExpression : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_SetFloatAttributeToVectorExpression";
 
         public C_OP_SetFloatAttributeToVectorExpression (IntPtr pointer) : base(pointer) {}
@@ -9298,7 +9298,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_MovementSkinnedPositionFromCPSnapshot : CParticleFunctionOperator {
+    public partial class C_OP_MovementSkinnedPositionFromCPSnapshot : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_MovementSkinnedPositionFromCPSnapshot";
 
         public C_OP_MovementSkinnedPositionFromCPSnapshot (IntPtr pointer) : base(pointer) {}
@@ -9307,7 +9307,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_MovementMoveAlongSkinnedCPSnapshot : CParticleFunctionOperator {
+    public partial class C_OP_MovementMoveAlongSkinnedCPSnapshot : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_MovementMoveAlongSkinnedCPSnapshot";
 
         public C_OP_MovementMoveAlongSkinnedCPSnapshot (IntPtr pointer) : base(pointer) {}
@@ -9316,7 +9316,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_QuantizeFloat : CParticleFunctionOperator {
+    public partial class C_OP_QuantizeFloat : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_QuantizeFloat";
 
         public C_OP_QuantizeFloat (IntPtr pointer) : base(pointer) {}
@@ -9325,7 +9325,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetFloatCollection : CParticleFunctionOperator {
+    public partial class C_OP_SetFloatCollection : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_SetFloatCollection";
 
         public C_OP_SetFloatCollection (IntPtr pointer) : base(pointer) {}
@@ -9334,7 +9334,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetFloat : CParticleFunctionOperator {
+    public partial class C_OP_SetFloat : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_SetFloat";
 
         public C_OP_SetFloat (IntPtr pointer) : base(pointer) {}
@@ -9343,7 +9343,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetVec : CParticleFunctionOperator {
+    public partial class C_OP_SetVec : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_SetVec";
 
         public C_OP_SetVec (IntPtr pointer) : base(pointer) {}
@@ -9352,7 +9352,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_DragRelativeToPlane : CParticleFunctionOperator {
+    public partial class C_OP_DragRelativeToPlane : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_DragRelativeToPlane";
 
         public C_OP_DragRelativeToPlane (IntPtr pointer) : base(pointer) {}
@@ -9361,7 +9361,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapDensityGradientToVectorAttribute : CParticleFunctionOperator {
+    public partial class C_OP_RemapDensityGradientToVectorAttribute : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RemapDensityGradientToVectorAttribute";
 
         public C_OP_RemapDensityGradientToVectorAttribute (IntPtr pointer) : base(pointer) {}
@@ -9370,7 +9370,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_LockPoints : CParticleFunctionOperator {
+    public partial class C_OP_LockPoints : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_LockPoints";
 
         public C_OP_LockPoints (IntPtr pointer) : base(pointer) {}
@@ -9379,7 +9379,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapDistanceToLineSegmentBase : CParticleFunctionOperator {
+    public partial class C_OP_RemapDistanceToLineSegmentBase : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RemapDistanceToLineSegmentBase";
 
         public C_OP_RemapDistanceToLineSegmentBase (IntPtr pointer) : base(pointer) {}
@@ -9388,7 +9388,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapDistanceToLineSegmentToScalar : C_OP_RemapDistanceToLineSegmentBase {
+    public partial class C_OP_RemapDistanceToLineSegmentToScalar : C_OP_RemapDistanceToLineSegmentBase {
         private const string ThisClassName = "C_OP_RemapDistanceToLineSegmentToScalar";
 
         public C_OP_RemapDistanceToLineSegmentToScalar (IntPtr pointer) : base(pointer) {}
@@ -9397,7 +9397,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapDistanceToLineSegmentToVector : C_OP_RemapDistanceToLineSegmentBase {
+    public partial class C_OP_RemapDistanceToLineSegmentToVector : C_OP_RemapDistanceToLineSegmentBase {
         private const string ThisClassName = "C_OP_RemapDistanceToLineSegmentToVector";
 
         public C_OP_RemapDistanceToLineSegmentToVector (IntPtr pointer) : base(pointer) {}
@@ -9406,7 +9406,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_TeleportBeam : CParticleFunctionOperator {
+    public partial class C_OP_TeleportBeam : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_TeleportBeam";
 
         public C_OP_TeleportBeam (IntPtr pointer) : base(pointer) {}
@@ -9415,7 +9415,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_CycleScalar : CParticleFunctionOperator {
+    public partial class C_OP_CycleScalar : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_CycleScalar";
 
         public C_OP_CycleScalar (IntPtr pointer) : base(pointer) {}
@@ -9424,7 +9424,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_CalculateVectorAttribute : CParticleFunctionOperator {
+    public partial class C_OP_CalculateVectorAttribute : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_CalculateVectorAttribute";
 
         public C_OP_CalculateVectorAttribute (IntPtr pointer) : base(pointer) {}
@@ -9433,7 +9433,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_ColorAdjustHSL : CParticleFunctionOperator {
+    public partial class C_OP_ColorAdjustHSL : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_ColorAdjustHSL";
 
         public C_OP_ColorAdjustHSL (IntPtr pointer) : base(pointer) {}
@@ -9442,7 +9442,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_ConnectParentParticleToNearest : CParticleFunctionOperator {
+    public partial class C_OP_ConnectParentParticleToNearest : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_ConnectParentParticleToNearest";
 
         public C_OP_ConnectParentParticleToNearest (IntPtr pointer) : base(pointer) {}
@@ -9451,7 +9451,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_UpdateLightSource : CParticleFunctionOperator {
+    public partial class C_OP_UpdateLightSource : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_UpdateLightSource";
 
         public C_OP_UpdateLightSource (IntPtr pointer) : base(pointer) {}
@@ -9460,7 +9460,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapSpeedtoCP : CParticleFunctionPreEmission {
+    public partial class C_OP_RemapSpeedtoCP : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_RemapSpeedtoCP";
 
         public C_OP_RemapSpeedtoCP (IntPtr pointer) : base(pointer) {}
@@ -9469,7 +9469,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapAverageHitboxSpeedtoCP : CParticleFunctionPreEmission {
+    public partial class C_OP_RemapAverageHitboxSpeedtoCP : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_RemapAverageHitboxSpeedtoCP";
 
         public C_OP_RemapAverageHitboxSpeedtoCP (IntPtr pointer) : base(pointer) {}
@@ -9478,7 +9478,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapDotProductToCP : CParticleFunctionPreEmission {
+    public partial class C_OP_RemapDotProductToCP : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_RemapDotProductToCP";
 
         public C_OP_RemapDotProductToCP (IntPtr pointer) : base(pointer) {}
@@ -9487,7 +9487,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetControlPointFieldToScalarExpression : CParticleFunctionPreEmission {
+    public partial class C_OP_SetControlPointFieldToScalarExpression : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_SetControlPointFieldToScalarExpression";
 
         public C_OP_SetControlPointFieldToScalarExpression (IntPtr pointer) : base(pointer) {}
@@ -9496,7 +9496,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetControlPointFieldFromVectorExpression : CParticleFunctionPreEmission {
+    public partial class C_OP_SetControlPointFieldFromVectorExpression : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_SetControlPointFieldFromVectorExpression";
 
         public C_OP_SetControlPointFieldFromVectorExpression (IntPtr pointer) : base(pointer) {}
@@ -9505,7 +9505,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetControlPointToVectorExpression : CParticleFunctionPreEmission {
+    public partial class C_OP_SetControlPointToVectorExpression : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_SetControlPointToVectorExpression";
 
         public C_OP_SetControlPointToVectorExpression (IntPtr pointer) : base(pointer) {}
@@ -9514,7 +9514,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapModelVolumetoCP : CParticleFunctionPreEmission {
+    public partial class C_OP_RemapModelVolumetoCP : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_RemapModelVolumetoCP";
 
         public C_OP_RemapModelVolumetoCP (IntPtr pointer) : base(pointer) {}
@@ -9523,7 +9523,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapBoundingVolumetoCP : CParticleFunctionPreEmission {
+    public partial class C_OP_RemapBoundingVolumetoCP : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_RemapBoundingVolumetoCP";
 
         public C_OP_RemapBoundingVolumetoCP (IntPtr pointer) : base(pointer) {}
@@ -9532,7 +9532,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapAverageScalarValuetoCP : CParticleFunctionPreEmission {
+    public partial class C_OP_RemapAverageScalarValuetoCP : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_RemapAverageScalarValuetoCP";
 
         public C_OP_RemapAverageScalarValuetoCP (IntPtr pointer) : base(pointer) {}
@@ -9541,7 +9541,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RampCPLinearRandom : CParticleFunctionPreEmission {
+    public partial class C_OP_RampCPLinearRandom : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_RampCPLinearRandom";
 
         public C_OP_RampCPLinearRandom (IntPtr pointer) : base(pointer) {}
@@ -9550,7 +9550,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetParentControlPointsToChildCP : CParticleFunctionPreEmission {
+    public partial class C_OP_SetParentControlPointsToChildCP : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_SetParentControlPointsToChildCP";
 
         public C_OP_SetParentControlPointsToChildCP (IntPtr pointer) : base(pointer) {}
@@ -9559,7 +9559,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetVariable : CParticleFunctionPreEmission {
+    public partial class C_OP_SetVariable : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_SetVariable";
 
         public C_OP_SetVariable (IntPtr pointer) : base(pointer) {}
@@ -9568,7 +9568,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetControlPointPositions : CParticleFunctionPreEmission {
+    public partial class C_OP_SetControlPointPositions : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_SetControlPointPositions";
 
         public C_OP_SetControlPointPositions (IntPtr pointer) : base(pointer) {}
@@ -9577,7 +9577,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetSingleControlPointPosition : CParticleFunctionPreEmission {
+    public partial class C_OP_SetSingleControlPointPosition : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_SetSingleControlPointPosition";
 
         public C_OP_SetSingleControlPointPosition (IntPtr pointer) : base(pointer) {}
@@ -9586,7 +9586,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetControlPointPositionToRandomActiveCP : CParticleFunctionPreEmission {
+    public partial class C_OP_SetControlPointPositionToRandomActiveCP : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_SetControlPointPositionToRandomActiveCP";
 
         public C_OP_SetControlPointPositionToRandomActiveCP (IntPtr pointer) : base(pointer) {}
@@ -9595,7 +9595,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetRandomControlPointPosition : CParticleFunctionPreEmission {
+    public partial class C_OP_SetRandomControlPointPosition : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_SetRandomControlPointPosition";
 
         public C_OP_SetRandomControlPointPosition (IntPtr pointer) : base(pointer) {}
@@ -9604,7 +9604,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetControlPointOrientation : CParticleFunctionPreEmission {
+    public partial class C_OP_SetControlPointOrientation : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_SetControlPointOrientation";
 
         public C_OP_SetControlPointOrientation (IntPtr pointer) : base(pointer) {}
@@ -9613,7 +9613,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetControlPointFromObjectScale : CParticleFunctionPreEmission {
+    public partial class C_OP_SetControlPointFromObjectScale : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_SetControlPointFromObjectScale";
 
         public C_OP_SetControlPointFromObjectScale (IntPtr pointer) : base(pointer) {}
@@ -9622,7 +9622,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_DistanceBetweenCPsToCP : CParticleFunctionPreEmission {
+    public partial class C_OP_DistanceBetweenCPsToCP : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_DistanceBetweenCPsToCP";
 
         public C_OP_DistanceBetweenCPsToCP (IntPtr pointer) : base(pointer) {}
@@ -9631,7 +9631,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetControlPointToPlayer : CParticleFunctionPreEmission {
+    public partial class C_OP_SetControlPointToPlayer : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_SetControlPointToPlayer";
 
         public C_OP_SetControlPointToPlayer (IntPtr pointer) : base(pointer) {}
@@ -9640,7 +9640,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetControlPointToHand : CParticleFunctionPreEmission {
+    public partial class C_OP_SetControlPointToHand : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_SetControlPointToHand";
 
         public C_OP_SetControlPointToHand (IntPtr pointer) : base(pointer) {}
@@ -9649,7 +9649,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetControlPointToHMD : CParticleFunctionPreEmission {
+    public partial class C_OP_SetControlPointToHMD : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_SetControlPointToHMD";
 
         public C_OP_SetControlPointToHMD (IntPtr pointer) : base(pointer) {}
@@ -9658,7 +9658,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetControlPointPositionToTimeOfDayValue : CParticleFunctionPreEmission {
+    public partial class C_OP_SetControlPointPositionToTimeOfDayValue : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_SetControlPointPositionToTimeOfDayValue";
 
         public C_OP_SetControlPointPositionToTimeOfDayValue (IntPtr pointer) : base(pointer) {}
@@ -9667,7 +9667,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetControlPointToCenter : CParticleFunctionPreEmission {
+    public partial class C_OP_SetControlPointToCenter : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_SetControlPointToCenter";
 
         public C_OP_SetControlPointToCenter (IntPtr pointer) : base(pointer) {}
@@ -9676,7 +9676,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetControlPointToCPVelocity : CParticleFunctionPreEmission {
+    public partial class C_OP_SetControlPointToCPVelocity : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_SetControlPointToCPVelocity";
 
         public C_OP_SetControlPointToCPVelocity (IntPtr pointer) : base(pointer) {}
@@ -9685,7 +9685,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetControlPointOrientationToCPVelocity : CParticleFunctionPreEmission {
+    public partial class C_OP_SetControlPointOrientationToCPVelocity : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_SetControlPointOrientationToCPVelocity";
 
         public C_OP_SetControlPointOrientationToCPVelocity (IntPtr pointer) : base(pointer) {}
@@ -9694,7 +9694,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_StopAfterCPDuration : CParticleFunctionPreEmission {
+    public partial class C_OP_StopAfterCPDuration : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_StopAfterCPDuration";
 
         public C_OP_StopAfterCPDuration (IntPtr pointer) : base(pointer) {}
@@ -9703,7 +9703,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetControlPointRotation : CParticleFunctionPreEmission {
+    public partial class C_OP_SetControlPointRotation : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_SetControlPointRotation";
 
         public C_OP_SetControlPointRotation (IntPtr pointer) : base(pointer) {}
@@ -9712,7 +9712,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapCPtoCP : CParticleFunctionPreEmission {
+    public partial class C_OP_RemapCPtoCP : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_RemapCPtoCP";
 
         public C_OP_RemapCPtoCP (IntPtr pointer) : base(pointer) {}
@@ -9721,7 +9721,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_HSVShiftToCP : CParticleFunctionPreEmission {
+    public partial class C_OP_HSVShiftToCP : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_HSVShiftToCP";
 
         public C_OP_HSVShiftToCP (IntPtr pointer) : base(pointer) {}
@@ -9730,7 +9730,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetControlPointToImpactPoint : CParticleFunctionPreEmission {
+    public partial class C_OP_SetControlPointToImpactPoint : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_SetControlPointToImpactPoint";
 
         public C_OP_SetControlPointToImpactPoint (IntPtr pointer) : base(pointer) {}
@@ -9739,7 +9739,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetCPOrientationToPointAtCP : CParticleFunctionPreEmission {
+    public partial class C_OP_SetCPOrientationToPointAtCP : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_SetCPOrientationToPointAtCP";
 
         public C_OP_SetCPOrientationToPointAtCP (IntPtr pointer) : base(pointer) {}
@@ -9748,7 +9748,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_EnableChildrenFromParentParticleCount : CParticleFunctionPreEmission {
+    public partial class C_OP_EnableChildrenFromParentParticleCount : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_EnableChildrenFromParentParticleCount";
 
         public C_OP_EnableChildrenFromParentParticleCount (IntPtr pointer) : base(pointer) {}
@@ -9757,7 +9757,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SelectivelyEnableChildren : CParticleFunctionPreEmission {
+    public partial class C_OP_SelectivelyEnableChildren : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_SelectivelyEnableChildren";
 
         public C_OP_SelectivelyEnableChildren (IntPtr pointer) : base(pointer) {}
@@ -9766,7 +9766,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_PlayEndCapWhenFinished : CParticleFunctionPreEmission {
+    public partial class C_OP_PlayEndCapWhenFinished : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_PlayEndCapWhenFinished";
 
         public C_OP_PlayEndCapWhenFinished (IntPtr pointer) : base(pointer) {}
@@ -9775,7 +9775,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_ForceControlPointStub : CParticleFunctionPreEmission {
+    public partial class C_OP_ForceControlPointStub : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_ForceControlPointStub";
 
         public C_OP_ForceControlPointStub (IntPtr pointer) : base(pointer) {}
@@ -9784,7 +9784,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_DriveCPFromGlobalSoundFloat : CParticleFunctionPreEmission {
+    public partial class C_OP_DriveCPFromGlobalSoundFloat : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_DriveCPFromGlobalSoundFloat";
 
         public C_OP_DriveCPFromGlobalSoundFloat (IntPtr pointer) : base(pointer) {}
@@ -9793,7 +9793,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetControlPointFieldToWater : CParticleFunctionPreEmission {
+    public partial class C_OP_SetControlPointFieldToWater : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_SetControlPointFieldToWater";
 
         public C_OP_SetControlPointFieldToWater (IntPtr pointer) : base(pointer) {}
@@ -9802,7 +9802,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetControlPointToWaterSurface : CParticleFunctionPreEmission {
+    public partial class C_OP_SetControlPointToWaterSurface : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_SetControlPointToWaterSurface";
 
         public C_OP_SetControlPointToWaterSurface (IntPtr pointer) : base(pointer) {}
@@ -9811,7 +9811,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RepeatedTriggerChildGroup : CParticleFunctionPreEmission {
+    public partial class C_OP_RepeatedTriggerChildGroup : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_RepeatedTriggerChildGroup";
 
         public C_OP_RepeatedTriggerChildGroup (IntPtr pointer) : base(pointer) {}
@@ -9820,7 +9820,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_ChooseRandomChildrenInGroup : CParticleFunctionPreEmission {
+    public partial class C_OP_ChooseRandomChildrenInGroup : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_ChooseRandomChildrenInGroup";
 
         public C_OP_ChooseRandomChildrenInGroup (IntPtr pointer) : base(pointer) {}
@@ -9829,7 +9829,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetSimulationRate : CParticleFunctionPreEmission {
+    public partial class C_OP_SetSimulationRate : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_SetSimulationRate";
 
         public C_OP_SetSimulationRate (IntPtr pointer) : base(pointer) {}
@@ -9838,7 +9838,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_ControlPointToRadialScreenSpace : CParticleFunctionPreEmission {
+    public partial class C_OP_ControlPointToRadialScreenSpace : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_ControlPointToRadialScreenSpace";
 
         public C_OP_ControlPointToRadialScreenSpace (IntPtr pointer) : base(pointer) {}
@@ -9847,7 +9847,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_LightningSnapshotGenerator : CParticleFunctionPreEmission {
+    public partial class C_OP_LightningSnapshotGenerator : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_LightningSnapshotGenerator";
 
         public C_OP_LightningSnapshotGenerator (IntPtr pointer) : base(pointer) {}
@@ -9856,7 +9856,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapExternalWindToCP : CParticleFunctionPreEmission {
+    public partial class C_OP_RemapExternalWindToCP : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_RemapExternalWindToCP";
 
         public C_OP_RemapExternalWindToCP (IntPtr pointer) : base(pointer) {}
@@ -9865,7 +9865,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SetGravityToCP : CParticleFunctionPreEmission {
+    public partial class C_OP_SetGravityToCP : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_SetGravityToCP";
 
         public C_OP_SetGravityToCP (IntPtr pointer) : base(pointer) {}
@@ -9874,7 +9874,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_QuantizeCPComponent : CParticleFunctionPreEmission {
+    public partial class C_OP_QuantizeCPComponent : CParticleFunctionPreEmission {
         private const string ThisClassName = "C_OP_QuantizeCPComponent";
 
         public C_OP_QuantizeCPComponent (IntPtr pointer) : base(pointer) {}
@@ -9883,7 +9883,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RenderPoints : CParticleFunctionRenderer {
+    public partial class C_OP_RenderPoints : CParticleFunctionRenderer {
         private const string ThisClassName = "C_OP_RenderPoints";
 
         public C_OP_RenderPoints (IntPtr pointer) : base(pointer) {}
@@ -9892,7 +9892,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CBaseTrailRenderer : CBaseRendererSource2 {
+    public partial class CBaseTrailRenderer : CBaseRendererSource2 {
         private const string ThisClassName = "CBaseTrailRenderer";
 
         public CBaseTrailRenderer (IntPtr pointer) : base(pointer) {}
@@ -9901,7 +9901,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RenderTrails : CBaseTrailRenderer {
+    public partial class C_OP_RenderTrails : CBaseTrailRenderer {
         private const string ThisClassName = "C_OP_RenderTrails";
 
         public C_OP_RenderTrails (IntPtr pointer) : base(pointer) {}
@@ -9910,7 +9910,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RenderRopes : CBaseRendererSource2 {
+    public partial class C_OP_RenderRopes : CBaseRendererSource2 {
         private const string ThisClassName = "C_OP_RenderRopes";
 
         public C_OP_RenderRopes (IntPtr pointer) : base(pointer) {}
@@ -9919,7 +9919,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RenderAsModels : CParticleFunctionRenderer {
+    public partial class C_OP_RenderAsModels : CParticleFunctionRenderer {
         private const string ThisClassName = "C_OP_RenderAsModels";
 
         public C_OP_RenderAsModels (IntPtr pointer) : base(pointer) {}
@@ -9928,7 +9928,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RenderLights : C_OP_RenderPoints {
+    public partial class C_OP_RenderLights : C_OP_RenderPoints {
         private const string ThisClassName = "C_OP_RenderLights";
 
         public C_OP_RenderLights (IntPtr pointer) : base(pointer) {}
@@ -9937,7 +9937,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RenderBlobs : CParticleFunctionRenderer {
+    public partial class C_OP_RenderBlobs : CParticleFunctionRenderer {
         private const string ThisClassName = "C_OP_RenderBlobs";
 
         public C_OP_RenderBlobs (IntPtr pointer) : base(pointer) {}
@@ -9946,7 +9946,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RenderGpuImplicit : CParticleFunctionRenderer {
+    public partial class C_OP_RenderGpuImplicit : CParticleFunctionRenderer {
         private const string ThisClassName = "C_OP_RenderGpuImplicit";
 
         public C_OP_RenderGpuImplicit (IntPtr pointer) : base(pointer) {}
@@ -9955,7 +9955,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RenderScreenVelocityRotate : CParticleFunctionRenderer {
+    public partial class C_OP_RenderScreenVelocityRotate : CParticleFunctionRenderer {
         private const string ThisClassName = "C_OP_RenderScreenVelocityRotate";
 
         public C_OP_RenderScreenVelocityRotate (IntPtr pointer) : base(pointer) {}
@@ -9964,7 +9964,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RenderModels : CParticleFunctionRenderer {
+    public partial class C_OP_RenderModels : CParticleFunctionRenderer {
         private const string ThisClassName = "C_OP_RenderModels";
 
         public C_OP_RenderModels (IntPtr pointer) : base(pointer) {}
@@ -9973,7 +9973,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RenderMaterialProxy : CParticleFunctionRenderer {
+    public partial class C_OP_RenderMaterialProxy : CParticleFunctionRenderer {
         private const string ThisClassName = "C_OP_RenderMaterialProxy";
 
         public C_OP_RenderMaterialProxy (IntPtr pointer) : base(pointer) {}
@@ -9982,7 +9982,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RenderProjected : CParticleFunctionRenderer {
+    public partial class C_OP_RenderProjected : CParticleFunctionRenderer {
         private const string ThisClassName = "C_OP_RenderProjected";
 
         public C_OP_RenderProjected (IntPtr pointer) : base(pointer) {}
@@ -9991,7 +9991,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RenderDeferredLight : CParticleFunctionRenderer {
+    public partial class C_OP_RenderDeferredLight : CParticleFunctionRenderer {
         private const string ThisClassName = "C_OP_RenderDeferredLight";
 
         public C_OP_RenderDeferredLight (IntPtr pointer) : base(pointer) {}
@@ -10000,7 +10000,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RenderStandardLight : CParticleFunctionRenderer {
+    public partial class C_OP_RenderStandardLight : CParticleFunctionRenderer {
         private const string ThisClassName = "C_OP_RenderStandardLight";
 
         public C_OP_RenderStandardLight (IntPtr pointer) : base(pointer) {}
@@ -10009,7 +10009,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RenderOmni2Light : CParticleFunctionRenderer {
+    public partial class C_OP_RenderOmni2Light : CParticleFunctionRenderer {
         private const string ThisClassName = "C_OP_RenderOmni2Light";
 
         public C_OP_RenderOmni2Light (IntPtr pointer) : base(pointer) {}
@@ -10018,7 +10018,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RenderLightBeam : CParticleFunctionRenderer {
+    public partial class C_OP_RenderLightBeam : CParticleFunctionRenderer {
         private const string ThisClassName = "C_OP_RenderLightBeam";
 
         public C_OP_RenderLightBeam (IntPtr pointer) : base(pointer) {}
@@ -10027,7 +10027,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RenderClothForce : CParticleFunctionRenderer {
+    public partial class C_OP_RenderClothForce : CParticleFunctionRenderer {
         private const string ThisClassName = "C_OP_RenderClothForce";
 
         public C_OP_RenderClothForce (IntPtr pointer) : base(pointer) {}
@@ -10036,7 +10036,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_Callback : CParticleFunctionRenderer {
+    public partial class C_OP_Callback : CParticleFunctionRenderer {
         private const string ThisClassName = "C_OP_Callback";
 
         public C_OP_Callback (IntPtr pointer) : base(pointer) {}
@@ -10045,7 +10045,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RenderScreenShake : CParticleFunctionRenderer {
+    public partial class C_OP_RenderScreenShake : CParticleFunctionRenderer {
         private const string ThisClassName = "C_OP_RenderScreenShake";
 
         public C_OP_RenderScreenShake (IntPtr pointer) : base(pointer) {}
@@ -10054,7 +10054,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RenderTonemapController : CParticleFunctionRenderer {
+    public partial class C_OP_RenderTonemapController : CParticleFunctionRenderer {
         private const string ThisClassName = "C_OP_RenderTonemapController";
 
         public C_OP_RenderTonemapController (IntPtr pointer) : base(pointer) {}
@@ -10063,7 +10063,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RenderPostProcessing : CParticleFunctionRenderer {
+    public partial class C_OP_RenderPostProcessing : CParticleFunctionRenderer {
         private const string ThisClassName = "C_OP_RenderPostProcessing";
 
         public C_OP_RenderPostProcessing (IntPtr pointer) : base(pointer) {}
@@ -10072,7 +10072,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RenderSound : CParticleFunctionRenderer {
+    public partial class C_OP_RenderSound : CParticleFunctionRenderer {
         private const string ThisClassName = "C_OP_RenderSound";
 
         public C_OP_RenderSound (IntPtr pointer) : base(pointer) {}
@@ -10081,7 +10081,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RenderStatusEffect : CParticleFunctionRenderer {
+    public partial class C_OP_RenderStatusEffect : CParticleFunctionRenderer {
         private const string ThisClassName = "C_OP_RenderStatusEffect";
 
         public C_OP_RenderStatusEffect (IntPtr pointer) : base(pointer) {}
@@ -10090,7 +10090,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RenderStatusEffectCitadel : CParticleFunctionRenderer {
+    public partial class C_OP_RenderStatusEffectCitadel : CParticleFunctionRenderer {
         private const string ThisClassName = "C_OP_RenderStatusEffectCitadel";
 
         public C_OP_RenderStatusEffectCitadel (IntPtr pointer) : base(pointer) {}
@@ -10099,7 +10099,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RenderFlattenGrass : CParticleFunctionRenderer {
+    public partial class C_OP_RenderFlattenGrass : CParticleFunctionRenderer {
         private const string ThisClassName = "C_OP_RenderFlattenGrass";
 
         public C_OP_RenderFlattenGrass (IntPtr pointer) : base(pointer) {}
@@ -10108,7 +10108,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RenderTreeShake : CParticleFunctionRenderer {
+    public partial class C_OP_RenderTreeShake : CParticleFunctionRenderer {
         private const string ThisClassName = "C_OP_RenderTreeShake";
 
         public C_OP_RenderTreeShake (IntPtr pointer) : base(pointer) {}
@@ -10117,7 +10117,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RenderText : CParticleFunctionRenderer {
+    public partial class C_OP_RenderText : CParticleFunctionRenderer {
         private const string ThisClassName = "C_OP_RenderText";
 
         public C_OP_RenderText (IntPtr pointer) : base(pointer) {}
@@ -10126,7 +10126,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RenderVRHapticEvent : CParticleFunctionRenderer {
+    public partial class C_OP_RenderVRHapticEvent : CParticleFunctionRenderer {
         private const string ThisClassName = "C_OP_RenderVRHapticEvent";
 
         public C_OP_RenderVRHapticEvent (IntPtr pointer) : base(pointer) {}
@@ -10135,7 +10135,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapSDFDistanceToScalarAttribute : CParticleFunctionOperator {
+    public partial class C_OP_RemapSDFDistanceToScalarAttribute : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RemapSDFDistanceToScalarAttribute";
 
         public C_OP_RemapSDFDistanceToScalarAttribute (IntPtr pointer) : base(pointer) {}
@@ -10144,7 +10144,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapSDFDistanceToVectorAttribute : CParticleFunctionOperator {
+    public partial class C_OP_RemapSDFDistanceToVectorAttribute : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RemapSDFDistanceToVectorAttribute";
 
         public C_OP_RemapSDFDistanceToVectorAttribute (IntPtr pointer) : base(pointer) {}
@@ -10153,7 +10153,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SDFForce : CParticleFunctionForce {
+    public partial class C_OP_SDFForce : CParticleFunctionForce {
         private const string ThisClassName = "C_OP_SDFForce";
 
         public C_OP_SDFForce (IntPtr pointer) : base(pointer) {}
@@ -10162,7 +10162,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_RemapSDFGradientToVectorAttribute : CParticleFunctionOperator {
+    public partial class C_OP_RemapSDFGradientToVectorAttribute : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_RemapSDFGradientToVectorAttribute";
 
         public C_OP_RemapSDFGradientToVectorAttribute (IntPtr pointer) : base(pointer) {}
@@ -10171,7 +10171,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SDFLighting : CParticleFunctionOperator {
+    public partial class C_OP_SDFLighting : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_SDFLighting";
 
         public C_OP_SDFLighting (IntPtr pointer) : base(pointer) {}
@@ -10180,7 +10180,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_SDFConstraint : CParticleFunctionConstraint {
+    public partial class C_OP_SDFConstraint : CParticleFunctionConstraint {
         private const string ThisClassName = "C_OP_SDFConstraint";
 
         public C_OP_SDFConstraint (IntPtr pointer) : base(pointer) {}
@@ -10189,7 +10189,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_OP_ParticlePhysics : CParticleFunctionOperator {
+    public partial class C_OP_ParticlePhysics : CParticleFunctionOperator {
         private const string ThisClassName = "C_OP_ParticlePhysics";
 
         public C_OP_ParticlePhysics (IntPtr pointer) : base(pointer) {}
@@ -10198,7 +10198,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CRangeFloat : NativeObject {
+    public partial class CRangeFloat : NativeObject {
         private const string ThisClassName = "CRangeFloat";
 
         public CRangeFloat (IntPtr pointer) : base(pointer) {}
@@ -10207,7 +10207,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CRangeInt : NativeObject {
+    public partial class CRangeInt : NativeObject {
         private const string ThisClassName = "CRangeInt";
 
         public CRangeInt (IntPtr pointer) : base(pointer) {}
@@ -10216,7 +10216,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class Extent : NativeObject {
+    public partial class Extent : NativeObject {
         private const string ThisClassName = "Extent";
 
         public Extent (IntPtr pointer) : base(pointer) {}
@@ -10225,7 +10225,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CNavVolume : NativeObject {
+    public partial class CNavVolume : NativeObject {
         private const string ThisClassName = "CNavVolume";
 
         public CNavVolume (IntPtr pointer) : base(pointer) {}
@@ -10234,7 +10234,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CNavVolumeVector : CNavVolume {
+    public partial class CNavVolumeVector : CNavVolume {
         private const string ThisClassName = "CNavVolumeVector";
 
         public CNavVolumeVector (IntPtr pointer) : base(pointer) {}
@@ -10243,7 +10243,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CNavVolumeAll : CNavVolumeVector {
+    public partial class CNavVolumeAll : CNavVolumeVector {
         private const string ThisClassName = "CNavVolumeAll";
 
         public CNavVolumeAll (IntPtr pointer) : base(pointer) {}
@@ -10252,7 +10252,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CNavVolumeSphere : CNavVolume {
+    public partial class CNavVolumeSphere : CNavVolume {
         private const string ThisClassName = "CNavVolumeSphere";
 
         public CNavVolumeSphere (IntPtr pointer) : base(pointer) {}
@@ -10261,7 +10261,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CNavVolumeSphericalShell : CNavVolumeSphere {
+    public partial class CNavVolumeSphericalShell : CNavVolumeSphere {
         private const string ThisClassName = "CNavVolumeSphericalShell";
 
         public CNavVolumeSphericalShell (IntPtr pointer) : base(pointer) {}
@@ -10270,7 +10270,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CNavHullVData : NativeObject {
+    public partial class CNavHullVData : NativeObject {
         private const string ThisClassName = "CNavHullVData";
 
         public CNavHullVData (IntPtr pointer) : base(pointer) {}
@@ -10279,7 +10279,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CNavHullPresetVData : NativeObject {
+    public partial class CNavHullPresetVData : NativeObject {
         private const string ThisClassName = "CNavHullPresetVData";
 
         public CNavHullPresetVData (IntPtr pointer) : base(pointer) {}
@@ -10288,7 +10288,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CNetworkTransmitComponent : NativeObject {
+    public partial class CNetworkTransmitComponent : NativeObject {
         private const string ThisClassName = "CNetworkTransmitComponent";
 
         public CNetworkTransmitComponent (IntPtr pointer) : base(pointer) {}
@@ -10297,7 +10297,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class AnimationUpdateListHandle_t : NativeObject {
+    public partial class AnimationUpdateListHandle_t : NativeObject {
         private const string ThisClassName = "AnimationUpdateListHandle_t";
 
         public AnimationUpdateListHandle_t (IntPtr pointer) : base(pointer) {}
@@ -10306,7 +10306,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimEventListenerBase : NativeObject {
+    public partial class CAnimEventListenerBase : NativeObject {
         private const string ThisClassName = "CAnimEventListenerBase";
 
         public CAnimEventListenerBase (IntPtr pointer) : base(pointer) {}
@@ -10315,7 +10315,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimEventListener : CAnimEventListenerBase {
+    public partial class CAnimEventListener : CAnimEventListenerBase {
         private const string ThisClassName = "CAnimEventListener";
 
         public CAnimEventListener (IntPtr pointer) : base(pointer) {}
@@ -10324,7 +10324,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimEventQueueListener : CAnimEventListenerBase {
+    public partial class CAnimEventQueueListener : CAnimEventListenerBase {
         private const string ThisClassName = "CAnimEventQueueListener";
 
         public CAnimEventQueueListener (IntPtr pointer) : base(pointer) {}
@@ -10333,7 +10333,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimGraphTagRef : NativeObject {
+    public partial class CAnimGraphTagRef : NativeObject {
         private const string ThisClassName = "CAnimGraphTagRef";
 
         public CAnimGraphTagRef (IntPtr pointer) : base(pointer) {}
@@ -10342,7 +10342,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSkillFloat : NativeObject {
+    public partial class CSkillFloat : NativeObject {
         private const string ThisClassName = "CSkillFloat";
 
         public CSkillFloat (IntPtr pointer) : base(pointer) {}
@@ -10351,7 +10351,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSkillInt : NativeObject {
+    public partial class CSkillInt : NativeObject {
         private const string ThisClassName = "CSkillInt";
 
         public CSkillInt (IntPtr pointer) : base(pointer) {}
@@ -10360,7 +10360,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSkillDamage : NativeObject {
+    public partial class CSkillDamage : NativeObject {
         private const string ThisClassName = "CSkillDamage";
 
         public CSkillDamage (IntPtr pointer) : base(pointer) {}
@@ -10369,7 +10369,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CRemapFloat : NativeObject {
+    public partial class CRemapFloat : NativeObject {
         private const string ThisClassName = "CRemapFloat";
 
         public CRemapFloat (IntPtr pointer) : base(pointer) {}
@@ -10378,7 +10378,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CScriptUniformRandomStream : NativeObject {
+    public partial class CScriptUniformRandomStream : NativeObject {
         private const string ThisClassName = "CScriptUniformRandomStream";
 
         public CScriptUniformRandomStream (IntPtr pointer) : base(pointer) {}
@@ -10387,7 +10387,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CBreakableStageHelper : NativeObject {
+    public partial class CBreakableStageHelper : NativeObject {
         private const string ThisClassName = "CBreakableStageHelper";
 
         public CBreakableStageHelper (IntPtr pointer) : base(pointer) {}
@@ -10396,7 +10396,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CommandToolCommand_t : NativeObject {
+    public partial class CommandToolCommand_t : NativeObject {
         private const string ThisClassName = "CommandToolCommand_t";
 
         public CommandToolCommand_t (IntPtr pointer) : base(pointer) {}
@@ -10405,7 +10405,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPlayerPawnComponent : NativeObject {
+    public partial class CPlayerPawnComponent : NativeObject {
         private const string ThisClassName = "CPlayerPawnComponent";
 
         public CPlayerPawnComponent (IntPtr pointer) : base(pointer) {}
@@ -10414,7 +10414,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPlayerControllerComponent : NativeObject {
+    public partial class CPlayerControllerComponent : NativeObject {
         private const string ThisClassName = "CPlayerControllerComponent";
 
         public CPlayerControllerComponent (IntPtr pointer) : base(pointer) {}
@@ -10423,7 +10423,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class AmmoTypeInfo_t : NativeObject {
+    public partial class AmmoTypeInfo_t : NativeObject {
         private const string ThisClassName = "AmmoTypeInfo_t";
 
         public AmmoTypeInfo_t (IntPtr pointer) : base(pointer) {}
@@ -10432,7 +10432,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimGraphControllerBase : NativeObject {
+    public partial class CAnimGraphControllerBase : NativeObject {
         private const string ThisClassName = "CAnimGraphControllerBase";
 
         public CAnimGraphControllerBase (IntPtr pointer) : base(pointer) {}
@@ -10441,7 +10441,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ModelConfigHandle_t : NativeObject {
+    public partial class ModelConfigHandle_t : NativeObject {
         private const string ThisClassName = "ModelConfigHandle_t";
 
         public ModelConfigHandle_t (IntPtr pointer) : base(pointer) {}
@@ -10450,7 +10450,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CNetworkOriginCellCoordQuantizedVector : NativeObject {
+    public partial class CNetworkOriginCellCoordQuantizedVector : NativeObject {
         private const string ThisClassName = "CNetworkOriginCellCoordQuantizedVector";
 
         public CNetworkOriginCellCoordQuantizedVector (IntPtr pointer) : base(pointer) {}
@@ -10459,7 +10459,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CNetworkOriginQuantizedVector : NativeObject {
+    public partial class CNetworkOriginQuantizedVector : NativeObject {
         private const string ThisClassName = "CNetworkOriginQuantizedVector";
 
         public CNetworkOriginQuantizedVector (IntPtr pointer) : base(pointer) {}
@@ -10468,7 +10468,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CNetworkVelocityVector : NativeObject {
+    public partial class CNetworkVelocityVector : NativeObject {
         private const string ThisClassName = "CNetworkVelocityVector";
 
         public CNetworkVelocityVector (IntPtr pointer) : base(pointer) {}
@@ -10477,7 +10477,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CNetworkViewOffsetVector : NativeObject {
+    public partial class CNetworkViewOffsetVector : NativeObject {
         private const string ThisClassName = "CNetworkViewOffsetVector";
 
         public CNetworkViewOffsetVector (IntPtr pointer) : base(pointer) {}
@@ -10486,7 +10486,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class GameTime_t : NativeObject {
+    public partial class GameTime_t : NativeObject {
         private const string ThisClassName = "GameTime_t";
 
         public GameTime_t (IntPtr pointer) : base(pointer) {}
@@ -10495,7 +10495,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class GameTick_t : NativeObject {
+    public partial class GameTick_t : NativeObject {
         private const string ThisClassName = "GameTick_t";
 
         public GameTick_t (IntPtr pointer) : base(pointer) {}
@@ -10504,7 +10504,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class IChoreoServices : NativeObject {
+    public partial class IChoreoServices : NativeObject {
         private const string ThisClassName = "IChoreoServices";
 
         public IChoreoServices (IntPtr pointer) : base(pointer) {}
@@ -10513,7 +10513,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CInButtonState : NativeObject {
+    public partial class CInButtonState : NativeObject {
         private const string ThisClassName = "CInButtonState";
 
         public CInButtonState (IntPtr pointer) : base(pointer) {}
@@ -10522,7 +10522,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ISkeletonAnimationController : NativeObject {
+    public partial class ISkeletonAnimationController : NativeObject {
         private const string ThisClassName = "ISkeletonAnimationController";
 
         public ISkeletonAnimationController (IntPtr pointer) : base(pointer) {}
@@ -10531,7 +10531,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSkeletonAnimationController : ISkeletonAnimationController {
+    public partial class CSkeletonAnimationController : ISkeletonAnimationController {
         private const string ThisClassName = "CSkeletonAnimationController";
 
         public CSkeletonAnimationController (IntPtr pointer) : base(pointer) {}
@@ -10540,7 +10540,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFootstepTableHandle : NativeObject {
+    public partial class CFootstepTableHandle : NativeObject {
         private const string ThisClassName = "CFootstepTableHandle";
 
         public CFootstepTableHandle (IntPtr pointer) : base(pointer) {}
@@ -10549,7 +10549,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ResponseFollowup : NativeObject {
+    public partial class ResponseFollowup : NativeObject {
         private const string ThisClassName = "ResponseFollowup";
 
         public ResponseFollowup (IntPtr pointer) : base(pointer) {}
@@ -10558,7 +10558,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ResponseParams : NativeObject {
+    public partial class ResponseParams : NativeObject {
         private const string ThisClassName = "ResponseParams";
 
         public ResponseParams (IntPtr pointer) : base(pointer) {}
@@ -10567,7 +10567,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CResponseCriteriaSet : NativeObject {
+    public partial class CResponseCriteriaSet : NativeObject {
         private const string ThisClassName = "CResponseCriteriaSet";
 
         public CResponseCriteriaSet (IntPtr pointer) : base(pointer) {}
@@ -10576,7 +10576,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CRR_Response : NativeObject {
+    public partial class CRR_Response : NativeObject {
         private const string ThisClassName = "CRR_Response";
 
         public CRR_Response (IntPtr pointer) : base(pointer) {}
@@ -10585,7 +10585,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ConceptHistory_t : NativeObject {
+    public partial class ConceptHistory_t : NativeObject {
         private const string ThisClassName = "ConceptHistory_t";
 
         public ConceptHistory_t (IntPtr pointer) : base(pointer) {}
@@ -10594,7 +10594,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAI_Expresser : NativeObject {
+    public partial class CAI_Expresser : NativeObject {
         private const string ThisClassName = "CAI_Expresser";
 
         public CAI_Expresser (IntPtr pointer) : base(pointer) {}
@@ -10603,7 +10603,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CResponseQueue : NativeObject {
+    public partial class CResponseQueue : NativeObject {
         private const string ThisClassName = "CResponseQueue";
 
         public CResponseQueue (IntPtr pointer) : base(pointer) {}
@@ -10612,7 +10612,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CResponseQueue__CDeferredResponse : NativeObject {
+    public partial class CResponseQueue__CDeferredResponse : NativeObject {
         private const string ThisClassName = "CResponseQueue__CDeferredResponse";
 
         public CResponseQueue__CDeferredResponse (IntPtr pointer) : base(pointer) {}
@@ -10621,7 +10621,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAI_ExpresserWithFollowup : CAI_Expresser {
+    public partial class CAI_ExpresserWithFollowup : CAI_Expresser {
         private const string ThisClassName = "CAI_ExpresserWithFollowup";
 
         public CAI_ExpresserWithFollowup (IntPtr pointer) : base(pointer) {}
@@ -10630,7 +10630,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CMultiplayer_Expresser : CAI_ExpresserWithFollowup {
+    public partial class CMultiplayer_Expresser : CAI_ExpresserWithFollowup {
         private const string ThisClassName = "CMultiplayer_Expresser";
 
         public CMultiplayer_Expresser (IntPtr pointer) : base(pointer) {}
@@ -10639,7 +10639,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CCommentarySystem : NativeObject {
+    public partial class CCommentarySystem : NativeObject {
         private const string ThisClassName = "CCommentarySystem";
 
         public CCommentarySystem (IntPtr pointer) : base(pointer) {}
@@ -10648,7 +10648,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPhysicsShake : NativeObject {
+    public partial class CPhysicsShake : NativeObject {
         private const string ThisClassName = "CPhysicsShake";
 
         public CPhysicsShake (IntPtr pointer) : base(pointer) {}
@@ -10657,7 +10657,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CGameScriptedMoveData : NativeObject {
+    public partial class CGameScriptedMoveData : NativeObject {
         private const string ThisClassName = "CGameScriptedMoveData";
 
         public CGameScriptedMoveData (IntPtr pointer) : base(pointer) {}
@@ -10666,7 +10666,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CGameChoreoServices : IChoreoServices {
+    public partial class CGameChoreoServices : IChoreoServices {
         private const string ThisClassName = "CGameChoreoServices";
 
         public CGameChoreoServices (IntPtr pointer) : base(pointer) {}
@@ -10675,7 +10675,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class HullFlags_t : NativeObject {
+    public partial class HullFlags_t : NativeObject {
         private const string ThisClassName = "HullFlags_t";
 
         public HullFlags_t (IntPtr pointer) : base(pointer) {}
@@ -10684,7 +10684,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CConstantForceController : NativeObject {
+    public partial class CConstantForceController : NativeObject {
         private const string ThisClassName = "CConstantForceController";
 
         public CConstantForceController (IntPtr pointer) : base(pointer) {}
@@ -10693,7 +10693,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CMotorController : NativeObject {
+    public partial class CMotorController : NativeObject {
         private const string ThisClassName = "CMotorController";
 
         public CMotorController (IntPtr pointer) : base(pointer) {}
@@ -10702,7 +10702,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSoundEnvelope : NativeObject {
+    public partial class CSoundEnvelope : NativeObject {
         private const string ThisClassName = "CSoundEnvelope";
 
         public CSoundEnvelope (IntPtr pointer) : base(pointer) {}
@@ -10711,7 +10711,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CCopyRecipientFilter : NativeObject {
+    public partial class CCopyRecipientFilter : NativeObject {
         private const string ThisClassName = "CCopyRecipientFilter";
 
         public CCopyRecipientFilter (IntPtr pointer) : base(pointer) {}
@@ -10720,7 +10720,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSoundPatch : NativeObject {
+    public partial class CSoundPatch : NativeObject {
         private const string ThisClassName = "CSoundPatch";
 
         public CSoundPatch (IntPtr pointer) : base(pointer) {}
@@ -10729,7 +10729,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Value_FindEntByName : CPulseCell_BaseValue {
+    public partial class CPulseCell_Value_FindEntByName : CPulseCell_BaseValue {
         private const string ThisClassName = "CPulseCell_Value_FindEntByName";
 
         public CPulseCell_Value_FindEntByName (IntPtr pointer) : base(pointer) {}
@@ -10738,7 +10738,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Step_SetAnimGraphParam : CPulseCell_BaseFlow {
+    public partial class CPulseCell_Step_SetAnimGraphParam : CPulseCell_BaseFlow {
         private const string ThisClassName = "CPulseCell_Step_SetAnimGraphParam";
 
         public CPulseCell_Step_SetAnimGraphParam (IntPtr pointer) : base(pointer) {}
@@ -10747,7 +10747,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Step_EntFire : CPulseCell_BaseFlow {
+    public partial class CPulseCell_Step_EntFire : CPulseCell_BaseFlow {
         private const string ThisClassName = "CPulseCell_Step_EntFire";
 
         public CPulseCell_Step_EntFire (IntPtr pointer) : base(pointer) {}
@@ -10756,7 +10756,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Outflow_PlayVCD : CPulseCell_BaseFlow {
+    public partial class CPulseCell_Outflow_PlayVCD : CPulseCell_BaseFlow {
         private const string ThisClassName = "CPulseCell_Outflow_PlayVCD";
 
         public CPulseCell_Outflow_PlayVCD (IntPtr pointer) : base(pointer) {}
@@ -10765,7 +10765,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_Inflow_GameEvent : CPulseCell_Inflow_BaseEntrypoint {
+    public partial class CPulseCell_Inflow_GameEvent : CPulseCell_Inflow_BaseEntrypoint {
         private const string ThisClassName = "CPulseCell_Inflow_GameEvent";
 
         public CPulseCell_Inflow_GameEvent (IntPtr pointer) : base(pointer) {}
@@ -10774,7 +10774,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseServerFuncs : NativeObject {
+    public partial class CPulseServerFuncs : NativeObject {
         private const string ThisClassName = "CPulseServerFuncs";
 
         public CPulseServerFuncs (IntPtr pointer) : base(pointer) {}
@@ -10783,7 +10783,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseCell_SoundEventStart : CPulseCell_BaseFlow {
+    public partial class CPulseCell_SoundEventStart : CPulseCell_BaseFlow {
         private const string ThisClassName = "CPulseCell_SoundEventStart";
 
         public CPulseCell_SoundEventStart (IntPtr pointer) : base(pointer) {}
@@ -10792,7 +10792,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPulseServerFuncs_Sounds : NativeObject {
+    public partial class CPulseServerFuncs_Sounds : NativeObject {
         private const string ThisClassName = "CPulseServerFuncs_Sounds";
 
         public CPulseServerFuncs_Sounds (IntPtr pointer) : base(pointer) {}
@@ -10801,7 +10801,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class dynpitchvol_base_t : NativeObject {
+    public partial class dynpitchvol_base_t : NativeObject {
         private const string ThisClassName = "dynpitchvol_base_t";
 
         public dynpitchvol_base_t (IntPtr pointer) : base(pointer) {}
@@ -10810,7 +10810,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class dynpitchvol_t : dynpitchvol_base_t {
+    public partial class dynpitchvol_t : dynpitchvol_base_t {
         private const string ThisClassName = "dynpitchvol_t";
 
         public dynpitchvol_t (IntPtr pointer) : base(pointer) {}
@@ -10819,7 +10819,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ResponseContext_t : NativeObject {
+    public partial class ResponseContext_t : NativeObject {
         private const string ThisClassName = "ResponseContext_t";
 
         public ResponseContext_t (IntPtr pointer) : base(pointer) {}
@@ -10828,7 +10828,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class Relationship_t : NativeObject {
+    public partial class Relationship_t : NativeObject {
         private const string ThisClassName = "Relationship_t";
 
         public Relationship_t (IntPtr pointer) : base(pointer) {}
@@ -10837,7 +10837,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class locksound_t : NativeObject {
+    public partial class locksound_t : NativeObject {
         private const string ThisClassName = "locksound_t";
 
         public locksound_t (IntPtr pointer) : base(pointer) {}
@@ -10846,7 +10846,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class VelocitySampler : NativeObject {
+    public partial class VelocitySampler : NativeObject {
         private const string ThisClassName = "VelocitySampler";
 
         public VelocitySampler (IntPtr pointer) : base(pointer) {}
@@ -10855,7 +10855,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class SimpleConstraintSoundProfile : NativeObject {
+    public partial class SimpleConstraintSoundProfile : NativeObject {
         private const string ThisClassName = "SimpleConstraintSoundProfile";
 
         public SimpleConstraintSoundProfile (IntPtr pointer) : base(pointer) {}
@@ -10864,7 +10864,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ConstraintSoundInfo : NativeObject {
+    public partial class ConstraintSoundInfo : NativeObject {
         private const string ThisClassName = "ConstraintSoundInfo";
 
         public ConstraintSoundInfo (IntPtr pointer) : base(pointer) {}
@@ -10873,7 +10873,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSmoothFunc : NativeObject {
+    public partial class CSmoothFunc : NativeObject {
         private const string ThisClassName = "CSmoothFunc";
 
         public CSmoothFunc (IntPtr pointer) : base(pointer) {}
@@ -10882,7 +10882,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class magnetted_objects_t : NativeObject {
+    public partial class magnetted_objects_t : NativeObject {
         private const string ThisClassName = "magnetted_objects_t";
 
         public magnetted_objects_t (IntPtr pointer) : base(pointer) {}
@@ -10891,7 +10891,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSound : NativeObject {
+    public partial class CSound : NativeObject {
         private const string ThisClassName = "CSound";
 
         public CSound (IntPtr pointer) : base(pointer) {}
@@ -10900,7 +10900,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class lerpdata_t : NativeObject {
+    public partial class lerpdata_t : NativeObject {
         private const string ThisClassName = "lerpdata_t";
 
         public lerpdata_t (IntPtr pointer) : base(pointer) {}
@@ -10909,7 +10909,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CNavLinkAnimgraphVar : NativeObject {
+    public partial class CNavLinkAnimgraphVar : NativeObject {
         private const string ThisClassName = "CNavLinkAnimgraphVar";
 
         public CNavLinkAnimgraphVar (IntPtr pointer) : base(pointer) {}
@@ -10918,7 +10918,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CNavLinkMovementVData : NativeObject {
+    public partial class CNavLinkMovementVData : NativeObject {
         private const string ThisClassName = "CNavLinkMovementVData";
 
         public CNavLinkMovementVData (IntPtr pointer) : base(pointer) {}
@@ -10927,7 +10927,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CNavVolumeMarkupVolume : CNavVolume {
+    public partial class CNavVolumeMarkupVolume : CNavVolume {
         private const string ThisClassName = "CNavVolumeMarkupVolume";
 
         public CNavVolumeMarkupVolume (IntPtr pointer) : base(pointer) {}
@@ -10936,7 +10936,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CNavVolumeCalculatedVector : CNavVolume {
+    public partial class CNavVolumeCalculatedVector : CNavVolume {
         private const string ThisClassName = "CNavVolumeCalculatedVector";
 
         public CNavVolumeCalculatedVector (IntPtr pointer) : base(pointer) {}
@@ -10945,7 +10945,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CNavVolumeBreadthFirstSearch : CNavVolumeCalculatedVector {
+    public partial class CNavVolumeBreadthFirstSearch : CNavVolumeCalculatedVector {
         private const string ThisClassName = "CNavVolumeBreadthFirstSearch";
 
         public CNavVolumeBreadthFirstSearch (IntPtr pointer) : base(pointer) {}
@@ -10954,7 +10954,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CShatterGlassShard : NativeObject {
+    public partial class CShatterGlassShard : NativeObject {
         private const string ThisClassName = "CShatterGlassShard";
 
         public CShatterGlassShard (IntPtr pointer) : base(pointer) {}
@@ -10963,7 +10963,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CGameRules : NativeObject {
+    public partial class CGameRules : NativeObject {
         private const string ThisClassName = "CGameRules";
 
         public CGameRules (IntPtr pointer) : base(pointer) {}
@@ -10972,7 +10972,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class IVehicle : NativeObject {
+    public partial class IVehicle : NativeObject {
         private const string ThisClassName = "IVehicle";
 
         public IVehicle (IntPtr pointer) : base(pointer) {}
@@ -10981,7 +10981,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CMultiplayRules : CGameRules {
+    public partial class CMultiplayRules : CGameRules {
         private const string ThisClassName = "CMultiplayRules";
 
         public CMultiplayRules (IntPtr pointer) : base(pointer) {}
@@ -10990,7 +10990,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class IRagdoll : NativeObject {
+    public partial class IRagdoll : NativeObject {
         private const string ThisClassName = "IRagdoll";
 
         public IRagdoll (IntPtr pointer) : base(pointer) {}
@@ -10999,7 +10999,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ragdollelement_t : NativeObject {
+    public partial class ragdollelement_t : NativeObject {
         private const string ThisClassName = "ragdollelement_t";
 
         public ragdollelement_t (IntPtr pointer) : base(pointer) {}
@@ -11008,7 +11008,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ragdoll_t : NativeObject {
+    public partial class ragdoll_t : NativeObject {
         private const string ThisClassName = "ragdoll_t";
 
         public ragdoll_t (IntPtr pointer) : base(pointer) {}
@@ -11017,7 +11017,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSceneEventInfo : NativeObject {
+    public partial class CSceneEventInfo : NativeObject {
         private const string ThisClassName = "CSceneEventInfo";
 
         public CSceneEventInfo (IntPtr pointer) : base(pointer) {}
@@ -11026,7 +11026,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class ParticleIndex_t : NativeObject {
+    public partial class ParticleIndex_t : NativeObject {
         private const string ThisClassName = "ParticleIndex_t";
 
         public ParticleIndex_t (IntPtr pointer) : base(pointer) {}
@@ -11035,7 +11035,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class AmmoIndex_t : NativeObject {
+    public partial class AmmoIndex_t : NativeObject {
         private const string ThisClassName = "AmmoIndex_t";
 
         public AmmoIndex_t (IntPtr pointer) : base(pointer) {}
@@ -11044,7 +11044,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CEntitySubclassVDataBase : NativeObject {
+    public partial class CEntitySubclassVDataBase : NativeObject {
         private const string ThisClassName = "CEntitySubclassVDataBase";
 
         public CEntitySubclassVDataBase (IntPtr pointer) : base(pointer) {}
@@ -11053,7 +11053,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class thinkfunc_t : NativeObject {
+    public partial class thinkfunc_t : NativeObject {
         private const string ThisClassName = "thinkfunc_t";
 
         public thinkfunc_t (IntPtr pointer) : base(pointer) {}
@@ -11062,7 +11062,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class RagdollCreationParams_t : NativeObject {
+    public partial class RagdollCreationParams_t : NativeObject {
         private const string ThisClassName = "RagdollCreationParams_t";
 
         public RagdollCreationParams_t (IntPtr pointer) : base(pointer) {}
@@ -11071,7 +11071,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class hudtextparms_t : NativeObject {
+    public partial class hudtextparms_t : NativeObject {
         private const string ThisClassName = "hudtextparms_t";
 
         public hudtextparms_t (IntPtr pointer) : base(pointer) {}
@@ -11080,7 +11080,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSimpleSimTimer : NativeObject {
+    public partial class CSimpleSimTimer : NativeObject {
         private const string ThisClassName = "CSimpleSimTimer";
 
         public CSimpleSimTimer (IntPtr pointer) : base(pointer) {}
@@ -11089,7 +11089,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSimTimer : CSimpleSimTimer {
+    public partial class CSimTimer : CSimpleSimTimer {
         private const string ThisClassName = "CSimTimer";
 
         public CSimTimer (IntPtr pointer) : base(pointer) {}
@@ -11098,7 +11098,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CRandSimTimer : CSimpleSimTimer {
+    public partial class CRandSimTimer : CSimpleSimTimer {
         private const string ThisClassName = "CRandSimTimer";
 
         public CRandSimTimer (IntPtr pointer) : base(pointer) {}
@@ -11107,7 +11107,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CStopwatchBase : CSimpleSimTimer {
+    public partial class CStopwatchBase : CSimpleSimTimer {
         private const string ThisClassName = "CStopwatchBase";
 
         public CStopwatchBase (IntPtr pointer) : base(pointer) {}
@@ -11116,7 +11116,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSimpleStopwatch : CStopwatchBase {
+    public partial class CSimpleStopwatch : CStopwatchBase {
         private const string ThisClassName = "CSimpleStopwatch";
 
         public CSimpleStopwatch (IntPtr pointer) : base(pointer) {}
@@ -11125,7 +11125,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CStopwatch : CStopwatchBase {
+    public partial class CStopwatch : CStopwatchBase {
         private const string ThisClassName = "CStopwatch";
 
         public CStopwatch (IntPtr pointer) : base(pointer) {}
@@ -11134,7 +11134,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CRandStopwatch : CStopwatchBase {
+    public partial class CRandStopwatch : CStopwatchBase {
         private const string ThisClassName = "CRandStopwatch";
 
         public CRandStopwatch (IntPtr pointer) : base(pointer) {}
@@ -11143,7 +11143,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSingleplayRules : CGameRules {
+    public partial class CSingleplayRules : CGameRules {
         private const string ThisClassName = "CSingleplayRules";
 
         public CSingleplayRules (IntPtr pointer) : base(pointer) {}
@@ -11152,7 +11152,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CTakeDamageInfo : NativeObject {
+    public partial class CTakeDamageInfo : NativeObject {
         private const string ThisClassName = "CTakeDamageInfo";
 
         public CTakeDamageInfo (IntPtr pointer) : base(pointer) {}
@@ -11161,7 +11161,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CTakeDamageResult : NativeObject {
+    public partial class CTakeDamageResult : NativeObject {
         private const string ThisClassName = "CTakeDamageResult";
 
         public CTakeDamageResult (IntPtr pointer) : base(pointer) {}
@@ -11170,7 +11170,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class SummaryTakeDamageInfo_t : NativeObject {
+    public partial class SummaryTakeDamageInfo_t : NativeObject {
         private const string ThisClassName = "SummaryTakeDamageInfo_t";
 
         public SummaryTakeDamageInfo_t (IntPtr pointer) : base(pointer) {}
@@ -11179,7 +11179,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CTakeDamageSummaryScopeGuard : NativeObject {
+    public partial class CTakeDamageSummaryScopeGuard : NativeObject {
         private const string ThisClassName = "CTakeDamageSummaryScopeGuard";
 
         public CTakeDamageSummaryScopeGuard (IntPtr pointer) : base(pointer) {}
@@ -11188,7 +11188,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CTeamplayRules : CMultiplayRules {
+    public partial class CTeamplayRules : CMultiplayRules {
         private const string ThisClassName = "CTeamplayRules";
 
         public CTeamplayRules (IntPtr pointer) : base(pointer) {}
@@ -11197,7 +11197,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class IEconItemInterface : NativeObject {
+    public partial class IEconItemInterface : NativeObject {
         private const string ThisClassName = "IEconItemInterface";
 
         public IEconItemInterface (IntPtr pointer) : base(pointer) {}
@@ -11206,7 +11206,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class IHasAttributes : NativeObject {
+    public partial class IHasAttributes : NativeObject {
         private const string ThisClassName = "IHasAttributes";
 
         public IHasAttributes (IntPtr pointer) : base(pointer) {}
@@ -11215,7 +11215,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class GameAmmoTypeInfo_t : AmmoTypeInfo_t {
+    public partial class GameAmmoTypeInfo_t : AmmoTypeInfo_t {
         private const string ThisClassName = "GameAmmoTypeInfo_t";
 
         public GameAmmoTypeInfo_t (IntPtr pointer) : base(pointer) {}
@@ -11224,7 +11224,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class QuestProgress : NativeObject {
+    public partial class QuestProgress : NativeObject {
         private const string ThisClassName = "QuestProgress";
 
         public QuestProgress (IntPtr pointer) : base(pointer) {}
@@ -11233,7 +11233,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CCSGOPlayerAnimGraphState : NativeObject {
+    public partial class CCSGOPlayerAnimGraphState : NativeObject {
         private const string ThisClassName = "CCSGOPlayerAnimGraphState";
 
         public CCSGOPlayerAnimGraphState (IntPtr pointer) : base(pointer) {}
@@ -11242,7 +11242,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSAdditionalPerRoundStats_t : NativeObject {
+    public partial class CSAdditionalPerRoundStats_t : NativeObject {
         private const string ThisClassName = "CSAdditionalPerRoundStats_t";
 
         public CSAdditionalPerRoundStats_t (IntPtr pointer) : base(pointer) {}
@@ -11251,7 +11251,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CSAdditionalMatchStats_t : CSAdditionalPerRoundStats_t {
+    public partial class CSAdditionalMatchStats_t : CSAdditionalPerRoundStats_t {
         private const string ThisClassName = "CSAdditionalMatchStats_t";
 
         public CSAdditionalMatchStats_t (IntPtr pointer) : base(pointer) {}
@@ -11260,7 +11260,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFiringModeFloat : NativeObject {
+    public partial class CFiringModeFloat : NativeObject {
         private const string ThisClassName = "CFiringModeFloat";
 
         public CFiringModeFloat (IntPtr pointer) : base(pointer) {}
@@ -11269,7 +11269,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFiringModeInt : NativeObject {
+    public partial class CFiringModeInt : NativeObject {
         private const string ThisClassName = "CFiringModeInt";
 
         public CFiringModeInt (IntPtr pointer) : base(pointer) {}
@@ -11278,7 +11278,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CIronSightController : NativeObject {
+    public partial class CIronSightController : NativeObject {
         private const string ThisClassName = "CIronSightController";
 
         public CIronSightController (IntPtr pointer) : base(pointer) {}
@@ -11287,7 +11287,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CHintMessage : NativeObject {
+    public partial class CHintMessage : NativeObject {
         private const string ThisClassName = "CHintMessage";
 
         public CHintMessage (IntPtr pointer) : base(pointer) {}
@@ -11296,7 +11296,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CHintMessageQueue : NativeObject {
+    public partial class CHintMessageQueue : NativeObject {
         private const string ThisClassName = "CHintMessageQueue";
 
         public CHintMessageQueue (IntPtr pointer) : base(pointer) {}
@@ -11305,7 +11305,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CBaseIssue : NativeObject {
+    public partial class CBaseIssue : NativeObject {
         private const string ThisClassName = "CBaseIssue";
 
         public CBaseIssue (IntPtr pointer) : base(pointer) {}
@@ -11314,7 +11314,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CCSPulseServerFuncs_Globals : NativeObject {
+    public partial class CCSPulseServerFuncs_Globals : NativeObject {
         private const string ThisClassName = "CCSPulseServerFuncs_Globals";
 
         public CCSPulseServerFuncs_Globals (IntPtr pointer) : base(pointer) {}
@@ -11323,7 +11323,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CBtNode : NativeObject {
+    public partial class CBtNode : NativeObject {
         private const string ThisClassName = "CBtNode";
 
         public CBtNode (IntPtr pointer) : base(pointer) {}
@@ -11332,7 +11332,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CBtNodeDecorator : CBtNode {
+    public partial class CBtNodeDecorator : CBtNode {
         private const string ThisClassName = "CBtNodeDecorator";
 
         public CBtNodeDecorator (IntPtr pointer) : base(pointer) {}
@@ -11341,7 +11341,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CBtNodeComposite : CBtNode {
+    public partial class CBtNodeComposite : CBtNode {
         private const string ThisClassName = "CBtNodeComposite";
 
         public CBtNodeComposite (IntPtr pointer) : base(pointer) {}
@@ -11350,7 +11350,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class RelationshipOverride_t : Relationship_t {
+    public partial class RelationshipOverride_t : Relationship_t {
         private const string ThisClassName = "RelationshipOverride_t";
 
         public RelationshipOverride_t (IntPtr pointer) : base(pointer) {}
@@ -11359,7 +11359,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_CommandContext : NativeObject {
+    public partial class C_CommandContext : NativeObject {
         private const string ThisClassName = "C_CommandContext";
 
         public C_CommandContext (IntPtr pointer) : base(pointer) {}
@@ -11368,7 +11368,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFlashlightEffect : NativeObject {
+    public partial class CFlashlightEffect : NativeObject {
         private const string ThisClassName = "CFlashlightEffect";
 
         public CFlashlightEffect (IntPtr pointer) : base(pointer) {}
@@ -11377,7 +11377,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CInterpolatedValue : NativeObject {
+    public partial class CInterpolatedValue : NativeObject {
         private const string ThisClassName = "CInterpolatedValue";
 
         public CInterpolatedValue (IntPtr pointer) : base(pointer) {}
@@ -11386,7 +11386,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CGlowSprite : NativeObject {
+    public partial class CGlowSprite : NativeObject {
         private const string ThisClassName = "CGlowSprite";
 
         public CGlowSprite (IntPtr pointer) : base(pointer) {}
@@ -11395,7 +11395,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CGlowOverlay : NativeObject {
+    public partial class CGlowOverlay : NativeObject {
         private const string ThisClassName = "CGlowOverlay";
 
         public CGlowOverlay (IntPtr pointer) : base(pointer) {}
@@ -11404,7 +11404,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class IClientAlphaProperty : NativeObject {
+    public partial class IClientAlphaProperty : NativeObject {
         private const string ThisClassName = "IClientAlphaProperty";
 
         public IClientAlphaProperty (IntPtr pointer) : base(pointer) {}
@@ -11413,7 +11413,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class TimedEvent : NativeObject {
+    public partial class TimedEvent : NativeObject {
         private const string ThisClassName = "TimedEvent";
 
         public TimedEvent (IntPtr pointer) : base(pointer) {}
@@ -11422,7 +11422,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CDecalInfo : NativeObject {
+    public partial class CDecalInfo : NativeObject {
         private const string ThisClassName = "CDecalInfo";
 
         public CDecalInfo (IntPtr pointer) : base(pointer) {}
@@ -11431,7 +11431,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_GameRules : NativeObject {
+    public partial class C_GameRules : NativeObject {
         private const string ThisClassName = "C_GameRules";
 
         public C_GameRules (IntPtr pointer) : base(pointer) {}
@@ -11440,7 +11440,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_MultiplayRules : C_GameRules {
+    public partial class C_MultiplayRules : C_GameRules {
         private const string ThisClassName = "C_MultiplayRules";
 
         public C_MultiplayRules (IntPtr pointer) : base(pointer) {}
@@ -11449,7 +11449,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_SingleplayRules : C_GameRules {
+    public partial class C_SingleplayRules : C_GameRules {
         private const string ThisClassName = "C_SingleplayRules";
 
         public C_SingleplayRules (IntPtr pointer) : base(pointer) {}
@@ -11458,7 +11458,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_TeamplayRules : C_MultiplayRules {
+    public partial class C_TeamplayRules : C_MultiplayRules {
         private const string ThisClassName = "C_TeamplayRules";
 
         public C_TeamplayRules (IntPtr pointer) : base(pointer) {}
@@ -11467,7 +11467,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CComicBook : NativeObject {
+    public partial class CComicBook : NativeObject {
         private const string ThisClassName = "CComicBook";
 
         public CComicBook (IntPtr pointer) : base(pointer) {}
@@ -11476,7 +11476,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_IronSightController : NativeObject {
+    public partial class C_IronSightController : NativeObject {
         private const string ThisClassName = "C_IronSightController";
 
         public C_IronSightController (IntPtr pointer) : base(pointer) {}
@@ -11485,7 +11485,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CompositeMaterialMatchFilter_t : NativeObject {
+    public partial class CompositeMaterialMatchFilter_t : NativeObject {
         private const string ThisClassName = "CompositeMaterialMatchFilter_t";
 
         public CompositeMaterialMatchFilter_t (IntPtr pointer) : base(pointer) {}
@@ -11494,7 +11494,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CompositeMaterialInputLooseVariable_t : NativeObject {
+    public partial class CompositeMaterialInputLooseVariable_t : NativeObject {
         private const string ThisClassName = "CompositeMaterialInputLooseVariable_t";
 
         public CompositeMaterialInputLooseVariable_t (IntPtr pointer) : base(pointer) {}
@@ -11503,7 +11503,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CompMatMutatorCondition_t : NativeObject {
+    public partial class CompMatMutatorCondition_t : NativeObject {
         private const string ThisClassName = "CompMatMutatorCondition_t";
 
         public CompMatMutatorCondition_t (IntPtr pointer) : base(pointer) {}
@@ -11512,7 +11512,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CompMatPropertyMutator_t : NativeObject {
+    public partial class CompMatPropertyMutator_t : NativeObject {
         private const string ThisClassName = "CompMatPropertyMutator_t";
 
         public CompMatPropertyMutator_t (IntPtr pointer) : base(pointer) {}
@@ -11521,7 +11521,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CompositeMaterialInputContainer_t : NativeObject {
+    public partial class CompositeMaterialInputContainer_t : NativeObject {
         private const string ThisClassName = "CompositeMaterialInputContainer_t";
 
         public CompositeMaterialInputContainer_t (IntPtr pointer) : base(pointer) {}
@@ -11530,7 +11530,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CompositeMaterialAssemblyProcedure_t : NativeObject {
+    public partial class CompositeMaterialAssemblyProcedure_t : NativeObject {
         private const string ThisClassName = "CompositeMaterialAssemblyProcedure_t";
 
         public CompositeMaterialAssemblyProcedure_t (IntPtr pointer) : base(pointer) {}
@@ -11539,7 +11539,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class GeneratedTextureHandle_t : NativeObject {
+    public partial class GeneratedTextureHandle_t : NativeObject {
         private const string ThisClassName = "GeneratedTextureHandle_t";
 
         public GeneratedTextureHandle_t (IntPtr pointer) : base(pointer) {}
@@ -11548,7 +11548,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CompositeMaterial_t : NativeObject {
+    public partial class CompositeMaterial_t : NativeObject {
         private const string ThisClassName = "CompositeMaterial_t";
 
         public CompositeMaterial_t (IntPtr pointer) : base(pointer) {}
@@ -11557,7 +11557,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CompositeMaterialEditorPoint_t : NativeObject {
+    public partial class CompositeMaterialEditorPoint_t : NativeObject {
         private const string ThisClassName = "CompositeMaterialEditorPoint_t";
 
         public CompositeMaterialEditorPoint_t (IntPtr pointer) : base(pointer) {}
@@ -11566,7 +11566,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CCompositeMaterialEditorDoc : NativeObject {
+    public partial class CCompositeMaterialEditorDoc : NativeObject {
         private const string ThisClassName = "CCompositeMaterialEditorDoc";
 
         public CCompositeMaterialEditorDoc (IntPtr pointer) : base(pointer) {}
@@ -11575,7 +11575,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CGlobalLightBase : NativeObject {
+    public partial class CGlobalLightBase : NativeObject {
         private const string ThisClassName = "CGlobalLightBase";
 
         public CGlobalLightBase (IntPtr pointer) : base(pointer) {}
@@ -11584,7 +11584,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CPlayerSprayDecalRenderHelper : NativeObject {
+    public partial class CPlayerSprayDecalRenderHelper : NativeObject {
         private const string ThisClassName = "CPlayerSprayDecalRenderHelper";
 
         public CPlayerSprayDecalRenderHelper (IntPtr pointer) : base(pointer) {}
@@ -11593,7 +11593,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_LightGlowOverlay : CGlowOverlay {
+    public partial class C_LightGlowOverlay : CGlowOverlay {
         private const string ThisClassName = "C_LightGlowOverlay";
 
         public C_LightGlowOverlay (IntPtr pointer) : base(pointer) {}
@@ -11602,7 +11602,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CFireOverlay : CGlowOverlay {
+    public partial class CFireOverlay : CGlowOverlay {
         private const string ThisClassName = "CFireOverlay";
 
         public CFireOverlay (IntPtr pointer) : base(pointer) {}
@@ -11611,7 +11611,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class C_SunGlowOverlay : CGlowOverlay {
+    public partial class C_SunGlowOverlay : CGlowOverlay {
         private const string ThisClassName = "C_SunGlowOverlay";
 
         public C_SunGlowOverlay (IntPtr pointer) : base(pointer) {}
@@ -11620,7 +11620,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CClientAlphaProperty : IClientAlphaProperty {
+    public partial class CClientAlphaProperty : IClientAlphaProperty {
         private const string ThisClassName = "CClientAlphaProperty";
 
         public CClientAlphaProperty (IntPtr pointer) : base(pointer) {}
@@ -11629,7 +11629,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class CAnimScriptBase : NativeObject {
+    public partial class CAnimScriptBase : NativeObject {
         private const string ThisClassName = "CAnimScriptBase";
 
         public CAnimScriptBase (IntPtr pointer) : base(pointer) {}
@@ -11638,7 +11638,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // !GlobalTypes
-    public class EmptyTestScript : CAnimScriptBase {
+    public partial class EmptyTestScript : CAnimScriptBase {
         private const string ThisClassName = "EmptyTestScript";
 
         public EmptyTestScript (IntPtr pointer) : base(pointer) {}
@@ -11647,7 +11647,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // engine2.dll
-    public class CEntityComponent : NativeObject {
+    public partial class CEntityComponent : NativeObject {
         private const string ThisClassName = "CEntityComponent";
 
         public CEntityComponent (IntPtr pointer) : base(pointer) {}
@@ -11656,7 +11656,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // engine2.dll
-    public class CEntityIdentity : NativeObject {
+    public partial class CEntityIdentity : NativeObject {
         private const string ThisClassName = "CEntityIdentity";
 
         public CEntityIdentity (IntPtr pointer) : base(pointer) {}
@@ -11670,7 +11670,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // engine2.dll
-    public class CEntityInstance : NativeObject {
+    public partial class CEntityInstance : NativeObject {
         private const string ThisClassName = "CEntityInstance";
 
         public CEntityInstance (IntPtr pointer) : base(pointer) {}
@@ -11679,7 +11679,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // engine2.dll
-    public class CScriptComponent : CEntityComponent {
+    public partial class CScriptComponent : CEntityComponent {
         private const string ThisClassName = "CScriptComponent";
 
         public CScriptComponent (IntPtr pointer) : base(pointer) {}
@@ -11688,7 +11688,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // particles.dll
-    public class CParticleBindingRealPulse : CParticleCollectionBindingInstance {
+    public partial class CParticleBindingRealPulse : CParticleCollectionBindingInstance {
         private const string ThisClassName = "CParticleBindingRealPulse";
 
         public CParticleBindingRealPulse (IntPtr pointer) : base(pointer) {}
@@ -11697,7 +11697,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBodyComponent : CEntityComponent {
+    public partial class CBodyComponent : CEntityComponent {
         private const string ThisClassName = "CBodyComponent";
 
         public CBodyComponent (IntPtr pointer) : base(pointer) {}
@@ -11706,7 +11706,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBodyComponentPoint : CBodyComponent {
+    public partial class CBodyComponentPoint : CBodyComponent {
         private const string ThisClassName = "CBodyComponentPoint";
 
         public CBodyComponentPoint (IntPtr pointer) : base(pointer) {}
@@ -11720,7 +11720,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBodyComponentSkeletonInstance : CBodyComponent {
+    public partial class CBodyComponentSkeletonInstance : CBodyComponent {
         private const string ThisClassName = "CBodyComponentSkeletonInstance";
 
         public CBodyComponentSkeletonInstance (IntPtr pointer) : base(pointer) {}
@@ -11734,7 +11734,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CHitboxComponent : CEntityComponent {
+    public partial class CHitboxComponent : CEntityComponent {
         private const string ThisClassName = "CHitboxComponent";
 
         public CHitboxComponent (IntPtr pointer) : base(pointer) {}
@@ -11748,7 +11748,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CLightComponent : CEntityComponent {
+    public partial class CLightComponent : CEntityComponent {
         private const string ThisClassName = "CLightComponent";
 
         public CLightComponent (IntPtr pointer) : base(pointer) {}
@@ -12104,7 +12104,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CRenderComponent : CEntityComponent {
+    public partial class CRenderComponent : CEntityComponent {
         private const string ThisClassName = "CRenderComponent";
 
         public CRenderComponent (IntPtr pointer) : base(pointer) {}
@@ -12113,7 +12113,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBuoyancyHelper : NativeObject {
+    public partial class CBuoyancyHelper : NativeObject {
         private const string ThisClassName = "CBuoyancyHelper";
 
         public CBuoyancyHelper (IntPtr pointer) : base(pointer) {}
@@ -12122,7 +12122,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class ViewAngleServerChange_t : NativeObject {
+    public partial class ViewAngleServerChange_t : NativeObject {
         private const string ThisClassName = "ViewAngleServerChange_t";
 
         public ViewAngleServerChange_t (IntPtr pointer) : base(pointer) {}
@@ -12142,7 +12142,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPlayer_AutoaimServices : CPlayerPawnComponent {
+    public partial class CPlayer_AutoaimServices : CPlayerPawnComponent {
         private const string ThisClassName = "CPlayer_AutoaimServices";
 
         public CPlayer_AutoaimServices (IntPtr pointer) : base(pointer) {}
@@ -12151,7 +12151,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class audioparams_t : NativeObject {
+    public partial class audioparams_t : NativeObject {
         private const string ThisClassName = "audioparams_t";
 
         public audioparams_t (IntPtr pointer) : base(pointer) {}
@@ -12189,7 +12189,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPlayer_CameraServices : CPlayerPawnComponent {
+    public partial class CPlayer_CameraServices : CPlayerPawnComponent {
         private const string ThisClassName = "CPlayer_CameraServices";
 
         public CPlayer_CameraServices (IntPtr pointer) : base(pointer) {}
@@ -12245,7 +12245,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPlayer_FlashlightServices : CPlayerPawnComponent {
+    public partial class CPlayer_FlashlightServices : CPlayerPawnComponent {
         private const string ThisClassName = "CPlayer_FlashlightServices";
 
         public CPlayer_FlashlightServices (IntPtr pointer) : base(pointer) {}
@@ -12254,7 +12254,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPlayer_ItemServices : CPlayerPawnComponent {
+    public partial class CPlayer_ItemServices : CPlayerPawnComponent {
         private const string ThisClassName = "CPlayer_ItemServices";
 
         public CPlayer_ItemServices (IntPtr pointer) : base(pointer) {}
@@ -12263,7 +12263,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPlayer_MovementServices : CPlayerPawnComponent {
+    public partial class CPlayer_MovementServices : CPlayerPawnComponent {
         private const string ThisClassName = "CPlayer_MovementServices";
 
         public CPlayer_MovementServices (IntPtr pointer) : base(pointer) {}
@@ -12283,7 +12283,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPlayer_MovementServices_Humanoid : CPlayer_MovementServices {
+    public partial class CPlayer_MovementServices_Humanoid : CPlayer_MovementServices {
         private const string ThisClassName = "CPlayer_MovementServices_Humanoid";
 
         public CPlayer_MovementServices_Humanoid (IntPtr pointer) : base(pointer) {}
@@ -12333,7 +12333,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPlayer_ObserverServices : CPlayerPawnComponent {
+    public partial class CPlayer_ObserverServices : CPlayerPawnComponent {
         private const string ThisClassName = "CPlayer_ObserverServices";
 
         public CPlayer_ObserverServices (IntPtr pointer) : base(pointer) {}
@@ -12353,7 +12353,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPlayer_UseServices : CPlayerPawnComponent {
+    public partial class CPlayer_UseServices : CPlayerPawnComponent {
         private const string ThisClassName = "CPlayer_UseServices";
 
         public CPlayer_UseServices (IntPtr pointer) : base(pointer) {}
@@ -12362,7 +12362,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPlayer_WaterServices : CPlayerPawnComponent {
+    public partial class CPlayer_WaterServices : CPlayerPawnComponent {
         private const string ThisClassName = "CPlayer_WaterServices";
 
         public CPlayer_WaterServices (IntPtr pointer) : base(pointer) {}
@@ -12371,7 +12371,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPlayer_WeaponServices : CPlayerPawnComponent {
+    public partial class CPlayer_WeaponServices : CPlayerPawnComponent {
         private const string ThisClassName = "CPlayer_WeaponServices";
 
         public CPlayer_WeaponServices (IntPtr pointer) : base(pointer) {}
@@ -12397,7 +12397,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBodyComponentBaseAnimGraph : CBodyComponentSkeletonInstance {
+    public partial class CBodyComponentBaseAnimGraph : CBodyComponentSkeletonInstance {
         private const string ThisClassName = "CBodyComponentBaseAnimGraph";
 
         public CBodyComponentBaseAnimGraph (IntPtr pointer) : base(pointer) {}
@@ -12411,7 +12411,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class EntityRenderAttribute_t : NativeObject {
+    public partial class EntityRenderAttribute_t : NativeObject {
         private const string ThisClassName = "EntityRenderAttribute_t";
 
         public EntityRenderAttribute_t (IntPtr pointer) : base(pointer) {}
@@ -12420,7 +12420,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class ActiveModelConfig_t : NativeObject {
+    public partial class ActiveModelConfig_t : NativeObject {
         private const string ThisClassName = "ActiveModelConfig_t";
 
         public ActiveModelConfig_t (IntPtr pointer) : base(pointer) {}
@@ -12440,7 +12440,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBodyComponentBaseModelEntity : CBodyComponentSkeletonInstance {
+    public partial class CBodyComponentBaseModelEntity : CBodyComponentSkeletonInstance {
         private const string ThisClassName = "CBodyComponentBaseModelEntity";
 
         public CBodyComponentBaseModelEntity (IntPtr pointer) : base(pointer) {}
@@ -12449,7 +12449,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CGameSceneNodeHandle : NativeObject {
+    public partial class CGameSceneNodeHandle : NativeObject {
         private const string ThisClassName = "CGameSceneNodeHandle";
 
         public CGameSceneNodeHandle (IntPtr pointer) : base(pointer) {}
@@ -12458,7 +12458,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CGameSceneNode : NativeObject {
+    public partial class CGameSceneNode : NativeObject {
         private const string ThisClassName = "CGameSceneNode";
 
         public CGameSceneNode (IntPtr pointer) : base(pointer) {}
@@ -12484,7 +12484,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CNetworkedSequenceOperation : NativeObject {
+    public partial class CNetworkedSequenceOperation : NativeObject {
         private const string ThisClassName = "CNetworkedSequenceOperation";
 
         public CNetworkedSequenceOperation (IntPtr pointer) : base(pointer) {}
@@ -12510,7 +12510,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CModelState : NativeObject {
+    public partial class CModelState : NativeObject {
         private const string ThisClassName = "CModelState";
 
         public CModelState (IntPtr pointer) : base(pointer) {}
@@ -12524,7 +12524,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSkeletonInstance : CGameSceneNode {
+    public partial class CSkeletonInstance : CGameSceneNode {
         private const string ThisClassName = "CSkeletonInstance";
 
         public CSkeletonInstance (IntPtr pointer) : base(pointer) {}
@@ -12556,7 +12556,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class IntervalTimer : NativeObject {
+    public partial class IntervalTimer : NativeObject {
         private const string ThisClassName = "IntervalTimer";
 
         public IntervalTimer (IntPtr pointer) : base(pointer) {}
@@ -12570,7 +12570,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CountdownTimer : NativeObject {
+    public partial class CountdownTimer : NativeObject {
         private const string ThisClassName = "CountdownTimer";
 
         public CountdownTimer (IntPtr pointer) : base(pointer) {}
@@ -12596,7 +12596,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class EngineCountdownTimer : NativeObject {
+    public partial class EngineCountdownTimer : NativeObject {
         private const string ThisClassName = "EngineCountdownTimer";
 
         public EngineCountdownTimer (IntPtr pointer) : base(pointer) {}
@@ -12622,7 +12622,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTimeline : IntervalTimer {
+    public partial class CTimeline : IntervalTimer {
         private const string ThisClassName = "CTimeline";
 
         public CTimeline (IntPtr pointer) : base(pointer) {}
@@ -12672,7 +12672,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CAnimGraphNetworkedVariables : NativeObject {
+    public partial class CAnimGraphNetworkedVariables : NativeObject {
         private const string ThisClassName = "CAnimGraphNetworkedVariables";
 
         public CAnimGraphNetworkedVariables (IntPtr pointer) : base(pointer) {}
@@ -12776,7 +12776,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPulseGraphInstance_ServerPointEntity : CBasePulseGraphInstance {
+    public partial class CPulseGraphInstance_ServerPointEntity : CBasePulseGraphInstance {
         private const string ThisClassName = "CPulseGraphInstance_ServerPointEntity";
 
         public CPulseGraphInstance_ServerPointEntity (IntPtr pointer) : base(pointer) {}
@@ -12785,7 +12785,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTouchExpansionComponent : CEntityComponent {
+    public partial class CTouchExpansionComponent : CEntityComponent {
         private const string ThisClassName = "CTouchExpansionComponent";
 
         public CTouchExpansionComponent (IntPtr pointer) : base(pointer) {}
@@ -12794,7 +12794,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBaseEntity : CEntityInstance {
+    public partial class CBaseEntity : CEntityInstance {
         private const string ThisClassName = "CBaseEntity";
 
         public CBaseEntity (IntPtr pointer) : base(pointer) {}
@@ -12982,7 +12982,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CServerOnlyEntity : CBaseEntity {
+    public partial class CServerOnlyEntity : CBaseEntity {
         private const string ThisClassName = "CServerOnlyEntity";
 
         public CServerOnlyEntity (IntPtr pointer) : base(pointer) {}
@@ -12991,7 +12991,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CServerOnlyPointEntity : CServerOnlyEntity {
+    public partial class CServerOnlyPointEntity : CServerOnlyEntity {
         private const string ThisClassName = "CServerOnlyPointEntity";
 
         public CServerOnlyPointEntity (IntPtr pointer) : base(pointer) {}
@@ -13000,7 +13000,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CLogicalEntity : CServerOnlyEntity {
+    public partial class CLogicalEntity : CServerOnlyEntity {
         private const string ThisClassName = "CLogicalEntity";
 
         public CLogicalEntity (IntPtr pointer) : base(pointer) {}
@@ -13009,7 +13009,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CColorCorrection : CBaseEntity {
+    public partial class CColorCorrection : CBaseEntity {
         private const string ThisClassName = "CColorCorrection";
 
         public CColorCorrection (IntPtr pointer) : base(pointer) {}
@@ -13083,7 +13083,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEntityFlame : CBaseEntity {
+    public partial class CEntityFlame : CBaseEntity {
         private const string ThisClassName = "CEntityFlame";
 
         public CEntityFlame (IntPtr pointer) : base(pointer) {}
@@ -13103,7 +13103,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBaseFilter : CLogicalEntity {
+    public partial class CBaseFilter : CLogicalEntity {
         private const string ThisClassName = "CBaseFilter";
 
         public CBaseFilter (IntPtr pointer) : base(pointer) {}
@@ -13112,7 +13112,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFilterMultiple : CBaseFilter {
+    public partial class CFilterMultiple : CBaseFilter {
         private const string ThisClassName = "CFilterMultiple";
 
         public CFilterMultiple (IntPtr pointer) : base(pointer) {}
@@ -13121,7 +13121,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFilterProximity : CBaseFilter {
+    public partial class CFilterProximity : CBaseFilter {
         private const string ThisClassName = "CFilterProximity";
 
         public CFilterProximity (IntPtr pointer) : base(pointer) {}
@@ -13130,7 +13130,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFilterLOS : CBaseFilter {
+    public partial class CFilterLOS : CBaseFilter {
         private const string ThisClassName = "CFilterLOS";
 
         public CFilterLOS (IntPtr pointer) : base(pointer) {}
@@ -13139,7 +13139,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFilterClass : CBaseFilter {
+    public partial class CFilterClass : CBaseFilter {
         private const string ThisClassName = "CFilterClass";
 
         public CFilterClass (IntPtr pointer) : base(pointer) {}
@@ -13148,7 +13148,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBaseFire : CBaseEntity {
+    public partial class CBaseFire : CBaseEntity {
         private const string ThisClassName = "CBaseFire";
 
         public CBaseFire (IntPtr pointer) : base(pointer) {}
@@ -13180,7 +13180,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFireSmoke : CBaseFire {
+    public partial class CFireSmoke : CBaseFire {
         private const string ThisClassName = "CFireSmoke";
 
         public CFireSmoke (IntPtr pointer) : base(pointer) {}
@@ -13200,7 +13200,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFishPool : CBaseEntity {
+    public partial class CFishPool : CBaseEntity {
         private const string ThisClassName = "CFishPool";
 
         public CFishPool (IntPtr pointer) : base(pointer) {}
@@ -13209,7 +13209,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CInfoData : CServerOnlyEntity {
+    public partial class CInfoData : CServerOnlyEntity {
         private const string ThisClassName = "CInfoData";
 
         public CInfoData (IntPtr pointer) : base(pointer) {}
@@ -13218,7 +13218,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CLogicBranch : CLogicalEntity {
+    public partial class CLogicBranch : CLogicalEntity {
         private const string ThisClassName = "CLogicBranch";
 
         public CLogicBranch (IntPtr pointer) : base(pointer) {}
@@ -13227,7 +13227,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CLogicDistanceCheck : CLogicalEntity {
+    public partial class CLogicDistanceCheck : CLogicalEntity {
         private const string ThisClassName = "CLogicDistanceCheck";
 
         public CLogicDistanceCheck (IntPtr pointer) : base(pointer) {}
@@ -13236,7 +13236,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPointPrefab : CServerOnlyPointEntity {
+    public partial class CPointPrefab : CServerOnlyPointEntity {
         private const string ThisClassName = "CPointPrefab";
 
         public CPointPrefab (IntPtr pointer) : base(pointer) {}
@@ -13245,7 +13245,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSkyboxReference : CBaseEntity {
+    public partial class CSkyboxReference : CBaseEntity {
         private const string ThisClassName = "CSkyboxReference";
 
         public CSkyboxReference (IntPtr pointer) : base(pointer) {}
@@ -13254,7 +13254,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSkyCamera : CBaseEntity {
+    public partial class CSkyCamera : CBaseEntity {
         private const string ThisClassName = "CSkyCamera";
 
         public CSkyCamera (IntPtr pointer) : base(pointer) {}
@@ -13268,7 +13268,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvSoundscape : CServerOnlyEntity {
+    public partial class CEnvSoundscape : CServerOnlyEntity {
         private const string ThisClassName = "CEnvSoundscape";
 
         public CEnvSoundscape (IntPtr pointer) : base(pointer) {}
@@ -13277,7 +13277,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvSoundscapeProxy : CEnvSoundscape {
+    public partial class CEnvSoundscapeProxy : CEnvSoundscape {
         private const string ThisClassName = "CEnvSoundscapeProxy";
 
         public CEnvSoundscapeProxy (IntPtr pointer) : base(pointer) {}
@@ -13286,7 +13286,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvSoundscapeTriggerable : CEnvSoundscape {
+    public partial class CEnvSoundscapeTriggerable : CEnvSoundscape {
         private const string ThisClassName = "CEnvSoundscapeTriggerable";
 
         public CEnvSoundscapeTriggerable (IntPtr pointer) : base(pointer) {}
@@ -13295,7 +13295,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class VPhysicsCollisionAttribute_t : NativeObject {
+    public partial class VPhysicsCollisionAttribute_t : NativeObject {
         private const string ThisClassName = "VPhysicsCollisionAttribute_t";
 
         public VPhysicsCollisionAttribute_t (IntPtr pointer) : base(pointer) {}
@@ -13345,7 +13345,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCollisionProperty : NativeObject {
+    public partial class CCollisionProperty : NativeObject {
         private const string ThisClassName = "CCollisionProperty";
 
         public CCollisionProperty (IntPtr pointer) : base(pointer) {}
@@ -13437,7 +13437,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEffectData : NativeObject {
+    public partial class CEffectData : NativeObject {
         private const string ThisClassName = "CEffectData";
 
         public CEffectData (IntPtr pointer) : base(pointer) {}
@@ -13517,7 +13517,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvDetailController : CBaseEntity {
+    public partial class CEnvDetailController : CBaseEntity {
         private const string ThisClassName = "CEnvDetailController";
 
         public CEnvDetailController (IntPtr pointer) : base(pointer) {}
@@ -13537,7 +13537,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvWindShared : NativeObject {
+    public partial class CEnvWindShared : NativeObject {
         private const string ThisClassName = "CEnvWindShared";
 
         public CEnvWindShared (IntPtr pointer) : base(pointer) {}
@@ -13593,7 +13593,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvWindShared__WindAveEvent_t : NativeObject {
+    public partial class CEnvWindShared__WindAveEvent_t : NativeObject {
         private const string ThisClassName = "CEnvWindShared__WindAveEvent_t";
 
         public CEnvWindShared__WindAveEvent_t (IntPtr pointer) : base(pointer) {}
@@ -13602,7 +13602,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvWindShared__WindVariationEvent_t : NativeObject {
+    public partial class CEnvWindShared__WindVariationEvent_t : NativeObject {
         private const string ThisClassName = "CEnvWindShared__WindVariationEvent_t";
 
         public CEnvWindShared__WindVariationEvent_t (IntPtr pointer) : base(pointer) {}
@@ -13611,7 +13611,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CInfoLadderDismount : CBaseEntity {
+    public partial class CInfoLadderDismount : CBaseEntity {
         private const string ThisClassName = "CInfoLadderDismount";
 
         public CInfoLadderDismount (IntPtr pointer) : base(pointer) {}
@@ -13620,7 +13620,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class shard_model_desc_t : NativeObject {
+    public partial class shard_model_desc_t : NativeObject {
         private const string ThisClassName = "shard_model_desc_t";
 
         public shard_model_desc_t (IntPtr pointer) : base(pointer) {}
@@ -13664,7 +13664,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CGameRulesProxy : CBaseEntity {
+    public partial class CGameRulesProxy : CBaseEntity {
         private const string ThisClassName = "CGameRulesProxy";
 
         public CGameRulesProxy (IntPtr pointer) : base(pointer) {}
@@ -13673,7 +13673,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CGlowProperty : NativeObject {
+    public partial class CGlowProperty : NativeObject {
         private const string ThisClassName = "CGlowProperty";
 
         public CGlowProperty (IntPtr pointer) : base(pointer) {}
@@ -13729,7 +13729,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class fogparams_t : NativeObject {
+    public partial class fogparams_t : NativeObject {
         private const string ThisClassName = "fogparams_t";
 
         public fogparams_t (IntPtr pointer) : base(pointer) {}
@@ -13857,7 +13857,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class fogplayerparams_t : NativeObject {
+    public partial class fogplayerparams_t : NativeObject {
         private const string ThisClassName = "fogplayerparams_t";
 
         public fogplayerparams_t (IntPtr pointer) : base(pointer) {}
@@ -13871,7 +13871,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class sky3dparams_t : NativeObject {
+    public partial class sky3dparams_t : NativeObject {
         private const string ThisClassName = "sky3dparams_t";
 
         public sky3dparams_t (IntPtr pointer) : base(pointer) {}
@@ -13903,7 +13903,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class PhysicsRagdollPose_t : NativeObject {
+    public partial class PhysicsRagdollPose_t : NativeObject {
         private const string ThisClassName = "PhysicsRagdollPose_t";
 
         public PhysicsRagdollPose_t (IntPtr pointer) : base(pointer) {}
@@ -13912,7 +13912,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSoundOpvarSetPointBase : CBaseEntity {
+    public partial class CSoundOpvarSetPointBase : CBaseEntity {
         private const string ThisClassName = "CSoundOpvarSetPointBase";
 
         public CSoundOpvarSetPointBase (IntPtr pointer) : base(pointer) {}
@@ -13932,7 +13932,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSoundOpvarSetPointEntity : CSoundOpvarSetPointBase {
+    public partial class CSoundOpvarSetPointEntity : CSoundOpvarSetPointBase {
         private const string ThisClassName = "CSoundOpvarSetPointEntity";
 
         public CSoundOpvarSetPointEntity (IntPtr pointer) : base(pointer) {}
@@ -13941,7 +13941,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSoundOpvarSetAABBEntity : CSoundOpvarSetPointEntity {
+    public partial class CSoundOpvarSetAABBEntity : CSoundOpvarSetPointEntity {
         private const string ThisClassName = "CSoundOpvarSetAABBEntity";
 
         public CSoundOpvarSetAABBEntity (IntPtr pointer) : base(pointer) {}
@@ -13950,7 +13950,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSoundOpvarSetOBBEntity : CSoundOpvarSetAABBEntity {
+    public partial class CSoundOpvarSetOBBEntity : CSoundOpvarSetAABBEntity {
         private const string ThisClassName = "CSoundOpvarSetOBBEntity";
 
         public CSoundOpvarSetOBBEntity (IntPtr pointer) : base(pointer) {}
@@ -13959,7 +13959,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSoundOpvarSetPathCornerEntity : CSoundOpvarSetPointEntity {
+    public partial class CSoundOpvarSetPathCornerEntity : CSoundOpvarSetPointEntity {
         private const string ThisClassName = "CSoundOpvarSetPathCornerEntity";
 
         public CSoundOpvarSetPathCornerEntity (IntPtr pointer) : base(pointer) {}
@@ -13968,7 +13968,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSoundOpvarSetOBBWindEntity : CSoundOpvarSetPointBase {
+    public partial class CSoundOpvarSetOBBWindEntity : CSoundOpvarSetPointBase {
         private const string ThisClassName = "CSoundOpvarSetOBBWindEntity";
 
         public CSoundOpvarSetOBBWindEntity (IntPtr pointer) : base(pointer) {}
@@ -13977,7 +13977,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CAttributeList : NativeObject {
+    public partial class CAttributeList : NativeObject {
         private const string ThisClassName = "CAttributeList";
 
         public CAttributeList (IntPtr pointer) : base(pointer) {}
@@ -13991,7 +13991,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEconItemAttribute : NativeObject {
+    public partial class CEconItemAttribute : NativeObject {
         private const string ThisClassName = "CEconItemAttribute";
 
         public CEconItemAttribute (IntPtr pointer) : base(pointer) {}
@@ -14023,7 +14023,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CAttributeManager : NativeObject {
+    public partial class CAttributeManager : NativeObject {
         private const string ThisClassName = "CAttributeManager";
 
         public CAttributeManager (IntPtr pointer) : base(pointer) {}
@@ -14043,7 +14043,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CAttributeManager__cached_attribute_float_t : NativeObject {
+    public partial class CAttributeManager__cached_attribute_float_t : NativeObject {
         private const string ThisClassName = "CAttributeManager__cached_attribute_float_t";
 
         public CAttributeManager__cached_attribute_float_t (IntPtr pointer) : base(pointer) {}
@@ -14052,7 +14052,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CAttributeContainer : CAttributeManager {
+    public partial class CAttributeContainer : CAttributeManager {
         private const string ThisClassName = "CAttributeContainer";
 
         public CAttributeContainer (IntPtr pointer) : base(pointer) {}
@@ -14066,7 +14066,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class EntitySpottedState_t : NativeObject {
+    public partial class EntitySpottedState_t : NativeObject {
         private const string ThisClassName = "EntitySpottedState_t";
 
         public EntitySpottedState_t (IntPtr pointer) : base(pointer) {}
@@ -14086,7 +14086,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class SpawnPoint : CServerOnlyPointEntity {
+    public partial class SpawnPoint : CServerOnlyPointEntity {
         private const string ThisClassName = "SpawnPoint";
 
         public SpawnPoint (IntPtr pointer) : base(pointer) {}
@@ -14095,7 +14095,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class SpawnPointCoopEnemy : SpawnPoint {
+    public partial class SpawnPointCoopEnemy : SpawnPoint {
         private const string ThisClassName = "SpawnPointCoopEnemy";
 
         public SpawnPointCoopEnemy (IntPtr pointer) : base(pointer) {}
@@ -14104,7 +14104,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSGameRulesProxy : CGameRulesProxy {
+    public partial class CCSGameRulesProxy : CGameRulesProxy {
         private const string ThisClassName = "CCSGameRulesProxy";
 
         public CCSGameRulesProxy (IntPtr pointer) : base(pointer) {}
@@ -14113,7 +14113,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSGameRules : CTeamplayRules {
+    public partial class CCSGameRules : CTeamplayRules {
         private const string ThisClassName = "CCSGameRules";
 
         public CCSGameRules (IntPtr pointer) : base(pointer) {}
@@ -14655,7 +14655,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSGameModeRules : NativeObject {
+    public partial class CCSGameModeRules : NativeObject {
         private const string ThisClassName = "CCSGameModeRules";
 
         public CCSGameModeRules (IntPtr pointer) : base(pointer) {}
@@ -14664,7 +14664,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSGameModeRules_Noop : CCSGameModeRules {
+    public partial class CCSGameModeRules_Noop : CCSGameModeRules {
         private const string ThisClassName = "CCSGameModeRules_Noop";
 
         public CCSGameModeRules_Noop (IntPtr pointer) : base(pointer) {}
@@ -14673,7 +14673,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSGameModeScript : CBasePulseGraphInstance {
+    public partial class CCSGameModeScript : CBasePulseGraphInstance {
         private const string ThisClassName = "CCSGameModeScript";
 
         public CCSGameModeScript (IntPtr pointer) : base(pointer) {}
@@ -14682,7 +14682,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSGameModeRules_Scripted : CCSGameModeRules {
+    public partial class CCSGameModeRules_Scripted : CCSGameModeRules {
         private const string ThisClassName = "CCSGameModeRules_Scripted";
 
         public CCSGameModeRules_Scripted (IntPtr pointer) : base(pointer) {}
@@ -14691,7 +14691,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSGameModeRules_Deathmatch : CCSGameModeRules {
+    public partial class CCSGameModeRules_Deathmatch : CCSGameModeRules {
         private const string ThisClassName = "CCSGameModeRules_Deathmatch";
 
         public CCSGameModeRules_Deathmatch (IntPtr pointer) : base(pointer) {}
@@ -14711,7 +14711,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CRetakeGameRules : NativeObject {
+    public partial class CRetakeGameRules : NativeObject {
         private const string ThisClassName = "CRetakeGameRules";
 
         public CRetakeGameRules (IntPtr pointer) : base(pointer) {}
@@ -14749,7 +14749,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSPerRoundStats_t : NativeObject {
+    public partial class CSPerRoundStats_t : NativeObject {
         private const string ThisClassName = "CSPerRoundStats_t";
 
         public CSPerRoundStats_t (IntPtr pointer) : base(pointer) {}
@@ -14835,7 +14835,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSMatchStats_t : CSPerRoundStats_t {
+    public partial class CSMatchStats_t : CSPerRoundStats_t {
         private const string ThisClassName = "CSMatchStats_t";
 
         public CSMatchStats_t (IntPtr pointer) : base(pointer) {}
@@ -14861,7 +14861,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSGO_TeamPreviewCharacterPosition : CBaseEntity {
+    public partial class CCSGO_TeamPreviewCharacterPosition : CBaseEntity {
         private const string ThisClassName = "CCSGO_TeamPreviewCharacterPosition";
 
         public CCSGO_TeamPreviewCharacterPosition (IntPtr pointer) : base(pointer) {}
@@ -14905,7 +14905,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSGO_TeamSelectCharacterPosition : CCSGO_TeamPreviewCharacterPosition {
+    public partial class CCSGO_TeamSelectCharacterPosition : CCSGO_TeamPreviewCharacterPosition {
         private const string ThisClassName = "CCSGO_TeamSelectCharacterPosition";
 
         public CCSGO_TeamSelectCharacterPosition (IntPtr pointer) : base(pointer) {}
@@ -14914,7 +14914,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSGO_TeamSelectTerroristPosition : CCSGO_TeamSelectCharacterPosition {
+    public partial class CCSGO_TeamSelectTerroristPosition : CCSGO_TeamSelectCharacterPosition {
         private const string ThisClassName = "CCSGO_TeamSelectTerroristPosition";
 
         public CCSGO_TeamSelectTerroristPosition (IntPtr pointer) : base(pointer) {}
@@ -14923,7 +14923,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSGO_TeamSelectCounterTerroristPosition : CCSGO_TeamSelectCharacterPosition {
+    public partial class CCSGO_TeamSelectCounterTerroristPosition : CCSGO_TeamSelectCharacterPosition {
         private const string ThisClassName = "CCSGO_TeamSelectCounterTerroristPosition";
 
         public CCSGO_TeamSelectCounterTerroristPosition (IntPtr pointer) : base(pointer) {}
@@ -14932,7 +14932,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSGO_TeamIntroCharacterPosition : CCSGO_TeamPreviewCharacterPosition {
+    public partial class CCSGO_TeamIntroCharacterPosition : CCSGO_TeamPreviewCharacterPosition {
         private const string ThisClassName = "CCSGO_TeamIntroCharacterPosition";
 
         public CCSGO_TeamIntroCharacterPosition (IntPtr pointer) : base(pointer) {}
@@ -14941,7 +14941,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSGO_TeamIntroTerroristPosition : CCSGO_TeamIntroCharacterPosition {
+    public partial class CCSGO_TeamIntroTerroristPosition : CCSGO_TeamIntroCharacterPosition {
         private const string ThisClassName = "CCSGO_TeamIntroTerroristPosition";
 
         public CCSGO_TeamIntroTerroristPosition (IntPtr pointer) : base(pointer) {}
@@ -14950,7 +14950,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSGO_TeamIntroCounterTerroristPosition : CCSGO_TeamIntroCharacterPosition {
+    public partial class CCSGO_TeamIntroCounterTerroristPosition : CCSGO_TeamIntroCharacterPosition {
         private const string ThisClassName = "CCSGO_TeamIntroCounterTerroristPosition";
 
         public CCSGO_TeamIntroCounterTerroristPosition (IntPtr pointer) : base(pointer) {}
@@ -14959,7 +14959,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSGO_WingmanIntroCharacterPosition : CCSGO_TeamIntroCharacterPosition {
+    public partial class CCSGO_WingmanIntroCharacterPosition : CCSGO_TeamIntroCharacterPosition {
         private const string ThisClassName = "CCSGO_WingmanIntroCharacterPosition";
 
         public CCSGO_WingmanIntroCharacterPosition (IntPtr pointer) : base(pointer) {}
@@ -14968,7 +14968,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSGO_WingmanIntroTerroristPosition : CCSGO_WingmanIntroCharacterPosition {
+    public partial class CCSGO_WingmanIntroTerroristPosition : CCSGO_WingmanIntroCharacterPosition {
         private const string ThisClassName = "CCSGO_WingmanIntroTerroristPosition";
 
         public CCSGO_WingmanIntroTerroristPosition (IntPtr pointer) : base(pointer) {}
@@ -14977,7 +14977,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSGO_WingmanIntroCounterTerroristPosition : CCSGO_WingmanIntroCharacterPosition {
+    public partial class CCSGO_WingmanIntroCounterTerroristPosition : CCSGO_WingmanIntroCharacterPosition {
         private const string ThisClassName = "CCSGO_WingmanIntroCounterTerroristPosition";
 
         public CCSGO_WingmanIntroCounterTerroristPosition (IntPtr pointer) : base(pointer) {}
@@ -14986,7 +14986,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSMinimapBoundary : CBaseEntity {
+    public partial class CCSMinimapBoundary : CBaseEntity {
         private const string ThisClassName = "CCSMinimapBoundary";
 
         public CCSMinimapBoundary (IntPtr pointer) : base(pointer) {}
@@ -14995,7 +14995,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPlayerPing : CBaseEntity {
+    public partial class CPlayerPing : CBaseEntity {
         private const string ThisClassName = "CPlayerPing";
 
         public CPlayerPing (IntPtr pointer) : base(pointer) {}
@@ -15033,7 +15033,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSPlayer_PingServices : CPlayerPawnComponent {
+    public partial class CCSPlayer_PingServices : CPlayerPawnComponent {
         private const string ThisClassName = "CCSPlayer_PingServices";
 
         public CCSPlayer_PingServices (IntPtr pointer) : base(pointer) {}
@@ -15047,7 +15047,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSPlayerResource : CBaseEntity {
+    public partial class CCSPlayerResource : CBaseEntity {
         private const string ThisClassName = "CCSPlayerResource";
 
         public CCSPlayerResource (IntPtr pointer) : base(pointer) {}
@@ -15103,7 +15103,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPlayer_ViewModelServices : CPlayerPawnComponent {
+    public partial class CPlayer_ViewModelServices : CPlayerPawnComponent {
         private const string ThisClassName = "CPlayer_ViewModelServices";
 
         public CPlayer_ViewModelServices (IntPtr pointer) : base(pointer) {}
@@ -15112,7 +15112,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSPlayerBase_CameraServices : CPlayer_CameraServices {
+    public partial class CCSPlayerBase_CameraServices : CPlayer_CameraServices {
         private const string ThisClassName = "CCSPlayerBase_CameraServices";
 
         public CCSPlayerBase_CameraServices (IntPtr pointer) : base(pointer) {}
@@ -15150,7 +15150,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class WeaponPurchaseCount_t : NativeObject {
+    public partial class WeaponPurchaseCount_t : NativeObject {
         private const string ThisClassName = "WeaponPurchaseCount_t";
 
         public WeaponPurchaseCount_t (IntPtr pointer) : base(pointer) {}
@@ -15159,7 +15159,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class WeaponPurchaseTracker_t : NativeObject {
+    public partial class WeaponPurchaseTracker_t : NativeObject {
         private const string ThisClassName = "WeaponPurchaseTracker_t";
 
         public WeaponPurchaseTracker_t (IntPtr pointer) : base(pointer) {}
@@ -15173,7 +15173,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSPlayer_ActionTrackingServices : CPlayerPawnComponent {
+    public partial class CCSPlayer_ActionTrackingServices : CPlayerPawnComponent {
         private const string ThisClassName = "CCSPlayer_ActionTrackingServices";
 
         public CCSPlayer_ActionTrackingServices (IntPtr pointer) : base(pointer) {}
@@ -15199,7 +15199,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSPlayer_BulletServices : CPlayerPawnComponent {
+    public partial class CCSPlayer_BulletServices : CPlayerPawnComponent {
         private const string ThisClassName = "CCSPlayer_BulletServices";
 
         public CCSPlayer_BulletServices (IntPtr pointer) : base(pointer) {}
@@ -15213,7 +15213,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class SellbackPurchaseEntry_t : NativeObject {
+    public partial class SellbackPurchaseEntry_t : NativeObject {
         private const string ThisClassName = "SellbackPurchaseEntry_t";
 
         public SellbackPurchaseEntry_t (IntPtr pointer) : base(pointer) {}
@@ -15239,7 +15239,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSPlayer_BuyServices : CPlayerPawnComponent {
+    public partial class CCSPlayer_BuyServices : CPlayerPawnComponent {
         private const string ThisClassName = "CCSPlayer_BuyServices";
 
         public CCSPlayer_BuyServices (IntPtr pointer) : base(pointer) {}
@@ -15253,7 +15253,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSPlayer_CameraServices : CCSPlayerBase_CameraServices {
+    public partial class CCSPlayer_CameraServices : CCSPlayerBase_CameraServices {
         private const string ThisClassName = "CCSPlayer_CameraServices";
 
         public CCSPlayer_CameraServices (IntPtr pointer) : base(pointer) {}
@@ -15262,7 +15262,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSPlayer_HostageServices : CPlayerPawnComponent {
+    public partial class CCSPlayer_HostageServices : CPlayerPawnComponent {
         private const string ThisClassName = "CCSPlayer_HostageServices";
 
         public CCSPlayer_HostageServices (IntPtr pointer) : base(pointer) {}
@@ -15282,7 +15282,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSPlayer_ItemServices : CPlayer_ItemServices {
+    public partial class CCSPlayer_ItemServices : CPlayer_ItemServices {
         private const string ThisClassName = "CCSPlayer_ItemServices";
 
         public CCSPlayer_ItemServices (IntPtr pointer) : base(pointer) {}
@@ -15308,7 +15308,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSPlayer_MovementServices : CPlayer_MovementServices_Humanoid {
+    public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Humanoid {
         private const string ThisClassName = "CCSPlayer_MovementServices";
 
         public CCSPlayer_MovementServices (IntPtr pointer) : base(pointer) {}
@@ -15424,7 +15424,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSPlayer_UseServices : CPlayer_UseServices {
+    public partial class CCSPlayer_UseServices : CPlayer_UseServices {
         private const string ThisClassName = "CCSPlayer_UseServices";
 
         public CCSPlayer_UseServices (IntPtr pointer) : base(pointer) {}
@@ -15433,7 +15433,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSPlayer_ViewModelServices : CPlayer_ViewModelServices {
+    public partial class CCSPlayer_ViewModelServices : CPlayer_ViewModelServices {
         private const string ThisClassName = "CCSPlayer_ViewModelServices";
 
         public CCSPlayer_ViewModelServices (IntPtr pointer) : base(pointer) {}
@@ -15447,7 +15447,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSPlayer_WaterServices : CPlayer_WaterServices {
+    public partial class CCSPlayer_WaterServices : CPlayer_WaterServices {
         private const string ThisClassName = "CCSPlayer_WaterServices";
 
         public CCSPlayer_WaterServices (IntPtr pointer) : base(pointer) {}
@@ -15456,7 +15456,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSPlayer_WeaponServices : CPlayer_WeaponServices {
+    public partial class CCSPlayer_WeaponServices : CPlayer_WeaponServices {
         private const string ThisClassName = "CCSPlayer_WeaponServices";
 
         public CCSPlayer_WeaponServices (IntPtr pointer) : base(pointer) {}
@@ -15482,7 +15482,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSObserver_ObserverServices : CPlayer_ObserverServices {
+    public partial class CCSObserver_ObserverServices : CPlayer_ObserverServices {
         private const string ThisClassName = "CCSObserver_ObserverServices";
 
         public CCSObserver_ObserverServices (IntPtr pointer) : base(pointer) {}
@@ -15491,7 +15491,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSObserver_CameraServices : CCSPlayerBase_CameraServices {
+    public partial class CCSObserver_CameraServices : CCSPlayerBase_CameraServices {
         private const string ThisClassName = "CCSObserver_CameraServices";
 
         public CCSObserver_CameraServices (IntPtr pointer) : base(pointer) {}
@@ -15500,7 +15500,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSObserver_MovementServices : CPlayer_MovementServices {
+    public partial class CCSObserver_MovementServices : CPlayer_MovementServices {
         private const string ThisClassName = "CCSObserver_MovementServices";
 
         public CCSObserver_MovementServices (IntPtr pointer) : base(pointer) {}
@@ -15509,7 +15509,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSObserver_UseServices : CPlayer_UseServices {
+    public partial class CCSObserver_UseServices : CPlayer_UseServices {
         private const string ThisClassName = "CCSObserver_UseServices";
 
         public CCSObserver_UseServices (IntPtr pointer) : base(pointer) {}
@@ -15518,7 +15518,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSObserver_ViewModelServices : CPlayer_ViewModelServices {
+    public partial class CCSObserver_ViewModelServices : CPlayer_ViewModelServices {
         private const string ThisClassName = "CCSObserver_ViewModelServices";
 
         public CCSObserver_ViewModelServices (IntPtr pointer) : base(pointer) {}
@@ -15527,7 +15527,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSPlayerController_ActionTrackingServices : CPlayerControllerComponent {
+    public partial class CCSPlayerController_ActionTrackingServices : CPlayerControllerComponent {
         private const string ThisClassName = "CCSPlayerController_ActionTrackingServices";
 
         public CCSPlayerController_ActionTrackingServices (IntPtr pointer) : base(pointer) {}
@@ -15559,7 +15559,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CDamageRecord : NativeObject {
+    public partial class CDamageRecord : NativeObject {
         private const string ThisClassName = "CDamageRecord";
 
         public CDamageRecord (IntPtr pointer) : base(pointer) {}
@@ -15639,7 +15639,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSPlayerController_DamageServices : CPlayerControllerComponent {
+    public partial class CCSPlayerController_DamageServices : CPlayerControllerComponent {
         private const string ThisClassName = "CCSPlayerController_DamageServices";
 
         public CCSPlayerController_DamageServices (IntPtr pointer) : base(pointer) {}
@@ -15659,7 +15659,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSPlayerController_InGameMoneyServices : CPlayerControllerComponent {
+    public partial class CCSPlayerController_InGameMoneyServices : CPlayerControllerComponent {
         private const string ThisClassName = "CCSPlayerController_InGameMoneyServices";
 
         public CCSPlayerController_InGameMoneyServices (IntPtr pointer) : base(pointer) {}
@@ -15691,7 +15691,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class ServerAuthoritativeWeaponSlot_t : NativeObject {
+    public partial class ServerAuthoritativeWeaponSlot_t : NativeObject {
         private const string ThisClassName = "ServerAuthoritativeWeaponSlot_t";
 
         public ServerAuthoritativeWeaponSlot_t (IntPtr pointer) : base(pointer) {}
@@ -15700,7 +15700,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSPlayerController_InventoryServices : CPlayerControllerComponent {
+    public partial class CCSPlayerController_InventoryServices : CPlayerControllerComponent {
         private const string ThisClassName = "CCSPlayerController_InventoryServices";
 
         public CCSPlayerController_InventoryServices (IntPtr pointer) : base(pointer) {}
@@ -15744,7 +15744,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSPlayer_DamageReactServices : CPlayerPawnComponent {
+    public partial class CCSPlayer_DamageReactServices : CPlayerPawnComponent {
         private const string ThisClassName = "CCSPlayer_DamageReactServices";
 
         public CCSPlayer_DamageReactServices (IntPtr pointer) : base(pointer) {}
@@ -15753,7 +15753,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSPlayer_RadioServices : CPlayerPawnComponent {
+    public partial class CCSPlayer_RadioServices : CPlayerPawnComponent {
         private const string ThisClassName = "CCSPlayer_RadioServices";
 
         public CCSPlayer_RadioServices (IntPtr pointer) : base(pointer) {}
@@ -15762,7 +15762,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CVoteController : CBaseEntity {
+    public partial class CVoteController : CBaseEntity {
         private const string ThisClassName = "CVoteController";
 
         public CVoteController (IntPtr pointer) : base(pointer) {}
@@ -15800,7 +15800,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CMapVetoPickController : CBaseEntity {
+    public partial class CMapVetoPickController : CBaseEntity {
         private const string ThisClassName = "CMapVetoPickController";
 
         public CMapVetoPickController (IntPtr pointer) : base(pointer) {}
@@ -15898,7 +15898,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBot : NativeObject {
+    public partial class CBot : NativeObject {
         private const string ThisClassName = "CBot";
 
         public CBot (IntPtr pointer) : base(pointer) {}
@@ -15907,7 +15907,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBtActionAim : CBtNode {
+    public partial class CBtActionAim : CBtNode {
         private const string ThisClassName = "CBtActionAim";
 
         public CBtActionAim (IntPtr pointer) : base(pointer) {}
@@ -15916,7 +15916,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBtActionCombatPositioning : CBtNode {
+    public partial class CBtActionCombatPositioning : CBtNode {
         private const string ThisClassName = "CBtActionCombatPositioning";
 
         public CBtActionCombatPositioning (IntPtr pointer) : base(pointer) {}
@@ -15925,7 +15925,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBtActionMoveTo : CBtNode {
+    public partial class CBtActionMoveTo : CBtNode {
         private const string ThisClassName = "CBtActionMoveTo";
 
         public CBtActionMoveTo (IntPtr pointer) : base(pointer) {}
@@ -15934,7 +15934,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBtActionParachutePositioning : CBtNode {
+    public partial class CBtActionParachutePositioning : CBtNode {
         private const string ThisClassName = "CBtActionParachutePositioning";
 
         public CBtActionParachutePositioning (IntPtr pointer) : base(pointer) {}
@@ -15943,7 +15943,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBtNodeCondition : CBtNodeDecorator {
+    public partial class CBtNodeCondition : CBtNodeDecorator {
         private const string ThisClassName = "CBtNodeCondition";
 
         public CBtNodeCondition (IntPtr pointer) : base(pointer) {}
@@ -15952,7 +15952,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBtNodeConditionInactive : CBtNodeCondition {
+    public partial class CBtNodeConditionInactive : CBtNodeCondition {
         private const string ThisClassName = "CBtNodeConditionInactive";
 
         public CBtNodeConditionInactive (IntPtr pointer) : base(pointer) {}
@@ -15961,7 +15961,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPointEntity : CBaseEntity {
+    public partial class CPointEntity : CBaseEntity {
         private const string ThisClassName = "CPointEntity";
 
         public CPointEntity (IntPtr pointer) : base(pointer) {}
@@ -15970,7 +15970,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvCombinedLightProbeVolume : CBaseEntity {
+    public partial class CEnvCombinedLightProbeVolume : CBaseEntity {
         private const string ThisClassName = "CEnvCombinedLightProbeVolume";
 
         public CEnvCombinedLightProbeVolume (IntPtr pointer) : base(pointer) {}
@@ -16086,7 +16086,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvCubemap : CBaseEntity {
+    public partial class CEnvCubemap : CBaseEntity {
         private const string ThisClassName = "CEnvCubemap";
 
         public CEnvCubemap (IntPtr pointer) : base(pointer) {}
@@ -16196,7 +16196,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvCubemapBox : CEnvCubemap {
+    public partial class CEnvCubemapBox : CEnvCubemap {
         private const string ThisClassName = "CEnvCubemapBox";
 
         public CEnvCubemapBox (IntPtr pointer) : base(pointer) {}
@@ -16205,7 +16205,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvCubemapFog : CBaseEntity {
+    public partial class CEnvCubemapFog : CBaseEntity {
         private const string ThisClassName = "CEnvCubemapFog";
 
         public CEnvCubemapFog (IntPtr pointer) : base(pointer) {}
@@ -16297,7 +16297,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CGradientFog : CBaseEntity {
+    public partial class CGradientFog : CBaseEntity {
         private const string ThisClassName = "CGradientFog";
 
         public CGradientFog (IntPtr pointer) : base(pointer) {}
@@ -16383,7 +16383,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvLightProbeVolume : CBaseEntity {
+    public partial class CEnvLightProbeVolume : CBaseEntity {
         private const string ThisClassName = "CEnvLightProbeVolume";
 
         public CEnvLightProbeVolume (IntPtr pointer) : base(pointer) {}
@@ -16469,7 +16469,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPlayerVisibility : CBaseEntity {
+    public partial class CPlayerVisibility : CBaseEntity {
         private const string ThisClassName = "CPlayerVisibility";
 
         public CPlayerVisibility (IntPtr pointer) : base(pointer) {}
@@ -16513,7 +16513,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTonemapController2 : CBaseEntity {
+    public partial class CTonemapController2 : CBaseEntity {
         private const string ThisClassName = "CTonemapController2";
 
         public CTonemapController2 (IntPtr pointer) : base(pointer) {}
@@ -16569,7 +16569,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvVolumetricFogController : CBaseEntity {
+    public partial class CEnvVolumetricFogController : CBaseEntity {
         private const string ThisClassName = "CEnvVolumetricFogController";
 
         public CEnvVolumetricFogController (IntPtr pointer) : base(pointer) {}
@@ -16733,7 +16733,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvVolumetricFogVolume : CBaseEntity {
+    public partial class CEnvVolumetricFogVolume : CBaseEntity {
         private const string ThisClassName = "CEnvVolumetricFogVolume";
 
         public CEnvVolumetricFogVolume (IntPtr pointer) : base(pointer) {}
@@ -16783,7 +16783,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFogController : CBaseEntity {
+    public partial class CFogController : CBaseEntity {
         private const string ThisClassName = "CFogController";
 
         public CFogController (IntPtr pointer) : base(pointer) {}
@@ -16797,7 +16797,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CInfoTarget : CPointEntity {
+    public partial class CInfoTarget : CPointEntity {
         private const string ThisClassName = "CInfoTarget";
 
         public CInfoTarget (IntPtr pointer) : base(pointer) {}
@@ -16806,7 +16806,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CInfoTargetServerOnly : CServerOnlyPointEntity {
+    public partial class CInfoTargetServerOnly : CServerOnlyPointEntity {
         private const string ThisClassName = "CInfoTargetServerOnly";
 
         public CInfoTargetServerOnly (IntPtr pointer) : base(pointer) {}
@@ -16815,7 +16815,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CInfoParticleTarget : CPointEntity {
+    public partial class CInfoParticleTarget : CPointEntity {
         private const string ThisClassName = "CInfoParticleTarget";
 
         public CInfoParticleTarget (IntPtr pointer) : base(pointer) {}
@@ -16824,7 +16824,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CInfoVisibilityBox : CBaseEntity {
+    public partial class CInfoVisibilityBox : CBaseEntity {
         private const string ThisClassName = "CInfoVisibilityBox";
 
         public CInfoVisibilityBox (IntPtr pointer) : base(pointer) {}
@@ -16850,7 +16850,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CInfoWorldLayer : CBaseEntity {
+    public partial class CInfoWorldLayer : CBaseEntity {
         private const string ThisClassName = "CInfoWorldLayer";
 
         public CInfoWorldLayer (IntPtr pointer) : base(pointer) {}
@@ -16870,7 +16870,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CMultiLightProxy : CLogicalEntity {
+    public partial class CMultiLightProxy : CLogicalEntity {
         private const string ThisClassName = "CMultiLightProxy";
 
         public CMultiLightProxy (IntPtr pointer) : base(pointer) {}
@@ -16879,7 +16879,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPointCamera : CBaseEntity {
+    public partial class CPointCamera : CBaseEntity {
         private const string ThisClassName = "CPointCamera";
 
         public CPointCamera (IntPtr pointer) : base(pointer) {}
@@ -17007,7 +17007,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPointCameraVFOV : CPointCamera {
+    public partial class CPointCameraVFOV : CPointCamera {
         private const string ThisClassName = "CPointCameraVFOV";
 
         public CPointCameraVFOV (IntPtr pointer) : base(pointer) {}
@@ -17016,7 +17016,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPointTemplate : CLogicalEntity {
+    public partial class CPointTemplate : CLogicalEntity {
         private const string ThisClassName = "CPointTemplate";
 
         public CPointTemplate (IntPtr pointer) : base(pointer) {}
@@ -17025,7 +17025,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CGameGibManager : CBaseEntity {
+    public partial class CGameGibManager : CBaseEntity {
         private const string ThisClassName = "CGameGibManager";
 
         public CGameGibManager (IntPtr pointer) : base(pointer) {}
@@ -17034,7 +17034,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSoundAreaEntityBase : CBaseEntity {
+    public partial class CSoundAreaEntityBase : CBaseEntity {
         private const string ThisClassName = "CSoundAreaEntityBase";
 
         public CSoundAreaEntityBase (IntPtr pointer) : base(pointer) {}
@@ -17054,7 +17054,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSoundAreaEntitySphere : CSoundAreaEntityBase {
+    public partial class CSoundAreaEntitySphere : CSoundAreaEntityBase {
         private const string ThisClassName = "CSoundAreaEntitySphere";
 
         public CSoundAreaEntitySphere (IntPtr pointer) : base(pointer) {}
@@ -17068,7 +17068,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSoundAreaEntityOrientedBox : CSoundAreaEntityBase {
+    public partial class CSoundAreaEntityOrientedBox : CSoundAreaEntityBase {
         private const string ThisClassName = "CSoundAreaEntityOrientedBox";
 
         public CSoundAreaEntityOrientedBox (IntPtr pointer) : base(pointer) {}
@@ -17088,7 +17088,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTeam : CBaseEntity {
+    public partial class CTeam : CBaseEntity {
         private const string ThisClassName = "CTeam";
 
         public CTeam (IntPtr pointer) : base(pointer) {}
@@ -17120,7 +17120,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBasePlayerController : CBaseEntity {
+    public partial class CBasePlayerController : CBaseEntity {
         private const string ThisClassName = "CBasePlayerController";
 
         public CBasePlayerController (IntPtr pointer) : base(pointer) {}
@@ -17164,7 +17164,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBasePlayerVData : CEntitySubclassVDataBase {
+    public partial class CBasePlayerVData : CEntitySubclassVDataBase {
         private const string ThisClassName = "CBasePlayerVData";
 
         public CBasePlayerVData (IntPtr pointer) : base(pointer) {}
@@ -17173,7 +17173,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBasePlayerWeaponVData : CEntitySubclassVDataBase {
+    public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase {
         private const string ThisClassName = "CBasePlayerWeaponVData";
 
         public CBasePlayerWeaponVData (IntPtr pointer) : base(pointer) {}
@@ -17182,7 +17182,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CInfoGameEventProxy : CPointEntity {
+    public partial class CInfoGameEventProxy : CPointEntity {
         private const string ThisClassName = "CInfoGameEventProxy";
 
         public CInfoGameEventProxy (IntPtr pointer) : base(pointer) {}
@@ -17191,7 +17191,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CProjectedDecal : CPointEntity {
+    public partial class CProjectedDecal : CPointEntity {
         private const string ThisClassName = "CProjectedDecal";
 
         public CProjectedDecal (IntPtr pointer) : base(pointer) {}
@@ -17200,7 +17200,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBaseAnimGraphController : CSkeletonAnimationController {
+    public partial class CBaseAnimGraphController : CSkeletonAnimationController {
         private const string ThisClassName = "CBaseAnimGraphController";
 
         public CBaseAnimGraphController (IntPtr pointer) : base(pointer) {}
@@ -17244,7 +17244,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBaseModelEntity : CBaseEntity {
+    public partial class CBaseModelEntity : CBaseEntity {
         private const string ThisClassName = "CBaseModelEntity";
 
         public CBaseModelEntity (IntPtr pointer) : base(pointer) {}
@@ -17366,7 +17366,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CServerOnlyModelEntity : CBaseModelEntity {
+    public partial class CServerOnlyModelEntity : CBaseModelEntity {
         private const string ThisClassName = "CServerOnlyModelEntity";
 
         public CServerOnlyModelEntity (IntPtr pointer) : base(pointer) {}
@@ -17375,7 +17375,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CModelPointEntity : CBaseModelEntity {
+    public partial class CModelPointEntity : CBaseModelEntity {
         private const string ThisClassName = "CModelPointEntity";
 
         public CModelPointEntity (IntPtr pointer) : base(pointer) {}
@@ -17384,7 +17384,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CLogicRelay : CLogicalEntity {
+    public partial class CLogicRelay : CLogicalEntity {
         private const string ThisClassName = "CLogicRelay";
 
         public CLogicRelay (IntPtr pointer) : base(pointer) {}
@@ -17393,7 +17393,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CParticleSystem : CBaseModelEntity {
+    public partial class CParticleSystem : CBaseModelEntity {
         private const string ThisClassName = "CParticleSystem";
 
         public CParticleSystem (IntPtr pointer) : base(pointer) {}
@@ -17485,7 +17485,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPathParticleRope : CBaseEntity {
+    public partial class CPathParticleRope : CBaseEntity {
         private const string ThisClassName = "CPathParticleRope";
 
         public CPathParticleRope (IntPtr pointer) : base(pointer) {}
@@ -17553,7 +17553,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPathParticleRopeAlias_path_particle_rope_clientside : CPathParticleRope {
+    public partial class CPathParticleRopeAlias_path_particle_rope_clientside : CPathParticleRope {
         private const string ThisClassName = "CPathParticleRopeAlias_path_particle_rope_clientside";
 
         public CPathParticleRopeAlias_path_particle_rope_clientside (IntPtr pointer) : base(pointer) {}
@@ -17562,7 +17562,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFuncWall : CBaseModelEntity {
+    public partial class CFuncWall : CBaseModelEntity {
         private const string ThisClassName = "CFuncWall";
 
         public CFuncWall (IntPtr pointer) : base(pointer) {}
@@ -17571,7 +17571,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFuncWallToggle : CFuncWall {
+    public partial class CFuncWallToggle : CFuncWall {
         private const string ThisClassName = "CFuncWallToggle";
 
         public CFuncWallToggle (IntPtr pointer) : base(pointer) {}
@@ -17580,7 +17580,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFuncVehicleClip : CBaseModelEntity {
+    public partial class CFuncVehicleClip : CBaseModelEntity {
         private const string ThisClassName = "CFuncVehicleClip";
 
         public CFuncVehicleClip (IntPtr pointer) : base(pointer) {}
@@ -17589,7 +17589,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFuncIllusionary : CBaseModelEntity {
+    public partial class CFuncIllusionary : CBaseModelEntity {
         private const string ThisClassName = "CFuncIllusionary";
 
         public CFuncIllusionary (IntPtr pointer) : base(pointer) {}
@@ -17598,7 +17598,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFuncVPhysicsClip : CBaseModelEntity {
+    public partial class CFuncVPhysicsClip : CBaseModelEntity {
         private const string ThisClassName = "CFuncVPhysicsClip";
 
         public CFuncVPhysicsClip (IntPtr pointer) : base(pointer) {}
@@ -17607,7 +17607,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFuncInteractionLayerClip : CBaseModelEntity {
+    public partial class CFuncInteractionLayerClip : CBaseModelEntity {
         private const string ThisClassName = "CFuncInteractionLayerClip";
 
         public CFuncInteractionLayerClip (IntPtr pointer) : base(pointer) {}
@@ -17616,7 +17616,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPointClientCommand : CPointEntity {
+    public partial class CPointClientCommand : CPointEntity {
         private const string ThisClassName = "CPointClientCommand";
 
         public CPointClientCommand (IntPtr pointer) : base(pointer) {}
@@ -17625,7 +17625,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPointServerCommand : CPointEntity {
+    public partial class CPointServerCommand : CPointEntity {
         private const string ThisClassName = "CPointServerCommand";
 
         public CPointServerCommand (IntPtr pointer) : base(pointer) {}
@@ -17634,7 +17634,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPointBroadcastClientCommand : CPointEntity {
+    public partial class CPointBroadcastClientCommand : CPointEntity {
         private const string ThisClassName = "CPointBroadcastClientCommand";
 
         public CPointBroadcastClientCommand (IntPtr pointer) : base(pointer) {}
@@ -17643,7 +17643,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCommentaryAuto : CBaseEntity {
+    public partial class CCommentaryAuto : CBaseEntity {
         private const string ThisClassName = "CCommentaryAuto";
 
         public CCommentaryAuto (IntPtr pointer) : base(pointer) {}
@@ -17652,7 +17652,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CDynamicLight : CBaseModelEntity {
+    public partial class CDynamicLight : CBaseModelEntity {
         private const string ThisClassName = "CDynamicLight";
 
         public CDynamicLight (IntPtr pointer) : base(pointer) {}
@@ -17702,7 +17702,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBubbling : CBaseModelEntity {
+    public partial class CBubbling : CBaseModelEntity {
         private const string ThisClassName = "CBubbling";
 
         public CBubbling (IntPtr pointer) : base(pointer) {}
@@ -17711,7 +17711,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvTracer : CPointEntity {
+    public partial class CEnvTracer : CPointEntity {
         private const string ThisClassName = "CEnvTracer";
 
         public CEnvTracer (IntPtr pointer) : base(pointer) {}
@@ -17720,7 +17720,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTestEffect : CBaseEntity {
+    public partial class CTestEffect : CBaseEntity {
         private const string ThisClassName = "CTestEffect";
 
         public CTestEffect (IntPtr pointer) : base(pointer) {}
@@ -17729,7 +17729,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBlood : CPointEntity {
+    public partial class CBlood : CPointEntity {
         private const string ThisClassName = "CBlood";
 
         public CBlood (IntPtr pointer) : base(pointer) {}
@@ -17738,7 +17738,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvFunnel : CBaseEntity {
+    public partial class CEnvFunnel : CBaseEntity {
         private const string ThisClassName = "CEnvFunnel";
 
         public CEnvFunnel (IntPtr pointer) : base(pointer) {}
@@ -17747,7 +17747,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvBeverage : CBaseEntity {
+    public partial class CEnvBeverage : CBaseEntity {
         private const string ThisClassName = "CEnvBeverage";
 
         public CEnvBeverage (IntPtr pointer) : base(pointer) {}
@@ -17756,7 +17756,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPrecipitationBlocker : CBaseModelEntity {
+    public partial class CPrecipitationBlocker : CBaseModelEntity {
         private const string ThisClassName = "CPrecipitationBlocker";
 
         public CPrecipitationBlocker (IntPtr pointer) : base(pointer) {}
@@ -17765,7 +17765,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvWind : CBaseEntity {
+    public partial class CEnvWind : CBaseEntity {
         private const string ThisClassName = "CEnvWind";
 
         public CEnvWind (IntPtr pointer) : base(pointer) {}
@@ -17779,7 +17779,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPhysicsWire : CBaseEntity {
+    public partial class CPhysicsWire : CBaseEntity {
         private const string ThisClassName = "CPhysicsWire";
 
         public CPhysicsWire (IntPtr pointer) : base(pointer) {}
@@ -17788,7 +17788,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvMuzzleFlash : CPointEntity {
+    public partial class CEnvMuzzleFlash : CPointEntity {
         private const string ThisClassName = "CEnvMuzzleFlash";
 
         public CEnvMuzzleFlash (IntPtr pointer) : base(pointer) {}
@@ -17797,7 +17797,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvSplash : CPointEntity {
+    public partial class CEnvSplash : CPointEntity {
         private const string ThisClassName = "CEnvSplash";
 
         public CEnvSplash (IntPtr pointer) : base(pointer) {}
@@ -17806,7 +17806,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvViewPunch : CPointEntity {
+    public partial class CEnvViewPunch : CPointEntity {
         private const string ThisClassName = "CEnvViewPunch";
 
         public CEnvViewPunch (IntPtr pointer) : base(pointer) {}
@@ -17815,7 +17815,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvEntityIgniter : CBaseEntity {
+    public partial class CEnvEntityIgniter : CBaseEntity {
         private const string ThisClassName = "CEnvEntityIgniter";
 
         public CEnvEntityIgniter (IntPtr pointer) : base(pointer) {}
@@ -17824,7 +17824,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CDebugHistory : CBaseEntity {
+    public partial class CDebugHistory : CBaseEntity {
         private const string ThisClassName = "CDebugHistory";
 
         public CDebugHistory (IntPtr pointer) : base(pointer) {}
@@ -17833,7 +17833,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvEntityMaker : CPointEntity {
+    public partial class CEnvEntityMaker : CPointEntity {
         private const string ThisClassName = "CEnvEntityMaker";
 
         public CEnvEntityMaker (IntPtr pointer) : base(pointer) {}
@@ -17842,7 +17842,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CInfoInstructorHintTarget : CPointEntity {
+    public partial class CInfoInstructorHintTarget : CPointEntity {
         private const string ThisClassName = "CInfoInstructorHintTarget";
 
         public CInfoInstructorHintTarget (IntPtr pointer) : base(pointer) {}
@@ -17851,7 +17851,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvInstructorHint : CPointEntity {
+    public partial class CEnvInstructorHint : CPointEntity {
         private const string ThisClassName = "CEnvInstructorHint";
 
         public CEnvInstructorHint (IntPtr pointer) : base(pointer) {}
@@ -17860,7 +17860,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvInstructorVRHint : CPointEntity {
+    public partial class CEnvInstructorVRHint : CPointEntity {
         private const string ThisClassName = "CEnvInstructorVRHint";
 
         public CEnvInstructorVRHint (IntPtr pointer) : base(pointer) {}
@@ -17869,7 +17869,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CInstructorEventEntity : CPointEntity {
+    public partial class CInstructorEventEntity : CPointEntity {
         private const string ThisClassName = "CInstructorEventEntity";
 
         public CInstructorEventEntity (IntPtr pointer) : base(pointer) {}
@@ -17878,7 +17878,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvScreenOverlay : CPointEntity {
+    public partial class CEnvScreenOverlay : CPointEntity {
         private const string ThisClassName = "CEnvScreenOverlay";
 
         public CEnvScreenOverlay (IntPtr pointer) : base(pointer) {}
@@ -17910,7 +17910,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvFade : CLogicalEntity {
+    public partial class CEnvFade : CLogicalEntity {
         private const string ThisClassName = "CEnvFade";
 
         public CEnvFade (IntPtr pointer) : base(pointer) {}
@@ -17919,7 +17919,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCredits : CPointEntity {
+    public partial class CCredits : CPointEntity {
         private const string ThisClassName = "CCredits";
 
         public CCredits (IntPtr pointer) : base(pointer) {}
@@ -17928,7 +17928,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvShake : CPointEntity {
+    public partial class CEnvShake : CPointEntity {
         private const string ThisClassName = "CEnvShake";
 
         public CEnvShake (IntPtr pointer) : base(pointer) {}
@@ -17937,7 +17937,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvTilt : CPointEntity {
+    public partial class CEnvTilt : CPointEntity {
         private const string ThisClassName = "CEnvTilt";
 
         public CEnvTilt (IntPtr pointer) : base(pointer) {}
@@ -17946,7 +17946,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvSpark : CPointEntity {
+    public partial class CEnvSpark : CPointEntity {
         private const string ThisClassName = "CEnvSpark";
 
         public CEnvSpark (IntPtr pointer) : base(pointer) {}
@@ -17955,7 +17955,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CShower : CModelPointEntity {
+    public partial class CShower : CModelPointEntity {
         private const string ThisClassName = "CShower";
 
         public CShower (IntPtr pointer) : base(pointer) {}
@@ -17964,7 +17964,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvExplosion : CModelPointEntity {
+    public partial class CEnvExplosion : CModelPointEntity {
         private const string ThisClassName = "CEnvExplosion";
 
         public CEnvExplosion (IntPtr pointer) : base(pointer) {}
@@ -17973,7 +17973,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFilterName : CBaseFilter {
+    public partial class CFilterName : CBaseFilter {
         private const string ThisClassName = "CFilterName";
 
         public CFilterName (IntPtr pointer) : base(pointer) {}
@@ -17982,7 +17982,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFilterModel : CBaseFilter {
+    public partial class CFilterModel : CBaseFilter {
         private const string ThisClassName = "CFilterModel";
 
         public CFilterModel (IntPtr pointer) : base(pointer) {}
@@ -17991,7 +17991,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFilterContext : CBaseFilter {
+    public partial class CFilterContext : CBaseFilter {
         private const string ThisClassName = "CFilterContext";
 
         public CFilterContext (IntPtr pointer) : base(pointer) {}
@@ -18000,7 +18000,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class FilterTeam : CBaseFilter {
+    public partial class FilterTeam : CBaseFilter {
         private const string ThisClassName = "FilterTeam";
 
         public FilterTeam (IntPtr pointer) : base(pointer) {}
@@ -18009,7 +18009,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFilterMassGreater : CBaseFilter {
+    public partial class CFilterMassGreater : CBaseFilter {
         private const string ThisClassName = "CFilterMassGreater";
 
         public CFilterMassGreater (IntPtr pointer) : base(pointer) {}
@@ -18018,7 +18018,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class FilterDamageType : CBaseFilter {
+    public partial class FilterDamageType : CBaseFilter {
         private const string ThisClassName = "FilterDamageType";
 
         public FilterDamageType (IntPtr pointer) : base(pointer) {}
@@ -18027,7 +18027,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class FilterHealth : CBaseFilter {
+    public partial class FilterHealth : CBaseFilter {
         private const string ThisClassName = "FilterHealth";
 
         public FilterHealth (IntPtr pointer) : base(pointer) {}
@@ -18036,7 +18036,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFilterEnemy : CBaseFilter {
+    public partial class CFilterEnemy : CBaseFilter {
         private const string ThisClassName = "CFilterEnemy";
 
         public CFilterEnemy (IntPtr pointer) : base(pointer) {}
@@ -18045,7 +18045,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFilterAttributeInt : CBaseFilter {
+    public partial class CFilterAttributeInt : CBaseFilter {
         private const string ThisClassName = "CFilterAttributeInt";
 
         public CFilterAttributeInt (IntPtr pointer) : base(pointer) {}
@@ -18054,7 +18054,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFire : CBaseModelEntity {
+    public partial class CFire : CBaseModelEntity {
         private const string ThisClassName = "CFire";
 
         public CFire (IntPtr pointer) : base(pointer) {}
@@ -18063,7 +18063,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvFireSource : CBaseEntity {
+    public partial class CEnvFireSource : CBaseEntity {
         private const string ThisClassName = "CEnvFireSource";
 
         public CEnvFireSource (IntPtr pointer) : base(pointer) {}
@@ -18072,7 +18072,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvFireSensor : CBaseEntity {
+    public partial class CEnvFireSensor : CBaseEntity {
         private const string ThisClassName = "CEnvFireSensor";
 
         public CEnvFireSensor (IntPtr pointer) : base(pointer) {}
@@ -18081,7 +18081,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFuncTimescale : CBaseEntity {
+    public partial class CFuncTimescale : CBaseEntity {
         private const string ThisClassName = "CFuncTimescale";
 
         public CFuncTimescale (IntPtr pointer) : base(pointer) {}
@@ -18090,7 +18090,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CLightGlow : CBaseModelEntity {
+    public partial class CLightGlow : CBaseModelEntity {
         private const string ThisClassName = "CLightGlow";
 
         public CLightGlow (IntPtr pointer) : base(pointer) {}
@@ -18140,7 +18140,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CLogicAchievement : CLogicalEntity {
+    public partial class CLogicAchievement : CLogicalEntity {
         private const string ThisClassName = "CLogicAchievement";
 
         public CLogicAchievement (IntPtr pointer) : base(pointer) {}
@@ -18149,7 +18149,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CLogicGameEventListener : CLogicalEntity {
+    public partial class CLogicGameEventListener : CLogicalEntity {
         private const string ThisClassName = "CLogicGameEventListener";
 
         public CLogicGameEventListener (IntPtr pointer) : base(pointer) {}
@@ -18163,7 +18163,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CLogicMeasureMovement : CLogicalEntity {
+    public partial class CLogicMeasureMovement : CLogicalEntity {
         private const string ThisClassName = "CLogicMeasureMovement";
 
         public CLogicMeasureMovement (IntPtr pointer) : base(pointer) {}
@@ -18172,7 +18172,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CLogicNavigation : CLogicalEntity {
+    public partial class CLogicNavigation : CLogicalEntity {
         private const string ThisClassName = "CLogicNavigation";
 
         public CLogicNavigation (IntPtr pointer) : base(pointer) {}
@@ -18181,7 +18181,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CLogicNPCCounter : CBaseEntity {
+    public partial class CLogicNPCCounter : CBaseEntity {
         private const string ThisClassName = "CLogicNPCCounter";
 
         public CLogicNPCCounter (IntPtr pointer) : base(pointer) {}
@@ -18190,7 +18190,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CLogicNPCCounterAABB : CLogicNPCCounter {
+    public partial class CLogicNPCCounterAABB : CLogicNPCCounter {
         private const string ThisClassName = "CLogicNPCCounterAABB";
 
         public CLogicNPCCounterAABB (IntPtr pointer) : base(pointer) {}
@@ -18199,7 +18199,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CLogicNPCCounterOBB : CLogicNPCCounterAABB {
+    public partial class CLogicNPCCounterOBB : CLogicNPCCounterAABB {
         private const string ThisClassName = "CLogicNPCCounterOBB";
 
         public CLogicNPCCounterOBB (IntPtr pointer) : base(pointer) {}
@@ -18208,7 +18208,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CLogicPlayerProxy : CLogicalEntity {
+    public partial class CLogicPlayerProxy : CLogicalEntity {
         private const string ThisClassName = "CLogicPlayerProxy";
 
         public CLogicPlayerProxy (IntPtr pointer) : base(pointer) {}
@@ -18217,7 +18217,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CLogicAuto : CBaseEntity {
+    public partial class CLogicAuto : CBaseEntity {
         private const string ThisClassName = "CLogicAuto";
 
         public CLogicAuto (IntPtr pointer) : base(pointer) {}
@@ -18226,7 +18226,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CLogicScript : CPointEntity {
+    public partial class CLogicScript : CPointEntity {
         private const string ThisClassName = "CLogicScript";
 
         public CLogicScript (IntPtr pointer) : base(pointer) {}
@@ -18235,7 +18235,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTimerEntity : CLogicalEntity {
+    public partial class CTimerEntity : CLogicalEntity {
         private const string ThisClassName = "CTimerEntity";
 
         public CTimerEntity (IntPtr pointer) : base(pointer) {}
@@ -18244,7 +18244,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CLogicLineToEntity : CLogicalEntity {
+    public partial class CLogicLineToEntity : CLogicalEntity {
         private const string ThisClassName = "CLogicLineToEntity";
 
         public CLogicLineToEntity (IntPtr pointer) : base(pointer) {}
@@ -18253,7 +18253,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CMathRemap : CLogicalEntity {
+    public partial class CMathRemap : CLogicalEntity {
         private const string ThisClassName = "CMathRemap";
 
         public CMathRemap (IntPtr pointer) : base(pointer) {}
@@ -18262,7 +18262,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CMathColorBlend : CLogicalEntity {
+    public partial class CMathColorBlend : CLogicalEntity {
         private const string ThisClassName = "CMathColorBlend";
 
         public CMathColorBlend (IntPtr pointer) : base(pointer) {}
@@ -18271,7 +18271,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvGlobal : CLogicalEntity {
+    public partial class CEnvGlobal : CLogicalEntity {
         private const string ThisClassName = "CEnvGlobal";
 
         public CEnvGlobal (IntPtr pointer) : base(pointer) {}
@@ -18280,7 +18280,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CMultiSource : CLogicalEntity {
+    public partial class CMultiSource : CLogicalEntity {
         private const string ThisClassName = "CMultiSource";
 
         public CMultiSource (IntPtr pointer) : base(pointer) {}
@@ -18289,7 +18289,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CMathCounter : CLogicalEntity {
+    public partial class CMathCounter : CLogicalEntity {
         private const string ThisClassName = "CMathCounter";
 
         public CMathCounter (IntPtr pointer) : base(pointer) {}
@@ -18298,7 +18298,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CLogicCase : CLogicalEntity {
+    public partial class CLogicCase : CLogicalEntity {
         private const string ThisClassName = "CLogicCase";
 
         public CLogicCase (IntPtr pointer) : base(pointer) {}
@@ -18307,7 +18307,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CLogicCompare : CLogicalEntity {
+    public partial class CLogicCompare : CLogicalEntity {
         private const string ThisClassName = "CLogicCompare";
 
         public CLogicCompare (IntPtr pointer) : base(pointer) {}
@@ -18316,7 +18316,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CLogicAutosave : CLogicalEntity {
+    public partial class CLogicAutosave : CLogicalEntity {
         private const string ThisClassName = "CLogicAutosave";
 
         public CLogicAutosave (IntPtr pointer) : base(pointer) {}
@@ -18325,7 +18325,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CLogicActiveAutosave : CLogicAutosave {
+    public partial class CLogicActiveAutosave : CLogicAutosave {
         private const string ThisClassName = "CLogicActiveAutosave";
 
         public CLogicActiveAutosave (IntPtr pointer) : base(pointer) {}
@@ -18334,7 +18334,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CLogicDistanceAutosave : CLogicalEntity {
+    public partial class CLogicDistanceAutosave : CLogicalEntity {
         private const string ThisClassName = "CLogicDistanceAutosave";
 
         public CLogicDistanceAutosave (IntPtr pointer) : base(pointer) {}
@@ -18343,7 +18343,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CLogicCollisionPair : CLogicalEntity {
+    public partial class CLogicCollisionPair : CLogicalEntity {
         private const string ThisClassName = "CLogicCollisionPair";
 
         public CLogicCollisionPair (IntPtr pointer) : base(pointer) {}
@@ -18352,7 +18352,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CLogicBranchList : CLogicalEntity {
+    public partial class CLogicBranchList : CLogicalEntity {
         private const string ThisClassName = "CLogicBranchList";
 
         public CLogicBranchList (IntPtr pointer) : base(pointer) {}
@@ -18361,7 +18361,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CLogicGameEvent : CLogicalEntity {
+    public partial class CLogicGameEvent : CLogicalEntity {
         private const string ThisClassName = "CLogicGameEvent";
 
         public CLogicGameEvent (IntPtr pointer) : base(pointer) {}
@@ -18370,7 +18370,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CMessageEntity : CPointEntity {
+    public partial class CMessageEntity : CPointEntity {
         private const string ThisClassName = "CMessageEntity";
 
         public CMessageEntity (IntPtr pointer) : base(pointer) {}
@@ -18379,7 +18379,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTriggerBrush : CBaseModelEntity {
+    public partial class CTriggerBrush : CBaseModelEntity {
         private const string ThisClassName = "CTriggerBrush";
 
         public CTriggerBrush (IntPtr pointer) : base(pointer) {}
@@ -18388,7 +18388,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPathKeyFrame : CLogicalEntity {
+    public partial class CPathKeyFrame : CLogicalEntity {
         private const string ThisClassName = "CPathKeyFrame";
 
         public CPathKeyFrame (IntPtr pointer) : base(pointer) {}
@@ -18397,7 +18397,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBaseMoveBehavior : CPathKeyFrame {
+    public partial class CBaseMoveBehavior : CPathKeyFrame {
         private const string ThisClassName = "CBaseMoveBehavior";
 
         public CBaseMoveBehavior (IntPtr pointer) : base(pointer) {}
@@ -18406,7 +18406,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPathCorner : CPointEntity {
+    public partial class CPathCorner : CPointEntity {
         private const string ThisClassName = "CPathCorner";
 
         public CPathCorner (IntPtr pointer) : base(pointer) {}
@@ -18415,7 +18415,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPhysForce : CPointEntity {
+    public partial class CPhysForce : CPointEntity {
         private const string ThisClassName = "CPhysForce";
 
         public CPhysForce (IntPtr pointer) : base(pointer) {}
@@ -18424,7 +18424,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPhysThruster : CPhysForce {
+    public partial class CPhysThruster : CPhysForce {
         private const string ThisClassName = "CPhysThruster";
 
         public CPhysThruster (IntPtr pointer) : base(pointer) {}
@@ -18433,7 +18433,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPhysTorque : CPhysForce {
+    public partial class CPhysTorque : CPhysForce {
         private const string ThisClassName = "CPhysTorque";
 
         public CPhysTorque (IntPtr pointer) : base(pointer) {}
@@ -18442,7 +18442,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPhysMotor : CLogicalEntity {
+    public partial class CPhysMotor : CLogicalEntity {
         private const string ThisClassName = "CPhysMotor";
 
         public CPhysMotor (IntPtr pointer) : base(pointer) {}
@@ -18451,7 +18451,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CKeepUpright : CPointEntity {
+    public partial class CKeepUpright : CPointEntity {
         private const string ThisClassName = "CKeepUpright";
 
         public CKeepUpright (IntPtr pointer) : base(pointer) {}
@@ -18460,7 +18460,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPhysConstraint : CLogicalEntity {
+    public partial class CPhysConstraint : CLogicalEntity {
         private const string ThisClassName = "CPhysConstraint";
 
         public CPhysConstraint (IntPtr pointer) : base(pointer) {}
@@ -18469,7 +18469,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPhysHinge : CPhysConstraint {
+    public partial class CPhysHinge : CPhysConstraint {
         private const string ThisClassName = "CPhysHinge";
 
         public CPhysHinge (IntPtr pointer) : base(pointer) {}
@@ -18478,7 +18478,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPhysHingeAlias_phys_hinge_local : CPhysHinge {
+    public partial class CPhysHingeAlias_phys_hinge_local : CPhysHinge {
         private const string ThisClassName = "CPhysHingeAlias_phys_hinge_local";
 
         public CPhysHingeAlias_phys_hinge_local (IntPtr pointer) : base(pointer) {}
@@ -18487,7 +18487,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPhysBallSocket : CPhysConstraint {
+    public partial class CPhysBallSocket : CPhysConstraint {
         private const string ThisClassName = "CPhysBallSocket";
 
         public CPhysBallSocket (IntPtr pointer) : base(pointer) {}
@@ -18496,7 +18496,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPhysSlideConstraint : CPhysConstraint {
+    public partial class CPhysSlideConstraint : CPhysConstraint {
         private const string ThisClassName = "CPhysSlideConstraint";
 
         public CPhysSlideConstraint (IntPtr pointer) : base(pointer) {}
@@ -18505,7 +18505,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPhysFixed : CPhysConstraint {
+    public partial class CPhysFixed : CPhysConstraint {
         private const string ThisClassName = "CPhysFixed";
 
         public CPhysFixed (IntPtr pointer) : base(pointer) {}
@@ -18514,7 +18514,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPhysPulley : CPhysConstraint {
+    public partial class CPhysPulley : CPhysConstraint {
         private const string ThisClassName = "CPhysPulley";
 
         public CPhysPulley (IntPtr pointer) : base(pointer) {}
@@ -18523,7 +18523,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPhysLength : CPhysConstraint {
+    public partial class CPhysLength : CPhysConstraint {
         private const string ThisClassName = "CPhysLength";
 
         public CPhysLength (IntPtr pointer) : base(pointer) {}
@@ -18532,7 +18532,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CRagdollConstraint : CPhysConstraint {
+    public partial class CRagdollConstraint : CPhysConstraint {
         private const string ThisClassName = "CRagdollConstraint";
 
         public CRagdollConstraint (IntPtr pointer) : base(pointer) {}
@@ -18541,7 +18541,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CGenericConstraint : CPhysConstraint {
+    public partial class CGenericConstraint : CPhysConstraint {
         private const string ThisClassName = "CGenericConstraint";
 
         public CGenericConstraint (IntPtr pointer) : base(pointer) {}
@@ -18550,7 +18550,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSplineConstraint : CPhysConstraint {
+    public partial class CSplineConstraint : CPhysConstraint {
         private const string ThisClassName = "CSplineConstraint";
 
         public CSplineConstraint (IntPtr pointer) : base(pointer) {}
@@ -18559,7 +18559,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPhysWheelConstraint : CPhysConstraint {
+    public partial class CPhysWheelConstraint : CPhysConstraint {
         private const string ThisClassName = "CPhysWheelConstraint";
 
         public CPhysWheelConstraint (IntPtr pointer) : base(pointer) {}
@@ -18568,7 +18568,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPhysicsEntitySolver : CLogicalEntity {
+    public partial class CPhysicsEntitySolver : CLogicalEntity {
         private const string ThisClassName = "CPhysicsEntitySolver";
 
         public CPhysicsEntitySolver (IntPtr pointer) : base(pointer) {}
@@ -18577,7 +18577,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPhysicsSpring : CBaseEntity {
+    public partial class CPhysicsSpring : CBaseEntity {
         private const string ThisClassName = "CPhysicsSpring";
 
         public CPhysicsSpring (IntPtr pointer) : base(pointer) {}
@@ -18586,7 +18586,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPointPush : CPointEntity {
+    public partial class CPointPush : CPointEntity {
         private const string ThisClassName = "CPointPush";
 
         public CPointPush (IntPtr pointer) : base(pointer) {}
@@ -18595,7 +18595,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CInfoPlayerStart : CPointEntity {
+    public partial class CInfoPlayerStart : CPointEntity {
         private const string ThisClassName = "CInfoPlayerStart";
 
         public CInfoPlayerStart (IntPtr pointer) : base(pointer) {}
@@ -18604,7 +18604,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPointEntityFinder : CBaseEntity {
+    public partial class CPointEntityFinder : CBaseEntity {
         private const string ThisClassName = "CPointEntityFinder";
 
         public CPointEntityFinder (IntPtr pointer) : base(pointer) {}
@@ -18613,7 +18613,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPointValueRemapper : CBaseEntity {
+    public partial class CPointValueRemapper : CBaseEntity {
         private const string ThisClassName = "CPointValueRemapper";
 
         public CPointValueRemapper (IntPtr pointer) : base(pointer) {}
@@ -18723,7 +18723,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPointWorldText : CModelPointEntity {
+    public partial class CPointWorldText : CModelPointEntity {
         private const string ThisClassName = "CPointWorldText";
 
         public CPointWorldText (IntPtr pointer) : base(pointer) {}
@@ -18791,7 +18791,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPointAngleSensor : CPointEntity {
+    public partial class CPointAngleSensor : CPointEntity {
         private const string ThisClassName = "CPointAngleSensor";
 
         public CPointAngleSensor (IntPtr pointer) : base(pointer) {}
@@ -18800,7 +18800,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPointProximitySensor : CPointEntity {
+    public partial class CPointProximitySensor : CPointEntity {
         private const string ThisClassName = "CPointProximitySensor";
 
         public CPointProximitySensor (IntPtr pointer) : base(pointer) {}
@@ -18809,7 +18809,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPointAngularVelocitySensor : CPointEntity {
+    public partial class CPointAngularVelocitySensor : CPointEntity {
         private const string ThisClassName = "CPointAngularVelocitySensor";
 
         public CPointAngularVelocitySensor (IntPtr pointer) : base(pointer) {}
@@ -18818,7 +18818,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPointVelocitySensor : CPointEntity {
+    public partial class CPointVelocitySensor : CPointEntity {
         private const string ThisClassName = "CPointVelocitySensor";
 
         public CPointVelocitySensor (IntPtr pointer) : base(pointer) {}
@@ -18827,7 +18827,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPointHurt : CPointEntity {
+    public partial class CPointHurt : CPointEntity {
         private const string ThisClassName = "CPointHurt";
 
         public CPointHurt (IntPtr pointer) : base(pointer) {}
@@ -18836,7 +18836,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPointTeleport : CServerOnlyPointEntity {
+    public partial class CPointTeleport : CServerOnlyPointEntity {
         private const string ThisClassName = "CPointTeleport";
 
         public CPointTeleport (IntPtr pointer) : base(pointer) {}
@@ -18845,7 +18845,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnableMotionFixup : CBaseEntity {
+    public partial class CEnableMotionFixup : CBaseEntity {
         private const string ThisClassName = "CEnableMotionFixup";
 
         public CEnableMotionFixup (IntPtr pointer) : base(pointer) {}
@@ -18854,7 +18854,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFuncPropRespawnZone : CBaseEntity {
+    public partial class CFuncPropRespawnZone : CBaseEntity {
         private const string ThisClassName = "CFuncPropRespawnZone";
 
         public CFuncPropRespawnZone (IntPtr pointer) : base(pointer) {}
@@ -18863,7 +18863,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CRagdollManager : CBaseEntity {
+    public partial class CRagdollManager : CBaseEntity {
         private const string ThisClassName = "CRagdollManager";
 
         public CRagdollManager (IntPtr pointer) : base(pointer) {}
@@ -18872,7 +18872,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CRevertSaved : CModelPointEntity {
+    public partial class CRevertSaved : CModelPointEntity {
         private const string ThisClassName = "CRevertSaved";
 
         public CRevertSaved (IntPtr pointer) : base(pointer) {}
@@ -18881,7 +18881,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSceneListManager : CLogicalEntity {
+    public partial class CSceneListManager : CLogicalEntity {
         private const string ThisClassName = "CSceneListManager";
 
         public CSceneListManager (IntPtr pointer) : base(pointer) {}
@@ -18890,7 +18890,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSceneEntity : CPointEntity {
+    public partial class CSceneEntity : CPointEntity {
         private const string ThisClassName = "CSceneEntity";
 
         public CSceneEntity (IntPtr pointer) : base(pointer) {}
@@ -18934,7 +18934,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CScriptedSequence : CBaseEntity {
+    public partial class CScriptedSequence : CBaseEntity {
         private const string ThisClassName = "CScriptedSequence";
 
         public CScriptedSequence (IntPtr pointer) : base(pointer) {}
@@ -18943,7 +18943,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSoundOpvarSetEntity : CBaseEntity {
+    public partial class CSoundOpvarSetEntity : CBaseEntity {
         private const string ThisClassName = "CSoundOpvarSetEntity";
 
         public CSoundOpvarSetEntity (IntPtr pointer) : base(pointer) {}
@@ -18952,7 +18952,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CAISound : CPointEntity {
+    public partial class CAISound : CPointEntity {
         private const string ThisClassName = "CAISound";
 
         public CAISound (IntPtr pointer) : base(pointer) {}
@@ -18961,7 +18961,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSoundStackSave : CLogicalEntity {
+    public partial class CSoundStackSave : CLogicalEntity {
         private const string ThisClassName = "CSoundStackSave";
 
         public CSoundStackSave (IntPtr pointer) : base(pointer) {}
@@ -18970,7 +18970,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSoundEventEntity : CBaseEntity {
+    public partial class CSoundEventEntity : CBaseEntity {
         private const string ThisClassName = "CSoundEventEntity";
 
         public CSoundEventEntity (IntPtr pointer) : base(pointer) {}
@@ -18979,7 +18979,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSoundEventEntityAlias_snd_event_point : CSoundEventEntity {
+    public partial class CSoundEventEntityAlias_snd_event_point : CSoundEventEntity {
         private const string ThisClassName = "CSoundEventEntityAlias_snd_event_point";
 
         public CSoundEventEntityAlias_snd_event_point (IntPtr pointer) : base(pointer) {}
@@ -18988,7 +18988,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSoundEventAABBEntity : CSoundEventEntity {
+    public partial class CSoundEventAABBEntity : CSoundEventEntity {
         private const string ThisClassName = "CSoundEventAABBEntity";
 
         public CSoundEventAABBEntity (IntPtr pointer) : base(pointer) {}
@@ -18997,7 +18997,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSoundEventOBBEntity : CSoundEventEntity {
+    public partial class CSoundEventOBBEntity : CSoundEventEntity {
         private const string ThisClassName = "CSoundEventOBBEntity";
 
         public CSoundEventOBBEntity (IntPtr pointer) : base(pointer) {}
@@ -19006,7 +19006,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSoundEventPathCornerEntity : CSoundEventEntity {
+    public partial class CSoundEventPathCornerEntity : CSoundEventEntity {
         private const string ThisClassName = "CSoundEventPathCornerEntity";
 
         public CSoundEventPathCornerEntity (IntPtr pointer) : base(pointer) {}
@@ -19015,7 +19015,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSoundEventParameter : CBaseEntity {
+    public partial class CSoundEventParameter : CBaseEntity {
         private const string ThisClassName = "CSoundEventParameter";
 
         public CSoundEventParameter (IntPtr pointer) : base(pointer) {}
@@ -19024,7 +19024,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvSoundscapeProxyAlias_snd_soundscape_proxy : CEnvSoundscapeProxy {
+    public partial class CEnvSoundscapeProxyAlias_snd_soundscape_proxy : CEnvSoundscapeProxy {
         private const string ThisClassName = "CEnvSoundscapeProxyAlias_snd_soundscape_proxy";
 
         public CEnvSoundscapeProxyAlias_snd_soundscape_proxy (IntPtr pointer) : base(pointer) {}
@@ -19033,7 +19033,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvSoundscapeAlias_snd_soundscape : CEnvSoundscape {
+    public partial class CEnvSoundscapeAlias_snd_soundscape : CEnvSoundscape {
         private const string ThisClassName = "CEnvSoundscapeAlias_snd_soundscape";
 
         public CEnvSoundscapeAlias_snd_soundscape (IntPtr pointer) : base(pointer) {}
@@ -19042,7 +19042,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvSoundscapeTriggerableAlias_snd_soundscape_triggerable : CEnvSoundscapeTriggerable {
+    public partial class CEnvSoundscapeTriggerableAlias_snd_soundscape_triggerable : CEnvSoundscapeTriggerable {
         private const string ThisClassName = "CEnvSoundscapeTriggerableAlias_snd_soundscape_triggerable";
 
         public CEnvSoundscapeTriggerableAlias_snd_soundscape_triggerable (IntPtr pointer) : base(pointer) {}
@@ -19051,7 +19051,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CNullEntity : CBaseEntity {
+    public partial class CNullEntity : CBaseEntity {
         private const string ThisClassName = "CNullEntity";
 
         public CNullEntity (IntPtr pointer) : base(pointer) {}
@@ -19060,7 +19060,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBaseDMStart : CPointEntity {
+    public partial class CBaseDMStart : CPointEntity {
         private const string ThisClassName = "CBaseDMStart";
 
         public CBaseDMStart (IntPtr pointer) : base(pointer) {}
@@ -19069,7 +19069,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CInfoLandmark : CPointEntity {
+    public partial class CInfoLandmark : CPointEntity {
         private const string ThisClassName = "CInfoLandmark";
 
         public CInfoLandmark (IntPtr pointer) : base(pointer) {}
@@ -19078,7 +19078,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSun : CBaseModelEntity {
+    public partial class CSun : CBaseModelEntity {
         private const string ThisClassName = "CSun";
 
         public CSun (IntPtr pointer) : base(pointer) {}
@@ -19152,7 +19152,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTankTargetChange : CPointEntity {
+    public partial class CTankTargetChange : CPointEntity {
         private const string ThisClassName = "CTankTargetChange";
 
         public CTankTargetChange (IntPtr pointer) : base(pointer) {}
@@ -19161,7 +19161,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTankTrainAI : CPointEntity {
+    public partial class CTankTrainAI : CPointEntity {
         private const string ThisClassName = "CTankTrainAI";
 
         public CTankTrainAI (IntPtr pointer) : base(pointer) {}
@@ -19170,7 +19170,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CHandleTest : CBaseEntity {
+    public partial class CHandleTest : CBaseEntity {
         private const string ThisClassName = "CHandleTest";
 
         public CHandleTest (IntPtr pointer) : base(pointer) {}
@@ -19190,7 +19190,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CHandleDummy : CBaseEntity {
+    public partial class CHandleDummy : CBaseEntity {
         private const string ThisClassName = "CHandleDummy";
 
         public CHandleDummy (IntPtr pointer) : base(pointer) {}
@@ -19199,7 +19199,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPlatTrigger : CBaseModelEntity {
+    public partial class CPlatTrigger : CBaseModelEntity {
         private const string ThisClassName = "CPlatTrigger";
 
         public CPlatTrigger (IntPtr pointer) : base(pointer) {}
@@ -19208,7 +19208,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFuncTrainControls : CBaseModelEntity {
+    public partial class CFuncTrainControls : CBaseModelEntity {
         private const string ThisClassName = "CFuncTrainControls";
 
         public CFuncTrainControls (IntPtr pointer) : base(pointer) {}
@@ -19217,7 +19217,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTriggerVolume : CBaseModelEntity {
+    public partial class CTriggerVolume : CBaseModelEntity {
         private const string ThisClassName = "CTriggerVolume";
 
         public CTriggerVolume (IntPtr pointer) : base(pointer) {}
@@ -19226,7 +19226,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CInfoTeleportDestination : CPointEntity {
+    public partial class CInfoTeleportDestination : CPointEntity {
         private const string ThisClassName = "CInfoTeleportDestination";
 
         public CInfoTeleportDestination (IntPtr pointer) : base(pointer) {}
@@ -19235,7 +19235,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CAI_ChangeTarget : CBaseEntity {
+    public partial class CAI_ChangeTarget : CBaseEntity {
         private const string ThisClassName = "CAI_ChangeTarget";
 
         public CAI_ChangeTarget (IntPtr pointer) : base(pointer) {}
@@ -19244,7 +19244,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CAI_ChangeHintGroup : CBaseEntity {
+    public partial class CAI_ChangeHintGroup : CBaseEntity {
         private const string ThisClassName = "CAI_ChangeHintGroup";
 
         public CAI_ChangeHintGroup (IntPtr pointer) : base(pointer) {}
@@ -19253,7 +19253,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CLogicProximity : CPointEntity {
+    public partial class CLogicProximity : CPointEntity {
         private const string ThisClassName = "CLogicProximity";
 
         public CLogicProximity (IntPtr pointer) : base(pointer) {}
@@ -19262,7 +19262,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CInfoSpawnGroupLandmark : CPointEntity {
+    public partial class CInfoSpawnGroupLandmark : CPointEntity {
         private const string ThisClassName = "CInfoSpawnGroupLandmark";
 
         public CInfoSpawnGroupLandmark (IntPtr pointer) : base(pointer) {}
@@ -19271,7 +19271,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CInfoSpawnGroupLoadUnload : CLogicalEntity {
+    public partial class CInfoSpawnGroupLoadUnload : CLogicalEntity {
         private const string ThisClassName = "CInfoSpawnGroupLoadUnload";
 
         public CInfoSpawnGroupLoadUnload (IntPtr pointer) : base(pointer) {}
@@ -19280,7 +19280,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPointPulse : CBaseEntity {
+    public partial class CPointPulse : CBaseEntity {
         private const string ThisClassName = "CPointPulse";
 
         public CPointPulse (IntPtr pointer) : base(pointer) {}
@@ -19289,7 +19289,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPointScript : CBaseEntity {
+    public partial class CPointScript : CBaseEntity {
         private const string ThisClassName = "CPointScript";
 
         public CPointScript (IntPtr pointer) : base(pointer) {}
@@ -19298,7 +19298,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFuncNavObstruction : CBaseModelEntity {
+    public partial class CFuncNavObstruction : CBaseModelEntity {
         private const string ThisClassName = "CFuncNavObstruction";
 
         public CFuncNavObstruction (IntPtr pointer) : base(pointer) {}
@@ -19307,7 +19307,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CAmbientGeneric : CPointEntity {
+    public partial class CAmbientGeneric : CPointEntity {
         private const string ThisClassName = "CAmbientGeneric";
 
         public CAmbientGeneric (IntPtr pointer) : base(pointer) {}
@@ -19316,7 +19316,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBaseToggle : CBaseModelEntity {
+    public partial class CBaseToggle : CBaseModelEntity {
         private const string ThisClassName = "CBaseToggle";
 
         public CBaseToggle (IntPtr pointer) : base(pointer) {}
@@ -19325,7 +19325,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBaseButton : CBaseToggle {
+    public partial class CBaseButton : CBaseToggle {
         private const string ThisClassName = "CBaseButton";
 
         public CBaseButton (IntPtr pointer) : base(pointer) {}
@@ -19345,7 +19345,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPhysicalButton : CBaseButton {
+    public partial class CPhysicalButton : CBaseButton {
         private const string ThisClassName = "CPhysicalButton";
 
         public CPhysicalButton (IntPtr pointer) : base(pointer) {}
@@ -19354,7 +19354,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CRotButton : CBaseButton {
+    public partial class CRotButton : CBaseButton {
         private const string ThisClassName = "CRotButton";
 
         public CRotButton (IntPtr pointer) : base(pointer) {}
@@ -19363,7 +19363,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CMomentaryRotButton : CRotButton {
+    public partial class CMomentaryRotButton : CRotButton {
         private const string ThisClassName = "CMomentaryRotButton";
 
         public CMomentaryRotButton (IntPtr pointer) : base(pointer) {}
@@ -19372,7 +19372,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CRagdollMagnet : CPointEntity {
+    public partial class CRagdollMagnet : CPointEntity {
         private const string ThisClassName = "CRagdollMagnet";
 
         public CRagdollMagnet (IntPtr pointer) : base(pointer) {}
@@ -19381,7 +19381,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBaseDoor : CBaseToggle {
+    public partial class CBaseDoor : CBaseToggle {
         private const string ThisClassName = "CBaseDoor";
 
         public CBaseDoor (IntPtr pointer) : base(pointer) {}
@@ -19395,7 +19395,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEntityBlocker : CBaseModelEntity {
+    public partial class CEntityBlocker : CBaseModelEntity {
         private const string ThisClassName = "CEntityBlocker";
 
         public CEntityBlocker (IntPtr pointer) : base(pointer) {}
@@ -19404,7 +19404,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEntityDissolve : CBaseModelEntity {
+    public partial class CEntityDissolve : CBaseModelEntity {
         private const string ThisClassName = "CEntityDissolve";
 
         public CEntityDissolve (IntPtr pointer) : base(pointer) {}
@@ -19472,7 +19472,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvProjectedTexture : CModelPointEntity {
+    public partial class CEnvProjectedTexture : CModelPointEntity {
         private const string ThisClassName = "CEnvProjectedTexture";
 
         public CEnvProjectedTexture (IntPtr pointer) : base(pointer) {}
@@ -19654,7 +19654,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvDecal : CBaseModelEntity {
+    public partial class CEnvDecal : CBaseModelEntity {
         private const string ThisClassName = "CEnvDecal";
 
         public CEnvDecal (IntPtr pointer) : base(pointer) {}
@@ -19710,7 +19710,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CMessage : CPointEntity {
+    public partial class CMessage : CPointEntity {
         private const string ThisClassName = "CMessage";
 
         public CMessage (IntPtr pointer) : base(pointer) {}
@@ -19719,7 +19719,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvMicrophone : CPointEntity {
+    public partial class CEnvMicrophone : CPointEntity {
         private const string ThisClassName = "CEnvMicrophone";
 
         public CEnvMicrophone (IntPtr pointer) : base(pointer) {}
@@ -19728,7 +19728,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBreakable : CBaseModelEntity {
+    public partial class CBreakable : CBaseModelEntity {
         private const string ThisClassName = "CBreakable";
 
         public CBreakable (IntPtr pointer) : base(pointer) {}
@@ -19737,7 +19737,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFuncMoveLinear : CBaseToggle {
+    public partial class CFuncMoveLinear : CBaseToggle {
         private const string ThisClassName = "CFuncMoveLinear";
 
         public CFuncMoveLinear (IntPtr pointer) : base(pointer) {}
@@ -19746,7 +19746,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFuncRotating : CBaseModelEntity {
+    public partial class CFuncRotating : CBaseModelEntity {
         private const string ThisClassName = "CFuncRotating";
 
         public CFuncRotating (IntPtr pointer) : base(pointer) {}
@@ -19755,7 +19755,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CItemGenericTriggerHelper : CBaseModelEntity {
+    public partial class CItemGenericTriggerHelper : CBaseModelEntity {
         private const string ThisClassName = "CItemGenericTriggerHelper";
 
         public CItemGenericTriggerHelper (IntPtr pointer) : base(pointer) {}
@@ -19764,7 +19764,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CRuleEntity : CBaseModelEntity {
+    public partial class CRuleEntity : CBaseModelEntity {
         private const string ThisClassName = "CRuleEntity";
 
         public CRuleEntity (IntPtr pointer) : base(pointer) {}
@@ -19773,7 +19773,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CRulePointEntity : CRuleEntity {
+    public partial class CRulePointEntity : CRuleEntity {
         private const string ThisClassName = "CRulePointEntity";
 
         public CRulePointEntity (IntPtr pointer) : base(pointer) {}
@@ -19782,7 +19782,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CGamePlayerEquip : CRulePointEntity {
+    public partial class CGamePlayerEquip : CRulePointEntity {
         private const string ThisClassName = "CGamePlayerEquip";
 
         public CGamePlayerEquip (IntPtr pointer) : base(pointer) {}
@@ -19791,7 +19791,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CMarkupVolume : CBaseModelEntity {
+    public partial class CMarkupVolume : CBaseModelEntity {
         private const string ThisClassName = "CMarkupVolume";
 
         public CMarkupVolume (IntPtr pointer) : base(pointer) {}
@@ -19800,7 +19800,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CMarkupVolumeTagged : CMarkupVolume {
+    public partial class CMarkupVolumeTagged : CMarkupVolume {
         private const string ThisClassName = "CMarkupVolumeTagged";
 
         public CMarkupVolumeTagged (IntPtr pointer) : base(pointer) {}
@@ -19809,7 +19809,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CMarkupVolumeWithRef : CMarkupVolumeTagged {
+    public partial class CMarkupVolumeWithRef : CMarkupVolumeTagged {
         private const string ThisClassName = "CMarkupVolumeWithRef";
 
         public CMarkupVolumeWithRef (IntPtr pointer) : base(pointer) {}
@@ -19818,7 +19818,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFuncBrush : CBaseModelEntity {
+    public partial class CFuncBrush : CBaseModelEntity {
         private const string ThisClassName = "CFuncBrush";
 
         public CFuncBrush (IntPtr pointer) : base(pointer) {}
@@ -19827,7 +19827,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPathTrack : CPointEntity {
+    public partial class CPathTrack : CPointEntity {
         private const string ThisClassName = "CPathTrack";
 
         public CPathTrack (IntPtr pointer) : base(pointer) {}
@@ -19836,7 +19836,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPhysBox : CBreakable {
+    public partial class CPhysBox : CBreakable {
         private const string ThisClassName = "CPhysBox";
 
         public CPhysBox (IntPtr pointer) : base(pointer) {}
@@ -19845,7 +19845,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPhysExplosion : CPointEntity {
+    public partial class CPhysExplosion : CPointEntity {
         private const string ThisClassName = "CPhysExplosion";
 
         public CPhysExplosion (IntPtr pointer) : base(pointer) {}
@@ -19854,7 +19854,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPhysImpact : CPointEntity {
+    public partial class CPhysImpact : CPointEntity {
         private const string ThisClassName = "CPhysImpact";
 
         public CPhysImpact (IntPtr pointer) : base(pointer) {}
@@ -19863,7 +19863,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CRopeKeyframe : CBaseModelEntity {
+    public partial class CRopeKeyframe : CBaseModelEntity {
         private const string ThisClassName = "CRopeKeyframe";
 
         public CRopeKeyframe (IntPtr pointer) : base(pointer) {}
@@ -19943,7 +19943,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSoundEnt : CPointEntity {
+    public partial class CSoundEnt : CPointEntity {
         private const string ThisClassName = "CSoundEnt";
 
         public CSoundEnt (IntPtr pointer) : base(pointer) {}
@@ -19952,7 +19952,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSpotlightEnd : CBaseModelEntity {
+    public partial class CSpotlightEnd : CBaseModelEntity {
         private const string ThisClassName = "CSpotlightEnd";
 
         public CSpotlightEnd (IntPtr pointer) : base(pointer) {}
@@ -19972,7 +19972,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFuncTrackTrain : CBaseModelEntity {
+    public partial class CFuncTrackTrain : CBaseModelEntity {
         private const string ThisClassName = "CFuncTrackTrain";
 
         public CFuncTrackTrain (IntPtr pointer) : base(pointer) {}
@@ -19981,7 +19981,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBaseTrigger : CBaseToggle {
+    public partial class CBaseTrigger : CBaseToggle {
         private const string ThisClassName = "CBaseTrigger";
 
         public CBaseTrigger (IntPtr pointer) : base(pointer) {}
@@ -20001,7 +20001,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTriggerMultiple : CBaseTrigger {
+    public partial class CTriggerMultiple : CBaseTrigger {
         private const string ThisClassName = "CTriggerMultiple";
 
         public CTriggerMultiple (IntPtr pointer) : base(pointer) {}
@@ -20010,7 +20010,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTriggerSndSosOpvar : CBaseTrigger {
+    public partial class CTriggerSndSosOpvar : CBaseTrigger {
         private const string ThisClassName = "CTriggerSndSosOpvar";
 
         public CTriggerSndSosOpvar (IntPtr pointer) : base(pointer) {}
@@ -20019,7 +20019,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTriggerHurt : CBaseTrigger {
+    public partial class CTriggerHurt : CBaseTrigger {
         private const string ThisClassName = "CTriggerHurt";
 
         public CTriggerHurt (IntPtr pointer) : base(pointer) {}
@@ -20028,7 +20028,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTriggerHurtGhost : CTriggerHurt {
+    public partial class CTriggerHurtGhost : CTriggerHurt {
         private const string ThisClassName = "CTriggerHurtGhost";
 
         public CTriggerHurtGhost (IntPtr pointer) : base(pointer) {}
@@ -20037,7 +20037,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTriggerCallback : CBaseTrigger {
+    public partial class CTriggerCallback : CBaseTrigger {
         private const string ThisClassName = "CTriggerCallback";
 
         public CTriggerCallback (IntPtr pointer) : base(pointer) {}
@@ -20046,7 +20046,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTriggerLerpObject : CBaseTrigger {
+    public partial class CTriggerLerpObject : CBaseTrigger {
         private const string ThisClassName = "CTriggerLerpObject";
 
         public CTriggerLerpObject (IntPtr pointer) : base(pointer) {}
@@ -20055,7 +20055,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CChangeLevel : CBaseTrigger {
+    public partial class CChangeLevel : CBaseTrigger {
         private const string ThisClassName = "CChangeLevel";
 
         public CChangeLevel (IntPtr pointer) : base(pointer) {}
@@ -20064,7 +20064,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTriggerTeleport : CBaseTrigger {
+    public partial class CTriggerTeleport : CBaseTrigger {
         private const string ThisClassName = "CTriggerTeleport";
 
         public CTriggerTeleport (IntPtr pointer) : base(pointer) {}
@@ -20073,7 +20073,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTriggerFan : CBaseTrigger {
+    public partial class CTriggerFan : CBaseTrigger {
         private const string ThisClassName = "CTriggerFan";
 
         public CTriggerFan (IntPtr pointer) : base(pointer) {}
@@ -20082,7 +20082,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CNavWalkable : CPointEntity {
+    public partial class CNavWalkable : CPointEntity {
         private const string ThisClassName = "CNavWalkable";
 
         public CNavWalkable (IntPtr pointer) : base(pointer) {}
@@ -20091,7 +20091,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFuncNavBlocker : CBaseModelEntity {
+    public partial class CFuncNavBlocker : CBaseModelEntity {
         private const string ThisClassName = "CFuncNavBlocker";
 
         public CFuncNavBlocker (IntPtr pointer) : base(pointer) {}
@@ -20100,7 +20100,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CNavLinkAreaEntity : CPointEntity {
+    public partial class CNavLinkAreaEntity : CPointEntity {
         private const string ThisClassName = "CNavLinkAreaEntity";
 
         public CNavLinkAreaEntity (IntPtr pointer) : base(pointer) {}
@@ -20109,7 +20109,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CNavSpaceInfo : CPointEntity {
+    public partial class CNavSpaceInfo : CPointEntity {
         private const string ThisClassName = "CNavSpaceInfo";
 
         public CNavSpaceInfo (IntPtr pointer) : base(pointer) {}
@@ -20118,7 +20118,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBeam : CBaseModelEntity {
+    public partial class CBeam : CBaseModelEntity {
         private const string ThisClassName = "CBeam";
 
         public CBeam (IntPtr pointer) : base(pointer) {}
@@ -20234,7 +20234,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFuncLadder : CBaseModelEntity {
+    public partial class CFuncLadder : CBaseModelEntity {
         private const string ThisClassName = "CFuncLadder";
 
         public CFuncLadder (IntPtr pointer) : base(pointer) {}
@@ -20272,7 +20272,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFuncShatterglass : CBaseModelEntity {
+    public partial class CFuncShatterglass : CBaseModelEntity {
         private const string ThisClassName = "CFuncShatterglass";
 
         public CFuncShatterglass (IntPtr pointer) : base(pointer) {}
@@ -20281,7 +20281,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPrecipitationVData : CEntitySubclassVDataBase {
+    public partial class CPrecipitationVData : CEntitySubclassVDataBase {
         private const string ThisClassName = "CPrecipitationVData";
 
         public CPrecipitationVData (IntPtr pointer) : base(pointer) {}
@@ -20290,7 +20290,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSprite : CBaseModelEntity {
+    public partial class CSprite : CBaseModelEntity {
         private const string ThisClassName = "CSprite";
 
         public CSprite (IntPtr pointer) : base(pointer) {}
@@ -20364,7 +20364,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSpriteOriented : CSprite {
+    public partial class CSpriteOriented : CSprite {
         private const string ThisClassName = "CSpriteOriented";
 
         public CSpriteOriented (IntPtr pointer) : base(pointer) {}
@@ -20373,7 +20373,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBaseClientUIEntity : CBaseModelEntity {
+    public partial class CBaseClientUIEntity : CBaseModelEntity {
         private const string ThisClassName = "CBaseClientUIEntity";
 
         public CBaseClientUIEntity (IntPtr pointer) : base(pointer) {}
@@ -20387,7 +20387,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPointClientUIDialog : CBaseClientUIEntity {
+    public partial class CPointClientUIDialog : CBaseClientUIEntity {
         private const string ThisClassName = "CPointClientUIDialog";
 
         public CPointClientUIDialog (IntPtr pointer) : base(pointer) {}
@@ -20396,7 +20396,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPointClientUIWorldPanel : CBaseClientUIEntity {
+    public partial class CPointClientUIWorldPanel : CBaseClientUIEntity {
         private const string ThisClassName = "CPointClientUIWorldPanel";
 
         public CPointClientUIWorldPanel (IntPtr pointer) : base(pointer) {}
@@ -20536,7 +20536,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPointClientUIWorldTextPanel : CPointClientUIWorldPanel {
+    public partial class CPointClientUIWorldTextPanel : CPointClientUIWorldPanel {
         private const string ThisClassName = "CPointClientUIWorldTextPanel";
 
         public CPointClientUIWorldTextPanel (IntPtr pointer) : base(pointer) {}
@@ -20550,7 +20550,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CInfoOffscreenPanoramaTexture : CPointEntity {
+    public partial class CInfoOffscreenPanoramaTexture : CPointEntity {
         private const string ThisClassName = "CInfoOffscreenPanoramaTexture";
 
         public CInfoOffscreenPanoramaTexture (IntPtr pointer) : base(pointer) {}
@@ -20588,7 +20588,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEconItemView : IEconItemInterface {
+    public partial class CEconItemView : IEconItemInterface {
         private const string ThisClassName = "CEconItemView";
 
         public CEconItemView (IntPtr pointer) : base(pointer) {}
@@ -20656,7 +20656,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CInfoPlayerTerrorist : SpawnPoint {
+    public partial class CInfoPlayerTerrorist : SpawnPoint {
         private const string ThisClassName = "CInfoPlayerTerrorist";
 
         public CInfoPlayerTerrorist (IntPtr pointer) : base(pointer) {}
@@ -20665,7 +20665,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CInfoPlayerCounterterrorist : SpawnPoint {
+    public partial class CInfoPlayerCounterterrorist : SpawnPoint {
         private const string ThisClassName = "CInfoPlayerCounterterrorist";
 
         public CInfoPlayerCounterterrorist (IntPtr pointer) : base(pointer) {}
@@ -20674,7 +20674,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CInfoDeathmatchSpawn : SpawnPoint {
+    public partial class CInfoDeathmatchSpawn : SpawnPoint {
         private const string ThisClassName = "CInfoDeathmatchSpawn";
 
         public CInfoDeathmatchSpawn (IntPtr pointer) : base(pointer) {}
@@ -20683,7 +20683,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CInfoEnemyTerroristSpawn : SpawnPointCoopEnemy {
+    public partial class CInfoEnemyTerroristSpawn : SpawnPointCoopEnemy {
         private const string ThisClassName = "CInfoEnemyTerroristSpawn";
 
         public CInfoEnemyTerroristSpawn (IntPtr pointer) : base(pointer) {}
@@ -20692,7 +20692,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPointGiveAmmo : CPointEntity {
+    public partial class CPointGiveAmmo : CPointEntity {
         private const string ThisClassName = "CPointGiveAmmo";
 
         public CPointGiveAmmo (IntPtr pointer) : base(pointer) {}
@@ -20701,7 +20701,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBombTarget : CBaseTrigger {
+    public partial class CBombTarget : CBaseTrigger {
         private const string ThisClassName = "CBombTarget";
 
         public CBombTarget (IntPtr pointer) : base(pointer) {}
@@ -20715,7 +20715,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CInfoInstructorHintBombTargetA : CPointEntity {
+    public partial class CInfoInstructorHintBombTargetA : CPointEntity {
         private const string ThisClassName = "CInfoInstructorHintBombTargetA";
 
         public CInfoInstructorHintBombTargetA (IntPtr pointer) : base(pointer) {}
@@ -20724,7 +20724,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CInfoInstructorHintBombTargetB : CPointEntity {
+    public partial class CInfoInstructorHintBombTargetB : CPointEntity {
         private const string ThisClassName = "CInfoInstructorHintBombTargetB";
 
         public CInfoInstructorHintBombTargetB (IntPtr pointer) : base(pointer) {}
@@ -20733,7 +20733,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CHostageRescueZoneShim : CBaseTrigger {
+    public partial class CHostageRescueZoneShim : CBaseTrigger {
         private const string ThisClassName = "CHostageRescueZoneShim";
 
         public CHostageRescueZoneShim (IntPtr pointer) : base(pointer) {}
@@ -20742,7 +20742,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CHostageRescueZone : CHostageRescueZoneShim {
+    public partial class CHostageRescueZone : CHostageRescueZoneShim {
         private const string ThisClassName = "CHostageRescueZone";
 
         public CHostageRescueZone (IntPtr pointer) : base(pointer) {}
@@ -20751,7 +20751,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CInfoInstructorHintHostageRescueZone : CPointEntity {
+    public partial class CInfoInstructorHintHostageRescueZone : CPointEntity {
         private const string ThisClassName = "CInfoInstructorHintHostageRescueZone";
 
         public CInfoInstructorHintHostageRescueZone (IntPtr pointer) : base(pointer) {}
@@ -20760,7 +20760,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTriggerBuoyancy : CBaseTrigger {
+    public partial class CTriggerBuoyancy : CBaseTrigger {
         private const string ThisClassName = "CTriggerBuoyancy";
 
         public CTriggerBuoyancy (IntPtr pointer) : base(pointer) {}
@@ -20774,7 +20774,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFuncWater : CBaseModelEntity {
+    public partial class CFuncWater : CBaseModelEntity {
         private const string ThisClassName = "CFuncWater";
 
         public CFuncWater (IntPtr pointer) : base(pointer) {}
@@ -20783,7 +20783,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSSprite : CSprite {
+    public partial class CCSSprite : CSprite {
         private const string ThisClassName = "CCSSprite";
 
         public CCSSprite (IntPtr pointer) : base(pointer) {}
@@ -20792,7 +20792,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSPlayerController : CBasePlayerController {
+    public partial class CCSPlayerController : CBasePlayerController {
         private const string ThisClassName = "CCSPlayerController";
 
         public CCSPlayerController (IntPtr pointer) : base(pointer) {}
@@ -21004,7 +21004,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFootstepControl : CBaseTrigger {
+    public partial class CFootstepControl : CBaseTrigger {
         private const string ThisClassName = "CFootstepControl";
 
         public CFootstepControl (IntPtr pointer) : base(pointer) {}
@@ -21013,7 +21013,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSWeaponBaseVData : CBasePlayerWeaponVData {
+    public partial class CCSWeaponBaseVData : CBasePlayerWeaponVData {
         private const string ThisClassName = "CCSWeaponBaseVData";
 
         public CCSWeaponBaseVData (IntPtr pointer) : base(pointer) {}
@@ -21022,7 +21022,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTriggerTripWire : CBaseTrigger {
+    public partial class CTriggerTripWire : CBaseTrigger {
         private const string ThisClassName = "CTriggerTripWire";
 
         public CTriggerTripWire (IntPtr pointer) : base(pointer) {}
@@ -21031,7 +21031,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPointGamestatsCounter : CPointEntity {
+    public partial class CPointGamestatsCounter : CPointEntity {
         private const string ThisClassName = "CPointGamestatsCounter";
 
         public CPointGamestatsCounter (IntPtr pointer) : base(pointer) {}
@@ -21040,7 +21040,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvHudHint : CPointEntity {
+    public partial class CEnvHudHint : CPointEntity {
         private const string ThisClassName = "CEnvHudHint";
 
         public CEnvHudHint (IntPtr pointer) : base(pointer) {}
@@ -21049,7 +21049,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBuyZone : CBaseTrigger {
+    public partial class CBuyZone : CBaseTrigger {
         private const string ThisClassName = "CBuyZone";
 
         public CBuyZone (IntPtr pointer) : base(pointer) {}
@@ -21058,7 +21058,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFuncConveyor : CBaseModelEntity {
+    public partial class CFuncConveyor : CBaseModelEntity {
         private const string ThisClassName = "CFuncConveyor";
 
         public CFuncConveyor (IntPtr pointer) : base(pointer) {}
@@ -21096,7 +21096,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTriggerBombReset : CBaseTrigger {
+    public partial class CTriggerBombReset : CBaseTrigger {
         private const string ThisClassName = "CTriggerBombReset";
 
         public CTriggerBombReset (IntPtr pointer) : base(pointer) {}
@@ -21105,7 +21105,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSPlace : CServerOnlyModelEntity {
+    public partial class CCSPlace : CServerOnlyModelEntity {
         private const string ThisClassName = "CCSPlace";
 
         public CCSPlace (IntPtr pointer) : base(pointer) {}
@@ -21114,7 +21114,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPlayerSprayDecal : CModelPointEntity {
+    public partial class CPlayerSprayDecal : CModelPointEntity {
         private const string ThisClassName = "CPlayerSprayDecal";
 
         public CPlayerSprayDecal (IntPtr pointer) : base(pointer) {}
@@ -21212,7 +21212,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CInferno : CBaseModelEntity {
+    public partial class CInferno : CBaseModelEntity {
         private const string ThisClassName = "CInferno";
 
         public CInferno (IntPtr pointer) : base(pointer) {}
@@ -21298,7 +21298,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFireCrackerBlast : CInferno {
+    public partial class CFireCrackerBlast : CInferno {
         private const string ThisClassName = "CFireCrackerBlast";
 
         public CFireCrackerBlast (IntPtr pointer) : base(pointer) {}
@@ -21307,7 +21307,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBarnLight : CBaseModelEntity {
+    public partial class CBarnLight : CBaseModelEntity {
         private const string ThisClassName = "CBarnLight";
 
         public CBarnLight (IntPtr pointer) : base(pointer) {}
@@ -21579,7 +21579,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CRectLight : CBarnLight {
+    public partial class CRectLight : CBarnLight {
         private const string ThisClassName = "CRectLight";
 
         public CRectLight (IntPtr pointer) : base(pointer) {}
@@ -21593,7 +21593,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class COmniLight : CBarnLight {
+    public partial class COmniLight : CBarnLight {
         private const string ThisClassName = "COmniLight";
 
         public COmniLight (IntPtr pointer) : base(pointer) {}
@@ -21619,7 +21619,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSTeam : CTeam {
+    public partial class CCSTeam : CTeam {
         private const string ThisClassName = "CCSTeam";
 
         public CCSTeam (IntPtr pointer) : base(pointer) {}
@@ -21687,7 +21687,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CMapInfo : CPointEntity {
+    public partial class CMapInfo : CPointEntity {
         private const string ThisClassName = "CMapInfo";
 
         public CMapInfo (IntPtr pointer) : base(pointer) {}
@@ -21696,7 +21696,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSBot : CBot {
+    public partial class CCSBot : CBot {
         private const string ThisClassName = "CCSBot";
 
         public CCSBot (IntPtr pointer) : base(pointer) {}
@@ -21705,7 +21705,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFogVolume : CServerOnlyModelEntity {
+    public partial class CFogVolume : CServerOnlyModelEntity {
         private const string ThisClassName = "CFogVolume";
 
         public CFogVolume (IntPtr pointer) : base(pointer) {}
@@ -21714,7 +21714,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CInfoDynamicShadowHint : CPointEntity {
+    public partial class CInfoDynamicShadowHint : CPointEntity {
         private const string ThisClassName = "CInfoDynamicShadowHint";
 
         public CInfoDynamicShadowHint (IntPtr pointer) : base(pointer) {}
@@ -21723,7 +21723,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CInfoDynamicShadowHintBox : CInfoDynamicShadowHint {
+    public partial class CInfoDynamicShadowHintBox : CInfoDynamicShadowHint {
         private const string ThisClassName = "CInfoDynamicShadowHintBox";
 
         public CInfoDynamicShadowHintBox (IntPtr pointer) : base(pointer) {}
@@ -21732,7 +21732,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvSky : CBaseModelEntity {
+    public partial class CEnvSky : CBaseModelEntity {
         private const string ThisClassName = "CEnvSky";
 
         public CEnvSky (IntPtr pointer) : base(pointer) {}
@@ -21788,7 +21788,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTonemapController2Alias_env_tonemap_controller2 : CTonemapController2 {
+    public partial class CTonemapController2Alias_env_tonemap_controller2 : CTonemapController2 {
         private const string ThisClassName = "CTonemapController2Alias_env_tonemap_controller2";
 
         public CTonemapController2Alias_env_tonemap_controller2 (IntPtr pointer) : base(pointer) {}
@@ -21797,7 +21797,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTonemapTrigger : CBaseTrigger {
+    public partial class CTonemapTrigger : CBaseTrigger {
         private const string ThisClassName = "CTonemapTrigger";
 
         public CTonemapTrigger (IntPtr pointer) : base(pointer) {}
@@ -21806,7 +21806,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFogTrigger : CBaseTrigger {
+    public partial class CFogTrigger : CBaseTrigger {
         private const string ThisClassName = "CFogTrigger";
 
         public CFogTrigger (IntPtr pointer) : base(pointer) {}
@@ -21815,7 +21815,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CLightEntity : CBaseModelEntity {
+    public partial class CLightEntity : CBaseModelEntity {
         private const string ThisClassName = "CLightEntity";
 
         public CLightEntity (IntPtr pointer) : base(pointer) {}
@@ -21824,7 +21824,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CLightSpotEntity : CLightEntity {
+    public partial class CLightSpotEntity : CLightEntity {
         private const string ThisClassName = "CLightSpotEntity";
 
         public CLightSpotEntity (IntPtr pointer) : base(pointer) {}
@@ -21833,7 +21833,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CLightOrthoEntity : CLightEntity {
+    public partial class CLightOrthoEntity : CLightEntity {
         private const string ThisClassName = "CLightOrthoEntity";
 
         public CLightOrthoEntity (IntPtr pointer) : base(pointer) {}
@@ -21842,7 +21842,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CLightDirectionalEntity : CLightEntity {
+    public partial class CLightDirectionalEntity : CLightEntity {
         private const string ThisClassName = "CLightDirectionalEntity";
 
         public CLightDirectionalEntity (IntPtr pointer) : base(pointer) {}
@@ -21851,7 +21851,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CLightEnvironmentEntity : CLightDirectionalEntity {
+    public partial class CLightEnvironmentEntity : CLightDirectionalEntity {
         private const string ThisClassName = "CLightEnvironmentEntity";
 
         public CLightEnvironmentEntity (IntPtr pointer) : base(pointer) {}
@@ -21860,7 +21860,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPostProcessingVolume : CBaseTrigger {
+    public partial class CPostProcessingVolume : CBaseTrigger {
         private const string ThisClassName = "CPostProcessingVolume";
 
         public CPostProcessingVolume (IntPtr pointer) : base(pointer) {}
@@ -21958,7 +21958,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvParticleGlow : CParticleSystem {
+    public partial class CEnvParticleGlow : CParticleSystem {
         private const string ThisClassName = "CEnvParticleGlow";
 
         public CEnvParticleGlow (IntPtr pointer) : base(pointer) {}
@@ -21984,7 +21984,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTextureBasedAnimatable : CBaseModelEntity {
+    public partial class CTextureBasedAnimatable : CBaseModelEntity {
         private const string ThisClassName = "CTextureBasedAnimatable";
 
         public CTextureBasedAnimatable (IntPtr pointer) : base(pointer) {}
@@ -22028,7 +22028,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWorld : CBaseModelEntity {
+    public partial class CWorld : CBaseModelEntity {
         private const string ThisClassName = "CWorld";
 
         public CWorld (IntPtr pointer) : base(pointer) {}
@@ -22037,7 +22037,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBaseAnimGraph : CBaseModelEntity {
+    public partial class CBaseAnimGraph : CBaseModelEntity {
         private const string ThisClassName = "CBaseAnimGraph";
 
         public CBaseAnimGraph (IntPtr pointer) : base(pointer) {}
@@ -22081,7 +22081,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBaseProp : CBaseAnimGraph {
+    public partial class CBaseProp : CBaseAnimGraph {
         private const string ThisClassName = "CBaseProp";
 
         public CBaseProp (IntPtr pointer) : base(pointer) {}
@@ -22090,7 +22090,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBreakableProp : CBaseProp {
+    public partial class CBreakableProp : CBaseProp {
         private const string ThisClassName = "CBreakableProp";
 
         public CBreakableProp (IntPtr pointer) : base(pointer) {}
@@ -22104,7 +22104,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CDynamicProp : CBreakableProp {
+    public partial class CDynamicProp : CBreakableProp {
         private const string ThisClassName = "CDynamicProp";
 
         public CDynamicProp (IntPtr pointer) : base(pointer) {}
@@ -22124,7 +22124,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CDynamicPropAlias_dynamic_prop : CDynamicProp {
+    public partial class CDynamicPropAlias_dynamic_prop : CDynamicProp {
         private const string ThisClassName = "CDynamicPropAlias_dynamic_prop";
 
         public CDynamicPropAlias_dynamic_prop (IntPtr pointer) : base(pointer) {}
@@ -22133,7 +22133,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CDynamicPropAlias_prop_dynamic_override : CDynamicProp {
+    public partial class CDynamicPropAlias_prop_dynamic_override : CDynamicProp {
         private const string ThisClassName = "CDynamicPropAlias_prop_dynamic_override";
 
         public CDynamicPropAlias_prop_dynamic_override (IntPtr pointer) : base(pointer) {}
@@ -22142,7 +22142,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CDynamicPropAlias_cable_dynamic : CDynamicProp {
+    public partial class CDynamicPropAlias_cable_dynamic : CDynamicProp {
         private const string ThisClassName = "CDynamicPropAlias_cable_dynamic";
 
         public CDynamicPropAlias_cable_dynamic (IntPtr pointer) : base(pointer) {}
@@ -22151,7 +22151,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CColorCorrectionVolume : CBaseTrigger {
+    public partial class CColorCorrectionVolume : CBaseTrigger {
         private const string ThisClassName = "CColorCorrectionVolume";
 
         public CColorCorrectionVolume (IntPtr pointer) : base(pointer) {}
@@ -22189,7 +22189,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPointCommentaryNode : CBaseAnimGraph {
+    public partial class CPointCommentaryNode : CBaseAnimGraph {
         private const string ThisClassName = "CPointCommentaryNode";
 
         public CPointCommentaryNode (IntPtr pointer) : base(pointer) {}
@@ -22239,7 +22239,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCommentaryViewPosition : CSprite {
+    public partial class CCommentaryViewPosition : CSprite {
         private const string ThisClassName = "CCommentaryViewPosition";
 
         public CCommentaryViewPosition (IntPtr pointer) : base(pointer) {}
@@ -22248,7 +22248,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CRotDoor : CBaseDoor {
+    public partial class CRotDoor : CBaseDoor {
         private const string ThisClassName = "CRotDoor";
 
         public CRotDoor (IntPtr pointer) : base(pointer) {}
@@ -22257,7 +22257,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CItemSoda : CBaseAnimGraph {
+    public partial class CItemSoda : CBaseAnimGraph {
         private const string ThisClassName = "CItemSoda";
 
         public CItemSoda (IntPtr pointer) : base(pointer) {}
@@ -22266,7 +22266,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPrecipitation : CBaseTrigger {
+    public partial class CPrecipitation : CBaseTrigger {
         private const string ThisClassName = "CPrecipitation";
 
         public CPrecipitation (IntPtr pointer) : base(pointer) {}
@@ -22275,7 +22275,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvBeam : CBeam {
+    public partial class CEnvBeam : CBeam {
         private const string ThisClassName = "CEnvBeam";
 
         public CEnvBeam (IntPtr pointer) : base(pointer) {}
@@ -22284,7 +22284,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPushable : CBreakable {
+    public partial class CPushable : CBreakable {
         private const string ThisClassName = "CPushable";
 
         public CPushable (IntPtr pointer) : base(pointer) {}
@@ -22293,7 +22293,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFuncLadderAlias_func_useableladder : CFuncLadder {
+    public partial class CFuncLadderAlias_func_useableladder : CFuncLadder {
         private const string ThisClassName = "CFuncLadderAlias_func_useableladder";
 
         public CFuncLadderAlias_func_useableladder (IntPtr pointer) : base(pointer) {}
@@ -22302,7 +22302,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFuncMonitor : CFuncBrush {
+    public partial class CFuncMonitor : CFuncBrush {
         private const string ThisClassName = "CFuncMonitor";
 
         public CFuncMonitor (IntPtr pointer) : base(pointer) {}
@@ -22340,7 +22340,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFuncMoveLinearAlias_momentary_door : CFuncMoveLinear {
+    public partial class CFuncMoveLinearAlias_momentary_door : CFuncMoveLinear {
         private const string ThisClassName = "CFuncMoveLinearAlias_momentary_door";
 
         public CFuncMoveLinearAlias_momentary_door (IntPtr pointer) : base(pointer) {}
@@ -22349,7 +22349,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CGunTarget : CBaseToggle {
+    public partial class CGunTarget : CBaseToggle {
         private const string ThisClassName = "CGunTarget";
 
         public CGunTarget (IntPtr pointer) : base(pointer) {}
@@ -22358,7 +22358,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTriggerGameEvent : CBaseTrigger {
+    public partial class CTriggerGameEvent : CBaseTrigger {
         private const string ThisClassName = "CTriggerGameEvent";
 
         public CTriggerGameEvent (IntPtr pointer) : base(pointer) {}
@@ -22367,7 +22367,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CRuleBrushEntity : CRuleEntity {
+    public partial class CRuleBrushEntity : CRuleEntity {
         private const string ThisClassName = "CRuleBrushEntity";
 
         public CRuleBrushEntity (IntPtr pointer) : base(pointer) {}
@@ -22376,7 +22376,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CGameEnd : CRulePointEntity {
+    public partial class CGameEnd : CRulePointEntity {
         private const string ThisClassName = "CGameEnd";
 
         public CGameEnd (IntPtr pointer) : base(pointer) {}
@@ -22385,7 +22385,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CGameText : CRulePointEntity {
+    public partial class CGameText : CRulePointEntity {
         private const string ThisClassName = "CGameText";
 
         public CGameText (IntPtr pointer) : base(pointer) {}
@@ -22394,7 +22394,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CGamePlayerZone : CRuleBrushEntity {
+    public partial class CGamePlayerZone : CRuleBrushEntity {
         private const string ThisClassName = "CGamePlayerZone";
 
         public CGamePlayerZone (IntPtr pointer) : base(pointer) {}
@@ -22403,7 +22403,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSimpleMarkupVolumeTagged : CMarkupVolumeTagged {
+    public partial class CSimpleMarkupVolumeTagged : CMarkupVolumeTagged {
         private const string ThisClassName = "CSimpleMarkupVolumeTagged";
 
         public CSimpleMarkupVolumeTagged (IntPtr pointer) : base(pointer) {}
@@ -22412,7 +22412,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CMarkupVolumeTagged_Nav : CMarkupVolumeTagged {
+    public partial class CMarkupVolumeTagged_Nav : CMarkupVolumeTagged {
         private const string ThisClassName = "CMarkupVolumeTagged_Nav";
 
         public CMarkupVolumeTagged_Nav (IntPtr pointer) : base(pointer) {}
@@ -22421,7 +22421,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CMarkupVolumeTagged_NavGame : CMarkupVolumeWithRef {
+    public partial class CMarkupVolumeTagged_NavGame : CMarkupVolumeWithRef {
         private const string ThisClassName = "CMarkupVolumeTagged_NavGame";
 
         public CMarkupVolumeTagged_NavGame (IntPtr pointer) : base(pointer) {}
@@ -22430,7 +22430,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFuncElectrifiedVolume : CFuncBrush {
+    public partial class CFuncElectrifiedVolume : CFuncBrush {
         private const string ThisClassName = "CFuncElectrifiedVolume";
 
         public CFuncElectrifiedVolume (IntPtr pointer) : base(pointer) {}
@@ -22439,7 +22439,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPathCornerCrash : CPathCorner {
+    public partial class CPathCornerCrash : CPathCorner {
         private const string ThisClassName = "CPathCornerCrash";
 
         public CPathCornerCrash (IntPtr pointer) : base(pointer) {}
@@ -22448,7 +22448,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CConstraintAnchor : CBaseAnimGraph {
+    public partial class CConstraintAnchor : CBaseAnimGraph {
         private const string ThisClassName = "CConstraintAnchor";
 
         public CConstraintAnchor (IntPtr pointer) : base(pointer) {}
@@ -22457,7 +22457,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class COrnamentProp : CDynamicProp {
+    public partial class COrnamentProp : CDynamicProp {
         private const string ThisClassName = "COrnamentProp";
 
         public COrnamentProp (IntPtr pointer) : base(pointer) {}
@@ -22466,7 +22466,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CRopeKeyframeAlias_move_rope : CRopeKeyframe {
+    public partial class CRopeKeyframeAlias_move_rope : CRopeKeyframe {
         private const string ThisClassName = "CRopeKeyframeAlias_move_rope";
 
         public CRopeKeyframeAlias_move_rope (IntPtr pointer) : base(pointer) {}
@@ -22475,7 +22475,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSceneEntityAlias_logic_choreographed_scene : CSceneEntity {
+    public partial class CSceneEntityAlias_logic_choreographed_scene : CSceneEntity {
         private const string ThisClassName = "CSceneEntityAlias_logic_choreographed_scene";
 
         public CSceneEntityAlias_logic_choreographed_scene (IntPtr pointer) : base(pointer) {}
@@ -22484,7 +22484,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CInstancedSceneEntity : CSceneEntity {
+    public partial class CInstancedSceneEntity : CSceneEntity {
         private const string ThisClassName = "CInstancedSceneEntity";
 
         public CInstancedSceneEntity (IntPtr pointer) : base(pointer) {}
@@ -22493,7 +22493,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTriggerSoundscape : CBaseTrigger {
+    public partial class CTriggerSoundscape : CBaseTrigger {
         private const string ThisClassName = "CTriggerSoundscape";
 
         public CTriggerSoundscape (IntPtr pointer) : base(pointer) {}
@@ -22502,7 +22502,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSpriteAlias_env_glow : CSprite {
+    public partial class CSpriteAlias_env_glow : CSprite {
         private const string ThisClassName = "CSpriteAlias_env_glow";
 
         public CSpriteAlias_env_glow (IntPtr pointer) : base(pointer) {}
@@ -22511,7 +22511,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFuncTankTrain : CFuncTrackTrain {
+    public partial class CFuncTankTrain : CFuncTrackTrain {
         private const string ThisClassName = "CFuncTankTrain";
 
         public CFuncTankTrain (IntPtr pointer) : base(pointer) {}
@@ -22520,7 +22520,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBasePlatTrain : CBaseToggle {
+    public partial class CBasePlatTrain : CBaseToggle {
         private const string ThisClassName = "CBasePlatTrain";
 
         public CBasePlatTrain (IntPtr pointer) : base(pointer) {}
@@ -22529,7 +22529,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFuncPlat : CBasePlatTrain {
+    public partial class CFuncPlat : CBasePlatTrain {
         private const string ThisClassName = "CFuncPlat";
 
         public CFuncPlat (IntPtr pointer) : base(pointer) {}
@@ -22538,7 +22538,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFuncPlatRot : CFuncPlat {
+    public partial class CFuncPlatRot : CFuncPlat {
         private const string ThisClassName = "CFuncPlatRot";
 
         public CFuncPlatRot (IntPtr pointer) : base(pointer) {}
@@ -22547,7 +22547,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFuncTrain : CBasePlatTrain {
+    public partial class CFuncTrain : CBasePlatTrain {
         private const string ThisClassName = "CFuncTrain";
 
         public CFuncTrain (IntPtr pointer) : base(pointer) {}
@@ -22556,7 +22556,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFuncTrackChange : CFuncPlatRot {
+    public partial class CFuncTrackChange : CFuncPlatRot {
         private const string ThisClassName = "CFuncTrackChange";
 
         public CFuncTrackChange (IntPtr pointer) : base(pointer) {}
@@ -22565,7 +22565,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFuncTrackAuto : CFuncTrackChange {
+    public partial class CFuncTrackAuto : CFuncTrackChange {
         private const string ThisClassName = "CFuncTrackAuto";
 
         public CFuncTrackAuto (IntPtr pointer) : base(pointer) {}
@@ -22574,7 +22574,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTriggerRemove : CBaseTrigger {
+    public partial class CTriggerRemove : CBaseTrigger {
         private const string ThisClassName = "CTriggerRemove";
 
         public CTriggerRemove (IntPtr pointer) : base(pointer) {}
@@ -22583,7 +22583,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CScriptTriggerHurt : CTriggerHurt {
+    public partial class CScriptTriggerHurt : CTriggerHurt {
         private const string ThisClassName = "CScriptTriggerHurt";
 
         public CScriptTriggerHurt (IntPtr pointer) : base(pointer) {}
@@ -22592,7 +22592,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CScriptTriggerMultiple : CTriggerMultiple {
+    public partial class CScriptTriggerMultiple : CTriggerMultiple {
         private const string ThisClassName = "CScriptTriggerMultiple";
 
         public CScriptTriggerMultiple (IntPtr pointer) : base(pointer) {}
@@ -22601,7 +22601,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTriggerOnce : CTriggerMultiple {
+    public partial class CTriggerOnce : CTriggerMultiple {
         private const string ThisClassName = "CTriggerOnce";
 
         public CTriggerOnce (IntPtr pointer) : base(pointer) {}
@@ -22610,7 +22610,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CScriptTriggerOnce : CTriggerOnce {
+    public partial class CScriptTriggerOnce : CTriggerOnce {
         private const string ThisClassName = "CScriptTriggerOnce";
 
         public CScriptTriggerOnce (IntPtr pointer) : base(pointer) {}
@@ -22619,7 +22619,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTriggerLook : CTriggerOnce {
+    public partial class CTriggerLook : CTriggerOnce {
         private const string ThisClassName = "CTriggerLook";
 
         public CTriggerLook (IntPtr pointer) : base(pointer) {}
@@ -22633,7 +22633,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTriggerPush : CBaseTrigger {
+    public partial class CTriggerPush : CBaseTrigger {
         private const string ThisClassName = "CTriggerPush";
 
         public CTriggerPush (IntPtr pointer) : base(pointer) {}
@@ -22642,7 +22642,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CScriptTriggerPush : CTriggerPush {
+    public partial class CScriptTriggerPush : CTriggerPush {
         private const string ThisClassName = "CScriptTriggerPush";
 
         public CScriptTriggerPush (IntPtr pointer) : base(pointer) {}
@@ -22651,7 +22651,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTriggerToggleSave : CBaseTrigger {
+    public partial class CTriggerToggleSave : CBaseTrigger {
         private const string ThisClassName = "CTriggerToggleSave";
 
         public CTriggerToggleSave (IntPtr pointer) : base(pointer) {}
@@ -22660,7 +22660,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTriggerSave : CBaseTrigger {
+    public partial class CTriggerSave : CBaseTrigger {
         private const string ThisClassName = "CTriggerSave";
 
         public CTriggerSave (IntPtr pointer) : base(pointer) {}
@@ -22669,7 +22669,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTriggerGravity : CBaseTrigger {
+    public partial class CTriggerGravity : CBaseTrigger {
         private const string ThisClassName = "CTriggerGravity";
 
         public CTriggerGravity (IntPtr pointer) : base(pointer) {}
@@ -22678,7 +22678,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTriggerProximity : CBaseTrigger {
+    public partial class CTriggerProximity : CBaseTrigger {
         private const string ThisClassName = "CTriggerProximity";
 
         public CTriggerProximity (IntPtr pointer) : base(pointer) {}
@@ -22687,7 +22687,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTriggerImpact : CTriggerMultiple {
+    public partial class CTriggerImpact : CTriggerMultiple {
         private const string ThisClassName = "CTriggerImpact";
 
         public CTriggerImpact (IntPtr pointer) : base(pointer) {}
@@ -22696,7 +22696,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CServerRagdollTrigger : CBaseTrigger {
+    public partial class CServerRagdollTrigger : CBaseTrigger {
         private const string ThisClassName = "CServerRagdollTrigger";
 
         public CServerRagdollTrigger (IntPtr pointer) : base(pointer) {}
@@ -22705,7 +22705,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTriggerActiveWeaponDetect : CBaseTrigger {
+    public partial class CTriggerActiveWeaponDetect : CBaseTrigger {
         private const string ThisClassName = "CTriggerActiveWeaponDetect";
 
         public CTriggerActiveWeaponDetect (IntPtr pointer) : base(pointer) {}
@@ -22714,7 +22714,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTriggerPhysics : CBaseTrigger {
+    public partial class CTriggerPhysics : CBaseTrigger {
         private const string ThisClassName = "CTriggerPhysics";
 
         public CTriggerPhysics (IntPtr pointer) : base(pointer) {}
@@ -22723,7 +22723,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTriggerDetectBulletFire : CBaseTrigger {
+    public partial class CTriggerDetectBulletFire : CBaseTrigger {
         private const string ThisClassName = "CTriggerDetectBulletFire";
 
         public CTriggerDetectBulletFire (IntPtr pointer) : base(pointer) {}
@@ -22732,7 +22732,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTriggerDetectExplosion : CBaseTrigger {
+    public partial class CTriggerDetectExplosion : CBaseTrigger {
         private const string ThisClassName = "CTriggerDetectExplosion";
 
         public CTriggerDetectExplosion (IntPtr pointer) : base(pointer) {}
@@ -22741,7 +22741,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CScriptNavBlocker : CFuncNavBlocker {
+    public partial class CScriptNavBlocker : CFuncNavBlocker {
         private const string ThisClassName = "CScriptNavBlocker";
 
         public CScriptNavBlocker (IntPtr pointer) : base(pointer) {}
@@ -22750,7 +22750,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBaseFlex : CBaseAnimGraph {
+    public partial class CBaseFlex : CBaseAnimGraph {
         private const string ThisClassName = "CBaseFlex";
 
         public CBaseFlex (IntPtr pointer) : base(pointer) {}
@@ -22776,7 +22776,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBasePropDoor : CDynamicProp {
+    public partial class CBasePropDoor : CDynamicProp {
         private const string ThisClassName = "CBasePropDoor";
 
         public CBasePropDoor (IntPtr pointer) : base(pointer) {}
@@ -22808,7 +22808,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEnvLaser : CBeam {
+    public partial class CEnvLaser : CBeam {
         private const string ThisClassName = "CEnvLaser";
 
         public CEnvLaser (IntPtr pointer) : base(pointer) {}
@@ -22817,7 +22817,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFish : CBaseAnimGraph {
+    public partial class CFish : CBaseAnimGraph {
         private const string ThisClassName = "CFish";
 
         public CFish (IntPtr pointer) : base(pointer) {}
@@ -22861,7 +22861,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CItem : CBaseAnimGraph {
+    public partial class CItem : CBaseAnimGraph {
         private const string ThisClassName = "CItem";
 
         public CItem (IntPtr pointer) : base(pointer) {}
@@ -22870,7 +22870,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CRagdollProp : CBaseAnimGraph {
+    public partial class CRagdollProp : CBaseAnimGraph {
         private const string ThisClassName = "CRagdollProp";
 
         public CRagdollProp (IntPtr pointer) : base(pointer) {}
@@ -22890,7 +22890,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPhysMagnet : CBaseAnimGraph {
+    public partial class CPhysMagnet : CBaseAnimGraph {
         private const string ThisClassName = "CPhysMagnet";
 
         public CPhysMagnet (IntPtr pointer) : base(pointer) {}
@@ -22899,7 +22899,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPhysicsProp : CBreakableProp {
+    public partial class CPhysicsProp : CBreakableProp {
         private const string ThisClassName = "CPhysicsProp";
 
         public CPhysicsProp (IntPtr pointer) : base(pointer) {}
@@ -22913,7 +22913,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPhysicsPropOverride : CPhysicsProp {
+    public partial class CPhysicsPropOverride : CPhysicsProp {
         private const string ThisClassName = "CPhysicsPropOverride";
 
         public CPhysicsPropOverride (IntPtr pointer) : base(pointer) {}
@@ -22922,7 +22922,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPhysicsPropRespawnable : CPhysicsProp {
+    public partial class CPhysicsPropRespawnable : CPhysicsProp {
         private const string ThisClassName = "CPhysicsPropRespawnable";
 
         public CPhysicsPropRespawnable (IntPtr pointer) : base(pointer) {}
@@ -22931,7 +22931,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWaterBullet : CBaseAnimGraph {
+    public partial class CWaterBullet : CBaseAnimGraph {
         private const string ThisClassName = "CWaterBullet";
 
         public CWaterBullet (IntPtr pointer) : base(pointer) {}
@@ -22940,7 +22940,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CShatterGlassShardPhysics : CPhysicsProp {
+    public partial class CShatterGlassShardPhysics : CPhysicsProp {
         private const string ThisClassName = "CShatterGlassShardPhysics";
 
         public CShatterGlassShardPhysics (IntPtr pointer) : base(pointer) {}
@@ -22954,7 +22954,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEconEntity : CBaseFlex {
+    public partial class CEconEntity : CBaseFlex {
         private const string ThisClassName = "CEconEntity";
 
         public CEconEntity (IntPtr pointer) : base(pointer) {}
@@ -23004,7 +23004,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CEconWearable : CEconEntity {
+    public partial class CEconWearable : CEconEntity {
         private const string ThisClassName = "CEconWearable";
 
         public CEconWearable (IntPtr pointer) : base(pointer) {}
@@ -23013,7 +23013,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBaseGrenade : CBaseFlex {
+    public partial class CBaseGrenade : CBaseFlex {
         private const string ThisClassName = "CBaseGrenade";
 
         public CBaseGrenade (IntPtr pointer) : base(pointer) {}
@@ -23051,7 +23051,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCoopBonusCoin : CDynamicProp {
+    public partial class CCoopBonusCoin : CDynamicProp {
         private const string ThisClassName = "CCoopBonusCoin";
 
         public CCoopBonusCoin (IntPtr pointer) : base(pointer) {}
@@ -23060,7 +23060,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPhysicsPropMultiplayer : CPhysicsProp {
+    public partial class CPhysicsPropMultiplayer : CPhysicsProp {
         private const string ThisClassName = "CPhysicsPropMultiplayer";
 
         public CPhysicsPropMultiplayer (IntPtr pointer) : base(pointer) {}
@@ -23069,7 +23069,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBaseViewModel : CBaseAnimGraph {
+    public partial class CBaseViewModel : CBaseAnimGraph {
         private const string ThisClassName = "CBaseViewModel";
 
         public CBaseViewModel (IntPtr pointer) : base(pointer) {}
@@ -23107,7 +23107,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPredictedViewModel : CBaseViewModel {
+    public partial class CPredictedViewModel : CBaseViewModel {
         private const string ThisClassName = "CPredictedViewModel";
 
         public CPredictedViewModel (IntPtr pointer) : base(pointer) {}
@@ -23116,7 +23116,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPlantedC4 : CBaseAnimGraph {
+    public partial class CPlantedC4 : CBaseAnimGraph {
         private const string ThisClassName = "CPlantedC4";
 
         public CPlantedC4 (IntPtr pointer) : base(pointer) {}
@@ -23208,7 +23208,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBaseCSGrenadeProjectile : CBaseGrenade {
+    public partial class CBaseCSGrenadeProjectile : CBaseGrenade {
         private const string ThisClassName = "CBaseCSGrenadeProjectile";
 
         public CBaseCSGrenadeProjectile (IntPtr pointer) : base(pointer) {}
@@ -23240,7 +23240,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CItemDogtags : CItem {
+    public partial class CItemDogtags : CItem {
         private const string ThisClassName = "CItemDogtags";
 
         public CItemDogtags (IntPtr pointer) : base(pointer) {}
@@ -23260,7 +23260,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSensorGrenadeProjectile : CBaseCSGrenadeProjectile {
+    public partial class CSensorGrenadeProjectile : CBaseCSGrenadeProjectile {
         private const string ThisClassName = "CSensorGrenadeProjectile";
 
         public CSensorGrenadeProjectile (IntPtr pointer) : base(pointer) {}
@@ -23269,7 +23269,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBreachChargeProjectile : CBaseGrenade {
+    public partial class CBreachChargeProjectile : CBaseGrenade {
         private const string ThisClassName = "CBreachChargeProjectile";
 
         public CBreachChargeProjectile (IntPtr pointer) : base(pointer) {}
@@ -23278,7 +23278,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBumpMineProjectile : CBaseGrenade {
+    public partial class CBumpMineProjectile : CBaseGrenade {
         private const string ThisClassName = "CBumpMineProjectile";
 
         public CBumpMineProjectile (IntPtr pointer) : base(pointer) {}
@@ -23287,7 +23287,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTripWireFireProjectile : CBaseGrenade {
+    public partial class CTripWireFireProjectile : CBaseGrenade {
         private const string ThisClassName = "CTripWireFireProjectile";
 
         public CTripWireFireProjectile (IntPtr pointer) : base(pointer) {}
@@ -23296,7 +23296,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFlashbangProjectile : CBaseCSGrenadeProjectile {
+    public partial class CFlashbangProjectile : CBaseCSGrenadeProjectile {
         private const string ThisClassName = "CFlashbangProjectile";
 
         public CFlashbangProjectile (IntPtr pointer) : base(pointer) {}
@@ -23305,7 +23305,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CHEGrenadeProjectile : CBaseCSGrenadeProjectile {
+    public partial class CHEGrenadeProjectile : CBaseCSGrenadeProjectile {
         private const string ThisClassName = "CHEGrenadeProjectile";
 
         public CHEGrenadeProjectile (IntPtr pointer) : base(pointer) {}
@@ -23314,7 +23314,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CChicken : CDynamicProp {
+    public partial class CChicken : CDynamicProp {
         private const string ThisClassName = "CChicken";
 
         public CChicken (IntPtr pointer) : base(pointer) {}
@@ -23352,7 +23352,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CHostageCarriableProp : CBaseAnimGraph {
+    public partial class CHostageCarriableProp : CBaseAnimGraph {
         private const string ThisClassName = "CHostageCarriableProp";
 
         public CHostageCarriableProp (IntPtr pointer) : base(pointer) {}
@@ -23361,7 +23361,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CItemAssaultSuit : CItem {
+    public partial class CItemAssaultSuit : CItem {
         private const string ThisClassName = "CItemAssaultSuit";
 
         public CItemAssaultSuit (IntPtr pointer) : base(pointer) {}
@@ -23370,7 +23370,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CItemHeavyAssaultSuit : CItemAssaultSuit {
+    public partial class CItemHeavyAssaultSuit : CItemAssaultSuit {
         private const string ThisClassName = "CItemHeavyAssaultSuit";
 
         public CItemHeavyAssaultSuit (IntPtr pointer) : base(pointer) {}
@@ -23379,7 +23379,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CItemKevlar : CItem {
+    public partial class CItemKevlar : CItem {
         private const string ThisClassName = "CItemKevlar";
 
         public CItemKevlar (IntPtr pointer) : base(pointer) {}
@@ -23388,7 +23388,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CItemDefuser : CItem {
+    public partial class CItemDefuser : CItem {
         private const string ThisClassName = "CItemDefuser";
 
         public CItemDefuser (IntPtr pointer) : base(pointer) {}
@@ -23397,7 +23397,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBasePlayerWeapon : CEconEntity {
+    public partial class CBasePlayerWeapon : CEconEntity {
         private const string ThisClassName = "CBasePlayerWeapon";
 
         public CBasePlayerWeapon (IntPtr pointer) : base(pointer) {}
@@ -23447,7 +23447,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBaseFlexAlias_funCBaseFlex : CBaseFlex {
+    public partial class CBaseFlexAlias_funCBaseFlex : CBaseFlex {
         private const string ThisClassName = "CBaseFlexAlias_funCBaseFlex";
 
         public CBaseFlexAlias_funCBaseFlex (IntPtr pointer) : base(pointer) {}
@@ -23456,7 +23456,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CScriptItem : CItem {
+    public partial class CScriptItem : CItem {
         private const string ThisClassName = "CScriptItem";
 
         public CScriptItem (IntPtr pointer) : base(pointer) {}
@@ -23465,7 +23465,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CRagdollPropAlias_physics_prop_ragdoll : CRagdollProp {
+    public partial class CRagdollPropAlias_physics_prop_ragdoll : CRagdollProp {
         private const string ThisClassName = "CRagdollPropAlias_physics_prop_ragdoll";
 
         public CRagdollPropAlias_physics_prop_ragdoll (IntPtr pointer) : base(pointer) {}
@@ -23474,7 +23474,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CRagdollPropAttached : CRagdollProp {
+    public partial class CRagdollPropAttached : CRagdollProp {
         private const string ThisClassName = "CRagdollPropAttached";
 
         public CRagdollPropAttached (IntPtr pointer) : base(pointer) {}
@@ -23506,7 +23506,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPropDoorRotating : CBasePropDoor {
+    public partial class CPropDoorRotating : CBasePropDoor {
         private const string ThisClassName = "CPropDoorRotating";
 
         public CPropDoorRotating (IntPtr pointer) : base(pointer) {}
@@ -23515,7 +23515,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CPropDoorRotatingBreakable : CPropDoorRotating {
+    public partial class CPropDoorRotatingBreakable : CPropDoorRotating {
         private const string ThisClassName = "CPropDoorRotatingBreakable";
 
         public CPropDoorRotatingBreakable (IntPtr pointer) : base(pointer) {}
@@ -23524,7 +23524,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBaseCombatCharacter : CBaseFlex {
+    public partial class CBaseCombatCharacter : CBaseFlex {
         private const string ThisClassName = "CBaseCombatCharacter";
 
         public CBaseCombatCharacter (IntPtr pointer) : base(pointer) {}
@@ -23544,7 +23544,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CItemGeneric : CItem {
+    public partial class CItemGeneric : CItem {
         private const string ThisClassName = "CItemGeneric";
 
         public CItemGeneric (IntPtr pointer) : base(pointer) {}
@@ -23553,7 +23553,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBasePlayerPawn : CBaseCombatCharacter {
+    public partial class CBasePlayerPawn : CBaseCombatCharacter {
         private const string ThisClassName = "CBasePlayerPawn";
 
         public CBasePlayerPawn (IntPtr pointer) : base(pointer) {}
@@ -23591,7 +23591,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSGOViewModel : CPredictedViewModel {
+    public partial class CCSGOViewModel : CPredictedViewModel {
         private const string ThisClassName = "CCSGOViewModel";
 
         public CCSGOViewModel (IntPtr pointer) : base(pointer) {}
@@ -23611,7 +23611,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSWeaponBase : CBasePlayerWeapon {
+    public partial class CCSWeaponBase : CBasePlayerWeapon {
         private const string ThisClassName = "CCSWeaponBase";
 
         public CCSWeaponBase (IntPtr pointer) : base(pointer) {}
@@ -23763,7 +23763,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSWeaponBaseGun : CCSWeaponBase {
+    public partial class CCSWeaponBaseGun : CCSWeaponBase {
         private const string ThisClassName = "CCSWeaponBaseGun";
 
         public CCSWeaponBaseGun (IntPtr pointer) : base(pointer) {}
@@ -23789,7 +23789,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CC4 : CCSWeaponBase {
+    public partial class CC4 : CCSWeaponBase {
         private const string ThisClassName = "CC4";
 
         public CC4 (IntPtr pointer) : base(pointer) {}
@@ -23827,7 +23827,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CDEagle : CCSWeaponBaseGun {
+    public partial class CDEagle : CCSWeaponBaseGun {
         private const string ThisClassName = "CDEagle";
 
         public CDEagle (IntPtr pointer) : base(pointer) {}
@@ -23836,7 +23836,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWeaponElite : CCSWeaponBaseGun {
+    public partial class CWeaponElite : CCSWeaponBaseGun {
         private const string ThisClassName = "CWeaponElite";
 
         public CWeaponElite (IntPtr pointer) : base(pointer) {}
@@ -23845,7 +23845,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWeaponNOVA : CCSWeaponBase {
+    public partial class CWeaponNOVA : CCSWeaponBase {
         private const string ThisClassName = "CWeaponNOVA";
 
         public CWeaponNOVA (IntPtr pointer) : base(pointer) {}
@@ -23854,7 +23854,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWeaponSawedoff : CCSWeaponBase {
+    public partial class CWeaponSawedoff : CCSWeaponBase {
         private const string ThisClassName = "CWeaponSawedoff";
 
         public CWeaponSawedoff (IntPtr pointer) : base(pointer) {}
@@ -23863,7 +23863,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWeaponTaser : CCSWeaponBaseGun {
+    public partial class CWeaponTaser : CCSWeaponBaseGun {
         private const string ThisClassName = "CWeaponTaser";
 
         public CWeaponTaser (IntPtr pointer) : base(pointer) {}
@@ -23877,7 +23877,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWeaponXM1014 : CCSWeaponBase {
+    public partial class CWeaponXM1014 : CCSWeaponBase {
         private const string ThisClassName = "CWeaponXM1014";
 
         public CWeaponXM1014 (IntPtr pointer) : base(pointer) {}
@@ -23886,7 +23886,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CKnife : CCSWeaponBase {
+    public partial class CKnife : CCSWeaponBase {
         private const string ThisClassName = "CKnife";
 
         public CKnife (IntPtr pointer) : base(pointer) {}
@@ -23895,7 +23895,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CMelee : CCSWeaponBase {
+    public partial class CMelee : CCSWeaponBase {
         private const string ThisClassName = "CMelee";
 
         public CMelee (IntPtr pointer) : base(pointer) {}
@@ -23909,7 +23909,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWeaponShield : CCSWeaponBaseGun {
+    public partial class CWeaponShield : CCSWeaponBaseGun {
         private const string ThisClassName = "CWeaponShield";
 
         public CWeaponShield (IntPtr pointer) : base(pointer) {}
@@ -23923,7 +23923,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CMolotovProjectile : CBaseCSGrenadeProjectile {
+    public partial class CMolotovProjectile : CBaseCSGrenadeProjectile {
         private const string ThisClassName = "CMolotovProjectile";
 
         public CMolotovProjectile (IntPtr pointer) : base(pointer) {}
@@ -23937,7 +23937,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CDecoyProjectile : CBaseCSGrenadeProjectile {
+    public partial class CDecoyProjectile : CBaseCSGrenadeProjectile {
         private const string ThisClassName = "CDecoyProjectile";
 
         public CDecoyProjectile (IntPtr pointer) : base(pointer) {}
@@ -23946,7 +23946,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSmokeGrenadeProjectile : CBaseCSGrenadeProjectile {
+    public partial class CSmokeGrenadeProjectile : CBaseCSGrenadeProjectile {
         private const string ThisClassName = "CSmokeGrenadeProjectile";
 
         public CSmokeGrenadeProjectile (IntPtr pointer) : base(pointer) {}
@@ -23984,7 +23984,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBaseCSGrenade : CCSWeaponBase {
+    public partial class CBaseCSGrenade : CCSWeaponBase {
         private const string ThisClassName = "CBaseCSGrenade";
 
         public CBaseCSGrenade (IntPtr pointer) : base(pointer) {}
@@ -24046,7 +24046,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWeaponBaseItem : CCSWeaponBase {
+    public partial class CWeaponBaseItem : CCSWeaponBase {
         private const string ThisClassName = "CWeaponBaseItem";
 
         public CWeaponBaseItem (IntPtr pointer) : base(pointer) {}
@@ -24066,7 +24066,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CItem_Healthshot : CWeaponBaseItem {
+    public partial class CItem_Healthshot : CWeaponBaseItem {
         private const string ThisClassName = "CItem_Healthshot";
 
         public CItem_Healthshot (IntPtr pointer) : base(pointer) {}
@@ -24075,7 +24075,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFists : CCSWeaponBase {
+    public partial class CFists : CCSWeaponBase {
         private const string ThisClassName = "CFists";
 
         public CFists (IntPtr pointer) : base(pointer) {}
@@ -24095,7 +24095,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSensorGrenade : CBaseCSGrenade {
+    public partial class CSensorGrenade : CBaseCSGrenade {
         private const string ThisClassName = "CSensorGrenade";
 
         public CSensorGrenade (IntPtr pointer) : base(pointer) {}
@@ -24104,7 +24104,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBreachCharge : CCSWeaponBase {
+    public partial class CBreachCharge : CCSWeaponBase {
         private const string ThisClassName = "CBreachCharge";
 
         public CBreachCharge (IntPtr pointer) : base(pointer) {}
@@ -24113,7 +24113,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CBumpMine : CCSWeaponBase {
+    public partial class CBumpMine : CCSWeaponBase {
         private const string ThisClassName = "CBumpMine";
 
         public CBumpMine (IntPtr pointer) : base(pointer) {}
@@ -24122,7 +24122,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTablet : CCSWeaponBase {
+    public partial class CTablet : CCSWeaponBase {
         private const string ThisClassName = "CTablet";
 
         public CTablet (IntPtr pointer) : base(pointer) {}
@@ -24131,7 +24131,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CTripWireFire : CBaseCSGrenade {
+    public partial class CTripWireFire : CBaseCSGrenade {
         private const string ThisClassName = "CTripWireFire";
 
         public CTripWireFire (IntPtr pointer) : base(pointer) {}
@@ -24140,7 +24140,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWeaponZoneRepulsor : CCSWeaponBaseGun {
+    public partial class CWeaponZoneRepulsor : CCSWeaponBaseGun {
         private const string ThisClassName = "CWeaponZoneRepulsor";
 
         public CWeaponZoneRepulsor (IntPtr pointer) : base(pointer) {}
@@ -24149,7 +24149,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSPlayerPawnBase : CBasePlayerPawn {
+    public partial class CCSPlayerPawnBase : CBasePlayerPawn {
         private const string ThisClassName = "CCSPlayerPawnBase";
 
         public CCSPlayerPawnBase (IntPtr pointer) : base(pointer) {}
@@ -24469,7 +24469,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSObserverPawn : CCSPlayerPawnBase {
+    public partial class CCSObserverPawn : CCSPlayerPawnBase {
         private const string ThisClassName = "CCSObserverPawn";
 
         public CCSObserverPawn (IntPtr pointer) : base(pointer) {}
@@ -24478,7 +24478,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CCSPlayerPawn : CCSPlayerPawnBase {
+    public partial class CCSPlayerPawn : CCSPlayerPawnBase {
         private const string ThisClassName = "CCSPlayerPawn";
 
         public CCSPlayerPawn (IntPtr pointer) : base(pointer) {}
@@ -24624,7 +24624,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CHostageExpresserShim : CBaseCombatCharacter {
+    public partial class CHostageExpresserShim : CBaseCombatCharacter {
         private const string ThisClassName = "CHostageExpresserShim";
 
         public CHostageExpresserShim (IntPtr pointer) : base(pointer) {}
@@ -24633,7 +24633,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CHostage : CHostageExpresserShim {
+    public partial class CHostage : CHostageExpresserShim {
         private const string ThisClassName = "CHostage";
 
         public CHostage (IntPtr pointer) : base(pointer) {}
@@ -24713,7 +24713,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CHostageAlias_info_hostage_spawn : CHostage {
+    public partial class CHostageAlias_info_hostage_spawn : CHostage {
         private const string ThisClassName = "CHostageAlias_info_hostage_spawn";
 
         public CHostageAlias_info_hostage_spawn (IntPtr pointer) : base(pointer) {}
@@ -24722,7 +24722,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CItemDefuserAlias_item_defuser : CItemDefuser {
+    public partial class CItemDefuserAlias_item_defuser : CItemDefuser {
         private const string ThisClassName = "CItemDefuserAlias_item_defuser";
 
         public CItemDefuserAlias_item_defuser (IntPtr pointer) : base(pointer) {}
@@ -24731,7 +24731,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CAK47 : CCSWeaponBaseGun {
+    public partial class CAK47 : CCSWeaponBaseGun {
         private const string ThisClassName = "CAK47";
 
         public CAK47 (IntPtr pointer) : base(pointer) {}
@@ -24740,7 +24740,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWeaponAug : CCSWeaponBaseGun {
+    public partial class CWeaponAug : CCSWeaponBaseGun {
         private const string ThisClassName = "CWeaponAug";
 
         public CWeaponAug (IntPtr pointer) : base(pointer) {}
@@ -24749,7 +24749,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWeaponAWP : CCSWeaponBaseGun {
+    public partial class CWeaponAWP : CCSWeaponBaseGun {
         private const string ThisClassName = "CWeaponAWP";
 
         public CWeaponAWP (IntPtr pointer) : base(pointer) {}
@@ -24758,7 +24758,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWeaponBizon : CCSWeaponBaseGun {
+    public partial class CWeaponBizon : CCSWeaponBaseGun {
         private const string ThisClassName = "CWeaponBizon";
 
         public CWeaponBizon (IntPtr pointer) : base(pointer) {}
@@ -24767,7 +24767,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWeaponFamas : CCSWeaponBaseGun {
+    public partial class CWeaponFamas : CCSWeaponBaseGun {
         private const string ThisClassName = "CWeaponFamas";
 
         public CWeaponFamas (IntPtr pointer) : base(pointer) {}
@@ -24776,7 +24776,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWeaponFiveSeven : CCSWeaponBaseGun {
+    public partial class CWeaponFiveSeven : CCSWeaponBaseGun {
         private const string ThisClassName = "CWeaponFiveSeven";
 
         public CWeaponFiveSeven (IntPtr pointer) : base(pointer) {}
@@ -24785,7 +24785,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWeaponG3SG1 : CCSWeaponBaseGun {
+    public partial class CWeaponG3SG1 : CCSWeaponBaseGun {
         private const string ThisClassName = "CWeaponG3SG1";
 
         public CWeaponG3SG1 (IntPtr pointer) : base(pointer) {}
@@ -24794,7 +24794,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWeaponGalilAR : CCSWeaponBaseGun {
+    public partial class CWeaponGalilAR : CCSWeaponBaseGun {
         private const string ThisClassName = "CWeaponGalilAR";
 
         public CWeaponGalilAR (IntPtr pointer) : base(pointer) {}
@@ -24803,7 +24803,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWeaponGlock : CCSWeaponBaseGun {
+    public partial class CWeaponGlock : CCSWeaponBaseGun {
         private const string ThisClassName = "CWeaponGlock";
 
         public CWeaponGlock (IntPtr pointer) : base(pointer) {}
@@ -24812,7 +24812,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWeaponHKP2000 : CCSWeaponBaseGun {
+    public partial class CWeaponHKP2000 : CCSWeaponBaseGun {
         private const string ThisClassName = "CWeaponHKP2000";
 
         public CWeaponHKP2000 (IntPtr pointer) : base(pointer) {}
@@ -24821,7 +24821,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWeaponM4A1 : CCSWeaponBaseGun {
+    public partial class CWeaponM4A1 : CCSWeaponBaseGun {
         private const string ThisClassName = "CWeaponM4A1";
 
         public CWeaponM4A1 (IntPtr pointer) : base(pointer) {}
@@ -24830,7 +24830,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWeaponMAC10 : CCSWeaponBaseGun {
+    public partial class CWeaponMAC10 : CCSWeaponBaseGun {
         private const string ThisClassName = "CWeaponMAC10";
 
         public CWeaponMAC10 (IntPtr pointer) : base(pointer) {}
@@ -24839,7 +24839,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWeaponMag7 : CCSWeaponBaseGun {
+    public partial class CWeaponMag7 : CCSWeaponBaseGun {
         private const string ThisClassName = "CWeaponMag7";
 
         public CWeaponMag7 (IntPtr pointer) : base(pointer) {}
@@ -24848,7 +24848,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWeaponMP7 : CCSWeaponBaseGun {
+    public partial class CWeaponMP7 : CCSWeaponBaseGun {
         private const string ThisClassName = "CWeaponMP7";
 
         public CWeaponMP7 (IntPtr pointer) : base(pointer) {}
@@ -24857,7 +24857,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWeaponMP9 : CCSWeaponBaseGun {
+    public partial class CWeaponMP9 : CCSWeaponBaseGun {
         private const string ThisClassName = "CWeaponMP9";
 
         public CWeaponMP9 (IntPtr pointer) : base(pointer) {}
@@ -24866,7 +24866,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWeaponNegev : CCSWeaponBaseGun {
+    public partial class CWeaponNegev : CCSWeaponBaseGun {
         private const string ThisClassName = "CWeaponNegev";
 
         public CWeaponNegev (IntPtr pointer) : base(pointer) {}
@@ -24875,7 +24875,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWeaponP250 : CCSWeaponBaseGun {
+    public partial class CWeaponP250 : CCSWeaponBaseGun {
         private const string ThisClassName = "CWeaponP250";
 
         public CWeaponP250 (IntPtr pointer) : base(pointer) {}
@@ -24884,7 +24884,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWeaponP90 : CCSWeaponBaseGun {
+    public partial class CWeaponP90 : CCSWeaponBaseGun {
         private const string ThisClassName = "CWeaponP90";
 
         public CWeaponP90 (IntPtr pointer) : base(pointer) {}
@@ -24893,7 +24893,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWeaponSCAR20 : CCSWeaponBaseGun {
+    public partial class CWeaponSCAR20 : CCSWeaponBaseGun {
         private const string ThisClassName = "CWeaponSCAR20";
 
         public CWeaponSCAR20 (IntPtr pointer) : base(pointer) {}
@@ -24902,7 +24902,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWeaponSG556 : CCSWeaponBaseGun {
+    public partial class CWeaponSG556 : CCSWeaponBaseGun {
         private const string ThisClassName = "CWeaponSG556";
 
         public CWeaponSG556 (IntPtr pointer) : base(pointer) {}
@@ -24911,7 +24911,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWeaponSSG08 : CCSWeaponBaseGun {
+    public partial class CWeaponSSG08 : CCSWeaponBaseGun {
         private const string ThisClassName = "CWeaponSSG08";
 
         public CWeaponSSG08 (IntPtr pointer) : base(pointer) {}
@@ -24920,7 +24920,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWeaponTec9 : CCSWeaponBaseGun {
+    public partial class CWeaponTec9 : CCSWeaponBaseGun {
         private const string ThisClassName = "CWeaponTec9";
 
         public CWeaponTec9 (IntPtr pointer) : base(pointer) {}
@@ -24929,7 +24929,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWeaponUMP45 : CCSWeaponBaseGun {
+    public partial class CWeaponUMP45 : CCSWeaponBaseGun {
         private const string ThisClassName = "CWeaponUMP45";
 
         public CWeaponUMP45 (IntPtr pointer) : base(pointer) {}
@@ -24938,7 +24938,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CWeaponM249 : CCSWeaponBaseGun {
+    public partial class CWeaponM249 : CCSWeaponBaseGun {
         private const string ThisClassName = "CWeaponM249";
 
         public CWeaponM249 (IntPtr pointer) : base(pointer) {}
@@ -24947,7 +24947,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CMolotovGrenade : CBaseCSGrenade {
+    public partial class CMolotovGrenade : CBaseCSGrenade {
         private const string ThisClassName = "CMolotovGrenade";
 
         public CMolotovGrenade (IntPtr pointer) : base(pointer) {}
@@ -24956,7 +24956,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CIncendiaryGrenade : CMolotovGrenade {
+    public partial class CIncendiaryGrenade : CMolotovGrenade {
         private const string ThisClassName = "CIncendiaryGrenade";
 
         public CIncendiaryGrenade (IntPtr pointer) : base(pointer) {}
@@ -24965,7 +24965,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CDecoyGrenade : CBaseCSGrenade {
+    public partial class CDecoyGrenade : CBaseCSGrenade {
         private const string ThisClassName = "CDecoyGrenade";
 
         public CDecoyGrenade (IntPtr pointer) : base(pointer) {}
@@ -24974,7 +24974,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CFlashbang : CBaseCSGrenade {
+    public partial class CFlashbang : CBaseCSGrenade {
         private const string ThisClassName = "CFlashbang";
 
         public CFlashbang (IntPtr pointer) : base(pointer) {}
@@ -24983,7 +24983,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CHEGrenade : CBaseCSGrenade {
+    public partial class CHEGrenade : CBaseCSGrenade {
         private const string ThisClassName = "CHEGrenade";
 
         public CHEGrenade (IntPtr pointer) : base(pointer) {}
@@ -24992,7 +24992,7 @@ namespace CounterStrikeSharp.API.Core
     }
 
     // server.dll
-    public class CSmokeGrenade : CBaseCSGrenade {
+    public partial class CSmokeGrenade : CBaseCSGrenade {
         private const string ThisClassName = "CSmokeGrenade";
 
         public CSmokeGrenade (IntPtr pointer) : base(pointer) {}

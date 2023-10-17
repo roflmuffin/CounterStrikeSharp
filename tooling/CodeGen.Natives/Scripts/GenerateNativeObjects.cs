@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace CodeGen.Natives.Scripts;
@@ -137,7 +137,7 @@ public partial class Generators
                 .Replace("::", "__");
             var classDefinition = $@"
     // {c.SchemaName}
-    public class {className} {(inheritedClassName != null ? $": {inheritedClassName}" : ": NativeObject")} {{
+    public partial class {className} {(inheritedClassName != null ? $": {inheritedClassName}" : ": NativeObject")} {{
         private const string ThisClassName = ""{className}"";
 
         public {className} (IntPtr pointer) : base(pointer) {{}}
