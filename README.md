@@ -17,7 +17,7 @@ As a result, there are a few key philosophies and trade-offs that drive the proj
 - The scripting runtime will only support C#/.NET at this time, but there is no reason it cannot be extended in the future to support other languages by utilising the native bindings created by this plugin (in JS, Rust or Go for example).
 
 ## Install
-Development builds are currently available through GitHub actions, you can download the latest build from [there](https://github.com/roflmuffin/CounterStrikeSharp/actions).
+Development builds are currently available through GitHub actions, you can download the latest build from [there](https://github.com/roflmuffin/CounterStrikeSharp/actions/workflows/cmake-single-platform.yml).
 
 Detailed installation instructions can be found at [INSTALL.md](INSTALL.md).
 
