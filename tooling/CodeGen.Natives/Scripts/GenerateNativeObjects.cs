@@ -88,14 +88,19 @@ public partial class Generators
                 return "uint";
             case "uint64":
                 return "ulong";
-            default:
-                return CleanName(value);
         }
+
+        if (CleanName(value).EndsWith("*"))
+        {
+            return $"PointerTo<{CleanName(value).Replace("*", "")}>";
+        }
+
+        return CleanName(value);
     }
 
     private static string CleanName(string value) => value.Replace("::", "__").Replace(" ", "");
 
-    record MemberRow(string VarType, string VarName);
+    record MemberRow(string VarType, string VarName, int? Offset);
     
 
     public static void GenerateNativeObjects()
@@ -124,8 +129,11 @@ public partial class Generators
         
         foreach (var c in allClasses)
         {
-            supportedTypes.Add(c.ClassName.Replace("::", "__"));
+            supportedTypes.Add(CleanName(c.ClassName));
+            supportedTypes.Add(CleanName(c.ClassName) + "*");
         }
+
+        var addedMembers = new HashSet<string>();
         
         var addedClasses = new HashSet<string>();
         var allClassDefinitions = allClasses.Select(c =>
@@ -146,17 +154,19 @@ public partial class Generators
     }}";
             
             var networkVarMembers =
-                c.Metadata?.Where(x => x.Type != "Unknown").Select(x => new MemberRow(x.VarType, x.VarName)) ??
+                c.Metadata?.Where(x => x.Type != "Unknown").Select(x => new MemberRow(CleanName(x.VarType), x.VarName, null)) ??
                 Enumerable.Empty<MemberRow>();
 
             // Currently disabled, but access to non network vars (aka not accessible via schema)
-            // var offsetVarMembers = c.Offsets.Select(x => new MemberRow(x.FieldCtype, x.FieldName));
+            var offsetVarMembers = c.Offsets.Select(x => new MemberRow(CleanName(x.FieldCtype), x.FieldName, x.OffsetSize));
 
             var members = networkVarMembers
+                // .Concat(offsetVarMembers)
                 .Where(x => supportedTypes.Contains(x.VarType) || x.VarType.StartsWith("CHandle"))
                 .Select(m =>
                 {
                     var mappedVarType = MapVarTypeToCSharpType(m.VarType);
+                    
                     var returnData = $@"
         public {mappedVarType} {m.VarName} 
         {{

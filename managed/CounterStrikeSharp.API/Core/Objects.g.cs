@@ -11676,6 +11676,11 @@ namespace CounterStrikeSharp.API.Core
         public CEntityInstance (IntPtr pointer) : base(pointer) {}
 
         
+        public PointerTo<CEntityIdentity> m_pEntity 
+        {
+            get => Schema.GetSchemaValue<PointerTo<CEntityIdentity>>(this.Handle, ThisClassName, "m_pEntity");
+            set => Schema.SetSchemaValue<PointerTo<CEntityIdentity>>(this.Handle, ThisClassName, "m_pEntity", value);
+        }
     }
 
     // engine2.dll
@@ -14110,6 +14115,11 @@ namespace CounterStrikeSharp.API.Core
         public CCSGameRulesProxy (IntPtr pointer) : base(pointer) {}
 
         
+        public PointerTo<CCSGameRules> m_pGameRules 
+        {
+            get => Schema.GetSchemaValue<PointerTo<CCSGameRules>>(this.Handle, ThisClassName, "m_pGameRules");
+            set => Schema.SetSchemaValue<PointerTo<CCSGameRules>>(this.Handle, ThisClassName, "m_pGameRules", value);
+        }
     }
 
     // server.dll
@@ -14621,6 +14631,12 @@ namespace CounterStrikeSharp.API.Core
         {
             get => Schema.GetSchemaValue<bool>(this.Handle, ThisClassName, "m_bMatchAbortedDueToPlayerBan");
             set => Schema.SetSchemaValue<bool>(this.Handle, ThisClassName, "m_bMatchAbortedDueToPlayerBan", value);
+        }
+
+        public PointerTo<CCSGameModeRules> m_pGameModeRules 
+        {
+            get => Schema.GetSchemaValue<PointerTo<CCSGameModeRules>>(this.Handle, ThisClassName, "m_pGameModeRules");
+            set => Schema.SetSchemaValue<PointerTo<CCSGameModeRules>>(this.Handle, ThisClassName, "m_pGameModeRules", value);
         }
 
         public CRetakeGameRules m_RetakeRules 
@@ -20798,6 +20814,30 @@ namespace CounterStrikeSharp.API.Core
         public CCSPlayerController (IntPtr pointer) : base(pointer) {}
 
         
+        public PointerTo<CCSPlayerController_InGameMoneyServices> m_pInGameMoneyServices 
+        {
+            get => Schema.GetSchemaValue<PointerTo<CCSPlayerController_InGameMoneyServices>>(this.Handle, ThisClassName, "m_pInGameMoneyServices");
+            set => Schema.SetSchemaValue<PointerTo<CCSPlayerController_InGameMoneyServices>>(this.Handle, ThisClassName, "m_pInGameMoneyServices", value);
+        }
+
+        public PointerTo<CCSPlayerController_InventoryServices> m_pInventoryServices 
+        {
+            get => Schema.GetSchemaValue<PointerTo<CCSPlayerController_InventoryServices>>(this.Handle, ThisClassName, "m_pInventoryServices");
+            set => Schema.SetSchemaValue<PointerTo<CCSPlayerController_InventoryServices>>(this.Handle, ThisClassName, "m_pInventoryServices", value);
+        }
+
+        public PointerTo<CCSPlayerController_ActionTrackingServices> m_pActionTrackingServices 
+        {
+            get => Schema.GetSchemaValue<PointerTo<CCSPlayerController_ActionTrackingServices>>(this.Handle, ThisClassName, "m_pActionTrackingServices");
+            set => Schema.SetSchemaValue<PointerTo<CCSPlayerController_ActionTrackingServices>>(this.Handle, ThisClassName, "m_pActionTrackingServices", value);
+        }
+
+        public PointerTo<CCSPlayerController_DamageServices> m_pDamageServices 
+        {
+            get => Schema.GetSchemaValue<PointerTo<CCSPlayerController_DamageServices>>(this.Handle, ThisClassName, "m_pDamageServices");
+            set => Schema.SetSchemaValue<PointerTo<CCSPlayerController_DamageServices>>(this.Handle, ThisClassName, "m_pDamageServices", value);
+        }
+
         public uint m_iPing 
         {
             get => Schema.GetSchemaValue<uint>(this.Handle, ThisClassName, "m_iPing");
@@ -20886,6 +20926,12 @@ namespace CounterStrikeSharp.API.Core
         {
             get => Schema.GetSchemaValue<int>(this.Handle, ThisClassName, "m_nEndMatchNextMapVote");
             set => Schema.SetSchemaValue<int>(this.Handle, ThisClassName, "m_nEndMatchNextMapVote", value);
+        }
+
+        public QuestProgress__Reason m_nQuestProgressReason 
+        {
+            get => Schema.GetSchemaValue<QuestProgress__Reason>(this.Handle, ThisClassName, "m_nQuestProgressReason");
+            set => Schema.SetSchemaValue<QuestProgress__Reason>(this.Handle, ThisClassName, "m_nQuestProgressReason", value);
         }
 
         public uint m_unPlayerTvControlFlags 
@@ -22071,6 +22117,12 @@ namespace CounterStrikeSharp.API.Core
         {
             get => Schema.GetSchemaValue<int>(this.Handle, ThisClassName, "m_nForceBone");
             set => Schema.SetSchemaValue<int>(this.Handle, ThisClassName, "m_nForceBone", value);
+        }
+
+        public PointerTo<PhysicsRagdollPose_t> m_pRagdollPose 
+        {
+            get => Schema.GetSchemaValue<PointerTo<PhysicsRagdollPose_t>>(this.Handle, ThisClassName, "m_pRagdollPose");
+            set => Schema.SetSchemaValue<PointerTo<PhysicsRagdollPose_t>>(this.Handle, ThisClassName, "m_pRagdollPose", value);
         }
 
         public bool m_bClientRagdoll 
@@ -23559,6 +23611,60 @@ namespace CounterStrikeSharp.API.Core
         public CBasePlayerPawn (IntPtr pointer) : base(pointer) {}
 
         
+        public PointerTo<CPlayer_WeaponServices> m_pWeaponServices 
+        {
+            get => Schema.GetSchemaValue<PointerTo<CPlayer_WeaponServices>>(this.Handle, ThisClassName, "m_pWeaponServices");
+            set => Schema.SetSchemaValue<PointerTo<CPlayer_WeaponServices>>(this.Handle, ThisClassName, "m_pWeaponServices", value);
+        }
+
+        public PointerTo<CPlayer_ItemServices> m_pItemServices 
+        {
+            get => Schema.GetSchemaValue<PointerTo<CPlayer_ItemServices>>(this.Handle, ThisClassName, "m_pItemServices");
+            set => Schema.SetSchemaValue<PointerTo<CPlayer_ItemServices>>(this.Handle, ThisClassName, "m_pItemServices", value);
+        }
+
+        public PointerTo<CPlayer_AutoaimServices> m_pAutoaimServices 
+        {
+            get => Schema.GetSchemaValue<PointerTo<CPlayer_AutoaimServices>>(this.Handle, ThisClassName, "m_pAutoaimServices");
+            set => Schema.SetSchemaValue<PointerTo<CPlayer_AutoaimServices>>(this.Handle, ThisClassName, "m_pAutoaimServices", value);
+        }
+
+        public PointerTo<CPlayer_ObserverServices> m_pObserverServices 
+        {
+            get => Schema.GetSchemaValue<PointerTo<CPlayer_ObserverServices>>(this.Handle, ThisClassName, "m_pObserverServices");
+            set => Schema.SetSchemaValue<PointerTo<CPlayer_ObserverServices>>(this.Handle, ThisClassName, "m_pObserverServices", value);
+        }
+
+        public PointerTo<CPlayer_WaterServices> m_pWaterServices 
+        {
+            get => Schema.GetSchemaValue<PointerTo<CPlayer_WaterServices>>(this.Handle, ThisClassName, "m_pWaterServices");
+            set => Schema.SetSchemaValue<PointerTo<CPlayer_WaterServices>>(this.Handle, ThisClassName, "m_pWaterServices", value);
+        }
+
+        public PointerTo<CPlayer_UseServices> m_pUseServices 
+        {
+            get => Schema.GetSchemaValue<PointerTo<CPlayer_UseServices>>(this.Handle, ThisClassName, "m_pUseServices");
+            set => Schema.SetSchemaValue<PointerTo<CPlayer_UseServices>>(this.Handle, ThisClassName, "m_pUseServices", value);
+        }
+
+        public PointerTo<CPlayer_FlashlightServices> m_pFlashlightServices 
+        {
+            get => Schema.GetSchemaValue<PointerTo<CPlayer_FlashlightServices>>(this.Handle, ThisClassName, "m_pFlashlightServices");
+            set => Schema.SetSchemaValue<PointerTo<CPlayer_FlashlightServices>>(this.Handle, ThisClassName, "m_pFlashlightServices", value);
+        }
+
+        public PointerTo<CPlayer_CameraServices> m_pCameraServices 
+        {
+            get => Schema.GetSchemaValue<PointerTo<CPlayer_CameraServices>>(this.Handle, ThisClassName, "m_pCameraServices");
+            set => Schema.SetSchemaValue<PointerTo<CPlayer_CameraServices>>(this.Handle, ThisClassName, "m_pCameraServices", value);
+        }
+
+        public PointerTo<CPlayer_MovementServices> m_pMovementServices 
+        {
+            get => Schema.GetSchemaValue<PointerTo<CPlayer_MovementServices>>(this.Handle, ThisClassName, "m_pMovementServices");
+            set => Schema.SetSchemaValue<PointerTo<CPlayer_MovementServices>>(this.Handle, ThisClassName, "m_pMovementServices", value);
+        }
+
         public ViewAngleServerChange_t m_ServerViewAngleChanges 
         {
             get => Schema.GetSchemaValue<ViewAngleServerChange_t>(this.Handle, ThisClassName, "m_ServerViewAngleChanges");
@@ -24155,6 +24261,18 @@ namespace CounterStrikeSharp.API.Core
         public CCSPlayerPawnBase (IntPtr pointer) : base(pointer) {}
 
         
+        public PointerTo<CCSPlayer_PingServices> m_pPingServices 
+        {
+            get => Schema.GetSchemaValue<PointerTo<CCSPlayer_PingServices>>(this.Handle, ThisClassName, "m_pPingServices");
+            set => Schema.SetSchemaValue<PointerTo<CCSPlayer_PingServices>>(this.Handle, ThisClassName, "m_pPingServices", value);
+        }
+
+        public PointerTo<CPlayer_ViewModelServices> m_pViewModelServices 
+        {
+            get => Schema.GetSchemaValue<PointerTo<CPlayer_ViewModelServices>>(this.Handle, ThisClassName, "m_pViewModelServices");
+            set => Schema.SetSchemaValue<PointerTo<CPlayer_ViewModelServices>>(this.Handle, ThisClassName, "m_pViewModelServices", value);
+        }
+
         public CHandle<CCSPlayerController> m_hOriginalController 
         {
             get => Schema.GetSchemaValue<CHandle<CCSPlayerController>>(this.Handle, ThisClassName, "m_hOriginalController");
@@ -24484,6 +24602,30 @@ namespace CounterStrikeSharp.API.Core
         public CCSPlayerPawn (IntPtr pointer) : base(pointer) {}
 
         
+        public PointerTo<CCSPlayer_BulletServices> m_pBulletServices 
+        {
+            get => Schema.GetSchemaValue<PointerTo<CCSPlayer_BulletServices>>(this.Handle, ThisClassName, "m_pBulletServices");
+            set => Schema.SetSchemaValue<PointerTo<CCSPlayer_BulletServices>>(this.Handle, ThisClassName, "m_pBulletServices", value);
+        }
+
+        public PointerTo<CCSPlayer_HostageServices> m_pHostageServices 
+        {
+            get => Schema.GetSchemaValue<PointerTo<CCSPlayer_HostageServices>>(this.Handle, ThisClassName, "m_pHostageServices");
+            set => Schema.SetSchemaValue<PointerTo<CCSPlayer_HostageServices>>(this.Handle, ThisClassName, "m_pHostageServices", value);
+        }
+
+        public PointerTo<CCSPlayer_BuyServices> m_pBuyServices 
+        {
+            get => Schema.GetSchemaValue<PointerTo<CCSPlayer_BuyServices>>(this.Handle, ThisClassName, "m_pBuyServices");
+            set => Schema.SetSchemaValue<PointerTo<CCSPlayer_BuyServices>>(this.Handle, ThisClassName, "m_pBuyServices", value);
+        }
+
+        public PointerTo<CCSPlayer_ActionTrackingServices> m_pActionTrackingServices 
+        {
+            get => Schema.GetSchemaValue<PointerTo<CCSPlayer_ActionTrackingServices>>(this.Handle, ThisClassName, "m_pActionTrackingServices");
+            set => Schema.SetSchemaValue<PointerTo<CCSPlayer_ActionTrackingServices>>(this.Handle, ThisClassName, "m_pActionTrackingServices", value);
+        }
+
         public bool m_bHasFemaleVoice 
         {
             get => Schema.GetSchemaValue<bool>(this.Handle, ThisClassName, "m_bHasFemaleVoice");

@@ -16,6 +16,7 @@
 
 using System;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Utils;
 
@@ -44,32 +45,9 @@ namespace CounterStrikeSharp.API.Modules.Utils
             this.Z = z ?? 0;
         }
 
-        /// <summary>
-        /// X value of Vector
-        /// </summary>
-        public float X
-        {
-            set => NativeAPI.VectorSetX(Handle, value);
-            get => NativeAPI.VectorGetX(Handle);
-        }
-
-        /// <summary>
-        /// Y value of Vector
-        /// </summary>
-        public float Y
-        {
-            set => NativeAPI.VectorSetY(Handle, value);
-            get => NativeAPI.VectorGetY(Handle);
-        }
-
-        /// <summary>
-        /// Z value of vector
-        /// </summary>
-        public float Z
-        {
-            set => NativeAPI.VectorSetZ(Handle, value);
-            get => NativeAPI.VectorGetZ(Handle);
-        }      
+        public unsafe ref float X => ref Unsafe.Add(ref *(float*)Handle, 0);
+        public unsafe ref float Y => ref Unsafe.Add(ref *(float*)Handle, 1);
+        public unsafe ref float Z => ref Unsafe.Add(ref *(float*)Handle, 2);
         
         /// <summary>
         /// Returns a copy of the vector with values replaced.
