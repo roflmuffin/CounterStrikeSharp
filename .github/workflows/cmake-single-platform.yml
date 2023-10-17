@@ -2,8 +2,10 @@ name: Build & Publish
 
 on:
   push:
+    paths-ignore:
+      - 'docs/**'
     branches: [ "main" ]
-
+  
 env:
   BUILD_TYPE: Release
 
