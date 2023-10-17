@@ -35,7 +35,4 @@ export default defineConfig({
 		  wrap: true,
 		},
 	  },
-	redirects: {
-		'/': '/guides/getting-started',
-	},
 });
