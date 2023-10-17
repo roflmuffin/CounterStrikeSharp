@@ -47,11 +47,10 @@ void* GetEntityPointerFromHandle(ScriptContext& scriptContext) {
     auto handle = scriptContext.GetArgument<CEntityHandle*>(0);
 
     if (!handle->IsValid()) {
-        scriptContext.ThrowNativeError("Invalid handle.");
         return nullptr;
     }
 
-    return handle->Get();
+    return globals::entitySystem->GetBaseEntity(*handle);
 }
 
 REGISTER_NATIVES(entities, {

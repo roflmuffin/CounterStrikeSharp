@@ -18,6 +18,7 @@ public partial class Generators
         [JsonPropertyName("inherits")] public string Inherits { get; set; }
 
         public List<Class> Subclasses { get; set; } = new List<Class>();
+        public string SchemaName { get; set; }
     }
 
     public class Enum
@@ -92,7 +93,7 @@ public partial class Generators
         }
     }
 
-    private static string CleanName(string value) => value.Replace("::", "__");
+    private static string CleanName(string value) => value.Replace("::", "__").Replace(" ", "");
 
     record MemberRow(string VarType, string VarName);
     
@@ -103,7 +104,14 @@ public partial class Generators
         var jsonString = File.ReadAllText(jsonPath);
         var allSchemas = JsonSerializer.Deserialize<List<Root>>(jsonString);
 
-        var allClasses = allSchemas.Where(x => x.SchemaName != "client.dll").SelectMany(s => s.Classes);
+        var allClasses = allSchemas.Where(x => x.SchemaName != "client.dll").SelectMany(s =>
+        {
+            return s.Classes.Select(x =>
+            {
+                x.SchemaName = s.SchemaName;
+                return x;
+            });
+        });
         
         var supportedTypes =
             new HashSet<string>(new[] { "int", "int32", "float", "bool", "uint8", "float32", "char", "uint32", "uint64", "Vector" });
@@ -128,6 +136,7 @@ public partial class Generators
             var inheritedClassName = c.Inherits?.Split(new string[] { "::" }, StringSplitOptions.None).Last()
                 .Replace("::", "__");
             var classDefinition = $@"
+    // {c.SchemaName}
     public class {className} {(inheritedClassName != null ? $": {inheritedClassName}" : ": NativeObject")} {{
         private const string ThisClassName = ""{className}"";
 
@@ -144,7 +153,7 @@ public partial class Generators
             // var offsetVarMembers = c.Offsets.Select(x => new MemberRow(x.FieldCtype, x.FieldName));
 
             var members = networkVarMembers
-                .Where(x => supportedTypes.Contains(x.VarType))
+                .Where(x => supportedTypes.Contains(x.VarType) || x.VarType.StartsWith("CHandle"))
                 .Select(m =>
                 {
                     var mappedVarType = MapVarTypeToCSharpType(m.VarType);
