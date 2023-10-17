@@ -19,7 +19,7 @@ As a result, there are a few key philosophies and trade-offs that drive the proj
 ## Install
 Development builds are currently available through GitHub actions, you can download the latest build from [there](https://github.com/roflmuffin/CounterStrikeSharp/actions/workflows/cmake-single-platform.yml).
 
-Detailed installation instructions can be found at [INSTALL.md](INSTALL.md).
+Detailed installation instructions can be found in the [docs](https://docs.cssharp.dev/guides/getting-started/).
 
 ## What works?
 _(Note, these were features in the previous VSP.NET project, but have not been implemented yet in this project)_
@@ -40,6 +40,7 @@ These features are the core of the platform and work pretty well/have a low risk
 
 ## Links
 - [Join the Discord](https://discord.gg/X7r3PmuYKq): Ask questions, provide suggestions
+- [Read the docs](https://docs.cssharp.dev/): Getting started guide, hello world plugin example
 - [Issue tracker](https://github.com/roflmuffin/CounterStrikeSharp/issues): Raise any issues here
 - [Builds](https://github.com/roflmuffin/CounterStrikeSharp/actions): Download latest unstable dev snapshot
 - [Install Docs](INSTALL.md): Installation instructions
