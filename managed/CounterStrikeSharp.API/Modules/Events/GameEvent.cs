@@ -55,10 +55,12 @@ namespace CounterStrikeSharp.API.Modules.Events
             object result = type switch
             {
                 _ when type == typeof(float) => GetFloat(name),
+                _ when type == typeof(short) => GetInt(name),
                 _ when type == typeof(int) => GetInt(name),
                 _ when type == typeof(string) => GetString(name),
                 _ when type == typeof(bool) => GetBool(name),
                 _ when type == typeof(ulong) => GetUint64(name),
+                _ when type == typeof(long) => GetUint64(name),
                 _ when type == typeof(Player) => GetPlayer(name),
                 _ => throw new NotSupportedException(),
             };
@@ -73,6 +75,9 @@ namespace CounterStrikeSharp.API.Modules.Events
             {
                 case var _ when value is float f:
                     SetFloat(name, f);
+                    break;
+                case var _ when value is short s:
+                    SetInt(name, s);
                     break;
                 case var _ when value is int i:
                     SetInt(name, i);
@@ -90,6 +95,9 @@ namespace CounterStrikeSharp.API.Modules.Events
                     break;
                 case var _ when value is ulong ul:
                     SetUint64(name, ul);
+                    break;
+                case var _ when value is long l:
+                    SetUint64(name, (ulong)l);
                     break;
                 default:
                     throw new NotSupportedException();
