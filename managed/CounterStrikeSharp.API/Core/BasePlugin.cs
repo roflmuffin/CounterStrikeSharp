@@ -147,7 +147,7 @@ namespace CounterStrikeSharp.API.Core
             });
 
             var subscriber = new CallbackSubscriber(handler, wrappedHandler, () => { RemoveCommand(name, handler); });
-            NativeAPI.AddCommand(name, description, false, 0, subscriber.GetInputArgument());
+            NativeAPI.AddCommand(name, description, false, (int)ConCommandFlags.FCVAR_LINKED_CONCOMMAND, subscriber.GetInputArgument());
             CommandHandlers[handler] = subscriber;
         }
 
