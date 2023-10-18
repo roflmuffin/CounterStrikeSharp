@@ -10,14 +10,13 @@ public class Schema
     private static Dictionary<Tuple<string, string>, short> _schemaOffsets = new();
     public static short GetSchemaOffset(string className, string propertyName)
     {
-        if (_schemaOffsets.TryGetValue(new Tuple<string, string>(className, propertyName), out var offset))
+        var key = new Tuple<string, string>(className, propertyName);
+        if (!_schemaOffsets.TryGetValue(key, out var offset))
         {
-            return offset;
+            offset = NativeAPI.GetSchemaOffset(className, propertyName);
+            _schemaOffsets.Add(key, offset);
         }
-        
-        var foundOffset = NativeAPI.GetSchemaOffset(className, propertyName);
-        _schemaOffsets.Add(new Tuple<string, string>(className, propertyName), foundOffset);
-        return foundOffset;
+        return offset;
     }
     
     public static T GetSchemaValue<T>(IntPtr handle, string className, string propertyName)
