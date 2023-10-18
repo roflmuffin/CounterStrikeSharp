@@ -705,6 +705,18 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static short GetSchemaOffset(string classname, string propname){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(classname);
+			ScriptContext.GlobalScriptContext.Push(propname);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x57B77D8F);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (short)ScriptContext.GlobalScriptContext.GetResult(typeof(short));
+			}
+		}
+
         public static T GetSchemaValueByName<T>(IntPtr instance, int returntype, string classname, string propname){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();

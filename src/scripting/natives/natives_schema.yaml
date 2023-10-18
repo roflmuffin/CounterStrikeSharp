@@ -1,2 +1,3 @@
+GET_SCHEMA_OFFSET: className:string, propName:string -> short
 GET_SCHEMA_VALUE_BY_NAME: instance:pointer, returnType:int, className:string, propName:string -> any
 SET_SCHEMA_VALUE_BY_NAME: instance:pointer, returnType:int, className:string, propName:string, value:any -> void

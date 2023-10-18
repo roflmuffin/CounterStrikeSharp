@@ -15,6 +15,7 @@ public class Mapping
             case "pointer":
             case "bool":
             case "double":
+            case "short":
                 return "Push(";
             case "func":
             case "callback":
@@ -33,6 +34,8 @@ public class Mapping
     {
         switch (type)
         {
+            case "short":
+                return "short";
             case "int":
                 return "int";
             case "uint":

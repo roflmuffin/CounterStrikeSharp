@@ -27,6 +27,17 @@
 
 namespace counterstrikesharp {
 
+int16 GetSchemaOffset(ScriptContext &script_context) {
+    auto className = script_context.GetArgument<const char *>(0);
+    auto memberName = script_context.GetArgument<const char *>(1);
+    auto classKey = hash_32_fnv1a_const(className);
+    auto memberKey = hash_32_fnv1a_const(memberName);
+
+    const auto m_key = schema::GetOffset(className, classKey, memberName, memberKey);
+
+    return m_key.offset;
+}
+
 void GetSchemaValueByName(ScriptContext &script_context) {
     auto instancePointer = script_context.GetArgument<void *>(0);
     auto returnType = script_context.GetArgument<DataType_t>(1);
@@ -200,6 +211,7 @@ void SetSchemaValueByName(ScriptContext &script_context) {
 }
 
 REGISTER_NATIVES(schema, {
+    ScriptEngine::RegisterNativeHandler("GET_SCHEMA_OFFSET", GetSchemaOffset);
     ScriptEngine::RegisterNativeHandler("GET_SCHEMA_VALUE_BY_NAME", GetSchemaValueByName);
     ScriptEngine::RegisterNativeHandler("SET_SCHEMA_VALUE_BY_NAME", SetSchemaValueByName);
 })
