@@ -14,6 +14,16 @@ export default defineConfig({
 				'@fontsource/jetbrains-mono/600.css',
 				'./src/styles/custom.css',
 			],
+			head: [
+				{
+					tag: 'script',
+					attrs: {
+						src: 'https://gc.zgo.at/count.js',
+						'data-goatcounter': 'https://cssharp.goatcounter.com/count',
+						async: true,
+					},
+				},
+			],
 			social: {
 				github: 'https://github.com/roflmuffin/CounterStrikeSharp',
 			},
