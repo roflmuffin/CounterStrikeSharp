@@ -61,7 +61,7 @@ public:
 
 private:
     bool sdn;
-    ConCommandRefAbstract* p_cmd;
+    ConCommandRefAbstract p_cmd;
     ConCommand* command;
     ScriptCallback* callback_pre;
     ScriptCallback* callback_post;

@@ -106,10 +106,11 @@ ConCommandInfo* ConCommandManager::AddOrFindCommand(const char* name,
         //            return *found;
         //        }
         p_info = new ConCommandInfo();
-        ConCommandHandle p_cmd = globals::cvars->FindCommand(name);
-        ConCommandRefAbstract* pointerConCommand;
+        ConCommandHandle existingCommand = globals::cvars->FindCommand(name);
+        ConCommandRefAbstract pointerConCommand;
+        p_info->p_cmd = pointerConCommand;
 
-        if (!p_cmd.IsValid()) {
+        if (!existingCommand.IsValid()) {
             if (!description) {
                 description = "";
             }
@@ -119,12 +120,11 @@ ConCommandInfo* ConCommandManager::AddOrFindCommand(const char* name,
             char* new_name = strdup(name);
             char* new_desc = strdup(description);
 
+            CSSHARP_CORE_TRACE("[ConCommandManager] Creating new command {}, {}, {}, {}, {}", (void*)&pointerConCommand, new_name, (void*)CommandCallback, new_desc, flags);
+
             auto conCommand =
-                new ConCommand(pointerConCommand, new_name, CommandCallback, new_desc, flags);
-
-            CSSHARP_CORE_TRACE("[ConCommandManager] Creating new command {}, {}, {}, {}, {}", (void*)pointerConCommand, new_name, (void*)CommandCallback, new_desc, flags);
-
-
+                new ConCommand(&pointerConCommand, new_name, CommandCallback, new_desc, flags);
+            
             CSSHARP_CORE_TRACE("[ConCommandManager] Creating callbacks for command {}", name);
 
             p_info->command = conCommand;
@@ -135,8 +135,13 @@ ConCommandInfo* ConCommandManager::AddOrFindCommand(const char* name,
 
             CSSHARP_CORE_TRACE("[ConCommandManager] Adding hooks for command callback for command {}", name);
 
-            SH_ADD_HOOK(ConCommandHandle, Dispatch, &pointerConCommand->handle, SH_STATIC(CommandCallback), false);
-            SH_ADD_HOOK(ConCommandHandle, Dispatch, &pointerConCommand->handle, SH_STATIC(CommandCallback_Post), true);
+            SH_ADD_HOOK(ConCommandHandle, Dispatch, &pointerConCommand.handle, SH_STATIC(CommandCallback), false);
+            SH_ADD_HOOK(ConCommandHandle, Dispatch, &pointerConCommand.handle, SH_STATIC(CommandCallback_Post), true);
+
+            CSSHARP_CORE_TRACE("[ConCommandManager] Adding command to internal lookup {}", name);
+
+            m_cmd_list.push_back(p_info);
+            m_cmd_lookup[name] = p_info;
         } else {
             //            p_info->callback_pre = globals::callbackManager.CreateCallback(name);
             //            p_info->callback_post = globals::callbackManager.CreateCallback(name);
@@ -146,15 +151,6 @@ ConCommandInfo* ConCommandManager::AddOrFindCommand(const char* name,
             //            SH_STATIC(CommandCallback), false); SH_ADD_HOOK(ConCommandHandle,
             //            Dispatch, pointerConCommand->handle, SH_STATIC(CommandCallback_Post),
             //            true);
-        }
-
-        if (pointerConCommand != nullptr) {
-            p_info->p_cmd = pointerConCommand;
-
-            CSSHARP_CORE_TRACE("[ConCommandManager] Adding command to internal lookup {}", name);
-
-            m_cmd_list.push_back(p_info);
-            m_cmd_lookup[name] = p_info;
         }
 
         return p_info;
@@ -189,7 +185,7 @@ bool ConCommandManager::RemoveCommand(const char* name, CallbackT callback) {
     }
 
     if (!p_info->callback_pre || p_info->callback_pre->GetFunctionCount() == 0) {
-        globals::cvars->UnregisterConCommand(p_info->p_cmd->handle);
+        globals::cvars->UnregisterConCommand(p_info->p_cmd.handle);
 
         bool success;
         auto it = std::remove_if(m_cmd_list.begin(), m_cmd_list.end(),
