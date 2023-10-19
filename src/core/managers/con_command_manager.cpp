@@ -97,6 +97,7 @@ ConCommandInfo* ConCommandManager::AddOrFindCommand(const char* name,
     ConCommandInfo* p_info = m_cmd_lookup[std::string(name)];
 
     if (!p_info) {
+        CSSHARP_CORE_TRACE("[ConCommandManager] Could not find command in existing lookup {}", name);
         //        auto found = std::find_if(m_cmd_list.begin(), m_cmd_list.end(),
         //        [&](ConCommandInfo* info) {
         //            return V_strcasecmp(info->command->GetName(), name) == 0;
@@ -113,17 +114,26 @@ ConCommandInfo* ConCommandManager::AddOrFindCommand(const char* name,
                 description = "";
             }
 
+            CSSHARP_CORE_TRACE("[ConCommandManager] Creating new command {}", name);
+
             char* new_name = strdup(name);
             char* new_desc = strdup(description);
 
             auto conCommand =
                 new ConCommand(pointerConCommand, new_name, CommandCallback, new_desc, flags);
 
+            CSSHARP_CORE_TRACE("[ConCommandManager] Creating new command {}, {}, {}, {}, {}", (void*)pointerConCommand, new_name, (void*)CommandCallback, new_desc, flags);
+
+
+            CSSHARP_CORE_TRACE("[ConCommandManager] Creating callbacks for command {}", name);
+
             p_info->command = conCommand;
             p_info->sdn = true;
             p_info->callback_pre = globals::callbackManager.CreateCallback(name);
             p_info->callback_post = globals::callbackManager.CreateCallback(name);
             p_info->server_only = server_only;
+
+            CSSHARP_CORE_TRACE("[ConCommandManager] Adding hooks for command callback for command {}", name);
 
             SH_ADD_HOOK(ConCommandHandle, Dispatch, &pointerConCommand->handle, SH_STATIC(CommandCallback), false);
             SH_ADD_HOOK(ConCommandHandle, Dispatch, &pointerConCommand->handle, SH_STATIC(CommandCallback_Post), true);
@@ -140,6 +150,8 @@ ConCommandInfo* ConCommandManager::AddOrFindCommand(const char* name,
 
         if (pointerConCommand != nullptr) {
             p_info->p_cmd = pointerConCommand;
+
+            CSSHARP_CORE_TRACE("[ConCommandManager] Adding command to internal lookup {}", name);
 
             m_cmd_list.push_back(p_info);
             m_cmd_lookup[name] = p_info;

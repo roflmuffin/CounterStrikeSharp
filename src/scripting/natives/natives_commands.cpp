@@ -21,6 +21,7 @@
 #include "core/managers/con_command_manager.h"
 #include "core/managers/player_manager.h"
 #include "scripting/script_engine.h"
+#include "core/log.h"
 
 namespace counterstrikesharp {
 
@@ -30,6 +31,8 @@ static ConCommandInfo* AddCommand(ScriptContext& script_context) {
     auto server_only = script_context.GetArgument<bool>(2);
     auto flags = script_context.GetArgument<int>(3);
     auto callback = script_context.GetArgument<CallbackT>(4);
+
+    CSSHARP_CORE_TRACE("Adding command {}, {}, {}, {}, {}", name, description, server_only, flags, (void*)callback);
 
     return globals::conCommandManager.AddCommand(name, description, server_only, flags, callback);
 }
