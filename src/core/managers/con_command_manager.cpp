@@ -240,7 +240,7 @@ int ConCommandManager::GetCommandClient() { return last_command_client; }
 void ConCommandManager::SetCommandClient(int client) { last_command_client = client + 1; }
 
 bool ConCommandManager::InternalDispatch(CPlayerSlot slot, const CCommand* args) {
-    const char* cmd = args->GetCommandString();
+    const char* cmd = args->Arg(0);
 
     ConCommandInfo* p_info = m_cmd_lookup[cmd];
     if (p_info == nullptr) {
@@ -270,7 +270,7 @@ bool ConCommandManager::InternalDispatch(CPlayerSlot slot, const CCommand* args)
 }
 
 bool ConCommandManager::InternalDispatch_Post(CPlayerSlot slot, const CCommand* args) {
-    const char* cmd = args->GetCommandString();
+    const char* cmd = args->Arg(0);
 
     ConCommandInfo* p_info = m_cmd_lookup[cmd];
     if (p_info == nullptr) {
