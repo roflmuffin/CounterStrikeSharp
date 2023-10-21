@@ -17,7 +17,6 @@
 using CounterStrikeSharp.API.Core;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 
 namespace CounterStrikeSharp.API
