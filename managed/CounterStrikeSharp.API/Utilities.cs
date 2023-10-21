@@ -37,6 +37,17 @@ namespace CounterStrikeSharp.API
         public static IEnumerable<CEntityInstance> FindAllEntitiesByDesignerName(string designerName)
         {
             var entList = new List<CEntityInstance>();
+
+            // Start at worldent - index 0. This should always exist.
+            var pEntity = new CEntityInstance(NativeAPI.GetEntityFromIndex(0)).m_pEntity.Value;
+            for (; pEntity.Handle != IntPtr.Zero; pEntity = pEntity.Next.Value)
+            {
+                Console.WriteLine(pEntity.DesignerName);
+                if (!pEntity.DesignerName.Contains(designerName)) continue;
+                entList.Add(new CEntityInstance(pEntity.Handle));
+            }
+
+            /*
             for (int i = 0; i < MaxEdicts; i++)
             {
                 var entPtr = NativeAPI.GetEntityFromIndex(i);
@@ -45,8 +56,8 @@ namespace CounterStrikeSharp.API
                 if (!ent.DesignerName.Contains(designerName)) continue;
 
                 entList.Add(ent);
-            }
-            return entList.AsEnumerable<CEntityInstance>(); 
+            }*/
+            return entList.AsEnumerable<CEntityInstance>();
         }
     }
 }
