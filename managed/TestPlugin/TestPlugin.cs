@@ -93,10 +93,10 @@ namespace TestPlugin
 
             RegisterListener<Listeners.OnEntitySpawned>(entity =>
             {
-                var designerName = NativeAPI.GetDesignerName(entity);
+                var designerName = entity.DesignerName;
                 if (designerName != "smokegrenade_projectile") return;
 
-                var projectile = new CSmokeGrenadeProjectile(entity);
+                var projectile = new CSmokeGrenadeProjectile(entity.Handle);
 
                 Server.NextFrame(() =>
                 {

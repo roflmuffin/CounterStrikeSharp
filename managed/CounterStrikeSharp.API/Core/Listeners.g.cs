@@ -8,16 +8,16 @@ namespace CounterStrikeSharp.API.Core
     public partial class Listeners {
         
         [ListenerName("OnEntitySpawned")]
-        public delegate void OnEntitySpawned(IntPtr entity);
+        public delegate void OnEntitySpawned(CEntityInstance entity);
 
         [ListenerName("OnEntityCreated")]
-        public delegate void OnEntityCreated(IntPtr entity);
+        public delegate void OnEntityCreated(CEntityInstance entity);
 
         [ListenerName("OnEntityDeleted")]
-        public delegate void OnEntityDeleted(IntPtr entity);
+        public delegate void OnEntityDeleted(CEntityInstance entity);
 
         [ListenerName("OnEntityParentChanged")]
-        public delegate void OnEntityParentChanged(IntPtr entity, IntPtr newParent);
+        public delegate void OnEntityParentChanged(CEntityInstance entity, CEntityInstance newParent);
 
         [ListenerName("OnTick")]
         public delegate void OnTick();
