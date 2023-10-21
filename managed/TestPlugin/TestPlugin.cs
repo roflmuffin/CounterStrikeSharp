@@ -79,6 +79,17 @@ namespace TestPlugin
                     $"Found steamID {new SteamID(player.m_steamID)} for player {player.m_iszPlayerName}:{pawn.m_iHealth}|{pawn.m_bInBuyZone}");
                 Log($"{@event.Userid}, {@event.X},{@event.Y},{@event.Z}");
             });
+            RegisterEventHandler<EventRoundStart>(@event =>
+            {
+                var playerEntities = Utilities.FindAllEntitiesByDesignerName("cs_player_controller");
+                Log($"cs_player_controller count: {playerEntities.Count}");
+
+                foreach (var ents in playerEntities)
+                {
+                    var player = new CCSPlayerController(ents.Handle);
+                    player.m_pInGameMoneyServices.Value.m_iAccount = 1337;
+                }
+            });
 
             // Hook global listeners defined by CounterStrikeSharp
             RegisterListener<Listeners.OnMapStart>(mapName => { Log($"Map {mapName} has started!"); });

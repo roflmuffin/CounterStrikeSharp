@@ -14,8 +14,10 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
+using CounterStrikeSharp.API.Core;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace CounterStrikeSharp.API
@@ -31,6 +33,21 @@ namespace CounterStrikeSharp.API
         {
             return Enum.GetValues(typeof(T)).Cast<T>()
                 .Where(x => flags.HasFlag(x)).AsEnumerable();
+        }
+
+        public static List<CEntityInstance> FindAllEntitiesByDesignerName(string designerName)
+        {
+            var entList = new List<CEntityInstance>();
+            for (int i = 0; i < MaxEdicts; i++)
+            {
+                var entPtr = NativeAPI.GetEntityFromIndex(i);
+                if (entPtr == IntPtr.Zero) continue;
+                var ent = new CEntityInstance(entPtr);
+                if (!ent.DesignerName.Contains(designerName)) continue;
+
+                entList.Add(ent);
+            }
+            return entList; 
         }
     }
 }
