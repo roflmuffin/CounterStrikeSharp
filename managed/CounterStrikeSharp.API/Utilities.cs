@@ -34,7 +34,7 @@ namespace CounterStrikeSharp.API
                 .Where(x => flags.HasFlag(x)).AsEnumerable();
         }
 
-        public static List<CEntityInstance> FindAllEntitiesByDesignerName(string designerName)
+        public static IEnumerable<CEntityInstance> FindAllEntitiesByDesignerName(string designerName)
         {
             var entList = new List<CEntityInstance>();
             for (int i = 0; i < MaxEdicts; i++)
@@ -46,7 +46,7 @@ namespace CounterStrikeSharp.API
 
                 entList.Add(ent);
             }
-            return entList; 
+            return entList.AsEnumerable<CEntityInstance>(); 
         }
     }
 }

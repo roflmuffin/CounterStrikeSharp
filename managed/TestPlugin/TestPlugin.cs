@@ -16,6 +16,7 @@
 
 using System;
 using System.IO;
+using System.Linq;
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
@@ -82,11 +83,11 @@ namespace TestPlugin
             RegisterEventHandler<EventRoundStart>(@event =>
             {
                 var playerEntities = Utilities.FindAllEntitiesByDesignerName("cs_player_controller");
-                Log($"cs_player_controller count: {playerEntities.Count}");
+                Log($"cs_player_controller count: {playerEntities.Count<CEntityInstance>()}");
 
-                foreach (var ents in playerEntities)
+                foreach (var entInst in playerEntities)
                 {
-                    var player = new CCSPlayerController(ents.Handle);
+                    var player = new CCSPlayerController(entInst.Handle);
                     player.m_pInGameMoneyServices.Value.m_iAccount = 1337;
                 }
             });
