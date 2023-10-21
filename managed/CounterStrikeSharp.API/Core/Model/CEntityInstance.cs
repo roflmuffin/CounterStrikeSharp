@@ -21,6 +21,10 @@ public partial class CEntityIdentity
     public unsafe CEntityInstance EntityInstance => new(Unsafe.Read<IntPtr>((void*)Handle));
     public unsafe CHandle<CEntityInstance> EntityHandle => new(Handle + 0x10);
     public unsafe string DesignerName => ReadStringUtf8(Handle + 0x20);
+    public unsafe PointerTo<CEntityIdentity> Prev => new(Handle + 0x58);
+    public unsafe PointerTo<CEntityIdentity> Next => new(Handle + 0x60);
+    public unsafe PointerTo<CEntityIdentity> PrevByClass => new(Handle + 0x68);
+    public unsafe PointerTo<CEntityIdentity> NextByClass => new(Handle + 0x70);
 
     // TODO: Move this method to a shared marshalling lib
     public unsafe string ReadStringUtf8(IntPtr ptr)

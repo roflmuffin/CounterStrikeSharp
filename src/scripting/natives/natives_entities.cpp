@@ -60,6 +60,10 @@ void PrintToConsole(ScriptContext& scriptContext) {
     globals::engine->ClientPrintf(CPlayerSlot{index - 1}, message);
 }
 
+CEntityIdentity* GetFirstActiveEntity(ScriptContext& script_context) {
+    return globals::entitySystem->m_EntityList.m_pFirstActiveEntity;
+}
+
 REGISTER_NATIVES(entities, {
     ScriptEngine::RegisterNativeHandler("GET_ENTITY_FROM_INDEX", GetEntityFromIndex);
     ScriptEngine::RegisterNativeHandler("GET_USERID_FROM_INDEX", GetUserIdFromIndex);
@@ -67,5 +71,6 @@ REGISTER_NATIVES(entities, {
     ScriptEngine::RegisterNativeHandler("GET_ENTITY_POINTER_FROM_HANDLE",
                                         GetEntityPointerFromHandle);
     ScriptEngine::RegisterNativeHandler("PRINT_TO_CONSOLE", PrintToConsole);
+    ScriptEngine::RegisterNativeHandler("GET_FIRST_ACTIVE_ENTITY", GetFirstActiveEntity);
 })
 }  // namespace counterstrikesharp

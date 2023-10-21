@@ -16,6 +16,7 @@
 
 using System;
 using System.IO;
+using System.Linq;
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
@@ -23,6 +24,7 @@ using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Memory;
+using CounterStrikeSharp.API.Modules.Utils;
 
 namespace TestPlugin
 {
@@ -79,6 +81,29 @@ namespace TestPlugin
                     $"Found steamID {new SteamID(player.m_steamID)} for player {player.m_iszPlayerName}:{pawn.m_iHealth}|{pawn.m_bInBuyZone}");
                 Log($"{@event.Userid}, {@event.X},{@event.Y},{@event.Z}");
             });
+            RegisterEventHandler<EventRoundStart>(@event =>
+            {
+                // Grab all cs_player_controller entities and set their cash value to $1337.
+                var playerEntities = Utilities.FindAllEntitiesByDesignerName<CCSPlayerController>("cs_player_controller");
+                Log($"cs_player_controller count: {playerEntities.Count<CCSPlayerController>()}");
+
+                foreach (var player in playerEntities)
+                {
+                    //var player = new CCSPlayerController(entInst.Handle);
+                    player.m_pInGameMoneyServices.Value.m_iAccount = 1337;
+                }
+
+                // Grab everything starting with cs_, but we'll only mainpulate cs_gamerules.
+                var csEntities = Utilities.FindAllEntitiesByDesignerName<CBaseEntity>("cs_");
+                Log($"Amount of cs_* entities: {csEntities.Count<CBaseEntity>()}");
+
+                foreach (var entity in csEntities)
+                {
+                    if (entity.DesignerName != "cs_gamerules") continue;
+                    var gamerulesEnt = new CCSGameRules(entity.Handle);
+                    gamerulesEnt.m_bCTTimeOutActive = true;
+                }
+            });
 
             // Hook global listeners defined by CounterStrikeSharp
             RegisterListener<Listeners.OnMapStart>(mapName => { Log($"Map {mapName} has started!"); });
@@ -93,6 +118,7 @@ namespace TestPlugin
 
             RegisterListener<Listeners.OnEntitySpawned>(entity =>
             {
+
                 var designerName = entity.DesignerName;
                 if (designerName != "smokegrenade_projectile") return;
 
