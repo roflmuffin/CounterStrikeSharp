@@ -22,6 +22,10 @@ namespace CounterStrikeSharp.API
 {
     public static class Utilities
     {
+        // https://github.com/dotabuff/manta/blob/master/entity.go#L186-L190
+        public const int MaxEdictBits = 14;
+        public const int MaxEdicts = 1 << MaxEdictBits;
+        public const int NumEHandleSerialNumberBits = 17;
 
         public static IEnumerable<T> FlagsToList<T>(this T flags) where T : Enum
         {

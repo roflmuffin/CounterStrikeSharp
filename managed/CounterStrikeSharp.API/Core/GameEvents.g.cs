@@ -16,10 +16,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // entindex of the player
-                public Player Player 
+                public CCSPlayerController Player 
                 {
-                    get => Get<Player>("player");
-                    set => Set<Player>("player", value);
+                    get => Get<CCSPlayerController>("player");
+                    set => Set<CCSPlayerController>("player", value);
                 }
 
                 
@@ -114,10 +114,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -218,10 +218,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -258,10 +258,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -290,10 +290,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -332,10 +332,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player who was defusing
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -348,10 +348,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player who is planting the bomb
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -388,10 +388,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player who is defusing
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -412,10 +412,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player who is planting the bomb
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -436,10 +436,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player who defused the bomb
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -460,10 +460,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player who dropped the bomb
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -484,10 +484,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player who planted the bomb
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -508,10 +508,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player pawn who picked up the bomb
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -524,10 +524,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player who planted the bomb
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -588,18 +588,18 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
                 
-                public Player Botid 
+                public CCSPlayerController Botid 
                 {
-                    get => Get<Player>("botid");
-                    set => Set<Player>("botid", value);
+                    get => Get<CCSPlayerController>("botid");
+                    set => Set<CCSPlayerController>("botid", value);
                 }
 
                 
@@ -644,10 +644,10 @@ namespace CounterStrikeSharp.API.Core
 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -676,10 +676,10 @@ namespace CounterStrikeSharp.API.Core
 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -700,10 +700,10 @@ namespace CounterStrikeSharp.API.Core
 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -724,10 +724,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -812,10 +812,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -852,10 +852,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -1064,10 +1064,10 @@ namespace CounterStrikeSharp.API.Core
 
                 
                 
-                public Player FunfactPlayer 
+                public CCSPlayerController FunfactPlayer 
                 {
-                    get => Get<Player>("funfact_player");
-                    set => Set<Player>("funfact_player", value);
+                    get => Get<CCSPlayerController>("funfact_player");
+                    set => Set<CCSPlayerController>("funfact_player", value);
                 }
 
                 
@@ -1104,10 +1104,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -1152,10 +1152,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -1200,10 +1200,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -1272,10 +1272,10 @@ namespace CounterStrikeSharp.API.Core
 
                 
                 // player who picked up the defuser
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -1465,10 +1465,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // Who closed the door
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -1489,10 +1489,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // Who closed the door
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -1513,10 +1513,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -1537,10 +1537,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // Who closed the door
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -1561,10 +1561,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -1585,10 +1585,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -1617,10 +1617,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -1649,10 +1649,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -1683,10 +1683,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player entindex
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -1836,10 +1836,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -1868,10 +1868,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -1892,10 +1892,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -1948,10 +1948,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // The player who sees the entity
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -1997,10 +1997,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -2029,10 +2029,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -2053,10 +2053,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -2117,10 +2117,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -2322,18 +2322,18 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // user ID who died
-                public Player Victimid 
+                public CCSPlayerController Victimid 
                 {
-                    get => Get<Player>("victimid");
-                    set => Set<Player>("victimid", value);
+                    get => Get<CCSPlayerController>("victimid");
+                    set => Set<CCSPlayerController>("victimid", value);
                 }
 
                 
                 // user ID who killed
-                public Player Attackerid 
+                public CCSPlayerController Attackerid 
                 {
-                    get => Get<Player>("attackerid");
-                    set => Set<Player>("attackerid", value);
+                    get => Get<CCSPlayerController>("attackerid");
+                    set => Set<CCSPlayerController>("attackerid", value);
                 }
 
                 
@@ -2370,10 +2370,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -2386,10 +2386,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -2419,10 +2419,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -2485,10 +2485,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // camera man entity index
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -2533,18 +2533,18 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // primary traget index
-                public Player Target1 
+                public CCSPlayerController Target1 
                 {
-                    get => Get<Player>("target1");
-                    set => Set<Player>("target1", value);
+                    get => Get<CCSPlayerController>("target1");
+                    set => Set<CCSPlayerController>("target1", value);
                 }
 
                 
                 // secondary traget index or 0
-                public Player Target2 
+                public CCSPlayerController Target2 
                 {
-                    get => Get<Player>("target2");
-                    set => Set<Player>("target2", value);
+                    get => Get<CCSPlayerController>("target2");
+                    set => Set<CCSPlayerController>("target2", value);
                 }
 
                 
@@ -2677,10 +2677,10 @@ namespace CounterStrikeSharp.API.Core
 
                 
                 // follow this player
-                public Player Target 
+                public CCSPlayerController Target 
                 {
-                    get => Get<Player>("target");
-                    set => Set<Player>("target", value);
+                    get => Get<CCSPlayerController>("target");
+                    set => Set<CCSPlayerController>("target", value);
                 }
             }
 
@@ -2725,10 +2725,10 @@ namespace CounterStrikeSharp.API.Core
 
                 
                 // best/closest target entity
-                public Player Target 
+                public CCSPlayerController Target 
                 {
-                    get => Get<Player>("target");
-                    set => Set<Player>("target", value);
+                    get => Get<CCSPlayerController>("target");
+                    set => Set<CCSPlayerController>("target", value);
                 }
             }
 
@@ -2741,10 +2741,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player slot
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -2757,10 +2757,10 @@ namespace CounterStrikeSharp.API.Core
 
                 
                 // best/closest target entity
-                public Player Target 
+                public CCSPlayerController Target 
                 {
-                    get => Get<Player>("target");
-                    set => Set<Player>("target", value);
+                    get => Get<CCSPlayerController>("target");
+                    set => Set<CCSPlayerController>("target", value);
                 }
             }
 
@@ -2901,10 +2901,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player who touched the hostage
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -2925,10 +2925,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player who hurt the hostage
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -2949,10 +2949,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player who killed the hostage
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -2973,10 +2973,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player who rescued the hostage
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -3014,10 +3014,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player who rescued the hostage
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -3174,10 +3174,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -3190,10 +3190,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // The player who this lesson is intended for
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -3214,10 +3214,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // user ID of the player that triggered the hint
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -3246,10 +3246,10 @@ namespace CounterStrikeSharp.API.Core
 
                 
                 // userid id of the activator
-                public Player HintActivatorUserid 
+                public CCSPlayerController HintActivatorUserid 
                 {
-                    get => Get<Player>("hint_activator_userid");
-                    set => Set<Player>("hint_activator_userid", value);
+                    get => Get<CCSPlayerController>("hint_activator_userid");
+                    set => Set<CCSPlayerController>("hint_activator_userid", value);
                 }
 
                 
@@ -3398,10 +3398,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // The player who this lesson is intended for
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -3463,10 +3463,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -3543,10 +3543,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -3583,10 +3583,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -3623,10 +3623,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -3655,10 +3655,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -3695,10 +3695,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -3736,10 +3736,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // entity used by player
-                public Player Player 
+                public CCSPlayerController Player 
                 {
-                    get => Get<Player>("player");
-                    set => Set<Player>("player", value);
+                    get => Get<CCSPlayerController>("player");
+                    set => Set<CCSPlayerController>("player", value);
                 }
 
                 
@@ -3784,10 +3784,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -3835,10 +3835,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player entindex
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -3859,10 +3859,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player entindex
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -3976,10 +3976,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -4081,10 +4081,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player entindex
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -4217,10 +4217,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -4233,10 +4233,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -4265,10 +4265,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // user ID on server
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -4281,18 +4281,18 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player AvengerId 
+                public CCSPlayerController AvengerId 
                 {
-                    get => Get<Player>("avenger_id");
-                    set => Set<Player>("avenger_id", value);
+                    get => Get<CCSPlayerController>("avenger_id");
+                    set => Set<CCSPlayerController>("avenger_id", value);
                 }
 
                 
                 
-                public Player AvengedPlayerId 
+                public CCSPlayerController AvengedPlayerId 
                 {
-                    get => Get<Player>("avenged_player_id");
-                    set => Set<Player>("avenged_player_id", value);
+                    get => Get<CCSPlayerController>("avenged_player_id");
+                    set => Set<CCSPlayerController>("avenged_player_id", value);
                 }
             }
 
@@ -4305,18 +4305,18 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
                 // user ID who threw the flash
-                public Player Attacker 
+                public CCSPlayerController Attacker 
                 {
-                    get => Get<Player>("attacker");
-                    set => Set<Player>("attacker", value);
+                    get => Get<CCSPlayerController>("attacker");
+                    set => Set<CCSPlayerController>("attacker", value);
                 }
 
                 
@@ -4345,10 +4345,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // user ID on server
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -4417,10 +4417,10 @@ namespace CounterStrikeSharp.API.Core
 
                 
                 // user ID on server (unique on server)
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -4465,10 +4465,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // user ID on server (unique on server)
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -4481,26 +4481,26 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // user who died
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
                 // player who killed
-                public Player Attacker 
+                public CCSPlayerController Attacker 
                 {
-                    get => Get<Player>("attacker");
-                    set => Set<Player>("attacker", value);
+                    get => Get<CCSPlayerController>("attacker");
+                    set => Set<CCSPlayerController>("attacker", value);
                 }
 
                 
                 // player who assisted in the kill
-                public Player Assister 
+                public CCSPlayerController Assister 
                 {
-                    get => Get<Player>("assister");
-                    set => Set<Player>("assister", value);
+                    get => Get<CCSPlayerController>("assister");
+                    set => Set<CCSPlayerController>("assister", value);
                 }
 
                 
@@ -4657,10 +4657,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -4673,10 +4673,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // user ID on server
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -4729,10 +4729,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -4753,10 +4753,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -4769,10 +4769,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // user ID on server
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -4793,10 +4793,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // user ID who received the c4
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -4825,18 +4825,18 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player index who was hurt
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
                 // player index who attacked
-                public Player Attacker 
+                public CCSPlayerController Attacker 
                 {
-                    get => Get<Player>("attacker");
-                    set => Set<Player>("attacker", value);
+                    get => Get<CCSPlayerController>("attacker");
+                    set => Set<CCSPlayerController>("attacker", value);
                 }
 
                 
@@ -4905,10 +4905,10 @@ namespace CounterStrikeSharp.API.Core
 
                 
                 // user ID on server (unique on server)
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -4937,10 +4937,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -4953,10 +4953,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -5025,10 +5025,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -5049,10 +5049,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -5073,10 +5073,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // user ID on server
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -5113,10 +5113,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // user ID on server
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -5145,10 +5145,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -5185,10 +5185,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -5201,10 +5201,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -5241,10 +5241,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -5480,10 +5480,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -5622,10 +5622,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -5870,10 +5870,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // endindex of the one who was killed
-                public Player Victim 
+                public CCSPlayerController Victim 
                 {
-                    get => Get<Player>("victim");
-                    set => Set<Player>("victim", value);
+                    get => Get<CCSPlayerController>("victim");
+                    set => Set<CCSPlayerController>("victim", value);
                 }
 
                 
@@ -5886,10 +5886,10 @@ namespace CounterStrikeSharp.API.Core
 
                 
                 
-                public Player KillerController 
+                public CCSPlayerController KillerController 
                 {
-                    get => Get<Player>("killer_controller");
-                    set => Set<Player>("killer_controller", value);
+                    get => Get<CCSPlayerController>("killer_controller");
+                    set => Set<CCSPlayerController>("killer_controller", value);
                 }
 
                 
@@ -5950,10 +5950,10 @@ namespace CounterStrikeSharp.API.Core
 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -5966,10 +5966,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -5982,10 +5982,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -5998,10 +5998,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -6014,10 +6014,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -6038,10 +6038,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -6086,10 +6086,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -6134,10 +6134,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // entindex of the player
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -6150,10 +6150,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // spectating player
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -6183,10 +6183,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -6240,10 +6240,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -6256,10 +6256,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -6304,10 +6304,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -6368,10 +6368,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -6416,10 +6416,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -6587,10 +6587,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player whose time has expired
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -6635,10 +6635,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // user ID of the player banged
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -6783,10 +6783,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player who was the VIP
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -6799,18 +6799,18 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // player who was the VIP
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
                 // user ID who killed the VIP
-                public Player Attacker 
+                public CCSPlayerController Attacker 
                 {
-                    get => Get<Player>("attacker");
-                    set => Set<Player>("attacker", value);
+                    get => Get<CCSPlayerController>("attacker");
+                    set => Set<CCSPlayerController>("attacker", value);
                 }
             }
 
@@ -6839,10 +6839,10 @@ namespace CounterStrikeSharp.API.Core
 
                 
                 // player who voted
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -7128,10 +7128,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -7160,10 +7160,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -7184,10 +7184,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 // Player who this event applies to
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
 
                 
@@ -7216,10 +7216,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -7232,10 +7232,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -7248,10 +7248,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 
@@ -7264,10 +7264,10 @@ namespace CounterStrikeSharp.API.Core
                 
                 
                 
-                public Player Userid 
+                public CCSPlayerController Userid 
                 {
-                    get => Get<Player>("userid");
-                    set => Set<Player>("userid", value);
+                    get => Get<CCSPlayerController>("userid");
+                    set => Set<CCSPlayerController>("userid", value);
                 }
             }
 

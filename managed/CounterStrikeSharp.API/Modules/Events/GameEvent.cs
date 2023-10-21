@@ -61,7 +61,7 @@ namespace CounterStrikeSharp.API.Modules.Events
                 _ when type == typeof(bool) => GetBool(name),
                 _ when type == typeof(ulong) => GetUint64(name),
                 _ when type == typeof(long) => GetUint64(name),
-                _ when type == typeof(Player) => GetPlayer(name),
+                _ when type == typeof(CCSPlayerController) => GetPlayer(name),
                 _ => throw new NotSupportedException(),
             };
 
@@ -109,13 +109,9 @@ namespace CounterStrikeSharp.API.Modules.Events
         protected string GetString(string name) => NativeAPI.GetEventString(Handle, name);
         protected int GetInt(string name) => NativeAPI.GetEventInt(Handle, name);
 
-        protected Player GetPlayer(string name)
+        protected CCSPlayerController GetPlayer(string name)
         {
-            return new Player(
-                NativeAPI.GetEventInt(Handle, name) + 1,
-                NativeAPI.GetEventPlayerController(Handle, name),
-                NativeAPI.GetEventPlayerPawn(Handle, name)
-            );
+            return new CCSPlayerController(NativeAPI.GetEventPlayerController(Handle, name));
         }
 
         protected ulong GetUint64(string name) => NativeAPI.GetEventUint64(Handle, name);

@@ -18,7 +18,6 @@ using System;
 using System.IO;
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
-using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -39,12 +38,18 @@ namespace TestPlugin
 
             // Register Game Event Handlers
             RegisterEventHandler<EventPlayerConnect>(GenericEventHandler);
-            RegisterEventHandler<EventPlayerSpawn>(GenericEventHandler);
+            RegisterEventHandler<EventPlayerSpawn>(@event =>
+            {
+                if (!@event.Userid.IsValid) return;
+                if (!@event.Userid.m_hPlayerPawn.IsValid) return;
+                
+                Log($"Player spawned with entity index: {@event.Userid.EntityIndex} & User ID: {@event.Userid.UserId}");
+            });
             RegisterEventHandler<EventPlayerBlind>(GenericEventHandler);
             RegisterEventHandler<EventBulletImpact>(@event =>
             {
-                var player = new CCSPlayerController(@event.Userid.Handle);
-                var pawn = new CCSPlayerPawn(@event.Userid.PawnHandle);
+                var player = @event.Userid;
+                var pawn = player.m_hPlayerPawn.Value;
 
                 pawn.m_iHealth += 5;
 
