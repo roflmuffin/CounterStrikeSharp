@@ -35,18 +35,14 @@ namespace CounterStrikeSharp.API
                 .Where(x => flags.HasFlag(x)).AsEnumerable();
         }
 
-        public static IEnumerable<CEntityInstance> FindAllEntitiesByDesignerName(string designerName)
+        public static IEnumerable<T> FindAllEntitiesByDesignerName<T>(string designerName) where T : CEntityInstance
         {
-            var entList = new List<CEntityInstance>();
-
             var pEntity = new CEntityIdentity(NativeAPI.GetFirstActiveEntity());
             for (; pEntity.Handle != IntPtr.Zero; pEntity = pEntity.Next.Value)
             {
                 if (!pEntity.DesignerName.Contains(designerName)) continue;
-                entList.Add(new PointerTo<CEntityInstance>(pEntity.Handle).Value);
+                yield return new PointerTo<T>(pEntity.Handle).Value;
             }
-
-            return entList.AsEnumerable<CEntityInstance>();
         }
     }
 }

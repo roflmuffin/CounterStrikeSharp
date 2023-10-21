@@ -83,13 +83,25 @@ namespace TestPlugin
             });
             RegisterEventHandler<EventRoundStart>(@event =>
             {
-                var playerEntities = Utilities.FindAllEntitiesByDesignerName("cs_player_controller");
-                Log($"cs_player_controller count: {playerEntities.Count<CEntityInstance>()}");
+                // Grab all cs_player_controller entities and set their cash value to $1337.
+                var playerEntities = Utilities.FindAllEntitiesByDesignerName<CCSPlayerController>("cs_player_controller");
+                Log($"cs_player_controller count: {playerEntities.Count<CCSPlayerController>()}");
 
-                foreach (var entInst in playerEntities)
+                foreach (var player in playerEntities)
                 {
-                    var player = new CCSPlayerController(entInst.Handle);
+                    //var player = new CCSPlayerController(entInst.Handle);
                     player.m_pInGameMoneyServices.Value.m_iAccount = 1337;
+                }
+
+                // Grab everything starting with cs_, but we'll only mainpulate cs_gamerules.
+                var csEntities = Utilities.FindAllEntitiesByDesignerName<CBaseEntity>("cs_");
+                Log($"Amount of cs_* entities: {csEntities.Count<CBaseEntity>()}");
+
+                foreach (var entity in csEntities)
+                {
+                    if (entity.DesignerName != "cs_gamerules") continue;
+                    var gamerulesEnt = new CCSGameRules(entity.Handle);
+                    gamerulesEnt.m_bCTTimeOutActive = true;
                 }
             });
 
