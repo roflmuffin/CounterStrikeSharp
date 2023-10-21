@@ -262,6 +262,26 @@ namespace CounterStrikeSharp.API.Modules.Memory
             });
         }
 
+        public static Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6> Create<TArg1, TArg2, TArg3, TArg4, TArg5,
+            TArg6>(IntPtr objPtr, string signature)
+        {
+            return new((arg1, arg2, arg3, arg4, arg5, arg6) =>
+            {
+                var arguments = new[]
+                {
+                    typeof(TArg1).ToDataType(),
+                    typeof(TArg2).ToDataType(),
+                    typeof(TArg3).ToDataType(),
+                    typeof(TArg4).ToDataType(),
+                    typeof(TArg5).ToDataType(),
+                    typeof(TArg6).ToDataType(),
+                };
+
+                ExecuteFunction(objPtr, signature, arguments, DataType.DATA_TYPE_VOID,
+                    new object[] { arg1, arg2, arg3, arg4, arg5, arg6 });
+            });
+        }
+        
         public static Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7> Create<TArg1, TArg2, TArg3, TArg4, TArg5,
             TArg6, TArg7>(IntPtr objPtr, string signature)
         {

@@ -55,6 +55,9 @@ namespace CounterStrikeSharp.API.Core
 
         public void LoadAll()
         {
+            Console.WriteLine("Loading GameData");
+            GameData.Load(Path.Combine(rootDir.FullName, "gamedata", "gamedata.json"));
+            
             Console.WriteLine("Loading .NET modules...");
 
             DirectoryInfo modules_directory_info;

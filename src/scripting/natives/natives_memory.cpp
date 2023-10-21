@@ -132,7 +132,7 @@ ValveFunction *CreateVirtualFunctionBySignature(ScriptContext &script_context) {
         args.push_back(script_context.GetArgument<DataType_t>(5 + i));
     }
 
-    auto function = new ValveFunction(function_addr, CONV_THISCALL, args, return_type);
+    auto function = new ValveFunction(function_addr, CONV_CDECL, args, return_type);
     function->SetSignature(signature_hex_string);
 
     CSSHARP_CORE_TRACE("Created virtual function, pointer found at {}, signature {}", function_addr, signature_hex_string);

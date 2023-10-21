@@ -36,8 +36,27 @@ namespace TestPlugin
             Console.WriteLine(
                 $"Test Plugin has been loaded, and the hot reload flag was {hotReload}, path is {ModulePath}");
 
+            // ValveInterface provides pointers to loaded modules via Interface Name exposed from the engine (e.g. Source2Server001)
+            var server = ValveInterface.Server;
+            Log($"Server pointer found @ {server.Pointer:X}");
+            
+            // 	inline void(FASTCALL *ClientPrint)(CBasePlayerController *player, int msg_dest, const char *msg_name, const char *param1, const char *param2, const char *param3, const char *param4);
+            var sigVirtualFunc = VirtualFunction.Create<IntPtr, int, string, IntPtr, IntPtr, IntPtr, IntPtr>(
+                server.Pointer, GameData.GetSignature("ClientPrint"));
+
+            var printAllFunc =
+                VirtualFunction.Create<int, string, IntPtr, IntPtr, IntPtr, IntPtr>(server.Pointer,
+                    GameData.GetSignature("UTIL_ClientPrintAll"));
+
+            var switchTeamFunc = VirtualFunction.Create<IntPtr, int>(server.Pointer,
+                GameData.GetSignature("CCSPlayerController_SwitchTeam"));
+            
             // Register Game Event Handlers
             RegisterEventHandler<EventPlayerConnect>(GenericEventHandler);
+            RegisterEventHandler<EventPlayerJump>(@event =>
+            {
+                sigVirtualFunc(@event.Userid.Handle, 2, "Test", IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero);
+            });
             RegisterEventHandler<EventPlayerSpawn>(@event =>
             {
                 if (!@event.Userid.IsValid) return;
@@ -50,7 +69,10 @@ namespace TestPlugin
             {
                 var player = @event.Userid;
                 var pawn = player.m_hPlayerPawn.Value;
-
+                
+                char randomColourChar = (char)new Random().Next(0, 16);
+                printAllFunc(3, $"Random String with Random Colour: {randomColourChar}{new Random().Next()}", IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero);
+                
                 pawn.m_iHealth += 5;
 
                 Log(
@@ -89,9 +111,7 @@ namespace TestPlugin
             File.WriteAllText(Path.Join(ModuleDirectory, "example.txt"),
                 $"Test file created by TestPlugin at {DateTime.Now}");
 
-            // ValveInterface provides pointers to loaded modules via Interface Name exposed from the engine (e.g. Source2Server001)
-            var server = ValveInterface.Server;
-            Log($"Server pointer found @ {server.Pointer:X}");
+            
 
             // Execute a server command as if typed into the server console.
             Server.ExecuteCommand("find \"cssharp\"");
@@ -110,10 +130,7 @@ namespace TestPlugin
             var result = virtualFunc.Invoke() - 8;
             Log($"Result of virtual func call is {result:X}");
 
-            // 	inline void(FASTCALL *ClientPrint)(CBasePlayerController *player, int msg_dest, const char *msg_name, const char *param1, const char *param2, const char *param3, const char *param4);
-            var sigVirtualFunc = VirtualFunction.Create<IntPtr, int, string, IntPtr, IntPtr, IntPtr, IntPtr>(
-                server.Pointer,
-                @"\x55\x48\x89\xE5\x41\x57\x49\x89\xCF\x41\x56\x49\x89\xD6\x41\x55\x41\x89\xF5\x41\x54\x4C\x8D\xA5\xA0\xFE\xFF\xFF");
+            
         }
 
         [GameEventHandler]
