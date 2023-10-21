@@ -24,6 +24,7 @@ using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Memory;
+using CounterStrikeSharp.API.Modules.Utils;
 
 namespace TestPlugin
 {
@@ -105,6 +106,7 @@ namespace TestPlugin
 
             RegisterListener<Listeners.OnEntitySpawned>(entity =>
             {
+
                 var designerName = entity.DesignerName;
                 if (designerName != "smokegrenade_projectile") return;
 

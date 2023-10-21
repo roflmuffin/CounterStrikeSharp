@@ -15,6 +15,7 @@
  */
 
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Modules.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,25 +39,13 @@ namespace CounterStrikeSharp.API
         {
             var entList = new List<CEntityInstance>();
 
-            // Start at worldent - index 0. This should always exist.
-            var pEntity = new CEntityInstance(NativeAPI.GetEntityFromIndex(0)).m_pEntity.Value;
+            var pEntity = new CEntityIdentity(NativeAPI.GetFirstActiveEntity());
             for (; pEntity.Handle != IntPtr.Zero; pEntity = pEntity.Next.Value)
             {
-                Console.WriteLine(pEntity.DesignerName);
                 if (!pEntity.DesignerName.Contains(designerName)) continue;
-                entList.Add(new CEntityInstance(pEntity.Handle));
+                entList.Add(new PointerTo<CEntityInstance>(pEntity.Handle).Value);
             }
 
-            /*
-            for (int i = 0; i < MaxEdicts; i++)
-            {
-                var entPtr = NativeAPI.GetEntityFromIndex(i);
-                if (entPtr == IntPtr.Zero) continue;
-                var ent = new CEntityInstance(entPtr);
-                if (!ent.DesignerName.Contains(designerName)) continue;
-
-                entList.Add(ent);
-            }*/
             return entList.AsEnumerable<CEntityInstance>();
         }
     }
