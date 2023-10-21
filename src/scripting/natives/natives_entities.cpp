@@ -38,7 +38,7 @@ int GetUserIdFromIndex(ScriptContext& scriptContext) {
     return globals::engine->GetPlayerUserId(CPlayerSlot(entityIndex - 1)).Get();
 }
 
-const char* GetDesignerName(ScriptContext& scriptContext){
+const char* GetDesignerName(ScriptContext& scriptContext) {
     auto entity = scriptContext.GetArgument<CBaseEntity*>(0);
     return entity->GetClassname();
 }
@@ -53,10 +53,19 @@ void* GetEntityPointerFromHandle(ScriptContext& scriptContext) {
     return globals::entitySystem->GetBaseEntity(*handle);
 }
 
+void PrintToConsole(ScriptContext& scriptContext) {
+    auto index = scriptContext.GetArgument<int>(0);
+    auto message = scriptContext.GetArgument<const char*>(1);
+
+    globals::engine->ClientPrintf(CPlayerSlot{index - 1}, message);
+}
+
 REGISTER_NATIVES(entities, {
     ScriptEngine::RegisterNativeHandler("GET_ENTITY_FROM_INDEX", GetEntityFromIndex);
     ScriptEngine::RegisterNativeHandler("GET_USERID_FROM_INDEX", GetUserIdFromIndex);
     ScriptEngine::RegisterNativeHandler("GET_DESIGNER_NAME", GetDesignerName);
-    ScriptEngine::RegisterNativeHandler("GET_ENTITY_POINTER_FROM_HANDLE", GetEntityPointerFromHandle);
+    ScriptEngine::RegisterNativeHandler("GET_ENTITY_POINTER_FROM_HANDLE",
+                                        GetEntityPointerFromHandle);
+    ScriptEngine::RegisterNativeHandler("PRINT_TO_CONSOLE", PrintToConsole);
 })
 }  // namespace counterstrikesharp

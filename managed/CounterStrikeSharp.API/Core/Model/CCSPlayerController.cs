@@ -10,4 +10,9 @@ public partial class CCSPlayerController
             return NativeAPI.GetUseridFromIndex((int)this.EntityIndex.Value.Value);
         }
     }
+    
+    public void PrintToConsole(string message)
+    {
+        NativeAPI.PrintToConsole((int)EntityIndex.Value.Value, message);
+    }
 }
