@@ -146,9 +146,10 @@ namespace TestPlugin
 
             // Adds a new server console command
             AddCommand("cssharp_info", "A test command",
-                (clientIndex, info) =>
+                (player, info) =>
                 {
-                    Log($"CounterStrikeSharp - a test command was called by {clientIndex} with {info.ArgString}");
+                    if (player == null) return;
+                    Log($"CounterStrikeSharp - a test command was called by {new SteamID(player.SteamID).SteamId2} with {info.ArgString}");
                 });
 
             // Example vfunc call that usually gets the game event manager pointer
@@ -168,7 +169,7 @@ namespace TestPlugin
         }
 
         [ConsoleCommand("cssharp_attribute", "This is a custom attribute event")]
-        public void OnCommand(int client, CommandInfo command)
+        public void OnCommand(CCSPlayerController? player, CommandInfo command)
         {
             Log("cssharp_attribute called!");
         }

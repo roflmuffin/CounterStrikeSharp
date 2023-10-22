@@ -3,6 +3,7 @@
     <TargetFramework>net7.0</TargetFramework>
 	  <EnableDynamicLoading>true</EnableDynamicLoading>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Modules\Commands\CommandInfo" />

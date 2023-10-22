@@ -143,7 +143,14 @@ namespace CounterStrikeSharp.API.Core
             var wrappedHandler = new Action<int, IntPtr>((i, ptr) =>
             {
                 var command = new CommandInfo(ptr);
-                handler?.Invoke(i, command);
+                if (i == -1)
+                {
+                    handler?.Invoke(null, command);
+                    return;
+                }
+
+                var entity = new CCSPlayerController(NativeAPI.GetEntityFromIndex(i + 1));
+                handler?.Invoke(entity.IsValid ? entity : null, command);
             });
 
             var subscriber = new CallbackSubscriber(handler, wrappedHandler, () => { RemoveCommand(name, handler); });
