@@ -1,4 +1,8 @@
-﻿using System.Collections.Immutable;
+﻿/**
+ * This file has been modified from the demofile-net project.
+ * https://github.com/saul/demofile-net
+ */
+using System.Collections.Immutable;
 using System.Diagnostics;
 using System.Text;
 using System.Text.Json;
