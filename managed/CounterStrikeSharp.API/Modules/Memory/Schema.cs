@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.CompilerServices;
@@ -42,6 +42,17 @@ public class Schema
         return ref Unsafe.AsRef<T>((void*)(pointer + GetSchemaOffset(className, memberName)));
     }
 
+    public static unsafe T GetPointer<T>(IntPtr pointer)
+    {
+        var pointerTo = Unsafe.Read<IntPtr>((void*)pointer);
+        if (pointerTo == IntPtr.Zero)
+        {
+            return default;
+        }
+
+        return (T)Activator.CreateInstance(typeof(T), pointerTo);
+    }
+    
     public static unsafe T GetPointer<T>(IntPtr pointer, string className, string memberName)
     {
         var pointerTo = Unsafe.Read<IntPtr>((void*)(pointer + GetSchemaOffset(className, memberName)));

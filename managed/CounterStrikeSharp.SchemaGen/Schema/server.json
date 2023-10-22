@@ -5046,6 +5046,24 @@
           }
         },
         {
+          "name": "m_vecAbsOrigin",
+          "type":  {
+            "name": "Vector",
+            "category": 4,
+            "atomic": 0
+          },
+          "metadata": {}
+        },
+        {
+          "name": "m_angAbsRotation",
+          "type":  {
+            "name": "QAngle",
+            "category": 4,
+            "atomic": 0
+          },
+          "metadata": {}
+        },
+        {
           "name": "m_angRotation",
           "type": {
             "name": "QAngle",

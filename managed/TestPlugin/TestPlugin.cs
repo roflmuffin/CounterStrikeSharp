@@ -71,6 +71,8 @@ namespace TestPlugin
             {
                 var player = @event.Userid;
                 var pawn = player.PlayerPawn.Value;
+
+                Log($"Pawn Position: {pawn.CBodyComponent?.SceneNode?.AbsOrigin} @{pawn.CBodyComponent?.SceneNode.Rotation}");
                 
                 char randomColourChar = (char)new Random().Next(0, 16);
                 printAllFunc(3, $"Random String with Random Colour: {randomColourChar}{new Random().Next()}", IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero);

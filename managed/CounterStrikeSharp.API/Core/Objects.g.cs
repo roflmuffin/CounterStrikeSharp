@@ -1988,6 +1988,9 @@ public partial class CCSGameRules : CTeamplayRules
     // m_bIsQuestEligible
     public ref bool IsQuestEligible => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bIsQuestEligible");
 
+    // m_bIsHltvActive
+    public ref bool IsHltvActive => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bIsHltvActive");
+
     // m_nGuardianModeWaveNumber
     public ref Int32 GuardianModeWaveNumber => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nGuardianModeWaveNumber");
 
@@ -2134,6 +2137,12 @@ public partial class CCSGO_TeamPreviewCharacterPosition : CBaseEntity
 
     // m_xuid
     public ref UInt64 Xuid => ref Schema.GetRef<UInt64>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_xuid");
+
+    // m_agentItem
+    public CEconItemView AgentItem => Schema.GetDeclaredClass<CEconItemView>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_agentItem");
+
+    // m_glovesItem
+    public CEconItemView GlovesItem => Schema.GetDeclaredClass<CEconItemView>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_glovesItem");
 
     // m_weaponItem
     public CEconItemView WeaponItem => Schema.GetDeclaredClass<CEconItemView>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_weaponItem");
@@ -2495,13 +2504,17 @@ public partial class CCSPlayerController : CBasePlayerController
     public ref Int32 EndMatchNextMapVote => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_nEndMatchNextMapVote");
 
     // m_unActiveQuestId
+    // MNetworkUserGroup "LocalPlayerExclusive"
     public ref UInt16 ActiveQuestId => ref Schema.GetRef<UInt16>(this.Handle, "CCSPlayerController", "m_unActiveQuestId");
 
     // m_nQuestProgressReason
+    // MNetworkUserGroup "LocalPlayerExclusive"
     // m_unPlayerTvControlFlags
+    // MNetworkUserGroup "LocalPlayerExclusive"
     public ref UInt32 PlayerTvControlFlags => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController", "m_unPlayerTvControlFlags");
 
     // m_nDisconnectionTick
+    // MNetworkUserGroup "LocalPlayerExclusive"
     public ref Int32 DisconnectionTick => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_nDisconnectionTick");
 
     // m_bControllingBot
@@ -2511,6 +2524,7 @@ public partial class CCSPlayerController : CBasePlayerController
     public ref bool HasControlledBotThisRound => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bHasControlledBotThisRound");
 
     // m_bCanControlObservedBot
+    // MNetworkUserGroup "LocalPlayerExclusive"
     public ref bool CanControlObservedBot => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bCanControlObservedBot");
 
     // m_hPlayerPawn
@@ -2523,15 +2537,19 @@ public partial class CCSPlayerController : CBasePlayerController
     public ref bool PawnIsAlive => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bPawnIsAlive");
 
     // m_iPawnHealth
+    // MNetworkUserGroup "TeammateAndSpectatorExclusive"
     public ref UInt32 PawnHealth => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController", "m_iPawnHealth");
 
     // m_iPawnArmor
+    // MNetworkUserGroup "TeammateAndSpectatorExclusive"
     public ref Int32 PawnArmor => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iPawnArmor");
 
     // m_bPawnHasDefuser
+    // MNetworkUserGroup "TeammateAndSpectatorExclusive"
     public ref bool PawnHasDefuser => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bPawnHasDefuser");
 
     // m_bPawnHasHelmet
+    // MNetworkUserGroup "TeammateAndSpectatorExclusive"
     public ref bool PawnHasHelmet => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bPawnHasHelmet");
 
     // m_nPawnCharacterDefIndex
@@ -2575,6 +2593,9 @@ public partial class CCSPlayerController_ActionTrackingServices : CPlayerControl
 
     // m_iNumRoundKillsHeadshots
     public ref Int32 NumRoundKillsHeadshots => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_iNumRoundKillsHeadshots");
+
+    // m_unTotalRoundDamageDealt
+    public ref UInt32 TotalRoundDamageDealt => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_unTotalRoundDamageDealt");
 
 }
 
@@ -2631,11 +2652,9 @@ public partial class CCSPlayerController_InventoryServices : CPlayerControllerCo
     // m_nPersonaDataPublicCommendsFriendly
     public ref Int32 PersonaDataPublicCommendsFriendly => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsFriendly");
 
-    // m_vecTerroristLoadoutCache
-    public NetworkedVector<CEconItemView> TerroristLoadoutCache => Schema.GetDeclaredClass<NetworkedVector<CEconItemView>>(this.Handle, "CCSPlayerController_InventoryServices", "m_vecTerroristLoadoutCache");
-
-    // m_vecCounterTerroristLoadoutCache
-    public NetworkedVector<CEconItemView> CounterTerroristLoadoutCache => Schema.GetDeclaredClass<NetworkedVector<CEconItemView>>(this.Handle, "CCSPlayerController_InventoryServices", "m_vecCounterTerroristLoadoutCache");
+    // m_vecServerAuthoritativeWeaponSlots
+    // MNetworkUserGroup "LocalPlayerExclusive"
+    public NetworkedVector<ServerAuthoritativeWeaponSlot_t> ServerAuthoritativeWeaponSlots => Schema.GetDeclaredClass<NetworkedVector<ServerAuthoritativeWeaponSlot_t>>(this.Handle, "CCSPlayerController_InventoryServices", "m_vecServerAuthoritativeWeaponSlots");
 
 }
 
@@ -2772,9 +2791,6 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
     // m_fImmuneToGunGameDamageTime
     // m_bGunGameImmunity
     public ref bool GunGameImmunity => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bGunGameImmunity");
-
-    // m_unTotalRoundDamageDealt
-    public ref UInt32 TotalRoundDamageDealt => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerPawnBase", "m_unTotalRoundDamageDealt");
 
     // m_fMolotovDamageTime
     public ref float MolotovDamageTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_fMolotovDamageTime");
@@ -4240,6 +4256,12 @@ public partial class CGameSceneNode : NativeObject
     // MNetworkUserGroup "Origin"
     // MNetworkChangeCallback "gameSceneNodeLocalOriginChanged"
     public CNetworkOriginCellCoordQuantizedVector Origin => Schema.GetDeclaredClass<CNetworkOriginCellCoordQuantizedVector>(this.Handle, "CGameSceneNode", "m_vecOrigin");
+
+    // m_vecAbsOrigin
+    public Vector AbsOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CGameSceneNode", "m_vecAbsOrigin");
+
+    // m_angAbsRotation
+    public QAngle AbsRotation => Schema.GetDeclaredClass<QAngle>(this.Handle, "CGameSceneNode", "m_angAbsRotation");
 
     // m_angRotation
     // MNetworkEncoder "qangle_precise"
@@ -7076,6 +7098,21 @@ public partial class SellbackPurchaseEntry_t : NativeObject
 
     // m_hItem
     public CHandle<CEntityInstance> Item => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "SellbackPurchaseEntry_t", "m_hItem");
+
+}
+
+public partial class ServerAuthoritativeWeaponSlot_t : NativeObject
+{
+    public ServerAuthoritativeWeaponSlot_t (IntPtr pointer) : base(pointer) {}
+
+    // unClass
+    public ref UInt16 UnClass => ref Schema.GetRef<UInt16>(this.Handle, "ServerAuthoritativeWeaponSlot_t", "unClass");
+
+    // unSlot
+    public ref UInt16 UnSlot => ref Schema.GetRef<UInt16>(this.Handle, "ServerAuthoritativeWeaponSlot_t", "unSlot");
+
+    // unItemDefIdx
+    public ref UInt16 UnItemDefIdx => ref Schema.GetRef<UInt16>(this.Handle, "ServerAuthoritativeWeaponSlot_t", "unItemDefIdx");
 
 }
 
