@@ -43,16 +43,15 @@ namespace TestPlugin
             Log($"Server pointer found @ {server.Pointer:X}");
             
             // 	inline void(FASTCALL *ClientPrint)(CBasePlayerController *player, int msg_dest, const char *msg_name, const char *param1, const char *param2, const char *param3, const char *param4);
-            var sigVirtualFunc = VirtualFunction.Create<IntPtr, int, string, IntPtr, IntPtr, IntPtr, IntPtr>(
-                server.Pointer, GameData.GetSignature("ClientPrint"));
+            var sigVirtualFunc = VirtualFunction.CreateVoid<IntPtr, int, string, IntPtr, IntPtr, IntPtr, IntPtr>(
+                GameData.GetSignature("ClientPrint"));
 
             var printAllFunc =
-                VirtualFunction.Create<int, string, IntPtr, IntPtr, IntPtr, IntPtr>(server.Pointer,
+                VirtualFunction.CreateVoid<int, string, IntPtr, IntPtr, IntPtr, IntPtr>(
                     GameData.GetSignature("UTIL_ClientPrintAll"));
 
-            var switchTeamFunc = VirtualFunction.Create<IntPtr, int>(server.Pointer,
-                GameData.GetSignature("CCSPlayerController_SwitchTeam"));
-            
+            var switchTeamFunc =
+                VirtualFunction.CreateVoid<IntPtr, int>(GameData.GetSignature("CCSPlayerController_SwitchTeam"));
             // Register Game Event Handlers
             RegisterEventHandler<EventPlayerConnect>(GenericEventHandler);
             RegisterEventHandler<EventPlayerJump>(@event =>
@@ -155,8 +154,8 @@ namespace TestPlugin
             // Example vfunc call that usually gets the game event manager pointer
             // by calling the func at offset 91 then subtracting 8 from the result pointer.
             // This value is asserted against the native code that points to the same function.
-            var virtualFunc = VirtualFunction.CreateFunc<IntPtr>(server.Pointer, 91);
-            var result = virtualFunc.Invoke() - 8;
+            var virtualFunc = VirtualFunction.Create<IntPtr>(server.Pointer, 91);
+            var result = virtualFunc() - 8;
             Log($"Result of virtual func call is {result:X}");
 
             
