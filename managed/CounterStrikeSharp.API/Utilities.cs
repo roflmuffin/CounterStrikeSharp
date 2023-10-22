@@ -19,6 +19,9 @@ using CounterStrikeSharp.API.Modules.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using System.Text;
 
 namespace CounterStrikeSharp.API
 {
@@ -42,6 +45,29 @@ namespace CounterStrikeSharp.API
             {
                 if (!pEntity.DesignerName.Contains(designerName)) continue;
                 yield return new PointerTo<T>(pEntity.Handle).Value;
+            }
+        }
+        
+        public static unsafe string ReadStringUtf8(IntPtr ptr)
+        {
+            unsafe
+            {
+                var nativeUtf8 = Unsafe.Read<IntPtr>((void*)ptr);
+
+                if (nativeUtf8 == IntPtr.Zero)
+                {
+                    return null;
+                }
+
+                var len = 0;
+                while (Marshal.ReadByte(nativeUtf8, len) != 0)
+                {
+                    ++len;
+                }
+
+                var buffer = new byte[len];
+                Marshal.Copy(nativeUtf8, buffer, 0, buffer.Length);
+                return Encoding.UTF8.GetString(buffer);
             }
         }
     }
