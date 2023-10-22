@@ -18,6 +18,7 @@ hero:
 using CounterStrikeSharp.API.Core;
 
 namespace HelloWorldPlugin;
+
 public class HelloWorldPlugin : BasePlugin
 {
     public override string ModuleName => "Hello World Plugin";
@@ -32,11 +33,12 @@ public class HelloWorldPlugin : BasePlugin
     [GameEventHandler]
     public void OnPlayerConnect(EventPlayerConnect @event)
     {
-        Log($"Player {@event.Name} has connected!");
+        // Userid will give you a reference to a CCSPlayerController class
+        Log($"Player {@event.Userid.PlayerName} has connected!");
     }
 
     [ConsoleCommand("issue_warning", "Issue warning to player")]
-    public void OnCommand(int client, CommandInfo command)
+    public void OnCommand(CCSPlayerController? player, CommandInfo command)
     {
         Log("You shouldn't be doing that!");
     }
