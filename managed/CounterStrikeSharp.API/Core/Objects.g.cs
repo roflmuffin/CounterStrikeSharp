@@ -469,6 +469,8 @@ public partial class audioparams_t : NativeObject
 
     // localSound
     // MNetworkEncoder "coord"
+    public Span<Vector> LocalSound => Schema.GetFixedArray<Vector>(this.Handle, "audioparams_t", "localSound", 8);
+
     // soundscapeIndex
     public ref Int32 SoundscapeIndex => ref Schema.GetRef<Int32>(this.Handle, "audioparams_t", "soundscapeIndex");
 
@@ -1420,6 +1422,8 @@ public partial class CBasePlayerWeapon : CEconEntity
 
     // m_pReserveAmmo
     // MNetworkUserGroup "LocalWeaponExclusive"
+    public Span<Int32> ReserveAmmo => Schema.GetFixedArray<Int32>(this.Handle, "CBasePlayerWeapon", "m_pReserveAmmo", 2);
+
 }
 
 public partial class CBaseProp : CBaseAnimGraph
@@ -1514,7 +1518,11 @@ public partial class CBeam : CBaseModelEntity
     public ref UInt32 BeamFlags => ref Schema.GetRef<UInt32>(this.Handle, "CBeam", "m_nBeamFlags");
 
     // m_hAttachEntity
+    public Span<CHandle<CBaseEntity>> AttachEntity => Schema.GetFixedArray<CHandle<CBaseEntity>>(this.Handle, "CBeam", "m_hAttachEntity", 10);
+
     // m_nAttachIndex
+    public Span<AttachmentHandle_t> AttachIndex => Schema.GetFixedArray<AttachmentHandle_t>(this.Handle, "CBeam", "m_nAttachIndex", 10);
+
     // m_fWidth
     // MNetworkBitCount "10"
     // MNetworkMinValue "0.000000"
@@ -2013,9 +2021,17 @@ public partial class CCSGameRules : CTeamplayRules
     public ref UInt32 NumGlobalGiftsPeriodSeconds => ref Schema.GetRef<UInt32>(this.Handle, "CCSGameRules", "m_numGlobalGiftsPeriodSeconds");
 
     // m_arrFeaturedGiftersAccounts
+    public Span<UInt32> FeaturedGiftersAccounts => Schema.GetFixedArray<UInt32>(this.Handle, "CCSGameRules", "m_arrFeaturedGiftersAccounts", 4);
+
     // m_arrFeaturedGiftersGifts
+    public Span<UInt32> FeaturedGiftersGifts => Schema.GetFixedArray<UInt32>(this.Handle, "CCSGameRules", "m_arrFeaturedGiftersGifts", 4);
+
     // m_arrProhibitedItemIndices
+    public Span<UInt16> ProhibitedItemIndices => Schema.GetFixedArray<UInt16>(this.Handle, "CCSGameRules", "m_arrProhibitedItemIndices", 100);
+
     // m_arrTournamentActiveCasterAccounts
+    public Span<UInt32> TournamentActiveCasterAccounts => Schema.GetFixedArray<UInt32>(this.Handle, "CCSGameRules", "m_arrTournamentActiveCasterAccounts", 4);
+
     // m_numBestOfMaps
     public ref Int32 NumBestOfMaps => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_numBestOfMaps");
 
@@ -2042,10 +2058,20 @@ public partial class CCSGameRules : CTeamplayRules
 
     // m_flGuardianBuyUntilTime
     // m_iMatchStats_RoundResults
+    public Span<Int32> MatchStats_RoundResults => Schema.GetFixedArray<Int32>(this.Handle, "CCSGameRules", "m_iMatchStats_RoundResults", 30);
+
     // m_iMatchStats_PlayersAlive_CT
+    public Span<Int32> MatchStats_PlayersAlive_CT => Schema.GetFixedArray<Int32>(this.Handle, "CCSGameRules", "m_iMatchStats_PlayersAlive_CT", 30);
+
     // m_iMatchStats_PlayersAlive_T
+    public Span<Int32> MatchStats_PlayersAlive_T => Schema.GetFixedArray<Int32>(this.Handle, "CCSGameRules", "m_iMatchStats_PlayersAlive_T", 30);
+
     // m_TeamRespawnWaveTimes
+    public Span<float> TeamRespawnWaveTimes => Schema.GetFixedArray<float>(this.Handle, "CCSGameRules", "m_TeamRespawnWaveTimes", 32);
+
     // m_flNextRespawnWave
+    public Span<float> NextRespawnWave => Schema.GetFixedArray<float>(this.Handle, "CCSGameRules", "m_flNextRespawnWave", 32);
+
     // m_nServerQuestID
     public ref Int32 ServerQuestID => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nServerQuestID");
 
@@ -2056,8 +2082,14 @@ public partial class CCSGameRules : CTeamplayRules
     public Vector MinimapMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSGameRules", "m_vMinimapMaxs");
 
     // m_MinimapVerticalSectionHeights
+    public Span<float> MinimapVerticalSectionHeights => Schema.GetFixedArray<float>(this.Handle, "CCSGameRules", "m_MinimapVerticalSectionHeights", 8);
+
     // m_nEndMatchMapGroupVoteTypes
+    public Span<Int32> EndMatchMapGroupVoteTypes => Schema.GetFixedArray<Int32>(this.Handle, "CCSGameRules", "m_nEndMatchMapGroupVoteTypes", 10);
+
     // m_nEndMatchMapGroupVoteOptions
+    public Span<Int32> EndMatchMapGroupVoteOptions => Schema.GetFixedArray<Int32>(this.Handle, "CCSGameRules", "m_nEndMatchMapGroupVoteOptions", 10);
+
     // m_nEndMatchMapVoteWinner
     public ref Int32 EndMatchMapVoteWinner => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nEndMatchMapVoteWinner");
 
@@ -2395,6 +2427,8 @@ public partial class CCSPlayer_ViewModelServices : CPlayer_ViewModelServices
     public CCSPlayer_ViewModelServices (IntPtr pointer) : base(pointer) {}
 
     // m_hViewModel
+    public Span<CHandle<CBaseViewModel>> ViewModel => Schema.GetFixedArray<CHandle<CBaseViewModel>>(this.Handle, "CCSPlayer_ViewModelServices", "m_hViewModel", 3);
+
 }
 
 public partial class CCSPlayer_WaterServices : CPlayer_WaterServices
@@ -2643,6 +2677,8 @@ public partial class CCSPlayerController_InventoryServices : CPlayerControllerCo
     public ref UInt16 MusicID => ref Schema.GetRef<UInt16>(this.Handle, "CCSPlayerController_InventoryServices", "m_unMusicID");
 
     // m_rank
+    public Span<MedalRank_t> Rank => Schema.GetFixedArray<MedalRank_t>(this.Handle, "CCSPlayerController_InventoryServices", "m_rank", 6);
+
     // m_nPersonaDataPublicLevel
     public ref Int32 PersonaDataPublicLevel => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicLevel");
 
@@ -2919,6 +2955,8 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
     public ref Int32 SecondaryAddon => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawnBase", "m_iSecondaryAddon");
 
     // m_vecPlayerPatchEconIndices
+    public Span<UInt32> PlayerPatchEconIndices => Schema.GetFixedArray<UInt32>(this.Handle, "CCSPlayerPawnBase", "m_vecPlayerPatchEconIndices", 5);
+
     // m_unCurrentEquipmentValue
     public ref UInt16 CurrentEquipmentValue => ref Schema.GetRef<UInt16>(this.Handle, "CCSPlayerPawnBase", "m_unCurrentEquipmentValue");
 
@@ -2941,8 +2979,14 @@ public partial class CCSPlayerResource : CBaseEntity
     public CCSPlayerResource (IntPtr pointer) : base(pointer) {}
 
     // m_bHostageAlive
+    public Span<bool> HostageAlive => Schema.GetFixedArray<bool>(this.Handle, "CCSPlayerResource", "m_bHostageAlive", 12);
+
     // m_isHostageFollowingSomeone
+    public Span<bool> IsHostageFollowingSomeone => Schema.GetFixedArray<bool>(this.Handle, "CCSPlayerResource", "m_isHostageFollowingSomeone", 12);
+
     // m_iHostageEntityIDs
+    public Span<CEntityIndex> HostageEntityIDs => Schema.GetFixedArray<CEntityIndex>(this.Handle, "CCSPlayerResource", "m_iHostageEntityIDs", 12);
+
     // m_bombsiteCenterA
     public Vector BombsiteCenterA => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayerResource", "m_bombsiteCenterA");
 
@@ -2950,8 +2994,14 @@ public partial class CCSPlayerResource : CBaseEntity
     public Vector BombsiteCenterB => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayerResource", "m_bombsiteCenterB");
 
     // m_hostageRescueX
+    public Span<Int32> HostageRescueX => Schema.GetFixedArray<Int32>(this.Handle, "CCSPlayerResource", "m_hostageRescueX", 4);
+
     // m_hostageRescueY
+    public Span<Int32> HostageRescueY => Schema.GetFixedArray<Int32>(this.Handle, "CCSPlayerResource", "m_hostageRescueY", 4);
+
     // m_hostageRescueZ
+    public Span<Int32> HostageRescueZ => Schema.GetFixedArray<Int32>(this.Handle, "CCSPlayerResource", "m_hostageRescueZ", 4);
+
     // m_bEndMatchNextMapAllVoted
     public ref bool EndMatchNextMapAllVoted => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerResource", "m_bEndMatchNextMapAllVoted");
 
@@ -3798,10 +3848,14 @@ public partial class CEnvScreenOverlay : CPointEntity
     public CEnvScreenOverlay (IntPtr pointer) : base(pointer) {}
 
     // m_iszOverlayNames
+    public Span<NetworkedString> OverlayNames => Schema.GetFixedArray<NetworkedString>(this.Handle, "CEnvScreenOverlay", "m_iszOverlayNames", 10);
+
     // m_flOverlayTimes
     // MNetworkBitCount "11"
     // MNetworkMinValue "-1.000000"
     // MNetworkMaxValue "63.000000"
+    public Span<float> OverlayTimes => Schema.GetFixedArray<float>(this.Handle, "CEnvScreenOverlay", "m_flOverlayTimes", 10);
+
     // m_flStartTime
     // m_iDesiredOverlay
     public ref Int32 DesiredOverlay => ref Schema.GetRef<Int32>(this.Handle, "CEnvScreenOverlay", "m_iDesiredOverlay");
@@ -4408,6 +4462,8 @@ public partial class CHitboxComponent : CEntityComponent
     public CHitboxComponent (IntPtr pointer) : base(pointer) {}
 
     // m_bvDisabledHitGroups
+    public Span<UInt32> DisabledHitGroups => Schema.GetFixedArray<UInt32>(this.Handle, "CHitboxComponent", "m_bvDisabledHitGroups", 1);
+
 }
 
 public partial class CHostage : CHostageExpresserShim
@@ -4481,13 +4537,29 @@ public partial class CInferno : CBaseModelEntity
     public CInferno (IntPtr pointer) : base(pointer) {}
 
     // m_fireXDelta
+    public Span<Int32> FireXDelta => Schema.GetFixedArray<Int32>(this.Handle, "CInferno", "m_fireXDelta", 64);
+
     // m_fireYDelta
+    public Span<Int32> FireYDelta => Schema.GetFixedArray<Int32>(this.Handle, "CInferno", "m_fireYDelta", 64);
+
     // m_fireZDelta
+    public Span<Int32> FireZDelta => Schema.GetFixedArray<Int32>(this.Handle, "CInferno", "m_fireZDelta", 64);
+
     // m_fireParentXDelta
+    public Span<Int32> FireParentXDelta => Schema.GetFixedArray<Int32>(this.Handle, "CInferno", "m_fireParentXDelta", 64);
+
     // m_fireParentYDelta
+    public Span<Int32> FireParentYDelta => Schema.GetFixedArray<Int32>(this.Handle, "CInferno", "m_fireParentYDelta", 64);
+
     // m_fireParentZDelta
+    public Span<Int32> FireParentZDelta => Schema.GetFixedArray<Int32>(this.Handle, "CInferno", "m_fireParentZDelta", 64);
+
     // m_bFireIsBurning
+    public Span<bool> FireIsBurning => Schema.GetFixedArray<bool>(this.Handle, "CInferno", "m_bFireIsBurning", 64);
+
     // m_BurnNormal
+    public Span<Vector> BurnNormal => Schema.GetFixedArray<Vector>(this.Handle, "CInferno", "m_BurnNormal", 64);
+
     // m_fireCount
     public ref Int32 FireCount => ref Schema.GetRef<Int32>(this.Handle, "CInferno", "m_fireCount");
 
@@ -4942,15 +5014,35 @@ public partial class CMapVetoPickController : CBaseEntity
     public ref Int32 TeamWinningCoinToss => ref Schema.GetRef<Int32>(this.Handle, "CMapVetoPickController", "m_nTeamWinningCoinToss");
 
     // m_nTeamWithFirstChoice
+    public Span<Int32> TeamWithFirstChoice => Schema.GetFixedArray<Int32>(this.Handle, "CMapVetoPickController", "m_nTeamWithFirstChoice", 64);
+
     // m_nVoteMapIdsList
+    public Span<Int32> VoteMapIdsList => Schema.GetFixedArray<Int32>(this.Handle, "CMapVetoPickController", "m_nVoteMapIdsList", 7);
+
     // m_nAccountIDs
+    public Span<Int32> AccountIDs => Schema.GetFixedArray<Int32>(this.Handle, "CMapVetoPickController", "m_nAccountIDs", 64);
+
     // m_nMapId0
+    public Span<Int32> MapId0 => Schema.GetFixedArray<Int32>(this.Handle, "CMapVetoPickController", "m_nMapId0", 64);
+
     // m_nMapId1
+    public Span<Int32> MapId1 => Schema.GetFixedArray<Int32>(this.Handle, "CMapVetoPickController", "m_nMapId1", 64);
+
     // m_nMapId2
+    public Span<Int32> MapId2 => Schema.GetFixedArray<Int32>(this.Handle, "CMapVetoPickController", "m_nMapId2", 64);
+
     // m_nMapId3
+    public Span<Int32> MapId3 => Schema.GetFixedArray<Int32>(this.Handle, "CMapVetoPickController", "m_nMapId3", 64);
+
     // m_nMapId4
+    public Span<Int32> MapId4 => Schema.GetFixedArray<Int32>(this.Handle, "CMapVetoPickController", "m_nMapId4", 64);
+
     // m_nMapId5
+    public Span<Int32> MapId5 => Schema.GetFixedArray<Int32>(this.Handle, "CMapVetoPickController", "m_nMapId5", 64);
+
     // m_nStartingSide0
+    public Span<Int32> StartingSide0 => Schema.GetFixedArray<Int32>(this.Handle, "CMapVetoPickController", "m_nStartingSide0", 64);
+
     // m_nCurrentPhase
     public ref Int32 CurrentPhase => ref Schema.GetRef<Int32>(this.Handle, "CMapVetoPickController", "m_nCurrentPhase");
 
@@ -5236,8 +5328,14 @@ public partial class CParticleSystem : CBaseModelEntity
     public ref float PreSimTime => ref Schema.GetRef<float>(this.Handle, "CParticleSystem", "m_flPreSimTime");
 
     // m_vServerControlPoints
+    public Span<Vector> ServerControlPoints => Schema.GetFixedArray<Vector>(this.Handle, "CParticleSystem", "m_vServerControlPoints", 4);
+
     // m_iServerControlPointAssignments
+    public Span<byte> ServerControlPointAssignments => Schema.GetFixedArray<byte>(this.Handle, "CParticleSystem", "m_iServerControlPointAssignments", 4);
+
     // m_hControlPointEnts
+    public Span<CHandle<CBaseEntity>> ControlPointEnts => Schema.GetFixedArray<CHandle<CBaseEntity>>(this.Handle, "CParticleSystem", "m_hControlPointEnts", 64);
+
     // m_bNoSave
     public ref bool NoSave => ref Schema.GetRef<bool>(this.Handle, "CParticleSystem", "m_bNoSave");
 
@@ -5436,6 +5534,8 @@ public partial class CPlayer_MovementServices : CPlayerPawnComponent
     public ref float Maxspeed => ref Schema.GetRef<float>(this.Handle, "CPlayer_MovementServices", "m_flMaxspeed");
 
     // m_arrForceSubtickMoveWhen
+    public Span<float> ForceSubtickMoveWhen => Schema.GetFixedArray<float>(this.Handle, "CPlayer_MovementServices", "m_arrForceSubtickMoveWhen", 4);
+
 }
 
 public partial class CPlayer_MovementServices_Humanoid : CPlayer_MovementServices
@@ -5521,6 +5621,8 @@ public partial class CPlayer_WeaponServices : CPlayerPawnComponent
     public CHandle<CBasePlayerWeapon> LastWeapon => Schema.GetDeclaredClass<CHandle<CBasePlayerWeapon>>(this.Handle, "CPlayer_WeaponServices", "m_hLastWeapon");
 
     // m_iAmmo
+    public Span<UInt16> Ammo => Schema.GetFixedArray<UInt16>(this.Handle, "CPlayer_WeaponServices", "m_iAmmo", 32);
+
 }
 
 public partial class CPlayerControllerComponent : NativeObject
@@ -5603,6 +5705,8 @@ public partial class CPlayerSprayDecal : CModelPointEntity
     public ref byte Version => ref Schema.GetRef<byte>(this.Handle, "CPlayerSprayDecal", "m_nVersion");
 
     // m_ubSignature
+    public Span<byte> Signature => Schema.GetFixedArray<byte>(this.Handle, "CPlayerSprayDecal", "m_ubSignature", 128);
+
 }
 
 public partial class CPlayerVisibility : CBaseEntity
@@ -6688,6 +6792,8 @@ public partial class CVoteController : CBaseEntity
     public ref Int32 OnlyTeamToVote => ref Schema.GetRef<Int32>(this.Handle, "CVoteController", "m_iOnlyTeamToVote");
 
     // m_nVoteOptionCount
+    public Span<Int32> VoteOptionCount => Schema.GetFixedArray<Int32>(this.Handle, "CVoteController", "m_nVoteOptionCount", 5);
+
     // m_nPotentialVotes
     public ref Int32 PotentialVotes => ref Schema.GetRef<Int32>(this.Handle, "CVoteController", "m_nPotentialVotes");
 
@@ -6926,6 +7032,8 @@ public partial class EntitySpottedState_t : NativeObject
 
     // m_bSpottedByMask
     // MNetworkChangeCallback "OnIsSpottedChanged"
+    public Span<UInt32> SpottedByMask => Schema.GetFixedArray<UInt32>(this.Handle, "EntitySpottedState_t", "m_bSpottedByMask", 2);
+
 }
 
 public partial class fogparams_t : NativeObject

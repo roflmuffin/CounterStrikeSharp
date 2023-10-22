@@ -6,7 +6,8 @@ public record SchemaFieldType(
     string Name,
     SchemaTypeCategory Category,
     SchemaAtomicCategory? Atomic,
-    SchemaFieldType? Inner)
+    SchemaFieldType? Inner,
+    int? ArraySize)
 {
     public bool IsString =>
         Category == SchemaTypeCategory.FixedArray

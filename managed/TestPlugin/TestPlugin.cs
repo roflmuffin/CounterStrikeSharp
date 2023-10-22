@@ -70,7 +70,11 @@ namespace TestPlugin
             {
                 var player = @event.Userid;
                 var pawn = player.PlayerPawn.Value;
+                var activeWeapon = @event.Userid.PlayerPawn.Value.WeaponServices?.ActiveWeapon.Value;
 
+                activeWeapon.ReserveAmmo[0] = 250;
+                activeWeapon.Clip1 = 250;
+                
                 VirtualFunctions.GiveNamedItem(pawn.ItemServices.Handle, "weapon_ak47", 0, 0, 0, 0);
                 
                 Log($"Pawn Position: {pawn.CBodyComponent?.SceneNode?.AbsOrigin} @{pawn.CBodyComponent?.SceneNode.Rotation}");

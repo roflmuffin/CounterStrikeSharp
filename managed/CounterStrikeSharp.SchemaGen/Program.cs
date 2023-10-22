@@ -223,6 +223,7 @@ internal static partial class Program
                 builder.AppendLine($"    // {metadataKey}{(value == "" ? "" : $" \"{value}\"")}");
             }
 
+            
             if (field.Type is { Category: SchemaTypeCategory.FixedArray, CsTypeName: "string" })
             {
                 var getter = $"Schema.GetString({handleParams});";
@@ -230,7 +231,14 @@ internal static partial class Program
                     $"    public {SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)} => {getter}");
                 builder.AppendLine();
             }
-            if (field.Type.Category == SchemaTypeCategory.DeclaredClass && !IgnoreClasses.Contains(field.Type.Name))
+            else if (field.Type.Category == SchemaTypeCategory.FixedArray)
+            {
+                var getter = $"Schema.GetFixedArray<{SanitiseTypeName(field.Type.Inner!.CsTypeName)}>({handleParams}, {field.Type.ArraySize});";
+                builder.AppendLine(
+                    $"    public Span<{SanitiseTypeName(field.Type.Inner!.CsTypeName)}> {schemaClass.CsPropertyNameForField(schemaClassName, field)} => {getter}");
+                builder.AppendLine();
+            }
+            else if (field.Type.Category == SchemaTypeCategory.DeclaredClass && !IgnoreClasses.Contains(field.Type.Name))
             {
                 var getter = $"Schema.GetDeclaredClass<{SanitiseTypeName(field.Type.CsTypeName)}>({handleParams});";
                 builder.AppendLine(
@@ -252,7 +260,8 @@ internal static partial class Program
                 builder.AppendLine(
                     $"    public {SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)} => Schema.GetPointer<{SanitiseTypeName(inner.CsTypeName)}>({handleParams});");
                 builder.AppendLine();
-            } else if (field.Type.Category == SchemaTypeCategory.Atomic)
+            } 
+            else if (field.Type.Category == SchemaTypeCategory.Atomic)
             {
                 var getter = $"Schema.GetDeclaredClass<{SanitiseTypeName(field.Type.CsTypeName)}>({handleParams});";
                 builder.AppendLine(

@@ -64,10 +64,10 @@ public class Schema
         return (T)Activator.CreateInstance(typeof(T), pointerTo);
     }
 
-    public static unsafe T[] GetFixedArray<T>(IntPtr pointer, string className, string memberName, int count)
+    public static unsafe Span<T> GetFixedArray<T>(IntPtr pointer, string className, string memberName, int count)
     {
         Span<T> span = new((void*)(pointer + GetSchemaOffset(className, memberName)), count);
-        return span.ToArray();
+        return span;
     }
 
     public static string GetString(IntPtr pointer, string className, string memberName)
