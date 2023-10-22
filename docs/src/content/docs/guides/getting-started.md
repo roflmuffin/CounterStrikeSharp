@@ -11,10 +11,10 @@ description: How to get started installing & using CounterStrikeSharp.
 
 ### Installing CounterStrikeSharp
 
-Download the latest release of CounterStrikeSharp from <a href="https://github.com/roflmuffin/CounterStrikeSharp/actions/workflows/cmake-single-platform.yml" target="_blank">GitHub actions build pages</a> (just choose the latest development snapshot). __You may need to be logged into GitHub to gain access to the downloads__.
+Download the latest release of CounterStrikeSharp from <a href="https://github.com/roflmuffin/CounterStrikeSharp/actions/workflows/cmake-single-platform.yml" target="_blank">GitHub actions build pages</a> (just choose the latest development snapshot). **You may need to be logged into GitHub to gain access to the downloads**.
 
 :::caution[.NET Runtime]
-If this is your first time installing, you will need to download the `with-runtime` version. This includes a copy of the .NET runtime, which is required to run the plugin. 
+If this is your first time installing, you will need to download the `with-runtime` version. This includes a copy of the .NET runtime, which is required to run the plugin.
 
 Subsequent upgrades will not require the runtime, unless a version bump of the .NET runtime is required (i.e. from 7.0.x to 8.0.x). We will inform you when this occurs.
 :::

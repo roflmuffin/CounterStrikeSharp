@@ -1,7 +1,7 @@
 :root {
-	--sl-font: 'DM Sans', serif;
-    --sl-font-mono: 'Jetbrains Mono', monospace;
-    --sl-text-code-sm: 1rem;
+  --sl-font: 'DM Sans', serif;
+  --sl-font-mono: 'Jetbrains Mono', monospace;
+  --sl-text-code-sm: 1rem;
 }
 
 .hero {
