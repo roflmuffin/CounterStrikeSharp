@@ -20,6 +20,8 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Modules.Memory;
+using CounterStrikeSharp.API.Modules.Utils;
 
 namespace CounterStrikeSharp.API
 {
@@ -48,6 +50,11 @@ namespace CounterStrikeSharp.API
             nextFrameTasks.Add(task);
             var ptr = Marshal.GetFunctionPointerForDelegate(task);
             NativeAPI.QueueTaskForNextFrame(ptr);
+        }
+
+        public static void PrintToChatAll(string message)
+        {
+            VirtualFunctions.ClientPrintAll(HudDestination.Chat, message, 0, 0, 0, 0);
         }
 
         public static string GameDirectory => NativeAPI.GetGameDirectory();
