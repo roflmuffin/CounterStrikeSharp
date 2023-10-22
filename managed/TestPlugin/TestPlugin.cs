@@ -71,6 +71,8 @@ namespace TestPlugin
                 var player = @event.Userid;
                 var pawn = player.PlayerPawn.Value;
 
+                VirtualFunctions.GiveNamedItem(pawn.ItemServices.Handle, "weapon_ak47", 0, 0, 0, 0);
+                
                 Log($"Pawn Position: {pawn.CBodyComponent?.SceneNode?.AbsOrigin} @{pawn.CBodyComponent?.SceneNode.Rotation}");
                 
                 char randomColourChar = (char)new Random().Next(0, 16);
