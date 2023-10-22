@@ -28,7 +28,9 @@ addons
 │   ├── api
 │   ├── bin
 │   ├── dotnet
-│   └── plugins
+│   ├── plugins
+│   └── gamedata
+│
 ├── metamod
 │   ├── bin
 │   ├── counterstrikesharp.vdf
