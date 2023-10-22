@@ -1577,6 +1577,9 @@ public partial class CBodyComponent : CEntityComponent
 {
     public CBodyComponent (IntPtr pointer) : base(pointer) {}
 
+    // m_pSceneNode
+    public CGameSceneNode? SceneNode => Schema.GetPointer<CGameSceneNode>(this.Handle, "CBodyComponent", "m_pSceneNode");
+
 }
 
 public partial class CBodyComponentBaseAnimGraph : CBodyComponentSkeletonInstance

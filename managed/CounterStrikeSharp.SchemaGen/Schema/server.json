@@ -4525,6 +4525,18 @@
     "CBodyComponent": {
       "parent": "CEntityComponent",
       "fields": [
+        {
+          "name": "m_pSceneNode",
+          "type": {
+            "name": "CGameSceneNode*",
+            "category": 1,
+            "inner": {
+              "name": "CGameSceneNode",
+              "category": 5
+            }
+          },
+          "metadata": {}
+        }
       ]
     },
     "CNetworkOriginCellCoordQuantizedVector": {
