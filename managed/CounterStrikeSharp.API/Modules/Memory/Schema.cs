@@ -61,6 +61,6 @@ public class Schema
 
     public static string GetString(IntPtr pointer, string className, string memberName)
     {
-        return Utilities.ReadStringUtf8(pointer + GetSchemaOffset(className, memberName));
+        return GetSchemaValue<string>(pointer, className, memberName);
     }
 }
