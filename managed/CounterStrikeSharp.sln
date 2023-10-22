@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CounterStrikeSharp.API", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGen.Natives", "..\tooling\CodeGen.Natives\CodeGen.Natives.csproj", "{5C873ECF-A943-45AA-A3C0-E442EB4477BD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CounterStrikeSharp.SchemaGen", "CounterStrikeSharp.SchemaGen\CounterStrikeSharp.SchemaGen.csproj", "{D470646C-9BBB-4030-B267-58537A4B0026}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{5C873ECF-A943-45AA-A3C0-E442EB4477BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C873ECF-A943-45AA-A3C0-E442EB4477BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C873ECF-A943-45AA-A3C0-E442EB4477BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D470646C-9BBB-4030-B267-58537A4B0026}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D470646C-9BBB-4030-B267-58537A4B0026}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D470646C-9BBB-4030-B267-58537A4B0026}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D470646C-9BBB-4030-B267-58537A4B0026}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

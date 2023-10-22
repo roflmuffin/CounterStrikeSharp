@@ -62,7 +62,7 @@ namespace TestPlugin
             RegisterEventHandler<EventPlayerSpawn>(@event =>
             {
                 if (!@event.Userid.IsValid) return;
-                if (!@event.Userid.m_hPlayerPawn.IsValid) return;
+                if (!@event.Userid.PlayerPawn.IsValid) return;
                 
                 Log($"Player spawned with entity index: {@event.Userid.EntityIndex} & User ID: {@event.Userid.UserId}");
             });
@@ -70,15 +70,17 @@ namespace TestPlugin
             RegisterEventHandler<EventBulletImpact>(@event =>
             {
                 var player = @event.Userid;
-                var pawn = player.m_hPlayerPawn.Value;
+                var pawn = player.PlayerPawn.Value;
+
+                Log($"Pawn Position: {pawn.CBodyComponent?.SceneNode?.AbsOrigin} @{pawn.CBodyComponent?.SceneNode.Rotation}");
                 
                 char randomColourChar = (char)new Random().Next(0, 16);
                 printAllFunc(3, $"Random String with Random Colour: {randomColourChar}{new Random().Next()}", IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero);
                 
-                pawn.m_iHealth += 5;
+                pawn.Health += 5;
 
                 Log(
-                    $"Found steamID {new SteamID(player.m_steamID)} for player {player.m_iszPlayerName}:{pawn.m_iHealth}|{pawn.m_bInBuyZone}");
+                    $"Found steamID {new SteamID(player.SteamID)} for player {player.PlayerName}:{pawn.Health}|{pawn.InBuyZone}");
                 Log($"{@event.Userid}, {@event.X},{@event.Y},{@event.Z}");
             });
             RegisterEventHandler<EventRoundStart>(@event =>
@@ -90,7 +92,7 @@ namespace TestPlugin
                 foreach (var player in playerEntities)
                 {
                     //var player = new CCSPlayerController(entInst.Handle);
-                    player.m_pInGameMoneyServices.Value.m_iAccount = 1337;
+                    if (player.InGameMoneyServices != null) player.InGameMoneyServices.Account = 1337;
                 }
 
                 // Grab everything starting with cs_, but we'll only mainpulate cs_gamerules.
@@ -101,7 +103,7 @@ namespace TestPlugin
                 {
                     if (entity.DesignerName != "cs_gamerules") continue;
                     var gamerulesEnt = new CCSGameRules(entity.Handle);
-                    gamerulesEnt.m_bCTTimeOutActive = true;
+                    gamerulesEnt.CTTimeOutActive = true;
                 }
             });
 
@@ -126,10 +128,10 @@ namespace TestPlugin
 
                 Server.NextFrame(() =>
                 {
-                    projectile.m_vSmokeColor.X = Random.Shared.NextSingle() * 255.0f;
-                    projectile.m_vSmokeColor.X = Random.Shared.NextSingle() * 255.0f;
-                    projectile.m_vSmokeColor.X = Random.Shared.NextSingle() * 255.0f;
-                    Log($"Smoke grenade spawned with color {projectile.m_vSmokeColor}");
+                    projectile.SmokeColor.X = Random.Shared.NextSingle() * 255.0f;
+                    projectile.SmokeColor.X = Random.Shared.NextSingle() * 255.0f;
+                    projectile.SmokeColor.X = Random.Shared.NextSingle() * 255.0f;
+                    Log($"Smoke grenade spawned with color {projectile.SmokeColor}");
                 });
             });
 
