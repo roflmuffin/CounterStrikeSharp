@@ -31,10 +31,12 @@ public class HelloWorldPlugin : BasePlugin
     }
 
     [GameEventHandler]
-    public void OnPlayerConnect(EventPlayerConnect @event)
+    public HookResult OnPlayerConnect(EventPlayerConnect @event, GameEventInfo info)
     {
         // Userid will give you a reference to a CCSPlayerController class
         Log($"Player {@event.Userid.PlayerName} has connected!");
+
+        return HookResult.Continue;
     }
 
     [ConsoleCommand("issue_warning", "Issue warning to player")]
