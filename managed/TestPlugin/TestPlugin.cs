@@ -41,7 +41,7 @@ namespace TestPlugin
             // ValveInterface provides pointers to loaded modules via Interface Name exposed from the engine (e.g. Source2Server001)
             var server = ValveInterface.Server;
             Log($"Server pointer found @ {server.Pointer:X}");
-            
+
             // 	inline void(FASTCALL *ClientPrint)(CBasePlayerController *player, int msg_dest, const char *msg_name, const char *param1, const char *param2, const char *param3, const char *param4);
             var sigVirtualFunc = VirtualFunction.CreateVoid<IntPtr, int, string, IntPtr, IntPtr, IntPtr, IntPtr>(
                 GameData.GetSignature("ClientPrint"));
@@ -54,19 +54,34 @@ namespace TestPlugin
                 VirtualFunction.CreateVoid<IntPtr, int>(GameData.GetSignature("CCSPlayerController_SwitchTeam"));
             // Register Game Event Handlers
             RegisterEventHandler<EventPlayerConnect>(GenericEventHandler);
-            RegisterEventHandler<EventPlayerJump>(@event =>
+            RegisterEventHandler<EventPlayerDeath>((@event, info) =>
+            {
+                // You can use `info.DontBroadcast` to set the dont broadcast flag on the event.
+                if (new Random().NextSingle() > 0.5f)
+                {
+                    @event.Attacker.PrintToChat($"Skipping player_death broadcast at {Server.CurrentTime}");
+                    info.DontBroadcast = true;
+                }
+
+                return HookResult.Continue;
+            });
+            RegisterEventHandler<EventPlayerJump>((@event, info) =>
             {
                 sigVirtualFunc(@event.Userid.Handle, 2, "Test", IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero);
+
+                return HookResult.Continue;
             });
-            RegisterEventHandler<EventPlayerSpawn>(@event =>
+            RegisterEventHandler<EventPlayerSpawn>((@event, info) =>
             {
-                if (!@event.Userid.IsValid) return;
-                if (!@event.Userid.PlayerPawn.IsValid) return;
-                
+                if (!@event.Userid.IsValid) return 0;
+                if (!@event.Userid.PlayerPawn.IsValid) return 0;
+
                 Log($"Player spawned with entity index: {@event.Userid.EntityIndex} & User ID: {@event.Userid.UserId}");
+
+                return HookResult.Continue;
             });
             RegisterEventHandler<EventPlayerBlind>(GenericEventHandler);
-            RegisterEventHandler<EventBulletImpact>(@event =>
+            RegisterEventHandler<EventBulletImpact>((@event, info) =>
             {
                 var player = @event.Userid;
                 var pawn = player.PlayerPawn.Value;
@@ -77,27 +92,32 @@ namespace TestPlugin
                 {
                     player.PrintToCenter(string.Join("\n", weapons.Select(x => x.Value.DesignerName)));
                 });
-                
+
                 activeWeapon.ReserveAmmo[0] = 250;
                 activeWeapon.Clip1 = 250;
-                
+
                 VirtualFunctions.GiveNamedItem(pawn.ItemServices.Handle, "weapon_ak47", 0, 0, 0, 0);
-                
-                Log($"Pawn Position: {pawn.CBodyComponent?.SceneNode?.AbsOrigin} @{pawn.CBodyComponent?.SceneNode.Rotation}");
-                
+
+                Log(
+                    $"Pawn Position: {pawn.CBodyComponent?.SceneNode?.AbsOrigin} @{pawn.CBodyComponent?.SceneNode.Rotation}");
+
                 char randomColourChar = (char)new Random().Next(0, 16);
-                printAllFunc(3, $"Random String with Random Colour: {randomColourChar}{new Random().Next()}", IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero);
-                
+                printAllFunc(3, $"Random String with Random Colour: {randomColourChar}{new Random().Next()}",
+                    IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero);
+
                 pawn.Health += 5;
 
                 Log(
                     $"Found steamID {new SteamID(player.SteamID)} for player {player.PlayerName}:{pawn.Health}|{pawn.InBuyZone}");
                 Log($"{@event.Userid}, {@event.X},{@event.Y},{@event.Z}");
+
+                return HookResult.Continue;
             });
-            RegisterEventHandler<EventRoundStart>(@event =>
+            RegisterEventHandler<EventRoundStart>((@event, info) =>
             {
                 // Grab all cs_player_controller entities and set their cash value to $1337.
-                var playerEntities = Utilities.FindAllEntitiesByDesignerName<CCSPlayerController>("cs_player_controller");
+                var playerEntities =
+                    Utilities.FindAllEntitiesByDesignerName<CCSPlayerController>("cs_player_controller");
                 Log($"cs_player_controller count: {playerEntities.Count<CCSPlayerController>()}");
 
                 foreach (var player in playerEntities)
@@ -116,6 +136,8 @@ namespace TestPlugin
                     var gamerulesEnt = new CCSGameRules(entity.Handle);
                     gamerulesEnt.CTTimeOutActive = true;
                 }
+
+                return HookResult.Continue;
             });
 
             // Hook global listeners defined by CounterStrikeSharp
@@ -131,7 +153,6 @@ namespace TestPlugin
 
             RegisterListener<Listeners.OnEntitySpawned>(entity =>
             {
-
                 var designerName = entity.DesignerName;
                 if (designerName != "smokegrenade_projectile") return;
 
@@ -150,7 +171,6 @@ namespace TestPlugin
             File.WriteAllText(Path.Join(ModuleDirectory, "example.txt"),
                 $"Test file created by TestPlugin at {DateTime.Now}");
 
-            
 
             // Execute a server command as if typed into the server console.
             Server.ExecuteCommand("find \"cssharp\"");
@@ -160,7 +180,8 @@ namespace TestPlugin
                 (player, info) =>
                 {
                     if (player == null) return;
-                    Log($"CounterStrikeSharp - a test command was called by {new SteamID(player.SteamID).SteamId2} with {info.ArgString}");
+                    Log(
+                        $"CounterStrikeSharp - a test command was called by {new SteamID(player.SteamID).SteamId2} with {info.ArgString}");
                 });
 
             // Example vfunc call that usually gets the game event manager pointer
@@ -169,14 +190,14 @@ namespace TestPlugin
             var virtualFunc = VirtualFunction.Create<IntPtr>(server.Pointer, 91);
             var result = virtualFunc() - 8;
             Log($"Result of virtual func call is {result:X}");
-
-            
         }
 
         [GameEventHandler]
-        public void OnPlayerConnect(EventPlayerConnect @event)
+        public HookResult OnPlayerConnect(EventPlayerConnect @event, GameEventInfo info)
         {
             Log($"Player {@event.Name} has connected!");
+
+            return HookResult.Continue;
         }
 
         [ConsoleCommand("cssharp_attribute", "This is a custom attribute event")]
@@ -185,9 +206,11 @@ namespace TestPlugin
             Log("cssharp_attribute called!");
         }
 
-        private void GenericEventHandler<T>(T @event) where T : GameEvent
+        private HookResult GenericEventHandler<T>(T @event, GameEventInfo info) where T : GameEvent
         {
-            Log($"Event found {@event.Handle:X}, event name: {@event.EventName}");
+            Log($"Event found {@event.Handle:X}, event name: {@event.EventName} dont broadcast: {info.DontBroadcast}");
+
+            return HookResult.Continue;
         }
 
         private void Log(string message)

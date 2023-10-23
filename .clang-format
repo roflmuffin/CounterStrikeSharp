@@ -1,19 +1,21 @@
----
-Language: Cpp
-BasedOnStyle: Google
-AccessModifierOffset: -4
-Standard: c++11
+BasedOnStyle: LLVM
 IndentWidth: 4
-TabWidth: 4
-UseTab: Never
 ColumnLimit: 100
+DerivePointerAlignment: false
+PointerAlignment: Left
 AlignAfterOpenBracket: Align
-BinPackParameters: false
-AlignEscapedNewlines: Left
-AlwaysBreakTemplateDeclarations: Yes
-PackConstructorInitializers: Never
-BreakConstructorInitializersBeforeComma: false
-IndentPPDirectives: BeforeHash
-SortIncludes: Never
-...
-
+KeepEmptyLinesAtTheStartOfBlocks: false
+SortIncludes: false
+SpaceBeforeParens: ControlStatements
+AllowAllArgumentsOnNextLine: true
+AllowShortIfStatementsOnASingleLine: false
+IndentCaseLabels: false
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterClass: true
+  AfterStruct: true
+  AfterEnum: true
+  AfterUnion: true
+  AfterNamespace: false
+  AfterFunction: true
+  IndentBraces: false

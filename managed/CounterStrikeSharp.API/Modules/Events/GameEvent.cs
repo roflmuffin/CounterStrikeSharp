@@ -30,23 +30,16 @@ namespace CounterStrikeSharp.API.Modules.Events
         public string Name { get; set; }
     }
 
-    public class GameEvent
+    public class GameEvent : NativeObject
     {
-        public IntPtr Handle { get; internal set; }
-
-        protected GameEvent()
+        public GameEvent(IntPtr pointer) : base(pointer)
         {
         }
-
+        
         public GameEvent(string name, bool force) : this(NativeAPI.CreateEvent(name, force))
         {
         }
-
-        internal GameEvent(IntPtr pointer)
-        {
-            Handle = pointer;
-        }
-
+        
         public string EventName => NativeAPI.GetEventName(Handle);
 
         public T Get<T>(string name)

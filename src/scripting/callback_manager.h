@@ -24,40 +24,44 @@
 
 namespace counterstrikesharp {
 
-class ScriptCallback {
-public:
-    ScriptCallback(const char *name);
+class ScriptCallback
+{
+  public:
+    ScriptCallback(const char* szName);
     ~ScriptCallback();
-    void AddListener(CallbackT plugin_function);
-    bool RemoveListener(CallbackT plugin_function);
+    void AddListener(CallbackT fnPluginFunction);
+    bool RemoveListener(CallbackT fnPluginFunction);
     std::string GetName() { return m_name; }
     unsigned int GetFunctionCount() { return m_functions.size(); }
-    void Execute(bool resetContext = true);
-    void ResetContext();
-    ScriptContextRaw &ScriptContext() { return m_script_context_raw; }
-    fxNativeContext &ScriptContextStruct() { return m_root_context; }
+    std::vector<CallbackT> GetFunctions() { return m_functions; }
 
-private:
+
+    void Execute(bool bResetContext = true);
+    void Reset();
+    ScriptContextRaw& ScriptContext() { return m_script_context_raw; }
+    fxNativeContext& ScriptContextStruct() { return m_root_context; }
+
+  private:
     std::vector<CallbackT> m_functions;
     std::string m_name;
     ScriptContextRaw m_script_context_raw;
     fxNativeContext m_root_context;
 };
 
-class CallbackManager : public GlobalClass {
-public:
+class CallbackManager : public GlobalClass
+{
+  public:
     CallbackManager();
 
-public:
-    ScriptCallback *CreateCallback(const char *name);
-    ScriptCallback *FindCallback(const char *name);
-    void ReleaseCallback(ScriptCallback *callback);
-    bool TryAddFunction(const char *name, CallbackT pCallable);
-    bool TryRemoveFunction(const char *name, CallbackT pCallable);
+    ScriptCallback* CreateCallback(const char* szName);
+    ScriptCallback* FindCallback(const char* szName);
+    void ReleaseCallback(ScriptCallback* pCallback);
+    bool TryAddFunction(const char* szName, CallbackT fnCallable);
+    bool TryRemoveFunction(const char* szName, CallbackT fnCallable);
     void PrintCallbackDebug();
 
-private:
-    std::vector<ScriptCallback *> m_managed;
+  private:
+    std::vector<ScriptCallback*> m_managed;
 };
 
-}  // namespace counterstrikesharp
+} // namespace counterstrikesharp

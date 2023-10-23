@@ -46,43 +46,48 @@ class CUtlString;
 namespace counterstrikesharp {
 class ScriptCallback;
 class PluginFunction;
-}  // namespace counterstrikesharp
+} // namespace counterstrikesharp
 
-struct EventHook {
-    EventHook() {
-        PreHook = nullptr;
-        PostHook = nullptr;
+struct EventHook
+{
+    EventHook()
+    {
+        m_pPreHook = nullptr;
+        m_pPostHook = nullptr;
     }
-    counterstrikesharp::ScriptCallback *PreHook;
-    counterstrikesharp::ScriptCallback *PostHook;
-    std::string name;
+    counterstrikesharp::ScriptCallback* m_pPreHook;
+    counterstrikesharp::ScriptCallback* m_pPostHook;
+    std::string m_Name;
+};
+
+struct EventOverride {
+  bool m_bDontBroadcast;
 };
 
 namespace counterstrikesharp {
 
-class EventManager : public IGameEventListener2, public GlobalClass {
-public:
+class EventManager : public IGameEventListener2, public GlobalClass
+{
+  public:
     EventManager();
-    ~EventManager();
+    ~EventManager() override;
 
-public:  // GlobalClass
+    // GlobalClass
     void OnShutdown() override;
     void OnAllInitialized() override;
     void OnStartup() override;
 
-public:  // IGameEventListener2
-    void FireGameEvent(IGameEvent *event) override;
+    // IGameEventListener2
+    void FireGameEvent(IGameEvent* pEvent) override;
 
-public:
-    bool UnhookEvent(const char *name, CallbackT callback, bool post);
-    bool HookEvent(const char *name, CallbackT callback, bool post);
+    bool UnhookEvent(const char* szName, CallbackT fnCallback, bool bPost);
+    bool HookEvent(const char* szName, CallbackT fnCallback, bool bPost);
 
-private:
-    bool OnFireEvent(IGameEvent *pEvent, bool bDontBroadcast);
-    bool OnFireEvent_Post(IGameEvent *pEvent, bool bDontBroadcast);
+  private:
+    bool OnFireEvent(IGameEvent* pEvent, bool bDontBroadcast);
+    bool OnFireEventPost(IGameEvent* pEvent, bool bDontBroadcast);
 
-private:
-    std::map<std::string, EventHook *> m_hooks;
+    std::map<std::string, EventHook*> m_hooksMap;
 };
 
-}  // namespace counterstrikesharp
+} // namespace counterstrikesharp

@@ -102,27 +102,20 @@ namespace CounterStrikeSharp.API.Core
             new Dictionary<Delegate, CallbackSubscriber>();
 
         public readonly List<Timer> Timers = new List<Timer>();
+        
+        public delegate HookResult GameEventHandler<T>(T @event, GameEventInfo info) where T : GameEvent;
 
-        private void RegisterEventHandlerInternal<T>(string name, Action<T> handler, bool post = false)
-            where T : GameEvent, new()
+        private void RegisterEventHandlerInternal<T>(string name, GameEventHandler<T> handler, bool post = false)
+            where T : GameEvent
         {
-            var wrappedHandler = new Action<IntPtr>(pointer =>
-            {
-                var @event = new T
-                {
-                    Handle = pointer
-                };
-                handler.Invoke(@event);
-            });
-
-            var subscriber = new CallbackSubscriber(handler, wrappedHandler,
+            var subscriber = new CallbackSubscriber(handler, handler,
                 () => DeregisterEventHandler(name, handler, post));
 
             NativeAPI.HookEvent(name, subscriber.GetInputArgument(), post);
             Handlers[handler] = subscriber;
         }
 
-        public void RegisterEventHandler<T>(Action<T> handler, bool post = false) where T : GameEvent, new()
+        public void RegisterEventHandler<T>(GameEventHandler<T> handler, bool post = false) where T : GameEvent
         {
             var name = typeof(T).GetCustomAttribute<EventNameAttribute>()?.Name;
             RegisterEventHandlerInternal(name, handler, post);
@@ -276,8 +269,8 @@ namespace CounterStrikeSharp.API.Core
                 var parameterType = eventHandler.GetParameters().First().ParameterType;
                 var eventName = parameterType.GetCustomAttribute<EventNameAttribute>()?.Name;
 
-                var actionType = typeof(Action<>).MakeGenericType(parameterType);
-                var action = eventHandler.CreateDelegate(actionType, instance);
+                var actionType = typeof(GameEventHandler<>).MakeGenericType(parameterType);
+                var action = Delegate.CreateDelegate(actionType, instance, eventHandler);
 
                 var generic = method.MakeGenericMethod(parameterType);
                 generic.Invoke(this, new object[] { eventName, action, false });

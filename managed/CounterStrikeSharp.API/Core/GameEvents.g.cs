@@ -10,7 +10,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("achievement_earned")]
             public class EventAchievementEarned : GameEvent
             {
-                public EventAchievementEarned() : base(){}
+                public EventAchievementEarned(IntPtr pointer) : base(pointer){}
                 public EventAchievementEarned(bool force) : base("achievement_earned", force){}
 
                 
@@ -34,7 +34,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("achievement_earned_local")]
             public class EventAchievementEarnedLocal : GameEvent
             {
-                public EventAchievementEarnedLocal() : base(){}
+                public EventAchievementEarnedLocal(IntPtr pointer) : base(pointer){}
                 public EventAchievementEarnedLocal(bool force) : base("achievement_earned_local", force){}
 
                 
@@ -58,7 +58,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("achievement_event")]
             public class EventAchievementEvent : GameEvent
             {
-                public EventAchievementEvent() : base(){}
+                public EventAchievementEvent(IntPtr pointer) : base(pointer){}
                 public EventAchievementEvent(bool force) : base("achievement_event", force){}
 
                 
@@ -90,7 +90,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("achievement_info_loaded")]
             public class EventAchievementInfoLoaded : GameEvent
             {
-                public EventAchievementInfoLoaded() : base(){}
+                public EventAchievementInfoLoaded(IntPtr pointer) : base(pointer){}
                 public EventAchievementInfoLoaded(bool force) : base("achievement_info_loaded", force){}
 
                 
@@ -99,7 +99,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("achievement_write_failed")]
             public class EventAchievementWriteFailed : GameEvent
             {
-                public EventAchievementWriteFailed() : base(){}
+                public EventAchievementWriteFailed(IntPtr pointer) : base(pointer){}
                 public EventAchievementWriteFailed(bool force) : base("achievement_write_failed", force){}
 
                 
@@ -108,7 +108,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("add_bullet_hit_marker")]
             public class EventAddBulletHitMarker : GameEvent
             {
-                public EventAddBulletHitMarker() : base(){}
+                public EventAddBulletHitMarker(IntPtr pointer) : base(pointer){}
                 public EventAddBulletHitMarker(bool force) : base("add_bullet_hit_marker", force){}
 
                 
@@ -212,7 +212,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("add_player_sonar_icon")]
             public class EventAddPlayerSonarIcon : GameEvent
             {
-                public EventAddPlayerSonarIcon() : base(){}
+                public EventAddPlayerSonarIcon(IntPtr pointer) : base(pointer){}
                 public EventAddPlayerSonarIcon(bool force) : base("add_player_sonar_icon", force){}
 
                 
@@ -252,7 +252,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("ammo_pickup")]
             public class EventAmmoPickup : GameEvent
             {
-                public EventAmmoPickup() : base(){}
+                public EventAmmoPickup(IntPtr pointer) : base(pointer){}
                 public EventAmmoPickup(bool force) : base("ammo_pickup", force){}
 
                 
@@ -284,7 +284,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("ammo_refill")]
             public class EventAmmoRefill : GameEvent
             {
-                public EventAmmoRefill() : base(){}
+                public EventAmmoRefill(IntPtr pointer) : base(pointer){}
                 public EventAmmoRefill(bool force) : base("ammo_refill", force){}
 
                 
@@ -308,7 +308,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("announce_phase_end")]
             public class EventAnnouncePhaseEnd : GameEvent
             {
-                public EventAnnouncePhaseEnd() : base(){}
+                public EventAnnouncePhaseEnd(IntPtr pointer) : base(pointer){}
                 public EventAnnouncePhaseEnd(bool force) : base("announce_phase_end", force){}
 
                 
@@ -317,7 +317,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("begin_new_match")]
             public class EventBeginNewMatch : GameEvent
             {
-                public EventBeginNewMatch() : base(){}
+                public EventBeginNewMatch(IntPtr pointer) : base(pointer){}
                 public EventBeginNewMatch(bool force) : base("begin_new_match", force){}
 
                 
@@ -326,7 +326,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("bomb_abortdefuse")]
             public class EventBombAbortdefuse : GameEvent
             {
-                public EventBombAbortdefuse() : base(){}
+                public EventBombAbortdefuse(IntPtr pointer) : base(pointer){}
                 public EventBombAbortdefuse(bool force) : base("bomb_abortdefuse", force){}
 
                 
@@ -342,7 +342,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("bomb_abortplant")]
             public class EventBombAbortplant : GameEvent
             {
-                public EventBombAbortplant() : base(){}
+                public EventBombAbortplant(IntPtr pointer) : base(pointer){}
                 public EventBombAbortplant(bool force) : base("bomb_abortplant", force){}
 
                 
@@ -366,7 +366,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("bomb_beep")]
             public class EventBombBeep : GameEvent
             {
-                public EventBombBeep() : base(){}
+                public EventBombBeep(IntPtr pointer) : base(pointer){}
                 public EventBombBeep(bool force) : base("bomb_beep", force){}
 
                 
@@ -382,7 +382,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("bomb_begindefuse")]
             public class EventBombBegindefuse : GameEvent
             {
-                public EventBombBegindefuse() : base(){}
+                public EventBombBegindefuse(IntPtr pointer) : base(pointer){}
                 public EventBombBegindefuse(bool force) : base("bomb_begindefuse", force){}
 
                 
@@ -406,7 +406,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("bomb_beginplant")]
             public class EventBombBeginplant : GameEvent
             {
-                public EventBombBeginplant() : base(){}
+                public EventBombBeginplant(IntPtr pointer) : base(pointer){}
                 public EventBombBeginplant(bool force) : base("bomb_beginplant", force){}
 
                 
@@ -430,7 +430,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("bomb_defused")]
             public class EventBombDefused : GameEvent
             {
-                public EventBombDefused() : base(){}
+                public EventBombDefused(IntPtr pointer) : base(pointer){}
                 public EventBombDefused(bool force) : base("bomb_defused", force){}
 
                 
@@ -454,7 +454,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("bomb_dropped")]
             public class EventBombDropped : GameEvent
             {
-                public EventBombDropped() : base(){}
+                public EventBombDropped(IntPtr pointer) : base(pointer){}
                 public EventBombDropped(bool force) : base("bomb_dropped", force){}
 
                 
@@ -478,7 +478,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("bomb_exploded")]
             public class EventBombExploded : GameEvent
             {
-                public EventBombExploded() : base(){}
+                public EventBombExploded(IntPtr pointer) : base(pointer){}
                 public EventBombExploded(bool force) : base("bomb_exploded", force){}
 
                 
@@ -502,7 +502,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("bomb_pickup")]
             public class EventBombPickup : GameEvent
             {
-                public EventBombPickup() : base(){}
+                public EventBombPickup(IntPtr pointer) : base(pointer){}
                 public EventBombPickup(bool force) : base("bomb_pickup", force){}
 
                 
@@ -518,7 +518,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("bomb_planted")]
             public class EventBombPlanted : GameEvent
             {
-                public EventBombPlanted() : base(){}
+                public EventBombPlanted(IntPtr pointer) : base(pointer){}
                 public EventBombPlanted(bool force) : base("bomb_planted", force){}
 
                 
@@ -542,7 +542,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("bonus_updated")]
             public class EventBonusUpdated : GameEvent
             {
-                public EventBonusUpdated() : base(){}
+                public EventBonusUpdated(IntPtr pointer) : base(pointer){}
                 public EventBonusUpdated(bool force) : base("bonus_updated", force){}
 
                 
@@ -582,7 +582,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("bot_takeover")]
             public class EventBotTakeover : GameEvent
             {
-                public EventBotTakeover() : base(){}
+                public EventBotTakeover(IntPtr pointer) : base(pointer){}
                 public EventBotTakeover(bool force) : base("bot_takeover", force){}
 
                 
@@ -630,7 +630,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("break_breakable")]
             public class EventBreakBreakable : GameEvent
             {
-                public EventBreakBreakable() : base(){}
+                public EventBreakBreakable(IntPtr pointer) : base(pointer){}
                 public EventBreakBreakable(bool force) : base("break_breakable", force){}
 
                 
@@ -662,7 +662,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("break_prop")]
             public class EventBreakProp : GameEvent
             {
-                public EventBreakProp() : base(){}
+                public EventBreakProp(IntPtr pointer) : base(pointer){}
                 public EventBreakProp(bool force) : base("break_prop", force){}
 
                 
@@ -686,7 +686,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("broken_breakable")]
             public class EventBrokenBreakable : GameEvent
             {
-                public EventBrokenBreakable() : base(){}
+                public EventBrokenBreakable(IntPtr pointer) : base(pointer){}
                 public EventBrokenBreakable(bool force) : base("broken_breakable", force){}
 
                 
@@ -718,7 +718,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("bullet_flight_resolution")]
             public class EventBulletFlightResolution : GameEvent
             {
-                public EventBulletFlightResolution() : base(){}
+                public EventBulletFlightResolution(IntPtr pointer) : base(pointer){}
                 public EventBulletFlightResolution(bool force) : base("bullet_flight_resolution", force){}
 
                 
@@ -806,7 +806,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("bullet_impact")]
             public class EventBulletImpact : GameEvent
             {
-                public EventBulletImpact() : base(){}
+                public EventBulletImpact(IntPtr pointer) : base(pointer){}
                 public EventBulletImpact(bool force) : base("bullet_impact", force){}
 
                 
@@ -846,7 +846,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("buymenu_close")]
             public class EventBuymenuClose : GameEvent
             {
-                public EventBuymenuClose() : base(){}
+                public EventBuymenuClose(IntPtr pointer) : base(pointer){}
                 public EventBuymenuClose(bool force) : base("buymenu_close", force){}
 
                 
@@ -862,7 +862,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("buymenu_open")]
             public class EventBuymenuOpen : GameEvent
             {
-                public EventBuymenuOpen() : base(){}
+                public EventBuymenuOpen(IntPtr pointer) : base(pointer){}
                 public EventBuymenuOpen(bool force) : base("buymenu_open", force){}
 
                 
@@ -871,7 +871,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("buytime_ended")]
             public class EventBuytimeEnded : GameEvent
             {
-                public EventBuytimeEnded() : base(){}
+                public EventBuytimeEnded(IntPtr pointer) : base(pointer){}
                 public EventBuytimeEnded(bool force) : base("buytime_ended", force){}
 
                 
@@ -880,7 +880,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("cart_updated")]
             public class EventCartUpdated : GameEvent
             {
-                public EventCartUpdated() : base(){}
+                public EventCartUpdated(IntPtr pointer) : base(pointer){}
                 public EventCartUpdated(bool force) : base("cart_updated", force){}
 
                 
@@ -889,7 +889,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("choppers_incoming_warning")]
             public class EventChoppersIncomingWarning : GameEvent
             {
-                public EventChoppersIncomingWarning() : base(){}
+                public EventChoppersIncomingWarning(IntPtr pointer) : base(pointer){}
                 public EventChoppersIncomingWarning(bool force) : base("choppers_incoming_warning", force){}
 
                 
@@ -905,7 +905,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("client_disconnect")]
             public class EventClientDisconnect : GameEvent
             {
-                public EventClientDisconnect() : base(){}
+                public EventClientDisconnect(IntPtr pointer) : base(pointer){}
                 public EventClientDisconnect(bool force) : base("client_disconnect", force){}
 
                 
@@ -914,7 +914,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("client_loadout_changed")]
             public class EventClientLoadoutChanged : GameEvent
             {
-                public EventClientLoadoutChanged() : base(){}
+                public EventClientLoadoutChanged(IntPtr pointer) : base(pointer){}
                 public EventClientLoadoutChanged(bool force) : base("client_loadout_changed", force){}
 
                 
@@ -923,7 +923,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("clientside_lesson_closed")]
             public class EventClientsideLessonClosed : GameEvent
             {
-                public EventClientsideLessonClosed() : base(){}
+                public EventClientsideLessonClosed(IntPtr pointer) : base(pointer){}
                 public EventClientsideLessonClosed(bool force) : base("clientside_lesson_closed", force){}
 
                 
@@ -939,7 +939,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("cs_game_disconnected")]
             public class EventCsGameDisconnected : GameEvent
             {
-                public EventCsGameDisconnected() : base(){}
+                public EventCsGameDisconnected(IntPtr pointer) : base(pointer){}
                 public EventCsGameDisconnected(bool force) : base("cs_game_disconnected", force){}
 
                 
@@ -948,7 +948,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("cs_intermission")]
             public class EventCsIntermission : GameEvent
             {
-                public EventCsIntermission() : base(){}
+                public EventCsIntermission(IntPtr pointer) : base(pointer){}
                 public EventCsIntermission(bool force) : base("cs_intermission", force){}
 
                 
@@ -957,7 +957,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("cs_match_end_restart")]
             public class EventCsMatchEndRestart : GameEvent
             {
-                public EventCsMatchEndRestart() : base(){}
+                public EventCsMatchEndRestart(IntPtr pointer) : base(pointer){}
                 public EventCsMatchEndRestart(bool force) : base("cs_match_end_restart", force){}
 
                 
@@ -966,7 +966,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("cs_pre_restart")]
             public class EventCsPreRestart : GameEvent
             {
-                public EventCsPreRestart() : base(){}
+                public EventCsPreRestart(IntPtr pointer) : base(pointer){}
                 public EventCsPreRestart(bool force) : base("cs_pre_restart", force){}
 
                 
@@ -975,7 +975,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("cs_prev_next_spectator")]
             public class EventCsPrevNextSpectator : GameEvent
             {
-                public EventCsPrevNextSpectator() : base(){}
+                public EventCsPrevNextSpectator(IntPtr pointer) : base(pointer){}
                 public EventCsPrevNextSpectator(bool force) : base("cs_prev_next_spectator", force){}
 
                 
@@ -991,7 +991,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("cs_round_final_beep")]
             public class EventCsRoundFinalBeep : GameEvent
             {
-                public EventCsRoundFinalBeep() : base(){}
+                public EventCsRoundFinalBeep(IntPtr pointer) : base(pointer){}
                 public EventCsRoundFinalBeep(bool force) : base("cs_round_final_beep", force){}
 
                 
@@ -1000,7 +1000,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("cs_round_start_beep")]
             public class EventCsRoundStartBeep : GameEvent
             {
-                public EventCsRoundStartBeep() : base(){}
+                public EventCsRoundStartBeep(IntPtr pointer) : base(pointer){}
                 public EventCsRoundStartBeep(bool force) : base("cs_round_start_beep", force){}
 
                 
@@ -1009,7 +1009,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("cs_win_panel_match")]
             public class EventCsWinPanelMatch : GameEvent
             {
-                public EventCsWinPanelMatch() : base(){}
+                public EventCsWinPanelMatch(IntPtr pointer) : base(pointer){}
                 public EventCsWinPanelMatch(bool force) : base("cs_win_panel_match", force){}
 
                 
@@ -1018,7 +1018,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("cs_win_panel_round")]
             public class EventCsWinPanelRound : GameEvent
             {
-                public EventCsWinPanelRound() : base(){}
+                public EventCsWinPanelRound(IntPtr pointer) : base(pointer){}
                 public EventCsWinPanelRound(bool force) : base("cs_win_panel_round", force){}
 
                 
@@ -1098,7 +1098,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("decoy_detonate")]
             public class EventDecoyDetonate : GameEvent
             {
-                public EventDecoyDetonate() : base(){}
+                public EventDecoyDetonate(IntPtr pointer) : base(pointer){}
                 public EventDecoyDetonate(bool force) : base("decoy_detonate", force){}
 
                 
@@ -1146,7 +1146,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("decoy_firing")]
             public class EventDecoyFiring : GameEvent
             {
-                public EventDecoyFiring() : base(){}
+                public EventDecoyFiring(IntPtr pointer) : base(pointer){}
                 public EventDecoyFiring(bool force) : base("decoy_firing", force){}
 
                 
@@ -1194,7 +1194,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("decoy_started")]
             public class EventDecoyStarted : GameEvent
             {
-                public EventDecoyStarted() : base(){}
+                public EventDecoyStarted(IntPtr pointer) : base(pointer){}
                 public EventDecoyStarted(bool force) : base("decoy_started", force){}
 
                 
@@ -1242,7 +1242,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("defuser_dropped")]
             public class EventDefuserDropped : GameEvent
             {
-                public EventDefuserDropped() : base(){}
+                public EventDefuserDropped(IntPtr pointer) : base(pointer){}
                 public EventDefuserDropped(bool force) : base("defuser_dropped", force){}
 
                 
@@ -1258,7 +1258,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("defuser_pickup")]
             public class EventDefuserPickup : GameEvent
             {
-                public EventDefuserPickup() : base(){}
+                public EventDefuserPickup(IntPtr pointer) : base(pointer){}
                 public EventDefuserPickup(bool force) : base("defuser_pickup", force){}
 
                 
@@ -1282,7 +1282,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("demo_skip")]
             public class EventDemoSkip : GameEvent
             {
-                public EventDemoSkip() : base(){}
+                public EventDemoSkip(IntPtr pointer) : base(pointer){}
                 public EventDemoSkip(bool force) : base("demo_skip", force){}
 
                 
@@ -1330,7 +1330,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("demo_start")]
             public class EventDemoStart : GameEvent
             {
-                public EventDemoStart() : base(){}
+                public EventDemoStart(IntPtr pointer) : base(pointer){}
                 public EventDemoStart(bool force) : base("demo_start", force){}
 
                 
@@ -1370,7 +1370,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("demo_stop")]
             public class EventDemoStop : GameEvent
             {
-                public EventDemoStop() : base(){}
+                public EventDemoStop(IntPtr pointer) : base(pointer){}
                 public EventDemoStop(bool force) : base("demo_stop", force){}
 
                 
@@ -1379,7 +1379,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("difficulty_changed")]
             public class EventDifficultyChanged : GameEvent
             {
-                public EventDifficultyChanged() : base(){}
+                public EventDifficultyChanged(IntPtr pointer) : base(pointer){}
                 public EventDifficultyChanged(bool force) : base("difficulty_changed", force){}
 
                 
@@ -1411,7 +1411,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("dm_bonus_weapon_start")]
             public class EventDmBonusWeaponStart : GameEvent
             {
-                public EventDmBonusWeaponStart() : base(){}
+                public EventDmBonusWeaponStart(IntPtr pointer) : base(pointer){}
                 public EventDmBonusWeaponStart(bool force) : base("dm_bonus_weapon_start", force){}
 
                 
@@ -1435,7 +1435,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("door_break")]
             public class EventDoorBreak : GameEvent
             {
-                public EventDoorBreak() : base(){}
+                public EventDoorBreak(IntPtr pointer) : base(pointer){}
                 public EventDoorBreak(bool force) : base("door_break", force){}
 
                 
@@ -1459,7 +1459,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("door_close")]
             public class EventDoorClose : GameEvent
             {
-                public EventDoorClose() : base(){}
+                public EventDoorClose(IntPtr pointer) : base(pointer){}
                 public EventDoorClose(bool force) : base("door_close", force){}
 
                 
@@ -1483,7 +1483,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("door_closed")]
             public class EventDoorClosed : GameEvent
             {
-                public EventDoorClosed() : base(){}
+                public EventDoorClosed(IntPtr pointer) : base(pointer){}
                 public EventDoorClosed(bool force) : base("door_closed", force){}
 
                 
@@ -1507,7 +1507,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("door_moving")]
             public class EventDoorMoving : GameEvent
             {
-                public EventDoorMoving() : base(){}
+                public EventDoorMoving(IntPtr pointer) : base(pointer){}
                 public EventDoorMoving(bool force) : base("door_moving", force){}
 
                 
@@ -1531,7 +1531,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("door_open")]
             public class EventDoorOpen : GameEvent
             {
-                public EventDoorOpen() : base(){}
+                public EventDoorOpen(IntPtr pointer) : base(pointer){}
                 public EventDoorOpen(bool force) : base("door_open", force){}
 
                 
@@ -1555,7 +1555,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("drone_above_roof")]
             public class EventDroneAboveRoof : GameEvent
             {
-                public EventDroneAboveRoof() : base(){}
+                public EventDroneAboveRoof(IntPtr pointer) : base(pointer){}
                 public EventDroneAboveRoof(bool force) : base("drone_above_roof", force){}
 
                 
@@ -1579,7 +1579,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("drone_cargo_detached")]
             public class EventDroneCargoDetached : GameEvent
             {
-                public EventDroneCargoDetached() : base(){}
+                public EventDroneCargoDetached(IntPtr pointer) : base(pointer){}
                 public EventDroneCargoDetached(bool force) : base("drone_cargo_detached", force){}
 
                 
@@ -1611,7 +1611,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("drone_dispatched")]
             public class EventDroneDispatched : GameEvent
             {
-                public EventDroneDispatched() : base(){}
+                public EventDroneDispatched(IntPtr pointer) : base(pointer){}
                 public EventDroneDispatched(bool force) : base("drone_dispatched", force){}
 
                 
@@ -1643,7 +1643,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("dronegun_attack")]
             public class EventDronegunAttack : GameEvent
             {
-                public EventDronegunAttack() : base(){}
+                public EventDronegunAttack(IntPtr pointer) : base(pointer){}
                 public EventDronegunAttack(bool force) : base("dronegun_attack", force){}
 
                 
@@ -1659,7 +1659,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("drop_rate_modified")]
             public class EventDropRateModified : GameEvent
             {
-                public EventDropRateModified() : base(){}
+                public EventDropRateModified(IntPtr pointer) : base(pointer){}
                 public EventDropRateModified(bool force) : base("drop_rate_modified", force){}
 
                 
@@ -1668,7 +1668,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("dynamic_shadow_light_changed")]
             public class EventDynamicShadowLightChanged : GameEvent
             {
-                public EventDynamicShadowLightChanged() : base(){}
+                public EventDynamicShadowLightChanged(IntPtr pointer) : base(pointer){}
                 public EventDynamicShadowLightChanged(bool force) : base("dynamic_shadow_light_changed", force){}
 
                 
@@ -1677,7 +1677,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("dz_item_interaction")]
             public class EventDzItemInteraction : GameEvent
             {
-                public EventDzItemInteraction() : base(){}
+                public EventDzItemInteraction(IntPtr pointer) : base(pointer){}
                 public EventDzItemInteraction(bool force) : base("dz_item_interaction", force){}
 
                 
@@ -1709,7 +1709,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("enable_restart_voting")]
             public class EventEnableRestartVoting : GameEvent
             {
-                public EventEnableRestartVoting() : base(){}
+                public EventEnableRestartVoting(IntPtr pointer) : base(pointer){}
                 public EventEnableRestartVoting(bool force) : base("enable_restart_voting", force){}
 
                 
@@ -1725,7 +1725,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("endmatch_cmm_start_reveal_items")]
             public class EventEndmatchCmmStartRevealItems : GameEvent
             {
-                public EventEndmatchCmmStartRevealItems() : base(){}
+                public EventEndmatchCmmStartRevealItems(IntPtr pointer) : base(pointer){}
                 public EventEndmatchCmmStartRevealItems(bool force) : base("endmatch_cmm_start_reveal_items", force){}
 
                 
@@ -1734,7 +1734,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("endmatch_mapvote_selecting_map")]
             public class EventEndmatchMapvoteSelectingMap : GameEvent
             {
-                public EventEndmatchMapvoteSelectingMap() : base(){}
+                public EventEndmatchMapvoteSelectingMap(IntPtr pointer) : base(pointer){}
                 public EventEndmatchMapvoteSelectingMap(bool force) : base("endmatch_mapvote_selecting_map", force){}
 
                 
@@ -1830,7 +1830,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("enter_bombzone")]
             public class EventEnterBombzone : GameEvent
             {
-                public EventEnterBombzone() : base(){}
+                public EventEnterBombzone(IntPtr pointer) : base(pointer){}
                 public EventEnterBombzone(bool force) : base("enter_bombzone", force){}
 
                 
@@ -1862,7 +1862,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("enter_buyzone")]
             public class EventEnterBuyzone : GameEvent
             {
-                public EventEnterBuyzone() : base(){}
+                public EventEnterBuyzone(IntPtr pointer) : base(pointer){}
                 public EventEnterBuyzone(bool force) : base("enter_buyzone", force){}
 
                 
@@ -1886,7 +1886,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("enter_rescue_zone")]
             public class EventEnterRescueZone : GameEvent
             {
-                public EventEnterRescueZone() : base(){}
+                public EventEnterRescueZone(IntPtr pointer) : base(pointer){}
                 public EventEnterRescueZone(bool force) : base("enter_rescue_zone", force){}
 
                 
@@ -1902,7 +1902,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("entity_killed")]
             public class EventEntityKilled : GameEvent
             {
-                public EventEntityKilled() : base(){}
+                public EventEntityKilled(IntPtr pointer) : base(pointer){}
                 public EventEntityKilled(bool force) : base("entity_killed", force){}
 
                 
@@ -1942,7 +1942,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("entity_visible")]
             public class EventEntityVisible : GameEvent
             {
-                public EventEntityVisible() : base(){}
+                public EventEntityVisible(IntPtr pointer) : base(pointer){}
                 public EventEntityVisible(bool force) : base("entity_visible", force){}
 
                 
@@ -1982,7 +1982,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("event_ticket_modified")]
             public class EventEventTicketModified : GameEvent
             {
-                public EventEventTicketModified() : base(){}
+                public EventEventTicketModified(IntPtr pointer) : base(pointer){}
                 public EventEventTicketModified(bool force) : base("event_ticket_modified", force){}
 
                 
@@ -1991,7 +1991,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("exit_bombzone")]
             public class EventExitBombzone : GameEvent
             {
-                public EventExitBombzone() : base(){}
+                public EventExitBombzone(IntPtr pointer) : base(pointer){}
                 public EventExitBombzone(bool force) : base("exit_bombzone", force){}
 
                 
@@ -2023,7 +2023,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("exit_buyzone")]
             public class EventExitBuyzone : GameEvent
             {
-                public EventExitBuyzone() : base(){}
+                public EventExitBuyzone(IntPtr pointer) : base(pointer){}
                 public EventExitBuyzone(bool force) : base("exit_buyzone", force){}
 
                 
@@ -2047,7 +2047,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("exit_rescue_zone")]
             public class EventExitRescueZone : GameEvent
             {
-                public EventExitRescueZone() : base(){}
+                public EventExitRescueZone(IntPtr pointer) : base(pointer){}
                 public EventExitRescueZone(bool force) : base("exit_rescue_zone", force){}
 
                 
@@ -2063,7 +2063,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("finale_start")]
             public class EventFinaleStart : GameEvent
             {
-                public EventFinaleStart() : base(){}
+                public EventFinaleStart(IntPtr pointer) : base(pointer){}
                 public EventFinaleStart(bool force) : base("finale_start", force){}
 
                 
@@ -2079,7 +2079,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("firstbombs_incoming_warning")]
             public class EventFirstbombsIncomingWarning : GameEvent
             {
-                public EventFirstbombsIncomingWarning() : base(){}
+                public EventFirstbombsIncomingWarning(IntPtr pointer) : base(pointer){}
                 public EventFirstbombsIncomingWarning(bool force) : base("firstbombs_incoming_warning", force){}
 
                 
@@ -2095,7 +2095,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("flare_ignite_npc")]
             public class EventFlareIgniteNpc : GameEvent
             {
-                public EventFlareIgniteNpc() : base(){}
+                public EventFlareIgniteNpc(IntPtr pointer) : base(pointer){}
                 public EventFlareIgniteNpc(bool force) : base("flare_ignite_npc", force){}
 
                 
@@ -2111,7 +2111,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("flashbang_detonate")]
             public class EventFlashbangDetonate : GameEvent
             {
-                public EventFlashbangDetonate() : base(){}
+                public EventFlashbangDetonate(IntPtr pointer) : base(pointer){}
                 public EventFlashbangDetonate(bool force) : base("flashbang_detonate", force){}
 
                 
@@ -2159,7 +2159,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("game_end")]
             public class EventGameEnd : GameEvent
             {
-                public EventGameEnd() : base(){}
+                public EventGameEnd(IntPtr pointer) : base(pointer){}
                 public EventGameEnd(bool force) : base("game_end", force){}
 
                 
@@ -2175,7 +2175,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("game_init")]
             public class EventGameInit : GameEvent
             {
-                public EventGameInit() : base(){}
+                public EventGameInit(IntPtr pointer) : base(pointer){}
                 public EventGameInit(bool force) : base("game_init", force){}
 
                 
@@ -2184,7 +2184,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("gameinstructor_draw")]
             public class EventGameinstructorDraw : GameEvent
             {
-                public EventGameinstructorDraw() : base(){}
+                public EventGameinstructorDraw(IntPtr pointer) : base(pointer){}
                 public EventGameinstructorDraw(bool force) : base("gameinstructor_draw", force){}
 
                 
@@ -2193,7 +2193,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("gameinstructor_nodraw")]
             public class EventGameinstructorNodraw : GameEvent
             {
-                public EventGameinstructorNodraw() : base(){}
+                public EventGameinstructorNodraw(IntPtr pointer) : base(pointer){}
                 public EventGameinstructorNodraw(bool force) : base("gameinstructor_nodraw", force){}
 
                 
@@ -2202,7 +2202,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("game_message")]
             public class EventGameMessage : GameEvent
             {
-                public EventGameMessage() : base(){}
+                public EventGameMessage(IntPtr pointer) : base(pointer){}
                 public EventGameMessage(bool force) : base("game_message", force){}
 
                 
@@ -2226,7 +2226,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("game_newmap")]
             public class EventGameNewmap : GameEvent
             {
-                public EventGameNewmap() : base(){}
+                public EventGameNewmap(IntPtr pointer) : base(pointer){}
                 public EventGameNewmap(bool force) : base("game_newmap", force){}
 
                 
@@ -2242,7 +2242,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("game_phase_changed")]
             public class EventGamePhaseChanged : GameEvent
             {
-                public EventGamePhaseChanged() : base(){}
+                public EventGamePhaseChanged(IntPtr pointer) : base(pointer){}
                 public EventGamePhaseChanged(bool force) : base("game_phase_changed", force){}
 
                 
@@ -2258,7 +2258,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("game_start")]
             public class EventGameStart : GameEvent
             {
-                public EventGameStart() : base(){}
+                public EventGameStart(IntPtr pointer) : base(pointer){}
                 public EventGameStart(bool force) : base("game_start", force){}
 
                 
@@ -2298,7 +2298,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("gameui_hidden")]
             public class EventGameuiHidden : GameEvent
             {
-                public EventGameuiHidden() : base(){}
+                public EventGameuiHidden(IntPtr pointer) : base(pointer){}
                 public EventGameuiHidden(bool force) : base("gameui_hidden", force){}
 
                 
@@ -2307,7 +2307,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("gc_connected")]
             public class EventGcConnected : GameEvent
             {
-                public EventGcConnected() : base(){}
+                public EventGcConnected(IntPtr pointer) : base(pointer){}
                 public EventGcConnected(bool force) : base("gc_connected", force){}
 
                 
@@ -2316,7 +2316,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("gg_killed_enemy")]
             public class EventGgKilledEnemy : GameEvent
             {
-                public EventGgKilledEnemy() : base(){}
+                public EventGgKilledEnemy(IntPtr pointer) : base(pointer){}
                 public EventGgKilledEnemy(bool force) : base("gg_killed_enemy", force){}
 
                 
@@ -2364,7 +2364,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("grenade_bounce")]
             public class EventGrenadeBounce : GameEvent
             {
-                public EventGrenadeBounce() : base(){}
+                public EventGrenadeBounce(IntPtr pointer) : base(pointer){}
                 public EventGrenadeBounce(bool force) : base("grenade_bounce", force){}
 
                 
@@ -2380,7 +2380,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("grenade_thrown")]
             public class EventGrenadeThrown : GameEvent
             {
-                public EventGrenadeThrown() : base(){}
+                public EventGrenadeThrown(IntPtr pointer) : base(pointer){}
                 public EventGrenadeThrown(bool force) : base("grenade_thrown", force){}
 
                 
@@ -2404,7 +2404,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("guardian_wave_restart")]
             public class EventGuardianWaveRestart : GameEvent
             {
-                public EventGuardianWaveRestart() : base(){}
+                public EventGuardianWaveRestart(IntPtr pointer) : base(pointer){}
                 public EventGuardianWaveRestart(bool force) : base("guardian_wave_restart", force){}
 
                 
@@ -2413,7 +2413,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("hegrenade_detonate")]
             public class EventHegrenadeDetonate : GameEvent
             {
-                public EventHegrenadeDetonate() : base(){}
+                public EventHegrenadeDetonate(IntPtr pointer) : base(pointer){}
                 public EventHegrenadeDetonate(bool force) : base("hegrenade_detonate", force){}
 
                 
@@ -2461,7 +2461,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("helicopter_grenade_punt_miss")]
             public class EventHelicopterGrenadePuntMiss : GameEvent
             {
-                public EventHelicopterGrenadePuntMiss() : base(){}
+                public EventHelicopterGrenadePuntMiss(IntPtr pointer) : base(pointer){}
                 public EventHelicopterGrenadePuntMiss(bool force) : base("helicopter_grenade_punt_miss", force){}
 
                 
@@ -2470,7 +2470,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("hide_deathpanel")]
             public class EventHideDeathpanel : GameEvent
             {
-                public EventHideDeathpanel() : base(){}
+                public EventHideDeathpanel(IntPtr pointer) : base(pointer){}
                 public EventHideDeathpanel(bool force) : base("hide_deathpanel", force){}
 
                 
@@ -2479,7 +2479,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("hltv_cameraman")]
             public class EventHltvCameraman : GameEvent
             {
-                public EventHltvCameraman() : base(){}
+                public EventHltvCameraman(IntPtr pointer) : base(pointer){}
                 public EventHltvCameraman(bool force) : base("hltv_cameraman", force){}
 
                 
@@ -2495,7 +2495,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("hltv_changed_mode")]
             public class EventHltvChangedMode : GameEvent
             {
-                public EventHltvChangedMode() : base(){}
+                public EventHltvChangedMode(IntPtr pointer) : base(pointer){}
                 public EventHltvChangedMode(bool force) : base("hltv_changed_mode", force){}
 
                 
@@ -2527,7 +2527,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("hltv_chase")]
             public class EventHltvChase : GameEvent
             {
-                public EventHltvChase() : base(){}
+                public EventHltvChase(IntPtr pointer) : base(pointer){}
                 public EventHltvChase(bool force) : base("hltv_chase", force){}
 
                 
@@ -2591,7 +2591,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("hltv_chat")]
             public class EventHltvChat : GameEvent
             {
-                public EventHltvChat() : base(){}
+                public EventHltvChat(IntPtr pointer) : base(pointer){}
                 public EventHltvChat(bool force) : base("hltv_chat", force){}
 
                 
@@ -2615,7 +2615,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("hltv_fixed")]
             public class EventHltvFixed : GameEvent
             {
-                public EventHltvFixed() : base(){}
+                public EventHltvFixed(IntPtr pointer) : base(pointer){}
                 public EventHltvFixed(bool force) : base("hltv_fixed", force){}
 
                 
@@ -2687,7 +2687,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("hltv_message")]
             public class EventHltvMessage : GameEvent
             {
-                public EventHltvMessage() : base(){}
+                public EventHltvMessage(IntPtr pointer) : base(pointer){}
                 public EventHltvMessage(bool force) : base("hltv_message", force){}
 
                 
@@ -2703,7 +2703,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("hltv_rank_camera")]
             public class EventHltvRankCamera : GameEvent
             {
-                public EventHltvRankCamera() : base(){}
+                public EventHltvRankCamera(IntPtr pointer) : base(pointer){}
                 public EventHltvRankCamera(bool force) : base("hltv_rank_camera", force){}
 
                 
@@ -2735,7 +2735,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("hltv_rank_entity")]
             public class EventHltvRankEntity : GameEvent
             {
-                public EventHltvRankEntity() : base(){}
+                public EventHltvRankEntity(IntPtr pointer) : base(pointer){}
                 public EventHltvRankEntity(bool force) : base("hltv_rank_entity", force){}
 
                 
@@ -2767,7 +2767,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("hltv_replay")]
             public class EventHltvReplay : GameEvent
             {
-                public EventHltvReplay() : base(){}
+                public EventHltvReplay(IntPtr pointer) : base(pointer){}
                 public EventHltvReplay(bool force) : base("hltv_replay", force){}
 
                 
@@ -2791,7 +2791,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("hltv_replay_status")]
             public class EventHltvReplayStatus : GameEvent
             {
-                public EventHltvReplayStatus() : base(){}
+                public EventHltvReplayStatus(IntPtr pointer) : base(pointer){}
                 public EventHltvReplayStatus(bool force) : base("hltv_replay_status", force){}
 
                 
@@ -2807,7 +2807,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("hltv_status")]
             public class EventHltvStatus : GameEvent
             {
-                public EventHltvStatus() : base(){}
+                public EventHltvStatus(IntPtr pointer) : base(pointer){}
                 public EventHltvStatus(bool force) : base("hltv_status", force){}
 
                 
@@ -2847,7 +2847,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("hltv_title")]
             public class EventHltvTitle : GameEvent
             {
-                public EventHltvTitle() : base(){}
+                public EventHltvTitle(IntPtr pointer) : base(pointer){}
                 public EventHltvTitle(bool force) : base("hltv_title", force){}
 
                 
@@ -2863,7 +2863,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("hltv_versioninfo")]
             public class EventHltvVersioninfo : GameEvent
             {
-                public EventHltvVersioninfo() : base(){}
+                public EventHltvVersioninfo(IntPtr pointer) : base(pointer){}
                 public EventHltvVersioninfo(bool force) : base("hltv_versioninfo", force){}
 
                 
@@ -2879,7 +2879,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("hostage_call_for_help")]
             public class EventHostageCallForHelp : GameEvent
             {
-                public EventHostageCallForHelp() : base(){}
+                public EventHostageCallForHelp(IntPtr pointer) : base(pointer){}
                 public EventHostageCallForHelp(bool force) : base("hostage_call_for_help", force){}
 
                 
@@ -2895,7 +2895,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("hostage_follows")]
             public class EventHostageFollows : GameEvent
             {
-                public EventHostageFollows() : base(){}
+                public EventHostageFollows(IntPtr pointer) : base(pointer){}
                 public EventHostageFollows(bool force) : base("hostage_follows", force){}
 
                 
@@ -2919,7 +2919,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("hostage_hurt")]
             public class EventHostageHurt : GameEvent
             {
-                public EventHostageHurt() : base(){}
+                public EventHostageHurt(IntPtr pointer) : base(pointer){}
                 public EventHostageHurt(bool force) : base("hostage_hurt", force){}
 
                 
@@ -2943,7 +2943,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("hostage_killed")]
             public class EventHostageKilled : GameEvent
             {
-                public EventHostageKilled() : base(){}
+                public EventHostageKilled(IntPtr pointer) : base(pointer){}
                 public EventHostageKilled(bool force) : base("hostage_killed", force){}
 
                 
@@ -2967,7 +2967,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("hostage_rescued")]
             public class EventHostageRescued : GameEvent
             {
-                public EventHostageRescued() : base(){}
+                public EventHostageRescued(IntPtr pointer) : base(pointer){}
                 public EventHostageRescued(bool force) : base("hostage_rescued", force){}
 
                 
@@ -2999,7 +2999,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("hostage_rescued_all")]
             public class EventHostageRescuedAll : GameEvent
             {
-                public EventHostageRescuedAll() : base(){}
+                public EventHostageRescuedAll(IntPtr pointer) : base(pointer){}
                 public EventHostageRescuedAll(bool force) : base("hostage_rescued_all", force){}
 
                 
@@ -3008,7 +3008,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("hostage_stops_following")]
             public class EventHostageStopsFollowing : GameEvent
             {
-                public EventHostageStopsFollowing() : base(){}
+                public EventHostageStopsFollowing(IntPtr pointer) : base(pointer){}
                 public EventHostageStopsFollowing(bool force) : base("hostage_stops_following", force){}
 
                 
@@ -3032,7 +3032,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("hostname_changed")]
             public class EventHostnameChanged : GameEvent
             {
-                public EventHostnameChanged() : base(){}
+                public EventHostnameChanged(IntPtr pointer) : base(pointer){}
                 public EventHostnameChanged(bool force) : base("hostname_changed", force){}
 
                 
@@ -3048,7 +3048,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("inferno_expire")]
             public class EventInfernoExpire : GameEvent
             {
-                public EventInfernoExpire() : base(){}
+                public EventInfernoExpire(IntPtr pointer) : base(pointer){}
                 public EventInfernoExpire(bool force) : base("inferno_expire", force){}
 
                 
@@ -3088,7 +3088,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("inferno_extinguish")]
             public class EventInfernoExtinguish : GameEvent
             {
-                public EventInfernoExtinguish() : base(){}
+                public EventInfernoExtinguish(IntPtr pointer) : base(pointer){}
                 public EventInfernoExtinguish(bool force) : base("inferno_extinguish", force){}
 
                 
@@ -3128,7 +3128,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("inferno_startburn")]
             public class EventInfernoStartburn : GameEvent
             {
-                public EventInfernoStartburn() : base(){}
+                public EventInfernoStartburn(IntPtr pointer) : base(pointer){}
                 public EventInfernoStartburn(bool force) : base("inferno_startburn", force){}
 
                 
@@ -3168,7 +3168,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("inspect_weapon")]
             public class EventInspectWeapon : GameEvent
             {
-                public EventInspectWeapon() : base(){}
+                public EventInspectWeapon(IntPtr pointer) : base(pointer){}
                 public EventInspectWeapon(bool force) : base("inspect_weapon", force){}
 
                 
@@ -3184,7 +3184,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("instructor_close_lesson")]
             public class EventInstructorCloseLesson : GameEvent
             {
-                public EventInstructorCloseLesson() : base(){}
+                public EventInstructorCloseLesson(IntPtr pointer) : base(pointer){}
                 public EventInstructorCloseLesson(bool force) : base("instructor_close_lesson", force){}
 
                 
@@ -3208,7 +3208,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("instructor_server_hint_create")]
             public class EventInstructorServerHintCreate : GameEvent
             {
-                public EventInstructorServerHintCreate() : base(){}
+                public EventInstructorServerHintCreate(IntPtr pointer) : base(pointer){}
                 public EventInstructorServerHintCreate(bool force) : base("instructor_server_hint_create", force){}
 
                 
@@ -3376,7 +3376,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("instructor_server_hint_stop")]
             public class EventInstructorServerHintStop : GameEvent
             {
-                public EventInstructorServerHintStop() : base(){}
+                public EventInstructorServerHintStop(IntPtr pointer) : base(pointer){}
                 public EventInstructorServerHintStop(bool force) : base("instructor_server_hint_stop", force){}
 
                 
@@ -3392,7 +3392,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("instructor_start_lesson")]
             public class EventInstructorStartLesson : GameEvent
             {
-                public EventInstructorStartLesson() : base(){}
+                public EventInstructorStartLesson(IntPtr pointer) : base(pointer){}
                 public EventInstructorStartLesson(bool force) : base("instructor_start_lesson", force){}
 
                 
@@ -3448,7 +3448,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("inventory_updated")]
             public class EventInventoryUpdated : GameEvent
             {
-                public EventInventoryUpdated() : base(){}
+                public EventInventoryUpdated(IntPtr pointer) : base(pointer){}
                 public EventInventoryUpdated(bool force) : base("inventory_updated", force){}
 
                 
@@ -3457,7 +3457,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("item_equip")]
             public class EventItemEquip : GameEvent
             {
-                public EventItemEquip() : base(){}
+                public EventItemEquip(IntPtr pointer) : base(pointer){}
                 public EventItemEquip(bool force) : base("item_equip", force){}
 
                 
@@ -3537,7 +3537,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("item_pickup")]
             public class EventItemPickup : GameEvent
             {
-                public EventItemPickup() : base(){}
+                public EventItemPickup(IntPtr pointer) : base(pointer){}
                 public EventItemPickup(bool force) : base("item_pickup", force){}
 
                 
@@ -3577,7 +3577,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("item_pickup_failed")]
             public class EventItemPickupFailed : GameEvent
             {
-                public EventItemPickupFailed() : base(){}
+                public EventItemPickupFailed(IntPtr pointer) : base(pointer){}
                 public EventItemPickupFailed(bool force) : base("item_pickup_failed", force){}
 
                 
@@ -3617,7 +3617,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("item_pickup_slerp")]
             public class EventItemPickupSlerp : GameEvent
             {
-                public EventItemPickupSlerp() : base(){}
+                public EventItemPickupSlerp(IntPtr pointer) : base(pointer){}
                 public EventItemPickupSlerp(bool force) : base("item_pickup_slerp", force){}
 
                 
@@ -3649,7 +3649,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("item_purchase")]
             public class EventItemPurchase : GameEvent
             {
-                public EventItemPurchase() : base(){}
+                public EventItemPurchase(IntPtr pointer) : base(pointer){}
                 public EventItemPurchase(bool force) : base("item_purchase", force){}
 
                 
@@ -3689,7 +3689,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("item_remove")]
             public class EventItemRemove : GameEvent
             {
-                public EventItemRemove() : base(){}
+                public EventItemRemove(IntPtr pointer) : base(pointer){}
                 public EventItemRemove(bool force) : base("item_remove", force){}
 
                 
@@ -3721,7 +3721,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("item_schema_initialized")]
             public class EventItemSchemaInitialized : GameEvent
             {
-                public EventItemSchemaInitialized() : base(){}
+                public EventItemSchemaInitialized(IntPtr pointer) : base(pointer){}
                 public EventItemSchemaInitialized(bool force) : base("item_schema_initialized", force){}
 
                 
@@ -3730,7 +3730,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("items_gifted")]
             public class EventItemsGifted : GameEvent
             {
-                public EventItemsGifted() : base(){}
+                public EventItemsGifted(IntPtr pointer) : base(pointer){}
                 public EventItemsGifted(bool force) : base("items_gifted", force){}
 
                 
@@ -3778,7 +3778,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("jointeam_failed")]
             public class EventJointeamFailed : GameEvent
             {
-                public EventJointeamFailed() : base(){}
+                public EventJointeamFailed(IntPtr pointer) : base(pointer){}
                 public EventJointeamFailed(bool force) : base("jointeam_failed", force){}
 
                 
@@ -3802,7 +3802,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("local_player_controller_team")]
             public class EventLocalPlayerControllerTeam : GameEvent
             {
-                public EventLocalPlayerControllerTeam() : base(){}
+                public EventLocalPlayerControllerTeam(IntPtr pointer) : base(pointer){}
                 public EventLocalPlayerControllerTeam(bool force) : base("local_player_controller_team", force){}
 
                 
@@ -3811,7 +3811,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("local_player_pawn_changed")]
             public class EventLocalPlayerPawnChanged : GameEvent
             {
-                public EventLocalPlayerPawnChanged() : base(){}
+                public EventLocalPlayerPawnChanged(IntPtr pointer) : base(pointer){}
                 public EventLocalPlayerPawnChanged(bool force) : base("local_player_pawn_changed", force){}
 
                 
@@ -3820,7 +3820,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("local_player_team")]
             public class EventLocalPlayerTeam : GameEvent
             {
-                public EventLocalPlayerTeam() : base(){}
+                public EventLocalPlayerTeam(IntPtr pointer) : base(pointer){}
                 public EventLocalPlayerTeam(bool force) : base("local_player_team", force){}
 
                 
@@ -3829,7 +3829,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("loot_crate_opened")]
             public class EventLootCrateOpened : GameEvent
             {
-                public EventLootCrateOpened() : base(){}
+                public EventLootCrateOpened(IntPtr pointer) : base(pointer){}
                 public EventLootCrateOpened(bool force) : base("loot_crate_opened", force){}
 
                 
@@ -3853,7 +3853,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("loot_crate_visible")]
             public class EventLootCrateVisible : GameEvent
             {
-                public EventLootCrateVisible() : base(){}
+                public EventLootCrateVisible(IntPtr pointer) : base(pointer){}
                 public EventLootCrateVisible(bool force) : base("loot_crate_visible", force){}
 
                 
@@ -3885,7 +3885,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("map_shutdown")]
             public class EventMapShutdown : GameEvent
             {
-                public EventMapShutdown() : base(){}
+                public EventMapShutdown(IntPtr pointer) : base(pointer){}
                 public EventMapShutdown(bool force) : base("map_shutdown", force){}
 
                 
@@ -3894,7 +3894,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("map_transition")]
             public class EventMapTransition : GameEvent
             {
-                public EventMapTransition() : base(){}
+                public EventMapTransition(IntPtr pointer) : base(pointer){}
                 public EventMapTransition(bool force) : base("map_transition", force){}
 
                 
@@ -3903,7 +3903,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("match_end_conditions")]
             public class EventMatchEndConditions : GameEvent
             {
-                public EventMatchEndConditions() : base(){}
+                public EventMatchEndConditions(IntPtr pointer) : base(pointer){}
                 public EventMatchEndConditions(bool force) : base("match_end_conditions", force){}
 
                 
@@ -3943,7 +3943,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("material_default_complete")]
             public class EventMaterialDefaultComplete : GameEvent
             {
-                public EventMaterialDefaultComplete() : base(){}
+                public EventMaterialDefaultComplete(IntPtr pointer) : base(pointer){}
                 public EventMaterialDefaultComplete(bool force) : base("material_default_complete", force){}
 
                 
@@ -3952,7 +3952,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("mb_input_lock_cancel")]
             public class EventMbInputLockCancel : GameEvent
             {
-                public EventMbInputLockCancel() : base(){}
+                public EventMbInputLockCancel(IntPtr pointer) : base(pointer){}
                 public EventMbInputLockCancel(bool force) : base("mb_input_lock_cancel", force){}
 
                 
@@ -3961,7 +3961,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("mb_input_lock_success")]
             public class EventMbInputLockSuccess : GameEvent
             {
-                public EventMbInputLockSuccess() : base(){}
+                public EventMbInputLockSuccess(IntPtr pointer) : base(pointer){}
                 public EventMbInputLockSuccess(bool force) : base("mb_input_lock_success", force){}
 
                 
@@ -3970,7 +3970,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("molotov_detonate")]
             public class EventMolotovDetonate : GameEvent
             {
-                public EventMolotovDetonate() : base(){}
+                public EventMolotovDetonate(IntPtr pointer) : base(pointer){}
                 public EventMolotovDetonate(bool force) : base("molotov_detonate", force){}
 
                 
@@ -4010,7 +4010,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("nav_blocked")]
             public class EventNavBlocked : GameEvent
             {
-                public EventNavBlocked() : base(){}
+                public EventNavBlocked(IntPtr pointer) : base(pointer){}
                 public EventNavBlocked(bool force) : base("nav_blocked", force){}
 
                 
@@ -4034,7 +4034,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("nav_generate")]
             public class EventNavGenerate : GameEvent
             {
-                public EventNavGenerate() : base(){}
+                public EventNavGenerate(IntPtr pointer) : base(pointer){}
                 public EventNavGenerate(bool force) : base("nav_generate", force){}
 
                 
@@ -4043,7 +4043,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("nextlevel_changed")]
             public class EventNextlevelChanged : GameEvent
             {
-                public EventNextlevelChanged() : base(){}
+                public EventNextlevelChanged(IntPtr pointer) : base(pointer){}
                 public EventNextlevelChanged(bool force) : base("nextlevel_changed", force){}
 
                 
@@ -4075,7 +4075,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("open_crate_instr")]
             public class EventOpenCrateInstr : GameEvent
             {
-                public EventOpenCrateInstr() : base(){}
+                public EventOpenCrateInstr(IntPtr pointer) : base(pointer){}
                 public EventOpenCrateInstr(bool force) : base("open_crate_instr", force){}
 
                 
@@ -4107,7 +4107,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("other_death")]
             public class EventOtherDeath : GameEvent
             {
-                public EventOtherDeath() : base(){}
+                public EventOtherDeath(IntPtr pointer) : base(pointer){}
                 public EventOtherDeath(bool force) : base("other_death", force){}
 
                 
@@ -4211,7 +4211,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("parachute_deploy")]
             public class EventParachuteDeploy : GameEvent
             {
-                public EventParachuteDeploy() : base(){}
+                public EventParachuteDeploy(IntPtr pointer) : base(pointer){}
                 public EventParachuteDeploy(bool force) : base("parachute_deploy", force){}
 
                 
@@ -4227,7 +4227,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("parachute_pickup")]
             public class EventParachutePickup : GameEvent
             {
-                public EventParachutePickup() : base(){}
+                public EventParachutePickup(IntPtr pointer) : base(pointer){}
                 public EventParachutePickup(bool force) : base("parachute_pickup", force){}
 
                 
@@ -4243,7 +4243,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("physgun_pickup")]
             public class EventPhysgunPickup : GameEvent
             {
-                public EventPhysgunPickup() : base(){}
+                public EventPhysgunPickup(IntPtr pointer) : base(pointer){}
                 public EventPhysgunPickup(bool force) : base("physgun_pickup", force){}
 
                 
@@ -4259,7 +4259,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("player_activate")]
             public class EventPlayerActivate : GameEvent
             {
-                public EventPlayerActivate() : base(){}
+                public EventPlayerActivate(IntPtr pointer) : base(pointer){}
                 public EventPlayerActivate(bool force) : base("player_activate", force){}
 
                 
@@ -4275,7 +4275,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("player_avenged_teammate")]
             public class EventPlayerAvengedTeammate : GameEvent
             {
-                public EventPlayerAvengedTeammate() : base(){}
+                public EventPlayerAvengedTeammate(IntPtr pointer) : base(pointer){}
                 public EventPlayerAvengedTeammate(bool force) : base("player_avenged_teammate", force){}
 
                 
@@ -4299,7 +4299,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("player_blind")]
             public class EventPlayerBlind : GameEvent
             {
-                public EventPlayerBlind() : base(){}
+                public EventPlayerBlind(IntPtr pointer) : base(pointer){}
                 public EventPlayerBlind(bool force) : base("player_blind", force){}
 
                 
@@ -4339,7 +4339,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("player_changename")]
             public class EventPlayerChangename : GameEvent
             {
-                public EventPlayerChangename() : base(){}
+                public EventPlayerChangename(IntPtr pointer) : base(pointer){}
                 public EventPlayerChangename(bool force) : base("player_changename", force){}
 
                 
@@ -4371,7 +4371,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("player_chat")]
             public class EventPlayerChat : GameEvent
             {
-                public EventPlayerChat() : base(){}
+                public EventPlayerChat(IntPtr pointer) : base(pointer){}
                 public EventPlayerChat(bool force) : base("player_chat", force){}
 
                 
@@ -4403,7 +4403,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("player_connect")]
             public class EventPlayerConnect : GameEvent
             {
-                public EventPlayerConnect() : base(){}
+                public EventPlayerConnect(IntPtr pointer) : base(pointer){}
                 public EventPlayerConnect(bool force) : base("player_connect", force){}
 
                 
@@ -4459,7 +4459,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("player_connect_full")]
             public class EventPlayerConnectFull : GameEvent
             {
-                public EventPlayerConnectFull() : base(){}
+                public EventPlayerConnectFull(IntPtr pointer) : base(pointer){}
                 public EventPlayerConnectFull(bool force) : base("player_connect_full", force){}
 
                 
@@ -4475,7 +4475,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("player_death")]
             public class EventPlayerDeath : GameEvent
             {
-                public EventPlayerDeath() : base(){}
+                public EventPlayerDeath(IntPtr pointer) : base(pointer){}
                 public EventPlayerDeath(bool force) : base("player_death", force){}
 
                 
@@ -4651,7 +4651,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("player_decal")]
             public class EventPlayerDecal : GameEvent
             {
-                public EventPlayerDecal() : base(){}
+                public EventPlayerDecal(IntPtr pointer) : base(pointer){}
                 public EventPlayerDecal(bool force) : base("player_decal", force){}
 
                 
@@ -4667,7 +4667,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("player_disconnect")]
             public class EventPlayerDisconnect : GameEvent
             {
-                public EventPlayerDisconnect() : base(){}
+                public EventPlayerDisconnect(IntPtr pointer) : base(pointer){}
                 public EventPlayerDisconnect(bool force) : base("player_disconnect", force){}
 
                 
@@ -4723,7 +4723,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("player_falldamage")]
             public class EventPlayerFalldamage : GameEvent
             {
-                public EventPlayerFalldamage() : base(){}
+                public EventPlayerFalldamage(IntPtr pointer) : base(pointer){}
                 public EventPlayerFalldamage(bool force) : base("player_falldamage", force){}
 
                 
@@ -4747,7 +4747,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("player_footstep")]
             public class EventPlayerFootstep : GameEvent
             {
-                public EventPlayerFootstep() : base(){}
+                public EventPlayerFootstep(IntPtr pointer) : base(pointer){}
                 public EventPlayerFootstep(bool force) : base("player_footstep", force){}
 
                 
@@ -4763,7 +4763,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("player_full_update")]
             public class EventPlayerFullUpdate : GameEvent
             {
-                public EventPlayerFullUpdate() : base(){}
+                public EventPlayerFullUpdate(IntPtr pointer) : base(pointer){}
                 public EventPlayerFullUpdate(bool force) : base("player_full_update", force){}
 
                 
@@ -4787,7 +4787,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("player_given_c4")]
             public class EventPlayerGivenC4 : GameEvent
             {
-                public EventPlayerGivenC4() : base(){}
+                public EventPlayerGivenC4(IntPtr pointer) : base(pointer){}
                 public EventPlayerGivenC4(bool force) : base("player_given_c4", force){}
 
                 
@@ -4803,7 +4803,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("player_hintmessage")]
             public class EventPlayerHintmessage : GameEvent
             {
-                public EventPlayerHintmessage() : base(){}
+                public EventPlayerHintmessage(IntPtr pointer) : base(pointer){}
                 public EventPlayerHintmessage(bool force) : base("player_hintmessage", force){}
 
                 
@@ -4819,7 +4819,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("player_hurt")]
             public class EventPlayerHurt : GameEvent
             {
-                public EventPlayerHurt() : base(){}
+                public EventPlayerHurt(IntPtr pointer) : base(pointer){}
                 public EventPlayerHurt(bool force) : base("player_hurt", force){}
 
                 
@@ -4891,7 +4891,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("player_info")]
             public class EventPlayerInfo : GameEvent
             {
-                public EventPlayerInfo() : base(){}
+                public EventPlayerInfo(IntPtr pointer) : base(pointer){}
                 public EventPlayerInfo(bool force) : base("player_info", force){}
 
                 
@@ -4931,7 +4931,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("player_jump")]
             public class EventPlayerJump : GameEvent
             {
-                public EventPlayerJump() : base(){}
+                public EventPlayerJump(IntPtr pointer) : base(pointer){}
                 public EventPlayerJump(bool force) : base("player_jump", force){}
 
                 
@@ -4947,7 +4947,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("player_ping")]
             public class EventPlayerPing : GameEvent
             {
-                public EventPlayerPing() : base(){}
+                public EventPlayerPing(IntPtr pointer) : base(pointer){}
                 public EventPlayerPing(bool force) : base("player_ping", force){}
 
                 
@@ -5003,7 +5003,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("player_ping_stop")]
             public class EventPlayerPingStop : GameEvent
             {
-                public EventPlayerPingStop() : base(){}
+                public EventPlayerPingStop(IntPtr pointer) : base(pointer){}
                 public EventPlayerPingStop(bool force) : base("player_ping_stop", force){}
 
                 
@@ -5019,7 +5019,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("player_radio")]
             public class EventPlayerRadio : GameEvent
             {
-                public EventPlayerRadio() : base(){}
+                public EventPlayerRadio(IntPtr pointer) : base(pointer){}
                 public EventPlayerRadio(bool force) : base("player_radio", force){}
 
                 
@@ -5043,7 +5043,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("player_reset_vote")]
             public class EventPlayerResetVote : GameEvent
             {
-                public EventPlayerResetVote() : base(){}
+                public EventPlayerResetVote(IntPtr pointer) : base(pointer){}
                 public EventPlayerResetVote(bool force) : base("player_reset_vote", force){}
 
                 
@@ -5067,7 +5067,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("player_score")]
             public class EventPlayerScore : GameEvent
             {
-                public EventPlayerScore() : base(){}
+                public EventPlayerScore(IntPtr pointer) : base(pointer){}
                 public EventPlayerScore(bool force) : base("player_score", force){}
 
                 
@@ -5107,7 +5107,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("player_shoot")]
             public class EventPlayerShoot : GameEvent
             {
-                public EventPlayerShoot() : base(){}
+                public EventPlayerShoot(IntPtr pointer) : base(pointer){}
                 public EventPlayerShoot(bool force) : base("player_shoot", force){}
 
                 
@@ -5139,7 +5139,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("player_sound")]
             public class EventPlayerSound : GameEvent
             {
-                public EventPlayerSound() : base(){}
+                public EventPlayerSound(IntPtr pointer) : base(pointer){}
                 public EventPlayerSound(bool force) : base("player_sound", force){}
 
                 
@@ -5179,7 +5179,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("player_spawn")]
             public class EventPlayerSpawn : GameEvent
             {
-                public EventPlayerSpawn() : base(){}
+                public EventPlayerSpawn(IntPtr pointer) : base(pointer){}
                 public EventPlayerSpawn(bool force) : base("player_spawn", force){}
 
                 
@@ -5195,7 +5195,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("player_spawned")]
             public class EventPlayerSpawned : GameEvent
             {
-                public EventPlayerSpawned() : base(){}
+                public EventPlayerSpawned(IntPtr pointer) : base(pointer){}
                 public EventPlayerSpawned(bool force) : base("player_spawned", force){}
 
                 
@@ -5219,7 +5219,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("player_stats_updated")]
             public class EventPlayerStatsUpdated : GameEvent
             {
-                public EventPlayerStatsUpdated() : base(){}
+                public EventPlayerStatsUpdated(IntPtr pointer) : base(pointer){}
                 public EventPlayerStatsUpdated(bool force) : base("player_stats_updated", force){}
 
                 
@@ -5235,7 +5235,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("player_team")]
             public class EventPlayerTeam : GameEvent
             {
-                public EventPlayerTeam() : base(){}
+                public EventPlayerTeam(IntPtr pointer) : base(pointer){}
                 public EventPlayerTeam(bool force) : base("player_team", force){}
 
                 
@@ -5291,7 +5291,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("ragdoll_dissolved")]
             public class EventRagdollDissolved : GameEvent
             {
-                public EventRagdollDissolved() : base(){}
+                public EventRagdollDissolved(IntPtr pointer) : base(pointer){}
                 public EventRagdollDissolved(bool force) : base("ragdoll_dissolved", force){}
 
                 
@@ -5307,7 +5307,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("read_game_titledata")]
             public class EventReadGameTitledata : GameEvent
             {
-                public EventReadGameTitledata() : base(){}
+                public EventReadGameTitledata(IntPtr pointer) : base(pointer){}
                 public EventReadGameTitledata(bool force) : base("read_game_titledata", force){}
 
                 
@@ -5323,7 +5323,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("repost_xbox_achievements")]
             public class EventRepostXboxAchievements : GameEvent
             {
-                public EventRepostXboxAchievements() : base(){}
+                public EventRepostXboxAchievements(IntPtr pointer) : base(pointer){}
                 public EventRepostXboxAchievements(bool force) : base("repost_xbox_achievements", force){}
 
                 
@@ -5339,7 +5339,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("reset_game_titledata")]
             public class EventResetGameTitledata : GameEvent
             {
-                public EventResetGameTitledata() : base(){}
+                public EventResetGameTitledata(IntPtr pointer) : base(pointer){}
                 public EventResetGameTitledata(bool force) : base("reset_game_titledata", force){}
 
                 
@@ -5355,7 +5355,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("round_announce_final")]
             public class EventRoundAnnounceFinal : GameEvent
             {
-                public EventRoundAnnounceFinal() : base(){}
+                public EventRoundAnnounceFinal(IntPtr pointer) : base(pointer){}
                 public EventRoundAnnounceFinal(bool force) : base("round_announce_final", force){}
 
                 
@@ -5364,7 +5364,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("round_announce_last_round_half")]
             public class EventRoundAnnounceLastRoundHalf : GameEvent
             {
-                public EventRoundAnnounceLastRoundHalf() : base(){}
+                public EventRoundAnnounceLastRoundHalf(IntPtr pointer) : base(pointer){}
                 public EventRoundAnnounceLastRoundHalf(bool force) : base("round_announce_last_round_half", force){}
 
                 
@@ -5373,7 +5373,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("round_announce_match_point")]
             public class EventRoundAnnounceMatchPoint : GameEvent
             {
-                public EventRoundAnnounceMatchPoint() : base(){}
+                public EventRoundAnnounceMatchPoint(IntPtr pointer) : base(pointer){}
                 public EventRoundAnnounceMatchPoint(bool force) : base("round_announce_match_point", force){}
 
                 
@@ -5382,7 +5382,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("round_announce_match_start")]
             public class EventRoundAnnounceMatchStart : GameEvent
             {
-                public EventRoundAnnounceMatchStart() : base(){}
+                public EventRoundAnnounceMatchStart(IntPtr pointer) : base(pointer){}
                 public EventRoundAnnounceMatchStart(bool force) : base("round_announce_match_start", force){}
 
                 
@@ -5391,7 +5391,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("round_announce_warmup")]
             public class EventRoundAnnounceWarmup : GameEvent
             {
-                public EventRoundAnnounceWarmup() : base(){}
+                public EventRoundAnnounceWarmup(IntPtr pointer) : base(pointer){}
                 public EventRoundAnnounceWarmup(bool force) : base("round_announce_warmup", force){}
 
                 
@@ -5400,7 +5400,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("round_end")]
             public class EventRoundEnd : GameEvent
             {
-                public EventRoundEnd() : base(){}
+                public EventRoundEnd(IntPtr pointer) : base(pointer){}
                 public EventRoundEnd(bool force) : base("round_end", force){}
 
                 
@@ -5456,7 +5456,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("round_end_upload_stats")]
             public class EventRoundEndUploadStats : GameEvent
             {
-                public EventRoundEndUploadStats() : base(){}
+                public EventRoundEndUploadStats(IntPtr pointer) : base(pointer){}
                 public EventRoundEndUploadStats(bool force) : base("round_end_upload_stats", force){}
 
                 
@@ -5465,7 +5465,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("round_freeze_end")]
             public class EventRoundFreezeEnd : GameEvent
             {
-                public EventRoundFreezeEnd() : base(){}
+                public EventRoundFreezeEnd(IntPtr pointer) : base(pointer){}
                 public EventRoundFreezeEnd(bool force) : base("round_freeze_end", force){}
 
                 
@@ -5474,7 +5474,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("round_mvp")]
             public class EventRoundMvp : GameEvent
             {
-                public EventRoundMvp() : base(){}
+                public EventRoundMvp(IntPtr pointer) : base(pointer){}
                 public EventRoundMvp(bool force) : base("round_mvp", force){}
 
                 
@@ -5530,7 +5530,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("round_officially_ended")]
             public class EventRoundOfficiallyEnded : GameEvent
             {
-                public EventRoundOfficiallyEnded() : base(){}
+                public EventRoundOfficiallyEnded(IntPtr pointer) : base(pointer){}
                 public EventRoundOfficiallyEnded(bool force) : base("round_officially_ended", force){}
 
                 
@@ -5539,7 +5539,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("round_poststart")]
             public class EventRoundPoststart : GameEvent
             {
-                public EventRoundPoststart() : base(){}
+                public EventRoundPoststart(IntPtr pointer) : base(pointer){}
                 public EventRoundPoststart(bool force) : base("round_poststart", force){}
 
                 
@@ -5548,7 +5548,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("round_prestart")]
             public class EventRoundPrestart : GameEvent
             {
-                public EventRoundPrestart() : base(){}
+                public EventRoundPrestart(IntPtr pointer) : base(pointer){}
                 public EventRoundPrestart(bool force) : base("round_prestart", force){}
 
                 
@@ -5557,7 +5557,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("round_start")]
             public class EventRoundStart : GameEvent
             {
-                public EventRoundStart() : base(){}
+                public EventRoundStart(IntPtr pointer) : base(pointer){}
                 public EventRoundStart(bool force) : base("round_start", force){}
 
                 
@@ -5589,7 +5589,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("round_start_post_nav")]
             public class EventRoundStartPostNav : GameEvent
             {
-                public EventRoundStartPostNav() : base(){}
+                public EventRoundStartPostNav(IntPtr pointer) : base(pointer){}
                 public EventRoundStartPostNav(bool force) : base("round_start_post_nav", force){}
 
                 
@@ -5598,7 +5598,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("round_start_pre_entity")]
             public class EventRoundStartPreEntity : GameEvent
             {
-                public EventRoundStartPreEntity() : base(){}
+                public EventRoundStartPreEntity(IntPtr pointer) : base(pointer){}
                 public EventRoundStartPreEntity(bool force) : base("round_start_pre_entity", force){}
 
                 
@@ -5607,7 +5607,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("round_time_warning")]
             public class EventRoundTimeWarning : GameEvent
             {
-                public EventRoundTimeWarning() : base(){}
+                public EventRoundTimeWarning(IntPtr pointer) : base(pointer){}
                 public EventRoundTimeWarning(bool force) : base("round_time_warning", force){}
 
                 
@@ -5616,7 +5616,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("seasoncoin_levelup")]
             public class EventSeasoncoinLevelup : GameEvent
             {
-                public EventSeasoncoinLevelup() : base(){}
+                public EventSeasoncoinLevelup(IntPtr pointer) : base(pointer){}
                 public EventSeasoncoinLevelup(bool force) : base("seasoncoin_levelup", force){}
 
                 
@@ -5648,7 +5648,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("server_cvar")]
             public class EventServerCvar : GameEvent
             {
-                public EventServerCvar() : base(){}
+                public EventServerCvar(IntPtr pointer) : base(pointer){}
                 public EventServerCvar(bool force) : base("server_cvar", force){}
 
                 
@@ -5672,7 +5672,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("server_message")]
             public class EventServerMessage : GameEvent
             {
-                public EventServerMessage() : base(){}
+                public EventServerMessage(IntPtr pointer) : base(pointer){}
                 public EventServerMessage(bool force) : base("server_message", force){}
 
                 
@@ -5688,7 +5688,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("server_pre_shutdown")]
             public class EventServerPreShutdown : GameEvent
             {
-                public EventServerPreShutdown() : base(){}
+                public EventServerPreShutdown(IntPtr pointer) : base(pointer){}
                 public EventServerPreShutdown(bool force) : base("server_pre_shutdown", force){}
 
                 
@@ -5704,7 +5704,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("server_shutdown")]
             public class EventServerShutdown : GameEvent
             {
-                public EventServerShutdown() : base(){}
+                public EventServerShutdown(IntPtr pointer) : base(pointer){}
                 public EventServerShutdown(bool force) : base("server_shutdown", force){}
 
                 
@@ -5720,7 +5720,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("server_spawn")]
             public class EventServerSpawn : GameEvent
             {
-                public EventServerSpawn() : base(){}
+                public EventServerSpawn(IntPtr pointer) : base(pointer){}
                 public EventServerSpawn(bool force) : base("server_spawn", force){}
 
                 
@@ -5808,7 +5808,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("set_instructor_group_enabled")]
             public class EventSetInstructorGroupEnabled : GameEvent
             {
-                public EventSetInstructorGroupEnabled() : base(){}
+                public EventSetInstructorGroupEnabled(IntPtr pointer) : base(pointer){}
                 public EventSetInstructorGroupEnabled(bool force) : base("set_instructor_group_enabled", force){}
 
                 
@@ -5832,7 +5832,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("sfuievent")]
             public class EventSfuievent : GameEvent
             {
-                public EventSfuievent() : base(){}
+                public EventSfuievent(IntPtr pointer) : base(pointer){}
                 public EventSfuievent(bool force) : base("sfuievent", force){}
 
                 
@@ -5864,7 +5864,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("show_deathpanel")]
             public class EventShowDeathpanel : GameEvent
             {
-                public EventShowDeathpanel() : base(){}
+                public EventShowDeathpanel(IntPtr pointer) : base(pointer){}
                 public EventShowDeathpanel(bool force) : base("show_deathpanel", force){}
 
                 
@@ -5928,7 +5928,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("show_survival_respawn_status")]
             public class EventShowSurvivalRespawnStatus : GameEvent
             {
-                public EventShowSurvivalRespawnStatus() : base(){}
+                public EventShowSurvivalRespawnStatus(IntPtr pointer) : base(pointer){}
                 public EventShowSurvivalRespawnStatus(bool force) : base("show_survival_respawn_status", force){}
 
                 
@@ -5960,7 +5960,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("silencer_detach")]
             public class EventSilencerDetach : GameEvent
             {
-                public EventSilencerDetach() : base(){}
+                public EventSilencerDetach(IntPtr pointer) : base(pointer){}
                 public EventSilencerDetach(bool force) : base("silencer_detach", force){}
 
                 
@@ -5976,7 +5976,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("silencer_off")]
             public class EventSilencerOff : GameEvent
             {
-                public EventSilencerOff() : base(){}
+                public EventSilencerOff(IntPtr pointer) : base(pointer){}
                 public EventSilencerOff(bool force) : base("silencer_off", force){}
 
                 
@@ -5992,7 +5992,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("silencer_on")]
             public class EventSilencerOn : GameEvent
             {
-                public EventSilencerOn() : base(){}
+                public EventSilencerOn(IntPtr pointer) : base(pointer){}
                 public EventSilencerOn(bool force) : base("silencer_on", force){}
 
                 
@@ -6008,7 +6008,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("smoke_beacon_paradrop")]
             public class EventSmokeBeaconParadrop : GameEvent
             {
-                public EventSmokeBeaconParadrop() : base(){}
+                public EventSmokeBeaconParadrop(IntPtr pointer) : base(pointer){}
                 public EventSmokeBeaconParadrop(bool force) : base("smoke_beacon_paradrop", force){}
 
                 
@@ -6032,7 +6032,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("smokegrenade_detonate")]
             public class EventSmokegrenadeDetonate : GameEvent
             {
-                public EventSmokegrenadeDetonate() : base(){}
+                public EventSmokegrenadeDetonate(IntPtr pointer) : base(pointer){}
                 public EventSmokegrenadeDetonate(bool force) : base("smokegrenade_detonate", force){}
 
                 
@@ -6080,7 +6080,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("smokegrenade_expired")]
             public class EventSmokegrenadeExpired : GameEvent
             {
-                public EventSmokegrenadeExpired() : base(){}
+                public EventSmokegrenadeExpired(IntPtr pointer) : base(pointer){}
                 public EventSmokegrenadeExpired(bool force) : base("smokegrenade_expired", force){}
 
                 
@@ -6128,7 +6128,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("spec_mode_updated")]
             public class EventSpecModeUpdated : GameEvent
             {
-                public EventSpecModeUpdated() : base(){}
+                public EventSpecModeUpdated(IntPtr pointer) : base(pointer){}
                 public EventSpecModeUpdated(bool force) : base("spec_mode_updated", force){}
 
                 
@@ -6144,7 +6144,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("spec_target_updated")]
             public class EventSpecTargetUpdated : GameEvent
             {
-                public EventSpecTargetUpdated() : base(){}
+                public EventSpecTargetUpdated(IntPtr pointer) : base(pointer){}
                 public EventSpecTargetUpdated(bool force) : base("spec_target_updated", force){}
 
                 
@@ -6168,7 +6168,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("start_halftime")]
             public class EventStartHalftime : GameEvent
             {
-                public EventStartHalftime() : base(){}
+                public EventStartHalftime(IntPtr pointer) : base(pointer){}
                 public EventStartHalftime(bool force) : base("start_halftime", force){}
 
                 
@@ -6177,7 +6177,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("start_vote")]
             public class EventStartVote : GameEvent
             {
-                public EventStartVote() : base(){}
+                public EventStartVote(IntPtr pointer) : base(pointer){}
                 public EventStartVote(bool force) : base("start_vote", force){}
 
                 
@@ -6209,7 +6209,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("store_pricesheet_updated")]
             public class EventStorePricesheetUpdated : GameEvent
             {
-                public EventStorePricesheetUpdated() : base(){}
+                public EventStorePricesheetUpdated(IntPtr pointer) : base(pointer){}
                 public EventStorePricesheetUpdated(bool force) : base("store_pricesheet_updated", force){}
 
                 
@@ -6218,7 +6218,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("survival_announce_phase")]
             public class EventSurvivalAnnouncePhase : GameEvent
             {
-                public EventSurvivalAnnouncePhase() : base(){}
+                public EventSurvivalAnnouncePhase(IntPtr pointer) : base(pointer){}
                 public EventSurvivalAnnouncePhase(bool force) : base("survival_announce_phase", force){}
 
                 
@@ -6234,7 +6234,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("survival_no_respawns_final")]
             public class EventSurvivalNoRespawnsFinal : GameEvent
             {
-                public EventSurvivalNoRespawnsFinal() : base(){}
+                public EventSurvivalNoRespawnsFinal(IntPtr pointer) : base(pointer){}
                 public EventSurvivalNoRespawnsFinal(bool force) : base("survival_no_respawns_final", force){}
 
                 
@@ -6250,7 +6250,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("survival_no_respawns_warning")]
             public class EventSurvivalNoRespawnsWarning : GameEvent
             {
-                public EventSurvivalNoRespawnsWarning() : base(){}
+                public EventSurvivalNoRespawnsWarning(IntPtr pointer) : base(pointer){}
                 public EventSurvivalNoRespawnsWarning(bool force) : base("survival_no_respawns_warning", force){}
 
                 
@@ -6266,7 +6266,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("survival_paradrop_break")]
             public class EventSurvivalParadropBreak : GameEvent
             {
-                public EventSurvivalParadropBreak() : base(){}
+                public EventSurvivalParadropBreak(IntPtr pointer) : base(pointer){}
                 public EventSurvivalParadropBreak(bool force) : base("survival_paradrop_break", force){}
 
                 
@@ -6282,7 +6282,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("survival_paradrop_spawn")]
             public class EventSurvivalParadropSpawn : GameEvent
             {
-                public EventSurvivalParadropSpawn() : base(){}
+                public EventSurvivalParadropSpawn(IntPtr pointer) : base(pointer){}
                 public EventSurvivalParadropSpawn(bool force) : base("survival_paradrop_spawn", force){}
 
                 
@@ -6298,7 +6298,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("survival_teammate_respawn")]
             public class EventSurvivalTeammateRespawn : GameEvent
             {
-                public EventSurvivalTeammateRespawn() : base(){}
+                public EventSurvivalTeammateRespawn(IntPtr pointer) : base(pointer){}
                 public EventSurvivalTeammateRespawn(bool force) : base("survival_teammate_respawn", force){}
 
                 
@@ -6314,7 +6314,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("switch_team")]
             public class EventSwitchTeam : GameEvent
             {
-                public EventSwitchTeam() : base(){}
+                public EventSwitchTeam(IntPtr pointer) : base(pointer){}
                 public EventSwitchTeam(bool force) : base("switch_team", force){}
 
                 
@@ -6362,7 +6362,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("tagrenade_detonate")]
             public class EventTagrenadeDetonate : GameEvent
             {
-                public EventTagrenadeDetonate() : base(){}
+                public EventTagrenadeDetonate(IntPtr pointer) : base(pointer){}
                 public EventTagrenadeDetonate(bool force) : base("tagrenade_detonate", force){}
 
                 
@@ -6410,7 +6410,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("teamchange_pending")]
             public class EventTeamchangePending : GameEvent
             {
-                public EventTeamchangePending() : base(){}
+                public EventTeamchangePending(IntPtr pointer) : base(pointer){}
                 public EventTeamchangePending(bool force) : base("teamchange_pending", force){}
 
                 
@@ -6434,7 +6434,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("team_info")]
             public class EventTeamInfo : GameEvent
             {
-                public EventTeamInfo() : base(){}
+                public EventTeamInfo(IntPtr pointer) : base(pointer){}
                 public EventTeamInfo(bool force) : base("team_info", force){}
 
                 
@@ -6458,7 +6458,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("team_intro_end")]
             public class EventTeamIntroEnd : GameEvent
             {
-                public EventTeamIntroEnd() : base(){}
+                public EventTeamIntroEnd(IntPtr pointer) : base(pointer){}
                 public EventTeamIntroEnd(bool force) : base("team_intro_end", force){}
 
                 
@@ -6467,7 +6467,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("team_intro_start")]
             public class EventTeamIntroStart : GameEvent
             {
-                public EventTeamIntroStart() : base(){}
+                public EventTeamIntroStart(IntPtr pointer) : base(pointer){}
                 public EventTeamIntroStart(bool force) : base("team_intro_start", force){}
 
                 
@@ -6476,7 +6476,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("teamplay_broadcast_audio")]
             public class EventTeamplayBroadcastAudio : GameEvent
             {
-                public EventTeamplayBroadcastAudio() : base(){}
+                public EventTeamplayBroadcastAudio(IntPtr pointer) : base(pointer){}
                 public EventTeamplayBroadcastAudio(bool force) : base("teamplay_broadcast_audio", force){}
 
                 
@@ -6500,7 +6500,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("teamplay_round_start")]
             public class EventTeamplayRoundStart : GameEvent
             {
-                public EventTeamplayRoundStart() : base(){}
+                public EventTeamplayRoundStart(IntPtr pointer) : base(pointer){}
                 public EventTeamplayRoundStart(bool force) : base("teamplay_round_start", force){}
 
                 
@@ -6516,7 +6516,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("team_score")]
             public class EventTeamScore : GameEvent
             {
-                public EventTeamScore() : base(){}
+                public EventTeamScore(IntPtr pointer) : base(pointer){}
                 public EventTeamScore(bool force) : base("team_score", force){}
 
                 
@@ -6540,7 +6540,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("tournament_reward")]
             public class EventTournamentReward : GameEvent
             {
-                public EventTournamentReward() : base(){}
+                public EventTournamentReward(IntPtr pointer) : base(pointer){}
                 public EventTournamentReward(bool force) : base("tournament_reward", force){}
 
                 
@@ -6572,7 +6572,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("tr_exit_hint_trigger")]
             public class EventTrExitHintTrigger : GameEvent
             {
-                public EventTrExitHintTrigger() : base(){}
+                public EventTrExitHintTrigger(IntPtr pointer) : base(pointer){}
                 public EventTrExitHintTrigger(bool force) : base("tr_exit_hint_trigger", force){}
 
                 
@@ -6581,7 +6581,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("trial_time_expired")]
             public class EventTrialTimeExpired : GameEvent
             {
-                public EventTrialTimeExpired() : base(){}
+                public EventTrialTimeExpired(IntPtr pointer) : base(pointer){}
                 public EventTrialTimeExpired(bool force) : base("trial_time_expired", force){}
 
                 
@@ -6597,7 +6597,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("tr_mark_best_time")]
             public class EventTrMarkBestTime : GameEvent
             {
-                public EventTrMarkBestTime() : base(){}
+                public EventTrMarkBestTime(IntPtr pointer) : base(pointer){}
                 public EventTrMarkBestTime(bool force) : base("tr_mark_best_time", force){}
 
                 
@@ -6613,7 +6613,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("tr_mark_complete")]
             public class EventTrMarkComplete : GameEvent
             {
-                public EventTrMarkComplete() : base(){}
+                public EventTrMarkComplete(IntPtr pointer) : base(pointer){}
                 public EventTrMarkComplete(bool force) : base("tr_mark_complete", force){}
 
                 
@@ -6629,7 +6629,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("tr_player_flashbanged")]
             public class EventTrPlayerFlashbanged : GameEvent
             {
-                public EventTrPlayerFlashbanged() : base(){}
+                public EventTrPlayerFlashbanged(IntPtr pointer) : base(pointer){}
                 public EventTrPlayerFlashbanged(bool force) : base("tr_player_flashbanged", force){}
 
                 
@@ -6645,7 +6645,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("tr_show_exit_msgbox")]
             public class EventTrShowExitMsgbox : GameEvent
             {
-                public EventTrShowExitMsgbox() : base(){}
+                public EventTrShowExitMsgbox(IntPtr pointer) : base(pointer){}
                 public EventTrShowExitMsgbox(bool force) : base("tr_show_exit_msgbox", force){}
 
                 
@@ -6654,7 +6654,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("tr_show_finish_msgbox")]
             public class EventTrShowFinishMsgbox : GameEvent
             {
-                public EventTrShowFinishMsgbox() : base(){}
+                public EventTrShowFinishMsgbox(IntPtr pointer) : base(pointer){}
                 public EventTrShowFinishMsgbox(bool force) : base("tr_show_finish_msgbox", force){}
 
                 
@@ -6663,7 +6663,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("ugc_file_download_finished")]
             public class EventUgcFileDownloadFinished : GameEvent
             {
-                public EventUgcFileDownloadFinished() : base(){}
+                public EventUgcFileDownloadFinished(IntPtr pointer) : base(pointer){}
                 public EventUgcFileDownloadFinished(bool force) : base("ugc_file_download_finished", force){}
 
                 
@@ -6679,7 +6679,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("ugc_file_download_start")]
             public class EventUgcFileDownloadStart : GameEvent
             {
-                public EventUgcFileDownloadStart() : base(){}
+                public EventUgcFileDownloadStart(IntPtr pointer) : base(pointer){}
                 public EventUgcFileDownloadStart(bool force) : base("ugc_file_download_start", force){}
 
                 
@@ -6703,7 +6703,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("ugc_map_download_error")]
             public class EventUgcMapDownloadError : GameEvent
             {
-                public EventUgcMapDownloadError() : base(){}
+                public EventUgcMapDownloadError(IntPtr pointer) : base(pointer){}
                 public EventUgcMapDownloadError(bool force) : base("ugc_map_download_error", force){}
 
                 
@@ -6727,7 +6727,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("ugc_map_info_received")]
             public class EventUgcMapInfoReceived : GameEvent
             {
-                public EventUgcMapInfoReceived() : base(){}
+                public EventUgcMapInfoReceived(IntPtr pointer) : base(pointer){}
                 public EventUgcMapInfoReceived(bool force) : base("ugc_map_info_received", force){}
 
                 
@@ -6743,7 +6743,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("ugc_map_unsubscribed")]
             public class EventUgcMapUnsubscribed : GameEvent
             {
-                public EventUgcMapUnsubscribed() : base(){}
+                public EventUgcMapUnsubscribed(IntPtr pointer) : base(pointer){}
                 public EventUgcMapUnsubscribed(bool force) : base("ugc_map_unsubscribed", force){}
 
                 
@@ -6759,7 +6759,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("update_matchmaking_stats")]
             public class EventUpdateMatchmakingStats : GameEvent
             {
-                public EventUpdateMatchmakingStats() : base(){}
+                public EventUpdateMatchmakingStats(IntPtr pointer) : base(pointer){}
                 public EventUpdateMatchmakingStats(bool force) : base("update_matchmaking_stats", force){}
 
                 
@@ -6768,7 +6768,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("user_data_downloaded")]
             public class EventUserDataDownloaded : GameEvent
             {
-                public EventUserDataDownloaded() : base(){}
+                public EventUserDataDownloaded(IntPtr pointer) : base(pointer){}
                 public EventUserDataDownloaded(bool force) : base("user_data_downloaded", force){}
 
                 
@@ -6777,7 +6777,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("vip_escaped")]
             public class EventVipEscaped : GameEvent
             {
-                public EventVipEscaped() : base(){}
+                public EventVipEscaped(IntPtr pointer) : base(pointer){}
                 public EventVipEscaped(bool force) : base("vip_escaped", force){}
 
                 
@@ -6793,7 +6793,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("vip_killed")]
             public class EventVipKilled : GameEvent
             {
-                public EventVipKilled() : base(){}
+                public EventVipKilled(IntPtr pointer) : base(pointer){}
                 public EventVipKilled(bool force) : base("vip_killed", force){}
 
                 
@@ -6817,7 +6817,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("vote_cast")]
             public class EventVoteCast : GameEvent
             {
-                public EventVoteCast() : base(){}
+                public EventVoteCast(IntPtr pointer) : base(pointer){}
                 public EventVoteCast(bool force) : base("vote_cast", force){}
 
                 
@@ -6849,7 +6849,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("vote_cast_no")]
             public class EventVoteCastNo : GameEvent
             {
-                public EventVoteCastNo() : base(){}
+                public EventVoteCastNo(IntPtr pointer) : base(pointer){}
                 public EventVoteCastNo(bool force) : base("vote_cast_no", force){}
 
                 
@@ -6873,7 +6873,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("vote_cast_yes")]
             public class EventVoteCastYes : GameEvent
             {
-                public EventVoteCastYes() : base(){}
+                public EventVoteCastYes(IntPtr pointer) : base(pointer){}
                 public EventVoteCastYes(bool force) : base("vote_cast_yes", force){}
 
                 
@@ -6897,7 +6897,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("vote_changed")]
             public class EventVoteChanged : GameEvent
             {
-                public EventVoteChanged() : base(){}
+                public EventVoteChanged(IntPtr pointer) : base(pointer){}
                 public EventVoteChanged(bool force) : base("vote_changed", force){}
 
                 
@@ -6953,7 +6953,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("vote_ended")]
             public class EventVoteEnded : GameEvent
             {
-                public EventVoteEnded() : base(){}
+                public EventVoteEnded(IntPtr pointer) : base(pointer){}
                 public EventVoteEnded(bool force) : base("vote_ended", force){}
 
                 
@@ -6962,7 +6962,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("vote_failed")]
             public class EventVoteFailed : GameEvent
             {
-                public EventVoteFailed() : base(){}
+                public EventVoteFailed(IntPtr pointer) : base(pointer){}
                 public EventVoteFailed(bool force) : base("vote_failed", force){}
 
                 
@@ -6986,7 +6986,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("vote_options")]
             public class EventVoteOptions : GameEvent
             {
-                public EventVoteOptions() : base(){}
+                public EventVoteOptions(IntPtr pointer) : base(pointer){}
                 public EventVoteOptions(bool force) : base("vote_options", force){}
 
                 
@@ -7042,7 +7042,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("vote_passed")]
             public class EventVotePassed : GameEvent
             {
-                public EventVotePassed() : base(){}
+                public EventVotePassed(IntPtr pointer) : base(pointer){}
                 public EventVotePassed(bool force) : base("vote_passed", force){}
 
                 
@@ -7082,7 +7082,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("vote_started")]
             public class EventVoteStarted : GameEvent
             {
-                public EventVoteStarted() : base(){}
+                public EventVoteStarted(IntPtr pointer) : base(pointer){}
                 public EventVoteStarted(bool force) : base("vote_started", force){}
 
                 
@@ -7122,7 +7122,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("weapon_fire")]
             public class EventWeaponFire : GameEvent
             {
-                public EventWeaponFire() : base(){}
+                public EventWeaponFire(IntPtr pointer) : base(pointer){}
                 public EventWeaponFire(bool force) : base("weapon_fire", force){}
 
                 
@@ -7154,7 +7154,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("weapon_fire_on_empty")]
             public class EventWeaponFireOnEmpty : GameEvent
             {
-                public EventWeaponFireOnEmpty() : base(){}
+                public EventWeaponFireOnEmpty(IntPtr pointer) : base(pointer){}
                 public EventWeaponFireOnEmpty(bool force) : base("weapon_fire_on_empty", force){}
 
                 
@@ -7178,7 +7178,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("weaponhud_selection")]
             public class EventWeaponhudSelection : GameEvent
             {
-                public EventWeaponhudSelection() : base(){}
+                public EventWeaponhudSelection(IntPtr pointer) : base(pointer){}
                 public EventWeaponhudSelection(bool force) : base("weaponhud_selection", force){}
 
                 
@@ -7210,7 +7210,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("weapon_outofammo")]
             public class EventWeaponOutofammo : GameEvent
             {
-                public EventWeaponOutofammo() : base(){}
+                public EventWeaponOutofammo(IntPtr pointer) : base(pointer){}
                 public EventWeaponOutofammo(bool force) : base("weapon_outofammo", force){}
 
                 
@@ -7226,7 +7226,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("weapon_reload")]
             public class EventWeaponReload : GameEvent
             {
-                public EventWeaponReload() : base(){}
+                public EventWeaponReload(IntPtr pointer) : base(pointer){}
                 public EventWeaponReload(bool force) : base("weapon_reload", force){}
 
                 
@@ -7242,7 +7242,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("weapon_zoom")]
             public class EventWeaponZoom : GameEvent
             {
-                public EventWeaponZoom() : base(){}
+                public EventWeaponZoom(IntPtr pointer) : base(pointer){}
                 public EventWeaponZoom(bool force) : base("weapon_zoom", force){}
 
                 
@@ -7258,7 +7258,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("weapon_zoom_rifle")]
             public class EventWeaponZoomRifle : GameEvent
             {
-                public EventWeaponZoomRifle() : base(){}
+                public EventWeaponZoomRifle(IntPtr pointer) : base(pointer){}
                 public EventWeaponZoomRifle(bool force) : base("weapon_zoom_rifle", force){}
 
                 
@@ -7274,7 +7274,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("write_game_titledata")]
             public class EventWriteGameTitledata : GameEvent
             {
-                public EventWriteGameTitledata() : base(){}
+                public EventWriteGameTitledata(IntPtr pointer) : base(pointer){}
                 public EventWriteGameTitledata(bool force) : base("write_game_titledata", force){}
 
                 
@@ -7290,7 +7290,7 @@ namespace CounterStrikeSharp.API.Core
             [EventName("write_profile_data")]
             public class EventWriteProfileData : GameEvent
             {
-                public EventWriteProfileData() : base(){}
+                public EventWriteProfileData(IntPtr pointer) : base(pointer){}
                 public EventWriteProfileData(bool force) : base("write_profile_data", force){}
 
                 
