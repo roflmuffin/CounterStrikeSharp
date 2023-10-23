@@ -37,6 +37,8 @@ namespace TestPlugin
         {
             Console.WriteLine(
                 $"Test Plugin has been loaded, and the hot reload flag was {hotReload}, path is {ModulePath}");
+            
+            Console.WriteLine($"Max Players: {Server.MaxPlayers}");
 
             // ValveInterface provides pointers to loaded modules via Interface Name exposed from the engine (e.g. Source2Server001)
             var server = ValveInterface.Server;

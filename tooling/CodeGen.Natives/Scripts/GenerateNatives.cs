@@ -50,7 +50,8 @@ public partial class Generators
 
             var hasGenerics = native.ReturnType == "any" || native.Arguments.Any(pair => pair.Value == "any");
             var returnStr = new StringBuilder($@"
-        public static {Mapping.GetCSharpType(native.ReturnType)} {native.NameCamelCase}{(hasGenerics ? "<T>" : "")}({arguments}){{{Environment.NewLine}");
+        public static {Mapping.GetCSharpType(native.ReturnType)} {native.NameCamelCase}{(hasGenerics ? "<T>" : "")}({arguments}){{
+");
 
             returnStr.Append("\t\t\tlock (ScriptContext.GlobalScriptContext.Lock) {\n");
             returnStr.Append("\t\t\tScriptContext.GlobalScriptContext.Reset();\n");
@@ -89,6 +90,7 @@ public partial class Generators
 
         var result = $@"
 using System;
+using CounterStrikeSharp.API.Modules.Memory;
 
 namespace CounterStrikeSharp.API.Core
 {{

@@ -1,5 +1,6 @@
 
 using System;
+using CounterStrikeSharp.API.Modules.Memory;
 
 namespace CounterStrikeSharp.API.Core
 {
@@ -368,6 +369,19 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
 			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			}
+		}
+
+        public static T GetCommandParamValue<T>(string param, DataType datatype, T defaultvalue){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(param);
+			ScriptContext.GlobalScriptContext.Push(datatype);
+			ScriptContext.GlobalScriptContext.Push(defaultvalue);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x748F302F);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (T)ScriptContext.GlobalScriptContext.GetResult(typeof(T));
 			}
 		}
 

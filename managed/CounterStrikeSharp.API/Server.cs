@@ -58,6 +58,9 @@ namespace CounterStrikeSharp.API
         }
 
         public static string GameDirectory => NativeAPI.GetGameDirectory();
+        
+        public static int MaxPlayers => NativeAPI.GetCommandParamValue("-maxplayers", DataType.DATA_TYPE_INT, 64);
+
         public static bool IsMapValid(string mapName) => NativeAPI.IsMapValid(mapName);
 
         public static string[] GetMapList()

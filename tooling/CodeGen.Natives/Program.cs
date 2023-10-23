@@ -24,8 +24,6 @@ namespace CodeGen.Natives
         {
             Generators.GenerateNatives();
             Generators.GenerateGameEvents();
-            Generators.GenerateListeners();
-            Generators.GenerateNativeObjects();
         }
     }
 }
