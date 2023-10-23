@@ -71,7 +71,13 @@ namespace TestPlugin
                 var player = @event.Userid;
                 var pawn = player.PlayerPawn.Value;
                 var activeWeapon = @event.Userid.PlayerPawn.Value.WeaponServices?.ActiveWeapon.Value;
+                var weapons = @event.Userid.PlayerPawn.Value.WeaponServices?.MyWeapons;
 
+                Server.NextFrame(() =>
+                {
+                    player.PrintToCenter(string.Join("\n", weapons.Select(x => x.Value.DesignerName)));
+                });
+                
                 activeWeapon.ReserveAmmo[0] = 250;
                 activeWeapon.Clip1 = 250;
                 

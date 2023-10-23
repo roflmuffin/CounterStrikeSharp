@@ -206,6 +206,19 @@ void ExecuteVirtualFunction(ScriptContext &script_context) {
 //     globals::hook_manager.Unhook(function, entity_index, callback, post);
 // }
 
+int GetNetworkVectorSize(ScriptContext &script_context) {
+    auto vec = script_context.GetArgument<CUtlVector<void*>*>(0);
+
+    return vec->Count();
+}
+
+void* GetNetworkVectorElementAt(ScriptContext &script_context) {
+    auto vec = script_context.GetArgument<CUtlVector<CEntityHandle>*>(0);
+    auto index = script_context.GetArgument<int>(1);
+
+    return &vec->Element(index);
+}
+
 REGISTER_NATIVES(memory, {
     ScriptEngine::RegisterNativeHandler("CREATE_VIRTUAL_FUNCTION", CreateVirtualFunction);
     ScriptEngine::RegisterNativeHandler("CREATE_VIRTUAL_FUNCTION_BY_SIGNATURE",
@@ -214,5 +227,7 @@ REGISTER_NATIVES(memory, {
     // ScriptEngine::RegisterNativeHandler("HOOK_FUNCTION", HookFunction);
     // ScriptEngine::RegisterNativeHandler("UNHOOK_FUNCTION", UnhookFunction);
     ScriptEngine::RegisterNativeHandler("FIND_SIGNATURE", FindSignature);
+    ScriptEngine::RegisterNativeHandler("GET_NETWORK_VECTOR_SIZE", GetNetworkVectorSize);
+    ScriptEngine::RegisterNativeHandler("GET_NETWORK_VECTOR_ELEMENT_AT", GetNetworkVectorElementAt);
 })
 }  // namespace counterstrikesharp
