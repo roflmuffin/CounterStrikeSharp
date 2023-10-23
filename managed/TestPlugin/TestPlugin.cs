@@ -192,11 +192,13 @@ namespace TestPlugin
             Log($"Result of virtual func call is {result:X}");
         }
 
-        // [GameEventHandler]
-        // public void OnPlayerConnect(EventPlayerConnect @event)
-        // {
-        //     Log($"Player {@event.Name} has connected!");
-        // }
+        [GameEventHandler]
+        public HookResult OnPlayerConnect(EventPlayerConnect @event, GameEventInfo info)
+        {
+            Log($"Player {@event.Name} has connected!");
+
+            return HookResult.Continue;
+        }
 
         [ConsoleCommand("cssharp_attribute", "This is a custom attribute event")]
         public void OnCommand(CCSPlayerController? player, CommandInfo command)

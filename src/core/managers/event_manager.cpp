@@ -116,7 +116,7 @@ bool EventManager::HookEvent(const char* szName, CallbackT fnCallback, bool bPos
 
 bool EventManager::UnhookEvent(const char* szName, CallbackT fnCallback, bool bPost)
 {
-    EventHook* p_hook;
+    EventHook* pHook;
     ScriptCallback* pCallback;
 
     auto search = m_hooksMap.find(szName);
@@ -124,12 +124,12 @@ bool EventManager::UnhookEvent(const char* szName, CallbackT fnCallback, bool bP
         return false;
     }
 
-    p_hook = search->second;
+    pHook = search->second;
 
     if (bPost) {
-        pCallback = p_hook->m_pPostHook;
+        pCallback = pHook->m_pPostHook;
     } else {
-        pCallback = p_hook->m_pPreHook;
+        pCallback = pHook->m_pPreHook;
     }
 
     // Remove from function list
@@ -137,11 +137,10 @@ bool EventManager::UnhookEvent(const char* szName, CallbackT fnCallback, bool bP
         return false;
     }
 
-    pCallback = nullptr;
     if (bPost) {
-        p_hook->m_pPostHook = nullptr;
+        pHook->m_pPostHook = nullptr;
     } else {
-        p_hook->m_pPreHook = nullptr;
+        pHook->m_pPreHook = nullptr;
     }
 
     // TODO: Clean up callback if theres noone left attached.
@@ -185,11 +184,8 @@ bool EventManager::OnFireEvent(IGameEvent* pEvent, bool bDontBroadcast)
 
                 bLocalDontBroadcast = override.m_bDontBroadcast;
 
-                CSSHARP_CORE_TRACE("Override value for event {} is now {}", szName, bLocalDontBroadcast);
-
                 if (result >= HookResult::Handled) {
                     globals::gameEventManager->FreeEvent(pEvent);
-                    CSSHARP_CORE_TRACE("Received handled result for event [{}]", szName);
                     RETURN_META_VALUE(MRES_SUPERCEDE, false);
                 }
             }

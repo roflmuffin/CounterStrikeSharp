@@ -269,8 +269,8 @@ namespace CounterStrikeSharp.API.Core
                 var parameterType = eventHandler.GetParameters().First().ParameterType;
                 var eventName = parameterType.GetCustomAttribute<EventNameAttribute>()?.Name;
 
-                var actionType = typeof(Action<>).MakeGenericType(parameterType);
-                var action = eventHandler.CreateDelegate(actionType, instance);
+                var actionType = typeof(GameEventHandler<>).MakeGenericType(parameterType);
+                var action = Delegate.CreateDelegate(actionType, instance, eventHandler);
 
                 var generic = method.MakeGenericMethod(parameterType);
                 generic.Invoke(this, new object[] { eventName, action, false });
