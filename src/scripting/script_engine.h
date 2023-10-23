@@ -33,6 +33,13 @@
 
 namespace counterstrikesharp {
 
+enum HookResult {
+    Continue = 0,
+    Changed = 1,
+    Handled = 3,
+    Stop = 4,
+};
+
 inline uint32_t hash_string(const char *string) {
     unsigned long result = 5381;
 

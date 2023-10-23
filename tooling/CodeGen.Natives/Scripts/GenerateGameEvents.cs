@@ -108,7 +108,7 @@ public partial class Generators
             [EventName(""{gameEvent.Name}"")]
             public class Event{gameEvent.NamePascalCase} : GameEvent
             {{
-                public Event{gameEvent.NamePascalCase}() : base(){{}}
+                public Event{gameEvent.NamePascalCase}(IntPtr pointer) : base(pointer){{}}
                 public Event{gameEvent.NamePascalCase}(bool force) : base(""{gameEvent.Name}"", force){{}}
 
                 {string.Join("\n", propertyDefinition)}

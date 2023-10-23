@@ -20,95 +20,102 @@
 
 namespace counterstrikesharp {
 
-ScriptCallback::ScriptCallback(const char *name)
-    : m_root_context(fxNativeContext{}) {
+ScriptCallback::ScriptCallback(const char* szName) : m_root_context(fxNativeContext{})
+{
     m_script_context_raw = ScriptContextRaw(m_root_context);
-    m_name = std::string(name);
+    m_name = std::string(szName);
 }
 
 ScriptCallback::~ScriptCallback() { m_functions.clear(); }
 
-void ScriptCallback::AddListener(CallbackT plugin_function) {
-    m_functions.push_back(plugin_function);
+void ScriptCallback::AddListener(CallbackT fnPluginFunction)
+{
+    m_functions.push_back(fnPluginFunction);
 }
 
-bool ScriptCallback::RemoveListener(CallbackT pluginFunction) {
-    bool success;
+bool ScriptCallback::RemoveListener(CallbackT fnPluginFunction)
+{
+    bool bSuccess;
 
-    m_functions.erase(std::remove(m_functions.begin(), m_functions.end(), pluginFunction),
+    m_functions.erase(std::remove(m_functions.begin(), m_functions.end(), fnPluginFunction),
                       m_functions.end());
 
-    return success;
+    return bSuccess;
 }
 
-void ScriptCallback::Execute(bool resetContext) {
-    for (auto method_to_call : m_functions) {
-        if (method_to_call) {
-            method_to_call(&ScriptContextStruct());
+void ScriptCallback::Execute(bool bResetContext)
+{
+    for (auto fnMethodToCall : m_functions) {
+        if (fnMethodToCall) {
+            fnMethodToCall(&ScriptContextStruct());
         }
     }
 
-    if (resetContext) {
-        ResetContext();
+    if (bResetContext) {
+        Reset();
     }
 }
 
-void ScriptCallback::ResetContext() { ScriptContext().Reset(); }
+void ScriptCallback::Reset() { ScriptContext().Reset(); }
 
-CallbackManager::CallbackManager() {}
+CallbackManager::CallbackManager() = default;
 
-ScriptCallback *CallbackManager::CreateCallback(const char *name) {
-    CSSHARP_CORE_TRACE("Creating callback {0}", name);
-    auto *callback = new ScriptCallback(name);
-    m_managed.push_back(callback);
+ScriptCallback* CallbackManager::CreateCallback(const char* szName)
+{
+    CSSHARP_CORE_TRACE("Creating callback {0}", szName);
+    auto* pCallback = new ScriptCallback(szName);
+    m_managed.push_back(pCallback);
 
-    return callback;
+    return pCallback;
 }
 
-ScriptCallback *CallbackManager::FindCallback(const char *name) {
-    for (auto it = m_managed.begin(); it != m_managed.end(); ++it) {
-        ScriptCallback *marshal = *it;
-        if (strcmp(marshal->GetName().c_str(), name) == 0) {
-            return marshal;
+ScriptCallback* CallbackManager::FindCallback(const char* szName)
+{
+    for (auto* pMarshal : m_managed) {
+        if (strcmp(pMarshal->GetName().c_str(), szName) == 0) {
+            return pMarshal;
         }
     }
 
     return nullptr;
 }
 
-void CallbackManager::ReleaseCallback(ScriptCallback *callback) {
-    bool success;
-    auto it = std::remove_if(m_managed.begin(), m_managed.end(),
-                             [callback](ScriptCallback *i) { return callback == i; });
+void CallbackManager::ReleaseCallback(ScriptCallback* pCallback)
+{
+    auto I = std::remove_if(m_managed.begin(), m_managed.end(),
+                            [pCallback](ScriptCallback* pI) { return pCallback == pI; });
 
-    if ((success = it != m_managed.end())) m_managed.erase(it, m_managed.end());
-    delete callback;
+    if (I != m_managed.end())
+        m_managed.erase(I, m_managed.end());
+    delete pCallback;
 }
 
-bool CallbackManager::TryAddFunction(const char *name, CallbackT pCallable) {
-    auto *fwd = FindCallback(name);
-    if (fwd) {
-        fwd->AddListener(pCallable);
+bool CallbackManager::TryAddFunction(const char* szName, CallbackT fnCallable)
+{
+    auto* pCallback = FindCallback(szName);
+    if (pCallback) {
+        pCallback->AddListener(fnCallable);
         return true;
     }
 
     return false;
 }
 
-bool CallbackManager::TryRemoveFunction(const char *name, CallbackT pCallable) {
-    auto *fwd = FindCallback(name);
-    if (fwd) {
-        bool success = fwd->RemoveListener(pCallable);
-        return success;
+bool CallbackManager::TryRemoveFunction(const char* szName, CallbackT fnCallable)
+{
+    auto* pCallback = FindCallback(szName);
+    if (pCallback) {
+        return pCallback->RemoveListener(fnCallable);
     }
 
     return false;
 }
 
-void CallbackManager::PrintCallbackDebug() {
+void CallbackManager::PrintCallbackDebug()
+{
     CSSHARP_CORE_INFO("----CALLBACKS----");
-    for (auto it : m_managed) {
-        CSSHARP_CORE_INFO("{0} ({0})\n", it->GetName().c_str(), 1);
+    for (auto* pCallback : m_managed) {
+        CSSHARP_CORE_INFO("{0} ({0})\n", pCallback->GetName().c_str(), 1);
     }
 }
-}  // namespace counterstrikesharp
+} // namespace counterstrikesharp

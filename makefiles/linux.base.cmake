@@ -30,5 +30,5 @@ SET(
         dynload_s
         dyncall_s
         distorm
-        funchook-shared
+        funchook-static
 )
