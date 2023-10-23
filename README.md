@@ -13,8 +13,7 @@ Due to the architectural changes of CS2, the plugin is being rebuilt on the grou
 As a result, there are a few key philosophies and trade-offs that drive the project.
 - Only 64 bit is supported.
   - .NET only supports x64 on Linux; CSGO previously only supported 32 bit servers, but CS2 supports 64 bit on Linux.
-- Most dedicated servers are hosted on Linux, and there are no real plans to support Windows.
-- The scripting runtime will only support C#/.NET at this time, but there is no reason it cannot be extended in the future to support other languages by utilising the native bindings created by this plugin (in JS, Rust or Go for example).
+- Supporting both platforms is a lot of work for 1 person, so there are no real plans to support Windows.
 
 ## Install
 Development builds are currently available through GitHub actions, you can download the latest build from [there](https://github.com/roflmuffin/CounterStrikeSharp/actions/workflows/cmake-single-platform.yml).
@@ -29,14 +28,15 @@ These features are the core of the platform and work pretty well/have a low risk
 - [ ] **(In Progress)** Console Variables, Console Commands, Server Commands (e.g. sv_customvar)
 - [x] Game Event Handlers & Custom Events (e.g. player_death)
   - [x] Basic event value get/set (string, bool, int32, float)
-  - [ ] Complex event values get/set (ehandle, pawn, player controller)
+  - [x] Complex event values get/set (ehandle, pawn, player controller)
 - [x] Game Tick Based Timers (e.g. repeating map timers)
   - [x] Timer Flags (REPEAT, STOP_ON_MAPCHANGE)
-- [x] **(Partially)** Listeners (e.g. client connected, disconnected, map start etc.)
+- [x] Listeners (e.g. client connected, disconnected, map start etc.)
   - [x] Client Listeners (e.g. connect, disconnect, put in server)
   - [x] OnMapStart
   - [x] OnTick
 - [x] Server Information (current map, game time, tick rate, model precaching)
+- [x] Schema System Access (access player values like current weapon, money, location etc.) 
 
 ## Links
 - [Join the Discord](https://discord.gg/X7r3PmuYKq): Ask questions, provide suggestions
@@ -49,6 +49,41 @@ These features are the core of the platform and work pretty well/have a low risk
 ## Examples
 
 You can view the [example Warcraft plugin](https://github.com/roflmuffin/vspdotnet/tree/master/managed/ClassLibrary2) from the previous VSP.NET project to give you an idea of the kind of power this scripting runtime is capable of. This plugin shows how you can hook events, create commands & console variables, use third party libraries (SQLite) and do basic entity manipulation.
+
+### Basic Example with Game Event & Console Commands
+
+```csharp
+using CounterStrikeSharp.API.Core;
+
+namespace HelloWorldPlugin;
+
+public class HelloWorldPlugin : BasePlugin
+{
+    public override string ModuleName => "Hello World Plugin";
+
+    public override string ModuleVersion => "0.0.1";
+
+    public override void Load(bool hotReload)
+    {
+        Console.WriteLine("Hello World!");
+    }
+
+    [GameEventHandler]
+    public HookResult OnPlayerConnect(EventPlayerConnect @event, GameEventInfo info)
+    {
+        // Userid will give you a reference to a CCSPlayerController class
+        Log($"Player {@event.Userid.PlayerName} has connected!");
+
+        return HookResult.Continue;
+    }
+
+    [ConsoleCommand("issue_warning", "Issue warning to player")]
+    public void OnCommand(CCSPlayerController? player, CommandInfo command)
+    {
+        Log("You shouldn't be doing that!");
+    }
+}
+```
 
 ## Credits
 
