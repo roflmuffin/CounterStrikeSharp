@@ -1,5 +1,6 @@
 ﻿/**
- * This file has been modified from the demofile-net project.
+ * This project has been copied & modified from the demofile-net project under the MIT license. 
+ * See ACKNOWLEDGEMENTS file for more information.
  * https://github.com/saul/demofile-net
  */
 using System.Collections.Immutable;
