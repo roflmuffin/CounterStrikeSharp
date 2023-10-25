@@ -30,26 +30,25 @@
 #include "entity2/entitysystem.h"
 #include "interfaces/cs2_interfaces.h"
 
-counterstrikesharp::GlobalClass *counterstrikesharp::GlobalClass::head = nullptr;
+counterstrikesharp::GlobalClass* counterstrikesharp::GlobalClass::head = nullptr;
 
-extern "C" void InvokeNative(counterstrikesharp::fxNativeContext &context) {
-    if (context.nativeIdentifier == 0) return;
+extern "C" void InvokeNative(counterstrikesharp::fxNativeContext& context)
+{
+    if (context.nativeIdentifier == 0)
+        return;
 
     counterstrikesharp::ScriptEngine::InvokeNative(context);
 }
 
-class GameSessionConfiguration_t {};
+class GameSessionConfiguration_t
+{
+};
 
 namespace counterstrikesharp {
 
 SH_DECL_HOOK3_void(IServerGameDLL, GameFrame, SH_NOATTRIB, 0, bool, bool, bool);
-SH_DECL_HOOK3_void(INetworkServerService,
-                   StartupServer,
-                   SH_NOATTRIB,
-                   0,
-                   const GameSessionConfiguration_t &,
-                   ISource2WorldSession *,
-                   const char *);
+SH_DECL_HOOK3_void(INetworkServerService, StartupServer, SH_NOATTRIB, 0,
+                   const GameSessionConfiguration_t&, ISource2WorldSession*, const char*);
 
 CounterStrikeSharpMMPlugin gPlugin;
 
@@ -58,13 +57,15 @@ CounterStrikeSharpMMPlugin gPlugin;
 ConVar sample_cvar("sample_cvar", "42", 0);
 #endif
 
-CON_COMMAND_F(sample_command, "Sample command", FCVAR_NONE) {
+CON_COMMAND_F(sample_command, "Sample command", FCVAR_NONE)
+{
     globals::callbackManager.PrintCallbackDebug();
 }
 
 PLUGIN_EXPOSE(CounterStrikeSharpMMPlugin, gPlugin);
-bool CounterStrikeSharpMMPlugin::Load(
-    PluginId id, ISmmAPI *ismm, char *error, size_t maxlen, bool late) {
+bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, size_t maxlen,
+                                      bool late)
+{
     PLUGIN_SAVEVARS();
     globals::ismm = ismm;
 
@@ -111,19 +112,20 @@ bool CounterStrikeSharpMMPlugin::Load(
     return true;
 }
 
-void CounterStrikeSharpMMPlugin::Hook_StartupServer(const GameSessionConfiguration_t &config,
-                                                    ISource2WorldSession *,
-                                                    const char *) {
+void CounterStrikeSharpMMPlugin::Hook_StartupServer(const GameSessionConfiguration_t& config,
+                                                    ISource2WorldSession*, const char*)
+{
     globals::entitySystem = interfaces::pGameResourceServiceServer->GetGameEntitySystem();
     globals::entitySystem->AddListenerEntity(&globals::entityManager.entityListener);
+    globals::timerSystem.OnStartupServer();
 
     on_activate_callback->ScriptContext().Reset();
     on_activate_callback->ScriptContext().Push(globals::getGlobalVars()->mapname);
     on_activate_callback->Execute();
-
 }
 
-bool CounterStrikeSharpMMPlugin::Unload(char *error, size_t maxlen) {
+bool CounterStrikeSharpMMPlugin::Unload(char* error, size_t maxlen)
+{
     SH_REMOVE_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this,
                            &CounterStrikeSharpMMPlugin::Hook_GameFrame, true);
     SH_REMOVE_HOOK_MEMFUNC(INetworkServerService, StartupServer, globals::networkServerService,
@@ -134,17 +136,20 @@ bool CounterStrikeSharpMMPlugin::Unload(char *error, size_t maxlen) {
     return true;
 }
 
-void CounterStrikeSharpMMPlugin::AllPluginsLoaded() {
+void CounterStrikeSharpMMPlugin::AllPluginsLoaded()
+{
     /* This is where we'd do stuff that relies on the mod or other plugins
      * being initialized (for example, cvars added and events registered).
      */
 }
 
-void CounterStrikeSharpMMPlugin::AddTaskForNextFrame(std::function<void()> &&task) {
+void CounterStrikeSharpMMPlugin::AddTaskForNextFrame(std::function<void()>&& task)
+{
     m_nextTasks.push_back(std::forward<decltype(task)>(task));
 }
 
-void CounterStrikeSharpMMPlugin::Hook_GameFrame(bool simulating, bool bFirstTick, bool bLastTick) {
+void CounterStrikeSharpMMPlugin::Hook_GameFrame(bool simulating, bool bFirstTick, bool bLastTick)
+{
     /**
      * simulating:
      * ***********
@@ -153,7 +158,8 @@ void CounterStrikeSharpMMPlugin::Hook_GameFrame(bool simulating, bool bFirstTick
      */
     globals::timerSystem.OnGameFrame(simulating);
 
-    if (m_nextTasks.empty()) return;
+    if (m_nextTasks.empty())
+        return;
 
     CSSHARP_CORE_TRACE("Executing queued tasks of size: {0} on tick number {1}", m_nextTasks.size(),
                        globals::getGlobalVars()->tickcount);
@@ -166,59 +172,38 @@ void CounterStrikeSharpMMPlugin::Hook_GameFrame(bool simulating, bool bFirstTick
 }
 
 // Potentially might not work
-static ScriptCallback *on_map_end_callback;
-static bool NewLevelStarted = false;
-void CounterStrikeSharpMMPlugin::OnLevelInit(char const *pMapName,
-                                             char const *pMapEntities,
-                                             char const *pOldLevel,
-                                             char const *pLandmarkName,
-                                             bool loadGame,
-                                             bool background) {
+void CounterStrikeSharpMMPlugin::OnLevelInit(char const* pMapName, char const* pMapEntities,
+                                             char const* pOldLevel, char const* pLandmarkName,
+                                             bool loadGame, bool background)
+{
     CSSHARP_CORE_TRACE("name={0},mapname={1}", "LevelInit", pMapName);
-    NewLevelStarted = true;
-
-    if (!on_map_end_callback) {
-        on_map_end_callback = globals::callbackManager.CreateCallback("OnMapEnd");
-    }
 }
 
-void CounterStrikeSharpMMPlugin::OnLevelShutdown() {
-    if (NewLevelStarted) {
-        CALL_GLOBAL_LISTENER(OnLevelEnd());
+void CounterStrikeSharpMMPlugin::OnLevelShutdown() {}
 
-        if (on_map_end_callback && on_map_end_callback->GetFunctionCount()) {
-            on_map_end_callback->ScriptContext().Reset();
-            on_map_end_callback->Execute();
-        }
+bool CounterStrikeSharpMMPlugin::Pause(char* error, size_t maxlen) { return true; }
 
-        globals::timerSystem.RemoveMapChangeTimers();
+bool CounterStrikeSharpMMPlugin::Unpause(char* error, size_t maxlen) { return true; }
 
-        CSSHARP_CORE_TRACE("name={0}", "LevelShutdown");
-        NewLevelStarted = false;
-    }
-}
+const char* CounterStrikeSharpMMPlugin::GetLicense() { return "GNU GPLv3"; }
 
-bool CounterStrikeSharpMMPlugin::Pause(char *error, size_t maxlen) { return true; }
+const char* CounterStrikeSharpMMPlugin::GetVersion() { return "0.1.0"; }
 
-bool CounterStrikeSharpMMPlugin::Unpause(char *error, size_t maxlen) { return true; }
+const char* CounterStrikeSharpMMPlugin::GetDate() { return __DATE__; }
 
-const char *CounterStrikeSharpMMPlugin::GetLicense() { return "GNU GPLv3"; }
+const char* CounterStrikeSharpMMPlugin::GetLogTag() { return "CSSHARP"; }
 
-const char *CounterStrikeSharpMMPlugin::GetVersion() { return "0.1.0"; }
+const char* CounterStrikeSharpMMPlugin::GetAuthor() { return "Roflmuffin"; }
 
-const char *CounterStrikeSharpMMPlugin::GetDate() { return __DATE__; }
-
-const char *CounterStrikeSharpMMPlugin::GetLogTag() { return "CSSHARP"; }
-
-const char *CounterStrikeSharpMMPlugin::GetAuthor() { return "Roflmuffin"; }
-
-const char *CounterStrikeSharpMMPlugin::GetDescription() {
+const char* CounterStrikeSharpMMPlugin::GetDescription()
+{
     return "Counter Strike .NET Scripting Runtime";
 }
 
-const char *CounterStrikeSharpMMPlugin::GetName() { return "CounterStrikeSharp"; }
+const char* CounterStrikeSharpMMPlugin::GetName() { return "CounterStrikeSharp"; }
 
-const char *CounterStrikeSharpMMPlugin::GetURL() {
+const char* CounterStrikeSharpMMPlugin::GetURL()
+{
     return "https://github.com/roflmuffin/CounterStrikeSharp";
 }
-}  // namespace counterstrikesharp
+} // namespace counterstrikesharp

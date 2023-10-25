@@ -144,6 +144,7 @@ namespace TestPlugin
 
             // Hook global listeners defined by CounterStrikeSharp
             RegisterListener<Listeners.OnMapStart>(mapName => { Log($"Map {mapName} has started!"); });
+            RegisterListener<Listeners.OnMapEnd>(() => { Log($"Map has ended.");});
             RegisterListener<Listeners.OnClientConnect>((index, name, ip) =>
             {
                 Log($"Client {name} from {ip} has connected!");

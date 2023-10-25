@@ -67,8 +67,10 @@ class TimerSystem : public GlobalClass {
 public:
     TimerSystem();
     void OnAllInitialized() override;
+    void OnShutdown() override;
     void OnLevelEnd() override;
     void OnGameFrame(bool simulating);
+    void OnStartupServer();
     double CalculateNextThink(double last_think_time, float interval);
     void RunFrame();
     void RemoveMapChangeTimers();
@@ -76,11 +78,13 @@ public:
     void KillTimer(timers::Timer *timer);
     double GetTickedTime();
 
-private:
+
+  private:
     bool m_has_map_ticked = false;
     bool m_has_map_simulated = false;
     float m_last_ticked_time = 0.0f;
     ScriptCallback *m_on_tick_callback_ = nullptr;
+    ScriptCallback *on_map_end_callback = nullptr;
 
     std::vector<timers::Timer *> m_once_off_timers;
     std::vector<timers::Timer *> m_repeat_timers;

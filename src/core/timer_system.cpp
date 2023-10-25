@@ -43,36 +43,64 @@ namespace counterstrikesharp {
 namespace timers {
 double universal_time = 0.0f;
 double timer_next_think = 0.0f;
-}  // namespace timers
+} // namespace timers
 
 timers::Timer::Timer(float interval, float exec_time, CallbackT callback, int flags)
-    : m_interval(interval),
-      m_exec_time(exec_time),
-      m_flags(flags),
-      m_kill_me(false),
-      m_in_exec(false) {
+    : m_interval(interval), m_exec_time(exec_time), m_flags(flags), m_kill_me(false),
+      m_in_exec(false)
+{
     m_callback = globals::callbackManager.CreateCallback("Timer");
     m_callback->AddListener(callback);
 }
 
 timers::Timer::~Timer() { globals::callbackManager.ReleaseCallback(m_callback); }
 
-TimerSystem::TimerSystem() {
+TimerSystem::TimerSystem()
+{
     m_has_map_ticked = false;
     m_has_map_simulated = false;
     m_last_ticked_time = 0.0f;
 }
 
-void TimerSystem::OnAllInitialized() {
+void TimerSystem::OnAllInitialized()
+{
     m_on_tick_callback_ = globals::callbackManager.CreateCallback("OnTick");
+    on_map_end_callback = globals::callbackManager.CreateCallback("OnMapEnd");
 }
 
-void TimerSystem::OnLevelEnd() {
+void TimerSystem::OnShutdown()
+{
+    globals::callbackManager.ReleaseCallback(m_on_tick_callback_);
+    globals::callbackManager.ReleaseCallback(on_map_end_callback);
+}
+
+void TimerSystem::OnLevelEnd()
+{
+    if (on_map_end_callback && on_map_end_callback->GetFunctionCount()) {
+        on_map_end_callback->ScriptContext().Reset();
+        on_map_end_callback->Execute();
+    }
+
+    globals::timerSystem.RemoveMapChangeTimers();
+
     m_has_map_simulated = false;
     m_has_map_ticked = false;
 }
 
-void TimerSystem::OnGameFrame(bool simulating) {
+void TimerSystem::OnStartupServer()
+{
+    if (m_has_map_ticked) {
+        CALL_GLOBAL_LISTENER(OnLevelEnd());
+
+        CSSHARP_CORE_TRACE("name={0}", "LevelShutdown");
+    }
+
+    m_has_map_ticked = false;
+    m_has_map_simulated = false;
+}
+
+void TimerSystem::OnGameFrame(bool simulating)
+{
     if (simulating && m_has_map_ticked) {
         timers::universal_time += globals::getGlobalVars()->curtime - m_last_ticked_time;
         if (!m_has_map_simulated) {
@@ -100,7 +128,8 @@ void TimerSystem::OnGameFrame(bool simulating) {
     globals::playerManager.RunAuthChecks();
 }
 
-double TimerSystem::CalculateNextThink(double last_think_time, float interval) {
+double TimerSystem::CalculateNextThink(double last_think_time, float interval)
+{
     if (timers::universal_time - last_think_time - interval <= 0.1) {
         return last_think_time + interval;
     } else {
@@ -108,7 +137,8 @@ double TimerSystem::CalculateNextThink(double last_think_time, float interval) {
     }
 }
 
-void TimerSystem::RunFrame() {
+void TimerSystem::RunFrame()
+{
     for (int i = m_once_off_timers.size() - 1; i >= 0; i--) {
         auto timer = m_once_off_timers[i];
         if (timers::universal_time >= timer->m_exec_time) {
@@ -140,7 +170,8 @@ void TimerSystem::RunFrame() {
     }
 }
 
-void TimerSystem::RemoveMapChangeTimers() {
+void TimerSystem::RemoveMapChangeTimers()
+{
     for (auto timer : m_once_off_timers) {
         if (timer->m_flags & TIMER_FLAG_NO_MAPCHANGE) {
             KillTimer(timer);
@@ -154,7 +185,8 @@ void TimerSystem::RemoveMapChangeTimers() {
     }
 }
 
-timers::Timer *TimerSystem::CreateTimer(float interval, CallbackT callback, int flags) {
+timers::Timer* TimerSystem::CreateTimer(float interval, CallbackT callback, int flags)
+{
     float exec_time = timers::universal_time + interval;
 
     auto timer = new timers::Timer(interval, exec_time, callback, flags);
@@ -168,8 +200,10 @@ timers::Timer *TimerSystem::CreateTimer(float interval, CallbackT callback, int 
     return timer;
 }
 
-void TimerSystem::KillTimer(timers::Timer *timer) {
-    if (!timer) return;
+void TimerSystem::KillTimer(timers::Timer* timer)
+{
+    if (!timer)
+        return;
 
     if (std::find(m_repeat_timers.begin(), m_repeat_timers.end(), timer) == m_repeat_timers.end() &&
         std::find(m_once_off_timers.begin(), m_once_off_timers.end(), timer) ==
@@ -177,7 +211,8 @@ void TimerSystem::KillTimer(timers::Timer *timer) {
         return;
     }
 
-    if (timer->m_kill_me) return;
+    if (timer->m_kill_me)
+        return;
 
     // If were executing, make sure it doesn't run again next time.
     if (timer->m_in_exec) {
@@ -187,7 +222,7 @@ void TimerSystem::KillTimer(timers::Timer *timer) {
 
     if (timer->m_flags & TIMER_FLAG_REPEAT) {
         auto it = std::remove_if(m_repeat_timers.begin(), m_repeat_timers.end(),
-                                 [timer](timers::Timer *i) { return timer == i; });
+                                 [timer](timers::Timer* i) { return timer == i; });
 
         bool success;
         if ((success = it != m_repeat_timers.end()))
@@ -195,7 +230,7 @@ void TimerSystem::KillTimer(timers::Timer *timer) {
         delete timer;
     } else {
         auto it = std::remove_if(m_once_off_timers.begin(), m_once_off_timers.end(),
-                                 [timer](timers::Timer *i) { return timer == i; });
+                                 [timer](timers::Timer* i) { return timer == i; });
 
         bool success;
         if ((success = it != m_once_off_timers.end()))
@@ -205,4 +240,4 @@ void TimerSystem::KillTimer(timers::Timer *timer) {
 }
 
 double TimerSystem::GetTickedTime() { return timers::universal_time; }
-}  // namespace counterstrikesharp
+} // namespace counterstrikesharp
