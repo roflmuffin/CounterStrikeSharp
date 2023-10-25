@@ -15,6 +15,7 @@ Download the latest release of CounterStrikeSharp from <a href="https://github.c
 
 :::caution[.NET Runtime]
 If this is your first time installing, you will need to download the `with-runtime` version. This includes a copy of the .NET runtime, which is required to run the plugin.
+Depending on the os you might also need to install `libicu` / `icu-libs` / `libicu-dev` using your package manager for .NET to run.
 
 Subsequent upgrades will not require the runtime, unless a version bump of the .NET runtime is required (i.e. from 7.0.x to 8.0.x). We will inform you when this occurs.
 :::

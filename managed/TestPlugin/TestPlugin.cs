@@ -218,6 +218,19 @@ namespace TestPlugin
             Log("cssharp_attribute called!");
         }
 
+        [ConsoleCommand("guns", "List guns")]
+        public void OnCommandGuns(CCSPlayerController? player, CommandInfo command)
+        {
+            if (player == null) return;
+            if (!player.PlayerPawn.IsValid) return;
+            
+            foreach (var weapon in player.PlayerPawn.Value.WeaponServices.MyWeapons)
+            {
+                // We don't currently have a `ReplyToCommand` equivalent so just print to chat for now.
+                player.PrintToChat(weapon.Value.DesignerName);
+            }
+        }
+
         private HookResult GenericEventHandler<T>(T @event, GameEventInfo info) where T : GameEvent
         {
             Log($"Event found {@event.Handle:X}, event name: {@event.EventName} dont broadcast: {info.DontBroadcast}");

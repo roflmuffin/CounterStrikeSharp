@@ -128,7 +128,6 @@ ConCommandInfo* ConCommandManager::AddOrFindCommand(const char* name,
             CSSHARP_CORE_TRACE("[ConCommandManager] Creating callbacks for command {}", name);
 
             p_info->command = conCommand;
-            p_info->sdn = true;
             p_info->callback_pre = globals::callbackManager.CreateCallback(name);
             p_info->callback_post = globals::callbackManager.CreateCallback(name);
             p_info->server_only = server_only;
@@ -217,17 +216,15 @@ ConCommandInfo* ConCommandManager::FindCommand(const char* name) {
         if (!p_cmd.IsValid()) return nullptr;
 
         p_info = new ConCommandInfo();
+        p_info->command = globals::cvars->GetCommand(p_cmd);
 
+        p_info->p_cmd = *p_info->command->GetRef();
         p_info->callback_pre = globals::callbackManager.CreateCallback(name);
         p_info->callback_post = globals::callbackManager.CreateCallback(name);
         p_info->server_only = false;
 
-        if (p_cmd.IsValid()) {
-            // p_info->p_cmd = p_cmd.IsValid()
-
-            m_cmd_list.push_back(p_info);
-            m_cmd_lookup[name] = p_info;
-        }
+        m_cmd_list.push_back(p_info);
+        m_cmd_lookup[name] = p_info;
 
         return p_info;
     }
@@ -252,6 +249,10 @@ bool ConCommandManager::InternalDispatch(CPlayerSlot slot, const CCommand* args)
                 continue;
             }
         }
+    }
+
+    if (!p_info) {
+        return false;
     }
 
     int realClient = slot.Get();

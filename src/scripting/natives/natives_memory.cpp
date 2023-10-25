@@ -39,48 +39,11 @@ byte *ConvertToByteArray(const char *str, size_t *outLength) {
     return result;
 }
 
-void *FindSignature(ScriptContext &scriptContext) {
+void *FindSignatureNative(ScriptContext &scriptContext) {
     auto moduleName = scriptContext.GetArgument<const char *>(0);
     auto bytesStr = scriptContext.GetArgument<const char *>(1);
 
-    size_t iSigLength;
-    auto sigBytes = ConvertToByteArray(bytesStr, &iSigLength);
-
-    auto module = dlopen(moduleName, RTLD_NOW);
-    if (module == nullptr) {
-        scriptContext.ThrowNativeError("Could not find module");
-        return nullptr;
-    }
-
-    void *moduleBase;
-    size_t moduleSize;
-
-    if (GetModuleInformation(module, &moduleBase, &moduleSize) != 0) {
-        scriptContext.ThrowNativeError("Failed to get module info");
-        return nullptr;
-    }
-
-    unsigned char *pMemory;
-    void *returnAddr = nullptr;
-
-    pMemory = (byte *)moduleBase;
-
-    for (size_t i = 0; i < moduleSize; i++) {
-        size_t matches = 0;
-        while (*(pMemory + i + matches) == sigBytes[matches] || sigBytes[matches] == '\x2A') {
-            matches++;
-            if (matches == iSigLength) {
-                returnAddr = (void *)(pMemory + i);
-            }
-        }
-    }
-
-    if (returnAddr == nullptr) {
-        scriptContext.ThrowNativeError("Could not find signature");
-        return nullptr;
-    }
-
-    return returnAddr;
+    return FindSignature(moduleName, bytesStr);
 }
 
 ValveFunction *CreateVirtualFunctionBySignature(ScriptContext &script_context) {
@@ -90,37 +53,7 @@ ValveFunction *CreateVirtualFunctionBySignature(ScriptContext &script_context) {
     auto num_arguments = script_context.GetArgument<int>(3);
     auto return_type = script_context.GetArgument<DataType_t>(4);
 
-    size_t iSigLength;
-    auto sigBytes = ConvertToByteArray(signature_hex_string, &iSigLength);
-
-    auto module = dlopen(binary_name, RTLD_NOW);
-    if (module == nullptr) {
-        script_context.ThrowNativeError("Could not find module");
-        return nullptr;
-    }
-
-    void *moduleBase;
-    size_t moduleSize;
-
-    if (GetModuleInformation(module, &moduleBase, &moduleSize) != 0) {
-        script_context.ThrowNativeError("Failed to get module info");
-        return nullptr;
-    }
-
-    unsigned char *pMemory;
-    void *function_addr = nullptr;
-
-    pMemory = (byte *)moduleBase;
-
-    for (size_t i = 0; i < moduleSize; i++) {
-        size_t matches = 0;
-        while (*(pMemory + i + matches) == sigBytes[matches] || sigBytes[matches] == '\x2A') {
-            matches++;
-            if (matches == iSigLength) {
-                function_addr = (void *)(pMemory + i);
-            }
-        }
-    }
+    auto* function_addr = FindSignature(binary_name, signature_hex_string);
 
     if (function_addr == nullptr) {
         script_context.ThrowNativeError("Could not find signature");
@@ -226,7 +159,7 @@ REGISTER_NATIVES(memory, {
     ScriptEngine::RegisterNativeHandler("EXECUTE_VIRTUAL_FUNCTION", ExecuteVirtualFunction);
     // ScriptEngine::RegisterNativeHandler("HOOK_FUNCTION", HookFunction);
     // ScriptEngine::RegisterNativeHandler("UNHOOK_FUNCTION", UnhookFunction);
-    ScriptEngine::RegisterNativeHandler("FIND_SIGNATURE", FindSignature);
+    ScriptEngine::RegisterNativeHandler("FIND_SIGNATURE", FindSignatureNative);
     ScriptEngine::RegisterNativeHandler("GET_NETWORK_VECTOR_SIZE", GetNetworkVectorSize);
     ScriptEngine::RegisterNativeHandler("GET_NETWORK_VECTOR_ELEMENT_AT", GetNetworkVectorElementAt);
 })

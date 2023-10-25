@@ -160,9 +160,7 @@ bool EventManager::OnFireEvent(IGameEvent* pEvent, bool bDontBroadcast)
     }
 
     szName = pEvent->GetName();
-
-    CSSHARP_CORE_TRACE("OnFireEvent {}", szName);
-
+    
     auto I = m_hooksMap.find(szName);
     if (I != m_hooksMap.end()) {
         auto* pCallback = I->second->m_pPreHook;

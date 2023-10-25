@@ -8,6 +8,8 @@ add_subdirectory(libraries/spdlog)
 add_subdirectory(libraries/dyncall)
 add_subdirectory(libraries/funchook)
 
+set_property(TARGET funchook-static PROPERTY POSITION_INDEPENDENT_CODE ON)
+
 SET(SOURCE_FILES
         src/mm_plugin.cpp
         src/mm_plugin.h
@@ -68,6 +70,8 @@ SET(SOURCE_FILES
         src/scripting/natives/natives_entities.cpp
         src/core/managers/entity_manager.cpp
         src/core/managers/entity_manager.h
+        src/core/managers/chat_manager.cpp
+        src/core/managers/chat_manager.h
 )
 
 set(PROTO_DIRS -I${CMAKE_CURRENT_SOURCE_DIR}/libraries/GameTracking-CS2/Protobufs)

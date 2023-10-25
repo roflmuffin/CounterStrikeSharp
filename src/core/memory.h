@@ -13,3 +13,4 @@
 #define MODULE_EXT ".so"
 
 int GetModuleInformation(void *hModule, void **base, size_t *length);
+void* FindSignature(const char* moduleName, const char* bytesStr);

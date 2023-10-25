@@ -1,5 +1,11 @@
 #pragma once
 
+#define protected public
+#define private public
+#include <tier1/convar.h>
+#undef protected
+#undef private
+
 #include "ISmmAPI.h"
 #include "eiface.h"
 #include "iserver.h"
@@ -41,6 +47,7 @@ class TimerSystem;
 class ChatCommands;
 class HookManager;
 class EntityManager;
+class ChatManager;
 
 namespace globals {
 
@@ -81,6 +88,8 @@ extern MenuManager menuManager;
 extern EntityManager entityManager;
 extern TimerSystem timerSystem;
 extern ChatCommands chatCommands;
+extern ChatManager chatManager;
+
 extern HookManager hookManager;
 extern SourceHook::ISourceHook *source_hook;
 extern int source_hook_pluginid;
