@@ -60,7 +60,6 @@ public:
     ScriptCallback* GetCallback() { return callback_pre; }
 
 private:
-    bool sdn;
     ConCommandRefAbstract p_cmd;
     ConCommand* command;
     ScriptCallback* callback_pre;

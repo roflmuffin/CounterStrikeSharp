@@ -13,6 +13,7 @@
 #include "log.h"
 #include "utils/virtual.h"
 #include "core/managers/con_command_manager.h"
+#include "core/managers/chat_manager.h"
 #include "memory_module.h"
 #include "interfaces/cs2_interfaces.h"
 #include "core/managers/entity_manager.h"
@@ -68,6 +69,7 @@ PlayerManager playerManager;
 TimerSystem timerSystem;
 ConCommandManager conCommandManager;
 EntityManager entityManager;
+ChatManager chatManager;
 
 void Initialize() {
     modules::engine = new modules::CModule(ROOTBIN, "engine2");
