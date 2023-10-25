@@ -19,6 +19,7 @@
 #include "scripting/callback_manager.h"
 #include "characterset.h"
 
+#include <igameevents.h>
 #include <baseentity.h>
 #include <public/eiface.h>
 #include "core/memory.h"
@@ -58,6 +59,17 @@ void DetourHostSay(CBaseEntity* pController, CCommand& args, bool teamonly, int 
     }
 
     m_pHostSay(pController, args, teamonly, unk1, unk2);
+
+    if (pController) {
+        auto pEvent = globals::gameEventManager->CreateEvent("player_chat");
+        if (pEvent) {
+            pEvent->SetBool("teamonly", teamonly);
+            pEvent->SetInt("userid", pController->GetEntityIndex().Get());
+            pEvent->SetString("text", args[1]);
+
+            globals::gameEventManager->FireEvent(pEvent, true);
+        }
+    }
 }
 
 bool ChatManager::OnSayCommandPre(CBaseEntity* pController, CCommand& command) {}
