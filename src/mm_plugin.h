@@ -1,5 +1,3 @@
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "readability-identifier-naming"
 /**
  * vim: set ts=4 sw=4 tw=99 noet :
  * ======================================================
@@ -71,6 +69,4 @@ extern CounterStrikeSharpMMPlugin gPlugin;
 PLUGIN_GLOBALVARS();
 
 #endif  //_INCLUDE_METAMOD_SOURCE_STUB_PLUGIN_H_
-
-#pragma clang diagnostic pop
 }

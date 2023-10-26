@@ -126,7 +126,7 @@ void ValveFunction::Call(ScriptContext& script_context, int offset) {
     dcReset(g_pCallVM);
     dcMode(g_pCallVM, m_iCallingConvention);
 
-    for (int i = 0; i < m_Args.size(); i++) {
+    for (size_t i = 0; i < m_Args.size(); i++) {
         int contextIndex = i + offset;
         switch (m_Args[i]) {
             case DATA_TYPE_BOOL:

@@ -72,7 +72,9 @@ void DetourHostSay(CBaseEntity* pController, CCommand& args, bool teamonly, int 
     }
 }
 
-bool ChatManager::OnSayCommandPre(CBaseEntity* pController, CCommand& command) {}
+bool ChatManager::OnSayCommandPre(CBaseEntity* pController, CCommand& command) {
+    return false;
+}
 
 bool ChatManager::OnSayCommandPost(CBaseEntity* pController, CCommand& command)
 {
@@ -89,6 +91,13 @@ bool ChatManager::InternalDispatch(CBaseEntity* pPlayerController, const char* s
     ppArgV[0] = strdup(szTriggerPhase);
     for (int i = 1; i < fullCommand.ArgC(); i++) {
         ppArgV[i] = fullCommand.Arg(i);
+    }
+
+
+    auto command = globals::conCommandManager.FindCommand((std::string("css_") + szTriggerPhase).c_str());
+
+    if (command) {
+        ppArgV[0] = (std::string("css_") + szTriggerPhase).c_str();
     }
 
     CCommand commandCopy(fullCommand.ArgC(), ppArgV);

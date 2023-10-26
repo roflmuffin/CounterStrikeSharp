@@ -1,4 +1,3 @@
-#pragma ide diagnostic ignored "readability-identifier-naming"
 /**
  * vim: set ts=4 sw=4 tw=99 noet :
  * ======================================================
@@ -164,7 +163,7 @@ void CounterStrikeSharpMMPlugin::Hook_GameFrame(bool simulating, bool bFirstTick
     CSSHARP_CORE_TRACE("Executing queued tasks of size: {0} on tick number {1}", m_nextTasks.size(),
                        globals::getGlobalVars()->tickcount);
 
-    for (int i = 0; i < m_nextTasks.size(); i++) {
+    for (size_t i = 0; i < m_nextTasks.size(); i++) {
         m_nextTasks[i]();
     }
 

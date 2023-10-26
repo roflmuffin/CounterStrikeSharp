@@ -218,7 +218,7 @@ namespace TestPlugin
             Log("cssharp_attribute called!");
         }
 
-        [ConsoleCommand("guns", "List guns")]
+        [ConsoleCommand("css_guns", "List guns")]
         public void OnCommandGuns(CCSPlayerController? player, CommandInfo command)
         {
             if (player == null) return;
@@ -229,6 +229,12 @@ namespace TestPlugin
                 // We don't currently have a `ReplyToCommand` equivalent so just print to chat for now.
                 player.PrintToChat(weapon.Value.DesignerName);
             }
+        }
+        
+        [ConsoleCommand("css_pause", "Pause Game")]
+        public void OnCommandPause(CCSPlayerController? player, CommandInfo command)
+        {
+            Log("Pause");
         }
 
         private HookResult GenericEventHandler<T>(T @event, GameEventInfo info) where T : GameEvent

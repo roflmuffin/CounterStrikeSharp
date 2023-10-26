@@ -37,13 +37,8 @@
 #include "core/globals.h"
 #include "core/global_listener.h"
 #include "scripting/script_engine.h"
-
-// Required to access convar methods :(
-#define protected public
-#define private public
-#include <tier1/convar.h>
-#undef protected
-#undef private
+#include <string>
+#include "playerslot.h"
 
 namespace counterstrikesharp {
 class ScriptCallback;
