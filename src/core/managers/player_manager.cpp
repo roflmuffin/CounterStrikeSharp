@@ -297,7 +297,7 @@ void PlayerManager::OnClientDisconnect_Post(CPlayerSlot slot,
 void PlayerManager::OnLevelEnd() {
     CSSHARP_CORE_TRACE("[PlayerManager][OnLevelEnd]");
 
-    for (int i = 1; i <= m_max_clients; i++) {
+    for (int i = 0; i <= m_max_clients; i++) {
         if (m_players[i].IsConnected()) {
             OnClientDisconnect(m_players[i].m_slot, 0, m_players[i].GetName(), 0,
                                m_players[i].GetIpAddress());
@@ -461,7 +461,7 @@ void PlayerManager::RunAuthChecks() {
 
     m_last_auth_check_time = globals::getGlobalVars()->curtime;
 
-    for (int i = 1; i <= m_max_clients; i++) {
+    for (int i = 0; i <= m_max_clients; i++) {
         if (m_players[i].IsConnected()) {
             if (m_players[i].IsAuthorized() || m_players[i].IsFakeClient()) continue;
 
