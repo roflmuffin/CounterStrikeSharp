@@ -7,18 +7,18 @@ using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Utils;
 
-namespace TestPlugin;
+namespace CounterStrikeSharp.API.Modules.Menu;
 
 public class ChatMenuOption
 {
-    public ChatMenuOption(string text, bool disabled, Action<CCSPlayerController> onSelect)
+    public ChatMenuOption(string text, bool disabled, Action<CCSPlayerController, ChatMenuOption> onSelect)
     {
         Text = text;
         Disabled = disabled;
         OnSelect = onSelect;
     }
 
-    public Action<CCSPlayerController> OnSelect { get; set; }
+    public Action<CCSPlayerController, ChatMenuOption> OnSelect { get; set; }
 
     public string Text { get; set; }
     public bool Disabled { get; set; }
@@ -34,7 +34,7 @@ public class ChatMenu
         Title = title;
     }
 
-    public ChatMenuOption AddMenuOption(string display, Action<CCSPlayerController> onSelect, bool disabled = false)
+    public ChatMenuOption AddMenuOption(string display, Action<CCSPlayerController, ChatMenuOption> onSelect, bool disabled = false)
     {
         var option = new ChatMenuOption(display, disabled, onSelect);
         MenuOptions.Add(option);
@@ -116,7 +116,7 @@ public class ChatMenuInstance
 
         if (!menuOption.Disabled)
         {
-            menuOption.OnSelect(_player);
+            menuOption.OnSelect(_player, menuOption);
             Reset();
         }
     }

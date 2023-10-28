@@ -24,6 +24,7 @@ using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Memory;
+using CounterStrikeSharp.API.Modules.Menu;
 using CounterStrikeSharp.API.Modules.Utils;
 
 namespace TestPlugin
@@ -39,7 +40,7 @@ namespace TestPlugin
                 $"Test Plugin has been loaded, and the hot reload flag was {hotReload}, path is {ModulePath}");
 
             Console.WriteLine($"Max Players: {Server.MaxPlayers}");
-            
+
             SetupGameEvents();
             SetupListeners();
             SetupCommands();
@@ -48,7 +49,7 @@ namespace TestPlugin
             // ValveInterface provides pointers to loaded modules via Interface Name exposed from the engine (e.g. Source2Server001)
             var server = ValveInterface.Server;
             Log($"Server pointer found @ {server.Pointer:X}");
-            
+
             // You can use `ModuleDirectory` to get the directory of the plugin (for storing config files, saving database files etc.)
             File.WriteAllText(Path.Join(ModuleDirectory, "example.txt"),
                 $"Test file created by TestPlugin at {DateTime.Now}");
@@ -206,15 +207,16 @@ namespace TestPlugin
             {
                 var i1 = i;
                 largeMenu.AddMenuOption(new Random().NextSingle().ToString(),
-                    (player) => player.PrintToChat($"You just selected {i1}"), i1 % 5 == 0);
+                    (player, option) => player.PrintToChat($"You just selected {option.Text}"), i1 % 5 == 0);
             }
 
-            var smallMenu = new ChatMenu("Small Menu");
-            smallMenu.AddMenuOption("weapon_ak47", (player) => player.GiveNamedItem("weapon_ak47"));
-            smallMenu.AddMenuOption("weapon_p250", (player) => player.GiveNamedItem("weapon_p250"));
+            var giveItemMenu = new ChatMenu("Small Menu");
+            var handleGive = (CCSPlayerController player, ChatMenuOption option) => player.GiveNamedItem(option.Text);
+            giveItemMenu.AddMenuOption("weapon_ak47", handleGive);
+            giveItemMenu.AddMenuOption("weapon_p250", handleGive);
 
             AddCommand("css_menu", "Opens example menu", (player, info) => { ChatMenus.OpenMenu(player, largeMenu); });
-            AddCommand("css_anothermenu", "a", (player, info) => { ChatMenus.OpenMenu(player, smallMenu); });
+            AddCommand("css_gunmenu", "Gun Menu", (player, info) => { ChatMenus.OpenMenu(player, giveItemMenu); });
 
             for (int i = 1; i <= 9; i++)
             {

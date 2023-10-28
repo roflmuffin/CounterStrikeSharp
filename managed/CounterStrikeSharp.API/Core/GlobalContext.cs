@@ -20,6 +20,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using CounterStrikeSharp.API.Modules.Commands;
+using CounterStrikeSharp.API.Modules.Menu;
 
 namespace CounterStrikeSharp.API.Core
 {
