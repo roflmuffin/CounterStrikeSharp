@@ -96,13 +96,15 @@ bool ChatManager::InternalDispatch(CBaseEntity* pPlayerController, const char* s
 
     CSSHARP_CORE_TRACE("Trigger phrase found: {}", szTriggerPhase);
 
-    CSSHARP_CORE_TRACE("Searching for command with name: {}", (std::string("css_") + szTriggerPhase).c_str());
-    auto command = globals::conCommandManager.FindCommand((std::string("css_") + szTriggerPhase).c_str());
+    auto prefixedPhrase = std::string("css_") + szTriggerPhase;
 
-    CSSHARP_CORE_TRACE("Found command with name: {}: {}", (std::string("css_") + szTriggerPhase).c_str(), command ? "true" : "false");
+    CSSHARP_CORE_TRACE("Searching for command with name: {}", prefixedPhrase.c_str());
+    auto command = globals::conCommandManager.FindCommand(prefixedPhrase.c_str());
+
+    CSSHARP_CORE_TRACE("Found command with name: {}: {}", prefixedPhrase.c_str(), command ? "true" : "false");
 
     if (command) {
-        ppArgV[0] = (std::string("css_") + szTriggerPhase).c_str();
+        ppArgV[0] = prefixedPhrase.c_str();
         CSSHARP_CORE_TRACE("Setting command string to {}", ppArgV[0]);
     }
 
