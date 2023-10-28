@@ -8,6 +8,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGen.Natives", "..\tooli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CounterStrikeSharp.SchemaGen", "CounterStrikeSharp.SchemaGen\CounterStrikeSharp.SchemaGen.csproj", "{D470646C-9BBB-4030-B267-58537A4B0026}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarcraftPlugin", "..\examples\WarcraftPlugin\WarcraftPlugin.csproj", "{DAE388A8-94A4-4C24-9450-E34677EEA2CF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{7DF99C35-881D-4FF2-B1C9-246BD3DECB9A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +34,13 @@ Global
 		{D470646C-9BBB-4030-B267-58537A4B0026}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D470646C-9BBB-4030-B267-58537A4B0026}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D470646C-9BBB-4030-B267-58537A4B0026}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAE388A8-94A4-4C24-9450-E34677EEA2CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAE388A8-94A4-4C24-9450-E34677EEA2CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAE388A8-94A4-4C24-9450-E34677EEA2CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAE388A8-94A4-4C24-9450-E34677EEA2CF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{57E64289-5D69-4AA1-BEF0-D0D96A55EE8F} = {7DF99C35-881D-4FF2-B1C9-246BD3DECB9A}
+		{DAE388A8-94A4-4C24-9450-E34677EEA2CF} = {7DF99C35-881D-4FF2-B1C9-246BD3DECB9A}
 	EndGlobalSection
 EndGlobal

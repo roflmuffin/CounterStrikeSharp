@@ -58,7 +58,7 @@ namespace CounterStrikeSharp.API
         }
 
         public static string GameDirectory => NativeAPI.GetGameDirectory();
-        
+
         public static int MaxPlayers => NativeAPI.GetCommandParamValue("-maxplayers", DataType.DATA_TYPE_INT, 64);
 
         public static bool IsMapValid(string mapName) => NativeAPI.IsMapValid(mapName);
@@ -75,6 +75,11 @@ namespace CounterStrikeSharp.API
                 var filePath = Path.Join(GameDirectory, "maps", $"{map}.bsp");
                 return File.Exists(filePath) && IsMapValid(map);
             }).ToArray();
+        }
+
+        public static void PrintToConsole(string s)
+        {
+            Console.WriteLine(s);
         }
     }
 }

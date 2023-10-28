@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "WarcraftPlugin": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

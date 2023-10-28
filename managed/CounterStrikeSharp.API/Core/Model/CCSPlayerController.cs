@@ -42,4 +42,6 @@ public partial class CCSPlayerController
     {
         VirtualFunctions.ClientPrint(this.Handle, HudDestination.Center, message, 0, 0, 0, 0);
     }
+
+    public bool IsBot => ((PlayerFlags)Flags).HasFlag(PlayerFlags.FL_FAKECLIENT);
 }
