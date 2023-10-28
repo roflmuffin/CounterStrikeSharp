@@ -18,4 +18,6 @@ public static class VirtualFunctions
     public static Action<IntPtr, string, IntPtr, IntPtr, IntPtr, IntPtr> GiveNamedItem =
         VirtualFunction.CreateVoid<IntPtr, string, IntPtr, IntPtr, IntPtr, IntPtr>(
             GameData.GetSignature("GiveNamedItem"));
+
+    public static Action<IntPtr, byte> SwitchTeam = VirtualFunction.CreateVoid<IntPtr, byte>(GameData.GetSignature("CCSPlayerController_SwitchTeam"));
 }

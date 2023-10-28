@@ -14,6 +14,11 @@ public partial class CCSPlayerController
         }
     }
 
+    public void SwitchTeam(CsTeam team)
+    {
+        VirtualFunctions.SwitchTeam(this.Handle, (byte)team);
+    }
+
     public void PrintToConsole(string message)
     {
         NativeAPI.PrintToConsole((int)EntityIndex.Value.Value, message);

@@ -54,6 +54,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
             { typeof(ulong), DataType.DATA_TYPE_ULONG },
             { typeof(short), DataType.DATA_TYPE_VARIANT },
             { typeof(sbyte), DataType.DATA_TYPE_UCHAR },
+            { typeof(byte), DataType.DATA_TYPE_CHAR },
         };
 
         public static DataType? ToDataType(this Type type)

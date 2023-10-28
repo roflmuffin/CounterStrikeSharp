@@ -187,6 +187,19 @@ namespace TestPlugin
                         $"CounterStrikeSharp - a test command was called by {new SteamID(player.SteamID).SteamId2} with {info.ArgString}");
                 });
 
+            AddCommand("css_changeteam", "change team", (player, info) =>
+            {
+                if (player?.IsValid != true) return;
+
+                if ((CsTeam)player.TeamNum == CsTeam.Terrorist)
+                {
+                    player.SwitchTeam(CsTeam.CounterTerrorist);
+                }
+                else
+                {
+                    player.SwitchTeam(CsTeam.Terrorist);
+                }
+            });
             // Example vfunc call that usually gets the game event manager pointer
             // by calling the func at offset 91 then subtracting 8 from the result pointer.
             // This value is asserted against the native code that points to the same function.
@@ -218,6 +231,19 @@ namespace TestPlugin
             Log("cssharp_attribute called!");
         }
 
+        [ConsoleCommand("css_changelevel", "Changes map")]
+        public void OnCommandChangeMap(CCSPlayerController? player, CommandInfo command)
+        {
+            var mapName = command.ArgByIndex(1);
+            if (Server.IsMapValid(mapName))
+            {
+                Server.ExecuteCommand($"changelevel \"{mapName}\"");
+            }
+            else
+            {
+                player.PrintToChat($"Level  \"{mapName}\" is invalid.");
+            }
+        }
         [ConsoleCommand("css_guns", "List guns")]
         public void OnCommandGuns(CCSPlayerController? player, CommandInfo command)
         {
