@@ -19,7 +19,7 @@ using System;
 namespace CounterStrikeSharp.API
 {
     [Flags]
-    public enum PlayerButtons
+    public enum PlayerButtons : UInt64
     {
         Attack = (1 << 0),
         Jump = (1 << 1),
@@ -37,15 +37,14 @@ namespace CounterStrikeSharp.API
         Reload = (1 << 13),
         Alt1 = (1 << 14),
         Alt2 = (1 << 15),
-        Score = (1 << 16),   /**< Used by client.dll for when scoreboard is held down */
-        Speed = (1 << 17),   /**< Player is holding the speed key */
-        Walk = (1 << 18),   /**< Player holding walk key */
-        Zoom = (1 << 19),   /**< Zoom key for HUD zoom */
-        Weapon1 = (1 << 20),   /**< weapon defines these bits */
-        Weapon2 = (1 << 21),   /**< weapon defines these bits */
-        Bullrush = (1 << 22),
-        Grenade1 = (1 << 23),   /**< grenade 1 */
-        Grenade2 = (1 << 24),   /**< grenade 2 */
-        Attack3 = (1 << 25)
+        Speed = (1 << 16),   /**< Player is holding the speed key */
+        Walk = (1 << 17),   /**< Player holding walk key */
+        Zoom = (1 << 18),   /**< Zoom key for HUD zoom */
+        Weapon1 = (1 << 19),   /**< weapon defines these bits */
+        Weapon2 = (1 << 20),   /**< weapon defines these bits */
+        Bullrush = (1 << 21),
+        Grenade1 = (1 << 22),   /**< grenade 1 */
+        Grenade2 = (1 << 23),   /**< grenade 2 */
+        Attack3 = (1 << 24)
     }
 }
