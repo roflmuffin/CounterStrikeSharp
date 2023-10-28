@@ -80,7 +80,9 @@ namespace WarcraftPlugin.Races
 
             directionVec *= distance;
 
-            // Player.PlayerPawn.Value.BaseVelocity = directionVec;
+            Player.PlayerPawn.Value.AbsVelocity.X = directionVec.X;
+            Player.PlayerPawn.Value.AbsVelocity.Y = directionVec.Y;
+            Player.PlayerPawn.Value.AbsVelocity.Z = directionVec.Z;
         }
 
         private void PlayerHurtOther(GameEvent obj)
