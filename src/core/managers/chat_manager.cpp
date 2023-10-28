@@ -61,7 +61,7 @@ void DetourHostSay(CBaseEntity* pController, CCommand& args, bool teamonly, int 
     m_pHostSay(pController, args, teamonly, unk1, unk2);
 
     if (pController) {
-        auto pEvent = globals::gameEventManager->CreateEvent("player_chat");
+        auto pEvent = globals::gameEventManager->CreateEvent("player_chat", true);
         if (pEvent) {
             pEvent->SetBool("teamonly", teamonly);
             pEvent->SetInt("userid", pController->GetEntityIndex().Get());
