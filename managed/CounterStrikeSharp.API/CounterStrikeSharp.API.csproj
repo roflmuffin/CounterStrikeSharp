@@ -16,6 +16,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Modules\Errors" />
+    <Folder Include="Modules\Menu\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Modules\Disabled\**" />

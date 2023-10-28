@@ -37,25 +37,49 @@ namespace TestPlugin
         {
             Console.WriteLine(
                 $"Test Plugin has been loaded, and the hot reload flag was {hotReload}, path is {ModulePath}");
-            
+
             Console.WriteLine($"Max Players: {Server.MaxPlayers}");
+            
+            SetupGameEvents();
+            SetupListeners();
+            SetupCommands();
+            SetupMenus();
 
             // ValveInterface provides pointers to loaded modules via Interface Name exposed from the engine (e.g. Source2Server001)
             var server = ValveInterface.Server;
             Log($"Server pointer found @ {server.Pointer:X}");
+            
+            // You can use `ModuleDirectory` to get the directory of the plugin (for storing config files, saving database files etc.)
+            File.WriteAllText(Path.Join(ModuleDirectory, "example.txt"),
+                $"Test file created by TestPlugin at {DateTime.Now}");
 
-            // 	inline void(FASTCALL *ClientPrint)(CBasePlayerController *player, int msg_dest, const char *msg_name, const char *param1, const char *param2, const char *param3, const char *param4);
-            var sigVirtualFunc = VirtualFunction.CreateVoid<IntPtr, int, string, IntPtr, IntPtr, IntPtr, IntPtr>(
-                GameData.GetSignature("ClientPrint"));
+            // Execute a server command as if typed into the server console.
+            Server.ExecuteCommand("find \"cssharp\"");
 
-            var printAllFunc =
-                VirtualFunction.CreateVoid<int, string, IntPtr, IntPtr, IntPtr, IntPtr>(
-                    GameData.GetSignature("UTIL_ClientPrintAll"));
+            // Example vfunc call that usually gets the game event manager pointer
+            // by calling the func at offset 91 then subtracting 8 from the result pointer.
+            // This value is asserted against the native code that points to the same function.
+            var virtualFunc = VirtualFunction.Create<IntPtr>(server.Pointer, 91);
+            var result = virtualFunc() - 8;
+            Log($"Result of virtual func call is {result:X}");
+        }
 
-            var switchTeamFunc =
-                VirtualFunction.CreateVoid<IntPtr, int>(GameData.GetSignature("CCSPlayerController_SwitchTeam"));
+        private void SetupGameEvents()
+        {
             // Register Game Event Handlers
-            RegisterEventHandler<EventPlayerConnect>(GenericEventHandler);
+            RegisterEventHandler<EventPlayerConnect>(GenericEventHandler, HookMode.Pre);
+            RegisterEventHandler<EventPlayerChat>(((@event, info) =>
+            {
+                var entity = new CCSPlayerController(NativeAPI.GetEntityFromIndex(@event.Userid));
+                if (!entity.IsValid)
+                {
+                    Log("invalid entity");
+                    return HookResult.Continue;
+                }
+
+                entity.PrintToChat($"You said {@event.Text}");
+                return HookResult.Continue;
+            }));
             RegisterEventHandler<EventPlayerDeath>((@event, info) =>
             {
                 // You can use `info.DontBroadcast` to set the dont broadcast flag on the event.
@@ -66,13 +90,7 @@ namespace TestPlugin
                 }
 
                 return HookResult.Continue;
-            });
-            RegisterEventHandler<EventPlayerJump>((@event, info) =>
-            {
-                sigVirtualFunc(@event.Userid.Handle, 2, "Test", IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero);
-
-                return HookResult.Continue;
-            });
+            }, HookMode.Pre);
             RegisterEventHandler<EventPlayerSpawn>((@event, info) =>
             {
                 if (!@event.Userid.IsValid) return 0;
@@ -102,8 +120,7 @@ namespace TestPlugin
                     $"Pawn Position: {pawn.CBodyComponent?.SceneNode?.AbsOrigin} @{pawn.CBodyComponent?.SceneNode.Rotation}");
 
                 char randomColourChar = (char)new Random().Next(0, 16);
-                printAllFunc(3, $"Random String with Random Colour: {randomColourChar}{new Random().Next()}",
-                    IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero);
+                Server.PrintToChatAll($"Random String with Random Colour: {randomColourChar}{new Random().Next()}");
 
                 pawn.Health += 5;
 
@@ -139,10 +156,13 @@ namespace TestPlugin
 
                 return HookResult.Continue;
             });
+        }
 
+        private void SetupListeners()
+        {
             // Hook global listeners defined by CounterStrikeSharp
             RegisterListener<Listeners.OnMapStart>(mapName => { Log($"Map {mapName} has started!"); });
-            RegisterListener<Listeners.OnMapEnd>(() => { Log($"Map has ended.");});
+            RegisterListener<Listeners.OnMapEnd>(() => { Log($"Map has ended."); });
             RegisterListener<Listeners.OnClientConnect>((index, name, ip) =>
             {
                 Log($"Client {name} from {ip} has connected!");
@@ -176,15 +196,39 @@ namespace TestPlugin
                         return;
                 }
             });
+        }
 
-            // You can use `ModuleDirectory` to get the directory of the plugin (for storing config files, saving database files etc.)
-            File.WriteAllText(Path.Join(ModuleDirectory, "example.txt"),
-                $"Test file created by TestPlugin at {DateTime.Now}");
+        private void SetupMenus()
+        {
+            // Chat Menu Example
+            var largeMenu = new ChatMenu("Test Menu");
+            for (int i = 1; i < 26; i++)
+            {
+                var i1 = i;
+                largeMenu.AddMenuOption(new Random().NextSingle().ToString(),
+                    (player) => player.PrintToChat($"You just selected {i1}"), i1 % 5 == 0);
+            }
 
+            var smallMenu = new ChatMenu("Small Menu");
+            smallMenu.AddMenuOption("weapon_ak47", (player) => player.GiveNamedItem("weapon_ak47"));
+            smallMenu.AddMenuOption("weapon_p250", (player) => player.GiveNamedItem("weapon_p250"));
 
-            // Execute a server command as if typed into the server console.
-            Server.ExecuteCommand("find \"cssharp\"");
+            AddCommand("css_menu", "Opens example menu", (player, info) => { ChatMenus.OpenMenu(player, largeMenu); });
+            AddCommand("css_anothermenu", "a", (player, info) => { ChatMenus.OpenMenu(player, smallMenu); });
 
+            for (int i = 1; i <= 9; i++)
+            {
+                AddCommand("css_" + i, "Command Key Handler", (player, info) =>
+                {
+                    if (player == null) return;
+                    var key = Convert.ToInt32(info.GetArg(0).Split("_")[1]);
+                    ChatMenus.OnKeyPress(player, key);
+                });
+            }
+        }
+
+        private void SetupCommands()
+        {
             // Adds a new server console command
             AddCommand("cssharp_info", "A test command",
                 (player, info) =>
@@ -207,12 +251,6 @@ namespace TestPlugin
                     player.SwitchTeam(CsTeam.Terrorist);
                 }
             });
-            // Example vfunc call that usually gets the game event manager pointer
-            // by calling the func at offset 91 then subtracting 8 from the result pointer.
-            // This value is asserted against the native code that points to the same function.
-            var virtualFunc = VirtualFunction.Create<IntPtr>(server.Pointer, 91);
-            var result = virtualFunc() - 8;
-            Log($"Result of virtual func call is {result:X}");
         }
 
         [GameEventHandler]
@@ -222,7 +260,7 @@ namespace TestPlugin
 
             return HookResult.Continue;
         }
-        
+
         [GameEventHandler(HookMode.Pre)]
         public HookResult OnPlayerConnectPre(EventPlayerConnect @event, GameEventInfo info)
         {
@@ -259,19 +297,20 @@ namespace TestPlugin
                 player.PrintToChat($"Level  \"{mapName}\" is invalid.");
             }
         }
+
         [ConsoleCommand("css_guns", "List guns")]
         public void OnCommandGuns(CCSPlayerController? player, CommandInfo command)
         {
             if (player == null) return;
             if (!player.PlayerPawn.IsValid) return;
-            
+
             foreach (var weapon in player.PlayerPawn.Value.WeaponServices.MyWeapons)
             {
                 // We don't currently have a `ReplyToCommand` equivalent so just print to chat for now.
                 player.PrintToChat(weapon.Value.DesignerName);
             }
         }
-        
+
         [ConsoleCommand("css_pause", "Pause Game")]
         public void OnCommandPause(CCSPlayerController? player, CommandInfo command)
         {
@@ -285,6 +324,7 @@ namespace TestPlugin
 
             player.GiveNamedItem(command.ArgByIndex(1));
         }
+
         private HookResult GenericEventHandler<T>(T @event, GameEventInfo info) where T : GameEvent
         {
             Log($"Event found {@event.Handle:X}, event name: {@event.EventName} dont broadcast: {info.DontBroadcast}");

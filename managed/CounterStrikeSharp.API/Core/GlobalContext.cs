@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using CounterStrikeSharp.API.Modules.Commands;
 
 namespace CounterStrikeSharp.API.Core
 {
@@ -53,11 +54,44 @@ namespace CounterStrikeSharp.API.Core
             }
         }
 
+        /**
+         * Temporary way for base CSS to add commands without a plugin context
+         */
+        private void AddCommand(string name, string description, CommandInfo.CommandCallback handler)
+        {
+            var wrappedHandler = new Action<int, IntPtr>((i, ptr) =>
+            {
+                var command = new CommandInfo(ptr);
+                if (i == -1)
+                {
+                    handler?.Invoke(null, command);
+                    return;
+                }
+
+                var entity = new CCSPlayerController(NativeAPI.GetEntityFromIndex(i + 1));
+                handler?.Invoke(entity.IsValid ? entity : null, command);
+            });
+
+            var subscriber = new BasePlugin.CallbackSubscriber(handler, wrappedHandler, () => { });
+            NativeAPI.AddCommand(name, description, false, (int)ConCommandFlags.FCVAR_LINKED_CONCOMMAND,
+                subscriber.GetInputArgument());
+        }
+
         public void LoadAll()
         {
             Console.WriteLine("Loading GameData");
             GameData.Load(Path.Combine(rootDir.FullName, "gamedata", "gamedata.json"));
             
+            for (int i = 1; i <= 9; i++)
+            {
+                AddCommand("css_" + i, "Command Key Handler", (player, info) =>
+                {
+                    if (player == null) return;
+                    var key = Convert.ToInt32(info.GetArg(0).Split("_")[1]);
+                    ChatMenus.OnKeyPress(player, key);
+                });
+            }
+
             Console.WriteLine("Loading .NET modules...");
 
             DirectoryInfo modules_directory_info;
