@@ -36,5 +36,6 @@ namespace CounterStrikeSharp.API.Modules.Commands
         public string GetCommandString => NativeAPI.CommandGetCommandString(Handle);
 
         public string ArgByIndex(int index) => NativeAPI.CommandGetArgByIndex(Handle, index);
+        public string GetArg(int index) => NativeAPI.CommandGetArgByIndex(Handle, index);
     }
 }

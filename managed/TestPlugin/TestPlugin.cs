@@ -98,8 +98,6 @@ namespace TestPlugin
                 activeWeapon.ReserveAmmo[0] = 250;
                 activeWeapon.Clip1 = 250;
 
-                VirtualFunctions.GiveNamedItem(pawn.ItemServices.Handle, "weapon_ak47", 0, 0, 0, 0);
-
                 Log(
                     $"Pawn Position: {pawn.CBodyComponent?.SceneNode?.AbsOrigin} @{pawn.CBodyComponent?.SceneNode.Rotation}");
 
@@ -263,6 +261,13 @@ namespace TestPlugin
             Log("Pause");
         }
 
+        [ConsoleCommand("css_give", "Give named item")]
+        public void OnCommandGive(CCSPlayerController? player, CommandInfo command)
+        {
+            if (player == null) return;
+
+            player.GiveNamedItem(command.ArgByIndex(1));
+        }
         private HookResult GenericEventHandler<T>(T @event, GameEventInfo info) where T : GameEvent
         {
             Log($"Event found {@event.Handle:X}, event name: {@event.EventName} dont broadcast: {info.DontBroadcast}");

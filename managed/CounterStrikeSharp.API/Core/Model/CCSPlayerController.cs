@@ -14,6 +14,15 @@ public partial class CCSPlayerController
         }
     }
 
+    public void GiveNamedItem(string item)
+    {
+        if (!PlayerPawn.IsValid) return;
+        if (!PlayerPawn.Value.IsValid) return;
+        if (PlayerPawn.Value.ItemServices == null) return;
+
+        VirtualFunctions.GiveNamedItem(PlayerPawn.Value.ItemServices.Handle, item, 0, 0, 0, 0);
+    }
+
     public void SwitchTeam(CsTeam team)
     {
         VirtualFunctions.SwitchTeam(this.Handle, (byte)team);
