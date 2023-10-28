@@ -31,5 +31,11 @@
       "library": "server",
       "linux": "\\x48\\x89\\xFE\\x48\\x85\\xFF\\x74\\x2A\\x48\\x8D\\x05\\x2A\\x2A\\xC4\\x2A"
     }
+  },
+  "CBasePlayerPawn_CommitSuicide": {
+    "offsets": {
+      "linux": 354,
+      "windows": 354
+    }
   }
 }

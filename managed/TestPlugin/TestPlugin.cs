@@ -222,16 +222,16 @@ namespace TestPlugin
 
             return HookResult.Continue;
         }
-        
-        [ConsoleCommand("killme", "Kills the player")]
+
+        [ConsoleCommand("css_killme", "Kills the player")]
         public void OnKillme(CCSPlayerController? player, CommandInfo command)
         {
             if (player == null) return;
             if (!player.PlayerPawn.IsValid) return;
-            
+
             player.PlayerPawn.Value.CommitSuicide(true, true);
         }
-        
+
         [ConsoleCommand("cssharp_attribute", "This is a custom attribute event")]
         public void OnCommand(CCSPlayerController? player, CommandInfo command)
         {

@@ -17,7 +17,7 @@ public class CHandle<T> : NativeObject
 
     public T Value => (T)Activator.CreateInstance(typeof(T), NativeAPI.GetEntityPointerFromHandle(Handle));
 
-    public unsafe ulong Raw => Unsafe.Read<ulong>((void*)Handle);
+    public unsafe ref ulong Raw => ref Unsafe.AsRef<ulong>((void*)Handle);
 
     public override string ToString() => IsValid ? $"Index = {Index.Value}, Serial = {SerialNum}" : "<invalid>";
 
