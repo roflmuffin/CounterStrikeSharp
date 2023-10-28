@@ -218,7 +218,15 @@ namespace TestPlugin
         [GameEventHandler]
         public HookResult OnPlayerConnect(EventPlayerConnect @event, GameEventInfo info)
         {
-            Log($"Player {@event.Name} has connected!");
+            Log($"Player {@event.Name} has connected! (post)");
+
+            return HookResult.Continue;
+        }
+        
+        [GameEventHandler(HookMode.Pre)]
+        public HookResult OnPlayerConnectPre(EventPlayerConnect @event, GameEventInfo info)
+        {
+            Log($"Player {@event.Name} has connected! (pre)");
 
             return HookResult.Continue;
         }

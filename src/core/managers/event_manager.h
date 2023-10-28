@@ -38,6 +38,7 @@ class CUtlString;
 
 #include <map>
 #include <string>
+#include <stack>
 
 #include "core/global_listener.h"
 #include "core/globals.h"
@@ -88,6 +89,9 @@ class EventManager : public IGameEventListener2, public GlobalClass
     bool OnFireEventPost(IGameEvent* pEvent, bool bDontBroadcast);
 
     std::map<std::string, EventHook*> m_hooksMap;
+
+    std::stack<EventHook *> m_EventStack;
+    std::stack<IGameEvent *> m_EventCopies;
 };
 
 } // namespace counterstrikesharp

@@ -105,7 +105,7 @@ namespace CounterStrikeSharp.API.Core
         
         public delegate HookResult GameEventHandler<T>(T @event, GameEventInfo info) where T : GameEvent;
 
-        private void RegisterEventHandlerInternal<T>(string name, GameEventHandler<T> handler, bool post = false)
+        private void RegisterEventHandlerInternal<T>(string name, GameEventHandler<T> handler, bool post)
             where T : GameEvent
         {
             var subscriber = new CallbackSubscriber(handler, handler,
@@ -115,10 +115,10 @@ namespace CounterStrikeSharp.API.Core
             Handlers[handler] = subscriber;
         }
 
-        public void RegisterEventHandler<T>(GameEventHandler<T> handler, bool post = false) where T : GameEvent
+        public void RegisterEventHandler<T>(GameEventHandler<T> handler, HookMode hookMode = HookMode.Post) where T : GameEvent
         {
             var name = typeof(T).GetCustomAttribute<EventNameAttribute>()?.Name;
-            RegisterEventHandlerInternal(name, handler, post);
+            RegisterEventHandlerInternal(name, handler, hookMode == HookMode.Post);
         }
 
         public void DeregisterEventHandler(string name, Delegate handler, bool post)
@@ -267,13 +267,15 @@ namespace CounterStrikeSharp.API.Core
             foreach (var eventHandler in eventHandlers)
             {
                 var parameterType = eventHandler.GetParameters().First().ParameterType;
-                var eventName = parameterType.GetCustomAttribute<EventNameAttribute>()?.Name;
+                var attribute = parameterType.GetCustomAttribute<EventNameAttribute>();
+                var eventName = attribute?.Name;
+                var hookMode = eventHandler.GetCustomAttribute<GameEventHandlerAttribute>()!.Mode;
 
                 var actionType = typeof(GameEventHandler<>).MakeGenericType(parameterType);
                 var action = Delegate.CreateDelegate(actionType, instance, eventHandler);
 
                 var generic = method.MakeGenericMethod(parameterType);
-                generic.Invoke(this, new object[] { eventName, action, false });
+                generic.Invoke(this, new object[] { eventName, action, hookMode == HookMode.Post });
             }
         }
 

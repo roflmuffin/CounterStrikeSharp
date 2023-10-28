@@ -72,8 +72,6 @@ bool EventManager::HookEvent(const char* szName, CallbackT fnCallback, bool bPos
         globals::gameEventManager->AddListener(this, szName, true);
     }
 
-    CSSHARP_CORE_INFO("Hooking event: {0} with callback pointer: {1}", szName, (void*)fnCallback);
-
     auto search = m_hooksMap.find(szName);
     // If hook struct is not found
     if (search == m_hooksMap.end()) {
@@ -152,22 +150,22 @@ bool EventManager::UnhookEvent(const char* szName, CallbackT fnCallback, bool bP
 
 bool EventManager::OnFireEvent(IGameEvent* pEvent, bool bDontBroadcast)
 {
-    const char* szName;
-    bool bLocalDontBroadcast = bDontBroadcast;
-
     if (!pEvent) {
         RETURN_META_VALUE(MRES_IGNORED, false);
     }
 
-    szName = pEvent->GetName();
-    
+    const char* szName = pEvent->GetName();
+    bool bLocalDontBroadcast = bDontBroadcast;
     auto I = m_hooksMap.find(szName);
+
     if (I != m_hooksMap.end()) {
-        auto* pCallback = I->second->m_pPreHook;
+        auto pEventHook = I->second;
+        m_EventStack.push(pEventHook);
+        auto* pCallback = pEventHook->m_pPreHook;
 
         if (pCallback) {
-            CSSHARP_CORE_INFO("Pushing event `{0}` pointer: {1}, dont broadcast: {2}", szName,
-                              (void*)pEvent, bDontBroadcast);
+            CSSHARP_CORE_TRACE("Pushing event `{}` pointer: {}, dont broadcast: {}, post: {}",
+                              szName, (void*)pEvent, bDontBroadcast, false);
             EventOverride override = {bDontBroadcast};
             pCallback->Reset();
             pCallback->ScriptContext().Push(pEvent);
@@ -176,29 +174,59 @@ bool EventManager::OnFireEvent(IGameEvent* pEvent, bool bDontBroadcast)
             for (auto fnMethodToCall : pCallback->GetFunctions()) {
                 if (!fnMethodToCall)
                     continue;
-
                 fnMethodToCall(&pCallback->ScriptContextStruct());
-                auto result = pCallback->ScriptContext().GetResult<HookResult>();
 
+                auto result = pCallback->ScriptContext().GetResult<HookResult>();
                 bLocalDontBroadcast = override.m_bDontBroadcast;
 
                 if (result >= HookResult::Handled) {
+                    m_EventCopies.push(globals::gameEventManager->DuplicateEvent(pEvent));
                     globals::gameEventManager->FreeEvent(pEvent);
                     RETURN_META_VALUE(MRES_SUPERCEDE, false);
                 }
             }
         }
+        m_EventCopies.push(globals::gameEventManager->DuplicateEvent(pEvent));
+    } else {
+        m_EventStack.push(nullptr);
     }
 
-    if (bLocalDontBroadcast != bDontBroadcast)
+    if (bLocalDontBroadcast != bDontBroadcast) {
         RETURN_META_VALUE_NEWPARAMS(MRES_IGNORED, true, &IGameEventManager2::FireEvent,
                                     (pEvent, bLocalDontBroadcast));
+    }
 
     RETURN_META_VALUE(MRES_IGNORED, true);
 }
 
 bool EventManager::OnFireEventPost(IGameEvent* pEvent, bool bDontBroadcast)
 {
+    if (!pEvent) {
+        RETURN_META_VALUE(MRES_IGNORED, false);
+    }
+
+    auto pHook = m_EventStack.top();
+
+    if (pHook) {
+        auto* pCallback = pHook->m_pPostHook;
+
+        if (pCallback) {
+            auto pEventCopy = m_EventCopies.top();
+            CSSHARP_CORE_TRACE("Pushing event `{}` pointer: {}, dont broadcast: {}, post: {}",
+                              pEventCopy->GetName(), (void*)pEventCopy, bDontBroadcast, true);
+            EventOverride override = {bDontBroadcast};
+            pCallback->Reset();
+            pCallback->ScriptContext().Push(pEventCopy);
+            pCallback->ScriptContext().Push(&override);
+            pCallback->Execute();
+
+            globals::gameEventManager->FreeEvent(pEventCopy);
+            m_EventCopies.pop();
+        }
+    }
+
+    m_EventStack.pop();
+
     RETURN_META_VALUE(MRES_IGNORED, true);
 }
 } // namespace counterstrikesharp
