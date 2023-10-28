@@ -23,6 +23,7 @@
 #include <baseentity.h>
 #include <public/eiface.h>
 #include "core/memory.h"
+#include "core/log.h"
 
 #include <funchook.h>
 
@@ -93,11 +94,16 @@ bool ChatManager::InternalDispatch(CBaseEntity* pPlayerController, const char* s
         ppArgV[i] = fullCommand.Arg(i);
     }
 
+    CSSHARP_CORE_TRACE("Trigger phrase found: {}", szTriggerPhase);
 
+    CSSHARP_CORE_TRACE("Searching for command with name: {}", (std::string("css_") + szTriggerPhase).c_str());
     auto command = globals::conCommandManager.FindCommand((std::string("css_") + szTriggerPhase).c_str());
+
+    CSSHARP_CORE_TRACE("Found command with name: {}: {}", (std::string("css_") + szTriggerPhase).c_str(), command ? "true" : "false");
 
     if (command) {
         ppArgV[0] = (std::string("css_") + szTriggerPhase).c_str();
+        CSSHARP_CORE_TRACE("Setting command string to {}", ppArgV[0]);
     }
 
     CCommand commandCopy(fullCommand.ArgC(), ppArgV);
