@@ -20,4 +20,7 @@ public static class VirtualFunctions
             GameData.GetSignature("GiveNamedItem"));
 
     public static Action<IntPtr, byte> SwitchTeam = VirtualFunction.CreateVoid<IntPtr, byte>(GameData.GetSignature("CCSPlayerController_SwitchTeam"));
+
+    // void(*UTIL_Remove)(CEntityInstance*);
+    public static Action<IntPtr> UTIL_Remove = VirtualFunction.CreateVoid<IntPtr>(GameData.GetSignature("UTIL_Remove"));
 }

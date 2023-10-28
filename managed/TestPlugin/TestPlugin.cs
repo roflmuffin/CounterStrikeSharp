@@ -155,17 +155,26 @@ namespace TestPlugin
             RegisterListener<Listeners.OnEntitySpawned>(entity =>
             {
                 var designerName = entity.DesignerName;
-                if (designerName != "smokegrenade_projectile") return;
 
-                var projectile = new CSmokeGrenadeProjectile(entity.Handle);
-
-                Server.NextFrame(() =>
+                switch (designerName)
                 {
-                    projectile.SmokeColor.X = Random.Shared.NextSingle() * 255.0f;
-                    projectile.SmokeColor.X = Random.Shared.NextSingle() * 255.0f;
-                    projectile.SmokeColor.X = Random.Shared.NextSingle() * 255.0f;
-                    Log($"Smoke grenade spawned with color {projectile.SmokeColor}");
-                });
+                    case "smokegrenade_projectile":
+                        var projectile = new CSmokeGrenadeProjectile(entity.Handle);
+
+                        Server.NextFrame(() =>
+                        {
+                            projectile.SmokeColor.X = Random.Shared.NextSingle() * 255.0f;
+                            projectile.SmokeColor.X = Random.Shared.NextSingle() * 255.0f;
+                            projectile.SmokeColor.X = Random.Shared.NextSingle() * 255.0f;
+                            Log($"Smoke grenade spawned with color {projectile.SmokeColor}");
+                        });
+                        return;
+                    case "flashbang_projectile":
+                        var flashbang = new CBaseCSGrenadeProjectile(entity.Handle);
+
+                        Server.NextFrame(() => { flashbang.Remove(); });
+                        return;
+                }
             });
 
             // You can use `ModuleDirectory` to get the directory of the plugin (for storing config files, saving database files etc.)

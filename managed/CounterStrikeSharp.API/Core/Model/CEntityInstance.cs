@@ -3,6 +3,7 @@ using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
+using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
 
 namespace CounterStrikeSharp.API.Core;
@@ -14,6 +15,8 @@ public partial class CEntityInstance
     public CEntityIndex? EntityIndex => IsValid ? Entity?.EntityHandle.Index : null;
     
     public string DesignerName => IsValid ? Entity?.DesignerName : null;
+
+    public void Remove() => VirtualFunctions.UTIL_Remove(this.Handle);
 }
 
 public partial class CEntityIdentity
