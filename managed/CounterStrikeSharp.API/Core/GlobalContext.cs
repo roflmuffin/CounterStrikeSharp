@@ -78,15 +78,13 @@ namespace CounterStrikeSharp.API.Core
 
         public void LoadPlugin(string path)
         {
-            var plugin = new PluginContext(path);
-
-            foreach (var existingPlugin in _loadedPlugins)
+            var existingPlugin = FindPluginByModulePath(path);
+            if (existingPlugin != null)
             {
-                if (plugin.Name == existingPlugin.Name)
-                {
-                    throw new Exception("Plugin is already loaded.");
-                }
+                throw new Exception("Plugin is already loaded.");
             }
+
+            var plugin = new PluginContext(path, _loadedPlugins.Count + 1);
             plugin.Load();
             _loadedPlugins.Add(plugin);
         }
@@ -150,6 +148,24 @@ namespace CounterStrikeSharp.API.Core
             return plugin;
         }
 
+        public PluginContext FindPluginById(int id)
+        {
+            var plugin = _loadedPlugins.FirstOrDefault(x => x.PluginId == id);
+            return plugin;
+        }
+
+        public PluginContext FindPluginByModuleName(string name)
+        {
+            var plugin = _loadedPlugins.FirstOrDefault(x => x.Name == name);
+            return plugin;
+        }
+
+        public PluginContext FindPluginByModulePath(string path)
+        {
+            var plugin = _loadedPlugins.FirstOrDefault(x => x.PluginPath == path);
+            return plugin;
+        }
+
         public void OnCSSCommand(CCSPlayerController? caller, CommandInfo info)
         {
             Utilities.ReplyToCommand(caller, "  CounterStrikeSharp was created and is maintained by Michael \"roflmuffin\" Wilson.\n" +
@@ -164,19 +180,11 @@ namespace CounterStrikeSharp.API.Core
             {
                 case "list":
                 {
-                    Utilities.ReplyToCommand(caller, "List of all plugins currently loaded by CounterStrikeSharp: ", true);
-                    if (_loadedPlugins.Count() == 0)
+                    Utilities.ReplyToCommand(caller, $"  List of all plugins currently loaded by CounterStrikeSharp: {_loadedPlugins.Count} plugins loaded.", true);
+
+                    foreach (var plugin in _loadedPlugins)
                     {
-                        Utilities.ReplyToCommand(caller, $"  0 plugins loaded.", true);
-                    }
-                    else
-                    {
-                        int pluginCount = 1;
-                        foreach (var plugin in _loadedPlugins)
-                        {
-                            Utilities.ReplyToCommand(caller, $"  [{pluginCount}/{_loadedPlugins.Count()}]: \"{plugin.Name}\" (\"{plugin.Version}\")", true);
-                            pluginCount++;
-                        }
+                        Utilities.ReplyToCommand(caller, $"  [#{plugin.PluginId}/{_loadedPlugins.Count()}]: \"{plugin.Name}\" (\"{plugin.Version}\")", true);
                     }
 
                     break;
@@ -186,11 +194,30 @@ namespace CounterStrikeSharp.API.Core
                 {
                     if (info.ArgCount < 2)
                     {
-                        Utilities.ReplyToCommand(caller, "Valid usage: css_plugins start/load [absolute plugin path] (e.g \"plugins/TestPlugin/TestPlugin.dll\")\n", true);
+                        Utilities.ReplyToCommand(caller, "Valid usage: css_plugins start/load [relative plugin path || absolute plugin path] (e.g \"TestPlugin\", \"plugins/TestPlugin/TestPlugin.dll\")\n", true);
                         break;
                     }
-                    var aboslutePluginPath = Path.Combine(rootDir.FullName, info.GetArg(2));
-                    LoadPlugin(aboslutePluginPath);
+
+                    // If our arugment doesn't end in ".dll" - try and construct a path similar to PluginName/PluginName.dll.
+                    // We'll assume we have a full path if we have ".dll".
+                    var path = info.GetArg(2);
+                    if (!path.EndsWith(".dll"))
+                    {
+                        path = Path.Combine(rootDir.FullName, $"plugins/{path}/{path}.dll");
+                    }
+                    else
+                    {
+                        path = Path.Combine(rootDir.FullName, path);
+                    }
+                        
+                    try
+                    {
+                        LoadPlugin(path);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine($"Failed to load plugin {path} with error {e}");
+                    }
                     
                     break;
                 }
@@ -198,8 +225,14 @@ namespace CounterStrikeSharp.API.Core
                 case "stop":
                 case "unload":
                 {
-                    var pluginName = info.GetArg(2); // MUST match output from plugin.Name
-                    var plugin = _loadedPlugins.Find(x => x.Name == pluginName);
+                    if (info.ArgCount < 2)
+                    {
+                        Utilities.ReplyToCommand(caller, "Valid usage: css_plugins stop/unload [plugin name || #plugin id] (e.g \"TestPlugin\", \"#1\")\n", true);
+                        break;
+                    }
+
+                    var pluginName = info.GetArg(2);
+                    var plugin = (pluginName.StartsWith("#")) ? FindPluginById(Int32.Parse(pluginName[1..])) : FindPluginByModuleName(pluginName);
                     if (plugin == null)
                     {
                         Utilities.ReplyToCommand(caller, $"Could not unload plugin \"{pluginName}\")", true);
@@ -213,8 +246,15 @@ namespace CounterStrikeSharp.API.Core
                 case "restart":
                 case "reload":
                 {
-                    var pluginName = info.GetArg(2); // MUST match output from plugin.Name
-                    var plugin = _loadedPlugins.Find(x => x.Name == pluginName);
+                    if (info.ArgCount < 2)
+                    {
+                        Utilities.ReplyToCommand(caller, "Valid usage: css_plugins restart/reload [plugin name || #plugin id] (e.g \"TestPlugin\", \"#1\")\n", true);
+                        break;
+                    }
+
+                    var pluginName = info.GetArg(2);
+                    var plugin = (pluginName.StartsWith("#")) ? FindPluginById(Int32.Parse(pluginName[1..])) : FindPluginByModuleName(pluginName);
+
                     if (plugin == null)
                     {
                         Utilities.ReplyToCommand(caller, $"Could not reload plugin \"{pluginName}\")", true);
