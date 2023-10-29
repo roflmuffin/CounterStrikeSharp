@@ -98,11 +98,6 @@ namespace CounterStrikeSharp.API.Core
 
             reference.Identifier = referenceId;
 
-            Console.BackgroundColor = ConsoleColor.Blue;
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine($"Created function/callback reference: {referenceId}, {method.Method}");
-            Console.ResetColor();
-
             return reference;
         }
 
