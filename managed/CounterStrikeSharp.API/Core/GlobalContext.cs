@@ -122,7 +122,6 @@ namespace CounterStrikeSharp.API.Core
 
             foreach (var path in filePaths)
             {
-                if (path.Contains("disabled")) continue;
                 try
                 {
                     LoadPlugin(path);
