@@ -80,23 +80,15 @@ namespace CounterStrikeSharp.API.Core
         {
             var plugin = new PluginContext(path);
 
-            try
+            foreach (var existingPlugin in _loadedPlugins)
             {
-                foreach (var existingPlugin in _loadedPlugins)
+                if (plugin.Name == existingPlugin.Name)
                 {
-                    if (plugin.Name == existingPlugin.Name)
-                    {
-                        throw new Exception("Plugin is already loaded.");
-                    }
+                    throw new Exception("Plugin is already loaded.");
                 }
-                _loadedPlugins.Add(plugin);
-                plugin.Load();
             }
-            catch (Exception e)
-            {
-                _loadedPlugins.Remove(plugin);
-                throw;
-            }
+            plugin.Load();
+            _loadedPlugins.Add(plugin);
         }
 
         public int LoadAllPlugins()
