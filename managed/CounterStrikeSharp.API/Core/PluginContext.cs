@@ -31,13 +31,17 @@ namespace CounterStrikeSharp.API.Core
         public string Name => _plugin?.ModuleName;
         public string Version => _plugin?.ModuleVersion;
         public Type PluginType => _plugin?.GetType();
+        public string PluginPath => _plugin?.ModulePath;
+
+        public int PluginId { get; }
 
         private readonly string _path;
         private readonly FileSystemWatcher _fileWatcher;
 
-        public PluginContext(string path)
+        public PluginContext(string path, int id)
         {
             _path = path;
+            PluginId = id;
 
             _assemblyLoader = PluginLoader.CreateFromAssemblyFile(path, new[] { typeof(IPlugin) }, config =>
             {

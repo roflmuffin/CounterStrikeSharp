@@ -47,7 +47,20 @@ namespace CounterStrikeSharp.API
                 yield return new PointerTo<T>(pEntity.Handle).Value;
             }
         }
-        
+
+        public static void ReplyToCommand(CCSPlayerController? player, string msg, bool console = false)
+        {
+            if (player != null)
+            {
+                if (console) player.PrintToConsole(msg);
+                else player.PrintToChat(msg);
+            }
+            else
+            {
+                Server.PrintToConsole(msg);
+            }
+        }
+
         public static unsafe string ReadStringUtf8(IntPtr ptr)
         {
             unsafe
