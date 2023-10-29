@@ -59,7 +59,7 @@ namespace CounterStrikeSharp.API.Core
             try
             {
                 var globalContext = new GlobalContext();
-                globalContext.LoadAll();
+                globalContext.InitGlobalContext();
                 return 1;
             }
             catch (Exception e)

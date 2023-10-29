@@ -54,6 +54,203 @@ namespace CounterStrikeSharp.API.Core
                 plugin.Unload();
             }
         }
+        public void InitGlobalContext()
+        {
+            Console.WriteLine("Loading GameData");
+            GameData.Load(Path.Combine(rootDir.FullName, "gamedata", "gamedata.json"));
+
+            for (int i = 1; i <= 9; i++)
+            {
+                AddCommand("css_" + i, "Command Key Handler", (player, info) =>
+                {
+                    if (player == null) return;
+                    var key = Convert.ToInt32(info.GetArg(0).Split("_")[1]);
+                    ChatMenus.OnKeyPress(player, key);
+                });
+            }
+
+            Console.WriteLine("Loading C# plugins...");
+            int pluginCount = LoadAllPlugins();
+            Console.WriteLine($"All managed modules were loaded. {pluginCount} plugins loaded.");
+
+            RegisterPluginCommands();
+        }
+
+        public void LoadPlugin(string path)
+        {
+            var plugin = new PluginContext(path);
+
+            try
+            {
+                foreach (var existingPlugin in _loadedPlugins)
+                {
+                    if (plugin.Name == existingPlugin.Name)
+                    {
+                        throw new Exception("Plugin is already loaded.");
+                    }
+                }
+                _loadedPlugins.Add(plugin);
+                plugin.Load();
+            }
+            catch (Exception e)
+            {
+                _loadedPlugins.Remove(plugin);
+                throw;
+            }
+        }
+
+        public int LoadAllPlugins()
+        {
+            DirectoryInfo modules_directory_info;
+            try
+            {
+                modules_directory_info = new DirectoryInfo(Path.Combine(rootDir.FullName, "plugins"));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(
+                    "Unable to access .NET modules directory: " + e.GetType().ToString() + " " + e.Message);
+                return 0;
+            }
+
+            DirectoryInfo[] proper_modules_directories;
+            try
+            {
+                proper_modules_directories = modules_directory_info.GetDirectories();
+            }
+            catch
+            {
+                proper_modules_directories = new DirectoryInfo[0];
+            }
+
+            var filePaths = proper_modules_directories
+                .Where(d => d.GetFiles().Any((f) => f.Name == d.Name + ".dll"))
+                .Select(d => d.GetFiles().First((f) => f.Name == d.Name + ".dll").FullName)
+                .ToArray();
+
+            foreach (var path in filePaths)
+            {
+                if (path.Contains("disabled")) continue;
+                try
+                {
+                    LoadPlugin(path);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Failed to load plugin {path} with error {e}");
+                }
+            }
+
+            return _loadedPlugins.Count;
+        }
+
+        public void UnloadAllPlugins()
+        {
+            foreach (var plugin in _loadedPlugins)
+            {
+                plugin.Unload();
+                _loadedPlugins.Remove(plugin);
+            }
+        }
+
+        public PluginContext FindPluginByType(Type moduleClass)
+        {
+            var plugin = _loadedPlugins.FirstOrDefault(x => x.PluginType == moduleClass);
+            return plugin;
+        }
+
+        public void OnCSSCommand(CCSPlayerController? caller, CommandInfo info)
+        {
+            Utilities.ReplyToCommand(caller, "  CounterStrikeSharp was created and is maintained by Michael \"roflmuffin\" Wilson.\n" +
+                "  Counter-Strike Sharp uses code borrowed from SourceMod, Source.Python, FiveM, Saul Rennison and CS2Fixes.\n" +
+                "  See ACKNOWLEDGEMENTS.md for more information.", true);
+            return;
+        }
+
+        public void OnCSSPluginCommand(CCSPlayerController? caller, CommandInfo info)
+        {
+            switch (info.GetArg(1))
+            {
+                case "list":
+                {
+                    Utilities.ReplyToCommand(caller, "List of all plugins currently loaded by CounterStrikeSharp: ", true);
+                    if (_loadedPlugins.Count() == 0)
+                    {
+                        Utilities.ReplyToCommand(caller, $"  0 plugins loaded.", true);
+                    }
+                    else
+                    {
+                        int pluginCount = 1;
+                        foreach (var plugin in _loadedPlugins)
+                        {
+                            Utilities.ReplyToCommand(caller, $"  [{pluginCount}/{_loadedPlugins.Count()}]: \"{plugin.Name}\" (\"{plugin.Version}\")", true);
+                            pluginCount++;
+                        }
+                    }
+
+                    break;
+                }
+                case "start":
+                case "load":
+                {
+                    if (info.ArgCount < 2)
+                    {
+                        Utilities.ReplyToCommand(caller, "Valid usage: css_plugins start/load [absolute plugin path] (e.g \"plugins/TestPlugin/TestPlugin.dll\")\n", true);
+                        break;
+                    }
+                    var aboslutePluginPath = Path.Combine(rootDir.FullName, info.GetArg(2));
+                    LoadPlugin(aboslutePluginPath);
+                    
+                    break;
+                }
+
+                case "stop":
+                case "unload":
+                {
+                    var pluginName = info.GetArg(2); // MUST match output from plugin.Name
+                    var plugin = _loadedPlugins.Find(x => x.Name == pluginName);
+                    if (plugin == null)
+                    {
+                        Utilities.ReplyToCommand(caller, $"Could not unload plugin \"{pluginName}\")", true);
+                        break;
+                    }
+                    plugin.Unload();
+                    _loadedPlugins.Remove(plugin);
+                    break;
+                }
+
+                case "restart":
+                case "reload":
+                {
+                    var pluginName = info.GetArg(2); // MUST match output from plugin.Name
+                    var plugin = _loadedPlugins.Find(x => x.Name == pluginName);
+                    if (plugin == null)
+                    {
+                        Utilities.ReplyToCommand(caller, $"Could not reload plugin \"{pluginName}\")", true);
+                        break;
+                    }
+                    plugin.Unload(true);
+                    plugin.Load(true);
+                    break;
+                }
+
+                default:
+                    Utilities.ReplyToCommand(caller, "Valid usage: css_plugins [option]\n" +
+                        "  list - List all plugins currently loaded.\n" +
+                        "  start / load - Loads a plugin not currently loaded.\n" +
+                        "  stop / unload - Unloads a plugin currently loaded.\n" +
+                        "  restart / reload - Reloads a plugin currently loaded."
+                        , true);
+                    break;
+            }
+
+        }
+
+        public void RegisterPluginCommands()
+        {
+            AddCommand("css", "Counter-Strike Sharp options.", OnCSSCommand);
+            AddCommand("css_plugins", "Counter-Strike Sharp plugin options.", OnCSSPluginCommand);
+        }
 
         /**
          * Temporary way for base CSS to add commands without a plugin context
@@ -76,75 +273,6 @@ namespace CounterStrikeSharp.API.Core
             var subscriber = new BasePlugin.CallbackSubscriber(handler, wrappedHandler, () => { });
             NativeAPI.AddCommand(name, description, false, (int)ConCommandFlags.FCVAR_LINKED_CONCOMMAND,
                 subscriber.GetInputArgument());
-        }
-
-        public void LoadAll()
-        {
-            Console.WriteLine("Loading GameData");
-            GameData.Load(Path.Combine(rootDir.FullName, "gamedata", "gamedata.json"));
-            
-            for (int i = 1; i <= 9; i++)
-            {
-                AddCommand("css_" + i, "Command Key Handler", (player, info) =>
-                {
-                    if (player == null) return;
-                    var key = Convert.ToInt32(info.GetArg(0).Split("_")[1]);
-                    ChatMenus.OnKeyPress(player, key);
-                });
-            }
-
-            Console.WriteLine("Loading .NET modules...");
-
-            DirectoryInfo modules_directory_info;
-            try
-            {
-                modules_directory_info = new DirectoryInfo(Path.Combine(rootDir.FullName, "plugins"));
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(
-                    "Unable to access .NET modules directory: " + e.GetType().ToString() + " " + e.Message);
-                return;
-            }
-
-            DirectoryInfo[] proper_modules_directories;
-            try
-            {
-                proper_modules_directories = modules_directory_info.GetDirectories();
-            }
-            catch
-            {
-                proper_modules_directories = new DirectoryInfo[0];
-            }
-
-            var filePaths = proper_modules_directories
-                .Where(d => d.GetFiles().Any((f) => f.Name == d.Name + ".dll"))
-                .Select(d => d.GetFiles().First((f) => f.Name == d.Name + ".dll").FullName)
-                .ToArray();
-
-            foreach (var path in filePaths)
-            {
-                var plugin = new PluginContext(path);
-
-                try
-                {
-                    _loadedPlugins.Add(plugin);
-                    plugin.Load();
-                }
-                catch (Exception e)
-                {
-                    _loadedPlugins.Remove(plugin);
-                    Console.WriteLine($"Failed to load plugin {path} with error {e}");
-                }
-            }
-
-            Console.WriteLine($"All managed modules were loaded. {_loadedPlugins.Count} plugins loaded.");
-        }
-
-        public PluginContext FindPluginByType(Type moduleClass)
-        {
-            var plugin = _loadedPlugins.FirstOrDefault(x => x.PluginType == moduleClass);
-            return plugin;
         }
     }
 }
