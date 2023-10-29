@@ -66,7 +66,7 @@ namespace CounterStrikeSharp.API.Core
                     if (player == null) return;
                     var key = Convert.ToInt32(info.GetArg(0).Split("_")[1]);
                     ChatMenus.OnKeyPress(player, key);
-                });
+                }, false);
             }
 
             Console.WriteLine("Loading C# plugins...");
@@ -290,14 +290,14 @@ namespace CounterStrikeSharp.API.Core
 
         public void RegisterPluginCommands()
         {
-            AddCommand("css", "Counter-Strike Sharp options.", OnCSSCommand);
-            AddCommand("css_plugins", "Counter-Strike Sharp plugin options.", OnCSSPluginCommand);
+            AddCommand("css", "Counter-Strike Sharp options.", OnCSSCommand, false);
+            AddCommand("css_plugins", "Counter-Strike Sharp plugin options.", OnCSSPluginCommand, true);
         }
 
         /**
          * Temporary way for base CSS to add commands without a plugin context
          */
-        private void AddCommand(string name, string description, CommandInfo.CommandCallback handler)
+        private void AddCommand(string name, string description, CommandInfo.CommandCallback handler, bool serverOnly)
         {
             var wrappedHandler = new Action<int, IntPtr>((i, ptr) =>
             {
@@ -308,12 +308,14 @@ namespace CounterStrikeSharp.API.Core
                     return;
                 }
 
+                if (serverOnly) return;
+
                 var entity = new CCSPlayerController(NativeAPI.GetEntityFromIndex(i + 1));
                 handler?.Invoke(entity.IsValid ? entity : null, command);
             });
 
             var subscriber = new BasePlugin.CallbackSubscriber(handler, wrappedHandler, () => { });
-            NativeAPI.AddCommand(name, description, false, (int)ConCommandFlags.FCVAR_LINKED_CONCOMMAND,
+            NativeAPI.AddCommand(name, description, serverOnly, (int)ConCommandFlags.FCVAR_LINKED_CONCOMMAND,
                 subscriber.GetInputArgument());
         }
     }
