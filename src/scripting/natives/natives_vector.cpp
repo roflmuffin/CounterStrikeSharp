@@ -35,6 +35,7 @@ CREATE_SETTER_FUNCTION(Vector, float, X, Vector *, obj->x = value);
 CREATE_SETTER_FUNCTION(Vector, float, Y, Vector *, obj->y = value);
 CREATE_SETTER_FUNCTION(Vector, float, Z, Vector *, obj->z = value);
 
+// TODO: These need to be cleared out somehow
 std::vector<Vector *> managed_vectors;
 
 Vector *VectorNew(ScriptContext &script_context) {
@@ -43,7 +44,14 @@ Vector *VectorNew(ScriptContext &script_context) {
     return vec;
 }
 
-QAngle *AngleNew(ScriptContext &script_context) { return new QAngle(); }
+// TODO: These need to be cleared out somehow
+std::vector<QAngle *> managed_angles;
+
+QAngle *AngleNew(ScriptContext &script_context) {
+    auto ang = new QAngle();
+    managed_angles.push_back(ang);
+    return ang;
+}
 
 void NativeVectorAngles(ScriptContext &script_context) {
     auto vec = script_context.GetArgument<Vector *>(0);

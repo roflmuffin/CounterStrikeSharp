@@ -25,6 +25,13 @@ namespace CounterStrikeSharp.API.Modules.Utils
         public QAngle(IntPtr pointer) : base(pointer)
         {
         }
+        
+        public QAngle(float? x = null, float? y = null, float? z = null) : this(NativeAPI.AngleNew())
+        {
+            this.X = x ?? 0;
+            this.Y = y ?? 0;
+            this.Z = z ?? 0;
+        }
 
         public unsafe ref float X => ref Unsafe.Add(ref *(float*)Handle.ToPointer(), 0);
         public unsafe ref float Y => ref Unsafe.Add(ref *(float*)Handle, 1);
