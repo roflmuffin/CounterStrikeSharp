@@ -31,7 +31,7 @@ namespace CounterStrikeSharp.API.Core
 
         private DirectoryInfo rootDir;
 
-        private List<PluginContext> _loadedPlugins = new List<PluginContext>();
+        private readonly List<PluginContext> _loadedPlugins = new();
 
         public GlobalContext()
         {
@@ -84,7 +84,7 @@ namespace CounterStrikeSharp.API.Core
                 throw new Exception("Plugin is already loaded.");
             }
 
-            var plugin = new PluginContext(path, _loadedPlugins.Count + 1);
+            var plugin = new PluginContext(path, _loadedPlugins.Select(x => x.PluginId).DefaultIfEmpty(0).Max() + 1);
             plugin.Load();
             _loadedPlugins.Add(plugin);
         }
@@ -142,31 +142,42 @@ namespace CounterStrikeSharp.API.Core
             }
         }
 
-        public PluginContext FindPluginByType(Type moduleClass)
+        private PluginContext? FindPluginByType(Type moduleClass)
         {
-            var plugin = _loadedPlugins.FirstOrDefault(x => x.PluginType == moduleClass);
+            return _loadedPlugins.FirstOrDefault(x => x.PluginType == moduleClass);
+        }
+
+        private PluginContext? FindPluginById(int id)
+        {
+            return _loadedPlugins.FirstOrDefault(x => x.PluginId == id);
+        }
+
+        private PluginContext? FindPluginByModuleName(string name)
+        {
+            return _loadedPlugins.FirstOrDefault(x => x.Name == name);
+        }
+
+        private PluginContext? FindPluginByModulePath(string path)
+        {
+            return _loadedPlugins.FirstOrDefault(x => x.PluginPath == path);
+        }
+
+        private PluginContext? FindPluginByIdOrName(string query)
+        {
+            
+            PluginContext? plugin = null;
+            if (Int32.TryParse(query, out var pluginNumber))
+            {
+                plugin = FindPluginById(pluginNumber);
+                if (plugin != null) return plugin;
+            }
+
+            plugin = FindPluginByModuleName(query);
+
             return plugin;
         }
 
-        public PluginContext FindPluginById(int id)
-        {
-            var plugin = _loadedPlugins.FirstOrDefault(x => x.PluginId == id);
-            return plugin;
-        }
-
-        public PluginContext FindPluginByModuleName(string name)
-        {
-            var plugin = _loadedPlugins.FirstOrDefault(x => x.Name == name);
-            return plugin;
-        }
-
-        public PluginContext FindPluginByModulePath(string path)
-        {
-            var plugin = _loadedPlugins.FirstOrDefault(x => x.PluginPath == path);
-            return plugin;
-        }
-
-        public void OnCSSCommand(CCSPlayerController? caller, CommandInfo info)
+        private void OnCSSCommand(CCSPlayerController? caller, CommandInfo info)
         {
             Utilities.ReplyToCommand(caller, "  CounterStrikeSharp was created and is maintained by Michael \"roflmuffin\" Wilson.\n" +
                 "  Counter-Strike Sharp uses code borrowed from SourceMod, Source.Python, FiveM, Saul Rennison and CS2Fixes.\n" +
@@ -174,7 +185,7 @@ namespace CounterStrikeSharp.API.Core
             return;
         }
 
-        public void OnCSSPluginCommand(CCSPlayerController? caller, CommandInfo info)
+        private void OnCSSPluginCommand(CCSPlayerController? caller, CommandInfo info)
         {
             switch (info.GetArg(1))
             {
@@ -184,7 +195,7 @@ namespace CounterStrikeSharp.API.Core
 
                     foreach (var plugin in _loadedPlugins)
                     {
-                        Utilities.ReplyToCommand(caller, $"  [#{plugin.PluginId}/{_loadedPlugins.Count()}]: \"{plugin.Name}\" (\"{plugin.Version}\")", true);
+                        Utilities.ReplyToCommand(caller, $"  [#{plugin.PluginId}]: \"{plugin.Name}\" (\"{plugin.Version}\")", true);
                     }
 
                     break;
@@ -227,15 +238,15 @@ namespace CounterStrikeSharp.API.Core
                 {
                     if (info.ArgCount < 2)
                     {
-                        Utilities.ReplyToCommand(caller, "Valid usage: css_plugins stop/unload [plugin name || #plugin id] (e.g \"TestPlugin\", \"#1\")\n", true);
+                        Utilities.ReplyToCommand(caller, "Valid usage: css_plugins stop/unload [plugin name || #plugin id] (e.g \"TestPlugin\", \"1\")\n", true);
                         break;
                     }
 
-                    var pluginName = info.GetArg(2);
-                    var plugin = (pluginName.StartsWith("#")) ? FindPluginById(Int32.Parse(pluginName[1..])) : FindPluginByModuleName(pluginName);
+                    var pluginIdentifier = info.GetArg(2);
+                    PluginContext? plugin = FindPluginByIdOrName(pluginIdentifier);
                     if (plugin == null)
                     {
-                        Utilities.ReplyToCommand(caller, $"Could not unload plugin \"{pluginName}\")", true);
+                        Utilities.ReplyToCommand(caller, $"Could not unload plugin \"{pluginIdentifier}\")", true);
                         break;
                     }
                     plugin.Unload();
@@ -252,12 +263,12 @@ namespace CounterStrikeSharp.API.Core
                         break;
                     }
 
-                    var pluginName = info.GetArg(2);
-                    var plugin = (pluginName.StartsWith("#")) ? FindPluginById(Int32.Parse(pluginName[1..])) : FindPluginByModuleName(pluginName);
+                    var pluginIdentifier = info.GetArg(2);
+                    var plugin = FindPluginByIdOrName(pluginIdentifier);
 
                     if (plugin == null)
                     {
-                        Utilities.ReplyToCommand(caller, $"Could not reload plugin \"{pluginName}\")", true);
+                        Utilities.ReplyToCommand(caller, $"Could not reload plugin \"{pluginIdentifier}\")", true);
                         break;
                     }
                     plugin.Unload(true);
