@@ -2,6 +2,7 @@
 
 #include <spdlog/sinks/basic_file_sink.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
+#include <spdlog/cfg/env.h>
 
 namespace counterstrikesharp {
 std::shared_ptr<spdlog::logger> Log::m_core_logger;
@@ -19,8 +20,10 @@ void Log::Init() {
 
     m_core_logger = std::make_shared<spdlog::logger>("CSSharp", begin(logSinks), end(logSinks));
     spdlog::register_logger(m_core_logger);
-    m_core_logger->set_level(spdlog::level::trace);
+    m_core_logger->set_level(spdlog::level::info);
     m_core_logger->flush_on(spdlog::level::info);
+
+    spdlog::cfg::load_env_levels();
 }
 
 void Log::Close() {

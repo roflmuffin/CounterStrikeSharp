@@ -143,7 +143,7 @@ bool EventManager::UnhookEvent(const char* szName, CallbackT fnCallback, bool bP
 
     // TODO: Clean up callback if theres noone left attached.
 
-    CSSHARP_CORE_INFO("Unhooking event: {0} with callback pointer: {1}", szName, (void*)fnCallback);
+    CSSHARP_CORE_TRACE("Unhooking event: {0} with callback pointer: {1}", szName, (void*)fnCallback);
 
     return true;
 }
