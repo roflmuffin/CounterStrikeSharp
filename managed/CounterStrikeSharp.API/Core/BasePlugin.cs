@@ -94,6 +94,9 @@ namespace CounterStrikeSharp.API.Core
 
         public readonly Dictionary<Delegate, CallbackSubscriber> CommandHandlers =
             new Dictionary<Delegate, CallbackSubscriber>();
+        
+        public readonly Dictionary<Delegate, CallbackSubscriber> CommandListeners =
+            new Dictionary<Delegate, CallbackSubscriber>();
 
         public readonly Dictionary<Delegate, CallbackSubscriber> ConvarChangeHandlers =
             new Dictionary<Delegate, CallbackSubscriber>();
@@ -151,6 +154,25 @@ namespace CounterStrikeSharp.API.Core
             CommandHandlers[handler] = subscriber;
         }
 
+        public void AddCommandListener(string? name, CommandInfo.CommandListenerCallback handler, HookMode mode = HookMode.Pre)
+        {
+            var wrappedHandler = new Func<int, IntPtr, HookResult>((i, ptr) =>
+            {
+                var command = new CommandInfo(ptr);
+                if (i == -1)
+                {
+                    return HookResult.Continue;
+                }
+
+                var entity = new CCSPlayerController(NativeAPI.GetEntityFromIndex(i + 1));
+                return handler.Invoke(entity.IsValid ? entity : null, command);
+            });
+
+            var subscriber = new CallbackSubscriber(handler, wrappedHandler, () => { RemoveCommandListener(name, handler, mode); });
+            NativeAPI.AddCommandListener(name, subscriber.GetInputArgument(), mode == HookMode.Post);
+            CommandListeners[handler] = subscriber;
+        }
+
         public void RemoveCommand(string name, CommandInfo.CommandCallback handler)
         {
             if (CommandHandlers.ContainsKey(handler))
@@ -161,6 +183,19 @@ namespace CounterStrikeSharp.API.Core
 
                 FunctionReference.Remove(subscriber.GetReferenceIdentifier());
                 CommandHandlers.Remove(handler);
+            }
+        }
+
+        public void RemoveCommandListener(string name, CommandInfo.CommandListenerCallback handler, HookMode mode)
+        {
+            if (CommandListeners.ContainsKey(handler))
+            {
+                var subscriber = CommandListeners[handler];
+
+                NativeAPI.RemoveCommandListener(name, subscriber.GetInputArgument(), mode == HookMode.Post);
+
+                FunctionReference.Remove(subscriber.GetReferenceIdentifier());
+                CommandListeners.Remove(handler);
             }
         }
 
@@ -312,14 +347,15 @@ namespace CounterStrikeSharp.API.Core
             foreach (var subscriber in CommandHandlers.Values)
             {
                 subscriber.Dispose();
-                // _plugin.RemoveCommand((string)kv.Value.GetValue(), (CommandInfo.CommandCallback)kv.Key);
+            }
+            
+            foreach (var subscriber in CommandListeners.Values)
+            {
+                subscriber.Dispose();
             }
 
             foreach (var kv in ConvarChangeHandlers)
             {
-                // var convar = (ConVar)kv.Value.GetValue();
-                // _plugin.UnhookConVarChange((ConVar)kv.Value.GetValue(), (ConVar.ConVarChangedCallback)kv.Key);
-                // convar.Unregister();
             }
 
             foreach (var subscriber in Listeners.Values)

@@ -56,6 +56,30 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static void AddCommandListener(string cmd, InputArgument callback, bool post){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(cmd);
+			ScriptContext.GlobalScriptContext.Push((InputArgument)callback);
+			ScriptContext.GlobalScriptContext.Push(post);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x2D2D803D);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static void RemoveCommandListener(string cmd, InputArgument callback, bool post){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(cmd);
+			ScriptContext.GlobalScriptContext.Push((InputArgument)callback);
+			ScriptContext.GlobalScriptContext.Push(post);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x34DBBF1A);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
         public static int CommandGetArgCount(IntPtr command){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();

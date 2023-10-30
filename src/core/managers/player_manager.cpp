@@ -30,6 +30,7 @@
  */
 
 #include "core/managers/player_manager.h"
+#include "core/managers/client_command_manager.h"
 
 #include <public/eiface.h>
 #include <public/inetchannelinfo.h>
@@ -41,50 +42,26 @@
 #include <iplayerinfo.h>
 // extern CEntitySystem *g_pEntitySystem;
 
-SH_DECL_HOOK4_void(
-    IServerGameClients, ClientActive, SH_NOATTRIB, 0, CPlayerSlot, bool, const char *, uint64);
-SH_DECL_HOOK5_void(IServerGameClients,
-                   ClientDisconnect,
-                   SH_NOATTRIB,
-                   0,
-                   CPlayerSlot,
-                   int,
-                   const char *,
-                   uint64,
-                   const char *);
-SH_DECL_HOOK4_void(
-    IServerGameClients, ClientPutInServer, SH_NOATTRIB, 0, CPlayerSlot, char const *, int, uint64);
+SH_DECL_HOOK4_void(IServerGameClients, ClientActive, SH_NOATTRIB, 0, CPlayerSlot, bool, const char*,
+                   uint64);
+SH_DECL_HOOK5_void(IServerGameClients, ClientDisconnect, SH_NOATTRIB, 0, CPlayerSlot, int,
+                   const char*, uint64, const char*);
+SH_DECL_HOOK4_void(IServerGameClients, ClientPutInServer, SH_NOATTRIB, 0, CPlayerSlot, char const*,
+                   int, uint64);
 SH_DECL_HOOK1_void(IServerGameClients, ClientSettingsChanged, SH_NOATTRIB, 0, CPlayerSlot);
-SH_DECL_HOOK6_void(IServerGameClients,
-                   OnClientConnected,
-                   SH_NOATTRIB,
-                   0,
-                   CPlayerSlot,
-                   const char *,
-                   uint64,
-                   const char *,
-                   const char *,
-                   bool);
-SH_DECL_HOOK6(IServerGameClients,
-              ClientConnect,
-              SH_NOATTRIB,
-              0,
-              bool,
-              CPlayerSlot,
-              const char *,
-              uint64,
-              const char *,
-              bool,
-              CBufferString *);
+SH_DECL_HOOK6_void(IServerGameClients, OnClientConnected, SH_NOATTRIB, 0, CPlayerSlot, const char*,
+                   uint64, const char*, const char*, bool);
+SH_DECL_HOOK6(IServerGameClients, ClientConnect, SH_NOATTRIB, 0, bool, CPlayerSlot, const char*,
+              uint64, const char*, bool, CBufferString*);
 
-SH_DECL_HOOK2_void(
-    IServerGameClients, ClientCommand, SH_NOATTRIB, 0, CPlayerSlot, const CCommand &);
+SH_DECL_HOOK2_void(IServerGameClients, ClientCommand, SH_NOATTRIB, 0, CPlayerSlot, const CCommand&);
 
 namespace counterstrikesharp {
 
 void PlayerManager::OnStartup() {}
 
-void PlayerManager::OnAllInitialized() {
+void PlayerManager::OnAllInitialized()
+{
     SH_ADD_HOOK(IServerGameClients, ClientConnect, globals::serverGameClients,
                 SH_MEMBER(this, &PlayerManager::OnClientConnect), false);
     SH_ADD_HOOK(IServerGameClients, ClientConnect, globals::serverGameClients,
@@ -108,7 +85,8 @@ void PlayerManager::OnAllInitialized() {
     m_on_client_authorized_callback = globals::callbackManager.CreateCallback("OnClientAuthorized");
 }
 
-void PlayerManager::OnShutdown() {
+void PlayerManager::OnShutdown()
+{
     SH_REMOVE_HOOK(IServerGameClients, ClientConnect, globals::serverGameClients,
                    SH_MEMBER(this, &PlayerManager::OnClientConnect), false);
     SH_REMOVE_HOOK(IServerGameClients, ClientConnect, globals::serverGameClients,
@@ -130,17 +108,15 @@ void PlayerManager::OnShutdown() {
     globals::callbackManager.ReleaseCallback(m_on_client_authorized_callback);
 }
 
-bool PlayerManager::OnClientConnect(CPlayerSlot slot,
-                                    const char *pszName,
-                                    uint64 xuid,
-                                    const char *pszNetworkID,
-                                    bool unk1,
-                                    CBufferString *pRejectReason) {
+bool PlayerManager::OnClientConnect(CPlayerSlot slot, const char* pszName, uint64 xuid,
+                                    const char* pszNetworkID, bool unk1,
+                                    CBufferString* pRejectReason)
+{
     CSSHARP_CORE_TRACE("[PlayerManager][OnClientConnect] - {}, {}, {}", slot.Get(), pszName,
                        pszNetworkID);
 
     int client = slot.Get();
-    CPlayer *pPlayer = &m_players[client];
+    CPlayer* pPlayer = &m_players[client];
 
     if (pPlayer->IsConnected()) {
         OnClientDisconnect(slot, 0, pszName, xuid, pszNetworkID);
@@ -179,18 +155,16 @@ bool PlayerManager::OnClientConnect(CPlayerSlot slot,
     return true;
 }
 
-bool PlayerManager::OnClientConnect_Post(CPlayerSlot slot,
-                                         const char *pszName,
-                                         uint64 xuid,
-                                         const char *pszNetworkID,
-                                         bool unk1,
-                                         CBufferString *pRejectReason) {
+bool PlayerManager::OnClientConnect_Post(CPlayerSlot slot, const char* pszName, uint64 xuid,
+                                         const char* pszNetworkID, bool unk1,
+                                         CBufferString* pRejectReason)
+{
     CSSHARP_CORE_TRACE("[PlayerManager][OnClientConnect_Post] - {}, {}, {}", slot.Get(), pszName,
                        pszNetworkID);
 
     int client = slot.Get();
     bool orig_value = META_RESULT_ORIG_RET(bool);
-    CPlayer *pPlayer = &m_players[client];
+    CPlayer* pPlayer = &m_players[client];
 
     if (orig_value) {
         m_on_client_connected_callback->ScriptContext().Reset();
@@ -208,15 +182,14 @@ bool PlayerManager::OnClientConnect_Post(CPlayerSlot slot,
     return true;
 }
 
-void PlayerManager::OnClientPutInServer(CPlayerSlot slot,
-                                        char const *pszName,
-                                        int type,
-                                        uint64 xuid) {
+void PlayerManager::OnClientPutInServer(CPlayerSlot slot, char const* pszName, int type,
+                                        uint64 xuid)
+{
     CSSHARP_CORE_TRACE("[PlayerManager][OnClientPutInServer] - {}, {}, {}", slot.Get(), pszName,
                        type);
 
     int client = slot.Get();
-    CPlayer *pPlayer = &m_players[client];
+    CPlayer* pPlayer = &m_players[client];
 
     if (!pPlayer->IsConnected()) {
         pPlayer->m_is_fake_client = true;
@@ -250,14 +223,13 @@ void PlayerManager::OnClientPutInServer(CPlayerSlot slot,
 
 void PlayerManager::OnClientDisconnect(CPlayerSlot slot,
                                        /* ENetworkDisconnectionReason */ int reason,
-                                       const char *pszName,
-                                       uint64 xuid,
-                                       const char *pszNetworkID) {
+                                       const char* pszName, uint64 xuid, const char* pszNetworkID)
+{
     CSSHARP_CORE_TRACE("[PlayerManager][OnClientDisconnect] - {}, {}, {}", slot.Get(), pszName,
                        pszNetworkID);
 
     int client = slot.Get();
-    CPlayer *pPlayer = &m_players[client];
+    CPlayer* pPlayer = &m_players[client];
 
     if (pPlayer->IsConnected()) {
         m_on_client_disconnect_callback->ScriptContext().Reset();
@@ -274,14 +246,14 @@ void PlayerManager::OnClientDisconnect(CPlayerSlot slot,
 
 void PlayerManager::OnClientDisconnect_Post(CPlayerSlot slot,
                                             /* ENetworkDisconnectionReason */ int reason,
-                                            const char *pszName,
-                                            uint64 xuid,
-                                            const char *pszNetworkID) const {
+                                            const char* pszName, uint64 xuid,
+                                            const char* pszNetworkID) const
+{
     CSSHARP_CORE_TRACE("[PlayerManager][OnClientDisconnect_Post] - {}, {}, {}", slot.Get(), pszName,
                        pszNetworkID);
 
     int client = slot.Get();
-    CPlayer *pPlayer = &m_players[client];
+    CPlayer* pPlayer = &m_players[client];
     if (!pPlayer->IsConnected()) {
         /* We don't care, prevent a double call */
         return;
@@ -294,7 +266,8 @@ void PlayerManager::OnClientDisconnect_Post(CPlayerSlot slot,
     m_on_client_disconnect_post_callback->Execute();
 }
 
-void PlayerManager::OnLevelEnd() {
+void PlayerManager::OnLevelEnd()
+{
     CSSHARP_CORE_TRACE("[PlayerManager][OnLevelEnd]");
 
     for (int i = 0; i <= m_max_clients; i++) {
@@ -308,23 +281,16 @@ void PlayerManager::OnLevelEnd() {
     m_player_count = 0;
 }
 
-void PlayerManager::OnClientCommand(CPlayerSlot slot, const CCommand &args) const {
-    CSSHARP_CORE_TRACE("[PlayerManager][OnClientCommand] - {}, {}", slot.Get(), args.ArgS());
+void PlayerManager::OnClientCommand(CPlayerSlot slot, const CCommand& args) const
+{
+    CSSHARP_CORE_TRACE("[PlayerManager][OnClientCommand] - {}, {}, {}", slot.Get(), args.Arg(0), (void*)&args);
 
-    int client = slot.Get();
-    CPlayer *pPlayer = &m_players[client];
+    const char* cmd = args.Arg(0);
 
-    if (!pPlayer->IsConnected()) {
-        return;
+    bool response = globals::clientCommandManager.DispatchClientCommand(slot, cmd, &args);
+    if (response) {
+        RETURN_META(MRES_SUPERCEDE);
     }
-
-    const char *cmd = args.Arg(0);
-
-    //    bool response = globals::con_command_manager.DispatchClientCommand(client, cmd, &args);
-    //    if (response)
-    //    {
-    //        RETURN_META(MRES_SUPERCEDE);
-    //    }
 }
 
 int PlayerManager::ListenClient() const { return m_listen_client; }
@@ -333,7 +299,8 @@ int PlayerManager::NumPlayers() const { return m_player_count; }
 
 int PlayerManager::MaxClients() const { return m_max_clients; }
 
-CPlayer *PlayerManager::GetPlayerByIndex(int client) const {
+CPlayer* PlayerManager::GetPlayerByIndex(int client) const
+{
     if (client > m_max_clients || client < 1) {
         return nullptr;
     }
@@ -380,25 +347,28 @@ CPlayer *PlayerManager::GetPlayerByIndex(int client) const {
 //     return nullptr;
 // }
 
-void PlayerManager::InvalidatePlayer(CPlayer *pPlayer) const {
+void PlayerManager::InvalidatePlayer(CPlayer* pPlayer) const
+{
     auto userid = globals::engine->GetPlayerUserId(pPlayer->m_slot);
-    if (userid.Get() != -1) m_user_id_lookup[userid.Get()] = 0;
+    if (userid.Get() != -1)
+        m_user_id_lookup[userid.Get()] = 0;
 
     pPlayer->Disconnect();
 }
 
 CPlayer::CPlayer() {}
 
-void CPlayer::Initialize(const char *name, const char *ip, CPlayerSlot slot) {
+void CPlayer::Initialize(const char* name, const char* ip, CPlayerSlot slot)
+{
     m_is_connected = true;
     m_slot = slot;
     m_name = std::string(name);
     m_ip_address = std::string(ip);
 }
 
-IPlayerInfo *CPlayer::GetPlayerInfo() const { return m_info; }
+IPlayerInfo* CPlayer::GetPlayerInfo() const { return m_info; }
 
-const char *CPlayer::GetName() const { return strdup(m_name.c_str()); }
+const char* CPlayer::GetName() const { return strdup(m_name.c_str()); }
 
 bool CPlayer::IsConnected() const { return m_is_connected; }
 
@@ -406,7 +376,8 @@ bool CPlayer::IsFakeClient() const { return m_is_fake_client; }
 
 bool CPlayer::IsAuthorized() const { return m_is_authorized; }
 
-bool CPlayer::IsAuthStringValidated() const {
+bool CPlayer::IsAuthStringValidated() const
+{
     if (!IsFakeClient()) {
         return globals::engine->IsClientFullyAuthenticated(m_slot);
     }
@@ -414,12 +385,13 @@ bool CPlayer::IsAuthStringValidated() const {
 
 void CPlayer::Authorize() { m_is_authorized = true; }
 
-void CPlayer::PrintToConsole(const char *message) const {
+void CPlayer::PrintToConsole(const char* message) const
+{
     if (m_is_connected == false || m_is_fake_client == true) {
         return;
     }
 
-    INetChannelInfo *pNetChan = globals::engine->GetPlayerNetInfo(m_slot);
+    INetChannelInfo* pNetChan = globals::engine->GetPlayerNetInfo(m_slot);
     if (pNetChan == nullptr) {
         return;
     }
@@ -442,11 +414,12 @@ void CPlayer::PrintToConsole(const char *message) const {
 //     globals::user_message_manager.SendCenterMessage(m_i_index, message);
 // }
 
-void CPlayer::SetName(const char *name) { m_name = strdup(name); }
+void CPlayer::SetName(const char* name) { m_name = strdup(name); }
 
-INetChannelInfo *CPlayer::GetNetInfo() const { return globals::engine->GetPlayerNetInfo(m_slot); }
+INetChannelInfo* CPlayer::GetNetInfo() const { return globals::engine->GetPlayerNetInfo(m_slot); }
 
-PlayerManager::PlayerManager() {
+PlayerManager::PlayerManager()
+{
     m_max_clients = 64;
     m_players = new CPlayer[66];
     m_player_count = 0;
@@ -454,7 +427,8 @@ PlayerManager::PlayerManager() {
     memset(m_user_id_lookup, 0, sizeof(int) * (USHRT_MAX + 1));
 }
 
-void PlayerManager::RunAuthChecks() {
+void PlayerManager::RunAuthChecks()
+{
     if (globals::getGlobalVars()->curtime - m_last_auth_check_time < 0.5F) {
         return;
     }
@@ -463,7 +437,8 @@ void PlayerManager::RunAuthChecks() {
 
     for (int i = 0; i <= m_max_clients; i++) {
         if (m_players[i].IsConnected()) {
-            if (m_players[i].IsAuthorized() || m_players[i].IsFakeClient()) continue;
+            if (m_players[i].IsAuthorized() || m_players[i].IsFakeClient())
+                continue;
 
             if (globals::engine->IsClientFullyAuthenticated(i)) {
                 m_players[i].Authorize();
@@ -474,7 +449,8 @@ void PlayerManager::RunAuthChecks() {
     }
 }
 
-void PlayerManager::OnAuthorized(CPlayer *player) const {
+void PlayerManager::OnAuthorized(CPlayer* player) const
+{
     CSSHARP_CORE_TRACE("[PlayerManager][OnAuthorized] - {} {}", player->GetName(),
                        player->GetSteamId()->ConvertToUint64());
 
@@ -486,7 +462,8 @@ void PlayerManager::OnAuthorized(CPlayer *player) const {
 
 bool CPlayer::WasCountedAsInGame() const { return m_is_in_game; }
 
-int CPlayer::GetUserId() {
+int CPlayer::GetUserId()
+{
     if (m_user_id == -1) {
         m_user_id = globals::engine->GetPlayerUserId(m_slot).Get();
     }
@@ -494,17 +471,19 @@ int CPlayer::GetUserId() {
     return m_user_id;
 }
 
-bool CPlayer::IsInGame() const {
-    return m_is_in_game;  // && (m_p_edict->GetUnknown() != nullptr);
+bool CPlayer::IsInGame() const
+{
+    return m_is_in_game; // && (m_p_edict->GetUnknown() != nullptr);
 }
 
-void CPlayer::Kick(const char *kickReason) {
+void CPlayer::Kick(const char* kickReason)
+{
     char buffer[255];
     sprintf(buffer, "kickid %d %s\n", GetUserId(), kickReason);
     globals::engine->ServerCommand(buffer);
 }
 
-const char *CPlayer::GetWeaponName() const { return m_info->GetWeaponName(); }
+const char* CPlayer::GetWeaponName() const { return m_info->GetWeaponName(); }
 
 void CPlayer::ChangeTeam(int team) const { m_info->ChangeTeam(team); }
 
@@ -516,7 +495,8 @@ int CPlayer::GetFrags() const { return m_info->GetFragCount(); }
 
 int CPlayer::GetDeaths() const { return m_info->GetDeathCount(); }
 
-const char *CPlayer::GetKeyValue(const char *key) const {
+const char* CPlayer::GetKeyValue(const char* key) const
+{
     return globals::engine->GetClientConVarValue(m_slot, key);
 }
 
@@ -526,13 +506,14 @@ Vector CPlayer::GetMinSize() const { return m_info->GetPlayerMins(); }
 
 int CPlayer::GetMaxHealth() const { return m_info->GetMaxHealth(); }
 
-const char *CPlayer::GetIpAddress() const { return m_ip_address.c_str(); }
+const char* CPlayer::GetIpAddress() const { return m_ip_address.c_str(); }
 
-const char *CPlayer::GetModelName() const { return m_info->GetModelName(); }
+const char* CPlayer::GetModelName() const { return m_info->GetModelName(); }
 
 int CPlayer::GetUserId() const { return m_user_id; }
 
-float CPlayer::GetTimeConnected() const {
+float CPlayer::GetTimeConnected() const
+{
     if (!IsConnected() || IsFakeClient()) {
         return 0;
     }
@@ -540,11 +521,13 @@ float CPlayer::GetTimeConnected() const {
     return GetNetInfo()->GetTimeConnected();
 }
 
-float CPlayer::GetLatency() const {
+float CPlayer::GetLatency() const
+{
     return GetNetInfo()->GetLatency(FLOW_INCOMING) + GetNetInfo()->GetLatency(FLOW_OUTGOING);
 }
 
-void CPlayer::Connect() {
+void CPlayer::Connect()
+{
     if (m_is_in_game) {
         return;
     }
@@ -552,7 +535,8 @@ void CPlayer::Connect() {
     m_is_in_game = true;
 }
 
-void CPlayer::Disconnect() {
+void CPlayer::Disconnect()
+{
     m_is_connected = false;
     m_is_in_game = false;
     m_name.clear();
@@ -567,14 +551,15 @@ QAngle CPlayer::GetAbsAngles() const { return m_info->GetAbsAngles(); }
 
 Vector CPlayer::GetAbsOrigin() const { return m_info->GetAbsOrigin(); }
 
-bool CPlayer::IsAlive() const {
+bool CPlayer::IsAlive() const
+{
     if (!IsInGame()) {
         return false;
     }
 
     return !m_info->IsDead();
 }
-const CSteamID *CPlayer::GetSteamId() { return m_steamId; }
-void CPlayer::SetSteamId(const CSteamID *steam_id) { m_steamId = steam_id; }
+const CSteamID* CPlayer::GetSteamId() { return m_steamId; }
+void CPlayer::SetSteamId(const CSteamID* steam_id) { m_steamId = steam_id; }
 
-}  // namespace counterstrikesharp
+} // namespace counterstrikesharp

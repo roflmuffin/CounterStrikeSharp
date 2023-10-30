@@ -48,6 +48,7 @@ class ChatCommands;
 class HookManager;
 class EntityManager;
 class ChatManager;
+class ClientCommandManager;
 
 namespace globals {
 
@@ -89,6 +90,7 @@ extern EntityManager entityManager;
 extern TimerSystem timerSystem;
 extern ChatCommands chatCommands;
 extern ChatManager chatManager;
+extern ClientCommandManager clientCommandManager;
 
 extern HookManager hookManager;
 extern SourceHook::ISourceHook *source_hook;

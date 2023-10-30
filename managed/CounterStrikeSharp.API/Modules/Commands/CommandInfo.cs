@@ -22,6 +22,8 @@ namespace CounterStrikeSharp.API.Modules.Commands
     public class CommandInfo
     {
         public delegate void CommandCallback(CCSPlayerController? player, CommandInfo commandInfo);
+        
+        public delegate HookResult CommandListenerCallback(CCSPlayerController? player, CommandInfo commandInfo);
 
         public IntPtr Handle { get; private set; }
         internal CommandInfo(IntPtr pointer)

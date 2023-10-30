@@ -16,6 +16,7 @@
 
 #include <eiface.h>
 
+#include "core/managers/client_command_manager.h"
 #include "scripting/autonative.h"
 #include "scripting/callback_manager.h"
 #include "core/managers/con_command_manager.h"
@@ -42,6 +43,22 @@ static void RemoveCommand(ScriptContext& script_context) {
     auto callback = script_context.GetArgument<CallbackT>(1);
 
     globals::conCommandManager.RemoveCommand(name, callback);
+}
+
+static void AddCommandListener(ScriptContext& script_context) {
+    auto name = script_context.GetArgument<const char*>(0);
+    auto callback = script_context.GetArgument<CallbackT>(1);
+    auto post = script_context.GetArgument<bool>(2);
+
+    globals::clientCommandManager.AddCommandListener(name, callback, post);
+}
+
+static void RemoveCommandListener(ScriptContext& script_context) {
+    auto name = script_context.GetArgument<const char*>(0);
+    auto callback = script_context.GetArgument<CallbackT>(1);
+    auto post = script_context.GetArgument<bool>(2);
+
+    globals::clientCommandManager.RemoveCommandListener(name, callback, post);
 }
 
 static int CommandGetArgCount(ScriptContext& script_context) {
@@ -99,6 +116,8 @@ static void IssueClientCommand(ScriptContext& script_context) {
 REGISTER_NATIVES(commands, {
     ScriptEngine::RegisterNativeHandler("ADD_COMMAND", AddCommand);
     ScriptEngine::RegisterNativeHandler("REMOVE_COMMAND", RemoveCommand);
+    ScriptEngine::RegisterNativeHandler("ADD_COMMAND_LISTENER", AddCommandListener);
+    ScriptEngine::RegisterNativeHandler("REMOVE_COMMAND_LISTENER", RemoveCommandListener);
 
     ScriptEngine::RegisterNativeHandler("COMMAND_GET_ARG_COUNT", CommandGetArgCount);
     ScriptEngine::RegisterNativeHandler("COMMAND_GET_ARG_STRING", CommandGetArgString);

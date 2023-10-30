@@ -1,5 +1,7 @@
 ADD_COMMAND: name:string,description:string,serverOnly:bool,flags:int,callback:callback -> pointer
 REMOVE_COMMAND: name:string,callback:callback -> void
+ADD_COMMAND_LISTENER: cmd:string, callback:callback, post:bool -> void
+REMOVE_COMMAND_LISTENER: cmd:string, callback:callback, post:bool -> void
 COMMAND_GET_ARG_COUNT: command:pointer -> int
 COMMAND_GET_ARG_STRING: command:pointer -> string
 COMMAND_GET_COMMAND_STRING: command:pointer -> string

@@ -253,6 +253,14 @@ namespace TestPlugin
                     player.SwitchTeam(CsTeam.Terrorist);
                 }
             });
+            
+            // Listens for any client use of the command `jointeam`.
+            AddCommandListener("jointeam", (player, info) =>
+            {
+                Log($"{player.PlayerName} just did a jointeam (pre) [{info.ArgString}]");
+
+                return HookResult.Continue;
+            });
         }
 
         [GameEventHandler]

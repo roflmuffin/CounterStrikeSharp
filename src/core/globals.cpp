@@ -17,6 +17,7 @@
 #include "memory_module.h"
 #include "interfaces/cs2_interfaces.h"
 #include "core/managers/entity_manager.h"
+#include "core/managers/client_command_manager.h"
 #include <public/game/server/iplayerinfo.h>
 #include <public/entity2/entitysystem.h>
 
@@ -70,6 +71,7 @@ TimerSystem timerSystem;
 ConCommandManager conCommandManager;
 EntityManager entityManager;
 ChatManager chatManager;
+ClientCommandManager clientCommandManager;
 
 void Initialize() {
     modules::engine = new modules::CModule(ROOTBIN, "engine2");
