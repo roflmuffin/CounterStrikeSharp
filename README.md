@@ -25,7 +25,9 @@ _(Note, these were features in the previous VSP.NET project, but have not been i
 
 These features are the core of the platform and work pretty well/have a low risk of causing issues.
 
-- [ ] **(In Progress)** Console Variables, Console Commands, Server Commands (e.g. sv_customvar)
+- [x]  Console Commands, Server Commands (e.g. css_mycommand)
+- [x]  Chat Commands with `!` and `/` prefixes (e.g. !mycommand)
+- [ ]  **(In Progress)** Console Variables
 - [x] Game Event Handlers & Custom Events (e.g. player_death)
   - [x] Basic event value get/set (string, bool, int32, float)
   - [x] Complex event values get/set (ehandle, pawn, player controller)
@@ -43,12 +45,12 @@ These features are the core of the platform and work pretty well/have a low risk
 - [Read the docs](https://docs.cssharp.dev/): Getting started guide, hello world plugin example
 - [Issue tracker](https://github.com/roflmuffin/CounterStrikeSharp/issues): Raise any issues here
 - [Builds](https://github.com/roflmuffin/CounterStrikeSharp/actions): Download latest unstable dev snapshot
-- [Install Docs](INSTALL.md): Installation instructions
+- [Install Docs](https://docs.cssharp.dev/guides/getting-started/): Installation instructions
 - [Example Plugin](managed/TestPlugin/TestPlugin.cs): Test plugin with basic functionality
 
 ## Examples
 
-You can view the [example Warcraft plugin](https://github.com/roflmuffin/vspdotnet/tree/master/managed/ClassLibrary2) from the previous VSP.NET project to give you an idea of the kind of power this scripting runtime is capable of. This plugin shows how you can hook events, create commands & console variables, use third party libraries (SQLite) and do basic entity manipulation.
+You can view the [example Warcraft plugin](examples/WarcraftPlugin) migrated from the previous VSP.NET project to give you an idea of the kind of power this scripting runtime is capable of. This plugin shows how you can hook events, create commands, use third party libraries (SQLite) and do basic entity manipulation.
 
 ### Basic Example with Game Event & Console Commands
 
