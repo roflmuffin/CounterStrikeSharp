@@ -28,6 +28,7 @@ namespace CounterStrikeSharp.API.Core
         {
             get;
         }
+
         /// <summary>
         /// Module version.
         /// </summary>
@@ -35,12 +36,16 @@ namespace CounterStrikeSharp.API.Core
         {
             get;
         }
+
         /// <summary>
         /// This method is called by CounterStrikeSharp on plugin load and should be treated as plugin constructor.
+        /// Called with `true` on a hot reload (DLL file replaced in plugins folder)
         /// </summary>
         void Load(bool hotReload);
+
         /// <summary>
-        /// Will be called by CounterStrikeSharp on plugin unload. In this method plugin must cleanup and unregister with CSGO native data.
+        /// Will be called by CounterStrikeSharp on plugin unload. In this method the plugin should cleanup any extra resources.
+        /// Event handlers, listeners etc. will automatically be deregistered.
         /// </summary>
         void Unload(bool hotReload);
     }

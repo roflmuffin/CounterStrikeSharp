@@ -118,6 +118,12 @@ namespace CounterStrikeSharp.API.Core
             Handlers[handler] = subscriber;
         }
 
+        /// <summary>
+        /// Registers a game event handler.
+        /// </summary>
+        /// <typeparam name="T">The type of the game event.</typeparam>
+        /// <param name="handler">The event handler to register.</param>
+        /// <param name="hookMode">The mode in which the event handler is hooked. Default is `HookMode.Post`.</param>
         public void RegisterEventHandler<T>(GameEventHandler<T> handler, HookMode hookMode = HookMode.Post) where T : GameEvent
         {
             var name = typeof(T).GetCustomAttribute<EventNameAttribute>()?.Name;
@@ -134,6 +140,12 @@ namespace CounterStrikeSharp.API.Core
         }
 
 
+        /// <summary>
+        /// Registers a new server command.
+        /// </summary>
+        /// <param name="name">The name of the command.</param>
+        /// <param name="description">The description of the command.</param>
+        /// <param name="handler">The callback function to be invoked when the command is executed.</param>
         public void AddCommand(string name, string description, CommandInfo.CommandCallback handler)
         {
             var wrappedHandler = new Action<int, IntPtr>((i, ptr) =>
@@ -284,9 +296,10 @@ namespace CounterStrikeSharp.API.Core
             this.RegisterConsoleCommandAttributeHandlers(instance);
         }
 
-        /**
-         * Automatically registers all game event handlers that are decorated with the [GameEventHandler] attribute.
-         */
+        /// <summary>
+        /// Registers all game event handlers that are decorated with the `[GameEventHandler]` attribute.
+        /// </summary>
+        /// <param name="instance">The instance of the object where the event handlers are defined.</param>
         public void RegisterAttributeHandlers(object instance)
         {
             var eventHandlers = instance.GetType()
