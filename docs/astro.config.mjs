@@ -51,7 +51,6 @@ export default defineConfig({
   site: 'https://docs.cssharp.dev',
   markdown: {
     shikiConfig: {
-      theme: 'github-dark-dimmed',
       wrap: false,
     },
   },
