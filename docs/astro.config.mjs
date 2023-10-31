@@ -36,6 +36,10 @@ export default defineConfig({
           label: 'Features',
           autogenerate: { directory: 'features' },
         },
+        {
+          label: 'Reference',
+          autogenerate: { directory: 'reference' },
+        },
       ],
       editLink: {
         baseUrl:
