@@ -737,6 +737,17 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static void HookFunction(IntPtr function, InputArgument hook){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(function);
+			ScriptContext.GlobalScriptContext.Push((InputArgument)hook);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xA6C8BA9B);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
         public static T ExecuteVirtualFunction<T>(IntPtr function, object[] arguments){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();

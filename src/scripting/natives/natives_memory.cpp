@@ -100,6 +100,18 @@ ValveFunction *CreateVirtualFunction(ScriptContext &script_context) {
     return function;
 }
 
+void* HookFunction(ScriptContext& script_context) {
+    auto function = script_context.GetArgument<ValveFunction*>(0);
+    auto callback = script_context.GetArgument<CallbackT>(1);
+
+    if (!function) {
+        script_context.ThrowNativeError("Invalid function pointer");
+        return nullptr;
+    }
+
+    function->AddHook(callback);
+}
+
 void ExecuteVirtualFunction(ScriptContext &script_context) {
     auto function = script_context.GetArgument<ValveFunction *>(0);
 
@@ -157,7 +169,7 @@ REGISTER_NATIVES(memory, {
     ScriptEngine::RegisterNativeHandler("CREATE_VIRTUAL_FUNCTION_BY_SIGNATURE",
                                         CreateVirtualFunctionBySignature);
     ScriptEngine::RegisterNativeHandler("EXECUTE_VIRTUAL_FUNCTION", ExecuteVirtualFunction);
-    // ScriptEngine::RegisterNativeHandler("HOOK_FUNCTION", HookFunction);
+    ScriptEngine::RegisterNativeHandler("HOOK_FUNCTION", HookFunction);
     // ScriptEngine::RegisterNativeHandler("UNHOOK_FUNCTION", UnhookFunction);
     ScriptEngine::RegisterNativeHandler("FIND_SIGNATURE", FindSignatureNative);
     ScriptEngine::RegisterNativeHandler("GET_NETWORK_VECTOR_SIZE", GetNetworkVectorSize);

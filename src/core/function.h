@@ -32,6 +32,7 @@
 
 #include "scripting/callback_manager.h"
 #include "scripting/script_engine.h"
+#include "funchook.h"
 
 namespace counterstrikesharp {
 
@@ -92,7 +93,7 @@ public:
     void SetSignature(const char* signature) { m_signature = signature; }
 
     void Call(ScriptContext& args, int offset = 0);
-    // CHook* AddHook(HookType_t eType, void* callable);
+    void AddHook(CallbackT callable);
     // void DeleteHook();
 
     void* m_ulAddr;
@@ -107,6 +108,7 @@ public:
 
     int m_offset;
     const char* m_signature;
+    ScriptCallback* m_precallback;
 };
 
 }  // namespace counterstrikesharp
