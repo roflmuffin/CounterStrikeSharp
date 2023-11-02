@@ -246,7 +246,7 @@ internal static partial class Program
                     $"    public {SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)} => {getter}");
                 builder.AppendLine();
             }
-            else if (field.Type.Category == SchemaTypeCategory.Builtin)
+            else if ((field.Type.Category == SchemaTypeCategory.Builtin || field.Type.Category == SchemaTypeCategory.DeclaredEnum) && !IgnoreClasses.Contains(field.Type.Name))
             {
                 var getter = $"ref Schema.GetRef<{SanitiseTypeName(field.Type.CsTypeName)}>({handleParams});";
                 builder.AppendLine(

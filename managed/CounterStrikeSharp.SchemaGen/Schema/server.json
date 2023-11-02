@@ -6095,8 +6095,8 @@
         {
           "name": "m_flLightStyleStartTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
             "MNetworkChangeCallback": "LightRenderingChanged"
@@ -6215,8 +6215,8 @@
         {
           "name": "m_flCrouchTransitionStartTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
             "MNetworkUserGroup": "LocalPlayerExclusive"
@@ -6708,8 +6708,8 @@
         {
           "name": "m_timestamp",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -6740,8 +6740,8 @@
         {
           "name": "m_timestamp",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -7234,8 +7234,8 @@
         {
           "name": "m_flCreateTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -7456,8 +7456,8 @@
         {
           "name": "m_flNavIgnoreUntilTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -7923,8 +7923,8 @@
         {
           "name": "lerptime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
             "MNetworkUserGroup": "FogController"
@@ -8513,8 +8513,8 @@
         {
           "name": "m_flStartTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -9683,8 +9683,8 @@
         {
           "name": "m_flDMBonusStartTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -9733,8 +9733,8 @@
         {
           "name": "m_fWarmupPeriodEnd",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -9742,8 +9742,8 @@
         {
           "name": "m_fWarmupPeriodStart",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -9877,8 +9877,8 @@
         {
           "name": "m_fRoundStartTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -9886,8 +9886,8 @@
         {
           "name": "m_flRestartRoundTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -10150,8 +10150,8 @@
         {
           "name": "m_flCMMItemDropRevealStartTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -10159,8 +10159,8 @@
         {
           "name": "m_flCMMItemDropRevealEndTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -10377,8 +10377,8 @@
         {
           "name": "m_flGuardianBuyUntilTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -10446,8 +10446,8 @@
             "category": 3,
             "arraySize": 32,
             "inner": {
-              "name": "GameTime_t",
-              "category": 5
+              "name": "float32",
+              "category": 0
             }
           },
           "metadata": {
@@ -11155,8 +11155,8 @@
         {
           "name": "m_flFOVTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -11554,8 +11554,8 @@
         {
           "name": "m_fStashGrenadeParameterWhen",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -11638,8 +11638,8 @@
         {
           "name": "m_flNextAttack",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
             "MNetworkUserGroup": "LocalPlayerExclusive"
@@ -13675,8 +13675,8 @@
         {
           "name": "m_flStartAnisoTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -13684,8 +13684,8 @@
         {
           "name": "m_flStartScatterTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -13693,8 +13693,8 @@
         {
           "name": "m_flStartDrawDistanceTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -14792,8 +14792,8 @@
         {
           "name": "m_flStartTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -15315,8 +15315,8 @@
         {
           "name": "m_flStartTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -16720,8 +16720,8 @@
         {
           "name": "m_flStartTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -18569,8 +18569,8 @@
         {
           "name": "m_flForceTeamTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -19502,8 +19502,8 @@
         {
           "name": "m_flLightStyleStartTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
             "MNetworkChangeCallback": "RenderingChanged"
@@ -20836,8 +20836,8 @@
         {
           "name": "m_flStartTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -21689,8 +21689,8 @@
         {
           "name": "m_flDetonateTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -21817,8 +21817,8 @@
         {
           "name": "m_flC4Blow",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -21898,8 +21898,8 @@
         {
           "name": "m_flDefuseCountDown",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -22498,8 +22498,8 @@
         {
           "name": "m_flDeathTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -22597,8 +22597,8 @@
         {
           "name": "m_flTimeWeaponIdle",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
             "MNetworkUserGroup": "LocalWeaponExclusive",
@@ -22653,8 +22653,8 @@
         {
           "name": "m_flPostponeFireReadyTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -22680,8 +22680,8 @@
         {
           "name": "m_flDroppedAtTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -22707,8 +22707,8 @@
         {
           "name": "m_flTimeSilencerSwitchComplete",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -22749,8 +22749,8 @@
         {
           "name": "m_fLastShotTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -22822,8 +22822,8 @@
         {
           "name": "m_fArmedTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -22883,8 +22883,8 @@
         {
           "name": "m_fFireTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -22907,8 +22907,8 @@
         {
           "name": "m_flThrowAt",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -23065,8 +23065,8 @@
         {
           "name": "m_fThrowTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -23092,8 +23092,8 @@
         {
           "name": "m_fDropTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -23313,8 +23313,8 @@
         {
           "name": "m_fImmuneToGunGameDamageTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -23367,8 +23367,8 @@
         {
           "name": "m_flDetectedByEnemySensorTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -23385,8 +23385,8 @@
         {
           "name": "m_flEmitSoundTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -23927,8 +23927,8 @@
         {
           "name": "m_flHealthShotBoostExpirationTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -23985,8 +23985,8 @@
         {
           "name": "m_flTimeOfLastInjury",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -23994,8 +23994,8 @@
         {
           "name": "m_flNextSprayDecalTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
             "MNetworkUserGroup": "LocalPlayerExclusive"
@@ -24179,8 +24179,8 @@
         {
           "name": "m_flRescueStartTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -24188,8 +24188,8 @@
         {
           "name": "m_flGrabSuccessTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }
@@ -24197,8 +24197,8 @@
         {
           "name": "m_flDropStartTime",
           "type": {
-            "name": "GameTime_t",
-            "category": 5
+            "name": "float32",
+            "category": 0
           },
           "metadata": {
           }

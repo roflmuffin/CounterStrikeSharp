@@ -669,6 +669,8 @@ public partial class CAttributeManager : NativeObject
     public CHandle<CBaseEntity> Outer => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CAttributeManager", "m_hOuter");
 
     // m_ProviderType
+    public ref attributeprovidertypes_t ProviderType => ref Schema.GetRef<attributeprovidertypes_t>(this.Handle, "CAttributeManager", "m_ProviderType");
+
 }
 
 public partial class CBarnLight : CBaseModelEntity
@@ -725,6 +727,8 @@ public partial class CBarnLight : CBaseModelEntity
 
     // m_flLightStyleStartTime
     // MNetworkChangeCallback "RenderingChanged"
+    public ref float LightStyleStartTime => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flLightStyleStartTime");
+
     // m_QueuedLightStyleStrings
     public NetworkedVector<NetworkedString> QueuedLightStyleStrings => Schema.GetDeclaredClass<NetworkedVector<NetworkedString>>(this.Handle, "CBarnLight", "m_QueuedLightStyleStrings");
 
@@ -935,6 +939,8 @@ public partial class CBaseAnimGraphController : CSkeletonAnimationController
     public ref Int32 ResetEventsParity => ref Schema.GetRef<Int32>(this.Handle, "CBaseAnimGraphController", "m_nResetEventsParity");
 
     // m_nAnimLoopMode
+    public ref AnimLoopMode_t AnimLoopMode => ref Schema.GetRef<AnimLoopMode_t>(this.Handle, "CBaseAnimGraphController", "m_nAnimLoopMode");
+
 }
 
 public partial class CBaseButton : CBaseToggle
@@ -999,7 +1005,11 @@ public partial class CBaseCSGrenade : CCSWeaponBase
     public ref bool JumpThrow => ref Schema.GetRef<bool>(this.Handle, "CBaseCSGrenade", "m_bJumpThrow");
 
     // m_eThrowStatus
+    public ref EGrenadeThrowState ThrowStatus => ref Schema.GetRef<EGrenadeThrowState>(this.Handle, "CBaseCSGrenade", "m_eThrowStatus");
+
     // m_fThrowTime
+    public ref float ThrowTime => ref Schema.GetRef<float>(this.Handle, "CBaseCSGrenade", "m_fThrowTime");
+
     // m_flThrowStrength
     public ref float ThrowStrength => ref Schema.GetRef<float>(this.Handle, "CBaseCSGrenade", "m_flThrowStrength");
 
@@ -1007,6 +1017,8 @@ public partial class CBaseCSGrenade : CCSWeaponBase
     public ref float ThrowStrengthApproach => ref Schema.GetRef<float>(this.Handle, "CBaseCSGrenade", "m_flThrowStrengthApproach");
 
     // m_fDropTime
+    public ref float DropTime => ref Schema.GetRef<float>(this.Handle, "CBaseCSGrenade", "m_fDropTime");
+
 }
 
 public partial class CBaseCSGrenadeProjectile : CBaseGrenade
@@ -1068,8 +1080,14 @@ public partial class CBaseEntity : CEntityInstance
     public ref bool TakesDamage => ref Schema.GetRef<bool>(this.Handle, "CBaseEntity", "m_bTakesDamage");
 
     // m_nTakeDamageFlags
+    public ref TakeDamageFlags_t TakeDamageFlags => ref Schema.GetRef<TakeDamageFlags_t>(this.Handle, "CBaseEntity", "m_nTakeDamageFlags");
+
     // m_MoveCollide
+    public ref MoveCollide_t MoveCollide => ref Schema.GetRef<MoveCollide_t>(this.Handle, "CBaseEntity", "m_MoveCollide");
+
     // m_MoveType
+    public ref MoveType_t MoveType => ref Schema.GetRef<MoveType_t>(this.Handle, "CBaseEntity", "m_MoveType");
+
     // m_nSubclassID
     // MNetworkSendProxyRecipientsFilter
     public CUtlStringToken SubclassID => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CBaseEntity", "m_nSubclassID");
@@ -1087,6 +1105,8 @@ public partial class CBaseEntity : CEntityInstance
     public ref float SimulationTime => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flSimulationTime");
 
     // m_flCreateTime
+    public ref float CreateTime => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flCreateTime");
+
     // m_bClientSideRagdoll
     public ref bool ClientSideRagdoll => ref Schema.GetRef<bool>(this.Handle, "CBaseEntity", "m_bClientSideRagdoll");
 
@@ -1166,6 +1186,8 @@ public partial class CBaseEntity : CEntityInstance
     public ref bool AnimatedEveryTick => ref Schema.GetRef<bool>(this.Handle, "CBaseEntity", "m_bAnimatedEveryTick");
 
     // m_flNavIgnoreUntilTime
+    public ref float NavIgnoreUntilTime => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flNavIgnoreUntilTime");
+
 }
 
 public partial class CBaseFire : CBaseEntity
@@ -1221,6 +1243,8 @@ public partial class CBaseGrenade : CBaseFlex
     public ref float DmgRadius => ref Schema.GetRef<float>(this.Handle, "CBaseGrenade", "m_DmgRadius");
 
     // m_flDetonateTime
+    public ref float DetonateTime => ref Schema.GetRef<float>(this.Handle, "CBaseGrenade", "m_flDetonateTime");
+
     // m_flDamage
     // MNetworkBitCount "10"
     // MNetworkMinValue "0.000000"
@@ -1250,7 +1274,11 @@ public partial class CBaseModelEntity : CBaseEntity
     public CHitboxComponent CHitboxComponent => Schema.GetDeclaredClass<CHitboxComponent>(this.Handle, "CBaseModelEntity", "m_CHitboxComponent");
 
     // m_nRenderMode
+    public ref RenderMode_t RenderMode => ref Schema.GetRef<RenderMode_t>(this.Handle, "CBaseModelEntity", "m_nRenderMode");
+
     // m_nRenderFX
+    public ref RenderFx_t RenderFX => ref Schema.GetRef<RenderFx_t>(this.Handle, "CBaseModelEntity", "m_nRenderFX");
+
     // m_clrRender
     // MNetworkChangeCallback "OnColorChanged"
     public Color Render => Schema.GetDeclaredClass<Color>(this.Handle, "CBaseModelEntity", "m_clrRender");
@@ -1330,6 +1358,8 @@ public partial class CBasePlayerController : CBaseEntity
 
     // m_iConnected
     // MNetworkChangeCallback "OnConnectionStateChanged"
+    public ref PlayerConnectedState Connected => ref Schema.GetRef<PlayerConnectedState>(this.Handle, "CBasePlayerController", "m_iConnected");
+
     // m_iszPlayerName
     // MNetworkChangeCallback "OnPlayerControllerNameChanged"
     public string PlayerName => Schema.GetString(this.Handle, "CBasePlayerController", "m_iszPlayerName");
@@ -1389,6 +1419,8 @@ public partial class CBasePlayerPawn : CBaseCombatCharacter
     public sky3dparams_t Skybox3d => Schema.GetDeclaredClass<sky3dparams_t>(this.Handle, "CBasePlayerPawn", "m_skybox3d");
 
     // m_flDeathTime
+    public ref float DeathTime => ref Schema.GetRef<float>(this.Handle, "CBasePlayerPawn", "m_flDeathTime");
+
     // m_hController
     public CHandle<CBasePlayerController> Controller => Schema.GetDeclaredClass<CHandle<CBasePlayerController>>(this.Handle, "CBasePlayerPawn", "m_hController");
 
@@ -1437,6 +1469,8 @@ public partial class CBasePropDoor : CDynamicProp
     public CBasePropDoor (IntPtr pointer) : base(pointer) {}
 
     // m_eDoorState
+    public ref DoorState_t DoorState => ref Schema.GetRef<DoorState_t>(this.Handle, "CBasePropDoor", "m_eDoorState");
+
     // m_bLocked
     public ref bool Locked => ref Schema.GetRef<bool>(this.Handle, "CBasePropDoor", "m_bLocked");
 
@@ -1514,6 +1548,8 @@ public partial class CBeam : CBaseModelEntity
     public CStrongHandle<InfoForResourceTypeIMaterial2> HaloIndex => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CBeam", "m_nHaloIndex");
 
     // m_nBeamType
+    public ref BeamType_t BeamType => ref Schema.GetRef<BeamType_t>(this.Handle, "CBeam", "m_nBeamType");
+
     // m_nBeamFlags
     public ref UInt32 BeamFlags => ref Schema.GetRef<UInt32>(this.Handle, "CBeam", "m_nBeamFlags");
 
@@ -1572,6 +1608,8 @@ public partial class CBeam : CBaseModelEntity
     public ref float Frame => ref Schema.GetRef<float>(this.Handle, "CBeam", "m_flFrame");
 
     // m_nClipStyle
+    public ref BeamClipStyle_t ClipStyle => ref Schema.GetRef<BeamClipStyle_t>(this.Handle, "CBeam", "m_nClipStyle");
+
     // m_bTurnedOff
     public ref bool TurnedOff => ref Schema.GetRef<bool>(this.Handle, "CBeam", "m_bTurnedOff");
 
@@ -1679,6 +1717,8 @@ public partial class CC4 : CCSWeaponBase
     public ref bool StartedArming => ref Schema.GetRef<bool>(this.Handle, "CC4", "m_bStartedArming");
 
     // m_fArmedTime
+    public ref float ArmedTime => ref Schema.GetRef<float>(this.Handle, "CC4", "m_fArmedTime");
+
     // m_bBombPlacedAnimation
     public ref bool BombPlacedAnimation => ref Schema.GetRef<bool>(this.Handle, "CC4", "m_bBombPlacedAnimation");
 
@@ -1733,12 +1773,16 @@ public partial class CCollisionProperty : NativeObject
 
     // m_nSolidType
     // MNetworkChangeCallback "OnUpdateSolidType"
+    public ref SolidType_t SolidType => ref Schema.GetRef<SolidType_t>(this.Handle, "CCollisionProperty", "m_nSolidType");
+
     // m_triggerBloat
     // MNetworkChangeCallback "MarkSurroundingBoundsDirty"
     public ref byte TriggerBloat => ref Schema.GetRef<byte>(this.Handle, "CCollisionProperty", "m_triggerBloat");
 
     // m_nSurroundType
     // MNetworkChangeCallback "MarkSurroundingBoundsDirty"
+    public ref SurroundingBoundsType_t SurroundType => ref Schema.GetRef<SurroundingBoundsType_t>(this.Handle, "CCollisionProperty", "m_nSurroundType");
+
     // m_CollisionGroup
     public ref byte CollisionGroup => ref Schema.GetRef<byte>(this.Handle, "CCollisionProperty", "m_CollisionGroup");
 
@@ -1836,6 +1880,8 @@ public partial class CCSGameModeRules_Deathmatch : CCSGameModeRules
     public CCSGameModeRules_Deathmatch (IntPtr pointer) : base(pointer) {}
 
     // m_flDMBonusStartTime
+    public ref float DMBonusStartTime => ref Schema.GetRef<float>(this.Handle, "CCSGameModeRules_Deathmatch", "m_flDMBonusStartTime");
+
     // m_flDMBonusTimeLength
     public ref float DMBonusTimeLength => ref Schema.GetRef<float>(this.Handle, "CCSGameModeRules_Deathmatch", "m_flDMBonusTimeLength");
 
@@ -1867,7 +1913,11 @@ public partial class CCSGameRules : CTeamplayRules
     public ref bool WarmupPeriod => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bWarmupPeriod");
 
     // m_fWarmupPeriodEnd
+    public ref float WarmupPeriodEnd => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_fWarmupPeriodEnd");
+
     // m_fWarmupPeriodStart
+    public ref float WarmupPeriodStart => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_fWarmupPeriodStart");
+
     // m_nTotalPausedTicks
     public ref Int32 TotalPausedTicks => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nTotalPausedTicks");
 
@@ -1911,7 +1961,11 @@ public partial class CCSGameRules : CTeamplayRules
     public ref float MatchStartTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_fMatchStartTime");
 
     // m_fRoundStartTime
+    public ref float RoundStartTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_fRoundStartTime");
+
     // m_flRestartRoundTime
+    public ref float RestartRoundTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flRestartRoundTime");
+
     // m_bGameRestart
     public ref bool GameRestart => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bGameRestart");
 
@@ -1992,7 +2046,11 @@ public partial class CCSGameRules : CTeamplayRules
     public ref Int32 TournamentPredictionsPct => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nTournamentPredictionsPct");
 
     // m_flCMMItemDropRevealStartTime
+    public ref float CMMItemDropRevealStartTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flCMMItemDropRevealStartTime");
+
     // m_flCMMItemDropRevealEndTime
+    public ref float CMMItemDropRevealEndTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flCMMItemDropRevealEndTime");
+
     // m_bIsDroppingItems
     public ref bool IsDroppingItems => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bIsDroppingItems");
 
@@ -2057,6 +2115,8 @@ public partial class CCSGameRules : CTeamplayRules
     public ref bool CTCantBuy => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bCTCantBuy");
 
     // m_flGuardianBuyUntilTime
+    public ref float GuardianBuyUntilTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flGuardianBuyUntilTime");
+
     // m_iMatchStats_RoundResults
     public Span<Int32> MatchStats_RoundResults => Schema.GetFixedArray<Int32>(this.Handle, "CCSGameRules", "m_iMatchStats_RoundResults", 30);
 
@@ -2393,6 +2453,8 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
     public ref float JumpVel => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flJumpVel");
 
     // m_fStashGrenadeParameterWhen
+    public ref float StashGrenadeParameterWhen => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_fStashGrenadeParameterWhen");
+
     // m_nButtonDownMaskPrev
     public ref UInt64 ButtonDownMaskPrev => ref Schema.GetRef<UInt64>(this.Handle, "CCSPlayer_MovementServices", "m_nButtonDownMaskPrev");
 
@@ -2443,6 +2505,8 @@ public partial class CCSPlayer_WeaponServices : CPlayer_WeaponServices
 
     // m_flNextAttack
     // MNetworkUserGroup "LocalPlayerExclusive"
+    public ref float NextAttack => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_WeaponServices", "m_flNextAttack");
+
     // m_bIsLookingAtWeapon
     public ref bool IsLookingAtWeapon => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_WeaponServices", "m_bIsLookingAtWeapon");
 
@@ -2462,6 +2526,8 @@ public partial class CCSPlayerBase_CameraServices : CPlayer_CameraServices
     public ref UInt32 FOVStart => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerBase_CameraServices", "m_iFOVStart");
 
     // m_flFOVTime
+    public ref float FOVTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerBase_CameraServices", "m_flFOVTime");
+
     // m_flFOVRate
     // MNetworkUserGroup "LocalPlayerExclusive"
     public ref float FOVRate => ref Schema.GetRef<float>(this.Handle, "CCSPlayerBase_CameraServices", "m_flFOVRate");
@@ -2500,6 +2566,8 @@ public partial class CCSPlayerController : CBasePlayerController
     public ref byte PendingTeamNum => ref Schema.GetRef<byte>(this.Handle, "CCSPlayerController", "m_iPendingTeamNum");
 
     // m_flForceTeamTime
+    public ref float ForceTeamTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerController", "m_flForceTeamTime");
+
     // m_iCompTeammateColor
     // MNetworkChangeCallback "OnCompTeammateColorChanged"
     public ref Int32 CompTeammateColor => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iCompTeammateColor");
@@ -2546,6 +2614,8 @@ public partial class CCSPlayerController : CBasePlayerController
 
     // m_nQuestProgressReason
     // MNetworkUserGroup "LocalPlayerExclusive"
+    public ref QuestProgressReason QuestProgressReason => ref Schema.GetRef<QuestProgressReason>(this.Handle, "CCSPlayerController", "m_nQuestProgressReason");
+
     // m_unPlayerTvControlFlags
     // MNetworkUserGroup "LocalPlayerExclusive"
     public ref UInt32 PlayerTvControlFlags => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController", "m_unPlayerTvControlFlags");
@@ -2744,7 +2814,11 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
     public ref Int32 RetakesMVPBoostItem => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawn", "m_iRetakesMVPBoostItem");
 
     // m_RetakesMVPBoostExtraUtility
+    public ref loadout_slot_t RetakesMVPBoostExtraUtility => ref Schema.GetRef<loadout_slot_t>(this.Handle, "CCSPlayerPawn", "m_RetakesMVPBoostExtraUtility");
+
     // m_flHealthShotBoostExpirationTime
+    public ref float HealthShotBoostExpirationTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawn", "m_flHealthShotBoostExpirationTime");
+
     // m_aimPunchAngle
     // MNetworkBitCount "32"
     public QAngle AimPunchAngle => Schema.GetDeclaredClass<QAngle>(this.Handle, "CCSPlayerPawn", "m_aimPunchAngle");
@@ -2763,8 +2837,12 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
     public ref bool IsBuyMenuOpen => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bIsBuyMenuOpen");
 
     // m_flTimeOfLastInjury
+    public ref float TimeOfLastInjury => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawn", "m_flTimeOfLastInjury");
+
     // m_flNextSprayDecalTime
     // MNetworkUserGroup "LocalPlayerExclusive"
+    public ref float NextSprayDecalTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawn", "m_flNextSprayDecalTime");
+
     // m_nRagdollDamageBone
     public ref Int32 RagdollDamageBone => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawn", "m_nRagdollDamageBone");
 
@@ -2811,6 +2889,8 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
     public EntitySpottedState_t EntitySpottedState => Schema.GetDeclaredClass<EntitySpottedState_t>(this.Handle, "CCSPlayerPawnBase", "m_entitySpottedState");
 
     // m_iPlayerState
+    public ref CSPlayerState PlayerState => ref Schema.GetRef<CSPlayerState>(this.Handle, "CCSPlayerPawnBase", "m_iPlayerState");
+
     // m_bIsScoped
     public ref bool IsScoped => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bIsScoped");
 
@@ -2827,7 +2907,11 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
     public ref bool IsGrabbingHostage => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bIsGrabbingHostage");
 
     // m_iBlockingUseActionInProgress
+    public ref CSPlayerBlockingUseAction_t BlockingUseActionInProgress => ref Schema.GetRef<CSPlayerBlockingUseAction_t>(this.Handle, "CCSPlayerPawnBase", "m_iBlockingUseActionInProgress");
+
     // m_fImmuneToGunGameDamageTime
+    public ref float ImmuneToGunGameDamageTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_fImmuneToGunGameDamageTime");
+
     // m_bGunGameImmunity
     public ref bool GunGameImmunity => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bGunGameImmunity");
 
@@ -2844,10 +2928,14 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
     public ref float GuardianTooFarDistFrac => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flGuardianTooFarDistFrac");
 
     // m_flDetectedByEnemySensorTime
+    public ref float DetectedByEnemySensorTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flDetectedByEnemySensorTime");
+
     // m_nHeavyAssaultSuitCooldownRemaining
     public ref Int32 HeavyAssaultSuitCooldownRemaining => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawnBase", "m_nHeavyAssaultSuitCooldownRemaining");
 
     // m_flEmitSoundTime
+    public ref float EmitSoundTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flEmitSoundTime");
+
     // m_bHasNightVision
     public ref bool HasNightVision => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bHasNightVision");
 
@@ -3058,6 +3146,8 @@ public partial class CCSWeaponBase : CBasePlayerWeapon
 
     // m_iState
     // MNetworkChangeCallback "OnWeaponStateNetworkChange"
+    public ref CSWeaponState_t State => ref Schema.GetRef<CSWeaponState_t>(this.Handle, "CCSWeaponBase", "m_iState");
+
     // m_nViewModelIndex
     // MNetworkUserGroup "LocalWeaponExclusive"
     public ref UInt32 ViewModelIndex => ref Schema.GetRef<UInt32>(this.Handle, "CCSWeaponBase", "m_nViewModelIndex");
@@ -3065,7 +3155,11 @@ public partial class CCSWeaponBase : CBasePlayerWeapon
     // m_flTimeWeaponIdle
     // MNetworkUserGroup "LocalWeaponExclusive"
     // MNetworkPriority "32"
+    public ref float TimeWeaponIdle => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flTimeWeaponIdle");
+
     // m_weaponMode
+    public ref CSWeaponMode WeaponMode => ref Schema.GetRef<CSWeaponMode>(this.Handle, "CCSWeaponBase", "m_weaponMode");
+
     // m_fAccuracyPenalty
     public ref float AccuracyPenalty => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_fAccuracyPenalty");
 
@@ -3079,6 +3173,8 @@ public partial class CCSWeaponBase : CBasePlayerWeapon
     public ref bool BurstMode => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bBurstMode");
 
     // m_flPostponeFireReadyTime
+    public ref float PostponeFireReadyTime => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flPostponeFireReadyTime");
+
     // m_bInReload
     public ref bool InReload => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bInReload");
 
@@ -3086,6 +3182,8 @@ public partial class CCSWeaponBase : CBasePlayerWeapon
     public ref bool ReloadVisuallyComplete => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bReloadVisuallyComplete");
 
     // m_flDroppedAtTime
+    public ref float DroppedAtTime => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flDroppedAtTime");
+
     // m_bIsHauledBack
     public ref bool IsHauledBack => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bIsHauledBack");
 
@@ -3093,6 +3191,8 @@ public partial class CCSWeaponBase : CBasePlayerWeapon
     public ref bool SilencerOn => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bSilencerOn");
 
     // m_flTimeSilencerSwitchComplete
+    public ref float TimeSilencerSwitchComplete => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flTimeSilencerSwitchComplete");
+
     // m_iOriginalTeamNumber
     public ref Int32 OriginalTeamNumber => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_iOriginalTeamNumber");
 
@@ -3101,6 +3201,8 @@ public partial class CCSWeaponBase : CBasePlayerWeapon
 
     // m_nDropTick
     // m_fLastShotTime
+    public ref float LastShotTime => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_fLastShotTime");
+
     // m_iIronSightMode
     public ref Int32 IronSightMode => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_iIronSightMode");
 
@@ -3168,6 +3270,8 @@ public partial class CDamageRecord : NativeObject
     public ref bool IsOtherEnemy => ref Schema.GetRef<bool>(this.Handle, "CDamageRecord", "m_bIsOtherEnemy");
 
     // m_killType
+    public ref EKillTypes_t KillType => ref Schema.GetRef<EKillTypes_t>(this.Handle, "CDamageRecord", "m_killType");
+
 }
 
 public partial class CDEagle : CCSWeaponBaseGun
@@ -3356,7 +3460,11 @@ public partial class CEntityDissolve : CBaseModelEntity
     public ref float FadeOutLength => ref Schema.GetRef<float>(this.Handle, "CEntityDissolve", "m_flFadeOutLength");
 
     // m_flStartTime
+    public ref float StartTime => ref Schema.GetRef<float>(this.Handle, "CEntityDissolve", "m_flStartTime");
+
     // m_nDissolveType
+    public ref EntityDisolveType_t DissolveType => ref Schema.GetRef<EntityDisolveType_t>(this.Handle, "CEntityDissolve", "m_nDissolveType");
+
     // m_vDissolverOrigin
     public Vector DissolverOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CEntityDissolve", "m_vDissolverOrigin");
 
@@ -3857,6 +3965,8 @@ public partial class CEnvScreenOverlay : CPointEntity
     public Span<float> OverlayTimes => Schema.GetFixedArray<float>(this.Handle, "CEnvScreenOverlay", "m_flOverlayTimes", 10);
 
     // m_flStartTime
+    public ref float StartTime => ref Schema.GetRef<float>(this.Handle, "CEnvScreenOverlay", "m_flStartTime");
+
     // m_iDesiredOverlay
     public ref Int32 DesiredOverlay => ref Schema.GetRef<Int32>(this.Handle, "CEnvScreenOverlay", "m_iDesiredOverlay");
 
@@ -3963,8 +4073,14 @@ public partial class CEnvVolumetricFogController : CBaseEntity
     public ref bool Active => ref Schema.GetRef<bool>(this.Handle, "CEnvVolumetricFogController", "m_bActive");
 
     // m_flStartAnisoTime
+    public ref float StartAnisoTime => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartAnisoTime");
+
     // m_flStartScatterTime
+    public ref float StartScatterTime => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartScatterTime");
+
     // m_flStartDrawDistanceTime
+    public ref float StartDrawDistanceTime => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartDrawDistanceTime");
+
     // m_flStartAnisotropy
     public ref float StartAnisotropy => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartAnisotropy");
 
@@ -4041,6 +4157,8 @@ public partial class CEnvWindShared : NativeObject
     public CEnvWindShared (IntPtr pointer) : base(pointer) {}
 
     // m_flStartTime
+    public ref float StartTime => ref Schema.GetRef<float>(this.Handle, "CEnvWindShared", "m_flStartTime");
+
     // m_iWindSeed
     public ref UInt32 WindSeed => ref Schema.GetRef<UInt32>(this.Handle, "CEnvWindShared", "m_iWindSeed");
 
@@ -4143,6 +4261,8 @@ public partial class CFists : CCSWeaponBase
 
     // m_nUninterruptableActivity
     // MNetworkChangeCallback "OnUninterruptChanged"
+    public ref PlayerAnimEvent_t UninterruptableActivity => ref Schema.GetRef<PlayerAnimEvent_t>(this.Handle, "CFists", "m_nUninterruptableActivity");
+
 }
 
 public partial class CFlashbang : CBaseCSGrenade
@@ -4498,8 +4618,14 @@ public partial class CHostage : CHostageExpresserShim
     public CHandle<CCSPlayerPawn> HostageGrabber => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CHostage", "m_hHostageGrabber");
 
     // m_flRescueStartTime
+    public ref float RescueStartTime => ref Schema.GetRef<float>(this.Handle, "CHostage", "m_flRescueStartTime");
+
     // m_flGrabSuccessTime
+    public ref float GrabSuccessTime => ref Schema.GetRef<float>(this.Handle, "CHostage", "m_flGrabSuccessTime");
+
     // m_flDropStartTime
+    public ref float DropStartTime => ref Schema.GetRef<float>(this.Handle, "CHostage", "m_flDropStartTime");
+
 }
 
 public partial class CHostageCarriableProp : CBaseAnimGraph
@@ -4925,6 +5051,8 @@ public partial class CLightComponent : CEntityComponent
 
     // m_flLightStyleStartTime
     // MNetworkChangeCallback "LightRenderingChanged"
+    public ref float LightStyleStartTime => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flLightStyleStartTime");
+
     // m_flCapsuleLength
     public ref float CapsuleLength => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flCapsuleLength");
 
@@ -5059,6 +5187,8 @@ public partial class CMelee : CCSWeaponBase
     public CMelee (IntPtr pointer) : base(pointer) {}
 
     // m_flThrowAt
+    public ref float ThrowAt => ref Schema.GetRef<float>(this.Handle, "CMelee", "m_flThrowAt");
+
 }
 
 public partial class CModelPointEntity : CBaseModelEntity
@@ -5290,6 +5420,8 @@ public partial class CountdownTimer : NativeObject
     public ref float Duration => ref Schema.GetRef<float>(this.Handle, "CountdownTimer", "m_duration");
 
     // m_timestamp
+    public ref float Timestamp => ref Schema.GetRef<float>(this.Handle, "CountdownTimer", "m_timestamp");
+
     // m_timescale
     public ref float Timescale => ref Schema.GetRef<float>(this.Handle, "CountdownTimer", "m_timescale");
 
@@ -5324,6 +5456,8 @@ public partial class CParticleSystem : CBaseModelEntity
     public CStrongHandle<InfoForResourceTypeIParticleSystemDefinition> EffectIndex => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIParticleSystemDefinition>>(this.Handle, "CParticleSystem", "m_iEffectIndex");
 
     // m_flStartTime
+    public ref float StartTime => ref Schema.GetRef<float>(this.Handle, "CParticleSystem", "m_flStartTime");
+
     // m_flPreSimTime
     public ref float PreSimTime => ref Schema.GetRef<float>(this.Handle, "CParticleSystem", "m_flPreSimTime");
 
@@ -5429,6 +5563,8 @@ public partial class CPlantedC4 : CBaseAnimGraph
     public ref bool BombTicking => ref Schema.GetRef<bool>(this.Handle, "CPlantedC4", "m_bBombTicking");
 
     // m_flC4Blow
+    public ref float C4Blow => ref Schema.GetRef<float>(this.Handle, "CPlantedC4", "m_flC4Blow");
+
     // m_nBombSite
     public ref Int32 BombSite => ref Schema.GetRef<Int32>(this.Handle, "CPlantedC4", "m_nBombSite");
 
@@ -5454,6 +5590,8 @@ public partial class CPlantedC4 : CBaseAnimGraph
     public ref float DefuseLength => ref Schema.GetRef<float>(this.Handle, "CPlantedC4", "m_flDefuseLength");
 
     // m_flDefuseCountDown
+    public ref float DefuseCountDown => ref Schema.GetRef<float>(this.Handle, "CPlantedC4", "m_flDefuseCountDown");
+
     // m_bBombDefused
     public ref bool BombDefused => ref Schema.GetRef<bool>(this.Handle, "CPlantedC4", "m_bBombDefused");
 
@@ -5560,6 +5698,8 @@ public partial class CPlayer_MovementServices_Humanoid : CPlayer_MovementService
 
     // m_flCrouchTransitionStartTime
     // MNetworkUserGroup "LocalPlayerExclusive"
+    public ref float CrouchTransitionStartTime => ref Schema.GetRef<float>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_flCrouchTransitionStartTime");
+
     // m_bDucked
     // MNetworkUserGroup "LocalPlayerExclusive"
     public ref bool Ducked => ref Schema.GetRef<bool>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_bDucked");
@@ -5914,6 +6054,8 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
     public ref bool Active => ref Schema.GetRef<bool>(this.Handle, "CPointCommentaryNode", "m_bActive");
 
     // m_flStartTime
+    public ref float StartTime => ref Schema.GetRef<float>(this.Handle, "CPointCommentaryNode", "m_flStartTime");
+
     // m_flStartTimeInCommentary
     public ref float StartTimeInCommentary => ref Schema.GetRef<float>(this.Handle, "CPointCommentaryNode", "m_flStartTimeInCommentary");
 
@@ -5951,6 +6093,8 @@ public partial class CPointValueRemapper : CBaseEntity
     public ref bool UpdateOnClient => ref Schema.GetRef<bool>(this.Handle, "CPointValueRemapper", "m_bUpdateOnClient");
 
     // m_nInputType
+    public ref ValueRemapperInputType_t InputType => ref Schema.GetRef<ValueRemapperInputType_t>(this.Handle, "CPointValueRemapper", "m_nInputType");
+
     // m_hRemapLineStart
     public CHandle<CBaseEntity> RemapLineStart => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointValueRemapper", "m_hRemapLineStart");
 
@@ -5970,11 +6114,17 @@ public partial class CPointValueRemapper : CBaseEntity
     public ref bool RequiresUseKey => ref Schema.GetRef<bool>(this.Handle, "CPointValueRemapper", "m_bRequiresUseKey");
 
     // m_nOutputType
+    public ref ValueRemapperOutputType_t OutputType => ref Schema.GetRef<ValueRemapperOutputType_t>(this.Handle, "CPointValueRemapper", "m_nOutputType");
+
     // m_hOutputEntities
     public NetworkedVector<CHandle<CBaseEntity>> OutputEntities => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CPointValueRemapper", "m_hOutputEntities");
 
     // m_nHapticsType
+    public ref ValueRemapperHapticsType_t HapticsType => ref Schema.GetRef<ValueRemapperHapticsType_t>(this.Handle, "CPointValueRemapper", "m_nHapticsType");
+
     // m_nMomentumType
+    public ref ValueRemapperMomentumType_t MomentumType => ref Schema.GetRef<ValueRemapperMomentumType_t>(this.Handle, "CPointValueRemapper", "m_nMomentumType");
+
     // m_flMomentumModifier
     public ref float MomentumModifier => ref Schema.GetRef<float>(this.Handle, "CPointValueRemapper", "m_flMomentumModifier");
 
@@ -5982,6 +6132,8 @@ public partial class CPointValueRemapper : CBaseEntity
     public ref float SnapValue => ref Schema.GetRef<float>(this.Handle, "CPointValueRemapper", "m_flSnapValue");
 
     // m_nRatchetType
+    public ref ValueRemapperRatchetType_t RatchetType => ref Schema.GetRef<ValueRemapperRatchetType_t>(this.Handle, "CPointValueRemapper", "m_nRatchetType");
+
     // m_flInputOffset
     public ref float InputOffset => ref Schema.GetRef<float>(this.Handle, "CPointValueRemapper", "m_flInputOffset");
 
@@ -6016,8 +6168,14 @@ public partial class CPointWorldText : CModelPointEntity
     public Color Color => Schema.GetDeclaredClass<Color>(this.Handle, "CPointWorldText", "m_Color");
 
     // m_nJustifyHorizontal
+    public ref PointWorldTextJustifyHorizontal_t JustifyHorizontal => ref Schema.GetRef<PointWorldTextJustifyHorizontal_t>(this.Handle, "CPointWorldText", "m_nJustifyHorizontal");
+
     // m_nJustifyVertical
+    public ref PointWorldTextJustifyVertical_t JustifyVertical => ref Schema.GetRef<PointWorldTextJustifyVertical_t>(this.Handle, "CPointWorldText", "m_nJustifyVertical");
+
     // m_nReorientMode
+    public ref PointWorldTextReorientMode_t ReorientMode => ref Schema.GetRef<PointWorldTextReorientMode_t>(this.Handle, "CPointWorldText", "m_nReorientMode");
+
 }
 
 public partial class CPostProcessingVolume : CBaseTrigger
@@ -6978,6 +7136,8 @@ public partial class CWeaponTaser : CCSWeaponBaseGun
     public CWeaponTaser (IntPtr pointer) : base(pointer) {}
 
     // m_fFireTime
+    public ref float FireTime => ref Schema.GetRef<float>(this.Handle, "CWeaponTaser", "m_fFireTime");
+
 }
 
 public partial class CWeaponTec9 : CCSWeaponBaseGun
@@ -7099,6 +7259,8 @@ public partial class fogparams_t : NativeObject
 
     // lerptime
     // MNetworkUserGroup "FogController"
+    public ref float Lerptime => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "lerptime");
+
     // duration
     // MNetworkUserGroup "FogController"
     public ref float Duration => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "duration");
@@ -7238,7 +7400,11 @@ public partial class shard_model_desc_t : NativeObject
     public CStrongHandle<InfoForResourceTypeIMaterial2> Material => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "shard_model_desc_t", "m_hMaterial");
 
     // m_solid
+    public ref ShardSolid_t Solid => ref Schema.GetRef<ShardSolid_t>(this.Handle, "shard_model_desc_t", "m_solid");
+
     // m_ShatterPanelMode
+    public ref ShatterPanelMode ShatterPanelMode => ref Schema.GetRef<ShatterPanelMode>(this.Handle, "shard_model_desc_t", "m_ShatterPanelMode");
+
     // m_vecPanelSize
     public Vector2D PanelSize => Schema.GetDeclaredClass<Vector2D>(this.Handle, "shard_model_desc_t", "m_vecPanelSize");
 
@@ -7298,6 +7464,8 @@ public partial class ViewAngleServerChange_t : NativeObject
     public ViewAngleServerChange_t (IntPtr pointer) : base(pointer) {}
 
     // nType
+    public ref FixAngleSet_t NType => ref Schema.GetRef<FixAngleSet_t>(this.Handle, "ViewAngleServerChange_t", "nType");
+
     // qAngle
     // MNetworkEncoder "qangle_precise"
     public QAngle QAngle => Schema.GetDeclaredClass<QAngle>(this.Handle, "ViewAngleServerChange_t", "qAngle");
