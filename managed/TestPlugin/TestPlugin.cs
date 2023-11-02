@@ -283,6 +283,7 @@ namespace TestPlugin
             return HookResult.Continue;
         }
 
+        [ConsoleCommand("css_killmeplease", "Kills the player")]
         [ConsoleCommand("css_killme", "Kills the player")]
         public void OnKillme(CCSPlayerController? player, CommandInfo command)
         {

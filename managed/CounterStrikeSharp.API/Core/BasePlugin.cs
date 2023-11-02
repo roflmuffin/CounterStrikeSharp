@@ -335,14 +335,17 @@ namespace CounterStrikeSharp.API.Core
         {
             var eventHandlers = instance.GetType()
                 .GetMethods()
-                .Where(method => method.GetCustomAttribute<ConsoleCommandAttribute>() != null)
+                .Where(method => method.GetCustomAttributes<ConsoleCommandAttribute>().Any())
                 .ToArray();
 
             foreach (var eventHandler in eventHandlers)
             {
-                var commandInfo = eventHandler.GetCustomAttribute<ConsoleCommandAttribute>();
-                AddCommand(commandInfo.Command, commandInfo.Description,
-                    eventHandler.CreateDelegate<CommandInfo.CommandCallback>(instance));
+                var attributes = eventHandler.GetCustomAttributes<ConsoleCommandAttribute>();
+                foreach (var commandInfo in attributes)
+                {
+                    AddCommand(commandInfo.Command, commandInfo.Description,
+                        eventHandler.CreateDelegate<CommandInfo.CommandCallback>(instance));
+                }
             }
         }
 
