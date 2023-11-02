@@ -30,6 +30,8 @@ namespace CounterStrikeSharp.API.Core
 
         public string Name => _plugin?.ModuleName;
         public string Version => _plugin?.ModuleVersion;
+        public string Description => _plugin.ModuleDescription;
+        public string Author => _plugin.ModuleAuthor;
         public Type PluginType => _plugin?.GetType();
         public string PluginPath => _plugin?.ModulePath;
 

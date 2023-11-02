@@ -34,6 +34,10 @@ namespace TestPlugin
         public override string ModuleName => "Sample Plugin";
         public override string ModuleVersion => "v1.0.0";
 
+        public override string ModuleAuthor => "Roflmuffin";
+
+        public override string ModuleDescription => "A playground of features used for testing";
+        
         public override void Load(bool hotReload)
         {
             Console.WriteLine(

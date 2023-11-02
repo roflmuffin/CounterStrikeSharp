@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Menu;
 
@@ -195,7 +196,17 @@ namespace CounterStrikeSharp.API.Core
 
                     foreach (var plugin in _loadedPlugins)
                     {
-                        Utilities.ReplyToCommand(caller, $"  [#{plugin.PluginId}]: \"{plugin.Name}\" (\"{plugin.Version}\")", true);
+                        var sb = new StringBuilder();
+                        sb.AppendFormat("  [#{0}]: \"{1}\" ({2})", plugin.PluginId, plugin.Name, plugin.Version);
+                        if (!string.IsNullOrEmpty(plugin.Author)) sb.AppendFormat(" by {0}", plugin.Author);
+                        if (!string.IsNullOrEmpty(plugin.Description))
+                        {
+                            sb.Append("\n");
+                            sb.Append("    ");
+                            sb.Append(plugin.Description);
+                        }
+                        Utilities.ReplyToCommand(caller, sb.ToString(), true);
+                        
                     }
 
                     break;

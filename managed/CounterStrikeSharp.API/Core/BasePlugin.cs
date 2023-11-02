@@ -41,6 +41,10 @@ namespace CounterStrikeSharp.API.Core
 
         public abstract string ModuleName { get; }
         public abstract string ModuleVersion { get; }
+        
+        public virtual string ModuleAuthor { get; }
+        
+        public virtual string ModuleDescription { get; }
 
         public string ModulePath { get; internal set; }
 
