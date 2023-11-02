@@ -154,14 +154,14 @@ namespace CounterStrikeSharp.API.Core
         {
             var wrappedHandler = new Action<int, IntPtr>((i, ptr) =>
             {
-                var command = new CommandInfo(ptr);
                 if (i == -1)
                 {
-                    handler?.Invoke(null, command);
+                    handler?.Invoke(null, new CommandInfo(ptr, null));
                     return;
                 }
 
                 var entity = new CCSPlayerController(NativeAPI.GetEntityFromIndex(i + 1));
+                var command = new CommandInfo(ptr, entity);
                 handler?.Invoke(entity.IsValid ? entity : null, command);
             });
 
@@ -174,13 +174,13 @@ namespace CounterStrikeSharp.API.Core
         {
             var wrappedHandler = new Func<int, IntPtr, HookResult>((i, ptr) =>
             {
-                var command = new CommandInfo(ptr);
                 if (i == -1)
                 {
                     return HookResult.Continue;
                 }
 
                 var entity = new CCSPlayerController(NativeAPI.GetEntityFromIndex(i + 1));
+                var command = new CommandInfo(ptr, entity);
                 return handler.Invoke(entity.IsValid ? entity : null, command);
             });
 
