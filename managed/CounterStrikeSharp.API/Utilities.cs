@@ -38,6 +38,26 @@ namespace CounterStrikeSharp.API
                 .Where(x => flags.HasFlag(x)).AsEnumerable();
         }
 
+        public static T GetEntityFromIndex<T>(int index) where T : CEntityInstance
+        {
+            return (T)Activator.CreateInstance(typeof(T), NativeAPI.GetEntityFromIndex(index))!;
+        }
+
+        public static CCSPlayerController GetPlayerFromIndex(int index)
+        {
+            return Utilities.GetEntityFromIndex<CCSPlayerController>(index);
+        }
+
+        public static CCSPlayerController GetPlayerFromSlot(int slot)
+        {
+            return Utilities.GetEntityFromIndex<CCSPlayerController>(slot + 1);
+        }
+
+        public static CCSPlayerController GetPlayerFromUserid(int userid)
+        {
+            return Utilities.GetEntityFromIndex<CCSPlayerController>((userid & 0xFF) + 1);
+        }
+
         public static IEnumerable<T> FindAllEntitiesByDesignerName<T>(string designerName) where T : CEntityInstance
         {
             var pEntity = new CEntityIdentity(NativeAPI.GetFirstActiveEntity());
