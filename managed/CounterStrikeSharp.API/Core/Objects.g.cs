@@ -14,6 +14,65 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
+public enum ActionType_t : uint
+{
+    SOS_ACTION_NONE = 0x0,
+    SOS_ACTION_LIMITER = 0x1,
+    SOS_ACTION_TIME_LIMIT = 0x2,
+    SOS_ACTION_SET_SOUNDEVENT_PARAM = 0x3,
+}
+
+public enum AimMatrixBlendMode : uint
+{
+    AimMatrixBlendMode_None = 0x0,
+    AimMatrixBlendMode_Additive = 0x1,
+    AimMatrixBlendMode_ModelSpaceAdditive = 0x2,
+    AimMatrixBlendMode_BoneMask = 0x3,
+}
+
+public enum AmmoFlags_t : uint
+{
+    AMMO_FORCE_DROP_IF_CARRIED = 0x1,
+    AMMO_RESERVE_STAYS_WITH_WEAPON = 0x2,
+    AMMO_FLAG_MAX = 0x2,
+}
+
+public enum AmmoPosition_t : uint
+{
+    AMMO_POSITION_INVALID = 0xFFFFFFFF,
+    AMMO_POSITION_PRIMARY = 0x0,
+    AMMO_POSITION_SECONDARY = 0x1,
+    AMMO_POSITION_COUNT = 0x2,
+}
+
+public enum AnimationProcessingType_t : uint
+{
+    ANIMATION_PROCESSING_SERVER_SIMULATION = 0x0,
+    ANIMATION_PROCESSING_CLIENT_SIMULATION = 0x1,
+    ANIMATION_PROCESSING_CLIENT_PREDICTION = 0x2,
+    ANIMATION_PROCESSING_CLIENT_INTERPOLATION = 0x3,
+    ANIMATION_PROCESSING_CLIENT_RENDER = 0x4,
+    ANIMATION_PROCESSING_MAX = 0x5,
+}
+
+public enum AnimationSnapshotType_t : uint
+{
+    ANIMATION_SNAPSHOT_SERVER_SIMULATION = 0x0,
+    ANIMATION_SNAPSHOT_CLIENT_SIMULATION = 0x1,
+    ANIMATION_SNAPSHOT_CLIENT_PREDICTION = 0x2,
+    ANIMATION_SNAPSHOT_CLIENT_INTERPOLATION = 0x3,
+    ANIMATION_SNAPSHOT_CLIENT_RENDER = 0x4,
+    ANIMATION_SNAPSHOT_FINAL_COMPOSITE = 0x5,
+    ANIMATION_SNAPSHOT_MAX = 0x6,
+}
+
+public enum AnimationType_t : uint
+{
+    ANIMATION_TYPE_FIXED_RATE = 0x0,
+    ANIMATION_TYPE_FIT_LIFETIME = 0x1,
+    ANIMATION_TYPE_MANUAL_FRAMES = 0x2,
+}
+
 public enum AnimLoopMode_t : uint
 {
     ANIM_LOOP_MODE_INVALID = 0xFFFFFFFF,
@@ -23,10 +82,188 @@ public enum AnimLoopMode_t : uint
     ANIM_LOOP_MODE_COUNT = 0x3,
 }
 
+public enum AnimNodeNetworkMode : uint
+{
+    ServerAuthoritative = 0x0,
+    ClientSimulate = 0x1,
+}
+
+public enum AnimParamButton_t : uint
+{
+    ANIMPARAM_BUTTON_NONE = 0x0,
+    ANIMPARAM_BUTTON_DPAD_UP = 0x1,
+    ANIMPARAM_BUTTON_DPAD_RIGHT = 0x2,
+    ANIMPARAM_BUTTON_DPAD_DOWN = 0x3,
+    ANIMPARAM_BUTTON_DPAD_LEFT = 0x4,
+    ANIMPARAM_BUTTON_A = 0x5,
+    ANIMPARAM_BUTTON_B = 0x6,
+    ANIMPARAM_BUTTON_X = 0x7,
+    ANIMPARAM_BUTTON_Y = 0x8,
+    ANIMPARAM_BUTTON_LEFT_SHOULDER = 0x9,
+    ANIMPARAM_BUTTON_RIGHT_SHOULDER = 0xA,
+    ANIMPARAM_BUTTON_LTRIGGER = 0xB,
+    ANIMPARAM_BUTTON_RTRIGGER = 0xC,
+}
+
+public enum AnimParamNetworkSetting : uint
+{
+    Auto = 0x0,
+    AlwaysNetwork = 0x1,
+    NeverNetwork = 0x2,
+}
+
+public enum AnimParamType_t : byte
+{
+    ANIMPARAM_UNKNOWN = 0x0,
+    ANIMPARAM_BOOL = 0x1,
+    ANIMPARAM_ENUM = 0x2,
+    ANIMPARAM_INT = 0x3,
+    ANIMPARAM_FLOAT = 0x4,
+    ANIMPARAM_VECTOR = 0x5,
+    ANIMPARAM_QUATERNION = 0x6,
+    ANIMPARAM_STRINGTOKEN = 0x7,
+    ANIMPARAM_COUNT = 0x8,
+}
+
+public enum AnimPoseControl : uint
+{
+    NoPoseControl = 0x0,
+    AbsolutePoseControl = 0x1,
+    RelativePoseControl = 0x2,
+}
+
+public enum AnimScriptType : ushort
+{
+    ANIMSCRIPT_TYPE_INVALID = 0xFFFF,
+    ANIMSCRIPT_FUSE_GENERAL = 0x0,
+    ANIMSCRIPT_FUSE_STATEMACHINE = 0x1,
+}
+
+public enum AnimValueSource : uint
+{
+    MoveHeading = 0x0,
+    MoveSpeed = 0x1,
+    ForwardSpeed = 0x2,
+    StrafeSpeed = 0x3,
+    FacingHeading = 0x4,
+    ManualFacingHeading = 0x5,
+    LookHeading = 0x6,
+    LookPitch = 0x7,
+    LookDistance = 0x8,
+    Parameter = 0x9,
+    WayPointHeading = 0xA,
+    WayPointDistance = 0xB,
+    BoundaryRadius = 0xC,
+    TargetMoveHeading = 0xD,
+    TargetMoveSpeed = 0xE,
+    AccelerationHeading = 0xF,
+    AccelerationSpeed = 0x10,
+    SlopeHeading = 0x11,
+    SlopeAngle = 0x12,
+    SlopePitch = 0x13,
+    SlopeYaw = 0x14,
+    GoalDistance = 0x15,
+    AccelerationLeftRight = 0x16,
+    AccelerationFrontBack = 0x17,
+    RootMotionSpeed = 0x18,
+    RootMotionTurnSpeed = 0x19,
+    MoveHeadingRelativeToLookHeading = 0x1A,
+    MaxMoveSpeed = 0x1B,
+    FingerCurl_Thumb = 0x1C,
+    FingerCurl_Index = 0x1D,
+    FingerCurl_Middle = 0x1E,
+    FingerCurl_Ring = 0x1F,
+    FingerCurl_Pinky = 0x20,
+    FingerSplay_Thumb_Index = 0x21,
+    FingerSplay_Index_Middle = 0x22,
+    FingerSplay_Middle_Ring = 0x23,
+    FingerSplay_Ring_Pinky = 0x24,
+}
+
+public enum AnimVectorSource : uint
+{
+    MoveDirection = 0x0,
+    FacingDirection = 0x1,
+    LookDirection = 0x2,
+    VectorParameter = 0x3,
+    WayPointDirection = 0x4,
+    Acceleration = 0x5,
+    SlopeNormal = 0x6,
+    SlopeNormal_WorldSpace = 0x7,
+    LookTarget = 0x8,
+    LookTarget_WorldSpace = 0x9,
+    WayPointPosition = 0xA,
+    GoalPosition = 0xB,
+    RootMotionVelocity = 0xC,
+}
+
+public enum AnimVrBoneTransformSource_t : uint
+{
+    AnimVrBoneTransformSource_LiveStream = 0x0,
+    AnimVrBoneTransformSource_GripLimit = 0x1,
+}
+
+public enum AnimVRFinger_t : uint
+{
+    AnimVrFinger_Thumb = 0x0,
+    AnimVrFinger_Index = 0x1,
+    AnimVrFinger_Middle = 0x2,
+    AnimVrFinger_Ring = 0x3,
+    AnimVrFinger_Pinky = 0x4,
+}
+
+public enum AnimVrFingerSplay_t : uint
+{
+    AnimVrFingerSplay_Thumb_Index = 0x0,
+    AnimVrFingerSplay_Index_Middle = 0x1,
+    AnimVrFingerSplay_Middle_Ring = 0x2,
+    AnimVrFingerSplay_Ring_Pinky = 0x3,
+}
+
+public enum AnimVRHand_t : uint
+{
+    AnimVRHand_Left = 0x0,
+    AnimVRHand_Right = 0x1,
+}
+
+public enum AnimVRHandMotionRange_t : uint
+{
+    MotionRange_WithController = 0x0,
+    MotionRange_WithoutController = 0x1,
+}
+
 public enum attributeprovidertypes_t : uint
 {
     PROVIDER_GENERIC = 0x0,
     PROVIDER_WEAPON = 0x1,
+}
+
+public enum BaseExplosionTypes_t : uint
+{
+    EXPLOSION_TYPE_DEFAULT = 0x0,
+    EXPLOSION_TYPE_GRENADE = 0x1,
+    EXPLOSION_TYPE_MOLOTOV = 0x2,
+    EXPLOSION_TYPE_FIREWORKS = 0x3,
+    EXPLOSION_TYPE_GASCAN = 0x4,
+    EXPLOSION_TYPE_GASCYLINDER = 0x5,
+    EXPLOSION_TYPE_EXPLOSIVEBARREL = 0x6,
+    EXPLOSION_TYPE_ELECTRICAL = 0x7,
+    EXPLOSION_TYPE_EMP = 0x8,
+    EXPLOSION_TYPE_SHRAPNEL = 0x9,
+    EXPLOSION_TYPE_SMOKEGRENADE = 0xA,
+    EXPLOSION_TYPE_FLASHBANG = 0xB,
+    EXPLOSION_TYPE_TRIPMINE = 0xC,
+    EXPLOSION_TYPE_ICE = 0xD,
+    EXPLOSION_TYPE_NONE = 0xE,
+    EXPLOSION_TYPE_CUSTOM = 0xF,
+    EXPLOSION_TYPE_COUNT = 0x10,
+}
+
+public enum BBoxVolumeType_t : uint
+{
+    BBOX_VOLUME = 0x0,
+    BBOX_DIMENSIONS = 0x1,
+    BBOX_MINS_MAXS = 0x2,
 }
 
 public enum BeamClipStyle_t : uint
@@ -46,6 +283,256 @@ public enum BeamType_t : uint
     BEAM_HOSE = 0x4,
     BEAM_SPLINE = 0x5,
     BEAM_LASER = 0x6,
+}
+
+public enum BeginDeathLifeStateTransition_t : byte
+{
+    NO_CHANGE_IN_LIFESTATE = 0x0,
+    TRANSITION_TO_LIFESTATE_DYING = 0x1,
+    TRANSITION_TO_LIFESTATE_DEAD = 0x2,
+}
+
+public enum BinaryNodeChildOption : uint
+{
+    Child1 = 0x0,
+    Child2 = 0x1,
+}
+
+public enum BinaryNodeTiming : uint
+{
+    UseChild1 = 0x0,
+    UseChild2 = 0x1,
+    SyncChildren = 0x2,
+}
+
+public enum Blend2DMode : uint
+{
+    Blend2DMode_General = 0x0,
+    Blend2DMode_Directional = 0x1,
+}
+
+public enum BlendKeyType : uint
+{
+    BlendKey_UserValue = 0x0,
+    BlendKey_Velocity = 0x1,
+    BlendKey_Distance = 0x2,
+    BlendKey_RemainingDistance = 0x3,
+}
+
+public enum BloomBlendMode_t : uint
+{
+    BLOOM_BLEND_ADD = 0x0,
+    BLOOM_BLEND_SCREEN = 0x1,
+    BLOOM_BLEND_BLUR = 0x2,
+}
+
+public enum BlurFilterType_t : uint
+{
+    BLURFILTER_GAUSSIAN = 0x0,
+    BLURFILTER_BOX = 0x1,
+}
+
+public enum BoneMaskBlendSpace : uint
+{
+    BlendSpace_Parent = 0x0,
+    BlendSpace_Model = 0x1,
+    BlendSpace_Model_RotationOnly = 0x2,
+    BlendSpace_Model_TranslationOnly = 0x3,
+}
+
+public enum BoneTransformSpace_t : uint
+{
+    BoneTransformSpace_Invalid = 0xFFFFFFFF,
+    BoneTransformSpace_Parent = 0x0,
+    BoneTransformSpace_Model = 0x1,
+    BoneTransformSpace_World = 0x2,
+}
+
+public enum BrushSolidities_e : uint
+{
+    BRUSHSOLID_TOGGLE = 0x0,
+    BRUSHSOLID_NEVER = 0x1,
+    BRUSHSOLID_ALWAYS = 0x2,
+}
+
+public enum CAnimationGraphVisualizerPrimitiveType : uint
+{
+    ANIMATIONGRAPHVISUALIZERPRIMITIVETYPE_Text = 0x0,
+    ANIMATIONGRAPHVISUALIZERPRIMITIVETYPE_Sphere = 0x1,
+    ANIMATIONGRAPHVISUALIZERPRIMITIVETYPE_Line = 0x2,
+    ANIMATIONGRAPHVISUALIZERPRIMITIVETYPE_Pie = 0x3,
+    ANIMATIONGRAPHVISUALIZERPRIMITIVETYPE_Axis = 0x4,
+}
+
+public enum CanPlaySequence_t : uint
+{
+    CANNOT_PLAY = 0x0,
+    CAN_PLAY_NOW = 0x1,
+    CAN_PLAY_ENQUEUED = 0x2,
+}
+
+public enum ChatIgnoreType_t : uint
+{
+    CHAT_IGNORE_NONE = 0x0,
+    CHAT_IGNORE_ALL = 0x1,
+    CHAT_IGNORE_TEAM = 0x2,
+}
+
+public enum ChickenActivity : uint
+{
+    IDLE = 0x0,
+    WALK = 0x1,
+    RUN = 0x2,
+    HOP = 0x3,
+    JUMP = 0x4,
+    GLIDE = 0x5,
+    LAND = 0x6,
+}
+
+public enum ChoiceBlendMethod : uint
+{
+    SingleBlendTime = 0x0,
+    PerChoiceBlendTimes = 0x1,
+}
+
+public enum ChoiceChangeMethod : uint
+{
+    OnReset = 0x0,
+    OnCycleEnd = 0x1,
+    OnResetOrCycleEnd = 0x2,
+}
+
+public enum ChoiceMethod : uint
+{
+    WeightedRandom = 0x0,
+    WeightedRandomNoRepeat = 0x1,
+    Iterate = 0x2,
+    IterateRandom = 0x3,
+}
+
+public enum Class_T : uint
+{
+    CLASS_NONE = 0x0,
+    CLASS_PLAYER = 0x1,
+    CLASS_PLAYER_ALLY = 0x2,
+    CLASS_BOMB = 0x3,
+    CLASS_FOOT_CONTACT_SHADOW = 0x4,
+    CLASS_WEAPON = 0x5,
+    CLASS_WATER_SPLASHER = 0x6,
+    CLASS_WEAPON_VIEWMODEL = 0x7,
+    CLASS_DOOR = 0x8,
+    NUM_CLASSIFY_CLASSES = 0x9,
+}
+
+public enum CLogicBranchListLogicBranchListenerLastState_t : uint
+{
+    LOGIC_BRANCH_LISTENER_NOT_INIT = 0x0,
+    LOGIC_BRANCH_LISTENER_ALL_TRUE = 0x1,
+    LOGIC_BRANCH_LISTENER_ALL_FALSE = 0x2,
+    LOGIC_BRANCH_LISTENER_MIXED = 0x3,
+}
+
+public enum ClosestPointTestType_t : uint
+{
+    PARTICLE_CLOSEST_TYPE_BOX = 0x0,
+    PARTICLE_CLOSEST_TYPE_CAPSULE = 0x1,
+    PARTICLE_CLOSEST_TYPE_HYBRID = 0x2,
+}
+
+public enum CommandEntitySpecType_t : uint
+{
+    SPEC_SEARCH = 0x0,
+    SPEC_TYPES_COUNT = 0x1,
+}
+
+public enum CommandExecMode_t : uint
+{
+    EXEC_MANUAL = 0x0,
+    EXEC_LEVELSTART = 0x1,
+    EXEC_PERIODIC = 0x2,
+    EXEC_MODES_COUNT = 0x3,
+}
+
+public enum CompMatPropertyMutatorConditionType_t : uint
+{
+    COMP_MAT_MUTATOR_CONDITION_INPUT_CONTAINER_EXISTS = 0x0,
+    COMP_MAT_MUTATOR_CONDITION_INPUT_CONTAINER_VALUE_EXISTS = 0x1,
+    COMP_MAT_MUTATOR_CONDITION_INPUT_CONTAINER_VALUE_EQUALS = 0x2,
+}
+
+public enum CompMatPropertyMutatorType_t : uint
+{
+    COMP_MAT_PROPERTY_MUTATOR_INIT = 0x0,
+    COMP_MAT_PROPERTY_MUTATOR_COPY_MATCHING_KEYS = 0x1,
+    COMP_MAT_PROPERTY_MUTATOR_COPY_KEYS_WITH_SUFFIX = 0x2,
+    COMP_MAT_PROPERTY_MUTATOR_COPY_PROPERTY = 0x3,
+    COMP_MAT_PROPERTY_MUTATOR_SET_VALUE = 0x4,
+    COMP_MAT_PROPERTY_MUTATOR_GENERATE_TEXTURE = 0x5,
+    COMP_MAT_PROPERTY_MUTATOR_CONDITIONAL_MUTATORS = 0x6,
+    COMP_MAT_PROPERTY_MUTATOR_POP_INPUT_QUEUE = 0x7,
+    COMP_MAT_PROPERTY_MUTATOR_DRAW_TEXT = 0x8,
+    COMP_MAT_PROPERTY_MUTATOR_RANDOM_ROLL_INPUT_VARIABLES = 0x9,
+}
+
+public enum CompositeMaterialInputContainerSourceType_t : uint
+{
+    CONTAINER_SOURCE_TYPE_TARGET_MATERIAL = 0x0,
+    CONTAINER_SOURCE_TYPE_MATERIAL_FROM_TARGET_ATTR = 0x1,
+    CONTAINER_SOURCE_TYPE_SPECIFIC_MATERIAL = 0x2,
+    CONTAINER_SOURCE_TYPE_LOOSE_VARIABLES = 0x3,
+    CONTAINER_SOURCE_TYPE_VARIABLE_FROM_TARGET_ATTR = 0x4,
+    CONTAINER_SOURCE_TYPE_TARGET_INSTANCE_MATERIAL = 0x5,
+}
+
+public enum CompositeMaterialInputLooseVariableType_t : uint
+{
+    LOOSE_VARIABLE_TYPE_BOOLEAN = 0x0,
+    LOOSE_VARIABLE_TYPE_INTEGER1 = 0x1,
+    LOOSE_VARIABLE_TYPE_INTEGER2 = 0x2,
+    LOOSE_VARIABLE_TYPE_INTEGER3 = 0x3,
+    LOOSE_VARIABLE_TYPE_INTEGER4 = 0x4,
+    LOOSE_VARIABLE_TYPE_FLOAT1 = 0x5,
+    LOOSE_VARIABLE_TYPE_FLOAT2 = 0x6,
+    LOOSE_VARIABLE_TYPE_FLOAT3 = 0x7,
+    LOOSE_VARIABLE_TYPE_FLOAT4 = 0x8,
+    LOOSE_VARIABLE_TYPE_COLOR4 = 0x9,
+    LOOSE_VARIABLE_TYPE_STRING = 0xA,
+    LOOSE_VARIABLE_TYPE_SYSTEMVAR = 0xB,
+    LOOSE_VARIABLE_TYPE_RESOURCE_MATERIAL = 0xC,
+    LOOSE_VARIABLE_TYPE_RESOURCE_TEXTURE = 0xD,
+}
+
+public enum CompositeMaterialInputTextureType_t : uint
+{
+    INPUT_TEXTURE_TYPE_DEFAULT = 0x0,
+    INPUT_TEXTURE_TYPE_NORMALMAP = 0x1,
+    INPUT_TEXTURE_TYPE_COLOR = 0x2,
+    INPUT_TEXTURE_TYPE_MASKS = 0x3,
+    INPUT_TEXTURE_TYPE_ROUGHNESS = 0x4,
+    INPUT_TEXTURE_TYPE_PEARLESCENCE_MASK = 0x5,
+    INPUT_TEXTURE_TYPE_AO = 0x6,
+}
+
+public enum CompositeMaterialMatchFilterType_t : uint
+{
+    MATCH_FILTER_MATERIAL_ATTRIBUTE_EXISTS = 0x0,
+    MATCH_FILTER_MATERIAL_SHADER = 0x1,
+    MATCH_FILTER_MATERIAL_NAME_SUBSTR = 0x2,
+    MATCH_FILTER_MATERIAL_ATTRIBUTE_EQUALS = 0x3,
+    MATCH_FILTER_MATERIAL_PROPERTY_EXISTS = 0x4,
+    MATCH_FILTER_MATERIAL_PROPERTY_EQUALS = 0x5,
+}
+
+public enum CompositeMaterialVarSystemVar_t : uint
+{
+    COMPMATSYSVAR_COMPOSITETIME = 0x0,
+    COMPMATSYSVAR_EMPTY_RESOURCE_SPACER = 0x1,
+}
+
+public enum CRR_ResponseResponseEnum_t : uint
+{
+    MAX_RESPONSE_NAME = 0xC0,
+    MAX_RULE_NAME = 0x80,
 }
 
 public enum CSPlayerBlockingUseAction_t : uint
@@ -84,6 +571,17 @@ public enum CSPlayerState : uint
     NUM_PLAYER_STATES = 0x9,
 }
 
+public enum CSWeaponCategory : uint
+{
+    WEAPONCATEGORY_OTHER = 0x0,
+    WEAPONCATEGORY_MELEE = 0x1,
+    WEAPONCATEGORY_SECONDARY = 0x2,
+    WEAPONCATEGORY_SMG = 0x3,
+    WEAPONCATEGORY_RIFLE = 0x4,
+    WEAPONCATEGORY_HEAVY = 0x5,
+    WEAPONCATEGORY_COUNT = 0x6,
+}
+
 public enum CSWeaponMode : uint
 {
     Primary_Mode = 0x0,
@@ -91,11 +589,169 @@ public enum CSWeaponMode : uint
     WeaponMode_MAX = 0x2,
 }
 
+public enum CSWeaponSilencerType : uint
+{
+    WEAPONSILENCER_NONE = 0x0,
+    WEAPONSILENCER_DETACHABLE = 0x1,
+    WEAPONSILENCER_INTEGRATED = 0x2,
+}
+
 public enum CSWeaponState_t : uint
 {
     WEAPON_NOT_CARRIED = 0x0,
     WEAPON_IS_CARRIED_BY_PLAYER = 0x1,
     WEAPON_IS_ACTIVE = 0x2,
+}
+
+public enum CSWeaponType : uint
+{
+    WEAPONTYPE_KNIFE = 0x0,
+    WEAPONTYPE_PISTOL = 0x1,
+    WEAPONTYPE_SUBMACHINEGUN = 0x2,
+    WEAPONTYPE_RIFLE = 0x3,
+    WEAPONTYPE_SHOTGUN = 0x4,
+    WEAPONTYPE_SNIPER_RIFLE = 0x5,
+    WEAPONTYPE_MACHINEGUN = 0x6,
+    WEAPONTYPE_C4 = 0x7,
+    WEAPONTYPE_TASER = 0x8,
+    WEAPONTYPE_GRENADE = 0x9,
+    WEAPONTYPE_EQUIPMENT = 0xA,
+    WEAPONTYPE_STACKABLEITEM = 0xB,
+    WEAPONTYPE_FISTS = 0xC,
+    WEAPONTYPE_BREACHCHARGE = 0xD,
+    WEAPONTYPE_BUMPMINE = 0xE,
+    WEAPONTYPE_TABLET = 0xF,
+    WEAPONTYPE_MELEE = 0x10,
+    WEAPONTYPE_SHIELD = 0x11,
+    WEAPONTYPE_ZONE_REPULSOR = 0x12,
+    WEAPONTYPE_UNKNOWN = 0x13,
+}
+
+public enum DamageTypes_t : uint
+{
+    DMG_GENERIC = 0x0,
+    DMG_CRUSH = 0x1,
+    DMG_BULLET = 0x2,
+    DMG_SLASH = 0x4,
+    DMG_BURN = 0x8,
+    DMG_VEHICLE = 0x10,
+    DMG_FALL = 0x20,
+    DMG_BLAST = 0x40,
+    DMG_CLUB = 0x80,
+    DMG_SHOCK = 0x100,
+    DMG_SONIC = 0x200,
+    DMG_ENERGYBEAM = 0x400,
+    DMG_DROWN = 0x4000,
+    DMG_POISON = 0x8000,
+    DMG_RADIATION = 0x10000,
+    DMG_DROWNRECOVER = 0x20000,
+    DMG_ACID = 0x40000,
+    DMG_PHYSGUN = 0x100000,
+    DMG_DISSOLVE = 0x200000,
+    DMG_BLAST_SURFACE = 0x400000,
+    DMG_BUCKSHOT = 0x1000000,
+    DMG_LASTGENERICFLAG = 0x1000000,
+    DMG_HEADSHOT = 0x2000000,
+    DMG_DANGERZONE = 0x4000000,
+}
+
+public enum DampingSpeedFunction : uint
+{
+    NoDamping = 0x0,
+    Constant = 0x1,
+    Spring = 0x2,
+}
+
+public enum DebugOverlayBits_t : ulong
+{
+    OVERLAY_TEXT_BIT = 0x1,
+    OVERLAY_NAME_BIT = 0x2,
+    OVERLAY_BBOX_BIT = 0x4,
+    OVERLAY_PIVOT_BIT = 0x8,
+    OVERLAY_MESSAGE_BIT = 0x10,
+    OVERLAY_ABSBOX_BIT = 0x20,
+    OVERLAY_RBOX_BIT = 0x40,
+    OVERLAY_SHOW_BLOCKSLOS = 0x80,
+    OVERLAY_ATTACHMENTS_BIT = 0x100,
+    OVERLAY_INTERPOLATED_ATTACHMENTS_BIT = 0x200,
+    OVERLAY_INTERPOLATED_PIVOT_BIT = 0x400,
+    OVERLAY_SKELETON_BIT = 0x800,
+    OVERLAY_INTERPOLATED_SKELETON_BIT = 0x1000,
+    OVERLAY_TRIGGER_BOUNDS_BIT = 0x2000,
+    OVERLAY_HITBOX_BIT = 0x4000,
+    OVERLAY_INTERPOLATED_HITBOX_BIT = 0x8000,
+    OVERLAY_AUTOAIM_BIT = 0x10000,
+    OVERLAY_NPC_SELECTED_BIT = 0x20000,
+    OVERLAY_JOINT_INFO_BIT = 0x40000,
+    OVERLAY_NPC_ROUTE_BIT = 0x80000,
+    OVERLAY_NPC_TRIANGULATE_BIT = 0x100000,
+    OVERLAY_NPC_ZAP_BIT = 0x200000,
+    OVERLAY_NPC_ENEMIES_BIT = 0x400000,
+    OVERLAY_NPC_CONDITIONS_BIT = 0x800000,
+    OVERLAY_NPC_COMBAT_BIT = 0x1000000,
+    OVERLAY_NPC_TASK_BIT = 0x2000000,
+    OVERLAY_NPC_BODYLOCATIONS = 0x4000000,
+    OVERLAY_NPC_VIEWCONE_BIT = 0x8000000,
+    OVERLAY_NPC_KILL_BIT = 0x10000000,
+    OVERLAY_WC_CHANGE_ENTITY = 0x20000000,
+    OVERLAY_BUDDHA_MODE = 0x40000000,
+    OVERLAY_NPC_STEERING_REGULATIONS = 0x80000000,
+    OVERLAY_NPC_TASK_TEXT_BIT = 0x100000000,
+    OVERLAY_PROP_DEBUG = 0x200000000,
+    OVERLAY_NPC_RELATION_BIT = 0x400000000,
+    OVERLAY_VIEWOFFSET = 0x800000000,
+    OVERLAY_VCOLLIDE_WIREFRAME_BIT = 0x1000000000,
+    OVERLAY_NPC_NEAREST_NODE_BIT = 0x2000000000,
+    OVERLAY_ACTORNAME_BIT = 0x4000000000,
+    OVERLAY_NPC_CONDITIONS_TEXT_BIT = 0x8000000000,
+}
+
+public enum Detail2Combo_t : uint
+{
+    DETAIL_2_COMBO_UNINITIALIZED = 0xFFFFFFFF,
+    DETAIL_2_COMBO_OFF = 0x0,
+    DETAIL_2_COMBO_ADD = 0x1,
+    DETAIL_2_COMBO_ADD_SELF_ILLUM = 0x2,
+    DETAIL_2_COMBO_MOD2X = 0x3,
+    DETAIL_2_COMBO_MUL = 0x4,
+    DETAIL_2_COMBO_CROSSFADE = 0x5,
+}
+
+public enum DetailCombo_t : uint
+{
+    DETAIL_COMBO_OFF = 0x0,
+    DETAIL_COMBO_ADD = 0x1,
+    DETAIL_COMBO_ADD_SELF_ILLUM = 0x2,
+    DETAIL_COMBO_MOD2X = 0x3,
+}
+
+public enum DisableShadows_t : byte
+{
+    kDisableShadows_None = 0x0,
+    kDisableShadows_All = 0x1,
+    kDisableShadows_Baked = 0x2,
+    kDisableShadows_Realtime = 0x3,
+}
+
+public enum Disposition_t : uint
+{
+    D_ER = 0x0,
+    D_HT = 0x1,
+    D_FR = 0x2,
+    D_LI = 0x3,
+    D_NU = 0x4,
+    D_ERROR = 0x0,
+    D_HATE = 0x1,
+    D_FEAR = 0x2,
+    D_LIKE = 0x3,
+    D_NEUTRAL = 0x4,
+}
+
+public enum doorCheck_e : uint
+{
+    DOOR_CHECK_FORWARD = 0x0,
+    DOOR_CHECK_BACKWARD = 0x1,
+    DOOR_CHECK_FULL = 0x2,
 }
 
 public enum DoorState_t : uint
@@ -107,11 +763,30 @@ public enum DoorState_t : uint
     DOOR_STATE_AJAR = 0x4,
 }
 
+public enum EDemoBoneSelectionMode : uint
+{
+    CaptureAllBones = 0x0,
+    CaptureSelectedBones = 0x1,
+}
+
 public enum EGrenadeThrowState : uint
 {
     NotThrowing = 0x0,
     Throwing = 0x1,
     ThrowComplete = 0x2,
+}
+
+public enum EInButtonState : uint
+{
+    IN_BUTTON_UP = 0x0,
+    IN_BUTTON_DOWN = 0x1,
+    IN_BUTTON_DOWN_UP = 0x2,
+    IN_BUTTON_UP_DOWN = 0x3,
+    IN_BUTTON_UP_DOWN_UP = 0x4,
+    IN_BUTTON_DOWN_UP_DOWN = 0x5,
+    IN_BUTTON_DOWN_UP_DOWN_UP = 0x6,
+    IN_BUTTON_UP_DOWN_UP_DOWN = 0x7,
+    IN_BUTTON_STATE_COUNT = 0x8,
 }
 
 public enum EKillTypes_t : byte
@@ -126,6 +801,30 @@ public enum EKillTypes_t : byte
     KILLTYPE_COUNT = 0x7,
 }
 
+public enum ELayoutNodeType : uint
+{
+    ROOT = 0x0,
+    STYLES = 0x1,
+    SCRIPT_BODY = 0x2,
+    SCRIPTS = 0x3,
+    SNIPPETS = 0x4,
+    INCLUDE = 0x5,
+    SNIPPET = 0x6,
+    PANEL = 0x7,
+    PANEL_ATTRIBUTE = 0x8,
+    PANEL_ATTRIBUTE_VALUE = 0x9,
+    REFERENCE_CONTENT = 0xA,
+    REFERENCE_COMPILED = 0xB,
+    REFERENCE_PASSTHROUGH = 0xC,
+}
+
+public enum EntFinderMethod_t : uint
+{
+    ENT_FIND_METHOD_NEAREST = 0x0,
+    ENT_FIND_METHOD_FARTHEST = 0x1,
+    ENT_FIND_METHOD_RANDOM = 0x2,
+}
+
 public enum EntityDisolveType_t : uint
 {
     ENTITY_DISSOLVE_INVALID = 0xFFFFFFFF,
@@ -135,11 +834,581 @@ public enum EntityDisolveType_t : uint
     ENTITY_DISSOLVE_CORE = 0x3,
 }
 
+public enum EntityDormancyType_t : uint
+{
+    ENTITY_NOT_DORMANT = 0x0,
+    ENTITY_DORMANT = 0x1,
+    ENTITY_SUSPENDED = 0x2,
+}
+
+public enum EntityIOTargetType_t : uint
+{
+    ENTITY_IO_TARGET_INVALID = 0xFFFFFFFF,
+    ENTITY_IO_TARGET_ENTITYNAME = 0x2,
+    ENTITY_IO_TARGET_EHANDLE = 0x6,
+    ENTITY_IO_TARGET_ENTITYNAME_OR_CLASSNAME = 0x7,
+}
+
+public enum EntitySubclassScope_t : uint
+{
+    SUBCLASS_SCOPE_NONE = 0xFFFFFFFF,
+    SUBCLASS_SCOPE_PRECIPITATION = 0x0,
+    SUBCLASS_SCOPE_PLAYER_WEAPONS = 0x1,
+    SUBCLASS_SCOPE_COUNT = 0x2,
+}
+
+public enum EOverrideBlockLOS_t : uint
+{
+    BLOCK_LOS_DEFAULT = 0x0,
+    BLOCK_LOS_FORCE_FALSE = 0x1,
+    BLOCK_LOS_FORCE_TRUE = 0x2,
+}
+
+public enum EStyleNodeType : uint
+{
+    ROOT = 0x0,
+    EXPRESSION = 0x1,
+    PROPERTY = 0x2,
+    DEFINE = 0x3,
+    IMPORT = 0x4,
+    KEYFRAMES = 0x5,
+    KEYFRAME_SELECTOR = 0x6,
+    STYLE_SELECTOR = 0x7,
+    WHITESPACE = 0x8,
+    EXPRESSION_TEXT = 0x9,
+    EXPRESSION_URL = 0xA,
+    EXPRESSION_CONCAT = 0xB,
+    REFERENCE_CONTENT = 0xC,
+    REFERENCE_COMPILED = 0xD,
+    REFERENCE_PASSTHROUGH = 0xE,
+}
+
+public enum Explosions : uint
+{
+    expRandom = 0x0,
+    expDirected = 0x1,
+    expUsePrecise = 0x2,
+}
+
+public enum FacingMode : uint
+{
+    FacingMode_Manual = 0x0,
+    FacingMode_Path = 0x1,
+    FacingMode_LookTarget = 0x2,
+}
+
+public enum FieldNetworkOption : uint
+{
+    Auto = 0x0,
+    ForceEnable = 0x1,
+    ForceDisable = 0x2,
+}
+
+public enum fieldtype_t : byte
+{
+    FIELD_VOID = 0x0,
+    FIELD_FLOAT32 = 0x1,
+    FIELD_STRING = 0x2,
+    FIELD_VECTOR = 0x3,
+    FIELD_QUATERNION = 0x4,
+    FIELD_INT32 = 0x5,
+    FIELD_BOOLEAN = 0x6,
+    FIELD_INT16 = 0x7,
+    FIELD_CHARACTER = 0x8,
+    FIELD_COLOR32 = 0x9,
+    FIELD_EMBEDDED = 0xA,
+    FIELD_CUSTOM = 0xB,
+    FIELD_CLASSPTR = 0xC,
+    FIELD_EHANDLE = 0xD,
+    FIELD_POSITION_VECTOR = 0xE,
+    FIELD_TIME = 0xF,
+    FIELD_TICK = 0x10,
+    FIELD_SOUNDNAME = 0x11,
+    FIELD_INPUT = 0x12,
+    FIELD_FUNCTION = 0x13,
+    FIELD_VMATRIX = 0x14,
+    FIELD_VMATRIX_WORLDSPACE = 0x15,
+    FIELD_MATRIX3X4_WORLDSPACE = 0x16,
+    FIELD_INTERVAL = 0x17,
+    FIELD_UNUSED = 0x18,
+    FIELD_VECTOR2D = 0x19,
+    FIELD_INT64 = 0x1A,
+    FIELD_VECTOR4D = 0x1B,
+    FIELD_RESOURCE = 0x1C,
+    FIELD_TYPEUNKNOWN = 0x1D,
+    FIELD_CSTRING = 0x1E,
+    FIELD_HSCRIPT = 0x1F,
+    FIELD_VARIANT = 0x20,
+    FIELD_UINT64 = 0x21,
+    FIELD_FLOAT64 = 0x22,
+    FIELD_POSITIVEINTEGER_OR_NULL = 0x23,
+    FIELD_HSCRIPT_NEW_INSTANCE = 0x24,
+    FIELD_UINT32 = 0x25,
+    FIELD_UTLSTRINGTOKEN = 0x26,
+    FIELD_QANGLE = 0x27,
+    FIELD_NETWORK_ORIGIN_CELL_QUANTIZED_VECTOR = 0x28,
+    FIELD_HMATERIAL = 0x29,
+    FIELD_HMODEL = 0x2A,
+    FIELD_NETWORK_QUANTIZED_VECTOR = 0x2B,
+    FIELD_NETWORK_QUANTIZED_FLOAT = 0x2C,
+    FIELD_DIRECTION_VECTOR_WORLDSPACE = 0x2D,
+    FIELD_QANGLE_WORLDSPACE = 0x2E,
+    FIELD_QUATERNION_WORLDSPACE = 0x2F,
+    FIELD_HSCRIPT_LIGHTBINDING = 0x30,
+    FIELD_V8_VALUE = 0x31,
+    FIELD_V8_OBJECT = 0x32,
+    FIELD_V8_ARRAY = 0x33,
+    FIELD_V8_CALLBACK_INFO = 0x34,
+    FIELD_UTLSTRING = 0x35,
+    FIELD_NETWORK_ORIGIN_CELL_QUANTIZED_POSITION_VECTOR = 0x36,
+    FIELD_HRENDERTEXTURE = 0x37,
+    FIELD_HPARTICLESYSTEMDEFINITION = 0x38,
+    FIELD_UINT8 = 0x39,
+    FIELD_UINT16 = 0x3A,
+    FIELD_CTRANSFORM = 0x3B,
+    FIELD_CTRANSFORM_WORLDSPACE = 0x3C,
+    FIELD_HPOSTPROCESSING = 0x3D,
+    FIELD_MATRIX3X4 = 0x3E,
+    FIELD_SHIM = 0x3F,
+    FIELD_CMOTIONTRANSFORM = 0x40,
+    FIELD_CMOTIONTRANSFORM_WORLDSPACE = 0x41,
+    FIELD_ATTACHMENT_HANDLE = 0x42,
+    FIELD_AMMO_INDEX = 0x43,
+    FIELD_CONDITION_ID = 0x44,
+    FIELD_AI_SCHEDULE_BITS = 0x45,
+    FIELD_MODIFIER_HANDLE = 0x46,
+    FIELD_ROTATION_VECTOR = 0x47,
+    FIELD_ROTATION_VECTOR_WORLDSPACE = 0x48,
+    FIELD_HVDATA = 0x49,
+    FIELD_SCALE32 = 0x4A,
+    FIELD_STRING_AND_TOKEN = 0x4B,
+    FIELD_ENGINE_TIME = 0x4C,
+    FIELD_ENGINE_TICK = 0x4D,
+    FIELD_WORLD_GROUP_ID = 0x4E,
+    FIELD_TYPECOUNT = 0x4F,
+}
+
+public enum filter_t : uint
+{
+    FILTER_AND = 0x0,
+    FILTER_OR = 0x1,
+}
+
 public enum FixAngleSet_t : byte
 {
     None = 0x0,
     Absolute = 0x1,
     Relative = 0x2,
+}
+
+public enum FlexOpCode_t : uint
+{
+    FLEX_OP_CONST = 0x1,
+    FLEX_OP_FETCH1 = 0x2,
+    FLEX_OP_FETCH2 = 0x3,
+    FLEX_OP_ADD = 0x4,
+    FLEX_OP_SUB = 0x5,
+    FLEX_OP_MUL = 0x6,
+    FLEX_OP_DIV = 0x7,
+    FLEX_OP_NEG = 0x8,
+    FLEX_OP_EXP = 0x9,
+    FLEX_OP_OPEN = 0xA,
+    FLEX_OP_CLOSE = 0xB,
+    FLEX_OP_COMMA = 0xC,
+    FLEX_OP_MAX = 0xD,
+    FLEX_OP_MIN = 0xE,
+    FLEX_OP_2WAY_0 = 0xF,
+    FLEX_OP_2WAY_1 = 0x10,
+    FLEX_OP_NWAY = 0x11,
+    FLEX_OP_COMBO = 0x12,
+    FLEX_OP_DOMINATE = 0x13,
+    FLEX_OP_DME_LOWER_EYELID = 0x14,
+    FLEX_OP_DME_UPPER_EYELID = 0x15,
+    FLEX_OP_SQRT = 0x16,
+    FLEX_OP_REMAPVALCLAMPED = 0x17,
+    FLEX_OP_SIN = 0x18,
+    FLEX_OP_COS = 0x19,
+    FLEX_OP_ABS = 0x1A,
+}
+
+public enum FootFallTagFoot_t : uint
+{
+    FOOT1 = 0x0,
+    FOOT2 = 0x1,
+    FOOT3 = 0x2,
+    FOOT4 = 0x3,
+    FOOT5 = 0x4,
+    FOOT6 = 0x5,
+    FOOT7 = 0x6,
+    FOOT8 = 0x7,
+}
+
+public enum FootLockSubVisualization : uint
+{
+    FOOTLOCKSUBVISUALIZATION_ReachabilityAnalysis = 0x0,
+    FOOTLOCKSUBVISUALIZATION_IKSolve = 0x1,
+}
+
+public enum FootPinningTimingSource : uint
+{
+    FootMotion = 0x0,
+    Tag = 0x1,
+    Parameter = 0x2,
+}
+
+public enum FootstepLandedFootSoundType_t : uint
+{
+    FOOTSOUND_Left = 0x0,
+    FOOTSOUND_Right = 0x1,
+    FOOTSOUND_UseOverrideSound = 0x2,
+}
+
+public enum ForcedCrouchState_t : uint
+{
+    FORCEDCROUCH_NONE = 0x0,
+    FORCEDCROUCH_CROUCHED = 0x1,
+    FORCEDCROUCH_UNCROUCHED = 0x2,
+}
+
+public enum FuncDoorSpawnPos_t : uint
+{
+    FUNC_DOOR_SPAWN_CLOSED = 0x0,
+    FUNC_DOOR_SPAWN_OPEN = 0x1,
+}
+
+public enum FuseVariableAccess_t : byte
+{
+    WRITABLE = 0x0,
+    READ_ONLY = 0x1,
+}
+
+public enum FuseVariableType_t : byte
+{
+    INVALID = 0x0,
+    BOOL = 0x1,
+    INT8 = 0x2,
+    INT16 = 0x3,
+    INT32 = 0x4,
+    UINT8 = 0x5,
+    UINT16 = 0x6,
+    UINT32 = 0x7,
+    FLOAT32 = 0x8,
+}
+
+public enum GameAnimEventIndex_t : uint
+{
+    AE_EMPTY = 0x0,
+    AE_CL_PLAYSOUND = 0x1,
+    AE_CL_PLAYSOUND_ATTACHMENT = 0x2,
+    AE_CL_PLAYSOUND_POSITION = 0x3,
+    AE_SV_PLAYSOUND = 0x4,
+    AE_CL_STOPSOUND = 0x5,
+    AE_CL_PLAYSOUND_LOOPING = 0x6,
+    AE_CL_CREATE_PARTICLE_EFFECT = 0x7,
+    AE_CL_STOP_PARTICLE_EFFECT = 0x8,
+    AE_CL_CREATE_PARTICLE_EFFECT_CFG = 0x9,
+    AE_SV_CREATE_PARTICLE_EFFECT_CFG = 0xA,
+    AE_SV_STOP_PARTICLE_EFFECT = 0xB,
+    AE_FOOTSTEP = 0xC,
+    AE_RAGDOLL = 0xD,
+    AE_CL_STOP_RAGDOLL_CONTROL = 0xE,
+    AE_CL_ENABLE_BODYGROUP = 0xF,
+    AE_CL_DISABLE_BODYGROUP = 0x10,
+    AE_CL_BODYGROUP_SET_VALUE = 0x11,
+    AE_SV_BODYGROUP_SET_VALUE = 0x12,
+    AE_CL_BODYGROUP_SET_VALUE_CMODEL_WPN = 0x13,
+    AE_WPN_PRIMARYATTACK = 0x14,
+    AE_WPN_SECONDARYATTACK = 0x15,
+    AE_FIRE_INPUT = 0x16,
+    AE_CL_CLOTH_ATTR = 0x17,
+    AE_CL_CLOTH_GROUND_OFFSET = 0x18,
+    AE_CL_CLOTH_STIFFEN = 0x19,
+    AE_CL_CLOTH_EFFECT = 0x1A,
+    AE_CL_CREATE_ANIM_SCOPE_PROP = 0x1B,
+    AE_CL_WEAPON_TRANSITION_INTO_HAND = 0x1C,
+    AE_CL_BODYGROUP_SET_TO_CLIP = 0x1D,
+    AE_CL_BODYGROUP_SET_TO_NEXTCLIP = 0x1E,
+    AE_SV_SHOW_SILENCER = 0x1F,
+    AE_SV_ATTACH_SILENCER_COMPLETE = 0x20,
+    AE_SV_HIDE_SILENCER = 0x21,
+    AE_SV_DETACH_SILENCER_COMPLETE = 0x22,
+    AE_CL_EJECT_MAG = 0x23,
+    AE_WPN_COMPLETE_RELOAD = 0x24,
+    AE_WPN_HEALTHSHOT_INJECT = 0x25,
+    AE_CL_C4_SCREEN_TEXT = 0x26,
+}
+
+public enum gear_slot_t : uint
+{
+    GEAR_SLOT_INVALID = 0xFFFFFFFF,
+    GEAR_SLOT_RIFLE = 0x0,
+    GEAR_SLOT_PISTOL = 0x1,
+    GEAR_SLOT_KNIFE = 0x2,
+    GEAR_SLOT_GRENADES = 0x3,
+    GEAR_SLOT_C4 = 0x4,
+    GEAR_SLOT_RESERVED_SLOT6 = 0x5,
+    GEAR_SLOT_RESERVED_SLOT7 = 0x6,
+    GEAR_SLOT_RESERVED_SLOT8 = 0x7,
+    GEAR_SLOT_RESERVED_SLOT9 = 0x8,
+    GEAR_SLOT_RESERVED_SLOT10 = 0x9,
+    GEAR_SLOT_RESERVED_SLOT11 = 0xA,
+    GEAR_SLOT_BOOSTS = 0xB,
+    GEAR_SLOT_UTILITY = 0xC,
+    GEAR_SLOT_COUNT = 0xD,
+    GEAR_SLOT_FIRST = 0x0,
+    GEAR_SLOT_LAST = 0xC,
+}
+
+public enum GrenadeType_t : uint
+{
+    GRENADE_TYPE_EXPLOSIVE = 0x0,
+    GRENADE_TYPE_FLASH = 0x1,
+    GRENADE_TYPE_FIRE = 0x2,
+    GRENADE_TYPE_DECOY = 0x3,
+    GRENADE_TYPE_SMOKE = 0x4,
+    GRENADE_TYPE_SENSOR = 0x5,
+    GRENADE_TYPE_SNOWBALL = 0x6,
+    GRENADE_TYPE_TOTAL = 0x7,
+}
+
+public enum HierarchyType_t : uint
+{
+    HIERARCHY_NONE = 0x0,
+    HIERARCHY_BONE_MERGE = 0x1,
+    HIERARCHY_ATTACHMENT = 0x2,
+    HIERARCHY_ABSORIGIN = 0x3,
+    HIERARCHY_BONE = 0x4,
+    HIERARCHY_TYPE_COUNT = 0x5,
+}
+
+public enum HitboxLerpType_t : uint
+{
+    HITBOX_LERP_LIFETIME = 0x0,
+    HITBOX_LERP_CONSTANT = 0x1,
+}
+
+public enum HitGroup_t : uint
+{
+    HITGROUP_INVALID = 0xFFFFFFFF,
+    HITGROUP_GENERIC = 0x0,
+    HITGROUP_HEAD = 0x1,
+    HITGROUP_CHEST = 0x2,
+    HITGROUP_STOMACH = 0x3,
+    HITGROUP_LEFTARM = 0x4,
+    HITGROUP_RIGHTARM = 0x5,
+    HITGROUP_LEFTLEG = 0x6,
+    HITGROUP_RIGHTLEG = 0x7,
+    HITGROUP_NECK = 0x8,
+    HITGROUP_UNUSED = 0x9,
+    HITGROUP_GEAR = 0xA,
+    HITGROUP_SPECIAL = 0xB,
+    HITGROUP_COUNT = 0xC,
+}
+
+public enum HorizJustification_e : uint
+{
+    HORIZ_JUSTIFICATION_LEFT = 0x0,
+    HORIZ_JUSTIFICATION_CENTER = 0x1,
+    HORIZ_JUSTIFICATION_RIGHT = 0x2,
+    HORIZ_JUSTIFICATION_NONE = 0x3,
+}
+
+public enum Hull_t : uint
+{
+    HULL_HUMAN = 0x0,
+    HULL_SMALL_CENTERED = 0x1,
+    HULL_WIDE_HUMAN = 0x2,
+    HULL_TINY = 0x3,
+    HULL_MEDIUM = 0x4,
+    HULL_TINY_CENTERED = 0x5,
+    HULL_LARGE = 0x6,
+    HULL_LARGE_CENTERED = 0x7,
+    HULL_MEDIUM_TALL = 0x8,
+    HULL_SMALL = 0x9,
+    NUM_HULLS = 0xA,
+    HULL_NONE = 0xB,
+}
+
+public enum IChoreoServicesChoreoState_t : uint
+{
+    STATE_PRE_SCRIPT = 0x0,
+    STATE_WAIT_FOR_SCRIPT = 0x1,
+    STATE_WALK_TO_MARK = 0x2,
+    STATE_SYNCHRONIZE_SCRIPT = 0x3,
+    STATE_PLAY_SCRIPT = 0x4,
+    STATE_PLAY_SCRIPT_POST_IDLE = 0x5,
+    STATE_PLAY_SCRIPT_POST_IDLE_DONE = 0x6,
+}
+
+public enum IChoreoServicesScriptState_t : uint
+{
+    SCRIPT_PLAYING = 0x0,
+    SCRIPT_WAIT = 0x1,
+    SCRIPT_POST_IDLE = 0x2,
+    SCRIPT_CLEANUP = 0x3,
+    SCRIPT_WALK_TO_MARK = 0x4,
+    SCRIPT_RUN_TO_MARK = 0x5,
+    SCRIPT_CUSTOM_MOVE_TO_MARK = 0x6,
+}
+
+public enum IKChannelMode : uint
+{
+    TwoBone = 0x0,
+    TwoBone_Translate = 0x1,
+    OneBone = 0x2,
+    OneBone_Translate = 0x3,
+}
+
+public enum IkEndEffectorType : uint
+{
+    IkEndEffector_Attachment = 0x0,
+    IkEndEffector_Bone = 0x1,
+}
+
+public enum IKSolverType : uint
+{
+    IKSOLVER_Perlin = 0x0,
+    IKSOLVER_TwoBone = 0x1,
+    IKSOLVER_Fabrik = 0x2,
+    IKSOLVER_DogLeg3Bone = 0x3,
+    IKSOLVER_CCD = 0x4,
+    IKSOLVER_COUNT = 0x5,
+}
+
+public enum IKTargetCoordinateSystem : uint
+{
+    IKTARGETCOORDINATESYSTEM_WorldSpace = 0x0,
+    IKTARGETCOORDINATESYSTEM_ModelSpace = 0x1,
+    IKTARGETCOORDINATESYSTEM_COUNT = 0x2,
+}
+
+public enum IKTargetSource : uint
+{
+    IKTARGETSOURCE_Bone = 0x0,
+    IKTARGETSOURCE_AnimgraphParameter = 0x1,
+    IKTARGETSOURCE_COUNT = 0x2,
+}
+
+public enum IkTargetType : uint
+{
+    IkTarget_Attachment = 0x0,
+    IkTarget_Bone = 0x1,
+    IkTarget_Parameter_ModelSpace = 0x2,
+    IkTarget_Parameter_WorldSpace = 0x3,
+}
+
+public enum InheritableBoolType_t : uint
+{
+    INHERITABLE_BOOL_INHERIT = 0x0,
+    INHERITABLE_BOOL_FALSE = 0x1,
+    INHERITABLE_BOOL_TRUE = 0x2,
+}
+
+public enum InputBitMask_t : ulong
+{
+    IN_NONE = 0x0,
+    IN_ALL = 0xFFFFFFFFFFFFFFFF,
+    IN_ATTACK = 0x1,
+    IN_JUMP = 0x2,
+    IN_DUCK = 0x4,
+    IN_FORWARD = 0x8,
+    IN_BACK = 0x10,
+    IN_USE = 0x20,
+    IN_TURNLEFT = 0x80,
+    IN_TURNRIGHT = 0x100,
+    IN_MOVELEFT = 0x200,
+    IN_MOVERIGHT = 0x400,
+    IN_ATTACK2 = 0x800,
+    IN_RELOAD = 0x2000,
+    IN_SPEED = 0x10000,
+    IN_JOYAUTOSPRINT = 0x20000,
+    IN_FIRST_MOD_SPECIFIC_BIT = 0x100000000,
+    IN_USEORRELOAD = 0x100000000,
+    IN_SCORE = 0x200000000,
+    IN_ZOOM = 0x400000000,
+    IN_LOOK_AT_WEAPON = 0x800000000,
+}
+
+public enum InputLayoutVariation_t : uint
+{
+    INPUT_LAYOUT_VARIATION_DEFAULT = 0x0,
+    INPUT_LAYOUT_VARIATION_STREAM1_INSTANCEID = 0x1,
+    INPUT_LAYOUT_VARIATION_STREAM1_INSTANCEID_MORPH_VERT_ID = 0x2,
+    INPUT_LAYOUT_VARIATION_MAX = 0x3,
+}
+
+public enum ItemFlagTypes_t : byte
+{
+    ITEM_FLAG_NONE = 0x0,
+    ITEM_FLAG_CAN_SELECT_WITHOUT_AMMO = 0x1,
+    ITEM_FLAG_NOAUTORELOAD = 0x2,
+    ITEM_FLAG_NOAUTOSWITCHEMPTY = 0x4,
+    ITEM_FLAG_LIMITINWORLD = 0x8,
+    ITEM_FLAG_EXHAUSTIBLE = 0x10,
+    ITEM_FLAG_DOHITLOCATIONDMG = 0x20,
+    ITEM_FLAG_NOAMMOPICKUPS = 0x40,
+    ITEM_FLAG_NOITEMPICKUP = 0x80,
+}
+
+public enum JiggleBoneSimSpace : uint
+{
+    SimSpace_Local = 0x0,
+    SimSpace_Model = 0x1,
+    SimSpace_World = 0x2,
+}
+
+public enum JointAxis_t : uint
+{
+    JOINT_AXIS_X = 0x0,
+    JOINT_AXIS_Y = 0x1,
+    JOINT_AXIS_Z = 0x2,
+    JOINT_AXIS_COUNT = 0x3,
+}
+
+public enum JointMotion_t : uint
+{
+    JOINT_MOTION_FREE = 0x0,
+    JOINT_MOTION_LOCKED = 0x1,
+    JOINT_MOTION_COUNT = 0x2,
+}
+
+public enum JumpCorrectionMethod : uint
+{
+    ScaleMotion = 0x0,
+    AddCorrectionDelta = 0x1,
+}
+
+public enum LatchDirtyPermission_t : uint
+{
+    LATCH_DIRTY_DISALLOW = 0x0,
+    LATCH_DIRTY_SERVER_CONTROLLED = 0x1,
+    LATCH_DIRTY_CLIENT_SIMULATED = 0x2,
+    LATCH_DIRTY_PREDICTION = 0x3,
+    LATCH_DIRTY_FRAMESIMULATE = 0x4,
+    LATCH_DIRTY_PARTICLE_SIMULATE = 0x5,
+}
+
+public enum LayoutPositionType_e : uint
+{
+    LAYOUTPOSITIONTYPE_VIEWPORT_RELATIVE = 0x0,
+    LAYOUTPOSITIONTYPE_FRACTIONAL = 0x1,
+    LAYOUTPOSITIONTYPE_NONE = 0x2,
+}
+
+public enum LessonPanelLayoutFileTypes_t : uint
+{
+    LAYOUT_HAND_DEFAULT = 0x0,
+    LAYOUT_WORLD_DEFAULT = 0x1,
+    LAYOUT_CUSTOM = 0x2,
+}
+
+public enum LifeState_t : uint
+{
+    LIFE_ALIVE = 0x0,
+    LIFE_DYING = 0x1,
+    LIFE_DEAD = 0x2,
+    LIFE_RESPAWNABLE = 0x3,
+    LIFE_RESPAWNING = 0x4,
 }
 
 public enum loadout_slot_t : uint
@@ -219,6 +1488,34 @@ public enum loadout_slot_t : uint
     LOADOUT_SLOT_COUNT = 0x39,
 }
 
+public enum MaterialProxyType_t : uint
+{
+    MATERIAL_PROXY_STATUS_EFFECT = 0x0,
+    MATERIAL_PROXY_TINT = 0x1,
+}
+
+public enum Materials : uint
+{
+    matGlass = 0x0,
+    matWood = 0x1,
+    matMetal = 0x2,
+    matFlesh = 0x3,
+    matCinderBlock = 0x4,
+    matCeilingTile = 0x5,
+    matComputer = 0x6,
+    matUnbreakableGlass = 0x7,
+    matRocks = 0x8,
+    matWeb = 0x9,
+    matNone = 0xA,
+    matLastMaterial = 0xB,
+}
+
+public enum MatterialAttributeTagType_t : uint
+{
+    MATERIAL_ATTRIBUTE_TAG_VALUE = 0x0,
+    MATERIAL_ATTRIBUTE_TAG_COLOR = 0x1,
+}
+
 public enum MedalRank_t : uint
 {
     MEDAL_RANK_NONE = 0x0,
@@ -226,6 +1523,97 @@ public enum MedalRank_t : uint
     MEDAL_RANK_SILVER = 0x2,
     MEDAL_RANK_GOLD = 0x3,
     MEDAL_RANK_COUNT = 0x4,
+}
+
+public enum MeshDrawPrimitiveFlags_t : uint
+{
+    MESH_DRAW_FLAGS_NONE = 0x0,
+    MESH_DRAW_FLAGS_USE_SHADOW_FAST_PATH = 0x1,
+    MESH_DRAW_FLAGS_USE_COMPRESSED_NORMAL_TANGENT = 0x2,
+    MESH_DRAW_INPUT_LAYOUT_IS_NOT_MATCHED_TO_MATERIAL = 0x8,
+    MESH_DRAW_FLAGS_USE_COMPRESSED_PER_VERTEX_LIGHTING = 0x10,
+    MESH_DRAW_FLAGS_USE_UNCOMPRESSED_PER_VERTEX_LIGHTING = 0x20,
+    MESH_DRAW_FLAGS_CAN_BATCH_WITH_DYNAMIC_SHADER_CONSTANTS = 0x40,
+    MESH_DRAW_FLAGS_DRAW_LAST = 0x80,
+}
+
+public enum MissingParentInheritBehavior_t : uint
+{
+    MISSING_PARENT_DO_NOTHING = 0xFFFFFFFF,
+    MISSING_PARENT_KILL = 0x0,
+    MISSING_PARENT_FIND_NEW = 0x1,
+    MISSING_PARENT_SAME_INDEX = 0x2,
+}
+
+public enum ModelBoneFlexComponent_t : uint
+{
+    MODEL_BONE_FLEX_INVALID = 0xFFFFFFFF,
+    MODEL_BONE_FLEX_TX = 0x0,
+    MODEL_BONE_FLEX_TY = 0x1,
+    MODEL_BONE_FLEX_TZ = 0x2,
+}
+
+public enum ModelConfigAttachmentType_t : uint
+{
+    MODEL_CONFIG_ATTACHMENT_INVALID = 0xFFFFFFFF,
+    MODEL_CONFIG_ATTACHMENT_BONE_OR_ATTACHMENT = 0x0,
+    MODEL_CONFIG_ATTACHMENT_ROOT_RELATIVE = 0x1,
+    MODEL_CONFIG_ATTACHMENT_BONEMERGE = 0x2,
+    MODEL_CONFIG_ATTACHMENT_COUNT = 0x3,
+}
+
+public enum ModelSkeletonData_tBoneFlags_t : uint
+{
+    FLAG_NO_BONE_FLAGS = 0x0,
+    FLAG_BONEFLEXDRIVER = 0x4,
+    FLAG_CLOTH = 0x8,
+    FLAG_PHYSICS = 0x10,
+    FLAG_ATTACHMENT = 0x20,
+    FLAG_ANIMATION = 0x40,
+    FLAG_MESH = 0x80,
+    FLAG_HITBOX = 0x100,
+    FLAG_BONE_USED_BY_VERTEX_LOD0 = 0x400,
+    FLAG_BONE_USED_BY_VERTEX_LOD1 = 0x800,
+    FLAG_BONE_USED_BY_VERTEX_LOD2 = 0x1000,
+    FLAG_BONE_USED_BY_VERTEX_LOD3 = 0x2000,
+    FLAG_BONE_USED_BY_VERTEX_LOD4 = 0x4000,
+    FLAG_BONE_USED_BY_VERTEX_LOD5 = 0x8000,
+    FLAG_BONE_USED_BY_VERTEX_LOD6 = 0x10000,
+    FLAG_BONE_USED_BY_VERTEX_LOD7 = 0x20000,
+    FLAG_BONE_MERGE_READ = 0x40000,
+    FLAG_BONE_MERGE_WRITE = 0x80000,
+    FLAG_ALL_BONE_FLAGS = 0xFFFFF,
+    BLEND_PREALIGNED = 0x100000,
+    FLAG_RIGIDLENGTH = 0x200000,
+    FLAG_PROCEDURAL = 0x400000,
+}
+
+public enum ModifyDamageReturn_t : uint
+{
+    CONTINUE_TO_APPLY_DAMAGE = 0x0,
+    ABORT_DO_NOT_APPLY_DAMAGE = 0x1,
+}
+
+public enum MoodType_t : uint
+{
+    eMoodType_Head = 0x0,
+    eMoodType_Body = 0x1,
+}
+
+public enum MorphBundleType_t : uint
+{
+    MORPH_BUNDLE_TYPE_NONE = 0x0,
+    MORPH_BUNDLE_TYPE_POSITION_SPEED = 0x1,
+    MORPH_BUNDLE_TYPE_NORMAL_WRINKLE = 0x2,
+    MORPH_BUNDLE_TYPE_COUNT = 0x3,
+}
+
+public enum MorphFlexControllerRemapType_t : uint
+{
+    MORPH_FLEXCONTROLLER_REMAP_PASSTHRU = 0x0,
+    MORPH_FLEXCONTROLLER_REMAP_2WAY = 0x1,
+    MORPH_FLEXCONTROLLER_REMAP_NWAY = 0x2,
+    MORPH_FLEXCONTROLLER_REMAP_EYELID = 0x3,
 }
 
 public enum MoveCollide_t : byte
@@ -236,6 +1624,21 @@ public enum MoveCollide_t : byte
     MOVECOLLIDE_FLY_SLIDE = 0x3,
     MOVECOLLIDE_COUNT = 0x4,
     MOVECOLLIDE_MAX_BITS = 0x3,
+}
+
+public enum MoveLinearAuthoredPos_t : uint
+{
+    MOVELINEAR_AUTHORED_AT_START_POSITION = 0x0,
+    MOVELINEAR_AUTHORED_AT_OPEN_POSITION = 0x1,
+    MOVELINEAR_AUTHORED_AT_CLOSED_POSITION = 0x2,
+}
+
+public enum MoveMountingAmount_t : uint
+{
+    MOVE_MOUNT_NONE = 0x0,
+    MOVE_MOUNT_LOW = 0x1,
+    MOVE_MOUNT_HIGH = 0x2,
+    MOVE_MOUNT_MAXCOUNT = 0x3,
 }
 
 public enum MoveType_t : byte
@@ -254,6 +1657,592 @@ public enum MoveType_t : byte
     MOVETYPE_CUSTOM = 0xB,
     MOVETYPE_LAST = 0xC,
     MOVETYPE_MAX_BITS = 0x5,
+}
+
+public enum NavAttributeEnum : uint
+{
+    NAV_MESH_AVOID = 0x80,
+    NAV_MESH_STAIRS = 0x1000,
+    NAV_MESH_NON_ZUP = 0x8000,
+    NAV_MESH_SHORT_HEIGHT = 0x10000,
+    NAV_MESH_CROUCH = 0x10000,
+    NAV_MESH_JUMP = 0x2,
+    NAV_MESH_PRECISE = 0x4,
+    NAV_MESH_NO_JUMP = 0x8,
+    NAV_MESH_STOP = 0x10,
+    NAV_MESH_RUN = 0x20,
+    NAV_MESH_WALK = 0x40,
+    NAV_MESH_TRANSIENT = 0x100,
+    NAV_MESH_DONT_HIDE = 0x200,
+    NAV_MESH_STAND = 0x400,
+    NAV_MESH_NO_HOSTAGES = 0x800,
+    NAV_MESH_NO_MERGE = 0x2000,
+    NAV_MESH_OBSTACLE_TOP = 0x4000,
+    NAV_ATTR_FIRST_GAME_INDEX = 0x13,
+    NAV_ATTR_LAST_INDEX = 0x1F,
+}
+
+public enum NavDirType : uint
+{
+    NORTH = 0x0,
+    EAST = 0x1,
+    SOUTH = 0x2,
+    WEST = 0x3,
+    NUM_NAV_DIR_TYPE_DIRECTIONS = 0x4,
+}
+
+public enum navproperties_t : uint
+{
+    NAV_IGNORE = 0x1,
+}
+
+public enum ObjectTypeFlags_t : uint
+{
+    OBJECT_TYPE_NONE = 0x0,
+    OBJECT_TYPE_IMAGE_LOD = 0x1,
+    OBJECT_TYPE_GEOMETRY_LOD = 0x2,
+    OBJECT_TYPE_DECAL = 0x4,
+    OBJECT_TYPE_MODEL = 0x8,
+    OBJECT_TYPE_BLOCK_LIGHT = 0x10,
+    OBJECT_TYPE_NO_SHADOWS = 0x20,
+    OBJECT_TYPE_WORLDSPACE_TEXURE_BLEND = 0x40,
+    OBJECT_TYPE_DISABLED_IN_LOW_QUALITY = 0x80,
+    OBJECT_TYPE_NO_SUN_SHADOWS = 0x100,
+    OBJECT_TYPE_RENDER_WITH_DYNAMIC = 0x200,
+    OBJECT_TYPE_RENDER_TO_CUBEMAPS = 0x400,
+    OBJECT_TYPE_MODEL_HAS_LODS = 0x800,
+    OBJECT_TYPE_OVERLAY = 0x2000,
+    OBJECT_TYPE_PRECOMPUTED_VISMEMBERS = 0x4000,
+    OBJECT_TYPE_STATIC_CUBE_MAP = 0x8000,
+}
+
+public enum ObserverInterpState_t : uint
+{
+    OBSERVER_INTERP_NONE = 0x0,
+    OBSERVER_INTERP_TRAVELING = 0x1,
+    OBSERVER_INTERP_SETTLING = 0x2,
+}
+
+public enum ObserverMode_t : uint
+{
+    OBS_MODE_NONE = 0x0,
+    OBS_MODE_FIXED = 0x1,
+    OBS_MODE_IN_EYE = 0x2,
+    OBS_MODE_CHASE = 0x3,
+    OBS_MODE_ROAMING = 0x4,
+    OBS_MODE_DIRECTED = 0x5,
+    NUM_OBSERVER_MODES = 0x6,
+}
+
+public enum OnFrame : byte
+{
+    ONFRAME_UNKNOWN = 0x0,
+    ONFRAME_TRUE = 0x1,
+    ONFRAME_FALSE = 0x2,
+}
+
+public enum ParticleAlphaReferenceType_t : uint
+{
+    PARTICLE_ALPHA_REFERENCE_ALPHA_ALPHA = 0x0,
+    PARTICLE_ALPHA_REFERENCE_OPAQUE_ALPHA = 0x1,
+    PARTICLE_ALPHA_REFERENCE_ALPHA_OPAQUE = 0x2,
+    PARTICLE_ALPHA_REFERENCE_OPAQUE_OPAQUE = 0x3,
+}
+
+public enum ParticleAttachment_t : uint
+{
+    PATTACH_INVALID = 0xFFFFFFFF,
+    PATTACH_ABSORIGIN = 0x0,
+    PATTACH_ABSORIGIN_FOLLOW = 0x1,
+    PATTACH_CUSTOMORIGIN = 0x2,
+    PATTACH_CUSTOMORIGIN_FOLLOW = 0x3,
+    PATTACH_POINT = 0x4,
+    PATTACH_POINT_FOLLOW = 0x5,
+    PATTACH_EYES_FOLLOW = 0x6,
+    PATTACH_OVERHEAD_FOLLOW = 0x7,
+    PATTACH_WORLDORIGIN = 0x8,
+    PATTACH_ROOTBONE_FOLLOW = 0x9,
+    PATTACH_RENDERORIGIN_FOLLOW = 0xA,
+    PATTACH_MAIN_VIEW = 0xB,
+    PATTACH_WATERWAKE = 0xC,
+    PATTACH_CENTER_FOLLOW = 0xD,
+    PATTACH_CUSTOM_GAME_STATE_1 = 0xE,
+    PATTACH_HEALTHBAR = 0xF,
+    MAX_PATTACH_TYPES = 0x10,
+}
+
+public enum ParticleCollisionMode_t : uint
+{
+    COLLISION_MODE_PER_PARTICLE_TRACE = 0x3,
+    COLLISION_MODE_USE_NEAREST_TRACE = 0x2,
+    COLLISION_MODE_PER_FRAME_PLANESET = 0x1,
+    COLLISION_MODE_INITIAL_TRACE_DOWN = 0x0,
+    COLLISION_MODE_DISABLED = 0xFFFFFFFF,
+}
+
+public enum ParticleColorBlendMode_t : uint
+{
+    PARTICLEBLEND_DEFAULT = 0x0,
+    PARTICLEBLEND_OVERLAY = 0x1,
+    PARTICLEBLEND_DARKEN = 0x2,
+    PARTICLEBLEND_LIGHTEN = 0x3,
+    PARTICLEBLEND_MULTIPLY = 0x4,
+}
+
+public enum ParticleColorBlendType_t : uint
+{
+    PARTICLE_COLOR_BLEND_MULTIPLY = 0x0,
+    PARTICLE_COLOR_BLEND_MULTIPLY2X = 0x1,
+    PARTICLE_COLOR_BLEND_DIVIDE = 0x2,
+    PARTICLE_COLOR_BLEND_ADD = 0x3,
+    PARTICLE_COLOR_BLEND_SUBTRACT = 0x4,
+    PARTICLE_COLOR_BLEND_MOD2X = 0x5,
+    PARTICLE_COLOR_BLEND_SCREEN = 0x6,
+    PARTICLE_COLOR_BLEND_MAX = 0x7,
+    PARTICLE_COLOR_BLEND_MIN = 0x8,
+    PARTICLE_COLOR_BLEND_REPLACE = 0x9,
+    PARTICLE_COLOR_BLEND_AVERAGE = 0xA,
+    PARTICLE_COLOR_BLEND_NEGATE = 0xB,
+    PARTICLE_COLOR_BLEND_LUMINANCE = 0xC,
+}
+
+public enum ParticleControlPointAxis_t : uint
+{
+    PARTICLE_CP_AXIS_X = 0x0,
+    PARTICLE_CP_AXIS_Y = 0x1,
+    PARTICLE_CP_AXIS_Z = 0x2,
+    PARTICLE_CP_AXIS_NEGATIVE_X = 0x3,
+    PARTICLE_CP_AXIS_NEGATIVE_Y = 0x4,
+    PARTICLE_CP_AXIS_NEGATIVE_Z = 0x5,
+}
+
+public enum ParticleDepthFeatheringMode_t : uint
+{
+    PARTICLE_DEPTH_FEATHERING_OFF = 0x0,
+    PARTICLE_DEPTH_FEATHERING_ON_OPTIONAL = 0x1,
+    PARTICLE_DEPTH_FEATHERING_ON_REQUIRED = 0x2,
+}
+
+public enum ParticleDetailLevel_t : uint
+{
+    PARTICLEDETAIL_LOW = 0x0,
+    PARTICLEDETAIL_MEDIUM = 0x1,
+    PARTICLEDETAIL_HIGH = 0x2,
+    PARTICLEDETAIL_ULTRA = 0x3,
+}
+
+public enum ParticleDirectionNoiseType_t : uint
+{
+    PARTICLE_DIR_NOISE_PERLIN = 0x0,
+    PARTICLE_DIR_NOISE_CURL = 0x1,
+    PARTICLE_DIR_NOISE_WORLEY_BASIC = 0x2,
+}
+
+public enum ParticleEndcapMode_t : uint
+{
+    PARTICLE_ENDCAP_ALWAYS_ON = 0xFFFFFFFF,
+    PARTICLE_ENDCAP_ENDCAP_OFF = 0x0,
+    PARTICLE_ENDCAP_ENDCAP_ON = 0x1,
+}
+
+public enum ParticleFalloffFunction_t : uint
+{
+    PARTICLE_FALLOFF_CONSTANT = 0x0,
+    PARTICLE_FALLOFF_LINEAR = 0x1,
+    PARTICLE_FALLOFF_EXPONENTIAL = 0x2,
+}
+
+public enum ParticleFloatBiasType_t : uint
+{
+    PF_BIAS_TYPE_INVALID = 0xFFFFFFFF,
+    PF_BIAS_TYPE_STANDARD = 0x0,
+    PF_BIAS_TYPE_GAIN = 0x1,
+    PF_BIAS_TYPE_EXPONENTIAL = 0x2,
+    PF_BIAS_TYPE_COUNT = 0x3,
+}
+
+public enum ParticleFloatInputMode_t : uint
+{
+    PF_INPUT_MODE_INVALID = 0xFFFFFFFF,
+    PF_INPUT_MODE_CLAMPED = 0x0,
+    PF_INPUT_MODE_LOOPED = 0x1,
+    PF_INPUT_MODE_COUNT = 0x2,
+}
+
+public enum ParticleFloatMapType_t : uint
+{
+    PF_MAP_TYPE_INVALID = 0xFFFFFFFF,
+    PF_MAP_TYPE_DIRECT = 0x0,
+    PF_MAP_TYPE_MULT = 0x1,
+    PF_MAP_TYPE_REMAP = 0x2,
+    PF_MAP_TYPE_REMAP_BIASED = 0x3,
+    PF_MAP_TYPE_CURVE = 0x4,
+    PF_MAP_TYPE_NOTCHED = 0x5,
+    PF_MAP_TYPE_COUNT = 0x6,
+}
+
+public enum ParticleFloatRandomMode_t : uint
+{
+    PF_RANDOM_MODE_INVALID = 0xFFFFFFFF,
+    PF_RANDOM_MODE_CONSTANT = 0x0,
+    PF_RANDOM_MODE_VARYING = 0x1,
+    PF_RANDOM_MODE_COUNT = 0x2,
+}
+
+public enum ParticleFloatType_t : uint
+{
+    PF_TYPE_INVALID = 0xFFFFFFFF,
+    PF_TYPE_LITERAL = 0x0,
+    PF_TYPE_NAMED_VALUE = 0x1,
+    PF_TYPE_RANDOM_UNIFORM = 0x2,
+    PF_TYPE_RANDOM_BIASED = 0x3,
+    PF_TYPE_COLLECTION_AGE = 0x4,
+    PF_TYPE_ENDCAP_AGE = 0x5,
+    PF_TYPE_CONTROL_POINT_COMPONENT = 0x6,
+    PF_TYPE_CONTROL_POINT_CHANGE_AGE = 0x7,
+    PF_TYPE_CONTROL_POINT_SPEED = 0x8,
+    PF_TYPE_PARTICLE_DETAIL_LEVEL = 0x9,
+    PF_TYPE_CONCURRENT_DEF_COUNT = 0xA,
+    PF_TYPE_CLOSEST_CAMERA_DISTANCE = 0xB,
+    PF_TYPE_RENDERER_CAMERA_DISTANCE = 0xC,
+    PF_TYPE_RENDERER_CAMERA_DOT_PRODUCT = 0xD,
+    PF_TYPE_PARTICLE_NOISE = 0xE,
+    PF_TYPE_PARTICLE_AGE = 0xF,
+    PF_TYPE_PARTICLE_AGE_NORMALIZED = 0x10,
+    PF_TYPE_PARTICLE_FLOAT = 0x11,
+    PF_TYPE_PARTICLE_VECTOR_COMPONENT = 0x12,
+    PF_TYPE_PARTICLE_SPEED = 0x13,
+    PF_TYPE_PARTICLE_NUMBER = 0x14,
+    PF_TYPE_PARTICLE_NUMBER_NORMALIZED = 0x15,
+    PF_TYPE_COUNT = 0x16,
+}
+
+public enum ParticleFogType_t : uint
+{
+    PARTICLE_FOG_GAME_DEFAULT = 0x0,
+    PARTICLE_FOG_ENABLED = 0x1,
+    PARTICLE_FOG_DISABLED = 0x2,
+}
+
+public enum ParticleHitboxBiasType_t : uint
+{
+    PARTICLE_HITBOX_BIAS_ENTITY = 0x0,
+    PARTICLE_HITBOX_BIAS_HITBOX = 0x1,
+}
+
+public enum ParticleHitboxDataSelection_t : uint
+{
+    PARTICLE_HITBOX_AVERAGE_SPEED = 0x0,
+    PARTICLE_HITBOX_COUNT = 0x1,
+}
+
+public enum ParticleImpulseType_t : uint
+{
+    IMPULSE_TYPE_NONE = 0x0,
+    IMPULSE_TYPE_GENERIC = 0x1,
+    IMPULSE_TYPE_ROPE = 0x2,
+    IMPULSE_TYPE_EXPLOSION = 0x4,
+    IMPULSE_TYPE_EXPLOSION_UNDERWATER = 0x8,
+    IMPULSE_TYPE_PARTICLE_SYSTEM = 0x10,
+}
+
+public enum ParticleLightBehaviorChoiceList_t : uint
+{
+    PARTICLE_LIGHT_BEHAVIOR_FOLLOW_DIRECTION = 0x0,
+    PARTICLE_LIGHT_BEHAVIOR_ROPE = 0x1,
+    PARTICLE_LIGHT_BEHAVIOR_TRAILS = 0x2,
+}
+
+public enum ParticleLightFogLightingMode_t : uint
+{
+    PARTICLE_LIGHT_FOG_LIGHTING_MODE_NONE = 0x0,
+    PARTICLE_LIGHT_FOG_LIGHTING_MODE_DYNAMIC = 0x2,
+    PARTICLE_LIGHT_FOG_LIGHTING_MODE_DYNAMIC_NOSHADOWS = 0x4,
+}
+
+public enum ParticleLightingQuality_t : uint
+{
+    PARTICLE_LIGHTING_PER_PARTICLE = 0x0,
+    PARTICLE_LIGHTING_PER_VERTEX = 0x1,
+    PARTICLE_LIGHTING_PER_PIXEL = 0xFFFFFFFF,
+}
+
+public enum ParticleLightnintBranchBehavior_t : uint
+{
+    PARTICLE_LIGHTNING_BRANCH_CURRENT_DIR = 0x0,
+    PARTICLE_LIGHTNING_BRANCH_ENDPOINT_DIR = 0x1,
+}
+
+public enum ParticleLightTypeChoiceList_t : uint
+{
+    PARTICLE_LIGHT_TYPE_POINT = 0x0,
+    PARTICLE_LIGHT_TYPE_SPOT = 0x1,
+    PARTICLE_LIGHT_TYPE_FX = 0x2,
+    PARTICLE_LIGHT_TYPE_CAPSULE = 0x3,
+}
+
+public enum ParticleLightUnitChoiceList_t : uint
+{
+    PARTICLE_LIGHT_UNIT_CANDELAS = 0x0,
+    PARTICLE_LIGHT_UNIT_LUMENS = 0x1,
+}
+
+public enum ParticleModelType_t : uint
+{
+    PM_TYPE_INVALID = 0x0,
+    PM_TYPE_NAMED_VALUE_MODEL = 0x1,
+    PM_TYPE_NAMED_VALUE_EHANDLE = 0x2,
+    PM_TYPE_CONTROL_POINT = 0x3,
+    PM_TYPE_COUNT = 0x4,
+}
+
+public enum ParticleOmni2LightTypeChoiceList_t : uint
+{
+    PARTICLE_OMNI2_LIGHT_TYPE_POINT = 0x0,
+    PARTICLE_OMNI2_LIGHT_TYPE_SPHERE = 0x1,
+}
+
+public enum ParticleOrientationChoiceList_t : uint
+{
+    PARTICLE_ORIENTATION_SCREEN_ALIGNED = 0x0,
+    PARTICLE_ORIENTATION_SCREEN_Z_ALIGNED = 0x1,
+    PARTICLE_ORIENTATION_WORLD_Z_ALIGNED = 0x2,
+    PARTICLE_ORIENTATION_ALIGN_TO_PARTICLE_NORMAL = 0x3,
+    PARTICLE_ORIENTATION_SCREENALIGN_TO_PARTICLE_NORMAL = 0x4,
+    PARTICLE_ORIENTATION_FULL_3AXIS_ROTATION = 0x5,
+}
+
+public enum ParticleOrientationSetMode_t : uint
+{
+    PARTICLE_ORIENTATION_SET_FROM_VELOCITY = 0x0,
+    PARTICLE_ORIENTATION_SET_FROM_ROTATIONS = 0x1,
+}
+
+public enum ParticleOutputBlendMode_t : uint
+{
+    PARTICLE_OUTPUT_BLEND_MODE_ALPHA = 0x0,
+    PARTICLE_OUTPUT_BLEND_MODE_ADD = 0x1,
+    PARTICLE_OUTPUT_BLEND_MODE_BLEND_ADD = 0x2,
+    PARTICLE_OUTPUT_BLEND_MODE_HALF_BLEND_ADD = 0x3,
+    PARTICLE_OUTPUT_BLEND_MODE_NEG_HALF_BLEND_ADD = 0x4,
+    PARTICLE_OUTPUT_BLEND_MODE_MOD2X = 0x5,
+    PARTICLE_OUTPUT_BLEND_MODE_LIGHTEN = 0x6,
+}
+
+public enum ParticleParentSetMode_t : uint
+{
+    PARTICLE_SET_PARENT_NO = 0x0,
+    PARTICLE_SET_PARENT_IMMEDIATE = 0x1,
+    PARTICLE_SET_PARENT_ROOT = 0x1,
+}
+
+public enum ParticlePinDistance_t : uint
+{
+    PARTICLE_PIN_DISTANCE_NONE = 0xFFFFFFFF,
+    PARTICLE_PIN_DISTANCE_NEIGHBOR = 0x0,
+    PARTICLE_PIN_DISTANCE_FARTHEST = 0x1,
+    PARTICLE_PIN_DISTANCE_FIRST = 0x2,
+    PARTICLE_PIN_DISTANCE_LAST = 0x3,
+    PARTICLE_PIN_DISTANCE_CENTER = 0x5,
+    PARTICLE_PIN_DISTANCE_CP = 0x6,
+    PARTICLE_PIN_DISTANCE_CP_PAIR_EITHER = 0x7,
+    PARTICLE_PIN_DISTANCE_CP_PAIR_BOTH = 0x8,
+    PARTICLE_PIN_SPEED = 0x9,
+    PARTICLE_PIN_COLLECTION_AGE = 0xA,
+    PARTICLE_PIN_FLOAT_VALUE = 0xB,
+}
+
+public enum ParticlePostProcessPriorityGroup_t : uint
+{
+    PARTICLE_POST_PROCESS_PRIORITY_LEVEL_VOLUME = 0x0,
+    PARTICLE_POST_PROCESS_PRIORITY_LEVEL_OVERRIDE = 0x1,
+    PARTICLE_POST_PROCESS_PRIORITY_GAMEPLAY_EFFECT = 0x2,
+    PARTICLE_POST_PROCESS_PRIORITY_GAMEPLAY_STATE_LOW = 0x3,
+    PARTICLE_POST_PROCESS_PRIORITY_GAMEPLAY_STATE_HIGH = 0x4,
+    PARTICLE_POST_PROCESS_PRIORITY_GLOBAL_UI = 0x5,
+}
+
+public enum ParticleRotationLockType_t : uint
+{
+    PARTICLE_ROTATION_LOCK_NONE = 0x0,
+    PARTICLE_ROTATION_LOCK_ROTATIONS = 0x1,
+    PARTICLE_ROTATION_LOCK_NORMAL = 0x2,
+}
+
+public enum ParticleSelection_t : uint
+{
+    PARTICLE_SELECTION_FIRST = 0x0,
+    PARTICLE_SELECTION_LAST = 0x1,
+    PARTICLE_SELECTION_NUMBER = 0x2,
+}
+
+public enum ParticleSequenceCropOverride_t : uint
+{
+    PARTICLE_SEQUENCE_CROP_OVERRIDE_DEFAULT = 0xFFFFFFFF,
+    PARTICLE_SEQUENCE_CROP_OVERRIDE_FORCE_OFF = 0x0,
+    PARTICLE_SEQUENCE_CROP_OVERRIDE_FORCE_ON = 0x1,
+}
+
+public enum ParticleSetMethod_t : uint
+{
+    PARTICLE_SET_REPLACE_VALUE = 0x0,
+    PARTICLE_SET_SCALE_INITIAL_VALUE = 0x1,
+    PARTICLE_SET_ADD_TO_INITIAL_VALUE = 0x2,
+    PARTICLE_SET_RAMP_CURRENT_VALUE = 0x3,
+    PARTICLE_SET_SCALE_CURRENT_VALUE = 0x4,
+    PARTICLE_SET_ADD_TO_CURRENT_VALUE = 0x5,
+}
+
+public enum ParticleSortingChoiceList_t : uint
+{
+    PARTICLE_SORTING_NEAREST = 0x0,
+    PARTICLE_SORTING_CREATION_TIME = 0x1,
+}
+
+public enum ParticleTextureLayerBlendType_t : uint
+{
+    SPRITECARD_TEXTURE_BLEND_MULTIPLY = 0x0,
+    SPRITECARD_TEXTURE_BLEND_MOD2X = 0x1,
+    SPRITECARD_TEXTURE_BLEND_REPLACE = 0x2,
+    SPRITECARD_TEXTURE_BLEND_ADD = 0x3,
+    SPRITECARD_TEXTURE_BLEND_SUBTRACT = 0x4,
+    SPRITECARD_TEXTURE_BLEND_AVERAGE = 0x5,
+    SPRITECARD_TEXTURE_BLEND_LUMINANCE = 0x6,
+}
+
+public enum ParticleTopology_t : uint
+{
+    PARTICLE_TOPOLOGY_POINTS = 0x0,
+    PARTICLE_TOPOLOGY_LINES = 0x1,
+    PARTICLE_TOPOLOGY_TRIS = 0x2,
+    PARTICLE_TOPOLOGY_QUADS = 0x3,
+    PARTICLE_TOPOLOGY_CUBES = 0x4,
+}
+
+public enum ParticleTraceMissBehavior_t : uint
+{
+    PARTICLE_TRACE_MISS_BEHAVIOR_NONE = 0x0,
+    PARTICLE_TRACE_MISS_BEHAVIOR_KILL = 0x1,
+    PARTICLE_TRACE_MISS_BEHAVIOR_TRACE_END = 0x2,
+}
+
+public enum ParticleTraceSet_t : uint
+{
+    PARTICLE_TRACE_SET_ALL = 0x0,
+    PARTICLE_TRACE_SET_STATIC = 0x1,
+    PARTICLE_TRACE_SET_STATIC_AND_KEYFRAMED = 0x2,
+    PARTICLE_TRACE_SET_DYNAMIC = 0x3,
+}
+
+public enum ParticleTransformType_t : uint
+{
+    PT_TYPE_INVALID = 0x0,
+    PT_TYPE_NAMED_VALUE = 0x1,
+    PT_TYPE_CONTROL_POINT = 0x2,
+    PT_TYPE_CONTROL_POINT_RANGE = 0x3,
+    PT_TYPE_COUNT = 0x4,
+}
+
+public enum ParticleVecType_t : uint
+{
+    PVEC_TYPE_INVALID = 0xFFFFFFFF,
+    PVEC_TYPE_LITERAL = 0x0,
+    PVEC_TYPE_LITERAL_COLOR = 0x1,
+    PVEC_TYPE_NAMED_VALUE = 0x2,
+    PVEC_TYPE_PARTICLE_VECTOR = 0x3,
+    PVEC_TYPE_PARTICLE_VELOCITY = 0x4,
+    PVEC_TYPE_CP_VALUE = 0x5,
+    PVEC_TYPE_CP_RELATIVE_POSITION = 0x6,
+    PVEC_TYPE_CP_RELATIVE_DIR = 0x7,
+    PVEC_TYPE_CP_RELATIVE_RANDOM_DIR = 0x8,
+    PVEC_TYPE_FLOAT_COMPONENTS = 0x9,
+    PVEC_TYPE_FLOAT_INTERP_CLAMPED = 0xA,
+    PVEC_TYPE_FLOAT_INTERP_OPEN = 0xB,
+    PVEC_TYPE_FLOAT_INTERP_GRADIENT = 0xC,
+    PVEC_TYPE_RANDOM_UNIFORM = 0xD,
+    PVEC_TYPE_RANDOM_UNIFORM_OFFSET = 0xE,
+    PVEC_TYPE_CP_DELTA = 0xF,
+    PVEC_TYPE_CLOSEST_CAMERA_POSITION = 0x10,
+    PVEC_TYPE_COUNT = 0x11,
+}
+
+public enum ParticleVRHandChoiceList_t : uint
+{
+    PARTICLE_VRHAND_LEFT = 0x0,
+    PARTICLE_VRHAND_RIGHT = 0x1,
+    PARTICLE_VRHAND_CP = 0x2,
+    PARTICLE_VRHAND_CP_OBJECT = 0x3,
+}
+
+public enum PerformanceMode_t : uint
+{
+    PM_NORMAL = 0x0,
+    PM_NO_GIBS = 0x1,
+    PM_FULL_GIBS = 0x2,
+    PM_REDUCED_GIBS = 0x3,
+}
+
+public enum PermModelInfo_tFlagEnum : uint
+{
+    FLAG_TRANSLUCENT = 0x1,
+    FLAG_TRANSLUCENT_TWO_PASS = 0x2,
+    FLAG_MODEL_IS_RUNTIME_COMBINED = 0x4,
+    FLAG_SOURCE1_IMPORT = 0x8,
+    FLAG_MODEL_PART_CHILD = 0x10,
+    FLAG_NAV_GEN_NONE = 0x20,
+    FLAG_NAV_GEN_HULL = 0x40,
+    FLAG_NO_FORCED_FADE = 0x800,
+    FLAG_HAS_SKINNED_MESHES = 0x400,
+    FLAG_DO_NOT_CAST_SHADOWS = 0x20000,
+    FLAG_FORCE_PHONEME_CROSSFADE = 0x1000,
+    FLAG_NO_ANIM_EVENTS = 0x100000,
+    FLAG_ANIMATION_DRIVEN_FLEXES = 0x200000,
+    FLAG_IMPLICIT_BIND_POSE_SEQUENCE = 0x400000,
+    FLAG_MODEL_DOC = 0x800000,
+}
+
+public enum PetGroundType_t : uint
+{
+    PET_GROUND_NONE = 0x0,
+    PET_GROUND_GRID = 0x1,
+    PET_GROUND_PLANE = 0x2,
+}
+
+public enum PFNoiseModifier_t : uint
+{
+    PF_NOISE_MODIFIER_NONE = 0x0,
+    PF_NOISE_MODIFIER_LINES = 0x1,
+    PF_NOISE_MODIFIER_CLUMPS = 0x2,
+    PF_NOISE_MODIFIER_RINGS = 0x3,
+}
+
+public enum PFNoiseTurbulence_t : uint
+{
+    PF_NOISE_TURB_NONE = 0x0,
+    PF_NOISE_TURB_HIGHLIGHT = 0x1,
+    PF_NOISE_TURB_FEEDBACK = 0x2,
+    PF_NOISE_TURB_LOOPY = 0x3,
+    PF_NOISE_TURB_CONTRAST = 0x4,
+    PF_NOISE_TURB_ALTERNATE = 0x5,
+}
+
+public enum PFNoiseType_t : uint
+{
+    PF_NOISE_TYPE_PERLIN = 0x0,
+    PF_NOISE_TYPE_SIMPLEX = 0x1,
+    PF_NOISE_TYPE_WORLEY = 0x2,
+    PF_NOISE_TYPE_CURL = 0x3,
+}
+
+public enum PFuncVisualizationType_t : uint
+{
+    PFUNC_VISUALIZATION_SPHERE_WIREFRAME = 0x0,
+    PFUNC_VISUALIZATION_SPHERE_SOLID = 0x1,
+    PFUNC_VISUALIZATION_BOX = 0x2,
+    PFUNC_VISUALIZATION_RING = 0x3,
+    PFUNC_VISUALIZATION_PLANE = 0x4,
+    PFUNC_VISUALIZATION_LINE = 0x5,
+    PFUNC_VISUALIZATION_CYLINDER = 0x6,
 }
 
 public enum PlayerAnimEvent_t : uint
@@ -295,6 +2284,19 @@ public enum PlayerConnectedState : uint
     PlayerReserved = 0x5,
 }
 
+public enum PointTemplateClientOnlyEntityBehavior_t : uint
+{
+    CREATE_FOR_CURRENTLY_CONNECTED_CLIENTS_ONLY = 0x0,
+    CREATE_FOR_CLIENTS_WHO_CONNECT_LATER = 0x1,
+}
+
+public enum PointTemplateOwnerSpawnGroupType_t : uint
+{
+    INSERT_INTO_POINT_TEMPLATE_SPAWN_GROUP = 0x0,
+    INSERT_INTO_CURRENTLY_ACTIVE_SPAWN_GROUP = 0x1,
+    INSERT_INTO_NEWLY_CREATED_SPAWN_GROUP = 0x2,
+}
+
 public enum PointWorldTextJustifyHorizontal_t : uint
 {
     POINT_WORLD_TEXT_JUSTIFY_HORIZONTAL_LEFT = 0x0,
@@ -315,6 +2317,121 @@ public enum PointWorldTextReorientMode_t : uint
     POINT_WORLD_TEXT_REORIENT_AROUND_UP = 0x1,
 }
 
+public enum PoseType_t : byte
+{
+    POSETYPE_STATIC = 0x0,
+    POSETYPE_DYNAMIC = 0x1,
+    POSETYPE_INVALID = 0xFF,
+}
+
+public enum PropDoorRotatingOpenDirection_e : uint
+{
+    DOOR_ROTATING_OPEN_BOTH_WAYS = 0x0,
+    DOOR_ROTATING_OPEN_FORWARD = 0x1,
+    DOOR_ROTATING_OPEN_BACKWARD = 0x2,
+}
+
+public enum PropDoorRotatingSpawnPos_t : uint
+{
+    DOOR_SPAWN_CLOSED = 0x0,
+    DOOR_SPAWN_OPEN_FORWARD = 0x1,
+    DOOR_SPAWN_OPEN_BACK = 0x2,
+    DOOR_SPAWN_AJAR = 0x3,
+}
+
+public enum PulseInstructionCode_t : ushort
+{
+    INVALID = 0x0,
+    IMMEDIATE_HALT = 0x1,
+    RETURN_VOID = 0x2,
+    RETURN_VALUE = 0x3,
+    NOP = 0x4,
+    JUMP = 0x5,
+    JUMP_COND = 0x6,
+    CHUNK_LEAP = 0x7,
+    CHUNK_LEAP_COND = 0x8,
+    PULSE_CALL_SYNC = 0x9,
+    PULSE_CALL_ASYNC_FIRE = 0xA,
+    CELL_INVOKE = 0xB,
+    LIBRARY_INVOKE = 0xC,
+    TARGET_INVOKE = 0xD,
+    SET_VAR = 0xE,
+    GET_VAR = 0xF,
+    SET_REGISTER_LIT_BOOL = 0x10,
+    SET_REGISTER_LIT_INT = 0x11,
+    SET_REGISTER_LIT_FLOAT = 0x12,
+    SET_REGISTER_LIT_STR = 0x13,
+    SET_REGISTER_LIT_INVAL_EHANDLE = 0x14,
+    SET_REGISTER_LIT_INVAL_SNDEVT_GUID = 0x15,
+    SET_REGISTER_LIT_VEC3 = 0x16,
+    SET_REGISTER_DOMAIN_VALUE = 0x17,
+    COPY = 0x18,
+    NOT = 0x19,
+    NEGATE = 0x1A,
+    ADD = 0x1B,
+    SUB = 0x1C,
+    MUL = 0x1D,
+    DIV = 0x1E,
+    MOD = 0x1F,
+    LT = 0x20,
+    LTE = 0x21,
+    EQ = 0x22,
+    NE = 0x23,
+    AND = 0x24,
+    OR = 0x25,
+    CONVERT_VALUE = 0x26,
+    LAST_SERIALIZED_CODE = 0x27,
+    NEGATE_INT = 0x28,
+    NEGATE_FLOAT = 0x29,
+    ADD_INT = 0x2A,
+    ADD_FLOAT = 0x2B,
+    ADD_STRING = 0x2C,
+    SUB_INT = 0x2D,
+    SUB_FLOAT = 0x2E,
+    MUL_INT = 0x2F,
+    MUL_FLOAT = 0x30,
+    DIV_INT = 0x31,
+    DIV_FLOAT = 0x32,
+    MOD_INT = 0x33,
+    MOD_FLOAT = 0x34,
+    LT_INT = 0x35,
+    LT_FLOAT = 0x36,
+    LTE_INT = 0x37,
+    LTE_FLOAT = 0x38,
+    EQ_BOOL = 0x39,
+    EQ_INT = 0x3A,
+    EQ_FLOAT = 0x3B,
+    EQ_STRING = 0x3C,
+    NE_BOOL = 0x3D,
+    NE_INT = 0x3E,
+    NE_FLOAT = 0x3F,
+    NE_STRING = 0x40,
+}
+
+public enum PulseMethodCallMode_t : uint
+{
+    SYNC_WAIT_FOR_COMPLETION = 0x0,
+    ASYNC_FIRE_AND_FORGET = 0x1,
+}
+
+public enum PulseValueType_t : uint
+{
+    PVAL_INVALID = 0xFFFFFFFF,
+    PVAL_BOOL = 0x0,
+    PVAL_INT = 0x1,
+    PVAL_FLOAT = 0x2,
+    PVAL_STRING = 0x3,
+    PVAL_VEC3 = 0x4,
+    PVAL_TRANSFORM = 0x5,
+    PVAL_EHANDLE = 0x6,
+    PVAL_RESOURCE = 0x7,
+    PVAL_SNDEVT_GUID = 0x8,
+    PVAL_SCHEMA_PTR = 0x9,
+    PVAL_CURSOR_FLOW = 0xA,
+    PVAL_ANY = 0xB,
+    PVAL_COUNT = 0xC,
+}
+
 public enum QuestProgressReason : uint
 {
     QUEST_NONINITIALIZED = 0x0,
@@ -330,6 +2447,25 @@ public enum QuestProgressReason : uint
     QUEST_WRONG_MODE = 0xA,
     QUEST_NOT_SYNCED_WITH_SERVER = 0xB,
     QUEST_REASON_MAX = 0xC,
+}
+
+public enum RagdollPoseControl : uint
+{
+    Absolute = 0x0,
+    Relative = 0x1,
+}
+
+public enum RenderBufferFlags_t : uint
+{
+    RENDER_BUFFER_USAGE_VERTEX_BUFFER = 0x1,
+    RENDER_BUFFER_USAGE_INDEX_BUFFER = 0x2,
+    RENDER_BUFFER_USAGE_SHADER_RESOURCE = 0x4,
+    RENDER_BUFFER_USAGE_UNORDERED_ACCESS = 0x8,
+    RENDER_BUFFER_BYTEADDRESS_BUFFER = 0x10,
+    RENDER_BUFFER_STRUCTURED_BUFFER = 0x20,
+    RENDER_BUFFER_APPEND_CONSUME_BUFFER = 0x40,
+    RENDER_BUFFER_UAV_COUNTER = 0x80,
+    RENDER_BUFFER_UAV_DRAW_INDIRECT_ARGS = 0x100,
 }
 
 public enum RenderFx_t : byte
@@ -373,16 +2509,220 @@ public enum RenderMode_t : byte
     kRenderModeCount = 0xC,
 }
 
+public enum RenderMultisampleType_t : uint
+{
+    RENDER_MULTISAMPLE_INVALID = 0xFFFFFFFF,
+    RENDER_MULTISAMPLE_NONE = 0x0,
+    RENDER_MULTISAMPLE_2X = 0x1,
+    RENDER_MULTISAMPLE_4X = 0x2,
+    RENDER_MULTISAMPLE_6X = 0x3,
+    RENDER_MULTISAMPLE_8X = 0x4,
+    RENDER_MULTISAMPLE_16X = 0x5,
+    RENDER_MULTISAMPLE_TYPE_COUNT = 0x6,
+}
+
+public enum RenderPrimitiveType_t : uint
+{
+    RENDER_PRIM_POINTS = 0x0,
+    RENDER_PRIM_LINES = 0x1,
+    RENDER_PRIM_LINES_WITH_ADJACENCY = 0x2,
+    RENDER_PRIM_LINE_STRIP = 0x3,
+    RENDER_PRIM_LINE_STRIP_WITH_ADJACENCY = 0x4,
+    RENDER_PRIM_TRIANGLES = 0x5,
+    RENDER_PRIM_TRIANGLES_WITH_ADJACENCY = 0x6,
+    RENDER_PRIM_TRIANGLE_STRIP = 0x7,
+    RENDER_PRIM_TRIANGLE_STRIP_WITH_ADJACENCY = 0x8,
+    RENDER_PRIM_INSTANCED_QUADS = 0x9,
+    RENDER_PRIM_HETEROGENOUS = 0xA,
+    RENDER_PRIM_COMPUTE_SHADER = 0xB,
+    RENDER_PRIM_TYPE_COUNT = 0xC,
+}
+
+public enum RenderSlotType_t : uint
+{
+    RENDER_SLOT_INVALID = 0xFFFFFFFF,
+    RENDER_SLOT_PER_VERTEX = 0x0,
+    RENDER_SLOT_PER_INSTANCE = 0x1,
+}
+
+public enum ResetCycleOption : uint
+{
+    Beginning = 0x0,
+    SameCycleAsSource = 0x1,
+    InverseSourceCycle = 0x2,
+    FixedValue = 0x3,
+    SameTimeAsSource = 0x4,
+}
+
+public enum RumbleEffect_t : uint
+{
+    RUMBLE_INVALID = 0xFFFFFFFF,
+    RUMBLE_STOP_ALL = 0x0,
+    RUMBLE_PISTOL = 0x1,
+    RUMBLE_357 = 0x2,
+    RUMBLE_SMG1 = 0x3,
+    RUMBLE_AR2 = 0x4,
+    RUMBLE_SHOTGUN_SINGLE = 0x5,
+    RUMBLE_SHOTGUN_DOUBLE = 0x6,
+    RUMBLE_AR2_ALT_FIRE = 0x7,
+    RUMBLE_RPG_MISSILE = 0x8,
+    RUMBLE_CROWBAR_SWING = 0x9,
+    RUMBLE_AIRBOAT_GUN = 0xA,
+    RUMBLE_JEEP_ENGINE_LOOP = 0xB,
+    RUMBLE_FLAT_LEFT = 0xC,
+    RUMBLE_FLAT_RIGHT = 0xD,
+    RUMBLE_FLAT_BOTH = 0xE,
+    RUMBLE_DMG_LOW = 0xF,
+    RUMBLE_DMG_MED = 0x10,
+    RUMBLE_DMG_HIGH = 0x11,
+    RUMBLE_FALL_LONG = 0x12,
+    RUMBLE_FALL_SHORT = 0x13,
+    RUMBLE_PHYSCANNON_OPEN = 0x14,
+    RUMBLE_PHYSCANNON_PUNT = 0x15,
+    RUMBLE_PHYSCANNON_LOW = 0x16,
+    RUMBLE_PHYSCANNON_MEDIUM = 0x17,
+    RUMBLE_PHYSCANNON_HIGH = 0x18,
+    NUM_RUMBLE_EFFECTS = 0x19,
+}
+
+public enum ScalarExpressionType_t : uint
+{
+    SCALAR_EXPRESSION_UNINITIALIZED = 0xFFFFFFFF,
+    SCALAR_EXPRESSION_ADD = 0x0,
+    SCALAR_EXPRESSION_SUBTRACT = 0x1,
+    SCALAR_EXPRESSION_MUL = 0x2,
+    SCALAR_EXPRESSION_DIVIDE = 0x3,
+    SCALAR_EXPRESSION_INPUT_1 = 0x4,
+    SCALAR_EXPRESSION_MIN = 0x5,
+    SCALAR_EXPRESSION_MAX = 0x6,
+    SCALAR_EXPRESSION_MOD = 0x7,
+}
+
+public enum SceneOnPlayerDeath_t : uint
+{
+    SCENE_ONPLAYERDEATH_DO_NOTHING = 0x0,
+    SCENE_ONPLAYERDEATH_CANCEL = 0x1,
+}
+
+public enum ScriptedConflictResponse_t : uint
+{
+    SS_CONFLICT_ENQUEUE = 0x0,
+    SS_CONFLICT_INTERRUPT = 0x1,
+}
+
+public enum ScriptedMoveTo_t : uint
+{
+    CINE_MOVETO_WAIT = 0x0,
+    CINE_MOVETO_WALK = 0x1,
+    CINE_MOVETO_RUN = 0x2,
+    CINE_MOVETO_CUSTOM = 0x3,
+    CINE_MOVETO_TELEPORT = 0x4,
+    CINE_MOVETO_WAIT_FACING = 0x5,
+}
+
+public enum ScriptedMoveType_t : uint
+{
+    SCRIPTED_MOVETYPE_NONE = 0x0,
+    SCRIPTED_MOVETYPE_TO_WITH_DURATION = 0x1,
+    SCRIPTED_MOVETYPE_TO_WITH_MOVESPEED = 0x2,
+    SCRIPTED_MOVETYPE_SWEEP_TO_AT_MOVEMENT_SPEED = 0x3,
+}
+
+public enum ScriptedOnDeath_t : uint
+{
+    SS_ONDEATH_NOT_APPLICABLE = 0xFFFFFFFF,
+    SS_ONDEATH_UNDEFINED = 0x0,
+    SS_ONDEATH_RAGDOLL = 0x1,
+    SS_ONDEATH_ANIMATED_DEATH = 0x2,
+}
+
+public enum SelectorTagBehavior_t : uint
+{
+    SelectorTagBehavior_OnWhileCurrent = 0x0,
+    SelectorTagBehavior_OffWhenFinished = 0x1,
+    SelectorTagBehavior_OffBeforeFinished = 0x2,
+}
+
+public enum SeqCmd_t : uint
+{
+    SeqCmd_Nop = 0x0,
+    SeqCmd_LinearDelta = 0x1,
+    SeqCmd_FetchFrameRange = 0x2,
+    SeqCmd_Slerp = 0x3,
+    SeqCmd_Add = 0x4,
+    SeqCmd_Subtract = 0x5,
+    SeqCmd_Scale = 0x6,
+    SeqCmd_Copy = 0x7,
+    SeqCmd_Blend = 0x8,
+    SeqCmd_Worldspace = 0x9,
+    SeqCmd_Sequence = 0xA,
+    SeqCmd_FetchCycle = 0xB,
+    SeqCmd_FetchFrame = 0xC,
+    SeqCmd_IKLockInPlace = 0xD,
+    SeqCmd_IKRestoreAll = 0xE,
+    SeqCmd_ReverseSequence = 0xF,
+    SeqCmd_Transform = 0x10,
+}
+
+public enum SeqPoseSetting_t : uint
+{
+    SEQ_POSE_SETTING_CONSTANT = 0x0,
+    SEQ_POSE_SETTING_ROTATION = 0x1,
+    SEQ_POSE_SETTING_POSITION = 0x2,
+    SEQ_POSE_SETTING_VELOCITY = 0x3,
+}
+
+public enum ShadowType_t : uint
+{
+    SHADOWS_NONE = 0x0,
+    SHADOWS_SIMPLE = 0x1,
+}
+
+public enum ShakeCommand_t : uint
+{
+    SHAKE_START = 0x0,
+    SHAKE_STOP = 0x1,
+    SHAKE_AMPLITUDE = 0x2,
+    SHAKE_FREQUENCY = 0x3,
+    SHAKE_START_RUMBLEONLY = 0x4,
+    SHAKE_START_NORUMBLE = 0x5,
+}
+
 public enum ShardSolid_t : byte
 {
     SHARD_SOLID = 0x0,
     SHARD_DEBRIS = 0x1,
 }
 
+public enum ShatterDamageCause : byte
+{
+    SHATTERDAMAGE_BULLET = 0x0,
+    SHATTERDAMAGE_MELEE = 0x1,
+    SHATTERDAMAGE_THROWN = 0x2,
+    SHATTERDAMAGE_SCRIPT = 0x3,
+    SHATTERDAMAGE_EXPLOSIVE = 0x4,
+}
+
+public enum ShatterGlassStressType : byte
+{
+    SHATTERGLASS_BLUNT = 0x0,
+    SHATTERGLASS_BALLISTIC = 0x1,
+    SHATTERGLASS_PULSE = 0x2,
+    SHATTERDRYWALL_CHUNKS = 0x3,
+    SHATTERGLASS_EXPLOSIVE = 0x4,
+}
+
 public enum ShatterPanelMode : byte
 {
     SHATTER_GLASS = 0x0,
     SHATTER_DRYWALL = 0x1,
+}
+
+public enum SimpleConstraintSoundProfileSimpleConstraintsSoundProfileKeypoints_t : uint
+{
+    kMIN_THRESHOLD = 0x0,
+    kMIN_FULL = 0x1,
+    kHIGHWATER = 0x2,
 }
 
 public enum SolidType_t : byte
@@ -396,6 +2736,237 @@ public enum SolidType_t : byte
     SOLID_VPHYSICS = 0x6,
     SOLID_CAPSULE = 0x7,
     SOLID_LAST = 0x8,
+}
+
+public enum SolveIKChainAnimNodeDebugSetting : uint
+{
+    SOLVEIKCHAINANIMNODEDEBUGSETTING_None = 0x0,
+    SOLVEIKCHAINANIMNODEDEBUGSETTING_X_Axis_Circle = 0x1,
+    SOLVEIKCHAINANIMNODEDEBUGSETTING_Y_Axis_Circle = 0x2,
+    SOLVEIKCHAINANIMNODEDEBUGSETTING_Z_Axis_Circle = 0x3,
+    SOLVEIKCHAINANIMNODEDEBUGSETTING_Forward = 0x4,
+    SOLVEIKCHAINANIMNODEDEBUGSETTING_Up = 0x5,
+    SOLVEIKCHAINANIMNODEDEBUGSETTING_Left = 0x6,
+}
+
+public enum SosActionSortType_t : uint
+{
+    SOS_SORTTYPE_HIGHEST = 0x0,
+    SOS_SORTTYPE_LOWEST = 0x1,
+}
+
+public enum SosActionStopType_t : uint
+{
+    SOS_STOPTYPE_NONE = 0x0,
+    SOS_STOPTYPE_TIME = 0x1,
+    SOS_STOPTYPE_OPVAR = 0x2,
+}
+
+public enum SosEditItemType_t : uint
+{
+    SOS_EDIT_ITEM_TYPE_SOUNDEVENTS = 0x0,
+    SOS_EDIT_ITEM_TYPE_SOUNDEVENT = 0x1,
+    SOS_EDIT_ITEM_TYPE_LIBRARYSTACKS = 0x2,
+    SOS_EDIT_ITEM_TYPE_STACK = 0x3,
+    SOS_EDIT_ITEM_TYPE_OPERATOR = 0x4,
+    SOS_EDIT_ITEM_TYPE_FIELD = 0x5,
+}
+
+public enum SosGroupType_t : uint
+{
+    SOS_GROUPTYPE_DYNAMIC = 0x0,
+    SOS_GROUPTYPE_STATIC = 0x1,
+}
+
+public enum SoundEventStartType_t : uint
+{
+    SOUNDEVENT_START_PLAYER = 0x0,
+    SOUNDEVENT_START_WORLD = 0x1,
+    SOUNDEVENT_START_ENTITY = 0x2,
+}
+
+public enum SoundFlags_t : uint
+{
+    SOUND_NONE = 0x0,
+    SOUND_COMBAT = 0x1,
+    SOUND_WORLD = 0x2,
+    SOUND_PLAYER = 0x4,
+    SOUND_DANGER = 0x8,
+    SOUND_BULLET_IMPACT = 0x10,
+    SOUND_THUMPER = 0x20,
+    SOUND_PHYSICS_DANGER = 0x40,
+    SOUND_MOVE_AWAY = 0x80,
+    SOUND_PLAYER_VEHICLE = 0x100,
+    SOUND_GLASS_BREAK = 0x200,
+    SOUND_PHYSICS_OBJECT = 0x400,
+    SOUND_CONTEXT_GUNFIRE = 0x100000,
+    SOUND_CONTEXT_COMBINE_ONLY = 0x200000,
+    SOUND_CONTEXT_REACT_TO_SOURCE = 0x400000,
+    SOUND_CONTEXT_EXPLOSION = 0x800000,
+    SOUND_CONTEXT_EXCLUDE_COMBINE = 0x1000000,
+    SOUND_CONTEXT_DANGER_APPROACH = 0x2000000,
+    SOUND_CONTEXT_ALLIES_ONLY = 0x4000000,
+    SOUND_CONTEXT_PANIC_NPCS = 0x8000000,
+    ALL_CONTEXTS = 0xFFFFFFFF,
+    ALL_SCENTS = 0x0,
+    ALL_SOUNDS = 0xFFFFF,
+}
+
+public enum soundlevel_t : uint
+{
+    SNDLVL_NONE = 0x0,
+    SNDLVL_20dB = 0x14,
+    SNDLVL_25dB = 0x19,
+    SNDLVL_30dB = 0x1E,
+    SNDLVL_35dB = 0x23,
+    SNDLVL_40dB = 0x28,
+    SNDLVL_45dB = 0x2D,
+    SNDLVL_50dB = 0x32,
+    SNDLVL_55dB = 0x37,
+    SNDLVL_IDLE = 0x3C,
+    SNDLVL_60dB = 0x3C,
+    SNDLVL_65dB = 0x41,
+    SNDLVL_STATIC = 0x42,
+    SNDLVL_70dB = 0x46,
+    SNDLVL_NORM = 0x4B,
+    SNDLVL_75dB = 0x4B,
+    SNDLVL_80dB = 0x50,
+    SNDLVL_TALKING = 0x50,
+    SNDLVL_85dB = 0x55,
+    SNDLVL_90dB = 0x5A,
+    SNDLVL_95dB = 0x5F,
+    SNDLVL_100dB = 0x64,
+    SNDLVL_105dB = 0x69,
+    SNDLVL_110dB = 0x6E,
+    SNDLVL_120dB = 0x78,
+    SNDLVL_130dB = 0x82,
+    SNDLVL_GUNFIRE = 0x8C,
+    SNDLVL_140dB = 0x8C,
+    SNDLVL_150dB = 0x96,
+    SNDLVL_180dB = 0xB4,
+}
+
+public enum SpawnDebugOverrideState_t : uint
+{
+    SPAWN_DEBUG_OVERRIDE_NONE = 0x0,
+    SPAWN_DEBUG_OVERRIDE_FORCE_ENABLED = 0x1,
+    SPAWN_DEBUG_OVERRIDE_FORCE_DISABLED = 0x2,
+}
+
+public enum SpawnDebugRestrictionOverrideState_t : uint
+{
+    SPAWN_DEBUG_RESTRICT_NONE = 0x0,
+    SPAWN_DEBUG_RESTRICT_IGNORE_MANAGER_DISTANCE_REQS = 0x1,
+    SPAWN_DEBUG_RESTRICT_IGNORE_TEMPLATE_DISTANCE_LOS_REQS = 0x2,
+    SPAWN_DEBUG_RESTRICT_IGNORE_TEMPLATE_COOLDOWN_LIMITS = 0x4,
+    SPAWN_DEBUG_RESTRICT_IGNORE_TARGET_COOLDOWN_LIMITS = 0x8,
+}
+
+public enum SpawnPointCoopEnemyBotDefaultBehavior_t : uint
+{
+    DEFEND_AREA = 0x0,
+    HUNT = 0x1,
+    CHARGE_ENEMY = 0x2,
+    DEFEND_INVESTIGATE = 0x3,
+}
+
+public enum SpriteCardPerParticleScale_t : uint
+{
+    SPRITECARD_TEXTURE_PP_SCALE_NONE = 0x0,
+    SPRITECARD_TEXTURE_PP_SCALE_PARTICLE_AGE = 0x1,
+    SPRITECARD_TEXTURE_PP_SCALE_ANIMATION_FRAME = 0x2,
+    SPRITECARD_TEXTURE_PP_SCALE_SHADER_EXTRA_DATA1 = 0x3,
+    SPRITECARD_TEXTURE_PP_SCALE_SHADER_EXTRA_DATA2 = 0x4,
+    SPRITECARD_TEXTURE_PP_SCALE_PARTICLE_ALPHA = 0x5,
+    SPRITECARD_TEXTURE_PP_SCALE_SHADER_RADIUS = 0x6,
+    SPRITECARD_TEXTURE_PP_SCALE_ROLL = 0x7,
+    SPRITECARD_TEXTURE_PP_SCALE_YAW = 0x8,
+    SPRITECARD_TEXTURE_PP_SCALE_PITCH = 0x9,
+    SPRITECARD_TEXTURE_PP_SCALE_RANDOM = 0xA,
+    SPRITECARD_TEXTURE_PP_SCALE_NEG_RANDOM = 0xB,
+    SPRITECARD_TEXTURE_PP_SCALE_RANDOM_TIME = 0xC,
+    SPRITECARD_TEXTURE_PP_SCALE_NEG_RANDOM_TIME = 0xD,
+}
+
+public enum SpriteCardShaderType_t : uint
+{
+    SPRITECARD_SHADER_BASE = 0x0,
+    SPRITECARD_SHADER_CUSTOM = 0x1,
+}
+
+public enum SpriteCardTextureChannel_t : uint
+{
+    SPRITECARD_TEXTURE_CHANNEL_MIX_RGB = 0x0,
+    SPRITECARD_TEXTURE_CHANNEL_MIX_RGBA = 0x1,
+    SPRITECARD_TEXTURE_CHANNEL_MIX_A = 0x2,
+    SPRITECARD_TEXTURE_CHANNEL_MIX_RGB_A = 0x3,
+    SPRITECARD_TEXTURE_CHANNEL_MIX_RGB_ALPHAMASK = 0x4,
+    SPRITECARD_TEXTURE_CHANNEL_MIX_RGB_RGBMASK = 0x5,
+    SPRITECARD_TEXTURE_CHANNEL_MIX_RGBA_RGBALPHA = 0x6,
+    SPRITECARD_TEXTURE_CHANNEL_MIX_A_RGBALPHA = 0x7,
+    SPRITECARD_TEXTURE_CHANNEL_MIX_RGB_A_RGBALPHA = 0x8,
+    SPRITECARD_TEXTURE_CHANNEL_MIX_R = 0x9,
+    SPRITECARD_TEXTURE_CHANNEL_MIX_G = 0xA,
+    SPRITECARD_TEXTURE_CHANNEL_MIX_B = 0xB,
+    SPRITECARD_TEXTURE_CHANNEL_MIX_RALPHA = 0xC,
+    SPRITECARD_TEXTURE_CHANNEL_MIX_GALPHA = 0xD,
+    SPRITECARD_TEXTURE_CHANNEL_MIX_BALPHA = 0xE,
+}
+
+public enum SpriteCardTextureType_t : uint
+{
+    SPRITECARD_TEXTURE_DIFFUSE = 0x0,
+    SPRITECARD_TEXTURE_ZOOM = 0x1,
+    SPRITECARD_TEXTURE_1D_COLOR_LOOKUP = 0x2,
+    SPRITECARD_TEXTURE_UVDISTORTION = 0x3,
+    SPRITECARD_TEXTURE_UVDISTORTION_ZOOM = 0x4,
+    SPRITECARD_TEXTURE_NORMALMAP = 0x5,
+    SPRITECARD_TEXTURE_ANIMMOTIONVEC = 0x6,
+    SPRITECARD_TEXTURE_SPHERICAL_HARMONICS_A = 0x7,
+    SPRITECARD_TEXTURE_SPHERICAL_HARMONICS_B = 0x8,
+    SPRITECARD_TEXTURE_SPHERICAL_HARMONICS_C = 0x9,
+}
+
+public enum StanceOverrideMode : uint
+{
+    Sequence = 0x0,
+    Node = 0x1,
+}
+
+public enum StanceType_t : uint
+{
+    STANCE_CURRENT = 0xFFFFFFFF,
+    STANCE_DEFAULT = 0x0,
+    STANCE_CROUCHING = 0x1,
+    STANCE_PRONE = 0x2,
+    NUM_STANCES = 0x3,
+}
+
+public enum StandardLightingAttenuationStyle_t : uint
+{
+    LIGHT_STYLE_OLD = 0x0,
+    LIGHT_STYLE_NEW = 0x1,
+}
+
+public enum StateActionBehavior : uint
+{
+    STATETAGBEHAVIOR_ACTIVE_WHILE_CURRENT = 0x0,
+    STATETAGBEHAVIOR_FIRE_ON_ENTER = 0x1,
+    STATETAGBEHAVIOR_FIRE_ON_EXIT = 0x2,
+    STATETAGBEHAVIOR_FIRE_ON_ENTER_AND_EXIT = 0x3,
+}
+
+public enum StepPhase : uint
+{
+    StepPhase_OnGround = 0x0,
+    StepPhase_InAir = 0x1,
+}
+
+public enum SubclassVDataChangeType_t : uint
+{
+    SUBCLASS_VDATA_CREATED = 0x0,
+    SUBCLASS_VDATA_SUBCLASS_CHANGED = 0x1,
+    SUBCLASS_VDATA_RELOADED = 0x2,
 }
 
 public enum SurroundingBoundsType_t : byte
@@ -427,6 +2998,78 @@ public enum TakeDamageFlags_t : uint
     DFLAG_RADIUS_DMG = 0x400,
     DMG_LASTDFLAG = 0x400,
     DFLAG_IGNORE_ARMOR = 0x800,
+}
+
+public enum TextureRepetitionMode_t : uint
+{
+    TEXTURE_REPETITION_PARTICLE = 0x0,
+    TEXTURE_REPETITION_PATH = 0x1,
+}
+
+public enum ThreeState_t : uint
+{
+    TRS_FALSE = 0x0,
+    TRS_TRUE = 0x1,
+    TRS_NONE = 0x2,
+}
+
+public enum TimelineCompression_t : uint
+{
+    TIMELINE_COMPRESSION_SUM = 0x0,
+    TIMELINE_COMPRESSION_COUNT_PER_INTERVAL = 0x1,
+    TIMELINE_COMPRESSION_AVERAGE = 0x2,
+    TIMELINE_COMPRESSION_AVERAGE_BLEND = 0x3,
+    TIMELINE_COMPRESSION_TOTAL = 0x4,
+}
+
+public enum TOGGLE_STATE : uint
+{
+    TS_AT_TOP = 0x0,
+    TS_AT_BOTTOM = 0x1,
+    TS_GOING_UP = 0x2,
+    TS_GOING_DOWN = 0x3,
+    DOOR_OPEN = 0x0,
+    DOOR_CLOSED = 0x1,
+    DOOR_OPENING = 0x2,
+    DOOR_CLOSING = 0x3,
+}
+
+public enum Touch_t : uint
+{
+    touch_none = 0x0,
+    touch_player_only = 0x1,
+    touch_npc_only = 0x2,
+    touch_player_or_npc = 0x3,
+    touch_player_or_npc_or_physicsprop = 0x4,
+}
+
+public enum TrackOrientationType_t : uint
+{
+    TrackOrientation_Fixed = 0x0,
+    TrackOrientation_FacePath = 0x1,
+    TrackOrientation_FacePathAngles = 0x2,
+}
+
+public enum TRAIN_CODE : uint
+{
+    TRAIN_SAFE = 0x0,
+    TRAIN_BLOCKING = 0x1,
+    TRAIN_FOLLOWING = 0x2,
+}
+
+public enum TrainOrientationType_t : uint
+{
+    TrainOrientation_Fixed = 0x0,
+    TrainOrientation_AtPathTracks = 0x1,
+    TrainOrientation_LinearBlend = 0x2,
+    TrainOrientation_EaseInEaseOut = 0x3,
+}
+
+public enum TrainVelocityType_t : uint
+{
+    TrainVelocity_Instantaneous = 0x0,
+    TrainVelocity_LinearBlend = 0x1,
+    TrainVelocity_EaseInEaseOut = 0x2,
 }
 
 public enum ValueRemapperHapticsType_t : uint
@@ -461,6 +3104,284 @@ public enum ValueRemapperRatchetType_t : uint
 {
     RatchetType_Absolute = 0x0,
     RatchetType_EachEngage = 0x1,
+}
+
+public enum VectorExpressionType_t : uint
+{
+    VECTOR_EXPRESSION_UNINITIALIZED = 0xFFFFFFFF,
+    VECTOR_EXPRESSION_ADD = 0x0,
+    VECTOR_EXPRESSION_SUBTRACT = 0x1,
+    VECTOR_EXPRESSION_MUL = 0x2,
+    VECTOR_EXPRESSION_DIVIDE = 0x3,
+    VECTOR_EXPRESSION_INPUT_1 = 0x4,
+    VECTOR_EXPRESSION_MIN = 0x5,
+    VECTOR_EXPRESSION_MAX = 0x6,
+    VECTOR_EXPRESSION_CROSSPRODUCT = 0x7,
+}
+
+public enum VectorFloatExpressionType_t : uint
+{
+    VECTOR_FLOAT_EXPRESSION_UNINITIALIZED = 0xFFFFFFFF,
+    VECTOR_FLOAT_EXPRESSION_DOTPRODUCT = 0x0,
+    VECTOR_FLOAT_EXPRESSION_DISTANCE = 0x1,
+    VECTOR_FLOAT_EXPRESSION_DISTANCESQR = 0x2,
+    VECTOR_FLOAT_EXPRESSION_INPUT1_LENGTH = 0x3,
+    VECTOR_FLOAT_EXPRESSION_INPUT1_LENGTHSQR = 0x4,
+    VECTOR_FLOAT_EXPRESSION_INPUT1_NOISE = 0x5,
+}
+
+public enum VelocityMetricMode : byte
+{
+    DirectionOnly = 0x0,
+    MagnitudeOnly = 0x1,
+    DirectionAndMagnitude = 0x2,
+}
+
+public enum VertJustification_e : uint
+{
+    VERT_JUSTIFICATION_TOP = 0x0,
+    VERT_JUSTIFICATION_CENTER = 0x1,
+    VERT_JUSTIFICATION_BOTTOM = 0x2,
+    VERT_JUSTIFICATION_NONE = 0x3,
+}
+
+public enum ViewFadeMode_t : uint
+{
+    VIEW_FADE_CONSTANT_COLOR = 0x0,
+    VIEW_FADE_MODULATE = 0x1,
+    VIEW_FADE_MOD2X = 0x2,
+}
+
+public enum VMixChannelOperation_t : uint
+{
+    VMIX_CHAN_STEREO = 0x0,
+    VMIX_CHAN_LEFT = 0x1,
+    VMIX_CHAN_RIGHT = 0x2,
+    VMIX_CHAN_SWAP = 0x3,
+    VMIX_CHAN_MONO = 0x4,
+    VMIX_CHAN_MID_SIDE = 0x5,
+}
+
+public enum VMixFilterSlope_t : byte
+{
+    FILTER_SLOPE_1POLE_6dB = 0x0,
+    FILTER_SLOPE_1POLE_12dB = 0x1,
+    FILTER_SLOPE_1POLE_18dB = 0x2,
+    FILTER_SLOPE_1POLE_24dB = 0x3,
+    FILTER_SLOPE_12dB = 0x4,
+    FILTER_SLOPE_24dB = 0x5,
+    FILTER_SLOPE_36dB = 0x6,
+    FILTER_SLOPE_48dB = 0x7,
+    FILTER_SLOPE_MAX = 0x7,
+}
+
+public enum VMixFilterType_t : ushort
+{
+    FILTER_UNKNOWN = 0xFFFF,
+    FILTER_LOWPASS = 0x0,
+    FILTER_HIGHPASS = 0x1,
+    FILTER_BANDPASS = 0x2,
+    FILTER_NOTCH = 0x3,
+    FILTER_PEAKING_EQ = 0x4,
+    FILTER_LOW_SHELF = 0x5,
+    FILTER_HIGH_SHELF = 0x6,
+    FILTER_ALLPASS = 0x7,
+    FILTER_PASSTHROUGH = 0x8,
+}
+
+public enum VMixLFOShape_t : uint
+{
+    LFO_SHAPE_SINE = 0x0,
+    LFO_SHAPE_SQUARE = 0x1,
+    LFO_SHAPE_TRI = 0x2,
+    LFO_SHAPE_SAW = 0x3,
+    LFO_SHAPE_NOISE = 0x4,
+}
+
+public enum VMixPannerType_t : uint
+{
+    PANNER_TYPE_LINEAR = 0x0,
+    PANNER_TYPE_EQUAL_POWER = 0x1,
+}
+
+public enum VMixProcessorType_t : ushort
+{
+    VPROCESSOR_UNKNOWN = 0x0,
+    VPROCESSOR_STEAMAUDIO_REVERB = 0x1,
+    VPROCESSOR_RT_PITCH = 0x2,
+    VPROCESSOR_STEAMAUDIO_HRTF = 0x3,
+    VPROCESSOR_DYNAMICS = 0x4,
+    VPROCESSOR_PRESETDSP = 0x5,
+    VPROCESSOR_DELAY = 0x6,
+    VPROCESSOR_MOD_DELAY = 0x7,
+    VPROCESSOR_DIFFUSOR = 0x8,
+    VPROCESSOR_BOXVERB = 0x9,
+    VPROCESSOR_FREEVERB = 0xA,
+    VPROCESSOR_PLATEVERB = 0xB,
+    VPROCESSOR_FULLWAVE_INTEGRATOR = 0xC,
+    VPROCESSOR_FILTER = 0xD,
+    VPROCESSOR_STEAMAUDIO_PATHING = 0xE,
+    VPROCESSOR_EQ8 = 0xF,
+    VPROCESSOR_ENVELOPE = 0x10,
+    VPROCESSOR_VOCODER = 0x11,
+    VPROCESSOR_CONVOLUTION = 0x12,
+    VPROCESSOR_DYNAMICS_3BAND = 0x13,
+    VPROCESSOR_DYNAMICS_COMPRESSOR = 0x14,
+    VPROCESSOR_SHAPER = 0x15,
+    VPROCESSOR_PANNER = 0x16,
+    VPROCESSOR_UTILITY = 0x17,
+    VPROCESSOR_AUTOFILTER = 0x18,
+    VPROCESSOR_OSC = 0x19,
+    VPROCESSOR_STEREODELAY = 0x1A,
+    VPROCESSOR_EFFECT_CHAIN = 0x1B,
+    VPROCESSOR_SUBGRAPH_SWITCH = 0x1C,
+    VPROCESSOR_STEAMAUDIO_DIRECT = 0x1D,
+}
+
+public enum VMixSubgraphSwitchInterpolationType_t : uint
+{
+    SUBGRAPH_INTERPOLATION_TEMPORAL_CROSSFADE = 0x0,
+    SUBGRAPH_INTERPOLATION_TEMPORAL_FADE_OUT = 0x1,
+    SUBGRAPH_INTERPOLATION_KEEP_LAST_SUBGRAPH_RUNNING = 0x2,
+}
+
+public enum vote_create_failed_t : uint
+{
+    VOTE_FAILED_GENERIC = 0x0,
+    VOTE_FAILED_TRANSITIONING_PLAYERS = 0x1,
+    VOTE_FAILED_RATE_EXCEEDED = 0x2,
+    VOTE_FAILED_YES_MUST_EXCEED_NO = 0x3,
+    VOTE_FAILED_QUORUM_FAILURE = 0x4,
+    VOTE_FAILED_ISSUE_DISABLED = 0x5,
+    VOTE_FAILED_MAP_NOT_FOUND = 0x6,
+    VOTE_FAILED_MAP_NAME_REQUIRED = 0x7,
+    VOTE_FAILED_FAILED_RECENTLY = 0x8,
+    VOTE_FAILED_TEAM_CANT_CALL = 0x9,
+    VOTE_FAILED_WAITINGFORPLAYERS = 0xA,
+    VOTE_FAILED_PLAYERNOTFOUND = 0xB,
+    VOTE_FAILED_CANNOT_KICK_ADMIN = 0xC,
+    VOTE_FAILED_SCRAMBLE_IN_PROGRESS = 0xD,
+    VOTE_FAILED_SPECTATOR = 0xE,
+    VOTE_FAILED_FAILED_RECENT_KICK = 0xF,
+    VOTE_FAILED_FAILED_RECENT_CHANGEMAP = 0x10,
+    VOTE_FAILED_FAILED_RECENT_SWAPTEAMS = 0x11,
+    VOTE_FAILED_FAILED_RECENT_SCRAMBLETEAMS = 0x12,
+    VOTE_FAILED_FAILED_RECENT_RESTART = 0x13,
+    VOTE_FAILED_SWAP_IN_PROGRESS = 0x14,
+    VOTE_FAILED_DISABLED = 0x15,
+    VOTE_FAILED_NEXTLEVEL_SET = 0x16,
+    VOTE_FAILED_TOO_EARLY_SURRENDER = 0x17,
+    VOTE_FAILED_MATCH_PAUSED = 0x18,
+    VOTE_FAILED_MATCH_NOT_PAUSED = 0x19,
+    VOTE_FAILED_NOT_IN_WARMUP = 0x1A,
+    VOTE_FAILED_NOT_10_PLAYERS = 0x1B,
+    VOTE_FAILED_TIMEOUT_ACTIVE = 0x1C,
+    VOTE_FAILED_TIMEOUT_INACTIVE = 0x1D,
+    VOTE_FAILED_TIMEOUT_EXHAUSTED = 0x1E,
+    VOTE_FAILED_CANT_ROUND_END = 0x1F,
+    VOTE_FAILED_REMATCH = 0x20,
+    VOTE_FAILED_CONTINUE = 0x21,
+    VOTE_FAILED_MAX = 0x22,
+}
+
+public enum VPhysXAggregateData_tVPhysXFlagEnum_t : uint
+{
+    FLAG_IS_POLYSOUP_GEOMETRY = 0x1,
+    FLAG_LEVEL_COLLISION = 0x10,
+    FLAG_IGNORE_SCALE_OBSOLETE_DO_NOT_USE = 0x20,
+}
+
+public enum VPhysXBodyPart_tVPhysXFlagEnum_t : uint
+{
+    FLAG_STATIC = 0x1,
+    FLAG_KINEMATIC = 0x2,
+    FLAG_JOINT = 0x4,
+    FLAG_MASS = 0x8,
+    FLAG_ALWAYS_DYNAMIC_ON_CLIENT = 0x10,
+}
+
+public enum VPhysXConstraintParams_tEnumFlags0_t : uint
+{
+    FLAG0_SHIFT_INTERPENETRATE = 0x0,
+    FLAG0_SHIFT_CONSTRAIN = 0x1,
+    FLAG0_SHIFT_BREAKABLE_FORCE = 0x2,
+    FLAG0_SHIFT_BREAKABLE_TORQUE = 0x3,
+}
+
+public enum VPhysXJoint_tFlags_t : uint
+{
+    JOINT_FLAGS_NONE = 0x0,
+    JOINT_FLAGS_BODY1_FIXED = 0x1,
+    JOINT_FLAGS_USE_BLOCK_SOLVER = 0x2,
+}
+
+public enum WaterLevel_t : byte
+{
+    WL_NotInWater = 0x0,
+    WL_Feet = 0x1,
+    WL_Knees = 0x2,
+    WL_Waist = 0x3,
+    WL_Chest = 0x4,
+    WL_FullyUnderwater = 0x5,
+    WL_Count = 0x6,
+}
+
+public enum WeaponAttackType_t : uint
+{
+    eInvalid = 0xFFFFFFFF,
+    ePrimary = 0x0,
+    eSecondary = 0x1,
+    eCount = 0x2,
+}
+
+public enum WeaponSound_t : uint
+{
+    WEAPON_SOUND_EMPTY = 0x0,
+    WEAPON_SOUND_SECONDARY_EMPTY = 0x1,
+    WEAPON_SOUND_SINGLE = 0x2,
+    WEAPON_SOUND_SECONDARY_ATTACK = 0x3,
+    WEAPON_SOUND_RELOAD = 0x4,
+    WEAPON_SOUND_MELEE_MISS = 0x5,
+    WEAPON_SOUND_MELEE_HIT = 0x6,
+    WEAPON_SOUND_MELEE_HIT_WORLD = 0x7,
+    WEAPON_SOUND_MELEE_HIT_PLAYER = 0x8,
+    WEAPON_SOUND_MELEE_HIT_NPC = 0x9,
+    WEAPON_SOUND_SPECIAL1 = 0xA,
+    WEAPON_SOUND_SPECIAL2 = 0xB,
+    WEAPON_SOUND_SPECIAL3 = 0xC,
+    WEAPON_SOUND_NEARLYEMPTY = 0xD,
+    WEAPON_SOUND_IMPACT = 0xE,
+    WEAPON_SOUND_REFLECT = 0xF,
+    WEAPON_SOUND_SECONDARY_IMPACT = 0x10,
+    WEAPON_SOUND_SECONDARY_REFLECT = 0x11,
+    WEAPON_SOUND_SINGLE_ACCURATE = 0x12,
+    WEAPON_SOUND_ZOOM_IN = 0x13,
+    WEAPON_SOUND_ZOOM_OUT = 0x14,
+    WEAPON_SOUND_MOUSE_PRESSED = 0x15,
+    WEAPON_SOUND_DROP = 0x16,
+    WEAPON_SOUND_RADIO_USE = 0x17,
+    WEAPON_SOUND_NUM_TYPES = 0x18,
+}
+
+public enum WorldTextPanelHorizontalAlign_t : uint
+{
+    WORLDTEXT_HORIZONTAL_ALIGN_LEFT = 0x0,
+    WORLDTEXT_HORIZONTAL_ALIGN_CENTER = 0x1,
+    WORLDTEXT_HORIZONTAL_ALIGN_RIGHT = 0x2,
+}
+
+public enum WorldTextPanelOrientation_t : uint
+{
+    WORLDTEXT_ORIENTATION_DEFAULT = 0x0,
+    WORLDTEXT_ORIENTATION_FACEUSER = 0x1,
+    WORLDTEXT_ORIENTATION_FACEUSER_UPRIGHT = 0x2,
+}
+
+public enum WorldTextPanelVerticalAlign_t : uint
+{
+    WORLDTEXT_VERTICAL_ALIGN_TOP = 0x0,
+    WORLDTEXT_VERTICAL_ALIGN_CENTER = 0x1,
+    WORLDTEXT_VERTICAL_ALIGN_BOTTOM = 0x2,
 }
 
 public partial class audioparams_t : NativeObject

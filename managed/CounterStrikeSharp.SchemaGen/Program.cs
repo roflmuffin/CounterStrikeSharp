@@ -146,10 +146,7 @@ internal static partial class Program
 
         foreach (var (enumName, schemaEnum) in allEnums)
         {
-            if (visited.Contains(enumName))
-            {
-                WriteEnum(builder, enumName, schemaEnum);
-            }
+            WriteEnum(builder, enumName, schemaEnum);
         }
 
         var visitedClassNames = new HashSet<string>();
