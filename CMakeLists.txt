@@ -74,6 +74,9 @@ SET(SOURCE_FILES
         src/core/managers/chat_manager.h
         src/core/managers/client_command_manager.cpp
         src/core/managers/client_command_manager.h
+        src/core/managers/server_manager.cpp
+        src/core/managers/server_manager.h
+        src/scripting/natives/natives_server.cpp
 )
 
 set(PROTO_DIRS -I${CMAKE_CURRENT_SOURCE_DIR}/libraries/GameTracking-CS2/Protobufs)
