@@ -312,16 +312,16 @@ namespace CounterStrikeSharp.API.Core
         {
             var wrappedHandler = new Action<int, IntPtr>((i, ptr) =>
             {
-                var command = new CommandInfo(ptr);
                 if (i == -1)
                 {
-                    handler?.Invoke(null, command);
+                    handler?.Invoke(null, new CommandInfo(ptr, null));
                     return;
                 }
 
                 if (serverOnly) return;
 
                 var entity = new CCSPlayerController(NativeAPI.GetEntityFromIndex(i + 1));
+                var command = new CommandInfo(ptr, entity);
                 handler?.Invoke(entity.IsValid ? entity : null, command);
             });
 
