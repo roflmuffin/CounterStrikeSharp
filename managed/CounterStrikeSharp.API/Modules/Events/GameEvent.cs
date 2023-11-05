@@ -75,10 +75,9 @@ namespace CounterStrikeSharp.API.Modules.Events
                 case var _ when value is int i:
                     SetInt(name, i);
                     break;
-                case var _ when value is Player player:
-                    // Currently treating all IntPtrs as Player Controllers 
-                    // but this will need to be revisited once we have pawns & ehandles
-                    SetPlayer(name, player.Handle);
+                case var _ when value is CCSPlayerController player:
+                    // When I was testing this, the code seems to expect a slot, even though it is called index
+                    SetEntityIndex(name, (int)player.EntityIndex.Value.Value - 1);
                     break;
                 case var _ when value is string s:
                     SetString(name, s);
@@ -119,8 +118,9 @@ namespace CounterStrikeSharp.API.Modules.Events
         protected void SetInt(string name, int value) => NativeAPI.SetEventInt(Handle, name, value);
         protected void SetInt(string name, long value) => SetInt(name, (int)value);
 
-        protected void SetPlayer(string name, IntPtr value) =>
-            NativeAPI.SetEventPlayerController(Handle, name, value);
+        protected void SetEntity(string name, IntPtr value) => NativeAPI.SetEventEntity(Handle, name, value);
+
+        protected void SetEntityIndex(string name, int value) => NativeAPI.SetEventEntityIndex(Handle, name, value);
 
         public void FireEvent(bool dontBroadcast) => NativeAPI.FireEvent(Handle, dontBroadcast);
         // public void FireEventToClient(int clientId, bool dontBroadcast) => NativeAPI.FireEventToClient(Handle, clientId);

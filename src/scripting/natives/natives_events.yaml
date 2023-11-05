@@ -15,6 +15,8 @@ SET_EVENT_INT: gameEvent:pointer, name:string, value:int -> void
 LOAD_EVENTS_FROM_FILE: path:string, searchAll:bool -> int
 GET_EVENT_PLAYER_CONTROLLER: gameEvent:pointer, name:string -> pointer
 SET_EVENT_PLAYER_CONTROLLER: gameEvent:pointer, name:string, value:pointer -> void
+SET_EVENT_ENTITY: gameEvent:pointer, name:string, value:pointer -> void
+SET_EVENT_ENTITY_INDEX: gameEvent:pointer, name:string, value:int -> void
 GET_EVENT_PLAYER_PAWN: gameEvent:pointer, name:string -> pointer
 GET_EVENT_UINT64: gameEvent:pointer, name:string -> uint64
 SET_EVENT_UINT64: gameEvent:pointer, name:string, value:uint64 -> void
