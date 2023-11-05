@@ -20,6 +20,8 @@
 
 namespace counterstrikesharp {
 
+std::vector<IGameEvent *> managed_game_events;
+
 static void HookEvent(ScriptContext &script_context) {
     const char *name = script_context.GetArgument<const char *>(0);
     auto callback = script_context.GetArgument<CallbackT>(1);
@@ -40,7 +42,10 @@ static IGameEvent *CreateEvent(ScriptContext &script_context) {
     auto name = script_context.GetArgument<const char *>(0);
     bool force = script_context.GetArgument<bool>(1);
 
-    return globals::gameEventManager->CreateEvent(name, force);
+    auto pEvent = globals::gameEventManager->CreateEvent(name, force);
+    managed_game_events.push_back(pEvent);
+
+    return pEvent;
 }
 
 static void FireEvent(ScriptContext &script_context) {
@@ -51,6 +56,7 @@ static void FireEvent(ScriptContext &script_context) {
     }
 
     globals::gameEventManager->FireEvent(game_event, dont_broadcast);
+    managed_game_events.erase(std::remove(managed_game_events.begin(), managed_game_events.end(), game_event), managed_game_events.end());
 }
 
 // static void FireEventToClient(ScriptContext& script_context) {
@@ -193,6 +199,26 @@ static void *SetPlayerController(ScriptContext &scriptContext) {
     }
 }
 
+static void *SetEntity(ScriptContext &scriptContext) {
+    IGameEvent *gameEvent = scriptContext.GetArgument<IGameEvent *>(0);
+    const char *keyName = scriptContext.GetArgument<const char *>(1);
+    auto *value = scriptContext.GetArgument<CEntityInstance *>(2);
+
+    if (gameEvent != nullptr) {
+        gameEvent->SetEntity(keyName, value);
+    }
+}
+
+static void *SetEntityIndex(ScriptContext &scriptContext) {
+    IGameEvent *gameEvent = scriptContext.GetArgument<IGameEvent *>(0);
+    const char *keyName = scriptContext.GetArgument<const char *>(1);
+    auto index = scriptContext.GetArgument<int>(2);
+
+    if (gameEvent != nullptr) {
+        gameEvent->SetEntity(keyName, CEntityIndex{ index });
+    }
+}
+
 static void *GetPlayerPawn(ScriptContext& scriptContext) {
     IGameEvent *gameEvent = scriptContext.GetArgument<IGameEvent *>(0);
     const char *keyName = scriptContext.GetArgument<const char *>(1);
@@ -254,9 +280,12 @@ REGISTER_NATIVES(events, {
     ScriptEngine::RegisterNativeHandler("GET_EVENT_PLAYER_CONTROLLER", GetPlayerController);
     ScriptEngine::RegisterNativeHandler("SET_EVENT_PLAYER_CONTROLLER", SetPlayerController);
     ScriptEngine::RegisterNativeHandler("GET_EVENT_PLAYER_PAWN", GetPlayerPawn);
+    ScriptEngine::RegisterNativeHandler("SET_EVENT_ENTITY", SetEntity);
+    ScriptEngine::RegisterNativeHandler("SET_EVENT_ENTITY_INDEX", SetEntityIndex);
 
     ScriptEngine::RegisterNativeHandler("GET_EVENT_UINT64", GetUint64);
     ScriptEngine::RegisterNativeHandler("SET_EVENT_UINT64", SetUint64);
+
 
     ScriptEngine::RegisterNativeHandler("LOAD_EVENTS_FROM_FILE", LoadEventsFromFile);
 })

@@ -136,6 +136,28 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static IntPtr FindConvar(string name){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(name);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x52254718);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			}
+		}
+
+        public static void SetConvarStringValue(IntPtr convar, string value){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(convar);
+			ScriptContext.GlobalScriptContext.Push(value);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x9A736FC1);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
         public static string GetMapName(){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
@@ -409,6 +431,16 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static void PrintToServerConsole(string msg){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(msg);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x5D4EE1C2);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
         public static IntPtr GetEntityFromIndex(int index){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
@@ -659,6 +691,30 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.Push(name);
 			ScriptContext.GlobalScriptContext.Push(value);
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xE8A2033B);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static void SetEventEntity(IntPtr gameevent, string name, IntPtr value){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(gameevent);
+			ScriptContext.GlobalScriptContext.Push(name);
+			ScriptContext.GlobalScriptContext.Push(value);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xAB420F50);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static void SetEventEntityIndex(IntPtr gameevent, string name, int value){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(gameevent);
+			ScriptContext.GlobalScriptContext.Push(name);
+			ScriptContext.GlobalScriptContext.Push(value);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xAF9B1691);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
 			}

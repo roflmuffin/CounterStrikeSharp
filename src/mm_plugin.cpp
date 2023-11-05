@@ -56,11 +56,6 @@ CounterStrikeSharpMMPlugin gPlugin;
 ConVar sample_cvar("sample_cvar", "42", 0);
 #endif
 
-CON_COMMAND_F(sample_command, "Sample command", FCVAR_NONE)
-{
-    globals::callbackManager.PrintCallbackDebug();
-}
-
 PLUGIN_EXPOSE(CounterStrikeSharpMMPlugin, gPlugin);
 bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, size_t maxlen,
                                       bool late)

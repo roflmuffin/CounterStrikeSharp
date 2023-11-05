@@ -17,6 +17,11 @@
       "linux": "\\x55\\x48\\x89\\xE5\\x41\\x55\\x49\\x89\\xFD\\x89\\xF7"
     }
   },
+  "CCSPlayerController_ChangeTeam": {
+    "offsets": {
+      "linux": 89
+    }
+  },
   "GiveNamedItem": {
     "signatures": {
       "library": "server",

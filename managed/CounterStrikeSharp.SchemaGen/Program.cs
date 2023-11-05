@@ -224,9 +224,31 @@ internal static partial class Program
             
             if (field.Type is { Category: SchemaTypeCategory.FixedArray, CsTypeName: "string" })
             {
-                var getter = $"Schema.GetString({handleParams});";
+                var getter = $"return Schema.GetString({handleParams});";
+                var setter = $"Schema.SetString({handleParams}, value);";
                 builder.AppendLine(
-                    $"    public {SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)} => {getter}");
+                    $"    public {SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)}");
+                builder.AppendLine($"    {{");
+                builder.AppendLine(
+                    $"        get {{ {getter} }}");
+                builder.AppendLine(
+                    $"        set {{ {setter} }}");
+                builder.AppendLine($"    }}");
+                builder.AppendLine();
+            }
+            // Networked Strings require UTF8 encoding/decoding
+            else if ( field.Type is { Category: SchemaTypeCategory.Atomic, CsTypeName: "string" })
+            {
+                var getter = $"return Schema.GetUtf8String({handleParams});";
+                var setter = $"Schema.SetString({handleParams}, value);";
+                builder.AppendLine(
+                    $"    public {SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)}");
+                builder.AppendLine($"    {{");
+                builder.AppendLine(
+                    $"        get {{ {getter} }}");
+                builder.AppendLine(
+                    $"        set {{ {setter} }}");
+                builder.AppendLine($"    }}");
                 builder.AppendLine();
             }
             else if (field.Type.Category == SchemaTypeCategory.FixedArray)
