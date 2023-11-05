@@ -3644,17 +3644,21 @@ public partial class CBarnLight : CBaseModelEntity
 
     // m_LightStyleString
     // MNetworkChangeCallback "StyleChanged"
-    public NetworkedString LightStyleString => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CBarnLight", "m_LightStyleString");
+    public string LightStyleString
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBarnLight", "m_LightStyleString"); }
+        set { Schema.SetString(this.Handle, "CBarnLight", "m_LightStyleString", value); }
+    }
 
     // m_flLightStyleStartTime
     // MNetworkChangeCallback "RenderingChanged"
     public ref float LightStyleStartTime => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flLightStyleStartTime");
 
     // m_QueuedLightStyleStrings
-    public NetworkedVector<NetworkedString> QueuedLightStyleStrings => Schema.GetDeclaredClass<NetworkedVector<NetworkedString>>(this.Handle, "CBarnLight", "m_QueuedLightStyleStrings");
+    public NetworkedVector<string> QueuedLightStyleStrings => Schema.GetDeclaredClass<NetworkedVector<string>>(this.Handle, "CBarnLight", "m_QueuedLightStyleStrings");
 
     // m_LightStyleEvents
-    public NetworkedVector<NetworkedString> LightStyleEvents => Schema.GetDeclaredClass<NetworkedVector<NetworkedString>>(this.Handle, "CBarnLight", "m_LightStyleEvents");
+    public NetworkedVector<string> LightStyleEvents => Schema.GetDeclaredClass<NetworkedVector<string>>(this.Handle, "CBarnLight", "m_LightStyleEvents");
 
     // m_LightStyleTargets
     public NetworkedVector<CHandle<CBaseModelEntity>> LightStyleTargets => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseModelEntity>>>(this.Handle, "CBarnLight", "m_LightStyleTargets");
@@ -3875,7 +3879,11 @@ public partial class CBaseButton : CBaseToggle
     public ref bool Usable => ref Schema.GetRef<bool>(this.Handle, "CBaseButton", "m_usable");
 
     // m_szDisplayText
-    public NetworkedString DisplayText => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CBaseButton", "m_szDisplayText");
+    public string DisplayText
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBaseButton", "m_szDisplayText"); }
+        set { Schema.SetString(this.Handle, "CBaseButton", "m_szDisplayText", value); }
+    }
 
 }
 
@@ -3887,13 +3895,25 @@ public partial class CBaseClientUIEntity : CBaseModelEntity
     public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CBaseClientUIEntity", "m_bEnabled");
 
     // m_DialogXMLName
-    public NetworkedString DialogXMLName => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CBaseClientUIEntity", "m_DialogXMLName");
+    public string DialogXMLName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBaseClientUIEntity", "m_DialogXMLName"); }
+        set { Schema.SetString(this.Handle, "CBaseClientUIEntity", "m_DialogXMLName", value); }
+    }
 
     // m_PanelClassName
-    public NetworkedString PanelClassName => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CBaseClientUIEntity", "m_PanelClassName");
+    public string PanelClassName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBaseClientUIEntity", "m_PanelClassName"); }
+        set { Schema.SetString(this.Handle, "CBaseClientUIEntity", "m_PanelClassName", value); }
+    }
 
     // m_PanelID
-    public NetworkedString PanelID => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CBaseClientUIEntity", "m_PanelID");
+    public string PanelID
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBaseClientUIEntity", "m_PanelID"); }
+        set { Schema.SetString(this.Handle, "CBaseClientUIEntity", "m_PanelID", value); }
+    }
 
 }
 
@@ -4283,7 +4303,11 @@ public partial class CBasePlayerController : CBaseEntity
 
     // m_iszPlayerName
     // MNetworkChangeCallback "OnPlayerControllerNameChanged"
-    public string PlayerName => Schema.GetString(this.Handle, "CBasePlayerController", "m_iszPlayerName");
+    public string PlayerName
+    {
+        get { return Schema.GetString(this.Handle, "CBasePlayerController", "m_iszPlayerName"); }
+        set { Schema.SetString(this.Handle, "CBasePlayerController", "m_iszPlayerName", value); }
+    }
 
     // m_steamID
     // MNetworkEncoder "fixed64"
@@ -4765,7 +4789,11 @@ public partial class CColorCorrection : CBaseEntity
     public ref float CurWeight => ref Schema.GetRef<float>(this.Handle, "CColorCorrection", "m_flCurWeight");
 
     // m_netlookupFilename
-    public string NetlookupFilename => Schema.GetString(this.Handle, "CColorCorrection", "m_netlookupFilename");
+    public string NetlookupFilename
+    {
+        get { return Schema.GetString(this.Handle, "CColorCorrection", "m_netlookupFilename"); }
+        set { Schema.SetString(this.Handle, "CColorCorrection", "m_netlookupFilename", value); }
+    }
 
 }
 
@@ -4786,7 +4814,11 @@ public partial class CColorCorrectionVolume : CBaseTrigger
     public ref float Weight => ref Schema.GetRef<float>(this.Handle, "CColorCorrectionVolume", "m_Weight");
 
     // m_lookupFilename
-    public string LookupFilename => Schema.GetString(this.Handle, "CColorCorrectionVolume", "m_lookupFilename");
+    public string LookupFilename
+    {
+        get { return Schema.GetString(this.Handle, "CColorCorrectionVolume", "m_lookupFilename"); }
+        set { Schema.SetString(this.Handle, "CColorCorrectionVolume", "m_lookupFilename", value); }
+    }
 
 }
 
@@ -4952,16 +4984,32 @@ public partial class CCSGameRules : CTeamplayRules
     public ref Int32 NextMapInMapgroup => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nNextMapInMapgroup");
 
     // m_szTournamentEventName
-    public string TournamentEventName => Schema.GetString(this.Handle, "CCSGameRules", "m_szTournamentEventName");
+    public string TournamentEventName
+    {
+        get { return Schema.GetString(this.Handle, "CCSGameRules", "m_szTournamentEventName"); }
+        set { Schema.SetString(this.Handle, "CCSGameRules", "m_szTournamentEventName", value); }
+    }
 
     // m_szTournamentEventStage
-    public string TournamentEventStage => Schema.GetString(this.Handle, "CCSGameRules", "m_szTournamentEventStage");
+    public string TournamentEventStage
+    {
+        get { return Schema.GetString(this.Handle, "CCSGameRules", "m_szTournamentEventStage"); }
+        set { Schema.SetString(this.Handle, "CCSGameRules", "m_szTournamentEventStage", value); }
+    }
 
     // m_szMatchStatTxt
-    public string MatchStatTxt => Schema.GetString(this.Handle, "CCSGameRules", "m_szMatchStatTxt");
+    public string MatchStatTxt
+    {
+        get { return Schema.GetString(this.Handle, "CCSGameRules", "m_szMatchStatTxt"); }
+        set { Schema.SetString(this.Handle, "CCSGameRules", "m_szMatchStatTxt", value); }
+    }
 
     // m_szTournamentPredictionsTxt
-    public string TournamentPredictionsTxt => Schema.GetString(this.Handle, "CCSGameRules", "m_szTournamentPredictionsTxt");
+    public string TournamentPredictionsTxt
+    {
+        get { return Schema.GetString(this.Handle, "CCSGameRules", "m_szTournamentPredictionsTxt"); }
+        set { Schema.SetString(this.Handle, "CCSGameRules", "m_szTournamentPredictionsTxt", value); }
+    }
 
     // m_nTournamentPredictionsPct
     public ref Int32 TournamentPredictionsPct => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nTournamentPredictionsPct");
@@ -5149,7 +5197,11 @@ public partial class CCSGO_TeamPreviewCharacterPosition : CBaseEntity
     public ref Int32 Ordinal => ref Schema.GetRef<Int32>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_nOrdinal");
 
     // m_sWeaponName
-    public NetworkedString WeaponName => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_sWeaponName");
+    public string WeaponName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_sWeaponName"); }
+        set { Schema.SetString(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_sWeaponName", value); }
+    }
 
     // m_xuid
     public ref UInt64 Xuid => ref Schema.GetRef<UInt64>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_xuid");
@@ -5481,7 +5533,11 @@ public partial class CCSPlayerController : CBasePlayerController
     public ref bool HasCommunicationAbuseMute => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bHasCommunicationAbuseMute");
 
     // m_szCrosshairCodes
-    public NetworkedString CrosshairCodes => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CCSPlayerController", "m_szCrosshairCodes");
+    public string CrosshairCodes
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CCSPlayerController", "m_szCrosshairCodes"); }
+        set { Schema.SetString(this.Handle, "CCSPlayerController", "m_szCrosshairCodes", value); }
+    }
 
     // m_iPendingTeamNum
     public ref byte PendingTeamNum => ref Schema.GetRef<byte>(this.Handle, "CCSPlayerController", "m_iPendingTeamNum");
@@ -5497,7 +5553,11 @@ public partial class CCSPlayerController : CBasePlayerController
     public ref bool EverPlayedOnTeam => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bEverPlayedOnTeam");
 
     // m_szClan
-    public NetworkedString Clan => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CCSPlayerController", "m_szClan");
+    public string Clan
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CCSPlayerController", "m_szClan"); }
+        set { Schema.SetString(this.Handle, "CCSPlayerController", "m_szClan", value); }
+    }
 
     // m_iCoachingTeam
     public ref Int32 CoachingTeam => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iCoachingTeam");
@@ -5708,7 +5768,11 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
     public ref bool HasFemaleVoice => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bHasFemaleVoice");
 
     // m_szLastPlaceName
-    public string LastPlaceName => Schema.GetString(this.Handle, "CCSPlayerPawn", "m_szLastPlaceName");
+    public string LastPlaceName
+    {
+        get { return Schema.GetString(this.Handle, "CCSPlayerPawn", "m_szLastPlaceName"); }
+        set { Schema.SetString(this.Handle, "CCSPlayerPawn", "m_szLastPlaceName", value); }
+    }
 
     // m_bInBuyZone
     public ref bool InBuyZone => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bInBuyZone");
@@ -5774,7 +5838,11 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
     public Vector RagdollDamagePosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayerPawn", "m_vRagdollDamagePosition");
 
     // m_szRagdollDamageWeaponName
-    public string RagdollDamageWeaponName => Schema.GetString(this.Handle, "CCSPlayerPawn", "m_szRagdollDamageWeaponName");
+    public string RagdollDamageWeaponName
+    {
+        get { return Schema.GetString(this.Handle, "CCSPlayerPawn", "m_szRagdollDamageWeaponName"); }
+        set { Schema.SetString(this.Handle, "CCSPlayerPawn", "m_szRagdollDamageWeaponName", value); }
+    }
 
     // m_bRagdollDamageHeadshot
     public ref bool RagdollDamageHeadshot => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bRagdollDamageHeadshot");
@@ -6024,7 +6092,11 @@ public partial class CCSTeam : CTeam
     public ref bool Surrendered => ref Schema.GetRef<bool>(this.Handle, "CCSTeam", "m_bSurrendered");
 
     // m_szTeamMatchStat
-    public string TeamMatchStat => Schema.GetString(this.Handle, "CCSTeam", "m_szTeamMatchStat");
+    public string TeamMatchStat
+    {
+        get { return Schema.GetString(this.Handle, "CCSTeam", "m_szTeamMatchStat"); }
+        set { Schema.SetString(this.Handle, "CCSTeam", "m_szTeamMatchStat", value); }
+    }
 
     // m_numMapVictories
     public ref Int32 NumMapVictories => ref Schema.GetRef<Int32>(this.Handle, "CCSTeam", "m_numMapVictories");
@@ -6039,16 +6111,28 @@ public partial class CCSTeam : CTeam
     public ref Int32 ScoreOvertime => ref Schema.GetRef<Int32>(this.Handle, "CCSTeam", "m_scoreOvertime");
 
     // m_szClanTeamname
-    public string ClanTeamname => Schema.GetString(this.Handle, "CCSTeam", "m_szClanTeamname");
+    public string ClanTeamname
+    {
+        get { return Schema.GetString(this.Handle, "CCSTeam", "m_szClanTeamname"); }
+        set { Schema.SetString(this.Handle, "CCSTeam", "m_szClanTeamname", value); }
+    }
 
     // m_iClanID
     public ref UInt32 ClanID => ref Schema.GetRef<UInt32>(this.Handle, "CCSTeam", "m_iClanID");
 
     // m_szTeamFlagImage
-    public string TeamFlagImage => Schema.GetString(this.Handle, "CCSTeam", "m_szTeamFlagImage");
+    public string TeamFlagImage
+    {
+        get { return Schema.GetString(this.Handle, "CCSTeam", "m_szTeamFlagImage"); }
+        set { Schema.SetString(this.Handle, "CCSTeam", "m_szTeamFlagImage", value); }
+    }
 
     // m_szTeamLogoImage
-    public string TeamLogoImage => Schema.GetString(this.Handle, "CCSTeam", "m_szTeamLogoImage");
+    public string TeamLogoImage
+    {
+        get { return Schema.GetString(this.Handle, "CCSTeam", "m_szTeamLogoImage"); }
+        set { Schema.SetString(this.Handle, "CCSTeam", "m_szTeamLogoImage", value); }
+    }
 
 }
 
@@ -6164,10 +6248,18 @@ public partial class CDamageRecord : NativeObject
     public CHandle<CCSPlayerController> PlayerControllerRecipient => Schema.GetDeclaredClass<CHandle<CCSPlayerController>>(this.Handle, "CDamageRecord", "m_hPlayerControllerRecipient");
 
     // m_szPlayerDamagerName
-    public NetworkedString PlayerDamagerName => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CDamageRecord", "m_szPlayerDamagerName");
+    public string PlayerDamagerName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CDamageRecord", "m_szPlayerDamagerName"); }
+        set { Schema.SetString(this.Handle, "CDamageRecord", "m_szPlayerDamagerName", value); }
+    }
 
     // m_szPlayerRecipientName
-    public NetworkedString PlayerRecipientName => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CDamageRecord", "m_szPlayerRecipientName");
+    public string PlayerRecipientName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CDamageRecord", "m_szPlayerRecipientName"); }
+        set { Schema.SetString(this.Handle, "CDamageRecord", "m_szPlayerRecipientName", value); }
+    }
 
     // m_DamagerXuid
     public ref UInt64 DamagerXuid => ref Schema.GetRef<UInt64>(this.Handle, "CDamageRecord", "m_DamagerXuid");
@@ -6342,7 +6434,11 @@ public partial class CEconItemView : IEconItemInterface
     public CAttributeList NetworkedDynamicAttributes => Schema.GetDeclaredClass<CAttributeList>(this.Handle, "CEconItemView", "m_NetworkedDynamicAttributes");
 
     // m_szCustomName
-    public string CustomName => Schema.GetString(this.Handle, "CEconItemView", "m_szCustomName");
+    public string CustomName
+    {
+        get { return Schema.GetString(this.Handle, "CEconItemView", "m_szCustomName"); }
+        set { Schema.SetString(this.Handle, "CEconItemView", "m_szCustomName", value); }
+    }
 
 }
 
@@ -6467,7 +6563,11 @@ public partial class CEnvCombinedLightProbeVolume : CBaseEntity
     public Vector BoxMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvCombinedLightProbeVolume", "m_vBoxMaxs");
 
     // m_LightGroups
-    public NetworkedString LightGroups => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CEnvCombinedLightProbeVolume", "m_LightGroups");
+    public string LightGroups
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvCombinedLightProbeVolume", "m_LightGroups"); }
+        set { Schema.SetString(this.Handle, "CEnvCombinedLightProbeVolume", "m_LightGroups", value); }
+    }
 
     // m_bMoveable
     public ref bool Moveable => ref Schema.GetRef<bool>(this.Handle, "CEnvCombinedLightProbeVolume", "m_bMoveable");
@@ -6533,7 +6633,11 @@ public partial class CEnvCubemap : CBaseEntity
     public Vector BoxProjectMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvCubemap", "m_vBoxProjectMaxs");
 
     // m_LightGroups
-    public NetworkedString LightGroups => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CEnvCubemap", "m_LightGroups");
+    public string LightGroups
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvCubemap", "m_LightGroups"); }
+        set { Schema.SetString(this.Handle, "CEnvCubemap", "m_LightGroups", value); }
+    }
 
     // m_bMoveable
     public ref bool Moveable => ref Schema.GetRef<bool>(this.Handle, "CEnvCubemap", "m_bMoveable");
@@ -6629,7 +6733,11 @@ public partial class CEnvCubemapFog : CBaseEntity
     public CStrongHandle<InfoForResourceTypeIMaterial2> SkyMaterial => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CEnvCubemapFog", "m_hSkyMaterial");
 
     // m_iszSkyEntity
-    public NetworkedString SkyEntity => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CEnvCubemapFog", "m_iszSkyEntity");
+    public string SkyEntity
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvCubemapFog", "m_iszSkyEntity"); }
+        set { Schema.SetString(this.Handle, "CEnvCubemapFog", "m_iszSkyEntity", value); }
+    }
 
     // m_hFogCubemapTexture
     public CStrongHandle<InfoForResourceTypeCTextureBase> FogCubemapTexture => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvCubemapFog", "m_hFogCubemapTexture");
@@ -6710,7 +6818,11 @@ public partial class CEnvLightProbeVolume : CBaseEntity
     public Vector BoxMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvLightProbeVolume", "m_vBoxMaxs");
 
     // m_LightGroups
-    public NetworkedString LightGroups => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CEnvLightProbeVolume", "m_LightGroups");
+    public string LightGroups
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvLightProbeVolume", "m_LightGroups"); }
+        set { Schema.SetString(this.Handle, "CEnvLightProbeVolume", "m_LightGroups", value); }
+    }
 
     // m_bMoveable
     public ref bool Moveable => ref Schema.GetRef<bool>(this.Handle, "CEnvLightProbeVolume", "m_bMoveable");
@@ -6839,7 +6951,11 @@ public partial class CEnvProjectedTexture : CModelPointEntity
     public ref float Ambient => ref Schema.GetRef<float>(this.Handle, "CEnvProjectedTexture", "m_flAmbient");
 
     // m_SpotlightTextureName
-    public string SpotlightTextureName => Schema.GetString(this.Handle, "CEnvProjectedTexture", "m_SpotlightTextureName");
+    public string SpotlightTextureName
+    {
+        get { return Schema.GetString(this.Handle, "CEnvProjectedTexture", "m_SpotlightTextureName"); }
+        set { Schema.SetString(this.Handle, "CEnvProjectedTexture", "m_SpotlightTextureName", value); }
+    }
 
     // m_nSpotlightTextureFrame
     public ref Int32 SpotlightTextureFrame => ref Schema.GetRef<Int32>(this.Handle, "CEnvProjectedTexture", "m_nSpotlightTextureFrame");
@@ -6877,7 +6993,7 @@ public partial class CEnvScreenOverlay : CPointEntity
     public CEnvScreenOverlay (IntPtr pointer) : base(pointer) {}
 
     // m_iszOverlayNames
-    public Span<NetworkedString> OverlayNames => Schema.GetFixedArray<NetworkedString>(this.Handle, "CEnvScreenOverlay", "m_iszOverlayNames", 10);
+    public Span<string> OverlayNames => Schema.GetFixedArray<string>(this.Handle, "CEnvScreenOverlay", "m_iszOverlayNames", 10);
 
     // m_flOverlayTimes
     // MNetworkBitCount "11"
@@ -7206,10 +7322,18 @@ public partial class CFootstepControl : CBaseTrigger
     public CFootstepControl (IntPtr pointer) : base(pointer) {}
 
     // m_source
-    public NetworkedString Source => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CFootstepControl", "m_source");
+    public string Source
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFootstepControl", "m_source"); }
+        set { Schema.SetString(this.Handle, "CFootstepControl", "m_source", value); }
+    }
 
     // m_destination
-    public NetworkedString Destination => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CFootstepControl", "m_destination");
+    public string Destination
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFootstepControl", "m_destination"); }
+        set { Schema.SetString(this.Handle, "CFootstepControl", "m_destination", value); }
+    }
 
 }
 
@@ -7246,7 +7370,11 @@ public partial class CFuncElectrifiedVolume : CFuncBrush
     public CFuncElectrifiedVolume (IntPtr pointer) : base(pointer) {}
 
     // m_EffectName
-    public NetworkedString EffectName => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CFuncElectrifiedVolume", "m_EffectName");
+    public string EffectName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFuncElectrifiedVolume", "m_EffectName"); }
+        set { Schema.SetString(this.Handle, "CFuncElectrifiedVolume", "m_EffectName", value); }
+    }
 
 }
 
@@ -7279,7 +7407,11 @@ public partial class CFuncMonitor : CFuncBrush
     public CFuncMonitor (IntPtr pointer) : base(pointer) {}
 
     // m_targetCamera
-    public NetworkedString TargetCamera => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CFuncMonitor", "m_targetCamera");
+    public string TargetCamera
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFuncMonitor", "m_targetCamera"); }
+        set { Schema.SetString(this.Handle, "CFuncMonitor", "m_targetCamera", value); }
+    }
 
     // m_nResolutionEnum
     public ref Int32 ResolutionEnum => ref Schema.GetRef<Int32>(this.Handle, "CFuncMonitor", "m_nResolutionEnum");
@@ -7291,7 +7423,11 @@ public partial class CFuncMonitor : CFuncBrush
     public ref bool UseUniqueColorTarget => ref Schema.GetRef<bool>(this.Handle, "CFuncMonitor", "m_bUseUniqueColorTarget");
 
     // m_brushModelName
-    public NetworkedString BrushModelName => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CFuncMonitor", "m_brushModelName");
+    public string BrushModelName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFuncMonitor", "m_brushModelName"); }
+        set { Schema.SetString(this.Handle, "CFuncMonitor", "m_brushModelName", value); }
+    }
 
     // m_hTargetCamera
     public CHandle<CBaseEntity> HTargetCamera => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CFuncMonitor", "m_hTargetCamera");
@@ -7650,10 +7786,18 @@ public partial class CInfoOffscreenPanoramaTexture : CPointEntity
     public ref Int32 ResolutionY => ref Schema.GetRef<Int32>(this.Handle, "CInfoOffscreenPanoramaTexture", "m_nResolutionY");
 
     // m_szLayoutFileName
-    public NetworkedString LayoutFileName => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CInfoOffscreenPanoramaTexture", "m_szLayoutFileName");
+    public string LayoutFileName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CInfoOffscreenPanoramaTexture", "m_szLayoutFileName"); }
+        set { Schema.SetString(this.Handle, "CInfoOffscreenPanoramaTexture", "m_szLayoutFileName", value); }
+    }
 
     // m_RenderAttrName
-    public NetworkedString RenderAttrName => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CInfoOffscreenPanoramaTexture", "m_RenderAttrName");
+    public string RenderAttrName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CInfoOffscreenPanoramaTexture", "m_RenderAttrName"); }
+        set { Schema.SetString(this.Handle, "CInfoOffscreenPanoramaTexture", "m_RenderAttrName", value); }
+    }
 
     // m_TargetEntities
     public NetworkedVector<CHandle<CBaseModelEntity>> TargetEntities => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseModelEntity>>>(this.Handle, "CInfoOffscreenPanoramaTexture", "m_TargetEntities");
@@ -7662,7 +7806,7 @@ public partial class CInfoOffscreenPanoramaTexture : CPointEntity
     public ref Int32 TargetChangeCount => ref Schema.GetRef<Int32>(this.Handle, "CInfoOffscreenPanoramaTexture", "m_nTargetChangeCount");
 
     // m_vecCSSClasses
-    public NetworkedVector<NetworkedString> CSSClasses => Schema.GetDeclaredClass<NetworkedVector<NetworkedString>>(this.Handle, "CInfoOffscreenPanoramaTexture", "m_vecCSSClasses");
+    public NetworkedVector<string> CSSClasses => Schema.GetDeclaredClass<NetworkedVector<string>>(this.Handle, "CInfoOffscreenPanoramaTexture", "m_vecCSSClasses");
 
 }
 
@@ -7686,10 +7830,18 @@ public partial class CInfoWorldLayer : CBaseEntity
     public CInfoWorldLayer (IntPtr pointer) : base(pointer) {}
 
     // m_worldName
-    public NetworkedString WorldName => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CInfoWorldLayer", "m_worldName");
+    public string WorldName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CInfoWorldLayer", "m_worldName"); }
+        set { Schema.SetString(this.Handle, "CInfoWorldLayer", "m_worldName", value); }
+    }
 
     // m_layerName
-    public NetworkedString LayerName => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CInfoWorldLayer", "m_layerName");
+    public string LayerName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CInfoWorldLayer", "m_layerName"); }
+        set { Schema.SetString(this.Handle, "CInfoWorldLayer", "m_layerName", value); }
+    }
 
     // m_bWorldLayerVisible
     public ref bool WorldLayerVisible => ref Schema.GetRef<bool>(this.Handle, "CInfoWorldLayer", "m_bWorldLayerVisible");
@@ -7827,7 +7979,11 @@ public partial class CLightComponent : CEntityComponent
 
     // m_Pattern
     // MNetworkChangeCallback "LightRenderingChanged"
-    public NetworkedString Pattern => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CLightComponent", "m_Pattern");
+    public string Pattern
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CLightComponent", "m_Pattern"); }
+        set { Schema.SetString(this.Handle, "CLightComponent", "m_Pattern", value); }
+    }
 
     // m_nCascadeRenderStaticObjects
     // MNetworkChangeCallback "LightRenderingChanged"
@@ -7892,7 +8048,11 @@ public partial class CLightComponent : CEntityComponent
 
     // m_LightGroups
     // MNetworkChangeCallback "LightRenderingChanged"
-    public NetworkedString LightGroups => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CLightComponent", "m_LightGroups");
+    public string LightGroups
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CLightComponent", "m_LightGroups"); }
+        set { Schema.SetString(this.Handle, "CLightComponent", "m_LightGroups", value); }
+    }
 
     // m_nDirectLight
     public ref Int32 DirectLight => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nDirectLight");
@@ -8356,7 +8516,11 @@ public partial class CParticleSystem : CBaseModelEntity
     public CParticleSystem (IntPtr pointer) : base(pointer) {}
 
     // m_szSnapshotFileName
-    public string SnapshotFileName => Schema.GetString(this.Handle, "CParticleSystem", "m_szSnapshotFileName");
+    public string SnapshotFileName
+    {
+        get { return Schema.GetString(this.Handle, "CParticleSystem", "m_szSnapshotFileName"); }
+        set { Schema.SetString(this.Handle, "CParticleSystem", "m_szSnapshotFileName", value); }
+    }
 
     // m_bActive
     public ref bool Active => ref Schema.GetRef<bool>(this.Handle, "CParticleSystem", "m_bActive");
@@ -8715,7 +8879,11 @@ public partial class CPlayerPing : CBaseEntity
     public ref bool Urgent => ref Schema.GetRef<bool>(this.Handle, "CPlayerPing", "m_bUrgent");
 
     // m_szPlaceName
-    public string PlaceName => Schema.GetString(this.Handle, "CPlayerPing", "m_szPlaceName");
+    public string PlaceName
+    {
+        get { return Schema.GetString(this.Handle, "CPlayerPing", "m_szPlaceName"); }
+        set { Schema.SetString(this.Handle, "CPlayerPing", "m_szPlaceName", value); }
+    }
 
 }
 
@@ -8921,7 +9089,7 @@ public partial class CPointClientUIWorldPanel : CBaseClientUIEntity
     public ref bool AllowInteractionFromAllSceneWorlds => ref Schema.GetRef<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bAllowInteractionFromAllSceneWorlds");
 
     // m_vecCSSClasses
-    public NetworkedVector<NetworkedString> CSSClasses => Schema.GetDeclaredClass<NetworkedVector<NetworkedString>>(this.Handle, "CPointClientUIWorldPanel", "m_vecCSSClasses");
+    public NetworkedVector<string> CSSClasses => Schema.GetDeclaredClass<NetworkedVector<string>>(this.Handle, "CPointClientUIWorldPanel", "m_vecCSSClasses");
 
     // m_bOpaque
     public ref bool Opaque => ref Schema.GetRef<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bOpaque");
@@ -8957,7 +9125,11 @@ public partial class CPointClientUIWorldTextPanel : CPointClientUIWorldPanel
     public CPointClientUIWorldTextPanel (IntPtr pointer) : base(pointer) {}
 
     // m_messageText
-    public string MessageText => Schema.GetString(this.Handle, "CPointClientUIWorldTextPanel", "m_messageText");
+    public string MessageText
+    {
+        get { return Schema.GetString(this.Handle, "CPointClientUIWorldTextPanel", "m_messageText"); }
+        set { Schema.SetString(this.Handle, "CPointClientUIWorldTextPanel", "m_messageText", value); }
+    }
 
 }
 
@@ -8966,7 +9138,11 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
     public CPointCommentaryNode (IntPtr pointer) : base(pointer) {}
 
     // m_iszCommentaryFile
-    public NetworkedString CommentaryFile => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CPointCommentaryNode", "m_iszCommentaryFile");
+    public string CommentaryFile
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointCommentaryNode", "m_iszCommentaryFile"); }
+        set { Schema.SetString(this.Handle, "CPointCommentaryNode", "m_iszCommentaryFile", value); }
+    }
 
     // m_hViewPosition
     public CHandle<CBaseEntity> ViewPosition => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointCommentaryNode", "m_hViewPosition");
@@ -8981,10 +9157,18 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
     public ref float StartTimeInCommentary => ref Schema.GetRef<float>(this.Handle, "CPointCommentaryNode", "m_flStartTimeInCommentary");
 
     // m_iszTitle
-    public NetworkedString Title => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CPointCommentaryNode", "m_iszTitle");
+    public string Title
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointCommentaryNode", "m_iszTitle"); }
+        set { Schema.SetString(this.Handle, "CPointCommentaryNode", "m_iszTitle", value); }
+    }
 
     // m_iszSpeakers
-    public NetworkedString Speakers => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CPointCommentaryNode", "m_iszSpeakers");
+    public string Speakers
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointCommentaryNode", "m_iszSpeakers"); }
+        set { Schema.SetString(this.Handle, "CPointCommentaryNode", "m_iszSpeakers", value); }
+    }
 
     // m_iNodeNumber
     public ref Int32 NodeNumber => ref Schema.GetRef<Int32>(this.Handle, "CPointCommentaryNode", "m_iNodeNumber");
@@ -9065,10 +9249,18 @@ public partial class CPointWorldText : CModelPointEntity
     public CPointWorldText (IntPtr pointer) : base(pointer) {}
 
     // m_messageText
-    public string MessageText => Schema.GetString(this.Handle, "CPointWorldText", "m_messageText");
+    public string MessageText
+    {
+        get { return Schema.GetString(this.Handle, "CPointWorldText", "m_messageText"); }
+        set { Schema.SetString(this.Handle, "CPointWorldText", "m_messageText", value); }
+    }
 
     // m_FontName
-    public string FontName => Schema.GetString(this.Handle, "CPointWorldText", "m_FontName");
+    public string FontName
+    {
+        get { return Schema.GetString(this.Handle, "CPointWorldText", "m_FontName"); }
+        set { Schema.SetString(this.Handle, "CPointWorldText", "m_FontName", value); }
+    }
 
     // m_bEnabled
     public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CPointWorldText", "m_bEnabled");
@@ -9462,7 +9654,11 @@ public partial class CSoundAreaEntityBase : CBaseEntity
     public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CSoundAreaEntityBase", "m_bDisabled");
 
     // m_iszSoundAreaType
-    public NetworkedString SoundAreaType => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CSoundAreaEntityBase", "m_iszSoundAreaType");
+    public string SoundAreaType
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CSoundAreaEntityBase", "m_iszSoundAreaType"); }
+        set { Schema.SetString(this.Handle, "CSoundAreaEntityBase", "m_iszSoundAreaType", value); }
+    }
 
     // m_vPos
     public Vector Pos => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundAreaEntityBase", "m_vPos");
@@ -9519,13 +9715,25 @@ public partial class CSoundOpvarSetPointBase : CBaseEntity
     public CSoundOpvarSetPointBase (IntPtr pointer) : base(pointer) {}
 
     // m_iszStackName
-    public NetworkedString StackName => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CSoundOpvarSetPointBase", "m_iszStackName");
+    public string StackName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CSoundOpvarSetPointBase", "m_iszStackName"); }
+        set { Schema.SetString(this.Handle, "CSoundOpvarSetPointBase", "m_iszStackName", value); }
+    }
 
     // m_iszOperatorName
-    public NetworkedString OperatorName => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CSoundOpvarSetPointBase", "m_iszOperatorName");
+    public string OperatorName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CSoundOpvarSetPointBase", "m_iszOperatorName"); }
+        set { Schema.SetString(this.Handle, "CSoundOpvarSetPointBase", "m_iszOperatorName", value); }
+    }
 
     // m_iszOpvarName
-    public NetworkedString OpvarName => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CSoundOpvarSetPointBase", "m_iszOpvarName");
+    public string OpvarName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CSoundOpvarSetPointBase", "m_iszOpvarName"); }
+        set { Schema.SetString(this.Handle, "CSoundOpvarSetPointBase", "m_iszOpvarName", value); }
+    }
 
     // m_iOpvarIndex
     public ref Int32 OpvarIndex => ref Schema.GetRef<Int32>(this.Handle, "CSoundOpvarSetPointBase", "m_iOpvarIndex");
@@ -9676,10 +9884,18 @@ public partial class CSun : CBaseModelEntity
     public Color Overlay => Schema.GetDeclaredClass<Color>(this.Handle, "CSun", "m_clrOverlay");
 
     // m_iszEffectName
-    public NetworkedString EffectName => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CSun", "m_iszEffectName");
+    public string EffectName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CSun", "m_iszEffectName"); }
+        set { Schema.SetString(this.Handle, "CSun", "m_iszEffectName", value); }
+    }
 
     // m_iszSSEffectName
-    public NetworkedString SSEffectName => Schema.GetDeclaredClass<NetworkedString>(this.Handle, "CSun", "m_iszSSEffectName");
+    public string SSEffectName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CSun", "m_iszSSEffectName"); }
+        set { Schema.SetString(this.Handle, "CSun", "m_iszSSEffectName", value); }
+    }
 
     // m_bOn
     public ref bool On => ref Schema.GetRef<bool>(this.Handle, "CSun", "m_bOn");
@@ -9751,7 +9967,11 @@ public partial class CTeam : CBaseEntity
     public ref Int32 Score => ref Schema.GetRef<Int32>(this.Handle, "CTeam", "m_iScore");
 
     // m_szTeamname
-    public string Teamname => Schema.GetString(this.Handle, "CTeam", "m_szTeamname");
+    public string Teamname
+    {
+        get { return Schema.GetString(this.Handle, "CTeam", "m_szTeamname"); }
+        set { Schema.SetString(this.Handle, "CTeam", "m_szTeamname", value); }
+    }
 
 }
 

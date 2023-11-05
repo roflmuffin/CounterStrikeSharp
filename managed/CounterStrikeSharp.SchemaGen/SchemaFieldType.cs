@@ -50,7 +50,7 @@ public record SchemaFieldType(
     {
         SchemaAtomicCategory.Basic => name switch
         {
-            "CUtlString" or "CUtlSymbolLarge" => "NetworkedString",
+            "CUtlString" or "CUtlSymbolLarge" => "string",
             "CEntityHandle" => "CHandle<CEntityInstance>",
             "CNetworkedQuantizedFloat" => "float",
             _ => name
