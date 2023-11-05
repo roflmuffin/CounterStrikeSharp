@@ -431,6 +431,16 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static void PrintToServerConsole(string msg){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(msg);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x5D4EE1C2);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
         public static IntPtr GetEntityFromIndex(int index){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();

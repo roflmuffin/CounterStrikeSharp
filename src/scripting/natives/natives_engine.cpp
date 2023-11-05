@@ -264,6 +264,12 @@ void GetCommandParamValue(ScriptContext& scriptContext)
     scriptContext.ThrowNativeError("Invalid param type");
 }
 
+void PrintToServerConsole(ScriptContext& scriptContext) {
+    auto message = scriptContext.GetArgument<const char*>(0);
+
+    META_CONPRINT(message);
+}
+
 CREATE_GETTER_FUNCTION(Trace, bool, DidHit, CGameTrace*, obj->DidHit());
 CREATE_GETTER_FUNCTION(TraceResult, CBaseEntity*, Entity, CGameTrace*, obj->m_pEnt);
 
@@ -301,5 +307,6 @@ REGISTER_NATIVES(engine, {
     ScriptEngine::RegisterNativeHandler("QUEUE_TASK_FOR_NEXT_FRAME", QueueTaskForNextFrame);
     ScriptEngine::RegisterNativeHandler("GET_VALVE_INTERFACE", GetValveInterface);
     ScriptEngine::RegisterNativeHandler("GET_COMMAND_PARAM_VALUE", GetCommandParamValue);
+    ScriptEngine::RegisterNativeHandler("PRINT_TO_SERVER_CONSOLE", PrintToServerConsole);
 })
 } // namespace counterstrikesharp
