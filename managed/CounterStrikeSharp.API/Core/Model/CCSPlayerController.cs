@@ -24,11 +24,6 @@ public partial class CCSPlayerController
         return VirtualFunctions.GiveNamedItem(PlayerPawn.Value.ItemServices.Handle, item, 0, 0, 0, 0);
     }
 
-    public void SwitchTeam(CsTeam team)
-    {
-        VirtualFunctions.SwitchTeam(this.Handle, (byte)team);
-    }
-
     public void PrintToConsole(string message)
     {
         NativeAPI.PrintToConsole((int)EntityIndex.Value.Value, message);
@@ -45,4 +40,26 @@ public partial class CCSPlayerController
     }
 
     public bool IsBot => ((PlayerFlags)Flags).HasFlag(PlayerFlags.FL_FAKECLIENT);
+
+    /// <summary>
+    /// Forcibly switches the team of the player, the player will remain alive and keep their weapons.
+    /// </summary>
+    /// <param name="team">The team to switch to</param>
+    public void SwitchTeam(CsTeam team)
+    {
+        VirtualFunctions.SwitchTeam(this.Handle, (byte)team);
+    }
+    
+    /// <summary>
+    /// Switches the team of the player, has the same effect as the "jointeam" console command.
+    /// <remarks>
+    /// This follows gamemode rules, so this will usually cause a player suicide/loss of weapons.
+    /// </remarks>
+    /// </summary>
+    /// <param name="team">The team to change to</param>
+    public void ChangeTeam(CsTeam team)
+    {
+        VirtualFunction.CreateVoid<IntPtr, CsTeam>(Handle, GameData.GetOffset("CCSPlayerController_ChangeTeam"))(Handle,
+            team);
+    }
 }

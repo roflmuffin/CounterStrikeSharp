@@ -274,11 +274,11 @@ namespace TestPlugin
 
                 if ((CsTeam)player.TeamNum == CsTeam.Terrorist)
                 {
-                    player.SwitchTeam(CsTeam.CounterTerrorist);
+                    player.ChangeTeam(CsTeam.CounterTerrorist);
                 }
                 else
                 {
-                    player.SwitchTeam(CsTeam.Terrorist);
+                    player.ChangeTeam(CsTeam.Terrorist);
                 }
             });
 
