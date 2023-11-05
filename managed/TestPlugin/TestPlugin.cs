@@ -21,6 +21,7 @@ using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
 using CounterStrikeSharp.API.Modules.Commands;
+using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Memory;
@@ -37,7 +38,7 @@ namespace TestPlugin
         public override string ModuleAuthor => "Roflmuffin";
 
         public override string ModuleDescription => "A playground of features used for testing";
-        
+
         public override void Load(bool hotReload)
         {
             Console.WriteLine(
@@ -45,6 +46,7 @@ namespace TestPlugin
 
             Console.WriteLine($"Max Players: {Server.MaxPlayers}");
 
+            SetupConvars();
             SetupGameEvents();
             SetupListeners();
             SetupCommands();
@@ -67,6 +69,24 @@ namespace TestPlugin
             var virtualFunc = VirtualFunction.Create<IntPtr>(server.Pointer, 91);
             var result = virtualFunc() - 8;
             Log($"Result of virtual func call is {result:X}");
+        }
+
+        private void SetupConvars()
+        {
+            RegisterListener<Listeners.OnMapStart>(name =>
+            {
+                var cheatsCvar = ConVar.Find("sv_cheats");
+                cheatsCvar.SetValue(true);
+
+                var numericCvar = ConVar.Find("mp_warmuptime");
+                Console.WriteLine($"mp_warmuptime = {numericCvar?.GetPrimitiveValue<float>()}");
+
+                var stringCvar = ConVar.Find("sv_skyname");
+                Console.WriteLine($"sv_skyname = {stringCvar?.StringValue}");
+
+                var fogCvar = ConVar.Find("fog_color");
+                Console.WriteLine($"fog_color = {fogCvar?.GetNativeValue<Vector>()}");
+            });
         }
 
         private void SetupGameEvents()
@@ -219,7 +239,7 @@ namespace TestPlugin
             {
                 player.GiveNamedItem(option.Text);
             };
-            
+
             giveItemMenu.AddMenuOption("weapon_ak47", handleGive);
             giveItemMenu.AddMenuOption("weapon_p250", handleGive);
 
@@ -261,7 +281,7 @@ namespace TestPlugin
                     player.SwitchTeam(CsTeam.Terrorist);
                 }
             });
-            
+
             // Listens for any client use of the command `jointeam`.
             AddCommandListener("jointeam", (player, info) =>
             {
