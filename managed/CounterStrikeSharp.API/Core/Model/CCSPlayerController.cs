@@ -1,3 +1,4 @@
+using System;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
 
@@ -14,13 +15,13 @@ public partial class CCSPlayerController
         }
     }
 
-    public void GiveNamedItem(string item)
+    public IntPtr GiveNamedItem(string item)
     {
-        if (!PlayerPawn.IsValid) return;
-        if (!PlayerPawn.Value.IsValid) return;
-        if (PlayerPawn.Value.ItemServices == null) return;
+        if (!PlayerPawn.IsValid) return 0;
+        if (!PlayerPawn.Value.IsValid) return 0;
+        if (PlayerPawn.Value.ItemServices == null) return 0;
 
-        VirtualFunctions.GiveNamedItem(PlayerPawn.Value.ItemServices.Handle, item, 0, 0, 0, 0);
+        return VirtualFunctions.GiveNamedItem(PlayerPawn.Value.ItemServices.Handle, item, 0, 0, 0, 0);
     }
 
     public void SwitchTeam(CsTeam team)
