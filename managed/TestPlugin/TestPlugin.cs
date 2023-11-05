@@ -215,7 +215,11 @@ namespace TestPlugin
             }
 
             var giveItemMenu = new ChatMenu("Small Menu");
-            var handleGive = (CCSPlayerController player, ChatMenuOption option) => player.GiveNamedItem(option.Text);
+            var handleGive = (CCSPlayerController player, ChatMenuOption option) =>
+            {
+                player.GiveNamedItem(option.Text);
+            };
+            
             giveItemMenu.AddMenuOption("weapon_ak47", handleGive);
             giveItemMenu.AddMenuOption("weapon_p250", handleGive);
 
