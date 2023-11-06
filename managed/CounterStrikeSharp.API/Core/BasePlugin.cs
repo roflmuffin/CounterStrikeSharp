@@ -242,7 +242,7 @@ namespace CounterStrikeSharp.API.Core
         }*/
 
         // Adds global listener, e.g. OnTick, OnClientConnect
-        protected void RegisterListener<T>(T handler) where T : Delegate
+        public void RegisterListener<T>(T handler) where T : Delegate
         {
             var listenerName = typeof(T).GetCustomAttribute<ListenerNameAttribute>()?.Name;
             if (string.IsNullOrEmpty(listenerName))
@@ -277,7 +277,7 @@ namespace CounterStrikeSharp.API.Core
             Listeners[handler] = subscriber;
         }
 
-        protected void RemoveListener(string name, Delegate handler)
+        public void RemoveListener(string name, Delegate handler)
         {
             if (!Listeners.TryGetValue(handler, out var subscriber)) return;
 
