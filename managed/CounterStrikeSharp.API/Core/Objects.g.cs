@@ -7551,6 +7551,9 @@ public partial class CGlowProperty : NativeObject
     // m_bEligibleForScreenHighlight
     public ref bool EligibleForScreenHighlight => ref Schema.GetRef<bool>(this.Handle, "CGlowProperty", "m_bEligibleForScreenHighlight");
 
+    // m_bGlowing
+    public ref bool IsGlowing => ref Schema.GetRef<bool>(this.Handle, "CGlowProperty", "m_bGlowing");
+
 }
 
 public partial class CGradientFog : CBaseEntity
