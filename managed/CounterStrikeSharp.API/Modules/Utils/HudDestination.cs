@@ -6,4 +6,5 @@ public enum HudDestination
     Console = 2,
     Chat = 3,
     Center = 4,
+    Alert = 6
 }
