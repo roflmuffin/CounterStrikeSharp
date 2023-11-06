@@ -18,4 +18,10 @@ public partial class CBaseEntity
     /// Shorthand for accessing an entity's CBodyComponent?.SceneNode?.AbsOrigin;
     /// </summary>
     public Vector? AbsOrigin => CBodyComponent?.SceneNode?.AbsOrigin;
+    
+    /// <summary>
+    /// Shorthand for accessing an entity's CBodyComponent?.SceneNode?.AbsRotation;
+    /// </summary>
+    public QAngle? AbsRotation => CBodyComponent?.SceneNode?.AbsRotation;
+
 }
