@@ -8889,16 +8889,7 @@
           },
           "metadata": {
           }
-        },
-        {
-            "name": "m_bGlowing",
-            "type": {
-              "name": "bool",
-              "category": 0
-            },
-            "metadata": {
-            }
-          }
+        }
       ]
     },
     "IVehicle": {
