@@ -13,4 +13,9 @@ public partial class CBaseEntity
         VirtualFunction.CreateVoid<IntPtr, IntPtr, IntPtr, IntPtr>(Handle, GameData.GetOffset("CBaseEntity_Teleport"))(
             Handle, position.Handle, angles.Handle, velocity.Handle);
     }
+
+    /// <summary>
+    /// Shorthand for accessing an entity's CBodyComponent?.SceneNode?.AbsOrigin;
+    /// </summary>
+    public Vector? AbsOrigin => CBodyComponent?.SceneNode?.AbsOrigin;
 }
