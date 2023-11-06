@@ -20,7 +20,7 @@ public class ConVar
     /// The underlying data type of the ConVar.
     /// </summary>
     public unsafe ref ConVarType Type => ref Unsafe.AsRef<ConVarType>((void*)(Handle + 40));
-    
+
     /// <summary>
     /// The ConVar flags as defined by <see cref="ConVarFlags"/>.
     /// </summary>
@@ -110,10 +110,27 @@ public class ConVar
     /// </remarks>
     public string StringValue
     {
-        get => Utilities.ReadStringUtf8(Handle + 64);
-        set => NativeAPI.SetConvarStringValue(Handle, value);
-    }
+        get
+        {
+            if (Type != ConVarType.String)
+            {
+                throw new InvalidOperationException(
+                    $"ConVar is a {Type} but you are trying to get a string value.");
+            }
 
+            return Utilities.ReadStringUtf8(Handle + 64);
+        }
+        set
+        {
+            if (Type != ConVarType.String)
+            {
+                throw new InvalidOperationException(
+                    $"ConVar is a {Type} but you are trying to get a string value.");
+            }
+            
+            NativeAPI.SetConvarStringValue(Handle, value);
+        }
+    }
 
     /// <summary>
     /// Shorthand for checking the <see cref="ConVarFlags.FCVAR_NOTIFY"/> flag.
