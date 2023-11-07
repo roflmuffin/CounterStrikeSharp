@@ -19,6 +19,7 @@ using System.IO;
 using System.Linq;
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Cvars;
@@ -30,6 +31,7 @@ using CounterStrikeSharp.API.Modules.Utils;
 
 namespace TestPlugin
 {
+    [MinimumApiVersion(1)]
     public class SamplePlugin : BasePlugin
     {
         public override string ModuleName => "Sample Plugin";
