@@ -61,7 +61,7 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: counterstrikesharp-${{ env.BUILD_NUMBER }}
+          name: counterstrikesharp-build-${{ env.BUILD_NUMBER }}-${{ env.GITHUB_SHA_SHORT }}
           path: build/output/
 
       - name: Add dotnet runtime
@@ -73,5 +73,5 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: counterstrikesharp-with-runtime-${{ env.GITHUB_SHA_SHORT }}
+          name: counterstrikesharp-with-runtime-build-${{ env.BUILD_NUMBER }}-${{ env.GITHUB_SHA_SHORT }}
           path: build/output/
