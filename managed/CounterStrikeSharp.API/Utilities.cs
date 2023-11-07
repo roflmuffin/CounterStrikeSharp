@@ -67,6 +67,26 @@ namespace CounterStrikeSharp.API
                 yield return new PointerTo<T>(pEntity.Handle).Value;
             }
         }
+        
+        /// <summary>
+        /// Returns a list of <see cref="CCSPlayerController"/> that are valid and have a valid <see cref="CCSPlayerController.UserId"/> >= 0
+        /// </summary>
+        public static List<CCSPlayerController> GetPlayers()
+        {
+            List<CCSPlayerController> players = new();
+
+            for (int i = 1; i <= Server.MaxPlayers; i++)
+            {
+                var controller = GetPlayerFromIndex(i);
+
+                if (!controller.IsValid || controller.UserId < 0)
+                    continue;
+
+                players.Add(controller);
+            }
+
+            return players;
+        }
 
         public static void ReplyToCommand(CCSPlayerController? player, string msg, bool console = false)
         {
@@ -102,6 +122,38 @@ namespace CounterStrikeSharp.API
                 Marshal.Copy(nativeUtf8, buffer, 0, buffer.Length);
                 return Encoding.UTF8.GetString(buffer);
             }
+        }
+        
+        public static IEnumerable<CCSPlayerController> FindTarget(CCSPlayerController? player, string pattern) {
+            var emptyResult = Enumerable.Empty<CCSPlayerController>();
+            var playerEntities = Utilities.FindAllEntitiesByDesignerName<CCSPlayerController>("cs_player_controller");
+
+            if (pattern.StartsWith("#")) 
+            {
+                if (!int.TryParse(pattern.Substring(1), out var userId)) 
+                    return emptyResult;
+
+                var playerController = playerEntities.FirstOrDefault(p => p.UserId == userId);
+
+                return playerController != null ? new List<CCSPlayerController>() { playerController } : emptyResult;
+            }
+
+            if (pattern.StartsWith("@")) 
+            {
+                switch (pattern) 
+                {
+                    case "@all": return playerEntities;
+                    case "@me": return new List<CCSPlayerController> { player };
+                }
+            }
+            else {
+                var playerName = pattern.ToLower();
+                var playerController = playerEntities.Select(player => player).FirstOrDefault(player => player.PlayerName.ToLower().Contains(playerName));
+
+                return playerController != null ? new List<CCSPlayerController>() { playerController } : emptyResult;
+            }
+
+            return emptyResult;
         }
     }
 }
