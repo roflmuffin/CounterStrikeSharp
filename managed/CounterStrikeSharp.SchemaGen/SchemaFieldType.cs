@@ -15,13 +15,13 @@ public record SchemaFieldType
         this.Atomic = Atomic;
         this.Inner = Inner;
 
-        if (this.Name == "GameTime_t" || this.Name == "GameTick_t")
+        if (this.Name == "GameTime_t")
         {
             this.Category = SchemaTypeCategory.Builtin;
             this.Name = "float32";
         }
         else if
-            (this.Name == "CPlayerSlot" || this.Name == "HSequence" || this.Name == "CSplitScreenSlot")
+            (this.Name == "CPlayerSlot" || this.Name == "HSequence" || this.Name == "CSplitScreenSlot" || this.Name == "GameTick_t")
         {
             this.Category = SchemaTypeCategory.Builtin;
             this.Name = "int32";

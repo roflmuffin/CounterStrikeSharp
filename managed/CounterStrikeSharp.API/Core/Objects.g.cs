@@ -4111,7 +4111,7 @@ public partial class CBaseEntity : CEntityInstance
     public ref Int32 CurrentThinkContext => ref Schema.GetRef<Int32>(this.Handle, "CBaseEntity", "m_iCurrentThinkContext");
 
     // m_nLastThinkTick
-    public ref float LastThinkTick => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_nLastThinkTick");
+    public ref Int32 LastThinkTick => ref Schema.GetRef<Int32>(this.Handle, "CBaseEntity", "m_nLastThinkTick");
 
     // m_isSteadyState
     public Span<byte> IsSteadyState => Schema.GetFixedArray<byte>(this.Handle, "CBaseEntity", "m_isSteadyState", 8);
@@ -4230,7 +4230,7 @@ public partial class CBaseEntity : CEntityInstance
     public ref UInt32 Spawnflags => ref Schema.GetRef<UInt32>(this.Handle, "CBaseEntity", "m_spawnflags");
 
     // m_nNextThinkTick
-    public ref float NextThinkTick => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_nNextThinkTick");
+    public ref Int32 NextThinkTick => ref Schema.GetRef<Int32>(this.Handle, "CBaseEntity", "m_nNextThinkTick");
 
     // m_nSimulationTick
     public ref Int32 SimulationTick => ref Schema.GetRef<Int32>(this.Handle, "CBaseEntity", "m_nSimulationTick");
@@ -4815,13 +4815,13 @@ public partial class CBasePlayerWeapon : CEconEntity
     public CBasePlayerWeapon (IntPtr pointer) : base(pointer) {}
 
     // m_nNextPrimaryAttackTick
-    public ref float NextPrimaryAttackTick => ref Schema.GetRef<float>(this.Handle, "CBasePlayerWeapon", "m_nNextPrimaryAttackTick");
+    public ref Int32 NextPrimaryAttackTick => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeapon", "m_nNextPrimaryAttackTick");
 
     // m_flNextPrimaryAttackTickRatio
     public ref float NextPrimaryAttackTickRatio => ref Schema.GetRef<float>(this.Handle, "CBasePlayerWeapon", "m_flNextPrimaryAttackTickRatio");
 
     // m_nNextSecondaryAttackTick
-    public ref float NextSecondaryAttackTick => ref Schema.GetRef<float>(this.Handle, "CBasePlayerWeapon", "m_nNextSecondaryAttackTick");
+    public ref Int32 NextSecondaryAttackTick => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeapon", "m_nNextSecondaryAttackTick");
 
     // m_flNextSecondaryAttackTickRatio
     public ref float NextSecondaryAttackTickRatio => ref Schema.GetRef<float>(this.Handle, "CBasePlayerWeapon", "m_flNextSecondaryAttackTickRatio");
@@ -8830,7 +8830,7 @@ public partial class CCSWeaponBase : CBasePlayerWeapon
     public CHandle<CCSPlayerPawn> PrevOwner => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSWeaponBase", "m_hPrevOwner");
 
     // m_nDropTick
-    public ref float DropTick => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_nDropTick");
+    public ref Int32 DropTick => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_nDropTick");
 
     // m_donated
     public ref bool Donated => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_donated");
@@ -11443,7 +11443,7 @@ public partial class CFuncConveyor : CBaseModelEntity
     public ref float TargetSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncConveyor", "m_flTargetSpeed");
 
     // m_nTransitionStartTick
-    public ref float TransitionStartTick => ref Schema.GetRef<float>(this.Handle, "CFuncConveyor", "m_nTransitionStartTick");
+    public ref Int32 TransitionStartTick => ref Schema.GetRef<Int32>(this.Handle, "CFuncConveyor", "m_nTransitionStartTick");
 
     // m_nTransitionDurationTicks
     public ref Int32 TransitionDurationTicks => ref Schema.GetRef<Int32>(this.Handle, "CFuncConveyor", "m_nTransitionDurationTicks");
@@ -16422,7 +16422,7 @@ public partial class CPlayer_CameraServices : CPlayerPawnComponent
     public QAngle CsViewPunchAngle => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPlayer_CameraServices", "m_vecCsViewPunchAngle");
 
     // m_nCsViewPunchAngleTick
-    public ref float CsViewPunchAngleTick => ref Schema.GetRef<float>(this.Handle, "CPlayer_CameraServices", "m_nCsViewPunchAngleTick");
+    public ref Int32 CsViewPunchAngleTick => ref Schema.GetRef<Int32>(this.Handle, "CPlayer_CameraServices", "m_nCsViewPunchAngleTick");
 
     // m_flCsViewPunchAngleTickRatio
     public ref float CsViewPunchAngleTickRatio => ref Schema.GetRef<float>(this.Handle, "CPlayer_CameraServices", "m_flCsViewPunchAngleTickRatio");
@@ -21656,10 +21656,10 @@ public partial class thinkfunc_t : NativeObject
     public CUtlStringToken Context => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "thinkfunc_t", "m_nContext");
 
     // m_nNextThinkTick
-    public ref float NextThinkTick => ref Schema.GetRef<float>(this.Handle, "thinkfunc_t", "m_nNextThinkTick");
+    public ref Int32 NextThinkTick => ref Schema.GetRef<Int32>(this.Handle, "thinkfunc_t", "m_nNextThinkTick");
 
     // m_nLastThinkTick
-    public ref float LastThinkTick => ref Schema.GetRef<float>(this.Handle, "thinkfunc_t", "m_nLastThinkTick");
+    public ref Int32 LastThinkTick => ref Schema.GetRef<Int32>(this.Handle, "thinkfunc_t", "m_nLastThinkTick");
 
 }
 
