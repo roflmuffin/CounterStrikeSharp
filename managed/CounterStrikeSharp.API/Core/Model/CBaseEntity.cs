@@ -23,5 +23,10 @@ public partial class CBaseEntity
     /// Shorthand for accessing an entity's CBodyComponent?.SceneNode?.AbsRotation;
     /// </summary>
     public QAngle? AbsRotation => CBodyComponent?.SceneNode?.AbsRotation;
+    
+    public CNetworkTransmitComponent? NetworkTransmitComponent => Schema.GetPointer<CNetworkTransmitComponent>(this.Handle, "CBaseEntity", "m_NetworkTransmitComponent");
+    public ref float LastNetworkChange => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_lastNetworkChange");
+
+    public Span<byte> IsSteadyState => Schema.GetFixedArray<byte>(this.Handle, "CBaseEntity", "m_isSteadyState", 8);
 
 }
