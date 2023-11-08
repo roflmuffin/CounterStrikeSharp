@@ -19,6 +19,7 @@ using System.IO;
 using System.Linq;
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Cvars;
@@ -30,6 +31,7 @@ using CounterStrikeSharp.API.Modules.Utils;
 
 namespace TestPlugin
 {
+    [MinimumApiVersion(1)]
     public class SamplePlugin : BasePlugin
     {
         public override string ModuleName => "Sample Plugin";
@@ -158,9 +160,8 @@ namespace TestPlugin
             RegisterEventHandler<EventRoundStart>((@event, info) =>
             {
                 // Grab all cs_player_controller entities and set their cash value to $1337.
-                var playerEntities =
-                    Utilities.FindAllEntitiesByDesignerName<CCSPlayerController>("cs_player_controller");
-                Log($"cs_player_controller count: {playerEntities.Count<CCSPlayerController>()}");
+                var playerEntities = Utilities.GetPlayers();
+                Log($"cs_player_controller count: {playerEntities.Count()}");
 
                 foreach (var player in playerEntities)
                 {
@@ -169,8 +170,9 @@ namespace TestPlugin
                 }
 
                 // Grab everything starting with cs_, but we'll only mainpulate cs_gamerules.
+                // Note: this iterates through all entities, so is an expensive operation.
                 var csEntities = Utilities.FindAllEntitiesByDesignerName<CBaseEntity>("cs_");
-                Log($"Amount of cs_* entities: {csEntities.Count<CBaseEntity>()}");
+                Log($"Amount of cs_* entities: {csEntities.Count()}");
 
                 foreach (var entity in csEntities)
                 {

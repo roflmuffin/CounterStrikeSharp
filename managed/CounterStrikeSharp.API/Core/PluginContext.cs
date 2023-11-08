@@ -17,7 +17,9 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Modules.Events;
 using McMaster.NETCore.Plugins;
 
@@ -88,6 +90,14 @@ namespace CounterStrikeSharp.API.Core
                     .FirstOrDefault(t => typeof(IPlugin).IsAssignableFrom(t));
 
                 if (pluginType == null) throw new Exception("Unable to find plugin in DLL");
+
+                var minimumApiVersion = pluginType.GetCustomAttribute<MinimumApiVersion>()?.Version;
+                var currentVersion = Api.GetVersion();
+                
+                // Ignore version 0 for local development
+                if (currentVersion > 0 && minimumApiVersion != null && minimumApiVersion > currentVersion)
+                    throw new Exception(
+                        $"Plugin \"{Path.GetFileName(_path)}\" requires a newer version of CounterStrikeSharp. The plugin expects version [{minimumApiVersion}] but the current version is [{currentVersion}].");
 
                 Console.WriteLine($"Loading plugin: {pluginType.Name}");
                 _plugin = (BasePlugin)Activator.CreateInstance(pluginType)!;

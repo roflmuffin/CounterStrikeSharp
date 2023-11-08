@@ -67,6 +67,26 @@ namespace CounterStrikeSharp.API
                 yield return new PointerTo<T>(pEntity.Handle).Value;
             }
         }
+        
+        /// <summary>
+        /// Returns a list of <see cref="CCSPlayerController"/> that are valid and have a valid <see cref="CCSPlayerController.UserId"/> >= 0
+        /// </summary>
+        public static List<CCSPlayerController> GetPlayers()
+        {
+            List<CCSPlayerController> players = new();
+
+            for (int i = 1; i <= Server.MaxPlayers; i++)
+            {
+                var controller = GetPlayerFromIndex(i);
+
+                if (!controller.IsValid || controller.UserId < 0)
+                    continue;
+
+                players.Add(controller);
+            }
+
+            return players;
+        }
 
         public static void ReplyToCommand(CCSPlayerController? player, string msg, bool console = false)
         {
