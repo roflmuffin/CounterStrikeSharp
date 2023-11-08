@@ -281,6 +281,20 @@ internal static partial class Program
                     $"    public {SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)} => Schema.GetPointer<{SanitiseTypeName(inner.CsTypeName)}>({handleParams});");
                 builder.AppendLine();
             } 
+            else if (field.Type is { Category: SchemaTypeCategory.Atomic, Name: "Color"})
+            {
+                var getter = $"return Schema.GetCustomMarshalledType<{field.Type.CsTypeName}>({handleParams});";
+                var setter = $"Schema.SetCustomMarshalledType<{field.Type.CsTypeName}>({handleParams}, value);";
+                builder.AppendLine(
+                    $"    public {SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)}");
+                builder.AppendLine($"    {{");
+                builder.AppendLine(
+                    $"        get {{ {getter} }}");
+                builder.AppendLine(
+                    $"        set {{ {setter} }}");
+                builder.AppendLine($"    }}");
+                builder.AppendLine();
+            }
             else if (field.Type.Category == SchemaTypeCategory.Atomic)
             {
                 var getter = $"Schema.GetDeclaredClass<{SanitiseTypeName(field.Type.CsTypeName)}>({handleParams});";

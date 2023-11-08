@@ -135,6 +135,10 @@ namespace TestPlugin
                 var activeWeapon = @event.Userid.PlayerPawn.Value.WeaponServices?.ActiveWeapon.Value;
                 var weapons = @event.Userid.PlayerPawn.Value.WeaponServices?.MyWeapons;
 
+                // Set player to random colour
+                player.PlayerPawn.Value.Render = Color.FromArgb(Random.Shared.Next(0, 255),
+                    Random.Shared.Next(0, 255), Random.Shared.Next(0, 255));
+                
                 Server.NextFrame(() =>
                 {
                     player.PrintToCenter(string.Join("\n", weapons.Select(x => x.Value.DesignerName)));

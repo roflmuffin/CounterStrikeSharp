@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Runtime.CompilerServices;
 using CounterStrikeSharp.API.Core;
 
@@ -95,5 +96,31 @@ public class Schema
     public static void SetString(IntPtr pointer, string className, string memberName, string value)
     {
         SetSchemaValue(pointer, className, memberName, value);
+    }
+    
+   
+    public static T GetCustomMarshalledType<T>(IntPtr pointer, string className, string memberName)
+    {
+        var type = typeof(T);
+        object result = type switch
+        {
+            _ when type == typeof(Color) => Marshaling.ColorMarshaler.NativeToManaged(pointer + GetSchemaOffset(className, memberName)),
+            _ => throw new NotSupportedException(),
+        };
+
+        return (T)result;
+    }
+    
+    public static void SetCustomMarshalledType<T>(IntPtr pointer, string className, string memberName, T value)
+    {
+        var type = typeof(T);
+        switch (type)
+        {
+            case var _ when value is Color c:
+                Marshaling.ColorMarshaler.ManagedToNative(pointer + GetSchemaOffset(className, memberName), c);
+                break;
+            default:
+                throw new NotSupportedException();
+        }
     }
 }

@@ -3608,7 +3608,11 @@ public partial class CBarnLight : CBaseModelEntity
 
     // m_Color
     // MNetworkChangeCallback "RenderingChanged"
-    public Color Color => Schema.GetDeclaredClass<Color>(this.Handle, "CBarnLight", "m_Color");
+    public Color Color
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CBarnLight", "m_Color"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CBarnLight", "m_Color", value); }
+    }
 
     // m_flColorTemperature
     // MNetworkChangeCallback "RenderingChanged"
@@ -4222,7 +4226,11 @@ public partial class CBaseModelEntity : CBaseEntity
 
     // m_clrRender
     // MNetworkChangeCallback "OnColorChanged"
-    public Color Render => Schema.GetDeclaredClass<Color>(this.Handle, "CBaseModelEntity", "m_clrRender");
+    public Color Render
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CBaseModelEntity", "m_clrRender"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CBaseModelEntity", "m_clrRender", value); }
+    }
 
     // m_vecRenderAttributes
     // MNetworkChangeCallback "OnRenderAttributesChanged"
@@ -6532,7 +6540,11 @@ public partial class CEnvCombinedLightProbeVolume : CBaseEntity
 
     // m_Color
     // MNetworkChangeCallback "StateChanged"
-    public Color Color => Schema.GetDeclaredClass<Color>(this.Handle, "CEnvCombinedLightProbeVolume", "m_Color");
+    public Color Color
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CEnvCombinedLightProbeVolume", "m_Color"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CEnvCombinedLightProbeVolume", "m_Color", value); }
+    }
 
     // m_flBrightness
     // MNetworkChangeCallback "StateChanged"
@@ -6873,7 +6885,11 @@ public partial class CEnvParticleGlow : CParticleSystem
     public ref float SelfIllumScale => ref Schema.GetRef<float>(this.Handle, "CEnvParticleGlow", "m_flSelfIllumScale");
 
     // m_ColorTint
-    public Color ColorTint => Schema.GetDeclaredClass<Color>(this.Handle, "CEnvParticleGlow", "m_ColorTint");
+    public Color ColorTint
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CEnvParticleGlow", "m_ColorTint"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CEnvParticleGlow", "m_ColorTint", value); }
+    }
 
     // m_hTextureOverride
     public CStrongHandle<InfoForResourceTypeCTextureBase> TextureOverride => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvParticleGlow", "m_hTextureOverride");
@@ -6915,7 +6931,11 @@ public partial class CEnvProjectedTexture : CModelPointEntity
     public ref float BrightnessScale => ref Schema.GetRef<float>(this.Handle, "CEnvProjectedTexture", "m_flBrightnessScale");
 
     // m_LightColor
-    public Color LightColor => Schema.GetDeclaredClass<Color>(this.Handle, "CEnvProjectedTexture", "m_LightColor");
+    public Color LightColor
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CEnvProjectedTexture", "m_LightColor"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CEnvProjectedTexture", "m_LightColor", value); }
+    }
 
     // m_flIntensity
     public ref float Intensity => ref Schema.GetRef<float>(this.Handle, "CEnvProjectedTexture", "m_flIntensity");
@@ -7030,11 +7050,19 @@ public partial class CEnvSky : CBaseModelEntity
 
     // m_vTintColor
     // MNetworkChangeCallback "SkyStateChanged"
-    public Color TintColor => Schema.GetDeclaredClass<Color>(this.Handle, "CEnvSky", "m_vTintColor");
+    public Color TintColor
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CEnvSky", "m_vTintColor"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CEnvSky", "m_vTintColor", value); }
+    }
 
     // m_vTintColorLightingOnly
     // MNetworkChangeCallback "SkyStateChanged"
-    public Color TintColorLightingOnly => Schema.GetDeclaredClass<Color>(this.Handle, "CEnvSky", "m_vTintColorLightingOnly");
+    public Color TintColorLightingOnly
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CEnvSky", "m_vTintColorLightingOnly"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CEnvSky", "m_vTintColorLightingOnly", value); }
+    }
 
     // m_flBrightnessScale
     // MNetworkChangeCallback "SkyStateChanged"
@@ -7537,7 +7565,11 @@ public partial class CGlowProperty : NativeObject
 
     // m_glowColorOverride
     // MNetworkChangeCallback "OnGlowColorChanged"
-    public Color GlowColorOverride => Schema.GetDeclaredClass<Color>(this.Handle, "CGlowProperty", "m_glowColorOverride");
+    public Color GlowColorOverride
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CGlowProperty", "m_glowColorOverride"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CGlowProperty", "m_glowColorOverride", value); }
+    }
 
     // m_bFlashing
     public ref bool Flashing => ref Schema.GetRef<bool>(this.Handle, "CGlowProperty", "m_bFlashing");
@@ -7598,7 +7630,11 @@ public partial class CGradientFog : CBaseEntity
 
     // m_fogColor
     // MNetworkChangeCallback "FogStateChanged"
-    public Color FogColor => Schema.GetDeclaredClass<Color>(this.Handle, "CGradientFog", "m_fogColor");
+    public Color FogColor
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CGradientFog", "m_fogColor"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CGradientFog", "m_fogColor", value); }
+    }
 
     // m_flFogStrength
     // MNetworkChangeCallback "FogStateChanged"
@@ -7887,11 +7923,19 @@ public partial class CLightComponent : CEntityComponent
 
     // m_Color
     // MNetworkChangeCallback "LightRenderingChanged"
-    public Color Color => Schema.GetDeclaredClass<Color>(this.Handle, "CLightComponent", "m_Color");
+    public Color Color
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CLightComponent", "m_Color"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CLightComponent", "m_Color", value); }
+    }
 
     // m_SecondaryColor
     // MNetworkChangeCallback "LightRenderingChanged"
-    public Color SecondaryColor => Schema.GetDeclaredClass<Color>(this.Handle, "CLightComponent", "m_SecondaryColor");
+    public Color SecondaryColor
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CLightComponent", "m_SecondaryColor"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CLightComponent", "m_SecondaryColor", value); }
+    }
 
     // m_flBrightness
     // MNetworkChangeCallback "LightRenderingChanged"
@@ -8115,13 +8159,21 @@ public partial class CLightComponent : CEntityComponent
     public ref float NearClipPlane => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flNearClipPlane");
 
     // m_SkyColor
-    public Color SkyColor => Schema.GetDeclaredClass<Color>(this.Handle, "CLightComponent", "m_SkyColor");
+    public Color SkyColor
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CLightComponent", "m_SkyColor"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CLightComponent", "m_SkyColor", value); }
+    }
 
     // m_flSkyIntensity
     public ref float SkyIntensity => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flSkyIntensity");
 
     // m_SkyAmbientBounce
-    public Color SkyAmbientBounce => Schema.GetDeclaredClass<Color>(this.Handle, "CLightComponent", "m_SkyAmbientBounce");
+    public Color SkyAmbientBounce
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CLightComponent", "m_SkyAmbientBounce"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CLightComponent", "m_SkyAmbientBounce", value); }
+    }
 
     // m_bUseSecondaryColor
     public ref bool UseSecondaryColor => ref Schema.GetRef<bool>(this.Handle, "CLightComponent", "m_bUseSecondaryColor");
@@ -8583,7 +8635,11 @@ public partial class CPathParticleRope : CBaseEntity
 
     // m_ColorTint
     // MNetworkChangeCallback "parametersChanged"
-    public Color ColorTint => Schema.GetDeclaredClass<Color>(this.Handle, "CPathParticleRope", "m_ColorTint");
+    public Color ColorTint
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CPathParticleRope", "m_ColorTint"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CPathParticleRope", "m_ColorTint", value); }
+    }
 
     // m_nEffectState
     // MNetworkChangeCallback "effectStateChanged"
@@ -8980,7 +9036,11 @@ public partial class CPointCamera : CBaseEntity
     public ref bool FogEnable => ref Schema.GetRef<bool>(this.Handle, "CPointCamera", "m_bFogEnable");
 
     // m_FogColor
-    public Color FogColor => Schema.GetDeclaredClass<Color>(this.Handle, "CPointCamera", "m_FogColor");
+    public Color FogColor
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CPointCamera", "m_FogColor"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CPointCamera", "m_FogColor", value); }
+    }
 
     // m_flFogStart
     public ref float FogStart => ref Schema.GetRef<float>(this.Handle, "CPointCamera", "m_flFogStart");
@@ -9278,7 +9338,11 @@ public partial class CPointWorldText : CModelPointEntity
     public ref float DepthOffset => ref Schema.GetRef<float>(this.Handle, "CPointWorldText", "m_flDepthOffset");
 
     // m_Color
-    public Color Color => Schema.GetDeclaredClass<Color>(this.Handle, "CPointWorldText", "m_Color");
+    public Color Color
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CPointWorldText", "m_Color"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CPointWorldText", "m_Color", value); }
+    }
 
     // m_nJustifyHorizontal
     public ref PointWorldTextJustifyHorizontal_t JustifyHorizontal => ref Schema.GetRef<PointWorldTextJustifyHorizontal_t>(this.Handle, "CPointWorldText", "m_nJustifyHorizontal");
@@ -9881,7 +9945,11 @@ public partial class CSun : CBaseModelEntity
     public Vector Direction => Schema.GetDeclaredClass<Vector>(this.Handle, "CSun", "m_vDirection");
 
     // m_clrOverlay
-    public Color Overlay => Schema.GetDeclaredClass<Color>(this.Handle, "CSun", "m_clrOverlay");
+    public Color Overlay
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CSun", "m_clrOverlay"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CSun", "m_clrOverlay", value); }
+    }
 
     // m_iszEffectName
     public string EffectName
@@ -10346,18 +10414,34 @@ public partial class fogparams_t : NativeObject
     public Vector DirPrimary => Schema.GetDeclaredClass<Vector>(this.Handle, "fogparams_t", "dirPrimary");
 
     // colorPrimary
-    public Color ColorPrimary => Schema.GetDeclaredClass<Color>(this.Handle, "fogparams_t", "colorPrimary");
+    public Color ColorPrimary
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "fogparams_t", "colorPrimary"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "fogparams_t", "colorPrimary", value); }
+    }
 
     // colorSecondary
-    public Color ColorSecondary => Schema.GetDeclaredClass<Color>(this.Handle, "fogparams_t", "colorSecondary");
+    public Color ColorSecondary
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "fogparams_t", "colorSecondary"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "fogparams_t", "colorSecondary", value); }
+    }
 
     // colorPrimaryLerpTo
     // MNetworkUserGroup "FogController"
-    public Color ColorPrimaryLerpTo => Schema.GetDeclaredClass<Color>(this.Handle, "fogparams_t", "colorPrimaryLerpTo");
+    public Color ColorPrimaryLerpTo
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "fogparams_t", "colorPrimaryLerpTo"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "fogparams_t", "colorPrimaryLerpTo", value); }
+    }
 
     // colorSecondaryLerpTo
     // MNetworkUserGroup "FogController"
-    public Color ColorSecondaryLerpTo => Schema.GetDeclaredClass<Color>(this.Handle, "fogparams_t", "colorSecondaryLerpTo");
+    public Color ColorSecondaryLerpTo
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "fogparams_t", "colorSecondaryLerpTo"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "fogparams_t", "colorSecondaryLerpTo", value); }
+    }
 
     // start
     public ref float Start => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "start");
