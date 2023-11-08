@@ -88,6 +88,7 @@ namespace CounterStrikeSharp.API
             return players;
         }
 
+        [Obsolete]
         public static void ReplyToCommand(CCSPlayerController? player, string msg, bool console = false)
         {
             if (player != null)
