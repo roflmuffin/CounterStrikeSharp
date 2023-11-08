@@ -65,7 +65,7 @@ jobs:
           path: build/output/
 
       - name: Zip CounterStrikeSharp Build
-        run: zip -qq -r counterstrikesharp-build-${{ env.BUILD_NUMBER }}-${{ env.GITHUB_SHA_SHORT }}.zip build/output/
+        run: (cd build/output && zip -qq -r ../../counterstrikesharp-build-${{ env.BUILD_NUMBER }}-${{ env.GITHUB_SHA_SHORT }}.zip *)
 
       - name: Add dotnet runtime
         run: |
@@ -75,7 +75,7 @@ jobs:
           mv build/output/addons/counterstrikesharp/dotnet/shared/Microsoft.NETCore.App/7.0.11/* build/output/addons/counterstrikesharp/dotnet/shared/Microsoft.NETCore.App/
 
       - name: Zip CounterStrikeSharp Runtime Build
-        run: zip -qq -r counterstrikesharp-with-runtime-build-${{ env.BUILD_NUMBER }}-${{ env.GITHUB_SHA_SHORT }}.zip build/output/
+        run: (cd build/output && zip -qq -r ../../counterstrikesharp-with-runtime-build-${{ env.BUILD_NUMBER }}-${{ env.GITHUB_SHA_SHORT }}.zip *)
 
       - uses: actions/upload-artifact@v3
         with:
