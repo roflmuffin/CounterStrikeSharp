@@ -52,7 +52,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
             { typeof(string), DataType.DATA_TYPE_STRING },
             { typeof(long), DataType.DATA_TYPE_LONG },
             { typeof(ulong), DataType.DATA_TYPE_ULONG },
-            { typeof(short), DataType.DATA_TYPE_VARIANT },
+            { typeof(short), DataType.DATA_TYPE_SHORT },
             { typeof(sbyte), DataType.DATA_TYPE_UCHAR },
             { typeof(byte), DataType.DATA_TYPE_CHAR },
         };

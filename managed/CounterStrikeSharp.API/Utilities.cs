@@ -61,7 +61,7 @@ namespace CounterStrikeSharp.API
         public static IEnumerable<T> FindAllEntitiesByDesignerName<T>(string designerName) where T : CEntityInstance
         {
             var pEntity = new CEntityIdentity(NativeAPI.GetFirstActiveEntity());
-            for (; pEntity.Handle != IntPtr.Zero; pEntity = pEntity.Next.Value)
+            for (; pEntity != null && pEntity.Handle != IntPtr.Zero; pEntity = pEntity.Next)
             {
                 if (!pEntity.DesignerName.Contains(designerName)) continue;
                 yield return new PointerTo<T>(pEntity.Handle).Value;

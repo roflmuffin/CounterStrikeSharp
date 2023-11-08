@@ -1,8 +1,9 @@
 ﻿/**
- * This project has been copied & modified from the demofile-net project under the MIT license. 
+ * This project has been copied & modified from the demofile-net project under the MIT license.
  * See ACKNOWLEDGEMENTS file for more information.
  * https://github.com/saul/demofile-net
  */
+
 using System.Collections.Immutable;
 using System.Diagnostics;
 using System.Text;
@@ -20,7 +21,14 @@ internal static partial class Program
         "GameTick_t",
         "AttachmentHandle_t",
         "CGameSceneNodeHandle",
-        "HSequence"
+        "HSequence",
+        "CAttributeManager::cached_attribute_float_t",
+        "QuestProgress::Reason",
+        "IChoreoServices::ScriptState_t",
+        "IChoreoServices::ChoreoState_t",
+        "SpawnPointCoopEnemy::BotDefaultBehavior_t",
+        "CLogicBranchList::LogicBranchListenerLastState_t",
+        "SimpleConstraintSoundProfile::SimpleConstraintsSoundProfileKeypoints_t"
     };
 
     public static string SanitiseTypeName(string typeName) => typeName.Replace(":", "");
@@ -35,7 +43,7 @@ internal static partial class Program
         var allEnums = new SortedDictionary<string, SchemaEnum>();
         var allClasses = new SortedDictionary<string, SchemaClass>();
 
-        var schemaFiles = new[] { "server.json", "!GlobalTypes.json" };
+        var schemaFiles = new[] { "server.json" };
 
         foreach (var schemaFile in schemaFiles)
         {
@@ -200,28 +208,20 @@ internal static partial class Program
 
         foreach (var field in schemaClass.Fields)
         {
-            var defaultValue = field.Type.Category switch
+            // Putting these in the too hard basket for now.
+            if (field.Name == "m_VoteOptions" || field.Type.Name.Contains("CEntityOutputTemplate") ||
+                field.Type.Name.Contains("CVariantBase") ||
+                field.Type.Name == "HSCRIPT" || field.Type.Name == "KeyValues3") continue;
+
+            if (field.Type is { Category: SchemaTypeCategory.Atomic, Atomic: SchemaAtomicCategory.Collection })
             {
-                SchemaTypeCategory.DeclaredClass =>
-                    " = new();",
-                SchemaTypeCategory.FixedArray =>
-                    field.Type.IsString
-                        ? $" = \"\";"
-                        : $" = Array.Empty<{field.Type.Inner!.CsTypeName}>();",
-                SchemaTypeCategory.Atomic when field.Type.Atomic == SchemaAtomicCategory.Collection =>
-                    $" = new NetworkedVector<{field.Type.Inner!.CsTypeName}>();",
-                _ => null
-            };
+                if (IgnoreClasses.Contains(field.Type.Inner!.Name)) continue;
+            }
 
             var handleParams = $"this.Handle, \"{schemaClassName}\", \"{field.Name}\"";
 
             builder.AppendLine($"    // {field.Name}");
-            foreach (var (metadataKey, value) in field.Metadata)
-            {
-                builder.AppendLine($"    // {metadataKey}{(value == "" ? "" : $" \"{value}\"")}");
-            }
 
-            
             if (field.Type is { Category: SchemaTypeCategory.FixedArray, CsTypeName: "string" })
             {
                 var getter = $"return Schema.GetString({handleParams});";
@@ -237,7 +237,7 @@ internal static partial class Program
                 builder.AppendLine();
             }
             // Networked Strings require UTF8 encoding/decoding
-            else if ( field.Type is { Category: SchemaTypeCategory.Atomic, CsTypeName: "string" })
+            else if (field.Type is { Category: SchemaTypeCategory.Atomic, CsTypeName: "string" })
             {
                 var getter = $"return Schema.GetUtf8String({handleParams});";
                 var setter = $"Schema.SetString({handleParams}, value);";
@@ -253,19 +253,23 @@ internal static partial class Program
             }
             else if (field.Type.Category == SchemaTypeCategory.FixedArray)
             {
-                var getter = $"Schema.GetFixedArray<{SanitiseTypeName(field.Type.Inner!.CsTypeName)}>({handleParams}, {field.Type.ArraySize});";
+                var getter =
+                    $"Schema.GetFixedArray<{SanitiseTypeName(field.Type.Inner!.CsTypeName)}>({handleParams}, {field.Type.ArraySize});";
                 builder.AppendLine(
                     $"    public Span<{SanitiseTypeName(field.Type.Inner!.CsTypeName)}> {schemaClass.CsPropertyNameForField(schemaClassName, field)} => {getter}");
                 builder.AppendLine();
             }
-            else if (field.Type.Category == SchemaTypeCategory.DeclaredClass && !IgnoreClasses.Contains(field.Type.Name))
+            else if (field.Type.Category == SchemaTypeCategory.DeclaredClass &&
+                     !IgnoreClasses.Contains(field.Type.Name))
             {
                 var getter = $"Schema.GetDeclaredClass<{SanitiseTypeName(field.Type.CsTypeName)}>({handleParams});";
                 builder.AppendLine(
                     $"    public {SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)} => {getter}");
                 builder.AppendLine();
             }
-            else if ((field.Type.Category == SchemaTypeCategory.Builtin || field.Type.Category == SchemaTypeCategory.DeclaredEnum) && !IgnoreClasses.Contains(field.Type.Name))
+            else if ((field.Type.Category == SchemaTypeCategory.Builtin ||
+                      field.Type.Category == SchemaTypeCategory.DeclaredEnum) &&
+                     !IgnoreClasses.Contains(field.Type.Name))
             {
                 var getter = $"ref Schema.GetRef<{SanitiseTypeName(field.Type.CsTypeName)}>({handleParams});";
                 builder.AppendLine(
@@ -275,13 +279,13 @@ internal static partial class Program
             else if (field.Type.Category == SchemaTypeCategory.Ptr)
             {
                 var inner = field.Type.Inner!;
-                Debug.Assert(inner.Category == SchemaTypeCategory.DeclaredClass);
+                if (inner.Category != SchemaTypeCategory.DeclaredClass) continue;
 
                 builder.AppendLine(
                     $"    public {SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)} => Schema.GetPointer<{SanitiseTypeName(inner.CsTypeName)}>({handleParams});");
                 builder.AppendLine();
-            } 
-            else if (field.Type is { Category: SchemaTypeCategory.Atomic, Name: "Color"})
+            }
+            else if (field.Type is { Category: SchemaTypeCategory.Atomic, Name: "Color" })
             {
                 var getter = $"return Schema.GetCustomMarshalledType<{field.Type.CsTypeName}>({handleParams});";
                 var setter = $"Schema.SetCustomMarshalledType<{field.Type.CsTypeName}>({handleParams}, value);";

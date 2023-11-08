@@ -32,6 +32,7 @@ public partial record SchemaClass(
             case ("CEnvScreenOverlay", "m_bIsActive"): return "IsOverlayActive";
             case ("CPlayerSprayDecal", "m_nEntity"): return "DecalEntity";
             case ("CHandleTest", "m_Handle"): return "TestHandle";
+            case ("FilterTeam", "m_iFilterTeam"): return "Value";
         }
 
         string CleanFieldName(string fieldName) =>
