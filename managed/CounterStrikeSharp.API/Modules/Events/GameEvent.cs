@@ -53,7 +53,7 @@ namespace CounterStrikeSharp.API.Modules.Events
                 _ when type == typeof(string) => GetString(name),
                 _ when type == typeof(bool) => GetBool(name),
                 _ when type == typeof(ulong) => GetUint64(name),
-                _ when type == typeof(long) => GetUint64(name),
+                _ when type == typeof(long) => (long)GetUint64(name),
                 _ when type == typeof(CCSPlayerController) => GetPlayer(name),
                 _ => throw new NotSupportedException(),
             };
