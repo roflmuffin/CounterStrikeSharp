@@ -38,6 +38,18 @@ public partial class CCSPlayerController
     {
         VirtualFunctions.ClientPrint(this.Handle, HudDestination.Center, message, 0, 0, 0, 0);
     }
+    
+    public void PrintToCenterHtml(string message)
+    {
+        var @event = new EventShowSurvivalRespawnStatus(true)
+        {
+            LocToken = message,
+            Duration = 5,
+            Userid = this
+        };
+        @event.FireEvent(false);
+    }
+
 
     public bool IsBot => ((PlayerFlags)Flags).HasFlag(PlayerFlags.FL_FAKECLIENT);
 
