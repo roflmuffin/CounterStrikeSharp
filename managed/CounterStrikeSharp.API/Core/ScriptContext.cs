@@ -103,6 +103,7 @@ namespace CounterStrikeSharp.API.Core
 		public void Invoke()
 		{
 			InvokeNativeInternal();
+			GlobalCleanUp();
 		}
 
 		[SecurityCritical]
