@@ -5,16 +5,6 @@ using CounterStrikeSharp.API.Modules.Utils;
 
 namespace CounterStrikeSharp.API.Core;
 
-public class CInButtonState : NativeObject
-{
-    public CInButtonState(IntPtr pointer) : base(pointer)
-    {
-    }
-
-    public unsafe ref PlayerButtons Value =>
-        ref Unsafe.AsRef<PlayerButtons>((void*)(Handle + Schema.GetSchemaOffset("CInButtonState", "m_pButtonStates")));
-}
-
 public partial class CPlayer_MovementServices
 {
     public CInButtonState ButtonState =>
