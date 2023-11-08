@@ -49,7 +49,7 @@ public partial class CCSPlayerController
     {
         VirtualFunctions.SwitchTeam(this.Handle, (byte)team);
     }
-    
+
     /// <summary>
     /// Switches the team of the player, has the same effect as the "jointeam" console command.
     /// <remarks>
@@ -62,4 +62,9 @@ public partial class CCSPlayerController
         VirtualFunction.CreateVoid<IntPtr, CsTeam>(Handle, GameData.GetOffset("CCSPlayerController_ChangeTeam"))(Handle,
             team);
     }
+
+    /// <summary>
+    /// Gets the active pawns button state. Will work even if the player is dead or observing.
+    /// </summary>
+    public PlayerButtons Buttons => (PlayerButtons)Pawn.Value.MovementServices!.Buttons.ButtonStates[0];
 }
