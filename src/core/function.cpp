@@ -31,11 +31,16 @@
 
 #include "core/log.h"
 #include "dyncall/dyncall/dyncall.h"
-#include "funchook.h"
+
+#include "pch.h"
+#include "dynohook/core.h"
+#include "dynohook/manager.h"
+#include "dynohook/conventions/x64/x64SystemVcall.h"
 
 namespace counterstrikesharp {
 
 DCCallVM* g_pCallVM = dcNewCallVM(4096);
+std::map<dyno::Hook*, ValveFunction*> g_HookMap;
 
 // ============================================================================
 // >> GetDynCallConvention
@@ -95,20 +100,6 @@ bool ValveFunction::IsCallable()
 {
     return (m_eCallingConvention != CONV_CUSTOM) && (m_iCallingConvention != -1);
 }
-
-// bool ValveFunction::IsHookable() { return m_pCallingConvention != NULL; }
-//
-// bool ValveFunction::IsHooked() { return GetHookManager()->FindHook((void*)m_ulAddr) != NULL; }
-//
-// CHook* ValveFunction::GetHook() { return GetHookManager()->FindHook((void*)m_ulAddr); }
-
-// ValveFunction* ValveFunction::GetTrampoline() {
-//     CHook* pHook = GetHookManager()->FindHook((void*)m_ulAddr);
-//     if (!pHook) return nullptr;
-//
-//     return new ValveFunction((unsigned long)pHook->m_pTrampoline, m_eCallingConvention, m_Args,
-//                              m_eReturnType);
-// }
 
 template <class ReturnType, class Function>
 ReturnType CallHelper(Function func, DCCallVM* vm, void* addr)
@@ -238,85 +229,59 @@ void ValveFunction::Call(ScriptContext& script_context, int offset)
     }
 }
 
-void prehook(funchook_info_t* info)
+dyno::ReturnAction prehook(dyno::HookType hookType, dyno::Hook& hook)
 {
-    CSSHARP_CORE_INFO("All good {}", (void*)info->user_data);
-    auto vf = ((ValveFunction*)info->user_data);
-    auto pEntityInstance = *(CEntityInstance**)funchook_arg_get_int_reg_addr(info->arg_handle, 0);
-
-    CSSHARP_CORE_INFO(
-        "Valve Function address: {}, original target func: {}, target func {}, hook {}, tramp {}",
-        ((ValveFunction*)info->user_data)->m_ulAddr, info->original_target_func, info->target_func,
-        info->hook_func, info->trampoline_func);
-    auto func = (Remove)((ValveFunction*)info->user_data)->m_ulAddr;
+    auto vf = g_HookMap[&hook];
 
     vf->m_precallback->Reset();
-
-    std::vector<void*> argValues;
 
     for (size_t i = 0; i < vf->m_Args.size(); i++) {
         CSSHARP_CORE_INFO("Pushing callback arg {} type {}", i, vf->m_Args[i]);
         switch (vf->m_Args[i]) {
         case DATA_TYPE_BOOL:
-            argValues.push_back((void*)funchook_arg_get_int_reg_addr(info->arg_handle, i));
-            vf->m_precallback->ScriptContext().Push(
-                *(bool*)funchook_arg_get_int_reg_addr(info->arg_handle, i));
+            vf->m_precallback->ScriptContext().Push(hook.getArgument<bool>(i));
             break;
         case DATA_TYPE_CHAR:
-            vf->m_precallback->ScriptContext().Push(
-                *(char*)funchook_arg_get_int_reg_addr(info->arg_handle, i));
+            vf->m_precallback->ScriptContext().Push(hook.getArgument<char*>(i));
             break;
         case DATA_TYPE_UCHAR:
-            vf->m_precallback->ScriptContext().Push(
-                *(unsigned char*)funchook_arg_get_int_reg_addr(info->arg_handle, i));
+            vf->m_precallback->ScriptContext().Push(hook.getArgument<unsigned char*>(i));
             break;
         case DATA_TYPE_SHORT:
-            vf->m_precallback->ScriptContext().Push(
-                *(short*)funchook_arg_get_int_reg_addr(info->arg_handle, i));
+            vf->m_precallback->ScriptContext().Push(hook.getArgument<short*>(i));
             break;
         case DATA_TYPE_USHORT:
-            vf->m_precallback->ScriptContext().Push(
-                *(unsigned short*)funchook_arg_get_int_reg_addr(info->arg_handle, i));
+            vf->m_precallback->ScriptContext().Push(hook.getArgument<unsigned short*>(i));
             break;
         case DATA_TYPE_INT:
-            vf->m_precallback->ScriptContext().Push(
-                *(int*)funchook_arg_get_int_reg_addr(info->arg_handle, i));
+            vf->m_precallback->ScriptContext().Push(hook.getArgument<int*>(i));
             break;
         case DATA_TYPE_UINT:
-            vf->m_precallback->ScriptContext().Push(
-                *(unsigned int*)funchook_arg_get_int_reg_addr(info->arg_handle, i));
+            vf->m_precallback->ScriptContext().Push(hook.getArgument<unsigned int*>(i));
             break;
         case DATA_TYPE_LONG:
-            vf->m_precallback->ScriptContext().Push(
-                *(long*)funchook_arg_get_int_reg_addr(info->arg_handle, i));
+            vf->m_precallback->ScriptContext().Push(hook.getArgument<long*>(i));
             break;
         case DATA_TYPE_ULONG:
-            vf->m_precallback->ScriptContext().Push(
-                *(unsigned long*)funchook_arg_get_int_reg_addr(info->arg_handle, i));
+            vf->m_precallback->ScriptContext().Push(hook.getArgument<unsigned long*>(i));
             break;
         case DATA_TYPE_LONG_LONG:
-            vf->m_precallback->ScriptContext().Push(
-                *(long long*)funchook_arg_get_int_reg_addr(info->arg_handle, i));
+            vf->m_precallback->ScriptContext().Push(hook.getArgument<long long*>(i));
             break;
         case DATA_TYPE_ULONG_LONG:
-            vf->m_precallback->ScriptContext().Push(
-                *(unsigned long long*)funchook_arg_get_int_reg_addr(info->arg_handle, i));
+            vf->m_precallback->ScriptContext().Push(hook.getArgument<unsigned long long*>(i));
             break;
         case DATA_TYPE_FLOAT:
-            vf->m_precallback->ScriptContext().Push(
-                *(float*)funchook_arg_get_int_reg_addr(info->arg_handle, i));
+            vf->m_precallback->ScriptContext().Push(hook.getArgument<float*>(i));
             break;
         case DATA_TYPE_DOUBLE:
-            vf->m_precallback->ScriptContext().Push(
-                *(double*)funchook_arg_get_int_reg_addr(info->arg_handle, i));
+            vf->m_precallback->ScriptContext().Push(hook.getArgument<double*>(i));
             break;
         case DATA_TYPE_POINTER:
-            vf->m_precallback->ScriptContext().Push(
-                *(void**)funchook_arg_get_int_reg_addr(info->arg_handle, i));
+            vf->m_precallback->ScriptContext().Push(hook.getArgument<void**>(i));
             break;
         case DATA_TYPE_STRING:
-            vf->m_precallback->ScriptContext().Push(
-                *(const char**)funchook_arg_get_int_reg_addr(info->arg_handle, i));
+            vf->m_precallback->ScriptContext().Push(hook.getArgument<const char**>(i));
             break;
         default:
             assert(!"Unknown function parameter type!");
@@ -333,12 +298,8 @@ void prehook(funchook_info_t* info)
         auto result = vf->m_precallback->ScriptContext().GetResult<HookResult>();
         CSSHARP_CORE_INFO("Received hook callback result of {}", result);
 
-        if (result >= HookResult::Stop) {
-            return;
-        }
-
         if (result >= HookResult::Handled) {
-            shouldFireOriginal = false;
+            return dyno::ReturnAction::Supercede;
         }
     }
     /*
@@ -469,64 +430,17 @@ void prehook(funchook_info_t* info)
 */
 }
 
-static void thiscall_hook() {
-
-}
-
 void ValveFunction::AddHook(CallbackT callable)
 {
-    CSSHARP_CORE_INFO("Adding hook to {}", m_ulAddr);
-    auto m_hook = funchook_create();
-    funchook_params_t params = {0};
-    params.prehook = prehook;
-    params.flags = FUNCHOOK_FLAG_FASTCALL;
-    params.user_data = this;
-
-    auto rv = funchook_prepare_with_params(m_hook, (void**)&m_ulAddr, &params);
-    CSSHARP_CORE_INFO("Prepared hook, {}", rv);
-
-    // funchook_prepare(m_hook, (void**)&m_pHostSay, (void*)&DetourHostSay);
-    rv = funchook_install(m_hook, 0);
-    CSSHARP_CORE_INFO("Installed hook, {}", rv);
+    dyno::HookManager& manager = dyno::HookManager::Get();
+    dyno::Hook* hookVoice = manager.hook((void*)m_ulAddr, [] {
+        return new dyno::x64SystemVcall({dyno::DataType::Pointer}, dyno::DataType::Void);
+    });
+    hookVoice->addCallback(dyno::HookType::Pre, (dyno::HookHandler*)&prehook);
+    g_HookMap[hookVoice] = this;
 
     m_precallback = globals::callbackManager.CreateCallback("");
     m_precallback->AddListener(callable);
 }
-
-//
-// CHook* HookFunctionHelper(void* addr, ICallingConvention* pConv) {
-//    CHook* result;
-//    result = GetHookManager()->HookFunction(addr, pConv);
-//    return result;
-//}
-//
-// void ValveFunction::DeleteHook() {
-//    CHook* pHook = GetHookManager()->FindHook((void*)m_ulAddr);
-//    if (!pHook) return;
-//
-//    // Set the calling convention to NULL, because DynamicHooks will delete it
-//    // otherwise.
-//    pHook->m_pCallingConvention = NULL;
-//    GetHookManager()->UnhookFunction((void*)m_ulAddr);
-//}
-//
-// CHook* ValveFunction::AddHook(HookType_t eType, void* callable) {
-//    if (!IsHookable()) return nullptr;
-//
-//    CHook* pHook = GetHookManager()->FindHook((void*)m_ulAddr);
-//
-//    if (!pHook) {
-//        pHook = HookFunctionHelper((void*)m_ulAddr, m_pCallingConvention);
-//
-//        // DynamicHooks will handle our convention from there, regardless if we
-//        // allocated it or not.
-//        m_bAllocatedCallingConvention = false;
-//    }
-//
-//    // Add the hook handler. If it's already added, it won't be added twice
-//    pHook->AddCallback(eType, (HookHandlerFn*)(void*)callable);
-//
-//    return pHook;
-//}
 
 } // namespace counterstrikesharp

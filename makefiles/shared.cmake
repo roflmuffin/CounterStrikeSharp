@@ -4,6 +4,7 @@ Set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING
 )
 
 Set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
+Set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
 set(CMAKE_STATIC_LIBRARY_PREFIX "")
 
 Set(SOURCESDK_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2)
@@ -34,6 +35,7 @@ include_directories(
         libraries/spdlog/include
         libraries/tl
         libraries/funchook/include
+        libraries/DynoHook/src
         libraries
 )
 

@@ -32,7 +32,11 @@
 
 #include "scripting/callback_manager.h"
 #include "scripting/script_engine.h"
-#include "funchook.h"
+#include <map>
+
+namespace dyno {
+class Hook;
+}
 
 namespace counterstrikesharp {
 
@@ -82,19 +86,12 @@ public:
     ~ValveFunction();
 
     bool IsCallable();
-    // bool IsHookable();
-
-    // bool IsHooked();
-    // CHook* GetHook();
-
-    // ValveFunction* GetTrampoline();
 
     void SetOffset(int offset) { m_offset = offset; }
     void SetSignature(const char* signature) { m_signature = signature; }
 
     void Call(ScriptContext& args, int offset = 0);
     void AddHook(CallbackT callable);
-    // void DeleteHook();
 
     void* m_ulAddr;
     std::vector<DataType_t> m_Args;
