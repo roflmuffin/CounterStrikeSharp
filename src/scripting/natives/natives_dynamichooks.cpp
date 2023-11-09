@@ -287,9 +287,9 @@ void DHookSetParam(ScriptContext& script_context)
 }
 
 REGISTER_NATIVES(dynamichooks, {
-    ScriptEngine::RegisterNativeHandler("DHOOK_GET_RETURN", DHookGetReturn);
-    ScriptEngine::RegisterNativeHandler("DHOOK_SET_RETURN", DHookSetReturn);
-    ScriptEngine::RegisterNativeHandler("DHOOK_GET_PARAM", DHookGetParam);
-    ScriptEngine::RegisterNativeHandler("DHOOK_SET_PARAM", DHookSetParam);
+    ScriptEngine::RegisterNativeHandler("DYNAMIC_HOOK_GET_RETURN", DHookGetReturn);
+    ScriptEngine::RegisterNativeHandler("DYNAMIC_HOOK_SET_RETURN", DHookSetReturn);
+    ScriptEngine::RegisterNativeHandler("DYNAMIC_HOOK_GET_PARAM", DHookGetParam);
+    ScriptEngine::RegisterNativeHandler("DYNAMIC_HOOK_SET_PARAM", DHookSetParam);
 })
 } // namespace counterstrikesharp

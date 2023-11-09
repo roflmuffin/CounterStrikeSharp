@@ -229,218 +229,55 @@ void ValveFunction::Call(ScriptContext& script_context, int offset)
     }
 }
 
-dyno::ReturnAction prehook(dyno::HookType hookType, dyno::Hook& hook)
+dyno::ReturnAction HookHandler(dyno::HookType hookType, dyno::Hook& hook)
 {
     auto vf = g_HookMap[&hook];
 
-    vf->m_precallback->Reset();
+    auto callback = hookType == dyno::HookType::Pre ? vf->m_precallback : vf->m_postcallback;
 
-    for (size_t i = 0; i < vf->m_Args.size(); i++) {
-        CSSHARP_CORE_INFO("Pushing callback arg {} type {}", i, vf->m_Args[i]);
-        switch (vf->m_Args[i]) {
-        case DATA_TYPE_BOOL:
-            vf->m_precallback->ScriptContext().Push(hook.getArgument<bool>(i));
-            break;
-        case DATA_TYPE_CHAR:
-            vf->m_precallback->ScriptContext().Push(hook.getArgument<char*>(i));
-            break;
-        case DATA_TYPE_UCHAR:
-            vf->m_precallback->ScriptContext().Push(hook.getArgument<unsigned char*>(i));
-            break;
-        case DATA_TYPE_SHORT:
-            vf->m_precallback->ScriptContext().Push(hook.getArgument<short*>(i));
-            break;
-        case DATA_TYPE_USHORT:
-            vf->m_precallback->ScriptContext().Push(hook.getArgument<unsigned short*>(i));
-            break;
-        case DATA_TYPE_INT:
-            vf->m_precallback->ScriptContext().Push(hook.getArgument<int*>(i));
-            break;
-        case DATA_TYPE_UINT:
-            vf->m_precallback->ScriptContext().Push(hook.getArgument<unsigned int*>(i));
-            break;
-        case DATA_TYPE_LONG:
-            vf->m_precallback->ScriptContext().Push(hook.getArgument<long*>(i));
-            break;
-        case DATA_TYPE_ULONG:
-            vf->m_precallback->ScriptContext().Push(hook.getArgument<unsigned long*>(i));
-            break;
-        case DATA_TYPE_LONG_LONG:
-            vf->m_precallback->ScriptContext().Push(hook.getArgument<long long*>(i));
-            break;
-        case DATA_TYPE_ULONG_LONG:
-            vf->m_precallback->ScriptContext().Push(hook.getArgument<unsigned long long*>(i));
-            break;
-        case DATA_TYPE_FLOAT:
-            vf->m_precallback->ScriptContext().Push(hook.getArgument<float*>(i));
-            break;
-        case DATA_TYPE_DOUBLE:
-            vf->m_precallback->ScriptContext().Push(hook.getArgument<double*>(i));
-            break;
-        case DATA_TYPE_POINTER:
-            vf->m_precallback->ScriptContext().Push(hook.getArgument<void**>(i));
-            break;
-        case DATA_TYPE_STRING:
-            vf->m_precallback->ScriptContext().Push(hook.getArgument<const char**>(i));
-            break;
-        default:
-            assert(!"Unknown function parameter type!");
-            break;
-        }
+    if (callback == nullptr) {
+        return dyno::ReturnAction::Ignored;
     }
 
-    bool shouldFireOriginal = true;
-    for (auto fnMethodToCall : vf->m_precallback->GetFunctions()) {
+    callback->Reset();
+    callback->ScriptContext().Push(&hook);
+
+    for (auto fnMethodToCall : callback->GetFunctions()) {
         if (!fnMethodToCall)
             continue;
-        fnMethodToCall(&vf->m_precallback->ScriptContextStruct());
+        fnMethodToCall(&callback->ScriptContextStruct());
 
-        auto result = vf->m_precallback->ScriptContext().GetResult<HookResult>();
-        CSSHARP_CORE_INFO("Received hook callback result of {}", result);
+        auto result = callback->ScriptContext().GetResult<HookResult>();
+        CSSHARP_CORE_INFO("Received hook callback result of {}, hook mode {}", result, (int)hookType);
 
         if (result >= HookResult::Handled) {
             return dyno::ReturnAction::Supercede;
         }
     }
-    /*
-    if (shouldFireOriginal) {
-        dcReset(g_pCallVM);
-        dcMode(g_pCallVM, vf->m_iCallingConvention);
 
-        for (size_t i = 0; i < vf->m_Args.size(); i++) {
-            CSSHARP_CORE_INFO("Pushing orig call arg {} type {}", i, vf->m_Args[i]);
-
-            switch (vf->m_Args[i]) {
-            case DATA_TYPE_BOOL:
-                dcArgBool(g_pCallVM, *(bool*)funchook_arg_get_int_reg_addr(info->arg_handle, i));
-                break;
-            case DATA_TYPE_CHAR:
-                dcArgChar(g_pCallVM, *(char*)funchook_arg_get_int_reg_addr(info->arg_handle, i));
-                break;
-            case DATA_TYPE_UCHAR:
-                dcArgChar(g_pCallVM,
-                          *(unsigned char*)funchook_arg_get_int_reg_addr(info->arg_handle, i));
-                break;
-            case DATA_TYPE_SHORT:
-                dcArgShort(g_pCallVM, *(short*)funchook_arg_get_int_reg_addr(info->arg_handle, i));
-                break;
-            case DATA_TYPE_USHORT:
-                dcArgShort(g_pCallVM,
-                           *(unsigned short*)funchook_arg_get_int_reg_addr(info->arg_handle, i));
-                break;
-            case DATA_TYPE_INT:
-                dcArgInt(g_pCallVM, *(int*)funchook_arg_get_int_reg_addr(info->arg_handle, i));
-                break;
-            case DATA_TYPE_UINT:
-                dcArgInt(g_pCallVM,
-                         *(unsigned int*)funchook_arg_get_int_reg_addr(info->arg_handle, i));
-                break;
-            case DATA_TYPE_LONG:
-                dcArgLong(g_pCallVM, *(long*)funchook_arg_get_int_reg_addr(info->arg_handle, i));
-                break;
-            case DATA_TYPE_ULONG:
-                dcArgLong(g_pCallVM,
-                          *(unsigned long*)funchook_arg_get_int_reg_addr(info->arg_handle, i));
-                break;
-            case DATA_TYPE_LONG_LONG:
-                dcArgLongLong(g_pCallVM,
-                              *(long long*)funchook_arg_get_int_reg_addr(info->arg_handle, i));
-                break;
-            case DATA_TYPE_ULONG_LONG:
-                dcArgLongLong(g_pCallVM, *(unsigned long long*)funchook_arg_get_int_reg_addr(
-                                             info->arg_handle, i));
-                break;
-            case DATA_TYPE_FLOAT:
-                dcArgFloat(g_pCallVM, *(float*)funchook_arg_get_int_reg_addr(info->arg_handle, i));
-                break;
-            case DATA_TYPE_DOUBLE:
-                dcArgDouble(g_pCallVM,
-                            *(double*)funchook_arg_get_int_reg_addr(info->arg_handle, i));
-                break;
-            case DATA_TYPE_POINTER:
-                dcArgPointer(g_pCallVM,
-                             *(void**)funchook_arg_get_int_reg_addr(info->arg_handle, i));
-                break;
-            case DATA_TYPE_STRING:
-                dcArgPointer(g_pCallVM, (void*)*(const char**)funchook_arg_get_int_reg_addr(
-                                            info->arg_handle, i));
-                break;
-            default:
-                assert(!"Unknown function parameter type!");
-                break;
-            }
-        }
-
-        CSSHARP_CORE_INFO("Executing orig {}", vf->m_eReturnType);
-        switch (vf->m_eReturnType) {
-        case DATA_TYPE_VOID:
-            CallHelperVoid(g_pCallVM, vf->m_ulAddr);
-            break;
-        case DATA_TYPE_BOOL:
-            CallHelper<bool>(dcCallBool, g_pCallVM, vf->m_ulAddr);
-            break;
-        case DATA_TYPE_CHAR:
-            CallHelper<char>(dcCallChar, g_pCallVM, vf->m_ulAddr);
-            break;
-        case DATA_TYPE_UCHAR:
-            CallHelper<unsigned char>(dcCallChar, g_pCallVM, vf->m_ulAddr);
-            break;
-        case DATA_TYPE_SHORT:
-            CallHelper<short>(dcCallShort, g_pCallVM, vf->m_ulAddr);
-            break;
-        case DATA_TYPE_USHORT:
-            CallHelper<unsigned short>(dcCallShort, g_pCallVM, vf->m_ulAddr);
-            break;
-        case DATA_TYPE_INT:
-            CallHelper<int>(dcCallInt, g_pCallVM, vf->m_ulAddr);
-            break;
-        case DATA_TYPE_UINT:
-            CallHelper<unsigned int>(dcCallInt, g_pCallVM, vf->m_ulAddr);
-            break;
-        case DATA_TYPE_LONG:
-            CallHelper<long>(dcCallLong, g_pCallVM, vf->m_ulAddr);
-            break;
-        case DATA_TYPE_ULONG:
-            CallHelper<unsigned long>(dcCallLong, g_pCallVM, vf->m_ulAddr);
-            break;
-        case DATA_TYPE_LONG_LONG:
-            CallHelper<long long>(dcCallLongLong, g_pCallVM, vf->m_ulAddr);
-            break;
-        case DATA_TYPE_ULONG_LONG:
-
-            CallHelper<unsigned long long>(dcCallLongLong, g_pCallVM, vf->m_ulAddr);
-            break;
-        case DATA_TYPE_FLOAT:
-            CallHelper<float>(dcCallFloat, g_pCallVM, vf->m_ulAddr);
-            break;
-        case DATA_TYPE_DOUBLE:
-            CallHelper<double>(dcCallDouble, g_pCallVM, vf->m_ulAddr);
-            break;
-        case DATA_TYPE_POINTER:
-            CallHelper<void*>(dcCallPointer, g_pCallVM, vf->m_ulAddr);
-            break;
-        case DATA_TYPE_STRING:
-            CallHelper<const char*>(dcCallPointer, g_pCallVM, vf->m_ulAddr);
-            break;
-        default:
-            assert(!"Unknown function return type!");
-            break;
-        }
-    }
-*/
+    return dyno::ReturnAction::Ignored;
 }
 
-void ValveFunction::AddHook(CallbackT callable)
+void ValveFunction::AddHook(CallbackT callable, bool post)
 {
     dyno::HookManager& manager = dyno::HookManager::Get();
-    dyno::Hook* hookVoice = manager.hook((void*)m_ulAddr, [] {
+    dyno::Hook* hook = manager.hook((void*)m_ulAddr, [] {
         return new dyno::x64SystemVcall({dyno::DataType::Pointer}, dyno::DataType::Void);
     });
-    hookVoice->addCallback(dyno::HookType::Pre, (dyno::HookHandler*)&prehook);
-    g_HookMap[hookVoice] = this;
+    g_HookMap[hook] = this;
 
-    m_precallback = globals::callbackManager.CreateCallback("");
-    m_precallback->AddListener(callable);
+    if (post) {
+        hook->addCallback(dyno::HookType::Post, (dyno::HookHandler*)&HookHandler);
+
+        m_postcallback = globals::callbackManager.CreateCallback("");
+        m_postcallback->AddListener(callable);
+    } else {
+        hook->addCallback(dyno::HookType::Pre, (dyno::HookHandler*)&HookHandler);
+
+        m_precallback = globals::callbackManager.CreateCallback("");
+        m_precallback->AddListener(callable);
+    }
+
 }
 
 } // namespace counterstrikesharp

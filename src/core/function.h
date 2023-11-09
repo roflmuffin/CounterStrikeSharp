@@ -91,7 +91,7 @@ public:
     void SetSignature(const char* signature) { m_signature = signature; }
 
     void Call(ScriptContext& args, int offset = 0);
-    void AddHook(CallbackT callable);
+    void AddHook(CallbackT callable, bool post);
 
     void* m_ulAddr;
     std::vector<DataType_t> m_Args;
@@ -106,6 +106,7 @@ public:
     int m_offset;
     const char* m_signature;
     ScriptCallback* m_precallback;
+    ScriptCallback* m_postcallback;
 };
 
 }  // namespace counterstrikesharp
