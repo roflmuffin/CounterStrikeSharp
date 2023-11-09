@@ -25,8 +25,8 @@ public class CommandUtils
 
             // Do not execute command if we do not have the correct permissions.
             var methodInfo = handler?.GetMethodInfo();
-            var attr = methodInfo?.GetCustomAttribute(typeof(PermissionHelperAttribute), true) as PermissionHelperAttribute;
-            if (attr != null && !AdminManager.PlayerHasPermissions(entity, attr.RequiredPermissions))
+            var permissions = methodInfo?.GetCustomAttribute<PermissionHelperAttribute>()?.RequiredPermissions;
+            if (permissions != null && !AdminManager.PlayerHasPermissions(entity, permissions))
             {
                 entity.PrintToChat("[CSS] You do not have the correct permissions to execute this command.");
                 return;

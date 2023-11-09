@@ -21,10 +21,12 @@ namespace CounterStrikeSharp.API.Modules.Admin
 
     public static class AdminManager
     {
-        private static Dictionary<string, AdminData> _admins = new Dictionary<string, AdminData>();
+        // ulong == SteamID.SteamId64
+        private static Dictionary<ulong, AdminData> _admins;
 
         static AdminManager()
         {
+            _admins = new Dictionary<ulong, AdminData>();
             CommandUtils.AddStandaloneCommand("css_admins_reload", "Reloads the admin file.", ReloadAdminsCommand, false);
         }
 
@@ -40,7 +42,14 @@ namespace CounterStrikeSharp.API.Modules.Admin
         {
             try
             {
-                _admins = JsonSerializer.Deserialize<Dictionary<string, AdminData>>(File.ReadAllText(adminDataPath));
+                var adminsFromFile = JsonSerializer.Deserialize<Dictionary<string, AdminData>>(File.ReadAllText(adminDataPath));
+                if (adminsFromFile == null) { throw new FileNotFoundException(); }
+                foreach (var adminDef in adminsFromFile.Values)
+                {
+                    var authType = adminDef.AuthType;
+                    var steamidFromFile = (authType == "steamid64") ? new SteamID(ulong.Parse(adminDef.Identity)) : new SteamID(adminDef.Identity);
+                    _admins.Add(steamidFromFile.SteamId64, adminDef);
+                }
 
                 Console.WriteLine($"Loaded admin data with {_admins.Count} admins.");
             }
@@ -57,32 +66,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// <returns>AdminData class if data found, null if not.</returns>
         public static AdminData? GetPlayerAdminData(SteamID steamid)
         {
-            foreach (var admin in _admins)
-            {
-                var authType = admin.Value.AuthType;
-
-                var steamidFromFile = (authType == "steamid64") ? new SteamID(ulong.Parse(admin.Value.Identity)) : new SteamID(admin.Value.Identity);
-                switch (authType)
-                {
-                    case "steamid64": if (steamidFromFile.SteamId64 == steamid.SteamId64) return admin.Value; break;
-                    case "steamid3": if (steamidFromFile.SteamId3 == steamid.SteamId3) return admin.Value; break;
-                    case "steamid2": if (steamidFromFile.SteamId2 == steamid.SteamId2) return admin.Value; break;
-                    default: return null;
-                }
-            }
-
-            // For players who have no admin data, we just return null.
-            return null;
-        }
-
-        /// <summary>
-        /// Grabs the admin data for a player that was loaded from "configs/admins.json".
-        /// </summary>
-        /// <param name="adminName">Name of the admin. This value is set by the key of the AdminData object in the JSON file.</param>
-        /// <returns>AdminData class if data found, null if not.</returns>
-        public static AdminData? GetPlayerAdminData(string adminName)
-        {
-            return _admins.GetValueOrDefault(adminName);
+            return _admins.GetValueOrDefault(steamid.SteamId64);
         }
 
         /// <summary>
@@ -136,10 +120,10 @@ namespace CounterStrikeSharp.API.Modules.Admin
                 data.Flags = new List<string>();
                 data.Flags.AddRange(flags);
 
-                data.AuthType = "steamid3";
-                data.Identity = steamID.SteamId3;
+                data.AuthType = "steamid64";
+                data.Identity = steamID.SteamId64.ToString();
 
-                _admins[player.PlayerName] = data;
+                _admins[steamID.SteamId64] = data;
                 return;
             }
             else

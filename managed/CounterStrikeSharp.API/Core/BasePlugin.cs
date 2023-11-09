@@ -27,6 +27,7 @@ using CounterStrikeSharp.API.Core.Attributes.Registration;
 using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Events;
+using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Listeners;
 using CounterStrikeSharp.API.Modules.Timers;
 
@@ -166,8 +167,9 @@ namespace CounterStrikeSharp.API.Core
 
                 // Do not execute command if we do not have the correct permissions.
                 var methodInfo = handler?.GetMethodInfo();
-                var attr = methodInfo?.GetCustomAttribute(typeof(PermissionHelperAttribute), true) as PermissionHelperAttribute;
-                if (attr != null && !AdminManager.PlayerHasPermissions(entity, attr.RequiredPermissions))
+                var permissions = methodInfo?.GetCustomAttribute<PermissionHelperAttribute>()?.RequiredPermissions;
+
+                if (permissions != null && !AdminManager.PlayerHasPermissions(entity, permissions))
                 {
                     entity.PrintToChat("[CSS] You do not have the correct permissions to execute this command.");
                     return;
