@@ -170,7 +170,7 @@ namespace CounterStrikeSharp.API.Core
 
         private PluginContext? FindPluginByIdOrName(string query)
         {
-            
+
             PluginContext? plugin = null;
             if (Int32.TryParse(query, out var pluginNumber))
             {
@@ -186,9 +186,12 @@ namespace CounterStrikeSharp.API.Core
         [PermissionHelper("can_execute_css_commands")]
         private void OnCSSCommand(CCSPlayerController? caller, CommandInfo info)
         {
-            info.ReplyToCommand("  CounterStrikeSharp was created and is maintained by Michael \"roflmuffin\" Wilson.\n" +
+            var currentVersion = Api.GetVersion();
+
+            Utilities.ReplyToCommand(caller, "  CounterStrikeSharp was created and is maintained by Michael \"roflmuffin\" Wilson.\n" +
                 "  Counter-Strike Sharp uses code borrowed from SourceMod, Source.Python, FiveM, Saul Rennison and CS2Fixes.\n" +
-                "  See ACKNOWLEDGEMENTS.md for more information.", true);
+                "  See ACKNOWLEDGEMENTS.md for more information.\n" +
+                "  Current API Version: " + currentVersion, true);
             return;
         }
 
@@ -238,7 +241,7 @@ namespace CounterStrikeSharp.API.Core
                     {
                         path = Path.Combine(rootDir.FullName, path);
                     }
-                        
+
                     try
                     {
                         LoadPlugin(path);
@@ -247,7 +250,7 @@ namespace CounterStrikeSharp.API.Core
                     {
                         Console.WriteLine($"Failed to load plugin {path} with error {e}");
                     }
-                    
+
                     break;
                 }
 
