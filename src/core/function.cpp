@@ -248,7 +248,8 @@ dyno::ReturnAction HookHandler(dyno::HookType hookType, dyno::Hook& hook)
         fnMethodToCall(&callback->ScriptContextStruct());
 
         auto result = callback->ScriptContext().GetResult<HookResult>();
-        CSSHARP_CORE_INFO("Received hook callback result of {}, hook mode {}", result, (int)hookType);
+        CSSHARP_CORE_INFO("Received hook callback result of {}, hook mode {}", result,
+                          (int)hookType);
 
         if (result >= HookResult::Handled) {
             return dyno::ReturnAction::Supercede;
@@ -258,7 +259,8 @@ dyno::ReturnAction HookHandler(dyno::HookType hookType, dyno::Hook& hook)
     return dyno::ReturnAction::Ignored;
 }
 
-std::vector<dyno::DataObject> ConvertArgsToDynoHook(const std::vector<DataType_t>& dataTypes) {
+std::vector<dyno::DataObject> ConvertArgsToDynoHook(const std::vector<DataType_t>& dataTypes)
+{
     std::vector<dyno::DataObject> converted;
     converted.reserve(dataTypes.size());
 
@@ -273,22 +275,24 @@ void ValveFunction::AddHook(CallbackT callable, bool post)
 {
     dyno::HookManager& manager = dyno::HookManager::Get();
     dyno::Hook* hook = manager.hook((void*)m_ulAddr, [this] {
-        return new dyno::x64SystemVcall(ConvertArgsToDynoHook(m_Args), static_cast<dyno::DataType>(this->m_eReturnType));
+        return new dyno::x64SystemVcall(ConvertArgsToDynoHook(m_Args),
+                                        static_cast<dyno::DataType>(this->m_eReturnType));
     });
     g_HookMap[hook] = this;
+    hook->addCallback(dyno::HookType::Post, (dyno::HookHandler*)&HookHandler);
+    hook->addCallback(dyno::HookType::Pre, (dyno::HookHandler*)&HookHandler);
 
     if (post) {
-        hook->addCallback(dyno::HookType::Post, (dyno::HookHandler*)&HookHandler);
-
-        m_postcallback = globals::callbackManager.CreateCallback("");
+        if (m_postcallback == nullptr) {
+            m_postcallback = globals::callbackManager.CreateCallback("");
+        }
         m_postcallback->AddListener(callable);
     } else {
-        hook->addCallback(dyno::HookType::Pre, (dyno::HookHandler*)&HookHandler);
-
-        m_precallback = globals::callbackManager.CreateCallback("");
+        if (m_precallback == nullptr) {
+            m_precallback = globals::callbackManager.CreateCallback("");
+        }
         m_precallback->AddListener(callable);
     }
-
 }
 
 } // namespace counterstrikesharp

@@ -15,6 +15,7 @@
  */
 
 using System;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using CounterStrikeSharp.API;
@@ -45,6 +46,32 @@ namespace TestPlugin
         {
             Console.WriteLine(
                 $"Test Plugin has been loaded, and the hot reload flag was {hotReload}, path is {ModulePath}");
+
+            var x = DynamicDetour.Test;
+            DynamicDetour.Test.Hook((h) =>
+            {
+                var entity = h.GetParam<CEntityInstance>(0);
+
+                Console.WriteLine($"Removed the thingomabob {entity.DesignerName}");
+
+                return HookResult.Changed;
+            }, HookMode.Post);
+
+            var valveFunction = DynamicDetour.CreateValveFunctionBySignature(GameData.GetSignature("OnJump"),
+                DataType.DATA_TYPE_VOID, new[] { DataType.DATA_TYPE_POINTER, DataType.DATA_TYPE_POINTER }
+            );
+
+            var d = new DynamicDetour(valveFunction, DataType.DATA_TYPE_VOID,
+                new[] { DataType.DATA_TYPE_POINTER, DataType.DATA_TYPE_POINTER });
+
+            d.Hook((hook =>
+            {
+                var movement = hook.GetParam<CCSPlayer_MovementServices>(0);
+                Console.WriteLine(movement.Pawn.Value.Controller.Value.PlayerName);
+
+                return HookResult.Continue;
+            }), HookMode.Post);
+
 
             Console.WriteLine($"Max Players: {Server.MaxPlayers}");
 
@@ -138,7 +165,7 @@ namespace TestPlugin
                 // Set player to random colour
                 player.PlayerPawn.Value.Render = Color.FromArgb(Random.Shared.Next(0, 255),
                     Random.Shared.Next(0, 255), Random.Shared.Next(0, 255));
-                
+
                 Server.NextFrame(() =>
                 {
                     player.PrintToCenter(string.Join("\n", weapons.Select(x => x.Value.DesignerName)));

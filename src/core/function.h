@@ -105,8 +105,8 @@ public:
 
     int m_offset;
     const char* m_signature;
-    ScriptCallback* m_precallback;
-    ScriptCallback* m_postcallback;
+    ScriptCallback* m_precallback = nullptr;
+    ScriptCallback* m_postcallback = nullptr;
 };
 
 }  // namespace counterstrikesharp

@@ -56,7 +56,7 @@ ValveFunction *CreateVirtualFunctionBySignature(ScriptContext &script_context) {
     auto* function_addr = FindSignature(binary_name, signature_hex_string);
 
     if (function_addr == nullptr) {
-        script_context.ThrowNativeError("Could not find signature");
+        script_context.ThrowNativeError("Could not find signature %s", signature_hex_string);
         return nullptr;
     }
 
