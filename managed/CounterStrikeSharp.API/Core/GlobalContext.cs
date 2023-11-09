@@ -67,7 +67,7 @@ namespace CounterStrikeSharp.API.Core
 
             for (int i = 1; i <= 9; i++)
             {
-                Commands.AddStandaloneCommand("css_" + i, "Command Key Handler", (player, info) =>
+                CommandUtils.AddStandaloneCommand("css_" + i, "Command Key Handler", (player, info) =>
                 {
                     if (player == null) return;
                     var key = Convert.ToInt32(info.GetArg(0).Split("_")[1]);
@@ -183,6 +183,7 @@ namespace CounterStrikeSharp.API.Core
             return plugin;
         }
 
+        [PermissionHelper("can_execute_css_commands")]
         private void OnCSSCommand(CCSPlayerController? caller, CommandInfo info)
         {
             info.ReplyToCommand("  CounterStrikeSharp was created and is maintained by Michael \"roflmuffin\" Wilson.\n" +
@@ -191,6 +192,7 @@ namespace CounterStrikeSharp.API.Core
             return;
         }
 
+        [PermissionHelper("can_execute_css_commands")]
         private void OnCSSPluginCommand(CCSPlayerController? caller, CommandInfo info)
         {
             switch (info.GetArg(1))
@@ -306,8 +308,8 @@ namespace CounterStrikeSharp.API.Core
 
         public void RegisterPluginCommands()
         {
-            Commands.AddStandaloneCommand("css", "Counter-Strike Sharp options.", OnCSSCommand, false);
-            Commands.AddStandaloneCommand("css_plugins", "Counter-Strike Sharp plugin options.", OnCSSPluginCommand, true);
+            CommandUtils.AddStandaloneCommand("css", "Counter-Strike Sharp options.", OnCSSCommand, false);
+            CommandUtils.AddStandaloneCommand("css_plugins", "Counter-Strike Sharp plugin options.", OnCSSPluginCommand, true);
         }
         
     }
