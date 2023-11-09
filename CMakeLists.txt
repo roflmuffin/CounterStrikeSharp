@@ -77,6 +77,7 @@ SET(SOURCE_FILES
         src/core/managers/server_manager.cpp
         src/core/managers/server_manager.h
         src/scripting/natives/natives_server.cpp
+        libraries/nlohmann/json.hpp
 )
 
 set(PROTO_DIRS -I${CMAKE_CURRENT_SOURCE_DIR}/libraries/GameTracking-CS2/Protobufs)

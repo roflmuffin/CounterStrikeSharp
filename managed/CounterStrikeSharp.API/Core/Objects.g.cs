@@ -424,14 +424,6 @@ public enum Class_T : uint
     NUM_CLASSIFY_CLASSES = 0x9,
 }
 
-public enum CLogicBranchListLogicBranchListenerLastState_t : uint
-{
-    LOGIC_BRANCH_LISTENER_NOT_INIT = 0x0,
-    LOGIC_BRANCH_LISTENER_ALL_TRUE = 0x1,
-    LOGIC_BRANCH_LISTENER_ALL_FALSE = 0x2,
-    LOGIC_BRANCH_LISTENER_MIXED = 0x3,
-}
-
 public enum ClosestPointTestType_t : uint
 {
     PARTICLE_CLOSEST_TYPE_BOX = 0x0,
@@ -451,88 +443,6 @@ public enum CommandExecMode_t : uint
     EXEC_LEVELSTART = 0x1,
     EXEC_PERIODIC = 0x2,
     EXEC_MODES_COUNT = 0x3,
-}
-
-public enum CompMatPropertyMutatorConditionType_t : uint
-{
-    COMP_MAT_MUTATOR_CONDITION_INPUT_CONTAINER_EXISTS = 0x0,
-    COMP_MAT_MUTATOR_CONDITION_INPUT_CONTAINER_VALUE_EXISTS = 0x1,
-    COMP_MAT_MUTATOR_CONDITION_INPUT_CONTAINER_VALUE_EQUALS = 0x2,
-}
-
-public enum CompMatPropertyMutatorType_t : uint
-{
-    COMP_MAT_PROPERTY_MUTATOR_INIT = 0x0,
-    COMP_MAT_PROPERTY_MUTATOR_COPY_MATCHING_KEYS = 0x1,
-    COMP_MAT_PROPERTY_MUTATOR_COPY_KEYS_WITH_SUFFIX = 0x2,
-    COMP_MAT_PROPERTY_MUTATOR_COPY_PROPERTY = 0x3,
-    COMP_MAT_PROPERTY_MUTATOR_SET_VALUE = 0x4,
-    COMP_MAT_PROPERTY_MUTATOR_GENERATE_TEXTURE = 0x5,
-    COMP_MAT_PROPERTY_MUTATOR_CONDITIONAL_MUTATORS = 0x6,
-    COMP_MAT_PROPERTY_MUTATOR_POP_INPUT_QUEUE = 0x7,
-    COMP_MAT_PROPERTY_MUTATOR_DRAW_TEXT = 0x8,
-    COMP_MAT_PROPERTY_MUTATOR_RANDOM_ROLL_INPUT_VARIABLES = 0x9,
-}
-
-public enum CompositeMaterialInputContainerSourceType_t : uint
-{
-    CONTAINER_SOURCE_TYPE_TARGET_MATERIAL = 0x0,
-    CONTAINER_SOURCE_TYPE_MATERIAL_FROM_TARGET_ATTR = 0x1,
-    CONTAINER_SOURCE_TYPE_SPECIFIC_MATERIAL = 0x2,
-    CONTAINER_SOURCE_TYPE_LOOSE_VARIABLES = 0x3,
-    CONTAINER_SOURCE_TYPE_VARIABLE_FROM_TARGET_ATTR = 0x4,
-    CONTAINER_SOURCE_TYPE_TARGET_INSTANCE_MATERIAL = 0x5,
-}
-
-public enum CompositeMaterialInputLooseVariableType_t : uint
-{
-    LOOSE_VARIABLE_TYPE_BOOLEAN = 0x0,
-    LOOSE_VARIABLE_TYPE_INTEGER1 = 0x1,
-    LOOSE_VARIABLE_TYPE_INTEGER2 = 0x2,
-    LOOSE_VARIABLE_TYPE_INTEGER3 = 0x3,
-    LOOSE_VARIABLE_TYPE_INTEGER4 = 0x4,
-    LOOSE_VARIABLE_TYPE_FLOAT1 = 0x5,
-    LOOSE_VARIABLE_TYPE_FLOAT2 = 0x6,
-    LOOSE_VARIABLE_TYPE_FLOAT3 = 0x7,
-    LOOSE_VARIABLE_TYPE_FLOAT4 = 0x8,
-    LOOSE_VARIABLE_TYPE_COLOR4 = 0x9,
-    LOOSE_VARIABLE_TYPE_STRING = 0xA,
-    LOOSE_VARIABLE_TYPE_SYSTEMVAR = 0xB,
-    LOOSE_VARIABLE_TYPE_RESOURCE_MATERIAL = 0xC,
-    LOOSE_VARIABLE_TYPE_RESOURCE_TEXTURE = 0xD,
-}
-
-public enum CompositeMaterialInputTextureType_t : uint
-{
-    INPUT_TEXTURE_TYPE_DEFAULT = 0x0,
-    INPUT_TEXTURE_TYPE_NORMALMAP = 0x1,
-    INPUT_TEXTURE_TYPE_COLOR = 0x2,
-    INPUT_TEXTURE_TYPE_MASKS = 0x3,
-    INPUT_TEXTURE_TYPE_ROUGHNESS = 0x4,
-    INPUT_TEXTURE_TYPE_PEARLESCENCE_MASK = 0x5,
-    INPUT_TEXTURE_TYPE_AO = 0x6,
-}
-
-public enum CompositeMaterialMatchFilterType_t : uint
-{
-    MATCH_FILTER_MATERIAL_ATTRIBUTE_EXISTS = 0x0,
-    MATCH_FILTER_MATERIAL_SHADER = 0x1,
-    MATCH_FILTER_MATERIAL_NAME_SUBSTR = 0x2,
-    MATCH_FILTER_MATERIAL_ATTRIBUTE_EQUALS = 0x3,
-    MATCH_FILTER_MATERIAL_PROPERTY_EXISTS = 0x4,
-    MATCH_FILTER_MATERIAL_PROPERTY_EQUALS = 0x5,
-}
-
-public enum CompositeMaterialVarSystemVar_t : uint
-{
-    COMPMATSYSVAR_COMPOSITETIME = 0x0,
-    COMPMATSYSVAR_EMPTY_RESOURCE_SPACER = 0x1,
-}
-
-public enum CRR_ResponseResponseEnum_t : uint
-{
-    MAX_RESPONSE_NAME = 0xC0,
-    MAX_RULE_NAME = 0x80,
 }
 
 public enum CSPlayerBlockingUseAction_t : uint
@@ -801,23 +711,6 @@ public enum EKillTypes_t : byte
     KILLTYPE_COUNT = 0x7,
 }
 
-public enum ELayoutNodeType : uint
-{
-    ROOT = 0x0,
-    STYLES = 0x1,
-    SCRIPT_BODY = 0x2,
-    SCRIPTS = 0x3,
-    SNIPPETS = 0x4,
-    INCLUDE = 0x5,
-    SNIPPET = 0x6,
-    PANEL = 0x7,
-    PANEL_ATTRIBUTE = 0x8,
-    PANEL_ATTRIBUTE_VALUE = 0x9,
-    REFERENCE_CONTENT = 0xA,
-    REFERENCE_COMPILED = 0xB,
-    REFERENCE_PASSTHROUGH = 0xC,
-}
-
 public enum EntFinderMethod_t : uint
 {
     ENT_FIND_METHOD_NEAREST = 0x0,
@@ -862,25 +755,6 @@ public enum EOverrideBlockLOS_t : uint
     BLOCK_LOS_DEFAULT = 0x0,
     BLOCK_LOS_FORCE_FALSE = 0x1,
     BLOCK_LOS_FORCE_TRUE = 0x2,
-}
-
-public enum EStyleNodeType : uint
-{
-    ROOT = 0x0,
-    EXPRESSION = 0x1,
-    PROPERTY = 0x2,
-    DEFINE = 0x3,
-    IMPORT = 0x4,
-    KEYFRAMES = 0x5,
-    KEYFRAME_SELECTOR = 0x6,
-    STYLE_SELECTOR = 0x7,
-    WHITESPACE = 0x8,
-    EXPRESSION_TEXT = 0x9,
-    EXPRESSION_URL = 0xA,
-    EXPRESSION_CONCAT = 0xB,
-    REFERENCE_CONTENT = 0xC,
-    REFERENCE_COMPILED = 0xD,
-    REFERENCE_PASSTHROUGH = 0xE,
 }
 
 public enum Explosions : uint
@@ -1117,25 +991,25 @@ public enum GameAnimEventIndex_t : uint
     AE_CL_BODYGROUP_SET_VALUE = 0x11,
     AE_SV_BODYGROUP_SET_VALUE = 0x12,
     AE_CL_BODYGROUP_SET_VALUE_CMODEL_WPN = 0x13,
-    AE_WPN_PRIMARYATTACK = 0x14,
-    AE_WPN_SECONDARYATTACK = 0x15,
-    AE_FIRE_INPUT = 0x16,
-    AE_CL_CLOTH_ATTR = 0x17,
-    AE_CL_CLOTH_GROUND_OFFSET = 0x18,
-    AE_CL_CLOTH_STIFFEN = 0x19,
-    AE_CL_CLOTH_EFFECT = 0x1A,
-    AE_CL_CREATE_ANIM_SCOPE_PROP = 0x1B,
-    AE_CL_WEAPON_TRANSITION_INTO_HAND = 0x1C,
-    AE_CL_BODYGROUP_SET_TO_CLIP = 0x1D,
-    AE_CL_BODYGROUP_SET_TO_NEXTCLIP = 0x1E,
-    AE_SV_SHOW_SILENCER = 0x1F,
-    AE_SV_ATTACH_SILENCER_COMPLETE = 0x20,
-    AE_SV_HIDE_SILENCER = 0x21,
-    AE_SV_DETACH_SILENCER_COMPLETE = 0x22,
-    AE_CL_EJECT_MAG = 0x23,
-    AE_WPN_COMPLETE_RELOAD = 0x24,
-    AE_WPN_HEALTHSHOT_INJECT = 0x25,
-    AE_CL_C4_SCREEN_TEXT = 0x26,
+    AE_WEAPON_PERFORM_ATTACK = 0x14,
+    AE_FIRE_INPUT = 0x15,
+    AE_CL_CLOTH_ATTR = 0x16,
+    AE_CL_CLOTH_GROUND_OFFSET = 0x17,
+    AE_CL_CLOTH_STIFFEN = 0x18,
+    AE_CL_CLOTH_EFFECT = 0x19,
+    AE_CL_CREATE_ANIM_SCOPE_PROP = 0x1A,
+    AE_CL_WEAPON_TRANSITION_INTO_HAND = 0x1B,
+    AE_CL_BODYGROUP_SET_TO_CLIP = 0x1C,
+    AE_CL_BODYGROUP_SET_TO_NEXTCLIP = 0x1D,
+    AE_SV_SHOW_SILENCER = 0x1E,
+    AE_SV_ATTACH_SILENCER_COMPLETE = 0x1F,
+    AE_SV_HIDE_SILENCER = 0x20,
+    AE_SV_DETACH_SILENCER_COMPLETE = 0x21,
+    AE_CL_EJECT_MAG = 0x22,
+    AE_WPN_COMPLETE_RELOAD = 0x23,
+    AE_WPN_HEALTHSHOT_INJECT = 0x24,
+    AE_CL_C4_SCREEN_TEXT = 0x25,
+    AE_GRENADE_THROW_COMPLETE = 0x26,
 }
 
 public enum gear_slot_t : uint
@@ -1227,28 +1101,6 @@ public enum Hull_t : uint
     HULL_SMALL = 0x9,
     NUM_HULLS = 0xA,
     HULL_NONE = 0xB,
-}
-
-public enum IChoreoServicesChoreoState_t : uint
-{
-    STATE_PRE_SCRIPT = 0x0,
-    STATE_WAIT_FOR_SCRIPT = 0x1,
-    STATE_WALK_TO_MARK = 0x2,
-    STATE_SYNCHRONIZE_SCRIPT = 0x3,
-    STATE_PLAY_SCRIPT = 0x4,
-    STATE_PLAY_SCRIPT_POST_IDLE = 0x5,
-    STATE_PLAY_SCRIPT_POST_IDLE_DONE = 0x6,
-}
-
-public enum IChoreoServicesScriptState_t : uint
-{
-    SCRIPT_PLAYING = 0x0,
-    SCRIPT_WAIT = 0x1,
-    SCRIPT_POST_IDLE = 0x2,
-    SCRIPT_CLEANUP = 0x3,
-    SCRIPT_WALK_TO_MARK = 0x4,
-    SCRIPT_RUN_TO_MARK = 0x5,
-    SCRIPT_CUSTOM_MOVE_TO_MARK = 0x6,
 }
 
 public enum IKChannelMode : uint
@@ -1560,32 +1412,6 @@ public enum ModelConfigAttachmentType_t : uint
     MODEL_CONFIG_ATTACHMENT_ROOT_RELATIVE = 0x1,
     MODEL_CONFIG_ATTACHMENT_BONEMERGE = 0x2,
     MODEL_CONFIG_ATTACHMENT_COUNT = 0x3,
-}
-
-public enum ModelSkeletonData_tBoneFlags_t : uint
-{
-    FLAG_NO_BONE_FLAGS = 0x0,
-    FLAG_BONEFLEXDRIVER = 0x4,
-    FLAG_CLOTH = 0x8,
-    FLAG_PHYSICS = 0x10,
-    FLAG_ATTACHMENT = 0x20,
-    FLAG_ANIMATION = 0x40,
-    FLAG_MESH = 0x80,
-    FLAG_HITBOX = 0x100,
-    FLAG_BONE_USED_BY_VERTEX_LOD0 = 0x400,
-    FLAG_BONE_USED_BY_VERTEX_LOD1 = 0x800,
-    FLAG_BONE_USED_BY_VERTEX_LOD2 = 0x1000,
-    FLAG_BONE_USED_BY_VERTEX_LOD3 = 0x2000,
-    FLAG_BONE_USED_BY_VERTEX_LOD4 = 0x4000,
-    FLAG_BONE_USED_BY_VERTEX_LOD5 = 0x8000,
-    FLAG_BONE_USED_BY_VERTEX_LOD6 = 0x10000,
-    FLAG_BONE_USED_BY_VERTEX_LOD7 = 0x20000,
-    FLAG_BONE_MERGE_READ = 0x40000,
-    FLAG_BONE_MERGE_WRITE = 0x80000,
-    FLAG_ALL_BONE_FLAGS = 0xFFFFF,
-    BLEND_PREALIGNED = 0x100000,
-    FLAG_RIGIDLENGTH = 0x200000,
-    FLAG_PROCEDURAL = 0x400000,
 }
 
 public enum ModifyDamageReturn_t : uint
@@ -2182,25 +2008,6 @@ public enum PerformanceMode_t : uint
     PM_REDUCED_GIBS = 0x3,
 }
 
-public enum PermModelInfo_tFlagEnum : uint
-{
-    FLAG_TRANSLUCENT = 0x1,
-    FLAG_TRANSLUCENT_TWO_PASS = 0x2,
-    FLAG_MODEL_IS_RUNTIME_COMBINED = 0x4,
-    FLAG_SOURCE1_IMPORT = 0x8,
-    FLAG_MODEL_PART_CHILD = 0x10,
-    FLAG_NAV_GEN_NONE = 0x20,
-    FLAG_NAV_GEN_HULL = 0x40,
-    FLAG_NO_FORCED_FADE = 0x800,
-    FLAG_HAS_SKINNED_MESHES = 0x400,
-    FLAG_DO_NOT_CAST_SHADOWS = 0x20000,
-    FLAG_FORCE_PHONEME_CROSSFADE = 0x1000,
-    FLAG_NO_ANIM_EVENTS = 0x100000,
-    FLAG_ANIMATION_DRIVEN_FLEXES = 0x200000,
-    FLAG_IMPLICIT_BIND_POSE_SEQUENCE = 0x400000,
-    FLAG_MODEL_DOC = 0x800000,
-}
-
 public enum PetGroundType_t : uint
 {
     PET_GROUND_NONE = 0x0,
@@ -2430,23 +2237,6 @@ public enum PulseValueType_t : uint
     PVAL_CURSOR_FLOW = 0xA,
     PVAL_ANY = 0xB,
     PVAL_COUNT = 0xC,
-}
-
-public enum QuestProgressReason : uint
-{
-    QUEST_NONINITIALIZED = 0x0,
-    QUEST_OK = 0x1,
-    QUEST_NOT_ENOUGH_PLAYERS = 0x2,
-    QUEST_WARMUP = 0x3,
-    QUEST_NOT_CONNECTED_TO_STEAM = 0x4,
-    QUEST_NONOFFICIAL_SERVER = 0x5,
-    QUEST_NO_ENTITLEMENT = 0x6,
-    QUEST_NO_QUEST = 0x7,
-    QUEST_PLAYER_IS_BOT = 0x8,
-    QUEST_WRONG_MAP = 0x9,
-    QUEST_WRONG_MODE = 0xA,
-    QUEST_NOT_SYNCED_WITH_SERVER = 0xB,
-    QUEST_REASON_MAX = 0xC,
 }
 
 public enum RagdollPoseControl : uint
@@ -2718,13 +2508,6 @@ public enum ShatterPanelMode : byte
     SHATTER_DRYWALL = 0x1,
 }
 
-public enum SimpleConstraintSoundProfileSimpleConstraintsSoundProfileKeypoints_t : uint
-{
-    kMIN_THRESHOLD = 0x0,
-    kMIN_FULL = 0x1,
-    kHIGHWATER = 0x2,
-}
-
 public enum SolidType_t : byte
 {
     SOLID_NONE = 0x0,
@@ -2807,7 +2590,7 @@ public enum SoundFlags_t : uint
     SOUND_CONTEXT_DANGER_APPROACH = 0x2000000,
     SOUND_CONTEXT_ALLIES_ONLY = 0x4000000,
     SOUND_CONTEXT_PANIC_NPCS = 0x8000000,
-    ALL_CONTEXTS = 0xFFFFFFFF,
+    ALL_CONTEXTS = 0xFFF00000,
     ALL_SCENTS = 0x0,
     ALL_SOUNDS = 0xFFFFF,
 }
@@ -2860,14 +2643,6 @@ public enum SpawnDebugRestrictionOverrideState_t : uint
     SPAWN_DEBUG_RESTRICT_IGNORE_TEMPLATE_DISTANCE_LOS_REQS = 0x2,
     SPAWN_DEBUG_RESTRICT_IGNORE_TEMPLATE_COOLDOWN_LIMITS = 0x4,
     SPAWN_DEBUG_RESTRICT_IGNORE_TARGET_COOLDOWN_LIMITS = 0x8,
-}
-
-public enum SpawnPointCoopEnemyBotDefaultBehavior_t : uint
-{
-    DEFEND_AREA = 0x0,
-    HUNT = 0x1,
-    CHARGE_ENEMY = 0x2,
-    DEFEND_INVESTIGATE = 0x3,
 }
 
 public enum SpriteCardPerParticleScale_t : uint
@@ -3284,37 +3059,6 @@ public enum vote_create_failed_t : uint
     VOTE_FAILED_MAX = 0x22,
 }
 
-public enum VPhysXAggregateData_tVPhysXFlagEnum_t : uint
-{
-    FLAG_IS_POLYSOUP_GEOMETRY = 0x1,
-    FLAG_LEVEL_COLLISION = 0x10,
-    FLAG_IGNORE_SCALE_OBSOLETE_DO_NOT_USE = 0x20,
-}
-
-public enum VPhysXBodyPart_tVPhysXFlagEnum_t : uint
-{
-    FLAG_STATIC = 0x1,
-    FLAG_KINEMATIC = 0x2,
-    FLAG_JOINT = 0x4,
-    FLAG_MASS = 0x8,
-    FLAG_ALWAYS_DYNAMIC_ON_CLIENT = 0x10,
-}
-
-public enum VPhysXConstraintParams_tEnumFlags0_t : uint
-{
-    FLAG0_SHIFT_INTERPENETRATE = 0x0,
-    FLAG0_SHIFT_CONSTRAIN = 0x1,
-    FLAG0_SHIFT_BREAKABLE_FORCE = 0x2,
-    FLAG0_SHIFT_BREAKABLE_TORQUE = 0x3,
-}
-
-public enum VPhysXJoint_tFlags_t : uint
-{
-    JOINT_FLAGS_NONE = 0x0,
-    JOINT_FLAGS_BODY1_FIXED = 0x1,
-    JOINT_FLAGS_USE_BLOCK_SOLVER = 0x2,
-}
-
 public enum WaterLevel_t : byte
 {
     WL_NotInWater = 0x0,
@@ -3384,12 +3128,20 @@ public enum WorldTextPanelVerticalAlign_t : uint
     WORLDTEXT_VERTICAL_ALIGN_BOTTOM = 0x2,
 }
 
+public partial class AnimationUpdateListHandle_t : NativeObject
+{
+    public AnimationUpdateListHandle_t (IntPtr pointer) : base(pointer) {}
+
+    // m_Value
+    public ref UInt32 Value => ref Schema.GetRef<UInt32>(this.Handle, "AnimationUpdateListHandle_t", "m_Value");
+
+}
+
 public partial class audioparams_t : NativeObject
 {
     public audioparams_t (IntPtr pointer) : base(pointer) {}
 
     // localSound
-    // MNetworkEncoder "coord"
     public Span<Vector> LocalSound => Schema.GetFixedArray<Vector>(this.Handle, "audioparams_t", "localSound", 8);
 
     // soundscapeIndex
@@ -3406,9 +3158,162 @@ public partial class audioparams_t : NativeObject
 
 }
 
+public partial class CAI_ChangeHintGroup : CBaseEntity
+{
+    public CAI_ChangeHintGroup (IntPtr pointer) : base(pointer) {}
+
+    // m_iSearchType
+    public ref Int32 SearchType => ref Schema.GetRef<Int32>(this.Handle, "CAI_ChangeHintGroup", "m_iSearchType");
+
+    // m_strSearchName
+    public string StrSearchName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CAI_ChangeHintGroup", "m_strSearchName"); }
+        set { Schema.SetString(this.Handle, "CAI_ChangeHintGroup", "m_strSearchName", value); }
+    }
+
+    // m_strNewHintGroup
+    public string StrNewHintGroup
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CAI_ChangeHintGroup", "m_strNewHintGroup"); }
+        set { Schema.SetString(this.Handle, "CAI_ChangeHintGroup", "m_strNewHintGroup", value); }
+    }
+
+    // m_flRadius
+    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CAI_ChangeHintGroup", "m_flRadius");
+
+}
+
+public partial class CAI_ChangeTarget : CBaseEntity
+{
+    public CAI_ChangeTarget (IntPtr pointer) : base(pointer) {}
+
+    // m_iszNewTarget
+    public string NewTarget
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CAI_ChangeTarget", "m_iszNewTarget"); }
+        set { Schema.SetString(this.Handle, "CAI_ChangeTarget", "m_iszNewTarget", value); }
+    }
+
+}
+
+public partial class CAI_Expresser : NativeObject
+{
+    public CAI_Expresser (IntPtr pointer) : base(pointer) {}
+
+    // m_flStopTalkTime
+    public ref float StopTalkTime => ref Schema.GetRef<float>(this.Handle, "CAI_Expresser", "m_flStopTalkTime");
+
+    // m_flStopTalkTimeWithoutDelay
+    public ref float StopTalkTimeWithoutDelay => ref Schema.GetRef<float>(this.Handle, "CAI_Expresser", "m_flStopTalkTimeWithoutDelay");
+
+    // m_flBlockedTalkTime
+    public ref float BlockedTalkTime => ref Schema.GetRef<float>(this.Handle, "CAI_Expresser", "m_flBlockedTalkTime");
+
+    // m_voicePitch
+    public ref Int32 VoicePitch => ref Schema.GetRef<Int32>(this.Handle, "CAI_Expresser", "m_voicePitch");
+
+    // m_flLastTimeAcceptedSpeak
+    public ref float LastTimeAcceptedSpeak => ref Schema.GetRef<float>(this.Handle, "CAI_Expresser", "m_flLastTimeAcceptedSpeak");
+
+    // m_bAllowSpeakingInterrupts
+    public ref bool AllowSpeakingInterrupts => ref Schema.GetRef<bool>(this.Handle, "CAI_Expresser", "m_bAllowSpeakingInterrupts");
+
+    // m_bConsiderSceneInvolvementAsSpeech
+    public ref bool ConsiderSceneInvolvementAsSpeech => ref Schema.GetRef<bool>(this.Handle, "CAI_Expresser", "m_bConsiderSceneInvolvementAsSpeech");
+
+    // m_nLastSpokenPriority
+    public ref Int32 LastSpokenPriority => ref Schema.GetRef<Int32>(this.Handle, "CAI_Expresser", "m_nLastSpokenPriority");
+
+    // m_pOuter
+    public CBaseFlex? Outer => Schema.GetPointer<CBaseFlex>(this.Handle, "CAI_Expresser", "m_pOuter");
+
+}
+
+public partial class CAI_ExpresserWithFollowup : CAI_Expresser
+{
+    public CAI_ExpresserWithFollowup (IntPtr pointer) : base(pointer) {}
+
+    // m_pPostponedFollowup
+    public ResponseFollowup? PostponedFollowup => Schema.GetPointer<ResponseFollowup>(this.Handle, "CAI_ExpresserWithFollowup", "m_pPostponedFollowup");
+
+}
+
+public partial class CAISound : CPointEntity
+{
+    public CAISound (IntPtr pointer) : base(pointer) {}
+
+    // m_iSoundType
+    public ref Int32 SoundType => ref Schema.GetRef<Int32>(this.Handle, "CAISound", "m_iSoundType");
+
+    // m_iSoundContext
+    public ref Int32 SoundContext => ref Schema.GetRef<Int32>(this.Handle, "CAISound", "m_iSoundContext");
+
+    // m_iVolume
+    public ref Int32 Volume => ref Schema.GetRef<Int32>(this.Handle, "CAISound", "m_iVolume");
+
+    // m_iSoundIndex
+    public ref Int32 SoundIndex => ref Schema.GetRef<Int32>(this.Handle, "CAISound", "m_iSoundIndex");
+
+    // m_flDuration
+    public ref float Duration => ref Schema.GetRef<float>(this.Handle, "CAISound", "m_flDuration");
+
+    // m_iszProxyEntityName
+    public string ProxyEntityName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CAISound", "m_iszProxyEntityName"); }
+        set { Schema.SetString(this.Handle, "CAISound", "m_iszProxyEntityName", value); }
+    }
+
+}
+
 public partial class CAK47 : CCSWeaponBaseGun
 {
     public CAK47 (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CAmbientGeneric : CPointEntity
+{
+    public CAmbientGeneric (IntPtr pointer) : base(pointer) {}
+
+    // m_radius
+    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CAmbientGeneric", "m_radius");
+
+    // m_flMaxRadius
+    public ref float MaxRadius => ref Schema.GetRef<float>(this.Handle, "CAmbientGeneric", "m_flMaxRadius");
+
+    // m_iSoundLevel
+    public ref soundlevel_t SoundLevel => ref Schema.GetRef<soundlevel_t>(this.Handle, "CAmbientGeneric", "m_iSoundLevel");
+
+    // m_dpv
+    public dynpitchvol_t Dpv => Schema.GetDeclaredClass<dynpitchvol_t>(this.Handle, "CAmbientGeneric", "m_dpv");
+
+    // m_fActive
+    public ref bool Active => ref Schema.GetRef<bool>(this.Handle, "CAmbientGeneric", "m_fActive");
+
+    // m_fLooping
+    public ref bool Looping => ref Schema.GetRef<bool>(this.Handle, "CAmbientGeneric", "m_fLooping");
+
+    // m_iszSound
+    public string Sound
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CAmbientGeneric", "m_iszSound"); }
+        set { Schema.SetString(this.Handle, "CAmbientGeneric", "m_iszSound", value); }
+    }
+
+    // m_sSourceEntName
+    public string SourceEntName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CAmbientGeneric", "m_sSourceEntName"); }
+        set { Schema.SetString(this.Handle, "CAmbientGeneric", "m_sSourceEntName", value); }
+    }
+
+    // m_hSoundSource
+    public CHandle<CBaseEntity> SoundSource => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CAmbientGeneric", "m_hSoundSource");
+
+    // m_nSoundSourceEntIndex
+    public CEntityIndex SoundSourceEntIndex => Schema.GetDeclaredClass<CEntityIndex>(this.Handle, "CAmbientGeneric", "m_nSoundSourceEntIndex");
 
 }
 
@@ -3417,145 +3322,69 @@ public partial class CAnimGraphNetworkedVariables : NativeObject
     public CAnimGraphNetworkedVariables (IntPtr pointer) : base(pointer) {}
 
     // m_PredNetBoolVariables
-    // MNetworkUserGroup "animationgraph"
-    // MNetworkSendProxyRecipientsFilter
-    // MNetworkChangeCallback "OnNetBoolVarChanged"
-    // MNetworkAlias "m_PredBoolVariables"
     public NetworkedVector<UInt32> PredNetBoolVariables => Schema.GetDeclaredClass<NetworkedVector<UInt32>>(this.Handle, "CAnimGraphNetworkedVariables", "m_PredNetBoolVariables");
 
     // m_PredNetByteVariables
-    // MNetworkUserGroup "animationgraph"
-    // MNetworkSendProxyRecipientsFilter
-    // MNetworkChangeCallback "OnNetByteVarChanged"
-    // MNetworkAlias "m_PredByteVariables"
     public NetworkedVector<byte> PredNetByteVariables => Schema.GetDeclaredClass<NetworkedVector<byte>>(this.Handle, "CAnimGraphNetworkedVariables", "m_PredNetByteVariables");
 
     // m_PredNetUInt16Variables
-    // MNetworkUserGroup "animationgraph"
-    // MNetworkSendProxyRecipientsFilter
-    // MNetworkChangeCallback "OnNetUInt16VarChanged"
-    // MNetworkAlias "m_PredUInt16Variables"
     public NetworkedVector<UInt16> PredNetUInt16Variables => Schema.GetDeclaredClass<NetworkedVector<UInt16>>(this.Handle, "CAnimGraphNetworkedVariables", "m_PredNetUInt16Variables");
 
     // m_PredNetIntVariables
-    // MNetworkUserGroup "animationgraph"
-    // MNetworkSendProxyRecipientsFilter
-    // MNetworkChangeCallback "OnNetIntVarChanged"
-    // MNetworkAlias "m_PredIntVariables"
     public NetworkedVector<Int32> PredNetIntVariables => Schema.GetDeclaredClass<NetworkedVector<Int32>>(this.Handle, "CAnimGraphNetworkedVariables", "m_PredNetIntVariables");
 
     // m_PredNetUInt32Variables
-    // MNetworkUserGroup "animationgraph"
-    // MNetworkSendProxyRecipientsFilter
-    // MNetworkChangeCallback "OnNetUInt32VarChanged"
-    // MNetworkAlias "m_PredUInt32Variables"
     public NetworkedVector<UInt32> PredNetUInt32Variables => Schema.GetDeclaredClass<NetworkedVector<UInt32>>(this.Handle, "CAnimGraphNetworkedVariables", "m_PredNetUInt32Variables");
 
     // m_PredNetUInt64Variables
-    // MNetworkUserGroup "animationgraph"
-    // MNetworkSendProxyRecipientsFilter
-    // MNetworkChangeCallback "OnNetUInt64VarChanged"
-    // MNetworkAlias "m_PredUInt64Variables"
     public NetworkedVector<UInt64> PredNetUInt64Variables => Schema.GetDeclaredClass<NetworkedVector<UInt64>>(this.Handle, "CAnimGraphNetworkedVariables", "m_PredNetUInt64Variables");
 
     // m_PredNetFloatVariables
-    // MNetworkUserGroup "animationgraph"
-    // MNetworkSendProxyRecipientsFilter
-    // MNetworkChangeCallback "OnNetFloatVarChanged"
-    // MNetworkAlias "m_PredFloatVariables"
     public NetworkedVector<float> PredNetFloatVariables => Schema.GetDeclaredClass<NetworkedVector<float>>(this.Handle, "CAnimGraphNetworkedVariables", "m_PredNetFloatVariables");
 
     // m_PredNetVectorVariables
-    // MNetworkUserGroup "animationgraph"
-    // MNetworkSendProxyRecipientsFilter
-    // MNetworkChangeCallback "OnNetVectorVarChanged"
-    // MNetworkAlias "m_PredVectorVariables"
     public NetworkedVector<Vector> PredNetVectorVariables => Schema.GetDeclaredClass<NetworkedVector<Vector>>(this.Handle, "CAnimGraphNetworkedVariables", "m_PredNetVectorVariables");
 
     // m_PredNetQuaternionVariables
-    // MNetworkUserGroup "animationgraph"
-    // MNetworkSendProxyRecipientsFilter
-    // MNetworkChangeCallback "OnNetQuaternionVarChanged"
-    // MNetworkAlias "m_PredQuaternionVariables"
     public NetworkedVector<Quaternion> PredNetQuaternionVariables => Schema.GetDeclaredClass<NetworkedVector<Quaternion>>(this.Handle, "CAnimGraphNetworkedVariables", "m_PredNetQuaternionVariables");
 
     // m_OwnerOnlyPredNetBoolVariables
-    // MNetworkUserGroup "animationgraph"
-    // MNetworkSendProxyRecipientsFilter
-    // MNetworkChangeCallback "OnNetOOBoolVarChanged"
-    // MNetworkAlias "m_OwnerOnlyPredNetBoolVariables"
     public NetworkedVector<UInt32> OwnerOnlyPredNetBoolVariables => Schema.GetDeclaredClass<NetworkedVector<UInt32>>(this.Handle, "CAnimGraphNetworkedVariables", "m_OwnerOnlyPredNetBoolVariables");
 
     // m_OwnerOnlyPredNetByteVariables
-    // MNetworkUserGroup "animationgraph"
-    // MNetworkSendProxyRecipientsFilter
-    // MNetworkChangeCallback "OnNetOOByteVarChanged"
-    // MNetworkAlias "m_OwnerOnlyPredNetByteVariables"
     public NetworkedVector<byte> OwnerOnlyPredNetByteVariables => Schema.GetDeclaredClass<NetworkedVector<byte>>(this.Handle, "CAnimGraphNetworkedVariables", "m_OwnerOnlyPredNetByteVariables");
 
     // m_OwnerOnlyPredNetUInt16Variables
-    // MNetworkUserGroup "animationgraph"
-    // MNetworkSendProxyRecipientsFilter
-    // MNetworkChangeCallback "OnNetOOUInt16VarChanged"
-    // MNetworkAlias "m_OwnerOnlyPredNetUInt16Variables"
     public NetworkedVector<UInt16> OwnerOnlyPredNetUInt16Variables => Schema.GetDeclaredClass<NetworkedVector<UInt16>>(this.Handle, "CAnimGraphNetworkedVariables", "m_OwnerOnlyPredNetUInt16Variables");
 
     // m_OwnerOnlyPredNetIntVariables
-    // MNetworkUserGroup "animationgraph"
-    // MNetworkSendProxyRecipientsFilter
-    // MNetworkChangeCallback "OnNetOOIntVarChanged"
-    // MNetworkAlias "m_OwnerOnlyPredNetIntVariables"
     public NetworkedVector<Int32> OwnerOnlyPredNetIntVariables => Schema.GetDeclaredClass<NetworkedVector<Int32>>(this.Handle, "CAnimGraphNetworkedVariables", "m_OwnerOnlyPredNetIntVariables");
 
     // m_OwnerOnlyPredNetUInt32Variables
-    // MNetworkUserGroup "animationgraph"
-    // MNetworkSendProxyRecipientsFilter
-    // MNetworkChangeCallback "OnNetOOUInt32VarChanged"
-    // MNetworkAlias "m_OwnerOnlyPredNetUInt32Variables"
     public NetworkedVector<UInt32> OwnerOnlyPredNetUInt32Variables => Schema.GetDeclaredClass<NetworkedVector<UInt32>>(this.Handle, "CAnimGraphNetworkedVariables", "m_OwnerOnlyPredNetUInt32Variables");
 
     // m_OwnerOnlyPredNetUInt64Variables
-    // MNetworkUserGroup "animationgraph"
-    // MNetworkSendProxyRecipientsFilter
-    // MNetworkChangeCallback "OnNetOOUInt64VarChanged"
-    // MNetworkAlias "m_OwnerOnlyPredNetUInt64Variables"
     public NetworkedVector<UInt64> OwnerOnlyPredNetUInt64Variables => Schema.GetDeclaredClass<NetworkedVector<UInt64>>(this.Handle, "CAnimGraphNetworkedVariables", "m_OwnerOnlyPredNetUInt64Variables");
 
     // m_OwnerOnlyPredNetFloatVariables
-    // MNetworkUserGroup "animationgraph"
-    // MNetworkSendProxyRecipientsFilter
-    // MNetworkChangeCallback "OnNetOOFloatVarChanged"
-    // MNetworkAlias "m_OwnerOnlyPredNetFloatVariables"
     public NetworkedVector<float> OwnerOnlyPredNetFloatVariables => Schema.GetDeclaredClass<NetworkedVector<float>>(this.Handle, "CAnimGraphNetworkedVariables", "m_OwnerOnlyPredNetFloatVariables");
 
     // m_OwnerOnlyPredNetVectorVariables
-    // MNetworkUserGroup "animationgraph"
-    // MNetworkSendProxyRecipientsFilter
-    // MNetworkChangeCallback "OnNetOOVectorVarChanged"
-    // MNetworkAlias "m_OwnerOnlyPredNetVectorVariables"
     public NetworkedVector<Vector> OwnerOnlyPredNetVectorVariables => Schema.GetDeclaredClass<NetworkedVector<Vector>>(this.Handle, "CAnimGraphNetworkedVariables", "m_OwnerOnlyPredNetVectorVariables");
 
     // m_OwnerOnlyPredNetQuaternionVariables
-    // MNetworkUserGroup "animationgraph"
-    // MNetworkSendProxyRecipientsFilter
-    // MNetworkChangeCallback "OnNetOOQuaternionVarChanged"
-    // MNetworkAlias "m_OwnerOnlyPredNetQuaternionVariables"
     public NetworkedVector<Quaternion> OwnerOnlyPredNetQuaternionVariables => Schema.GetDeclaredClass<NetworkedVector<Quaternion>>(this.Handle, "CAnimGraphNetworkedVariables", "m_OwnerOnlyPredNetQuaternionVariables");
 
     // m_nBoolVariablesCount
-    // MNetworkUserGroup "animationgraph"
     public ref Int32 BoolVariablesCount => ref Schema.GetRef<Int32>(this.Handle, "CAnimGraphNetworkedVariables", "m_nBoolVariablesCount");
 
     // m_nOwnerOnlyBoolVariablesCount
-    // MNetworkUserGroup "animationgraph"
     public ref Int32 OwnerOnlyBoolVariablesCount => ref Schema.GetRef<Int32>(this.Handle, "CAnimGraphNetworkedVariables", "m_nOwnerOnlyBoolVariablesCount");
 
     // m_nRandomSeedOffset
-    // MNetworkUserGroup "animationgraph"
     public ref Int32 RandomSeedOffset => ref Schema.GetRef<Int32>(this.Handle, "CAnimGraphNetworkedVariables", "m_nRandomSeedOffset");
 
     // m_flLastTeleportTime
-    // MNetworkUserGroup "animationgraph"
     public ref float LastTeleportTime => ref Schema.GetRef<float>(this.Handle, "CAnimGraphNetworkedVariables", "m_flLastTeleportTime");
 
 }
@@ -3574,8 +3403,10 @@ public partial class CAttributeList : NativeObject
     public CAttributeList (IntPtr pointer) : base(pointer) {}
 
     // m_Attributes
-    // MNetworkTypeAlias "CUtlVector< CEconItemAttribute >"
     public NetworkedVector<CEconItemAttribute> Attributes => Schema.GetDeclaredClass<NetworkedVector<CEconItemAttribute>>(this.Handle, "CAttributeList", "m_Attributes");
+
+    // m_pManager
+    public CAttributeManager? Manager => Schema.GetPointer<CAttributeManager>(this.Handle, "CAttributeList", "m_pManager");
 
 }
 
@@ -3583,11 +3414,17 @@ public partial class CAttributeManager : NativeObject
 {
     public CAttributeManager (IntPtr pointer) : base(pointer) {}
 
+    // m_Providers
+    public NetworkedVector<CHandle<CBaseEntity>> Providers => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CAttributeManager", "m_Providers");
+
     // m_iReapplyProvisionParity
     public ref Int32 ReapplyProvisionParity => ref Schema.GetRef<Int32>(this.Handle, "CAttributeManager", "m_iReapplyProvisionParity");
 
     // m_hOuter
     public CHandle<CBaseEntity> Outer => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CAttributeManager", "m_hOuter");
+
+    // m_bPreventLoopback
+    public ref bool PreventLoopback => ref Schema.GetRef<bool>(this.Handle, "CAttributeManager", "m_bPreventLoopback");
 
     // m_ProviderType
     public ref attributeprovidertypes_t ProviderType => ref Schema.GetRef<attributeprovidertypes_t>(this.Handle, "CAttributeManager", "m_ProviderType");
@@ -3599,15 +3436,12 @@ public partial class CBarnLight : CBaseModelEntity
     public CBarnLight (IntPtr pointer) : base(pointer) {}
 
     // m_bEnabled
-    // MNetworkChangeCallback "RenderingChanged"
     public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CBarnLight", "m_bEnabled");
 
     // m_nColorMode
-    // MNetworkChangeCallback "RenderingChanged"
     public ref Int32 ColorMode => ref Schema.GetRef<Int32>(this.Handle, "CBarnLight", "m_nColorMode");
 
     // m_Color
-    // MNetworkChangeCallback "RenderingChanged"
     public Color Color
     {
         get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CBarnLight", "m_Color"); }
@@ -3615,39 +3449,30 @@ public partial class CBarnLight : CBaseModelEntity
     }
 
     // m_flColorTemperature
-    // MNetworkChangeCallback "RenderingChanged"
     public ref float ColorTemperature => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flColorTemperature");
 
     // m_flBrightness
-    // MNetworkChangeCallback "RenderingChanged"
     public ref float Brightness => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flBrightness");
 
     // m_flBrightnessScale
-    // MNetworkChangeCallback "RenderingChanged"
     public ref float BrightnessScale => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flBrightnessScale");
 
     // m_nDirectLight
-    // MNetworkChangeCallback "RenderingChanged"
     public ref Int32 DirectLight => ref Schema.GetRef<Int32>(this.Handle, "CBarnLight", "m_nDirectLight");
 
     // m_nBakedShadowIndex
-    // MNetworkChangeCallback "RenderingChanged"
     public ref Int32 BakedShadowIndex => ref Schema.GetRef<Int32>(this.Handle, "CBarnLight", "m_nBakedShadowIndex");
 
     // m_nLuminaireShape
-    // MNetworkChangeCallback "RenderingChanged"
     public ref Int32 LuminaireShape => ref Schema.GetRef<Int32>(this.Handle, "CBarnLight", "m_nLuminaireShape");
 
     // m_flLuminaireSize
-    // MNetworkChangeCallback "RenderingChanged"
     public ref float LuminaireSize => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flLuminaireSize");
 
     // m_flLuminaireAnisotropy
-    // MNetworkChangeCallback "RenderingChanged"
     public ref float LuminaireAnisotropy => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flLuminaireAnisotropy");
 
     // m_LightStyleString
-    // MNetworkChangeCallback "StyleChanged"
     public string LightStyleString
     {
         get { return Schema.GetUtf8String(this.Handle, "CBarnLight", "m_LightStyleString"); }
@@ -3655,7 +3480,6 @@ public partial class CBarnLight : CBaseModelEntity
     }
 
     // m_flLightStyleStartTime
-    // MNetworkChangeCallback "RenderingChanged"
     public ref float LightStyleStartTime => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flLightStyleStartTime");
 
     // m_QueuedLightStyleStrings
@@ -3667,67 +3491,52 @@ public partial class CBarnLight : CBaseModelEntity
     // m_LightStyleTargets
     public NetworkedVector<CHandle<CBaseModelEntity>> LightStyleTargets => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseModelEntity>>>(this.Handle, "CBarnLight", "m_LightStyleTargets");
 
+    // m_StyleEvent
+    public Span<CEntityIOOutput> StyleEvent => Schema.GetFixedArray<CEntityIOOutput>(this.Handle, "CBarnLight", "m_StyleEvent", 4);
+
     // m_hLightCookie
-    // MNetworkChangeCallback "RenderingChanged"
     public CStrongHandle<InfoForResourceTypeCTextureBase> LightCookie => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CBarnLight", "m_hLightCookie");
 
     // m_flShape
-    // MNetworkChangeCallback "RenderingChanged"
     public ref float Shape => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flShape");
 
     // m_flSoftX
-    // MNetworkChangeCallback "RenderingChanged"
     public ref float SoftX => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flSoftX");
 
     // m_flSoftY
-    // MNetworkChangeCallback "RenderingChanged"
     public ref float SoftY => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flSoftY");
 
     // m_flSkirt
-    // MNetworkChangeCallback "RenderingChanged"
     public ref float Skirt => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flSkirt");
 
     // m_flSkirtNear
-    // MNetworkChangeCallback "RenderingChanged"
     public ref float SkirtNear => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flSkirtNear");
 
     // m_vSizeParams
-    // MNetworkChangeCallback "RenderingChanged"
-    // MNetworkBitCount "32"
     public Vector SizeParams => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vSizeParams");
 
     // m_flRange
-    // MNetworkChangeCallback "RenderingChanged"
-    // MNetworkBitCount "32"
     public ref float Range => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flRange");
 
     // m_vShear
-    // MNetworkChangeCallback "RenderingChanged"
-    // MNetworkBitCount "32"
     public Vector Shear => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vShear");
 
     // m_nBakeSpecularToCubemaps
     public ref Int32 BakeSpecularToCubemaps => ref Schema.GetRef<Int32>(this.Handle, "CBarnLight", "m_nBakeSpecularToCubemaps");
 
     // m_vBakeSpecularToCubemapsSize
-    // MNetworkChangeCallback "RenderingChanged"
-    // MNetworkBitCount "32"
     public Vector BakeSpecularToCubemapsSize => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vBakeSpecularToCubemapsSize");
 
     // m_nCastShadows
-    // MNetworkChangeCallback "RenderingChanged"
     public ref Int32 CastShadows => ref Schema.GetRef<Int32>(this.Handle, "CBarnLight", "m_nCastShadows");
 
     // m_nShadowMapSize
-    // MNetworkChangeCallback "RenderingChanged"
     public ref Int32 ShadowMapSize => ref Schema.GetRef<Int32>(this.Handle, "CBarnLight", "m_nShadowMapSize");
 
     // m_nShadowPriority
-    // MNetworkChangeCallback "RenderingChanged"
     public ref Int32 ShadowPriority => ref Schema.GetRef<Int32>(this.Handle, "CBarnLight", "m_nShadowPriority");
 
     // m_bContactShadow
-    // MNetworkChangeCallback "RenderingChanged"
     public ref bool ContactShadow => ref Schema.GetRef<bool>(this.Handle, "CBarnLight", "m_bContactShadow");
 
     // m_nBounceLight
@@ -3737,72 +3546,58 @@ public partial class CBarnLight : CBaseModelEntity
     public ref float BounceScale => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flBounceScale");
 
     // m_flMinRoughness
-    // MNetworkChangeCallback "RenderingChanged"
     public ref float MinRoughness => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flMinRoughness");
 
     // m_vAlternateColor
-    // MNetworkChangeCallback "RenderingChanged"
     public Vector AlternateColor => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vAlternateColor");
 
     // m_fAlternateColorBrightness
-    // MNetworkChangeCallback "RenderingChanged"
     public ref float AlternateColorBrightness => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_fAlternateColorBrightness");
 
     // m_nFog
-    // MNetworkChangeCallback "RenderingChanged"
     public ref Int32 Fog => ref Schema.GetRef<Int32>(this.Handle, "CBarnLight", "m_nFog");
 
     // m_flFogStrength
-    // MNetworkChangeCallback "RenderingChanged"
     public ref float FogStrength => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flFogStrength");
 
     // m_nFogShadows
-    // MNetworkChangeCallback "RenderingChanged"
     public ref Int32 FogShadows => ref Schema.GetRef<Int32>(this.Handle, "CBarnLight", "m_nFogShadows");
 
     // m_flFogScale
-    // MNetworkChangeCallback "RenderingChanged"
     public ref float FogScale => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flFogScale");
 
     // m_flFadeSizeStart
-    // MNetworkChangeCallback "RenderingChanged"
     public ref float FadeSizeStart => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flFadeSizeStart");
 
     // m_flFadeSizeEnd
-    // MNetworkChangeCallback "RenderingChanged"
     public ref float FadeSizeEnd => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flFadeSizeEnd");
 
     // m_flShadowFadeSizeStart
-    // MNetworkChangeCallback "RenderingChanged"
     public ref float ShadowFadeSizeStart => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flShadowFadeSizeStart");
 
     // m_flShadowFadeSizeEnd
-    // MNetworkChangeCallback "RenderingChanged"
     public ref float ShadowFadeSizeEnd => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flShadowFadeSizeEnd");
 
     // m_bPrecomputedFieldsValid
-    // MNetworkChangeCallback "RenderingChanged"
     public ref bool PrecomputedFieldsValid => ref Schema.GetRef<bool>(this.Handle, "CBarnLight", "m_bPrecomputedFieldsValid");
 
     // m_vPrecomputedBoundsMins
-    // MNetworkChangeCallback "RenderingChanged"
     public Vector PrecomputedBoundsMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedBoundsMins");
 
     // m_vPrecomputedBoundsMaxs
-    // MNetworkChangeCallback "RenderingChanged"
     public Vector PrecomputedBoundsMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedBoundsMaxs");
 
     // m_vPrecomputedOBBOrigin
-    // MNetworkChangeCallback "RenderingChanged"
     public Vector PrecomputedOBBOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin");
 
     // m_vPrecomputedOBBAngles
-    // MNetworkChangeCallback "RenderingChanged"
     public QAngle PrecomputedOBBAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles");
 
     // m_vPrecomputedOBBExtent
-    // MNetworkChangeCallback "RenderingChanged"
     public Vector PrecomputedOBBExtent => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent");
+
+    // m_bPvsModifyEntity
+    public ref bool PvsModifyEntity => ref Schema.GetRef<bool>(this.Handle, "CBarnLight", "m_bPvsModifyEntity");
 
 }
 
@@ -3816,8 +3611,20 @@ public partial class CBaseAnimGraph : CBaseModelEntity
     // m_bShouldAnimateDuringGameplayPause
     public ref bool ShouldAnimateDuringGameplayPause => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraph", "m_bShouldAnimateDuringGameplayPause");
 
+    // m_pChoreoServices
+    public IChoreoServices? ChoreoServices => Schema.GetPointer<IChoreoServices>(this.Handle, "CBaseAnimGraph", "m_pChoreoServices");
+
     // m_bAnimGraphUpdateEnabled
     public ref bool AnimGraphUpdateEnabled => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraph", "m_bAnimGraphUpdateEnabled");
+
+    // m_flMaxSlopeDistance
+    public ref float MaxSlopeDistance => ref Schema.GetRef<float>(this.Handle, "CBaseAnimGraph", "m_flMaxSlopeDistance");
+
+    // m_vLastSlopeCheckPos
+    public Vector LastSlopeCheckPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseAnimGraph", "m_vLastSlopeCheckPos");
+
+    // m_bAnimGraphDirty
+    public ref bool AnimGraphDirty => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraph", "m_bAnimGraphDirty");
 
     // m_vecForce
     public Vector Force => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseAnimGraph", "m_vecForce");
@@ -3829,7 +3636,6 @@ public partial class CBaseAnimGraph : CBaseModelEntity
     public PhysicsRagdollPose_t? RagdollPose => Schema.GetPointer<PhysicsRagdollPose_t>(this.Handle, "CBaseAnimGraph", "m_pRagdollPose");
 
     // m_bClientRagdoll
-    // MNetworkChangeCallback "OnClientRagdollChanged"
     public ref bool ClientRagdoll => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraph", "m_bClientRagdoll");
 
 }
@@ -3839,42 +3645,128 @@ public partial class CBaseAnimGraphController : CSkeletonAnimationController
     public CBaseAnimGraphController (IntPtr pointer) : base(pointer) {}
 
     // m_baseLayer
-    // MNetworkChangeCallback "baseAnimBaseLayerChangedCompat"
     public CNetworkedSequenceOperation BaseLayer => Schema.GetDeclaredClass<CNetworkedSequenceOperation>(this.Handle, "CBaseAnimGraphController", "m_baseLayer");
 
     // m_animGraphNetworkedVars
     public CAnimGraphNetworkedVariables AnimGraphNetworkedVars => Schema.GetDeclaredClass<CAnimGraphNetworkedVariables>(this.Handle, "CBaseAnimGraphController", "m_animGraphNetworkedVars");
 
+    // m_bSequenceFinished
+    public ref bool SequenceFinished => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraphController", "m_bSequenceFinished");
+
+    // m_flLastEventCycle
+    public ref float LastEventCycle => ref Schema.GetRef<float>(this.Handle, "CBaseAnimGraphController", "m_flLastEventCycle");
+
+    // m_flLastEventAnimTime
+    public ref float LastEventAnimTime => ref Schema.GetRef<float>(this.Handle, "CBaseAnimGraphController", "m_flLastEventAnimTime");
+
     // m_flPlaybackRate
-    // MNetworkBitCount "8"
-    // MNetworkMinValue "-4.000000"
-    // MNetworkMaxValue "12.000000"
-    // MNetworkEncodeFlags "5"
-    // MNetworkPriority "32"
-    // MNetworkChangeCallback "playbackRateChangedCompat"
     public float PlaybackRate => Schema.GetDeclaredClass<float>(this.Handle, "CBaseAnimGraphController", "m_flPlaybackRate");
 
+    // m_flPrevAnimTime
+    public ref float PrevAnimTime => ref Schema.GetRef<float>(this.Handle, "CBaseAnimGraphController", "m_flPrevAnimTime");
+
     // m_bClientSideAnimation
-    // MNetworkChangeCallback "clientSideAnimationChangedCompat"
     public ref bool ClientSideAnimation => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraphController", "m_bClientSideAnimation");
 
+    // m_bNetworkedAnimationInputsChanged
+    public ref bool NetworkedAnimationInputsChanged => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraphController", "m_bNetworkedAnimationInputsChanged");
+
     // m_nNewSequenceParity
-    // MNetworkPriority "32"
-    // MNetworkChangeCallback "clientSideAnimCycleResetCompat"
     public ref Int32 NewSequenceParity => ref Schema.GetRef<Int32>(this.Handle, "CBaseAnimGraphController", "m_nNewSequenceParity");
 
     // m_nResetEventsParity
-    // MNetworkPriority "32"
     public ref Int32 ResetEventsParity => ref Schema.GetRef<Int32>(this.Handle, "CBaseAnimGraphController", "m_nResetEventsParity");
 
     // m_nAnimLoopMode
     public ref AnimLoopMode_t AnimLoopMode => ref Schema.GetRef<AnimLoopMode_t>(this.Handle, "CBaseAnimGraphController", "m_nAnimLoopMode");
+
+    // m_hAnimationUpdate
+    public AnimationUpdateListHandle_t AnimationUpdate => Schema.GetDeclaredClass<AnimationUpdateListHandle_t>(this.Handle, "CBaseAnimGraphController", "m_hAnimationUpdate");
 
 }
 
 public partial class CBaseButton : CBaseToggle
 {
     public CBaseButton (IntPtr pointer) : base(pointer) {}
+
+    // m_angMoveEntitySpace
+    public QAngle MoveEntitySpace => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBaseButton", "m_angMoveEntitySpace");
+
+    // m_fStayPushed
+    public ref bool StayPushed => ref Schema.GetRef<bool>(this.Handle, "CBaseButton", "m_fStayPushed");
+
+    // m_fRotating
+    public ref bool Rotating => ref Schema.GetRef<bool>(this.Handle, "CBaseButton", "m_fRotating");
+
+    // m_ls
+    public locksound_t Ls => Schema.GetDeclaredClass<locksound_t>(this.Handle, "CBaseButton", "m_ls");
+
+    // m_sUseSound
+    public string UseSound
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBaseButton", "m_sUseSound"); }
+        set { Schema.SetString(this.Handle, "CBaseButton", "m_sUseSound", value); }
+    }
+
+    // m_sLockedSound
+    public string LockedSound
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBaseButton", "m_sLockedSound"); }
+        set { Schema.SetString(this.Handle, "CBaseButton", "m_sLockedSound", value); }
+    }
+
+    // m_sUnlockedSound
+    public string UnlockedSound
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBaseButton", "m_sUnlockedSound"); }
+        set { Schema.SetString(this.Handle, "CBaseButton", "m_sUnlockedSound", value); }
+    }
+
+    // m_bLocked
+    public ref bool Locked => ref Schema.GetRef<bool>(this.Handle, "CBaseButton", "m_bLocked");
+
+    // m_bDisabled
+    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CBaseButton", "m_bDisabled");
+
+    // m_flUseLockedTime
+    public ref float UseLockedTime => ref Schema.GetRef<float>(this.Handle, "CBaseButton", "m_flUseLockedTime");
+
+    // m_bSolidBsp
+    public ref bool SolidBsp => ref Schema.GetRef<bool>(this.Handle, "CBaseButton", "m_bSolidBsp");
+
+    // m_OnDamaged
+    public CEntityIOOutput OnDamaged => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseButton", "m_OnDamaged");
+
+    // m_OnPressed
+    public CEntityIOOutput OnPressed => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseButton", "m_OnPressed");
+
+    // m_OnUseLocked
+    public CEntityIOOutput OnUseLocked => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseButton", "m_OnUseLocked");
+
+    // m_OnIn
+    public CEntityIOOutput OnIn => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseButton", "m_OnIn");
+
+    // m_OnOut
+    public CEntityIOOutput OnOut => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseButton", "m_OnOut");
+
+    // m_nState
+    public ref Int32 State => ref Schema.GetRef<Int32>(this.Handle, "CBaseButton", "m_nState");
+
+    // m_hConstraint
+    public CHandle<CEntityInstance> Constraint => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CBaseButton", "m_hConstraint");
+
+    // m_hConstraintParent
+    public CHandle<CEntityInstance> ConstraintParent => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CBaseButton", "m_hConstraintParent");
+
+    // m_bForceNpcExclude
+    public ref bool ForceNpcExclude => ref Schema.GetRef<bool>(this.Handle, "CBaseButton", "m_bForceNpcExclude");
+
+    // m_sGlowEntity
+    public string SGlowEntity
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBaseButton", "m_sGlowEntity"); }
+        set { Schema.SetString(this.Handle, "CBaseButton", "m_sGlowEntity", value); }
+    }
 
     // m_glowEntity
     public CHandle<CBaseModelEntity> GlowEntity => Schema.GetDeclaredClass<CHandle<CBaseModelEntity>>(this.Handle, "CBaseButton", "m_glowEntity");
@@ -3919,17 +3811,82 @@ public partial class CBaseClientUIEntity : CBaseModelEntity
         set { Schema.SetString(this.Handle, "CBaseClientUIEntity", "m_PanelID", value); }
     }
 
+    // m_CustomOutput0
+    public CEntityIOOutput CustomOutput0 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput0");
+
+    // m_CustomOutput1
+    public CEntityIOOutput CustomOutput1 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput1");
+
+    // m_CustomOutput2
+    public CEntityIOOutput CustomOutput2 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput2");
+
+    // m_CustomOutput3
+    public CEntityIOOutput CustomOutput3 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput3");
+
+    // m_CustomOutput4
+    public CEntityIOOutput CustomOutput4 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput4");
+
+    // m_CustomOutput5
+    public CEntityIOOutput CustomOutput5 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput5");
+
+    // m_CustomOutput6
+    public CEntityIOOutput CustomOutput6 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput6");
+
+    // m_CustomOutput7
+    public CEntityIOOutput CustomOutput7 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput7");
+
+    // m_CustomOutput8
+    public CEntityIOOutput CustomOutput8 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput8");
+
+    // m_CustomOutput9
+    public CEntityIOOutput CustomOutput9 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput9");
+
 }
 
 public partial class CBaseCombatCharacter : CBaseFlex
 {
     public CBaseCombatCharacter (IntPtr pointer) : base(pointer) {}
 
+    // m_bForceServerRagdoll
+    public ref bool ForceServerRagdoll => ref Schema.GetRef<bool>(this.Handle, "CBaseCombatCharacter", "m_bForceServerRagdoll");
+
     // m_hMyWearables
     public NetworkedVector<CHandle<CEconWearable>> MyWearables => Schema.GetDeclaredClass<NetworkedVector<CHandle<CEconWearable>>>(this.Handle, "CBaseCombatCharacter", "m_hMyWearables");
 
     // m_flFieldOfView
     public ref float FieldOfView => ref Schema.GetRef<float>(this.Handle, "CBaseCombatCharacter", "m_flFieldOfView");
+
+    // m_impactEnergyScale
+    public ref float ImpactEnergyScale => ref Schema.GetRef<float>(this.Handle, "CBaseCombatCharacter", "m_impactEnergyScale");
+
+    // m_LastHitGroup
+    public ref HitGroup_t LastHitGroup => ref Schema.GetRef<HitGroup_t>(this.Handle, "CBaseCombatCharacter", "m_LastHitGroup");
+
+    // m_bApplyStressDamage
+    public ref bool ApplyStressDamage => ref Schema.GetRef<bool>(this.Handle, "CBaseCombatCharacter", "m_bApplyStressDamage");
+
+    // m_bloodColor
+    public ref Int32 BloodColor => ref Schema.GetRef<Int32>(this.Handle, "CBaseCombatCharacter", "m_bloodColor");
+
+    // m_navMeshID
+    public ref Int32 NavMeshID => ref Schema.GetRef<Int32>(this.Handle, "CBaseCombatCharacter", "m_navMeshID");
+
+    // m_iDamageCount
+    public ref Int32 DamageCount => ref Schema.GetRef<Int32>(this.Handle, "CBaseCombatCharacter", "m_iDamageCount");
+
+    // m_pVecRelationships
+    // m_strRelationships
+    public string StrRelationships
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBaseCombatCharacter", "m_strRelationships"); }
+        set { Schema.SetString(this.Handle, "CBaseCombatCharacter", "m_strRelationships", value); }
+    }
+
+    // m_eHull
+    public ref Hull_t Hull => ref Schema.GetRef<Hull_t>(this.Handle, "CBaseCombatCharacter", "m_eHull");
+
+    // m_nNavHullIdx
+    public ref UInt32 NavHullIdx => ref Schema.GetRef<UInt32>(this.Handle, "CBaseCombatCharacter", "m_nNavHullIdx");
 
 }
 
@@ -3985,11 +3942,152 @@ public partial class CBaseCSGrenadeProjectile : CBaseGrenade
     // m_vecExplodeEffectOrigin
     public Vector ExplodeEffectOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseCSGrenadeProjectile", "m_vecExplodeEffectOrigin");
 
+    // m_flSpawnTime
+    public ref float SpawnTime => ref Schema.GetRef<float>(this.Handle, "CBaseCSGrenadeProjectile", "m_flSpawnTime");
+
+    // m_unOGSExtraFlags
+    public ref byte OGSExtraFlags => ref Schema.GetRef<byte>(this.Handle, "CBaseCSGrenadeProjectile", "m_unOGSExtraFlags");
+
+    // m_bDetonationRecorded
+    public ref bool DetonationRecorded => ref Schema.GetRef<bool>(this.Handle, "CBaseCSGrenadeProjectile", "m_bDetonationRecorded");
+
+    // m_flDetonateTime
+    public ref float DetonateTime => ref Schema.GetRef<float>(this.Handle, "CBaseCSGrenadeProjectile", "m_flDetonateTime");
+
+    // m_nItemIndex
+    public ref UInt16 ItemIndex => ref Schema.GetRef<UInt16>(this.Handle, "CBaseCSGrenadeProjectile", "m_nItemIndex");
+
+    // m_vecOriginalSpawnLocation
+    public Vector OriginalSpawnLocation => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseCSGrenadeProjectile", "m_vecOriginalSpawnLocation");
+
+    // m_flLastBounceSoundTime
+    public ref float LastBounceSoundTime => ref Schema.GetRef<float>(this.Handle, "CBaseCSGrenadeProjectile", "m_flLastBounceSoundTime");
+
+    // m_vecGrenadeSpin
+    public Vector GrenadeSpin => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseCSGrenadeProjectile", "m_vecGrenadeSpin");
+
+    // m_vecLastHitSurfaceNormal
+    public Vector LastHitSurfaceNormal => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseCSGrenadeProjectile", "m_vecLastHitSurfaceNormal");
+
+    // m_nTicksAtZeroVelocity
+    public ref Int32 TicksAtZeroVelocity => ref Schema.GetRef<Int32>(this.Handle, "CBaseCSGrenadeProjectile", "m_nTicksAtZeroVelocity");
+
+}
+
+public partial class CBaseDMStart : CPointEntity
+{
+    public CBaseDMStart (IntPtr pointer) : base(pointer) {}
+
+    // m_Master
+    public string Master
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBaseDMStart", "m_Master"); }
+        set { Schema.SetString(this.Handle, "CBaseDMStart", "m_Master", value); }
+    }
+
 }
 
 public partial class CBaseDoor : CBaseToggle
 {
     public CBaseDoor (IntPtr pointer) : base(pointer) {}
+
+    // m_angMoveEntitySpace
+    public QAngle MoveEntitySpace => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBaseDoor", "m_angMoveEntitySpace");
+
+    // m_vecMoveDirParentSpace
+    public Vector MoveDirParentSpace => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseDoor", "m_vecMoveDirParentSpace");
+
+    // m_ls
+    public locksound_t Ls => Schema.GetDeclaredClass<locksound_t>(this.Handle, "CBaseDoor", "m_ls");
+
+    // m_bForceClosed
+    public ref bool ForceClosed => ref Schema.GetRef<bool>(this.Handle, "CBaseDoor", "m_bForceClosed");
+
+    // m_bDoorGroup
+    public ref bool DoorGroup => ref Schema.GetRef<bool>(this.Handle, "CBaseDoor", "m_bDoorGroup");
+
+    // m_bLocked
+    public ref bool Locked => ref Schema.GetRef<bool>(this.Handle, "CBaseDoor", "m_bLocked");
+
+    // m_bIgnoreDebris
+    public ref bool IgnoreDebris => ref Schema.GetRef<bool>(this.Handle, "CBaseDoor", "m_bIgnoreDebris");
+
+    // m_eSpawnPosition
+    public ref FuncDoorSpawnPos_t SpawnPosition => ref Schema.GetRef<FuncDoorSpawnPos_t>(this.Handle, "CBaseDoor", "m_eSpawnPosition");
+
+    // m_flBlockDamage
+    public ref float BlockDamage => ref Schema.GetRef<float>(this.Handle, "CBaseDoor", "m_flBlockDamage");
+
+    // m_NoiseMoving
+    public string NoiseMoving
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBaseDoor", "m_NoiseMoving"); }
+        set { Schema.SetString(this.Handle, "CBaseDoor", "m_NoiseMoving", value); }
+    }
+
+    // m_NoiseArrived
+    public string NoiseArrived
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBaseDoor", "m_NoiseArrived"); }
+        set { Schema.SetString(this.Handle, "CBaseDoor", "m_NoiseArrived", value); }
+    }
+
+    // m_NoiseMovingClosed
+    public string NoiseMovingClosed
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBaseDoor", "m_NoiseMovingClosed"); }
+        set { Schema.SetString(this.Handle, "CBaseDoor", "m_NoiseMovingClosed", value); }
+    }
+
+    // m_NoiseArrivedClosed
+    public string NoiseArrivedClosed
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBaseDoor", "m_NoiseArrivedClosed"); }
+        set { Schema.SetString(this.Handle, "CBaseDoor", "m_NoiseArrivedClosed", value); }
+    }
+
+    // m_ChainTarget
+    public string ChainTarget
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBaseDoor", "m_ChainTarget"); }
+        set { Schema.SetString(this.Handle, "CBaseDoor", "m_ChainTarget", value); }
+    }
+
+    // m_OnBlockedClosing
+    public CEntityIOOutput OnBlockedClosing => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseDoor", "m_OnBlockedClosing");
+
+    // m_OnBlockedOpening
+    public CEntityIOOutput OnBlockedOpening => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseDoor", "m_OnBlockedOpening");
+
+    // m_OnUnblockedClosing
+    public CEntityIOOutput OnUnblockedClosing => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseDoor", "m_OnUnblockedClosing");
+
+    // m_OnUnblockedOpening
+    public CEntityIOOutput OnUnblockedOpening => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseDoor", "m_OnUnblockedOpening");
+
+    // m_OnFullyClosed
+    public CEntityIOOutput OnFullyClosed => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseDoor", "m_OnFullyClosed");
+
+    // m_OnFullyOpen
+    public CEntityIOOutput OnFullyOpen => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseDoor", "m_OnFullyOpen");
+
+    // m_OnClose
+    public CEntityIOOutput OnClose => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseDoor", "m_OnClose");
+
+    // m_OnOpen
+    public CEntityIOOutput OnOpen => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseDoor", "m_OnOpen");
+
+    // m_OnLockedUse
+    public CEntityIOOutput OnLockedUse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseDoor", "m_OnLockedUse");
+
+    // m_bLoopMoveSound
+    public ref bool LoopMoveSound => ref Schema.GetRef<bool>(this.Handle, "CBaseDoor", "m_bLoopMoveSound");
+
+    // m_bCreateNavObstacle
+    public ref bool CreateNavObstacle => ref Schema.GetRef<bool>(this.Handle, "CBaseDoor", "m_bCreateNavObstacle");
+
+    // m_isChaining
+    public ref bool IsChaining => ref Schema.GetRef<bool>(this.Handle, "CBaseDoor", "m_isChaining");
 
     // m_bIsUsable
     public ref bool IsUsable => ref Schema.GetRef<bool>(this.Handle, "CBaseDoor", "m_bIsUsable");
@@ -4001,25 +4099,47 @@ public partial class CBaseEntity : CEntityInstance
     public CBaseEntity (IntPtr pointer) : base(pointer) {}
 
     // m_CBodyComponent
-    // MNetworkUserGroup "CBodyComponent"
-    // MNetworkAlias "CBodyComponent"
-    // MNetworkTypeAlias "CBodyComponent"
-    // MNetworkPriority "48"
     public CBodyComponent? CBodyComponent => Schema.GetPointer<CBodyComponent>(this.Handle, "CBaseEntity", "m_CBodyComponent");
 
+    // m_NetworkTransmitComponent
+    public CNetworkTransmitComponent NetworkTransmitComponent => Schema.GetDeclaredClass<CNetworkTransmitComponent>(this.Handle, "CBaseEntity", "m_NetworkTransmitComponent");
+
+    // m_aThinkFunctions
+    public NetworkedVector<thinkfunc_t> ThinkFunctions => Schema.GetDeclaredClass<NetworkedVector<thinkfunc_t>>(this.Handle, "CBaseEntity", "m_aThinkFunctions");
+
+    // m_iCurrentThinkContext
+    public ref Int32 CurrentThinkContext => ref Schema.GetRef<Int32>(this.Handle, "CBaseEntity", "m_iCurrentThinkContext");
+
+    // m_nLastThinkTick
+    public ref Int32 LastThinkTick => ref Schema.GetRef<Int32>(this.Handle, "CBaseEntity", "m_nLastThinkTick");
+
+    // m_isSteadyState
+    public Span<byte> IsSteadyState => Schema.GetFixedArray<byte>(this.Handle, "CBaseEntity", "m_isSteadyState", 8);
+
+    // m_lastNetworkChange
+    public ref float LastNetworkChange => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_lastNetworkChange");
+
+    // m_ResponseContexts
+    public NetworkedVector<ResponseContext_t> ResponseContexts => Schema.GetDeclaredClass<NetworkedVector<ResponseContext_t>>(this.Handle, "CBaseEntity", "m_ResponseContexts");
+
+    // m_iszResponseContext
+    public string ResponseContext
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBaseEntity", "m_iszResponseContext"); }
+        set { Schema.SetString(this.Handle, "CBaseEntity", "m_iszResponseContext", value); }
+    }
+
     // m_iHealth
-    // MNetworkSerializer "ClampHealth"
-    // MNetworkUserGroup "Player"
-    // MNetworkPriority "32"
     public ref Int32 Health => ref Schema.GetRef<Int32>(this.Handle, "CBaseEntity", "m_iHealth");
 
     // m_iMaxHealth
     public ref Int32 MaxHealth => ref Schema.GetRef<Int32>(this.Handle, "CBaseEntity", "m_iMaxHealth");
 
     // m_lifeState
-    // MNetworkUserGroup "Player"
-    // MNetworkPriority "32"
     public ref byte LifeState => ref Schema.GetRef<byte>(this.Handle, "CBaseEntity", "m_lifeState");
+
+    // m_flDamageAccumulator
+    public ref float DamageAccumulator => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flDamageAccumulator");
 
     // m_bTakesDamage
     public ref bool TakesDamage => ref Schema.GetRef<bool>(this.Handle, "CBaseEntity", "m_bTakesDamage");
@@ -4033,20 +4153,42 @@ public partial class CBaseEntity : CEntityInstance
     // m_MoveType
     public ref MoveType_t MoveType => ref Schema.GetRef<MoveType_t>(this.Handle, "CBaseEntity", "m_MoveType");
 
+    // m_nWaterTouch
+    public ref byte WaterTouch => ref Schema.GetRef<byte>(this.Handle, "CBaseEntity", "m_nWaterTouch");
+
+    // m_nSlimeTouch
+    public ref byte SlimeTouch => ref Schema.GetRef<byte>(this.Handle, "CBaseEntity", "m_nSlimeTouch");
+
+    // m_bRestoreInHierarchy
+    public ref bool RestoreInHierarchy => ref Schema.GetRef<bool>(this.Handle, "CBaseEntity", "m_bRestoreInHierarchy");
+
+    // m_target
+    public string Target
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBaseEntity", "m_target"); }
+        set { Schema.SetString(this.Handle, "CBaseEntity", "m_target", value); }
+    }
+
+    // m_flMoveDoneTime
+    public ref float MoveDoneTime => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flMoveDoneTime");
+
+    // m_hDamageFilter
+    public CHandle<CBaseFilter> DamageFilter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CBaseEntity", "m_hDamageFilter");
+
+    // m_iszDamageFilterName
+    public string DamageFilterName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBaseEntity", "m_iszDamageFilterName"); }
+        set { Schema.SetString(this.Handle, "CBaseEntity", "m_iszDamageFilterName", value); }
+    }
+
     // m_nSubclassID
-    // MNetworkSendProxyRecipientsFilter
     public CUtlStringToken SubclassID => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CBaseEntity", "m_nSubclassID");
 
     // m_flAnimTime
-    // MNetworkPriority "0"
-    // MNetworkSerializer "animTimeSerializer"
-    // MNetworkSendProxyRecipientsFilter
     public ref float AnimTime => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flAnimTime");
 
     // m_flSimulationTime
-    // MNetworkPriority "1"
-    // MNetworkSerializer "simulationTimeSerializer"
-    // MNetworkSendProxyRecipientsFilter
     public ref float SimulationTime => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flSimulationTime");
 
     // m_flCreateTime
@@ -4058,70 +4200,87 @@ public partial class CBaseEntity : CEntityInstance
     // m_ubInterpolationFrame
     public ref byte InterpolationFrame => ref Schema.GetRef<byte>(this.Handle, "CBaseEntity", "m_ubInterpolationFrame");
 
+    // m_vPrevVPhysicsUpdatePos
+    public Vector PrevVPhysicsUpdatePos => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseEntity", "m_vPrevVPhysicsUpdatePos");
+
     // m_iTeamNum
     public ref byte TeamNum => ref Schema.GetRef<byte>(this.Handle, "CBaseEntity", "m_iTeamNum");
+
+    // m_iGlobalname
+    public string Globalname
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBaseEntity", "m_iGlobalname"); }
+        set { Schema.SetString(this.Handle, "CBaseEntity", "m_iGlobalname", value); }
+    }
+
+    // m_iSentToClients
+    public ref Int32 SentToClients => ref Schema.GetRef<Int32>(this.Handle, "CBaseEntity", "m_iSentToClients");
+
+    // m_flSpeed
+    public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flSpeed");
+
+    // m_sUniqueHammerID
+    public string UniqueHammerID
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBaseEntity", "m_sUniqueHammerID"); }
+        set { Schema.SetString(this.Handle, "CBaseEntity", "m_sUniqueHammerID", value); }
+    }
 
     // m_spawnflags
     public ref UInt32 Spawnflags => ref Schema.GetRef<UInt32>(this.Handle, "CBaseEntity", "m_spawnflags");
 
     // m_nNextThinkTick
-    // MNetworkUserGroup "LocalPlayerExclusive"
+    public ref Int32 NextThinkTick => ref Schema.GetRef<Int32>(this.Handle, "CBaseEntity", "m_nNextThinkTick");
+
+    // m_nSimulationTick
+    public ref Int32 SimulationTick => ref Schema.GetRef<Int32>(this.Handle, "CBaseEntity", "m_nSimulationTick");
+
+    // m_OnKilled
+    public CEntityIOOutput OnKilled => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseEntity", "m_OnKilled");
+
     // m_fFlags
-    // MNetworkPriority "32"
-    // MNetworkUserGroup "Player"
     public ref UInt32 Flags => ref Schema.GetRef<UInt32>(this.Handle, "CBaseEntity", "m_fFlags");
 
+    // m_vecAbsVelocity
+    public Vector AbsVelocity => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseEntity", "m_vecAbsVelocity");
+
     // m_vecVelocity
-    // MNetworkUserGroup "LocalPlayerExclusive"
-    // MNetworkPriority "32"
     public CNetworkVelocityVector Velocity => Schema.GetDeclaredClass<CNetworkVelocityVector>(this.Handle, "CBaseEntity", "m_vecVelocity");
 
     // m_vecBaseVelocity
-    // MNetworkUserGroup "LocalPlayerExclusive"
     public Vector BaseVelocity => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseEntity", "m_vecBaseVelocity");
+
+    // m_nPushEnumCount
+    public ref Int32 PushEnumCount => ref Schema.GetRef<Int32>(this.Handle, "CBaseEntity", "m_nPushEnumCount");
+
+    // m_pCollision
+    public CCollisionProperty? Collision => Schema.GetPointer<CCollisionProperty>(this.Handle, "CBaseEntity", "m_pCollision");
 
     // m_hEffectEntity
     public CHandle<CBaseEntity> EffectEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBaseEntity", "m_hEffectEntity");
 
     // m_hOwnerEntity
-    // MNetworkPriority "32"
     public CHandle<CBaseEntity> OwnerEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBaseEntity", "m_hOwnerEntity");
 
     // m_fEffects
-    // MNetworkChangeCallback "OnEffectsChanged"
     public ref UInt32 Effects => ref Schema.GetRef<UInt32>(this.Handle, "CBaseEntity", "m_fEffects");
 
     // m_hGroundEntity
-    // MNetworkPriority "32"
-    // MNetworkUserGroup "Player"
     public CHandle<CBaseEntity> GroundEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBaseEntity", "m_hGroundEntity");
 
     // m_flFriction
-    // MNetworkBitCount "8"
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "4.000000"
-    // MNetworkEncodeFlags "1"
-    // MNetworkUserGroup "LocalPlayerExclusive"
     public ref float Friction => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flFriction");
 
     // m_flElasticity
-    // MNetworkEncoder "coord"
     public ref float Elasticity => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flElasticity");
 
     // m_flGravityScale
-    // MNetworkUserGroup "LocalPlayerExclusive"
     public ref float GravityScale => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flGravityScale");
 
     // m_flTimeScale
-    // MNetworkUserGroup "LocalPlayerExclusive"
     public ref float TimeScale => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flTimeScale");
 
     // m_flWaterLevel
-    // MNetworkUserGroup "Water"
-    // MNetworkBitCount "8"
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "1.000000"
-    // MNetworkEncodeFlags "8"
     public ref float WaterLevel => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flWaterLevel");
 
     // m_bSimulatedEveryTick
@@ -4130,8 +4289,68 @@ public partial class CBaseEntity : CEntityInstance
     // m_bAnimatedEveryTick
     public ref bool AnimatedEveryTick => ref Schema.GetRef<bool>(this.Handle, "CBaseEntity", "m_bAnimatedEveryTick");
 
+    // m_bDisableLowViolence
+    public ref bool DisableLowViolence => ref Schema.GetRef<bool>(this.Handle, "CBaseEntity", "m_bDisableLowViolence");
+
+    // m_nWaterType
+    public ref byte WaterType => ref Schema.GetRef<byte>(this.Handle, "CBaseEntity", "m_nWaterType");
+
+    // m_iEFlags
+    public ref Int32 EFlags => ref Schema.GetRef<Int32>(this.Handle, "CBaseEntity", "m_iEFlags");
+
+    // m_OnUser1
+    public CEntityIOOutput OnUser1 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseEntity", "m_OnUser1");
+
+    // m_OnUser2
+    public CEntityIOOutput OnUser2 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseEntity", "m_OnUser2");
+
+    // m_OnUser3
+    public CEntityIOOutput OnUser3 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseEntity", "m_OnUser3");
+
+    // m_OnUser4
+    public CEntityIOOutput OnUser4 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseEntity", "m_OnUser4");
+
+    // m_iInitialTeamNum
+    public ref Int32 InitialTeamNum => ref Schema.GetRef<Int32>(this.Handle, "CBaseEntity", "m_iInitialTeamNum");
+
     // m_flNavIgnoreUntilTime
     public ref float NavIgnoreUntilTime => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flNavIgnoreUntilTime");
+
+    // m_vecAngVelocity
+    public QAngle AngVelocity => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBaseEntity", "m_vecAngVelocity");
+
+    // m_bNetworkQuantizeOriginAndAngles
+    public ref bool NetworkQuantizeOriginAndAngles => ref Schema.GetRef<bool>(this.Handle, "CBaseEntity", "m_bNetworkQuantizeOriginAndAngles");
+
+    // m_bLagCompensate
+    public ref bool LagCompensate => ref Schema.GetRef<bool>(this.Handle, "CBaseEntity", "m_bLagCompensate");
+
+    // m_flOverriddenFriction
+    public ref float OverriddenFriction => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flOverriddenFriction");
+
+    // m_pBlocker
+    public CHandle<CBaseEntity> Blocker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBaseEntity", "m_pBlocker");
+
+    // m_flLocalTime
+    public ref float LocalTime => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flLocalTime");
+
+    // m_flVPhysicsUpdateLocalTime
+    public ref float VPhysicsUpdateLocalTime => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flVPhysicsUpdateLocalTime");
+
+}
+
+public partial class CBaseFilter : CLogicalEntity
+{
+    public CBaseFilter (IntPtr pointer) : base(pointer) {}
+
+    // m_bNegated
+    public ref bool Negated => ref Schema.GetRef<bool>(this.Handle, "CBaseFilter", "m_bNegated");
+
+    // m_OnPass
+    public CEntityIOOutput OnPass => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseFilter", "m_OnPass");
+
+    // m_OnFail
+    public CEntityIOOutput OnFail => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseFilter", "m_OnFail");
 
 }
 
@@ -4158,18 +4377,31 @@ public partial class CBaseFlex : CBaseAnimGraph
     public CBaseFlex (IntPtr pointer) : base(pointer) {}
 
     // m_flexWeight
-    // MNetworkBitCount "12"
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "1.000000"
-    // MNetworkEncodeFlags "1"
     public NetworkedVector<float> FlexWeight => Schema.GetDeclaredClass<NetworkedVector<float>>(this.Handle, "CBaseFlex", "m_flexWeight");
 
     // m_vLookTargetPosition
-    // MNetworkEncoder "coord"
     public Vector LookTargetPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseFlex", "m_vLookTargetPosition");
 
     // m_blinktoggle
     public ref bool Blinktoggle => ref Schema.GetRef<bool>(this.Handle, "CBaseFlex", "m_blinktoggle");
+
+    // m_flAllowResponsesEndTime
+    public ref float AllowResponsesEndTime => ref Schema.GetRef<float>(this.Handle, "CBaseFlex", "m_flAllowResponsesEndTime");
+
+    // m_flLastFlexAnimationTime
+    public ref float LastFlexAnimationTime => ref Schema.GetRef<float>(this.Handle, "CBaseFlex", "m_flLastFlexAnimationTime");
+
+    // m_nNextSceneEventId
+    public ref UInt32 NextSceneEventId => ref Schema.GetRef<UInt32>(this.Handle, "CBaseFlex", "m_nNextSceneEventId");
+
+    // m_bUpdateLayerPriorities
+    public ref bool UpdateLayerPriorities => ref Schema.GetRef<bool>(this.Handle, "CBaseFlex", "m_bUpdateLayerPriorities");
+
+}
+
+public partial class CBaseFlexAlias_funCBaseFlex : CBaseFlex
+{
+    public CBaseFlexAlias_funCBaseFlex (IntPtr pointer) : base(pointer) {}
 
 }
 
@@ -4177,28 +4409,87 @@ public partial class CBaseGrenade : CBaseFlex
 {
     public CBaseGrenade (IntPtr pointer) : base(pointer) {}
 
+    // m_OnPlayerPickup
+    public CEntityIOOutput OnPlayerPickup => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseGrenade", "m_OnPlayerPickup");
+
+    // m_OnExplode
+    public CEntityIOOutput OnExplode => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseGrenade", "m_OnExplode");
+
+    // m_bHasWarnedAI
+    public ref bool HasWarnedAI => ref Schema.GetRef<bool>(this.Handle, "CBaseGrenade", "m_bHasWarnedAI");
+
+    // m_bIsSmokeGrenade
+    public ref bool IsSmokeGrenade => ref Schema.GetRef<bool>(this.Handle, "CBaseGrenade", "m_bIsSmokeGrenade");
+
     // m_bIsLive
     public ref bool IsLive => ref Schema.GetRef<bool>(this.Handle, "CBaseGrenade", "m_bIsLive");
 
     // m_DmgRadius
-    // MNetworkBitCount "10"
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "1024.000000"
-    // MNetworkEncodeFlags "1"
     public ref float DmgRadius => ref Schema.GetRef<float>(this.Handle, "CBaseGrenade", "m_DmgRadius");
 
     // m_flDetonateTime
     public ref float DetonateTime => ref Schema.GetRef<float>(this.Handle, "CBaseGrenade", "m_flDetonateTime");
 
+    // m_flWarnAITime
+    public ref float WarnAITime => ref Schema.GetRef<float>(this.Handle, "CBaseGrenade", "m_flWarnAITime");
+
     // m_flDamage
-    // MNetworkBitCount "10"
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "256.000000"
-    // MNetworkEncodeFlags "1"
     public ref float Damage => ref Schema.GetRef<float>(this.Handle, "CBaseGrenade", "m_flDamage");
+
+    // m_iszBounceSound
+    public string BounceSound
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBaseGrenade", "m_iszBounceSound"); }
+        set { Schema.SetString(this.Handle, "CBaseGrenade", "m_iszBounceSound", value); }
+    }
+
+    // m_ExplosionSound
+    public string ExplosionSound
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBaseGrenade", "m_ExplosionSound"); }
+        set { Schema.SetString(this.Handle, "CBaseGrenade", "m_ExplosionSound", value); }
+    }
 
     // m_hThrower
     public CHandle<CCSPlayerPawn> Thrower => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CBaseGrenade", "m_hThrower");
+
+    // m_flNextAttack
+    public ref float NextAttack => ref Schema.GetRef<float>(this.Handle, "CBaseGrenade", "m_flNextAttack");
+
+    // m_hOriginalThrower
+    public CHandle<CCSPlayerPawn> OriginalThrower => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CBaseGrenade", "m_hOriginalThrower");
+
+}
+
+public partial class CBaseIssue : NativeObject
+{
+    public CBaseIssue (IntPtr pointer) : base(pointer) {}
+
+    // m_szTypeString
+    public string TypeString
+    {
+        get { return Schema.GetString(this.Handle, "CBaseIssue", "m_szTypeString"); }
+        set { Schema.SetString(this.Handle, "CBaseIssue", "m_szTypeString", value); }
+    }
+
+    // m_szDetailsString
+    public string DetailsString
+    {
+        get { return Schema.GetString(this.Handle, "CBaseIssue", "m_szDetailsString"); }
+        set { Schema.SetString(this.Handle, "CBaseIssue", "m_szDetailsString", value); }
+    }
+
+    // m_iNumYesVotes
+    public ref Int32 NumYesVotes => ref Schema.GetRef<Int32>(this.Handle, "CBaseIssue", "m_iNumYesVotes");
+
+    // m_iNumNoVotes
+    public ref Int32 NumNoVotes => ref Schema.GetRef<Int32>(this.Handle, "CBaseIssue", "m_iNumNoVotes");
+
+    // m_iNumPotentialVotes
+    public ref Int32 NumPotentialVotes => ref Schema.GetRef<Int32>(this.Handle, "CBaseIssue", "m_iNumPotentialVotes");
+
+    // m_pVoteController
+    public CVoteController? VoteController => Schema.GetPointer<CVoteController>(this.Handle, "CBaseIssue", "m_pVoteController");
 
 }
 
@@ -4207,16 +4498,16 @@ public partial class CBaseModelEntity : CBaseEntity
     public CBaseModelEntity (IntPtr pointer) : base(pointer) {}
 
     // m_CRenderComponent
-    // MNetworkUserGroup "CRenderComponent"
-    // MNetworkAlias "CRenderComponent"
-    // MNetworkTypeAlias "CRenderComponent"
     public CRenderComponent? CRenderComponent => Schema.GetPointer<CRenderComponent>(this.Handle, "CBaseModelEntity", "m_CRenderComponent");
 
     // m_CHitboxComponent
-    // MNetworkUserGroup "CHitboxComponent"
-    // MNetworkAlias "CHitboxComponent"
-    // MNetworkTypeAlias "CHitboxComponent"
     public CHitboxComponent CHitboxComponent => Schema.GetDeclaredClass<CHitboxComponent>(this.Handle, "CBaseModelEntity", "m_CHitboxComponent");
+
+    // m_flDissolveStartTime
+    public ref float DissolveStartTime => ref Schema.GetRef<float>(this.Handle, "CBaseModelEntity", "m_flDissolveStartTime");
+
+    // m_OnIgnite
+    public CEntityIOOutput OnIgnite => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseModelEntity", "m_OnIgnite");
 
     // m_nRenderMode
     public ref RenderMode_t RenderMode => ref Schema.GetRef<RenderMode_t>(this.Handle, "CBaseModelEntity", "m_nRenderMode");
@@ -4224,8 +4515,10 @@ public partial class CBaseModelEntity : CBaseEntity
     // m_nRenderFX
     public ref RenderFx_t RenderFX => ref Schema.GetRef<RenderFx_t>(this.Handle, "CBaseModelEntity", "m_nRenderFX");
 
+    // m_bAllowFadeInView
+    public ref bool AllowFadeInView => ref Schema.GetRef<bool>(this.Handle, "CBaseModelEntity", "m_bAllowFadeInView");
+
     // m_clrRender
-    // MNetworkChangeCallback "OnColorChanged"
     public Color Render
     {
         get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CBaseModelEntity", "m_clrRender"); }
@@ -4233,12 +4526,7 @@ public partial class CBaseModelEntity : CBaseEntity
     }
 
     // m_vecRenderAttributes
-    // MNetworkChangeCallback "OnRenderAttributesChanged"
     public NetworkedVector<EntityRenderAttribute_t> RenderAttributes => Schema.GetDeclaredClass<NetworkedVector<EntityRenderAttribute_t>>(this.Handle, "CBaseModelEntity", "m_vecRenderAttributes");
-
-    // m_LightGroup
-    // MNetworkChangeCallback "OnLightGroupChanged"
-    public CUtlStringToken LightGroup => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CBaseModelEntity", "m_LightGroup");
 
     // m_bRenderToCubemaps
     public ref bool RenderToCubemaps => ref Schema.GetRef<bool>(this.Handle, "CBaseModelEntity", "m_bRenderToCubemaps");
@@ -4286,9 +4574,75 @@ public partial class CBaseModelEntity : CBaseEntity
     public NetworkedVector<CHandle<CBaseModelEntity>> ConfigEntitiesToPropagateMaterialDecalsTo => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseModelEntity>>>(this.Handle, "CBaseModelEntity", "m_ConfigEntitiesToPropagateMaterialDecalsTo");
 
     // m_vecViewOffset
-    // MNetworkPriority "32"
-    // MNetworkUserGroup "Player"
     public CNetworkViewOffsetVector ViewOffset => Schema.GetDeclaredClass<CNetworkViewOffsetVector>(this.Handle, "CBaseModelEntity", "m_vecViewOffset");
+
+}
+
+public partial class CBaseMoveBehavior : CPathKeyFrame
+{
+    public CBaseMoveBehavior (IntPtr pointer) : base(pointer) {}
+
+    // m_iPositionInterpolator
+    public ref Int32 PositionInterpolator => ref Schema.GetRef<Int32>(this.Handle, "CBaseMoveBehavior", "m_iPositionInterpolator");
+
+    // m_iRotationInterpolator
+    public ref Int32 RotationInterpolator => ref Schema.GetRef<Int32>(this.Handle, "CBaseMoveBehavior", "m_iRotationInterpolator");
+
+    // m_flAnimStartTime
+    public ref float AnimStartTime => ref Schema.GetRef<float>(this.Handle, "CBaseMoveBehavior", "m_flAnimStartTime");
+
+    // m_flAnimEndTime
+    public ref float AnimEndTime => ref Schema.GetRef<float>(this.Handle, "CBaseMoveBehavior", "m_flAnimEndTime");
+
+    // m_flAverageSpeedAcrossFrame
+    public ref float AverageSpeedAcrossFrame => ref Schema.GetRef<float>(this.Handle, "CBaseMoveBehavior", "m_flAverageSpeedAcrossFrame");
+
+    // m_pCurrentKeyFrame
+    public CPathKeyFrame? CurrentKeyFrame => Schema.GetPointer<CPathKeyFrame>(this.Handle, "CBaseMoveBehavior", "m_pCurrentKeyFrame");
+
+    // m_pTargetKeyFrame
+    public CPathKeyFrame? TargetKeyFrame => Schema.GetPointer<CPathKeyFrame>(this.Handle, "CBaseMoveBehavior", "m_pTargetKeyFrame");
+
+    // m_pPreKeyFrame
+    public CPathKeyFrame? PreKeyFrame => Schema.GetPointer<CPathKeyFrame>(this.Handle, "CBaseMoveBehavior", "m_pPreKeyFrame");
+
+    // m_pPostKeyFrame
+    public CPathKeyFrame? PostKeyFrame => Schema.GetPointer<CPathKeyFrame>(this.Handle, "CBaseMoveBehavior", "m_pPostKeyFrame");
+
+    // m_flTimeIntoFrame
+    public ref float TimeIntoFrame => ref Schema.GetRef<float>(this.Handle, "CBaseMoveBehavior", "m_flTimeIntoFrame");
+
+    // m_iDirection
+    public ref Int32 Direction => ref Schema.GetRef<Int32>(this.Handle, "CBaseMoveBehavior", "m_iDirection");
+
+}
+
+public partial class CBasePlatTrain : CBaseToggle
+{
+    public CBasePlatTrain (IntPtr pointer) : base(pointer) {}
+
+    // m_NoiseMoving
+    public string NoiseMoving
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBasePlatTrain", "m_NoiseMoving"); }
+        set { Schema.SetString(this.Handle, "CBasePlatTrain", "m_NoiseMoving", value); }
+    }
+
+    // m_NoiseArrived
+    public string NoiseArrived
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBasePlatTrain", "m_NoiseArrived"); }
+        set { Schema.SetString(this.Handle, "CBasePlatTrain", "m_NoiseArrived", value); }
+    }
+
+    // m_volume
+    public ref float Volume => ref Schema.GetRef<float>(this.Handle, "CBasePlatTrain", "m_volume");
+
+    // m_flTWidth
+    public ref float TWidth => ref Schema.GetRef<float>(this.Handle, "CBasePlatTrain", "m_flTWidth");
+
+    // m_flTLength
+    public ref float TLength => ref Schema.GetRef<float>(this.Handle, "CBasePlatTrain", "m_flTLength");
 
 }
 
@@ -4296,30 +4650,81 @@ public partial class CBasePlayerController : CBaseEntity
 {
     public CBasePlayerController (IntPtr pointer) : base(pointer) {}
 
+    // m_nInButtonsWhichAreToggles
+    public ref UInt64 InButtonsWhichAreToggles => ref Schema.GetRef<UInt64>(this.Handle, "CBasePlayerController", "m_nInButtonsWhichAreToggles");
+
     // m_nTickBase
-    // MNetworkPriority "1"
-    // MNetworkUserGroup "LocalPlayerExclusive"
     public ref UInt32 TickBase => ref Schema.GetRef<UInt32>(this.Handle, "CBasePlayerController", "m_nTickBase");
 
     // m_hPawn
-    // MNetworkChangeCallback "OnPawnChanged"
     public CHandle<CBasePlayerPawn> Pawn => Schema.GetDeclaredClass<CHandle<CBasePlayerPawn>>(this.Handle, "CBasePlayerController", "m_hPawn");
 
+    // m_nSplitScreenSlot
+    public ref Int32 SplitScreenSlot => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerController", "m_nSplitScreenSlot");
+
+    // m_hSplitOwner
+    public CHandle<CBasePlayerController> SplitOwner => Schema.GetDeclaredClass<CHandle<CBasePlayerController>>(this.Handle, "CBasePlayerController", "m_hSplitOwner");
+
+    // m_hSplitScreenPlayers
+    public NetworkedVector<CHandle<CBasePlayerController>> SplitScreenPlayers => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBasePlayerController>>>(this.Handle, "CBasePlayerController", "m_hSplitScreenPlayers");
+
+    // m_bIsHLTV
+    public ref bool IsHLTV => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerController", "m_bIsHLTV");
+
     // m_iConnected
-    // MNetworkChangeCallback "OnConnectionStateChanged"
     public ref PlayerConnectedState Connected => ref Schema.GetRef<PlayerConnectedState>(this.Handle, "CBasePlayerController", "m_iConnected");
 
     // m_iszPlayerName
-    // MNetworkChangeCallback "OnPlayerControllerNameChanged"
     public string PlayerName
     {
         get { return Schema.GetString(this.Handle, "CBasePlayerController", "m_iszPlayerName"); }
         set { Schema.SetString(this.Handle, "CBasePlayerController", "m_iszPlayerName", value); }
     }
 
+    // m_szNetworkIDString
+    public string NetworkIDString
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBasePlayerController", "m_szNetworkIDString"); }
+        set { Schema.SetString(this.Handle, "CBasePlayerController", "m_szNetworkIDString", value); }
+    }
+
+    // m_fLerpTime
+    public ref float LerpTime => ref Schema.GetRef<float>(this.Handle, "CBasePlayerController", "m_fLerpTime");
+
+    // m_bLagCompensation
+    public ref bool LagCompensation => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerController", "m_bLagCompensation");
+
+    // m_bPredict
+    public ref bool Predict => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerController", "m_bPredict");
+
+    // m_bAutoKickDisabled
+    public ref bool AutoKickDisabled => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerController", "m_bAutoKickDisabled");
+
+    // m_bIsLowViolence
+    public ref bool IsLowViolence => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerController", "m_bIsLowViolence");
+
+    // m_bGamePaused
+    public ref bool GamePaused => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerController", "m_bGamePaused");
+
+    // m_nUsecTimestampLastUserCmdReceived
+    public ref Int64 UsecTimestampLastUserCmdReceived => ref Schema.GetRef<Int64>(this.Handle, "CBasePlayerController", "m_nUsecTimestampLastUserCmdReceived");
+
+    // m_iIgnoreGlobalChat
+    public ref ChatIgnoreType_t IgnoreGlobalChat => ref Schema.GetRef<ChatIgnoreType_t>(this.Handle, "CBasePlayerController", "m_iIgnoreGlobalChat");
+
+    // m_flLastPlayerTalkTime
+    public ref float LastPlayerTalkTime => ref Schema.GetRef<float>(this.Handle, "CBasePlayerController", "m_flLastPlayerTalkTime");
+
+    // m_flLastEntitySteadyState
+    public ref float LastEntitySteadyState => ref Schema.GetRef<float>(this.Handle, "CBasePlayerController", "m_flLastEntitySteadyState");
+
+    // m_nAvailableEntitySteadyState
+    public ref Int32 AvailableEntitySteadyState => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerController", "m_nAvailableEntitySteadyState");
+
+    // m_bHasAnySteadyStateEnts
+    public ref bool HasAnySteadyStateEnts => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerController", "m_bHasAnySteadyStateEnts");
+
     // m_steamID
-    // MNetworkEncoder "fixed64"
-    // MNetworkChangeCallback "OnSteamIDChanged"
     public ref UInt64 SteamID => ref Schema.GetRef<UInt64>(this.Handle, "CBasePlayerController", "m_steamID");
 
     // m_iDesiredFOV
@@ -4338,7 +4743,6 @@ public partial class CBasePlayerPawn : CBaseCombatCharacter
     public CPlayer_ItemServices? ItemServices => Schema.GetPointer<CPlayer_ItemServices>(this.Handle, "CBasePlayerPawn", "m_pItemServices");
 
     // m_pAutoaimServices
-    // MNetworkUserGroup "LocalPlayerExclusive"
     public CPlayer_AutoaimServices? AutoaimServices => Schema.GetPointer<CPlayer_AutoaimServices>(this.Handle, "CBasePlayerPawn", "m_pAutoaimServices");
 
     // m_pObserverServices
@@ -4360,22 +4764,49 @@ public partial class CBasePlayerPawn : CBaseCombatCharacter
     public CPlayer_MovementServices? MovementServices => Schema.GetPointer<CPlayer_MovementServices>(this.Handle, "CBasePlayerPawn", "m_pMovementServices");
 
     // m_ServerViewAngleChanges
-    // MNetworkUserGroup "LocalPlayerExclusive"
     public NetworkedVector<ViewAngleServerChange_t> ServerViewAngleChanges => Schema.GetDeclaredClass<NetworkedVector<ViewAngleServerChange_t>>(this.Handle, "CBasePlayerPawn", "m_ServerViewAngleChanges");
 
+    // m_nHighestGeneratedServerViewAngleChangeIndex
+    public ref UInt32 HighestGeneratedServerViewAngleChangeIndex => ref Schema.GetRef<UInt32>(this.Handle, "CBasePlayerPawn", "m_nHighestGeneratedServerViewAngleChangeIndex");
+
+    // v_angle
+    public QAngle V_angle => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBasePlayerPawn", "v_angle");
+
+    // v_anglePrevious
+    public QAngle V_anglePrevious => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBasePlayerPawn", "v_anglePrevious");
+
     // m_iHideHUD
-    // MNetworkUserGroup "LocalPlayerExclusive"
     public ref UInt32 HideHUD => ref Schema.GetRef<UInt32>(this.Handle, "CBasePlayerPawn", "m_iHideHUD");
 
     // m_skybox3d
-    // MNetworkUserGroup "LocalPlayerExclusive"
     public sky3dparams_t Skybox3d => Schema.GetDeclaredClass<sky3dparams_t>(this.Handle, "CBasePlayerPawn", "m_skybox3d");
+
+    // m_fTimeLastHurt
+    public ref float TimeLastHurt => ref Schema.GetRef<float>(this.Handle, "CBasePlayerPawn", "m_fTimeLastHurt");
 
     // m_flDeathTime
     public ref float DeathTime => ref Schema.GetRef<float>(this.Handle, "CBasePlayerPawn", "m_flDeathTime");
 
+    // m_fNextSuicideTime
+    public ref float NextSuicideTime => ref Schema.GetRef<float>(this.Handle, "CBasePlayerPawn", "m_fNextSuicideTime");
+
+    // m_fInitHUD
+    public ref bool InitHUD => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerPawn", "m_fInitHUD");
+
+    // m_pExpresser
+    public CAI_Expresser? Expresser => Schema.GetPointer<CAI_Expresser>(this.Handle, "CBasePlayerPawn", "m_pExpresser");
+
     // m_hController
     public CHandle<CBasePlayerController> Controller => Schema.GetDeclaredClass<CHandle<CBasePlayerController>>(this.Handle, "CBasePlayerPawn", "m_hController");
+
+    // m_fHltvReplayDelay
+    public ref float HltvReplayDelay => ref Schema.GetRef<float>(this.Handle, "CBasePlayerPawn", "m_fHltvReplayDelay");
+
+    // m_fHltvReplayEnd
+    public ref float HltvReplayEnd => ref Schema.GetRef<float>(this.Handle, "CBasePlayerPawn", "m_fHltvReplayEnd");
+
+    // m_iHltvReplayEntity
+    public CEntityIndex HltvReplayEntity => Schema.GetDeclaredClass<CEntityIndex>(this.Handle, "CBasePlayerPawn", "m_iHltvReplayEntity");
 
 }
 
@@ -4384,30 +4815,28 @@ public partial class CBasePlayerWeapon : CEconEntity
     public CBasePlayerWeapon (IntPtr pointer) : base(pointer) {}
 
     // m_nNextPrimaryAttackTick
-    // MNetworkUserGroup "LocalWeaponExclusive"
+    public ref Int32 NextPrimaryAttackTick => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeapon", "m_nNextPrimaryAttackTick");
+
     // m_flNextPrimaryAttackTickRatio
-    // MNetworkUserGroup "LocalWeaponExclusive"
     public ref float NextPrimaryAttackTickRatio => ref Schema.GetRef<float>(this.Handle, "CBasePlayerWeapon", "m_flNextPrimaryAttackTickRatio");
 
     // m_nNextSecondaryAttackTick
-    // MNetworkUserGroup "LocalWeaponExclusive"
+    public ref Int32 NextSecondaryAttackTick => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeapon", "m_nNextSecondaryAttackTick");
+
     // m_flNextSecondaryAttackTickRatio
-    // MNetworkUserGroup "LocalWeaponExclusive"
     public ref float NextSecondaryAttackTickRatio => ref Schema.GetRef<float>(this.Handle, "CBasePlayerWeapon", "m_flNextSecondaryAttackTickRatio");
 
     // m_iClip1
-    // MNetworkSerializer "minusone"
-    // MNetworkPriority "32"
     public ref Int32 Clip1 => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeapon", "m_iClip1");
 
     // m_iClip2
-    // MNetworkSerializer "minusone"
-    // MNetworkUserGroup "LocalWeaponExclusive"
     public ref Int32 Clip2 => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeapon", "m_iClip2");
 
     // m_pReserveAmmo
-    // MNetworkUserGroup "LocalWeaponExclusive"
     public Span<Int32> ReserveAmmo => Schema.GetFixedArray<Int32>(this.Handle, "CBasePlayerWeapon", "m_pReserveAmmo", 2);
+
+    // m_OnPlayerUse
+    public CEntityIOOutput OnPlayerUse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePlayerWeapon", "m_OnPlayerUse");
 
 }
 
@@ -4415,11 +4844,35 @@ public partial class CBaseProp : CBaseAnimGraph
 {
     public CBaseProp (IntPtr pointer) : base(pointer) {}
 
+    // m_bModelOverrodeBlockLOS
+    public ref bool ModelOverrodeBlockLOS => ref Schema.GetRef<bool>(this.Handle, "CBaseProp", "m_bModelOverrodeBlockLOS");
+
+    // m_iShapeType
+    public ref Int32 ShapeType => ref Schema.GetRef<Int32>(this.Handle, "CBaseProp", "m_iShapeType");
+
+    // m_bConformToCollisionBounds
+    public ref bool ConformToCollisionBounds => ref Schema.GetRef<bool>(this.Handle, "CBaseProp", "m_bConformToCollisionBounds");
+
+    // m_mPreferredCatchTransform
+    public matrix3x4_t MPreferredCatchTransform => Schema.GetDeclaredClass<matrix3x4_t>(this.Handle, "CBaseProp", "m_mPreferredCatchTransform");
+
 }
 
 public partial class CBasePropDoor : CDynamicProp
 {
     public CBasePropDoor (IntPtr pointer) : base(pointer) {}
+
+    // m_flAutoReturnDelay
+    public ref float AutoReturnDelay => ref Schema.GetRef<float>(this.Handle, "CBasePropDoor", "m_flAutoReturnDelay");
+
+    // m_hDoorList
+    public NetworkedVector<CHandle<CBasePropDoor>> DoorList => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBasePropDoor>>>(this.Handle, "CBasePropDoor", "m_hDoorList");
+
+    // m_nHardwareType
+    public ref Int32 HardwareType => ref Schema.GetRef<Int32>(this.Handle, "CBasePropDoor", "m_nHardwareType");
+
+    // m_bNeedsHardware
+    public ref bool NeedsHardware => ref Schema.GetRef<bool>(this.Handle, "CBasePropDoor", "m_bNeedsHardware");
 
     // m_eDoorState
     public ref DoorState_t DoorState => ref Schema.GetRef<DoorState_t>(this.Handle, "CBasePropDoor", "m_eDoorState");
@@ -4433,14 +4886,190 @@ public partial class CBasePropDoor : CDynamicProp
     // m_closedAngles
     public QAngle ClosedAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBasePropDoor", "m_closedAngles");
 
+    // m_hBlocker
+    public CHandle<CBaseEntity> Blocker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBasePropDoor", "m_hBlocker");
+
+    // m_bFirstBlocked
+    public ref bool FirstBlocked => ref Schema.GetRef<bool>(this.Handle, "CBasePropDoor", "m_bFirstBlocked");
+
+    // m_ls
+    public locksound_t Ls => Schema.GetDeclaredClass<locksound_t>(this.Handle, "CBasePropDoor", "m_ls");
+
+    // m_bForceClosed
+    public ref bool ForceClosed => ref Schema.GetRef<bool>(this.Handle, "CBasePropDoor", "m_bForceClosed");
+
+    // m_vecLatchWorldPosition
+    public Vector LatchWorldPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CBasePropDoor", "m_vecLatchWorldPosition");
+
+    // m_hActivator
+    public CHandle<CBaseEntity> Activator => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBasePropDoor", "m_hActivator");
+
+    // m_SoundMoving
+    public string SoundMoving
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBasePropDoor", "m_SoundMoving"); }
+        set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundMoving", value); }
+    }
+
+    // m_SoundOpen
+    public string SoundOpen
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBasePropDoor", "m_SoundOpen"); }
+        set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundOpen", value); }
+    }
+
+    // m_SoundClose
+    public string SoundClose
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBasePropDoor", "m_SoundClose"); }
+        set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundClose", value); }
+    }
+
+    // m_SoundLock
+    public string SoundLock
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBasePropDoor", "m_SoundLock"); }
+        set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundLock", value); }
+    }
+
+    // m_SoundUnlock
+    public string SoundUnlock
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBasePropDoor", "m_SoundUnlock"); }
+        set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundUnlock", value); }
+    }
+
+    // m_SoundLatch
+    public string SoundLatch
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBasePropDoor", "m_SoundLatch"); }
+        set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundLatch", value); }
+    }
+
+    // m_SoundPound
+    public string SoundPound
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBasePropDoor", "m_SoundPound"); }
+        set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundPound", value); }
+    }
+
+    // m_SoundJiggle
+    public string SoundJiggle
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBasePropDoor", "m_SoundJiggle"); }
+        set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundJiggle", value); }
+    }
+
+    // m_SoundLockedAnim
+    public string SoundLockedAnim
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBasePropDoor", "m_SoundLockedAnim"); }
+        set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundLockedAnim", value); }
+    }
+
+    // m_numCloseAttempts
+    public ref Int32 NumCloseAttempts => ref Schema.GetRef<Int32>(this.Handle, "CBasePropDoor", "m_numCloseAttempts");
+
+    // m_nPhysicsMaterial
+    public CUtlStringToken PhysicsMaterial => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CBasePropDoor", "m_nPhysicsMaterial");
+
+    // m_SlaveName
+    public string SlaveName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBasePropDoor", "m_SlaveName"); }
+        set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SlaveName", value); }
+    }
+
     // m_hMaster
     public CHandle<CBasePropDoor> Master => Schema.GetDeclaredClass<CHandle<CBasePropDoor>>(this.Handle, "CBasePropDoor", "m_hMaster");
+
+    // m_OnBlockedClosing
+    public CEntityIOOutput OnBlockedClosing => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePropDoor", "m_OnBlockedClosing");
+
+    // m_OnBlockedOpening
+    public CEntityIOOutput OnBlockedOpening => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePropDoor", "m_OnBlockedOpening");
+
+    // m_OnUnblockedClosing
+    public CEntityIOOutput OnUnblockedClosing => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePropDoor", "m_OnUnblockedClosing");
+
+    // m_OnUnblockedOpening
+    public CEntityIOOutput OnUnblockedOpening => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePropDoor", "m_OnUnblockedOpening");
+
+    // m_OnFullyClosed
+    public CEntityIOOutput OnFullyClosed => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePropDoor", "m_OnFullyClosed");
+
+    // m_OnFullyOpen
+    public CEntityIOOutput OnFullyOpen => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePropDoor", "m_OnFullyOpen");
+
+    // m_OnClose
+    public CEntityIOOutput OnClose => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePropDoor", "m_OnClose");
+
+    // m_OnOpen
+    public CEntityIOOutput OnOpen => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePropDoor", "m_OnOpen");
+
+    // m_OnLockedUse
+    public CEntityIOOutput OnLockedUse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePropDoor", "m_OnLockedUse");
+
+    // m_OnAjarOpen
+    public CEntityIOOutput OnAjarOpen => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePropDoor", "m_OnAjarOpen");
 
 }
 
 public partial class CBaseToggle : CBaseModelEntity
 {
     public CBaseToggle (IntPtr pointer) : base(pointer) {}
+
+    // m_toggle_state
+    public ref TOGGLE_STATE Toggle_state => ref Schema.GetRef<TOGGLE_STATE>(this.Handle, "CBaseToggle", "m_toggle_state");
+
+    // m_flMoveDistance
+    public ref float MoveDistance => ref Schema.GetRef<float>(this.Handle, "CBaseToggle", "m_flMoveDistance");
+
+    // m_flWait
+    public ref float Wait => ref Schema.GetRef<float>(this.Handle, "CBaseToggle", "m_flWait");
+
+    // m_flLip
+    public ref float Lip => ref Schema.GetRef<float>(this.Handle, "CBaseToggle", "m_flLip");
+
+    // m_bAlwaysFireBlockedOutputs
+    public ref bool AlwaysFireBlockedOutputs => ref Schema.GetRef<bool>(this.Handle, "CBaseToggle", "m_bAlwaysFireBlockedOutputs");
+
+    // m_vecPosition1
+    public Vector Position1 => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseToggle", "m_vecPosition1");
+
+    // m_vecPosition2
+    public Vector Position2 => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseToggle", "m_vecPosition2");
+
+    // m_vecMoveAng
+    public QAngle MoveAng => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBaseToggle", "m_vecMoveAng");
+
+    // m_vecAngle1
+    public QAngle Angle1 => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBaseToggle", "m_vecAngle1");
+
+    // m_vecAngle2
+    public QAngle Angle2 => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBaseToggle", "m_vecAngle2");
+
+    // m_flHeight
+    public ref float Height => ref Schema.GetRef<float>(this.Handle, "CBaseToggle", "m_flHeight");
+
+    // m_hActivator
+    public CHandle<CBaseEntity> Activator => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBaseToggle", "m_hActivator");
+
+    // m_vecFinalDest
+    public Vector FinalDest => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseToggle", "m_vecFinalDest");
+
+    // m_vecFinalAngle
+    public QAngle FinalAngle => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBaseToggle", "m_vecFinalAngle");
+
+    // m_movementType
+    public ref Int32 MovementType => ref Schema.GetRef<Int32>(this.Handle, "CBaseToggle", "m_movementType");
+
+    // m_sMaster
+    public string Master
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBaseToggle", "m_sMaster"); }
+        set { Schema.SetString(this.Handle, "CBaseToggle", "m_sMaster", value); }
+    }
 
 }
 
@@ -4451,6 +5080,37 @@ public partial class CBaseTrigger : CBaseToggle
     // m_bDisabled
     public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CBaseTrigger", "m_bDisabled");
 
+    // m_iFilterName
+    public string FilterName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBaseTrigger", "m_iFilterName"); }
+        set { Schema.SetString(this.Handle, "CBaseTrigger", "m_iFilterName", value); }
+    }
+
+    // m_hFilter
+    public CHandle<CBaseFilter> Filter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CBaseTrigger", "m_hFilter");
+
+    // m_OnStartTouch
+    public CEntityIOOutput OnStartTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseTrigger", "m_OnStartTouch");
+
+    // m_OnStartTouchAll
+    public CEntityIOOutput OnStartTouchAll => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseTrigger", "m_OnStartTouchAll");
+
+    // m_OnEndTouch
+    public CEntityIOOutput OnEndTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseTrigger", "m_OnEndTouch");
+
+    // m_OnEndTouchAll
+    public CEntityIOOutput OnEndTouchAll => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseTrigger", "m_OnEndTouchAll");
+
+    // m_OnTouching
+    public CEntityIOOutput OnTouching => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseTrigger", "m_OnTouching");
+
+    // m_OnNotTouching
+    public CEntityIOOutput OnNotTouching => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseTrigger", "m_OnNotTouching");
+
+    // m_hTouchingEntities
+    public NetworkedVector<CHandle<CBaseEntity>> TouchingEntities => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CBaseTrigger", "m_hTouchingEntities");
+
     // m_bClientSidePredicted
     public ref bool ClientSidePredicted => ref Schema.GetRef<bool>(this.Handle, "CBaseTrigger", "m_bClientSidePredicted");
 
@@ -4459,6 +5119,9 @@ public partial class CBaseTrigger : CBaseToggle
 public partial class CBaseViewModel : CBaseAnimGraph
 {
     public CBaseViewModel (IntPtr pointer) : base(pointer) {}
+
+    // m_vecLastFacing
+    public Vector LastFacing => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseViewModel", "m_vecLastFacing");
 
     // m_nViewModelIndex
     public ref UInt32 ViewModelIndex => ref Schema.GetRef<UInt32>(this.Handle, "CBaseViewModel", "m_nViewModelIndex");
@@ -4472,6 +5135,29 @@ public partial class CBaseViewModel : CBaseAnimGraph
     // m_hWeapon
     public CHandle<CBasePlayerWeapon> Weapon => Schema.GetDeclaredClass<CHandle<CBasePlayerWeapon>>(this.Handle, "CBaseViewModel", "m_hWeapon");
 
+    // m_sVMName
+    public string VMName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBaseViewModel", "m_sVMName"); }
+        set { Schema.SetString(this.Handle, "CBaseViewModel", "m_sVMName", value); }
+    }
+
+    // m_sAnimationPrefix
+    public string AnimationPrefix
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBaseViewModel", "m_sAnimationPrefix"); }
+        set { Schema.SetString(this.Handle, "CBaseViewModel", "m_sAnimationPrefix", value); }
+    }
+
+    // m_hOldLayerSequence
+    public ref Int32 OldLayerSequence => ref Schema.GetRef<Int32>(this.Handle, "CBaseViewModel", "m_hOldLayerSequence");
+
+    // m_oldLayer
+    public ref Int32 OldLayer => ref Schema.GetRef<Int32>(this.Handle, "CBaseViewModel", "m_oldLayer");
+
+    // m_oldLayerStartTime
+    public ref float OldLayerStartTime => ref Schema.GetRef<float>(this.Handle, "CBaseViewModel", "m_oldLayerStartTime");
+
     // m_hControlPanel
     public CHandle<CBaseEntity> ControlPanel => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBaseViewModel", "m_hControlPanel");
 
@@ -4482,14 +5168,16 @@ public partial class CBeam : CBaseModelEntity
     public CBeam (IntPtr pointer) : base(pointer) {}
 
     // m_flFrameRate
-    // MNetworkBitCount "10"
-    // MNetworkMinValue "-25.000000"
-    // MNetworkMaxValue "25.000000"
-    // MNetworkEncodeFlags "2"
     public ref float FrameRate => ref Schema.GetRef<float>(this.Handle, "CBeam", "m_flFrameRate");
 
     // m_flHDRColorScale
     public ref float HDRColorScale => ref Schema.GetRef<float>(this.Handle, "CBeam", "m_flHDRColorScale");
+
+    // m_flFireTime
+    public ref float FireTime => ref Schema.GetRef<float>(this.Handle, "CBeam", "m_flFireTime");
+
+    // m_flDamage
+    public ref float Damage => ref Schema.GetRef<float>(this.Handle, "CBeam", "m_flDamage");
 
     // m_nNumBeamEnts
     public ref byte NumBeamEnts => ref Schema.GetRef<byte>(this.Handle, "CBeam", "m_nNumBeamEnts");
@@ -4513,17 +5201,9 @@ public partial class CBeam : CBaseModelEntity
     public Span<AttachmentHandle_t> AttachIndex => Schema.GetFixedArray<AttachmentHandle_t>(this.Handle, "CBeam", "m_nAttachIndex", 10);
 
     // m_fWidth
-    // MNetworkBitCount "10"
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "102.300003"
-    // MNetworkEncodeFlags "2"
     public ref float Width => ref Schema.GetRef<float>(this.Handle, "CBeam", "m_fWidth");
 
     // m_fEndWidth
-    // MNetworkBitCount "10"
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "102.300003"
-    // MNetworkEncodeFlags "2"
     public ref float EndWidth => ref Schema.GetRef<float>(this.Handle, "CBeam", "m_fEndWidth");
 
     // m_fFadeLength
@@ -4533,31 +5213,15 @@ public partial class CBeam : CBaseModelEntity
     public ref float HaloScale => ref Schema.GetRef<float>(this.Handle, "CBeam", "m_fHaloScale");
 
     // m_fAmplitude
-    // MNetworkBitCount "8"
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "64.000000"
-    // MNetworkEncodeFlags "1"
     public ref float Amplitude => ref Schema.GetRef<float>(this.Handle, "CBeam", "m_fAmplitude");
 
     // m_fStartFrame
-    // MNetworkBitCount "8"
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "256.000000"
-    // MNetworkEncodeFlags "1"
     public ref float StartFrame => ref Schema.GetRef<float>(this.Handle, "CBeam", "m_fStartFrame");
 
     // m_fSpeed
-    // MNetworkBitCount "8"
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "100.000000"
     public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CBeam", "m_fSpeed");
 
     // m_flFrame
-    // MNetworkBitCount "20"
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "256.000000"
-    // MNetworkEncodeFlags "1"
-    // MNetworkPriority "32"
     public ref float Frame => ref Schema.GetRef<float>(this.Handle, "CBeam", "m_flFrame");
 
     // m_nClipStyle
@@ -4567,8 +5231,31 @@ public partial class CBeam : CBaseModelEntity
     public ref bool TurnedOff => ref Schema.GetRef<bool>(this.Handle, "CBeam", "m_bTurnedOff");
 
     // m_vecEndPos
-    // MNetworkEncoder "coord"
     public Vector EndPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CBeam", "m_vecEndPos");
+
+    // m_hEndEntity
+    public CHandle<CBaseEntity> EndEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBeam", "m_hEndEntity");
+
+    // m_nDissolveType
+    public ref Int32 DissolveType => ref Schema.GetRef<Int32>(this.Handle, "CBeam", "m_nDissolveType");
+
+}
+
+public partial class CBlood : CPointEntity
+{
+    public CBlood (IntPtr pointer) : base(pointer) {}
+
+    // m_vecSprayAngles
+    public QAngle SprayAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBlood", "m_vecSprayAngles");
+
+    // m_vecSprayDir
+    public Vector SprayDir => Schema.GetDeclaredClass<Vector>(this.Handle, "CBlood", "m_vecSprayDir");
+
+    // m_flAmount
+    public ref float Amount => ref Schema.GetRef<float>(this.Handle, "CBlood", "m_flAmount");
+
+    // m_Color
+    public ref Int32 Color => ref Schema.GetRef<Int32>(this.Handle, "CBlood", "m_Color");
 
 }
 
@@ -4579,6 +5266,9 @@ public partial class CBodyComponent : CEntityComponent
     // m_pSceneNode
     public CGameSceneNode? SceneNode => Schema.GetPointer<CGameSceneNode>(this.Handle, "CBodyComponent", "m_pSceneNode");
 
+    // __m_pChainEntity
+    public CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "CBodyComponent", "__m_pChainEntity");
+
 }
 
 public partial class CBodyComponentBaseAnimGraph : CBodyComponentSkeletonInstance
@@ -4588,11 +5278,17 @@ public partial class CBodyComponentBaseAnimGraph : CBodyComponentSkeletonInstanc
     // m_animationController
     public CBaseAnimGraphController AnimationController => Schema.GetDeclaredClass<CBaseAnimGraphController>(this.Handle, "CBodyComponentBaseAnimGraph", "m_animationController");
 
+    // __m_pChainEntity
+    public CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "CBodyComponentBaseAnimGraph", "__m_pChainEntity");
+
 }
 
 public partial class CBodyComponentBaseModelEntity : CBodyComponentSkeletonInstance
 {
     public CBodyComponentBaseModelEntity (IntPtr pointer) : base(pointer) {}
+
+    // __m_pChainEntity
+    public CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "CBodyComponentBaseModelEntity", "__m_pChainEntity");
 
 }
 
@@ -4603,6 +5299,9 @@ public partial class CBodyComponentPoint : CBodyComponent
     // m_sceneNode
     public CGameSceneNode SceneNode => Schema.GetDeclaredClass<CGameSceneNode>(this.Handle, "CBodyComponentPoint", "m_sceneNode");
 
+    // __m_pChainEntity
+    public CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "CBodyComponentPoint", "__m_pChainEntity");
+
 }
 
 public partial class CBodyComponentSkeletonInstance : CBodyComponent
@@ -4612,14 +5311,90 @@ public partial class CBodyComponentSkeletonInstance : CBodyComponent
     // m_skeletonInstance
     public CSkeletonInstance SkeletonInstance => Schema.GetDeclaredClass<CSkeletonInstance>(this.Handle, "CBodyComponentSkeletonInstance", "m_skeletonInstance");
 
+    // __m_pChainEntity
+    public CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "CBodyComponentSkeletonInstance", "__m_pChainEntity");
+
 }
 
 public partial class CBombTarget : CBaseTrigger
 {
     public CBombTarget (IntPtr pointer) : base(pointer) {}
 
+    // m_OnBombExplode
+    public CEntityIOOutput OnBombExplode => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBombTarget", "m_OnBombExplode");
+
+    // m_OnBombPlanted
+    public CEntityIOOutput OnBombPlanted => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBombTarget", "m_OnBombPlanted");
+
+    // m_OnBombDefused
+    public CEntityIOOutput OnBombDefused => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBombTarget", "m_OnBombDefused");
+
+    // m_bIsBombSiteB
+    public ref bool IsBombSiteB => ref Schema.GetRef<bool>(this.Handle, "CBombTarget", "m_bIsBombSiteB");
+
+    // m_bIsHeistBombTarget
+    public ref bool IsHeistBombTarget => ref Schema.GetRef<bool>(this.Handle, "CBombTarget", "m_bIsHeistBombTarget");
+
     // m_bBombPlantedHere
     public ref bool BombPlantedHere => ref Schema.GetRef<bool>(this.Handle, "CBombTarget", "m_bBombPlantedHere");
+
+    // m_szMountTarget
+    public string MountTarget
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBombTarget", "m_szMountTarget"); }
+        set { Schema.SetString(this.Handle, "CBombTarget", "m_szMountTarget", value); }
+    }
+
+    // m_hInstructorHint
+    public CHandle<CBaseEntity> InstructorHint => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBombTarget", "m_hInstructorHint");
+
+    // m_nBombSiteDesignation
+    public ref Int32 BombSiteDesignation => ref Schema.GetRef<Int32>(this.Handle, "CBombTarget", "m_nBombSiteDesignation");
+
+}
+
+public partial class CBot : NativeObject
+{
+    public CBot (IntPtr pointer) : base(pointer) {}
+
+    // m_pController
+    public CCSPlayerController? Controller => Schema.GetPointer<CCSPlayerController>(this.Handle, "CBot", "m_pController");
+
+    // m_pPlayer
+    public CCSPlayerPawn? Player => Schema.GetPointer<CCSPlayerPawn>(this.Handle, "CBot", "m_pPlayer");
+
+    // m_bHasSpawned
+    public ref bool HasSpawned => ref Schema.GetRef<bool>(this.Handle, "CBot", "m_bHasSpawned");
+
+    // m_id
+    public ref UInt32 Id => ref Schema.GetRef<UInt32>(this.Handle, "CBot", "m_id");
+
+    // m_isRunning
+    public ref bool IsRunning => ref Schema.GetRef<bool>(this.Handle, "CBot", "m_isRunning");
+
+    // m_isCrouching
+    public ref bool IsCrouching => ref Schema.GetRef<bool>(this.Handle, "CBot", "m_isCrouching");
+
+    // m_forwardSpeed
+    public ref float ForwardSpeed => ref Schema.GetRef<float>(this.Handle, "CBot", "m_forwardSpeed");
+
+    // m_leftSpeed
+    public ref float LeftSpeed => ref Schema.GetRef<float>(this.Handle, "CBot", "m_leftSpeed");
+
+    // m_verticalSpeed
+    public ref float VerticalSpeed => ref Schema.GetRef<float>(this.Handle, "CBot", "m_verticalSpeed");
+
+    // m_buttonFlags
+    public ref UInt64 ButtonFlags => ref Schema.GetRef<UInt64>(this.Handle, "CBot", "m_buttonFlags");
+
+    // m_jumpTimestamp
+    public ref float JumpTimestamp => ref Schema.GetRef<float>(this.Handle, "CBot", "m_jumpTimestamp");
+
+    // m_viewForward
+    public Vector ViewForward => Schema.GetDeclaredClass<Vector>(this.Handle, "CBot", "m_viewForward");
+
+    // m_postureStackIndex
+    public ref Int32 PostureStackIndex => ref Schema.GetRef<Int32>(this.Handle, "CBot", "m_postureStackIndex");
 
 }
 
@@ -4639,14 +5414,229 @@ public partial class CBreakable : CBaseModelEntity
 {
     public CBreakable (IntPtr pointer) : base(pointer) {}
 
+    // m_Material
+    public ref Materials Material => ref Schema.GetRef<Materials>(this.Handle, "CBreakable", "m_Material");
+
+    // m_hBreaker
+    public CHandle<CBaseEntity> Breaker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBreakable", "m_hBreaker");
+
+    // m_Explosion
+    public ref Explosions Explosion => ref Schema.GetRef<Explosions>(this.Handle, "CBreakable", "m_Explosion");
+
+    // m_iszSpawnObject
+    public string SpawnObject
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBreakable", "m_iszSpawnObject"); }
+        set { Schema.SetString(this.Handle, "CBreakable", "m_iszSpawnObject", value); }
+    }
+
+    // m_flPressureDelay
+    public ref float PressureDelay => ref Schema.GetRef<float>(this.Handle, "CBreakable", "m_flPressureDelay");
+
+    // m_iMinHealthDmg
+    public ref Int32 MinHealthDmg => ref Schema.GetRef<Int32>(this.Handle, "CBreakable", "m_iMinHealthDmg");
+
+    // m_iszPropData
+    public string PropData
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBreakable", "m_iszPropData"); }
+        set { Schema.SetString(this.Handle, "CBreakable", "m_iszPropData", value); }
+    }
+
+    // m_impactEnergyScale
+    public ref float ImpactEnergyScale => ref Schema.GetRef<float>(this.Handle, "CBreakable", "m_impactEnergyScale");
+
+    // m_nOverrideBlockLOS
+    public ref EOverrideBlockLOS_t OverrideBlockLOS => ref Schema.GetRef<EOverrideBlockLOS_t>(this.Handle, "CBreakable", "m_nOverrideBlockLOS");
+
+    // m_OnBreak
+    public CEntityIOOutput OnBreak => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBreakable", "m_OnBreak");
+
+    // m_flDmgModBullet
+    public ref float DmgModBullet => ref Schema.GetRef<float>(this.Handle, "CBreakable", "m_flDmgModBullet");
+
+    // m_flDmgModClub
+    public ref float DmgModClub => ref Schema.GetRef<float>(this.Handle, "CBreakable", "m_flDmgModClub");
+
+    // m_flDmgModExplosive
+    public ref float DmgModExplosive => ref Schema.GetRef<float>(this.Handle, "CBreakable", "m_flDmgModExplosive");
+
+    // m_flDmgModFire
+    public ref float DmgModFire => ref Schema.GetRef<float>(this.Handle, "CBreakable", "m_flDmgModFire");
+
+    // m_iszPhysicsDamageTableName
+    public string PhysicsDamageTableName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBreakable", "m_iszPhysicsDamageTableName"); }
+        set { Schema.SetString(this.Handle, "CBreakable", "m_iszPhysicsDamageTableName", value); }
+    }
+
+    // m_iszBasePropData
+    public string BasePropData
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBreakable", "m_iszBasePropData"); }
+        set { Schema.SetString(this.Handle, "CBreakable", "m_iszBasePropData", value); }
+    }
+
+    // m_iInteractions
+    public ref Int32 Interactions => ref Schema.GetRef<Int32>(this.Handle, "CBreakable", "m_iInteractions");
+
+    // m_PerformanceMode
+    public ref PerformanceMode_t PerformanceMode => ref Schema.GetRef<PerformanceMode_t>(this.Handle, "CBreakable", "m_PerformanceMode");
+
+    // m_hPhysicsAttacker
+    public CHandle<CBasePlayerPawn> PhysicsAttacker => Schema.GetDeclaredClass<CHandle<CBasePlayerPawn>>(this.Handle, "CBreakable", "m_hPhysicsAttacker");
+
+    // m_flLastPhysicsInfluenceTime
+    public ref float LastPhysicsInfluenceTime => ref Schema.GetRef<float>(this.Handle, "CBreakable", "m_flLastPhysicsInfluenceTime");
+
 }
 
 public partial class CBreakableProp : CBaseProp
 {
     public CBreakableProp (IntPtr pointer) : base(pointer) {}
 
+    // m_OnBreak
+    public CEntityIOOutput OnBreak => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBreakableProp", "m_OnBreak");
+
+    // m_OnTakeDamage
+    public CEntityIOOutput OnTakeDamage => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBreakableProp", "m_OnTakeDamage");
+
+    // m_impactEnergyScale
+    public ref float ImpactEnergyScale => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_impactEnergyScale");
+
+    // m_iMinHealthDmg
+    public ref Int32 MinHealthDmg => ref Schema.GetRef<Int32>(this.Handle, "CBreakableProp", "m_iMinHealthDmg");
+
+    // m_preferredCarryAngles
+    public QAngle PreferredCarryAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBreakableProp", "m_preferredCarryAngles");
+
+    // m_flPressureDelay
+    public ref float PressureDelay => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_flPressureDelay");
+
+    // m_hBreaker
+    public CHandle<CBaseEntity> Breaker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBreakableProp", "m_hBreaker");
+
+    // m_PerformanceMode
+    public ref PerformanceMode_t PerformanceMode => ref Schema.GetRef<PerformanceMode_t>(this.Handle, "CBreakableProp", "m_PerformanceMode");
+
+    // m_flDmgModBullet
+    public ref float DmgModBullet => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_flDmgModBullet");
+
+    // m_flDmgModClub
+    public ref float DmgModClub => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_flDmgModClub");
+
+    // m_flDmgModExplosive
+    public ref float DmgModExplosive => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_flDmgModExplosive");
+
+    // m_flDmgModFire
+    public ref float DmgModFire => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_flDmgModFire");
+
+    // m_iszPhysicsDamageTableName
+    public string PhysicsDamageTableName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBreakableProp", "m_iszPhysicsDamageTableName"); }
+        set { Schema.SetString(this.Handle, "CBreakableProp", "m_iszPhysicsDamageTableName", value); }
+    }
+
+    // m_iszBasePropData
+    public string BasePropData
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBreakableProp", "m_iszBasePropData"); }
+        set { Schema.SetString(this.Handle, "CBreakableProp", "m_iszBasePropData", value); }
+    }
+
+    // m_iInteractions
+    public ref Int32 Interactions => ref Schema.GetRef<Int32>(this.Handle, "CBreakableProp", "m_iInteractions");
+
+    // m_flPreventDamageBeforeTime
+    public ref float PreventDamageBeforeTime => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_flPreventDamageBeforeTime");
+
+    // m_bHasBreakPiecesOrCommands
+    public ref bool HasBreakPiecesOrCommands => ref Schema.GetRef<bool>(this.Handle, "CBreakableProp", "m_bHasBreakPiecesOrCommands");
+
+    // m_explodeDamage
+    public ref float ExplodeDamage => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_explodeDamage");
+
+    // m_explodeRadius
+    public ref float ExplodeRadius => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_explodeRadius");
+
+    // m_explosionDelay
+    public ref float ExplosionDelay => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_explosionDelay");
+
+    // m_explosionBuildupSound
+    public string ExplosionBuildupSound
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBreakableProp", "m_explosionBuildupSound"); }
+        set { Schema.SetString(this.Handle, "CBreakableProp", "m_explosionBuildupSound", value); }
+    }
+
+    // m_explosionCustomEffect
+    public string ExplosionCustomEffect
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBreakableProp", "m_explosionCustomEffect"); }
+        set { Schema.SetString(this.Handle, "CBreakableProp", "m_explosionCustomEffect", value); }
+    }
+
+    // m_explosionCustomSound
+    public string ExplosionCustomSound
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBreakableProp", "m_explosionCustomSound"); }
+        set { Schema.SetString(this.Handle, "CBreakableProp", "m_explosionCustomSound", value); }
+    }
+
+    // m_explosionModifier
+    public string ExplosionModifier
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBreakableProp", "m_explosionModifier"); }
+        set { Schema.SetString(this.Handle, "CBreakableProp", "m_explosionModifier", value); }
+    }
+
+    // m_hPhysicsAttacker
+    public CHandle<CBasePlayerPawn> PhysicsAttacker => Schema.GetDeclaredClass<CHandle<CBasePlayerPawn>>(this.Handle, "CBreakableProp", "m_hPhysicsAttacker");
+
+    // m_flLastPhysicsInfluenceTime
+    public ref float LastPhysicsInfluenceTime => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_flLastPhysicsInfluenceTime");
+
+    // m_bOriginalBlockLOS
+    public ref bool OriginalBlockLOS => ref Schema.GetRef<bool>(this.Handle, "CBreakableProp", "m_bOriginalBlockLOS");
+
+    // m_flDefaultFadeScale
+    public ref float DefaultFadeScale => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_flDefaultFadeScale");
+
+    // m_hLastAttacker
+    public CHandle<CBaseEntity> LastAttacker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBreakableProp", "m_hLastAttacker");
+
+    // m_hFlareEnt
+    public CHandle<CBaseEntity> FlareEnt => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBreakableProp", "m_hFlareEnt");
+
+    // m_bUsePuntSound
+    public ref bool UsePuntSound => ref Schema.GetRef<bool>(this.Handle, "CBreakableProp", "m_bUsePuntSound");
+
+    // m_iszPuntSound
+    public string PuntSound
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBreakableProp", "m_iszPuntSound"); }
+        set { Schema.SetString(this.Handle, "CBreakableProp", "m_iszPuntSound", value); }
+    }
+
     // m_noGhostCollision
     public ref bool NoGhostCollision => ref Schema.GetRef<bool>(this.Handle, "CBreakableProp", "m_noGhostCollision");
+
+}
+
+public partial class CBubbling : CBaseModelEntity
+{
+    public CBubbling (IntPtr pointer) : base(pointer) {}
+
+    // m_density
+    public ref Int32 Density => ref Schema.GetRef<Int32>(this.Handle, "CBubbling", "m_density");
+
+    // m_frequency
+    public ref Int32 Frequency => ref Schema.GetRef<Int32>(this.Handle, "CBubbling", "m_frequency");
+
+    // m_state
+    public ref Int32 State => ref Schema.GetRef<Int32>(this.Handle, "CBubbling", "m_state");
 
 }
 
@@ -4662,9 +5652,36 @@ public partial class CBumpMineProjectile : CBaseGrenade
 
 }
 
+public partial class CBuoyancyHelper : NativeObject
+{
+    public CBuoyancyHelper (IntPtr pointer) : base(pointer) {}
+
+    // m_flFluidDensity
+    public ref float FluidDensity => ref Schema.GetRef<float>(this.Handle, "CBuoyancyHelper", "m_flFluidDensity");
+
+}
+
+public partial class CBuyZone : CBaseTrigger
+{
+    public CBuyZone (IntPtr pointer) : base(pointer) {}
+
+    // m_LegacyTeamNum
+    public ref Int32 LegacyTeamNum => ref Schema.GetRef<Int32>(this.Handle, "CBuyZone", "m_LegacyTeamNum");
+
+}
+
 public partial class CC4 : CCSWeaponBase
 {
     public CC4 (IntPtr pointer) : base(pointer) {}
+
+    // m_vecLastValidPlayerHeldPosition
+    public Vector LastValidPlayerHeldPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CC4", "m_vecLastValidPlayerHeldPosition");
+
+    // m_vecLastValidDroppedPosition
+    public Vector LastValidDroppedPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CC4", "m_vecLastValidDroppedPosition");
+
+    // m_bDoValidDroppedPositionCheck
+    public ref bool DoValidDroppedPositionCheck => ref Schema.GetRef<bool>(this.Handle, "CC4", "m_bDoValidDroppedPositionCheck");
 
     // m_bStartedArming
     public ref bool StartedArming => ref Schema.GetRef<bool>(this.Handle, "CC4", "m_bStartedArming");
@@ -4681,6 +5698,53 @@ public partial class CC4 : CCSWeaponBase
     // m_entitySpottedState
     public EntitySpottedState_t EntitySpottedState => Schema.GetDeclaredClass<EntitySpottedState_t>(this.Handle, "CC4", "m_entitySpottedState");
 
+    // m_nSpotRules
+    public ref Int32 SpotRules => ref Schema.GetRef<Int32>(this.Handle, "CC4", "m_nSpotRules");
+
+    // m_bPlayedArmingBeeps
+    public Span<bool> PlayedArmingBeeps => Schema.GetFixedArray<bool>(this.Handle, "CC4", "m_bPlayedArmingBeeps", 7);
+
+    // m_bBombPlanted
+    public ref bool BombPlanted => ref Schema.GetRef<bool>(this.Handle, "CC4", "m_bBombPlanted");
+
+    // m_bDroppedFromDeath
+    public ref bool DroppedFromDeath => ref Schema.GetRef<bool>(this.Handle, "CC4", "m_bDroppedFromDeath");
+
+}
+
+public partial class CChangeLevel : CBaseTrigger
+{
+    public CChangeLevel (IntPtr pointer) : base(pointer) {}
+
+    // m_sMapName
+    public string MapName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CChangeLevel", "m_sMapName"); }
+        set { Schema.SetString(this.Handle, "CChangeLevel", "m_sMapName", value); }
+    }
+
+    // m_sLandmarkName
+    public string LandmarkName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CChangeLevel", "m_sLandmarkName"); }
+        set { Schema.SetString(this.Handle, "CChangeLevel", "m_sLandmarkName", value); }
+    }
+
+    // m_OnChangeLevel
+    public CEntityIOOutput OnChangeLevel => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CChangeLevel", "m_OnChangeLevel");
+
+    // m_bTouched
+    public ref bool Touched => ref Schema.GetRef<bool>(this.Handle, "CChangeLevel", "m_bTouched");
+
+    // m_bNoTouch
+    public ref bool NoTouch => ref Schema.GetRef<bool>(this.Handle, "CChangeLevel", "m_bNoTouch");
+
+    // m_bNewChapter
+    public ref bool NewChapter => ref Schema.GetRef<bool>(this.Handle, "CChangeLevel", "m_bNewChapter");
+
+    // m_bOnChangeLevelFired
+    public ref bool OnChangeLevelFired => ref Schema.GetRef<bool>(this.Handle, "CChangeLevel", "m_bOnChangeLevelFired");
+
 }
 
 public partial class CChicken : CDynamicProp
@@ -4696,11 +5760,98 @@ public partial class CChicken : CDynamicProp
     // m_OriginalOwnerXuidHigh
     public ref UInt32 OriginalOwnerXuidHigh => ref Schema.GetRef<UInt32>(this.Handle, "CChicken", "m_OriginalOwnerXuidHigh");
 
+    // m_updateTimer
+    public CountdownTimer UpdateTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_updateTimer");
+
+    // m_stuckAnchor
+    public Vector StuckAnchor => Schema.GetDeclaredClass<Vector>(this.Handle, "CChicken", "m_stuckAnchor");
+
+    // m_stuckTimer
+    public CountdownTimer StuckTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_stuckTimer");
+
+    // m_collisionStuckTimer
+    public CountdownTimer CollisionStuckTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_collisionStuckTimer");
+
+    // m_isOnGround
+    public ref bool IsOnGround => ref Schema.GetRef<bool>(this.Handle, "CChicken", "m_isOnGround");
+
+    // m_vFallVelocity
+    public Vector FallVelocity => Schema.GetDeclaredClass<Vector>(this.Handle, "CChicken", "m_vFallVelocity");
+
+    // m_activity
+    public ref ChickenActivity Activity => ref Schema.GetRef<ChickenActivity>(this.Handle, "CChicken", "m_activity");
+
+    // m_activityTimer
+    public CountdownTimer ActivityTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_activityTimer");
+
+    // m_turnRate
+    public ref float TurnRate => ref Schema.GetRef<float>(this.Handle, "CChicken", "m_turnRate");
+
+    // m_fleeFrom
+    public CHandle<CBaseEntity> FleeFrom => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CChicken", "m_fleeFrom");
+
+    // m_moveRateThrottleTimer
+    public CountdownTimer MoveRateThrottleTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_moveRateThrottleTimer");
+
+    // m_startleTimer
+    public CountdownTimer StartleTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_startleTimer");
+
+    // m_vocalizeTimer
+    public CountdownTimer VocalizeTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_vocalizeTimer");
+
+    // m_flWhenZombified
+    public ref float WhenZombified => ref Schema.GetRef<float>(this.Handle, "CChicken", "m_flWhenZombified");
+
     // m_jumpedThisFrame
     public ref bool JumpedThisFrame => ref Schema.GetRef<bool>(this.Handle, "CChicken", "m_jumpedThisFrame");
 
     // m_leader
     public CHandle<CCSPlayerPawn> Leader => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CChicken", "m_leader");
+
+    // m_reuseTimer
+    public CountdownTimer ReuseTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_reuseTimer");
+
+    // m_hasBeenUsed
+    public ref bool HasBeenUsed => ref Schema.GetRef<bool>(this.Handle, "CChicken", "m_hasBeenUsed");
+
+    // m_jumpTimer
+    public CountdownTimer JumpTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_jumpTimer");
+
+    // m_flLastJumpTime
+    public ref float LastJumpTime => ref Schema.GetRef<float>(this.Handle, "CChicken", "m_flLastJumpTime");
+
+    // m_bInJump
+    public ref bool InJump => ref Schema.GetRef<bool>(this.Handle, "CChicken", "m_bInJump");
+
+    // m_isWaitingForLeader
+    public ref bool IsWaitingForLeader => ref Schema.GetRef<bool>(this.Handle, "CChicken", "m_isWaitingForLeader");
+
+    // m_repathTimer
+    public CountdownTimer RepathTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_repathTimer");
+
+    // m_inhibitDoorTimer
+    public CountdownTimer InhibitDoorTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_inhibitDoorTimer");
+
+    // m_inhibitObstacleAvoidanceTimer
+    public CountdownTimer InhibitObstacleAvoidanceTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_inhibitObstacleAvoidanceTimer");
+
+    // m_vecPathGoal
+    public Vector PathGoal => Schema.GetDeclaredClass<Vector>(this.Handle, "CChicken", "m_vecPathGoal");
+
+    // m_flActiveFollowStartTime
+    public ref float ActiveFollowStartTime => ref Schema.GetRef<float>(this.Handle, "CChicken", "m_flActiveFollowStartTime");
+
+    // m_followMinuteTimer
+    public CountdownTimer FollowMinuteTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_followMinuteTimer");
+
+    // m_vecLastEggPoopPosition
+    public Vector LastEggPoopPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CChicken", "m_vecLastEggPoopPosition");
+
+    // m_vecEggsPooped
+    public NetworkedVector<CHandle<CBaseEntity>> EggsPooped => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CChicken", "m_vecEggsPooped");
+
+    // m_BlockDirectionTimer
+    public CountdownTimer BlockDirectionTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_BlockDirectionTimer");
 
 }
 
@@ -4709,47 +5860,46 @@ public partial class CCollisionProperty : NativeObject
     public CCollisionProperty (IntPtr pointer) : base(pointer) {}
 
     // m_collisionAttribute
-    // MNetworkChangeCallback "CollisionAttributeChanged"
     public VPhysicsCollisionAttribute_t CollisionAttribute => Schema.GetDeclaredClass<VPhysicsCollisionAttribute_t>(this.Handle, "CCollisionProperty", "m_collisionAttribute");
 
     // m_vecMins
-    // MNetworkChangeCallback "OnUpdateOBB"
     public Vector Mins => Schema.GetDeclaredClass<Vector>(this.Handle, "CCollisionProperty", "m_vecMins");
 
     // m_vecMaxs
-    // MNetworkChangeCallback "OnUpdateOBB"
     public Vector Maxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CCollisionProperty", "m_vecMaxs");
 
     // m_usSolidFlags
-    // MNetworkChangeCallback "OnUpdateSolidFlags"
     public ref byte SolidFlags => ref Schema.GetRef<byte>(this.Handle, "CCollisionProperty", "m_usSolidFlags");
 
     // m_nSolidType
-    // MNetworkChangeCallback "OnUpdateSolidType"
     public ref SolidType_t SolidType => ref Schema.GetRef<SolidType_t>(this.Handle, "CCollisionProperty", "m_nSolidType");
 
     // m_triggerBloat
-    // MNetworkChangeCallback "MarkSurroundingBoundsDirty"
     public ref byte TriggerBloat => ref Schema.GetRef<byte>(this.Handle, "CCollisionProperty", "m_triggerBloat");
 
     // m_nSurroundType
-    // MNetworkChangeCallback "MarkSurroundingBoundsDirty"
     public ref SurroundingBoundsType_t SurroundType => ref Schema.GetRef<SurroundingBoundsType_t>(this.Handle, "CCollisionProperty", "m_nSurroundType");
 
     // m_CollisionGroup
     public ref byte CollisionGroup => ref Schema.GetRef<byte>(this.Handle, "CCollisionProperty", "m_CollisionGroup");
 
     // m_nEnablePhysics
-    // MNetworkChangeCallback "OnUpdateEnablePhysics"
     public ref byte EnablePhysics => ref Schema.GetRef<byte>(this.Handle, "CCollisionProperty", "m_nEnablePhysics");
 
+    // m_flBoundingRadius
+    public ref float BoundingRadius => ref Schema.GetRef<float>(this.Handle, "CCollisionProperty", "m_flBoundingRadius");
+
     // m_vecSpecifiedSurroundingMins
-    // MNetworkChangeCallback "MarkSurroundingBoundsDirty"
     public Vector SpecifiedSurroundingMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CCollisionProperty", "m_vecSpecifiedSurroundingMins");
 
     // m_vecSpecifiedSurroundingMaxs
-    // MNetworkChangeCallback "MarkSurroundingBoundsDirty"
     public Vector SpecifiedSurroundingMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CCollisionProperty", "m_vecSpecifiedSurroundingMaxs");
+
+    // m_vecSurroundingMaxs
+    public Vector SurroundingMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CCollisionProperty", "m_vecSurroundingMaxs");
+
+    // m_vecSurroundingMins
+    public Vector SurroundingMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CCollisionProperty", "m_vecSurroundingMins");
 
     // m_vCapsuleCenter1
     public Vector CapsuleCenter1 => Schema.GetDeclaredClass<Vector>(this.Handle, "CCollisionProperty", "m_vCapsuleCenter1");
@@ -4772,8 +5922,23 @@ public partial class CColorCorrection : CBaseEntity
     // m_flFadeOutDuration
     public ref float FadeOutDuration => ref Schema.GetRef<float>(this.Handle, "CColorCorrection", "m_flFadeOutDuration");
 
+    // m_flStartFadeInWeight
+    public ref float StartFadeInWeight => ref Schema.GetRef<float>(this.Handle, "CColorCorrection", "m_flStartFadeInWeight");
+
+    // m_flStartFadeOutWeight
+    public ref float StartFadeOutWeight => ref Schema.GetRef<float>(this.Handle, "CColorCorrection", "m_flStartFadeOutWeight");
+
+    // m_flTimeStartFadeIn
+    public ref float TimeStartFadeIn => ref Schema.GetRef<float>(this.Handle, "CColorCorrection", "m_flTimeStartFadeIn");
+
+    // m_flTimeStartFadeOut
+    public ref float TimeStartFadeOut => ref Schema.GetRef<float>(this.Handle, "CColorCorrection", "m_flTimeStartFadeOut");
+
     // m_flMaxWeight
     public ref float MaxWeight => ref Schema.GetRef<float>(this.Handle, "CColorCorrection", "m_flMaxWeight");
+
+    // m_bStartDisabled
+    public ref bool StartDisabled => ref Schema.GetRef<bool>(this.Handle, "CColorCorrection", "m_bStartDisabled");
 
     // m_bEnabled
     public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CColorCorrection", "m_bEnabled");
@@ -4803,6 +5968,13 @@ public partial class CColorCorrection : CBaseEntity
         set { Schema.SetString(this.Handle, "CColorCorrection", "m_netlookupFilename", value); }
     }
 
+    // m_lookupFilename
+    public string LookupFilename
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CColorCorrection", "m_lookupFilename"); }
+        set { Schema.SetString(this.Handle, "CColorCorrection", "m_lookupFilename", value); }
+    }
+
 }
 
 public partial class CColorCorrectionVolume : CBaseTrigger
@@ -4818,6 +5990,9 @@ public partial class CColorCorrectionVolume : CBaseTrigger
     // m_FadeDuration
     public ref float FadeDuration => ref Schema.GetRef<float>(this.Handle, "CColorCorrectionVolume", "m_FadeDuration");
 
+    // m_bStartDisabled
+    public ref bool StartDisabled => ref Schema.GetRef<bool>(this.Handle, "CColorCorrectionVolume", "m_bStartDisabled");
+
     // m_Weight
     public ref float Weight => ref Schema.GetRef<float>(this.Handle, "CColorCorrectionVolume", "m_Weight");
 
@@ -4828,17 +6003,535 @@ public partial class CColorCorrectionVolume : CBaseTrigger
         set { Schema.SetString(this.Handle, "CColorCorrectionVolume", "m_lookupFilename", value); }
     }
 
+    // m_LastEnterWeight
+    public ref float LastEnterWeight => ref Schema.GetRef<float>(this.Handle, "CColorCorrectionVolume", "m_LastEnterWeight");
+
+    // m_LastEnterTime
+    public ref float LastEnterTime => ref Schema.GetRef<float>(this.Handle, "CColorCorrectionVolume", "m_LastEnterTime");
+
+    // m_LastExitWeight
+    public ref float LastExitWeight => ref Schema.GetRef<float>(this.Handle, "CColorCorrectionVolume", "m_LastExitWeight");
+
+    // m_LastExitTime
+    public ref float LastExitTime => ref Schema.GetRef<float>(this.Handle, "CColorCorrectionVolume", "m_LastExitTime");
+
+}
+
+public partial class CCommentaryAuto : CBaseEntity
+{
+    public CCommentaryAuto (IntPtr pointer) : base(pointer) {}
+
+    // m_OnCommentaryNewGame
+    public CEntityIOOutput OnCommentaryNewGame => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CCommentaryAuto", "m_OnCommentaryNewGame");
+
+    // m_OnCommentaryMidGame
+    public CEntityIOOutput OnCommentaryMidGame => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CCommentaryAuto", "m_OnCommentaryMidGame");
+
+    // m_OnCommentaryMultiplayerSpawn
+    public CEntityIOOutput OnCommentaryMultiplayerSpawn => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CCommentaryAuto", "m_OnCommentaryMultiplayerSpawn");
+
+}
+
+public partial class CCommentaryViewPosition : CSprite
+{
+    public CCommentaryViewPosition (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CConstantForceController : NativeObject
+{
+    public CConstantForceController (IntPtr pointer) : base(pointer) {}
+
+    // m_linear
+    public Vector Linear => Schema.GetDeclaredClass<Vector>(this.Handle, "CConstantForceController", "m_linear");
+
+    // m_angular
+    public Vector Angular => Schema.GetDeclaredClass<Vector>(this.Handle, "CConstantForceController", "m_angular");
+
+    // m_linearSave
+    public Vector LinearSave => Schema.GetDeclaredClass<Vector>(this.Handle, "CConstantForceController", "m_linearSave");
+
+    // m_angularSave
+    public Vector AngularSave => Schema.GetDeclaredClass<Vector>(this.Handle, "CConstantForceController", "m_angularSave");
+
+}
+
+public partial class CConstraintAnchor : CBaseAnimGraph
+{
+    public CConstraintAnchor (IntPtr pointer) : base(pointer) {}
+
+    // m_massScale
+    public ref float MassScale => ref Schema.GetRef<float>(this.Handle, "CConstraintAnchor", "m_massScale");
+
+}
+
+public partial class CCoopBonusCoin : CDynamicProp
+{
+    public CCoopBonusCoin (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CCredits : CPointEntity
+{
+    public CCredits (IntPtr pointer) : base(pointer) {}
+
+    // m_OnCreditsDone
+    public CEntityIOOutput OnCreditsDone => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CCredits", "m_OnCreditsDone");
+
+    // m_bRolledOutroCredits
+    public ref bool RolledOutroCredits => ref Schema.GetRef<bool>(this.Handle, "CCredits", "m_bRolledOutroCredits");
+
+    // m_flLogoLength
+    public ref float LogoLength => ref Schema.GetRef<float>(this.Handle, "CCredits", "m_flLogoLength");
+
+}
+
+public partial class CCSBot : CBot
+{
+    public CCSBot (IntPtr pointer) : base(pointer) {}
+
+    // m_lastCoopSpawnPoint
+    public CHandle<SpawnPointCoopEnemy> LastCoopSpawnPoint => Schema.GetDeclaredClass<CHandle<SpawnPointCoopEnemy>>(this.Handle, "CCSBot", "m_lastCoopSpawnPoint");
+
+    // m_eyePosition
+    public Vector EyePosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSBot", "m_eyePosition");
+
+    // m_name
+    public string Name
+    {
+        get { return Schema.GetString(this.Handle, "CCSBot", "m_name"); }
+        set { Schema.SetString(this.Handle, "CCSBot", "m_name", value); }
+    }
+
+    // m_combatRange
+    public ref float CombatRange => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_combatRange");
+
+    // m_isRogue
+    public ref bool IsRogue => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_isRogue");
+
+    // m_rogueTimer
+    public CountdownTimer RogueTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_rogueTimer");
+
+    // m_diedLastRound
+    public ref bool DiedLastRound => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_diedLastRound");
+
+    // m_safeTime
+    public ref float SafeTime => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_safeTime");
+
+    // m_wasSafe
+    public ref bool WasSafe => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_wasSafe");
+
+    // m_blindFire
+    public ref bool BlindFire => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_blindFire");
+
+    // m_surpriseTimer
+    public CountdownTimer SurpriseTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_surpriseTimer");
+
+    // m_bAllowActive
+    public ref bool AllowActive => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_bAllowActive");
+
+    // m_isFollowing
+    public ref bool IsFollowing => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_isFollowing");
+
+    // m_leader
+    public CHandle<CCSPlayerPawn> Leader => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_leader");
+
+    // m_followTimestamp
+    public ref float FollowTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_followTimestamp");
+
+    // m_allowAutoFollowTime
+    public ref float AllowAutoFollowTime => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_allowAutoFollowTime");
+
+    // m_hurryTimer
+    public CountdownTimer HurryTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_hurryTimer");
+
+    // m_alertTimer
+    public CountdownTimer AlertTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_alertTimer");
+
+    // m_sneakTimer
+    public CountdownTimer SneakTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_sneakTimer");
+
+    // m_panicTimer
+    public CountdownTimer PanicTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_panicTimer");
+
+    // m_stateTimestamp
+    public ref float StateTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_stateTimestamp");
+
+    // m_isAttacking
+    public ref bool IsAttacking => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_isAttacking");
+
+    // m_isOpeningDoor
+    public ref bool IsOpeningDoor => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_isOpeningDoor");
+
+    // m_taskEntity
+    public CHandle<CBaseEntity> TaskEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSBot", "m_taskEntity");
+
+    // m_goalPosition
+    public Vector GoalPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSBot", "m_goalPosition");
+
+    // m_goalEntity
+    public CHandle<CBaseEntity> GoalEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSBot", "m_goalEntity");
+
+    // m_avoid
+    public CHandle<CBaseEntity> Avoid => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSBot", "m_avoid");
+
+    // m_avoidTimestamp
+    public ref float AvoidTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_avoidTimestamp");
+
+    // m_isStopping
+    public ref bool IsStopping => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_isStopping");
+
+    // m_hasVisitedEnemySpawn
+    public ref bool HasVisitedEnemySpawn => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_hasVisitedEnemySpawn");
+
+    // m_stillTimer
+    public IntervalTimer StillTimer => Schema.GetDeclaredClass<IntervalTimer>(this.Handle, "CCSBot", "m_stillTimer");
+
+    // m_bEyeAnglesUnderPathFinderControl
+    public ref bool EyeAnglesUnderPathFinderControl => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_bEyeAnglesUnderPathFinderControl");
+
+    // m_pathIndex
+    public ref Int32 PathIndex => ref Schema.GetRef<Int32>(this.Handle, "CCSBot", "m_pathIndex");
+
+    // m_areaEnteredTimestamp
+    public ref float AreaEnteredTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_areaEnteredTimestamp");
+
+    // m_repathTimer
+    public CountdownTimer RepathTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_repathTimer");
+
+    // m_avoidFriendTimer
+    public CountdownTimer AvoidFriendTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_avoidFriendTimer");
+
+    // m_isFriendInTheWay
+    public ref bool IsFriendInTheWay => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_isFriendInTheWay");
+
+    // m_politeTimer
+    public CountdownTimer PoliteTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_politeTimer");
+
+    // m_isWaitingBehindFriend
+    public ref bool IsWaitingBehindFriend => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_isWaitingBehindFriend");
+
+    // m_pathLadderEnd
+    public ref float PathLadderEnd => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_pathLadderEnd");
+
+    // m_mustRunTimer
+    public CountdownTimer MustRunTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_mustRunTimer");
+
+    // m_waitTimer
+    public CountdownTimer WaitTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_waitTimer");
+
+    // m_updateTravelDistanceTimer
+    public CountdownTimer UpdateTravelDistanceTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_updateTravelDistanceTimer");
+
+    // m_playerTravelDistance
+    public Span<float> PlayerTravelDistance => Schema.GetFixedArray<float>(this.Handle, "CCSBot", "m_playerTravelDistance", 64);
+
+    // m_travelDistancePhase
+    public ref byte TravelDistancePhase => ref Schema.GetRef<byte>(this.Handle, "CCSBot", "m_travelDistancePhase");
+
+    // m_hostageEscortCount
+    public ref byte HostageEscortCount => ref Schema.GetRef<byte>(this.Handle, "CCSBot", "m_hostageEscortCount");
+
+    // m_hostageEscortCountTimestamp
+    public ref float HostageEscortCountTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_hostageEscortCountTimestamp");
+
+    // m_desiredTeam
+    public ref Int32 DesiredTeam => ref Schema.GetRef<Int32>(this.Handle, "CCSBot", "m_desiredTeam");
+
+    // m_hasJoined
+    public ref bool HasJoined => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_hasJoined");
+
+    // m_isWaitingForHostage
+    public ref bool IsWaitingForHostage => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_isWaitingForHostage");
+
+    // m_inhibitWaitingForHostageTimer
+    public CountdownTimer InhibitWaitingForHostageTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_inhibitWaitingForHostageTimer");
+
+    // m_waitForHostageTimer
+    public CountdownTimer WaitForHostageTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_waitForHostageTimer");
+
+    // m_noisePosition
+    public Vector NoisePosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSBot", "m_noisePosition");
+
+    // m_noiseTravelDistance
+    public ref float NoiseTravelDistance => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_noiseTravelDistance");
+
+    // m_noiseTimestamp
+    public ref float NoiseTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_noiseTimestamp");
+
+    // m_noiseSource
+    public CCSPlayerPawn? NoiseSource => Schema.GetPointer<CCSPlayerPawn>(this.Handle, "CCSBot", "m_noiseSource");
+
+    // m_noiseBendTimer
+    public CountdownTimer NoiseBendTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_noiseBendTimer");
+
+    // m_bentNoisePosition
+    public Vector BentNoisePosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSBot", "m_bentNoisePosition");
+
+    // m_bendNoisePositionValid
+    public ref bool BendNoisePositionValid => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_bendNoisePositionValid");
+
+    // m_lookAroundStateTimestamp
+    public ref float LookAroundStateTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_lookAroundStateTimestamp");
+
+    // m_lookAheadAngle
+    public ref float LookAheadAngle => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_lookAheadAngle");
+
+    // m_forwardAngle
+    public ref float ForwardAngle => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_forwardAngle");
+
+    // m_inhibitLookAroundTimestamp
+    public ref float InhibitLookAroundTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_inhibitLookAroundTimestamp");
+
+    // m_lookAtSpot
+    public Vector LookAtSpot => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSBot", "m_lookAtSpot");
+
+    // m_lookAtSpotDuration
+    public ref float LookAtSpotDuration => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_lookAtSpotDuration");
+
+    // m_lookAtSpotTimestamp
+    public ref float LookAtSpotTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_lookAtSpotTimestamp");
+
+    // m_lookAtSpotAngleTolerance
+    public ref float LookAtSpotAngleTolerance => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_lookAtSpotAngleTolerance");
+
+    // m_lookAtSpotClearIfClose
+    public ref bool LookAtSpotClearIfClose => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_lookAtSpotClearIfClose");
+
+    // m_lookAtSpotAttack
+    public ref bool LookAtSpotAttack => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_lookAtSpotAttack");
+
+    // m_lookAtDesc
+    // m_peripheralTimestamp
+    public ref float PeripheralTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_peripheralTimestamp");
+
+    // m_approachPointCount
+    public ref byte ApproachPointCount => ref Schema.GetRef<byte>(this.Handle, "CCSBot", "m_approachPointCount");
+
+    // m_approachPointViewPosition
+    public Vector ApproachPointViewPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSBot", "m_approachPointViewPosition");
+
+    // m_viewSteadyTimer
+    public IntervalTimer ViewSteadyTimer => Schema.GetDeclaredClass<IntervalTimer>(this.Handle, "CCSBot", "m_viewSteadyTimer");
+
+    // m_tossGrenadeTimer
+    public CountdownTimer TossGrenadeTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_tossGrenadeTimer");
+
+    // m_isAvoidingGrenade
+    public CountdownTimer IsAvoidingGrenade => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_isAvoidingGrenade");
+
+    // m_spotCheckTimestamp
+    public ref float SpotCheckTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_spotCheckTimestamp");
+
+    // m_checkedHidingSpotCount
+    public ref Int32 CheckedHidingSpotCount => ref Schema.GetRef<Int32>(this.Handle, "CCSBot", "m_checkedHidingSpotCount");
+
+    // m_lookPitch
+    public ref float LookPitch => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_lookPitch");
+
+    // m_lookPitchVel
+    public ref float LookPitchVel => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_lookPitchVel");
+
+    // m_lookYaw
+    public ref float LookYaw => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_lookYaw");
+
+    // m_lookYawVel
+    public ref float LookYawVel => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_lookYawVel");
+
+    // m_targetSpot
+    public Vector TargetSpot => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSBot", "m_targetSpot");
+
+    // m_targetSpotVelocity
+    public Vector TargetSpotVelocity => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSBot", "m_targetSpotVelocity");
+
+    // m_targetSpotPredicted
+    public Vector TargetSpotPredicted => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSBot", "m_targetSpotPredicted");
+
+    // m_aimError
+    public QAngle AimError => Schema.GetDeclaredClass<QAngle>(this.Handle, "CCSBot", "m_aimError");
+
+    // m_aimGoal
+    public QAngle AimGoal => Schema.GetDeclaredClass<QAngle>(this.Handle, "CCSBot", "m_aimGoal");
+
+    // m_targetSpotTime
+    public ref float TargetSpotTime => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_targetSpotTime");
+
+    // m_aimFocus
+    public ref float AimFocus => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_aimFocus");
+
+    // m_aimFocusInterval
+    public ref float AimFocusInterval => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_aimFocusInterval");
+
+    // m_aimFocusNextUpdate
+    public ref float AimFocusNextUpdate => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_aimFocusNextUpdate");
+
+    // m_ignoreEnemiesTimer
+    public CountdownTimer IgnoreEnemiesTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_ignoreEnemiesTimer");
+
+    // m_enemy
+    public CHandle<CCSPlayerPawn> Enemy => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_enemy");
+
+    // m_isEnemyVisible
+    public ref bool IsEnemyVisible => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_isEnemyVisible");
+
+    // m_visibleEnemyParts
+    public ref byte VisibleEnemyParts => ref Schema.GetRef<byte>(this.Handle, "CCSBot", "m_visibleEnemyParts");
+
+    // m_lastEnemyPosition
+    public Vector LastEnemyPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSBot", "m_lastEnemyPosition");
+
+    // m_lastSawEnemyTimestamp
+    public ref float LastSawEnemyTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_lastSawEnemyTimestamp");
+
+    // m_firstSawEnemyTimestamp
+    public ref float FirstSawEnemyTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_firstSawEnemyTimestamp");
+
+    // m_currentEnemyAcquireTimestamp
+    public ref float CurrentEnemyAcquireTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_currentEnemyAcquireTimestamp");
+
+    // m_enemyDeathTimestamp
+    public ref float EnemyDeathTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_enemyDeathTimestamp");
+
+    // m_friendDeathTimestamp
+    public ref float FriendDeathTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_friendDeathTimestamp");
+
+    // m_isLastEnemyDead
+    public ref bool IsLastEnemyDead => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_isLastEnemyDead");
+
+    // m_nearbyEnemyCount
+    public ref Int32 NearbyEnemyCount => ref Schema.GetRef<Int32>(this.Handle, "CCSBot", "m_nearbyEnemyCount");
+
+    // m_bomber
+    public CHandle<CCSPlayerPawn> Bomber => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_bomber");
+
+    // m_nearbyFriendCount
+    public ref Int32 NearbyFriendCount => ref Schema.GetRef<Int32>(this.Handle, "CCSBot", "m_nearbyFriendCount");
+
+    // m_closestVisibleFriend
+    public CHandle<CCSPlayerPawn> ClosestVisibleFriend => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_closestVisibleFriend");
+
+    // m_closestVisibleHumanFriend
+    public CHandle<CCSPlayerPawn> ClosestVisibleHumanFriend => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_closestVisibleHumanFriend");
+
+    // m_attentionInterval
+    public IntervalTimer AttentionInterval => Schema.GetDeclaredClass<IntervalTimer>(this.Handle, "CCSBot", "m_attentionInterval");
+
+    // m_attacker
+    public CHandle<CCSPlayerPawn> Attacker => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_attacker");
+
+    // m_attackedTimestamp
+    public ref float AttackedTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_attackedTimestamp");
+
+    // m_burnedByFlamesTimer
+    public IntervalTimer BurnedByFlamesTimer => Schema.GetDeclaredClass<IntervalTimer>(this.Handle, "CCSBot", "m_burnedByFlamesTimer");
+
+    // m_lastVictimID
+    public ref Int32 LastVictimID => ref Schema.GetRef<Int32>(this.Handle, "CCSBot", "m_lastVictimID");
+
+    // m_isAimingAtEnemy
+    public ref bool IsAimingAtEnemy => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_isAimingAtEnemy");
+
+    // m_isRapidFiring
+    public ref bool IsRapidFiring => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_isRapidFiring");
+
+    // m_equipTimer
+    public IntervalTimer EquipTimer => Schema.GetDeclaredClass<IntervalTimer>(this.Handle, "CCSBot", "m_equipTimer");
+
+    // m_zoomTimer
+    public CountdownTimer ZoomTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_zoomTimer");
+
+    // m_fireWeaponTimestamp
+    public ref float FireWeaponTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_fireWeaponTimestamp");
+
+    // m_lookForWeaponsOnGroundTimer
+    public CountdownTimer LookForWeaponsOnGroundTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_lookForWeaponsOnGroundTimer");
+
+    // m_bIsSleeping
+    public ref bool IsSleeping => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_bIsSleeping");
+
+    // m_isEnemySniperVisible
+    public ref bool IsEnemySniperVisible => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_isEnemySniperVisible");
+
+    // m_sawEnemySniperTimer
+    public CountdownTimer SawEnemySniperTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_sawEnemySniperTimer");
+
+    // m_enemyQueueIndex
+    public ref byte EnemyQueueIndex => ref Schema.GetRef<byte>(this.Handle, "CCSBot", "m_enemyQueueIndex");
+
+    // m_enemyQueueCount
+    public ref byte EnemyQueueCount => ref Schema.GetRef<byte>(this.Handle, "CCSBot", "m_enemyQueueCount");
+
+    // m_enemyQueueAttendIndex
+    public ref byte EnemyQueueAttendIndex => ref Schema.GetRef<byte>(this.Handle, "CCSBot", "m_enemyQueueAttendIndex");
+
+    // m_isStuck
+    public ref bool IsStuck => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_isStuck");
+
+    // m_stuckTimestamp
+    public ref float StuckTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_stuckTimestamp");
+
+    // m_stuckSpot
+    public Vector StuckSpot => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSBot", "m_stuckSpot");
+
+    // m_wiggleTimer
+    public CountdownTimer WiggleTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_wiggleTimer");
+
+    // m_stuckJumpTimer
+    public CountdownTimer StuckJumpTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSBot", "m_stuckJumpTimer");
+
+    // m_nextCleanupCheckTimestamp
+    public ref float NextCleanupCheckTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_nextCleanupCheckTimestamp");
+
+    // m_avgVel
+    public Span<float> AvgVel => Schema.GetFixedArray<float>(this.Handle, "CCSBot", "m_avgVel", 10);
+
+    // m_avgVelIndex
+    public ref Int32 AvgVelIndex => ref Schema.GetRef<Int32>(this.Handle, "CCSBot", "m_avgVelIndex");
+
+    // m_avgVelCount
+    public ref Int32 AvgVelCount => ref Schema.GetRef<Int32>(this.Handle, "CCSBot", "m_avgVelCount");
+
+    // m_lastOrigin
+    public Vector LastOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSBot", "m_lastOrigin");
+
+    // m_lastRadioRecievedTimestamp
+    public ref float LastRadioRecievedTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_lastRadioRecievedTimestamp");
+
+    // m_lastRadioSentTimestamp
+    public ref float LastRadioSentTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_lastRadioSentTimestamp");
+
+    // m_radioSubject
+    public CHandle<CCSPlayerPawn> RadioSubject => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_radioSubject");
+
+    // m_radioPosition
+    public Vector RadioPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSBot", "m_radioPosition");
+
+    // m_voiceEndTimestamp
+    public ref float VoiceEndTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_voiceEndTimestamp");
+
+    // m_lastValidReactionQueueFrame
+    public ref Int32 LastValidReactionQueueFrame => ref Schema.GetRef<Int32>(this.Handle, "CCSBot", "m_lastValidReactionQueueFrame");
+
 }
 
 public partial class CCSGameModeRules : NativeObject
 {
     public CCSGameModeRules (IntPtr pointer) : base(pointer) {}
 
+    // __m_pChainEntity
+    public CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "CCSGameModeRules", "__m_pChainEntity");
+
 }
 
 public partial class CCSGameModeRules_Deathmatch : CCSGameModeRules
 {
     public CCSGameModeRules_Deathmatch (IntPtr pointer) : base(pointer) {}
+
+    // m_bFirstThink
+    public ref bool FirstThink => ref Schema.GetRef<bool>(this.Handle, "CCSGameModeRules_Deathmatch", "m_bFirstThink");
+
+    // m_bFirstThinkAfterConnected
+    public ref bool FirstThinkAfterConnected => ref Schema.GetRef<bool>(this.Handle, "CCSGameModeRules_Deathmatch", "m_bFirstThinkAfterConnected");
 
     // m_flDMBonusStartTime
     public ref float DMBonusStartTime => ref Schema.GetRef<float>(this.Handle, "CCSGameModeRules_Deathmatch", "m_flDMBonusStartTime");
@@ -4866,6 +6559,12 @@ public partial class CCSGameModeRules_Scripted : CCSGameModeRules
 public partial class CCSGameRules : CTeamplayRules
 {
     public CCSGameRules (IntPtr pointer) : base(pointer) {}
+
+    // __m_pChainEntity
+    public CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "CCSGameRules", "__m_pChainEntity");
+
+    // m_coopMissionManager
+    public CHandle<CBaseEntity> CoopMissionManager => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSGameRules", "m_coopMissionManager");
 
     // m_bFreezePeriod
     public ref bool FreezePeriod => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bFreezePeriod");
@@ -4937,7 +6636,6 @@ public partial class CCSGameRules : CTeamplayRules
     public ref float TimeUntilNextPhaseStarts => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_timeUntilNextPhaseStarts");
 
     // m_gamePhase
-    // MNetworkChangeCallback "OnGamePhaseChanged"
     public ref Int32 GamePhase => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_gamePhase");
 
     // m_totalRoundsPlayed
@@ -5046,6 +6744,12 @@ public partial class CCSGameRules : CTeamplayRules
     // m_nGuardianModeSpecialWeaponNeeded
     public ref Int32 GuardianModeSpecialWeaponNeeded => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nGuardianModeSpecialWeaponNeeded");
 
+    // m_nGuardianGrenadesToGiveBots
+    public ref Int32 GuardianGrenadesToGiveBots => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nGuardianGrenadesToGiveBots");
+
+    // m_nNumHeaviesToSpawn
+    public ref Int32 NumHeaviesToSpawn => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nNumHeaviesToSpawn");
+
     // m_numGlobalGiftsGiven
     public ref UInt32 NumGlobalGiftsGiven => ref Schema.GetRef<UInt32>(this.Handle, "CCSGameRules", "m_numGlobalGiftsGiven");
 
@@ -5121,6 +6825,12 @@ public partial class CCSGameRules : CTeamplayRules
     // m_MinimapVerticalSectionHeights
     public Span<float> MinimapVerticalSectionHeights => Schema.GetFixedArray<float>(this.Handle, "CCSGameRules", "m_MinimapVerticalSectionHeights", 8);
 
+    // m_bDontIncrementCoopWave
+    public ref bool DontIncrementCoopWave => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bDontIncrementCoopWave");
+
+    // m_bSpawnedTerrorHuntHeavy
+    public ref bool SpawnedTerrorHuntHeavy => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bSpawnedTerrorHuntHeavy");
+
     // m_nEndMatchMapGroupVoteTypes
     public Span<Int32> EndMatchMapGroupVoteTypes => Schema.GetFixedArray<Int32>(this.Handle, "CCSGameRules", "m_nEndMatchMapGroupVoteTypes", 10);
 
@@ -5136,18 +6846,293 @@ public partial class CCSGameRules : CTeamplayRules
     // m_iNumConsecutiveTerroristLoses
     public ref Int32 NumConsecutiveTerroristLoses => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iNumConsecutiveTerroristLoses");
 
+    // m_bHasHostageBeenTouched
+    public ref bool HasHostageBeenTouched => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bHasHostageBeenTouched");
+
+    // m_flIntermissionStartTime
+    public ref float IntermissionStartTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flIntermissionStartTime");
+
+    // m_flIntermissionEndTime
+    public ref float IntermissionEndTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flIntermissionEndTime");
+
+    // m_bLevelInitialized
+    public ref bool LevelInitialized => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bLevelInitialized");
+
+    // m_iTotalRoundsPlayed
+    public ref Int32 ITotalRoundsPlayed => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iTotalRoundsPlayed");
+
+    // m_iUnBalancedRounds
+    public ref Int32 UnBalancedRounds => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iUnBalancedRounds");
+
+    // m_endMatchOnRoundReset
+    public ref bool EndMatchOnRoundReset => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_endMatchOnRoundReset");
+
+    // m_endMatchOnThink
+    public ref bool EndMatchOnThink => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_endMatchOnThink");
+
+    // m_iFreezeTime
+    public ref Int32 FreezeTime => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iFreezeTime");
+
+    // m_iNumTerrorist
+    public ref Int32 NumTerrorist => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iNumTerrorist");
+
+    // m_iNumCT
+    public ref Int32 NumCT => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iNumCT");
+
+    // m_iNumSpawnableTerrorist
+    public ref Int32 NumSpawnableTerrorist => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iNumSpawnableTerrorist");
+
+    // m_iNumSpawnableCT
+    public ref Int32 NumSpawnableCT => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iNumSpawnableCT");
+
+    // m_arrSelectedHostageSpawnIndices
+    public NetworkedVector<Int32> SelectedHostageSpawnIndices => Schema.GetDeclaredClass<NetworkedVector<Int32>>(this.Handle, "CCSGameRules", "m_arrSelectedHostageSpawnIndices");
+
+    // m_bFirstConnected
+    public ref bool FirstConnected => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bFirstConnected");
+
+    // m_bCompleteReset
+    public ref bool CompleteReset => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bCompleteReset");
+
+    // m_bPickNewTeamsOnReset
+    public ref bool PickNewTeamsOnReset => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bPickNewTeamsOnReset");
+
+    // m_bScrambleTeamsOnRestart
+    public ref bool ScrambleTeamsOnRestart => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bScrambleTeamsOnRestart");
+
+    // m_bSwapTeamsOnRestart
+    public ref bool SwapTeamsOnRestart => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bSwapTeamsOnRestart");
+
+    // m_nEndMatchTiedVotes
+    public NetworkedVector<Int32> EndMatchTiedVotes => Schema.GetDeclaredClass<NetworkedVector<Int32>>(this.Handle, "CCSGameRules", "m_nEndMatchTiedVotes");
+
+    // m_bNeedToAskPlayersForContinueVote
+    public ref bool NeedToAskPlayersForContinueVote => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bNeedToAskPlayersForContinueVote");
+
+    // m_numQueuedMatchmakingAccounts
+    public ref UInt32 NumQueuedMatchmakingAccounts => ref Schema.GetRef<UInt32>(this.Handle, "CCSGameRules", "m_numQueuedMatchmakingAccounts");
+
+    // m_pQueuedMatchmakingReservationString
+    // m_numTotalTournamentDrops
+    public ref UInt32 NumTotalTournamentDrops => ref Schema.GetRef<UInt32>(this.Handle, "CCSGameRules", "m_numTotalTournamentDrops");
+
+    // m_numSpectatorsCountMax
+    public ref UInt32 NumSpectatorsCountMax => ref Schema.GetRef<UInt32>(this.Handle, "CCSGameRules", "m_numSpectatorsCountMax");
+
+    // m_numSpectatorsCountMaxTV
+    public ref UInt32 NumSpectatorsCountMaxTV => ref Schema.GetRef<UInt32>(this.Handle, "CCSGameRules", "m_numSpectatorsCountMaxTV");
+
+    // m_numSpectatorsCountMaxLnk
+    public ref UInt32 NumSpectatorsCountMaxLnk => ref Schema.GetRef<UInt32>(this.Handle, "CCSGameRules", "m_numSpectatorsCountMaxLnk");
+
+    // m_bForceTeamChangeSilent
+    public ref bool ForceTeamChangeSilent => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bForceTeamChangeSilent");
+
+    // m_bLoadingRoundBackupData
+    public ref bool LoadingRoundBackupData => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bLoadingRoundBackupData");
+
+    // m_nMatchInfoShowType
+    public ref Int32 MatchInfoShowType => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nMatchInfoShowType");
+
+    // m_flMatchInfoDecidedTime
+    public ref float MatchInfoDecidedTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flMatchInfoDecidedTime");
+
+    // m_flCoopRespawnAndHealTime
+    public ref float CoopRespawnAndHealTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flCoopRespawnAndHealTime");
+
+    // m_coopBonusCoinsFound
+    public ref Int32 CoopBonusCoinsFound => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_coopBonusCoinsFound");
+
+    // m_coopBonusPistolsOnly
+    public ref bool CoopBonusPistolsOnly => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_coopBonusPistolsOnly");
+
+    // m_coopPlayersInDeploymentZone
+    public ref bool CoopPlayersInDeploymentZone => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_coopPlayersInDeploymentZone");
+
+    // m_coopMissionDeadPlayerRespawnEnabled
+    public ref bool CoopMissionDeadPlayerRespawnEnabled => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_coopMissionDeadPlayerRespawnEnabled");
+
+    // mTeamDMLastWinningTeamNumber
+    public ref Int32 MTeamDMLastWinningTeamNumber => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "mTeamDMLastWinningTeamNumber");
+
+    // mTeamDMLastThinkTime
+    public ref float MTeamDMLastThinkTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "mTeamDMLastThinkTime");
+
+    // m_flTeamDMLastAnnouncementTime
+    public ref float TeamDMLastAnnouncementTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flTeamDMLastAnnouncementTime");
+
+    // m_iAccountTerrorist
+    public ref Int32 AccountTerrorist => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iAccountTerrorist");
+
+    // m_iAccountCT
+    public ref Int32 AccountCT => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iAccountCT");
+
+    // m_iSpawnPointCount_Terrorist
+    public ref Int32 SpawnPointCount_Terrorist => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iSpawnPointCount_Terrorist");
+
+    // m_iSpawnPointCount_CT
+    public ref Int32 SpawnPointCount_CT => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iSpawnPointCount_CT");
+
+    // m_iMaxNumTerrorists
+    public ref Int32 MaxNumTerrorists => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iMaxNumTerrorists");
+
+    // m_iMaxNumCTs
+    public ref Int32 MaxNumCTs => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iMaxNumCTs");
+
+    // m_iLoserBonus
+    public ref Int32 LoserBonus => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iLoserBonus");
+
+    // m_iLoserBonusMostRecentTeam
+    public ref Int32 LoserBonusMostRecentTeam => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iLoserBonusMostRecentTeam");
+
+    // m_tmNextPeriodicThink
+    public ref float TmNextPeriodicThink => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_tmNextPeriodicThink");
+
+    // m_bVoiceWonMatchBragFired
+    public ref bool VoiceWonMatchBragFired => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bVoiceWonMatchBragFired");
+
+    // m_fWarmupNextChatNoticeTime
+    public ref float WarmupNextChatNoticeTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_fWarmupNextChatNoticeTime");
+
+    // m_iHostagesRescued
+    public ref Int32 HostagesRescued => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iHostagesRescued");
+
+    // m_iHostagesTouched
+    public ref Int32 HostagesTouched => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iHostagesTouched");
+
+    // m_flNextHostageAnnouncement
+    public ref float NextHostageAnnouncement => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flNextHostageAnnouncement");
+
+    // m_bNoTerroristsKilled
+    public ref bool NoTerroristsKilled => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bNoTerroristsKilled");
+
+    // m_bNoCTsKilled
+    public ref bool NoCTsKilled => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bNoCTsKilled");
+
+    // m_bNoEnemiesKilled
+    public ref bool NoEnemiesKilled => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bNoEnemiesKilled");
+
+    // m_bCanDonateWeapons
+    public ref bool CanDonateWeapons => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bCanDonateWeapons");
+
+    // m_firstKillTime
+    public ref float FirstKillTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_firstKillTime");
+
+    // m_firstBloodTime
+    public ref float FirstBloodTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_firstBloodTime");
+
+    // m_hostageWasInjured
+    public ref bool HostageWasInjured => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_hostageWasInjured");
+
+    // m_hostageWasKilled
+    public ref bool HostageWasKilled => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_hostageWasKilled");
+
+    // m_bVoteCalled
+    public ref bool VoteCalled => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bVoteCalled");
+
+    // m_bServerVoteOnReset
+    public ref bool ServerVoteOnReset => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bServerVoteOnReset");
+
+    // m_flVoteCheckThrottle
+    public ref float VoteCheckThrottle => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flVoteCheckThrottle");
+
+    // m_bBuyTimeEnded
+    public ref bool BuyTimeEnded => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bBuyTimeEnded");
+
+    // m_nLastFreezeEndBeep
+    public ref Int32 LastFreezeEndBeep => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nLastFreezeEndBeep");
+
+    // m_bTargetBombed
+    public ref bool TargetBombed => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bTargetBombed");
+
+    // m_bBombDefused
+    public ref bool BombDefused => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bBombDefused");
+
+    // m_bMapHasBombZone
+    public ref bool MapHasBombZone => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bMapHasBombZone");
+
+    // m_vecMainCTSpawnPos
+    public Vector MainCTSpawnPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSGameRules", "m_vecMainCTSpawnPos");
+
+    // m_CTSpawnPointsMasterList
+    public NetworkedVector<SpawnPoint?> CTSpawnPointsMasterList => Schema.GetDeclaredClass<NetworkedVector<SpawnPoint?>>(this.Handle, "CCSGameRules", "m_CTSpawnPointsMasterList");
+
+    // m_TerroristSpawnPointsMasterList
+    public NetworkedVector<SpawnPoint?> TerroristSpawnPointsMasterList => Schema.GetDeclaredClass<NetworkedVector<SpawnPoint?>>(this.Handle, "CCSGameRules", "m_TerroristSpawnPointsMasterList");
+
+    // m_iNextCTSpawnPoint
+    public ref Int32 NextCTSpawnPoint => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iNextCTSpawnPoint");
+
+    // m_iNextTerroristSpawnPoint
+    public ref Int32 NextTerroristSpawnPoint => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iNextTerroristSpawnPoint");
+
+    // m_CTSpawnPoints
+    public NetworkedVector<SpawnPoint?> CTSpawnPoints => Schema.GetDeclaredClass<NetworkedVector<SpawnPoint?>>(this.Handle, "CCSGameRules", "m_CTSpawnPoints");
+
+    // m_TerroristSpawnPoints
+    public NetworkedVector<SpawnPoint?> TerroristSpawnPoints => Schema.GetDeclaredClass<NetworkedVector<SpawnPoint?>>(this.Handle, "CCSGameRules", "m_TerroristSpawnPoints");
+
+    // m_bIsUnreservedGameServer
+    public ref bool IsUnreservedGameServer => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bIsUnreservedGameServer");
+
+    // m_fAutobalanceDisplayTime
+    public ref float AutobalanceDisplayTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_fAutobalanceDisplayTime");
+
+    // m_bAllowWeaponSwitch
+    public ref bool AllowWeaponSwitch => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bAllowWeaponSwitch");
+
+    // m_bRoundTimeWarningTriggered
+    public ref bool RoundTimeWarningTriggered => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bRoundTimeWarningTriggered");
+
+    // m_phaseChangeAnnouncementTime
+    public ref float PhaseChangeAnnouncementTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_phaseChangeAnnouncementTime");
+
+    // m_fNextUpdateTeamClanNamesTime
+    public ref float NextUpdateTeamClanNamesTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_fNextUpdateTeamClanNamesTime");
+
+    // m_flLastThinkTime
+    public ref float LastThinkTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flLastThinkTime");
+
+    // m_fAccumulatedRoundOffDamage
+    public ref float AccumulatedRoundOffDamage => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_fAccumulatedRoundOffDamage");
+
+    // m_nShorthandedBonusLastEvalRound
+    public ref Int32 ShorthandedBonusLastEvalRound => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nShorthandedBonusLastEvalRound");
+
     // m_bMatchAbortedDueToPlayerBan
     public ref bool MatchAbortedDueToPlayerBan => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bMatchAbortedDueToPlayerBan");
 
+    // m_bHasTriggeredRoundStartMusic
+    public ref bool HasTriggeredRoundStartMusic => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bHasTriggeredRoundStartMusic");
+
+    // m_bHasTriggeredCoopSpawnReset
+    public ref bool HasTriggeredCoopSpawnReset => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bHasTriggeredCoopSpawnReset");
+
+    // m_bSwitchingTeamsAtRoundReset
+    public ref bool SwitchingTeamsAtRoundReset => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bSwitchingTeamsAtRoundReset");
+
     // m_pGameModeRules
-    // MNetworkPolymorphic
     public CCSGameModeRules? GameModeRules => Schema.GetPointer<CCSGameModeRules>(this.Handle, "CCSGameRules", "m_pGameModeRules");
+
+    // m_hPlayerResource
+    public CHandle<CBaseEntity> PlayerResource => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSGameRules", "m_hPlayerResource");
 
     // m_RetakeRules
     public CRetakeGameRules RetakeRules => Schema.GetDeclaredClass<CRetakeGameRules>(this.Handle, "CCSGameRules", "m_RetakeRules");
 
+    // m_GuardianBotSkillLevelMax
+    public ref Int32 GuardianBotSkillLevelMax => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_GuardianBotSkillLevelMax");
+
+    // m_GuardianBotSkillLevelMin
+    public ref Int32 GuardianBotSkillLevelMin => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_GuardianBotSkillLevelMin");
+
+    // m_arrTeamUniqueKillWeaponsMatch
+    public Span<NetworkedVector<Int32>> TeamUniqueKillWeaponsMatch => Schema.GetFixedArray<NetworkedVector<Int32>>(this.Handle, "CCSGameRules", "m_arrTeamUniqueKillWeaponsMatch", 4);
+
+    // m_bTeamLastKillUsedUniqueWeaponMatch
+    public Span<bool> TeamLastKillUsedUniqueWeaponMatch => Schema.GetFixedArray<bool>(this.Handle, "CCSGameRules", "m_bTeamLastKillUsedUniqueWeaponMatch", 4);
+
     // m_nMatchEndCount
-    // MNetworkChangeCallback "OnMatchEndCountChanged"
     public ref byte MatchEndCount => ref Schema.GetRef<byte>(this.Handle, "CCSGameRules", "m_nMatchEndCount");
 
     // m_nTTeamIntroVariant
@@ -5157,8 +7142,19 @@ public partial class CCSGameRules : CTeamplayRules
     public ref Int32 CTTeamIntroVariant => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nCTTeamIntroVariant");
 
     // m_bTeamIntroPeriod
-    // MNetworkChangeCallback "OnTeamIntroPeriodChanged"
     public ref bool TeamIntroPeriod => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bTeamIntroPeriod");
+
+    // m_fTeamIntroPeriodEnd
+    public ref float TeamIntroPeriodEnd => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_fTeamIntroPeriodEnd");
+
+    // m_bPlayedTeamIntroVO
+    public ref bool PlayedTeamIntroVO => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bPlayedTeamIntroVO");
+
+    // m_flLastPerfSampleTime
+    public ref double LastPerfSampleTime => ref Schema.GetRef<double>(this.Handle, "CCSGameRules", "m_flLastPerfSampleTime");
+
+    // m_bSkipNextServerPerfSample
+    public ref bool SkipNextServerPerfSample => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bSkipNextServerPerfSample");
 
 }
 
@@ -5167,8 +7163,6 @@ public partial class CCSGameRulesProxy : CGameRulesProxy
     public CCSGameRulesProxy (IntPtr pointer) : base(pointer) {}
 
     // m_pGameRules
-    // MNetworkTypeAlias "CCSGameRules*"
-    // MNetworkPriority "32"
     public CCSGameRules? GameRules => Schema.GetPointer<CCSGameRules>(this.Handle, "CCSGameRulesProxy", "m_pGameRules");
 
 }
@@ -5271,6 +7265,9 @@ public partial class CCSGOViewModel : CPredictedViewModel
     // m_nWeaponParity
     public ref UInt32 WeaponParity => ref Schema.GetRef<UInt32>(this.Handle, "CCSGOViewModel", "m_nWeaponParity");
 
+    // m_nOldWeaponParity
+    public ref UInt32 OldWeaponParity => ref Schema.GetRef<UInt32>(this.Handle, "CCSGOViewModel", "m_nOldWeaponParity");
+
 }
 
 public partial class CCSMinimapBoundary : CBaseEntity
@@ -5315,9 +7312,25 @@ public partial class CCSObserverPawn : CCSPlayerPawnBase
 
 }
 
+public partial class CCSPlace : CServerOnlyModelEntity
+{
+    public CCSPlace (IntPtr pointer) : base(pointer) {}
+
+    // m_name
+    public string Name
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CCSPlace", "m_name"); }
+        set { Schema.SetString(this.Handle, "CCSPlace", "m_name", value); }
+    }
+
+}
+
 public partial class CCSPlayer_ActionTrackingServices : CPlayerPawnComponent
 {
     public CCSPlayer_ActionTrackingServices (IntPtr pointer) : base(pointer) {}
+
+    // m_hLastWeaponBeforeC4AutoSwitch
+    public CHandle<CBasePlayerWeapon> LastWeaponBeforeC4AutoSwitch => Schema.GetDeclaredClass<CHandle<CBasePlayerWeapon>>(this.Handle, "CCSPlayer_ActionTrackingServices", "m_hLastWeaponBeforeC4AutoSwitch");
 
     // m_bIsRescuing
     public ref bool IsRescuing => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_ActionTrackingServices", "m_bIsRescuing");
@@ -5351,6 +7364,12 @@ public partial class CCSPlayer_BuyServices : CPlayerPawnComponent
 public partial class CCSPlayer_CameraServices : CCSPlayerBase_CameraServices
 {
     public CCSPlayer_CameraServices (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CCSPlayer_DamageReactServices : CPlayerPawnComponent
+{
+    public CCSPlayer_DamageReactServices (IntPtr pointer) : base(pointer) {}
 
 }
 
@@ -5389,7 +7408,6 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
     public ref float MaxFallVelocity => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flMaxFallVelocity");
 
     // m_vecLadderNormal
-    // MNetworkEncoder "normal"
     public Vector LadderNormal => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayer_MovementServices", "m_vecLadderNormal");
 
     // m_nLadderSurfacePropIndex
@@ -5407,25 +7425,74 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
     // m_bDesiresDuck
     public ref bool DesiresDuck => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bDesiresDuck");
 
+    // m_flDuckOffset
+    public ref float DuckOffset => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flDuckOffset");
+
     // m_nDuckTimeMsecs
-    // MNetworkUserGroup "LocalPlayerExclusive"
-    // MNetworkPriority "32"
     public ref UInt32 DuckTimeMsecs => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayer_MovementServices", "m_nDuckTimeMsecs");
 
     // m_nDuckJumpTimeMsecs
-    // MNetworkUserGroup "LocalPlayerExclusive"
     public ref UInt32 DuckJumpTimeMsecs => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayer_MovementServices", "m_nDuckJumpTimeMsecs");
 
     // m_nJumpTimeMsecs
-    // MNetworkUserGroup "LocalPlayerExclusive"
     public ref UInt32 JumpTimeMsecs => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayer_MovementServices", "m_nJumpTimeMsecs");
 
     // m_flLastDuckTime
-    // MNetworkUserGroup "LocalPlayerExclusive"
     public ref float LastDuckTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flLastDuckTime");
+
+    // m_vecLastPositionAtFullCrouchSpeed
+    public Vector2D LastPositionAtFullCrouchSpeed => Schema.GetDeclaredClass<Vector2D>(this.Handle, "CCSPlayer_MovementServices", "m_vecLastPositionAtFullCrouchSpeed");
+
+    // m_duckUntilOnGround
+    public ref bool DuckUntilOnGround => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_duckUntilOnGround");
+
+    // m_bHasWalkMovedSinceLastJump
+    public ref bool HasWalkMovedSinceLastJump => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bHasWalkMovedSinceLastJump");
+
+    // m_bInStuckTest
+    public ref bool InStuckTest => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bInStuckTest");
+
+    // m_flStuckCheckTime
+    public Span<float[]> StuckCheckTime => Schema.GetFixedArray<float[]>(this.Handle, "CCSPlayer_MovementServices", "m_flStuckCheckTime", 2);
+
+    // m_nTraceCount
+    public ref Int32 TraceCount => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_nTraceCount");
+
+    // m_StuckLast
+    public ref Int32 StuckLast => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_StuckLast");
+
+    // m_bSpeedCropped
+    public ref bool SpeedCropped => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bSpeedCropped");
+
+    // m_nOldWaterLevel
+    public ref Int32 OldWaterLevel => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_nOldWaterLevel");
+
+    // m_flWaterEntryTime
+    public ref float WaterEntryTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flWaterEntryTime");
+
+    // m_vecForward
+    public Vector Forward => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayer_MovementServices", "m_vecForward");
+
+    // m_vecLeft
+    public Vector Left => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayer_MovementServices", "m_vecLeft");
+
+    // m_vecUp
+    public Vector Up => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayer_MovementServices", "m_vecUp");
+
+    // m_vecPreviouslyPredictedOrigin
+    public Vector PreviouslyPredictedOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayer_MovementServices", "m_vecPreviouslyPredictedOrigin");
+
+    // m_bMadeFootstepNoise
+    public ref bool MadeFootstepNoise => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bMadeFootstepNoise");
+
+    // m_iFootsteps
+    public ref Int32 Footsteps => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_iFootsteps");
 
     // m_bOldJumpPressed
     public ref bool OldJumpPressed => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bOldJumpPressed");
+
+    // m_flJumpPressedTime
+    public ref float JumpPressedTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flJumpPressedTime");
 
     // m_flJumpUntil
     public ref float JumpUntil => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flJumpUntil");
@@ -5454,14 +7521,50 @@ public partial class CCSPlayer_PingServices : CPlayerPawnComponent
 {
     public CCSPlayer_PingServices (IntPtr pointer) : base(pointer) {}
 
+    // m_flPlayerPingTokens
+    public Span<float> PlayerPingTokens => Schema.GetFixedArray<float>(this.Handle, "CCSPlayer_PingServices", "m_flPlayerPingTokens", 5);
+
     // m_hPlayerPing
     public CHandle<CBaseEntity> PlayerPing => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSPlayer_PingServices", "m_hPlayerPing");
+
+}
+
+public partial class CCSPlayer_RadioServices : CPlayerPawnComponent
+{
+    public CCSPlayer_RadioServices (IntPtr pointer) : base(pointer) {}
+
+    // m_flGotHostageTalkTimer
+    public ref float GotHostageTalkTimer => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_RadioServices", "m_flGotHostageTalkTimer");
+
+    // m_flDefusingTalkTimer
+    public ref float DefusingTalkTimer => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_RadioServices", "m_flDefusingTalkTimer");
+
+    // m_flC4PlantTalkTimer
+    public ref float C4PlantTalkTimer => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_RadioServices", "m_flC4PlantTalkTimer");
+
+    // m_flRadioTokenSlots
+    public Span<float> RadioTokenSlots => Schema.GetFixedArray<float>(this.Handle, "CCSPlayer_RadioServices", "m_flRadioTokenSlots", 3);
+
+    // m_bIgnoreRadio
+    public ref bool IgnoreRadio => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_RadioServices", "m_bIgnoreRadio");
 
 }
 
 public partial class CCSPlayer_UseServices : CPlayer_UseServices
 {
     public CCSPlayer_UseServices (IntPtr pointer) : base(pointer) {}
+
+    // m_hLastKnownUseEntity
+    public CHandle<CBaseEntity> LastKnownUseEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSPlayer_UseServices", "m_hLastKnownUseEntity");
+
+    // m_flLastUseTimeStamp
+    public ref float LastUseTimeStamp => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_UseServices", "m_flLastUseTimeStamp");
+
+    // m_flTimeStartedHoldingUse
+    public ref float TimeStartedHoldingUse => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_UseServices", "m_flTimeStartedHoldingUse");
+
+    // m_flTimeLastUsedWindow
+    public ref float TimeLastUsedWindow => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_UseServices", "m_flTimeLastUsedWindow");
 
 }
 
@@ -5478,6 +7581,24 @@ public partial class CCSPlayer_WaterServices : CPlayer_WaterServices
 {
     public CCSPlayer_WaterServices (IntPtr pointer) : base(pointer) {}
 
+    // m_NextDrownDamageTime
+    public ref float NextDrownDamageTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_WaterServices", "m_NextDrownDamageTime");
+
+    // m_nDrownDmgRate
+    public ref Int32 DrownDmgRate => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayer_WaterServices", "m_nDrownDmgRate");
+
+    // m_AirFinishedTime
+    public ref float AirFinishedTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_WaterServices", "m_AirFinishedTime");
+
+    // m_flWaterJumpTime
+    public ref float WaterJumpTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_WaterServices", "m_flWaterJumpTime");
+
+    // m_vecWaterJumpVel
+    public Vector WaterJumpVel => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayer_WaterServices", "m_vecWaterJumpVel");
+
+    // m_flSwimSoundTime
+    public ref float SwimSoundTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_WaterServices", "m_flSwimSoundTime");
+
 }
 
 public partial class CCSPlayer_WeaponServices : CPlayer_WeaponServices
@@ -5485,7 +7606,6 @@ public partial class CCSPlayer_WeaponServices : CPlayer_WeaponServices
     public CCSPlayer_WeaponServices (IntPtr pointer) : base(pointer) {}
 
     // m_flNextAttack
-    // MNetworkUserGroup "LocalPlayerExclusive"
     public ref float NextAttack => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_WeaponServices", "m_flNextAttack");
 
     // m_bIsLookingAtWeapon
@@ -5493,6 +7613,30 @@ public partial class CCSPlayer_WeaponServices : CPlayer_WeaponServices
 
     // m_bIsHoldingLookAtWeapon
     public ref bool IsHoldingLookAtWeapon => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_WeaponServices", "m_bIsHoldingLookAtWeapon");
+
+    // m_hSavedWeapon
+    public CHandle<CBasePlayerWeapon> SavedWeapon => Schema.GetDeclaredClass<CHandle<CBasePlayerWeapon>>(this.Handle, "CCSPlayer_WeaponServices", "m_hSavedWeapon");
+
+    // m_nTimeToMelee
+    public ref Int32 TimeToMelee => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayer_WeaponServices", "m_nTimeToMelee");
+
+    // m_nTimeToSecondary
+    public ref Int32 TimeToSecondary => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayer_WeaponServices", "m_nTimeToSecondary");
+
+    // m_nTimeToPrimary
+    public ref Int32 TimeToPrimary => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayer_WeaponServices", "m_nTimeToPrimary");
+
+    // m_nTimeToSniperRifle
+    public ref Int32 TimeToSniperRifle => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayer_WeaponServices", "m_nTimeToSniperRifle");
+
+    // m_bIsBeingGivenItem
+    public ref bool IsBeingGivenItem => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_WeaponServices", "m_bIsBeingGivenItem");
+
+    // m_bIsPickingUpItemWithUse
+    public ref bool IsPickingUpItemWithUse => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_WeaponServices", "m_bIsPickingUpItemWithUse");
+
+    // m_bPickedUpWeapon
+    public ref bool PickedUpWeapon => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_WeaponServices", "m_bPickedUpWeapon");
 
 }
 
@@ -5510,11 +7654,16 @@ public partial class CCSPlayerBase_CameraServices : CPlayer_CameraServices
     public ref float FOVTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerBase_CameraServices", "m_flFOVTime");
 
     // m_flFOVRate
-    // MNetworkUserGroup "LocalPlayerExclusive"
     public ref float FOVRate => ref Schema.GetRef<float>(this.Handle, "CCSPlayerBase_CameraServices", "m_flFOVRate");
 
     // m_hZoomOwner
     public CHandle<CBaseEntity> ZoomOwner => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSPlayerBase_CameraServices", "m_hZoomOwner");
+
+    // m_hTriggerFogList
+    public NetworkedVector<CHandle<CBaseEntity>> TriggerFogList => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CCSPlayerBase_CameraServices", "m_hTriggerFogList");
+
+    // m_hLastFogTrigger
+    public CHandle<CBaseEntity> LastFogTrigger => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSPlayerBase_CameraServices", "m_hLastFogTrigger");
 
 }
 
@@ -5554,17 +7703,47 @@ public partial class CCSPlayerController : CBasePlayerController
     public ref float ForceTeamTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerController", "m_flForceTeamTime");
 
     // m_iCompTeammateColor
-    // MNetworkChangeCallback "OnCompTeammateColorChanged"
     public ref Int32 CompTeammateColor => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iCompTeammateColor");
 
     // m_bEverPlayedOnTeam
     public ref bool EverPlayedOnTeam => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bEverPlayedOnTeam");
+
+    // m_bAttemptedToGetColor
+    public ref bool AttemptedToGetColor => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bAttemptedToGetColor");
+
+    // m_iTeammatePreferredColor
+    public ref Int32 TeammatePreferredColor => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iTeammatePreferredColor");
+
+    // m_bTeamChanged
+    public ref bool TeamChanged => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bTeamChanged");
+
+    // m_bInSwitchTeam
+    public ref bool InSwitchTeam => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bInSwitchTeam");
+
+    // m_bHasSeenJoinGame
+    public ref bool HasSeenJoinGame => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bHasSeenJoinGame");
+
+    // m_bJustBecameSpectator
+    public ref bool JustBecameSpectator => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bJustBecameSpectator");
+
+    // m_bSwitchTeamsOnNextRoundReset
+    public ref bool SwitchTeamsOnNextRoundReset => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bSwitchTeamsOnNextRoundReset");
+
+    // m_bRemoveAllItemsOnNextRoundReset
+    public ref bool RemoveAllItemsOnNextRoundReset => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bRemoveAllItemsOnNextRoundReset");
 
     // m_szClan
     public string Clan
     {
         get { return Schema.GetUtf8String(this.Handle, "CCSPlayerController", "m_szClan"); }
         set { Schema.SetString(this.Handle, "CCSPlayerController", "m_szClan", value); }
+    }
+
+    // m_szClanName
+    public string ClanName
+    {
+        get { return Schema.GetString(this.Handle, "CCSPlayerController", "m_szClanName"); }
+        set { Schema.SetString(this.Handle, "CCSPlayerController", "m_szClanName", value); }
     }
 
     // m_iCoachingTeam
@@ -5598,19 +7777,37 @@ public partial class CCSPlayerController : CBasePlayerController
     public ref Int32 EndMatchNextMapVote => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_nEndMatchNextMapVote");
 
     // m_unActiveQuestId
-    // MNetworkUserGroup "LocalPlayerExclusive"
     public ref UInt16 ActiveQuestId => ref Schema.GetRef<UInt16>(this.Handle, "CCSPlayerController", "m_unActiveQuestId");
 
     // m_nQuestProgressReason
-    // MNetworkUserGroup "LocalPlayerExclusive"
-    public ref QuestProgressReason QuestProgressReason => ref Schema.GetRef<QuestProgressReason>(this.Handle, "CCSPlayerController", "m_nQuestProgressReason");
-
     // m_unPlayerTvControlFlags
-    // MNetworkUserGroup "LocalPlayerExclusive"
     public ref UInt32 PlayerTvControlFlags => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController", "m_unPlayerTvControlFlags");
 
+    // m_iDraftIndex
+    public ref Int32 DraftIndex => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iDraftIndex");
+
+    // m_msQueuedModeDisconnectionTimestamp
+    public ref UInt32 MsQueuedModeDisconnectionTimestamp => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController", "m_msQueuedModeDisconnectionTimestamp");
+
+    // m_uiAbandonRecordedReason
+    public ref UInt32 UiAbandonRecordedReason => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController", "m_uiAbandonRecordedReason");
+
+    // m_bEverFullyConnected
+    public ref bool EverFullyConnected => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bEverFullyConnected");
+
+    // m_bAbandonAllowsSurrender
+    public ref bool AbandonAllowsSurrender => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bAbandonAllowsSurrender");
+
+    // m_bAbandonOffersInstantSurrender
+    public ref bool AbandonOffersInstantSurrender => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bAbandonOffersInstantSurrender");
+
+    // m_bDisconnection1MinWarningPrinted
+    public ref bool Disconnection1MinWarningPrinted => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bDisconnection1MinWarningPrinted");
+
+    // m_bScoreReported
+    public ref bool ScoreReported => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bScoreReported");
+
     // m_nDisconnectionTick
-    // MNetworkUserGroup "LocalPlayerExclusive"
     public ref Int32 DisconnectionTick => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_nDisconnectionTick");
 
     // m_bControllingBot
@@ -5619,8 +7816,13 @@ public partial class CCSPlayerController : CBasePlayerController
     // m_bHasControlledBotThisRound
     public ref bool HasControlledBotThisRound => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bHasControlledBotThisRound");
 
+    // m_bHasBeenControlledByPlayerThisRound
+    public ref bool HasBeenControlledByPlayerThisRound => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bHasBeenControlledByPlayerThisRound");
+
+    // m_nBotsControlledThisRound
+    public ref Int32 BotsControlledThisRound => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_nBotsControlledThisRound");
+
     // m_bCanControlObservedBot
-    // MNetworkUserGroup "LocalPlayerExclusive"
     public ref bool CanControlObservedBot => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bCanControlObservedBot");
 
     // m_hPlayerPawn
@@ -5629,23 +7831,25 @@ public partial class CCSPlayerController : CBasePlayerController
     // m_hObserverPawn
     public CHandle<CCSObserverPawn> ObserverPawn => Schema.GetDeclaredClass<CHandle<CCSObserverPawn>>(this.Handle, "CCSPlayerController", "m_hObserverPawn");
 
+    // m_DesiredObserverMode
+    public ref Int32 DesiredObserverMode => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_DesiredObserverMode");
+
+    // m_hDesiredObserverTarget
+    public CHandle<CEntityInstance> DesiredObserverTarget => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CCSPlayerController", "m_hDesiredObserverTarget");
+
     // m_bPawnIsAlive
     public ref bool PawnIsAlive => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bPawnIsAlive");
 
     // m_iPawnHealth
-    // MNetworkUserGroup "TeammateAndSpectatorExclusive"
     public ref UInt32 PawnHealth => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController", "m_iPawnHealth");
 
     // m_iPawnArmor
-    // MNetworkUserGroup "TeammateAndSpectatorExclusive"
     public ref Int32 PawnArmor => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iPawnArmor");
 
     // m_bPawnHasDefuser
-    // MNetworkUserGroup "TeammateAndSpectatorExclusive"
     public ref bool PawnHasDefuser => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bPawnHasDefuser");
 
     // m_bPawnHasHelmet
-    // MNetworkUserGroup "TeammateAndSpectatorExclusive"
     public ref bool PawnHasHelmet => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bPawnHasHelmet");
 
     // m_nPawnCharacterDefIndex
@@ -5666,11 +7870,47 @@ public partial class CCSPlayerController : CBasePlayerController
     // m_iScore
     public ref Int32 Score => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iScore");
 
+    // m_iRoundScore
+    public ref Int32 RoundScore => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iRoundScore");
+
+    // m_iRoundsWon
+    public ref Int32 RoundsWon => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iRoundsWon");
+
     // m_vecKills
     public NetworkedVector<EKillTypes_t> Kills => Schema.GetDeclaredClass<NetworkedVector<EKillTypes_t>>(this.Handle, "CCSPlayerController", "m_vecKills");
 
     // m_iMVPs
     public ref Int32 MVPs => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iMVPs");
+
+    // m_nUpdateCounter
+    public ref Int32 UpdateCounter => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_nUpdateCounter");
+
+    // m_flSmoothedPing
+    public ref float SmoothedPing => ref Schema.GetRef<float>(this.Handle, "CCSPlayerController", "m_flSmoothedPing");
+
+    // m_lastHeldVoteTimer
+    public IntervalTimer LastHeldVoteTimer => Schema.GetDeclaredClass<IntervalTimer>(this.Handle, "CCSPlayerController", "m_lastHeldVoteTimer");
+
+    // m_bShowHints
+    public ref bool ShowHints => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bShowHints");
+
+    // m_iNextTimeCheck
+    public ref Int32 NextTimeCheck => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iNextTimeCheck");
+
+    // m_bJustDidTeamKill
+    public ref bool JustDidTeamKill => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bJustDidTeamKill");
+
+    // m_bPunishForTeamKill
+    public ref bool PunishForTeamKill => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bPunishForTeamKill");
+
+    // m_bGaveTeamDamageWarning
+    public ref bool GaveTeamDamageWarning => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bGaveTeamDamageWarning");
+
+    // m_bGaveTeamDamageWarningThisRound
+    public ref bool GaveTeamDamageWarningThisRound => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bGaveTeamDamageWarningThisRound");
+
+    // m_LastTeamDamageWarningTime
+    public ref float LastTeamDamageWarningTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerController", "m_LastTeamDamageWarningTime");
 
 }
 
@@ -5700,12 +7940,9 @@ public partial class CCSPlayerController_DamageServices : CPlayerControllerCompo
     public CCSPlayerController_DamageServices (IntPtr pointer) : base(pointer) {}
 
     // m_nSendUpdate
-    // MNetworkUserGroup "LocalPlayerExclusiveDuringRoundEnd"
-    // MNetworkChangeCallback "OnDamageListUpdate"
     public ref Int32 SendUpdate => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_DamageServices", "m_nSendUpdate");
 
     // m_DamageList
-    // MNetworkUserGroup "LocalPlayerExclusiveDuringRoundEnd"
     public NetworkedVector<CDamageRecord> DamageList => Schema.GetDeclaredClass<NetworkedVector<CDamageRecord>>(this.Handle, "CCSPlayerController_DamageServices", "m_DamageList");
 
 }
@@ -5713,6 +7950,12 @@ public partial class CCSPlayerController_DamageServices : CPlayerControllerCompo
 public partial class CCSPlayerController_InGameMoneyServices : CPlayerControllerComponent
 {
     public CCSPlayerController_InGameMoneyServices (IntPtr pointer) : base(pointer) {}
+
+    // m_bReceivesMoneyNextRound
+    public ref bool ReceivesMoneyNextRound => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_bReceivesMoneyNextRound");
+
+    // m_iAccountMoneyEarnedForNextRound
+    public ref Int32 AccountMoneyEarnedForNextRound => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iAccountMoneyEarnedForNextRound");
 
     // m_iAccount
     public ref Int32 Account => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iAccount");
@@ -5750,8 +7993,10 @@ public partial class CCSPlayerController_InventoryServices : CPlayerControllerCo
     // m_nPersonaDataPublicCommendsFriendly
     public ref Int32 PersonaDataPublicCommendsFriendly => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsFriendly");
 
+    // m_unEquippedPlayerSprayIDs
+    public Span<UInt32> EquippedPlayerSprayIDs => Schema.GetFixedArray<UInt32>(this.Handle, "CCSPlayerController_InventoryServices", "m_unEquippedPlayerSprayIDs", 1);
+
     // m_vecServerAuthoritativeWeaponSlots
-    // MNetworkUserGroup "LocalPlayerExclusive"
     public NetworkedVector<ServerAuthoritativeWeaponSlot_t> ServerAuthoritativeWeaponSlots => Schema.GetDeclaredClass<NetworkedVector<ServerAuthoritativeWeaponSlot_t>>(this.Handle, "CCSPlayerController_InventoryServices", "m_vecServerAuthoritativeWeaponSlots");
 
 }
@@ -5772,8 +8017,27 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
     // m_pActionTrackingServices
     public CCSPlayer_ActionTrackingServices? ActionTrackingServices => Schema.GetPointer<CCSPlayer_ActionTrackingServices>(this.Handle, "CCSPlayerPawn", "m_pActionTrackingServices");
 
+    // m_pRadioServices
+    public CCSPlayer_RadioServices? RadioServices => Schema.GetPointer<CCSPlayer_RadioServices>(this.Handle, "CCSPlayerPawn", "m_pRadioServices");
+
+    // m_pDamageReactServices
+    public CCSPlayer_DamageReactServices? DamageReactServices => Schema.GetPointer<CCSPlayer_DamageReactServices>(this.Handle, "CCSPlayerPawn", "m_pDamageReactServices");
+
+    // m_nCharacterDefIndex
+    public ref UInt16 CharacterDefIndex => ref Schema.GetRef<UInt16>(this.Handle, "CCSPlayerPawn", "m_nCharacterDefIndex");
+
+    // m_hPreviousModel
+    public CStrongHandle<InfoForResourceTypeCModel> PreviousModel => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCModel>>(this.Handle, "CCSPlayerPawn", "m_hPreviousModel");
+
     // m_bHasFemaleVoice
     public ref bool HasFemaleVoice => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bHasFemaleVoice");
+
+    // m_strVOPrefix
+    public string StrVOPrefix
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CCSPlayerPawn", "m_strVOPrefix"); }
+        set { Schema.SetString(this.Handle, "CCSPlayerPawn", "m_strVOPrefix", value); }
+    }
 
     // m_szLastPlaceName
     public string LastPlaceName
@@ -5785,11 +8049,17 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
     // m_bInBuyZone
     public ref bool InBuyZone => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bInBuyZone");
 
+    // m_bWasInBuyZone
+    public ref bool WasInBuyZone => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bWasInBuyZone");
+
     // m_bInHostageRescueZone
     public ref bool InHostageRescueZone => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bInHostageRescueZone");
 
     // m_bInBombZone
     public ref bool InBombZone => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bInBombZone");
+
+    // m_bWasInHostageRescueZone
+    public ref bool WasInHostageRescueZone => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bWasInHostageRescueZone");
 
     // m_iRetakesOffering
     public ref Int32 RetakesOffering => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawn", "m_iRetakesOffering");
@@ -5812,12 +8082,13 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
     // m_flHealthShotBoostExpirationTime
     public ref float HealthShotBoostExpirationTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawn", "m_flHealthShotBoostExpirationTime");
 
+    // m_flLandseconds
+    public ref float Landseconds => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawn", "m_flLandseconds");
+
     // m_aimPunchAngle
-    // MNetworkBitCount "32"
     public QAngle AimPunchAngle => Schema.GetDeclaredClass<QAngle>(this.Handle, "CCSPlayerPawn", "m_aimPunchAngle");
 
     // m_aimPunchAngleVel
-    // MNetworkBitCount "32"
     public QAngle AimPunchAngleVel => Schema.GetDeclaredClass<QAngle>(this.Handle, "CCSPlayerPawn", "m_aimPunchAngleVel");
 
     // m_aimPunchTickBase
@@ -5826,15 +8097,35 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
     // m_aimPunchTickFraction
     public ref float AimPunchTickFraction => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawn", "m_aimPunchTickFraction");
 
+    // m_aimPunchCache
+    public NetworkedVector<QAngle> AimPunchCache => Schema.GetDeclaredClass<NetworkedVector<QAngle>>(this.Handle, "CCSPlayerPawn", "m_aimPunchCache");
+
     // m_bIsBuyMenuOpen
     public ref bool IsBuyMenuOpen => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bIsBuyMenuOpen");
+
+    // m_xLastHeadBoneTransform
+    public CTransform XLastHeadBoneTransform => Schema.GetDeclaredClass<CTransform>(this.Handle, "CCSPlayerPawn", "m_xLastHeadBoneTransform");
+
+    // m_bLastHeadBoneTransformIsValid
+    public ref bool LastHeadBoneTransformIsValid => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bLastHeadBoneTransformIsValid");
+
+    // m_lastLandTime
+    public ref float LastLandTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawn", "m_lastLandTime");
+
+    // m_bOnGroundLastTick
+    public ref bool OnGroundLastTick => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bOnGroundLastTick");
+
+    // m_iPlayerLocked
+    public ref Int32 PlayerLocked => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawn", "m_iPlayerLocked");
 
     // m_flTimeOfLastInjury
     public ref float TimeOfLastInjury => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawn", "m_flTimeOfLastInjury");
 
     // m_flNextSprayDecalTime
-    // MNetworkUserGroup "LocalPlayerExclusive"
     public ref float NextSprayDecalTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawn", "m_flNextSprayDecalTime");
+
+    // m_bNextSprayDecalTimeExpedited
+    public ref bool NextSprayDecalTimeExpedited => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bNextSprayDecalTimeExpedited");
 
     // m_nRagdollDamageBone
     public ref Int32 RagdollDamageBone => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawn", "m_nRagdollDamageBone");
@@ -5855,11 +8146,17 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
     // m_bRagdollDamageHeadshot
     public ref bool RagdollDamageHeadshot => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bRagdollDamageHeadshot");
 
+    // m_vRagdollServerOrigin
+    public Vector RagdollServerOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayerPawn", "m_vRagdollServerOrigin");
+
     // m_EconGloves
     public CEconItemView EconGloves => Schema.GetDeclaredClass<CEconItemView>(this.Handle, "CCSPlayerPawn", "m_EconGloves");
 
     // m_qDeathEyeAngles
     public QAngle DeathEyeAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CCSPlayerPawn", "m_qDeathEyeAngles");
+
+    // m_bSkipOneHeadConstraintUpdate
+    public ref bool SkipOneHeadConstraintUpdate => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bSkipOneHeadConstraintUpdate");
 
 }
 
@@ -5868,9 +8165,6 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
     public CCSPlayerPawnBase (IntPtr pointer) : base(pointer) {}
 
     // m_CTouchExpansionComponent
-    // MNetworkUserGroup "CTouchExpansionComponent"
-    // MNetworkAlias "CTouchExpansionComponent"
-    // MNetworkTypeAlias "CTouchExpansionComponent"
     public CTouchExpansionComponent CTouchExpansionComponent => Schema.GetDeclaredClass<CTouchExpansionComponent>(this.Handle, "CCSPlayerPawnBase", "m_CTouchExpansionComponent");
 
     // m_pPingServices
@@ -5879,14 +8173,59 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
     // m_pViewModelServices
     public CPlayer_ViewModelServices? ViewModelServices => Schema.GetPointer<CPlayer_ViewModelServices>(this.Handle, "CCSPlayerPawnBase", "m_pViewModelServices");
 
+    // m_iDisplayHistoryBits
+    public ref UInt32 DisplayHistoryBits => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerPawnBase", "m_iDisplayHistoryBits");
+
+    // m_flLastAttackedTeammate
+    public ref float LastAttackedTeammate => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flLastAttackedTeammate");
+
     // m_hOriginalController
     public CHandle<CCSPlayerController> OriginalController => Schema.GetDeclaredClass<CHandle<CCSPlayerController>>(this.Handle, "CCSPlayerPawnBase", "m_hOriginalController");
+
+    // m_blindUntilTime
+    public ref float BlindUntilTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_blindUntilTime");
+
+    // m_blindStartTime
+    public ref float BlindStartTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_blindStartTime");
+
+    // m_allowAutoFollowTime
+    public ref float AllowAutoFollowTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_allowAutoFollowTime");
 
     // m_entitySpottedState
     public EntitySpottedState_t EntitySpottedState => Schema.GetDeclaredClass<EntitySpottedState_t>(this.Handle, "CCSPlayerPawnBase", "m_entitySpottedState");
 
+    // m_nSpotRules
+    public ref Int32 SpotRules => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawnBase", "m_nSpotRules");
+
     // m_iPlayerState
     public ref CSPlayerState PlayerState => ref Schema.GetRef<CSPlayerState>(this.Handle, "CCSPlayerPawnBase", "m_iPlayerState");
+
+    // m_chickenIdleSoundTimer
+    public CountdownTimer ChickenIdleSoundTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSPlayerPawnBase", "m_chickenIdleSoundTimer");
+
+    // m_chickenJumpSoundTimer
+    public CountdownTimer ChickenJumpSoundTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSPlayerPawnBase", "m_chickenJumpSoundTimer");
+
+    // m_vecLastBookmarkedPosition
+    public Vector LastBookmarkedPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayerPawnBase", "m_vecLastBookmarkedPosition");
+
+    // m_flLastDistanceTraveledNotice
+    public ref float LastDistanceTraveledNotice => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flLastDistanceTraveledNotice");
+
+    // m_flAccumulatedDistanceTraveled
+    public ref float AccumulatedDistanceTraveled => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flAccumulatedDistanceTraveled");
+
+    // m_flLastFriendlyFireDamageReductionRatio
+    public ref float LastFriendlyFireDamageReductionRatio => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flLastFriendlyFireDamageReductionRatio");
+
+    // m_bRespawning
+    public ref bool Respawning => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bRespawning");
+
+    // m_nLastPickupPriority
+    public ref Int32 LastPickupPriority => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawnBase", "m_nLastPickupPriority");
+
+    // m_flLastPickupPriorityTime
+    public ref float LastPickupPriorityTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flLastPickupPriorityTime");
 
     // m_bIsScoped
     public ref bool IsScoped => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bIsScoped");
@@ -5924,20 +8263,78 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
     // m_flGuardianTooFarDistFrac
     public ref float GuardianTooFarDistFrac => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flGuardianTooFarDistFrac");
 
+    // m_flNextGuardianTooFarHurtTime
+    public ref float NextGuardianTooFarHurtTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flNextGuardianTooFarHurtTime");
+
     // m_flDetectedByEnemySensorTime
     public ref float DetectedByEnemySensorTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flDetectedByEnemySensorTime");
+
+    // m_flDealtDamageToEnemyMostRecentTimestamp
+    public ref float DealtDamageToEnemyMostRecentTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flDealtDamageToEnemyMostRecentTimestamp");
+
+    // m_flLastEquippedHelmetTime
+    public ref float LastEquippedHelmetTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flLastEquippedHelmetTime");
+
+    // m_flLastEquippedArmorTime
+    public ref float LastEquippedArmorTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flLastEquippedArmorTime");
 
     // m_nHeavyAssaultSuitCooldownRemaining
     public ref Int32 HeavyAssaultSuitCooldownRemaining => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawnBase", "m_nHeavyAssaultSuitCooldownRemaining");
 
+    // m_bResetArmorNextSpawn
+    public ref bool ResetArmorNextSpawn => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bResetArmorNextSpawn");
+
+    // m_flLastBumpMineBumpTime
+    public ref float LastBumpMineBumpTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flLastBumpMineBumpTime");
+
     // m_flEmitSoundTime
     public ref float EmitSoundTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flEmitSoundTime");
+
+    // m_iNumSpawns
+    public ref Int32 NumSpawns => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawnBase", "m_iNumSpawns");
+
+    // m_iShouldHaveCash
+    public ref Int32 ShouldHaveCash => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawnBase", "m_iShouldHaveCash");
+
+    // m_bInvalidSteamLogonDelayed
+    public ref bool InvalidSteamLogonDelayed => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bInvalidSteamLogonDelayed");
+
+    // m_flLastAction
+    public ref float LastAction => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flLastAction");
+
+    // m_flNameChangeHistory
+    public Span<float> NameChangeHistory => Schema.GetFixedArray<float>(this.Handle, "CCSPlayerPawnBase", "m_flNameChangeHistory", 5);
+
+    // m_fLastGivenDefuserTime
+    public ref float LastGivenDefuserTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_fLastGivenDefuserTime");
+
+    // m_fLastGivenBombTime
+    public ref float LastGivenBombTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_fLastGivenBombTime");
 
     // m_bHasNightVision
     public ref bool HasNightVision => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bHasNightVision");
 
     // m_bNightVisionOn
     public ref bool NightVisionOn => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bNightVisionOn");
+
+    // m_fNextRadarUpdateTime
+    public ref float NextRadarUpdateTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_fNextRadarUpdateTime");
+
+    // m_flLastMoneyUpdateTime
+    public ref float LastMoneyUpdateTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flLastMoneyUpdateTime");
+
+    // m_MenuStringBuffer
+    public string MenuStringBuffer
+    {
+        get { return Schema.GetString(this.Handle, "CCSPlayerPawnBase", "m_MenuStringBuffer"); }
+        set { Schema.SetString(this.Handle, "CCSPlayerPawnBase", "m_MenuStringBuffer", value); }
+    }
+
+    // m_fIntroCamTime
+    public ref float IntroCamTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_fIntroCamTime");
+
+    // m_nMyCollisionGroup
+    public ref Int32 MyCollisionGroup => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawnBase", "m_nMyCollisionGroup");
 
     // m_bInNoDefuseArea
     public ref bool InNoDefuseArea => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bInNoDefuseArea");
@@ -5948,8 +8345,44 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
     // m_iMoveState
     public ref Int32 MoveState => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawnBase", "m_iMoveState");
 
+    // m_grenadeParameterStashTime
+    public ref float GrenadeParameterStashTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_grenadeParameterStashTime");
+
+    // m_bGrenadeParametersStashed
+    public ref bool GrenadeParametersStashed => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bGrenadeParametersStashed");
+
+    // m_angStashedShootAngles
+    public QAngle StashedShootAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CCSPlayerPawnBase", "m_angStashedShootAngles");
+
+    // m_vecStashedGrenadeThrowPosition
+    public Vector StashedGrenadeThrowPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayerPawnBase", "m_vecStashedGrenadeThrowPosition");
+
+    // m_vecStashedVelocity
+    public Vector StashedVelocity => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayerPawnBase", "m_vecStashedVelocity");
+
+    // m_angShootAngleHistory
+    public Span<QAngle> ShootAngleHistory => Schema.GetFixedArray<QAngle>(this.Handle, "CCSPlayerPawnBase", "m_angShootAngleHistory", 2);
+
+    // m_vecThrowPositionHistory
+    public Span<Vector> ThrowPositionHistory => Schema.GetFixedArray<Vector>(this.Handle, "CCSPlayerPawnBase", "m_vecThrowPositionHistory", 2);
+
+    // m_vecVelocityHistory
+    public Span<Vector> VelocityHistory => Schema.GetFixedArray<Vector>(this.Handle, "CCSPlayerPawnBase", "m_vecVelocityHistory", 2);
+
+    // m_bDiedAirborne
+    public ref bool DiedAirborne => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bDiedAirborne");
+
+    // m_iBombSiteIndex
+    public CEntityIndex BombSiteIndex => Schema.GetDeclaredClass<CEntityIndex>(this.Handle, "CCSPlayerPawnBase", "m_iBombSiteIndex");
+
     // m_nWhichBombZone
     public ref Int32 WhichBombZone => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawnBase", "m_nWhichBombZone");
+
+    // m_bInBombZoneTrigger
+    public ref bool InBombZoneTrigger => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bInBombZoneTrigger");
+
+    // m_bWasInBombZoneTrigger
+    public ref bool WasInBombZoneTrigger => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bWasInBombZoneTrigger");
 
     // m_iDirection
     public ref Int32 Direction => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawnBase", "m_iDirection");
@@ -5960,6 +8393,9 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
     // m_ArmorValue
     public ref Int32 ArmorValue => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawnBase", "m_ArmorValue");
 
+    // m_flFlinchStack
+    public ref float FlinchStack => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flFlinchStack");
+
     // m_flVelocityModifier
     public ref float VelocityModifier => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flVelocityModifier");
 
@@ -5968,6 +8404,12 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
 
     // m_nHitBodyPart
     public ref Int32 HitBodyPart => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawnBase", "m_nHitBodyPart");
+
+    // m_iHostagesKilled
+    public ref Int32 HostagesKilled => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawnBase", "m_iHostagesKilled");
+
+    // m_vecTotalBulletForce
+    public Vector TotalBulletForce => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayerPawnBase", "m_vecTotalBulletForce");
 
     // m_flFlashDuration
     public ref float FlashDuration => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flFlashDuration");
@@ -5990,30 +8432,56 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
     // m_bStrafing
     public ref bool Strafing => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bStrafing");
 
+    // m_lastStandingPos
+    public Vector LastStandingPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayerPawnBase", "m_lastStandingPos");
+
+    // m_ignoreLadderJumpTime
+    public ref float IgnoreLadderJumpTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_ignoreLadderJumpTime");
+
+    // m_ladderSurpressionTimer
+    public CountdownTimer LadderSurpressionTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CCSPlayerPawnBase", "m_ladderSurpressionTimer");
+
+    // m_lastLadderNormal
+    public Vector LastLadderNormal => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayerPawnBase", "m_lastLadderNormal");
+
+    // m_lastLadderPos
+    public Vector LastLadderPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayerPawnBase", "m_lastLadderPos");
+
     // m_thirdPersonHeading
-    // MNetworkEncoder "qangle_precise"
-    // MNetworkPriority "32"
     public QAngle ThirdPersonHeading => Schema.GetDeclaredClass<QAngle>(this.Handle, "CCSPlayerPawnBase", "m_thirdPersonHeading");
 
     // m_flSlopeDropOffset
-    // MNetworkPriority "32"
     public ref float SlopeDropOffset => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flSlopeDropOffset");
 
     // m_flSlopeDropHeight
-    // MNetworkPriority "32"
     public ref float SlopeDropHeight => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flSlopeDropHeight");
 
     // m_vHeadConstraintOffset
-    // MNetworkPriority "32"
     public Vector HeadConstraintOffset => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayerPawnBase", "m_vHeadConstraintOffset");
 
+    // m_iLastWeaponFireUsercmd
+    public ref Int32 LastWeaponFireUsercmd => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawnBase", "m_iLastWeaponFireUsercmd");
+
     // m_angEyeAngles
-    // MNetworkEncoder "qangle_precise"
-    // MNetworkPriority "32"
     public QAngle EyeAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CCSPlayerPawnBase", "m_angEyeAngles");
+
+    // m_bVCollisionInitted
+    public ref bool VCollisionInitted => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bVCollisionInitted");
+
+    // m_storedSpawnPosition
+    public Vector StoredSpawnPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayerPawnBase", "m_storedSpawnPosition");
+
+    // m_storedSpawnAngle
+    public QAngle StoredSpawnAngle => Schema.GetDeclaredClass<QAngle>(this.Handle, "CCSPlayerPawnBase", "m_storedSpawnAngle");
+
+    // m_bIsSpawning
+    public ref bool IsSpawning => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bIsSpawning");
 
     // m_bHideTargetID
     public ref bool HideTargetID => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bHideTargetID");
+
+    // m_nNumDangerZoneDamageHits
+    public ref Int32 NumDangerZoneDamageHits => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawnBase", "m_nNumDangerZoneDamageHits");
 
     // m_bHud_MiniScoreHidden
     public ref bool Hud_MiniScoreHidden => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bHud_MiniScoreHidden");
@@ -6039,8 +8507,29 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
     // m_iSecondaryAddon
     public ref Int32 SecondaryAddon => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawnBase", "m_iSecondaryAddon");
 
+    // m_currentDeafnessFilter
+    public CUtlStringToken CurrentDeafnessFilter => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CCSPlayerPawnBase", "m_currentDeafnessFilter");
+
+    // m_NumEnemiesKilledThisSpawn
+    public ref Int32 NumEnemiesKilledThisSpawn => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawnBase", "m_NumEnemiesKilledThisSpawn");
+
+    // m_NumEnemiesKilledThisRound
+    public ref Int32 NumEnemiesKilledThisRound => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawnBase", "m_NumEnemiesKilledThisRound");
+
+    // m_NumEnemiesAtRoundStart
+    public ref Int32 NumEnemiesAtRoundStart => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawnBase", "m_NumEnemiesAtRoundStart");
+
+    // m_wasNotKilledNaturally
+    public ref bool WasNotKilledNaturally => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_wasNotKilledNaturally");
+
     // m_vecPlayerPatchEconIndices
     public Span<UInt32> PlayerPatchEconIndices => Schema.GetFixedArray<UInt32>(this.Handle, "CCSPlayerPawnBase", "m_vecPlayerPatchEconIndices", 5);
+
+    // m_iDeathFlags
+    public ref Int32 DeathFlags => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawnBase", "m_iDeathFlags");
+
+    // m_hPet
+    public CHandle<CChicken> Pet => Schema.GetDeclaredClass<CHandle<CChicken>>(this.Handle, "CCSPlayerPawnBase", "m_hPet");
 
     // m_unCurrentEquipmentValue
     public ref UInt16 CurrentEquipmentValue => ref Schema.GetRef<UInt16>(this.Handle, "CCSPlayerPawnBase", "m_unCurrentEquipmentValue");
@@ -6054,8 +8543,38 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
     // m_nSurvivalTeamNumber
     public ref Int32 SurvivalTeamNumber => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawnBase", "m_nSurvivalTeamNumber");
 
+    // m_bHasDeathInfo
+    public ref bool HasDeathInfo => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bHasDeathInfo");
+
+    // m_flDeathInfoTime
+    public ref float DeathInfoTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flDeathInfoTime");
+
+    // m_vecDeathInfoOrigin
+    public Vector DeathInfoOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayerPawnBase", "m_vecDeathInfoOrigin");
+
     // m_bKilledByHeadshot
     public ref bool KilledByHeadshot => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bKilledByHeadshot");
+
+    // m_LastHitBox
+    public ref Int32 LastHitBox => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawnBase", "m_LastHitBox");
+
+    // m_LastHealth
+    public ref Int32 LastHealth => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawnBase", "m_LastHealth");
+
+    // m_flLastCollisionCeiling
+    public ref float LastCollisionCeiling => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flLastCollisionCeiling");
+
+    // m_flLastCollisionCeilingChangeTime
+    public ref float LastCollisionCeilingChangeTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flLastCollisionCeilingChangeTime");
+
+    // m_pBot
+    public CCSBot? Bot => Schema.GetPointer<CCSBot>(this.Handle, "CCSPlayerPawnBase", "m_pBot");
+
+    // m_bBotAllowActive
+    public ref bool BotAllowActive => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bBotAllowActive");
+
+    // m_bCommittingSuicideOnTeamChange
+    public ref bool CommittingSuicideOnTeamChange => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bCommittingSuicideOnTeamChange");
 
 }
 
@@ -6090,11 +8609,26 @@ public partial class CCSPlayerResource : CBaseEntity
     // m_bEndMatchNextMapAllVoted
     public ref bool EndMatchNextMapAllVoted => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerResource", "m_bEndMatchNextMapAllVoted");
 
+    // m_foundGoalPositions
+    public ref bool FoundGoalPositions => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerResource", "m_foundGoalPositions");
+
+}
+
+public partial class CCSSprite : CSprite
+{
+    public CCSSprite (IntPtr pointer) : base(pointer) {}
+
 }
 
 public partial class CCSTeam : CTeam
 {
     public CCSTeam (IntPtr pointer) : base(pointer) {}
+
+    // m_nLastRecievedShorthandedRoundBonus
+    public ref Int32 LastRecievedShorthandedRoundBonus => ref Schema.GetRef<Int32>(this.Handle, "CCSTeam", "m_nLastRecievedShorthandedRoundBonus");
+
+    // m_nShorthandedRoundBonusStartRound
+    public ref Int32 ShorthandedRoundBonusStartRound => ref Schema.GetRef<Int32>(this.Handle, "CCSTeam", "m_nShorthandedRoundBonusStartRound");
 
     // m_bSurrendered
     public ref bool Surrendered => ref Schema.GetRef<bool>(this.Handle, "CCSTeam", "m_bSurrendered");
@@ -6142,11 +8676,20 @@ public partial class CCSTeam : CTeam
         set { Schema.SetString(this.Handle, "CCSTeam", "m_szTeamLogoImage", value); }
     }
 
+    // m_flNextResourceTime
+    public ref float NextResourceTime => ref Schema.GetRef<float>(this.Handle, "CCSTeam", "m_flNextResourceTime");
+
+    // m_iLastUpdateSentAt
+    public ref Int32 LastUpdateSentAt => ref Schema.GetRef<Int32>(this.Handle, "CCSTeam", "m_iLastUpdateSentAt");
+
 }
 
 public partial class CCSWeaponBase : CBasePlayerWeapon
 {
     public CCSWeaponBase (IntPtr pointer) : base(pointer) {}
+
+    // m_bRemoveable
+    public ref bool Removeable => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bRemoveable");
 
     // m_flFireSequenceStartTime
     public ref float FireSequenceStartTime => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flFireSequenceStartTime");
@@ -6154,27 +8697,86 @@ public partial class CCSWeaponBase : CBasePlayerWeapon
     // m_nFireSequenceStartTimeChange
     public ref Int32 FireSequenceStartTimeChange => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_nFireSequenceStartTimeChange");
 
+    // m_nFireSequenceStartTimeAck
+    public ref Int32 FireSequenceStartTimeAck => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_nFireSequenceStartTimeAck");
+
     // m_bPlayerFireEventIsPrimary
     public ref bool PlayerFireEventIsPrimary => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bPlayerFireEventIsPrimary");
 
+    // m_seqIdle
+    public ref Int32 SeqIdle => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_seqIdle");
+
+    // m_seqFirePrimary
+    public ref Int32 SeqFirePrimary => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_seqFirePrimary");
+
+    // m_seqFireSecondary
+    public ref Int32 SeqFireSecondary => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_seqFireSecondary");
+
+    // m_thirdPersonFireSequences
+    public NetworkedVector<Int32> ThirdPersonFireSequences => Schema.GetDeclaredClass<NetworkedVector<Int32>>(this.Handle, "CCSWeaponBase", "m_thirdPersonFireSequences");
+
+    // m_hCurrentThirdPersonSequence
+    public ref Int32 CurrentThirdPersonSequence => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_hCurrentThirdPersonSequence");
+
+    // m_nSilencerBoneIndex
+    public ref Int32 SilencerBoneIndex => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_nSilencerBoneIndex");
+
+    // m_thirdPersonSequences
+    public Span<Int32> ThirdPersonSequences => Schema.GetFixedArray<Int32>(this.Handle, "CCSWeaponBase", "m_thirdPersonSequences", 6);
+
+    // m_bPlayerAmmoStockOnPickup
+    public ref bool PlayerAmmoStockOnPickup => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bPlayerAmmoStockOnPickup");
+
+    // m_bRequireUseToTouch
+    public ref bool RequireUseToTouch => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bRequireUseToTouch");
+
     // m_iState
-    // MNetworkChangeCallback "OnWeaponStateNetworkChange"
     public ref CSWeaponState_t State => ref Schema.GetRef<CSWeaponState_t>(this.Handle, "CCSWeaponBase", "m_iState");
 
+    // m_flLastTimeInAir
+    public ref float LastTimeInAir => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flLastTimeInAir");
+
+    // m_flLastDeployTime
+    public ref float LastDeployTime => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flLastDeployTime");
+
     // m_nViewModelIndex
-    // MNetworkUserGroup "LocalWeaponExclusive"
     public ref UInt32 ViewModelIndex => ref Schema.GetRef<UInt32>(this.Handle, "CCSWeaponBase", "m_nViewModelIndex");
 
+    // m_bReloadsWithClips
+    public ref bool ReloadsWithClips => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bReloadsWithClips");
+
     // m_flTimeWeaponIdle
-    // MNetworkUserGroup "LocalWeaponExclusive"
-    // MNetworkPriority "32"
     public ref float TimeWeaponIdle => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flTimeWeaponIdle");
+
+    // m_bFireOnEmpty
+    public ref bool FireOnEmpty => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bFireOnEmpty");
+
+    // m_OnPlayerPickup
+    public CEntityIOOutput OnPlayerPickup => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CCSWeaponBase", "m_OnPlayerPickup");
 
     // m_weaponMode
     public ref CSWeaponMode WeaponMode => ref Schema.GetRef<CSWeaponMode>(this.Handle, "CCSWeaponBase", "m_weaponMode");
 
+    // m_flTurningInaccuracyDelta
+    public ref float TurningInaccuracyDelta => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flTurningInaccuracyDelta");
+
+    // m_vecTurningInaccuracyEyeDirLast
+    public Vector TurningInaccuracyEyeDirLast => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSWeaponBase", "m_vecTurningInaccuracyEyeDirLast");
+
+    // m_flTurningInaccuracy
+    public ref float TurningInaccuracy => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flTurningInaccuracy");
+
     // m_fAccuracyPenalty
     public ref float AccuracyPenalty => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_fAccuracyPenalty");
+
+    // m_flLastAccuracyUpdateTime
+    public ref float LastAccuracyUpdateTime => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flLastAccuracyUpdateTime");
+
+    // m_fAccuracySmoothedForZoom
+    public ref float AccuracySmoothedForZoom => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_fAccuracySmoothedForZoom");
+
+    // m_fScopeZoomEndTime
+    public ref float ScopeZoomEndTime => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_fScopeZoomEndTime");
 
     // m_iRecoilIndex
     public ref Int32 IRecoilIndex => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_iRecoilIndex");
@@ -6209,15 +8811,53 @@ public partial class CCSWeaponBase : CBasePlayerWeapon
     // m_iOriginalTeamNumber
     public ref Int32 OriginalTeamNumber => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_iOriginalTeamNumber");
 
+    // m_flNextAttackRenderTimeOffset
+    public ref float NextAttackRenderTimeOffset => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flNextAttackRenderTimeOffset");
+
+    // m_bCanBePickedUp
+    public ref bool CanBePickedUp => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bCanBePickedUp");
+
+    // m_bUseCanOverrideNextOwnerTouchTime
+    public ref bool UseCanOverrideNextOwnerTouchTime => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bUseCanOverrideNextOwnerTouchTime");
+
+    // m_nextOwnerTouchTime
+    public ref float NextOwnerTouchTime => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_nextOwnerTouchTime");
+
+    // m_nextPrevOwnerTouchTime
+    public ref float NextPrevOwnerTouchTime => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_nextPrevOwnerTouchTime");
+
     // m_hPrevOwner
     public CHandle<CCSPlayerPawn> PrevOwner => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSWeaponBase", "m_hPrevOwner");
 
     // m_nDropTick
+    public ref Int32 DropTick => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_nDropTick");
+
+    // m_donated
+    public ref bool Donated => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_donated");
+
     // m_fLastShotTime
     public ref float LastShotTime => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_fLastShotTime");
 
+    // m_bWasOwnedByCT
+    public ref bool WasOwnedByCT => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bWasOwnedByCT");
+
+    // m_bWasOwnedByTerrorist
+    public ref bool WasOwnedByTerrorist => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bWasOwnedByTerrorist");
+
+    // m_bFiredOutOfAmmoEvent
+    public ref bool FiredOutOfAmmoEvent => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bFiredOutOfAmmoEvent");
+
+    // m_numRemoveUnownedWeaponThink
+    public ref Int32 NumRemoveUnownedWeaponThink => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_numRemoveUnownedWeaponThink");
+
+    // m_IronSightController
+    public CIronSightController IronSightController => Schema.GetDeclaredClass<CIronSightController>(this.Handle, "CCSWeaponBase", "m_IronSightController");
+
     // m_iIronSightMode
     public ref Int32 IronSightMode => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_iIronSightMode");
+
+    // m_flLastLOSTraceFailureTime
+    public ref float LastLOSTraceFailureTime => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flLastLOSTraceFailureTime");
 
     // m_iNumEmptyAttacks
     public ref Int32 NumEmptyAttacks => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_iNumEmptyAttacks");
@@ -6234,8 +8874,26 @@ public partial class CCSWeaponBaseGun : CCSWeaponBase
     // m_iBurstShotsRemaining
     public ref Int32 BurstShotsRemaining => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseGun", "m_iBurstShotsRemaining");
 
+    // m_silencedModelIndex
+    public ref Int32 SilencedModelIndex => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseGun", "m_silencedModelIndex");
+
+    // m_inPrecache
+    public ref bool InPrecache => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBaseGun", "m_inPrecache");
+
     // m_bNeedsBoltAction
     public ref bool NeedsBoltAction => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBaseGun", "m_bNeedsBoltAction");
+
+    // m_bSkillReloadAvailable
+    public ref bool SkillReloadAvailable => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBaseGun", "m_bSkillReloadAvailable");
+
+    // m_bSkillReloadLiftedReloadKey
+    public ref bool SkillReloadLiftedReloadKey => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBaseGun", "m_bSkillReloadLiftedReloadKey");
+
+    // m_bSkillBoltInterruptAvailable
+    public ref bool SkillBoltInterruptAvailable => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBaseGun", "m_bSkillBoltInterruptAvailable");
+
+    // m_bSkillBoltLiftedFireKey
+    public ref bool SkillBoltLiftedFireKey => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBaseGun", "m_bSkillBoltLiftedFireKey");
 
 }
 
@@ -6301,6 +8959,15 @@ public partial class CDEagle : CCSWeaponBaseGun
 
 }
 
+public partial class CDebugHistory : CBaseEntity
+{
+    public CDebugHistory (IntPtr pointer) : base(pointer) {}
+
+    // m_nNpcEvents
+    public ref Int32 NpcEvents => ref Schema.GetRef<Int32>(this.Handle, "CDebugHistory", "m_nNpcEvents");
+
+}
+
 public partial class CDecoyGrenade : CBaseCSGrenade
 {
     public CDecoyGrenade (IntPtr pointer) : base(pointer) {}
@@ -6311,17 +8978,35 @@ public partial class CDecoyProjectile : CBaseCSGrenadeProjectile
 {
     public CDecoyProjectile (IntPtr pointer) : base(pointer) {}
 
+    // m_nDecoyShotTick
+    public ref Int32 DecoyShotTick => ref Schema.GetRef<Int32>(this.Handle, "CDecoyProjectile", "m_nDecoyShotTick");
+
+    // m_shotsRemaining
+    public ref Int32 ShotsRemaining => ref Schema.GetRef<Int32>(this.Handle, "CDecoyProjectile", "m_shotsRemaining");
+
+    // m_fExpireTime
+    public ref float ExpireTime => ref Schema.GetRef<float>(this.Handle, "CDecoyProjectile", "m_fExpireTime");
+
+    // m_decoyWeaponDefIndex
+    public ref UInt16 DecoyWeaponDefIndex => ref Schema.GetRef<UInt16>(this.Handle, "CDecoyProjectile", "m_decoyWeaponDefIndex");
+
 }
 
 public partial class CDynamicLight : CBaseModelEntity
 {
     public CDynamicLight (IntPtr pointer) : base(pointer) {}
 
+    // m_ActualFlags
+    public ref byte ActualFlags => ref Schema.GetRef<byte>(this.Handle, "CDynamicLight", "m_ActualFlags");
+
     // m_Flags
     public ref byte DynamicLightFlags => ref Schema.GetRef<byte>(this.Handle, "CDynamicLight", "m_Flags");
 
     // m_LightStyle
     public ref byte LightStyle => ref Schema.GetRef<byte>(this.Handle, "CDynamicLight", "m_LightStyle");
+
+    // m_On
+    public ref bool On => ref Schema.GetRef<bool>(this.Handle, "CDynamicLight", "m_On");
 
     // m_Radius
     public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CDynamicLight", "m_Radius");
@@ -6330,15 +9015,9 @@ public partial class CDynamicLight : CBaseModelEntity
     public ref Int32 Exponent => ref Schema.GetRef<Int32>(this.Handle, "CDynamicLight", "m_Exponent");
 
     // m_InnerAngle
-    // MNetworkBitCount "8"
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "360.000000"
     public ref float InnerAngle => ref Schema.GetRef<float>(this.Handle, "CDynamicLight", "m_InnerAngle");
 
     // m_OuterAngle
-    // MNetworkBitCount "8"
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "360.000000"
     public ref float OuterAngle => ref Schema.GetRef<float>(this.Handle, "CDynamicLight", "m_OuterAngle");
 
     // m_SpotRadius
@@ -6350,11 +9029,100 @@ public partial class CDynamicProp : CBreakableProp
 {
     public CDynamicProp (IntPtr pointer) : base(pointer) {}
 
+    // m_bCreateNavObstacle
+    public ref bool CreateNavObstacle => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bCreateNavObstacle");
+
     // m_bUseHitboxesForRenderBox
     public ref bool UseHitboxesForRenderBox => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bUseHitboxesForRenderBox");
 
     // m_bUseAnimGraph
     public ref bool UseAnimGraph => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bUseAnimGraph");
+
+    // m_pOutputAnimBegun
+    public CEntityIOOutput OutputAnimBegun => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CDynamicProp", "m_pOutputAnimBegun");
+
+    // m_pOutputAnimOver
+    public CEntityIOOutput OutputAnimOver => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CDynamicProp", "m_pOutputAnimOver");
+
+    // m_pOutputAnimLoopCycleOver
+    public CEntityIOOutput OutputAnimLoopCycleOver => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CDynamicProp", "m_pOutputAnimLoopCycleOver");
+
+    // m_OnAnimReachedStart
+    public CEntityIOOutput OnAnimReachedStart => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CDynamicProp", "m_OnAnimReachedStart");
+
+    // m_OnAnimReachedEnd
+    public CEntityIOOutput OnAnimReachedEnd => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CDynamicProp", "m_OnAnimReachedEnd");
+
+    // m_iszDefaultAnim
+    public string DefaultAnim
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CDynamicProp", "m_iszDefaultAnim"); }
+        set { Schema.SetString(this.Handle, "CDynamicProp", "m_iszDefaultAnim", value); }
+    }
+
+    // m_nDefaultAnimLoopMode
+    public ref AnimLoopMode_t DefaultAnimLoopMode => ref Schema.GetRef<AnimLoopMode_t>(this.Handle, "CDynamicProp", "m_nDefaultAnimLoopMode");
+
+    // m_bAnimateOnServer
+    public ref bool AnimateOnServer => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bAnimateOnServer");
+
+    // m_bRandomizeCycle
+    public ref bool RandomizeCycle => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bRandomizeCycle");
+
+    // m_bStartDisabled
+    public ref bool StartDisabled => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bStartDisabled");
+
+    // m_bScriptedMovement
+    public ref bool ScriptedMovement => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bScriptedMovement");
+
+    // m_bFiredStartEndOutput
+    public ref bool FiredStartEndOutput => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bFiredStartEndOutput");
+
+    // m_bForceNpcExclude
+    public ref bool ForceNpcExclude => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bForceNpcExclude");
+
+    // m_bCreateNonSolid
+    public ref bool CreateNonSolid => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bCreateNonSolid");
+
+    // m_bIsOverrideProp
+    public ref bool IsOverrideProp => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bIsOverrideProp");
+
+    // m_iInitialGlowState
+    public ref Int32 InitialGlowState => ref Schema.GetRef<Int32>(this.Handle, "CDynamicProp", "m_iInitialGlowState");
+
+    // m_nGlowRange
+    public ref Int32 GlowRange => ref Schema.GetRef<Int32>(this.Handle, "CDynamicProp", "m_nGlowRange");
+
+    // m_nGlowRangeMin
+    public ref Int32 GlowRangeMin => ref Schema.GetRef<Int32>(this.Handle, "CDynamicProp", "m_nGlowRangeMin");
+
+    // m_glowColor
+    public Color GlowColor
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CDynamicProp", "m_glowColor"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CDynamicProp", "m_glowColor", value); }
+    }
+
+    // m_nGlowTeam
+    public ref Int32 GlowTeam => ref Schema.GetRef<Int32>(this.Handle, "CDynamicProp", "m_nGlowTeam");
+
+}
+
+public partial class CDynamicPropAlias_cable_dynamic : CDynamicProp
+{
+    public CDynamicPropAlias_cable_dynamic (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CDynamicPropAlias_dynamic_prop : CDynamicProp
+{
+    public CDynamicPropAlias_dynamic_prop (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CDynamicPropAlias_prop_dynamic_override : CDynamicProp
+{
+    public CDynamicPropAlias_prop_dynamic_override (IntPtr pointer) : base(pointer) {}
 
 }
 
@@ -6383,6 +9151,12 @@ public partial class CEconEntity : CBaseFlex
     // m_nFallbackStatTrak
     public ref Int32 FallbackStatTrak => ref Schema.GetRef<Int32>(this.Handle, "CEconEntity", "m_nFallbackStatTrak");
 
+    // m_hOldProvidee
+    public CHandle<CBaseEntity> OldProvidee => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEconEntity", "m_hOldProvidee");
+
+    // m_iOldOwnerClass
+    public ref Int32 OldOwnerClass => ref Schema.GetRef<Int32>(this.Handle, "CEconEntity", "m_iOldOwnerClass");
+
 }
 
 public partial class CEconItemAttribute : NativeObject
@@ -6393,7 +9167,6 @@ public partial class CEconItemAttribute : NativeObject
     public ref UInt16 AttributeDefinitionIndex => ref Schema.GetRef<UInt16>(this.Handle, "CEconItemAttribute", "m_iAttributeDefinitionIndex");
 
     // m_flValue
-    // MNetworkAlias "m_iRawValue32"
     public ref float Value => ref Schema.GetRef<float>(this.Handle, "CEconItemAttribute", "m_flValue");
 
     // m_flInitialValue
@@ -6419,6 +9192,9 @@ public partial class CEconItemView : IEconItemInterface
 
     // m_iEntityLevel
     public ref UInt32 EntityLevel => ref Schema.GetRef<UInt32>(this.Handle, "CEconItemView", "m_iEntityLevel");
+
+    // m_iItemID
+    public ref UInt64 ItemID => ref Schema.GetRef<UInt64>(this.Handle, "CEconItemView", "m_iItemID");
 
     // m_iItemIDHigh
     public ref UInt32 ItemIDHigh => ref Schema.GetRef<UInt32>(this.Handle, "CEconItemView", "m_iItemIDHigh");
@@ -6448,11 +9224,36 @@ public partial class CEconItemView : IEconItemInterface
         set { Schema.SetString(this.Handle, "CEconItemView", "m_szCustomName", value); }
     }
 
+    // m_szCustomNameOverride
+    public string CustomNameOverride
+    {
+        get { return Schema.GetString(this.Handle, "CEconItemView", "m_szCustomNameOverride"); }
+        set { Schema.SetString(this.Handle, "CEconItemView", "m_szCustomNameOverride", value); }
+    }
+
 }
 
 public partial class CEconWearable : CEconEntity
 {
     public CEconWearable (IntPtr pointer) : base(pointer) {}
+
+    // m_nForceSkin
+    public ref Int32 ForceSkin => ref Schema.GetRef<Int32>(this.Handle, "CEconWearable", "m_nForceSkin");
+
+    // m_bAlwaysAllow
+    public ref bool AlwaysAllow => ref Schema.GetRef<bool>(this.Handle, "CEconWearable", "m_bAlwaysAllow");
+
+}
+
+public partial class CEnableMotionFixup : CBaseEntity
+{
+    public CEnableMotionFixup (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CEntityBlocker : CBaseModelEntity
+{
+    public CEntityBlocker (IntPtr pointer) : base(pointer) {}
 
 }
 
@@ -6508,6 +9309,33 @@ public partial class CEntityFlame : CBaseEntity
     // m_bCheapEffect
     public ref bool CheapEffect => ref Schema.GetRef<bool>(this.Handle, "CEntityFlame", "m_bCheapEffect");
 
+    // m_flSize
+    public ref float Size => ref Schema.GetRef<float>(this.Handle, "CEntityFlame", "m_flSize");
+
+    // m_bUseHitboxes
+    public ref bool UseHitboxes => ref Schema.GetRef<bool>(this.Handle, "CEntityFlame", "m_bUseHitboxes");
+
+    // m_iNumHitboxFires
+    public ref Int32 NumHitboxFires => ref Schema.GetRef<Int32>(this.Handle, "CEntityFlame", "m_iNumHitboxFires");
+
+    // m_flHitboxFireScale
+    public ref float HitboxFireScale => ref Schema.GetRef<float>(this.Handle, "CEntityFlame", "m_flHitboxFireScale");
+
+    // m_flLifetime
+    public ref float Lifetime => ref Schema.GetRef<float>(this.Handle, "CEntityFlame", "m_flLifetime");
+
+    // m_hAttacker
+    public CHandle<CBaseEntity> Attacker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEntityFlame", "m_hAttacker");
+
+    // m_iDangerSound
+    public ref Int32 DangerSound => ref Schema.GetRef<Int32>(this.Handle, "CEntityFlame", "m_iDangerSound");
+
+    // m_flDirectDamagePerSecond
+    public ref float DirectDamagePerSecond => ref Schema.GetRef<float>(this.Handle, "CEntityFlame", "m_flDirectDamagePerSecond");
+
+    // m_iCustomDamageType
+    public ref Int32 CustomDamageType => ref Schema.GetRef<Int32>(this.Handle, "CEntityFlame", "m_iCustomDamageType");
+
 }
 
 public partial class CEntityIdentity : NativeObject
@@ -6515,8 +9343,45 @@ public partial class CEntityIdentity : NativeObject
     public CEntityIdentity (IntPtr pointer) : base(pointer) {}
 
     // m_nameStringableIndex
-    // MNetworkChangeCallback "entityIdentityNameChanged"
     public ref Int32 NameStringableIndex => ref Schema.GetRef<Int32>(this.Handle, "CEntityIdentity", "m_nameStringableIndex");
+
+    // m_name
+    public string Name
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEntityIdentity", "m_name"); }
+        set { Schema.SetString(this.Handle, "CEntityIdentity", "m_name", value); }
+    }
+
+    // m_designerName
+    public string DesignerName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEntityIdentity", "m_designerName"); }
+        set { Schema.SetString(this.Handle, "CEntityIdentity", "m_designerName", value); }
+    }
+
+    // m_flags
+    public ref UInt32 Flags => ref Schema.GetRef<UInt32>(this.Handle, "CEntityIdentity", "m_flags");
+
+    // m_worldGroupId
+    public WorldGroupId_t WorldGroupId => Schema.GetDeclaredClass<WorldGroupId_t>(this.Handle, "CEntityIdentity", "m_worldGroupId");
+
+    // m_fDataObjectTypes
+    public ref UInt32 DataObjectTypes => ref Schema.GetRef<UInt32>(this.Handle, "CEntityIdentity", "m_fDataObjectTypes");
+
+    // m_PathIndex
+    public ChangeAccessorFieldPathIndex_t PathIndex => Schema.GetDeclaredClass<ChangeAccessorFieldPathIndex_t>(this.Handle, "CEntityIdentity", "m_PathIndex");
+
+    // m_pPrev
+    public CEntityIdentity? Prev => Schema.GetPointer<CEntityIdentity>(this.Handle, "CEntityIdentity", "m_pPrev");
+
+    // m_pNext
+    public CEntityIdentity? Next => Schema.GetPointer<CEntityIdentity>(this.Handle, "CEntityIdentity", "m_pNext");
+
+    // m_pPrevByClass
+    public CEntityIdentity? PrevByClass => Schema.GetPointer<CEntityIdentity>(this.Handle, "CEntityIdentity", "m_pPrevByClass");
+
+    // m_pNextByClass
+    public CEntityIdentity? NextByClass => Schema.GetPointer<CEntityIdentity>(this.Handle, "CEntityIdentity", "m_pNextByClass");
 
 }
 
@@ -6524,13 +9389,119 @@ public partial class CEntityInstance : NativeObject
 {
     public CEntityInstance (IntPtr pointer) : base(pointer) {}
 
+    // m_iszPrivateVScripts
+    public string PrivateVScripts
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEntityInstance", "m_iszPrivateVScripts"); }
+        set { Schema.SetString(this.Handle, "CEntityInstance", "m_iszPrivateVScripts", value); }
+    }
+
     // m_pEntity
-    // MNetworkPriority "56"
     public CEntityIdentity? Entity => Schema.GetPointer<CEntityIdentity>(this.Handle, "CEntityInstance", "m_pEntity");
 
     // m_CScriptComponent
-    // MNetworkDisable
     public CScriptComponent? CScriptComponent => Schema.GetPointer<CScriptComponent>(this.Handle, "CEntityInstance", "m_CScriptComponent");
+
+}
+
+public partial class CEntityIOOutput : NativeObject
+{
+    public CEntityIOOutput (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CEnvBeam : CBeam
+{
+    public CEnvBeam (IntPtr pointer) : base(pointer) {}
+
+    // m_active
+    public ref Int32 Active => ref Schema.GetRef<Int32>(this.Handle, "CEnvBeam", "m_active");
+
+    // m_spriteTexture
+    public CStrongHandle<InfoForResourceTypeIMaterial2> SpriteTexture => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CEnvBeam", "m_spriteTexture");
+
+    // m_iszStartEntity
+    public string StartEntity
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvBeam", "m_iszStartEntity"); }
+        set { Schema.SetString(this.Handle, "CEnvBeam", "m_iszStartEntity", value); }
+    }
+
+    // m_iszEndEntity
+    public string EndEntity
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvBeam", "m_iszEndEntity"); }
+        set { Schema.SetString(this.Handle, "CEnvBeam", "m_iszEndEntity", value); }
+    }
+
+    // m_life
+    public ref float Life => ref Schema.GetRef<float>(this.Handle, "CEnvBeam", "m_life");
+
+    // m_boltWidth
+    public ref float BoltWidth => ref Schema.GetRef<float>(this.Handle, "CEnvBeam", "m_boltWidth");
+
+    // m_noiseAmplitude
+    public ref float NoiseAmplitude => ref Schema.GetRef<float>(this.Handle, "CEnvBeam", "m_noiseAmplitude");
+
+    // m_speed
+    public ref Int32 Speed => ref Schema.GetRef<Int32>(this.Handle, "CEnvBeam", "m_speed");
+
+    // m_restrike
+    public ref float Restrike => ref Schema.GetRef<float>(this.Handle, "CEnvBeam", "m_restrike");
+
+    // m_iszSpriteName
+    public string SpriteName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvBeam", "m_iszSpriteName"); }
+        set { Schema.SetString(this.Handle, "CEnvBeam", "m_iszSpriteName", value); }
+    }
+
+    // m_frameStart
+    public ref Int32 FrameStart => ref Schema.GetRef<Int32>(this.Handle, "CEnvBeam", "m_frameStart");
+
+    // m_vEndPointWorld
+    public Vector EndPointWorld => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvBeam", "m_vEndPointWorld");
+
+    // m_vEndPointRelative
+    public Vector EndPointRelative => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvBeam", "m_vEndPointRelative");
+
+    // m_radius
+    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CEnvBeam", "m_radius");
+
+    // m_TouchType
+    public ref Touch_t TouchType => ref Schema.GetRef<Touch_t>(this.Handle, "CEnvBeam", "m_TouchType");
+
+    // m_iFilterName
+    public string FilterName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvBeam", "m_iFilterName"); }
+        set { Schema.SetString(this.Handle, "CEnvBeam", "m_iFilterName", value); }
+    }
+
+    // m_hFilter
+    public CHandle<CBaseEntity> Filter => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEnvBeam", "m_hFilter");
+
+    // m_iszDecal
+    public string Decal
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvBeam", "m_iszDecal"); }
+        set { Schema.SetString(this.Handle, "CEnvBeam", "m_iszDecal", value); }
+    }
+
+    // m_OnTouchedByEntity
+    public CEntityIOOutput OnTouchedByEntity => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvBeam", "m_OnTouchedByEntity");
+
+}
+
+public partial class CEnvBeverage : CBaseEntity
+{
+    public CEnvBeverage (IntPtr pointer) : base(pointer) {}
+
+    // m_CanInDispenser
+    public ref bool CanInDispenser => ref Schema.GetRef<bool>(this.Handle, "CEnvBeverage", "m_CanInDispenser");
+
+    // m_nBeverageType
+    public ref Int32 BeverageType => ref Schema.GetRef<Int32>(this.Handle, "CEnvBeverage", "m_nBeverageType");
 
 }
 
@@ -6539,7 +9510,6 @@ public partial class CEnvCombinedLightProbeVolume : CBaseEntity
     public CEnvCombinedLightProbeVolume (IntPtr pointer) : base(pointer) {}
 
     // m_Color
-    // MNetworkChangeCallback "StateChanged"
     public Color Color
     {
         get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CEnvCombinedLightProbeVolume", "m_Color"); }
@@ -6547,7 +9517,6 @@ public partial class CEnvCombinedLightProbeVolume : CBaseEntity
     }
 
     // m_flBrightness
-    // MNetworkChangeCallback "StateChanged"
     public ref float Brightness => ref Schema.GetRef<float>(this.Handle, "CEnvCombinedLightProbeVolume", "m_flBrightness");
 
     // m_hCubemapTexture
@@ -6573,13 +9542,6 @@ public partial class CEnvCombinedLightProbeVolume : CBaseEntity
 
     // m_vBoxMaxs
     public Vector BoxMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvCombinedLightProbeVolume", "m_vBoxMaxs");
-
-    // m_LightGroups
-    public string LightGroups
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CEnvCombinedLightProbeVolume", "m_LightGroups"); }
-        set { Schema.SetString(this.Handle, "CEnvCombinedLightProbeVolume", "m_LightGroups", value); }
-    }
 
     // m_bMoveable
     public ref bool Moveable => ref Schema.GetRef<bool>(this.Handle, "CEnvCombinedLightProbeVolume", "m_bMoveable");
@@ -6643,13 +9605,6 @@ public partial class CEnvCubemap : CBaseEntity
 
     // m_vBoxProjectMaxs
     public Vector BoxProjectMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvCubemap", "m_vBoxProjectMaxs");
-
-    // m_LightGroups
-    public string LightGroups
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CEnvCubemap", "m_LightGroups"); }
-        set { Schema.SetString(this.Handle, "CEnvCubemap", "m_LightGroups", value); }
-    }
 
     // m_bMoveable
     public ref bool Moveable => ref Schema.GetRef<bool>(this.Handle, "CEnvCubemap", "m_bMoveable");
@@ -6757,6 +9712,9 @@ public partial class CEnvCubemapFog : CBaseEntity
     // m_bHasHeightFogEnd
     public ref bool HasHeightFogEnd => ref Schema.GetRef<bool>(this.Handle, "CEnvCubemapFog", "m_bHasHeightFogEnd");
 
+    // m_bFirstTime
+    public ref bool FirstTime => ref Schema.GetRef<bool>(this.Handle, "CEnvCubemapFog", "m_bFirstTime");
+
 }
 
 public partial class CEnvDecal : CBaseModelEntity
@@ -6767,15 +9725,12 @@ public partial class CEnvDecal : CBaseModelEntity
     public CStrongHandle<InfoForResourceTypeIMaterial2> DecalMaterial => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CEnvDecal", "m_hDecalMaterial");
 
     // m_flWidth
-    // MNetworkChangeCallback "OnDecalDimensionsChanged"
     public ref float Width => ref Schema.GetRef<float>(this.Handle, "CEnvDecal", "m_flWidth");
 
     // m_flHeight
-    // MNetworkChangeCallback "OnDecalDimensionsChanged"
     public ref float Height => ref Schema.GetRef<float>(this.Handle, "CEnvDecal", "m_flHeight");
 
     // m_flDepth
-    // MNetworkChangeCallback "OnDecalDimensionsChanged"
     public ref float Depth => ref Schema.GetRef<float>(this.Handle, "CEnvDecal", "m_flDepth");
 
     // m_nRenderOrder
@@ -6807,6 +9762,432 @@ public partial class CEnvDetailController : CBaseEntity
 
 }
 
+public partial class CEnvEntityIgniter : CBaseEntity
+{
+    public CEnvEntityIgniter (IntPtr pointer) : base(pointer) {}
+
+    // m_flLifetime
+    public ref float Lifetime => ref Schema.GetRef<float>(this.Handle, "CEnvEntityIgniter", "m_flLifetime");
+
+}
+
+public partial class CEnvEntityMaker : CPointEntity
+{
+    public CEnvEntityMaker (IntPtr pointer) : base(pointer) {}
+
+    // m_vecEntityMins
+    public Vector EntityMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvEntityMaker", "m_vecEntityMins");
+
+    // m_vecEntityMaxs
+    public Vector EntityMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvEntityMaker", "m_vecEntityMaxs");
+
+    // m_hCurrentInstance
+    public CHandle<CBaseEntity> CurrentInstance => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEnvEntityMaker", "m_hCurrentInstance");
+
+    // m_hCurrentBlocker
+    public CHandle<CBaseEntity> CurrentBlocker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEnvEntityMaker", "m_hCurrentBlocker");
+
+    // m_vecBlockerOrigin
+    public Vector BlockerOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvEntityMaker", "m_vecBlockerOrigin");
+
+    // m_angPostSpawnDirection
+    public QAngle PostSpawnDirection => Schema.GetDeclaredClass<QAngle>(this.Handle, "CEnvEntityMaker", "m_angPostSpawnDirection");
+
+    // m_flPostSpawnDirectionVariance
+    public ref float PostSpawnDirectionVariance => ref Schema.GetRef<float>(this.Handle, "CEnvEntityMaker", "m_flPostSpawnDirectionVariance");
+
+    // m_flPostSpawnSpeed
+    public ref float PostSpawnSpeed => ref Schema.GetRef<float>(this.Handle, "CEnvEntityMaker", "m_flPostSpawnSpeed");
+
+    // m_bPostSpawnUseAngles
+    public ref bool PostSpawnUseAngles => ref Schema.GetRef<bool>(this.Handle, "CEnvEntityMaker", "m_bPostSpawnUseAngles");
+
+    // m_iszTemplate
+    public string Template
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvEntityMaker", "m_iszTemplate"); }
+        set { Schema.SetString(this.Handle, "CEnvEntityMaker", "m_iszTemplate", value); }
+    }
+
+    // m_pOutputOnSpawned
+    public CEntityIOOutput OutputOnSpawned => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvEntityMaker", "m_pOutputOnSpawned");
+
+    // m_pOutputOnFailedSpawn
+    public CEntityIOOutput OutputOnFailedSpawn => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvEntityMaker", "m_pOutputOnFailedSpawn");
+
+}
+
+public partial class CEnvExplosion : CModelPointEntity
+{
+    public CEnvExplosion (IntPtr pointer) : base(pointer) {}
+
+    // m_iMagnitude
+    public ref Int32 Magnitude => ref Schema.GetRef<Int32>(this.Handle, "CEnvExplosion", "m_iMagnitude");
+
+    // m_flPlayerDamage
+    public ref float PlayerDamage => ref Schema.GetRef<float>(this.Handle, "CEnvExplosion", "m_flPlayerDamage");
+
+    // m_iRadiusOverride
+    public ref Int32 RadiusOverride => ref Schema.GetRef<Int32>(this.Handle, "CEnvExplosion", "m_iRadiusOverride");
+
+    // m_flInnerRadius
+    public ref float InnerRadius => ref Schema.GetRef<float>(this.Handle, "CEnvExplosion", "m_flInnerRadius");
+
+    // m_spriteScale
+    public ref Int32 SpriteScale => ref Schema.GetRef<Int32>(this.Handle, "CEnvExplosion", "m_spriteScale");
+
+    // m_flDamageForce
+    public ref float DamageForce => ref Schema.GetRef<float>(this.Handle, "CEnvExplosion", "m_flDamageForce");
+
+    // m_hInflictor
+    public CHandle<CBaseEntity> Inflictor => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEnvExplosion", "m_hInflictor");
+
+    // m_iCustomDamageType
+    public ref Int32 CustomDamageType => ref Schema.GetRef<Int32>(this.Handle, "CEnvExplosion", "m_iCustomDamageType");
+
+    // m_iszExplosionType
+    public string ExplosionType
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvExplosion", "m_iszExplosionType"); }
+        set { Schema.SetString(this.Handle, "CEnvExplosion", "m_iszExplosionType", value); }
+    }
+
+    // m_iszCustomEffectName
+    public string CustomEffectName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvExplosion", "m_iszCustomEffectName"); }
+        set { Schema.SetString(this.Handle, "CEnvExplosion", "m_iszCustomEffectName", value); }
+    }
+
+    // m_iszCustomSoundName
+    public string CustomSoundName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvExplosion", "m_iszCustomSoundName"); }
+        set { Schema.SetString(this.Handle, "CEnvExplosion", "m_iszCustomSoundName", value); }
+    }
+
+    // m_iClassIgnore
+    public ref Class_T ClassIgnore => ref Schema.GetRef<Class_T>(this.Handle, "CEnvExplosion", "m_iClassIgnore");
+
+    // m_iClassIgnore2
+    public ref Class_T ClassIgnore2 => ref Schema.GetRef<Class_T>(this.Handle, "CEnvExplosion", "m_iClassIgnore2");
+
+    // m_iszEntityIgnoreName
+    public string EntityIgnoreName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvExplosion", "m_iszEntityIgnoreName"); }
+        set { Schema.SetString(this.Handle, "CEnvExplosion", "m_iszEntityIgnoreName", value); }
+    }
+
+    // m_hEntityIgnore
+    public CHandle<CBaseEntity> EntityIgnore => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEnvExplosion", "m_hEntityIgnore");
+
+}
+
+public partial class CEnvFade : CLogicalEntity
+{
+    public CEnvFade (IntPtr pointer) : base(pointer) {}
+
+    // m_fadeColor
+    public Color FadeColor
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CEnvFade", "m_fadeColor"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CEnvFade", "m_fadeColor", value); }
+    }
+
+    // m_Duration
+    public ref float Duration => ref Schema.GetRef<float>(this.Handle, "CEnvFade", "m_Duration");
+
+    // m_HoldDuration
+    public ref float HoldDuration => ref Schema.GetRef<float>(this.Handle, "CEnvFade", "m_HoldDuration");
+
+    // m_OnBeginFade
+    public CEntityIOOutput OnBeginFade => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvFade", "m_OnBeginFade");
+
+}
+
+public partial class CEnvFireSensor : CBaseEntity
+{
+    public CEnvFireSensor (IntPtr pointer) : base(pointer) {}
+
+    // m_bEnabled
+    public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CEnvFireSensor", "m_bEnabled");
+
+    // m_bHeatAtLevel
+    public ref bool HeatAtLevel => ref Schema.GetRef<bool>(this.Handle, "CEnvFireSensor", "m_bHeatAtLevel");
+
+    // m_radius
+    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CEnvFireSensor", "m_radius");
+
+    // m_targetLevel
+    public ref float TargetLevel => ref Schema.GetRef<float>(this.Handle, "CEnvFireSensor", "m_targetLevel");
+
+    // m_targetTime
+    public ref float TargetTime => ref Schema.GetRef<float>(this.Handle, "CEnvFireSensor", "m_targetTime");
+
+    // m_levelTime
+    public ref float LevelTime => ref Schema.GetRef<float>(this.Handle, "CEnvFireSensor", "m_levelTime");
+
+    // m_OnHeatLevelStart
+    public CEntityIOOutput OnHeatLevelStart => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvFireSensor", "m_OnHeatLevelStart");
+
+    // m_OnHeatLevelEnd
+    public CEntityIOOutput OnHeatLevelEnd => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvFireSensor", "m_OnHeatLevelEnd");
+
+}
+
+public partial class CEnvFireSource : CBaseEntity
+{
+    public CEnvFireSource (IntPtr pointer) : base(pointer) {}
+
+    // m_bEnabled
+    public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CEnvFireSource", "m_bEnabled");
+
+    // m_radius
+    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CEnvFireSource", "m_radius");
+
+    // m_damage
+    public ref float Damage => ref Schema.GetRef<float>(this.Handle, "CEnvFireSource", "m_damage");
+
+}
+
+public partial class CEnvFunnel : CBaseEntity
+{
+    public CEnvFunnel (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CEnvGlobal : CLogicalEntity
+{
+    public CEnvGlobal (IntPtr pointer) : base(pointer) {}
+
+    // m_globalstate
+    public string Globalstate
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvGlobal", "m_globalstate"); }
+        set { Schema.SetString(this.Handle, "CEnvGlobal", "m_globalstate", value); }
+    }
+
+    // m_triggermode
+    public ref Int32 Triggermode => ref Schema.GetRef<Int32>(this.Handle, "CEnvGlobal", "m_triggermode");
+
+    // m_initialstate
+    public ref Int32 Initialstate => ref Schema.GetRef<Int32>(this.Handle, "CEnvGlobal", "m_initialstate");
+
+    // m_counter
+    public ref Int32 Counter => ref Schema.GetRef<Int32>(this.Handle, "CEnvGlobal", "m_counter");
+
+}
+
+public partial class CEnvHudHint : CPointEntity
+{
+    public CEnvHudHint (IntPtr pointer) : base(pointer) {}
+
+    // m_iszMessage
+    public string Message
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvHudHint", "m_iszMessage"); }
+        set { Schema.SetString(this.Handle, "CEnvHudHint", "m_iszMessage", value); }
+    }
+
+}
+
+public partial class CEnvInstructorHint : CPointEntity
+{
+    public CEnvInstructorHint (IntPtr pointer) : base(pointer) {}
+
+    // m_iszName
+    public string Name
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorHint", "m_iszName"); }
+        set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszName", value); }
+    }
+
+    // m_iszReplace_Key
+    public string Replace_Key
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorHint", "m_iszReplace_Key"); }
+        set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszReplace_Key", value); }
+    }
+
+    // m_iszHintTargetEntity
+    public string HintTargetEntity
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorHint", "m_iszHintTargetEntity"); }
+        set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszHintTargetEntity", value); }
+    }
+
+    // m_iTimeout
+    public ref Int32 Timeout => ref Schema.GetRef<Int32>(this.Handle, "CEnvInstructorHint", "m_iTimeout");
+
+    // m_iDisplayLimit
+    public ref Int32 DisplayLimit => ref Schema.GetRef<Int32>(this.Handle, "CEnvInstructorHint", "m_iDisplayLimit");
+
+    // m_iszIcon_Onscreen
+    public string Icon_Onscreen
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorHint", "m_iszIcon_Onscreen"); }
+        set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszIcon_Onscreen", value); }
+    }
+
+    // m_iszIcon_Offscreen
+    public string Icon_Offscreen
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorHint", "m_iszIcon_Offscreen"); }
+        set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszIcon_Offscreen", value); }
+    }
+
+    // m_iszCaption
+    public string Caption
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorHint", "m_iszCaption"); }
+        set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszCaption", value); }
+    }
+
+    // m_iszActivatorCaption
+    public string ActivatorCaption
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorHint", "m_iszActivatorCaption"); }
+        set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszActivatorCaption", value); }
+    }
+
+    // m_Color
+    public Color Color
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CEnvInstructorHint", "m_Color"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CEnvInstructorHint", "m_Color", value); }
+    }
+
+    // m_fIconOffset
+    public ref float IconOffset => ref Schema.GetRef<float>(this.Handle, "CEnvInstructorHint", "m_fIconOffset");
+
+    // m_fRange
+    public ref float Range => ref Schema.GetRef<float>(this.Handle, "CEnvInstructorHint", "m_fRange");
+
+    // m_iPulseOption
+    public ref byte PulseOption => ref Schema.GetRef<byte>(this.Handle, "CEnvInstructorHint", "m_iPulseOption");
+
+    // m_iAlphaOption
+    public ref byte AlphaOption => ref Schema.GetRef<byte>(this.Handle, "CEnvInstructorHint", "m_iAlphaOption");
+
+    // m_iShakeOption
+    public ref byte ShakeOption => ref Schema.GetRef<byte>(this.Handle, "CEnvInstructorHint", "m_iShakeOption");
+
+    // m_bStatic
+    public ref bool Static => ref Schema.GetRef<bool>(this.Handle, "CEnvInstructorHint", "m_bStatic");
+
+    // m_bNoOffscreen
+    public ref bool NoOffscreen => ref Schema.GetRef<bool>(this.Handle, "CEnvInstructorHint", "m_bNoOffscreen");
+
+    // m_bForceCaption
+    public ref bool ForceCaption => ref Schema.GetRef<bool>(this.Handle, "CEnvInstructorHint", "m_bForceCaption");
+
+    // m_iInstanceType
+    public ref Int32 InstanceType => ref Schema.GetRef<Int32>(this.Handle, "CEnvInstructorHint", "m_iInstanceType");
+
+    // m_bSuppressRest
+    public ref bool SuppressRest => ref Schema.GetRef<bool>(this.Handle, "CEnvInstructorHint", "m_bSuppressRest");
+
+    // m_iszBinding
+    public string Binding
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorHint", "m_iszBinding"); }
+        set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszBinding", value); }
+    }
+
+    // m_bAllowNoDrawTarget
+    public ref bool AllowNoDrawTarget => ref Schema.GetRef<bool>(this.Handle, "CEnvInstructorHint", "m_bAllowNoDrawTarget");
+
+    // m_bAutoStart
+    public ref bool AutoStart => ref Schema.GetRef<bool>(this.Handle, "CEnvInstructorHint", "m_bAutoStart");
+
+    // m_bLocalPlayerOnly
+    public ref bool LocalPlayerOnly => ref Schema.GetRef<bool>(this.Handle, "CEnvInstructorHint", "m_bLocalPlayerOnly");
+
+}
+
+public partial class CEnvInstructorVRHint : CPointEntity
+{
+    public CEnvInstructorVRHint (IntPtr pointer) : base(pointer) {}
+
+    // m_iszName
+    public string Name
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorVRHint", "m_iszName"); }
+        set { Schema.SetString(this.Handle, "CEnvInstructorVRHint", "m_iszName", value); }
+    }
+
+    // m_iszHintTargetEntity
+    public string HintTargetEntity
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorVRHint", "m_iszHintTargetEntity"); }
+        set { Schema.SetString(this.Handle, "CEnvInstructorVRHint", "m_iszHintTargetEntity", value); }
+    }
+
+    // m_iTimeout
+    public ref Int32 Timeout => ref Schema.GetRef<Int32>(this.Handle, "CEnvInstructorVRHint", "m_iTimeout");
+
+    // m_iszCaption
+    public string Caption
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorVRHint", "m_iszCaption"); }
+        set { Schema.SetString(this.Handle, "CEnvInstructorVRHint", "m_iszCaption", value); }
+    }
+
+    // m_iszStartSound
+    public string StartSound
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorVRHint", "m_iszStartSound"); }
+        set { Schema.SetString(this.Handle, "CEnvInstructorVRHint", "m_iszStartSound", value); }
+    }
+
+    // m_iLayoutFileType
+    public ref Int32 LayoutFileType => ref Schema.GetRef<Int32>(this.Handle, "CEnvInstructorVRHint", "m_iLayoutFileType");
+
+    // m_iszCustomLayoutFile
+    public string CustomLayoutFile
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorVRHint", "m_iszCustomLayoutFile"); }
+        set { Schema.SetString(this.Handle, "CEnvInstructorVRHint", "m_iszCustomLayoutFile", value); }
+    }
+
+    // m_iAttachType
+    public ref Int32 AttachType => ref Schema.GetRef<Int32>(this.Handle, "CEnvInstructorVRHint", "m_iAttachType");
+
+    // m_flHeightOffset
+    public ref float HeightOffset => ref Schema.GetRef<float>(this.Handle, "CEnvInstructorVRHint", "m_flHeightOffset");
+
+}
+
+public partial class CEnvLaser : CBeam
+{
+    public CEnvLaser (IntPtr pointer) : base(pointer) {}
+
+    // m_iszLaserTarget
+    public string LaserTarget
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvLaser", "m_iszLaserTarget"); }
+        set { Schema.SetString(this.Handle, "CEnvLaser", "m_iszLaserTarget", value); }
+    }
+
+    // m_pSprite
+    public CSprite? Sprite => Schema.GetPointer<CSprite>(this.Handle, "CEnvLaser", "m_pSprite");
+
+    // m_iszSpriteName
+    public string SpriteName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvLaser", "m_iszSpriteName"); }
+        set { Schema.SetString(this.Handle, "CEnvLaser", "m_iszSpriteName", value); }
+    }
+
+    // m_firePosition
+    public Vector FirePosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvLaser", "m_firePosition");
+
+    // m_flStartFrame
+    public ref float StartFrame => ref Schema.GetRef<float>(this.Handle, "CEnvLaser", "m_flStartFrame");
+
+}
+
 public partial class CEnvLightProbeVolume : CBaseEntity
 {
     public CEnvLightProbeVolume (IntPtr pointer) : base(pointer) {}
@@ -6828,13 +10209,6 @@ public partial class CEnvLightProbeVolume : CBaseEntity
 
     // m_vBoxMaxs
     public Vector BoxMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvLightProbeVolume", "m_vBoxMaxs");
-
-    // m_LightGroups
-    public string LightGroups
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CEnvLightProbeVolume", "m_LightGroups"); }
-        set { Schema.SetString(this.Handle, "CEnvLightProbeVolume", "m_LightGroups", value); }
-    }
 
     // m_bMoveable
     public ref bool Moveable => ref Schema.GetRef<bool>(this.Handle, "CEnvLightProbeVolume", "m_bMoveable");
@@ -6868,6 +10242,88 @@ public partial class CEnvLightProbeVolume : CBaseEntity
 
     // m_bEnabled
     public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CEnvLightProbeVolume", "m_bEnabled");
+
+}
+
+public partial class CEnvMicrophone : CPointEntity
+{
+    public CEnvMicrophone (IntPtr pointer) : base(pointer) {}
+
+    // m_bDisabled
+    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CEnvMicrophone", "m_bDisabled");
+
+    // m_hMeasureTarget
+    public CHandle<CBaseEntity> MeasureTarget => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEnvMicrophone", "m_hMeasureTarget");
+
+    // m_nSoundMask
+    public ref Int32 SoundMask => ref Schema.GetRef<Int32>(this.Handle, "CEnvMicrophone", "m_nSoundMask");
+
+    // m_flSensitivity
+    public ref float Sensitivity => ref Schema.GetRef<float>(this.Handle, "CEnvMicrophone", "m_flSensitivity");
+
+    // m_flSmoothFactor
+    public ref float SmoothFactor => ref Schema.GetRef<float>(this.Handle, "CEnvMicrophone", "m_flSmoothFactor");
+
+    // m_flMaxRange
+    public ref float MaxRange => ref Schema.GetRef<float>(this.Handle, "CEnvMicrophone", "m_flMaxRange");
+
+    // m_iszSpeakerName
+    public string SpeakerName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvMicrophone", "m_iszSpeakerName"); }
+        set { Schema.SetString(this.Handle, "CEnvMicrophone", "m_iszSpeakerName", value); }
+    }
+
+    // m_hSpeaker
+    public CHandle<CBaseEntity> Speaker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEnvMicrophone", "m_hSpeaker");
+
+    // m_bAvoidFeedback
+    public ref bool AvoidFeedback => ref Schema.GetRef<bool>(this.Handle, "CEnvMicrophone", "m_bAvoidFeedback");
+
+    // m_iSpeakerDSPPreset
+    public ref Int32 SpeakerDSPPreset => ref Schema.GetRef<Int32>(this.Handle, "CEnvMicrophone", "m_iSpeakerDSPPreset");
+
+    // m_iszListenFilter
+    public string IszListenFilter
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvMicrophone", "m_iszListenFilter"); }
+        set { Schema.SetString(this.Handle, "CEnvMicrophone", "m_iszListenFilter", value); }
+    }
+
+    // m_hListenFilter
+    public CHandle<CBaseFilter> HListenFilter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CEnvMicrophone", "m_hListenFilter");
+
+    // m_OnRoutedSound
+    public CEntityIOOutput OnRoutedSound => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvMicrophone", "m_OnRoutedSound");
+
+    // m_OnHeardSound
+    public CEntityIOOutput OnHeardSound => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvMicrophone", "m_OnHeardSound");
+
+    // m_szLastSound
+    public string LastSound
+    {
+        get { return Schema.GetString(this.Handle, "CEnvMicrophone", "m_szLastSound"); }
+        set { Schema.SetString(this.Handle, "CEnvMicrophone", "m_szLastSound", value); }
+    }
+
+    // m_iLastRoutedFrame
+    public ref Int32 LastRoutedFrame => ref Schema.GetRef<Int32>(this.Handle, "CEnvMicrophone", "m_iLastRoutedFrame");
+
+}
+
+public partial class CEnvMuzzleFlash : CPointEntity
+{
+    public CEnvMuzzleFlash (IntPtr pointer) : base(pointer) {}
+
+    // m_flScale
+    public ref float Scale => ref Schema.GetRef<float>(this.Handle, "CEnvMuzzleFlash", "m_flScale");
+
+    // m_iszParentAttachment
+    public string ParentAttachment
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvMuzzleFlash", "m_iszParentAttachment"); }
+        set { Schema.SetString(this.Handle, "CEnvMuzzleFlash", "m_iszParentAttachment", value); }
+    }
 
 }
 
@@ -6984,17 +10440,9 @@ public partial class CEnvProjectedTexture : CModelPointEntity
     public ref UInt32 ShadowQuality => ref Schema.GetRef<UInt32>(this.Handle, "CEnvProjectedTexture", "m_nShadowQuality");
 
     // m_flNearZ
-    // MNetworkBitCount "16"
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "500.000000"
-    // MNetworkEncodeFlags "1"
     public ref float NearZ => ref Schema.GetRef<float>(this.Handle, "CEnvProjectedTexture", "m_flNearZ");
 
     // m_flFarZ
-    // MNetworkBitCount "18"
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "1500.000000"
-    // MNetworkEncodeFlags "1"
     public ref float FarZ => ref Schema.GetRef<float>(this.Handle, "CEnvProjectedTexture", "m_flFarZ");
 
     // m_flProjectionSize
@@ -7016,9 +10464,6 @@ public partial class CEnvScreenOverlay : CPointEntity
     public Span<string> OverlayNames => Schema.GetFixedArray<string>(this.Handle, "CEnvScreenOverlay", "m_iszOverlayNames", 10);
 
     // m_flOverlayTimes
-    // MNetworkBitCount "11"
-    // MNetworkMinValue "-1.000000"
-    // MNetworkMaxValue "63.000000"
     public Span<float> OverlayTimes => Schema.GetFixedArray<float>(this.Handle, "CEnvScreenOverlay", "m_flOverlayTimes", 10);
 
     // m_flStartTime
@@ -7032,24 +10477,60 @@ public partial class CEnvScreenOverlay : CPointEntity
 
 }
 
+public partial class CEnvShake : CPointEntity
+{
+    public CEnvShake (IntPtr pointer) : base(pointer) {}
+
+    // m_limitToEntity
+    public string LimitToEntity
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvShake", "m_limitToEntity"); }
+        set { Schema.SetString(this.Handle, "CEnvShake", "m_limitToEntity", value); }
+    }
+
+    // m_Amplitude
+    public ref float Amplitude => ref Schema.GetRef<float>(this.Handle, "CEnvShake", "m_Amplitude");
+
+    // m_Frequency
+    public ref float Frequency => ref Schema.GetRef<float>(this.Handle, "CEnvShake", "m_Frequency");
+
+    // m_Duration
+    public ref float Duration => ref Schema.GetRef<float>(this.Handle, "CEnvShake", "m_Duration");
+
+    // m_Radius
+    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CEnvShake", "m_Radius");
+
+    // m_stopTime
+    public ref float StopTime => ref Schema.GetRef<float>(this.Handle, "CEnvShake", "m_stopTime");
+
+    // m_nextShake
+    public ref float NextShake => ref Schema.GetRef<float>(this.Handle, "CEnvShake", "m_nextShake");
+
+    // m_currentAmp
+    public ref float CurrentAmp => ref Schema.GetRef<float>(this.Handle, "CEnvShake", "m_currentAmp");
+
+    // m_maxForce
+    public Vector MaxForce => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvShake", "m_maxForce");
+
+    // m_shakeCallback
+    public CPhysicsShake ShakeCallback => Schema.GetDeclaredClass<CPhysicsShake>(this.Handle, "CEnvShake", "m_shakeCallback");
+
+}
+
 public partial class CEnvSky : CBaseModelEntity
 {
     public CEnvSky (IntPtr pointer) : base(pointer) {}
 
     // m_hSkyMaterial
-    // MNetworkChangeCallback "SkyStateChanged"
     public CStrongHandle<InfoForResourceTypeIMaterial2> SkyMaterial => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CEnvSky", "m_hSkyMaterial");
 
     // m_hSkyMaterialLightingOnly
-    // MNetworkChangeCallback "SkyStateChanged"
     public CStrongHandle<InfoForResourceTypeIMaterial2> SkyMaterialLightingOnly => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CEnvSky", "m_hSkyMaterialLightingOnly");
 
     // m_bStartDisabled
-    // MNetworkChangeCallback "SkyStateChanged"
     public ref bool StartDisabled => ref Schema.GetRef<bool>(this.Handle, "CEnvSky", "m_bStartDisabled");
 
     // m_vTintColor
-    // MNetworkChangeCallback "SkyStateChanged"
     public Color TintColor
     {
         get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CEnvSky", "m_vTintColor"); }
@@ -7057,7 +10538,6 @@ public partial class CEnvSky : CBaseModelEntity
     }
 
     // m_vTintColorLightingOnly
-    // MNetworkChangeCallback "SkyStateChanged"
     public Color TintColorLightingOnly
     {
         get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CEnvSky", "m_vTintColorLightingOnly"); }
@@ -7065,32 +10545,181 @@ public partial class CEnvSky : CBaseModelEntity
     }
 
     // m_flBrightnessScale
-    // MNetworkChangeCallback "SkyStateChanged"
     public ref float BrightnessScale => ref Schema.GetRef<float>(this.Handle, "CEnvSky", "m_flBrightnessScale");
 
     // m_nFogType
-    // MNetworkChangeCallback "SkyStateChanged"
     public ref Int32 FogType => ref Schema.GetRef<Int32>(this.Handle, "CEnvSky", "m_nFogType");
 
     // m_flFogMinStart
-    // MNetworkChangeCallback "SkyStateChanged"
     public ref float FogMinStart => ref Schema.GetRef<float>(this.Handle, "CEnvSky", "m_flFogMinStart");
 
     // m_flFogMinEnd
-    // MNetworkChangeCallback "SkyStateChanged"
     public ref float FogMinEnd => ref Schema.GetRef<float>(this.Handle, "CEnvSky", "m_flFogMinEnd");
 
     // m_flFogMaxStart
-    // MNetworkChangeCallback "SkyStateChanged"
     public ref float FogMaxStart => ref Schema.GetRef<float>(this.Handle, "CEnvSky", "m_flFogMaxStart");
 
     // m_flFogMaxEnd
-    // MNetworkChangeCallback "SkyStateChanged"
     public ref float FogMaxEnd => ref Schema.GetRef<float>(this.Handle, "CEnvSky", "m_flFogMaxEnd");
 
     // m_bEnabled
-    // MNetworkChangeCallback "SkyStateChanged"
     public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CEnvSky", "m_bEnabled");
+
+}
+
+public partial class CEnvSoundscape : CServerOnlyEntity
+{
+    public CEnvSoundscape (IntPtr pointer) : base(pointer) {}
+
+    // m_OnPlay
+    public CEntityIOOutput OnPlay => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvSoundscape", "m_OnPlay");
+
+    // m_flRadius
+    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CEnvSoundscape", "m_flRadius");
+
+    // m_soundscapeName
+    public string SoundscapeName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvSoundscape", "m_soundscapeName"); }
+        set { Schema.SetString(this.Handle, "CEnvSoundscape", "m_soundscapeName", value); }
+    }
+
+    // m_soundEventName
+    public string SoundEventName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvSoundscape", "m_soundEventName"); }
+        set { Schema.SetString(this.Handle, "CEnvSoundscape", "m_soundEventName", value); }
+    }
+
+    // m_bOverrideWithEvent
+    public ref bool OverrideWithEvent => ref Schema.GetRef<bool>(this.Handle, "CEnvSoundscape", "m_bOverrideWithEvent");
+
+    // m_soundscapeIndex
+    public ref Int32 SoundscapeIndex => ref Schema.GetRef<Int32>(this.Handle, "CEnvSoundscape", "m_soundscapeIndex");
+
+    // m_soundscapeEntityListId
+    public ref Int32 SoundscapeEntityListId => ref Schema.GetRef<Int32>(this.Handle, "CEnvSoundscape", "m_soundscapeEntityListId");
+
+    // m_soundEventHash
+    public ref UInt32 SoundEventHash => ref Schema.GetRef<UInt32>(this.Handle, "CEnvSoundscape", "m_soundEventHash");
+
+    // m_positionNames
+    public Span<string> PositionNames => Schema.GetFixedArray<string>(this.Handle, "CEnvSoundscape", "m_positionNames", 8);
+
+    // m_hProxySoundscape
+    public CHandle<CEnvSoundscape> ProxySoundscape => Schema.GetDeclaredClass<CHandle<CEnvSoundscape>>(this.Handle, "CEnvSoundscape", "m_hProxySoundscape");
+
+    // m_bDisabled
+    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CEnvSoundscape", "m_bDisabled");
+
+}
+
+public partial class CEnvSoundscapeAlias_snd_soundscape : CEnvSoundscape
+{
+    public CEnvSoundscapeAlias_snd_soundscape (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CEnvSoundscapeProxy : CEnvSoundscape
+{
+    public CEnvSoundscapeProxy (IntPtr pointer) : base(pointer) {}
+
+    // m_MainSoundscapeName
+    public string MainSoundscapeName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CEnvSoundscapeProxy", "m_MainSoundscapeName"); }
+        set { Schema.SetString(this.Handle, "CEnvSoundscapeProxy", "m_MainSoundscapeName", value); }
+    }
+
+}
+
+public partial class CEnvSoundscapeProxyAlias_snd_soundscape_proxy : CEnvSoundscapeProxy
+{
+    public CEnvSoundscapeProxyAlias_snd_soundscape_proxy (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CEnvSoundscapeTriggerable : CEnvSoundscape
+{
+    public CEnvSoundscapeTriggerable (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CEnvSoundscapeTriggerableAlias_snd_soundscape_triggerable : CEnvSoundscapeTriggerable
+{
+    public CEnvSoundscapeTriggerableAlias_snd_soundscape_triggerable (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CEnvSpark : CPointEntity
+{
+    public CEnvSpark (IntPtr pointer) : base(pointer) {}
+
+    // m_flDelay
+    public ref float Delay => ref Schema.GetRef<float>(this.Handle, "CEnvSpark", "m_flDelay");
+
+    // m_nMagnitude
+    public ref Int32 Magnitude => ref Schema.GetRef<Int32>(this.Handle, "CEnvSpark", "m_nMagnitude");
+
+    // m_nTrailLength
+    public ref Int32 TrailLength => ref Schema.GetRef<Int32>(this.Handle, "CEnvSpark", "m_nTrailLength");
+
+    // m_nType
+    public ref Int32 Type => ref Schema.GetRef<Int32>(this.Handle, "CEnvSpark", "m_nType");
+
+    // m_OnSpark
+    public CEntityIOOutput OnSpark => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvSpark", "m_OnSpark");
+
+}
+
+public partial class CEnvSplash : CPointEntity
+{
+    public CEnvSplash (IntPtr pointer) : base(pointer) {}
+
+    // m_flScale
+    public ref float Scale => ref Schema.GetRef<float>(this.Handle, "CEnvSplash", "m_flScale");
+
+}
+
+public partial class CEnvTilt : CPointEntity
+{
+    public CEnvTilt (IntPtr pointer) : base(pointer) {}
+
+    // m_Duration
+    public ref float Duration => ref Schema.GetRef<float>(this.Handle, "CEnvTilt", "m_Duration");
+
+    // m_Radius
+    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CEnvTilt", "m_Radius");
+
+    // m_TiltTime
+    public ref float TiltTime => ref Schema.GetRef<float>(this.Handle, "CEnvTilt", "m_TiltTime");
+
+    // m_stopTime
+    public ref float StopTime => ref Schema.GetRef<float>(this.Handle, "CEnvTilt", "m_stopTime");
+
+}
+
+public partial class CEnvTracer : CPointEntity
+{
+    public CEnvTracer (IntPtr pointer) : base(pointer) {}
+
+    // m_vecEnd
+    public Vector End => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvTracer", "m_vecEnd");
+
+    // m_flDelay
+    public ref float Delay => ref Schema.GetRef<float>(this.Handle, "CEnvTracer", "m_flDelay");
+
+}
+
+public partial class CEnvViewPunch : CPointEntity
+{
+    public CEnvViewPunch (IntPtr pointer) : base(pointer) {}
+
+    // m_flRadius
+    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CEnvViewPunch", "m_flRadius");
+
+    // m_angViewPunch
+    public QAngle ViewPunch => Schema.GetDeclaredClass<QAngle>(this.Handle, "CEnvViewPunch", "m_angViewPunch");
 
 }
 
@@ -7179,6 +10808,9 @@ public partial class CEnvVolumetricFogController : CBaseEntity
     // m_nForceRefreshCount
     public ref Int32 ForceRefreshCount => ref Schema.GetRef<Int32>(this.Handle, "CEnvVolumetricFogController", "m_nForceRefreshCount");
 
+    // m_bFirstTime
+    public ref bool FirstTime => ref Schema.GetRef<bool>(this.Handle, "CEnvVolumetricFogController", "m_bFirstTime");
+
 }
 
 public partial class CEnvVolumetricFogVolume : CBaseEntity
@@ -7255,14 +10887,259 @@ public partial class CEnvWindShared : NativeObject
     public ref UInt16 GustDirChange => ref Schema.GetRef<UInt16>(this.Handle, "CEnvWindShared", "m_iGustDirChange");
 
     // m_location
-    // MNetworkEncoder "coord"
     public Vector Location => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvWindShared", "m_location");
+
+    // m_iszGustSound
+    public ref Int32 GustSound => ref Schema.GetRef<Int32>(this.Handle, "CEnvWindShared", "m_iszGustSound");
+
+    // m_iWindDir
+    public ref Int32 WindDir => ref Schema.GetRef<Int32>(this.Handle, "CEnvWindShared", "m_iWindDir");
+
+    // m_flWindSpeed
+    public ref float WindSpeed => ref Schema.GetRef<float>(this.Handle, "CEnvWindShared", "m_flWindSpeed");
+
+    // m_currentWindVector
+    public Vector CurrentWindVector => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvWindShared", "m_currentWindVector");
+
+    // m_CurrentSwayVector
+    public Vector CurrentSwayVector => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvWindShared", "m_CurrentSwayVector");
+
+    // m_PrevSwayVector
+    public Vector PrevSwayVector => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvWindShared", "m_PrevSwayVector");
 
     // m_iInitialWindDir
     public ref UInt16 InitialWindDir => ref Schema.GetRef<UInt16>(this.Handle, "CEnvWindShared", "m_iInitialWindDir");
 
     // m_flInitialWindSpeed
     public ref float InitialWindSpeed => ref Schema.GetRef<float>(this.Handle, "CEnvWindShared", "m_flInitialWindSpeed");
+
+    // m_OnGustStart
+    public CEntityIOOutput OnGustStart => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvWindShared", "m_OnGustStart");
+
+    // m_OnGustEnd
+    public CEntityIOOutput OnGustEnd => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvWindShared", "m_OnGustEnd");
+
+    // m_flVariationTime
+    public ref float VariationTime => ref Schema.GetRef<float>(this.Handle, "CEnvWindShared", "m_flVariationTime");
+
+    // m_flSwayTime
+    public ref float SwayTime => ref Schema.GetRef<float>(this.Handle, "CEnvWindShared", "m_flSwayTime");
+
+    // m_flSimTime
+    public ref float SimTime => ref Schema.GetRef<float>(this.Handle, "CEnvWindShared", "m_flSimTime");
+
+    // m_flSwitchTime
+    public ref float SwitchTime => ref Schema.GetRef<float>(this.Handle, "CEnvWindShared", "m_flSwitchTime");
+
+    // m_flAveWindSpeed
+    public ref float AveWindSpeed => ref Schema.GetRef<float>(this.Handle, "CEnvWindShared", "m_flAveWindSpeed");
+
+    // m_bGusting
+    public ref bool Gusting => ref Schema.GetRef<bool>(this.Handle, "CEnvWindShared", "m_bGusting");
+
+    // m_flWindAngleVariation
+    public ref float WindAngleVariation => ref Schema.GetRef<float>(this.Handle, "CEnvWindShared", "m_flWindAngleVariation");
+
+    // m_flWindSpeedVariation
+    public ref float WindSpeedVariation => ref Schema.GetRef<float>(this.Handle, "CEnvWindShared", "m_flWindSpeedVariation");
+
+    // m_iEntIndex
+    public CEntityIndex EntIndex => Schema.GetDeclaredClass<CEntityIndex>(this.Handle, "CEnvWindShared", "m_iEntIndex");
+
+}
+
+public partial class CFilterAttributeInt : CBaseFilter
+{
+    public CFilterAttributeInt (IntPtr pointer) : base(pointer) {}
+
+    // m_sAttributeName
+    public CUtlStringToken AttributeName => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CFilterAttributeInt", "m_sAttributeName");
+
+}
+
+public partial class CFilterClass : CBaseFilter
+{
+    public CFilterClass (IntPtr pointer) : base(pointer) {}
+
+    // m_iFilterClass
+    public string FilterClass
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFilterClass", "m_iFilterClass"); }
+        set { Schema.SetString(this.Handle, "CFilterClass", "m_iFilterClass", value); }
+    }
+
+}
+
+public partial class CFilterContext : CBaseFilter
+{
+    public CFilterContext (IntPtr pointer) : base(pointer) {}
+
+    // m_iFilterContext
+    public string FilterContext
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFilterContext", "m_iFilterContext"); }
+        set { Schema.SetString(this.Handle, "CFilterContext", "m_iFilterContext", value); }
+    }
+
+}
+
+public partial class CFilterEnemy : CBaseFilter
+{
+    public CFilterEnemy (IntPtr pointer) : base(pointer) {}
+
+    // m_iszEnemyName
+    public string EnemyName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFilterEnemy", "m_iszEnemyName"); }
+        set { Schema.SetString(this.Handle, "CFilterEnemy", "m_iszEnemyName", value); }
+    }
+
+    // m_flRadius
+    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CFilterEnemy", "m_flRadius");
+
+    // m_flOuterRadius
+    public ref float OuterRadius => ref Schema.GetRef<float>(this.Handle, "CFilterEnemy", "m_flOuterRadius");
+
+    // m_nMaxSquadmatesPerEnemy
+    public ref Int32 MaxSquadmatesPerEnemy => ref Schema.GetRef<Int32>(this.Handle, "CFilterEnemy", "m_nMaxSquadmatesPerEnemy");
+
+    // m_iszPlayerName
+    public string PlayerName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFilterEnemy", "m_iszPlayerName"); }
+        set { Schema.SetString(this.Handle, "CFilterEnemy", "m_iszPlayerName", value); }
+    }
+
+}
+
+public partial class CFilterLOS : CBaseFilter
+{
+    public CFilterLOS (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CFilterMassGreater : CBaseFilter
+{
+    public CFilterMassGreater (IntPtr pointer) : base(pointer) {}
+
+    // m_fFilterMass
+    public ref float FilterMass => ref Schema.GetRef<float>(this.Handle, "CFilterMassGreater", "m_fFilterMass");
+
+}
+
+public partial class CFilterModel : CBaseFilter
+{
+    public CFilterModel (IntPtr pointer) : base(pointer) {}
+
+    // m_iFilterModel
+    public string FilterModel
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFilterModel", "m_iFilterModel"); }
+        set { Schema.SetString(this.Handle, "CFilterModel", "m_iFilterModel", value); }
+    }
+
+}
+
+public partial class CFilterMultiple : CBaseFilter
+{
+    public CFilterMultiple (IntPtr pointer) : base(pointer) {}
+
+    // m_nFilterType
+    public ref filter_t FilterType => ref Schema.GetRef<filter_t>(this.Handle, "CFilterMultiple", "m_nFilterType");
+
+    // m_iFilterName
+    public Span<string> FilterName => Schema.GetFixedArray<string>(this.Handle, "CFilterMultiple", "m_iFilterName", 10);
+
+    // m_hFilter
+    public Span<CHandle<CBaseEntity>> Filter => Schema.GetFixedArray<CHandle<CBaseEntity>>(this.Handle, "CFilterMultiple", "m_hFilter", 10);
+
+    // m_nFilterCount
+    public ref Int32 FilterCount => ref Schema.GetRef<Int32>(this.Handle, "CFilterMultiple", "m_nFilterCount");
+
+}
+
+public partial class CFilterName : CBaseFilter
+{
+    public CFilterName (IntPtr pointer) : base(pointer) {}
+
+    // m_iFilterName
+    public string FilterName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFilterName", "m_iFilterName"); }
+        set { Schema.SetString(this.Handle, "CFilterName", "m_iFilterName", value); }
+    }
+
+}
+
+public partial class CFilterProximity : CBaseFilter
+{
+    public CFilterProximity (IntPtr pointer) : base(pointer) {}
+
+    // m_flRadius
+    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CFilterProximity", "m_flRadius");
+
+}
+
+public partial class CFire : CBaseModelEntity
+{
+    public CFire (IntPtr pointer) : base(pointer) {}
+
+    // m_hEffect
+    public CHandle<CBaseFire> Effect => Schema.GetDeclaredClass<CHandle<CBaseFire>>(this.Handle, "CFire", "m_hEffect");
+
+    // m_hOwner
+    public CHandle<CBaseEntity> Owner => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CFire", "m_hOwner");
+
+    // m_nFireType
+    public ref Int32 FireType => ref Schema.GetRef<Int32>(this.Handle, "CFire", "m_nFireType");
+
+    // m_flFuel
+    public ref float Fuel => ref Schema.GetRef<float>(this.Handle, "CFire", "m_flFuel");
+
+    // m_flDamageTime
+    public ref float DamageTime => ref Schema.GetRef<float>(this.Handle, "CFire", "m_flDamageTime");
+
+    // m_lastDamage
+    public ref float LastDamage => ref Schema.GetRef<float>(this.Handle, "CFire", "m_lastDamage");
+
+    // m_flFireSize
+    public ref float FireSize => ref Schema.GetRef<float>(this.Handle, "CFire", "m_flFireSize");
+
+    // m_flLastNavUpdateTime
+    public ref float LastNavUpdateTime => ref Schema.GetRef<float>(this.Handle, "CFire", "m_flLastNavUpdateTime");
+
+    // m_flHeatLevel
+    public ref float HeatLevel => ref Schema.GetRef<float>(this.Handle, "CFire", "m_flHeatLevel");
+
+    // m_flHeatAbsorb
+    public ref float HeatAbsorb => ref Schema.GetRef<float>(this.Handle, "CFire", "m_flHeatAbsorb");
+
+    // m_flDamageScale
+    public ref float DamageScale => ref Schema.GetRef<float>(this.Handle, "CFire", "m_flDamageScale");
+
+    // m_flMaxHeat
+    public ref float MaxHeat => ref Schema.GetRef<float>(this.Handle, "CFire", "m_flMaxHeat");
+
+    // m_flLastHeatLevel
+    public ref float LastHeatLevel => ref Schema.GetRef<float>(this.Handle, "CFire", "m_flLastHeatLevel");
+
+    // m_flAttackTime
+    public ref float AttackTime => ref Schema.GetRef<float>(this.Handle, "CFire", "m_flAttackTime");
+
+    // m_bEnabled
+    public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CFire", "m_bEnabled");
+
+    // m_bStartDisabled
+    public ref bool StartDisabled => ref Schema.GetRef<bool>(this.Handle, "CFire", "m_bStartDisabled");
+
+    // m_bDidActivate
+    public ref bool DidActivate => ref Schema.GetRef<bool>(this.Handle, "CFire", "m_bDidActivate");
+
+    // m_OnIgnited
+    public CEntityIOOutput OnIgnited => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFire", "m_OnIgnited");
+
+    // m_OnExtinguished
+    public CEntityIOOutput OnExtinguished => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFire", "m_OnExtinguished");
 
 }
 
@@ -7288,32 +11165,104 @@ public partial class CFish : CBaseAnimGraph
 {
     public CFish (IntPtr pointer) : base(pointer) {}
 
+    // m_pool
+    public CHandle<CFishPool> Pool => Schema.GetDeclaredClass<CHandle<CFishPool>>(this.Handle, "CFish", "m_pool");
+
+    // m_id
+    public ref UInt32 Id => ref Schema.GetRef<UInt32>(this.Handle, "CFish", "m_id");
+
     // m_x
-    // MNetworkSerializer "fish_pos_x"
     public ref float X => ref Schema.GetRef<float>(this.Handle, "CFish", "m_x");
 
     // m_y
-    // MNetworkSerializer "fish_pos_y"
     public ref float Y => ref Schema.GetRef<float>(this.Handle, "CFish", "m_y");
 
     // m_z
-    // MNetworkSerializer "fish_pos_z"
     public ref float Z => ref Schema.GetRef<float>(this.Handle, "CFish", "m_z");
 
     // m_angle
-    // MNetworkSerializer "angle_normalize_positive"
-    // MNetworkBitCount "7"
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "360.000000"
-    // MNetworkEncodeFlags "1"
     public ref float Angle => ref Schema.GetRef<float>(this.Handle, "CFish", "m_angle");
 
+    // m_angleChange
+    public ref float AngleChange => ref Schema.GetRef<float>(this.Handle, "CFish", "m_angleChange");
+
+    // m_forward
+    public Vector Forward => Schema.GetDeclaredClass<Vector>(this.Handle, "CFish", "m_forward");
+
+    // m_perp
+    public Vector Perp => Schema.GetDeclaredClass<Vector>(this.Handle, "CFish", "m_perp");
+
     // m_poolOrigin
-    // MNetworkEncoder "coord"
     public Vector PoolOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CFish", "m_poolOrigin");
 
     // m_waterLevel
     public ref float FishWaterLevel => ref Schema.GetRef<float>(this.Handle, "CFish", "m_waterLevel");
+
+    // m_speed
+    public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CFish", "m_speed");
+
+    // m_desiredSpeed
+    public ref float DesiredSpeed => ref Schema.GetRef<float>(this.Handle, "CFish", "m_desiredSpeed");
+
+    // m_calmSpeed
+    public ref float CalmSpeed => ref Schema.GetRef<float>(this.Handle, "CFish", "m_calmSpeed");
+
+    // m_panicSpeed
+    public ref float PanicSpeed => ref Schema.GetRef<float>(this.Handle, "CFish", "m_panicSpeed");
+
+    // m_avoidRange
+    public ref float AvoidRange => ref Schema.GetRef<float>(this.Handle, "CFish", "m_avoidRange");
+
+    // m_turnTimer
+    public CountdownTimer TurnTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CFish", "m_turnTimer");
+
+    // m_turnClockwise
+    public ref bool TurnClockwise => ref Schema.GetRef<bool>(this.Handle, "CFish", "m_turnClockwise");
+
+    // m_goTimer
+    public CountdownTimer GoTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CFish", "m_goTimer");
+
+    // m_moveTimer
+    public CountdownTimer MoveTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CFish", "m_moveTimer");
+
+    // m_panicTimer
+    public CountdownTimer PanicTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CFish", "m_panicTimer");
+
+    // m_disperseTimer
+    public CountdownTimer DisperseTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CFish", "m_disperseTimer");
+
+    // m_proximityTimer
+    public CountdownTimer ProximityTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CFish", "m_proximityTimer");
+
+    // m_visible
+    public NetworkedVector<CFish?> Visible => Schema.GetDeclaredClass<NetworkedVector<CFish?>>(this.Handle, "CFish", "m_visible");
+
+}
+
+public partial class CFishPool : CBaseEntity
+{
+    public CFishPool (IntPtr pointer) : base(pointer) {}
+
+    // m_fishCount
+    public ref Int32 FishCount => ref Schema.GetRef<Int32>(this.Handle, "CFishPool", "m_fishCount");
+
+    // m_maxRange
+    public ref float MaxRange => ref Schema.GetRef<float>(this.Handle, "CFishPool", "m_maxRange");
+
+    // m_swimDepth
+    public ref float SwimDepth => ref Schema.GetRef<float>(this.Handle, "CFishPool", "m_swimDepth");
+
+    // m_waterLevel
+    public ref float WaterLevel => ref Schema.GetRef<float>(this.Handle, "CFishPool", "m_waterLevel");
+
+    // m_isDormant
+    public ref bool IsDormant => ref Schema.GetRef<bool>(this.Handle, "CFishPool", "m_isDormant");
+
+    // m_fishes
+    public NetworkedVector<CHandle<CFish>> Fishes => Schema.GetDeclaredClass<NetworkedVector<CHandle<CFish>>>(this.Handle, "CFishPool", "m_fishes");
+
+    // m_visTimer
+    public CountdownTimer VisTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CFishPool", "m_visTimer");
 
 }
 
@@ -7325,8 +11274,22 @@ public partial class CFists : CCSWeaponBase
     public ref bool PlayingUninterruptableAct => ref Schema.GetRef<bool>(this.Handle, "CFists", "m_bPlayingUninterruptableAct");
 
     // m_nUninterruptableActivity
-    // MNetworkChangeCallback "OnUninterruptChanged"
     public ref PlayerAnimEvent_t UninterruptableActivity => ref Schema.GetRef<PlayerAnimEvent_t>(this.Handle, "CFists", "m_nUninterruptableActivity");
+
+    // m_bRestorePrevWep
+    public ref bool RestorePrevWep => ref Schema.GetRef<bool>(this.Handle, "CFists", "m_bRestorePrevWep");
+
+    // m_hWeaponBeforePrevious
+    public CHandle<CBasePlayerWeapon> WeaponBeforePrevious => Schema.GetDeclaredClass<CHandle<CBasePlayerWeapon>>(this.Handle, "CFists", "m_hWeaponBeforePrevious");
+
+    // m_hWeaponPrevious
+    public CHandle<CBasePlayerWeapon> WeaponPrevious => Schema.GetDeclaredClass<CHandle<CBasePlayerWeapon>>(this.Handle, "CFists", "m_hWeaponPrevious");
+
+    // m_bDelayedHardPunchIncoming
+    public ref bool DelayedHardPunchIncoming => ref Schema.GetRef<bool>(this.Handle, "CFists", "m_bDelayedHardPunchIncoming");
+
+    // m_bDestroyAfterTaunt
+    public ref bool DestroyAfterTaunt => ref Schema.GetRef<bool>(this.Handle, "CFists", "m_bDestroyAfterTaunt");
 
 }
 
@@ -7336,12 +11299,75 @@ public partial class CFlashbang : CBaseCSGrenade
 
 }
 
+public partial class CFlashbangProjectile : CBaseCSGrenadeProjectile
+{
+    public CFlashbangProjectile (IntPtr pointer) : base(pointer) {}
+
+    // m_flTimeToDetonate
+    public ref float TimeToDetonate => ref Schema.GetRef<float>(this.Handle, "CFlashbangProjectile", "m_flTimeToDetonate");
+
+    // m_numOpponentsHit
+    public ref byte NumOpponentsHit => ref Schema.GetRef<byte>(this.Handle, "CFlashbangProjectile", "m_numOpponentsHit");
+
+    // m_numTeammatesHit
+    public ref byte NumTeammatesHit => ref Schema.GetRef<byte>(this.Handle, "CFlashbangProjectile", "m_numTeammatesHit");
+
+}
+
 public partial class CFogController : CBaseEntity
 {
     public CFogController (IntPtr pointer) : base(pointer) {}
 
     // m_fog
     public fogparams_t Fog => Schema.GetDeclaredClass<fogparams_t>(this.Handle, "CFogController", "m_fog");
+
+    // m_bUseAngles
+    public ref bool UseAngles => ref Schema.GetRef<bool>(this.Handle, "CFogController", "m_bUseAngles");
+
+    // m_iChangedVariables
+    public ref Int32 ChangedVariables => ref Schema.GetRef<Int32>(this.Handle, "CFogController", "m_iChangedVariables");
+
+}
+
+public partial class CFogTrigger : CBaseTrigger
+{
+    public CFogTrigger (IntPtr pointer) : base(pointer) {}
+
+    // m_fog
+    public fogparams_t Fog => Schema.GetDeclaredClass<fogparams_t>(this.Handle, "CFogTrigger", "m_fog");
+
+}
+
+public partial class CFogVolume : CServerOnlyModelEntity
+{
+    public CFogVolume (IntPtr pointer) : base(pointer) {}
+
+    // m_fogName
+    public string FogName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFogVolume", "m_fogName"); }
+        set { Schema.SetString(this.Handle, "CFogVolume", "m_fogName", value); }
+    }
+
+    // m_postProcessName
+    public string PostProcessName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFogVolume", "m_postProcessName"); }
+        set { Schema.SetString(this.Handle, "CFogVolume", "m_postProcessName", value); }
+    }
+
+    // m_colorCorrectionName
+    public string ColorCorrectionName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFogVolume", "m_colorCorrectionName"); }
+        set { Schema.SetString(this.Handle, "CFogVolume", "m_colorCorrectionName", value); }
+    }
+
+    // m_bDisabled
+    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CFogVolume", "m_bDisabled");
+
+    // m_bInFogVolumesList
+    public ref bool InFogVolumesList => ref Schema.GetRef<bool>(this.Handle, "CFogVolume", "m_bInFogVolumesList");
 
 }
 
@@ -7369,11 +11395,46 @@ public partial class CFuncBrush : CBaseModelEntity
 {
     public CFuncBrush (IntPtr pointer) : base(pointer) {}
 
+    // m_iSolidity
+    public ref BrushSolidities_e Solidity => ref Schema.GetRef<BrushSolidities_e>(this.Handle, "CFuncBrush", "m_iSolidity");
+
+    // m_iDisabled
+    public ref Int32 Disabled => ref Schema.GetRef<Int32>(this.Handle, "CFuncBrush", "m_iDisabled");
+
+    // m_bSolidBsp
+    public ref bool SolidBsp => ref Schema.GetRef<bool>(this.Handle, "CFuncBrush", "m_bSolidBsp");
+
+    // m_iszExcludedClass
+    public string ExcludedClass
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFuncBrush", "m_iszExcludedClass"); }
+        set { Schema.SetString(this.Handle, "CFuncBrush", "m_iszExcludedClass", value); }
+    }
+
+    // m_bInvertExclusion
+    public ref bool InvertExclusion => ref Schema.GetRef<bool>(this.Handle, "CFuncBrush", "m_bInvertExclusion");
+
+    // m_bScriptedMovement
+    public ref bool ScriptedMovement => ref Schema.GetRef<bool>(this.Handle, "CFuncBrush", "m_bScriptedMovement");
+
 }
 
 public partial class CFuncConveyor : CBaseModelEntity
 {
     public CFuncConveyor (IntPtr pointer) : base(pointer) {}
+
+    // m_szConveyorModels
+    public string SzConveyorModels
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFuncConveyor", "m_szConveyorModels"); }
+        set { Schema.SetString(this.Handle, "CFuncConveyor", "m_szConveyorModels", value); }
+    }
+
+    // m_flTransitionDurationSeconds
+    public ref float TransitionDurationSeconds => ref Schema.GetRef<float>(this.Handle, "CFuncConveyor", "m_flTransitionDurationSeconds");
+
+    // m_angMoveEntitySpace
+    public QAngle MoveEntitySpace => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncConveyor", "m_angMoveEntitySpace");
 
     // m_vecMoveDirEntitySpace
     public Vector MoveDirEntitySpace => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncConveyor", "m_vecMoveDirEntitySpace");
@@ -7382,6 +11443,8 @@ public partial class CFuncConveyor : CBaseModelEntity
     public ref float TargetSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncConveyor", "m_flTargetSpeed");
 
     // m_nTransitionStartTick
+    public ref Int32 TransitionStartTick => ref Schema.GetRef<Int32>(this.Handle, "CFuncConveyor", "m_nTransitionStartTick");
+
     // m_nTransitionDurationTicks
     public ref Int32 TransitionDurationTicks => ref Schema.GetRef<Int32>(this.Handle, "CFuncConveyor", "m_nTransitionDurationTicks");
 
@@ -7389,7 +11452,7 @@ public partial class CFuncConveyor : CBaseModelEntity
     public ref float TransitionStartSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncConveyor", "m_flTransitionStartSpeed");
 
     // m_hConveyorModels
-    public NetworkedVector<CHandle<CBaseEntity>> ConveyorModels => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CFuncConveyor", "m_hConveyorModels");
+    public NetworkedVector<CHandle<CBaseEntity>> HConveyorModels => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CFuncConveyor", "m_hConveyorModels");
 
 }
 
@@ -7404,6 +11467,56 @@ public partial class CFuncElectrifiedVolume : CFuncBrush
         set { Schema.SetString(this.Handle, "CFuncElectrifiedVolume", "m_EffectName", value); }
     }
 
+    // m_EffectInterpenetrateName
+    public string EffectInterpenetrateName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFuncElectrifiedVolume", "m_EffectInterpenetrateName"); }
+        set { Schema.SetString(this.Handle, "CFuncElectrifiedVolume", "m_EffectInterpenetrateName", value); }
+    }
+
+    // m_EffectZapName
+    public string EffectZapName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFuncElectrifiedVolume", "m_EffectZapName"); }
+        set { Schema.SetString(this.Handle, "CFuncElectrifiedVolume", "m_EffectZapName", value); }
+    }
+
+    // m_iszEffectSource
+    public string EffectSource
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFuncElectrifiedVolume", "m_iszEffectSource"); }
+        set { Schema.SetString(this.Handle, "CFuncElectrifiedVolume", "m_iszEffectSource", value); }
+    }
+
+}
+
+public partial class CFuncIllusionary : CBaseModelEntity
+{
+    public CFuncIllusionary (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CFuncInteractionLayerClip : CBaseModelEntity
+{
+    public CFuncInteractionLayerClip (IntPtr pointer) : base(pointer) {}
+
+    // m_bDisabled
+    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CFuncInteractionLayerClip", "m_bDisabled");
+
+    // m_iszInteractsAs
+    public string InteractsAs
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFuncInteractionLayerClip", "m_iszInteractsAs"); }
+        set { Schema.SetString(this.Handle, "CFuncInteractionLayerClip", "m_iszInteractsAs", value); }
+    }
+
+    // m_iszInteractsWith
+    public string InteractsWith
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFuncInteractionLayerClip", "m_iszInteractsWith"); }
+        set { Schema.SetString(this.Handle, "CFuncInteractionLayerClip", "m_iszInteractsWith", value); }
+    }
+
 }
 
 public partial class CFuncLadder : CBaseModelEntity
@@ -7411,22 +11524,50 @@ public partial class CFuncLadder : CBaseModelEntity
     public CFuncLadder (IntPtr pointer) : base(pointer) {}
 
     // m_vecLadderDir
-    // MNetworkEncoder "coord"
     public Vector LadderDir => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncLadder", "m_vecLadderDir");
 
+    // m_Dismounts
+    public NetworkedVector<CHandle<CInfoLadderDismount>> Dismounts => Schema.GetDeclaredClass<NetworkedVector<CHandle<CInfoLadderDismount>>>(this.Handle, "CFuncLadder", "m_Dismounts");
+
+    // m_vecLocalTop
+    public Vector LocalTop => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncLadder", "m_vecLocalTop");
+
     // m_vecPlayerMountPositionTop
-    // MNetworkEncoder "coord"
     public Vector PlayerMountPositionTop => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncLadder", "m_vecPlayerMountPositionTop");
 
     // m_vecPlayerMountPositionBottom
-    // MNetworkEncoder "coord"
     public Vector PlayerMountPositionBottom => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncLadder", "m_vecPlayerMountPositionBottom");
 
     // m_flAutoRideSpeed
     public ref float AutoRideSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncLadder", "m_flAutoRideSpeed");
 
+    // m_bDisabled
+    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CFuncLadder", "m_bDisabled");
+
     // m_bFakeLadder
     public ref bool FakeLadder => ref Schema.GetRef<bool>(this.Handle, "CFuncLadder", "m_bFakeLadder");
+
+    // m_bHasSlack
+    public ref bool HasSlack => ref Schema.GetRef<bool>(this.Handle, "CFuncLadder", "m_bHasSlack");
+
+    // m_surfacePropName
+    public string SurfacePropName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFuncLadder", "m_surfacePropName"); }
+        set { Schema.SetString(this.Handle, "CFuncLadder", "m_surfacePropName", value); }
+    }
+
+    // m_OnPlayerGotOnLadder
+    public CEntityIOOutput OnPlayerGotOnLadder => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncLadder", "m_OnPlayerGotOnLadder");
+
+    // m_OnPlayerGotOffLadder
+    public CEntityIOOutput OnPlayerGotOffLadder => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncLadder", "m_OnPlayerGotOffLadder");
+
+}
+
+public partial class CFuncLadderAlias_func_useableladder : CFuncLadder
+{
+    public CFuncLadderAlias_func_useableladder (IntPtr pointer) : base(pointer) {}
 
 }
 
@@ -7466,11 +11607,123 @@ public partial class CFuncMonitor : CFuncBrush
     // m_bDraw3DSkybox
     public ref bool Draw3DSkybox => ref Schema.GetRef<bool>(this.Handle, "CFuncMonitor", "m_bDraw3DSkybox");
 
+    // m_bStartEnabled
+    public ref bool StartEnabled => ref Schema.GetRef<bool>(this.Handle, "CFuncMonitor", "m_bStartEnabled");
+
 }
 
 public partial class CFuncMoveLinear : CBaseToggle
 {
     public CFuncMoveLinear (IntPtr pointer) : base(pointer) {}
+
+    // m_authoredPosition
+    public ref MoveLinearAuthoredPos_t AuthoredPosition => ref Schema.GetRef<MoveLinearAuthoredPos_t>(this.Handle, "CFuncMoveLinear", "m_authoredPosition");
+
+    // m_angMoveEntitySpace
+    public QAngle MoveEntitySpace => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncMoveLinear", "m_angMoveEntitySpace");
+
+    // m_vecMoveDirParentSpace
+    public Vector MoveDirParentSpace => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncMoveLinear", "m_vecMoveDirParentSpace");
+
+    // m_soundStart
+    public string SoundStart
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFuncMoveLinear", "m_soundStart"); }
+        set { Schema.SetString(this.Handle, "CFuncMoveLinear", "m_soundStart", value); }
+    }
+
+    // m_soundStop
+    public string SoundStop
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFuncMoveLinear", "m_soundStop"); }
+        set { Schema.SetString(this.Handle, "CFuncMoveLinear", "m_soundStop", value); }
+    }
+
+    // m_currentSound
+    public string CurrentSound
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFuncMoveLinear", "m_currentSound"); }
+        set { Schema.SetString(this.Handle, "CFuncMoveLinear", "m_currentSound", value); }
+    }
+
+    // m_flBlockDamage
+    public ref float BlockDamage => ref Schema.GetRef<float>(this.Handle, "CFuncMoveLinear", "m_flBlockDamage");
+
+    // m_flStartPosition
+    public ref float StartPosition => ref Schema.GetRef<float>(this.Handle, "CFuncMoveLinear", "m_flStartPosition");
+
+    // m_flMoveDistance
+    public ref float MoveDistance => ref Schema.GetRef<float>(this.Handle, "CFuncMoveLinear", "m_flMoveDistance");
+
+    // m_OnFullyOpen
+    public CEntityIOOutput OnFullyOpen => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMoveLinear", "m_OnFullyOpen");
+
+    // m_OnFullyClosed
+    public CEntityIOOutput OnFullyClosed => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMoveLinear", "m_OnFullyClosed");
+
+    // m_bCreateMovableNavMesh
+    public ref bool CreateMovableNavMesh => ref Schema.GetRef<bool>(this.Handle, "CFuncMoveLinear", "m_bCreateMovableNavMesh");
+
+    // m_bCreateNavObstacle
+    public ref bool CreateNavObstacle => ref Schema.GetRef<bool>(this.Handle, "CFuncMoveLinear", "m_bCreateNavObstacle");
+
+}
+
+public partial class CFuncMoveLinearAlias_momentary_door : CFuncMoveLinear
+{
+    public CFuncMoveLinearAlias_momentary_door (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CFuncNavBlocker : CBaseModelEntity
+{
+    public CFuncNavBlocker (IntPtr pointer) : base(pointer) {}
+
+    // m_bDisabled
+    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CFuncNavBlocker", "m_bDisabled");
+
+    // m_nBlockedTeamNumber
+    public ref Int32 BlockedTeamNumber => ref Schema.GetRef<Int32>(this.Handle, "CFuncNavBlocker", "m_nBlockedTeamNumber");
+
+}
+
+public partial class CFuncNavObstruction : CBaseModelEntity
+{
+    public CFuncNavObstruction (IntPtr pointer) : base(pointer) {}
+
+    // m_bDisabled
+    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CFuncNavObstruction", "m_bDisabled");
+
+}
+
+public partial class CFuncPlat : CBasePlatTrain
+{
+    public CFuncPlat (IntPtr pointer) : base(pointer) {}
+
+    // m_sNoise
+    public string Noise
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFuncPlat", "m_sNoise"); }
+        set { Schema.SetString(this.Handle, "CFuncPlat", "m_sNoise", value); }
+    }
+
+}
+
+public partial class CFuncPlatRot : CFuncPlat
+{
+    public CFuncPlatRot (IntPtr pointer) : base(pointer) {}
+
+    // m_end
+    public QAngle End => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncPlatRot", "m_end");
+
+    // m_start
+    public QAngle Start => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncPlatRot", "m_start");
+
+}
+
+public partial class CFuncPropRespawnZone : CBaseEntity
+{
+    public CFuncPropRespawnZone (IntPtr pointer) : base(pointer) {}
 
 }
 
@@ -7478,11 +11731,454 @@ public partial class CFuncRotating : CBaseModelEntity
 {
     public CFuncRotating (IntPtr pointer) : base(pointer) {}
 
+    // m_vecMoveAng
+    public QAngle MoveAng => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncRotating", "m_vecMoveAng");
+
+    // m_flFanFriction
+    public ref float FanFriction => ref Schema.GetRef<float>(this.Handle, "CFuncRotating", "m_flFanFriction");
+
+    // m_flAttenuation
+    public ref float Attenuation => ref Schema.GetRef<float>(this.Handle, "CFuncRotating", "m_flAttenuation");
+
+    // m_flVolume
+    public ref float Volume => ref Schema.GetRef<float>(this.Handle, "CFuncRotating", "m_flVolume");
+
+    // m_flTargetSpeed
+    public ref float TargetSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncRotating", "m_flTargetSpeed");
+
+    // m_flMaxSpeed
+    public ref float MaxSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncRotating", "m_flMaxSpeed");
+
+    // m_flBlockDamage
+    public ref float BlockDamage => ref Schema.GetRef<float>(this.Handle, "CFuncRotating", "m_flBlockDamage");
+
+    // m_flTimeScale
+    public ref float TimeScale => ref Schema.GetRef<float>(this.Handle, "CFuncRotating", "m_flTimeScale");
+
+    // m_NoiseRunning
+    public string NoiseRunning
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFuncRotating", "m_NoiseRunning"); }
+        set { Schema.SetString(this.Handle, "CFuncRotating", "m_NoiseRunning", value); }
+    }
+
+    // m_bReversed
+    public ref bool Reversed => ref Schema.GetRef<bool>(this.Handle, "CFuncRotating", "m_bReversed");
+
+    // m_angStart
+    public QAngle Start => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncRotating", "m_angStart");
+
+    // m_bStopAtStartPos
+    public ref bool StopAtStartPos => ref Schema.GetRef<bool>(this.Handle, "CFuncRotating", "m_bStopAtStartPos");
+
+    // m_vecClientOrigin
+    public Vector ClientOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncRotating", "m_vecClientOrigin");
+
+    // m_vecClientAngles
+    public QAngle ClientAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncRotating", "m_vecClientAngles");
+
+}
+
+public partial class CFuncShatterglass : CBaseModelEntity
+{
+    public CFuncShatterglass (IntPtr pointer) : base(pointer) {}
+
+    // m_hGlassMaterialDamaged
+    public CStrongHandle<InfoForResourceTypeIMaterial2> GlassMaterialDamaged => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CFuncShatterglass", "m_hGlassMaterialDamaged");
+
+    // m_hGlassMaterialUndamaged
+    public CStrongHandle<InfoForResourceTypeIMaterial2> GlassMaterialUndamaged => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CFuncShatterglass", "m_hGlassMaterialUndamaged");
+
+    // m_hConcreteMaterialEdgeFace
+    public CStrongHandle<InfoForResourceTypeIMaterial2> ConcreteMaterialEdgeFace => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CFuncShatterglass", "m_hConcreteMaterialEdgeFace");
+
+    // m_hConcreteMaterialEdgeCaps
+    public CStrongHandle<InfoForResourceTypeIMaterial2> ConcreteMaterialEdgeCaps => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CFuncShatterglass", "m_hConcreteMaterialEdgeCaps");
+
+    // m_hConcreteMaterialEdgeFins
+    public CStrongHandle<InfoForResourceTypeIMaterial2> ConcreteMaterialEdgeFins => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CFuncShatterglass", "m_hConcreteMaterialEdgeFins");
+
+    // m_matPanelTransform
+    public matrix3x4_t MatPanelTransform => Schema.GetDeclaredClass<matrix3x4_t>(this.Handle, "CFuncShatterglass", "m_matPanelTransform");
+
+    // m_matPanelTransformWsTemp
+    public matrix3x4_t MatPanelTransformWsTemp => Schema.GetDeclaredClass<matrix3x4_t>(this.Handle, "CFuncShatterglass", "m_matPanelTransformWsTemp");
+
+    // m_vecShatterGlassShards
+    public NetworkedVector<UInt32> ShatterGlassShards => Schema.GetDeclaredClass<NetworkedVector<UInt32>>(this.Handle, "CFuncShatterglass", "m_vecShatterGlassShards");
+
+    // m_PanelSize
+    public Vector2D PanelSize => Schema.GetDeclaredClass<Vector2D>(this.Handle, "CFuncShatterglass", "m_PanelSize");
+
+    // m_vecPanelNormalWs
+    public Vector PanelNormalWs => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncShatterglass", "m_vecPanelNormalWs");
+
+    // m_nNumShardsEverCreated
+    public ref Int32 NumShardsEverCreated => ref Schema.GetRef<Int32>(this.Handle, "CFuncShatterglass", "m_nNumShardsEverCreated");
+
+    // m_flLastShatterSoundEmitTime
+    public ref float LastShatterSoundEmitTime => ref Schema.GetRef<float>(this.Handle, "CFuncShatterglass", "m_flLastShatterSoundEmitTime");
+
+    // m_flLastCleanupTime
+    public ref float LastCleanupTime => ref Schema.GetRef<float>(this.Handle, "CFuncShatterglass", "m_flLastCleanupTime");
+
+    // m_flInitAtTime
+    public ref float InitAtTime => ref Schema.GetRef<float>(this.Handle, "CFuncShatterglass", "m_flInitAtTime");
+
+    // m_flGlassThickness
+    public ref float GlassThickness => ref Schema.GetRef<float>(this.Handle, "CFuncShatterglass", "m_flGlassThickness");
+
+    // m_flSpawnInvulnerability
+    public ref float SpawnInvulnerability => ref Schema.GetRef<float>(this.Handle, "CFuncShatterglass", "m_flSpawnInvulnerability");
+
+    // m_bBreakSilent
+    public ref bool BreakSilent => ref Schema.GetRef<bool>(this.Handle, "CFuncShatterglass", "m_bBreakSilent");
+
+    // m_bBreakShardless
+    public ref bool BreakShardless => ref Schema.GetRef<bool>(this.Handle, "CFuncShatterglass", "m_bBreakShardless");
+
+    // m_bBroken
+    public ref bool Broken => ref Schema.GetRef<bool>(this.Handle, "CFuncShatterglass", "m_bBroken");
+
+    // m_bHasRateLimitedShards
+    public ref bool HasRateLimitedShards => ref Schema.GetRef<bool>(this.Handle, "CFuncShatterglass", "m_bHasRateLimitedShards");
+
+    // m_bGlassNavIgnore
+    public ref bool GlassNavIgnore => ref Schema.GetRef<bool>(this.Handle, "CFuncShatterglass", "m_bGlassNavIgnore");
+
+    // m_bGlassInFrame
+    public ref bool GlassInFrame => ref Schema.GetRef<bool>(this.Handle, "CFuncShatterglass", "m_bGlassInFrame");
+
+    // m_bStartBroken
+    public ref bool StartBroken => ref Schema.GetRef<bool>(this.Handle, "CFuncShatterglass", "m_bStartBroken");
+
+    // m_iInitialDamageType
+    public ref byte InitialDamageType => ref Schema.GetRef<byte>(this.Handle, "CFuncShatterglass", "m_iInitialDamageType");
+
+    // m_szDamagePositioningEntityName01
+    public string DamagePositioningEntityName01
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFuncShatterglass", "m_szDamagePositioningEntityName01"); }
+        set { Schema.SetString(this.Handle, "CFuncShatterglass", "m_szDamagePositioningEntityName01", value); }
+    }
+
+    // m_szDamagePositioningEntityName02
+    public string DamagePositioningEntityName02
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFuncShatterglass", "m_szDamagePositioningEntityName02"); }
+        set { Schema.SetString(this.Handle, "CFuncShatterglass", "m_szDamagePositioningEntityName02", value); }
+    }
+
+    // m_szDamagePositioningEntityName03
+    public string DamagePositioningEntityName03
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFuncShatterglass", "m_szDamagePositioningEntityName03"); }
+        set { Schema.SetString(this.Handle, "CFuncShatterglass", "m_szDamagePositioningEntityName03", value); }
+    }
+
+    // m_szDamagePositioningEntityName04
+    public string DamagePositioningEntityName04
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFuncShatterglass", "m_szDamagePositioningEntityName04"); }
+        set { Schema.SetString(this.Handle, "CFuncShatterglass", "m_szDamagePositioningEntityName04", value); }
+    }
+
+    // m_vInitialDamagePositions
+    public NetworkedVector<Vector> InitialDamagePositions => Schema.GetDeclaredClass<NetworkedVector<Vector>>(this.Handle, "CFuncShatterglass", "m_vInitialDamagePositions");
+
+    // m_vExtraDamagePositions
+    public NetworkedVector<Vector> ExtraDamagePositions => Schema.GetDeclaredClass<NetworkedVector<Vector>>(this.Handle, "CFuncShatterglass", "m_vExtraDamagePositions");
+
+    // m_OnBroken
+    public CEntityIOOutput OnBroken => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncShatterglass", "m_OnBroken");
+
+    // m_iSurfaceType
+    public ref byte SurfaceType => ref Schema.GetRef<byte>(this.Handle, "CFuncShatterglass", "m_iSurfaceType");
+
+}
+
+public partial class CFuncTankTrain : CFuncTrackTrain
+{
+    public CFuncTankTrain (IntPtr pointer) : base(pointer) {}
+
+    // m_OnDeath
+    public CEntityIOOutput OnDeath => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncTankTrain", "m_OnDeath");
+
+}
+
+public partial class CFuncTimescale : CBaseEntity
+{
+    public CFuncTimescale (IntPtr pointer) : base(pointer) {}
+
+    // m_flDesiredTimescale
+    public ref float DesiredTimescale => ref Schema.GetRef<float>(this.Handle, "CFuncTimescale", "m_flDesiredTimescale");
+
+    // m_flAcceleration
+    public ref float Acceleration => ref Schema.GetRef<float>(this.Handle, "CFuncTimescale", "m_flAcceleration");
+
+    // m_flMinBlendRate
+    public ref float MinBlendRate => ref Schema.GetRef<float>(this.Handle, "CFuncTimescale", "m_flMinBlendRate");
+
+    // m_flBlendDeltaMultiplier
+    public ref float BlendDeltaMultiplier => ref Schema.GetRef<float>(this.Handle, "CFuncTimescale", "m_flBlendDeltaMultiplier");
+
+    // m_isStarted
+    public ref bool IsStarted => ref Schema.GetRef<bool>(this.Handle, "CFuncTimescale", "m_isStarted");
+
+}
+
+public partial class CFuncTrackAuto : CFuncTrackChange
+{
+    public CFuncTrackAuto (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CFuncTrackChange : CFuncPlatRot
+{
+    public CFuncTrackChange (IntPtr pointer) : base(pointer) {}
+
+    // m_trackTop
+    public CPathTrack? TrackTop => Schema.GetPointer<CPathTrack>(this.Handle, "CFuncTrackChange", "m_trackTop");
+
+    // m_trackBottom
+    public CPathTrack? TrackBottom => Schema.GetPointer<CPathTrack>(this.Handle, "CFuncTrackChange", "m_trackBottom");
+
+    // m_train
+    public CFuncTrackTrain? Train => Schema.GetPointer<CFuncTrackTrain>(this.Handle, "CFuncTrackChange", "m_train");
+
+    // m_trackTopName
+    public string TrackTopName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFuncTrackChange", "m_trackTopName"); }
+        set { Schema.SetString(this.Handle, "CFuncTrackChange", "m_trackTopName", value); }
+    }
+
+    // m_trackBottomName
+    public string TrackBottomName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFuncTrackChange", "m_trackBottomName"); }
+        set { Schema.SetString(this.Handle, "CFuncTrackChange", "m_trackBottomName", value); }
+    }
+
+    // m_trainName
+    public string TrainName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFuncTrackChange", "m_trainName"); }
+        set { Schema.SetString(this.Handle, "CFuncTrackChange", "m_trainName", value); }
+    }
+
+    // m_code
+    public ref TRAIN_CODE Code => ref Schema.GetRef<TRAIN_CODE>(this.Handle, "CFuncTrackChange", "m_code");
+
+    // m_targetState
+    public ref Int32 TargetState => ref Schema.GetRef<Int32>(this.Handle, "CFuncTrackChange", "m_targetState");
+
+    // m_use
+    public ref Int32 Use => ref Schema.GetRef<Int32>(this.Handle, "CFuncTrackChange", "m_use");
+
 }
 
 public partial class CFuncTrackTrain : CBaseModelEntity
 {
     public CFuncTrackTrain (IntPtr pointer) : base(pointer) {}
+
+    // m_ppath
+    public CHandle<CPathTrack> Ppath => Schema.GetDeclaredClass<CHandle<CPathTrack>>(this.Handle, "CFuncTrackTrain", "m_ppath");
+
+    // m_length
+    public ref float Length => ref Schema.GetRef<float>(this.Handle, "CFuncTrackTrain", "m_length");
+
+    // m_vPosPrev
+    public Vector PosPrev => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncTrackTrain", "m_vPosPrev");
+
+    // m_angPrev
+    public QAngle Prev => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncTrackTrain", "m_angPrev");
+
+    // m_controlMins
+    public Vector ControlMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncTrackTrain", "m_controlMins");
+
+    // m_controlMaxs
+    public Vector ControlMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncTrackTrain", "m_controlMaxs");
+
+    // m_lastBlockPos
+    public Vector LastBlockPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncTrackTrain", "m_lastBlockPos");
+
+    // m_lastBlockTick
+    public ref Int32 LastBlockTick => ref Schema.GetRef<Int32>(this.Handle, "CFuncTrackTrain", "m_lastBlockTick");
+
+    // m_flVolume
+    public ref float Volume => ref Schema.GetRef<float>(this.Handle, "CFuncTrackTrain", "m_flVolume");
+
+    // m_flBank
+    public ref float Bank => ref Schema.GetRef<float>(this.Handle, "CFuncTrackTrain", "m_flBank");
+
+    // m_oldSpeed
+    public ref float OldSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncTrackTrain", "m_oldSpeed");
+
+    // m_flBlockDamage
+    public ref float BlockDamage => ref Schema.GetRef<float>(this.Handle, "CFuncTrackTrain", "m_flBlockDamage");
+
+    // m_height
+    public ref float Height => ref Schema.GetRef<float>(this.Handle, "CFuncTrackTrain", "m_height");
+
+    // m_maxSpeed
+    public ref float MaxSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncTrackTrain", "m_maxSpeed");
+
+    // m_dir
+    public ref float Dir => ref Schema.GetRef<float>(this.Handle, "CFuncTrackTrain", "m_dir");
+
+    // m_iszSoundMove
+    public string SoundMove
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFuncTrackTrain", "m_iszSoundMove"); }
+        set { Schema.SetString(this.Handle, "CFuncTrackTrain", "m_iszSoundMove", value); }
+    }
+
+    // m_iszSoundMovePing
+    public string SoundMovePing
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFuncTrackTrain", "m_iszSoundMovePing"); }
+        set { Schema.SetString(this.Handle, "CFuncTrackTrain", "m_iszSoundMovePing", value); }
+    }
+
+    // m_iszSoundStart
+    public string SoundStart
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFuncTrackTrain", "m_iszSoundStart"); }
+        set { Schema.SetString(this.Handle, "CFuncTrackTrain", "m_iszSoundStart", value); }
+    }
+
+    // m_iszSoundStop
+    public string SoundStop
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFuncTrackTrain", "m_iszSoundStop"); }
+        set { Schema.SetString(this.Handle, "CFuncTrackTrain", "m_iszSoundStop", value); }
+    }
+
+    // m_strPathTarget
+    public string StrPathTarget
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFuncTrackTrain", "m_strPathTarget"); }
+        set { Schema.SetString(this.Handle, "CFuncTrackTrain", "m_strPathTarget", value); }
+    }
+
+    // m_flMoveSoundMinDuration
+    public ref float MoveSoundMinDuration => ref Schema.GetRef<float>(this.Handle, "CFuncTrackTrain", "m_flMoveSoundMinDuration");
+
+    // m_flMoveSoundMaxDuration
+    public ref float MoveSoundMaxDuration => ref Schema.GetRef<float>(this.Handle, "CFuncTrackTrain", "m_flMoveSoundMaxDuration");
+
+    // m_flNextMoveSoundTime
+    public ref float NextMoveSoundTime => ref Schema.GetRef<float>(this.Handle, "CFuncTrackTrain", "m_flNextMoveSoundTime");
+
+    // m_flMoveSoundMinPitch
+    public ref float MoveSoundMinPitch => ref Schema.GetRef<float>(this.Handle, "CFuncTrackTrain", "m_flMoveSoundMinPitch");
+
+    // m_flMoveSoundMaxPitch
+    public ref float MoveSoundMaxPitch => ref Schema.GetRef<float>(this.Handle, "CFuncTrackTrain", "m_flMoveSoundMaxPitch");
+
+    // m_eOrientationType
+    public ref TrainOrientationType_t OrientationType => ref Schema.GetRef<TrainOrientationType_t>(this.Handle, "CFuncTrackTrain", "m_eOrientationType");
+
+    // m_eVelocityType
+    public ref TrainVelocityType_t VelocityType => ref Schema.GetRef<TrainVelocityType_t>(this.Handle, "CFuncTrackTrain", "m_eVelocityType");
+
+    // m_OnStart
+    public CEntityIOOutput OnStart => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncTrackTrain", "m_OnStart");
+
+    // m_OnNext
+    public CEntityIOOutput OnNext => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncTrackTrain", "m_OnNext");
+
+    // m_OnArrivedAtDestinationNode
+    public CEntityIOOutput OnArrivedAtDestinationNode => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncTrackTrain", "m_OnArrivedAtDestinationNode");
+
+    // m_bManualSpeedChanges
+    public ref bool ManualSpeedChanges => ref Schema.GetRef<bool>(this.Handle, "CFuncTrackTrain", "m_bManualSpeedChanges");
+
+    // m_flDesiredSpeed
+    public ref float DesiredSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncTrackTrain", "m_flDesiredSpeed");
+
+    // m_flSpeedChangeTime
+    public ref float SpeedChangeTime => ref Schema.GetRef<float>(this.Handle, "CFuncTrackTrain", "m_flSpeedChangeTime");
+
+    // m_flAccelSpeed
+    public ref float AccelSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncTrackTrain", "m_flAccelSpeed");
+
+    // m_flDecelSpeed
+    public ref float DecelSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncTrackTrain", "m_flDecelSpeed");
+
+    // m_bAccelToSpeed
+    public ref bool AccelToSpeed => ref Schema.GetRef<bool>(this.Handle, "CFuncTrackTrain", "m_bAccelToSpeed");
+
+    // m_flTimeScale
+    public ref float TimeScale => ref Schema.GetRef<float>(this.Handle, "CFuncTrackTrain", "m_flTimeScale");
+
+    // m_flNextMPSoundTime
+    public ref float NextMPSoundTime => ref Schema.GetRef<float>(this.Handle, "CFuncTrackTrain", "m_flNextMPSoundTime");
+
+}
+
+public partial class CFuncTrain : CBasePlatTrain
+{
+    public CFuncTrain (IntPtr pointer) : base(pointer) {}
+
+    // m_hCurrentTarget
+    public CHandle<CBaseEntity> CurrentTarget => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CFuncTrain", "m_hCurrentTarget");
+
+    // m_activated
+    public ref bool Activated => ref Schema.GetRef<bool>(this.Handle, "CFuncTrain", "m_activated");
+
+    // m_hEnemy
+    public CHandle<CBaseEntity> Enemy => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CFuncTrain", "m_hEnemy");
+
+    // m_flBlockDamage
+    public ref float BlockDamage => ref Schema.GetRef<float>(this.Handle, "CFuncTrain", "m_flBlockDamage");
+
+    // m_flNextBlockTime
+    public ref float NextBlockTime => ref Schema.GetRef<float>(this.Handle, "CFuncTrain", "m_flNextBlockTime");
+
+    // m_iszLastTarget
+    public string LastTarget
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CFuncTrain", "m_iszLastTarget"); }
+        set { Schema.SetString(this.Handle, "CFuncTrain", "m_iszLastTarget", value); }
+    }
+
+}
+
+public partial class CFuncTrainControls : CBaseModelEntity
+{
+    public CFuncTrainControls (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CFuncVehicleClip : CBaseModelEntity
+{
+    public CFuncVehicleClip (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CFuncVPhysicsClip : CBaseModelEntity
+{
+    public CFuncVPhysicsClip (IntPtr pointer) : base(pointer) {}
+
+    // m_bDisabled
+    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CFuncVPhysicsClip", "m_bDisabled");
+
+}
+
+public partial class CFuncWall : CBaseModelEntity
+{
+    public CFuncWall (IntPtr pointer) : base(pointer) {}
+
+    // m_nState
+    public ref Int32 State => ref Schema.GetRef<Int32>(this.Handle, "CFuncWall", "m_nState");
+
+}
+
+public partial class CFuncWallToggle : CFuncWall
+{
+    public CFuncWallToggle (IntPtr pointer) : base(pointer) {}
 
 }
 
@@ -7490,11 +12186,105 @@ public partial class CFuncWater : CBaseModelEntity
 {
     public CFuncWater (IntPtr pointer) : base(pointer) {}
 
+    // m_BuoyancyHelper
+    public CBuoyancyHelper BuoyancyHelper => Schema.GetDeclaredClass<CBuoyancyHelper>(this.Handle, "CFuncWater", "m_BuoyancyHelper");
+
+}
+
+public partial class CGameChoreoServices : IChoreoServices
+{
+    public CGameChoreoServices (IntPtr pointer) : base(pointer) {}
+
+    // m_hOwner
+    public CHandle<CBaseAnimGraph> Owner => Schema.GetDeclaredClass<CHandle<CBaseAnimGraph>>(this.Handle, "CGameChoreoServices", "m_hOwner");
+
+    // m_hScriptedSequence
+    public CHandle<CScriptedSequence> ScriptedSequence => Schema.GetDeclaredClass<CHandle<CScriptedSequence>>(this.Handle, "CGameChoreoServices", "m_hScriptedSequence");
+
+    // m_scriptState
+    // m_choreoState
+    // m_flTimeStartedState
+    public ref float TimeStartedState => ref Schema.GetRef<float>(this.Handle, "CGameChoreoServices", "m_flTimeStartedState");
+
+}
+
+public partial class CGameEnd : CRulePointEntity
+{
+    public CGameEnd (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CGameGibManager : CBaseEntity
+{
+    public CGameGibManager (IntPtr pointer) : base(pointer) {}
+
+    // m_bAllowNewGibs
+    public ref bool AllowNewGibs => ref Schema.GetRef<bool>(this.Handle, "CGameGibManager", "m_bAllowNewGibs");
+
+    // m_iCurrentMaxPieces
+    public ref Int32 CurrentMaxPieces => ref Schema.GetRef<Int32>(this.Handle, "CGameGibManager", "m_iCurrentMaxPieces");
+
+    // m_iMaxPieces
+    public ref Int32 MaxPieces => ref Schema.GetRef<Int32>(this.Handle, "CGameGibManager", "m_iMaxPieces");
+
+    // m_iLastFrame
+    public ref Int32 LastFrame => ref Schema.GetRef<Int32>(this.Handle, "CGameGibManager", "m_iLastFrame");
+
+}
+
+public partial class CGameMoney : CRulePointEntity
+{
+    public CGameMoney (IntPtr pointer) : base(pointer) {}
+
+    // m_OnMoneySpent
+    public CEntityIOOutput OnMoneySpent => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CGameMoney", "m_OnMoneySpent");
+
+    // m_OnMoneySpentFail
+    public CEntityIOOutput OnMoneySpentFail => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CGameMoney", "m_OnMoneySpentFail");
+
+    // m_nMoney
+    public ref Int32 Money => ref Schema.GetRef<Int32>(this.Handle, "CGameMoney", "m_nMoney");
+
+    // m_strAwardText
+    public string StrAwardText
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CGameMoney", "m_strAwardText"); }
+        set { Schema.SetString(this.Handle, "CGameMoney", "m_strAwardText", value); }
+    }
+
+}
+
+public partial class CGamePlayerEquip : CRulePointEntity
+{
+    public CGamePlayerEquip (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CGamePlayerZone : CRuleBrushEntity
+{
+    public CGamePlayerZone (IntPtr pointer) : base(pointer) {}
+
+    // m_OnPlayerInZone
+    public CEntityIOOutput OnPlayerInZone => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CGamePlayerZone", "m_OnPlayerInZone");
+
+    // m_OnPlayerOutZone
+    public CEntityIOOutput OnPlayerOutZone => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CGamePlayerZone", "m_OnPlayerOutZone");
+
 }
 
 public partial class CGameRules : NativeObject
 {
     public CGameRules (IntPtr pointer) : base(pointer) {}
+
+    // m_szQuestName
+    public string QuestName
+    {
+        get { return Schema.GetString(this.Handle, "CGameRules", "m_szQuestName"); }
+        set { Schema.SetString(this.Handle, "CGameRules", "m_szQuestName", value); }
+    }
+
+    // m_nQuestPhase
+    public ref Int32 QuestPhase => ref Schema.GetRef<Int32>(this.Handle, "CGameRules", "m_nQuestPhase");
 
 }
 
@@ -7508,16 +12298,30 @@ public partial class CGameSceneNode : NativeObject
 {
     public CGameSceneNode (IntPtr pointer) : base(pointer) {}
 
+    // m_nodeToWorld
+    public CTransform NodeToWorld => Schema.GetDeclaredClass<CTransform>(this.Handle, "CGameSceneNode", "m_nodeToWorld");
+
+    // m_pOwner
+    public CEntityInstance? Owner => Schema.GetPointer<CEntityInstance>(this.Handle, "CGameSceneNode", "m_pOwner");
+
+    // m_pParent
+    public CGameSceneNode? PParent => Schema.GetPointer<CGameSceneNode>(this.Handle, "CGameSceneNode", "m_pParent");
+
+    // m_pChild
+    public CGameSceneNode? Child => Schema.GetPointer<CGameSceneNode>(this.Handle, "CGameSceneNode", "m_pChild");
+
+    // m_pNextSibling
+    public CGameSceneNode? NextSibling => Schema.GetPointer<CGameSceneNode>(this.Handle, "CGameSceneNode", "m_pNextSibling");
+
     // m_hParent
-    // MNetworkSerializer "gameSceneNode"
-    // MNetworkChangeCallback "gameSceneNodeHierarchyParentChanged"
-    // MNetworkPriority "32"
-    // MNetworkVarEmbeddedFieldOffsetDelta "8"
     // m_vecOrigin
-    // MNetworkPriority "32"
-    // MNetworkUserGroup "Origin"
-    // MNetworkChangeCallback "gameSceneNodeLocalOriginChanged"
     public CNetworkOriginCellCoordQuantizedVector Origin => Schema.GetDeclaredClass<CNetworkOriginCellCoordQuantizedVector>(this.Handle, "CGameSceneNode", "m_vecOrigin");
+
+    // m_angRotation
+    public QAngle Rotation => Schema.GetDeclaredClass<QAngle>(this.Handle, "CGameSceneNode", "m_angRotation");
+
+    // m_flScale
+    public ref float Scale => ref Schema.GetRef<float>(this.Handle, "CGameSceneNode", "m_flScale");
 
     // m_vecAbsOrigin
     public Vector AbsOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CGameSceneNode", "m_vecAbsOrigin");
@@ -7525,24 +12329,217 @@ public partial class CGameSceneNode : NativeObject
     // m_angAbsRotation
     public QAngle AbsRotation => Schema.GetDeclaredClass<QAngle>(this.Handle, "CGameSceneNode", "m_angAbsRotation");
 
-    // m_angRotation
-    // MNetworkEncoder "qangle_precise"
-    // MNetworkPriority "32"
-    // MNetworkSerializer "gameSceneNodeStepSimulationAnglesSerializer"
-    // MNetworkChangeCallback "gameSceneNodeLocalAnglesChanged"
-    public QAngle Rotation => Schema.GetDeclaredClass<QAngle>(this.Handle, "CGameSceneNode", "m_angRotation");
+    // m_flAbsScale
+    public ref float AbsScale => ref Schema.GetRef<float>(this.Handle, "CGameSceneNode", "m_flAbsScale");
 
-    // m_flScale
-    // MNetworkChangeCallback "gameSceneNodeLocalScaleChanged"
-    // MNetworkPriority "32"
-    public ref float Scale => ref Schema.GetRef<float>(this.Handle, "CGameSceneNode", "m_flScale");
+    // m_nParentAttachmentOrBone
+    public ref Int16 ParentAttachmentOrBone => ref Schema.GetRef<Int16>(this.Handle, "CGameSceneNode", "m_nParentAttachmentOrBone");
+
+    // m_bDebugAbsOriginChanges
+    public ref bool DebugAbsOriginChanges => ref Schema.GetRef<bool>(this.Handle, "CGameSceneNode", "m_bDebugAbsOriginChanges");
+
+    // m_bDormant
+    public ref bool Dormant => ref Schema.GetRef<bool>(this.Handle, "CGameSceneNode", "m_bDormant");
+
+    // m_bForceParentToBeNetworked
+    public ref bool ForceParentToBeNetworked => ref Schema.GetRef<bool>(this.Handle, "CGameSceneNode", "m_bForceParentToBeNetworked");
+
+    // m_bDirtyHierarchy
+    // m_bDirtyBoneMergeInfo
+    // m_bNetworkedPositionChanged
+    // m_bNetworkedAnglesChanged
+    // m_bNetworkedScaleChanged
+    // m_bWillBeCallingPostDataUpdate
+    // m_bNotifyBoneTransformsChanged
+    // m_bBoneMergeFlex
+    // m_nLatchAbsOrigin
+    // m_bDirtyBoneMergeBoneToRoot
+    // m_nHierarchicalDepth
+    public ref byte HierarchicalDepth => ref Schema.GetRef<byte>(this.Handle, "CGameSceneNode", "m_nHierarchicalDepth");
+
+    // m_nHierarchyType
+    public ref byte HierarchyType => ref Schema.GetRef<byte>(this.Handle, "CGameSceneNode", "m_nHierarchyType");
+
+    // m_nDoNotSetAnimTimeInInvalidatePhysicsCount
+    public ref byte DoNotSetAnimTimeInInvalidatePhysicsCount => ref Schema.GetRef<byte>(this.Handle, "CGameSceneNode", "m_nDoNotSetAnimTimeInInvalidatePhysicsCount");
 
     // m_name
     public CUtlStringToken Name => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CGameSceneNode", "m_name");
 
     // m_hierarchyAttachName
-    // MNetworkChangeCallback "gameSceneNodeHierarchyAttachmentChanged"
     public CUtlStringToken HierarchyAttachName => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CGameSceneNode", "m_hierarchyAttachName");
+
+    // m_flZOffset
+    public ref float ZOffset => ref Schema.GetRef<float>(this.Handle, "CGameSceneNode", "m_flZOffset");
+
+    // m_vRenderOrigin
+    public Vector RenderOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CGameSceneNode", "m_vRenderOrigin");
+
+}
+
+public partial class CGameText : CRulePointEntity
+{
+    public CGameText (IntPtr pointer) : base(pointer) {}
+
+    // m_iszMessage
+    public string Message
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CGameText", "m_iszMessage"); }
+        set { Schema.SetString(this.Handle, "CGameText", "m_iszMessage", value); }
+    }
+
+    // m_textParms
+    public hudtextparms_t TextParms => Schema.GetDeclaredClass<hudtextparms_t>(this.Handle, "CGameText", "m_textParms");
+
+}
+
+public partial class CGenericConstraint : CPhysConstraint
+{
+    public CGenericConstraint (IntPtr pointer) : base(pointer) {}
+
+    // m_nLinearMotionX
+    public ref JointMotion_t LinearMotionX => ref Schema.GetRef<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nLinearMotionX");
+
+    // m_nLinearMotionY
+    public ref JointMotion_t LinearMotionY => ref Schema.GetRef<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nLinearMotionY");
+
+    // m_nLinearMotionZ
+    public ref JointMotion_t LinearMotionZ => ref Schema.GetRef<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nLinearMotionZ");
+
+    // m_flLinearFrequencyX
+    public ref float LinearFrequencyX => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flLinearFrequencyX");
+
+    // m_flLinearFrequencyY
+    public ref float LinearFrequencyY => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flLinearFrequencyY");
+
+    // m_flLinearFrequencyZ
+    public ref float LinearFrequencyZ => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flLinearFrequencyZ");
+
+    // m_flLinearDampingRatioX
+    public ref float LinearDampingRatioX => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flLinearDampingRatioX");
+
+    // m_flLinearDampingRatioY
+    public ref float LinearDampingRatioY => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flLinearDampingRatioY");
+
+    // m_flLinearDampingRatioZ
+    public ref float LinearDampingRatioZ => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flLinearDampingRatioZ");
+
+    // m_flMaxLinearImpulseX
+    public ref float MaxLinearImpulseX => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flMaxLinearImpulseX");
+
+    // m_flMaxLinearImpulseY
+    public ref float MaxLinearImpulseY => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flMaxLinearImpulseY");
+
+    // m_flMaxLinearImpulseZ
+    public ref float MaxLinearImpulseZ => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flMaxLinearImpulseZ");
+
+    // m_flBreakAfterTimeX
+    public ref float BreakAfterTimeX => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeX");
+
+    // m_flBreakAfterTimeY
+    public ref float BreakAfterTimeY => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeY");
+
+    // m_flBreakAfterTimeZ
+    public ref float BreakAfterTimeZ => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeZ");
+
+    // m_flBreakAfterTimeStartTimeX
+    public ref float BreakAfterTimeStartTimeX => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeStartTimeX");
+
+    // m_flBreakAfterTimeStartTimeY
+    public ref float BreakAfterTimeStartTimeY => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeStartTimeY");
+
+    // m_flBreakAfterTimeStartTimeZ
+    public ref float BreakAfterTimeStartTimeZ => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeStartTimeZ");
+
+    // m_flBreakAfterTimeThresholdX
+    public ref float BreakAfterTimeThresholdX => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeThresholdX");
+
+    // m_flBreakAfterTimeThresholdY
+    public ref float BreakAfterTimeThresholdY => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeThresholdY");
+
+    // m_flBreakAfterTimeThresholdZ
+    public ref float BreakAfterTimeThresholdZ => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeThresholdZ");
+
+    // m_flNotifyForceX
+    public ref float NotifyForceX => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceX");
+
+    // m_flNotifyForceY
+    public ref float NotifyForceY => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceY");
+
+    // m_flNotifyForceZ
+    public ref float NotifyForceZ => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceZ");
+
+    // m_flNotifyForceMinTimeX
+    public ref float NotifyForceMinTimeX => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceMinTimeX");
+
+    // m_flNotifyForceMinTimeY
+    public ref float NotifyForceMinTimeY => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceMinTimeY");
+
+    // m_flNotifyForceMinTimeZ
+    public ref float NotifyForceMinTimeZ => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceMinTimeZ");
+
+    // m_flNotifyForceLastTimeX
+    public ref float NotifyForceLastTimeX => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceLastTimeX");
+
+    // m_flNotifyForceLastTimeY
+    public ref float NotifyForceLastTimeY => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceLastTimeY");
+
+    // m_flNotifyForceLastTimeZ
+    public ref float NotifyForceLastTimeZ => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceLastTimeZ");
+
+    // m_bAxisNotifiedX
+    public ref bool AxisNotifiedX => ref Schema.GetRef<bool>(this.Handle, "CGenericConstraint", "m_bAxisNotifiedX");
+
+    // m_bAxisNotifiedY
+    public ref bool AxisNotifiedY => ref Schema.GetRef<bool>(this.Handle, "CGenericConstraint", "m_bAxisNotifiedY");
+
+    // m_bAxisNotifiedZ
+    public ref bool AxisNotifiedZ => ref Schema.GetRef<bool>(this.Handle, "CGenericConstraint", "m_bAxisNotifiedZ");
+
+    // m_nAngularMotionX
+    public ref JointMotion_t AngularMotionX => ref Schema.GetRef<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nAngularMotionX");
+
+    // m_nAngularMotionY
+    public ref JointMotion_t AngularMotionY => ref Schema.GetRef<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nAngularMotionY");
+
+    // m_nAngularMotionZ
+    public ref JointMotion_t AngularMotionZ => ref Schema.GetRef<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nAngularMotionZ");
+
+    // m_flAngularFrequencyX
+    public ref float AngularFrequencyX => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flAngularFrequencyX");
+
+    // m_flAngularFrequencyY
+    public ref float AngularFrequencyY => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flAngularFrequencyY");
+
+    // m_flAngularFrequencyZ
+    public ref float AngularFrequencyZ => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flAngularFrequencyZ");
+
+    // m_flAngularDampingRatioX
+    public ref float AngularDampingRatioX => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flAngularDampingRatioX");
+
+    // m_flAngularDampingRatioY
+    public ref float AngularDampingRatioY => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flAngularDampingRatioY");
+
+    // m_flAngularDampingRatioZ
+    public ref float AngularDampingRatioZ => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flAngularDampingRatioZ");
+
+    // m_flMaxAngularImpulseX
+    public ref float MaxAngularImpulseX => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flMaxAngularImpulseX");
+
+    // m_flMaxAngularImpulseY
+    public ref float MaxAngularImpulseY => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flMaxAngularImpulseY");
+
+    // m_flMaxAngularImpulseZ
+    public ref float MaxAngularImpulseZ => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flMaxAngularImpulseZ");
+
+    // m_NotifyForceReachedX
+    public CEntityIOOutput NotifyForceReachedX => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CGenericConstraint", "m_NotifyForceReachedX");
+
+    // m_NotifyForceReachedY
+    public CEntityIOOutput NotifyForceReachedY => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CGenericConstraint", "m_NotifyForceReachedY");
+
+    // m_NotifyForceReachedZ
+    public CEntityIOOutput NotifyForceReachedZ => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CGenericConstraint", "m_NotifyForceReachedZ");
 
 }
 
@@ -7550,8 +12547,10 @@ public partial class CGlowProperty : NativeObject
 {
     public CGlowProperty (IntPtr pointer) : base(pointer) {}
 
+    // m_fGlowColor
+    public Vector GlowColor => Schema.GetDeclaredClass<Vector>(this.Handle, "CGlowProperty", "m_fGlowColor");
+
     // m_iGlowType
-    // MNetworkChangeCallback "OnGlowTypeChanged"
     public ref Int32 GlowType => ref Schema.GetRef<Int32>(this.Handle, "CGlowProperty", "m_iGlowType");
 
     // m_iGlowTeam
@@ -7564,7 +12563,6 @@ public partial class CGlowProperty : NativeObject
     public ref Int32 GlowRangeMin => ref Schema.GetRef<Int32>(this.Handle, "CGlowProperty", "m_nGlowRangeMin");
 
     // m_glowColorOverride
-    // MNetworkChangeCallback "OnGlowColorChanged"
     public Color GlowColorOverride
     {
         get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CGlowProperty", "m_glowColorOverride"); }
@@ -7583,6 +12581,9 @@ public partial class CGlowProperty : NativeObject
     // m_bEligibleForScreenHighlight
     public ref bool EligibleForScreenHighlight => ref Schema.GetRef<bool>(this.Handle, "CGlowProperty", "m_bEligibleForScreenHighlight");
 
+    // m_bGlowing
+    public ref bool Glowing => ref Schema.GetRef<bool>(this.Handle, "CGlowProperty", "m_bGlowing");
+
 }
 
 public partial class CGradientFog : CBaseEntity
@@ -7593,43 +12594,33 @@ public partial class CGradientFog : CBaseEntity
     public CStrongHandle<InfoForResourceTypeCTextureBase> GradientFogTexture => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CGradientFog", "m_hGradientFogTexture");
 
     // m_flFogStartDistance
-    // MNetworkChangeCallback "FogStateChanged"
     public ref float FogStartDistance => ref Schema.GetRef<float>(this.Handle, "CGradientFog", "m_flFogStartDistance");
 
     // m_flFogEndDistance
-    // MNetworkChangeCallback "FogStateChanged"
     public ref float FogEndDistance => ref Schema.GetRef<float>(this.Handle, "CGradientFog", "m_flFogEndDistance");
 
     // m_bHeightFogEnabled
-    // MNetworkChangeCallback "FogStateChanged"
     public ref bool HeightFogEnabled => ref Schema.GetRef<bool>(this.Handle, "CGradientFog", "m_bHeightFogEnabled");
 
     // m_flFogStartHeight
-    // MNetworkChangeCallback "FogStateChanged"
     public ref float FogStartHeight => ref Schema.GetRef<float>(this.Handle, "CGradientFog", "m_flFogStartHeight");
 
     // m_flFogEndHeight
-    // MNetworkChangeCallback "FogStateChanged"
     public ref float FogEndHeight => ref Schema.GetRef<float>(this.Handle, "CGradientFog", "m_flFogEndHeight");
 
     // m_flFarZ
-    // MNetworkChangeCallback "FogStateChanged"
     public ref float FarZ => ref Schema.GetRef<float>(this.Handle, "CGradientFog", "m_flFarZ");
 
     // m_flFogMaxOpacity
-    // MNetworkChangeCallback "FogStateChanged"
     public ref float FogMaxOpacity => ref Schema.GetRef<float>(this.Handle, "CGradientFog", "m_flFogMaxOpacity");
 
     // m_flFogFalloffExponent
-    // MNetworkChangeCallback "FogStateChanged"
     public ref float FogFalloffExponent => ref Schema.GetRef<float>(this.Handle, "CGradientFog", "m_flFogFalloffExponent");
 
     // m_flFogVerticalExponent
-    // MNetworkChangeCallback "FogStateChanged"
     public ref float FogVerticalExponent => ref Schema.GetRef<float>(this.Handle, "CGradientFog", "m_flFogVerticalExponent");
 
     // m_fogColor
-    // MNetworkChangeCallback "FogStateChanged"
     public Color FogColor
     {
         get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CGradientFog", "m_fogColor"); }
@@ -7637,11 +12628,9 @@ public partial class CGradientFog : CBaseEntity
     }
 
     // m_flFogStrength
-    // MNetworkChangeCallback "FogStateChanged"
     public ref float FogStrength => ref Schema.GetRef<float>(this.Handle, "CGradientFog", "m_flFogStrength");
 
     // m_flFadeTime
-    // MNetworkChangeCallback "FogStateChanged"
     public ref float FadeTime => ref Schema.GetRef<float>(this.Handle, "CGradientFog", "m_flFadeTime");
 
     // m_bStartDisabled
@@ -7649,6 +12638,30 @@ public partial class CGradientFog : CBaseEntity
 
     // m_bIsEnabled
     public ref bool IsEnabled => ref Schema.GetRef<bool>(this.Handle, "CGradientFog", "m_bIsEnabled");
+
+    // m_bGradientFogNeedsTextures
+    public ref bool GradientFogNeedsTextures => ref Schema.GetRef<bool>(this.Handle, "CGradientFog", "m_bGradientFogNeedsTextures");
+
+}
+
+public partial class CGunTarget : CBaseToggle
+{
+    public CGunTarget (IntPtr pointer) : base(pointer) {}
+
+    // m_on
+    public ref bool On => ref Schema.GetRef<bool>(this.Handle, "CGunTarget", "m_on");
+
+    // m_hTargetEnt
+    public CHandle<CBaseEntity> TargetEnt => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CGunTarget", "m_hTargetEnt");
+
+    // m_OnDeath
+    public CEntityIOOutput OnDeath => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CGunTarget", "m_OnDeath");
+
+}
+
+public partial class CHandleDummy : CBaseEntity
+{
+    public CHandleDummy (IntPtr pointer) : base(pointer) {}
 
 }
 
@@ -7664,9 +12677,24 @@ public partial class CHandleTest : CBaseEntity
 
 }
 
+public partial class ChangeAccessorFieldPathIndex_t : NativeObject
+{
+    public ChangeAccessorFieldPathIndex_t (IntPtr pointer) : base(pointer) {}
+
+    // m_Value
+    public ref Int16 Value => ref Schema.GetRef<Int16>(this.Handle, "ChangeAccessorFieldPathIndex_t", "m_Value");
+
+}
+
 public partial class CHEGrenade : CBaseCSGrenade
 {
     public CHEGrenade (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CHEGrenadeProjectile : CBaseCSGrenadeProjectile
+{
+    public CHEGrenadeProjectile (IntPtr pointer) : base(pointer) {}
 
 }
 
@@ -7683,8 +12711,32 @@ public partial class CHostage : CHostageExpresserShim
 {
     public CHostage (IntPtr pointer) : base(pointer) {}
 
+    // m_OnHostageBeginGrab
+    public CEntityIOOutput OnHostageBeginGrab => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CHostage", "m_OnHostageBeginGrab");
+
+    // m_OnFirstPickedUp
+    public CEntityIOOutput OnFirstPickedUp => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CHostage", "m_OnFirstPickedUp");
+
+    // m_OnDroppedNotRescued
+    public CEntityIOOutput OnDroppedNotRescued => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CHostage", "m_OnDroppedNotRescued");
+
+    // m_OnRescued
+    public CEntityIOOutput OnRescued => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CHostage", "m_OnRescued");
+
     // m_entitySpottedState
     public EntitySpottedState_t EntitySpottedState => Schema.GetDeclaredClass<EntitySpottedState_t>(this.Handle, "CHostage", "m_entitySpottedState");
+
+    // m_nSpotRules
+    public ref Int32 SpotRules => ref Schema.GetRef<Int32>(this.Handle, "CHostage", "m_nSpotRules");
+
+    // m_uiHostageSpawnExclusionGroupMask
+    public ref UInt32 UiHostageSpawnExclusionGroupMask => ref Schema.GetRef<UInt32>(this.Handle, "CHostage", "m_uiHostageSpawnExclusionGroupMask");
+
+    // m_nHostageSpawnRandomFactor
+    public ref UInt32 HostageSpawnRandomFactor => ref Schema.GetRef<UInt32>(this.Handle, "CHostage", "m_nHostageSpawnRandomFactor");
+
+    // m_bRemove
+    public ref bool Remove => ref Schema.GetRef<bool>(this.Handle, "CHostage", "m_bRemove");
 
     // m_vel
     public Vector Vel => Schema.GetDeclaredClass<Vector>(this.Handle, "CHostage", "m_vel");
@@ -7701,14 +12753,59 @@ public partial class CHostage : CHostageExpresserShim
     // m_leader
     public CHandle<CBaseEntity> Leader => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CHostage", "m_leader");
 
+    // m_lastLeader
+    public CHandle<CCSPlayerPawnBase> LastLeader => Schema.GetDeclaredClass<CHandle<CCSPlayerPawnBase>>(this.Handle, "CHostage", "m_lastLeader");
+
     // m_reuseTimer
     public CountdownTimer ReuseTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CHostage", "m_reuseTimer");
+
+    // m_hasBeenUsed
+    public ref bool HasBeenUsed => ref Schema.GetRef<bool>(this.Handle, "CHostage", "m_hasBeenUsed");
+
+    // m_accel
+    public Vector Accel => Schema.GetDeclaredClass<Vector>(this.Handle, "CHostage", "m_accel");
+
+    // m_isRunning
+    public ref bool IsRunning => ref Schema.GetRef<bool>(this.Handle, "CHostage", "m_isRunning");
+
+    // m_isCrouching
+    public ref bool IsCrouching => ref Schema.GetRef<bool>(this.Handle, "CHostage", "m_isCrouching");
+
+    // m_jumpTimer
+    public CountdownTimer JumpTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CHostage", "m_jumpTimer");
+
+    // m_isWaitingForLeader
+    public ref bool IsWaitingForLeader => ref Schema.GetRef<bool>(this.Handle, "CHostage", "m_isWaitingForLeader");
+
+    // m_repathTimer
+    public CountdownTimer RepathTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CHostage", "m_repathTimer");
+
+    // m_inhibitDoorTimer
+    public CountdownTimer InhibitDoorTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CHostage", "m_inhibitDoorTimer");
+
+    // m_inhibitObstacleAvoidanceTimer
+    public CountdownTimer InhibitObstacleAvoidanceTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CHostage", "m_inhibitObstacleAvoidanceTimer");
+
+    // m_wiggleTimer
+    public CountdownTimer WiggleTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CHostage", "m_wiggleTimer");
+
+    // m_isAdjusted
+    public ref bool IsAdjusted => ref Schema.GetRef<bool>(this.Handle, "CHostage", "m_isAdjusted");
 
     // m_bHandsHaveBeenCut
     public ref bool HandsHaveBeenCut => ref Schema.GetRef<bool>(this.Handle, "CHostage", "m_bHandsHaveBeenCut");
 
     // m_hHostageGrabber
     public CHandle<CCSPlayerPawn> HostageGrabber => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CHostage", "m_hHostageGrabber");
+
+    // m_fLastGrabTime
+    public ref float LastGrabTime => ref Schema.GetRef<float>(this.Handle, "CHostage", "m_fLastGrabTime");
+
+    // m_vecPositionWhenStartedDroppingToGround
+    public Vector PositionWhenStartedDroppingToGround => Schema.GetDeclaredClass<Vector>(this.Handle, "CHostage", "m_vecPositionWhenStartedDroppingToGround");
+
+    // m_vecGrabbedPos
+    public Vector GrabbedPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CHostage", "m_vecGrabbedPos");
 
     // m_flRescueStartTime
     public ref float RescueStartTime => ref Schema.GetRef<float>(this.Handle, "CHostage", "m_flRescueStartTime");
@@ -7718,6 +12815,21 @@ public partial class CHostage : CHostageExpresserShim
 
     // m_flDropStartTime
     public ref float DropStartTime => ref Schema.GetRef<float>(this.Handle, "CHostage", "m_flDropStartTime");
+
+    // m_nApproachRewardPayouts
+    public ref Int32 ApproachRewardPayouts => ref Schema.GetRef<Int32>(this.Handle, "CHostage", "m_nApproachRewardPayouts");
+
+    // m_nPickupEventCount
+    public ref Int32 PickupEventCount => ref Schema.GetRef<Int32>(this.Handle, "CHostage", "m_nPickupEventCount");
+
+    // m_vecSpawnGroundPos
+    public Vector SpawnGroundPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CHostage", "m_vecSpawnGroundPos");
+
+}
+
+public partial class CHostageAlias_info_hostage_spawn : CHostage
+{
+    public CHostageAlias_info_hostage_spawn (IntPtr pointer) : base(pointer) {}
 
 }
 
@@ -7730,6 +12842,9 @@ public partial class CHostageCarriableProp : CBaseAnimGraph
 public partial class CHostageExpresserShim : CBaseCombatCharacter
 {
     public CHostageExpresserShim (IntPtr pointer) : base(pointer) {}
+
+    // m_pExpresser
+    public CAI_Expresser? Expresser => Schema.GetPointer<CAI_Expresser>(this.Handle, "CHostageExpresserShim", "m_pExpresser");
 
 }
 
@@ -7745,6 +12860,15 @@ public partial class CHostageRescueZoneShim : CBaseTrigger
 
 }
 
+public partial class CInButtonState : NativeObject
+{
+    public CInButtonState (IntPtr pointer) : base(pointer) {}
+
+    // m_pButtonStates
+    public Span<UInt64> ButtonStates => Schema.GetFixedArray<UInt64>(this.Handle, "CInButtonState", "m_pButtonStates", 3);
+
+}
+
 public partial class CIncendiaryGrenade : CMolotovGrenade
 {
     public CIncendiaryGrenade (IntPtr pointer) : base(pointer) {}
@@ -7755,23 +12879,11 @@ public partial class CInferno : CBaseModelEntity
 {
     public CInferno (IntPtr pointer) : base(pointer) {}
 
-    // m_fireXDelta
-    public Span<Int32> FireXDelta => Schema.GetFixedArray<Int32>(this.Handle, "CInferno", "m_fireXDelta", 64);
+    // m_firePositions
+    public Span<Vector> FirePositions => Schema.GetFixedArray<Vector>(this.Handle, "CInferno", "m_firePositions", 64);
 
-    // m_fireYDelta
-    public Span<Int32> FireYDelta => Schema.GetFixedArray<Int32>(this.Handle, "CInferno", "m_fireYDelta", 64);
-
-    // m_fireZDelta
-    public Span<Int32> FireZDelta => Schema.GetFixedArray<Int32>(this.Handle, "CInferno", "m_fireZDelta", 64);
-
-    // m_fireParentXDelta
-    public Span<Int32> FireParentXDelta => Schema.GetFixedArray<Int32>(this.Handle, "CInferno", "m_fireParentXDelta", 64);
-
-    // m_fireParentYDelta
-    public Span<Int32> FireParentYDelta => Schema.GetFixedArray<Int32>(this.Handle, "CInferno", "m_fireParentYDelta", 64);
-
-    // m_fireParentZDelta
-    public Span<Int32> FireParentZDelta => Schema.GetFixedArray<Int32>(this.Handle, "CInferno", "m_fireParentZDelta", 64);
+    // m_fireParentPositions
+    public Span<Vector> FireParentPositions => Schema.GetFixedArray<Vector>(this.Handle, "CInferno", "m_fireParentPositions", 64);
 
     // m_bFireIsBurning
     public Span<bool> FireIsBurning => Schema.GetFixedArray<bool>(this.Handle, "CInferno", "m_bFireIsBurning", 64);
@@ -7794,6 +12906,130 @@ public partial class CInferno : CBaseModelEntity
     // m_bInPostEffectTime
     public ref bool InPostEffectTime => ref Schema.GetRef<bool>(this.Handle, "CInferno", "m_bInPostEffectTime");
 
+    // m_nFiresExtinguishCount
+    public ref Int32 FiresExtinguishCount => ref Schema.GetRef<Int32>(this.Handle, "CInferno", "m_nFiresExtinguishCount");
+
+    // m_bWasCreatedInSmoke
+    public ref bool WasCreatedInSmoke => ref Schema.GetRef<bool>(this.Handle, "CInferno", "m_bWasCreatedInSmoke");
+
+    // m_extent
+    public Extent Extent => Schema.GetDeclaredClass<Extent>(this.Handle, "CInferno", "m_extent");
+
+    // m_damageTimer
+    public CountdownTimer DamageTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CInferno", "m_damageTimer");
+
+    // m_damageRampTimer
+    public CountdownTimer DamageRampTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CInferno", "m_damageRampTimer");
+
+    // m_splashVelocity
+    public Vector SplashVelocity => Schema.GetDeclaredClass<Vector>(this.Handle, "CInferno", "m_splashVelocity");
+
+    // m_InitialSplashVelocity
+    public Vector InitialSplashVelocity => Schema.GetDeclaredClass<Vector>(this.Handle, "CInferno", "m_InitialSplashVelocity");
+
+    // m_startPos
+    public Vector StartPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CInferno", "m_startPos");
+
+    // m_vecOriginalSpawnLocation
+    public Vector OriginalSpawnLocation => Schema.GetDeclaredClass<Vector>(this.Handle, "CInferno", "m_vecOriginalSpawnLocation");
+
+    // m_activeTimer
+    public IntervalTimer ActiveTimer => Schema.GetDeclaredClass<IntervalTimer>(this.Handle, "CInferno", "m_activeTimer");
+
+    // m_fireSpawnOffset
+    public ref Int32 FireSpawnOffset => ref Schema.GetRef<Int32>(this.Handle, "CInferno", "m_fireSpawnOffset");
+
+    // m_nMaxFlames
+    public ref Int32 MaxFlames => ref Schema.GetRef<Int32>(this.Handle, "CInferno", "m_nMaxFlames");
+
+    // m_BookkeepingTimer
+    public CountdownTimer BookkeepingTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CInferno", "m_BookkeepingTimer");
+
+    // m_NextSpreadTimer
+    public CountdownTimer NextSpreadTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CInferno", "m_NextSpreadTimer");
+
+    // m_nSourceItemDefIndex
+    public ref UInt16 SourceItemDefIndex => ref Schema.GetRef<UInt16>(this.Handle, "CInferno", "m_nSourceItemDefIndex");
+
+}
+
+public partial class CInfoData : CServerOnlyEntity
+{
+    public CInfoData (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CInfoDeathmatchSpawn : SpawnPoint
+{
+    public CInfoDeathmatchSpawn (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CInfoDynamicShadowHint : CPointEntity
+{
+    public CInfoDynamicShadowHint (IntPtr pointer) : base(pointer) {}
+
+    // m_bDisabled
+    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CInfoDynamicShadowHint", "m_bDisabled");
+
+    // m_flRange
+    public ref float Range => ref Schema.GetRef<float>(this.Handle, "CInfoDynamicShadowHint", "m_flRange");
+
+    // m_nImportance
+    public ref Int32 Importance => ref Schema.GetRef<Int32>(this.Handle, "CInfoDynamicShadowHint", "m_nImportance");
+
+    // m_nLightChoice
+    public ref Int32 LightChoice => ref Schema.GetRef<Int32>(this.Handle, "CInfoDynamicShadowHint", "m_nLightChoice");
+
+    // m_hLight
+    public CHandle<CBaseEntity> Light => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CInfoDynamicShadowHint", "m_hLight");
+
+}
+
+public partial class CInfoDynamicShadowHintBox : CInfoDynamicShadowHint
+{
+    public CInfoDynamicShadowHintBox (IntPtr pointer) : base(pointer) {}
+
+    // m_vBoxMins
+    public Vector BoxMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CInfoDynamicShadowHintBox", "m_vBoxMins");
+
+    // m_vBoxMaxs
+    public Vector BoxMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CInfoDynamicShadowHintBox", "m_vBoxMaxs");
+
+}
+
+public partial class CInfoEnemyTerroristSpawn : SpawnPointCoopEnemy
+{
+    public CInfoEnemyTerroristSpawn (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CInfoGameEventProxy : CPointEntity
+{
+    public CInfoGameEventProxy (IntPtr pointer) : base(pointer) {}
+
+    // m_iszEventName
+    public string EventName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CInfoGameEventProxy", "m_iszEventName"); }
+        set { Schema.SetString(this.Handle, "CInfoGameEventProxy", "m_iszEventName", value); }
+    }
+
+    // m_flRange
+    public ref float Range => ref Schema.GetRef<float>(this.Handle, "CInfoGameEventProxy", "m_flRange");
+
+}
+
+public partial class CInfoInstructorHintBombTargetA : CPointEntity
+{
+    public CInfoInstructorHintBombTargetA (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CInfoInstructorHintBombTargetB : CPointEntity
+{
+    public CInfoInstructorHintBombTargetB (IntPtr pointer) : base(pointer) {}
+
 }
 
 public partial class CInfoInstructorHintHostageRescueZone : CPointEntity
@@ -7802,9 +13038,21 @@ public partial class CInfoInstructorHintHostageRescueZone : CPointEntity
 
 }
 
+public partial class CInfoInstructorHintTarget : CPointEntity
+{
+    public CInfoInstructorHintTarget (IntPtr pointer) : base(pointer) {}
+
+}
+
 public partial class CInfoLadderDismount : CBaseEntity
 {
     public CInfoLadderDismount (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CInfoLandmark : CPointEntity
+{
+    public CInfoLandmark (IntPtr pointer) : base(pointer) {}
 
 }
 
@@ -7844,6 +13092,122 @@ public partial class CInfoOffscreenPanoramaTexture : CPointEntity
     // m_vecCSSClasses
     public NetworkedVector<string> CSSClasses => Schema.GetDeclaredClass<NetworkedVector<string>>(this.Handle, "CInfoOffscreenPanoramaTexture", "m_vecCSSClasses");
 
+    // m_szTargetsName
+    public string TargetsName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CInfoOffscreenPanoramaTexture", "m_szTargetsName"); }
+        set { Schema.SetString(this.Handle, "CInfoOffscreenPanoramaTexture", "m_szTargetsName", value); }
+    }
+
+    // m_AdditionalTargetEntities
+    public NetworkedVector<CHandle<CBaseModelEntity>> AdditionalTargetEntities => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseModelEntity>>>(this.Handle, "CInfoOffscreenPanoramaTexture", "m_AdditionalTargetEntities");
+
+}
+
+public partial class CInfoParticleTarget : CPointEntity
+{
+    public CInfoParticleTarget (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CInfoPlayerCounterterrorist : SpawnPoint
+{
+    public CInfoPlayerCounterterrorist (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CInfoPlayerStart : CPointEntity
+{
+    public CInfoPlayerStart (IntPtr pointer) : base(pointer) {}
+
+    // m_bDisabled
+    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CInfoPlayerStart", "m_bDisabled");
+
+}
+
+public partial class CInfoPlayerTerrorist : SpawnPoint
+{
+    public CInfoPlayerTerrorist (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CInfoSpawnGroupLandmark : CPointEntity
+{
+    public CInfoSpawnGroupLandmark (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CInfoSpawnGroupLoadUnload : CLogicalEntity
+{
+    public CInfoSpawnGroupLoadUnload (IntPtr pointer) : base(pointer) {}
+
+    // m_OnSpawnGroupLoadStarted
+    public CEntityIOOutput OnSpawnGroupLoadStarted => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_OnSpawnGroupLoadStarted");
+
+    // m_OnSpawnGroupLoadFinished
+    public CEntityIOOutput OnSpawnGroupLoadFinished => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_OnSpawnGroupLoadFinished");
+
+    // m_OnSpawnGroupUnloadStarted
+    public CEntityIOOutput OnSpawnGroupUnloadStarted => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_OnSpawnGroupUnloadStarted");
+
+    // m_OnSpawnGroupUnloadFinished
+    public CEntityIOOutput OnSpawnGroupUnloadFinished => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_OnSpawnGroupUnloadFinished");
+
+    // m_iszSpawnGroupName
+    public string SpawnGroupName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CInfoSpawnGroupLoadUnload", "m_iszSpawnGroupName"); }
+        set { Schema.SetString(this.Handle, "CInfoSpawnGroupLoadUnload", "m_iszSpawnGroupName", value); }
+    }
+
+    // m_iszSpawnGroupFilterName
+    public string SpawnGroupFilterName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CInfoSpawnGroupLoadUnload", "m_iszSpawnGroupFilterName"); }
+        set { Schema.SetString(this.Handle, "CInfoSpawnGroupLoadUnload", "m_iszSpawnGroupFilterName", value); }
+    }
+
+    // m_iszLandmarkName
+    public string LandmarkName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CInfoSpawnGroupLoadUnload", "m_iszLandmarkName"); }
+        set { Schema.SetString(this.Handle, "CInfoSpawnGroupLoadUnload", "m_iszLandmarkName", value); }
+    }
+
+    // m_sFixedSpawnGroupName
+    public string FixedSpawnGroupName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CInfoSpawnGroupLoadUnload", "m_sFixedSpawnGroupName"); }
+        set { Schema.SetString(this.Handle, "CInfoSpawnGroupLoadUnload", "m_sFixedSpawnGroupName", value); }
+    }
+
+    // m_flTimeoutInterval
+    public ref float TimeoutInterval => ref Schema.GetRef<float>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_flTimeoutInterval");
+
+    // m_bStreamingStarted
+    public ref bool StreamingStarted => ref Schema.GetRef<bool>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_bStreamingStarted");
+
+    // m_bUnloadingStarted
+    public ref bool UnloadingStarted => ref Schema.GetRef<bool>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_bUnloadingStarted");
+
+}
+
+public partial class CInfoTarget : CPointEntity
+{
+    public CInfoTarget (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CInfoTargetServerOnly : CServerOnlyPointEntity
+{
+    public CInfoTargetServerOnly (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CInfoTeleportDestination : CPointEntity
+{
+    public CInfoTeleportDestination (IntPtr pointer) : base(pointer) {}
+
 }
 
 public partial class CInfoVisibilityBox : CBaseEntity
@@ -7865,6 +13229,9 @@ public partial class CInfoWorldLayer : CBaseEntity
 {
     public CInfoWorldLayer (IntPtr pointer) : base(pointer) {}
 
+    // m_pOutputOnEntitiesSpawned
+    public CEntityIOOutput OutputOnEntitiesSpawned => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CInfoWorldLayer", "m_pOutputOnEntitiesSpawned");
+
     // m_worldName
     public string WorldName
     {
@@ -7885,17 +13252,133 @@ public partial class CInfoWorldLayer : CBaseEntity
     // m_bEntitiesSpawned
     public ref bool EntitiesSpawned => ref Schema.GetRef<bool>(this.Handle, "CInfoWorldLayer", "m_bEntitiesSpawned");
 
+    // m_bCreateAsChildSpawnGroup
+    public ref bool CreateAsChildSpawnGroup => ref Schema.GetRef<bool>(this.Handle, "CInfoWorldLayer", "m_bCreateAsChildSpawnGroup");
+
+    // m_hLayerSpawnGroup
+    public ref UInt32 LayerSpawnGroup => ref Schema.GetRef<UInt32>(this.Handle, "CInfoWorldLayer", "m_hLayerSpawnGroup");
+
+}
+
+public partial class CInstancedSceneEntity : CSceneEntity
+{
+    public CInstancedSceneEntity (IntPtr pointer) : base(pointer) {}
+
+    // m_hOwner
+    public CHandle<CBaseEntity> Owner => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CInstancedSceneEntity", "m_hOwner");
+
+    // m_bHadOwner
+    public ref bool HadOwner => ref Schema.GetRef<bool>(this.Handle, "CInstancedSceneEntity", "m_bHadOwner");
+
+    // m_flPostSpeakDelay
+    public ref float PostSpeakDelay => ref Schema.GetRef<float>(this.Handle, "CInstancedSceneEntity", "m_flPostSpeakDelay");
+
+    // m_flPreDelay
+    public ref float PreDelay => ref Schema.GetRef<float>(this.Handle, "CInstancedSceneEntity", "m_flPreDelay");
+
+    // m_bIsBackground
+    public ref bool IsBackground => ref Schema.GetRef<bool>(this.Handle, "CInstancedSceneEntity", "m_bIsBackground");
+
+}
+
+public partial class CInstructorEventEntity : CPointEntity
+{
+    public CInstructorEventEntity (IntPtr pointer) : base(pointer) {}
+
+    // m_iszName
+    public string Name
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CInstructorEventEntity", "m_iszName"); }
+        set { Schema.SetString(this.Handle, "CInstructorEventEntity", "m_iszName", value); }
+    }
+
+    // m_iszHintTargetEntity
+    public string HintTargetEntity
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CInstructorEventEntity", "m_iszHintTargetEntity"); }
+        set { Schema.SetString(this.Handle, "CInstructorEventEntity", "m_iszHintTargetEntity", value); }
+    }
+
+    // m_hTargetPlayer
+    public CHandle<CBasePlayerPawn> TargetPlayer => Schema.GetDeclaredClass<CHandle<CBasePlayerPawn>>(this.Handle, "CInstructorEventEntity", "m_hTargetPlayer");
+
+}
+
+public partial class CIronSightController : NativeObject
+{
+    public CIronSightController (IntPtr pointer) : base(pointer) {}
+
+    // m_bIronSightAvailable
+    public ref bool IronSightAvailable => ref Schema.GetRef<bool>(this.Handle, "CIronSightController", "m_bIronSightAvailable");
+
+    // m_flIronSightAmount
+    public ref float IronSightAmount => ref Schema.GetRef<float>(this.Handle, "CIronSightController", "m_flIronSightAmount");
+
+    // m_flIronSightAmountGained
+    public ref float IronSightAmountGained => ref Schema.GetRef<float>(this.Handle, "CIronSightController", "m_flIronSightAmountGained");
+
+    // m_flIronSightAmountBiased
+    public ref float IronSightAmountBiased => ref Schema.GetRef<float>(this.Handle, "CIronSightController", "m_flIronSightAmountBiased");
+
 }
 
 public partial class CItem : CBaseAnimGraph
 {
     public CItem (IntPtr pointer) : base(pointer) {}
 
+    // m_OnPlayerTouch
+    public CEntityIOOutput OnPlayerTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItem", "m_OnPlayerTouch");
+
+    // m_bActivateWhenAtRest
+    public ref bool ActivateWhenAtRest => ref Schema.GetRef<bool>(this.Handle, "CItem", "m_bActivateWhenAtRest");
+
+    // m_OnCacheInteraction
+    public CEntityIOOutput OnCacheInteraction => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItem", "m_OnCacheInteraction");
+
+    // m_OnPlayerPickup
+    public CEntityIOOutput OnPlayerPickup => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItem", "m_OnPlayerPickup");
+
+    // m_OnGlovePulled
+    public CEntityIOOutput OnGlovePulled => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItem", "m_OnGlovePulled");
+
+    // m_vOriginalSpawnOrigin
+    public Vector OriginalSpawnOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CItem", "m_vOriginalSpawnOrigin");
+
+    // m_vOriginalSpawnAngles
+    public QAngle OriginalSpawnAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CItem", "m_vOriginalSpawnAngles");
+
+    // m_bPhysStartAsleep
+    public ref bool PhysStartAsleep => ref Schema.GetRef<bool>(this.Handle, "CItem", "m_bPhysStartAsleep");
+
 }
 
 public partial class CItem_Healthshot : CWeaponBaseItem
 {
     public CItem_Healthshot (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CItemAssaultSuit : CItem
+{
+    public CItemAssaultSuit (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CItemDefuser : CItem
+{
+    public CItemDefuser (IntPtr pointer) : base(pointer) {}
+
+    // m_entitySpottedState
+    public EntitySpottedState_t EntitySpottedState => Schema.GetDeclaredClass<EntitySpottedState_t>(this.Handle, "CItemDefuser", "m_entitySpottedState");
+
+    // m_nSpotRules
+    public ref Int32 SpotRules => ref Schema.GetRef<Int32>(this.Handle, "CItemDefuser", "m_nSpotRules");
+
+}
+
+public partial class CItemDefuserAlias_item_defuser : CItemDefuser
+{
+    public CItemDefuserAlias_item_defuser (IntPtr pointer) : base(pointer) {}
 
 }
 
@@ -7911,9 +13394,212 @@ public partial class CItemDogtags : CItem
 
 }
 
+public partial class CItemGeneric : CItem
+{
+    public CItemGeneric (IntPtr pointer) : base(pointer) {}
+
+    // m_bHasTriggerRadius
+    public ref bool HasTriggerRadius => ref Schema.GetRef<bool>(this.Handle, "CItemGeneric", "m_bHasTriggerRadius");
+
+    // m_bHasPickupRadius
+    public ref bool HasPickupRadius => ref Schema.GetRef<bool>(this.Handle, "CItemGeneric", "m_bHasPickupRadius");
+
+    // m_flPickupRadiusSqr
+    public ref float PickupRadiusSqr => ref Schema.GetRef<float>(this.Handle, "CItemGeneric", "m_flPickupRadiusSqr");
+
+    // m_flTriggerRadiusSqr
+    public ref float TriggerRadiusSqr => ref Schema.GetRef<float>(this.Handle, "CItemGeneric", "m_flTriggerRadiusSqr");
+
+    // m_flLastPickupCheck
+    public ref float LastPickupCheck => ref Schema.GetRef<float>(this.Handle, "CItemGeneric", "m_flLastPickupCheck");
+
+    // m_bPlayerCounterListenerAdded
+    public ref bool PlayerCounterListenerAdded => ref Schema.GetRef<bool>(this.Handle, "CItemGeneric", "m_bPlayerCounterListenerAdded");
+
+    // m_bPlayerInTriggerRadius
+    public ref bool PlayerInTriggerRadius => ref Schema.GetRef<bool>(this.Handle, "CItemGeneric", "m_bPlayerInTriggerRadius");
+
+    // m_hSpawnParticleEffect
+    public CStrongHandle<InfoForResourceTypeIParticleSystemDefinition> SpawnParticleEffect => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIParticleSystemDefinition>>(this.Handle, "CItemGeneric", "m_hSpawnParticleEffect");
+
+    // m_pAmbientSoundEffect
+    public string AmbientSoundEffect
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CItemGeneric", "m_pAmbientSoundEffect"); }
+        set { Schema.SetString(this.Handle, "CItemGeneric", "m_pAmbientSoundEffect", value); }
+    }
+
+    // m_bAutoStartAmbientSound
+    public ref bool AutoStartAmbientSound => ref Schema.GetRef<bool>(this.Handle, "CItemGeneric", "m_bAutoStartAmbientSound");
+
+    // m_pSpawnScriptFunction
+    public string SpawnScriptFunction
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CItemGeneric", "m_pSpawnScriptFunction"); }
+        set { Schema.SetString(this.Handle, "CItemGeneric", "m_pSpawnScriptFunction", value); }
+    }
+
+    // m_hPickupParticleEffect
+    public CStrongHandle<InfoForResourceTypeIParticleSystemDefinition> PickupParticleEffect => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIParticleSystemDefinition>>(this.Handle, "CItemGeneric", "m_hPickupParticleEffect");
+
+    // m_pPickupSoundEffect
+    public string PickupSoundEffect
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CItemGeneric", "m_pPickupSoundEffect"); }
+        set { Schema.SetString(this.Handle, "CItemGeneric", "m_pPickupSoundEffect", value); }
+    }
+
+    // m_pPickupScriptFunction
+    public string PickupScriptFunction
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CItemGeneric", "m_pPickupScriptFunction"); }
+        set { Schema.SetString(this.Handle, "CItemGeneric", "m_pPickupScriptFunction", value); }
+    }
+
+    // m_hTimeoutParticleEffect
+    public CStrongHandle<InfoForResourceTypeIParticleSystemDefinition> TimeoutParticleEffect => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIParticleSystemDefinition>>(this.Handle, "CItemGeneric", "m_hTimeoutParticleEffect");
+
+    // m_pTimeoutSoundEffect
+    public string TimeoutSoundEffect
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CItemGeneric", "m_pTimeoutSoundEffect"); }
+        set { Schema.SetString(this.Handle, "CItemGeneric", "m_pTimeoutSoundEffect", value); }
+    }
+
+    // m_pTimeoutScriptFunction
+    public string TimeoutScriptFunction
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CItemGeneric", "m_pTimeoutScriptFunction"); }
+        set { Schema.SetString(this.Handle, "CItemGeneric", "m_pTimeoutScriptFunction", value); }
+    }
+
+    // m_pPickupFilterName
+    public string PickupFilterName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CItemGeneric", "m_pPickupFilterName"); }
+        set { Schema.SetString(this.Handle, "CItemGeneric", "m_pPickupFilterName", value); }
+    }
+
+    // m_hPickupFilter
+    public CHandle<CBaseFilter> PickupFilter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CItemGeneric", "m_hPickupFilter");
+
+    // m_OnPickup
+    public CEntityIOOutput OnPickup => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItemGeneric", "m_OnPickup");
+
+    // m_OnTimeout
+    public CEntityIOOutput OnTimeout => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItemGeneric", "m_OnTimeout");
+
+    // m_OnTriggerStartTouch
+    public CEntityIOOutput OnTriggerStartTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItemGeneric", "m_OnTriggerStartTouch");
+
+    // m_OnTriggerTouch
+    public CEntityIOOutput OnTriggerTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItemGeneric", "m_OnTriggerTouch");
+
+    // m_OnTriggerEndTouch
+    public CEntityIOOutput OnTriggerEndTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItemGeneric", "m_OnTriggerEndTouch");
+
+    // m_pAllowPickupScriptFunction
+    public string AllowPickupScriptFunction
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CItemGeneric", "m_pAllowPickupScriptFunction"); }
+        set { Schema.SetString(this.Handle, "CItemGeneric", "m_pAllowPickupScriptFunction", value); }
+    }
+
+    // m_flPickupRadius
+    public ref float PickupRadius => ref Schema.GetRef<float>(this.Handle, "CItemGeneric", "m_flPickupRadius");
+
+    // m_flTriggerRadius
+    public ref float TriggerRadius => ref Schema.GetRef<float>(this.Handle, "CItemGeneric", "m_flTriggerRadius");
+
+    // m_pTriggerSoundEffect
+    public string TriggerSoundEffect
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CItemGeneric", "m_pTriggerSoundEffect"); }
+        set { Schema.SetString(this.Handle, "CItemGeneric", "m_pTriggerSoundEffect", value); }
+    }
+
+    // m_bGlowWhenInTrigger
+    public ref bool GlowWhenInTrigger => ref Schema.GetRef<bool>(this.Handle, "CItemGeneric", "m_bGlowWhenInTrigger");
+
+    // m_glowColor
+    public Color GlowColor
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CItemGeneric", "m_glowColor"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CItemGeneric", "m_glowColor", value); }
+    }
+
+    // m_bUseable
+    public ref bool Useable => ref Schema.GetRef<bool>(this.Handle, "CItemGeneric", "m_bUseable");
+
+    // m_hTriggerHelper
+    public CHandle<CItemGenericTriggerHelper> TriggerHelper => Schema.GetDeclaredClass<CHandle<CItemGenericTriggerHelper>>(this.Handle, "CItemGeneric", "m_hTriggerHelper");
+
+}
+
+public partial class CItemGenericTriggerHelper : CBaseModelEntity
+{
+    public CItemGenericTriggerHelper (IntPtr pointer) : base(pointer) {}
+
+    // m_hParentItem
+    public CHandle<CItemGeneric> ParentItem => Schema.GetDeclaredClass<CHandle<CItemGeneric>>(this.Handle, "CItemGenericTriggerHelper", "m_hParentItem");
+
+}
+
+public partial class CItemHeavyAssaultSuit : CItemAssaultSuit
+{
+    public CItemHeavyAssaultSuit (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CItemKevlar : CItem
+{
+    public CItemKevlar (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CItemSoda : CBaseAnimGraph
+{
+    public CItemSoda (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CKeepUpright : CPointEntity
+{
+    public CKeepUpright (IntPtr pointer) : base(pointer) {}
+
+    // m_worldGoalAxis
+    public Vector WorldGoalAxis => Schema.GetDeclaredClass<Vector>(this.Handle, "CKeepUpright", "m_worldGoalAxis");
+
+    // m_localTestAxis
+    public Vector LocalTestAxis => Schema.GetDeclaredClass<Vector>(this.Handle, "CKeepUpright", "m_localTestAxis");
+
+    // m_nameAttach
+    public string NameAttach
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CKeepUpright", "m_nameAttach"); }
+        set { Schema.SetString(this.Handle, "CKeepUpright", "m_nameAttach", value); }
+    }
+
+    // m_attachedObject
+    public CHandle<CBaseEntity> AttachedObject => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CKeepUpright", "m_attachedObject");
+
+    // m_angularLimit
+    public ref float AngularLimit => ref Schema.GetRef<float>(this.Handle, "CKeepUpright", "m_angularLimit");
+
+    // m_bActive
+    public ref bool Active => ref Schema.GetRef<bool>(this.Handle, "CKeepUpright", "m_bActive");
+
+    // m_bDampAllRotation
+    public ref bool DampAllRotation => ref Schema.GetRef<bool>(this.Handle, "CKeepUpright", "m_bDampAllRotation");
+
+}
+
 public partial class CKnife : CCSWeaponBase
 {
     public CKnife (IntPtr pointer) : base(pointer) {}
+
+    // m_bFirstAttack
+    public ref bool FirstAttack => ref Schema.GetRef<bool>(this.Handle, "CKnife", "m_bFirstAttack");
 
 }
 
@@ -7921,8 +13607,10 @@ public partial class CLightComponent : CEntityComponent
 {
     public CLightComponent (IntPtr pointer) : base(pointer) {}
 
+    // __m_pChainEntity
+    public CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "CLightComponent", "__m_pChainEntity");
+
     // m_Color
-    // MNetworkChangeCallback "LightRenderingChanged"
     public Color Color
     {
         get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CLightComponent", "m_Color"); }
@@ -7930,7 +13618,6 @@ public partial class CLightComponent : CEntityComponent
     }
 
     // m_SecondaryColor
-    // MNetworkChangeCallback "LightRenderingChanged"
     public Color SecondaryColor
     {
         get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CLightComponent", "m_SecondaryColor"); }
@@ -7938,91 +13625,69 @@ public partial class CLightComponent : CEntityComponent
     }
 
     // m_flBrightness
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref float Brightness => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flBrightness");
 
     // m_flBrightnessScale
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref float BrightnessScale => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flBrightnessScale");
 
     // m_flBrightnessMult
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref float BrightnessMult => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flBrightnessMult");
 
     // m_flRange
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref float Range => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flRange");
 
     // m_flFalloff
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref float Falloff => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flFalloff");
 
     // m_flAttenuation0
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref float Attenuation0 => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flAttenuation0");
 
     // m_flAttenuation1
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref float Attenuation1 => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flAttenuation1");
 
     // m_flAttenuation2
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref float Attenuation2 => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flAttenuation2");
 
     // m_flTheta
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref float Theta => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flTheta");
 
     // m_flPhi
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref float Phi => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flPhi");
 
     // m_hLightCookie
-    // MNetworkChangeCallback "LightRenderingChanged"
     public CStrongHandle<InfoForResourceTypeCTextureBase> LightCookie => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CLightComponent", "m_hLightCookie");
 
     // m_nCascades
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref Int32 Cascades => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nCascades");
 
     // m_nCastShadows
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref Int32 CastShadows => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nCastShadows");
 
     // m_nShadowWidth
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref Int32 ShadowWidth => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nShadowWidth");
 
     // m_nShadowHeight
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref Int32 ShadowHeight => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nShadowHeight");
 
     // m_bRenderDiffuse
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref bool RenderDiffuse => ref Schema.GetRef<bool>(this.Handle, "CLightComponent", "m_bRenderDiffuse");
 
     // m_nRenderSpecular
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref Int32 RenderSpecular => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nRenderSpecular");
 
     // m_bRenderTransmissive
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref bool RenderTransmissive => ref Schema.GetRef<bool>(this.Handle, "CLightComponent", "m_bRenderTransmissive");
 
     // m_flOrthoLightWidth
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref float OrthoLightWidth => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flOrthoLightWidth");
 
     // m_flOrthoLightHeight
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref float OrthoLightHeight => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flOrthoLightHeight");
 
     // m_nStyle
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref Int32 Style => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nStyle");
 
     // m_Pattern
-    // MNetworkChangeCallback "LightRenderingChanged"
     public string Pattern
     {
         get { return Schema.GetUtf8String(this.Handle, "CLightComponent", "m_Pattern"); }
@@ -8030,73 +13695,49 @@ public partial class CLightComponent : CEntityComponent
     }
 
     // m_nCascadeRenderStaticObjects
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref Int32 CascadeRenderStaticObjects => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nCascadeRenderStaticObjects");
 
     // m_flShadowCascadeCrossFade
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref float ShadowCascadeCrossFade => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flShadowCascadeCrossFade");
 
     // m_flShadowCascadeDistanceFade
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref float ShadowCascadeDistanceFade => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flShadowCascadeDistanceFade");
 
     // m_flShadowCascadeDistance0
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref float ShadowCascadeDistance0 => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flShadowCascadeDistance0");
 
     // m_flShadowCascadeDistance1
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref float ShadowCascadeDistance1 => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flShadowCascadeDistance1");
 
     // m_flShadowCascadeDistance2
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref float ShadowCascadeDistance2 => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flShadowCascadeDistance2");
 
     // m_flShadowCascadeDistance3
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref float ShadowCascadeDistance3 => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flShadowCascadeDistance3");
 
     // m_nShadowCascadeResolution0
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref Int32 ShadowCascadeResolution0 => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nShadowCascadeResolution0");
 
     // m_nShadowCascadeResolution1
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref Int32 ShadowCascadeResolution1 => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nShadowCascadeResolution1");
 
     // m_nShadowCascadeResolution2
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref Int32 ShadowCascadeResolution2 => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nShadowCascadeResolution2");
 
     // m_nShadowCascadeResolution3
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref Int32 ShadowCascadeResolution3 => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nShadowCascadeResolution3");
 
     // m_bUsesBakedShadowing
-    // MNetworkChangeCallback "LightRenderingChanged"
-    // MNetworkAlias "m_bUsesIndexedBakedLighting"
     public ref bool UsesBakedShadowing => ref Schema.GetRef<bool>(this.Handle, "CLightComponent", "m_bUsesBakedShadowing");
 
     // m_nShadowPriority
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref Int32 ShadowPriority => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nShadowPriority");
 
     // m_nBakedShadowIndex
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref Int32 BakedShadowIndex => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nBakedShadowIndex");
 
     // m_bRenderToCubemaps
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref bool RenderToCubemaps => ref Schema.GetRef<bool>(this.Handle, "CLightComponent", "m_bRenderToCubemaps");
-
-    // m_LightGroups
-    // MNetworkChangeCallback "LightRenderingChanged"
-    public string LightGroups
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CLightComponent", "m_LightGroups"); }
-        set { Schema.SetString(this.Handle, "CLightComponent", "m_LightGroups", value); }
-    }
 
     // m_nDirectLight
     public ref Int32 DirectLight => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nDirectLight");
@@ -8105,27 +13746,21 @@ public partial class CLightComponent : CEntityComponent
     public ref Int32 IndirectLight => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nIndirectLight");
 
     // m_flFadeMinDist
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref float FadeMinDist => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flFadeMinDist");
 
     // m_flFadeMaxDist
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref float FadeMaxDist => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flFadeMaxDist");
 
     // m_flShadowFadeMinDist
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref float ShadowFadeMinDist => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flShadowFadeMinDist");
 
     // m_flShadowFadeMaxDist
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref float ShadowFadeMaxDist => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flShadowFadeMaxDist");
 
     // m_bEnabled
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CLightComponent", "m_bEnabled");
 
     // m_bFlicker
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref bool Flicker => ref Schema.GetRef<bool>(this.Handle, "CLightComponent", "m_bFlicker");
 
     // m_bPrecomputedFieldsValid
@@ -8179,19 +13814,19 @@ public partial class CLightComponent : CEntityComponent
     public ref bool UseSecondaryColor => ref Schema.GetRef<bool>(this.Handle, "CLightComponent", "m_bUseSecondaryColor");
 
     // m_bMixedShadows
-    // MNetworkChangeCallback "MixedShadowsChanged"
     public ref bool MixedShadows => ref Schema.GetRef<bool>(this.Handle, "CLightComponent", "m_bMixedShadows");
 
     // m_flLightStyleStartTime
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref float LightStyleStartTime => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flLightStyleStartTime");
 
     // m_flCapsuleLength
     public ref float CapsuleLength => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flCapsuleLength");
 
     // m_flMinRoughness
-    // MNetworkChangeCallback "LightRenderingChanged"
     public ref float MinRoughness => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flMinRoughness");
+
+    // m_bPvsModifyEntity
+    public ref bool PvsModifyEntity => ref Schema.GetRef<bool>(this.Handle, "CLightComponent", "m_bPvsModifyEntity");
 
 }
 
@@ -8206,9 +13841,6 @@ public partial class CLightEntity : CBaseModelEntity
     public CLightEntity (IntPtr pointer) : base(pointer) {}
 
     // m_CLightComponent
-    // MNetworkUserGroup "CLightComponent"
-    // MNetworkAlias "CLightComponent"
-    // MNetworkTypeAlias "CLightComponent"
     public CLightComponent? CLightComponent => Schema.GetPointer<CLightComponent>(this.Handle, "CLightEntity", "m_CLightComponent");
 
 }
@@ -8239,15 +13871,9 @@ public partial class CLightGlow : CBaseModelEntity
     public ref UInt32 OuterMaxDist => ref Schema.GetRef<UInt32>(this.Handle, "CLightGlow", "m_nOuterMaxDist");
 
     // m_flGlowProxySize
-    // MNetworkBitCount "6"
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "64.000000"
-    // MNetworkEncodeFlags "2"
     public ref float GlowProxySize => ref Schema.GetRef<float>(this.Handle, "CLightGlow", "m_flGlowProxySize");
 
     // m_flHDRColorScale
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "100.000000"
     public ref float HDRColorScale => ref Schema.GetRef<float>(this.Handle, "CLightGlow", "m_flHDRColorScale");
 
 }
@@ -8264,9 +13890,655 @@ public partial class CLightSpotEntity : CLightEntity
 
 }
 
+public partial class CLogicAchievement : CLogicalEntity
+{
+    public CLogicAchievement (IntPtr pointer) : base(pointer) {}
+
+    // m_bDisabled
+    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CLogicAchievement", "m_bDisabled");
+
+    // m_iszAchievementEventID
+    public string AchievementEventID
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CLogicAchievement", "m_iszAchievementEventID"); }
+        set { Schema.SetString(this.Handle, "CLogicAchievement", "m_iszAchievementEventID", value); }
+    }
+
+    // m_OnFired
+    public CEntityIOOutput OnFired => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicAchievement", "m_OnFired");
+
+}
+
+public partial class CLogicActiveAutosave : CLogicAutosave
+{
+    public CLogicActiveAutosave (IntPtr pointer) : base(pointer) {}
+
+    // m_TriggerHitPoints
+    public ref Int32 TriggerHitPoints => ref Schema.GetRef<Int32>(this.Handle, "CLogicActiveAutosave", "m_TriggerHitPoints");
+
+    // m_flTimeToTrigger
+    public ref float TimeToTrigger => ref Schema.GetRef<float>(this.Handle, "CLogicActiveAutosave", "m_flTimeToTrigger");
+
+    // m_flStartTime
+    public ref float StartTime => ref Schema.GetRef<float>(this.Handle, "CLogicActiveAutosave", "m_flStartTime");
+
+    // m_flDangerousTime
+    public ref float DangerousTime => ref Schema.GetRef<float>(this.Handle, "CLogicActiveAutosave", "m_flDangerousTime");
+
+}
+
+public partial class CLogicalEntity : CServerOnlyEntity
+{
+    public CLogicalEntity (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CLogicAuto : CBaseEntity
+{
+    public CLogicAuto (IntPtr pointer) : base(pointer) {}
+
+    // m_OnMapSpawn
+    public CEntityIOOutput OnMapSpawn => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicAuto", "m_OnMapSpawn");
+
+    // m_OnDemoMapSpawn
+    public CEntityIOOutput OnDemoMapSpawn => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicAuto", "m_OnDemoMapSpawn");
+
+    // m_OnNewGame
+    public CEntityIOOutput OnNewGame => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicAuto", "m_OnNewGame");
+
+    // m_OnLoadGame
+    public CEntityIOOutput OnLoadGame => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicAuto", "m_OnLoadGame");
+
+    // m_OnMapTransition
+    public CEntityIOOutput OnMapTransition => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicAuto", "m_OnMapTransition");
+
+    // m_OnBackgroundMap
+    public CEntityIOOutput OnBackgroundMap => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicAuto", "m_OnBackgroundMap");
+
+    // m_OnMultiNewMap
+    public CEntityIOOutput OnMultiNewMap => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicAuto", "m_OnMultiNewMap");
+
+    // m_OnMultiNewRound
+    public CEntityIOOutput OnMultiNewRound => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicAuto", "m_OnMultiNewRound");
+
+    // m_OnVREnabled
+    public CEntityIOOutput OnVREnabled => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicAuto", "m_OnVREnabled");
+
+    // m_OnVRNotEnabled
+    public CEntityIOOutput OnVRNotEnabled => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicAuto", "m_OnVRNotEnabled");
+
+    // m_globalstate
+    public string Globalstate
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CLogicAuto", "m_globalstate"); }
+        set { Schema.SetString(this.Handle, "CLogicAuto", "m_globalstate", value); }
+    }
+
+}
+
+public partial class CLogicAutosave : CLogicalEntity
+{
+    public CLogicAutosave (IntPtr pointer) : base(pointer) {}
+
+    // m_bForceNewLevelUnit
+    public ref bool ForceNewLevelUnit => ref Schema.GetRef<bool>(this.Handle, "CLogicAutosave", "m_bForceNewLevelUnit");
+
+    // m_minHitPoints
+    public ref Int32 MinHitPoints => ref Schema.GetRef<Int32>(this.Handle, "CLogicAutosave", "m_minHitPoints");
+
+    // m_minHitPointsToCommit
+    public ref Int32 MinHitPointsToCommit => ref Schema.GetRef<Int32>(this.Handle, "CLogicAutosave", "m_minHitPointsToCommit");
+
+}
+
+public partial class CLogicBranch : CLogicalEntity
+{
+    public CLogicBranch (IntPtr pointer) : base(pointer) {}
+
+    // m_bInValue
+    public ref bool InValue => ref Schema.GetRef<bool>(this.Handle, "CLogicBranch", "m_bInValue");
+
+    // m_Listeners
+    public NetworkedVector<CHandle<CBaseEntity>> Listeners => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CLogicBranch", "m_Listeners");
+
+    // m_OnTrue
+    public CEntityIOOutput OnTrue => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicBranch", "m_OnTrue");
+
+    // m_OnFalse
+    public CEntityIOOutput OnFalse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicBranch", "m_OnFalse");
+
+}
+
+public partial class CLogicBranchList : CLogicalEntity
+{
+    public CLogicBranchList (IntPtr pointer) : base(pointer) {}
+
+    // m_nLogicBranchNames
+    public Span<string> LogicBranchNames => Schema.GetFixedArray<string>(this.Handle, "CLogicBranchList", "m_nLogicBranchNames", 16);
+
+    // m_LogicBranchList
+    public NetworkedVector<CHandle<CBaseEntity>> LogicBranchList => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CLogicBranchList", "m_LogicBranchList");
+
+    // m_eLastState
+    // m_OnAllTrue
+    public CEntityIOOutput OnAllTrue => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicBranchList", "m_OnAllTrue");
+
+    // m_OnAllFalse
+    public CEntityIOOutput OnAllFalse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicBranchList", "m_OnAllFalse");
+
+    // m_OnMixed
+    public CEntityIOOutput OnMixed => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicBranchList", "m_OnMixed");
+
+}
+
+public partial class CLogicCase : CLogicalEntity
+{
+    public CLogicCase (IntPtr pointer) : base(pointer) {}
+
+    // m_nCase
+    public Span<string> Case => Schema.GetFixedArray<string>(this.Handle, "CLogicCase", "m_nCase", 32);
+
+    // m_nShuffleCases
+    public ref Int32 ShuffleCases => ref Schema.GetRef<Int32>(this.Handle, "CLogicCase", "m_nShuffleCases");
+
+    // m_nLastShuffleCase
+    public ref Int32 LastShuffleCase => ref Schema.GetRef<Int32>(this.Handle, "CLogicCase", "m_nLastShuffleCase");
+
+    // m_uchShuffleCaseMap
+    public Span<byte> UchShuffleCaseMap => Schema.GetFixedArray<byte>(this.Handle, "CLogicCase", "m_uchShuffleCaseMap", 32);
+
+    // m_OnCase
+    public Span<CEntityIOOutput> OnCase => Schema.GetFixedArray<CEntityIOOutput>(this.Handle, "CLogicCase", "m_OnCase", 32);
+
+}
+
+public partial class CLogicCollisionPair : CLogicalEntity
+{
+    public CLogicCollisionPair (IntPtr pointer) : base(pointer) {}
+
+    // m_nameAttach1
+    public string NameAttach1
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CLogicCollisionPair", "m_nameAttach1"); }
+        set { Schema.SetString(this.Handle, "CLogicCollisionPair", "m_nameAttach1", value); }
+    }
+
+    // m_nameAttach2
+    public string NameAttach2
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CLogicCollisionPair", "m_nameAttach2"); }
+        set { Schema.SetString(this.Handle, "CLogicCollisionPair", "m_nameAttach2", value); }
+    }
+
+    // m_disabled
+    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CLogicCollisionPair", "m_disabled");
+
+    // m_succeeded
+    public ref bool Succeeded => ref Schema.GetRef<bool>(this.Handle, "CLogicCollisionPair", "m_succeeded");
+
+}
+
+public partial class CLogicCompare : CLogicalEntity
+{
+    public CLogicCompare (IntPtr pointer) : base(pointer) {}
+
+    // m_flInValue
+    public ref float InValue => ref Schema.GetRef<float>(this.Handle, "CLogicCompare", "m_flInValue");
+
+    // m_flCompareValue
+    public ref float CompareValue => ref Schema.GetRef<float>(this.Handle, "CLogicCompare", "m_flCompareValue");
+
+}
+
+public partial class CLogicDistanceAutosave : CLogicalEntity
+{
+    public CLogicDistanceAutosave (IntPtr pointer) : base(pointer) {}
+
+    // m_iszTargetEntity
+    public string TargetEntity
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CLogicDistanceAutosave", "m_iszTargetEntity"); }
+        set { Schema.SetString(this.Handle, "CLogicDistanceAutosave", "m_iszTargetEntity", value); }
+    }
+
+    // m_flDistanceToPlayer
+    public ref float DistanceToPlayer => ref Schema.GetRef<float>(this.Handle, "CLogicDistanceAutosave", "m_flDistanceToPlayer");
+
+    // m_bForceNewLevelUnit
+    public ref bool ForceNewLevelUnit => ref Schema.GetRef<bool>(this.Handle, "CLogicDistanceAutosave", "m_bForceNewLevelUnit");
+
+    // m_bCheckCough
+    public ref bool CheckCough => ref Schema.GetRef<bool>(this.Handle, "CLogicDistanceAutosave", "m_bCheckCough");
+
+    // m_bThinkDangerous
+    public ref bool ThinkDangerous => ref Schema.GetRef<bool>(this.Handle, "CLogicDistanceAutosave", "m_bThinkDangerous");
+
+    // m_flDangerousTime
+    public ref float DangerousTime => ref Schema.GetRef<float>(this.Handle, "CLogicDistanceAutosave", "m_flDangerousTime");
+
+}
+
+public partial class CLogicDistanceCheck : CLogicalEntity
+{
+    public CLogicDistanceCheck (IntPtr pointer) : base(pointer) {}
+
+    // m_iszEntityA
+    public string EntityA
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CLogicDistanceCheck", "m_iszEntityA"); }
+        set { Schema.SetString(this.Handle, "CLogicDistanceCheck", "m_iszEntityA", value); }
+    }
+
+    // m_iszEntityB
+    public string EntityB
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CLogicDistanceCheck", "m_iszEntityB"); }
+        set { Schema.SetString(this.Handle, "CLogicDistanceCheck", "m_iszEntityB", value); }
+    }
+
+    // m_flZone1Distance
+    public ref float Zone1Distance => ref Schema.GetRef<float>(this.Handle, "CLogicDistanceCheck", "m_flZone1Distance");
+
+    // m_flZone2Distance
+    public ref float Zone2Distance => ref Schema.GetRef<float>(this.Handle, "CLogicDistanceCheck", "m_flZone2Distance");
+
+    // m_InZone1
+    public CEntityIOOutput InZone1 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicDistanceCheck", "m_InZone1");
+
+    // m_InZone2
+    public CEntityIOOutput InZone2 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicDistanceCheck", "m_InZone2");
+
+    // m_InZone3
+    public CEntityIOOutput InZone3 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicDistanceCheck", "m_InZone3");
+
+}
+
+public partial class CLogicGameEvent : CLogicalEntity
+{
+    public CLogicGameEvent (IntPtr pointer) : base(pointer) {}
+
+    // m_iszEventName
+    public string EventName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CLogicGameEvent", "m_iszEventName"); }
+        set { Schema.SetString(this.Handle, "CLogicGameEvent", "m_iszEventName", value); }
+    }
+
+}
+
+public partial class CLogicGameEventListener : CLogicalEntity
+{
+    public CLogicGameEventListener (IntPtr pointer) : base(pointer) {}
+
+    // m_OnEventFired
+    public CEntityIOOutput OnEventFired => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicGameEventListener", "m_OnEventFired");
+
+    // m_iszGameEventName
+    public string GameEventName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CLogicGameEventListener", "m_iszGameEventName"); }
+        set { Schema.SetString(this.Handle, "CLogicGameEventListener", "m_iszGameEventName", value); }
+    }
+
+    // m_iszGameEventItem
+    public string GameEventItem
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CLogicGameEventListener", "m_iszGameEventItem"); }
+        set { Schema.SetString(this.Handle, "CLogicGameEventListener", "m_iszGameEventItem", value); }
+    }
+
+    // m_bEnabled
+    public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CLogicGameEventListener", "m_bEnabled");
+
+    // m_bStartDisabled
+    public ref bool StartDisabled => ref Schema.GetRef<bool>(this.Handle, "CLogicGameEventListener", "m_bStartDisabled");
+
+}
+
+public partial class CLogicLineToEntity : CLogicalEntity
+{
+    public CLogicLineToEntity (IntPtr pointer) : base(pointer) {}
+
+    // m_SourceName
+    public string SourceName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CLogicLineToEntity", "m_SourceName"); }
+        set { Schema.SetString(this.Handle, "CLogicLineToEntity", "m_SourceName", value); }
+    }
+
+    // m_StartEntity
+    public CHandle<CBaseEntity> StartEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CLogicLineToEntity", "m_StartEntity");
+
+    // m_EndEntity
+    public CHandle<CBaseEntity> EndEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CLogicLineToEntity", "m_EndEntity");
+
+}
+
+public partial class CLogicMeasureMovement : CLogicalEntity
+{
+    public CLogicMeasureMovement (IntPtr pointer) : base(pointer) {}
+
+    // m_strMeasureTarget
+    public string StrMeasureTarget
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CLogicMeasureMovement", "m_strMeasureTarget"); }
+        set { Schema.SetString(this.Handle, "CLogicMeasureMovement", "m_strMeasureTarget", value); }
+    }
+
+    // m_strMeasureReference
+    public string StrMeasureReference
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CLogicMeasureMovement", "m_strMeasureReference"); }
+        set { Schema.SetString(this.Handle, "CLogicMeasureMovement", "m_strMeasureReference", value); }
+    }
+
+    // m_strTargetReference
+    public string StrTargetReference
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CLogicMeasureMovement", "m_strTargetReference"); }
+        set { Schema.SetString(this.Handle, "CLogicMeasureMovement", "m_strTargetReference", value); }
+    }
+
+    // m_hMeasureTarget
+    public CHandle<CBaseEntity> MeasureTarget => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CLogicMeasureMovement", "m_hMeasureTarget");
+
+    // m_hMeasureReference
+    public CHandle<CBaseEntity> MeasureReference => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CLogicMeasureMovement", "m_hMeasureReference");
+
+    // m_hTarget
+    public CHandle<CBaseEntity> Target => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CLogicMeasureMovement", "m_hTarget");
+
+    // m_hTargetReference
+    public CHandle<CBaseEntity> TargetReference => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CLogicMeasureMovement", "m_hTargetReference");
+
+    // m_flScale
+    public ref float Scale => ref Schema.GetRef<float>(this.Handle, "CLogicMeasureMovement", "m_flScale");
+
+    // m_nMeasureType
+    public ref Int32 MeasureType => ref Schema.GetRef<Int32>(this.Handle, "CLogicMeasureMovement", "m_nMeasureType");
+
+}
+
+public partial class CLogicNavigation : CLogicalEntity
+{
+    public CLogicNavigation (IntPtr pointer) : base(pointer) {}
+
+    // m_isOn
+    public ref bool IsOn => ref Schema.GetRef<bool>(this.Handle, "CLogicNavigation", "m_isOn");
+
+    // m_navProperty
+    public ref navproperties_t NavProperty => ref Schema.GetRef<navproperties_t>(this.Handle, "CLogicNavigation", "m_navProperty");
+
+}
+
+public partial class CLogicNPCCounter : CBaseEntity
+{
+    public CLogicNPCCounter (IntPtr pointer) : base(pointer) {}
+
+    // m_OnMinCountAll
+    public CEntityIOOutput OnMinCountAll => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicNPCCounter", "m_OnMinCountAll");
+
+    // m_OnMaxCountAll
+    public CEntityIOOutput OnMaxCountAll => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicNPCCounter", "m_OnMaxCountAll");
+
+    // m_OnMinCount_1
+    public CEntityIOOutput OnMinCount_1 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicNPCCounter", "m_OnMinCount_1");
+
+    // m_OnMaxCount_1
+    public CEntityIOOutput OnMaxCount_1 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicNPCCounter", "m_OnMaxCount_1");
+
+    // m_OnMinCount_2
+    public CEntityIOOutput OnMinCount_2 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicNPCCounter", "m_OnMinCount_2");
+
+    // m_OnMaxCount_2
+    public CEntityIOOutput OnMaxCount_2 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicNPCCounter", "m_OnMaxCount_2");
+
+    // m_OnMinCount_3
+    public CEntityIOOutput OnMinCount_3 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicNPCCounter", "m_OnMinCount_3");
+
+    // m_OnMaxCount_3
+    public CEntityIOOutput OnMaxCount_3 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicNPCCounter", "m_OnMaxCount_3");
+
+    // m_hSource
+    public CHandle<CEntityInstance> Source => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CLogicNPCCounter", "m_hSource");
+
+    // m_iszSourceEntityName
+    public string SourceEntityName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CLogicNPCCounter", "m_iszSourceEntityName"); }
+        set { Schema.SetString(this.Handle, "CLogicNPCCounter", "m_iszSourceEntityName", value); }
+    }
+
+    // m_flDistanceMax
+    public ref float DistanceMax => ref Schema.GetRef<float>(this.Handle, "CLogicNPCCounter", "m_flDistanceMax");
+
+    // m_bDisabled
+    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CLogicNPCCounter", "m_bDisabled");
+
+    // m_nMinCountAll
+    public ref Int32 MinCountAll => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinCountAll");
+
+    // m_nMaxCountAll
+    public ref Int32 MaxCountAll => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxCountAll");
+
+    // m_nMinFactorAll
+    public ref Int32 MinFactorAll => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinFactorAll");
+
+    // m_nMaxFactorAll
+    public ref Int32 MaxFactorAll => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxFactorAll");
+
+    // m_iszNPCClassname_1
+    public string NPCClassname_1
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CLogicNPCCounter", "m_iszNPCClassname_1"); }
+        set { Schema.SetString(this.Handle, "CLogicNPCCounter", "m_iszNPCClassname_1", value); }
+    }
+
+    // m_nNPCState_1
+    public ref Int32 NPCState_1 => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nNPCState_1");
+
+    // m_bInvertState_1
+    public ref bool InvertState_1 => ref Schema.GetRef<bool>(this.Handle, "CLogicNPCCounter", "m_bInvertState_1");
+
+    // m_nMinCount_1
+    public ref Int32 MinCount_1 => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinCount_1");
+
+    // m_nMaxCount_1
+    public ref Int32 MaxCount_1 => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxCount_1");
+
+    // m_nMinFactor_1
+    public ref Int32 MinFactor_1 => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinFactor_1");
+
+    // m_nMaxFactor_1
+    public ref Int32 MaxFactor_1 => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxFactor_1");
+
+    // m_flDefaultDist_1
+    public ref float DefaultDist_1 => ref Schema.GetRef<float>(this.Handle, "CLogicNPCCounter", "m_flDefaultDist_1");
+
+    // m_iszNPCClassname_2
+    public string NPCClassname_2
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CLogicNPCCounter", "m_iszNPCClassname_2"); }
+        set { Schema.SetString(this.Handle, "CLogicNPCCounter", "m_iszNPCClassname_2", value); }
+    }
+
+    // m_nNPCState_2
+    public ref Int32 NPCState_2 => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nNPCState_2");
+
+    // m_bInvertState_2
+    public ref bool InvertState_2 => ref Schema.GetRef<bool>(this.Handle, "CLogicNPCCounter", "m_bInvertState_2");
+
+    // m_nMinCount_2
+    public ref Int32 MinCount_2 => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinCount_2");
+
+    // m_nMaxCount_2
+    public ref Int32 MaxCount_2 => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxCount_2");
+
+    // m_nMinFactor_2
+    public ref Int32 MinFactor_2 => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinFactor_2");
+
+    // m_nMaxFactor_2
+    public ref Int32 MaxFactor_2 => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxFactor_2");
+
+    // m_flDefaultDist_2
+    public ref float DefaultDist_2 => ref Schema.GetRef<float>(this.Handle, "CLogicNPCCounter", "m_flDefaultDist_2");
+
+    // m_iszNPCClassname_3
+    public string NPCClassname_3
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CLogicNPCCounter", "m_iszNPCClassname_3"); }
+        set { Schema.SetString(this.Handle, "CLogicNPCCounter", "m_iszNPCClassname_3", value); }
+    }
+
+    // m_nNPCState_3
+    public ref Int32 NPCState_3 => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nNPCState_3");
+
+    // m_bInvertState_3
+    public ref bool InvertState_3 => ref Schema.GetRef<bool>(this.Handle, "CLogicNPCCounter", "m_bInvertState_3");
+
+    // m_nMinCount_3
+    public ref Int32 MinCount_3 => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinCount_3");
+
+    // m_nMaxCount_3
+    public ref Int32 MaxCount_3 => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxCount_3");
+
+    // m_nMinFactor_3
+    public ref Int32 MinFactor_3 => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinFactor_3");
+
+    // m_nMaxFactor_3
+    public ref Int32 MaxFactor_3 => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxFactor_3");
+
+    // m_flDefaultDist_3
+    public ref float DefaultDist_3 => ref Schema.GetRef<float>(this.Handle, "CLogicNPCCounter", "m_flDefaultDist_3");
+
+}
+
+public partial class CLogicNPCCounterAABB : CLogicNPCCounter
+{
+    public CLogicNPCCounterAABB (IntPtr pointer) : base(pointer) {}
+
+    // m_vDistanceOuterMins
+    public Vector DistanceOuterMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CLogicNPCCounterAABB", "m_vDistanceOuterMins");
+
+    // m_vDistanceOuterMaxs
+    public Vector DistanceOuterMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CLogicNPCCounterAABB", "m_vDistanceOuterMaxs");
+
+    // m_vOuterMins
+    public Vector OuterMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CLogicNPCCounterAABB", "m_vOuterMins");
+
+    // m_vOuterMaxs
+    public Vector OuterMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CLogicNPCCounterAABB", "m_vOuterMaxs");
+
+}
+
+public partial class CLogicNPCCounterOBB : CLogicNPCCounterAABB
+{
+    public CLogicNPCCounterOBB (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CLogicPlayerProxy : CLogicalEntity
+{
+    public CLogicPlayerProxy (IntPtr pointer) : base(pointer) {}
+
+    // m_hPlayer
+    public CHandle<CBaseEntity> Player => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CLogicPlayerProxy", "m_hPlayer");
+
+    // m_PlayerHasAmmo
+    public CEntityIOOutput PlayerHasAmmo => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicPlayerProxy", "m_PlayerHasAmmo");
+
+    // m_PlayerHasNoAmmo
+    public CEntityIOOutput PlayerHasNoAmmo => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicPlayerProxy", "m_PlayerHasNoAmmo");
+
+    // m_PlayerDied
+    public CEntityIOOutput PlayerDied => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicPlayerProxy", "m_PlayerDied");
+
+}
+
+public partial class CLogicProximity : CPointEntity
+{
+    public CLogicProximity (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CLogicRelay : CLogicalEntity
+{
+    public CLogicRelay (IntPtr pointer) : base(pointer) {}
+
+    // m_OnTrigger
+    public CEntityIOOutput OnTrigger => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicRelay", "m_OnTrigger");
+
+    // m_OnSpawn
+    public CEntityIOOutput OnSpawn => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicRelay", "m_OnSpawn");
+
+    // m_bDisabled
+    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CLogicRelay", "m_bDisabled");
+
+    // m_bWaitForRefire
+    public ref bool WaitForRefire => ref Schema.GetRef<bool>(this.Handle, "CLogicRelay", "m_bWaitForRefire");
+
+    // m_bTriggerOnce
+    public ref bool TriggerOnce => ref Schema.GetRef<bool>(this.Handle, "CLogicRelay", "m_bTriggerOnce");
+
+    // m_bFastRetrigger
+    public ref bool FastRetrigger => ref Schema.GetRef<bool>(this.Handle, "CLogicRelay", "m_bFastRetrigger");
+
+    // m_bPassthoughCaller
+    public ref bool PassthoughCaller => ref Schema.GetRef<bool>(this.Handle, "CLogicRelay", "m_bPassthoughCaller");
+
+}
+
+public partial class CLogicScript : CPointEntity
+{
+    public CLogicScript (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CMapInfo : CPointEntity
+{
+    public CMapInfo (IntPtr pointer) : base(pointer) {}
+
+    // m_iBuyingStatus
+    public ref Int32 BuyingStatus => ref Schema.GetRef<Int32>(this.Handle, "CMapInfo", "m_iBuyingStatus");
+
+    // m_flBombRadius
+    public ref float BombRadius => ref Schema.GetRef<float>(this.Handle, "CMapInfo", "m_flBombRadius");
+
+    // m_iPetPopulation
+    public ref Int32 PetPopulation => ref Schema.GetRef<Int32>(this.Handle, "CMapInfo", "m_iPetPopulation");
+
+    // m_bUseNormalSpawnsForDM
+    public ref bool UseNormalSpawnsForDM => ref Schema.GetRef<bool>(this.Handle, "CMapInfo", "m_bUseNormalSpawnsForDM");
+
+    // m_bDisableAutoGeneratedDMSpawns
+    public ref bool DisableAutoGeneratedDMSpawns => ref Schema.GetRef<bool>(this.Handle, "CMapInfo", "m_bDisableAutoGeneratedDMSpawns");
+
+    // m_flBotMaxVisionDistance
+    public ref float BotMaxVisionDistance => ref Schema.GetRef<float>(this.Handle, "CMapInfo", "m_flBotMaxVisionDistance");
+
+    // m_iHostageCount
+    public ref Int32 HostageCount => ref Schema.GetRef<Int32>(this.Handle, "CMapInfo", "m_iHostageCount");
+
+    // m_bFadePlayerVisibilityFarZ
+    public ref bool FadePlayerVisibilityFarZ => ref Schema.GetRef<bool>(this.Handle, "CMapInfo", "m_bFadePlayerVisibilityFarZ");
+
+}
+
 public partial class CMapVetoPickController : CBaseEntity
 {
     public CMapVetoPickController (IntPtr pointer) : base(pointer) {}
+
+    // m_bPlayedIntroVcd
+    public ref bool PlayedIntroVcd => ref Schema.GetRef<bool>(this.Handle, "CMapVetoPickController", "m_bPlayedIntroVcd");
+
+    // m_bNeedToPlayFiveSecondsRemaining
+    public ref bool NeedToPlayFiveSecondsRemaining => ref Schema.GetRef<bool>(this.Handle, "CMapVetoPickController", "m_bNeedToPlayFiveSecondsRemaining");
+
+    // m_dblPreMatchDraftSequenceTime
+    public ref double DblPreMatchDraftSequenceTime => ref Schema.GetRef<double>(this.Handle, "CMapVetoPickController", "m_dblPreMatchDraftSequenceTime");
+
+    // m_bPreMatchDraftStateChanged
+    public ref bool PreMatchDraftStateChanged => ref Schema.GetRef<bool>(this.Handle, "CMapVetoPickController", "m_bPreMatchDraftStateChanged");
 
     // m_nDraftType
     public ref Int32 DraftType => ref Schema.GetRef<Int32>(this.Handle, "CMapVetoPickController", "m_nDraftType");
@@ -8315,12 +14587,230 @@ public partial class CMapVetoPickController : CBaseEntity
 
 }
 
+public partial class CMarkupVolume : CBaseModelEntity
+{
+    public CMarkupVolume (IntPtr pointer) : base(pointer) {}
+
+    // m_bEnabled
+    public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolume", "m_bEnabled");
+
+}
+
+public partial class CMarkupVolumeTagged : CMarkupVolume
+{
+    public CMarkupVolumeTagged (IntPtr pointer) : base(pointer) {}
+
+    // m_bIsGroup
+    public ref bool IsGroup => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeTagged", "m_bIsGroup");
+
+    // m_bGroupByPrefab
+    public ref bool GroupByPrefab => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeTagged", "m_bGroupByPrefab");
+
+    // m_bGroupByVolume
+    public ref bool GroupByVolume => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeTagged", "m_bGroupByVolume");
+
+    // m_bGroupOtherGroups
+    public ref bool GroupOtherGroups => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeTagged", "m_bGroupOtherGroups");
+
+    // m_bIsInGroup
+    public ref bool IsInGroup => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeTagged", "m_bIsInGroup");
+
+}
+
+public partial class CMarkupVolumeTagged_Nav : CMarkupVolumeTagged
+{
+    public CMarkupVolumeTagged_Nav (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CMarkupVolumeTagged_NavGame : CMarkupVolumeWithRef
+{
+    public CMarkupVolumeTagged_NavGame (IntPtr pointer) : base(pointer) {}
+
+    // m_bFloodFillAttribute
+    public ref bool FloodFillAttribute => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeTagged_NavGame", "m_bFloodFillAttribute");
+
+}
+
+public partial class CMarkupVolumeWithRef : CMarkupVolumeTagged
+{
+    public CMarkupVolumeWithRef (IntPtr pointer) : base(pointer) {}
+
+    // m_bUseRef
+    public ref bool UseRef => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeWithRef", "m_bUseRef");
+
+    // m_vRefPos
+    public Vector RefPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CMarkupVolumeWithRef", "m_vRefPos");
+
+    // m_flRefDot
+    public ref float RefDot => ref Schema.GetRef<float>(this.Handle, "CMarkupVolumeWithRef", "m_flRefDot");
+
+}
+
+public partial class CMathColorBlend : CLogicalEntity
+{
+    public CMathColorBlend (IntPtr pointer) : base(pointer) {}
+
+    // m_flInMin
+    public ref float InMin => ref Schema.GetRef<float>(this.Handle, "CMathColorBlend", "m_flInMin");
+
+    // m_flInMax
+    public ref float InMax => ref Schema.GetRef<float>(this.Handle, "CMathColorBlend", "m_flInMax");
+
+    // m_OutColor1
+    public Color OutColor1
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CMathColorBlend", "m_OutColor1"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CMathColorBlend", "m_OutColor1", value); }
+    }
+
+    // m_OutColor2
+    public Color OutColor2
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CMathColorBlend", "m_OutColor2"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CMathColorBlend", "m_OutColor2", value); }
+    }
+
+}
+
+public partial class CMathCounter : CLogicalEntity
+{
+    public CMathCounter (IntPtr pointer) : base(pointer) {}
+
+    // m_flMin
+    public ref float Min => ref Schema.GetRef<float>(this.Handle, "CMathCounter", "m_flMin");
+
+    // m_flMax
+    public ref float Max => ref Schema.GetRef<float>(this.Handle, "CMathCounter", "m_flMax");
+
+    // m_bHitMin
+    public ref bool HitMin => ref Schema.GetRef<bool>(this.Handle, "CMathCounter", "m_bHitMin");
+
+    // m_bHitMax
+    public ref bool HitMax => ref Schema.GetRef<bool>(this.Handle, "CMathCounter", "m_bHitMax");
+
+    // m_bDisabled
+    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CMathCounter", "m_bDisabled");
+
+    // m_OnHitMin
+    public CEntityIOOutput OnHitMin => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathCounter", "m_OnHitMin");
+
+    // m_OnHitMax
+    public CEntityIOOutput OnHitMax => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathCounter", "m_OnHitMax");
+
+    // m_OnChangedFromMin
+    public CEntityIOOutput OnChangedFromMin => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathCounter", "m_OnChangedFromMin");
+
+    // m_OnChangedFromMax
+    public CEntityIOOutput OnChangedFromMax => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathCounter", "m_OnChangedFromMax");
+
+}
+
+public partial class CMathRemap : CLogicalEntity
+{
+    public CMathRemap (IntPtr pointer) : base(pointer) {}
+
+    // m_flInMin
+    public ref float InMin => ref Schema.GetRef<float>(this.Handle, "CMathRemap", "m_flInMin");
+
+    // m_flInMax
+    public ref float InMax => ref Schema.GetRef<float>(this.Handle, "CMathRemap", "m_flInMax");
+
+    // m_flOut1
+    public ref float Out1 => ref Schema.GetRef<float>(this.Handle, "CMathRemap", "m_flOut1");
+
+    // m_flOut2
+    public ref float Out2 => ref Schema.GetRef<float>(this.Handle, "CMathRemap", "m_flOut2");
+
+    // m_flOldInValue
+    public ref float OldInValue => ref Schema.GetRef<float>(this.Handle, "CMathRemap", "m_flOldInValue");
+
+    // m_bEnabled
+    public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CMathRemap", "m_bEnabled");
+
+    // m_OnRoseAboveMin
+    public CEntityIOOutput OnRoseAboveMin => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathRemap", "m_OnRoseAboveMin");
+
+    // m_OnRoseAboveMax
+    public CEntityIOOutput OnRoseAboveMax => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathRemap", "m_OnRoseAboveMax");
+
+    // m_OnFellBelowMin
+    public CEntityIOOutput OnFellBelowMin => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathRemap", "m_OnFellBelowMin");
+
+    // m_OnFellBelowMax
+    public CEntityIOOutput OnFellBelowMax => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathRemap", "m_OnFellBelowMax");
+
+}
+
 public partial class CMelee : CCSWeaponBase
 {
     public CMelee (IntPtr pointer) : base(pointer) {}
 
     // m_flThrowAt
     public ref float ThrowAt => ref Schema.GetRef<float>(this.Handle, "CMelee", "m_flThrowAt");
+
+    // m_hThrower
+    public CHandle<CBaseEntity> Thrower => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CMelee", "m_hThrower");
+
+    // m_bDidThrowDamage
+    public ref bool DidThrowDamage => ref Schema.GetRef<bool>(this.Handle, "CMelee", "m_bDidThrowDamage");
+
+}
+
+public partial class CMessage : CPointEntity
+{
+    public CMessage (IntPtr pointer) : base(pointer) {}
+
+    // m_iszMessage
+    public string Message
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CMessage", "m_iszMessage"); }
+        set { Schema.SetString(this.Handle, "CMessage", "m_iszMessage", value); }
+    }
+
+    // m_MessageVolume
+    public ref float MessageVolume => ref Schema.GetRef<float>(this.Handle, "CMessage", "m_MessageVolume");
+
+    // m_MessageAttenuation
+    public ref Int32 MessageAttenuation => ref Schema.GetRef<Int32>(this.Handle, "CMessage", "m_MessageAttenuation");
+
+    // m_Radius
+    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CMessage", "m_Radius");
+
+    // m_sNoise
+    public string Noise
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CMessage", "m_sNoise"); }
+        set { Schema.SetString(this.Handle, "CMessage", "m_sNoise", value); }
+    }
+
+    // m_OnShowMessage
+    public CEntityIOOutput OnShowMessage => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMessage", "m_OnShowMessage");
+
+}
+
+public partial class CMessageEntity : CPointEntity
+{
+    public CMessageEntity (IntPtr pointer) : base(pointer) {}
+
+    // m_radius
+    public ref Int32 Radius => ref Schema.GetRef<Int32>(this.Handle, "CMessageEntity", "m_radius");
+
+    // m_messageText
+    public string MessageText
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CMessageEntity", "m_messageText"); }
+        set { Schema.SetString(this.Handle, "CMessageEntity", "m_messageText", value); }
+    }
+
+    // m_drawText
+    public ref bool DrawText => ref Schema.GetRef<bool>(this.Handle, "CMessageEntity", "m_drawText");
+
+    // m_bDeveloperOnly
+    public ref bool DeveloperOnly => ref Schema.GetRef<bool>(this.Handle, "CMessageEntity", "m_bDeveloperOnly");
+
+    // m_bEnabled
+    public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CMessageEntity", "m_bEnabled");
 
 }
 
@@ -8335,19 +14825,29 @@ public partial class CModelState : NativeObject
     public CModelState (IntPtr pointer) : base(pointer) {}
 
     // m_hModel
-    // MNetworkChangeCallback "skeletonModelChanged"
     public CStrongHandle<InfoForResourceTypeCModel> Model => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCModel>>(this.Handle, "CModelState", "m_hModel");
+
+    // m_ModelName
+    public string ModelName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CModelState", "m_ModelName"); }
+        set { Schema.SetString(this.Handle, "CModelState", "m_ModelName", value); }
+    }
 
     // m_bClientClothCreationSuppressed
     public ref bool ClientClothCreationSuppressed => ref Schema.GetRef<bool>(this.Handle, "CModelState", "m_bClientClothCreationSuppressed");
 
     // m_MeshGroupMask
-    // MNetworkChangeCallback "skeletonMeshGroupMaskChanged"
     public ref UInt64 MeshGroupMask => ref Schema.GetRef<UInt64>(this.Handle, "CModelState", "m_MeshGroupMask");
 
     // m_nIdealMotionType
-    // MNetworkChangeCallback "skeletonMotionTypeChanged"
     public ref sbyte IdealMotionType => ref Schema.GetRef<sbyte>(this.Handle, "CModelState", "m_nIdealMotionType");
+
+    // m_nForceLOD
+    public ref sbyte ForceLOD => ref Schema.GetRef<sbyte>(this.Handle, "CModelState", "m_nForceLOD");
+
+    // m_nClothUpdateFlags
+    public ref sbyte ClothUpdateFlags => ref Schema.GetRef<sbyte>(this.Handle, "CModelState", "m_nClothUpdateFlags");
 
 }
 
@@ -8364,6 +14864,129 @@ public partial class CMolotovProjectile : CBaseCSGrenadeProjectile
     // m_bIsIncGrenade
     public ref bool IsIncGrenade => ref Schema.GetRef<bool>(this.Handle, "CMolotovProjectile", "m_bIsIncGrenade");
 
+    // m_bDetonated
+    public ref bool Detonated => ref Schema.GetRef<bool>(this.Handle, "CMolotovProjectile", "m_bDetonated");
+
+    // m_stillTimer
+    public IntervalTimer StillTimer => Schema.GetDeclaredClass<IntervalTimer>(this.Handle, "CMolotovProjectile", "m_stillTimer");
+
+    // m_bHasBouncedOffPlayer
+    public ref bool HasBouncedOffPlayer => ref Schema.GetRef<bool>(this.Handle, "CMolotovProjectile", "m_bHasBouncedOffPlayer");
+
+}
+
+public partial class CMomentaryRotButton : CRotButton
+{
+    public CMomentaryRotButton (IntPtr pointer) : base(pointer) {}
+
+    // m_OnUnpressed
+    public CEntityIOOutput OnUnpressed => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMomentaryRotButton", "m_OnUnpressed");
+
+    // m_OnFullyOpen
+    public CEntityIOOutput OnFullyOpen => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMomentaryRotButton", "m_OnFullyOpen");
+
+    // m_OnFullyClosed
+    public CEntityIOOutput OnFullyClosed => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMomentaryRotButton", "m_OnFullyClosed");
+
+    // m_OnReachedPosition
+    public CEntityIOOutput OnReachedPosition => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMomentaryRotButton", "m_OnReachedPosition");
+
+    // m_lastUsed
+    public ref Int32 LastUsed => ref Schema.GetRef<Int32>(this.Handle, "CMomentaryRotButton", "m_lastUsed");
+
+    // m_start
+    public QAngle Start => Schema.GetDeclaredClass<QAngle>(this.Handle, "CMomentaryRotButton", "m_start");
+
+    // m_end
+    public QAngle End => Schema.GetDeclaredClass<QAngle>(this.Handle, "CMomentaryRotButton", "m_end");
+
+    // m_IdealYaw
+    public ref float IdealYaw => ref Schema.GetRef<float>(this.Handle, "CMomentaryRotButton", "m_IdealYaw");
+
+    // m_sNoise
+    public string Noise
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CMomentaryRotButton", "m_sNoise"); }
+        set { Schema.SetString(this.Handle, "CMomentaryRotButton", "m_sNoise", value); }
+    }
+
+    // m_bUpdateTarget
+    public ref bool UpdateTarget => ref Schema.GetRef<bool>(this.Handle, "CMomentaryRotButton", "m_bUpdateTarget");
+
+    // m_direction
+    public ref Int32 Direction => ref Schema.GetRef<Int32>(this.Handle, "CMomentaryRotButton", "m_direction");
+
+    // m_returnSpeed
+    public ref float ReturnSpeed => ref Schema.GetRef<float>(this.Handle, "CMomentaryRotButton", "m_returnSpeed");
+
+    // m_flStartPosition
+    public ref float StartPosition => ref Schema.GetRef<float>(this.Handle, "CMomentaryRotButton", "m_flStartPosition");
+
+}
+
+public partial class CMotorController : NativeObject
+{
+    public CMotorController (IntPtr pointer) : base(pointer) {}
+
+    // m_speed
+    public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CMotorController", "m_speed");
+
+    // m_maxTorque
+    public ref float MaxTorque => ref Schema.GetRef<float>(this.Handle, "CMotorController", "m_maxTorque");
+
+    // m_axis
+    public Vector Axis => Schema.GetDeclaredClass<Vector>(this.Handle, "CMotorController", "m_axis");
+
+    // m_inertiaFactor
+    public ref float InertiaFactor => ref Schema.GetRef<float>(this.Handle, "CMotorController", "m_inertiaFactor");
+
+}
+
+public partial class CMultiLightProxy : CLogicalEntity
+{
+    public CMultiLightProxy (IntPtr pointer) : base(pointer) {}
+
+    // m_iszLightNameFilter
+    public string LightNameFilter
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CMultiLightProxy", "m_iszLightNameFilter"); }
+        set { Schema.SetString(this.Handle, "CMultiLightProxy", "m_iszLightNameFilter", value); }
+    }
+
+    // m_iszLightClassFilter
+    public string LightClassFilter
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CMultiLightProxy", "m_iszLightClassFilter"); }
+        set { Schema.SetString(this.Handle, "CMultiLightProxy", "m_iszLightClassFilter", value); }
+    }
+
+    // m_flLightRadiusFilter
+    public ref float LightRadiusFilter => ref Schema.GetRef<float>(this.Handle, "CMultiLightProxy", "m_flLightRadiusFilter");
+
+    // m_flBrightnessDelta
+    public ref float BrightnessDelta => ref Schema.GetRef<float>(this.Handle, "CMultiLightProxy", "m_flBrightnessDelta");
+
+    // m_bPerformScreenFade
+    public ref bool PerformScreenFade => ref Schema.GetRef<bool>(this.Handle, "CMultiLightProxy", "m_bPerformScreenFade");
+
+    // m_flTargetBrightnessMultiplier
+    public ref float TargetBrightnessMultiplier => ref Schema.GetRef<float>(this.Handle, "CMultiLightProxy", "m_flTargetBrightnessMultiplier");
+
+    // m_flCurrentBrightnessMultiplier
+    public ref float CurrentBrightnessMultiplier => ref Schema.GetRef<float>(this.Handle, "CMultiLightProxy", "m_flCurrentBrightnessMultiplier");
+
+    // m_vecLights
+    public NetworkedVector<CHandle<CLightEntity>> Lights => Schema.GetDeclaredClass<NetworkedVector<CHandle<CLightEntity>>>(this.Handle, "CMultiLightProxy", "m_vecLights");
+
+}
+
+public partial class CMultiplayer_Expresser : CAI_ExpresserWithFollowup
+{
+    public CMultiplayer_Expresser (IntPtr pointer) : base(pointer) {}
+
+    // m_bAllowMultipleScenes
+    public ref bool AllowMultipleScenes => ref Schema.GetRef<bool>(this.Handle, "CMultiplayer_Expresser", "m_bAllowMultipleScenes");
+
 }
 
 public partial class CMultiplayRules : CGameRules
@@ -8372,41 +14995,130 @@ public partial class CMultiplayRules : CGameRules
 
 }
 
+public partial class CMultiSource : CLogicalEntity
+{
+    public CMultiSource (IntPtr pointer) : base(pointer) {}
+
+    // m_rgEntities
+    public Span<CHandle<CBaseEntity>> RgEntities => Schema.GetFixedArray<CHandle<CBaseEntity>>(this.Handle, "CMultiSource", "m_rgEntities", 32);
+
+    // m_rgTriggered
+    public Span<Int32> RgTriggered => Schema.GetFixedArray<Int32>(this.Handle, "CMultiSource", "m_rgTriggered", 32);
+
+    // m_OnTrigger
+    public CEntityIOOutput OnTrigger => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMultiSource", "m_OnTrigger");
+
+    // m_iTotal
+    public ref Int32 Total => ref Schema.GetRef<Int32>(this.Handle, "CMultiSource", "m_iTotal");
+
+    // m_globalstate
+    public string Globalstate
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CMultiSource", "m_globalstate"); }
+        set { Schema.SetString(this.Handle, "CMultiSource", "m_globalstate", value); }
+    }
+
+}
+
+public partial class CNavLinkAreaEntity : CPointEntity
+{
+    public CNavLinkAreaEntity (IntPtr pointer) : base(pointer) {}
+
+    // m_flWidth
+    public ref float Width => ref Schema.GetRef<float>(this.Handle, "CNavLinkAreaEntity", "m_flWidth");
+
+    // m_vLocatorOffset
+    public Vector LocatorOffset => Schema.GetDeclaredClass<Vector>(this.Handle, "CNavLinkAreaEntity", "m_vLocatorOffset");
+
+    // m_qLocatorAnglesOffset
+    public QAngle LocatorAnglesOffset => Schema.GetDeclaredClass<QAngle>(this.Handle, "CNavLinkAreaEntity", "m_qLocatorAnglesOffset");
+
+    // m_strMovementForward
+    public string StrMovementForward
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CNavLinkAreaEntity", "m_strMovementForward"); }
+        set { Schema.SetString(this.Handle, "CNavLinkAreaEntity", "m_strMovementForward", value); }
+    }
+
+    // m_strMovementReverse
+    public string StrMovementReverse
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CNavLinkAreaEntity", "m_strMovementReverse"); }
+        set { Schema.SetString(this.Handle, "CNavLinkAreaEntity", "m_strMovementReverse", value); }
+    }
+
+    // m_nNavLinkIdForward
+    public ref Int32 NavLinkIdForward => ref Schema.GetRef<Int32>(this.Handle, "CNavLinkAreaEntity", "m_nNavLinkIdForward");
+
+    // m_nNavLinkIdReverse
+    public ref Int32 NavLinkIdReverse => ref Schema.GetRef<Int32>(this.Handle, "CNavLinkAreaEntity", "m_nNavLinkIdReverse");
+
+    // m_bEnabled
+    public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CNavLinkAreaEntity", "m_bEnabled");
+
+    // m_strFilterName
+    public string StrFilterName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CNavLinkAreaEntity", "m_strFilterName"); }
+        set { Schema.SetString(this.Handle, "CNavLinkAreaEntity", "m_strFilterName", value); }
+    }
+
+    // m_hFilter
+    public CHandle<CBaseFilter> Filter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CNavLinkAreaEntity", "m_hFilter");
+
+    // m_OnNavLinkStart
+    public CEntityIOOutput OnNavLinkStart => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CNavLinkAreaEntity", "m_OnNavLinkStart");
+
+    // m_OnNavLinkFinish
+    public CEntityIOOutput OnNavLinkFinish => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CNavLinkAreaEntity", "m_OnNavLinkFinish");
+
+    // m_bIsTerminus
+    public ref bool IsTerminus => ref Schema.GetRef<bool>(this.Handle, "CNavLinkAreaEntity", "m_bIsTerminus");
+
+}
+
+public partial class CNavSpaceInfo : CPointEntity
+{
+    public CNavSpaceInfo (IntPtr pointer) : base(pointer) {}
+
+    // m_bCreateFlightSpace
+    public ref bool CreateFlightSpace => ref Schema.GetRef<bool>(this.Handle, "CNavSpaceInfo", "m_bCreateFlightSpace");
+
+}
+
+public partial class CNavWalkable : CPointEntity
+{
+    public CNavWalkable (IntPtr pointer) : base(pointer) {}
+
+}
+
 public partial class CNetworkedSequenceOperation : NativeObject
 {
     public CNetworkedSequenceOperation (IntPtr pointer) : base(pointer) {}
 
     // m_hSequence
-    // MNetworkSerializer "minusone"
-    // MNetworkChangeCallback "sequenceOpSequenceChanged"
-    // MNetworkPriority "32"
+    public ref Int32 Sequence => ref Schema.GetRef<Int32>(this.Handle, "CNetworkedSequenceOperation", "m_hSequence");
+
     // m_flPrevCycle
-    // MNetworkBitCount "15"
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "1.000000"
-    // MNetworkEncodeFlags "8"
-    // MNetworkPriority "32"
-    // MNetworkSendProxyRecipientsFilter
-    // MNetworkUserGroup "m_flCycle"
     public ref float PrevCycle => ref Schema.GetRef<float>(this.Handle, "CNetworkedSequenceOperation", "m_flPrevCycle");
 
     // m_flCycle
-    // MNetworkBitCount "15"
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "1.000000"
-    // MNetworkEncodeFlags "8"
-    // MNetworkPriority "32"
-    // MNetworkSendProxyRecipientsFilter
-    // MNetworkUserGroup "m_flCycle"
-    // MNetworkChangeCallback "sequenceOpCycleChanged"
     public ref float Cycle => ref Schema.GetRef<float>(this.Handle, "CNetworkedSequenceOperation", "m_flCycle");
 
     // m_flWeight
-    // MNetworkBitCount "8"
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "1.000000"
-    // MNetworkEncodeFlags "0"
     public float Weight => Schema.GetDeclaredClass<float>(this.Handle, "CNetworkedSequenceOperation", "m_flWeight");
+
+    // m_bSequenceChangeNetworked
+    public ref bool SequenceChangeNetworked => ref Schema.GetRef<bool>(this.Handle, "CNetworkedSequenceOperation", "m_bSequenceChangeNetworked");
+
+    // m_bDiscontinuity
+    public ref bool Discontinuity => ref Schema.GetRef<bool>(this.Handle, "CNetworkedSequenceOperation", "m_bDiscontinuity");
+
+    // m_flPrevCycleFromDiscontinuity
+    public ref float PrevCycleFromDiscontinuity => ref Schema.GetRef<float>(this.Handle, "CNetworkedSequenceOperation", "m_flPrevCycleFromDiscontinuity");
+
+    // m_flPrevCycleForAnimEventDetection
+    public ref float PrevCycleForAnimEventDetection => ref Schema.GetRef<float>(this.Handle, "CNetworkedSequenceOperation", "m_flPrevCycleForAnimEventDetection");
 
 }
 
@@ -8415,55 +15127,43 @@ public partial class CNetworkOriginCellCoordQuantizedVector : NativeObject
     public CNetworkOriginCellCoordQuantizedVector (IntPtr pointer) : base(pointer) {}
 
     // m_cellX
-    // MNetworkChangeCallback "OnCellChanged"
-    // MNetworkPriority "31"
-    // MNetworkSerializer "cellx"
     public ref UInt16 CellX => ref Schema.GetRef<UInt16>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_cellX");
 
     // m_cellY
-    // MNetworkChangeCallback "OnCellChanged"
-    // MNetworkPriority "31"
-    // MNetworkSerializer "celly"
     public ref UInt16 CellY => ref Schema.GetRef<UInt16>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_cellY");
 
     // m_cellZ
-    // MNetworkChangeCallback "OnCellChanged"
-    // MNetworkPriority "31"
-    // MNetworkSerializer "cellz"
     public ref UInt16 CellZ => ref Schema.GetRef<UInt16>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_cellZ");
 
     // m_nOutsideWorld
     public ref UInt16 OutsideWorld => ref Schema.GetRef<UInt16>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_nOutsideWorld");
 
     // m_vecX
-    // MNetworkBitCount "15"
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "1024.000000"
-    // MNetworkEncodeFlags "1"
-    // MNetworkChangeCallback "OnCellChanged"
-    // MNetworkPriority "31"
-    // MNetworkSerializer "posx"
     public float X => Schema.GetDeclaredClass<float>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_vecX");
 
     // m_vecY
-    // MNetworkBitCount "15"
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "1024.000000"
-    // MNetworkEncodeFlags "1"
-    // MNetworkChangeCallback "OnCellChanged"
-    // MNetworkPriority "31"
-    // MNetworkSerializer "posy"
     public float Y => Schema.GetDeclaredClass<float>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_vecY");
 
     // m_vecZ
-    // MNetworkBitCount "15"
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "1024.000000"
-    // MNetworkEncodeFlags "1"
-    // MNetworkChangeCallback "OnCellChanged"
-    // MNetworkPriority "31"
-    // MNetworkSerializer "posz"
     public float Z => Schema.GetDeclaredClass<float>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_vecZ");
+
+}
+
+public partial class CNetworkTransmitComponent : NativeObject
+{
+    public CNetworkTransmitComponent (IntPtr pointer) : base(pointer) {}
+
+    // m_nTransmitStateOwnedCounter
+    public ref byte TransmitStateOwnedCounter => ref Schema.GetRef<byte>(this.Handle, "CNetworkTransmitComponent", "m_nTransmitStateOwnedCounter");
+
+}
+
+public partial class CNetworkVarChainer : NativeObject
+{
+    public CNetworkVarChainer (IntPtr pointer) : base(pointer) {}
+
+    // m_PathIndex
+    public ChangeAccessorFieldPathIndex_t PathIndex => Schema.GetDeclaredClass<ChangeAccessorFieldPathIndex_t>(this.Handle, "CNetworkVarChainer", "m_PathIndex");
 
 }
 
@@ -8472,27 +15172,12 @@ public partial class CNetworkVelocityVector : NativeObject
     public CNetworkVelocityVector (IntPtr pointer) : base(pointer) {}
 
     // m_vecX
-    // MNetworkBitCount "18"
-    // MNetworkMinValue "-4096.000000"
-    // MNetworkMaxValue "4096.000000"
-    // MNetworkEncodeFlags "4"
-    // MNetworkChangeCallback "CNetworkVelocityVector"
     public float X => Schema.GetDeclaredClass<float>(this.Handle, "CNetworkVelocityVector", "m_vecX");
 
     // m_vecY
-    // MNetworkBitCount "18"
-    // MNetworkMinValue "-4096.000000"
-    // MNetworkMaxValue "4096.000000"
-    // MNetworkEncodeFlags "4"
-    // MNetworkChangeCallback "CNetworkVelocityVector"
     public float Y => Schema.GetDeclaredClass<float>(this.Handle, "CNetworkVelocityVector", "m_vecY");
 
     // m_vecZ
-    // MNetworkBitCount "18"
-    // MNetworkMinValue "-4096.000000"
-    // MNetworkMaxValue "4096.000000"
-    // MNetworkEncodeFlags "4"
-    // MNetworkChangeCallback "CNetworkVelocityVector"
     public float Z => Schema.GetDeclaredClass<float>(this.Handle, "CNetworkVelocityVector", "m_vecZ");
 
 }
@@ -8502,28 +15187,19 @@ public partial class CNetworkViewOffsetVector : NativeObject
     public CNetworkViewOffsetVector (IntPtr pointer) : base(pointer) {}
 
     // m_vecX
-    // MNetworkBitCount "10"
-    // MNetworkMinValue "-64.000000"
-    // MNetworkMaxValue "64.000000"
-    // MNetworkEncodeFlags "4"
-    // MNetworkChangeCallback "CNetworkViewOffsetVector"
     public float X => Schema.GetDeclaredClass<float>(this.Handle, "CNetworkViewOffsetVector", "m_vecX");
 
     // m_vecY
-    // MNetworkBitCount "10"
-    // MNetworkMinValue "-64.000000"
-    // MNetworkMaxValue "64.000000"
-    // MNetworkEncodeFlags "4"
-    // MNetworkChangeCallback "CNetworkViewOffsetVector"
     public float Y => Schema.GetDeclaredClass<float>(this.Handle, "CNetworkViewOffsetVector", "m_vecY");
 
     // m_vecZ
-    // MNetworkBitCount "20"
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "128.000000"
-    // MNetworkEncodeFlags "4"
-    // MNetworkChangeCallback "CNetworkViewOffsetVector"
     public float Z => Schema.GetDeclaredClass<float>(this.Handle, "CNetworkViewOffsetVector", "m_vecZ");
+
+}
+
+public partial class CNullEntity : CBaseEntity
+{
+    public CNullEntity (IntPtr pointer) : base(pointer) {}
 
 }
 
@@ -8532,16 +15208,121 @@ public partial class COmniLight : CBarnLight
     public COmniLight (IntPtr pointer) : base(pointer) {}
 
     // m_flInnerAngle
-    // MNetworkChangeCallback "RenderingChanged"
     public ref float InnerAngle => ref Schema.GetRef<float>(this.Handle, "COmniLight", "m_flInnerAngle");
 
     // m_flOuterAngle
-    // MNetworkChangeCallback "RenderingChanged"
     public ref float OuterAngle => ref Schema.GetRef<float>(this.Handle, "COmniLight", "m_flOuterAngle");
 
     // m_bShowLight
-    // MNetworkChangeCallback "RenderingChanged"
     public ref bool ShowLight => ref Schema.GetRef<bool>(this.Handle, "COmniLight", "m_bShowLight");
+
+}
+
+public partial class constraint_axislimit_t : NativeObject
+{
+    public constraint_axislimit_t (IntPtr pointer) : base(pointer) {}
+
+    // flMinRotation
+    public ref float FlMinRotation => ref Schema.GetRef<float>(this.Handle, "constraint_axislimit_t", "flMinRotation");
+
+    // flMaxRotation
+    public ref float FlMaxRotation => ref Schema.GetRef<float>(this.Handle, "constraint_axislimit_t", "flMaxRotation");
+
+    // flMotorTargetAngSpeed
+    public ref float FlMotorTargetAngSpeed => ref Schema.GetRef<float>(this.Handle, "constraint_axislimit_t", "flMotorTargetAngSpeed");
+
+    // flMotorMaxTorque
+    public ref float FlMotorMaxTorque => ref Schema.GetRef<float>(this.Handle, "constraint_axislimit_t", "flMotorMaxTorque");
+
+}
+
+public partial class constraint_breakableparams_t : NativeObject
+{
+    public constraint_breakableparams_t (IntPtr pointer) : base(pointer) {}
+
+    // strength
+    public ref float Strength => ref Schema.GetRef<float>(this.Handle, "constraint_breakableparams_t", "strength");
+
+    // forceLimit
+    public ref float ForceLimit => ref Schema.GetRef<float>(this.Handle, "constraint_breakableparams_t", "forceLimit");
+
+    // torqueLimit
+    public ref float TorqueLimit => ref Schema.GetRef<float>(this.Handle, "constraint_breakableparams_t", "torqueLimit");
+
+    // bodyMassScale
+    public Span<float> BodyMassScale => Schema.GetFixedArray<float>(this.Handle, "constraint_breakableparams_t", "bodyMassScale", 2);
+
+    // isActive
+    public ref bool IsActive => ref Schema.GetRef<bool>(this.Handle, "constraint_breakableparams_t", "isActive");
+
+}
+
+public partial class constraint_hingeparams_t : NativeObject
+{
+    public constraint_hingeparams_t (IntPtr pointer) : base(pointer) {}
+
+    // worldPosition
+    public Vector WorldPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "constraint_hingeparams_t", "worldPosition");
+
+    // worldAxisDirection
+    public Vector WorldAxisDirection => Schema.GetDeclaredClass<Vector>(this.Handle, "constraint_hingeparams_t", "worldAxisDirection");
+
+    // hingeAxis
+    public constraint_axislimit_t HingeAxis => Schema.GetDeclaredClass<constraint_axislimit_t>(this.Handle, "constraint_hingeparams_t", "hingeAxis");
+
+    // constraint
+    public constraint_breakableparams_t Constraint => Schema.GetDeclaredClass<constraint_breakableparams_t>(this.Handle, "constraint_hingeparams_t", "constraint");
+
+}
+
+public partial class ConstraintSoundInfo : NativeObject
+{
+    public ConstraintSoundInfo (IntPtr pointer) : base(pointer) {}
+
+    // m_vSampler
+    public VelocitySampler Sampler => Schema.GetDeclaredClass<VelocitySampler>(this.Handle, "ConstraintSoundInfo", "m_vSampler");
+
+    // m_soundProfile
+    public SimpleConstraintSoundProfile SoundProfile => Schema.GetDeclaredClass<SimpleConstraintSoundProfile>(this.Handle, "ConstraintSoundInfo", "m_soundProfile");
+
+    // m_forwardAxis
+    public Vector ForwardAxis => Schema.GetDeclaredClass<Vector>(this.Handle, "ConstraintSoundInfo", "m_forwardAxis");
+
+    // m_iszTravelSoundFwd
+    public string TravelSoundFwd
+    {
+        get { return Schema.GetUtf8String(this.Handle, "ConstraintSoundInfo", "m_iszTravelSoundFwd"); }
+        set { Schema.SetString(this.Handle, "ConstraintSoundInfo", "m_iszTravelSoundFwd", value); }
+    }
+
+    // m_iszTravelSoundBack
+    public string TravelSoundBack
+    {
+        get { return Schema.GetUtf8String(this.Handle, "ConstraintSoundInfo", "m_iszTravelSoundBack"); }
+        set { Schema.SetString(this.Handle, "ConstraintSoundInfo", "m_iszTravelSoundBack", value); }
+    }
+
+    // m_iszReversalSounds
+    public Span<string> ReversalSounds => Schema.GetFixedArray<string>(this.Handle, "ConstraintSoundInfo", "m_iszReversalSounds", 3);
+
+    // m_bPlayTravelSound
+    public ref bool PlayTravelSound => ref Schema.GetRef<bool>(this.Handle, "ConstraintSoundInfo", "m_bPlayTravelSound");
+
+    // m_bPlayReversalSound
+    public ref bool PlayReversalSound => ref Schema.GetRef<bool>(this.Handle, "ConstraintSoundInfo", "m_bPlayReversalSound");
+
+}
+
+public partial class COrnamentProp : CDynamicProp
+{
+    public COrnamentProp (IntPtr pointer) : base(pointer) {}
+
+    // m_initialOwner
+    public string InitialOwner
+    {
+        get { return Schema.GetUtf8String(this.Handle, "COrnamentProp", "m_initialOwner"); }
+        set { Schema.SetString(this.Handle, "COrnamentProp", "m_initialOwner", value); }
+    }
 
 }
 
@@ -8616,25 +15397,122 @@ public partial class CParticleSystem : CBaseModelEntity
     // m_bNoRamp
     public ref bool NoRamp => ref Schema.GetRef<bool>(this.Handle, "CParticleSystem", "m_bNoRamp");
 
+    // m_bStartActive
+    public ref bool StartActive => ref Schema.GetRef<bool>(this.Handle, "CParticleSystem", "m_bStartActive");
+
+    // m_iszEffectName
+    public string EffectName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CParticleSystem", "m_iszEffectName"); }
+        set { Schema.SetString(this.Handle, "CParticleSystem", "m_iszEffectName", value); }
+    }
+
+    // m_iszControlPointNames
+    public Span<string> ControlPointNames => Schema.GetFixedArray<string>(this.Handle, "CParticleSystem", "m_iszControlPointNames", 64);
+
+    // m_nDataCP
+    public ref Int32 DataCP => ref Schema.GetRef<Int32>(this.Handle, "CParticleSystem", "m_nDataCP");
+
+    // m_vecDataCPValue
+    public Vector DataCPValue => Schema.GetDeclaredClass<Vector>(this.Handle, "CParticleSystem", "m_vecDataCPValue");
+
+    // m_nTintCP
+    public ref Int32 TintCP => ref Schema.GetRef<Int32>(this.Handle, "CParticleSystem", "m_nTintCP");
+
+    // m_clrTint
+    public Color Tint
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CParticleSystem", "m_clrTint"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CParticleSystem", "m_clrTint", value); }
+    }
+
+}
+
+public partial class CPathCorner : CPointEntity
+{
+    public CPathCorner (IntPtr pointer) : base(pointer) {}
+
+    // m_flWait
+    public ref float Wait => ref Schema.GetRef<float>(this.Handle, "CPathCorner", "m_flWait");
+
+    // m_flRadius
+    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CPathCorner", "m_flRadius");
+
+    // m_OnPass
+    public CEntityIOOutput OnPass => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPathCorner", "m_OnPass");
+
+}
+
+public partial class CPathCornerCrash : CPathCorner
+{
+    public CPathCornerCrash (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CPathKeyFrame : CLogicalEntity
+{
+    public CPathKeyFrame (IntPtr pointer) : base(pointer) {}
+
+    // m_Origin
+    public Vector Origin => Schema.GetDeclaredClass<Vector>(this.Handle, "CPathKeyFrame", "m_Origin");
+
+    // m_Angles
+    public QAngle Angles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPathKeyFrame", "m_Angles");
+
+    // m_qAngle
+    public Quaternion Angle => Schema.GetDeclaredClass<Quaternion>(this.Handle, "CPathKeyFrame", "m_qAngle");
+
+    // m_iNextKey
+    public string INextKey
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPathKeyFrame", "m_iNextKey"); }
+        set { Schema.SetString(this.Handle, "CPathKeyFrame", "m_iNextKey", value); }
+    }
+
+    // m_flNextTime
+    public ref float NextTime => ref Schema.GetRef<float>(this.Handle, "CPathKeyFrame", "m_flNextTime");
+
+    // m_pNextKey
+    public CPathKeyFrame? PNextKey => Schema.GetPointer<CPathKeyFrame>(this.Handle, "CPathKeyFrame", "m_pNextKey");
+
+    // m_pPrevKey
+    public CPathKeyFrame? PrevKey => Schema.GetPointer<CPathKeyFrame>(this.Handle, "CPathKeyFrame", "m_pPrevKey");
+
+    // m_flSpeed
+    public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CPathKeyFrame", "m_flSpeed");
+
 }
 
 public partial class CPathParticleRope : CBaseEntity
 {
     public CPathParticleRope (IntPtr pointer) : base(pointer) {}
 
+    // m_bStartActive
+    public ref bool StartActive => ref Schema.GetRef<bool>(this.Handle, "CPathParticleRope", "m_bStartActive");
+
+    // m_flMaxSimulationTime
+    public ref float MaxSimulationTime => ref Schema.GetRef<float>(this.Handle, "CPathParticleRope", "m_flMaxSimulationTime");
+
+    // m_iszEffectName
+    public string EffectName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPathParticleRope", "m_iszEffectName"); }
+        set { Schema.SetString(this.Handle, "CPathParticleRope", "m_iszEffectName", value); }
+    }
+
+    // m_PathNodes_Name
+    public NetworkedVector<string> PathNodes_Name => Schema.GetDeclaredClass<NetworkedVector<string>>(this.Handle, "CPathParticleRope", "m_PathNodes_Name");
+
     // m_flParticleSpacing
     public ref float ParticleSpacing => ref Schema.GetRef<float>(this.Handle, "CPathParticleRope", "m_flParticleSpacing");
 
     // m_flSlack
-    // MNetworkChangeCallback "parametersChanged"
     public ref float Slack => ref Schema.GetRef<float>(this.Handle, "CPathParticleRope", "m_flSlack");
 
     // m_flRadius
-    // MNetworkChangeCallback "parametersChanged"
     public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CPathParticleRope", "m_flRadius");
 
     // m_ColorTint
-    // MNetworkChangeCallback "parametersChanged"
     public Color ColorTint
     {
         get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CPathParticleRope", "m_ColorTint"); }
@@ -8642,7 +15520,6 @@ public partial class CPathParticleRope : CBaseEntity
     }
 
     // m_nEffectState
-    // MNetworkChangeCallback "effectStateChanged"
     public ref Int32 EffectState => ref Schema.GetRef<Int32>(this.Handle, "CPathParticleRope", "m_nEffectState");
 
     // m_iEffectIndex
@@ -8661,7 +15538,6 @@ public partial class CPathParticleRope : CBaseEntity
     public NetworkedVector<Vector> PathNodes_Color => Schema.GetDeclaredClass<NetworkedVector<Vector>>(this.Handle, "CPathParticleRope", "m_PathNodes_Color");
 
     // m_PathNodes_PinEnabled
-    // MNetworkChangeCallback "pinStateChanged"
     public NetworkedVector<bool> PathNodes_PinEnabled => Schema.GetDeclaredClass<NetworkedVector<bool>>(this.Handle, "CPathParticleRope", "m_PathNodes_PinEnabled");
 
     // m_PathNodes_RadiusScale
@@ -8669,9 +15545,342 @@ public partial class CPathParticleRope : CBaseEntity
 
 }
 
+public partial class CPathParticleRopeAlias_path_particle_rope_clientside : CPathParticleRope
+{
+    public CPathParticleRopeAlias_path_particle_rope_clientside (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CPathTrack : CPointEntity
+{
+    public CPathTrack (IntPtr pointer) : base(pointer) {}
+
+    // m_pnext
+    public CPathTrack? Pnext => Schema.GetPointer<CPathTrack>(this.Handle, "CPathTrack", "m_pnext");
+
+    // m_pprevious
+    public CPathTrack? Pprevious => Schema.GetPointer<CPathTrack>(this.Handle, "CPathTrack", "m_pprevious");
+
+    // m_paltpath
+    public CPathTrack? Paltpath => Schema.GetPointer<CPathTrack>(this.Handle, "CPathTrack", "m_paltpath");
+
+    // m_flRadius
+    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CPathTrack", "m_flRadius");
+
+    // m_length
+    public ref float Length => ref Schema.GetRef<float>(this.Handle, "CPathTrack", "m_length");
+
+    // m_altName
+    public string AltName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPathTrack", "m_altName"); }
+        set { Schema.SetString(this.Handle, "CPathTrack", "m_altName", value); }
+    }
+
+    // m_nIterVal
+    public ref Int32 IterVal => ref Schema.GetRef<Int32>(this.Handle, "CPathTrack", "m_nIterVal");
+
+    // m_eOrientationType
+    public ref TrackOrientationType_t OrientationType => ref Schema.GetRef<TrackOrientationType_t>(this.Handle, "CPathTrack", "m_eOrientationType");
+
+    // m_OnPass
+    public CEntityIOOutput OnPass => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPathTrack", "m_OnPass");
+
+}
+
+public partial class CPhysBallSocket : CPhysConstraint
+{
+    public CPhysBallSocket (IntPtr pointer) : base(pointer) {}
+
+    // m_flFriction
+    public ref float Friction => ref Schema.GetRef<float>(this.Handle, "CPhysBallSocket", "m_flFriction");
+
+    // m_bEnableSwingLimit
+    public ref bool EnableSwingLimit => ref Schema.GetRef<bool>(this.Handle, "CPhysBallSocket", "m_bEnableSwingLimit");
+
+    // m_flSwingLimit
+    public ref float SwingLimit => ref Schema.GetRef<float>(this.Handle, "CPhysBallSocket", "m_flSwingLimit");
+
+    // m_bEnableTwistLimit
+    public ref bool EnableTwistLimit => ref Schema.GetRef<bool>(this.Handle, "CPhysBallSocket", "m_bEnableTwistLimit");
+
+    // m_flMinTwistAngle
+    public ref float MinTwistAngle => ref Schema.GetRef<float>(this.Handle, "CPhysBallSocket", "m_flMinTwistAngle");
+
+    // m_flMaxTwistAngle
+    public ref float MaxTwistAngle => ref Schema.GetRef<float>(this.Handle, "CPhysBallSocket", "m_flMaxTwistAngle");
+
+}
+
 public partial class CPhysBox : CBreakable
 {
     public CPhysBox (IntPtr pointer) : base(pointer) {}
+
+    // m_damageType
+    public ref Int32 DamageType => ref Schema.GetRef<Int32>(this.Handle, "CPhysBox", "m_damageType");
+
+    // m_massScale
+    public ref float MassScale => ref Schema.GetRef<float>(this.Handle, "CPhysBox", "m_massScale");
+
+    // m_damageToEnableMotion
+    public ref Int32 DamageToEnableMotion => ref Schema.GetRef<Int32>(this.Handle, "CPhysBox", "m_damageToEnableMotion");
+
+    // m_flForceToEnableMotion
+    public ref float ForceToEnableMotion => ref Schema.GetRef<float>(this.Handle, "CPhysBox", "m_flForceToEnableMotion");
+
+    // m_angPreferredCarryAngles
+    public QAngle PreferredCarryAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPhysBox", "m_angPreferredCarryAngles");
+
+    // m_bNotSolidToWorld
+    public ref bool NotSolidToWorld => ref Schema.GetRef<bool>(this.Handle, "CPhysBox", "m_bNotSolidToWorld");
+
+    // m_bEnableUseOutput
+    public ref bool EnableUseOutput => ref Schema.GetRef<bool>(this.Handle, "CPhysBox", "m_bEnableUseOutput");
+
+    // m_iExploitableByPlayer
+    public ref Int32 ExploitableByPlayer => ref Schema.GetRef<Int32>(this.Handle, "CPhysBox", "m_iExploitableByPlayer");
+
+    // m_flTouchOutputPerEntityDelay
+    public ref float TouchOutputPerEntityDelay => ref Schema.GetRef<float>(this.Handle, "CPhysBox", "m_flTouchOutputPerEntityDelay");
+
+    // m_OnDamaged
+    public CEntityIOOutput OnDamaged => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysBox", "m_OnDamaged");
+
+    // m_OnAwakened
+    public CEntityIOOutput OnAwakened => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysBox", "m_OnAwakened");
+
+    // m_OnMotionEnabled
+    public CEntityIOOutput OnMotionEnabled => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysBox", "m_OnMotionEnabled");
+
+    // m_OnPlayerUse
+    public CEntityIOOutput OnPlayerUse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysBox", "m_OnPlayerUse");
+
+    // m_OnStartTouch
+    public CEntityIOOutput OnStartTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysBox", "m_OnStartTouch");
+
+    // m_hCarryingPlayer
+    public CHandle<CBasePlayerPawn> CarryingPlayer => Schema.GetDeclaredClass<CHandle<CBasePlayerPawn>>(this.Handle, "CPhysBox", "m_hCarryingPlayer");
+
+}
+
+public partial class CPhysConstraint : CLogicalEntity
+{
+    public CPhysConstraint (IntPtr pointer) : base(pointer) {}
+
+    // m_nameAttach1
+    public string NameAttach1
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPhysConstraint", "m_nameAttach1"); }
+        set { Schema.SetString(this.Handle, "CPhysConstraint", "m_nameAttach1", value); }
+    }
+
+    // m_nameAttach2
+    public string NameAttach2
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPhysConstraint", "m_nameAttach2"); }
+        set { Schema.SetString(this.Handle, "CPhysConstraint", "m_nameAttach2", value); }
+    }
+
+    // m_breakSound
+    public string BreakSound
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPhysConstraint", "m_breakSound"); }
+        set { Schema.SetString(this.Handle, "CPhysConstraint", "m_breakSound", value); }
+    }
+
+    // m_forceLimit
+    public ref float ForceLimit => ref Schema.GetRef<float>(this.Handle, "CPhysConstraint", "m_forceLimit");
+
+    // m_torqueLimit
+    public ref float TorqueLimit => ref Schema.GetRef<float>(this.Handle, "CPhysConstraint", "m_torqueLimit");
+
+    // m_teleportTick
+    public ref UInt32 TeleportTick => ref Schema.GetRef<UInt32>(this.Handle, "CPhysConstraint", "m_teleportTick");
+
+    // m_minTeleportDistance
+    public ref float MinTeleportDistance => ref Schema.GetRef<float>(this.Handle, "CPhysConstraint", "m_minTeleportDistance");
+
+    // m_OnBreak
+    public CEntityIOOutput OnBreak => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysConstraint", "m_OnBreak");
+
+}
+
+public partial class CPhysExplosion : CPointEntity
+{
+    public CPhysExplosion (IntPtr pointer) : base(pointer) {}
+
+    // m_bExplodeOnSpawn
+    public ref bool ExplodeOnSpawn => ref Schema.GetRef<bool>(this.Handle, "CPhysExplosion", "m_bExplodeOnSpawn");
+
+    // m_flMagnitude
+    public ref float Magnitude => ref Schema.GetRef<float>(this.Handle, "CPhysExplosion", "m_flMagnitude");
+
+    // m_flDamage
+    public ref float Damage => ref Schema.GetRef<float>(this.Handle, "CPhysExplosion", "m_flDamage");
+
+    // m_radius
+    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CPhysExplosion", "m_radius");
+
+    // m_targetEntityName
+    public string TargetEntityName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPhysExplosion", "m_targetEntityName"); }
+        set { Schema.SetString(this.Handle, "CPhysExplosion", "m_targetEntityName", value); }
+    }
+
+    // m_flInnerRadius
+    public ref float InnerRadius => ref Schema.GetRef<float>(this.Handle, "CPhysExplosion", "m_flInnerRadius");
+
+    // m_flPushScale
+    public ref float PushScale => ref Schema.GetRef<float>(this.Handle, "CPhysExplosion", "m_flPushScale");
+
+    // m_bConvertToDebrisWhenPossible
+    public ref bool ConvertToDebrisWhenPossible => ref Schema.GetRef<bool>(this.Handle, "CPhysExplosion", "m_bConvertToDebrisWhenPossible");
+
+    // m_OnPushedPlayer
+    public CEntityIOOutput OnPushedPlayer => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysExplosion", "m_OnPushedPlayer");
+
+}
+
+public partial class CPhysFixed : CPhysConstraint
+{
+    public CPhysFixed (IntPtr pointer) : base(pointer) {}
+
+    // m_flLinearFrequency
+    public ref float LinearFrequency => ref Schema.GetRef<float>(this.Handle, "CPhysFixed", "m_flLinearFrequency");
+
+    // m_flLinearDampingRatio
+    public ref float LinearDampingRatio => ref Schema.GetRef<float>(this.Handle, "CPhysFixed", "m_flLinearDampingRatio");
+
+    // m_flAngularFrequency
+    public ref float AngularFrequency => ref Schema.GetRef<float>(this.Handle, "CPhysFixed", "m_flAngularFrequency");
+
+    // m_flAngularDampingRatio
+    public ref float AngularDampingRatio => ref Schema.GetRef<float>(this.Handle, "CPhysFixed", "m_flAngularDampingRatio");
+
+    // m_bEnableLinearConstraint
+    public ref bool EnableLinearConstraint => ref Schema.GetRef<bool>(this.Handle, "CPhysFixed", "m_bEnableLinearConstraint");
+
+    // m_bEnableAngularConstraint
+    public ref bool EnableAngularConstraint => ref Schema.GetRef<bool>(this.Handle, "CPhysFixed", "m_bEnableAngularConstraint");
+
+}
+
+public partial class CPhysForce : CPointEntity
+{
+    public CPhysForce (IntPtr pointer) : base(pointer) {}
+
+    // m_nameAttach
+    public string NameAttach
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPhysForce", "m_nameAttach"); }
+        set { Schema.SetString(this.Handle, "CPhysForce", "m_nameAttach", value); }
+    }
+
+    // m_force
+    public ref float Force => ref Schema.GetRef<float>(this.Handle, "CPhysForce", "m_force");
+
+    // m_forceTime
+    public ref float ForceTime => ref Schema.GetRef<float>(this.Handle, "CPhysForce", "m_forceTime");
+
+    // m_attachedObject
+    public CHandle<CBaseEntity> AttachedObject => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysForce", "m_attachedObject");
+
+    // m_wasRestored
+    public ref bool WasRestored => ref Schema.GetRef<bool>(this.Handle, "CPhysForce", "m_wasRestored");
+
+    // m_integrator
+    public CConstantForceController Integrator => Schema.GetDeclaredClass<CConstantForceController>(this.Handle, "CPhysForce", "m_integrator");
+
+}
+
+public partial class CPhysHinge : CPhysConstraint
+{
+    public CPhysHinge (IntPtr pointer) : base(pointer) {}
+
+    // m_soundInfo
+    public ConstraintSoundInfo SoundInfo => Schema.GetDeclaredClass<ConstraintSoundInfo>(this.Handle, "CPhysHinge", "m_soundInfo");
+
+    // m_NotifyMinLimitReached
+    public CEntityIOOutput NotifyMinLimitReached => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysHinge", "m_NotifyMinLimitReached");
+
+    // m_NotifyMaxLimitReached
+    public CEntityIOOutput NotifyMaxLimitReached => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysHinge", "m_NotifyMaxLimitReached");
+
+    // m_bAtMinLimit
+    public ref bool AtMinLimit => ref Schema.GetRef<bool>(this.Handle, "CPhysHinge", "m_bAtMinLimit");
+
+    // m_bAtMaxLimit
+    public ref bool AtMaxLimit => ref Schema.GetRef<bool>(this.Handle, "CPhysHinge", "m_bAtMaxLimit");
+
+    // m_hinge
+    public constraint_hingeparams_t Hinge => Schema.GetDeclaredClass<constraint_hingeparams_t>(this.Handle, "CPhysHinge", "m_hinge");
+
+    // m_hingeFriction
+    public ref float HingeFriction => ref Schema.GetRef<float>(this.Handle, "CPhysHinge", "m_hingeFriction");
+
+    // m_systemLoadScale
+    public ref float SystemLoadScale => ref Schema.GetRef<float>(this.Handle, "CPhysHinge", "m_systemLoadScale");
+
+    // m_bIsAxisLocal
+    public ref bool IsAxisLocal => ref Schema.GetRef<bool>(this.Handle, "CPhysHinge", "m_bIsAxisLocal");
+
+    // m_flMinRotation
+    public ref float MinRotation => ref Schema.GetRef<float>(this.Handle, "CPhysHinge", "m_flMinRotation");
+
+    // m_flMaxRotation
+    public ref float MaxRotation => ref Schema.GetRef<float>(this.Handle, "CPhysHinge", "m_flMaxRotation");
+
+    // m_flInitialRotation
+    public ref float InitialRotation => ref Schema.GetRef<float>(this.Handle, "CPhysHinge", "m_flInitialRotation");
+
+    // m_flMotorFrequency
+    public ref float MotorFrequency => ref Schema.GetRef<float>(this.Handle, "CPhysHinge", "m_flMotorFrequency");
+
+    // m_flMotorDampingRatio
+    public ref float MotorDampingRatio => ref Schema.GetRef<float>(this.Handle, "CPhysHinge", "m_flMotorDampingRatio");
+
+    // m_flAngleSpeed
+    public ref float AngleSpeed => ref Schema.GetRef<float>(this.Handle, "CPhysHinge", "m_flAngleSpeed");
+
+    // m_flAngleSpeedThreshold
+    public ref float AngleSpeedThreshold => ref Schema.GetRef<float>(this.Handle, "CPhysHinge", "m_flAngleSpeedThreshold");
+
+    // m_OnStartMoving
+    public CEntityIOOutput OnStartMoving => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysHinge", "m_OnStartMoving");
+
+    // m_OnStopMoving
+    public CEntityIOOutput OnStopMoving => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysHinge", "m_OnStopMoving");
+
+}
+
+public partial class CPhysHingeAlias_phys_hinge_local : CPhysHinge
+{
+    public CPhysHingeAlias_phys_hinge_local (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CPhysicalButton : CBaseButton
+{
+    public CPhysicalButton (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CPhysicsEntitySolver : CLogicalEntity
+{
+    public CPhysicsEntitySolver (IntPtr pointer) : base(pointer) {}
+
+    // m_hMovingEntity
+    public CHandle<CBaseEntity> MovingEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysicsEntitySolver", "m_hMovingEntity");
+
+    // m_hPhysicsBlocker
+    public CHandle<CBaseEntity> PhysicsBlocker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysicsEntitySolver", "m_hPhysicsBlocker");
+
+    // m_separationDuration
+    public ref float SeparationDuration => ref Schema.GetRef<float>(this.Handle, "CPhysicsEntitySolver", "m_separationDuration");
+
+    // m_cancelTime
+    public ref float CancelTime => ref Schema.GetRef<float>(this.Handle, "CPhysicsEntitySolver", "m_cancelTime");
 
 }
 
@@ -8679,8 +15888,111 @@ public partial class CPhysicsProp : CBreakableProp
 {
     public CPhysicsProp (IntPtr pointer) : base(pointer) {}
 
+    // m_MotionEnabled
+    public CEntityIOOutput MotionEnabled => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysicsProp", "m_MotionEnabled");
+
+    // m_OnAwakened
+    public CEntityIOOutput OnAwakened => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysicsProp", "m_OnAwakened");
+
+    // m_OnAwake
+    public CEntityIOOutput OnAwake => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysicsProp", "m_OnAwake");
+
+    // m_OnAsleep
+    public CEntityIOOutput OnAsleep => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysicsProp", "m_OnAsleep");
+
+    // m_OnPlayerUse
+    public CEntityIOOutput OnPlayerUse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysicsProp", "m_OnPlayerUse");
+
+    // m_OnPlayerPickup
+    public CEntityIOOutput OnPlayerPickup => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysicsProp", "m_OnPlayerPickup");
+
+    // m_OnOutOfWorld
+    public CEntityIOOutput OnOutOfWorld => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysicsProp", "m_OnOutOfWorld");
+
+    // m_massScale
+    public ref float MassScale => ref Schema.GetRef<float>(this.Handle, "CPhysicsProp", "m_massScale");
+
+    // m_inertiaScale
+    public ref float InertiaScale => ref Schema.GetRef<float>(this.Handle, "CPhysicsProp", "m_inertiaScale");
+
+    // m_buoyancyScale
+    public ref float BuoyancyScale => ref Schema.GetRef<float>(this.Handle, "CPhysicsProp", "m_buoyancyScale");
+
+    // m_damageType
+    public ref Int32 DamageType => ref Schema.GetRef<Int32>(this.Handle, "CPhysicsProp", "m_damageType");
+
+    // m_damageToEnableMotion
+    public ref Int32 DamageToEnableMotion => ref Schema.GetRef<Int32>(this.Handle, "CPhysicsProp", "m_damageToEnableMotion");
+
+    // m_flForceToEnableMotion
+    public ref float ForceToEnableMotion => ref Schema.GetRef<float>(this.Handle, "CPhysicsProp", "m_flForceToEnableMotion");
+
+    // m_bThrownByPlayer
+    public ref bool ThrownByPlayer => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bThrownByPlayer");
+
+    // m_bDroppedByPlayer
+    public ref bool DroppedByPlayer => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bDroppedByPlayer");
+
+    // m_bTouchedByPlayer
+    public ref bool TouchedByPlayer => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bTouchedByPlayer");
+
+    // m_bFirstCollisionAfterLaunch
+    public ref bool FirstCollisionAfterLaunch => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bFirstCollisionAfterLaunch");
+
+    // m_iExploitableByPlayer
+    public ref Int32 ExploitableByPlayer => ref Schema.GetRef<Int32>(this.Handle, "CPhysicsProp", "m_iExploitableByPlayer");
+
+    // m_bHasBeenAwakened
+    public ref bool HasBeenAwakened => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bHasBeenAwakened");
+
+    // m_bIsOverrideProp
+    public ref bool IsOverrideProp => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bIsOverrideProp");
+
+    // m_fNextCheckDisableMotionContactsTime
+    public ref float NextCheckDisableMotionContactsTime => ref Schema.GetRef<float>(this.Handle, "CPhysicsProp", "m_fNextCheckDisableMotionContactsTime");
+
+    // m_iInitialGlowState
+    public ref Int32 InitialGlowState => ref Schema.GetRef<Int32>(this.Handle, "CPhysicsProp", "m_iInitialGlowState");
+
+    // m_nGlowRange
+    public ref Int32 GlowRange => ref Schema.GetRef<Int32>(this.Handle, "CPhysicsProp", "m_nGlowRange");
+
+    // m_nGlowRangeMin
+    public ref Int32 GlowRangeMin => ref Schema.GetRef<Int32>(this.Handle, "CPhysicsProp", "m_nGlowRangeMin");
+
+    // m_glowColor
+    public Color GlowColor
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CPhysicsProp", "m_glowColor"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CPhysicsProp", "m_glowColor", value); }
+    }
+
+    // m_bForceNavIgnore
+    public ref bool ForceNavIgnore => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bForceNavIgnore");
+
+    // m_bNoNavmeshBlocker
+    public ref bool NoNavmeshBlocker => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bNoNavmeshBlocker");
+
+    // m_bForceNpcExclude
+    public ref bool ForceNpcExclude => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bForceNpcExclude");
+
+    // m_bShouldAutoConvertBackFromDebris
+    public ref bool ShouldAutoConvertBackFromDebris => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bShouldAutoConvertBackFromDebris");
+
+    // m_bMuteImpactEffects
+    public ref bool MuteImpactEffects => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bMuteImpactEffects");
+
+    // m_bAcceptDamageFromHeldObjects
+    public ref bool AcceptDamageFromHeldObjects => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bAcceptDamageFromHeldObjects");
+
+    // m_bEnableUseOutput
+    public ref bool EnableUseOutput => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bEnableUseOutput");
+
     // m_bAwake
     public ref bool Awake => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bAwake");
+
+    // m_nCollisionGroupOverride
+    public ref Int32 CollisionGroupOverride => ref Schema.GetRef<Int32>(this.Handle, "CPhysicsProp", "m_nCollisionGroupOverride");
 
 }
 
@@ -8690,9 +16002,313 @@ public partial class CPhysicsPropMultiplayer : CPhysicsProp
 
 }
 
+public partial class CPhysicsPropOverride : CPhysicsProp
+{
+    public CPhysicsPropOverride (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CPhysicsPropRespawnable : CPhysicsProp
+{
+    public CPhysicsPropRespawnable (IntPtr pointer) : base(pointer) {}
+
+    // m_vOriginalSpawnOrigin
+    public Vector OriginalSpawnOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysicsPropRespawnable", "m_vOriginalSpawnOrigin");
+
+    // m_vOriginalSpawnAngles
+    public QAngle OriginalSpawnAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPhysicsPropRespawnable", "m_vOriginalSpawnAngles");
+
+    // m_vOriginalMins
+    public Vector OriginalMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysicsPropRespawnable", "m_vOriginalMins");
+
+    // m_vOriginalMaxs
+    public Vector OriginalMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysicsPropRespawnable", "m_vOriginalMaxs");
+
+    // m_flRespawnDuration
+    public ref float RespawnDuration => ref Schema.GetRef<float>(this.Handle, "CPhysicsPropRespawnable", "m_flRespawnDuration");
+
+}
+
+public partial class CPhysicsShake : NativeObject
+{
+    public CPhysicsShake (IntPtr pointer) : base(pointer) {}
+
+    // m_force
+    public Vector Force => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysicsShake", "m_force");
+
+}
+
+public partial class CPhysicsSpring : CBaseEntity
+{
+    public CPhysicsSpring (IntPtr pointer) : base(pointer) {}
+
+    // m_flFrequency
+    public ref float Frequency => ref Schema.GetRef<float>(this.Handle, "CPhysicsSpring", "m_flFrequency");
+
+    // m_flDampingRatio
+    public ref float DampingRatio => ref Schema.GetRef<float>(this.Handle, "CPhysicsSpring", "m_flDampingRatio");
+
+    // m_flRestLength
+    public ref float RestLength => ref Schema.GetRef<float>(this.Handle, "CPhysicsSpring", "m_flRestLength");
+
+    // m_nameAttachStart
+    public string NameAttachStart
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPhysicsSpring", "m_nameAttachStart"); }
+        set { Schema.SetString(this.Handle, "CPhysicsSpring", "m_nameAttachStart", value); }
+    }
+
+    // m_nameAttachEnd
+    public string NameAttachEnd
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPhysicsSpring", "m_nameAttachEnd"); }
+        set { Schema.SetString(this.Handle, "CPhysicsSpring", "m_nameAttachEnd", value); }
+    }
+
+    // m_start
+    public Vector Start => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysicsSpring", "m_start");
+
+    // m_end
+    public Vector End => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysicsSpring", "m_end");
+
+    // m_teleportTick
+    public ref UInt32 TeleportTick => ref Schema.GetRef<UInt32>(this.Handle, "CPhysicsSpring", "m_teleportTick");
+
+}
+
+public partial class CPhysicsWire : CBaseEntity
+{
+    public CPhysicsWire (IntPtr pointer) : base(pointer) {}
+
+    // m_nDensity
+    public ref Int32 Density => ref Schema.GetRef<Int32>(this.Handle, "CPhysicsWire", "m_nDensity");
+
+}
+
+public partial class CPhysImpact : CPointEntity
+{
+    public CPhysImpact (IntPtr pointer) : base(pointer) {}
+
+    // m_damage
+    public ref float Damage => ref Schema.GetRef<float>(this.Handle, "CPhysImpact", "m_damage");
+
+    // m_distance
+    public ref float Distance => ref Schema.GetRef<float>(this.Handle, "CPhysImpact", "m_distance");
+
+    // m_directionEntityName
+    public string DirectionEntityName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPhysImpact", "m_directionEntityName"); }
+        set { Schema.SetString(this.Handle, "CPhysImpact", "m_directionEntityName", value); }
+    }
+
+}
+
+public partial class CPhysLength : CPhysConstraint
+{
+    public CPhysLength (IntPtr pointer) : base(pointer) {}
+
+    // m_offset
+    public Span<Vector> Offset => Schema.GetFixedArray<Vector>(this.Handle, "CPhysLength", "m_offset", 2);
+
+    // m_vecAttach
+    public Vector Attach => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysLength", "m_vecAttach");
+
+    // m_addLength
+    public ref float AddLength => ref Schema.GetRef<float>(this.Handle, "CPhysLength", "m_addLength");
+
+    // m_minLength
+    public ref float MinLength => ref Schema.GetRef<float>(this.Handle, "CPhysLength", "m_minLength");
+
+    // m_totalLength
+    public ref float TotalLength => ref Schema.GetRef<float>(this.Handle, "CPhysLength", "m_totalLength");
+
+    // m_bEnableCollision
+    public ref bool EnableCollision => ref Schema.GetRef<bool>(this.Handle, "CPhysLength", "m_bEnableCollision");
+
+}
+
 public partial class CPhysMagnet : CBaseAnimGraph
 {
     public CPhysMagnet (IntPtr pointer) : base(pointer) {}
+
+    // m_OnMagnetAttach
+    public CEntityIOOutput OnMagnetAttach => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysMagnet", "m_OnMagnetAttach");
+
+    // m_OnMagnetDetach
+    public CEntityIOOutput OnMagnetDetach => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysMagnet", "m_OnMagnetDetach");
+
+    // m_massScale
+    public ref float MassScale => ref Schema.GetRef<float>(this.Handle, "CPhysMagnet", "m_massScale");
+
+    // m_forceLimit
+    public ref float ForceLimit => ref Schema.GetRef<float>(this.Handle, "CPhysMagnet", "m_forceLimit");
+
+    // m_torqueLimit
+    public ref float TorqueLimit => ref Schema.GetRef<float>(this.Handle, "CPhysMagnet", "m_torqueLimit");
+
+    // m_MagnettedEntities
+    public NetworkedVector<magnetted_objects_t> MagnettedEntities => Schema.GetDeclaredClass<NetworkedVector<magnetted_objects_t>>(this.Handle, "CPhysMagnet", "m_MagnettedEntities");
+
+    // m_bActive
+    public ref bool Active => ref Schema.GetRef<bool>(this.Handle, "CPhysMagnet", "m_bActive");
+
+    // m_bHasHitSomething
+    public ref bool HasHitSomething => ref Schema.GetRef<bool>(this.Handle, "CPhysMagnet", "m_bHasHitSomething");
+
+    // m_flTotalMass
+    public ref float TotalMass => ref Schema.GetRef<float>(this.Handle, "CPhysMagnet", "m_flTotalMass");
+
+    // m_flRadius
+    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CPhysMagnet", "m_flRadius");
+
+    // m_flNextSuckTime
+    public ref float NextSuckTime => ref Schema.GetRef<float>(this.Handle, "CPhysMagnet", "m_flNextSuckTime");
+
+    // m_iMaxObjectsAttached
+    public ref Int32 MaxObjectsAttached => ref Schema.GetRef<Int32>(this.Handle, "CPhysMagnet", "m_iMaxObjectsAttached");
+
+}
+
+public partial class CPhysMotor : CLogicalEntity
+{
+    public CPhysMotor (IntPtr pointer) : base(pointer) {}
+
+    // m_nameAttach
+    public string NameAttach
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPhysMotor", "m_nameAttach"); }
+        set { Schema.SetString(this.Handle, "CPhysMotor", "m_nameAttach", value); }
+    }
+
+    // m_hAttachedObject
+    public CHandle<CBaseEntity> AttachedObject => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysMotor", "m_hAttachedObject");
+
+    // m_spinUp
+    public ref float SpinUp => ref Schema.GetRef<float>(this.Handle, "CPhysMotor", "m_spinUp");
+
+    // m_additionalAcceleration
+    public ref float AdditionalAcceleration => ref Schema.GetRef<float>(this.Handle, "CPhysMotor", "m_additionalAcceleration");
+
+    // m_angularAcceleration
+    public ref float AngularAcceleration => ref Schema.GetRef<float>(this.Handle, "CPhysMotor", "m_angularAcceleration");
+
+    // m_lastTime
+    public ref float LastTime => ref Schema.GetRef<float>(this.Handle, "CPhysMotor", "m_lastTime");
+
+    // m_motor
+    public CMotorController Motor => Schema.GetDeclaredClass<CMotorController>(this.Handle, "CPhysMotor", "m_motor");
+
+}
+
+public partial class CPhysPulley : CPhysConstraint
+{
+    public CPhysPulley (IntPtr pointer) : base(pointer) {}
+
+    // m_position2
+    public Vector Position2 => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysPulley", "m_position2");
+
+    // m_offset
+    public Span<Vector> Offset => Schema.GetFixedArray<Vector>(this.Handle, "CPhysPulley", "m_offset", 2);
+
+    // m_addLength
+    public ref float AddLength => ref Schema.GetRef<float>(this.Handle, "CPhysPulley", "m_addLength");
+
+    // m_gearRatio
+    public ref float GearRatio => ref Schema.GetRef<float>(this.Handle, "CPhysPulley", "m_gearRatio");
+
+}
+
+public partial class CPhysSlideConstraint : CPhysConstraint
+{
+    public CPhysSlideConstraint (IntPtr pointer) : base(pointer) {}
+
+    // m_axisEnd
+    public Vector AxisEnd => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysSlideConstraint", "m_axisEnd");
+
+    // m_slideFriction
+    public ref float SlideFriction => ref Schema.GetRef<float>(this.Handle, "CPhysSlideConstraint", "m_slideFriction");
+
+    // m_systemLoadScale
+    public ref float SystemLoadScale => ref Schema.GetRef<float>(this.Handle, "CPhysSlideConstraint", "m_systemLoadScale");
+
+    // m_initialOffset
+    public ref float InitialOffset => ref Schema.GetRef<float>(this.Handle, "CPhysSlideConstraint", "m_initialOffset");
+
+    // m_bEnableLinearConstraint
+    public ref bool EnableLinearConstraint => ref Schema.GetRef<bool>(this.Handle, "CPhysSlideConstraint", "m_bEnableLinearConstraint");
+
+    // m_bEnableAngularConstraint
+    public ref bool EnableAngularConstraint => ref Schema.GetRef<bool>(this.Handle, "CPhysSlideConstraint", "m_bEnableAngularConstraint");
+
+    // m_flMotorFrequency
+    public ref float MotorFrequency => ref Schema.GetRef<float>(this.Handle, "CPhysSlideConstraint", "m_flMotorFrequency");
+
+    // m_flMotorDampingRatio
+    public ref float MotorDampingRatio => ref Schema.GetRef<float>(this.Handle, "CPhysSlideConstraint", "m_flMotorDampingRatio");
+
+    // m_bUseEntityPivot
+    public ref bool UseEntityPivot => ref Schema.GetRef<bool>(this.Handle, "CPhysSlideConstraint", "m_bUseEntityPivot");
+
+    // m_soundInfo
+    public ConstraintSoundInfo SoundInfo => Schema.GetDeclaredClass<ConstraintSoundInfo>(this.Handle, "CPhysSlideConstraint", "m_soundInfo");
+
+}
+
+public partial class CPhysThruster : CPhysForce
+{
+    public CPhysThruster (IntPtr pointer) : base(pointer) {}
+
+    // m_localOrigin
+    public Vector LocalOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysThruster", "m_localOrigin");
+
+}
+
+public partial class CPhysTorque : CPhysForce
+{
+    public CPhysTorque (IntPtr pointer) : base(pointer) {}
+
+    // m_axis
+    public Vector Axis => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysTorque", "m_axis");
+
+}
+
+public partial class CPhysWheelConstraint : CPhysConstraint
+{
+    public CPhysWheelConstraint (IntPtr pointer) : base(pointer) {}
+
+    // m_flSuspensionFrequency
+    public ref float SuspensionFrequency => ref Schema.GetRef<float>(this.Handle, "CPhysWheelConstraint", "m_flSuspensionFrequency");
+
+    // m_flSuspensionDampingRatio
+    public ref float SuspensionDampingRatio => ref Schema.GetRef<float>(this.Handle, "CPhysWheelConstraint", "m_flSuspensionDampingRatio");
+
+    // m_flSuspensionHeightOffset
+    public ref float SuspensionHeightOffset => ref Schema.GetRef<float>(this.Handle, "CPhysWheelConstraint", "m_flSuspensionHeightOffset");
+
+    // m_bEnableSuspensionLimit
+    public ref bool EnableSuspensionLimit => ref Schema.GetRef<bool>(this.Handle, "CPhysWheelConstraint", "m_bEnableSuspensionLimit");
+
+    // m_flMinSuspensionOffset
+    public ref float MinSuspensionOffset => ref Schema.GetRef<float>(this.Handle, "CPhysWheelConstraint", "m_flMinSuspensionOffset");
+
+    // m_flMaxSuspensionOffset
+    public ref float MaxSuspensionOffset => ref Schema.GetRef<float>(this.Handle, "CPhysWheelConstraint", "m_flMaxSuspensionOffset");
+
+    // m_bEnableSteeringLimit
+    public ref bool EnableSteeringLimit => ref Schema.GetRef<bool>(this.Handle, "CPhysWheelConstraint", "m_bEnableSteeringLimit");
+
+    // m_flMinSteeringAngle
+    public ref float MinSteeringAngle => ref Schema.GetRef<float>(this.Handle, "CPhysWheelConstraint", "m_flMinSteeringAngle");
+
+    // m_flMaxSteeringAngle
+    public ref float MaxSteeringAngle => ref Schema.GetRef<float>(this.Handle, "CPhysWheelConstraint", "m_flMaxSteeringAngle");
+
+    // m_flSteeringAxisFriction
+    public ref float SteeringAxisFriction => ref Schema.GetRef<float>(this.Handle, "CPhysWheelConstraint", "m_flSteeringAxisFriction");
+
+    // m_flSpinAxisFriction
+    public ref float SpinAxisFriction => ref Schema.GetRef<float>(this.Handle, "CPhysWheelConstraint", "m_flSpinAxisFriction");
 
 }
 
@@ -8712,11 +16328,26 @@ public partial class CPlantedC4 : CBaseAnimGraph
     // m_nSourceSoundscapeHash
     public ref Int32 SourceSoundscapeHash => ref Schema.GetRef<Int32>(this.Handle, "CPlantedC4", "m_nSourceSoundscapeHash");
 
+    // m_OnBombDefused
+    public CEntityIOOutput OnBombDefused => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPlantedC4", "m_OnBombDefused");
+
+    // m_OnBombBeginDefuse
+    public CEntityIOOutput OnBombBeginDefuse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPlantedC4", "m_OnBombBeginDefuse");
+
+    // m_OnBombDefuseAborted
+    public CEntityIOOutput OnBombDefuseAborted => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPlantedC4", "m_OnBombDefuseAborted");
+
     // m_bCannotBeDefused
     public ref bool CannotBeDefused => ref Schema.GetRef<bool>(this.Handle, "CPlantedC4", "m_bCannotBeDefused");
 
     // m_entitySpottedState
     public EntitySpottedState_t EntitySpottedState => Schema.GetDeclaredClass<EntitySpottedState_t>(this.Handle, "CPlantedC4", "m_entitySpottedState");
+
+    // m_nSpotRules
+    public ref Int32 SpotRules => ref Schema.GetRef<Int32>(this.Handle, "CPlantedC4", "m_nSpotRules");
+
+    // m_bTrainingPlacedByPlayer
+    public ref bool TrainingPlacedByPlayer => ref Schema.GetRef<bool>(this.Handle, "CPlantedC4", "m_bTrainingPlacedByPlayer");
 
     // m_bHasExploded
     public ref bool HasExploded => ref Schema.GetRef<bool>(this.Handle, "CPlantedC4", "m_bHasExploded");
@@ -8726,6 +16357,9 @@ public partial class CPlantedC4 : CBaseAnimGraph
 
     // m_bBeingDefused
     public ref bool BeingDefused => ref Schema.GetRef<bool>(this.Handle, "CPlantedC4", "m_bBeingDefused");
+
+    // m_fLastDefuseTime
+    public ref float LastDefuseTime => ref Schema.GetRef<float>(this.Handle, "CPlantedC4", "m_fLastDefuseTime");
 
     // m_flDefuseLength
     public ref float DefuseLength => ref Schema.GetRef<float>(this.Handle, "CPlantedC4", "m_flDefuseLength");
@@ -8742,6 +16376,36 @@ public partial class CPlantedC4 : CBaseAnimGraph
     // m_hControlPanel
     public CHandle<CBaseEntity> ControlPanel => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPlantedC4", "m_hControlPanel");
 
+    // m_iProgressBarTime
+    public ref Int32 ProgressBarTime => ref Schema.GetRef<Int32>(this.Handle, "CPlantedC4", "m_iProgressBarTime");
+
+    // m_bVoiceAlertFired
+    public ref bool VoiceAlertFired => ref Schema.GetRef<bool>(this.Handle, "CPlantedC4", "m_bVoiceAlertFired");
+
+    // m_bVoiceAlertPlayed
+    public Span<bool> VoiceAlertPlayed => Schema.GetFixedArray<bool>(this.Handle, "CPlantedC4", "m_bVoiceAlertPlayed", 4);
+
+    // m_flNextBotBeepTime
+    public ref float NextBotBeepTime => ref Schema.GetRef<float>(this.Handle, "CPlantedC4", "m_flNextBotBeepTime");
+
+    // m_bPlantedAfterPickup
+    public ref bool PlantedAfterPickup => ref Schema.GetRef<bool>(this.Handle, "CPlantedC4", "m_bPlantedAfterPickup");
+
+    // m_angCatchUpToPlayerEye
+    public QAngle CatchUpToPlayerEye => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPlantedC4", "m_angCatchUpToPlayerEye");
+
+    // m_flLastSpinDetectionTime
+    public ref float LastSpinDetectionTime => ref Schema.GetRef<float>(this.Handle, "CPlantedC4", "m_flLastSpinDetectionTime");
+
+}
+
+public partial class CPlatTrigger : CBaseModelEntity
+{
+    public CPlatTrigger (IntPtr pointer) : base(pointer) {}
+
+    // m_pPlatform
+    public CHandle<CFuncPlat> Platform => Schema.GetDeclaredClass<CHandle<CFuncPlat>>(this.Handle, "CPlatTrigger", "m_pPlatform");
+
 }
 
 public partial class CPlayer_AutoaimServices : CPlayerPawnComponent
@@ -8755,10 +16419,11 @@ public partial class CPlayer_CameraServices : CPlayerPawnComponent
     public CPlayer_CameraServices (IntPtr pointer) : base(pointer) {}
 
     // m_vecCsViewPunchAngle
-    // MNetworkEncoder "qangle_precise"
     public QAngle CsViewPunchAngle => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPlayer_CameraServices", "m_vecCsViewPunchAngle");
 
     // m_nCsViewPunchAngleTick
+    public ref Int32 CsViewPunchAngleTick => ref Schema.GetRef<Int32>(this.Handle, "CPlayer_CameraServices", "m_nCsViewPunchAngleTick");
+
     // m_flCsViewPunchAngleTickRatio
     public ref float CsViewPunchAngleTickRatio => ref Schema.GetRef<float>(this.Handle, "CPlayer_CameraServices", "m_flCsViewPunchAngleTickRatio");
 
@@ -8772,16 +16437,22 @@ public partial class CPlayer_CameraServices : CPlayerPawnComponent
     public CHandle<CBaseEntity> ViewEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPlayer_CameraServices", "m_hViewEntity");
 
     // m_hTonemapController
-    // MNetworkUserGroup "LocalPlayerAndObserversExclusive"
     public CHandle<CTonemapController2> TonemapController => Schema.GetDeclaredClass<CHandle<CTonemapController2>>(this.Handle, "CPlayer_CameraServices", "m_hTonemapController");
 
     // m_audio
-    // MNetworkUserGroup "LocalPlayerAndObserversExclusive"
     public audioparams_t Audio => Schema.GetDeclaredClass<audioparams_t>(this.Handle, "CPlayer_CameraServices", "m_audio");
 
     // m_PostProcessingVolumes
-    // MNetworkUserGroup "LocalPlayerAndObserversExclusive"
     public NetworkedVector<CHandle<CPostProcessingVolume>> PostProcessingVolumes => Schema.GetDeclaredClass<NetworkedVector<CHandle<CPostProcessingVolume>>>(this.Handle, "CPlayer_CameraServices", "m_PostProcessingVolumes");
+
+    // m_flOldPlayerZ
+    public ref float OldPlayerZ => ref Schema.GetRef<float>(this.Handle, "CPlayer_CameraServices", "m_flOldPlayerZ");
+
+    // m_flOldPlayerViewOffsetZ
+    public ref float OldPlayerViewOffsetZ => ref Schema.GetRef<float>(this.Handle, "CPlayer_CameraServices", "m_flOldPlayerViewOffsetZ");
+
+    // m_hTriggerSoundscapeList
+    public NetworkedVector<CHandle<CEnvSoundscapeTriggerable>> TriggerSoundscapeList => Schema.GetDeclaredClass<NetworkedVector<CHandle<CEnvSoundscapeTriggerable>>>(this.Handle, "CPlayer_CameraServices", "m_hTriggerSoundscapeList");
 
 }
 
@@ -8801,19 +16472,50 @@ public partial class CPlayer_MovementServices : CPlayerPawnComponent
 {
     public CPlayer_MovementServices (IntPtr pointer) : base(pointer) {}
 
+    // m_nImpulse
+    public ref Int32 Impulse => ref Schema.GetRef<Int32>(this.Handle, "CPlayer_MovementServices", "m_nImpulse");
+
+    // m_nButtons
+    public CInButtonState Buttons => Schema.GetDeclaredClass<CInButtonState>(this.Handle, "CPlayer_MovementServices", "m_nButtons");
+
+    // m_nQueuedButtonDownMask
+    public ref UInt64 QueuedButtonDownMask => ref Schema.GetRef<UInt64>(this.Handle, "CPlayer_MovementServices", "m_nQueuedButtonDownMask");
+
+    // m_nQueuedButtonChangeMask
+    public ref UInt64 QueuedButtonChangeMask => ref Schema.GetRef<UInt64>(this.Handle, "CPlayer_MovementServices", "m_nQueuedButtonChangeMask");
+
+    // m_nButtonDoublePressed
+    public ref UInt64 ButtonDoublePressed => ref Schema.GetRef<UInt64>(this.Handle, "CPlayer_MovementServices", "m_nButtonDoublePressed");
+
+    // m_pButtonPressedCmdNumber
+    public Span<UInt32> ButtonPressedCmdNumber => Schema.GetFixedArray<UInt32>(this.Handle, "CPlayer_MovementServices", "m_pButtonPressedCmdNumber", 64);
+
+    // m_nLastCommandNumberProcessed
+    public ref UInt32 LastCommandNumberProcessed => ref Schema.GetRef<UInt32>(this.Handle, "CPlayer_MovementServices", "m_nLastCommandNumberProcessed");
+
     // m_nToggleButtonDownMask
-    // MNetworkUserGroup "LocalPlayerExclusive"
     public ref UInt64 ToggleButtonDownMask => ref Schema.GetRef<UInt64>(this.Handle, "CPlayer_MovementServices", "m_nToggleButtonDownMask");
 
     // m_flMaxspeed
-    // MNetworkBitCount "12"
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "2048.000000"
-    // MNetworkEncodeFlags "1"
     public ref float Maxspeed => ref Schema.GetRef<float>(this.Handle, "CPlayer_MovementServices", "m_flMaxspeed");
 
     // m_arrForceSubtickMoveWhen
     public Span<float> ForceSubtickMoveWhen => Schema.GetFixedArray<float>(this.Handle, "CPlayer_MovementServices", "m_arrForceSubtickMoveWhen", 4);
+
+    // m_flForwardMove
+    public ref float ForwardMove => ref Schema.GetRef<float>(this.Handle, "CPlayer_MovementServices", "m_flForwardMove");
+
+    // m_flLeftMove
+    public ref float LeftMove => ref Schema.GetRef<float>(this.Handle, "CPlayer_MovementServices", "m_flLeftMove");
+
+    // m_flUpMove
+    public ref float UpMove => ref Schema.GetRef<float>(this.Handle, "CPlayer_MovementServices", "m_flUpMove");
+
+    // m_vecLastMovementImpulses
+    public Vector LastMovementImpulses => Schema.GetDeclaredClass<Vector>(this.Handle, "CPlayer_MovementServices", "m_vecLastMovementImpulses");
+
+    // m_vecOldViewAngles
+    public QAngle OldViewAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPlayer_MovementServices", "m_vecOldViewAngles");
 
 }
 
@@ -8821,37 +16523,47 @@ public partial class CPlayer_MovementServices_Humanoid : CPlayer_MovementService
 {
     public CPlayer_MovementServices_Humanoid (IntPtr pointer) : base(pointer) {}
 
+    // m_flStepSoundTime
+    public ref float StepSoundTime => ref Schema.GetRef<float>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_flStepSoundTime");
+
     // m_flFallVelocity
-    // MNetworkUserGroup "LocalPlayerExclusive"
-    // MNetworkBitCount "17"
-    // MNetworkMinValue "-4096.000000"
-    // MNetworkMaxValue "4096.000000"
-    // MNetworkEncodeFlags "4"
     public ref float FallVelocity => ref Schema.GetRef<float>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_flFallVelocity");
 
     // m_bInCrouch
-    // MNetworkUserGroup "LocalPlayerExclusive"
     public ref bool InCrouch => ref Schema.GetRef<bool>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_bInCrouch");
 
     // m_nCrouchState
-    // MNetworkUserGroup "LocalPlayerExclusive"
     public ref UInt32 CrouchState => ref Schema.GetRef<UInt32>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_nCrouchState");
 
     // m_flCrouchTransitionStartTime
-    // MNetworkUserGroup "LocalPlayerExclusive"
     public ref float CrouchTransitionStartTime => ref Schema.GetRef<float>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_flCrouchTransitionStartTime");
 
     // m_bDucked
-    // MNetworkUserGroup "LocalPlayerExclusive"
     public ref bool Ducked => ref Schema.GetRef<bool>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_bDucked");
 
     // m_bDucking
-    // MNetworkUserGroup "LocalPlayerExclusive"
     public ref bool Ducking => ref Schema.GetRef<bool>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_bDucking");
 
     // m_bInDuckJump
-    // MNetworkUserGroup "LocalPlayerExclusive"
     public ref bool InDuckJump => ref Schema.GetRef<bool>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_bInDuckJump");
+
+    // m_groundNormal
+    public Vector GroundNormal => Schema.GetDeclaredClass<Vector>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_groundNormal");
+
+    // m_flSurfaceFriction
+    public ref float SurfaceFriction => ref Schema.GetRef<float>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_flSurfaceFriction");
+
+    // m_surfaceProps
+    public CUtlStringToken SurfaceProps => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_surfaceProps");
+
+    // m_nStepside
+    public ref Int32 Stepside => ref Schema.GetRef<Int32>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_nStepside");
+
+    // m_iTargetVolume
+    public ref Int32 TargetVolume => ref Schema.GetRef<Int32>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_iTargetVolume");
+
+    // m_vecSmoothedVelocity
+    public Vector SmoothedVelocity => Schema.GetDeclaredClass<Vector>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_vecSmoothedVelocity");
 
 }
 
@@ -8860,12 +16572,16 @@ public partial class CPlayer_ObserverServices : CPlayerPawnComponent
     public CPlayer_ObserverServices (IntPtr pointer) : base(pointer) {}
 
     // m_iObserverMode
-    // MNetworkChangeCallback "OnObserverModeChanged"
     public ref byte ObserverMode => ref Schema.GetRef<byte>(this.Handle, "CPlayer_ObserverServices", "m_iObserverMode");
 
     // m_hObserverTarget
-    // MNetworkChangeCallback "OnObserverTargetChanged"
     public CHandle<CBaseEntity> ObserverTarget => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPlayer_ObserverServices", "m_hObserverTarget");
+
+    // m_iObserverLastMode
+    public ref ObserverMode_t ObserverLastMode => ref Schema.GetRef<ObserverMode_t>(this.Handle, "CPlayer_ObserverServices", "m_iObserverLastMode");
+
+    // m_bForcedObserverMode
+    public ref bool ForcedObserverMode => ref Schema.GetRef<bool>(this.Handle, "CPlayer_ObserverServices", "m_bForcedObserverMode");
 
 }
 
@@ -8891,6 +16607,9 @@ public partial class CPlayer_WeaponServices : CPlayerPawnComponent
 {
     public CPlayer_WeaponServices (IntPtr pointer) : base(pointer) {}
 
+    // m_bAllowSwitchToNoWeapon
+    public ref bool AllowSwitchToNoWeapon => ref Schema.GetRef<bool>(this.Handle, "CPlayer_WeaponServices", "m_bAllowSwitchToNoWeapon");
+
     // m_hMyWeapons
     public NetworkedVector<CHandle<CBasePlayerWeapon>> MyWeapons => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBasePlayerWeapon>>>(this.Handle, "CPlayer_WeaponServices", "m_hMyWeapons");
 
@@ -8898,11 +16617,13 @@ public partial class CPlayer_WeaponServices : CPlayerPawnComponent
     public CHandle<CBasePlayerWeapon> ActiveWeapon => Schema.GetDeclaredClass<CHandle<CBasePlayerWeapon>>(this.Handle, "CPlayer_WeaponServices", "m_hActiveWeapon");
 
     // m_hLastWeapon
-    // MNetworkUserGroup "LocalPlayerExclusive"
     public CHandle<CBasePlayerWeapon> LastWeapon => Schema.GetDeclaredClass<CHandle<CBasePlayerWeapon>>(this.Handle, "CPlayer_WeaponServices", "m_hLastWeapon");
 
     // m_iAmmo
     public Span<UInt16> Ammo => Schema.GetFixedArray<UInt16>(this.Handle, "CPlayer_WeaponServices", "m_iAmmo", 32);
+
+    // m_bPreventWeaponPickup
+    public ref bool PreventWeaponPickup => ref Schema.GetRef<bool>(this.Handle, "CPlayer_WeaponServices", "m_bPreventWeaponPickup");
 
 }
 
@@ -8910,11 +16631,17 @@ public partial class CPlayerControllerComponent : NativeObject
 {
     public CPlayerControllerComponent (IntPtr pointer) : base(pointer) {}
 
+    // __m_pChainEntity
+    public CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "CPlayerControllerComponent", "__m_pChainEntity");
+
 }
 
 public partial class CPlayerPawnComponent : NativeObject
 {
     public CPlayerPawnComponent (IntPtr pointer) : base(pointer) {}
+
+    // __m_pChainEntity
+    public CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "CPlayerPawnComponent", "__m_pChainEntity");
 
 }
 
@@ -8999,19 +16726,15 @@ public partial class CPlayerVisibility : CBaseEntity
     public CPlayerVisibility (IntPtr pointer) : base(pointer) {}
 
     // m_flVisibilityStrength
-    // MNetworkChangeCallback "PlayerVisibilityStateChanged"
     public ref float VisibilityStrength => ref Schema.GetRef<float>(this.Handle, "CPlayerVisibility", "m_flVisibilityStrength");
 
     // m_flFogDistanceMultiplier
-    // MNetworkChangeCallback "PlayerVisibilityStateChanged"
     public ref float FogDistanceMultiplier => ref Schema.GetRef<float>(this.Handle, "CPlayerVisibility", "m_flFogDistanceMultiplier");
 
     // m_flFogMaxDensityMultiplier
-    // MNetworkChangeCallback "PlayerVisibilityStateChanged"
     public ref float FogMaxDensityMultiplier => ref Schema.GetRef<float>(this.Handle, "CPlayerVisibility", "m_flFogMaxDensityMultiplier");
 
     // m_flFadeTime
-    // MNetworkChangeCallback "PlayerVisibilityStateChanged"
     public ref float FadeTime => ref Schema.GetRef<float>(this.Handle, "CPlayerVisibility", "m_flFadeTime");
 
     // m_bStartDisabled
@@ -9019,6 +16742,103 @@ public partial class CPlayerVisibility : CBaseEntity
 
     // m_bIsEnabled
     public ref bool IsEnabled => ref Schema.GetRef<bool>(this.Handle, "CPlayerVisibility", "m_bIsEnabled");
+
+}
+
+public partial class CPointAngleSensor : CPointEntity
+{
+    public CPointAngleSensor (IntPtr pointer) : base(pointer) {}
+
+    // m_bDisabled
+    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CPointAngleSensor", "m_bDisabled");
+
+    // m_nLookAtName
+    public string LookAtName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointAngleSensor", "m_nLookAtName"); }
+        set { Schema.SetString(this.Handle, "CPointAngleSensor", "m_nLookAtName", value); }
+    }
+
+    // m_hTargetEntity
+    public CHandle<CBaseEntity> TargetEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointAngleSensor", "m_hTargetEntity");
+
+    // m_hLookAtEntity
+    public CHandle<CBaseEntity> LookAtEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointAngleSensor", "m_hLookAtEntity");
+
+    // m_flDuration
+    public ref float Duration => ref Schema.GetRef<float>(this.Handle, "CPointAngleSensor", "m_flDuration");
+
+    // m_flDotTolerance
+    public ref float DotTolerance => ref Schema.GetRef<float>(this.Handle, "CPointAngleSensor", "m_flDotTolerance");
+
+    // m_flFacingTime
+    public ref float FacingTime => ref Schema.GetRef<float>(this.Handle, "CPointAngleSensor", "m_flFacingTime");
+
+    // m_bFired
+    public ref bool Fired => ref Schema.GetRef<bool>(this.Handle, "CPointAngleSensor", "m_bFired");
+
+    // m_OnFacingLookat
+    public CEntityIOOutput OnFacingLookat => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointAngleSensor", "m_OnFacingLookat");
+
+    // m_OnNotFacingLookat
+    public CEntityIOOutput OnNotFacingLookat => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointAngleSensor", "m_OnNotFacingLookat");
+
+}
+
+public partial class CPointAngularVelocitySensor : CPointEntity
+{
+    public CPointAngularVelocitySensor (IntPtr pointer) : base(pointer) {}
+
+    // m_hTargetEntity
+    public CHandle<CBaseEntity> TargetEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointAngularVelocitySensor", "m_hTargetEntity");
+
+    // m_flThreshold
+    public ref float Threshold => ref Schema.GetRef<float>(this.Handle, "CPointAngularVelocitySensor", "m_flThreshold");
+
+    // m_nLastCompareResult
+    public ref Int32 LastCompareResult => ref Schema.GetRef<Int32>(this.Handle, "CPointAngularVelocitySensor", "m_nLastCompareResult");
+
+    // m_nLastFireResult
+    public ref Int32 LastFireResult => ref Schema.GetRef<Int32>(this.Handle, "CPointAngularVelocitySensor", "m_nLastFireResult");
+
+    // m_flFireTime
+    public ref float FireTime => ref Schema.GetRef<float>(this.Handle, "CPointAngularVelocitySensor", "m_flFireTime");
+
+    // m_flFireInterval
+    public ref float FireInterval => ref Schema.GetRef<float>(this.Handle, "CPointAngularVelocitySensor", "m_flFireInterval");
+
+    // m_flLastAngVelocity
+    public ref float LastAngVelocity => ref Schema.GetRef<float>(this.Handle, "CPointAngularVelocitySensor", "m_flLastAngVelocity");
+
+    // m_lastOrientation
+    public QAngle LastOrientation => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPointAngularVelocitySensor", "m_lastOrientation");
+
+    // m_vecAxis
+    public Vector Axis => Schema.GetDeclaredClass<Vector>(this.Handle, "CPointAngularVelocitySensor", "m_vecAxis");
+
+    // m_bUseHelper
+    public ref bool UseHelper => ref Schema.GetRef<bool>(this.Handle, "CPointAngularVelocitySensor", "m_bUseHelper");
+
+    // m_OnLessThan
+    public CEntityIOOutput OnLessThan => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointAngularVelocitySensor", "m_OnLessThan");
+
+    // m_OnLessThanOrEqualTo
+    public CEntityIOOutput OnLessThanOrEqualTo => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointAngularVelocitySensor", "m_OnLessThanOrEqualTo");
+
+    // m_OnGreaterThan
+    public CEntityIOOutput OnGreaterThan => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointAngularVelocitySensor", "m_OnGreaterThan");
+
+    // m_OnGreaterThanOrEqualTo
+    public CEntityIOOutput OnGreaterThanOrEqualTo => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointAngularVelocitySensor", "m_OnGreaterThanOrEqualTo");
+
+    // m_OnEqualTo
+    public CEntityIOOutput OnEqualTo => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointAngularVelocitySensor", "m_OnEqualTo");
+
+}
+
+public partial class CPointBroadcastClientCommand : CPointEntity
+{
+    public CPointBroadcastClientCommand (IntPtr pointer) : base(pointer) {}
 
 }
 
@@ -9093,6 +16913,33 @@ public partial class CPointCamera : CBaseEntity
     // m_flDofTiltToGround
     public ref float DofTiltToGround => ref Schema.GetRef<float>(this.Handle, "CPointCamera", "m_flDofTiltToGround");
 
+    // m_TargetFOV
+    public ref float TargetFOV => ref Schema.GetRef<float>(this.Handle, "CPointCamera", "m_TargetFOV");
+
+    // m_DegreesPerSecond
+    public ref float DegreesPerSecond => ref Schema.GetRef<float>(this.Handle, "CPointCamera", "m_DegreesPerSecond");
+
+    // m_bIsOn
+    public ref bool IsOn => ref Schema.GetRef<bool>(this.Handle, "CPointCamera", "m_bIsOn");
+
+    // m_pNext
+    public CPointCamera? Next => Schema.GetPointer<CPointCamera>(this.Handle, "CPointCamera", "m_pNext");
+
+}
+
+public partial class CPointCameraVFOV : CPointCamera
+{
+    public CPointCameraVFOV (IntPtr pointer) : base(pointer) {}
+
+    // m_flVerticalFOV
+    public ref float VerticalFOV => ref Schema.GetRef<float>(this.Handle, "CPointCameraVFOV", "m_flVerticalFOV");
+
+}
+
+public partial class CPointClientCommand : CPointEntity
+{
+    public CPointClientCommand (IntPtr pointer) : base(pointer) {}
+
 }
 
 public partial class CPointClientUIDialog : CBaseClientUIEntity
@@ -9100,8 +16947,10 @@ public partial class CPointClientUIDialog : CBaseClientUIEntity
     public CPointClientUIDialog (IntPtr pointer) : base(pointer) {}
 
     // m_hActivator
-    // MNetworkChangeCallback "OnDialogActivatorChanged"
     public CHandle<CBaseEntity> Activator => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointClientUIDialog", "m_hActivator");
+
+    // m_bStartEnabled
+    public ref bool StartEnabled => ref Schema.GetRef<bool>(this.Handle, "CPointClientUIDialog", "m_bStartEnabled");
 
 }
 
@@ -9197,6 +17046,20 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 {
     public CPointCommentaryNode (IntPtr pointer) : base(pointer) {}
 
+    // m_iszPreCommands
+    public string PreCommands
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointCommentaryNode", "m_iszPreCommands"); }
+        set { Schema.SetString(this.Handle, "CPointCommentaryNode", "m_iszPreCommands", value); }
+    }
+
+    // m_iszPostCommands
+    public string PostCommands
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointCommentaryNode", "m_iszPostCommands"); }
+        set { Schema.SetString(this.Handle, "CPointCommentaryNode", "m_iszPostCommands", value); }
+    }
+
     // m_iszCommentaryFile
     public string CommentaryFile
     {
@@ -9204,8 +17067,70 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
         set { Schema.SetString(this.Handle, "CPointCommentaryNode", "m_iszCommentaryFile", value); }
     }
 
+    // m_iszViewTarget
+    public string IszViewTarget
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointCommentaryNode", "m_iszViewTarget"); }
+        set { Schema.SetString(this.Handle, "CPointCommentaryNode", "m_iszViewTarget", value); }
+    }
+
+    // m_hViewTarget
+    public CHandle<CBaseEntity> HViewTarget => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointCommentaryNode", "m_hViewTarget");
+
+    // m_hViewTargetAngles
+    public CHandle<CBaseEntity> ViewTargetAngles => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointCommentaryNode", "m_hViewTargetAngles");
+
+    // m_iszViewPosition
+    public string IszViewPosition
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointCommentaryNode", "m_iszViewPosition"); }
+        set { Schema.SetString(this.Handle, "CPointCommentaryNode", "m_iszViewPosition", value); }
+    }
+
     // m_hViewPosition
-    public CHandle<CBaseEntity> ViewPosition => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointCommentaryNode", "m_hViewPosition");
+    public CHandle<CBaseEntity> HViewPosition => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointCommentaryNode", "m_hViewPosition");
+
+    // m_hViewPositionMover
+    public CHandle<CBaseEntity> ViewPositionMover => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointCommentaryNode", "m_hViewPositionMover");
+
+    // m_bPreventMovement
+    public ref bool PreventMovement => ref Schema.GetRef<bool>(this.Handle, "CPointCommentaryNode", "m_bPreventMovement");
+
+    // m_bUnderCrosshair
+    public ref bool UnderCrosshair => ref Schema.GetRef<bool>(this.Handle, "CPointCommentaryNode", "m_bUnderCrosshair");
+
+    // m_bUnstoppable
+    public ref bool Unstoppable => ref Schema.GetRef<bool>(this.Handle, "CPointCommentaryNode", "m_bUnstoppable");
+
+    // m_flFinishedTime
+    public ref float FinishedTime => ref Schema.GetRef<float>(this.Handle, "CPointCommentaryNode", "m_flFinishedTime");
+
+    // m_vecFinishOrigin
+    public Vector FinishOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CPointCommentaryNode", "m_vecFinishOrigin");
+
+    // m_vecOriginalAngles
+    public QAngle OriginalAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPointCommentaryNode", "m_vecOriginalAngles");
+
+    // m_vecFinishAngles
+    public QAngle FinishAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPointCommentaryNode", "m_vecFinishAngles");
+
+    // m_bPreventChangesWhileMoving
+    public ref bool PreventChangesWhileMoving => ref Schema.GetRef<bool>(this.Handle, "CPointCommentaryNode", "m_bPreventChangesWhileMoving");
+
+    // m_bDisabled
+    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CPointCommentaryNode", "m_bDisabled");
+
+    // m_vecTeleportOrigin
+    public Vector TeleportOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CPointCommentaryNode", "m_vecTeleportOrigin");
+
+    // m_flAbortedPlaybackAt
+    public ref float AbortedPlaybackAt => ref Schema.GetRef<float>(this.Handle, "CPointCommentaryNode", "m_flAbortedPlaybackAt");
+
+    // m_pOnCommentaryStarted
+    public CEntityIOOutput OnCommentaryStarted => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointCommentaryNode", "m_pOnCommentaryStarted");
+
+    // m_pOnCommentaryStopped
+    public CEntityIOOutput OnCommentaryStopped => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointCommentaryNode", "m_pOnCommentaryStopped");
 
     // m_bActive
     public ref bool Active => ref Schema.GetRef<bool>(this.Handle, "CPointCommentaryNode", "m_bActive");
@@ -9247,6 +17172,278 @@ public partial class CPointEntity : CBaseEntity
 
 }
 
+public partial class CPointEntityFinder : CBaseEntity
+{
+    public CPointEntityFinder (IntPtr pointer) : base(pointer) {}
+
+    // m_hEntity
+    public CHandle<CBaseEntity> Entity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointEntityFinder", "m_hEntity");
+
+    // m_iFilterName
+    public string FilterName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointEntityFinder", "m_iFilterName"); }
+        set { Schema.SetString(this.Handle, "CPointEntityFinder", "m_iFilterName", value); }
+    }
+
+    // m_hFilter
+    public CHandle<CBaseFilter> Filter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CPointEntityFinder", "m_hFilter");
+
+    // m_iRefName
+    public string RefName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointEntityFinder", "m_iRefName"); }
+        set { Schema.SetString(this.Handle, "CPointEntityFinder", "m_iRefName", value); }
+    }
+
+    // m_hReference
+    public CHandle<CBaseEntity> Reference => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointEntityFinder", "m_hReference");
+
+    // m_FindMethod
+    public ref EntFinderMethod_t FindMethod => ref Schema.GetRef<EntFinderMethod_t>(this.Handle, "CPointEntityFinder", "m_FindMethod");
+
+    // m_OnFoundEntity
+    public CEntityIOOutput OnFoundEntity => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointEntityFinder", "m_OnFoundEntity");
+
+}
+
+public partial class CPointGamestatsCounter : CPointEntity
+{
+    public CPointGamestatsCounter (IntPtr pointer) : base(pointer) {}
+
+    // m_strStatisticName
+    public string StrStatisticName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointGamestatsCounter", "m_strStatisticName"); }
+        set { Schema.SetString(this.Handle, "CPointGamestatsCounter", "m_strStatisticName", value); }
+    }
+
+    // m_bDisabled
+    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CPointGamestatsCounter", "m_bDisabled");
+
+}
+
+public partial class CPointGiveAmmo : CPointEntity
+{
+    public CPointGiveAmmo (IntPtr pointer) : base(pointer) {}
+
+    // m_pActivator
+    public CHandle<CBaseEntity> Activator => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointGiveAmmo", "m_pActivator");
+
+}
+
+public partial class CPointHurt : CPointEntity
+{
+    public CPointHurt (IntPtr pointer) : base(pointer) {}
+
+    // m_nDamage
+    public ref Int32 Damage => ref Schema.GetRef<Int32>(this.Handle, "CPointHurt", "m_nDamage");
+
+    // m_bitsDamageType
+    public ref Int32 BitsDamageType => ref Schema.GetRef<Int32>(this.Handle, "CPointHurt", "m_bitsDamageType");
+
+    // m_flRadius
+    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CPointHurt", "m_flRadius");
+
+    // m_flDelay
+    public ref float Delay => ref Schema.GetRef<float>(this.Handle, "CPointHurt", "m_flDelay");
+
+    // m_strTarget
+    public string StrTarget
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointHurt", "m_strTarget"); }
+        set { Schema.SetString(this.Handle, "CPointHurt", "m_strTarget", value); }
+    }
+
+    // m_pActivator
+    public CHandle<CBaseEntity> Activator => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointHurt", "m_pActivator");
+
+}
+
+public partial class CPointPrefab : CServerOnlyPointEntity
+{
+    public CPointPrefab (IntPtr pointer) : base(pointer) {}
+
+    // m_targetMapName
+    public string TargetMapName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointPrefab", "m_targetMapName"); }
+        set { Schema.SetString(this.Handle, "CPointPrefab", "m_targetMapName", value); }
+    }
+
+    // m_forceWorldGroupID
+    public string ForceWorldGroupID
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointPrefab", "m_forceWorldGroupID"); }
+        set { Schema.SetString(this.Handle, "CPointPrefab", "m_forceWorldGroupID", value); }
+    }
+
+    // m_associatedRelayTargetName
+    public string AssociatedRelayTargetName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointPrefab", "m_associatedRelayTargetName"); }
+        set { Schema.SetString(this.Handle, "CPointPrefab", "m_associatedRelayTargetName", value); }
+    }
+
+    // m_fixupNames
+    public ref bool FixupNames => ref Schema.GetRef<bool>(this.Handle, "CPointPrefab", "m_fixupNames");
+
+    // m_bLoadDynamic
+    public ref bool LoadDynamic => ref Schema.GetRef<bool>(this.Handle, "CPointPrefab", "m_bLoadDynamic");
+
+    // m_associatedRelayEntity
+    public CHandle<CPointPrefab> AssociatedRelayEntity => Schema.GetDeclaredClass<CHandle<CPointPrefab>>(this.Handle, "CPointPrefab", "m_associatedRelayEntity");
+
+}
+
+public partial class CPointProximitySensor : CPointEntity
+{
+    public CPointProximitySensor (IntPtr pointer) : base(pointer) {}
+
+    // m_bDisabled
+    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CPointProximitySensor", "m_bDisabled");
+
+    // m_hTargetEntity
+    public CHandle<CBaseEntity> TargetEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointProximitySensor", "m_hTargetEntity");
+
+}
+
+public partial class CPointPulse : CBaseEntity
+{
+    public CPointPulse (IntPtr pointer) : base(pointer) {}
+
+    // m_sNameFixupStaticPrefix
+    public string NameFixupStaticPrefix
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointPulse", "m_sNameFixupStaticPrefix"); }
+        set { Schema.SetString(this.Handle, "CPointPulse", "m_sNameFixupStaticPrefix", value); }
+    }
+
+    // m_sNameFixupParent
+    public string NameFixupParent
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointPulse", "m_sNameFixupParent"); }
+        set { Schema.SetString(this.Handle, "CPointPulse", "m_sNameFixupParent", value); }
+    }
+
+    // m_sNameFixupLocal
+    public string NameFixupLocal
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointPulse", "m_sNameFixupLocal"); }
+        set { Schema.SetString(this.Handle, "CPointPulse", "m_sNameFixupLocal", value); }
+    }
+
+}
+
+public partial class CPointPush : CPointEntity
+{
+    public CPointPush (IntPtr pointer) : base(pointer) {}
+
+    // m_bEnabled
+    public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CPointPush", "m_bEnabled");
+
+    // m_flMagnitude
+    public ref float Magnitude => ref Schema.GetRef<float>(this.Handle, "CPointPush", "m_flMagnitude");
+
+    // m_flRadius
+    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CPointPush", "m_flRadius");
+
+    // m_flInnerRadius
+    public ref float InnerRadius => ref Schema.GetRef<float>(this.Handle, "CPointPush", "m_flInnerRadius");
+
+    // m_flConeOfInfluence
+    public ref float ConeOfInfluence => ref Schema.GetRef<float>(this.Handle, "CPointPush", "m_flConeOfInfluence");
+
+    // m_iszFilterName
+    public string FilterName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointPush", "m_iszFilterName"); }
+        set { Schema.SetString(this.Handle, "CPointPush", "m_iszFilterName", value); }
+    }
+
+    // m_hFilter
+    public CHandle<CBaseFilter> Filter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CPointPush", "m_hFilter");
+
+}
+
+public partial class CPointScript : CBaseEntity
+{
+    public CPointScript (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CPointServerCommand : CPointEntity
+{
+    public CPointServerCommand (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CPointTeleport : CServerOnlyPointEntity
+{
+    public CPointTeleport (IntPtr pointer) : base(pointer) {}
+
+    // m_vSaveOrigin
+    public Vector SaveOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CPointTeleport", "m_vSaveOrigin");
+
+    // m_vSaveAngles
+    public QAngle SaveAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPointTeleport", "m_vSaveAngles");
+
+    // m_bTeleportParentedEntities
+    public ref bool TeleportParentedEntities => ref Schema.GetRef<bool>(this.Handle, "CPointTeleport", "m_bTeleportParentedEntities");
+
+    // m_bTeleportUseCurrentAngle
+    public ref bool TeleportUseCurrentAngle => ref Schema.GetRef<bool>(this.Handle, "CPointTeleport", "m_bTeleportUseCurrentAngle");
+
+}
+
+public partial class CPointTemplate : CLogicalEntity
+{
+    public CPointTemplate (IntPtr pointer) : base(pointer) {}
+
+    // m_iszWorldName
+    public string WorldName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointTemplate", "m_iszWorldName"); }
+        set { Schema.SetString(this.Handle, "CPointTemplate", "m_iszWorldName", value); }
+    }
+
+    // m_iszSource2EntityLumpName
+    public string Source2EntityLumpName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointTemplate", "m_iszSource2EntityLumpName"); }
+        set { Schema.SetString(this.Handle, "CPointTemplate", "m_iszSource2EntityLumpName", value); }
+    }
+
+    // m_iszEntityFilterName
+    public string EntityFilterName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointTemplate", "m_iszEntityFilterName"); }
+        set { Schema.SetString(this.Handle, "CPointTemplate", "m_iszEntityFilterName", value); }
+    }
+
+    // m_flTimeoutInterval
+    public ref float TimeoutInterval => ref Schema.GetRef<float>(this.Handle, "CPointTemplate", "m_flTimeoutInterval");
+
+    // m_bAsynchronouslySpawnEntities
+    public ref bool AsynchronouslySpawnEntities => ref Schema.GetRef<bool>(this.Handle, "CPointTemplate", "m_bAsynchronouslySpawnEntities");
+
+    // m_pOutputOnSpawned
+    public CEntityIOOutput OutputOnSpawned => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointTemplate", "m_pOutputOnSpawned");
+
+    // m_clientOnlyEntityBehavior
+    public ref PointTemplateClientOnlyEntityBehavior_t ClientOnlyEntityBehavior => ref Schema.GetRef<PointTemplateClientOnlyEntityBehavior_t>(this.Handle, "CPointTemplate", "m_clientOnlyEntityBehavior");
+
+    // m_ownerSpawnGroupType
+    public ref PointTemplateOwnerSpawnGroupType_t OwnerSpawnGroupType => ref Schema.GetRef<PointTemplateOwnerSpawnGroupType_t>(this.Handle, "CPointTemplate", "m_ownerSpawnGroupType");
+
+    // m_createdSpawnGroupHandles
+    public NetworkedVector<UInt32> CreatedSpawnGroupHandles => Schema.GetDeclaredClass<NetworkedVector<UInt32>>(this.Handle, "CPointTemplate", "m_createdSpawnGroupHandles");
+
+    // m_SpawnedEntityHandles
+    public NetworkedVector<CHandle<CEntityInstance>> SpawnedEntityHandles => Schema.GetDeclaredClass<NetworkedVector<CHandle<CEntityInstance>>>(this.Handle, "CPointTemplate", "m_SpawnedEntityHandles");
+
+}
+
 public partial class CPointValueRemapper : CBaseEntity
 {
     public CPointValueRemapper (IntPtr pointer) : base(pointer) {}
@@ -9259,6 +17456,20 @@ public partial class CPointValueRemapper : CBaseEntity
 
     // m_nInputType
     public ref ValueRemapperInputType_t InputType => ref Schema.GetRef<ValueRemapperInputType_t>(this.Handle, "CPointValueRemapper", "m_nInputType");
+
+    // m_iszRemapLineStartName
+    public string RemapLineStartName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszRemapLineStartName"); }
+        set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszRemapLineStartName", value); }
+    }
+
+    // m_iszRemapLineEndName
+    public string RemapLineEndName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszRemapLineEndName"); }
+        set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszRemapLineEndName", value); }
+    }
 
     // m_hRemapLineStart
     public CHandle<CBaseEntity> RemapLineStart => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointValueRemapper", "m_hRemapLineStart");
@@ -9281,6 +17492,34 @@ public partial class CPointValueRemapper : CBaseEntity
     // m_nOutputType
     public ref ValueRemapperOutputType_t OutputType => ref Schema.GetRef<ValueRemapperOutputType_t>(this.Handle, "CPointValueRemapper", "m_nOutputType");
 
+    // m_iszOutputEntityName
+    public string OutputEntityName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszOutputEntityName"); }
+        set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszOutputEntityName", value); }
+    }
+
+    // m_iszOutputEntity2Name
+    public string OutputEntity2Name
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszOutputEntity2Name"); }
+        set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszOutputEntity2Name", value); }
+    }
+
+    // m_iszOutputEntity3Name
+    public string OutputEntity3Name
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszOutputEntity3Name"); }
+        set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszOutputEntity3Name", value); }
+    }
+
+    // m_iszOutputEntity4Name
+    public string OutputEntity4Name
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszOutputEntity4Name"); }
+        set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszOutputEntity4Name", value); }
+    }
+
     // m_hOutputEntities
     public NetworkedVector<CHandle<CBaseEntity>> OutputEntities => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CPointValueRemapper", "m_hOutputEntities");
 
@@ -9296,11 +17535,109 @@ public partial class CPointValueRemapper : CBaseEntity
     // m_flSnapValue
     public ref float SnapValue => ref Schema.GetRef<float>(this.Handle, "CPointValueRemapper", "m_flSnapValue");
 
+    // m_flCurrentMomentum
+    public ref float CurrentMomentum => ref Schema.GetRef<float>(this.Handle, "CPointValueRemapper", "m_flCurrentMomentum");
+
     // m_nRatchetType
     public ref ValueRemapperRatchetType_t RatchetType => ref Schema.GetRef<ValueRemapperRatchetType_t>(this.Handle, "CPointValueRemapper", "m_nRatchetType");
 
+    // m_flRatchetOffset
+    public ref float RatchetOffset => ref Schema.GetRef<float>(this.Handle, "CPointValueRemapper", "m_flRatchetOffset");
+
     // m_flInputOffset
     public ref float InputOffset => ref Schema.GetRef<float>(this.Handle, "CPointValueRemapper", "m_flInputOffset");
+
+    // m_bEngaged
+    public ref bool Engaged => ref Schema.GetRef<bool>(this.Handle, "CPointValueRemapper", "m_bEngaged");
+
+    // m_bFirstUpdate
+    public ref bool FirstUpdate => ref Schema.GetRef<bool>(this.Handle, "CPointValueRemapper", "m_bFirstUpdate");
+
+    // m_flPreviousValue
+    public ref float PreviousValue => ref Schema.GetRef<float>(this.Handle, "CPointValueRemapper", "m_flPreviousValue");
+
+    // m_flPreviousUpdateTickTime
+    public ref float PreviousUpdateTickTime => ref Schema.GetRef<float>(this.Handle, "CPointValueRemapper", "m_flPreviousUpdateTickTime");
+
+    // m_vecPreviousTestPoint
+    public Vector PreviousTestPoint => Schema.GetDeclaredClass<Vector>(this.Handle, "CPointValueRemapper", "m_vecPreviousTestPoint");
+
+    // m_hUsingPlayer
+    public CHandle<CBasePlayerPawn> UsingPlayer => Schema.GetDeclaredClass<CHandle<CBasePlayerPawn>>(this.Handle, "CPointValueRemapper", "m_hUsingPlayer");
+
+    // m_flCustomOutputValue
+    public ref float CustomOutputValue => ref Schema.GetRef<float>(this.Handle, "CPointValueRemapper", "m_flCustomOutputValue");
+
+    // m_iszSoundEngage
+    public string SoundEngage
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszSoundEngage"); }
+        set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszSoundEngage", value); }
+    }
+
+    // m_iszSoundDisengage
+    public string SoundDisengage
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszSoundDisengage"); }
+        set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszSoundDisengage", value); }
+    }
+
+    // m_iszSoundReachedValueZero
+    public string SoundReachedValueZero
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszSoundReachedValueZero"); }
+        set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszSoundReachedValueZero", value); }
+    }
+
+    // m_iszSoundReachedValueOne
+    public string SoundReachedValueOne
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszSoundReachedValueOne"); }
+        set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszSoundReachedValueOne", value); }
+    }
+
+    // m_iszSoundMovingLoop
+    public string SoundMovingLoop
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszSoundMovingLoop"); }
+        set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszSoundMovingLoop", value); }
+    }
+
+    // m_OnReachedValueZero
+    public CEntityIOOutput OnReachedValueZero => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointValueRemapper", "m_OnReachedValueZero");
+
+    // m_OnReachedValueOne
+    public CEntityIOOutput OnReachedValueOne => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointValueRemapper", "m_OnReachedValueOne");
+
+    // m_OnReachedValueCustom
+    public CEntityIOOutput OnReachedValueCustom => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointValueRemapper", "m_OnReachedValueCustom");
+
+    // m_OnEngage
+    public CEntityIOOutput OnEngage => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointValueRemapper", "m_OnEngage");
+
+    // m_OnDisengage
+    public CEntityIOOutput OnDisengage => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointValueRemapper", "m_OnDisengage");
+
+}
+
+public partial class CPointVelocitySensor : CPointEntity
+{
+    public CPointVelocitySensor (IntPtr pointer) : base(pointer) {}
+
+    // m_hTargetEntity
+    public CHandle<CBaseEntity> TargetEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointVelocitySensor", "m_hTargetEntity");
+
+    // m_vecAxis
+    public Vector Axis => Schema.GetDeclaredClass<Vector>(this.Handle, "CPointVelocitySensor", "m_vecAxis");
+
+    // m_bEnabled
+    public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CPointVelocitySensor", "m_bEnabled");
+
+    // m_fPrevVelocity
+    public ref float PrevVelocity => ref Schema.GetRef<float>(this.Handle, "CPointVelocitySensor", "m_fPrevVelocity");
+
+    // m_flAvgInterval
+    public ref float AvgInterval => ref Schema.GetRef<float>(this.Handle, "CPointVelocitySensor", "m_flAvgInterval");
 
 }
 
@@ -9427,6 +17764,150 @@ public partial class CPredictedViewModel : CBaseViewModel
 
 }
 
+public partial class CProjectedDecal : CPointEntity
+{
+    public CProjectedDecal (IntPtr pointer) : base(pointer) {}
+
+    // m_nTexture
+    public ref Int32 Texture => ref Schema.GetRef<Int32>(this.Handle, "CProjectedDecal", "m_nTexture");
+
+    // m_flDistance
+    public ref float Distance => ref Schema.GetRef<float>(this.Handle, "CProjectedDecal", "m_flDistance");
+
+}
+
+public partial class CPropDoorRotating : CBasePropDoor
+{
+    public CPropDoorRotating (IntPtr pointer) : base(pointer) {}
+
+    // m_vecAxis
+    public Vector Axis => Schema.GetDeclaredClass<Vector>(this.Handle, "CPropDoorRotating", "m_vecAxis");
+
+    // m_flDistance
+    public ref float Distance => ref Schema.GetRef<float>(this.Handle, "CPropDoorRotating", "m_flDistance");
+
+    // m_eSpawnPosition
+    public ref PropDoorRotatingSpawnPos_t SpawnPosition => ref Schema.GetRef<PropDoorRotatingSpawnPos_t>(this.Handle, "CPropDoorRotating", "m_eSpawnPosition");
+
+    // m_eOpenDirection
+    public ref PropDoorRotatingOpenDirection_e OpenDirection => ref Schema.GetRef<PropDoorRotatingOpenDirection_e>(this.Handle, "CPropDoorRotating", "m_eOpenDirection");
+
+    // m_eCurrentOpenDirection
+    public ref PropDoorRotatingOpenDirection_e CurrentOpenDirection => ref Schema.GetRef<PropDoorRotatingOpenDirection_e>(this.Handle, "CPropDoorRotating", "m_eCurrentOpenDirection");
+
+    // m_flAjarAngle
+    public ref float AjarAngle => ref Schema.GetRef<float>(this.Handle, "CPropDoorRotating", "m_flAjarAngle");
+
+    // m_angRotationAjarDeprecated
+    public QAngle RotationAjarDeprecated => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPropDoorRotating", "m_angRotationAjarDeprecated");
+
+    // m_angRotationClosed
+    public QAngle RotationClosed => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPropDoorRotating", "m_angRotationClosed");
+
+    // m_angRotationOpenForward
+    public QAngle RotationOpenForward => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPropDoorRotating", "m_angRotationOpenForward");
+
+    // m_angRotationOpenBack
+    public QAngle RotationOpenBack => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPropDoorRotating", "m_angRotationOpenBack");
+
+    // m_angGoal
+    public QAngle Goal => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPropDoorRotating", "m_angGoal");
+
+    // m_vecForwardBoundsMin
+    public Vector ForwardBoundsMin => Schema.GetDeclaredClass<Vector>(this.Handle, "CPropDoorRotating", "m_vecForwardBoundsMin");
+
+    // m_vecForwardBoundsMax
+    public Vector ForwardBoundsMax => Schema.GetDeclaredClass<Vector>(this.Handle, "CPropDoorRotating", "m_vecForwardBoundsMax");
+
+    // m_vecBackBoundsMin
+    public Vector BackBoundsMin => Schema.GetDeclaredClass<Vector>(this.Handle, "CPropDoorRotating", "m_vecBackBoundsMin");
+
+    // m_vecBackBoundsMax
+    public Vector BackBoundsMax => Schema.GetDeclaredClass<Vector>(this.Handle, "CPropDoorRotating", "m_vecBackBoundsMax");
+
+    // m_bAjarDoorShouldntAlwaysOpen
+    public ref bool AjarDoorShouldntAlwaysOpen => ref Schema.GetRef<bool>(this.Handle, "CPropDoorRotating", "m_bAjarDoorShouldntAlwaysOpen");
+
+    // m_hEntityBlocker
+    public CHandle<CEntityBlocker> EntityBlocker => Schema.GetDeclaredClass<CHandle<CEntityBlocker>>(this.Handle, "CPropDoorRotating", "m_hEntityBlocker");
+
+}
+
+public partial class CPropDoorRotatingBreakable : CPropDoorRotating
+{
+    public CPropDoorRotatingBreakable (IntPtr pointer) : base(pointer) {}
+
+    // m_bBreakable
+    public ref bool Breakable => ref Schema.GetRef<bool>(this.Handle, "CPropDoorRotatingBreakable", "m_bBreakable");
+
+    // m_isAbleToCloseAreaPortals
+    public ref bool IsAbleToCloseAreaPortals => ref Schema.GetRef<bool>(this.Handle, "CPropDoorRotatingBreakable", "m_isAbleToCloseAreaPortals");
+
+    // m_currentDamageState
+    public ref Int32 CurrentDamageState => ref Schema.GetRef<Int32>(this.Handle, "CPropDoorRotatingBreakable", "m_currentDamageState");
+
+    // m_damageStates
+    public NetworkedVector<string> DamageStates => Schema.GetDeclaredClass<NetworkedVector<string>>(this.Handle, "CPropDoorRotatingBreakable", "m_damageStates");
+
+}
+
+public partial class CPushable : CBreakable
+{
+    public CPushable (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CRagdollConstraint : CPhysConstraint
+{
+    public CRagdollConstraint (IntPtr pointer) : base(pointer) {}
+
+    // m_xmin
+    public ref float Xmin => ref Schema.GetRef<float>(this.Handle, "CRagdollConstraint", "m_xmin");
+
+    // m_xmax
+    public ref float Xmax => ref Schema.GetRef<float>(this.Handle, "CRagdollConstraint", "m_xmax");
+
+    // m_ymin
+    public ref float Ymin => ref Schema.GetRef<float>(this.Handle, "CRagdollConstraint", "m_ymin");
+
+    // m_ymax
+    public ref float Ymax => ref Schema.GetRef<float>(this.Handle, "CRagdollConstraint", "m_ymax");
+
+    // m_zmin
+    public ref float Zmin => ref Schema.GetRef<float>(this.Handle, "CRagdollConstraint", "m_zmin");
+
+    // m_zmax
+    public ref float Zmax => ref Schema.GetRef<float>(this.Handle, "CRagdollConstraint", "m_zmax");
+
+    // m_xfriction
+    public ref float Xfriction => ref Schema.GetRef<float>(this.Handle, "CRagdollConstraint", "m_xfriction");
+
+    // m_yfriction
+    public ref float Yfriction => ref Schema.GetRef<float>(this.Handle, "CRagdollConstraint", "m_yfriction");
+
+    // m_zfriction
+    public ref float Zfriction => ref Schema.GetRef<float>(this.Handle, "CRagdollConstraint", "m_zfriction");
+
+}
+
+public partial class CRagdollMagnet : CPointEntity
+{
+    public CRagdollMagnet (IntPtr pointer) : base(pointer) {}
+
+    // m_bDisabled
+    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CRagdollMagnet", "m_bDisabled");
+
+    // m_radius
+    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CRagdollMagnet", "m_radius");
+
+    // m_force
+    public ref float Force => ref Schema.GetRef<float>(this.Handle, "CRagdollMagnet", "m_force");
+
+    // m_axis
+    public Vector Axis => Schema.GetDeclaredClass<Vector>(this.Handle, "CRagdollMagnet", "m_axis");
+
+}
+
 public partial class CRagdollManager : CBaseEntity
 {
     public CRagdollManager (IntPtr pointer) : base(pointer) {}
@@ -9434,30 +17915,115 @@ public partial class CRagdollManager : CBaseEntity
     // m_iCurrentMaxRagdollCount
     public ref sbyte CurrentMaxRagdollCount => ref Schema.GetRef<sbyte>(this.Handle, "CRagdollManager", "m_iCurrentMaxRagdollCount");
 
+    // m_iMaxRagdollCount
+    public ref Int32 MaxRagdollCount => ref Schema.GetRef<Int32>(this.Handle, "CRagdollManager", "m_iMaxRagdollCount");
+
+    // m_bSaveImportant
+    public ref bool SaveImportant => ref Schema.GetRef<bool>(this.Handle, "CRagdollManager", "m_bSaveImportant");
+
 }
 
 public partial class CRagdollProp : CBaseAnimGraph
 {
     public CRagdollProp (IntPtr pointer) : base(pointer) {}
 
+    // m_ragdoll
+    public ragdoll_t Ragdoll => Schema.GetDeclaredClass<ragdoll_t>(this.Handle, "CRagdollProp", "m_ragdoll");
+
+    // m_bStartDisabled
+    public ref bool StartDisabled => ref Schema.GetRef<bool>(this.Handle, "CRagdollProp", "m_bStartDisabled");
+
     // m_ragPos
-    // MNetworkEncoder "coord"
     public NetworkedVector<Vector> RagPos => Schema.GetDeclaredClass<NetworkedVector<Vector>>(this.Handle, "CRagdollProp", "m_ragPos");
 
     // m_ragAngles
-    // MNetworkEncoder "qangle"
-    // MNetworkBitCount "13"
     public NetworkedVector<QAngle> RagAngles => Schema.GetDeclaredClass<NetworkedVector<QAngle>>(this.Handle, "CRagdollProp", "m_ragAngles");
 
     // m_hRagdollSource
     public CHandle<CBaseEntity> RagdollSource => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CRagdollProp", "m_hRagdollSource");
 
+    // m_lastUpdateTickCount
+    public ref UInt32 LastUpdateTickCount => ref Schema.GetRef<UInt32>(this.Handle, "CRagdollProp", "m_lastUpdateTickCount");
+
+    // m_allAsleep
+    public ref bool AllAsleep => ref Schema.GetRef<bool>(this.Handle, "CRagdollProp", "m_allAsleep");
+
+    // m_bFirstCollisionAfterLaunch
+    public ref bool FirstCollisionAfterLaunch => ref Schema.GetRef<bool>(this.Handle, "CRagdollProp", "m_bFirstCollisionAfterLaunch");
+
+    // m_hDamageEntity
+    public CHandle<CBaseEntity> DamageEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CRagdollProp", "m_hDamageEntity");
+
+    // m_hKiller
+    public CHandle<CBaseEntity> Killer => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CRagdollProp", "m_hKiller");
+
+    // m_hPhysicsAttacker
+    public CHandle<CBasePlayerPawn> PhysicsAttacker => Schema.GetDeclaredClass<CHandle<CBasePlayerPawn>>(this.Handle, "CRagdollProp", "m_hPhysicsAttacker");
+
+    // m_flLastPhysicsInfluenceTime
+    public ref float LastPhysicsInfluenceTime => ref Schema.GetRef<float>(this.Handle, "CRagdollProp", "m_flLastPhysicsInfluenceTime");
+
+    // m_flFadeOutStartTime
+    public ref float FadeOutStartTime => ref Schema.GetRef<float>(this.Handle, "CRagdollProp", "m_flFadeOutStartTime");
+
+    // m_flFadeTime
+    public ref float FadeTime => ref Schema.GetRef<float>(this.Handle, "CRagdollProp", "m_flFadeTime");
+
+    // m_vecLastOrigin
+    public Vector LastOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CRagdollProp", "m_vecLastOrigin");
+
+    // m_flAwakeTime
+    public ref float AwakeTime => ref Schema.GetRef<float>(this.Handle, "CRagdollProp", "m_flAwakeTime");
+
+    // m_flLastOriginChangeTime
+    public ref float LastOriginChangeTime => ref Schema.GetRef<float>(this.Handle, "CRagdollProp", "m_flLastOriginChangeTime");
+
+    // m_nBloodColor
+    public ref Int32 BloodColor => ref Schema.GetRef<Int32>(this.Handle, "CRagdollProp", "m_nBloodColor");
+
+    // m_strOriginClassName
+    public string StrOriginClassName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CRagdollProp", "m_strOriginClassName"); }
+        set { Schema.SetString(this.Handle, "CRagdollProp", "m_strOriginClassName", value); }
+    }
+
+    // m_strSourceClassName
+    public string StrSourceClassName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CRagdollProp", "m_strSourceClassName"); }
+        set { Schema.SetString(this.Handle, "CRagdollProp", "m_strSourceClassName", value); }
+    }
+
+    // m_bHasBeenPhysgunned
+    public ref bool HasBeenPhysgunned => ref Schema.GetRef<bool>(this.Handle, "CRagdollProp", "m_bHasBeenPhysgunned");
+
+    // m_bShouldTeleportPhysics
+    public ref bool ShouldTeleportPhysics => ref Schema.GetRef<bool>(this.Handle, "CRagdollProp", "m_bShouldTeleportPhysics");
+
     // m_flBlendWeight
-    // MNetworkBitCount "8"
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "1.000000"
-    // MNetworkEncodeFlags "1"
     public ref float BlendWeight => ref Schema.GetRef<float>(this.Handle, "CRagdollProp", "m_flBlendWeight");
+
+    // m_flDefaultFadeScale
+    public ref float DefaultFadeScale => ref Schema.GetRef<float>(this.Handle, "CRagdollProp", "m_flDefaultFadeScale");
+
+    // m_ragdollMins
+    public NetworkedVector<Vector> RagdollMins => Schema.GetDeclaredClass<NetworkedVector<Vector>>(this.Handle, "CRagdollProp", "m_ragdollMins");
+
+    // m_ragdollMaxs
+    public NetworkedVector<Vector> RagdollMaxs => Schema.GetDeclaredClass<NetworkedVector<Vector>>(this.Handle, "CRagdollProp", "m_ragdollMaxs");
+
+    // m_bShouldDeleteActivationRecord
+    public ref bool ShouldDeleteActivationRecord => ref Schema.GetRef<bool>(this.Handle, "CRagdollProp", "m_bShouldDeleteActivationRecord");
+
+    // m_bValidatePoweredRagdollPose
+    public ref bool ValidatePoweredRagdollPose => ref Schema.GetRef<bool>(this.Handle, "CRagdollProp", "m_bValidatePoweredRagdollPose");
+
+}
+
+public partial class CRagdollPropAlias_physics_prop_ragdoll : CRagdollProp
+{
+    public CRagdollPropAlias_physics_prop_ragdoll (IntPtr pointer) : base(pointer) {}
 
 }
 
@@ -9472,12 +18038,16 @@ public partial class CRagdollPropAttached : CRagdollProp
     public ref UInt32 RagdollAttachedObjectIndex => ref Schema.GetRef<UInt32>(this.Handle, "CRagdollPropAttached", "m_ragdollAttachedObjectIndex");
 
     // m_attachmentPointBoneSpace
-    // MNetworkEncoder "coord"
     public Vector AttachmentPointBoneSpace => Schema.GetDeclaredClass<Vector>(this.Handle, "CRagdollPropAttached", "m_attachmentPointBoneSpace");
 
     // m_attachmentPointRagdollSpace
-    // MNetworkEncoder "coord"
     public Vector AttachmentPointRagdollSpace => Schema.GetDeclaredClass<Vector>(this.Handle, "CRagdollPropAttached", "m_attachmentPointRagdollSpace");
+
+    // m_bShouldDetach
+    public ref bool ShouldDetach => ref Schema.GetRef<bool>(this.Handle, "CRagdollPropAttached", "m_bShouldDetach");
+
+    // m_bShouldDeleteAttachedActivationRecord
+    public ref bool ShouldDeleteAttachedActivationRecord => ref Schema.GetRef<bool>(this.Handle, "CRagdollPropAttached", "m_bShouldDeleteAttachedActivationRecord");
 
 }
 
@@ -9486,7 +18056,6 @@ public partial class CRectLight : CBarnLight
     public CRectLight (IntPtr pointer) : base(pointer) {}
 
     // m_bShowLight
-    // MNetworkChangeCallback "RenderingChanged"
     public ref bool ShowLight => ref Schema.GetRef<bool>(this.Handle, "CRectLight", "m_bShowLight");
 
 }
@@ -9494,6 +18063,21 @@ public partial class CRectLight : CBarnLight
 public partial class CRenderComponent : CEntityComponent
 {
     public CRenderComponent (IntPtr pointer) : base(pointer) {}
+
+    // __m_pChainEntity
+    public CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "CRenderComponent", "__m_pChainEntity");
+
+    // m_bIsRenderingWithViewModels
+    public ref bool IsRenderingWithViewModels => ref Schema.GetRef<bool>(this.Handle, "CRenderComponent", "m_bIsRenderingWithViewModels");
+
+    // m_nSplitscreenFlags
+    public ref UInt32 SplitscreenFlags => ref Schema.GetRef<UInt32>(this.Handle, "CRenderComponent", "m_nSplitscreenFlags");
+
+    // m_bEnableRendering
+    public ref bool EnableRendering => ref Schema.GetRef<bool>(this.Handle, "CRenderComponent", "m_bEnableRendering");
+
+    // m_bInterpolationReadyToDraw
+    public ref bool InterpolationReadyToDraw => ref Schema.GetRef<bool>(this.Handle, "CRenderComponent", "m_bInterpolationReadyToDraw");
 
 }
 
@@ -9518,12 +18102,34 @@ public partial class CRetakeGameRules : NativeObject
 
 }
 
+public partial class CRevertSaved : CModelPointEntity
+{
+    public CRevertSaved (IntPtr pointer) : base(pointer) {}
+
+    // m_loadTime
+    public ref float LoadTime => ref Schema.GetRef<float>(this.Handle, "CRevertSaved", "m_loadTime");
+
+    // m_Duration
+    public ref float Duration => ref Schema.GetRef<float>(this.Handle, "CRevertSaved", "m_Duration");
+
+    // m_HoldTime
+    public ref float HoldTime => ref Schema.GetRef<float>(this.Handle, "CRevertSaved", "m_HoldTime");
+
+}
+
 public partial class CRopeKeyframe : CBaseModelEntity
 {
     public CRopeKeyframe (IntPtr pointer) : base(pointer) {}
 
     // m_RopeFlags
     public ref UInt16 RopeFlags => ref Schema.GetRef<UInt16>(this.Handle, "CRopeKeyframe", "m_RopeFlags");
+
+    // m_iNextLinkName
+    public string NextLinkName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CRopeKeyframe", "m_iNextLinkName"); }
+        set { Schema.SetString(this.Handle, "CRopeKeyframe", "m_iNextLinkName", value); }
+    }
 
     // m_Slack
     public ref Int16 Slack => ref Schema.GetRef<Int16>(this.Handle, "CRopeKeyframe", "m_Slack");
@@ -9532,9 +18138,6 @@ public partial class CRopeKeyframe : CBaseModelEntity
     public ref float Width => ref Schema.GetRef<float>(this.Handle, "CRopeKeyframe", "m_Width");
 
     // m_TextureScale
-    // MNetworkBitCount "10"
-    // MNetworkMinValue "0.100000"
-    // MNetworkMaxValue "10.000000"
     public ref float TextureScale => ref Schema.GetRef<float>(this.Handle, "CRopeKeyframe", "m_TextureScale");
 
     // m_nSegments
@@ -9542,6 +18145,13 @@ public partial class CRopeKeyframe : CBaseModelEntity
 
     // m_bConstrainBetweenEndpoints
     public ref bool ConstrainBetweenEndpoints => ref Schema.GetRef<bool>(this.Handle, "CRopeKeyframe", "m_bConstrainBetweenEndpoints");
+
+    // m_strRopeMaterialModel
+    public string StrRopeMaterialModel
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CRopeKeyframe", "m_strRopeMaterialModel"); }
+        set { Schema.SetString(this.Handle, "CRopeKeyframe", "m_strRopeMaterialModel", value); }
+    }
 
     // m_iRopeMaterialModelIndex
     public CStrongHandle<InfoForResourceTypeIMaterial2> RopeMaterialModelIndex => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CRopeKeyframe", "m_iRopeMaterialModelIndex");
@@ -9558,8 +18168,17 @@ public partial class CRopeKeyframe : CBaseModelEntity
     // m_fLockedPoints
     public ref byte LockedPoints => ref Schema.GetRef<byte>(this.Handle, "CRopeKeyframe", "m_fLockedPoints");
 
+    // m_bCreatedFromMapFile
+    public ref bool CreatedFromMapFile => ref Schema.GetRef<bool>(this.Handle, "CRopeKeyframe", "m_bCreatedFromMapFile");
+
     // m_flScrollSpeed
     public ref float ScrollSpeed => ref Schema.GetRef<float>(this.Handle, "CRopeKeyframe", "m_flScrollSpeed");
+
+    // m_bStartPointValid
+    public ref bool StartPointValid => ref Schema.GetRef<bool>(this.Handle, "CRopeKeyframe", "m_bStartPointValid");
+
+    // m_bEndPointValid
+    public ref bool EndPointValid => ref Schema.GetRef<bool>(this.Handle, "CRopeKeyframe", "m_bEndPointValid");
 
     // m_hStartPoint
     public CHandle<CBaseEntity> StartPoint => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CRopeKeyframe", "m_hStartPoint");
@@ -9571,9 +18190,152 @@ public partial class CRopeKeyframe : CBaseModelEntity
     // m_iEndAttachment
 }
 
+public partial class CRopeKeyframeAlias_move_rope : CRopeKeyframe
+{
+    public CRopeKeyframeAlias_move_rope (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CRotButton : CBaseButton
+{
+    public CRotButton (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CRotDoor : CBaseDoor
+{
+    public CRotDoor (IntPtr pointer) : base(pointer) {}
+
+    // m_bSolidBsp
+    public ref bool SolidBsp => ref Schema.GetRef<bool>(this.Handle, "CRotDoor", "m_bSolidBsp");
+
+}
+
+public partial class CRuleBrushEntity : CRuleEntity
+{
+    public CRuleBrushEntity (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CRuleEntity : CBaseModelEntity
+{
+    public CRuleEntity (IntPtr pointer) : base(pointer) {}
+
+    // m_iszMaster
+    public string Master
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CRuleEntity", "m_iszMaster"); }
+        set { Schema.SetString(this.Handle, "CRuleEntity", "m_iszMaster", value); }
+    }
+
+}
+
+public partial class CRulePointEntity : CRuleEntity
+{
+    public CRulePointEntity (IntPtr pointer) : base(pointer) {}
+
+    // m_Score
+    public ref Int32 Score => ref Schema.GetRef<Int32>(this.Handle, "CRulePointEntity", "m_Score");
+
+}
+
 public partial class CSceneEntity : CPointEntity
 {
     public CSceneEntity (IntPtr pointer) : base(pointer) {}
+
+    // m_iszSceneFile
+    public string SceneFile
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszSceneFile"); }
+        set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszSceneFile", value); }
+    }
+
+    // m_iszResumeSceneFile
+    public string ResumeSceneFile
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszResumeSceneFile"); }
+        set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszResumeSceneFile", value); }
+    }
+
+    // m_iszTarget1
+    public string IszTarget1
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszTarget1"); }
+        set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget1", value); }
+    }
+
+    // m_iszTarget2
+    public string IszTarget2
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszTarget2"); }
+        set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget2", value); }
+    }
+
+    // m_iszTarget3
+    public string IszTarget3
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszTarget3"); }
+        set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget3", value); }
+    }
+
+    // m_iszTarget4
+    public string IszTarget4
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszTarget4"); }
+        set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget4", value); }
+    }
+
+    // m_iszTarget5
+    public string IszTarget5
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszTarget5"); }
+        set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget5", value); }
+    }
+
+    // m_iszTarget6
+    public string IszTarget6
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszTarget6"); }
+        set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget6", value); }
+    }
+
+    // m_iszTarget7
+    public string IszTarget7
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszTarget7"); }
+        set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget7", value); }
+    }
+
+    // m_iszTarget8
+    public string IszTarget8
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszTarget8"); }
+        set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget8", value); }
+    }
+
+    // m_hTarget1
+    public CHandle<CBaseEntity> HTarget1 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget1");
+
+    // m_hTarget2
+    public CHandle<CBaseEntity> HTarget2 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget2");
+
+    // m_hTarget3
+    public CHandle<CBaseEntity> HTarget3 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget3");
+
+    // m_hTarget4
+    public CHandle<CBaseEntity> HTarget4 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget4");
+
+    // m_hTarget5
+    public CHandle<CBaseEntity> HTarget5 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget5");
+
+    // m_hTarget6
+    public CHandle<CBaseEntity> HTarget6 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget6");
+
+    // m_hTarget7
+    public CHandle<CBaseEntity> HTarget7 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget7");
+
+    // m_hTarget8
+    public CHandle<CBaseEntity> HTarget8 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget8");
 
     // m_bIsPlayingBack
     public ref bool IsPlayingBack => ref Schema.GetRef<bool>(this.Handle, "CSceneEntity", "m_bIsPlayingBack");
@@ -9590,17 +18352,444 @@ public partial class CSceneEntity : CPointEntity
     // m_flForceClientTime
     public ref float ForceClientTime => ref Schema.GetRef<float>(this.Handle, "CSceneEntity", "m_flForceClientTime");
 
+    // m_flCurrentTime
+    public ref float CurrentTime => ref Schema.GetRef<float>(this.Handle, "CSceneEntity", "m_flCurrentTime");
+
+    // m_flFrameTime
+    public ref float FrameTime => ref Schema.GetRef<float>(this.Handle, "CSceneEntity", "m_flFrameTime");
+
+    // m_bCancelAtNextInterrupt
+    public ref bool CancelAtNextInterrupt => ref Schema.GetRef<bool>(this.Handle, "CSceneEntity", "m_bCancelAtNextInterrupt");
+
+    // m_fPitch
+    public ref float Pitch => ref Schema.GetRef<float>(this.Handle, "CSceneEntity", "m_fPitch");
+
+    // m_bAutomated
+    public ref bool Automated => ref Schema.GetRef<bool>(this.Handle, "CSceneEntity", "m_bAutomated");
+
+    // m_nAutomatedAction
+    public ref Int32 AutomatedAction => ref Schema.GetRef<Int32>(this.Handle, "CSceneEntity", "m_nAutomatedAction");
+
+    // m_flAutomationDelay
+    public ref float AutomationDelay => ref Schema.GetRef<float>(this.Handle, "CSceneEntity", "m_flAutomationDelay");
+
+    // m_flAutomationTime
+    public ref float AutomationTime => ref Schema.GetRef<float>(this.Handle, "CSceneEntity", "m_flAutomationTime");
+
+    // m_hWaitingForThisResumeScene
+    public CHandle<CBaseEntity> WaitingForThisResumeScene => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hWaitingForThisResumeScene");
+
+    // m_bWaitingForResumeScene
+    public ref bool WaitingForResumeScene => ref Schema.GetRef<bool>(this.Handle, "CSceneEntity", "m_bWaitingForResumeScene");
+
+    // m_bPausedViaInput
+    public ref bool PausedViaInput => ref Schema.GetRef<bool>(this.Handle, "CSceneEntity", "m_bPausedViaInput");
+
+    // m_bPauseAtNextInterrupt
+    public ref bool PauseAtNextInterrupt => ref Schema.GetRef<bool>(this.Handle, "CSceneEntity", "m_bPauseAtNextInterrupt");
+
+    // m_bWaitingForActor
+    public ref bool WaitingForActor => ref Schema.GetRef<bool>(this.Handle, "CSceneEntity", "m_bWaitingForActor");
+
+    // m_bWaitingForInterrupt
+    public ref bool WaitingForInterrupt => ref Schema.GetRef<bool>(this.Handle, "CSceneEntity", "m_bWaitingForInterrupt");
+
+    // m_bInterruptedActorsScenes
+    public ref bool InterruptedActorsScenes => ref Schema.GetRef<bool>(this.Handle, "CSceneEntity", "m_bInterruptedActorsScenes");
+
+    // m_bBreakOnNonIdle
+    public ref bool BreakOnNonIdle => ref Schema.GetRef<bool>(this.Handle, "CSceneEntity", "m_bBreakOnNonIdle");
+
     // m_hActorList
     public NetworkedVector<CHandle<CBaseFlex>> ActorList => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseFlex>>>(this.Handle, "CSceneEntity", "m_hActorList");
 
+    // m_hRemoveActorList
+    public NetworkedVector<CHandle<CBaseEntity>> RemoveActorList => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CSceneEntity", "m_hRemoveActorList");
+
+    // m_nSceneFlushCounter
+    public ref Int32 SceneFlushCounter => ref Schema.GetRef<Int32>(this.Handle, "CSceneEntity", "m_nSceneFlushCounter");
+
     // m_nSceneStringIndex
     public ref UInt16 SceneStringIndex => ref Schema.GetRef<UInt16>(this.Handle, "CSceneEntity", "m_nSceneStringIndex");
+
+    // m_OnStart
+    public CEntityIOOutput OnStart => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CSceneEntity", "m_OnStart");
+
+    // m_OnCompletion
+    public CEntityIOOutput OnCompletion => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CSceneEntity", "m_OnCompletion");
+
+    // m_OnCanceled
+    public CEntityIOOutput OnCanceled => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CSceneEntity", "m_OnCanceled");
+
+    // m_OnPaused
+    public CEntityIOOutput OnPaused => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CSceneEntity", "m_OnPaused");
+
+    // m_OnResumed
+    public CEntityIOOutput OnResumed => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CSceneEntity", "m_OnResumed");
+
+    // m_OnTrigger
+    public Span<CEntityIOOutput> OnTrigger => Schema.GetFixedArray<CEntityIOOutput>(this.Handle, "CSceneEntity", "m_OnTrigger", 16);
+
+    // m_hInterruptScene
+    public CHandle<CSceneEntity> InterruptScene => Schema.GetDeclaredClass<CHandle<CSceneEntity>>(this.Handle, "CSceneEntity", "m_hInterruptScene");
+
+    // m_nInterruptCount
+    public ref Int32 InterruptCount => ref Schema.GetRef<Int32>(this.Handle, "CSceneEntity", "m_nInterruptCount");
+
+    // m_bSceneMissing
+    public ref bool SceneMissing => ref Schema.GetRef<bool>(this.Handle, "CSceneEntity", "m_bSceneMissing");
+
+    // m_bInterrupted
+    public ref bool Interrupted => ref Schema.GetRef<bool>(this.Handle, "CSceneEntity", "m_bInterrupted");
+
+    // m_bCompletedEarly
+    public ref bool CompletedEarly => ref Schema.GetRef<bool>(this.Handle, "CSceneEntity", "m_bCompletedEarly");
+
+    // m_bInterruptSceneFinished
+    public ref bool InterruptSceneFinished => ref Schema.GetRef<bool>(this.Handle, "CSceneEntity", "m_bInterruptSceneFinished");
+
+    // m_bRestoring
+    public ref bool Restoring => ref Schema.GetRef<bool>(this.Handle, "CSceneEntity", "m_bRestoring");
+
+    // m_hNotifySceneCompletion
+    public NetworkedVector<CHandle<CSceneEntity>> NotifySceneCompletion => Schema.GetDeclaredClass<NetworkedVector<CHandle<CSceneEntity>>>(this.Handle, "CSceneEntity", "m_hNotifySceneCompletion");
+
+    // m_hListManagers
+    public NetworkedVector<CHandle<CSceneListManager>> ListManagers => Schema.GetDeclaredClass<NetworkedVector<CHandle<CSceneListManager>>>(this.Handle, "CSceneEntity", "m_hListManagers");
+
+    // m_iszSoundName
+    public string SoundName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszSoundName"); }
+        set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszSoundName", value); }
+    }
+
+    // m_hActor
+    public CHandle<CBaseFlex> Actor => Schema.GetDeclaredClass<CHandle<CBaseFlex>>(this.Handle, "CSceneEntity", "m_hActor");
+
+    // m_hActivator
+    public CHandle<CBaseEntity> Activator => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hActivator");
+
+    // m_BusyActor
+    public ref Int32 BusyActor => ref Schema.GetRef<Int32>(this.Handle, "CSceneEntity", "m_BusyActor");
+
+    // m_iPlayerDeathBehavior
+    public ref SceneOnPlayerDeath_t PlayerDeathBehavior => ref Schema.GetRef<SceneOnPlayerDeath_t>(this.Handle, "CSceneEntity", "m_iPlayerDeathBehavior");
+
+}
+
+public partial class CSceneEntityAlias_logic_choreographed_scene : CSceneEntity
+{
+    public CSceneEntityAlias_logic_choreographed_scene (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CSceneListManager : CLogicalEntity
+{
+    public CSceneListManager (IntPtr pointer) : base(pointer) {}
+
+    // m_hListManagers
+    public NetworkedVector<CHandle<CSceneListManager>> ListManagers => Schema.GetDeclaredClass<NetworkedVector<CHandle<CSceneListManager>>>(this.Handle, "CSceneListManager", "m_hListManagers");
+
+    // m_iszScenes
+    public Span<string> IszScenes => Schema.GetFixedArray<string>(this.Handle, "CSceneListManager", "m_iszScenes", 16);
+
+    // m_hScenes
+    public Span<CHandle<CBaseEntity>> HScenes => Schema.GetFixedArray<CHandle<CBaseEntity>>(this.Handle, "CSceneListManager", "m_hScenes", 16);
 
 }
 
 public partial class CScriptComponent : CEntityComponent
 {
     public CScriptComponent (IntPtr pointer) : base(pointer) {}
+
+    // m_scriptClassName
+    public string ScriptClassName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CScriptComponent", "m_scriptClassName"); }
+        set { Schema.SetString(this.Handle, "CScriptComponent", "m_scriptClassName", value); }
+    }
+
+}
+
+public partial class CScriptedSequence : CBaseEntity
+{
+    public CScriptedSequence (IntPtr pointer) : base(pointer) {}
+
+    // m_iszEntry
+    public string Entry
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CScriptedSequence", "m_iszEntry"); }
+        set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszEntry", value); }
+    }
+
+    // m_iszPreIdle
+    public string PreIdle
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CScriptedSequence", "m_iszPreIdle"); }
+        set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszPreIdle", value); }
+    }
+
+    // m_iszPlay
+    public string Play
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CScriptedSequence", "m_iszPlay"); }
+        set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszPlay", value); }
+    }
+
+    // m_iszPostIdle
+    public string PostIdle
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CScriptedSequence", "m_iszPostIdle"); }
+        set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszPostIdle", value); }
+    }
+
+    // m_iszModifierToAddOnPlay
+    public string ModifierToAddOnPlay
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CScriptedSequence", "m_iszModifierToAddOnPlay"); }
+        set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszModifierToAddOnPlay", value); }
+    }
+
+    // m_iszNextScript
+    public string NextScript
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CScriptedSequence", "m_iszNextScript"); }
+        set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszNextScript", value); }
+    }
+
+    // m_iszEntity
+    public string Entity
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CScriptedSequence", "m_iszEntity"); }
+        set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszEntity", value); }
+    }
+
+    // m_iszSyncGroup
+    public string SyncGroup
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CScriptedSequence", "m_iszSyncGroup"); }
+        set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszSyncGroup", value); }
+    }
+
+    // m_nMoveTo
+    public ref ScriptedMoveTo_t MoveTo => ref Schema.GetRef<ScriptedMoveTo_t>(this.Handle, "CScriptedSequence", "m_nMoveTo");
+
+    // m_bIsPlayingPreIdle
+    public ref bool IsPlayingPreIdle => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bIsPlayingPreIdle");
+
+    // m_bIsPlayingEntry
+    public ref bool IsPlayingEntry => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bIsPlayingEntry");
+
+    // m_bIsPlayingAction
+    public ref bool IsPlayingAction => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bIsPlayingAction");
+
+    // m_bIsPlayingPostIdle
+    public ref bool IsPlayingPostIdle => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bIsPlayingPostIdle");
+
+    // m_bLoopPreIdleSequence
+    public ref bool LoopPreIdleSequence => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bLoopPreIdleSequence");
+
+    // m_bLoopActionSequence
+    public ref bool LoopActionSequence => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bLoopActionSequence");
+
+    // m_bLoopPostIdleSequence
+    public ref bool LoopPostIdleSequence => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bLoopPostIdleSequence");
+
+    // m_bSynchPostIdles
+    public ref bool SynchPostIdles => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bSynchPostIdles");
+
+    // m_bIgnoreGravity
+    public ref bool IgnoreGravity => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bIgnoreGravity");
+
+    // m_bDisableNPCCollisions
+    public ref bool DisableNPCCollisions => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bDisableNPCCollisions");
+
+    // m_bKeepAnimgraphLockedPost
+    public ref bool KeepAnimgraphLockedPost => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bKeepAnimgraphLockedPost");
+
+    // m_bDontAddModifiers
+    public ref bool DontAddModifiers => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bDontAddModifiers");
+
+    // m_flRadius
+    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CScriptedSequence", "m_flRadius");
+
+    // m_flRepeat
+    public ref float Repeat => ref Schema.GetRef<float>(this.Handle, "CScriptedSequence", "m_flRepeat");
+
+    // m_flPlayAnimFadeInTime
+    public ref float PlayAnimFadeInTime => ref Schema.GetRef<float>(this.Handle, "CScriptedSequence", "m_flPlayAnimFadeInTime");
+
+    // m_flMoveInterpTime
+    public ref float MoveInterpTime => ref Schema.GetRef<float>(this.Handle, "CScriptedSequence", "m_flMoveInterpTime");
+
+    // m_flAngRate
+    public ref float AngRate => ref Schema.GetRef<float>(this.Handle, "CScriptedSequence", "m_flAngRate");
+
+    // m_iDelay
+    public ref Int32 Delay => ref Schema.GetRef<Int32>(this.Handle, "CScriptedSequence", "m_iDelay");
+
+    // m_startTime
+    public ref float StartTime => ref Schema.GetRef<float>(this.Handle, "CScriptedSequence", "m_startTime");
+
+    // m_bWaitForBeginSequence
+    public ref bool WaitForBeginSequence => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bWaitForBeginSequence");
+
+    // m_saved_effects
+    public ref Int32 Saved_effects => ref Schema.GetRef<Int32>(this.Handle, "CScriptedSequence", "m_saved_effects");
+
+    // m_savedFlags
+    public ref Int32 SavedFlags => ref Schema.GetRef<Int32>(this.Handle, "CScriptedSequence", "m_savedFlags");
+
+    // m_savedCollisionGroup
+    public ref Int32 SavedCollisionGroup => ref Schema.GetRef<Int32>(this.Handle, "CScriptedSequence", "m_savedCollisionGroup");
+
+    // m_interruptable
+    public ref bool Interruptable => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_interruptable");
+
+    // m_sequenceStarted
+    public ref bool SequenceStarted => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_sequenceStarted");
+
+    // m_bPrevAnimatedEveryTick
+    public ref bool PrevAnimatedEveryTick => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bPrevAnimatedEveryTick");
+
+    // m_bForcedAnimatedEveryTick
+    public ref bool ForcedAnimatedEveryTick => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bForcedAnimatedEveryTick");
+
+    // m_bPositionRelativeToOtherEntity
+    public ref bool PositionRelativeToOtherEntity => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bPositionRelativeToOtherEntity");
+
+    // m_hTargetEnt
+    public CHandle<CBaseEntity> TargetEnt => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CScriptedSequence", "m_hTargetEnt");
+
+    // m_hNextCine
+    public CHandle<CScriptedSequence> NextCine => Schema.GetDeclaredClass<CHandle<CScriptedSequence>>(this.Handle, "CScriptedSequence", "m_hNextCine");
+
+    // m_bThinking
+    public ref bool Thinking => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bThinking");
+
+    // m_bInitiatedSelfDelete
+    public ref bool InitiatedSelfDelete => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bInitiatedSelfDelete");
+
+    // m_bIsTeleportingDueToMoveTo
+    public ref bool IsTeleportingDueToMoveTo => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bIsTeleportingDueToMoveTo");
+
+    // m_bAllowCustomInterruptConditions
+    public ref bool AllowCustomInterruptConditions => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bAllowCustomInterruptConditions");
+
+    // m_hLastFoundEntity
+    public CHandle<CBaseEntity> LastFoundEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CScriptedSequence", "m_hLastFoundEntity");
+
+    // m_hForcedTarget
+    public CHandle<CBaseAnimGraph> ForcedTarget => Schema.GetDeclaredClass<CHandle<CBaseAnimGraph>>(this.Handle, "CScriptedSequence", "m_hForcedTarget");
+
+    // m_bDontCancelOtherSequences
+    public ref bool DontCancelOtherSequences => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bDontCancelOtherSequences");
+
+    // m_bForceSynch
+    public ref bool ForceSynch => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bForceSynch");
+
+    // m_bTargetWasAsleep
+    public ref bool TargetWasAsleep => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bTargetWasAsleep");
+
+    // m_bPreventUpdateYawOnFinish
+    public ref bool PreventUpdateYawOnFinish => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bPreventUpdateYawOnFinish");
+
+    // m_bEnsureOnNavmeshOnFinish
+    public ref bool EnsureOnNavmeshOnFinish => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bEnsureOnNavmeshOnFinish");
+
+    // m_onDeathBehavior
+    public ref ScriptedOnDeath_t OnDeathBehavior => ref Schema.GetRef<ScriptedOnDeath_t>(this.Handle, "CScriptedSequence", "m_onDeathBehavior");
+
+    // m_ConflictResponse
+    public ref ScriptedConflictResponse_t ConflictResponse => ref Schema.GetRef<ScriptedConflictResponse_t>(this.Handle, "CScriptedSequence", "m_ConflictResponse");
+
+    // m_OnBeginSequence
+    public CEntityIOOutput OnBeginSequence => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CScriptedSequence", "m_OnBeginSequence");
+
+    // m_OnActionStartOrLoop
+    public CEntityIOOutput OnActionStartOrLoop => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CScriptedSequence", "m_OnActionStartOrLoop");
+
+    // m_OnEndSequence
+    public CEntityIOOutput OnEndSequence => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CScriptedSequence", "m_OnEndSequence");
+
+    // m_OnPostIdleEndSequence
+    public CEntityIOOutput OnPostIdleEndSequence => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CScriptedSequence", "m_OnPostIdleEndSequence");
+
+    // m_OnCancelSequence
+    public CEntityIOOutput OnCancelSequence => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CScriptedSequence", "m_OnCancelSequence");
+
+    // m_OnCancelFailedSequence
+    public CEntityIOOutput OnCancelFailedSequence => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CScriptedSequence", "m_OnCancelFailedSequence");
+
+    // m_OnScriptEvent
+    public Span<CEntityIOOutput> OnScriptEvent => Schema.GetFixedArray<CEntityIOOutput>(this.Handle, "CScriptedSequence", "m_OnScriptEvent", 8);
+
+    // m_matOtherToMain
+    public CTransform MatOtherToMain => Schema.GetDeclaredClass<CTransform>(this.Handle, "CScriptedSequence", "m_matOtherToMain");
+
+    // m_hInteractionMainEntity
+    public CHandle<CBaseEntity> InteractionMainEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CScriptedSequence", "m_hInteractionMainEntity");
+
+    // m_iPlayerDeathBehavior
+    public ref Int32 PlayerDeathBehavior => ref Schema.GetRef<Int32>(this.Handle, "CScriptedSequence", "m_iPlayerDeathBehavior");
+
+}
+
+public partial class CScriptItem : CItem
+{
+    public CScriptItem (IntPtr pointer) : base(pointer) {}
+
+    // m_OnPlayerPickup
+    public CEntityIOOutput OnPlayerPickup => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CScriptItem", "m_OnPlayerPickup");
+
+    // m_MoveTypeOverride
+    public ref MoveType_t MoveTypeOverride => ref Schema.GetRef<MoveType_t>(this.Handle, "CScriptItem", "m_MoveTypeOverride");
+
+}
+
+public partial class CScriptNavBlocker : CFuncNavBlocker
+{
+    public CScriptNavBlocker (IntPtr pointer) : base(pointer) {}
+
+    // m_vExtent
+    public Vector Extent => Schema.GetDeclaredClass<Vector>(this.Handle, "CScriptNavBlocker", "m_vExtent");
+
+}
+
+public partial class CScriptTriggerHurt : CTriggerHurt
+{
+    public CScriptTriggerHurt (IntPtr pointer) : base(pointer) {}
+
+    // m_vExtent
+    public Vector Extent => Schema.GetDeclaredClass<Vector>(this.Handle, "CScriptTriggerHurt", "m_vExtent");
+
+}
+
+public partial class CScriptTriggerMultiple : CTriggerMultiple
+{
+    public CScriptTriggerMultiple (IntPtr pointer) : base(pointer) {}
+
+    // m_vExtent
+    public Vector Extent => Schema.GetDeclaredClass<Vector>(this.Handle, "CScriptTriggerMultiple", "m_vExtent");
+
+}
+
+public partial class CScriptTriggerOnce : CTriggerOnce
+{
+    public CScriptTriggerOnce (IntPtr pointer) : base(pointer) {}
+
+    // m_vExtent
+    public Vector Extent => Schema.GetDeclaredClass<Vector>(this.Handle, "CScriptTriggerOnce", "m_vExtent");
+
+}
+
+public partial class CScriptTriggerPush : CTriggerPush
+{
+    public CScriptTriggerPush (IntPtr pointer) : base(pointer) {}
+
+    // m_vExtent
+    public Vector Extent => Schema.GetDeclaredClass<Vector>(this.Handle, "CScriptTriggerPush", "m_vExtent");
 
 }
 
@@ -9614,20 +18803,74 @@ public partial class CSensorGrenadeProjectile : CBaseCSGrenadeProjectile
 {
     public CSensorGrenadeProjectile (IntPtr pointer) : base(pointer) {}
 
+    // m_fExpireTime
+    public ref float ExpireTime => ref Schema.GetRef<float>(this.Handle, "CSensorGrenadeProjectile", "m_fExpireTime");
+
+    // m_fNextDetectPlayerSound
+    public ref float NextDetectPlayerSound => ref Schema.GetRef<float>(this.Handle, "CSensorGrenadeProjectile", "m_fNextDetectPlayerSound");
+
+    // m_hDisplayGrenade
+    public CHandle<CBaseEntity> DisplayGrenade => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSensorGrenadeProjectile", "m_hDisplayGrenade");
+
+}
+
+public partial class CServerOnlyEntity : CBaseEntity
+{
+    public CServerOnlyEntity (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CServerOnlyModelEntity : CBaseModelEntity
+{
+    public CServerOnlyModelEntity (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CServerOnlyPointEntity : CServerOnlyEntity
+{
+    public CServerOnlyPointEntity (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CServerRagdollTrigger : CBaseTrigger
+{
+    public CServerRagdollTrigger (IntPtr pointer) : base(pointer) {}
+
 }
 
 public partial class CShatterGlassShardPhysics : CPhysicsProp
 {
     public CShatterGlassShardPhysics (IntPtr pointer) : base(pointer) {}
 
+    // m_bDebris
+    public ref bool Debris => ref Schema.GetRef<bool>(this.Handle, "CShatterGlassShardPhysics", "m_bDebris");
+
+    // m_hParentShard
+    public ref UInt32 ParentShard => ref Schema.GetRef<UInt32>(this.Handle, "CShatterGlassShardPhysics", "m_hParentShard");
+
     // m_ShardDesc
     public shard_model_desc_t ShardDesc => Schema.GetDeclaredClass<shard_model_desc_t>(this.Handle, "CShatterGlassShardPhysics", "m_ShardDesc");
+
+}
+
+public partial class CShower : CModelPointEntity
+{
+    public CShower (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CSimpleMarkupVolumeTagged : CMarkupVolumeTagged
+{
+    public CSimpleMarkupVolumeTagged (IntPtr pointer) : base(pointer) {}
 
 }
 
 public partial class CSkeletonAnimationController : ISkeletonAnimationController
 {
     public CSkeletonAnimationController (IntPtr pointer) : base(pointer) {}
+
+    // m_pSkeletonInstance
+    public CSkeletonInstance? SkeletonInstance => Schema.GetPointer<CSkeletonInstance>(this.Handle, "CSkeletonAnimationController", "m_pSkeletonInstance");
 
 }
 
@@ -9644,12 +18887,28 @@ public partial class CSkeletonInstance : CGameSceneNode
     // m_bUseParentRenderBounds
     public ref bool UseParentRenderBounds => ref Schema.GetRef<bool>(this.Handle, "CSkeletonInstance", "m_bUseParentRenderBounds");
 
+    // m_bDisableSolidCollisionsForHierarchy
+    public ref bool DisableSolidCollisionsForHierarchy => ref Schema.GetRef<bool>(this.Handle, "CSkeletonInstance", "m_bDisableSolidCollisionsForHierarchy");
+
+    // m_bDirtyMotionType
+    // m_bIsGeneratingLatchedParentSpaceState
     // m_materialGroup
-    // MNetworkChangeCallback "skeletonMaterialGroupChanged"
     public CUtlStringToken MaterialGroup => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CSkeletonInstance", "m_materialGroup");
 
     // m_nHitboxSet
     public ref byte HitboxSet => ref Schema.GetRef<byte>(this.Handle, "CSkeletonInstance", "m_nHitboxSet");
+
+}
+
+public partial class CSkyboxReference : CBaseEntity
+{
+    public CSkyboxReference (IntPtr pointer) : base(pointer) {}
+
+    // m_worldGroupId
+    public WorldGroupId_t WorldGroupId => Schema.GetDeclaredClass<WorldGroupId_t>(this.Handle, "CSkyboxReference", "m_worldGroupId");
+
+    // m_hSkyCamera
+    public CHandle<CSkyCamera> SkyCamera => Schema.GetDeclaredClass<CHandle<CSkyCamera>>(this.Handle, "CSkyboxReference", "m_hSkyCamera");
 
 }
 
@@ -9662,6 +18921,12 @@ public partial class CSkyCamera : CBaseEntity
 
     // m_skyboxSlotToken
     public CUtlStringToken SkyboxSlotToken => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CSkyCamera", "m_skyboxSlotToken");
+
+    // m_bUseAngles
+    public ref bool UseAngles => ref Schema.GetRef<bool>(this.Handle, "CSkyCamera", "m_bUseAngles");
+
+    // m_pNext
+    public CSkyCamera? Next => Schema.GetPointer<CSkyCamera>(this.Handle, "CSkyCamera", "m_pNext");
 
 }
 
@@ -9677,6 +18942,54 @@ public partial class CSMatchStats_t : CSPerRoundStats_t
 
     // m_iEnemy3Ks
     public ref Int32 Enemy3Ks => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemy3Ks");
+
+    // m_iEnemy2Ks
+    public ref Int32 Enemy2Ks => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemy2Ks");
+
+    // m_iUtility_Count
+    public ref Int32 Utility_Count => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_iUtility_Count");
+
+    // m_iUtility_Successes
+    public ref Int32 Utility_Successes => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_iUtility_Successes");
+
+    // m_iUtility_Enemies
+    public ref Int32 Utility_Enemies => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_iUtility_Enemies");
+
+    // m_iFlash_Count
+    public ref Int32 Flash_Count => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_iFlash_Count");
+
+    // m_iFlash_Successes
+    public ref Int32 Flash_Successes => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_iFlash_Successes");
+
+    // m_nHealthPointsRemovedTotal
+    public ref Int32 HealthPointsRemovedTotal => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_nHealthPointsRemovedTotal");
+
+    // m_nHealthPointsDealtTotal
+    public ref Int32 HealthPointsDealtTotal => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_nHealthPointsDealtTotal");
+
+    // m_nShotsFiredTotal
+    public ref Int32 ShotsFiredTotal => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_nShotsFiredTotal");
+
+    // m_nShotsOnTargetTotal
+    public ref Int32 ShotsOnTargetTotal => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_nShotsOnTargetTotal");
+
+    // m_i1v1Count
+    public ref Int32 I1v1Count => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_i1v1Count");
+
+    // m_i1v1Wins
+    public ref Int32 I1v1Wins => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_i1v1Wins");
+
+    // m_i1v2Count
+    public ref Int32 I1v2Count => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_i1v2Count");
+
+    // m_i1v2Wins
+    public ref Int32 I1v2Wins => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_i1v2Wins");
+
+    // m_iEntryCount
+    public ref Int32 EntryCount => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_iEntryCount");
+
+    // m_iEntryWins
+    public ref Int32 EntryWins => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_iEntryWins");
 
 }
 
@@ -9707,6 +19020,54 @@ public partial class CSmokeGrenadeProjectile : CBaseCSGrenadeProjectile
 
     // m_VoxelFrameData
     public NetworkedVector<byte> VoxelFrameData => Schema.GetDeclaredClass<NetworkedVector<byte>>(this.Handle, "CSmokeGrenadeProjectile", "m_VoxelFrameData");
+
+    // m_flLastBounce
+    public ref float LastBounce => ref Schema.GetRef<float>(this.Handle, "CSmokeGrenadeProjectile", "m_flLastBounce");
+
+    // m_fllastSimulationTime
+    public ref float FllastSimulationTime => ref Schema.GetRef<float>(this.Handle, "CSmokeGrenadeProjectile", "m_fllastSimulationTime");
+
+}
+
+public partial class CSound : NativeObject
+{
+    public CSound (IntPtr pointer) : base(pointer) {}
+
+    // m_hOwner
+    public CHandle<CBaseEntity> Owner => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSound", "m_hOwner");
+
+    // m_hTarget
+    public CHandle<CBaseEntity> Target => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSound", "m_hTarget");
+
+    // m_iVolume
+    public ref Int32 Volume => ref Schema.GetRef<Int32>(this.Handle, "CSound", "m_iVolume");
+
+    // m_flOcclusionScale
+    public ref float OcclusionScale => ref Schema.GetRef<float>(this.Handle, "CSound", "m_flOcclusionScale");
+
+    // m_iType
+    public ref Int32 Type => ref Schema.GetRef<Int32>(this.Handle, "CSound", "m_iType");
+
+    // m_iNextAudible
+    public ref Int32 NextAudible => ref Schema.GetRef<Int32>(this.Handle, "CSound", "m_iNextAudible");
+
+    // m_flExpireTime
+    public ref float ExpireTime => ref Schema.GetRef<float>(this.Handle, "CSound", "m_flExpireTime");
+
+    // m_iNext
+    public ref Int16 Next => ref Schema.GetRef<Int16>(this.Handle, "CSound", "m_iNext");
+
+    // m_bNoExpirationTime
+    public ref bool NoExpirationTime => ref Schema.GetRef<bool>(this.Handle, "CSound", "m_bNoExpirationTime");
+
+    // m_ownerChannelIndex
+    public ref Int32 OwnerChannelIndex => ref Schema.GetRef<Int32>(this.Handle, "CSound", "m_ownerChannelIndex");
+
+    // m_vecOrigin
+    public Vector Origin => Schema.GetDeclaredClass<Vector>(this.Handle, "CSound", "m_vecOrigin");
+
+    // m_bHasOwner
+    public ref bool HasOwner => ref Schema.GetRef<bool>(this.Handle, "CSound", "m_bHasOwner");
 
 }
 
@@ -9750,9 +19111,225 @@ public partial class CSoundAreaEntitySphere : CSoundAreaEntityBase
 
 }
 
+public partial class CSoundEnt : CPointEntity
+{
+    public CSoundEnt (IntPtr pointer) : base(pointer) {}
+
+    // m_iFreeSound
+    public ref Int32 FreeSound => ref Schema.GetRef<Int32>(this.Handle, "CSoundEnt", "m_iFreeSound");
+
+    // m_iActiveSound
+    public ref Int32 ActiveSound => ref Schema.GetRef<Int32>(this.Handle, "CSoundEnt", "m_iActiveSound");
+
+    // m_cLastActiveSounds
+    public ref Int32 CLastActiveSounds => ref Schema.GetRef<Int32>(this.Handle, "CSoundEnt", "m_cLastActiveSounds");
+
+    // m_SoundPool
+    public Span<CSound> SoundPool => Schema.GetFixedArray<CSound>(this.Handle, "CSoundEnt", "m_SoundPool", 128);
+
+}
+
+public partial class CSoundEventAABBEntity : CSoundEventEntity
+{
+    public CSoundEventAABBEntity (IntPtr pointer) : base(pointer) {}
+
+    // m_vMins
+    public Vector Mins => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundEventAABBEntity", "m_vMins");
+
+    // m_vMaxs
+    public Vector Maxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundEventAABBEntity", "m_vMaxs");
+
+}
+
+public partial class CSoundEventEntity : CBaseEntity
+{
+    public CSoundEventEntity (IntPtr pointer) : base(pointer) {}
+
+    // m_bStartOnSpawn
+    public ref bool StartOnSpawn => ref Schema.GetRef<bool>(this.Handle, "CSoundEventEntity", "m_bStartOnSpawn");
+
+    // m_bToLocalPlayer
+    public ref bool ToLocalPlayer => ref Schema.GetRef<bool>(this.Handle, "CSoundEventEntity", "m_bToLocalPlayer");
+
+    // m_bStopOnNew
+    public ref bool StopOnNew => ref Schema.GetRef<bool>(this.Handle, "CSoundEventEntity", "m_bStopOnNew");
+
+    // m_bSaveRestore
+    public ref bool SaveRestore => ref Schema.GetRef<bool>(this.Handle, "CSoundEventEntity", "m_bSaveRestore");
+
+    // m_bSavedIsPlaying
+    public ref bool SavedIsPlaying => ref Schema.GetRef<bool>(this.Handle, "CSoundEventEntity", "m_bSavedIsPlaying");
+
+    // m_flSavedElapsedTime
+    public ref float SavedElapsedTime => ref Schema.GetRef<float>(this.Handle, "CSoundEventEntity", "m_flSavedElapsedTime");
+
+    // m_iszSourceEntityName
+    public string SourceEntityName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CSoundEventEntity", "m_iszSourceEntityName"); }
+        set { Schema.SetString(this.Handle, "CSoundEventEntity", "m_iszSourceEntityName", value); }
+    }
+
+    // m_iszAttachmentName
+    public string AttachmentName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CSoundEventEntity", "m_iszAttachmentName"); }
+        set { Schema.SetString(this.Handle, "CSoundEventEntity", "m_iszAttachmentName", value); }
+    }
+
+    // m_onSoundFinished
+    public CEntityIOOutput OnSoundFinished => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CSoundEventEntity", "m_onSoundFinished");
+
+    // m_iszSoundName
+    public string SoundName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CSoundEventEntity", "m_iszSoundName"); }
+        set { Schema.SetString(this.Handle, "CSoundEventEntity", "m_iszSoundName", value); }
+    }
+
+    // m_hSource
+    public CHandle<CEntityInstance> Source => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CSoundEventEntity", "m_hSource");
+
+}
+
+public partial class CSoundEventEntityAlias_snd_event_point : CSoundEventEntity
+{
+    public CSoundEventEntityAlias_snd_event_point (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CSoundEventOBBEntity : CSoundEventEntity
+{
+    public CSoundEventOBBEntity (IntPtr pointer) : base(pointer) {}
+
+    // m_vMins
+    public Vector Mins => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundEventOBBEntity", "m_vMins");
+
+    // m_vMaxs
+    public Vector Maxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundEventOBBEntity", "m_vMaxs");
+
+}
+
+public partial class CSoundEventParameter : CBaseEntity
+{
+    public CSoundEventParameter (IntPtr pointer) : base(pointer) {}
+
+    // m_iszParamName
+    public string ParamName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CSoundEventParameter", "m_iszParamName"); }
+        set { Schema.SetString(this.Handle, "CSoundEventParameter", "m_iszParamName", value); }
+    }
+
+    // m_flFloatValue
+    public ref float FloatValue => ref Schema.GetRef<float>(this.Handle, "CSoundEventParameter", "m_flFloatValue");
+
+}
+
+public partial class CSoundEventPathCornerEntity : CSoundEventEntity
+{
+    public CSoundEventPathCornerEntity (IntPtr pointer) : base(pointer) {}
+
+    // m_iszPathCorner
+    public string PathCorner
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CSoundEventPathCornerEntity", "m_iszPathCorner"); }
+        set { Schema.SetString(this.Handle, "CSoundEventPathCornerEntity", "m_iszPathCorner", value); }
+    }
+
+    // m_iCountMax
+    public ref Int32 CountMax => ref Schema.GetRef<Int32>(this.Handle, "CSoundEventPathCornerEntity", "m_iCountMax");
+
+    // m_flDistanceMax
+    public ref float DistanceMax => ref Schema.GetRef<float>(this.Handle, "CSoundEventPathCornerEntity", "m_flDistanceMax");
+
+    // m_flDistMaxSqr
+    public ref float DistMaxSqr => ref Schema.GetRef<float>(this.Handle, "CSoundEventPathCornerEntity", "m_flDistMaxSqr");
+
+    // m_flDotProductMax
+    public ref float DotProductMax => ref Schema.GetRef<float>(this.Handle, "CSoundEventPathCornerEntity", "m_flDotProductMax");
+
+    // bPlaying
+    public ref bool BPlaying => ref Schema.GetRef<bool>(this.Handle, "CSoundEventPathCornerEntity", "bPlaying");
+
+}
+
 public partial class CSoundOpvarSetAABBEntity : CSoundOpvarSetPointEntity
 {
     public CSoundOpvarSetAABBEntity (IntPtr pointer) : base(pointer) {}
+
+    // m_vDistanceInnerMins
+    public Vector DistanceInnerMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceInnerMins");
+
+    // m_vDistanceInnerMaxs
+    public Vector DistanceInnerMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceInnerMaxs");
+
+    // m_vDistanceOuterMins
+    public Vector DistanceOuterMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceOuterMins");
+
+    // m_vDistanceOuterMaxs
+    public Vector DistanceOuterMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceOuterMaxs");
+
+    // m_nAABBDirection
+    public ref Int32 AABBDirection => ref Schema.GetRef<Int32>(this.Handle, "CSoundOpvarSetAABBEntity", "m_nAABBDirection");
+
+    // m_vInnerMins
+    public Vector InnerMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vInnerMins");
+
+    // m_vInnerMaxs
+    public Vector InnerMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vInnerMaxs");
+
+    // m_vOuterMins
+    public Vector OuterMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vOuterMins");
+
+    // m_vOuterMaxs
+    public Vector OuterMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vOuterMaxs");
+
+}
+
+public partial class CSoundOpvarSetEntity : CBaseEntity
+{
+    public CSoundOpvarSetEntity (IntPtr pointer) : base(pointer) {}
+
+    // m_iszStackName
+    public string StackName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CSoundOpvarSetEntity", "m_iszStackName"); }
+        set { Schema.SetString(this.Handle, "CSoundOpvarSetEntity", "m_iszStackName", value); }
+    }
+
+    // m_iszOperatorName
+    public string OperatorName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CSoundOpvarSetEntity", "m_iszOperatorName"); }
+        set { Schema.SetString(this.Handle, "CSoundOpvarSetEntity", "m_iszOperatorName", value); }
+    }
+
+    // m_iszOpvarName
+    public string OpvarName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CSoundOpvarSetEntity", "m_iszOpvarName"); }
+        set { Schema.SetString(this.Handle, "CSoundOpvarSetEntity", "m_iszOpvarName", value); }
+    }
+
+    // m_nOpvarType
+    public ref Int32 OpvarType => ref Schema.GetRef<Int32>(this.Handle, "CSoundOpvarSetEntity", "m_nOpvarType");
+
+    // m_nOpvarIndex
+    public ref Int32 OpvarIndex => ref Schema.GetRef<Int32>(this.Handle, "CSoundOpvarSetEntity", "m_nOpvarIndex");
+
+    // m_flOpvarValue
+    public ref float OpvarValue => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetEntity", "m_flOpvarValue");
+
+    // m_OpvarValueString
+    public string OpvarValueString
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CSoundOpvarSetEntity", "m_OpvarValueString"); }
+        set { Schema.SetString(this.Handle, "CSoundOpvarSetEntity", "m_OpvarValueString", value); }
+    }
+
+    // m_bSetOnSpawn
+    public ref bool SetOnSpawn => ref Schema.GetRef<bool>(this.Handle, "CSoundOpvarSetEntity", "m_bSetOnSpawn");
 
 }
 
@@ -9766,17 +19343,70 @@ public partial class CSoundOpvarSetOBBWindEntity : CSoundOpvarSetPointBase
 {
     public CSoundOpvarSetOBBWindEntity (IntPtr pointer) : base(pointer) {}
 
+    // m_vMins
+    public Vector Mins => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetOBBWindEntity", "m_vMins");
+
+    // m_vMaxs
+    public Vector Maxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetOBBWindEntity", "m_vMaxs");
+
+    // m_vDistanceMins
+    public Vector DistanceMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetOBBWindEntity", "m_vDistanceMins");
+
+    // m_vDistanceMaxs
+    public Vector DistanceMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetOBBWindEntity", "m_vDistanceMaxs");
+
+    // m_flWindMin
+    public ref float WindMin => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetOBBWindEntity", "m_flWindMin");
+
+    // m_flWindMax
+    public ref float WindMax => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetOBBWindEntity", "m_flWindMax");
+
+    // m_flWindMapMin
+    public ref float WindMapMin => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetOBBWindEntity", "m_flWindMapMin");
+
+    // m_flWindMapMax
+    public ref float WindMapMax => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetOBBWindEntity", "m_flWindMapMax");
+
 }
 
 public partial class CSoundOpvarSetPathCornerEntity : CSoundOpvarSetPointEntity
 {
     public CSoundOpvarSetPathCornerEntity (IntPtr pointer) : base(pointer) {}
 
+    // m_flDistMinSqr
+    public ref float DistMinSqr => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetPathCornerEntity", "m_flDistMinSqr");
+
+    // m_flDistMaxSqr
+    public ref float DistMaxSqr => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetPathCornerEntity", "m_flDistMaxSqr");
+
+    // m_iszPathCornerEntityName
+    public string PathCornerEntityName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CSoundOpvarSetPathCornerEntity", "m_iszPathCornerEntityName"); }
+        set { Schema.SetString(this.Handle, "CSoundOpvarSetPathCornerEntity", "m_iszPathCornerEntityName", value); }
+    }
+
 }
 
 public partial class CSoundOpvarSetPointBase : CBaseEntity
 {
     public CSoundOpvarSetPointBase (IntPtr pointer) : base(pointer) {}
+
+    // m_bDisabled
+    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CSoundOpvarSetPointBase", "m_bDisabled");
+
+    // m_hSource
+    public CHandle<CEntityInstance> Source => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CSoundOpvarSetPointBase", "m_hSource");
+
+    // m_iszSourceEntityName
+    public string SourceEntityName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CSoundOpvarSetPointBase", "m_iszSourceEntityName"); }
+        set { Schema.SetString(this.Handle, "CSoundOpvarSetPointBase", "m_iszSourceEntityName", value); }
+    }
+
+    // m_vLastPosition
+    public Vector LastPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetPointBase", "m_vLastPosition");
 
     // m_iszStackName
     public string StackName
@@ -9811,6 +19441,89 @@ public partial class CSoundOpvarSetPointEntity : CSoundOpvarSetPointBase
 {
     public CSoundOpvarSetPointEntity (IntPtr pointer) : base(pointer) {}
 
+    // m_OnEnter
+    public CEntityIOOutput OnEnter => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CSoundOpvarSetPointEntity", "m_OnEnter");
+
+    // m_OnExit
+    public CEntityIOOutput OnExit => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CSoundOpvarSetPointEntity", "m_OnExit");
+
+    // m_bAutoDisable
+    public ref bool AutoDisable => ref Schema.GetRef<bool>(this.Handle, "CSoundOpvarSetPointEntity", "m_bAutoDisable");
+
+    // m_flDistanceMin
+    public ref float DistanceMin => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flDistanceMin");
+
+    // m_flDistanceMax
+    public ref float DistanceMax => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flDistanceMax");
+
+    // m_flDistanceMapMin
+    public ref float DistanceMapMin => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flDistanceMapMin");
+
+    // m_flDistanceMapMax
+    public ref float DistanceMapMax => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flDistanceMapMax");
+
+    // m_flOcclusionRadius
+    public ref float OcclusionRadius => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flOcclusionRadius");
+
+    // m_flOcclusionMin
+    public ref float OcclusionMin => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flOcclusionMin");
+
+    // m_flOcclusionMax
+    public ref float OcclusionMax => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flOcclusionMax");
+
+    // m_flValSetOnDisable
+    public ref float ValSetOnDisable => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flValSetOnDisable");
+
+    // m_bSetValueOnDisable
+    public ref bool SetValueOnDisable => ref Schema.GetRef<bool>(this.Handle, "CSoundOpvarSetPointEntity", "m_bSetValueOnDisable");
+
+    // m_nSimulationMode
+    public ref Int32 SimulationMode => ref Schema.GetRef<Int32>(this.Handle, "CSoundOpvarSetPointEntity", "m_nSimulationMode");
+
+    // m_nVisibilitySamples
+    public ref Int32 VisibilitySamples => ref Schema.GetRef<Int32>(this.Handle, "CSoundOpvarSetPointEntity", "m_nVisibilitySamples");
+
+    // m_vDynamicProxyPoint
+    public Vector DynamicProxyPoint => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetPointEntity", "m_vDynamicProxyPoint");
+
+    // m_flDynamicMaximumOcclusion
+    public ref float DynamicMaximumOcclusion => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flDynamicMaximumOcclusion");
+
+    // m_hDynamicEntity
+    public CHandle<CEntityInstance> DynamicEntity => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CSoundOpvarSetPointEntity", "m_hDynamicEntity");
+
+    // m_iszDynamicEntityName
+    public string DynamicEntityName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CSoundOpvarSetPointEntity", "m_iszDynamicEntityName"); }
+        set { Schema.SetString(this.Handle, "CSoundOpvarSetPointEntity", "m_iszDynamicEntityName", value); }
+    }
+
+    // m_flPathingDistanceNormFactor
+    public ref float PathingDistanceNormFactor => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flPathingDistanceNormFactor");
+
+    // m_vPathingSourcePos
+    public Vector PathingSourcePos => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetPointEntity", "m_vPathingSourcePos");
+
+    // m_vPathingListenerPos
+    public Vector PathingListenerPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetPointEntity", "m_vPathingListenerPos");
+
+    // m_nPathingSourceIndex
+    public ref Int32 PathingSourceIndex => ref Schema.GetRef<Int32>(this.Handle, "CSoundOpvarSetPointEntity", "m_nPathingSourceIndex");
+
+}
+
+public partial class CSoundStackSave : CLogicalEntity
+{
+    public CSoundStackSave (IntPtr pointer) : base(pointer) {}
+
+    // m_iszStackName
+    public string StackName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CSoundStackSave", "m_iszStackName"); }
+        set { Schema.SetString(this.Handle, "CSoundStackSave", "m_iszStackName", value); }
+    }
+
 }
 
 public partial class CSPerRoundStats_t : NativeObject
@@ -9827,19 +19540,15 @@ public partial class CSPerRoundStats_t : NativeObject
     public ref Int32 Assists => ref Schema.GetRef<Int32>(this.Handle, "CSPerRoundStats_t", "m_iAssists");
 
     // m_iDamage
-    // MNetworkUserGroup "AllPlayersDuringFreezePeriod"
     public ref Int32 Damage => ref Schema.GetRef<Int32>(this.Handle, "CSPerRoundStats_t", "m_iDamage");
 
     // m_iEquipmentValue
-    // MNetworkUserGroup "TeammateAndSpectatorExclusive"
     public ref Int32 EquipmentValue => ref Schema.GetRef<Int32>(this.Handle, "CSPerRoundStats_t", "m_iEquipmentValue");
 
     // m_iMoneySaved
-    // MNetworkUserGroup "TeammateAndSpectatorExclusive"
     public ref Int32 MoneySaved => ref Schema.GetRef<Int32>(this.Handle, "CSPerRoundStats_t", "m_iMoneySaved");
 
     // m_iKillReward
-    // MNetworkUserGroup "TeammateAndSpectatorExclusive"
     public ref Int32 KillReward => ref Schema.GetRef<Int32>(this.Handle, "CSPerRoundStats_t", "m_iKillReward");
 
     // m_iLiveTime
@@ -9849,20 +19558,22 @@ public partial class CSPerRoundStats_t : NativeObject
     public ref Int32 HeadShotKills => ref Schema.GetRef<Int32>(this.Handle, "CSPerRoundStats_t", "m_iHeadShotKills");
 
     // m_iObjective
-    // MNetworkUserGroup "AllPlayersDuringFreezePeriod"
     public ref Int32 Objective => ref Schema.GetRef<Int32>(this.Handle, "CSPerRoundStats_t", "m_iObjective");
 
     // m_iCashEarned
-    // MNetworkUserGroup "TeammateAndSpectatorExclusive"
     public ref Int32 CashEarned => ref Schema.GetRef<Int32>(this.Handle, "CSPerRoundStats_t", "m_iCashEarned");
 
     // m_iUtilityDamage
-    // MNetworkUserGroup "AllPlayersDuringFreezePeriod"
     public ref Int32 UtilityDamage => ref Schema.GetRef<Int32>(this.Handle, "CSPerRoundStats_t", "m_iUtilityDamage");
 
     // m_iEnemiesFlashed
-    // MNetworkUserGroup "AllPlayersDuringFreezePeriod"
     public ref Int32 EnemiesFlashed => ref Schema.GetRef<Int32>(this.Handle, "CSPerRoundStats_t", "m_iEnemiesFlashed");
+
+}
+
+public partial class CSplineConstraint : CPhysConstraint
+{
+    public CSplineConstraint (IntPtr pointer) : base(pointer) {}
 
 }
 
@@ -9875,6 +19586,12 @@ public partial class CSpotlightEnd : CBaseModelEntity
 
     // m_Radius
     public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CSpotlightEnd", "m_Radius");
+
+    // m_vSpotlightDir
+    public Vector SpotlightDir => Schema.GetDeclaredClass<Vector>(this.Handle, "CSpotlightEnd", "m_vSpotlightDir");
+
+    // m_vSpotlightOrg
+    public Vector SpotlightOrg => Schema.GetDeclaredClass<Vector>(this.Handle, "CSpotlightEnd", "m_vSpotlightOrg");
 
 }
 
@@ -9890,18 +19607,13 @@ public partial class CSprite : CBaseModelEntity
 
     // m_nAttachment
     // m_flSpriteFramerate
-    // MNetworkBitCount "8"
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "60.000000"
-    // MNetworkEncodeFlags "2"
     public ref float SpriteFramerate => ref Schema.GetRef<float>(this.Handle, "CSprite", "m_flSpriteFramerate");
 
     // m_flFrame
-    // MNetworkBitCount "20"
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "256.000000"
-    // MNetworkEncodeFlags "1"
     public ref float Frame => ref Schema.GetRef<float>(this.Handle, "CSprite", "m_flFrame");
+
+    // m_flDieTime
+    public ref float DieTime => ref Schema.GetRef<float>(this.Handle, "CSprite", "m_flDieTime");
 
     // m_nBrightness
     public ref UInt32 Brightness => ref Schema.GetRef<UInt32>(this.Handle, "CSprite", "m_nBrightness");
@@ -9910,7 +19622,6 @@ public partial class CSprite : CBaseModelEntity
     public ref float BrightnessDuration => ref Schema.GetRef<float>(this.Handle, "CSprite", "m_flBrightnessDuration");
 
     // m_flSpriteScale
-    // MNetworkChangeCallback "OnSpriteScaleChanged"
     public ref float SpriteScale => ref Schema.GetRef<float>(this.Handle, "CSprite", "m_flSpriteScale");
 
     // m_flScaleDuration
@@ -9920,14 +19631,46 @@ public partial class CSprite : CBaseModelEntity
     public ref bool WorldSpaceScale => ref Schema.GetRef<bool>(this.Handle, "CSprite", "m_bWorldSpaceScale");
 
     // m_flGlowProxySize
-    // MNetworkBitCount "6"
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "64.000000"
-    // MNetworkEncodeFlags "2"
     public ref float GlowProxySize => ref Schema.GetRef<float>(this.Handle, "CSprite", "m_flGlowProxySize");
 
     // m_flHDRColorScale
     public ref float HDRColorScale => ref Schema.GetRef<float>(this.Handle, "CSprite", "m_flHDRColorScale");
+
+    // m_flLastTime
+    public ref float LastTime => ref Schema.GetRef<float>(this.Handle, "CSprite", "m_flLastTime");
+
+    // m_flMaxFrame
+    public ref float MaxFrame => ref Schema.GetRef<float>(this.Handle, "CSprite", "m_flMaxFrame");
+
+    // m_flStartScale
+    public ref float StartScale => ref Schema.GetRef<float>(this.Handle, "CSprite", "m_flStartScale");
+
+    // m_flDestScale
+    public ref float DestScale => ref Schema.GetRef<float>(this.Handle, "CSprite", "m_flDestScale");
+
+    // m_flScaleTimeStart
+    public ref float ScaleTimeStart => ref Schema.GetRef<float>(this.Handle, "CSprite", "m_flScaleTimeStart");
+
+    // m_nStartBrightness
+    public ref Int32 StartBrightness => ref Schema.GetRef<Int32>(this.Handle, "CSprite", "m_nStartBrightness");
+
+    // m_nDestBrightness
+    public ref Int32 DestBrightness => ref Schema.GetRef<Int32>(this.Handle, "CSprite", "m_nDestBrightness");
+
+    // m_flBrightnessTimeStart
+    public ref float BrightnessTimeStart => ref Schema.GetRef<float>(this.Handle, "CSprite", "m_flBrightnessTimeStart");
+
+    // m_nSpriteWidth
+    public ref Int32 SpriteWidth => ref Schema.GetRef<Int32>(this.Handle, "CSprite", "m_nSpriteWidth");
+
+    // m_nSpriteHeight
+    public ref Int32 SpriteHeight => ref Schema.GetRef<Int32>(this.Handle, "CSprite", "m_nSpriteHeight");
+
+}
+
+public partial class CSpriteAlias_env_glow : CSprite
+{
+    public CSpriteAlias_env_glow (IntPtr pointer) : base(pointer) {}
 
 }
 
@@ -9972,43 +19715,27 @@ public partial class CSun : CBaseModelEntity
     public ref bool BmaxColor => ref Schema.GetRef<bool>(this.Handle, "CSun", "m_bmaxColor");
 
     // m_flSize
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "100.000000"
     public ref float Size => ref Schema.GetRef<float>(this.Handle, "CSun", "m_flSize");
 
     // m_flRotation
-    // MNetworkMinValue "-360.000000"
-    // MNetworkMaxValue "360.000000"
     public ref float Rotation => ref Schema.GetRef<float>(this.Handle, "CSun", "m_flRotation");
 
     // m_flHazeScale
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "100.000000"
     public ref float HazeScale => ref Schema.GetRef<float>(this.Handle, "CSun", "m_flHazeScale");
 
     // m_flAlphaHaze
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "2.000000"
     public ref float AlphaHaze => ref Schema.GetRef<float>(this.Handle, "CSun", "m_flAlphaHaze");
 
     // m_flAlphaHdr
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "2.000000"
     public ref float AlphaHdr => ref Schema.GetRef<float>(this.Handle, "CSun", "m_flAlphaHdr");
 
     // m_flAlphaScale
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "2.000000"
     public ref float AlphaScale => ref Schema.GetRef<float>(this.Handle, "CSun", "m_flAlphaScale");
 
     // m_flHDRColorScale
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "100.000000"
     public ref float HDRColorScale => ref Schema.GetRef<float>(this.Handle, "CSun", "m_flHDRColorScale");
 
     // m_flFarZScale
-    // MNetworkMinValue "0.000000"
-    // MNetworkMaxValue "1.000000"
     public ref float FarZScale => ref Schema.GetRef<float>(this.Handle, "CSun", "m_flFarZScale");
 
 }
@@ -10019,16 +19746,70 @@ public partial class CTablet : CCSWeaponBase
 
 }
 
+public partial class CTankTargetChange : CPointEntity
+{
+    public CTankTargetChange (IntPtr pointer) : base(pointer) {}
+
+    // m_newTargetName
+    public string NewTargetName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CTankTargetChange", "m_newTargetName"); }
+        set { Schema.SetString(this.Handle, "CTankTargetChange", "m_newTargetName", value); }
+    }
+
+}
+
+public partial class CTankTrainAI : CPointEntity
+{
+    public CTankTrainAI (IntPtr pointer) : base(pointer) {}
+
+    // m_hTrain
+    public CHandle<CFuncTrackTrain> Train => Schema.GetDeclaredClass<CHandle<CFuncTrackTrain>>(this.Handle, "CTankTrainAI", "m_hTrain");
+
+    // m_hTargetEntity
+    public CHandle<CBaseEntity> TargetEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CTankTrainAI", "m_hTargetEntity");
+
+    // m_soundPlaying
+    public ref Int32 SoundPlaying => ref Schema.GetRef<Int32>(this.Handle, "CTankTrainAI", "m_soundPlaying");
+
+    // m_startSoundName
+    public string StartSoundName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CTankTrainAI", "m_startSoundName"); }
+        set { Schema.SetString(this.Handle, "CTankTrainAI", "m_startSoundName", value); }
+    }
+
+    // m_engineSoundName
+    public string EngineSoundName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CTankTrainAI", "m_engineSoundName"); }
+        set { Schema.SetString(this.Handle, "CTankTrainAI", "m_engineSoundName", value); }
+    }
+
+    // m_movementSoundName
+    public string MovementSoundName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CTankTrainAI", "m_movementSoundName"); }
+        set { Schema.SetString(this.Handle, "CTankTrainAI", "m_movementSoundName", value); }
+    }
+
+    // m_targetEntityName
+    public string TargetEntityName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CTankTrainAI", "m_targetEntityName"); }
+        set { Schema.SetString(this.Handle, "CTankTrainAI", "m_targetEntityName", value); }
+    }
+
+}
+
 public partial class CTeam : CBaseEntity
 {
     public CTeam (IntPtr pointer) : base(pointer) {}
 
     // m_aPlayerControllers
-    // MNetworkAlias "m_aPlayers"
     public NetworkedVector<CHandle<CBasePlayerController>> PlayerControllers => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBasePlayerController>>>(this.Handle, "CTeam", "m_aPlayerControllers");
 
     // m_aPlayers
-    // MNetworkAlias "m_aPawns"
     public NetworkedVector<CHandle<CBasePlayerPawn>> Players => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBasePlayerPawn>>>(this.Handle, "CTeam", "m_aPlayers");
 
     // m_iScore
@@ -10046,6 +19827,27 @@ public partial class CTeam : CBaseEntity
 public partial class CTeamplayRules : CMultiplayRules
 {
     public CTeamplayRules (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CTestEffect : CBaseEntity
+{
+    public CTestEffect (IntPtr pointer) : base(pointer) {}
+
+    // m_iLoop
+    public ref Int32 Loop => ref Schema.GetRef<Int32>(this.Handle, "CTestEffect", "m_iLoop");
+
+    // m_iBeam
+    public ref Int32 IBeam => ref Schema.GetRef<Int32>(this.Handle, "CTestEffect", "m_iBeam");
+
+    // m_pBeam
+    public Span<CBeam?> PBeam => Schema.GetFixedArray<CBeam?>(this.Handle, "CTestEffect", "m_pBeam", 24);
+
+    // m_flBeamTime
+    public Span<float> BeamTime => Schema.GetFixedArray<float>(this.Handle, "CTestEffect", "m_flBeamTime", 24);
+
+    // m_flStartTime
+    public ref float StartTime => ref Schema.GetRef<float>(this.Handle, "CTestEffect", "m_flStartTime");
 
 }
 
@@ -10079,6 +19881,51 @@ public partial class CTextureBasedAnimatable : CBaseModelEntity
 
 }
 
+public partial class CTimerEntity : CLogicalEntity
+{
+    public CTimerEntity (IntPtr pointer) : base(pointer) {}
+
+    // m_OnTimer
+    public CEntityIOOutput OnTimer => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTimerEntity", "m_OnTimer");
+
+    // m_OnTimerHigh
+    public CEntityIOOutput OnTimerHigh => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTimerEntity", "m_OnTimerHigh");
+
+    // m_OnTimerLow
+    public CEntityIOOutput OnTimerLow => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTimerEntity", "m_OnTimerLow");
+
+    // m_iDisabled
+    public ref Int32 Disabled => ref Schema.GetRef<Int32>(this.Handle, "CTimerEntity", "m_iDisabled");
+
+    // m_flInitialDelay
+    public ref float InitialDelay => ref Schema.GetRef<float>(this.Handle, "CTimerEntity", "m_flInitialDelay");
+
+    // m_flRefireTime
+    public ref float RefireTime => ref Schema.GetRef<float>(this.Handle, "CTimerEntity", "m_flRefireTime");
+
+    // m_bUpDownState
+    public ref bool UpDownState => ref Schema.GetRef<bool>(this.Handle, "CTimerEntity", "m_bUpDownState");
+
+    // m_iUseRandomTime
+    public ref Int32 UseRandomTime => ref Schema.GetRef<Int32>(this.Handle, "CTimerEntity", "m_iUseRandomTime");
+
+    // m_bPauseAfterFiring
+    public ref bool PauseAfterFiring => ref Schema.GetRef<bool>(this.Handle, "CTimerEntity", "m_bPauseAfterFiring");
+
+    // m_flLowerRandomBound
+    public ref float LowerRandomBound => ref Schema.GetRef<float>(this.Handle, "CTimerEntity", "m_flLowerRandomBound");
+
+    // m_flUpperRandomBound
+    public ref float UpperRandomBound => ref Schema.GetRef<float>(this.Handle, "CTimerEntity", "m_flUpperRandomBound");
+
+    // m_flRemainingTime
+    public ref float RemainingTime => ref Schema.GetRef<float>(this.Handle, "CTimerEntity", "m_flRemainingTime");
+
+    // m_bPaused
+    public ref bool Paused => ref Schema.GetRef<bool>(this.Handle, "CTimerEntity", "m_bPaused");
+
+}
+
 public partial class CTonemapController2 : CBaseEntity
 {
     public CTonemapController2 (IntPtr pointer) : base(pointer) {}
@@ -10109,9 +19956,74 @@ public partial class CTonemapController2 : CBaseEntity
 
 }
 
+public partial class CTonemapController2Alias_env_tonemap_controller2 : CTonemapController2
+{
+    public CTonemapController2Alias_env_tonemap_controller2 (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CTonemapTrigger : CBaseTrigger
+{
+    public CTonemapTrigger (IntPtr pointer) : base(pointer) {}
+
+    // m_tonemapControllerName
+    public string TonemapControllerName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CTonemapTrigger", "m_tonemapControllerName"); }
+        set { Schema.SetString(this.Handle, "CTonemapTrigger", "m_tonemapControllerName", value); }
+    }
+
+    // m_hTonemapController
+    public CHandle<CEntityInstance> TonemapController => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CTonemapTrigger", "m_hTonemapController");
+
+}
+
 public partial class CTouchExpansionComponent : CEntityComponent
 {
     public CTouchExpansionComponent (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CTriggerActiveWeaponDetect : CBaseTrigger
+{
+    public CTriggerActiveWeaponDetect (IntPtr pointer) : base(pointer) {}
+
+    // m_OnTouchedActiveWeapon
+    public CEntityIOOutput OnTouchedActiveWeapon => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerActiveWeaponDetect", "m_OnTouchedActiveWeapon");
+
+    // m_iszWeaponClassName
+    public string WeaponClassName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CTriggerActiveWeaponDetect", "m_iszWeaponClassName"); }
+        set { Schema.SetString(this.Handle, "CTriggerActiveWeaponDetect", "m_iszWeaponClassName", value); }
+    }
+
+}
+
+public partial class CTriggerBombReset : CBaseTrigger
+{
+    public CTriggerBombReset (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CTriggerBrush : CBaseModelEntity
+{
+    public CTriggerBrush (IntPtr pointer) : base(pointer) {}
+
+    // m_OnStartTouch
+    public CEntityIOOutput OnStartTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerBrush", "m_OnStartTouch");
+
+    // m_OnEndTouch
+    public CEntityIOOutput OnEndTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerBrush", "m_OnEndTouch");
+
+    // m_OnUse
+    public CEntityIOOutput OnUse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerBrush", "m_OnUse");
+
+    // m_iInputFilter
+    public ref Int32 InputFilter => ref Schema.GetRef<Int32>(this.Handle, "CTriggerBrush", "m_iInputFilter");
+
+    // m_iDontMessageParent
+    public ref Int32 DontMessageParent => ref Schema.GetRef<Int32>(this.Handle, "CTriggerBrush", "m_iDontMessageParent");
 
 }
 
@@ -10119,8 +20031,535 @@ public partial class CTriggerBuoyancy : CBaseTrigger
 {
     public CTriggerBuoyancy (IntPtr pointer) : base(pointer) {}
 
+    // m_BuoyancyHelper
+    public CBuoyancyHelper BuoyancyHelper => Schema.GetDeclaredClass<CBuoyancyHelper>(this.Handle, "CTriggerBuoyancy", "m_BuoyancyHelper");
+
     // m_flFluidDensity
     public ref float FluidDensity => ref Schema.GetRef<float>(this.Handle, "CTriggerBuoyancy", "m_flFluidDensity");
+
+}
+
+public partial class CTriggerCallback : CBaseTrigger
+{
+    public CTriggerCallback (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CTriggerDetectBulletFire : CBaseTrigger
+{
+    public CTriggerDetectBulletFire (IntPtr pointer) : base(pointer) {}
+
+    // m_bPlayerFireOnly
+    public ref bool PlayerFireOnly => ref Schema.GetRef<bool>(this.Handle, "CTriggerDetectBulletFire", "m_bPlayerFireOnly");
+
+    // m_OnDetectedBulletFire
+    public CEntityIOOutput OnDetectedBulletFire => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerDetectBulletFire", "m_OnDetectedBulletFire");
+
+}
+
+public partial class CTriggerDetectExplosion : CBaseTrigger
+{
+    public CTriggerDetectExplosion (IntPtr pointer) : base(pointer) {}
+
+    // m_OnDetectedExplosion
+    public CEntityIOOutput OnDetectedExplosion => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerDetectExplosion", "m_OnDetectedExplosion");
+
+}
+
+public partial class CTriggerFan : CBaseTrigger
+{
+    public CTriggerFan (IntPtr pointer) : base(pointer) {}
+
+    // m_vFanOrigin
+    public Vector FanOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerFan", "m_vFanOrigin");
+
+    // m_vFanEnd
+    public Vector FanEnd => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerFan", "m_vFanEnd");
+
+    // m_vNoise
+    public Vector Noise => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerFan", "m_vNoise");
+
+    // m_flForce
+    public ref float Force => ref Schema.GetRef<float>(this.Handle, "CTriggerFan", "m_flForce");
+
+    // m_flPlayerForce
+    public ref float PlayerForce => ref Schema.GetRef<float>(this.Handle, "CTriggerFan", "m_flPlayerForce");
+
+    // m_flRampTime
+    public ref float RampTime => ref Schema.GetRef<float>(this.Handle, "CTriggerFan", "m_flRampTime");
+
+    // m_bFalloff
+    public ref bool Falloff => ref Schema.GetRef<bool>(this.Handle, "CTriggerFan", "m_bFalloff");
+
+    // m_bPushPlayer
+    public ref bool PushPlayer => ref Schema.GetRef<bool>(this.Handle, "CTriggerFan", "m_bPushPlayer");
+
+    // m_bRampDown
+    public ref bool RampDown => ref Schema.GetRef<bool>(this.Handle, "CTriggerFan", "m_bRampDown");
+
+    // m_bAddNoise
+    public ref bool AddNoise => ref Schema.GetRef<bool>(this.Handle, "CTriggerFan", "m_bAddNoise");
+
+    // m_RampTimer
+    public CountdownTimer RampTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CTriggerFan", "m_RampTimer");
+
+}
+
+public partial class CTriggerGameEvent : CBaseTrigger
+{
+    public CTriggerGameEvent (IntPtr pointer) : base(pointer) {}
+
+    // m_strStartTouchEventName
+    public string StrStartTouchEventName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CTriggerGameEvent", "m_strStartTouchEventName"); }
+        set { Schema.SetString(this.Handle, "CTriggerGameEvent", "m_strStartTouchEventName", value); }
+    }
+
+    // m_strEndTouchEventName
+    public string StrEndTouchEventName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CTriggerGameEvent", "m_strEndTouchEventName"); }
+        set { Schema.SetString(this.Handle, "CTriggerGameEvent", "m_strEndTouchEventName", value); }
+    }
+
+    // m_strTriggerID
+    public string StrTriggerID
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CTriggerGameEvent", "m_strTriggerID"); }
+        set { Schema.SetString(this.Handle, "CTriggerGameEvent", "m_strTriggerID", value); }
+    }
+
+}
+
+public partial class CTriggerGravity : CBaseTrigger
+{
+    public CTriggerGravity (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CTriggerHurt : CBaseTrigger
+{
+    public CTriggerHurt (IntPtr pointer) : base(pointer) {}
+
+    // m_flOriginalDamage
+    public ref float OriginalDamage => ref Schema.GetRef<float>(this.Handle, "CTriggerHurt", "m_flOriginalDamage");
+
+    // m_flDamage
+    public ref float Damage => ref Schema.GetRef<float>(this.Handle, "CTriggerHurt", "m_flDamage");
+
+    // m_flDamageCap
+    public ref float DamageCap => ref Schema.GetRef<float>(this.Handle, "CTriggerHurt", "m_flDamageCap");
+
+    // m_flLastDmgTime
+    public ref float LastDmgTime => ref Schema.GetRef<float>(this.Handle, "CTriggerHurt", "m_flLastDmgTime");
+
+    // m_flForgivenessDelay
+    public ref float ForgivenessDelay => ref Schema.GetRef<float>(this.Handle, "CTriggerHurt", "m_flForgivenessDelay");
+
+    // m_bitsDamageInflict
+    public ref Int32 BitsDamageInflict => ref Schema.GetRef<Int32>(this.Handle, "CTriggerHurt", "m_bitsDamageInflict");
+
+    // m_damageModel
+    public ref Int32 DamageModel => ref Schema.GetRef<Int32>(this.Handle, "CTriggerHurt", "m_damageModel");
+
+    // m_bNoDmgForce
+    public ref bool NoDmgForce => ref Schema.GetRef<bool>(this.Handle, "CTriggerHurt", "m_bNoDmgForce");
+
+    // m_vDamageForce
+    public Vector DamageForce => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerHurt", "m_vDamageForce");
+
+    // m_thinkAlways
+    public ref bool ThinkAlways => ref Schema.GetRef<bool>(this.Handle, "CTriggerHurt", "m_thinkAlways");
+
+    // m_hurtThinkPeriod
+    public ref float HurtThinkPeriod => ref Schema.GetRef<float>(this.Handle, "CTriggerHurt", "m_hurtThinkPeriod");
+
+    // m_OnHurt
+    public CEntityIOOutput OnHurt => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerHurt", "m_OnHurt");
+
+    // m_OnHurtPlayer
+    public CEntityIOOutput OnHurtPlayer => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerHurt", "m_OnHurtPlayer");
+
+    // m_hurtEntities
+    public NetworkedVector<CHandle<CBaseEntity>> HurtEntities => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CTriggerHurt", "m_hurtEntities");
+
+}
+
+public partial class CTriggerHurtGhost : CTriggerHurt
+{
+    public CTriggerHurtGhost (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CTriggerImpact : CTriggerMultiple
+{
+    public CTriggerImpact (IntPtr pointer) : base(pointer) {}
+
+    // m_flMagnitude
+    public ref float Magnitude => ref Schema.GetRef<float>(this.Handle, "CTriggerImpact", "m_flMagnitude");
+
+    // m_flNoise
+    public ref float Noise => ref Schema.GetRef<float>(this.Handle, "CTriggerImpact", "m_flNoise");
+
+    // m_flViewkick
+    public ref float Viewkick => ref Schema.GetRef<float>(this.Handle, "CTriggerImpact", "m_flViewkick");
+
+}
+
+public partial class CTriggerLerpObject : CBaseTrigger
+{
+    public CTriggerLerpObject (IntPtr pointer) : base(pointer) {}
+
+    // m_iszLerpTarget
+    public string IszLerpTarget
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CTriggerLerpObject", "m_iszLerpTarget"); }
+        set { Schema.SetString(this.Handle, "CTriggerLerpObject", "m_iszLerpTarget", value); }
+    }
+
+    // m_hLerpTarget
+    public CHandle<CBaseEntity> HLerpTarget => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CTriggerLerpObject", "m_hLerpTarget");
+
+    // m_iszLerpTargetAttachment
+    public string IszLerpTargetAttachment
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CTriggerLerpObject", "m_iszLerpTargetAttachment"); }
+        set { Schema.SetString(this.Handle, "CTriggerLerpObject", "m_iszLerpTargetAttachment", value); }
+    }
+
+    // m_hLerpTargetAttachment
+    // m_flLerpDuration
+    public ref float LerpDuration => ref Schema.GetRef<float>(this.Handle, "CTriggerLerpObject", "m_flLerpDuration");
+
+    // m_bLerpRestoreMoveType
+    public ref bool LerpRestoreMoveType => ref Schema.GetRef<bool>(this.Handle, "CTriggerLerpObject", "m_bLerpRestoreMoveType");
+
+    // m_bSingleLerpObject
+    public ref bool SingleLerpObject => ref Schema.GetRef<bool>(this.Handle, "CTriggerLerpObject", "m_bSingleLerpObject");
+
+    // m_vecLerpingObjects
+    public NetworkedVector<lerpdata_t> LerpingObjects => Schema.GetDeclaredClass<NetworkedVector<lerpdata_t>>(this.Handle, "CTriggerLerpObject", "m_vecLerpingObjects");
+
+    // m_iszLerpEffect
+    public string LerpEffect
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CTriggerLerpObject", "m_iszLerpEffect"); }
+        set { Schema.SetString(this.Handle, "CTriggerLerpObject", "m_iszLerpEffect", value); }
+    }
+
+    // m_iszLerpSound
+    public string LerpSound
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CTriggerLerpObject", "m_iszLerpSound"); }
+        set { Schema.SetString(this.Handle, "CTriggerLerpObject", "m_iszLerpSound", value); }
+    }
+
+    // m_OnLerpStarted
+    public CEntityIOOutput OnLerpStarted => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerLerpObject", "m_OnLerpStarted");
+
+    // m_OnLerpFinished
+    public CEntityIOOutput OnLerpFinished => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerLerpObject", "m_OnLerpFinished");
+
+}
+
+public partial class CTriggerLook : CTriggerOnce
+{
+    public CTriggerLook (IntPtr pointer) : base(pointer) {}
+
+    // m_hLookTarget
+    public CHandle<CBaseEntity> LookTarget => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CTriggerLook", "m_hLookTarget");
+
+    // m_flFieldOfView
+    public ref float FieldOfView => ref Schema.GetRef<float>(this.Handle, "CTriggerLook", "m_flFieldOfView");
+
+    // m_flLookTime
+    public ref float LookTime => ref Schema.GetRef<float>(this.Handle, "CTriggerLook", "m_flLookTime");
+
+    // m_flLookTimeTotal
+    public ref float LookTimeTotal => ref Schema.GetRef<float>(this.Handle, "CTriggerLook", "m_flLookTimeTotal");
+
+    // m_flLookTimeLast
+    public ref float LookTimeLast => ref Schema.GetRef<float>(this.Handle, "CTriggerLook", "m_flLookTimeLast");
+
+    // m_flTimeoutDuration
+    public ref float TimeoutDuration => ref Schema.GetRef<float>(this.Handle, "CTriggerLook", "m_flTimeoutDuration");
+
+    // m_bTimeoutFired
+    public ref bool TimeoutFired => ref Schema.GetRef<bool>(this.Handle, "CTriggerLook", "m_bTimeoutFired");
+
+    // m_bIsLooking
+    public ref bool IsLooking => ref Schema.GetRef<bool>(this.Handle, "CTriggerLook", "m_bIsLooking");
+
+    // m_b2DFOV
+    public ref bool B2DFOV => ref Schema.GetRef<bool>(this.Handle, "CTriggerLook", "m_b2DFOV");
+
+    // m_bUseVelocity
+    public ref bool UseVelocity => ref Schema.GetRef<bool>(this.Handle, "CTriggerLook", "m_bUseVelocity");
+
+    // m_hActivator
+    public CHandle<CBaseEntity> Activator => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CTriggerLook", "m_hActivator");
+
+    // m_bTestOcclusion
+    public ref bool TestOcclusion => ref Schema.GetRef<bool>(this.Handle, "CTriggerLook", "m_bTestOcclusion");
+
+    // m_OnTimeout
+    public CEntityIOOutput OnTimeout => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerLook", "m_OnTimeout");
+
+    // m_OnStartLook
+    public CEntityIOOutput OnStartLook => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerLook", "m_OnStartLook");
+
+    // m_OnEndLook
+    public CEntityIOOutput OnEndLook => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerLook", "m_OnEndLook");
+
+}
+
+public partial class CTriggerMultiple : CBaseTrigger
+{
+    public CTriggerMultiple (IntPtr pointer) : base(pointer) {}
+
+    // m_OnTrigger
+    public CEntityIOOutput OnTrigger => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerMultiple", "m_OnTrigger");
+
+}
+
+public partial class CTriggerOnce : CTriggerMultiple
+{
+    public CTriggerOnce (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CTriggerPhysics : CBaseTrigger
+{
+    public CTriggerPhysics (IntPtr pointer) : base(pointer) {}
+
+    // m_gravityScale
+    public ref float GravityScale => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_gravityScale");
+
+    // m_linearLimit
+    public ref float LinearLimit => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_linearLimit");
+
+    // m_linearDamping
+    public ref float LinearDamping => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_linearDamping");
+
+    // m_angularLimit
+    public ref float AngularLimit => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_angularLimit");
+
+    // m_angularDamping
+    public ref float AngularDamping => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_angularDamping");
+
+    // m_linearForce
+    public ref float LinearForce => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_linearForce");
+
+    // m_flFrequency
+    public ref float Frequency => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_flFrequency");
+
+    // m_flDampingRatio
+    public ref float DampingRatio => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_flDampingRatio");
+
+    // m_vecLinearForcePointAt
+    public Vector LinearForcePointAt => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerPhysics", "m_vecLinearForcePointAt");
+
+    // m_bCollapseToForcePoint
+    public ref bool CollapseToForcePoint => ref Schema.GetRef<bool>(this.Handle, "CTriggerPhysics", "m_bCollapseToForcePoint");
+
+    // m_vecLinearForcePointAtWorld
+    public Vector LinearForcePointAtWorld => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerPhysics", "m_vecLinearForcePointAtWorld");
+
+    // m_vecLinearForceDirection
+    public Vector LinearForceDirection => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerPhysics", "m_vecLinearForceDirection");
+
+    // m_bConvertToDebrisWhenPossible
+    public ref bool ConvertToDebrisWhenPossible => ref Schema.GetRef<bool>(this.Handle, "CTriggerPhysics", "m_bConvertToDebrisWhenPossible");
+
+}
+
+public partial class CTriggerProximity : CBaseTrigger
+{
+    public CTriggerProximity (IntPtr pointer) : base(pointer) {}
+
+    // m_hMeasureTarget
+    public CHandle<CBaseEntity> HMeasureTarget => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CTriggerProximity", "m_hMeasureTarget");
+
+    // m_iszMeasureTarget
+    public string IszMeasureTarget
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CTriggerProximity", "m_iszMeasureTarget"); }
+        set { Schema.SetString(this.Handle, "CTriggerProximity", "m_iszMeasureTarget", value); }
+    }
+
+    // m_fRadius
+    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CTriggerProximity", "m_fRadius");
+
+    // m_nTouchers
+    public ref Int32 Touchers => ref Schema.GetRef<Int32>(this.Handle, "CTriggerProximity", "m_nTouchers");
+
+}
+
+public partial class CTriggerPush : CBaseTrigger
+{
+    public CTriggerPush (IntPtr pointer) : base(pointer) {}
+
+    // m_angPushEntitySpace
+    public QAngle PushEntitySpace => Schema.GetDeclaredClass<QAngle>(this.Handle, "CTriggerPush", "m_angPushEntitySpace");
+
+    // m_vecPushDirEntitySpace
+    public Vector PushDirEntitySpace => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerPush", "m_vecPushDirEntitySpace");
+
+    // m_bTriggerOnStartTouch
+    public ref bool TriggerOnStartTouch => ref Schema.GetRef<bool>(this.Handle, "CTriggerPush", "m_bTriggerOnStartTouch");
+
+    // m_flAlternateTicksFix
+    public ref float AlternateTicksFix => ref Schema.GetRef<float>(this.Handle, "CTriggerPush", "m_flAlternateTicksFix");
+
+    // m_flPushSpeed
+    public ref float PushSpeed => ref Schema.GetRef<float>(this.Handle, "CTriggerPush", "m_flPushSpeed");
+
+}
+
+public partial class CTriggerRemove : CBaseTrigger
+{
+    public CTriggerRemove (IntPtr pointer) : base(pointer) {}
+
+    // m_OnRemove
+    public CEntityIOOutput OnRemove => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerRemove", "m_OnRemove");
+
+}
+
+public partial class CTriggerSave : CBaseTrigger
+{
+    public CTriggerSave (IntPtr pointer) : base(pointer) {}
+
+    // m_bForceNewLevelUnit
+    public ref bool ForceNewLevelUnit => ref Schema.GetRef<bool>(this.Handle, "CTriggerSave", "m_bForceNewLevelUnit");
+
+    // m_fDangerousTimer
+    public ref float DangerousTimer => ref Schema.GetRef<float>(this.Handle, "CTriggerSave", "m_fDangerousTimer");
+
+    // m_minHitPoints
+    public ref Int32 MinHitPoints => ref Schema.GetRef<Int32>(this.Handle, "CTriggerSave", "m_minHitPoints");
+
+}
+
+public partial class CTriggerSndSosOpvar : CBaseTrigger
+{
+    public CTriggerSndSosOpvar (IntPtr pointer) : base(pointer) {}
+
+    // m_hTouchingPlayers
+    public NetworkedVector<CHandle<CBaseEntity>> TouchingPlayers => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CTriggerSndSosOpvar", "m_hTouchingPlayers");
+
+    // m_flPosition
+    public Vector Position => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerSndSosOpvar", "m_flPosition");
+
+    // m_flCenterSize
+    public ref float CenterSize => ref Schema.GetRef<float>(this.Handle, "CTriggerSndSosOpvar", "m_flCenterSize");
+
+    // m_flMinVal
+    public ref float MinVal => ref Schema.GetRef<float>(this.Handle, "CTriggerSndSosOpvar", "m_flMinVal");
+
+    // m_flMaxVal
+    public ref float MaxVal => ref Schema.GetRef<float>(this.Handle, "CTriggerSndSosOpvar", "m_flMaxVal");
+
+    // m_flWait
+    public ref float Wait => ref Schema.GetRef<float>(this.Handle, "CTriggerSndSosOpvar", "m_flWait");
+
+    // m_opvarName
+    public string OpvarName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CTriggerSndSosOpvar", "m_opvarName"); }
+        set { Schema.SetString(this.Handle, "CTriggerSndSosOpvar", "m_opvarName", value); }
+    }
+
+    // m_stackName
+    public string StackName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CTriggerSndSosOpvar", "m_stackName"); }
+        set { Schema.SetString(this.Handle, "CTriggerSndSosOpvar", "m_stackName", value); }
+    }
+
+    // m_operatorName
+    public string OperatorName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CTriggerSndSosOpvar", "m_operatorName"); }
+        set { Schema.SetString(this.Handle, "CTriggerSndSosOpvar", "m_operatorName", value); }
+    }
+
+    // m_bVolIs2D
+    public ref bool VolIs2D => ref Schema.GetRef<bool>(this.Handle, "CTriggerSndSosOpvar", "m_bVolIs2D");
+
+    // m_opvarNameChar
+    public string OpvarNameChar
+    {
+        get { return Schema.GetString(this.Handle, "CTriggerSndSosOpvar", "m_opvarNameChar"); }
+        set { Schema.SetString(this.Handle, "CTriggerSndSosOpvar", "m_opvarNameChar", value); }
+    }
+
+    // m_stackNameChar
+    public string StackNameChar
+    {
+        get { return Schema.GetString(this.Handle, "CTriggerSndSosOpvar", "m_stackNameChar"); }
+        set { Schema.SetString(this.Handle, "CTriggerSndSosOpvar", "m_stackNameChar", value); }
+    }
+
+    // m_operatorNameChar
+    public string OperatorNameChar
+    {
+        get { return Schema.GetString(this.Handle, "CTriggerSndSosOpvar", "m_operatorNameChar"); }
+        set { Schema.SetString(this.Handle, "CTriggerSndSosOpvar", "m_operatorNameChar", value); }
+    }
+
+    // m_VecNormPos
+    public Vector VecNormPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerSndSosOpvar", "m_VecNormPos");
+
+    // m_flNormCenterSize
+    public ref float NormCenterSize => ref Schema.GetRef<float>(this.Handle, "CTriggerSndSosOpvar", "m_flNormCenterSize");
+
+}
+
+public partial class CTriggerSoundscape : CBaseTrigger
+{
+    public CTriggerSoundscape (IntPtr pointer) : base(pointer) {}
+
+    // m_hSoundscape
+    public CHandle<CEnvSoundscapeTriggerable> Soundscape => Schema.GetDeclaredClass<CHandle<CEnvSoundscapeTriggerable>>(this.Handle, "CTriggerSoundscape", "m_hSoundscape");
+
+    // m_SoundscapeName
+    public string SoundscapeName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CTriggerSoundscape", "m_SoundscapeName"); }
+        set { Schema.SetString(this.Handle, "CTriggerSoundscape", "m_SoundscapeName", value); }
+    }
+
+    // m_spectators
+    public NetworkedVector<CHandle<CBasePlayerPawn>> Spectators => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBasePlayerPawn>>>(this.Handle, "CTriggerSoundscape", "m_spectators");
+
+}
+
+public partial class CTriggerTeleport : CBaseTrigger
+{
+    public CTriggerTeleport (IntPtr pointer) : base(pointer) {}
+
+    // m_iLandmark
+    public string Landmark
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CTriggerTeleport", "m_iLandmark"); }
+        set { Schema.SetString(this.Handle, "CTriggerTeleport", "m_iLandmark", value); }
+    }
+
+    // m_bUseLandmarkAngles
+    public ref bool UseLandmarkAngles => ref Schema.GetRef<bool>(this.Handle, "CTriggerTeleport", "m_bUseLandmarkAngles");
+
+    // m_bMirrorPlayer
+    public ref bool MirrorPlayer => ref Schema.GetRef<bool>(this.Handle, "CTriggerTeleport", "m_bMirrorPlayer");
+
+}
+
+public partial class CTriggerToggleSave : CBaseTrigger
+{
+    public CTriggerToggleSave (IntPtr pointer) : base(pointer) {}
+
+    // m_bDisabled
+    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CTriggerToggleSave", "m_bDisabled");
 
 }
 
@@ -10134,6 +20573,16 @@ public partial class CTriggerVolume : CBaseModelEntity
 {
     public CTriggerVolume (IntPtr pointer) : base(pointer) {}
 
+    // m_iFilterName
+    public string FilterName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CTriggerVolume", "m_iFilterName"); }
+        set { Schema.SetString(this.Handle, "CTriggerVolume", "m_iFilterName", value); }
+    }
+
+    // m_hFilter
+    public CHandle<CBaseFilter> Filter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CTriggerVolume", "m_hFilter");
+
 }
 
 public partial class CTripWireFire : CBaseCSGrenade
@@ -10145,6 +20594,12 @@ public partial class CTripWireFire : CBaseCSGrenade
 public partial class CTripWireFireProjectile : CBaseGrenade
 {
     public CTripWireFireProjectile (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CVariantDefaultAllocator : NativeObject
+{
+    public CVariantDefaultAllocator (IntPtr pointer) : base(pointer) {}
 
 }
 
@@ -10166,6 +20621,30 @@ public partial class CVoteController : CBaseEntity
 
     // m_bIsYesNoVote
     public ref bool IsYesNoVote => ref Schema.GetRef<bool>(this.Handle, "CVoteController", "m_bIsYesNoVote");
+
+    // m_acceptingVotesTimer
+    public CountdownTimer AcceptingVotesTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CVoteController", "m_acceptingVotesTimer");
+
+    // m_executeCommandTimer
+    public CountdownTimer ExecuteCommandTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CVoteController", "m_executeCommandTimer");
+
+    // m_resetVoteTimer
+    public CountdownTimer ResetVoteTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CVoteController", "m_resetVoteTimer");
+
+    // m_nVotesCast
+    public Span<Int32> VotesCast => Schema.GetFixedArray<Int32>(this.Handle, "CVoteController", "m_nVotesCast", 64);
+
+    // m_playerHoldingVote
+    public ref Int32 PlayerHoldingVote => ref Schema.GetRef<Int32>(this.Handle, "CVoteController", "m_playerHoldingVote");
+
+    // m_playerOverrideForVote
+    public ref Int32 PlayerOverrideForVote => ref Schema.GetRef<Int32>(this.Handle, "CVoteController", "m_playerOverrideForVote");
+
+    // m_nHighestCountIndex
+    public ref Int32 HighestCountIndex => ref Schema.GetRef<Int32>(this.Handle, "CVoteController", "m_nHighestCountIndex");
+
+    // m_potentialIssues
+    public NetworkedVector<CBaseIssue?> PotentialIssues => Schema.GetDeclaredClass<NetworkedVector<CBaseIssue?>>(this.Handle, "CVoteController", "m_potentialIssues");
 
 }
 
@@ -10202,6 +20681,12 @@ public partial class CWeaponBaseItem : CCSWeaponBase
 public partial class CWeaponBizon : CCSWeaponBaseGun
 {
     public CWeaponBizon (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CWeaponCZ75a : CCSWeaponBaseGun
+{
+    public CWeaponCZ75a (IntPtr pointer) : base(pointer) {}
 
 }
 
@@ -10259,6 +20744,12 @@ public partial class CWeaponM4A1 : CCSWeaponBaseGun
 
 }
 
+public partial class CWeaponM4A1Silencer : CCSWeaponBaseGun
+{
+    public CWeaponM4A1Silencer (IntPtr pointer) : base(pointer) {}
+
+}
+
 public partial class CWeaponMAC10 : CCSWeaponBaseGun
 {
     public CWeaponMAC10 (IntPtr pointer) : base(pointer) {}
@@ -10268,6 +20759,12 @@ public partial class CWeaponMAC10 : CCSWeaponBaseGun
 public partial class CWeaponMag7 : CCSWeaponBaseGun
 {
     public CWeaponMag7 (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CWeaponMP5SD : CCSWeaponBaseGun
+{
+    public CWeaponMP5SD (IntPtr pointer) : base(pointer) {}
 
 }
 
@@ -10307,6 +20804,12 @@ public partial class CWeaponP90 : CCSWeaponBaseGun
 
 }
 
+public partial class CWeaponRevolver : CCSWeaponBaseGun
+{
+    public CWeaponRevolver (IntPtr pointer) : base(pointer) {}
+
+}
+
 public partial class CWeaponSawedoff : CCSWeaponBase
 {
     public CWeaponSawedoff (IntPtr pointer) : base(pointer) {}
@@ -10328,6 +20831,12 @@ public partial class CWeaponSG556 : CCSWeaponBaseGun
 public partial class CWeaponShield : CCSWeaponBaseGun
 {
     public CWeaponShield (IntPtr pointer) : base(pointer) {}
+
+    // m_flBulletDamageAbsorbed
+    public ref float BulletDamageAbsorbed => ref Schema.GetRef<float>(this.Handle, "CWeaponShield", "m_flBulletDamageAbsorbed");
+
+    // m_flLastBulletHitSoundTime
+    public ref float LastBulletHitSoundTime => ref Schema.GetRef<float>(this.Handle, "CWeaponShield", "m_flLastBulletHitSoundTime");
 
     // m_flDisplayHealth
     public ref float DisplayHealth => ref Schema.GetRef<float>(this.Handle, "CWeaponShield", "m_flDisplayHealth");
@@ -10361,6 +20870,12 @@ public partial class CWeaponUMP45 : CCSWeaponBaseGun
 
 }
 
+public partial class CWeaponUSPSilencer : CCSWeaponBaseGun
+{
+    public CWeaponUSPSilencer (IntPtr pointer) : base(pointer) {}
+
+}
+
 public partial class CWeaponXM1014 : CCSWeaponBase
 {
     public CWeaponXM1014 (IntPtr pointer) : base(pointer) {}
@@ -10376,6 +20891,93 @@ public partial class CWeaponZoneRepulsor : CCSWeaponBaseGun
 public partial class CWorld : CBaseModelEntity
 {
     public CWorld (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class dynpitchvol_base_t : NativeObject
+{
+    public dynpitchvol_base_t (IntPtr pointer) : base(pointer) {}
+
+    // preset
+    public ref Int32 Preset => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "preset");
+
+    // pitchrun
+    public ref Int32 Pitchrun => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "pitchrun");
+
+    // pitchstart
+    public ref Int32 Pitchstart => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "pitchstart");
+
+    // spinup
+    public ref Int32 Spinup => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "spinup");
+
+    // spindown
+    public ref Int32 Spindown => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "spindown");
+
+    // volrun
+    public ref Int32 Volrun => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "volrun");
+
+    // volstart
+    public ref Int32 Volstart => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "volstart");
+
+    // fadein
+    public ref Int32 Fadein => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "fadein");
+
+    // fadeout
+    public ref Int32 Fadeout => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "fadeout");
+
+    // lfotype
+    public ref Int32 Lfotype => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "lfotype");
+
+    // lforate
+    public ref Int32 Lforate => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "lforate");
+
+    // lfomodpitch
+    public ref Int32 Lfomodpitch => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "lfomodpitch");
+
+    // lfomodvol
+    public ref Int32 Lfomodvol => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "lfomodvol");
+
+    // cspinup
+    public ref Int32 Cspinup => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "cspinup");
+
+    // cspincount
+    public ref Int32 Cspincount => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "cspincount");
+
+    // pitch
+    public ref Int32 Pitch => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "pitch");
+
+    // spinupsav
+    public ref Int32 Spinupsav => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "spinupsav");
+
+    // spindownsav
+    public ref Int32 Spindownsav => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "spindownsav");
+
+    // pitchfrac
+    public ref Int32 Pitchfrac => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "pitchfrac");
+
+    // vol
+    public ref Int32 Vol => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "vol");
+
+    // fadeinsav
+    public ref Int32 Fadeinsav => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "fadeinsav");
+
+    // fadeoutsav
+    public ref Int32 Fadeoutsav => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "fadeoutsav");
+
+    // volfrac
+    public ref Int32 Volfrac => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "volfrac");
+
+    // lfofrac
+    public ref Int32 Lfofrac => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "lfofrac");
+
+    // lfomult
+    public ref Int32 Lfomult => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "lfomult");
+
+}
+
+public partial class dynpitchvol_t : dynpitchvol_base_t
+{
+    public dynpitchvol_t (IntPtr pointer) : base(pointer) {}
 
 }
 
@@ -10396,12 +20998,55 @@ public partial class EntitySpottedState_t : NativeObject
     public EntitySpottedState_t (IntPtr pointer) : base(pointer) {}
 
     // m_bSpotted
-    // MNetworkChangeCallback "OnIsSpottedChanged"
     public ref bool Spotted => ref Schema.GetRef<bool>(this.Handle, "EntitySpottedState_t", "m_bSpotted");
 
     // m_bSpottedByMask
-    // MNetworkChangeCallback "OnIsSpottedChanged"
     public Span<UInt32> SpottedByMask => Schema.GetFixedArray<UInt32>(this.Handle, "EntitySpottedState_t", "m_bSpottedByMask", 2);
+
+}
+
+public partial class Extent : NativeObject
+{
+    public Extent (IntPtr pointer) : base(pointer) {}
+
+    // lo
+    public Vector Lo => Schema.GetDeclaredClass<Vector>(this.Handle, "Extent", "lo");
+
+    // hi
+    public Vector Hi => Schema.GetDeclaredClass<Vector>(this.Handle, "Extent", "hi");
+
+}
+
+public partial class FilterDamageType : CBaseFilter
+{
+    public FilterDamageType (IntPtr pointer) : base(pointer) {}
+
+    // m_iDamageType
+    public ref Int32 DamageType => ref Schema.GetRef<Int32>(this.Handle, "FilterDamageType", "m_iDamageType");
+
+}
+
+public partial class FilterHealth : CBaseFilter
+{
+    public FilterHealth (IntPtr pointer) : base(pointer) {}
+
+    // m_bAdrenalineActive
+    public ref bool AdrenalineActive => ref Schema.GetRef<bool>(this.Handle, "FilterHealth", "m_bAdrenalineActive");
+
+    // m_iHealthMin
+    public ref Int32 HealthMin => ref Schema.GetRef<Int32>(this.Handle, "FilterHealth", "m_iHealthMin");
+
+    // m_iHealthMax
+    public ref Int32 HealthMax => ref Schema.GetRef<Int32>(this.Handle, "FilterHealth", "m_iHealthMax");
+
+}
+
+public partial class FilterTeam : CBaseFilter
+{
+    public FilterTeam (IntPtr pointer) : base(pointer) {}
+
+    // m_iFilterTeam
+    public ref Int32 Value => ref Schema.GetRef<Int32>(this.Handle, "FilterTeam", "m_iFilterTeam");
 
 }
 
@@ -10410,7 +21055,6 @@ public partial class fogparams_t : NativeObject
     public fogparams_t (IntPtr pointer) : base(pointer) {}
 
     // dirPrimary
-    // MNetworkEncoder "coord"
     public Vector DirPrimary => Schema.GetDeclaredClass<Vector>(this.Handle, "fogparams_t", "dirPrimary");
 
     // colorPrimary
@@ -10428,7 +21072,6 @@ public partial class fogparams_t : NativeObject
     }
 
     // colorPrimaryLerpTo
-    // MNetworkUserGroup "FogController"
     public Color ColorPrimaryLerpTo
     {
         get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "fogparams_t", "colorPrimaryLerpTo"); }
@@ -10436,7 +21079,6 @@ public partial class fogparams_t : NativeObject
     }
 
     // colorSecondaryLerpTo
-    // MNetworkUserGroup "FogController"
     public Color ColorSecondaryLerpTo
     {
         get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "fogparams_t", "colorSecondaryLerpTo"); }
@@ -10450,7 +21092,6 @@ public partial class fogparams_t : NativeObject
     public ref float End => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "end");
 
     // farz
-    // MNetworkUserGroup "FogController"
     public ref float Farz => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "farz");
 
     // maxdensity
@@ -10463,43 +21104,33 @@ public partial class fogparams_t : NativeObject
     public ref float HDRColorScale => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "HDRColorScale");
 
     // skyboxFogFactor
-    // MNetworkUserGroup "FogController"
     public ref float SkyboxFogFactor => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "skyboxFogFactor");
 
     // skyboxFogFactorLerpTo
-    // MNetworkUserGroup "FogController"
     public ref float SkyboxFogFactorLerpTo => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "skyboxFogFactorLerpTo");
 
     // startLerpTo
-    // MNetworkUserGroup "FogController"
     public ref float StartLerpTo => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "startLerpTo");
 
     // endLerpTo
-    // MNetworkUserGroup "FogController"
     public ref float EndLerpTo => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "endLerpTo");
 
     // maxdensityLerpTo
-    // MNetworkUserGroup "FogController"
     public ref float MaxdensityLerpTo => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "maxdensityLerpTo");
 
     // lerptime
-    // MNetworkUserGroup "FogController"
     public ref float Lerptime => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "lerptime");
 
     // duration
-    // MNetworkUserGroup "FogController"
     public ref float Duration => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "duration");
 
     // blendtobackground
-    // MNetworkUserGroup "FogController"
     public ref float Blendtobackground => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "blendtobackground");
 
     // scattering
-    // MNetworkUserGroup "FogController"
     public ref float Scattering => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "scattering");
 
     // locallightscale
-    // MNetworkUserGroup "FogController"
     public ref float Locallightscale => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "locallightscale");
 
     // enable
@@ -10511,6 +21142,9 @@ public partial class fogparams_t : NativeObject
     // m_bNoReflectionFog
     public ref bool NoReflectionFog => ref Schema.GetRef<bool>(this.Handle, "fogparams_t", "m_bNoReflectionFog");
 
+    // m_bPadding
+    public ref bool Padding => ref Schema.GetRef<bool>(this.Handle, "fogparams_t", "m_bPadding");
+
 }
 
 public partial class fogplayerparams_t : NativeObject
@@ -10518,8 +21152,92 @@ public partial class fogplayerparams_t : NativeObject
     public fogplayerparams_t (IntPtr pointer) : base(pointer) {}
 
     // m_hCtrl
-    // MNetworkUserGroup "PlayerFogController"
     public CHandle<CFogController> Ctrl => Schema.GetDeclaredClass<CHandle<CFogController>>(this.Handle, "fogplayerparams_t", "m_hCtrl");
+
+    // m_flTransitionTime
+    public ref float TransitionTime => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flTransitionTime");
+
+    // m_OldColor
+    public Color OldColor
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "fogplayerparams_t", "m_OldColor"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "fogplayerparams_t", "m_OldColor", value); }
+    }
+
+    // m_flOldStart
+    public ref float OldStart => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flOldStart");
+
+    // m_flOldEnd
+    public ref float OldEnd => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flOldEnd");
+
+    // m_flOldMaxDensity
+    public ref float OldMaxDensity => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flOldMaxDensity");
+
+    // m_flOldHDRColorScale
+    public ref float OldHDRColorScale => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flOldHDRColorScale");
+
+    // m_flOldFarZ
+    public ref float OldFarZ => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flOldFarZ");
+
+    // m_NewColor
+    public Color NewColor
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "fogplayerparams_t", "m_NewColor"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "fogplayerparams_t", "m_NewColor", value); }
+    }
+
+    // m_flNewStart
+    public ref float NewStart => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flNewStart");
+
+    // m_flNewEnd
+    public ref float NewEnd => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flNewEnd");
+
+    // m_flNewMaxDensity
+    public ref float NewMaxDensity => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flNewMaxDensity");
+
+    // m_flNewHDRColorScale
+    public ref float NewHDRColorScale => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flNewHDRColorScale");
+
+    // m_flNewFarZ
+    public ref float NewFarZ => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flNewFarZ");
+
+}
+
+public partial class hudtextparms_t : NativeObject
+{
+    public hudtextparms_t (IntPtr pointer) : base(pointer) {}
+
+    // color1
+    public Color Color1
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "hudtextparms_t", "color1"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "hudtextparms_t", "color1", value); }
+    }
+
+    // color2
+    public Color Color2
+    {
+        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "hudtextparms_t", "color2"); }
+        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "hudtextparms_t", "color2", value); }
+    }
+
+    // effect
+    public ref byte Effect => ref Schema.GetRef<byte>(this.Handle, "hudtextparms_t", "effect");
+
+    // channel
+    public ref byte Channel => ref Schema.GetRef<byte>(this.Handle, "hudtextparms_t", "channel");
+
+    // x
+    public ref float X => ref Schema.GetRef<float>(this.Handle, "hudtextparms_t", "x");
+
+    // y
+    public ref float Y => ref Schema.GetRef<float>(this.Handle, "hudtextparms_t", "y");
+
+}
+
+public partial class IChoreoServices : NativeObject
+{
+    public IChoreoServices (IntPtr pointer) : base(pointer) {}
 
 }
 
@@ -10559,9 +21277,86 @@ public partial class InfoForResourceTypeIParticleSystemDefinition : NativeObject
 
 }
 
+public partial class IntervalTimer : NativeObject
+{
+    public IntervalTimer (IntPtr pointer) : base(pointer) {}
+
+    // m_timestamp
+    public ref float Timestamp => ref Schema.GetRef<float>(this.Handle, "IntervalTimer", "m_timestamp");
+
+    // m_nWorldGroupId
+    public WorldGroupId_t WorldGroupId => Schema.GetDeclaredClass<WorldGroupId_t>(this.Handle, "IntervalTimer", "m_nWorldGroupId");
+
+}
+
 public partial class ISkeletonAnimationController : NativeObject
 {
     public ISkeletonAnimationController (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class lerpdata_t : NativeObject
+{
+    public lerpdata_t (IntPtr pointer) : base(pointer) {}
+
+    // m_hEnt
+    public CHandle<CBaseEntity> Ent => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "lerpdata_t", "m_hEnt");
+
+    // m_MoveType
+    public ref MoveType_t MoveType => ref Schema.GetRef<MoveType_t>(this.Handle, "lerpdata_t", "m_MoveType");
+
+    // m_flStartTime
+    public ref float StartTime => ref Schema.GetRef<float>(this.Handle, "lerpdata_t", "m_flStartTime");
+
+    // m_vecStartOrigin
+    public Vector StartOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "lerpdata_t", "m_vecStartOrigin");
+
+    // m_qStartRot
+    public Quaternion StartRot => Schema.GetDeclaredClass<Quaternion>(this.Handle, "lerpdata_t", "m_qStartRot");
+
+    // m_nFXIndex
+    public ParticleIndex_t FXIndex => Schema.GetDeclaredClass<ParticleIndex_t>(this.Handle, "lerpdata_t", "m_nFXIndex");
+
+}
+
+public partial class locksound_t : NativeObject
+{
+    public locksound_t (IntPtr pointer) : base(pointer) {}
+
+    // sLockedSound
+    public string SLockedSound
+    {
+        get { return Schema.GetUtf8String(this.Handle, "locksound_t", "sLockedSound"); }
+        set { Schema.SetString(this.Handle, "locksound_t", "sLockedSound", value); }
+    }
+
+    // sUnlockedSound
+    public string SUnlockedSound
+    {
+        get { return Schema.GetUtf8String(this.Handle, "locksound_t", "sUnlockedSound"); }
+        set { Schema.SetString(this.Handle, "locksound_t", "sUnlockedSound", value); }
+    }
+
+    // flwaitSound
+    public ref float FlwaitSound => ref Schema.GetRef<float>(this.Handle, "locksound_t", "flwaitSound");
+
+}
+
+public partial class magnetted_objects_t : NativeObject
+{
+    public magnetted_objects_t (IntPtr pointer) : base(pointer) {}
+
+    // hEntity
+    public CHandle<CBaseEntity> HEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "magnetted_objects_t", "hEntity");
+
+}
+
+public partial class ParticleIndex_t : NativeObject
+{
+    public ParticleIndex_t (IntPtr pointer) : base(pointer) {}
+
+    // m_Value
+    public ref Int32 Value => ref Schema.GetRef<Int32>(this.Handle, "ParticleIndex_t", "m_Value");
 
 }
 
@@ -10569,12 +21364,114 @@ public partial class PhysicsRagdollPose_t : NativeObject
 {
     public PhysicsRagdollPose_t (IntPtr pointer) : base(pointer) {}
 
+    // __m_pChainEntity
+    public CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "PhysicsRagdollPose_t", "__m_pChainEntity");
+
     // m_Transforms
-    // MNetworkChangeCallback "OnTransformChanged"
     public NetworkedVector<CTransform> Transforms => Schema.GetDeclaredClass<NetworkedVector<CTransform>>(this.Handle, "PhysicsRagdollPose_t", "m_Transforms");
 
     // m_hOwner
     public CHandle<CBaseEntity> Owner => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "PhysicsRagdollPose_t", "m_hOwner");
+
+}
+
+public partial class ragdoll_t : NativeObject
+{
+    public ragdoll_t (IntPtr pointer) : base(pointer) {}
+
+    // list
+    public NetworkedVector<ragdollelement_t> List => Schema.GetDeclaredClass<NetworkedVector<ragdollelement_t>>(this.Handle, "ragdoll_t", "list");
+
+    // boneIndex
+    public NetworkedVector<Int32> BoneIndex => Schema.GetDeclaredClass<NetworkedVector<Int32>>(this.Handle, "ragdoll_t", "boneIndex");
+
+    // allowStretch
+    public ref bool AllowStretch => ref Schema.GetRef<bool>(this.Handle, "ragdoll_t", "allowStretch");
+
+    // unused
+    public ref bool Unused => ref Schema.GetRef<bool>(this.Handle, "ragdoll_t", "unused");
+
+}
+
+public partial class ragdollelement_t : NativeObject
+{
+    public ragdollelement_t (IntPtr pointer) : base(pointer) {}
+
+    // originParentSpace
+    public Vector OriginParentSpace => Schema.GetDeclaredClass<Vector>(this.Handle, "ragdollelement_t", "originParentSpace");
+
+    // parentIndex
+    public ref Int32 ParentIndex => ref Schema.GetRef<Int32>(this.Handle, "ragdollelement_t", "parentIndex");
+
+    // m_flRadius
+    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "ragdollelement_t", "m_flRadius");
+
+}
+
+public partial class Relationship_t : NativeObject
+{
+    public Relationship_t (IntPtr pointer) : base(pointer) {}
+
+    // disposition
+    public ref Disposition_t Disposition => ref Schema.GetRef<Disposition_t>(this.Handle, "Relationship_t", "disposition");
+
+    // priority
+    public ref Int32 Priority => ref Schema.GetRef<Int32>(this.Handle, "Relationship_t", "priority");
+
+}
+
+public partial class RelationshipOverride_t : Relationship_t
+{
+    public RelationshipOverride_t (IntPtr pointer) : base(pointer) {}
+
+    // entity
+    public CHandle<CBaseEntity> Entity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "RelationshipOverride_t", "entity");
+
+    // classType
+    public ref Class_T ClassType => ref Schema.GetRef<Class_T>(this.Handle, "RelationshipOverride_t", "classType");
+
+}
+
+public partial class ResponseContext_t : NativeObject
+{
+    public ResponseContext_t (IntPtr pointer) : base(pointer) {}
+
+    // m_iszName
+    public string Name
+    {
+        get { return Schema.GetUtf8String(this.Handle, "ResponseContext_t", "m_iszName"); }
+        set { Schema.SetString(this.Handle, "ResponseContext_t", "m_iszName", value); }
+    }
+
+    // m_iszValue
+    public string Value
+    {
+        get { return Schema.GetUtf8String(this.Handle, "ResponseContext_t", "m_iszValue"); }
+        set { Schema.SetString(this.Handle, "ResponseContext_t", "m_iszValue", value); }
+    }
+
+    // m_fExpirationTime
+    public ref float ExpirationTime => ref Schema.GetRef<float>(this.Handle, "ResponseContext_t", "m_fExpirationTime");
+
+}
+
+public partial class ResponseFollowup : NativeObject
+{
+    public ResponseFollowup (IntPtr pointer) : base(pointer) {}
+
+    // followup_concept
+    // followup_contexts
+    // followup_delay
+    public ref float Followup_delay => ref Schema.GetRef<float>(this.Handle, "ResponseFollowup", "followup_delay");
+
+    // followup_target
+    // followup_entityiotarget
+    // followup_entityioinput
+    // followup_entityiodelay
+    public ref float Followup_entityiodelay => ref Schema.GetRef<float>(this.Handle, "ResponseFollowup", "followup_entityiodelay");
+
+    // bFired
+    public ref bool BFired => ref Schema.GetRef<bool>(this.Handle, "ResponseFollowup", "bFired");
 
 }
 
@@ -10654,8 +21551,18 @@ public partial class shard_model_desc_t : NativeObject
     // m_SurfacePropStringToken
     public CUtlStringToken SurfacePropStringToken => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "shard_model_desc_t", "m_SurfacePropStringToken");
 
-    // m_LightGroup
-    public CUtlStringToken LightGroup => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "shard_model_desc_t", "m_LightGroup");
+}
+
+public partial class SimpleConstraintSoundProfile : NativeObject
+{
+    public SimpleConstraintSoundProfile (IntPtr pointer) : base(pointer) {}
+
+    // eKeypoints
+    // m_keyPoints
+    public Span<float> KeyPoints => Schema.GetFixedArray<float>(this.Handle, "SimpleConstraintSoundProfile", "m_keyPoints", 2);
+
+    // m_reversalSoundThresholds
+    public Span<float> ReversalSoundThresholds => Schema.GetFixedArray<float>(this.Handle, "SimpleConstraintSoundProfile", "m_reversalSoundThresholds", 3);
 
 }
 
@@ -10667,7 +21574,6 @@ public partial class sky3dparams_t : NativeObject
     public ref Int16 Scale => ref Schema.GetRef<Int16>(this.Handle, "sky3dparams_t", "scale");
 
     // origin
-    // MNetworkEncoder "coord"
     public Vector Origin => Schema.GetDeclaredClass<Vector>(this.Handle, "sky3dparams_t", "origin");
 
     // bClip3DSkyBoxNearToWorldFar
@@ -10684,6 +21590,94 @@ public partial class sky3dparams_t : NativeObject
 
 }
 
+public partial class SpawnPoint : CServerOnlyPointEntity
+{
+    public SpawnPoint (IntPtr pointer) : base(pointer) {}
+
+    // m_iPriority
+    public ref Int32 Priority => ref Schema.GetRef<Int32>(this.Handle, "SpawnPoint", "m_iPriority");
+
+    // m_bEnabled
+    public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "SpawnPoint", "m_bEnabled");
+
+    // m_nType
+    public ref Int32 Type => ref Schema.GetRef<Int32>(this.Handle, "SpawnPoint", "m_nType");
+
+}
+
+public partial class SpawnPointCoopEnemy : SpawnPoint
+{
+    public SpawnPointCoopEnemy (IntPtr pointer) : base(pointer) {}
+
+    // m_szWeaponsToGive
+    public string WeaponsToGive
+    {
+        get { return Schema.GetUtf8String(this.Handle, "SpawnPointCoopEnemy", "m_szWeaponsToGive"); }
+        set { Schema.SetString(this.Handle, "SpawnPointCoopEnemy", "m_szWeaponsToGive", value); }
+    }
+
+    // m_szPlayerModelToUse
+    public string PlayerModelToUse
+    {
+        get { return Schema.GetUtf8String(this.Handle, "SpawnPointCoopEnemy", "m_szPlayerModelToUse"); }
+        set { Schema.SetString(this.Handle, "SpawnPointCoopEnemy", "m_szPlayerModelToUse", value); }
+    }
+
+    // m_nArmorToSpawnWith
+    public ref Int32 ArmorToSpawnWith => ref Schema.GetRef<Int32>(this.Handle, "SpawnPointCoopEnemy", "m_nArmorToSpawnWith");
+
+    // m_nDefaultBehavior
+    // m_nBotDifficulty
+    public ref Int32 BotDifficulty => ref Schema.GetRef<Int32>(this.Handle, "SpawnPointCoopEnemy", "m_nBotDifficulty");
+
+    // m_bIsAgressive
+    public ref bool IsAgressive => ref Schema.GetRef<bool>(this.Handle, "SpawnPointCoopEnemy", "m_bIsAgressive");
+
+    // m_bStartAsleep
+    public ref bool StartAsleep => ref Schema.GetRef<bool>(this.Handle, "SpawnPointCoopEnemy", "m_bStartAsleep");
+
+    // m_flHideRadius
+    public ref float HideRadius => ref Schema.GetRef<float>(this.Handle, "SpawnPointCoopEnemy", "m_flHideRadius");
+
+    // m_szBehaviorTreeFile
+    public string BehaviorTreeFile
+    {
+        get { return Schema.GetUtf8String(this.Handle, "SpawnPointCoopEnemy", "m_szBehaviorTreeFile"); }
+        set { Schema.SetString(this.Handle, "SpawnPointCoopEnemy", "m_szBehaviorTreeFile", value); }
+    }
+
+}
+
+public partial class thinkfunc_t : NativeObject
+{
+    public thinkfunc_t (IntPtr pointer) : base(pointer) {}
+
+    // m_nContext
+    public CUtlStringToken Context => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "thinkfunc_t", "m_nContext");
+
+    // m_nNextThinkTick
+    public ref Int32 NextThinkTick => ref Schema.GetRef<Int32>(this.Handle, "thinkfunc_t", "m_nNextThinkTick");
+
+    // m_nLastThinkTick
+    public ref Int32 LastThinkTick => ref Schema.GetRef<Int32>(this.Handle, "thinkfunc_t", "m_nLastThinkTick");
+
+}
+
+public partial class VelocitySampler : NativeObject
+{
+    public VelocitySampler (IntPtr pointer) : base(pointer) {}
+
+    // m_prevSample
+    public Vector PrevSample => Schema.GetDeclaredClass<Vector>(this.Handle, "VelocitySampler", "m_prevSample");
+
+    // m_fPrevSampleTime
+    public ref float PrevSampleTime => ref Schema.GetRef<float>(this.Handle, "VelocitySampler", "m_fPrevSampleTime");
+
+    // m_fIdealSampleRate
+    public ref float IdealSampleRate => ref Schema.GetRef<float>(this.Handle, "VelocitySampler", "m_fIdealSampleRate");
+
+}
+
 public partial class ViewAngleServerChange_t : NativeObject
 {
     public ViewAngleServerChange_t (IntPtr pointer) : base(pointer) {}
@@ -10692,7 +21686,6 @@ public partial class ViewAngleServerChange_t : NativeObject
     public ref FixAngleSet_t NType => ref Schema.GetRef<FixAngleSet_t>(this.Handle, "ViewAngleServerChange_t", "nType");
 
     // qAngle
-    // MNetworkEncoder "qangle_precise"
     public QAngle QAngle => Schema.GetDeclaredClass<QAngle>(this.Handle, "ViewAngleServerChange_t", "qAngle");
 
     // nIndex

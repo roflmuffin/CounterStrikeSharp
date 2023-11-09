@@ -21,7 +21,7 @@ inline std::string GameDirectory() {
 }
 
 inline std::string PluginDirectory() { return GameDirectory() + "/addons/counterstrikesharp"; }
+inline std::string GamedataDirectory() { return GameDirectory() + "/addons/counterstrikesharp/gamedata"; }
 
-inline std::string ConfigDirectory() { return PluginDirectory() + "/config"; }
 }  // namespace utils
 }  // namespace counterstrikesharp
