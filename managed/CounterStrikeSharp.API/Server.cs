@@ -77,9 +77,6 @@ namespace CounterStrikeSharp.API
             }).ToArray();
         }
 
-        public static void PrintToConsole(string s)
-        {
-            Console.WriteLine(s);
-        }
+        public static void PrintToConsole(string s) => NativeAPI.PrintToServerConsole($"{s}\n\0");
     }
 }

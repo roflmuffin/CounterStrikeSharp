@@ -38,6 +38,12 @@ namespace CounterStrikeSharp.API.Modules.Entities
             get => $"[U:1:{SteamId64 - Base}]";
             set => SteamId64 = ParseId3(value);
         }
+        
+        public int SteamId32
+        {
+            get => (int)(SteamId64 - Base);
+            set => SteamId64 = (ulong)value + Base;
+        }
 
         public override string ToString() => $"[SteamID {SteamId64}, {SteamId2}, {SteamId3}]";
     }

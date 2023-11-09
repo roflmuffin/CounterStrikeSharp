@@ -38,14 +38,54 @@ namespace CounterStrikeSharp.API
                 .Where(x => flags.HasFlag(x)).AsEnumerable();
         }
 
+        public static T GetEntityFromIndex<T>(int index) where T : CEntityInstance
+        {
+            return (T)Activator.CreateInstance(typeof(T), NativeAPI.GetEntityFromIndex(index))!;
+        }
+
+        public static CCSPlayerController GetPlayerFromIndex(int index)
+        {
+            return Utilities.GetEntityFromIndex<CCSPlayerController>(index);
+        }
+
+        public static CCSPlayerController GetPlayerFromSlot(int slot)
+        {
+            return Utilities.GetEntityFromIndex<CCSPlayerController>(slot + 1);
+        }
+
+        public static CCSPlayerController GetPlayerFromUserid(int userid)
+        {
+            return Utilities.GetEntityFromIndex<CCSPlayerController>((userid & 0xFF) + 1);
+        }
+
         public static IEnumerable<T> FindAllEntitiesByDesignerName<T>(string designerName) where T : CEntityInstance
         {
             var pEntity = new CEntityIdentity(NativeAPI.GetFirstActiveEntity());
-            for (; pEntity.Handle != IntPtr.Zero; pEntity = pEntity.Next.Value)
+            for (; pEntity != null && pEntity.Handle != IntPtr.Zero; pEntity = pEntity.Next)
             {
                 if (!pEntity.DesignerName.Contains(designerName)) continue;
                 yield return new PointerTo<T>(pEntity.Handle).Value;
             }
+        }
+        
+        /// <summary>
+        /// Returns a list of <see cref="CCSPlayerController"/> that are valid and have a valid <see cref="CCSPlayerController.UserId"/> >= 0
+        /// </summary>
+        public static List<CCSPlayerController> GetPlayers()
+        {
+            List<CCSPlayerController> players = new();
+
+            for (int i = 1; i <= Server.MaxPlayers; i++)
+            {
+                var controller = GetPlayerFromIndex(i);
+
+                if (!controller.IsValid || controller.UserId == -1)
+                    continue;
+
+                players.Add(controller);
+            }
+
+            return players;
         }
 
         public static void ReplyToCommand(CCSPlayerController? player, string msg, bool console = false)

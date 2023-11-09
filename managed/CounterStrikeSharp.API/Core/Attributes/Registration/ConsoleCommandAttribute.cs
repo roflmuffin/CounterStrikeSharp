@@ -2,7 +2,7 @@ using System;
 
 namespace CounterStrikeSharp.API.Core.Attributes.Registration;
 
-[AttributeUsage(AttributeTargets.Method)]
+[AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
 public class ConsoleCommandAttribute : Attribute
 {
     public string Command { get; }

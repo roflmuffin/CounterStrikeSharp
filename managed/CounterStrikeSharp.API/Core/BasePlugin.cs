@@ -41,6 +41,10 @@ namespace CounterStrikeSharp.API.Core
 
         public abstract string ModuleName { get; }
         public abstract string ModuleVersion { get; }
+        
+        public virtual string ModuleAuthor { get; }
+        
+        public virtual string ModuleDescription { get; }
 
         public string ModulePath { get; internal set; }
 
@@ -150,14 +154,14 @@ namespace CounterStrikeSharp.API.Core
         {
             var wrappedHandler = new Action<int, IntPtr>((i, ptr) =>
             {
-                var command = new CommandInfo(ptr);
                 if (i == -1)
                 {
-                    handler?.Invoke(null, command);
+                    handler?.Invoke(null, new CommandInfo(ptr, null));
                     return;
                 }
 
                 var entity = new CCSPlayerController(NativeAPI.GetEntityFromIndex(i + 1));
+                var command = new CommandInfo(ptr, entity);
                 handler?.Invoke(entity.IsValid ? entity : null, command);
             });
 
@@ -170,13 +174,13 @@ namespace CounterStrikeSharp.API.Core
         {
             var wrappedHandler = new Func<int, IntPtr, HookResult>((i, ptr) =>
             {
-                var command = new CommandInfo(ptr);
                 if (i == -1)
                 {
                     return HookResult.Continue;
                 }
 
                 var entity = new CCSPlayerController(NativeAPI.GetEntityFromIndex(i + 1));
+                var command = new CommandInfo(ptr, entity);
                 return handler.Invoke(entity.IsValid ? entity : null, command);
             });
 
@@ -238,7 +242,7 @@ namespace CounterStrikeSharp.API.Core
         }*/
 
         // Adds global listener, e.g. OnTick, OnClientConnect
-        protected void RegisterListener<T>(T handler) where T : Delegate
+        public void RegisterListener<T>(T handler) where T : Delegate
         {
             var listenerName = typeof(T).GetCustomAttribute<ListenerNameAttribute>()?.Name;
             if (string.IsNullOrEmpty(listenerName))
@@ -273,7 +277,7 @@ namespace CounterStrikeSharp.API.Core
             Listeners[handler] = subscriber;
         }
 
-        protected void RemoveListener(string name, Delegate handler)
+        public void RemoveListener(string name, Delegate handler)
         {
             if (!Listeners.TryGetValue(handler, out var subscriber)) return;
 
@@ -331,14 +335,17 @@ namespace CounterStrikeSharp.API.Core
         {
             var eventHandlers = instance.GetType()
                 .GetMethods()
-                .Where(method => method.GetCustomAttribute<ConsoleCommandAttribute>() != null)
+                .Where(method => method.GetCustomAttributes<ConsoleCommandAttribute>().Any())
                 .ToArray();
 
             foreach (var eventHandler in eventHandlers)
             {
-                var commandInfo = eventHandler.GetCustomAttribute<ConsoleCommandAttribute>();
-                AddCommand(commandInfo.Command, commandInfo.Description,
-                    eventHandler.CreateDelegate<CommandInfo.CommandCallback>(instance));
+                var attributes = eventHandler.GetCustomAttributes<ConsoleCommandAttribute>();
+                foreach (var commandInfo in attributes)
+                {
+                    AddCommand(commandInfo.Command, commandInfo.Description,
+                        eventHandler.CreateDelegate<CommandInfo.CommandCallback>(instance));
+                }
             }
         }
 

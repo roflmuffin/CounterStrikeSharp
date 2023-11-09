@@ -19,8 +19,10 @@ using System.IO;
 using System.Linq;
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
 using CounterStrikeSharp.API.Modules.Commands;
+using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Memory;
@@ -29,10 +31,15 @@ using CounterStrikeSharp.API.Modules.Utils;
 
 namespace TestPlugin
 {
+    [MinimumApiVersion(1)]
     public class SamplePlugin : BasePlugin
     {
         public override string ModuleName => "Sample Plugin";
         public override string ModuleVersion => "v1.0.0";
+
+        public override string ModuleAuthor => "Roflmuffin";
+
+        public override string ModuleDescription => "A playground of features used for testing";
 
         public override void Load(bool hotReload)
         {
@@ -41,6 +48,7 @@ namespace TestPlugin
 
             Console.WriteLine($"Max Players: {Server.MaxPlayers}");
 
+            SetupConvars();
             SetupGameEvents();
             SetupListeners();
             SetupCommands();
@@ -63,6 +71,24 @@ namespace TestPlugin
             var virtualFunc = VirtualFunction.Create<IntPtr>(server.Pointer, 91);
             var result = virtualFunc() - 8;
             Log($"Result of virtual func call is {result:X}");
+        }
+
+        private void SetupConvars()
+        {
+            RegisterListener<Listeners.OnMapStart>(name =>
+            {
+                var cheatsCvar = ConVar.Find("sv_cheats");
+                cheatsCvar.SetValue(true);
+
+                var numericCvar = ConVar.Find("mp_warmuptime");
+                Console.WriteLine($"mp_warmuptime = {numericCvar?.GetPrimitiveValue<float>()}");
+
+                var stringCvar = ConVar.Find("sv_skyname");
+                Console.WriteLine($"sv_skyname = {stringCvar?.StringValue}");
+
+                var fogCvar = ConVar.Find("fog_color");
+                Console.WriteLine($"fog_color = {fogCvar?.GetNativeValue<Vector>()}");
+            });
         }
 
         private void SetupGameEvents()
@@ -109,6 +135,10 @@ namespace TestPlugin
                 var activeWeapon = @event.Userid.PlayerPawn.Value.WeaponServices?.ActiveWeapon.Value;
                 var weapons = @event.Userid.PlayerPawn.Value.WeaponServices?.MyWeapons;
 
+                // Set player to random colour
+                player.PlayerPawn.Value.Render = Color.FromArgb(Random.Shared.Next(0, 255),
+                    Random.Shared.Next(0, 255), Random.Shared.Next(0, 255));
+                
                 Server.NextFrame(() =>
                 {
                     player.PrintToCenter(string.Join("\n", weapons.Select(x => x.Value.DesignerName)));
@@ -134,9 +164,8 @@ namespace TestPlugin
             RegisterEventHandler<EventRoundStart>((@event, info) =>
             {
                 // Grab all cs_player_controller entities and set their cash value to $1337.
-                var playerEntities =
-                    Utilities.FindAllEntitiesByDesignerName<CCSPlayerController>("cs_player_controller");
-                Log($"cs_player_controller count: {playerEntities.Count<CCSPlayerController>()}");
+                var playerEntities = Utilities.GetPlayers();
+                Log($"cs_player_controller count: {playerEntities.Count()}");
 
                 foreach (var player in playerEntities)
                 {
@@ -145,8 +174,9 @@ namespace TestPlugin
                 }
 
                 // Grab everything starting with cs_, but we'll only mainpulate cs_gamerules.
+                // Note: this iterates through all entities, so is an expensive operation.
                 var csEntities = Utilities.FindAllEntitiesByDesignerName<CBaseEntity>("cs_");
-                Log($"Amount of cs_* entities: {csEntities.Count<CBaseEntity>()}");
+                Log($"Amount of cs_* entities: {csEntities.Count()}");
 
                 foreach (var entity in csEntities)
                 {
@@ -211,7 +241,11 @@ namespace TestPlugin
             }
 
             var giveItemMenu = new ChatMenu("Small Menu");
-            var handleGive = (CCSPlayerController player, ChatMenuOption option) => player.GiveNamedItem(option.Text);
+            var handleGive = (CCSPlayerController player, ChatMenuOption option) =>
+            {
+                player.GiveNamedItem(option.Text);
+            };
+
             giveItemMenu.AddMenuOption("weapon_ak47", handleGive);
             giveItemMenu.AddMenuOption("weapon_p250", handleGive);
 
@@ -246,14 +280,14 @@ namespace TestPlugin
 
                 if ((CsTeam)player.TeamNum == CsTeam.Terrorist)
                 {
-                    player.SwitchTeam(CsTeam.CounterTerrorist);
+                    player.ChangeTeam(CsTeam.CounterTerrorist);
                 }
                 else
                 {
-                    player.SwitchTeam(CsTeam.Terrorist);
+                    player.ChangeTeam(CsTeam.Terrorist);
                 }
             });
-            
+
             // Listens for any client use of the command `jointeam`.
             AddCommandListener("jointeam", (player, info) =>
             {
@@ -279,6 +313,7 @@ namespace TestPlugin
             return HookResult.Continue;
         }
 
+        [ConsoleCommand("css_killmeplease", "Kills the player")]
         [ConsoleCommand("css_killme", "Kills the player")]
         public void OnKillme(CCSPlayerController? player, CommandInfo command)
         {

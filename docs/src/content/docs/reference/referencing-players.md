@@ -36,13 +36,12 @@ Userids are similar to a slot, and they are what show in the console when you ty
 All entity instances have an entity index (similar to CSGO), which means both the player controller and the player pawn both have different indexes. The Player Controller has a reserved entity index (because of the slot system 0-MAXPLAYERS(64)), but a player pawn does not, so it is common to retrieve a player pawn with an index in the hundreds.
 
 ### Entity Pointers & Handles
-All "entity objects" you interact with in CounterStrikeSharp are actually wrappers around a __pointer__ on the server, which can be accessed by retrieving the `.Handle` property. Which means to go from a CPlayerSlot, UserID or Index value, you must first convert to an index, and then supply this to a native method which can convert the index to an entity pointer. At time of writing this is `NativeAPI.GetEntityFromIndex()` but will likely change in the future. Examples:
+All "entity objects" you interact with in CounterStrikeSharp are actually wrappers around a __pointer__ on the server, which can be accessed by retrieving the `.Handle` property. Which means to go from a CPlayerSlot, UserID or Index value, you must use the matching utility method to fetch the entity pointer. There are three utility methods to get an instance of a player using these identifiers:
 
 ```csharp
-var entity = new CCSPlayerController(NativeAPI.GetEntityFromIndex(slot + 1)); // Slot -> Index -> Pointer
-var entity = new CCSPlayerController(NativeAPI.GetEntityFromIndex(index)); // Index -> Pointer
-var entity = new CCSPlayerController(NativeAPI.GetEntityFromIndex((userid & 0xFF) + 1)); // Userid -> Index -> Pointer
-var entity = new CCSPlayerController(NativeAPI.GetEntityFromIndex(pointer); // IntPtr directly
+var player = Utilities.GetPlayerFromUserid(userid);
+var player = Utilities.GetPlayerFromIndex(index);
+var player = Utilities.GetPlayerFromSlot(slot);
 ```
 
 :::note[Entity Safety]

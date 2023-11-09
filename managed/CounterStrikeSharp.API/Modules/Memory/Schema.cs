@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Drawing;
 using System.Runtime.CompilerServices;
 using CounterStrikeSharp.API.Core;
 
@@ -52,7 +52,7 @@ public class Schema
 
         return (T)Activator.CreateInstance(typeof(T), pointerTo);
     }
-    
+
     public static unsafe T GetPointer<T>(IntPtr pointer, string className, string memberName)
     {
         var pointerTo = Unsafe.Read<IntPtr>((void*)(pointer + GetSchemaOffset(className, memberName)));
@@ -70,8 +70,57 @@ public class Schema
         return span;
     }
 
+    /// <summary>
+    /// Reads a string from the specified pointer, class name, and member name.
+    /// These are for non-networked strings, which are just stored as raw char bytes on the server.
+    /// </summary>
+    /// <returns></returns>
     public static string GetString(IntPtr pointer, string className, string memberName)
     {
         return GetSchemaValue<string>(pointer, className, memberName);
+    }
+    
+    /// <summary>
+    /// Reads a UTF8 encoded string from the specified pointer, class name, and member name.
+    /// These are for networked strings, which need to be read differently.
+    /// </summary>
+    /// <param name="pointer"></param>
+    /// <param name="className"></param>
+    /// <param name="memberName"></param>
+    /// <returns></returns>
+    public static string GetUtf8String(IntPtr pointer, string className, string memberName)
+    {
+        return Utilities.ReadStringUtf8(pointer + GetSchemaOffset(className, memberName));
+    }
+
+    public static void SetString(IntPtr pointer, string className, string memberName, string value)
+    {
+        SetSchemaValue(pointer, className, memberName, value);
+    }
+    
+   
+    public static T GetCustomMarshalledType<T>(IntPtr pointer, string className, string memberName)
+    {
+        var type = typeof(T);
+        object result = type switch
+        {
+            _ when type == typeof(Color) => Marshaling.ColorMarshaler.NativeToManaged(pointer + GetSchemaOffset(className, memberName)),
+            _ => throw new NotSupportedException(),
+        };
+
+        return (T)result;
+    }
+    
+    public static void SetCustomMarshalledType<T>(IntPtr pointer, string className, string memberName, T value)
+    {
+        var type = typeof(T);
+        switch (type)
+        {
+            case var _ when value is Color c:
+                Marshaling.ColorMarshaler.ManagedToNative(pointer + GetSchemaOffset(className, memberName), c);
+                break;
+            default:
+                throw new NotSupportedException();
+        }
     }
 }

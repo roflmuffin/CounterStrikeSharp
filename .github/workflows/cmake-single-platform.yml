@@ -11,6 +11,8 @@ env:
 
 jobs:
   build:
+    permissions: 
+      contents: write
     runs-on: ubuntu-latest
     container:
       image: registry.gitlab.steamos.cloud/steamrt/sniper/sdk:latest
@@ -27,11 +29,17 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: 'recursive'
-
+          
+      - name: Generate build number
+        id: buildnumber
+        uses: onyxmueller/build-tag-number@v1
+        with:
+          token: ${{secrets.github_token}}
+      
       - uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '7.0.x'
-      - run: dotnet publish -c Release managed/CounterStrikeSharp.API
+      - run: dotnet publish -c Release /p:Version=1.0.${{ env.BUILD_NUMBER }} managed/CounterStrikeSharp.API
 
       - name: Configure CMake
         run: cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
@@ -53,8 +61,11 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: counterstrikesharp-${{ env.GITHUB_SHA_SHORT }}
+          name: counterstrikesharp-build-${{ env.BUILD_NUMBER }}-${{ env.GITHUB_SHA_SHORT }}
           path: build/output/
+
+      - name: Zip CounterStrikeSharp Build
+        run: (cd build/output && zip -qq -r ../../counterstrikesharp-build-${{ env.BUILD_NUMBER }}-${{ env.GITHUB_SHA_SHORT }}.zip *)
 
       - name: Add dotnet runtime
         run: |
@@ -63,7 +74,18 @@ jobs:
           | tar xvz -C build/output/addons/counterstrikesharp/dotnet
           mv build/output/addons/counterstrikesharp/dotnet/shared/Microsoft.NETCore.App/7.0.11/* build/output/addons/counterstrikesharp/dotnet/shared/Microsoft.NETCore.App/
 
+      - name: Zip CounterStrikeSharp Runtime Build
+        run: (cd build/output && zip -qq -r ../../counterstrikesharp-with-runtime-build-${{ env.BUILD_NUMBER }}-${{ env.GITHUB_SHA_SHORT }}.zip *)
+
       - uses: actions/upload-artifact@v3
         with:
-          name: counterstrikesharp-with-runtime-${{ env.GITHUB_SHA_SHORT }}
+          name: counterstrikesharp-with-runtime-build-${{ env.BUILD_NUMBER }}-${{ env.GITHUB_SHA_SHORT }}
           path: build/output/
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ env.BUILD_NUMBER }}
+          files: |
+            counterstrikesharp-build-${{ env.BUILD_NUMBER }}-${{ env.GITHUB_SHA_SHORT }}.zip
+            counterstrikesharp-with-runtime-build-${{ env.BUILD_NUMBER }}-${{ env.GITHUB_SHA_SHORT }}.zip

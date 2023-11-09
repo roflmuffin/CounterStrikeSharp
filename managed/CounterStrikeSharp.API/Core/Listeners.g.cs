@@ -100,5 +100,31 @@ namespace CounterStrikeSharp.API.Core
         /// <param name="steamId">The Steam ID of the authorized client.</param>
         [ListenerName("OnClientAuthorized")]
         public delegate void OnClientAuthorized(int playerSlot, [CastFrom(typeof(ulong))]SteamID steamId);
+
+        /// <summary>
+        /// Called when the server is updating the hibernation state.
+        /// </summary>
+        /// <param name="isHibernating"><see langword="true"/> if the server is hibernating, <see langword="false"/> otherwise</param>
+        [ListenerName("OnServerHibernationUpdate")]
+        public delegate void OnServerHibernationUpdate(bool isHibernating);
+
+        /// <summary>
+        /// Called when the Steam API is activated.
+        /// </summary>
+        [ListenerName("OnGameServerSteamAPIActivated")]
+        public delegate void OnGameServerSteamAPIActivated();
+
+        /// <summary>
+        /// Called when the Steam API is deactivated.
+        /// </summary>
+        [ListenerName("OnGameServerSteamAPIDeactivated")]
+        public delegate void OnGameServerSteamAPIDeactivated();
+
+        /// <summary>
+        /// Called when the server has changed hostname.
+        /// </summary>
+        /// <param name="hostname">New hostname of the server</param>
+        [ListenerName("OnHostNameChanged")]
+        public delegate void OnHostNameChanged(string hostname);
     }
 }

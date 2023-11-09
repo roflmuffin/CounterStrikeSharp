@@ -39,7 +39,7 @@
 #undef schema
 
 struct SchemaKey {
-    int16_t offset;
+    int32_t offset;
     bool networked;
 };
 
