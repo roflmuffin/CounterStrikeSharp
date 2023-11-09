@@ -249,8 +249,8 @@ namespace TestPlugin
             giveItemMenu.AddMenuOption("weapon_ak47", handleGive);
             giveItemMenu.AddMenuOption("weapon_p250", handleGive);
 
-            AddCommand("css_menu", "Opens example menu", (player, info) => { ChatMenus.OpenMenu(player, largeMenu); });
-            AddCommand("css_gunmenu", "Gun Menu", (player, info) => { ChatMenus.OpenMenu(player, giveItemMenu); });
+            AddCommand("css_menu", "Opens example menu", (player, info) => { ChatMenus.OpenMenu(player, largeMenu); }, false);
+            AddCommand("css_gunmenu", "Gun Menu", (player, info) => { ChatMenus.OpenMenu(player, giveItemMenu); }, false);
 
             for (int i = 1; i <= 9; i++)
             {
@@ -259,7 +259,7 @@ namespace TestPlugin
                     if (player == null) return;
                     var key = Convert.ToInt32(info.GetArg(0).Split("_")[1]);
                     ChatMenus.OnKeyPress(player, key);
-                });
+                }, false);
             }
         }
 
@@ -272,7 +272,7 @@ namespace TestPlugin
                     if (player == null) return;
                     Log(
                         $"CounterStrikeSharp - a test command was called by {new SteamID(player.SteamID).SteamId2} with {info.ArgString}");
-                });
+                }, false);
 
             AddCommand("css_changeteam", "change team", (player, info) =>
             {
@@ -286,7 +286,7 @@ namespace TestPlugin
                 {
                     player.ChangeTeam(CsTeam.Terrorist);
                 }
-            });
+            }, false);
 
             // Listens for any client use of the command `jointeam`.
             AddCommandListener("jointeam", (player, info) =>

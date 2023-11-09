@@ -33,7 +33,7 @@ public override void Load(bool hotReload)
     {
         if (player == null) return;
         Console.WriteLine($"Custom command called.");
-    });
+    }, false);
 }
 ```
 

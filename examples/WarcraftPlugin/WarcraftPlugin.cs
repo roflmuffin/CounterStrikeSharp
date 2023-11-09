@@ -284,16 +284,16 @@ namespace WarcraftPlugin
             CooldownManager = new CooldownManager();
             CooldownManager.Initialize();
 
-            AddCommand("ability1", "ability1", Ability1Pressed);
-            AddCommand("ability2", "ability2", Ability2Pressed);
-            AddCommand("ability3", "ability3", Ability3Pressed);
-            AddCommand("ultimate", "ultimate", Ability4Pressed);
+            AddCommand("ability1", "ability1", Ability1Pressed, false);
+            AddCommand("ability2", "ability2", Ability2Pressed, false);
+            AddCommand("ability3", "ability3", Ability3Pressed, false);
+            AddCommand("ultimate", "ultimate", Ability4Pressed, false);
 
-            AddCommand("changerace", "changerace", CommandChangeRace);
-            AddCommand("raceinfo", "raceinfo", CommandRaceInfo);
-            AddCommand("resetskills", "resetskills", CommandResetSkills);
-            AddCommand("addxp", "addxp", CommandAddXp);
-            AddCommand("skills", "skills", (client, _) => ShowSkillPointMenu(GetWcPlayer(client)));
+            AddCommand("changerace", "changerace", CommandChangeRace, false);
+            AddCommand("raceinfo", "raceinfo", CommandRaceInfo, false);
+            AddCommand("resetskills", "resetskills", CommandResetSkills, false);
+            AddCommand("addxp", "addxp", CommandAddXp, false);
+            AddCommand("skills", "skills", (client, _) => ShowSkillPointMenu(GetWcPlayer(client)), false);
 
             // XpPerKill = new ConVar("wcgo_xp_kill", "20", "Base amount of xp granted for a kill",
             //     ConVarFlags.None);
