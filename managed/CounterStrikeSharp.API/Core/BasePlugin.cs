@@ -150,8 +150,8 @@ namespace CounterStrikeSharp.API.Core
         /// <param name="name">The name of the command.</param>
         /// <param name="description">The description of the command.</param>
         /// <param name="handler">The callback function to be invoked when the command is executed.</param>
-        /// <param name="serverOnly">Should this command only be executable on the server.</param>
-        public void AddCommand(string name, string description, CommandInfo.CommandCallback handler, bool serverOnly)
+        /// <param name="serverOnly">Should this command only be executable on the server. Default is `false`.</param>
+        public void AddCommand(string name, string description, CommandInfo.CommandCallback handler, bool serverOnly = false)
         {
             var wrappedHandler = new Action<int, IntPtr>((i, ptr) =>
             {
