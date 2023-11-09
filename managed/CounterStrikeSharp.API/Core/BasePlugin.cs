@@ -150,7 +150,8 @@ namespace CounterStrikeSharp.API.Core
         /// <param name="name">The name of the command.</param>
         /// <param name="description">The description of the command.</param>
         /// <param name="handler">The callback function to be invoked when the command is executed.</param>
-        public void AddCommand(string name, string description, CommandInfo.CommandCallback handler)
+        /// <param name="serverOnly">Should this command only be executable on the server.</param>
+        public void AddCommand(string name, string description, CommandInfo.CommandCallback handler, bool serverOnly)
         {
             var wrappedHandler = new Action<int, IntPtr>((i, ptr) =>
             {
@@ -166,7 +167,8 @@ namespace CounterStrikeSharp.API.Core
             });
 
             var subscriber = new CallbackSubscriber(handler, wrappedHandler, () => { RemoveCommand(name, handler); });
-            NativeAPI.AddCommand(name, description, false, (int)ConCommandFlags.FCVAR_LINKED_CONCOMMAND, subscriber.GetInputArgument());
+            NativeAPI.AddCommand(name, description, serverOnly, (int)ConCommandFlags.FCVAR_LINKED_CONCOMMAND,
+                subscriber.GetInputArgument());
             CommandHandlers[handler] = subscriber;
         }
 
