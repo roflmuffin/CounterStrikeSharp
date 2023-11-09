@@ -9,7 +9,6 @@ using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Commands;
 using System.Linq;
 using System.Reflection;
-using System.Xml.Linq;
 
 namespace CounterStrikeSharp.API.Modules.Admin
 {
@@ -60,7 +59,6 @@ namespace CounterStrikeSharp.API.Modules.Admin
         {
             foreach (var admin in _admins)
             {
-                Console.WriteLine($"{admin.Value.AuthType}, {admin.Value.Identity}");
                 var authType = admin.Value.AuthType;
 
                 var steamidFromFile = (authType == "steamid64") ? new SteamID(ulong.Parse(admin.Value.Identity)) : new SteamID(admin.Value.Identity);
