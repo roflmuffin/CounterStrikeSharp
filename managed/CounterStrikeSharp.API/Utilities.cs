@@ -79,7 +79,7 @@ namespace CounterStrikeSharp.API
             {
                 var controller = GetPlayerFromIndex(i);
 
-                if (!controller.IsValid || controller.UserId < 0)
+                if (!controller.IsValid || controller.UserId == -1)
                     continue;
 
                 players.Add(controller);
