@@ -188,7 +188,7 @@ namespace CounterStrikeSharp.API.Core
         {
             var currentVersion = Api.GetVersion();
 
-            Utilities.ReplyToCommand(caller, "  CounterStrikeSharp was created and is maintained by Michael \"roflmuffin\" Wilson.\n" +
+            info.ReplyToCommand("  CounterStrikeSharp was created and is maintained by Michael \"roflmuffin\" Wilson.\n" +
                 "  Counter-Strike Sharp uses code borrowed from SourceMod, Source.Python, FiveM, Saul Rennison and CS2Fixes.\n" +
                 "  See ACKNOWLEDGEMENTS.md for more information.\n" +
                 "  Current API Version: " + currentVersion, true);
