@@ -258,11 +258,22 @@ dyno::ReturnAction HookHandler(dyno::HookType hookType, dyno::Hook& hook)
     return dyno::ReturnAction::Ignored;
 }
 
+std::vector<dyno::DataObject> ConvertArgsToDynoHook(const std::vector<DataType_t>& dataTypes) {
+    std::vector<dyno::DataObject> converted;
+    converted.reserve(dataTypes.size());
+
+    for (DataType_t dt : dataTypes) {
+        converted.push_back(dyno::DataObject(static_cast<dyno::DataType>(dt)));
+    }
+
+    return converted;
+}
+
 void ValveFunction::AddHook(CallbackT callable, bool post)
 {
     dyno::HookManager& manager = dyno::HookManager::Get();
-    dyno::Hook* hook = manager.hook((void*)m_ulAddr, [] {
-        return new dyno::x64SystemVcall({dyno::DataType::Pointer}, dyno::DataType::Void);
+    dyno::Hook* hook = manager.hook((void*)m_ulAddr, [this] {
+        return new dyno::x64SystemVcall(ConvertArgsToDynoHook(m_Args), static_cast<dyno::DataType>(this->m_eReturnType));
     });
     g_HookMap[hook] = this;
 
