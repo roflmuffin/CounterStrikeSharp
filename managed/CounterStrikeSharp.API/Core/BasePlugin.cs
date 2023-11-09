@@ -346,7 +346,7 @@ namespace CounterStrikeSharp.API.Core
                 foreach (var commandInfo in attributes)
                 {
                     AddCommand(commandInfo.Command, commandInfo.Description,
-                        eventHandler.CreateDelegate<CommandInfo.CommandCallback>(instance));
+                        eventHandler.CreateDelegate<CommandInfo.CommandCallback>(instance), false);
                 }
             }
         }
