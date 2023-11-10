@@ -36,7 +36,7 @@ public class CommandUtils
                 // but we'll just ignore that for this check.
                 if (helperAttribute.MinArgs != 0 && command.ArgCount - 1 < helperAttribute.MinArgs)
                 {
-                    command.ReplyToCommand($"[CSS] Expected usage: \"!{command.GetCommandString} {helperAttribute.Usage}\".");
+                    command.ReplyToCommand($"[CSS] Expected usage: \"!{command.ArgByIndex(0)} {helperAttribute.Usage}\".");
                     return;
                 }
             }

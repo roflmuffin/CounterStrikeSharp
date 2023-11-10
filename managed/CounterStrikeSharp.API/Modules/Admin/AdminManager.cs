@@ -21,12 +21,11 @@ namespace CounterStrikeSharp.API.Modules.Admin
 
     public static class AdminManager
     {
-        // ulong == SteamID.SteamId64
-        private static Dictionary<ulong, AdminData> _admins;
+        private static Dictionary<SteamID, AdminData> _admins;
 
         static AdminManager()
         {
-            _admins = new Dictionary<ulong, AdminData>();
+            _admins = new Dictionary<SteamID, AdminData>();
             CommandUtils.AddStandaloneCommand("css_admins_reload", "Reloads the admin file.", ReloadAdminsCommand);
         }
 
@@ -49,7 +48,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
                 {
                     var authType = adminDef.AuthType;
                     var steamidFromFile = (authType == "steamid64") ? new SteamID(ulong.Parse(adminDef.Identity)) : new SteamID(adminDef.Identity);
-                    _admins.Add(steamidFromFile.SteamId64, adminDef);
+                    _admins.Add(steamidFromFile, adminDef);
                 }
 
                 Console.WriteLine($"Loaded admin data with {_admins.Count} admins.");
@@ -67,7 +66,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// <returns>AdminData class if data found, null if not.</returns>
         public static AdminData? GetPlayerAdminData(SteamID steamid)
         {
-            return _admins.GetValueOrDefault(steamid.SteamId64);
+            return _admins.GetValueOrDefault(steamid);
         }
 
         /// <summary>
@@ -82,10 +81,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             // The server console should have access to all commands, regardless of permissions.
             if (player == null) return true;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return false; }
-            var data = GetPlayerAdminData(new SteamID(player.SteamID));
-            if (data == null) return false;
-
-            return data.Flags.Intersect(flags).Count() == flags.Count();
+            return PlayerHasPermissions(new SteamID(player.SteamID));
         }
 
         /// <summary>
@@ -112,8 +108,17 @@ namespace CounterStrikeSharp.API.Modules.Admin
         {
             if (player == null) return;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) return;
+            AddPlayerPermissions(new SteamID(player.SteamID), flags);
+        }
 
-            var steamID = new SteamID(player.SteamID);
+        /// <summary>
+        /// Temporarily adds a permission flag to the player. These flags are not saved to
+        /// "configs/admins.json".
+        /// </summary>
+        /// <param name="player">SteamID to add a flag to.</param>
+        /// <param name="flags">Flags to add for the player.</param>
+        public static void AddPlayerPermissions(SteamID steamID, params string[] flags)
+        {
             var data = GetPlayerAdminData(steamID);
             if (data == null)
             {
@@ -124,7 +129,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
                 data.AuthType = "steamid64";
                 data.Identity = steamID.SteamId64.ToString();
 
-                _admins[steamID.SteamId64] = data;
+                _admins[steamID] = data;
                 return;
             }
             else
@@ -140,14 +145,25 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// Temporarily removes a permission flag to the player. These flags are not saved to
         /// "configs/admins.json".
         /// </summary>
-        /// <param name="player">Player controller to add a flag to.</param>
+        /// <param name="player">Player controller to remove flags from.</param>
         /// <param name="flags">Flags to remove from the player.</param>
         public static void RemovePlayerPermissions(CCSPlayerController? player, params string[] flags)
         {
             if (player == null) return;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) return;
 
-            var data = GetPlayerAdminData(new SteamID(player.SteamID));
+            RemovePlayerPermissions(new SteamID(player.SteamID));
+        }
+
+        /// <summary>
+        /// Temporarily removes a permission flag to the player. These flags are not saved to
+        /// "configs/admins.json".
+        /// </summary>
+        /// <param name="steamiD">Steam ID to remove flags from.</param>
+        /// <param name="flags">Flags to remove from the player.</param>
+        public static void RemovePlayerPermissions(SteamID steamID, params string[] flags)
+        {
+            var data = GetPlayerAdminData(steamID);
             if (data == null) return;
             foreach (var flag in flags)
             {
@@ -164,8 +180,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             if (player == null) return;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) return;
 
-            var steamID = new SteamID(player.SteamID);
-            if (_admins.ContainsKey(steamID.SteamId64)) _admins.Remove(steamID.SteamId64);
+            RemovePlayerAdminData(new SteamID(player.SteamID));
             return;
         }
 
@@ -175,7 +190,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// <param name="steamid">Steam ID remove admin data from.</param>
         public static void RemovePlayerAdminData(SteamID steamID)
         {
-            if (_admins.ContainsKey(steamID.SteamId64)) _admins.Remove(steamID.SteamId64);
+            if (_admins.ContainsKey(steamID)) _admins.Remove(steamID);
             return;
         }
     }
