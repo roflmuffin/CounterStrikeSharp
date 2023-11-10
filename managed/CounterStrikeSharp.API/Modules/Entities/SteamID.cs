@@ -12,7 +12,6 @@ namespace CounterStrikeSharp.API.Modules.Entities
 
         public static explicit operator SteamID(ulong u) => new(u);
         public static explicit operator SteamID(string s) => new(s);
-
         ulong ParseId(string id)
         {
             var parts = id.Split(':');

@@ -43,10 +43,11 @@ namespace CounterStrikeSharp.API.Modules.Commands
         public string ArgByIndex(int index) => NativeAPI.CommandGetArgByIndex(Handle, index);
         public string GetArg(int index) => NativeAPI.CommandGetArgByIndex(Handle, index);
 
-        public void ReplyToCommand(string message) {
+        public void ReplyToCommand(string message, bool console = false) {
             if (_player != null) 
             {
-                _player.PrintToChat(message);
+                if (console) { _player.PrintToConsole(message); }
+                else _player.PrintToChat(message);
             }
             else 
             {
