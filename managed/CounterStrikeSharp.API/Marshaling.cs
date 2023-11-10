@@ -20,11 +20,16 @@ public class ColorMarshaler : ICustomMarshal<Color>
 {
     public Color NativeToManaged(IntPtr pointer)
     {
-        return Color.FromArgb(Marshal.ReadInt32(pointer));
+        var color = Marshal.ReadInt32(pointer);
+        var alpha = (byte)((color >> 24) & 0xFF);
+        var blue = (byte)((color >> 16) & 0xFF);
+        var green = (byte)((color >> 8) & 0xFF);
+        var red = (byte)(color & 0xFF);
+        return Color.FromArgb(alpha, red, green, blue);
     }
 
     public void ManagedToNative(IntPtr pointer, Color managedObj)
     {
-        Marshal.WriteInt32(pointer, managedObj.ToArgb());
+        Marshal.WriteInt32(pointer, (managedObj.A << 24) | (managedObj.B << 16) | (managedObj.G << 8) | managedObj.R);
     }
 }

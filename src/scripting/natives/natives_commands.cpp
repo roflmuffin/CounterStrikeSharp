@@ -37,11 +37,6 @@ static ConCommandInfo* AddCommand(ScriptContext& script_context)
     CSSHARP_CORE_TRACE("Adding command {}, {}, {}, {}, {}", name, description, server_only, flags,
                        (void*)callback);
 
-    if (globals::conCommandManager.FindCommand(name)) {
-        script_context.ThrowNativeError("Failed to add command \"%s\", command already exists.", name);
-        return nullptr;
-    }
-
     return globals::conCommandManager.AddCommand(name, description, server_only, flags, callback);
 }
 
