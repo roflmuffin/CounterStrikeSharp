@@ -88,16 +88,20 @@ void Initialize() {
 
     interfaces::Initialize();
 
-    globals::entitySystem = interfaces::pGameResourceServiceServer->GetGameEntitySystem();
+    entitySystem = interfaces::pGameResourceServiceServer->GetGameEntitySystem();
 
-    gameEventManager = (IGameEventManager2 *)(CALL_VIRTUAL(uintptr_t, 91, server) - 8);
+    if (int offset = -1; (offset = gameConfig->GetOffset("GameEventManager")) != -1) {
+        gameEventManager = (IGameEventManager2*)(CALL_VIRTUAL(uintptr_t, offset, server) - 8);
+    }
 }
 
 int source_hook_pluginid = 0;
 CGlobalVars *getGlobalVars() {
     INetworkGameServer *server = networkServerService->GetIGameServer();
 
-    if (!server) return nullptr;
+    if (!server) {
+        return nullptr;
+    }
 
     return networkServerService->GetIGameServer()->GetGlobals();
 }

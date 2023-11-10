@@ -137,7 +137,7 @@ bool CDotNetManager::Initialize() {
 #else
     std::string wideStr = std::string((baseDir + "/api/CounterStrikeSharp.API.runtimeconfig.json").c_str());
 #endif
-
+    CSSHARP_CORE_INFO("runtimeconfig: {}", counterstrikesharp::narrow(wideStr).c_str());
     load_assembly_and_get_function_pointer_fn load_assembly_and_get_function_pointer = nullptr;
     load_assembly_and_get_function_pointer = get_dotnet_load_assembly(wideStr.c_str());
     assert(load_assembly_and_get_function_pointer != nullptr &&
