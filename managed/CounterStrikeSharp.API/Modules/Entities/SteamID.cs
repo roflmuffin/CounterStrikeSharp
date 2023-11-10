@@ -12,7 +12,6 @@ namespace CounterStrikeSharp.API.Modules.Entities
 
         public static explicit operator SteamID(ulong u) => new(u);
         public static explicit operator SteamID(string s) => new(s);
-
         ulong ParseId(string id)
         {
             var parts = id.Split(':');
@@ -60,6 +59,26 @@ namespace CounterStrikeSharp.API.Modules.Entities
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
             return Equals((SteamID)obj);
+        }
+        
+        public static bool TryParse(string s, out SteamID? steamId)
+        {
+            try
+            {
+                if (ulong.TryParse(s, out var steamid64))
+                {
+                    steamId = new SteamID(steamid64);
+                    return true;
+                }
+
+                steamId = new SteamID(s);
+                return true;
+            }
+            catch
+            {
+                steamId = null;
+                return false;
+            }
         }
 
         public override int GetHashCode()

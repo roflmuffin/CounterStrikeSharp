@@ -20,8 +20,10 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Menu;
+using CounterStrikeSharp.API.Modules.Utils;
 
 namespace CounterStrikeSharp.API.Core
 {
@@ -57,17 +59,20 @@ namespace CounterStrikeSharp.API.Core
         }
         public void InitGlobalContext()
         {
-            Console.WriteLine("Loading GameData");
+            Console.WriteLine("Loading GameData from \"gamedata/gamedata.json\"");
             GameData.Load(Path.Combine(rootDir.FullName, "gamedata", "gamedata.json"));
+
+            Console.WriteLine("Loading Admins from \"configs/admins.json\"");
+            AdminManager.Load(Path.Combine(rootDir.FullName, "configs", "admins.json"));
 
             for (int i = 1; i <= 9; i++)
             {
-                AddCommand("css_" + i, "Command Key Handler", (player, info) =>
+                CommandUtils.AddStandaloneCommand("css_" + i, "Command Key Handler", (player, info) =>
                 {
                     if (player == null) return;
                     var key = Convert.ToInt32(info.GetArg(0).Split("_")[1]);
                     ChatMenus.OnKeyPress(player, key);
-                }, false);
+                });
             }
 
             Console.WriteLine("Loading C# plugins...");
@@ -178,24 +183,34 @@ namespace CounterStrikeSharp.API.Core
             return plugin;
         }
 
+        [PermissionHelper("can_execute_css_commands")]
+        [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
         private void OnCSSCommand(CCSPlayerController? caller, CommandInfo info)
         {
             var currentVersion = Api.GetVersion();
 
-            Utilities.ReplyToCommand(caller, "  CounterStrikeSharp was created and is maintained by Michael \"roflmuffin\" Wilson.\n" +
+            info.ReplyToCommand("  CounterStrikeSharp was created and is maintained by Michael \"roflmuffin\" Wilson.\n" +
                 "  Counter-Strike Sharp uses code borrowed from SourceMod, Source.Python, FiveM, Saul Rennison and CS2Fixes.\n" +
                 "  See ACKNOWLEDGEMENTS.md for more information.\n" +
                 "  Current API Version: " + currentVersion, true);
             return;
         }
 
+        [PermissionHelper("can_execute_css_commands")]
+        [CommandHelper(minArgs: 1, 
+        usage: "[option]\n" +
+                "  list - List all plugins currently loaded.\n" +
+                "  start / load - Loads a plugin not currently loaded.\n" +
+                "  stop / unload - Unloads a plugin currently loaded.\n" +
+                "  restart / reload - Reloads a plugin currently loaded.",
+        whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
         private void OnCSSPluginCommand(CCSPlayerController? caller, CommandInfo info)
         {
             switch (info.GetArg(1))
             {
                 case "list":
                 {
-                    Utilities.ReplyToCommand(caller, $"  List of all plugins currently loaded by CounterStrikeSharp: {_loadedPlugins.Count} plugins loaded.", true);
+                    info.ReplyToCommand($"  List of all plugins currently loaded by CounterStrikeSharp: {_loadedPlugins.Count} plugins loaded.", true);
 
                     foreach (var plugin in _loadedPlugins)
                     {
@@ -208,8 +223,8 @@ namespace CounterStrikeSharp.API.Core
                             sb.Append("    ");
                             sb.Append(plugin.Description);
                         }
-                        Utilities.ReplyToCommand(caller, sb.ToString(), true);
-
+                        info.ReplyToCommand(sb.ToString(), true);
+                        
                     }
 
                     break;
@@ -219,7 +234,7 @@ namespace CounterStrikeSharp.API.Core
                 {
                     if (info.ArgCount < 2)
                     {
-                        Utilities.ReplyToCommand(caller, "Valid usage: css_plugins start/load [relative plugin path || absolute plugin path] (e.g \"TestPlugin\", \"plugins/TestPlugin/TestPlugin.dll\")\n", true);
+                        info.ReplyToCommand("Valid usage: css_plugins start/load [relative plugin path || absolute plugin path] (e.g \"TestPlugin\", \"plugins/TestPlugin/TestPlugin.dll\")\n", true);
                         break;
                     }
 
@@ -252,7 +267,7 @@ namespace CounterStrikeSharp.API.Core
                 {
                     if (info.ArgCount < 2)
                     {
-                        Utilities.ReplyToCommand(caller, "Valid usage: css_plugins stop/unload [plugin name || #plugin id] (e.g \"TestPlugin\", \"1\")\n", true);
+                        info.ReplyToCommand("Valid usage: css_plugins stop/unload [plugin name || #plugin id] (e.g \"TestPlugin\", \"1\")\n", true);
                         break;
                     }
 
@@ -260,7 +275,7 @@ namespace CounterStrikeSharp.API.Core
                     PluginContext? plugin = FindPluginByIdOrName(pluginIdentifier);
                     if (plugin == null)
                     {
-                        Utilities.ReplyToCommand(caller, $"Could not unload plugin \"{pluginIdentifier}\")", true);
+                        info.ReplyToCommand($"Could not unload plugin \"{pluginIdentifier}\")", true);
                         break;
                     }
                     plugin.Unload();
@@ -273,7 +288,7 @@ namespace CounterStrikeSharp.API.Core
                 {
                     if (info.ArgCount < 2)
                     {
-                        Utilities.ReplyToCommand(caller, "Valid usage: css_plugins restart/reload [plugin name || #plugin id] (e.g \"TestPlugin\", \"#1\")\n", true);
+                        info.ReplyToCommand("Valid usage: css_plugins restart/reload [plugin name || #plugin id] (e.g \"TestPlugin\", \"#1\")\n", true);
                         break;
                     }
 
@@ -282,7 +297,7 @@ namespace CounterStrikeSharp.API.Core
 
                     if (plugin == null)
                     {
-                        Utilities.ReplyToCommand(caller, $"Could not reload plugin \"{pluginIdentifier}\")", true);
+                        info.ReplyToCommand($"Could not reload plugin \"{pluginIdentifier}\")", true);
                         break;
                     }
                     plugin.Unload(true);
@@ -291,7 +306,7 @@ namespace CounterStrikeSharp.API.Core
                 }
 
                 default:
-                    Utilities.ReplyToCommand(caller, "Valid usage: css_plugins [option]\n" +
+                    info.ReplyToCommand("Valid usage: css_plugins [option]\n" +
                         "  list - List all plugins currently loaded.\n" +
                         "  start / load - Loads a plugin not currently loaded.\n" +
                         "  stop / unload - Unloads a plugin currently loaded.\n" +
@@ -304,33 +319,9 @@ namespace CounterStrikeSharp.API.Core
 
         public void RegisterPluginCommands()
         {
-            AddCommand("css", "Counter-Strike Sharp options.", OnCSSCommand, false);
-            AddCommand("css_plugins", "Counter-Strike Sharp plugin options.", OnCSSPluginCommand, true);
+            CommandUtils.AddStandaloneCommand("css", "Counter-Strike Sharp options.", OnCSSCommand);
+            CommandUtils.AddStandaloneCommand("css_plugins", "Counter-Strike Sharp plugin options.", OnCSSPluginCommand);
         }
-
-        /**
-         * Temporary way for base CSS to add commands without a plugin context
-         */
-        private void AddCommand(string name, string description, CommandInfo.CommandCallback handler, bool serverOnly)
-        {
-            var wrappedHandler = new Action<int, IntPtr>((i, ptr) =>
-            {
-                if (i == -1)
-                {
-                    handler?.Invoke(null, new CommandInfo(ptr, null));
-                    return;
-                }
-
-                if (serverOnly) return;
-
-                var entity = new CCSPlayerController(NativeAPI.GetEntityFromIndex(i + 1));
-                var command = new CommandInfo(ptr, entity);
-                handler?.Invoke(entity.IsValid ? entity : null, command);
-            });
-
-            var subscriber = new BasePlugin.CallbackSubscriber(handler, wrappedHandler, () => { });
-            NativeAPI.AddCommand(name, description, serverOnly, (int)ConCommandFlags.FCVAR_LINKED_CONCOMMAND,
-                subscriber.GetInputArgument());
-        }
+        
     }
 }

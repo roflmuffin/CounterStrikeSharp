@@ -10,8 +10,6 @@ namespace CounterStrikeSharp.API.Core;
 class LoadedGameData
 {
     [JsonPropertyName("signatures")] public Signatures? Signatures { get; set; }
-
-
     [JsonPropertyName("offsets")] public Offsets? Offsets { get; set; }
 }
 
@@ -37,9 +35,16 @@ public static class GameData
 
     public static void Load(string gameDataPath)
     {
-        _methods = JsonSerializer.Deserialize<Dictionary<string, LoadedGameData>>(File.ReadAllText(gameDataPath));
+        try
+        {
+            _methods = JsonSerializer.Deserialize<Dictionary<string, LoadedGameData>>(File.ReadAllText(gameDataPath));
 
-        Console.WriteLine($"Loaded game data with {_methods.Count} methods.");
+            Console.WriteLine($"Loaded game data with {_methods.Count} methods.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Failed to load game data: {ex.ToString()}");
+        }
     }
 
     public static string GetSignature(string key)
