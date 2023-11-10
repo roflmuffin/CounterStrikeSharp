@@ -2,7 +2,6 @@
 
 namespace CounterStrikeSharp.API.Modules.Admin
 {
-
     [AttributeUsage(AttributeTargets.Method)]
     public class PermissionHelperAttribute : Attribute
     {
@@ -14,4 +13,3 @@ namespace CounterStrikeSharp.API.Modules.Admin
         }
     }
 }
-
