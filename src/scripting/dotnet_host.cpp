@@ -79,7 +79,7 @@ bool load_hostfxr() {
     std::string buffer = std::string(baseDir + "/dotnet/host/fxr/7.0.11/libhostfxr.so");
 #endif
 
-    CSSHARP_CORE_TRACE("Loading hostfxr from {0}", css::narrow(buffer).c_str());
+    CSSHARP_CORE_INFO("Loading hostfxr from {0}", css::narrow(buffer).c_str());
 
     // Load hostfxr and get desired exports
     void *lib = load_library(buffer.c_str());

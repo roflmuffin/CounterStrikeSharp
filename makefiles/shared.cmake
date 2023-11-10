@@ -45,3 +45,5 @@ include_directories(
     libraries/funchook/include
     libraries
 )
+
+include(${CMAKE_CURRENT_LIST_DIR}/metamod/configure_metamod.cmake)
