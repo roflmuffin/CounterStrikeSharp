@@ -198,7 +198,7 @@ namespace CounterStrikeSharp.API.Core
 
         [PermissionHelper("can_execute_css_commands")]
         [CommandHelper(minArgs: 1, 
-        usage: "css_plugins [option]\n" +
+        usage: "[option]\n" +
                 "  list - List all plugins currently loaded.\n" +
                 "  start / load - Loads a plugin not currently loaded.\n" +
                 "  stop / unload - Unloads a plugin currently loaded.\n" +
