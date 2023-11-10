@@ -65,7 +65,7 @@ namespace CounterStrikeSharp.API.Core
             Console.WriteLine("Loading Admins from \"configs/admins.json\"");
             AdminManager.Load(Path.Combine(rootDir.FullName, "configs", "admins.json"));
 
-            for (int i = 1; i <= 9; i++)
+            for (var i = 1; i <= 9; i++)
             {
                 CommandUtils.AddStandaloneCommand("css_" + i, "Command Key Handler", (player, info) =>
                 {

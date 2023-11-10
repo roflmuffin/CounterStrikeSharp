@@ -122,50 +122,47 @@ CDotNetManager::CDotNetManager() {}
 CDotNetManager::~CDotNetManager() {}
 
 bool CDotNetManager::Initialize() {
-    std::string baseDir = counterstrikesharp::utils::PluginDirectory();
+    const std::string base_dir = counterstrikesharp::utils::PluginDirectory();
+
+    CSSHARP_CORE_INFO("Loading .NET runtime...");
 
     if (!load_hostfxr()) {
         CSSHARP_CORE_ERROR("Failed to initialize .NET");
         return false;
     }
-
     CSSHARP_CORE_INFO(".NET Runtime Initialised.");
     namespace css = counterstrikesharp;
 #if _WIN32
-    std::wstring wideStr =
-        std::wstring(css::widen(baseDir) + L"\\api\\CounterStrikeSharp.API.runtimeconfig.json");
+    const auto wide_str =
+        std::wstring(css::widen(base_dir) + L"\\api\\CounterStrikeSharp.API.runtimeconfig.json");
 #else
     std::string wideStr = std::string((baseDir + "/api/CounterStrikeSharp.API.runtimeconfig.json").c_str());
 #endif
-    CSSHARP_CORE_INFO("runtimeconfig: {}", counterstrikesharp::narrow(wideStr).c_str());
-    load_assembly_and_get_function_pointer_fn load_assembly_and_get_function_pointer = nullptr;
-    load_assembly_and_get_function_pointer = get_dotnet_load_assembly(wideStr.c_str());
-    assert(load_assembly_and_get_function_pointer != nullptr &&
-           "Failure: get_dotnet_load_assembly()");
+    CSSHARP_CORE_INFO("Loading CSS .NET API, Runtime config: {}", counterstrikesharp::narrow(wide_str).c_str());
+    const auto load_assembly_and_get_function_pointer = get_dotnet_load_assembly(wide_str.c_str());
+    assert(load_assembly_and_get_function_pointer != nullptr && "Failure: get_dotnet_load_assembly()");
 
 #if _WIN32
     const auto dotnetlib_path =
-        std::wstring(css::widen(baseDir) + L"\\api\\CounterStrikeSharp.API.dll");
+        std::wstring(css::widen(base_dir) + L"\\api\\CounterStrikeSharp.API.dll");
+    CSSHARP_CORE_INFO("CSS API DLL: {}", counterstrikesharp::narrow(dotnetlib_path));
 #else
     const std::string dotnetlib_path =
         std::string((baseDir + "/api/CounterStrikeSharp.API.dll").c_str());
 #endif
-    const char_t *dotnet_type = STR("CounterStrikeSharp.API.Core.Helpers, CounterStrikeSharp.API");
+    const auto dotnet_type = STR("CounterStrikeSharp.API.Core.Helpers, CounterStrikeSharp.API");
     // Namespace, assembly name
 
     typedef int(CORECLR_DELEGATE_CALLTYPE * custom_entry_point_fn)();
     custom_entry_point_fn entry_point = nullptr;
-    int rc = load_assembly_and_get_function_pointer(dotnetlib_path.c_str(), dotnet_type,
-                                                    STR("LoadAllPlugins"), UNMANAGEDCALLERSONLY_METHOD,
-                                                    nullptr, (void **)&entry_point);
-    assert(rc == 0 && entry_point != nullptr &&
-           "Failure: load_assembly_and_get_function_pointer()");
+    const int rc = load_assembly_and_get_function_pointer(dotnetlib_path.c_str(), dotnet_type,
+                                                          STR("LoadAllPlugins"), UNMANAGEDCALLERSONLY_METHOD,
+                                                          nullptr, reinterpret_cast<void**>(&entry_point));
 
-    const bool success = entry_point();
-    if (!success) {
-        CSSHARP_CORE_ERROR("Failed to initialize .NET");
-        return false;
-    }
+    assert(rc == 0 && entry_point != nullptr && "Failure: load_assembly_and_get_function_pointer()");
+
+    const int invoke_result_code = entry_point(); 
+    CSSHARP_CORE_INFO("LoadAllPlugins returned: {}", invoke_result_code);
 
     CSSHARP_CORE_INFO("CounterStrikeSharp.API Loaded Successfully.");
     return true;

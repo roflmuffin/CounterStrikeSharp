@@ -5,7 +5,43 @@ namespace CounterStrikeSharp.API.Core;
 
 public static class Constants
 {
-    public static string ROOT_BINARY_PATH
+    public static string ModulePrefix
+    {
+        get
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return "";
+            }
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                return "lib";
+            }
+
+            throw new NotSupportedException("Not supported.");
+        }
+    }
+
+    public static string ModuleSuffix
+    {
+        get
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return ".so";
+            }
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                return ".dll";
+            }
+
+            throw new NotSupportedException("Not supported.");
+        }
+    }
+
+    public static string RootBinaryPath
     {
         get
         {
@@ -23,7 +59,7 @@ public static class Constants
         }
     }
 
-    public static string GAME_BINARY_PATH
+    public static string GameBinaryPath
     {
         get
         {
