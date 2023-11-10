@@ -94,5 +94,6 @@ jobs:
 
       - name: Publish NuGet package
         run: |
-          dotnet nuget push managed/CounterStrikeSharp.API/bin/Release/CounterStrikeSharp.API.1.0.${{ env.BUILD_NUMBER }}.nupkg --api-key "${{ secrets.GITHUB_TOKEN }}" --source "github" --skip-duplicate
-          dotnet nuget push managed/CounterStrikeSharp.API/bin/Release/CounterStrikeSharp.API.1.0.${{ env.BUILD_NUMBER }}.snupkg --api-key "${{ secrets.GITHUB_TOKEN }}" --source "github" --skip-duplicate
+          dotnet nuget add source --username USERNAME --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/NAMESPACE/index.json"
+          dotnet nuget push managed/CounterStrikeSharp.API/bin/Release/CounterStrikeSharp.API.1.0.${{ env.BUILD_NUMBER }}.nupkg --source "github" --skip-duplicate
+          dotnet nuget push managed/CounterStrikeSharp.API/bin/Release/CounterStrikeSharp.API.1.0.${{ env.BUILD_NUMBER }}.snupkg --source "github" --skip-duplicate
