@@ -18,6 +18,7 @@
 
 #include "core/global_listener.h"
 #include "core/log.h"
+#include "core/gameconfig.h"
 #include "core/timer_system.h"
 #include "core/utils.h"
 #include "core/managers/entity_manager.h"
@@ -28,6 +29,7 @@
 #include "scripting/script_engine.h"
 #include "entity2/entitysystem.h"
 #include "interfaces/cs2_interfaces.h"
+
 
 counterstrikesharp::GlobalClass* counterstrikesharp::GlobalClass::head = nullptr;
 
@@ -78,6 +80,16 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
                     NETWORKSERVERSERVICE_INTERFACE_VERSION);
     GET_V_IFACE_ANY(GetEngineFactory, globals::gameEventSystem, IGameEventSystem,
                     GAMEEVENTSYSTEM_INTERFACE_VERSION);
+
+    // TODO: Utilize core layer and script layer in future release.
+    auto gamedata_path = std::string(utils::GamedataDirectory() + "/gamedata.json");
+    globals::gameConfig = new CGameConfig(gamedata_path);
+    char conf_error[255] = "";
+
+    if (!globals::gameConfig->Init(conf_error, sizeof(conf_error))) {
+        CSSHARP_CORE_ERROR("Could not read \'{}\'. Error: {}", gamedata_path, conf_error);
+        return false;
+    }
 
     globals::Initialize();
 

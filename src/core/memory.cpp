@@ -25,10 +25,14 @@
 #include <dlfcn.h>
 #include <elf.h>
 #include <link.h>
+#else
+#include <Windows.h>
+#include <Psapi.h>
 #endif
 
 #include <cstdio>
 
+#include "memory_module.h"
 #include "metamod_oslink.h"
 #include "wchartypes.h"
 
@@ -142,6 +146,12 @@ void* FindSignature(const char* moduleName, const char* bytesStr) {
     if (GetModuleInformation(module, &moduleBase, &moduleSize) != 0) {
         return nullptr;
     }
+#else
+    MODULEINFO m_hModuleInfo;
+    GetModuleInformation(GetCurrentProcess(), module, &m_hModuleInfo, sizeof(m_hModuleInfo));
+
+    moduleBase = (void*)m_hModuleInfo.lpBaseOfDll;
+    moduleSize = m_hModuleInfo.SizeOfImage;
 #endif
 
     unsigned char *pMemory;

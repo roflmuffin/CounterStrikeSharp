@@ -8,6 +8,7 @@ include("makefiles/shared.cmake")
 add_subdirectory(libraries/spdlog)
 add_subdirectory(libraries/dyncall)
 add_subdirectory(libraries/funchook)
+set(FUNCHOOK_BUILD_SHARED OFF)
 
 set_property(TARGET funchook-static PROPERTY POSITION_INDEPENDENT_CODE ON)
 
@@ -29,6 +30,8 @@ SET(SOURCE_FILES
     src/core/utils.h
     src/core/globals.h
     src/core/globals.cpp
+    src/core/gameconfig.h
+    src/core/gameconfig.cpp
     src/core/log.h
     src/core/log.cpp
     src/scripting/script_engine.h
@@ -57,6 +60,7 @@ SET(SOURCE_FILES
     src/core/managers/con_command_manager.h
     src/scripting/natives/natives_commands.cpp
     src/core/memory_module.h
+    src/core/memory_module.cpp
     src/core/cs2_sdk/interfaces/cgameresourceserviceserver.h
     src/core/cs2_sdk/interfaces/cschemasystem.h
     src/core/cs2_sdk/interfaces/cs2_interfaces.h
@@ -80,11 +84,13 @@ SET(SOURCE_FILES
     libraries/nlohmann/json.hpp
 )
 
+
 if (LINUX)
-set(SOURCE_FILES 
-    ${SOURCE_FILES}
-    libraries/hl2sdk-cs2/public/tier0/memoverride.cpp
-)
+    # memoverride.cpp is not usable on CMake Windows, cuz CMake default link libraries (seems) always link ucrt.lib
+    set(SOURCE_FILES 
+        ${SOURCE_FILES}
+        libraries/hl2sdk-cs2/public/tier0/memoverride.cpp
+    )
 endif()
 
 set(PROTO_DIRS -I${CMAKE_CURRENT_SOURCE_DIR}/libraries/GameTracking-CS2/Protobufs)
@@ -113,19 +119,24 @@ target_include_directories(
 )
 
 if (LINUX)
-include("makefiles/linux.base.cmake")
+    include("makefiles/linux.base.cmake")
+    set_target_properties(${PROJECT_NAME} PROPERTIES
+        PREFIX ""
+        LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/addons/counterstrikesharp/bin/linuxsteamrt64"
+    )
 elseif(WIN32)
-include("makefiles/windows.base.cmake")
+    include("makefiles/windows.base.cmake")
+    set_target_properties(${PROJECT_NAME} PROPERTIES
+        PREFIX ""
+        LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/addons/counterstrikesharp/bin/win64"
+    )
 endif()
 
 
 
 # Libraries
 target_link_libraries(${PROJECT_NAME} ${COUNTER_STRIKE_SHARP_LINK_LIBRARIES})
-set_target_properties(${PROJECT_NAME} PROPERTIES
-        PREFIX ""
-        LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/addons/counterstrikesharp/bin/linuxsteamrt64"
-)
+
 add_custom_command(
         TARGET ${PROJECT_NAME} PRE_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory

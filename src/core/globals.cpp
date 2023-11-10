@@ -13,6 +13,7 @@
 
 #include "log.h"
 #include "utils/virtual.h"
+#include "core/memory.h"
 #include "core/managers/con_command_manager.h"
 #include "core/managers/chat_manager.h"
 #include "memory_module.h"
@@ -22,6 +23,7 @@
 #include "core/managers/server_manager.h"
 #include <public/game/server/iplayerinfo.h>
 #include <public/entity2/entitysystem.h>
+
 
 namespace counterstrikesharp {
 
@@ -64,6 +66,7 @@ SourceHook::Impl::CSourceHookImpl source_hook_impl;
 SourceHook::ISourceHook *source_hook = &source_hook_impl;
 ISmmAPI *ismm = nullptr;
 CGameEntitySystem* entitySystem = nullptr;
+CGameConfig* gameConfig = nullptr;
 
 // Custom Managers
 CallbackManager callbackManager;
