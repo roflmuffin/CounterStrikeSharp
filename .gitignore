@@ -10,6 +10,8 @@ configs/addons/metamod/counterstrikesharp.vdf
 
 libraries/mono/
 
+CMakeSettings.json
+
 build/
 build_test/
 
