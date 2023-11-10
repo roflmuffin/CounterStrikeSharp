@@ -129,17 +129,11 @@ void SetSchemaValueByName(ScriptContext& script_context)
     const auto m_key = schema::GetOffset(className, classKey, memberName, memberKey);
     const auto m_chain = schema::FindChainOffset(className);
 
-
-    // todo network updates
-    //    if (m_chain != 0 && m_key.networked) {
-    //        addresses::NetworkStateChanged((uintptr_t)(instancePointer) + m_chain, m_key.offset,
-    //                                       0xFFFFFFFF);
-    //    } else if (m_key.networked) { /* WIP: Works fine for most props, but inlined classes in
-    //    the
-    //                                     middle of a class will need to have their this pointer
-    //                                     corrected by the offset .*/
-    //        CALL_VIRTUAL(void, 1, instancePointer, m_key.offset, 0xFFFFFFFF, 0xFFFF);
-    //    }
+        if (m_chain != 0 && m_key.networked) {
+            addresses::NetworkStateChanged((uintptr_t)(instancePointer) + m_chain, m_key.offset, 0xFFFFFFFF);
+        } else if (m_key.networked) {
+            CALL_VIRTUAL(void, 1, instancePointer, m_key.offset, 0xFFFFFFFF, 0xFFFF);
+        }
 
     switch (dataType) {
     case DATA_TYPE_BOOL:
