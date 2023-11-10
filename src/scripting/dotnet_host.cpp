@@ -24,6 +24,8 @@
 #include "core/log.h"
 #include "core/utils.h"
 
+#include "utils/string.h"
+
 std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 
 namespace {
@@ -70,10 +72,14 @@ void *get_export(void *h, const char *name) {
 // Using the nethost library, discover the location of hostfxr and get exports
 bool load_hostfxr() {
     std::string baseDir = counterstrikesharp::utils::PluginDirectory();
-
+    namespace css = counterstrikesharp;
+#if _WIN32
+    std::wstring buffer = std::wstring(css::widen(baseDir) + L"\\dotnet\\host\\fxr\\7.0.11\\hostfxr.dll");
+#else
     std::string buffer = std::string(baseDir + "/dotnet/host/fxr/7.0.11/libhostfxr.so");
+#endif
 
-    CSSHARP_CORE_TRACE("Loading hostfxr from {0}", buffer.c_str());
+    CSSHARP_CORE_TRACE("Loading hostfxr from {0}", css::narrow(buffer).c_str());
 
     // Load hostfxr and get desired exports
     void *lib = load_library(buffer.c_str());
@@ -124,24 +130,33 @@ bool CDotNetManager::Initialize() {
     }
 
     CSSHARP_CORE_INFO(".NET Runtime Initialised.");
-
-    std::string wideStr =
-        std::string((baseDir + "/api/CounterStrikeSharp.API.runtimeconfig.json").c_str());
+    namespace css = counterstrikesharp;
+#if _WIN32
+    std::wstring wideStr =
+        std::wstring(css::widen(baseDir) + L"\\api\\CounterStrikeSharp.API.runtimeconfig.json");
+#else
+    std::string wideStr = std::string((baseDir + "/api/CounterStrikeSharp.API.runtimeconfig.json").c_str());
+#endif
 
     load_assembly_and_get_function_pointer_fn load_assembly_and_get_function_pointer = nullptr;
     load_assembly_and_get_function_pointer = get_dotnet_load_assembly(wideStr.c_str());
     assert(load_assembly_and_get_function_pointer != nullptr &&
            "Failure: get_dotnet_load_assembly()");
 
+#if _WIN32
+    const auto dotnetlib_path =
+        std::wstring(css::widen(baseDir) + L"\\api\\CounterStrikeSharp.API.dll");
+#else
     const std::string dotnetlib_path =
         std::string((baseDir + "/api/CounterStrikeSharp.API.dll").c_str());
-    const char_t *dotnet_type = "CounterStrikeSharp.API.Core.Helpers, CounterStrikeSharp.API";
+#endif
+    const char_t *dotnet_type = STR("CounterStrikeSharp.API.Core.Helpers, CounterStrikeSharp.API");
     // Namespace, assembly name
 
     typedef int(CORECLR_DELEGATE_CALLTYPE * custom_entry_point_fn)();
     custom_entry_point_fn entry_point = nullptr;
     int rc = load_assembly_and_get_function_pointer(dotnetlib_path.c_str(), dotnet_type,
-                                                    "LoadAllPlugins", UNMANAGEDCALLERSONLY_METHOD,
+                                                    STR("LoadAllPlugins"), UNMANAGEDCALLERSONLY_METHOD,
                                                     nullptr, (void **)&entry_point);
     assert(rc == 0 && entry_point != nullptr &&
            "Failure: load_assembly_and_get_function_pointer()");

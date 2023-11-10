@@ -20,7 +20,6 @@
 #include "cs2_interfaces.h"
 #include "interfaces/interfaces.h"
 
-#include "tier0/memdbgon.h"
 #include "core/memory_module.h"
 #include "core/globals.h"
 

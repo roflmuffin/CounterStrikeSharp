@@ -23,9 +23,10 @@
 #include "../globals.h"
 // #include <unordered_map>
 #include "tier1/utlmap.h"
-#include "tier0/memdbgon.h"
 #include "../memory.h"
 #include "core/log.h"
+
+
 
 using SchemaKeyValueMap_t = CUtlMap<uint32_t, SchemaKey>;
 using SchemaTableMap_t = CUtlMap<uint32_t, SchemaKeyValueMap_t*>;

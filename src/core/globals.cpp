@@ -1,3 +1,4 @@
+#include "mm_plugin.h"
 #include "core/globals.h"
 #include "core/managers/player_manager.h"
 #include "iserver.h"
