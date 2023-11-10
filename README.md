@@ -18,7 +18,7 @@ As a result, there are a few key philosophies and trade-offs that drive the proj
 - Supporting both platforms is a lot of work for 1 person, so there are no real plans to support Windows.
 
 ## Install
-Download the latest build from [here](https://github.com/roflmuffin/CounterStrikeSharp/releases). (Download the with Runtime version if this is your first time installing.
+Download the latest build from [here](https://github.com/roflmuffin/CounterStrikeSharp/releases). (Download the with runtime version if this is your first time installing).
 
 Detailed installation instructions can be found in the [docs](https://docs.cssharp.dev/guides/getting-started/).
 
