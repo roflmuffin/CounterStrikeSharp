@@ -1,0 +1,4 @@
+OnServerHibernationUpdate: isHibernating:bool
+OnGameServerSteamAPIActivated:
+OnGameServerSteamAPIDeactivated:
+OnHostNameChanged: hostname:string
