@@ -17,9 +17,9 @@ namespace CounterStrikeSharp.API.Modules.Commands
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
     public class CommandHelperAttribute : Attribute
     {
-        private int MinArgs { get; }
-        private string Usage { get; }
-        private CommandUsage WhoCanExcecute { get; }
+        public int MinArgs { get; }
+        public string Usage { get; }
+        public CommandUsage WhoCanExcecute { get; }
 
         /// <summary>
         /// 

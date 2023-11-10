@@ -72,7 +72,7 @@ namespace CounterStrikeSharp.API.Core
                     if (player == null) return;
                     var key = Convert.ToInt32(info.GetArg(0).Split("_")[1]);
                     ChatMenus.OnKeyPress(player, key);
-                }, false);
+                });
             }
 
             Console.WriteLine("Loading C# plugins...");
@@ -184,6 +184,7 @@ namespace CounterStrikeSharp.API.Core
         }
 
         [PermissionHelper("can_execute_css_commands")]
+        [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
         private void OnCSSCommand(CCSPlayerController? caller, CommandInfo info)
         {
             var currentVersion = Api.GetVersion();
@@ -196,6 +197,13 @@ namespace CounterStrikeSharp.API.Core
         }
 
         [PermissionHelper("can_execute_css_commands")]
+        [CommandHelper(minArgs: 1, 
+        usage: "css_plugins [option]\n" +
+                "  list - List all plugins currently loaded.\n" +
+                "  start / load - Loads a plugin not currently loaded.\n" +
+                "  stop / unload - Unloads a plugin currently loaded.\n" +
+                "  restart / reload - Reloads a plugin currently loaded.",
+        whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
         private void OnCSSPluginCommand(CCSPlayerController? caller, CommandInfo info)
         {
             switch (info.GetArg(1))
@@ -311,8 +319,8 @@ namespace CounterStrikeSharp.API.Core
 
         public void RegisterPluginCommands()
         {
-            CommandUtils.AddStandaloneCommand("css", "Counter-Strike Sharp options.", OnCSSCommand, false);
-            CommandUtils.AddStandaloneCommand("css_plugins", "Counter-Strike Sharp plugin options.", OnCSSPluginCommand, true);
+            CommandUtils.AddStandaloneCommand("css", "Counter-Strike Sharp options.", OnCSSCommand);
+            CommandUtils.AddStandaloneCommand("css_plugins", "Counter-Strike Sharp plugin options.", OnCSSPluginCommand);
         }
         
     }

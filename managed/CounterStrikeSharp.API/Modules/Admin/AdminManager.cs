@@ -27,10 +27,11 @@ namespace CounterStrikeSharp.API.Modules.Admin
         static AdminManager()
         {
             _admins = new Dictionary<ulong, AdminData>();
-            CommandUtils.AddStandaloneCommand("css_admins_reload", "Reloads the admin file.", ReloadAdminsCommand, false);
+            CommandUtils.AddStandaloneCommand("css_admins_reload", "Reloads the admin file.", ReloadAdminsCommand);
         }
 
         [PermissionHelper("can_reload_admins")]
+        [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
         private static void ReloadAdminsCommand(CCSPlayerController? player, CommandInfo command)
         {
             _admins.Clear();
