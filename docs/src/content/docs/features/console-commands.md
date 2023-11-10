@@ -64,3 +64,32 @@ Command String: custom_command "Test Quoted" 5 13
 First Argument: custom_command
 Second Argument: Test Quoted
 ```
+
+## Helper Attribute
+
+CounterStrikeSharp provides the `CommandHelper` attribute for Command methods (function callback) to simplify the process of checking for the correct amount of arguments and to restrict commands to being executed by the server console or by players (or both!).
+
+```csharp
+[ConsoleCommand("freeze", "Freezes a client.")]
+[CommandHelper(minArgs: 1, usage: "[target]", whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
+public void OnFreezeCommand(CCSPlayerController? caller, CommandInfo command)
+{
+    ...
+}
+```
+
+If a client tries to execute the command without the `[target]` argument, it will print a message to them in chat:
+
+> [CSS] Expected usage: "!freeze [target]".
+> If a command is executed by the wrong user, it will print a message to them:
+> [CSS] This command can only be executed by clients.
+> Valid `CommandUsage` values:
+
+```csharp
+public enum CommandUsage
+{
+    CLIENT_AND_SERVER = 0,
+    CLIENT_ONLY,
+    SERVER_ONLY
+}
+```

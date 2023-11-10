@@ -131,8 +131,17 @@ namespace CounterStrikeSharp.API.Modules.Admin
         {
             if (player == null) return;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) return;
-
-            var steamId = new SteamID(player.SteamID);
+            AddPlayerPermissions((SteamID)player.SteamID, flags);
+        }
+        
+        /// <summary>
+        /// Temporarily adds a permission flag to the player. These flags are not saved to
+        /// "configs/admins.json".
+        /// </summary>
+        /// <param name="steamId">SteamID to add a flag to.</param>
+        /// <param name="flags">Flags to add for the player.</param>
+        public static void AddPlayerPermissions(SteamID steamId, params string[] flags)
+        {
             var data = GetPlayerAdminData(steamId);
             if (data == null)
             {
@@ -151,19 +160,30 @@ namespace CounterStrikeSharp.API.Modules.Admin
                 data.Flags.Add(flag);
             }
         }
-
+        
         /// <summary>
         /// Temporarily removes a permission flag to the player. These flags are not saved to
         /// "configs/admins.json".
         /// </summary>
-        /// <param name="player">Player controller to add a flag to.</param>
+        /// <param name="player">Player controller to remove flags from.</param>
         /// <param name="flags">Flags to remove from the player.</param>
         public static void RemovePlayerPermissions(CCSPlayerController? player, params string[] flags)
         {
             if (player == null) return;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) return;
 
-            var data = GetPlayerAdminData(new SteamID(player.SteamID));
+            RemovePlayerPermissions((SteamID)player.SteamID, flags);
+        }
+
+        /// <summary>
+        /// Temporarily removes a permission flag to the player. These flags are not saved to
+        /// "configs/admins.json".
+        /// </summary>
+        /// <param name="steamId">Steam ID to remove flags from.</param>
+        /// <param name="flags">Flags to remove from the player.</param>
+        public static void RemovePlayerPermissions(SteamID steamId, params string[] flags)
+        {
+            var data = GetPlayerAdminData(steamId);
             if (data == null) return;
             
             data.Flags.ExceptWith(flags);
