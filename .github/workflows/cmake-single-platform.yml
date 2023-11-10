@@ -94,5 +94,5 @@ jobs:
 
       - name: Publish NuGet package
         run: |
-          dotnet nuget push managed/CounterStrikeSharp.API/bin/Release/CounterStrikeSharp.API.1.0.${{ env.BUILD_NUMBER }}.nupkg --api-key {{ secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
-          dotnet nuget push managed/CounterStrikeSharp.API/bin/Release/CounterStrikeSharp.API.1.0.${{ env.BUILD_NUMBER }}.snupkg --api-key {{ secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
+          dotnet nuget push managed/CounterStrikeSharp.API/bin/Release/CounterStrikeSharp.API.1.0.${{ env.BUILD_NUMBER }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+          dotnet nuget push managed/CounterStrikeSharp.API/bin/Release/CounterStrikeSharp.API.1.0.${{ env.BUILD_NUMBER }}.snupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
