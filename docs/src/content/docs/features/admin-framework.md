@@ -26,6 +26,7 @@ Adding an Admin is as simple as creating a new entry in the `configs/admins.json
 You can also manually assign permissions to players in code with `AddPlayerPermissions` and `RemovePlayerPermissions`. These changes are not saved to `configs/admins.json`.
 
 ## Assigning permissions to a Command
+
 Assigning permissions to a Command is as easy as tagging the Command method (function callback) with a `PermissionHelper` attribute.
 
 ```csharp
