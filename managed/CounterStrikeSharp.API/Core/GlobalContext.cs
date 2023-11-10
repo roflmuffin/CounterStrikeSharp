@@ -183,7 +183,7 @@ namespace CounterStrikeSharp.API.Core
             return plugin;
         }
 
-        [PermissionHelper("can_execute_css_commands")]
+        [RequiresPermissions("can_execute_css_commands")]
         [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
         private void OnCSSCommand(CCSPlayerController? caller, CommandInfo info)
         {
@@ -196,7 +196,7 @@ namespace CounterStrikeSharp.API.Core
             return;
         }
 
-        [PermissionHelper("can_execute_css_commands")]
+        [RequiresPermissions("can_execute_css_commands")]
         [CommandHelper(minArgs: 1, 
         usage: "[option]\n" +
                 "  list - List all plugins currently loaded.\n" +

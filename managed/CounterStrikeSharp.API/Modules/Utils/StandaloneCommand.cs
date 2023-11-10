@@ -42,7 +42,7 @@ public class CommandUtils
             }
 
             // Do not execute command if we do not have the correct permissions.
-            var permissions = methodInfo?.GetCustomAttribute<PermissionHelperAttribute>()?.RequiredPermissions;
+            var permissions = methodInfo?.GetCustomAttribute<RequiresPermissions>()?.RequiredPermissions;
             if (permissions != null && !AdminManager.PlayerHasPermissions(caller, permissions))
             {
                 command.ReplyToCommand("[CSS] You do not have the correct permissions to execute this command.");

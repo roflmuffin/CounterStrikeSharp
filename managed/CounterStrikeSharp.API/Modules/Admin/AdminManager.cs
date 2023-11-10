@@ -29,7 +29,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             CommandUtils.AddStandaloneCommand("css_admins_list", "List admins and their flags.", ListAdminsCommand);
         }
 
-        [PermissionHelper("can_reload_admins")]
+        [RequiresPermissions("can_reload_admins")]
         [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
         private static void ReloadAdminsCommand(CCSPlayerController? player, CommandInfo command)
         {
@@ -38,7 +38,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             Load(Path.Combine(rootDir.FullName, "configs", "admins.json"));
         }
         
-        [PermissionHelper("can_reload_admins")]
+        [RequiresPermissions("can_reload_admins")]
         [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
         private static void ListAdminsCommand(CCSPlayerController? player, CommandInfo command)
         {

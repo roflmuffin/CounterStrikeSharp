@@ -3,11 +3,11 @@
 namespace CounterStrikeSharp.API.Modules.Admin
 {
     [AttributeUsage(AttributeTargets.Method)]
-    public class PermissionHelperAttribute : Attribute
+    public class RequiresPermissions : Attribute
     {
         public string[] RequiredPermissions { get; }
 
-        public PermissionHelperAttribute(params string[] permissions)
+        public RequiresPermissions(params string[] permissions)
         {
             RequiredPermissions = permissions;
         }

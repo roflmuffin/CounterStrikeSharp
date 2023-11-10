@@ -24,10 +24,10 @@ You can also manually assign permissions to players in code with `AddPlayerPermi
 
 ## Assigning permissions to a Command
 
-Assigning permissions to a Command is as easy as tagging the Command method (function callback) with a `PermissionHelper` attribute.
+Assigning permissions to a Command is as easy as tagging the Command method (function callback) with a `RequiresPermissions` attribute.
 
 ```csharp
-[PermissionHelper("can_execute_test_command", "other_permission")]
+[RequiresPermissions("can_execute_test_command", "other_permission")]
 public void OnMyCommand(CCSPlayerController? caller, CommandInfo info)
 {
     ...
