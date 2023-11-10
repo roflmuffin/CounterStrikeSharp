@@ -80,10 +80,17 @@ public void OnFreezeCommand(CCSPlayerController? caller, CommandInfo command)
 
 If a client tries to execute the command without the `[target]` argument, it will print a message to them in chat:
 
-> [CSS] Expected usage: "!freeze [target]".
-> If a command is executed by the wrong user, it will print a message to them:
-> [CSS] This command can only be executed by clients.
-> Valid `CommandUsage` values:
+```shell
+[CSS] Expected usage: "!freeze [target]".
+```
+
+If a command is executed by the wrong user, it will print a message to them:
+
+```shell
+[CSS] This command can only be executed by clients.
+```
+
+Valid `CommandUsage` values:
 
 ```csharp
 public enum CommandUsage
