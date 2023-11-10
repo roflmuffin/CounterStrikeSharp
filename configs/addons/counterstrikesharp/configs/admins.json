@@ -2,14 +2,26 @@
   "Erikj": {
     "identity": "76561197960265731",
     "flags": [
+      "@css/reservation",
+      "@css/generic",
       "@css/kick",
-      "@css/ban"
+      "@css/ban",
+      "@css/unban",
+      "@css/vip",
+      "@css/slay",
+      "@css/changemap",
+      "@css/cvar",
+      "@css/config",
+      "@css/chat",
+      "@css/vote",
+      "@css/password",
+      "@css/rcon",
+      "@css/cheats",
+      "@css/root"
     ]
   },
   "Another erikj": {
     "identity": "STEAM_0:1:1",
-    "flags": [
-      "@anotherscope/foobar"
-    ]
+    "flags": ["@mycustomplugin/admin"]
   }
 }
