@@ -39,7 +39,9 @@ jobs:
       - uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '7.0.x'
-      - run: dotnet publish -c Release /p:Version=1.0.${{ env.BUILD_NUMBER }} managed/CounterStrikeSharp.API
+      - run: | 
+          dotnet publish -c Release /p:Version=1.0.${{ env.BUILD_NUMBER }} managed/CounterStrikeSharp.API
+          dotnet pack -c Release /p:Version=1.0.${{ env.BUILD_NUMBER }} managed/CounterStrikeSharp.API          
 
       - name: Configure CMake
         run: cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
@@ -88,3 +90,8 @@ jobs:
           files: |
             counterstrikesharp-build-${{ env.BUILD_NUMBER }}-${{ env.GITHUB_SHA_SHORT }}.zip
             counterstrikesharp-with-runtime-build-${{ env.BUILD_NUMBER }}-${{ env.GITHUB_SHA_SHORT }}.zip
+
+      - name: Publish NuGet package
+        run: |
+          dotnet nuget push managed/CounterStrikeSharp.API/bin/Release/CounterStrikeSharp.API.1.0.${{ env.BUILD_NUMBER }}.nupkg --api-key "${{ secrets.GITHUB_TOKEN }}" --source "github" --skip-duplicate
+          dotnet nuget push managed/CounterStrikeSharp.API/bin/Release/CounterStrikeSharp.API.1.0.${{ env.BUILD_NUMBER }}.snupkg --api-key "${{ secrets.GITHUB_TOKEN }}" --source "github" --skip-duplicate
