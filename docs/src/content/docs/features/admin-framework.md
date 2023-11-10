@@ -1,66 +1,39 @@
 ---
-title: Console Commands
-description: How to add a new console command
+title: Admin Framework
+description: A guide on using the Admin Framework in plugins.
 ---
 
-## Adding a Console Command
+## Admin Framework
 
-### Automatic registration
+CounterStrikeSharp has a basic framework which allows plugin developers to assign permissions to commands. When CSS is initialized, a list of admins are loaded from `configs/admins.json`.
 
-CounterStrikeSharp will automatically register console commands marked with a `ConsoleCommand` attribute on the `BasePlugin` class. These commands are automatically registered/deregistered for you on hot reload.
+## Adding Admins
 
-```csharp
-[ConsoleCommand("custom_command", "This is an example command description")]
-public void OnCommand(CCSPlayerController? player, CommandInfo command)
+Adding an Admin is as simple as creating a new entry in the `configs/admins.json` file. The important things you need to declare are the SteamID identifier and the permissions they have. CounterStrikeSharp will do all the heavy-lifting to decipher your SteamID. If you're familar with SourceMod, permission definitions are slightly different as they're defined by an array of strings instead of a string of characters.
+```json
 {
-    if (player == null) {
-        Console.WriteLine("Command has been called by the server.");
-        return;
-    }
-
-    Console.WriteLine("Custom command called.");
+	"ZoNiCaL":
+	{
+		"identity":		"76561198808392634",
+		"flags": [
+			"can_manipulate_players",
+			"admin_messages"
+		]
+	}
 }
 ```
 
-### On Load
+You can also manually assign permissions to players in code with `AddPlayerPermissions` and `RemovePlayerPermissions`. These changes are not saved to `configs/admins.json`.
 
-It is also possible to bind commands in the `OnLoad` (or anywhere you have access to the plugin instance).
+## Assigning permissions to a Command
+Assigning permissions to a Command is as easy as tagging the Command method (function callback) with a `PermissionHelper` attribute.
 
 ```csharp
-public override void Load(bool hotReload)
+[PermissionHelper("can_execute_test_command", "other_permission")]
+public void OnMyCommand(CCSPlayerController? caller, CommandInfo info)
 {
-    AddCommand("on_load_command", "A command is registered during OnLoad", (player, info) =>
-    {
-        if (player == null) return;
-        Console.WriteLine($"Custom command called.");
-    });
+    ...
 }
 ```
 
-## Accessing Command Parameters
-
-`CommandInfo` class provides access to the calling command parameters. The first parameter will always be the command being called. Quoted values are returned unquoted, e.g.
-
-```csharp
-[ConsoleCommand("custom_command", "This is an example command description")]
-public void OnCommand(CCSPlayerController? player, CommandInfo command)
-{
-    Console.Write($@"
-Arg Count: {command.ArgCount}
-Arg String: {command.ArgString}
-Command String: {command.GetCommandString}
-First Argument: {command.ArgByIndex(0)}
-Second Argument: {command.ArgByIndex(1)}");
-}
-```
-
-```shell
-> custom_command "Test Quoted" 5 13
-
-# Output
-Arg Count: 4
-Arg String: "Test Quoted" 5 13
-Command String: custom_command "Test Quoted" 5 13
-First Argument: custom_command
-Second Argument: Test Quoted
-```
+CounterStrikeSharp handles all of the permission checks behind the scenes for you.
