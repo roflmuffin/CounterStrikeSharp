@@ -2,7 +2,7 @@ using System;
 
 namespace CounterStrikeSharp.API.Modules.Entities
 {
-    public class SteamID
+    public class SteamID : IEquatable<SteamID>
     {
         const long Base = 76561197960265728;
         public ulong SteamId64 { get; set; }
@@ -12,7 +12,6 @@ namespace CounterStrikeSharp.API.Modules.Entities
 
         public static explicit operator SteamID(ulong u) => new(u);
         public static explicit operator SteamID(string s) => new(s);
-
         ulong ParseId(string id)
         {
             var parts = id.Split(':');
@@ -46,5 +45,55 @@ namespace CounterStrikeSharp.API.Modules.Entities
         }
 
         public override string ToString() => $"[SteamID {SteamId64}, {SteamId2}, {SteamId3}]";
+
+        public bool Equals(SteamID? other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return SteamId64 == other.SteamId64;
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((SteamID)obj);
+        }
+        
+        public static bool TryParse(string s, out SteamID? steamId)
+        {
+            try
+            {
+                if (ulong.TryParse(s, out var steamid64))
+                {
+                    steamId = new SteamID(steamid64);
+                    return true;
+                }
+
+                steamId = new SteamID(s);
+                return true;
+            }
+            catch
+            {
+                steamId = null;
+                return false;
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            return SteamId64.GetHashCode();
+        }
+
+        public static bool operator ==(SteamID? left, SteamID? right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(SteamID? left, SteamID? right)
+        {
+            return !Equals(left, right);
+        }
     }
 }
