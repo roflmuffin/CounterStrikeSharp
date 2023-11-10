@@ -158,13 +158,23 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// <summary>
         /// Removes a players admin data. This is not saved to "configs/admins.json"
         /// </summary>
-        /// <param name="player">Player controller to remove admin data from..</param>
+        /// <param name="player">Player controller to remove admin data from.</param>
         public static void RemovePlayerAdminData(CCSPlayerController? player)
         {
             if (player == null) return;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) return;
 
             var steamID = new SteamID(player.SteamID);
+            if (_admins.ContainsKey(steamID.SteamId64)) _admins.Remove(steamID.SteamId64);
+            return;
+        }
+
+        /// <summary>
+        /// Removes a players admin data. This is not saved to "configs/admins.json"
+        /// </summary>
+        /// <param name="steamid">Steam ID remove admin data from.</param>
+        public static void RemovePlayerAdminData(SteamID steamID)
+        {
             if (_admins.ContainsKey(steamID.SteamId64)) _admins.Remove(steamID.SteamId64);
             return;
         }
