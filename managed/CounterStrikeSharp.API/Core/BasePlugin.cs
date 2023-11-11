@@ -30,6 +30,7 @@ using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Listeners;
 using CounterStrikeSharp.API.Modules.Timers;
+using McMaster.NETCore.Plugins;
 
 namespace CounterStrikeSharp.API.Core
 {
@@ -331,6 +332,17 @@ namespace CounterStrikeSharp.API.Core
         {
             this.RegisterAttributeHandlers(instance);
             this.RegisterConsoleCommandAttributeHandlers(instance);
+        }
+
+        public void InitializeConfig(Type pluginType)
+        {
+            // If the plugin has set a configuration type
+            if (pluginType.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IPluginConfig<>)))
+            {
+                // we KNOW that we can do this "safely"
+                var wrapper = (IPluginConfig<dynamic>)this;
+               wrapper.ParseConfig(this.ModuleDirectory);
+            }
         }
 
         /// <summary>
