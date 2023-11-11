@@ -14,20 +14,15 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using CounterStrikeSharp.API.Modules.Config;
-
 namespace CounterStrikeSharp.API.Core
 {
     /// <summary>
     /// An interface that describes a plugin configuration.
     /// </summary>
-    public interface IPluginConfig<T> where T : IBasePluginConfig, new()
+    public interface IPluginConfig<T> where T: IBasePluginConfig, new()
     {
-        public  T Config { get; set; }
+        T Config { get; set; }
 
-        internal void ParseConfig(string pluginName)
-        {
-            this.Config = ConfigManager.Load<T>(pluginName);
-        }
+        public void OnConfigParsed(T config);
     }
 }

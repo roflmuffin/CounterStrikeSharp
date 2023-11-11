@@ -20,12 +20,13 @@ namespace CounterStrikeSharp.API.Core
 {
     public interface IBasePluginConfig
     {
-
+        [JsonPropertyName("ConfigVersion")]
+        int Version { get; set; }
     }
 
     public class BasePluginConfig : IBasePluginConfig
     {
         [JsonPropertyName("ConfigVersion")]
-        public virtual int ConfigVersion { get; set; } = 1;
+        public virtual int Version { get; set; } = 1;
     }
 }

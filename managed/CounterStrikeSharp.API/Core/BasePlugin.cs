@@ -31,6 +31,7 @@ using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Listeners;
 using CounterStrikeSharp.API.Modules.Timers;
 using McMaster.NETCore.Plugins;
+using CounterStrikeSharp.API.Modules.Config;
 
 namespace CounterStrikeSharp.API.Core
 {
@@ -334,14 +335,28 @@ namespace CounterStrikeSharp.API.Core
             this.RegisterConsoleCommandAttributeHandlers(instance);
         }
 
-        public void InitializeConfig(Type pluginType)
+        public void InitializeConfig(object instance, Type pluginType)
         {
-            // If the plugin has set a configuration type
-            if (pluginType.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IPluginConfig<>)))
+            Type[] interfaces = pluginType.GetInterfaces();
+            Func<Type, bool> predicate = (i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IPluginConfig<>));
+
+            // if the plugin has set a configuration type (implements IPluginConfig<>)
+            if (interfaces.Any(predicate))
             {
+                // IPluginConfig<>
+                Type @interface = interfaces.Where(predicate).FirstOrDefault()!;
+
+                // custom config type passed as generic
+                Type genericType = @interface!.GetGenericArguments().First();
+
+                var config = typeof(ConfigManager)
+                    .GetMethod("Load")!
+                    .MakeGenericMethod(genericType)
+                    .Invoke(null, new object[] { Path.GetFileName(ModuleDirectory) }) as IBasePluginConfig;
+
                 // we KNOW that we can do this "safely"
-                var wrapper = (IPluginConfig<dynamic>)this;
-               wrapper.ParseConfig(this.ModuleDirectory);
+                pluginType.GetRuntimeMethod("OnConfigParsed", new Type[] { genericType })
+                    .Invoke(instance, new object[] { config });
             }
         }
 
