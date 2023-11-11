@@ -1,12 +1,1 @@
-{
-  "profiles": {
-    "Profile 1": {
-      "commandName": "Executable",
-      "executablePath": "D:\\workshop\\server\\cs2\\game\\bin\\win64\\cs2.exe",
-      "commandLineArgs": "-dedicated",
-      "workingDirectory": "D:\\workshop\\server\\cs2",
-      "authenticationMode": "None",
-      "nativeDebugging": true
-    }
-  }
-}
+{}

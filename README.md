@@ -10,13 +10,6 @@ This project is an ongoing migration of a previous project (titled [VSP.NET](htt
 
 Due to the architectural changes of CS2, the plugin is being rebuilt on the ground up, to support Linux 64-bit, something which was previously impossible.
 
-## Philosophy
-
-As a result, there are a few key philosophies and trade-offs that drive the project.
-- Only 64 bit is supported.
-  - .NET only supports x64 on Linux; CSGO previously only supported 32 bit servers, but CS2 supports 64 bit on Linux.
-- Supporting both platforms is a lot of work for 1 person, so there are no real plans to support Windows.
-
 ## Install
 Download the latest build from [here](https://github.com/roflmuffin/CounterStrikeSharp/releases). (Download the with runtime version if this is your first time installing).
 
@@ -96,7 +89,7 @@ I've also used the scripting context & native system that is implemented in Five
 
 ## How to Build
 
-Building requires CMake on Linux.
+Building requires CMake.
 
 Clone the repository
 
