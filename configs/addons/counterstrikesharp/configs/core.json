@@ -1,24 +1,5 @@
 {
-    /**
-	 * List of characters to use for public chat triggers.
-	 */
     "PublicChatTrigger": "!",
-    
-    /**
-	 * List of characters to use for silent chat triggers.
-	 */
     "SilentChatTrigger": "/",
-
-    /**
-	 * Per "http://blog.counter-strike.net/index.php/server_guidelines/", certain plugin
-	 * functionality will trigger all of the game server owner's Game Server Login Tokens
-	 * (GSLTs) to get banned when executed on a Counter-Strike 2 game server.
-	 *
-	 * Enabling this option will block plugins from using functionality that is known to cause this.
-	 * This option only has any effect on CS2. Note that this does NOT guarantee that you cannot
-	 * receive a ban.
-	 *
-	 * Disable this option at your own risk.
-	 */
     "FollowCS2ServerGuidelines": true
 }
