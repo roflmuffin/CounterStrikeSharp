@@ -303,18 +303,9 @@ bool ConCommandManager::RemoveCommand(const char* name, CallbackT callback)
     }
 
     if (!p_info->callback_pre || p_info->callback_pre->GetFunctionCount() == 0) {
+        // It does not look like this actually removes the con command.
+        // You can still find with `find` command.
         globals::cvars->UnregisterConCommand(p_info->p_cmd.handle);
-
-        bool success;
-        auto it = std::remove_if(m_cmd_list.begin(), m_cmd_list.end(),
-                                 [p_info](ConCommandInfo* i) { return p_info == i; });
-
-        if ((success = it != m_cmd_list.end()))
-            m_cmd_list.erase(it, m_cmd_list.end());
-        if (success)
-            m_cmd_lookup[std::string(name)] = nullptr;
-
-        return success;
     }
 
     return true;
