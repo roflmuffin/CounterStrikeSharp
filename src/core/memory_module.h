@@ -18,8 +18,12 @@
  */
 
 #pragma once
+#include <cstdio>
+
 #include "interface.h"
 #include "strtools.h"
+#include "metamod_oslink.h"
+#undef snprintf
 
 namespace counterstrikesharp::modules {
 
@@ -40,4 +44,5 @@ class CModule
     void* m_base;
     size_t m_size;
 };
+
 } // namespace counterstrikesharp::modules

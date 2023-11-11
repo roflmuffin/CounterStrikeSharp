@@ -51,7 +51,7 @@ bool CGameConfig::Init(char* conf_error, int conf_error_size)
         V_snprintf(conf_error, conf_error_size, "Failed to parse gamedata file: %s", ex.what());
         return false;
     }
-
+    return true;
 }
 
 const std::string CGameConfig::GetPath()
