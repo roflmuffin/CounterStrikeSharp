@@ -82,7 +82,7 @@ namespace CounterStrikeSharp.API.Core
             RegisterPluginCommands();
         }
 
-        public void LoadPlugin(string path)
+        private void LoadPlugin(string path)
         {
             var existingPlugin = FindPluginByModulePath(path);
             if (existingPlugin != null)
@@ -95,12 +95,12 @@ namespace CounterStrikeSharp.API.Core
             _loadedPlugins.Add(plugin);
         }
 
-        public int LoadAllPlugins()
+        private int LoadAllPlugins()
         {
-            DirectoryInfo modules_directory_info;
+            DirectoryInfo modulesDirectoryInfo;
             try
             {
-                modules_directory_info = new DirectoryInfo(Path.Combine(rootDir.FullName, "plugins"));
+                modulesDirectoryInfo = new DirectoryInfo(Path.Combine(rootDir.FullName, "plugins"));
             }
             catch (Exception e)
             {
@@ -108,24 +108,29 @@ namespace CounterStrikeSharp.API.Core
                     "Unable to access .NET modules directory: " + e.GetType().ToString() + " " + e.Message);
                 return 0;
             }
+            Console.WriteLine($"Directory: {modulesDirectoryInfo.FullName}");
 
-            DirectoryInfo[] proper_modules_directories;
+            DirectoryInfo[] properModulesDirectories;
             try
             {
-                proper_modules_directories = modules_directory_info.GetDirectories();
+                properModulesDirectories = modulesDirectoryInfo.GetDirectories();
             }
             catch
             {
-                proper_modules_directories = new DirectoryInfo[0];
+                properModulesDirectories = Array.Empty<DirectoryInfo>();
             }
 
-            var filePaths = proper_modules_directories
+            properModulesDirectories.ToList().ForEach(Console.WriteLine);
+
+            var filePaths = properModulesDirectories
                 .Where(d => d.GetFiles().Any((f) => f.Name == d.Name + ".dll"))
                 .Select(d => d.GetFiles().First((f) => f.Name == d.Name + ".dll").FullName)
                 .ToArray();
 
+
             foreach (var path in filePaths)
             {
+                Console.WriteLine($"Plugin path: {path}");
                 try
                 {
                     LoadPlugin(path);

@@ -5,76 +5,31 @@ namespace CounterStrikeSharp.API.Core;
 
 public static class Constants
 {
-    public static string ModulePrefix
+    public static string ModulePrefix { get; }
+
+    public static string ModuleSuffix { get; }
+
+    public static string RootBinaryPath { get; }
+
+    public static string GameBinaryPath { get; }
+
+    static Constants()
     {
-        get
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return "";
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                return "lib";
-            }
-
-            throw new NotSupportedException("Not supported.");
+            ModulePrefix = "";
+            ModuleSuffix = ".dll";
+            GameBinaryPath = "/csgo/bin/win64/";
+            RootBinaryPath = "/bin/win64";
         }
-    }
-
-    public static string ModuleSuffix
-    {
-        get
+        else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return ".so";
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                return ".dll";
-            }
-
-            throw new NotSupportedException("Not supported.");
+            ModulePrefix = "lib";
+            ModuleSuffix = ".so";
+            GameBinaryPath = "/csgo/bin/linuxsteamrt64/";
+            RootBinaryPath = "/bin/linuxsteamrt64/";
         }
+
+        throw new NotSupportedException("Not supported.");
     }
-
-    public static string RootBinaryPath
-    {
-        get
-        {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return "/bin/win64";
-            }
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-
-                return "/bin/linuxsteamrt64/";
-            }
-
-            throw new NotSupportedException("Not supported.");
-        }
-    }
-
-    public static string GameBinaryPath
-    {
-        get
-        {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return "/csgo/bin/win64/";
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                return "/csgo/bin/linuxsteamrt64/";
-            }
-
-            throw new NotSupportedException("Not supported");
-        }
-    }
-
 }

@@ -85,9 +85,21 @@ bool load_hostfxr() {
     void *lib = load_library(buffer.c_str());
     init_fptr = (hostfxr_initialize_for_runtime_config_fn)get_export(
         lib, "hostfxr_initialize_for_runtime_config");
+    if (init_fptr == nullptr) {
+        CSSHARP_CORE_CRITICAL("unable to get export function: \"hostfxr_initialize_for_runtime_config\"");
+        return false;
+    }
     get_delegate_fptr =
         (hostfxr_get_runtime_delegate_fn)get_export(lib, "hostfxr_get_runtime_delegate");
+    if (!get_delegate_fptr) {
+        CSSHARP_CORE_CRITICAL("unable to get export function: \"hostfxr_get_runtime_delegate\"");
+        return false;
+    }
     close_fptr = (hostfxr_close_fn)get_export(lib, "hostfxr_close");
+    if (!close_fptr) {
+        CSSHARP_CORE_CRITICAL("unable to get export function: \"hostfxr_close\"");
+        return false;
+    }
 
     return (init_fptr && get_delegate_fptr && close_fptr);
 }
@@ -100,7 +112,7 @@ load_assembly_and_get_function_pointer_fn get_dotnet_load_assembly(const char_t 
     void *load_assembly_and_get_function_pointer = nullptr;
     int rc = init_fptr(config_path, nullptr, &cxt);
     if (rc != 0 || cxt == nullptr) {
-        std::cerr << "Init failed: " << std::hex << std::showbase << rc << std::endl;
+        CSSHARP_CORE_CRITICAL("Init failed: {0:x}", rc);
         close_fptr(cxt);
         return nullptr;
     }
@@ -108,8 +120,9 @@ load_assembly_and_get_function_pointer_fn get_dotnet_load_assembly(const char_t 
     // Get the load assembly function pointer
     rc = get_delegate_fptr(cxt, hdt_load_assembly_and_get_function_pointer,
                            &load_assembly_and_get_function_pointer);
-    if (rc != 0 || load_assembly_and_get_function_pointer == nullptr)
-        std::cerr << "Get delegate failed: " << std::hex << std::showbase << rc << std::endl;
+    if (rc != 0 || load_assembly_and_get_function_pointer == nullptr) {
+        CSSHARP_CORE_ERROR("Get delegate failed: {0:x}", rc);
+    }
 
     // close_fptr(cxt);
     return (load_assembly_and_get_function_pointer_fn)load_assembly_and_get_function_pointer;
@@ -127,7 +140,7 @@ bool CDotNetManager::Initialize() {
     CSSHARP_CORE_INFO("Loading .NET runtime...");
 
     if (!load_hostfxr()) {
-        CSSHARP_CORE_ERROR("Failed to initialize .NET");
+        CSSHARP_CORE_ERROR("Failed to initialize .NET runtime.");
         return false;
     }
     CSSHARP_CORE_INFO(".NET Runtime Initialised.");
@@ -138,9 +151,12 @@ bool CDotNetManager::Initialize() {
 #else
     std::string wideStr = std::string((baseDir + "/api/CounterStrikeSharp.API.runtimeconfig.json").c_str());
 #endif
-    CSSHARP_CORE_INFO("Loading CSS .NET API, Runtime config: {}", counterstrikesharp::narrow(wide_str).c_str());
+    CSSHARP_CORE_INFO("Loading CSS API, Runtime config: {}", counterstrikesharp::narrow(wide_str).c_str());
     const auto load_assembly_and_get_function_pointer = get_dotnet_load_assembly(wide_str.c_str());
-    assert(load_assembly_and_get_function_pointer != nullptr && "Failure: get_dotnet_load_assembly()");
+    if (load_assembly_and_get_function_pointer == nullptr) {
+        CSSHARP_CORE_ERROR("Failed to load CSS API.");
+        return false;
+    }
 
 #if _WIN32
     const auto dotnetlib_path =
@@ -158,11 +174,17 @@ bool CDotNetManager::Initialize() {
     const int rc = load_assembly_and_get_function_pointer(dotnetlib_path.c_str(), dotnet_type,
                                                           STR("LoadAllPlugins"), UNMANAGEDCALLERSONLY_METHOD,
                                                           nullptr, reinterpret_cast<void**>(&entry_point));
+    if (entry_point == nullptr) {
+        CSSHARP_CORE_ERROR("Trying to get entry point \"LoadAllPlugins\" but failed.");
+        return false;
+    }
 
     assert(rc == 0 && entry_point != nullptr && "Failure: load_assembly_and_get_function_pointer()");
 
-    const int invoke_result_code = entry_point(); 
-    CSSHARP_CORE_INFO("LoadAllPlugins returned: {}", invoke_result_code);
+    if (const int invoke_result_code = entry_point(); invoke_result_code == 0) {
+        CSSHARP_CORE_ERROR("LoadAllPlugins return failure.");
+        return false;
+    }
 
     CSSHARP_CORE_INFO("CounterStrikeSharp.API Loaded Successfully.");
     return true;
@@ -172,6 +194,8 @@ void CDotNetManager::UnloadPlugin(PluginContext *context) {}
 
 void CDotNetManager::Shutdown() {
     // CoreCLR does not currently supporting unloading... :(
+    // I think this is intentionally, you should handle Init/Shutdown manually.
+    // Better rework in the future, but not now.
 }
 
 PluginContext *CDotNetManager::FindContext(std::string path) { return nullptr; }

@@ -42,6 +42,10 @@ void ChatManager::OnAllInitialized()
         modules::server->FindSignature(globals::gameConfig->GetSignature("Host_Say"))
         );
 
+    if (m_pHostSay == nullptr) {
+        CSSHARP_CORE_ERROR("Failed to find signature for \'Host_Say\'");
+        return;
+    }
 
     auto m_hook = funchook_create();
     funchook_prepare(m_hook, (void**)&m_pHostSay, (void*)&DetourHostSay);

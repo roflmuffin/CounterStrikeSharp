@@ -10,6 +10,12 @@ std::shared_ptr<spdlog::logger> Log::m_core_logger;
 void Log::Init() {
     std::vector<spdlog::sink_ptr> log_sinks;
     auto color_sink = std::make_shared<spdlog::sinks::stderr_color_sink_mt>();
+#if _WIN32
+    color_sink->set_color(spdlog::level::trace, 6);
+#else
+    color_sink->set_color(spdlog::level::trace, color_sink->yellow);
+#endif
+
     log_sinks.emplace_back(color_sink);
     log_sinks.emplace_back(
         std::make_shared<spdlog::sinks::basic_file_sink_mt>("counterstrikesharp.log", true));
