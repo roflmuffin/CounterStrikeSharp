@@ -38,36 +38,6 @@ public static class GameData
         try
         {
             _methods = JsonSerializer.Deserialize<Dictionary<string, LoadedGameData>>(File.ReadAllText(gameDataPath))!;
-            foreach (var loadedGameData in _methods)
-            {
-                Console.WriteLine($"With method {loadedGameData.Key}:");
-                if (loadedGameData.Value.Offsets != null)
-                {
-                    if (loadedGameData.Value.Offsets.Windows != 0)
-                    {
-                        Console.WriteLine($"    Windows offset: {loadedGameData.Value.Offsets.Windows}");
-                    }
-
-                    if (loadedGameData.Value.Offsets.Linux != 0)
-                    {
-                        Console.WriteLine($"    Linux offset: {loadedGameData.Value.Offsets.Linux}");
-                    }
-                }
-
-                if (loadedGameData.Value.Signatures != null)
-                {
-                    Console.WriteLine($"  Library: {loadedGameData.Value.Signatures.Library}");
-                    if (!string.IsNullOrEmpty(loadedGameData.Value.Signatures.Windows))
-                    {
-                        Console.WriteLine($"    Windows signature: {loadedGameData.Value.Signatures.Windows}");
-                    }
-
-                    if (!string.IsNullOrEmpty(loadedGameData.Value.Signatures.Linux))
-                    {
-                        Console.WriteLine($"    Linux signature: {loadedGameData.Value.Signatures.Linux}");
-                    }
-                }
-            }
 
             Console.WriteLine($"Loaded game data with {_methods.Count} methods.");
         }
