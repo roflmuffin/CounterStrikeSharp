@@ -31,6 +31,7 @@ public partial class VirtualFunction
     {
         if (!_createdFunctions.TryGetValue(signature, out var function))
         {
+            Console.WriteLine($"ServerPath: {Addresses.ServerPath}");
             function = NativeAPI.CreateVirtualFunctionBySignature(IntPtr.Zero, Addresses.ServerPath, signature,
                 argumentTypes.Count(), (int)returnType, arguments);
             _createdFunctions[signature] = function;
