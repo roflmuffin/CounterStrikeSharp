@@ -17,7 +17,6 @@ public static class Constants
     {
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
-            Console.WriteLine("We are now running on Windows");
             ModulePrefix = "";
             ModuleSuffix = ".dll";
             GameBinaryPath = "/csgo/bin/win64/";
@@ -25,7 +24,6 @@ public static class Constants
         }
         else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
         {
-            Console.WriteLine("We are now running on Linux");
             ModulePrefix = "lib";
             ModuleSuffix = ".so";
             GameBinaryPath = "/csgo/bin/linuxsteamrt64/";

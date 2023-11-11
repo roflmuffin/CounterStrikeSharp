@@ -357,13 +357,6 @@ namespace TestPlugin
             }
         }
 
-        [ConsoleCommand("find_sig", "Find sig")]
-        public void OnCommandTest(CCSPlayerController? player, CommandInfo command)
-        {
-            var sig = GameData.GetSignature("UTIL_ClientPrintAll");
-            Console.WriteLine($"UTIL_ClientPrintAll: {sig}");
-        }
-
         [ConsoleCommand("css_pause", "Pause Game")]
         public void OnCommandPause(CCSPlayerController? player, CommandInfo command)
         {
