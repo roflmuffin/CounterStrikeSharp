@@ -33,6 +33,8 @@
 
 counterstrikesharp::GlobalClass* counterstrikesharp::GlobalClass::head = nullptr;
 
+// TODO: Workaround for windows, we __MUST__ have COUNTERSTRIKESHARP_API to handle it.
+// like on windows it should be `extern "C" __declspec(dllexport)`, on linux it should be anything else.
 DLL_EXPORT void InvokeNative(counterstrikesharp::fxNativeContext& context)
 {
     if (context.nativeIdentifier == 0)
@@ -81,7 +83,6 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
     GET_V_IFACE_ANY(GetEngineFactory, globals::gameEventSystem, IGameEventSystem,
                     GAMEEVENTSYSTEM_INTERFACE_VERSION);
 
-    // TODO: Utilize core layer and script layer in future release.
     auto gamedata_path = std::string(utils::GamedataDirectory() + "/gamedata.json");
     globals::gameConfig = new CGameConfig(gamedata_path);
     char conf_error[255] = "";

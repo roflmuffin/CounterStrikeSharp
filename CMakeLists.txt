@@ -8,7 +8,6 @@ include("makefiles/shared.cmake")
 add_subdirectory(libraries/spdlog)
 add_subdirectory(libraries/dyncall)
 add_subdirectory(libraries/funchook)
-set(FUNCHOOK_BUILD_SHARED OFF)
 
 set_property(TARGET funchook-static PROPERTY POSITION_INDEPENDENT_CODE ON)
 

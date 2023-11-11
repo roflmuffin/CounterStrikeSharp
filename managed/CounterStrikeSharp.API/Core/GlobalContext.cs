@@ -76,7 +76,7 @@ namespace CounterStrikeSharp.API.Core
             }
 
             Console.WriteLine("Loading C# plugins...");
-            int pluginCount = LoadAllPlugins();
+            var pluginCount = LoadAllPlugins();
             Console.WriteLine($"All managed modules were loaded. {pluginCount} plugins loaded.");
 
             RegisterPluginCommands();
@@ -87,7 +87,7 @@ namespace CounterStrikeSharp.API.Core
             var existingPlugin = FindPluginByModulePath(path);
             if (existingPlugin != null)
             {
-                throw new Exception("Plugin is already loaded.");
+                throw new FileLoadException("Plugin is already loaded.");
             }
 
             var plugin = new PluginContext(path, _loadedPlugins.Select(x => x.PluginId).DefaultIfEmpty(0).Max() + 1);
@@ -104,11 +104,9 @@ namespace CounterStrikeSharp.API.Core
             }
             catch (Exception e)
             {
-                Console.WriteLine(
-                    "Unable to access .NET modules directory: " + e.GetType().ToString() + " " + e.Message);
+                Console.WriteLine(e);
                 return 0;
             }
-            Console.WriteLine($"Directory: {modulesDirectoryInfo.FullName}");
 
             DirectoryInfo[] properModulesDirectories;
             try
@@ -120,7 +118,6 @@ namespace CounterStrikeSharp.API.Core
                 properModulesDirectories = Array.Empty<DirectoryInfo>();
             }
 
-            properModulesDirectories.ToList().ForEach(Console.WriteLine);
 
             var filePaths = properModulesDirectories
                 .Where(d => d.GetFiles().Any((f) => f.Name == d.Name + ".dll"))
@@ -322,7 +319,7 @@ namespace CounterStrikeSharp.API.Core
 
         }
 
-        public void RegisterPluginCommands()
+        private void RegisterPluginCommands()
         {
             CommandUtils.AddStandaloneCommand("css", "Counter-Strike Sharp options.", OnCSSCommand);
             CommandUtils.AddStandaloneCommand("css_plugins", "Counter-Strike Sharp plugin options.", OnCSSPluginCommand);
