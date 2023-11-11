@@ -14,7 +14,7 @@ public class Schema
     {
         "m_bIsValveDS",
         "m_bIsQuestEligible",
-        "m_iItemDefinitionIndex",
+        // "m_iItemDefinitionIndex", // as of 2023.11.11 this is currently not blocked
         "m_iEntityLevel",
         "m_iItemIDHigh",
         "m_iItemIDLow",
