@@ -14,6 +14,8 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
+#pragma once
+
 #include <string>
 #include <sstream>
 namespace counterstrikesharp {
