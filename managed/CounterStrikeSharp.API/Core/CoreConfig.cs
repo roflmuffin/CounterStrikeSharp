@@ -31,11 +31,11 @@ namespace CounterStrikeSharp.API.Core
     /// </summary>
     internal sealed partial class CoreConfigData
     {
-        [JsonPropertyName("PublicChatTrigger")] public string PublicChatTrigger { get; internal set; } = "!";
-        
-        [JsonPropertyName("SilentChatTrigger")] public string SilentChatTrigger { get; internal set; } = "/";
+        [JsonPropertyName("PublicChatTrigger")] public string PublicChatTrigger { get; set; } = "!";
 
-        [JsonPropertyName("FollowCS2ServerGuidelines")] public bool FollowCS2ServerGuidelines { get; internal set; } = true;
+        [JsonPropertyName("SilentChatTrigger")] public string SilentChatTrigger { get; set; } = "/";
+
+        [JsonPropertyName("FollowCS2ServerGuidelines")] public bool FollowCS2ServerGuidelines { get; set; } = true;
     }
 
     /// <summary>
@@ -103,12 +103,12 @@ namespace CounterStrikeSharp.API.Core
             try
             {
                 var data = JsonSerializer.Deserialize<CoreConfigData>(File.ReadAllText(coreConfigPath), new JsonSerializerOptions() { ReadCommentHandling = JsonCommentHandling.Skip });
-                
+
                 if (data != null)
                 {
                     _coreConfig = data;
                 }
-                
+
                 Console.WriteLine($"Loaded core configuration");
             }
             catch (Exception ex)
