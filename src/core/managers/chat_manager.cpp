@@ -38,7 +38,7 @@ ChatManager::~ChatManager() {}
 
 void ChatManager::OnAllInitialized()
 {
-    m_pHostSay = static_cast<HostSay>(
+    m_pHostSay = reinterpret_cast<HostSay>(
         modules::server->FindSignature(globals::gameConfig->GetSignature("Host_Say"))
         );
 
