@@ -62,7 +62,9 @@ namespace CounterStrikeSharp.API.Core
         ///
         /// <para>
         /// Enabling this option will block plugins from using functionality that is known to cause this.
-        /// This option only has any effect on CS2. Note that this does NOT guarantee that you cannot
+        ///
+        /// Note that this does NOT guarantee that you cannot
+        ///
         /// receive a ban.
         /// </para>
         ///
@@ -82,7 +84,7 @@ namespace CounterStrikeSharp.API.Core
             CommandUtils.AddStandaloneCommand("css_core_reload", "Reloads the core configuration file.", ReloadCoreConfigCommand);
         }
 
-        [RequiresPermissions("can_reload_core")]
+        [RequiresPermissions("@css/config")]
         [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
         private static void ReloadCoreConfigCommand(CCSPlayerController? player, CommandInfo command)
         {
