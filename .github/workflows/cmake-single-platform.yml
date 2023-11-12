@@ -89,7 +89,7 @@ jobs:
       contents: write
     runs-on: ubuntu-latest
     outputs:
-      buildnumber: ${{ steps.buildnumber.outputs.buildnumber }}
+      buildnumber: ${{ steps.buildnumber.outputs.build_number }}
     steps:
       - name: Prepare env
         shell: bash
