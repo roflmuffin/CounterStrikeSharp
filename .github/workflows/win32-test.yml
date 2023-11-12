@@ -52,7 +52,7 @@ jobs:
           mkdir -p build
           cd build
           cmake -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} ..
-          cmake --build . --config ${{env.BUILD_TYPE}}
+          cmake --build . --config ${{env.BUILD_TYPE}} -- -j16
 
       - name: Build Windows
         if: runner.os == 'Windows'
@@ -61,4 +61,4 @@ jobs:
           mkdir -p build
           cd build
           cmake -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} ..
-          cmake --build . --config ${{env.BUILD_TYPE}}
+          cmake --build . --config ${{env.BUILD_TYPE}} -- /m:16
