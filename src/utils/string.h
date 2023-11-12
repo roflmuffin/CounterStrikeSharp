@@ -1,4 +1,4 @@
-/*
+/**
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -16,34 +16,32 @@
 
 #pragma once
 
-#include <memory>
 #include <string>
-#include <unordered_map>
-#include <vector>
+#include <sstream>
+namespace counterstrikesharp {
+std::wstring widen(const std::string& str)
+{
+    std::wostringstream wstm;
+    const auto& ctfacet = std::use_facet<std::ctype<wchar_t>>(wstm.getloc());
+    for (size_t i = 0; i < str.size(); ++i) {
+        wstm << ctfacet.widen(str[i]);
+    }
+    return wstm.str();
+}
 
-class PluginContext {
-    friend class CDotNetManager;
+std::string narrow(const std::wstring& str)
+{
+    std::ostringstream stm;
 
-public:
-    PluginContext(std::string dll_path)
-        : m_dll_path(dll_path) {}
+    // Incorrect code from the link
+    // const ctype<char>& ctfacet = use_facet<ctype<char>>(stm.getloc());
 
-private:
-    std::string m_dll_path;
-};
+    // Correct code.
+    const auto& ctfacet = std::use_facet<std::ctype<wchar_t>>(stm.getloc());
 
-class CDotNetManager {
-    friend class PluginContext;
-
-public:
-    CDotNetManager();
-    ~CDotNetManager();
-
-    bool Initialize();
-    void UnloadPlugin(PluginContext *context);
-    void Shutdown();
-    PluginContext *FindContext(std::string path);
-
-private:
-    std::vector<std::shared_ptr<PluginContext>> m_app_domains;
-};
+    for (size_t i = 0; i < str.size(); ++i) {
+        stm << ctfacet.narrow(str[i], 0);
+    }
+    return stm.str();
+}
+}

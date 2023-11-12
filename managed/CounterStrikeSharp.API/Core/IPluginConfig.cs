@@ -1,4 +1,4 @@
-/*
+﻿/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -14,36 +14,15 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-#pragma once
+namespace CounterStrikeSharp.API.Core
+{
+    /// <summary>
+    /// An interface that describes a plugin configuration.
+    /// </summary>
+    public interface IPluginConfig<T> where T: IBasePluginConfig, new()
+    {
+        T Config { get; set; }
 
-#include <memory>
-#include <string>
-#include <unordered_map>
-#include <vector>
-
-class PluginContext {
-    friend class CDotNetManager;
-
-public:
-    PluginContext(std::string dll_path)
-        : m_dll_path(dll_path) {}
-
-private:
-    std::string m_dll_path;
-};
-
-class CDotNetManager {
-    friend class PluginContext;
-
-public:
-    CDotNetManager();
-    ~CDotNetManager();
-
-    bool Initialize();
-    void UnloadPlugin(PluginContext *context);
-    void Shutdown();
-    PluginContext *FindContext(std::string path);
-
-private:
-    std::vector<std::shared_ptr<PluginContext>> m_app_domains;
-};
+        public void OnConfigParsed(T config);
+    }
+}

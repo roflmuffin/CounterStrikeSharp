@@ -1,0 +1,5 @@
+"Metamod Plugin"
+{
+	"alias"	"counterstrikesharp"
+	"file"	"addons/counterstrikesharp/bin/${COUNTERSTRIKESHARP_VDF_PLATFORM}/counterstrikesharp"
+}

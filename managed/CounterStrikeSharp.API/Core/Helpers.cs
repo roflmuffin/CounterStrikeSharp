@@ -64,7 +64,7 @@ namespace CounterStrikeSharp.API.Core
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.StackTrace);
+                Console.WriteLine(e);
                 return 0;
             }
         }

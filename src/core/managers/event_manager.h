@@ -44,6 +44,8 @@ class CUtlString;
 #include "core/globals.h"
 #include "scripting/script_engine.h"
 
+
+
 namespace counterstrikesharp {
 class ScriptCallback;
 class PluginFunction;

@@ -20,12 +20,14 @@
 #include "schema.h"
 
 #include "interfaces/cs2_interfaces.h"
-#include "../globals.h"
-// #include <unordered_map>
-#include "tier1/utlmap.h"
-#include "tier0/memdbgon.h"
-#include "../memory.h"
+#include "core/globals.h"
+#include "core/memory.h"
 #include "core/log.h"
+
+#include "tier1/utlmap.h"
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"
 
 using SchemaKeyValueMap_t = CUtlMap<uint32_t, SchemaKey>;
 using SchemaTableMap_t = CUtlMap<uint32_t, SchemaKeyValueMap_t*>;

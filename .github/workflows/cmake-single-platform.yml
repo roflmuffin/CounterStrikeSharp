@@ -4,95 +4,185 @@ on:
   push:
     paths-ignore:
       - 'docs/**'
-    branches: [ "main" ]
-  
+    branches: [ "main", "feature/cross-platform-builds" ]
+
 env:
   BUILD_TYPE: Release
 
 jobs:
-  build:
-    permissions: 
-      contents: write
-      packages: write
-    runs-on: ubuntu-latest
-    container:
-      image: registry.gitlab.steamos.cloud/steamrt/sniper/sdk:latest
-
+  build_windows:
+    runs-on: windows-latest
     steps:
       - name: Prepare env
         shell: bash
         run: echo "GITHUB_SHA_SHORT=${GITHUB_SHA::7}" >> $GITHUB_ENV
 
-      - name: Setup protobuf
-        shell: bash
-        run: sudo apt-get update && sudo apt install -y protobuf-compiler
+      - name: Visual Studio environment
+        shell: cmd
+        run: |
+          :: See https://github.com/microsoft/vswhere/wiki/Find-VC
+          for /f "usebackq delims=*" %%i in (`vswhere -latest -property installationPath`) do (
+            call "%%i"\Common7\Tools\vsdevcmd.bat -arch=x64 -host_arch=x64
+          )
+
+          :: Loop over all environment variables and make them global.
+          for /f "delims== tokens=1,2" %%a in ('set') do (
+            echo>>"%GITHUB_ENV%" %%a=%%b
+          )
 
       - uses: actions/checkout@v3
         with:
           submodules: 'recursive'
-          
-      - name: Generate build number
-        id: buildnumber
-        uses: onyxmueller/build-tag-number@v1
-        with:
-          token: ${{secrets.github_token}}
-      
-      - uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: '7.0.x'
-      - run: | 
-          dotnet publish -c Release /p:Version=1.0.${{ env.BUILD_NUMBER }} managed/CounterStrikeSharp.API
-          dotnet pack -c Release /p:Version=1.0.${{ env.BUILD_NUMBER }} managed/CounterStrikeSharp.API          
-
-      - name: Configure CMake
-        run: cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
       - name: Build
-        # Build your program with the given configuration
-        run: cmake --build build --config ${{env.BUILD_TYPE}}
+        run: |
+          mkdir -p build
+          cd build
+          cmake -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} ..
+          cmake --build . --config ${{env.BUILD_TYPE}} -- /m:16
+
+      - name: Clean build directory
+        run: |
+          mkdir -p build/addons/counterstrikesharp/bin/win64
+          mv build/${{env.BUILD_TYPE}}/*.dll build/addons/counterstrikesharp/bin/win64
+          mkdir build/output/
+          mv build/addons build/output
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: counterstrikesharp-build-windows-${{ env.GITHUB_SHA_SHORT }}
+          path: build/output/
+
+  build_linux:
+    runs-on: ubuntu-latest
+    # Could not figure out how to run in a container only on some matrix paths, so I've split it out into its own build.
+    container:
+      image: registry.gitlab.steamos.cloud/steamrt/sniper/sdk:latest
+    steps:
+      - name: Prepare env
+        shell: bash
+        run: echo "GITHUB_SHA_SHORT=${GITHUB_SHA::7}" >> $GITHUB_ENV
+
+      - uses: actions/checkout@v3
+        with:
+          submodules: 'recursive'
+
+      - name: Build
+        run: |
+          mkdir -p build
+          cd build
+          cmake -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} ..
+          cmake --build . --config ${{env.BUILD_TYPE}} -- -j16
 
       - name: Clean build directory
         run: |
           mkdir build/output/
           mv build/addons build/output
 
-      - name: Add API to Artifacts
-        run: |
-          mkdir -p build/output/addons/counterstrikesharp/api
-          cp -r managed/CounterStrikeSharp.API/bin/Release/net7.0/publish/* build/output/addons/counterstrikesharp/api
+      - uses: actions/upload-artifact@v3
+        with:
+          name: counterstrikesharp-build-linux-${{ env.GITHUB_SHA_SHORT }}
+          path: build/output/
+
+  build_managed:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    outputs:
+      buildnumber: ${{ steps.buildnumber.outputs.build_number }}
+    steps:
+      - name: Prepare env
+        shell: bash
+        run: echo "GITHUB_SHA_SHORT=${GITHUB_SHA::7}" >> $GITHUB_ENV
+
+      # We don't need expensive submodules for the managed side.
+      - uses: actions/checkout@v3
+
+      - name: Generate build number
+        id: buildnumber
+        uses: onyxmueller/build-tag-number@v1
+        with:
+          token: ${{secrets.github_token}}
+
+      - name: Build runtime v${{ env.BUILD_NUMBER }}
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '7.0.x'
+
+      - run: |
+          dotnet publish -c Release /p:Version=1.0.${{ env.BUILD_NUMBER }} managed/CounterStrikeSharp.API
+          dotnet pack -c Release /p:Version=1.0.${{ env.BUILD_NUMBER }} managed/CounterStrikeSharp.API   
 
       - uses: actions/upload-artifact@v3
         with:
-          name: counterstrikesharp-build-${{ env.BUILD_NUMBER }}-${{ env.GITHUB_SHA_SHORT }}
-          path: build/output/
+          name: counterstrikesharp-build-api-${{ env.GITHUB_SHA_SHORT }}
+          path: managed/CounterStrikeSharp.API/bin/Release
 
-      - name: Zip CounterStrikeSharp Build
-        run: (cd build/output && zip -qq -r ../../counterstrikesharp-build-${{ env.BUILD_NUMBER }}-${{ env.GITHUB_SHA_SHORT }}.zip *)
+  publish:
+    permissions:
+      contents: write
+    needs: [ "build_linux", "build_windows", "build_managed" ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prepare env
+        shell: bash
+        run: echo "GITHUB_SHA_SHORT=${GITHUB_SHA::7}" >> $GITHUB_ENV
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: counterstrikesharp-build-windows-${{ env.GITHUB_SHA_SHORT }}
+          path: build/windows
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: counterstrikesharp-build-linux-${{ env.GITHUB_SHA_SHORT }}
+          path: build/linux
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: counterstrikesharp-build-api-${{ env.GITHUB_SHA_SHORT }}
+          path: build/api
+
+      # TODO: This stuff should really be in a matrix
+      - name: Add API to Artifacts
+        run: |
+          mkdir -p build/linux/addons/counterstrikesharp/api
+          mkdir -p build/windows/addons/counterstrikesharp/api
+          cp -r build/api/net7.0/publish/* build/linux/addons/counterstrikesharp/api
+          cp -r build/api/net7.0/publish/* build/windows/addons/counterstrikesharp/api
+
+      - name: Zip Builds
+        run: |
+          (cd build/linux && zip -qq -r ../../counterstrikesharp-build-${{ needs.build_managed.outputs.buildnumber }}-linux-${{ env.GITHUB_SHA_SHORT }}.zip *)
+          (cd build/windows && zip -qq -r ../../counterstrikesharp-build-${{ needs.build_managed.outputs.buildnumber }}-windows-${{ env.GITHUB_SHA_SHORT }}.zip *)
 
       - name: Add dotnet runtime
         run: |
-          mkdir -p build/output/addons/counterstrikesharp/dotnet
+          mkdir -p build/linux/addons/counterstrikesharp/dotnet
           curl -s -L https://download.visualstudio.microsoft.com/download/pr/dc2c0a53-85a8-4fda-a283-fa28adb5fbe2/8ccade5bc400a5bb40cd9240f003b45c/aspnetcore-runtime-7.0.11-linux-x64.tar.gz \
-          | tar xvz -C build/output/addons/counterstrikesharp/dotnet
-          mv build/output/addons/counterstrikesharp/dotnet/shared/Microsoft.NETCore.App/7.0.11/* build/output/addons/counterstrikesharp/dotnet/shared/Microsoft.NETCore.App/
+          | tar xvz -C build/linux/addons/counterstrikesharp/dotnet
+          mv build/linux/addons/counterstrikesharp/dotnet/shared/Microsoft.NETCore.App/7.0.11/* build/linux/addons/counterstrikesharp/dotnet/shared/Microsoft.NETCore.App/
+          
+          mkdir -p build/windows/addons/counterstrikesharp/dotnet
+          curl -s -L https://download.visualstudio.microsoft.com/download/pr/a99861c8-2e00-4587-aaef-60366ca77307/a44ceec2c5d34165ae881600f52edc43/aspnetcore-runtime-7.0.11-win-x64.zip -o dotnet.zip
+          unzip -qq dotnet.zip -d build/windows/addons/counterstrikesharp/dotnet
 
-      - name: Zip CounterStrikeSharp Runtime Build
-        run: (cd build/output && zip -qq -r ../../counterstrikesharp-with-runtime-build-${{ env.BUILD_NUMBER }}-${{ env.GITHUB_SHA_SHORT }}.zip *)
-
-      - uses: actions/upload-artifact@v3
-        with:
-          name: counterstrikesharp-with-runtime-build-${{ env.BUILD_NUMBER }}-${{ env.GITHUB_SHA_SHORT }}
-          path: build/output/
+      - name: Zip Builds
+        run: |
+          (cd build/linux && zip -qq -r ../../counterstrikesharp-with-runtime-build-${{ needs.build_managed.outputs.buildnumber }}-linux-${{ env.GITHUB_SHA_SHORT }}.zip *)
+          (cd build/windows && zip -qq -r ../../counterstrikesharp-with-runtime-build-${{ needs.build_managed.outputs.buildnumber }}-windows-${{ env.GITHUB_SHA_SHORT }}.zip *)
 
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: v${{ env.BUILD_NUMBER }}
+          tag_name: v${{ needs.build_managed.outputs.buildnumber }}
           files: |
-            counterstrikesharp-build-${{ env.BUILD_NUMBER }}-${{ env.GITHUB_SHA_SHORT }}.zip
-            counterstrikesharp-with-runtime-build-${{ env.BUILD_NUMBER }}-${{ env.GITHUB_SHA_SHORT }}.zip
+            counterstrikesharp-build-${{ needs.build_managed.outputs.buildnumber }}-windows-${{ env.GITHUB_SHA_SHORT }}.zip
+            counterstrikesharp-with-runtime-build-${{ needs.build_managed.outputs.buildnumber }}-windows-${{ env.GITHUB_SHA_SHORT }}.zip
+            counterstrikesharp-build-${{ needs.build_managed.outputs.buildnumber }}-linux-${{ env.GITHUB_SHA_SHORT }}.zip
+            counterstrikesharp-with-runtime-build-${{ needs.build_managed.outputs.buildnumber }}-linux-${{ env.GITHUB_SHA_SHORT }}.zip
 
       - name: Publish NuGet package
         run: |
-          dotnet nuget push managed/CounterStrikeSharp.API/bin/Release/CounterStrikeSharp.API.1.0.${{ env.BUILD_NUMBER }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
-          dotnet nuget push managed/CounterStrikeSharp.API/bin/Release/CounterStrikeSharp.API.1.0.${{ env.BUILD_NUMBER }}.snupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+          dotnet nuget push build/api/CounterStrikeSharp.API.1.0.${{ needs.build_managed.outputs.buildnumber }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+          dotnet nuget push build/api/CounterStrikeSharp.API.1.0.${{ needs.build_managed.outputs.buildnumber }}.snupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
