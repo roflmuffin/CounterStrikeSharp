@@ -43,15 +43,15 @@ jobs:
 
       - name: Clean build directory
         run: |
-          mkdir -p build/addons/counterstrikesharp/bin/win64
-          mv build/${{env.BUILD_TYPE}}/*.dll build/addons/counterstrikesharp/bin/win64
           mkdir build/output/
           mv build/addons build/output
 
       - uses: actions/upload-artifact@v3
         with:
           name: counterstrikesharp-build-windows-${{ env.GITHUB_SHA_SHORT }}
-          path: build/output/
+          path: |
+            build/output/
+            !**/*.ilk
 
   build_linux:
     runs-on: ubuntu-latest
@@ -185,5 +185,5 @@ jobs:
 
       - name: Publish NuGet package
         run: |
-          dotnet nuget push build/api/CounterStrikeSharp.API.1.0.${{ env.BUILD_NUMBER }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
-          dotnet nuget push build/api/CounterStrikeSharp.API.1.0.${{ env.BUILD_NUMBER }}.snupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+          dotnet nuget push build/api/CounterStrikeSharp.API.1.0.${{ needs.build_managed.outputs.buildnumber }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+          dotnet nuget push build/api/CounterStrikeSharp.API.1.0.${{ needs.build_managed.outputs.buildnumber }}.snupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate

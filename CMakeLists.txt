@@ -127,7 +127,7 @@ elseif(WIN32)
     include("makefiles/windows.base.cmake")
     set_target_properties(${PROJECT_NAME} PROPERTIES
         PREFIX ""
-        LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/addons/counterstrikesharp/bin/win64"
+        RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/addons/counterstrikesharp/bin/win64"
     )
 endif()
 
