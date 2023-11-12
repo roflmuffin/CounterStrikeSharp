@@ -59,6 +59,9 @@ namespace CounterStrikeSharp.API.Core
         }
         public void InitGlobalContext()
         {
+            Console.WriteLine("Loading CoreConfig from \"configs/core.json\"");
+            CoreConfig.Load(Path.Combine(rootDir.FullName, "configs", "core.json"));
+
             Console.WriteLine("Loading GameData from \"gamedata/gamedata.json\"");
             GameData.Load(Path.Combine(rootDir.FullName, "gamedata", "gamedata.json"));
 
