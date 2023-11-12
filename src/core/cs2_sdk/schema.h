@@ -19,23 +19,13 @@
 
 #pragma once
 
-#include "stdint.h"
-
-#ifdef _WIN32
-    #pragma warning(push)
-    #pragma warning(disable : 4005)
-#endif
-
-#include <type_traits>
-
-#ifdef _WIN32
-    #pragma warning(pop)
-#endif
-
 #include "tier0/dbg.h"
 #include "const.h"
-#include "../../utils/virtual.h"
-#include "stdint.h"
+#include "utils/virtual.h"
+
+#include <stdint.h>
+#include <type_traits>
+
 #undef schema
 
 struct SchemaKey {

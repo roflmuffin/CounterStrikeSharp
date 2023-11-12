@@ -5,7 +5,12 @@ cmake-build-debug/
 .vscode/
 generated/
 
+# configure_file auto generated.
+configs/addons/metamod/counterstrikesharp.vdf
+
 libraries/mono/
+
+CMakeSettings.json
 
 build/
 build_test/

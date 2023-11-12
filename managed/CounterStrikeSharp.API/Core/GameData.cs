@@ -37,41 +37,68 @@ public static class GameData
     {
         try
         {
-            _methods = JsonSerializer.Deserialize<Dictionary<string, LoadedGameData>>(File.ReadAllText(gameDataPath));
+            _methods = JsonSerializer.Deserialize<Dictionary<string, LoadedGameData>>(File.ReadAllText(gameDataPath))!;
 
             Console.WriteLine($"Loaded game data with {_methods.Count} methods.");
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Failed to load game data: {ex.ToString()}");
+            Console.WriteLine($"Failed to load game data: {ex}");
         }
     }
 
     public static string GetSignature(string key)
     {
-        if (!_methods.ContainsKey(key)) throw new Exception($"Method {key} not found in gamedata.json");
-        if (_methods[key].Signatures == null) throw new Exception($"No signatures found for {key} in gamedata.json");
-
-        var methodMetadata = _methods[key];
-        if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+        Console.WriteLine($"Getting signature: {key}");
+        if (!_methods.ContainsKey(key))
         {
-            return methodMetadata.Signatures!.Linux;
+            throw new ArgumentException($"Method {key} not found in gamedata.json");
         }
 
-        return methodMetadata.Signatures!.Windows;
+        var methodMetadata = _methods[key];
+        if (methodMetadata.Signatures == null)
+        {
+            throw new InvalidOperationException($"No signatures found for {key} in gamedata.json");
+        }
+
+        string signature;
+
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+        {
+            signature = methodMetadata.Signatures?.Linux ?? throw new InvalidOperationException($"No Linux signature for {key} in gamedata.json");
+        }
+        else
+        {
+            signature = methodMetadata.Signatures?.Windows ?? throw new InvalidOperationException($"No Windows signature for {key} in gamedata.json");
+        }
+
+        return signature;
     }
 
     public static int GetOffset(string key)
     {
-        if (!_methods.ContainsKey(key)) throw new Exception($"Method {key} not found in gamedata.json");
-        if (_methods[key].Offsets == null) throw new Exception($"No offsets found for {key} in gamedata.json");
-
-        var methodMetadata = _methods[key];
-        if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+        if (!_methods.ContainsKey(key))
         {
-            return methodMetadata.Offsets!.Linux;
+            throw new Exception($"Method {key} not found in gamedata.json");
         }
 
-        return methodMetadata.Offsets!.Windows;
+        var methodMetadata = _methods[key];
+
+        if (methodMetadata.Offsets == null)
+        {
+            throw new Exception($"No offsets found for {key} in gamedata.json");
+        }
+
+        int offset;
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+        {
+            offset = methodMetadata.Offsets?.Linux ?? throw new InvalidOperationException($"No Linux offset for {key} in gamedata.json");
+        }
+        else
+        {
+            offset = methodMetadata.Offsets?.Windows ?? throw new InvalidOperationException($"No Windows offset for {key} in gamedata.json");
+        }
+
+        return offset;
     }
 }

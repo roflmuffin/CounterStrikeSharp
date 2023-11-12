@@ -1,0 +1,64 @@
+name: Build
+
+on:
+  push:
+    paths-ignore:
+      - 'docs/**'
+    branches: [ "win32" ]
+  
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  matrix:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - name: Prepare env
+        shell: bash
+        run: echo "GITHUB_SHA_SHORT=${GITHUB_SHA::7}" >> $GITHUB_ENV
+      
+      - name: Visual Studio environment
+        if: runner.os == 'Windows'
+        shell: cmd
+        run: |
+          :: See https://github.com/microsoft/vswhere/wiki/Find-VC
+          for /f "usebackq delims=*" %%i in (`vswhere -latest -property installationPath`) do (
+            call "%%i"\Common7\Tools\vsdevcmd.bat -arch=x64 -host_arch=x64
+          )
+
+          :: Loop over all environment variables and make them global.
+          for /f "delims== tokens=1,2" %%a in ('set') do (
+            echo>>"%GITHUB_ENV%" %%a=%%b
+          )
+        
+      - uses: actions/checkout@v3
+        with:
+          submodules: 'recursive'
+
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '7.0.x'
+
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v2
+
+      - name: Build Linux
+        if: runner.os == 'Linux'
+        run: |
+          cd ${{github.workspace}}
+          mkdir -p build
+          cd build
+          cmake -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} ..
+          cmake --build . --config ${{env.BUILD_TYPE}} -- -j16
+
+      - name: Build Windows
+        if: runner.os == 'Windows'
+        run: |
+          cd ${{github.workspace}}
+          mkdir -p build
+          cd build
+          cmake -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} ..
+          cmake --build . --config ${{env.BUILD_TYPE}} -- /m:16

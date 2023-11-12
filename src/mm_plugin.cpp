@@ -18,6 +18,7 @@
 
 #include "core/global_listener.h"
 #include "core/log.h"
+#include "core/gameconfig.h"
 #include "core/timer_system.h"
 #include "core/utils.h"
 #include "core/managers/entity_manager.h"
@@ -29,9 +30,12 @@
 #include "entity2/entitysystem.h"
 #include "interfaces/cs2_interfaces.h"
 
+
 counterstrikesharp::GlobalClass* counterstrikesharp::GlobalClass::head = nullptr;
 
-extern "C" void InvokeNative(counterstrikesharp::fxNativeContext& context)
+// TODO: Workaround for windows, we __MUST__ have COUNTERSTRIKESHARP_API to handle it.
+// like on windows it should be `extern "C" __declspec(dllexport)`, on linux it should be anything else.
+DLL_EXPORT void InvokeNative(counterstrikesharp::fxNativeContext& context)
 {
     if (context.nativeIdentifier == 0)
         return;
@@ -78,6 +82,15 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
                     NETWORKSERVERSERVICE_INTERFACE_VERSION);
     GET_V_IFACE_ANY(GetEngineFactory, globals::gameEventSystem, IGameEventSystem,
                     GAMEEVENTSYSTEM_INTERFACE_VERSION);
+
+    auto gamedata_path = std::string(utils::GamedataDirectory() + "/gamedata.json");
+    globals::gameConfig = new CGameConfig(gamedata_path);
+    char conf_error[255] = "";
+
+    if (!globals::gameConfig->Init(conf_error, sizeof(conf_error))) {
+        CSSHARP_CORE_ERROR("Could not read \'{}\'. Error: {}", gamedata_path, conf_error);
+        return false;
+    }
 
     globals::Initialize();
 

@@ -35,7 +35,7 @@ void ScriptCallback::AddListener(CallbackT fnPluginFunction)
 
 bool ScriptCallback::RemoveListener(CallbackT fnPluginFunction)
 {
-    bool bSuccess;
+    bool bSuccess = true;
 
     m_functions.erase(std::remove(m_functions.begin(), m_functions.end(), fnPluginFunction),
                       m_functions.end());

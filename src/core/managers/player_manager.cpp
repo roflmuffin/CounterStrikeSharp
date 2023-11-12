@@ -381,6 +381,7 @@ bool CPlayer::IsAuthStringValidated() const
     if (!IsFakeClient()) {
         return globals::engine->IsClientFullyAuthenticated(m_slot);
     }
+    return false;
 }
 
 void CPlayer::Authorize() { m_is_authorized = true; }

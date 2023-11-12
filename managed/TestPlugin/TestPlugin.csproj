@@ -9,6 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CounterStrikeSharp.API\CounterStrikeSharp.API.csproj" />
+    <ProjectReference Include="..\CounterStrikeSharp.API\CounterStrikeSharp.API.csproj">
+        <Private>false</Private>
+    </ProjectReference> 
   </ItemGroup>
 </Project>

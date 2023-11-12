@@ -24,8 +24,11 @@
 #include <public/eiface.h>
 #include "core/memory.h"
 #include "core/log.h"
+#include "core/gameconfig.h"
 
 #include <funchook.h>
+
+#include "core/memory_module.h"
 
 namespace counterstrikesharp {
 
@@ -35,11 +38,14 @@ ChatManager::~ChatManager() {}
 
 void ChatManager::OnAllInitialized()
 {
-    // TODO: Allow reading of the shared game data json from the C++ side too so this isn't
-    // being hardcoded.
-    m_pHostSay = (HostSay)FindSignature(
-        MODULE_PREFIX "server" MODULE_EXT,
-        R"(\x55\x48\x89\xE5\x41\x57\x49\x89\xFF\x41\x56\x41\x55\x41\x54\x4D\x89\xC4)");
+    m_pHostSay = reinterpret_cast<HostSay>(
+        modules::server->FindSignature(globals::gameConfig->GetSignature("Host_Say"))
+        );
+
+    if (m_pHostSay == nullptr) {
+        CSSHARP_CORE_ERROR("Failed to find signature for \'Host_Say\'");
+        return;
+    }
 
     auto m_hook = funchook_create();
     funchook_prepare(m_hook, (void**)&m_pHostSay, (void*)&DetourHostSay);

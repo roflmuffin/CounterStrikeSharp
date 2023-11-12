@@ -1,3 +1,4 @@
+#include "mm_plugin.h"
 #include "core/globals.h"
 #include "core/managers/player_manager.h"
 #include "iserver.h"
@@ -12,6 +13,7 @@
 
 #include "log.h"
 #include "utils/virtual.h"
+#include "core/memory.h"
 #include "core/managers/con_command_manager.h"
 #include "core/managers/chat_manager.h"
 #include "memory_module.h"
@@ -21,6 +23,7 @@
 #include "core/managers/server_manager.h"
 #include <public/game/server/iplayerinfo.h>
 #include <public/entity2/entitysystem.h>
+
 
 namespace counterstrikesharp {
 
@@ -63,6 +66,7 @@ SourceHook::Impl::CSourceHookImpl source_hook_impl;
 SourceHook::ISourceHook *source_hook = &source_hook_impl;
 ISmmAPI *ismm = nullptr;
 CGameEntitySystem* entitySystem = nullptr;
+CGameConfig* gameConfig = nullptr;
 
 // Custom Managers
 CallbackManager callbackManager;
@@ -84,16 +88,20 @@ void Initialize() {
 
     interfaces::Initialize();
 
-    globals::entitySystem = interfaces::pGameResourceServiceServer->GetGameEntitySystem();
+    entitySystem = interfaces::pGameResourceServiceServer->GetGameEntitySystem();
 
-    gameEventManager = (IGameEventManager2 *)(CALL_VIRTUAL(uintptr_t, 91, server) - 8);
+    if (int offset = -1; (offset = gameConfig->GetOffset("GameEventManager")) != -1) {
+        gameEventManager = (IGameEventManager2*)(CALL_VIRTUAL(uintptr_t, offset, server) - 8);
+    }
 }
 
 int source_hook_pluginid = 0;
 CGlobalVars *getGlobalVars() {
     INetworkGameServer *server = networkServerService->GetIGameServer();
 
-    if (!server) return nullptr;
+    if (!server) {
+        return nullptr;
+    }
 
     return networkServerService->GetIGameServer()->GetGlobals();
 }
