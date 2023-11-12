@@ -166,7 +166,6 @@ jobs:
           mkdir -p build/windows/addons/counterstrikesharp/dotnet
           curl -s -L https://download.visualstudio.microsoft.com/download/pr/a99861c8-2e00-4587-aaef-60366ca77307/a44ceec2c5d34165ae881600f52edc43/aspnetcore-runtime-7.0.11-win-x64.zip -o dotnet.zip
           unzip -qq dotnet.zip -d build/windows/addons/counterstrikesharp/dotnet
-          mv build/windows/addons/counterstrikesharp/dotnet/shared/Microsoft.NETCore.App/7.0.11/* build/windows/addons/counterstrikesharp/dotnet/shared/Microsoft.NETCore.App/
 
       - name: Zip Builds
         run: |
