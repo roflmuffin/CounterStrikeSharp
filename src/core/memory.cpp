@@ -21,12 +21,22 @@
 
 #include <cstdlib>
 #include <cstring>
+#if __linux__
 #include <dlfcn.h>
 #include <elf.h>
 #include <link.h>
+#else
+#include <Windows.h>
+#include <Psapi.h>
+#endif
+
 #include <cstdio>
+
+#include "memory_module.h"
+#include "metamod_oslink.h"
 #include "wchartypes.h"
 
+#if __linux__
 struct ModuleInfo {
     const char *path;  // in
     uint8_t *base;     // out
@@ -106,6 +116,7 @@ int GetModuleInformation(void *hModule, void **base, size_t *length) {
 
     return 0;
 }
+#endif
 
 byte *ConvertToByteArray(const char *str, size_t *outLength) {
     size_t len = strlen(str) / 4;  // Every byte is represented as \xHH
@@ -124,17 +135,24 @@ void* FindSignature(const char* moduleName, const char* bytesStr) {
     size_t iSigLength;
     auto sigBytes = ConvertToByteArray(bytesStr, &iSigLength);
 
-    auto module = dlopen(moduleName, RTLD_NOW);
+    auto module = dlmount(moduleName);
     if (module == nullptr) {
         return nullptr;
     }
 
     void *moduleBase;
     size_t moduleSize;
-
+#if __linux__
     if (GetModuleInformation(module, &moduleBase, &moduleSize) != 0) {
         return nullptr;
     }
+#else
+    MODULEINFO m_hModuleInfo;
+    GetModuleInformation(GetCurrentProcess(), module, &m_hModuleInfo, sizeof(m_hModuleInfo));
+
+    moduleBase = (void*)m_hModuleInfo.lpBaseOfDll;
+    moduleSize = m_hModuleInfo.SizeOfImage;
+#endif
 
     unsigned char *pMemory;
     void *returnAddr = nullptr;

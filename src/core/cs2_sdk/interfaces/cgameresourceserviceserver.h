@@ -18,17 +18,18 @@
  */
 
 #pragma once
-#include <platform.h>
-#include "interfaces/interfaces.h"
 #include <cstdint>
+#include "core/gameconfig.h"
 
 class CGameEntitySystem;
 
 class CGameResourceService
 {
-public:
-	CGameEntitySystem *GetGameEntitySystem()
-	{
-		return *reinterpret_cast<CGameEntitySystem **>((uintptr_t)(this) + 0x50);
-	}
+  public:
+    CGameEntitySystem* GetGameEntitySystem()
+    {
+        return *reinterpret_cast<CGameEntitySystem**>(
+            (uintptr_t)(this) +
+            counterstrikesharp::globals::gameConfig->GetOffset("GameEntitySystem"));
+    }
 };
