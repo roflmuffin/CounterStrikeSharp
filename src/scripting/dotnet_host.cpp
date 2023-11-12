@@ -96,13 +96,13 @@ void* get_export(void* h, const char* name)
 // Using the nethost library, discover the location of hostfxr and get exports
 bool load_hostfxr()
 {
-    std::string baseDir = counterstrikesharp::utils::PluginDirectory();
+    std::string base_dir = counterstrikesharp::utils::PluginDirectory();
     namespace css = counterstrikesharp;
 #if _WIN32
     std::wstring buffer =
-        std::wstring(css::widen(baseDir) + L"\\dotnet\\host\\fxr\\7.0.11\\hostfxr.dll");
+        std::wstring(css::widen(base_dir) + L"\\dotnet\\host\\fxr\\7.0.11\\hostfxr.dll");
 #else
-    std::string buffer = std::string(baseDir + "/dotnet/host/fxr/7.0.11/libhostfxr.so");
+    std::string buffer = std::string(base_dir + "/dotnet/host/fxr/7.0.11/libhostfxr.so");
 #endif
 
     CSSHARP_CORE_INFO("Loading hostfxr from {0}", css::narrow(buffer).c_str());
@@ -181,7 +181,7 @@ bool CDotNetManager::Initialize()
                       counterstrikesharp::narrow(wide_str).c_str());
 #else
     std::string wide_str =
-        std::string((baseDir + "/api/CounterStrikeSharp.API.runtimeconfig.json").c_str());
+        std::string((base_dir + "/api/CounterStrikeSharp.API.runtimeconfig.json").c_str());
     CSSHARP_CORE_INFO("Loading CSS API, Runtime Config: {}", wide_str);
 #endif
     
@@ -197,7 +197,7 @@ bool CDotNetManager::Initialize()
     CSSHARP_CORE_INFO("CSS API DLL: {}", counterstrikesharp::narrow(dotnetlib_path));
 #else
     const std::string dotnetlib_path =
-        std::string((baseDir + "/api/CounterStrikeSharp.API.dll").c_str());
+        std::string((base_dir + "/api/CounterStrikeSharp.API.dll").c_str());
 #endif
     const auto dotnet_type = STR("CounterStrikeSharp.API.Core.Helpers, CounterStrikeSharp.API");
     // Namespace, assembly name
