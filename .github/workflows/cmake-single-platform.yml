@@ -36,7 +36,6 @@ jobs:
 
       - name: Build
         run: |
-          cd ${{github.workspace}}
           mkdir -p build
           cd build
           cmake -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} ..
@@ -49,7 +48,7 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: counterstrikesharp-build-${{ env.BUILD_NUMBER }}-windows-${{ env.GITHUB_SHA_SHORT }}
+          name: counterstrikesharp-build-windows-${{ env.GITHUB_SHA_SHORT }}
           path: build/output/
 
   build_linux:
@@ -80,7 +79,7 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: counterstrikesharp-build-${{ env.BUILD_NUMBER }}-linux-${{ env.GITHUB_SHA_SHORT }}
+          name: counterstrikesharp-build-linux-${{ env.GITHUB_SHA_SHORT }}
           path: build/output/
 
   build_managed:
@@ -114,7 +113,7 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: counterstrikesharp-build-${{ env.BUILD_NUMBER }}-api-${{ env.GITHUB_SHA_SHORT }}
+          name: counterstrikesharp-build-api-${{ env.GITHUB_SHA_SHORT }}
           path: managed/CounterStrikeSharp.API/bin/Release
 
   publish:
@@ -127,17 +126,17 @@ jobs:
 
       - uses: actions/download-artifact@v3
         with:
-          name: counterstrikesharp-build-${{ needs.build_managed.outputs.buildnumber }}-windows-${{ env.GITHUB_SHA_SHORT }}
+          name: counterstrikesharp-build-windows-${{ env.GITHUB_SHA_SHORT }}
           path: build/windows
 
       - uses: actions/download-artifact@v3
         with:
-          name: counterstrikesharp-build-${{ needs.build_managed.outputs.buildnumber }}-linux-${{ env.GITHUB_SHA_SHORT }}
+          name: counterstrikesharp-build-linux-${{ env.GITHUB_SHA_SHORT }}
           path: build/linux
 
       - uses: actions/download-artifact@v3
         with:
-          name: counterstrikesharp-build-${{ needs.build_managed.outputs.buildnumber }}-api-${{ env.GITHUB_SHA_SHORT }}
+          name: counterstrikesharp-build-api-${{ env.GITHUB_SHA_SHORT }}
           path: build/api
 
       # TODO: This stuff should really be in a matrix
