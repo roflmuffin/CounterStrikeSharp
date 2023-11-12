@@ -119,6 +119,8 @@ jobs:
           path: managed/CounterStrikeSharp.API/bin/Release
 
   publish:
+    permissions:
+      contents: write
     needs: [ "build_linux", "build_windows", "build_managed" ]
     runs-on: ubuntu-latest
     steps:
