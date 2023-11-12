@@ -1,0 +1,5 @@
+{
+    "PublicChatTrigger": "!",
+    "SilentChatTrigger": "/",
+    "FollowCS2ServerGuidelines": true
+}
