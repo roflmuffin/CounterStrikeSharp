@@ -62,7 +62,9 @@ namespace CounterStrikeSharp.API.Core
         ///
         /// <para>
         /// Enabling this option will block plugins from using functionality that is known to cause this.
+        ///
         /// Note that this does NOT guarantee that you cannot
+        ///
         /// receive a ban.
         /// </para>
         ///

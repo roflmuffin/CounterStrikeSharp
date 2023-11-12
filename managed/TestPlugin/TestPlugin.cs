@@ -18,6 +18,8 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text.Json.Serialization;
+
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes;
@@ -32,8 +34,17 @@ using CounterStrikeSharp.API.Modules.Utils;
 
 namespace TestPlugin
 {
-    [MinimumApiVersion(1)]
-    public class SamplePlugin : BasePlugin
+    public class SampleConfig : BasePluginConfig
+    {
+        [JsonPropertyName("IsPluginEnabled")]
+        public bool IsPluginEnabled { get; set; } = true;
+
+        [JsonPropertyName("LogPrefix")]
+        public string LogPrefix { get; set; } = "CSSharp";
+    }
+
+    [MinimumApiVersion(33)]
+    public class SamplePlugin : BasePlugin, IPluginConfig<SampleConfig>
     {
         public override string ModuleName => "Sample Plugin";
         public override string ModuleVersion => "v1.0.0";
@@ -42,8 +53,24 @@ namespace TestPlugin
 
         public override string ModuleDescription => "A playground of features used for testing";
 
+        public SampleConfig Config { get; set; }
+
+        // This method is called right before `Load` is called
+        public void OnConfigParsed(SampleConfig config)
+        {
+            // Save config instance
+            Config = config;
+        }
+
         public override void Load(bool hotReload)
         {
+            // Basic usage of the configuration system
+            if (!Config.IsPluginEnabled)
+            {
+                Console.WriteLine($"{Config.LogPrefix} {ModuleName} is disabled");
+                return;
+            }
+
             Console.WriteLine(
                 $"Test Plugin has been loaded, and the hot reload flag was {hotReload}, path is {ModulePath}");
 
