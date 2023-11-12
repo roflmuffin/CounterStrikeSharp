@@ -68,7 +68,6 @@ jobs:
 
       - name: Build
         run: |
-          cd ${{github.workspace}}
           mkdir -p build
           cd build
           cmake -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} ..
@@ -91,9 +90,12 @@ jobs:
     outputs:
       buildnumber: ${{ steps.buildnumber.outputs.buildnumber }}
     steps:
+      - name: Prepare env
+        shell: bash
+        run: echo "GITHUB_SHA_SHORT=${GITHUB_SHA::7}" >> $GITHUB_ENV
+
+      # We don't need expensive submodules for the managed side.
       - uses: actions/checkout@v3
-        with:
-          submodules: 'recursive'
 
       - name: Generate build number
         id: buildnumber
