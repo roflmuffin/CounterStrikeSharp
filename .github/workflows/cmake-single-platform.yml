@@ -102,9 +102,10 @@ jobs:
           token: ${{secrets.github_token}}
 
       - name: Build runtime v${{ env.BUILD_NUMBER }}
-      - uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '7.0.x'
+
       - run: |
           dotnet publish -c Release /p:Version=1.0.${{ env.BUILD_NUMBER }} managed/CounterStrikeSharp.API
           dotnet pack -c Release /p:Version=1.0.${{ env.BUILD_NUMBER }} managed/CounterStrikeSharp.API   
