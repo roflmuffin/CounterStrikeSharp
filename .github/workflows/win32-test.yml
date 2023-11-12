@@ -10,9 +10,11 @@ env:
   BUILD_TYPE: Release
 
 jobs:
-  build:
-    runs-on: windows-latest
-
+  matrix:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
     steps:
       - name: Prepare env
         shell: bash
@@ -44,8 +46,17 @@ jobs:
 
       - name: Install Protoc
         uses: arduino/setup-protoc@v2
+      - name: Build Linux
+        if: runner.os == 'Linux'
+        run: |
+          cd ${{github.workspace}}
+          mkdir -p build
+          cd build
+          cmake -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} ..
+          cmake --build . --config ${{env.BUILD_TYPE}}
 
       - name: Build Windows
+        if: runner.os == 'Windows'
         run: |
           cd ${{github.workspace}}
           mkdir -p build
