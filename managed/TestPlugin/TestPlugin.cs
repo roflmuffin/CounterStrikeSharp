@@ -43,7 +43,7 @@ namespace TestPlugin
         public string LogPrefix { get; set; } = "CSSharp";
     }
 
-    [MinimumApiVersion(32)]
+    [MinimumApiVersion(33)]
     public class SamplePlugin : BasePlugin, IPluginConfig<SampleConfig>
     {
         public override string ModuleName => "Sample Plugin";
