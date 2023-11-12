@@ -2,46 +2,73 @@
   "UTIL_ClientPrintAll": {
     "signatures": {
       "library": "server",
+      "windows": "\\x48\\x89\\x5C\\x24\\x08\\x48\\x89\\x6C\\x24\\x10\\x48\\x89\\x74\\x24\\x18\\x57\\x48\\x81\\xEC\\x70\\x01\\x2A\\x2A\\x8B\\xE9",
       "linux": "\\x55\\x48\\x89\\xE5\\x41\\x57\\x49\\x89\\xD7\\x41\\x56\\x49\\x89\\xF6\\x41\\x55\\x41\\x89\\xFD"
     }
   },
   "ClientPrint": {
     "signatures": {
       "library": "server",
+      "windows": "\\x48\\x85\\xC9\\x0F\\x84\\x2A\\x2A\\x2A\\x2A\\x48\\x8B\\xC4\\x48\\x89\\x58\\x18",
       "linux": "\\x55\\x48\\x89\\xE5\\x41\\x57\\x49\\x89\\xCF\\x41\\x56\\x49\\x89\\xD6\\x41\\x55\\x41\\x89\\xF5\\x41\\x54\\x4C\\x8D\\xA5\\xA0\\xFE\\xFF\\xFF"
     }
   },
   "CCSPlayerController_SwitchTeam": {
     "signatures": {
       "library": "server",
+      "windows": "\\x40\\x56\\x57\\x48\\x81\\xEC\\x2A\\x2A\\x2A\\x2A\\x48\\x8B\\xF9\\x8B\\xF2\\x8B\\xCA",
       "linux": "\\x55\\x48\\x89\\xE5\\x41\\x55\\x49\\x89\\xFD\\x89\\xF7"
     }
   },
   "CCSPlayerController_ChangeTeam": {
     "offsets": {
+      "windows": 90,
       "linux": 89
     }
   },
   "GiveNamedItem": {
     "signatures": {
       "library": "server",
+      "windows": "\\x48\\x89\\x5C\\x24\\x18\\x48\\x89\\x74\\x24\\x20\\x55\\x57\\x41\\x54\\x41\\x56\\x41\\x57\\x48\\x8D\\x6C\\x24\\xD9",
       "linux": "\\x55\\x48\\x89\\xE5\\x41\\x57\\x41\\x56\\x49\\x89\\xCE\\x41\\x55\\x49\\x89\\xF5\\x41\\x54\\x49\\x89\\xD4"
     }
   },
   "UTIL_Remove": {
     "signatures": {
       "library": "server",
+      "windows": "\\x48\\x85\\xC9\\x74\\x2A\\x48\\x8B\\xD1\\x48\\x8B\\x0D\\x2A\\x2A\\x2A\\x2A",
       "linux": "\\x48\\x89\\xFE\\x48\\x85\\xFF\\x74\\x2A\\x48\\x8D\\x05\\x2A\\x2A\\x2A\\x2A\\x48"
+    }
+  },
+  "Host_Say": {
+    "signatures": {
+      "library": "server",
+      "windows": "\\x44\\x89\\x4C\\x24\\x20\\x44\\x88\\x44\\x24\\x18",
+      "linux": "\\x55\\x48\\x89\\xE5\\x41\\x57\\x49\\x89\\xFF\\x41\\x56\\x41\\x55\\x41\\x54\\x4D\\x89\\xC4"
     }
   },
   "CBasePlayerPawn_CommitSuicide": {
     "offsets": {
+      "windows": 355,
       "linux": 355
     }
   },
   "CBaseEntity_Teleport": {
     "offsets": {
+      "windows": 148,
       "linux": 147
+    }
+  },
+  "GameEntitySystem": {
+    "offsets": {
+      "windows": 88,
+      "linux": 80
+    }
+  },
+  "GameEventManager": {
+    "offsets": {
+      "windows": 91,
+      "linux": 91
     }
   }
 }

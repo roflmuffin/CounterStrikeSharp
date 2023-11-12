@@ -18,11 +18,12 @@
  */
 
 #include "cs2_interfaces.h"
-#include "interfaces/interfaces.h"
-
-#include "tier0/memdbgon.h"
 #include "core/memory_module.h"
 #include "core/globals.h"
+#include "interfaces/interfaces.h"
+
+// memdbgon must be the last include file in a .cpp file!!!
+#include "tier0/memdbgon.h"
 
 namespace counterstrikesharp {
 void interfaces::Initialize() {

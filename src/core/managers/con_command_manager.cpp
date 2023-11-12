@@ -43,6 +43,8 @@
 #include "core/memory.h"
 #include "interfaces/cs2_interfaces.h"
 #include <nlohmann/json.hpp>
+
+#include "metamod_oslink.h"
 using json = nlohmann::json;
 
 namespace counterstrikesharp {

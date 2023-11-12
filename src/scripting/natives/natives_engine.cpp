@@ -15,7 +15,6 @@
  */
 
 #include <IEngineSound.h>
-#include <dlfcn.h>
 #include <edict.h>
 #include <eiface.h>
 #include <filesystem.h>
@@ -32,6 +31,10 @@
 #include "core/log.h"
 #include "core/function.h"
 // clang-format on
+
+#if _WIN32
+#undef GetCurrentTime
+#endif
 
 namespace counterstrikesharp {
 

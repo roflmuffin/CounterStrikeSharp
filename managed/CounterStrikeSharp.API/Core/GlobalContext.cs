@@ -68,7 +68,7 @@ namespace CounterStrikeSharp.API.Core
             Console.WriteLine("Loading Admins from \"configs/admins.json\"");
             AdminManager.Load(Path.Combine(rootDir.FullName, "configs", "admins.json"));
 
-            for (int i = 1; i <= 9; i++)
+            for (var i = 1; i <= 9; i++)
             {
                 CommandUtils.AddStandaloneCommand("css_" + i, "Command Key Handler", (player, info) =>
                 {
@@ -79,18 +79,18 @@ namespace CounterStrikeSharp.API.Core
             }
 
             Console.WriteLine("Loading C# plugins...");
-            int pluginCount = LoadAllPlugins();
+            var pluginCount = LoadAllPlugins();
             Console.WriteLine($"All managed modules were loaded. {pluginCount} plugins loaded.");
 
             RegisterPluginCommands();
         }
 
-        public void LoadPlugin(string path)
+        private void LoadPlugin(string path)
         {
             var existingPlugin = FindPluginByModulePath(path);
             if (existingPlugin != null)
             {
-                throw new Exception("Plugin is already loaded.");
+                throw new FileLoadException("Plugin is already loaded.");
             }
 
             var plugin = new PluginContext(path, _loadedPlugins.Select(x => x.PluginId).DefaultIfEmpty(0).Max() + 1);
@@ -98,37 +98,39 @@ namespace CounterStrikeSharp.API.Core
             _loadedPlugins.Add(plugin);
         }
 
-        public int LoadAllPlugins()
+        private int LoadAllPlugins()
         {
-            DirectoryInfo modules_directory_info;
+            DirectoryInfo modulesDirectoryInfo;
             try
             {
-                modules_directory_info = new DirectoryInfo(Path.Combine(rootDir.FullName, "plugins"));
+                modulesDirectoryInfo = new DirectoryInfo(Path.Combine(rootDir.FullName, "plugins"));
             }
             catch (Exception e)
             {
-                Console.WriteLine(
-                    "Unable to access .NET modules directory: " + e.GetType().ToString() + " " + e.Message);
+                Console.WriteLine(e);
                 return 0;
             }
 
-            DirectoryInfo[] proper_modules_directories;
+            DirectoryInfo[] properModulesDirectories;
             try
             {
-                proper_modules_directories = modules_directory_info.GetDirectories();
+                properModulesDirectories = modulesDirectoryInfo.GetDirectories();
             }
             catch
             {
-                proper_modules_directories = new DirectoryInfo[0];
+                properModulesDirectories = Array.Empty<DirectoryInfo>();
             }
 
-            var filePaths = proper_modules_directories
+
+            var filePaths = properModulesDirectories
                 .Where(d => d.GetFiles().Any((f) => f.Name == d.Name + ".dll"))
                 .Select(d => d.GetFiles().First((f) => f.Name == d.Name + ".dll").FullName)
                 .ToArray();
 
+
             foreach (var path in filePaths)
             {
+                Console.WriteLine($"Plugin path: {path}");
                 try
                 {
                     LoadPlugin(path);
@@ -320,7 +322,7 @@ namespace CounterStrikeSharp.API.Core
 
         }
 
-        public void RegisterPluginCommands()
+        private void RegisterPluginCommands()
         {
             CommandUtils.AddStandaloneCommand("css", "Counter-Strike Sharp options.", OnCSSCommand);
             CommandUtils.AddStandaloneCommand("css_plugins", "Counter-Strike Sharp plugin options.", OnCSSPluginCommand);
