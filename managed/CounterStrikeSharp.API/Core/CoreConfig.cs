@@ -82,7 +82,7 @@ namespace CounterStrikeSharp.API.Core
             CommandUtils.AddStandaloneCommand("css_core_reload", "Reloads the core configuration file.", ReloadCoreConfigCommand);
         }
 
-        [RequiresPermissions("can_reload_core")]
+        [RequiresPermissions("@css/config")]
         [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
         private static void ReloadCoreConfigCommand(CCSPlayerController? player, CommandInfo command)
         {
