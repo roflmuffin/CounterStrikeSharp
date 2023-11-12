@@ -101,11 +101,11 @@ bool load_hostfxr()
 #if _WIN32
     std::wstring buffer =
         std::wstring(css::widen(base_dir) + L"\\dotnet\\host\\fxr\\7.0.11\\hostfxr.dll");
+    CSSHARP_CORE_INFO("Loading hostfxr from {0}", css::narrow(buffer).c_str());
 #else
     std::string buffer = std::string(base_dir + "/dotnet/host/fxr/7.0.11/libhostfxr.so");
+    CSSHARP_CORE_INFO("Loading hostfxr from {0}", buffer.c_str());
 #endif
-
-    CSSHARP_CORE_INFO("Loading hostfxr from {0}", css::narrow(buffer).c_str());
 
     // Load hostfxr and get desired exports
     void* lib = load_library(buffer.c_str());
