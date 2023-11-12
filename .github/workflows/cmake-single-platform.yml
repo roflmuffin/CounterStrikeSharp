@@ -43,6 +43,8 @@ jobs:
 
       - name: Clean build directory
         run: |
+          mkdir -p build/addons/counterstrikesharp/bin/win64
+          mv build/${{env.BUILD_TYPE}}/*.dll build/addons/counterstrikesharp/bin/win64
           mkdir build/output/
           mv build/addons build/output
 
@@ -172,7 +174,7 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: v${{ env.BUILD_NUMBER }}
+          tag_name: v${{ needs.build_managed.outputs.buildnumber }}
           files: |
             counterstrikesharp-build-${{ needs.build_managed.outputs.buildnumber }}-windows-${{ env.GITHUB_SHA_SHORT }}.zip
             counterstrikesharp-with-runtime-build-${{ needs.build_managed.outputs.buildnumber }}-windows-${{ env.GITHUB_SHA_SHORT }}.zip
