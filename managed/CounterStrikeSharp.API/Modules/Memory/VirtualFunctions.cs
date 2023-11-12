@@ -24,4 +24,7 @@ public static class VirtualFunctions
 
     // void(*UTIL_Remove)(CEntityInstance*);
     public static Action<IntPtr> UTIL_Remove = VirtualFunction.CreateVoid<IntPtr>(GameData.GetSignature("UTIL_Remove"));
+
+    // void(*CBaseModelEntity_SetModel)(CBaseModelEntity*, const char*);
+    public static Action<IntPtr, string> SetModel = VirtualFunction.CreateVoid<IntPtr, string>(GameData.GetSignature("CBaseModelEntity_SetModel"));
 }
