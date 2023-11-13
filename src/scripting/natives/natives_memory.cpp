@@ -99,14 +99,14 @@ ValveFunction *CreateVirtualFunction(ScriptContext &script_context) {
     return function;
 }
 
-void* HookFunction(ScriptContext& script_context) {
+void HookFunction(ScriptContext& script_context) {
     auto function = script_context.GetArgument<ValveFunction*>(0);
     auto callback = script_context.GetArgument<CallbackT>(1);
     auto post = script_context.GetArgument<bool>(2);
 
     if (!function) {
         script_context.ThrowNativeError("Invalid function pointer");
-        return nullptr;
+        return;
     }
 
     function->AddHook(callback, post);
