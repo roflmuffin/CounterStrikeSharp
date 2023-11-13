@@ -59,13 +59,6 @@ void DetourHostSay(CBaseEntity* pController, CCommand& args, bool teamonly, int 
     CCommand newArgs;
     newArgs.Tokenize(args.Arg(1));
 
-    if (*args[1] == '/' || *args[1] == '!') {
-        globals::chatManager.OnSayCommandPost(pController, newArgs);
-        return;
-    }
-
-    m_pHostSay(pController, args, teamonly, unk1, unk2);
-
     if (pController) {
         auto pEvent = globals::gameEventManager->CreateEvent("player_chat", true);
         if (pEvent) {
@@ -76,6 +69,13 @@ void DetourHostSay(CBaseEntity* pController, CCommand& args, bool teamonly, int 
             globals::gameEventManager->FireEvent(pEvent, true);
         }
     }
+
+    if (*args[1] == '/' || *args[1] == '!') {
+        globals::chatManager.OnSayCommandPost(pController, newArgs);
+        return;
+    }
+
+    m_pHostSay(pController, args, teamonly, unk1, unk2);
 }
 
 bool ChatManager::OnSayCommandPre(CBaseEntity* pController, CCommand& command) { return false; }
