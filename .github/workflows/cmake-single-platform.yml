@@ -4,7 +4,9 @@ on:
   push:
     paths-ignore:
       - 'docs/**'
-    branches: [ "main", "feature/cross-platform-builds" ]
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 env:
   BUILD_TYPE: Release
@@ -119,6 +121,7 @@ jobs:
           path: managed/CounterStrikeSharp.API/bin/Release
 
   publish:
+    if: github.event_name == 'push'
     permissions:
       contents: write
     needs: [ "build_linux", "build_windows", "build_managed" ]
