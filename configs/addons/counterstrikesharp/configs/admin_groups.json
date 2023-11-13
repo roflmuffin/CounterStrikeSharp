@@ -1,0 +1,23 @@
+{
+  "#css/admin": {
+    "flags": [
+      "@css/reservation",
+      "@css/generic",
+      "@css/kick",
+      "@css/ban",
+      "@css/unban",
+      "@css/vip",
+      "@css/slay",
+      "@css/changemap",
+      "@css/cvar",
+      "@css/config",
+      "@css/chat",
+      "@css/vote",
+      "@css/password",
+      "@css/rcon",
+      "@css/cheats",
+      "@css/root"
+    ],
+    "immunity": 100
+  }
+}
