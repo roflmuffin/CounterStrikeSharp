@@ -97,6 +97,11 @@ jobs:
         shell: bash
         run: echo "GITHUB_SHA_SHORT=${GITHUB_SHA::7}" >> $GITHUB_ENV
 
+      - name: Fallback build number
+        if: github.event_name == 'pull_request'
+        shell: bash
+        run: echo "BUILD_NUMBER=0" >> $GITHUB_ENV
+
       # We don't need expensive submodules for the managed side.
       - uses: actions/checkout@v3
 
