@@ -47,7 +47,8 @@ class ConCommandInfo {
     friend class ConCommandManager;
 
 public:
-    ConCommandInfo() {}
+  ConCommandInfo();
+    ~ConCommandInfo();
 
 public:
     void HookChange(CallbackT callback, bool post);
@@ -64,37 +65,24 @@ private:
 
 class ConCommandManager : public GlobalClass {
     friend class ConCommandInfo;
-    friend void CommandCallback(const CCommand& command);
-    friend void CommandCallback_Post(const CCommand& command);
 
 public:
     ConCommandManager();
     ~ConCommandManager();
     void OnAllInitialized() override;
     void OnShutdown() override;
-    ConCommandInfo* AddOrFindCommand(const char* name,
-                                     const char* description,
-                                     bool server_only,
-                                     int flags);
-    bool DispatchClientCommand(CPlayerSlot slot, const char* cmd, const CCommand* args);
 
-    bool InternalDispatch(CPlayerSlot slot, const CCommand* args);
-
-    int GetCommandClient();
-
-    bool InternalDispatch_Post(CPlayerSlot slot, const CCommand* args);
-
-public:
-    ConCommandInfo* AddCommand(
-        const char* name, const char* description, bool server_only, int flags, CallbackT callback);
-    bool RemoveCommand(const char* name, CallbackT callback);
-    ConCommandInfo* FindCommand(const char* name);
+    void AddCommandListener(const char* name, CallbackT callback, HookMode mode);
+    void RemoveCommandListener(const char* name, CallbackT callback, HookMode mode);
+    bool IsValidValveCommand(const char* name);
+    bool AddValveCommand(const char* name, const char* description, bool server_only, int flags);
+    bool RemoveValveCommand(const char* name);
+    void Hook_DispatchConCommand(ConCommandHandle cmd, const CCommandContext& ctx, const CCommand& args);
+    void Hook_DispatchConCommand_Post(ConCommandHandle cmd, const CCommandContext& ctx, const CCommand& args);
+    HookResult ExecuteCommandCallbacks(const char* name, const CCommandContext& ctx,
+                                       const CCommand& args, HookMode mode);
 
 private:
-    void SetCommandClient(int client);
-
-private:
-    int last_command_client;
     std::vector<ConCommandInfo*> m_cmd_list;
     std::map<std::string, ConCommandInfo*> m_cmd_lookup;
 };

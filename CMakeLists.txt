@@ -75,8 +75,6 @@ SET(SOURCE_FILES
     src/core/managers/entity_manager.h
     src/core/managers/chat_manager.cpp
     src/core/managers/chat_manager.h
-    src/core/managers/client_command_manager.cpp
-    src/core/managers/client_command_manager.h
     src/core/managers/server_manager.cpp
     src/core/managers/server_manager.h
     src/scripting/natives/natives_server.cpp
