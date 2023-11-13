@@ -16,6 +16,15 @@ public class CommandUtils
             var command = new CommandInfo(ptr, caller);
 
             var methodInfo = handler?.GetMethodInfo();
+
+            // Do not execute command if we do not have the correct permissions.
+            var permissions = methodInfo?.GetCustomAttribute<RequiresPermissions>();
+            if (permissions != null && !permissions.CanExecuteCommand(caller))
+            {
+                command.ReplyToCommand("[CSS] You do not have the correct permissions to execute this command.");
+                return;
+            }
+
             // Do not execute if we shouldn't be calling this command.
             var helperAttribute = methodInfo?.GetCustomAttribute<CommandHelperAttribute>();
             if (helperAttribute != null)
@@ -39,14 +48,6 @@ public class CommandUtils
                     command.ReplyToCommand($"[CSS] Expected usage: \"!{command.ArgByIndex(0)} {helperAttribute.Usage}\".");
                     return;
                 }
-            }
-
-            // Do not execute command if we do not have the correct permissions.
-            var permissions = methodInfo?.GetCustomAttribute<RequiresPermissions>()?.RequiredPermissions;
-            if (permissions != null && !AdminManager.PlayerHasPermissions(caller, permissions))
-            {
-                command.ReplyToCommand("[CSS] You do not have the correct permissions to execute this command.");
-                return;
             }
 
             handler?.Invoke(caller, command);
