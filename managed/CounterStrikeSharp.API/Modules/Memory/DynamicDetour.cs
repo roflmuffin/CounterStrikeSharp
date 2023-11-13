@@ -10,12 +10,12 @@ public class DynamicHook : NativeObject
     public DynamicHook(IntPtr pointer) : base(pointer)
     {
     }
-    
+
     public T GetParam<T>(int index)
     {
         return NativeAPI.DynamicHookGetParam<T>(Handle, (int)typeof(T).ToValidDataType(), index);
     }
-    
+
     public T GetReturn<T>(int index)
     {
         return NativeAPI.DynamicHookGetReturn<T>(Handle, (int)typeof(T).ToValidDataType());
@@ -25,7 +25,7 @@ public class DynamicHook : NativeObject
     {
         NativeAPI.DynamicHookSetParam(Handle, (int)typeof(T).ToValidDataType(), index, value);
     }
-    
+
     public void SetReturn<T>(T value)
     {
         NativeAPI.DynamicHookSetReturn(Handle, (int)typeof(T).ToValidDataType(), value);
@@ -73,6 +73,19 @@ public class DynamicDetour
             );
 
             return new DynamicDetour(valveFunction, DataType.DATA_TYPE_VOID, new[] { DataType.DATA_TYPE_POINTER });
+        }
+    }
+
+    public static DynamicDetour TakeDamage
+    {
+        get
+        {
+            var valveFunction = CreateValveFunctionBySignature(GameData.GetSignature("CBaseEntity_TakeDamageOld"),
+                DataType.DATA_TYPE_VOID, new[] { DataType.DATA_TYPE_POINTER, DataType.DATA_TYPE_POINTER }
+            );
+
+            return new DynamicDetour(valveFunction, DataType.DATA_TYPE_VOID,
+                new[] { DataType.DATA_TYPE_POINTER, DataType.DATA_TYPE_POINTER });
         }
     }
 }

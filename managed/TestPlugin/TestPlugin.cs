@@ -18,6 +18,9 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 using CounterStrikeSharp.API;
@@ -34,6 +37,25 @@ using CounterStrikeSharp.API.Modules.Utils;
 
 namespace TestPlugin
 {
+    [StructLayout(LayoutKind.Explicit)]
+    public struct CTakeDamageInfo
+    {
+        [FieldOffset(68)]
+        public float damage;
+
+        [FieldOffset(72)]
+        public DamageTypes_t damageTypes;
+        
+        [FieldOffset(96)]
+        public float originalDamage;
+        
+        [FieldOffset(108)]
+        public TakeDamageFlags_t damageFlags;
+
+        [FieldOffset(112)] public int numObjectsPenetrated;
+
+    }
+    
     public class SampleConfig : BasePluginConfig
     {
         [JsonPropertyName("IsPluginEnabled")]
@@ -75,6 +97,7 @@ namespace TestPlugin
                 $"Test Plugin has been loaded, and the hot reload flag was {hotReload}, path is {ModulePath}");
 
             var x = DynamicDetour.Test;
+            var y = DynamicDetour.TakeDamage;
             DynamicDetour.Test.Hook((h) =>
             {
                 var entity = h.GetParam<CEntityInstance>(0);
@@ -83,21 +106,22 @@ namespace TestPlugin
 
                 return HookResult.Changed;
             }, HookMode.Post);
-
-            var valveFunction = DynamicDetour.CreateValveFunctionBySignature(GameData.GetSignature("OnJump"),
-                DataType.DATA_TYPE_VOID, new[] { DataType.DATA_TYPE_POINTER, DataType.DATA_TYPE_POINTER }
-            );
-
-            var d = new DynamicDetour(valveFunction, DataType.DATA_TYPE_VOID,
-                new[] { DataType.DATA_TYPE_POINTER, DataType.DATA_TYPE_POINTER });
-
-            d.Hook((hook =>
+            
+            DynamicDetour.TakeDamage.Hook((h) =>
             {
-                var movement = hook.GetParam<CCSPlayer_MovementServices>(0);
-                Console.WriteLine(movement.Pawn.Value.Controller.Value.PlayerName);
+                unsafe
+                {
+                    var entity = h.GetParam<CEntityInstance>(0);
+                    var damage = h.GetParam<IntPtr>(1);
+                    var damageFloat = Marshal.PtrToStructure<CTakeDamageInfo>(damage);
 
-                return HookResult.Continue;
-            }), HookMode.Post);
+                    var json = JsonSerializer.Serialize(damageFloat);
+
+                    Console.WriteLine($"Took damage: {entity.DesignerName} {json}");
+
+                    return HookResult.Stop;
+                }
+            }, HookMode.Pre);
 
 
             Console.WriteLine($"Max Players: {Server.MaxPlayers}");
