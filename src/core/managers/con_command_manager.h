@@ -40,6 +40,16 @@
 #include <string>
 #include "playerslot.h"
 
+struct CaseInsensitiveComparator {
+    bool operator()(const std::string& lhs, const std::string& rhs) const {
+        return std::lexicographical_compare(
+            lhs.begin(), lhs.end(),
+            rhs.begin(), rhs.end(),
+            [](char a, char b) { return std::tolower(a) < std::tolower(b); }
+        );
+    }
+};
+
 namespace counterstrikesharp {
 class ScriptCallback;
 
@@ -84,7 +94,7 @@ public:
 
 private:
     std::vector<ConCommandInfo*> m_cmd_list;
-    std::map<std::string, ConCommandInfo*> m_cmd_lookup;
+    std::map<std::string, ConCommandInfo*, CaseInsensitiveComparator> m_cmd_lookup;
 };
 
 }  // namespace counterstrikesharp

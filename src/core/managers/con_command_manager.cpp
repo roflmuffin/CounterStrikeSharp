@@ -285,6 +285,7 @@ bool ConCommandManager::RemoveValveCommand(const char* name)
 HookResult ConCommandManager::ExecuteCommandCallbacks(const char* name, const CCommandContext& ctx,
                                                       const CCommand& args, HookMode mode)
 {
+    CSSHARP_CORE_TRACE("[ConCommandManager::ExecuteCommandCallbacks][{}]: {}", mode == Pre ? "Pre" : "Post", name);
     ConCommandInfo* pInfo = m_cmd_lookup[std::string(name)];
     if (!pInfo) {
         return HookResult::Continue;
@@ -302,8 +303,6 @@ HookResult ConCommandManager::ExecuteCommandCallbacks(const char* name, const CC
         fnMethodToCall(&pCallback->ScriptContextStruct());
 
         auto result = pCallback->ScriptContext().GetResult<HookResult>();
-
-        CSSHARP_CORE_TRACE("Pre hook result {}", result);
 
         if (result >= HookResult::Handled) {
             return result;
