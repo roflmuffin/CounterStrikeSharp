@@ -24,6 +24,7 @@
 #include <public/eiface.h>
 #include "core/memory.h"
 #include "core/log.h"
+#include "core/coreconfig.h"
 #include "core/gameconfig.h"
 
 #include <funchook.h>
@@ -60,7 +61,8 @@ void DetourHostSay(CBaseEntity* pController, CCommand& args, bool teamonly, int 
     CCommand newArgs;
     newArgs.Tokenize(args.Arg(1));
 
-    if (*args[1] == '/' || *args[1] == '!') {
+    if (globals::coreConfig->SilentChatTrigger.find(*args[1]) != std::string::npos ||
+        globals::coreConfig->PublicChatTrigger.find(*args[1]) != std::string::npos) {
         globals::chatManager.OnSayCommandPost(pController, newArgs);
         return;
     }
