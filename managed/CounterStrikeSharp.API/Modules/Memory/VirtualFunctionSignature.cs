@@ -31,9 +31,15 @@ public partial class VirtualFunction
     {
         if (!_createdFunctions.TryGetValue(signature, out var function))
         {
-            function = NativeAPI.CreateVirtualFunctionBySignature(IntPtr.Zero, Addresses.ServerPath, signature,
-                argumentTypes.Count(), (int)returnType, arguments);
-            _createdFunctions[signature] = function;
+            try
+            {
+                function = NativeAPI.CreateVirtualFunctionBySignature(IntPtr.Zero, Addresses.ServerPath, signature,
+                    argumentTypes.Count(), (int)returnType, arguments);
+                _createdFunctions[signature] = function;
+            }
+            catch (Exception)
+            {
+            }
         }
 
         return function;
