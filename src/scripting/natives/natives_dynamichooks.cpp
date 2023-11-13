@@ -14,27 +14,15 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-#include <IEngineSound.h>
-#include <dlfcn.h>
-#include <edict.h>
-#include <eiface.h>
-#include <filesystem.h>
-#include <public/worldsize.h>
-
 // clang-format off
 #include "mm_plugin.h"
-#include "core/engine_trace.h"
 #include "core/timer_system.h"
-#include "core/utils.h"
 #include "scripting/autonative.h"
 #include "scripting/script_engine.h"
-#include "core/memory.h"
-#include "core/log.h"
 #include "core/function.h"
 #include "pch.h"
 #include "dynohook/core.h"
 #include "dynohook/manager.h"
-#include "dynohook/conventions/x64/x64SystemVcall.h"
 
 // clang-format on
 
