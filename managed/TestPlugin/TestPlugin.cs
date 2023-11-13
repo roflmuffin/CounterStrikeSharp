@@ -112,12 +112,10 @@ namespace TestPlugin
                 unsafe
                 {
                     var entity = h.GetParam<CEntityInstance>(0);
-                    var damage = h.GetParam<IntPtr>(1);
-                    var damageFloat = Marshal.PtrToStructure<CTakeDamageInfo>(damage);
+                    var damagePointer = h.GetParam<IntPtr>(1);
+                    var damage = Marshal.PtrToStructure<CTakeDamageInfo>(damagePointer);
 
-                    var json = JsonSerializer.Serialize(damageFloat);
-
-                    Console.WriteLine($"Took damage: {entity.DesignerName} {json}");
+                    Console.WriteLine($"Took damage: {entity.DesignerName} {damage.damage}");
 
                     return HookResult.Stop;
                 }
