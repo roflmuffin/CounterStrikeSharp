@@ -48,8 +48,8 @@ class ChatCommands;
 class HookManager;
 class EntityManager;
 class ChatManager;
-class ClientCommandManager;
 class ServerManager;
+class CGameConfig;
 
 namespace globals {
 
@@ -91,7 +91,6 @@ extern EntityManager entityManager;
 extern TimerSystem timerSystem;
 extern ChatCommands chatCommands;
 extern ChatManager chatManager;
-extern ClientCommandManager clientCommandManager;
 extern ServerManager serverManager;
 
 extern HookManager hookManager;
@@ -100,6 +99,7 @@ extern int source_hook_pluginid;
 extern IGameEventSystem *gameEventSystem;
 extern CounterStrikeSharpMMPlugin *mmPlugin;
 extern ISmmAPI *ismm;
+extern CGameConfig* gameConfig;
 
 void Initialize();
 // Should only be called within the active game loop (i e map should be loaded

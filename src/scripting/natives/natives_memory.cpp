@@ -16,7 +16,6 @@
 
 #include <ios>
 #include <sstream>
-#include <dlfcn.h>
 
 #include "scripting/autonative.h"
 #include "core/function.h"

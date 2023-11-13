@@ -1,17 +1,28 @@
-Set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING
-        "Only do Release and Debug"
-        FORCE
+if (UNIX AND NOT APPLE)
+    set(LINUX TRUE)
+endif()
+
+if (WIN32 AND NOT MSVC)
+    message(FATAL "MSVC restricted.")
+endif()
+
+set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING
+    "Only do Release and Debug"
+    FORCE
 )
+
+# TODO: Use C++20 instead.
+set(CMAKE_CXX_STANDARD 17)
 
 Set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
 Set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
 set(CMAKE_STATIC_LIBRARY_PREFIX "")
 
-Set(SOURCESDK_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2)
-Set(METAMOD_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libraries/metamod-source)
+set(SOURCESDK_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2)
+set(METAMOD_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libraries/metamod-source)
 
-Set(SOURCESDK ${SOURCESDK_DIR}/${BRANCH})
-Set(SOURCESDK_LIB ${SOURCESDK}/lib)
+set(SOURCESDK ${SOURCESDK_DIR}/${BRANCH})
+set(SOURCESDK_LIB ${SOURCESDK}/lib)
 
 add_definitions(-DMETA_IS_SOURCE2)
 
@@ -39,4 +50,8 @@ include_directories(
         libraries
 )
 
-Project(counterstrikesharp C CXX)
+include(${CMAKE_CURRENT_LIST_DIR}/metamod/configure_metamod.cmake)
+
+if (LINUX)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
+endif()

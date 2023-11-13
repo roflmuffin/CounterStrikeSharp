@@ -20,6 +20,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using CounterStrikeSharp.API.Core.Attributes;
+using CounterStrikeSharp.API.Modules.Config;
 using CounterStrikeSharp.API.Modules.Events;
 using McMaster.NETCore.Plugins;
 
@@ -103,6 +104,7 @@ namespace CounterStrikeSharp.API.Core
                 _plugin = (BasePlugin)Activator.CreateInstance(pluginType)!;
                 _plugin.ModulePath = _path;
                 _plugin.RegisterAllAttributes(_plugin);
+                _plugin.InitializeConfig(_plugin, pluginType);
                 _plugin.Load(hotReload);
 
                 Console.WriteLine($"Finished loading plugin: {Name}");

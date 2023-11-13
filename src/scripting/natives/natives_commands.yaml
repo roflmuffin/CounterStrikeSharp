@@ -1,4 +1,4 @@
-ADD_COMMAND: name:string,description:string,serverOnly:bool,flags:int,callback:callback -> pointer
+ADD_COMMAND: name:string,description:string,serverOnly:bool,flags:int,callback:callback -> void
 REMOVE_COMMAND: name:string,callback:callback -> void
 ADD_COMMAND_LISTENER: cmd:string, callback:callback, post:bool -> void
 REMOVE_COMMAND_LISTENER: cmd:string, callback:callback, post:bool -> void

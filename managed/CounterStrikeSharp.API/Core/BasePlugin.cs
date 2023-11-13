@@ -24,10 +24,14 @@ using System.Runtime.InteropServices;
 using System.Runtime.Loader;
 using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
+using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Events;
+using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Listeners;
 using CounterStrikeSharp.API.Modules.Timers;
+using McMaster.NETCore.Plugins;
+using CounterStrikeSharp.API.Modules.Config;
 
 namespace CounterStrikeSharp.API.Core
 {
@@ -154,19 +158,50 @@ namespace CounterStrikeSharp.API.Core
         {
             var wrappedHandler = new Action<int, IntPtr>((i, ptr) =>
             {
-                if (i == -1)
+                var caller = (i != -1) ? new CCSPlayerController(NativeAPI.GetEntityFromIndex(i + 1)) : null;
+                var command = new CommandInfo(ptr, caller);
+
+                var methodInfo = handler?.GetMethodInfo();
+                // Do not execute if we shouldn't be calling this command.
+                var helperAttribute = methodInfo?.GetCustomAttribute<CommandHelperAttribute>();
+                if (helperAttribute != null) 
                 {
-                    handler?.Invoke(null, new CommandInfo(ptr, null));
+                    switch (helperAttribute.WhoCanExcecute)
+                    {
+                        case CommandUsage.CLIENT_AND_SERVER: break; // Allow command through.
+                        case CommandUsage.CLIENT_ONLY:
+                            if (caller == null || !caller.IsValid) { command.ReplyToCommand("[CSS] This command can only be executed by clients."); return; } break;
+                        case CommandUsage.SERVER_ONLY:
+                            if (caller != null && caller.IsValid) { command.ReplyToCommand("[CSS] This command can only be executed by the server."); return; } break;
+                        default: throw new ArgumentException("Unrecognised CommandUsage value passed in CommandHelperAttribute.");
+                    }
+
+                    // Technically the command itself counts as the first argument, 
+                    // but we'll just ignore that for this check.
+                    if (helperAttribute.MinArgs != 0 && command.ArgCount - 1 < helperAttribute.MinArgs)
+                    {
+                        command.ReplyToCommand($"[CSS] Expected usage: \"!{command.ArgByIndex(0)} {helperAttribute.Usage}\".");
+                        return;
+                    }
+                }
+
+                // Do not execute command if we do not have the correct permissions.
+                var permissions = methodInfo?.GetCustomAttribute<RequiresPermissions>()?.RequiredPermissions;
+                if (permissions != null && !AdminManager.PlayerHasPermissions(caller, permissions))
+                {
+                    command.ReplyToCommand("[CSS] You do not have the correct permissions to execute this command.");
                     return;
                 }
 
-                var entity = new CCSPlayerController(NativeAPI.GetEntityFromIndex(i + 1));
-                var command = new CommandInfo(ptr, entity);
-                handler?.Invoke(entity.IsValid ? entity : null, command);
+                handler?.Invoke(caller, command);
             });
 
+            var methodInfo = handler?.GetMethodInfo();
+            var helperAttribute = methodInfo?.GetCustomAttribute<CommandHelperAttribute>();
+
             var subscriber = new CallbackSubscriber(handler, wrappedHandler, () => { RemoveCommand(name, handler); });
-            NativeAPI.AddCommand(name, description, false, (int)ConCommandFlags.FCVAR_LINKED_CONCOMMAND, subscriber.GetInputArgument());
+            NativeAPI.AddCommand(name, description, (helperAttribute?.WhoCanExcecute == CommandUsage.SERVER_ONLY),
+                (int)ConCommandFlags.FCVAR_LINKED_CONCOMMAND, subscriber.GetInputArgument());
             CommandHandlers[handler] = subscriber;
         }
 
@@ -174,14 +209,10 @@ namespace CounterStrikeSharp.API.Core
         {
             var wrappedHandler = new Func<int, IntPtr, HookResult>((i, ptr) =>
             {
-                if (i == -1)
-                {
-                    return HookResult.Continue;
-                }
+                var caller = (i != -1) ? new CCSPlayerController(NativeAPI.GetEntityFromIndex(i + 1)) : null;
 
-                var entity = new CCSPlayerController(NativeAPI.GetEntityFromIndex(i + 1));
-                var command = new CommandInfo(ptr, entity);
-                return handler.Invoke(entity.IsValid ? entity : null, command);
+                var command = new CommandInfo(ptr, caller);
+                return handler.Invoke(caller, command);
             });
 
             var subscriber = new CallbackSubscriber(handler, wrappedHandler, () => { RemoveCommandListener(name, handler, mode); });
@@ -298,6 +329,31 @@ namespace CounterStrikeSharp.API.Core
         {
             this.RegisterAttributeHandlers(instance);
             this.RegisterConsoleCommandAttributeHandlers(instance);
+        }
+
+        public void InitializeConfig(object instance, Type pluginType)
+        {
+            Type[] interfaces = pluginType.GetInterfaces();
+            Func<Type, bool> predicate = (i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IPluginConfig<>));
+
+            // if the plugin has set a configuration type (implements IPluginConfig<>)
+            if (interfaces.Any(predicate))
+            {
+                // IPluginConfig<>
+                Type @interface = interfaces.Where(predicate).FirstOrDefault()!;
+
+                // custom config type passed as generic
+                Type genericType = @interface!.GetGenericArguments().First();
+
+                var config = typeof(ConfigManager)
+                    .GetMethod("Load")!
+                    .MakeGenericMethod(genericType)
+                    .Invoke(null, new object[] { Path.GetFileName(ModuleDirectory) }) as IBasePluginConfig;
+
+                // we KNOW that we can do this "safely"
+                pluginType.GetRuntimeMethod("OnConfigParsed", new Type[] { genericType })
+                    .Invoke(instance, new object[] { config });
+            }
         }
 
         /// <summary>

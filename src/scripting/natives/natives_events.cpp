@@ -15,8 +15,10 @@
  */
 #include "core/globals.h"
 #include "core/log.h"
+
 #include "core/managers/event_manager.h"
 #include "scripting/autonative.h"
+
 
 namespace counterstrikesharp {
 
@@ -189,7 +191,7 @@ static void *GetPlayerController(ScriptContext &scriptContext) {
     return gameEvent->GetPlayerController(keyName);
 }
 
-static void *SetPlayerController(ScriptContext &scriptContext) {
+static void SetPlayerController(ScriptContext &scriptContext) {
     IGameEvent *gameEvent = scriptContext.GetArgument<IGameEvent *>(0);
     const char *keyName = scriptContext.GetArgument<const char *>(1);
     auto *value = scriptContext.GetArgument<CEntityInstance *>(2);
@@ -199,7 +201,7 @@ static void *SetPlayerController(ScriptContext &scriptContext) {
     }
 }
 
-static void *SetEntity(ScriptContext &scriptContext) {
+static void SetEntity(ScriptContext &scriptContext) {
     IGameEvent *gameEvent = scriptContext.GetArgument<IGameEvent *>(0);
     const char *keyName = scriptContext.GetArgument<const char *>(1);
     auto *value = scriptContext.GetArgument<CEntityInstance *>(2);
@@ -209,7 +211,7 @@ static void *SetEntity(ScriptContext &scriptContext) {
     }
 }
 
-static void *SetEntityIndex(ScriptContext &scriptContext) {
+static void SetEntityIndex(ScriptContext &scriptContext) {
     IGameEvent *gameEvent = scriptContext.GetArgument<IGameEvent *>(0);
     const char *keyName = scriptContext.GetArgument<const char *>(1);
     auto index = scriptContext.GetArgument<int>(2);
@@ -243,7 +245,7 @@ static uint64 GetUint64(ScriptContext &scriptContext) {
     return gameEvent->GetUint64(keyName);
 }
 
-static void *SetUint64(ScriptContext &scriptContext) {
+static void SetUint64(ScriptContext &scriptContext) {
     IGameEvent *gameEvent = scriptContext.GetArgument<IGameEvent *>(0);
     const char *keyName = scriptContext.GetArgument<const char *>(1);
     auto value = scriptContext.GetArgument<uint64>(2);

@@ -16,7 +16,6 @@
 
 #include <eiface.h>
 
-#include "core/managers/client_command_manager.h"
 #include "scripting/autonative.h"
 #include "scripting/callback_manager.h"
 #include "core/managers/con_command_manager.h"
@@ -26,7 +25,7 @@
 
 namespace counterstrikesharp {
 
-static ConCommandInfo* AddCommand(ScriptContext& script_context)
+static void AddCommand(ScriptContext& script_context)
 {
     auto name = script_context.GetArgument<const char*>(0);
     auto description = script_context.GetArgument<const char*>(1);
@@ -37,7 +36,8 @@ static ConCommandInfo* AddCommand(ScriptContext& script_context)
     CSSHARP_CORE_TRACE("Adding command {}, {}, {}, {}, {}", name, description, server_only, flags,
                        (void*)callback);
 
-    return globals::conCommandManager.AddCommand(name, description, server_only, flags, callback);
+    globals::conCommandManager.AddValveCommand(name, description, server_only, flags);
+    globals::conCommandManager.AddCommandListener(name, callback, HookMode::Pre);
 }
 
 static void RemoveCommand(ScriptContext& script_context)
@@ -45,7 +45,8 @@ static void RemoveCommand(ScriptContext& script_context)
     auto name = script_context.GetArgument<const char*>(0);
     auto callback = script_context.GetArgument<CallbackT>(1);
 
-    globals::conCommandManager.RemoveCommand(name, callback);
+    globals::conCommandManager.RemoveCommandListener(name, callback, HookMode::Pre);
+    globals::conCommandManager.RemoveValveCommand(name);
 }
 
 static void AddCommandListener(ScriptContext& script_context)
@@ -54,7 +55,7 @@ static void AddCommandListener(ScriptContext& script_context)
     auto callback = script_context.GetArgument<CallbackT>(1);
     auto post = script_context.GetArgument<bool>(2);
 
-    globals::clientCommandManager.AddCommandListener(name, callback, post);
+    globals::conCommandManager.AddCommandListener(name, callback, post ? HookMode::Post : HookMode::Pre);
 }
 
 static void RemoveCommandListener(ScriptContext& script_context)
@@ -63,7 +64,7 @@ static void RemoveCommandListener(ScriptContext& script_context)
     auto callback = script_context.GetArgument<CallbackT>(1);
     auto post = script_context.GetArgument<bool>(2);
 
-    globals::clientCommandManager.RemoveCommandListener(name, callback, post);
+    globals::conCommandManager.RemoveCommandListener(name, callback, post ? HookMode::Post : HookMode::Pre);
 }
 
 static int CommandGetArgCount(ScriptContext& script_context)

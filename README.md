@@ -2,21 +2,16 @@
 
 CounterStrikeSharp is a server side modding framework for Counter-Strike: Global Offensive. This project attempts to implement a .NET Core scripting layer on top of a Metamod Source Plugin, allowing developers to create plugins that interact with the game server in a modern language (C#) to facilitate the creation of maintainable and testable code.
 
+[Come and join our Discord](https://discord.gg/X7r3PmuYKq)
+
 ## History
 
 This project is an ongoing migration of a previous project (titled [VSP.NET](https://github.com/roflmuffin/vspdotnet)) whereby a scripting layer was added to a Valve Server Plugin for CSGO.
 
 Due to the architectural changes of CS2, the plugin is being rebuilt on the ground up, to support Linux 64-bit, something which was previously impossible.
 
-## Philosophy
-
-As a result, there are a few key philosophies and trade-offs that drive the project.
-- Only 64 bit is supported.
-  - .NET only supports x64 on Linux; CSGO previously only supported 32 bit servers, but CS2 supports 64 bit on Linux.
-- Supporting both platforms is a lot of work for 1 person, so there are no real plans to support Windows.
-
 ## Install
-Development builds are currently available through GitHub actions, you can download the latest build from [there](https://github.com/roflmuffin/CounterStrikeSharp/actions/workflows/cmake-single-platform.yml).
+Download the latest build from [here](https://github.com/roflmuffin/CounterStrikeSharp/releases). (Download the with runtime version if this is your first time installing).
 
 Detailed installation instructions can be found in the [docs](https://docs.cssharp.dev/guides/getting-started/).
 
@@ -94,7 +89,7 @@ I've also used the scripting context & native system that is implemented in Five
 
 ## How to Build
 
-Building requires CMake on Linux.
+Building requires CMake.
 
 Clone the repository
 

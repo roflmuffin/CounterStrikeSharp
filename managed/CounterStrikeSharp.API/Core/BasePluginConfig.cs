@@ -14,13 +14,19 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using CounterStrikeSharp.API.Modules.Memory;
+using System.Text.Json.Serialization;
 
-namespace CounterStrikeSharp.API.Core;
-
-public partial class CGlowProperty
+namespace CounterStrikeSharp.API.Core
 {
-    // m_bGlowing
-    public ref bool IsGlowing => ref Schema.GetRef<bool>(this.Handle, "CGlowProperty", "m_bGlowing");
+    public interface IBasePluginConfig
+    {
+        [JsonPropertyName("ConfigVersion")]
+        int Version { get; set; }
+    }
 
+    public class BasePluginConfig : IBasePluginConfig
+    {
+        [JsonPropertyName("ConfigVersion")]
+        public virtual int Version { get; set; } = 1;
+    }
 }

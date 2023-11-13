@@ -2,7 +2,19 @@
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <EnablePackageValidation>true</EnablePackageValidation>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
     <Nullable>enable</Nullable>
+    
+    <Authors>Roflmuffin</Authors>
+    <Description>Official server side runtime assembly for CounterStrikeSharp</Description>
+    <PackageProjectUrl>http://docs.cssharp.dev/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/roflmuffin/CounterStrikeSharp</RepositoryUrl>
+    <PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Modules\Commands\CommandInfo" />
