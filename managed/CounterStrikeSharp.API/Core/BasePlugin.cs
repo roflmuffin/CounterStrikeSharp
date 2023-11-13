@@ -209,14 +209,10 @@ namespace CounterStrikeSharp.API.Core
         {
             var wrappedHandler = new Func<int, IntPtr, HookResult>((i, ptr) =>
             {
-                if (i == -1)
-                {
-                    return HookResult.Continue;
-                }
+                var caller = (i != -1) ? new CCSPlayerController(NativeAPI.GetEntityFromIndex(i + 1)) : null;
 
-                var entity = new CCSPlayerController(NativeAPI.GetEntityFromIndex(i + 1));
-                var command = new CommandInfo(ptr, entity);
-                return handler.Invoke(entity.IsValid ? entity : null, command);
+                var command = new CommandInfo(ptr, caller);
+                return handler.Invoke(caller, command);
             });
 
             var subscriber = new CallbackSubscriber(handler, wrappedHandler, () => { RemoveCommandListener(name, handler, mode); });

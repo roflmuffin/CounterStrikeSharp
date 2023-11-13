@@ -39,8 +39,7 @@ ChatManager::~ChatManager() {}
 void ChatManager::OnAllInitialized()
 {
     m_pHostSay = reinterpret_cast<HostSay>(
-        modules::server->FindSignature(globals::gameConfig->GetSignature("Host_Say"))
-        );
+        modules::server->FindSignature(globals::gameConfig->GetSignature("Host_Say")));
 
     if (m_pHostSay == nullptr) {
         CSSHARP_CORE_ERROR("Failed to find signature for \'Host_Say\'");
@@ -60,30 +59,28 @@ void DetourHostSay(CBaseEntity* pController, CCommand& args, bool teamonly, int 
     CCommand newArgs;
     newArgs.Tokenize(args.Arg(1));
 
+    if (pController) {
+        auto pEvent = globals::gameEventManager->CreateEvent("player_chat", true);
+        if (pEvent) {
+            pEvent->SetBool("teamonly", teamonly);
+            pEvent->SetInt("userid", pController->GetEntityIndex().Get() - 1);
+            pEvent->SetString("text", args[1]);
+
+            globals::gameEventManager->FireEvent(pEvent, true);
+        }
+    }
+
     if (*args[1] == '/' || *args[1] == '!') {
         globals::chatManager.OnSayCommandPost(pController, newArgs);
         return;
     }
 
     m_pHostSay(pController, args, teamonly, unk1, unk2);
-
-    if (pController) {
-        auto pEvent = globals::gameEventManager->CreateEvent("player_chat", true);
-        if (pEvent) {
-            pEvent->SetBool("teamonly", teamonly);
-            pEvent->SetInt("userid", pController->GetEntityIndex().Get());
-            pEvent->SetString("text", args[1]);
-
-            globals::gameEventManager->FireEvent(pEvent, true);
-        }
-    }
 }
 
-bool ChatManager::OnSayCommandPre(CBaseEntity* pController, CCommand& command) {
-    return false;
-}
+bool ChatManager::OnSayCommandPre(CBaseEntity* pController, CCommand& command) { return false; }
 
-bool ChatManager::OnSayCommandPost(CBaseEntity* pController, CCommand& command)
+void ChatManager::OnSayCommandPost(CBaseEntity* pController, CCommand& command)
 {
     const char* args = command.ArgS();
     auto commandStr = command.Arg(0);
@@ -91,7 +88,7 @@ bool ChatManager::OnSayCommandPost(CBaseEntity* pController, CCommand& command)
     return InternalDispatch(pController, commandStr + 1, command);
 }
 
-bool ChatManager::InternalDispatch(CBaseEntity* pPlayerController, const char* szTriggerPhase,
+void ChatManager::InternalDispatch(CBaseEntity* pPlayerController, const char* szTriggerPhase,
                                    CCommand& fullCommand)
 {
     auto ppArgV = new const char*[fullCommand.ArgC()];
@@ -102,26 +99,28 @@ bool ChatManager::InternalDispatch(CBaseEntity* pPlayerController, const char* s
 
     auto prefixedPhrase = std::string("css_") + szTriggerPhase;
 
-    auto command = globals::conCommandManager.FindCommand(prefixedPhrase.c_str());
+    auto bValidWithPrefix = globals::conCommandManager.IsValidValveCommand(prefixedPhrase.c_str());
 
-    if (command) {
+    if (bValidWithPrefix) {
         ppArgV[0] = prefixedPhrase.c_str();
     }
 
     CCommand commandCopy(fullCommand.ArgC(), ppArgV);
 
     if (pPlayerController == nullptr) {
-        auto result = globals::conCommandManager.InternalDispatch(CPlayerSlot(-1), &commandCopy);
+        globals::conCommandManager.ExecuteCommandCallbacks(
+            commandCopy.Arg(0), CCommandContext(CommandTarget_t::CT_NO_TARGET, CPlayerSlot(-1)),
+            commandCopy, HookMode::Pre);
         delete[] ppArgV;
-        return result;
+        return;
     }
 
     auto index = pPlayerController->GetEntityIndex().Get();
-
     auto slot = CPlayerSlot(index - 1);
 
-    auto result = globals::conCommandManager.InternalDispatch(slot, &commandCopy);
+    globals::conCommandManager.ExecuteCommandCallbacks(
+        commandCopy.Arg(0), CCommandContext(CommandTarget_t::CT_NO_TARGET, slot), commandCopy,
+        HookMode::Pre);
     delete[] ppArgV;
-    return result;
 }
 } // namespace counterstrikesharp
