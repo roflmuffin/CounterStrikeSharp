@@ -58,6 +58,7 @@ class ConCommandInfo {
 
 public:
   ConCommandInfo();
+  ConCommandInfo(bool bNoCallbacks);
     ~ConCommandInfo();
 
 public:
@@ -95,6 +96,7 @@ public:
 private:
     std::vector<ConCommandInfo*> m_cmd_list;
     std::map<std::string, ConCommandInfo*, CaseInsensitiveComparator> m_cmd_lookup;
+    ConCommandInfo m_global_cmd = ConCommandInfo(true);
 };
 
 }  // namespace counterstrikesharp

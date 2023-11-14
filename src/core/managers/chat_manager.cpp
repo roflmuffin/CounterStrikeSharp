@@ -56,9 +56,6 @@ void ChatManager::OnShutdown() {}
 void DetourHostSay(CBaseEntity* pController, CCommand& args, bool teamonly, int unk1,
                    const char* unk2)
 {
-    CCommand newArgs;
-    newArgs.Tokenize(args.Arg(1));
-
     if (pController) {
         auto pEvent = globals::gameEventManager->CreateEvent("player_chat", true);
         if (pEvent) {
@@ -70,48 +67,52 @@ void DetourHostSay(CBaseEntity* pController, CCommand& args, bool teamonly, int 
         }
     }
 
-    if (*args[1] == '/' || *args[1] == '!') {
-        globals::chatManager.OnSayCommandPost(pController, newArgs);
-        return;
+    bool bSilent = *args[1] == '/';
+    bool bCommand = *args[1] == '!' || *args[1] == '/';
+
+    if (!bSilent) {
+        m_pHostSay(pController, args, teamonly, unk1, unk2);
     }
 
-    m_pHostSay(pController, args, teamonly, unk1, unk2);
+    if (bCommand)
+    {
+        char *pszMessage = (char *)(args.ArgS() + 2);
+
+        // Trailing slashes are only removed if Host_Say has been called.
+        if (bSilent)
+            pszMessage[V_strlen(pszMessage) - 1] = 0;
+
+        CCommand args;
+        args.Tokenize(pszMessage);
+
+        auto prefixedPhrase = std::string("css_") + args.Arg(0);
+        auto bValidWithPrefix = globals::conCommandManager.IsValidValveCommand(prefixedPhrase.c_str());
+
+        if (bValidWithPrefix) {
+            // Re-tokenize with a `css_` prefix if we have found that its a valid command.
+            args.Tokenize(("css_" + std::string(pszMessage)).c_str());
+        }
+
+        globals::chatManager.OnSayCommandPost(pController, args);
+    }
 }
 
 bool ChatManager::OnSayCommandPre(CBaseEntity* pController, CCommand& command) { return false; }
 
 void ChatManager::OnSayCommandPost(CBaseEntity* pController, CCommand& command)
 {
-    const char* args = command.ArgS();
     auto commandStr = command.Arg(0);
 
-    return InternalDispatch(pController, commandStr + 1, command);
+    return InternalDispatch(pController, commandStr, command);
 }
 
 void ChatManager::InternalDispatch(CBaseEntity* pPlayerController, const char* szTriggerPhase,
                                    CCommand& fullCommand)
 {
-    auto ppArgV = new const char*[fullCommand.ArgC()];
-    ppArgV[0] = strdup(szTriggerPhase);
-    for (int i = 1; i < fullCommand.ArgC(); i++) {
-        ppArgV[i] = fullCommand.Arg(i);
-    }
-
-    auto prefixedPhrase = std::string("css_") + szTriggerPhase;
-
-    auto bValidWithPrefix = globals::conCommandManager.IsValidValveCommand(prefixedPhrase.c_str());
-
-    if (bValidWithPrefix) {
-        ppArgV[0] = prefixedPhrase.c_str();
-    }
-
-    CCommand commandCopy(fullCommand.ArgC(), ppArgV);
-
     if (pPlayerController == nullptr) {
         globals::conCommandManager.ExecuteCommandCallbacks(
-            commandCopy.Arg(0), CCommandContext(CommandTarget_t::CT_NO_TARGET, CPlayerSlot(-1)),
-            commandCopy, HookMode::Pre);
-        delete[] ppArgV;
+            fullCommand.Arg(0), CCommandContext(CommandTarget_t::CT_NO_TARGET, CPlayerSlot(-1)),
+            fullCommand, HookMode::Pre);
         return;
     }
 
@@ -119,8 +120,7 @@ void ChatManager::InternalDispatch(CBaseEntity* pPlayerController, const char* s
     auto slot = CPlayerSlot(index - 1);
 
     globals::conCommandManager.ExecuteCommandCallbacks(
-        commandCopy.Arg(0), CCommandContext(CommandTarget_t::CT_NO_TARGET, slot), commandCopy,
+        fullCommand.Arg(0), CCommandContext(CommandTarget_t::CT_NO_TARGET, slot), fullCommand,
         HookMode::Pre);
-    delete[] ppArgV;
 }
 } // namespace counterstrikesharp
