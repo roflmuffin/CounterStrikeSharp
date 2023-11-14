@@ -69,7 +69,7 @@ void DetourHostSay(CBaseEntity* pController, CCommand& args, bool teamonly, int 
     }
 
     bool bSilent = globals::coreConfig->SilentChatTrigger.find(*args[1]) != std::string::npos;
-    bool bCommand = globals::coreConfig->PublicChatTrigger.find(*args[1]) != std::string::npos) || bSilent;
+    bool bCommand = globals::coreConfig->PublicChatTrigger.find(*args[1]) != std::string::npos || bSilent;
 
     if (!bSilent) {
         m_pHostSay(pController, args, teamonly, unk1, unk2);
