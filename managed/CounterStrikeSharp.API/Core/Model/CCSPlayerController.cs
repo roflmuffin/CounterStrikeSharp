@@ -26,7 +26,7 @@ public partial class CCSPlayerController
 
     public void PrintToConsole(string message)
     {
-        NativeAPI.PrintToConsole((int)EntityIndex.Value.Value, message);
+        NativeAPI.PrintToConsole((int)EntityIndex.Value.Value, $"{message}\n\0");
     }
 
     public void PrintToChat(string message)

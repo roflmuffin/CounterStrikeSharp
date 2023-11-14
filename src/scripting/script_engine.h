@@ -40,6 +40,11 @@ enum HookResult {
     Stop = 4,
 };
 
+enum HookMode {
+    Pre = 0,
+    Post = 1,
+};
+
 inline uint32_t hash_string(const char *string) {
     unsigned long result = 5381;
 

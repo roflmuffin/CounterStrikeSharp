@@ -30,7 +30,7 @@
  */
 
 #include "core/managers/player_manager.h"
-#include "core/managers/client_command_manager.h"
+#include "core/managers/con_command_manager.h"
 
 #include <public/eiface.h>
 #include <public/inetchannelinfo.h>
@@ -287,8 +287,10 @@ void PlayerManager::OnClientCommand(CPlayerSlot slot, const CCommand& args) cons
 
     const char* cmd = args.Arg(0);
 
-    bool response = globals::clientCommandManager.DispatchClientCommand(slot, cmd, &args);
-    if (response) {
+    auto result = globals::conCommandManager.ExecuteCommandCallbacks(
+        cmd, CCommandContext(CommandTarget_t::CT_NO_TARGET, slot), args, HookMode::Pre);
+
+    if (result >= HookResult::Handled) {
         RETURN_META(MRES_SUPERCEDE);
     }
 }
