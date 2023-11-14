@@ -18,11 +18,18 @@ public class CommandUtils
             var methodInfo = handler?.GetMethodInfo();
 
             // Do not execute command if we do not have the correct permissions.
-            var permissions = methodInfo?.GetCustomAttribute<RequiresPermissions>();
-            if (permissions != null && !permissions.CanExecuteCommand(caller))
+            var permissions = methodInfo?.GetCustomAttributes<BaseRequiresPermissions>();
+            if (permissions != null)
             {
-                command.ReplyToCommand("[CSS] You do not have the correct permissions to execute this command.");
-                return;
+                foreach (var attr in permissions)
+                {
+                    attr.Command = name;
+                    if (!attr.CanExecuteCommand(caller))
+                    {
+                        command.ReplyToCommand("[CSS] You do not have the correct permissions to execute this command.");
+                        return;
+                    }
+                }
             }
 
             // Do not execute if we shouldn't be calling this command.

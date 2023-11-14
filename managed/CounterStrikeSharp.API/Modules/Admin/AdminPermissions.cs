@@ -9,6 +9,7 @@ using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Commands;
 using System.Reflection;
 using System.Numerics;
+using System.Linq;
 
 namespace CounterStrikeSharp.API.Modules.Admin
 {
@@ -17,6 +18,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
         [JsonPropertyName("identity")] public required string Identity { get; init; }
         [JsonPropertyName("flags")] public required HashSet<string> Flags { get; init; }
         [JsonPropertyName("immunity")] public uint Immunity { get; set; } = 0;
+        [JsonPropertyName("command_overrides")] public Dictionary<string, bool> CommandOverrides { get; init; } = new();
     }
 
     public static partial class AdminManager
@@ -168,6 +170,33 @@ namespace CounterStrikeSharp.API.Modules.Admin
             if (data == null) return;
             
             data.Flags.ExceptWith(flags);
+            Admins[steamId] = data;
+        }
+
+        /// <summary>
+        /// Temporarily removes all permission flags from a player. These flags are not saved to
+        /// "configs/admins.json".
+        /// </summary>
+        /// <param name="player">Player controller to remove flags from.</param>
+        public static void ClearPlayerPermissions(CCSPlayerController? player)
+        {
+            if (player == null) return;
+            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) return;
+
+            ClearPlayerPermissions((SteamID)player.SteamID);
+        }
+
+        /// <summary>
+        /// Temporarily removes all permission flags from a player. These flags are not saved to
+        /// "configs/admins.json".
+        /// </summary>
+        /// <param name="steamId">Steam ID to remove flags from.</param>
+        public static void ClearPlayerPermissions(SteamID steamId)
+        {
+            var data = GetPlayerAdminData(steamId);
+            if (data == null) return;
+
+            data.Flags.Clear();
             Admins[steamId] = data;
         }
 

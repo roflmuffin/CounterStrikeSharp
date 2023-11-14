@@ -69,6 +69,9 @@ namespace CounterStrikeSharp.API.Core
             AdminManager.LoadAdminGroups(Path.Combine(rootDir.FullName, "configs", "admin_groups.json"));
             Console.WriteLine("Loading Admins from \"configs/admins.json\"");
             AdminManager.LoadAdminData(Path.Combine(rootDir.FullName, "configs", "admins.json"));
+            Console.WriteLine("Loading Admin Command Overrides from \"configs/admin_overrides.json\"");
+            AdminManager.LoadCommandOverrides(Path.Combine(rootDir.FullName, "configs", "admin_overrides.json"));
+
             AdminManager.MergeGroupPermsIntoAdmins();
 
             for (var i = 1; i <= 9; i++)

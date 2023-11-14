@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -12,12 +13,13 @@ namespace CounterStrikeSharp.API.Modules.Admin
 {
     public partial class AdminData
     {
-        [JsonPropertyName("groups")] public required HashSet<string> Groups { get; init; }
+        [JsonPropertyName("groups")] public HashSet<string> Groups { get; init; } = new();
     }
     public partial class AdminGroupData
     {
         [JsonPropertyName("flags")] public required HashSet<string> Flags { get; init; }
         [JsonPropertyName("immunity")] public uint Immunity { get; set; } = 0;
+        [JsonPropertyName("command_overrides")] public Dictionary<string, bool> CommandOverrides { get; init; } = new();
     }
 
     public static partial class AdminManager
@@ -143,6 +145,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
                 if (Groups.TryGetValue(group, out var groupDef))
                 {
                     data.Flags.UnionWith(groupDef.Flags);
+                    groupDef.CommandOverrides.ToList().ForEach(x => data.CommandOverrides[x.Key] = x.Value);
                 }
             }
             Admins[steamId] = data;

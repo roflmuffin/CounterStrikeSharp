@@ -16,6 +16,8 @@ namespace CounterStrikeSharp.API.Modules.Admin
             CommandUtils.AddStandaloneCommand("css_admins_list", "List admins and their flags.", ListAdminsCommand);
             CommandUtils.AddStandaloneCommand("css_groups_reload", "Reloads the admin groups file.", ReloadAdminGroupsCommand);
             CommandUtils.AddStandaloneCommand("css_groups_list", "List admin groups and their flags.", ListAdminGroupsCommand);
+            CommandUtils.AddStandaloneCommand("css_overrides_reload", "Reloads the admin command overrides file.", ReloadAdminOverridesCommand);
+            CommandUtils.AddStandaloneCommand("css_overrides_list", "List admin command overrides and their flags.", ListAdminOverridesCommand);
         }
 
         public static void MergeGroupPermsIntoAdmins()
@@ -61,6 +63,25 @@ namespace CounterStrikeSharp.API.Modules.Admin
             foreach (var (groupName, groupDef) in Groups)
             {
                 command.ReplyToCommand($"{groupName} - {string.Join(", ", groupDef.Flags)}");
+            }
+        }
+
+        [RequiresPermissions(permissions: "@css/generic")]
+        [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
+        private static void ReloadAdminOverridesCommand(CCSPlayerController? player, CommandInfo command)
+        {
+            CommandOverrides.Clear();
+            var rootDir = new FileInfo(Assembly.GetExecutingAssembly().Location).Directory.Parent;
+            LoadCommandOverrides(Path.Combine(rootDir.FullName, "configs", "admin_overrides.json"));
+        }
+
+        [RequiresPermissions(permissions: "@css/generic")]
+        [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
+        private static void ListAdminOverridesCommand(CCSPlayerController? player, CommandInfo command)
+        {
+            foreach (var (commandName, commandDef) in CommandOverrides)
+            {
+                command.ReplyToCommand($"{commandName} (enabled: {commandDef.Enabled.ToString()}) - {string.Join(", ", commandDef.Flags)}");
             }
         }
     }

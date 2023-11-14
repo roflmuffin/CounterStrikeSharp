@@ -1,0 +1,8 @@
+{
+  "example_command": {
+    "flags": [
+      "@css/cheats"
+    ],
+    "enabled": true
+  }
+}

@@ -169,6 +169,7 @@ namespace CounterStrikeSharp.API.Core
                 {
                     foreach (var attr in permissions)
                     {
+                        attr.Command = name;
                         if (!attr.CanExecuteCommand(caller))
                         {
                             command.ReplyToCommand("[CSS] You do not have the correct permissions to execute this command.");
