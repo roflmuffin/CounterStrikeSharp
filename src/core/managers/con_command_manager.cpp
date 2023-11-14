@@ -170,6 +170,9 @@ ConCommandInfo::~ConCommandInfo()
     globals::callbackManager.ReleaseCallback(callback_pre);
     globals::callbackManager.ReleaseCallback(callback_post);
 }
+ConCommandInfo::ConCommandInfo(bool bNoCallbacks) {
+
+}
 
 ConCommandManager::ConCommandManager() {}
 
@@ -181,6 +184,10 @@ void ConCommandManager::OnAllInitialized()
                         &ConCommandManager::Hook_DispatchConCommand, false);
     SH_ADD_HOOK_MEMFUNC(ICvar, DispatchConCommand, globals::cvars, this,
                         &ConCommandManager::Hook_DispatchConCommand_Post, true);
+
+    m_global_cmd.callback_pre = globals::callbackManager.CreateCallback("OnClientCommandGlobalPre");
+    m_global_cmd.callback_post =
+        globals::callbackManager.CreateCallback("OnClientCommandGlobalPost");
 }
 
 void ConCommandManager::OnShutdown()
@@ -189,6 +196,9 @@ void ConCommandManager::OnShutdown()
                            &ConCommandManager::Hook_DispatchConCommand, false);
     SH_REMOVE_HOOK_MEMFUNC(ICvar, DispatchConCommand, globals::cvars, this,
                            &ConCommandManager::Hook_DispatchConCommand_Post, true);
+
+    globals::callbackManager.ReleaseCallback(m_global_cmd.callback_pre);
+    globals::callbackManager.ReleaseCallback(m_global_cmd.callback_post);
 }
 
 void CommandCallback(const CCommandContext& context, const CCommand& command)
@@ -199,6 +209,15 @@ void CommandCallback(const CCommandContext& context, const CCommand& command)
 
 void ConCommandManager::AddCommandListener(const char* name, CallbackT callback, HookMode mode)
 {
+    if (name == nullptr) {
+        if (mode == HookMode::Pre) {
+            m_global_cmd.callback_pre->AddListener(callback);
+        } else {
+            m_global_cmd.callback_post->AddListener(callback);
+        }
+        return;
+    }
+
     auto strName = std::string(name);
     ConCommandInfo* pInfo = m_cmd_lookup[strName];
 
@@ -210,7 +229,6 @@ void ConCommandManager::AddCommandListener(const char* name, CallbackT callback,
         if (hExistingCommand.IsValid()) {
             pInfo->command = globals::cvars->GetCommand(hExistingCommand);
         }
-
     }
 
     if (mode == HookMode::Pre) {
@@ -218,11 +236,19 @@ void ConCommandManager::AddCommandListener(const char* name, CallbackT callback,
     } else {
         pInfo->callback_post->AddListener(callback);
     }
-
 }
 
 void ConCommandManager::RemoveCommandListener(const char* name, CallbackT callback, HookMode mode)
 {
+    if (name == nullptr) {
+        if (mode == HookMode::Pre) {
+            m_global_cmd.callback_pre->RemoveListener(callback);
+        } else {
+            m_global_cmd.callback_post->RemoveListener(callback);
+        }
+        return;
+    }
+
     auto strName = std::string(name);
     ConCommandInfo* pInfo = m_cmd_lookup[strName];
 
@@ -285,10 +311,43 @@ bool ConCommandManager::RemoveValveCommand(const char* name)
 HookResult ConCommandManager::ExecuteCommandCallbacks(const char* name, const CCommandContext& ctx,
                                                       const CCommand& args, HookMode mode)
 {
-    CSSHARP_CORE_TRACE("[ConCommandManager::ExecuteCommandCallbacks][{}]: {}", mode == Pre ? "Pre" : "Post", name);
+    CSSHARP_CORE_TRACE("[ConCommandManager::ExecuteCommandCallbacks][{}]: {}",
+                       mode == Pre ? "Pre" : "Post", name);
     ConCommandInfo* pInfo = m_cmd_lookup[std::string(name)];
+
+    HookResult result = HookResult::Continue;
+
+    auto globalCallback = mode == HookMode::Pre ? m_global_cmd.callback_pre : m_global_cmd.callback_post;
+
+    if (globalCallback->GetFunctionCount() > 0) {
+        globalCallback->ScriptContext().Reset();
+        globalCallback->ScriptContext().Push(ctx.GetPlayerSlot().Get());
+        globalCallback->ScriptContext().Push(&args);
+
+        for (auto fnMethodToCall : globalCallback->GetFunctions()) {
+            if (!fnMethodToCall)
+                continue;
+            fnMethodToCall(&globalCallback->ScriptContextStruct());
+
+            auto hookResult = globalCallback->ScriptContext().GetResult<HookResult>();
+
+            if (hookResult >= HookResult::Stop) {
+                if (mode == HookMode::Pre) {
+                    return HookResult::Stop;
+                }
+
+                result = hookResult;
+                break;
+            }
+
+            if (hookResult >= HookResult::Handled) {
+                result = hookResult;
+            }
+        }
+    }
+
     if (!pInfo) {
-        return HookResult::Continue;
+        return result;
     }
 
     auto pCallback = mode == HookMode::Pre ? pInfo->callback_pre : pInfo->callback_post;
@@ -302,14 +361,16 @@ HookResult ConCommandManager::ExecuteCommandCallbacks(const char* name, const CC
             continue;
         fnMethodToCall(&pCallback->ScriptContextStruct());
 
-        auto result = pCallback->ScriptContext().GetResult<HookResult>();
+        auto thisResult = pCallback->ScriptContext().GetResult<HookResult>();
 
-        if (result >= HookResult::Handled) {
+        if (thisResult >= HookResult::Handled) {
             return result;
+        } else if (thisResult > result) {
+            result = thisResult;
         }
     }
 
-    return HookResult::Continue;
+    return result;
 }
 
 void ConCommandManager::Hook_DispatchConCommand(ConCommandHandle cmd, const CCommandContext& ctx,
