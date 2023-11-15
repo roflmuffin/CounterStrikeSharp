@@ -75,6 +75,17 @@ namespace CounterStrikeSharp.API.Modules.Admin
         }
 
         /// <summary>
+        /// Removes a players admin data. This is not saved to "configs/admins.json"
+        /// </summary>
+        /// <param name="steamId">Steam ID remove admin data from.</param>
+        public static void RemovePlayerAdminData(SteamID steamId)
+        {
+            Admins.Remove(steamId);
+        }
+
+        #region Command Permission Checks
+
+        /// <summary>
         /// Checks to see if a player has access to a certain set of permission flags.
         /// </summary>
         /// <param name="player">Player or server console.</param>
@@ -101,7 +112,114 @@ namespace CounterStrikeSharp.API.Modules.Admin
             var playerData = GetPlayerAdminData(steamId);
             return playerData?.Flags.IsSupersetOf(flags) ?? false;
         }
-        
+
+        #endregion
+
+        // This is placed here instead of in AdminCommandOverrides.cs as this all relates to admins that are
+        // defined within the "configs/admins.json" file.
+        #region Admin Specific Command Overrides
+        /// <summary>
+        /// Checks to see if a player has a command override. This does NOT return the actual
+        /// state of the override.
+        /// </summary>
+        /// <param name="player">Player or server console.</param>
+        /// <param name="command">Name of the command to check for.</param>
+        /// <returns>True if override exists, false if not.</returns>
+        public static bool PlayerHasCommandOverride(CCSPlayerController? player, string command)
+        {
+            // This is here for cases where the server console is attempting to call commands.
+            // The server console should have access to all commands, regardless of permissions.
+            if (player == null) return true;
+            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return false; }
+            var playerData = GetPlayerAdminData((SteamID)player.SteamID);
+            return playerData?.CommandOverrides.ContainsKey(command) ?? false;
+        }
+
+        /// <summary>
+        /// Checks to see if a player has a command override. This does NOT return the actual
+        /// state of the override.
+        /// </summary>
+        /// <param name="steamId">Steam ID object.</param>
+        /// <param name="command">Name of the command to check for.</param>
+        /// <returns>True if override exists, false if not.</returns>
+        public static bool PlayerHasCommandOverride(SteamID steamId, string command)
+        {
+            var playerData = GetPlayerAdminData(steamId);
+            return playerData?.CommandOverrides.ContainsKey(command) ?? false;
+        }
+
+        /// <summary>
+        /// Gets the value of a command override state.
+        /// </summary>
+        /// <param name="player">Player or server console.</param>
+        /// <param name="command">Name of the command to check for.</param>
+        /// <returns>True if override is active, false if not.</returns>
+        public static bool GetPlayerCommandOverrideState(CCSPlayerController? player, string command)
+        {
+            // This is here for cases where the server console is attempting to call commands.
+            // The server console should have access to all commands, regardless of permissions.
+            if (player == null) return true;
+            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return false; }
+            var playerData = GetPlayerAdminData((SteamID)player.SteamID);
+            return playerData?.CommandOverrides.GetValueOrDefault(command) ?? false;
+        }
+
+        /// <summary>
+        /// Gets the value of a command override state.
+        /// </summary>
+        /// <param name="steamId">Steam ID object.</param>
+        /// <param name="command">Name of the command to check for.</param>
+        /// <returns>True if override is active, false if not.</returns>
+        public static bool GetPlayerCommandOverrideState(SteamID steamId, string command)
+        {
+            var playerData = GetPlayerAdminData(steamId);
+            return playerData?.CommandOverrides.GetValueOrDefault(command) ?? false;
+        }
+
+        /// <summary>
+        /// Sets a player command override. This is not saved to "configs/admins.json".
+        /// </summary>
+        /// <param name="player">Player or server console.</param>
+        /// <param name="command">Name of the command to check for.</param>
+        /// <param name="state">New state of the command override.</param>
+        public static void SetPlayerCommandOverride(CCSPlayerController? player, string command, bool state)
+        {
+            // This is here for cases where the server console is attempting to call commands.
+            // The server console should have access to all commands, regardless of permissions.
+            if (player == null) return;
+            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return; }
+            SetPlayerCommandOverride((SteamID)player.SteamID, command, state);
+        }
+
+        /// <summary>
+        /// Sets a player command override. This is not saved to "configs/admins.json".
+        /// </summary>
+        /// <param name="steamId">SteamID to add a flag to.</param>
+        /// <param name="command">Name of the command to check for.</param>
+        /// <param name="state">New state of the command override.</param>
+        public static void SetPlayerCommandOverride(SteamID steamId, string command, bool state)
+        {
+            var data = GetPlayerAdminData(steamId);
+            if (data == null)
+            {
+                data = new AdminData()
+                {
+                    Identity = steamId.SteamId64.ToString(),
+                    Flags = new(),
+                    Groups = new(),
+                    CommandOverrides = new() { { command, state } }
+                };
+
+                Admins[steamId] = data;
+                return;
+            }
+
+            data.CommandOverrides[command] = state;
+            Admins[steamId] = data;
+        }
+        #endregion
+
+        #region Manipulating Permissions
         /// <summary>
         /// Temporarily adds a permission flag to the player. These flags are not saved to
         /// "configs/admins.json".
@@ -199,28 +317,9 @@ namespace CounterStrikeSharp.API.Modules.Admin
             data.Flags.Clear();
             Admins[steamId] = data;
         }
+        #endregion
 
-        /// <summary>
-        /// Removes a players admin data. This is not saved to "configs/admins.json"
-        /// </summary>
-        /// <param name="player">Player controller to remove admin data from.</param>
-        public static void RemovePlayerAdminData(CCSPlayerController? player)
-        {
-            if (player == null) return;
-            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) return;
-
-            RemovePlayerAdminData((SteamID)player.SteamID);
-        }
-
-        /// <summary>
-        /// Removes a players admin data. This is not saved to "configs/admins.json"
-        /// </summary>
-        /// <param name="steamId">Steam ID remove admin data from.</param>
-        public static void RemovePlayerAdminData(SteamID steamId)
-        {
-            Admins.Remove(steamId);
-        }
-
+        #region Player Immunity
         /// <summary>
         /// Sets the immunity value for a player.
         /// </summary>
@@ -287,5 +386,6 @@ namespace CounterStrikeSharp.API.Modules.Admin
 
             return callerData.Immunity >= targetData.Immunity;
         }
+        #endregion
     }
 }

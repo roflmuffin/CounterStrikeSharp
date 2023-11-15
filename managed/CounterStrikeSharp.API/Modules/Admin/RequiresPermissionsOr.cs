@@ -14,6 +14,10 @@ namespace CounterStrikeSharp.API.Modules.Admin
         public override bool CanExecuteCommand(CCSPlayerController? caller)
         {
             if (caller == null) return true;
+            if (AdminManager.PlayerHasCommandOverride(caller, Command))
+            {
+                return AdminManager.GetPlayerCommandOverrideState(caller, Command);
+            }
             if (!base.CanExecuteCommand(caller)) return false;
 
             var groupPermissions = Permissions.Where(perm => perm.StartsWith(PermissionCharacters.GroupPermissionChar));
