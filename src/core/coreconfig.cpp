@@ -43,11 +43,36 @@ bool CCoreConfig::Init(char* conf_error, int conf_error_size)
         V_snprintf(conf_error, conf_error_size, "Failed to parse CoreConfig file: %s", ex.what());
         return false;
     }
+
     return true;
 }
 
 const std::string CCoreConfig::GetPath() const
 {
     return m_sPath;
+}
+
+bool CCoreConfig::IsTriggerInternal(std::vector<std::string> triggers, const std::string& message, std::string*& prefix) const
+{
+    for (std::string& trigger : triggers)
+    {
+        if (message.rfind(trigger, 0) == 0)
+        {
+            prefix = &trigger;
+            return true;
+        }
+    }
+
+    return false;
+}
+
+bool CCoreConfig::IsSilentChatTrigger(const std::string& message, std::string*& prefix) const
+{
+    return IsTriggerInternal(SilentChatTrigger, message, prefix);
+}
+
+bool CCoreConfig::IsPublicChatTrigger(const std::string& message, std::string*& prefix) const
+{
+    return IsTriggerInternal(PublicChatTrigger, message, prefix);
 }
 } // namespace counterstrikesharp

@@ -25,8 +25,8 @@ namespace counterstrikesharp {
 class CCoreConfig
 {
   public:
-    std::string PublicChatTrigger = std::string("!");
-    std::string SilentChatTrigger = std::string("/");
+    std::vector<std::string> PublicChatTrigger = { std::string("!") };
+    std::vector<std::string> SilentChatTrigger = { std::string("/") };
     bool FollowCS2ServerGuidelines = true;
 
     using json = nlohmann::json;
@@ -35,6 +35,12 @@ class CCoreConfig
 
     bool Init(char* conf_error, int conf_error_size);
     const std::string GetPath() const;
+
+    bool IsSilentChatTrigger(const std::string& message, std::string*& prefix) const;
+    bool IsPublicChatTrigger(const std::string& message, std::string*& prefix) const;
+
+  private:
+    bool IsTriggerInternal(std::vector<std::string> triggers, const std::string& message, std::string*& prefix) const;
 
   private:
     std::string m_sPath;
