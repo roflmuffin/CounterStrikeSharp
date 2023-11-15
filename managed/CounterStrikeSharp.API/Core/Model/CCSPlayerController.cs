@@ -67,7 +67,7 @@ public partial class CCSPlayerController
     }
 
     /// <summary>
-    /// Drops the active player weapon on the ground.
+    /// Removes every weapon from the player.
     /// </summary>
     public void RemoveWeapons()
     {
