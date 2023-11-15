@@ -8,8 +8,18 @@ namespace CounterStrikeSharp.API.Modules.Admin
 {
     public class BaseRequiresPermissions : Attribute
     {
+        /// <summary>
+        /// The permissions for the command.
+        /// </summary>
         public string[] Permissions { get; }
+        /// <summary>
+        /// The name of the command that is attached to this attribute.
+        /// </summary>
         public string Command { get; set; }
+        /// <summary>
+        /// Whether this attribute should be used for permission checks.
+        /// </summary>
+        public bool Enabled { get; set; }
 
         public BaseRequiresPermissions(params string[] permissions)
         {

@@ -14,6 +14,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
     {
         [JsonPropertyName("flags")] public required HashSet<string> Flags { get; init; }
         [JsonPropertyName("enabled")] public bool Enabled { get; set; } = true;
+        [JsonPropertyName("check_type")] public required string CheckType { get; init; }
     }
 
     public static partial class AdminManager
@@ -65,6 +66,16 @@ namespace CounterStrikeSharp.API.Modules.Admin
         }
 
         /// <summary>
+        /// Grabs the data for a command override that was loaded from "configs/admin_overrides.json".
+        /// </summary>
+        /// <param name="commandName">Name of the command.</param>
+        /// <returns>CommandData class if found, null if not.</returns>
+        public static CommandData? GetCommandOverrideData(string commandName)
+        {
+            return CommandOverrides.GetValueOrDefault(commandName);
+        }
+
+        /// <summary>
         /// Grabs the new, overriden flags for a command.
         /// </summary>
         /// <param name="commandName">Name of the command.</param>
@@ -89,7 +100,8 @@ namespace CounterStrikeSharp.API.Modules.Admin
                 overrideDef = new CommandData()
                 {
                     Flags = new(permissions),
-                    Enabled = true
+                    Enabled = true,
+                    CheckType = "all"
                 };
 
                 CommandOverrides[commandName] = overrideDef;

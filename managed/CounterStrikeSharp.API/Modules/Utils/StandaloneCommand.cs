@@ -17,12 +17,32 @@ public class CommandUtils
 
             var methodInfo = handler?.GetMethodInfo();
 
-            // Do not execute command if we do not have the correct permissions.
-            var permissions = methodInfo?.GetCustomAttributes<BaseRequiresPermissions>();
-            if (permissions != null)
+            if (!AdminManager.CommandIsOverriden(name))
             {
-                foreach (var attr in permissions)
+                // Do not execute command if we do not have the correct permissions.
+                var permissions = methodInfo?.GetCustomAttributes<BaseRequiresPermissions>();
+                if (permissions != null)
                 {
+                    foreach (var attr in permissions)
+                    {
+                        attr.Command = name;
+                        if (!attr.CanExecuteCommand(caller))
+                        {
+                            command.ReplyToCommand("[CSS] You do not have the correct permissions to execute this command.");
+                            return;
+                        }
+                    }
+                }
+            }
+            // If this command has it's permissions overriden, we will do an AND check for all permissions.
+            else
+            {
+                // I don't know if this is the most sane implementation of this, can be edited in code review.
+                var data = AdminManager.GetCommandOverrideData(name);
+                if (data != null) 
+                {
+                    var attrType = (data.CheckType == "all") ? typeof(RequiresPermissions) : typeof(RequiresPermissionsOr);
+                    var attr = (BaseRequiresPermissions)Activator.CreateInstance(attrType, args: AdminManager.GetPermissionOverrides(name));
                     attr.Command = name;
                     if (!attr.CanExecuteCommand(caller))
                     {
