@@ -24,7 +24,7 @@
 #include "utils/virtual.h"
 
 #include <string>
-#include <unordered_set>
+#include <vector>
 #include <stdint.h>
 #include <type_traits>
 
@@ -56,7 +56,7 @@ inline uint64_t hash_64_fnv1a_const(const char *str, const uint64_t value = val_
 }
 
 namespace schema {
-static std::unordered_set<std::string> CS2BadList({
+static std::vector<std::string> CS2BadList = {
     "m_bIsValveDS",
     "m_bIsQuestEligible",
     "m_iItemDefinitionIndex", // in unmanaged this cannot be set.
@@ -93,7 +93,7 @@ static std::unordered_set<std::string> CS2BadList({
 
     "m_nActiveCoinRank",
     "m_nMusicID",
-});
+};
 
 int16_t FindChainOffset(const char *className);
 SchemaKey GetOffset(const char *className, uint32_t classKey, const char *memberName, uint32_t memberKey);
