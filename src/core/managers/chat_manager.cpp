@@ -63,7 +63,7 @@ void DetourHostSay(CBaseEntity* pController, CCommand& args, bool teamonly, int 
             pEvent->SetInt("userid", pController->GetEntityIndex().Get() - 1);
             pEvent->SetString("text", args[1]);
 
-            globals::gameEventManager->FireEvent(pEvent, true);
+            if (!globals::gameEventManager->FireEvent(pEvent, true)) return;
         }
     }
 
