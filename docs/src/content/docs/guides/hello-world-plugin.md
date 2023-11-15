@@ -15,23 +15,10 @@ All CounterStrikeSharp plugins are installed on the server as built .dll class l
 dotnet new classlib --name HelloWorldPlugin
 ```
 
-Use your IDE (Visual Studio/Rider) to add a reference to the `CounterStrikeSharp.Api.dll` file that is installed onto the server. If you are using VSCode or a text editor, you can edit the .csproj file directly and add the following:
+Install the NuGet package `CounterStrikeSharp.Api`
 
-```diff
-<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
-
-+  <ItemGroup>
-+    <Reference Include="CounterStrikeSharp.API">
-+       <HintPath>[where you downloaded or installed]/addons/counterstrikesharp/api/CounterStrikeSharp.API.dll</HintPath>
-+    </Reference>
-+  </ItemGroup>
-</Project>
+```shell
+dotnet add package CounterStrikeSharp.API
 ```
 
 ### Creating a Plugin File
