@@ -53,10 +53,10 @@ class ChatManager : public GlobalClass
     void OnShutdown() override;
 
     bool OnSayCommandPre(CBaseEntity* pController, CCommand& args);
-    bool OnSayCommandPost(CBaseEntity* pController, CCommand& args);
+    void OnSayCommandPost(CBaseEntity* pController, CCommand& args);
 
   private:
-    bool InternalDispatch(CBaseEntity* pPlayerController, const char* szTriggerPhrase,
+    void InternalDispatch(CBaseEntity* pPlayerController, const char* szTriggerPhrase,
                           CCommand& pFullCommand);
 
     std::vector<ChatCommandInfo*> m_cmd_list;
