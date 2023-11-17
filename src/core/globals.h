@@ -48,7 +48,6 @@ class ChatCommands;
 class HookManager;
 class EntityManager;
 class ChatManager;
-class ClientCommandManager;
 class ServerManager;
 class CGameConfig;
 
@@ -92,7 +91,6 @@ extern EntityManager entityManager;
 extern TimerSystem timerSystem;
 extern ChatCommands chatCommands;
 extern ChatManager chatManager;
-extern ClientCommandManager clientCommandManager;
 extern ServerManager serverManager;
 
 extern HookManager hookManager;

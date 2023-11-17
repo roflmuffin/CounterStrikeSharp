@@ -30,7 +30,7 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
-        public static IntPtr AddCommand(string name, string description, bool serveronly, int flags, InputArgument callback){
+        public static void AddCommand(string name, string description, bool serveronly, int flags, InputArgument callback){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
 			ScriptContext.GlobalScriptContext.Push(name);
@@ -41,7 +41,6 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x807C6B9C);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
 			}
 		}
 
