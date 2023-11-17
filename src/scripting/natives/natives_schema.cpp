@@ -23,6 +23,7 @@
 #include "core/log.h"
 #include "schema.h"
 #include "core/function.h"
+#include "core/coreconfig.h"
 
 namespace counterstrikesharp {
 
@@ -122,6 +123,12 @@ void SetSchemaValueByName(ScriptContext& script_context)
     auto dataType = script_context.GetArgument<DataType_t>(1);
     auto className = script_context.GetArgument<const char*>(2);
     auto memberName = script_context.GetArgument<const char*>(3);
+
+    if (globals::coreConfig->FollowCS2ServerGuidelines && std::find(schema::CS2BadList.begin(), schema::CS2BadList.end(), memberName) != schema::CS2BadList.end()) {
+        CSSHARP_CORE_ERROR("Cannot set '{}::{}' with \"FollowCS2ServerGuidelines\" option enabled.", className, memberName);
+        return;
+    }
+
     auto classKey = hash_32_fnv1a_const(className);
     auto memberKey = hash_32_fnv1a_const(memberName);
 

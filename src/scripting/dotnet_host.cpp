@@ -96,7 +96,7 @@ void* get_export(void* h, const char* name)
 // Using the nethost library, discover the location of hostfxr and get exports
 bool load_hostfxr()
 {
-    std::string base_dir = counterstrikesharp::utils::PluginDirectory();
+    std::string base_dir = counterstrikesharp::utils::GetRootDirectory();
     namespace css = counterstrikesharp;
 #if _WIN32
     std::wstring buffer =
@@ -164,7 +164,7 @@ CDotNetManager::~CDotNetManager() {}
 
 bool CDotNetManager::Initialize()
 {
-    const std::string base_dir = counterstrikesharp::utils::PluginDirectory();
+    const std::string base_dir = counterstrikesharp::utils::GetRootDirectory();
 
     CSSHARP_CORE_INFO("Loading .NET runtime...");
 
@@ -184,7 +184,7 @@ bool CDotNetManager::Initialize()
         std::string((base_dir + "/api/CounterStrikeSharp.API.runtimeconfig.json").c_str());
     CSSHARP_CORE_INFO("Loading CSS API, Runtime Config: {}", wide_str);
 #endif
-    
+
     const auto load_assembly_and_get_function_pointer = get_dotnet_load_assembly(wide_str.c_str());
     if (load_assembly_and_get_function_pointer == nullptr) {
         CSSHARP_CORE_ERROR("Failed to load CSS API.");

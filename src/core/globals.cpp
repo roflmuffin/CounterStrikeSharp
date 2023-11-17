@@ -65,6 +65,7 @@ SourceHook::Impl::CSourceHookImpl source_hook_impl;
 SourceHook::ISourceHook *source_hook = &source_hook_impl;
 ISmmAPI *ismm = nullptr;
 CGameEntitySystem* entitySystem = nullptr;
+CCoreConfig* coreConfig = nullptr;
 CGameConfig* gameConfig = nullptr;
 
 // Custom Managers

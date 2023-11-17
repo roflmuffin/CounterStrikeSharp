@@ -24,6 +24,7 @@
 #include <public/eiface.h>
 #include "core/memory.h"
 #include "core/log.h"
+#include "core/coreconfig.h"
 #include "core/gameconfig.h"
 
 #include <funchook.h>
@@ -67,8 +68,9 @@ void DetourHostSay(CBaseEntity* pController, CCommand& args, bool teamonly, int 
         }
     }
 
-    bool bSilent = *args[1] == '/';
-    bool bCommand = *args[1] == '!' || *args[1] == '/';
+    std::string* prefix;
+    bool bSilent = globals::coreConfig->IsSilentChatTrigger(args[1], prefix);
+    bool bCommand = bSilent || globals::coreConfig->IsPublicChatTrigger(args[1], prefix);
 
     if (!bSilent) {
         m_pHostSay(pController, args, teamonly, unk1, unk2);
@@ -76,7 +78,7 @@ void DetourHostSay(CBaseEntity* pController, CCommand& args, bool teamonly, int 
 
     if (bCommand)
     {
-        char *pszMessage = (char *)(args.ArgS() + 2);
+        char *pszMessage = (char *)(args.ArgS() + prefix->length() + 1);
 
         // Trailing slashes are only removed if Host_Say has been called.
         if (bSilent)

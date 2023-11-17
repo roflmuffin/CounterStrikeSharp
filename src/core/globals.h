@@ -49,6 +49,7 @@ class HookManager;
 class EntityManager;
 class ChatManager;
 class ServerManager;
+class CCoreConfig;
 class CGameConfig;
 
 namespace globals {
@@ -99,6 +100,7 @@ extern int source_hook_pluginid;
 extern IGameEventSystem *gameEventSystem;
 extern CounterStrikeSharpMMPlugin *mmPlugin;
 extern ISmmAPI *ismm;
+extern CCoreConfig* coreConfig;
 extern CGameConfig* gameConfig;
 
 void Initialize();
