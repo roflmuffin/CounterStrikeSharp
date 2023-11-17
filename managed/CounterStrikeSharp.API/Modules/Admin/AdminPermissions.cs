@@ -23,7 +23,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
 
     public static partial class AdminManager
     {
-        private static readonly Dictionary<SteamID, AdminData> Admins = new();
+        private static Dictionary<SteamID, AdminData> Admins = new();
 
         public static void LoadAdminData(string adminDataPath)
         {

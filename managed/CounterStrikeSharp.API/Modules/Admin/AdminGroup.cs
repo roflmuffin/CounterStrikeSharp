@@ -24,7 +24,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
 
     public static partial class AdminManager
     {
-        private static readonly Dictionary<string, AdminGroupData> Groups = new();
+        private static Dictionary<string, AdminGroupData> Groups = new();
 
         public static void LoadAdminGroups(string adminGroupsPath)
         {
