@@ -23,6 +23,7 @@ using System.Text.Json.Serialization;
 using CounterStrikeSharp.API.Modules.Utils;
 using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Modules.Commands;
+using System.Collections.Generic;
 
 namespace CounterStrikeSharp.API.Core
 {
@@ -31,9 +32,9 @@ namespace CounterStrikeSharp.API.Core
     /// </summary>
     internal sealed partial class CoreConfigData
     {
-        [JsonPropertyName("PublicChatTrigger")] public string PublicChatTrigger { get; set; } = "!";
+        [JsonPropertyName("PublicChatTrigger")] public IEnumerable<string> PublicChatTrigger { get; set; } = new HashSet<string>() { "!" };
 
-        [JsonPropertyName("SilentChatTrigger")] public string SilentChatTrigger { get; set; } = "/";
+        [JsonPropertyName("SilentChatTrigger")] public IEnumerable<string> SilentChatTrigger { get; set; } = new HashSet<string>() { "/" };
 
         [JsonPropertyName("FollowCS2ServerGuidelines")] public bool FollowCS2ServerGuidelines { get; set; } = true;
     }
@@ -46,12 +47,12 @@ namespace CounterStrikeSharp.API.Core
         /// <summary>
         /// List of characters to use for public chat triggers.
         /// </summary>
-        public static string PublicChatTrigger => _coreConfig.PublicChatTrigger;
+        public static IEnumerable<string> PublicChatTrigger => _coreConfig.PublicChatTrigger;
 
         /// <summary>
         /// List of characters to use for silent chat triggers.
         /// </summary>
-        public static string SilentChatTrigger => _coreConfig.SilentChatTrigger;
+        public static IEnumerable<string> SilentChatTrigger => _coreConfig.SilentChatTrigger;
 
         /// <summary>
         /// <para>

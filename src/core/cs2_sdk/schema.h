@@ -23,6 +23,8 @@
 #include "const.h"
 #include "utils/virtual.h"
 
+#include <string>
+#include <vector>
 #include <stdint.h>
 #include <type_traits>
 
@@ -54,6 +56,45 @@ inline uint64_t hash_64_fnv1a_const(const char *str, const uint64_t value = val_
 }
 
 namespace schema {
+static std::vector<std::string> CS2BadList = {
+    "m_bIsValveDS",
+    "m_bIsQuestEligible",
+    "m_iItemDefinitionIndex", // in unmanaged this cannot be set.
+    "m_iEntityLevel",
+    "m_iItemIDHigh",
+    "m_iItemIDLow",
+    "m_iAccountID",
+    "m_iEntityQuality",
+
+    "m_bInitialized",
+    "m_szCustomName",
+    "m_iAttributeDefinitionIndex",
+    "m_iRawValue32",
+    "m_iRawInitialValue32",
+    "m_flValue", // MNetworkAlias "m_iRawValue32"
+    "m_flInitialValue", // MNetworkAlias "m_iRawInitialValue32"
+    "m_bSetBonus",
+    "m_nRefundableCurrency",
+
+    "m_OriginalOwnerXuidLow",
+    "m_OriginalOwnerXuidHigh",
+
+    "m_nFallbackPaintKit",
+    "m_nFallbackSeed",
+    "m_flFallbackWear",
+    "m_nFallbackStatTrak",
+
+    "m_iCompetitiveWins",
+    "m_iCompetitiveRanking",
+    "m_iCompetitiveRankType",
+    "m_iCompetitiveRankingPredicted_Win",
+    "m_iCompetitiveRankingPredicted_Loss",
+    "m_iCompetitiveRankingPredicted_Tie",
+
+    "m_nActiveCoinRank",
+    "m_nMusicID",
+};
+
 int16_t FindChainOffset(const char *className);
 SchemaKey GetOffset(const char *className, uint32_t classKey, const char *memberName, uint32_t memberKey);
 }  // namespace schema

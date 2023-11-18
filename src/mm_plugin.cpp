@@ -18,6 +18,7 @@
 
 #include "core/global_listener.h"
 #include "core/log.h"
+#include "core/coreconfig.h"
 #include "core/gameconfig.h"
 #include "core/timer_system.h"
 #include "core/utils.h"
@@ -82,6 +83,17 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
                     NETWORKSERVERSERVICE_INTERFACE_VERSION);
     GET_V_IFACE_ANY(GetEngineFactory, globals::gameEventSystem, IGameEventSystem,
                     GAMEEVENTSYSTEM_INTERFACE_VERSION);
+
+    auto coreconfig_path = std::string(utils::ConfigsDirectory() + "/core.json");
+    globals::coreConfig = new CCoreConfig(coreconfig_path);
+    char coreconfig_error[255] = "";
+
+    if (!globals::coreConfig->Init(coreconfig_error, sizeof(coreconfig_error))) {
+        CSSHARP_CORE_ERROR("Could not read \'{}\'. Error: {}", coreconfig_path, coreconfig_error);
+        return false;
+    }
+
+    CSSHARP_CORE_INFO("CoreConfig loaded.");
 
     auto gamedata_path = std::string(utils::GamedataDirectory() + "/gamedata.json");
     globals::gameConfig = new CGameConfig(gamedata_path);
