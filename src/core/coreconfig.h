@@ -36,11 +36,11 @@ class CCoreConfig
     bool Init(char* conf_error, int conf_error_size);
     const std::string GetPath() const;
 
-    bool IsSilentChatTrigger(const std::string& message, std::string*& prefix) const;
-    bool IsPublicChatTrigger(const std::string& message, std::string*& prefix) const;
+    bool IsSilentChatTrigger(const std::string& message, std::string& prefix) const;
+    bool IsPublicChatTrigger(const std::string& message, std::string& prefix) const;
 
   private:
-    bool IsTriggerInternal(std::vector<std::string> triggers, const std::string& message, std::string*& prefix) const;
+    bool IsTriggerInternal(std::vector<std::string> triggers, const std::string& message, std::string& prefix) const;
 
   private:
     std::string m_sPath;

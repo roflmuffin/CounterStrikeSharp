@@ -52,13 +52,14 @@ const std::string CCoreConfig::GetPath() const
     return m_sPath;
 }
 
-bool CCoreConfig::IsTriggerInternal(std::vector<std::string> triggers, const std::string& message, std::string*& prefix) const
+bool CCoreConfig::IsTriggerInternal(std::vector<std::string> triggers, const std::string& message, std::string& prefix) const
 {
     for (std::string& trigger : triggers)
     {
         if (message.rfind(trigger, 0) == 0)
         {
-            prefix = &trigger;
+            prefix = trigger;
+            CSSHARP_CORE_TRACE("Trigger found, prefix is {}", prefix);
             return true;
         }
     }
@@ -66,12 +67,12 @@ bool CCoreConfig::IsTriggerInternal(std::vector<std::string> triggers, const std
     return false;
 }
 
-bool CCoreConfig::IsSilentChatTrigger(const std::string& message, std::string*& prefix) const
+bool CCoreConfig::IsSilentChatTrigger(const std::string& message, std::string& prefix) const
 {
     return IsTriggerInternal(SilentChatTrigger, message, prefix);
 }
 
-bool CCoreConfig::IsPublicChatTrigger(const std::string& message, std::string*& prefix) const
+bool CCoreConfig::IsPublicChatTrigger(const std::string& message, std::string& prefix) const
 {
     return IsTriggerInternal(PublicChatTrigger, message, prefix);
 }

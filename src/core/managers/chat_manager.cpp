@@ -68,9 +68,9 @@ void DetourHostSay(CBaseEntity* pController, CCommand& args, bool teamonly, int 
         }
     }
 
-    std::string* prefix;
+    std::string prefix;
     bool bSilent = globals::coreConfig->IsSilentChatTrigger(args[1], prefix);
-    bool bCommand = bSilent || globals::coreConfig->IsPublicChatTrigger(args[1], prefix);
+    bool bCommand = globals::coreConfig->IsPublicChatTrigger(args[1], prefix) || bSilent;
 
     if (!bSilent) {
         m_pHostSay(pController, args, teamonly, unk1, unk2);
@@ -78,7 +78,7 @@ void DetourHostSay(CBaseEntity* pController, CCommand& args, bool teamonly, int 
 
     if (bCommand)
     {
-        char *pszMessage = (char *)(args.ArgS() + prefix->length() + 1);
+        char *pszMessage = (char *)(args.ArgS() + prefix.length() + 1);
 
         // Trailing slashes are only removed if Host_Say has been called.
         if (bSilent)
