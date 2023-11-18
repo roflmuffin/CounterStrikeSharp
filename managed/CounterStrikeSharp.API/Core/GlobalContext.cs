@@ -20,18 +20,25 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using CounterStrikeSharp.API.Core.Logging;
 using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Menu;
 using CounterStrikeSharp.API.Modules.Utils;
+using Microsoft.Extensions.Logging;
+using Serilog;
+using ILogger = Microsoft.Extensions.Logging.ILogger;
 
 namespace CounterStrikeSharp.API.Core
 {
     public sealed class GlobalContext
     {
         private static GlobalContext _instance = null;
+
+        public ILogger Logger { get; }
         public static GlobalContext Instance => _instance;
 
+        public static string RootDirectory => _instance.rootDir.FullName;
         private DirectoryInfo rootDir;
 
         private readonly List<PluginContext> _loadedPlugins = new();
@@ -40,6 +47,9 @@ namespace CounterStrikeSharp.API.Core
         {
             rootDir = new FileInfo(Assembly.GetExecutingAssembly().Location).Directory.Parent;
             _instance = this;
+            Logger = CoreLogging.CreateCoreLogger();
+            
+            Logger.LogInformation("CounterStrikeSharp is starting up...");
         }
 
         ~GlobalContext()

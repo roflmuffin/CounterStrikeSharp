@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -20,8 +20,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using CounterStrikeSharp.API.Core.Attributes;
-using CounterStrikeSharp.API.Modules.Config;
-using CounterStrikeSharp.API.Modules.Events;
+using CounterStrikeSharp.API.Core.Logging;
 using McMaster.NETCore.Plugins;
 
 namespace CounterStrikeSharp.API.Core
@@ -104,6 +103,7 @@ namespace CounterStrikeSharp.API.Core
                 _plugin = (BasePlugin)Activator.CreateInstance(pluginType)!;
                 _plugin.ModulePath = _path;
                 _plugin.RegisterAllAttributes(_plugin);
+                _plugin.Logger =  PluginLogging.CreatePluginLogger(this);
                 _plugin.InitializeConfig(_plugin, pluginType);
                 _plugin.Load(hotReload);
 
