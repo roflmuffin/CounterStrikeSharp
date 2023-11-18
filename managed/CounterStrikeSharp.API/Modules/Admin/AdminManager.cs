@@ -10,6 +10,8 @@ using CounterStrikeSharp.API.Modules.Utils;
 using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Commands;
 using System.Reflection;
+using CounterStrikeSharp.API.Core.Logging;
+using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Modules.Admin
 {
@@ -22,6 +24,9 @@ namespace CounterStrikeSharp.API.Modules.Admin
     public static class AdminManager
     {
         private static readonly Dictionary<SteamID, AdminData> Admins = new();
+        
+        // TODO: ServiceCollection
+        private static ILogger _logger = CoreLogging.Factory.CreateLogger("AdminManager");
 
         static AdminManager()
         {
@@ -54,7 +59,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             {
                 if (!File.Exists(adminDataPath))
                 {
-                    Console.WriteLine("Admin data file not found. Skipping admin data load.");
+                    _logger.LogInformation("Admin data file not found. Skipping admin data load.");
                     return;
                 }
                 
@@ -75,11 +80,11 @@ namespace CounterStrikeSharp.API.Modules.Admin
                     }
                 }
 
-                Console.WriteLine($"Loaded admin data with {Admins.Count} admins.");
+                _logger.LogInformation("Loaded admin data with {Count} admins.", Admins.Count);
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Failed to load admin data: {ex}");
+                _logger.LogError(ex, "Failed to load admin data");
             }
         }
 

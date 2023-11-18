@@ -47,7 +47,7 @@ namespace CounterStrikeSharp.API.Core
         {
             rootDir = new FileInfo(Assembly.GetExecutingAssembly().Location).Directory.Parent;
             _instance = this;
-            Logger = CoreLogging.CreateCoreLogger();
+            Logger = CoreLogging.Factory.CreateLogger("CounterStrikeSharp");
             
             Logger.LogInformation("CounterStrikeSharp is starting up...");
         }
@@ -69,14 +69,17 @@ namespace CounterStrikeSharp.API.Core
         }
         public void InitGlobalContext()
         {
-            Console.WriteLine("Loading CoreConfig from \"configs/core.json\"");
-            CoreConfig.Load(Path.Combine(rootDir.FullName, "configs", "core.json"));
+            var coreConfigPath = Path.Combine(rootDir.FullName, "configs", "core.json");
+            Logger.LogInformation("Loading CoreConfig from {Path}", coreConfigPath);
+            CoreConfig.Load(coreConfigPath);
 
-            Console.WriteLine("Loading GameData from \"gamedata/gamedata.json\"");
-            GameData.Load(Path.Combine(rootDir.FullName, "gamedata", "gamedata.json"));
-
-            Console.WriteLine("Loading Admins from \"configs/admins.json\"");
-            AdminManager.Load(Path.Combine(rootDir.FullName, "configs", "admins.json"));
+            var gameDataPath = Path.Combine(rootDir.FullName, "gamedata", "gamedata.json");
+            Logger.LogInformation("Loading GameData from {Path}", gameDataPath);
+            GameData.Load(gameDataPath);
+            
+            var adminDataPath = Path.Combine(rootDir.FullName, "configs", "admins.json");
+            Logger.LogInformation("Loading Admins from {Path}", adminDataPath);
+            AdminManager.Load(adminDataPath);
 
             for (var i = 1; i <= 9; i++)
             {
@@ -87,10 +90,10 @@ namespace CounterStrikeSharp.API.Core
                     ChatMenus.OnKeyPress(player, key);
                 });
             }
-
-            Console.WriteLine("Loading C# plugins...");
+            
+            Logger.LogInformation("Loading C# plugins...");
             var pluginCount = LoadAllPlugins();
-            Console.WriteLine($"All managed modules were loaded. {pluginCount} plugins loaded.");
+            Logger.LogInformation("All managed modules were loaded. {PluginCount} plugins loaded.", pluginCount);
 
             RegisterPluginCommands();
         }
@@ -117,7 +120,7 @@ namespace CounterStrikeSharp.API.Core
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Logger.LogError(e, "Error finding plugin path");
                 return 0;
             }
 
@@ -140,14 +143,13 @@ namespace CounterStrikeSharp.API.Core
 
             foreach (var path in filePaths)
             {
-                Console.WriteLine($"Plugin path: {path}");
                 try
                 {
                     LoadPlugin(path);
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine($"Failed to load plugin {path} with error {e}");
+                    Logger.LogError(e, "Failed to load plugin from {Path}", path);
                 }
             }
 
@@ -271,7 +273,7 @@ namespace CounterStrikeSharp.API.Core
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine($"Failed to load plugin {path} with error {e}");
+                        Logger.LogError(e, "Failed to load plugin from {Path}", path);
                     }
 
                     break;
