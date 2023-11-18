@@ -15,9 +15,11 @@
  */
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Loader;
 using System.Threading.Tasks;
 using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Modules.Config;
@@ -43,7 +45,7 @@ namespace CounterStrikeSharp.API.Core
         private readonly string _path;
         private readonly FileSystemWatcher _fileWatcher;
 
-        public PluginContext(string path, int id)
+        public PluginContext(string path, IEnumerable<AssemblyName> sharedAssemblies, AssemblyLoadContext pluginLoadContext, int id)
         {
             _path = path;
             PluginId = id;
@@ -52,11 +54,17 @@ namespace CounterStrikeSharp.API.Core
             {
                 config.EnableHotReload = true;
                 config.IsUnloadable = true;
+                config.DefaultContext = pluginLoadContext;
+                
+                foreach (var sharedAssembly in sharedAssemblies)
+                {
+                    config.SharedAssemblies.Add(sharedAssembly);
+                }
             });
 
             _fileWatcher = new FileSystemWatcher
             {
-                Path = Path.GetDirectoryName(path)
+                Path = Path.GetDirectoryName(path)!
             };
 
             _fileWatcher.Deleted += async (s, e) =>
@@ -78,37 +86,51 @@ namespace CounterStrikeSharp.API.Core
             Console.WriteLine($"Reloading plugin {Name}");
             _assemblyLoader = eventargs.Loader;
             Unload(hotReload: true);
-            Load(hotReload: true);
+            FullLoad(hotReload: true);
 
             return Task.CompletedTask;
+        }
+
+        public void InstantiatePlugin()
+        {
+            using (_assemblyLoader.EnterContextualReflection())
+            {
+                var pluginType = _assemblyLoader.LoadDefaultAssembly().GetTypes()
+                    .FirstOrDefault(t => typeof(IPlugin).IsAssignableFrom(t))!;
+
+                if (pluginType == null) throw new Exception("Unable to find plugin in DLL");
+
+                var minimumApiVersion = pluginType.GetCustomAttribute<MinimumApiVersion>()?.Version;
+                var currentVersion = Api.GetVersion();
+
+                // Ignore version 0 for local development
+                if (currentVersion > 0 && minimumApiVersion > currentVersion)
+                    throw new Exception(
+                        $"Plugin \"{Path.GetFileName(_path)}\" requires a newer version of CounterStrikeSharp. The plugin expects version [{minimumApiVersion}] but the current version is [{currentVersion}].");
+
+                _plugin = (BasePlugin)Activator.CreateInstance(pluginType)!;
+            }
         }
 
         public void Load(bool hotReload = false)
         {
             using (_assemblyLoader.EnterContextualReflection())
             {
-                Type pluginType = _assemblyLoader.LoadDefaultAssembly().GetTypes()
-                    .FirstOrDefault(t => typeof(IPlugin).IsAssignableFrom(t));
+                Console.WriteLine($"Loading plugin: {Name}");
 
-                if (pluginType == null) throw new Exception("Unable to find plugin in DLL");
-
-                var minimumApiVersion = pluginType.GetCustomAttribute<MinimumApiVersion>()?.Version;
-                var currentVersion = Api.GetVersion();
-                
-                // Ignore version 0 for local development
-                if (currentVersion > 0 && minimumApiVersion != null && minimumApiVersion > currentVersion)
-                    throw new Exception(
-                        $"Plugin \"{Path.GetFileName(_path)}\" requires a newer version of CounterStrikeSharp. The plugin expects version [{minimumApiVersion}] but the current version is [{currentVersion}].");
-
-                Console.WriteLine($"Loading plugin: {pluginType.Name}");
-                _plugin = (BasePlugin)Activator.CreateInstance(pluginType)!;
                 _plugin.ModulePath = _path;
                 _plugin.RegisterAllAttributes(_plugin);
-                _plugin.InitializeConfig(_plugin, pluginType);
+                _plugin.InitializeConfig(_plugin, _plugin.GetType());
                 _plugin.Load(hotReload);
 
                 Console.WriteLine($"Finished loading plugin: {Name}");
             }
+        }
+
+        public void FullLoad(bool hotReload = false)
+        {
+            InstantiatePlugin();
+            Load(hotReload);
         }
 
         public void Unload(bool hotReload = false)

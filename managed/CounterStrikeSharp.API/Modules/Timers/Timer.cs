@@ -24,7 +24,6 @@ namespace CounterStrikeSharp.API.Modules.Timers
     {
         REPEAT = (1 << 0), // Timer will repeat until stopped
         STOP_ON_MAPCHANGE = (1 << 1)
-
     }
 
     public class Timer : NativeObject

@@ -52,7 +52,7 @@ namespace CounterStrikeSharp.API.Core
 
         public string ModulePath { get; internal set; }
 
-        public string ModuleDirectory => Path.GetDirectoryName(ModulePath);
+        public string ModuleDirectory => Path.GetDirectoryName(ModulePath)!;
 
         public virtual void Load(bool hotReload)
         {
@@ -113,6 +113,8 @@ namespace CounterStrikeSharp.API.Core
             new Dictionary<Delegate, CallbackSubscriber>();
 
         public readonly List<Timer> Timers = new List<Timer>();
+
+        private readonly List<Type> _providedApis = new();
         
         public delegate HookResult GameEventHandler<T>(T @event, GameEventInfo info) where T : GameEvent;
 
@@ -134,7 +136,7 @@ namespace CounterStrikeSharp.API.Core
         /// <param name="hookMode">The mode in which the event handler is hooked. Default is `HookMode.Post`.</param>
         public void RegisterEventHandler<T>(GameEventHandler<T> handler, HookMode hookMode = HookMode.Post) where T : GameEvent
         {
-            var name = typeof(T).GetCustomAttribute<EventNameAttribute>()?.Name;
+            var name = typeof(T).GetCustomAttribute<EventNameAttribute>()!.Name;
             RegisterEventHandlerInternal(name, handler, hookMode == HookMode.Post);
         }
 
@@ -161,9 +163,9 @@ namespace CounterStrikeSharp.API.Core
                 var caller = (i != -1) ? new CCSPlayerController(NativeAPI.GetEntityFromIndex(i + 1)) : null;
                 var command = new CommandInfo(ptr, caller);
 
-                var methodInfo = handler?.GetMethodInfo();
+                var methodInfo = handler.GetMethodInfo();
                 // Do not execute if we shouldn't be calling this command.
-                var helperAttribute = methodInfo?.GetCustomAttribute<CommandHelperAttribute>();
+                var helperAttribute = methodInfo.GetCustomAttribute<CommandHelperAttribute>();
                 if (helperAttribute != null) 
                 {
                     switch (helperAttribute.WhoCanExcecute)
@@ -193,11 +195,11 @@ namespace CounterStrikeSharp.API.Core
                     return;
                 }
 
-                handler?.Invoke(caller, command);
+                handler.Invoke(caller, command);
             });
 
-            var methodInfo = handler?.GetMethodInfo();
-            var helperAttribute = methodInfo?.GetCustomAttribute<CommandHelperAttribute>();
+            var methodInfo = handler.GetMethodInfo();
+            var helperAttribute = methodInfo.GetCustomAttribute<CommandHelperAttribute>();
 
             var subscriber = new CallbackSubscriber(handler, wrappedHandler, () => { RemoveCommand(name, handler); });
             NativeAPI.AddCommand(name, description, (helperAttribute?.WhoCanExcecute == CommandUsage.SERVER_ONLY),
@@ -324,6 +326,22 @@ namespace CounterStrikeSharp.API.Core
             return timer;
         }
 
+        protected void AddApi<T>(object instance) where T : class
+        {
+            var registry = GlobalContext.Instance.ApiRegistry;
+            if (registry.Contains<T>())
+            {
+                throw new Exception($"Library {typeof(T).Name} already registered");
+            }
+            
+            GlobalContext.Instance.ApiRegistry.AddApi<T>(instance);
+            _providedApis.Add(typeof(T));
+        }
+        
+        protected T? GetApi<T>() where T : class
+        {
+            return GlobalContext.Instance.ApiRegistry.GetApi<T>();
+        }
 
         public void RegisterAllAttributes(object instance)
         {
@@ -442,6 +460,11 @@ namespace CounterStrikeSharp.API.Core
             foreach (var timer in Timers)
             {
                 timer.Kill();
+            }
+            
+            foreach (var library in _providedApis)
+            {
+                GlobalContext.Instance.ApiRegistry.RemoveApi(library);
             }
 
             _disposed = true;

@@ -25,10 +25,10 @@ namespace CounterStrikeSharp.API.Modules.Commands
         
         public delegate HookResult CommandListenerCallback(CCSPlayerController? player, CommandInfo commandInfo);
 
-        private CCSPlayerController _player;
+        private readonly CCSPlayerController? _player;
         public IntPtr Handle { get; private set; }
         
-        internal CommandInfo(IntPtr pointer, CCSPlayerController player) 
+        internal CommandInfo(IntPtr pointer, CCSPlayerController? player) 
         {
             Handle = pointer;
             _player = player;
