@@ -355,6 +355,13 @@ public enum BrushSolidities_e : uint
     BRUSHSOLID_ALWAYS = 0x2,
 }
 
+public enum C4LightEffect_t : uint
+{
+    eLightEffectNone = 0x0,
+    eLightEffectDropped = 0x1,
+    eLightEffectThirdPersonHeld = 0x2,
+}
+
 public enum CAnimationGraphVisualizerPrimitiveType : uint
 {
     ANIMATIONGRAPHVISUALIZERPRIMITIVETYPE_Text = 0x0,
@@ -2773,6 +2780,7 @@ public enum TakeDamageFlags_t : uint
     DFLAG_RADIUS_DMG = 0x400,
     DMG_LASTDFLAG = 0x400,
     DFLAG_IGNORE_ARMOR = 0x800,
+    DFLAG_SUPPRESS_UTILREMOVE = 0x1000,
 }
 
 public enum TextureRepetitionMode_t : uint
@@ -3927,6 +3935,9 @@ public partial class CBaseCSGrenadeProjectile : CBaseGrenade
 {
     public CBaseCSGrenadeProjectile (IntPtr pointer) : base(pointer) {}
 
+    // m_vInitialPosition
+    public Vector InitialPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseCSGrenadeProjectile", "m_vInitialPosition");
+
     // m_vInitialVelocity
     public Vector InitialVelocity => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseCSGrenadeProjectile", "m_vInitialVelocity");
 
@@ -3971,6 +3982,12 @@ public partial class CBaseCSGrenadeProjectile : CBaseGrenade
 
     // m_nTicksAtZeroVelocity
     public ref Int32 TicksAtZeroVelocity => ref Schema.GetRef<Int32>(this.Handle, "CBaseCSGrenadeProjectile", "m_nTicksAtZeroVelocity");
+
+    // m_bHasEverHitPlayer
+    public ref bool HasEverHitPlayer => ref Schema.GetRef<bool>(this.Handle, "CBaseCSGrenadeProjectile", "m_bHasEverHitPlayer");
+
+    // m_bClearFromPlayers
+    public ref bool ClearFromPlayers => ref Schema.GetRef<bool>(this.Handle, "CBaseCSGrenadeProjectile", "m_bClearFromPlayers");
 
 }
 
@@ -7099,8 +7116,8 @@ public partial class CCSGameRules : CTeamplayRules
     // m_nShorthandedBonusLastEvalRound
     public ref Int32 ShorthandedBonusLastEvalRound => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nShorthandedBonusLastEvalRound");
 
-    // m_bMatchAbortedDueToPlayerBan
-    public ref bool MatchAbortedDueToPlayerBan => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bMatchAbortedDueToPlayerBan");
+    // m_nMatchAbortedEarlyReason
+    public ref Int32 MatchAbortedEarlyReason => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nMatchAbortedEarlyReason");
 
     // m_bHasTriggeredRoundStartMusic
     public ref bool HasTriggeredRoundStartMusic => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bHasTriggeredRoundStartMusic");
@@ -7515,6 +7532,12 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
     // m_flStamina
     public ref float Stamina => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flStamina");
 
+    // m_flHeightAtJumpStart
+    public ref float HeightAtJumpStart => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flHeightAtJumpStart");
+
+    // m_flMaxJumpHeightThisJump
+    public ref float MaxJumpHeightThisJump => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flMaxJumpHeightThisJump");
+
 }
 
 public partial class CCSPlayer_PingServices : CPlayerPawnComponent
@@ -7792,6 +7815,9 @@ public partial class CCSPlayerController : CBasePlayerController
     // m_uiAbandonRecordedReason
     public ref UInt32 UiAbandonRecordedReason => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController", "m_uiAbandonRecordedReason");
 
+    // m_bCannotBeKicked
+    public ref bool CannotBeKicked => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bCannotBeKicked");
+
     // m_bEverFullyConnected
     public ref bool EverFullyConnected => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bEverFullyConnected");
 
@@ -7909,8 +7935,14 @@ public partial class CCSPlayerController : CBasePlayerController
     // m_bGaveTeamDamageWarningThisRound
     public ref bool GaveTeamDamageWarningThisRound => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bGaveTeamDamageWarningThisRound");
 
+    // m_dblLastReceivedPacketPlatFloatTime
+    public ref double DblLastReceivedPacketPlatFloatTime => ref Schema.GetRef<double>(this.Handle, "CCSPlayerController", "m_dblLastReceivedPacketPlatFloatTime");
+
     // m_LastTeamDamageWarningTime
     public ref float LastTeamDamageWarningTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerController", "m_LastTeamDamageWarningTime");
+
+    // m_LastTimePlayerWasDisconnectedForPawnsRemove
+    public ref float LastTimePlayerWasDisconnectedForPawnsRemove => ref Schema.GetRef<float>(this.Handle, "CCSPlayerController", "m_LastTimePlayerWasDisconnectedForPawnsRemove");
 
 }
 
@@ -8045,6 +8077,9 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
         get { return Schema.GetString(this.Handle, "CCSPlayerPawn", "m_szLastPlaceName"); }
         set { Schema.SetString(this.Handle, "CCSPlayerPawn", "m_szLastPlaceName", value); }
     }
+
+    // m_bInHostageResetZone
+    public ref bool InHostageResetZone => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bInHostageResetZone");
 
     // m_bInBuyZone
     public ref bool InBuyZone => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bInBuyZone");
@@ -12825,6 +12860,9 @@ public partial class CHostage : CHostageExpresserShim
     // m_vecSpawnGroundPos
     public Vector SpawnGroundPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CHostage", "m_vecSpawnGroundPos");
 
+    // m_vecHostageResetPosition
+    public Vector HostageResetPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CHostage", "m_vecHostageResetPosition");
+
 }
 
 public partial class CHostageAlias_info_hostage_spawn : CHostage
@@ -14150,6 +14188,28 @@ public partial class CLogicDistanceCheck : CLogicalEntity
 
     // m_InZone3
     public CEntityIOOutput InZone3 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicDistanceCheck", "m_InZone3");
+
+}
+
+public partial class CLogicEventListener : CLogicalEntity
+{
+    public CLogicEventListener (IntPtr pointer) : base(pointer) {}
+
+    // m_strEventName
+    public string StrEventName
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CLogicEventListener", "m_strEventName"); }
+        set { Schema.SetString(this.Handle, "CLogicEventListener", "m_strEventName", value); }
+    }
+
+    // m_bIsEnabled
+    public ref bool IsEnabled => ref Schema.GetRef<bool>(this.Handle, "CLogicEventListener", "m_bIsEnabled");
+
+    // m_nTeam
+    public ref Int32 Team => ref Schema.GetRef<Int32>(this.Handle, "CLogicEventListener", "m_nTeam");
+
+    // m_OnEventFired
+    public CEntityIOOutput OnEventFired => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicEventListener", "m_OnEventFired");
 
 }
 
@@ -20135,6 +20195,12 @@ public partial class CTriggerGameEvent : CBaseTrigger
 public partial class CTriggerGravity : CBaseTrigger
 {
     public CTriggerGravity (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CTriggerHostageReset : CBaseTrigger
+{
+    public CTriggerHostageReset (IntPtr pointer) : base(pointer) {}
 
 }
 
