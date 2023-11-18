@@ -364,7 +364,7 @@ HookResult ConCommandManager::ExecuteCommandCallbacks(const char* name, const CC
         auto thisResult = pCallback->ScriptContext().GetResult<HookResult>();
 
         if (thisResult >= HookResult::Handled) {
-            return result;
+            return thisResult;
         } else if (thisResult > result) {
             result = thisResult;
         }
