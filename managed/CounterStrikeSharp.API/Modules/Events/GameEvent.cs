@@ -123,6 +123,7 @@ namespace CounterStrikeSharp.API.Modules.Events
         protected void SetEntityIndex(string name, int value) => NativeAPI.SetEventEntityIndex(Handle, name, value);
 
         public void FireEvent(bool dontBroadcast) => NativeAPI.FireEvent(Handle, dontBroadcast);
-        // public void FireEventToClient(int clientId, bool dontBroadcast) => NativeAPI.FireEventToClient(Handle, clientId);
+        
+        public void FireEventToClient(CCSPlayerController player) => NativeAPI.FireEventToClient(Handle, (int)player.EntityIndex.Value.Value);
     }
 }

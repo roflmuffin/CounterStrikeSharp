@@ -18,6 +18,7 @@
 
 #include "core/managers/event_manager.h"
 #include "scripting/autonative.h"
+#include "igameevents.h"
 
 
 namespace counterstrikesharp {
@@ -61,24 +62,21 @@ static void FireEvent(ScriptContext &script_context) {
     managed_game_events.erase(std::remove(managed_game_events.begin(), managed_game_events.end(), game_event), managed_game_events.end());
 }
 
-// static void FireEventToClient(ScriptContext& script_context) {
-//    auto game_event = script_context.GetArgument<IGameEvent*>(0);
-//    int client = script_context.GetArgument<int>(1);
-//    if (!game_event) {
-//        script_context.ThrowNativeError("Invalid game event");
-//    }
-//
-//    auto base_entity = reinterpret_cast<CBaseEntityWrapper*>(ExcBaseEntityFromIndex(client));
-//    if (!base_entity)
-//    {
-//        script_context.ThrowNativeError("Invalid client index");
-//    }
-//
-//    auto iclient = base_entity->GetIClient();
-//    IGameEventListener2* game_client = (IGameEventListener2*)((intptr_t)iclient - sizeof(void*));
-//
-//    game_client->FireGameEvent(game_event);
-// }
+
+ static void FireEventToClient(ScriptContext& script_context) {
+    auto game_event = script_context.GetArgument<IGameEvent*>(0);
+    int entityIndex = script_context.GetArgument<int>(1);
+    if (!game_event) {
+        script_context.ThrowNativeError("Invalid game event");
+    }
+
+    IGameEventListener2* pListener = globals::GetLegacyGameEventListener(CPlayerSlot(entityIndex - 1));
+    if (!pListener) {
+        script_context.ThrowNativeError("Could not get player event listener");
+    }
+
+    pListener->FireGameEvent(game_event);
+ }
 
 static const char *GetEventName(ScriptContext &script_context) {
     IGameEvent *game_event = script_context.GetArgument<IGameEvent *>(0);
@@ -266,7 +264,7 @@ REGISTER_NATIVES(events, {
     ScriptEngine::RegisterNativeHandler("UNHOOK_EVENT", UnhookEvent);
     ScriptEngine::RegisterNativeHandler("CREATE_EVENT", CreateEvent);
     ScriptEngine::RegisterNativeHandler("FIRE_EVENT", FireEvent);
-    // ScriptEngine::RegisterNativeHandler("FIRE_EVENT_TO_CLIENT", FireEventToClient);
+    ScriptEngine::RegisterNativeHandler("FIRE_EVENT_TO_CLIENT", FireEventToClient);
 
     ScriptEngine::RegisterNativeHandler("GET_EVENT_NAME", GetEventName);
     ScriptEngine::RegisterNativeHandler("GET_EVENT_BOOL", GetEventBool);

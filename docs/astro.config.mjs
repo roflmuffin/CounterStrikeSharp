@@ -37,6 +37,10 @@ export default defineConfig({
           autogenerate: { directory: 'features' },
         },
         {
+          label: 'Admin Framework',
+          autogenerate: { directory: 'admin-framework' },
+        },
+        {
           label: 'Reference',
           autogenerate: { directory: 'reference' },
         },

@@ -65,8 +65,14 @@ namespace CounterStrikeSharp.API.Core
             Console.WriteLine("Loading GameData from \"gamedata/gamedata.json\"");
             GameData.Load(Path.Combine(rootDir.FullName, "gamedata", "gamedata.json"));
 
+            Console.WriteLine("Loading Admin Groups from \"configs/admin_groups.json\"");
+            AdminManager.LoadAdminGroups(Path.Combine(rootDir.FullName, "configs", "admin_groups.json"));
             Console.WriteLine("Loading Admins from \"configs/admins.json\"");
-            AdminManager.Load(Path.Combine(rootDir.FullName, "configs", "admins.json"));
+            AdminManager.LoadAdminData(Path.Combine(rootDir.FullName, "configs", "admins.json"));
+            Console.WriteLine("Loading Admin Command Overrides from \"configs/admin_overrides.json\"");
+            AdminManager.LoadCommandOverrides(Path.Combine(rootDir.FullName, "configs", "admin_overrides.json"));
+
+            AdminManager.MergeGroupPermsIntoAdmins();
 
             for (var i = 1; i <= 9; i++)
             {
@@ -188,7 +194,7 @@ namespace CounterStrikeSharp.API.Core
             return plugin;
         }
 
-        [RequiresPermissions("can_execute_css_commands")]
+        [RequiresPermissions("@css/generic")]
         [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
         private void OnCSSCommand(CCSPlayerController? caller, CommandInfo info)
         {
@@ -201,7 +207,7 @@ namespace CounterStrikeSharp.API.Core
             return;
         }
 
-        [RequiresPermissions("can_execute_css_commands")]
+        [RequiresPermissions("@css/generic")]
         [CommandHelper(minArgs: 1, 
         usage: "[option]\n" +
                 "  list - List all plugins currently loaded.\n" +
