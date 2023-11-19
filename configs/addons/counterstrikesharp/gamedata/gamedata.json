@@ -72,6 +72,13 @@
         "linux": 8
     }
   },
+  "CCSGameRules_TerminateRound": {
+    "signatures": {
+        "library": "server",
+        "windows": "\\x48\\x8B\\xC4\\x4C\\x89\\x48\\x20\\x55\\x56",
+        "linux": "\\x55\\x48\\x89\\xE5\\x41\\x57\\x41\\x56\\x41\\x55\\x49\\x89\\xFD\\x41\\x54\\x53\\x48\\x81\\xEC\\xE8\\x01\\x00\\x00"
+      }
+  },
   "LegacyGameEventListener": {
     "signatures": {
       "library": "server",

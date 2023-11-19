@@ -1,5 +1,6 @@
 using System;
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Modules.Entities.Constants;
 using CounterStrikeSharp.API.Modules.Utils;
 
 namespace CounterStrikeSharp.API.Modules.Memory;
@@ -27,4 +28,6 @@ public static class VirtualFunctions
 
     // void(*CBaseModelEntity_SetModel)(CBaseModelEntity*, const char*);
     public static Action<IntPtr, string> SetModel = VirtualFunction.CreateVoid<IntPtr, string>(GameData.GetSignature("CBaseModelEntity_SetModel"));
+
+    public static Action<nint, RoundEndReason, float> TerminateRound = VirtualFunction.CreateVoid<nint, RoundEndReason, float>(GameData.GetSignature("CCSGameRules_TerminateRound"));
 }
