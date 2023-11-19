@@ -47,7 +47,7 @@ namespace CounterStrikeSharp.API.Core
         {
             rootDir = new FileInfo(Assembly.GetExecutingAssembly().Location).Directory.Parent;
             _instance = this;
-            Logger = CoreLogging.Factory.CreateLogger("CounterStrikeSharp");
+            Logger = CoreLogging.Factory.CreateLogger("Core");
             
             Logger.LogInformation("CounterStrikeSharp is starting up...");
         }

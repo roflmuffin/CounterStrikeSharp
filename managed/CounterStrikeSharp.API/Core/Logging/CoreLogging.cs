@@ -14,9 +14,10 @@ public static class CoreLogging
     {
         var logger = new LoggerConfiguration()
             .Enrich.FromLogContext()
-            .WriteTo.Console(outputTemplate: "{Timestamp:HH:mm:ss} [{Level:u4}] (cssharp) {Message:lj}{NewLine}{Exception}")
-            .WriteTo.File(Path.Join(new[] {GlobalContext.RootDirectory, "logs", $"log-cssharp.txt"}), rollingInterval: RollingInterval.Day, outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u4}] cssharp {Message:lj}{NewLine}{Exception}")
-            .WriteTo.File(Path.Join(new[] {GlobalContext.RootDirectory, "logs", $"log-all.txt"}), rollingInterval: RollingInterval.Day, shared: true, outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u4}] cssharp {Message:lj}{NewLine}{Exception}")
+            .Enrich.With<SourceContextEnricher>()
+            .WriteTo.Console(outputTemplate: "{Timestamp:HH:mm:ss} [{Level:u4}] (cssharp:{SourceContext}) {Message:lj}{NewLine}{Exception}")
+            .WriteTo.File(Path.Join(new[] {GlobalContext.RootDirectory, "logs", $"log-cssharp.txt"}), rollingInterval: RollingInterval.Day, outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u4}] (cssharp:{SourceContext}) {Message:lj}{NewLine}{Exception}")
+            .WriteTo.File(Path.Join(new[] {GlobalContext.RootDirectory, "logs", $"log-all.txt"}), rollingInterval: RollingInterval.Day, shared: true, outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u4}] (cssharp:{SourceContext}) {Message:lj}{NewLine}{Exception}")
             .CreateLogger();
 
         Factory =
