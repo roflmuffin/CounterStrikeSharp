@@ -1,44 +1,43 @@
-﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text.Json.Serialization;
-using System.Text.Json;
-using CounterStrikeSharp.API.Core;
-using CounterStrikeSharp.API.Modules.Utils;
-using CounterStrikeSharp.API.Modules.Entities;
+﻿using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Commands;
+using CounterStrikeSharp.API.Modules.Utils;
+using System.IO;
+using System.Linq;
 using System.Reflection;
 
 namespace CounterStrikeSharp.API.Modules.Admin
 {
-    public partial class AdminData
-    {
-        [JsonPropertyName("identity")] public required string Identity { get; init; }
-        [JsonPropertyName("flags")] public required HashSet<string> Flags { get; init; }
-    }
 
-    public static class AdminManager
+    public static partial class AdminManager
     {
-        private static readonly Dictionary<SteamID, AdminData> Admins = new();
-
         static AdminManager()
         {
             CommandUtils.AddStandaloneCommand("css_admins_reload", "Reloads the admin file.", ReloadAdminsCommand);
             CommandUtils.AddStandaloneCommand("css_admins_list", "List admins and their flags.", ListAdminsCommand);
+            CommandUtils.AddStandaloneCommand("css_groups_reload", "Reloads the admin groups file.", ReloadAdminGroupsCommand);
+            CommandUtils.AddStandaloneCommand("css_groups_list", "List admin groups and their flags.", ListAdminGroupsCommand);
+            CommandUtils.AddStandaloneCommand("css_overrides_reload", "Reloads the admin command overrides file.", ReloadAdminOverridesCommand);
+            CommandUtils.AddStandaloneCommand("css_overrides_list", "List admin command overrides and their flags.", ListAdminOverridesCommand);
         }
 
-        [RequiresPermissions("can_reload_admins")]
+        public static void MergeGroupPermsIntoAdmins()
+        {
+            foreach (var (steamID, adminDef) in Admins)
+            {
+                AddPlayerToGroup(steamID, adminDef.Groups.ToArray());
+            }
+        }
+
+        [RequiresPermissions(permissions:"@css/generic")]
         [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
         private static void ReloadAdminsCommand(CCSPlayerController? player, CommandInfo command)
         {
             Admins.Clear();
             var rootDir = new FileInfo(Assembly.GetExecutingAssembly().Location).Directory.Parent;
-            Load(Path.Combine(rootDir.FullName, "configs", "admins.json"));
+            LoadAdminData(Path.Combine(rootDir.FullName, "configs", "admins.json"));
         }
-        
-        [RequiresPermissions("can_reload_admins")]
+
+        [RequiresPermissions(permissions:"@css/generic")]
         [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
         private static void ListAdminsCommand(CCSPlayerController? player, CommandInfo command)
         {
@@ -48,166 +47,42 @@ namespace CounterStrikeSharp.API.Modules.Admin
             }
         }
 
-        public static void Load(string adminDataPath)
+        [RequiresPermissions(permissions:"@css/generic")]
+        [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
+        private static void ReloadAdminGroupsCommand(CCSPlayerController? player, CommandInfo command)
         {
-            try
-            {
-                if (!File.Exists(adminDataPath))
-                {
-                    Console.WriteLine("Admin data file not found. Skipping admin data load.");
-                    return;
-                }
-                
-                var adminsFromFile = JsonSerializer.Deserialize<Dictionary<string, AdminData>>(File.ReadAllText(adminDataPath), new JsonSerializerOptions() { ReadCommentHandling = JsonCommentHandling.Skip });
-                if (adminsFromFile == null) { throw new FileNotFoundException(); }
-                foreach (var adminDef in adminsFromFile.Values)
-                {
-                    if (SteamID.TryParse(adminDef.Identity, out var steamId))
-                    {
-                        if (Admins.ContainsKey(steamId!))
-                        {
-                            Admins[steamId!].Flags.UnionWith(adminDef.Flags);
-                        }
-                        else
-                        {
-                            Admins.Add(steamId!, adminDef);
-                        }
-                    }
-                }
+            Groups.Clear();
+            var rootDir = new FileInfo(Assembly.GetExecutingAssembly().Location).Directory.Parent;
+            LoadAdminGroups(Path.Combine(rootDir.FullName, "configs", "admin_groups.json"));
+        }
 
-                Console.WriteLine($"Loaded admin data with {Admins.Count} admins.");
-            }
-            catch (Exception ex)
+        [RequiresPermissions(permissions: "@css/generic")]
+        [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
+        private static void ListAdminGroupsCommand(CCSPlayerController? player, CommandInfo command)
+        {
+            foreach (var (groupName, groupDef) in Groups)
             {
-                Console.WriteLine($"Failed to load admin data: {ex}");
+                command.ReplyToCommand($"{groupName} - {string.Join(", ", groupDef.Flags)}");
             }
         }
 
-        /// <summary>
-        /// Grabs the admin data for a player that was loaded from "configs/admins.json".
-        /// </summary>
-        /// <param name="steamId">SteamID object of the player.</param>
-        /// <returns>AdminData class if data found, null if not.</returns>
-        public static AdminData? GetPlayerAdminData(SteamID steamId)
+        [RequiresPermissions(permissions: "@css/generic")]
+        [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
+        private static void ReloadAdminOverridesCommand(CCSPlayerController? player, CommandInfo command)
         {
-            return Admins.GetValueOrDefault(steamId);
+            CommandOverrides.Clear();
+            var rootDir = new FileInfo(Assembly.GetExecutingAssembly().Location).Directory.Parent;
+            LoadCommandOverrides(Path.Combine(rootDir.FullName, "configs", "admin_overrides.json"));
         }
 
-        /// <summary>
-        /// Checks to see if a player has access to a certain set of permission flags.
-        /// </summary>
-        /// <param name="player">Player or server console.</param>
-        /// <param name="flags">Flags to look for in the players permission flags.</param>
-        /// <returns>True if flags are present, false if not.</returns>
-        public static bool PlayerHasPermissions(CCSPlayerController? player, params string[] flags)
+        [RequiresPermissions(permissions: "@css/generic")]
+        [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
+        private static void ListAdminOverridesCommand(CCSPlayerController? player, CommandInfo command)
         {
-            // This is here for cases where the server console is attempting to call commands.
-            // The server console should have access to all commands, regardless of permissions.
-            if (player == null) return true;
-            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return false; }
-            var playerData = GetPlayerAdminData((SteamID)player.SteamID);
-            return playerData?.Flags.IsSupersetOf(flags) ?? false;
-        }
-
-        /// <summary>
-        /// Checks to see if a player has access to a certain set of permission flags.
-        /// </summary>
-        /// <param name="steamId">Steam ID object.</param>
-        /// <param name="flags">Flags to look for in the players permission flags.</param>
-        /// <returns>True if flags are present, false if not.</returns>
-        public static bool PlayerHasPermissions(SteamID steamId, params string[] flags)
-        {
-            var playerData = GetPlayerAdminData(steamId);
-            return playerData?.Flags.IsSupersetOf(flags) ?? false;
-        }
-        
-        /// <summary>
-        /// Temporarily adds a permission flag to the player. These flags are not saved to
-        /// "configs/admins.json".
-        /// </summary>
-        /// <param name="player">Player controller to add a flag to.</param>
-        /// <param name="flags">Flags to add for the player.</param>
-        public static void AddPlayerPermissions(CCSPlayerController? player, params string[] flags)
-        {
-            if (player == null) return;
-            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) return;
-            AddPlayerPermissions((SteamID)player.SteamID, flags);
-        }
-        
-        /// <summary>
-        /// Temporarily adds a permission flag to the player. These flags are not saved to
-        /// "configs/admins.json".
-        /// </summary>
-        /// <param name="steamId">SteamID to add a flag to.</param>
-        /// <param name="flags">Flags to add for the player.</param>
-        public static void AddPlayerPermissions(SteamID steamId, params string[] flags)
-        {
-            var data = GetPlayerAdminData(steamId);
-            if (data == null)
+            foreach (var (commandName, commandDef) in CommandOverrides)
             {
-                data = new AdminData()
-                {
-                    Identity = steamId.SteamId64.ToString(),
-                    Flags = new(flags)
-                };
-
-                Admins[steamId] = data;
-                return;
+                command.ReplyToCommand($"{commandName} (enabled: {commandDef.Enabled.ToString()}) - {string.Join(", ", commandDef.Flags)}");
             }
-            
-            foreach (var flag in flags)
-            {
-                data.Flags.Add(flag);
-            }
-        }
-        
-        /// <summary>
-        /// Temporarily removes a permission flag to the player. These flags are not saved to
-        /// "configs/admins.json".
-        /// </summary>
-        /// <param name="player">Player controller to remove flags from.</param>
-        /// <param name="flags">Flags to remove from the player.</param>
-        public static void RemovePlayerPermissions(CCSPlayerController? player, params string[] flags)
-        {
-            if (player == null) return;
-            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) return;
-
-            RemovePlayerPermissions((SteamID)player.SteamID, flags);
-        }
-
-        /// <summary>
-        /// Temporarily removes a permission flag to the player. These flags are not saved to
-        /// "configs/admins.json".
-        /// </summary>
-        /// <param name="steamId">Steam ID to remove flags from.</param>
-        /// <param name="flags">Flags to remove from the player.</param>
-        public static void RemovePlayerPermissions(SteamID steamId, params string[] flags)
-        {
-            var data = GetPlayerAdminData(steamId);
-            if (data == null) return;
-            
-            data.Flags.ExceptWith(flags);
-        }
-
-        /// <summary>
-        /// Removes a players admin data. This is not saved to "configs/admins.json"
-        /// </summary>
-        /// <param name="player">Player controller to remove admin data from.</param>
-        public static void RemovePlayerAdminData(CCSPlayerController? player)
-        {
-            if (player == null) return;
-            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) return;
-
-            RemovePlayerAdminData((SteamID)player.SteamID);
-        }
-
-        /// <summary>
-        /// Removes a players admin data. This is not saved to "configs/admins.json"
-        /// </summary>
-        /// <param name="steamId">Steam ID remove admin data from.</param>
-        public static void RemovePlayerAdminData(SteamID steamId)
-        {
-            Admins.Remove(steamId);
         }
     }
 }

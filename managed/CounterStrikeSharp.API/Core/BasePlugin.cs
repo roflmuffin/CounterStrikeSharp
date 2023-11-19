@@ -162,6 +162,42 @@ namespace CounterStrikeSharp.API.Core
                 var command = new CommandInfo(ptr, caller);
 
                 var methodInfo = handler?.GetMethodInfo();
+
+                if (!AdminManager.CommandIsOverriden(name))
+                {
+                    // Do not execute command if we do not have the correct permissions.
+                    var permissions = methodInfo?.GetCustomAttributes<BaseRequiresPermissions>();
+                    if (permissions != null)
+                    {
+                        foreach (var attr in permissions)
+                        {
+                            attr.Command = name;
+                            if (!attr.CanExecuteCommand(caller))
+                            {
+                                command.ReplyToCommand("[CSS] You do not have the correct permissions to execute this command.");
+                                return;
+                            }
+                        }
+                    }
+                }
+                // If this command has it's permissions overriden, we will do an AND check for all permissions.
+                else
+                {
+                    // I don't know if this is the most sane implementation of this, can be edited in code review.
+                    var data = AdminManager.GetCommandOverrideData(name);
+                    if (data != null)
+                    {
+                        var attrType = (data.CheckType == "all") ? typeof(RequiresPermissions) : typeof(RequiresPermissionsOr);
+                        var attr = (BaseRequiresPermissions)Activator.CreateInstance(attrType, args: AdminManager.GetPermissionOverrides(name));
+                        attr.Command = name;
+                        if (!attr.CanExecuteCommand(caller))
+                        {
+                            command.ReplyToCommand("[CSS] You do not have the correct permissions to execute this command.");
+                            return;
+                        }
+                    }
+                }
+
                 // Do not execute if we shouldn't be calling this command.
                 var helperAttribute = methodInfo?.GetCustomAttribute<CommandHelperAttribute>();
                 if (helperAttribute != null) 
@@ -183,14 +219,6 @@ namespace CounterStrikeSharp.API.Core
                         command.ReplyToCommand($"[CSS] Expected usage: \"!{command.ArgByIndex(0)} {helperAttribute.Usage}\".");
                         return;
                     }
-                }
-
-                // Do not execute command if we do not have the correct permissions.
-                var permissions = methodInfo?.GetCustomAttribute<RequiresPermissions>()?.RequiredPermissions;
-                if (permissions != null && !AdminManager.PlayerHasPermissions(caller, permissions))
-                {
-                    command.ReplyToCommand("[CSS] You do not have the correct permissions to execute this command.");
-                    return;
                 }
 
                 handler?.Invoke(caller, command);

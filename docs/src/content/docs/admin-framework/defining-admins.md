@@ -1,6 +1,6 @@
 ---
-title: Admin Framework
-description: A guide on using the Admin Framework in plugins.
+title: Defining Admins
+description: A guide on how to define admins for CounterStrikeSharp.
 ---
 
 ## Admin Framework
@@ -9,7 +9,7 @@ CounterStrikeSharp has a basic framework which allows plugin developers to assig
 
 ## Adding Admins
 
-Adding an Admin is as simple as creating a new entry in the `configs/admins.json` file. The important things you need to declare are the SteamID identifier and the permissions they have. CounterStrikeSharp will do all the heavy-lifting to decipher your SteamID. If you're familar with SourceMod, permission definitions are slightly different as they're defined by an array of strings instead of a string of characters.
+Adding an Admin is as simple as creating a new entry in the `configs/admins.json` file. The important things you need to declare are the SteamID identifier and the permissions they have. CounterStrikeSharp will do all the heavy-lifting to decipher your SteamID. If you're familiar with SourceMod, permission definitions are slightly different as they're defined by an array of strings instead of a string of characters.
 
 ```json
 {
@@ -20,27 +20,17 @@ Adding an Admin is as simple as creating a new entry in the `configs/admins.json
 }
 ```
 
-You can also manually assign permissions to players in code with `AddPlayerPermissions` and `RemovePlayerPermissions`. These changes are not saved to `configs/admins.json`.
+You can also manually assign permissions to players in code with `AdminManager.AddPlayerPermissions` and `AdminManager.RemovePlayerPermissions`. These changes are not saved to `configs/admins.json`.
 
-## Assigning permissions to a Command
-
-Assigning permissions to a Command is as easy as tagging the Command method (function callback) with a `RequiresPermissions` attribute.
-
-```csharp
-[RequiresPermissions("@css/slay", "@custom/permission")]
-public void OnMyCommand(CCSPlayerController? caller, CommandInfo info)
-{
-    ...
-}
-```
-
-CounterStrikeSharp handles all of the permission checks behind the scenes for you.
+:::note
+All user permissions MUST start with an at-symbol @ character, otherwise CounterStrikeSharp will not recognize the permission.
+:::
 
 ### Standard Permissions
 
 Because the flag system is just a list of strings associated with a user, there is no real list of letter based flags like there was previously in something like SourceMod. This means as a plugin author you can declare your own flags, scoped with an `@` symbol, like `@roflmuffin/guns`, which might be the permission to allow spawning of guns in a given command.
 
-However there is a somewhat standardised list of flags that it is advised you use if you are adding functionality that aligns with their purpose, and these are based on the original SourceMod flags:
+However there is a somewhat standardized list of flags that it is advised you use if you are adding functionality that aligns with their purpose, and these are based on the original SourceMod flags:
 
 ```shell
 @css/reservation # Reserved slot access.
@@ -60,3 +50,7 @@ However there is a somewhat standardised list of flags that it is advised you us
 @css/cheats # Change sv_cheats or use cheating commands.
 @css/root # Magically enables all flags and ignores immunity values.
 ```
+
+:::note
+CounterStrikeSharp does not implement traditional admin command such as `!slay`, `!kick`, and `!ban`. It is up to individual plugins to implement these commands.
+:::
