@@ -34,6 +34,13 @@ Use your IDE (Visual Studio/Rider) to add a reference to the `CounterStrikeSharp
 </Project>
 ```
 
+:::tip
+Instead of manually adding a reference to `CounterStrikeSharp.Api.dll`, you can install the NuGet package `CounterStrikeSharp.Api` using the following:
+```shell
+dotnet add package CounterStrikeSharp.API
+```
+:::
+
 ### Creating a Plugin File
 
 Rename the default class file that came with your new project (by default it should be `Class1.cs`) to something more accurate, like `HelloWorldPlugin.cs`. Inside this file, we will insert the stub hello world plugin. Be sure to change the name and namespace so it matches your project name.
