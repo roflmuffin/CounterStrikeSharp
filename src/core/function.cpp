@@ -294,5 +294,23 @@ void ValveFunction::AddHook(CallbackT callable, bool post)
         m_precallback->AddListener(callable);
     }
 }
+void ValveFunction::RemoveHook(CallbackT callable, bool post) {
+    dyno::HookManager& manager = dyno::HookManager::Get();
+    dyno::Hook* hook = manager.hook((void*)m_ulAddr, [this] {
+        return new dyno::x64SystemVcall(ConvertArgsToDynoHook(m_Args),
+                                        static_cast<dyno::DataType>(this->m_eReturnType));
+    });
+    g_HookMap[hook] = this;
+
+    if (post) {
+        if (m_postcallback != nullptr) {
+            m_postcallback->RemoveListener(callable);
+        }
+    } else {
+        if (m_precallback != nullptr) {
+            m_precallback->RemoveListener(callable);
+        }
+    }
+}
 
 } // namespace counterstrikesharp

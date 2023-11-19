@@ -854,6 +854,18 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static void UnhookFunction(IntPtr function, InputArgument hook, bool post){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(function);
+			ScriptContext.GlobalScriptContext.Push((InputArgument)hook);
+			ScriptContext.GlobalScriptContext.Push(post);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x2051B00);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
         public static T ExecuteVirtualFunction<T>(IntPtr function, object[] arguments){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();

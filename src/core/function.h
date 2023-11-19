@@ -92,6 +92,7 @@ public:
 
     void Call(ScriptContext& args, int offset = 0);
     void AddHook(CallbackT callable, bool post);
+    void RemoveHook(CallbackT callable, bool post);
 
     void* m_ulAddr;
     std::vector<DataType_t> m_Args;
