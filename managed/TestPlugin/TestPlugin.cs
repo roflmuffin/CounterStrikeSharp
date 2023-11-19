@@ -22,7 +22,6 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes;
@@ -32,6 +31,7 @@ using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Memory;
+using CounterStrikeSharp.API.Modules.Memory.DynamicFunctions;
 using CounterStrikeSharp.API.Modules.Menu;
 using CounterStrikeSharp.API.Modules.Utils;
 
@@ -40,29 +40,22 @@ namespace TestPlugin
     [StructLayout(LayoutKind.Explicit)]
     public struct CTakeDamageInfo
     {
-        [FieldOffset(68)]
-        public float damage;
+        [FieldOffset(68)] public float damage;
 
-        [FieldOffset(72)]
-        public DamageTypes_t damageTypes;
-        
-        [FieldOffset(96)]
-        public float originalDamage;
-        
-        [FieldOffset(108)]
-        public TakeDamageFlags_t damageFlags;
+        [FieldOffset(72)] public DamageTypes_t damageTypes;
+
+        [FieldOffset(96)] public float originalDamage;
+
+        [FieldOffset(108)] public TakeDamageFlags_t damageFlags;
 
         [FieldOffset(112)] public int numObjectsPenetrated;
-
     }
-    
+
     public class SampleConfig : BasePluginConfig
     {
-        [JsonPropertyName("IsPluginEnabled")]
-        public bool IsPluginEnabled { get; set; } = true;
+        [JsonPropertyName("IsPluginEnabled")] public bool IsPluginEnabled { get; set; } = true;
 
-        [JsonPropertyName("LogPrefix")]
-        public string LogPrefix { get; set; } = "CSSharp";
+        [JsonPropertyName("LogPrefix")] public string LogPrefix { get; set; } = "CSSharp";
     }
 
     [MinimumApiVersion(33)]
@@ -96,31 +89,35 @@ namespace TestPlugin
             Console.WriteLine(
                 $"Test Plugin has been loaded, and the hot reload flag was {hotReload}, path is {ModulePath}");
 
-            var x = DynamicDetour.Test;
-            var y = DynamicDetour.TakeDamage;
-            DynamicDetour.Test.Hook((h) =>
+            // var x = DynamicDetour.Test;
+            // DynamicDetour.Test.Hook((h) =>
+            // {
+            //     var entity = h.GetParam<CEntityInstance>(0);
+            //
+            //     Console.WriteLine($"Removed the thingomabob {entity.DesignerName}");
+            //
+            //     return HookResult.Changed;
+            // }, HookMode.Post);
+
+            var memfunc = new MemoryFunctionVoid<IntPtr, IntPtr>(GameData.GetSignature("CBaseEntity_TakeDamageOld"));
+
+            memfunc.Hook((h =>
             {
                 var entity = h.GetParam<CEntityInstance>(0);
+                var damagePointer = h.GetParam<IntPtr>(1);
+                var damage = Marshal.PtrToStructure<CTakeDamageInfo>(damagePointer);
 
-                Console.WriteLine($"Removed the thingomabob {entity.DesignerName}");
+                Console.WriteLine($"Took damage: {entity.DesignerName} {damage.damage}");
 
-                return HookResult.Changed;
-            }, HookMode.Post);
+                return HookResult.Continue;
+            }), HookMode.Pre);
+
             
-            DynamicDetour.TakeDamage.Hook((h) =>
+            VirtualFunctions.SwitchTeamFunc.Hook(hook =>
             {
-                unsafe
-                {
-                    var entity = h.GetParam<CEntityInstance>(0);
-                    var damagePointer = h.GetParam<IntPtr>(1);
-                    var damage = Marshal.PtrToStructure<CTakeDamageInfo>(damagePointer);
-
-                    Console.WriteLine($"Took damage: {entity.DesignerName} {damage.damage}");
-
-                    return HookResult.Stop;
-                }
+                Log("Switch team func");
+                return HookResult.Continue;
             }, HookMode.Pre);
-
 
             Console.WriteLine($"Max Players: {Server.MaxPlayers}");
 

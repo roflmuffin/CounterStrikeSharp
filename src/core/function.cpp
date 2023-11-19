@@ -248,7 +248,7 @@ dyno::ReturnAction HookHandler(dyno::HookType hookType, dyno::Hook& hook)
         fnMethodToCall(&callback->ScriptContextStruct());
 
         auto result = callback->ScriptContext().GetResult<HookResult>();
-        CSSHARP_CORE_INFO("Received hook callback result of {}, hook mode {}", result,
+        CSSHARP_CORE_TRACE("Received hook callback result of {}, hook mode {}", result,
                           (int)hookType);
 
         if (result >= HookResult::Handled) {
