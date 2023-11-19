@@ -1,0 +1,333 @@
+# All Events and when they are triggered
+
+* CounterStrikeSharp.API.Core.EventAchievementEarned
+* CounterStrikeSharp.API.Core.EventAchievementEarnedLocal
+* CounterStrikeSharp.API.Core.EventAchievementEvent
+* CounterStrikeSharp.API.Core.EventAchievementInfoLoaded
+* CounterStrikeSharp.API.Core.EventAchievementWriteFailed
+* CounterStrikeSharp.API.Core.EventAddBulletHitMarker
+* CounterStrikeSharp.API.Core.EventAddPlayerSonarIcon
+* CounterStrikeSharp.API.Core.EventAmmoPickup
+* CounterStrikeSharp.API.Core.EventAmmoRefill
+* CounterStrikeSharp.API.Core.EventAnnouncePhaseEnd
+* CounterStrikeSharp.API.Core.EventBeginNewMatch
+* CounterStrikeSharp.API.Core.EventBombAbortdefuse  
+    Triggered when:
+    - defuse of bomb is stopped
+* CounterStrikeSharp.API.Core.EventBombAbortplant  
+    Triggered when:
+    - planting the bomb was stopped
+* CounterStrikeSharp.API.Core.EventBombBeep  
+    Triggered when:
+    - the bomb beeps
+* CounterStrikeSharp.API.Core.EventBombBegindefuse  
+    Triggered when:
+    - defusing the bomb is started
+* CounterStrikeSharp.API.Core.EventBombBeginplant  
+    Triggered when:
+    - planting of bomb is started
+* CounterStrikeSharp.API.Core.EventBombDefused  
+    Triggered when:
+    - bomb was successfully defused
+* CounterStrikeSharp.API.Core.EventBombDropped  
+    Triggered when:
+    - bomb is dropped
+* CounterStrikeSharp.API.Core.EventBombExploded  
+    Triggered when:
+    - bomb exploded
+* CounterStrikeSharp.API.Core.EventBombPickup  
+    Triggered when:
+    - bomb is picked up
+* CounterStrikeSharp.API.Core.EventBombPlanted  
+    Triggered when:
+    - bomb was planted
+* CounterStrikeSharp.API.Core.EventBonusUpdated
+* CounterStrikeSharp.API.Core.EventBotTakeover
+* CounterStrikeSharp.API.Core.EventBreakBreakable
+* CounterStrikeSharp.API.Core.EventBreakProp
+* CounterStrikeSharp.API.Core.EventBrokenBreakable
+* CounterStrikeSharp.API.Core.EventBulletFlightResolution
+* CounterStrikeSharp.API.Core.EventBulletImpact
+* CounterStrikeSharp.API.Core.EventBuymenuClose
+* CounterStrikeSharp.API.Core.EventBuymenuOpen
+* CounterStrikeSharp.API.Core.EventBuytimeEnded
+* CounterStrikeSharp.API.Core.EventCartUpdated
+* CounterStrikeSharp.API.Core.EventChoppersIncomingWarning
+* CounterStrikeSharp.API.Core.EventClientDisconnect
+* CounterStrikeSharp.API.Core.EventClientLoadoutChanged
+* CounterStrikeSharp.API.Core.EventClientsideLessonClosed
+* CounterStrikeSharp.API.Core.EventCsGameDisconnected
+* CounterStrikeSharp.API.Core.EventCsIntermission
+* CounterStrikeSharp.API.Core.EventCsMatchEndRestart
+* CounterStrikeSharp.API.Core.EventCsPreRestart
+* CounterStrikeSharp.API.Core.EventCsPrevNextSpectator
+* CounterStrikeSharp.API.Core.EventCsRoundFinalBeep
+* CounterStrikeSharp.API.Core.EventCsRoundStartBeep
+* CounterStrikeSharp.API.Core.EventCsWinPanelMatch
+* CounterStrikeSharp.API.Core.EventCsWinPanelRound
+* CounterStrikeSharp.API.Core.EventDecoyDetonate
+* CounterStrikeSharp.API.Core.EventDecoyFiring
+* CounterStrikeSharp.API.Core.EventDecoyStarted
+* CounterStrikeSharp.API.Core.EventDefuserDropped
+* CounterStrikeSharp.API.Core.EventDefuserPickup
+* CounterStrikeSharp.API.Core.EventDemoSkip
+* CounterStrikeSharp.API.Core.EventDemoStart
+* CounterStrikeSharp.API.Core.EventDemoStop
+* CounterStrikeSharp.API.Core.EventDifficultyChanged
+* CounterStrikeSharp.API.Core.EventDmBonusWeaponStart
+* CounterStrikeSharp.API.Core.EventDoorBreak
+* CounterStrikeSharp.API.Core.EventDoorClose
+* CounterStrikeSharp.API.Core.EventDoorClosed
+* CounterStrikeSharp.API.Core.EventDoorMoving
+* CounterStrikeSharp.API.Core.EventDoorOpen
+* CounterStrikeSharp.API.Core.EventDroneAboveRoof
+* CounterStrikeSharp.API.Core.EventDroneCargoDetached
+* CounterStrikeSharp.API.Core.EventDroneDispatched
+* CounterStrikeSharp.API.Core.EventDronegunAttack
+* CounterStrikeSharp.API.Core.EventDropRateModified
+* CounterStrikeSharp.API.Core.EventDynamicShadowLightChanged
+* CounterStrikeSharp.API.Core.EventDzItemInteraction
+* CounterStrikeSharp.API.Core.EventEnableRestartVoting
+* CounterStrikeSharp.API.Core.EventEndmatchCmmStartRevealItems
+* CounterStrikeSharp.API.Core.EventEndmatchMapvoteSelectingMap
+* CounterStrikeSharp.API.Core.EventEnterBombzone
+* CounterStrikeSharp.API.Core.EventEnterBuyzone
+* CounterStrikeSharp.API.Core.EventEnterRescueZone
+* CounterStrikeSharp.API.Core.EventEntityKilled
+* CounterStrikeSharp.API.Core.EventEntityVisible
+* CounterStrikeSharp.API.Core.EventEventTicketModified
+* CounterStrikeSharp.API.Core.EventExitBombzone
+* CounterStrikeSharp.API.Core.EventExitBuyzone
+* CounterStrikeSharp.API.Core.EventExitRescueZone
+* CounterStrikeSharp.API.Core.EventFinaleStart
+* CounterStrikeSharp.API.Core.EventFirstbombsIncomingWarning
+* CounterStrikeSharp.API.Core.EventFlareIgniteNpc
+* CounterStrikeSharp.API.Core.EventFlashbangDetonate  
+    Triggered when:
+    - a flashbang explodes
+* CounterStrikeSharp.API.Core.EventGameEnd
+* CounterStrikeSharp.API.Core.EventGameInit
+* CounterStrikeSharp.API.Core.EventGameinstructorDraw
+* CounterStrikeSharp.API.Core.EventGameinstructorNodraw
+* CounterStrikeSharp.API.Core.EventGameMessage
+* CounterStrikeSharp.API.Core.EventGameNewmap
+* CounterStrikeSharp.API.Core.EventGamePhaseChanged
+* CounterStrikeSharp.API.Core.EventGameStart
+* CounterStrikeSharp.API.Core.EventGameuiHidden
+* CounterStrikeSharp.API.Core.EventGcConnected
+* CounterStrikeSharp.API.Core.EventGgKilledEnemy
+* CounterStrikeSharp.API.Core.EventGrenadeBounce  
+    Triggered when:
+    - any grenade bounces
+* CounterStrikeSharp.API.Core.EventGrenadeThrown  
+    Triggered when:
+    - any grenade is thrown
+* CounterStrikeSharp.API.Core.EventGuardianWaveRestart
+* CounterStrikeSharp.API.Core.EventHegrenadeDetonate
+* CounterStrikeSharp.API.Core.EventHelicopterGrenadePuntMiss
+* CounterStrikeSharp.API.Core.EventHideDeathpanel
+* CounterStrikeSharp.API.Core.EventHltvCameraman
+* CounterStrikeSharp.API.Core.EventHltvChangedMode
+* CounterStrikeSharp.API.Core.EventHltvChase
+* CounterStrikeSharp.API.Core.EventHltvChat
+* CounterStrikeSharp.API.Core.EventHltvFixed
+* CounterStrikeSharp.API.Core.EventHltvMessage
+* CounterStrikeSharp.API.Core.EventHltvRankCamera
+* CounterStrikeSharp.API.Core.EventHltvRankEntity
+* CounterStrikeSharp.API.Core.EventHltvReplay
+* CounterStrikeSharp.API.Core.EventHltvReplayStatus
+* CounterStrikeSharp.API.Core.EventHltvStatus
+* CounterStrikeSharp.API.Core.EventHltvTitle
+* CounterStrikeSharp.API.Core.EventHltvVersioninfo
+* CounterStrikeSharp.API.Core.EventHostageCallForHelp
+* CounterStrikeSharp.API.Core.EventHostageFollows
+* CounterStrikeSharp.API.Core.EventHostageHurt
+* CounterStrikeSharp.API.Core.EventHostageKilled
+* CounterStrikeSharp.API.Core.EventHostageRescued
+* CounterStrikeSharp.API.Core.EventHostageRescuedAll
+* CounterStrikeSharp.API.Core.EventHostageStopsFollowing
+* CounterStrikeSharp.API.Core.EventHostnameChanged
+* CounterStrikeSharp.API.Core.EventInfernoExpire
+* CounterStrikeSharp.API.Core.EventInfernoExtinguish
+* CounterStrikeSharp.API.Core.EventInfernoStartburn
+* CounterStrikeSharp.API.Core.EventInspectWeapon
+* CounterStrikeSharp.API.Core.EventInstructorCloseLesson
+* CounterStrikeSharp.API.Core.EventInstructorServerHintCreate
+* CounterStrikeSharp.API.Core.EventInstructorServerHintStop
+* CounterStrikeSharp.API.Core.EventInstructorStartLesson
+* CounterStrikeSharp.API.Core.EventInventoryUpdated
+* CounterStrikeSharp.API.Core.EventItemEquip  
+    Triggered when:
+    - Player switches equipement
+* CounterStrikeSharp.API.Core.EventItemPickup
+* CounterStrikeSharp.API.Core.EventItemPickupFailed
+* CounterStrikeSharp.API.Core.EventItemPickupSlerp
+* CounterStrikeSharp.API.Core.EventItemPurchase
+* CounterStrikeSharp.API.Core.EventItemRemove
+* CounterStrikeSharp.API.Core.EventItemSchemaInitialized
+* CounterStrikeSharp.API.Core.EventItemsGifted
+* CounterStrikeSharp.API.Core.EventJointeamFailed
+* CounterStrikeSharp.API.Core.EventLocalPlayerControllerTeam
+* CounterStrikeSharp.API.Core.EventLocalPlayerPawnChanged
+* CounterStrikeSharp.API.Core.EventLocalPlayerTeam
+* CounterStrikeSharp.API.Core.EventLootCrateOpened
+* CounterStrikeSharp.API.Core.EventLootCrateVisible
+* CounterStrikeSharp.API.Core.EventMapShutdown
+* CounterStrikeSharp.API.Core.EventMapTransition
+* CounterStrikeSharp.API.Core.EventMatchEndConditions
+* CounterStrikeSharp.API.Core.EventMaterialDefaultComplete
+* CounterStrikeSharp.API.Core.EventMbInputLockCancel
+* CounterStrikeSharp.API.Core.EventMbInputLockSuccess
+* CounterStrikeSharp.API.Core.EventMolotovDetonate
+* CounterStrikeSharp.API.Core.EventNavBlocked
+* CounterStrikeSharp.API.Core.EventNavGenerate
+* CounterStrikeSharp.API.Core.EventNextlevelChanged
+* CounterStrikeSharp.API.Core.EventOpenCrateInstr
+* CounterStrikeSharp.API.Core.EventOtherDeath
+* CounterStrikeSharp.API.Core.EventParachuteDeploy
+* CounterStrikeSharp.API.Core.EventParachutePickup
+* CounterStrikeSharp.API.Core.EventPhysgunPickup
+* CounterStrikeSharp.API.Core.EventPlayerActivate
+* CounterStrikeSharp.API.Core.EventPlayerAvengedTeammate
+* CounterStrikeSharp.API.Core.EventPlayerBlind  
+    Triggered when:
+    - a player is blinded
+    - a bot is blindedz
+* CounterStrikeSharp.API.Core.EventPlayerChangename
+* CounterStrikeSharp.API.Core.EventPlayerChat
+* CounterStrikeSharp.API.Core.EventPlayerConnect
+* CounterStrikeSharp.API.Core.EventPlayerConnectFull
+* CounterStrikeSharp.API.Core.EventPlayerDeath
+* CounterStrikeSharp.API.Core.EventPlayerDecal
+* CounterStrikeSharp.API.Core.EventPlayerDisconnect  
+    Triggered when:
+    - Player disconnects
+    - Bot disconnects
+* CounterStrikeSharp.API.Core.EventPlayerFalldamage
+* CounterStrikeSharp.API.Core.EventPlayerFootstep
+* CounterStrikeSharp.API.Core.EventPlayerFullUpdate
+* CounterStrikeSharp.API.Core.EventPlayerGivenC4  
+    Triggered when:
+    - Player receives the bomb
+* CounterStrikeSharp.API.Core.EventPlayerHintmessage
+* CounterStrikeSharp.API.Core.EventPlayerHurt
+* CounterStrikeSharp.API.Core.EventPlayerInfo
+* CounterStrikeSharp.API.Core.EventPlayerJump  
+    Triggered when:
+    - Player jumps
+    - Bot jumps
+* CounterStrikeSharp.API.Core.EventPlayerPing
+* CounterStrikeSharp.API.Core.EventPlayerPingStop
+* CounterStrikeSharp.API.Core.EventPlayerRadio
+* CounterStrikeSharp.API.Core.EventPlayerResetVote
+* CounterStrikeSharp.API.Core.EventPlayerScore
+* CounterStrikeSharp.API.Core.EventPlayerShoot
+* CounterStrikeSharp.API.Core.EventPlayerSound  
+    Triggered when:
+    - Entity makes a sound
+* CounterStrikeSharp.API.Core.EventPlayerSpawn
+* CounterStrikeSharp.API.Core.EventPlayerSpawned  
+    Triggered when:
+    - Player spawns
+* CounterStrikeSharp.API.Core.EventPlayerStatsUpdated
+* CounterStrikeSharp.API.Core.EventPlayerTeam
+* CounterStrikeSharp.API.Core.EventRagdollDissolved
+* CounterStrikeSharp.API.Core.EventReadGameTitledata
+* CounterStrikeSharp.API.Core.EventRepostXboxAchievements
+* CounterStrikeSharp.API.Core.EventResetGameTitledata
+* CounterStrikeSharp.API.Core.EventRoundAnnounceFinal
+* CounterStrikeSharp.API.Core.EventRoundAnnounceLastRoundHalf
+* CounterStrikeSharp.API.Core.EventRoundAnnounceMatchPoint
+* CounterStrikeSharp.API.Core.EventRoundAnnounceMatchStart
+* CounterStrikeSharp.API.Core.EventRoundAnnounceWarmup
+* CounterStrikeSharp.API.Core.EventRoundEnd
+* CounterStrikeSharp.API.Core.EventRoundEndUploadStats
+* CounterStrikeSharp.API.Core.EventRoundFreezeEnd
+* CounterStrikeSharp.API.Core.EventRoundMvp
+* CounterStrikeSharp.API.Core.EventRoundOfficiallyEnded
+* CounterStrikeSharp.API.Core.EventRoundPoststart
+* CounterStrikeSharp.API.Core.EventRoundPrestart
+* CounterStrikeSharp.API.Core.EventRoundStart
+* CounterStrikeSharp.API.Core.EventRoundStartPostNav
+* CounterStrikeSharp.API.Core.EventRoundStartPreEntity
+* CounterStrikeSharp.API.Core.EventRoundTimeWarning
+* CounterStrikeSharp.API.Core.EventSeasoncoinLevelup
+* CounterStrikeSharp.API.Core.EventServerCvar
+* CounterStrikeSharp.API.Core.EventServerMessage
+* CounterStrikeSharp.API.Core.EventServerPreShutdown
+* CounterStrikeSharp.API.Core.EventServerShutdown
+* CounterStrikeSharp.API.Core.EventServerSpawn
+* CounterStrikeSharp.API.Core.EventSetInstructorGroupEnabled
+* CounterStrikeSharp.API.Core.EventSfuievent
+* CounterStrikeSharp.API.Core.EventShowDeathpanel
+* CounterStrikeSharp.API.Core.EventShowSurvivalRespawnStatus
+* CounterStrikeSharp.API.Core.EventSilencerDetach
+* CounterStrikeSharp.API.Core.EventSilencerOff
+* CounterStrikeSharp.API.Core.EventSilencerOn
+* CounterStrikeSharp.API.Core.EventSmokeBeaconParadrop
+* CounterStrikeSharp.API.Core.EventSmokegrenadeDetonate  
+    Triggered when:
+    - smoke blooms
+* CounterStrikeSharp.API.Core.EventSmokegrenadeExpired  
+    Triggered when:
+    - smoke faded
+* CounterStrikeSharp.API.Core.EventSpecModeUpdated
+* CounterStrikeSharp.API.Core.EventSpecTargetUpdated
+* CounterStrikeSharp.API.Core.EventStartHalftime
+* CounterStrikeSharp.API.Core.EventStartVote
+* CounterStrikeSharp.API.Core.EventStorePricesheetUpdated
+* CounterStrikeSharp.API.Core.EventSurvivalAnnouncePhase
+* CounterStrikeSharp.API.Core.EventSurvivalNoRespawnsFinal
+* CounterStrikeSharp.API.Core.EventSurvivalNoRespawnsWarning
+* CounterStrikeSharp.API.Core.EventSurvivalParadropBreak
+* CounterStrikeSharp.API.Core.EventSurvivalParadropSpawn
+* CounterStrikeSharp.API.Core.EventSurvivalTeammateRespawn
+* CounterStrikeSharp.API.Core.EventSwitchTeam
+* CounterStrikeSharp.API.Core.EventTagrenadeDetonate
+* CounterStrikeSharp.API.Core.EventTeamchangePending
+* CounterStrikeSharp.API.Core.EventTeamInfo
+* CounterStrikeSharp.API.Core.EventTeamIntroEnd
+* CounterStrikeSharp.API.Core.EventTeamIntroStart
+* CounterStrikeSharp.API.Core.EventTeamplayBroadcastAudio
+* CounterStrikeSharp.API.Core.EventTeamplayRoundStart
+* CounterStrikeSharp.API.Core.EventTeamScore
+* CounterStrikeSharp.API.Core.EventTournamentReward
+* CounterStrikeSharp.API.Core.EventTrExitHintTrigger
+* CounterStrikeSharp.API.Core.EventTrialTimeExpired
+* CounterStrikeSharp.API.Core.EventTrMarkBestTime
+* CounterStrikeSharp.API.Core.EventTrMarkComplete
+* CounterStrikeSharp.API.Core.EventTrPlayerFlashbanged
+* CounterStrikeSharp.API.Core.EventTrShowExitMsgbox
+* CounterStrikeSharp.API.Core.EventTrShowFinishMsgbox
+* CounterStrikeSharp.API.Core.EventUgcFileDownloadFinished
+* CounterStrikeSharp.API.Core.EventUgcFileDownloadStart
+* CounterStrikeSharp.API.Core.EventUgcMapDownloadError
+* CounterStrikeSharp.API.Core.EventUgcMapInfoReceived
+* CounterStrikeSharp.API.Core.EventUgcMapUnsubscribed
+* CounterStrikeSharp.API.Core.EventUpdateMatchmakingStats
+* CounterStrikeSharp.API.Core.EventUserDataDownloaded
+* CounterStrikeSharp.API.Core.EventVipEscaped
+* CounterStrikeSharp.API.Core.EventVipKilled
+* CounterStrikeSharp.API.Core.EventVoteCast
+* CounterStrikeSharp.API.Core.EventVoteCastNo
+* CounterStrikeSharp.API.Core.EventVoteCastYes
+* CounterStrikeSharp.API.Core.EventVoteChanged
+* CounterStrikeSharp.API.Core.EventVoteEnded
+* CounterStrikeSharp.API.Core.EventVoteFailed
+* CounterStrikeSharp.API.Core.EventVoteOptions
+* CounterStrikeSharp.API.Core.EventVotePassed
+* CounterStrikeSharp.API.Core.EventVoteStarted
+* CounterStrikeSharp.API.Core.EventWeaponFire  
+    Triggered when:
+    - Player fires a weapon
+    - Player knifes
+    - Bot fires a weapon
+    - Bot knifes
+* CounterStrikeSharp.API.Core.EventWeaponFireOnEmpty
+* CounterStrikeSharp.API.Core.EventWeaponhudSelection
+* CounterStrikeSharp.API.Core.EventWeaponOutofammo
+* CounterStrikeSharp.API.Core.EventWeaponReload
+* CounterStrikeSharp.API.Core.EventWeaponZoom
+* CounterStrikeSharp.API.Core.EventWeaponZoomRifle
+* CounterStrikeSharp.API.Core.EventWriteGameTitledata
+* CounterStrikeSharp.API.Core.EventWriteProfileData
