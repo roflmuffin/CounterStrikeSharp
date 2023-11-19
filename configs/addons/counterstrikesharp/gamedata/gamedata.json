@@ -50,9 +50,48 @@
   "CBaseModelEntity_SetModel": {
     "signatures": {
         "library": "server",
-        "windows": "\\x48\\x89\\x5C\\x24\\x10\\x48\\x89\\x7C\\x24\\x20\\x55\\x48\\x8B\\xEC\\x48\\x83\\xEC\\x50\\x48\\x8B\\xF9\\x4C\\x8B\\xC2\\x48\\x8B\\x0D\\x69\\x07\\xD9\\x00",
-        "linux": "\\x55\\x48\\x89\\xF2\\x48\\x89\\xE5\\x41\\x54\\x49\\x89\\xFC\\x48\\x8D\\x7D\\xE0\\x48\\x83\\xEC\\x18\\x48\\x8D\\x05\\x15\\xD4\\xBF\\x00"
+        "windows": "\\x48\\x89\\x5C\\x24\\x10\\x48\\x89\\x7C\\x24\\x20\\x55\\x48\\x8B\\xEC\\x48\\x83\\xEC\\x50",
+        "linux": "\\x55\\x48\\x89\\xF2\\x48\\x89\\xE5\\x41\\x54\\x49\\x89\\xFC\\x48\\x8D\\x7D\\xE0\\x48\\x83\\xEC\\x18\\x48\\x8D\\x05\\x25"
     }
+  },
+  "CCSPlayer_ItemServices_DropActivePlayerWeapon": {
+    "offsets": {
+        "windows": 20,
+        "linux": 19
+    }
+  },
+  "CCSPlayer_ItemServices_RemoveWeapons": {
+      "offsets": {
+          "windows": 21,
+          "linux": 20
+      }
+  },
+  "CGameSceneNode_GetSkeletonInstance": {
+    "offsets": {
+        "windows": 8,
+        "linux": 8
+    }
+  },
+  "CCSGameRules_TerminateRound": {
+    "signatures": {
+        "library": "server",
+        "windows": "\\x48\\x8B\\xC4\\x4C\\x89\\x48\\x20\\x55\\x56",
+        "linux": "\\x55\\x48\\x89\\xE5\\x41\\x57\\x41\\x56\\x41\\x55\\x49\\x89\\xFD\\x41\\x54\\x53\\x48\\x81\\xEC\\xE8\\x01\\x00\\x00"
+      }
+  },
+  "UTIL_CreateEntityByName": {
+    "signatures": {
+        "library": "server",
+        "windows": "\\x48\\x83\\xEC\\x48\\xC6\\x44\\x24\\x30\\x00\\x4C\\x8B\\xC1",
+        "linux": "\\x48\\x8D\\x05\\x49\\xB5\\xBC\\x00\\x55\\x48\\x89\\xFA\\x41\\x89\\xF0\\x48"
+      }
+  },
+  "CBaseEntity_DispatchSpawn": {
+    "signatures": {
+        "library": "server",
+        "windows": "\\x48\\x89\\x5C\\x24\\x10\\x57\\x48\\x83\\xEC\\x30\\x48\\x8B\\xDA\\x48\\x8B\\xF9\\x48\\x85\\xC9",
+        "linux": "\\x48\\x85\\xFF\\x74\\x4B\\x55\\x48\\x89\\xE5\\x41\\x56\\x41\\x55\\x49\\x89\\xFD"
+      }
   },
   "LegacyGameEventListener": {
     "signatures": {

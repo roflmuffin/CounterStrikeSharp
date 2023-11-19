@@ -50,6 +50,34 @@ public partial class CCSPlayerController
         @event.FireEventToClient(this);
     }
 
+    /// <summary>
+    /// Drops the active player weapon on the ground.
+    /// </summary>
+    public void DropActiveWeapon()
+    {
+        if (!PlayerPawn.IsValid) return;
+        if (!PlayerPawn.Value.IsValid) return;
+        if (PlayerPawn.Value.ItemServices == null) return;
+        if (PlayerPawn.Value.WeaponServices == null) return;
+        if (!PlayerPawn.Value.WeaponServices.ActiveWeapon.IsValid) return;
+
+        CCSPlayer_ItemServices itemServices = new CCSPlayer_ItemServices(PlayerPawn.Value.ItemServices.Handle);
+        CCSPlayer_WeaponServices weponServices = new CCSPlayer_WeaponServices(PlayerPawn.Value.WeaponServices.Handle);
+        itemServices.DropActivePlayerWeapon(weponServices.ActiveWeapon.Value);
+    }
+
+    /// <summary>
+    /// Removes every weapon from the player.
+    /// </summary>
+    public void RemoveWeapons()
+    {
+        if (!PlayerPawn.IsValid) return;
+        if (!PlayerPawn.Value.IsValid) return;
+        if (PlayerPawn.Value.ItemServices == null) return;
+
+        CCSPlayer_ItemServices itemServices = new CCSPlayer_ItemServices(PlayerPawn.Value.ItemServices.Handle);
+        itemServices.RemoveWeapons();
+    }
 
     public bool IsBot => ((PlayerFlags)Flags).HasFlag(PlayerFlags.FL_FAKECLIENT);
 
