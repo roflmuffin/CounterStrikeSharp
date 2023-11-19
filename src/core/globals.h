@@ -33,6 +33,7 @@ class ICvar;
 class IGameEventSystem;
 class CounterStrikeSharpMMPlugin;
 class CGameEntitySystem;
+class IGameEventListener2;
 
 namespace counterstrikesharp {
 class EntityListener;
@@ -102,6 +103,10 @@ extern CounterStrikeSharpMMPlugin *mmPlugin;
 extern ISmmAPI *ismm;
 extern CCoreConfig* coreConfig;
 extern CGameConfig* gameConfig;
+
+typedef IGameEventListener2 *GetLegacyGameEventListener_t(CPlayerSlot slot);
+
+extern GetLegacyGameEventListener_t* GetLegacyGameEventListener;
 
 void Initialize();
 // Should only be called within the active game loop (i e map should be loaded

@@ -552,6 +552,17 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static void FireEventToClient(IntPtr gameevent, int clientindex){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(gameevent);
+			ScriptContext.GlobalScriptContext.Push(clientindex);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x40B7C06C);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
         public static string GetEventName(IntPtr gameevent){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();

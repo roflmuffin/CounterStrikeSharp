@@ -47,7 +47,7 @@ public partial class CCSPlayerController
             Duration = 5,
             Userid = this
         };
-        @event.FireEvent(false);
+        @event.FireEventToClient(this);
     }
 
 
