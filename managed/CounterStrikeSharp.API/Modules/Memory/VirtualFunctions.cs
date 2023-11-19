@@ -29,9 +29,9 @@ public static class VirtualFunctions
     // void(*CBaseModelEntity_SetModel)(CBaseModelEntity*, const char*);
     public static Action<IntPtr, string> SetModel = VirtualFunction.CreateVoid<IntPtr, string>(GameData.GetSignature("CBaseModelEntity_SetModel"));
 
-    public static Action<nint, RoundEndReason, float> TerminateRound = VirtualFunction.CreateVoid<nint, RoundEndReason, float>(GameData.GetSignature("CCSGameRules_TerminateRound"));
+    public static Action<IntPtr, RoundEndReason, float> TerminateRound = VirtualFunction.CreateVoid<nint, RoundEndReason, float>(GameData.GetSignature("CCSGameRules_TerminateRound"));
 
-    public static Func<string, int, nint> UTIL_CreateEntityByName = VirtualFunction.Create<string, int, nint>(GameData.GetSignature("UTIL_CreateEntityByName"));
+    public static Func<string, int, IntPtr> UTIL_CreateEntityByName = VirtualFunction.Create<string, int, IntPtr>(GameData.GetSignature("UTIL_CreateEntityByName"));
 
-    public static Action<nint, nint> CBaseEntity_DispatchSpawn = VirtualFunction.CreateVoid<nint, nint>(GameData.GetSignature("CBaseEntity_DispatchSpawn"));
+    public static Action<IntPtr, IntPtr> CBaseEntity_DispatchSpawn = VirtualFunction.CreateVoid<IntPtr, IntPtr>(GameData.GetSignature("CBaseEntity_DispatchSpawn"));
 }
