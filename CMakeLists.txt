@@ -29,6 +29,8 @@ SET(SOURCE_FILES
     src/core/utils.h
     src/core/globals.h
     src/core/globals.cpp
+    src/core/coreconfig.h
+    src/core/coreconfig.cpp
     src/core/gameconfig.h
     src/core/gameconfig.cpp
     src/core/log.h
@@ -84,7 +86,7 @@ SET(SOURCE_FILES
 
 if (LINUX)
     # memoverride.cpp is not usable on CMake Windows, cuz CMake default link libraries (seems) always link ucrt.lib
-    set(SOURCE_FILES 
+    set(SOURCE_FILES
         ${SOURCE_FILES}
         libraries/hl2sdk-cs2/public/tier0/memoverride.cpp
     )

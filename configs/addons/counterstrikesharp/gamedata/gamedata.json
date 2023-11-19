@@ -56,8 +56,8 @@
   },
   "CBasePlayerPawn_CommitSuicide": {
     "offsets": {
-      "windows": 355,
-      "linux": 355
+      "windows": 356,
+      "linux": 356
     }
   },
   "CBaseEntity_Teleport": {

@@ -54,7 +54,6 @@ class ChatManager : public GlobalClass
 
     bool OnSayCommandPre(CBaseEntity* pController, CCommand& args);
     void OnSayCommandPost(CBaseEntity* pController, CCommand& args);
-
   private:
     void InternalDispatch(CBaseEntity* pPlayerController, const char* szTriggerPhrase,
                           CCommand& pFullCommand);
