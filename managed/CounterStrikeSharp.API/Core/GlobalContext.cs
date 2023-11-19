@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -77,9 +77,20 @@ namespace CounterStrikeSharp.API.Core
             Logger.LogInformation("Loading GameData from {Path}", gameDataPath);
             GameData.Load(gameDataPath);
             
-            var adminDataPath = Path.Combine(rootDir.FullName, "configs", "admins.json");
-            Logger.LogInformation("Loading Admins from {Path}", adminDataPath);
-            AdminManager.Load(adminDataPath);
+   
+            var adminGroupsPath = Path.Combine(rootDir.FullName, "configs", "admin_groups.json");
+            Logger.LogInformation("Loading Admin Groups from {Path}", adminGroupsPath);
+            AdminManager.LoadAdminGroups(adminGroupsPath);
+            
+            var adminPath = Path.Combine(rootDir.FullName, "configs", "admins.json");
+            Logger.LogInformation("Loading Admins from {Path}", adminPath);
+            AdminManager.LoadAdminData(adminPath);
+            
+            var overridePath = Path.Combine(rootDir.FullName, "configs", "admin_overrides.json");
+            Logger.LogInformation("Loading Admin Command Overrides from {Path}", overridePath);
+            AdminManager.LoadCommandOverrides(overridePath);
+
+            AdminManager.MergeGroupPermsIntoAdmins();
 
             for (var i = 1; i <= 9; i++)
             {
@@ -200,7 +211,7 @@ namespace CounterStrikeSharp.API.Core
             return plugin;
         }
 
-        [RequiresPermissions("can_execute_css_commands")]
+        [RequiresPermissions("@css/generic")]
         [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
         private void OnCSSCommand(CCSPlayerController? caller, CommandInfo info)
         {
@@ -213,7 +224,7 @@ namespace CounterStrikeSharp.API.Core
             return;
         }
 
-        [RequiresPermissions("can_execute_css_commands")]
+        [RequiresPermissions("@css/generic")]
         [CommandHelper(minArgs: 1, 
         usage: "[option]\n" +
                 "  list - List all plugins currently loaded.\n" +

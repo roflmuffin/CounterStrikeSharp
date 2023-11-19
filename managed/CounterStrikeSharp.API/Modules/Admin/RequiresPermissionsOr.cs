@@ -6,11 +6,10 @@ using CounterStrikeSharp.API.Modules.Entities;
 
 namespace CounterStrikeSharp.API.Modules.Admin
 {
-
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
-    public class RequiresPermissions : BaseRequiresPermissions
+    public class RequiresPermissionsOr : BaseRequiresPermissions
     {
-        public RequiresPermissions(params string[] permissions) : base(permissions) { }
+        public RequiresPermissionsOr(params string[] permissions) : base(permissions) { }
 
         public override bool CanExecuteCommand(CCSPlayerController? caller)
         {
@@ -24,10 +23,9 @@ namespace CounterStrikeSharp.API.Modules.Admin
             var groupPermissions = Permissions.Where(perm => perm.StartsWith(PermissionCharacters.GroupPermissionChar));
             var userPermissions = Permissions.Where(perm => perm.StartsWith(PermissionCharacters.UserPermissionChar));
 
-            if (!AdminManager.PlayerInGroup(caller, groupPermissions.ToArray())) return false;
-            if (!AdminManager.PlayerHasPermissions(caller, userPermissions.ToArray())) return false;
-
-            return true;
+            var adminData = AdminManager.GetPlayerAdminData((SteamID)caller.SteamID);
+            if (adminData == null) return false;
+            return (groupPermissions.Intersect(adminData.Groups).Count() + userPermissions.Intersect(adminData.Flags).Count()) > 0;
         }
     }
 }
