@@ -12,6 +12,11 @@ public partial class CBaseEntity
             Handle, position.Handle, angles.Handle, velocity.Handle);
     }
 
+    public void DispatchSpawn()
+    {
+        VirtualFunctions.CBaseEntity_DispatchSpawn(Handle, IntPtr.Zero);
+    }
+
     /// <summary>
     /// Shorthand for accessing an entity's CBodyComponent?.SceneNode?.AbsOrigin;
     /// </summary>

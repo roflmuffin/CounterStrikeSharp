@@ -15,6 +15,7 @@
  */
 
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,11 @@ namespace CounterStrikeSharp.API
         public static T GetEntityFromIndex<T>(int index) where T : CEntityInstance
         {
             return (T)Activator.CreateInstance(typeof(T), NativeAPI.GetEntityFromIndex(index))!;
+        }
+
+        public static T? CreateEntityByName<T>(string name) where T : CBaseEntity
+        {
+            return (T?)Activator.CreateInstance(typeof(T), VirtualFunctions.UTIL_CreateEntityByName(name, -1));
         }
 
         public static CCSPlayerController GetPlayerFromIndex(int index)
