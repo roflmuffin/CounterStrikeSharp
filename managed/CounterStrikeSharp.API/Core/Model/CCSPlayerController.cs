@@ -24,6 +24,17 @@ public partial class CCSPlayerController
         return VirtualFunctions.GiveNamedItem(PlayerPawn.Value.ItemServices.Handle, item, 0, 0, 0, 0);
     }
 
+    public IntPtr GiveNamedItem(CsItem item) 
+    {
+        string itemString = EnumUtils.GetEnumMemberAttributeValue(item);
+        if (string.IsNullOrWhiteSpace(itemString))
+        {
+            return IntPtr.Zero;
+        }
+
+        return this.GiveNamedItem(itemString);
+    }
+
     public void PrintToConsole(string message)
     {
         NativeAPI.PrintToConsole((int)EntityIndex.Value.Value, $"{message}\n\0");
