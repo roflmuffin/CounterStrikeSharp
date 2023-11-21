@@ -21,6 +21,8 @@ using System.Text;
 using System.Text.Json;
 
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Core.Logging;
+using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Modules.Config
 {
@@ -29,6 +31,7 @@ namespace CounterStrikeSharp.API.Modules.Config
         private static readonly DirectoryInfo? _rootDir;
 
         private static readonly string _pluginConfigsFolderPath;
+        private static ILogger _logger = CoreLogging.Factory.CreateLogger("ConfigManager");
 
         static ConfigManager()
         {
@@ -60,7 +63,7 @@ namespace CounterStrikeSharp.API.Modules.Config
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Failed to generate configuration file for {pluginName}: {ex}");
+                    _logger.LogError(ex, "Failed to generate configuration file for {PluginName}", pluginName);
                 }
             }
 
@@ -70,7 +73,7 @@ namespace CounterStrikeSharp.API.Modules.Config
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Failed to parse configuration '{pluginName}': {ex}");
+                _logger.LogError(ex, "Failed to parse configuration file for {PluginName}", pluginName);
             }
 
             return config;

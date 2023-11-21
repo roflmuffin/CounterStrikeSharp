@@ -16,6 +16,8 @@
 
 using System;
 using System.Collections.Generic;
+using CounterStrikeSharp.API.Core;
+using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Modules.Memory
 {
@@ -71,7 +73,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 return types[Enum.GetUnderlyingType(type)];
             }
             
-            Console.WriteLine("Error retrieving data type for type" + type.FullName);
+            GlobalContext.Instance.Logger.LogWarning("Error retrieving data type for type {Type}", type.FullName);
 
             return null;
         }

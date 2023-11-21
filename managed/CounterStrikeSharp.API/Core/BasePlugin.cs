@@ -32,6 +32,7 @@ using CounterStrikeSharp.API.Modules.Listeners;
 using CounterStrikeSharp.API.Modules.Timers;
 using McMaster.NETCore.Plugins;
 using CounterStrikeSharp.API.Modules.Config;
+using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Core
 {
@@ -53,6 +54,7 @@ namespace CounterStrikeSharp.API.Core
         public string ModulePath { get; internal set; }
 
         public string ModuleDirectory => Path.GetDirectoryName(ModulePath);
+        public ILogger Logger { get; set; }
 
         public virtual void Load(bool hotReload)
         {
@@ -314,7 +316,8 @@ namespace CounterStrikeSharp.API.Core
                 .Select(p => p.GetCustomAttribute<CastFromAttribute>()?.Type)
                 .ToArray();
 
-            Console.WriteLine($"Registering listener for {listenerName} with {parameterTypes.Length}");
+            GlobalContext.Instance.Logger.LogDebug("Registering listener for {ListenerName} with {ParameterCount} parameters",
+                listenerName, parameterTypes.Length);
 
             var wrappedHandler = new Action<ScriptContext>(context =>
             {
