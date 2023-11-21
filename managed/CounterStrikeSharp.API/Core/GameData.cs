@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Core;
 
@@ -39,17 +41,17 @@ public static class GameData
         {
             _methods = JsonSerializer.Deserialize<Dictionary<string, LoadedGameData>>(File.ReadAllText(gameDataPath))!;
 
-            Console.WriteLine($"Loaded game data with {_methods.Count} methods.");
+            GlobalContext.Instance.Logger.LogInformation("Loaded game data with {Count} methods.", _methods.Count);
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Failed to load game data: {ex}");
+            GlobalContext.Instance.Logger.LogError(ex, "Failed to load game data");
         }
     }
 
     public static string GetSignature(string key)
     {
-        Console.WriteLine($"Getting signature: {key}");
+        GlobalContext.Instance.Logger.LogDebug("Getting signature: {Key}", key);
         if (!_methods.ContainsKey(key))
         {
             throw new ArgumentException($"Method {key} not found in gamedata.json");
