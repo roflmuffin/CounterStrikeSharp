@@ -27,14 +27,14 @@ public class HelloWorldPlugin : BasePlugin
 
     public override void Load(bool hotReload)
     {
-        Console.WriteLine("Hello World!");
+        Logger.LogInformation("Plugin loaded successfully!");
     }
 
     [GameEventHandler]
     public HookResult OnPlayerConnect(EventPlayerConnect @event, GameEventInfo info)
     {
         // Userid will give you a reference to a CCSPlayerController class
-        Log($"Player {@event.Userid.PlayerName} has connected!");
+        Logger.LogInformation("Player {Name} has connected!", @event.Userid.PlayerName);
 
         return HookResult.Continue;
     }
@@ -42,7 +42,7 @@ public class HelloWorldPlugin : BasePlugin
     [ConsoleCommand("issue_warning", "Issue warning to player")]
     public void OnCommand(CCSPlayerController? player, CommandInfo command)
     {
-        Log("You shouldn't be doing that!");
+        Logger.LogWarning("Player shouldn't be doing that");
     }
 }
 ```

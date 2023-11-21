@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Core
 {
@@ -76,7 +77,7 @@ namespace CounterStrikeSharp.API.Core
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine(e);
+                        GlobalContext.Instance.Logger.LogError(e, "Error invoking callback");
                     }
                 });
                 s_callback = dg;
@@ -140,10 +141,7 @@ namespace CounterStrikeSharp.API.Core
             {
                 ms_references.Remove(reference);
 
-                Console.BackgroundColor = ConsoleColor.Blue;
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine($"Removing function/callback reference: {reference}");
-                Console.ResetColor();
+                GlobalContext.Instance.Logger.LogDebug("Removing function/callback reference: {Reference}", reference);
             }
         }
     }
