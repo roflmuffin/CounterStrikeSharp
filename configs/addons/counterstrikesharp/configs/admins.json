@@ -1,24 +1,18 @@
 {
   "Erikj": {
     "identity": "76561197960265731",
+    "immunity": 100,
     "flags": [
-      "@css/reservation",
-      "@css/generic",
-      "@css/kick",
-      "@css/ban",
-      "@css/unban",
-      "@css/vip",
-      "@css/slay",
-      "@css/changemap",
-      "@css/cvar",
-      "@css/config",
-      "@css/chat",
-      "@css/vote",
-      "@css/password",
-      "@css/rcon",
-      "@css/cheats",
-      "@css/root"
-    ]
+      "@css/custom-flag-1",
+      "@css/custom-flag-2"
+    ],
+    "groups": [
+      "#css/admin"
+    ],
+    "command_overrides": {
+      "css_plugins": true,
+      "css": false
+    }
   },
   "Another erikj": {
     "identity": "STEAM_0:1:1",

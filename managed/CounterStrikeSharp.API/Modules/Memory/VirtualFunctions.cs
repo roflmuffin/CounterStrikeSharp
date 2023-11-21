@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Modules.Entities.Constants;
 using CounterStrikeSharp.API.Modules.Memory.DynamicFunctions;
 using CounterStrikeSharp.API.Modules.Utils;
 
@@ -39,9 +40,24 @@ public static class VirtualFunctions
 
     public static Action<IntPtr> UTIL_Remove = UTIL_RemoveFunc.Invoke;
 
+    // void(*CBaseModelEntity_SetModel)(CBaseModelEntity*, const char*);
     public static MemoryFunctionVoid<IntPtr, string> SetModelFunc =
         new(GameData.GetSignature("CBaseModelEntity_SetModel"));
 
-    // void(*CBaseModelEntity_SetModel)(CBaseModelEntity*, const char*);
     public static Action<IntPtr, string> SetModel = SetModelFunc.Invoke;
+
+    public static MemoryFunctionVoid<nint, RoundEndReason, float> TerminateRoundFunc =
+        new(GameData.GetSignature("CCSGameRules_TerminateRound"));
+
+    public static Action<IntPtr, RoundEndReason, float> TerminateRound = TerminateRoundFunc.Invoke;
+
+    public static MemoryFunctionWithReturn<string, int, IntPtr> UTIL_CreateEntityByNameFunc =
+        new(GameData.GetSignature("UTIL_CreateEntityByName"));
+
+    public static Func<string, int, IntPtr> UTIL_CreateEntityByName = UTIL_CreateEntityByNameFunc.Invoke;
+
+    public static MemoryFunctionVoid<IntPtr, IntPtr> CBaseEntity_DispatchSpawnFunc =
+        new(GameData.GetSignature("CBaseEntity_DispatchSpawn"));
+
+    public static Action<IntPtr, IntPtr> CBaseEntity_DispatchSpawn = CBaseEntity_DispatchSpawnFunc.Invoke;
 }
