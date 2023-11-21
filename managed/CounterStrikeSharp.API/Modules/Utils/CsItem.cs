@@ -19,34 +19,31 @@ namespace CounterStrikeSharp.API.Modules.Utils
         AssaultSuit = 001,
         KevlarHelmet = AssaultSuit,
 
-        [EnumMember(Value = "item_defuser")]
-        Defuser = 002,
-
         [EnumMember(Value = "weapon_taser")]
-        Taser = 003,
+        Taser = 002,
         Zeus = Taser,
 
         [EnumMember(Value = "weapon_snowball")]
-        Snowball = 004,
+        Snowball = 003,
 
         [EnumMember(Value = "weapon_shield")]
-        Shield = 005,
+        Shield = 004,
 
         [EnumMember(Value = "weapon_c4")]
-        C4 = 006,
+        C4 = 005,
         Bomb = C4,
 
         [EnumMember(Value = "weapon_healthshot")]
-        Healthshot = 007,
+        Healthshot = 006,
 
         [EnumMember(Value = "weapon_breachcharge")]
-        BreachCharge = 008,
+        BreachCharge = 007,
 
         [EnumMember(Value = "weapon_tablet")]
-        Tablet = 009,
+        Tablet = 008,
 
         [EnumMember(Value = "weapon_bumpmine")]
-        Bumpmine = 010,
+        Bumpmine = 009,
 
         //-----------------------------------------
         //GRENADES

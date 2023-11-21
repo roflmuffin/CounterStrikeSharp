@@ -26,7 +26,7 @@ public partial class CCSPlayerController
 
     public IntPtr GiveNamedItem(CsItem item) 
     {
-        string itemString = EnumUtils.GetEnumMemberAttributeValue(item);
+        string? itemString = EnumUtils.GetEnumMemberAttributeValue(item);
         if (string.IsNullOrWhiteSpace(itemString))
         {
             return IntPtr.Zero;
