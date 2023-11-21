@@ -22,7 +22,7 @@ public override void Load(bool hotReload)
             projectile.SmokeColor.X = Random.Shared.NextSingle() * 255.0f;
             projectile.SmokeColor.Y = Random.Shared.NextSingle() * 255.0f;
             projectile.SmokeColor.Z = Random.Shared.NextSingle() * 255.0f;
-            Log($"Smoke grenade spawned with color {projectile.SmokeColor}");
+            Logger.LogInformation("Smoke grenade spawned with color {SmokeColor}", projectile.SmokeColor);
         });
     });
 }

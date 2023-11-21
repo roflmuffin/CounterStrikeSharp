@@ -11,18 +11,20 @@ This project is an ongoing migration of a previous project (titled [VSP.NET](htt
 Due to the architectural changes of CS2, the plugin is being rebuilt on the ground up, to support Linux 64-bit, something which was previously impossible.
 
 ## Install
+
 Download the latest build from [here](https://github.com/roflmuffin/CounterStrikeSharp/releases). (Download the with runtime version if this is your first time installing).
 
 Detailed installation instructions can be found in the [docs](https://docs.cssharp.dev/guides/getting-started/).
 
 ## What works?
+
 _(Note, these were features in the previous VSP.NET project, but have not been implemented yet in this project)_
 
 These features are the core of the platform and work pretty well/have a low risk of causing issues.
 
-- [x]  Console Commands, Server Commands (e.g. css_mycommand)
-- [x]  Chat Commands with `!` and `/` prefixes (e.g. !mycommand)
-- [ ]  **(In Progress)** Console Variables
+- [x] Console Commands, Server Commands (e.g. css_mycommand)
+- [x] Chat Commands with `!` and `/` prefixes (e.g. !mycommand)
+- [ ] **(In Progress)** Console Variables
 - [x] Game Event Handlers & Custom Events (e.g. player_death)
   - [x] Basic event value get/set (string, bool, int32, float)
   - [x] Complex event values get/set (ehandle, pawn, player controller)
@@ -33,9 +35,10 @@ These features are the core of the platform and work pretty well/have a low risk
   - [x] OnMapStart
   - [x] OnTick
 - [x] Server Information (current map, game time, tick rate, model precaching)
-- [x] Schema System Access (access player values like current weapon, money, location etc.) 
+- [x] Schema System Access (access player values like current weapon, money, location etc.)
 
 ## Links
+
 - [Join the Discord](https://discord.gg/X7r3PmuYKq): Ask questions, provide suggestions
 - [Read the docs](https://docs.cssharp.dev/): Getting started guide, hello world plugin example
 - [Issue tracker](https://github.com/roflmuffin/CounterStrikeSharp/issues): Raise any issues here
@@ -62,14 +65,14 @@ public class HelloWorldPlugin : BasePlugin
 
     public override void Load(bool hotReload)
     {
-        Console.WriteLine("Hello World!");
+        Logger.LogInformation("Plugin loaded successfully!");
     }
 
     [GameEventHandler]
     public HookResult OnPlayerConnect(EventPlayerConnect @event, GameEventInfo info)
     {
         // Userid will give you a reference to a CCSPlayerController class
-        Log($"Player {@event.Userid.PlayerName} has connected!");
+        Logger.LogInformation("Player {Name} has connected!", @event.Userid.PlayerName);
 
         return HookResult.Continue;
     }
@@ -77,7 +80,7 @@ public class HelloWorldPlugin : BasePlugin
     [ConsoleCommand("issue_warning", "Issue warning to player")]
     public void OnCommand(CCSPlayerController? player, CommandInfo command)
     {
-        Log("You shouldn't be doing that!");
+        Logger.LogWarning("Player shouldn't be doing that");
     }
 }
 ```
