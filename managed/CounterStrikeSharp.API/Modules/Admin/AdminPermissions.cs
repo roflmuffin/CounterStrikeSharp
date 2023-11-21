@@ -16,7 +16,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
     public partial class AdminData
     {
         [JsonPropertyName("identity")] public required string Identity { get; init; }
-        [JsonPropertyName("flags")] public required HashSet<string> Flags { get; init; }
+        [JsonPropertyName("flags")] public HashSet<string> Flags { get; init; } = new();
         [JsonPropertyName("immunity")] public uint Immunity { get; set; } = 0;
         [JsonPropertyName("command_overrides")] public Dictionary<string, bool> CommandOverrides { get; init; } = new();
     }
