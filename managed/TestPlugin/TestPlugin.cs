@@ -144,6 +144,14 @@ namespace TestPlugin
             var virtualFunc = VirtualFunction.Create<IntPtr>(server.Pointer, 91);
             var result = virtualFunc() - 8;
             Log($"Result of virtual func call is {result:X}");
+            
+            VirtualFunctions.UTIL_RemoveFunc.Hook(hook =>
+            {
+                var entityInstance = hook.GetParam<CEntityInstance>(0);
+                Log($"Removed entity {entityInstance.EntityIndex.Value.Value}");
+
+                return HookResult.Continue;
+            }, HookMode.Post);
         }
 
         private void SetupConvars()
