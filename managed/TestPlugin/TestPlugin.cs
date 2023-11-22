@@ -382,8 +382,7 @@ namespace TestPlugin
 
             foreach (var weapon in player.PlayerPawn.Value.WeaponServices.MyWeapons)
             {
-                // We don't currently have a `ReplyToCommand` equivalent so just print to chat for now.
-                player.PrintToChat(weapon.Value.DesignerName);
+                command.ReplyToCommand(weapon.Value.DesignerName);
             }
         }
 
