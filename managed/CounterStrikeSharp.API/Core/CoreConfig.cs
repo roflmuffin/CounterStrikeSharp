@@ -24,6 +24,8 @@ using CounterStrikeSharp.API.Modules.Utils;
 using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Modules.Commands;
 using System.Collections.Generic;
+using CounterStrikeSharp.API.Core.Logging;
+using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Core
 {
@@ -79,6 +81,9 @@ namespace CounterStrikeSharp.API.Core
     public static partial class CoreConfig
     {
         private static CoreConfigData _coreConfig = new CoreConfigData();
+        
+        // TODO: ServiceCollection
+        private static ILogger _logger = CoreLogging.Factory.CreateLogger("CoreConfig");
 
         static CoreConfig()
         {
@@ -97,7 +102,7 @@ namespace CounterStrikeSharp.API.Core
         {
             if (!File.Exists(coreConfigPath))
             {
-                Console.WriteLine($"Core configuration could not be found at path '{coreConfigPath}', fallback values will be used.");
+                _logger.LogWarning("Core configuration could not be found at path \"{CoreConfigPath}\", fallback values will be used.", coreConfigPath);
                 return;
             }
 
@@ -109,12 +114,12 @@ namespace CounterStrikeSharp.API.Core
                 {
                     _coreConfig = data;
                 }
-
-                Console.WriteLine($"Loaded core configuration");
+                
+                _logger.LogInformation("Successfully loaded core configuration.");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Failed to load core configuration: {ex}, fallback values will be used.");
+                _logger.LogWarning(ex, "Failed to load core configuration, fallback values will be used");
             }
         }
     }
