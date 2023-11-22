@@ -26,6 +26,7 @@ add_definitions(-DMETA_IS_SOURCE2)
 
 include_directories(
     ${SOURCESDK}
+    ${SOURCESDK}/thirdparty/protobuf-3.21.8/src
     ${SOURCESDK}/common
     ${SOURCESDK}/game/shared
     ${SOURCESDK}/game/server
