@@ -44,7 +44,7 @@
 
 SH_DECL_HOOK4_void(IServerGameClients, ClientActive, SH_NOATTRIB, 0, CPlayerSlot, bool, const char*,
                    uint64);
-SH_DECL_HOOK5_void(IServerGameClients, ClientDisconnect, SH_NOATTRIB, 0, CPlayerSlot, int,
+SH_DECL_HOOK5_void(IServerGameClients, ClientDisconnect, SH_NOATTRIB, 0, CPlayerSlot, ENetworkDisconnectionReason,
                    const char*, uint64, const char*);
 SH_DECL_HOOK4_void(IServerGameClients, ClientPutInServer, SH_NOATTRIB, 0, CPlayerSlot, char const*,
                    int, uint64);
@@ -119,8 +119,8 @@ bool PlayerManager::OnClientConnect(CPlayerSlot slot, const char* pszName, uint6
     CPlayer* pPlayer = &m_players[client];
 
     if (pPlayer->IsConnected()) {
-        OnClientDisconnect(slot, 0, pszName, xuid, pszNetworkID);
-        OnClientDisconnect_Post(slot, 0, pszName, xuid, pszNetworkID);
+        OnClientDisconnect(slot, ENetworkDisconnectionReason::NETWORK_DISCONNECT_INVALID, pszName, xuid, pszNetworkID);
+        OnClientDisconnect_Post(slot, ENetworkDisconnectionReason::NETWORK_DISCONNECT_INVALID, pszName, xuid, pszNetworkID);
     }
 
     pPlayer->Initialize(pszName, pszNetworkID, slot);
@@ -222,7 +222,7 @@ void PlayerManager::OnClientPutInServer(CPlayerSlot slot, char const* pszName, i
 }
 
 void PlayerManager::OnClientDisconnect(CPlayerSlot slot,
-                                       /* ENetworkDisconnectionReason */ int reason,
+                                       ENetworkDisconnectionReason reason,
                                        const char* pszName, uint64 xuid, const char* pszNetworkID)
 {
     CSSHARP_CORE_TRACE("[PlayerManager][OnClientDisconnect] - {}, {}, {}", slot.Get(), pszName,
@@ -234,6 +234,7 @@ void PlayerManager::OnClientDisconnect(CPlayerSlot slot,
     if (pPlayer->IsConnected()) {
         m_on_client_disconnect_callback->ScriptContext().Reset();
         m_on_client_disconnect_callback->ScriptContext().Push(pPlayer->m_slot.Get());
+        m_on_client_disconnect_callback->ScriptContext().Push(reason);
         m_on_client_disconnect_callback->Execute();
     }
 
@@ -245,7 +246,7 @@ void PlayerManager::OnClientDisconnect(CPlayerSlot slot,
 }
 
 void PlayerManager::OnClientDisconnect_Post(CPlayerSlot slot,
-                                            /* ENetworkDisconnectionReason */ int reason,
+                                            ENetworkDisconnectionReason reason,
                                             const char* pszName, uint64 xuid,
                                             const char* pszNetworkID) const
 {
@@ -263,6 +264,7 @@ void PlayerManager::OnClientDisconnect_Post(CPlayerSlot slot,
 
     m_on_client_disconnect_post_callback->ScriptContext().Reset();
     m_on_client_disconnect_post_callback->ScriptContext().Push(pPlayer->m_slot.Get());
+    m_on_client_disconnect_post_callback->ScriptContext().Push(reason);
     m_on_client_disconnect_post_callback->Execute();
 }
 
@@ -272,9 +274,9 @@ void PlayerManager::OnLevelEnd()
 
     for (int i = 0; i <= m_max_clients; i++) {
         if (m_players[i].IsConnected()) {
-            OnClientDisconnect(m_players[i].m_slot, 0, m_players[i].GetName(), 0,
+            OnClientDisconnect(m_players[i].m_slot, ENetworkDisconnectionReason::NETWORK_DISCONNECT_INVALID, m_players[i].GetName(), 0,
                                m_players[i].GetIpAddress());
-            OnClientDisconnect_Post(m_players[i].m_slot, 0, m_players[i].GetName(), 0,
+            OnClientDisconnect_Post(m_players[i].m_slot, ENetworkDisconnectionReason::NETWORK_DISCONNECT_INVALID, m_players[i].GetName(), 0,
                                     m_players[i].GetIpAddress());
         }
     }

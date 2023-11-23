@@ -130,12 +130,12 @@ public:
                               CBufferString *pRejectReason);
     void OnClientPutInServer(CPlayerSlot slot, char const *pszName, int type, uint64 xuid);
     void OnClientDisconnect(CPlayerSlot slot,
-                            /* ENetworkDisconnectionReason */ int reason,
+                            ENetworkDisconnectionReason reason,
                             const char *pszName,
                             uint64 xuid,
                             const char *pszNetworkID);
     void OnClientDisconnect_Post(CPlayerSlot slot,
-                                 /* ENetworkDisconnectionReason */ int reason,
+                                 ENetworkDisconnectionReason reason,
                                  const char *pszName,
                                  uint64 xuid,
                                  const char *pszNetworkID) const;
