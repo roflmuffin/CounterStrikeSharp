@@ -23,6 +23,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
+using CounterStrikeSharp.API.Modules.Targets;
 
 namespace CounterStrikeSharp.API
 {
@@ -67,6 +68,11 @@ namespace CounterStrikeSharp.API
         public static CCSPlayerController? GetPlayerFromSteamId(ulong steamId)
         {
             return Utilities.GetPlayers().FirstOrDefault(player => player.SteamID == steamId);
+        }
+
+        public static TargetResult ProcessTargetString(string pattern, CCSPlayerController player)
+        {
+            return new Target(pattern).GetTarget(player);
         }
 
         public static IEnumerable<T> FindAllEntitiesByDesignerName<T>(string designerName) where T : CEntityInstance
