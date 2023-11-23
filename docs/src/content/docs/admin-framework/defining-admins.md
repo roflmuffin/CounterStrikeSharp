@@ -16,6 +16,10 @@ Adding an Admin is as simple as creating a new entry in the `configs/admins.json
   "ZoNiCaL": {
     "identity": "76561198808392634",
     "flags": ["@css/changemap", "@css/generic"]
+  },
+  "another ZoNiCaL": {
+    "identity": "STEAM_0:1:1",
+    "flags": ["@css/generic"]
   }
 }
 ```
@@ -54,3 +58,4 @@ However there is a somewhat standardized list of flags that it is advised you us
 :::note
 CounterStrikeSharp does not implement traditional admin command such as `!slay`, `!kick`, and `!ban`. It is up to individual plugins to implement these commands.
 :::
+
