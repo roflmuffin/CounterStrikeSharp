@@ -64,6 +64,11 @@ namespace CounterStrikeSharp.API
             return Utilities.GetEntityFromIndex<CCSPlayerController>((userid & 0xFF) + 1);
         }
 
+        public static CCSPlayerController? GetPlayerFromSteamId(ulong steamId)
+        {
+            return Utilities.GetPlayers().FirstOrDefault(player => player.SteamID == steamId);
+        }
+
         public static IEnumerable<T> FindAllEntitiesByDesignerName<T>(string designerName) where T : CEntityInstance
         {
             var pEntity = new CEntityIdentity(NativeAPI.GetFirstActiveEntity());
