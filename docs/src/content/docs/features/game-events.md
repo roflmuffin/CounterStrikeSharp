@@ -18,7 +18,7 @@ The first parameter type must be a subclass of the `GameEvent` class. The names 
 public HookResult OnPlayerConnect(EventPlayerConnect @event, GameEventInfo info)
 {
     // Userid will give you a reference to a CCSPlayerController class
-    Log($"Player {@event.Userid.PlayerName} has connected!");
+    Logger.LogInformation("Player {Name} has connected!", @event.Userid.PlayerName);
 
     return HookResult.Continue;
 }
@@ -33,7 +33,7 @@ public override void Load(bool hotReload)
 {
     RegisterEventHandler<EventRoundStart>((@event, info) =>
     {
-        Console.WriteLine($"Round has started with time limit of {@event.Timelimit}");
+        Logger.LogInformation("Round has started with time limit of {Timelimit}", @event.Timelimit);
 
         return HookResult.Continue;
     });

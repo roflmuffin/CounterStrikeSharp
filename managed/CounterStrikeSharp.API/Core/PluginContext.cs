@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -20,9 +20,9 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using CounterStrikeSharp.API.Core.Attributes;
-using CounterStrikeSharp.API.Modules.Config;
-using CounterStrikeSharp.API.Modules.Events;
+using CounterStrikeSharp.API.Core.Logging;
 using McMaster.NETCore.Plugins;
+using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Core
 {
@@ -42,6 +42,9 @@ namespace CounterStrikeSharp.API.Core
 
         private readonly string _path;
         private readonly FileSystemWatcher _fileWatcher;
+
+        // TOOD: ServiceCollection
+        private ILogger _logger = CoreLogging.Factory.CreateLogger<PluginContext>();
 
         public PluginContext(string path, int id)
         {
@@ -63,7 +66,7 @@ namespace CounterStrikeSharp.API.Core
             {
                 if (e.FullPath == path)
                 {
-                    Console.WriteLine($"Plugin {Name} has been deleted, unloading...");
+                    _logger.LogInformation("Plugin {Name} has been deleted, unloading...", Name);
                     Unload(true);
                 }
             };
@@ -75,7 +78,7 @@ namespace CounterStrikeSharp.API.Core
 
         private Task OnReloadedAsync(object sender, PluginReloadedEventArgs eventargs)
         {
-            Console.WriteLine($"Reloading plugin {Name}");
+            _logger.LogInformation("Reloading plugin {Name}", Name);
             _assemblyLoader = eventargs.Loader;
             Unload(hotReload: true);
             Load(hotReload: true);
@@ -100,14 +103,15 @@ namespace CounterStrikeSharp.API.Core
                     throw new Exception(
                         $"Plugin \"{Path.GetFileName(_path)}\" requires a newer version of CounterStrikeSharp. The plugin expects version [{minimumApiVersion}] but the current version is [{currentVersion}].");
 
-                Console.WriteLine($"Loading plugin: {pluginType.Name}");
+                _logger.LogInformation("Loading plugin {Name}", pluginType.Name);
                 _plugin = (BasePlugin)Activator.CreateInstance(pluginType)!;
                 _plugin.ModulePath = _path;
                 _plugin.RegisterAllAttributes(_plugin);
+                _plugin.Logger =  PluginLogging.CreatePluginLogger(this);
                 _plugin.InitializeConfig(_plugin, pluginType);
                 _plugin.Load(hotReload);
 
-                Console.WriteLine($"Finished loading plugin: {Name}");
+                _logger.LogInformation("Finished loading plugin {Name}", Name);
             }
         }
 
@@ -115,7 +119,7 @@ namespace CounterStrikeSharp.API.Core
         {
             var cachedName = Name;
 
-            Console.WriteLine($"Unloading plugin {Name}");
+            _logger.LogInformation("Unloading plugin {Name}", Name);
 
             _plugin.Unload(hotReload);
 
@@ -127,7 +131,7 @@ namespace CounterStrikeSharp.API.Core
                 _fileWatcher.Dispose();
             }
 
-            Console.WriteLine($"Finished unloading plugin {cachedName}");
+            _logger.LogInformation("Finished unloading plugin {Name}", Name);
         }
     }
 }
