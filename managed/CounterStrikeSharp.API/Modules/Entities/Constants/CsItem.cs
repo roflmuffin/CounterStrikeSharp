@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CounterStrikeSharp.API.Modules.Utils
+namespace CounterStrikeSharp.API.Modules.Entities.Constants
 {
     public enum CsItem
     {
@@ -103,7 +103,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
         [EnumMember(Value = "weapon_glock")]
         Glock = 201,
         Glock18 = Glock,
- 
+
         [EnumMember(Value = "weapon_usp_silencer")]
         USPS = 202,
         USP = USPS,
@@ -122,7 +122,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
         Tec9 = 205,
 
         [EnumMember(Value = "weapon_p250")]
-        P250 = 206, 
+        P250 = 206,
 
         [EnumMember(Value = "weapon_cz75a")]
         CZ = 207,
@@ -148,7 +148,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
         MP7 = 302,
 
         [EnumMember(Value = "weapon_p90")]
-        P90 = 303, 
+        P90 = 303,
 
         [EnumMember(Value = "weapon_mp5sd")]
         MP5SD = 304,
