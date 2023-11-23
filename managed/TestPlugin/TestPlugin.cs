@@ -61,6 +61,13 @@ namespace TestPlugin
             Config = config;
         }
 
+        private TestInjectedClass _testInjectedClass;
+
+        public SamplePlugin(TestInjectedClass testInjectedClass)
+        {
+            _testInjectedClass = testInjectedClass;
+        }
+
         public override void Load(bool hotReload)
         {
             // Basic usage of the configuration system
@@ -98,6 +105,8 @@ namespace TestPlugin
             var virtualFunc = VirtualFunction.Create<IntPtr>(server.Pointer, 91);
             var result = virtualFunc() - 8;
             Logger.LogInformation("Result of virtual func call is {Pointer:X}", result);
+            
+            _testInjectedClass.Hello();
         }
 
         private void SetupConvars()

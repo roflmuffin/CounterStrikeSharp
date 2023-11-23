@@ -22,53 +22,12 @@ using System.Security;
 
 namespace CounterStrikeSharp.API.Core
 {
-    public class MethodAttribute<T> where T : Attribute
-    {
-        public MethodAttribute(T attribute, MethodInfo method)
-        {
-            Attribute = attribute;
-            Method = method;
-        }
-
-        public T Attribute;
-        public MethodInfo Method;
-    }
-
     public static class Helpers
     {
-        private static MethodAttribute<T>[] FindMethodAttributes<T>(BasePlugin plugin) where T: Attribute
-        {
-            return plugin
-                .GetType()
-                .GetMethods()
-                .Where(m => m.GetCustomAttributes(typeof(T), false).Length > 0)
-                .Select(x => new MethodAttribute<T>(x.GetCustomAttribute<T>(), x))
-                .ToArray();   
-        }
-
         private const string dllPath = "counterstrikesharp";
 
         [SecurityCritical]
         [DllImport(dllPath, EntryPoint = "InvokeNative")]
         public static extern void InvokeNative(IntPtr ptr);
-
-        [UnmanagedCallersOnly]
-        // Used by .NET Host in C++ to initiate loading
-        public static int LoadAllPlugins()
-        {
-            try
-            {
-                var globalContext = new GlobalContext();
-                globalContext.InitGlobalContext();
-                return 1;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                return 0;
-            }
-        }
-
-        public delegate void Callback();
     }
 }
