@@ -39,20 +39,6 @@ using Microsoft.Extensions.Logging;
 
 namespace TestPlugin
 {
-    [StructLayout(LayoutKind.Explicit)]
-    public struct CTakeDamageInfo
-    {
-        [FieldOffset(68)] public float damage;
-
-        [FieldOffset(72)] public DamageTypes_t damageTypes;
-
-        [FieldOffset(96)] public float originalDamage;
-
-        [FieldOffset(108)] public TakeDamageFlags_t damageFlags;
-
-        [FieldOffset(112)] public int numObjectsPenetrated;
-    }
-
     public class SampleConfig : BasePluginConfig
     {
         [JsonPropertyName("IsPluginEnabled")] public bool IsPluginEnabled { get; set; } = true;
@@ -102,15 +88,25 @@ namespace TestPlugin
             //     return HookResult.Changed;
             // }, HookMode.Post);
 
-            var memfunc = new MemoryFunctionVoid<IntPtr, IntPtr>(GameData.GetSignature("CBaseEntity_TakeDamageOld"));
-
-            memfunc.Hook((h =>
+            VirtualFunctions.CBaseEntity_TakeDamageOldFunc.Hook((h =>
             {
-                var entity = h.GetParam<CEntityInstance>(0);
-                var damagePointer = h.GetParam<IntPtr>(1);
-                var damage = Marshal.PtrToStructure<CTakeDamageInfo>(damagePointer);
+                var victim = h.GetParam<CEntityInstance>(0);
+                var damageInfo = h.GetParam<CTakeDamageInfo>(1);
+                
+                if (damageInfo.Inflictor.Value.DesignerName == "inferno")
+                {
+                    var inferno = new CInferno(damageInfo.Inflictor.Value.Handle);
+                    Logger.LogInformation("Owner of inferno is {Owner}",  inferno.OwnerEntity);
 
-                Logger.LogInformation("{Entity} just took {Damage} damage", entity.DesignerName, damage.damage);
+                    if (victim == inferno.OwnerEntity.Value)
+                    {
+                        damageInfo.Damage = 0;
+                    }
+                    else
+                    {
+                        damageInfo.Damage = 150;
+                    }
+                }
 
                 return HookResult.Continue;
             }), HookMode.Pre);

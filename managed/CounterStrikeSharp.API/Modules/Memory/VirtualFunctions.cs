@@ -64,4 +64,7 @@ public static class VirtualFunctions
     public static MemoryFunctionVoid<IntPtr> CCSPlayerPawn_RespawnFunc = new(GameData.GetSignature("CCSPlayerPawn_Respawn"));
 
     public static Action<IntPtr> CCSPlayerPawn_Respawn = CCSPlayerPawn_RespawnFunc.Invoke;
+    
+    public static MemoryFunctionVoid<CEntityInstance, CTakeDamageInfo> CBaseEntity_TakeDamageOldFunc = new (GameData.GetSignature("CBaseEntity_TakeDamageOld"));
+    public static Action<CEntityInstance, CTakeDamageInfo> CBaseEntity_TakeDamageOld = CBaseEntity_TakeDamageOldFunc.Invoke;
 }
