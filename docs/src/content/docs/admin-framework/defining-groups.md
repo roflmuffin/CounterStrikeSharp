@@ -18,8 +18,25 @@ Groups can be created to group a series of permissions together under one tag. T
 }
 ```
 
+You can add admins to groups using the `groups` array in `configs/admins.json`
+```json
+{
+  "erikj": {
+    "identity": "76561198808392634",
+    "flags": ["@mycustomplugin/admin"],
+    "groups": ["#css/simple-admin"]
+  },
+  "Another erikj": {
+    "identity": "STEAM_0:1:1",
+    "flags": ["@mycustomplugin/admin"],
+    "groups": ["#css/simple-admin"]
+  }
+}
+```
+
 :::note
-All group names MUST start with a hashtag # character, otherwise CounterStrikeSharp will recognize the group.
+All group names MUST start with a hashtag # character, otherwise CounterStrikeSharp won't recognize the group.
 :::
 
 Admins can be assigned to multiple groups and they will inherit their flags. You can manually assign groups to players in code with `AdminManager.AddPlayerToGroup` and `AdminManager.RemovePlayerFromGroup`.
+

@@ -26,6 +26,19 @@
       "linux": 89
     }
   },
+  "CCSPlayerController_Respawn": {
+    "offsets": {
+        "windows": 241,
+        "linux": 243
+    }
+  },
+  "CCSPlayerPawn_Respawn": {
+    "signatures": {
+        "library": "server",
+        "windows": "\\x40\\x53\\x48\\x83\\xEC\\x20\\x8B\\x91\\x38\\x0B\\x00\\x00\\x48\\x8B\\xD9",
+        "linux": "\\x8B\\x8F\\x40\\x0E\\x00\\x00\\x83\\xF9\\xFF\\x0F\\x84\\xD9\\x01"
+    }
+  },
   "GiveNamedItem": {
     "signatures": {
       "library": "server",

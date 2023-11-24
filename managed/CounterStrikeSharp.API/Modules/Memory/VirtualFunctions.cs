@@ -60,4 +60,8 @@ public static class VirtualFunctions
         new(GameData.GetSignature("CBaseEntity_DispatchSpawn"));
 
     public static Action<IntPtr, IntPtr> CBaseEntity_DispatchSpawn = CBaseEntity_DispatchSpawnFunc.Invoke;
+    
+    public static MemoryFunctionVoid<IntPtr> CCSPlayerPawn_RespawnFunc = new(GameData.GetSignature("CCSPlayerPawn_Respawn"));
+
+    public static Action<IntPtr> CCSPlayerPawn_Respawn = CCSPlayerPawn_RespawnFunc.Invoke;
 }
