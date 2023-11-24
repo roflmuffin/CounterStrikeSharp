@@ -421,6 +421,18 @@ namespace TestPlugin
                 command.ReplyToCommand(weapon.Value.DesignerName);
             }
         }
+        
+        [ConsoleCommand("css_colors", "List Chat Colors")]
+        public void OnCommandColors(CCSPlayerController? player, CommandInfo command)
+        {
+            if (player == null) return;
+            if (!player.PlayerPawn.IsValid) return;
+
+            for (int i = 0; i < 16; i++)
+            {
+                command.ReplyToCommand($" {(char)i}Color 0x{i:x}");
+            }
+        }
 
         [ConsoleCommand("css_pause", "Pause Game")]
         public void OnCommandPause(CCSPlayerController? player, CommandInfo command)
