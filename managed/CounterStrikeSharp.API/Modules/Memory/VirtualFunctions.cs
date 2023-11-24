@@ -1,4 +1,6 @@
 using System;
+using System.Reflection.Metadata;
+
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Entities.Constants;
 using CounterStrikeSharp.API.Modules.Utils;
@@ -34,4 +36,6 @@ public static class VirtualFunctions
     public static Func<string, int, IntPtr> UTIL_CreateEntityByName = VirtualFunction.Create<string, int, IntPtr>(GameData.GetSignature("UTIL_CreateEntityByName"));
 
     public static Action<IntPtr, IntPtr> CBaseEntity_DispatchSpawn = VirtualFunction.CreateVoid<IntPtr, IntPtr>(GameData.GetSignature("CBaseEntity_DispatchSpawn"));
+
+    public static Action<IntPtr> CCSPlayerPawn_Respawn = VirtualFunction.CreateVoid<IntPtr>(GameData.GetSignature("CCSPlayerPawn_Respawn"));
 }

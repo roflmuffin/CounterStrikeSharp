@@ -79,6 +79,31 @@ public partial class CCSPlayerController
         itemServices.RemoveWeapons();
     }
 
+    /// <summary>
+    /// Force player suicide
+    /// </summary>
+    /// <param name="explode"></param>
+    /// <param name="force"></param>
+    public void CommitSuicide(bool explode, bool force)
+    {
+        if (!PlayerPawn.IsValid) return;
+        if (!PlayerPawn.Value.IsValid) return;
+
+        PlayerPawn.Value.CommitSuicide(explode, force);
+    }
+
+    /// <summary>
+    /// Respawn player
+    /// </summary>
+    public void Respawn()
+    {
+        if (!PlayerPawn.IsValid) return;
+        if (!PlayerPawn.Value.IsValid) return;
+
+        VirtualFunctions.CCSPlayerPawn_Respawn(PlayerPawn.Value.Handle);
+        VirtualFunction.CreateVoid<IntPtr>(Handle, GameData.GetOffset("CCSPlayerController_Respawn"))(Handle);
+    }
+
     public bool IsBot => ((PlayerFlags)Flags).HasFlag(PlayerFlags.FL_FAKECLIENT);
 
     /// <summary>
