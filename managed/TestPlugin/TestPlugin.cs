@@ -18,9 +18,6 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
@@ -31,9 +28,7 @@ using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Memory;
-using CounterStrikeSharp.API.Modules.Memory.DynamicFunctions;
 using CounterStrikeSharp.API.Modules.Menu;
-using CounterStrikeSharp.API.Modules.Timers;
 using CounterStrikeSharp.API.Modules.Utils;
 using Microsoft.Extensions.Logging;
 
@@ -78,39 +73,6 @@ namespace TestPlugin
                 $"Test Plugin has been loaded, and the hot reload flag was {hotReload}, path is {ModulePath}");
 
             Logger.LogWarning($"Max Players: {Server.MaxPlayers}");
-            // var x = DynamicDetour.Test;
-            // DynamicDetour.Test.Hook((h) =>
-            // {
-            //     var entity = h.GetParam<CEntityInstance>(0);
-            //
-            //     Console.WriteLine($"Removed the thingomabob {entity.DesignerName}");
-            //
-            //     return HookResult.Changed;
-            // }, HookMode.Post);
-
-            VirtualFunctions.CBaseEntity_TakeDamageOldFunc.Hook((h =>
-            {
-                var victim = h.GetParam<CEntityInstance>(0);
-                var damageInfo = h.GetParam<CTakeDamageInfo>(1);
-                
-                if (damageInfo.Inflictor.Value.DesignerName == "inferno")
-                {
-                    var inferno = new CInferno(damageInfo.Inflictor.Value.Handle);
-                    Logger.LogInformation("Owner of inferno is {Owner}",  inferno.OwnerEntity);
-
-                    if (victim == inferno.OwnerEntity.Value)
-                    {
-                        damageInfo.Damage = 0;
-                    }
-                    else
-                    {
-                        damageInfo.Damage = 150;
-                    }
-                }
-
-                return HookResult.Continue;
-            }), HookMode.Pre);
-
             
             VirtualFunctions.SwitchTeamFunc.Hook(hook =>
             {
@@ -149,6 +111,29 @@ namespace TestPlugin
 
                 return HookResult.Continue;
             }, HookMode.Post);
+            
+            VirtualFunctions.CBaseEntity_TakeDamageOldFunc.Hook((h =>
+            {
+                var victim = h.GetParam<CEntityInstance>(0);
+                var damageInfo = h.GetParam<CTakeDamageInfo>(1);
+                
+                if (damageInfo.Inflictor.Value.DesignerName == "inferno")
+                {
+                    var inferno = new CInferno(damageInfo.Inflictor.Value.Handle);
+                    Logger.LogInformation("Owner of inferno is {Owner}",  inferno.OwnerEntity);
+
+                    if (victim == inferno.OwnerEntity.Value)
+                    {
+                        damageInfo.Damage = 0;
+                    }
+                    else
+                    {
+                        damageInfo.Damage = 150;
+                    }
+                }
+
+                return HookResult.Continue;
+            }), HookMode.Pre);
         }
 
         private void SetupConvars()
