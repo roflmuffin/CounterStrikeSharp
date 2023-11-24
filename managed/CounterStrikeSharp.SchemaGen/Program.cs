@@ -157,6 +157,9 @@ internal static partial class Program
             WriteEnum(builder, enumName, schemaEnum);
         }
 
+        // Manually whitelist some classes
+        visited.Add("CTakeDamageInfo");
+
         var visitedClassNames = new HashSet<string>();
         foreach (var (className, schemaClass) in allClasses)
         {
