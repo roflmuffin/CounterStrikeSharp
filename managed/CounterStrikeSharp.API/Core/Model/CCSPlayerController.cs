@@ -39,12 +39,12 @@ public partial class CCSPlayerController
         VirtualFunctions.ClientPrint(this.Handle, HudDestination.Center, message, 0, 0, 0, 0);
     }
     
-    public void PrintToCenterHtml(string message)
+    public void PrintToCenterHtml(string message, long duration = 5)
     {
         var @event = new EventShowSurvivalRespawnStatus(true)
         {
             LocToken = message,
-            Duration = 5,
+            Duration = duration,
             Userid = this
         };
         @event.FireEventToClient(this);
