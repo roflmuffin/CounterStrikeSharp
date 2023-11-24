@@ -29,7 +29,6 @@ using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Menu;
-using CounterStrikeSharp.API.Modules.Timers;
 using CounterStrikeSharp.API.Modules.Utils;
 using Microsoft.Extensions.Logging;
 
@@ -74,6 +73,12 @@ namespace TestPlugin
                 $"Test Plugin has been loaded, and the hot reload flag was {hotReload}, path is {ModulePath}");
 
             Logger.LogWarning($"Max Players: {Server.MaxPlayers}");
+            
+            VirtualFunctions.SwitchTeamFunc.Hook(hook =>
+            {
+                Logger.LogInformation("Switch team func called");
+                return HookResult.Continue;
+            }, HookMode.Pre);
 
             SetupConvars();
             SetupGameEvents();
@@ -98,6 +103,37 @@ namespace TestPlugin
             var virtualFunc = VirtualFunction.Create<IntPtr>(server.Pointer, 91);
             var result = virtualFunc() - 8;
             Logger.LogInformation("Result of virtual func call is {Pointer:X}", result);
+            
+            VirtualFunctions.UTIL_RemoveFunc.Hook(hook =>
+            {
+                var entityInstance = hook.GetParam<CEntityInstance>(0);
+                Logger.LogInformation("Removed entity {EntityIndex}", entityInstance.EntityIndex.Value.Value);
+
+                return HookResult.Continue;
+            }, HookMode.Post);
+            
+            VirtualFunctions.CBaseEntity_TakeDamageOldFunc.Hook((h =>
+            {
+                var victim = h.GetParam<CEntityInstance>(0);
+                var damageInfo = h.GetParam<CTakeDamageInfo>(1);
+                
+                if (damageInfo.Inflictor.Value.DesignerName == "inferno")
+                {
+                    var inferno = new CInferno(damageInfo.Inflictor.Value.Handle);
+                    Logger.LogInformation("Owner of inferno is {Owner}",  inferno.OwnerEntity);
+
+                    if (victim == inferno.OwnerEntity.Value)
+                    {
+                        damageInfo.Damage = 0;
+                    }
+                    else
+                    {
+                        damageInfo.Damage = 150;
+                    }
+                }
+
+                return HookResult.Continue;
+            }), HookMode.Pre);
         }
 
         private void SetupConvars()
