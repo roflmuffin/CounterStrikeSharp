@@ -48,7 +48,7 @@ public static class Bootstrap
                         .CreateLogger());
                 });
 
-                services.AddScoped<GlobalContext>();
+                services.AddScoped<Core.Application>();
                 services.AddSingleton<IPluginHostContext, PluginHostContext>();
                 services.AddScoped<IPluginContextQueryHandler, PluginContextQueryHandler>();
 
@@ -63,8 +63,8 @@ public static class Bootstrap
 
         GameData.GameDataProvider = scope.ServiceProvider.GetRequiredService<GameDataProvider>();
 
-        var context = scope.ServiceProvider.GetRequiredService<GlobalContext>();
-        context.InitGlobalContext();
+        var context = scope.ServiceProvider.GetRequiredService<Core.Application>();
+        context.Start();
 
         return 1;
     }

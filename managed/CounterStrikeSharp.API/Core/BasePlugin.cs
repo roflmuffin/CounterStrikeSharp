@@ -310,7 +310,7 @@ namespace CounterStrikeSharp.API.Core
                 .Select(p => p.GetCustomAttribute<CastFromAttribute>()?.Type)
                 .ToArray();
 
-            GlobalContext.Instance.Logger.LogDebug("Registering listener for {ListenerName} with {ParameterCount} parameters",
+            Application.Instance.Logger.LogDebug("Registering listener for {ListenerName} with {ParameterCount} parameters",
                 listenerName, parameterTypes.Length);
 
             var wrappedHandler = new Action<ScriptContext>(context =>

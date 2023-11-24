@@ -14,31 +14,23 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using CounterStrikeSharp.API.Core.Hosting;
-using CounterStrikeSharp.API.Core.Logging;
 using CounterStrikeSharp.API.Core.Plugin;
 using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Menu;
 using CounterStrikeSharp.API.Modules.Utils;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Serilog;
-using ILogger = Microsoft.Extensions.Logging.ILogger;
 
 namespace CounterStrikeSharp.API.Core
 {
-    public sealed class GlobalContext
+    public sealed class Application
     {
-        private static GlobalContext _instance = null!;
+        private static Application _instance = null!;
         public ILogger Logger { get; }
-        public static GlobalContext Instance => _instance!;
+        public static Application Instance => _instance!;
 
         public static string RootDirectory => Instance._scriptHostConfiguration.RootPath;
 
@@ -48,7 +40,7 @@ namespace CounterStrikeSharp.API.Core
         private readonly IPluginHostContext _pluginHostContext;
         private readonly IPluginContextQueryHandler _pluginContextQueryHandler;
 
-        public GlobalContext(ILoggerFactory loggerFactory, IScriptHostConfiguration scriptHostConfiguration,
+        public Application(ILoggerFactory loggerFactory, IScriptHostConfiguration scriptHostConfiguration,
             GameDataProvider gameDataProvider, CoreConfig coreConfig, IPluginHostContext pluginHostContext, IPluginContextQueryHandler pluginContextQueryHandler)
         {
             Logger = loggerFactory.CreateLogger("Core");
@@ -60,7 +52,7 @@ namespace CounterStrikeSharp.API.Core
             _instance = this;
         }
 
-        public void InitGlobalContext()
+        public void Start()
         {
             Logger.LogInformation("CounterStrikeSharp is starting up...");
 
@@ -131,7 +123,7 @@ namespace CounterStrikeSharp.API.Core
                     foreach (var plugin in _pluginHostContext.GetLoadedPlugins())
                     {
                         var sb = new StringBuilder();
-                        sb.AppendFormat("  [#{0}]: \"{1}\" ({2})", plugin.PluginId, plugin.Plugin.ModuleName,
+                        sb.AppendFormat("  [#{0}:{1}]: \"{2}\" ({3})", plugin.PluginId, plugin.State.ToString().ToUpper(), plugin.Plugin.ModuleName,
                             plugin.Plugin.ModuleVersion);
                         if (!string.IsNullOrEmpty(plugin.Plugin.ModuleAuthor))
                             sb.AppendFormat(" by {0}", plugin.Plugin.ModuleAuthor);
@@ -157,6 +149,16 @@ namespace CounterStrikeSharp.API.Core
                             true);
                         break;
                     }
+
+                    var plugin = _pluginContextQueryHandler.FindPluginByModulePath(info.GetArg(2));
+
+                    if (plugin == null)
+                    {
+                       info.ReplyToCommand("Could not find plugin to load.");
+                       break;
+                    }
+                    
+                    plugin.Load();
 
                     // If our arugment doesn't end in ".dll" - try and construct a path similar to PluginName/PluginName.dll.
                     // We'll assume we have a full path if we have ".dll".

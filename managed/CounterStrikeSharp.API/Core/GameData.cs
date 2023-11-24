@@ -64,7 +64,7 @@ public static class GameData
     internal static GameDataProvider GameDataProvider { get; set; } = null!;
     public static string GetSignature(string key)
     {
-        GlobalContext.Instance.Logger.LogDebug("Getting signature: {Key}", key);
+        Application.Instance.Logger.LogDebug("Getting signature: {Key}", key);
         if (!GameDataProvider.Methods.ContainsKey(key))
         {
             throw new ArgumentException($"Method {key} not found in gamedata.json");

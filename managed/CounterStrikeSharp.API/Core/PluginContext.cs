@@ -22,6 +22,7 @@ using System.Threading.Tasks;
 using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Core.Hosting;
 using CounterStrikeSharp.API.Core.Logging;
+using CounterStrikeSharp.API.Core.Plugin;
 using McMaster.NETCore.Plugins;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -32,6 +33,7 @@ namespace CounterStrikeSharp.API.Core
 {
     public class PluginContext
     {
+        public PluginState State { get; set; } = PluginState.Unregistered;
         public IPlugin Plugin { get; private set; }
 
         public PluginLoader Loader { get; private set; }
@@ -84,6 +86,9 @@ namespace CounterStrikeSharp.API.Core
 
         private Task OnReloadedAsync(object sender, PluginReloadedEventArgs eventargs)
         {
+            // Don't reload if the plugin is unloaded
+            if (State == PluginState.Unloaded) return Task.CompletedTask;
+
             _logger.LogInformation("Reloading plugin {Name}", Plugin.ModuleName);
             Loader = eventargs.Loader;
             Unload(hotReload: true);
@@ -94,6 +99,8 @@ namespace CounterStrikeSharp.API.Core
 
         public void Load(bool hotReload = false)
         {
+            if (State == PluginState.Loaded) return;
+
             using (Loader.EnterContextualReflection())
             {
                 var defaultAssembly = Loader.LoadDefaultAssembly();
@@ -177,11 +184,16 @@ namespace CounterStrikeSharp.API.Core
                 Plugin.Load(hotReload);
 
                 _logger.LogInformation("Finished loading plugin {Name}", Plugin.ModuleName);
+
+                State = PluginState.Loaded;
             }
         }
 
         public void Unload(bool hotReload = false)
         {
+            if (State == PluginState.Unloaded) return;
+
+            State = PluginState.Unloaded;
             var cachedName = Plugin.ModuleName;
 
             _logger.LogInformation("Unloading plugin {Name}", Plugin.ModuleName);
@@ -189,12 +201,6 @@ namespace CounterStrikeSharp.API.Core
             Plugin.Unload(hotReload);
 
             Plugin.Dispose();
-
-            if (!hotReload)
-            {
-                Loader.Dispose();
-                _fileWatcher.Dispose();
-            }
 
             _logger.LogInformation("Finished unloading plugin {Name}", cachedName);
         }
