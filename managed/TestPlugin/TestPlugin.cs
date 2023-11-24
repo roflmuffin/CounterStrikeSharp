@@ -29,7 +29,6 @@ using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Menu;
-using CounterStrikeSharp.API.Modules.Timers;
 using CounterStrikeSharp.API.Modules.Utils;
 using Microsoft.Extensions.Logging;
 
@@ -81,6 +80,12 @@ namespace TestPlugin
                 $"Test Plugin has been loaded, and the hot reload flag was {hotReload}, path is {ModulePath}");
 
             Logger.LogWarning($"Max Players: {Server.MaxPlayers}");
+            
+            VirtualFunctions.SwitchTeamFunc.Hook(hook =>
+            {
+                Logger.LogInformation("Switch team func called");
+                return HookResult.Continue;
+            }, HookMode.Pre);
 
             SetupConvars();
             SetupGameEvents();
@@ -107,6 +112,37 @@ namespace TestPlugin
             Logger.LogInformation("Result of virtual func call is {Pointer:X}", result);
             
             _testInjectedClass.Hello();
+            
+            VirtualFunctions.UTIL_RemoveFunc.Hook(hook =>
+            {
+                var entityInstance = hook.GetParam<CEntityInstance>(0);
+                Logger.LogInformation("Removed entity {EntityIndex}", entityInstance.EntityIndex.Value.Value);
+
+                return HookResult.Continue;
+            }, HookMode.Post);
+            
+            VirtualFunctions.CBaseEntity_TakeDamageOldFunc.Hook((h =>
+            {
+                var victim = h.GetParam<CEntityInstance>(0);
+                var damageInfo = h.GetParam<CTakeDamageInfo>(1);
+                
+                if (damageInfo.Inflictor.Value.DesignerName == "inferno")
+                {
+                    var inferno = new CInferno(damageInfo.Inflictor.Value.Handle);
+                    Logger.LogInformation("Owner of inferno is {Owner}",  inferno.OwnerEntity);
+
+                    if (victim == inferno.OwnerEntity.Value)
+                    {
+                        damageInfo.Damage = 0;
+                    }
+                    else
+                    {
+                        damageInfo.Damage = 150;
+                    }
+                }
+
+                return HookResult.Continue;
+            }), HookMode.Pre);
         }
 
         private void SetupConvars()
@@ -391,8 +427,19 @@ namespace TestPlugin
 
             foreach (var weapon in player.PlayerPawn.Value.WeaponServices.MyWeapons)
             {
-                // We don't currently have a `ReplyToCommand` equivalent so just print to chat for now.
-                player.PrintToChat(weapon.Value.DesignerName);
+                command.ReplyToCommand(weapon.Value.DesignerName);
+            }
+        }
+        
+        [ConsoleCommand("css_colors", "List Chat Colors")]
+        public void OnCommandColors(CCSPlayerController? player, CommandInfo command)
+        {
+            if (player == null) return;
+            if (!player.PlayerPawn.IsValid) return;
+
+            for (int i = 0; i < 16; i++)
+            {
+                command.ReplyToCommand($" {(char)i}Color 0x{i:x}");
             }
         }
 

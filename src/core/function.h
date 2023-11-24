@@ -32,6 +32,11 @@
 
 #include "scripting/callback_manager.h"
 #include "scripting/script_engine.h"
+#include <map>
+
+namespace dyno {
+class Hook;
+}
 
 namespace counterstrikesharp {
 
@@ -81,19 +86,13 @@ public:
     ~ValveFunction();
 
     bool IsCallable();
-    // bool IsHookable();
-
-    // bool IsHooked();
-    // CHook* GetHook();
-
-    // ValveFunction* GetTrampoline();
 
     void SetOffset(int offset) { m_offset = offset; }
     void SetSignature(const char* signature) { m_signature = signature; }
 
     void Call(ScriptContext& args, int offset = 0);
-    // CHook* AddHook(HookType_t eType, void* callable);
-    // void DeleteHook();
+    void AddHook(CallbackT callable, bool post);
+    void RemoveHook(CallbackT callable, bool post);
 
     void* m_ulAddr;
     std::vector<DataType_t> m_Args;
@@ -107,6 +106,8 @@ public:
 
     int m_offset;
     const char* m_signature;
+    ScriptCallback* m_precallback = nullptr;
+    ScriptCallback* m_postcallback = nullptr;
 };
 
 }  // namespace counterstrikesharp

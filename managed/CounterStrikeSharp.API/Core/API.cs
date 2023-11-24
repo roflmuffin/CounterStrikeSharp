@@ -157,6 +157,56 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static T DynamicHookGetReturn<T>(IntPtr hook, int datatype){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(hook);
+			ScriptContext.GlobalScriptContext.Push(datatype);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x4F5B80D0);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (T)ScriptContext.GlobalScriptContext.GetResult(typeof(T));
+			}
+		}
+
+        public static void DynamicHookSetReturn<T>(IntPtr hook, int datatype, T value){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(hook);
+			ScriptContext.GlobalScriptContext.Push(datatype);
+			ScriptContext.GlobalScriptContext.Push(value);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xDB297E44);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static T DynamicHookGetParam<T>(IntPtr hook, int datatype, int paramindex){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(hook);
+			ScriptContext.GlobalScriptContext.Push(datatype);
+			ScriptContext.GlobalScriptContext.Push(paramindex);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x5F5ABDD5);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (T)ScriptContext.GlobalScriptContext.GetResult(typeof(T));
+			}
+		}
+
+        public static void DynamicHookSetParam<T>(IntPtr hook, int datatype, int paramindex, T value){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(hook);
+			ScriptContext.GlobalScriptContext.Push(datatype);
+			ScriptContext.GlobalScriptContext.Push(paramindex);
+			ScriptContext.GlobalScriptContext.Push(value);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xA96CFBC1);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
         public static string GetMapName(){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
@@ -800,6 +850,30 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
 			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			}
+		}
+
+        public static void HookFunction(IntPtr function, InputArgument hook, bool post){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(function);
+			ScriptContext.GlobalScriptContext.Push((InputArgument)hook);
+			ScriptContext.GlobalScriptContext.Push(post);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xA6C8BA9B);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static void UnhookFunction(IntPtr function, InputArgument hook, bool post){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(function);
+			ScriptContext.GlobalScriptContext.Push((InputArgument)hook);
+			ScriptContext.GlobalScriptContext.Push(post);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x2051B00);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
 			}
 		}
 
