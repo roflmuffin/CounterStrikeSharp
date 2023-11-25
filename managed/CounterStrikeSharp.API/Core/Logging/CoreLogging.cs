@@ -9,14 +9,8 @@ namespace CounterStrikeSharp.API.Core.Logging;
 
 public static class CoreLogging
 {
-    public static ILoggerFactory Factory { get; }
+    public static ILoggerFactory Factory { get; set; }
     private static Logger? SerilogLogger { get; set; }
-
-    static CoreLogging()
-    {
-        Factory =
-            LoggerFactory.Create(builder => { builder.AddSerilog(SerilogLogger); });
-    }
 
     public static void AddCoreLogging(this ILoggingBuilder builder, string contentRoot)
     {
@@ -37,6 +31,9 @@ public static class CoreLogging
                     outputTemplate:
                     "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u4}] (cssharp:{SourceContext}) {Message:lj}{NewLine}{Exception}")
                 .CreateLogger();
+
+            Factory =
+                LoggerFactory.Create(builder => { builder.AddSerilog(SerilogLogger); });
         }
 
         builder.AddSerilog(SerilogLogger);
