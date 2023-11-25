@@ -1,4 +1,5 @@
 using System;
+using CounterStrikeSharp.API.Modules.Entities.Constants;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
 
@@ -22,6 +23,17 @@ public partial class CCSPlayerController
         if (PlayerPawn.Value.ItemServices == null) return 0;
 
         return VirtualFunctions.GiveNamedItem(PlayerPawn.Value.ItemServices.Handle, item, 0, 0, 0, 0);
+    }
+
+    public IntPtr GiveNamedItem(CsItem item) 
+    {
+        string? itemString = EnumUtils.GetEnumMemberAttributeValue(item);
+        if (string.IsNullOrWhiteSpace(itemString))
+        {
+            return IntPtr.Zero;
+        }
+
+        return this.GiveNamedItem(itemString);
     }
 
     public void PrintToConsole(string message)
