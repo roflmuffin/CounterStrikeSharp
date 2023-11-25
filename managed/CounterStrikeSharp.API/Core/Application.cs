@@ -41,7 +41,8 @@ namespace CounterStrikeSharp.API.Core
         private readonly IPluginContextQueryHandler _pluginContextQueryHandler;
 
         public Application(ILoggerFactory loggerFactory, IScriptHostConfiguration scriptHostConfiguration,
-            GameDataProvider gameDataProvider, CoreConfig coreConfig, IPluginHostContext pluginHostContext, IPluginContextQueryHandler pluginContextQueryHandler)
+            GameDataProvider gameDataProvider, CoreConfig coreConfig, IPluginHostContext pluginHostContext,
+            IPluginContextQueryHandler pluginContextQueryHandler)
         {
             Logger = loggerFactory.CreateLogger("Core");
             _scriptHostConfiguration = scriptHostConfiguration;
@@ -123,7 +124,8 @@ namespace CounterStrikeSharp.API.Core
                     foreach (var plugin in _pluginHostContext.GetLoadedPlugins())
                     {
                         var sb = new StringBuilder();
-                        sb.AppendFormat("  [#{0}:{1}]: \"{2}\" ({3})", plugin.PluginId, plugin.State.ToString().ToUpper(), plugin.Plugin.ModuleName,
+                        sb.AppendFormat("  [#{0}:{1}]: \"{2}\" ({3})", plugin.PluginId,
+                            plugin.State.ToString().ToUpper(), plugin.Plugin.ModuleName,
                             plugin.Plugin.ModuleVersion);
                         if (!string.IsNullOrEmpty(plugin.Plugin.ModuleAuthor))
                             sb.AppendFormat(" by {0}", plugin.Plugin.ModuleAuthor);
@@ -154,10 +156,10 @@ namespace CounterStrikeSharp.API.Core
 
                     if (plugin == null)
                     {
-                       info.ReplyToCommand("Could not find plugin to load.");
-                       break;
+                        info.ReplyToCommand("Could not find plugin to load.");
+                        break;
                     }
-                    
+
                     plugin.Load();
 
                     // If our arugment doesn't end in ".dll" - try and construct a path similar to PluginName/PluginName.dll.

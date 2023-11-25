@@ -45,12 +45,14 @@ namespace CounterStrikeSharp.API.Core
         private readonly IScriptHostConfiguration _hostConfiguration;
         private readonly string _path;
         private readonly FileSystemWatcher _fileWatcher;
+        private readonly IServiceProvider _applicationServiceProvider;
 
         // TOOD: ServiceCollection
         private ILogger _logger = CoreLogging.Factory.CreateLogger<PluginContext>();
 
-        public PluginContext(IScriptHostConfiguration hostConfiguration, string path, int id)
+        public PluginContext(IServiceProvider applicationServiceProvider, IScriptHostConfiguration hostConfiguration, string path, int id)
         {
+            _applicationServiceProvider = applicationServiceProvider;
             _hostConfiguration = hostConfiguration;
             _path = path;
             PluginId = id;
@@ -149,7 +151,6 @@ namespace CounterStrikeSharp.API.Core
                     .Where(type => interfaceType.IsAssignableFrom(type) && !type.IsInterface && !type.IsAbstract)
                     .ToArray();
 
-
                 if (concreteTypes.Any())
                 {
                     foreach (var t in concreteTypes)
@@ -159,7 +160,8 @@ namespace CounterStrikeSharp.API.Core
                         method?.Invoke(pluginServiceCollection, new object[] { serviceCollection });
                     }
                 }
-
+                
+                serviceCollection.AddSingleton(this);
                 ServiceProvider = serviceCollection.BuildServiceProvider();
 
                 var minimumApiVersion = pluginType.GetCustomAttribute<MinimumApiVersion>()?.Version;
@@ -173,11 +175,13 @@ namespace CounterStrikeSharp.API.Core
                 _logger.LogInformation("Loading plugin {Name}", pluginType.Assembly.GetName().Name);
 
                 Plugin = ServiceProvider.GetRequiredService(pluginType) as IPlugin;
-
+                
                 if (Plugin == null) throw new Exception("Unable to create plugin instance");
+                
+                State = PluginState.Loading;
 
                 Plugin.ModulePath = _path;
-                // Plugin.RegisterAllAttributes(_plugin);
+                Plugin.RegisterAllAttributes(Plugin);
                 Plugin.Logger = ServiceProvider.GetRequiredService<ILoggerFactory>().CreateLogger(pluginType);
 
                 Plugin.InitializeConfig(Plugin, pluginType);

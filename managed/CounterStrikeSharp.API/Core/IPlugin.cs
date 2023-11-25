@@ -55,6 +55,8 @@ namespace CounterStrikeSharp.API.Core
 
         ILogger Logger { get; set; }
 
+        void RegisterAllAttributes(object instance);
+
         void InitializeConfig(object instance, Type pluginType);
     }
 }

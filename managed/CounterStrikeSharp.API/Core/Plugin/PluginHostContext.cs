@@ -13,12 +13,14 @@ public class PluginHostContext : IPluginHostContext
 {
     private readonly HashSet<PluginContext> _loadedPluginContexts = new();
     private readonly IScriptHostConfiguration _scriptHostConfiguration;
+    private readonly IServiceProvider _serviceProvider;
     private readonly ILogger<PluginHostContext> _logger;
 
-    public PluginHostContext(IScriptHostConfiguration scriptHostConfiguration, ILogger<PluginHostContext> logger)
+    public PluginHostContext(IScriptHostConfiguration scriptHostConfiguration, ILogger<PluginHostContext> logger, IServiceProvider serviceProvider)
     {
         _scriptHostConfiguration = scriptHostConfiguration;
         _logger = logger;
+        _serviceProvider = serviceProvider;
     }
 
     public void Load()
@@ -49,7 +51,7 @@ public class PluginHostContext : IPluginHostContext
 
     private void LoadPlugin(string path)
     {
-        var plugin = new PluginContext(_scriptHostConfiguration, path, _loadedPluginContexts.Select(x => x.PluginId).DefaultIfEmpty(0).Max() + 1);
+        var plugin = new PluginContext(_serviceProvider, _scriptHostConfiguration, path, _loadedPluginContexts.Select(x => x.PluginId).DefaultIfEmpty(0).Max() + 1);
         _loadedPluginContexts.Add(plugin);
         plugin.Load();
     }
