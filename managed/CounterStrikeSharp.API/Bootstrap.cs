@@ -35,7 +35,7 @@ public static class Bootstrap
 
                 services.AddSingleton<IScriptHostConfiguration, ScriptHostConfiguration>();
                 services.AddScoped<Application>();
-                services.AddSingleton<IPluginHostContext, PluginHostContext>();
+                services.AddSingleton<IPluginManager, PluginManager>();
                 services.AddScoped<IPluginContextQueryHandler, PluginContextQueryHandler>();
 
                 services.Scan(i => i.FromCallingAssembly()

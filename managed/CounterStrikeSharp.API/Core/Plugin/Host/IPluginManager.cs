@@ -2,7 +2,7 @@
 
 namespace CounterStrikeSharp.API.Core.Plugin.Host;
 
-public interface IPluginHostContext
+public interface IPluginManager
 {
     public void Load();
     public IEnumerable<PluginContext> GetLoadedPlugins();

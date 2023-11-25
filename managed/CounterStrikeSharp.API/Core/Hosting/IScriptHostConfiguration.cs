@@ -2,7 +2,7 @@
 
 
 /// <summary>
-/// Provides information about the hosting environment an application is running in.
+/// Provides information about the CounterStrikeSharp host configuration.
 /// </summary>
 public interface IScriptHostConfiguration
 {
@@ -13,7 +13,7 @@ public interface IScriptHostConfiguration
     string RootPath { get; }
     
     /// <summary>
-    /// Gets the absolute path to the directory that contains ounterStrikeSharp plugins.
+    /// Gets the absolute path to the directory that contains CounterStrikeSharp plugins.
     /// e.g. /game/csgo/addons/counterstrikesharp/plugins
     /// </summary>
     string PluginPath { get; }

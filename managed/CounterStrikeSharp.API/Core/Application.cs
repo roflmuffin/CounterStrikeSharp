@@ -38,18 +38,18 @@ namespace CounterStrikeSharp.API.Core
         private readonly IScriptHostConfiguration _scriptHostConfiguration;
         private readonly GameDataProvider _gameDataProvider;
         private readonly CoreConfig _coreConfig;
-        private readonly IPluginHostContext _pluginHostContext;
+        private readonly IPluginManager _pluginManager;
         private readonly IPluginContextQueryHandler _pluginContextQueryHandler;
 
         public Application(ILoggerFactory loggerFactory, IScriptHostConfiguration scriptHostConfiguration,
-            GameDataProvider gameDataProvider, CoreConfig coreConfig, IPluginHostContext pluginHostContext,
+            GameDataProvider gameDataProvider, CoreConfig coreConfig, IPluginManager pluginManager,
             IPluginContextQueryHandler pluginContextQueryHandler)
         {
             Logger = loggerFactory.CreateLogger("Core");
             _scriptHostConfiguration = scriptHostConfiguration;
             _gameDataProvider = gameDataProvider;
             _coreConfig = coreConfig;
-            _pluginHostContext = pluginHostContext;
+            _pluginManager = pluginManager;
             _pluginContextQueryHandler = pluginContextQueryHandler;
             _instance = this;
         }
@@ -75,7 +75,7 @@ namespace CounterStrikeSharp.API.Core
 
             AdminManager.MergeGroupPermsIntoAdmins();
 
-            _pluginHostContext.Load();
+            _pluginManager.Load();
 
             for (var i = 1; i <= 9; i++)
             {
@@ -119,10 +119,10 @@ namespace CounterStrikeSharp.API.Core
                 case "list":
                 {
                     info.ReplyToCommand(
-                        $"  List of all plugins currently loaded by CounterStrikeSharp: {_pluginHostContext.GetLoadedPlugins().Count()} plugins loaded.",
+                        $"  List of all plugins currently loaded by CounterStrikeSharp: {_pluginManager.GetLoadedPlugins().Count()} plugins loaded.",
                         true);
 
-                    foreach (var plugin in _pluginHostContext.GetLoadedPlugins())
+                    foreach (var plugin in _pluginManager.GetLoadedPlugins())
                     {
                         var sb = new StringBuilder();
                         sb.AppendFormat("  [#{0}:{1}]: \"{2}\" ({3})", plugin.PluginId,
@@ -161,7 +161,7 @@ namespace CounterStrikeSharp.API.Core
                         break;
                     }
 
-                    plugin.Load();
+                    plugin.Load(false);
 
                     // If our arugment doesn't end in ".dll" - try and construct a path similar to PluginName/PluginName.dll.
                     // We'll assume we have a full path if we have ".dll".
@@ -199,14 +199,14 @@ namespace CounterStrikeSharp.API.Core
                     }
 
                     var pluginIdentifier = info.GetArg(2);
-                    PluginContext? plugin = _pluginContextQueryHandler.FindPluginByIdOrName(pluginIdentifier);
+                    IPluginContext? plugin = _pluginContextQueryHandler.FindPluginByIdOrName(pluginIdentifier);
                     if (plugin == null)
                     {
                         info.ReplyToCommand($"Could not unload plugin \"{pluginIdentifier}\")", true);
                         break;
                     }
 
-                    plugin.Unload();
+                    plugin.Unload(false);
                     break;
                 }
 

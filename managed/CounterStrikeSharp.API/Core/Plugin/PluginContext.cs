@@ -28,14 +28,14 @@ using ILogger = Microsoft.Extensions.Logging.ILogger;
 
 namespace CounterStrikeSharp.API.Core.Plugin
 {
-    public class PluginContext
+    public class PluginContext : IPluginContext
     {
         public PluginState State { get; set; } = PluginState.Unregistered;
         public IPlugin Plugin { get; private set; }
 
-        public PluginLoader Loader { get; private set; }
+        private PluginLoader Loader { get; set; }
 
-        public IServiceProvider ServiceProvider { get; private set; }
+        private IServiceProvider ServiceProvider { get; set; }
 
         public int PluginId { get; }
 

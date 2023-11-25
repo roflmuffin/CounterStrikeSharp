@@ -4,35 +4,35 @@ namespace CounterStrikeSharp.API.Core.Plugin.Host;
 
 public class PluginContextQueryHandler : IPluginContextQueryHandler
 {
-    private readonly IPluginHostContext _pluginHostContext;
+    private readonly IPluginManager _pluginManager;
 
-    public PluginContextQueryHandler(IPluginHostContext pluginHostContext)
+    public PluginContextQueryHandler(IPluginManager pluginManager)
     {
-        _pluginHostContext = pluginHostContext;
+        _pluginManager = pluginManager;
     }
 
-    public PluginContext? FindPluginByType(Type moduleClass)
+    public IPluginContext? FindPluginByType(Type moduleClass)
     {
-        return _pluginHostContext.GetLoadedPlugins().FirstOrDefault(x => x.Plugin.GetType() == moduleClass);
+        return _pluginManager.GetLoadedPlugins().FirstOrDefault(x => x.Plugin.GetType() == moduleClass);
     }
 
-    public PluginContext? FindPluginById(int id)
+    public IPluginContext? FindPluginById(int id)
     {
-        return _pluginHostContext.GetLoadedPlugins().FirstOrDefault(x => x.PluginId == id);
+        return _pluginManager.GetLoadedPlugins().FirstOrDefault(x => x.PluginId == id);
     }
 
-    public PluginContext? FindPluginByModuleName(string name)
+    public IPluginContext? FindPluginByModuleName(string name)
     {
-        return _pluginHostContext.GetLoadedPlugins().FirstOrDefault(x => x.Plugin.ModuleName == name);
+        return _pluginManager.GetLoadedPlugins().FirstOrDefault(x => x.Plugin.ModuleName == name);
     }
 
-    public PluginContext? FindPluginByModulePath(string path)
+    public IPluginContext? FindPluginByModulePath(string path)
     {
-        return _pluginHostContext.GetLoadedPlugins().FirstOrDefault(x => x.Plugin.ModulePath == path);
+        return _pluginManager.GetLoadedPlugins().FirstOrDefault(x => x.Plugin.ModulePath == path);
     }
 
-    public PluginContext? FindPluginByIdOrName(string query)
+    public IPluginContext? FindPluginByIdOrName(string query)
     {
-        return _pluginHostContext.GetLoadedPlugins().FirstOrDefault(x => x.PluginId.ToString() == query || x.Plugin.ModuleName == query);
+        return _pluginManager.GetLoadedPlugins().FirstOrDefault(x => x.PluginId.ToString() == query || x.Plugin.ModuleName == query);
     }
 }

@@ -2,13 +2,13 @@
 
 public interface IPluginContextQueryHandler
 {
-    PluginContext? FindPluginByType(Type moduleClass);
+    IPluginContext? FindPluginByType(Type moduleClass);
 
-    PluginContext? FindPluginById(int id);
+    IPluginContext? FindPluginById(int id);
 
-    PluginContext? FindPluginByModuleName(string name);
+    IPluginContext? FindPluginByModuleName(string name);
 
-    PluginContext? FindPluginByModulePath(string path);
+    IPluginContext? FindPluginByModulePath(string path);
 
-    PluginContext? FindPluginByIdOrName(string query);
+    IPluginContext? FindPluginByIdOrName(string query);
 }

@@ -5,14 +5,14 @@ using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Core.Plugin.Host;
 
-public class PluginHostContext : IPluginHostContext
+public class PluginManager : IPluginManager
 {
     private readonly HashSet<PluginContext> _loadedPluginContexts = new();
     private readonly IScriptHostConfiguration _scriptHostConfiguration;
     private readonly IServiceProvider _serviceProvider;
-    private readonly ILogger<PluginHostContext> _logger;
+    private readonly ILogger<PluginManager> _logger;
 
-    public PluginHostContext(IScriptHostConfiguration scriptHostConfiguration, ILogger<PluginHostContext> logger, IServiceProvider serviceProvider)
+    public PluginManager(IScriptHostConfiguration scriptHostConfiguration, ILogger<PluginManager> logger, IServiceProvider serviceProvider)
     {
         _scriptHostConfiguration = scriptHostConfiguration;
         _logger = logger;
