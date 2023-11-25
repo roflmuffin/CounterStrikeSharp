@@ -20,38 +20,48 @@ public static class Bootstrap
     // Used by .NET Host in C++ to initiate loading
     public static int Run()
     {
-        // Path to /game/csgo/addons/counterstrikesharp
-        var contentRoot = new FileInfo(Assembly.GetExecutingAssembly().Location).Directory.Parent.FullName;
+        try
+        {
+            // Path to /game/csgo/addons/counterstrikesharp
+            var contentRoot = new FileInfo(Assembly.GetExecutingAssembly().Location).Directory.Parent.FullName;
 
-        using var host = Host.CreateDefaultBuilder()
-            .UseContentRoot(contentRoot)
-            .ConfigureServices(services =>
-            {
-                services.AddLogging(builder =>
+            using var host = Host.CreateDefaultBuilder()
+                .UseContentRoot(contentRoot)
+                .ConfigureServices(services =>
                 {
-                    builder.ClearProviders();
-                    builder.AddCoreLogging(contentRoot);
-                });
+                    services.AddLogging(builder =>
+                    {
+                        builder.ClearProviders();
+                        builder.AddCoreLogging(contentRoot);
+                    });
 
-                services.AddSingleton<IScriptHostConfiguration, ScriptHostConfiguration>();
-                services.AddScoped<Application>();
-                services.AddSingleton<IPluginManager, PluginManager>();
-                services.AddScoped<IPluginContextQueryHandler, PluginContextQueryHandler>();
+                    services.AddSingleton<IScriptHostConfiguration, ScriptHostConfiguration>();
+                    services.AddScoped<Application>();
+                    services.AddSingleton<IPluginManager, PluginManager>();
+                    services.AddScoped<IPluginContextQueryHandler, PluginContextQueryHandler>();
 
-                services.Scan(i => i.FromCallingAssembly()
-                    .AddClasses(c => c.AssignableTo<IStartupService>())
-                    .AsSelfWithInterfaces()
-                    .WithSingletonLifetime());
-            })
-            .Build();
+                    services.Scan(i => i.FromCallingAssembly()
+                        .AddClasses(c => c.AssignableTo<IStartupService>())
+                        .AsSelfWithInterfaces()
+                        .WithSingletonLifetime());
+                })
+                .Build();
 
-        using IServiceScope scope = host.Services.CreateScope();
+            using IServiceScope scope = host.Services.CreateScope();
 
-        GameData.GameDataProvider = scope.ServiceProvider.GetRequiredService<GameDataProvider>();
+            // TODO: Improve static singleton access
+            GameData.GameDataProvider = scope.ServiceProvider.GetRequiredService<GameDataProvider>();
 
-        var context = scope.ServiceProvider.GetRequiredService<Application>();
-        context.Start();
+            var application = scope.ServiceProvider.GetRequiredService<Application>();
+            application.Start();
 
-        return 1;
+            return 1;
+        }
+        catch (Exception e)
+        {
+            Console.Error.WriteLine(e);
+            Log.Fatal(e, "Failed to start application");
+            return 0;
+        }
     }
 }
