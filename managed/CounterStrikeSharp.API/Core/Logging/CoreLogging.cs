@@ -9,7 +9,7 @@ namespace CounterStrikeSharp.API.Core.Logging;
 
 public static class CoreLogging
 {
-    public static ILoggerFactory Factory { get; set; }
+    public static ILoggerFactory Factory { get; private set; }
     private static Logger? SerilogLogger { get; set; }
 
     public static void AddCoreLogging(this ILoggingBuilder builder, string contentRoot)
