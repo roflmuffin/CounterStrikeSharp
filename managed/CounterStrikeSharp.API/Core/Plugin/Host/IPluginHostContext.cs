@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CounterStrikeSharp.API.Core.Plugin;
+namespace CounterStrikeSharp.API.Core.Plugin.Host;
 
 public interface IPluginHostContext
 {

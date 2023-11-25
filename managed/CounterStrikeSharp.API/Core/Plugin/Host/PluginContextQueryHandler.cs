@@ -1,7 +1,6 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 
-namespace CounterStrikeSharp.API.Core.Plugin;
+namespace CounterStrikeSharp.API.Core.Plugin.Host;
 
 public class PluginContextQueryHandler : IPluginContextQueryHandler
 {

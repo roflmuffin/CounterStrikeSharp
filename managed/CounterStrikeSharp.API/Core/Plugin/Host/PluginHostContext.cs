@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Linq;
 using CounterStrikeSharp.API.Core.Hosting;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace CounterStrikeSharp.API.Core.Plugin;
+namespace CounterStrikeSharp.API.Core.Plugin.Host;
 
 public class PluginHostContext : IPluginHostContext
 {

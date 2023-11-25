@@ -14,22 +14,19 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using System;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Core.Hosting;
 using CounterStrikeSharp.API.Core.Logging;
-using CounterStrikeSharp.API.Core.Plugin;
 using McMaster.NETCore.Plugins;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using ILogger = Microsoft.Extensions.Logging.ILogger;
 
-namespace CounterStrikeSharp.API.Core
+namespace CounterStrikeSharp.API.Core.Plugin
 {
     public class PluginContext
     {
@@ -88,9 +85,6 @@ namespace CounterStrikeSharp.API.Core
 
         private Task OnReloadedAsync(object sender, PluginReloadedEventArgs eventargs)
         {
-            // Don't reload if the plugin is unloaded
-            if (State == PluginState.Unloaded) return Task.CompletedTask;
-
             _logger.LogInformation("Reloading plugin {Name}", Plugin.ModuleName);
             Loader = eventargs.Loader;
             Unload(hotReload: true);
@@ -110,7 +104,7 @@ namespace CounterStrikeSharp.API.Core
                 Type pluginType = defaultAssembly.GetTypes()
                     .FirstOrDefault(t => typeof(IPlugin).IsAssignableFrom(t));
 
-                if (pluginType == null) throw new Exception("Unable to find plugin in DLL");
+                if (pluginType == null) throw new Exception("Unable to find plugin in assembly");
 
                 var serviceCollection = new ServiceCollection();
 
@@ -146,14 +140,14 @@ namespace CounterStrikeSharp.API.Core
                 });
 
                 Type interfaceType = typeof(IPluginServiceCollection<>).MakeGenericType(pluginType);
-                Type[] concreteTypes = AppDomain.CurrentDomain.GetAssemblies()
+                Type[] serviceCollectionConfiguratorTypes = AppDomain.CurrentDomain.GetAssemblies()
                     .SelectMany(assembly => assembly.GetTypes())
                     .Where(type => interfaceType.IsAssignableFrom(type) && !type.IsInterface && !type.IsAbstract)
                     .ToArray();
 
-                if (concreteTypes.Any())
+                if (serviceCollectionConfiguratorTypes.Any())
                 {
-                    foreach (var t in concreteTypes)
+                    foreach (var t in serviceCollectionConfiguratorTypes)
                     {
                         var pluginServiceCollection = Activator.CreateInstance(t);
                         MethodInfo method = t.GetMethod("ConfigureServices");

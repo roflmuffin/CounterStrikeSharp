@@ -1,3 +1,4 @@
+using CounterStrikeSharp.API.Core.Plugin;
 using Serilog.Core;
 using Serilog.Events;
 

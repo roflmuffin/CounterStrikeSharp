@@ -16,7 +16,7 @@ public class TestInjectedClass
 
     public void Hello()
     {
-        _logger.LogInformation("Hello World!");
+        _logger.LogInformation("Hello World from Test Injected Class");
     }
 }
 
