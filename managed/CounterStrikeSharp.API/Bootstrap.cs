@@ -27,29 +27,14 @@ public static class Bootstrap
             .UseContentRoot(contentRoot)
             .ConfigureServices(services =>
             {
-                services.AddSingleton<IScriptHostConfiguration, ScriptHostConfiguration>();
                 services.AddLogging(builder =>
                 {
                     builder.ClearProviders();
-                    builder.AddSerilog(new LoggerConfiguration()
-                        .Enrich.FromLogContext()
-                        .Enrich.With<SourceContextEnricher>()
-                        .MinimumLevel.Debug()
-                        .WriteTo.Console(
-                            outputTemplate:
-                            "{Timestamp:HH:mm:ss} [{Level:u4}] (cssharp:{SourceContext}) {Message:lj}{NewLine}{Exception}")
-                        .WriteTo.File(Path.Join(new[] { contentRoot, "logs", $"log-cssharp.txt" }),
-                            rollingInterval: RollingInterval.Day,
-                            outputTemplate:
-                            "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u4}] (cssharp:{SourceContext}) {Message:lj}{NewLine}{Exception}")
-                        .WriteTo.File(Path.Join(new[] { contentRoot, "logs", $"log-all.txt" }),
-                            rollingInterval: RollingInterval.Day, shared: true,
-                            outputTemplate:
-                            "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u4}] (cssharp:{SourceContext}) {Message:lj}{NewLine}{Exception}")
-                        .CreateLogger());
+                    builder.AddCoreLogging(contentRoot);
                 });
 
-                services.AddScoped<Core.Application>();
+                services.AddSingleton<IScriptHostConfiguration, ScriptHostConfiguration>();
+                services.AddScoped<Application>();
                 services.AddSingleton<IPluginHostContext, PluginHostContext>();
                 services.AddScoped<IPluginContextQueryHandler, PluginContextQueryHandler>();
 
@@ -64,7 +49,7 @@ public static class Bootstrap
 
         GameData.GameDataProvider = scope.ServiceProvider.GetRequiredService<GameDataProvider>();
 
-        var context = scope.ServiceProvider.GetRequiredService<Core.Application>();
+        var context = scope.ServiceProvider.GetRequiredService<Application>();
         context.Start();
 
         return 1;

@@ -125,8 +125,6 @@ namespace CounterStrikeSharp.API.Core
                 {
                     _coreConfig = data;
                 }
-
-                _logger.LogInformation("Successfully loaded core configuration. {Configuration}", data);
             }
             catch (Exception ex)
             {
