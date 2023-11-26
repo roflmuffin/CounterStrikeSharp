@@ -14,15 +14,14 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
+using CounterStrikeSharp.API.Modules.Commands.Targeting;
 
 namespace CounterStrikeSharp.API
 {
@@ -62,6 +61,16 @@ namespace CounterStrikeSharp.API
         public static CCSPlayerController GetPlayerFromUserid(int userid)
         {
             return Utilities.GetEntityFromIndex<CCSPlayerController>((userid & 0xFF) + 1);
+        }
+
+        public static CCSPlayerController? GetPlayerFromSteamId(ulong steamId)
+        {
+            return Utilities.GetPlayers().FirstOrDefault(player => player.SteamID == steamId);
+        }
+
+        public static TargetResult ProcessTargetString(string pattern, CCSPlayerController player)
+        {
+            return new Target(pattern).GetTarget(player);
         }
 
         public static IEnumerable<T> FindAllEntitiesByDesignerName<T>(string designerName) where T : CEntityInstance
