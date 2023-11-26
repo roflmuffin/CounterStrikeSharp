@@ -1,11 +1,7 @@
-using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Utils;
-using System.IO;
 using System.Linq;
 using System.Reflection;
-using CounterStrikeSharp.API.Core.Logging;
-using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Modules.Admin
 {
@@ -37,6 +33,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             Admins.Clear();
             var rootDir = new FileInfo(Assembly.GetExecutingAssembly().Location).Directory.Parent;
             LoadAdminData(Path.Combine(rootDir.FullName, "configs", "admins.json"));
+            MergeGroupPermsIntoAdmins();
         }
 
         [RequiresPermissions(permissions:"@css/generic")]
@@ -56,6 +53,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             Groups.Clear();
             var rootDir = new FileInfo(Assembly.GetExecutingAssembly().Location).Directory.Parent;
             LoadAdminGroups(Path.Combine(rootDir.FullName, "configs", "admin_groups.json"));
+            MergeGroupPermsIntoAdmins();
         }
 
         [RequiresPermissions(permissions: "@css/generic")]
