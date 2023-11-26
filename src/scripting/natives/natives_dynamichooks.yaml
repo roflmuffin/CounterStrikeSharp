@@ -1,0 +1,4 @@
+DYNAMIC_HOOK_GET_RETURN: hook:pointer, datatype:int -> any
+DYNAMIC_HOOK_SET_RETURN: hook:pointer, datatype:int, value:any -> void
+DYNAMIC_HOOK_GET_PARAM: hook:pointer, datatype:int, paramIndex:int -> any
+DYNAMIC_HOOK_SET_PARAM: hook:pointer, datatype:int, paramIndex:int, value:any -> void

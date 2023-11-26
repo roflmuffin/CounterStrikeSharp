@@ -77,7 +77,7 @@ namespace CounterStrikeSharp.API.Core
                     }
                     catch (Exception e)
                     {
-                        GlobalContext.Instance.Logger.LogError(e, "Error invoking callback");
+                        Application.Instance.Logger.LogError(e, "Error invoking callback");
                     }
                 });
                 s_callback = dg;
@@ -141,7 +141,7 @@ namespace CounterStrikeSharp.API.Core
             {
                 ms_references.Remove(reference);
 
-                GlobalContext.Instance.Logger.LogDebug("Removing function/callback reference: {Reference}", reference);
+                Application.Instance.Logger.LogDebug("Removing function/callback reference: {Reference}", reference);
             }
         }
     }

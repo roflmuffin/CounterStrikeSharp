@@ -73,9 +73,26 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 return types[Enum.GetUnderlyingType(type)];
             }
             
-            GlobalContext.Instance.Logger.LogWarning("Error retrieving data type for type {Type}", type.FullName);
+            Core.Application.Instance.Logger.LogWarning("Error retrieving data type for type {Type}", type.FullName);
 
             return null;
+        }
+        
+        public static DataType ToValidDataType(this Type type)
+        {
+            if (types.ContainsKey(type)) return types[type];
+
+            if (typeof(NativeObject).IsAssignableFrom(type))
+            {
+                return DataType.DATA_TYPE_POINTER;
+            }
+
+            if (type.IsEnum && types.ContainsKey(Enum.GetUnderlyingType(type)))
+            {
+                return types[Enum.GetUnderlyingType(type)];
+            }
+            
+            throw new NotSupportedException("Data type not supported:" + type.FullName);
         }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using CounterStrikeSharp.API.Modules.Entities.Constants;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
 
@@ -22,6 +23,17 @@ public partial class CCSPlayerController
         if (PlayerPawn.Value.ItemServices == null) return 0;
 
         return VirtualFunctions.GiveNamedItem(PlayerPawn.Value.ItemServices.Handle, item, 0, 0, 0, 0);
+    }
+
+    public IntPtr GiveNamedItem(CsItem item) 
+    {
+        string? itemString = EnumUtils.GetEnumMemberAttributeValue(item);
+        if (string.IsNullOrWhiteSpace(itemString))
+        {
+            return IntPtr.Zero;
+        }
+
+        return this.GiveNamedItem(itemString);
     }
 
     public void PrintToConsole(string message)
@@ -77,6 +89,31 @@ public partial class CCSPlayerController
 
         CCSPlayer_ItemServices itemServices = new CCSPlayer_ItemServices(PlayerPawn.Value.ItemServices.Handle);
         itemServices.RemoveWeapons();
+    }
+
+    /// <summary>
+    /// Force player suicide
+    /// </summary>
+    /// <param name="explode"></param>
+    /// <param name="force"></param>
+    public void CommitSuicide(bool explode, bool force)
+    {
+        if (!PlayerPawn.IsValid) return;
+        if (!PlayerPawn.Value.IsValid) return;
+
+        PlayerPawn.Value.CommitSuicide(explode, force);
+    }
+
+    /// <summary>
+    /// Respawn player
+    /// </summary>
+    public void Respawn()
+    {
+        if (!PlayerPawn.IsValid) return;
+        if (!PlayerPawn.Value.IsValid) return;
+
+        VirtualFunctions.CCSPlayerPawn_Respawn(PlayerPawn.Value.Handle);
+        VirtualFunction.CreateVoid<IntPtr>(Handle, GameData.GetOffset("CCSPlayerController_Respawn"))(Handle);
     }
 
     public bool IsBot => ((PlayerFlags)Flags).HasFlag(PlayerFlags.FL_FAKECLIENT);
