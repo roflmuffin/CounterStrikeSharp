@@ -26,6 +26,7 @@ using CounterStrikeSharp.API.Core.Attributes.Registration;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API.Modules.Entities;
+using CounterStrikeSharp.API.Modules.Entities.Constants;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Menu;
@@ -112,6 +113,26 @@ namespace TestPlugin
             Logger.LogInformation("Result of virtual func call is {Pointer:X}", result);
             
             _testInjectedClass.Hello();
+
+            VirtualFunctions.CBaseTrigger_StartTouchFunc.Hook(h =>
+            {
+                var trigger = h.GetParam<CBaseTrigger>(0);
+                var entity = h.GetParam<CBaseEntity>(1);
+                
+                Logger.LogInformation("Trigger {Trigger} touched by {Entity}", trigger.DesignerName, entity.DesignerName);
+                
+                return HookResult.Continue;
+            }, HookMode.Post);
+            
+            VirtualFunctions.CBaseTrigger_EndTouchFunc.Hook(h =>
+            {
+                var trigger = h.GetParam<CBaseTrigger>(0);
+                var entity = h.GetParam<CBaseEntity>(1);
+                
+                Logger.LogInformation("Trigger left {Trigger} by {Entity}", trigger.DesignerName, entity.DesignerName);
+                
+                return HookResult.Continue;
+            }, HookMode.Post);
             
             VirtualFunctions.UTIL_RemoveFunc.Hook(hook =>
             {
@@ -455,6 +476,30 @@ namespace TestPlugin
             if (player == null) return;
 
             player.GiveNamedItem(command.ArgByIndex(1));
+        }
+
+        [ConsoleCommand("css_giveenum", "giveenum")]
+        public void OnCommandGiveEnum(CCSPlayerController? player, CommandInfo command)
+        {
+            if (player == null) return;
+            if (!player.IsValid) return;
+
+            player.GiveNamedItem(CsItem.M4A1);
+            player.GiveNamedItem(CsItem.HEGrenade);
+            player.GiveNamedItem(CsItem.Kevlar);
+            player.GiveNamedItem(CsItem.Tec9);
+        }
+
+        [ConsoleCommand("css_give", "give")]
+        public void OnCommandGiveItems(CCSPlayerController? player, CommandInfo command)
+        {
+            if (player == null) return;
+            if (!player.IsValid) return;
+
+            player.GiveNamedItem("weapon_m4a1");
+            player.GiveNamedItem("weapon_hegrenade");
+            player.GiveNamedItem("item_kevlar");
+            player.GiveNamedItem("weapon_tec9");
         }
 
         private HookResult GenericEventHandler<T>(T @event, GameEventInfo info) where T : GameEvent
