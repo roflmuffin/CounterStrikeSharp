@@ -17,8 +17,13 @@ The first parameter type must be a subclass of the `GameEvent` class. The names 
 [GameEventHandler]
 public HookResult OnPlayerConnect(EventPlayerConnect @event, GameEventInfo info)
 {
-    // Userid will give you a reference to a CCSPlayerController class
-    Logger.LogInformation("Player {Name} has connected!", @event.Userid.PlayerName);
+    // Userid will give you a reference to a CCSPlayerController class.
+    // Before accessing any of its fields, you must first check if the Userid
+    // handle is actually valid, otherwise you may run into runtime exceptions.
+    // See the documentation section on Referencing Players for details.
+    if (@event.Userid.IsValid) {
+        Logger.LogInformation("Player {Name} has connected!", @event.Userid.PlayerName);
+    }
 
     return HookResult.Continue;
 }
