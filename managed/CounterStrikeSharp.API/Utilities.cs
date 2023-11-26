@@ -14,16 +14,14 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
-using CounterStrikeSharp.API.Modules.Targets;
+using CounterStrikeSharp.API.Modules.Commands.Targeting;
 
 namespace CounterStrikeSharp.API
 {

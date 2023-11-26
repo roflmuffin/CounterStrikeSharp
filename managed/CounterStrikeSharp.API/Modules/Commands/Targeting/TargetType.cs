@@ -1,4 +1,4 @@
-﻿namespace CounterStrikeSharp.API.Modules.Targets;
+﻿namespace CounterStrikeSharp.API.Modules.Commands.Targeting;
 
 public enum TargetType
 {
@@ -16,7 +16,7 @@ public enum TargetType
     PlayerMe, // @me
 
     IdUserid, // #4
-    IdSteamEscaped, // #STEAM_0_1_8614
+    IdSteamEscaped, // "#STEAM_0:1:8614"
     IdSteam64, // #76561198116940237
 
     ExplicitName, // #name

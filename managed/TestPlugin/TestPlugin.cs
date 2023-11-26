@@ -344,6 +344,24 @@ namespace TestPlugin
             giveItemMenu.AddMenuOption("weapon_ak47", handleGive);
             giveItemMenu.AddMenuOption("weapon_p250", handleGive);
 
+            AddCommand("css_target", "Target Test", (player, info) =>
+            {
+                if (player == null) return;
+
+                var targetResult = info.GetArgTargetResult(1);
+
+                if (!targetResult.Any())
+                {
+                    player.PrintToChat("No players found.");
+                    return;
+                }
+                
+                foreach (var result in targetResult.Players)
+                {
+                    player.PrintToChat($"Target found: {result?.PlayerName}");
+                }
+            });
+            
             AddCommand("css_menu", "Opens example menu", (player, info) => { ChatMenus.OpenMenu(player, largeMenu); });
             AddCommand("css_gunmenu", "Gun Menu", (player, info) => { ChatMenus.OpenMenu(player, giveItemMenu); });
 

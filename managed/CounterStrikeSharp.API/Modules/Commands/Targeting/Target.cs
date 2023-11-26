@@ -1,20 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Utils;
 
-namespace CounterStrikeSharp.API.Modules.Targets;
+namespace CounterStrikeSharp.API.Modules.Commands.Targeting;
 
 public class Target
 {
-    private TargetType Type { get; set; }
-    private string Raw { get; set; }
-    private string Slug { get; set; }
+    private TargetType Type { get; }
+    private string Raw { get; }
+    private string Slug { get; }
     
-    private static readonly Dictionary<string, TargetType> TargetTypeMap = new Dictionary<string, TargetType>(StringComparer.OrdinalIgnoreCase)
+    private static readonly Dictionary<string, TargetType> TargetTypeMap = new(StringComparer.OrdinalIgnoreCase)
     {
         { "@all", TargetType.GroupAll },
         { "@bots", TargetType.GroupBots },
@@ -29,7 +27,7 @@ public class Target
     };
 
 
-    private static bool ConstTargetType(string target, [MaybeNullWhen(false)] out TargetType targetType)
+    private static bool ConstTargetType(string target, out TargetType targetType)
     {
         targetType = TargetType.Invalid;
         if (!target.StartsWith("@"))
@@ -50,7 +48,7 @@ public class Target
         {
             return false;
         }
-
+        
         slug = target.TrimStart('#');
         if (slug.StartsWith("STEAM")) targetType = TargetType.IdSteamEscaped;
         else if (!ulong.TryParse(slug, out _)) targetType = TargetType.ExplicitName;
@@ -98,9 +96,9 @@ public class Target
             case TargetType.GroupHumans:
                 return !player.IsBot;
             case TargetType.GroupAlive:
-                return player.LifeState == (byte)LifeState_t.LIFE_ALIVE;
+                return player.PlayerPawn is { IsValid: true, Value.LifeState: (byte)LifeState_t.LIFE_ALIVE };
             case TargetType.GroupDead:
-                return player.LifeState == (byte)LifeState_t.LIFE_DEAD;
+                return player.PlayerPawn is { IsValid: true, Value.LifeState: (byte)LifeState_t.LIFE_DEAD or (byte)LifeState_t.LIFE_DYING };
             case TargetType.GroupNotMe:
                 return player.SteamID != caller?.SteamID;
             case TargetType.PlayerMe:
@@ -108,9 +106,9 @@ public class Target
             case TargetType.IdUserid:
                 return player.UserId.ToString() == Slug;
             case TargetType.IdSteamEscaped:
-                return new SteamID(Slug.Replace("_", ":")).SteamId64.ToString() == Slug;
+                return ((SteamID)player.SteamID).SteamId2 == Slug;
             case TargetType.IdSteam64:
-                return player.SteamID.ToString() == Slug;
+                return ((SteamID)player.SteamID).SteamId64.ToString() == Slug;
             case TargetType.ExplicitName:
             case TargetType.ImplicitName:
                 return player.PlayerName.Contains(Slug, StringComparison.OrdinalIgnoreCase);
@@ -122,13 +120,7 @@ public class Target
     public TargetResult GetTarget(CCSPlayerController? caller)
     {
         var players = Utilities.GetPlayers().Where(player => TargetPredicate(player, caller)).ToList();
-
-        var count = players.Count switch
-        {
-            0 => TargetResultCount.None,
-            1 => TargetResultCount.Single,
-            _ => TargetResultCount.Multiple
-        };
-        return new TargetResult() { Count = count, Players = players };
+        
+        return new TargetResult() { Players = players };
     }
 }
