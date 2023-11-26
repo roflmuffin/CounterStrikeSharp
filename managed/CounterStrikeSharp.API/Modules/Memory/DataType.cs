@@ -73,7 +73,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 return types[Enum.GetUnderlyingType(type)];
             }
             
-            GlobalContext.Instance.Logger.LogWarning("Error retrieving data type for type {Type}", type.FullName);
+            Core.Application.Instance.Logger.LogWarning("Error retrieving data type for type {Type}", type.FullName);
 
             return null;
         }

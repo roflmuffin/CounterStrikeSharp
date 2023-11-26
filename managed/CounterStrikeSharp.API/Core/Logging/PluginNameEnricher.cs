@@ -1,3 +1,4 @@
+using CounterStrikeSharp.API.Core.Plugin;
 using Serilog.Core;
 using Serilog.Events;
 
@@ -16,7 +17,7 @@ public class PluginNameEnricher : ILogEventEnricher
 
     public void Enrich(LogEvent logEvent, ILogEventPropertyFactory propertyFactory)
     {
-        var property = propertyFactory.CreateProperty(PropertyName, Context.PluginType.Name);
+        var property = propertyFactory.CreateProperty(PropertyName, Context.Plugin.ModuleName);
         logEvent.AddPropertyIfAbsent(property);
     }
 }

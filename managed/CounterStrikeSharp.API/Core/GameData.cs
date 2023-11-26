@@ -5,11 +5,12 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using CounterStrikeSharp.API.Core.Hosting;
 using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Core;
 
-class LoadedGameData
+public class LoadedGameData
 {
     [JsonPropertyName("signatures")] public Signatures? Signatures { get; set; }
     [JsonPropertyName("offsets")] public Offsets? Offsets { get; set; }
@@ -31,33 +32,45 @@ public class Offsets
     [JsonPropertyName("linux")] public int Linux { get; set; }
 }
 
-public static class GameData
+public sealed class GameDataProvider : IStartupService
 {
-    private static Dictionary<string, LoadedGameData> _methods;
+    private readonly string _gameDataFilePath;
+    public Dictionary<string,LoadedGameData> Methods;
+    private readonly ILogger<GameDataProvider> _logger;
 
-    public static void Load(string gameDataPath)
+    public GameDataProvider(IScriptHostConfiguration scriptHostConfiguration, ILogger<GameDataProvider> logger)
+    {
+        _logger = logger;
+        _gameDataFilePath = Path.Join(scriptHostConfiguration.GameDataPath, "gamedata.json");
+    }
+    
+    public void Load()
     {
         try
         {
-            _methods = JsonSerializer.Deserialize<Dictionary<string, LoadedGameData>>(File.ReadAllText(gameDataPath))!;
-
-            GlobalContext.Instance.Logger.LogInformation("Loaded game data with {Count} methods.", _methods.Count);
+            Methods = JsonSerializer.Deserialize<Dictionary<string, LoadedGameData>>(File.ReadAllText(_gameDataFilePath))!;
         }
         catch (Exception ex)
         {
-            GlobalContext.Instance.Logger.LogError(ex, "Failed to load game data");
+            _logger.LogError(ex, "Failed to load game data");
         }
+        
+        _logger.LogInformation("Successfully loaded {Count} game data entries from {Path}", Methods.Count, _gameDataFilePath);
     }
+} 
 
+public static class GameData
+{
+    internal static GameDataProvider GameDataProvider { get; set; } = null!;
     public static string GetSignature(string key)
     {
-        GlobalContext.Instance.Logger.LogDebug("Getting signature: {Key}", key);
-        if (!_methods.ContainsKey(key))
+        Application.Instance.Logger.LogDebug("Getting signature: {Key}", key);
+        if (!GameDataProvider.Methods.ContainsKey(key))
         {
             throw new ArgumentException($"Method {key} not found in gamedata.json");
         }
 
-        var methodMetadata = _methods[key];
+        var methodMetadata = GameDataProvider.Methods[key];
         if (methodMetadata.Signatures == null)
         {
             throw new InvalidOperationException($"No signatures found for {key} in gamedata.json");
@@ -79,12 +92,12 @@ public static class GameData
 
     public static int GetOffset(string key)
     {
-        if (!_methods.ContainsKey(key))
+        if (!GameDataProvider.Methods.ContainsKey(key))
         {
             throw new Exception($"Method {key} not found in gamedata.json");
         }
 
-        var methodMetadata = _methods[key];
+        var methodMetadata = GameDataProvider.Methods[key];
 
         if (methodMetadata.Offsets == null)
         {

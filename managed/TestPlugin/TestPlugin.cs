@@ -61,6 +61,13 @@ namespace TestPlugin
             Config = config;
         }
 
+        private TestInjectedClass _testInjectedClass;
+
+        public SamplePlugin(TestInjectedClass testInjectedClass)
+        {
+            _testInjectedClass = testInjectedClass;
+        }
+
         public override void Load(bool hotReload)
         {
             // Basic usage of the configuration system
@@ -105,6 +112,8 @@ namespace TestPlugin
             var result = virtualFunc() - 8;
             Logger.LogInformation("Result of virtual func call is {Pointer:X}", result);
             
+            _testInjectedClass.Hello();
+
             VirtualFunctions.CBaseTrigger_StartTouchFunc.Hook(h =>
             {
                 var trigger = h.GetParam<CBaseTrigger>(0);
