@@ -105,6 +105,26 @@ namespace TestPlugin
             var result = virtualFunc() - 8;
             Logger.LogInformation("Result of virtual func call is {Pointer:X}", result);
             
+            VirtualFunctions.CBaseTrigger_StartTouchFunc.Hook(h =>
+            {
+                var trigger = h.GetParam<CBaseTrigger>(0);
+                var entity = h.GetParam<CBaseEntity>(1);
+                
+                Logger.LogInformation("Trigger {Trigger} touched by {Entity}", trigger.DesignerName, entity.DesignerName);
+                
+                return HookResult.Continue;
+            }, HookMode.Post);
+            
+            VirtualFunctions.CBaseTrigger_EndTouchFunc.Hook(h =>
+            {
+                var trigger = h.GetParam<CBaseTrigger>(0);
+                var entity = h.GetParam<CBaseEntity>(1);
+                
+                Logger.LogInformation("Trigger left {Trigger} by {Entity}", trigger.DesignerName, entity.DesignerName);
+                
+                return HookResult.Continue;
+            }, HookMode.Post);
+            
             VirtualFunctions.UTIL_RemoveFunc.Hook(hook =>
             {
                 var entityInstance = hook.GetParam<CEntityInstance>(0);
