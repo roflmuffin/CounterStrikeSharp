@@ -77,7 +77,7 @@ namespace CounterStrikeSharp.API.Modules.Events
                     break;
                 case var _ when value is CCSPlayerController player:
                     // When I was testing this, the code seems to expect a slot, even though it is called index
-                    SetEntityIndex(name, (int)player.EntityIndex.Value.Value - 1);
+                    SetEntityIndex(name, (int)player.EntityIndex - 1);
                     break;
                 case var _ when value is string s:
                     SetString(name, s);
@@ -124,6 +124,6 @@ namespace CounterStrikeSharp.API.Modules.Events
 
         public void FireEvent(bool dontBroadcast) => NativeAPI.FireEvent(Handle, dontBroadcast);
         
-        public void FireEventToClient(CCSPlayerController player) => NativeAPI.FireEventToClient(Handle, (int)player.EntityIndex.Value.Value);
+        public void FireEventToClient(CCSPlayerController player) => NativeAPI.FireEventToClient(Handle, (int)player.EntityIndex);
     }
 }

@@ -31,6 +31,7 @@ namespace CounterStrikeSharp.API
         public const int MaxEdictBits = 14;
         public const int MaxEdicts = 1 << MaxEdictBits;
         public const int NumEHandleSerialNumberBits = 17;
+        public const uint InvalidEHandleIndex = 0xFFFFFFFF;
 
         public static IEnumerable<T> FlagsToList<T>(this T flags) where T : Enum
         {

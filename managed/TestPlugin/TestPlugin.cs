@@ -137,7 +137,7 @@ namespace TestPlugin
             VirtualFunctions.UTIL_RemoveFunc.Hook(hook =>
             {
                 var entityInstance = hook.GetParam<CEntityInstance>(0);
-                Logger.LogInformation("Removed entity {EntityIndex}", entityInstance.EntityIndex.Value.Value);
+                Logger.LogInformation("Removed entity {EntityIndex}", entityInstance.EntityIndex);
 
                 return HookResult.Continue;
             }, HookMode.Post);

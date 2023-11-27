@@ -11,8 +11,7 @@ public partial class CCSPlayerController
     {
         get
         {
-            if (EntityIndex == null) return null;
-            return NativeAPI.GetUseridFromIndex((int)this.EntityIndex.Value.Value);
+            return NativeAPI.GetUseridFromIndex((int)this.EntityIndex);
         }
     }
 
@@ -38,7 +37,7 @@ public partial class CCSPlayerController
 
     public void PrintToConsole(string message)
     {
-        NativeAPI.PrintToConsole((int)EntityIndex.Value.Value, $"{message}\n\0");
+        NativeAPI.PrintToConsole((int)EntityIndex, $"{message}\n\0");
     }
 
     public void PrintToChat(string message)
