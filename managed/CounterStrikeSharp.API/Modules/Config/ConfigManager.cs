@@ -68,7 +68,7 @@ namespace CounterStrikeSharp.API.Modules.Config
                 {
                     _logger.LogError(ex, "Failed to generate configuration file for {PluginName}", pluginName);
                 }
-            } else if (File.Exists(exampleConfigPath))
+            } else if (File.Exists(exampleConfigPath) && !File.Exists(configPath))
             {
                 try
                 {
