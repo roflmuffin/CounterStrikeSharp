@@ -152,17 +152,7 @@ namespace CounterStrikeSharp.API.Core
                             true);
                         break;
                     }
-
-                    var plugin = _pluginContextQueryHandler.FindPluginByModulePath(info.GetArg(2));
-
-                    if (plugin == null)
-                    {
-                        info.ReplyToCommand("Could not find plugin to load.");
-                        break;
-                    }
-
-                    plugin.Load(false);
-
+                    
                     // If our arugment doesn't end in ".dll" - try and construct a path similar to PluginName/PluginName.dll.
                     // We'll assume we have a full path if we have ".dll".
                     var path = info.GetArg(2);
@@ -175,15 +165,23 @@ namespace CounterStrikeSharp.API.Core
                         path = Path.Combine(_scriptHostConfiguration.RootPath, path);
                     }
 
-                    try
-                    {
-                        // LoadPlugin(path);
-                    }
-                    catch (Exception e)
-                    {
-                        Logger.LogError(e, "Failed to load plugin from {Path}", path);
-                    }
+                    var plugin = _pluginContextQueryHandler.FindPluginByModulePath(path);
 
+                    if (plugin == null)
+                    {
+                        try
+                        {
+                            _pluginManager.LoadPlugin(path);
+                        } catch (Exception e)
+                        {
+                            info.ReplyToCommand($"Could not load plugin \"{path}\")", true);
+                        }
+                    }
+                    else
+                    {
+                        plugin.Load(false);
+                    }
+                    
                     break;
                 }
 
