@@ -12,6 +12,7 @@ using System.Numerics;
 using System.Linq;
 using CounterStrikeSharp.API.Core.Logging;
 using Microsoft.Extensions.Logging;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CounterStrikeSharp.API.Modules.Admin
 {
@@ -27,7 +28,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
         public bool DomainHasRootFlag(string domain)
         {
             if (!Flags.ContainsKey(domain)) { return false; }
-            return Flags[domain].Contains("@" + domain + "/root");
+            return Flags[domain].Contains("@" + domain + "/root") || Flags[domain].Contains("@" + domain + "/*");
         }
 
         public string[] GetFlagDomains()
@@ -45,6 +46,38 @@ namespace CounterStrikeSharp.API.Modules.Admin
             return flags;
         }
 
+        public void AddFlags(params string[] flags)
+        {
+            var domains = flags.Where(
+               flag => flag.StartsWith(PermissionCharacters.UserPermissionChar))
+               .Distinct()
+               .Select(domain => domain.Split('/').First()[1..]);
+
+            foreach (var domain in domains)
+            {
+                if (!Flags.ContainsKey(domain))
+                {
+                    var flagData = new HashSet<string>();
+                }
+                Flags[domain] = flags.Where(flag => flag.StartsWith(PermissionCharacters.UserPermissionChar + domain + '/')).ToHashSet();
+            }
+        }
+
+        public void RemoveFlags(params string[] flags)
+        {
+            var domains = flags.Where(
+               flag => flag.StartsWith(PermissionCharacters.UserPermissionChar))
+               .Distinct()
+               .Select(domain => domain.Split('/').First()[1..]);
+
+            foreach (var domain in domains)
+            {
+                if (!Flags.ContainsKey(domain)) continue;
+                var domainFlags = flags.Where(flag => flag.StartsWith(PermissionCharacters.UserPermissionChar + domain + '/')).ToHashSet();
+                Flags[domain].ExceptWith(flags);
+                if (Flags[domain].Count() == 0) Flags.Remove(domain);
+            }
+        }
     }
 
     public static partial class AdminManager
@@ -311,20 +344,9 @@ namespace CounterStrikeSharp.API.Modules.Admin
         public static void AddPlayerPermissions(SteamID steamId, params string[] flags)
         {
             var data = GetPlayerAdminData(steamId);
-
-            var domains = flags.Where(
-                flag => flag.StartsWith(PermissionCharacters.UserPermissionChar))
-                .Distinct()
-                .Select(domain => domain.Split('/').First()[1..]);
-
             if (data == null)
             {
                 var flagData = new Dictionary<string, HashSet<string>>();
-                foreach (var domain in domains)
-                {
-                    flagData[domain] = new HashSet<string>();
-                    flagData[domain] = flags.Where(flag => flag.StartsWith(PermissionCharacters.UserPermissionChar + domain + '/')).ToHashSet();
-                }
 
                 data = new AdminData()
                 {
@@ -337,17 +359,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
                 return;
             }
 
-            foreach (var domain in domains)
-            {
-                if (!data.GetFlagDomains().Contains(domain))
-                {
-                    var flagData = new HashSet<string>();
-                    data.Flags[domain] = flagData;
-                }
-                data.Flags[domain] = flags.Where(flag => flag.StartsWith(PermissionCharacters.UserPermissionChar + domain + '/')).ToHashSet();
-            }
-
-            Admins[steamId] = data;
+            Admins[steamId].AddFlags(flags);
         }
         
         /// <summary>
@@ -374,20 +386,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
         {
             var data = GetPlayerAdminData(steamId);
             if (data == null) return;
-
-            var domains = flags.Where(
-                flag => flag.StartsWith(PermissionCharacters.UserPermissionChar))
-                .Distinct()
-                .Select(domain => domain.Split('/').First()[1..]);
-
-            foreach (var domain in domains)
-            {
-                if (!data.GetFlagDomains().Contains(domain)) continue;
-                var domainFlags = flags.Where(flag => flag.StartsWith(PermissionCharacters.UserPermissionChar + domain + '/')).ToHashSet();
-                data.Flags[domain].ExceptWith(flags);
-            }
-
-            Admins[steamId] = data;
+            Admins[steamId].RemoveFlags(flags);
         }
 
         /// <summary>

@@ -64,18 +64,18 @@ namespace CounterStrikeSharp.API.Modules.Admin
             // Loop over each of the admins. If one of our admins is in a group,
             // add the flags from the group to their admin definition and change
             // the admin's immunity if it's higher.
-            foreach (var adminData in Admins.Values)
+            foreach (var (admin, data) in Admins)
             {
-                var groups = adminData.Groups;
+                var groups = data.Groups;
                 foreach (var group in groups)
                 {
                     // roflmuffin is probably smart enough to condense this function down ;)
                     if (Groups.TryGetValue(group, out var groupData))
                     {
-                        adminData.Flags.UnionWith(groupData.Flags);
-                        if (groupData.Immunity > adminData.Immunity)
+                        AddPlayerPermissions(admin, groupData.Flags.ToArray());
+                        if (groupData.Immunity > data.Immunity)
                         {
-                            adminData.Immunity = groupData.Immunity;
+                            data.Immunity = groupData.Immunity;
                         }
                     }
                 }
@@ -144,7 +144,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             {
                 if (Groups.TryGetValue(group, out var groupDef))
                 {
-                    data.Flags.UnionWith(groupDef.Flags);
+                    AddPlayerPermissions(steamId, groupDef.Flags.ToArray());
                     groupDef.CommandOverrides.ToList().ForEach(x => data.CommandOverrides[x.Key] = x.Value);
                 }
             }
@@ -183,7 +183,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
                 {
                     if (Groups.TryGetValue(group, out var groupDef))
                     {
-                        data.Flags.ExceptWith(groupDef.Flags);
+                        RemovePlayerPermissions(steamId, groupDef.Flags.ToArray());
                     }
                 }
             }
