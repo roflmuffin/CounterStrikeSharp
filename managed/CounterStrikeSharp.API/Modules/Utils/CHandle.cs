@@ -28,7 +28,7 @@ public class CHandle<T> : IEquatable<CHandle<T>> where T : NativeEntity
 
     public override string ToString() => IsValid ? $"Index = {Index}, Serial = {SerialNum}" : "<invalid>";
 
-    public bool IsValid => Index != (Utilities.MaxEdicts - 1) && NativeAPI.IsRefValidEntity(Raw);
+    public bool IsValid => Index != (Utilities.MaxEdicts - 1);
 
     public uint Index => Raw & (Utilities.MaxEdicts - 1);
     public uint SerialNum => Raw >> Utilities.MaxEdictBits;

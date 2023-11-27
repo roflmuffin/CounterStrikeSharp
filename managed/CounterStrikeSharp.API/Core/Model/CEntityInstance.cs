@@ -20,7 +20,7 @@ public partial class CEntityInstance : IEquatable<CEntityInstance>
     {
     }
     
-    public bool IsValid => EntityHandle.IsValid;
+    public bool IsValid => EntityHandle.IsValid && Handle != IntPtr.Zero;
 
     public uint EntityIndex => EntityHandle.Index;
     

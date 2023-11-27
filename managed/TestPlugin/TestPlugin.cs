@@ -233,22 +233,10 @@ namespace TestPlugin
                 player.PlayerPawn.Value.Render = Color.FromArgb(Random.Shared.Next(0, 255),
                     Random.Shared.Next(0, 255), Random.Shared.Next(0, 255));
 
-                Server.NextFrame(() =>
-                {
-                    player.PrintToCenter(string.Join("\n", weapons.Select(x => x.Value.DesignerName)));
-                });
-
                 activeWeapon.ReserveAmmo[0] = 250;
                 activeWeapon.Clip1 = 250;
 
-                Logger.LogInformation("Pawn Position: {AbsOrigin}-{Rotation}", pawn.AbsOrigin, pawn.AbsRotation);
-
-                char randomColourChar = (char)new Random().Next(0, 16);
-                Server.PrintToChatAll($"Random String with Random Colour: {randomColourChar}{new Random().Next()}");
-
                 pawn.Health += 5;
-
-                Logger.LogInformation("Bullet Impact: {X},{Y},{Z}", @event.X, @event.Y, @event.Z);
 
                 return HookResult.Continue;
             });
