@@ -20,9 +20,15 @@ public partial class CEntityInstance : IEquatable<CEntityInstance>
     {
     }
     
+    /// <summary>
+    /// Checks that the entity handle is valid and the handle points to a valid entity
+    /// </summary>
     public bool IsValid => EntityHandle.IsValid && Handle != IntPtr.Zero;
 
-    public uint EntityIndex => EntityHandle.Index;
+    [Obsolete("Use Index instead", true)]
+    public CEntityIndex? EntityIndex => new CEntityIndex(EntityHandle.Index);
+    
+    public uint Index => EntityHandle.Index;
     
     public string DesignerName => IsValid ? Entity?.DesignerName : null;
 

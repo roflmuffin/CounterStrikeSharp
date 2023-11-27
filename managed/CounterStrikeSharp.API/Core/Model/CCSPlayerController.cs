@@ -11,7 +11,7 @@ public partial class CCSPlayerController
     {
         get
         {
-            return NativeAPI.GetUseridFromIndex((int)this.EntityIndex);
+            return NativeAPI.GetUseridFromIndex((int)this.Index);
         }
     }
 
@@ -37,7 +37,7 @@ public partial class CCSPlayerController
 
     public void PrintToConsole(string message)
     {
-        NativeAPI.PrintToConsole((int)EntityIndex, $"{message}\n\0");
+        NativeAPI.PrintToConsole((int)Index, $"{message}\n\0");
     }
 
     public void PrintToChat(string message)

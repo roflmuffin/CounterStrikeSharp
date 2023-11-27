@@ -229,6 +229,12 @@ namespace TestPlugin
                 var activeWeapon = @event.Userid.PlayerPawn.Value.WeaponServices?.ActiveWeapon.Value;
                 var weapons = @event.Userid.PlayerPawn.Value.WeaponServices?.MyWeapons;
 
+                Server.NextFrame(() =>
+                {
+                    var weaponServices = player.PlayerPawn.Value.WeaponServices.As<CCSPlayer_WeaponServices>();
+                    player.PrintToChat(weaponServices.ActiveWeapon.Value?.DesignerName);    
+                });
+                
                 // Set player to random colour
                 player.PlayerPawn.Value.Render = Color.FromArgb(Random.Shared.Next(0, 255),
                     Random.Shared.Next(0, 255), Random.Shared.Next(0, 255));
