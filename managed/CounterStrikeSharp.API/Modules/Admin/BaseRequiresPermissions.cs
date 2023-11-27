@@ -11,7 +11,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// <summary>
         /// The permissions for the command.
         /// </summary>
-        public string[] Permissions { get; }
+        public HashSet<string> Permissions { get; }
         /// <summary>
         /// The name of the command that is attached to this attribute.
         /// </summary>
@@ -23,7 +23,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
 
         public BaseRequiresPermissions(params string[] permissions)
         {
-            Permissions = permissions;
+            Permissions = permissions.ToHashSet();
             Command = "";
         }
 

@@ -18,9 +18,33 @@ namespace CounterStrikeSharp.API.Modules.Admin
     public partial class AdminData
     {
         [JsonPropertyName("identity")] public required string Identity { get; init; }
-        [JsonPropertyName("flags")] public HashSet<string> Flags { get; init; } = new();
+        // Key is the domain of the flag "e.g "css, os, kzsurf"). This should NOT include the @ character.
+        // Value is a hashmap of the flags inside of the domain (e.g "@css/generic")
+        [JsonPropertyName("flags")] public Dictionary<string, HashSet<string>> Flags { get; init; } = new();
         [JsonPropertyName("immunity")] public uint Immunity { get; set; } = 0;
         [JsonPropertyName("command_overrides")] public Dictionary<string, bool> CommandOverrides { get; init; } = new();
+
+        public bool DomainHasRootFlag(string domain)
+        {
+            if (!Flags.ContainsKey(domain)) { return false; }
+            return Flags[domain].Contains("@" + domain + "/root");
+        }
+
+        public string[] GetFlagDomains()
+        {
+            return Flags.Keys.ToArray();
+        }
+
+        public HashSet<string> GetAllFlags()
+        {
+            var flags = new HashSet<string>();
+            foreach (var domainFlags in Flags.Values)
+            {
+                flags.UnionWith(domainFlags);
+            }
+            return flags;
+        }
+
     }
 
     public static partial class AdminManager
@@ -48,7 +72,15 @@ namespace CounterStrikeSharp.API.Modules.Admin
                     {
                         if (Admins.ContainsKey(steamId!))
                         {
-                            Admins[steamId!].Flags.UnionWith(adminDef.Flags);
+                            // Merge domains together if we already have pre-existing values.
+                            foreach (var (domain, flags) in adminDef.Flags)
+                            {
+                                if (Admins[steamId!].Flags.ContainsKey(domain))
+                                {
+                                    Admins[steamId!].Flags[domain].UnionWith(flags);
+                                }
+                            }
+
                             if (adminDef.Immunity > Admins[steamId!].Immunity)
                             {
                                 Admins[steamId!].Immunity = adminDef.Immunity;
@@ -103,7 +135,23 @@ namespace CounterStrikeSharp.API.Modules.Admin
             if (player == null) return true;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return false; }
             var playerData = GetPlayerAdminData((SteamID)player.SteamID);
-            return playerData?.Flags.IsSupersetOf(flags) ?? false;
+            if (playerData == null) return false;
+
+            // Individual permission flags are stored in "domains", which are usually defined by plugins or systems.
+            // E.g, CounterStrikeSharp uses the domain "css". We only grab the ones we need here.
+            var domains = flags.Where(
+                flag => flag.StartsWith(PermissionCharacters.UserPermissionChar))
+                .Distinct()
+                .Select(domain => domain.Split('/').First()[1..]);
+
+            // Merge all of the domain flags together for the final comparison.
+            var playerFlags = new HashSet<string>();
+            foreach (var domain in domains)
+            {
+                if (playerData.Flags.ContainsKey(domain)) { playerFlags.UnionWith(playerData.Flags[domain]); }
+            }
+
+            return playerFlags.IsSupersetOf(flags);
         }
 
         /// <summary>
@@ -115,7 +163,23 @@ namespace CounterStrikeSharp.API.Modules.Admin
         public static bool PlayerHasPermissions(SteamID steamId, params string[] flags)
         {
             var playerData = GetPlayerAdminData(steamId);
-            return playerData?.Flags.IsSupersetOf(flags) ?? false;
+            if (playerData == null) return false;
+
+            // Individual permission flags are stored in "domains", which are usually defined by plugins or systems.
+            // E.g, CounterStrikeSharp uses the domain "css". We only grab the ones we need here.
+            var domains = flags.Where(
+                flag => flag.StartsWith(PermissionCharacters.UserPermissionChar))
+                .Distinct()
+                .Select(domain => domain.Split('/').First()[1..]);
+
+            // Merge all of the domain flags together for the final comparison.
+            var playerFlags = new HashSet<string>();
+            foreach (var domain in domains)
+            {
+                if (playerData.Flags.ContainsKey(domain)) { playerFlags.UnionWith(playerData.Flags[domain]); }
+            }
+
+            return playerFlags.IsSupersetOf(flags);
         }
 
         #endregion
@@ -247,23 +311,42 @@ namespace CounterStrikeSharp.API.Modules.Admin
         public static void AddPlayerPermissions(SteamID steamId, params string[] flags)
         {
             var data = GetPlayerAdminData(steamId);
+
+            var domains = flags.Where(
+                flag => flag.StartsWith(PermissionCharacters.UserPermissionChar))
+                .Distinct()
+                .Select(domain => domain.Split('/').First()[1..]);
+
             if (data == null)
             {
+                var flagData = new Dictionary<string, HashSet<string>>();
+                foreach (var domain in domains)
+                {
+                    flagData[domain] = new HashSet<string>();
+                    flagData[domain] = flags.Where(flag => flag.StartsWith(PermissionCharacters.UserPermissionChar + domain + '/')).ToHashSet();
+                }
+
                 data = new AdminData()
                 {
                     Identity = steamId.SteamId64.ToString(),
-                    Flags = new(flags),
+                    Flags = new(flagData),
                     Groups = new()
                 };
 
                 Admins[steamId] = data;
                 return;
             }
-            
-            foreach (var flag in flags)
+
+            foreach (var domain in domains)
             {
-                data.Flags.Add(flag);
+                if (!data.GetFlagDomains().Contains(domain))
+                {
+                    var flagData = new HashSet<string>();
+                    data.Flags[domain] = flagData;
+                }
+                data.Flags[domain] = flags.Where(flag => flag.StartsWith(PermissionCharacters.UserPermissionChar + domain + '/')).ToHashSet();
             }
+
             Admins[steamId] = data;
         }
         
@@ -291,8 +374,19 @@ namespace CounterStrikeSharp.API.Modules.Admin
         {
             var data = GetPlayerAdminData(steamId);
             if (data == null) return;
-            
-            data.Flags.ExceptWith(flags);
+
+            var domains = flags.Where(
+                flag => flag.StartsWith(PermissionCharacters.UserPermissionChar))
+                .Distinct()
+                .Select(domain => domain.Split('/').First()[1..]);
+
+            foreach (var domain in domains)
+            {
+                if (!data.GetFlagDomains().Contains(domain)) continue;
+                var domainFlags = flags.Where(flag => flag.StartsWith(PermissionCharacters.UserPermissionChar + domain + '/')).ToHashSet();
+                data.Flags[domain].ExceptWith(flags);
+            }
+
             Admins[steamId] = data;
         }
 
