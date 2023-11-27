@@ -137,7 +137,7 @@ namespace TestPlugin
             VirtualFunctions.UTIL_RemoveFunc.Hook(hook =>
             {
                 var entityInstance = hook.GetParam<CEntityInstance>(0);
-                Logger.LogInformation("Removed entity {EntityIndex}", entityInstance.EntityIndex);
+                Logger.LogInformation("Removed entity {EntityIndex}", entityInstance.Index);
 
                 return HookResult.Continue;
             }, HookMode.Post);
@@ -217,7 +217,7 @@ namespace TestPlugin
                 if (!@event.Userid.PlayerPawn.IsValid) return 0;
 
                 Logger.LogInformation("Player spawned with entity index: {EntityIndex} & User ID: {UserId}",
-                    @event.Userid.EntityIndex, @event.Userid.UserId);
+                    @event.Userid.Index, @event.Userid.UserId);
 
                 return HookResult.Continue;
             });
