@@ -42,7 +42,11 @@ namespace CounterStrikeSharp.API.Modules.Admin
         {
             foreach (var (steamId, data) in Admins)
             {
-                command.ReplyToCommand($"{steamId.SteamId64}, {steamId.SteamId2} - {string.Join(", ", data.Flags)}");
+                command.ReplyToCommand($"{steamId.SteamId64}, {steamId.SteamId2} - FLAGS: ");
+                foreach (var domain in data.Flags.Keys)
+                {
+                    command.ReplyToCommand($"   Domain {domain}: {string.Join(", ", data.Flags[domain])}");
+                }
             }
         }
 

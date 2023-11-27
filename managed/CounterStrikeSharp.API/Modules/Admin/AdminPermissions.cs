@@ -3,27 +3,32 @@ using System.IO;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using System.Text.Json;
-using CounterStrikeSharp.API.Core;
-using CounterStrikeSharp.API.Modules.Utils;
 using CounterStrikeSharp.API.Modules.Entities;
-using CounterStrikeSharp.API.Modules.Commands;
-using System.Reflection;
-using System.Numerics;
 using System.Linq;
 using CounterStrikeSharp.API.Core.Logging;
 using Microsoft.Extensions.Logging;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Text.Json.Nodes;
+using System.Numerics;
 
 namespace CounterStrikeSharp.API.Modules.Admin
 {
     public partial class AdminData
     {
         [JsonPropertyName("identity")] public required string Identity { get; init; }
-        // Key is the domain of the flag "e.g "css, os, kzsurf"). This should NOT include the @ character.
-        // Value is a hashmap of the flags inside of the domain (e.g "@css/generic")
-        [JsonPropertyName("flags")] public Dictionary<string, HashSet<string>> Flags { get; init; } = new();
+        // Flags loaded from file. Do not use this for actual comparisons.
+        [JsonPropertyName("flags")] public HashSet<string> _flags { get; init; } = new();
+
         [JsonPropertyName("immunity")] public uint Immunity { get; set; } = 0;
         [JsonPropertyName("command_overrides")] public Dictionary<string, bool> CommandOverrides { get; init; } = new();
+
+        // Key is the domain of the flag "e.g "css, os, kzsurf"). This should NOT include the @ character.
+        // Value is a hashmap of the flags inside of the domain (e.g "@css/generic")
+        public Dictionary<string, HashSet<string>> Flags { get; init; } = new();
+
+        public void InitalizeFlags()
+        {
+            AddFlags(_flags);
+        }
 
         public bool DomainHasRootFlag(string domain)
         {
@@ -46,7 +51,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             return flags;
         }
 
-        public void AddFlags(params string[] flags)
+        public void AddFlags(HashSet<string> flags)
         {
             var domains = flags.Where(
                flag => flag.StartsWith(PermissionCharacters.UserPermissionChar))
@@ -63,7 +68,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             }
         }
 
-        public void RemoveFlags(params string[] flags)
+        public void RemoveFlags(HashSet<string> flags)
         {
             var domains = flags.Where(
                flag => flag.StartsWith(PermissionCharacters.UserPermissionChar))
@@ -96,11 +101,15 @@ namespace CounterStrikeSharp.API.Modules.Admin
                     _logger.LogWarning("Admin data file not found. Skipping admin data load.");
                     return;
                 }
-                
-                var adminsFromFile = JsonSerializer.Deserialize<Dictionary<string, AdminData>>(File.ReadAllText(adminDataPath), new JsonSerializerOptions() { ReadCommentHandling = JsonCommentHandling.Skip });
+                var settings = new JsonSerializerOptions() { ReadCommentHandling = JsonCommentHandling.Skip };
+                var adminsFromFile = JsonSerializer.Deserialize<Dictionary<string, AdminData>>(File.ReadAllText(adminDataPath), settings);
                 if (adminsFromFile == null) { throw new FileNotFoundException(); }
+
                 foreach (var adminDef in adminsFromFile.Values)
                 {
+                    adminDef.InitalizeFlags();
+                    Console.WriteLine($"Domains: {adminDef.Flags.Count}");
+
                     if (SteamID.TryParse(adminDef.Identity, out var steamId))
                     {
                         if (Admins.ContainsKey(steamId!))
@@ -167,22 +176,12 @@ namespace CounterStrikeSharp.API.Modules.Admin
             // The server console should have access to all commands, regardless of permissions.
             if (player == null) return true;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return false; }
+
             var playerData = GetPlayerAdminData((SteamID)player.SteamID);
             if (playerData == null) return false;
 
-            // Individual permission flags are stored in "domains", which are usually defined by plugins or systems.
-            // E.g, CounterStrikeSharp uses the domain "css". We only grab the ones we need here.
-            var domains = flags.Where(
-                flag => flag.StartsWith(PermissionCharacters.UserPermissionChar))
-                .Distinct()
-                .Select(domain => domain.Split('/').First()[1..]);
-
             // Merge all of the domain flags together for the final comparison.
-            var playerFlags = new HashSet<string>();
-            foreach (var domain in domains)
-            {
-                if (playerData.Flags.ContainsKey(domain)) { playerFlags.UnionWith(playerData.Flags[domain]); }
-            }
+            var playerFlags = playerData.GetAllFlags();
 
             return playerFlags.IsSupersetOf(flags);
         }
@@ -198,19 +197,8 @@ namespace CounterStrikeSharp.API.Modules.Admin
             var playerData = GetPlayerAdminData(steamId);
             if (playerData == null) return false;
 
-            // Individual permission flags are stored in "domains", which are usually defined by plugins or systems.
-            // E.g, CounterStrikeSharp uses the domain "css". We only grab the ones we need here.
-            var domains = flags.Where(
-                flag => flag.StartsWith(PermissionCharacters.UserPermissionChar))
-                .Distinct()
-                .Select(domain => domain.Split('/').First()[1..]);
-
             // Merge all of the domain flags together for the final comparison.
-            var playerFlags = new HashSet<string>();
-            foreach (var domain in domains)
-            {
-                if (playerData.Flags.ContainsKey(domain)) { playerFlags.UnionWith(playerData.Flags[domain]); }
-            }
+            var playerFlags = playerData.GetAllFlags();
 
             return playerFlags.IsSupersetOf(flags);
         }
@@ -359,7 +347,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
                 return;
             }
 
-            Admins[steamId].AddFlags(flags);
+            Admins[steamId].AddFlags(flags.ToHashSet<string>());
         }
         
         /// <summary>
@@ -386,7 +374,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
         {
             var data = GetPlayerAdminData(steamId);
             if (data == null) return;
-            Admins[steamId].RemoveFlags(flags);
+            Admins[steamId].RemoveFlags(flags.ToHashSet<string>());
         }
 
         /// <summary>
