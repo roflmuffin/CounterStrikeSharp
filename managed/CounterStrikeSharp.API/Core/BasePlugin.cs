@@ -26,6 +26,7 @@ using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Timers;
 using CounterStrikeSharp.API.Modules.Config;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Core
@@ -50,6 +51,8 @@ namespace CounterStrikeSharp.API.Core
         public string ModuleDirectory => Path.GetDirectoryName(ModulePath);
         public ILogger Logger { get; set; }
 
+        public IStringLocalizer Localizer { get; set; }
+        
         public virtual void Load(bool hotReload)
         {
         }

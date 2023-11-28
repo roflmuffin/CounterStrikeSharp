@@ -16,6 +16,7 @@
 
 using System;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.Json.Serialization;
@@ -31,6 +32,7 @@ using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Menu;
 using CounterStrikeSharp.API.Modules.Utils;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
 namespace TestPlugin
@@ -480,6 +482,22 @@ namespace TestPlugin
             {
                 command.ReplyToCommand($" {(char)i}Color 0x{i:x}");
             }
+        }
+        
+        [ConsoleCommand("css_localetest", "Test Translations")]
+        public void OnCommandLocaleTest(CCSPlayerController? player, CommandInfo command)
+        {
+            Logger.LogInformation("Current Culture is {Culture}", CultureInfo.CurrentCulture);
+
+            Logger.LogInformation(Localizer["testPlugin.maxPlayersAnnouncement", Server.MaxPlayers]);
+            CultureInfo.CurrentCulture = new CultureInfo("en-GB");
+            CultureInfo.CurrentUICulture = new CultureInfo("en-GB");
+            Logger.LogInformation(Localizer["testPlugin.maxPlayersAnnouncement", Server.MaxPlayers]);
+            CultureInfo.CurrentCulture = new CultureInfo("fr-FR");
+            CultureInfo.CurrentUICulture = new CultureInfo("fr-FR");
+            Logger.LogInformation(Localizer["testPlugin.maxPlayersAnnouncement", Server.MaxPlayers]);
+            CultureInfo.CurrentCulture = CultureInfo.DefaultThreadCurrentCulture;
+            CultureInfo.CurrentUICulture = CultureInfo.DefaultThreadCurrentUICulture;
         }
 
         [ConsoleCommand("css_pause", "Pause Game")]
