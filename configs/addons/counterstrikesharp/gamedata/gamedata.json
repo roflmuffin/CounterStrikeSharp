@@ -76,7 +76,7 @@
   },
   "CCSPlayer_ItemServices_DropActivePlayerWeapon": {
     "offsets": {
-        "windows": 20,
+        "windows": 18,
         "linux": 19
     }
   },
