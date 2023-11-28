@@ -21,6 +21,7 @@ using System.Linq;
 using System.Reflection;
 using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
+using CounterStrikeSharp.API.Core.Translations;
 using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Events;
@@ -159,6 +160,8 @@ namespace CounterStrikeSharp.API.Core
             {
                 var caller = (i != -1) ? new CCSPlayerController(NativeAPI.GetEntityFromIndex(i + 1)) : null;
                 var command = new CommandInfo(ptr, caller);
+                
+                using var temporaryCulture = new WithTemporaryCulture(caller.GetLanguage());
 
                 var methodInfo = handler?.GetMethodInfo();
 

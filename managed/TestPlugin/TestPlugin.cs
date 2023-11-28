@@ -24,6 +24,7 @@ using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
+using CounterStrikeSharp.API.Core.Translations;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -488,16 +489,7 @@ namespace TestPlugin
         public void OnCommandLocaleTest(CCSPlayerController? player, CommandInfo command)
         {
             Logger.LogInformation("Current Culture is {Culture}", CultureInfo.CurrentCulture);
-
-            Logger.LogInformation(Localizer["testPlugin.maxPlayersAnnouncement", Server.MaxPlayers]);
-            CultureInfo.CurrentCulture = new CultureInfo("en-GB");
-            CultureInfo.CurrentUICulture = new CultureInfo("en-GB");
-            Logger.LogInformation(Localizer["testPlugin.maxPlayersAnnouncement", Server.MaxPlayers]);
-            CultureInfo.CurrentCulture = new CultureInfo("fr-FR");
-            CultureInfo.CurrentUICulture = new CultureInfo("fr-FR");
-            Logger.LogInformation(Localizer["testPlugin.maxPlayersAnnouncement", Server.MaxPlayers]);
-            CultureInfo.CurrentCulture = CultureInfo.DefaultThreadCurrentCulture;
-            CultureInfo.CurrentUICulture = CultureInfo.DefaultThreadCurrentUICulture;
+            command.ReplyToCommand(Localizer["testPlugin.maxPlayersAnnouncement", Server.MaxPlayers]);
         }
 
         [ConsoleCommand("css_pause", "Pause Game")]

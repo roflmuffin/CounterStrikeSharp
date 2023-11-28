@@ -80,7 +80,7 @@ namespace CounterStrikeSharp.API.Core.Translations
             return null;
         }
 
-        public virtual string GetString(string name, CultureInfo culture)
+        public virtual string? GetString(string name, CultureInfo culture)
         {
             var values = GetResourceSet(culture, tryParents: true);
             

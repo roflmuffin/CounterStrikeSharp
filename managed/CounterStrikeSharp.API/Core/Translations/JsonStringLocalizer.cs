@@ -60,7 +60,17 @@ public class JsonStringLocalizer : IStringLocalizer
             throw new ArgumentNullException(nameof(name));
         }
 
-        return _resourceManager.GetString(name, culture ?? CultureInfo.CurrentUICulture);
+        culture = culture ?? CultureInfo.CurrentUICulture;
+
+        var result = _resourceManager.GetString(name, culture);
+        
+        // Fallback to the default culture (en-US) if the resource is not found for the current culture.
+        if (result == null && !culture.Equals(CultureInfo.DefaultThreadCurrentUICulture))
+        {
+            result = _resourceManager.GetString(name, CultureInfo.DefaultThreadCurrentUICulture!);
+        }
+
+        return result;
     }
     
     protected virtual IEnumerable<LocalizedString> GetAllStrings(bool includeParentCultures, CultureInfo culture)

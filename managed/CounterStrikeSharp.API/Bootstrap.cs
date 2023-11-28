@@ -8,6 +8,7 @@ using CounterStrikeSharp.API.Core.Hosting;
 using CounterStrikeSharp.API.Core.Logging;
 using CounterStrikeSharp.API.Core.Plugin;
 using CounterStrikeSharp.API.Core.Plugin.Host;
+using CounterStrikeSharp.API.Core.Translations;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -23,9 +24,6 @@ public static class Bootstrap
     {
         try
         {
-            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
-            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("en-US");
-            
             // Path to /game/csgo/addons/counterstrikesharp
             var contentRoot = new FileInfo(Assembly.GetExecutingAssembly().Location).Directory.Parent.FullName;
 
@@ -42,6 +40,7 @@ public static class Bootstrap
                     services.AddSingleton<IScriptHostConfiguration, ScriptHostConfiguration>();
                     services.AddScoped<Application>();
                     services.AddSingleton<IPluginManager, PluginManager>();
+                    services.AddSingleton<IPlayerLanguageManager, PlayerLanguageManager>();
                     services.AddScoped<IPluginContextQueryHandler, PluginContextQueryHandler>();
 
                     services.Scan(i => i.FromCallingAssembly()

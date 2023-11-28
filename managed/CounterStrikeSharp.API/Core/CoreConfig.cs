@@ -23,6 +23,8 @@ using CounterStrikeSharp.API.Modules.Utils;
 using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Modules.Commands;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using CounterStrikeSharp.API.Core.Hosting;
 using CounterStrikeSharp.API.Core.Logging;
 using Microsoft.Extensions.Hosting;
@@ -43,6 +45,9 @@ namespace CounterStrikeSharp.API.Core
 
         [JsonPropertyName("FollowCS2ServerGuidelines")]
         public bool FollowCS2ServerGuidelines { get; set; } = true;
+        
+        [JsonPropertyName("ServerLanguage")]
+        public string ServerLanguage { get; set; } = "en";
     }
 
     /// <summary>
@@ -80,6 +85,8 @@ namespace CounterStrikeSharp.API.Core
         /// </para>
         /// </summary>
         public static bool FollowCS2ServerGuidelines => _coreConfig.FollowCS2ServerGuidelines;
+        
+        public static string ServerLanguage => _coreConfig.ServerLanguage;
     }
 
     public partial class CoreConfig : IStartupService
@@ -130,6 +137,20 @@ namespace CounterStrikeSharp.API.Core
             {
                 _logger.LogWarning(ex, "Failed to load core configuration, fallback values will be used");
             }
+
+            var serverCulture = CultureInfo.GetCultures(CultureTypes.AllCultures)
+                .FirstOrDefault(x => x.Name == ServerLanguage);
+            if (serverCulture == null)
+            {
+                _logger.LogWarning("Server Language \"{ServerLanguage}\" is not supported, falling back to \"en\"", ServerLanguage);
+                serverCulture = new CultureInfo("en");
+                _coreConfig.ServerLanguage = "en";
+            }
+            
+            CultureInfo.DefaultThreadCurrentUICulture = serverCulture;
+            CultureInfo.DefaultThreadCurrentCulture = serverCulture;
+            CultureInfo.CurrentUICulture = serverCulture;
+            CultureInfo.CurrentCulture = serverCulture;
             
             _logger.LogInformation("Successfully loaded core configuration");
         }
