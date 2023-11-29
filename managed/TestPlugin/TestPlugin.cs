@@ -42,7 +42,7 @@ namespace TestPlugin
         [JsonPropertyName("LogPrefix")] public string LogPrefix { get; set; } = "CSSharp";
     }
 
-    [MinimumApiVersion(33)]
+    [MinimumApiVersion(80)]
     public class SamplePlugin : BasePlugin, IPluginConfig<SampleConfig>
     {
         public override string ModuleName => "Sample Plugin";
@@ -472,7 +472,7 @@ namespace TestPlugin
                 command.ReplyToCommand($"{entity.Index}:{entity.DesignerName}");
             }
             
-            foreach (var entity in  Utilities.FindAllEntitiesByDesignerName<CBaseEntity>("cs_"))
+            foreach (var entity in Utilities.FindAllEntitiesByDesignerName<CBaseEntity>("cs_"))
             {
                 command.ReplyToCommand($"{entity.Index}:{entity.DesignerName}");
             }
