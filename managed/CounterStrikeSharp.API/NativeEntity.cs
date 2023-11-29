@@ -11,7 +11,7 @@ public abstract class NativeEntity : NativeObject
 
     public NativeEntity(IntPtr pointer) : base(pointer)
     {
-        EntityHandle = new(NativeAPI.GetRefFromEntityPointer(pointer));
+        EntityHandle = new(EntitySystem.GetRawHandleFromEntityPointer(pointer));
     }
 
     public NativeEntity(uint rawHandle) : base(EntitySystem.GetEntityByHandle(rawHandle) ?? 0)

@@ -1,5 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
 
 namespace CounterStrikeSharp.API.Modules.Entities;
@@ -13,6 +14,7 @@ public static class EntitySystem
     private const int MaxChunks = MaxEntities / MaxEntitiesPerChunk;
     private const int SizeOfEntityIdentity = 0x78;
     private const int HandleOffset = 0x10;
+    private const uint InvalidEHandleIndex = 0xFFFFFFFF;
 
     static unsafe Span<IntPtr> IdentityChunks => new((void*)ConcreteEntityListPointer.Value, MaxChunks);
     public static IntPtr FirstActiveEntity => Marshal.ReadIntPtr(ConcreteEntityListPointer.Value, MaxEntitiesPerChunk);
@@ -63,5 +65,14 @@ public static class EntitySystem
             return null;
 
         return Marshal.ReadIntPtr(pIdentityPtr);
+    }
+
+    public static uint GetRawHandleFromEntityPointer(IntPtr pointer)
+    {
+        if (pointer == IntPtr.Zero)
+            return InvalidEHandleIndex;
+
+        return Schema.GetPointer<CEntityIdentity?>(pointer, "CEntityInstance", "m_pEntity")?.EntityHandle.Raw ??
+               InvalidEHandleIndex;
     }
 }
