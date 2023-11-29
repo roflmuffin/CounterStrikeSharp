@@ -489,6 +489,15 @@ namespace TestPlugin
                 command.ReplyToCommand($" {(char)i}Color 0x{i:x}");
             }
         }
+        
+        [ConsoleCommand("css_sound", "Play a sound to client")]
+        public void OnCommandSound(CCSPlayerController? player, CommandInfo command)
+        {
+            if (player == null) return;
+            if (!player.PlayerPawn.IsValid) return;
+
+            player.ExecuteClientCommand($"play sounds/ui/counter_beep.vsnd");
+        }
 
         [ConsoleCommand("css_pause", "Pause Game")]
         public void OnCommandPause(CCSPlayerController? player, CommandInfo command)
