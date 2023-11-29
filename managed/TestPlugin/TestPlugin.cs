@@ -472,7 +472,7 @@ namespace TestPlugin
                 command.ReplyToCommand($"{entity.Index}:{entity.DesignerName}");
             }
             
-            foreach (var entity in  Utilities.FindAllEntitiesByDesignerName<CBaseEntity>("cs_"))
+            foreach (var entity in Utilities.FindAllEntitiesByDesignerName<CBaseEntity>("cs_"))
             {
                 command.ReplyToCommand($"{entity.Index}:{entity.DesignerName}");
             }
