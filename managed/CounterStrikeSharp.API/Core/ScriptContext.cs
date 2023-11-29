@@ -205,6 +205,16 @@ namespace CounterStrikeSharp.API.Core
 
 				return;
 			}
+			else if (arg is NativeObject nativeObject)
+			{
+				Push(context, (InputArgument)nativeObject);
+				return;
+			}
+			else if (arg is NativeEntity nativeValue)
+			{
+				Push(context, (InputArgument)nativeValue);
+				return;
+			}
 
 			if (Marshal.SizeOf(arg.GetType()) <= 8)
 			{

@@ -50,6 +50,8 @@ public class Schema
         "m_nActiveCoinRank",
         "m_nMusicID",
     };
+    
+    public static int GetClassSize(string className) => NativeAPI.GetSchemaClassSize(className);
 
     public static short GetSchemaOffset(string className, string propertyName)
     {
