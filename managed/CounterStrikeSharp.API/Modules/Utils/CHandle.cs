@@ -13,18 +13,42 @@ public readonly record struct CEntityIndex(uint Value)
 
 public class CHandle<T> : IEquatable<CHandle<T>> where T : NativeEntity
 {
-    public uint Raw;
-    
+    private uint _raw;
+    private IntPtr? _pointer;
+
+    public uint Raw
+    {
+        get
+        {
+            if (_pointer != null)
+            {
+                return (uint)Marshal.ReadInt32(_pointer.Value);
+            }
+
+            return _raw;
+        }
+        set
+        {
+            if (_pointer != null)
+            {
+                Marshal.WriteInt32(_pointer.Value, (int)value);
+                return;
+            }
+
+            _raw = value;
+        }
+    }
+
     public CHandle(uint raw)
     {
         Raw = raw;
     }
-    
+
     public CHandle(IntPtr raw)
     {
-        Raw = (uint)Marshal.ReadInt32(raw);
+        _pointer = raw;
     }
-    
+
     public T? Value => (T)Activator.CreateInstance(typeof(T), EntitySystem.GetEntityByHandle(this));
 
     public override string ToString() => IsValid ? $"Index = {Index}, Serial = {SerialNum}" : "<invalid>";
