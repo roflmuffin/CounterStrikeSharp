@@ -42,7 +42,7 @@ namespace TestPlugin
         [JsonPropertyName("LogPrefix")] public string LogPrefix { get; set; } = "CSSharp";
     }
 
-    [MinimumApiVersion(33)]
+    [MinimumApiVersion(80)]
     public class SamplePlugin : BasePlugin, IPluginConfig<SampleConfig>
     {
         public override string ModuleName => "Sample Plugin";
