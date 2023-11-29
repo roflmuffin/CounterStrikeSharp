@@ -68,18 +68,19 @@ Now build your project using your ide or the `dotnet build` command. You should 
 
 ### Installing your Plugin
 
-Locate the `plugins` folder in your CS2 dedicated server (`/game/csgo/addons/counterstrikesharp/plugins`) and create a new folder with the exact same name as your output .dll file. In this example it would be `HelloWorldPlugin.dll`, so I will make a new folder called `HelloWorldPlugin`. Inside of this folder, copy and paste all of the `.dll` files _except_ the `CounterStrikeSharp.API.dll` file. Once completed, the folder should look as follows:
+Locate the `plugins` folder in your CS2 dedicated server (`/game/csgo/addons/counterstrikesharp/plugins`) and create a new folder with the exact same name as your output .dll file. In this example it would be `HelloWorldPlugin.dll`, so I will make a new folder called `HelloWorldPlugin`. Inside of this folder, copy and paste the: `HelloWorldPlugin.deps.json`, `HelloWorldPlugin.dll`, and `HelloWorldPlugin.pdb` files. Once completed, the folder should look as follows:
 
 ```shell
 .
-└── SamplePlugin
-    ├── McMaster.NETCore.Plugins.dll
-    ├── Microsoft.DotNet.PlatformAbstractions.dll
-    ├── Microsoft.Extensions.DependencyModel.dll
-    ├── SamplePlugin.deps.json
-    ├── SamplePlugin.dll
-    └── SamplePlugin.pdb
+└── HelloWorldPlugin
+    ├── HelloWorldPlugin.deps.json
+    ├── HelloWorldPlugin.dll
+    └── HelloWorldPlugin.pdb
 ```
+
+:::caution
+If you have installed external nuget packages for your plugin, you may need to include their respective `.dll`s. For example, if you utilize the `Stateless` C# library, include `stateless.dll` in your `HelloWorld` plugin directory.
+:::
 
 :::note
 Note that some of these dependencies may change depending on the version of CounterStrikeSharp being used.
