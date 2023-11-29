@@ -19,12 +19,13 @@ using System.IO;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-
 using CounterStrikeSharp.API.Modules.Utils;
 using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Modules.Commands;
 using System.Collections.Generic;
+using CounterStrikeSharp.API.Core.Hosting;
 using CounterStrikeSharp.API.Core.Logging;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Core
@@ -34,17 +35,20 @@ namespace CounterStrikeSharp.API.Core
     /// </summary>
     internal sealed partial class CoreConfigData
     {
-        [JsonPropertyName("PublicChatTrigger")] public IEnumerable<string> PublicChatTrigger { get; set; } = new HashSet<string>() { "!" };
+        [JsonPropertyName("PublicChatTrigger")]
+        public IEnumerable<string> PublicChatTrigger { get; set; } = new HashSet<string>() { "!" };
 
-        [JsonPropertyName("SilentChatTrigger")] public IEnumerable<string> SilentChatTrigger { get; set; } = new HashSet<string>() { "/" };
+        [JsonPropertyName("SilentChatTrigger")]
+        public IEnumerable<string> SilentChatTrigger { get; set; } = new HashSet<string>() { "/" };
 
-        [JsonPropertyName("FollowCS2ServerGuidelines")] public bool FollowCS2ServerGuidelines { get; set; } = true;
+        [JsonPropertyName("FollowCS2ServerGuidelines")]
+        public bool FollowCS2ServerGuidelines { get; set; } = true;
     }
 
     /// <summary>
     /// Configuration related to the Core API.
     /// </summary>
-    public static partial class CoreConfig
+    public partial class CoreConfig
     {
         /// <summary>
         /// List of characters to use for public chat triggers.
@@ -78,49 +82,56 @@ namespace CounterStrikeSharp.API.Core
         public static bool FollowCS2ServerGuidelines => _coreConfig.FollowCS2ServerGuidelines;
     }
 
-    public static partial class CoreConfig
+    public partial class CoreConfig : IStartupService
     {
         private static CoreConfigData _coreConfig = new CoreConfigData();
-        
-        // TODO: ServiceCollection
-        private static ILogger _logger = CoreLogging.Factory.CreateLogger("CoreConfig");
 
-        static CoreConfig()
+        private readonly ILogger<CoreConfig> _logger;
+
+        private readonly string _coreConfigPath;
+
+        public CoreConfig(IScriptHostConfiguration scriptHostConfiguration, ILogger<CoreConfig> logger)
         {
-            CommandUtils.AddStandaloneCommand("css_core_reload", "Reloads the core configuration file.", ReloadCoreConfigCommand);
+            _logger = logger;
+            _coreConfigPath = Path.Join(scriptHostConfiguration.ConfigsPath, "core.json");
         }
 
         [RequiresPermissions("@css/config")]
         [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
-        private static void ReloadCoreConfigCommand(CCSPlayerController? player, CommandInfo command)
+        private void ReloadCoreConfigCommand(CCSPlayerController? player, CommandInfo command)
         {
-            var rootDir = new FileInfo(Assembly.GetExecutingAssembly().Location).Directory.Parent;
-            Load(Path.Combine(rootDir.FullName, "configs", "core.json"));
+            Load();
         }
 
-        public static void Load(string coreConfigPath)
+        public void Load()
         {
-            if (!File.Exists(coreConfigPath))
+            CommandUtils.AddStandaloneCommand("css_core_reload", "Reloads the core configuration file.",
+                ReloadCoreConfigCommand);
+
+            if (!File.Exists(_coreConfigPath))
             {
-                _logger.LogWarning("Core configuration could not be found at path \"{CoreConfigPath}\", fallback values will be used.", coreConfigPath);
+                _logger.LogWarning(
+                    "Core configuration could not be found at path \"{CoreConfigPath}\", fallback values will be used.",
+                    _coreConfigPath);
                 return;
             }
 
             try
             {
-                var data = JsonSerializer.Deserialize<CoreConfigData>(File.ReadAllText(coreConfigPath), new JsonSerializerOptions() { ReadCommentHandling = JsonCommentHandling.Skip });
+                var data = JsonSerializer.Deserialize<CoreConfigData>(File.ReadAllText(_coreConfigPath),
+                    new JsonSerializerOptions() { ReadCommentHandling = JsonCommentHandling.Skip });
 
                 if (data != null)
                 {
                     _coreConfig = data;
                 }
-                
-                _logger.LogInformation("Successfully loaded core configuration.");
             }
             catch (Exception ex)
             {
                 _logger.LogWarning(ex, "Failed to load core configuration, fallback values will be used");
             }
+            
+            _logger.LogInformation("Successfully loaded core configuration");
         }
     }
 }

@@ -1,6 +1,8 @@
 ---
 title: Getting Started
 description: How to get started installing & using CounterStrikeSharp.
+sidebar:
+  order: 0
 ---
 
 # Installation

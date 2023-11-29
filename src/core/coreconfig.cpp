@@ -26,11 +26,22 @@ CCoreConfig::~CCoreConfig() = default;
 
 bool CCoreConfig::Init(char* conf_error, int conf_error_size)
 {
-    std::ifstream ifs(m_sPath);
+    std::ifstream ifs(std::string(m_sPath + ".json"));
 
     if (!ifs) {
-        V_snprintf(conf_error, conf_error_size, "CoreConfig file not found.");
-        return false;
+        std::ifstream exampleIfs(std::string(m_sPath + ".example.json"));
+
+        if (!exampleIfs) {
+            V_snprintf(conf_error, conf_error_size, "CoreConfig file not found.");
+            return false;
+        }
+
+        CSSHARP_CORE_INFO("CoreConfig file not found, creating one from example.");
+        std::ofstream ofs(std::string(m_sPath + ".json"));
+        ofs << exampleIfs.rdbuf();
+        ofs.close();
+
+        return Init(conf_error, conf_error_size);
     }
 
     m_json = json::parse(ifs);

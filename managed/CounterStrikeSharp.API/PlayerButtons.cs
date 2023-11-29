@@ -14,8 +14,6 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using System;
-
 namespace CounterStrikeSharp.API
 {
     [Flags]

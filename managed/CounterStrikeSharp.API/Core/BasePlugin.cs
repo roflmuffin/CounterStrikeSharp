@@ -18,25 +18,19 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Runtime.Loader;
 using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
 using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Events;
-using CounterStrikeSharp.API.Modules.Entities;
-using CounterStrikeSharp.API.Modules.Listeners;
 using CounterStrikeSharp.API.Modules.Timers;
-using McMaster.NETCore.Plugins;
 using CounterStrikeSharp.API.Modules.Config;
 using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Core
 {
-    public abstract class BasePlugin : IPlugin, IDisposable
+    public abstract class BasePlugin : IPlugin
     {
         private bool _disposed;
 
@@ -51,7 +45,7 @@ namespace CounterStrikeSharp.API.Core
         
         public virtual string ModuleDescription { get; }
 
-        public string ModulePath { get; internal set; }
+        public string ModulePath { get; set; }
 
         public string ModuleDirectory => Path.GetDirectoryName(ModulePath);
         public ILogger Logger { get; set; }
@@ -316,7 +310,7 @@ namespace CounterStrikeSharp.API.Core
                 .Select(p => p.GetCustomAttribute<CastFromAttribute>()?.Type)
                 .ToArray();
 
-            GlobalContext.Instance.Logger.LogDebug("Registering listener for {ListenerName} with {ParameterCount} parameters",
+            Application.Instance.Logger.LogDebug("Registering listener for {ListenerName} with {ParameterCount} parameters",
                 listenerName, parameterTypes.Length);
 
             var wrappedHandler = new Action<ScriptContext>(context =>

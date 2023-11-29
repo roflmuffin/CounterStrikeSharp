@@ -25,13 +25,14 @@ namespace CounterStrikeSharp.API.Modules.Commands
         
         public delegate HookResult CommandListenerCallback(CCSPlayerController? player, CommandInfo commandInfo);
 
-        private CCSPlayerController _player;
-        public IntPtr Handle { get; private set; }
+        public CCSPlayerController? CallingPlayer { get; }
+        
+        public IntPtr Handle { get; }
         
         internal CommandInfo(IntPtr pointer, CCSPlayerController player) 
         {
             Handle = pointer;
-            _player = player;
+            CallingPlayer = player;
         }
 
         public int ArgCount => NativeAPI.CommandGetArgCount(Handle);
@@ -42,12 +43,12 @@ namespace CounterStrikeSharp.API.Modules.Commands
 
         public string ArgByIndex(int index) => NativeAPI.CommandGetArgByIndex(Handle, index);
         public string GetArg(int index) => NativeAPI.CommandGetArgByIndex(Handle, index);
-
+        
         public void ReplyToCommand(string message, bool console = false) {
-            if (_player != null) 
+            if (CallingPlayer != null) 
             {
-                if (console) { _player.PrintToConsole(message); }
-                else _player.PrintToChat(message);
+                if (console) { CallingPlayer.PrintToConsole(message); }
+                else CallingPlayer.PrintToChat(message);
             }
             else 
             {

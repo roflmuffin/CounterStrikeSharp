@@ -1,6 +1,8 @@
 ---
 title: Hello World Plugin
 description: How to write your first plugin for CounterStrikeSharp
+sidebar:
+  order: 0
 ---
 
 ## Creating a New Project
