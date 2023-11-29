@@ -534,6 +534,49 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static uint GetRefFromEntityPointer(IntPtr entitypointer){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(entitypointer);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xAF13DA94);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (uint)ScriptContext.GlobalScriptContext.GetResult(typeof(uint));
+			}
+		}
+
+        public static IntPtr GetEntityPointerFromRef(uint entityref){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(entityref);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xDBC17174);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			}
+		}
+
+        public static IntPtr GetConcreteEntityListPointer(){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x5756DB36);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			}
+		}
+
+        public static bool IsRefValidEntity(uint entityref){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(entityref);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x6E38A1FC);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (bool)ScriptContext.GlobalScriptContext.GetResult(typeof(bool));
+			}
+		}
+
         public static void PrintToConsole(int index, string message){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();

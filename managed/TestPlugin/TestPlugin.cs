@@ -42,7 +42,7 @@ namespace TestPlugin
         [JsonPropertyName("LogPrefix")] public string LogPrefix { get; set; } = "CSSharp";
     }
 
-    [MinimumApiVersion(33)]
+    [MinimumApiVersion(80)]
     public class SamplePlugin : BasePlugin, IPluginConfig<SampleConfig>
     {
         public override string ModuleName => "Sample Plugin";
@@ -137,7 +137,7 @@ namespace TestPlugin
             VirtualFunctions.UTIL_RemoveFunc.Hook(hook =>
             {
                 var entityInstance = hook.GetParam<CEntityInstance>(0);
-                Logger.LogInformation("Removed entity {EntityIndex}", entityInstance.EntityIndex.Value.Value);
+                Logger.LogInformation("Removed entity {EntityIndex}", entityInstance.Index);
 
                 return HookResult.Continue;
             }, HookMode.Post);
@@ -217,7 +217,7 @@ namespace TestPlugin
                 if (!@event.Userid.PlayerPawn.IsValid) return 0;
 
                 Logger.LogInformation("Player spawned with entity index: {EntityIndex} & User ID: {UserId}",
-                    @event.Userid.EntityIndex, @event.Userid.UserId);
+                    @event.Userid.Index, @event.Userid.UserId);
 
                 return HookResult.Continue;
             });
@@ -229,26 +229,20 @@ namespace TestPlugin
                 var activeWeapon = @event.Userid.PlayerPawn.Value.WeaponServices?.ActiveWeapon.Value;
                 var weapons = @event.Userid.PlayerPawn.Value.WeaponServices?.MyWeapons;
 
+                Server.NextFrame(() =>
+                {
+                    var weaponServices = player.PlayerPawn.Value.WeaponServices.As<CCSPlayer_WeaponServices>();
+                    player.PrintToChat(weaponServices.ActiveWeapon.Value?.DesignerName);    
+                });
+                
                 // Set player to random colour
                 player.PlayerPawn.Value.Render = Color.FromArgb(Random.Shared.Next(0, 255),
                     Random.Shared.Next(0, 255), Random.Shared.Next(0, 255));
 
-                Server.NextFrame(() =>
-                {
-                    player.PrintToCenter(string.Join("\n", weapons.Select(x => x.Value.DesignerName)));
-                });
-
                 activeWeapon.ReserveAmmo[0] = 250;
                 activeWeapon.Clip1 = 250;
 
-                Logger.LogInformation("Pawn Position: {AbsOrigin}-{Rotation}", pawn.AbsOrigin, pawn.AbsRotation);
-
-                char randomColourChar = (char)new Random().Next(0, 16);
-                Server.PrintToChatAll($"Random String with Random Colour: {randomColourChar}{new Random().Next()}");
-
                 pawn.Health += 5;
-
-                Logger.LogInformation("Bullet Impact: {X},{Y},{Z}", @event.X, @event.Y, @event.Z);
 
                 return HookResult.Continue;
             });
@@ -304,7 +298,7 @@ namespace TestPlugin
                 switch (designerName)
                 {
                     case "smokegrenade_projectile":
-                        var projectile = new CSmokeGrenadeProjectile(entity.Handle);
+                        var projectile = entity.As<CSmokeGrenadeProjectile>();
 
                         Server.NextFrame(() =>
                         {
@@ -316,7 +310,7 @@ namespace TestPlugin
                         });
                         return;
                     case "flashbang_projectile":
-                        var flashbang = new CBaseCSGrenadeProjectile(entity.Handle);
+                        var flashbang = entity.As<CBaseCSGrenadeProjectile>();
 
                         Server.NextFrame(() => { flashbang.Remove(); });
                         return;
@@ -467,6 +461,20 @@ namespace TestPlugin
             foreach (var weapon in player.PlayerPawn.Value.WeaponServices.MyWeapons)
             {
                 command.ReplyToCommand(weapon.Value.DesignerName);
+            }
+        }
+        
+        [ConsoleCommand("css_entities", "List entities")]
+        public void OnCommandEntities(CCSPlayerController? player, CommandInfo command)
+        {
+            foreach (var entity in Utilities.GetAllEntities())
+            {
+                command.ReplyToCommand($"{entity.Index}:{entity.DesignerName}");
+            }
+            
+            foreach (var entity in Utilities.FindAllEntitiesByDesignerName<CBaseEntity>("cs_"))
+            {
+                command.ReplyToCommand($"{entity.Index}:{entity.DesignerName}");
             }
         }
         

@@ -9420,10 +9420,8 @@ public partial class CEntityIdentity : NativeObject
 
 }
 
-public partial class CEntityInstance : NativeObject
+public partial class CEntityInstance : NativeEntity
 {
-    public CEntityInstance (IntPtr pointer) : base(pointer) {}
-
     // m_iszPrivateVScripts
     public string PrivateVScripts
     {

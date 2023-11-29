@@ -12,18 +12,31 @@ namespace CounterStrikeSharp.API.Core;
 
 public partial class CEntityInstance : IEquatable<CEntityInstance>
 {
-    public bool IsValid => Handle != IntPtr.Zero;
+    public CEntityInstance(IntPtr pointer) : base(pointer)
+    {
+    }
 
-    public CEntityIndex? EntityIndex => IsValid ? Entity?.EntityHandle.Index : null;
+    public CEntityInstance(uint rawHandle) : base(rawHandle)
+    {
+    }
+    
+    /// <summary>
+    /// Checks that the entity handle is valid and the handle points to a valid entity
+    /// </summary>
+    public bool IsValid => EntityHandle.IsValid && Handle != IntPtr.Zero;
+
+    [Obsolete("Use Index instead", true)]
+    public CEntityIndex? EntityIndex => new CEntityIndex(EntityHandle.Index);
+    
+    public uint Index => EntityHandle.Index;
     
     public string DesignerName => IsValid ? Entity?.DesignerName : null;
 
     public void Remove() => VirtualFunctions.UTIL_Remove(this.Handle);
-
-
+    
     public bool Equals(CEntityInstance? other)
     {
-        return this.Handle == other?.Handle;
+        return this.EntityHandle == other?.EntityHandle;
     }
 
     public override bool Equals(object? obj)
@@ -50,5 +63,5 @@ public partial class CEntityInstance : IEquatable<CEntityInstance>
 public partial class CEntityIdentity
 {
     public unsafe CEntityInstance EntityInstance => new(Unsafe.Read<IntPtr>((void*)Handle));
-    public unsafe CHandle<CEntityInstance> EntityHandle => new(Handle + 0x10);
+    public unsafe CHandle<CEntityInstance> EntityHandle => new(this.Handle + 0x10);
 }

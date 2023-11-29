@@ -11,8 +11,7 @@ public partial class CCSPlayerController
     {
         get
         {
-            if (EntityIndex == null) return null;
-            return NativeAPI.GetUseridFromIndex((int)this.EntityIndex.Value.Value);
+            return NativeAPI.GetUseridFromIndex((int)this.Index);
         }
     }
 
@@ -38,7 +37,7 @@ public partial class CCSPlayerController
 
     public void PrintToConsole(string message)
     {
-        NativeAPI.PrintToConsole((int)EntityIndex.Value.Value, $"{message}\n\0");
+        NativeAPI.PrintToConsole((int)Index, $"{message}\n\0");
     }
 
     public void PrintToChat(string message)
@@ -145,9 +144,7 @@ public partial class CCSPlayerController
     /// </summary>
     public PlayerButtons Buttons => (PlayerButtons)Pawn.Value.MovementServices!.Buttons.ButtonStates[0];
 
-    public void ExecuteClientCommand(string command)
-    {
-        var entityIndex = this.EntityIndex;
-        if (entityIndex != null) NativeAPI.IssueClientCommand((int)entityIndex.Value.Value - 1, command);
-    }
+    public void ExecuteClientCommand(string command) => NativeAPI.IssueClientCommand(Slot, command);
+
+    public int Slot => (int)Index - 1;
 }

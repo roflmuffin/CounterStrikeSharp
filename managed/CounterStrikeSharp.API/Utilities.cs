@@ -22,15 +22,17 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using CounterStrikeSharp.API.Modules.Commands.Targeting;
+using CounterStrikeSharp.API.Modules.Entities;
 
 namespace CounterStrikeSharp.API
 {
     public static class Utilities
     {
         // https://github.com/dotabuff/manta/blob/master/entity.go#L186-L190
-        public const int MaxEdictBits = 14;
+        public const int MaxEdictBits = 15;
         public const int MaxEdicts = 1 << MaxEdictBits;
         public const int NumEHandleSerialNumberBits = 17;
+        public const uint InvalidEHandleIndex = 0xFFFFFFFF;
 
         public static IEnumerable<T> FlagsToList<T>(this T flags) where T : Enum
         {
@@ -75,11 +77,25 @@ namespace CounterStrikeSharp.API
 
         public static IEnumerable<T> FindAllEntitiesByDesignerName<T>(string designerName) where T : CEntityInstance
         {
-            var pEntity = new CEntityIdentity(NativeAPI.GetFirstActiveEntity());
+            var pEntity = new CEntityIdentity(EntitySystem.FirstActiveEntity);
+            for (; pEntity != null && pEntity.EntityHandle.IsValid; pEntity = pEntity.Next)
+            {
+                var value = pEntity.EntityInstance.EntityHandle.Value;
+                if (value == null) continue;
+
+                yield return value.As<T>();
+            }
+        }
+        
+        public static IEnumerable<CEntityInstance> GetAllEntities()
+        {
+            var pEntity = new CEntityIdentity(EntitySystem.FirstActiveEntity);
             for (; pEntity != null && pEntity.Handle != IntPtr.Zero; pEntity = pEntity.Next)
             {
-                if (!pEntity.DesignerName.Contains(designerName)) continue;
-                yield return new PointerTo<T>(pEntity.Handle).Value;
+                var value = pEntity.EntityInstance.EntityHandle.Value;
+                if (value == null) continue;
+
+                yield return value;
             }
         }
         

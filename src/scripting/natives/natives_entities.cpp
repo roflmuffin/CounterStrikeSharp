@@ -53,6 +53,52 @@ void* GetEntityPointerFromHandle(ScriptContext& scriptContext) {
     return globals::entitySystem->GetBaseEntity(*handle);
 }
 
+void* GetEntityPointerFromRef(ScriptContext& scriptContext) {
+    auto ref = scriptContext.GetArgument<unsigned int>(0);
+
+    if (ref == INVALID_EHANDLE_INDEX) {
+        return nullptr;
+    }
+
+    CBaseHandle hndl(ref);
+
+    return globals::entitySystem->GetBaseEntity(hndl);
+}
+
+unsigned int GetRefFromEntityPointer(ScriptContext& scriptContext) {
+    auto* pEntity = scriptContext.GetArgument<CBaseEntity*>(0);
+
+    if (pEntity == nullptr)
+    {
+        return INVALID_EHANDLE_INDEX;
+    }
+
+    auto hndl = pEntity->GetRefEHandle();
+
+    if (hndl == INVALID_EHANDLE_INDEX)
+    {
+        return INVALID_EHANDLE_INDEX;
+    }
+
+    return hndl.ToInt();
+}
+
+bool IsRefValidEntity(ScriptContext& scriptContext) {
+    auto ref = scriptContext.GetArgument<unsigned int>(0);
+
+    if (ref == INVALID_EHANDLE_INDEX) {
+        return false;
+    }
+
+    CBaseHandle hndl(ref);
+
+    if (!hndl.IsValid()) {
+        return false;
+    }
+
+    return globals::entitySystem->GetBaseEntity(hndl) != nullptr;
+}
+
 void PrintToConsole(ScriptContext& scriptContext) {
     auto index = scriptContext.GetArgument<int>(0);
     auto message = scriptContext.GetArgument<const char*>(1);
@@ -64,12 +110,20 @@ CEntityIdentity* GetFirstActiveEntity(ScriptContext& script_context) {
     return globals::entitySystem->m_EntityList.m_pFirstActiveEntity;
 }
 
+void* GetConcreteEntityListPointer(ScriptContext& script_context) {
+    return &globals::entitySystem->m_EntityList;
+}
+
 REGISTER_NATIVES(entities, {
     ScriptEngine::RegisterNativeHandler("GET_ENTITY_FROM_INDEX", GetEntityFromIndex);
     ScriptEngine::RegisterNativeHandler("GET_USERID_FROM_INDEX", GetUserIdFromIndex);
     ScriptEngine::RegisterNativeHandler("GET_DESIGNER_NAME", GetDesignerName);
     ScriptEngine::RegisterNativeHandler("GET_ENTITY_POINTER_FROM_HANDLE",
                                         GetEntityPointerFromHandle);
+    ScriptEngine::RegisterNativeHandler("GET_ENTITY_POINTER_FROM_REF", GetEntityPointerFromRef);
+    ScriptEngine::RegisterNativeHandler("GET_REF_FROM_ENTITY_POINTER", GetRefFromEntityPointer);
+    ScriptEngine::RegisterNativeHandler("GET_CONCRETE_ENTITY_LIST_POINTER", GetConcreteEntityListPointer);
+    ScriptEngine::RegisterNativeHandler("IS_REF_VALID_ENTITY", IsRefValidEntity);
     ScriptEngine::RegisterNativeHandler("PRINT_TO_CONSOLE", PrintToConsole);
     ScriptEngine::RegisterNativeHandler("GET_FIRST_ACTIVE_ENTITY", GetFirstActiveEntity);
 })
