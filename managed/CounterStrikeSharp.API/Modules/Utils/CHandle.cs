@@ -2,6 +2,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Modules.Entities;
 
 namespace CounterStrikeSharp.API.Modules.Utils;
 
@@ -24,14 +25,16 @@ public class CHandle<T> : IEquatable<CHandle<T>> where T : NativeEntity
         Raw = (uint)Marshal.ReadInt32(raw);
     }
     
-    public T? Value => (T)Activator.CreateInstance(typeof(T), NativeAPI.GetEntityPointerFromRef(Raw));
+    public T? Value => (T)Activator.CreateInstance(typeof(T), EntitySystem.GetEntityByHandle(this));
 
     public override string ToString() => IsValid ? $"Index = {Index}, Serial = {SerialNum}" : "<invalid>";
 
     public bool IsValid => Index != (Utilities.MaxEdicts - 1);
 
-    public uint Index => Raw & (Utilities.MaxEdicts - 1);
+    public uint Index => (uint)(Raw & (Utilities.MaxEdicts - 1));
     public uint SerialNum => Raw >> Utilities.MaxEdictBits;
+    
+    public static implicit operator uint(CHandle<T> handle) => handle.Raw;
 
     public bool Equals(CHandle<T>? other)
     {
@@ -57,6 +60,10 @@ public class CHandle<T> : IEquatable<CHandle<T>> where T : NativeEntity
 public class CEntityHandle : CHandle<CEntityInstance>
 {
     public CEntityHandle(uint raw) : base(raw)
+    {
+    }
+    
+    public CEntityHandle(IntPtr raw) : base (raw)
     {
     }
 }

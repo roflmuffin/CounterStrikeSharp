@@ -4,6 +4,7 @@ GET_DESIGNER_NAME: pointer:pointer -> string
 GET_ENTITY_POINTER_FROM_HANDLE: entityHandlePointer:pointer -> pointer
 GET_REF_FROM_ENTITY_POINTER: entityPointer:pointer -> uint
 GET_ENTITY_POINTER_FROM_REF: entityRef:uint -> pointer
+GET_CONCRETE_ENTITY_LIST_POINTER: -> pointer
 IS_REF_VALID_ENTITY: entityRef:uint -> bool
 PRINT_TO_CONSOLE: index:int, message:string -> void
 GET_FIRST_ACTIVE_ENTITY: -> pointer

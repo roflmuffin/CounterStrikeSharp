@@ -73,7 +73,7 @@ namespace WarcraftPlugin
             var victim = @event.Userid;
             var headshot = @event.Headshot;
 
-            if (attacker.IsValid && victim.IsValid && (attacker.EntityIndex.Value.Value != victim.EntityIndex.Value.Value) && !attacker.IsBot)
+            if (attacker.IsValid && victim.IsValid && (attacker != victim) && !attacker.IsBot)
             {
                 var weaponName = attacker.PlayerPawn.Value.WeaponServices.ActiveWeapon.Value.DesignerName;
 

@@ -63,5 +63,5 @@ public partial class CEntityInstance : IEquatable<CEntityInstance>
 public partial class CEntityIdentity
 {
     public unsafe CEntityInstance EntityInstance => new(Unsafe.Read<IntPtr>((void*)Handle));
-    public unsafe CHandle<CEntityInstance> EntityHandle => new(Unsafe.Read<uint>((void*)this.Handle) + 0x10);
+    public unsafe CHandle<CEntityInstance> EntityHandle => new(this.Handle + 0x10);
 }

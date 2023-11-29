@@ -298,7 +298,7 @@ namespace TestPlugin
                 switch (designerName)
                 {
                     case "smokegrenade_projectile":
-                        var projectile = new CSmokeGrenadeProjectile(entity.Handle);
+                        var projectile = entity.As<CSmokeGrenadeProjectile>();
 
                         Server.NextFrame(() =>
                         {
@@ -310,7 +310,7 @@ namespace TestPlugin
                         });
                         return;
                     case "flashbang_projectile":
-                        var flashbang = new CBaseCSGrenadeProjectile(entity.Handle);
+                        var flashbang = entity.As<CBaseCSGrenadeProjectile>();
 
                         Server.NextFrame(() => { flashbang.Remove(); });
                         return;
