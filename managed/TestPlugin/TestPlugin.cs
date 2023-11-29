@@ -464,6 +464,20 @@ namespace TestPlugin
             }
         }
         
+        [ConsoleCommand("css_entities", "List entities")]
+        public void OnCommandEntities(CCSPlayerController? player, CommandInfo command)
+        {
+            foreach (var entity in Utilities.GetAllEntities())
+            {
+                command.ReplyToCommand($"{entity.Index}:{entity.DesignerName}");
+            }
+            
+            foreach (var entity in  Utilities.FindAllEntitiesByDesignerName<CBaseEntity>("cs_"))
+            {
+                command.ReplyToCommand($"{entity.Index}:{entity.DesignerName}");
+            }
+        }
+        
         [ConsoleCommand("css_colors", "List Chat Colors")]
         public void OnCommandColors(CCSPlayerController? player, CommandInfo command)
         {

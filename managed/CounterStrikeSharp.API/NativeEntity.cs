@@ -18,9 +18,4 @@ public abstract class NativeEntity : NativeObject
     {
         EntityHandle = new(rawHandle);
     }
-    
-    public new T As<T>() where T : NativeEntity
-    {
-        return (T)Activator.CreateInstance(typeof(T), this.EntityHandle);
-    }
 }
