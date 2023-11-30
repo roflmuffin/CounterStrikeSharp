@@ -76,16 +76,14 @@ Locate the `plugins` folder in your CS2 dedicated server (`/game/csgo/addons/cou
 If you have installed external nuget packages for your plugin, you may need to include their respective `.dll`s. For example, if you utilize the `Stateless` C# library, include `stateless.dll` in your `HelloWorld` plugin directory.
 :::
 
-:::note
-Note that some of these dependencies may change depending on the version of CounterStrikeSharp being used.
-:::
+> [!NOTE]
+> Note that some of these dependencies may change depending on the version of CounterStrikeSharp being used.
 
 ### Start the Server
 
 Now start your CS2 dedicated server. Just before the `CounterStrikeSharp.API Loaded Successfully.` message you should see your `Hello World!` console write that we called from the load function, neat!
 
-:::note[Hot Reloading!]
-By default, CounterStrikeSharp will automatically hot reload your plugin if you replace the .dll file in your plugin folder. When it does so, it will call the `Unload` and `Load` functions respectively, with the `hotReload` flag set to true.
-
-It is worth noting that the framework will automatically deregister any event handlers or listeners for you automatically, so you can safely reregister these on load without checking this flag. However you may want to do some specific actions on a hot reload, which you can do in your `Load()` call by checking the flag!
-:::
+> [!NOTE]
+> By default, CounterStrikeSharp will automatically hot reload your plugin if you replace the .dll file in your plugin folder. When it does so, it will call the `Unload` and `Load` functions respectively, with the `hotReload` flag set to true.
+> 
+> It is worth noting that the framework will automatically deregister any event handlers or listeners for you automatically, so you can safely reregister these on load without checking this flag. However you may want to do some specific actions on a hot reload, which you can do in your `Load()` call by checking the flag!
