@@ -1,0 +1,36 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "src": "../managed",
+          "files": ["**/*.csproj"]
+        }
+      ],
+      "dest": "api"
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": ["**/*.{md,yml}"],
+        "exclude": ["_site/**"]
+      }
+    ],
+    "resource": [
+      {
+        "files": ["images/**"]
+      }
+    ],
+    "output": "_site",
+    "template": ["default", "modern"],
+    "globalMetadata": {
+      "_appName": "CounterStrikeSharp",
+      "_appTitle": "CounterStrikeSharp",
+      "_appLogoPath": "images/logo.png",
+      "_appFaviconPath": "images/android-chrome-512x512.png",
+      "_enableSearch": true,
+      "pdf": false
+    }
+  }
+}

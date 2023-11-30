@@ -549,3 +549,7 @@ $RECYCLE.BIN/
 _NCrunch*
 
 .idea/
+
+# docfx
+docfx/_site/
+docfx/api/
