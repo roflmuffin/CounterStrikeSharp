@@ -23,7 +23,7 @@
       }
     ],
     "output": "_site",
-    "template": ["default", "modern"],
+    "template": ["default", "modern", "css-template"],
     "globalMetadata": {
       "_appName": "CounterStrikeSharp",
       "_appTitle": "CounterStrikeSharp",

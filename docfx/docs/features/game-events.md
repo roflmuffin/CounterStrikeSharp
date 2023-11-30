@@ -1,7 +1,6 @@
----
-title: Game Events
-description: How to listen to Source 1 style game events.
----
+# Game Events
+
+How to listen to Source 1 style game events.
 
 ## Adding an Event Listener
 

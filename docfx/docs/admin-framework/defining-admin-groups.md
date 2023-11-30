@@ -1,7 +1,6 @@
----
-title: Defining Admin Groups
-description: A guide on how to define admin groups for CounterStrikeSharp.
----
+# Defining Admin Groups
+
+A guide on how to define admin groups for CounterStrikeSharp.
 
 ## Adding Groups
 

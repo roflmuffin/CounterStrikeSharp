@@ -1,7 +1,6 @@
----
-title: Admin Command Attributes
-description: A guide on using the Admin Command Attributes in plugins.
----
+# Admin Command Attributes
+
+A guide on using the Admin Command Attributes in plugins.
 
 ## Assigning permissions to a Command
 

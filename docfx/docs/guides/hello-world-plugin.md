@@ -1,5 +1,7 @@
 # Hello World Plugin
 
+How to write your first plugin for CounterStrikeSharp
+
 ## Creating a New Project
 
 First, ensure you have the relevant .NET 7.0 SDK for your platform installed on your machine. You can find the links to the latest downloads on the <a href="https://dotnet.microsoft.com/en-us/download/dotnet/7.0" target="_blank"> official Microsoft download page</a>.

@@ -1,7 +1,6 @@
----
-title: Defining Command Overrides
-description: A guide on how to define command overrides for CounterStrikeSharp.
----
+# Defining Command Overrides
+
+A guide on how to define command overrides for CounterStrikeSharp.
 
 ## Defining Admin and Group specific overrides
 

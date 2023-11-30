@@ -1,7 +1,6 @@
----
-title: Console Variables
-description: How to read & write console variables (ConVars).
----
+# Console Variables
+
+How to read & write console variables (ConVars).
 
 ## Finding a ConVar
 

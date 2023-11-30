@@ -1,9 +1,6 @@
----
-title: Dependency Injection
-description: How to make use of dependency injection in CounterStrikeSharp
-sidebar:
-  order: 1
----
+# Dependency Injection
+
+How to make use of dependency injection in CounterStrikeSharp
 
 `CounterStrikeSharp` uses a standard <a href="https://learn.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-8.0" target="_blank">`IServiceCollection`</a> to allow for dependency injection in plugins.
 

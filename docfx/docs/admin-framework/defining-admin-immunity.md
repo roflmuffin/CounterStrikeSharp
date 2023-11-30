@@ -1,7 +1,6 @@
----
-title: Defining Admin Immunity
-description: A guide on how to define immunity for admins for CounterStrikeSharp.
----
+# Defining Admin Immunity
+
+A guide on how to define immunity for admins for CounterStrikeSharp.
 
 ## Player Immunity
 

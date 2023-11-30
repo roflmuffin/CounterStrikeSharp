@@ -1,4 +1,8 @@
-# Installation
+# Getting Started
+
+How to get started installing & using CounterStrikeSharp.
+
+## Installation
 
 ### Installing Metamod
 
