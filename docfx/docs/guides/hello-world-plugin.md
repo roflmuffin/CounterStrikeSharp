@@ -73,8 +73,7 @@ Locate the `plugins` folder in your CS2 dedicated server (`/game/csgo/addons/cou
 ```
 
 > [!CAUTION]
-If you have installed external nuget packages for your plugin, you may need to include their respective `.dll`s. For example, if you utilize the `Stateless` C# library, include `stateless.dll` in your `HelloWorld` plugin directory.
-:::
+> If you have installed external nuget packages for your plugin, you may need to include their respective `.dll`s. For example, if you utilize the `Stateless` C# library, include `stateless.dll` in your `HelloWorld` plugin directory.
 
 > [!NOTE]
 > Note that some of these dependencies may change depending on the version of CounterStrikeSharp being used.

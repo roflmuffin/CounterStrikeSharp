@@ -1,2 +1,12 @@
-- name: Guides
-  href: guides/
+items:
+  - name: Guides
+    href: guides/toc.yml
+
+  - name: Features
+    href: features/toc.yml
+
+  - name: Admin Framework
+    href: admin-framework/toc.yml
+
+  - name: Reference
+    href: reference/toc.yml
