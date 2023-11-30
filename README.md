@@ -63,6 +63,10 @@ public class HelloWorldPlugin : BasePlugin
 
     public override string ModuleVersion => "0.0.1";
 
+    public override string ModuleAuthor => "roflmuffin";
+
+    public override string ModuleDescription => "Simple hello world plugin";
+
     public override void Load(bool hotReload)
     {
         Logger.LogInformation("Plugin loaded successfully!");
