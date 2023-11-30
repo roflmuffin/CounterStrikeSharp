@@ -1,12 +1,16 @@
 items:
   - name: Guides
     href: guides/toc.yml
+    expanded: true
 
   - name: Features
     href: features/toc.yml
+    expanded: true
 
   - name: Admin Framework
     href: admin-framework/toc.yml
+    expanded: true
 
   - name: Reference
     href: reference/toc.yml
+    expanded: true
