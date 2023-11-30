@@ -43,6 +43,9 @@ namespace CounterStrikeSharp.API.Core
 
         [JsonPropertyName("FollowCS2ServerGuidelines")]
         public bool FollowCS2ServerGuidelines { get; set; } = true;
+        
+        [JsonPropertyName("PluginHotReloadEnabled")]
+        public bool PluginHotReloadEnabled { get; set; } = true;
     }
 
     /// <summary>
@@ -80,6 +83,11 @@ namespace CounterStrikeSharp.API.Core
         /// </para>
         /// </summary>
         public static bool FollowCS2ServerGuidelines => _coreConfig.FollowCS2ServerGuidelines;
+
+        /// <summary>
+        /// When enabled, plugins are automatically reloaded when their .dll file is updated.
+        /// </summary>
+        public static bool PluginHotReloadEnabled => _coreConfig.PluginHotReloadEnabled;
     }
 
     public partial class CoreConfig : IStartupService

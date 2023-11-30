@@ -47,9 +47,10 @@ bool CCoreConfig::Init(char* conf_error, int conf_error_size)
     m_json = json::parse(ifs);
 
     try {
-        PublicChatTrigger = m_json["PublicChatTrigger"];
-        SilentChatTrigger = m_json["SilentChatTrigger"];
-        FollowCS2ServerGuidelines = m_json["FollowCS2ServerGuidelines"];
+        PublicChatTrigger = m_json.value("PublicChatTrigger", PublicChatTrigger);
+        SilentChatTrigger = m_json.value("SilentChatTrigger", SilentChatTrigger);
+        FollowCS2ServerGuidelines = m_json.value("FollowCS2ServerGuidelines", FollowCS2ServerGuidelines);
+        PluginHotReloadEnabled = m_json.value("PluginHotReloadEnabled", PluginHotReloadEnabled);
     } catch (const std::exception& ex) {
         V_snprintf(conf_error, conf_error_size, "Failed to parse CoreConfig file: %s", ex.what());
         return false;

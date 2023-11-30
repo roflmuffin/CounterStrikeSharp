@@ -28,6 +28,7 @@ class CCoreConfig
     std::vector<std::string> PublicChatTrigger = { std::string("!") };
     std::vector<std::string> SilentChatTrigger = { std::string("/") };
     bool FollowCS2ServerGuidelines = true;
+    bool PluginHotReloadEnabled = true;
 
     using json = nlohmann::json;
     CCoreConfig(const std::string& path);
