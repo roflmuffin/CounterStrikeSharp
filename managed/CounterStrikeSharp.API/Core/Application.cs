@@ -25,98 +25,98 @@ using CounterStrikeSharp.API.Modules.Menu;
 using CounterStrikeSharp.API.Modules.Utils;
 using Microsoft.Extensions.Logging;
 
-namespace CounterStrikeSharp.API.Core
+namespace CounterStrikeSharp.API.Core;
+
+public sealed class Application
 {
-    public sealed class Application
+    private static Application _instance = null!;
+    public ILogger Logger { get; }
+    public static Application Instance => _instance!;
+
+    public static string RootDirectory => Instance._scriptHostConfiguration.RootPath;
+
+    private readonly IScriptHostConfiguration _scriptHostConfiguration;
+    private readonly GameDataProvider _gameDataProvider;
+    private readonly CoreConfig _coreConfig;
+    private readonly IPluginManager _pluginManager;
+    private readonly IPluginContextQueryHandler _pluginContextQueryHandler;
+
+    public Application(ILoggerFactory loggerFactory, IScriptHostConfiguration scriptHostConfiguration,
+        GameDataProvider gameDataProvider, CoreConfig coreConfig, IPluginManager pluginManager,
+        IPluginContextQueryHandler pluginContextQueryHandler)
     {
-        private static Application _instance = null!;
-        public ILogger Logger { get; }
-        public static Application Instance => _instance!;
+        Logger = loggerFactory.CreateLogger("Core");
+        _scriptHostConfiguration = scriptHostConfiguration;
+        _gameDataProvider = gameDataProvider;
+        _coreConfig = coreConfig;
+        _pluginManager = pluginManager;
+        _pluginContextQueryHandler = pluginContextQueryHandler;
+        _instance = this;
+    }
 
-        public static string RootDirectory => Instance._scriptHostConfiguration.RootPath;
+    public void Start()
+    {
+        Logger.LogInformation("CounterStrikeSharp is starting up...");
 
-        private readonly IScriptHostConfiguration _scriptHostConfiguration;
-        private readonly GameDataProvider _gameDataProvider;
-        private readonly CoreConfig _coreConfig;
-        private readonly IPluginManager _pluginManager;
-        private readonly IPluginContextQueryHandler _pluginContextQueryHandler;
+        _coreConfig.Load();
+        _gameDataProvider.Load();
 
-        public Application(ILoggerFactory loggerFactory, IScriptHostConfiguration scriptHostConfiguration,
-            GameDataProvider gameDataProvider, CoreConfig coreConfig, IPluginManager pluginManager,
-            IPluginContextQueryHandler pluginContextQueryHandler)
+        var adminGroupsPath = Path.Combine(_scriptHostConfiguration.RootPath, "configs", "admin_groups.json");
+        Logger.LogInformation("Loading Admin Groups from {Path}", adminGroupsPath);
+        AdminManager.LoadAdminGroups(adminGroupsPath);
+
+        var adminPath = Path.Combine(_scriptHostConfiguration.RootPath, "configs", "admins.json");
+        Logger.LogInformation("Loading Admins from {Path}", adminPath);
+        AdminManager.LoadAdminData(adminPath);
+
+        var overridePath = Path.Combine(_scriptHostConfiguration.RootPath, "configs", "admin_overrides.json");
+        Logger.LogInformation("Loading Admin Command Overrides from {Path}", overridePath);
+        AdminManager.LoadCommandOverrides(overridePath);
+
+        AdminManager.MergeGroupPermsIntoAdmins();
+
+        _pluginManager.Load();
+
+        for (var i = 1; i <= 9; i++)
         {
-            Logger = loggerFactory.CreateLogger("Core");
-            _scriptHostConfiguration = scriptHostConfiguration;
-            _gameDataProvider = gameDataProvider;
-            _coreConfig = coreConfig;
-            _pluginManager = pluginManager;
-            _pluginContextQueryHandler = pluginContextQueryHandler;
-            _instance = this;
-        }
-
-        public void Start()
-        {
-            Logger.LogInformation("CounterStrikeSharp is starting up...");
-
-            _coreConfig.Load();
-            _gameDataProvider.Load();
-
-            var adminGroupsPath = Path.Combine(_scriptHostConfiguration.RootPath, "configs", "admin_groups.json");
-            Logger.LogInformation("Loading Admin Groups from {Path}", adminGroupsPath);
-            AdminManager.LoadAdminGroups(adminGroupsPath);
-
-            var adminPath = Path.Combine(_scriptHostConfiguration.RootPath, "configs", "admins.json");
-            Logger.LogInformation("Loading Admins from {Path}", adminPath);
-            AdminManager.LoadAdminData(adminPath);
-
-            var overridePath = Path.Combine(_scriptHostConfiguration.RootPath, "configs", "admin_overrides.json");
-            Logger.LogInformation("Loading Admin Command Overrides from {Path}", overridePath);
-            AdminManager.LoadCommandOverrides(overridePath);
-
-            AdminManager.MergeGroupPermsIntoAdmins();
-
-            _pluginManager.Load();
-
-            for (var i = 1; i <= 9; i++)
+            CommandUtils.AddStandaloneCommand("css_" + i, "Command Key Handler", (player, info) =>
             {
-                CommandUtils.AddStandaloneCommand("css_" + i, "Command Key Handler", (player, info) =>
-                {
-                    if (player == null) return;
-                    var key = Convert.ToInt32(info.GetArg(0).Split("_")[1]);
-                    ChatMenus.OnKeyPress(player, key);
-                });
-            }
-
-            RegisterPluginCommands();
+                if (player == null) return;
+                var key = Convert.ToInt32(info.GetArg(0).Split("_")[1]);
+                ChatMenus.OnKeyPress(player, key);
+            });
         }
 
-        [RequiresPermissions("@css/generic")]
-        [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
-        private void OnCSSCommand(CCSPlayerController? caller, CommandInfo info)
-        {
-            var currentVersion = Api.GetVersion();
+        RegisterPluginCommands();
+    }
 
-            info.ReplyToCommand(
-                "  CounterStrikeSharp was created and is maintained by Michael \"roflmuffin\" Wilson.\n" +
-                "  Counter-Strike Sharp uses code borrowed from SourceMod, Source.Python, FiveM, Saul Rennison and CS2Fixes.\n" +
-                "  See ACKNOWLEDGEMENTS.md for more information.\n" +
-                "  Current API Version: " + currentVersion, true);
-            return;
-        }
+    [RequiresPermissions("@css/generic")]
+    [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
+    private void OnCSSCommand(CCSPlayerController? caller, CommandInfo info)
+    {
+        var currentVersion = Api.GetVersion();
 
-        [RequiresPermissions("@css/generic")]
-        [CommandHelper(minArgs: 1,
-            usage: "[option]\n" +
-                   "  list - List all plugins currently loaded.\n" +
-                   "  start / load - Loads a plugin not currently loaded.\n" +
-                   "  stop / unload - Unloads a plugin currently loaded.\n" +
-                   "  restart / reload - Reloads a plugin currently loaded.",
-            whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
-        private void OnCSSPluginCommand(CCSPlayerController? caller, CommandInfo info)
+        info.ReplyToCommand(
+            "  CounterStrikeSharp was created and is maintained by Michael \"roflmuffin\" Wilson.\n" +
+            "  Counter-Strike Sharp uses code borrowed from SourceMod, Source.Python, FiveM, Saul Rennison and CS2Fixes.\n" +
+            "  See ACKNOWLEDGEMENTS.md for more information.\n" +
+            "  Current API Version: " + currentVersion, true);
+        return;
+    }
+
+    [RequiresPermissions("@css/generic")]
+    [CommandHelper(minArgs: 1,
+        usage: "[option]\n" +
+               "  list - List all plugins currently loaded.\n" +
+               "  start / load - Loads a plugin not currently loaded.\n" +
+               "  stop / unload - Unloads a plugin currently loaded.\n" +
+               "  restart / reload - Reloads a plugin currently loaded.",
+        whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
+    private void OnCSSPluginCommand(CCSPlayerController? caller, CommandInfo info)
+    {
+        switch (info.GetArg(1))
         {
-            switch (info.GetArg(1))
-            {
-                case "list":
+            case "list":
                 {
                     info.ReplyToCommand(
                         $"  List of all plugins currently loaded by CounterStrikeSharp: {_pluginManager.GetLoadedPlugins().Count()} plugins loaded.",
@@ -142,8 +142,8 @@ namespace CounterStrikeSharp.API.Core
 
                     break;
                 }
-                case "start":
-                case "load":
+            case "start":
+            case "load":
                 {
                     if (info.ArgCount < 2)
                     {
@@ -152,7 +152,7 @@ namespace CounterStrikeSharp.API.Core
                             true);
                         break;
                     }
-                    
+
                     // If our arugment doesn't end in ".dll" - try and construct a path similar to PluginName/PluginName.dll.
                     // We'll assume we have a full path if we have ".dll".
                     var path = info.GetArg(2);
@@ -172,7 +172,8 @@ namespace CounterStrikeSharp.API.Core
                         try
                         {
                             _pluginManager.LoadPlugin(path);
-                        } catch (Exception e)
+                        }
+                        catch (Exception e)
                         {
                             info.ReplyToCommand($"Could not load plugin \"{path}\")", true);
                         }
@@ -181,12 +182,12 @@ namespace CounterStrikeSharp.API.Core
                     {
                         plugin.Load(false);
                     }
-                    
+
                     break;
                 }
 
-                case "stop":
-                case "unload":
+            case "stop":
+            case "unload":
                 {
                     if (info.ArgCount < 2)
                     {
@@ -208,8 +209,8 @@ namespace CounterStrikeSharp.API.Core
                     break;
                 }
 
-                case "restart":
-                case "reload":
+            case "restart":
+            case "reload":
                 {
                     if (info.ArgCount < 2)
                     {
@@ -233,22 +234,21 @@ namespace CounterStrikeSharp.API.Core
                     break;
                 }
 
-                default:
-                    info.ReplyToCommand("Valid usage: css_plugins [option]\n" +
-                                        "  list - List all plugins currently loaded.\n" +
-                                        "  start / load - Loads a plugin not currently loaded.\n" +
-                                        "  stop / unload - Unloads a plugin currently loaded.\n" +
-                                        "  restart / reload - Reloads a plugin currently loaded."
-                        , true);
-                    break;
-            }
+            default:
+                info.ReplyToCommand("Valid usage: css_plugins [option]\n" +
+                                    "  list - List all plugins currently loaded.\n" +
+                                    "  start / load - Loads a plugin not currently loaded.\n" +
+                                    "  stop / unload - Unloads a plugin currently loaded.\n" +
+                                    "  restart / reload - Reloads a plugin currently loaded."
+                    , true);
+                break;
         }
+    }
 
-        private void RegisterPluginCommands()
-        {
-            CommandUtils.AddStandaloneCommand("css", "Counter-Strike Sharp options.", OnCSSCommand);
-            CommandUtils.AddStandaloneCommand("css_plugins", "Counter-Strike Sharp plugin options.",
-                OnCSSPluginCommand);
-        }
+    private void RegisterPluginCommands()
+    {
+        CommandUtils.AddStandaloneCommand("css", "Counter-Strike Sharp options.", OnCSSCommand);
+        CommandUtils.AddStandaloneCommand("css_plugins", "Counter-Strike Sharp plugin options.",
+            OnCSSPluginCommand);
     }
 }

@@ -4,41 +4,41 @@ using System.Collections.Generic;
 using System.Linq;
 using CounterStrikeSharp.API.Modules.Entities;
 
-namespace CounterStrikeSharp.API.Modules.Admin
+namespace CounterStrikeSharp.API.Modules.Admin;
+
+public class BaseRequiresPermissions : Attribute
 {
-    public class BaseRequiresPermissions : Attribute
+    /// <summary>
+    /// The permissions for the command.
+    /// </summary>
+    public string[] Permissions { get; }
+    /// <summary>
+    /// The name of the command that is attached to this attribute.
+    /// </summary>
+    public string Command { get; set; }
+    /// <summary>
+    /// Whether this attribute should be used for permission checks.
+    /// </summary>
+    public bool Enabled { get; set; }
+
+    public BaseRequiresPermissions(params string[] permissions)
     {
-        /// <summary>
-        /// The permissions for the command.
-        /// </summary>
-        public string[] Permissions { get; }
-        /// <summary>
-        /// The name of the command that is attached to this attribute.
-        /// </summary>
-        public string Command { get; set; }
-        /// <summary>
-        /// Whether this attribute should be used for permission checks.
-        /// </summary>
-        public bool Enabled { get; set; }
+        Permissions = permissions;
+        Command = "";
+    }
 
-        public BaseRequiresPermissions(params string[] permissions)
+    public virtual bool CanExecuteCommand(CCSPlayerController? caller)
+    {
+        // If we have a command in the "command_overrides" section in "configs/admins.json",
+        // we skip the checks below and just return the defined value.
+        var adminData = AdminManager.GetPlayerAdminData((SteamID)caller.SteamID);
+        if (adminData == null) return false;
+        if (adminData.CommandOverrides.ContainsKey(Command))
         {
-            Permissions = permissions;
-            Command = "";
+            return adminData.CommandOverrides[Command];
         }
 
-        public virtual bool CanExecuteCommand(CCSPlayerController? caller)
-        {
-            // If we have a command in the "command_overrides" section in "configs/admins.json",
-            // we skip the checks below and just return the defined value.
-            var adminData = AdminManager.GetPlayerAdminData((SteamID)caller.SteamID);
-            if (adminData == null) return false;
-            if (adminData.CommandOverrides.ContainsKey(Command))
-            {
-                return adminData.CommandOverrides[Command];
-            }
-
-            return true;
-        }
+        return true;
     }
 }
+

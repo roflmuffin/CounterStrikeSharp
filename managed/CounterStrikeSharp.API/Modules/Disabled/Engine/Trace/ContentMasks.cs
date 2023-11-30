@@ -14,9 +14,8 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-namespace CounterStrikeSharp.API.Modules.Engine.Trace
+namespace CounterStrikeSharp.API.Modules.Engine.Trace;
+
+public enum ContentMasks
 {
-    public enum ContentMasks
-    {
-    }
 }

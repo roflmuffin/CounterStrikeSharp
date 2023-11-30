@@ -14,18 +14,17 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-namespace CounterStrikeSharp.API.Modules.Entities.Constants
+namespace CounterStrikeSharp.API.Modules.Entities.Constants;
+
+public enum HitGroup
 {
-    public enum HitGroup
-    {
-        HITGROUP_GENERIC = 0,
-        HITGROUP_HEAD = 1,
-        HITGROUP_CHEST = 2,
-        HITGROUP_STOMACH = 3,
-        HITGROUP_LEFTARM = 4,
-        HITGROUP_RIGHTARM = 5,
-        HITGROUP_LEFTLEG = 6,
-        HITGROUP_RIGHTLEG = 7,
-        HITGROUP_GEAR = 10,
-    }
+    HITGROUP_GENERIC = 0,
+    HITGROUP_HEAD = 1,
+    HITGROUP_CHEST = 2,
+    HITGROUP_STOMACH = 3,
+    HITGROUP_LEFTARM = 4,
+    HITGROUP_RIGHTARM = 5,
+    HITGROUP_LEFTLEG = 6,
+    HITGROUP_RIGHTLEG = 7,
+    HITGROUP_GEAR = 10,
 }

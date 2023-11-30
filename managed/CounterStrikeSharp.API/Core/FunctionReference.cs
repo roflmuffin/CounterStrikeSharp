@@ -20,129 +20,128 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using Microsoft.Extensions.Logging;
 
-namespace CounterStrikeSharp.API.Core
+namespace CounterStrikeSharp.API.Core;
+
+public class FunctionReference
 {
-    public class FunctionReference
+    private readonly Delegate m_method;
+
+    public unsafe delegate void CallbackDelegate(fxScriptContext* context);
+    private CallbackDelegate s_callback;
+
+    private FunctionReference(Delegate method)
     {
-        private readonly Delegate m_method;
+        m_method = method;
 
-        public unsafe delegate void CallbackDelegate(fxScriptContext* context);
-        private CallbackDelegate s_callback;
-
-        private FunctionReference(Delegate method)
+        unsafe
         {
-            m_method = method;
-
-            unsafe
+            var dg = new CallbackDelegate((fxScriptContext* context) =>
             {
-                var dg = new CallbackDelegate((fxScriptContext* context) =>
+                try
                 {
-                    try
+                    var scriptContext = new ScriptContext(context);
+
+                    if (method.Method.GetParameters().FirstOrDefault()?.ParameterType == typeof(ScriptContext))
                     {
-                        var scriptContext = new ScriptContext(context);
-
-                        if (method.Method.GetParameters().FirstOrDefault()?.ParameterType == typeof(ScriptContext))
+                        var returnO = m_method.DynamicInvoke(scriptContext);
+                        if (returnO != null)
                         {
-                            var returnO = m_method.DynamicInvoke(scriptContext);
-                            if (returnO != null)
-                            {
-                                scriptContext.SetResult(returnO, context);
-                            }
-
-                            return;
+                            scriptContext.SetResult(returnO, context);
                         }
 
-                        var paramsList = method.Method.GetParameters().Select((x, i) =>
-                        {
-                            var param = method.Method.GetParameters()[i];
-                            object obj = null;
-                            if (typeof(NativeObject).IsAssignableFrom(param.ParameterType))
-                            {
-                                obj = Activator.CreateInstance(param.ParameterType,
-                                    new[] {scriptContext.GetArgument(typeof(IntPtr), i)});
-                            }
-                            else
-                            {
-                                obj = scriptContext.GetArgument(param.ParameterType, i);
-                            }
-                            return obj;
-                        }).ToArray();
-
-                        var returnObj = m_method.DynamicInvoke(paramsList);
-
-                        if (returnObj != null)
-                        {
-                            scriptContext.SetResult(returnObj, context);
-                        }
+                        return;
                     }
-                    catch (Exception e)
+
+                    var paramsList = method.Method.GetParameters().Select((x, i) =>
                     {
-                        Application.Instance.Logger.LogError(e, "Error invoking callback");
+                        var param = method.Method.GetParameters()[i];
+                        object obj = null;
+                        if (typeof(NativeObject).IsAssignableFrom(param.ParameterType))
+                        {
+                            obj = Activator.CreateInstance(param.ParameterType,
+                                new[] { scriptContext.GetArgument(typeof(IntPtr), i) });
+                        }
+                        else
+                        {
+                            obj = scriptContext.GetArgument(param.ParameterType, i);
+                        }
+                        return obj;
+                    }).ToArray();
+
+                    var returnObj = m_method.DynamicInvoke(paramsList);
+
+                    if (returnObj != null)
+                    {
+                        scriptContext.SetResult(returnObj, context);
                     }
-                });
-                s_callback = dg;
-            }
-
+                }
+                catch (Exception e)
+                {
+                    Application.Instance.Logger.LogError(e, "Error invoking callback");
+                }
+            });
+            s_callback = dg;
         }
 
-        public int Identifier { get; private set; }
+    }
 
-        public static FunctionReference Create(Delegate method)
+    public int Identifier { get; private set; }
+
+    public static FunctionReference Create(Delegate method)
+    {
+        if (references.ContainsKey(method))
         {
-            if (references.ContainsKey(method))
-            {
-                return references[method];
-            }
-
-            var reference = new FunctionReference(method);
-            var referenceId = Register(reference);
-
-            reference.Identifier = referenceId;
-
-            return reference;
+            return references[method];
         }
 
-        private static Dictionary<int, FunctionReference> ms_references = new Dictionary<int, FunctionReference>();
-        private static int ms_referenceId;
+        var reference = new FunctionReference(method);
+        var referenceId = Register(reference);
 
-        private static Dictionary<Delegate, FunctionReference> references =
-            new Dictionary<Delegate, FunctionReference>();
+        reference.Identifier = referenceId;
 
-        private static int Register(FunctionReference reference)
+        return reference;
+    }
+
+    private static Dictionary<int, FunctionReference> ms_references = new Dictionary<int, FunctionReference>();
+    private static int ms_referenceId;
+
+    private static Dictionary<Delegate, FunctionReference> references =
+        new Dictionary<Delegate, FunctionReference>();
+
+    private static int Register(FunctionReference reference)
+    {
+        var thisRefId = ms_referenceId;
+        ms_references[thisRefId] = reference;
+        references[reference.m_method] = reference;
+
+        unchecked { ms_referenceId++; }
+
+        return thisRefId;
+    }
+
+    public static FunctionReference Get(int reference)
+    {
+        if (ms_references.ContainsKey(reference))
         {
-            var thisRefId = ms_referenceId;
-            ms_references[thisRefId] = reference;
-            references[reference.m_method] = reference;
-
-            unchecked { ms_referenceId++; }
-
-            return thisRefId;
+            return ms_references[reference];
         }
 
-        public static FunctionReference Get(int reference)
-        {
-            if (ms_references.ContainsKey(reference))
-            {
-                return ms_references[reference];
-            }
+        return null;
+    }
 
-            return null;
-        }
-        
-        public IntPtr GetFunctionPointer()
-        {
-            IntPtr cb = Marshal.GetFunctionPointerForDelegate(s_callback);
-            return cb;
-        }
+    public IntPtr GetFunctionPointer()
+    {
+        IntPtr cb = Marshal.GetFunctionPointerForDelegate(s_callback);
+        return cb;
+    }
 
-        public static void Remove(int reference)
+    public static void Remove(int reference)
+    {
+        if (ms_references.TryGetValue(reference, out var funcRef))
         {
-            if (ms_references.TryGetValue(reference, out var funcRef))
-            {
-                ms_references.Remove(reference);
+            ms_references.Remove(reference);
 
-                Application.Instance.Logger.LogDebug("Removing function/callback reference: {Reference}", reference);
-            }
+            Application.Instance.Logger.LogDebug("Removing function/callback reference: {Reference}", reference);
         }
     }
 }

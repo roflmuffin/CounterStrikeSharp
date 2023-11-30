@@ -1,18 +1,17 @@
-﻿namespace CounterStrikeSharp.API.Core
+﻿namespace CounterStrikeSharp.API.Core;
+
+/// <summary>
+/// Specifies the hook mode.
+/// </summary>
+public enum HookMode
 {
     /// <summary>
-    /// Specifies the hook mode.
+    /// The hook is called before the original method.
     /// </summary>
-    public enum HookMode
-    {
-        /// <summary>
-        /// The hook is called before the original method.
-        /// </summary>
-        Pre = 0,
+    Pre = 0,
 
-        /// <summary>
-        /// The hook is called after the original method.
-        /// </summary>
-        Post = 1,
-    }
+    /// <summary>
+    /// The hook is called after the original method.
+    /// </summary>
+    Post = 1,
 }

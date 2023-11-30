@@ -16,17 +16,17 @@
 
 using System.Text.Json.Serialization;
 
-namespace CounterStrikeSharp.API.Core
-{
-    public interface IBasePluginConfig
-    {
-        [JsonPropertyName("ConfigVersion")]
-        int Version { get; set; }
-    }
+namespace CounterStrikeSharp.API.Core;
 
-    public class BasePluginConfig : IBasePluginConfig
-    {
-        [JsonPropertyName("ConfigVersion")]
-        public virtual int Version { get; set; } = 1;
-    }
+public interface IBasePluginConfig
+{
+    [JsonPropertyName("ConfigVersion")]
+    int Version { get; set; }
 }
+
+public class BasePluginConfig : IBasePluginConfig
+{
+    [JsonPropertyName("ConfigVersion")]
+    public virtual int Version { get; set; } = 1;
+}
+

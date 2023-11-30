@@ -28,118 +28,117 @@ using CounterStrikeSharp.API.Core.Logging;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace CounterStrikeSharp.API.Core
+namespace CounterStrikeSharp.API.Core;
+
+/// <summary>
+/// Serializable instance of the CoreConfig
+/// </summary>
+internal sealed partial class CoreConfigData
+{
+    [JsonPropertyName("PublicChatTrigger")]
+    public IEnumerable<string> PublicChatTrigger { get; set; } = new HashSet<string>() { "!" };
+
+    [JsonPropertyName("SilentChatTrigger")]
+    public IEnumerable<string> SilentChatTrigger { get; set; } = new HashSet<string>() { "/" };
+
+    [JsonPropertyName("FollowCS2ServerGuidelines")]
+    public bool FollowCS2ServerGuidelines { get; set; } = true;
+
+    [JsonPropertyName("PluginHotReloadEnabled")]
+    public bool PluginHotReloadEnabled { get; set; } = true;
+}
+
+/// <summary>
+/// Configuration related to the Core API.
+/// </summary>
+public partial class CoreConfig
 {
     /// <summary>
-    /// Serializable instance of the CoreConfig
+    /// List of characters to use for public chat triggers.
     /// </summary>
-    internal sealed partial class CoreConfigData
-    {
-        [JsonPropertyName("PublicChatTrigger")]
-        public IEnumerable<string> PublicChatTrigger { get; set; } = new HashSet<string>() { "!" };
-
-        [JsonPropertyName("SilentChatTrigger")]
-        public IEnumerable<string> SilentChatTrigger { get; set; } = new HashSet<string>() { "/" };
-
-        [JsonPropertyName("FollowCS2ServerGuidelines")]
-        public bool FollowCS2ServerGuidelines { get; set; } = true;
-        
-        [JsonPropertyName("PluginHotReloadEnabled")]
-        public bool PluginHotReloadEnabled { get; set; } = true;
-    }
+    public static IEnumerable<string> PublicChatTrigger => _coreConfig.PublicChatTrigger;
 
     /// <summary>
-    /// Configuration related to the Core API.
+    /// List of characters to use for silent chat triggers.
     /// </summary>
-    public partial class CoreConfig
+    public static IEnumerable<string> SilentChatTrigger => _coreConfig.SilentChatTrigger;
+
+    /// <summary>
+    /// <para>
+    /// Per <see href="http://blog.counter-strike.net/index.php/server_guidelines/"/>, certain plugin
+    /// functionality will trigger all of the game server owner's Game Server Login Tokens
+    /// (GSLTs) to get banned when executed on a Counter-Strike 2 game server.
+    /// </para>
+    ///
+    /// <para>
+    /// Enabling this option will block plugins from using functionality that is known to cause this.
+    ///
+    /// Note that this does NOT guarantee that you cannot
+    ///
+    /// receive a ban.
+    /// </para>
+    ///
+    /// <para>
+    /// Disable this option at your own risk.
+    /// </para>
+    /// </summary>
+    public static bool FollowCS2ServerGuidelines => _coreConfig.FollowCS2ServerGuidelines;
+
+    /// <summary>
+    /// When enabled, plugins are automatically reloaded when their .dll file is updated.
+    /// </summary>
+    public static bool PluginHotReloadEnabled => _coreConfig.PluginHotReloadEnabled;
+}
+
+public partial class CoreConfig : IStartupService
+{
+    private static CoreConfigData _coreConfig = new CoreConfigData();
+
+    private readonly ILogger<CoreConfig> _logger;
+
+    private readonly string _coreConfigPath;
+
+    public CoreConfig(IScriptHostConfiguration scriptHostConfiguration, ILogger<CoreConfig> logger)
     {
-        /// <summary>
-        /// List of characters to use for public chat triggers.
-        /// </summary>
-        public static IEnumerable<string> PublicChatTrigger => _coreConfig.PublicChatTrigger;
-
-        /// <summary>
-        /// List of characters to use for silent chat triggers.
-        /// </summary>
-        public static IEnumerable<string> SilentChatTrigger => _coreConfig.SilentChatTrigger;
-
-        /// <summary>
-        /// <para>
-        /// Per <see href="http://blog.counter-strike.net/index.php/server_guidelines/"/>, certain plugin
-        /// functionality will trigger all of the game server owner's Game Server Login Tokens
-        /// (GSLTs) to get banned when executed on a Counter-Strike 2 game server.
-        /// </para>
-        ///
-        /// <para>
-        /// Enabling this option will block plugins from using functionality that is known to cause this.
-        ///
-        /// Note that this does NOT guarantee that you cannot
-        ///
-        /// receive a ban.
-        /// </para>
-        ///
-        /// <para>
-        /// Disable this option at your own risk.
-        /// </para>
-        /// </summary>
-        public static bool FollowCS2ServerGuidelines => _coreConfig.FollowCS2ServerGuidelines;
-
-        /// <summary>
-        /// When enabled, plugins are automatically reloaded when their .dll file is updated.
-        /// </summary>
-        public static bool PluginHotReloadEnabled => _coreConfig.PluginHotReloadEnabled;
+        _logger = logger;
+        _coreConfigPath = Path.Join(scriptHostConfiguration.ConfigsPath, "core.json");
     }
 
-    public partial class CoreConfig : IStartupService
+    [RequiresPermissions("@css/config")]
+    [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
+    private void ReloadCoreConfigCommand(CCSPlayerController? player, CommandInfo command)
     {
-        private static CoreConfigData _coreConfig = new CoreConfigData();
+        Load();
+    }
 
-        private readonly ILogger<CoreConfig> _logger;
+    public void Load()
+    {
+        CommandUtils.AddStandaloneCommand("css_core_reload", "Reloads the core configuration file.",
+            ReloadCoreConfigCommand);
 
-        private readonly string _coreConfigPath;
-
-        public CoreConfig(IScriptHostConfiguration scriptHostConfiguration, ILogger<CoreConfig> logger)
+        if (!File.Exists(_coreConfigPath))
         {
-            _logger = logger;
-            _coreConfigPath = Path.Join(scriptHostConfiguration.ConfigsPath, "core.json");
+            _logger.LogWarning(
+                "Core configuration could not be found at path \"{CoreConfigPath}\", fallback values will be used.",
+                _coreConfigPath);
+            return;
         }
 
-        [RequiresPermissions("@css/config")]
-        [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
-        private void ReloadCoreConfigCommand(CCSPlayerController? player, CommandInfo command)
+        try
         {
-            Load();
+            var data = JsonSerializer.Deserialize<CoreConfigData>(File.ReadAllText(_coreConfigPath),
+                new JsonSerializerOptions() { ReadCommentHandling = JsonCommentHandling.Skip });
+
+            if (data != null)
+            {
+                _coreConfig = data;
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogWarning(ex, "Failed to load core configuration, fallback values will be used");
         }
 
-        public void Load()
-        {
-            CommandUtils.AddStandaloneCommand("css_core_reload", "Reloads the core configuration file.",
-                ReloadCoreConfigCommand);
-
-            if (!File.Exists(_coreConfigPath))
-            {
-                _logger.LogWarning(
-                    "Core configuration could not be found at path \"{CoreConfigPath}\", fallback values will be used.",
-                    _coreConfigPath);
-                return;
-            }
-
-            try
-            {
-                var data = JsonSerializer.Deserialize<CoreConfigData>(File.ReadAllText(_coreConfigPath),
-                    new JsonSerializerOptions() { ReadCommentHandling = JsonCommentHandling.Skip });
-
-                if (data != null)
-                {
-                    _coreConfig = data;
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogWarning(ex, "Failed to load core configuration, fallback values will be used");
-            }
-            
-            _logger.LogInformation("Successfully loaded core configuration");
-        }
+        _logger.LogInformation("Successfully loaded core configuration");
     }
 }

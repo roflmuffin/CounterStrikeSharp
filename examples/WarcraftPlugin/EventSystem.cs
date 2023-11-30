@@ -20,103 +20,102 @@ using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Utils;
 
-namespace WarcraftPlugin
+namespace WarcraftPlugin;
+
+public class EventSystem
 {
-    public class EventSystem
+    private WarcraftPlugin _plugin;
+
+    public EventSystem(WarcraftPlugin plugin)
     {
-        private WarcraftPlugin _plugin;
+        _plugin = plugin;
+    }
 
-        public EventSystem(WarcraftPlugin plugin)
+    public void Initialize()
+    {
+        _plugin.RegisterEventHandler<EventPlayerDeath>(PlayerDeathHandler);
+        _plugin.RegisterEventHandler<EventPlayerSpawn>(PlayerSpawnHandler);
+        _plugin.RegisterEventHandler<EventPlayerHurt>(PlayerHurtHandler);
+    }
+
+    private HookResult PlayerHurtHandler(EventPlayerHurt @event, GameEventInfo _)
+    {
+        var victim = @event.Userid;
+        var attacker = @event.Attacker;
+
+        victim?.GetWarcraftPlayer()?.GetRace()?.InvokeEvent("player_hurt", @event);
+        attacker?.GetWarcraftPlayer()?.GetRace()?.InvokeEvent("player_hurt_other", @event);
+
+        return HookResult.Continue;
+    }
+
+    private HookResult PlayerSpawnHandler(EventPlayerSpawn @event, GameEventInfo _)
+    {
+        var player = @event.Userid;
+        var race = player.GetWarcraftPlayer()?.GetRace();
+
+        if (race != null)
         {
-            _plugin = plugin;
-        }
-
-        public void Initialize()
-        {
-            _plugin.RegisterEventHandler<EventPlayerDeath>(PlayerDeathHandler);
-            _plugin.RegisterEventHandler<EventPlayerSpawn>(PlayerSpawnHandler);
-            _plugin.RegisterEventHandler<EventPlayerHurt>(PlayerHurtHandler);
-        }
-
-        private HookResult PlayerHurtHandler(EventPlayerHurt @event, GameEventInfo _)
-        {
-            var victim = @event.Userid;
-            var attacker = @event.Attacker;
-
-            victim?.GetWarcraftPlayer()?.GetRace()?.InvokeEvent("player_hurt", @event);
-            attacker?.GetWarcraftPlayer()?.GetRace()?.InvokeEvent("player_hurt_other", @event);
-            
-            return HookResult.Continue;
-        }
-
-        private HookResult PlayerSpawnHandler(EventPlayerSpawn @event, GameEventInfo _)
-        {
-            var player = @event.Userid;
-            var race = player.GetWarcraftPlayer()?.GetRace();
-
-            if (race != null)
+            var name = @event.EventName;
+            Server.NextFrame(() =>
             {
-                var name = @event.EventName;
-                Server.NextFrame(() =>
-                {
-                    WarcraftPlugin.Instance.EffectManager.ClearEffects(player);
-                    race.InvokeEvent(name, @event);
-                });
+                WarcraftPlugin.Instance.EffectManager.ClearEffects(player);
+                race.InvokeEvent(name, @event);
+            });
+        }
+
+        return HookResult.Continue;
+    }
+
+    private HookResult PlayerDeathHandler(EventPlayerDeath @event, GameEventInfo _)
+    {
+        var attacker = @event.Attacker;
+        var victim = @event.Userid;
+        var headshot = @event.Headshot;
+
+        if (attacker.IsValid && victim.IsValid && (attacker != victim) && !attacker.IsBot)
+        {
+            var weaponName = attacker.PlayerPawn.Value.WeaponServices.ActiveWeapon.Value.DesignerName;
+
+            int xpToAdd = 0;
+            int xpHeadshot = 0;
+            int xpKnife = 0;
+
+            xpToAdd = _plugin.XpPerKill;
+
+            if (headshot)
+                xpHeadshot = Convert.ToInt32(_plugin.XpPerKill * _plugin.XpHeadshotModifier);
+
+            if (weaponName == "weapon_knife")
+                xpKnife = Convert.ToInt32(_plugin.XpPerKill * _plugin.XpKnifeModifier);
+
+            xpToAdd += xpHeadshot + xpKnife;
+
+            _plugin.XpSystem.AddXp(attacker, xpToAdd);
+
+            string hsBonus = "";
+            if (xpHeadshot != 0)
+            {
+                hsBonus = $"(+{xpHeadshot} HS bonus)";
             }
 
-            return HookResult.Continue;
-        }
-
-        private HookResult PlayerDeathHandler(EventPlayerDeath @event, GameEventInfo _)
-        {
-            var attacker = @event.Attacker;
-            var victim = @event.Userid;
-            var headshot = @event.Headshot;
-
-            if (attacker.IsValid && victim.IsValid && (attacker != victim) && !attacker.IsBot)
+            string knifeBonus = "";
+            if (xpKnife != 0)
             {
-                var weaponName = attacker.PlayerPawn.Value.WeaponServices.ActiveWeapon.Value.DesignerName;
-
-                int xpToAdd = 0;
-                int xpHeadshot = 0;
-                int xpKnife = 0;
-
-                xpToAdd = _plugin.XpPerKill;
-
-                if (headshot)
-                    xpHeadshot = Convert.ToInt32(_plugin.XpPerKill * _plugin.XpHeadshotModifier);
-
-                if (weaponName == "weapon_knife")
-                    xpKnife = Convert.ToInt32(_plugin.XpPerKill * _plugin.XpKnifeModifier);
-
-                xpToAdd += xpHeadshot + xpKnife;
-
-                _plugin.XpSystem.AddXp(attacker, xpToAdd);
-
-                string hsBonus = "";
-                if (xpHeadshot != 0)
-                {
-                    hsBonus = $"(+{xpHeadshot} HS bonus)";
-                }
-
-                string knifeBonus = "";
-                if (xpKnife != 0)
-                {
-                    knifeBonus = $"(+{xpKnife} knife bonus)";
-                }
-
-                string xpString = $" {ChatColors.Gold}+{xpToAdd} XP {ChatColors.Default}for killing {ChatColors.Green}{victim.PlayerName} {ChatColors.Default}{hsBonus}{knifeBonus}";
-
-                _plugin.GetWcPlayer(attacker).SetStatusMessage(xpString);
-                attacker.PrintToChat(xpString);
+                knifeBonus = $"(+{xpKnife} knife bonus)";
             }
 
-            victim?.GetWarcraftPlayer()?.GetRace()?.InvokeEvent("player_death", @event);
-            attacker?.GetWarcraftPlayer()?.GetRace()?.InvokeEvent("player_kill", @event);
+            string xpString = $" {ChatColors.Gold}+{xpToAdd} XP {ChatColors.Default}for killing {ChatColors.Green}{victim.PlayerName} {ChatColors.Default}{hsBonus}{knifeBonus}";
 
-            WarcraftPlugin.Instance.EffectManager.ClearEffects(victim);
-            
-            return HookResult.Continue;
+            _plugin.GetWcPlayer(attacker).SetStatusMessage(xpString);
+            attacker.PrintToChat(xpString);
         }
+
+        victim?.GetWarcraftPlayer()?.GetRace()?.InvokeEvent("player_death", @event);
+        attacker?.GetWarcraftPlayer()?.GetRace()?.InvokeEvent("player_kill", @event);
+
+        WarcraftPlugin.Instance.EffectManager.ClearEffects(victim);
+
+        return HookResult.Continue;
     }
 }

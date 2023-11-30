@@ -19,32 +19,32 @@ using System.Collections.Generic;
 using CounterStrikeSharp.API.Core;
 using Microsoft.Extensions.Logging;
 
-namespace CounterStrikeSharp.API.Modules.Memory
-{
-    public enum DataType
-    {
-        DATA_TYPE_VOID,
-        DATA_TYPE_BOOL,
-        DATA_TYPE_CHAR,
-        DATA_TYPE_UCHAR,
-        DATA_TYPE_SHORT,
-        DATA_TYPE_USHORT,
-        DATA_TYPE_INT,
-        DATA_TYPE_UINT,
-        DATA_TYPE_LONG,
-        DATA_TYPE_ULONG,
-        DATA_TYPE_LONG_LONG,
-        DATA_TYPE_ULONG_LONG,
-        DATA_TYPE_FLOAT,
-        DATA_TYPE_DOUBLE,
-        DATA_TYPE_POINTER,
-        DATA_TYPE_STRING,
-        DATA_TYPE_VARIANT
-    }
+namespace CounterStrikeSharp.API.Modules.Memory;
 
-    public static class DataTypeExtensions
-    {
-        private static Dictionary<Type, DataType> types = new Dictionary<Type, DataType>()
+public enum DataType
+{
+    DATA_TYPE_VOID,
+    DATA_TYPE_BOOL,
+    DATA_TYPE_CHAR,
+    DATA_TYPE_UCHAR,
+    DATA_TYPE_SHORT,
+    DATA_TYPE_USHORT,
+    DATA_TYPE_INT,
+    DATA_TYPE_UINT,
+    DATA_TYPE_LONG,
+    DATA_TYPE_ULONG,
+    DATA_TYPE_LONG_LONG,
+    DATA_TYPE_ULONG_LONG,
+    DATA_TYPE_FLOAT,
+    DATA_TYPE_DOUBLE,
+    DATA_TYPE_POINTER,
+    DATA_TYPE_STRING,
+    DATA_TYPE_VARIANT
+}
+
+public static class DataTypeExtensions
+{
+    private static Dictionary<Type, DataType> types = new Dictionary<Type, DataType>()
         {
             { typeof(float), DataType.DATA_TYPE_FLOAT },
             { typeof(IntPtr), DataType.DATA_TYPE_POINTER },
@@ -59,40 +59,39 @@ namespace CounterStrikeSharp.API.Modules.Memory
             { typeof(byte), DataType.DATA_TYPE_CHAR },
         };
 
-        public static DataType? ToDataType(this Type type)
+    public static DataType? ToDataType(this Type type)
+    {
+        if (types.ContainsKey(type)) return types[type];
+
+        if (typeof(NativeObject).IsAssignableFrom(type))
         {
-            if (types.ContainsKey(type)) return types[type];
-
-            if (typeof(NativeObject).IsAssignableFrom(type))
-            {
-                return DataType.DATA_TYPE_POINTER;
-            }
-
-            if (type.IsEnum && types.ContainsKey(Enum.GetUnderlyingType(type)))
-            {
-                return types[Enum.GetUnderlyingType(type)];
-            }
-            
-            Core.Application.Instance.Logger.LogWarning("Error retrieving data type for type {Type}", type.FullName);
-
-            return null;
+            return DataType.DATA_TYPE_POINTER;
         }
-        
-        public static DataType ToValidDataType(this Type type)
+
+        if (type.IsEnum && types.ContainsKey(Enum.GetUnderlyingType(type)))
         {
-            if (types.ContainsKey(type)) return types[type];
-
-            if (typeof(NativeObject).IsAssignableFrom(type))
-            {
-                return DataType.DATA_TYPE_POINTER;
-            }
-
-            if (type.IsEnum && types.ContainsKey(Enum.GetUnderlyingType(type)))
-            {
-                return types[Enum.GetUnderlyingType(type)];
-            }
-            
-            throw new NotSupportedException("Data type not supported:" + type.FullName);
+            return types[Enum.GetUnderlyingType(type)];
         }
+
+        Core.Application.Instance.Logger.LogWarning("Error retrieving data type for type {Type}", type.FullName);
+
+        return null;
+    }
+
+    public static DataType ToValidDataType(this Type type)
+    {
+        if (types.ContainsKey(type)) return types[type];
+
+        if (typeof(NativeObject).IsAssignableFrom(type))
+        {
+            return DataType.DATA_TYPE_POINTER;
+        }
+
+        if (type.IsEnum && types.ContainsKey(Enum.GetUnderlyingType(type)))
+        {
+            return types[Enum.GetUnderlyingType(type)];
+        }
+
+        throw new NotSupportedException("Data type not supported:" + type.FullName);
     }
 }

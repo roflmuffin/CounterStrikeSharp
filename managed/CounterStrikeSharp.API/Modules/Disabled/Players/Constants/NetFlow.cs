@@ -14,11 +14,10 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-namespace CounterStrikeSharp.API.Modules.Players.Constants
+namespace CounterStrikeSharp.API.Modules.Players.Constants;
+
+public enum NetFlow
 {
-    public enum NetFlow
-    {
-         FLOW_OUTGOING=0,
-         FLOW_INCOMING=1
-    }
+    FLOW_OUTGOING = 0,
+    FLOW_INCOMING = 1
 }

@@ -14,12 +14,11 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-namespace CounterStrikeSharp.API.Modules.Sound.Constants
+namespace CounterStrikeSharp.API.Modules.Sound.Constants;
+
+public static class SoundPitch
 {
-    public static class SoundPitch
-    {
-        public const int PITCH_NORM = 100;
-        public const int PITCH_LOW = 95;
-        public const int PITCH_HIGH = 120;
-    }
+    public const int PITCH_NORM = 100;
+    public const int PITCH_LOW = 95;
+    public const int PITCH_HIGH = 120;
 }

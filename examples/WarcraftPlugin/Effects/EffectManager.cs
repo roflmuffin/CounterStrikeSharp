@@ -18,52 +18,51 @@ using System.Collections.Generic;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Timers;
 
-namespace WarcraftPlugin.Effects
+namespace WarcraftPlugin.Effects;
+
+public class EffectManager
 {
-    public class EffectManager
+    private List<WarcraftEffect> _effects = new List<WarcraftEffect>();
+    private float _tickRate = 0.25f;
+
+    public void Initialize()
     {
-        private List<WarcraftEffect> _effects = new List<WarcraftEffect>();
-        private float _tickRate = 0.25f;
+        WarcraftPlugin.Instance.AddTimer(_tickRate, EffectTick, TimerFlags.REPEAT);
+    }
 
-        public void Initialize()
-        {
-            WarcraftPlugin.Instance.AddTimer(_tickRate, EffectTick, TimerFlags.REPEAT);
-        }
+    public void AddEffect(WarcraftEffect effect)
+    {
+        _effects.Add(effect);
+        effect.OnStart();
+    }
 
-        public void AddEffect(WarcraftEffect effect)
+    private void EffectTick()
+    {
+        for (int i = _effects.Count - 1; i >= 0; i--)
         {
-            _effects.Add(effect);
-            effect.OnStart();
-        }
+            var effect = _effects[i];
 
-        private void EffectTick()
-        {
-            for (int i = _effects.Count - 1; i >= 0; i--)
+            effect.RemainingDuration -= _tickRate;
+            effect.OnTick();
+
+            if (effect.RemainingDuration <= 0)
             {
-                var effect = _effects[i];
-
-                effect.RemainingDuration -= _tickRate;
-                effect.OnTick();
-
-                if (effect.RemainingDuration <= 0)
-                {
-                    effect.RemainingDuration = 0;
-                    effect.OnFinish();
-                    _effects.RemoveAt(i);
-                }
+                effect.RemainingDuration = 0;
+                effect.OnFinish();
+                _effects.RemoveAt(i);
             }
         }
+    }
 
-        public void ClearEffects(CCSPlayerController player)
+    public void ClearEffects(CCSPlayerController player)
+    {
+        for (int i = _effects.Count - 1; i >= 0; i--)
         {
-            for (int i = _effects.Count - 1; i >= 0; i--)
+            var effect = _effects[i];
+            if (effect.Target?.Handle == player.Handle)
             {
-                var effect = _effects[i];
-                if (effect.Target?.Handle == player.Handle)
-                {
-                    effect.OnFinish();
-                    _effects.RemoveAt(i);
-                }
+                effect.OnFinish();
+                _effects.RemoveAt(i);
             }
         }
     }

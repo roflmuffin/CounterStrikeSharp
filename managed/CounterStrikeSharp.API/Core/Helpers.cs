@@ -20,14 +20,13 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security;
 
-namespace CounterStrikeSharp.API.Core
-{
-    public static class Helpers
-    {
-        private const string dllPath = "counterstrikesharp";
+namespace CounterStrikeSharp.API.Core;
 
-        [SecurityCritical]
-        [DllImport(dllPath, EntryPoint = "InvokeNative")]
-        public static extern void InvokeNative(IntPtr ptr);
-    }
+public static class Helpers
+{
+    private const string dllPath = "counterstrikesharp";
+
+    [SecurityCritical]
+    [DllImport(dllPath, EntryPoint = "InvokeNative")]
+    public static extern void InvokeNative(IntPtr ptr);
 }

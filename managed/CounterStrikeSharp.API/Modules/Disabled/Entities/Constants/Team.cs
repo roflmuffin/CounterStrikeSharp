@@ -14,16 +14,15 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-namespace CounterStrikeSharp.API.Modules.Entities.Constants
+namespace CounterStrikeSharp.API.Modules.Entities.Constants;
+
+public enum Team
 {
-    public enum Team
-    {
-        TEAM_ANY = -1,
-        TEAM_INVALID = 1,
-        TEAM_UNASSIGNED = 0,
-        TEAM_SPECTATOR = 1,
-        TEAM_TERRORIST = 2,
-        TEAM_CT = 3,
-        TEAM_MAXCOUNT = 4,
-    }
+    TEAM_ANY = -1,
+    TEAM_INVALID = 1,
+    TEAM_UNASSIGNED = 0,
+    TEAM_SPECTATOR = 1,
+    TEAM_TERRORIST = 2,
+    TEAM_CT = 3,
+    TEAM_MAXCOUNT = 4,
 }

@@ -20,147 +20,146 @@ using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Listeners;
 
-namespace CounterStrikeSharp.API.Modules.Engine.Trace
+namespace CounterStrikeSharp.API.Modules.Engine.Trace;
+
+public class SimpleTraceFilter : NativeObject
 {
-    public class SimpleTraceFilter : NativeObject
+    public SimpleTraceFilter(IntPtr cPtr) : base(cPtr)
     {
-        public SimpleTraceFilter(IntPtr cPtr) : base(cPtr)
-        {
-        }
-
-        public SimpleTraceFilter(int indexToIgnore) : base(NativeAPI.NewSimpleTraceFilter(indexToIgnore))
-        {
-
-        }
     }
 
-    public class TraceFilterProxy : NativeObject
+    public SimpleTraceFilter(int indexToIgnore) : base(NativeAPI.NewSimpleTraceFilter(indexToIgnore))
     {
-        private ITraceFilter _filter;
-        private FunctionReference.CallbackDelegate getTypeCallback;
-        private FunctionReference.CallbackDelegate shouldHitCallback;
 
-        public TraceFilterProxy(IntPtr cPtr) : base(cPtr)
+    }
+}
+
+public class TraceFilterProxy : NativeObject
+{
+    private ITraceFilter _filter;
+    private FunctionReference.CallbackDelegate getTypeCallback;
+    private FunctionReference.CallbackDelegate shouldHitCallback;
+
+    public TraceFilterProxy(IntPtr cPtr) : base(cPtr)
+    {
+    }
+
+    public TraceFilterProxy(ITraceFilter filter) : base(NativeAPI.NewTraceFilterProxy())
+    {
+        _filter = filter;
+
+        /*
+        getTypeCallback = Utilities.SafeExecute(intPtr =>
         {
-        }
+            var marshal = new CMarshalObject();
+            marshal.PushInt((int) _filter.GetTraceType());
+            return marshal.GetPointer();
+        });
+        */
 
-        public TraceFilterProxy(ITraceFilter filter) : base(NativeAPI.NewTraceFilterProxy())
+        /*shouldHitCallback = Utilities.SafeExecute(ptr =>
         {
-            _filter = filter;
+            var marshal = new CMarshalObject(ptr, true);
+            var entity = marshal.GetValue<BaseEntity>();
+            var contentMask = marshal.GetInt();
 
-            /*
-            getTypeCallback = Utilities.SafeExecute(intPtr =>
-            {
-                var marshal = new CMarshalObject();
-                marshal.PushInt((int) _filter.GetTraceType());
-                return marshal.GetPointer();
-            });
-            */
+            var isValidEntity = _filter.ShouldHitEntity(entity, contentMask);
 
-            /*shouldHitCallback = Utilities.SafeExecute(ptr =>
+            var response = new CMarshalObject();
+            response.PushInt(isValidEntity ? 1 : 0);
+
+            return response.GetPointer();
+        });*/
+
+        unsafe
+        {
+            getTypeCallback = (fxScriptContext* context) =>
             {
-                var marshal = new CMarshalObject(ptr, true);
-                var entity = marshal.GetValue<BaseEntity>();
-                var contentMask = marshal.GetInt();
+                var scriptContext = new ScriptContext(context);
+
+                scriptContext.Push(_filter.GetTraceType());
+            };
+
+            shouldHitCallback = (fxScriptContext* context) =>
+            {
+                var scriptContext = new ScriptContext(context);
+
+                var entity = new BaseEntity(scriptContext.GetArgument<int>(0));
+                var contentMask = scriptContext.GetArgument<int>(1);
 
                 var isValidEntity = _filter.ShouldHitEntity(entity, contentMask);
 
-                var response = new CMarshalObject();
-                response.PushInt(isValidEntity ? 1 : 0);
+                Console.WriteLine($"Returning {isValidEntity} to `ShouldHitEntity`");
 
-                return response.GetPointer();
-            });*/
-
-            unsafe
-            {
-                getTypeCallback = (fxScriptContext* context) =>
-                {
-                    var scriptContext = new ScriptContext(context);
-
-                    scriptContext.Push(_filter.GetTraceType());
-                };
-
-                shouldHitCallback = (fxScriptContext* context) =>
-                {
-                    var scriptContext = new ScriptContext(context);
-                    
-                    var entity = new BaseEntity(scriptContext.GetArgument<int>(0));
-                    var contentMask = scriptContext.GetArgument<int>(1);
-
-                    var isValidEntity = _filter.ShouldHitEntity(entity, contentMask);
-
-                    Console.WriteLine($"Returning {isValidEntity} to `ShouldHitEntity`");
-
-                    scriptContext.SetResult(isValidEntity, context);
-                };
-            }
-            
-
-            NativeAPI.TraceFilterProxySetTraceTypeCallback(Handle, Marshal.GetFunctionPointerForDelegate(getTypeCallback));
-            NativeAPI.TraceFilterProxySetShouldHitEntityCallback(Handle, Marshal.GetFunctionPointerForDelegate(shouldHitCallback));
-            /*NativeAPI.TraceFilterProxySetTraceTypeCallback(Handle, getTypeCallback);
-            NativePINVOKE.TraceFilterProxy_SetGetTraceTypeCallback(ptr, getTypeCallback.ToHandle());
-            NativePINVOKE.TraceFilterProxy_SetShouldHitEntityCallback(ptr, shouldHitCallback.ToHandle());*/
+                scriptContext.SetResult(isValidEntity, context);
+            };
         }
+
+
+        NativeAPI.TraceFilterProxySetTraceTypeCallback(Handle, Marshal.GetFunctionPointerForDelegate(getTypeCallback));
+        NativeAPI.TraceFilterProxySetShouldHitEntityCallback(Handle, Marshal.GetFunctionPointerForDelegate(shouldHitCallback));
+        /*NativeAPI.TraceFilterProxySetTraceTypeCallback(Handle, getTypeCallback);
+        NativePINVOKE.TraceFilterProxy_SetGetTraceTypeCallback(ptr, getTypeCallback.ToHandle());
+        NativePINVOKE.TraceFilterProxy_SetShouldHitEntityCallback(ptr, shouldHitCallback.ToHandle());*/
+    }
+}
+
+public enum TraceType
+{
+    Everything = 0,
+    WorldOnly,              // NOTE: This does *not* test static props!!!
+    EntitiesOnly,           // NOTE: This version will *not* test static props
+    EverythingFilterProps,  // NOTE: This version will pass the IHandleEntity for props through the filter, unlike all other filters
+};
+
+public class CustomTraceFilter : TraceFilter
+{
+    private Func<BaseEntity, bool> _filter;
+
+    public CustomTraceFilter(Func<BaseEntity, bool> filter)
+    {
+        _filter = filter;
+    }
+    public override bool ShouldHitEntity(BaseEntity entity, int contentMask)
+    {
+        return _filter.Invoke(entity);
     }
 
-    public enum TraceType
+    public override TraceType GetTraceType()
     {
-        Everything = 0,
-        WorldOnly,				// NOTE: This does *not* test static props!!!
-        EntitiesOnly,			// NOTE: This version will *not* test static props
-        EverythingFilterProps,	// NOTE: This version will pass the IHandleEntity for props through the filter, unlike all other filters
-    };
+        return TraceType.Everything;
+    }
+}
 
-    public class CustomTraceFilter : TraceFilter
+public class ExclusionTraceFilter : TraceFilter
+{
+    private int _indexToExclude;
+
+    public ExclusionTraceFilter(int indexToExclude)
     {
-        private Func<BaseEntity, bool> _filter;
+        this._indexToExclude = indexToExclude;
+    }
+    public override bool ShouldHitEntity(BaseEntity entity, int contentMask)
+    {
+        if (entity.Index == _indexToExclude) return false;
 
-        public CustomTraceFilter(Func<BaseEntity, bool> filter)
-        {
-            _filter = filter;
-        }
-        public override bool ShouldHitEntity(BaseEntity entity, int contentMask)
-        {
-            return _filter.Invoke(entity);
-        }
-
-        public override TraceType GetTraceType()
-        {
-            return TraceType.Everything;
-        }
+        return true;
     }
 
-    public class ExclusionTraceFilter : TraceFilter
+    public override TraceType GetTraceType()
     {
-        private int _indexToExclude;
-
-        public ExclusionTraceFilter(int indexToExclude)
-        {
-            this._indexToExclude = indexToExclude;
-        }
-        public override bool ShouldHitEntity(BaseEntity entity, int contentMask)
-        {
-            if (entity.Index == _indexToExclude) return false;
-
-            return true;
-        }
-
-        public override TraceType GetTraceType()
-        {
-            return TraceType.Everything;
-        }
+        return TraceType.Everything;
     }
+}
 
-    public abstract class TraceFilter : ITraceFilter
-    {
-        public abstract bool ShouldHitEntity(BaseEntity entity, int contentMask);
-        public abstract TraceType GetTraceType();
-    }
+public abstract class TraceFilter : ITraceFilter
+{
+    public abstract bool ShouldHitEntity(BaseEntity entity, int contentMask);
+    public abstract TraceType GetTraceType();
+}
 
-    public interface ITraceFilter
-    {
-        bool ShouldHitEntity(BaseEntity entity, int contentMask);
-        TraceType GetTraceType();
-    }
+public interface ITraceFilter
+{
+    bool ShouldHitEntity(BaseEntity entity, int contentMask);
+    TraceType GetTraceType();
 }

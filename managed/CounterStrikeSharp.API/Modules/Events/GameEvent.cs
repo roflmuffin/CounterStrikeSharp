@@ -18,112 +18,111 @@ using System;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Entities;
 
-namespace CounterStrikeSharp.API.Modules.Events
+namespace CounterStrikeSharp.API.Modules.Events;
+
+public class EventAttribute : Attribute
 {
-    public class EventAttribute : Attribute
+    public EventAttribute(string name)
     {
-        public EventAttribute(string name)
-        {
-            Name = name;
-        }
-
-        public string Name { get; set; }
+        Name = name;
     }
 
-    public class GameEvent : NativeObject
+    public string Name { get; set; }
+}
+
+public class GameEvent : NativeObject
+{
+    public GameEvent(IntPtr pointer) : base(pointer)
     {
-        public GameEvent(IntPtr pointer) : base(pointer)
-        {
-        }
-        
-        public GameEvent(string name, bool force) : this(NativeAPI.CreateEvent(name, force))
-        {
-        }
-        
-        public string EventName => NativeAPI.GetEventName(Handle);
-
-        public T Get<T>(string name)
-        {
-            var type = typeof(T);
-            object result = type switch
-            {
-                _ when type == typeof(float) => GetFloat(name),
-                _ when type == typeof(short) => GetInt(name),
-                _ when type == typeof(int) => GetInt(name),
-                _ when type == typeof(string) => GetString(name),
-                _ when type == typeof(bool) => GetBool(name),
-                _ when type == typeof(ulong) => GetUint64(name),
-                _ when type == typeof(long) => (long)GetUint64(name),
-                _ when type == typeof(CCSPlayerController) => GetPlayer(name),
-                _ => throw new NotSupportedException(),
-            };
-
-            return (T)result;
-        }
-
-        public void Set<T>(string name, T value)
-        {
-            var type = typeof(T);
-            switch (type)
-            {
-                case var _ when value is float f:
-                    SetFloat(name, f);
-                    break;
-                case var _ when value is short s:
-                    SetInt(name, s);
-                    break;
-                case var _ when value is int i:
-                    SetInt(name, i);
-                    break;
-                case var _ when value is CCSPlayerController player:
-                    // When I was testing this, the code seems to expect a slot, even though it is called index
-                    SetEntityIndex(name, (int)player.Index - 1);
-                    break;
-                case var _ when value is string s:
-                    SetString(name, s);
-                    break;
-                case var _ when value is bool b:
-                    SetBool(name, b);
-                    break;
-                case var _ when value is ulong ul:
-                    SetUint64(name, ul);
-                    break;
-                case var _ when value is long l:
-                    SetUint64(name, (ulong)l);
-                    break;
-                default:
-                    throw new NotSupportedException();
-            }
-        }
-
-        protected bool GetBool(string name) => NativeAPI.GetEventBool(Handle, name);
-        protected float GetFloat(string name) => NativeAPI.GetEventFloat(Handle, name);
-        protected string GetString(string name) => NativeAPI.GetEventString(Handle, name);
-        protected int GetInt(string name) => NativeAPI.GetEventInt(Handle, name);
-
-        protected CCSPlayerController GetPlayer(string name)
-        {
-            return new CCSPlayerController(NativeAPI.GetEventPlayerController(Handle, name));
-        }
-
-        protected ulong GetUint64(string name) => NativeAPI.GetEventUint64(Handle, name);
-
-        protected void SetUint64(string name, ulong value) => NativeAPI.SetEventUint64(Handle, name, value);
-
-        // public Player GetPlayer(string name) => Player.FromUserId(GetInt(name));
-
-        protected void SetBool(string name, bool value) => NativeAPI.SetEventBool(Handle, name, value);
-        protected void SetFloat(string name, float value) => NativeAPI.SetEventFloat(Handle, name, value);
-        protected void SetString(string name, string value) => NativeAPI.SetEventString(Handle, name, value);
-        protected void SetInt(string name, int value) => NativeAPI.SetEventInt(Handle, name, value);
-        protected void SetInt(string name, long value) => SetInt(name, (int)value);
-
-        protected void SetEntity(string name, IntPtr value) => NativeAPI.SetEventEntity(Handle, name, value);
-
-        protected void SetEntityIndex(string name, int value) => NativeAPI.SetEventEntityIndex(Handle, name, value);
-
-        public void FireEvent(bool dontBroadcast) => NativeAPI.FireEvent(Handle, dontBroadcast);
-        
-        public void FireEventToClient(CCSPlayerController player) => NativeAPI.FireEventToClient(Handle, (int)player.Index);
     }
+
+    public GameEvent(string name, bool force) : this(NativeAPI.CreateEvent(name, force))
+    {
+    }
+
+    public string EventName => NativeAPI.GetEventName(Handle);
+
+    public T Get<T>(string name)
+    {
+        var type = typeof(T);
+        object result = type switch
+        {
+            _ when type == typeof(float) => GetFloat(name),
+            _ when type == typeof(short) => GetInt(name),
+            _ when type == typeof(int) => GetInt(name),
+            _ when type == typeof(string) => GetString(name),
+            _ when type == typeof(bool) => GetBool(name),
+            _ when type == typeof(ulong) => GetUint64(name),
+            _ when type == typeof(long) => (long)GetUint64(name),
+            _ when type == typeof(CCSPlayerController) => GetPlayer(name),
+            _ => throw new NotSupportedException(),
+        };
+
+        return (T)result;
+    }
+
+    public void Set<T>(string name, T value)
+    {
+        var type = typeof(T);
+        switch (type)
+        {
+            case var _ when value is float f:
+                SetFloat(name, f);
+                break;
+            case var _ when value is short s:
+                SetInt(name, s);
+                break;
+            case var _ when value is int i:
+                SetInt(name, i);
+                break;
+            case var _ when value is CCSPlayerController player:
+                // When I was testing this, the code seems to expect a slot, even though it is called index
+                SetEntityIndex(name, (int)player.Index - 1);
+                break;
+            case var _ when value is string s:
+                SetString(name, s);
+                break;
+            case var _ when value is bool b:
+                SetBool(name, b);
+                break;
+            case var _ when value is ulong ul:
+                SetUint64(name, ul);
+                break;
+            case var _ when value is long l:
+                SetUint64(name, (ulong)l);
+                break;
+            default:
+                throw new NotSupportedException();
+        }
+    }
+
+    protected bool GetBool(string name) => NativeAPI.GetEventBool(Handle, name);
+    protected float GetFloat(string name) => NativeAPI.GetEventFloat(Handle, name);
+    protected string GetString(string name) => NativeAPI.GetEventString(Handle, name);
+    protected int GetInt(string name) => NativeAPI.GetEventInt(Handle, name);
+
+    protected CCSPlayerController GetPlayer(string name)
+    {
+        return new CCSPlayerController(NativeAPI.GetEventPlayerController(Handle, name));
+    }
+
+    protected ulong GetUint64(string name) => NativeAPI.GetEventUint64(Handle, name);
+
+    protected void SetUint64(string name, ulong value) => NativeAPI.SetEventUint64(Handle, name, value);
+
+    // public Player GetPlayer(string name) => Player.FromUserId(GetInt(name));
+
+    protected void SetBool(string name, bool value) => NativeAPI.SetEventBool(Handle, name, value);
+    protected void SetFloat(string name, float value) => NativeAPI.SetEventFloat(Handle, name, value);
+    protected void SetString(string name, string value) => NativeAPI.SetEventString(Handle, name, value);
+    protected void SetInt(string name, int value) => NativeAPI.SetEventInt(Handle, name, value);
+    protected void SetInt(string name, long value) => SetInt(name, (int)value);
+
+    protected void SetEntity(string name, IntPtr value) => NativeAPI.SetEventEntity(Handle, name, value);
+
+    protected void SetEntityIndex(string name, int value) => NativeAPI.SetEventEntityIndex(Handle, name, value);
+
+    public void FireEvent(bool dontBroadcast) => NativeAPI.FireEvent(Handle, dontBroadcast);
+
+    public void FireEventToClient(CCSPlayerController player) => NativeAPI.FireEventToClient(Handle, (int)player.Index);
 }

@@ -21,51 +21,50 @@ using CounterStrikeSharp.API.Modules.Players;
 using CounterStrikeSharp.API.Modules.Sound.Constants;
 using CounterStrikeSharp.API.Modules.Utils;
 
-namespace CounterStrikeSharp.API.Modules.Sound
+namespace CounterStrikeSharp.API.Modules.Sound;
+
+public static class Sound
 {
-    public static class Sound
+    public static bool PrecacheSound(string sound) => NativeAPI.PrecacheSound(sound, true);
+
+    public static bool IsSoundPrecached(string sound) => NativeAPI.IsSoundPrecached(sound);
+
+    public static float GetSoundDuration(string sound) => NativeAPI.GetSoundDuration(sound);
+
+    public static void EmitSound(int client,
+        string sound,
+        int entity = SoundSource.SOUND_FROM_PLAYER,
+        SoundChannel channel = SoundChannel.CHAN_AUTO,
+        SoundLevel level = SoundLevel.SNDLVL_NORM,
+        float attenuation = SoundAttenuation.ATTN_NORM,
+        SoundFlags flags = SoundFlags.SND_NOFLAGS,
+        float volume = 1.0f,
+        int pitch = SoundPitch.PITCH_NORM,
+        Vector origin = null,
+        Vector direction = null)
     {
-        public static bool PrecacheSound(string sound) => NativeAPI.PrecacheSound(sound, true);
+        NativeAPI.EmitSound(client, entity, (int)channel, sound, volume, attenuation, (int)flags,
+            pitch, origin?.Handle ?? IntPtr.Zero, direction?.Handle ?? IntPtr.Zero);
+    }
 
-        public static bool IsSoundPrecached(string sound) => NativeAPI.IsSoundPrecached(sound);
-
-        public static float GetSoundDuration(string sound) => NativeAPI.GetSoundDuration(sound);
-
-        public static void EmitSound(int client,
-            string sound, 
-            int entity = SoundSource.SOUND_FROM_PLAYER,
-            SoundChannel channel = SoundChannel.CHAN_AUTO,
-            SoundLevel level = SoundLevel.SNDLVL_NORM,
-            float attenuation = SoundAttenuation.ATTN_NORM,
-            SoundFlags flags = SoundFlags.SND_NOFLAGS,
-            float volume = 1.0f,
-            int pitch = SoundPitch.PITCH_NORM,
-            Vector origin = null,
-            Vector direction = null)
+    public static void EmitSoundToAll(string sound,
+        int entity = SoundSource.SOUND_FROM_PLAYER,
+        SoundChannel channel = SoundChannel.CHAN_AUTO,
+        SoundLevel level = SoundLevel.SNDLVL_NORM,
+        float attenuation = SoundAttenuation.ATTN_NORM,
+        SoundFlags flags = SoundFlags.SND_NOFLAGS,
+        float volume = 1.0f,
+        int pitch = SoundPitch.PITCH_NORM,
+        Vector origin = null,
+        Vector direction = null)
+    {
+        for (int i = 1; i < 65; i++)
         {
-            NativeAPI.EmitSound(client, entity, (int) channel, sound, volume, attenuation, (int) flags,
-                pitch, origin?.Handle ?? IntPtr.Zero, direction?.Handle ?? IntPtr.Zero);
-        }
-
-        public static void EmitSoundToAll(string sound,
-            int entity = SoundSource.SOUND_FROM_PLAYER,
-            SoundChannel channel = SoundChannel.CHAN_AUTO,
-            SoundLevel level = SoundLevel.SNDLVL_NORM,
-            float attenuation = SoundAttenuation.ATTN_NORM,
-            SoundFlags flags = SoundFlags.SND_NOFLAGS,
-            float volume = 1.0f,
-            int pitch = SoundPitch.PITCH_NORM,
-            Vector origin = null,
-            Vector direction = null)
-        {
-            for (int i = 1; i < 65; i++)
+            var client = Player.FromIndex(i);
+            if (client?.IsValid == true)
             {
-                var client = Player.FromIndex(i);
-                if (client?.IsValid == true)
-                {
-                    Sound.EmitSound(i, sound, entity, channel, level, attenuation, flags, volume, pitch, origin,
-                        direction);
-                }
+                Sound.EmitSound(i, sound, entity, channel, level, attenuation, flags, volume, pitch, origin,
+                    direction);
             }
         }
     }

@@ -17,43 +17,43 @@
 using System;
 using CounterStrikeSharp.API.Core;
 
-namespace CounterStrikeSharp.API.Modules.Commands
+namespace CounterStrikeSharp.API.Modules.Commands;
+
+public class CommandInfo
 {
-    public class CommandInfo
+    public delegate void CommandCallback(CCSPlayerController? player, CommandInfo commandInfo);
+
+    public delegate HookResult CommandListenerCallback(CCSPlayerController? player, CommandInfo commandInfo);
+
+    public CCSPlayerController? CallingPlayer { get; }
+
+    public IntPtr Handle { get; }
+
+    internal CommandInfo(IntPtr pointer, CCSPlayerController player)
     {
-        public delegate void CommandCallback(CCSPlayerController? player, CommandInfo commandInfo);
-        
-        public delegate HookResult CommandListenerCallback(CCSPlayerController? player, CommandInfo commandInfo);
+        Handle = pointer;
+        CallingPlayer = player;
+    }
 
-        public CCSPlayerController? CallingPlayer { get; }
-        
-        public IntPtr Handle { get; }
-        
-        internal CommandInfo(IntPtr pointer, CCSPlayerController player) 
+    public int ArgCount => NativeAPI.CommandGetArgCount(Handle);
+
+    public string ArgString => NativeAPI.CommandGetArgString(Handle);
+
+    public string GetCommandString => NativeAPI.CommandGetCommandString(Handle);
+
+    public string ArgByIndex(int index) => NativeAPI.CommandGetArgByIndex(Handle, index);
+    public string GetArg(int index) => NativeAPI.CommandGetArgByIndex(Handle, index);
+
+    public void ReplyToCommand(string message, bool console = false)
+    {
+        if (CallingPlayer != null)
         {
-            Handle = pointer;
-            CallingPlayer = player;
+            if (console) { CallingPlayer.PrintToConsole(message); }
+            else CallingPlayer.PrintToChat(message);
         }
-
-        public int ArgCount => NativeAPI.CommandGetArgCount(Handle);
-
-        public string ArgString => NativeAPI.CommandGetArgString(Handle);
-
-        public string GetCommandString => NativeAPI.CommandGetCommandString(Handle);
-
-        public string ArgByIndex(int index) => NativeAPI.CommandGetArgByIndex(Handle, index);
-        public string GetArg(int index) => NativeAPI.CommandGetArgByIndex(Handle, index);
-        
-        public void ReplyToCommand(string message, bool console = false) {
-            if (CallingPlayer != null) 
-            {
-                if (console) { CallingPlayer.PrintToConsole(message); }
-                else CallingPlayer.PrintToChat(message);
-            }
-            else 
-            {
-                Server.PrintToConsole(message);    
-            }
+        else
+        {
+            Server.PrintToConsole(message);
         }
     }
 }
