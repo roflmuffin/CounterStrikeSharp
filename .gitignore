@@ -553,3 +553,4 @@ _NCrunch*
 # docfx
 docfx/_site/
 docfx/api/
+docfx/_exported_templates/

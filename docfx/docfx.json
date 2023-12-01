@@ -23,12 +23,13 @@
       }
     ],
     "output": "_site",
-    "template": ["default", "modern", "css-template"],
+    "template": ["default", "modern", "layouts/css-links"],
     "globalMetadata": {
+      "_appFaviconPath": "images/android-chrome-512x512.png",
+      "_appLogoPath": "images/logo.png",
       "_appName": "CounterStrikeSharp",
       "_appTitle": "CounterStrikeSharp",
-      "_appLogoPath": "images/logo.png",
-      "_appFaviconPath": "images/android-chrome-512x512.png",
+      "_enableNewTab": true,
       "_enableSearch": true,
       "pdf": false
     }
