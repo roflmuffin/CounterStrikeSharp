@@ -98,6 +98,11 @@ const char* CGameConfig::GetPatch(const std::string& name)
     return it->second.c_str();
 }
 
+std::unordered_map<std::string, std::string> CGameConfig::GetPatches()
+{
+    return m_umPatches;
+}
+
 int CGameConfig::GetOffset(const std::string& name)
 {
     auto it = m_umOffsets.find(name);
@@ -177,6 +182,29 @@ void* CGameConfig::ResolveSignature(const char* name)
         return nullptr;
     }
     return address;
+}
+
+bool CGameConfig::AddPatch(const char* name, const char* value)
+{
+    auto it = m_umPatches.find(name);
+    if (it != m_umPatches.end()) {
+        CSSHARP_CORE_ERROR("Patch {} is already exists\n", name);
+        return false;
+    }
+
+    m_umPatches[name] = value;
+    return true;
+}
+
+void CGameConfig::RemovePatch(const char* name)
+{
+    auto it = m_umPatches.find(name);
+    if (it == m_umPatches.end()) {
+        CSSHARP_CORE_ERROR("Patch {} does not exists\n", name);
+        return;
+    }
+
+    m_umPatches.erase(name);
 }
 
 std::string CGameConfig::GetDirectoryName(const std::string& directoryPathInput)

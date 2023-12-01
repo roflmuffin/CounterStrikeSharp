@@ -35,6 +35,8 @@ SET(SOURCE_FILES
     src/core/coreconfig.cpp
     src/core/gameconfig.h
     src/core/gameconfig.cpp
+    src/core/mempatch.h
+    src/core/mempatch.cpp
     src/core/log.h
     src/core/log.cpp
     src/scripting/script_engine.h
@@ -56,6 +58,8 @@ SET(SOURCE_FILES
     src/scripting/natives/natives_vector.cpp
     src/scripting/natives/natives_timers.cpp
     src/utils/virtual.h
+    src/utils/plat_unix.cpp
+    src/utils/plat_win.cpp
     src/scripting/natives/natives_events.cpp
     src/core/memory.cpp
     src/core/memory.h
@@ -81,6 +85,8 @@ SET(SOURCE_FILES
     src/core/managers/chat_manager.h
     src/core/managers/server_manager.cpp
     src/core/managers/server_manager.h
+    src/core/managers/memory_manager.cpp
+    src/core/managers/memory_manager.h
     src/scripting/natives/natives_server.cpp
     libraries/nlohmann/json.hpp
         src/scripting/natives/natives_dynamichooks.cpp

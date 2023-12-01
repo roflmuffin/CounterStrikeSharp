@@ -20,6 +20,7 @@
 #include "interfaces/cs2_interfaces.h"
 #include "core/managers/entity_manager.h"
 #include "core/managers/server_manager.h"
+#include "core/managers/memory_manager.h"
 #include <public/game/server/iplayerinfo.h>
 #include <public/entity2/entitysystem.h>
 
@@ -76,6 +77,7 @@ ConCommandManager conCommandManager;
 EntityManager entityManager;
 ChatManager chatManager;
 ServerManager serverManager;
+MemoryManager memoryManager;
 
 GetLegacyGameEventListener_t* GetLegacyGameEventListener = nullptr;
 

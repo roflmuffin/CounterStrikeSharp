@@ -22,6 +22,9 @@
 #include "scripting/script_engine.h"
 #include "core/memory.h"
 #include "core/log.h"
+#include "core/globals.h"
+#include "core/gameconfig.h"
+#include "core/managers/memory_manager.h"
 
 namespace counterstrikesharp {
 std::vector<ValveFunction*> m_managed_ptrs;
@@ -159,6 +162,26 @@ void* GetNetworkVectorElementAt(ScriptContext& script_context)
     return &vec->Element(index);
 }
 
+bool CreateMemoryPatch(ScriptContext& scriptContext)
+{
+    auto pszSignatureName = scriptContext.GetArgument<const char*>(0);
+    auto pszName = scriptContext.GetArgument<const char*>(1);
+
+    if (globals::gameConfig->AddPatch(pszSignatureName, pszName))
+    {
+        return globals::memoryManager.CreatePatch(pszSignatureName, pszName);
+    }
+
+    return false;
+}
+
+void UndoMemoryPatch(ScriptContext& scriptContext)
+{
+    auto patchName = scriptContext.GetArgument<const char*>(0);
+    globals::memoryManager.UndoPatch(patchName);
+    globals::gameConfig->RemovePatch(patchName);
+}
+
 REGISTER_NATIVES(memory, {
     ScriptEngine::RegisterNativeHandler("CREATE_VIRTUAL_FUNCTION", CreateVirtualFunction);
     ScriptEngine::RegisterNativeHandler("CREATE_VIRTUAL_FUNCTION_BY_SIGNATURE",
@@ -169,5 +192,7 @@ REGISTER_NATIVES(memory, {
     ScriptEngine::RegisterNativeHandler("FIND_SIGNATURE", FindSignatureNative);
     ScriptEngine::RegisterNativeHandler("GET_NETWORK_VECTOR_SIZE", GetNetworkVectorSize);
     ScriptEngine::RegisterNativeHandler("GET_NETWORK_VECTOR_ELEMENT_AT", GetNetworkVectorElementAt);
+    ScriptEngine::RegisterNativeHandler("CREATE_MEMORY_PATCH", CreateMemoryPatch);
+    ScriptEngine::RegisterNativeHandler("UNDO_MEMORY_PATCH", UndoMemoryPatch);
 })
 } // namespace counterstrikesharp
