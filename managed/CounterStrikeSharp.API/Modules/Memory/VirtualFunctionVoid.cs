@@ -25,6 +25,11 @@ public partial class VirtualFunctionVoid
         this.Function = VirtualFunction.CreateVoid(signature);
     }
 
+    public VirtualFunctionVoid(string signature, string binarypath)
+    {
+        this.Function = VirtualFunction.CreateVoid(signature, binarypath);
+    }
+
     public void Invoke()
     {
         this.Function();
@@ -38,6 +43,11 @@ public partial class VirtualFunctionVoid<TArg1>
     public VirtualFunctionVoid(string signature)
     {
         this.Function = VirtualFunction.CreateVoid<TArg1>(signature);
+    }
+
+    public VirtualFunctionVoid(string signature, string binarypath)
+    {
+        this.Function = VirtualFunction.CreateVoid<TArg1>(signature, binarypath);
     }
 
     public VirtualFunctionVoid(IntPtr objectPtr, int offset)
@@ -60,6 +70,11 @@ public partial class VirtualFunctionVoid<TArg1, TArg2>
         this.Function = VirtualFunction.CreateVoid<TArg1, TArg2>(signature);
     }
 
+    public VirtualFunctionVoid(string signature, string binarypath)
+    {
+        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2>(signature, binarypath);
+    }
+
     public VirtualFunctionVoid(IntPtr objectPtr, int offset)
     {
         this.Function = VirtualFunction.CreateVoid<TArg1, TArg2>(objectPtr, offset);
@@ -78,6 +93,11 @@ public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3>
     public VirtualFunctionVoid(string signature)
     {
         this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3>(signature);
+    }
+    
+    public VirtualFunctionVoid(string signature, string binarypath)
+    {
+        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3>(signature, binarypath);
     }
 
     public VirtualFunctionVoid(IntPtr objectPtr, int offset)
@@ -100,6 +120,11 @@ public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4>
         this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4>(signature);
     }
 
+    public VirtualFunctionVoid(string signature, string binarypath)
+    {
+        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4>(signature, binarypath);
+    }
+
     public VirtualFunctionVoid(IntPtr objectPtr, int offset)
     {
         this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4>(objectPtr, offset);
@@ -118,6 +143,11 @@ public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5>
     public VirtualFunctionVoid(string signature)
     {
         this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5>(signature);
+    }
+
+    public VirtualFunctionVoid(string signature, string binarypath)
+    {
+        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5>(signature, binarypath);
     }
 
     public VirtualFunctionVoid(IntPtr objectPtr, int offset)
@@ -140,6 +170,11 @@ public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg
         this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(signature);
     }
 
+    public VirtualFunctionVoid(string signature, string binarypath)
+    {
+        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(signature, binarypath);
+    }
+
     public VirtualFunctionVoid(IntPtr objectPtr, int offset)
     {
         this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(objectPtr, offset);
@@ -158,6 +193,11 @@ public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg
     public VirtualFunctionVoid(string signature)
     {
         this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7>(signature);
+    }
+
+    public VirtualFunctionVoid(string signature, string binarypath)
+    {
+        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7>(signature, binarypath);
     }
 
     public VirtualFunctionVoid(IntPtr objectPtr, int offset)
@@ -180,6 +220,11 @@ public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg
         this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8>(signature);
     }
 
+    public VirtualFunctionVoid(string signature, string binarypath)
+    {
+        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8>(signature, binarypath);
+    }
+
     public VirtualFunctionVoid(IntPtr objectPtr, int offset)
     {
         this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8>(objectPtr, offset);
@@ -200,6 +245,11 @@ public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg
         this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9>(signature);
     }
 
+    public VirtualFunctionVoid(string signature, string binarypath)
+    {
+        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9>(signature, binarypath);
+    }
+
     public VirtualFunctionVoid(IntPtr objectPtr, int offset)
     {
         this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9>(objectPtr, offset);
@@ -218,6 +268,11 @@ public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg
     public VirtualFunctionVoid(string signature)
     {
         this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10>(signature);
+    }
+
+    public VirtualFunctionVoid(string signature, string binarypath)
+    {
+        this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10>(signature, binarypath);
     }
 
     public VirtualFunctionVoid(IntPtr objectPtr, int offset)
