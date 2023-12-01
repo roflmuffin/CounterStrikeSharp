@@ -149,5 +149,12 @@ namespace CounterStrikeSharp.API.Core
         /// <param name="value">New value of the convar</param>
         [ListenerName("ServerConVarChanged")]
         public delegate void ServerConVarChanged(string convar, string value);
+
+        /// <summary>
+        /// Called before the world updates.
+        /// </summary>
+        /// <param name="bSimulating"><see langword="true"/> if simulating, <see langword="false"/> otherwise</param>
+        [ListenerName("PreWorldUpdate")]
+        public delegate void PreWorldUpdate(bool bSimulating);
     }
 }
