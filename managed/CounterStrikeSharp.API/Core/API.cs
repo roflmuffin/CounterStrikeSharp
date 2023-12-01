@@ -970,6 +970,28 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static bool CreateMemoryPatch(string signaturename, string patchname){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(signaturename);
+			ScriptContext.GlobalScriptContext.Push(patchname);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xC9981B4E);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (bool)ScriptContext.GlobalScriptContext.GetResult(typeof(bool));
+			}
+		}
+
+        public static void UndoMemoryPatch(string signaturename){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(signaturename);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xF451877A);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
         public static short GetSchemaOffset(string classname, string propname){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
