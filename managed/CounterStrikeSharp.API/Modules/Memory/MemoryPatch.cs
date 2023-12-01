@@ -20,7 +20,7 @@ public partial class MemoryPatch
 
     private readonly string _patchSignature;
 
-    public readonly string PatchName => _patchName;
+    public readonly string Name => _patchName;
 
     public readonly string Signature => _patchSignature;
 
