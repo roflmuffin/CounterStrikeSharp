@@ -127,13 +127,11 @@ namespace CounterStrikeSharp.API.Core
         [ListenerName("OnHostNameChanged")]
         public delegate void OnHostNameChanged(string hostname);
 
-        /*
         /// <summary>
         /// Called before the server enters fatal shutdown.
         /// </summary>
         [ListenerName("PreFatalShutdown")]
         public delegate void PreFatalShutdown();
-        */
 
         /// <summary>
         /// Called when no one is playing? (needs verification)
