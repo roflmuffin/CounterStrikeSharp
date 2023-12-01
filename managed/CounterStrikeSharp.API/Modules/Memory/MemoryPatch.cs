@@ -24,9 +24,9 @@ public partial class MemoryPatch
 
     private readonly string _patchSignature;
 
-    public readonly string Name => _patchName;
+    public string Name => _patchName;
 
-    public readonly string Signature => _patchSignature;
+    public string Signature => _patchSignature;
 
     public MemoryPatch(string patchName, string patchSignature)
     {
