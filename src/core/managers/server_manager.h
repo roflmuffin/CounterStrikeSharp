@@ -30,6 +30,7 @@ public:
     void OnAllInitialized() override;
     void OnShutdown() override;
     void* GetEconItemSystem();
+    bool IsPaused();
 
 private:
     void ServerHibernationUpdate(bool bHibernating);
@@ -39,6 +40,7 @@ private:
     void PreFatalShutdown();
     void UpdateWhenNotInGame(float flFrameTime);
     void ServerConVarChanged(const char* pVarName, const char* pValue);
+    void PreWorldUpdate(bool bSimulating);
 
     ScriptCallback *on_server_hibernation_update_callback;
     ScriptCallback *on_server_steam_api_activated_callback;
@@ -47,6 +49,7 @@ private:
     ScriptCallback *on_server_pre_fatal_shutdown;
     ScriptCallback *on_server_update_when_not_in_game;
     ScriptCallback *on_server_convar_changed;
+    ScriptCallback *on_server_pre_world_update;
 };
 
 }  // namespace counterstrikesharp
