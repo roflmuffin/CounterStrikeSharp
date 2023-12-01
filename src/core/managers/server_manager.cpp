@@ -23,6 +23,9 @@ SH_DECL_HOOK1_void(ISource2Server, ServerHibernationUpdate, SH_NOATTRIB, 0, bool
 SH_DECL_HOOK0_void(ISource2Server, GameServerSteamAPIActivated, SH_NOATTRIB, 0);
 SH_DECL_HOOK0_void(ISource2Server, GameServerSteamAPIDeactivated, SH_NOATTRIB, 0);
 SH_DECL_HOOK1_void(ISource2Server, OnHostNameChanged, SH_NOATTRIB, 0, const char*);
+// SH_DECL_HOOK0_void(ISource2Server, PreFatalShutdown, SH_NOATTRIB, 0);
+SH_DECL_HOOK1_void(ISource2Server, UpdateWhenNotInGame, SH_NOATTRIB, 0, float);
+SH_DECL_HOOK2_void(ISource2Server, ServerConVarChanged, SH_NOATTRIB, 0, const char*, const char*);
 
 namespace counterstrikesharp {
 
@@ -39,11 +42,20 @@ void ServerManager::OnAllInitialized() {
                 SH_MEMBER(this, &ServerManager::GameServerSteamAPIDeactivated), true);
     SH_ADD_HOOK(ISource2Server, OnHostNameChanged, globals::server,
                 SH_MEMBER(this, &ServerManager::OnHostNameChanged), true);
+    /*SH_ADD_HOOK(ISource2Server, PreFatalShutdown, globals::server,
+                SH_MEMBER(this, &ServerManager::PreFatalShutdown), true);*/
+    SH_ADD_HOOK(ISource2Server, UpdateWhenNotInGame, globals::server,
+                SH_MEMBER(this, &ServerManager::UpdateWhenNotInGame), true);
+    SH_ADD_HOOK(ISource2Server, ServerConVarChanged, globals::server,
+                SH_MEMBER(this, &ServerManager::ServerConVarChanged), true);
 
     on_server_hibernation_update_callback = globals::callbackManager.CreateCallback("OnServerHibernationUpdate");
     on_server_steam_api_activated_callback = globals::callbackManager.CreateCallback("OnGameServerSteamAPIActivated");
     on_server_steam_api_deactivated_callback = globals::callbackManager.CreateCallback("OnGameServerSteamAPIDeactivated");
     on_server_hostname_changed_callback = globals::callbackManager.CreateCallback("OnHostNameChanged");
+    //on_server_pre_fatal_shutdown = globals::callbackManager.CreateCallback("OnPreFatalShutdown");
+    on_server_update_when_not_in_game = globals::callbackManager.CreateCallback("OnUpdateWhenNotInGame");
+    on_server_convar_changed = globals::callbackManager.CreateCallback("OnServerConVarChanged");
 }
 
 void ServerManager::OnShutdown() {
@@ -55,11 +67,20 @@ void ServerManager::OnShutdown() {
                 SH_MEMBER(this, &ServerManager::GameServerSteamAPIDeactivated), true);
     SH_REMOVE_HOOK(ISource2Server, OnHostNameChanged, globals::server,
                 SH_MEMBER(this, &ServerManager::OnHostNameChanged), true);
+    /*SH_REMOVE_HOOK(ISource2Server, PreFatalShutdown, globals::server,
+                SH_MEMBER(this, &ServerManager::PreFatalShutdown), true);*/
+    SH_REMOVE_HOOK(ISource2Server, UpdateWhenNotInGame, globals::server,
+                SH_MEMBER(this, &ServerManager::UpdateWhenNotInGame), true);
+    SH_REMOVE_HOOK(ISource2Server, ServerConVarChanged, globals::server,
+                SH_MEMBER(this, &ServerManager::ServerConVarChanged), true);
 
     globals::callbackManager.ReleaseCallback(on_server_hibernation_update_callback);
     globals::callbackManager.ReleaseCallback(on_server_steam_api_activated_callback);
     globals::callbackManager.ReleaseCallback(on_server_steam_api_deactivated_callback);
     globals::callbackManager.ReleaseCallback(on_server_hostname_changed_callback);
+    //globals::callbackManager.ReleaseCallback(on_server_pre_fatal_shutdown);
+    globals::callbackManager.ReleaseCallback(on_server_update_when_not_in_game);
+    globals::callbackManager.ReleaseCallback(on_server_convar_changed);
 }
 
 void* ServerManager::GetEconItemSystem()
@@ -113,6 +134,45 @@ void ServerManager::OnHostNameChanged(const char *pHostname)
     if (callback && callback->GetFunctionCount()) {
         callback->ScriptContext().Reset();
         callback->ScriptContext().Push(pHostname);
+        callback->Execute();
+    }
+}
+
+void ServerManager::PreFatalShutdown()
+{
+    CSSHARP_CORE_TRACE("Pre fatal shutdown");
+
+    auto callback = globals::serverManager.on_server_pre_fatal_shutdown;
+
+    if (callback && callback->GetFunctionCount()) {
+        callback->ScriptContext().Reset();
+        callback->Execute();
+    }
+}
+
+void ServerManager::UpdateWhenNotInGame(float flFrameTime)
+{
+    CSSHARP_CORE_TRACE("Update when not in game {}", flFrameTime);
+
+    auto callback = globals::serverManager.on_server_update_when_not_in_game;
+
+    if (callback && callback->GetFunctionCount()) {
+        callback->ScriptContext().Reset();
+        callback->ScriptContext().Push(flFrameTime);
+        callback->Execute();
+    }
+}
+
+void ServerManager::ServerConVarChanged(const char* pVarName, const char* pValue)
+{
+    CSSHARP_CORE_TRACE("Server ConVar changed {} {}", pVarName, pValue);
+
+    auto callback = globals::serverManager.on_server_convar_changed;
+
+    if (callback && callback->GetFunctionCount()) {
+        callback->ScriptContext().Reset();
+        callback->ScriptContext().Push(pVarName);
+        callback->ScriptContext().Push(pValue);
         callback->Execute();
     }
 }

@@ -126,5 +126,28 @@ namespace CounterStrikeSharp.API.Core
         /// <param name="hostname">New hostname of the server</param>
         [ListenerName("OnHostNameChanged")]
         public delegate void OnHostNameChanged(string hostname);
+
+        /*
+        /// <summary>
+        /// Called before the server enters fatal shutdown.
+        /// </summary>
+        [ListenerName("PreFatalShutdown")]
+        public delegate void PreFatalShutdown();
+        */
+
+        /// <summary>
+        /// Called when no one is playing? (needs verification)
+        /// </summary>
+        /// <param name="frameTime"></param>
+        [ListenerName("UpdateWhenNotInGame")]
+        public delegate void UpdateWhenNotInGame(float frameTime);
+
+        /// <summary>
+        /// Called when a convar value has changed on the server.
+        /// </summary>
+        /// <param name="convar">Name of the convar</param>
+        /// <param name="value">New value of the convar</param>
+        [ListenerName("ServerConVarChanged")]
+        public delegate void ServerConVarChanged(string convar, string value);
     }
 }
