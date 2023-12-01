@@ -3,11 +3,18 @@
     {
       "src": [
         {
-          "src": "../managed",
-          "files": ["**/*.csproj"]
+          "src": "../managed/CounterStrikeSharp.API",
+          "files": ["**/*.csproj"],
+          "exclude": ["**/bin/**", "**/obj/**"]
+        },
+        {
+          "src": "../managed/CounterStrikeSharp.SchemaGen",
+          "files": ["**/*.csproj"],
+          "exclude": ["**/bin/**", "**/obj/**"]
         }
       ],
-      "dest": "api"
+      "dest": "api",
+      "namespaceLayout": "nested"
     }
   ],
   "build": {
