@@ -41,6 +41,6 @@ public partial class MemoryPatch
 
     public void UndoPatch()
     {
-        return NativeAPI.UndoMemoryPatch(_patchName);
+        NativeAPI.UndoMemoryPatch(_patchName);
     }
 }
