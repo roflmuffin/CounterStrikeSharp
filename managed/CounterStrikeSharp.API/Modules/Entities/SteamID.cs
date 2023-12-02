@@ -14,14 +14,14 @@ namespace CounterStrikeSharp.API.Modules.Entities
         public static explicit operator SteamID(ulong u) => new(u);
         public static explicit operator SteamID(string s) => new(s);
 
-        static ulong ParseId(string id)
+        ulong ParseId(string id)
         {
             var parts = id.Split(':');
             if (parts.Length != 3 || !ulong.TryParse(parts[2], out var num)) throw new FormatException();
             return Base + num * 2 + (parts[1] == "1" ? 1UL : 0);
         }
 
-        static ulong ParseId3(string id)
+        ulong ParseId3(string id)
         {
             var parts = id.Replace("[", "").Replace("]", "").Split(':');
             if (parts.Length != 3 || !ulong.TryParse(parts[2], out var num)) throw new FormatException();
