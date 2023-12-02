@@ -1,4 +1,5 @@
 using System;
+using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Entities.Constants;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
@@ -147,4 +148,19 @@ public partial class CCSPlayerController
     public void ExecuteClientCommand(string command) => NativeAPI.IssueClientCommand(Slot, command);
 
     public int Slot => (int)Index - 1;
+
+    /// <summary>
+    /// Returns the authorized SteamID of this user which has been validated with the SteamAPI.
+    /// </summary>
+    public SteamID? AuthorizedSteamID
+    {
+        get
+        {
+            if (!this.IsValid) return null;
+            var authorizedSteamId = NativeAPI.GetPlayerAuthorizedSteamid(this.Slot);
+            if ((long)authorizedSteamId == -1) return null;
+
+            return (SteamID)authorizedSteamId;
+        }
+    }
 }
