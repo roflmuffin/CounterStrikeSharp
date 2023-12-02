@@ -159,11 +159,16 @@ internal static partial class Program
 
         // Manually whitelist some classes
         visited.Add("CTakeDamageInfo");
+        visited.Add("CEntitySubclassVDataBase");
+        visited.Add("CFiringModeFloat");
+        visited.Add("CFiringModeInt");
+        visited.Add("CSkillFloat");
+        visited.Add("CSkillInt");
 
         var visitedClassNames = new HashSet<string>();
         foreach (var (className, schemaClass) in allClasses)
         {
-            if (visited.Contains(className))
+            if (visited.Contains(className) || className.Contains("VData"))
             {
                 var isPointeeType = pointeeTypes.Contains(className);
 
