@@ -8,3 +8,4 @@ GET_CONCRETE_ENTITY_LIST_POINTER: -> pointer
 IS_REF_VALID_ENTITY: entityRef:uint -> bool
 PRINT_TO_CONSOLE: index:int, message:string -> void
 GET_FIRST_ACTIVE_ENTITY: -> pointer
+GET_PLAYER_AUTHORIZED_STEAMID: slot:int -> uint64
