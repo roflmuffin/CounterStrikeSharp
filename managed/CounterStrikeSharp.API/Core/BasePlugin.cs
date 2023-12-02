@@ -26,6 +26,7 @@ using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Timers;
 using CounterStrikeSharp.API.Modules.Config;
+using CounterStrikeSharp.API.Modules.Entities;
 using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Core
@@ -36,6 +37,13 @@ namespace CounterStrikeSharp.API.Core
 
         public BasePlugin()
         {
+            RegisterListener<Listeners.OnMapEnd>(() =>
+            {
+                foreach (KeyValuePair<Delegate, EntityIO.EntityOutputCallback> callback in EntitySingleOutputHooks)
+                {
+                    UnhookSingleEntityOutputInternal(callback.Value.Classname, callback.Value.Output, callback.Value.Handler);
+                }
+            });
         }
 
         public abstract string ModuleName { get; }
@@ -111,11 +119,12 @@ namespace CounterStrikeSharp.API.Core
         public readonly Dictionary<Delegate, CallbackSubscriber> EntityOutputHooks =
             new Dictionary<Delegate, CallbackSubscriber>();
 
+        internal readonly Dictionary<Delegate, EntityIO.EntityOutputCallback> EntitySingleOutputHooks =
+            new Dictionary<Delegate, EntityIO.EntityOutputCallback>();
+
         public readonly List<Timer> Timers = new List<Timer>();
         
         public delegate HookResult GameEventHandler<T>(T @event, GameEventInfo info) where T : GameEvent;
-
-        public delegate void EntityOutputHandler(string name, CEntityInstance activator, CEntityInstance caller, float delay);
 
         private void RegisterEventHandlerInternal<T>(string name, GameEventHandler<T> handler, bool post)
             where T : GameEvent
@@ -448,12 +457,12 @@ namespace CounterStrikeSharp.API.Core
                 var attributes = handler.GetCustomAttributes<EntityOutputHookAttribute>();
                 foreach (var outputInfo in attributes)
                 {
-                    HookEntityOutput(outputInfo.Classname, outputInfo.OutputName, handler.CreateDelegate<EntityOutputHandler>(instance));
+                    HookEntityOutput(outputInfo.Classname, outputInfo.OutputName, handler.CreateDelegate<EntityIO.EntityOutputHandler>(instance));
                 }
             }
         }
 
-        public void HookEntityOutput(string classname, string outputName, EntityOutputHandler handler)
+        public void HookEntityOutput(string classname, string outputName, EntityIO.EntityOutputHandler handler)
         {
             var subscriber = new CallbackSubscriber(handler, handler,
                 () => UnhookEntityOutput(classname, outputName, handler));
@@ -462,7 +471,7 @@ namespace CounterStrikeSharp.API.Core
             EntityOutputHooks[handler] = subscriber;
         }
 
-        public void UnhookEntityOutput(string classname, string outputName, EntityOutputHandler handler)
+        public void UnhookEntityOutput(string classname, string outputName, EntityIO.EntityOutputHandler handler)
         {
             if (!EntityOutputHooks.TryGetValue(handler, out var subscriber)) return;
 
@@ -471,6 +480,45 @@ namespace CounterStrikeSharp.API.Core
             EntityOutputHooks.Remove(handler);
         }
 
+        public void HookSingleEntityOutput(CEntityInstance entityInstance, string outputName, EntityIO.EntityOutputHandler handler)
+        {
+            // since we wrap around the plugin handler we need to do this to ensure that the plugin callback is only called
+            // if the entity instance is the same.
+            EntityIO.EntityOutputHandler internalHandler = (string name, CEntityInstance activator, CEntityInstance caller, float delay) =>
+            {
+                // TODO: this needs to be changed when equality check between 'CEntityInstance' instances is fixed
+                // currently this is what's happening:
+                // caller.EntityHandle.Raw == entityInstance.EntityHandle.Raw results true
+                // caller == entityInstance results false
+                // caller.Equals(entityInstance) results false
+                // we shouldn't check the reference of the instance because it is not guaranteed to be the same even if its the same entity.
+                if (caller.EntityHandle.Raw == entityInstance.EntityHandle.Raw)
+                {
+                    handler(name, activator, caller, delay);
+                }
+            };
+
+            HookEntityOutput(entityInstance.DesignerName, outputName, internalHandler);
+
+            // because of ^ we would not be able to unhook since we passed the 'internalHandler' and that's what is being stored, not the original handler
+            // but the plugin could only pass the original handler for unhooking.
+            // (this dictionary does not needed to be cleared on dispose as it has no unmanaged reference and those are already being disposed, but on map end)
+            // (the internal class is needed to be able to remove them on map start)
+            EntitySingleOutputHooks[handler] = new EntityIO.EntityOutputCallback(entityInstance.DesignerName, outputName, internalHandler);
+        }
+
+        public void UnhookSingleEntityOutput(CEntityInstance entityInstance, string outputName, EntityIO.EntityOutputHandler handler)
+        {
+            UnhookSingleEntityOutputInternal(entityInstance.DesignerName, outputName, handler);
+        }
+
+        private void UnhookSingleEntityOutputInternal(string classname, string outputName, EntityIO.EntityOutputHandler handler)
+        {
+            if (!EntitySingleOutputHooks.TryGetValue(handler, out var internalHandler)) return;
+
+            UnhookEntityOutput(classname, outputName, internalHandler.Handler);
+            EntitySingleOutputHooks.Remove(handler);
+        }
 
         public void Dispose()
         {
