@@ -553,5 +553,11 @@ namespace TestPlugin
 
             return HookResult.Continue;
         }
+
+        [EntityOutputHook("weapon_knife", "OnPlayerPickup")]
+        public void OnKnifePickup(string name, CEntityInstance activator, CEntityInstance caller, float delay)
+        {
+            Logger.LogInformation("[EntityOutputHook Attribute] weapon_knife called OnPlayerPickup ({name}, {activator}, {caller}, {delay})", name, activator.DesignerName, caller.DesignerName, delay);
+        }
     }
 }

@@ -359,6 +359,7 @@ namespace CounterStrikeSharp.API.Core
         {
             this.RegisterAttributeHandlers(instance);
             this.RegisterConsoleCommandAttributeHandlers(instance);
+            this.RegisterEntityOutputAttributeHandlers(instance);
         }
 
         public void InitializeConfig(object instance, Type pluginType)
@@ -431,6 +432,23 @@ namespace CounterStrikeSharp.API.Core
                 {
                     AddCommand(commandInfo.Command, commandInfo.Description,
                         eventHandler.CreateDelegate<CommandInfo.CommandCallback>(instance));
+                }
+            }
+        }
+
+        public void RegisterEntityOutputAttributeHandlers(object instance)
+        {
+            var handlers = instance.GetType()
+                .GetMethods()
+                .Where(method => method.GetCustomAttributes<EntityOutputHookAttribute>().Any())
+                .ToArray();
+
+            foreach (var handler in handlers)
+            {
+                var attributes = handler.GetCustomAttributes<EntityOutputHookAttribute>();
+                foreach (var outputInfo in attributes)
+                {
+                    HookEntityOutput(outputInfo.Classname, outputInfo.OutputName, handler.CreateDelegate<EntityOutputHandler>(instance));
                 }
             }
         }
