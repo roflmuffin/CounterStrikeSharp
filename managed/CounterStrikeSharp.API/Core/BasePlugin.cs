@@ -108,9 +108,14 @@ namespace CounterStrikeSharp.API.Core
         public readonly Dictionary<Delegate, CallbackSubscriber> Listeners =
             new Dictionary<Delegate, CallbackSubscriber>();
 
+        public readonly Dictionary<Delegate, CallbackSubscriber> EntityOutputHooks =
+            new Dictionary<Delegate, CallbackSubscriber>();
+
         public readonly List<Timer> Timers = new List<Timer>();
         
         public delegate HookResult GameEventHandler<T>(T @event, GameEventInfo info) where T : GameEvent;
+
+        public delegate void EntityOutputHandler(string name, CEntityInstance activator, CEntityInstance caller, float delay);
 
         private void RegisterEventHandlerInternal<T>(string name, GameEventHandler<T> handler, bool post)
             where T : GameEvent
@@ -430,6 +435,25 @@ namespace CounterStrikeSharp.API.Core
             }
         }
 
+        public void HookEntityOutput(string classname, string outputName, EntityOutputHandler handler)
+        {
+            var subscriber = new CallbackSubscriber(handler, handler,
+                () => UnhookEntityOutput(classname, outputName, handler));
+
+            NativeAPI.HookEntityOutput(classname, outputName, subscriber.GetInputArgument());
+            EntityOutputHooks[handler] = subscriber;
+        }
+
+        public void UnhookEntityOutput(string classname, string outputName, EntityOutputHandler handler)
+        {
+            if (!EntityOutputHooks.TryGetValue(handler, out var subscriber)) return;
+
+            NativeAPI.UnhookEntityOutput(classname, outputName, subscriber.GetInputArgument());
+            FunctionReference.Remove(subscriber.GetReferenceIdentifier());
+            EntityOutputHooks.Remove(handler);
+        }
+
+
         public void Dispose()
         {
             Dispose(true);
@@ -460,6 +484,11 @@ namespace CounterStrikeSharp.API.Core
             }
 
             foreach (var subscriber in Listeners.Values)
+            {
+                subscriber.Dispose();
+            }
+
+            foreach (var subscriber in EntityOutputHooks.Values)
             {
                 subscriber.Dispose();
             }

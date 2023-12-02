@@ -93,6 +93,7 @@ namespace TestPlugin
             SetupListeners();
             SetupCommands();
             SetupMenus();
+            SetupEntityOutputHooks();
 
             // ValveInterface provides pointers to loaded modules via Interface Name exposed from the engine (e.g. Source2Server001)
             var server = ValveInterface.Server;
@@ -403,6 +404,14 @@ namespace TestPlugin
                     info.ArgString);
 
                 return HookResult.Continue;
+            });
+        }
+
+        private void SetupEntityOutputHooks()
+        {
+            HookEntityOutput("weapon_knife", "OnPlayerPickup", (string name, CEntityInstance activator, CEntityInstance caller, float delay) =>
+            {
+                Logger.LogInformation("weapon_knife called OnPlayerPickup ({name}, {activator}, {caller}, {delay})", name, activator.DesignerName, caller.DesignerName, delay);
             });
         }
 

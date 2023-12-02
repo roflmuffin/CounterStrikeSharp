@@ -15,6 +15,10 @@
 */
 
 #include "core/managers/entity_manager.h"
+#include "core/gameconfig.h"
+#include "core/log.h"
+
+#include <funchook.h>
 
 #include <public/eiface.h>
 #include "scripting/callback_manager.h"
@@ -30,6 +34,19 @@ void EntityManager::OnAllInitialized() {
     on_entity_created_callback = globals::callbackManager.CreateCallback("OnEntityCreated");
     on_entity_deleted_callback = globals::callbackManager.CreateCallback("OnEntityDeleted");
     on_entity_parent_changed_callback = globals::callbackManager.CreateCallback("OnEntityParentChanged");
+
+    m_pFireOutputInternal = reinterpret_cast<FireOutputInternal>(
+        modules::server->FindSignature(globals::gameConfig->GetSignature("CEntityIOOutput_FireOutputInternal")));
+
+    if (m_pFireOutputInternal == nullptr) {
+        CSSHARP_CORE_ERROR("Failed to find signature for \'CEntityIOOutput_FireOutputInternal\'");
+        return;
+    }
+
+    auto m_hook = funchook_create();
+    funchook_prepare(m_hook, (void**)&m_pFireOutputInternal, (void*)&DetourFireOutputInternal);
+    funchook_install(m_hook, 0);
+
     // Listener is added in ServerStartup as entity system is not initialised at this stage.
 }
 
@@ -79,4 +96,68 @@ void CEntityListener::OnEntityParentChanged(CEntityInstance *pEntity, CEntityIns
     }
 }
 
+void EntityManager::HookEntityOutput(const char* szClassname, const char* szOutput,
+                                     CallbackT fnCallback)
+{
+    auto outputKey = OutputKey_t(szClassname, szOutput);
+    counterstrikesharp::ScriptCallback* callback;
+
+    auto search = m_pHookMap.find(outputKey);
+    if (search == m_pHookMap.end()) {
+        callback = globals::callbackManager.CreateCallback("");
+        m_pHookMap[outputKey] = callback;
+    }
+    else
+        callback = search->second;
+
+    callback->AddListener(fnCallback);
+}
+
+void EntityManager::UnhookEntityOutput(const char* szClassname, const char* szOutput,
+                                     CallbackT fnCallback)
+{
+    auto outputKey = OutputKey_t(szClassname, szOutput);
+    counterstrikesharp::ScriptCallback* callback;
+
+    auto search = m_pHookMap.find(outputKey);
+    if (search != m_pHookMap.end()) {
+        auto callback = search->second;
+        callback->RemoveListener(fnCallback);
+
+        if (!callback->GetFunctionCount()) {
+            globals::callbackManager.ReleaseCallback(callback);
+            m_pHookMap.erase(outputKey);
+        }
+    }
+}
+
+void DetourFireOutputInternal(CEntityIOOutput* const pThis, CEntityInstance* pActivator,
+                              CEntityInstance* pCaller, const CVariant* const value, float flDelay)
+{
+    if (pCaller) {
+        CSSHARP_CORE_TRACE("[EntityManager][FireOutputHook] - {}, {}", pThis->m_pDesc->m_pName,
+                           pCaller->GetClassname());
+
+        auto outputKey = OutputKey_t(pCaller->GetClassname(), pThis->m_pDesc->m_pName);
+        auto& hookMap = globals::entityManager.m_pHookMap;
+
+        auto search = hookMap.find(outputKey);
+        if (search != hookMap.end()) {
+            auto callback = search->second;
+
+            if (callback && callback->GetFunctionCount()) {
+                callback->ScriptContext().Reset();
+                callback->ScriptContext().Push(pThis->m_pDesc->m_pName);
+                callback->ScriptContext().Push(pActivator);
+                callback->ScriptContext().Push(pCaller);
+                callback->ScriptContext().Push(flDelay);
+                callback->Execute();
+            }
+        }
+    } else
+        CSSHARP_CORE_TRACE("[EntityManager][FireOutputHook] - {}, unknown caller", pThis->m_pDesc->m_pName);
+
+    m_pFireOutputInternal(pThis, pActivator, pCaller, value, flDelay);
+}
+    
 }  // namespace counterstrikesharp
