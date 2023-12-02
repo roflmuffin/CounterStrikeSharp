@@ -12,9 +12,6 @@ uid: home
         <a href="docs/guides/getting-started.md" class="btn btn-primary btn-lg fw-bold">Get Started <i class="bi bi-arrow-right"></a>
         <a href="https://github.com/roflmuffin/CounterStrikeSharp/releases/latest" class="btn btn-success btn-lg fw-bold">Download <i class="bi bi-download"></a>
       </div>
-      <div class="mt-1">
-        <a href="https://github.com/roflmuffin/CounterStrikeSharp" class="btn btn-secondary btn-lg fw-bold">Browse Source <i class="bi bi-github"></i></a>
-      </div>
     </div>
   </div>
 </div>
