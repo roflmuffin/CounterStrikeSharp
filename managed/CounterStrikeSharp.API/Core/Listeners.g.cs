@@ -131,7 +131,7 @@ namespace CounterStrikeSharp.API.Core
         /// Called before the server enters fatal shutdown.
         /// </summary>
         [ListenerName("OnPreFatalShutdown")]
-        public delegate void OnPreFatalShutdown();
+        public delegate void OnServerPreFatalShutdown();
 
         /// <summary>
         /// Called when the server is in a loading stage.
@@ -154,6 +154,6 @@ namespace CounterStrikeSharp.API.Core
         /// </summary>
         /// <param name="bSimulating"><see langword="true"/> if simulating, <see langword="false"/> otherwise</param>
         [ListenerName("OnServerPreWorldUpdate")]
-        public delegate void OnPreWorldUpdate(bool bSimulating);
+        public delegate void OnServerPreWorldUpdate(bool bSimulating);
     }
 }
