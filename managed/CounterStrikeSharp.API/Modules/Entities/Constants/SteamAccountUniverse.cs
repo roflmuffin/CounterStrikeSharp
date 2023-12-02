@@ -6,9 +6,9 @@ namespace CounterStrikeSharp.API.Modules.Entities.Constants;
 public enum SteamAccountUniverse
 {
     /// <summary>
-    /// Invalid universe.
+    /// Individual / unspecified universe.
     /// </summary>
-    Invalid = 0,
+    Unspecified = 0,
 
     /// <summary>
     /// Public universe.

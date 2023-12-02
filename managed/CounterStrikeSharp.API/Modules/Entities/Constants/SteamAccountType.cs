@@ -58,13 +58,13 @@ public enum SteamAccountType
     [EnumMember(Value = "c")]
     ConsoleUser,
     /// <summary>
+    /// P2P Super Seeder account type.
+    /// </summary>
+    [EnumMember(Value = " ")]
+    P2PSuperSeeder,
+    /// <summary>
     /// Anonymous user account type.
     /// </summary>
     [EnumMember(Value = "a")]
     AnonUser,
-    /// <summary>
-    /// P2P Super Seeder account type.
-    /// </summary>
-    [EnumMember(Value = " ")]
-    P2PSuperSeeder
 }

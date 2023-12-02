@@ -59,7 +59,7 @@ namespace CounterStrikeSharp.API.Modules.Entities
 
         public bool IsValid()
         {
-            if (AccountUniverse == SteamAccountUniverse.Invalid 
+            if (AccountUniverse == SteamAccountUniverse.Unspecified 
                 || AccountType == SteamAccountType.Invalid 
                 || AccountInstance == SteamAccountInstance.Invalid)
                 return false;
