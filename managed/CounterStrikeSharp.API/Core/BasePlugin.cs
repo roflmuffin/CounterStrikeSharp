@@ -37,6 +37,13 @@ namespace CounterStrikeSharp.API.Core
 
         public BasePlugin()
         {
+            RegisterListener<Listeners.OnMapEnd>(() =>
+            {
+                foreach (KeyValuePair<Delegate, EntityIO.EntityOutputCallback> callback in EntitySingleOutputHooks)
+                {
+                    UnhookSingleEntityOutputInternal(callback.Value.Classname, callback.Value.Output, callback.Value.Handler);
+                }
+            });
         }
 
         public abstract string ModuleName { get; }
@@ -112,8 +119,8 @@ namespace CounterStrikeSharp.API.Core
         public readonly Dictionary<Delegate, CallbackSubscriber> EntityOutputHooks =
             new Dictionary<Delegate, CallbackSubscriber>();
 
-        public readonly Dictionary<Delegate, EntityIO.EntityOutputHandler> EntitySingleOutputHooks =
-            new Dictionary<Delegate, EntityIO.EntityOutputHandler>();
+        internal readonly Dictionary<Delegate, EntityIO.EntityOutputCallback> EntitySingleOutputHooks =
+            new Dictionary<Delegate, EntityIO.EntityOutputCallback>();
 
         public readonly List<Timer> Timers = new List<Timer>();
         
@@ -495,15 +502,21 @@ namespace CounterStrikeSharp.API.Core
 
             // because of ^ we would not be able to unhook since we passed the 'internalHandler' and that's what is being stored, not the original handler
             // but the plugin could only pass the original handler for unhooking.
-            // (this dictionary does not needed to be cleared on dispose as it has no unmanaged reference, but on map start)
-            EntitySingleOutputHooks[handler] = internalHandler;
+            // (this dictionary does not needed to be cleared on dispose as it has no unmanaged reference and those are already being disposed, but on map end)
+            // (the internal class is needed to be able to remove them on map start)
+            EntitySingleOutputHooks[handler] = new EntityIO.EntityOutputCallback(entityInstance.DesignerName, outputName, internalHandler);
         }
 
         public void UnhookSingleEntityOutput(CEntityInstance entityInstance, string outputName, EntityIO.EntityOutputHandler handler)
         {
+            UnhookSingleEntityOutputInternal(entityInstance.DesignerName, outputName, handler);
+        }
+
+        private void UnhookSingleEntityOutputInternal(string classname, string outputName, EntityIO.EntityOutputHandler handler)
+        {
             if (!EntitySingleOutputHooks.TryGetValue(handler, out var internalHandler)) return;
 
-            UnhookEntityOutput(entityInstance.DesignerName, outputName, internalHandler);
+            UnhookEntityOutput(classname, outputName, internalHandler.Handler);
             EntitySingleOutputHooks.Remove(handler);
         }
 

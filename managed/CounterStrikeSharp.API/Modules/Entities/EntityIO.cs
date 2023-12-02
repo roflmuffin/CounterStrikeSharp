@@ -19,5 +19,21 @@ namespace CounterStrikeSharp.API.Modules.Entities
     public class EntityIO
     {
         public delegate void EntityOutputHandler(string name, CEntityInstance activator, CEntityInstance caller, float delay);
+
+        internal class EntityOutputCallback
+        {
+            public string Classname;
+
+            public string Output;
+
+            public EntityOutputHandler Handler;
+
+            public EntityOutputCallback(string classname, string output, EntityOutputHandler handler)
+            {
+                Classname = classname;
+                Output = output;
+                Handler = handler;
+            }
+        }
     }
 }
