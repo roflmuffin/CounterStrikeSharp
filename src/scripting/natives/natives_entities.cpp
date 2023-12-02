@@ -21,6 +21,8 @@
 #include "scripting/script_engine.h"
 #include "core/memory.h"
 #include "core/log.h"
+#include "core/managers/player_manager.h"
+
 #include <public/entity2/entitysystem.h>
 
 namespace counterstrikesharp {
@@ -114,6 +116,22 @@ void* GetConcreteEntityListPointer(ScriptContext& script_context) {
     return &globals::entitySystem->m_EntityList;
 }
 
+unsigned long GetPlayerAuthorizedSteamID(ScriptContext& script_context) {
+    auto iSlot = script_context.GetArgument<int>(0);
+
+    auto pPlayer = globals::playerManager.GetPlayerBySlot(iSlot);
+    if (pPlayer == nullptr || !pPlayer->m_is_authorized) {
+        return -1;
+    }
+
+    auto pSteamId = pPlayer->GetSteamId();
+    if (pSteamId == nullptr) {
+        return -1;
+    }
+
+    return pSteamId->ConvertToUint64();
+}
+
 REGISTER_NATIVES(entities, {
     ScriptEngine::RegisterNativeHandler("GET_ENTITY_FROM_INDEX", GetEntityFromIndex);
     ScriptEngine::RegisterNativeHandler("GET_USERID_FROM_INDEX", GetUserIdFromIndex);
@@ -126,5 +144,6 @@ REGISTER_NATIVES(entities, {
     ScriptEngine::RegisterNativeHandler("IS_REF_VALID_ENTITY", IsRefValidEntity);
     ScriptEngine::RegisterNativeHandler("PRINT_TO_CONSOLE", PrintToConsole);
     ScriptEngine::RegisterNativeHandler("GET_FIRST_ACTIVE_ENTITY", GetFirstActiveEntity);
+    ScriptEngine::RegisterNativeHandler("GET_PLAYER_AUTHORIZED_STEAMID", GetPlayerAuthorizedSteamID);
 })
 }  // namespace counterstrikesharp
