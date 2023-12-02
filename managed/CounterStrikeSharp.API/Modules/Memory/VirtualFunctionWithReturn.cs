@@ -24,6 +24,11 @@ public partial class VirtualFunctionWithReturn<TResult>
     {
         this.Function = VirtualFunction.Create<TResult>(signature);
     }
+    
+    public VirtualFunctionWithReturn(string signature, string binarypath)
+    {
+        this.Function = VirtualFunction.Create<TResult>(signature, binarypath);
+    }
 
     public VirtualFunctionWithReturn(IntPtr objectPtr, int offset)
     {
@@ -43,6 +48,11 @@ public partial class VirtualFunctionWithReturn<TArg1, TResult>
     public VirtualFunctionWithReturn(string signature)
     {
         this.Function = VirtualFunction.Create<TArg1, TResult>(signature);
+    }
+
+    public VirtualFunctionWithReturn(string signature, string binarypath)
+    {
+        this.Function = VirtualFunction.Create<TArg1, TResult>(signature, binarypath);
     }
 
     public VirtualFunctionWithReturn(IntPtr objectPtr, int offset)
@@ -65,6 +75,11 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TResult>
         this.Function = VirtualFunction.Create<TArg1, TArg2, TResult>(signature);
     }
 
+    public VirtualFunctionWithReturn(string signature, string binarypath)
+    {
+        this.Function = VirtualFunction.Create<TArg1, TArg2, TResult>(signature, binarypath);
+    }
+
     public VirtualFunctionWithReturn(IntPtr objectPtr, int offset)
     {
         this.Function = VirtualFunction.Create<TArg1, TArg2, TResult>(objectPtr, offset);
@@ -83,6 +98,11 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TResult>
     public VirtualFunctionWithReturn(string signature)
     {
         this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TResult>(signature);
+    }
+
+    public VirtualFunctionWithReturn(string signature, string binarypath)
+    {
+        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TResult>(signature, binarypath);
     }
 
     public VirtualFunctionWithReturn(IntPtr objectPtr, int offset)
@@ -105,6 +125,11 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TResu
         this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TResult>(signature);
     }
 
+    public VirtualFunctionWithReturn(string signature, string binarypath)
+    {
+        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TResult>(signature, binarypath);
+    }
+
     public VirtualFunctionWithReturn(IntPtr objectPtr, int offset)
     {
         this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TResult>(objectPtr, offset);
@@ -123,6 +148,11 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5
     public VirtualFunctionWithReturn(string signature)
     {
         this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TResult>(signature);
+    }
+
+    public VirtualFunctionWithReturn(string signature, string binarypath)
+    {
+        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TResult>(signature, binarypath);
     }
 
     public VirtualFunctionWithReturn(IntPtr objectPtr, int offset)
@@ -145,6 +175,11 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5
         this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TResult>(signature);
     }
 
+    public VirtualFunctionWithReturn(string signature, string binarypath)
+    {
+        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TResult>(signature, binarypath);
+    }
+
     public VirtualFunctionWithReturn(IntPtr objectPtr, int offset)
     {
         this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TResult>(objectPtr, offset);
@@ -163,6 +198,11 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5
     public VirtualFunctionWithReturn(string signature)
     {
         this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TResult>(signature);
+    }
+
+    public VirtualFunctionWithReturn(string signature, string binarypath)
+    {
+        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TResult>(signature, binarypath);
     }
 
     public VirtualFunctionWithReturn(IntPtr objectPtr, int offset)
@@ -185,6 +225,11 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5
         this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TResult>(signature);
     }
 
+    public VirtualFunctionWithReturn(string signature, string binarypath)
+    {
+        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TResult>(signature, binarypath);
+    }
+
     public VirtualFunctionWithReturn(IntPtr objectPtr, int offset)
     {
         this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TResult>(objectPtr, offset);
@@ -205,6 +250,11 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5
         this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult>(signature);
     }
 
+    public VirtualFunctionWithReturn(string signature, string binarypath)
+    {
+        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult>(signature, binarypath);
+    }
+
     public VirtualFunctionWithReturn(IntPtr objectPtr, int offset)
     {
         this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult>(objectPtr, offset);
@@ -223,6 +273,11 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5
     public VirtualFunctionWithReturn(string signature)
     {
         this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult>(signature);
+    }
+
+    public VirtualFunctionWithReturn(string signature, string binarypath)
+    {
+        this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult>(signature, binarypath);
     }
 
     public VirtualFunctionWithReturn(IntPtr objectPtr, int offset)
