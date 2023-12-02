@@ -130,29 +130,29 @@ namespace CounterStrikeSharp.API.Core
         /// <summary>
         /// Called before the server enters fatal shutdown.
         /// </summary>
-        [ListenerName("PreFatalShutdown")]
-        public delegate void PreFatalShutdown();
+        [ListenerName("OnPreFatalShutdown")]
+        public delegate void OnPreFatalShutdown();
 
         /// <summary>
         /// Called when no one is playing? (needs verification)
         /// </summary>
         /// <param name="frameTime"></param>
-        [ListenerName("UpdateWhenNotInGame")]
-        public delegate void UpdateWhenNotInGame(float frameTime);
+        [ListenerName("OnUpdateWhenNotInGame")]
+        public delegate void OnUpdateWhenNotInGame(float frameTime);
 
         /// <summary>
         /// Called when a convar value has changed on the server.
         /// </summary>
         /// <param name="convar">Name of the convar</param>
         /// <param name="value">New value of the convar</param>
-        [ListenerName("ServerConVarChanged")]
-        public delegate void ServerConVarChanged(string convar, string value);
+        [ListenerName("OnServerConVarChanged")]
+        public delegate void OnServerConVarChanged(string convar, string value);
 
         /// <summary>
         /// Called before the world updates.
         /// </summary>
         /// <param name="bSimulating"><see langword="true"/> if simulating, <see langword="false"/> otherwise</param>
-        [ListenerName("PreWorldUpdate")]
-        public delegate void PreWorldUpdate(bool bSimulating);
+        [ListenerName("OnServerPreWorldUpdate")]
+        public delegate void OnPreWorldUpdate(bool bSimulating);
     }
 }
