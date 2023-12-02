@@ -1,3 +1,8 @@
+---
+title: Dependency Injection
+description: How to make use of dependency injection in CounterStrikeSharp
+---
+
 # Dependency Injection
 
 How to make use of dependency injection in CounterStrikeSharp

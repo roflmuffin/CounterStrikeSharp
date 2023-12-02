@@ -1,3 +1,8 @@
+---
+title: Referencing Players
+description: Difference between player slots, indexes, userids, controllers & pawns.
+---
+
 # Referencing Players
 
 Difference between player slots, indexes, userids, controllers & pawns.

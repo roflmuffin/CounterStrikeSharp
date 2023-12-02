@@ -1,3 +1,8 @@
+---
+title: Global Listeners
+description: How to subscribe to CounterStrikeSharp global listeners.
+---
+
 # Global Listeners
 
 How to subscribe to CounterStrikeSharp global listeners.

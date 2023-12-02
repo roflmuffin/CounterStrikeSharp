@@ -1,3 +1,8 @@
+---
+title: Core Configuration
+description: Summary for core configuration values
+---
+
 # Core Configuration
 
 Summary for core configuration values

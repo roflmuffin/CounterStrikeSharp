@@ -1,3 +1,8 @@
+---
+title: Hello World Plugin
+description: How to write your first plugin for CounterStrikeSharp
+---
+
 # Hello World Plugin
 
 How to write your first plugin for CounterStrikeSharp

@@ -1,3 +1,8 @@
+---
+title: Console Commands
+description: How to add a new console command
+---
+
 # Console Commands
 
 How to add a new console command

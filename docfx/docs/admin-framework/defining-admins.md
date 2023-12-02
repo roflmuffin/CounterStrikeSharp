@@ -1,3 +1,8 @@
+---
+title: Defining Admins
+description: A guide on how to define admins for CounterStrikeSharp.
+---
+
 # Defining Admins
 
 A guide on how to define admins for CounterStrikeSharp.

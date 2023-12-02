@@ -1,14 +1,17 @@
+---
+title: Getting Started
+description: How to get started installing & using CounterStrikeSharp.
+---
+
 # Getting Started
 
 How to get started installing & using CounterStrikeSharp.
 
-## Installation
-
-### Installing Metamod
+## Installing Metamod
 
 `CounterStrikeSharp` uses `Metamod:Source` as its main way of communicating with the game server. To install it, you can follow the detailed instructions found <a href="https://cs2.poggu.me/metamod/installation/" target="_blank">here</a>.
 
-### Installing CounterStrikeSharp
+## Installing CounterStrikeSharp
 
 Download the latest release of CounterStrikeSharp from <a href="https://github.com/roflmuffin/CounterStrikeSharp/actions/workflows/cmake-single-platform.yml" target="_blank">GitHub actions build pages</a> (just choose the latest development snapshot). **You may need to be logged into GitHub to gain access to the downloads**.
 
@@ -39,7 +42,7 @@ addons
 └── metamod_x64.vdf
 ```
 
-### Start the Server
+## Start the Server
 
 Launch your CS2 dedicated server as normal. If everything is working correctly, you should see a message in the console that says `CSSharp: CounterStrikeSharp.API Loaded Successfully.`.
 
