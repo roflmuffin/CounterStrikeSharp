@@ -1,0 +1,13 @@
+items:
+  - name: Hello World
+    href: HelloWorld.md
+  - name: Warcraft Plugin
+    href: WarcraftPlugin.md
+  - name: Commands
+    href: WithCommands.md
+  - name: Config
+    href: WithConfig.md
+  - name: Dependency Injection
+    href: WithDependencyInjection.md
+  - name: Game Event Handlers
+    href: WithGameEventHandlers.md
