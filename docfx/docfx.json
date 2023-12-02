@@ -33,7 +33,7 @@
     "template": ["default", "modern", "layouts/css-links"],
     "globalMetadata": {
       "_appFaviconPath": "images/android-chrome-512x512.png",
-      "_appFooter": "docs.cssharp.dev",
+      "_appFooter": "<a href=\"https://docs.cssharp.dev\">docs.cssharp.dev</a>",
       "_appLogoPath": "images/logo.png",
       "_appName": "CounterStrikeSharp",
       "_appTitle": "CounterStrikeSharp",
