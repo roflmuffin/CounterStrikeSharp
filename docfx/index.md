@@ -1,6 +1,8 @@
 ---
 _layout: landing
 uid: home
+title: CounterStrikeSharp
+description: Write Counter-Strike 2 server plugins in C#.
 ---
 
 <div class="d-flex flex-column h-100">
