@@ -134,7 +134,7 @@ namespace CounterStrikeSharp.API.Core
         public delegate void OnPreFatalShutdown();
 
         /// <summary>
-        /// Called when the server is in a loading stage
+        /// Called when the server is in a loading stage.
         /// </summary>
         /// <param name="frameTime"></param>
         [ListenerName("OnUpdateWhenNotInGame")]
