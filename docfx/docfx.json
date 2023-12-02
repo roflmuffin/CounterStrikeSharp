@@ -41,6 +41,10 @@
       "_enableNewTab": true,
       "_enableSearch": true,
       "pdf": false
+    },
+    "sitemap": {
+      "baseUrl": "https://docs.cssharp.dev",
+      "changefreq": "hourly"
     }
   }
 }
