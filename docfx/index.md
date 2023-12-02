@@ -12,7 +12,6 @@ description: Write Counter-Strike 2 server plugins in C#.
       <span>CounterStrikeSharp is a simpler way to write CS2 server plugins.</span>
       <div class="mt-5">
         <a href="docs/guides/getting-started.md" class="btn btn-primary btn-lg fw-bold">Get Started <i class="bi bi-arrow-right"></a>
-        <a href="https://github.com/roflmuffin/CounterStrikeSharp/releases/latest" class="btn btn-success btn-lg fw-bold">Download <i class="bi bi-download"></a>
       </div>
     </div>
   </div>
