@@ -150,6 +150,7 @@ namespace CounterStrikeSharp.API.Core
 
         /// <summary>
         /// Called before the world updates.
+        /// This seems to be called even when the server is hibernating.
         /// </summary>
         /// <param name="bSimulating"><see langword="true"/> if simulating, <see langword="false"/> otherwise</param>
         [ListenerName("OnServerPreWorldUpdate")]
