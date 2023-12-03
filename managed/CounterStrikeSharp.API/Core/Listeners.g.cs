@@ -144,8 +144,8 @@ namespace CounterStrikeSharp.API.Core
         /// Called before the world updates.
         /// This seems to be called even when the server is hibernating.
         /// </summary>
-        /// <param name="bSimulating"><see langword="true"/> if simulating, <see langword="false"/> otherwise</param>
+        /// <param name="simulating"><see langword="true"/> if simulating, <see langword="false"/> otherwise</param>
         [ListenerName("OnServerPreWorldUpdate")]
-        public delegate void OnServerPreWorldUpdate(bool bSimulating);
+        public delegate void OnServerPreWorldUpdate(bool simulating);
     }
 }

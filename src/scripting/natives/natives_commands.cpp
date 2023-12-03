@@ -136,7 +136,7 @@ static void SetFakeClientConVarValue(ScriptContext& script_context)
 {
     auto playerSlot = script_context.GetArgument<int>(0);
     auto convarName = script_context.GetArgument<const char*>(1);
-    auto convarValue = script_context.GetArgument<const char*>(1);
+    auto convarValue = script_context.GetArgument<const char*>(2);
 
     globals::engine->SetFakeClientConVarValue(CPlayerSlot(playerSlot), convarName, convarValue);
 }

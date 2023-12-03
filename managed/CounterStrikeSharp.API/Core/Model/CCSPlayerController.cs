@@ -144,39 +144,55 @@ public partial class CCSPlayerController
             team);
     }
 
-    public string GetConVarValue(string convar)
+    /// <summary>
+    /// Get a ConVar value for given player
+    /// </summary>
+    /// <param name="conVar">Name of the convar to retrieve</param>
+    /// <returns>ConVar string value</returns>
+    public string GetConVarValue(string conVar)
     {
-        return NativeAPI.GetClientConvarValue(this.Slot, convar);
+        return NativeAPI.GetClientConvarValue(this.Slot, conVar);
     }
 
-    public string GetConVarValue(ConVar convar)
+    public string GetConVarValue(ConVar? conVar)
     {
-        if (convar == null)
+        if (conVar == null)
         {
             throw new Exception("Invalid convar passed to 'GetConVarValue'");
         }
 
-        return GetConVarValue(convar.Name);
+        return GetConVarValue(conVar.Name);
     }
 
-    public void SetFakeClientConVar(string convar, string value)
+    /// <summary>
+    /// Sets a ConVar value on a fake client (bot).
+    /// </summary>
+    /// <param name="conVar">Console variable name</param>
+    /// <param name="value">String value to set</param>
+    /// <exception cref="InvalidOperationException">Player is not a bot</exception>
+    public void SetFakeClientConVar(string conVar, string value)
     {
         if (!IsBot)
         {
-            throw new Exception("'SetFakeClientConVar' can only be called for fake clients (bots)");
+            throw new InvalidOperationException("'SetFakeClientConVar' can only be called for fake clients (bots)");
         }
 
-        NativeAPI.SetFakeClientConvarValue(this.Slot, convar, value);
+        NativeAPI.SetFakeClientConvarValue(this.Slot, conVar, value);
     }
 
-    public void SetFakeClientConVar(ConVar convar, string value)
+    /// <summary>
+    /// <inheritdoc cref="SetFakeClientConVar(string,string)"/>
+    /// </summary>
+    /// <exception cref="ArgumentException"><paramref name="conVar"/> is <see langword="null"/></exception>
+    /// <inheritdoc cref="SetFakeClientConVar(string,string)" select="exception"/>
+    public void SetFakeClientConVar(ConVar conVar, string value)
     {
-        if (convar == null)
+        if (conVar == null)
         {
-            throw new Exception("Invalid convar passed to 'SetFakeClientConVar'");
+            throw new ArgumentException("Invalid convar passed to 'SetFakeClientConVar'");
         }
 
-        SetFakeClientConVar(convar.Name, value);
+        SetFakeClientConVar(conVar.Name, value);
     }
 
     /// <summary>
