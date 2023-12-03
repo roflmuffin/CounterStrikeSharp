@@ -27,9 +27,9 @@
     "output": "_site",
     "template": ["default", "modern", "layouts/css-links"],
     "globalMetadata": {
-      "_appFaviconPath": "images/android-chrome-512x512.png",
+      "_appFaviconPath": "images/cssharp-128.png",
       "_appFooter": "<a href=\"https://docs.cssharp.dev\">docs.cssharp.dev</a>",
-      "_appLogoPath": "images/logo.png",
+      "_appLogoPath": "images/cssharp-50.png",
       "_appName": "CounterStrikeSharp",
       "_appTitle": "CounterStrikeSharp",
       "_disableNewTab": true,
