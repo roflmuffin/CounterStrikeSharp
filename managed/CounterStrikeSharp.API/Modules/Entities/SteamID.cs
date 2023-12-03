@@ -80,9 +80,9 @@ namespace CounterStrikeSharp.API.Modules.Entities
         {
             string url = string.Empty;
             if (AccountType == SteamAccountType.Individual)
-                url = "http://steamcommunity.com/profiles/" + SteamId64;
+                url = "https://steamcommunity.com/profiles/" + SteamId64;
             if (AccountType == SteamAccountType.Clan)
-                url = "http://steamcommunity.com/gid/" + SteamId64;
+                url = "https://steamcommunity.com/gid/" + SteamId64;
             return new Uri(url);
         }
 
