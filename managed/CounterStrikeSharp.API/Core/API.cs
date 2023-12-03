@@ -609,6 +609,30 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static void HookEntityOutput(string classname, string outputname, InputArgument callback){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(classname);
+			ScriptContext.GlobalScriptContext.Push(outputname);
+			ScriptContext.GlobalScriptContext.Push((InputArgument)callback);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x15245242);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static void UnhookEntityOutput(string classname, string outputname, InputArgument callback){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(classname);
+			ScriptContext.GlobalScriptContext.Push(outputname);
+			ScriptContext.GlobalScriptContext.Push((InputArgument)callback);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x87DBD139);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
         public static void HookEvent(string name, InputArgument callback, bool ispost){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
@@ -1230,34 +1254,5 @@ namespace CounterStrikeSharp.API.Core
 			return (bool)ScriptContext.GlobalScriptContext.GetResult(typeof(bool));
 			}
 		}
-
-
-        public static void HookEntityOutput(string classname, string outputName, InputArgument callback)
-        {
-            lock (ScriptContext.GlobalScriptContext.Lock)
-            {
-                ScriptContext.GlobalScriptContext.Reset();
-                ScriptContext.GlobalScriptContext.Push(classname);
-                ScriptContext.GlobalScriptContext.Push(outputName);
-                ScriptContext.GlobalScriptContext.Push((InputArgument)callback);
-                ScriptContext.GlobalScriptContext.SetIdentifier(0x15245242);
-                ScriptContext.GlobalScriptContext.Invoke();
-                ScriptContext.GlobalScriptContext.CheckErrors();
-            }
-        }
-
-        public static void UnhookEntityOutput(string classname, string outputName, InputArgument callback)
-        {
-            lock (ScriptContext.GlobalScriptContext.Lock)
-            {
-                ScriptContext.GlobalScriptContext.Reset();
-                ScriptContext.GlobalScriptContext.Push(classname);
-                ScriptContext.GlobalScriptContext.Push(outputName);
-                ScriptContext.GlobalScriptContext.Push((InputArgument)callback);
-                ScriptContext.GlobalScriptContext.SetIdentifier(0x87dbd139);
-                ScriptContext.GlobalScriptContext.Invoke();
-                ScriptContext.GlobalScriptContext.CheckErrors();
-            }
-        }
     }
 }
