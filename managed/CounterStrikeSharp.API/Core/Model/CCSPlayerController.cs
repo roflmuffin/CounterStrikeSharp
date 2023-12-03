@@ -163,4 +163,20 @@ public partial class CCSPlayerController
             return (SteamID)authorizedSteamId;
         }
     }
+    
+    /// <summary>
+    /// Returns the IP address (and possibly port) of this player.
+    /// <remarks>Returns 127.0.0.1 if the player is a bot.</remarks>
+    /// </summary>
+    public string? IpAddress
+    {
+        get
+        {
+            if (!this.IsValid) return null;
+            var ipAddress = NativeAPI.GetPlayerIpAddress(this.Slot);
+            if (string.IsNullOrWhiteSpace(ipAddress)) return null;
+
+            return ipAddress;
+        }
+    }
 }
