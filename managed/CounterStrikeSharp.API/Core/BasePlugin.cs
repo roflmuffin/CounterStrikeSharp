@@ -486,13 +486,7 @@ namespace CounterStrikeSharp.API.Core
             // if the entity instance is the same.
             EntityIO.EntityOutputHandler internalHandler = (string name, CEntityInstance activator, CEntityInstance caller, float delay) =>
             {
-                // TODO: this needs to be changed when equality check between 'CEntityInstance' instances is fixed
-                // currently this is what's happening:
-                // caller.EntityHandle.Raw == entityInstance.EntityHandle.Raw results true
-                // caller == entityInstance results false
-                // caller.Equals(entityInstance) results false
-                // we shouldn't check the reference of the instance because it is not guaranteed to be the same even if its the same entity.
-                if (caller.EntityHandle.Raw == entityInstance.EntityHandle.Raw)
+                if (caller == entityInstance)
                 {
                     handler(name, activator, caller, delay);
                 }
