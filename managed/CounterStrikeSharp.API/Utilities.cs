@@ -67,7 +67,7 @@ namespace CounterStrikeSharp.API
 
         public static CCSPlayerController? GetPlayerFromSteamId(ulong steamId)
         {
-            return Utilities.GetPlayers().FirstOrDefault(player => player.SteamID == steamId);
+            return Utilities.GetPlayers().FirstOrDefault(player => player.AuthorizedSteamID == (SteamID)steamId);
         }
 
         public static TargetResult ProcessTargetString(string pattern, CCSPlayerController player)
