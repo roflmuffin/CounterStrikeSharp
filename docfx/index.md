@@ -16,7 +16,6 @@ description: Write Counter-Strike 2 server plugins in C#.
       </div>
     </div>
 
-
 [!code-csharp[](../examples/HelloWorld/HelloWorldPlugin.cs)]
 
   </div>
