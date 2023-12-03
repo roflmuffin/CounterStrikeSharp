@@ -41,6 +41,15 @@ DLL_EXPORT void InvokeNative(counterstrikesharp::fxNativeContext& context)
     if (context.nativeIdentifier == 0)
         return;
 
+    if (counterstrikesharp::globals::gameThreadId != std::this_thread::get_id())
+    {
+        counterstrikesharp::ScriptContextRaw scriptContext(context);
+        scriptContext.ThrowNativeError("Invoked on a non-main thread");
+
+        CSSHARP_CORE_CRITICAL("Native {:x} was invoked on a non-main thread", context.nativeIdentifier);
+        return;
+    }
+
     counterstrikesharp::ScriptEngine::InvokeNative(context);
 }
 
@@ -67,6 +76,7 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
 {
     PLUGIN_SAVEVARS();
     globals::ismm = ismm;
+    globals::gameThreadId = std::this_thread::get_id();
 
     Log::Init();
 
