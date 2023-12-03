@@ -148,8 +148,9 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// </summary>
         /// <param name="steamId">SteamID object of the player.</param>
         /// <returns>AdminData class if data found, null if not.</returns>
-        public static AdminData? GetPlayerAdminData(SteamID steamId)
+        public static AdminData? GetPlayerAdminData(SteamID? steamId)
         {
+            if (steamId == null) return null;
             return Admins.GetValueOrDefault(steamId);
         }
 
@@ -157,8 +158,9 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// Removes a players admin data. This is not saved to "configs/admins.json"
         /// </summary>
         /// <param name="steamId">Steam ID remove admin data from.</param>
-        public static void RemovePlayerAdminData(SteamID steamId)
+        public static void RemovePlayerAdminData(SteamID? steamId)
         {
+            if (steamId == null) return;
             Admins.Remove(steamId);
         }
 
@@ -177,7 +179,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             if (player == null) return true;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return false; }
 
-            var playerData = GetPlayerAdminData((SteamID)player.SteamID);
+            var playerData = GetPlayerAdminData(player.AuthorizedSteamID);
             if (playerData == null) return false;
 
             var playerFlags = flags.ToHashSet<string>();
@@ -202,8 +204,9 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// <param name="steamId">Steam ID object.</param>
         /// <param name="flags">Flags to look for in the players permission flags.</param>
         /// <returns>True if flags are present, false if not.</returns>
-        public static bool PlayerHasPermissions(SteamID steamId, params string[] flags)
+        public static bool PlayerHasPermissions(SteamID? steamId, params string[] flags)
         {
+            if (steamId == null) return false;
             var playerData = GetPlayerAdminData(steamId);
             if (playerData == null) return false;
 
@@ -241,7 +244,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             // The server console should have access to all commands, regardless of permissions.
             if (player == null) return true;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return false; }
-            var playerData = GetPlayerAdminData((SteamID)player.SteamID);
+            var playerData = GetPlayerAdminData(player.AuthorizedSteamID);
             return playerData?.CommandOverrides.ContainsKey(command) ?? false;
         }
 
@@ -252,8 +255,9 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// <param name="steamId">Steam ID object.</param>
         /// <param name="command">Name of the command to check for.</param>
         /// <returns>True if override exists, false if not.</returns>
-        public static bool PlayerHasCommandOverride(SteamID steamId, string command)
+        public static bool PlayerHasCommandOverride(SteamID? steamId, string command)
         {
+            if (steamId == null) return false;
             var playerData = GetPlayerAdminData(steamId);
             return playerData?.CommandOverrides.ContainsKey(command) ?? false;
         }
@@ -270,7 +274,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             // The server console should have access to all commands, regardless of permissions.
             if (player == null) return true;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return false; }
-            var playerData = GetPlayerAdminData((SteamID)player.SteamID);
+            var playerData = GetPlayerAdminData(player.AuthorizedSteamID);
             return playerData?.CommandOverrides.GetValueOrDefault(command) ?? false;
         }
 
@@ -280,8 +284,9 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// <param name="steamId">Steam ID object.</param>
         /// <param name="command">Name of the command to check for.</param>
         /// <returns>True if override is active, false if not.</returns>
-        public static bool GetPlayerCommandOverrideState(SteamID steamId, string command)
+        public static bool GetPlayerCommandOverrideState(SteamID? steamId, string command)
         {
+            if (steamId == null) return false;
             var playerData = GetPlayerAdminData(steamId);
             return playerData?.CommandOverrides.GetValueOrDefault(command) ?? false;
         }
@@ -298,7 +303,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             // The server console should have access to all commands, regardless of permissions.
             if (player == null) return;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return; }
-            SetPlayerCommandOverride((SteamID)player.SteamID, command, state);
+            SetPlayerCommandOverride(player.AuthorizedSteamID, command, state);
         }
 
         /// <summary>
@@ -307,8 +312,9 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// <param name="steamId">SteamID to add a flag to.</param>
         /// <param name="command">Name of the command to check for.</param>
         /// <param name="state">New state of the command override.</param>
-        public static void SetPlayerCommandOverride(SteamID steamId, string command, bool state)
+        public static void SetPlayerCommandOverride(SteamID? steamId, string command, bool state)
         {
+            if (steamId == null) return;
             var data = GetPlayerAdminData(steamId);
             if (data == null)
             {
@@ -340,7 +346,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
         {
             if (player == null) return;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) return;
-            AddPlayerPermissions((SteamID)player.SteamID, flags);
+            AddPlayerPermissions(player.AuthorizedSteamID, flags);
         }
         
         /// <summary>
@@ -349,8 +355,9 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// </summary>
         /// <param name="steamId">SteamID to add a flag to.</param>
         /// <param name="flags">Flags to add for the player.</param>
-        public static void AddPlayerPermissions(SteamID steamId, params string[] flags)
+        public static void AddPlayerPermissions(SteamID? steamId, params string[] flags)
         {
+            if (steamId == null) return;
             var data = GetPlayerAdminData(steamId);
             if (data == null)
             {
@@ -381,7 +388,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             if (player == null) return;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) return;
 
-            RemovePlayerPermissions((SteamID)player.SteamID, flags);
+            RemovePlayerPermissions(player.AuthorizedSteamID, flags);
         }
 
         /// <summary>
@@ -390,8 +397,9 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// </summary>
         /// <param name="steamId">Steam ID to remove flags from.</param>
         /// <param name="flags">Flags to remove from the player.</param>
-        public static void RemovePlayerPermissions(SteamID steamId, params string[] flags)
+        public static void RemovePlayerPermissions(SteamID? steamId, params string[] flags)
         {
+            if (steamId == null) return;
             var data = GetPlayerAdminData(steamId);
             if (data == null) return;
             Admins[steamId].RemoveFlags(flags.ToHashSet<string>());
@@ -407,7 +415,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             if (player == null) return;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) return;
 
-            ClearPlayerPermissions((SteamID)player.SteamID);
+            ClearPlayerPermissions(player.AuthorizedSteamID);
         }
 
         /// <summary>
@@ -415,8 +423,9 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// "configs/admins.json".
         /// </summary>
         /// <param name="steamId">Steam ID to remove flags from.</param>
-        public static void ClearPlayerPermissions(SteamID steamId)
+        public static void ClearPlayerPermissions(SteamID? steamId)
         {
+            if (steamId == null) return;
             var data = GetPlayerAdminData(steamId);
             if (data == null) return;
 
@@ -436,7 +445,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             if (player == null) return;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) return;
 
-            SetPlayerImmunity((SteamID)player.SteamID, value);
+            SetPlayerImmunity(player.AuthorizedSteamID, value);
         }
 
         /// <summary>
@@ -444,8 +453,9 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// </summary>
         /// <param name="steamId">Steam ID of the player.</param>
         /// <param name="value">New immunity value.</param>
-        public static void SetPlayerImmunity(SteamID steamId, uint value)
+        public static void SetPlayerImmunity(SteamID? steamId, uint value)
         {
+            if (steamId == null) return;
             var data = GetPlayerAdminData(steamId);
             if (data == null) return;
 
@@ -467,10 +477,10 @@ namespace CounterStrikeSharp.API.Modules.Admin
             if (target == null) return false;
             if (!target.IsValid || target.Connected != PlayerConnectedState.PlayerConnected) return false;
 
-            var callerData = GetPlayerAdminData((SteamID)caller.SteamID);
+            var callerData = GetPlayerAdminData(caller.AuthorizedSteamID);
             if (callerData == null) return false;
 
-            var targetData = GetPlayerAdminData((SteamID)target.SteamID);
+            var targetData = GetPlayerAdminData(caller.AuthorizedSteamID);
             if (targetData == null) return true;
 
             return callerData.Immunity >= targetData.Immunity;
@@ -482,8 +492,11 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// <param name="caller">Caller of the command.</param>
         /// <param name="target">Target of the command.</param>
         /// <returns></returns>
-        public static bool CanPlayerTarget(SteamID caller, SteamID target)
+        public static bool CanPlayerTarget(SteamID? caller, SteamID? target)
         {
+            if (caller == null) return false;
+            if (target == null) return false;
+
             var callerData = GetPlayerAdminData(caller);
             if (callerData == null) return false;
 

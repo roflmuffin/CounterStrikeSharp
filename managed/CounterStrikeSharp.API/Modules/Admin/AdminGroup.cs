@@ -97,7 +97,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             if (player == null) return true;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return false; }
 
-            var playerData = GetPlayerAdminData((SteamID)player.SteamID);
+            var playerData = GetPlayerAdminData(player.AuthorizedSteamID);
             if (playerData == null) return false;
 
             var playerGroups = groups.ToHashSet<string>();
@@ -124,8 +124,9 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// <param name="steamId">SteamID of the player.</param>
         /// <param name="groups">Groups to check for.</param>
         /// <returns>True if a player is part of all of the groups provided, false if not.</returns>
-        public static bool PlayerInGroup(SteamID steamId, params string[] groups)
+        public static bool PlayerInGroup(SteamID? steamId, params string[] groups)
         {
+            if (steamId == null) return false;
             var playerData = GetPlayerAdminData(steamId);
             if (playerData == null) return false;
 
@@ -153,7 +154,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
         {
             if (player == null) return;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return; }
-            AddPlayerToGroup((SteamID)player.SteamID, groups);
+            AddPlayerToGroup(player.AuthorizedSteamID, groups);
         }
 
         /// <summary>
@@ -161,8 +162,9 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// </summary>
         /// <param name="steamId">SteamID of the player.</param>
         /// <param name="groups">Groups to add the player to.</param>
-        public static void AddPlayerToGroup(SteamID steamId, params string[] groups)
+        public static void AddPlayerToGroup(SteamID? steamId, params string[] groups)
         {
+            if (steamId == null) return;
             var data = GetPlayerAdminData(steamId);
             if (data == null)
             {
@@ -195,7 +197,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
         {
             if (player == null) return;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return; }
-            RemovePlayerFromGroup((SteamID)player.SteamID, true, groups);
+            RemovePlayerFromGroup(player.AuthorizedSteamID, true, groups);
         }
 
         /// <summary>
@@ -204,8 +206,9 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// <param name="steamId">SteamID of the player.</param>
         /// <param name="removeInheritedFlags">If true, all of the flags that the player inherited from being in the group will be removed.</param>
         /// <param name="groups"></param>
-        public static void RemovePlayerFromGroup(SteamID steamId, bool removeInheritedFlags = true, params string[] groups)
+        public static void RemovePlayerFromGroup(SteamID? steamId, bool removeInheritedFlags = true, params string[] groups)
         {
+            if (steamId == null) return;
             var data = GetPlayerAdminData(steamId);
             if (data == null) return;
 

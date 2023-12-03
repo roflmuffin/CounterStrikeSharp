@@ -20,7 +20,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             }
             if (!base.CanExecuteCommand(caller)) return false;
 
-            var adminData = AdminManager.GetPlayerAdminData((SteamID)caller.SteamID);
+            var adminData = AdminManager.GetPlayerAdminData(caller.AuthorizedSteamID);
             if (adminData == null) return false;
             
             // Check to see if the caller has a root flag for any of the domains in our permissions.
