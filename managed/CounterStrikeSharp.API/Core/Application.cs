@@ -90,7 +90,7 @@ namespace CounterStrikeSharp.API.Core
             RegisterPluginCommands();
         }
 
-        [RequiresPermissions("@css/generic")]
+        [RequiresPermissionsOr("@css/generic", "@css/root")]
         [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
         private void OnCSSCommand(CCSPlayerController? caller, CommandInfo info)
         {
@@ -104,7 +104,7 @@ namespace CounterStrikeSharp.API.Core
             return;
         }
 
-        [RequiresPermissions("@css/generic")]
+        [RequiresPermissionsOr("@css/generic", "@css/root")]
         [CommandHelper(minArgs: 1,
             usage: "[option]\n" +
                    "  list - List all plugins currently loaded.\n" +
