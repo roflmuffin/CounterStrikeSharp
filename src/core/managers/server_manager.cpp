@@ -170,7 +170,6 @@ void ServerManager::UpdateWhenNotInGame(float flFrameTime)
 
 void ServerManager::PreWorldUpdate(bool bSimulating)
 {
-    CSSHARP_CORE_TRACE("Pre world update {0}", bSimulating);
 
     auto callback = globals::serverManager.on_server_pre_world_update;
 
