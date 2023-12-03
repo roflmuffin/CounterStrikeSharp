@@ -4,5 +4,4 @@ OnGameServerSteamAPIDeactivated:
 OnHostNameChanged: hostname:string
 PreFatalShutdown:
 UpdateWhenNotInGame: frameTime:float
-ServerConVarChanged: convar:string, value:string
 PreWorldUpdate: simulating:bool

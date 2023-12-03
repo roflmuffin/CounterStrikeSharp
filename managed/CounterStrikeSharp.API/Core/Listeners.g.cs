@@ -141,14 +141,6 @@ namespace CounterStrikeSharp.API.Core
         public delegate void OnUpdateWhenNotInGame(float frameTime);
 
         /// <summary>
-        /// Called when a convar value has changed on the server.
-        /// </summary>
-        /// <param name="convar">Name of the convar</param>
-        /// <param name="value">New value of the convar</param>
-        [ListenerName("OnServerConVarChanged")]
-        public delegate void OnServerConVarChanged(string convar, string value);
-
-        /// <summary>
         /// Called before the world updates.
         /// This seems to be called even when the server is hibernating.
         /// </summary>
