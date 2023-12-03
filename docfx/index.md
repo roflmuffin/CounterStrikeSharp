@@ -6,7 +6,7 @@ description: Write Counter-Strike 2 server plugins in C#.
 ---
 
 <div class="row justify-content-md-center">
-  <div class="col-12 col-md-8">
+  <div class="col-12 col-lg-10 col-xl-8">
     <div class="text-center">
       <img src="images/android-chrome-512x512.png" height="128" width="128">
       <h1 class="h1">CounterStrikeSharp</h1>
