@@ -24,8 +24,14 @@ static void *GetEconItemSystem(ScriptContext& scriptContext) {
     return globals::serverManager.GetEconItemSystem();
 }
 
+static bool IsServerPaused(ScriptContext& scriptContext)
+{
+    return globals::serverManager.IsPaused();
+}
+
 REGISTER_NATIVES(server, {
     ScriptEngine::RegisterNativeHandler("GET_ECON_ITEM_SYSTEM", GetEconItemSystem);
+    ScriptEngine::RegisterNativeHandler("IS_SERVER_PAUSED", IsServerPaused);
 })
 
 }

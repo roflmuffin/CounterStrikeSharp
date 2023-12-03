@@ -24,3 +24,7 @@ receive a ban.
 :::note
 Disable this option at your own risk.
 :::
+
+## PluginHotReloadEnabled
+
+When enabled, plugins are automatically reloaded when their .dll file is updated.

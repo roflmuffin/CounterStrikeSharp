@@ -28,8 +28,32 @@ public abstract class BaseMemoryFunction : NativeObject
         return function;
     }
 
+    private static IntPtr CreateValveFunctionBySignature(string signature, string binarypath, DataType returnType,
+        DataType[] argumentTypes)
+    {
+        if (!_createdFunctions.TryGetValue(signature, out var function))
+        {
+            try
+            {
+                function = NativeAPI.CreateVirtualFunctionBySignature(IntPtr.Zero, binarypath, signature,
+                    argumentTypes.Length, (int)returnType, argumentTypes.Cast<object>().ToArray());
+                _createdFunctions[signature] = function;
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        return function;
+    }
+
     public BaseMemoryFunction(string signature, DataType returnType, DataType[] parameters) : base(
         CreateValveFunctionBySignature(signature, returnType, parameters))
+    {
+    }
+
+    public BaseMemoryFunction(string signature, string binarypath, DataType returnType, DataType[] parameters) : base(
+        CreateValveFunctionBySignature(signature, binarypath, returnType, parameters))
     {
     }
 

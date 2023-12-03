@@ -22,15 +22,17 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using CounterStrikeSharp.API.Modules.Commands.Targeting;
+using CounterStrikeSharp.API.Modules.Entities;
 
 namespace CounterStrikeSharp.API
 {
     public static class Utilities
     {
         // https://github.com/dotabuff/manta/blob/master/entity.go#L186-L190
-        public const int MaxEdictBits = 14;
+        public const int MaxEdictBits = 15;
         public const int MaxEdicts = 1 << MaxEdictBits;
         public const int NumEHandleSerialNumberBits = 17;
+        public const uint InvalidEHandleIndex = 0xFFFFFFFF;
 
         public static IEnumerable<T> FlagsToList<T>(this T flags) where T : Enum
         {
@@ -65,7 +67,7 @@ namespace CounterStrikeSharp.API
 
         public static CCSPlayerController? GetPlayerFromSteamId(ulong steamId)
         {
-            return Utilities.GetPlayers().FirstOrDefault(player => player.SteamID == steamId);
+            return Utilities.GetPlayers().FirstOrDefault(player => player.AuthorizedSteamID == (SteamID)steamId);
         }
 
         public static TargetResult ProcessTargetString(string pattern, CCSPlayerController player)
@@ -75,11 +77,20 @@ namespace CounterStrikeSharp.API
 
         public static IEnumerable<T> FindAllEntitiesByDesignerName<T>(string designerName) where T : CEntityInstance
         {
-            var pEntity = new CEntityIdentity(NativeAPI.GetFirstActiveEntity());
+            var pEntity = new CEntityIdentity(EntitySystem.FirstActiveEntity);
             for (; pEntity != null && pEntity.Handle != IntPtr.Zero; pEntity = pEntity.Next)
             {
                 if (!pEntity.DesignerName.Contains(designerName)) continue;
                 yield return new PointerTo<T>(pEntity.Handle).Value;
+            }
+        }
+        
+        public static IEnumerable<CEntityInstance> GetAllEntities()
+        {
+            var pEntity = new CEntityIdentity(EntitySystem.FirstActiveEntity);
+            for (; pEntity != null && pEntity.Handle != IntPtr.Zero; pEntity = pEntity.Next)
+            {
+                yield return new PointerTo<CEntityInstance>(pEntity.Handle).Value;
             }
         }
         

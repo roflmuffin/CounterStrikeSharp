@@ -23,6 +23,10 @@ namespace CounterStrikeSharp.API.Core
     {
         T Config { get; set; }
 
+        /// <summary>
+        /// Called when the `ConfigManager` has parsed the configuration file for this plugin
+        /// </summary>
+        /// <param name="config">Parsed config instance</param>
         public void OnConfigParsed(T config);
     }
 }
