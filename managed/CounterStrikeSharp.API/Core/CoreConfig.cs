@@ -104,7 +104,7 @@ namespace CounterStrikeSharp.API.Core
             _coreConfigPath = Path.Join(scriptHostConfiguration.ConfigsPath, "core.json");
         }
 
-        [RequiresPermissions("@css/config")]
+        [RequiresPermissionsOr("@css/config", "@css/root")]
         [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
         private void ReloadCoreConfigCommand(CCSPlayerController? player, CommandInfo command)
         {
