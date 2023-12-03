@@ -161,16 +161,16 @@ public partial class CCSPlayerController
 
     public void SetFakeClientConVar(string convar, string value)
     {
-        NativeAPI.SetFakeClientConvarValue(this.Slot, convar, value);
-    }
-
-    public void SetFakeClientConVar(ConVar convar, string value)
-    {
         if (!IsBot)
         {
             throw new Exception("'SetFakeClientConVar' can only be called for fake clients (bots)");
         }
 
+        NativeAPI.SetFakeClientConvarValue(this.Slot, convar, value);
+    }
+
+    public void SetFakeClientConVar(ConVar convar, string value)
+    {
         if (convar == null)
         {
             throw new Exception("Invalid convar passed to 'SetFakeClientConVar'");
