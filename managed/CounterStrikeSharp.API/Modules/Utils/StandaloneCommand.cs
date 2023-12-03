@@ -2,6 +2,7 @@
 using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Modules.Commands;
 using System;
+using System.Linq;
 using System.Reflection;
 
 namespace CounterStrikeSharp.API.Modules.Utils;
@@ -28,7 +29,14 @@ public class CommandUtils
                         attr.Command = name;
                         if (!attr.CanExecuteCommand(caller))
                         {
-                            command.ReplyToCommand("[CSS] You do not have the correct permissions to execute this command.");
+                            if (attr.GetType() == typeof(RequiresPermissions))
+                            {
+                                command.ReplyToCommand($"[CSS] You do not have all of the correct permissions ({attr.Permissions}) to execute this command.");
+                            }
+                            else
+                            {
+                                command.ReplyToCommand($"[CSS] You do not have one of the correct permissions ({attr.Permissions}) to execute this command.");
+                            }
                             return;
                         }
                     }
@@ -46,7 +54,16 @@ public class CommandUtils
                     attr.Command = name;
                     if (!attr.CanExecuteCommand(caller))
                     {
-                        command.ReplyToCommand("[CSS] You do not have the correct permissions to execute this command.");
+                        var perms = String.Join(", ", attr.Permissions.ToList<string>());
+                        if ( attrType == typeof(RequiresPermissions))
+                        {
+                            command.ReplyToCommand($"[CSS] You do not have all of the correct permissions ({perms}) to execute this command.");
+                        }
+                        else
+                        {
+                            command.ReplyToCommand($"[CSS] You do not have one of the correct permissions ({perms}) to execute this command.");
+                        }
+                        
                         return;
                     }
                 }

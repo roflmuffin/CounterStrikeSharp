@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Entities;
+using CounterStrikeSharp.API.Modules.Utils;
 
 namespace CounterStrikeSharp.API.Modules.Admin
 {
@@ -94,8 +96,26 @@ namespace CounterStrikeSharp.API.Modules.Admin
             // The server console should have access to all commands, regardless of groups.
             if (player == null) return true;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return false; }
+
             var playerData = GetPlayerAdminData((SteamID)player.SteamID);
-            return playerData?.Groups.IsSupersetOf(groups) ?? false;
+            if (playerData == null) return false;
+
+            var playerGroups = groups.ToHashSet<string>();
+            foreach (var domain in playerData.Flags)
+            {
+                if (playerData.DomainHasRootFlag(domain.Key))
+                {
+                    player.PrintToChat($"Domain {domain.Key} root found!");
+                    player.PrintToChat($"Old groups: {string.Join(", ", playerGroups)}");
+                    // Grab all groups with the selected domain in this check.
+                    var domainGroups = groups.Where(
+                        flag => flag.StartsWith(PermissionCharacters.GroupPermissionChar + domain.Key));
+                    playerGroups.UnionWith(domainGroups);
+                    player.PrintToChat($"New groups: {string.Join(", ", playerGroups)}");
+                }
+            }
+
+            return playerData.Groups.IsSupersetOf(playerGroups);
         }
 
         /// <summary>
@@ -107,7 +127,21 @@ namespace CounterStrikeSharp.API.Modules.Admin
         public static bool PlayerInGroup(SteamID steamId, params string[] groups)
         {
             var playerData = GetPlayerAdminData(steamId);
-            return playerData?.Groups.IsSupersetOf(groups) ?? false;
+            if (playerData == null) return false;
+
+            var playerGroups = groups.ToHashSet<string>();
+            foreach (var domain in playerData.Flags)
+            {
+                if (playerData.DomainHasRootFlag(domain.Key))
+                {
+                    // Grab all groups with the selected domain in this check.
+                    var domainGroups = groups.Where(
+                        flag => flag.StartsWith(PermissionCharacters.GroupPermissionChar + domain.Key));
+                    playerGroups.UnionWith(domainGroups);
+                }
+            }
+
+            return playerData.Groups.IsSupersetOf(playerGroups);
         }
 
         /// <summary>

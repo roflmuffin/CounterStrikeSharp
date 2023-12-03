@@ -180,10 +180,20 @@ namespace CounterStrikeSharp.API.Modules.Admin
             var playerData = GetPlayerAdminData((SteamID)player.SteamID);
             if (playerData == null) return false;
 
-            // Merge all of the domain flags together for the final comparison.
-            var playerFlags = playerData.GetAllFlags();
+            var playerFlags = flags.ToHashSet<string>();
 
-            return playerFlags.IsSupersetOf(flags);
+            // Check to see if the caller has a root flag for any of the domains in our permissions.
+            // If they do, remove all of the user flags that belong to the domain from our permission check.
+            foreach (var domain in playerData.Flags)
+            {
+                if (playerData.DomainHasRootFlag(domain.Key))
+                {
+                    playerFlags.UnionWith(flags.Where(flag => flag.Contains(domain.Key + '/')));;
+                }
+            }
+
+            // Merge all of the domain flags together for the final comparison.
+            return playerData.GetAllFlags().IsSupersetOf(playerFlags);
         }
 
         /// <summary>
@@ -197,10 +207,20 @@ namespace CounterStrikeSharp.API.Modules.Admin
             var playerData = GetPlayerAdminData(steamId);
             if (playerData == null) return false;
 
-            // Merge all of the domain flags together for the final comparison.
-            var playerFlags = playerData.GetAllFlags();
+            var playerFlags = flags.ToHashSet<string>();
 
-            return playerFlags.IsSupersetOf(flags);
+            // Check to see if the caller has a root flag for any of the domains in our permissions.
+            // If they do, remove all of the user flags that belong to the domain from our permission check.
+            foreach (var domain in playerData.Flags)
+            {
+                if (playerData.DomainHasRootFlag(domain.Key))
+                {
+                    playerFlags.UnionWith(flags.Where(flag => flag.Contains(domain.Key + '/')));
+                }
+            }
+
+            // Merge all of the domain flags together for the final comparison.
+            return playerData.GetAllFlags().IsSupersetOf(playerFlags);
         }
 
         #endregion
