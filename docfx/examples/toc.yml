@@ -1,8 +1,6 @@
 items:
   - name: Hello World
     href: HelloWorld.md
-  - name: Warcraft Plugin
-    href: WarcraftPlugin.md
   - name: Commands
     href: WithCommands.md
   - name: Config
@@ -11,3 +9,7 @@ items:
     href: WithDependencyInjection.md
   - name: Game Event Handlers
     href: WithGameEventHandlers.md
+  - name: Database (Dapper)
+    href: WithDatabase.md
+  - name: Warcraft Plugin
+    href: WarcraftPlugin.md
