@@ -132,6 +132,17 @@ unsigned long GetPlayerAuthorizedSteamID(ScriptContext& script_context) {
     return pSteamId->ConvertToUint64();
 }
 
+const char* GetPlayerIpAddress(ScriptContext& script_context) {
+    auto iSlot = script_context.GetArgument<int>(0);
+
+    auto pPlayer = globals::playerManager.GetPlayerBySlot(iSlot);
+    if (pPlayer == nullptr) {
+        return nullptr;
+    }
+
+    return pPlayer->GetIpAddress();
+}
+
 REGISTER_NATIVES(entities, {
     ScriptEngine::RegisterNativeHandler("GET_ENTITY_FROM_INDEX", GetEntityFromIndex);
     ScriptEngine::RegisterNativeHandler("GET_USERID_FROM_INDEX", GetUserIdFromIndex);
@@ -145,5 +156,6 @@ REGISTER_NATIVES(entities, {
     ScriptEngine::RegisterNativeHandler("PRINT_TO_CONSOLE", PrintToConsole);
     ScriptEngine::RegisterNativeHandler("GET_FIRST_ACTIVE_ENTITY", GetFirstActiveEntity);
     ScriptEngine::RegisterNativeHandler("GET_PLAYER_AUTHORIZED_STEAMID", GetPlayerAuthorizedSteamID);
+    ScriptEngine::RegisterNativeHandler("GET_PLAYER_IP_ADDRESS", GetPlayerIpAddress);
 })
 }  // namespace counterstrikesharp

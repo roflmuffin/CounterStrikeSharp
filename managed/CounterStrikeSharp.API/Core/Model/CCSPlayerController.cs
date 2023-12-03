@@ -50,13 +50,15 @@ public partial class CCSPlayerController
     {
         VirtualFunctions.ClientPrint(this.Handle, HudDestination.Center, message, 0, 0, 0, 0);
     }
+
+    public void PrintToCenterHtml(string message) => PrintToCenterHtml(message, 5);
     
-    public void PrintToCenterHtml(string message)
+    public void PrintToCenterHtml(string message, int duration)
     {
         var @event = new EventShowSurvivalRespawnStatus(true)
         {
             LocToken = message,
-            Duration = 5,
+            Duration = duration,
             Userid = this
         };
         @event.FireEventToClient(this);
@@ -161,6 +163,22 @@ public partial class CCSPlayerController
             if ((long)authorizedSteamId == -1) return null;
 
             return (SteamID)authorizedSteamId;
+        }
+    }
+    
+    /// <summary>
+    /// Returns the IP address (and possibly port) of this player.
+    /// <remarks>Returns 127.0.0.1 if the player is a bot.</remarks>
+    /// </summary>
+    public string? IpAddress
+    {
+        get
+        {
+            if (!this.IsValid) return null;
+            var ipAddress = NativeAPI.GetPlayerIpAddress(this.Slot);
+            if (string.IsNullOrWhiteSpace(ipAddress)) return null;
+
+            return ipAddress;
         }
     }
 }
