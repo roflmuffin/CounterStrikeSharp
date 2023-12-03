@@ -48,16 +48,12 @@ namespace CounterStrikeSharp.API.Modules.Entities
 
         public bool Equals(SteamID? other)
         {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return SteamId64 == other.SteamId64;
+            return other != null && SteamId64 == other.SteamId64;
         }
 
         public override bool Equals(object? obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
+            if (obj?.GetType() != this.GetType()) return false;
             return Equals((SteamID)obj);
         }
         
