@@ -94,7 +94,7 @@ public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3>
     {
         this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3>(signature);
     }
-    
+
     public VirtualFunctionVoid(string signature, string binarypath)
     {
         this.Function = VirtualFunction.CreateVoid<TArg1, TArg2, TArg3>(signature, binarypath);

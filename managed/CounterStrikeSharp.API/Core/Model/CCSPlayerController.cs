@@ -1,4 +1,6 @@
 using System;
+
+using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Entities.Constants;
 using CounterStrikeSharp.API.Modules.Memory;
@@ -140,6 +142,57 @@ public partial class CCSPlayerController
     {
         VirtualFunction.CreateVoid<IntPtr, CsTeam>(Handle, GameData.GetOffset("CCSPlayerController_ChangeTeam"))(Handle,
             team);
+    }
+
+    /// <summary>
+    /// Get a ConVar value for given player
+    /// </summary>
+    /// <param name="conVar">Name of the convar to retrieve</param>
+    /// <returns>ConVar string value</returns>
+    public string GetConVarValue(string conVar)
+    {
+        return NativeAPI.GetClientConvarValue(this.Slot, conVar);
+    }
+
+    public string GetConVarValue(ConVar? conVar)
+    {
+        if (conVar == null)
+        {
+            throw new Exception("Invalid convar passed to 'GetConVarValue'");
+        }
+
+        return GetConVarValue(conVar.Name);
+    }
+
+    /// <summary>
+    /// Sets a ConVar value on a fake client (bot).
+    /// </summary>
+    /// <param name="conVar">Console variable name</param>
+    /// <param name="value">String value to set</param>
+    /// <exception cref="InvalidOperationException">Player is not a bot</exception>
+    public void SetFakeClientConVar(string conVar, string value)
+    {
+        if (!IsBot)
+        {
+            throw new InvalidOperationException("'SetFakeClientConVar' can only be called for fake clients (bots)");
+        }
+
+        NativeAPI.SetFakeClientConvarValue(this.Slot, conVar, value);
+    }
+
+    /// <summary>
+    /// <inheritdoc cref="SetFakeClientConVar(string,string)"/>
+    /// </summary>
+    /// <exception cref="ArgumentException"><paramref name="conVar"/> is <see langword="null"/></exception>
+    /// <inheritdoc cref="SetFakeClientConVar(string,string)" select="exception"/>
+    public void SetFakeClientConVar(ConVar conVar, string value)
+    {
+        if (conVar == null)
+        {
+            throw new ArgumentException("Invalid convar passed to 'SetFakeClientConVar'");
+        }
+
+        SetFakeClientConVar(conVar.Name, value);
     }
 
     /// <summary>
