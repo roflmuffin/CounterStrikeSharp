@@ -126,19 +126,19 @@ static void IssueClientCommand(ScriptContext& script_context)
 
 static const char* GetClientConVarValue(ScriptContext& script_context)
 {
-    auto entity_index = script_context.GetArgument<int>(0);
+    auto playerSlot = script_context.GetArgument<int>(0);
     auto convarName = script_context.GetArgument<const char*>(1);
 
-    return globals::engine->GetClientConVarValue(CPlayerSlot(entity_index), convarName);
+    return globals::engine->GetClientConVarValue(CPlayerSlot(playerSlot), convarName);
 }
 
 static void SetFakeClientConVarValue(ScriptContext& script_context)
 {
-    auto entity_index = script_context.GetArgument<int>(0);
+    auto playerSlot = script_context.GetArgument<int>(0);
     auto convarName = script_context.GetArgument<const char*>(1);
     auto convarValue = script_context.GetArgument<const char*>(1);
 
-    globals::engine->SetFakeClientConVarValue(CPlayerSlot(entity_index), convarName, convarValue);
+    globals::engine->SetFakeClientConVarValue(CPlayerSlot(playerSlot), convarName, convarValue);
 }
 
 ConVar* FindConVar(ScriptContext& script_context)
