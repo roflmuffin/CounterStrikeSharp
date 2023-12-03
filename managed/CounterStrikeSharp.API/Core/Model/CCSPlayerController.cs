@@ -1,4 +1,6 @@
 using System;
+
+using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Entities.Constants;
 using CounterStrikeSharp.API.Modules.Memory;
@@ -140,6 +142,41 @@ public partial class CCSPlayerController
     {
         VirtualFunction.CreateVoid<IntPtr, CsTeam>(Handle, GameData.GetOffset("CCSPlayerController_ChangeTeam"))(Handle,
             team);
+    }
+
+    public string GetConVarValue(string convar)
+    {
+        return NativeAPI.GetClientConvarValue(this.Slot, convar);
+    }
+
+    public string GetConVarValue(ConVar convar)
+    {
+        if (convar == null)
+        {
+            throw new Exception("Invalid convar passed to 'GetConVarValue'");
+        }
+
+        return GetConVarValue(convar.Name);
+    }
+
+    public void SetFakeClientConVar(string convar, string value)
+    {
+        NativeAPI.SetFakeClientConvarValue(this.Slot, convar, value);
+    }
+
+    public void SetFakeClientConVar(ConVar convar, string value)
+    {
+        if (!IsBot)
+        {
+            throw new Exception("'SetFakeClientConVar' can only be called for fake clients (bots)");
+        }
+
+        if (convar == null)
+        {
+            throw new Exception("Invalid convar passed to 'SetFakeClientConVar'");
+        }
+
+        SetFakeClientConVar(convar.Name, value);
     }
 
     /// <summary>
