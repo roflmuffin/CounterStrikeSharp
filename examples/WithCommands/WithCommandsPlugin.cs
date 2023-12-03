@@ -37,7 +37,7 @@ public class WithCommandsPlugin : BasePlugin
     [ConsoleCommand("css_hello", "Responds to the caller with \"pong\"")]
     // The `CommandHelper` attribute can be used to provide additional information about the command.
     [CommandHelper(minArgs: 1, usage: "[name]", whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
-    [RequiresPermissions("@css/cvar")]
+    [RequiresPermissionsOr("@css/cvar", "@css/root")]
     public void OnHelloCommand(CCSPlayerController? player, CommandInfo commandInfo)
     {
         // The first argument is the command name, in this case "css_hello".
@@ -52,7 +52,7 @@ public class WithCommandsPlugin : BasePlugin
     
     // Permissions can be added to commands using the `RequiresPermissions` attribute.
     // See the admin documentation for more information on permissions.
-    [RequiresPermissions("@css/kick")]
+    [RequiresPermissionsOr("@css/kick", "@css/root")]
     [CommandHelper(minArgs: 1, usage: "[id]", whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
     public void OnSpecialCommand(CCSPlayerController? player, CommandInfo commandInfo)
     {
