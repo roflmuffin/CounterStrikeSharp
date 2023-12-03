@@ -41,7 +41,8 @@ DLL_EXPORT void InvokeNative(counterstrikesharp::fxNativeContext& context)
     if (context.nativeIdentifier == 0)
         return;
 
-    if (counterstrikesharp::globals::gameThreadId != std::this_thread::get_id())
+    if (context.nativeIdentifier != counterstrikesharp::hash_string_const("QUEUE_TASK_FOR_NEXT_FRAME") &&
+        counterstrikesharp::globals::gameThreadId != std::this_thread::get_id())
     {
         counterstrikesharp::ScriptContextRaw scriptContext(context);
         scriptContext.ThrowNativeError("Invoked on a non-main thread");
@@ -174,6 +175,8 @@ void CounterStrikeSharpMMPlugin::AllPluginsLoaded()
 
 void CounterStrikeSharpMMPlugin::AddTaskForNextFrame(std::function<void()>&& task)
 {
+   
+    std::lock_guard<std::mutex> lock(m_nextTasksLock);
     m_nextTasks.push_back(std::forward<decltype(task)>(task));
 }
 
@@ -186,6 +189,8 @@ void CounterStrikeSharpMMPlugin::Hook_GameFrame(bool simulating, bool bFirstTick
      * false | game is not ticking
      */
     globals::timerSystem.OnGameFrame(simulating);
+
+    std::lock_guard<std::mutex> lock(m_nextTasksLock);
 
     if (m_nextTasks.empty())
         return;
