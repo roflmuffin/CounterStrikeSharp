@@ -21,7 +21,7 @@
     ],
     "resource": [
       {
-        "files": ["images/**", "404.html"]
+        "files": ["images/**"]
       }
     ],
     "output": "_site",
