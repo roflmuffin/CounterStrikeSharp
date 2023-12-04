@@ -6,6 +6,8 @@
 #undef protected
 #undef private
 
+#include <thread>
+
 #include "ISmmAPI.h"
 #include "eiface.h"
 #include "iserver.h"
