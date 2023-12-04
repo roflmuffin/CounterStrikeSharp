@@ -42,6 +42,7 @@ DLL_EXPORT void InvokeNative(counterstrikesharp::fxNativeContext& context)
         return;
 
     if (context.nativeIdentifier != counterstrikesharp::hash_string_const("QUEUE_TASK_FOR_NEXT_FRAME") &&
+        context.nativeIdentifier != counterstrikesharp::hash_string_const("QUEUE_TASK_FOR_NEXT_WORLD_UPDATE") &&
         counterstrikesharp::globals::gameThreadId != std::this_thread::get_id())
     {
         counterstrikesharp::ScriptContextRaw scriptContext(context);
