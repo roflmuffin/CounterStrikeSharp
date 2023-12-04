@@ -3,10 +3,12 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Core.Commands;
 using CounterStrikeSharp.API.Core.Hosting;
 using CounterStrikeSharp.API.Core.Logging;
 using CounterStrikeSharp.API.Core.Plugin;
 using CounterStrikeSharp.API.Core.Plugin.Host;
+using CounterStrikeSharp.API.Modules.Admin;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -38,7 +40,8 @@ public static class Bootstrap
                     services.AddSingleton<IScriptHostConfiguration, ScriptHostConfiguration>();
                     services.AddScoped<Application>();
                     services.AddSingleton<IPluginManager, PluginManager>();
-                    services.AddScoped<IPluginContextQueryHandler, PluginContextQueryHandler>();
+                    services.AddTransient<IPluginContextQueryHandler, PluginContextQueryHandler>();
+                    services.AddSingleton<ICommandManager, CommandManager>();
 
                     services.Scan(i => i.FromCallingAssembly()
                         .AddClasses(c => c.AssignableTo<IStartupService>())
@@ -47,12 +50,13 @@ public static class Bootstrap
                 })
                 .Build();
 
-            using IServiceScope scope = host.Services.CreateScope();
+            using IServiceScope rootScope = host.Services.CreateScope();
 
             // TODO: Improve static singleton access
-            GameData.GameDataProvider = scope.ServiceProvider.GetRequiredService<GameDataProvider>();
+            GameData.GameDataProvider = rootScope.ServiceProvider.GetRequiredService<GameDataProvider>();
+            AdminManager.CommandManagerProvider = rootScope.ServiceProvider.GetRequiredService<ICommandManager>();
 
-            var application = scope.ServiceProvider.GetRequiredService<Application>();
+            var application = rootScope.ServiceProvider.GetRequiredService<Application>();
             application.Start();
 
             return 1;

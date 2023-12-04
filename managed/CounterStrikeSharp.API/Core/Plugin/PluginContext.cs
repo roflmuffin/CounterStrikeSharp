@@ -18,8 +18,10 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using CounterStrikeSharp.API.Core.Attributes;
+using CounterStrikeSharp.API.Core.Commands;
 using CounterStrikeSharp.API.Core.Hosting;
 using CounterStrikeSharp.API.Core.Logging;
+using CounterStrikeSharp.API.Core.Plugin.Host;
 using McMaster.NETCore.Plugins;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -35,21 +37,24 @@ namespace CounterStrikeSharp.API.Core.Plugin
 
         private PluginLoader Loader { get; set; }
 
-        private IServiceProvider ServiceProvider { get; set; }
+        private ServiceProvider ServiceProvider { get; set; }
 
         public int PluginId { get; }
 
+        private readonly ICommandManager _commandManager;
         private readonly IScriptHostConfiguration _hostConfiguration;
         private readonly string _path;
         private readonly FileSystemWatcher _fileWatcher;
-        private readonly IServiceProvider _applicationServiceProvider;
+        private IServiceScope _serviceScope;
 
         // TOOD: ServiceCollection
         private ILogger _logger = CoreLogging.Factory.CreateLogger<PluginContext>();
 
-        public PluginContext(IServiceProvider applicationServiceProvider, IScriptHostConfiguration hostConfiguration, string path, int id)
+        public PluginContext(IServiceProvider applicationServiceProvider, ICommandManager commandManager,
+            IScriptHostConfiguration hostConfiguration,
+            string path, int id)
         {
-            _applicationServiceProvider = applicationServiceProvider;
+            _commandManager = commandManager;
             _hostConfiguration = hostConfiguration;
             _path = path;
             PluginId = id;
@@ -57,11 +62,13 @@ namespace CounterStrikeSharp.API.Core.Plugin
             Loader = PluginLoader.CreateFromAssemblyFile(path,
                 new[]
                 {
-                    typeof(IPlugin), typeof(ILogger), typeof(IServiceCollection), typeof(IPluginServiceCollection<>)
+                    typeof(IPlugin), typeof(ILogger), typeof(IServiceCollection), typeof(IPluginServiceCollection<>),
+                    typeof(ICommandManager)
                 }, config =>
                 {
                     config.EnableHotReload = true;
                     config.IsUnloadable = true;
+                    config.PreferSharedTypes = true;
                 });
 
             if (CoreConfig.PluginHotReloadEnabled)
@@ -157,8 +164,12 @@ namespace CounterStrikeSharp.API.Core.Plugin
                         method?.Invoke(pluginServiceCollection, new object[] { serviceCollection });
                     }
                 }
-                
-                serviceCollection.AddSingleton(this);
+
+                serviceCollection.AddScoped<ICommandManager>((x) => _commandManager);
+                serviceCollection.Decorate<ICommandManager>((inner, provider) =>
+                    new PluginCommandManagerDecorator(inner));
+
+                serviceCollection.AddSingleton<IPluginContext>(this);
                 ServiceProvider = serviceCollection.BuildServiceProvider();
 
                 var minimumApiVersion = pluginType.GetCustomAttribute<MinimumApiVersion>()?.Version;
@@ -171,15 +182,19 @@ namespace CounterStrikeSharp.API.Core.Plugin
 
                 _logger.LogInformation("Loading plugin {Name}", pluginType.Assembly.GetName().Name);
 
-                Plugin = ServiceProvider.GetRequiredService(pluginType) as IPlugin;
-                
+                _serviceScope = ServiceProvider.CreateScope();
+
+                Plugin = _serviceScope.ServiceProvider.GetRequiredService(pluginType) as IPlugin;
+
                 if (Plugin == null) throw new Exception("Unable to create plugin instance");
-                
+
                 State = PluginState.Loading;
 
                 Plugin.ModulePath = _path;
+                Plugin.Logger = _serviceScope.ServiceProvider.GetRequiredService<ILoggerFactory>()
+                    .CreateLogger(pluginType);
+                Plugin.CommandManager = _serviceScope.ServiceProvider.GetRequiredService<ICommandManager>();
                 Plugin.RegisterAllAttributes(Plugin);
-                Plugin.Logger = ServiceProvider.GetRequiredService<ILoggerFactory>().CreateLogger(pluginType);
 
                 Plugin.InitializeConfig(Plugin, pluginType);
                 Plugin.Load(hotReload);
@@ -189,6 +204,7 @@ namespace CounterStrikeSharp.API.Core.Plugin
                 State = PluginState.Loaded;
             }
         }
+
 
         public void Unload(bool hotReload = false)
         {
@@ -202,6 +218,7 @@ namespace CounterStrikeSharp.API.Core.Plugin
             Plugin.Unload(hotReload);
 
             Plugin.Dispose();
+            _serviceScope.Dispose();
 
             _logger.LogInformation("Finished unloading plugin {Name}", cachedName);
         }

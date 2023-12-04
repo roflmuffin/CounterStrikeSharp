@@ -16,6 +16,7 @@
 
 using System.Linq;
 using System.Text;
+using CounterStrikeSharp.API.Core.Commands;
 using CounterStrikeSharp.API.Core.Hosting;
 using CounterStrikeSharp.API.Core.Plugin;
 using CounterStrikeSharp.API.Core.Plugin.Host;
@@ -23,6 +24,7 @@ using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Menu;
 using CounterStrikeSharp.API.Modules.Utils;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Core
@@ -31,6 +33,7 @@ namespace CounterStrikeSharp.API.Core
     {
         private static Application _instance = null!;
         public ILogger Logger { get; }
+
         public static Application Instance => _instance!;
 
         public static string RootDirectory => Instance._scriptHostConfiguration.RootPath;
@@ -40,10 +43,13 @@ namespace CounterStrikeSharp.API.Core
         private readonly CoreConfig _coreConfig;
         private readonly IPluginManager _pluginManager;
         private readonly IPluginContextQueryHandler _pluginContextQueryHandler;
+        private readonly ICommandManager _commandManager;
+        private readonly IServiceScopeFactory _serviceScopeFactory;
 
         public Application(ILoggerFactory loggerFactory, IScriptHostConfiguration scriptHostConfiguration,
             GameDataProvider gameDataProvider, CoreConfig coreConfig, IPluginManager pluginManager,
-            IPluginContextQueryHandler pluginContextQueryHandler)
+            IPluginContextQueryHandler pluginContextQueryHandler, ICommandManager commandManager,
+            IServiceScopeFactory serviceScopeFactory)
         {
             Logger = loggerFactory.CreateLogger("Core");
             _scriptHostConfiguration = scriptHostConfiguration;
@@ -51,6 +57,8 @@ namespace CounterStrikeSharp.API.Core
             _coreConfig = coreConfig;
             _pluginManager = pluginManager;
             _pluginContextQueryHandler = pluginContextQueryHandler;
+            _commandManager = commandManager;
+            _serviceScopeFactory = serviceScopeFactory;
             _instance = this;
         }
 
@@ -74,24 +82,25 @@ namespace CounterStrikeSharp.API.Core
             AdminManager.LoadCommandOverrides(overridePath);
 
             AdminManager.MergeGroupPermsIntoAdmins();
+            AdminManager.AddCommands();
+
+            RegisterPluginCommands();
 
             _pluginManager.Load();
 
             for (var i = 1; i <= 9; i++)
             {
-                CommandUtils.AddStandaloneCommand("css_" + i, "Command Key Handler", (player, info) =>
-                {
-                    if (player == null) return;
-                    var key = Convert.ToInt32(info.GetArg(0).Split("_")[1]);
-                    ChatMenus.OnKeyPress(player, key);
-                });
+                _commandManager.RegisterCommand(new($"css_{i}", "Command Key Handler",
+                    (player, info) =>
+                    {
+                        if (player == null) return;
+                        var key = Convert.ToInt32(info.GetArg(0).Split("_")[1]);
+                        ChatMenus.OnKeyPress(player, key);
+                    }));
             }
-
-            RegisterPluginCommands();
         }
 
         [RequiresPermissions("@css/generic")]
-        [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
         private void OnCSSCommand(CCSPlayerController? caller, CommandInfo info)
         {
             var currentVersion = Api.GetVersion();
@@ -105,13 +114,6 @@ namespace CounterStrikeSharp.API.Core
         }
 
         [RequiresPermissions("@css/generic")]
-        [CommandHelper(minArgs: 1,
-            usage: "[option]\n" +
-                   "  list - List all plugins currently loaded.\n" +
-                   "  start / load - Loads a plugin not currently loaded.\n" +
-                   "  stop / unload - Unloads a plugin currently loaded.\n" +
-                   "  restart / reload - Reloads a plugin currently loaded.",
-            whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
         private void OnCSSPluginCommand(CCSPlayerController? caller, CommandInfo info)
         {
             switch (info.GetArg(1))
@@ -152,7 +154,7 @@ namespace CounterStrikeSharp.API.Core
                             true);
                         break;
                     }
-                    
+
                     // If our arugment doesn't end in ".dll" - try and construct a path similar to PluginName/PluginName.dll.
                     // We'll assume we have a full path if we have ".dll".
                     var path = info.GetArg(2);
@@ -172,7 +174,8 @@ namespace CounterStrikeSharp.API.Core
                         try
                         {
                             _pluginManager.LoadPlugin(path);
-                        } catch (Exception e)
+                        }
+                        catch (Exception e)
                         {
                             info.ReplyToCommand($"Could not load plugin \"{path}\")", true);
                         }
@@ -181,7 +184,7 @@ namespace CounterStrikeSharp.API.Core
                     {
                         plugin.Load(false);
                     }
-                    
+
                     break;
                 }
 
@@ -246,9 +249,21 @@ namespace CounterStrikeSharp.API.Core
 
         private void RegisterPluginCommands()
         {
-            CommandUtils.AddStandaloneCommand("css", "Counter-Strike Sharp options.", OnCSSCommand);
-            CommandUtils.AddStandaloneCommand("css_plugins", "Counter-Strike Sharp plugin options.",
-                OnCSSPluginCommand);
+            _commandManager.RegisterCommand(new("css", "Counter-Strike Sharp options.", OnCSSCommand)
+            {
+                ExecutableBy = CommandUsage.CLIENT_AND_SERVER,
+            });
+            _commandManager.RegisterCommand(new("css_plugins", "Counter-Strike Sharp plugin options.",
+                OnCSSPluginCommand)
+            {
+                ExecutableBy = CommandUsage.CLIENT_AND_SERVER,
+                MinArgs = 1,
+                UsageHint = "[option]\n" +
+                            "  list - List all plugins currently loaded.\n" +
+                            "  start / load - Loads a plugin not currently loaded.\n" +
+                            "  stop / unload - Unloads a plugin currently loaded.\n" +
+                            "  restart / reload - Reloads a plugin currently loaded.",
+            });
         }
     }
 }

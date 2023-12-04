@@ -15,6 +15,7 @@
  */
 
 using System;
+using CounterStrikeSharp.API.Core.Commands;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
@@ -54,6 +55,8 @@ namespace CounterStrikeSharp.API.Core
         string ModulePath { get; internal set; }
 
         ILogger Logger { get; set; }
+        
+        ICommandManager CommandManager { get; set; }
 
         void RegisterAllAttributes(object instance);
 
