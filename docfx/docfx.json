@@ -25,9 +25,9 @@
       }
     ],
     "output": "_site",
-    "template": ["default", "modern", "layouts/css-links"],
+    "template": ["default", "modern", "layouts/cssharp"],
     "globalMetadata": {
-      "_appFaviconPath": "images/cssharp-128.png",
+      "_appFaviconPath": "images/cssharp.svg",
       "_appFooter": "<a href=\"https://docs.cssharp.dev\">docs.cssharp.dev</a>",
       "_appLogoPath": "images/cssharp-50.png",
       "_appName": "CounterStrikeSharp",
