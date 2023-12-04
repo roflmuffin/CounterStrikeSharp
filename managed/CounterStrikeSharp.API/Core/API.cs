@@ -479,6 +479,16 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static void QueueTaskForNextWorldUpdate(IntPtr callback){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(callback);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xAD51A0C9);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
         public static IntPtr GetValveInterface(int interfacetype, string interfacename){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();

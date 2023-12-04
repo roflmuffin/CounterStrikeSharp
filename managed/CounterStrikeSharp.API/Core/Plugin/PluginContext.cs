@@ -88,11 +88,14 @@ namespace CounterStrikeSharp.API.Core.Plugin
 
         private Task OnReloadedAsync(object sender, PluginReloadedEventArgs eventargs)
         {
-            _logger.LogInformation("Reloading plugin {Name}", Plugin.ModuleName);
-            Loader = eventargs.Loader;
-            Unload(hotReload: true);
-            Load(hotReload: true);
-
+            Server.NextWorldUpdate(() =>
+            {
+                _logger.LogInformation("Reloading plugin {Name}", Plugin.ModuleName);
+                Loader = eventargs.Loader;
+                Unload(hotReload: true);
+                Load(hotReload: true);
+            });
+            
             return Task.CompletedTask;
         }
 
