@@ -171,6 +171,7 @@ void DetourFireOutputInternal(CEntityIOOutput* const pThis, CEntityInstance* pAc
     for (auto pCallbackPair : vecCallbackPairs) {
         if (pCallbackPair->pre->GetFunctionCount()) {
             pCallbackPair->pre->ScriptContext().Reset();
+            pCallbackPair->pre->ScriptContext().Push(pThis);
             pCallbackPair->pre->ScriptContext().Push(pThis->m_pDesc->m_pName);
             pCallbackPair->pre->ScriptContext().Push(pActivator);
             pCallbackPair->pre->ScriptContext().Push(pCaller);
@@ -203,6 +204,7 @@ void DetourFireOutputInternal(CEntityIOOutput* const pThis, CEntityInstance* pAc
     for (auto pCallbackPair : vecCallbackPairs) {
         if (pCallbackPair->post->GetFunctionCount()) {
             pCallbackPair->post->ScriptContext().Reset();
+            pCallbackPair->post->ScriptContext().Push(pThis);
             pCallbackPair->post->ScriptContext().Push(pThis->m_pDesc->m_pName);
             pCallbackPair->post->ScriptContext().Push(pActivator);
             pCallbackPair->post->ScriptContext().Push(pCaller);
