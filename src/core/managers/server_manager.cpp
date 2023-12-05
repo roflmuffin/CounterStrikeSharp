@@ -172,17 +172,16 @@ void ServerManager::PreWorldUpdate(bool bSimulating)
 {
     std::lock_guard<std::mutex> lock(m_nextWorldUpdateTasksLock);
 
-    if (m_nextWorldUpdateTasks.empty())
-        return;
-
-    CSSHARP_CORE_TRACE("Executing queued tasks of size: {0} at time {1}", m_nextWorldUpdateTasks.size(),
+    if (!m_nextWorldUpdateTasks.empty()) {
+        CSSHARP_CORE_TRACE("Executing queued tasks of size: {0} at time {1}", m_nextWorldUpdateTasks.size(),
                        globals::getGlobalVars()->curtime);
 
-    for (size_t i = 0; i < m_nextWorldUpdateTasks.size(); i++) {
-        m_nextWorldUpdateTasks[i]();
-    }
+        for (size_t i = 0; i < m_nextWorldUpdateTasks.size(); i++) {
+            m_nextWorldUpdateTasks[i]();
+        }
 
-    m_nextWorldUpdateTasks.clear();
+        m_nextWorldUpdateTasks.clear();
+    }
 
     auto callback = globals::serverManager.on_server_pre_world_update;
 
