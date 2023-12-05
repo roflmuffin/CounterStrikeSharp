@@ -8,6 +8,7 @@
           "exclude": ["**/bin/**", "**/obj/**"]
         }
       ],
+      "filter": "filterConfig.yml",
       "dest": "api",
       "namespaceLayout": "nested"
     }
