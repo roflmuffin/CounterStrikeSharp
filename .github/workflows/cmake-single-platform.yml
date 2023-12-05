@@ -115,7 +115,7 @@ jobs:
       - name: Build runtime v${{ env.BUILD_NUMBER }}
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '7.0.x'
+          dotnet-version: '8.0.x'
 
       - run: |
           dotnet publish -c Release /p:Version=1.0.${{ env.BUILD_NUMBER }} managed/CounterStrikeSharp.API
@@ -157,8 +157,8 @@ jobs:
         run: |
           mkdir -p build/linux/addons/counterstrikesharp/api
           mkdir -p build/windows/addons/counterstrikesharp/api
-          cp -r build/api/net7.0/publish/* build/linux/addons/counterstrikesharp/api
-          cp -r build/api/net7.0/publish/* build/windows/addons/counterstrikesharp/api
+          cp -r build/api/net8.0/publish/* build/linux/addons/counterstrikesharp/api
+          cp -r build/api/net8.0/publish/* build/windows/addons/counterstrikesharp/api
 
       - name: Zip Builds
         run: |
@@ -168,12 +168,12 @@ jobs:
       - name: Add dotnet runtime
         run: |
           mkdir -p build/linux/addons/counterstrikesharp/dotnet
-          curl -s -L https://download.visualstudio.microsoft.com/download/pr/dc2c0a53-85a8-4fda-a283-fa28adb5fbe2/8ccade5bc400a5bb40cd9240f003b45c/aspnetcore-runtime-7.0.11-linux-x64.tar.gz \
+          curl -s -L https://download.visualstudio.microsoft.com/download/pr/257bdcc7-cbfd-4680-964a-cbe8e9160bca/ac0cbf19d897ba51ae004b4146940a0a/aspnetcore-runtime-8.0.0-linux-x64.tar.gz \
           | tar xvz -C build/linux/addons/counterstrikesharp/dotnet
-          mv build/linux/addons/counterstrikesharp/dotnet/shared/Microsoft.NETCore.App/7.0.11/* build/linux/addons/counterstrikesharp/dotnet/shared/Microsoft.NETCore.App/
+          mv build/linux/addons/counterstrikesharp/dotnet/shared/Microsoft.NETCore.App/8.0.0/* build/linux/addons/counterstrikesharp/dotnet/shared/Microsoft.NETCore.App/
           
           mkdir -p build/windows/addons/counterstrikesharp/dotnet
-          curl -s -L https://download.visualstudio.microsoft.com/download/pr/a99861c8-2e00-4587-aaef-60366ca77307/a44ceec2c5d34165ae881600f52edc43/aspnetcore-runtime-7.0.11-win-x64.zip -o dotnet.zip
+          curl -s -L https://download.visualstudio.microsoft.com/download/pr/6df1ec69-9cff-4836-b02a-cf5b09baffaa/9cff973dda0520aa1ed216d67433e37a/aspnetcore-runtime-8.0.0-win-x64.zip -o dotnet.zip
           unzip -qq dotnet.zip -d build/windows/addons/counterstrikesharp/dotnet
 
       - name: Zip Builds
