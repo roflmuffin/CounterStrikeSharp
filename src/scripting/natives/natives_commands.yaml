@@ -9,5 +9,3 @@ COMMAND_GET_ARG_BY_INDEX: command:pointer,index:int -> string
 ISSUE_CLIENT_COMMAND: clientIndex:int,command:string -> void
 FIND_CONVAR: name:string -> pointer
 SET_CONVAR_STRING_VALUE: convar:pointer,value:string -> void
-GET_CLIENT_CONVAR_VALUE: clientIndex:int,convarName:string -> string
-SET_FAKE_CLIENT_CONVAR_VALUE: clientIndex:int,convarName:string,convarValue:string -> void

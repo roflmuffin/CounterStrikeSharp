@@ -1,5 +1,4 @@
-using CounterStrikeSharp.API.Modules.Entities.Constants;
-using CounterStrikeSharp.API.Modules.Utils;
+using System;
 
 namespace CounterStrikeSharp.API.Modules.Entities
 {
@@ -13,7 +12,6 @@ namespace CounterStrikeSharp.API.Modules.Entities
 
         public static explicit operator SteamID(ulong u) => new(u);
         public static explicit operator SteamID(string s) => new(s);
-
         ulong ParseId(string id)
         {
             var parts = id.Split(':');
@@ -36,7 +34,7 @@ namespace CounterStrikeSharp.API.Modules.Entities
 
         public string SteamId3
         {
-            get => $"[{EnumUtils.GetEnumMemberAttributeValue(AccountType)}:{(int)AccountUniverse}:{SteamId64 - Base}]";
+            get => $"[U:1:{SteamId64 - Base}]";
             set => SteamId64 = ParseId3(value);
         }
         
@@ -46,54 +44,20 @@ namespace CounterStrikeSharp.API.Modules.Entities
             set => SteamId64 = (ulong)value + Base;
         }
 
-        public int AccountId => (int)((SteamId64 >> 0) & 0xFFFFFFFF);
-
-        public SteamAccountInstance AccountInstance => 
-            (SteamAccountInstance)((SteamId64 >> 32) & 0xFFFFF);
- 
-        public SteamAccountType AccountType => 
-            (SteamAccountType)((SteamId64 >> 52) & 0xF);
-
-        public SteamAccountUniverse AccountUniverse => 
-            (SteamAccountUniverse)((SteamId64 >> 56) & 0xF);
-
-        public bool IsValid()
-        {
-            if (AccountUniverse == SteamAccountUniverse.Unspecified 
-                || AccountType == SteamAccountType.Invalid 
-                || AccountInstance == SteamAccountInstance.Invalid)
-                return false;
-            if (AccountType == SteamAccountType.Individual 
-                && (AccountId == 0 || AccountInstance != SteamAccountInstance.Desktop))
-                return false;
-            if (AccountType == SteamAccountType.Clan 
-                && (AccountId == 0 || AccountInstance != SteamAccountInstance.All))
-                return false;
-            if (AccountType == SteamAccountType.GameServer && AccountId == 0)
-                return false;
-            return true;
-        }
-
         public override string ToString() => $"[SteamID {SteamId64}, {SteamId2}, {SteamId3}]";
-
-        public Uri ToCommunityUrl()
-        {
-            string url = string.Empty;
-            if (AccountType == SteamAccountType.Individual)
-                url = "https://steamcommunity.com/profiles/" + SteamId64;
-            if (AccountType == SteamAccountType.Clan)
-                url = "https://steamcommunity.com/gid/" + SteamId64;
-            return new Uri(url);
-        }
 
         public bool Equals(SteamID? other)
         {
-            return other != null && SteamId64 == other.SteamId64;
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return SteamId64 == other.SteamId64;
         }
 
         public override bool Equals(object? obj)
         {
-            if (obj?.GetType() != this.GetType()) return false;
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
             return Equals((SteamID)obj);
         }
         

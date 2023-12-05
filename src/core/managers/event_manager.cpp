@@ -103,6 +103,7 @@ bool EventManager::HookEvent(const char* szName, CallbackT fnCallback, bool bPos
     } else {
         if (!pHook->m_pPreHook) {
             pHook->m_pPreHook = globals::callbackManager.CreateCallback("");
+            ;
         }
 
         pHook->m_pPreHook->AddListener(fnCallback);
@@ -129,17 +130,18 @@ bool EventManager::UnhookEvent(const char* szName, CallbackT fnCallback, bool bP
         pCallback = pHook->m_pPreHook;
     }
 
-    pCallback->RemoveListener(fnCallback);
-
-    if (pCallback->GetFunctionCount() == 0) {
-        globals::callbackManager.ReleaseCallback(pCallback);
-
-        if (bPost) {
-            pHook->m_pPostHook = nullptr;
-        } else {
-            pHook->m_pPreHook = nullptr;
-        }
+    // Remove from function list
+    if (pCallback == nullptr) {
+        return false;
     }
+
+    if (bPost) {
+        pHook->m_pPostHook = nullptr;
+    } else {
+        pHook->m_pPreHook = nullptr;
+    }
+
+    // TODO: Clean up callback if theres noone left attached.
 
     CSSHARP_CORE_TRACE("Unhooking event: {0} with callback pointer: {1}", szName, (void*)fnCallback);
 

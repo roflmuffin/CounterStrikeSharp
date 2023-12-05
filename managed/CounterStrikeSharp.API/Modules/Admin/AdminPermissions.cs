@@ -102,7 +102,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             // The server console should have access to all commands, regardless of permissions.
             if (player == null) return true;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return false; }
-            var playerData = GetPlayerAdminData(player.AuthorizedSteamID);
+            var playerData = GetPlayerAdminData((SteamID)player.SteamID);
             return playerData?.Flags.IsSupersetOf(flags) ?? false;
         }
 
@@ -136,7 +136,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             // The server console should have access to all commands, regardless of permissions.
             if (player == null) return true;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return false; }
-            var playerData = GetPlayerAdminData((SteamID)player.AuthorizedSteamID);
+            var playerData = GetPlayerAdminData((SteamID)player.SteamID);
             return playerData?.CommandOverrides.ContainsKey(command) ?? false;
         }
 
@@ -165,7 +165,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             // The server console should have access to all commands, regardless of permissions.
             if (player == null) return true;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return false; }
-            var playerData = GetPlayerAdminData((SteamID)player.AuthorizedSteamID);
+            var playerData = GetPlayerAdminData((SteamID)player.SteamID);
             return playerData?.CommandOverrides.GetValueOrDefault(command) ?? false;
         }
 
@@ -193,7 +193,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             // The server console should have access to all commands, regardless of permissions.
             if (player == null) return;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return; }
-            SetPlayerCommandOverride((SteamID)player.AuthorizedSteamID, command, state);
+            SetPlayerCommandOverride((SteamID)player.SteamID, command, state);
         }
 
         /// <summary>
@@ -235,7 +235,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
         {
             if (player == null) return;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) return;
-            AddPlayerPermissions((SteamID)player.AuthorizedSteamID, flags);
+            AddPlayerPermissions((SteamID)player.SteamID, flags);
         }
         
         /// <summary>
@@ -278,7 +278,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             if (player == null) return;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) return;
 
-            RemovePlayerPermissions((SteamID)player.AuthorizedSteamID, flags);
+            RemovePlayerPermissions((SteamID)player.SteamID, flags);
         }
 
         /// <summary>
@@ -306,7 +306,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             if (player == null) return;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) return;
 
-            ClearPlayerPermissions((SteamID)player.AuthorizedSteamID);
+            ClearPlayerPermissions((SteamID)player.SteamID);
         }
 
         /// <summary>
@@ -335,7 +335,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             if (player == null) return;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) return;
 
-            SetPlayerImmunity((SteamID)player.AuthorizedSteamID, value);
+            SetPlayerImmunity((SteamID)player.SteamID, value);
         }
 
         /// <summary>
@@ -366,10 +366,10 @@ namespace CounterStrikeSharp.API.Modules.Admin
             if (target == null) return false;
             if (!target.IsValid || target.Connected != PlayerConnectedState.PlayerConnected) return false;
 
-            var callerData = GetPlayerAdminData((SteamID)caller.AuthorizedSteamID);
+            var callerData = GetPlayerAdminData((SteamID)caller.SteamID);
             if (callerData == null) return false;
 
-            var targetData = GetPlayerAdminData((SteamID)target.AuthorizedSteamID);
+            var targetData = GetPlayerAdminData((SteamID)target.SteamID);
             if (targetData == null) return true;
 
             return callerData.Immunity >= targetData.Immunity;

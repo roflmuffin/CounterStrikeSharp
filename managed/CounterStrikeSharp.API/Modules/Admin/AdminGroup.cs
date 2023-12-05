@@ -94,7 +94,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             // The server console should have access to all commands, regardless of groups.
             if (player == null) return true;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return false; }
-            var playerData = GetPlayerAdminData((SteamID)player.AuthorizedSteamID);
+            var playerData = GetPlayerAdminData((SteamID)player.SteamID);
             return playerData?.Groups.IsSupersetOf(groups) ?? false;
         }
 
@@ -119,7 +119,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
         {
             if (player == null) return;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return; }
-            AddPlayerToGroup((SteamID)player.AuthorizedSteamID, groups);
+            AddPlayerToGroup((SteamID)player.SteamID, groups);
         }
 
         /// <summary>
@@ -161,7 +161,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
         {
             if (player == null) return;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return; }
-            RemovePlayerFromGroup((SteamID)player.AuthorizedSteamID, true, groups);
+            RemovePlayerFromGroup((SteamID)player.SteamID, true, groups);
         }
 
         /// <summary>

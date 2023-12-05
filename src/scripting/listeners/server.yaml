@@ -2,6 +2,3 @@ OnServerHibernationUpdate: isHibernating:bool
 OnGameServerSteamAPIActivated:
 OnGameServerSteamAPIDeactivated:
 OnHostNameChanged: hostname:string
-PreFatalShutdown:
-UpdateWhenNotInGame: frameTime:float
-PreWorldUpdate: simulating:bool

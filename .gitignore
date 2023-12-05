@@ -1,6 +1,6 @@
 .ccls-cache/
 .cmake/
-cmake-build-debug*/
+cmake-build-debug/
 .kdev4/
 .vscode/
 generated/

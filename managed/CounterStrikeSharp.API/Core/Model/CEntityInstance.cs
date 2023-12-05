@@ -36,12 +36,12 @@ public partial class CEntityInstance : IEquatable<CEntityInstance>
     
     public bool Equals(CEntityInstance? other)
     {
-        return this.EntityHandle.Equals(other?.EntityHandle);
+        return this.EntityHandle == other?.EntityHandle;
     }
 
     public override bool Equals(object? obj)
     {
-        return obj is CEntityInstance other && Equals(other);
+        return ReferenceEquals(this, obj) || obj is CEntityInstance other && Equals(other);
     }
 
     public override int GetHashCode()

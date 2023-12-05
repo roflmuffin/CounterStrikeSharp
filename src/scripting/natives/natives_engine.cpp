@@ -30,7 +30,6 @@
 #include "core/memory.h"
 #include "core/log.h"
 #include "core/function.h"
-#include "core/managers/server_manager.h"
 // clang-format on
 
 #if _WIN32
@@ -218,14 +217,6 @@ void QueueTaskForNextFrame(ScriptContext& script_context)
     globals::mmPlugin->AddTaskForNextFrame([func]() { reinterpret_cast<voidfunc*>(func)(); });
 }
 
-void QueueTaskForNextWorldUpdate(ScriptContext& script_context)
-{
-    auto func = script_context.GetArgument<void*>(0);
-
-    typedef void(voidfunc)(void);
-    globals::serverManager.AddTaskForNextWorldUpdate([func]() { reinterpret_cast<voidfunc*>(func)(); });
-}
-
 enum InterfaceType
 {
     Engine,
@@ -317,7 +308,6 @@ REGISTER_NATIVES(engine, {
     ScriptEngine::RegisterNativeHandler("TRACE_RAY", TraceRay);
     ScriptEngine::RegisterNativeHandler("GET_TICKED_TIME", GetTickedTime);
     ScriptEngine::RegisterNativeHandler("QUEUE_TASK_FOR_NEXT_FRAME", QueueTaskForNextFrame);
-    ScriptEngine::RegisterNativeHandler("QUEUE_TASK_FOR_NEXT_WORLD_UPDATE", QueueTaskForNextWorldUpdate);
     ScriptEngine::RegisterNativeHandler("GET_VALVE_INTERFACE", GetValveInterface);
     ScriptEngine::RegisterNativeHandler("GET_COMMAND_PARAM_VALUE", GetCommandParamValue);
     ScriptEngine::RegisterNativeHandler("PRINT_TO_SERVER_CONSOLE", PrintToServerConsole);

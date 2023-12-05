@@ -61,7 +61,6 @@ public:
 
 private:
     std::vector<std::function<void()>> m_nextTasks;
-    std::mutex m_nextTasksLock;
 };
 
 static ScriptCallback *on_activate_callback;

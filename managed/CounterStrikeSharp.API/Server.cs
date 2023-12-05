@@ -45,27 +45,11 @@ namespace CounterStrikeSharp.API
         // Currently only used to keep the delegate from being garbage collected
         private static List<Action> nextFrameTasks = new List<Action>();
 
-        /// <summary>
-        /// Queue a task to be executed on the next game frame.
-        /// <remarks>Does not execute if the server is hibernating.</remarks>
-        /// </summary>
         public static void NextFrame(Action task)
         {
             nextFrameTasks.Add(task);
             var ptr = Marshal.GetFunctionPointerForDelegate(task);
             NativeAPI.QueueTaskForNextFrame(ptr);
-        }
-        
-        /// <summary>
-        /// Queue a task to be executed on the next pre world update.
-        /// <remarks>Executes if the server is hibernating.</remarks>
-        /// </summary>
-        /// <param name="task"></param>
-        public static void NextWorldUpdate(Action task)
-        {
-            nextFrameTasks.Add(task);
-            var ptr = Marshal.GetFunctionPointerForDelegate(task);
-            NativeAPI.QueueTaskForNextWorldUpdate(ptr);
         }
 
         public static void PrintToChatAll(string message)

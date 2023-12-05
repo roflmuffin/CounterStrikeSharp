@@ -1,6 +1,4 @@
 using System;
-
-using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Entities.Constants;
 using CounterStrikeSharp.API.Modules.Memory;
@@ -52,15 +50,13 @@ public partial class CCSPlayerController
     {
         VirtualFunctions.ClientPrint(this.Handle, HudDestination.Center, message, 0, 0, 0, 0);
     }
-
-    public void PrintToCenterHtml(string message) => PrintToCenterHtml(message, 5);
     
-    public void PrintToCenterHtml(string message, int duration)
+    public void PrintToCenterHtml(string message)
     {
         var @event = new EventShowSurvivalRespawnStatus(true)
         {
             LocToken = message,
-            Duration = duration,
+            Duration = 5,
             Userid = this
         };
         @event.FireEventToClient(this);
@@ -145,57 +141,6 @@ public partial class CCSPlayerController
     }
 
     /// <summary>
-    /// Get a ConVar value for given player
-    /// </summary>
-    /// <param name="conVar">Name of the convar to retrieve</param>
-    /// <returns>ConVar string value</returns>
-    public string GetConVarValue(string conVar)
-    {
-        return NativeAPI.GetClientConvarValue(this.Slot, conVar);
-    }
-
-    public string GetConVarValue(ConVar? conVar)
-    {
-        if (conVar == null)
-        {
-            throw new Exception("Invalid convar passed to 'GetConVarValue'");
-        }
-
-        return GetConVarValue(conVar.Name);
-    }
-
-    /// <summary>
-    /// Sets a ConVar value on a fake client (bot).
-    /// </summary>
-    /// <param name="conVar">Console variable name</param>
-    /// <param name="value">String value to set</param>
-    /// <exception cref="InvalidOperationException">Player is not a bot</exception>
-    public void SetFakeClientConVar(string conVar, string value)
-    {
-        if (!IsBot)
-        {
-            throw new InvalidOperationException("'SetFakeClientConVar' can only be called for fake clients (bots)");
-        }
-
-        NativeAPI.SetFakeClientConvarValue(this.Slot, conVar, value);
-    }
-
-    /// <summary>
-    /// <inheritdoc cref="SetFakeClientConVar(string,string)"/>
-    /// </summary>
-    /// <exception cref="ArgumentException"><paramref name="conVar"/> is <see langword="null"/></exception>
-    /// <inheritdoc cref="SetFakeClientConVar(string,string)" select="exception"/>
-    public void SetFakeClientConVar(ConVar conVar, string value)
-    {
-        if (conVar == null)
-        {
-            throw new ArgumentException("Invalid convar passed to 'SetFakeClientConVar'");
-        }
-
-        SetFakeClientConVar(conVar.Name, value);
-    }
-
-    /// <summary>
     /// Gets the active pawns button state. Will work even if the player is dead or observing.
     /// </summary>
     public PlayerButtons Buttons => (PlayerButtons)Pawn.Value.MovementServices!.Buttons.ButtonStates[0];
@@ -216,22 +161,6 @@ public partial class CCSPlayerController
             if ((long)authorizedSteamId == -1) return null;
 
             return (SteamID)authorizedSteamId;
-        }
-    }
-    
-    /// <summary>
-    /// Returns the IP address (and possibly port) of this player.
-    /// <remarks>Returns 127.0.0.1 if the player is a bot.</remarks>
-    /// </summary>
-    public string? IpAddress
-    {
-        get
-        {
-            if (!this.IsValid) return null;
-            var ipAddress = NativeAPI.GetPlayerIpAddress(this.Slot);
-            if (string.IsNullOrWhiteSpace(ipAddress)) return null;
-
-            return ipAddress;
         }
     }
 }

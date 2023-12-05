@@ -126,26 +126,5 @@ namespace CounterStrikeSharp.API.Core
         /// <param name="hostname">New hostname of the server</param>
         [ListenerName("OnHostNameChanged")]
         public delegate void OnHostNameChanged(string hostname);
-
-        /// <summary>
-        /// Called before the server enters fatal shutdown.
-        /// </summary>
-        [ListenerName("OnPreFatalShutdown")]
-        public delegate void OnServerPreFatalShutdown();
-
-        /// <summary>
-        /// Called when the server is in a loading stage.
-        /// </summary>
-        /// <param name="frameTime"></param>
-        [ListenerName("OnUpdateWhenNotInGame")]
-        public delegate void OnUpdateWhenNotInGame(float frameTime);
-
-        /// <summary>
-        /// Called before the world updates.
-        /// This seems to be called even when the server is hibernating.
-        /// </summary>
-        /// <param name="simulating"><see langword="true"/> if simulating, <see langword="false"/> otherwise</param>
-        [ListenerName("OnServerPreWorldUpdate")]
-        public delegate void OnServerPreWorldUpdate(bool simulating);
     }
 }

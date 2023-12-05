@@ -31,8 +31,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
         {
             // If we have a command in the "command_overrides" section in "configs/admins.json",
             // we skip the checks below and just return the defined value.
-            if (caller?.AuthorizedSteamID == null) return false;
-            var adminData = AdminManager.GetPlayerAdminData(caller.AuthorizedSteamID);
+            var adminData = AdminManager.GetPlayerAdminData((SteamID)caller.SteamID);
             if (adminData == null) return false;
             if (adminData.CommandOverrides.ContainsKey(Command))
             {

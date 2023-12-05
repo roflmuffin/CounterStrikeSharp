@@ -78,7 +78,6 @@ ChatManager chatManager;
 ServerManager serverManager;
 
 GetLegacyGameEventListener_t* GetLegacyGameEventListener = nullptr;
-std::thread::id gameThreadId;
 
 void Initialize()
 {

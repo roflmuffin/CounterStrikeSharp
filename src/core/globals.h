@@ -6,8 +6,6 @@
 #undef protected
 #undef private
 
-#include <thread>
-
 #include "ISmmAPI.h"
 #include "eiface.h"
 #include "iserver.h"
@@ -109,7 +107,6 @@ extern CGameConfig* gameConfig;
 typedef IGameEventListener2 *GetLegacyGameEventListener_t(CPlayerSlot slot);
 
 extern GetLegacyGameEventListener_t* GetLegacyGameEventListener;
-extern std::thread::id gameThreadId;
 
 void Initialize();
 // Should only be called within the active game loop (i e map should be loaded

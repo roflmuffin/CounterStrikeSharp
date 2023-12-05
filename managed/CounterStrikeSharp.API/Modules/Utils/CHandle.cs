@@ -62,12 +62,17 @@ public class CHandle<T> : IEquatable<CHandle<T>> where T : NativeEntity
 
     public bool Equals(CHandle<T>? other)
     {
-        return other != null && Raw == other.Raw;
+        if (ReferenceEquals(null, other)) return false;
+        if (ReferenceEquals(this, other)) return true;
+        return Raw == other.Raw;
     }
 
     public override bool Equals(object? obj)
     {
-        return Equals(obj as CHandle<T>);
+        if (ReferenceEquals(null, obj)) return false;
+        if (ReferenceEquals(this, obj)) return true;
+        if (obj.GetType() != this.GetType()) return false;
+        return Equals((CHandle<T>)obj);
     }
 
     public override int GetHashCode()

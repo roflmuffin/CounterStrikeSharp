@@ -22,8 +22,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WithCommands", "..\examples
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WithGameEventHandlers", "..\examples\WithGameEventHandlers\WithGameEventHandlers.csproj", "{3032F3FA-E20A-4581-9A08-2FB5FF1524F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WithDatabaseDapper", "..\examples\WithDatabaseDapper\WithDatabaseDapper.csproj", "{A641D8D7-35F1-48AB-AABA-EDFB6B7FC49B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,10 +68,6 @@ Global
 		{3032F3FA-E20A-4581-9A08-2FB5FF1524F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3032F3FA-E20A-4581-9A08-2FB5FF1524F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3032F3FA-E20A-4581-9A08-2FB5FF1524F4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A641D8D7-35F1-48AB-AABA-EDFB6B7FC49B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A641D8D7-35F1-48AB-AABA-EDFB6B7FC49B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A641D8D7-35F1-48AB-AABA-EDFB6B7FC49B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A641D8D7-35F1-48AB-AABA-EDFB6B7FC49B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{57E64289-5D69-4AA1-BEF0-D0D96A55EE8F} = {7DF99C35-881D-4FF2-B1C9-246BD3DECB9A}
@@ -83,6 +77,5 @@ Global
 		{E497E40C-A7B4-41A7-A1C6-2EC6698FF3BF} = {7DF99C35-881D-4FF2-B1C9-246BD3DECB9A}
 		{EA2F596E-2236-4999-B476-B1FDA287674A} = {7DF99C35-881D-4FF2-B1C9-246BD3DECB9A}
 		{3032F3FA-E20A-4581-9A08-2FB5FF1524F4} = {7DF99C35-881D-4FF2-B1C9-246BD3DECB9A}
-		{A641D8D7-35F1-48AB-AABA-EDFB6B7FC49B} = {7DF99C35-881D-4FF2-B1C9-246BD3DECB9A}
 	EndGlobalSection
 EndGlobal
