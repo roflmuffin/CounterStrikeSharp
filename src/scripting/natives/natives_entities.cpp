@@ -149,7 +149,8 @@ void HookEntityOutput(ScriptContext& script_context)
     auto szClassname = script_context.GetArgument<const char*>(0);
     auto szOutput = script_context.GetArgument<const char*>(1);
     auto callback = script_context.GetArgument<CallbackT>(2);
-    globals::entityManager.HookEntityOutput(szClassname, szOutput, callback);
+    auto mode = script_context.GetArgument<HookMode>(3);
+    globals::entityManager.HookEntityOutput(szClassname, szOutput, callback, mode);
 }
 
 void UnhookEntityOutput(ScriptContext& script_context)
@@ -157,7 +158,8 @@ void UnhookEntityOutput(ScriptContext& script_context)
     auto szClassname = script_context.GetArgument<const char*>(0);
     auto szOutput = script_context.GetArgument<const char*>(1);
     auto callback = script_context.GetArgument<CallbackT>(2);
-    globals::entityManager.UnhookEntityOutput(szClassname, szOutput, callback);
+    auto mode = script_context.GetArgument<HookMode>(3);
+    globals::entityManager.UnhookEntityOutput(szClassname, szOutput, callback, mode);
 }
 
 REGISTER_NATIVES(entities, {

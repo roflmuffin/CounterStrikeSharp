@@ -18,7 +18,7 @@ namespace CounterStrikeSharp.API.Modules.Entities
 {
     public class EntityIO
     {
-        public delegate void EntityOutputHandler(string name, CEntityInstance activator, CEntityInstance caller, float delay);
+        public delegate HookResult EntityOutputHandler(string name, CEntityInstance activator, CEntityInstance caller, float delay);
 
         internal class EntityOutputCallback
         {

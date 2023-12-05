@@ -462,20 +462,20 @@ namespace CounterStrikeSharp.API.Core
             }
         }
 
-        public void HookEntityOutput(string classname, string outputName, EntityIO.EntityOutputHandler handler)
+        public void HookEntityOutput(string classname, string outputName, EntityIO.EntityOutputHandler handler, HookMode mode = HookMode.Pre)
         {
             var subscriber = new CallbackSubscriber(handler, handler,
                 () => UnhookEntityOutput(classname, outputName, handler));
 
-            NativeAPI.HookEntityOutput(classname, outputName, subscriber.GetInputArgument());
+            NativeAPI.HookEntityOutput(classname, outputName, subscriber.GetInputArgument(), mode);
             EntityOutputHooks[handler] = subscriber;
         }
 
-        public void UnhookEntityOutput(string classname, string outputName, EntityIO.EntityOutputHandler handler)
+        public void UnhookEntityOutput(string classname, string outputName, EntityIO.EntityOutputHandler handler, HookMode mode = HookMode.Pre)
         {
             if (!EntityOutputHooks.TryGetValue(handler, out var subscriber)) return;
 
-            NativeAPI.UnhookEntityOutput(classname, outputName, subscriber.GetInputArgument());
+            NativeAPI.UnhookEntityOutput(classname, outputName, subscriber.GetInputArgument(), mode);
             FunctionReference.Remove(subscriber.GetReferenceIdentifier());
             EntityOutputHooks.Remove(handler);
         }
@@ -488,8 +488,10 @@ namespace CounterStrikeSharp.API.Core
             {
                 if (caller == entityInstance)
                 {
-                    handler(name, activator, caller, delay);
+                    return handler(name, activator, caller, delay);
                 }
+
+                return HookResult.Continue;
             };
 
             HookEntityOutput(entityInstance.DesignerName, outputName, internalHandler);

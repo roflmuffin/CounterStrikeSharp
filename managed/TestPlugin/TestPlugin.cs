@@ -412,6 +412,21 @@ namespace TestPlugin
             HookEntityOutput("weapon_knife", "OnPlayerPickup", (string name, CEntityInstance activator, CEntityInstance caller, float delay) =>
             {
                 Logger.LogInformation("weapon_knife called OnPlayerPickup ({name}, {activator}, {caller}, {delay})", name, activator.DesignerName, caller.DesignerName, delay);
+
+                return HookResult.Stop;
+            });
+            
+            HookEntityOutput("*", "*", (string name, CEntityInstance activator, CEntityInstance caller, float delay) =>
+            {
+                Logger.LogInformation("All EntityOutput ({name}, {activator}, {caller}, {delay})", name, activator.DesignerName, caller.DesignerName, delay);
+
+                return HookResult.Continue;
+            });
+            
+            HookEntityOutput("*", "OnStartTouch", (name, activator, caller, delay) =>
+            {
+                Logger.LogInformation("OnStartTouch: ({name}, {activator}, {caller}, {delay})", name, activator.DesignerName, caller.DesignerName, delay);
+                return HookResult.Continue;
             });
         }
 
@@ -554,10 +569,12 @@ namespace TestPlugin
             return HookResult.Continue;
         }
 
-        [EntityOutputHook("weapon_knife", "OnPlayerPickup")]
-        public void OnKnifePickup(string name, CEntityInstance activator, CEntityInstance caller, float delay)
+        [EntityOutputHook("*", "OnPlayerPickup")]
+        public HookResult OnPickup(string name, CEntityInstance activator, CEntityInstance caller, float delay)
         {
-            Logger.LogInformation("[EntityOutputHook Attribute] weapon_knife called OnPlayerPickup ({name}, {activator}, {caller}, {delay})", name, activator.DesignerName, caller.DesignerName, delay);
+            Logger.LogInformation("[EntityOutputHook Attribute] Called OnPlayerPickup ({name}, {activator}, {caller}, {delay})", name, activator.DesignerName, caller.DesignerName, delay);
+
+            return HookResult.Stop;
         }
     }
 }

@@ -23,6 +23,7 @@
 #include "core/global_listener.h"
 #include "scripting/script_engine.h"
 #include "entitysystem.h"
+#include "scripting/callback_manager.h"
 
 // variant.h depends on ivscript.h, lets not include the whole thing
 DECLARE_POINTER_HANDLE(HSCRIPT);
@@ -48,10 +49,10 @@ public:
     ~EntityManager();
     void OnAllInitialized() override;
     void OnShutdown() override;
-    void HookEntityOutput(const char* szClassname, const char* szOutput, CallbackT fnCallback);
-    void UnhookEntityOutput(const char* szClassname, const char* szOutput, CallbackT fnCallback);
+    void HookEntityOutput(const char* szClassname, const char* szOutput, CallbackT fnCallback, HookMode mode);
+    void UnhookEntityOutput(const char* szClassname, const char* szOutput, CallbackT fnCallback, HookMode mode);
     CEntityListener entityListener;
-    std::map<OutputKey_t, counterstrikesharp::ScriptCallback*> m_pHookMap;
+    std::map<OutputKey_t, CallbackPair*> m_pHookMap;
 private:
     ScriptCallback *on_entity_spawned_callback;
     ScriptCallback *on_entity_created_callback;
