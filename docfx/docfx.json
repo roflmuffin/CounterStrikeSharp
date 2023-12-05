@@ -29,7 +29,7 @@
     "globalMetadata": {
       "_appFaviconPath": "images/cssharp.svg",
       "_appFooter": "<a href=\"https://docs.cssharp.dev\">docs.cssharp.dev</a>",
-      "_appLogoPath": "images/cssharp-50.png",
+      "_appLogoPath": "images/cssharp.svg",
       "_appName": "CounterStrikeSharp",
       "_appTitle": "CounterStrikeSharp",
       "_disableNewTab": true,
