@@ -22,6 +22,14 @@ Depending on the os you might also either need to install `libicu` / `icu-libs` 
 Subsequent upgrades will not require the runtime, unless a version bump of the .NET runtime is required (i.e. from 7.0.x to 8.0.x). We will inform you when this occurs.
 :::
 
+:::caution[Windows]
+For Windows users, you must ensure that you have been installed **Visual Studio Redistributables**.
+If not, you can download at here: <a href="https://aka.ms/vs/17/release/vc_redist.x64.exe" target="_blank">Download</a>
+> This will download directly.
+You must install it before starting server, otherwise CSS will not work!
+
+:::
+
 Extract the `addons` folder to the `/csgo/` directory of the dedicated server. The contents of your addons folder should contain both the `counterstrikesharp` folder and the `metamod` folder as seen below.
 
 ```shell
