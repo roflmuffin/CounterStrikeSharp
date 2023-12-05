@@ -413,7 +413,7 @@ namespace TestPlugin
             {
                 Logger.LogInformation("weapon_knife called OnPlayerPickup ({name}, {activator}, {caller}, {delay})", name, activator.DesignerName, caller.DesignerName, delay);
 
-                return HookResult.Stop;
+                return HookResult.Continue;
             });
             
             HookEntityOutput("*", "*", (string name, CEntityInstance activator, CEntityInstance caller, float delay) =>
@@ -574,7 +574,7 @@ namespace TestPlugin
         {
             Logger.LogInformation("[EntityOutputHook Attribute] Called OnPlayerPickup ({name}, {activator}, {caller}, {delay})", name, activator.DesignerName, caller.DesignerName, delay);
 
-            return HookResult.Stop;
+            return HookResult.Continue;
         }
     }
 }
