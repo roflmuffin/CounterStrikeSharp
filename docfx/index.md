@@ -2,6 +2,7 @@
 _layout: landing
 uid: home
 title: CounterStrikeSharp
+_appTitle: ''
 description: Write Counter-Strike 2 server plugins in C#.
 ---
 
