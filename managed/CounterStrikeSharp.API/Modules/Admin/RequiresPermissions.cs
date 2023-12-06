@@ -23,9 +23,18 @@ namespace CounterStrikeSharp.API.Modules.Admin
 
             var groupPermissions = Permissions.Where(perm => perm.StartsWith(PermissionCharacters.GroupPermissionChar));
             var userPermissions = Permissions.Where(perm => perm.StartsWith(PermissionCharacters.UserPermissionChar));
+            caller.PrintToChat($"perms: {string.Join(", ", userPermissions)}");
 
-            if (!AdminManager.PlayerHasPermissions(caller, userPermissions.ToArray())) return false;
-            if (!AdminManager.PlayerInGroup(caller, groupPermissions.ToArray())) return false;
+            if (!AdminManager.PlayerHasPermissions(caller, userPermissions.ToArray()))
+            {
+                caller.PrintToChat("PlayerHasPermissions failed!");
+                return false;
+            }
+            if (!AdminManager.PlayerInGroup(caller, groupPermissions.ToArray()))
+            {
+                caller.PrintToChat("PlayerInGroup failed!");
+                return false;
+            }
 
             return true;
         }

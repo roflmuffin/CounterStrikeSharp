@@ -9,6 +9,8 @@ using CounterStrikeSharp.API.Core.Logging;
 using Microsoft.Extensions.Logging;
 using System.Text.Json.Nodes;
 using System.Numerics;
+using CounterStrikeSharp.API.Modules.Utils;
+using System.Diagnostics.Eventing.Reader;
 
 namespace CounterStrikeSharp.API.Modules.Admin
 {
@@ -30,17 +32,32 @@ namespace CounterStrikeSharp.API.Modules.Admin
             AddFlags(_flags);
         }
 
+        /// <summary>
+        /// Checks to see if a domain has a root flag inside of it.
+        /// </summary>
+        /// <param name="domain">Domain to check for.</param>
+        /// <returns>True if "@{domain}/root" or "@{domain}/*" is present, false if not.</returns>
         public bool DomainHasRootFlag(string domain)
         {
-            if (!Flags.ContainsKey(domain)) { return false; }
-            return Flags[domain].Contains("@" + domain + "/root") || Flags[domain].Contains("@" + domain + "/*");
+            if (!Flags.ContainsKey(domain)) return false;
+            if (Flags[domain].Contains("@" + domain + "/root")) return true;
+            else if (Flags[domain].Contains("@" + domain + "/*")) return true;
+            else return false;
         }
 
+        /// <summary>
+        /// Returns a list of all domains for flags.
+        /// </summary>
+        /// <returns></returns>
         public string[] GetFlagDomains()
         {
             return Flags.Keys.ToArray();
         }
 
+        /// <summary>
+        /// Returns a HashSet of all flags.
+        /// </summary>
+        /// <returns></returns>
         public HashSet<string> GetAllFlags()
         {
             var flags = new HashSet<string>();
@@ -62,9 +79,9 @@ namespace CounterStrikeSharp.API.Modules.Admin
             {
                 if (!Flags.ContainsKey(domain))
                 {
-                    var flagData = new HashSet<string>();
+                    Flags[domain] = new HashSet<string>();
                 }
-                Flags[domain] = flags.Where(flag => flag.StartsWith(PermissionCharacters.UserPermissionChar + domain + '/')).ToHashSet();
+                Flags[domain].UnionWith(flags.Where(flag => flag.StartsWith(PermissionCharacters.UserPermissionChar + domain + '/')).ToHashSet());
             }
         }
 
@@ -82,6 +99,12 @@ namespace CounterStrikeSharp.API.Modules.Admin
                 Flags[domain].ExceptWith(flags);
                 if (Flags[domain].Count() == 0) Flags.Remove(domain);
             }
+        }
+
+        public bool DomainHasFlags(string domain, string[] flags, bool ignoreRoot = false)
+        {
+            if (DomainHasRootFlag(domain) && !ignoreRoot) return true;
+            return Flags[domain].IsSupersetOf(flags);
         }
     }
 
@@ -182,20 +205,17 @@ namespace CounterStrikeSharp.API.Modules.Admin
             var playerData = GetPlayerAdminData(player.AuthorizedSteamID);
             if (playerData == null) return false;
 
-            var playerFlags = flags.ToHashSet<string>();
-
-            // Check to see if the caller has a root flag for any of the domains in our permissions.
-            // If they do, remove all of the user flags that belong to the domain from our permission check.
+            bool returnValue = true;
             foreach (var domain in playerData.Flags)
             {
-                if (playerData.DomainHasRootFlag(domain.Key))
+                if (!playerData.DomainHasFlags(domain.Key,
+                    flags
+                    .Where(flag => flag.StartsWith(PermissionCharacters.UserPermissionChar + domain.Key + '/')).ToArray()))
                 {
-                    playerFlags.UnionWith(flags.Where(flag => flag.Contains(domain.Key + '/')));;
+                    returnValue = false; break;
                 }
             }
-
-            // Merge all of the domain flags together for the final comparison.
-            return playerData.GetAllFlags().IsSupersetOf(playerFlags);
+            return returnValue;
         }
 
         /// <summary>
@@ -211,19 +231,17 @@ namespace CounterStrikeSharp.API.Modules.Admin
             if (playerData == null) return false;
 
             var playerFlags = flags.ToHashSet<string>();
-
-            // Check to see if the caller has a root flag for any of the domains in our permissions.
-            // If they do, remove all of the user flags that belong to the domain from our permission check.
+            bool returnValue = true;
             foreach (var domain in playerData.Flags)
             {
-                if (playerData.DomainHasRootFlag(domain.Key))
+                if (!playerData.DomainHasFlags(domain.Key,
+                    flags
+                    .Where(flag => flag.StartsWith(PermissionCharacters.UserPermissionChar + domain.Key + '/')).ToArray()))
                 {
-                    playerFlags.UnionWith(flags.Where(flag => flag.Contains(domain.Key + '/')));
+                    returnValue = false; break;
                 }
             }
-
-            // Merge all of the domain flags together for the final comparison.
-            return playerData.GetAllFlags().IsSupersetOf(playerFlags);
+            return returnValue;
         }
 
         #endregion

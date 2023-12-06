@@ -2,6 +2,7 @@
 using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Modules.Commands;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
@@ -17,55 +18,46 @@ public class CommandUtils
             var command = new CommandInfo(ptr, caller);
 
             var methodInfo = handler?.GetMethodInfo();
+            var adminData = AdminManager.GetPlayerAdminData(caller.AuthorizedSteamID);
+
+            var permissionsToCheck = new List<BaseRequiresPermissions>();
 
             if (!AdminManager.CommandIsOverriden(name))
             {
                 // Do not execute command if we do not have the correct permissions.
                 var permissions = methodInfo?.GetCustomAttributes<BaseRequiresPermissions>();
-                if (permissions != null)
-                {
-                    foreach (var attr in permissions)
-                    {
-                        attr.Command = name;
-                        if (!attr.CanExecuteCommand(caller))
-                        {
-                            if (attr.GetType() == typeof(RequiresPermissions))
-                            {
-                                command.ReplyToCommand($"[CSS] You do not have all of the correct permissions ({attr.Permissions}) to execute this command.");
-                            }
-                            else
-                            {
-                                command.ReplyToCommand($"[CSS] You do not have one of the correct permissions ({attr.Permissions}) to execute this command.");
-                            }
-                            return;
-                        }
-                    }
-                }
+                if (permissions != null) permissionsToCheck.AddRange(permissions);
             }
-            // If this command has it's permissions overriden, we will do an AND check for all permissions.
             else
             {
-                // I don't know if this is the most sane implementation of this, can be edited in code review.
                 var data = AdminManager.GetCommandOverrideData(name);
-                if (data != null) 
+                if (data != null)
                 {
                     var attrType = (data.CheckType == "all") ? typeof(RequiresPermissions) : typeof(RequiresPermissionsOr);
                     var attr = (BaseRequiresPermissions)Activator.CreateInstance(attrType, args: AdminManager.GetPermissionOverrides(name));
-                    attr.Command = name;
-                    if (!attr.CanExecuteCommand(caller))
+
+                    if (attr != null) permissionsToCheck.Add(attr);
+                }
+            }
+
+            foreach (var attr in permissionsToCheck)
+            {
+                attr.Command = name;
+                if (!attr.CanExecuteCommand(caller))
+                {
+                    if (attr.GetType() == typeof(RequiresPermissions))
                     {
-                        var perms = String.Join(", ", attr.Permissions.ToList<string>());
-                        if ( attrType == typeof(RequiresPermissions))
-                        {
-                            command.ReplyToCommand($"[CSS] You do not have all of the correct permissions ({perms}) to execute this command.");
-                        }
-                        else
-                        {
-                            command.ReplyToCommand($"[CSS] You do not have one of the correct permissions ({perms}) to execute this command.");
-                        }
-                        
-                        return;
+                        var flags = attr.Permissions.Except(adminData?.GetAllFlags() ?? new HashSet<string>());
+                        flags = flags.Except(adminData?.Groups ?? new HashSet<string>());
+                        command.ReplyToCommand($"[CSS] You are missing the correct permissions ({string.Join(", ", flags)}) to execute this command.");
                     }
+                    else
+                    {
+                        var flags = attr.Permissions.Except(adminData?.GetAllFlags() ?? new HashSet<string>());
+                        flags = flags.Except(adminData?.Groups ?? new HashSet<string>());
+                        command.ReplyToCommand($"[CSS] You do not have one of the correct permissions ({string.Join(", ", attr.Permissions)}) to execute this command.");
+                    }
+                    return;
                 }
             }
 
@@ -89,6 +81,8 @@ public class CommandUtils
                 // but we'll just ignore that for this check.
                 if (helperAttribute.MinArgs != 0 && command.ArgCount - 1 < helperAttribute.MinArgs)
                 {
+                    var commandCalled = command.ArgByIndex(0);
+                    var properCommandName = (commandCalled.StartsWith("css_")) ? commandCalled.Replace("css_", "") : commandCalled;
                     command.ReplyToCommand($"[CSS] Expected usage: \"!{command.ArgByIndex(0)} {helperAttribute.Usage}\".");
                     return;
                 }

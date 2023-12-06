@@ -105,13 +105,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             {
                 if (playerData.DomainHasRootFlag(domain.Key))
                 {
-                    player.PrintToChat($"Domain {domain.Key} root found!");
-                    player.PrintToChat($"Old groups: {string.Join(", ", playerGroups)}");
-                    // Grab all groups with the selected domain in this check.
-                    var domainGroups = groups.Where(
-                        flag => flag.StartsWith(PermissionCharacters.GroupPermissionChar + domain.Key));
-                    playerGroups.UnionWith(domainGroups);
-                    player.PrintToChat($"New groups: {string.Join(", ", playerGroups)}");
+                    playerGroups.ExceptWith(groups.Where(group => group.Contains(domain.Key + '/')));
                 }
             }
 
@@ -135,10 +129,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             {
                 if (playerData.DomainHasRootFlag(domain.Key))
                 {
-                    // Grab all groups with the selected domain in this check.
-                    var domainGroups = groups.Where(
-                        flag => flag.StartsWith(PermissionCharacters.GroupPermissionChar + domain.Key));
-                    playerGroups.UnionWith(domainGroups);
+                    playerGroups.ExceptWith(groups.Where(group => group.Contains(domain.Key + '/')));
                 }
             }
 
