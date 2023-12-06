@@ -1285,5 +1285,39 @@ namespace CounterStrikeSharp.API.Core
 			return (bool)ScriptContext.GlobalScriptContext.GetResult(typeof(bool));
 			}
 		}
+
+        public static void SetClientListening(IntPtr receiver, IntPtr sender, uint listen){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(receiver);
+			ScriptContext.GlobalScriptContext.Push(sender);
+			ScriptContext.GlobalScriptContext.Push(listen);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xD38BEE77);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static void SetClientVoiceFlags(IntPtr client, uint flags){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(client);
+			ScriptContext.GlobalScriptContext.Push(flags);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x48EB2FC8);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static uint GetClientVoiceFlags(IntPtr client){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(client);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x9685205C);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (uint)ScriptContext.GlobalScriptContext.GetResult(typeof(uint));
+			}
+		}
     }
 }
