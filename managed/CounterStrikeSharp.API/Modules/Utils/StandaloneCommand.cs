@@ -18,8 +18,42 @@ public class CommandUtils
             var command = new CommandInfo(ptr, caller);
 
             var methodInfo = handler?.GetMethodInfo();
-            var adminData = AdminManager.GetPlayerAdminData(caller.AuthorizedSteamID);
 
+            // Do not execute if we shouldn't be calling this command.
+            var helperAttribute = methodInfo?.GetCustomAttribute<CommandHelperAttribute>();
+            if (helperAttribute != null)
+            {
+                switch (helperAttribute.WhoCanExcecute)
+                {
+                    case CommandUsage.CLIENT_AND_SERVER: break; // Allow command through.
+                    case CommandUsage.CLIENT_ONLY:
+                        if (caller == null || !caller.IsValid) { command.ReplyToCommand("[CSS] This command can only be executed by clients."); return; }
+                        break;
+                    case CommandUsage.SERVER_ONLY:
+                        if (caller != null && caller.IsValid) { command.ReplyToCommand("[CSS] This command can only be executed by the server."); return; }
+                        break;
+                    default: throw new ArgumentException("Unrecognised CommandUsage value passed in CommandHelperAttribute.");
+                }
+
+                // Technically the command itself counts as the first argument, 
+                // but we'll just ignore that for this check.
+                if (helperAttribute.MinArgs != 0 && command.ArgCount - 1 < helperAttribute.MinArgs)
+                {
+                    var commandCalled = command.ArgByIndex(0);
+                    var properCommandName = (commandCalled.StartsWith("css_")) ? commandCalled.Replace("css_", "") : commandCalled;
+                    command.ReplyToCommand($"[CSS] Expected usage: \"!{command.ArgByIndex(0)} {helperAttribute.Usage}\".");
+                    return;
+                }
+            }
+
+            // We do not need to do permission checks on commands executed from the server console.
+            // The server will always be allowed to execute commands (unless marked as client only like above)
+            if (caller == null)
+            {
+                handler?.Invoke(caller, command);
+            }
+
+            var adminData = AdminManager.GetPlayerAdminData(caller.AuthorizedSteamID);
             var permissionsToCheck = new List<BaseRequiresPermissions>();
 
             if (!AdminManager.CommandIsOverriden(name))
@@ -57,33 +91,6 @@ public class CommandUtils
                         flags = flags.Except(adminData?.Groups ?? new HashSet<string>());
                         command.ReplyToCommand($"[CSS] You do not have one of the correct permissions ({string.Join(", ", attr.Permissions)}) to execute this command.");
                     }
-                    return;
-                }
-            }
-
-            // Do not execute if we shouldn't be calling this command.
-            var helperAttribute = methodInfo?.GetCustomAttribute<CommandHelperAttribute>();
-            if (helperAttribute != null)
-            {
-                switch (helperAttribute.WhoCanExcecute)
-                {
-                    case CommandUsage.CLIENT_AND_SERVER: break; // Allow command through.
-                    case CommandUsage.CLIENT_ONLY:
-                        if (caller == null || !caller.IsValid) { command.ReplyToCommand("[CSS] This command can only be executed by clients."); return; }
-                        break;
-                    case CommandUsage.SERVER_ONLY:
-                        if (caller != null && caller.IsValid) { command.ReplyToCommand("[CSS] This command can only be executed by the server."); return; }
-                        break;
-                    default: throw new ArgumentException("Unrecognised CommandUsage value passed in CommandHelperAttribute.");
-                }
-
-                // Technically the command itself counts as the first argument, 
-                // but we'll just ignore that for this check.
-                if (helperAttribute.MinArgs != 0 && command.ArgCount - 1 < helperAttribute.MinArgs)
-                {
-                    var commandCalled = command.ArgByIndex(0);
-                    var properCommandName = (commandCalled.StartsWith("css_")) ? commandCalled.Replace("css_", "") : commandCalled;
-                    command.ReplyToCommand($"[CSS] Expected usage: \"!{command.ArgByIndex(0)} {helperAttribute.Usage}\".");
                     return;
                 }
             }

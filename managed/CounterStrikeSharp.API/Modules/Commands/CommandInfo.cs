@@ -29,7 +29,7 @@ namespace CounterStrikeSharp.API.Modules.Commands
         
         public IntPtr Handle { get; }
         
-        internal CommandInfo(IntPtr pointer, CCSPlayerController player) 
+        internal CommandInfo(IntPtr pointer, CCSPlayerController? player) 
         {
             Handle = pointer;
             CallingPlayer = player;
