@@ -3,7 +3,7 @@ name: Build & Publish
 on:
   push:
     paths-ignore:
-      - 'docs/**'
+      - 'docfx/**'
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
