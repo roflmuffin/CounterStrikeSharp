@@ -19,6 +19,53 @@ public class CommandUtils
 
             var methodInfo = handler?.GetMethodInfo();
 
+            // We do not need to do permission checks on commands executed from the server console.
+            // The server will always be allowed to execute commands (unless marked as client only like above)
+            if (caller != null)
+            {
+                var adminData = AdminManager.GetPlayerAdminData(caller!.AuthorizedSteamID);
+                var permissionsToCheck = new List<BaseRequiresPermissions>();
+
+                if (!AdminManager.CommandIsOverriden(name))
+                {
+                    // Do not execute command if we do not have the correct permissions.
+                    var permissions = methodInfo?.GetCustomAttributes<BaseRequiresPermissions>();
+                    if (permissions != null) permissionsToCheck.AddRange(permissions);
+                }
+                else
+                {
+                    var data = AdminManager.GetCommandOverrideData(name);
+                    if (data != null)
+                    {
+                        var attrType = (data.CheckType == "all") ? typeof(RequiresPermissions) : typeof(RequiresPermissionsOr);
+                        var attr = (BaseRequiresPermissions)Activator.CreateInstance(attrType, args: AdminManager.GetPermissionOverrides(name));
+
+                        if (attr != null) permissionsToCheck.Add(attr);
+                    }
+                }
+
+                foreach (var attr in permissionsToCheck)
+                {
+                    attr.Command = name;
+                    if (!attr.CanExecuteCommand(caller))
+                    {
+                        if (attr.GetType() == typeof(RequiresPermissions))
+                        {
+                            var flags = attr.Permissions.Except(adminData?.GetAllFlags() ?? new HashSet<string>());
+                            flags = flags.Except(adminData?.Groups ?? new HashSet<string>());
+                            command.ReplyToCommand($"[CSS] You are missing the correct permissions ({string.Join(", ", flags)}) to execute this command.");
+                        }
+                        else
+                        {
+                            var flags = attr.Permissions.Except(adminData?.GetAllFlags() ?? new HashSet<string>());
+                            flags = flags.Except(adminData?.Groups ?? new HashSet<string>());
+                            command.ReplyToCommand($"[CSS] You do not have one of the correct permissions ({string.Join(", ", attr.Permissions)}) to execute this command.");
+                        }
+                        return;
+                    }
+                }
+            }
+
             // Do not execute if we shouldn't be calling this command.
             var helperAttribute = methodInfo?.GetCustomAttribute<CommandHelperAttribute>();
             if (helperAttribute != null)
@@ -42,56 +89,6 @@ public class CommandUtils
                     var commandCalled = command.ArgByIndex(0);
                     var properCommandName = (commandCalled.StartsWith("css_")) ? commandCalled.Replace("css_", "") : commandCalled;
                     command.ReplyToCommand($"[CSS] Expected usage: \"!{command.ArgByIndex(0)} {helperAttribute.Usage}\".");
-                    return;
-                }
-            }
-
-            // We do not need to do permission checks on commands executed from the server console.
-            // The server will always be allowed to execute commands (unless marked as client only like above)
-            if (caller == null)
-            {
-                handler?.Invoke(caller, command);
-                return;
-            }
-
-            var adminData = AdminManager.GetPlayerAdminData(caller!.AuthorizedSteamID);
-            var permissionsToCheck = new List<BaseRequiresPermissions>();
-
-            if (!AdminManager.CommandIsOverriden(name))
-            {
-                // Do not execute command if we do not have the correct permissions.
-                var permissions = methodInfo?.GetCustomAttributes<BaseRequiresPermissions>();
-                if (permissions != null) permissionsToCheck.AddRange(permissions);
-            }
-            else
-            {
-                var data = AdminManager.GetCommandOverrideData(name);
-                if (data != null)
-                {
-                    var attrType = (data.CheckType == "all") ? typeof(RequiresPermissions) : typeof(RequiresPermissionsOr);
-                    var attr = (BaseRequiresPermissions)Activator.CreateInstance(attrType, args: AdminManager.GetPermissionOverrides(name));
-
-                    if (attr != null) permissionsToCheck.Add(attr);
-                }
-            }
-
-            foreach (var attr in permissionsToCheck)
-            {
-                attr.Command = name;
-                if (!attr.CanExecuteCommand(caller))
-                {
-                    if (attr.GetType() == typeof(RequiresPermissions))
-                    {
-                        var flags = attr.Permissions.Except(adminData?.GetAllFlags() ?? new HashSet<string>());
-                        flags = flags.Except(adminData?.Groups ?? new HashSet<string>());
-                        command.ReplyToCommand($"[CSS] You are missing the correct permissions ({string.Join(", ", flags)}) to execute this command.");
-                    }
-                    else
-                    {
-                        var flags = attr.Permissions.Except(adminData?.GetAllFlags() ?? new HashSet<string>());
-                        flags = flags.Except(adminData?.Groups ?? new HashSet<string>());
-                        command.ReplyToCommand($"[CSS] You do not have one of the correct permissions ({string.Join(", ", attr.Permissions)}) to execute this command.");
-                    }
                     return;
                 }
             }
