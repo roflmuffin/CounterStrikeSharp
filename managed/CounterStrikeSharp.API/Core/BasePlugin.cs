@@ -191,9 +191,10 @@ namespace CounterStrikeSharp.API.Core
                 if (caller == null)
                 {
                     handler?.Invoke(caller, command);
+                    return;
                 }
 
-                var adminData = AdminManager.GetPlayerAdminData(caller.AuthorizedSteamID);
+                var adminData = AdminManager.GetPlayerAdminData(caller!.AuthorizedSteamID);
                 var permissionsToCheck = new List<BaseRequiresPermissions>();
 
                 if (!AdminManager.CommandIsOverriden(name))
