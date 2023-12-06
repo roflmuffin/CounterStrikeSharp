@@ -42,7 +42,7 @@ void EntityManager::OnAllInitialized()
         globals::gameConfig->GetSignature("CEntityIOOutput_FireOutputInternal")));
 
     if (m_pFireOutputInternal == nullptr) {
-        CSSHARP_CORE_ERROR("Failed to find signature for \'CEntityIOOutput_FireOutputInternal\'");
+        CSSHARP_CORE_CRITICAL("Failed to find signature for \'CEntityIOOutput_FireOutputInternal\'");
         return;
     }
 
@@ -143,10 +143,13 @@ void EntityManager::UnhookEntityOutput(const char* szClassname, const char* szOu
 void DetourFireOutputInternal(CEntityIOOutput* const pThis, CEntityInstance* pActivator,
                               CEntityInstance* pCaller, const CVariant* const value, float flDelay)
 {
-    const std::vector vecSearchKeys{OutputKey_t("*", pThis->m_pDesc->m_pName),
-                              OutputKey_t(pCaller->GetClassname(), pThis->m_pDesc->m_pName),
-                              OutputKey_t(pCaller->GetClassname(), "*"),
+    std::vector vecSearchKeys{OutputKey_t("*", pThis->m_pDesc->m_pName),
         OutputKey_t("*", "*")};
+
+    if (pCaller) {
+        vecSearchKeys.push_back(OutputKey_t(pCaller->GetClassname(), pThis->m_pDesc->m_pName));
+        OutputKey_t(pCaller->GetClassname(), "*");
+    }
 
     std::vector<CallbackPair*> vecCallbackPairs;
 
