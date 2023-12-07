@@ -21,6 +21,14 @@ Download the latest release of CounterStrikeSharp from <a href="https://github.c
 > 
 > Subsequent upgrades will not require the runtime, unless a version bump of the .NET runtime is required (i.e. from 7.0.x to 8.0.x). We will inform you when this occurs.
 
+> [!CAUTION]
+> For Windows users, you must ensure that you have installed **Visual Studio Redistributables**.
+> If not, you can download it here: <a href="https://aka.ms/vs/17/release/vc_redist.x64.exe" target="_blank">Download</a>
+> > This link will download VC Redistributable directly.
+> 
+> You must install it before starting the server, otherwise CSS will not work!
+
+
 Extract the `addons` folder to the `/csgo/` directory of the dedicated server. The contents of your addons folder should contain both the `counterstrikesharp` folder and the `metamod` folder as seen below.
 
 ```shell
