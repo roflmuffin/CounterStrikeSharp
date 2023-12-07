@@ -484,7 +484,8 @@ namespace TestPlugin
 
             foreach (var weapon in player.PlayerPawn.Value.WeaponServices.MyWeapons)
             {
-                command.ReplyToCommand(weapon.Value.DesignerName);
+                var vData = weapon.Value.As<CCSWeaponBase>().VData;
+                command.ReplyToCommand(string.Format("{0}, {1}, {2}, {3}, {4}, {5}", vData.Name, vData.GearSlot, vData.Price, vData.WeaponCategory, vData.WeaponType, vData.KillAward));
             }
         }
         
