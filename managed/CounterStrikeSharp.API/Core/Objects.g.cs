@@ -4831,9 +4831,6 @@ public partial class CBasePlayerVData : CEntitySubclassVDataBase
 {
     public CBasePlayerVData (IntPtr pointer) : base(pointer) {}
 
-    // m_sModelName
-    
-
     // m_flHeadDamageMultiplier
     public CSkillFloat HeadDamageMultiplier => Schema.GetDeclaredClass<CSkillFloat>(this.Handle, "CBasePlayerVData", "m_flHeadDamageMultiplier");
 
@@ -4909,9 +4906,6 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 {
     public CBasePlayerWeaponVData (IntPtr pointer) : base(pointer) {}
 
-    // m_szWorldModel
-    
-
     // m_bBuiltRightHanded
     public ref bool BuiltRightHanded => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bBuiltRightHanded");
 
@@ -4930,9 +4924,6 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
         get { return Schema.GetUtf8String(this.Handle, "CBasePlayerWeaponVData", "m_sMuzzleAttachment"); }
         set { Schema.SetString(this.Handle, "CBasePlayerWeaponVData", "m_sMuzzleAttachment", value); }
     }
-
-    // m_szMuzzleFlashParticle
-    
 
     // m_iFlags
     public ref ItemFlagTypes_t Flags => ref Schema.GetRef<ItemFlagTypes_t>(this.Handle, "CBasePlayerWeaponVData", "m_iFlags");
@@ -9059,39 +9050,6 @@ public partial class CCSWeaponBaseVData : CBasePlayerWeaponVData
 
     // m_WeaponCategory
     public ref CSWeaponCategory WeaponCategory => ref Schema.GetRef<CSWeaponCategory>(this.Handle, "CCSWeaponBaseVData", "m_WeaponCategory");
-
-    // m_szViewModel
-    
-
-    // m_szPlayerModel
-    
-
-    // m_szWorldDroppedModel
-    
-
-    // m_szAimsightLensMaskModel
-    
-
-    // m_szMagazineModel
-    
-
-    // m_szHeatEffect
-    
-
-    // m_szEjectBrassEffect
-    
-
-    // m_szMuzzleFlashParticleAlt
-    
-
-    // m_szMuzzleFlashThirdPersonParticle
-    
-
-    // m_szMuzzleFlashThirdPersonParticleAlt
-    
-
-    // m_szTracerParticle
-    
 
     // m_GearSlot
     public ref gear_slot_t GearSlot => ref Schema.GetRef<gear_slot_t>(this.Handle, "CCSWeaponBaseVData", "m_GearSlot");
@@ -15463,13 +15421,8 @@ public partial class CMoodVData : NativeObject
 {
     public CMoodVData (IntPtr pointer) : base(pointer) {}
 
-    // m_sModelName
-    
-
     // m_nMoodType
     public ref MoodType_t MoodType => ref Schema.GetRef<MoodType_t>(this.Handle, "CMoodVData", "m_nMoodType");
-
-    // m_animationLayers
 
 }
 
@@ -15617,6 +15570,22 @@ public partial class CNavHullVData : NativeObject
 
 }
 
+public partial class CNavLinkAnimgraphVar : NativeObject
+{
+    public CNavLinkAnimgraphVar (IntPtr pointer) : base(pointer) {}
+
+    // m_strAnimgraphVar
+    public string StrAnimgraphVar
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CNavLinkAnimgraphVar", "m_strAnimgraphVar"); }
+        set { Schema.SetString(this.Handle, "CNavLinkAnimgraphVar", "m_strAnimgraphVar", value); }
+    }
+
+    // m_unAlignmentDegrees
+    public ref UInt32 AlignmentDegrees => ref Schema.GetRef<UInt32>(this.Handle, "CNavLinkAnimgraphVar", "m_unAlignmentDegrees");
+
+}
+
 public partial class CNavLinkAreaEntity : CPointEntity
 {
     public CNavLinkAreaEntity (IntPtr pointer) : base(pointer) {}
@@ -15685,6 +15654,7 @@ public partial class CNavLinkMovementVData : NativeObject
     public ref UInt32 RecommendedDistance => ref Schema.GetRef<UInt32>(this.Handle, "CNavLinkMovementVData", "m_unRecommendedDistance");
 
     // m_vecAnimgraphVars
+    public NetworkedVector<CNavLinkAnimgraphVar> AnimgraphVars => Schema.GetDeclaredClass<NetworkedVector<CNavLinkAnimgraphVar>>(this.Handle, "CNavLinkMovementVData", "m_vecAnimgraphVars");
 
 }
 
@@ -18373,9 +18343,6 @@ public partial class CPrecipitationVData : CEntitySubclassVDataBase
 {
     public CPrecipitationVData (IntPtr pointer) : base(pointer) {}
 
-    // m_szParticlePrecipitationEffect
-    
-
     // m_flInnerDistance
     public ref float InnerDistance => ref Schema.GetRef<float>(this.Handle, "CPrecipitationVData", "m_flInnerDistance");
 
@@ -18690,6 +18657,15 @@ public partial class CRagdollPropAttached : CRagdollProp
 
     // m_bShouldDeleteAttachedActivationRecord
     public ref bool ShouldDeleteAttachedActivationRecord => ref Schema.GetRef<bool>(this.Handle, "CRagdollPropAttached", "m_bShouldDeleteAttachedActivationRecord");
+
+}
+
+public partial class CRangeFloat : NativeObject
+{
+    public CRangeFloat (IntPtr pointer) : base(pointer) {}
+
+    // m_pValue
+    public Span<float> Value => Schema.GetFixedArray<float>(this.Handle, "CRangeFloat", "m_pValue", 2);
 
 }
 
