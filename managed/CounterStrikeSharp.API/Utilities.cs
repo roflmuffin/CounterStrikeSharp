@@ -67,7 +67,7 @@ namespace CounterStrikeSharp.API
 
         public static CCSPlayerController? GetPlayerFromSteamId(ulong steamId)
         {
-            return Utilities.GetPlayers().FirstOrDefault(player => player.SteamID == steamId);
+            return Utilities.GetPlayers().FirstOrDefault(player => player.AuthorizedSteamID == (SteamID)steamId);
         }
 
         public static TargetResult ProcessTargetString(string pattern, CCSPlayerController player)
@@ -149,6 +149,17 @@ namespace CounterStrikeSharp.API
                 Marshal.Copy(nativeUtf8, buffer, 0, buffer.Length);
                 return Encoding.UTF8.GetString(buffer);
             }
+        }
+
+        public static T? GetPointer<T>(IntPtr pointer) where T : NativeObject
+        {
+            var pointerTo = Marshal.ReadIntPtr(pointer);
+            if (pointerTo == IntPtr.Zero)
+            {
+                return null;
+            }
+
+            return (T)Activator.CreateInstance(typeof(T), pointerTo)!;
         }
     }
 }

@@ -124,6 +124,23 @@ static void IssueClientCommand(ScriptContext& script_context)
     globals::engine->ClientCommand(CPlayerSlot(entity_index), command);
 }
 
+static const char* GetClientConVarValue(ScriptContext& script_context)
+{
+    auto playerSlot = script_context.GetArgument<int>(0);
+    auto convarName = script_context.GetArgument<const char*>(1);
+
+    return globals::engine->GetClientConVarValue(CPlayerSlot(playerSlot), convarName);
+}
+
+static void SetFakeClientConVarValue(ScriptContext& script_context)
+{
+    auto playerSlot = script_context.GetArgument<int>(0);
+    auto convarName = script_context.GetArgument<const char*>(1);
+    auto convarValue = script_context.GetArgument<const char*>(2);
+
+    globals::engine->SetFakeClientConVarValue(CPlayerSlot(playerSlot), convarName, convarValue);
+}
+
 ConVar* FindConVar(ScriptContext& script_context)
 {
     auto name = script_context.GetArgument<const char*>(0);
@@ -163,5 +180,7 @@ REGISTER_NATIVES(commands, {
     ScriptEngine::RegisterNativeHandler("SET_CONVAR_STRING_VALUE", SetConVarStringValue);
 
     ScriptEngine::RegisterNativeHandler("ISSUE_CLIENT_COMMAND", IssueClientCommand);
+    ScriptEngine::RegisterNativeHandler("GET_CLIENT_CONVAR_VALUE", GetClientConVarValue);
+    ScriptEngine::RegisterNativeHandler("SET_FAKE_CLIENT_CONVAR_VALUE", SetFakeClientConVarValue);
 })
 } // namespace counterstrikesharp

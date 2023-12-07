@@ -1,0 +1,14 @@
+- name: Admin Command Attributes
+  href: admin-command-attributes.md
+
+- name: Defining Admins
+  href: defining-admins.md
+
+- name: Defining Command Overrides
+  href: defining-command-overrides.md
+
+- name: Defining Admin Groups
+  href: defining-admin-groups.md
+
+- name: Defining Admin Immunity
+  href: defining-admin-immunity.md

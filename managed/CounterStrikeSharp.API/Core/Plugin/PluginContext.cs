@@ -73,11 +73,14 @@ namespace CounterStrikeSharp.API.Core.Plugin
 
                 _fileWatcher.Deleted += async (s, e) =>
                 {
-                    if (e.FullPath == path)
+                    Server.NextWorldUpdate(() =>
                     {
-                        _logger.LogInformation("Plugin {Name} has been deleted, unloading...", Plugin.ModuleName);
-                        Unload(true);
-                    }
+                        if (e.FullPath == path)
+                        {
+                            _logger.LogInformation("Plugin {Name} has been deleted, unloading...", Plugin.ModuleName);
+                            Unload(true);
+                        }
+                    });
                 };
 
                 _fileWatcher.Filter = "*.dll";
@@ -88,11 +91,14 @@ namespace CounterStrikeSharp.API.Core.Plugin
 
         private Task OnReloadedAsync(object sender, PluginReloadedEventArgs eventargs)
         {
-            _logger.LogInformation("Reloading plugin {Name}", Plugin.ModuleName);
-            Loader = eventargs.Loader;
-            Unload(hotReload: true);
-            Load(hotReload: true);
-
+            Server.NextWorldUpdate(() =>
+            {
+                _logger.LogInformation("Reloading plugin {Name}", Plugin.ModuleName);
+                Loader = eventargs.Loader;
+                Unload(hotReload: true);
+                Load(hotReload: true);
+            });
+            
             return Task.CompletedTask;
         }
 
