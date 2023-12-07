@@ -654,6 +654,32 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static void HookEntityOutput(string classname, string outputname, InputArgument callback, HookMode mode){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(classname);
+			ScriptContext.GlobalScriptContext.Push(outputname);
+			ScriptContext.GlobalScriptContext.Push((InputArgument)callback);
+			ScriptContext.GlobalScriptContext.Push(mode);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x15245242);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static void UnhookEntityOutput(string classname, string outputname, InputArgument callback, HookMode mode){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(classname);
+			ScriptContext.GlobalScriptContext.Push(outputname);
+			ScriptContext.GlobalScriptContext.Push((InputArgument)callback);
+			ScriptContext.GlobalScriptContext.Push(mode);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x87DBD139);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
         public static void HookEvent(string name, InputArgument callback, bool ispost){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
