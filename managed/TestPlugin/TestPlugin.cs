@@ -409,21 +409,21 @@ namespace TestPlugin
 
         private void SetupEntityOutputHooks()
         {
-            HookEntityOutput("weapon_knife", "OnPlayerPickup", (CEntityIOOutput output, string name, CEntityInstance activator, CEntityInstance caller, float delay) =>
+            HookEntityOutput("weapon_knife", "OnPlayerPickup", (output, name, activator, caller, value, delay) =>
             {
                 Logger.LogInformation("weapon_knife called OnPlayerPickup ({name}, {activator}, {caller}, {delay})", output.Description.Name, activator.DesignerName, caller.DesignerName, delay);
 
                 return HookResult.Continue;
             });
             
-            HookEntityOutput("*", "*", (CEntityIOOutput output, string name, CEntityInstance activator, CEntityInstance caller, float delay) =>
+            HookEntityOutput("*", "*", (output, name, activator, caller, value, delay) =>
             {
                 Logger.LogInformation("All EntityOutput ({name}, {activator}, {caller}, {delay})", output.Description.Name, activator.DesignerName, caller.DesignerName, delay);
 
                 return HookResult.Continue;
             });
             
-            HookEntityOutput("*", "OnStartTouch", (output, name, activator, caller, delay) =>
+            HookEntityOutput("*", "OnStartTouch", (output, name, activator, caller, value, delay) =>
             {
                 Logger.LogInformation("OnStartTouch: ({name}, {activator}, {caller}, {delay})", name, activator.DesignerName, caller.DesignerName, delay);
                 return HookResult.Continue;
@@ -570,7 +570,7 @@ namespace TestPlugin
         }
 
         [EntityOutputHook("*", "OnPlayerPickup")]
-        public HookResult OnPickup(CEntityIOOutput output, string name, CEntityInstance activator, CEntityInstance caller, float delay)
+        public HookResult OnPickup(CEntityIOOutput output, string name, CEntityInstance activator, CEntityInstance caller, CVariant value, float delay)
         {
             Logger.LogInformation("[EntityOutputHook Attribute] Called OnPlayerPickup ({name}, {activator}, {caller}, {delay})", name, activator.DesignerName, caller.DesignerName, delay);
 

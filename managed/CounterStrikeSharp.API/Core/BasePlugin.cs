@@ -484,11 +484,11 @@ namespace CounterStrikeSharp.API.Core
         {
             // since we wrap around the plugin handler we need to do this to ensure that the plugin callback is only called
             // if the entity instance is the same.
-            EntityIO.EntityOutputHandler internalHandler = (CEntityIOOutput output, string name, CEntityInstance activator, CEntityInstance caller, float delay) =>
+            EntityIO.EntityOutputHandler internalHandler = (output, name, activator, caller, value, delay) =>
             {
                 if (caller == entityInstance)
                 {
-                    return handler(output, name, activator, caller, delay);
+                    return handler(output, name, activator, caller, value, delay);
                 }
 
                 return HookResult.Continue;

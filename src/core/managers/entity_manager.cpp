@@ -178,6 +178,7 @@ void DetourFireOutputInternal(CEntityIOOutput* const pThis, CEntityInstance* pAc
             pCallbackPair->pre->ScriptContext().Push(pThis->m_pDesc->m_pName);
             pCallbackPair->pre->ScriptContext().Push(pActivator);
             pCallbackPair->pre->ScriptContext().Push(pCaller);
+            pCallbackPair->pre->ScriptContext().Push(value);
             pCallbackPair->pre->ScriptContext().Push(flDelay);
 
             for (auto fnMethodToCall : pCallbackPair->pre->GetFunctions()) {
@@ -211,6 +212,7 @@ void DetourFireOutputInternal(CEntityIOOutput* const pThis, CEntityInstance* pAc
             pCallbackPair->post->ScriptContext().Push(pThis->m_pDesc->m_pName);
             pCallbackPair->post->ScriptContext().Push(pActivator);
             pCallbackPair->post->ScriptContext().Push(pCaller);
+            pCallbackPair->post->ScriptContext().Push(value);
             pCallbackPair->post->ScriptContext().Push(flDelay);
             pCallbackPair->post->Execute();
         }
