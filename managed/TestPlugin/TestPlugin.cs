@@ -212,6 +212,13 @@ namespace TestPlugin
 
                 return HookResult.Continue;
             }, HookMode.Pre);
+            
+            RegisterEventHandler<EventGrenadeBounce>((@event, info) =>
+            {
+                Logger.LogInformation("Player {Player} grenade bounce", @event.Userid.PlayerName);
+
+                return HookResult.Continue;
+            }, HookMode.Pre);
             RegisterEventHandler<EventPlayerSpawn>((@event, info) =>
             {
                 if (!@event.Userid.IsValid) return 0;
