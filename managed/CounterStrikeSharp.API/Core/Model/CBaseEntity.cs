@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Runtime.InteropServices;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
 
@@ -26,4 +26,6 @@ public partial class CBaseEntity
     /// Shorthand for accessing an entity's CBodyComponent?.SceneNode?.AbsRotation;
     /// </summary>
     public QAngle? AbsRotation => CBodyComponent?.SceneNode?.AbsRotation;
+
+    public T? GetVData<T>() where T : CEntitySubclassVDataBase => (T)Activator.CreateInstance(typeof(T),  Marshal.ReadIntPtr(SubclassID.Handle + 8));
 }

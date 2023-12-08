@@ -84,9 +84,9 @@ SET(SOURCE_FILES
     src/core/managers/server_manager.h
     src/scripting/natives/natives_server.cpp
     libraries/nlohmann/json.hpp
-        src/scripting/natives/natives_dynamichooks.cpp
     src/core/managers/voice_manager.cpp
     src/core/managers/voice_manager.h
+    src/scripting/natives/natives_dynamichooks.cpp
 )
 
 

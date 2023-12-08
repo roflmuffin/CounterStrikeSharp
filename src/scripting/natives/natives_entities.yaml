@@ -10,3 +10,5 @@ PRINT_TO_CONSOLE: index:int, message:string -> void
 GET_FIRST_ACTIVE_ENTITY: -> pointer
 GET_PLAYER_AUTHORIZED_STEAMID: slot:int -> uint64
 GET_PLAYER_IP_ADDRESS: slot:int -> string
+HOOK_ENTITY_OUTPUT: classname:string, outputName:string, callback:func, mode:HookMode -> void
+UNHOOK_ENTITY_OUTPUT: classname:string, outputName:string, callback:func, mode:HookMode -> void
