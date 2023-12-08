@@ -429,7 +429,6 @@ INetChannelInfo* CPlayer::GetNetInfo() const { return globals::engine->GetPlayer
 
 PlayerManager::PlayerManager()
 {
-    //m_max_clients = 64; // no it's not
     m_players = new CPlayer[66];
     m_player_count = 0;
     m_user_id_lookup = new int[USHRT_MAX + 1];
