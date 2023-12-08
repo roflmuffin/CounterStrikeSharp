@@ -118,7 +118,7 @@ jobs:
           dotnet-version: '7.0.x'
 
       - name: Install dependencies
-        run: dotnet restore
+        run: dotnet restore managed/CounterStrikeSharp.sln
 
       - name: Run tests
         run: dotnet test --logger trx --results-directory "TestResults-${{ env.GITHUB_SHA_SHORT }}" managed/CounterStrikeSharp.API.Tests/CounterStrikeSharp.API.Tests.csproj
