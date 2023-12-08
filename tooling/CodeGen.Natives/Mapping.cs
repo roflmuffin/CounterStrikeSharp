@@ -61,6 +61,8 @@ public class Mapping
                 return "object[]";
             case "SteamID":
                 return "[CastFrom(typeof(ulong))]SteamID";
+            case "HookMode":
+                return "HookMode";
             case "DataType_t":
                 return "DataType";
             case "any":

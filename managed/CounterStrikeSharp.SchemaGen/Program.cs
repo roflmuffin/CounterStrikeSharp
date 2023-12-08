@@ -28,7 +28,18 @@ internal static partial class Program
         "IChoreoServices::ChoreoState_t",
         "SpawnPointCoopEnemy::BotDefaultBehavior_t",
         "CLogicBranchList::LogicBranchListenerLastState_t",
-        "SimpleConstraintSoundProfile::SimpleConstraintsSoundProfileKeypoints_t"
+        "SimpleConstraintSoundProfile::SimpleConstraintsSoundProfileKeypoints_t",
+        "MoodAnimationLayer_t"
+    };
+
+    private static readonly IReadOnlySet<string> IgnoreClassWildcards = new HashSet<string>
+    {
+        "CResourceNameTyped",
+        "CEntityOutputTemplate",
+        "CVariantBase",
+        "HSCRIPT",
+        "KeyValues3",
+        "Unknown"
     };
 
     public static string SanitiseTypeName(string typeName) => typeName.Replace(":", "");
@@ -159,11 +170,18 @@ internal static partial class Program
 
         // Manually whitelist some classes
         visited.Add("CTakeDamageInfo");
+        visited.Add("CEntitySubclassVDataBase");
+        visited.Add("CFiringModeFloat");
+        visited.Add("CFiringModeInt");
+        visited.Add("CSkillFloat");
+        visited.Add("CSkillInt");
+        visited.Add("CRangeFloat");
+        visited.Add("CNavLinkAnimgraphVar");
 
         var visitedClassNames = new HashSet<string>();
         foreach (var (className, schemaClass) in allClasses)
         {
-            if (visited.Contains(className))
+            if (visited.Contains(className) || className.Contains("VData"))
             {
                 var isPointeeType = pointeeTypes.Contains(className);
 
@@ -211,10 +229,11 @@ internal static partial class Program
 
         foreach (var field in schemaClass.Fields)
         {
+            if (IgnoreClassWildcards.Any(y => field.Type.Name.Contains(y)))
+                continue;
+            
             // Putting these in the too hard basket for now.
-            if (field.Name == "m_VoteOptions" || field.Type.Name.Contains("CEntityOutputTemplate") ||
-                field.Type.Name.Contains("CVariantBase") ||
-                field.Type.Name == "HSCRIPT" || field.Type.Name == "KeyValues3") continue;
+            if (field.Name == "m_VoteOptions" || field.Name == "m_aShootSounds") continue;
 
             if (field.Type is { Category: SchemaTypeCategory.Atomic, Atomic: SchemaAtomicCategory.Collection })
             {
