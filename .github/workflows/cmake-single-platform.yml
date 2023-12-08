@@ -117,7 +117,21 @@ jobs:
         with:
           dotnet-version: '7.0.x'
 
-      - run: |
+      - name: Install dependencies
+        run: dotnet restore managed/CounterStrikeSharp.sln
+
+      - name: Run tests
+        run: dotnet test --logger trx --results-directory "TestResults-${{ env.GITHUB_SHA_SHORT }}" managed/CounterStrikeSharp.API.Tests/CounterStrikeSharp.API.Tests.csproj
+
+      - name: Upload dotnet test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results-${{ env.GITHUB_SHA_SHORT }}
+          path: TestResults-${{ env.GITHUB_SHA_SHORT }}
+        if: ${{ always() }}
+
+      - name: Publish artifacts
+        run: |
           dotnet publish -c Release /p:Version=1.0.${{ env.BUILD_NUMBER }} managed/CounterStrikeSharp.API
           dotnet pack -c Release /p:Version=1.0.${{ env.BUILD_NUMBER }} managed/CounterStrikeSharp.API   
 
