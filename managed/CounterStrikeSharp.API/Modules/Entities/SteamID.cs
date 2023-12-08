@@ -8,7 +8,12 @@ namespace CounterStrikeSharp.API.Modules.Entities
         const long Base = 76561197960265728;
         public ulong SteamId64 { get; set; }
 
-        public SteamID(ulong id) => SteamId64 = id >= Base ? id : id + Base;
+        public SteamID(ulong id)
+        {
+            if (id <= 0) throw new ArgumentOutOfRangeException(nameof(id));
+            SteamId64 = id >= Base ? id : id + Base;
+        }
+
         public SteamID(string id) : this(id.StartsWith('[') ? ParseId3(id) : ParseId(id)) { }
 
         public static explicit operator SteamID(ulong u) => new(u);

@@ -6,13 +6,13 @@ namespace CounterStrikeSharp.API.Tests;
 public class SteamIdTests
 {
     [Theory]
-    [InlineData(76561197960524373ul, "STEAM_0:1:129322", "[U:1:258645]", 258645, SteamAccountType.Individual, SteamAccountInstance.Desktop, SteamAccountUniverse.Public, true)]
-    [InlineData(0ul, "STEAM_0:0:9185091437874642944", "[I:0:18370182875749285888]", 0, SteamAccountType.Invalid, SteamAccountInstance.All, SteamAccountUniverse.Unspecified, false)]
-    [InlineData(76561197960265728ul, "STEAM_0:0:0", "[U:1:0]", 0, SteamAccountType.Individual, SteamAccountInstance.Desktop, SteamAccountUniverse.Public, false)]
-    [InlineData(103582791429521412ul, "STEAM_0:0:13510796734627842", "[g:1:27021593469255684]", 4, SteamAccountType.Clan, SteamAccountInstance.All, SteamAccountUniverse.Public, true)]
-    public void ValidateSteamId(ulong steamId64, string steamId2, string steamId3, int steamId32, SteamAccountType accountType, SteamAccountInstance accountInstance, SteamAccountUniverse accountUniverse, bool valid)
+    [InlineData(76561197960524373ul, 76561197960524373ul, "STEAM_0:1:129322", "[U:1:258645]", 258645, SteamAccountType.Individual, SteamAccountInstance.Desktop, SteamAccountUniverse.Public, true)]
+    [InlineData(258645, 76561197960524373ul, "STEAM_0:1:129322", "[U:1:258645]", 258645, SteamAccountType.Individual, SteamAccountInstance.Desktop, SteamAccountUniverse.Public, true)]
+    [InlineData(76561197960265728ul, 76561197960265728ul, "STEAM_0:0:0", "[U:1:0]", 0, SteamAccountType.Individual, SteamAccountInstance.Desktop, SteamAccountUniverse.Public, false)]
+    [InlineData(103582791429521412ul, 103582791429521412ul, "STEAM_0:0:13510796734627842", "[g:1:27021593469255684]", 4, SteamAccountType.Clan, SteamAccountInstance.All, SteamAccountUniverse.Public, true)]
+    public void ValidateSteamId(ulong parseValue, ulong steamId64, string steamId2, string steamId3, int steamId32, SteamAccountType accountType, SteamAccountInstance accountInstance, SteamAccountUniverse accountUniverse, bool valid)
     {
-        var steamId = new SteamID(steamId64);
+        var steamId = new SteamID(parseValue);
         
         Assert.Equal(steamId64, steamId.SteamId64);
         Assert.Equal(steamId2, steamId.SteamId2);
@@ -42,5 +42,11 @@ public class SteamIdTests
         
         Assert.True(steamId1 == steamId2);
         Assert.True(steamId1 != steamId3);
+    }
+    
+    [Fact]
+    public void ThrowsOutOfRangeException()
+    {
+        Assert.Throws<ArgumentOutOfRangeException>(() => new SteamID(0));
     }
 }
