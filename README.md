@@ -39,7 +39,7 @@ These features are the core of the platform and work pretty well/have a low risk
 
 ## Links
 
-- [Join the Discord](https://discord.gg/X7r3PmuYKq): Ask questions, provide suggestions
+- [Join the Discord](https://discord.gg/eAZU3guKWU): Ask questions, provide suggestions
 - [Read the docs](https://docs.cssharp.dev/): Getting started guide, hello world plugin example
 - [Issue tracker](https://github.com/roflmuffin/CounterStrikeSharp/issues): Raise any issues here
 - [Builds](https://github.com/roflmuffin/CounterStrikeSharp/actions): Download latest unstable dev snapshot
