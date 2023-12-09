@@ -2,7 +2,7 @@
 
 CounterStrikeSharp is a server side modding framework for Counter-Strike: Global Offensive. This project attempts to implement a .NET Core scripting layer on top of a Metamod Source Plugin, allowing developers to create plugins that interact with the game server in a modern language (C#) to facilitate the creation of maintainable and testable code.
 
-[Come and join our Discord](https://discord.gg/X7r3PmuYKq)
+[Come and join our Discord](https://discord.gg/eAZU3guKWU)
 
 ## History
 
