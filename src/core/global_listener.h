@@ -45,6 +45,7 @@ public:
     virtual void OnStartup() {}
     virtual void OnShutdown() {}
     virtual void OnAllInitialized() {}
+    virtual void OnGameLoopInitialized() {}
     virtual void OnAllInitialized_Post() {}
     virtual void OnLevelChange(const char *mapName) {}
     virtual void OnLevelEnd() {}

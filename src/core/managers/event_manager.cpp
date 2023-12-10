@@ -44,6 +44,15 @@ EventManager::~EventManager() = default;
 
 void EventManager::OnStartup() {}
 
+void EventManager::OnGameLoopInitialized()
+{
+    while (!m_PendingHooks.empty()) {
+        const auto& pendingHook = m_PendingHooks.top();
+        HookEvent(pendingHook.m_Name.c_str(), pendingHook.m_fnCallback, pendingHook.m_bPost);
+        m_PendingHooks.pop();
+    }
+}
+
 void EventManager::OnAllInitialized()
 {
     SH_ADD_HOOK(IGameEventManager2, FireEvent, globals::gameEventManager,
@@ -67,6 +76,17 @@ void EventManager::FireGameEvent(IGameEvent* pEvent) {}
 bool EventManager::HookEvent(const char* szName, CallbackT fnCallback, bool bPost)
 {
     EventHook* pHook;
+
+    // Plugin load is called before game loop (and thus events file is loaded)
+    // So we defer hooking until game loop is initialized
+    if (!globals::gameLoopInitialized) {
+        const PendingEventHook pendingHook{szName, fnCallback, bPost};
+        m_PendingHooks.push(pendingHook);
+        return true;
+    }
+
+    CSSHARP_CORE_TRACE("[EventManager] Hooking event: {0} with callback pointer: {1}", szName,
+                       (void*)fnCallback);
 
     if (!globals::gameEventManager->FindListener(this, szName)) {
         globals::gameEventManager->AddListener(this, szName, true);

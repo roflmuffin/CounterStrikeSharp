@@ -49,6 +49,9 @@ public:  // hooks
                             const char *);
     void AddTaskForNextFrame(std::function<void()> &&task);
 
+    void Hook_RegisterLoopMode(const char* pszLoopModeName, ILoopModeFactory *pLoopModeFactory, void **ppGlobalPointer);
+    IEngineService* Hook_FindService(const char* serviceName);
+
 public:
     const char *GetAuthor() override;
     const char *GetName() override;
