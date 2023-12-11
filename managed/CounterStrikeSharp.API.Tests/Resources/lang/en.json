@@ -1,0 +1,4 @@
+{
+  "test.translation": "This is the english translation",
+  "test.format": "This number has 2 decimal places {0:n2}"
+} 
