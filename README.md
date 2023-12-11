@@ -14,7 +14,7 @@ Due to the architectural changes of CS2, the plugin is being rebuilt on the grou
 
 Download the latest build from [here](https://github.com/roflmuffin/CounterStrikeSharp/releases). (Download the with runtime version if this is your first time installing).
 
-Detailed installation instructions can be found in the [docs](https://docs.cssharp.dev/guides/getting-started/).
+Detailed installation instructions can be found in the [docs](https://docs.cssharp.dev/docs/guides/getting-started.html).
 
 ## What works?
 
