@@ -17,6 +17,6 @@ public static class StringExtensions
             }
         }
 
-        return modifiedValue.Equals(message) ? message : $"\x01\x0B\x01{modifiedValue}";
+        return modifiedValue.Equals(message) ? message : $" {modifiedValue}";
     }
 }
