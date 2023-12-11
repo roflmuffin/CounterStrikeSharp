@@ -61,19 +61,20 @@ namespace CounterStrikeSharp.API.Core
             _coreConfig.Load();
             _gameDataProvider.Load();
 
-            var adminGroupsPath = Path.Combine(_scriptHostConfiguration.RootPath, "configs", "admin_groups.json");
-            Logger.LogInformation("Loading Admin Groups from {Path}", adminGroupsPath);
-            AdminManager.LoadAdminGroups(adminGroupsPath);
-
             var adminPath = Path.Combine(_scriptHostConfiguration.RootPath, "configs", "admins.json");
             Logger.LogInformation("Loading Admins from {Path}", adminPath);
             AdminManager.LoadAdminData(adminPath);
+            
+            var adminGroupsPath = Path.Combine(_scriptHostConfiguration.RootPath, "configs", "admin_groups.json");
+            Logger.LogInformation("Loading Admin Groups from {Path}", adminGroupsPath);
+            AdminManager.LoadAdminGroups(adminGroupsPath);
 
             var overridePath = Path.Combine(_scriptHostConfiguration.RootPath, "configs", "admin_overrides.json");
             Logger.LogInformation("Loading Admin Command Overrides from {Path}", overridePath);
             AdminManager.LoadCommandOverrides(overridePath);
 
             AdminManager.MergeGroupPermsIntoAdmins();
+            AdminManager.AddCommands();
 
             _pluginManager.Load();
 

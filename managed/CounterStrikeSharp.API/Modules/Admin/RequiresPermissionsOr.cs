@@ -20,12 +20,28 @@ namespace CounterStrikeSharp.API.Modules.Admin
             }
             if (!base.CanExecuteCommand(caller)) return false;
 
-            var groupPermissions = Permissions.Where(perm => perm.StartsWith(PermissionCharacters.GroupPermissionChar));
-            var userPermissions = Permissions.Where(perm => perm.StartsWith(PermissionCharacters.UserPermissionChar));
-
             var adminData = AdminManager.GetPlayerAdminData(caller.AuthorizedSteamID);
             if (adminData == null) return false;
-            return (groupPermissions.Intersect(adminData.Groups).Count() + userPermissions.Intersect(adminData.Flags).Count()) > 0;
+            
+            // Check to see if the caller has a root flag for any of the domains in our permissions.
+            // If they do, remove all of the user flags and groups that belong to the domain
+            // from our permission check.
+            var domains = Permissions.Where(
+                flag => flag.StartsWith(PermissionCharacters.GroupPermissionChar))
+                .Distinct()
+                .Select(domain => domain.Split('/').First()[1..]);
+
+            foreach (var domain in domains)
+            {
+                if (adminData.DomainHasRootFlag(domain))
+                {
+                    Permissions.RemoveWhere(flag => flag.Contains(domain + '/'));
+                }
+            }
+
+            var groupPermissions = Permissions.Where(perm => perm.StartsWith(PermissionCharacters.GroupPermissionChar));
+            var userPermissions = Permissions.Where(perm => perm.StartsWith(PermissionCharacters.UserPermissionChar));
+            return (groupPermissions.Intersect(adminData.Groups).Count() + userPermissions.Intersect(adminData.GetAllFlags()).Count()) > 0;
         }
     }
 }
