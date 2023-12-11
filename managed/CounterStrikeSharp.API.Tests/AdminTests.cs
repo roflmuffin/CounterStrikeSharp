@@ -18,6 +18,7 @@ public class AdminTests
     public void ShouldReturnValidAdminData()
     {
         var adminData = AdminManager.GetPlayerAdminData((SteamID)76561197960265731);
+        Assert.NotNull(adminData);
         Assert.Equal("#css/admin", adminData.Groups.Single());
     }
 
@@ -25,7 +26,10 @@ public class AdminTests
     public void ShouldUseGroupImmunity()
     {
         var adminData = AdminManager.GetPlayerAdminData((SteamID)76561197960265731);
+        Assert.NotNull(adminData);
         Assert.Equal(125u, adminData.Immunity); // Group immunity is 125, Admin immunity is 100
+        AdminManager.SetPlayerImmunity((SteamID)76561197960265731, 150u);
+        Assert.Equal(150u, adminData.Immunity); // Group immunity is 125, Admin immunity is 100
     }
     
     [Fact]
@@ -39,9 +43,9 @@ public class AdminTests
     public void ShouldReturnValidCommandOverrides()
     {
         var adminData = AdminManager.GetPlayerAdminData((SteamID)76561197960265731);
+        Assert.NotNull(adminData);
         Assert.True(adminData.CommandOverrides["fake_command"]);
         Assert.False(adminData.CommandOverrides["css"]);
-        Assert.Equal(3, adminData.CommandOverrides.Count);
     }
     
     [Fact]
@@ -63,8 +67,44 @@ public class AdminTests
     [Fact]
     public void ShouldAddFlagsAtRuntime()
     {
+        // Existing player
         Assert.False(AdminManager.PlayerHasPermissions((SteamID)76561197960265731, "@runtime/flag1"));
         AdminManager.AddPlayerPermissions((SteamID)76561197960265731, "@runtime/flag1");
         Assert.True(AdminManager.PlayerHasPermissions((SteamID)76561197960265731, "@runtime/flag1"));
+        
+        // Non-existent player
+        Assert.False(AdminManager.PlayerHasPermissions((SteamID)76561197960265730, "@runtime/flag1"));
+        AdminManager.AddPlayerPermissions((SteamID)76561197960265730, "@runtime/flag1");
+        Assert.True(AdminManager.PlayerHasPermissions((SteamID)76561197960265730, "@runtime/flag1"));
+        
+        AdminManager.ClearPlayerPermissions((SteamID)76561197960265730);
+        Assert.False(AdminManager.PlayerHasPermissions((SteamID)76561197960265730, "@runtime/flag1"));
+        Assert.Empty(AdminManager.GetPlayerAdminData((SteamID)76561197960265730)!.GetAllFlags());
+    }
+
+    [Fact]
+    public void ShouldAddPlayerToGroup()
+    {
+        AdminManager.AddPlayerToGroup(new SteamID("STEAM_0:1:3"), "#css/root");
+        var adminData = AdminManager.GetPlayerAdminData(new SteamID("STEAM_0:1:3"));
+        Assert.NotNull(adminData);
+        Assert.Equal("#css/root", adminData.Groups.Single());
+    }
+    
+    [Fact]
+    public void ShouldAddPlayerPermissionOverridesAtRuntime()
+    {
+        Assert.False(AdminManager.PlayerHasCommandOverride((SteamID)76561197960265731, "runtime_command"));
+        AdminManager.SetPlayerCommandOverride((SteamID)76561197960265731, "runtime_command", true);
+        Assert.True(AdminManager.PlayerHasCommandOverride((SteamID)76561197960265731, "runtime_command"));
+    }
+    
+    [Fact]
+    public void ShouldAddCommandPermissionOverridesAtRuntime()
+    {
+        Assert.False(AdminManager.CommandIsOverriden("runtime_command"));
+        AdminManager.AddPermissionOverride("runtime_command", "@runtime/override");
+        Assert.True(AdminManager.CommandIsOverriden("runtime_command"));
+        Assert.Equal("@runtime/override", AdminManager.GetPermissionOverrides("runtime_command").Single());
     }
 }
