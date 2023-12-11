@@ -76,4 +76,12 @@ public class TranslationTests
     {
         Assert.Equal("This number has 2 decimal places 0.25", _localizer["test.format", 0.251]);
     }
+    
+    [Fact]
+    public void HandlesColorFormatting()
+    {
+        // Sets invisible pre-color if there is a color code in the string.
+        Assert.Equal("\x01\x0B\x01\x10This\x01 text has \x04green\x01 text", _localizer["test.colors"]);
+        Assert.Equal($"\x01\x0B\x01{'\x10'}1.25\x01", _localizer["test.colors.withformat", 1.25]);
+    }
 }

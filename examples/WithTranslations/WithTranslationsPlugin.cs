@@ -26,6 +26,12 @@ public class WithTranslationsPlugin : BasePlugin
         // IStringLocalizer can accept standard string format arguments.
         // "This number has 2 decimal places {0:n2}" -> "This number has 2 decimal places 123.55"
         Logger.LogInformation(Localizer["test.format", 123.551]);
+        
+        // This message has colour codes
+        Server.PrintToChatAll(Localizer["test.colors"]);
+
+        // This message has colour codes and formatted values
+        Server.PrintToChatAll(Localizer["test.colors.withformat", 123.551]);
     }
     
     [ConsoleCommand("css_replylanguage", "Test Translations")]

@@ -70,7 +70,7 @@ public class JsonStringLocalizer : IStringLocalizer
             result = _resourceManager.GetString(name, CultureInfo.DefaultThreadCurrentUICulture!);
         }
 
-        return result;
+        return result?.ReplaceColorTags();
     }
     
     protected virtual IEnumerable<LocalizedString> GetAllStrings(bool includeParentCultures, CultureInfo culture)
