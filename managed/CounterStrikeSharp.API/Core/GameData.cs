@@ -53,7 +53,7 @@ public sealed class GameDataProvider : IStartupService
             foreach (string filePath in Directory.EnumerateFiles(_gameDataDirectoryPath, "*.json"))
             {
                 string jsonContent = File.ReadAllText(filePath);
-                Dictionary<string,LoadedGameData> loadedMethods = JsonSerializer.Deserialize<Dictionary<string, LoadedGameData>>(jsonContent)!;
+                Dictionary<string, LoadedGameData> loadedMethods = JsonSerializer.Deserialize<Dictionary<string, LoadedGameData>>(jsonContent)!;
 
                 foreach (KeyValuePair<string, LoadedGameData> loadedMethod in loadedMethods)
                 {
@@ -68,6 +68,10 @@ public sealed class GameDataProvider : IStartupService
                 if (loadedMethods != null)
                 {
                     _logger.LogInformation("Successfully loaded {Count} game data entries from {Path}", loadedMethods.Count, filePath);
+                }
+                else
+                {
+                    _logger.LogWarning("Unable to load game data entries from {Path}, game data file is empty", filePath);
                 }
             }
         }
