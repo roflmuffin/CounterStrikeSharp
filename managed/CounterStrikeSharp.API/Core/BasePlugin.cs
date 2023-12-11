@@ -177,16 +177,14 @@ namespace CounterStrikeSharp.API.Core
                 // The server will always be allowed to execute commands (unless marked as client only like above)
                 if (caller != null) 
                 {
+                    // Do not execute command if we do not have the correct permissions.
                     var adminData = AdminManager.GetPlayerAdminData(caller!.AuthorizedSteamID);
                     var permissionsToCheck = new List<BaseRequiresPermissions>();
 
-                    if (!AdminManager.CommandIsOverriden(name))
-                    {
-                        // Do not execute command if we do not have the correct permissions.
-                        var permissions = methodInfo?.GetCustomAttributes<BaseRequiresPermissions>();
-                        if (permissions != null) permissionsToCheck.AddRange(permissions);
-                    }
-                    else
+
+                    // If our command is overriden, we dynamically create a new permissions attribute
+                    // based on the data that is stored in admin_overrides.json.
+                    if (AdminManager.CommandIsOverriden(name))
                     {
                         var data = AdminManager.GetCommandOverrideData(name);
                         if (data != null)
@@ -197,24 +195,26 @@ namespace CounterStrikeSharp.API.Core
                             if (attr != null) permissionsToCheck.Add(attr);
                         }
                     }
+                    // The permissions for this command are not being overriden here, so we
+                    // grab the permissions to check straight from the attribute.
+                    else
+                    {
+                        var permissions = methodInfo?.GetCustomAttributes<BaseRequiresPermissions>();
+                        if (permissions != null) permissionsToCheck.AddRange(permissions);
+                    }
 
                     foreach (var attr in permissionsToCheck)
                     {
                         attr.Command = name;
                         if (!attr.CanExecuteCommand(caller))
                         {
-                            if (attr.GetType() == typeof(RequiresPermissions))
-                            {
-                                var flags = attr.Permissions.Except(adminData?.GetAllFlags() ?? new HashSet<string>());
-                                flags = flags.Except(adminData?.Groups ?? new HashSet<string>());
-                                command.ReplyToCommand($"[CSS] You are missing the correct permissions ({string.Join(", ", flags)}) to execute this command.");
-                            }
-                            else
-                            {
-                                var flags = attr.Permissions.Except(adminData?.GetAllFlags() ?? new HashSet<string>());
-                                flags = flags.Except(adminData?.Groups ?? new HashSet<string>());
-                                command.ReplyToCommand($"[CSS] You do not have one of the correct permissions ({string.Join(", ", attr.Permissions)}) to execute this command.");
-                            }
+                            var responseStr = (attr.GetType() == typeof(RequiresPermissions)) ?
+                            "You are missing the correct permissions" : "You do not have one of the correct permissions";
+
+                            var flags = attr.Permissions.Except(adminData?.GetAllFlags() ?? new HashSet<string>());
+                            flags = flags.Except(adminData?.Groups ?? new HashSet<string>());
+                            command.ReplyToCommand($"[CSS] {responseStr} ({string.Join(", ", flags)}) to execute this command.");
+
                             return;
                         }
                     }
@@ -240,9 +240,12 @@ namespace CounterStrikeSharp.API.Core
                     // but we'll just ignore that for this check.
                     if (helperAttribute.MinArgs != 0 && command.ArgCount - 1 < helperAttribute.MinArgs)
                     {
+                        // Remove the "css_" from the beginning of the command name if it's present.
+                        // Most of the time, users will be calling commands from chat.
                         var commandCalled = command.ArgByIndex(0);
                         var properCommandName = (commandCalled.StartsWith("css_")) ? commandCalled.Replace("css_", "") : commandCalled;
-                        command.ReplyToCommand($"[CSS] Expected usage: \"!{command.ArgByIndex(0)} {helperAttribute.Usage}\".");
+
+                        command.ReplyToCommand($"[CSS] Expected usage: \"!{properCommandName} {helperAttribute.Usage}\".");
                         return;
                     }
                 }

@@ -103,6 +103,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
 
         public bool DomainHasFlags(string domain, string[] flags, bool ignoreRoot = false)
         {
+            if (!Flags.ContainsKey(domain)) return false;
             if (DomainHasRootFlag(domain) && !ignoreRoot) return true;
             return Flags[domain].IsSupersetOf(flags);
         }
@@ -201,21 +202,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             // The server console should have access to all commands, regardless of permissions.
             if (player == null) return true;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return false; }
-
-            var playerData = GetPlayerAdminData(player.AuthorizedSteamID);
-            if (playerData == null) return false;
-
-            bool returnValue = true;
-            foreach (var domain in playerData.Flags)
-            {
-                if (!playerData.DomainHasFlags(domain.Key,
-                    flags
-                    .Where(flag => flag.StartsWith(PermissionCharacters.UserPermissionChar + domain.Key + '/')).ToArray()))
-                {
-                    returnValue = false; break;
-                }
-            }
-            return returnValue;
+            return PlayerHasPermissions(player.AuthorizedSteamID, flags);
         }
 
         /// <summary>
@@ -230,13 +217,25 @@ namespace CounterStrikeSharp.API.Modules.Admin
             var playerData = GetPlayerAdminData(steamId);
             if (playerData == null) return false;
 
-            var playerFlags = flags.ToHashSet<string>();
+            // Check to see that all of the domains in the flags that we're checking are
+            // present in our player data.
+            var localDomains = flags.Where(
+               flag => flag.StartsWith(PermissionCharacters.UserPermissionChar))
+               .Distinct()
+               .Select(domain => domain.Split('/').First()[1..])
+               .ToHashSet();
+            var playerFlagDomains = playerData.GetFlagDomains().ToHashSet();
+            if (!playerFlagDomains.IsSupersetOf(localDomains)) return false;
+
+            // Loop through all of the domains and see if we have the required flags
+            // for every domain.
             bool returnValue = true;
             foreach (var domain in playerData.Flags)
             {
                 if (!playerData.DomainHasFlags(domain.Key,
                     flags
-                    .Where(flag => flag.StartsWith(PermissionCharacters.UserPermissionChar + domain.Key + '/')).ToArray()))
+                    .Where(flag => flag.StartsWith(PermissionCharacters.UserPermissionChar + domain.Key + '/'))
+                    .ToArray()))
                 {
                     returnValue = false; break;
                 }
@@ -379,17 +378,14 @@ namespace CounterStrikeSharp.API.Modules.Admin
             var data = GetPlayerAdminData(steamId);
             if (data == null)
             {
-                var flagData = new Dictionary<string, HashSet<string>>();
-
                 data = new AdminData()
                 {
                     Identity = steamId.SteamId64.ToString(),
-                    Flags = new(flagData),
+                    Flags = new(),
                     Groups = new()
                 };
 
                 Admins[steamId] = data;
-                return;
             }
 
             Admins[steamId].AddFlags(flags.ToHashSet<string>());
