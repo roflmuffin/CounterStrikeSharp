@@ -30,5 +30,19 @@ namespace CounterStrikeSharp.API
         {
             Handle = pointer;
         }
+        
+        /// <summary>
+        /// Returns a new instance of the specified type using the pointer from the passed in object.
+        /// </summary>
+        /// <remarks>
+        /// Useful for creating a new instance of a class that inherits from NativeObject.
+        /// e.g. <code>var weaponServices = playerWeaponServices.As&lt;CCSPlayer_WeaponServices&gt;();</code>
+        /// </remarks>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public T As<T>() where T : NativeObject
+        {
+            return (T)Activator.CreateInstance(typeof(T), this.Handle);
+        }
     }
 }

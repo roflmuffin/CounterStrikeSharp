@@ -37,7 +37,7 @@ CModule::CModule(const char* path, const char* module) : m_pszModule(module), m_
 
 void* CModule::FindSignature(const char* signature)
 {
-    if (strlen(signature) == 0) {
+    if (signature == nullptr || strlen(signature) == 0) {
         return nullptr;
     }
 

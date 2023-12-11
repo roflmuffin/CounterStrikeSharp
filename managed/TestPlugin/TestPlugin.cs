@@ -45,7 +45,7 @@ namespace TestPlugin
         [JsonPropertyName("LogPrefix")] public string LogPrefix { get; set; } = "CSSharp";
     }
 
-    [MinimumApiVersion(33)]
+    [MinimumApiVersion(80)]
     public class SamplePlugin : BasePlugin, IPluginConfig<SampleConfig>
     {
         public override string ModuleName => "Sample Plugin";
@@ -96,6 +96,7 @@ namespace TestPlugin
             SetupListeners();
             SetupCommands();
             SetupMenus();
+            SetupEntityOutputHooks();
 
             // ValveInterface provides pointers to loaded modules via Interface Name exposed from the engine (e.g. Source2Server001)
             var server = ValveInterface.Server;
@@ -140,7 +141,7 @@ namespace TestPlugin
             VirtualFunctions.UTIL_RemoveFunc.Hook(hook =>
             {
                 var entityInstance = hook.GetParam<CEntityInstance>(0);
-                Logger.LogInformation("Removed entity {EntityIndex}", entityInstance.EntityIndex.Value.Value);
+                Logger.LogInformation("Removed entity {EntityIndex}", entityInstance.Index);
 
                 return HookResult.Continue;
             }, HookMode.Post);
@@ -214,13 +215,20 @@ namespace TestPlugin
 
                 return HookResult.Continue;
             }, HookMode.Pre);
+            
+            RegisterEventHandler<EventGrenadeBounce>((@event, info) =>
+            {
+                Logger.LogInformation("Player {Player} grenade bounce", @event.Userid.PlayerName);
+
+                return HookResult.Continue;
+            }, HookMode.Pre);
             RegisterEventHandler<EventPlayerSpawn>((@event, info) =>
             {
                 if (!@event.Userid.IsValid) return 0;
                 if (!@event.Userid.PlayerPawn.IsValid) return 0;
 
                 Logger.LogInformation("Player spawned with entity index: {EntityIndex} & User ID: {UserId}",
-                    @event.Userid.EntityIndex, @event.Userid.UserId);
+                    @event.Userid.Index, @event.Userid.UserId);
 
                 return HookResult.Continue;
             });
@@ -232,26 +240,20 @@ namespace TestPlugin
                 var activeWeapon = @event.Userid.PlayerPawn.Value.WeaponServices?.ActiveWeapon.Value;
                 var weapons = @event.Userid.PlayerPawn.Value.WeaponServices?.MyWeapons;
 
+                Server.NextFrame(() =>
+                {
+                    var weaponServices = player.PlayerPawn.Value.WeaponServices.As<CCSPlayer_WeaponServices>();
+                    player.PrintToChat(weaponServices.ActiveWeapon.Value?.DesignerName);    
+                });
+                
                 // Set player to random colour
                 player.PlayerPawn.Value.Render = Color.FromArgb(Random.Shared.Next(0, 255),
                     Random.Shared.Next(0, 255), Random.Shared.Next(0, 255));
 
-                Server.NextFrame(() =>
-                {
-                    player.PrintToCenter(string.Join("\n", weapons.Select(x => x.Value.DesignerName)));
-                });
-
                 activeWeapon.ReserveAmmo[0] = 250;
                 activeWeapon.Clip1 = 250;
 
-                Logger.LogInformation("Pawn Position: {AbsOrigin}-{Rotation}", pawn.AbsOrigin, pawn.AbsRotation);
-
-                char randomColourChar = (char)new Random().Next(0, 16);
-                Server.PrintToChatAll($"Random String with Random Colour: {randomColourChar}{new Random().Next()}");
-
                 pawn.Health += 5;
-
-                Logger.LogInformation("Bullet Impact: {X},{Y},{Z}", @event.X, @event.Y, @event.Z);
 
                 return HookResult.Continue;
             });
@@ -307,7 +309,7 @@ namespace TestPlugin
                 switch (designerName)
                 {
                     case "smokegrenade_projectile":
-                        var projectile = new CSmokeGrenadeProjectile(entity.Handle);
+                        var projectile = entity.As<CSmokeGrenadeProjectile>();
 
                         Server.NextFrame(() =>
                         {
@@ -319,7 +321,7 @@ namespace TestPlugin
                         });
                         return;
                     case "flashbang_projectile":
-                        var flashbang = new CBaseCSGrenadeProjectile(entity.Handle);
+                        var flashbang = entity.As<CBaseCSGrenadeProjectile>();
 
                         Server.NextFrame(() => { flashbang.Remove(); });
                         return;
@@ -415,6 +417,29 @@ namespace TestPlugin
             });
         }
 
+        private void SetupEntityOutputHooks()
+        {
+            HookEntityOutput("weapon_knife", "OnPlayerPickup", (output, name, activator, caller, value, delay) =>
+            {
+                Logger.LogInformation("weapon_knife called OnPlayerPickup ({name}, {activator}, {caller}, {delay})", output.Description.Name, activator.DesignerName, caller.DesignerName, delay);
+
+                return HookResult.Continue;
+            });
+            
+            HookEntityOutput("*", "*", (output, name, activator, caller, value, delay) =>
+            {
+                Logger.LogInformation("All EntityOutput ({name}, {activator}, {caller}, {delay})", output.Description.Name, activator.DesignerName, caller.DesignerName, delay);
+
+                return HookResult.Continue;
+            });
+            
+            HookEntityOutput("*", "OnStartTouch", (output, name, activator, caller, value, delay) =>
+            {
+                Logger.LogInformation("OnStartTouch: ({name}, {activator}, {caller}, {delay})", name, activator.DesignerName, caller.DesignerName, delay);
+                return HookResult.Continue;
+            });
+        }
+
         [GameEventHandler]
         public HookResult OnPlayerConnect(EventPlayerConnect @event, GameEventInfo info)
         {
@@ -469,7 +494,22 @@ namespace TestPlugin
 
             foreach (var weapon in player.PlayerPawn.Value.WeaponServices.MyWeapons)
             {
-                command.ReplyToCommand(weapon.Value.DesignerName);
+                var vData = weapon.Value.As<CCSWeaponBase>().VData;
+                command.ReplyToCommand(string.Format("{0}, {1}, {2}, {3}, {4}, {5}", vData.Name, vData.GearSlot, vData.Price, vData.WeaponCategory, vData.WeaponType, vData.KillAward));
+            }
+        }
+        
+        [ConsoleCommand("css_entities", "List entities")]
+        public void OnCommandEntities(CCSPlayerController? player, CommandInfo command)
+        {
+            foreach (var entity in Utilities.GetAllEntities())
+            {
+                command.ReplyToCommand($"{entity.Index}:{entity.DesignerName}");
+            }
+            
+            foreach (var entity in Utilities.FindAllEntitiesByDesignerName<CBaseEntity>("cs_"))
+            {
+                command.ReplyToCommand($"{entity.Index}:{entity.DesignerName}");
             }
         }
         
@@ -490,6 +530,15 @@ namespace TestPlugin
         {
             Logger.LogInformation("Current Culture is {Culture}", CultureInfo.CurrentCulture);
             command.ReplyToCommand(Localizer["testPlugin.maxPlayersAnnouncement", Server.MaxPlayers]);
+        }
+        
+        [ConsoleCommand("css_sound", "Play a sound to client")]
+        public void OnCommandSound(CCSPlayerController? player, CommandInfo command)
+        {
+            if (player == null) return;
+            if (!player.PlayerPawn.IsValid) return;
+
+            player.ExecuteClientCommand($"play sounds/ui/counter_beep.vsnd");
         }
 
         [ConsoleCommand("css_pause", "Pause Game")]
@@ -534,6 +583,14 @@ namespace TestPlugin
         {
             Logger.LogInformation("Event found {Pointer:X}, event name: {EventName}, dont broadcast: {DontBroadcast}",
                 @event.Handle, @event.EventName, info.DontBroadcast);
+
+            return HookResult.Continue;
+        }
+
+        [EntityOutputHook("*", "OnPlayerPickup")]
+        public HookResult OnPickup(CEntityIOOutput output, string name, CEntityInstance activator, CEntityInstance caller, CVariant value, float delay)
+        {
+            Logger.LogInformation("[EntityOutputHook Attribute] Called OnPlayerPickup ({name}, {activator}, {caller}, {delay})", name, activator.DesignerName, caller.DesignerName, delay);
 
             return HookResult.Continue;
         }

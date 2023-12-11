@@ -151,7 +151,7 @@ public:
 public:
     int NumPlayers() const;
     int MaxClients() const;
-    CPlayer *GetPlayerByIndex(int client) const;
+    CPlayer *GetPlayerBySlot(int client) const;
     CPlayer *GetClientOfUserId(int user_id) const;
 
 private:

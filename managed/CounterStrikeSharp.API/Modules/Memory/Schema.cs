@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using CounterStrikeSharp.API.Core;
 
 namespace CounterStrikeSharp.API.Modules.Memory;
@@ -49,6 +50,8 @@ public class Schema
         "m_nActiveCoinRank",
         "m_nMusicID",
     };
+    
+    public static int GetClassSize(string className) => NativeAPI.GetSchemaClassSize(className);
 
     public static short GetSchemaOffset(string className, string propertyName)
     {
@@ -92,9 +95,9 @@ public class Schema
         return ref Unsafe.AsRef<T>((void*)(pointer + GetSchemaOffset(className, memberName)));
     }
 
-    public static unsafe T GetPointer<T>(IntPtr pointer)
+    public static T GetPointer<T>(IntPtr pointer)
     {
-        var pointerTo = Unsafe.Read<IntPtr>((void*)pointer);
+        var pointerTo = Marshal.ReadIntPtr(pointer);
         if (pointerTo == IntPtr.Zero)
         {
             return default;
@@ -103,9 +106,9 @@ public class Schema
         return (T)Activator.CreateInstance(typeof(T), pointerTo);
     }
 
-    public static unsafe T GetPointer<T>(IntPtr pointer, string className, string memberName)
+    public static T GetPointer<T>(IntPtr pointer, string className, string memberName)
     {
-        var pointerTo = Unsafe.Read<IntPtr>((void*)(pointer + GetSchemaOffset(className, memberName)));
+        var pointerTo = Marshal.ReadIntPtr(pointer + GetSchemaOffset(className, memberName));
         if (pointerTo == IntPtr.Zero)
         {
             return default;

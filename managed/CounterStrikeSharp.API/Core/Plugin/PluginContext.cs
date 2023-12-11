@@ -69,32 +69,41 @@ namespace CounterStrikeSharp.API.Core.Plugin
                     config.IsUnloadable = true;
                 });
 
-            _fileWatcher = new FileSystemWatcher
+            if (CoreConfig.PluginHotReloadEnabled)
             {
-                Path = Path.GetDirectoryName(path)
-            };
-
-            _fileWatcher.Deleted += async (s, e) =>
-            {
-                if (e.FullPath == path)
+                _fileWatcher = new FileSystemWatcher
                 {
-                    _logger.LogInformation("Plugin {Name} has been deleted, unloading...", Plugin.ModuleName);
-                    Unload(true);
-                }
-            };
+                    Path = Path.GetDirectoryName(path)
+                };
 
-            _fileWatcher.Filter = "*.dll";
-            _fileWatcher.EnableRaisingEvents = true;
-            Loader.Reloaded += async (s, e) => await OnReloadedAsync(s, e);
+                _fileWatcher.Deleted += async (s, e) =>
+                {
+                    Server.NextWorldUpdate(() =>
+                    {
+                        if (e.FullPath == path)
+                        {
+                            _logger.LogInformation("Plugin {Name} has been deleted, unloading...", Plugin.ModuleName);
+                            Unload(true);
+                        }
+                    });
+                };
+
+                _fileWatcher.Filter = "*.dll";
+                _fileWatcher.EnableRaisingEvents = true;
+                Loader.Reloaded += async (s, e) => await OnReloadedAsync(s, e);
+            }
         }
 
         private Task OnReloadedAsync(object sender, PluginReloadedEventArgs eventargs)
         {
-            _logger.LogInformation("Reloading plugin {Name}", Plugin.ModuleName);
-            Loader = eventargs.Loader;
-            Unload(hotReload: true);
-            Load(hotReload: true);
-
+            Server.NextWorldUpdate(() =>
+            {
+                _logger.LogInformation("Reloading plugin {Name}", Plugin.ModuleName);
+                Loader = eventargs.Loader;
+                Unload(hotReload: true);
+                Load(hotReload: true);
+            });
+            
             return Task.CompletedTask;
         }
 

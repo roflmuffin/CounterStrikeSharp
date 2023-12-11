@@ -23,7 +23,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             var groupPermissions = Permissions.Where(perm => perm.StartsWith(PermissionCharacters.GroupPermissionChar));
             var userPermissions = Permissions.Where(perm => perm.StartsWith(PermissionCharacters.UserPermissionChar));
 
-            var adminData = AdminManager.GetPlayerAdminData((SteamID)caller.SteamID);
+            var adminData = AdminManager.GetPlayerAdminData(caller.AuthorizedSteamID);
             if (adminData == null) return false;
             return (groupPermissions.Intersect(adminData.Groups).Count() + userPermissions.Intersect(adminData.Flags).Count()) > 0;
         }

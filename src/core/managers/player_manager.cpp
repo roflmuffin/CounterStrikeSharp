@@ -38,6 +38,7 @@
 #include <sourcehook/sourcehook.h>
 
 #include "core/log.h"
+#include "core/timer_system.h"
 #include "scripting/callback_manager.h"
 #include <iplayerinfo.h>
 // extern CEntitySystem *g_pEntitySystem;
@@ -303,9 +304,9 @@ int PlayerManager::NumPlayers() const { return m_player_count; }
 
 int PlayerManager::MaxClients() const { return m_max_clients; }
 
-CPlayer* PlayerManager::GetPlayerByIndex(int client) const
+CPlayer* PlayerManager::GetPlayerBySlot(int client) const
 {
-    if (client > m_max_clients || client < 1) {
+    if (client > m_max_clients || client < 0) {
         return nullptr;
     }
 
@@ -434,11 +435,11 @@ PlayerManager::PlayerManager()
 
 void PlayerManager::RunAuthChecks()
 {
-    if (globals::getGlobalVars()->curtime - m_last_auth_check_time < 0.5F) {
+    if (globals::timerSystem.GetTickedTime() - m_last_auth_check_time < 0.5F) {
         return;
     }
 
-    m_last_auth_check_time = globals::getGlobalVars()->curtime;
+    m_last_auth_check_time = globals::timerSystem.GetTickedTime();
 
     for (int i = 0; i <= m_max_clients; i++) {
         if (m_players[i].IsConnected()) {
