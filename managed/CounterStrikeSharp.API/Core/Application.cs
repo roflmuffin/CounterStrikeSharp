@@ -14,13 +14,16 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using CounterStrikeSharp.API.Core.Hosting;
 using CounterStrikeSharp.API.Core.Plugin;
 using CounterStrikeSharp.API.Core.Plugin.Host;
+using CounterStrikeSharp.API.Core.Translations;
 using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Modules.Commands;
+using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Menu;
 using CounterStrikeSharp.API.Modules.Utils;
 using Microsoft.Extensions.Logging;
@@ -40,10 +43,11 @@ namespace CounterStrikeSharp.API.Core
         private readonly CoreConfig _coreConfig;
         private readonly IPluginManager _pluginManager;
         private readonly IPluginContextQueryHandler _pluginContextQueryHandler;
+        private readonly IPlayerLanguageManager _playerLanguageManager;
 
         public Application(ILoggerFactory loggerFactory, IScriptHostConfiguration scriptHostConfiguration,
             GameDataProvider gameDataProvider, CoreConfig coreConfig, IPluginManager pluginManager,
-            IPluginContextQueryHandler pluginContextQueryHandler)
+            IPluginContextQueryHandler pluginContextQueryHandler, IPlayerLanguageManager playerLanguageManager)
         {
             Logger = loggerFactory.CreateLogger("Core");
             _scriptHostConfiguration = scriptHostConfiguration;
@@ -51,6 +55,7 @@ namespace CounterStrikeSharp.API.Core
             _coreConfig = coreConfig;
             _pluginManager = pluginManager;
             _pluginContextQueryHandler = pluginContextQueryHandler;
+            _playerLanguageManager = playerLanguageManager;
             _instance = this;
         }
 
@@ -153,7 +158,7 @@ namespace CounterStrikeSharp.API.Core
                             true);
                         break;
                     }
-                    
+
                     // If our arugment doesn't end in ".dll" - try and construct a path similar to PluginName/PluginName.dll.
                     // We'll assume we have a full path if we have ".dll".
                     var path = info.GetArg(2);
@@ -173,7 +178,8 @@ namespace CounterStrikeSharp.API.Core
                         try
                         {
                             _pluginManager.LoadPlugin(path);
-                        } catch (Exception e)
+                        }
+                        catch (Exception e)
                         {
                             info.ReplyToCommand($"Could not load plugin \"{path}\")", true);
                         }
@@ -182,7 +188,7 @@ namespace CounterStrikeSharp.API.Core
                     {
                         plugin.Load(false);
                     }
-                    
+
                     break;
                 }
 
@@ -245,11 +251,44 @@ namespace CounterStrikeSharp.API.Core
             }
         }
 
+        [CommandHelper(usage: "[language code, e.g. \"de\", \"pl\", \"en\"]", whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
+        private void OnLangCommand(CCSPlayerController? player, CommandInfo command)
+        {
+            if (player == null) return;
+            
+            SteamID steamId = (SteamID)player.SteamID;
+
+            if (command.ArgCount == 1)
+            {
+                var language = _playerLanguageManager.GetLanguage(steamId);
+                command.ReplyToCommand(string.Format("Current language is \"{0}\" ({1})", language.Name, language.NativeName));
+                return;
+            }
+
+            if (command.ArgCount != 2)
+            {
+                return;
+            }
+            
+            try
+            {
+                var language = command.GetArg(1);
+                var cultureInfo = CultureInfo.GetCultures(CultureTypes.AllCultures).Single(x => x.Name == language);
+                _playerLanguageManager.SetLanguage(steamId, cultureInfo);
+                command.ReplyToCommand($"Language set to {cultureInfo.NativeName}");
+            }
+            catch (InvalidOperationException)
+            {
+                command.ReplyToCommand("Language not found.");
+            }
+        }
+
         private void RegisterPluginCommands()
         {
             CommandUtils.AddStandaloneCommand("css", "Counter-Strike Sharp options.", OnCSSCommand);
             CommandUtils.AddStandaloneCommand("css_plugins", "Counter-Strike Sharp plugin options.",
                 OnCSSPluginCommand);
+            CommandUtils.AddStandaloneCommand("css_lang", "Set Counter-Strike Sharp language", OnLangCommand);
         }
     }
 }

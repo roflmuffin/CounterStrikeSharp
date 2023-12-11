@@ -16,6 +16,7 @@
 
 using System;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Core
@@ -54,6 +55,8 @@ namespace CounterStrikeSharp.API.Core
         string ModulePath { get; internal set; }
 
         ILogger Logger { get; set; }
+        
+        IStringLocalizer Localizer { get; set; }
 
         void RegisterAllAttributes(object instance);
 

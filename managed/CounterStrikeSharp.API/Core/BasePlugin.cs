@@ -21,12 +21,14 @@ using System.Linq;
 using System.Reflection;
 using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
+using CounterStrikeSharp.API.Core.Translations;
 using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Timers;
 using CounterStrikeSharp.API.Modules.Config;
 using CounterStrikeSharp.API.Modules.Entities;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Core
@@ -58,6 +60,8 @@ namespace CounterStrikeSharp.API.Core
         public string ModuleDirectory => Path.GetDirectoryName(ModulePath);
         public ILogger Logger { get; set; }
 
+        public IStringLocalizer Localizer { get; set; }
+        
         public virtual void Load(bool hotReload)
         {
         }
@@ -170,6 +174,8 @@ namespace CounterStrikeSharp.API.Core
             {
                 var caller = (i != -1) ? new CCSPlayerController(NativeAPI.GetEntityFromIndex(i + 1)) : null;
                 var command = new CommandInfo(ptr, caller);
+                
+                using var temporaryCulture = new WithTemporaryCulture(caller.GetLanguage());
 
                 var methodInfo = handler?.GetMethodInfo();
 

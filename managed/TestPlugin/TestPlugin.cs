@@ -16,6 +16,7 @@
 
 using System;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.Json.Serialization;
@@ -23,6 +24,7 @@ using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
+using CounterStrikeSharp.API.Core.Translations;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -31,6 +33,7 @@ using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Menu;
 using CounterStrikeSharp.API.Modules.Utils;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
 namespace TestPlugin
@@ -520,6 +523,13 @@ namespace TestPlugin
             {
                 command.ReplyToCommand($" {(char)i}Color 0x{i:x}");
             }
+        }
+        
+        [ConsoleCommand("css_localetest", "Test Translations")]
+        public void OnCommandLocaleTest(CCSPlayerController? player, CommandInfo command)
+        {
+            Logger.LogInformation("Current Culture is {Culture}", CultureInfo.CurrentCulture);
+            command.ReplyToCommand(Localizer["testPlugin.maxPlayersAnnouncement", Server.MaxPlayers]);
         }
         
         [ConsoleCommand("css_sound", "Play a sound to client")]
