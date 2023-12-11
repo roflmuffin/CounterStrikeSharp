@@ -3,24 +3,110 @@ using System.IO;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using System.Text.Json;
-using CounterStrikeSharp.API.Core;
-using CounterStrikeSharp.API.Modules.Utils;
 using CounterStrikeSharp.API.Modules.Entities;
-using CounterStrikeSharp.API.Modules.Commands;
-using System.Reflection;
-using System.Numerics;
 using System.Linq;
 using CounterStrikeSharp.API.Core.Logging;
 using Microsoft.Extensions.Logging;
+using System.Text.Json.Nodes;
+using System.Numerics;
+using CounterStrikeSharp.API.Modules.Utils;
+using System.Diagnostics.Eventing.Reader;
 
 namespace CounterStrikeSharp.API.Modules.Admin
 {
     public partial class AdminData
     {
         [JsonPropertyName("identity")] public required string Identity { get; init; }
-        [JsonPropertyName("flags")] public HashSet<string> Flags { get; init; } = new();
+        // Flags loaded from file. Do not use this for actual comparisons.
+        [JsonPropertyName("flags")] public HashSet<string> _flags { get; init; } = new();
+
         [JsonPropertyName("immunity")] public uint Immunity { get; set; } = 0;
         [JsonPropertyName("command_overrides")] public Dictionary<string, bool> CommandOverrides { get; init; } = new();
+
+        // Key is the domain of the flag "e.g "css, os, kzsurf"). This should NOT include the @ character.
+        // Value is a hashmap of the flags inside of the domain (e.g "@css/generic")
+        public Dictionary<string, HashSet<string>> Flags { get; init; } = new();
+
+        public void InitalizeFlags()
+        {
+            AddFlags(_flags);
+        }
+
+        /// <summary>
+        /// Checks to see if a domain has a root flag inside of it.
+        /// </summary>
+        /// <param name="domain">Domain to check for.</param>
+        /// <returns>True if "@{domain}/root" or "@{domain}/*" is present, false if not.</returns>
+        public bool DomainHasRootFlag(string domain)
+        {
+            if (!Flags.ContainsKey(domain)) return false;
+            if (Flags[domain].Contains("@" + domain + "/root")) return true;
+            else if (Flags[domain].Contains("@" + domain + "/*")) return true;
+            else return false;
+        }
+
+        /// <summary>
+        /// Returns a list of all domains for flags.
+        /// </summary>
+        /// <returns></returns>
+        public string[] GetFlagDomains()
+        {
+            return Flags.Keys.ToArray();
+        }
+
+        /// <summary>
+        /// Returns a HashSet of all flags.
+        /// </summary>
+        /// <returns></returns>
+        public HashSet<string> GetAllFlags()
+        {
+            var flags = new HashSet<string>();
+            foreach (var domainFlags in Flags.Values)
+            {
+                flags.UnionWith(domainFlags);
+            }
+            return flags;
+        }
+
+        public void AddFlags(HashSet<string> flags)
+        {
+            var domains = flags.Where(
+               flag => flag.StartsWith(PermissionCharacters.UserPermissionChar))
+               .Distinct()
+               .Select(domain => domain.Split('/').First()[1..]);
+
+            foreach (var domain in domains)
+            {
+                if (!Flags.ContainsKey(domain))
+                {
+                    Flags[domain] = new HashSet<string>();
+                }
+                Flags[domain].UnionWith(flags.Where(flag => flag.StartsWith(PermissionCharacters.UserPermissionChar + domain + '/')).ToHashSet());
+            }
+        }
+
+        public void RemoveFlags(HashSet<string> flags)
+        {
+            var domains = flags.Where(
+               flag => flag.StartsWith(PermissionCharacters.UserPermissionChar))
+               .Distinct()
+               .Select(domain => domain.Split('/').First()[1..]);
+
+            foreach (var domain in domains)
+            {
+                if (!Flags.ContainsKey(domain)) continue;
+                var domainFlags = flags.Where(flag => flag.StartsWith(PermissionCharacters.UserPermissionChar + domain + '/')).ToHashSet();
+                Flags[domain].ExceptWith(flags);
+                if (Flags[domain].Count() == 0) Flags.Remove(domain);
+            }
+        }
+
+        public bool DomainHasFlags(string domain, string[] flags, bool ignoreRoot = false)
+        {
+            if (!Flags.ContainsKey(domain)) return false;
+            if (DomainHasRootFlag(domain) && !ignoreRoot) return true;
+            return Flags[domain].IsSupersetOf(flags);
+        }
     }
 
     public static partial class AdminManager
@@ -39,16 +125,28 @@ namespace CounterStrikeSharp.API.Modules.Admin
                     _logger.LogWarning("Admin data file not found. Skipping admin data load.");
                     return;
                 }
-                
-                var adminsFromFile = JsonSerializer.Deserialize<Dictionary<string, AdminData>>(File.ReadAllText(adminDataPath), new JsonSerializerOptions() { ReadCommentHandling = JsonCommentHandling.Skip });
+                var settings = new JsonSerializerOptions() { ReadCommentHandling = JsonCommentHandling.Skip };
+                var adminsFromFile = JsonSerializer.Deserialize<Dictionary<string, AdminData>>(File.ReadAllText(adminDataPath), settings);
                 if (adminsFromFile == null) { throw new FileNotFoundException(); }
+
                 foreach (var adminDef in adminsFromFile.Values)
                 {
+                    adminDef.InitalizeFlags();
+                    Console.WriteLine($"Domains: {adminDef.Flags.Count}");
+
                     if (SteamID.TryParse(adminDef.Identity, out var steamId))
                     {
                         if (Admins.ContainsKey(steamId!))
                         {
-                            Admins[steamId!].Flags.UnionWith(adminDef.Flags);
+                            // Merge domains together if we already have pre-existing values.
+                            foreach (var (domain, flags) in adminDef.Flags)
+                            {
+                                if (Admins[steamId!].Flags.ContainsKey(domain))
+                                {
+                                    Admins[steamId!].Flags[domain].UnionWith(flags);
+                                }
+                            }
+
                             if (adminDef.Immunity > Admins[steamId!].Immunity)
                             {
                                 Admins[steamId!].Immunity = adminDef.Immunity;
@@ -74,8 +172,9 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// </summary>
         /// <param name="steamId">SteamID object of the player.</param>
         /// <returns>AdminData class if data found, null if not.</returns>
-        public static AdminData? GetPlayerAdminData(SteamID steamId)
+        public static AdminData? GetPlayerAdminData(SteamID? steamId)
         {
+            if (steamId == null) return null;
             return Admins.GetValueOrDefault(steamId);
         }
 
@@ -83,8 +182,9 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// Removes a players admin data. This is not saved to "configs/admins.json"
         /// </summary>
         /// <param name="steamId">Steam ID remove admin data from.</param>
-        public static void RemovePlayerAdminData(SteamID steamId)
+        public static void RemovePlayerAdminData(SteamID? steamId)
         {
+            if (steamId == null) return;
             Admins.Remove(steamId);
         }
 
@@ -102,8 +202,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             // The server console should have access to all commands, regardless of permissions.
             if (player == null) return true;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return false; }
-            var playerData = GetPlayerAdminData(player.AuthorizedSteamID);
-            return playerData?.Flags.IsSupersetOf(flags) ?? false;
+            return PlayerHasPermissions(player.AuthorizedSteamID, flags);
         }
 
         /// <summary>
@@ -112,10 +211,36 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// <param name="steamId">Steam ID object.</param>
         /// <param name="flags">Flags to look for in the players permission flags.</param>
         /// <returns>True if flags are present, false if not.</returns>
-        public static bool PlayerHasPermissions(SteamID steamId, params string[] flags)
+        public static bool PlayerHasPermissions(SteamID? steamId, params string[] flags)
         {
+            if (steamId == null) return false;
             var playerData = GetPlayerAdminData(steamId);
-            return playerData?.Flags.IsSupersetOf(flags) ?? false;
+            if (playerData == null) return false;
+
+            // Check to see that all of the domains in the flags that we're checking are
+            // present in our player data.
+            var localDomains = flags.Where(
+               flag => flag.StartsWith(PermissionCharacters.UserPermissionChar))
+               .Distinct()
+               .Select(domain => domain.Split('/').First()[1..])
+               .ToHashSet();
+            var playerFlagDomains = playerData.GetFlagDomains().ToHashSet();
+            if (!playerFlagDomains.IsSupersetOf(localDomains)) return false;
+
+            // Loop through all of the domains and see if we have the required flags
+            // for every domain.
+            bool returnValue = true;
+            foreach (var domain in playerData.Flags)
+            {
+                if (!playerData.DomainHasFlags(domain.Key,
+                    flags
+                    .Where(flag => flag.StartsWith(PermissionCharacters.UserPermissionChar + domain.Key + '/'))
+                    .ToArray()))
+                {
+                    returnValue = false; break;
+                }
+            }
+            return returnValue;
         }
 
         #endregion
@@ -136,7 +261,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             // The server console should have access to all commands, regardless of permissions.
             if (player == null) return true;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return false; }
-            var playerData = GetPlayerAdminData((SteamID)player.AuthorizedSteamID);
+            var playerData = GetPlayerAdminData(player.AuthorizedSteamID);
             return playerData?.CommandOverrides.ContainsKey(command) ?? false;
         }
 
@@ -147,8 +272,9 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// <param name="steamId">Steam ID object.</param>
         /// <param name="command">Name of the command to check for.</param>
         /// <returns>True if override exists, false if not.</returns>
-        public static bool PlayerHasCommandOverride(SteamID steamId, string command)
+        public static bool PlayerHasCommandOverride(SteamID? steamId, string command)
         {
+            if (steamId == null) return false;
             var playerData = GetPlayerAdminData(steamId);
             return playerData?.CommandOverrides.ContainsKey(command) ?? false;
         }
@@ -165,7 +291,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             // The server console should have access to all commands, regardless of permissions.
             if (player == null) return true;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return false; }
-            var playerData = GetPlayerAdminData((SteamID)player.AuthorizedSteamID);
+            var playerData = GetPlayerAdminData(player.AuthorizedSteamID);
             return playerData?.CommandOverrides.GetValueOrDefault(command) ?? false;
         }
 
@@ -175,8 +301,9 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// <param name="steamId">Steam ID object.</param>
         /// <param name="command">Name of the command to check for.</param>
         /// <returns>True if override is active, false if not.</returns>
-        public static bool GetPlayerCommandOverrideState(SteamID steamId, string command)
+        public static bool GetPlayerCommandOverrideState(SteamID? steamId, string command)
         {
+            if (steamId == null) return false;
             var playerData = GetPlayerAdminData(steamId);
             return playerData?.CommandOverrides.GetValueOrDefault(command) ?? false;
         }
@@ -193,7 +320,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             // The server console should have access to all commands, regardless of permissions.
             if (player == null) return;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return; }
-            SetPlayerCommandOverride((SteamID)player.AuthorizedSteamID, command, state);
+            SetPlayerCommandOverride(player.AuthorizedSteamID, command, state);
         }
 
         /// <summary>
@@ -202,8 +329,9 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// <param name="steamId">SteamID to add a flag to.</param>
         /// <param name="command">Name of the command to check for.</param>
         /// <param name="state">New state of the command override.</param>
-        public static void SetPlayerCommandOverride(SteamID steamId, string command, bool state)
+        public static void SetPlayerCommandOverride(SteamID? steamId, string command, bool state)
         {
+            if (steamId == null) return;
             var data = GetPlayerAdminData(steamId);
             if (data == null)
             {
@@ -235,7 +363,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
         {
             if (player == null) return;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) return;
-            AddPlayerPermissions((SteamID)player.AuthorizedSteamID, flags);
+            AddPlayerPermissions(player.AuthorizedSteamID, flags);
         }
         
         /// <summary>
@@ -244,27 +372,23 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// </summary>
         /// <param name="steamId">SteamID to add a flag to.</param>
         /// <param name="flags">Flags to add for the player.</param>
-        public static void AddPlayerPermissions(SteamID steamId, params string[] flags)
+        public static void AddPlayerPermissions(SteamID? steamId, params string[] flags)
         {
+            if (steamId == null) return;
             var data = GetPlayerAdminData(steamId);
             if (data == null)
             {
                 data = new AdminData()
                 {
                     Identity = steamId.SteamId64.ToString(),
-                    Flags = new(flags),
+                    Flags = new(),
                     Groups = new()
                 };
 
                 Admins[steamId] = data;
-                return;
             }
-            
-            foreach (var flag in flags)
-            {
-                data.Flags.Add(flag);
-            }
-            Admins[steamId] = data;
+
+            Admins[steamId].AddFlags(flags.ToHashSet<string>());
         }
         
         /// <summary>
@@ -278,7 +402,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             if (player == null) return;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) return;
 
-            RemovePlayerPermissions((SteamID)player.AuthorizedSteamID, flags);
+            RemovePlayerPermissions(player.AuthorizedSteamID, flags);
         }
 
         /// <summary>
@@ -287,13 +411,12 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// </summary>
         /// <param name="steamId">Steam ID to remove flags from.</param>
         /// <param name="flags">Flags to remove from the player.</param>
-        public static void RemovePlayerPermissions(SteamID steamId, params string[] flags)
+        public static void RemovePlayerPermissions(SteamID? steamId, params string[] flags)
         {
+            if (steamId == null) return;
             var data = GetPlayerAdminData(steamId);
             if (data == null) return;
-            
-            data.Flags.ExceptWith(flags);
-            Admins[steamId] = data;
+            Admins[steamId].RemoveFlags(flags.ToHashSet<string>());
         }
 
         /// <summary>
@@ -306,7 +429,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             if (player == null) return;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) return;
 
-            ClearPlayerPermissions((SteamID)player.AuthorizedSteamID);
+            ClearPlayerPermissions(player.AuthorizedSteamID);
         }
 
         /// <summary>
@@ -314,8 +437,9 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// "configs/admins.json".
         /// </summary>
         /// <param name="steamId">Steam ID to remove flags from.</param>
-        public static void ClearPlayerPermissions(SteamID steamId)
+        public static void ClearPlayerPermissions(SteamID? steamId)
         {
+            if (steamId == null) return;
             var data = GetPlayerAdminData(steamId);
             if (data == null) return;
 
@@ -335,7 +459,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             if (player == null) return;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) return;
 
-            SetPlayerImmunity((SteamID)player.AuthorizedSteamID, value);
+            SetPlayerImmunity(player.AuthorizedSteamID, value);
         }
 
         /// <summary>
@@ -343,8 +467,9 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// </summary>
         /// <param name="steamId">Steam ID of the player.</param>
         /// <param name="value">New immunity value.</param>
-        public static void SetPlayerImmunity(SteamID steamId, uint value)
+        public static void SetPlayerImmunity(SteamID? steamId, uint value)
         {
+            if (steamId == null) return;
             var data = GetPlayerAdminData(steamId);
             if (data == null) return;
 
@@ -366,10 +491,10 @@ namespace CounterStrikeSharp.API.Modules.Admin
             if (target == null) return false;
             if (!target.IsValid || target.Connected != PlayerConnectedState.PlayerConnected) return false;
 
-            var callerData = GetPlayerAdminData((SteamID)caller.AuthorizedSteamID);
+            var callerData = GetPlayerAdminData(caller.AuthorizedSteamID);
             if (callerData == null) return false;
 
-            var targetData = GetPlayerAdminData((SteamID)target.AuthorizedSteamID);
+            var targetData = GetPlayerAdminData(caller.AuthorizedSteamID);
             if (targetData == null) return true;
 
             return callerData.Immunity >= targetData.Immunity;
@@ -381,8 +506,11 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// <param name="caller">Caller of the command.</param>
         /// <param name="target">Target of the command.</param>
         /// <returns></returns>
-        public static bool CanPlayerTarget(SteamID caller, SteamID target)
+        public static bool CanPlayerTarget(SteamID? caller, SteamID? target)
         {
+            if (caller == null) return false;
+            if (target == null) return false;
+
             var callerData = GetPlayerAdminData(caller);
             if (callerData == null) return false;
 
