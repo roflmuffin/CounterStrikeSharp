@@ -100,7 +100,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             var playerData = GetPlayerAdminData(player.AuthorizedSteamID);
             if (playerData == null) return false;
 
-            var playerGroups = groups.ToHashSet<string>();
+            var playerGroups = groups.ToHashSet();
             foreach (var domain in playerData.Flags)
             {
                 if (playerData.DomainHasRootFlag(domain.Key))

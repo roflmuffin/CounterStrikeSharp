@@ -8,7 +8,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
 
     public static partial class AdminManager
     {
-        static AdminManager()
+        public static void AddCommands()
         {
             CommandUtils.AddStandaloneCommand("css_admins_reload", "Reloads the admin file.", ReloadAdminsCommand);
             CommandUtils.AddStandaloneCommand("css_admins_list", "List admins and their flags.", ListAdminsCommand);

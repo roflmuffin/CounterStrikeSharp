@@ -20,6 +20,10 @@
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
     </ItemGroup>
+    
+    <ItemGroup>
+        <None Update="Resources\**\*.*" CopyToOutputDirectory="PreserveNewest" />
+    </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\CounterStrikeSharp.API\CounterStrikeSharp.API.csproj" />
