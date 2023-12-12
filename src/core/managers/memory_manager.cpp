@@ -25,12 +25,26 @@ MemoryManager::~MemoryManager() = default;
 
 void MemoryManager::OnAllInitialized()
 {
+    /* TODO?
+    * I've currently disabled performing patches on load as the current implementation would just
+    * remove the control from the plugins.
+    * 
+    * uncommenting this will automatically perform every patch that is available in the gamedata file(s).
+    * 
+    * required changes:
+    * - create patches at runtime (maybe with dropping the gameconfig dependency)
+    * - (if not dropping the dependency) load other gamedata files aswell
+    * 
+    * currently patches in the gamedata file(s) are unused as long as a plugin explicitly performs it.
+    * for further information, check: https://github.com/roflmuffin/CounterStrikeSharp/pull/160
+
     const auto& gameConfigPatches = globals::gameConfig->GetPatches();
 
     for (const auto& gameConfigPatch : gameConfigPatches)
     {
         CreatePatch(gameConfigPatch.first.c_str(), gameConfigPatch.first.c_str());
     }
+    */
 }
 
 void MemoryManager::OnShutdown()
