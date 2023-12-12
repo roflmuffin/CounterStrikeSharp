@@ -58,8 +58,7 @@ SET(SOURCE_FILES
     src/scripting/natives/natives_vector.cpp
     src/scripting/natives/natives_timers.cpp
     src/utils/virtual.h
-    src/utils/plat_unix.cpp
-    src/utils/plat_win.cpp
+    src/utils/plat.h
     src/scripting/natives/natives_events.cpp
     src/core/memory.cpp
     src/core/memory.h
@@ -101,6 +100,18 @@ if (LINUX)
     set(SOURCE_FILES
         ${SOURCE_FILES}
         libraries/hl2sdk-cs2/public/tier0/memoverride.cpp
+    )
+endif()
+
+if (LINUX)
+    set(SOURCE_FILES
+        ${SOURCE_FILES}
+        src/utils/plat_unix.cpp
+    )
+elseif(WIN32)
+    set(SOURCE_FILES
+        ${SOURCE_FILES}
+        src/utils/plat_win.cpp
     )
 endif()
 
