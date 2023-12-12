@@ -44,6 +44,7 @@ IServerPluginHelpers* helpers = nullptr;
 IUniformRandomStream* randomStream = nullptr;
 IEngineTrace* engineTrace = nullptr;
 IEngineSound* engineSound = nullptr;
+IEngineServiceMgr* engineServiceManager = nullptr;
 INetworkStringTableContainer* netStringTables = nullptr;
 CGlobalVars* globalVars = nullptr;
 IFileSystem* fileSystem = nullptr;
@@ -79,7 +80,9 @@ ChatManager chatManager;
 ServerManager serverManager;
 MemoryManager memoryManager;
 
+bool gameLoopInitialized = false;
 GetLegacyGameEventListener_t* GetLegacyGameEventListener = nullptr;
+std::thread::id gameThreadId;
 
 void Initialize()
 {

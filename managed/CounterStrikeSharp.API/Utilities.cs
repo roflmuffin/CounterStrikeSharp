@@ -150,5 +150,16 @@ namespace CounterStrikeSharp.API
                 return Encoding.UTF8.GetString(buffer);
             }
         }
+
+        public static T? GetPointer<T>(IntPtr pointer) where T : NativeObject
+        {
+            var pointerTo = Marshal.ReadIntPtr(pointer);
+            if (pointerTo == IntPtr.Zero)
+            {
+                return null;
+            }
+
+            return (T)Activator.CreateInstance(typeof(T), pointerTo)!;
+        }
     }
 }

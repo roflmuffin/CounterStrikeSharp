@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -23,6 +23,8 @@ using CounterStrikeSharp.API.Modules.Utils;
 using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Modules.Commands;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using CounterStrikeSharp.API.Core.Hosting;
 using CounterStrikeSharp.API.Core.Logging;
 using Microsoft.Extensions.Hosting;
@@ -46,6 +48,9 @@ namespace CounterStrikeSharp.API.Core
         
         [JsonPropertyName("PluginHotReloadEnabled")]
         public bool PluginHotReloadEnabled { get; set; } = true;
+        
+        [JsonPropertyName("ServerLanguage")]
+        public string ServerLanguage { get; set; } = "en";
     }
 
     /// <summary>
@@ -88,6 +93,8 @@ namespace CounterStrikeSharp.API.Core
         /// When enabled, plugins are automatically reloaded when their .dll file is updated.
         /// </summary>
         public static bool PluginHotReloadEnabled => _coreConfig.PluginHotReloadEnabled;
+        
+        public static string ServerLanguage => _coreConfig.ServerLanguage;
     }
 
     public partial class CoreConfig : IStartupService
@@ -138,6 +145,29 @@ namespace CounterStrikeSharp.API.Core
             {
                 _logger.LogWarning(ex, "Failed to load core configuration, fallback values will be used");
             }
+
+            var serverCulture = CultureInfo.GetCultures(CultureTypes.AllCultures)
+                .FirstOrDefault(x => x.Name == ServerLanguage);
+            if (serverCulture == null)
+            {
+                try
+                {
+                    _logger.LogWarning("Server Language \"{ServerLanguage}\" is not supported, falling back to \"en\"",
+                        ServerLanguage);
+                    _coreConfig.ServerLanguage = "en";
+                    serverCulture = new CultureInfo("en");
+                }
+                catch (Exception)
+                {
+                    _logger.LogWarning("Server is running in invariant mode, translations will not be available.");
+                    serverCulture = CultureInfo.InvariantCulture;
+                }
+            }
+            
+            CultureInfo.DefaultThreadCurrentUICulture = serverCulture;
+            CultureInfo.DefaultThreadCurrentCulture = serverCulture;
+            CultureInfo.CurrentUICulture = serverCulture;
+            CultureInfo.CurrentCulture = serverCulture;
             
             _logger.LogInformation("Successfully loaded core configuration");
         }

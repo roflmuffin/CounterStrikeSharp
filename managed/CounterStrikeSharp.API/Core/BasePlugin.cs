@@ -21,11 +21,14 @@ using System.Linq;
 using System.Reflection;
 using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
+using CounterStrikeSharp.API.Core.Translations;
 using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Timers;
 using CounterStrikeSharp.API.Modules.Config;
+using CounterStrikeSharp.API.Modules.Entities;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Core
@@ -36,6 +39,13 @@ namespace CounterStrikeSharp.API.Core
 
         public BasePlugin()
         {
+            RegisterListener<Listeners.OnMapEnd>(() =>
+            {
+                foreach (KeyValuePair<Delegate, EntityIO.EntityOutputCallback> callback in EntitySingleOutputHooks)
+                {
+                    UnhookSingleEntityOutputInternal(callback.Value.Classname, callback.Value.Output, callback.Value.Handler);
+                }
+            });
         }
 
         public abstract string ModuleName { get; }
@@ -50,6 +60,8 @@ namespace CounterStrikeSharp.API.Core
         public string ModuleDirectory => Path.GetDirectoryName(ModulePath);
         public ILogger Logger { get; set; }
 
+        public IStringLocalizer Localizer { get; set; }
+        
         public virtual void Load(bool hotReload)
         {
         }
@@ -108,6 +120,12 @@ namespace CounterStrikeSharp.API.Core
         public readonly Dictionary<Delegate, CallbackSubscriber> Listeners =
             new Dictionary<Delegate, CallbackSubscriber>();
 
+        public readonly Dictionary<Delegate, CallbackSubscriber> EntityOutputHooks =
+            new Dictionary<Delegate, CallbackSubscriber>();
+
+        internal readonly Dictionary<Delegate, EntityIO.EntityOutputCallback> EntitySingleOutputHooks =
+            new Dictionary<Delegate, EntityIO.EntityOutputCallback>();
+
         public readonly List<Timer> Timers = new List<Timer>();
         
         public delegate HookResult GameEventHandler<T>(T @event, GameEventInfo info) where T : GameEvent;
@@ -156,39 +174,53 @@ namespace CounterStrikeSharp.API.Core
             {
                 var caller = (i != -1) ? new CCSPlayerController(NativeAPI.GetEntityFromIndex(i + 1)) : null;
                 var command = new CommandInfo(ptr, caller);
+                
+                using var temporaryCulture = new WithTemporaryCulture(caller.GetLanguage());
 
                 var methodInfo = handler?.GetMethodInfo();
 
-                if (!AdminManager.CommandIsOverriden(name))
+                // We do not need to do permission checks on commands executed from the server console.
+                // The server will always be allowed to execute commands (unless marked as client only like above)
+                if (caller != null) 
                 {
                     // Do not execute command if we do not have the correct permissions.
-                    var permissions = methodInfo?.GetCustomAttributes<BaseRequiresPermissions>();
-                    if (permissions != null)
+                    var adminData = AdminManager.GetPlayerAdminData(caller!.AuthorizedSteamID);
+                    var permissionsToCheck = new List<BaseRequiresPermissions>();
+
+
+                    // If our command is overriden, we dynamically create a new permissions attribute
+                    // based on the data that is stored in admin_overrides.json.
+                    if (AdminManager.CommandIsOverriden(name))
                     {
-                        foreach (var attr in permissions)
+                        var data = AdminManager.GetCommandOverrideData(name);
+                        if (data != null)
                         {
-                            attr.Command = name;
-                            if (!attr.CanExecuteCommand(caller))
-                            {
-                                command.ReplyToCommand("[CSS] You do not have the correct permissions to execute this command.");
-                                return;
-                            }
+                            var attrType = (data.CheckType == "all") ? typeof(RequiresPermissions) : typeof(RequiresPermissionsOr);
+                            var attr = (BaseRequiresPermissions)Activator.CreateInstance(attrType, args: AdminManager.GetPermissionOverrides(name));
+
+                            if (attr != null) permissionsToCheck.Add(attr);
                         }
                     }
-                }
-                // If this command has it's permissions overriden, we will do an AND check for all permissions.
-                else
-                {
-                    // I don't know if this is the most sane implementation of this, can be edited in code review.
-                    var data = AdminManager.GetCommandOverrideData(name);
-                    if (data != null)
+                    // The permissions for this command are not being overriden here, so we
+                    // grab the permissions to check straight from the attribute.
+                    else
                     {
-                        var attrType = (data.CheckType == "all") ? typeof(RequiresPermissions) : typeof(RequiresPermissionsOr);
-                        var attr = (BaseRequiresPermissions)Activator.CreateInstance(attrType, args: AdminManager.GetPermissionOverrides(name));
+                        var permissions = methodInfo?.GetCustomAttributes<BaseRequiresPermissions>();
+                        if (permissions != null) permissionsToCheck.AddRange(permissions);
+                    }
+
+                    foreach (var attr in permissionsToCheck)
+                    {
                         attr.Command = name;
                         if (!attr.CanExecuteCommand(caller))
                         {
-                            command.ReplyToCommand("[CSS] You do not have the correct permissions to execute this command.");
+                            var responseStr = (attr.GetType() == typeof(RequiresPermissions)) ?
+                            "You are missing the correct permissions" : "You do not have one of the correct permissions";
+
+                            var flags = attr.Permissions.Except(adminData?.GetAllFlags() ?? new HashSet<string>());
+                            flags = flags.Except(adminData?.Groups ?? new HashSet<string>());
+                            command.ReplyToCommand($"[CSS] {responseStr} ({string.Join(", ", flags)}) to execute this command.");
+
                             return;
                         }
                     }
@@ -196,15 +228,17 @@ namespace CounterStrikeSharp.API.Core
 
                 // Do not execute if we shouldn't be calling this command.
                 var helperAttribute = methodInfo?.GetCustomAttribute<CommandHelperAttribute>();
-                if (helperAttribute != null) 
+                if (helperAttribute != null)
                 {
                     switch (helperAttribute.WhoCanExcecute)
                     {
                         case CommandUsage.CLIENT_AND_SERVER: break; // Allow command through.
                         case CommandUsage.CLIENT_ONLY:
-                            if (caller == null || !caller.IsValid) { command.ReplyToCommand("[CSS] This command can only be executed by clients."); return; } break;
+                            if (caller == null || !caller.IsValid) { command.ReplyToCommand("[CSS] This command can only be executed by clients."); return; }
+                            break;
                         case CommandUsage.SERVER_ONLY:
-                            if (caller != null && caller.IsValid) { command.ReplyToCommand("[CSS] This command can only be executed by the server."); return; } break;
+                            if (caller != null && caller.IsValid) { command.ReplyToCommand("[CSS] This command can only be executed by the server."); return; }
+                            break;
                         default: throw new ArgumentException("Unrecognised CommandUsage value passed in CommandHelperAttribute.");
                     }
 
@@ -212,7 +246,12 @@ namespace CounterStrikeSharp.API.Core
                     // but we'll just ignore that for this check.
                     if (helperAttribute.MinArgs != 0 && command.ArgCount - 1 < helperAttribute.MinArgs)
                     {
-                        command.ReplyToCommand($"[CSS] Expected usage: \"!{command.ArgByIndex(0)} {helperAttribute.Usage}\".");
+                        // Remove the "css_" from the beginning of the command name if it's present.
+                        // Most of the time, users will be calling commands from chat.
+                        var commandCalled = command.ArgByIndex(0);
+                        var properCommandName = (commandCalled.StartsWith("css_")) ? commandCalled.Replace("css_", "") : commandCalled;
+
+                        command.ReplyToCommand($"[CSS] Expected usage: \"!{properCommandName} {helperAttribute.Usage}\".");
                         return;
                     }
                 }
@@ -354,6 +393,7 @@ namespace CounterStrikeSharp.API.Core
         {
             this.RegisterAttributeHandlers(instance);
             this.RegisterConsoleCommandAttributeHandlers(instance);
+            this.RegisterEntityOutputAttributeHandlers(instance);
         }
 
         public void InitializeConfig(object instance, Type pluginType)
@@ -430,6 +470,77 @@ namespace CounterStrikeSharp.API.Core
             }
         }
 
+        public void RegisterEntityOutputAttributeHandlers(object instance)
+        {
+            var handlers = instance.GetType()
+                .GetMethods()
+                .Where(method => method.GetCustomAttributes<EntityOutputHookAttribute>().Any())
+                .ToArray();
+
+            foreach (var handler in handlers)
+            {
+                var attributes = handler.GetCustomAttributes<EntityOutputHookAttribute>();
+                foreach (var outputInfo in attributes)
+                {
+                    HookEntityOutput(outputInfo.Classname, outputInfo.OutputName, handler.CreateDelegate<EntityIO.EntityOutputHandler>(instance));
+                }
+            }
+        }
+
+        public void HookEntityOutput(string classname, string outputName, EntityIO.EntityOutputHandler handler, HookMode mode = HookMode.Pre)
+        {
+            var subscriber = new CallbackSubscriber(handler, handler,
+                () => UnhookEntityOutput(classname, outputName, handler));
+
+            NativeAPI.HookEntityOutput(classname, outputName, subscriber.GetInputArgument(), mode);
+            EntityOutputHooks[handler] = subscriber;
+        }
+
+        public void UnhookEntityOutput(string classname, string outputName, EntityIO.EntityOutputHandler handler, HookMode mode = HookMode.Pre)
+        {
+            if (!EntityOutputHooks.TryGetValue(handler, out var subscriber)) return;
+
+            NativeAPI.UnhookEntityOutput(classname, outputName, subscriber.GetInputArgument(), mode);
+            FunctionReference.Remove(subscriber.GetReferenceIdentifier());
+            EntityOutputHooks.Remove(handler);
+        }
+
+        public void HookSingleEntityOutput(CEntityInstance entityInstance, string outputName, EntityIO.EntityOutputHandler handler)
+        {
+            // since we wrap around the plugin handler we need to do this to ensure that the plugin callback is only called
+            // if the entity instance is the same.
+            EntityIO.EntityOutputHandler internalHandler = (output, name, activator, caller, value, delay) =>
+            {
+                if (caller == entityInstance)
+                {
+                    return handler(output, name, activator, caller, value, delay);
+                }
+
+                return HookResult.Continue;
+            };
+
+            HookEntityOutput(entityInstance.DesignerName, outputName, internalHandler);
+
+            // because of ^ we would not be able to unhook since we passed the 'internalHandler' and that's what is being stored, not the original handler
+            // but the plugin could only pass the original handler for unhooking.
+            // (this dictionary does not needed to be cleared on dispose as it has no unmanaged reference and those are already being disposed, but on map end)
+            // (the internal class is needed to be able to remove them on map start)
+            EntitySingleOutputHooks[handler] = new EntityIO.EntityOutputCallback(entityInstance.DesignerName, outputName, internalHandler);
+        }
+
+        public void UnhookSingleEntityOutput(CEntityInstance entityInstance, string outputName, EntityIO.EntityOutputHandler handler)
+        {
+            UnhookSingleEntityOutputInternal(entityInstance.DesignerName, outputName, handler);
+        }
+
+        private void UnhookSingleEntityOutputInternal(string classname, string outputName, EntityIO.EntityOutputHandler handler)
+        {
+            if (!EntitySingleOutputHooks.TryGetValue(handler, out var internalHandler)) return;
+
+            UnhookEntityOutput(classname, outputName, internalHandler.Handler);
+            EntitySingleOutputHooks.Remove(handler);
+        }
+
         public void Dispose()
         {
             Dispose(true);
@@ -460,6 +571,11 @@ namespace CounterStrikeSharp.API.Core
             }
 
             foreach (var subscriber in Listeners.Values)
+            {
+                subscriber.Dispose();
+            }
+
+            foreach (var subscriber in EntityOutputHooks.Values)
             {
                 subscriber.Dispose();
             }

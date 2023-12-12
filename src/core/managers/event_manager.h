@@ -67,6 +67,12 @@ struct EventOverride {
   bool m_bDontBroadcast;
 };
 
+struct PendingEventHook {
+    std::string m_Name;
+    counterstrikesharp::CallbackT m_fnCallback;
+    bool m_bPost;
+};
+
 namespace counterstrikesharp {
 
 class EventManager : public IGameEventListener2, public GlobalClass
@@ -79,6 +85,7 @@ class EventManager : public IGameEventListener2, public GlobalClass
     void OnShutdown() override;
     void OnAllInitialized() override;
     void OnStartup() override;
+    void OnGameLoopInitialized() override;
 
     // IGameEventListener2
     void FireGameEvent(IGameEvent* pEvent) override;
@@ -94,6 +101,7 @@ class EventManager : public IGameEventListener2, public GlobalClass
 
     std::stack<EventHook *> m_EventStack;
     std::stack<IGameEvent *> m_EventCopies;
+    std::stack<PendingEventHook> m_PendingHooks;
 };
 
 } // namespace counterstrikesharp

@@ -2,6 +2,8 @@
 using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Modules.Commands;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace CounterStrikeSharp.API.Modules.Utils;
@@ -17,36 +19,48 @@ public class CommandUtils
 
             var methodInfo = handler?.GetMethodInfo();
 
-            if (!AdminManager.CommandIsOverriden(name))
+            // We do not need to do permission checks on commands executed from the server console.
+            // The server will always be allowed to execute commands (unless marked as client only like above)
+            if (caller != null)
             {
                 // Do not execute command if we do not have the correct permissions.
-                var permissions = methodInfo?.GetCustomAttributes<BaseRequiresPermissions>();
-                if (permissions != null)
+                var adminData = AdminManager.GetPlayerAdminData(caller!.AuthorizedSteamID);
+                var permissionsToCheck = new List<BaseRequiresPermissions>();
+
+
+                // If our command is overriden, we dynamically create a new permissions attribute
+                // based on the data that is stored in admin_overrides.json.
+                if (AdminManager.CommandIsOverriden(name))
                 {
-                    foreach (var attr in permissions)
+                    var data = AdminManager.GetCommandOverrideData(name);
+                    if (data != null)
                     {
-                        attr.Command = name;
-                        if (!attr.CanExecuteCommand(caller))
-                        {
-                            command.ReplyToCommand("[CSS] You do not have the correct permissions to execute this command.");
-                            return;
-                        }
+                        var attrType = (data.CheckType == "all") ? typeof(RequiresPermissions) : typeof(RequiresPermissionsOr);
+                        var attr = (BaseRequiresPermissions)Activator.CreateInstance(attrType, args: AdminManager.GetPermissionOverrides(name));
+
+                        if (attr != null) permissionsToCheck.Add(attr);
                     }
                 }
-            }
-            // If this command has it's permissions overriden, we will do an AND check for all permissions.
-            else
-            {
-                // I don't know if this is the most sane implementation of this, can be edited in code review.
-                var data = AdminManager.GetCommandOverrideData(name);
-                if (data != null) 
+                // The permissions for this command are not being overriden here, so we
+                // grab the permissions to check straight from the attribute.
+                else
                 {
-                    var attrType = (data.CheckType == "all") ? typeof(RequiresPermissions) : typeof(RequiresPermissionsOr);
-                    var attr = (BaseRequiresPermissions)Activator.CreateInstance(attrType, args: AdminManager.GetPermissionOverrides(name));
+                    var permissions = methodInfo?.GetCustomAttributes<BaseRequiresPermissions>();
+                    if (permissions != null) permissionsToCheck.AddRange(permissions);
+                }
+
+                foreach (var attr in permissionsToCheck)
+                {
                     attr.Command = name;
                     if (!attr.CanExecuteCommand(caller))
                     {
-                        command.ReplyToCommand("[CSS] You do not have the correct permissions to execute this command.");
+                        var responseStr = (attr.GetType() == typeof(RequiresPermissions)) ?
+                        "You are missing the correct permissions" : "You do not have one of the correct permissions";
+
+                        var flags = attr.Permissions.Except(adminData?.GetAllFlags() ?? new HashSet<string>());
+                        flags = flags.Except(adminData?.Groups ?? new HashSet<string>());
+                        command.ReplyToCommand($"[CSS] {responseStr} ({string.Join(", ", flags)}) to execute this command.");
+
                         return;
                     }
                 }
@@ -72,7 +86,12 @@ public class CommandUtils
                 // but we'll just ignore that for this check.
                 if (helperAttribute.MinArgs != 0 && command.ArgCount - 1 < helperAttribute.MinArgs)
                 {
-                    command.ReplyToCommand($"[CSS] Expected usage: \"!{command.ArgByIndex(0)} {helperAttribute.Usage}\".");
+                    // Remove the "css_" from the beginning of the command name if it's present.
+                    // Most of the time, users will be calling commands from chat.
+                    var commandCalled = command.ArgByIndex(0);
+                    var properCommandName = (commandCalled.StartsWith("css_")) ? commandCalled.Replace("css_", "") : commandCalled;
+
+                    command.ReplyToCommand($"[CSS] Expected usage: \"!{properCommandName} {helperAttribute.Usage}\".");
                     return;
                 }
             }

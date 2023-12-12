@@ -99,7 +99,7 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TResult>
     {
         this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TResult>(signature);
     }
-    
+
     public VirtualFunctionWithReturn(string signature, string binarypath)
     {
         this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TResult>(signature, binarypath);
@@ -124,7 +124,7 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TResu
     {
         this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TResult>(signature);
     }
-    
+
     public VirtualFunctionWithReturn(string signature, string binarypath)
     {
         this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TResult>(signature, binarypath);
@@ -149,7 +149,7 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5
     {
         this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TResult>(signature);
     }
-    
+
     public VirtualFunctionWithReturn(string signature, string binarypath)
     {
         this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TResult>(signature, binarypath);
@@ -174,7 +174,7 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5
     {
         this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TResult>(signature);
     }
-    
+
     public VirtualFunctionWithReturn(string signature, string binarypath)
     {
         this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TResult>(signature, binarypath);
@@ -199,7 +199,7 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5
     {
         this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TResult>(signature);
     }
-    
+
     public VirtualFunctionWithReturn(string signature, string binarypath)
     {
         this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TResult>(signature, binarypath);
@@ -224,7 +224,7 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5
     {
         this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TResult>(signature);
     }
-    
+
     public VirtualFunctionWithReturn(string signature, string binarypath)
     {
         this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TResult>(signature, binarypath);
@@ -249,7 +249,7 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5
     {
         this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult>(signature);
     }
-    
+
     public VirtualFunctionWithReturn(string signature, string binarypath)
     {
         this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult>(signature, binarypath);
@@ -274,7 +274,7 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5
     {
         this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult>(signature);
     }
-    
+
     public VirtualFunctionWithReturn(string signature, string binarypath)
     {
         this.Function = VirtualFunction.Create<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult>(signature, binarypath);

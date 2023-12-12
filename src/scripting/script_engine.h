@@ -55,6 +55,18 @@ inline uint32_t hash_string(const char *string) {
     return result;
 }
 
+template<size_t N>
+constexpr uint32_t hash_string_const(char const (&string)[N])
+{
+    unsigned long result = 5381;
+
+    for (size_t i = 0; i < N-1; i++) {
+        result = ((result << 5) + result) ^ string[i];
+    }
+
+    return result;
+}
+
 struct fxNativeContext {
     int numArguments;
     int numResults;

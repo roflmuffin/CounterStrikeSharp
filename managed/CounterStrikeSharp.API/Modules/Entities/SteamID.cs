@@ -1,4 +1,5 @@
-using System;
+using CounterStrikeSharp.API.Modules.Entities.Constants;
+using CounterStrikeSharp.API.Modules.Utils;
 
 namespace CounterStrikeSharp.API.Modules.Entities
 {
@@ -7,19 +8,25 @@ namespace CounterStrikeSharp.API.Modules.Entities
         const long Base = 76561197960265728;
         public ulong SteamId64 { get; set; }
 
-        public SteamID(ulong id) => SteamId64 = id;
-        public SteamID(string id) => SteamId64 = id.StartsWith("[") ? ParseId3(id) : ParseId(id);
+        public SteamID(ulong id)
+        {
+            if (id <= 0) throw new ArgumentOutOfRangeException(nameof(id));
+            SteamId64 = id >= Base ? id : id + Base;
+        }
+
+        public SteamID(string id) : this(id.StartsWith('[') ? ParseId3(id) : ParseId(id)) { }
 
         public static explicit operator SteamID(ulong u) => new(u);
         public static explicit operator SteamID(string s) => new(s);
-        ulong ParseId(string id)
+
+        static ulong ParseId(string id)
         {
             var parts = id.Split(':');
             if (parts.Length != 3 || !ulong.TryParse(parts[2], out var num)) throw new FormatException();
-            return Base + num * 2 + (parts[1] == "1" ? 1UL : 0);
+            return Base + (num * 2) + (parts[1] == "1" ? 1UL : 0);
         }
 
-        ulong ParseId3(string id)
+        static ulong ParseId3(string id)
         {
             var parts = id.Replace("[", "").Replace("]", "").Split(':');
             if (parts.Length != 3 || !ulong.TryParse(parts[2], out var num)) throw new FormatException();
@@ -34,17 +41,55 @@ namespace CounterStrikeSharp.API.Modules.Entities
 
         public string SteamId3
         {
-            get => $"[U:1:{SteamId64 - Base}]";
+            get => $"[{EnumUtils.GetEnumMemberAttributeValue(AccountType)}:{(int)AccountUniverse}:{SteamId64 - Base}]";
             set => SteamId64 = ParseId3(value);
         }
-        
+
         public int SteamId32
         {
             get => (int)(SteamId64 - Base);
             set => SteamId64 = (ulong)value + Base;
         }
 
+        public int AccountId => (int)(SteamId64 & 0xFFFFFFFF);
+
+        public SteamAccountInstance AccountInstance =>
+            (SteamAccountInstance)((SteamId64 >> 32) & 0xFFFFF);
+
+        public SteamAccountType AccountType =>
+            (SteamAccountType)((SteamId64 >> 52) & 0xF);
+
+        public SteamAccountUniverse AccountUniverse =>
+            (SteamAccountUniverse)((SteamId64 >> 56) & 0xF);
+
+        public bool IsValid()
+        {
+            if (AccountUniverse == SteamAccountUniverse.Unspecified
+                || AccountType == SteamAccountType.Invalid
+                || AccountInstance == SteamAccountInstance.Invalid)
+                return false;
+            if (AccountType == SteamAccountType.Individual
+                && (AccountId == 0 || AccountInstance != SteamAccountInstance.Desktop))
+                return false;
+            if (AccountType == SteamAccountType.Clan
+                && (AccountId == 0 || AccountInstance != SteamAccountInstance.All))
+                return false;
+            if (AccountType == SteamAccountType.GameServer && AccountId == 0)
+                return false;
+            return true;
+        }
+
         public override string ToString() => $"[SteamID {SteamId64}, {SteamId2}, {SteamId3}]";
+
+        public Uri ToCommunityUrl()
+        {
+            return AccountType switch
+            {
+                SteamAccountType.Individual => new Uri("https://steamcommunity.com/profiles/" + SteamId64),
+                SteamAccountType.Clan => new Uri("https://steamcommunity.com/gid/" + SteamId64),
+                _ => new Uri(string.Empty),
+            };
+        }
 
         public bool Equals(SteamID? other)
         {
@@ -56,7 +101,7 @@ namespace CounterStrikeSharp.API.Modules.Entities
             if (obj?.GetType() != this.GetType()) return false;
             return Equals((SteamID)obj);
         }
-        
+
         public static bool TryParse(string s, out SteamID? steamId)
         {
             try

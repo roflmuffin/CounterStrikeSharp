@@ -118,4 +118,24 @@ void CallbackManager::PrintCallbackDebug()
         CSSHARP_CORE_INFO("{0} ({0})\n", pCallback->GetName().c_str(), 1);
     }
 }
+CallbackPair::CallbackPair()
+{
+    pre = globals::callbackManager.CreateCallback("");
+    post = globals::callbackManager.CreateCallback("");
+}
+
+CallbackPair::CallbackPair(bool bNoCallbacks)
+{
+    if (!bNoCallbacks) {
+        pre = globals::callbackManager.CreateCallback("");
+        post = globals::callbackManager.CreateCallback("");
+    }
+}
+
+CallbackPair::~CallbackPair()
+{
+    globals::callbackManager.ReleaseCallback(pre);
+    globals::callbackManager.ReleaseCallback(post);
+}
+
 } // namespace counterstrikesharp
