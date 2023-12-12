@@ -13,5 +13,7 @@ items:
     href: WithGameEventHandlers.md
   - name: Database (Dapper)
     href: WithDatabase.md
+  - name: Translations
+    href: WithTranslations.md
   - name: Warcraft Plugin
     href: WarcraftPlugin.md

@@ -2,6 +2,9 @@
 
 namespace CounterStrikeSharp.API.Modules.Memory.DynamicFunctions;
 
+#pragma warning disable CS8601 // Possible null reference assignment.
+#pragma warning disable CS8604 // Possible null reference argument.
+
 public class MemoryFunctionWithReturn<TResult> : BaseMemoryFunction
 {
     public MemoryFunctionWithReturn(string signature) : base(signature, typeof(TResult).ToValidDataType(),
@@ -265,3 +268,6 @@ public class MemoryFunctionWithReturn<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T
         return InvokeInternal<TResult>(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
     }
 }
+
+#pragma warning restore CS8601 // Possible null reference assignment.
+#pragma warning restore CS8604 // Possible null reference argument.

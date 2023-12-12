@@ -21,6 +21,8 @@ using CounterStrikeSharp.API.Core;
 
 namespace CounterStrikeSharp.API.Modules.Memory;
 
+#pragma warning disable CS8601 // Possible null reference assignment.
+
 public partial class VirtualFunction
 {
     private static Dictionary<string, IntPtr> _createdFunctions = new();
@@ -1148,3 +1150,5 @@ public partial class VirtualFunction
     }
     #endregion
 }
+
+#pragma warning restore CS8601 // Possible  null reference assignment.

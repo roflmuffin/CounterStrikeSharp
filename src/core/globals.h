@@ -20,6 +20,7 @@ class IServerPluginHelpers;
 class IUniformRandomStream;
 class IEngineTrace;
 class IEngineSound;
+class IEngineServiceMgr;
 class INetworkStringTableContainer;
 class CGlobalVars;
 class IFileSystem;
@@ -66,6 +67,7 @@ extern IServerPluginHelpers *helpers;
 extern IUniformRandomStream *randomStream;
 extern IEngineTrace *engineTrace;
 extern IEngineSound *engineSound;
+extern IEngineServiceMgr *engineServiceManager;
 extern INetworkStringTableContainer *netStringTables;
 extern CGlobalVars *globalVars;
 extern IFileSystem *fileSystem;
@@ -110,6 +112,7 @@ extern CGameConfig* gameConfig;
 
 typedef IGameEventListener2 *GetLegacyGameEventListener_t(CPlayerSlot slot);
 
+extern bool gameLoopInitialized;
 extern GetLegacyGameEventListener_t* GetLegacyGameEventListener;
 extern std::thread::id gameThreadId;
 
