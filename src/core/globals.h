@@ -54,6 +54,7 @@ class EntityManager;
 class ChatManager;
 class ServerManager;
 class MemoryManager;
+class VoiceManager;
 class CCoreConfig;
 class CGameConfig;
 
@@ -100,6 +101,7 @@ extern ChatCommands chatCommands;
 extern ChatManager chatManager;
 extern ServerManager serverManager;
 extern MemoryManager memoryManager;
+extern VoiceManager voiceManager;
 
 extern HookManager hookManager;
 extern SourceHook::ISourceHook *source_hook;
