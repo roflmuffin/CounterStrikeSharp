@@ -32,7 +32,10 @@ using namespace modules;
 
 bool CMemPatch::PerformPatch(CGameConfig* gameConfig)
 {
-    m_pPatchAddress = gameConfig->ResolveSignature(m_pSignatureName);
+    if (!m_pPatchAddress)
+	{
+		m_pPatchAddress = gameConfig->ResolveSignature(m_pSignatureName);
+	}
 
     if (!m_pPatchAddress)
     {
