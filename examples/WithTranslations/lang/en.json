@@ -1,0 +1,6 @@
+{
+  "test.translation": "This is the english translation",
+  "test.format": "This number has 2 decimal places {0:n2}",
+  "test.colors": "{orange}This{default} text has {green}green{default} text",
+  "test.colors.withformat": "{orange}{0:n2}{default}"
+} 

@@ -6,6 +6,7 @@ public interface IPluginContext
     IPlugin Plugin { get; }
     int PluginId { get; }
 
+    string FilePath { get; }
     void Load(bool hotReload);
     void Unload(bool hotReload);
 }

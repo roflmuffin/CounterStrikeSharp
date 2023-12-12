@@ -19,6 +19,8 @@ using System.Collections.Generic;
 using System.Linq;
 using CounterStrikeSharp.API.Core;
 
+#pragma warning disable CS8601 // Possible null reference assignment.
+
 namespace CounterStrikeSharp.API.Modules.Memory
 {
     public partial class VirtualFunction
@@ -588,3 +590,5 @@ namespace CounterStrikeSharp.API.Modules.Memory
         #endregion
     }
 }
+
+#pragma warning restore CS8601 // Possible null reference assignment.

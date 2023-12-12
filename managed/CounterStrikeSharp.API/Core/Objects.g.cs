@@ -4827,6 +4827,51 @@ public partial class CBasePlayerPawn : CBaseCombatCharacter
 
 }
 
+public partial class CBasePlayerVData : CEntitySubclassVDataBase
+{
+    public CBasePlayerVData (IntPtr pointer) : base(pointer) {}
+
+    // m_flHeadDamageMultiplier
+    public CSkillFloat HeadDamageMultiplier => Schema.GetDeclaredClass<CSkillFloat>(this.Handle, "CBasePlayerVData", "m_flHeadDamageMultiplier");
+
+    // m_flChestDamageMultiplier
+    public CSkillFloat ChestDamageMultiplier => Schema.GetDeclaredClass<CSkillFloat>(this.Handle, "CBasePlayerVData", "m_flChestDamageMultiplier");
+
+    // m_flStomachDamageMultiplier
+    public CSkillFloat StomachDamageMultiplier => Schema.GetDeclaredClass<CSkillFloat>(this.Handle, "CBasePlayerVData", "m_flStomachDamageMultiplier");
+
+    // m_flArmDamageMultiplier
+    public CSkillFloat ArmDamageMultiplier => Schema.GetDeclaredClass<CSkillFloat>(this.Handle, "CBasePlayerVData", "m_flArmDamageMultiplier");
+
+    // m_flLegDamageMultiplier
+    public CSkillFloat LegDamageMultiplier => Schema.GetDeclaredClass<CSkillFloat>(this.Handle, "CBasePlayerVData", "m_flLegDamageMultiplier");
+
+    // m_flHoldBreathTime
+    public ref float HoldBreathTime => ref Schema.GetRef<float>(this.Handle, "CBasePlayerVData", "m_flHoldBreathTime");
+
+    // m_flDrowningDamageInterval
+    public ref float DrowningDamageInterval => ref Schema.GetRef<float>(this.Handle, "CBasePlayerVData", "m_flDrowningDamageInterval");
+
+    // m_nDrowningDamageInitial
+    public ref Int32 DrowningDamageInitial => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerVData", "m_nDrowningDamageInitial");
+
+    // m_nDrowningDamageMax
+    public ref Int32 DrowningDamageMax => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerVData", "m_nDrowningDamageMax");
+
+    // m_nWaterSpeed
+    public ref Int32 WaterSpeed => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerVData", "m_nWaterSpeed");
+
+    // m_flUseRange
+    public ref float UseRange => ref Schema.GetRef<float>(this.Handle, "CBasePlayerVData", "m_flUseRange");
+
+    // m_flUseAngleTolerance
+    public ref float UseAngleTolerance => ref Schema.GetRef<float>(this.Handle, "CBasePlayerVData", "m_flUseAngleTolerance");
+
+    // m_flCrouchTime
+    public ref float CrouchTime => ref Schema.GetRef<float>(this.Handle, "CBasePlayerVData", "m_flCrouchTime");
+
+}
+
 public partial class CBasePlayerWeapon : CEconEntity
 {
     public CBasePlayerWeapon (IntPtr pointer) : base(pointer) {}
@@ -4854,6 +4899,70 @@ public partial class CBasePlayerWeapon : CEconEntity
 
     // m_OnPlayerUse
     public CEntityIOOutput OnPlayerUse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePlayerWeapon", "m_OnPlayerUse");
+
+}
+
+public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
+{
+    public CBasePlayerWeaponVData (IntPtr pointer) : base(pointer) {}
+
+    // m_bBuiltRightHanded
+    public ref bool BuiltRightHanded => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bBuiltRightHanded");
+
+    // m_bAllowFlipping
+    public ref bool AllowFlipping => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bAllowFlipping");
+
+    // m_bIsFullAuto
+    public ref bool IsFullAuto => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bIsFullAuto");
+
+    // m_nNumBullets
+    public ref Int32 NumBullets => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_nNumBullets");
+
+    // m_sMuzzleAttachment
+    public string MuzzleAttachment
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CBasePlayerWeaponVData", "m_sMuzzleAttachment"); }
+        set { Schema.SetString(this.Handle, "CBasePlayerWeaponVData", "m_sMuzzleAttachment", value); }
+    }
+
+    // m_iFlags
+    public ref ItemFlagTypes_t Flags => ref Schema.GetRef<ItemFlagTypes_t>(this.Handle, "CBasePlayerWeaponVData", "m_iFlags");
+
+    // m_nPrimaryAmmoType
+    public ref byte PrimaryAmmoType => ref Schema.GetRef<byte>(this.Handle, "CBasePlayerWeaponVData", "m_nPrimaryAmmoType");
+
+    // m_nSecondaryAmmoType
+    public ref byte SecondaryAmmoType => ref Schema.GetRef<byte>(this.Handle, "CBasePlayerWeaponVData", "m_nSecondaryAmmoType");
+
+    // m_iMaxClip1
+    public ref Int32 MaxClip1 => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iMaxClip1");
+
+    // m_iMaxClip2
+    public ref Int32 MaxClip2 => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iMaxClip2");
+
+    // m_iDefaultClip1
+    public ref Int32 DefaultClip1 => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iDefaultClip1");
+
+    // m_iDefaultClip2
+    public ref Int32 DefaultClip2 => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iDefaultClip2");
+
+    // m_iWeight
+    public ref Int32 Weight => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iWeight");
+
+    // m_bAutoSwitchTo
+    public ref bool AutoSwitchTo => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bAutoSwitchTo");
+
+    // m_bAutoSwitchFrom
+    public ref bool AutoSwitchFrom => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bAutoSwitchFrom");
+
+    // m_iRumbleEffect
+    public ref RumbleEffect_t RumbleEffect => ref Schema.GetRef<RumbleEffect_t>(this.Handle, "CBasePlayerWeaponVData", "m_iRumbleEffect");
+
+    // m_iSlot
+    public ref Int32 Slot => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iSlot");
+
+    // m_iPosition
+    public ref Int32 Position => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iPosition");
 
 }
 
@@ -8932,6 +9041,269 @@ public partial class CCSWeaponBaseGun : CCSWeaponBase
 
 }
 
+public partial class CCSWeaponBaseVData : CBasePlayerWeaponVData
+{
+    public CCSWeaponBaseVData (IntPtr pointer) : base(pointer) {}
+
+    // m_WeaponType
+    public ref CSWeaponType WeaponType => ref Schema.GetRef<CSWeaponType>(this.Handle, "CCSWeaponBaseVData", "m_WeaponType");
+
+    // m_WeaponCategory
+    public ref CSWeaponCategory WeaponCategory => ref Schema.GetRef<CSWeaponCategory>(this.Handle, "CCSWeaponBaseVData", "m_WeaponCategory");
+
+    // m_GearSlot
+    public ref gear_slot_t GearSlot => ref Schema.GetRef<gear_slot_t>(this.Handle, "CCSWeaponBaseVData", "m_GearSlot");
+
+    // m_GearSlotPosition
+    public ref Int32 GearSlotPosition => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseVData", "m_GearSlotPosition");
+
+    // m_DefaultLoadoutSlot
+    public ref loadout_slot_t DefaultLoadoutSlot => ref Schema.GetRef<loadout_slot_t>(this.Handle, "CCSWeaponBaseVData", "m_DefaultLoadoutSlot");
+
+    // m_sWrongTeamMsg
+    public string WrongTeamMsg
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CCSWeaponBaseVData", "m_sWrongTeamMsg"); }
+        set { Schema.SetString(this.Handle, "CCSWeaponBaseVData", "m_sWrongTeamMsg", value); }
+    }
+
+    // m_nPrice
+    public ref Int32 Price => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseVData", "m_nPrice");
+
+    // m_nKillAward
+    public ref Int32 KillAward => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseVData", "m_nKillAward");
+
+    // m_nPrimaryReserveAmmoMax
+    public ref Int32 PrimaryReserveAmmoMax => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseVData", "m_nPrimaryReserveAmmoMax");
+
+    // m_nSecondaryReserveAmmoMax
+    public ref Int32 SecondaryReserveAmmoMax => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseVData", "m_nSecondaryReserveAmmoMax");
+
+    // m_bMeleeWeapon
+    public ref bool MeleeWeapon => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBaseVData", "m_bMeleeWeapon");
+
+    // m_bHasBurstMode
+    public ref bool HasBurstMode => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBaseVData", "m_bHasBurstMode");
+
+    // m_bIsRevolver
+    public ref bool IsRevolver => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBaseVData", "m_bIsRevolver");
+
+    // m_bCannotShootUnderwater
+    public ref bool CannotShootUnderwater => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBaseVData", "m_bCannotShootUnderwater");
+
+    // m_szName
+    public string Name
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CCSWeaponBaseVData", "m_szName"); }
+        set { Schema.SetString(this.Handle, "CCSWeaponBaseVData", "m_szName", value); }
+    }
+
+    // m_szAnimExtension
+    public string AnimExtension
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CCSWeaponBaseVData", "m_szAnimExtension"); }
+        set { Schema.SetString(this.Handle, "CCSWeaponBaseVData", "m_szAnimExtension", value); }
+    }
+
+    // m_eSilencerType
+    public ref CSWeaponSilencerType SilencerType => ref Schema.GetRef<CSWeaponSilencerType>(this.Handle, "CCSWeaponBaseVData", "m_eSilencerType");
+
+    // m_nCrosshairMinDistance
+    public ref Int32 CrosshairMinDistance => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseVData", "m_nCrosshairMinDistance");
+
+    // m_nCrosshairDeltaDistance
+    public ref Int32 CrosshairDeltaDistance => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseVData", "m_nCrosshairDeltaDistance");
+
+    // m_flCycleTime
+    public CFiringModeFloat CycleTime => Schema.GetDeclaredClass<CFiringModeFloat>(this.Handle, "CCSWeaponBaseVData", "m_flCycleTime");
+
+    // m_flMaxSpeed
+    public CFiringModeFloat MaxSpeed => Schema.GetDeclaredClass<CFiringModeFloat>(this.Handle, "CCSWeaponBaseVData", "m_flMaxSpeed");
+
+    // m_flSpread
+    public CFiringModeFloat Spread => Schema.GetDeclaredClass<CFiringModeFloat>(this.Handle, "CCSWeaponBaseVData", "m_flSpread");
+
+    // m_flInaccuracyCrouch
+    public CFiringModeFloat InaccuracyCrouch => Schema.GetDeclaredClass<CFiringModeFloat>(this.Handle, "CCSWeaponBaseVData", "m_flInaccuracyCrouch");
+
+    // m_flInaccuracyStand
+    public CFiringModeFloat InaccuracyStand => Schema.GetDeclaredClass<CFiringModeFloat>(this.Handle, "CCSWeaponBaseVData", "m_flInaccuracyStand");
+
+    // m_flInaccuracyJump
+    public CFiringModeFloat InaccuracyJump => Schema.GetDeclaredClass<CFiringModeFloat>(this.Handle, "CCSWeaponBaseVData", "m_flInaccuracyJump");
+
+    // m_flInaccuracyLand
+    public CFiringModeFloat InaccuracyLand => Schema.GetDeclaredClass<CFiringModeFloat>(this.Handle, "CCSWeaponBaseVData", "m_flInaccuracyLand");
+
+    // m_flInaccuracyLadder
+    public CFiringModeFloat InaccuracyLadder => Schema.GetDeclaredClass<CFiringModeFloat>(this.Handle, "CCSWeaponBaseVData", "m_flInaccuracyLadder");
+
+    // m_flInaccuracyFire
+    public CFiringModeFloat InaccuracyFire => Schema.GetDeclaredClass<CFiringModeFloat>(this.Handle, "CCSWeaponBaseVData", "m_flInaccuracyFire");
+
+    // m_flInaccuracyMove
+    public CFiringModeFloat InaccuracyMove => Schema.GetDeclaredClass<CFiringModeFloat>(this.Handle, "CCSWeaponBaseVData", "m_flInaccuracyMove");
+
+    // m_flRecoilAngle
+    public CFiringModeFloat RecoilAngle => Schema.GetDeclaredClass<CFiringModeFloat>(this.Handle, "CCSWeaponBaseVData", "m_flRecoilAngle");
+
+    // m_flRecoilAngleVariance
+    public CFiringModeFloat RecoilAngleVariance => Schema.GetDeclaredClass<CFiringModeFloat>(this.Handle, "CCSWeaponBaseVData", "m_flRecoilAngleVariance");
+
+    // m_flRecoilMagnitude
+    public CFiringModeFloat RecoilMagnitude => Schema.GetDeclaredClass<CFiringModeFloat>(this.Handle, "CCSWeaponBaseVData", "m_flRecoilMagnitude");
+
+    // m_flRecoilMagnitudeVariance
+    public CFiringModeFloat RecoilMagnitudeVariance => Schema.GetDeclaredClass<CFiringModeFloat>(this.Handle, "CCSWeaponBaseVData", "m_flRecoilMagnitudeVariance");
+
+    // m_nTracerFrequency
+    public CFiringModeInt TracerFrequency => Schema.GetDeclaredClass<CFiringModeInt>(this.Handle, "CCSWeaponBaseVData", "m_nTracerFrequency");
+
+    // m_flInaccuracyJumpInitial
+    public ref float InaccuracyJumpInitial => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flInaccuracyJumpInitial");
+
+    // m_flInaccuracyJumpApex
+    public ref float InaccuracyJumpApex => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flInaccuracyJumpApex");
+
+    // m_flInaccuracyReload
+    public ref float InaccuracyReload => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flInaccuracyReload");
+
+    // m_nRecoilSeed
+    public ref Int32 RecoilSeed => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseVData", "m_nRecoilSeed");
+
+    // m_nSpreadSeed
+    public ref Int32 SpreadSeed => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseVData", "m_nSpreadSeed");
+
+    // m_flTimeToIdleAfterFire
+    public ref float TimeToIdleAfterFire => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flTimeToIdleAfterFire");
+
+    // m_flIdleInterval
+    public ref float IdleInterval => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flIdleInterval");
+
+    // m_flAttackMovespeedFactor
+    public ref float AttackMovespeedFactor => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flAttackMovespeedFactor");
+
+    // m_flHeatPerShot
+    public ref float HeatPerShot => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flHeatPerShot");
+
+    // m_flInaccuracyPitchShift
+    public ref float InaccuracyPitchShift => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flInaccuracyPitchShift");
+
+    // m_flInaccuracyAltSoundThreshold
+    public ref float InaccuracyAltSoundThreshold => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flInaccuracyAltSoundThreshold");
+
+    // m_flBotAudibleRange
+    public ref float BotAudibleRange => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flBotAudibleRange");
+
+    // m_szUseRadioSubtitle
+    public string UseRadioSubtitle
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CCSWeaponBaseVData", "m_szUseRadioSubtitle"); }
+        set { Schema.SetString(this.Handle, "CCSWeaponBaseVData", "m_szUseRadioSubtitle", value); }
+    }
+
+    // m_bUnzoomsAfterShot
+    public ref bool UnzoomsAfterShot => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBaseVData", "m_bUnzoomsAfterShot");
+
+    // m_bHideViewModelWhenZoomed
+    public ref bool HideViewModelWhenZoomed => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBaseVData", "m_bHideViewModelWhenZoomed");
+
+    // m_nZoomLevels
+    public ref Int32 ZoomLevels => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseVData", "m_nZoomLevels");
+
+    // m_nZoomFOV1
+    public ref Int32 ZoomFOV1 => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseVData", "m_nZoomFOV1");
+
+    // m_nZoomFOV2
+    public ref Int32 ZoomFOV2 => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseVData", "m_nZoomFOV2");
+
+    // m_flZoomTime0
+    public ref float ZoomTime0 => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flZoomTime0");
+
+    // m_flZoomTime1
+    public ref float ZoomTime1 => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flZoomTime1");
+
+    // m_flZoomTime2
+    public ref float ZoomTime2 => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flZoomTime2");
+
+    // m_flIronSightPullUpSpeed
+    public ref float IronSightPullUpSpeed => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flIronSightPullUpSpeed");
+
+    // m_flIronSightPutDownSpeed
+    public ref float IronSightPutDownSpeed => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flIronSightPutDownSpeed");
+
+    // m_flIronSightFOV
+    public ref float IronSightFOV => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flIronSightFOV");
+
+    // m_flIronSightPivotForward
+    public ref float IronSightPivotForward => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flIronSightPivotForward");
+
+    // m_flIronSightLooseness
+    public ref float IronSightLooseness => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flIronSightLooseness");
+
+    // m_angPivotAngle
+    public QAngle PivotAngle => Schema.GetDeclaredClass<QAngle>(this.Handle, "CCSWeaponBaseVData", "m_angPivotAngle");
+
+    // m_vecIronSightEyePos
+    public Vector IronSightEyePos => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSWeaponBaseVData", "m_vecIronSightEyePos");
+
+    // m_nDamage
+    public ref Int32 Damage => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseVData", "m_nDamage");
+
+    // m_flHeadshotMultiplier
+    public ref float HeadshotMultiplier => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flHeadshotMultiplier");
+
+    // m_flArmorRatio
+    public ref float ArmorRatio => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flArmorRatio");
+
+    // m_flPenetration
+    public ref float Penetration => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flPenetration");
+
+    // m_flRange
+    public ref float Range => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flRange");
+
+    // m_flRangeModifier
+    public ref float RangeModifier => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flRangeModifier");
+
+    // m_flFlinchVelocityModifierLarge
+    public ref float FlinchVelocityModifierLarge => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flFlinchVelocityModifierLarge");
+
+    // m_flFlinchVelocityModifierSmall
+    public ref float FlinchVelocityModifierSmall => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flFlinchVelocityModifierSmall");
+
+    // m_flRecoveryTimeCrouch
+    public ref float RecoveryTimeCrouch => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flRecoveryTimeCrouch");
+
+    // m_flRecoveryTimeStand
+    public ref float RecoveryTimeStand => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flRecoveryTimeStand");
+
+    // m_flRecoveryTimeCrouchFinal
+    public ref float RecoveryTimeCrouchFinal => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flRecoveryTimeCrouchFinal");
+
+    // m_flRecoveryTimeStandFinal
+    public ref float RecoveryTimeStandFinal => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flRecoveryTimeStandFinal");
+
+    // m_nRecoveryTransitionStartBullet
+    public ref Int32 RecoveryTransitionStartBullet => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseVData", "m_nRecoveryTransitionStartBullet");
+
+    // m_nRecoveryTransitionEndBullet
+    public ref Int32 RecoveryTransitionEndBullet => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseVData", "m_nRecoveryTransitionEndBullet");
+
+    // m_flThrowVelocity
+    public ref float ThrowVelocity => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flThrowVelocity");
+
+    // m_vSmokeColor
+    public Vector SmokeColor => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSWeaponBaseVData", "m_vSmokeColor");
+
+    // m_szAnimClass
+    public string AnimClass
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CCSWeaponBaseVData", "m_szAnimClass"); }
+        set { Schema.SetString(this.Handle, "CCSWeaponBaseVData", "m_szAnimClass", value); }
+    }
+
+}
+
 public partial class CDamageRecord : NativeObject
 {
     public CDamageRecord (IntPtr pointer) : base(pointer) {}
@@ -9440,6 +9812,12 @@ public partial class CEntityInstance : NativeEntity
 public partial class CEntityIOOutput : NativeObject
 {
     public CEntityIOOutput (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class CEntitySubclassVDataBase : NativeObject
+{
+    public CEntitySubclassVDataBase (IntPtr pointer) : base(pointer) {}
 
 }
 
@@ -10981,6 +11359,45 @@ public partial class CEnvWindShared : NativeObject
 
 }
 
+public partial class CExampleSchemaVData_Monomorphic : NativeObject
+{
+    public CExampleSchemaVData_Monomorphic (IntPtr pointer) : base(pointer) {}
+
+    // m_nExample1
+    public ref Int32 Example1 => ref Schema.GetRef<Int32>(this.Handle, "CExampleSchemaVData_Monomorphic", "m_nExample1");
+
+    // m_nExample2
+    public ref Int32 Example2 => ref Schema.GetRef<Int32>(this.Handle, "CExampleSchemaVData_Monomorphic", "m_nExample2");
+
+}
+
+public partial class CExampleSchemaVData_PolymorphicBase : NativeObject
+{
+    public CExampleSchemaVData_PolymorphicBase (IntPtr pointer) : base(pointer) {}
+
+    // m_nBase
+    public ref Int32 Base => ref Schema.GetRef<Int32>(this.Handle, "CExampleSchemaVData_PolymorphicBase", "m_nBase");
+
+}
+
+public partial class CExampleSchemaVData_PolymorphicDerivedA : CExampleSchemaVData_PolymorphicBase
+{
+    public CExampleSchemaVData_PolymorphicDerivedA (IntPtr pointer) : base(pointer) {}
+
+    // m_nDerivedA
+    public ref Int32 DerivedA => ref Schema.GetRef<Int32>(this.Handle, "CExampleSchemaVData_PolymorphicDerivedA", "m_nDerivedA");
+
+}
+
+public partial class CExampleSchemaVData_PolymorphicDerivedB : CExampleSchemaVData_PolymorphicBase
+{
+    public CExampleSchemaVData_PolymorphicDerivedB (IntPtr pointer) : base(pointer) {}
+
+    // m_nDerivedB
+    public ref Int32 DerivedB => ref Schema.GetRef<Int32>(this.Handle, "CExampleSchemaVData_PolymorphicDerivedB", "m_nDerivedB");
+
+}
+
 public partial class CFilterAttributeInt : CBaseFilter
 {
     public CFilterAttributeInt (IntPtr pointer) : base(pointer) {}
@@ -11191,6 +11608,24 @@ public partial class CFireSmoke : CBaseFire
 
     // m_nFlameFromAboveModelIndex
     public ref Int32 FlameFromAboveModelIndex => ref Schema.GetRef<Int32>(this.Handle, "CFireSmoke", "m_nFlameFromAboveModelIndex");
+
+}
+
+public partial class CFiringModeFloat : NativeObject
+{
+    public CFiringModeFloat (IntPtr pointer) : base(pointer) {}
+
+    // m_flValues
+    public Span<float> Values => Schema.GetFixedArray<float>(this.Handle, "CFiringModeFloat", "m_flValues", 2);
+
+}
+
+public partial class CFiringModeInt : NativeObject
+{
+    public CFiringModeInt (IntPtr pointer) : base(pointer) {}
+
+    // m_nValues
+    public Span<Int32> Values => Schema.GetFixedArray<Int32>(this.Handle, "CFiringModeInt", "m_nValues", 2);
 
 }
 
@@ -14982,6 +15417,15 @@ public partial class CMomentaryRotButton : CRotButton
 
 }
 
+public partial class CMoodVData : NativeObject
+{
+    public CMoodVData (IntPtr pointer) : base(pointer) {}
+
+    // m_nMoodType
+    public ref MoodType_t MoodType => ref Schema.GetRef<MoodType_t>(this.Handle, "CMoodVData", "m_nMoodType");
+
+}
+
 public partial class CMotorController : NativeObject
 {
     public CMotorController (IntPtr pointer) : base(pointer) {}
@@ -15078,6 +15522,70 @@ public partial class CMultiSource : CLogicalEntity
 
 }
 
+public partial class CNavHullPresetVData : NativeObject
+{
+    public CNavHullPresetVData (IntPtr pointer) : base(pointer) {}
+
+    // m_vecNavHulls
+    public NetworkedVector<string> NavHulls => Schema.GetDeclaredClass<NetworkedVector<string>>(this.Handle, "CNavHullPresetVData", "m_vecNavHulls");
+
+}
+
+public partial class CNavHullVData : NativeObject
+{
+    public CNavHullVData (IntPtr pointer) : base(pointer) {}
+
+    // m_bAgentEnabled
+    public ref bool AgentEnabled => ref Schema.GetRef<bool>(this.Handle, "CNavHullVData", "m_bAgentEnabled");
+
+    // m_agentRadius
+    public ref float AgentRadius => ref Schema.GetRef<float>(this.Handle, "CNavHullVData", "m_agentRadius");
+
+    // m_agentHeight
+    public ref float AgentHeight => ref Schema.GetRef<float>(this.Handle, "CNavHullVData", "m_agentHeight");
+
+    // m_agentShortHeightEnabled
+    public ref bool AgentShortHeightEnabled => ref Schema.GetRef<bool>(this.Handle, "CNavHullVData", "m_agentShortHeightEnabled");
+
+    // m_agentShortHeight
+    public ref float AgentShortHeight => ref Schema.GetRef<float>(this.Handle, "CNavHullVData", "m_agentShortHeight");
+
+    // m_agentMaxClimb
+    public ref float AgentMaxClimb => ref Schema.GetRef<float>(this.Handle, "CNavHullVData", "m_agentMaxClimb");
+
+    // m_agentMaxSlope
+    public ref Int32 AgentMaxSlope => ref Schema.GetRef<Int32>(this.Handle, "CNavHullVData", "m_agentMaxSlope");
+
+    // m_agentMaxJumpDownDist
+    public ref float AgentMaxJumpDownDist => ref Schema.GetRef<float>(this.Handle, "CNavHullVData", "m_agentMaxJumpDownDist");
+
+    // m_agentMaxJumpHorizDistBase
+    public ref float AgentMaxJumpHorizDistBase => ref Schema.GetRef<float>(this.Handle, "CNavHullVData", "m_agentMaxJumpHorizDistBase");
+
+    // m_agentMaxJumpUpDist
+    public ref float AgentMaxJumpUpDist => ref Schema.GetRef<float>(this.Handle, "CNavHullVData", "m_agentMaxJumpUpDist");
+
+    // m_agentBorderErosion
+    public ref Int32 AgentBorderErosion => ref Schema.GetRef<Int32>(this.Handle, "CNavHullVData", "m_agentBorderErosion");
+
+}
+
+public partial class CNavLinkAnimgraphVar : NativeObject
+{
+    public CNavLinkAnimgraphVar (IntPtr pointer) : base(pointer) {}
+
+    // m_strAnimgraphVar
+    public string StrAnimgraphVar
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CNavLinkAnimgraphVar", "m_strAnimgraphVar"); }
+        set { Schema.SetString(this.Handle, "CNavLinkAnimgraphVar", "m_strAnimgraphVar", value); }
+    }
+
+    // m_unAlignmentDegrees
+    public ref UInt32 AlignmentDegrees => ref Schema.GetRef<UInt32>(this.Handle, "CNavLinkAnimgraphVar", "m_unAlignmentDegrees");
+
+}
+
 public partial class CNavLinkAreaEntity : CPointEntity
 {
     public CNavLinkAreaEntity (IntPtr pointer) : base(pointer) {}
@@ -15132,6 +15640,21 @@ public partial class CNavLinkAreaEntity : CPointEntity
 
     // m_bIsTerminus
     public ref bool IsTerminus => ref Schema.GetRef<bool>(this.Handle, "CNavLinkAreaEntity", "m_bIsTerminus");
+
+}
+
+public partial class CNavLinkMovementVData : NativeObject
+{
+    public CNavLinkMovementVData (IntPtr pointer) : base(pointer) {}
+
+    // m_bIsInterpolated
+    public ref bool IsInterpolated => ref Schema.GetRef<bool>(this.Handle, "CNavLinkMovementVData", "m_bIsInterpolated");
+
+    // m_unRecommendedDistance
+    public ref UInt32 RecommendedDistance => ref Schema.GetRef<UInt32>(this.Handle, "CNavLinkMovementVData", "m_unRecommendedDistance");
+
+    // m_vecAnimgraphVars
+    public NetworkedVector<CNavLinkAnimgraphVar> AnimgraphVars => Schema.GetDeclaredClass<NetworkedVector<CNavLinkAnimgraphVar>>(this.Handle, "CNavLinkMovementVData", "m_vecAnimgraphVars");
 
 }
 
@@ -17816,6 +18339,34 @@ public partial class CPrecipitationBlocker : CBaseModelEntity
 
 }
 
+public partial class CPrecipitationVData : CEntitySubclassVDataBase
+{
+    public CPrecipitationVData (IntPtr pointer) : base(pointer) {}
+
+    // m_flInnerDistance
+    public ref float InnerDistance => ref Schema.GetRef<float>(this.Handle, "CPrecipitationVData", "m_flInnerDistance");
+
+    // m_nAttachType
+    public ref ParticleAttachment_t AttachType => ref Schema.GetRef<ParticleAttachment_t>(this.Handle, "CPrecipitationVData", "m_nAttachType");
+
+    // m_bBatchSameVolumeType
+    public ref bool BatchSameVolumeType => ref Schema.GetRef<bool>(this.Handle, "CPrecipitationVData", "m_bBatchSameVolumeType");
+
+    // m_nRTEnvCP
+    public ref Int32 RTEnvCP => ref Schema.GetRef<Int32>(this.Handle, "CPrecipitationVData", "m_nRTEnvCP");
+
+    // m_nRTEnvCPComponent
+    public ref Int32 RTEnvCPComponent => ref Schema.GetRef<Int32>(this.Handle, "CPrecipitationVData", "m_nRTEnvCPComponent");
+
+    // m_szModifier
+    public string Modifier
+    {
+        get { return Schema.GetUtf8String(this.Handle, "CPrecipitationVData", "m_szModifier"); }
+        set { Schema.SetString(this.Handle, "CPrecipitationVData", "m_szModifier", value); }
+    }
+
+}
+
 public partial class CPredictedViewModel : CBaseViewModel
 {
     public CPredictedViewModel (IntPtr pointer) : base(pointer) {}
@@ -18106,6 +18657,15 @@ public partial class CRagdollPropAttached : CRagdollProp
 
     // m_bShouldDeleteAttachedActivationRecord
     public ref bool ShouldDeleteAttachedActivationRecord => ref Schema.GetRef<bool>(this.Handle, "CRagdollPropAttached", "m_bShouldDeleteAttachedActivationRecord");
+
+}
+
+public partial class CRangeFloat : NativeObject
+{
+    public CRangeFloat (IntPtr pointer) : base(pointer) {}
+
+    // m_pValue
+    public Span<float> Value => Schema.GetFixedArray<float>(this.Handle, "CRangeFloat", "m_pValue", 2);
 
 }
 
@@ -18955,6 +19515,24 @@ public partial class CSkeletonInstance : CGameSceneNode
 
     // m_nHitboxSet
     public ref byte HitboxSet => ref Schema.GetRef<byte>(this.Handle, "CSkeletonInstance", "m_nHitboxSet");
+
+}
+
+public partial class CSkillFloat : NativeObject
+{
+    public CSkillFloat (IntPtr pointer) : base(pointer) {}
+
+    // m_pValue
+    public Span<float> Value => Schema.GetFixedArray<float>(this.Handle, "CSkillFloat", "m_pValue", 4);
+
+}
+
+public partial class CSkillInt : NativeObject
+{
+    public CSkillInt (IntPtr pointer) : base(pointer) {}
+
+    // m_pValue
+    public Span<Int32> Value => Schema.GetFixedArray<Int32>(this.Handle, "CSkillInt", "m_pValue", 4);
 
 }
 
@@ -21383,6 +21961,12 @@ public partial class InfoForResourceTypeCPostProcessingResource : NativeObject
 public partial class InfoForResourceTypeCTextureBase : NativeObject
 {
     public InfoForResourceTypeCTextureBase (IntPtr pointer) : base(pointer) {}
+
+}
+
+public partial class InfoForResourceTypeCVDataResource : NativeObject
+{
+    public InfoForResourceTypeCVDataResource (IntPtr pointer) : base(pointer) {}
 
 }
 

@@ -89,7 +89,7 @@ SET(SOURCE_FILES
     src/core/managers/memory_manager.h
     src/scripting/natives/natives_server.cpp
     libraries/nlohmann/json.hpp
-        src/scripting/natives/natives_dynamichooks.cpp
+    src/scripting/natives/natives_dynamichooks.cpp
 )
 
 

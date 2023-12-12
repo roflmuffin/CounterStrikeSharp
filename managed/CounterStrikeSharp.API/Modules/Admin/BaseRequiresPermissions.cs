@@ -11,7 +11,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// <summary>
         /// The permissions for the command.
         /// </summary>
-        public string[] Permissions { get; }
+        public HashSet<string> Permissions { get; }
         /// <summary>
         /// The name of the command that is attached to this attribute.
         /// </summary>
@@ -23,7 +23,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
 
         public BaseRequiresPermissions(params string[] permissions)
         {
-            Permissions = permissions;
+            Permissions = permissions.ToHashSet();
             Command = "";
         }
 
@@ -31,7 +31,8 @@ namespace CounterStrikeSharp.API.Modules.Admin
         {
             // If we have a command in the "command_overrides" section in "configs/admins.json",
             // we skip the checks below and just return the defined value.
-            var adminData = AdminManager.GetPlayerAdminData((SteamID)caller.SteamID);
+            if (caller?.AuthorizedSteamID == null) return false;
+            var adminData = AdminManager.GetPlayerAdminData(caller.AuthorizedSteamID);
             if (adminData == null) return false;
             if (adminData.CommandOverrides.ContainsKey(Command))
             {

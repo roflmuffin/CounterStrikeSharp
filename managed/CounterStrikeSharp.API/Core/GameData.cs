@@ -34,34 +34,58 @@ public class Offsets
 
 public sealed class GameDataProvider : IStartupService
 {
-    private readonly string _gameDataFilePath;
+    private readonly string _gameDataDirectoryPath;
     public Dictionary<string,LoadedGameData> Methods;
     private readonly ILogger<GameDataProvider> _logger;
 
     public GameDataProvider(IScriptHostConfiguration scriptHostConfiguration, ILogger<GameDataProvider> logger)
     {
         _logger = logger;
-        _gameDataFilePath = Path.Join(scriptHostConfiguration.GameDataPath, "gamedata.json");
+        _gameDataDirectoryPath = scriptHostConfiguration.GameDataPath;
     }
     
     public void Load()
     {
         try
         {
-            Methods = JsonSerializer.Deserialize<Dictionary<string, LoadedGameData>>(File.ReadAllText(_gameDataFilePath))!;
+            Methods = new Dictionary<string, LoadedGameData>();
+
+            foreach (string filePath in Directory.EnumerateFiles(_gameDataDirectoryPath, "*.json"))
+            {
+                string jsonContent = File.ReadAllText(filePath);
+                Dictionary<string, LoadedGameData> loadedMethods = JsonSerializer.Deserialize<Dictionary<string, LoadedGameData>>(jsonContent)!;
+
+                foreach (KeyValuePair<string, LoadedGameData> loadedMethod in loadedMethods)
+                {
+                    if (Methods.ContainsKey(loadedMethod.Key))
+                    {
+                        _logger.LogWarning("GameData Method \"{Key}\" loaded a duplicate entry from {filePath}.", loadedMethod.Key, filePath);
+                    }
+                    
+                    Methods[loadedMethod.Key] = loadedMethod.Value;
+                }
+                
+                if (loadedMethods != null)
+                {
+                    _logger.LogInformation("Successfully loaded {Count} game data entries from {Path}", loadedMethods.Count, filePath);
+                }
+                else
+                {
+                    _logger.LogWarning("Unable to load game data entries from {Path}, game data file is empty", filePath);
+                }
+            }
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Failed to load game data");
         }
-        
-        _logger.LogInformation("Successfully loaded {Count} game data entries from {Path}", Methods.Count, _gameDataFilePath);
     }
 } 
 
 public static class GameData
 {
     internal static GameDataProvider GameDataProvider { get; set; } = null!;
+    
     public static string GetSignature(string key)
     {
         Application.Instance.Logger.LogDebug("Getting signature: {Key}", key);
