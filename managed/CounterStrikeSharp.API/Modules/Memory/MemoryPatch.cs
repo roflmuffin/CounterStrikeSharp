@@ -14,8 +14,6 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using CounterStrikeSharp.API.Core;
-
 namespace CounterStrikeSharp.API.Modules.Memory;
 
 public partial class MemoryPatch
