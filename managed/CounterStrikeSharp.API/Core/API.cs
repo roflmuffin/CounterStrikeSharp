@@ -1324,6 +1324,18 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static ListenOverride GetClientListening(IntPtr receiver, IntPtr sender){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(receiver);
+			ScriptContext.GlobalScriptContext.Push(sender);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xE95644E3);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (ListenOverride)ScriptContext.GlobalScriptContext.GetResult(typeof(ListenOverride));
+			}
+		}
+
         public static void SetClientVoiceFlags(IntPtr client, uint flags){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();

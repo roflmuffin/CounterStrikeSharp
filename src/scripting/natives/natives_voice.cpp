@@ -53,6 +53,36 @@ void SetClientListening(ScriptContext& scriptContext)
     pPlayer->SetListen(iSenderSlot, listen);
 }
 
+ListenOverride GetClientListening(ScriptContext& scriptContext)
+{
+    auto receiver = scriptContext.GetArgument<CBaseEntity*>(0);
+    auto sender = scriptContext.GetArgument<CBaseEntity*>(1);
+
+    if (!receiver) {
+        scriptContext.ThrowNativeError("Receiver is a null pointer");
+        return Listen_Default;
+    }
+
+    if (!sender) {
+        scriptContext.ThrowNativeError("Sender is a null pointer");
+        return Listen_Default;
+    }
+
+    auto iSenderSlot = sender->GetEntityIndex().Get() - 1;
+
+    if (iSenderSlot < 0 || iSenderSlot >= globals::getGlobalVars()->maxClients)
+        scriptContext.ThrowNativeError("Invalid sender");
+
+    auto pPlayer = globals::playerManager.GetPlayerBySlot(receiver->GetEntityIndex().Get() - 1);
+
+    if (pPlayer == nullptr) {
+        scriptContext.ThrowNativeError("Invalid receiver");
+        return Listen_Default;
+    }
+
+    return pPlayer->GetListen(iSenderSlot);
+}
+
 void SetClientVoiceFlags(ScriptContext& scriptContext)
 {
     auto client = scriptContext.GetArgument<CBaseEntity*>(0);
@@ -92,6 +122,7 @@ VoiceFlag_t GetClientVoiceFlags(ScriptContext& scriptContext)
 
 REGISTER_NATIVES(voice, {
     ScriptEngine::RegisterNativeHandler("SET_CLIENT_LISTENING", SetClientListening);
+    ScriptEngine::RegisterNativeHandler("GET_CLIENT_LISTENING", GetClientListening);
     ScriptEngine::RegisterNativeHandler("SET_CLIENT_VOICE_FLAGS", SetClientVoiceFlags);
     ScriptEngine::RegisterNativeHandler("GET_CLIENT_VOICE_FLAGS", GetClientVoiceFlags);
 })

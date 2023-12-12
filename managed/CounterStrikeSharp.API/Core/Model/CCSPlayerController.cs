@@ -211,6 +211,11 @@ public partial class CCSPlayerController
     {
         NativeAPI.SetClientListening(Handle, sender.Handle, (Byte)@override);
     }
+    
+    public ListenOverride GetListenOverride(CCSPlayerController sender)
+    {
+        return NativeAPI.GetClientListening(Handle, sender.Handle);
+    }
 
     public int Slot => (int)Index - 1;
 
