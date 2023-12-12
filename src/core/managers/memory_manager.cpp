@@ -64,7 +64,7 @@ void MemoryManager::UndoPatch(const char* pszSignatureName)
     it->second->UndoPatch();
 }
 
-void* MemoryManager::GetPatchAddress(const char* pSignatureName)
+void* MemoryManager::GetPatchAddress(const char* pszSignatureName)
 {
     auto it = m_memoryPatches.find(pszSignatureName);
     if (it == m_memoryPatches.end()) {
