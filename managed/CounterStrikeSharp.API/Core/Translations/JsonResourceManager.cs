@@ -22,6 +22,14 @@ namespace CounterStrikeSharp.API.Core.Translations
         }
 
         public string ResourcesPath { get; }
+
+        public virtual ConcurrentDictionary<string, string> GetResourceSet(string cultureName)
+        {
+            TryLoadResourceSet(cultureName);
+            _resourcesCache.TryGetValue(cultureName, out ConcurrentDictionary<string, string> resources);
+
+           return resources;
+        }
         
         public virtual ConcurrentDictionary<string, string> GetResourceSet(CultureInfo culture, bool tryParents)
         {
@@ -52,6 +60,21 @@ namespace CounterStrikeSharp.API.Core.Translations
 
                 return resources;
             }
+        }
+        
+        public string GetFallbackString(string name)
+        {
+            GetResourceSet("en");
+            
+            if (_resourcesCache.ContainsKey("en"))
+            {
+                if (_resourcesCache["en"].TryGetValue(name, out string value))
+                {
+                    return value;
+                }
+            }
+            
+            return null;
         }
 
         public virtual string GetString(string name)
@@ -93,18 +116,23 @@ namespace CounterStrikeSharp.API.Core.Translations
                 ? value
                 : null;
         }
-
-        private void TryLoadResourceSet(CultureInfo culture)
+        
+        private void TryLoadResourceSet(string cultureName)
         {
-            if (!_resourcesCache.ContainsKey(culture.Name))
+            if (!_resourcesCache.ContainsKey(cultureName))
             {
-                var file = Path.Combine(ResourcesPath, $"{culture.Name}.json");
+                var file = Path.Combine(ResourcesPath, $"{cultureName}.json");
 
                 var resources = LoadJsonResources(file);
                 
-                _resourcesCache.TryAdd(culture.Name,
+                _resourcesCache.TryAdd(cultureName,
                     new ConcurrentDictionary<string, string>(resources.ToDictionary(r => r.Key, r => r.Value)));
             }
+        }
+
+        private void TryLoadResourceSet(CultureInfo culture)
+        {
+            TryLoadResourceSet(culture.Name);
         }
 
         private static IDictionary<string, string> LoadJsonResources(string filePath)

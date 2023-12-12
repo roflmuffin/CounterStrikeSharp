@@ -150,9 +150,18 @@ namespace CounterStrikeSharp.API.Core
                 .FirstOrDefault(x => x.Name == ServerLanguage);
             if (serverCulture == null)
             {
-                _logger.LogWarning("Server Language \"{ServerLanguage}\" is not supported, falling back to \"en\"", ServerLanguage);
-                serverCulture = new CultureInfo("en");
-                _coreConfig.ServerLanguage = "en";
+                try
+                {
+                    _logger.LogWarning("Server Language \"{ServerLanguage}\" is not supported, falling back to \"en\"",
+                        ServerLanguage);
+                    _coreConfig.ServerLanguage = "en";
+                    serverCulture = new CultureInfo("en");
+                }
+                catch (Exception)
+                {
+                    _logger.LogWarning("Server is running in invariant mode, translations will not be available.");
+                    serverCulture = CultureInfo.InvariantCulture;
+                }
             }
             
             CultureInfo.DefaultThreadCurrentUICulture = serverCulture;

@@ -34,6 +34,11 @@ public class TranslationTests
         {
             Assert.Equal("This is the english translation", _localizer["test.translation"]);
         }
+        
+        using (new WithTemporaryCulture(CultureInfo.InvariantCulture))
+        {
+            Assert.Equal("This is the english translation", _localizer["test.translation"]);
+        }
 
         using (new WithTemporaryCulture(CultureInfo.GetCultureInfo("en-US")))
         {

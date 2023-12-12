@@ -64,6 +64,12 @@ public class JsonStringLocalizer : IStringLocalizer
 
         var result = _resourceManager.GetString(name, culture);
         
+        // Fallback to en if running in invariant mode.
+        if (result == null && culture.Equals(CultureInfo.InvariantCulture))
+        {
+            result = _resourceManager.GetFallbackString(name);
+        }
+        
         // Fallback to the default culture (en-US) if the resource is not found for the current culture.
         if (result == null && !culture.Equals(CultureInfo.DefaultThreadCurrentUICulture))
         {
