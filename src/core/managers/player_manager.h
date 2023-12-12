@@ -45,6 +45,25 @@ namespace counterstrikesharp {
 class ScriptCallback;
 class CBaseEntityWrapper;
 
+enum ListenOverride
+{
+    Listen_Default = 0,
+    Listen_Mute,
+    Listen_Hear
+};
+
+enum VoiceFlagValue
+{
+    Speak_Normal = 0,
+    Speak_Muted = 1 << 0,
+    Speak_All = 1 << 1,
+    Speak_ListenAll = 1 << 2,
+    Speak_Team = 1 << 3,
+    Speak_ListenTeam = 1 << 4,
+};
+
+typedef uint8_t VoiceFlag_t;
+
 class CPlayer {
     friend class PlayerManager;
 
@@ -92,6 +111,10 @@ public:
     int GetUserId() const;
     float GetTimeConnected() const;
     float GetLatency() const;
+    void SetListen(CPlayerSlot slot, ListenOverride listen);
+    void SetVoiceFlags(VoiceFlag_t flags);
+    VoiceFlag_t GetVoiceFlags();
+    ListenOverride GetListen(CPlayerSlot slot) const;
 
 public:
     std::string m_name;
@@ -105,6 +128,9 @@ public:
     CPlayerSlot m_slot = CPlayerSlot(-1);
     const CSteamID* m_steamId;
     std::string m_ip_address;
+    ListenOverride m_listenMap[66] = {};
+    VoiceFlag_t m_voiceFlag = 0;
+    CPlayerBitVec m_selfMutes[64] = {};
     void SetName(const char *name);
     INetChannelInfo *GetNetInfo() const;
 };

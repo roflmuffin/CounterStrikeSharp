@@ -31,6 +31,7 @@
 
 #include "core/managers/player_manager.h"
 #include "core/managers/con_command_manager.h"
+#include "core/managers/voice_manager.h"
 
 #include <public/eiface.h>
 #include <public/inetchannelinfo.h>
@@ -273,7 +274,7 @@ void PlayerManager::OnLevelEnd()
 {
     CSSHARP_CORE_TRACE("[PlayerManager][OnLevelEnd]");
 
-    for (int i = 0; i <= m_max_clients; i++) {
+    for (int i = 0; i <= MaxClients(); i++) {
         if (m_players[i].IsConnected()) {
             OnClientDisconnect(m_players[i].m_slot, ENetworkDisconnectionReason::NETWORK_DISCONNECT_INVALID, m_players[i].GetName(), 0,
                                m_players[i].GetIpAddress());
@@ -290,6 +291,8 @@ void PlayerManager::OnClientCommand(CPlayerSlot slot, const CCommand& args) cons
 
     const char* cmd = args.Arg(0);
 
+    globals::voiceManager.OnClientCommand(slot, args);
+
     auto result = globals::conCommandManager.ExecuteCommandCallbacks(
         cmd, CCommandContext(CommandTarget_t::CT_NO_TARGET, slot), args, HookMode::Pre);
 
@@ -302,11 +305,11 @@ int PlayerManager::ListenClient() const { return m_listen_client; }
 
 int PlayerManager::NumPlayers() const { return m_player_count; }
 
-int PlayerManager::MaxClients() const { return m_max_clients; }
+int PlayerManager::MaxClients() const { return globals::getGlobalVars()->maxClients; }
 
 CPlayer* PlayerManager::GetPlayerBySlot(int client) const
 {
-    if (client > m_max_clients || client < 0) {
+    if (client > MaxClients() || client < 0) {
         return nullptr;
     }
 
@@ -426,7 +429,6 @@ INetChannelInfo* CPlayer::GetNetInfo() const { return globals::engine->GetPlayer
 
 PlayerManager::PlayerManager()
 {
-    m_max_clients = 64;
     m_players = new CPlayer[66];
     m_player_count = 0;
     m_user_id_lookup = new int[USHRT_MAX + 1];
@@ -441,7 +443,7 @@ void PlayerManager::RunAuthChecks()
 
     m_last_auth_check_time = globals::timerSystem.GetTickedTime();
 
-    for (int i = 0; i <= m_max_clients; i++) {
+    for (int i = 0; i <= MaxClients(); i++) {
         if (m_players[i].IsConnected()) {
             if (m_players[i].IsAuthorized() || m_players[i].IsFakeClient())
                 continue;
@@ -532,6 +534,23 @@ float CPlayer::GetLatency() const
     return GetNetInfo()->GetLatency(FLOW_INCOMING) + GetNetInfo()->GetLatency(FLOW_OUTGOING);
 }
 
+void CPlayer::SetListen(CPlayerSlot slot, ListenOverride listen)
+{
+    m_listenMap[slot.Get()] = listen;
+}
+
+void CPlayer::SetVoiceFlags(VoiceFlag_t flags)
+{
+    m_voiceFlag = flags;
+}
+
+VoiceFlag_t CPlayer::GetVoiceFlags() { return m_voiceFlag; }
+
+ListenOverride CPlayer::GetListen(CPlayerSlot slot) const
+{
+    return m_listenMap[slot.Get()];
+}
+
 void CPlayer::Connect()
 {
     if (m_is_in_game) {
@@ -551,6 +570,9 @@ void CPlayer::Disconnect()
     m_user_id = -1;
     m_is_authorized = false;
     m_ip_address.clear();
+    m_selfMutes->ClearAll();
+    memset(m_listenMap, 0, sizeof m_listenMap);
+    m_voiceFlag = 0;
 }
 
 QAngle CPlayer::GetAbsAngles() const { return m_info->GetAbsAngles(); }

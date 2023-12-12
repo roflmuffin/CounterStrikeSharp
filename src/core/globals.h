@@ -53,6 +53,7 @@ class HookManager;
 class EntityManager;
 class ChatManager;
 class ServerManager;
+class VoiceManager;
 class CCoreConfig;
 class CGameConfig;
 
@@ -98,6 +99,7 @@ extern TimerSystem timerSystem;
 extern ChatCommands chatCommands;
 extern ChatManager chatManager;
 extern ServerManager serverManager;
+extern VoiceManager voiceManager;
 
 extern HookManager hookManager;
 extern SourceHook::ISourceHook *source_hook;

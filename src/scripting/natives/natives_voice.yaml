@@ -1,0 +1,4 @@
+SET_CLIENT_LISTENING: receiver:pointer, sender:pointer, listen:uint -> void
+GET_CLIENT_LISTENING:  receiver:pointer, sender:pointer -> ListenOverride
+SET_CLIENT_VOICE_FLAGS: client:pointer, flags:uint -> void
+GET_CLIENT_VOICE_FLAGS: client:pointer -> uint
