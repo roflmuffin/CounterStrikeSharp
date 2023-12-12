@@ -21,6 +21,7 @@
 #include "core/managers/entity_manager.h"
 #include "core/managers/server_manager.h"
 #include "core/managers/memory_manager.h"
+#include "core/managers/voice_manager.h"
 #include <public/game/server/iplayerinfo.h>
 #include <public/entity2/entitysystem.h>
 
@@ -79,6 +80,7 @@ EntityManager entityManager;
 ChatManager chatManager;
 ServerManager serverManager;
 MemoryManager memoryManager;
+VoiceManager voiceManager;
 
 bool gameLoopInitialized = false;
 GetLegacyGameEventListener_t* GetLegacyGameEventListener = nullptr;

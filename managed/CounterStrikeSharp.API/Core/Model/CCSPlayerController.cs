@@ -202,6 +202,21 @@ public partial class CCSPlayerController
 
     public void ExecuteClientCommand(string command) => NativeAPI.IssueClientCommand(Slot, command);
 
+    /// <summary>
+    /// Overrides who a player can hear in voice chat.
+    /// </summary>
+    /// <param name="sender">Player talking in the voice chat</param>
+    /// <param name="override">Whether the talker should be heard</param>
+    public void SetListenOverride(CCSPlayerController sender, ListenOverride @override)
+    {
+        NativeAPI.SetClientListening(Handle, sender.Handle, (Byte)@override);
+    }
+    
+    public ListenOverride GetListenOverride(CCSPlayerController sender)
+    {
+        return NativeAPI.GetClientListening(Handle, sender.Handle);
+    }
+
     public int Slot => (int)Index - 1;
 
     /// <summary>
@@ -232,6 +247,18 @@ public partial class CCSPlayerController
             if (string.IsNullOrWhiteSpace(ipAddress)) return null;
 
             return ipAddress;
+        }
+    }
+
+    /// <summary>
+    /// Determines how the player interacts with voice chat.
+    /// </summary>
+    public VoiceFlags VoiceFlags
+    {
+        get => (VoiceFlags)NativeAPI.GetClientVoiceFlags(Handle);
+        set
+        {
+            NativeAPI.SetClientVoiceFlags(Handle, (Byte)value);
         }
     }
 }

@@ -15,5 +15,7 @@ items:
     href: WithDatabase.md
   - name: Translations
     href: WithTranslations.md
+  - name: Voice Overrides
+    href: WithVoiceOverrides.md
   - name: Warcraft Plugin
     href: WarcraftPlugin.md
