@@ -992,6 +992,17 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static IntPtr GetPatchAddress(string signaturename){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(signaturename);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xFA71AC6B);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			}
+		}
+
         public static short GetSchemaOffset(string classname, string propname){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();

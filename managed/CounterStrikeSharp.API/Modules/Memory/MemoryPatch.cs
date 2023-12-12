@@ -43,4 +43,9 @@ public partial class MemoryPatch
     {
         NativeAPI.UndoMemoryPatch(_patchName);
     }
+
+    public nint GetPatchAddress()
+    {
+        return NativeAPI.GetPatchAddress(_patchName);
+    }
 }

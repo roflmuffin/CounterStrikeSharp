@@ -34,6 +34,8 @@ public:
     bool CreatePatch(const char* pSignatureName, const char* pszName);
     void UndoPatch(const char* pSignatureName);
 
+    void* GetPatchAddress(const char* pSignatureName);
+
 private:
     std::unordered_map<std::string, CMemPatch*> m_memoryPatches;
 };

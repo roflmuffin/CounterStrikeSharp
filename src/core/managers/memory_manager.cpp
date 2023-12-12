@@ -64,4 +64,14 @@ void MemoryManager::UndoPatch(const char* pszSignatureName)
     it->second->UndoPatch();
 }
 
+void* MemoryManager::GetPatchAddress(const char* pSignatureName)
+{
+    auto it = m_memoryPatches.find(pszSignatureName);
+    if (it == m_memoryPatches.end()) {
+        return nullptr;
+    }
+
+     return it->second->GetPatchAddress();
+}
+
 }  // namespace counterstrikesharp

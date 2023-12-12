@@ -182,6 +182,12 @@ void UndoMemoryPatch(ScriptContext& scriptContext)
     globals::gameConfig->RemovePatch(patchName);
 }
 
+void* GetPatchAddress(ScriptContext& scriptContext)
+{
+    auto patchName = scriptContext.GetArgument<const char*>(0);
+    return globals::memoryManager.GetPatchAddress(patchName);
+}
+
 REGISTER_NATIVES(memory, {
     ScriptEngine::RegisterNativeHandler("CREATE_VIRTUAL_FUNCTION", CreateVirtualFunction);
     ScriptEngine::RegisterNativeHandler("CREATE_VIRTUAL_FUNCTION_BY_SIGNATURE",
@@ -194,5 +200,6 @@ REGISTER_NATIVES(memory, {
     ScriptEngine::RegisterNativeHandler("GET_NETWORK_VECTOR_ELEMENT_AT", GetNetworkVectorElementAt);
     ScriptEngine::RegisterNativeHandler("CREATE_MEMORY_PATCH", CreateMemoryPatch);
     ScriptEngine::RegisterNativeHandler("UNDO_MEMORY_PATCH", UndoMemoryPatch);
+    ScriptEngine::RegisterNativeHandler("GET_PATCH_ADDRESS", GetPatchAddress);
 })
 } // namespace counterstrikesharp
