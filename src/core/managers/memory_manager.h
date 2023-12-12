@@ -31,10 +31,12 @@ public:
     void OnAllInitialized() override;
     void OnShutdown() override;
 
-    bool CreatePatch(const char* pSignatureName, const char* pszName);
-    void UndoPatch(const char* pSignatureName);
+    bool CreatePatch(const char* pszSignatureName, const char* pszName);
+    void UndoPatch(const char* pszSignatureName);
+    bool DoesPatchExists(const char* pszSignatureName);
+    CMemPatch* GetPatchByName(const char* pszSignatureName);
 
-    void* GetPatchAddress(const char* pSignatureName);
+    void* GetPatchAddress(const char* pszSignatureName);
 
 private:
     std::unordered_map<std::string, CMemPatch*> m_memoryPatches;

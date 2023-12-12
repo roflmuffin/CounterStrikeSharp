@@ -29,7 +29,7 @@ void MemoryManager::OnAllInitialized()
 
     for (const auto& gameConfigPatch : gameConfigPatches)
     {
-        CreatePatch(gameConfigPatch.first.c_str(), gameConfigPatch.second.c_str());
+        CreatePatch(gameConfigPatch.first.c_str(), gameConfigPatch.first.c_str());
     }
 }
 
@@ -38,11 +38,18 @@ void MemoryManager::OnShutdown()
     for (const auto& patch : m_memoryPatches)
     {
         patch.second->UndoPatch();
+        delete patch.second;
     }
 }
 
 bool MemoryManager::CreatePatch(const char* pszSignatureName, const char* pszName)
 {
+    if (DoesPatchExists(pszSignatureName))
+    {
+        CSSHARP_CORE_ERROR("Patch for '{}' already exists ({})", pszSignatureName, pszName);
+        return false;
+    }
+
     CMemPatch* patch = new CMemPatch(pszSignatureName, pszName);
 
     if (patch->PerformPatch(globals::gameConfig))
@@ -62,6 +69,24 @@ void MemoryManager::UndoPatch(const char* pszSignatureName)
     }
 
     it->second->UndoPatch();
+    delete it->second;
+    m_memoryPatches.erase(it->first);
+}
+
+bool MemoryManager::DoesPatchExists(const char* pszSignatureName)
+{
+    auto it = m_memoryPatches.find(pszSignatureName);
+    return it != m_memoryPatches.end();
+}
+
+CMemPatch* MemoryManager::GetPatchByName(const char* pszSignatureName)
+{
+    auto it = m_memoryPatches.find(pszSignatureName);
+    if (it == m_memoryPatches.end()) {
+        return nullptr;
+    }
+
+    return it->second;
 }
 
 void* MemoryManager::GetPatchAddress(const char* pszSignatureName)
