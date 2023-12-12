@@ -167,19 +167,25 @@ bool CreateMemoryPatch(ScriptContext& scriptContext)
     auto pszSignatureName = scriptContext.GetArgument<const char*>(0);
     auto pszName = scriptContext.GetArgument<const char*>(1);
 
-    if (globals::gameConfig->AddPatch(pszSignatureName, pszName))
+    if (!globals::gameConfig->AddPatch(pszSignatureName, pszName))
     {
-        return globals::memoryManager.CreatePatch(pszSignatureName, pszName);
+        CSSHARP_CORE_TRACE("Patch {} already exists in gamedata ({})", pszSignatureName, pszName);
     }
 
-    return false;
+    return globals::memoryManager.CreatePatch(pszSignatureName, pszName);
 }
 
 void UndoMemoryPatch(ScriptContext& scriptContext)
 {
     auto patchName = scriptContext.GetArgument<const char*>(0);
+    auto removeData = scriptContext.GetArgument<bool>(1);
+
     globals::memoryManager.UndoPatch(patchName);
-    globals::gameConfig->RemovePatch(patchName);
+
+    if (removeData)
+    {
+        globals::gameConfig->RemovePatch(patchName);
+    }
 }
 
 void* GetPatchAddress(ScriptContext& scriptContext)

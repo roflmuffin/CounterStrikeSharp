@@ -37,9 +37,9 @@ public partial class MemoryPatch
         return NativeAPI.CreateMemoryPatch(_patchName, _patchSignature);
     }
 
-    public void UndoPatch()
+    public void UndoPatch(bool removeData = false)
     {
-        NativeAPI.UndoMemoryPatch(_patchName);
+        NativeAPI.UndoMemoryPatch(_patchName, removeData);
     }
 
     public nint GetPatchAddress()

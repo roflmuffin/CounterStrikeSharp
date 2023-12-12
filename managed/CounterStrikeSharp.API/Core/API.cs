@@ -1064,10 +1064,11 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
-        public static void UndoMemoryPatch(string signaturename){
+        public static void UndoMemoryPatch(string signaturename, bool removedata){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
 			ScriptContext.GlobalScriptContext.Push(signaturename);
+			ScriptContext.GlobalScriptContext.Push(removedata);
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xF451877A);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
