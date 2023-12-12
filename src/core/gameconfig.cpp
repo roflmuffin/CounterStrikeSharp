@@ -188,7 +188,6 @@ bool CGameConfig::AddPatch(const char* name, const char* value)
 {
     auto it = m_umPatches.find(name);
     if (it != m_umPatches.end()) {
-        CSSHARP_CORE_ERROR("Patch {} is already exists\n", name);
         return false;
     }
 
@@ -200,7 +199,6 @@ void CGameConfig::RemovePatch(const char* name)
 {
     auto it = m_umPatches.find(name);
     if (it == m_umPatches.end()) {
-        CSSHARP_CORE_ERROR("Patch {} does not exists\n", name);
         return;
     }
 
