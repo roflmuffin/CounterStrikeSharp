@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 namespace WithVoiceOverrides;
 
 [MinimumApiVersion(80)]
-public class HelloWorldPlugin : BasePlugin
+public class WithVoiceOverridesPlugin : BasePlugin
 {
     public override string ModuleName => "Example: With Voice Overrides";
     public override string ModuleVersion => "1.0.0";
