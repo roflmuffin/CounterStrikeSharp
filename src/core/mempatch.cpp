@@ -34,12 +34,12 @@ bool CMemPatch::PerformPatch(CGameConfig* gameConfig)
 {
     if (!m_pPatchAddress)
 	{
-		m_pPatchAddress = gameConfig->ResolveSignature(m_pSignatureName);
+		m_pPatchAddress = gameConfig->ResolveSignature(m_pSignatureName.c_str());
 	}
 
     if (!m_pPatchAddress)
     {
-        CSSHARP_CORE_ERROR("Failed to find patch address for {}", m_pSignatureName);
+        CSSHARP_CORE_ERROR("Failed to find patch address for '{}'", m_pSignatureName.c_str());
         return false;
     }
 
@@ -47,7 +47,7 @@ bool CMemPatch::PerformPatch(CGameConfig* gameConfig)
 
     if (!patch)
     {
-        CSSHARP_CORE_ERROR("Failed to find patch for {}", m_pszName);
+        CSSHARP_CORE_ERROR("Failed to find patch for '{}'", m_pszName);
         return false;
     }
 
@@ -55,7 +55,7 @@ bool CMemPatch::PerformPatch(CGameConfig* gameConfig)
 
     if (!m_pPatch)
     {
-        CSSHARP_CORE_ERROR("Failed convert patch {} ({})", m_pszName, patch);
+        CSSHARP_CORE_ERROR("Failed convert patch '{}' ({})", m_pszName, patch);
         return false;
     }
 
@@ -64,7 +64,7 @@ bool CMemPatch::PerformPatch(CGameConfig* gameConfig)
 
     Plat_WriteMemory(m_pPatchAddress, (byte*)m_pPatch, m_iPatchLength);
 
-    CSSHARP_CORE_INFO("Patched {} at {}", m_pszName, m_pPatchAddress);
+    CSSHARP_CORE_INFO("Patched '{}' at '{}'", m_pszName, m_pPatchAddress);
     return true;
 }
 
@@ -73,7 +73,7 @@ void CMemPatch::UndoPatch()
     if (!m_pPatchAddress)
         return;
 
-    CSSHARP_CORE_INFO("Undoing patch {} at {}", m_pszName, m_pPatchAddress);
+    CSSHARP_CORE_INFO("Undoing patch '{}' at '{}'", m_pszName, m_pPatchAddress);
 
     Plat_WriteMemory(m_pPatchAddress, m_pOriginalBytes, m_iPatchLength);
 

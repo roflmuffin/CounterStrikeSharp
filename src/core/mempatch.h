@@ -50,8 +50,8 @@ class CMemPatch
     const byte* m_pSignature;
     const byte* m_pPatch;
     byte* m_pOriginalBytes;
-    const char* m_pSignatureName;
-    const char* m_pszName;
+    std::string m_pSignatureName;
+    std::string m_pszName;
     size_t m_iPatchLength;
     void* m_pPatchAddress;
 };

@@ -169,7 +169,7 @@ bool CreateMemoryPatch(ScriptContext& scriptContext)
 
     if (!globals::gameConfig->AddPatch(pszSignatureName, pszName))
     {
-        CSSHARP_CORE_TRACE("Patch {} already exists in gamedata ({})", pszSignatureName, pszName);
+        CSSHARP_CORE_TRACE("Patch '{}' already exists in gamedata ({})", pszSignatureName, pszName);
     }
 
     return globals::memoryManager.CreatePatch(pszSignatureName, pszName);
