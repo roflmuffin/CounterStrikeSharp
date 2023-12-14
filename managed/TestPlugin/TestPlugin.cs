@@ -465,6 +465,33 @@ namespace TestPlugin
 
             player.PlayerPawn.Value.CommitSuicide(true, true);
         }
+        
+        [ConsoleCommand("css_stripweapons", "Removes player weapons")]
+        public void OnStripWeapons(CCSPlayerController? player, CommandInfo command)
+        {
+            if (player == null) return;
+            if (!player.PlayerPawn.IsValid) return;
+
+            player.RemoveWeapons();
+        }
+        
+        [ConsoleCommand("css_teleportup", "Teleports the player up")]
+        public void OnTeleport(CCSPlayerController? player, CommandInfo command)
+        {
+            if (player == null) return;
+            if (!player.PlayerPawn.IsValid) return;
+
+            player.PlayerPawn.Value.Teleport(player.PlayerPawn.Value.AbsOrigin.With(z: player.PlayerPawn.Value.AbsOrigin.Z + 100), player.PlayerPawn.Value.AbsRotation, new Vector(IntPtr.Zero));
+        }
+        
+        [ConsoleCommand("css_respawn", "Respawns the player")]
+        public void OnRespawn(CCSPlayerController? player, CommandInfo command)
+        {
+            if (player == null) return;
+            if (!player.PlayerPawn.IsValid) return;
+
+            player.Respawn();
+        }
 
         [ConsoleCommand("cssharp_attribute", "This is a custom attribute event")]
         public void OnCommand(CCSPlayerController? player, CommandInfo command)

@@ -75,6 +75,7 @@ SET(SOURCE_FILES
     src/scripting/natives/natives_memory.cpp
     src/scripting/natives/natives_schema.cpp
     src/scripting/natives/natives_entities.cpp
+    src/scripting/natives/natives_voice.cpp
     src/core/managers/entity_manager.cpp
     src/core/managers/entity_manager.h
     src/core/managers/chat_manager.cpp
@@ -83,6 +84,8 @@ SET(SOURCE_FILES
     src/core/managers/server_manager.h
     src/scripting/natives/natives_server.cpp
     libraries/nlohmann/json.hpp
+    src/core/managers/voice_manager.cpp
+    src/core/managers/voice_manager.h
     src/scripting/natives/natives_dynamichooks.cpp
 )
 
