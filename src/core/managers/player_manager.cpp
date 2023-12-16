@@ -89,7 +89,6 @@ void PlayerManager::OnAllInitialized()
     m_on_client_disconnect_post_callback =
         globals::callbackManager.CreateCallback("OnClientDisconnectPost");
     m_on_client_voice_callback = globals::callbackManager.CreateCallback("OnClientVoice");
-    m_on_client_voice_post_callback = globals::callbackManager.CreateCallback("OnClientVoicePost");
     m_on_client_authorized_callback = globals::callbackManager.CreateCallback("OnClientAuthorized");
 }
 
@@ -116,6 +115,7 @@ void PlayerManager::OnShutdown()
     globals::callbackManager.ReleaseCallback(m_on_client_disconnect_callback);
     globals::callbackManager.ReleaseCallback(m_on_client_disconnect_post_callback);
     globals::callbackManager.ReleaseCallback(m_on_client_authorized_callback);
+    globals::callbackManager.ReleaseCallback(m_on_client_voice_callback);
 }
 
 bool PlayerManager::OnClientConnect(CPlayerSlot slot, const char* pszName, uint64 xuid,

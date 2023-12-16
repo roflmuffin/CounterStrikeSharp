@@ -186,7 +186,6 @@ class PlayerManager : public GlobalClass
     ScriptCallback* m_on_client_disconnect_callback;
     ScriptCallback* m_on_client_disconnect_post_callback;
     ScriptCallback* m_on_client_voice_callback;
-    ScriptCallback* m_on_client_voice_post_callback;
     ScriptCallback* m_on_client_authorized_callback;
 };
 
