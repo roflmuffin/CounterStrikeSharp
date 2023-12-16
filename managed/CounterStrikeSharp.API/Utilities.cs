@@ -75,6 +75,30 @@ namespace CounterStrikeSharp.API
             return new Target(pattern).GetTarget(player);
         }
 
+        public static bool RemoveItemByDesignerName(this CCSPlayerController player, string designerName)
+        {
+            CHandle<CBasePlayerWeapon>? item = null;
+            if (player.PlayerPawn.Value == null || player.PlayerPawn.Value.WeaponServices == null) return false;
+
+            foreach(var weapon in player.PlayerPawn.Value.WeaponServices.MyWeapons)
+            {
+                if (weapon is not { IsValid: true, Value.IsValid: true }) 
+                    continue;
+                if (weapon.Value.DesignerName != designerName) 
+                    continue;
+
+                item = weapon;
+            }
+            
+            if(item != null && item.Value != null)
+            {
+                player.PlayerPawn.Value.RemovePlayerItem(item.Value);
+                return true;
+            }
+            
+            return false;
+        }
+
         public static IEnumerable<T> FindAllEntitiesByDesignerName<T>(string designerName) where T : CEntityInstance
         {
             var pEntity = new CEntityIdentity(EntitySystem.FirstActiveEntity);

@@ -126,6 +126,13 @@
       "linux": 357
     }
   },
+  "CBasePlayerPawn_RemovePlayerItem": {
+    "signatures": {
+      "library": "server",
+      "linux": "\\x55\\x48\\x89\\x2A\\x41\\x2A\\x49\\x89\\x2A\\x41\\x2A\\x49\\x89\\x2A\\xE8\\x2A\\x2A\\x2A\\x2A\\x49\\x39",
+      "windows": "\\x48\\x85\\xD2\\x0F\\x84\\x2A\\x2A\\x2A\\x2A\\x48\\x89\\x5C\\x24\\x08\\x57\\x48\\x83\\xEC\\x30\\x48\\x8B\\xDA"
+    }
+  },
   "CBaseEntity_Teleport": {
     "offsets": {
       "windows": 149,
