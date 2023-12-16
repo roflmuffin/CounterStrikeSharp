@@ -14,4 +14,13 @@ public partial class CBasePlayerPawn
     {
         VirtualFunction.CreateVoid<IntPtr, bool, bool>(Handle,  GameData.GetOffset("CBasePlayerPawn_CommitSuicide"))(Handle, explode, force);
     }
+    
+    /// <summary>
+    /// Remove Player Item
+    /// </summary>
+    /// <param name="weapon"></param>
+    public void RemovePlayerItem(CBasePlayerWeapon weapon)
+    {
+        VirtualFunctions.RemovePlayerItemVirtual(Handle, weapon.Handle);
+    }
 }

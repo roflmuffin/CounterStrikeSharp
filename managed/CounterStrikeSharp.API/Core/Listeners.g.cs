@@ -94,6 +94,13 @@ namespace CounterStrikeSharp.API.Core
         public delegate void OnClientDisconnectPost(int playerSlot);
 
         /// <summary>
+        /// Called when a client transmits voice data
+        /// </summary>
+        /// <param name="playerSlot">The player slot of the client.</param>
+        [ListenerName("OnClientVoice")]
+        public delegate void OnClientVoice(int playerSlot);
+
+        /// <summary>
         /// Called when a client has been authorized by Steam.
         /// </summary>
         /// <param name="playerSlot">The player slot of the authorized client.</param>
