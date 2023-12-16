@@ -466,6 +466,16 @@ namespace TestPlugin
             player.PlayerPawn.Value.CommitSuicide(true, true);
         }
         
+        [CommandHelper(minArgs: 1, usage: "[weaponName]")]
+        [ConsoleCommand("css_strip", "Removes weapon by name")]
+        public void OnStripActiveWeapon(CCSPlayerController? player, CommandInfo command)
+        {
+            if (player == null) return;
+            if (!player.PlayerPawn.IsValid) return;
+            
+            player.RemoveItemByDesignerName(command.GetArg(1));
+        }
+        
         [ConsoleCommand("css_stripweapons", "Removes player weapons")]
         public void OnStripWeapons(CCSPlayerController? player, CommandInfo command)
         {
