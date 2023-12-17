@@ -233,7 +233,9 @@ internal static partial class Program
                 continue;
             
             // Putting these in the too hard basket for now.
-            if (field.Name == "m_VoteOptions" || field.Name == "m_aShootSounds") continue;
+            if (field.Name == "m_VoteOptions" || field.Name == "m_aShootSounds" || field.Name == "m_pVecRelationships") continue;
+            if (IgnoreClasses.Contains(field.Type.Name)) continue;
+            if (field.Type.Category == SchemaTypeCategory.Bitfield) continue;
 
             if (field.Type is { Category: SchemaTypeCategory.Atomic, Atomic: SchemaAtomicCategory.Collection })
             {
@@ -242,9 +244,10 @@ internal static partial class Program
 
             var handleParams = $"this.Handle, \"{schemaClassName}\", \"{field.Name}\"";
 
-            builder.AppendLine($"    // {field.Name}");
+            builder.AppendLine($"\t// {field.Name}");
+            builder.AppendLine($"\t[SchemaMember(\"{schemaClassName}\", \"{field.Name}\")]");
 
-            if (field.Type is { Category: SchemaTypeCategory.FixedArray, CsTypeName: "string" })
+            if (field.Type is { Category: SchemaTypeCategory.FixedArray, CsTypeName: "string" } or { Category: SchemaTypeCategory.Ptr, CsTypeName: "string" })
             {
                 var getter = $"return Schema.GetString({handleParams});";
                 var setter = $"Schema.SetString({handleParams}, value);";

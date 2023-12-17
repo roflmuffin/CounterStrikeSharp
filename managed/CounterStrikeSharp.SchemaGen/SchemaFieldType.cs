@@ -40,7 +40,7 @@ public record SchemaFieldType
     }
 
     public bool IsString =>
-        Category == SchemaTypeCategory.FixedArray
+        (Category == SchemaTypeCategory.FixedArray || Category == SchemaTypeCategory.Ptr)
         && Inner!.Category == SchemaTypeCategory.Builtin
         && Inner.Name == "char";
 
@@ -98,7 +98,8 @@ public record SchemaFieldType
     public string CsTypeName => Category switch
     {
         SchemaTypeCategory.Builtin => BuiltinToCsKeyword(Name),
-        SchemaTypeCategory.Ptr => $"{Inner!.CsTypeName}?",
+        SchemaTypeCategory.Ptr => IsString
+            ? "string" : $"{Inner!.CsTypeName}?",
         SchemaTypeCategory.FixedArray => IsString
             ? "string"
             : $"{Inner!.CsTypeName}[]",

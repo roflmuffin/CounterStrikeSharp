@@ -4816,10 +4816,10 @@
           }
         },
         {
-          "name": "m_eThrowStatus",
+          "name": "m_bThrowAnimating",
           "type": {
-            "category": 6,
-            "name": "EGrenadeThrowState"
+            "category": 0,
+            "name": "bool"
           }
         },
         {
@@ -4848,6 +4848,40 @@
           "type": {
             "category": 5,
             "name": "GameTime_t"
+          }
+        },
+        {
+          "name": "m_bJustPulledPin",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_nNextHoldTick",
+          "type": {
+            "category": 5,
+            "name": "GameTick_t"
+          }
+        },
+        {
+          "name": "m_flNextHoldFrac",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_hSwitchToWeaponAfterThrow",
+          "type": {
+            "atomic": 1,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "CCSWeaponBase"
+            },
+            "name": "CHandle< CCSWeaponBase >",
+            "outer": "CHandle"
           }
         }
       ],
@@ -6312,7 +6346,7 @@
               "category": 0,
               "name": "char"
             },
-            "name": "char[4096]"
+            "name": "char[260]"
           }
         },
         {
@@ -6840,6 +6874,13 @@
           "type": {
             "category": 0,
             "name": "int64"
+          }
+        },
+        {
+          "name": "m_nLastRealCommandNumberExecuted",
+          "type": {
+            "category": 0,
+            "name": "int32"
           }
         },
         {
@@ -16738,10 +16779,17 @@
           }
         },
         {
-          "name": "m_bPlayerFireEventIsPrimary",
+          "name": "m_ePlayerFireEvent",
           "type": {
-            "category": 0,
-            "name": "bool"
+            "category": 6,
+            "name": "PlayerAnimEvent_t"
+          }
+        },
+        {
+          "name": "m_ePlayerFireEventAttackType",
+          "type": {
+            "category": 6,
+            "name": "WeaponAttackType_t"
           }
         },
         {
@@ -16799,7 +16847,7 @@
               "category": 5,
               "name": "HSequence"
             },
-            "name": "HSequence[6]"
+            "name": "HSequence[7]"
           }
         },
         {
@@ -16951,10 +16999,17 @@
           }
         },
         {
-          "name": "m_flPostponeFireReadyTime",
+          "name": "m_nPostponeFireReadyTicks",
           "type": {
             "category": 5,
-            "name": "GameTime_t"
+            "name": "GameTick_t"
+          }
+        },
+        {
+          "name": "m_flPostponeFireReadyFrac",
+          "type": {
+            "category": 0,
+            "name": "float32"
           }
         },
         {
@@ -32791,40 +32846,6 @@
       ],
       "parent": "CLogicalEntity"
     },
-    "CLogicEventListener": {
-      "fields": [
-        {
-          "name": "m_strEventName",
-          "type": {
-            "atomic": 0,
-            "category": 4,
-            "name": "CUtlString"
-          }
-        },
-        {
-          "name": "m_bIsEnabled",
-          "type": {
-            "category": 0,
-            "name": "bool"
-          }
-        },
-        {
-          "name": "m_nTeam",
-          "type": {
-            "category": 0,
-            "name": "int32"
-          }
-        },
-        {
-          "name": "m_OnEventFired",
-          "type": {
-            "category": 5,
-            "name": "CEntityIOOutput"
-          }
-        }
-      ],
-      "parent": "CLogicalEntity"
-    },
     "CLogicGameEvent": {
       "fields": [
         {
@@ -34452,35 +34473,7 @@
       "parent": "CLogicalEntity"
     },
     "CMelee": {
-      "fields": [
-        {
-          "name": "m_flThrowAt",
-          "type": {
-            "category": 5,
-            "name": "GameTime_t"
-          }
-        },
-        {
-          "name": "m_hThrower",
-          "type": {
-            "atomic": 1,
-            "category": 4,
-            "inner": {
-              "category": 5,
-              "name": "CBaseEntity"
-            },
-            "name": "CHandle< CBaseEntity >",
-            "outer": "CHandle"
-          }
-        },
-        {
-          "name": "m_bDidThrowDamage",
-          "type": {
-            "category": 0,
-            "name": "bool"
-          }
-        }
-      ],
+      "fields": [],
       "parent": "CCSWeaponBase"
     },
     "CMeshletDescriptor": {
@@ -54566,10 +54559,6 @@
       "fields": [],
       "parent": "CBaseTrigger"
     },
-    "CTriggerHostageReset": {
-      "fields": [],
-      "parent": "CBaseTrigger"
-    },
     "CTriggerHurt": {
       "fields": [
         {
@@ -70344,7 +70333,7 @@
               "category": 0,
               "name": "char"
             },
-            "name": "char[4096]"
+            "name": "char[260]"
           }
         },
         {
@@ -76073,6 +76062,20 @@
           "type": {
             "category": 0,
             "name": "float32"
+          }
+        },
+        {
+          "name": "m_flTickInterval",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flTickStartTime",
+          "type": {
+            "category": 0,
+            "name": "float64"
           }
         }
       ]
@@ -90386,23 +90389,6 @@
         }
       ]
     },
-    "C4LightEffect_t": {
-      "align": 4,
-      "items": [
-        {
-          "name": "eLightEffectNone",
-          "value": 0
-        },
-        {
-          "name": "eLightEffectDropped",
-          "value": 1
-        },
-        {
-          "name": "eLightEffectThirdPersonHeld",
-          "value": 2
-        }
-      ]
-    },
     "CAnimationGraphVisualizerPrimitiveType": {
       "align": 4,
       "items": [
@@ -91371,23 +91357,6 @@
         {
           "name": "CaptureSelectedBones",
           "value": 1
-        }
-      ]
-    },
-    "EGrenadeThrowState": {
-      "align": 4,
-      "items": [
-        {
-          "name": "NotThrowing",
-          "value": 0
-        },
-        {
-          "name": "Throwing",
-          "value": 1
-        },
-        {
-          "name": "ThrowComplete",
-          "value": 2
         }
       ]
     },
@@ -96428,7 +96397,7 @@
         },
         {
           "name": "ALL_CONTEXTS",
-          "value": 4293918720
+          "value": 18446744073708503040
         },
         {
           "name": "ALL_SCENTS",
