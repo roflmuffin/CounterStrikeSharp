@@ -91,8 +91,8 @@ public class HelloWorldPlugin : BasePlugin
 
 ## Credits
 
-A lot of code has been borrowed from SourceMod as well as Source.Python, two pioneering source engine plugin frameworks which this project lends a lot of its credit to.
-I've also used the scripting context & native system that is implemented in FiveM for GTA5. Also shoutout to the [CS2Fixes](https://github.com/Source2ZE/CS2Fixes) project for providing good reverse-engineering information so shortly after CS2 release.
+A lot of code has been borrowed from [SourceMod](https://github.com/alliedmodders/sourcemod) as well as [Source.Python](https://github.com/Source-Python-Dev-Team/Source.Python), two pioneering source engine plugin frameworks which this project lends a lot of its credit to.
+I've also used the scripting context & native system that is implemented in [FiveM](https://github.com/citizenfx/fivem) for GTA5. Also shoutout to the [CS2Fixes](https://github.com/Source2ZE/CS2Fixes) project for providing good reverse-engineering information so shortly after CS2 release.
 
 ## How to Build
 
