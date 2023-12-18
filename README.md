@@ -43,7 +43,7 @@ These features are the core of the platform and work pretty well/have a low risk
 - [Read the docs](https://docs.cssharp.dev/): Getting started guide, hello world plugin example
 - [Issue tracker](https://github.com/roflmuffin/CounterStrikeSharp/issues): Raise any issues here
 - [Builds](https://github.com/roflmuffin/CounterStrikeSharp/actions): Download latest unstable dev snapshot
-- [Install Docs](https://docs.cssharp.dev/guides/getting-started/): Installation instructions
+- [Install Docs](https://docs.cssharp.dev/docs/guides/getting-started.html): Installation instructions
 - [Example Plugin](managed/TestPlugin/TestPlugin.cs): Test plugin with basic functionality
 
 ## Examples
