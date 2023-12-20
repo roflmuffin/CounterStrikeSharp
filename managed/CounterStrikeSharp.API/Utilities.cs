@@ -90,7 +90,7 @@ namespace CounterStrikeSharp.API
                 item = weapon;
             }
             
-            if(item != null && item.Value != null)
+            if (item != null && item.Value != null)
             {
                 player.PlayerPawn.Value.RemovePlayerItem(item.Value);
 
