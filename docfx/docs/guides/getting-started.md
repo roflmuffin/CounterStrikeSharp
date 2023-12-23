@@ -17,7 +17,7 @@ If you're more of a visual person, here is a <a href="https://www.youtube.com/wa
 
 1. Extract Metamod and copy the `/addons/` directory to `/game/csgo/`.
 2. Inside `/game/csgo/`, locate `gameinfo.gi`.
-3. Create a new line underneath and add `Game    csgo/addons/metamod` under the line `Game_LowViolence    csgo_lv`.
+3. Create a new line underneath `Game_LowViolence    csgo_lv` and add `Game    csgo/addons/metamod`.
 4. Restart your game server.
 
 Your `gameinfo.gi` should look like <a href="images/gameinfogi-example.png" target="_blank">this</a>. Type `meta list` in your server console to see if Metamod is loaded.
