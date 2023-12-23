@@ -7,6 +7,8 @@ description: How to get started installing & using CounterStrikeSharp.
 
 In this guide you will learn how to install CounterStrikeSharp onto your vanilla Counter-Strike 2 server. `CounterStrikeSharp` uses `Metamod:Source` as its main way of communicating with the game server, so both frameworks will need to be installed.
 
+If you're more of a visual person, here is a <a href="https://www.youtube.com/watch?v=FlsKzStHJuY" target="_blank">Youtube video</a> that covers everything.
+
 ## Prerequisites
 - <a href="https://www.sourcemm.net/downloads.php/?branch=master" target="_blank">Metamod: Source 2.X Dev Build</a>
 - <a href="https://github.com/roflmuffin/CounterStrikeSharp/releases" target="_blank">CounterStrikeSharp With Runtime</a>
