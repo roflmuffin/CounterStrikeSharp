@@ -75,7 +75,12 @@ namespace CounterStrikeSharp.API
             return new Target(pattern).GetTarget(player);
         }
 
-        public static bool RemoveItemByDesignerName(this CCSPlayerController player, string designerName, bool shouldRemoveEntity = false)
+        public static bool RemoveItemByDesignerName(this CCSPlayerController player, string designerName)
+        {
+            return RemoveItemByDesignerName(player, designerName, false);
+        }
+
+        public static bool RemoveItemByDesignerName(this CCSPlayerController player, string designerName, bool shouldRemoveEntity)
         {
             CHandle<CBasePlayerWeapon>? item = null;
             if (player.PlayerPawn.Value == null || player.PlayerPawn.Value.WeaponServices == null) return false;
