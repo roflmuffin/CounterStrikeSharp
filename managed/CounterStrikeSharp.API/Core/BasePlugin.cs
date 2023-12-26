@@ -50,9 +50,9 @@ namespace CounterStrikeSharp.API.Core
 
         public abstract string ModuleName { get; }
         public abstract string ModuleVersion { get; }
-        
+
         public virtual string ModuleAuthor { get; }
-        
+
         public virtual string ModuleDescription { get; }
 
         public string ModulePath { get; set; }
@@ -61,7 +61,7 @@ namespace CounterStrikeSharp.API.Core
         public ILogger Logger { get; set; }
 
         public IStringLocalizer Localizer { get; set; }
-        
+
         public virtual void Load(bool hotReload)
         {
         }
@@ -110,7 +110,7 @@ namespace CounterStrikeSharp.API.Core
 
         public readonly Dictionary<Delegate, CallbackSubscriber> CommandHandlers =
             new Dictionary<Delegate, CallbackSubscriber>();
-        
+
         public readonly Dictionary<Delegate, CallbackSubscriber> CommandListeners =
             new Dictionary<Delegate, CallbackSubscriber>();
 
@@ -127,7 +127,7 @@ namespace CounterStrikeSharp.API.Core
             new Dictionary<Delegate, EntityIO.EntityOutputCallback>();
 
         public readonly List<Timer> Timers = new List<Timer>();
-        
+
         public delegate HookResult GameEventHandler<T>(T @event, GameEventInfo info) where T : GameEvent;
 
         private void RegisterEventHandlerInternal<T>(string name, GameEventHandler<T> handler, bool post)
@@ -174,14 +174,14 @@ namespace CounterStrikeSharp.API.Core
             {
                 var caller = (i != -1) ? new CCSPlayerController(NativeAPI.GetEntityFromIndex(i + 1)) : null;
                 var command = new CommandInfo(ptr, caller);
-                
+
                 using var temporaryCulture = new WithTemporaryCulture(caller.GetLanguage());
 
                 var methodInfo = handler?.GetMethodInfo();
 
                 // We do not need to do permission checks on commands executed from the server console.
                 // The server will always be allowed to execute commands (unless marked as client only like above)
-                if (caller != null) 
+                if (caller != null)
                 {
                     // Do not execute command if we do not have the correct permissions.
                     var adminData = AdminManager.GetPlayerAdminData(caller!.AuthorizedSteamID);
@@ -541,6 +541,11 @@ namespace CounterStrikeSharp.API.Core
             EntitySingleOutputHooks.Remove(handler);
         }
 
+        public void RegisterSharedApi(string name, Delegate func)
+        {
+            SharedPluginApi.RegisterFunction(this, name, func);
+        }
+
         public void Dispose()
         {
             Dispose(true);
@@ -551,6 +556,8 @@ namespace CounterStrikeSharp.API.Core
             if (_disposed) return;
             if (!disposing) return;
 
+            SharedPluginApi.UnregisterPlugins(this);
+
             foreach (var subscriber in Handlers.Values)
             {
                 subscriber.Dispose();
@@ -560,7 +567,7 @@ namespace CounterStrikeSharp.API.Core
             {
                 subscriber.Dispose();
             }
-            
+
             foreach (var subscriber in CommandListeners.Values)
             {
                 subscriber.Dispose();
