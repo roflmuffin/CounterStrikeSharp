@@ -9,7 +9,7 @@ namespace CounterStrikeSharp.API.Core
     public static class SharedPluginApi
     {
         private static readonly List<ApiFuncRegister> allFuncs = new();
-        
+
         internal static void RegisterFunction(IPlugin plugin, string name, Delegate func)
         {
             var v = new ApiFuncRegister(plugin, name, func);
@@ -39,6 +39,18 @@ namespace CounterStrikeSharp.API.Core
                 throw new Exception($"cannot find plugin called '{moduleName}'");
             }
             return v.Function.DynamicInvoke(values);
+        }
+
+        public static object? TryCall(string moduleName, string funcName, object fallback, params object?[] values)
+        {
+            try
+            {
+                return Call(moduleName, funcName, values);
+            }
+            catch (Exception)
+            {
+                return fallback;
+            }
         }
 
         private class ApiFuncRegister
