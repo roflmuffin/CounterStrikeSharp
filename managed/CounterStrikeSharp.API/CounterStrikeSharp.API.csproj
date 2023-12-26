@@ -6,7 +6,6 @@
     <EnablePackageValidation>true</EnablePackageValidation>
     <NoWarn>$(NoWarn);CS1591;CP0003</NoWarn>
     <Nullable>enable</Nullable>
-    <GenerateCompatibilitySuppressionFile>true</GenerateCompatibilitySuppressionFile>
     <Authors>Roflmuffin</Authors>
     <Description>Official server side runtime assembly for CounterStrikeSharp</Description>
     <PackageProjectUrl>http://docs.cssharp.dev/</PackageProjectUrl>
