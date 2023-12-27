@@ -21,8 +21,10 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
+using CounterStrikeSharp.API.Core.Logging;
 using CounterStrikeSharp.API.Modules.Commands.Targeting;
 using CounterStrikeSharp.API.Modules.Entities;
+using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API
 {
@@ -209,6 +211,12 @@ namespace CounterStrikeSharp.API
         /// <param name="extraOffset">Any additional offset to the schema field</param>
         public static void SetStateChanged(CBaseEntity entity, string className, string fieldName, int extraOffset = 0)
         {
+            if (!Schema.IsSchemaFieldNetworked(className, fieldName))
+            {
+                Application.Instance.Logger.LogWarning("Field {ClassName}:{FieldName} is not networked, but SetStateChanged was called on it.", className, fieldName);
+                return;
+            }
+            
             int offset = Schema.GetSchemaOffset(className, fieldName);
             int chainOffset = FindSchemaChain(className);
 
