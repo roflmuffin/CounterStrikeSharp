@@ -113,6 +113,13 @@
         "linux": "\\x48\\x85\\xFF\\x74\\x4B\\x55\\x48\\x89\\xE5\\x41\\x56"
       }
   },
+  "CEntityInstance_AcceptInput": {
+    "signatures": {
+      "library": "server",
+      "windows": "\\x48\\x89\\x5C\\x24\\x10\\x48\\x89\\x74\\x24\\x18\\x57\\x48\\x83\\xEC\\x40\\x49\\x8B\\xF0",
+      "linux": "\\x55\\x48\\x89\\xE5\\x41\\x57\\x49\\x89\\xFF\\x41\\x56\\x48\\x8D\\x7D\\xC0"
+    }
+  },
   "LegacyGameEventListener": {
     "signatures": {
       "library": "server",
