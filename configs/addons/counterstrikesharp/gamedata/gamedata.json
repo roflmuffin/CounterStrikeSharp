@@ -167,6 +167,20 @@
       "linux": "\\x55\\xBA\\xFF\\xFF\\xFF\\xFF\\x48\\x89\\xE5\\x41\\x57\\x41\\x56\\x41\\x55\\x49"
     }
   },
+  "StateChanged": {
+    "signatures": {
+      "library": "server",
+      "windows": "\\x40\\x55\\x53\\x56\\x41\\x55\\x41\\x57\\x48\\x8D\\x6C\\x24\\xB0",
+      "linux": "\\x55\\x48\\x89\\xE5\\x41\\x57\\x41\\x56\\x41\\x55\\x41\\x54\\x53\\x89\\xD3"
+    }
+  },
+  "NetworkStateChanged": {
+    "signatures": {
+      "library": "server",
+      "windows": "\\x4C\\x8B\\xC9\\x48\\x8B\\x09\\x48\\x85\\xC9\\x74\\x2A\\x48\\x8B\\x41\\x10",
+      "linux": "\\x4C\\x8B\\x07\\x4D\\x85\\xC0\\x74\\x2A\\x49\\x8B\\x40\\x10"
+    }
+  },
   "GameEntitySystem": {
     "offsets": {
       "windows": 88,

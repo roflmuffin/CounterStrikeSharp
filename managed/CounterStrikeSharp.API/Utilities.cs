@@ -196,5 +196,32 @@ namespace CounterStrikeSharp.API
 
             return (T)Activator.CreateInstance(typeof(T), pointerTo)!;
         }
+        
+        private static int FindSchemaChain(string className) => Schema.GetSchemaOffset(className, "__m_pChainEntity");
+
+        /// <summary>
+        /// Marks a field as changed for network transmission.
+        /// Not all schema fields are network enabled, so please check the schema before using this.
+        /// </summary>
+        /// <param name="entity">Entity to update</param>
+        /// <param name="className" example="CBaseEntity">Schema field class name</param>
+        /// <param name="fieldName" example="m_iHealth">Schema field name</param>
+        /// <param name="extraOffset">Any additional offset to the schema field</param>
+        public static void SetStateChanged(CBaseEntity entity, string className, string fieldName, int extraOffset = 0)
+        {
+            int offset = Schema.GetSchemaOffset(className, fieldName);
+            int chainOffset = FindSchemaChain(className);
+
+            if (chainOffset != 0)
+            {
+                VirtualFunctions.NetworkStateChanged(entity.Handle + chainOffset, offset, 0xFFFFFFFF);
+                return;
+            }
+
+            VirtualFunctions.StateChanged(entity.NetworkTransmitComponent.Handle, entity.Handle, offset + extraOffset, -1, -1);
+
+            entity.LastNetworkChange = Server.CurrentTime;
+            entity.IsSteadyState.Clear();
+        }
     }
 }
