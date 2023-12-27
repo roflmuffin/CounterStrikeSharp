@@ -42,6 +42,18 @@ int16 GetSchemaOffset(ScriptContext& script_context)
     return m_key.offset;
 }
 
+bool IsSchemaFieldNetworked(ScriptContext& script_context)
+{
+    auto className = script_context.GetArgument<const char*>(0);
+    auto memberName = script_context.GetArgument<const char*>(1);
+    auto classKey = hash_32_fnv1a_const(className);
+    auto memberKey = hash_32_fnv1a_const(memberName);
+
+    const auto m_key = schema::GetOffset(className, classKey, memberName, memberKey);
+
+    return m_key.networked;
+}
+
 int GetSchemaClassSize(ScriptContext& script_context)
 {
     auto className = script_context.GetArgument<const char*>(0);
@@ -150,19 +162,6 @@ void SetSchemaValueByName(ScriptContext& script_context)
     auto memberKey = hash_32_fnv1a_const(memberName);
 
     const auto m_key = schema::GetOffset(className, classKey, memberName, memberKey);
-    const auto m_chain = schema::FindChainOffset(className);
-
-
-    // todo network updates
-    //    if (m_chain != 0 && m_key.networked) {
-    //        addresses::NetworkStateChanged((uintptr_t)(instancePointer) + m_chain, m_key.offset,
-    //                                       0xFFFFFFFF);
-    //    } else if (m_key.networked) { /* WIP: Works fine for most props, but inlined classes in
-    //    the
-    //                                     middle of a class will need to have their this pointer
-    //                                     corrected by the offset .*/
-    //        CALL_VIRTUAL(void, 1, instancePointer, m_key.offset, 0xFFFFFFFF, 0xFFFF);
-    //    }
 
     switch (dataType) {
     case DATA_TYPE_BOOL:
@@ -239,6 +238,7 @@ void SetSchemaValueByName(ScriptContext& script_context)
 
 REGISTER_NATIVES(schema, {
     ScriptEngine::RegisterNativeHandler("GET_SCHEMA_OFFSET", GetSchemaOffset);
+    ScriptEngine::RegisterNativeHandler("IS_SCHEMA_FIELD_NETWORKED", IsSchemaFieldNetworked);
     ScriptEngine::RegisterNativeHandler("GET_SCHEMA_VALUE_BY_NAME", GetSchemaValueByName);
     ScriptEngine::RegisterNativeHandler("SET_SCHEMA_VALUE_BY_NAME", SetSchemaValueByName);
     ScriptEngine::RegisterNativeHandler("GET_SCHEMA_CLASS_SIZE", GetSchemaClassSize);

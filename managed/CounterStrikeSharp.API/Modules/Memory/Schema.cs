@@ -69,6 +69,11 @@ public class Schema
 
         return offset;
     }
+    
+    public static bool IsSchemaFieldNetworked(string className, string propertyName)
+    {
+        return NativeAPI.IsSchemaFieldNetworked(className, propertyName);
+    }
 
     public static T GetSchemaValue<T>(IntPtr handle, string className, string propertyName)
     {
