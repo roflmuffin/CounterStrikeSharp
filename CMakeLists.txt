@@ -18,6 +18,7 @@ SET(SOURCE_FILES
     src/mm_plugin.h
     libraries/hl2sdk-cs2/tier1/convar.cpp
     libraries/hl2sdk-cs2/tier1/generichash.cpp
+    libraries/hl2sdk-cs2/entity2/entityidentity.cpp
     libraries/hl2sdk-cs2/entity2/entitysystem.cpp
     libraries/dotnet/hostfxr.h
     libraries/dotnet/coreclr_delegates.h
