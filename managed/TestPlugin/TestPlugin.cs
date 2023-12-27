@@ -501,6 +501,17 @@ namespace TestPlugin
             player.Respawn();
         }
 
+        [ConsoleCommand("css_break", "Breaks the breakable entities")]
+        public void OnBreakCommand(CCSPlayerController? player, CommandInfo command)
+        {
+            var entities = Utilities.FindAllEntitiesByDesignerName<CBreakable>("prop_dynamic")
+                .Concat(Utilities.FindAllEntitiesByDesignerName<CBreakable>("func_breakable"));
+            foreach (var entity in entities)
+            {
+                entity.AcceptInput("Break");
+            }
+        }
+
         [ConsoleCommand("cssharp_attribute", "This is a custom attribute event")]
         public void OnCommand(CCSPlayerController? player, CommandInfo command)
         {
