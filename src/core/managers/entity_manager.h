@@ -25,9 +25,6 @@
 #include "entitysystem.h"
 #include "scripting/callback_manager.h"
 
-// variant.h depends on ivscript.h, lets not include the whole thing
-DECLARE_POINTER_HANDLE(HSCRIPT);
-
 #include <variant.h>
 
 namespace counterstrikesharp {

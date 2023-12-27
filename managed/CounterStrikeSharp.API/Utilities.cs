@@ -77,6 +77,11 @@ namespace CounterStrikeSharp.API
 
         public static bool RemoveItemByDesignerName(this CCSPlayerController player, string designerName)
         {
+            return RemoveItemByDesignerName(player, designerName, false);
+        }
+
+        public static bool RemoveItemByDesignerName(this CCSPlayerController player, string designerName, bool shouldRemoveEntity)
+        {
             CHandle<CBasePlayerWeapon>? item = null;
             if (player.PlayerPawn.Value == null || player.PlayerPawn.Value.WeaponServices == null) return false;
 
@@ -90,9 +95,15 @@ namespace CounterStrikeSharp.API
                 item = weapon;
             }
             
-            if(item != null && item.Value != null)
+            if (item != null && item.Value != null)
             {
                 player.PlayerPawn.Value.RemovePlayerItem(item.Value);
+
+                if (shouldRemoveEntity)
+                {
+                    item.Value.Remove();
+                }
+
                 return true;
             }
             
@@ -104,7 +115,7 @@ namespace CounterStrikeSharp.API
             var pEntity = new CEntityIdentity(EntitySystem.FirstActiveEntity);
             for (; pEntity != null && pEntity.Handle != IntPtr.Zero; pEntity = pEntity.Next)
             {
-                if (!pEntity.DesignerName.Contains(designerName)) continue;
+                if (pEntity.DesignerName == null || !pEntity.DesignerName.Contains(designerName)) continue;
                 yield return new PointerTo<T>(pEntity.Handle).Value;
             }
         }
@@ -125,9 +136,9 @@ namespace CounterStrikeSharp.API
         {
             List<CCSPlayerController> players = new();
 
-            for (int i = 1; i <= Server.MaxPlayers; i++)
+            for (int i = 0; i <= Server.MaxPlayers; i++)
             {
-                var controller = GetPlayerFromIndex(i);
+                var controller = GetPlayerFromSlot(i);
 
                 if (!controller.IsValid || controller.UserId == -1)
                     continue;

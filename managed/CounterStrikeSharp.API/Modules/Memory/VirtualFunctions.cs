@@ -80,4 +80,7 @@ public static class VirtualFunctions
     public static MemoryFunctionVoid<IntPtr, IntPtr>  RemovePlayerItemFunc =
         new(GameData.GetSignature("CBasePlayerPawn_RemovePlayerItem"));
     public static Action<IntPtr, IntPtr> RemovePlayerItemVirtual = RemovePlayerItemFunc.Invoke;
+    
+    public static MemoryFunctionVoid<IntPtr, string, IntPtr, IntPtr, string, int> AcceptInputFunc = new(GameData.GetSignature("CEntityInstance_AcceptInput"));
+    public static Action<IntPtr, string, IntPtr, IntPtr, string, int> AcceptInput = AcceptInputFunc.Invoke;
 }
