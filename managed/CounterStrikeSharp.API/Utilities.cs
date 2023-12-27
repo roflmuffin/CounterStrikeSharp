@@ -136,9 +136,9 @@ namespace CounterStrikeSharp.API
         {
             List<CCSPlayerController> players = new();
 
-            for (int i = 1; i <= Server.MaxPlayers; i++)
+            for (int i = 0; i <= Server.MaxPlayers; i++)
             {
-                var controller = GetPlayerFromIndex(i);
+                var controller = GetPlayerFromSlot(i);
 
                 if (!controller.IsValid || controller.UserId == -1)
                     continue;
