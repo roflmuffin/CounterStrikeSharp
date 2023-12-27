@@ -30,6 +30,7 @@
 #include "core/memory.h"
 #include "core/log.h"
 #include "core/function.h"
+#include "core/managers/player_manager.h"
 #include "core/managers/server_manager.h"
 // clang-format on
 
@@ -73,6 +74,17 @@ float GetGameFrameTime(ScriptContext& script_context)
 }
 
 double GetEngineTime(ScriptContext& script_context) { return Plat_FloatTime(); }
+
+int GetMaxClients(ScriptContext& script_context)
+{
+    auto globalVars = globals::getGlobalVars();
+    if (globalVars == nullptr) {
+        script_context.ThrowNativeError("Global Variables not initialized yet.");
+        return -1;
+    }
+
+    return globalVars->maxClients;
+}
 
 void ServerCommand(ScriptContext& script_context)
 {
@@ -294,6 +306,7 @@ REGISTER_NATIVES(engine, {
     ScriptEngine::RegisterNativeHandler("GET_CURRENT_TIME", GetCurrentTime);
     ScriptEngine::RegisterNativeHandler("GET_GAMEFRAME_TIME", GetGameFrameTime);
     ScriptEngine::RegisterNativeHandler("GET_ENGINE_TIME", GetEngineTime);
+    ScriptEngine::RegisterNativeHandler("GET_MAX_CLIENTS", GetMaxClients);
     ScriptEngine::RegisterNativeHandler("ISSUE_SERVER_COMMAND", ServerCommand);
     ScriptEngine::RegisterNativeHandler("PRECACHE_MODEL", PrecacheModel);
     ScriptEngine::RegisterNativeHandler("PRECACHE_SOUND", PrecacheSound);

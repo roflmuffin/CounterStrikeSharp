@@ -83,8 +83,6 @@ namespace TestPlugin
             Logger.LogInformation(
                 $"Test Plugin has been loaded, and the hot reload flag was {hotReload}, path is {ModulePath}");
 
-            Logger.LogWarning($"Max Players: {Server.MaxPlayers}");
-            
             VirtualFunctions.SwitchTeamFunc.Hook(hook =>
             {
                 Logger.LogInformation("Switch team func called");
