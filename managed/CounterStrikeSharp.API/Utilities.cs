@@ -21,8 +21,10 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
+using CounterStrikeSharp.API.Core.Logging;
 using CounterStrikeSharp.API.Modules.Commands.Targeting;
 using CounterStrikeSharp.API.Modules.Entities;
+using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API
 {
@@ -195,6 +197,39 @@ namespace CounterStrikeSharp.API
             }
 
             return (T)Activator.CreateInstance(typeof(T), pointerTo)!;
+        }
+        
+        private static int FindSchemaChain(string className) => Schema.GetSchemaOffset(className, "__m_pChainEntity");
+
+        /// <summary>
+        /// Marks a field as changed for network transmission.
+        /// Not all schema fields are network enabled, so please check the schema before using this.
+        /// </summary>
+        /// <param name="entity">Entity to update</param>
+        /// <param name="className" example="CBaseEntity">Schema field class name</param>
+        /// <param name="fieldName" example="m_iHealth">Schema field name</param>
+        /// <param name="extraOffset">Any additional offset to the schema field</param>
+        public static void SetStateChanged(CBaseEntity entity, string className, string fieldName, int extraOffset = 0)
+        {
+            if (!Schema.IsSchemaFieldNetworked(className, fieldName))
+            {
+                Application.Instance.Logger.LogWarning("Field {ClassName}:{FieldName} is not networked, but SetStateChanged was called on it.", className, fieldName);
+                return;
+            }
+            
+            int offset = Schema.GetSchemaOffset(className, fieldName);
+            int chainOffset = FindSchemaChain(className);
+
+            if (chainOffset != 0)
+            {
+                VirtualFunctions.NetworkStateChanged(entity.Handle + chainOffset, offset + extraOffset, 0xFFFFFFFF);
+                return;
+            }
+
+            VirtualFunctions.StateChanged(entity.NetworkTransmitComponent.Handle, entity.Handle, offset + extraOffset, -1, -1);
+
+            entity.LastNetworkChange = Server.CurrentTime;
+            entity.IsSteadyState.Clear();
         }
     }
 }

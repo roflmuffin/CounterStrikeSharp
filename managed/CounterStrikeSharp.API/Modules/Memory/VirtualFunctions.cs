@@ -83,4 +83,12 @@ public static class VirtualFunctions
     
     public static MemoryFunctionVoid<IntPtr, string, IntPtr, IntPtr, string, int> AcceptInputFunc = new(GameData.GetSignature("CEntityInstance_AcceptInput"));
     public static Action<IntPtr, string, IntPtr, IntPtr, string, int> AcceptInput = AcceptInputFunc.Invoke;
+
+    public static MemoryFunctionVoid<IntPtr, IntPtr, int, short, short> StateChangedFunc =
+        new(GameData.GetSignature("StateChanged"));
+    public static Action<IntPtr, IntPtr, int, short, short> StateChanged = StateChangedFunc.Invoke;
+
+    public static MemoryFunctionVoid<IntPtr, int, long> NetworkStateChangedFunc = new("NetworkStateChanged");
+    public static Action<IntPtr, int, long> NetworkStateChanged = NetworkStateChangedFunc.Invoke;
+
 }
