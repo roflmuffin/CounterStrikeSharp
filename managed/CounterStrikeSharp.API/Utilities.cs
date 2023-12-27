@@ -222,7 +222,7 @@ namespace CounterStrikeSharp.API
 
             if (chainOffset != 0)
             {
-                VirtualFunctions.NetworkStateChanged(entity.Handle + chainOffset, offset, 0xFFFFFFFF);
+                VirtualFunctions.NetworkStateChanged(entity.Handle + chainOffset, offset + extraOffset, 0xFFFFFFFF);
                 return;
             }
 
