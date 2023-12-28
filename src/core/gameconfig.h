@@ -26,11 +26,15 @@ class CGameConfig
     const char* GetSignature(const std::string& name);
     const char* GetSymbol(const char* name);
     const char* GetPatch(const std::string& name);
+    std::unordered_map<std::string, std::string> GetPatches();
     int GetOffset(const std::string& name);
     void* GetAddress(const std::string& name, void* engine, void* server, char* error, int maxlen);
     modules::CModule** GetModule(const char* name);
     bool IsSymbol(const char* name);
     void* ResolveSignature(const char* name);
+    
+    bool AddPatch(const char* name, const char* value);
+    void RemovePatch(const char* name);
 
     static std::string GetDirectoryName(const std::string& directoryPathInput);
     static int HexStringToUint8Array(const char* hexString, uint8_t* byteArray, size_t maxBytes);

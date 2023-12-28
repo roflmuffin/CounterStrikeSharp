@@ -30,6 +30,7 @@ using CounterStrikeSharp.API.Modules.Config;
 using CounterStrikeSharp.API.Modules.Entities;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
+using CounterStrikeSharp.API.Modules.Memory;
 
 namespace CounterStrikeSharp.API.Core
 {
@@ -125,6 +126,9 @@ namespace CounterStrikeSharp.API.Core
 
         internal readonly Dictionary<Delegate, EntityIO.EntityOutputCallback> EntitySingleOutputHooks =
             new Dictionary<Delegate, EntityIO.EntityOutputCallback>();
+
+        internal readonly Dictionary<string, MemoryPatch> MemoryPatches =
+            new Dictionary<string, MemoryPatch>();
 
         public readonly List<Timer> Timers = new List<Timer>();
         
@@ -388,6 +392,18 @@ namespace CounterStrikeSharp.API.Core
             return timer;
         }
 
+        public MemoryPatch? CreateMemoryPatch(string patchName, string patchSignature)
+        {
+            MemoryPatch patch = new MemoryPatch(patchName, patchSignature);
+
+            if (patch.PerformPatch())
+            {
+                MemoryPatches.Add(patchName, patch);
+                return patch;
+            }
+
+            return null;
+        }
 
         public void RegisterAllAttributes(object instance)
         {
@@ -583,6 +599,11 @@ namespace CounterStrikeSharp.API.Core
             foreach (var timer in Timers)
             {
                 timer.Kill();
+            }
+
+            foreach (var patch in MemoryPatches)
+            {
+                patch.Value.UndoPatch();
             }
 
             _disposed = true;

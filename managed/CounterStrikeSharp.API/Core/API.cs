@@ -1062,6 +1062,40 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static bool CreateMemoryPatch(string signaturename, string patchname){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(signaturename);
+			ScriptContext.GlobalScriptContext.Push(patchname);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xC9981B4E);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (bool)ScriptContext.GlobalScriptContext.GetResult(typeof(bool));
+			}
+		}
+
+        public static void UndoMemoryPatch(string signaturename, bool removedata){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(signaturename);
+			ScriptContext.GlobalScriptContext.Push(removedata);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xF451877A);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static IntPtr GetPatchAddress(string signaturename){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(signaturename);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xFA71AC6B);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			}
+		}
+
         public static short GetSchemaOffset(string classname, string propname){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
