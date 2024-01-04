@@ -494,7 +494,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             var callerData = GetPlayerAdminData(caller.AuthorizedSteamID);
             if (callerData == null) return false;
 
-            var targetData = GetPlayerAdminData(caller.AuthorizedSteamID);
+            var targetData = GetPlayerAdminData(target.AuthorizedSteamID);
             if (targetData == null) return true;
 
             return callerData.Immunity >= targetData.Immunity;
@@ -514,7 +514,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             var callerData = GetPlayerAdminData(caller);
             if (callerData == null) return false;
 
-            var targetData = GetPlayerAdminData(caller);
+            var targetData = GetPlayerAdminData(target);
             if (targetData == null) return true;
 
             return callerData.Immunity >= targetData.Immunity;
