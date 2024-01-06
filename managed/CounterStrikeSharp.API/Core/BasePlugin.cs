@@ -418,7 +418,7 @@ namespace CounterStrikeSharp.API.Core
                 var method = GetType()
                     .GetMethods()
                     .Where(method => method.GetCustomAttribute<PluginEventHandlerAttribute>() != null)
-                    .First(method => method.Name == "On" + ModuleName.Replace(" ", "") + name);
+                    .First(method => method.Name == "On" + name);
                 
                 method.Invoke(this, new[] { data });
             }
