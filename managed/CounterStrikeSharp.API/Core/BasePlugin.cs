@@ -21,6 +21,7 @@ using System.Linq;
 using System.Reflection;
 using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
+using CounterStrikeSharp.API.Core.Plugin;
 using CounterStrikeSharp.API.Core.Translations;
 using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Modules.Commands;
@@ -58,10 +59,12 @@ namespace CounterStrikeSharp.API.Core
         public string ModulePath { get; set; }
 
         public string ModuleDirectory => Path.GetDirectoryName(ModulePath);
+        
         public ILogger Logger { get; set; }
 
         public IStringLocalizer Localizer { get; set; }
-        
+        public HashSet<PluginContext> LoadedPluginContexts { get; set; }
+
         public virtual void Load(bool hotReload)
         {
         }
@@ -391,9 +394,38 @@ namespace CounterStrikeSharp.API.Core
 
         public void RegisterAllAttributes(object instance)
         {
-            this.RegisterAttributeHandlers(instance);
-            this.RegisterConsoleCommandAttributeHandlers(instance);
-            this.RegisterEntityOutputAttributeHandlers(instance);
+            RegisterAttributeHandlers(instance);
+            RegisterConsoleCommandAttributeHandlers(instance);
+            RegisterEntityOutputAttributeHandlers(instance);
+        }
+
+        protected void SendPluginEvent(string name, object? data)
+        {
+            LoadedPluginContexts.ToList().ForEach(pluginContext =>
+            {
+                // Send plugin event to all plugins except this one
+                if (pluginContext.Plugin != this)
+                {
+                    pluginContext.Plugin.HandlePluginEvent(name, data ?? new object());
+                }
+            });
+        }
+        
+        public void HandlePluginEvent(string name, object data)
+        {
+            try
+            {
+                var method = GetType()
+                    .GetMethods()
+                    .Where(method => method.GetCustomAttribute<PluginEventHandlerAttribute>() != null)
+                    .First(method => method.Name == "On" + ModuleName.Replace(" ", "") + name);
+                
+                method.Invoke(this, new[] { data });
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
         }
 
         public void InitializeConfig(object instance, Type pluginType)

@@ -7,4 +7,5 @@ public interface IPluginManager
     public void Load();
     public void LoadPlugin(string path);
     public IEnumerable<PluginContext> GetLoadedPlugins();
+    void PopulateLoadedPlugins();
 }
