@@ -399,7 +399,7 @@ namespace CounterStrikeSharp.API.Core
             RegisterEntityOutputAttributeHandlers(instance);
         }
 
-        public void SendPluginEvent(string name, object? data)
+        public void SendPluginEvent(string name, object? data = null)
         {
             LoadedPluginContexts.ToList().ForEach(pluginContext =>
             {
