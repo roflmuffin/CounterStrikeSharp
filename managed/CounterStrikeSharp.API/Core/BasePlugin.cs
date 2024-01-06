@@ -399,14 +399,14 @@ namespace CounterStrikeSharp.API.Core
             RegisterEntityOutputAttributeHandlers(instance);
         }
 
-        public void SendPluginEvent(string name, object? data = null)
+        public void SendPluginEvent(string name, object[]? data = null)
         {
             LoadedPluginContexts.ToList().ForEach(pluginContext =>
             {
                 // Send plugin event to all plugins except this one
                 if (pluginContext.Plugin != this)
                 {
-                    pluginContext.Plugin.HandlePluginEvent(name, data ?? new object());
+                    pluginContext.Plugin.HandlePluginEvent(name, data ?? Array.Empty<object>());
                 }
             });
         }
