@@ -15,6 +15,8 @@
  */
 
 using System;
+using System.Collections.Generic;
+using CounterStrikeSharp.API.Core.Plugin;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
@@ -57,9 +59,11 @@ namespace CounterStrikeSharp.API.Core
         ILogger Logger { get; set; }
         
         IStringLocalizer Localizer { get; set; }
+        HashSet<PluginContext> LoadedPluginContexts { get; set; }
 
         void RegisterAllAttributes(object instance);
 
         void InitializeConfig(object instance, Type pluginType);
+        void HandlePluginEvent(string name, object data);
     }
 }
