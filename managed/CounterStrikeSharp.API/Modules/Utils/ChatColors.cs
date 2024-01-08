@@ -21,6 +21,7 @@ public class ChatColors
     public static char Default = '\x01';
     public static char White = '\x01';
     public static char Darkred = '\x02';
+    public static char DarkRed = '\x02';
     public static char Green = '\x04';
     public static char LightYellow = '\x09';
     public static char LightBlue = '\x0B';
