@@ -20,7 +20,7 @@ public class ChatColors
 {
     public static char Default = '\x01';
     public static char White = '\x01';
-    public static char Darkred = '\x02';
+    public static char DarkRed = '\x02';
     public static char Green = '\x04';
     public static char LightYellow = '\x09';
     public static char LightBlue = '\x0B';
@@ -39,4 +39,7 @@ public class ChatColors
     public static char Magenta = '\x0E';
     public static char LightRed = '\x0F';
     public static char Orange = '\x10';
+
+    [Obsolete("Use ChatColors.DarkRed instead.")]
+    public static char Darkred = '\x02';
 }
