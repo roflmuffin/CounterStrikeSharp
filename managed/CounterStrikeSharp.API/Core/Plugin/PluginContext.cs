@@ -37,6 +37,8 @@ namespace CounterStrikeSharp.API.Core.Plugin
         public IPlugin Plugin { get; private set; }
 
         private PluginLoader Loader { get; set; }
+        
+        private PlayerValuesManager ValuesManager { get; }
 
         private IServiceProvider ServiceProvider { get; set; }
 
@@ -58,6 +60,7 @@ namespace CounterStrikeSharp.API.Core.Plugin
             _hostConfiguration = hostConfiguration;
             _path = path;
             PluginId = id;
+            ValuesManager = applicationServiceProvider.GetRequiredService<PlayerValuesManager>();
 
             Loader = PluginLoader.CreateFromAssemblyFile(path,
                 new[]
@@ -170,6 +173,7 @@ namespace CounterStrikeSharp.API.Core.Plugin
                 }
 
                 serviceCollection.AddSingleton<IPluginContext>(this);
+                serviceCollection.AddSingleton(ValuesManager);
                 serviceCollection.TryAddSingleton<IStringLocalizerFactory, JsonStringLocalizerFactory>();
                 serviceCollection.TryAddTransient(typeof(IStringLocalizer<>), typeof(StringLocalizer<>));
                 serviceCollection.TryAddTransient(typeof(IStringLocalizer), typeof(StringLocalizer));

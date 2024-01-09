@@ -42,6 +42,7 @@ public static class Bootstrap
                     services.AddSingleton<IPluginManager, PluginManager>();
                     services.AddSingleton<IPlayerLanguageManager, PlayerLanguageManager>();
                     services.AddScoped<IPluginContextQueryHandler, PluginContextQueryHandler>();
+                    services.AddSingleton<PlayerValuesManager>();
 
                     services.Scan(i => i.FromCallingAssembly()
                         .AddClasses(c => c.AssignableTo<IStartupService>())
