@@ -45,6 +45,14 @@ public class PluginManager : IPluginManager
         return _loadedPluginContexts;
     }
 
+    public void PopulateLoadedPlugins()
+    {
+        foreach (var pluginContext in _loadedPluginContexts)
+        {
+            pluginContext.Plugin.LoadedPluginContexts = _loadedPluginContexts;
+        }
+    }
+
     public void LoadPlugin(string path)
     {
         var plugin = new PluginContext(_serviceProvider, _scriptHostConfiguration, path, _loadedPluginContexts.Select(x => x.PluginId).DefaultIfEmpty(0).Max() + 1);

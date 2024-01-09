@@ -82,6 +82,7 @@ namespace CounterStrikeSharp.API.Core
             AdminManager.AddCommands();
 
             _pluginManager.Load();
+            _pluginManager.PopulateLoadedPlugins();
 
             for (var i = 1; i <= 9; i++)
             {
