@@ -14,9 +14,9 @@ public class WithSharedTypesConsumerPlugin : BasePlugin
     public override string ModuleAuthor => "CounterStrikeSharp & Contributors";
     public override string ModuleDescription => "A simple plugin that utilises the balance api from another plugin";
 
-    public static PlayerCapability<IBalanceHandler> BalanceCapability { get; } = new("mymod:balance");
+    public static PlayerCapability<IBalanceHandler> BalanceCapability { get; } = new("myplugin:balance");
 
-    public static PluginCapability<IBalanceService> BalanceServiceCapability { get; } = new("mymod:balance_service");
+    public static PluginCapability<IBalanceService> BalanceServiceCapability { get; } = new("myplugin:balance_service");
     
     public override void Load(bool hotReload)
     {

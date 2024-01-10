@@ -17,11 +17,11 @@ public class WithSharedTypesPlugin : BasePlugin
     // In this case, it's a balance handler, which is used to store a player's balance.
     // Note that we use the same name for the capability as the one in the other plugin.
     // IBalanceHandler is defined in MySharedTypes.Contracts, which is a shared library and placed in the `shared/` subfolder.
-    public static PlayerCapability<IBalanceHandler> BalanceCapability { get; } = new("mymod:balance");
+    public static PlayerCapability<IBalanceHandler> BalanceCapability { get; } = new("myplugin:balance");
     
     // Plugin capabilities are similar to player capabilities, but they are not tied to a player, and are just generic APIs
     // that are exposed by a plugin. In this case, we expose a balance service, which is used to clear all balances.
-    public static PluginCapability<IBalanceService> BalanceServiceCapability { get; } = new("mymod:balance_service");
+    public static PluginCapability<IBalanceService> BalanceServiceCapability { get; } = new("myplugin:balance_service");
 
     public override void Load(bool hotReload)
     {
