@@ -58,10 +58,7 @@ namespace CounterStrikeSharp.API.Core.Plugin
             _hostConfiguration = hostConfiguration;
             _path = path;
             PluginId = id;
-
-            var sharedAssembly = Path.Combine(_path, "..", "..", "..", "shared", "MySharedTypes.Contracts.dll");
-            var sharedAssemblies = System.Runtime.Loader.AssemblyLoadContext.Default.LoadFromAssemblyPath(sharedAssembly);
-
+            
             Loader = PluginLoader.CreateFromAssemblyFile(path,
                 new[]
                 {

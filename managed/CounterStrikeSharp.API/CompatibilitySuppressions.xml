@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- https://learn.microsoft.com/en-us/dotnet/fundamentals/package-validation/diagnostic-ids -->
+<Suppressions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
+    <Target>P:CounterStrikeSharp.API.Core.Hosting.IScriptHostConfiguration.SharedPath</Target>
+    <Left>.\ApiCompat\v133.dll</Left>
+    <Right>obj\Debug\net7.0\CounterStrikeSharp.API.dll</Right>
+  </Suppression>
+</Suppressions>
