@@ -62,7 +62,7 @@ namespace CounterStrikeSharp.API.Core.Plugin
             Loader = PluginLoader.CreateFromAssemblyFile(path,
                 new[]
                 {
-                    typeof(IPlugin), typeof(ILogger), typeof(IServiceCollection), typeof(IPluginServiceCollection<>), typeof(IShared)
+                    typeof(IPlugin), typeof(ILogger), typeof(IServiceCollection), typeof(IPluginServiceCollection<>)
                 }, config =>
                 {
                     config.EnableHotReload = true;
