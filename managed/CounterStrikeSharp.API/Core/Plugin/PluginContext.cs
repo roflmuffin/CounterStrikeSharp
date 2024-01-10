@@ -59,14 +59,18 @@ namespace CounterStrikeSharp.API.Core.Plugin
             _path = path;
             PluginId = id;
 
+            var sharedAssembly = Path.Combine(_path, "..", "..", "..", "shared", "MySharedTypes.Contracts.dll");
+            var sharedAssemblies = System.Runtime.Loader.AssemblyLoadContext.Default.LoadFromAssemblyPath(sharedAssembly);
+
             Loader = PluginLoader.CreateFromAssemblyFile(path,
                 new[]
                 {
-                    typeof(IPlugin), typeof(ILogger), typeof(IServiceCollection), typeof(IPluginServiceCollection<>)
+                    typeof(IPlugin), typeof(ILogger), typeof(IServiceCollection), typeof(IPluginServiceCollection<>), typeof(IShared)
                 }, config =>
                 {
                     config.EnableHotReload = true;
                     config.IsUnloadable = true;
+                    config.PreferSharedTypes = true;
                 });
 
             if (CoreConfig.PluginHotReloadEnabled)
