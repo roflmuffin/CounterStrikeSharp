@@ -14,28 +14,31 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
+using System;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Logging;
+
 namespace CounterStrikeSharp.API.Core
 {
     /// <summary>
     /// Interface which every CounterStrikeSharp plugin must implement. Module will be created with parameterless constructor and then Load method will be called.
     /// </summary>
-    public interface IPlugin
+    public interface IPlugin : IDisposable
     {
         /// <summary>
         /// Name of the plugin.
         /// </summary>
-        string ModuleName
-        {
-            get;
-        }
+        string ModuleName { get; }
 
         /// <summary>
         /// Module version.
         /// </summary>
-        string ModuleVersion
-        {
-            get;
-        }
+        string ModuleVersion { get; }
+
+        string ModuleAuthor { get; }
+
+        string ModuleDescription { get; }
 
         /// <summary>
         /// This method is called by CounterStrikeSharp on plugin load and should be treated as plugin constructor.
@@ -48,5 +51,15 @@ namespace CounterStrikeSharp.API.Core
         /// Event handlers, listeners etc. will automatically be deregistered.
         /// </summary>
         void Unload(bool hotReload);
+
+        string ModulePath { get; internal set; }
+
+        ILogger Logger { get; set; }
+        
+        IStringLocalizer Localizer { get; set; }
+
+        void RegisterAllAttributes(object instance);
+
+        void InitializeConfig(object instance, Type pluginType);
     }
 }

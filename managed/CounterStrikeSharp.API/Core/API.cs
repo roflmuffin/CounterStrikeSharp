@@ -157,6 +157,80 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static string GetClientConvarValue(int clientindex, string convarname){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(clientindex);
+			ScriptContext.GlobalScriptContext.Push(convarname);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xAE4B1B79);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (string)ScriptContext.GlobalScriptContext.GetResult(typeof(string));
+			}
+		}
+
+        public static void SetFakeClientConvarValue(int clientindex, string convarname, string convarvalue){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(clientindex);
+			ScriptContext.GlobalScriptContext.Push(convarname);
+			ScriptContext.GlobalScriptContext.Push(convarvalue);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x4C61E8BB);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static T DynamicHookGetReturn<T>(IntPtr hook, int datatype){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(hook);
+			ScriptContext.GlobalScriptContext.Push(datatype);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x4F5B80D0);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (T)ScriptContext.GlobalScriptContext.GetResult(typeof(T));
+			}
+		}
+
+        public static void DynamicHookSetReturn<T>(IntPtr hook, int datatype, T value){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(hook);
+			ScriptContext.GlobalScriptContext.Push(datatype);
+			ScriptContext.GlobalScriptContext.Push(value);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xDB297E44);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static T DynamicHookGetParam<T>(IntPtr hook, int datatype, int paramindex){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(hook);
+			ScriptContext.GlobalScriptContext.Push(datatype);
+			ScriptContext.GlobalScriptContext.Push(paramindex);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x5F5ABDD5);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (T)ScriptContext.GlobalScriptContext.GetResult(typeof(T));
+			}
+		}
+
+        public static void DynamicHookSetParam<T>(IntPtr hook, int datatype, int paramindex, T value){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(hook);
+			ScriptContext.GlobalScriptContext.Push(datatype);
+			ScriptContext.GlobalScriptContext.Push(paramindex);
+			ScriptContext.GlobalScriptContext.Push(value);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xA96CFBC1);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
         public static string GetMapName(){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
@@ -235,6 +309,16 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
 			return (double)ScriptContext.GlobalScriptContext.GetResult(typeof(double));
+			}
+		}
+
+        public static int GetMaxClients(){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x5DF2E20D);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (int)ScriptContext.GlobalScriptContext.GetResult(typeof(int));
 			}
 		}
 
@@ -405,6 +489,16 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static void QueueTaskForNextWorldUpdate(IntPtr callback){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(callback);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xAD51A0C9);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
         public static IntPtr GetValveInterface(int interfacetype, string interfacename){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
@@ -484,6 +578,49 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static uint GetRefFromEntityPointer(IntPtr entitypointer){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(entitypointer);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xAF13DA94);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (uint)ScriptContext.GlobalScriptContext.GetResult(typeof(uint));
+			}
+		}
+
+        public static IntPtr GetEntityPointerFromRef(uint entityref){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(entityref);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xDBC17174);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			}
+		}
+
+        public static IntPtr GetConcreteEntityListPointer(){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x5756DB36);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			}
+		}
+
+        public static bool IsRefValidEntity(uint entityref){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(entityref);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x6E38A1FC);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (bool)ScriptContext.GlobalScriptContext.GetResult(typeof(bool));
+			}
+		}
+
         public static void PrintToConsole(int index, string message){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
@@ -502,6 +639,54 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
 			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			}
+		}
+
+        public static ulong GetPlayerAuthorizedSteamid(int slot){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(slot);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xD1F30B3B);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (ulong)ScriptContext.GlobalScriptContext.GetResult(typeof(ulong));
+			}
+		}
+
+        public static string GetPlayerIpAddress(int slot){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(slot);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x46A45CB0);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (string)ScriptContext.GlobalScriptContext.GetResult(typeof(string));
+			}
+		}
+
+        public static void HookEntityOutput(string classname, string outputname, InputArgument callback, HookMode mode){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(classname);
+			ScriptContext.GlobalScriptContext.Push(outputname);
+			ScriptContext.GlobalScriptContext.Push((InputArgument)callback);
+			ScriptContext.GlobalScriptContext.Push(mode);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x15245242);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static void UnhookEntityOutput(string classname, string outputname, InputArgument callback, HookMode mode){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(classname);
+			ScriptContext.GlobalScriptContext.Push(outputname);
+			ScriptContext.GlobalScriptContext.Push((InputArgument)callback);
+			ScriptContext.GlobalScriptContext.Push(mode);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x87DBD139);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
 			}
 		}
 
@@ -547,6 +732,17 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.Push(gameevent);
 			ScriptContext.GlobalScriptContext.Push(dontbroadcast);
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x2D52AEE);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static void FireEventToClient(IntPtr gameevent, int clientindex){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(gameevent);
+			ScriptContext.GlobalScriptContext.Push(clientindex);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x40B7C06C);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
 			}
@@ -792,6 +988,30 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static void HookFunction(IntPtr function, InputArgument hook, bool post){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(function);
+			ScriptContext.GlobalScriptContext.Push((InputArgument)hook);
+			ScriptContext.GlobalScriptContext.Push(post);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xA6C8BA9B);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static void UnhookFunction(IntPtr function, InputArgument hook, bool post){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(function);
+			ScriptContext.GlobalScriptContext.Push((InputArgument)hook);
+			ScriptContext.GlobalScriptContext.Push(post);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x2051B00);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
         public static T ExecuteVirtualFunction<T>(IntPtr function, object[] arguments){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
@@ -854,6 +1074,18 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static bool IsSchemaFieldNetworked(string classname, string propname){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(classname);
+			ScriptContext.GlobalScriptContext.Push(propname);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xFE413B0C);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (bool)ScriptContext.GlobalScriptContext.GetResult(typeof(bool));
+			}
+		}
+
         public static T GetSchemaValueByName<T>(IntPtr instance, int returntype, string classname, string propname){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
@@ -882,6 +1114,17 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static int GetSchemaClassSize(string classname){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(classname);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x9CE4FC56);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (int)ScriptContext.GlobalScriptContext.GetResult(typeof(int));
+			}
+		}
+
         public static IntPtr GetEconItemSystem(){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
@@ -889,6 +1132,16 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
 			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			}
+		}
+
+        public static bool IsServerPaused(){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xB216AAAC);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (bool)ScriptContext.GlobalScriptContext.GetResult(typeof(bool));
 			}
 		}
 
@@ -1078,6 +1331,52 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
 			return (bool)ScriptContext.GlobalScriptContext.GetResult(typeof(bool));
+			}
+		}
+
+        public static void SetClientListening(IntPtr receiver, IntPtr sender, uint listen){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(receiver);
+			ScriptContext.GlobalScriptContext.Push(sender);
+			ScriptContext.GlobalScriptContext.Push(listen);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xD38BEE77);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static ListenOverride GetClientListening(IntPtr receiver, IntPtr sender){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(receiver);
+			ScriptContext.GlobalScriptContext.Push(sender);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xE95644E3);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (ListenOverride)ScriptContext.GlobalScriptContext.GetResult(typeof(ListenOverride));
+			}
+		}
+
+        public static void SetClientVoiceFlags(IntPtr client, uint flags){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(client);
+			ScriptContext.GlobalScriptContext.Push(flags);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x48EB2FC8);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static uint GetClientVoiceFlags(IntPtr client){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(client);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x9685205C);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (uint)ScriptContext.GlobalScriptContext.GetResult(typeof(uint));
 			}
 		}
     }

@@ -23,6 +23,10 @@
 #include "core/log.h"
 #include "schema.h"
 #include "core/function.h"
+#include "core/coreconfig.h"
+#include "interfaces/cschemasystem.h"
+#include "core/cs2_sdk/interfaces/cschemasystem.h"
+#include "interfaces/cs2_interfaces.h"
 
 namespace counterstrikesharp {
 
@@ -36,6 +40,32 @@ int16 GetSchemaOffset(ScriptContext& script_context)
     const auto m_key = schema::GetOffset(className, classKey, memberName, memberKey);
 
     return m_key.offset;
+}
+
+bool IsSchemaFieldNetworked(ScriptContext& script_context)
+{
+    auto className = script_context.GetArgument<const char*>(0);
+    auto memberName = script_context.GetArgument<const char*>(1);
+    auto classKey = hash_32_fnv1a_const(className);
+    auto memberKey = hash_32_fnv1a_const(memberName);
+
+    const auto m_key = schema::GetOffset(className, classKey, memberName, memberKey);
+
+    return m_key.networked;
+}
+
+int GetSchemaClassSize(ScriptContext& script_context)
+{
+    auto className = script_context.GetArgument<const char*>(0);
+
+    CSchemaSystemTypeScope* pType =
+        interfaces::pSchemaSystem->FindTypeScopeForModule(MODULE_PREFIX "server" MODULE_EXT);
+
+    SchemaClassInfoData_t* pClassInfo = pType->FindDeclaredClass(className);
+    if (!pClassInfo)
+        return -1;
+
+    return pClassInfo->m_size;
 }
 
 void GetSchemaValueByName(ScriptContext& script_context)
@@ -122,23 +152,16 @@ void SetSchemaValueByName(ScriptContext& script_context)
     auto dataType = script_context.GetArgument<DataType_t>(1);
     auto className = script_context.GetArgument<const char*>(2);
     auto memberName = script_context.GetArgument<const char*>(3);
+
+    if (globals::coreConfig->FollowCS2ServerGuidelines && std::find(schema::CS2BadList.begin(), schema::CS2BadList.end(), memberName) != schema::CS2BadList.end()) {
+        CSSHARP_CORE_ERROR("Cannot set '{}::{}' with \"FollowCS2ServerGuidelines\" option enabled.", className, memberName);
+        return;
+    }
+
     auto classKey = hash_32_fnv1a_const(className);
     auto memberKey = hash_32_fnv1a_const(memberName);
 
     const auto m_key = schema::GetOffset(className, classKey, memberName, memberKey);
-    const auto m_chain = schema::FindChainOffset(className);
-
-
-    // todo network updates
-    //    if (m_chain != 0 && m_key.networked) {
-    //        addresses::NetworkStateChanged((uintptr_t)(instancePointer) + m_chain, m_key.offset,
-    //                                       0xFFFFFFFF);
-    //    } else if (m_key.networked) { /* WIP: Works fine for most props, but inlined classes in
-    //    the
-    //                                     middle of a class will need to have their this pointer
-    //                                     corrected by the offset .*/
-    //        CALL_VIRTUAL(void, 1, instancePointer, m_key.offset, 0xFFFFFFFF, 0xFFFF);
-    //    }
 
     switch (dataType) {
     case DATA_TYPE_BOOL:
@@ -215,7 +238,9 @@ void SetSchemaValueByName(ScriptContext& script_context)
 
 REGISTER_NATIVES(schema, {
     ScriptEngine::RegisterNativeHandler("GET_SCHEMA_OFFSET", GetSchemaOffset);
+    ScriptEngine::RegisterNativeHandler("IS_SCHEMA_FIELD_NETWORKED", IsSchemaFieldNetworked);
     ScriptEngine::RegisterNativeHandler("GET_SCHEMA_VALUE_BY_NAME", GetSchemaValueByName);
     ScriptEngine::RegisterNativeHandler("SET_SCHEMA_VALUE_BY_NAME", SetSchemaValueByName);
+    ScriptEngine::RegisterNativeHandler("GET_SCHEMA_CLASS_SIZE", GetSchemaClassSize);
 })
 } // namespace counterstrikesharp

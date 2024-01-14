@@ -1,1 +1,2 @@
 GET_ECON_ITEM_SYSTEM: -> pointer
+IS_SERVER_PAUSED: -> bool

@@ -1,13 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using CounterStrikeSharp.API.Core.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Core;
 
-class LoadedGameData
+public class LoadedGameData
 {
     [JsonPropertyName("signatures")] public Signatures? Signatures { get; set; }
     [JsonPropertyName("offsets")] public Offsets? Offsets { get; set; }
@@ -29,33 +32,69 @@ public class Offsets
     [JsonPropertyName("linux")] public int Linux { get; set; }
 }
 
-public static class GameData
+public sealed class GameDataProvider : IStartupService
 {
-    private static Dictionary<string, LoadedGameData> _methods;
+    private readonly string _gameDataDirectoryPath;
+    public Dictionary<string,LoadedGameData> Methods;
+    private readonly ILogger<GameDataProvider> _logger;
 
-    public static void Load(string gameDataPath)
+    public GameDataProvider(IScriptHostConfiguration scriptHostConfiguration, ILogger<GameDataProvider> logger)
+    {
+        _logger = logger;
+        _gameDataDirectoryPath = scriptHostConfiguration.GameDataPath;
+    }
+    
+    public void Load()
     {
         try
         {
-            _methods = JsonSerializer.Deserialize<Dictionary<string, LoadedGameData>>(File.ReadAllText(gameDataPath))!;
+            Methods = new Dictionary<string, LoadedGameData>();
 
-            Console.WriteLine($"Loaded game data with {_methods.Count} methods.");
+            foreach (string filePath in Directory.EnumerateFiles(_gameDataDirectoryPath, "*.json"))
+            {
+                string jsonContent = File.ReadAllText(filePath);
+                Dictionary<string, LoadedGameData> loadedMethods = JsonSerializer.Deserialize<Dictionary<string, LoadedGameData>>(jsonContent)!;
+
+                foreach (KeyValuePair<string, LoadedGameData> loadedMethod in loadedMethods)
+                {
+                    if (Methods.ContainsKey(loadedMethod.Key))
+                    {
+                        _logger.LogWarning("GameData Method \"{Key}\" loaded a duplicate entry from {filePath}.", loadedMethod.Key, filePath);
+                    }
+                    
+                    Methods[loadedMethod.Key] = loadedMethod.Value;
+                }
+                
+                if (loadedMethods != null)
+                {
+                    _logger.LogInformation("Successfully loaded {Count} game data entries from {Path}", loadedMethods.Count, filePath);
+                }
+                else
+                {
+                    _logger.LogWarning("Unable to load game data entries from {Path}, game data file is empty", filePath);
+                }
+            }
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Failed to load game data: {ex}");
+            _logger.LogError(ex, "Failed to load game data");
         }
     }
+} 
 
+public static class GameData
+{
+    internal static GameDataProvider GameDataProvider { get; set; } = null!;
+    
     public static string GetSignature(string key)
     {
-        Console.WriteLine($"Getting signature: {key}");
-        if (!_methods.ContainsKey(key))
+        Application.Instance.Logger.LogDebug("Getting signature: {Key}", key);
+        if (!GameDataProvider.Methods.ContainsKey(key))
         {
             throw new ArgumentException($"Method {key} not found in gamedata.json");
         }
 
-        var methodMetadata = _methods[key];
+        var methodMetadata = GameDataProvider.Methods[key];
         if (methodMetadata.Signatures == null)
         {
             throw new InvalidOperationException($"No signatures found for {key} in gamedata.json");
@@ -77,12 +116,12 @@ public static class GameData
 
     public static int GetOffset(string key)
     {
-        if (!_methods.ContainsKey(key))
+        if (!GameDataProvider.Methods.ContainsKey(key))
         {
             throw new Exception($"Method {key} not found in gamedata.json");
         }
 
-        var methodMetadata = _methods[key];
+        var methodMetadata = GameDataProvider.Methods[key];
 
         if (methodMetadata.Offsets == null)
         {

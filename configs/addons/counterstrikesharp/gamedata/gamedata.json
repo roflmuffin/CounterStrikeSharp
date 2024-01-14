@@ -26,6 +26,26 @@
       "linux": 89
     }
   },
+  "CCSPlayerController_Respawn": {
+    "offsets": {
+        "windows": 242,
+        "linux": 244
+    }
+  },
+  "CCSPlayerPawn_Respawn": {
+    "signatures": {
+        "library": "server",
+        "windows": "\\x40\\x53\\x48\\x83\\xEC\\x20\\x8B\\x91\\x38\\x0B\\x00\\x00\\x48\\x8B\\xD9",
+        "linux": "\\x8B\\x8F\\x40\\x0E\\x00\\x00\\x83\\xF9\\xFF\\x0F\\x84\\xD9\\x01"
+    }
+  },
+  "CCSPlayerPawnBase_PostThink": {
+    "signatures": {
+      "library": "server",
+      "windows": "\\x48\\x8B\\xC4\\x48\\x89\\x48\\x08\\x55\\x53\\x56\\x57\\x41\\x56\\x48\\x8D\\xA8\\xD8\\xFE\\xFF\\xFF",
+      "linux": "\\x55\\x48\\x89\\xE5\\x41\\x57\\x49\\x89\\xFF\\x41\\x56\\x41\\x55\\x41\\x54\\x53\\x48\\x81\\xEC\\x2A\\x2A\\x2A\\x2A\\xE8\\x2A\\x2A\\x2A\\x2A\\x4C"
+    }
+  },
   "GiveNamedItem": {
     "signatures": {
       "library": "server",
@@ -50,20 +70,115 @@
   "CBaseModelEntity_SetModel": {
     "signatures": {
         "library": "server",
-        "windows": "\\x48\\x89\\x5C\\x24\\x10\\x48\\x89\\x7C\\x24\\x20\\x55\\x48\\x8B\\xEC\\x48\\x83\\xEC\\x50\\x48\\x8B\\xF9\\x4C\\x8B\\xC2\\x48\\x8B\\x0D\\x69\\x07\\xD9\\x00",
-        "linux": "\\x55\\x48\\x89\\xF2\\x48\\x89\\xE5\\x41\\x54\\x49\\x89\\xFC\\x48\\x8D\\x7D\\xE0\\x48\\x83\\xEC\\x18\\x48\\x8D\\x05\\x15\\xD4\\xBF\\x00"
+        "windows": "\\x48\\x89\\x5C\\x24\\x10\\x48\\x89\\x7C\\x24\\x20\\x55\\x48\\x8B\\xEC\\x48\\x83\\xEC\\x50",
+        "linux": "\\x55\\x48\\x89\\xF2\\x48\\x89\\xE5\\x41\\x54\\x49\\x89\\xFC\\x48\\x8D\\x2A\\x2A\\x48\\x83\\x2A\\x2A\\x2A\\x8D\\x05\\x2A\\x2A\\x2A\\x00\\x48\\x8B\\x30\\x48\\x8B\\x06\\xFF\\x2A\\x2A\\x48\\x8B\\x45\\x2A\\x48\\x8D\\x2A\\x2A\\x4C\\x89\\x2A\\x48\\x89\\x45\\x2A\\x2A\\x68\\xFC"
+    }
+  },
+  "CCSPlayer_ItemServices_DropActivePlayerWeapon": {
+    "offsets": {
+        "windows": 18,
+        "linux": 19
+    }
+  },
+  "CCSPlayer_ItemServices_RemoveWeapons": {
+      "offsets": {
+          "windows": 21,
+          "linux": 20
+      }
+  },
+  "CGameSceneNode_GetSkeletonInstance": {
+    "offsets": {
+        "windows": 8,
+        "linux": 8
+    }
+  },
+  "CCSGameRules_TerminateRound": {
+    "signatures": {
+        "library": "server",
+        "windows": "\\x48\\x8B\\xC4\\x4C\\x89\\x48\\x20\\x55\\x56",
+        "linux": "\\x55\\x48\\x89\\xE5\\x41\\x57\\x41\\x56\\x41\\x55\\x49\\x89\\xFD\\x41\\x54\\x53\\x48\\x81\\xEC\\xE8"
+      }
+  },
+  "UTIL_CreateEntityByName": {
+    "signatures": {
+        "library": "server",
+        "windows": "\\x48\\x83\\xEC\\x48\\xC6\\x44\\x24\\x30\\x00\\x4C\\x8B\\xC1",
+        "linux": "\\x48\\x8D\\x05\\x2A\\x2A\\x2A\\x2A\\x55\\x48\\x89\\xFA"
+      }
+  },
+  "CBaseEntity_DispatchSpawn": {
+    "signatures": {
+        "library": "server",
+        "windows": "\\x48\\x89\\x5C\\x24\\x10\\x57\\x48\\x83\\xEC\\x30\\x48\\x8B\\xDA\\x48\\x8B\\xF9\\x48\\x85\\xC9",
+        "linux": "\\x48\\x85\\xFF\\x74\\x4B\\x55\\x48\\x89\\xE5\\x41\\x56"
+      }
+  },
+  "CEntityInstance_AcceptInput": {
+    "signatures": {
+      "library": "server",
+      "windows": "\\x48\\x89\\x5C\\x24\\x10\\x48\\x89\\x74\\x24\\x18\\x57\\x48\\x83\\xEC\\x40\\x49\\x8B\\xF0",
+      "linux": "\\x55\\x48\\x89\\xE5\\x41\\x57\\x49\\x89\\xFF\\x41\\x56\\x48\\x8D\\x7D\\xC0"
+    }
+  },
+  "LegacyGameEventListener": {
+    "signatures": {
+      "library": "server",
+      "windows": "\\x48\\x8B\\x15\\x2A\\x2A\\x2A\\x2A\\x48\\x85\\xD2\\x74\\x2A\\x85\\xC9\\x74",
+      "linux": "\\x48\\x8B\\x05\\x2A\\x2A\\x2A\\x2A\\x48\\x85\\xC0\\x74\\x2A\\x83\\xFF\\x3F\\x76\\x2A\\x31\\xC0"
     }
   },
   "CBasePlayerPawn_CommitSuicide": {
     "offsets": {
-      "windows": 355,
-      "linux": 355
+      "windows": 357,
+      "linux": 357
+    }
+  },
+  "CBasePlayerPawn_RemovePlayerItem": {
+    "signatures": {
+      "library": "server",
+      "linux": "\\x55\\x48\\x89\\x2A\\x41\\x2A\\x49\\x89\\x2A\\x41\\x2A\\x49\\x89\\x2A\\xE8\\x2A\\x2A\\x2A\\x2A\\x49\\x39",
+      "windows": "\\x48\\x85\\xD2\\x0F\\x84\\x2A\\x2A\\x2A\\x2A\\x48\\x89\\x5C\\x24\\x08\\x57\\x48\\x83\\xEC\\x30\\x48\\x8B\\xDA"
     }
   },
   "CBaseEntity_Teleport": {
     "offsets": {
-      "windows": 148,
-      "linux": 147
+      "windows": 149,
+      "linux": 148
+    }
+  },
+  "CBaseEntity_TakeDamageOld": {
+    "signatures": {
+      "library": "server",
+      "windows": "\\x40\\x56\\x57\\x48\\x83\\xEC\\x58\\x48\\x8B\\x41\\x10",
+      "linux": "\\x55\\x48\\x89\\xE5\\x41\\x57\\x41\\x56\\x41\\x55\\x41\\x54\\x49\\x89\\xFC\\x53\\x48\\x83\\xEC\\x38\\x4C\\x8D\\x2D\\x2A\\x2A\\x2A\\x2A\\x49\\x8B\\x7D\\x00\\x48\\x85\\xFF\\x0F\\x84\\x2A\\x2A\\x2A\\x2A"
+    }
+  },
+  "CBaseTrigger_StartTouch": {
+    "signatures": {
+      "library": "server",
+      "windows": "\\x41\\x56\\x41\\x57\\x48\\x83\\xEC\\x58\\x48\\x8B\\x01",
+      "linux": "\\x55\\x48\\x89\\xE5\\x41\\x56\\x49\\x89\\xF6\\x41\\x55\\x49\\x89\\xFD\\x41\\x54\\x53\\xBB"
+    }
+  },
+  "CBaseTrigger_EndTouch": {
+    "signatures": {
+      "library": "server",
+      "windows": "\\x40\\x53\\x57\\x41\\x55\\x48\\x83\\xEC\\x40",
+      "linux": "\\x55\\xBA\\xFF\\xFF\\xFF\\xFF\\x48\\x89\\xE5\\x41\\x57\\x41\\x56\\x41\\x55\\x49"
+    }
+  },
+  "StateChanged": {
+    "signatures": {
+      "library": "server",
+      "windows": "\\x40\\x55\\x53\\x56\\x41\\x55\\x41\\x57\\x48\\x8D\\x6C\\x24\\xB0",
+      "linux": "\\x55\\x48\\x89\\xE5\\x41\\x57\\x41\\x56\\x41\\x55\\x41\\x54\\x53\\x89\\xD3"
+    }
+  },
+  "NetworkStateChanged": {
+    "signatures": {
+      "library": "server",
+      "windows": "\\x4C\\x8B\\xC9\\x48\\x8B\\x09\\x48\\x85\\xC9\\x74\\x2A\\x48\\x8B\\x41\\x10",
+      "linux": "\\x4C\\x8B\\x07\\x4D\\x85\\xC0\\x74\\x2A\\x49\\x8B\\x40\\x10"
     }
   },
   "GameEntitySystem": {
@@ -76,6 +191,13 @@
     "offsets": {
       "windows": 91,
       "linux": 91
+    }
+  },
+  "CEntityIOOutput_FireOutputInternal": {
+    "signatures": {
+      "library": "server",
+      "windows": "\\x48\\x8B\\xC4\\x4C\\x89\\x48\\x20\\x55\\x57\\x41\\x54\\x41\\x56",
+      "linux": "\\x55\\x48\\x89\\xE5\\x41\\x57\\x41\\x56\\x41\\x55\\x41\\x54\\x53\\x48\\x83\\xEC\\x58\\x4C\\x8B\\x6F\\x08"
     }
   }
 }

@@ -13,4 +13,10 @@
         <Private>false</Private>
     </ProjectReference> 
   </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="lang\**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>

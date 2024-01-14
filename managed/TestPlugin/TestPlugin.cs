@@ -16,34 +16,36 @@
 
 using System;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.Json.Serialization;
-
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
+using CounterStrikeSharp.API.Core.Translations;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API.Modules.Entities;
+using CounterStrikeSharp.API.Modules.Entities.Constants;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Menu;
 using CounterStrikeSharp.API.Modules.Utils;
+using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Logging;
 
 namespace TestPlugin
 {
     public class SampleConfig : BasePluginConfig
     {
-        [JsonPropertyName("IsPluginEnabled")]
-        public bool IsPluginEnabled { get; set; } = true;
+        [JsonPropertyName("IsPluginEnabled")] public bool IsPluginEnabled { get; set; } = true;
 
-        [JsonPropertyName("LogPrefix")]
-        public string LogPrefix { get; set; } = "CSSharp";
+        [JsonPropertyName("LogPrefix")] public string LogPrefix { get; set; } = "CSSharp";
     }
 
-    [MinimumApiVersion(33)]
+    [MinimumApiVersion(80)]
     public class SamplePlugin : BasePlugin, IPluginConfig<SampleConfig>
     {
         public override string ModuleName => "Sample Plugin";
@@ -62,29 +64,41 @@ namespace TestPlugin
             Config = config;
         }
 
+        private TestInjectedClass _testInjectedClass;
+
+        public SamplePlugin(TestInjectedClass testInjectedClass)
+        {
+            _testInjectedClass = testInjectedClass;
+        }
+
         public override void Load(bool hotReload)
         {
             // Basic usage of the configuration system
             if (!Config.IsPluginEnabled)
             {
-                Console.WriteLine($"{Config.LogPrefix} {ModuleName} is disabled");
+                Logger.LogWarning($"{Config.LogPrefix} {ModuleName} is disabled");
                 return;
             }
 
-            Console.WriteLine(
+            Logger.LogInformation(
                 $"Test Plugin has been loaded, and the hot reload flag was {hotReload}, path is {ModulePath}");
 
-            Console.WriteLine($"Max Players: {Server.MaxPlayers}");
+            VirtualFunctions.SwitchTeamFunc.Hook(hook =>
+            {
+                Logger.LogInformation("Switch team func called");
+                return HookResult.Continue;
+            }, HookMode.Pre);
 
             SetupConvars();
             SetupGameEvents();
             SetupListeners();
             SetupCommands();
             SetupMenus();
+            SetupEntityOutputHooks();
 
             // ValveInterface provides pointers to loaded modules via Interface Name exposed from the engine (e.g. Source2Server001)
             var server = ValveInterface.Server;
-            Log($"Server pointer found @ {server.Pointer:X}");
+            Logger.LogInformation("Server pointer found @ {Pointer:X}", server.Pointer);
 
             // You can use `ModuleDirectory` to get the directory of the plugin (for storing config files, saving database files etc.)
             File.WriteAllText(Path.Join(ModuleDirectory, "example.txt"),
@@ -98,7 +112,60 @@ namespace TestPlugin
             // This value is asserted against the native code that points to the same function.
             var virtualFunc = VirtualFunction.Create<IntPtr>(server.Pointer, 91);
             var result = virtualFunc() - 8;
-            Log($"Result of virtual func call is {result:X}");
+            Logger.LogInformation("Result of virtual func call is {Pointer:X}", result);
+            
+            _testInjectedClass.Hello();
+
+            VirtualFunctions.CBaseTrigger_StartTouchFunc.Hook(h =>
+            {
+                var trigger = h.GetParam<CBaseTrigger>(0);
+                var entity = h.GetParam<CBaseEntity>(1);
+                
+                Logger.LogInformation("Trigger {Trigger} touched by {Entity}", trigger.DesignerName, entity.DesignerName);
+                
+                return HookResult.Continue;
+            }, HookMode.Post);
+            
+            VirtualFunctions.CBaseTrigger_EndTouchFunc.Hook(h =>
+            {
+                var trigger = h.GetParam<CBaseTrigger>(0);
+                var entity = h.GetParam<CBaseEntity>(1);
+                
+                Logger.LogInformation("Trigger left {Trigger} by {Entity}", trigger.DesignerName, entity.DesignerName);
+                
+                return HookResult.Continue;
+            }, HookMode.Post);
+            
+            VirtualFunctions.UTIL_RemoveFunc.Hook(hook =>
+            {
+                var entityInstance = hook.GetParam<CEntityInstance>(0);
+                Logger.LogInformation("Removed entity {EntityIndex}", entityInstance.Index);
+
+                return HookResult.Continue;
+            }, HookMode.Post);
+            
+            VirtualFunctions.CBaseEntity_TakeDamageOldFunc.Hook((h =>
+            {
+                var victim = h.GetParam<CEntityInstance>(0);
+                var damageInfo = h.GetParam<CTakeDamageInfo>(1);
+                
+                if (damageInfo.Inflictor.Value.DesignerName == "inferno")
+                {
+                    var inferno = new CInferno(damageInfo.Inflictor.Value.Handle);
+                    Logger.LogInformation("Owner of inferno is {Owner}",  inferno.OwnerEntity);
+
+                    if (victim == inferno.OwnerEntity.Value)
+                    {
+                        damageInfo.Damage = 0;
+                    }
+                    else
+                    {
+                        damageInfo.Damage = 150;
+                    }
+                }
+
+                return HookResult.Continue;
+            }), HookMode.Pre);
         }
 
         private void SetupConvars()
@@ -109,13 +176,13 @@ namespace TestPlugin
                 cheatsCvar.SetValue(true);
 
                 var numericCvar = ConVar.Find("mp_warmuptime");
-                Console.WriteLine($"mp_warmuptime = {numericCvar?.GetPrimitiveValue<float>()}");
+                Logger.LogInformation("mp_warmuptime = {Value}", numericCvar?.GetPrimitiveValue<float>());
 
                 var stringCvar = ConVar.Find("sv_skyname");
-                Console.WriteLine($"sv_skyname = {stringCvar?.StringValue}");
+                Logger.LogInformation("sv_skyname = {Value}", stringCvar?.StringValue);
 
                 var fogCvar = ConVar.Find("fog_color");
-                Console.WriteLine($"fog_color = {fogCvar?.GetNativeValue<Vector>()}");
+                Logger.LogInformation("fog_color = {Value}", fogCvar?.GetNativeValue<Vector>());
             });
         }
 
@@ -128,7 +195,7 @@ namespace TestPlugin
                 var entity = new CCSPlayerController(NativeAPI.GetEntityFromIndex(@event.Userid));
                 if (!entity.IsValid)
                 {
-                    Log("invalid entity");
+                    Logger.LogInformation("invalid entity");
                     return HookResult.Continue;
                 }
 
@@ -146,12 +213,20 @@ namespace TestPlugin
 
                 return HookResult.Continue;
             }, HookMode.Pre);
+            
+            RegisterEventHandler<EventGrenadeBounce>((@event, info) =>
+            {
+                Logger.LogInformation("Player {Player} grenade bounce", @event.Userid.PlayerName);
+
+                return HookResult.Continue;
+            }, HookMode.Pre);
             RegisterEventHandler<EventPlayerSpawn>((@event, info) =>
             {
                 if (!@event.Userid.IsValid) return 0;
                 if (!@event.Userid.PlayerPawn.IsValid) return 0;
 
-                Log($"Player spawned with entity index: {@event.Userid.EntityIndex} & User ID: {@event.Userid.UserId}");
+                Logger.LogInformation("Player spawned with entity index: {EntityIndex} & User ID: {UserId}",
+                    @event.Userid.Index, @event.Userid.UserId);
 
                 return HookResult.Continue;
             });
@@ -163,29 +238,22 @@ namespace TestPlugin
                 var activeWeapon = @event.Userid.PlayerPawn.Value.WeaponServices?.ActiveWeapon.Value;
                 var weapons = @event.Userid.PlayerPawn.Value.WeaponServices?.MyWeapons;
 
+                Server.NextFrame(() =>
+                {
+                    var weaponServices = player.PlayerPawn.Value.WeaponServices.As<CCSPlayer_WeaponServices>();
+                    player.PrintToChat(weaponServices.ActiveWeapon.Value?.DesignerName);    
+                });
+                
                 // Set player to random colour
                 player.PlayerPawn.Value.Render = Color.FromArgb(Random.Shared.Next(0, 255),
                     Random.Shared.Next(0, 255), Random.Shared.Next(0, 255));
-                
-                Server.NextFrame(() =>
-                {
-                    player.PrintToCenter(string.Join("\n", weapons.Select(x => x.Value.DesignerName)));
-                });
+                Utilities.SetStateChanged(player.PlayerPawn.Value, "CBaseModelEntity", "m_clrRender");
 
                 activeWeapon.ReserveAmmo[0] = 250;
                 activeWeapon.Clip1 = 250;
 
-                Log(
-                    $"Pawn Position: {pawn.CBodyComponent?.SceneNode?.AbsOrigin} @{pawn.CBodyComponent?.SceneNode.Rotation}");
-
-                char randomColourChar = (char)new Random().Next(0, 16);
-                Server.PrintToChatAll($"Random String with Random Colour: {randomColourChar}{new Random().Next()}");
-
                 pawn.Health += 5;
-
-                Log(
-                    $"Found steamID {new SteamID(player.SteamID)} for player {player.PlayerName}:{pawn.Health}|{pawn.InBuyZone}");
-                Log($"{@event.Userid}, {@event.X},{@event.Y},{@event.Z}");
+                Utilities.SetStateChanged(pawn, "CBaseEntity", "m_iHealth");
 
                 return HookResult.Continue;
             });
@@ -193,7 +261,7 @@ namespace TestPlugin
             {
                 // Grab all cs_player_controller entities and set their cash value to $1337.
                 var playerEntities = Utilities.GetPlayers();
-                Log($"cs_player_controller count: {playerEntities.Count()}");
+                Logger.LogInformation($"cs_player_controller count: {playerEntities.Count()}");
 
                 foreach (var player in playerEntities)
                 {
@@ -204,7 +272,7 @@ namespace TestPlugin
                 // Grab everything starting with cs_, but we'll only mainpulate cs_gamerules.
                 // Note: this iterates through all entities, so is an expensive operation.
                 var csEntities = Utilities.FindAllEntitiesByDesignerName<CBaseEntity>("cs_");
-                Log($"Amount of cs_* entities: {csEntities.Count()}");
+                Logger.LogInformation("Amount of cs_* entities: {Count}", csEntities.Count());
 
                 foreach (var entity in csEntities)
                 {
@@ -220,15 +288,18 @@ namespace TestPlugin
         private void SetupListeners()
         {
             // Hook global listeners defined by CounterStrikeSharp
-            RegisterListener<Listeners.OnMapStart>(mapName => { Log($"Map {mapName} has started!"); });
-            RegisterListener<Listeners.OnMapEnd>(() => { Log($"Map has ended."); });
+            RegisterListener<Listeners.OnMapStart>(mapName =>
+            {
+                Logger.LogInformation("Map {Map} has started!", mapName);
+            });
+            RegisterListener<Listeners.OnMapEnd>(() => { Logger.LogInformation($"Map has ended."); });
             RegisterListener<Listeners.OnClientConnect>((index, name, ip) =>
             {
-                Log($"Client {name} from {ip} has connected!");
+                Logger.LogInformation("Client {Name} from {Ip} has connected!", name, ip);
             });
             RegisterListener<Listeners.OnClientAuthorized>((index, id) =>
             {
-                Log($"Client {index} with address {id}");
+                Logger.LogInformation("Client {Index} with address {Id}", index, id);
             });
 
             RegisterListener<Listeners.OnEntitySpawned>(entity =>
@@ -238,18 +309,19 @@ namespace TestPlugin
                 switch (designerName)
                 {
                     case "smokegrenade_projectile":
-                        var projectile = new CSmokeGrenadeProjectile(entity.Handle);
+                        var projectile = entity.As<CSmokeGrenadeProjectile>();
 
                         Server.NextFrame(() =>
                         {
                             projectile.SmokeColor.X = Random.Shared.NextSingle() * 255.0f;
                             projectile.SmokeColor.X = Random.Shared.NextSingle() * 255.0f;
                             projectile.SmokeColor.X = Random.Shared.NextSingle() * 255.0f;
-                            Log($"Smoke grenade spawned with color {projectile.SmokeColor}");
+                            Logger.LogInformation("Smoke grenade spawned with color {SmokeColor}",
+                                projectile.SmokeColor);
                         });
                         return;
                     case "flashbang_projectile":
-                        var flashbang = new CBaseCSGrenadeProjectile(entity.Handle);
+                        var flashbang = entity.As<CBaseCSGrenadeProjectile>();
 
                         Server.NextFrame(() => { flashbang.Remove(); });
                         return;
@@ -277,6 +349,24 @@ namespace TestPlugin
             giveItemMenu.AddMenuOption("weapon_ak47", handleGive);
             giveItemMenu.AddMenuOption("weapon_p250", handleGive);
 
+            AddCommand("css_target", "Target Test", (player, info) =>
+            {
+                if (player == null) return;
+
+                var targetResult = info.GetArgTargetResult(1);
+
+                if (!targetResult.Any())
+                {
+                    player.PrintToChat("No players found.");
+                    return;
+                }
+                
+                foreach (var result in targetResult.Players)
+                {
+                    player.PrintToChat($"Target found: {result?.PlayerName}");
+                }
+            });
+            
             AddCommand("css_menu", "Opens example menu", (player, info) => { ChatMenus.OpenMenu(player, largeMenu); });
             AddCommand("css_gunmenu", "Gun Menu", (player, info) => { ChatMenus.OpenMenu(player, giveItemMenu); });
 
@@ -298,8 +388,9 @@ namespace TestPlugin
                 (player, info) =>
                 {
                     if (player == null) return;
-                    Log(
-                        $"CounterStrikeSharp - a test command was called by {new SteamID(player.SteamID).SteamId2} with {info.ArgString}");
+                    Logger.LogInformation(
+                        "CounterStrikeSharp - a test command was called by {SteamID2} with {Arguments}",
+                        ((SteamID)player.SteamID).SteamId2, info.ArgString);
                 });
 
             AddCommand("css_changeteam", "change team", (player, info) =>
@@ -319,8 +410,32 @@ namespace TestPlugin
             // Listens for any client use of the command `jointeam`.
             AddCommandListener("jointeam", (player, info) =>
             {
-                Log($"{player.PlayerName} just did a jointeam (pre) [{info.ArgString}]");
+                Logger.LogInformation("{PlayerName} just did a jointeam (pre) [{ArgString}]", player.PlayerName,
+                    info.ArgString);
 
+                return HookResult.Continue;
+            });
+        }
+
+        private void SetupEntityOutputHooks()
+        {
+            HookEntityOutput("weapon_knife", "OnPlayerPickup", (output, name, activator, caller, value, delay) =>
+            {
+                Logger.LogInformation("weapon_knife called OnPlayerPickup ({name}, {activator}, {caller}, {delay})", output.Description.Name, activator.DesignerName, caller.DesignerName, delay);
+
+                return HookResult.Continue;
+            });
+            
+            HookEntityOutput("*", "*", (output, name, activator, caller, value, delay) =>
+            {
+                Logger.LogInformation("All EntityOutput ({name}, {activator}, {caller}, {delay})", output.Description.Name, activator.DesignerName, caller.DesignerName, delay);
+
+                return HookResult.Continue;
+            });
+            
+            HookEntityOutput("*", "OnStartTouch", (output, name, activator, caller, value, delay) =>
+            {
+                Logger.LogInformation("OnStartTouch: ({name}, {activator}, {caller}, {delay})", name, activator.DesignerName, caller.DesignerName, delay);
                 return HookResult.Continue;
             });
         }
@@ -328,7 +443,7 @@ namespace TestPlugin
         [GameEventHandler]
         public HookResult OnPlayerConnect(EventPlayerConnect @event, GameEventInfo info)
         {
-            Log($"Player {@event.Name} has connected! (post)");
+            Logger.LogInformation("Player {Name} has connected! (post)", @event.Name);
 
             return HookResult.Continue;
         }
@@ -336,7 +451,7 @@ namespace TestPlugin
         [GameEventHandler(HookMode.Pre)]
         public HookResult OnPlayerConnectPre(EventPlayerConnect @event, GameEventInfo info)
         {
-            Log($"Player {@event.Name} has connected! (pre)");
+            Logger.LogInformation("Player {Name} has connected! (pre)", @event.Name);
 
             return HookResult.Continue;
         }
@@ -349,6 +464,67 @@ namespace TestPlugin
             if (!player.PlayerPawn.IsValid) return;
 
             player.PlayerPawn.Value.CommitSuicide(true, true);
+        }
+        
+        [CommandHelper(minArgs: 1, usage: "[weaponName]")]
+        [ConsoleCommand("css_strip", "Removes weapon by name")]
+        public void OnStripActiveWeapon(CCSPlayerController? player, CommandInfo command)
+        {
+            if (player == null) return;
+            if (!player.PlayerPawn.IsValid) return;
+            
+            player.RemoveItemByDesignerName(command.GetArg(1));
+        }
+        
+        [ConsoleCommand("css_stripweapons", "Removes player weapons")]
+        public void OnStripWeapons(CCSPlayerController? player, CommandInfo command)
+        {
+            if (player == null) return;
+            if (!player.PlayerPawn.IsValid) return;
+
+            player.RemoveWeapons();
+        }
+        
+        [ConsoleCommand("css_teleportup", "Teleports the player up")]
+        public void OnTeleport(CCSPlayerController? player, CommandInfo command)
+        {
+            if (player == null) return;
+            if (!player.PlayerPawn.IsValid) return;
+
+            player.PlayerPawn.Value.Teleport(player.PlayerPawn.Value.AbsOrigin.With(z: player.PlayerPawn.Value.AbsOrigin.Z + 100), player.PlayerPawn.Value.AbsRotation, new Vector(IntPtr.Zero));
+        }
+        
+        [ConsoleCommand("css_respawn", "Respawns the player")]
+        public void OnRespawn(CCSPlayerController? player, CommandInfo command)
+        {
+            if (player == null) return;
+            if (!player.PlayerPawn.IsValid) return;
+
+            player.Respawn();
+        }
+
+        [ConsoleCommand("css_break", "Breaks the breakable entities")]
+        public void OnBreakCommand(CCSPlayerController? player, CommandInfo command)
+        {
+            var entities = Utilities.FindAllEntitiesByDesignerName<CBreakable>("prop_dynamic")
+                .Concat(Utilities.FindAllEntitiesByDesignerName<CBreakable>("func_breakable"));
+            foreach (var entity in entities)
+            {
+                entity.AcceptInput("Break");
+            }
+        }
+        
+        [ConsoleCommand("css_fov", "Sets the player's FOV")]
+        [CommandHelper(minArgs: 1, usage: "[fov]")]
+        public void OnFovCommand(CCSPlayerController? player, CommandInfo command)
+        {
+            if (player == null) return;
+            if (!player.PlayerPawn.IsValid) return;
+
+            if (!Int32.TryParse(command.GetArg(1), out var desiredFov)) return;
+
+            player.DesiredFOV = (uint)desiredFov;
+            Utilities.SetStateChanged(player, "CBasePlayerController", "m_iDesiredFOV");
         }
 
         [ConsoleCommand("cssharp_attribute", "This is a custom attribute event")]
@@ -379,15 +555,57 @@ namespace TestPlugin
 
             foreach (var weapon in player.PlayerPawn.Value.WeaponServices.MyWeapons)
             {
-                // We don't currently have a `ReplyToCommand` equivalent so just print to chat for now.
-                player.PrintToChat(weapon.Value.DesignerName);
+                var vData = weapon.Value.As<CCSWeaponBase>().VData;
+                command.ReplyToCommand(string.Format("{0}, {1}, {2}, {3}, {4}, {5}", vData.Name, vData.GearSlot, vData.Price, vData.WeaponCategory, vData.WeaponType, vData.KillAward));
             }
+        }
+        
+        [ConsoleCommand("css_entities", "List entities")]
+        public void OnCommandEntities(CCSPlayerController? player, CommandInfo command)
+        {
+            foreach (var entity in Utilities.GetAllEntities())
+            {
+                command.ReplyToCommand($"{entity.Index}:{entity.DesignerName}");
+            }
+            
+            foreach (var entity in Utilities.FindAllEntitiesByDesignerName<CBaseEntity>("cs_"))
+            {
+                command.ReplyToCommand($"{entity.Index}:{entity.DesignerName}");
+            }
+        }
+        
+        [ConsoleCommand("css_colors", "List Chat Colors")]
+        public void OnCommandColors(CCSPlayerController? player, CommandInfo command)
+        {
+            if (player == null) return;
+            if (!player.PlayerPawn.IsValid) return;
+
+            for (int i = 0; i < 16; i++)
+            {
+                command.ReplyToCommand($" {(char)i}Color 0x{i:x}");
+            }
+        }
+        
+        [ConsoleCommand("css_localetest", "Test Translations")]
+        public void OnCommandLocaleTest(CCSPlayerController? player, CommandInfo command)
+        {
+            Logger.LogInformation("Current Culture is {Culture}", CultureInfo.CurrentCulture);
+            command.ReplyToCommand(Localizer["testPlugin.maxPlayersAnnouncement", Server.MaxPlayers]);
+        }
+        
+        [ConsoleCommand("css_sound", "Play a sound to client")]
+        public void OnCommandSound(CCSPlayerController? player, CommandInfo command)
+        {
+            if (player == null) return;
+            if (!player.PlayerPawn.IsValid) return;
+
+            player.ExecuteClientCommand($"play sounds/ui/counter_beep.vsnd");
         }
 
         [ConsoleCommand("css_pause", "Pause Game")]
         public void OnCommandPause(CCSPlayerController? player, CommandInfo command)
         {
-            Log("Pause");
+            Logger.LogInformation("Pause");
         }
 
         [ConsoleCommand("css_give", "Give named item")]
@@ -398,19 +616,44 @@ namespace TestPlugin
             player.GiveNamedItem(command.ArgByIndex(1));
         }
 
+        [ConsoleCommand("css_giveenum", "giveenum")]
+        public void OnCommandGiveEnum(CCSPlayerController? player, CommandInfo command)
+        {
+            if (player == null) return;
+            if (!player.IsValid) return;
+
+            player.GiveNamedItem(CsItem.M4A1);
+            player.GiveNamedItem(CsItem.HEGrenade);
+            player.GiveNamedItem(CsItem.Kevlar);
+            player.GiveNamedItem(CsItem.Tec9);
+        }
+
+        [ConsoleCommand("css_give", "give")]
+        public void OnCommandGiveItems(CCSPlayerController? player, CommandInfo command)
+        {
+            if (player == null) return;
+            if (!player.IsValid) return;
+
+            player.GiveNamedItem("weapon_m4a1");
+            player.GiveNamedItem("weapon_hegrenade");
+            player.GiveNamedItem("item_kevlar");
+            player.GiveNamedItem("weapon_tec9");
+        }
+
         private HookResult GenericEventHandler<T>(T @event, GameEventInfo info) where T : GameEvent
         {
-            Log($"Event found {@event.Handle:X}, event name: {@event.EventName} dont broadcast: {info.DontBroadcast}");
+            Logger.LogInformation("Event found {Pointer:X}, event name: {EventName}, dont broadcast: {DontBroadcast}",
+                @event.Handle, @event.EventName, info.DontBroadcast);
 
             return HookResult.Continue;
         }
 
-        private void Log(string message)
+        [EntityOutputHook("*", "OnPlayerPickup")]
+        public HookResult OnPickup(CEntityIOOutput output, string name, CEntityInstance activator, CEntityInstance caller, CVariant value, float delay)
         {
-            Console.BackgroundColor = ConsoleColor.DarkGray;
-            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-            Console.WriteLine(message);
-            Console.ResetColor();
+            Logger.LogInformation("[EntityOutputHook Attribute] Called OnPlayerPickup ({name}, {activator}, {caller}, {delay})", name, activator.DesignerName, caller.DesignerName, delay);
+
+            return HookResult.Continue;
         }
     }
 }

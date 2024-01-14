@@ -4816,10 +4816,10 @@
           }
         },
         {
-          "name": "m_eThrowStatus",
+          "name": "m_bThrowAnimating",
           "type": {
-            "category": 6,
-            "name": "EGrenadeThrowState"
+            "category": 0,
+            "name": "bool"
           }
         },
         {
@@ -4849,12 +4849,54 @@
             "category": 5,
             "name": "GameTime_t"
           }
+        },
+        {
+          "name": "m_bJustPulledPin",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_nNextHoldTick",
+          "type": {
+            "category": 5,
+            "name": "GameTick_t"
+          }
+        },
+        {
+          "name": "m_flNextHoldFrac",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_hSwitchToWeaponAfterThrow",
+          "type": {
+            "atomic": 1,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "CCSWeaponBase"
+            },
+            "name": "CHandle< CCSWeaponBase >",
+            "outer": "CHandle"
+          }
         }
       ],
       "parent": "CCSWeaponBase"
     },
     "CBaseCSGrenadeProjectile": {
       "fields": [
+        {
+          "name": "m_vInitialPosition",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector"
+          }
+        },
         {
           "name": "m_vInitialVelocity",
           "type": {
@@ -4969,6 +5011,20 @@
           "type": {
             "category": 0,
             "name": "int32"
+          }
+        },
+        {
+          "name": "m_bHasEverHitPlayer",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_bClearFromPlayers",
+          "type": {
+            "category": 0,
+            "name": "bool"
           }
         }
       ],
@@ -6290,7 +6346,7 @@
               "category": 0,
               "name": "char"
             },
-            "name": "char[4096]"
+            "name": "char[260]"
           }
         },
         {
@@ -6818,6 +6874,13 @@
           "type": {
             "category": 0,
             "name": "int64"
+          }
+        },
+        {
+          "name": "m_nLastRealCommandNumberExecuted",
+          "type": {
+            "category": 0,
+            "name": "int32"
           }
         },
         {
@@ -13245,10 +13308,10 @@
           }
         },
         {
-          "name": "m_bMatchAbortedDueToPlayerBan",
+          "name": "m_nMatchAbortedEarlyReason",
           "type": {
             "category": 0,
-            "name": "bool"
+            "name": "int32"
           }
         },
         {
@@ -13829,6 +13892,13 @@
           }
         },
         {
+          "name": "m_bCannotBeKicked",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
           "name": "m_bEverFullyConnected",
           "type": {
             "category": 0,
@@ -14126,7 +14196,21 @@
           }
         },
         {
+          "name": "m_dblLastReceivedPacketPlatFloatTime",
+          "type": {
+            "category": 0,
+            "name": "float64"
+          }
+        },
+        {
           "name": "m_LastTeamDamageWarningTime",
+          "type": {
+            "category": 5,
+            "name": "GameTime_t"
+          }
+        },
+        {
+          "name": "m_LastTimePlayerWasDisconnectedForPawnsRemove",
           "type": {
             "category": 5,
             "name": "GameTime_t"
@@ -14437,6 +14521,13 @@
               "name": "char"
             },
             "name": "char[18]"
+          }
+        },
+        {
+          "name": "m_bInHostageResetZone",
+          "type": {
+            "category": 0,
+            "name": "bool"
           }
         },
         {
@@ -16244,6 +16335,20 @@
             "category": 0,
             "name": "float32"
           }
+        },
+        {
+          "name": "m_flHeightAtJumpStart",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flMaxJumpHeightThisJump",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
         }
       ],
       "parent": "CPlayer_MovementServices_Humanoid"
@@ -16674,10 +16779,17 @@
           }
         },
         {
-          "name": "m_bPlayerFireEventIsPrimary",
+          "name": "m_ePlayerFireEvent",
           "type": {
-            "category": 0,
-            "name": "bool"
+            "category": 6,
+            "name": "PlayerAnimEvent_t"
+          }
+        },
+        {
+          "name": "m_ePlayerFireEventAttackType",
+          "type": {
+            "category": 6,
+            "name": "WeaponAttackType_t"
           }
         },
         {
@@ -16735,7 +16847,7 @@
               "category": 5,
               "name": "HSequence"
             },
-            "name": "HSequence[6]"
+            "name": "HSequence[7]"
           }
         },
         {
@@ -16887,10 +16999,17 @@
           }
         },
         {
-          "name": "m_flPostponeFireReadyTime",
+          "name": "m_nPostponeFireReadyTicks",
           "type": {
             "category": 5,
-            "name": "GameTime_t"
+            "name": "GameTick_t"
+          }
+        },
+        {
+          "name": "m_flPostponeFireReadyFrac",
+          "type": {
+            "category": 0,
+            "name": "float32"
           }
         },
         {
@@ -30081,6 +30200,14 @@
             "category": 4,
             "name": "Vector"
           }
+        },
+        {
+          "name": "m_vecHostageResetPosition",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector"
+          }
         }
       ],
       "parent": "CHostageExpresserShim"
@@ -34346,35 +34473,7 @@
       "parent": "CLogicalEntity"
     },
     "CMelee": {
-      "fields": [
-        {
-          "name": "m_flThrowAt",
-          "type": {
-            "category": 5,
-            "name": "GameTime_t"
-          }
-        },
-        {
-          "name": "m_hThrower",
-          "type": {
-            "atomic": 1,
-            "category": 4,
-            "inner": {
-              "category": 5,
-              "name": "CBaseEntity"
-            },
-            "name": "CHandle< CBaseEntity >",
-            "outer": "CHandle"
-          }
-        },
-        {
-          "name": "m_bDidThrowDamage",
-          "type": {
-            "category": 0,
-            "name": "bool"
-          }
-        }
-      ],
+      "fields": [],
       "parent": "CCSWeaponBase"
     },
     "CMeshletDescriptor": {
@@ -70234,7 +70333,7 @@
               "category": 0,
               "name": "char"
             },
-            "name": "char[4096]"
+            "name": "char[260]"
           }
         },
         {
@@ -75963,6 +76062,20 @@
           "type": {
             "category": 0,
             "name": "float32"
+          }
+        },
+        {
+          "name": "m_flTickInterval",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flTickStartTime",
+          "type": {
+            "category": 0,
+            "name": "float64"
           }
         }
       ]
@@ -91247,23 +91360,6 @@
         }
       ]
     },
-    "EGrenadeThrowState": {
-      "align": 4,
-      "items": [
-        {
-          "name": "NotThrowing",
-          "value": 0
-        },
-        {
-          "name": "Throwing",
-          "value": 1
-        },
-        {
-          "name": "ThrowComplete",
-          "value": 2
-        }
-      ]
-    },
     "EInButtonState": {
       "align": 4,
       "items": [
@@ -96301,7 +96397,7 @@
         },
         {
           "name": "ALL_CONTEXTS",
-          "value": 4293918720
+          "value": 18446744073708503040
         },
         {
           "name": "ALL_SCENTS",
@@ -96794,6 +96890,10 @@
         {
           "name": "DFLAG_IGNORE_ARMOR",
           "value": 2048
+        },
+        {
+          "name": "DFLAG_SUPPRESS_UTILREMOVE",
+          "value": 4096
         }
       ]
     },

@@ -44,6 +44,15 @@ EventManager::~EventManager() = default;
 
 void EventManager::OnStartup() {}
 
+void EventManager::OnGameLoopInitialized()
+{
+    while (!m_PendingHooks.empty()) {
+        const auto& pendingHook = m_PendingHooks.top();
+        HookEvent(pendingHook.m_Name.c_str(), pendingHook.m_fnCallback, pendingHook.m_bPost);
+        m_PendingHooks.pop();
+    }
+}
+
 void EventManager::OnAllInitialized()
 {
     SH_ADD_HOOK(IGameEventManager2, FireEvent, globals::gameEventManager,
@@ -67,6 +76,17 @@ void EventManager::FireGameEvent(IGameEvent* pEvent) {}
 bool EventManager::HookEvent(const char* szName, CallbackT fnCallback, bool bPost)
 {
     EventHook* pHook;
+
+    // Plugin load is called before game loop (and thus events file is loaded)
+    // So we defer hooking until game loop is initialized
+    if (!globals::gameLoopInitialized) {
+        const PendingEventHook pendingHook{szName, fnCallback, bPost};
+        m_PendingHooks.push(pendingHook);
+        return true;
+    }
+
+    CSSHARP_CORE_TRACE("[EventManager] Hooking event: {0} with callback pointer: {1}", szName,
+                       (void*)fnCallback);
 
     if (!globals::gameEventManager->FindListener(this, szName)) {
         globals::gameEventManager->AddListener(this, szName, true);
@@ -103,7 +123,6 @@ bool EventManager::HookEvent(const char* szName, CallbackT fnCallback, bool bPos
     } else {
         if (!pHook->m_pPreHook) {
             pHook->m_pPreHook = globals::callbackManager.CreateCallback("");
-            ;
         }
 
         pHook->m_pPreHook->AddListener(fnCallback);
@@ -130,18 +149,17 @@ bool EventManager::UnhookEvent(const char* szName, CallbackT fnCallback, bool bP
         pCallback = pHook->m_pPreHook;
     }
 
-    // Remove from function list
-    if (pCallback == nullptr) {
-        return false;
-    }
+    pCallback->RemoveListener(fnCallback);
 
-    if (bPost) {
-        pHook->m_pPostHook = nullptr;
-    } else {
-        pHook->m_pPreHook = nullptr;
-    }
+    if (pCallback->GetFunctionCount() == 0) {
+        globals::callbackManager.ReleaseCallback(pCallback);
 
-    // TODO: Clean up callback if theres noone left attached.
+        if (bPost) {
+            pHook->m_pPostHook = nullptr;
+        } else {
+            pHook->m_pPreHook = nullptr;
+        }
+    }
 
     CSSHARP_CORE_TRACE("Unhooking event: {0} with callback pointer: {1}", szName, (void*)fnCallback);
 

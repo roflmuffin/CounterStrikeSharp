@@ -6,6 +6,8 @@
 #undef protected
 #undef private
 
+#include <thread>
+
 #include "ISmmAPI.h"
 #include "eiface.h"
 #include "iserver.h"
@@ -18,6 +20,7 @@ class IServerPluginHelpers;
 class IUniformRandomStream;
 class IEngineTrace;
 class IEngineSound;
+class IEngineServiceMgr;
 class INetworkStringTableContainer;
 class CGlobalVars;
 class IFileSystem;
@@ -33,6 +36,7 @@ class ICvar;
 class IGameEventSystem;
 class CounterStrikeSharpMMPlugin;
 class CGameEntitySystem;
+class IGameEventListener2;
 
 namespace counterstrikesharp {
 class EntityListener;
@@ -49,6 +53,8 @@ class HookManager;
 class EntityManager;
 class ChatManager;
 class ServerManager;
+class VoiceManager;
+class CCoreConfig;
 class CGameConfig;
 
 namespace globals {
@@ -61,6 +67,7 @@ extern IServerPluginHelpers *helpers;
 extern IUniformRandomStream *randomStream;
 extern IEngineTrace *engineTrace;
 extern IEngineSound *engineSound;
+extern IEngineServiceMgr *engineServiceManager;
 extern INetworkStringTableContainer *netStringTables;
 extern CGlobalVars *globalVars;
 extern IFileSystem *fileSystem;
@@ -92,6 +99,7 @@ extern TimerSystem timerSystem;
 extern ChatCommands chatCommands;
 extern ChatManager chatManager;
 extern ServerManager serverManager;
+extern VoiceManager voiceManager;
 
 extern HookManager hookManager;
 extern SourceHook::ISourceHook *source_hook;
@@ -99,7 +107,14 @@ extern int source_hook_pluginid;
 extern IGameEventSystem *gameEventSystem;
 extern CounterStrikeSharpMMPlugin *mmPlugin;
 extern ISmmAPI *ismm;
+extern CCoreConfig* coreConfig;
 extern CGameConfig* gameConfig;
+
+typedef IGameEventListener2 *GetLegacyGameEventListener_t(CPlayerSlot slot);
+
+extern bool gameLoopInitialized;
+extern GetLegacyGameEventListener_t* GetLegacyGameEventListener;
+extern std::thread::id gameThreadId;
 
 void Initialize();
 // Should only be called within the active game loop (i e map should be loaded

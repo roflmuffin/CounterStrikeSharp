@@ -30,6 +30,8 @@
 #include "core/memory.h"
 #include "core/log.h"
 #include "core/function.h"
+#include "core/managers/player_manager.h"
+#include "core/managers/server_manager.h"
 // clang-format on
 
 #if _WIN32
@@ -72,6 +74,17 @@ float GetGameFrameTime(ScriptContext& script_context)
 }
 
 double GetEngineTime(ScriptContext& script_context) { return Plat_FloatTime(); }
+
+int GetMaxClients(ScriptContext& script_context)
+{
+    auto globalVars = globals::getGlobalVars();
+    if (globalVars == nullptr) {
+        script_context.ThrowNativeError("Global Variables not initialized yet.");
+        return -1;
+    }
+
+    return globalVars->maxClients;
+}
 
 void ServerCommand(ScriptContext& script_context)
 {
@@ -217,6 +230,14 @@ void QueueTaskForNextFrame(ScriptContext& script_context)
     globals::mmPlugin->AddTaskForNextFrame([func]() { reinterpret_cast<voidfunc*>(func)(); });
 }
 
+void QueueTaskForNextWorldUpdate(ScriptContext& script_context)
+{
+    auto func = script_context.GetArgument<void*>(0);
+
+    typedef void(voidfunc)(void);
+    globals::serverManager.AddTaskForNextWorldUpdate([func]() { reinterpret_cast<voidfunc*>(func)(); });
+}
+
 enum InterfaceType
 {
     Engine,
@@ -285,6 +306,7 @@ REGISTER_NATIVES(engine, {
     ScriptEngine::RegisterNativeHandler("GET_CURRENT_TIME", GetCurrentTime);
     ScriptEngine::RegisterNativeHandler("GET_GAMEFRAME_TIME", GetGameFrameTime);
     ScriptEngine::RegisterNativeHandler("GET_ENGINE_TIME", GetEngineTime);
+    ScriptEngine::RegisterNativeHandler("GET_MAX_CLIENTS", GetMaxClients);
     ScriptEngine::RegisterNativeHandler("ISSUE_SERVER_COMMAND", ServerCommand);
     ScriptEngine::RegisterNativeHandler("PRECACHE_MODEL", PrecacheModel);
     ScriptEngine::RegisterNativeHandler("PRECACHE_SOUND", PrecacheSound);
@@ -308,6 +330,7 @@ REGISTER_NATIVES(engine, {
     ScriptEngine::RegisterNativeHandler("TRACE_RAY", TraceRay);
     ScriptEngine::RegisterNativeHandler("GET_TICKED_TIME", GetTickedTime);
     ScriptEngine::RegisterNativeHandler("QUEUE_TASK_FOR_NEXT_FRAME", QueueTaskForNextFrame);
+    ScriptEngine::RegisterNativeHandler("QUEUE_TASK_FOR_NEXT_WORLD_UPDATE", QueueTaskForNextWorldUpdate);
     ScriptEngine::RegisterNativeHandler("GET_VALVE_INTERFACE", GetValveInterface);
     ScriptEngine::RegisterNativeHandler("GET_COMMAND_PARAM_VALUE", GetCommandParamValue);
     ScriptEngine::RegisterNativeHandler("PRINT_TO_SERVER_CONSOLE", PrintToServerConsole);

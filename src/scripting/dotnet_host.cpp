@@ -96,7 +96,7 @@ void* get_export(void* h, const char* name)
 // Using the nethost library, discover the location of hostfxr and get exports
 bool load_hostfxr()
 {
-    std::string base_dir = counterstrikesharp::utils::PluginDirectory();
+    std::string base_dir = counterstrikesharp::utils::GetRootDirectory();
     namespace css = counterstrikesharp;
 #if _WIN32
     std::wstring buffer =
@@ -164,7 +164,7 @@ CDotNetManager::~CDotNetManager() {}
 
 bool CDotNetManager::Initialize()
 {
-    const std::string base_dir = counterstrikesharp::utils::PluginDirectory();
+    const std::string base_dir = counterstrikesharp::utils::GetRootDirectory();
 
     CSSHARP_CORE_INFO("Loading .NET runtime...");
 
@@ -184,7 +184,7 @@ bool CDotNetManager::Initialize()
         std::string((base_dir + "/api/CounterStrikeSharp.API.runtimeconfig.json").c_str());
     CSSHARP_CORE_INFO("Loading CSS API, Runtime Config: {}", wide_str);
 #endif
-    
+
     const auto load_assembly_and_get_function_pointer = get_dotnet_load_assembly(wide_str.c_str());
     if (load_assembly_and_get_function_pointer == nullptr) {
         CSSHARP_CORE_ERROR("Failed to load CSS API.");
@@ -199,16 +199,16 @@ bool CDotNetManager::Initialize()
     const std::string dotnetlib_path =
         std::string((base_dir + "/api/CounterStrikeSharp.API.dll").c_str());
 #endif
-    const auto dotnet_type = STR("CounterStrikeSharp.API.Core.Helpers, CounterStrikeSharp.API");
+    const auto dotnet_type = STR("CounterStrikeSharp.API.Bootstrap, CounterStrikeSharp.API");
     // Namespace, assembly name
 
     typedef int(CORECLR_DELEGATE_CALLTYPE * custom_entry_point_fn)();
     custom_entry_point_fn entry_point = nullptr;
     const int rc = load_assembly_and_get_function_pointer(
-        dotnetlib_path.c_str(), dotnet_type, STR("LoadAllPlugins"), UNMANAGEDCALLERSONLY_METHOD,
+        dotnetlib_path.c_str(), dotnet_type, STR("Run"), UNMANAGEDCALLERSONLY_METHOD,
         nullptr, reinterpret_cast<void**>(&entry_point));
     if (entry_point == nullptr) {
-        CSSHARP_CORE_ERROR("Trying to get entry point \"LoadAllPlugins\" but failed.");
+        CSSHARP_CORE_ERROR("Trying to get entry point \"Bootstrap::Run\" but failed.");
         return false;
     }
 
@@ -216,7 +216,7 @@ bool CDotNetManager::Initialize()
            "Failure: load_assembly_and_get_function_pointer()");
 
     if (const int invoke_result_code = entry_point(); invoke_result_code == 0) {
-        CSSHARP_CORE_ERROR("LoadAllPlugins return failure.");
+        CSSHARP_CORE_ERROR("Bootstrap::Run return failure.");
         return false;
     }
 

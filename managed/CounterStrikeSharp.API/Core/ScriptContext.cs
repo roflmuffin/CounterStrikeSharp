@@ -67,13 +67,11 @@ namespace CounterStrikeSharp.API.Core
 
         public unsafe ScriptContext()
 		{
-            //Console.WriteLine("Global context address: " + (IntPtr)m_extContext);
 		}
 
         public unsafe ScriptContext(fxScriptContext* context)
         {
             m_extContext = *context;
-            //Console.WriteLine("Global context address: " + (IntPtr)m_extContext);
         }
 
 		private readonly ConcurrentQueue<Action> ms_finalizers = new ConcurrentQueue<Action>();
@@ -205,6 +203,16 @@ namespace CounterStrikeSharp.API.Core
 			{
 				Push(context, ia.Value);
 
+				return;
+			}
+			else if (arg is NativeObject nativeObject)
+			{
+				Push(context, (InputArgument)nativeObject);
+				return;
+			}
+			else if (arg is NativeEntity nativeValue)
+			{
+				Push(context, (InputArgument)nativeValue);
 				return;
 			}
 

@@ -125,6 +125,18 @@ namespace CounterStrikeSharp.API.Core
         {
             return new InputArgument(value);
         }
+        
+        [SecurityCritical]
+        public static implicit operator InputArgument(NativeObject value)
+        {
+            return new InputArgument(value.Handle);
+        }
+        
+        [SecurityCritical]
+        public static implicit operator InputArgument(NativeEntity value)
+        {
+            return new InputArgument(value.Handle);
+        }
 
         [SecurityCritical]
         public static unsafe implicit operator InputArgument(void* value)
