@@ -47,7 +47,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
         }
     }
 
-    public class ChatMenuInstance : BasePlugin
+    public class ChatMenuInstance
     {
         private readonly int _numPerPage = 6;
         private readonly Stack<int> _prevPageOffsets = new();
@@ -57,21 +57,17 @@ namespace CounterStrikeSharp.API.Modules.Menu
         int _page = 0;
         int _currentOffset = 0;
 
-        public ChatMenuInstance(CCSPlayerController player, ChatMenu menu)
+        public ChatMenuInstance(BasePlugin plugin, CCSPlayerController player, ChatMenu menu)
         {
             _menu = menu;
             _player = player;
 
-            RegisterListener<OnTick>(OnTick);
+            plugin.RegisterListener<OnTick>(OnTick);
         }
 
         private bool HasPrevButton => _page > 0;
         private bool HasNextButton => (_currentOffset + _numPerPage) < _menu.MenuOptions.Count;
         private int MenuItemsPerPage => _numPerPage + 2 - (HasNextButton ? 1 : 0) - (HasPrevButton ? 1 : 0);
-
-        public override string ModuleName => throw new NotImplementedException();
-
-        public override string ModuleVersion => throw new NotImplementedException();
 
         public void Display()
         {
@@ -296,9 +292,9 @@ namespace CounterStrikeSharp.API.Modules.Menu
     {
         private static readonly Dictionary<IntPtr, ChatMenuInstance> ActiveMenus = new();
 
-        public static void OpenMenu(CCSPlayerController player, ChatMenu menu)
+        public static void OpenMenu(BasePlugin plugin, CCSPlayerController player, ChatMenu menu)
         {
-            ActiveMenus[player.Handle] = new ChatMenuInstance(player, menu);
+            ActiveMenus[player.Handle] = new ChatMenuInstance(plugin, player, menu);
             ActiveMenus[player.Handle].Display();
         }
 
