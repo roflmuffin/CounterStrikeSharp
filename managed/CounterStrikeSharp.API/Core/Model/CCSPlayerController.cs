@@ -18,13 +18,7 @@ public partial class CCSPlayerController
         }
     }
     
-    public CsTeam Team
-    {
-        get
-        {
-            return (CsTeam)this.TeamNum;
-        }
-    }
+    public CsTeam Team => (CsTeam)this.TeamNum;
 
     public IntPtr GiveNamedItem(string item)
     {
