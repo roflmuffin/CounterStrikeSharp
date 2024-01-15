@@ -17,6 +17,8 @@ public partial class CCSPlayerController
             return NativeAPI.GetUseridFromIndex((int)this.Index);
         }
     }
+    
+    public CsTeam Team => (CsTeam)this.TeamNum;
 
     public IntPtr GiveNamedItem(string item)
     {
