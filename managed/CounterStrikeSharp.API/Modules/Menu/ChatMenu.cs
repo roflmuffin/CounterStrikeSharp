@@ -10,9 +10,9 @@ namespace CounterStrikeSharp.API.Modules.Menu
         }
     }
 
-    public class ChatMenuInstanceInstance: BaseMenuInstance
+    public class ChatMenuInstance: BaseMenuInstance
     {
-        public ChatMenuInstanceInstance(CCSPlayerController player, IMenu menu) : base(player, menu)
+        public ChatMenuInstance(CCSPlayerController player, ChatMenu menu) : base(player, menu)
         {
         }
 
@@ -53,11 +53,11 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
     public static class ChatMenus
     {
-        private static readonly Dictionary<IntPtr, ChatMenuInstanceInstance> ActiveMenus = new();
+        private static readonly Dictionary<IntPtr, ChatMenuInstance> ActiveMenus = new();
 
-        public static void OpenMenu(CCSPlayerController player, IMenu menu)
+        public static void OpenMenu(CCSPlayerController player, ChatMenu menu)
         {
-            ActiveMenus[player.Handle] = new ChatMenuInstanceInstance(player, menu);
+            ActiveMenus[player.Handle] = new ChatMenuInstance(player, menu);
             ActiveMenus[player.Handle].Display();
         }
 
