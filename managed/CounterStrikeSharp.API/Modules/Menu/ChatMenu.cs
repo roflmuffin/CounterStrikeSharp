@@ -27,7 +27,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
         }
     }
 
-    public class ChatMenu : IMenu
+    public class ChatMenu: IMenu
     {
         public string Title { get; set; }
         public List<IMenuOption> MenuOptions { get; } = new();
@@ -47,27 +47,15 @@ namespace CounterStrikeSharp.API.Modules.Menu
         }
     }
 
-    public class ChatMenuInstance: IMenuInstance
+    public class ChatMenuInstance: BaseMenu
     {
-        private readonly int _numPerPage = 6;
-        private readonly Stack<int> _prevPageOffsets = new();
-        private readonly ChatMenu _menu;
-        private CCSPlayerController? _player;
-
-        int _page = 0;
-        int _currentOffset = 0;
-
-        public ChatMenuInstance(BasePlugin plugin, CCSPlayerController player, ChatMenu menu)
+        public ChatMenuInstance(CCSPlayerController player, IMenu menu) : base(player, menu)
         {
-            _menu = menu;
-            _player = player;
-
-            plugin.RegisterListener<OnTick>(OnTick);
         }
 
-        private bool HasPrevButton => _page > 0;
-        private bool HasNextButton => (_currentOffset + _numPerPage) < _menu.MenuOptions.Count;
-        private int MenuItemsPerPage => _numPerPage + 2 - (HasNextButton ? 1 : 0) - (HasPrevButton ? 1 : 0);
+        private bool HasPrevButton => Page > 0;
+        private bool HasNextButton => (CurrentOffset + NumPerPage) < Menu.MenuOptions.Count;
+        private int MenuItemsPerPage => NumPerPage + 2 - (HasNextButton ? 1 : 0) - (HasPrevButton ? 1 : 0);
 
         public void Display()
         {
@@ -219,7 +207,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
         internal void OnKeyPress(CCSPlayerController player, int key)
         {
-            if (_player == null || player.Handle != _player.Handle) return;
+            if (Player == null || player.Handle != Player.Handle) return;
 
             if (key == 8 && HasNextButton)
             {
@@ -242,15 +230,15 @@ namespace CounterStrikeSharp.API.Modules.Menu
             var desiredValue = key;
             if (HasPrevButton) desiredValue = key - 1;
 
-            var menuItemIndex = _currentOffset + desiredValue - 1;
+            var menuItemIndex = CurrentOffset + desiredValue - 1;
 
-            if (menuItemIndex >= 0 && menuItemIndex < _menu.MenuOptions.Count)
+            if (menuItemIndex >= 0 && menuItemIndex < Menu.MenuOptions.Count)
             {
-                var menuOption = _menu.MenuOptions[menuItemIndex];
+                var menuOption = Menu.MenuOptions[menuItemIndex];
 
                 if (!menuOption.Disabled)
                 {
-                    menuOption.OnSelect(_player, menuOption);
+                    menuOption.OnSelect(Player, menuOption);
                     Reset();
                 }
             }
@@ -266,24 +254,24 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
         public void Reset()
         {
-            _currentOffset = 0;
-            _page = 0;
-            _prevPageOffsets.Clear();
-            _player = null;
+            CurrentOffset = 0;
+            Page = 0;
+            PrevPageOffsets.Clear();
+            Player = null;
         }
 
         public void NextPage()
         {
-            _prevPageOffsets.Push(_currentOffset);
-            _currentOffset += MenuItemsPerPage;
-            _page++;
+            PrevPageOffsets.Push(CurrentOffset);
+            CurrentOffset += MenuItemsPerPage;
+            Page++;
             Display();
         }
 
         public void PrevPage()
         {
-            _page--;
-            _currentOffset = _prevPageOffsets.Pop();
+            Page--;
+            CurrentOffset = PrevPageOffsets.Pop();
             Display();
         }
     }

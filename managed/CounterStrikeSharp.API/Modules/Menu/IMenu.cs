@@ -20,12 +20,12 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
     public interface IMenuInstance
     {
-        public IMenu Menu { get; }
-        public CCSPlayerController Player { get; }
-        public int Page { get; }
-        public int CurrentOffset { get; }
-        public int NumPerPage { get; }
-        public Stack<int> PrevPageOffsets { get; }
+        protected IMenu Menu { get; }
+        protected CCSPlayerController? Player { get; }
+        protected int Page { get; }
+        protected int CurrentOffset { get; }
+        protected int NumPerPage { get; }
+        protected Stack<int> PrevPageOffsets { get; }
         
         public void NextPage();
         public void PrevPage();
