@@ -1,4 +1,4 @@
-using CounterStrikeSharp.API.Modules.Utils;
+﻿using CounterStrikeSharp.API.Modules.Utils;
 using System.Collections.Generic;
 using System.Text;
 using static CounterStrikeSharp.API.Core.Listeners;
@@ -13,13 +13,13 @@ namespace CounterStrikeSharp.API.Modules.Menu
         Console
     }
 
-    public class ChatMenuOption
+    public class ChatMenuOption: IMenuOption
     {
-        public Action<CCSPlayerController, ChatMenuOption> OnSelect { get; set; }
+        public Action<CCSPlayerController, IMenuOption> OnSelect { get; set; }
         public string Text { get; set; }
         public bool Disabled { get; set; }
 
-        public ChatMenuOption(string text, bool disabled, Action<CCSPlayerController, ChatMenuOption> onSelect)
+        public ChatMenuOption(string text, bool disabled, Action<CCSPlayerController, IMenuOption> onSelect)
         {
             Text = text;
             Disabled = disabled;
@@ -27,10 +27,10 @@ namespace CounterStrikeSharp.API.Modules.Menu
         }
     }
 
-    public class ChatMenu
+    public class ChatMenu : IMenu
     {
         public string Title { get; set; }
-        public List<ChatMenuOption> MenuOptions { get; } = new();
+        public List<IMenuOption> MenuOptions { get; } = new();
         public DisplayMethod DisplayMethod { get; private set; }
 
         public ChatMenu(string title, DisplayMethod displayMethod)
@@ -39,7 +39,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
             DisplayMethod = displayMethod;
         }
 
-        public ChatMenuOption AddMenuOption(string display, Action<CCSPlayerController, ChatMenuOption> onSelect, bool disabled = false)
+        public IMenuOption AddMenuOption(string display, Action<CCSPlayerController, IMenuOption> onSelect, bool disabled = false)
         {
             var option = new ChatMenuOption(display, disabled, onSelect);
             MenuOptions.Add(option);
@@ -47,7 +47,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
         }
     }
 
-    public class ChatMenuInstance
+    public class ChatMenuInstance: IMenuInstance
     {
         private readonly int _numPerPage = 6;
         private readonly Stack<int> _prevPageOffsets = new();
