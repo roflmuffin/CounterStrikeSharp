@@ -3,45 +3,20 @@ using System.Collections.Generic;
 
 namespace CounterStrikeSharp.API.Modules.Menu
 {
-    public class ChatMenuOption: IMenuOption
+    public class ChatMenu: BaseMenu
     {
-        public Action<CCSPlayerController, IMenuOption> OnSelect { get; set; }
-        public string Text { get; set; }
-        public bool Disabled { get; set; }
-
-        public ChatMenuOption(string text, bool disabled, Action<CCSPlayerController, IMenuOption> onSelect)
+        public ChatMenu(string title) : base(title)
         {
-            Text = text;
-            Disabled = disabled;
-            OnSelect = onSelect;
         }
     }
 
-    public class ChatMenu: IMenu
+    public class ChatMenuInstanceInstance: BaseMenuInstance
     {
-        public string Title { get; set; }
-        public List<IMenuOption> MenuOptions { get; } = new();
-
-        public ChatMenu(string title)
-        {
-            Title = title;
-        }
-
-        public IMenuOption AddMenuOption(string display, Action<CCSPlayerController, IMenuOption> onSelect, bool disabled = false)
-        {
-            var option = new ChatMenuOption(display, disabled, onSelect);
-            MenuOptions.Add(option);
-            return option;
-        }
-    }
-
-    public class ChatMenuInstance: BaseMenu
-    {
-        public ChatMenuInstance(CCSPlayerController player, IMenu menu) : base(player, menu)
+        public ChatMenuInstanceInstance(CCSPlayerController player, IMenu menu) : base(player, menu)
         {
         }
 
-        private new void Display()
+        public override void Display()
         {
             if (Player == null)
             {
@@ -78,22 +53,19 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
     public static class ChatMenus
     {
-        private static readonly Dictionary<IntPtr, ChatMenuInstance> ActiveMenus = new();
+        private static readonly Dictionary<IntPtr, ChatMenuInstanceInstance> ActiveMenus = new();
 
         public static void OpenMenu(CCSPlayerController player, IMenu menu)
         {
-            ActiveMenus[player.Handle] = new ChatMenuInstance(player, menu);
+            ActiveMenus[player.Handle] = new ChatMenuInstanceInstance(player, menu);
             ActiveMenus[player.Handle].Display();
         }
 
         public static void OnKeyPress(CCSPlayerController player, int key)
         {
-            if (!ActiveMenus.TryGetValue(player.Handle, out var value))
-            {
-                return;
-            }
-            
-            value.OnKeyPress(player, key);
+            if (!ActiveMenus.ContainsKey(player.Handle)) return;
+
+            ActiveMenus[player.Handle].OnKeyPress(player, key);
         }
     }
 }

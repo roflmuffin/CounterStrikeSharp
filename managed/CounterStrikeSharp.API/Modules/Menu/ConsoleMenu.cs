@@ -2,50 +2,25 @@
 
 namespace CounterStrikeSharp.API.Modules.Menu
 {
-    public class ConsoleMenuOption: IMenuOption
+    public class ConsoleMenu: BaseMenu
     {
-        public Action<CCSPlayerController, IMenuOption> OnSelect { get; set; }
-        public string Text { get; set; }
-        public bool Disabled { get; set; }
-
-        public ConsoleMenuOption(string text, bool disabled, Action<CCSPlayerController, IMenuOption> onSelect)
+        public ConsoleMenu(string title) : base(title)
         {
-            Text = text;
-            Disabled = disabled;
-            OnSelect = onSelect;
         }
     }
 
-    public class ConsoleMenu: IMenu
+    public class ConsoleMenuInstanceInstance: BaseMenuInstance
     {
-        public string Title { get; set; }
-        public List<IMenuOption> MenuOptions { get; } = new();
-
-        public ConsoleMenu(string title)
-        {
-            Title = title;
-        }
-
-        public IMenuOption AddMenuOption(string display, Action<CCSPlayerController, IMenuOption> onSelect, bool disabled = false)
-        {
-            var option = new ConsoleMenuOption(display, disabled, onSelect);
-            MenuOptions.Add(option);
-            return option;
-        }
-    }
-
-    public class ConsoleMenuInstance: BaseMenu
-    {
-        public ConsoleMenuInstance(CCSPlayerController player, IMenu menu) : base(player, menu)
+        public ConsoleMenuInstanceInstance(CCSPlayerController player, IMenu menu) : base(player, menu)
         {
         }
 
-        private new void Display()
+        public override void Display()
         {
             Player?.PrintToConsole(Menu.Title);
             Player?.PrintToConsole("---");
 
-            int keyOffset = 1;
+            var keyOffset = 1;
 
             if (HasPrevButton)
             {
@@ -53,7 +28,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
                 keyOffset++;
             }
 
-            for (int i = CurrentOffset;
+            for (var i = CurrentOffset;
                  i < Math.Min(CurrentOffset + MenuItemsPerPage, Menu.MenuOptions.Count);
                  i++)
             {
@@ -72,11 +47,11 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
     public static class ConsoleMenus
     {
-        private static readonly Dictionary<IntPtr, ConsoleMenuInstance> ActiveMenus = new();
+        private static readonly Dictionary<IntPtr, ConsoleMenuInstanceInstance> ActiveMenus = new();
 
         public static void OpenMenu(CCSPlayerController player, ConsoleMenu menu)
         {
-            ActiveMenus[player.Handle] = new ConsoleMenuInstance(player, menu);
+            ActiveMenus[player.Handle] = new ConsoleMenuInstanceInstance(player, menu);
             ActiveMenus[player.Handle].Display();
         }
 

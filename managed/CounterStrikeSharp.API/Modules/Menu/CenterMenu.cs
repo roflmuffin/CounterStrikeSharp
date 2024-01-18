@@ -3,45 +3,20 @@ using System.Text;
 
 namespace CounterStrikeSharp.API.Modules.Menu
 {
-    public class CenterMenuOption: IMenuOption
+    public class CenterMenu: BaseMenu
     {
-        public Action<CCSPlayerController, IMenuOption> OnSelect { get; set; }
-        public string Text { get; set; }
-        public bool Disabled { get; set; }
-
-        public CenterMenuOption(string text, bool disabled, Action<CCSPlayerController, IMenuOption> onSelect)
+        public CenterMenu(string title) : base(title)
         {
-            Text = text;
-            Disabled = disabled;
-            OnSelect = onSelect;
         }
     }
 
-    public class CenterMenu: IMenu
+    public class CenterMenuInstanceInstance: BaseMenuInstance
     {
-        public string Title { get; set; }
-        public List<IMenuOption> MenuOptions { get; } = new();
-
-        public CenterMenu(string title)
-        {
-            Title = title;
-        }
-
-        public IMenuOption AddMenuOption(string display, Action<CCSPlayerController, IMenuOption> onSelect, bool disabled = false)
-        {
-            var option = new CenterMenuOption(display, disabled, onSelect);
-            MenuOptions.Add(option);
-            return option;
-        }
-    }
-
-    public class CenterMenuInstance: BaseMenu
-    {
-        public CenterMenuInstance(CCSPlayerController player, IMenu menu) : base(player, menu)
+        public CenterMenuInstanceInstance(CCSPlayerController player, IMenu menu) : base(player, menu)
         {
         }
 
-        private new void Display()
+        public override void Display()
         {
             var builder = new StringBuilder();
             builder.Append($"{Menu.Title}");
@@ -79,11 +54,11 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
     public static class CenterMenus
     {
-        private static readonly Dictionary<IntPtr, CenterMenuInstance> ActiveMenus = new();
+        private static readonly Dictionary<IntPtr, CenterMenuInstanceInstance> ActiveMenus = new();
 
         public static void OpenMenu(CCSPlayerController player, CenterMenu menu)
         {
-            ActiveMenus[player.Handle] = new CenterMenuInstance(player, menu);
+            ActiveMenus[player.Handle] = new CenterMenuInstanceInstance(player, menu);
             ActiveMenus[player.Handle].Display();
         }
 

@@ -345,6 +345,8 @@ namespace TestPlugin
             {
                 player.GiveNamedItem(option.Text);
             };
+            
+            giveItemMenu.AddMenuOption("test", (controller, option) => controller.PrintToChat($"selected: {option.Text}"), true);
 
             giveItemMenu.AddMenuOption("weapon_ak47", handleGive);
             giveItemMenu.AddMenuOption("weapon_p250", handleGive);

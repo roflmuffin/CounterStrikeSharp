@@ -3,46 +3,21 @@ using System.Text;
 
 namespace CounterStrikeSharp.API.Modules.Menu
 {
-    public class CenterHtmlMenuOption: IMenuOption
+    public class CenterHtmlMenu: BaseMenu
     {
-        public Action<CCSPlayerController, IMenuOption> OnSelect { get; set; }
-        public string Text { get; set; }
-        public bool Disabled { get; set; }
-
-        public CenterHtmlMenuOption(string text, bool disabled, Action<CCSPlayerController, IMenuOption> onSelect)
+        public CenterHtmlMenu(string title) : base(title)
         {
-            Text = text;
-            Disabled = disabled;
-            OnSelect = onSelect;
         }
     }
 
-    public class CenterHtmlMenu: IMenu
+    public class CenterHtmlMenuInstanceInstance: BaseMenuInstance
     {
-        public string Title { get; set; }
-        public List<IMenuOption> MenuOptions { get; } = new();
-
-        public CenterHtmlMenu(string title)
-        {
-            Title = title;
-        }
-
-        public IMenuOption AddMenuOption(string display, Action<CCSPlayerController, IMenuOption> onSelect, bool disabled = false)
-        {
-            var option = new CenterHtmlMenuOption(display, disabled, onSelect);
-            MenuOptions.Add(option);
-            return option;
-        }
-    }
-
-    public class CenterHtmlMenuInstance: BaseMenu
-    {
-        public CenterHtmlMenuInstance(BasePlugin plugin, CCSPlayerController player, IMenu menu) : base(player, menu)
+        public CenterHtmlMenuInstanceInstance(BasePlugin plugin, CCSPlayerController player, IMenu menu) : base(player, menu)
         {
             plugin.RegisterListener<Core.Listeners.OnTick>(Display);
         }
         
-        private new void Display()
+        public override void Display()
         {
             var builder = new StringBuilder();
             builder.AppendFormat("<b><font color='yellow'>{0}</font></b>", Menu.Title);
@@ -80,11 +55,11 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
     public static class CenterHtmlMenus
     {
-        private static readonly Dictionary<IntPtr, CenterHtmlMenuInstance> ActiveMenus = new();
+        private static readonly Dictionary<IntPtr, CenterHtmlMenuInstanceInstance> ActiveMenus = new();
 
         public static void OpenMenu(BasePlugin plugin, CCSPlayerController player, CenterHtmlMenu menu)
         {
-            ActiveMenus[player.Handle] = new CenterHtmlMenuInstance(plugin, player, menu);
+            ActiveMenus[player.Handle] = new CenterHtmlMenuInstanceInstance(plugin, player, menu);
             ActiveMenus[player.Handle].Display();
         }
 
