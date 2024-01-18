@@ -1,18 +1,9 @@
 ﻿using CounterStrikeSharp.API.Modules.Utils;
 using System.Collections.Generic;
 using System.Text;
-using static CounterStrikeSharp.API.Core.Listeners;
 
 namespace CounterStrikeSharp.API.Modules.Menu
 {
-    public enum DisplayMethod
-    {
-        Chat,
-        CenterHtml,
-        Center,
-        Console
-    }
-
     public class ChatMenuOption: IMenuOption
     {
         public Action<CCSPlayerController, IMenuOption> OnSelect { get; set; }
@@ -31,12 +22,10 @@ namespace CounterStrikeSharp.API.Modules.Menu
     {
         public string Title { get; set; }
         public List<IMenuOption> MenuOptions { get; } = new();
-        public DisplayMethod DisplayMethod { get; private set; }
 
-        public ChatMenu(string title, DisplayMethod displayMethod)
+        public ChatMenu(string title)
         {
             Title = title;
-            DisplayMethod = displayMethod;
         }
 
         public IMenuOption AddMenuOption(string display, Action<CCSPlayerController, IMenuOption> onSelect, bool disabled = false)
@@ -57,7 +46,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
         private bool HasNextButton => (CurrentOffset + NumPerPage) < Menu.MenuOptions.Count;
         private int MenuItemsPerPage => NumPerPage + 2 - (HasNextButton ? 1 : 0) - (HasPrevButton ? 1 : 0);
 
-        public void Display()
+        public new void Display()
         {
             if (_menu.DisplayMethod == DisplayMethod.Chat)
             {
@@ -205,74 +194,12 @@ namespace CounterStrikeSharp.API.Modules.Menu
             }
         }
 
-        internal void OnKeyPress(CCSPlayerController player, int key)
-        {
-            if (Player == null || player.Handle != Player.Handle) return;
-
-            if (key == 8 && HasNextButton)
-            {
-                NextPage();
-                return;
-            }
-
-            if (key == 1 && HasPrevButton)
-            {
-                PrevPage();
-                return;
-            }
-
-            if (key == 9)
-            {
-                Reset();
-                return;
-            }
-
-            var desiredValue = key;
-            if (HasPrevButton) desiredValue = key - 1;
-
-            var menuItemIndex = CurrentOffset + desiredValue - 1;
-
-            if (menuItemIndex >= 0 && menuItemIndex < Menu.MenuOptions.Count)
-            {
-                var menuOption = Menu.MenuOptions[menuItemIndex];
-
-                if (!menuOption.Disabled)
-                {
-                    menuOption.OnSelect(Player, menuOption);
-                    Reset();
-                }
-            }
-        }
-
         private void OnTick()
         {
             if (_menu.DisplayMethod == DisplayMethod.CenterHtml)
             {
                 Display();
             }
-        }
-
-        public void Reset()
-        {
-            CurrentOffset = 0;
-            Page = 0;
-            PrevPageOffsets.Clear();
-            Player = null;
-        }
-
-        public void NextPage()
-        {
-            PrevPageOffsets.Push(CurrentOffset);
-            CurrentOffset += MenuItemsPerPage;
-            Page++;
-            Display();
-        }
-
-        public void PrevPage()
-        {
-            Page--;
-            CurrentOffset = PrevPageOffsets.Pop();
-            Display();
         }
     }
 
