@@ -9,9 +9,6 @@ public abstract class BaseMenu: IMenuInstance
     public IMenu Menu { get; }
     public CCSPlayerController? Player { get; private set; }
 
-
-    private readonly Stack<int> _prevPageOffsets = new();
-
     public int Page { get; set; }
     public int CurrentOffset { get; set; }
 
