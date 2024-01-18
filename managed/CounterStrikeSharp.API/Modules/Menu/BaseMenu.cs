@@ -21,9 +21,9 @@ public abstract class BaseMenu: IMenuInstance
         Player = player;
     }
 
-    private bool HasPrevButton => Page > 0;
-    private bool HasNextButton => CurrentOffset + NumPerPage < Menu.MenuOptions.Count;
-    private int MenuItemsPerPage => NumPerPage + 2 - (HasNextButton ? 1 : 0) - (HasPrevButton ? 1 : 0);
+    protected bool HasPrevButton => Page > 0;
+    protected bool HasNextButton => CurrentOffset + NumPerPage < Menu.MenuOptions.Count;
+    protected int MenuItemsPerPage => NumPerPage + 2 - (HasNextButton ? 1 : 0) - (HasPrevButton ? 1 : 0);
 
     public void Display()
     {

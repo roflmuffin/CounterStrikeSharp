@@ -40,10 +40,6 @@ namespace CounterStrikeSharp.API.Modules.Menu
         {
         }
 
-        private bool HasPrevButton => Page > 0;
-        private bool HasNextButton => (CurrentOffset + NumPerPage) < Menu.MenuOptions.Count;
-        private int MenuItemsPerPage => NumPerPage + 2 - (HasNextButton ? 1 : 0) - (HasPrevButton ? 1 : 0);
-
         private new void Display()
         {
             Player?.PrintToConsole(Menu.Title);

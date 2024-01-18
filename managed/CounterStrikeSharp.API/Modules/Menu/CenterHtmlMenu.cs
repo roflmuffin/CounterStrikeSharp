@@ -41,18 +41,14 @@ namespace CounterStrikeSharp.API.Modules.Menu
         {
             plugin.RegisterListener<Core.Listeners.OnTick>(Display);
         }
-
-        private bool HasPrevButton => Page > 0;
-        private bool HasNextButton => (CurrentOffset + NumPerPage) < Menu.MenuOptions.Count;
-        private int MenuItemsPerPage => NumPerPage + 2 - (HasNextButton ? 1 : 0) - (HasPrevButton ? 1 : 0);
         
         private new void Display()
         {
-            StringBuilder builder = new StringBuilder();
+            var builder = new StringBuilder();
             builder.AppendFormat("<b><font color='yellow'>{0}</font></b>", Menu.Title);
             builder.AppendLine("<br>");
 
-            int keyOffset = 1;
+            var keyOffset = 1;
 
             if (HasPrevButton)
             {
