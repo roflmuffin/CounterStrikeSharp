@@ -15,13 +15,18 @@
  */
 
 using System.Text;
+using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Modules.Menu
 {
     public class CenterHtmlMenu : BaseMenu
     {
-        public CenterHtmlMenu(string title) : base(title)
+        public CenterHtmlMenu(string title) : base(title[..32])
         {
+            if (title.Length > 32)
+            {
+                Application.Instance.Logger.LogWarning("Title should not be longer than 32 characters for a CenterHtmlMenu");
+            }
         }
     }
 
