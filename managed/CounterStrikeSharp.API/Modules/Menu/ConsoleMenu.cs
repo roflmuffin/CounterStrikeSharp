@@ -1,13 +1,13 @@
 ﻿namespace CounterStrikeSharp.API.Modules.Menu
 {
-    public class ConsoleMenu: BaseMenu
+    public class ConsoleMenu : BaseMenu
     {
         public ConsoleMenu(string title) : base(title)
         {
         }
     }
 
-    public class ConsoleMenuInstance: BaseMenuInstance
+    public class ConsoleMenuInstance : BaseMenuInstance
     {
         public ConsoleMenuInstance(CCSPlayerController player, IMenu menu) : base(player, menu)
         {

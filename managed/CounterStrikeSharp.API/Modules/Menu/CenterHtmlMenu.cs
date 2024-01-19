@@ -27,7 +27,6 @@ namespace CounterStrikeSharp.API.Modules.Menu
                 || MenuManager.ActiveCenterHtmlMenus[Player.Handle] != this
             )
             {
-                Console.WriteLine("Display function called but this menu is not active!");
                 Reset();
                 return;
             }
