@@ -21,6 +21,16 @@ namespace CounterStrikeSharp.API.Modules.Menu
         
         public override void Display()
         {
+            if (
+                !MenuManager.ActiveCenterHtmlMenus.ContainsKey(Player.Handle)
+                || MenuManager.ActiveCenterHtmlMenus[Player.Handle] != this
+            )
+            {
+                Console.WriteLine("Display function called but this menu is not active!");
+                Reset();
+                return;
+            }
+            
             var builder = new StringBuilder();
             builder.Append($"<b><font color='yellow'>{Menu.Title}</font></b>");
             builder.AppendLine("<br>");
@@ -56,8 +66,10 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
         public override void Reset()
         {
-            base.Reset();
-            _plugin.RemoveListener("OnTick", Display);
+            base.Reset(); 
+            var onTick = new Core.Listeners.OnTick(Display);
+            _plugin.RemoveListener("OnTick", onTick);
+            
             MenuManager.ActiveCenterHtmlMenus.Remove(Player.Handle);
         }
     }

@@ -29,11 +29,6 @@ public static class MenuManager
             Console.WriteLine("active console menu found, calling consoleMenu.Reset()");
             consoleMenu.Reset();
         }
-        
-        // Console.WriteLine("Removing player.Handle from all ActiveMenu dictionaries");
-        // ActiveChatMenus.Remove(player.Handle);
-        // ActiveCenterHtmlMenus.Remove(player.Handle);
-        // ActiveConsoleMenus.Remove(player.Handle);
     }
     
     public static void OpenChatMenu(CCSPlayerController player, ChatMenu menu)
