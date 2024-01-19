@@ -40,7 +40,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
         public int NumPerPage => 6;
         public Stack<int> PrevPageOffsets { get; } = new();
         public IMenu Menu { get; }
-        public CCSPlayerController? Player { get; private set; }
+        public CCSPlayerController Player { get; }
 
         public int Page { get; set; }
         public int CurrentOffset { get; set; }
@@ -62,7 +62,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
     
         internal void OnKeyPress(CCSPlayerController player, int key)
         {
-            if (Player == null || player.Handle != Player.Handle) return;
+            if (player.Handle != Player.Handle) return;
 
             if (key == 8 && HasNextButton)
             {
@@ -104,7 +104,6 @@ namespace CounterStrikeSharp.API.Modules.Menu
             CurrentOffset = 0;
             Page = 0;
             PrevPageOffsets.Clear();
-            Player = null;
         }
 
         public void NextPage()

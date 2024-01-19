@@ -1,5 +1,4 @@
 ﻿using CounterStrikeSharp.API.Modules.Utils;
-using System.Collections.Generic;
 
 namespace CounterStrikeSharp.API.Modules.Menu
 {
@@ -18,11 +17,6 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
         public override void Display()
         {
-            if (Player == null)
-            {
-                return;
-            }
-            
             Player.PrintToChat(Menu.Title);
             Player.PrintToChat("---");
 
@@ -49,6 +43,12 @@ namespace CounterStrikeSharp.API.Modules.Menu
                 Player.PrintToChat($" {ChatColors.Yellow}!8 {ChatColors.Default}-> Next");
             }
         }
+        
+        public override void Reset()
+        {
+            base.Reset();
+            MenuManager.ActiveChatMenus.Remove(Player.Handle);
+        }
     }
 
     public static class ChatMenus
@@ -60,7 +60,6 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
         public static void OnKeyPress(CCSPlayerController player, int key)
         {
-            
             if (!MenuManager.ActiveChatMenus.ContainsKey(player.Handle)) return;
 
             MenuManager.ActiveChatMenus[player.Handle].OnKeyPress(player, key);

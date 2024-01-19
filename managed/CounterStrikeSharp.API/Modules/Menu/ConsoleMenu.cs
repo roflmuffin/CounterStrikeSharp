@@ -43,6 +43,12 @@ namespace CounterStrikeSharp.API.Modules.Menu
                 Player?.PrintToConsole($"!8 -> Next");
             }
         }
+        
+        public override void Reset()
+        {
+            base.Reset();
+            MenuManager.ActiveConsoleMenus.Remove(Player.Handle);
+        }
     }
 
     public static class ConsoleMenus

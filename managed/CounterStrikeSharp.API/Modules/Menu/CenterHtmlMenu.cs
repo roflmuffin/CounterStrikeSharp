@@ -59,6 +59,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
         {
             base.Reset();
             _plugin.RemoveListener("OnTick", Display);
+            MenuManager.ActiveCenterHtmlMenus.Remove(Player.Handle);
         }
     }
 
