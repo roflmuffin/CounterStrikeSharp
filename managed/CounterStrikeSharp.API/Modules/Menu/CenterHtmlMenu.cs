@@ -10,11 +10,11 @@ namespace CounterStrikeSharp.API.Modules.Menu
         }
     }
 
-    public class CenterHtmlMenuInstanceInstance: BaseMenuInstance
+    public class CenterHtmlMenuInstance: BaseMenuInstance
     {
         private readonly BasePlugin _plugin;
 
-        public CenterHtmlMenuInstanceInstance(BasePlugin plugin, CCSPlayerController player, IMenu menu) : base(player, menu)
+        public CenterHtmlMenuInstance(BasePlugin plugin, CCSPlayerController player, IMenu menu) : base(player, menu)
         {
             _plugin = plugin;
             plugin.RegisterListener<Core.Listeners.OnTick>(Display);
@@ -64,19 +64,16 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
     public static class CenterHtmlMenus
     {
-        private static readonly Dictionary<IntPtr, CenterHtmlMenuInstanceInstance> ActiveMenus = new();
-
         public static void OpenMenu(BasePlugin plugin, CCSPlayerController player, CenterHtmlMenu menu)
         {
-            ActiveMenus[player.Handle] = new CenterHtmlMenuInstanceInstance(plugin, player, menu);
-            ActiveMenus[player.Handle].Display();
+            MenuManager.OpenCenterHtmlMenu(plugin, player, menu);
         }
 
         public static void OnKeyPress(CCSPlayerController player, int key)
         {
-            if (!ActiveMenus.ContainsKey(player.Handle)) return;
+            if (!MenuManager.ActiveCenterHtmlMenus.ContainsKey(player.Handle)) return;
 
-            ActiveMenus[player.Handle].OnKeyPress(player, key);
+            MenuManager.ActiveCenterHtmlMenus[player.Handle].OnKeyPress(player, key);
         }
     }
 }

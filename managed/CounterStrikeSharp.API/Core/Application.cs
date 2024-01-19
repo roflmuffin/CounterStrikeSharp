@@ -90,9 +90,7 @@ namespace CounterStrikeSharp.API.Core
                     if (player == null) return;
                     var key = Convert.ToInt32(info.GetArg(0).Split("_")[1]);
                     
-                    ChatMenus.OnKeyPress(player, key);
-                    CenterHtmlMenus.OnKeyPress(player, key);
-                    ConsoleMenus.OnKeyPress(player, key);
+                    MenuManager.OnKeyPress(player, key);
                 });
             }
 

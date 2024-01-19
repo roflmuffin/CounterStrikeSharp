@@ -53,19 +53,17 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
     public static class ChatMenus
     {
-        private static readonly Dictionary<IntPtr, ChatMenuInstance> ActiveMenus = new();
-
         public static void OpenMenu(CCSPlayerController player, ChatMenu menu)
         {
-            ActiveMenus[player.Handle] = new ChatMenuInstance(player, menu);
-            ActiveMenus[player.Handle].Display();
+            MenuManager.OpenChatMenu(player, menu);
         }
 
         public static void OnKeyPress(CCSPlayerController player, int key)
         {
-            if (!ActiveMenus.ContainsKey(player.Handle)) return;
+            
+            if (!MenuManager.ActiveChatMenus.ContainsKey(player.Handle)) return;
 
-            ActiveMenus[player.Handle].OnKeyPress(player, key);
+            MenuManager.ActiveChatMenus[player.Handle].OnKeyPress(player, key);
         }
     }
 }

@@ -9,9 +9,9 @@ namespace CounterStrikeSharp.API.Modules.Menu
         }
     }
 
-    public class ConsoleMenuInstanceInstance: BaseMenuInstance
+    public class ConsoleMenuInstance: BaseMenuInstance
     {
-        public ConsoleMenuInstanceInstance(CCSPlayerController player, IMenu menu) : base(player, menu)
+        public ConsoleMenuInstance(CCSPlayerController player, IMenu menu) : base(player, menu)
         {
         }
 
@@ -47,19 +47,16 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
     public static class ConsoleMenus
     {
-        private static readonly Dictionary<IntPtr, ConsoleMenuInstanceInstance> ActiveMenus = new();
-
         public static void OpenMenu(CCSPlayerController player, ConsoleMenu menu)
         {
-            ActiveMenus[player.Handle] = new ConsoleMenuInstanceInstance(player, menu);
-            ActiveMenus[player.Handle].Display();
+            MenuManager.OpenConsoleMenu(player, menu);
         }
 
         public static void OnKeyPress(CCSPlayerController player, int key)
         {
-            if (!ActiveMenus.ContainsKey(player.Handle)) return;
+            if (!MenuManager.ActiveConsoleMenus.ContainsKey(player.Handle)) return;
 
-            ActiveMenus[player.Handle].OnKeyPress(player, key);
+            MenuManager.ActiveConsoleMenus[player.Handle].OnKeyPress(player, key);
         }
     }
 }
