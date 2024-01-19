@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 
 namespace CounterStrikeSharp.API.Modules.Menu
 {
@@ -52,7 +51,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
             builder.AppendLine("<br>");
 
             var currentPageText = builder.ToString();
-            Player?.PrintToCenterHtml(currentPageText);
+            Player.PrintToCenterHtml(currentPageText);
         }
 
         public override void Reset()
@@ -68,6 +67,11 @@ namespace CounterStrikeSharp.API.Modules.Menu
         public static void OpenMenu(BasePlugin plugin, CCSPlayerController player, CenterHtmlMenu menu)
         {
             MenuManager.OpenCenterHtmlMenu(plugin, player, menu);
+
+            if (!MenuManager.ActiveCenterHtmlMenus.ContainsKey(player.Handle))
+            {
+                Console.WriteLine($"ActiveCenterHtmlMenus does not contain key [{player.Handle}]!");
+            }
         }
 
         public static void OnKeyPress(CCSPlayerController player, int key)

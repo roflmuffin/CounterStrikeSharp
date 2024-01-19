@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace CounterStrikeSharp.API.Modules.Menu
+﻿namespace CounterStrikeSharp.API.Modules.Menu
 {
     public class ConsoleMenu: BaseMenu
     {
@@ -17,14 +15,14 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
         public override void Display()
         {
-            Player?.PrintToConsole(Menu.Title);
-            Player?.PrintToConsole("---");
+            Player.PrintToConsole(Menu.Title);
+            Player.PrintToConsole("---");
 
             var keyOffset = 1;
 
             if (HasPrevButton)
             {
-                Player?.PrintToConsole($"!1 -> Prev");
+                Player.PrintToConsole($"!1 -> Prev");
                 keyOffset++;
             }
 
@@ -34,13 +32,13 @@ namespace CounterStrikeSharp.API.Modules.Menu
             {
                 var option = Menu.MenuOptions[i];
 
-                Player?.PrintToConsole(
+                Player.PrintToConsole(
                     $" {(option.Disabled ? "[Enabled]" : "[Disabled] - ")} !{keyOffset++} {option.Text}");
             }
 
             if (HasNextButton)
             {
-                Player?.PrintToConsole($"!8 -> Next");
+                Player.PrintToConsole($"!8 -> Next");
             }
         }
         
