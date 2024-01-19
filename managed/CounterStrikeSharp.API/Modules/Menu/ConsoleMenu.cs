@@ -41,26 +41,5 @@
                 Player.PrintToConsole($"!8 -> Next");
             }
         }
-        
-        public override void Reset()
-        {
-            base.Reset();
-            MenuManager.ActiveConsoleMenus.Remove(Player.Handle);
-        }
-    }
-
-    public static class ConsoleMenus
-    {
-        public static void OpenMenu(CCSPlayerController player, ConsoleMenu menu)
-        {
-            MenuManager.OpenConsoleMenu(player, menu);
-        }
-
-        public static void OnKeyPress(CCSPlayerController player, int key)
-        {
-            if (!MenuManager.ActiveConsoleMenus.ContainsKey(player.Handle)) return;
-
-            MenuManager.ActiveConsoleMenus[player.Handle].OnKeyPress(player, key);
-        }
     }
 }

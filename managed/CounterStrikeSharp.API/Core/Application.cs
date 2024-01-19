@@ -252,16 +252,6 @@ namespace CounterStrikeSharp.API.Core
             }
         }
 
-        [CommandHelper(whoCanExecute: CommandUsage.CLIENT_ONLY)]
-        private void OnActiveMenusCommand(CCSPlayerController? player, CommandInfo command)
-        {
-            if (player == null) return;
-            
-            Console.WriteLine("Has active ChatMenu instance:" + MenuManager.ActiveChatMenus.ContainsKey(player.Handle));
-            Console.WriteLine("Has active CenterHtmlMenu instances:" + MenuManager.ActiveCenterHtmlMenus.ContainsKey(player.Handle));
-            Console.WriteLine("Has active ConsoleMenu instances:" + MenuManager.ActiveConsoleMenus.ContainsKey(player.Handle));
-        }
-
         [CommandHelper(usage: "[language code, e.g. \"de\", \"pl\", \"en\"]", whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
         private void OnLangCommand(CCSPlayerController? player, CommandInfo command)
         {
@@ -300,7 +290,6 @@ namespace CounterStrikeSharp.API.Core
             CommandUtils.AddStandaloneCommand("css_plugins", "Counter-Strike Sharp plugin options.",
                 OnCSSPluginCommand);
             CommandUtils.AddStandaloneCommand("css_lang", "Set Counter-Strike Sharp language.", OnLangCommand);
-            CommandUtils.AddStandaloneCommand("css_activemenus", "Gets the active menus.", OnActiveMenusCommand);
         }
     }
 }

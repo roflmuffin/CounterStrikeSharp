@@ -16,6 +16,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
         public CenterHtmlMenuInstance(BasePlugin plugin, CCSPlayerController player, IMenu menu) : base(player, menu)
         {
             _plugin = plugin;
+            RemoveOnTickListener();
             plugin.RegisterListener<Core.Listeners.OnTick>(Display);
         }
         
@@ -66,31 +67,14 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
         public override void Reset()
         {
-            base.Reset(); 
+            base.Reset();
+            RemoveOnTickListener();
+        }
+
+        private void RemoveOnTickListener()
+        {
             var onTick = new Core.Listeners.OnTick(Display);
             _plugin.RemoveListener("OnTick", onTick);
-            
-            MenuManager.ActiveCenterHtmlMenus.Remove(Player.Handle);
-        }
-    }
-
-    public static class CenterHtmlMenus
-    {
-        public static void OpenMenu(BasePlugin plugin, CCSPlayerController player, CenterHtmlMenu menu)
-        {
-            MenuManager.OpenCenterHtmlMenu(plugin, player, menu);
-
-            if (!MenuManager.ActiveCenterHtmlMenus.ContainsKey(player.Handle))
-            {
-                Console.WriteLine($"ActiveCenterHtmlMenus does not contain key [{player.Handle}]!");
-            }
-        }
-
-        public static void OnKeyPress(CCSPlayerController player, int key)
-        {
-            if (!MenuManager.ActiveCenterHtmlMenus.ContainsKey(player.Handle)) return;
-
-            MenuManager.ActiveCenterHtmlMenus[player.Handle].OnKeyPress(player, key);
         }
     }
 }

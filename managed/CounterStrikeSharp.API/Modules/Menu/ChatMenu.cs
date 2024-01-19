@@ -43,21 +43,17 @@ namespace CounterStrikeSharp.API.Modules.Menu
                 Player.PrintToChat($" {ChatColors.Yellow}!8 {ChatColors.Default}-> Next");
             }
         }
-        
-        public override void Reset()
-        {
-            base.Reset();
-            MenuManager.ActiveChatMenus.Remove(Player.Handle);
-        }
     }
-
+    
     public static class ChatMenus
     {
+        [Obsolete("Use MenuManager.OpenChatMenu instead")]
         public static void OpenMenu(CCSPlayerController player, ChatMenu menu)
         {
             MenuManager.OpenChatMenu(player, menu);
         }
 
+        [Obsolete("Use MenuManager.OnKeyPress instead")]
         public static void OnKeyPress(CCSPlayerController player, int key)
         {
             if (!MenuManager.ActiveChatMenus.ContainsKey(player.Handle)) return;
