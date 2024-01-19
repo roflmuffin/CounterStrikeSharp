@@ -23,14 +23,14 @@ namespace CounterStrikeSharp.API.Modules.Menu
         public override void Display()
         {
             var builder = new StringBuilder();
-            builder.AppendFormat("<b><font color='yellow'>{0}</font></b>", Menu.Title);
+            builder.Append($"<b><font color='yellow'>{Menu.Title}</font></b>");
             builder.AppendLine("<br>");
 
             var keyOffset = 1;
 
             if (HasPrevButton)
             {
-                builder.AppendFormat("<font color='yellow'>!1 -> Prev</font>");
+                builder.AppendFormat("<font color='green'>!1</font> -> Prev");
                 builder.AppendLine("<br>");
                 keyOffset++;
             }
@@ -38,17 +38,17 @@ namespace CounterStrikeSharp.API.Modules.Menu
             for (var i = CurrentOffset; i < Math.Min(CurrentOffset + MenuItemsPerPage, Menu.MenuOptions.Count); i++)
             {
                 var option = Menu.MenuOptions[i];
-                builder.AppendFormat("<font color='red'>!{0}</font> {1}", keyOffset++, option.Text);
+                builder.Append($"<font color='green'>!{keyOffset++}</font> {option.Text}");
                 builder.AppendLine("<br>");
             }
 
             if (HasNextButton)
             {
-                builder.AppendFormat("<font color='yellow'>!8 -> Next</font>");
+                builder.AppendFormat("<font color='yellow'>!8</font> -> Next");
                 builder.AppendLine("<br>");
             }
 
-            builder.AppendFormat("<font color='red'>!9 -> Close</font>");
+            builder.AppendFormat("<font color='red'>!9</font> -> Close");
             builder.AppendLine("<br>");
 
             var currentPageText = builder.ToString();
