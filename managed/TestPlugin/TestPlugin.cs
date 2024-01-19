@@ -247,11 +247,13 @@ namespace TestPlugin
                 // Set player to random colour
                 player.PlayerPawn.Value.Render = Color.FromArgb(Random.Shared.Next(0, 255),
                     Random.Shared.Next(0, 255), Random.Shared.Next(0, 255));
+                Utilities.SetStateChanged(player.PlayerPawn.Value, "CBaseModelEntity", "m_clrRender");
 
                 activeWeapon.ReserveAmmo[0] = 250;
                 activeWeapon.Clip1 = 250;
 
                 pawn.Health += 5;
+                Utilities.SetStateChanged(pawn, "CBaseEntity", "m_iHealth");
 
                 return HookResult.Continue;
             });
@@ -510,6 +512,19 @@ namespace TestPlugin
             {
                 entity.AcceptInput("Break");
             }
+        }
+        
+        [ConsoleCommand("css_fov", "Sets the player's FOV")]
+        [CommandHelper(minArgs: 1, usage: "[fov]")]
+        public void OnFovCommand(CCSPlayerController? player, CommandInfo command)
+        {
+            if (player == null) return;
+            if (!player.PlayerPawn.IsValid) return;
+
+            if (!Int32.TryParse(command.GetArg(1), out var desiredFov)) return;
+
+            player.DesiredFOV = (uint)desiredFov;
+            Utilities.SetStateChanged(player, "CBasePlayerController", "m_iDesiredFOV");
         }
 
         [ConsoleCommand("cssharp_attribute", "This is a custom attribute event")]

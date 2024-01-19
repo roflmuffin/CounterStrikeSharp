@@ -1074,6 +1074,18 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static bool IsSchemaFieldNetworked(string classname, string propname){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(classname);
+			ScriptContext.GlobalScriptContext.Push(propname);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xFE413B0C);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (bool)ScriptContext.GlobalScriptContext.GetResult(typeof(bool));
+			}
+		}
+
         public static T GetSchemaValueByName<T>(IntPtr instance, int returntype, string classname, string propname){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
