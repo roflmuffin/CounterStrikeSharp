@@ -152,7 +152,7 @@ namespace CounterStrikeSharp.API.Core
                 case "start":
                 case "load":
                 {
-                    if (info.ArgCount < 2)
+                    if (info.ArgCount < 3)
                     {
                         info.ReplyToCommand(
                             "Valid usage: css_plugins start/load [relative plugin path || absolute plugin path] (e.g \"TestPlugin\", \"plugins/TestPlugin/TestPlugin.dll\")\n",
@@ -196,7 +196,7 @@ namespace CounterStrikeSharp.API.Core
                 case "stop":
                 case "unload":
                 {
-                    if (info.ArgCount < 2)
+                    if (info.ArgCount < 3)
                     {
                         info.ReplyToCommand(
                             "Valid usage: css_plugins stop/unload [plugin name || #plugin id] (e.g \"TestPlugin\", \"1\")\n",
@@ -219,7 +219,7 @@ namespace CounterStrikeSharp.API.Core
                 case "restart":
                 case "reload":
                 {
-                    if (info.ArgCount < 2)
+                    if (info.ArgCount < 3)
                     {
                         info.ReplyToCommand(
                             "Valid usage: css_plugins restart/reload [plugin name || #plugin id] (e.g \"TestPlugin\", \"#1\")\n",
