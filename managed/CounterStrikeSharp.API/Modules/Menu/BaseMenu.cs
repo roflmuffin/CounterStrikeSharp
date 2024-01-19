@@ -93,7 +93,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
                 
                 if (!menuOption.Disabled)
                 {
-                    menuOption.OnSelect?.Invoke(Player, menuOption);
+                    menuOption.OnSelect(Player, menuOption);
                     Reset();
                 }
             }
