@@ -21,12 +21,37 @@ namespace CounterStrikeSharp.API.Modules.Menu
 {
     public class CenterHtmlMenu : BaseMenu
     {
-        public CenterHtmlMenu(string title) : base(title[..32])
+        public CenterHtmlMenu(string title) : base(ModifyTitle(title))
+        {
+        }
+        
+        public override ChatMenuOption AddMenuOption(string display, Action<CCSPlayerController, ChatMenuOption> onSelect, bool disabled = false)
+        {
+            var option = new ChatMenuOption(ModifyOptionDisplay(display), disabled, onSelect);
+            MenuOptions.Add(option);
+            return option;
+        }
+        
+        private static string ModifyTitle(string title)
         {
             if (title.Length > 32)
             {
                 Application.Instance.Logger.LogWarning("Title should not be longer than 32 characters for a CenterHtmlMenu");
+                return title[..32];
             }
+
+            return title;
+        }
+
+        private static string ModifyOptionDisplay(string display)
+        {
+            if (display.Length > 26)
+            {
+                Application.Instance.Logger.LogWarning("Display should not be longer than 26 characters for a CenterHtmlMenu item");
+                return display[..26];
+            }
+
+            return display;
         }
     }
 
