@@ -331,7 +331,7 @@ namespace TestPlugin
 
         private void SetupMenus()
         {
-            // Chat Menu Example
+            // [Legacy] Chat Menu Example
             var largeMenu = new ChatMenu("Test Menu");
             for (int i = 1; i < 26; i++)
             {
@@ -345,8 +345,6 @@ namespace TestPlugin
             {
                 player.GiveNamedItem(option.Text);
             };
-            
-            giveItemMenu.AddMenuOption("test", (controller, option) => controller.PrintToChat($"selected: {option.Text}"), true);
 
             giveItemMenu.AddMenuOption("weapon_ak47", handleGive);
             giveItemMenu.AddMenuOption("weapon_p250", handleGive);
