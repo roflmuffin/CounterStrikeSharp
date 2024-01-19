@@ -2,14 +2,14 @@
 
 namespace CounterStrikeSharp.API.Modules.Menu
 {
-    public class CenterHtmlMenu: BaseMenu
+    public class CenterHtmlMenu : BaseMenu
     {
         public CenterHtmlMenu(string title) : base(title)
         {
         }
     }
 
-    public class CenterHtmlMenuInstance: BaseMenuInstance
+    public class CenterHtmlMenuInstance : BaseMenuInstance
     {
         private readonly BasePlugin _plugin;
 
@@ -23,8 +23,8 @@ namespace CounterStrikeSharp.API.Modules.Menu
         public override void Display()
         {
             if (
-                !MenuManager.ActiveCenterHtmlMenus.ContainsKey(Player.Handle)
-                || MenuManager.ActiveCenterHtmlMenus[Player.Handle] != this
+                !MenuManager.ActiveMenus.ContainsKey(Player.Handle)
+                || MenuManager.ActiveMenus[Player.Handle] != this
             )
             {
                 Reset();

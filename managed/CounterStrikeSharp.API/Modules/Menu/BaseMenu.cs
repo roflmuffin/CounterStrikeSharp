@@ -59,8 +59,8 @@ namespace CounterStrikeSharp.API.Modules.Menu
         {
             throw new NotImplementedException();
         }
-    
-        internal void OnKeyPress(CCSPlayerController player, int key)
+
+        public void OnKeyPress(CCSPlayerController player, int key)
         {
             if (player.Handle != Player.Handle) return;
 

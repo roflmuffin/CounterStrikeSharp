@@ -56,9 +56,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
         [Obsolete("Use MenuManager.OnKeyPress instead")]
         public static void OnKeyPress(CCSPlayerController player, int key)
         {
-            if (!MenuManager.ActiveChatMenus.ContainsKey(player.Handle)) return;
-
-            MenuManager.ActiveChatMenus[player.Handle].OnKeyPress(player, key);
+            MenuManager.OnKeyPress(player, key);
         }
     }
 }
