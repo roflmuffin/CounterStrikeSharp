@@ -4,8 +4,18 @@ namespace CounterStrikeSharp.API.Modules.Menu;
 
 public static class MenuManager
 {
-    public static readonly Dictionary<IntPtr, IMenuInstance> ActiveMenus = new();
+    private static readonly Dictionary<IntPtr, IMenuInstance> ActiveMenus = new();
 
+    public static Dictionary<IntPtr, IMenuInstance> GetActiveMenus()
+    {
+        return ActiveMenus;
+    }
+    
+    public static IMenuInstance? GetActiveMenu(CCSPlayerController player)
+    {
+        return !ActiveMenus.TryGetValue(player.Handle, out var value) ? null : value;
+    }
+    
     private static void ResetMenus(CCSPlayerController player)
     {
         if (ActiveMenus.TryGetValue(player.Handle, out var activeMenu))

@@ -22,10 +22,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
         
         public override void Display()
         {
-            if (
-                !MenuManager.ActiveMenus.ContainsKey(Player.Handle)
-                || MenuManager.ActiveMenus[Player.Handle] != this
-            )
+            if (MenuManager.GetActiveMenu(Player) != this)
             {
                 Reset();
                 return;
@@ -68,6 +65,9 @@ namespace CounterStrikeSharp.API.Modules.Menu
         {
             base.Reset();
             RemoveOnTickListener();
+            
+            // Send a blank message to clear the menu
+            Player.PrintToCenterHtml(" ");
         }
 
         private void RemoveOnTickListener()
