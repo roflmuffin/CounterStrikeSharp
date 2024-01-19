@@ -21,6 +21,7 @@ public static class MenuManager
         }
         
         ActiveChatMenus[player.Handle] = new ChatMenuInstance(player, menu);
+        ActiveChatMenus[player.Handle].Display();
     }
     
     public static void OpenCenterHtmlMenu(BasePlugin plugin, CCSPlayerController player, CenterHtmlMenu menu)
@@ -36,6 +37,7 @@ public static class MenuManager
         }
         
         ActiveCenterHtmlMenus[player.Handle] = new CenterHtmlMenuInstance(plugin, player, menu);
+        ActiveCenterHtmlMenus[player.Handle].Display();
     }
     
     public static void OpenConsoleMenu(CCSPlayerController player, ConsoleMenu menu)
@@ -51,6 +53,7 @@ public static class MenuManager
         }
         
         ActiveConsoleMenus[player.Handle] = new ConsoleMenuInstance(player, menu);
+        ActiveConsoleMenus[player.Handle].Display();
     }
 
     public static void OnKeyPress(CCSPlayerController player, int key)
@@ -61,11 +64,11 @@ public static class MenuManager
         }
         else if (ActiveCenterHtmlMenus.ContainsKey(player.Handle))
         {
-            ChatMenus.OnKeyPress(player, key);
+            CenterHtmlMenus.OnKeyPress(player, key);
         }
         else if (ActiveConsoleMenus.ContainsKey(player.Handle))
         {
-            ChatMenus.OnKeyPress(player, key);
+            ConsoleMenus.OnKeyPress(player, key);
         }
     }
 }
