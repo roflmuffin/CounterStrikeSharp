@@ -91,9 +91,6 @@ namespace CounterStrikeSharp.API.Modules.Menu
             {
                 var menuOption = Menu.MenuOptions[menuItemIndex];
                 
-                Console.WriteLine($"Menu Option ({menuOption.Text}) Selected -> Calling OnSelect");
-
-                Console.WriteLine($"menuOption.OnSelect == null | {menuOption.OnSelect == null}");
                 if (!menuOption.Disabled)
                 {
                     menuOption.OnSelect?.Invoke(Player, menuOption);
@@ -102,7 +99,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
             }
         }
 
-        public void Reset()
+        public virtual void Reset()
         {
             CurrentOffset = 0;
             Page = 0;

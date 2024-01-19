@@ -85,11 +85,15 @@ namespace CounterStrikeSharp.API.Core
 
             for (var i = 1; i <= 9; i++)
             {
-                CommandUtils.AddStandaloneCommand("css_" + i, "Command Key Handler", (player, info) =>
+                CommandUtils.AddStandaloneCommand($"css_{i}", "Command Key Handler", (player, info) =>
                 {
                     if (player == null) return;
                     var key = Convert.ToInt32(info.GetArg(0).Split("_")[1]);
+                    
                     ChatMenus.OnKeyPress(player, key);
+                    CenterHtmlMenus.OnKeyPress(player, key);
+                    CenterMenus.OnKeyPress(player, key);
+                    ConsoleMenus.OnKeyPress(player, key);
                 });
             }
 

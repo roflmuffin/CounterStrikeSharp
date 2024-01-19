@@ -12,8 +12,11 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
     public class CenterHtmlMenuInstanceInstance: BaseMenuInstance
     {
+        private readonly BasePlugin _plugin;
+
         public CenterHtmlMenuInstanceInstance(BasePlugin plugin, CCSPlayerController player, IMenu menu) : base(player, menu)
         {
+            _plugin = plugin;
             plugin.RegisterListener<Core.Listeners.OnTick>(Display);
         }
         
@@ -50,6 +53,12 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
             var currentPageText = builder.ToString();
             Player?.PrintToCenterHtml(currentPageText);
+        }
+
+        public override void Reset()
+        {
+            base.Reset();
+            _plugin.RemoveListener("OnTick", Display);
         }
     }
 
