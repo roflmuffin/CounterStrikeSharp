@@ -13,13 +13,11 @@ public static class MenuManager
         if (ActiveCenterHtmlMenus.TryGetValue(player.Handle, out var centerHtmlMenu))
         {
             centerHtmlMenu.Reset();
-            ActiveCenterHtmlMenus.Remove(player.Handle);
         }
         
         if (ActiveConsoleMenus.TryGetValue(player.Handle, out var consoleMenu))
         {
             consoleMenu.Reset();
-            ActiveConsoleMenus.Remove(player.Handle);
         }
         
         ActiveChatMenus[player.Handle] = new ChatMenuInstance(player, menu);
@@ -30,13 +28,11 @@ public static class MenuManager
         if (ActiveChatMenus.TryGetValue(player.Handle, out var chatMenu))
         {
             chatMenu.Reset();
-            ActiveChatMenus.Remove(player.Handle);
         }
         
         if (ActiveConsoleMenus.TryGetValue(player.Handle, out var consoleMenu))
         {
             consoleMenu.Reset();
-            ActiveConsoleMenus.Remove(player.Handle);
         }
         
         ActiveCenterHtmlMenus[player.Handle] = new CenterHtmlMenuInstance(plugin, player, menu);
@@ -47,13 +43,11 @@ public static class MenuManager
         if (ActiveChatMenus.TryGetValue(player.Handle, out var chatMenu))
         {
             chatMenu.Reset();
-            ActiveChatMenus.Remove(player.Handle);
         }
         
         if (ActiveCenterHtmlMenus.TryGetValue(player.Handle, out var centerHtmlMenu))
         {
             centerHtmlMenu.Reset();
-            ActiveCenterHtmlMenus.Remove(player.Handle);
         }
         
         ActiveConsoleMenus[player.Handle] = new ConsoleMenuInstance(player, menu);
@@ -61,17 +55,17 @@ public static class MenuManager
 
     public static void OnKeyPress(CCSPlayerController player, int key)
     {
-        if (ActiveChatMenus.TryGetValue(player.Handle, out var chatMenu))
+        if (ActiveChatMenus.ContainsKey(player.Handle))
         {
-            chatMenu.OnKeyPress(player, key);
+            ChatMenus.OnKeyPress(player, key);
         }
-        else if (ActiveCenterHtmlMenus.TryGetValue(player.Handle, out var centerHtmlMenu))
+        else if (ActiveCenterHtmlMenus.ContainsKey(player.Handle))
         {
-            centerHtmlMenu.OnKeyPress(player, key);
+            ChatMenus.OnKeyPress(player, key);
         }
-        else if (ActiveConsoleMenus.TryGetValue(player.Handle, out var consoleMenu))
+        else if (ActiveConsoleMenus.ContainsKey(player.Handle))
         {
-            consoleMenu.OnKeyPress(player, key);
+            ChatMenus.OnKeyPress(player, key);
         }
     }
 }
