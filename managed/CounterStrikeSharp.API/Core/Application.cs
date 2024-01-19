@@ -92,7 +92,6 @@ namespace CounterStrikeSharp.API.Core
                     
                     ChatMenus.OnKeyPress(player, key);
                     CenterHtmlMenus.OnKeyPress(player, key);
-                    CenterMenus.OnKeyPress(player, key);
                     ConsoleMenus.OnKeyPress(player, key);
                 });
             }
