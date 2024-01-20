@@ -82,7 +82,7 @@
   },
   "CCSPlayer_ItemServices_RemoveWeapons": {
       "offsets": {
-          "windows": 21,
+          "windows": 19,
           "linux": 20
       }
   },
