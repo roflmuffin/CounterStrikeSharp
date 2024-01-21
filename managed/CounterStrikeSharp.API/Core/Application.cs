@@ -183,6 +183,7 @@ namespace CounterStrikeSharp.API.Core
                         catch (Exception e)
                         {
                             info.ReplyToCommand($"Could not load plugin \"{path}\")", true);
+                            Logger.LogError(e, "Could not load plugin \"{Path}\"", path);
                         }
                     }
                     else
