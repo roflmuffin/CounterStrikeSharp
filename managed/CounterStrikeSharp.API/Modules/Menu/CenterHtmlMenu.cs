@@ -90,7 +90,8 @@ namespace CounterStrikeSharp.API.Modules.Menu
             for (var i = CurrentOffset; i < Math.Min(CurrentOffset + MenuItemsPerPage, Menu.MenuOptions.Count); i++)
             {
                 var option = Menu.MenuOptions[i];
-                builder.Append($"<font color='green'>!{keyOffset++}</font> {option.Text}");
+                string color = option.Disabled ? "grey" : "green";
+                builder.Append($"<font color='{color}'>!{keyOffset++}</font> {option.Text}");
                 builder.AppendLine("<br>");
             }
 
