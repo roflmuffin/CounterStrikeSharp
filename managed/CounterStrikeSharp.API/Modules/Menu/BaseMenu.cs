@@ -86,7 +86,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
                 return;
             }
 
-            if (key == 1 && HasPrevButton)
+            if (key == 7 && HasPrevButton)
             {
                 PrevPage();
                 return;

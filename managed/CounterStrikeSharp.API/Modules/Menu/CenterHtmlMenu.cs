@@ -81,18 +81,17 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
             var keyOffset = 1;
 
-            if (HasPrevButton)
-            {
-                builder.AppendFormat("<font color='green'>!1</font> -> Prev");
-                builder.AppendLine("<br>");
-                keyOffset++;
-            }
-
             for (var i = CurrentOffset; i < Math.Min(CurrentOffset + MenuItemsPerPage, Menu.MenuOptions.Count); i++)
             {
                 var option = Menu.MenuOptions[i];
                 string color = option.Disabled ? "grey" : "green";
                 builder.Append($"<font color='{color}'>!{keyOffset++}</font> {option.Text}");
+                builder.AppendLine("<br>");
+            }
+            
+            if (HasPrevButton)
+            {
+                builder.AppendFormat("<font color='green'>!7</font> -> Prev");
                 builder.AppendLine("<br>");
             }
 
