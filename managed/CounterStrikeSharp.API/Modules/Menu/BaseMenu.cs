@@ -99,7 +99,6 @@ namespace CounterStrikeSharp.API.Modules.Menu
             }
 
             var desiredValue = key;
-            if (HasPrevButton) desiredValue = key - 1;
 
             var menuItemIndex = CurrentOffset + desiredValue - 1;
 
