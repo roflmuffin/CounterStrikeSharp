@@ -1,0 +1,15 @@
+name: Notify Discord on Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Send Notification to Discord
+      uses: Ilshidur/action-discord@2.4.0
+      with:
+        args: "A new release of CS# has been tagged! View it here: ${{ github.event.release.html_url }}"
+        webhook: ${{ secrets.DISCORD_WEBHOOK }}
