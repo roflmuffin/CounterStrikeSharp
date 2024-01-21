@@ -17,7 +17,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApiCompatValidateAssemblies>true</ApiCompatValidateAssemblies>
-    <ApiCompatContractAssembly>.\ApiCompat\v133.dll</ApiCompatContractAssembly> 
+    <ApiCompatContractAssembly>.\ApiCompat\v151.dll</ApiCompatContractAssembly>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Modules\Commands\CommandInfo" />
