@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -36,9 +36,12 @@ namespace CounterStrikeSharp.API.Modules.Entities.Constants
         TerroristsSurrender = 0x11u, // this also triggers match cancelled
         CTsSurrender = 0x12u, // this also triggers match cancelled
 
-        TerroristsPlanned = 0x13u,
+        TerroristsPlanted = 0x13u,
         CTsReachedHostage = 0x14u,
         SurvivalWin = 0x15u,
-        SurvivalDraw = 0x16u
+        SurvivalDraw = 0x16u,
+        
+        [Obsolete("Use RoundEndReason.TerroristsPlanted instead.")]
+        TerroristsPlanned = 0x13u
     }
 }
