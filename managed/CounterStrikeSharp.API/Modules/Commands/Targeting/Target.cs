@@ -90,11 +90,11 @@ public class Target
             case TargetType.TeamSpec:
                 return player.TeamNum == (byte)CsTeam.Spectator;
             case TargetType.GroupAll:
-                return true;
+                return !player.IsHLTV;
             case TargetType.GroupBots:
                 return player.IsBot;
             case TargetType.GroupHumans:
-                return !player.IsBot;
+                return !player.IsBot && !player.IsHLTV;
             case TargetType.GroupAlive:
                 return player.PlayerPawn is { IsValid: true, Value.LifeState: (byte)LifeState_t.LIFE_ALIVE };
             case TargetType.GroupDead:
