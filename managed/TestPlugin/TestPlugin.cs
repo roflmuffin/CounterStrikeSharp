@@ -331,7 +331,7 @@ namespace TestPlugin
 
         private void SetupMenus()
         {
-            // Chat Menu Example
+            // [Legacy] Chat Menu Example
             var largeMenu = new ChatMenu("Test Menu");
             for (int i = 1; i < 26; i++)
             {
