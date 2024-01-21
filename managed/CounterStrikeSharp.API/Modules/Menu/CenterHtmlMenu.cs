@@ -58,6 +58,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
     public class CenterHtmlMenuInstance : BaseMenuInstance
     {
         private readonly BasePlugin _plugin;
+        public virtual int NumPerPage => 6;
 
         public CenterHtmlMenuInstance(BasePlugin plugin, CCSPlayerController player, IMenu menu) : base(player, menu)
         {

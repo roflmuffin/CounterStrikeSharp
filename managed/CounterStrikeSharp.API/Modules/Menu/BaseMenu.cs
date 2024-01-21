@@ -53,7 +53,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
     public abstract class BaseMenuInstance : IMenuInstance
     {
-        public int NumPerPage => 6;
+        public virtual int NumPerPage => 6;
         public Stack<int> PrevPageOffsets { get; } = new();
         public IMenu Menu { get; }
         public CCSPlayerController Player { get; }
