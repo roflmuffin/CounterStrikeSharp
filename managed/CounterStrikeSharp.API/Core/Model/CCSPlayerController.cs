@@ -10,15 +10,8 @@ namespace CounterStrikeSharp.API.Core;
 
 public partial class CCSPlayerController
 {
-    public int? UserId
-    {
-        get
-        {
-            return NativeAPI.GetUseridFromIndex((int)this.Index);
-        }
-    }
-    
-    public CsTeam Team => (CsTeam)this.TeamNum;
+    public int? UserId => NativeAPI.GetUseridFromIndex((int)Index);
+    public CsTeam Team => (CsTeam)TeamNum;
 
     public IntPtr GiveNamedItem(string item)
     {
@@ -37,7 +30,7 @@ public partial class CCSPlayerController
             return IntPtr.Zero;
         }
 
-        return this.GiveNamedItem(itemString);
+        return GiveNamedItem(itemString);
     }
 
     public void PrintToConsole(string message)
@@ -47,12 +40,12 @@ public partial class CCSPlayerController
 
     public void PrintToChat(string message)
     {
-        VirtualFunctions.ClientPrint(this.Handle, HudDestination.Chat, message, 0, 0, 0, 0);
+        VirtualFunctions.ClientPrint(Handle, HudDestination.Chat, message, 0, 0, 0, 0);
     }
 
     public void PrintToCenter(string message)
     {
-        VirtualFunctions.ClientPrint(this.Handle, HudDestination.Center, message, 0, 0, 0, 0);
+        VirtualFunctions.ClientPrint(Handle, HudDestination.Center, message, 0, 0, 0, 0);
     }
 
     public void PrintToCenterHtml(string message) => PrintToCenterHtml(message, 5);
@@ -80,8 +73,9 @@ public partial class CCSPlayerController
         if (!PlayerPawn.Value.WeaponServices.ActiveWeapon.IsValid) return;
 
         CCSPlayer_ItemServices itemServices = new CCSPlayer_ItemServices(PlayerPawn.Value.ItemServices.Handle);
-        CCSPlayer_WeaponServices weponServices = new CCSPlayer_WeaponServices(PlayerPawn.Value.WeaponServices.Handle);
-        itemServices.DropActivePlayerWeapon(weponServices.ActiveWeapon.Value);
+        CCSPlayer_WeaponServices weaponServices = new CCSPlayer_WeaponServices(PlayerPawn.Value.WeaponServices.Handle);
+        
+        itemServices.DropActivePlayerWeapon(weaponServices.ActiveWeapon.Value);
     }
 
     /// <summary>
@@ -130,7 +124,7 @@ public partial class CCSPlayerController
     /// <param name="team">The team to switch to</param>
     public void SwitchTeam(CsTeam team)
     {
-        VirtualFunctions.SwitchTeam(this.Handle, (byte)team);
+        VirtualFunctions.SwitchTeam(Handle, (byte)team);
     }
 
     /// <summary>
@@ -153,7 +147,7 @@ public partial class CCSPlayerController
     /// <returns>ConVar string value</returns>
     public string GetConVarValue(string conVar)
     {
-        return NativeAPI.GetClientConvarValue(this.Slot, conVar);
+        return NativeAPI.GetClientConvarValue(Slot, conVar);
     }
 
     public string GetConVarValue(ConVar? conVar)
@@ -179,7 +173,7 @@ public partial class CCSPlayerController
             throw new InvalidOperationException("'SetFakeClientConVar' can only be called for fake clients (bots)");
         }
 
-        NativeAPI.SetFakeClientConvarValue(this.Slot, conVar, value);
+        NativeAPI.SetFakeClientConvarValue(Slot, conVar, value);
     }
 
     /// <summary>
@@ -228,8 +222,8 @@ public partial class CCSPlayerController
     {
         get
         {
-            if (!this.IsValid) return null;
-            var authorizedSteamId = NativeAPI.GetPlayerAuthorizedSteamid(this.Slot);
+            if (!IsValid) return null;
+            var authorizedSteamId = NativeAPI.GetPlayerAuthorizedSteamid(Slot);
             if ((long)authorizedSteamId == -1) return null;
 
             return (SteamID)authorizedSteamId;
@@ -244,8 +238,8 @@ public partial class CCSPlayerController
     {
         get
         {
-            if (!this.IsValid) return null;
-            var ipAddress = NativeAPI.GetPlayerIpAddress(this.Slot);
+            if (!IsValid) return null;
+            var ipAddress = NativeAPI.GetPlayerIpAddress(Slot);
             if (string.IsNullOrWhiteSpace(ipAddress)) return null;
 
             return ipAddress;
@@ -258,9 +252,6 @@ public partial class CCSPlayerController
     public VoiceFlags VoiceFlags
     {
         get => (VoiceFlags)NativeAPI.GetClientVoiceFlags(Handle);
-        set
-        {
-            NativeAPI.SetClientVoiceFlags(Handle, (Byte)value);
-        }
+        set => NativeAPI.SetClientVoiceFlags(Handle, (Byte)value);
     }
 }
