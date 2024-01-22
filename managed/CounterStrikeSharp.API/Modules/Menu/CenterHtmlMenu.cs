@@ -89,7 +89,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
 			if (HasPrevButton)
 			{
-				builder.AppendFormat("<font color='yellow'>!7</font> -> Prev");
+				builder.AppendFormat("<font color='yellow'>!7</font> &#60;- Prev");
 				builder.AppendLine("<br>");
 			}
 
