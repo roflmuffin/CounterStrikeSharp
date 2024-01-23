@@ -58,6 +58,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
     public class CenterHtmlMenuInstance : BaseMenuInstance
     {
         private readonly BasePlugin _plugin;
+        public override int NumPerPage => 5; // one less than the actual number of items per page to avoid truncated options
 
         public CenterHtmlMenuInstance(BasePlugin plugin, CCSPlayerController player, IMenu menu) : base(player, menu)
         {
@@ -80,17 +81,17 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
             var keyOffset = 1;
 
-            if (HasPrevButton)
-            {
-                builder.AppendFormat("<font color='green'>!1</font> -> Prev");
-                builder.AppendLine("<br>");
-                keyOffset++;
-            }
-
             for (var i = CurrentOffset; i < Math.Min(CurrentOffset + MenuItemsPerPage, Menu.MenuOptions.Count); i++)
             {
                 var option = Menu.MenuOptions[i];
-                builder.Append($"<font color='green'>!{keyOffset++}</font> {option.Text}");
+                string color = option.Disabled ? "grey" : "green";
+                builder.Append($"<font color='{color}'>!{keyOffset++}</font> {option.Text}");
+                builder.AppendLine("<br>");
+            }
+            
+            if (HasPrevButton)
+            {
+                builder.AppendFormat("<font color='yellow'>!7</font> &#60;- Prev");
                 builder.AppendLine("<br>");
             }
 

@@ -53,7 +53,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
     public abstract class BaseMenuInstance : IMenuInstance
     {
-        public int NumPerPage => 6;
+        public virtual int NumPerPage => 6;
         public Stack<int> PrevPageOffsets { get; } = new();
         public IMenu Menu { get; }
         public CCSPlayerController Player { get; }
@@ -86,7 +86,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
                 return;
             }
 
-            if (key == 1 && HasPrevButton)
+            if (key == 7 && HasPrevButton)
             {
                 PrevPage();
                 return;
@@ -99,7 +99,6 @@ namespace CounterStrikeSharp.API.Modules.Menu
             }
 
             var desiredValue = key;
-            if (HasPrevButton) desiredValue = key - 1;
 
             var menuItemIndex = CurrentOffset + desiredValue - 1;
 

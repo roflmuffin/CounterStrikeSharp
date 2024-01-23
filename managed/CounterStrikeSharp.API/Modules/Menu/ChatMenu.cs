@@ -38,12 +38,6 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
             var keyOffset = 1;
 
-            if (HasPrevButton)
-            {
-                Player.PrintToChat($" {ChatColors.Yellow}!1 {ChatColors.Default}-> Prev");
-                keyOffset++;
-            }
-
             for (var i = CurrentOffset;
                  i < Math.Min(CurrentOffset + MenuItemsPerPage, Menu.MenuOptions.Count);
                  i++)
@@ -54,6 +48,11 @@ namespace CounterStrikeSharp.API.Modules.Menu
                     $" {(option.Disabled ? ChatColors.Grey : ChatColors.Green)} !{keyOffset++} {ChatColors.Default}{option.Text}");
             }
 
+            if (HasPrevButton)
+            {
+                Player.PrintToChat($" {ChatColors.Yellow}!7 {ChatColors.Default}-> Prev");
+            }
+            
             if (HasNextButton)
             {
                 Player.PrintToChat($" {ChatColors.Yellow}!8 {ChatColors.Default}-> Next");
