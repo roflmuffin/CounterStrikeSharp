@@ -16,6 +16,7 @@ public partial class CCSPlayerController
     public IntPtr GiveNamedItem(string item)
     {
         if (!PlayerPawn.IsValid) return 0;
+        if (PlayerPawn.Value == null) return 0;
         if (!PlayerPawn.Value.IsValid) return 0;
         if (PlayerPawn.Value.ItemServices == null) return 0;
 
@@ -67,6 +68,7 @@ public partial class CCSPlayerController
     public void DropActiveWeapon()
     {
         if (!PlayerPawn.IsValid) return;
+        if (PlayerPawn.Value == null) return;
         if (!PlayerPawn.Value.IsValid) return;
         if (PlayerPawn.Value.ItemServices == null) return;
         if (PlayerPawn.Value.WeaponServices == null) return;
@@ -84,6 +86,7 @@ public partial class CCSPlayerController
     public void RemoveWeapons()
     {
         if (!PlayerPawn.IsValid) return;
+        if (PlayerPawn.Value == null) return;
         if (!PlayerPawn.Value.IsValid) return;
         if (PlayerPawn.Value.ItemServices == null) return;
 
@@ -99,6 +102,7 @@ public partial class CCSPlayerController
     public void CommitSuicide(bool explode, bool force)
     {
         if (!PlayerPawn.IsValid) return;
+        if (PlayerPawn.Value == null) return;
         if (!PlayerPawn.Value.IsValid) return;
 
         PlayerPawn.Value.CommitSuicide(explode, force);
@@ -110,6 +114,7 @@ public partial class CCSPlayerController
     public void Respawn()
     {
         if (!PlayerPawn.IsValid) return;
+        if (PlayerPawn.Value == null) return;
         if (!PlayerPawn.Value.IsValid) return;
 
         VirtualFunctions.CCSPlayerPawn_Respawn(PlayerPawn.Value.Handle);
