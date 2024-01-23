@@ -36,12 +36,6 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
             var keyOffset = 1;
 
-            if (HasPrevButton)
-            {
-                Player.PrintToConsole($"!1 -> Prev");
-                keyOffset++;
-            }
-
             for (var i = CurrentOffset;
                  i < Math.Min(CurrentOffset + MenuItemsPerPage, Menu.MenuOptions.Count);
                  i++)
@@ -50,6 +44,11 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
                 Player.PrintToConsole(
                     $" {(option.Disabled ? "[Enabled]" : "[Disabled] - ")} !{keyOffset++} {option.Text}");
+            }
+            
+            if (HasPrevButton)
+            {
+                Player.PrintToConsole($"!7 -> Prev");
             }
 
             if (HasNextButton)
