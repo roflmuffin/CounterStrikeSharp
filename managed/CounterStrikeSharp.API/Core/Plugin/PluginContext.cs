@@ -215,6 +215,8 @@ namespace CounterStrikeSharp.API.Core.Plugin
 
             _logger.LogInformation("Unloading plugin {Name}", Plugin.ModuleName);
 
+            Plugin.UnregisterAllAttributes(Plugin);
+            
             Plugin.Unload(hotReload);
 
             Plugin.Dispose();

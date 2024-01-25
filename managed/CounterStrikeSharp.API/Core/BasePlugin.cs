@@ -387,13 +387,18 @@ namespace CounterStrikeSharp.API.Core
             Timers.Add(timer);
             return timer;
         }
-
-
+        
         public void RegisterAllAttributes(object instance)
         {
             this.RegisterAttributeHandlers(instance);
             this.RegisterConsoleCommandAttributeHandlers(instance);
             this.RegisterEntityOutputAttributeHandlers(instance);
+        }
+        public void UnregisterAllAttributes(object instance)
+        {
+            this.UnregisterConsoleCommandAttributeHandlers(instance);
+            // this.RegisterAttributeHandlers(instance);
+            // this.RegisterEntityOutputAttributeHandlers(instance);
         }
 
         public void InitializeConfig(object instance, Type pluginType)
@@ -466,6 +471,23 @@ namespace CounterStrikeSharp.API.Core
                 {
                     AddCommand(commandInfo.Command, commandInfo.Description,
                         eventHandler.CreateDelegate<CommandInfo.CommandCallback>(instance));
+                }
+            }
+        }
+
+        public void UnregisterConsoleCommandAttributeHandlers(object instance)
+        {
+            var eventHandlers = instance.GetType()
+                .GetMethods()
+                .Where(method => method.GetCustomAttributes<ConsoleCommandAttribute>().Any())
+                .ToArray();
+
+            foreach (var eventHandler in eventHandlers)
+            {
+                var attributes = eventHandler.GetCustomAttributes<ConsoleCommandAttribute>();
+                foreach (var commandInfo in attributes)
+                {
+                    RemoveCommand(commandInfo.Command, eventHandler.CreateDelegate<CommandInfo.CommandCallback>(instance));
                 }
             }
         }

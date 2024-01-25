@@ -59,6 +59,7 @@ namespace CounterStrikeSharp.API.Core
         IStringLocalizer Localizer { get; set; }
 
         void RegisterAllAttributes(object instance);
+        void UnregisterAllAttributes(object instance);
 
         void InitializeConfig(object instance, Type pluginType);
     }
