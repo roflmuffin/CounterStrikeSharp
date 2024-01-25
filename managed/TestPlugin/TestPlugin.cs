@@ -367,8 +367,8 @@ namespace TestPlugin
                 }
             });
             
-            AddCommand("css_menu", "Opens example menu", (player, info) => { ChatMenus.OpenMenu(player, largeMenu); });
-            AddCommand("css_gunmenu", "Gun Menu", (player, info) => { ChatMenus.OpenMenu(player, giveItemMenu); });
+            AddCommand("css_menu", "Opens example menu", (player, info) => { MenuManager.OpenChatMenu(player, largeMenu); });
+            AddCommand("css_gunmenu", "Gun Menu", (player, info) => { MenuManager.OpenChatMenu(player, giveItemMenu); });
 
             for (int i = 1; i <= 9; i++)
             {
@@ -376,7 +376,7 @@ namespace TestPlugin
                 {
                     if (player == null) return;
                     var key = Convert.ToInt32(info.GetArg(0).Split("_")[1]);
-                    ChatMenus.OnKeyPress(player, key);
+                    MenuManager.OnKeyPress(player, key);
                 });
             }
         }

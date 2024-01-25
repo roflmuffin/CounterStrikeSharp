@@ -433,7 +433,7 @@ namespace WarcraftPlugin
                 });
             }
 
-            ChatMenus.OpenMenu(client, menu);
+            MenuManager.OpenChatMenu(client, menu);
         }
 
         private void CommandChangeRace(CCSPlayerController? client, CommandInfo commandinfo)
@@ -461,7 +461,7 @@ namespace WarcraftPlugin
                 }));
             }
 
-            ChatMenus.OpenMenu(client, menu);
+            MenuManager.OpenChatMenu(client, menu);
         }
 
         private void Ability1Pressed(CCSPlayerController? client, CommandInfo commandinfo)
@@ -544,7 +544,7 @@ namespace WarcraftPlugin
                 }, disabled);
             }
 
-            ChatMenus.OpenMenu(wcPlayer.GetPlayer(), menu);
+            MenuManager.OpenChatMenu(wcPlayer.GetPlayer(), menu);
         }
     }
 }
