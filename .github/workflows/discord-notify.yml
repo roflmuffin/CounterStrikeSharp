@@ -10,7 +10,7 @@ jobs:
     steps:
     - name: Send Notification to Discord
       env:
-        DISCORD_WEBHOOKL: ${{ secrets.DISCORD_WEBHOOK }}
+        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
       uses: Ilshidur/action-discord@0.3.2
       with:
         args: "A new release of CS# has been tagged! View it here: ${{ github.event.release.html_url }}"
