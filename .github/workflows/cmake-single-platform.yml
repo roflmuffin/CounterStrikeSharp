@@ -196,6 +196,7 @@ jobs:
           (cd build/windows && zip -qq -r ../../counterstrikesharp-with-runtime-build-${{ needs.build_managed.outputs.buildnumber }}-windows-${{ env.GITHUB_SHA_SHORT }}.zip *)
 
       - name: Release
+        id: release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: v${{ needs.build_managed.outputs.buildnumber }}
@@ -209,3 +210,10 @@ jobs:
         run: |
           dotnet nuget push build/api/CounterStrikeSharp.API.1.0.${{ needs.build_managed.outputs.buildnumber }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
           dotnet nuget push build/api/CounterStrikeSharp.API.1.0.${{ needs.build_managed.outputs.buildnumber }}.snupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+      - name: Send Notification to Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@0.3.2
+        with:
+          args: "A new release of CS# has been tagged (v${{ needs.build_managed.outputs.buildnumber }}) at ${{ steps.release.outputs.url }}"
