@@ -20,6 +20,15 @@ public partial class CCSPlayerController
     
     public CsTeam Team => (CsTeam)this.TeamNum;
 
+    public new void Teleport(Vector position, QAngle angles, Vector velocity)
+    {
+        if (!PlayerPawn.IsValid) return;
+        if (PlayerPawn.Value == null) return;
+        if (!PlayerPawn.Value.IsValid) return;
+
+        PlayerPawn.Value.Teleport(position, angles, velocity);
+    }
+    
     public IntPtr GiveNamedItem(string item)
     {
         if (!PlayerPawn.IsValid) return 0;
