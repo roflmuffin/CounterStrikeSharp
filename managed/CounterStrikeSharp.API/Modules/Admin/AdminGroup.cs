@@ -95,7 +95,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             // This is here for cases where the server console is attempting to call commands.
             // The server console should have access to all commands, regardless of groups.
             if (player == null) return true;
-            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return false; }
+            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot || player.IsHLTV) { return false; }
 
             var playerData = GetPlayerAdminData(player.AuthorizedSteamID);
             if (playerData == null) return false;
@@ -136,20 +136,20 @@ namespace CounterStrikeSharp.API.Modules.Admin
             return playerData.Groups.IsSupersetOf(playerGroups);
         }
 
-        /// <summary>
-        /// Adds a player to a group.
-        /// </summary>
-        /// <param name="player">Player controller.</param>
-        /// <param name="groups">Groups to add the player to.</param>
-        public static void AddPlayerToGroup(CCSPlayerController? player, params string[] groups)
+		/// <summary>
+		/// Adds a player to a group. This does NOT modify the immunity of the player (see SetPlayerImmunity).
+		/// </summary>
+		/// <param name="player">Player controller.</param>
+		/// <param name="groups">Groups to add the player to.</param>
+		public static void AddPlayerToGroup(CCSPlayerController? player, params string[] groups)
         {
             if (player == null) return;
-            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return; }
+            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot || player.IsHLTV) { return; }
             AddPlayerToGroup(player.AuthorizedSteamID, groups);
         }
 
         /// <summary>
-        /// Adds a player to a group.
+        /// Adds a player to a group. This does NOT modify the immunity of the player (see SetPlayerImmunity).
         /// </summary>
         /// <param name="steamId">SteamID of the player.</param>
         /// <param name="groups">Groups to add the player to.</param>
@@ -187,7 +187,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
         public static void RemovePlayerFromGroup(CCSPlayerController? player, bool removeInheritedFlags = true, params string[] groups)
         {
             if (player == null) return;
-            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return; }
+            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot || player.IsHLTV) { return; }
             RemovePlayerFromGroup(player.AuthorizedSteamID, true, groups);
         }
 
