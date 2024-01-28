@@ -57,7 +57,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
         public Stack<int> PrevPageOffsets { get; } = new();
         public IMenu Menu { get; }
         public CCSPlayerController Player { get; }
-
+        public bool CloseOnSelect { get; }
         public int Page { get; set; }
         public int CurrentOffset { get; set; }
 
@@ -65,6 +65,14 @@ namespace CounterStrikeSharp.API.Modules.Menu
         {
             Menu = menu;
             Player = player;
+            CloseOnSelect = true;
+        }
+
+        protected BaseMenuInstance(CCSPlayerController player, IMenu menu, bool closeOnSelect = true)
+        {
+            Menu = menu;
+            Player = player;
+            CloseOnSelect = closeOnSelect;
         }
 
         protected bool HasPrevButton => Page > 0;
@@ -109,7 +117,10 @@ namespace CounterStrikeSharp.API.Modules.Menu
                 if (!menuOption.Disabled)
                 {
                     menuOption.OnSelect(Player, menuOption);
-                    Close();
+                    if (CloseOnSelect)
+                    {
+                        Close();
+                    }
                 }
             }
         }

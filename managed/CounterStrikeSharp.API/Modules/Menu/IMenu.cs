@@ -30,6 +30,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
     {
         protected IMenu Menu { get; }
         protected CCSPlayerController? Player { get; }
+        protected bool CloseOnSelect { get; }
         protected int Page { get; }
         protected int CurrentOffset { get; }
         protected int NumPerPage { get; }

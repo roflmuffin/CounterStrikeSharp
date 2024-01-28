@@ -27,7 +27,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
     public class ChatMenuInstance : BaseMenuInstance
     {
-        public ChatMenuInstance(CCSPlayerController player, ChatMenu menu) : base(player, menu)
+        public ChatMenuInstance(CCSPlayerController player, ChatMenu menu, bool closeOnSelect = true) : base(player, menu, closeOnSelect)
         {
         }
 

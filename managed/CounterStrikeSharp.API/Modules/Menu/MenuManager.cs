@@ -41,28 +41,28 @@ public static class MenuManager
 
         ActiveMenus.Remove(player.Handle);
     }
-    
-    public static void OpenChatMenu(CCSPlayerController player, ChatMenu menu)
+
+    public static void OpenChatMenu(CCSPlayerController player, ChatMenu menu, bool closeOnSelect = true)
     {
         CloseActiveMenu(player);
         
-        ActiveMenus[player.Handle] = new ChatMenuInstance(player, menu);
+        ActiveMenus[player.Handle] = new ChatMenuInstance(player, menu, closeOnSelect);
         ActiveMenus[player.Handle].Display();
     }
     
-    public static void OpenCenterHtmlMenu(BasePlugin plugin, CCSPlayerController player, CenterHtmlMenu menu)
+    public static void OpenCenterHtmlMenu(BasePlugin plugin, CCSPlayerController player, CenterHtmlMenu menu, bool closeOnSelect = true)
     {
         CloseActiveMenu(player);
         
-        ActiveMenus[player.Handle] = new CenterHtmlMenuInstance(plugin, player, menu);
+        ActiveMenus[player.Handle] = new CenterHtmlMenuInstance(plugin, player, menu, closeOnSelect);
         ActiveMenus[player.Handle].Display();
     }
     
-    public static void OpenConsoleMenu(CCSPlayerController player, ConsoleMenu menu)
+    public static void OpenConsoleMenu(CCSPlayerController player, ConsoleMenu menu, bool closeOnSelect = true)
     {
         CloseActiveMenu(player);
         
-        ActiveMenus[player.Handle] = new ConsoleMenuInstance(player, menu);
+        ActiveMenus[player.Handle] = new ConsoleMenuInstance(player, menu, closeOnSelect);
         ActiveMenus[player.Handle].Display();
     }
 

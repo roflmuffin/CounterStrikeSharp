@@ -25,7 +25,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
     public class ConsoleMenuInstance : BaseMenuInstance
     {
-        public ConsoleMenuInstance(CCSPlayerController player, IMenu menu) : base(player, menu)
+        public ConsoleMenuInstance(CCSPlayerController player, ConsoleMenu menu, bool closeOnSelect = true) : base(player, menu, closeOnSelect)
         {
         }
 
@@ -42,18 +42,17 @@ namespace CounterStrikeSharp.API.Modules.Menu
             {
                 var option = Menu.MenuOptions[i];
 
-                Player.PrintToConsole(
-                    $" {(option.Disabled ? "[Enabled]" : "[Disabled] - ")} !{keyOffset++} {option.Text}");
+                Player.PrintToConsole($"{(option.Disabled ? "[Enabled]" : "[Disabled] - ")} css_{keyOffset++} {option.Text}");
             }
             
             if (HasPrevButton)
             {
-                Player.PrintToConsole($"!7 -> Prev");
+                Player.PrintToConsole("css_7 -> Prev");
             }
 
             if (HasNextButton)
             {
-                Player.PrintToConsole($"!8 -> Next");
+                Player.PrintToConsole("css_8 -> Next");
             }
         }
     }
