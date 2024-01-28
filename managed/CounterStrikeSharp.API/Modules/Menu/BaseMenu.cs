@@ -94,7 +94,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
             if (key == 9)
             {
-                Reset();
+                Close();
                 return;
             }
 
@@ -109,7 +109,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
                 if (!menuOption.Disabled)
                 {
                     menuOption.OnSelect(Player, menuOption);
-                    Reset();
+                    Close();
                 }
             }
         }
