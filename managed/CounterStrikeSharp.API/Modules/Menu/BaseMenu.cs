@@ -121,7 +121,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
             PrevPageOffsets.Clear();
         }
         
-        public virtual void Close()
+        public void Close()
         {
             MenuManager.CloseActiveMenu(Player);
         }
