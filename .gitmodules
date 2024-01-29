@@ -19,7 +19,7 @@
 	url = https://github.com/SteamDatabase/GameTracking-CS2
 [submodule "libraries/DynoHook"]
 	path = libraries/DynoHook
-	url = git@github.com:qubka/DynoHook.git
+	url = https://github.com/qubka/DynoHook
 [submodule "libraries/asmjit"]
 	path = libraries/asmjit
-	url = git@github.com:asmjit/asmjit.git
+	url = https://github.com/asmjit/asmjit
