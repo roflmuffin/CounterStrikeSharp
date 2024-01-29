@@ -182,7 +182,7 @@ namespace CounterStrikeSharp.API.Core
                         }
                         catch (Exception e)
                         {
-                            info.ReplyToCommand($"Could not load plugin \"{path}\")", true);
+                            info.ReplyToCommand($"Could not load plugin \"{path}\"", true);
                             Logger.LogError(e, "Could not load plugin \"{Path}\"", path);
                         }
                     }
@@ -209,7 +209,7 @@ namespace CounterStrikeSharp.API.Core
                     IPluginContext? plugin = _pluginContextQueryHandler.FindPluginByIdOrName(pluginIdentifier);
                     if (plugin == null)
                     {
-                        info.ReplyToCommand($"Could not unload plugin \"{pluginIdentifier}\")", true);
+                        info.ReplyToCommand($"Could not unload plugin \"{pluginIdentifier}\"", true);
                         break;
                     }
 
@@ -233,7 +233,7 @@ namespace CounterStrikeSharp.API.Core
 
                     if (plugin == null)
                     {
-                        info.ReplyToCommand($"Could not reload plugin \"{pluginIdentifier}\")", true);
+                        info.ReplyToCommand($"Could not reload plugin \"{pluginIdentifier}\"", true);
                         break;
                     }
 
