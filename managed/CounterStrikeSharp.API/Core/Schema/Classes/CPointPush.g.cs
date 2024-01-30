@@ -43,7 +43,7 @@ public partial class CPointPush : CPointEntity
 	public string FilterName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointPush", "m_iszFilterName"); }
-	set { Schema.SetString(this.Handle, "CPointPush", "m_iszFilterName", value); }
+		set { Schema.SetString(this.Handle, "CPointPush", "m_iszFilterName", value); }
 	}
 
 	// m_hFilter

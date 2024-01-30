@@ -23,7 +23,7 @@ public partial class CRuleEntity : CBaseModelEntity
 	public string Master
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CRuleEntity", "m_iszMaster"); }
-	set { Schema.SetString(this.Handle, "CRuleEntity", "m_iszMaster", value); }
+		set { Schema.SetString(this.Handle, "CRuleEntity", "m_iszMaster", value); }
 	}
 
 }

@@ -23,7 +23,7 @@ public partial class CGameText : CRulePointEntity
 	public string Message
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CGameText", "m_iszMessage"); }
-	set { Schema.SetString(this.Handle, "CGameText", "m_iszMessage", value); }
+		set { Schema.SetString(this.Handle, "CGameText", "m_iszMessage", value); }
 	}
 
 	// m_textParms

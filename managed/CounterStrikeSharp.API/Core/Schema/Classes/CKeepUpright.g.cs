@@ -31,7 +31,7 @@ public partial class CKeepUpright : CPointEntity
 	public string NameAttach
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CKeepUpright", "m_nameAttach"); }
-	set { Schema.SetString(this.Handle, "CKeepUpright", "m_nameAttach", value); }
+		set { Schema.SetString(this.Handle, "CKeepUpright", "m_nameAttach", value); }
 	}
 
 	// m_attachedObject

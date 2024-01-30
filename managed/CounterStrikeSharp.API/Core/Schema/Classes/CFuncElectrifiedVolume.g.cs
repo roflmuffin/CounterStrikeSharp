@@ -23,7 +23,7 @@ public partial class CFuncElectrifiedVolume : CFuncBrush
 	public string EffectName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncElectrifiedVolume", "m_EffectName"); }
-	set { Schema.SetString(this.Handle, "CFuncElectrifiedVolume", "m_EffectName", value); }
+		set { Schema.SetString(this.Handle, "CFuncElectrifiedVolume", "m_EffectName", value); }
 	}
 
 	// m_EffectInterpenetrateName
@@ -31,7 +31,7 @@ public partial class CFuncElectrifiedVolume : CFuncBrush
 	public string EffectInterpenetrateName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncElectrifiedVolume", "m_EffectInterpenetrateName"); }
-	set { Schema.SetString(this.Handle, "CFuncElectrifiedVolume", "m_EffectInterpenetrateName", value); }
+		set { Schema.SetString(this.Handle, "CFuncElectrifiedVolume", "m_EffectInterpenetrateName", value); }
 	}
 
 	// m_EffectZapName
@@ -39,7 +39,7 @@ public partial class CFuncElectrifiedVolume : CFuncBrush
 	public string EffectZapName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncElectrifiedVolume", "m_EffectZapName"); }
-	set { Schema.SetString(this.Handle, "CFuncElectrifiedVolume", "m_EffectZapName", value); }
+		set { Schema.SetString(this.Handle, "CFuncElectrifiedVolume", "m_EffectZapName", value); }
 	}
 
 	// m_iszEffectSource
@@ -47,7 +47,7 @@ public partial class CFuncElectrifiedVolume : CFuncBrush
 	public string EffectSource
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncElectrifiedVolume", "m_iszEffectSource"); }
-	set { Schema.SetString(this.Handle, "CFuncElectrifiedVolume", "m_iszEffectSource", value); }
+		set { Schema.SetString(this.Handle, "CFuncElectrifiedVolume", "m_iszEffectSource", value); }
 	}
 
 }

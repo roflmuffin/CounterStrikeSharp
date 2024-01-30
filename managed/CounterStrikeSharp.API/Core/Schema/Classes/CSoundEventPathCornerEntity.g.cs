@@ -23,7 +23,7 @@ public partial class CSoundEventPathCornerEntity : CSoundEventEntity
 	public string PathCorner
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSoundEventPathCornerEntity", "m_iszPathCorner"); }
-	set { Schema.SetString(this.Handle, "CSoundEventPathCornerEntity", "m_iszPathCorner", value); }
+		set { Schema.SetString(this.Handle, "CSoundEventPathCornerEntity", "m_iszPathCorner", value); }
 	}
 
 	// m_iCountMax

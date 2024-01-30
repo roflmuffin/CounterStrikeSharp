@@ -39,7 +39,7 @@ public partial class CPhysExplosion : CPointEntity
 	public string TargetEntityName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPhysExplosion", "m_targetEntityName"); }
-	set { Schema.SetString(this.Handle, "CPhysExplosion", "m_targetEntityName", value); }
+		set { Schema.SetString(this.Handle, "CPhysExplosion", "m_targetEntityName", value); }
 	}
 
 	// m_flInnerRadius

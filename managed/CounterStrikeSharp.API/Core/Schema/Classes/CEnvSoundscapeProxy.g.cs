@@ -23,7 +23,7 @@ public partial class CEnvSoundscapeProxy : CEnvSoundscape
 	public string MainSoundscapeName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvSoundscapeProxy", "m_MainSoundscapeName"); }
-	set { Schema.SetString(this.Handle, "CEnvSoundscapeProxy", "m_MainSoundscapeName", value); }
+		set { Schema.SetString(this.Handle, "CEnvSoundscapeProxy", "m_MainSoundscapeName", value); }
 	}
 
 }

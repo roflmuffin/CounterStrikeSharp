@@ -27,7 +27,7 @@ public partial class CModelState : NativeObject
 	public string ModelName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CModelState", "m_ModelName"); }
-	set { Schema.SetString(this.Handle, "CModelState", "m_ModelName", value); }
+		set { Schema.SetString(this.Handle, "CModelState", "m_ModelName", value); }
 	}
 
 	// m_bClientClothCreationSuppressed

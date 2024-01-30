@@ -71,7 +71,7 @@ public partial class CBarnLight : CBaseModelEntity
 	public string LightStyleString
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBarnLight", "m_LightStyleString"); }
-	set { Schema.SetString(this.Handle, "CBarnLight", "m_LightStyleString", value); }
+		set { Schema.SetString(this.Handle, "CBarnLight", "m_LightStyleString", value); }
 	}
 
 	// m_flLightStyleStartTime

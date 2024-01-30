@@ -21,7 +21,7 @@ public partial class CEntityInstance : NativeEntity
 	public string PrivateVScripts
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEntityInstance", "m_iszPrivateVScripts"); }
-	set { Schema.SetString(this.Handle, "CEntityInstance", "m_iszPrivateVScripts", value); }
+		set { Schema.SetString(this.Handle, "CEntityInstance", "m_iszPrivateVScripts", value); }
 	}
 
 	// m_pEntity

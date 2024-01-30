@@ -63,7 +63,7 @@ public partial class CLogicAuto : CBaseEntity
 	public string Globalstate
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLogicAuto", "m_globalstate"); }
-	set { Schema.SetString(this.Handle, "CLogicAuto", "m_globalstate", value); }
+		set { Schema.SetString(this.Handle, "CLogicAuto", "m_globalstate", value); }
 	}
 
 }

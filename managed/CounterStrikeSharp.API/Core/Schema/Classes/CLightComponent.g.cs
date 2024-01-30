@@ -127,7 +127,7 @@ public partial class CLightComponent : CEntityComponent
 	public string Pattern
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLightComponent", "m_Pattern"); }
-	set { Schema.SetString(this.Handle, "CLightComponent", "m_Pattern", value); }
+		set { Schema.SetString(this.Handle, "CLightComponent", "m_Pattern", value); }
 	}
 
 	// m_nCascadeRenderStaticObjects

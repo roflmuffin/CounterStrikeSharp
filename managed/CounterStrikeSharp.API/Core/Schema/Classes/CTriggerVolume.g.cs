@@ -23,7 +23,7 @@ public partial class CTriggerVolume : CBaseModelEntity
 	public string FilterName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTriggerVolume", "m_iFilterName"); }
-	set { Schema.SetString(this.Handle, "CTriggerVolume", "m_iFilterName", value); }
+		set { Schema.SetString(this.Handle, "CTriggerVolume", "m_iFilterName", value); }
 	}
 
 	// m_hFilter

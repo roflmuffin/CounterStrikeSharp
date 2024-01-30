@@ -47,7 +47,7 @@ public partial class CAmbientGeneric : CPointEntity
 	public string Sound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CAmbientGeneric", "m_iszSound"); }
-	set { Schema.SetString(this.Handle, "CAmbientGeneric", "m_iszSound", value); }
+		set { Schema.SetString(this.Handle, "CAmbientGeneric", "m_iszSound", value); }
 	}
 
 	// m_sSourceEntName
@@ -55,7 +55,7 @@ public partial class CAmbientGeneric : CPointEntity
 	public string SourceEntName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CAmbientGeneric", "m_sSourceEntName"); }
-	set { Schema.SetString(this.Handle, "CAmbientGeneric", "m_sSourceEntName", value); }
+		set { Schema.SetString(this.Handle, "CAmbientGeneric", "m_sSourceEntName", value); }
 	}
 
 	// m_hSoundSource

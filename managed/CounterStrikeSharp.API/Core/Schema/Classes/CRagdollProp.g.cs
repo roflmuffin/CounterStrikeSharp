@@ -95,7 +95,7 @@ public partial class CRagdollProp : CBaseAnimGraph
 	public string StrOriginClassName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CRagdollProp", "m_strOriginClassName"); }
-	set { Schema.SetString(this.Handle, "CRagdollProp", "m_strOriginClassName", value); }
+		set { Schema.SetString(this.Handle, "CRagdollProp", "m_strOriginClassName", value); }
 	}
 
 	// m_strSourceClassName
@@ -103,7 +103,7 @@ public partial class CRagdollProp : CBaseAnimGraph
 	public string StrSourceClassName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CRagdollProp", "m_strSourceClassName"); }
-	set { Schema.SetString(this.Handle, "CRagdollProp", "m_strSourceClassName", value); }
+		set { Schema.SetString(this.Handle, "CRagdollProp", "m_strSourceClassName", value); }
 	}
 
 	// m_bHasBeenPhysgunned

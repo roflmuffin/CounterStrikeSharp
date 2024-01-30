@@ -23,7 +23,7 @@ public partial class CMultiLightProxy : CLogicalEntity
 	public string LightNameFilter
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CMultiLightProxy", "m_iszLightNameFilter"); }
-	set { Schema.SetString(this.Handle, "CMultiLightProxy", "m_iszLightNameFilter", value); }
+		set { Schema.SetString(this.Handle, "CMultiLightProxy", "m_iszLightNameFilter", value); }
 	}
 
 	// m_iszLightClassFilter
@@ -31,7 +31,7 @@ public partial class CMultiLightProxy : CLogicalEntity
 	public string LightClassFilter
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CMultiLightProxy", "m_iszLightClassFilter"); }
-	set { Schema.SetString(this.Handle, "CMultiLightProxy", "m_iszLightClassFilter", value); }
+		set { Schema.SetString(this.Handle, "CMultiLightProxy", "m_iszLightClassFilter", value); }
 	}
 
 	// m_flLightRadiusFilter

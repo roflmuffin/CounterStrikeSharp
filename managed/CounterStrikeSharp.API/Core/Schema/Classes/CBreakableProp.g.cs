@@ -71,7 +71,7 @@ public partial class CBreakableProp : CBaseProp
 	public string PhysicsDamageTableName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBreakableProp", "m_iszPhysicsDamageTableName"); }
-	set { Schema.SetString(this.Handle, "CBreakableProp", "m_iszPhysicsDamageTableName", value); }
+		set { Schema.SetString(this.Handle, "CBreakableProp", "m_iszPhysicsDamageTableName", value); }
 	}
 
 	// m_iszBasePropData
@@ -79,7 +79,7 @@ public partial class CBreakableProp : CBaseProp
 	public string BasePropData
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBreakableProp", "m_iszBasePropData"); }
-	set { Schema.SetString(this.Handle, "CBreakableProp", "m_iszBasePropData", value); }
+		set { Schema.SetString(this.Handle, "CBreakableProp", "m_iszBasePropData", value); }
 	}
 
 	// m_iInteractions
@@ -111,7 +111,7 @@ public partial class CBreakableProp : CBaseProp
 	public string ExplosionBuildupSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBreakableProp", "m_explosionBuildupSound"); }
-	set { Schema.SetString(this.Handle, "CBreakableProp", "m_explosionBuildupSound", value); }
+		set { Schema.SetString(this.Handle, "CBreakableProp", "m_explosionBuildupSound", value); }
 	}
 
 	// m_explosionCustomEffect
@@ -119,7 +119,7 @@ public partial class CBreakableProp : CBaseProp
 	public string ExplosionCustomEffect
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBreakableProp", "m_explosionCustomEffect"); }
-	set { Schema.SetString(this.Handle, "CBreakableProp", "m_explosionCustomEffect", value); }
+		set { Schema.SetString(this.Handle, "CBreakableProp", "m_explosionCustomEffect", value); }
 	}
 
 	// m_explosionCustomSound
@@ -127,7 +127,7 @@ public partial class CBreakableProp : CBaseProp
 	public string ExplosionCustomSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBreakableProp", "m_explosionCustomSound"); }
-	set { Schema.SetString(this.Handle, "CBreakableProp", "m_explosionCustomSound", value); }
+		set { Schema.SetString(this.Handle, "CBreakableProp", "m_explosionCustomSound", value); }
 	}
 
 	// m_explosionModifier
@@ -135,7 +135,7 @@ public partial class CBreakableProp : CBaseProp
 	public string ExplosionModifier
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBreakableProp", "m_explosionModifier"); }
-	set { Schema.SetString(this.Handle, "CBreakableProp", "m_explosionModifier", value); }
+		set { Schema.SetString(this.Handle, "CBreakableProp", "m_explosionModifier", value); }
 	}
 
 	// m_hPhysicsAttacker
@@ -171,7 +171,7 @@ public partial class CBreakableProp : CBaseProp
 	public string PuntSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBreakableProp", "m_iszPuntSound"); }
-	set { Schema.SetString(this.Handle, "CBreakableProp", "m_iszPuntSound", value); }
+		set { Schema.SetString(this.Handle, "CBreakableProp", "m_iszPuntSound", value); }
 	}
 
 	// m_noGhostCollision

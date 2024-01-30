@@ -23,7 +23,7 @@ public partial class CPointTemplate : CLogicalEntity
 	public string WorldName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointTemplate", "m_iszWorldName"); }
-	set { Schema.SetString(this.Handle, "CPointTemplate", "m_iszWorldName", value); }
+		set { Schema.SetString(this.Handle, "CPointTemplate", "m_iszWorldName", value); }
 	}
 
 	// m_iszSource2EntityLumpName
@@ -31,7 +31,7 @@ public partial class CPointTemplate : CLogicalEntity
 	public string Source2EntityLumpName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointTemplate", "m_iszSource2EntityLumpName"); }
-	set { Schema.SetString(this.Handle, "CPointTemplate", "m_iszSource2EntityLumpName", value); }
+		set { Schema.SetString(this.Handle, "CPointTemplate", "m_iszSource2EntityLumpName", value); }
 	}
 
 	// m_iszEntityFilterName
@@ -39,7 +39,7 @@ public partial class CPointTemplate : CLogicalEntity
 	public string EntityFilterName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointTemplate", "m_iszEntityFilterName"); }
-	set { Schema.SetString(this.Handle, "CPointTemplate", "m_iszEntityFilterName", value); }
+		set { Schema.SetString(this.Handle, "CPointTemplate", "m_iszEntityFilterName", value); }
 	}
 
 	// m_flTimeoutInterval

@@ -23,7 +23,7 @@ public partial class CLogicLineToEntity : CLogicalEntity
 	public string SourceName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLogicLineToEntity", "m_SourceName"); }
-	set { Schema.SetString(this.Handle, "CLogicLineToEntity", "m_SourceName", value); }
+		set { Schema.SetString(this.Handle, "CLogicLineToEntity", "m_SourceName", value); }
 	}
 
 	// m_StartEntity

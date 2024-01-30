@@ -63,7 +63,7 @@ public partial class CBasePlayerController : CBaseEntity
 	public string NetworkIDString
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBasePlayerController", "m_szNetworkIDString"); }
-	set { Schema.SetString(this.Handle, "CBasePlayerController", "m_szNetworkIDString", value); }
+		set { Schema.SetString(this.Handle, "CBasePlayerController", "m_szNetworkIDString", value); }
 	}
 
 	// m_fLerpTime

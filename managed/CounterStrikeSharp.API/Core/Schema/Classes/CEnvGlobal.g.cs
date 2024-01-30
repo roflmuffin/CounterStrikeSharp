@@ -23,7 +23,7 @@ public partial class CEnvGlobal : CLogicalEntity
 	public string Globalstate
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvGlobal", "m_globalstate"); }
-	set { Schema.SetString(this.Handle, "CEnvGlobal", "m_globalstate", value); }
+		set { Schema.SetString(this.Handle, "CEnvGlobal", "m_globalstate", value); }
 	}
 
 	// m_triggermode

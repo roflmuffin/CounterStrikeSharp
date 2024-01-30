@@ -23,7 +23,7 @@ public partial class CFuncMonitor : CFuncBrush
 	public string TargetCamera
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncMonitor", "m_targetCamera"); }
-	set { Schema.SetString(this.Handle, "CFuncMonitor", "m_targetCamera", value); }
+		set { Schema.SetString(this.Handle, "CFuncMonitor", "m_targetCamera", value); }
 	}
 
 	// m_nResolutionEnum
@@ -43,7 +43,7 @@ public partial class CFuncMonitor : CFuncBrush
 	public string BrushModelName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncMonitor", "m_brushModelName"); }
-	set { Schema.SetString(this.Handle, "CFuncMonitor", "m_brushModelName", value); }
+		set { Schema.SetString(this.Handle, "CFuncMonitor", "m_brushModelName", value); }
 	}
 
 	// m_hTargetCamera

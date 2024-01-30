@@ -23,7 +23,7 @@ public partial class CEnvInstructorHint : CPointEntity
 	public string Name
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorHint", "m_iszName"); }
-	set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszName", value); }
+		set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszName", value); }
 	}
 
 	// m_iszReplace_Key
@@ -31,7 +31,7 @@ public partial class CEnvInstructorHint : CPointEntity
 	public string Replace_Key
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorHint", "m_iszReplace_Key"); }
-	set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszReplace_Key", value); }
+		set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszReplace_Key", value); }
 	}
 
 	// m_iszHintTargetEntity
@@ -39,7 +39,7 @@ public partial class CEnvInstructorHint : CPointEntity
 	public string HintTargetEntity
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorHint", "m_iszHintTargetEntity"); }
-	set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszHintTargetEntity", value); }
+		set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszHintTargetEntity", value); }
 	}
 
 	// m_iTimeout
@@ -55,7 +55,7 @@ public partial class CEnvInstructorHint : CPointEntity
 	public string Icon_Onscreen
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorHint", "m_iszIcon_Onscreen"); }
-	set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszIcon_Onscreen", value); }
+		set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszIcon_Onscreen", value); }
 	}
 
 	// m_iszIcon_Offscreen
@@ -63,7 +63,7 @@ public partial class CEnvInstructorHint : CPointEntity
 	public string Icon_Offscreen
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorHint", "m_iszIcon_Offscreen"); }
-	set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszIcon_Offscreen", value); }
+		set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszIcon_Offscreen", value); }
 	}
 
 	// m_iszCaption
@@ -71,7 +71,7 @@ public partial class CEnvInstructorHint : CPointEntity
 	public string Caption
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorHint", "m_iszCaption"); }
-	set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszCaption", value); }
+		set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszCaption", value); }
 	}
 
 	// m_iszActivatorCaption
@@ -79,7 +79,7 @@ public partial class CEnvInstructorHint : CPointEntity
 	public string ActivatorCaption
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorHint", "m_iszActivatorCaption"); }
-	set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszActivatorCaption", value); }
+		set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszActivatorCaption", value); }
 	}
 
 	// m_Color
@@ -135,7 +135,7 @@ public partial class CEnvInstructorHint : CPointEntity
 	public string Binding
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorHint", "m_iszBinding"); }
-	set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszBinding", value); }
+		set { Schema.SetString(this.Handle, "CEnvInstructorHint", "m_iszBinding", value); }
 	}
 
 	// m_bAllowNoDrawTarget

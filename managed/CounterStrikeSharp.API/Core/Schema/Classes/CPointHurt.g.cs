@@ -39,7 +39,7 @@ public partial class CPointHurt : CPointEntity
 	public string StrTarget
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointHurt", "m_strTarget"); }
-	set { Schema.SetString(this.Handle, "CPointHurt", "m_strTarget", value); }
+		set { Schema.SetString(this.Handle, "CPointHurt", "m_strTarget", value); }
 	}
 
 	// m_pActivator

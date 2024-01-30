@@ -27,7 +27,7 @@ public partial class CInfoWorldLayer : CBaseEntity
 	public string WorldName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CInfoWorldLayer", "m_worldName"); }
-	set { Schema.SetString(this.Handle, "CInfoWorldLayer", "m_worldName", value); }
+		set { Schema.SetString(this.Handle, "CInfoWorldLayer", "m_worldName", value); }
 	}
 
 	// m_layerName
@@ -35,7 +35,7 @@ public partial class CInfoWorldLayer : CBaseEntity
 	public string LayerName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CInfoWorldLayer", "m_layerName"); }
-	set { Schema.SetString(this.Handle, "CInfoWorldLayer", "m_layerName", value); }
+		set { Schema.SetString(this.Handle, "CInfoWorldLayer", "m_layerName", value); }
 	}
 
 	// m_bWorldLayerVisible

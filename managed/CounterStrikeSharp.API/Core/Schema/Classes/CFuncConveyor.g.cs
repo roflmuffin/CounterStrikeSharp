@@ -23,7 +23,7 @@ public partial class CFuncConveyor : CBaseModelEntity
 	public string SzConveyorModels
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncConveyor", "m_szConveyorModels"); }
-	set { Schema.SetString(this.Handle, "CFuncConveyor", "m_szConveyorModels", value); }
+		set { Schema.SetString(this.Handle, "CFuncConveyor", "m_szConveyorModels", value); }
 	}
 
 	// m_flTransitionDurationSeconds

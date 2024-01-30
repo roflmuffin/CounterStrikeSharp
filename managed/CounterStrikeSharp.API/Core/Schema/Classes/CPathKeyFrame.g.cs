@@ -35,7 +35,7 @@ public partial class CPathKeyFrame : CLogicalEntity
 	public string INextKey
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPathKeyFrame", "m_iNextKey"); }
-	set { Schema.SetString(this.Handle, "CPathKeyFrame", "m_iNextKey", value); }
+		set { Schema.SetString(this.Handle, "CPathKeyFrame", "m_iNextKey", value); }
 	}
 
 	// m_flNextTime

@@ -23,7 +23,7 @@ public partial class CFogVolume : CServerOnlyModelEntity
 	public string FogName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFogVolume", "m_fogName"); }
-	set { Schema.SetString(this.Handle, "CFogVolume", "m_fogName", value); }
+		set { Schema.SetString(this.Handle, "CFogVolume", "m_fogName", value); }
 	}
 
 	// m_postProcessName
@@ -31,7 +31,7 @@ public partial class CFogVolume : CServerOnlyModelEntity
 	public string PostProcessName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFogVolume", "m_postProcessName"); }
-	set { Schema.SetString(this.Handle, "CFogVolume", "m_postProcessName", value); }
+		set { Schema.SetString(this.Handle, "CFogVolume", "m_postProcessName", value); }
 	}
 
 	// m_colorCorrectionName
@@ -39,7 +39,7 @@ public partial class CFogVolume : CServerOnlyModelEntity
 	public string ColorCorrectionName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFogVolume", "m_colorCorrectionName"); }
-	set { Schema.SetString(this.Handle, "CFogVolume", "m_colorCorrectionName", value); }
+		set { Schema.SetString(this.Handle, "CFogVolume", "m_colorCorrectionName", value); }
 	}
 
 	// m_bDisabled

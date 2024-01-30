@@ -35,7 +35,7 @@ public partial class CInfoOffscreenPanoramaTexture : CPointEntity
 	public string LayoutFileName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CInfoOffscreenPanoramaTexture", "m_szLayoutFileName"); }
-	set { Schema.SetString(this.Handle, "CInfoOffscreenPanoramaTexture", "m_szLayoutFileName", value); }
+		set { Schema.SetString(this.Handle, "CInfoOffscreenPanoramaTexture", "m_szLayoutFileName", value); }
 	}
 
 	// m_RenderAttrName
@@ -43,7 +43,7 @@ public partial class CInfoOffscreenPanoramaTexture : CPointEntity
 	public string RenderAttrName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CInfoOffscreenPanoramaTexture", "m_RenderAttrName"); }
-	set { Schema.SetString(this.Handle, "CInfoOffscreenPanoramaTexture", "m_RenderAttrName", value); }
+		set { Schema.SetString(this.Handle, "CInfoOffscreenPanoramaTexture", "m_RenderAttrName", value); }
 	}
 
 	// m_TargetEntities
@@ -63,7 +63,7 @@ public partial class CInfoOffscreenPanoramaTexture : CPointEntity
 	public string TargetsName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CInfoOffscreenPanoramaTexture", "m_szTargetsName"); }
-	set { Schema.SetString(this.Handle, "CInfoOffscreenPanoramaTexture", "m_szTargetsName", value); }
+		set { Schema.SetString(this.Handle, "CInfoOffscreenPanoramaTexture", "m_szTargetsName", value); }
 	}
 
 	// m_AdditionalTargetEntities

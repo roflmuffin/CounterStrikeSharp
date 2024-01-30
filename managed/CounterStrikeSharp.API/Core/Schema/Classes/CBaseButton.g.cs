@@ -39,7 +39,7 @@ public partial class CBaseButton : CBaseToggle
 	public string UseSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseButton", "m_sUseSound"); }
-	set { Schema.SetString(this.Handle, "CBaseButton", "m_sUseSound", value); }
+		set { Schema.SetString(this.Handle, "CBaseButton", "m_sUseSound", value); }
 	}
 
 	// m_sLockedSound
@@ -47,7 +47,7 @@ public partial class CBaseButton : CBaseToggle
 	public string LockedSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseButton", "m_sLockedSound"); }
-	set { Schema.SetString(this.Handle, "CBaseButton", "m_sLockedSound", value); }
+		set { Schema.SetString(this.Handle, "CBaseButton", "m_sLockedSound", value); }
 	}
 
 	// m_sUnlockedSound
@@ -55,7 +55,7 @@ public partial class CBaseButton : CBaseToggle
 	public string UnlockedSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseButton", "m_sUnlockedSound"); }
-	set { Schema.SetString(this.Handle, "CBaseButton", "m_sUnlockedSound", value); }
+		set { Schema.SetString(this.Handle, "CBaseButton", "m_sUnlockedSound", value); }
 	}
 
 	// m_bLocked
@@ -115,7 +115,7 @@ public partial class CBaseButton : CBaseToggle
 	public string SGlowEntity
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseButton", "m_sGlowEntity"); }
-	set { Schema.SetString(this.Handle, "CBaseButton", "m_sGlowEntity", value); }
+		set { Schema.SetString(this.Handle, "CBaseButton", "m_sGlowEntity", value); }
 	}
 
 	// m_glowEntity
@@ -131,7 +131,7 @@ public partial class CBaseButton : CBaseToggle
 	public string DisplayText
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseButton", "m_szDisplayText"); }
-	set { Schema.SetString(this.Handle, "CBaseButton", "m_szDisplayText", value); }
+		set { Schema.SetString(this.Handle, "CBaseButton", "m_szDisplayText", value); }
 	}
 
 }

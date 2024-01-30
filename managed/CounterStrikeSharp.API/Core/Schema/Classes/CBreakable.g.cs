@@ -35,7 +35,7 @@ public partial class CBreakable : CBaseModelEntity
 	public string SpawnObject
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBreakable", "m_iszSpawnObject"); }
-	set { Schema.SetString(this.Handle, "CBreakable", "m_iszSpawnObject", value); }
+		set { Schema.SetString(this.Handle, "CBreakable", "m_iszSpawnObject", value); }
 	}
 
 	// m_flPressureDelay
@@ -51,7 +51,7 @@ public partial class CBreakable : CBaseModelEntity
 	public string PropData
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBreakable", "m_iszPropData"); }
-	set { Schema.SetString(this.Handle, "CBreakable", "m_iszPropData", value); }
+		set { Schema.SetString(this.Handle, "CBreakable", "m_iszPropData", value); }
 	}
 
 	// m_impactEnergyScale
@@ -87,7 +87,7 @@ public partial class CBreakable : CBaseModelEntity
 	public string PhysicsDamageTableName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBreakable", "m_iszPhysicsDamageTableName"); }
-	set { Schema.SetString(this.Handle, "CBreakable", "m_iszPhysicsDamageTableName", value); }
+		set { Schema.SetString(this.Handle, "CBreakable", "m_iszPhysicsDamageTableName", value); }
 	}
 
 	// m_iszBasePropData
@@ -95,7 +95,7 @@ public partial class CBreakable : CBaseModelEntity
 	public string BasePropData
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBreakable", "m_iszBasePropData"); }
-	set { Schema.SetString(this.Handle, "CBreakable", "m_iszBasePropData", value); }
+		set { Schema.SetString(this.Handle, "CBreakable", "m_iszBasePropData", value); }
 	}
 
 	// m_iInteractions

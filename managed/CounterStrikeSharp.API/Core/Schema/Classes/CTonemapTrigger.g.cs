@@ -23,7 +23,7 @@ public partial class CTonemapTrigger : CBaseTrigger
 	public string TonemapControllerName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTonemapTrigger", "m_tonemapControllerName"); }
-	set { Schema.SetString(this.Handle, "CTonemapTrigger", "m_tonemapControllerName", value); }
+		set { Schema.SetString(this.Handle, "CTonemapTrigger", "m_tonemapControllerName", value); }
 	}
 
 	// m_hTonemapController

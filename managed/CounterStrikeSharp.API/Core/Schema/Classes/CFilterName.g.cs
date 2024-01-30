@@ -23,7 +23,7 @@ public partial class CFilterName : CBaseFilter
 	public string FilterName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFilterName", "m_iFilterName"); }
-	set { Schema.SetString(this.Handle, "CFilterName", "m_iFilterName", value); }
+		set { Schema.SetString(this.Handle, "CFilterName", "m_iFilterName", value); }
 	}
 
 }

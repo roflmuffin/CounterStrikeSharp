@@ -79,7 +79,7 @@ public partial class CEnvCubemapFog : CBaseEntity
 	public string SkyEntity
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvCubemapFog", "m_iszSkyEntity"); }
-	set { Schema.SetString(this.Handle, "CEnvCubemapFog", "m_iszSkyEntity", value); }
+		set { Schema.SetString(this.Handle, "CEnvCubemapFog", "m_iszSkyEntity", value); }
 	}
 
 	// m_hFogCubemapTexture

@@ -31,7 +31,7 @@ public partial class CEnvBeam : CBeam
 	public string StartEntity
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvBeam", "m_iszStartEntity"); }
-	set { Schema.SetString(this.Handle, "CEnvBeam", "m_iszStartEntity", value); }
+		set { Schema.SetString(this.Handle, "CEnvBeam", "m_iszStartEntity", value); }
 	}
 
 	// m_iszEndEntity
@@ -39,7 +39,7 @@ public partial class CEnvBeam : CBeam
 	public string EndEntity
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvBeam", "m_iszEndEntity"); }
-	set { Schema.SetString(this.Handle, "CEnvBeam", "m_iszEndEntity", value); }
+		set { Schema.SetString(this.Handle, "CEnvBeam", "m_iszEndEntity", value); }
 	}
 
 	// m_life
@@ -67,7 +67,7 @@ public partial class CEnvBeam : CBeam
 	public string SpriteName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvBeam", "m_iszSpriteName"); }
-	set { Schema.SetString(this.Handle, "CEnvBeam", "m_iszSpriteName", value); }
+		set { Schema.SetString(this.Handle, "CEnvBeam", "m_iszSpriteName", value); }
 	}
 
 	// m_frameStart
@@ -95,7 +95,7 @@ public partial class CEnvBeam : CBeam
 	public string FilterName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvBeam", "m_iFilterName"); }
-	set { Schema.SetString(this.Handle, "CEnvBeam", "m_iFilterName", value); }
+		set { Schema.SetString(this.Handle, "CEnvBeam", "m_iFilterName", value); }
 	}
 
 	// m_hFilter
@@ -107,7 +107,7 @@ public partial class CEnvBeam : CBeam
 	public string Decal
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvBeam", "m_iszDecal"); }
-	set { Schema.SetString(this.Handle, "CEnvBeam", "m_iszDecal", value); }
+		set { Schema.SetString(this.Handle, "CEnvBeam", "m_iszDecal", value); }
 	}
 
 	// m_OnTouchedByEntity

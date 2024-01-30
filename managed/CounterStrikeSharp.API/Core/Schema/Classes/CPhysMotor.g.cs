@@ -23,7 +23,7 @@ public partial class CPhysMotor : CLogicalEntity
 	public string NameAttach
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPhysMotor", "m_nameAttach"); }
-	set { Schema.SetString(this.Handle, "CPhysMotor", "m_nameAttach", value); }
+		set { Schema.SetString(this.Handle, "CPhysMotor", "m_nameAttach", value); }
 	}
 
 	// m_hAttachedObject

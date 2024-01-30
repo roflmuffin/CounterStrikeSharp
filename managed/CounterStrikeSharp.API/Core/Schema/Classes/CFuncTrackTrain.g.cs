@@ -83,7 +83,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 	public string SoundMove
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncTrackTrain", "m_iszSoundMove"); }
-	set { Schema.SetString(this.Handle, "CFuncTrackTrain", "m_iszSoundMove", value); }
+		set { Schema.SetString(this.Handle, "CFuncTrackTrain", "m_iszSoundMove", value); }
 	}
 
 	// m_iszSoundMovePing
@@ -91,7 +91,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 	public string SoundMovePing
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncTrackTrain", "m_iszSoundMovePing"); }
-	set { Schema.SetString(this.Handle, "CFuncTrackTrain", "m_iszSoundMovePing", value); }
+		set { Schema.SetString(this.Handle, "CFuncTrackTrain", "m_iszSoundMovePing", value); }
 	}
 
 	// m_iszSoundStart
@@ -99,7 +99,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 	public string SoundStart
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncTrackTrain", "m_iszSoundStart"); }
-	set { Schema.SetString(this.Handle, "CFuncTrackTrain", "m_iszSoundStart", value); }
+		set { Schema.SetString(this.Handle, "CFuncTrackTrain", "m_iszSoundStart", value); }
 	}
 
 	// m_iszSoundStop
@@ -107,7 +107,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 	public string SoundStop
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncTrackTrain", "m_iszSoundStop"); }
-	set { Schema.SetString(this.Handle, "CFuncTrackTrain", "m_iszSoundStop", value); }
+		set { Schema.SetString(this.Handle, "CFuncTrackTrain", "m_iszSoundStop", value); }
 	}
 
 	// m_strPathTarget
@@ -115,7 +115,7 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 	public string StrPathTarget
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncTrackTrain", "m_strPathTarget"); }
-	set { Schema.SetString(this.Handle, "CFuncTrackTrain", "m_strPathTarget", value); }
+		set { Schema.SetString(this.Handle, "CFuncTrackTrain", "m_strPathTarget", value); }
 	}
 
 	// m_flMoveSoundMinDuration

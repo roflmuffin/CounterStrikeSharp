@@ -23,7 +23,7 @@ public partial class COrnamentProp : CDynamicProp
 	public string InitialOwner
 	{
 		get { return Schema.GetUtf8String(this.Handle, "COrnamentProp", "m_initialOwner"); }
-	set { Schema.SetString(this.Handle, "COrnamentProp", "m_initialOwner", value); }
+		set { Schema.SetString(this.Handle, "COrnamentProp", "m_initialOwner", value); }
 	}
 
 }

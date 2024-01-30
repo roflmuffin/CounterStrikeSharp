@@ -43,7 +43,7 @@ public partial class CBaseViewModel : CBaseAnimGraph
 	public string VMName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseViewModel", "m_sVMName"); }
-	set { Schema.SetString(this.Handle, "CBaseViewModel", "m_sVMName", value); }
+		set { Schema.SetString(this.Handle, "CBaseViewModel", "m_sVMName", value); }
 	}
 
 	// m_sAnimationPrefix
@@ -51,7 +51,7 @@ public partial class CBaseViewModel : CBaseAnimGraph
 	public string AnimationPrefix
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseViewModel", "m_sAnimationPrefix"); }
-	set { Schema.SetString(this.Handle, "CBaseViewModel", "m_sAnimationPrefix", value); }
+		set { Schema.SetString(this.Handle, "CBaseViewModel", "m_sAnimationPrefix", value); }
 	}
 
 	// m_hOldLayerSequence

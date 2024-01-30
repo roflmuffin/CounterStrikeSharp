@@ -39,7 +39,7 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 	public string MuzzleAttachment
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBasePlayerWeaponVData", "m_sMuzzleAttachment"); }
-	set { Schema.SetString(this.Handle, "CBasePlayerWeaponVData", "m_sMuzzleAttachment", value); }
+		set { Schema.SetString(this.Handle, "CBasePlayerWeaponVData", "m_sMuzzleAttachment", value); }
 	}
 
 	// m_iFlags

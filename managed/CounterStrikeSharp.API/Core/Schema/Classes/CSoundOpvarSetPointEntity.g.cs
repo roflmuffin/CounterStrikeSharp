@@ -91,7 +91,7 @@ public partial class CSoundOpvarSetPointEntity : CSoundOpvarSetPointBase
 	public string DynamicEntityName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSoundOpvarSetPointEntity", "m_iszDynamicEntityName"); }
-	set { Schema.SetString(this.Handle, "CSoundOpvarSetPointEntity", "m_iszDynamicEntityName", value); }
+		set { Schema.SetString(this.Handle, "CSoundOpvarSetPointEntity", "m_iszDynamicEntityName", value); }
 	}
 
 	// m_flPathingDistanceNormFactor

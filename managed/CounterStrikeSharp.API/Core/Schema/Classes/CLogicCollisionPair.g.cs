@@ -23,7 +23,7 @@ public partial class CLogicCollisionPair : CLogicalEntity
 	public string NameAttach1
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLogicCollisionPair", "m_nameAttach1"); }
-	set { Schema.SetString(this.Handle, "CLogicCollisionPair", "m_nameAttach1", value); }
+		set { Schema.SetString(this.Handle, "CLogicCollisionPair", "m_nameAttach1", value); }
 	}
 
 	// m_nameAttach2
@@ -31,7 +31,7 @@ public partial class CLogicCollisionPair : CLogicalEntity
 	public string NameAttach2
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLogicCollisionPair", "m_nameAttach2"); }
-	set { Schema.SetString(this.Handle, "CLogicCollisionPair", "m_nameAttach2", value); }
+		set { Schema.SetString(this.Handle, "CLogicCollisionPair", "m_nameAttach2", value); }
 	}
 
 	// m_disabled

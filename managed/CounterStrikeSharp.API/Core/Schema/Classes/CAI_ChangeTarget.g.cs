@@ -23,7 +23,7 @@ public partial class CAI_ChangeTarget : CBaseEntity
 	public string NewTarget
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CAI_ChangeTarget", "m_iszNewTarget"); }
-	set { Schema.SetString(this.Handle, "CAI_ChangeTarget", "m_iszNewTarget", value); }
+		set { Schema.SetString(this.Handle, "CAI_ChangeTarget", "m_iszNewTarget", value); }
 	}
 
 }

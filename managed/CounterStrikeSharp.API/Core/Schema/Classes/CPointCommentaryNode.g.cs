@@ -23,7 +23,7 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 	public string PreCommands
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointCommentaryNode", "m_iszPreCommands"); }
-	set { Schema.SetString(this.Handle, "CPointCommentaryNode", "m_iszPreCommands", value); }
+		set { Schema.SetString(this.Handle, "CPointCommentaryNode", "m_iszPreCommands", value); }
 	}
 
 	// m_iszPostCommands
@@ -31,7 +31,7 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 	public string PostCommands
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointCommentaryNode", "m_iszPostCommands"); }
-	set { Schema.SetString(this.Handle, "CPointCommentaryNode", "m_iszPostCommands", value); }
+		set { Schema.SetString(this.Handle, "CPointCommentaryNode", "m_iszPostCommands", value); }
 	}
 
 	// m_iszCommentaryFile
@@ -39,7 +39,7 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 	public string CommentaryFile
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointCommentaryNode", "m_iszCommentaryFile"); }
-	set { Schema.SetString(this.Handle, "CPointCommentaryNode", "m_iszCommentaryFile", value); }
+		set { Schema.SetString(this.Handle, "CPointCommentaryNode", "m_iszCommentaryFile", value); }
 	}
 
 	// m_iszViewTarget
@@ -47,7 +47,7 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 	public string IszViewTarget
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointCommentaryNode", "m_iszViewTarget"); }
-	set { Schema.SetString(this.Handle, "CPointCommentaryNode", "m_iszViewTarget", value); }
+		set { Schema.SetString(this.Handle, "CPointCommentaryNode", "m_iszViewTarget", value); }
 	}
 
 	// m_hViewTarget
@@ -63,7 +63,7 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 	public string IszViewPosition
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointCommentaryNode", "m_iszViewPosition"); }
-	set { Schema.SetString(this.Handle, "CPointCommentaryNode", "m_iszViewPosition", value); }
+		set { Schema.SetString(this.Handle, "CPointCommentaryNode", "m_iszViewPosition", value); }
 	}
 
 	// m_hViewPosition
@@ -143,7 +143,7 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 	public string Title
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointCommentaryNode", "m_iszTitle"); }
-	set { Schema.SetString(this.Handle, "CPointCommentaryNode", "m_iszTitle", value); }
+		set { Schema.SetString(this.Handle, "CPointCommentaryNode", "m_iszTitle", value); }
 	}
 
 	// m_iszSpeakers
@@ -151,7 +151,7 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 	public string Speakers
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointCommentaryNode", "m_iszSpeakers"); }
-	set { Schema.SetString(this.Handle, "CPointCommentaryNode", "m_iszSpeakers", value); }
+		set { Schema.SetString(this.Handle, "CPointCommentaryNode", "m_iszSpeakers", value); }
 	}
 
 	// m_iNodeNumber

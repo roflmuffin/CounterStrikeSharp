@@ -27,7 +27,7 @@ public partial class CFuncInteractionLayerClip : CBaseModelEntity
 	public string InteractsAs
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncInteractionLayerClip", "m_iszInteractsAs"); }
-	set { Schema.SetString(this.Handle, "CFuncInteractionLayerClip", "m_iszInteractsAs", value); }
+		set { Schema.SetString(this.Handle, "CFuncInteractionLayerClip", "m_iszInteractsAs", value); }
 	}
 
 	// m_iszInteractsWith
@@ -35,7 +35,7 @@ public partial class CFuncInteractionLayerClip : CBaseModelEntity
 	public string InteractsWith
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncInteractionLayerClip", "m_iszInteractsWith"); }
-	set { Schema.SetString(this.Handle, "CFuncInteractionLayerClip", "m_iszInteractsWith", value); }
+		set { Schema.SetString(this.Handle, "CFuncInteractionLayerClip", "m_iszInteractsWith", value); }
 	}
 
 }

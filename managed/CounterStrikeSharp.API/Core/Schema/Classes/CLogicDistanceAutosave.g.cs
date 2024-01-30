@@ -23,7 +23,7 @@ public partial class CLogicDistanceAutosave : CLogicalEntity
 	public string TargetEntity
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLogicDistanceAutosave", "m_iszTargetEntity"); }
-	set { Schema.SetString(this.Handle, "CLogicDistanceAutosave", "m_iszTargetEntity", value); }
+		set { Schema.SetString(this.Handle, "CLogicDistanceAutosave", "m_iszTargetEntity", value); }
 	}
 
 	// m_flDistanceToPlayer

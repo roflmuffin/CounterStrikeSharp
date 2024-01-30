@@ -47,7 +47,7 @@ public partial class CTriggerSndSosOpvar : CBaseTrigger
 	public string OpvarName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTriggerSndSosOpvar", "m_opvarName"); }
-	set { Schema.SetString(this.Handle, "CTriggerSndSosOpvar", "m_opvarName", value); }
+		set { Schema.SetString(this.Handle, "CTriggerSndSosOpvar", "m_opvarName", value); }
 	}
 
 	// m_stackName
@@ -55,7 +55,7 @@ public partial class CTriggerSndSosOpvar : CBaseTrigger
 	public string StackName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTriggerSndSosOpvar", "m_stackName"); }
-	set { Schema.SetString(this.Handle, "CTriggerSndSosOpvar", "m_stackName", value); }
+		set { Schema.SetString(this.Handle, "CTriggerSndSosOpvar", "m_stackName", value); }
 	}
 
 	// m_operatorName
@@ -63,7 +63,7 @@ public partial class CTriggerSndSosOpvar : CBaseTrigger
 	public string OperatorName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTriggerSndSosOpvar", "m_operatorName"); }
-	set { Schema.SetString(this.Handle, "CTriggerSndSosOpvar", "m_operatorName", value); }
+		set { Schema.SetString(this.Handle, "CTriggerSndSosOpvar", "m_operatorName", value); }
 	}
 
 	// m_bVolIs2D

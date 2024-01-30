@@ -39,7 +39,7 @@ public partial class CMultiSource : CLogicalEntity
 	public string Globalstate
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CMultiSource", "m_globalstate"); }
-	set { Schema.SetString(this.Handle, "CMultiSource", "m_globalstate", value); }
+		set { Schema.SetString(this.Handle, "CMultiSource", "m_globalstate", value); }
 	}
 
 }

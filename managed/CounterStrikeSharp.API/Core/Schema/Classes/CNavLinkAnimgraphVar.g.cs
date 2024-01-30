@@ -23,7 +23,7 @@ public partial class CNavLinkAnimgraphVar : NativeObject
 	public string StrAnimgraphVar
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CNavLinkAnimgraphVar", "m_strAnimgraphVar"); }
-	set { Schema.SetString(this.Handle, "CNavLinkAnimgraphVar", "m_strAnimgraphVar", value); }
+		set { Schema.SetString(this.Handle, "CNavLinkAnimgraphVar", "m_strAnimgraphVar", value); }
 	}
 
 	// m_unAlignmentDegrees

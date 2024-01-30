@@ -23,7 +23,7 @@ public partial class CFootstepControl : CBaseTrigger
 	public string Source
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFootstepControl", "m_source"); }
-	set { Schema.SetString(this.Handle, "CFootstepControl", "m_source", value); }
+		set { Schema.SetString(this.Handle, "CFootstepControl", "m_source", value); }
 	}
 
 	// m_destination
@@ -31,7 +31,7 @@ public partial class CFootstepControl : CBaseTrigger
 	public string Destination
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFootstepControl", "m_destination"); }
-	set { Schema.SetString(this.Handle, "CFootstepControl", "m_destination", value); }
+		set { Schema.SetString(this.Handle, "CFootstepControl", "m_destination", value); }
 	}
 
 }

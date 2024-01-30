@@ -59,7 +59,7 @@ public partial class CBaseCombatCharacter : CBaseFlex
 	public string StrRelationships
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseCombatCharacter", "m_strRelationships"); }
-	set { Schema.SetString(this.Handle, "CBaseCombatCharacter", "m_strRelationships", value); }
+		set { Schema.SetString(this.Handle, "CBaseCombatCharacter", "m_strRelationships", value); }
 	}
 
 	// m_eHull

@@ -35,7 +35,7 @@ public partial class CPhysicsSpring : CBaseEntity
 	public string NameAttachStart
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPhysicsSpring", "m_nameAttachStart"); }
-	set { Schema.SetString(this.Handle, "CPhysicsSpring", "m_nameAttachStart", value); }
+		set { Schema.SetString(this.Handle, "CPhysicsSpring", "m_nameAttachStart", value); }
 	}
 
 	// m_nameAttachEnd
@@ -43,7 +43,7 @@ public partial class CPhysicsSpring : CBaseEntity
 	public string NameAttachEnd
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPhysicsSpring", "m_nameAttachEnd"); }
-	set { Schema.SetString(this.Handle, "CPhysicsSpring", "m_nameAttachEnd", value); }
+		set { Schema.SetString(this.Handle, "CPhysicsSpring", "m_nameAttachEnd", value); }
 	}
 
 	// m_start

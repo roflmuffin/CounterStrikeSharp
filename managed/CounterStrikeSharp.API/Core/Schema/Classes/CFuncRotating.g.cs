@@ -55,7 +55,7 @@ public partial class CFuncRotating : CBaseModelEntity
 	public string NoiseRunning
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncRotating", "m_NoiseRunning"); }
-	set { Schema.SetString(this.Handle, "CFuncRotating", "m_NoiseRunning", value); }
+		set { Schema.SetString(this.Handle, "CFuncRotating", "m_NoiseRunning", value); }
 	}
 
 	// m_bReversed

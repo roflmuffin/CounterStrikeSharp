@@ -35,7 +35,7 @@ public partial class CFuncMoveLinear : CBaseToggle
 	public string SoundStart
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncMoveLinear", "m_soundStart"); }
-	set { Schema.SetString(this.Handle, "CFuncMoveLinear", "m_soundStart", value); }
+		set { Schema.SetString(this.Handle, "CFuncMoveLinear", "m_soundStart", value); }
 	}
 
 	// m_soundStop
@@ -43,7 +43,7 @@ public partial class CFuncMoveLinear : CBaseToggle
 	public string SoundStop
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncMoveLinear", "m_soundStop"); }
-	set { Schema.SetString(this.Handle, "CFuncMoveLinear", "m_soundStop", value); }
+		set { Schema.SetString(this.Handle, "CFuncMoveLinear", "m_soundStop", value); }
 	}
 
 	// m_currentSound
@@ -51,7 +51,7 @@ public partial class CFuncMoveLinear : CBaseToggle
 	public string CurrentSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncMoveLinear", "m_currentSound"); }
-	set { Schema.SetString(this.Handle, "CFuncMoveLinear", "m_currentSound", value); }
+		set { Schema.SetString(this.Handle, "CFuncMoveLinear", "m_currentSound", value); }
 	}
 
 	// m_flBlockDamage

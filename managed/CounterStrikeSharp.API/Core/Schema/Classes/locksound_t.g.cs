@@ -23,7 +23,7 @@ public partial class locksound_t : NativeObject
 	public string SLockedSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "locksound_t", "sLockedSound"); }
-	set { Schema.SetString(this.Handle, "locksound_t", "sLockedSound", value); }
+		set { Schema.SetString(this.Handle, "locksound_t", "sLockedSound", value); }
 	}
 
 	// sUnlockedSound
@@ -31,7 +31,7 @@ public partial class locksound_t : NativeObject
 	public string SUnlockedSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "locksound_t", "sUnlockedSound"); }
-	set { Schema.SetString(this.Handle, "locksound_t", "sUnlockedSound", value); }
+		set { Schema.SetString(this.Handle, "locksound_t", "sUnlockedSound", value); }
 	}
 
 	// flwaitSound

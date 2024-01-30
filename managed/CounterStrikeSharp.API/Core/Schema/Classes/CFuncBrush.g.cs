@@ -35,7 +35,7 @@ public partial class CFuncBrush : CBaseModelEntity
 	public string ExcludedClass
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncBrush", "m_iszExcludedClass"); }
-	set { Schema.SetString(this.Handle, "CFuncBrush", "m_iszExcludedClass", value); }
+		set { Schema.SetString(this.Handle, "CFuncBrush", "m_iszExcludedClass", value); }
 	}
 
 	// m_bInvertExclusion

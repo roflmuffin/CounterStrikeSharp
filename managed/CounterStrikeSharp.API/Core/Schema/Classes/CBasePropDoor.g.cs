@@ -79,7 +79,7 @@ public partial class CBasePropDoor : CDynamicProp
 	public string SoundMoving
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBasePropDoor", "m_SoundMoving"); }
-	set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundMoving", value); }
+		set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundMoving", value); }
 	}
 
 	// m_SoundOpen
@@ -87,7 +87,7 @@ public partial class CBasePropDoor : CDynamicProp
 	public string SoundOpen
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBasePropDoor", "m_SoundOpen"); }
-	set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundOpen", value); }
+		set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundOpen", value); }
 	}
 
 	// m_SoundClose
@@ -95,7 +95,7 @@ public partial class CBasePropDoor : CDynamicProp
 	public string SoundClose
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBasePropDoor", "m_SoundClose"); }
-	set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundClose", value); }
+		set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundClose", value); }
 	}
 
 	// m_SoundLock
@@ -103,7 +103,7 @@ public partial class CBasePropDoor : CDynamicProp
 	public string SoundLock
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBasePropDoor", "m_SoundLock"); }
-	set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundLock", value); }
+		set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundLock", value); }
 	}
 
 	// m_SoundUnlock
@@ -111,7 +111,7 @@ public partial class CBasePropDoor : CDynamicProp
 	public string SoundUnlock
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBasePropDoor", "m_SoundUnlock"); }
-	set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundUnlock", value); }
+		set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundUnlock", value); }
 	}
 
 	// m_SoundLatch
@@ -119,7 +119,7 @@ public partial class CBasePropDoor : CDynamicProp
 	public string SoundLatch
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBasePropDoor", "m_SoundLatch"); }
-	set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundLatch", value); }
+		set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundLatch", value); }
 	}
 
 	// m_SoundPound
@@ -127,7 +127,7 @@ public partial class CBasePropDoor : CDynamicProp
 	public string SoundPound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBasePropDoor", "m_SoundPound"); }
-	set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundPound", value); }
+		set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundPound", value); }
 	}
 
 	// m_SoundJiggle
@@ -135,7 +135,7 @@ public partial class CBasePropDoor : CDynamicProp
 	public string SoundJiggle
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBasePropDoor", "m_SoundJiggle"); }
-	set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundJiggle", value); }
+		set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundJiggle", value); }
 	}
 
 	// m_SoundLockedAnim
@@ -143,7 +143,7 @@ public partial class CBasePropDoor : CDynamicProp
 	public string SoundLockedAnim
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBasePropDoor", "m_SoundLockedAnim"); }
-	set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundLockedAnim", value); }
+		set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SoundLockedAnim", value); }
 	}
 
 	// m_numCloseAttempts
@@ -159,7 +159,7 @@ public partial class CBasePropDoor : CDynamicProp
 	public string SlaveName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBasePropDoor", "m_SlaveName"); }
-	set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SlaveName", value); }
+		set { Schema.SetString(this.Handle, "CBasePropDoor", "m_SlaveName", value); }
 	}
 
 	// m_hMaster

@@ -27,7 +27,7 @@ public partial class CEntityIdentity : NativeObject
 	public string Name
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEntityIdentity", "m_name"); }
-	set { Schema.SetString(this.Handle, "CEntityIdentity", "m_name", value); }
+		set { Schema.SetString(this.Handle, "CEntityIdentity", "m_name", value); }
 	}
 
 	// m_designerName
@@ -35,7 +35,7 @@ public partial class CEntityIdentity : NativeObject
 	public string DesignerName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEntityIdentity", "m_designerName"); }
-	set { Schema.SetString(this.Handle, "CEntityIdentity", "m_designerName", value); }
+		set { Schema.SetString(this.Handle, "CEntityIdentity", "m_designerName", value); }
 	}
 
 	// m_flags

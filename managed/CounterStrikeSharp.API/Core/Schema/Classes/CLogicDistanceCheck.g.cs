@@ -23,7 +23,7 @@ public partial class CLogicDistanceCheck : CLogicalEntity
 	public string EntityA
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLogicDistanceCheck", "m_iszEntityA"); }
-	set { Schema.SetString(this.Handle, "CLogicDistanceCheck", "m_iszEntityA", value); }
+		set { Schema.SetString(this.Handle, "CLogicDistanceCheck", "m_iszEntityA", value); }
 	}
 
 	// m_iszEntityB
@@ -31,7 +31,7 @@ public partial class CLogicDistanceCheck : CLogicalEntity
 	public string EntityB
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLogicDistanceCheck", "m_iszEntityB"); }
-	set { Schema.SetString(this.Handle, "CLogicDistanceCheck", "m_iszEntityB", value); }
+		set { Schema.SetString(this.Handle, "CLogicDistanceCheck", "m_iszEntityB", value); }
 	}
 
 	// m_flZone1Distance

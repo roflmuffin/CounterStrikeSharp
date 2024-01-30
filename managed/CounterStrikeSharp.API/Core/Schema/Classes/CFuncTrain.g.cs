@@ -43,7 +43,7 @@ public partial class CFuncTrain : CBasePlatTrain
 	public string LastTarget
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncTrain", "m_iszLastTarget"); }
-	set { Schema.SetString(this.Handle, "CFuncTrain", "m_iszLastTarget", value); }
+		set { Schema.SetString(this.Handle, "CFuncTrain", "m_iszLastTarget", value); }
 	}
 
 }

@@ -35,7 +35,7 @@ public partial class CTankTrainAI : CPointEntity
 	public string StartSoundName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTankTrainAI", "m_startSoundName"); }
-	set { Schema.SetString(this.Handle, "CTankTrainAI", "m_startSoundName", value); }
+		set { Schema.SetString(this.Handle, "CTankTrainAI", "m_startSoundName", value); }
 	}
 
 	// m_engineSoundName
@@ -43,7 +43,7 @@ public partial class CTankTrainAI : CPointEntity
 	public string EngineSoundName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTankTrainAI", "m_engineSoundName"); }
-	set { Schema.SetString(this.Handle, "CTankTrainAI", "m_engineSoundName", value); }
+		set { Schema.SetString(this.Handle, "CTankTrainAI", "m_engineSoundName", value); }
 	}
 
 	// m_movementSoundName
@@ -51,7 +51,7 @@ public partial class CTankTrainAI : CPointEntity
 	public string MovementSoundName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTankTrainAI", "m_movementSoundName"); }
-	set { Schema.SetString(this.Handle, "CTankTrainAI", "m_movementSoundName", value); }
+		set { Schema.SetString(this.Handle, "CTankTrainAI", "m_movementSoundName", value); }
 	}
 
 	// m_targetEntityName
@@ -59,7 +59,7 @@ public partial class CTankTrainAI : CPointEntity
 	public string TargetEntityName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTankTrainAI", "m_targetEntityName"); }
-	set { Schema.SetString(this.Handle, "CTankTrainAI", "m_targetEntityName", value); }
+		set { Schema.SetString(this.Handle, "CTankTrainAI", "m_targetEntityName", value); }
 	}
 
 }

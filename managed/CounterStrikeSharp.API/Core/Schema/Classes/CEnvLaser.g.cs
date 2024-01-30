@@ -23,7 +23,7 @@ public partial class CEnvLaser : CBeam
 	public string LaserTarget
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvLaser", "m_iszLaserTarget"); }
-	set { Schema.SetString(this.Handle, "CEnvLaser", "m_iszLaserTarget", value); }
+		set { Schema.SetString(this.Handle, "CEnvLaser", "m_iszLaserTarget", value); }
 	}
 
 	// m_pSprite
@@ -35,7 +35,7 @@ public partial class CEnvLaser : CBeam
 	public string SpriteName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvLaser", "m_iszSpriteName"); }
-	set { Schema.SetString(this.Handle, "CEnvLaser", "m_iszSpriteName", value); }
+		set { Schema.SetString(this.Handle, "CEnvLaser", "m_iszSpriteName", value); }
 	}
 
 	// m_firePosition

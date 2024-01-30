@@ -27,7 +27,7 @@ public partial class CBaseClientUIEntity : CBaseModelEntity
 	public string DialogXMLName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseClientUIEntity", "m_DialogXMLName"); }
-	set { Schema.SetString(this.Handle, "CBaseClientUIEntity", "m_DialogXMLName", value); }
+		set { Schema.SetString(this.Handle, "CBaseClientUIEntity", "m_DialogXMLName", value); }
 	}
 
 	// m_PanelClassName
@@ -35,7 +35,7 @@ public partial class CBaseClientUIEntity : CBaseModelEntity
 	public string PanelClassName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseClientUIEntity", "m_PanelClassName"); }
-	set { Schema.SetString(this.Handle, "CBaseClientUIEntity", "m_PanelClassName", value); }
+		set { Schema.SetString(this.Handle, "CBaseClientUIEntity", "m_PanelClassName", value); }
 	}
 
 	// m_PanelID
@@ -43,7 +43,7 @@ public partial class CBaseClientUIEntity : CBaseModelEntity
 	public string PanelID
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseClientUIEntity", "m_PanelID"); }
-	set { Schema.SetString(this.Handle, "CBaseClientUIEntity", "m_PanelID", value); }
+		set { Schema.SetString(this.Handle, "CBaseClientUIEntity", "m_PanelID", value); }
 	}
 
 	// m_CustomOutput0

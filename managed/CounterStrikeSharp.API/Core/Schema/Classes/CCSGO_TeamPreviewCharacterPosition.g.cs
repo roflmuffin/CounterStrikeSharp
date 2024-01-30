@@ -35,7 +35,7 @@ public partial class CCSGO_TeamPreviewCharacterPosition : CBaseEntity
 	public string WeaponName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_sWeaponName"); }
-	set { Schema.SetString(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_sWeaponName", value); }
+		set { Schema.SetString(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_sWeaponName", value); }
 	}
 
 	// m_xuid

@@ -23,7 +23,7 @@ public partial class CSoundEventParameter : CBaseEntity
 	public string ParamName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSoundEventParameter", "m_iszParamName"); }
-	set { Schema.SetString(this.Handle, "CSoundEventParameter", "m_iszParamName", value); }
+		set { Schema.SetString(this.Handle, "CSoundEventParameter", "m_iszParamName", value); }
 	}
 
 	// m_flFloatValue

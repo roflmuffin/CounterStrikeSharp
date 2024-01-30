@@ -23,7 +23,7 @@ public partial class CFilterEnemy : CBaseFilter
 	public string EnemyName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFilterEnemy", "m_iszEnemyName"); }
-	set { Schema.SetString(this.Handle, "CFilterEnemy", "m_iszEnemyName", value); }
+		set { Schema.SetString(this.Handle, "CFilterEnemy", "m_iszEnemyName", value); }
 	}
 
 	// m_flRadius
@@ -43,7 +43,7 @@ public partial class CFilterEnemy : CBaseFilter
 	public string PlayerName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFilterEnemy", "m_iszPlayerName"); }
-	set { Schema.SetString(this.Handle, "CFilterEnemy", "m_iszPlayerName", value); }
+		set { Schema.SetString(this.Handle, "CFilterEnemy", "m_iszPlayerName", value); }
 	}
 
 }

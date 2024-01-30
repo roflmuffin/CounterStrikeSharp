@@ -59,7 +59,7 @@ public partial class CEnvEntityMaker : CPointEntity
 	public string Template
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvEntityMaker", "m_iszTemplate"); }
-	set { Schema.SetString(this.Handle, "CEnvEntityMaker", "m_iszTemplate", value); }
+		set { Schema.SetString(this.Handle, "CEnvEntityMaker", "m_iszTemplate", value); }
 	}
 
 	// m_pOutputOnSpawned

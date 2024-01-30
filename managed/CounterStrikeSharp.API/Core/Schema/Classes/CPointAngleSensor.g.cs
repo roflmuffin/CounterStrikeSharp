@@ -27,7 +27,7 @@ public partial class CPointAngleSensor : CPointEntity
 	public string LookAtName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointAngleSensor", "m_nLookAtName"); }
-	set { Schema.SetString(this.Handle, "CPointAngleSensor", "m_nLookAtName", value); }
+		set { Schema.SetString(this.Handle, "CPointAngleSensor", "m_nLookAtName", value); }
 	}
 
 	// m_hTargetEntity

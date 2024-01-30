@@ -59,7 +59,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 	public string StrVOPrefix
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CCSPlayerPawn", "m_strVOPrefix"); }
-	set { Schema.SetString(this.Handle, "CCSPlayerPawn", "m_strVOPrefix", value); }
+		set { Schema.SetString(this.Handle, "CCSPlayerPawn", "m_strVOPrefix", value); }
 	}
 
 	// m_szLastPlaceName

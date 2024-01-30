@@ -43,7 +43,7 @@ public partial class CCSWeaponBaseVData : CBasePlayerWeaponVData
 	public string WrongTeamMsg
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CCSWeaponBaseVData", "m_sWrongTeamMsg"); }
-	set { Schema.SetString(this.Handle, "CCSWeaponBaseVData", "m_sWrongTeamMsg", value); }
+		set { Schema.SetString(this.Handle, "CCSWeaponBaseVData", "m_sWrongTeamMsg", value); }
 	}
 
 	// m_nPrice
@@ -83,7 +83,7 @@ public partial class CCSWeaponBaseVData : CBasePlayerWeaponVData
 	public string Name
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CCSWeaponBaseVData", "m_szName"); }
-	set { Schema.SetString(this.Handle, "CCSWeaponBaseVData", "m_szName", value); }
+		set { Schema.SetString(this.Handle, "CCSWeaponBaseVData", "m_szName", value); }
 	}
 
 	// m_szAnimExtension
@@ -91,7 +91,7 @@ public partial class CCSWeaponBaseVData : CBasePlayerWeaponVData
 	public string AnimExtension
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CCSWeaponBaseVData", "m_szAnimExtension"); }
-	set { Schema.SetString(this.Handle, "CCSWeaponBaseVData", "m_szAnimExtension", value); }
+		set { Schema.SetString(this.Handle, "CCSWeaponBaseVData", "m_szAnimExtension", value); }
 	}
 
 	// m_eSilencerType
@@ -219,7 +219,7 @@ public partial class CCSWeaponBaseVData : CBasePlayerWeaponVData
 	public string UseRadioSubtitle
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CCSWeaponBaseVData", "m_szUseRadioSubtitle"); }
-	set { Schema.SetString(this.Handle, "CCSWeaponBaseVData", "m_szUseRadioSubtitle", value); }
+		set { Schema.SetString(this.Handle, "CCSWeaponBaseVData", "m_szUseRadioSubtitle", value); }
 	}
 
 	// m_bUnzoomsAfterShot
@@ -351,7 +351,7 @@ public partial class CCSWeaponBaseVData : CBasePlayerWeaponVData
 	public string AnimClass
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CCSWeaponBaseVData", "m_szAnimClass"); }
-	set { Schema.SetString(this.Handle, "CCSWeaponBaseVData", "m_szAnimClass", value); }
+		set { Schema.SetString(this.Handle, "CCSWeaponBaseVData", "m_szAnimClass", value); }
 	}
 
 }

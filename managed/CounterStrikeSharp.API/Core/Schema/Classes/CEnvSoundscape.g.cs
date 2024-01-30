@@ -31,7 +31,7 @@ public partial class CEnvSoundscape : CServerOnlyEntity
 	public string SoundscapeName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvSoundscape", "m_soundscapeName"); }
-	set { Schema.SetString(this.Handle, "CEnvSoundscape", "m_soundscapeName", value); }
+		set { Schema.SetString(this.Handle, "CEnvSoundscape", "m_soundscapeName", value); }
 	}
 
 	// m_soundEventName
@@ -39,7 +39,7 @@ public partial class CEnvSoundscape : CServerOnlyEntity
 	public string SoundEventName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvSoundscape", "m_soundEventName"); }
-	set { Schema.SetString(this.Handle, "CEnvSoundscape", "m_soundEventName", value); }
+		set { Schema.SetString(this.Handle, "CEnvSoundscape", "m_soundEventName", value); }
 	}
 
 	// m_bOverrideWithEvent

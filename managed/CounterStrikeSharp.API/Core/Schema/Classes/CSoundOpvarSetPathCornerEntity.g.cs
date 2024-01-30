@@ -31,7 +31,7 @@ public partial class CSoundOpvarSetPathCornerEntity : CSoundOpvarSetPointEntity
 	public string PathCornerEntityName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSoundOpvarSetPathCornerEntity", "m_iszPathCornerEntityName"); }
-	set { Schema.SetString(this.Handle, "CSoundOpvarSetPathCornerEntity", "m_iszPathCornerEntityName", value); }
+		set { Schema.SetString(this.Handle, "CSoundOpvarSetPathCornerEntity", "m_iszPathCornerEntityName", value); }
 	}
 
 }

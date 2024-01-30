@@ -27,7 +27,7 @@ public partial class CAI_ChangeHintGroup : CBaseEntity
 	public string StrSearchName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CAI_ChangeHintGroup", "m_strSearchName"); }
-	set { Schema.SetString(this.Handle, "CAI_ChangeHintGroup", "m_strSearchName", value); }
+		set { Schema.SetString(this.Handle, "CAI_ChangeHintGroup", "m_strSearchName", value); }
 	}
 
 	// m_strNewHintGroup
@@ -35,7 +35,7 @@ public partial class CAI_ChangeHintGroup : CBaseEntity
 	public string StrNewHintGroup
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CAI_ChangeHintGroup", "m_strNewHintGroup"); }
-	set { Schema.SetString(this.Handle, "CAI_ChangeHintGroup", "m_strNewHintGroup", value); }
+		set { Schema.SetString(this.Handle, "CAI_ChangeHintGroup", "m_strNewHintGroup", value); }
 	}
 
 	// m_flRadius

@@ -43,7 +43,7 @@ public partial class CPrecipitationVData : CEntitySubclassVDataBase
 	public string Modifier
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPrecipitationVData", "m_szModifier"); }
-	set { Schema.SetString(this.Handle, "CPrecipitationVData", "m_szModifier", value); }
+		set { Schema.SetString(this.Handle, "CPrecipitationVData", "m_szModifier", value); }
 	}
 
 }

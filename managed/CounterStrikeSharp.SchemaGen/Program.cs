@@ -304,7 +304,7 @@ internal static partial class Program
                 builder.AppendLine(
                     $"\t\tget {{ {getter} }}");
                 builder.AppendLine(
-                    $"\tset {{ {setter} }}");
+                    $"\t\tset {{ {setter} }}");
                 builder.AppendLine($"\t}}");
                 builder.AppendLine();
             }

@@ -35,7 +35,7 @@ public partial class CPointValueRemapper : CBaseEntity
 	public string RemapLineStartName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszRemapLineStartName"); }
-	set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszRemapLineStartName", value); }
+		set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszRemapLineStartName", value); }
 	}
 
 	// m_iszRemapLineEndName
@@ -43,7 +43,7 @@ public partial class CPointValueRemapper : CBaseEntity
 	public string RemapLineEndName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszRemapLineEndName"); }
-	set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszRemapLineEndName", value); }
+		set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszRemapLineEndName", value); }
 	}
 
 	// m_hRemapLineStart
@@ -79,7 +79,7 @@ public partial class CPointValueRemapper : CBaseEntity
 	public string OutputEntityName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszOutputEntityName"); }
-	set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszOutputEntityName", value); }
+		set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszOutputEntityName", value); }
 	}
 
 	// m_iszOutputEntity2Name
@@ -87,7 +87,7 @@ public partial class CPointValueRemapper : CBaseEntity
 	public string OutputEntity2Name
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszOutputEntity2Name"); }
-	set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszOutputEntity2Name", value); }
+		set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszOutputEntity2Name", value); }
 	}
 
 	// m_iszOutputEntity3Name
@@ -95,7 +95,7 @@ public partial class CPointValueRemapper : CBaseEntity
 	public string OutputEntity3Name
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszOutputEntity3Name"); }
-	set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszOutputEntity3Name", value); }
+		set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszOutputEntity3Name", value); }
 	}
 
 	// m_iszOutputEntity4Name
@@ -103,7 +103,7 @@ public partial class CPointValueRemapper : CBaseEntity
 	public string OutputEntity4Name
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszOutputEntity4Name"); }
-	set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszOutputEntity4Name", value); }
+		set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszOutputEntity4Name", value); }
 	}
 
 	// m_hOutputEntities
@@ -175,7 +175,7 @@ public partial class CPointValueRemapper : CBaseEntity
 	public string SoundEngage
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszSoundEngage"); }
-	set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszSoundEngage", value); }
+		set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszSoundEngage", value); }
 	}
 
 	// m_iszSoundDisengage
@@ -183,7 +183,7 @@ public partial class CPointValueRemapper : CBaseEntity
 	public string SoundDisengage
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszSoundDisengage"); }
-	set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszSoundDisengage", value); }
+		set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszSoundDisengage", value); }
 	}
 
 	// m_iszSoundReachedValueZero
@@ -191,7 +191,7 @@ public partial class CPointValueRemapper : CBaseEntity
 	public string SoundReachedValueZero
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszSoundReachedValueZero"); }
-	set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszSoundReachedValueZero", value); }
+		set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszSoundReachedValueZero", value); }
 	}
 
 	// m_iszSoundReachedValueOne
@@ -199,7 +199,7 @@ public partial class CPointValueRemapper : CBaseEntity
 	public string SoundReachedValueOne
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszSoundReachedValueOne"); }
-	set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszSoundReachedValueOne", value); }
+		set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszSoundReachedValueOne", value); }
 	}
 
 	// m_iszSoundMovingLoop
@@ -207,7 +207,7 @@ public partial class CPointValueRemapper : CBaseEntity
 	public string SoundMovingLoop
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointValueRemapper", "m_iszSoundMovingLoop"); }
-	set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszSoundMovingLoop", value); }
+		set { Schema.SetString(this.Handle, "CPointValueRemapper", "m_iszSoundMovingLoop", value); }
 	}
 
 	// m_OnReachedValueZero

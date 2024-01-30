@@ -91,7 +91,7 @@ public partial class CParticleSystem : CBaseModelEntity
 	public string EffectName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CParticleSystem", "m_iszEffectName"); }
-	set { Schema.SetString(this.Handle, "CParticleSystem", "m_iszEffectName", value); }
+		set { Schema.SetString(this.Handle, "CParticleSystem", "m_iszEffectName", value); }
 	}
 
 	// m_iszControlPointNames

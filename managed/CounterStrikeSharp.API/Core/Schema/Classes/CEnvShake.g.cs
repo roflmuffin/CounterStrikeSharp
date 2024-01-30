@@ -23,7 +23,7 @@ public partial class CEnvShake : CPointEntity
 	public string LimitToEntity
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvShake", "m_limitToEntity"); }
-	set { Schema.SetString(this.Handle, "CEnvShake", "m_limitToEntity", value); }
+		set { Schema.SetString(this.Handle, "CEnvShake", "m_limitToEntity", value); }
 	}
 
 	// m_Amplitude

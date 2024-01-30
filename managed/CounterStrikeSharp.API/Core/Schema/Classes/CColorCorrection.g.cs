@@ -91,7 +91,7 @@ public partial class CColorCorrection : CBaseEntity
 	public string LookupFilename
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CColorCorrection", "m_lookupFilename"); }
-	set { Schema.SetString(this.Handle, "CColorCorrection", "m_lookupFilename", value); }
+		set { Schema.SetString(this.Handle, "CColorCorrection", "m_lookupFilename", value); }
 	}
 
 }

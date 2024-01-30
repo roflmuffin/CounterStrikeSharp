@@ -23,7 +23,7 @@ public partial class CInfoGameEventProxy : CPointEntity
 	public string EventName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CInfoGameEventProxy", "m_iszEventName"); }
-	set { Schema.SetString(this.Handle, "CInfoGameEventProxy", "m_iszEventName", value); }
+		set { Schema.SetString(this.Handle, "CInfoGameEventProxy", "m_iszEventName", value); }
 	}
 
 	// m_flRange

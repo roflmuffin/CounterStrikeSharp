@@ -23,7 +23,7 @@ public partial class CFilterContext : CBaseFilter
 	public string FilterContext
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFilterContext", "m_iFilterContext"); }
-	set { Schema.SetString(this.Handle, "CFilterContext", "m_iFilterContext", value); }
+		set { Schema.SetString(this.Handle, "CFilterContext", "m_iFilterContext", value); }
 	}
 
 }

@@ -23,7 +23,7 @@ public partial class CSceneEntity : CPointEntity
 	public string SceneFile
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszSceneFile"); }
-	set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszSceneFile", value); }
+		set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszSceneFile", value); }
 	}
 
 	// m_iszResumeSceneFile
@@ -31,7 +31,7 @@ public partial class CSceneEntity : CPointEntity
 	public string ResumeSceneFile
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszResumeSceneFile"); }
-	set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszResumeSceneFile", value); }
+		set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszResumeSceneFile", value); }
 	}
 
 	// m_iszTarget1
@@ -39,7 +39,7 @@ public partial class CSceneEntity : CPointEntity
 	public string IszTarget1
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszTarget1"); }
-	set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget1", value); }
+		set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget1", value); }
 	}
 
 	// m_iszTarget2
@@ -47,7 +47,7 @@ public partial class CSceneEntity : CPointEntity
 	public string IszTarget2
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszTarget2"); }
-	set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget2", value); }
+		set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget2", value); }
 	}
 
 	// m_iszTarget3
@@ -55,7 +55,7 @@ public partial class CSceneEntity : CPointEntity
 	public string IszTarget3
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszTarget3"); }
-	set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget3", value); }
+		set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget3", value); }
 	}
 
 	// m_iszTarget4
@@ -63,7 +63,7 @@ public partial class CSceneEntity : CPointEntity
 	public string IszTarget4
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszTarget4"); }
-	set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget4", value); }
+		set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget4", value); }
 	}
 
 	// m_iszTarget5
@@ -71,7 +71,7 @@ public partial class CSceneEntity : CPointEntity
 	public string IszTarget5
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszTarget5"); }
-	set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget5", value); }
+		set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget5", value); }
 	}
 
 	// m_iszTarget6
@@ -79,7 +79,7 @@ public partial class CSceneEntity : CPointEntity
 	public string IszTarget6
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszTarget6"); }
-	set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget6", value); }
+		set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget6", value); }
 	}
 
 	// m_iszTarget7
@@ -87,7 +87,7 @@ public partial class CSceneEntity : CPointEntity
 	public string IszTarget7
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszTarget7"); }
-	set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget7", value); }
+		set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget7", value); }
 	}
 
 	// m_iszTarget8
@@ -95,7 +95,7 @@ public partial class CSceneEntity : CPointEntity
 	public string IszTarget8
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszTarget8"); }
-	set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget8", value); }
+		set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszTarget8", value); }
 	}
 
 	// m_hTarget1
@@ -295,7 +295,7 @@ public partial class CSceneEntity : CPointEntity
 	public string SoundName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszSoundName"); }
-	set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszSoundName", value); }
+		set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszSoundName", value); }
 	}
 
 	// m_hActor

@@ -23,7 +23,7 @@ public partial class CPhysForce : CPointEntity
 	public string NameAttach
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPhysForce", "m_nameAttach"); }
-	set { Schema.SetString(this.Handle, "CPhysForce", "m_nameAttach", value); }
+		set { Schema.SetString(this.Handle, "CPhysForce", "m_nameAttach", value); }
 	}
 
 	// m_force

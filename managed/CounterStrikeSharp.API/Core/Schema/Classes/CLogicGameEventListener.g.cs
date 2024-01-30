@@ -27,7 +27,7 @@ public partial class CLogicGameEventListener : CLogicalEntity
 	public string GameEventName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLogicGameEventListener", "m_iszGameEventName"); }
-	set { Schema.SetString(this.Handle, "CLogicGameEventListener", "m_iszGameEventName", value); }
+		set { Schema.SetString(this.Handle, "CLogicGameEventListener", "m_iszGameEventName", value); }
 	}
 
 	// m_iszGameEventItem
@@ -35,7 +35,7 @@ public partial class CLogicGameEventListener : CLogicalEntity
 	public string GameEventItem
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLogicGameEventListener", "m_iszGameEventItem"); }
-	set { Schema.SetString(this.Handle, "CLogicGameEventListener", "m_iszGameEventItem", value); }
+		set { Schema.SetString(this.Handle, "CLogicGameEventListener", "m_iszGameEventItem", value); }
 	}
 
 	// m_bEnabled

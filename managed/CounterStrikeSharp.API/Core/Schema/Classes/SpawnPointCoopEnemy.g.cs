@@ -23,7 +23,7 @@ public partial class SpawnPointCoopEnemy : SpawnPoint
 	public string WeaponsToGive
 	{
 		get { return Schema.GetUtf8String(this.Handle, "SpawnPointCoopEnemy", "m_szWeaponsToGive"); }
-	set { Schema.SetString(this.Handle, "SpawnPointCoopEnemy", "m_szWeaponsToGive", value); }
+		set { Schema.SetString(this.Handle, "SpawnPointCoopEnemy", "m_szWeaponsToGive", value); }
 	}
 
 	// m_szPlayerModelToUse
@@ -31,7 +31,7 @@ public partial class SpawnPointCoopEnemy : SpawnPoint
 	public string PlayerModelToUse
 	{
 		get { return Schema.GetUtf8String(this.Handle, "SpawnPointCoopEnemy", "m_szPlayerModelToUse"); }
-	set { Schema.SetString(this.Handle, "SpawnPointCoopEnemy", "m_szPlayerModelToUse", value); }
+		set { Schema.SetString(this.Handle, "SpawnPointCoopEnemy", "m_szPlayerModelToUse", value); }
 	}
 
 	// m_nArmorToSpawnWith
@@ -59,7 +59,7 @@ public partial class SpawnPointCoopEnemy : SpawnPoint
 	public string BehaviorTreeFile
 	{
 		get { return Schema.GetUtf8String(this.Handle, "SpawnPointCoopEnemy", "m_szBehaviorTreeFile"); }
-	set { Schema.SetString(this.Handle, "SpawnPointCoopEnemy", "m_szBehaviorTreeFile", value); }
+		set { Schema.SetString(this.Handle, "SpawnPointCoopEnemy", "m_szBehaviorTreeFile", value); }
 	}
 
 }

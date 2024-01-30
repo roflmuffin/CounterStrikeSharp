@@ -31,7 +31,7 @@ public partial class CPathParticleRope : CBaseEntity
 	public string EffectName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPathParticleRope", "m_iszEffectName"); }
-	set { Schema.SetString(this.Handle, "CPathParticleRope", "m_iszEffectName", value); }
+		set { Schema.SetString(this.Handle, "CPathParticleRope", "m_iszEffectName", value); }
 	}
 
 	// m_PathNodes_Name

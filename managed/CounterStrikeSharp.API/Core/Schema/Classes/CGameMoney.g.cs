@@ -35,7 +35,7 @@ public partial class CGameMoney : CRulePointEntity
 	public string StrAwardText
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CGameMoney", "m_strAwardText"); }
-	set { Schema.SetString(this.Handle, "CGameMoney", "m_strAwardText", value); }
+		set { Schema.SetString(this.Handle, "CGameMoney", "m_strAwardText", value); }
 	}
 
 }

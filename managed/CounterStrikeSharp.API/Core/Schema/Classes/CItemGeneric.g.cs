@@ -55,7 +55,7 @@ public partial class CItemGeneric : CItem
 	public string AmbientSoundEffect
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CItemGeneric", "m_pAmbientSoundEffect"); }
-	set { Schema.SetString(this.Handle, "CItemGeneric", "m_pAmbientSoundEffect", value); }
+		set { Schema.SetString(this.Handle, "CItemGeneric", "m_pAmbientSoundEffect", value); }
 	}
 
 	// m_bAutoStartAmbientSound
@@ -67,7 +67,7 @@ public partial class CItemGeneric : CItem
 	public string SpawnScriptFunction
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CItemGeneric", "m_pSpawnScriptFunction"); }
-	set { Schema.SetString(this.Handle, "CItemGeneric", "m_pSpawnScriptFunction", value); }
+		set { Schema.SetString(this.Handle, "CItemGeneric", "m_pSpawnScriptFunction", value); }
 	}
 
 	// m_hPickupParticleEffect
@@ -79,7 +79,7 @@ public partial class CItemGeneric : CItem
 	public string PickupSoundEffect
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CItemGeneric", "m_pPickupSoundEffect"); }
-	set { Schema.SetString(this.Handle, "CItemGeneric", "m_pPickupSoundEffect", value); }
+		set { Schema.SetString(this.Handle, "CItemGeneric", "m_pPickupSoundEffect", value); }
 	}
 
 	// m_pPickupScriptFunction
@@ -87,7 +87,7 @@ public partial class CItemGeneric : CItem
 	public string PickupScriptFunction
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CItemGeneric", "m_pPickupScriptFunction"); }
-	set { Schema.SetString(this.Handle, "CItemGeneric", "m_pPickupScriptFunction", value); }
+		set { Schema.SetString(this.Handle, "CItemGeneric", "m_pPickupScriptFunction", value); }
 	}
 
 	// m_hTimeoutParticleEffect
@@ -99,7 +99,7 @@ public partial class CItemGeneric : CItem
 	public string TimeoutSoundEffect
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CItemGeneric", "m_pTimeoutSoundEffect"); }
-	set { Schema.SetString(this.Handle, "CItemGeneric", "m_pTimeoutSoundEffect", value); }
+		set { Schema.SetString(this.Handle, "CItemGeneric", "m_pTimeoutSoundEffect", value); }
 	}
 
 	// m_pTimeoutScriptFunction
@@ -107,7 +107,7 @@ public partial class CItemGeneric : CItem
 	public string TimeoutScriptFunction
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CItemGeneric", "m_pTimeoutScriptFunction"); }
-	set { Schema.SetString(this.Handle, "CItemGeneric", "m_pTimeoutScriptFunction", value); }
+		set { Schema.SetString(this.Handle, "CItemGeneric", "m_pTimeoutScriptFunction", value); }
 	}
 
 	// m_pPickupFilterName
@@ -115,7 +115,7 @@ public partial class CItemGeneric : CItem
 	public string PickupFilterName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CItemGeneric", "m_pPickupFilterName"); }
-	set { Schema.SetString(this.Handle, "CItemGeneric", "m_pPickupFilterName", value); }
+		set { Schema.SetString(this.Handle, "CItemGeneric", "m_pPickupFilterName", value); }
 	}
 
 	// m_hPickupFilter
@@ -147,7 +147,7 @@ public partial class CItemGeneric : CItem
 	public string AllowPickupScriptFunction
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CItemGeneric", "m_pAllowPickupScriptFunction"); }
-	set { Schema.SetString(this.Handle, "CItemGeneric", "m_pAllowPickupScriptFunction", value); }
+		set { Schema.SetString(this.Handle, "CItemGeneric", "m_pAllowPickupScriptFunction", value); }
 	}
 
 	// m_flPickupRadius
@@ -163,7 +163,7 @@ public partial class CItemGeneric : CItem
 	public string TriggerSoundEffect
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CItemGeneric", "m_pTriggerSoundEffect"); }
-	set { Schema.SetString(this.Handle, "CItemGeneric", "m_pTriggerSoundEffect", value); }
+		set { Schema.SetString(this.Handle, "CItemGeneric", "m_pTriggerSoundEffect", value); }
 	}
 
 	// m_bGlowWhenInTrigger

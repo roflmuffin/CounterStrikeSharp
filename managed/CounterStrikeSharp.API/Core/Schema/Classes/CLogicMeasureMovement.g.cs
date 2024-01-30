@@ -23,7 +23,7 @@ public partial class CLogicMeasureMovement : CLogicalEntity
 	public string StrMeasureTarget
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLogicMeasureMovement", "m_strMeasureTarget"); }
-	set { Schema.SetString(this.Handle, "CLogicMeasureMovement", "m_strMeasureTarget", value); }
+		set { Schema.SetString(this.Handle, "CLogicMeasureMovement", "m_strMeasureTarget", value); }
 	}
 
 	// m_strMeasureReference
@@ -31,7 +31,7 @@ public partial class CLogicMeasureMovement : CLogicalEntity
 	public string StrMeasureReference
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLogicMeasureMovement", "m_strMeasureReference"); }
-	set { Schema.SetString(this.Handle, "CLogicMeasureMovement", "m_strMeasureReference", value); }
+		set { Schema.SetString(this.Handle, "CLogicMeasureMovement", "m_strMeasureReference", value); }
 	}
 
 	// m_strTargetReference
@@ -39,7 +39,7 @@ public partial class CLogicMeasureMovement : CLogicalEntity
 	public string StrTargetReference
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLogicMeasureMovement", "m_strTargetReference"); }
-	set { Schema.SetString(this.Handle, "CLogicMeasureMovement", "m_strTargetReference", value); }
+		set { Schema.SetString(this.Handle, "CLogicMeasureMovement", "m_strTargetReference", value); }
 	}
 
 	// m_hMeasureTarget

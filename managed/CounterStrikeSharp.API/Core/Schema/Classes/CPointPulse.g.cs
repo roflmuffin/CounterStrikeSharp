@@ -23,7 +23,7 @@ public partial class CPointPulse : CBaseEntity
 	public string NameFixupStaticPrefix
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointPulse", "m_sNameFixupStaticPrefix"); }
-	set { Schema.SetString(this.Handle, "CPointPulse", "m_sNameFixupStaticPrefix", value); }
+		set { Schema.SetString(this.Handle, "CPointPulse", "m_sNameFixupStaticPrefix", value); }
 	}
 
 	// m_sNameFixupParent
@@ -31,7 +31,7 @@ public partial class CPointPulse : CBaseEntity
 	public string NameFixupParent
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointPulse", "m_sNameFixupParent"); }
-	set { Schema.SetString(this.Handle, "CPointPulse", "m_sNameFixupParent", value); }
+		set { Schema.SetString(this.Handle, "CPointPulse", "m_sNameFixupParent", value); }
 	}
 
 	// m_sNameFixupLocal
@@ -39,7 +39,7 @@ public partial class CPointPulse : CBaseEntity
 	public string NameFixupLocal
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointPulse", "m_sNameFixupLocal"); }
-	set { Schema.SetString(this.Handle, "CPointPulse", "m_sNameFixupLocal", value); }
+		set { Schema.SetString(this.Handle, "CPointPulse", "m_sNameFixupLocal", value); }
 	}
 
 }

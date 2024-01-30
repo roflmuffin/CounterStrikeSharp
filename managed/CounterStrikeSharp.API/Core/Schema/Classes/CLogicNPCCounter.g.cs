@@ -59,7 +59,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 	public string SourceEntityName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLogicNPCCounter", "m_iszSourceEntityName"); }
-	set { Schema.SetString(this.Handle, "CLogicNPCCounter", "m_iszSourceEntityName", value); }
+		set { Schema.SetString(this.Handle, "CLogicNPCCounter", "m_iszSourceEntityName", value); }
 	}
 
 	// m_flDistanceMax
@@ -91,7 +91,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 	public string NPCClassname_1
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLogicNPCCounter", "m_iszNPCClassname_1"); }
-	set { Schema.SetString(this.Handle, "CLogicNPCCounter", "m_iszNPCClassname_1", value); }
+		set { Schema.SetString(this.Handle, "CLogicNPCCounter", "m_iszNPCClassname_1", value); }
 	}
 
 	// m_nNPCState_1
@@ -127,7 +127,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 	public string NPCClassname_2
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLogicNPCCounter", "m_iszNPCClassname_2"); }
-	set { Schema.SetString(this.Handle, "CLogicNPCCounter", "m_iszNPCClassname_2", value); }
+		set { Schema.SetString(this.Handle, "CLogicNPCCounter", "m_iszNPCClassname_2", value); }
 	}
 
 	// m_nNPCState_2
@@ -163,7 +163,7 @@ public partial class CLogicNPCCounter : CBaseEntity
 	public string NPCClassname_3
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLogicNPCCounter", "m_iszNPCClassname_3"); }
-	set { Schema.SetString(this.Handle, "CLogicNPCCounter", "m_iszNPCClassname_3", value); }
+		set { Schema.SetString(this.Handle, "CLogicNPCCounter", "m_iszNPCClassname_3", value); }
 	}
 
 	// m_nNPCState_3

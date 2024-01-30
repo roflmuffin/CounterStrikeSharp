@@ -35,7 +35,7 @@ public partial class CFuncTrackChange : CFuncPlatRot
 	public string TrackTopName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncTrackChange", "m_trackTopName"); }
-	set { Schema.SetString(this.Handle, "CFuncTrackChange", "m_trackTopName", value); }
+		set { Schema.SetString(this.Handle, "CFuncTrackChange", "m_trackTopName", value); }
 	}
 
 	// m_trackBottomName
@@ -43,7 +43,7 @@ public partial class CFuncTrackChange : CFuncPlatRot
 	public string TrackBottomName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncTrackChange", "m_trackBottomName"); }
-	set { Schema.SetString(this.Handle, "CFuncTrackChange", "m_trackBottomName", value); }
+		set { Schema.SetString(this.Handle, "CFuncTrackChange", "m_trackBottomName", value); }
 	}
 
 	// m_trainName
@@ -51,7 +51,7 @@ public partial class CFuncTrackChange : CFuncPlatRot
 	public string TrainName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncTrackChange", "m_trainName"); }
-	set { Schema.SetString(this.Handle, "CFuncTrackChange", "m_trainName", value); }
+		set { Schema.SetString(this.Handle, "CFuncTrackChange", "m_trainName", value); }
 	}
 
 	// m_code

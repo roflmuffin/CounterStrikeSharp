@@ -23,7 +23,7 @@ public partial class CFuncPlat : CBasePlatTrain
 	public string Noise
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncPlat", "m_sNoise"); }
-	set { Schema.SetString(this.Handle, "CFuncPlat", "m_sNoise", value); }
+		set { Schema.SetString(this.Handle, "CFuncPlat", "m_sNoise", value); }
 	}
 
 }

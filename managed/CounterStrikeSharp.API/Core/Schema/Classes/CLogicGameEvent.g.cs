@@ -23,7 +23,7 @@ public partial class CLogicGameEvent : CLogicalEntity
 	public string EventName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLogicGameEvent", "m_iszEventName"); }
-	set { Schema.SetString(this.Handle, "CLogicGameEvent", "m_iszEventName", value); }
+		set { Schema.SetString(this.Handle, "CLogicGameEvent", "m_iszEventName", value); }
 	}
 
 }

@@ -27,7 +27,7 @@ public partial class CRopeKeyframe : CBaseModelEntity
 	public string NextLinkName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CRopeKeyframe", "m_iNextLinkName"); }
-	set { Schema.SetString(this.Handle, "CRopeKeyframe", "m_iNextLinkName", value); }
+		set { Schema.SetString(this.Handle, "CRopeKeyframe", "m_iNextLinkName", value); }
 	}
 
 	// m_Slack
@@ -55,7 +55,7 @@ public partial class CRopeKeyframe : CBaseModelEntity
 	public string StrRopeMaterialModel
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CRopeKeyframe", "m_strRopeMaterialModel"); }
-	set { Schema.SetString(this.Handle, "CRopeKeyframe", "m_strRopeMaterialModel", value); }
+		set { Schema.SetString(this.Handle, "CRopeKeyframe", "m_strRopeMaterialModel", value); }
 	}
 
 	// m_iRopeMaterialModelIndex

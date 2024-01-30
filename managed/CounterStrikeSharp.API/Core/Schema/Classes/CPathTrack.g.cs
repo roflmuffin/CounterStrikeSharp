@@ -43,7 +43,7 @@ public partial class CPathTrack : CPointEntity
 	public string AltName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPathTrack", "m_altName"); }
-	set { Schema.SetString(this.Handle, "CPathTrack", "m_altName", value); }
+		set { Schema.SetString(this.Handle, "CPathTrack", "m_altName", value); }
 	}
 
 	// m_nIterVal

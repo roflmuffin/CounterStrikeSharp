@@ -83,7 +83,7 @@ public partial class CBaseToggle : CBaseModelEntity
 	public string Master
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseToggle", "m_sMaster"); }
-	set { Schema.SetString(this.Handle, "CBaseToggle", "m_sMaster", value); }
+		set { Schema.SetString(this.Handle, "CBaseToggle", "m_sMaster", value); }
 	}
 
 }

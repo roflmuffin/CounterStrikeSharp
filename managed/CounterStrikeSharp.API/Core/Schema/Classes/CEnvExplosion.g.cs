@@ -55,7 +55,7 @@ public partial class CEnvExplosion : CModelPointEntity
 	public string ExplosionType
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvExplosion", "m_iszExplosionType"); }
-	set { Schema.SetString(this.Handle, "CEnvExplosion", "m_iszExplosionType", value); }
+		set { Schema.SetString(this.Handle, "CEnvExplosion", "m_iszExplosionType", value); }
 	}
 
 	// m_iszCustomEffectName
@@ -63,7 +63,7 @@ public partial class CEnvExplosion : CModelPointEntity
 	public string CustomEffectName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvExplosion", "m_iszCustomEffectName"); }
-	set { Schema.SetString(this.Handle, "CEnvExplosion", "m_iszCustomEffectName", value); }
+		set { Schema.SetString(this.Handle, "CEnvExplosion", "m_iszCustomEffectName", value); }
 	}
 
 	// m_iszCustomSoundName
@@ -71,7 +71,7 @@ public partial class CEnvExplosion : CModelPointEntity
 	public string CustomSoundName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvExplosion", "m_iszCustomSoundName"); }
-	set { Schema.SetString(this.Handle, "CEnvExplosion", "m_iszCustomSoundName", value); }
+		set { Schema.SetString(this.Handle, "CEnvExplosion", "m_iszCustomSoundName", value); }
 	}
 
 	// m_iClassIgnore
@@ -87,7 +87,7 @@ public partial class CEnvExplosion : CModelPointEntity
 	public string EntityIgnoreName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvExplosion", "m_iszEntityIgnoreName"); }
-	set { Schema.SetString(this.Handle, "CEnvExplosion", "m_iszEntityIgnoreName", value); }
+		set { Schema.SetString(this.Handle, "CEnvExplosion", "m_iszEntityIgnoreName", value); }
 	}
 
 	// m_hEntityIgnore

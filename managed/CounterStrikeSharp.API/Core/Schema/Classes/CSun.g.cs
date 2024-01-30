@@ -35,7 +35,7 @@ public partial class CSun : CBaseModelEntity
 	public string EffectName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSun", "m_iszEffectName"); }
-	set { Schema.SetString(this.Handle, "CSun", "m_iszEffectName", value); }
+		set { Schema.SetString(this.Handle, "CSun", "m_iszEffectName", value); }
 	}
 
 	// m_iszSSEffectName
@@ -43,7 +43,7 @@ public partial class CSun : CBaseModelEntity
 	public string SSEffectName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSun", "m_iszSSEffectName"); }
-	set { Schema.SetString(this.Handle, "CSun", "m_iszSSEffectName", value); }
+		set { Schema.SetString(this.Handle, "CSun", "m_iszSSEffectName", value); }
 	}
 
 	// m_bOn

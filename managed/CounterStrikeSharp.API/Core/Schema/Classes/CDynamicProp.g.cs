@@ -55,7 +55,7 @@ public partial class CDynamicProp : CBreakableProp
 	public string DefaultAnim
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CDynamicProp", "m_iszDefaultAnim"); }
-	set { Schema.SetString(this.Handle, "CDynamicProp", "m_iszDefaultAnim", value); }
+		set { Schema.SetString(this.Handle, "CDynamicProp", "m_iszDefaultAnim", value); }
 	}
 
 	// m_nDefaultAnimLoopMode

@@ -47,7 +47,7 @@ public partial class CSoundEventEntity : CBaseEntity
 	public string SourceEntityName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSoundEventEntity", "m_iszSourceEntityName"); }
-	set { Schema.SetString(this.Handle, "CSoundEventEntity", "m_iszSourceEntityName", value); }
+		set { Schema.SetString(this.Handle, "CSoundEventEntity", "m_iszSourceEntityName", value); }
 	}
 
 	// m_iszAttachmentName
@@ -55,7 +55,7 @@ public partial class CSoundEventEntity : CBaseEntity
 	public string AttachmentName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSoundEventEntity", "m_iszAttachmentName"); }
-	set { Schema.SetString(this.Handle, "CSoundEventEntity", "m_iszAttachmentName", value); }
+		set { Schema.SetString(this.Handle, "CSoundEventEntity", "m_iszAttachmentName", value); }
 	}
 
 	// m_onSoundFinished
@@ -67,7 +67,7 @@ public partial class CSoundEventEntity : CBaseEntity
 	public string SoundName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSoundEventEntity", "m_iszSoundName"); }
-	set { Schema.SetString(this.Handle, "CSoundEventEntity", "m_iszSoundName", value); }
+		set { Schema.SetString(this.Handle, "CSoundEventEntity", "m_iszSoundName", value); }
 	}
 
 	// m_hSource

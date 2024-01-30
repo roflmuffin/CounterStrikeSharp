@@ -55,7 +55,7 @@ public partial class CBaseEntity : CEntityInstance
 	public string ResponseContext
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseEntity", "m_iszResponseContext"); }
-	set { Schema.SetString(this.Handle, "CBaseEntity", "m_iszResponseContext", value); }
+		set { Schema.SetString(this.Handle, "CBaseEntity", "m_iszResponseContext", value); }
 	}
 
 	// m_iHealth
@@ -107,7 +107,7 @@ public partial class CBaseEntity : CEntityInstance
 	public string Target
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseEntity", "m_target"); }
-	set { Schema.SetString(this.Handle, "CBaseEntity", "m_target", value); }
+		set { Schema.SetString(this.Handle, "CBaseEntity", "m_target", value); }
 	}
 
 	// m_flMoveDoneTime
@@ -123,7 +123,7 @@ public partial class CBaseEntity : CEntityInstance
 	public string DamageFilterName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseEntity", "m_iszDamageFilterName"); }
-	set { Schema.SetString(this.Handle, "CBaseEntity", "m_iszDamageFilterName", value); }
+		set { Schema.SetString(this.Handle, "CBaseEntity", "m_iszDamageFilterName", value); }
 	}
 
 	// m_nSubclassID
@@ -163,7 +163,7 @@ public partial class CBaseEntity : CEntityInstance
 	public string Globalname
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseEntity", "m_iGlobalname"); }
-	set { Schema.SetString(this.Handle, "CBaseEntity", "m_iGlobalname", value); }
+		set { Schema.SetString(this.Handle, "CBaseEntity", "m_iGlobalname", value); }
 	}
 
 	// m_iSentToClients
@@ -179,7 +179,7 @@ public partial class CBaseEntity : CEntityInstance
 	public string UniqueHammerID
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseEntity", "m_sUniqueHammerID"); }
-	set { Schema.SetString(this.Handle, "CBaseEntity", "m_sUniqueHammerID", value); }
+		set { Schema.SetString(this.Handle, "CBaseEntity", "m_sUniqueHammerID", value); }
 	}
 
 	// m_spawnflags

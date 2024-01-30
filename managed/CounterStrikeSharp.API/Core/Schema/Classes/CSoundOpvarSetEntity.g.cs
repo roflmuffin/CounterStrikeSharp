@@ -23,7 +23,7 @@ public partial class CSoundOpvarSetEntity : CBaseEntity
 	public string StackName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSoundOpvarSetEntity", "m_iszStackName"); }
-	set { Schema.SetString(this.Handle, "CSoundOpvarSetEntity", "m_iszStackName", value); }
+		set { Schema.SetString(this.Handle, "CSoundOpvarSetEntity", "m_iszStackName", value); }
 	}
 
 	// m_iszOperatorName
@@ -31,7 +31,7 @@ public partial class CSoundOpvarSetEntity : CBaseEntity
 	public string OperatorName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSoundOpvarSetEntity", "m_iszOperatorName"); }
-	set { Schema.SetString(this.Handle, "CSoundOpvarSetEntity", "m_iszOperatorName", value); }
+		set { Schema.SetString(this.Handle, "CSoundOpvarSetEntity", "m_iszOperatorName", value); }
 	}
 
 	// m_iszOpvarName
@@ -39,7 +39,7 @@ public partial class CSoundOpvarSetEntity : CBaseEntity
 	public string OpvarName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSoundOpvarSetEntity", "m_iszOpvarName"); }
-	set { Schema.SetString(this.Handle, "CSoundOpvarSetEntity", "m_iszOpvarName", value); }
+		set { Schema.SetString(this.Handle, "CSoundOpvarSetEntity", "m_iszOpvarName", value); }
 	}
 
 	// m_nOpvarType
@@ -59,7 +59,7 @@ public partial class CSoundOpvarSetEntity : CBaseEntity
 	public string OpvarValueString
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSoundOpvarSetEntity", "m_OpvarValueString"); }
-	set { Schema.SetString(this.Handle, "CSoundOpvarSetEntity", "m_OpvarValueString", value); }
+		set { Schema.SetString(this.Handle, "CSoundOpvarSetEntity", "m_OpvarValueString", value); }
 	}
 
 	// m_bSetOnSpawn

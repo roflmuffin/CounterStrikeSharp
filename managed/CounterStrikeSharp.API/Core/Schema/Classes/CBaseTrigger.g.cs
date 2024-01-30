@@ -27,7 +27,7 @@ public partial class CBaseTrigger : CBaseToggle
 	public string FilterName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseTrigger", "m_iFilterName"); }
-	set { Schema.SetString(this.Handle, "CBaseTrigger", "m_iFilterName", value); }
+		set { Schema.SetString(this.Handle, "CBaseTrigger", "m_iFilterName", value); }
 	}
 
 	// m_hFilter

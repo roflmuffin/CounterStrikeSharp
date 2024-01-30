@@ -47,7 +47,7 @@ public partial class CCSPlayerController : CBasePlayerController
 	public string CrosshairCodes
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CCSPlayerController", "m_szCrosshairCodes"); }
-	set { Schema.SetString(this.Handle, "CCSPlayerController", "m_szCrosshairCodes", value); }
+		set { Schema.SetString(this.Handle, "CCSPlayerController", "m_szCrosshairCodes", value); }
 	}
 
 	// m_iPendingTeamNum
@@ -103,7 +103,7 @@ public partial class CCSPlayerController : CBasePlayerController
 	public string Clan
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CCSPlayerController", "m_szClan"); }
-	set { Schema.SetString(this.Handle, "CCSPlayerController", "m_szClan", value); }
+		set { Schema.SetString(this.Handle, "CCSPlayerController", "m_szClan", value); }
 	}
 
 	// m_szClanName

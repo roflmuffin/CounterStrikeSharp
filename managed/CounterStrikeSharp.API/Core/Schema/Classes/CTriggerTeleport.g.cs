@@ -23,7 +23,7 @@ public partial class CTriggerTeleport : CBaseTrigger
 	public string Landmark
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTriggerTeleport", "m_iLandmark"); }
-	set { Schema.SetString(this.Handle, "CTriggerTeleport", "m_iLandmark", value); }
+		set { Schema.SetString(this.Handle, "CTriggerTeleport", "m_iLandmark", value); }
 	}
 
 	// m_bUseLandmarkAngles

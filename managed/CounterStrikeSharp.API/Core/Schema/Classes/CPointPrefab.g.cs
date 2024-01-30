@@ -23,7 +23,7 @@ public partial class CPointPrefab : CServerOnlyPointEntity
 	public string TargetMapName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointPrefab", "m_targetMapName"); }
-	set { Schema.SetString(this.Handle, "CPointPrefab", "m_targetMapName", value); }
+		set { Schema.SetString(this.Handle, "CPointPrefab", "m_targetMapName", value); }
 	}
 
 	// m_forceWorldGroupID
@@ -31,7 +31,7 @@ public partial class CPointPrefab : CServerOnlyPointEntity
 	public string ForceWorldGroupID
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointPrefab", "m_forceWorldGroupID"); }
-	set { Schema.SetString(this.Handle, "CPointPrefab", "m_forceWorldGroupID", value); }
+		set { Schema.SetString(this.Handle, "CPointPrefab", "m_forceWorldGroupID", value); }
 	}
 
 	// m_associatedRelayTargetName
@@ -39,7 +39,7 @@ public partial class CPointPrefab : CServerOnlyPointEntity
 	public string AssociatedRelayTargetName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointPrefab", "m_associatedRelayTargetName"); }
-	set { Schema.SetString(this.Handle, "CPointPrefab", "m_associatedRelayTargetName", value); }
+		set { Schema.SetString(this.Handle, "CPointPrefab", "m_associatedRelayTargetName", value); }
 	}
 
 	// m_fixupNames

@@ -31,7 +31,7 @@ public partial class CPhysImpact : CPointEntity
 	public string DirectionEntityName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPhysImpact", "m_directionEntityName"); }
-	set { Schema.SetString(this.Handle, "CPhysImpact", "m_directionEntityName", value); }
+		set { Schema.SetString(this.Handle, "CPhysImpact", "m_directionEntityName", value); }
 	}
 
 }

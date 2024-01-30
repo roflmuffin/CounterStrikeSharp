@@ -23,7 +23,7 @@ public partial class CSoundStackSave : CLogicalEntity
 	public string StackName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSoundStackSave", "m_iszStackName"); }
-	set { Schema.SetString(this.Handle, "CSoundStackSave", "m_iszStackName", value); }
+		set { Schema.SetString(this.Handle, "CSoundStackSave", "m_iszStackName", value); }
 	}
 
 }

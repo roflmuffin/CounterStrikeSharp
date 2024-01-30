@@ -23,7 +23,7 @@ public partial class CTriggerLerpObject : CBaseTrigger
 	public string IszLerpTarget
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTriggerLerpObject", "m_iszLerpTarget"); }
-	set { Schema.SetString(this.Handle, "CTriggerLerpObject", "m_iszLerpTarget", value); }
+		set { Schema.SetString(this.Handle, "CTriggerLerpObject", "m_iszLerpTarget", value); }
 	}
 
 	// m_hLerpTarget
@@ -35,7 +35,7 @@ public partial class CTriggerLerpObject : CBaseTrigger
 	public string IszLerpTargetAttachment
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTriggerLerpObject", "m_iszLerpTargetAttachment"); }
-	set { Schema.SetString(this.Handle, "CTriggerLerpObject", "m_iszLerpTargetAttachment", value); }
+		set { Schema.SetString(this.Handle, "CTriggerLerpObject", "m_iszLerpTargetAttachment", value); }
 	}
 
 	// m_flLerpDuration
@@ -59,7 +59,7 @@ public partial class CTriggerLerpObject : CBaseTrigger
 	public string LerpEffect
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTriggerLerpObject", "m_iszLerpEffect"); }
-	set { Schema.SetString(this.Handle, "CTriggerLerpObject", "m_iszLerpEffect", value); }
+		set { Schema.SetString(this.Handle, "CTriggerLerpObject", "m_iszLerpEffect", value); }
 	}
 
 	// m_iszLerpSound
@@ -67,7 +67,7 @@ public partial class CTriggerLerpObject : CBaseTrigger
 	public string LerpSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTriggerLerpObject", "m_iszLerpSound"); }
-	set { Schema.SetString(this.Handle, "CTriggerLerpObject", "m_iszLerpSound", value); }
+		set { Schema.SetString(this.Handle, "CTriggerLerpObject", "m_iszLerpSound", value); }
 	}
 
 	// m_OnLerpStarted

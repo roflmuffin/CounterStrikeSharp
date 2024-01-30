@@ -27,7 +27,7 @@ public partial class CTriggerSoundscape : CBaseTrigger
 	public string SoundscapeName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTriggerSoundscape", "m_SoundscapeName"); }
-	set { Schema.SetString(this.Handle, "CTriggerSoundscape", "m_SoundscapeName", value); }
+		set { Schema.SetString(this.Handle, "CTriggerSoundscape", "m_SoundscapeName", value); }
 	}
 
 	// m_spectators

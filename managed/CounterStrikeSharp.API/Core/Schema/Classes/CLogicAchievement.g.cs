@@ -27,7 +27,7 @@ public partial class CLogicAchievement : CLogicalEntity
 	public string AchievementEventID
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CLogicAchievement", "m_iszAchievementEventID"); }
-	set { Schema.SetString(this.Handle, "CLogicAchievement", "m_iszAchievementEventID", value); }
+		set { Schema.SetString(this.Handle, "CLogicAchievement", "m_iszAchievementEventID", value); }
 	}
 
 	// m_OnFired

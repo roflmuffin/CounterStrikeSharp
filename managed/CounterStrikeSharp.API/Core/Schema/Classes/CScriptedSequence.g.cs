@@ -23,7 +23,7 @@ public partial class CScriptedSequence : CBaseEntity
 	public string Entry
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CScriptedSequence", "m_iszEntry"); }
-	set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszEntry", value); }
+		set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszEntry", value); }
 	}
 
 	// m_iszPreIdle
@@ -31,7 +31,7 @@ public partial class CScriptedSequence : CBaseEntity
 	public string PreIdle
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CScriptedSequence", "m_iszPreIdle"); }
-	set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszPreIdle", value); }
+		set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszPreIdle", value); }
 	}
 
 	// m_iszPlay
@@ -39,7 +39,7 @@ public partial class CScriptedSequence : CBaseEntity
 	public string Play
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CScriptedSequence", "m_iszPlay"); }
-	set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszPlay", value); }
+		set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszPlay", value); }
 	}
 
 	// m_iszPostIdle
@@ -47,7 +47,7 @@ public partial class CScriptedSequence : CBaseEntity
 	public string PostIdle
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CScriptedSequence", "m_iszPostIdle"); }
-	set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszPostIdle", value); }
+		set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszPostIdle", value); }
 	}
 
 	// m_iszModifierToAddOnPlay
@@ -55,7 +55,7 @@ public partial class CScriptedSequence : CBaseEntity
 	public string ModifierToAddOnPlay
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CScriptedSequence", "m_iszModifierToAddOnPlay"); }
-	set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszModifierToAddOnPlay", value); }
+		set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszModifierToAddOnPlay", value); }
 	}
 
 	// m_iszNextScript
@@ -63,7 +63,7 @@ public partial class CScriptedSequence : CBaseEntity
 	public string NextScript
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CScriptedSequence", "m_iszNextScript"); }
-	set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszNextScript", value); }
+		set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszNextScript", value); }
 	}
 
 	// m_iszEntity
@@ -71,7 +71,7 @@ public partial class CScriptedSequence : CBaseEntity
 	public string Entity
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CScriptedSequence", "m_iszEntity"); }
-	set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszEntity", value); }
+		set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszEntity", value); }
 	}
 
 	// m_iszSyncGroup
@@ -79,7 +79,7 @@ public partial class CScriptedSequence : CBaseEntity
 	public string SyncGroup
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CScriptedSequence", "m_iszSyncGroup"); }
-	set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszSyncGroup", value); }
+		set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszSyncGroup", value); }
 	}
 
 	// m_nMoveTo

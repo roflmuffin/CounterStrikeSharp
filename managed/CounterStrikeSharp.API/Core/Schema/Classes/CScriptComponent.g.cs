@@ -23,7 +23,7 @@ public partial class CScriptComponent : CEntityComponent
 	public string ScriptClassName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CScriptComponent", "m_scriptClassName"); }
-	set { Schema.SetString(this.Handle, "CScriptComponent", "m_scriptClassName", value); }
+		set { Schema.SetString(this.Handle, "CScriptComponent", "m_scriptClassName", value); }
 	}
 
 }

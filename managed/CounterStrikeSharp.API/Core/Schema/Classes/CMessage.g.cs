@@ -23,7 +23,7 @@ public partial class CMessage : CPointEntity
 	public string Message
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CMessage", "m_iszMessage"); }
-	set { Schema.SetString(this.Handle, "CMessage", "m_iszMessage", value); }
+		set { Schema.SetString(this.Handle, "CMessage", "m_iszMessage", value); }
 	}
 
 	// m_MessageVolume
@@ -43,7 +43,7 @@ public partial class CMessage : CPointEntity
 	public string Noise
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CMessage", "m_sNoise"); }
-	set { Schema.SetString(this.Handle, "CMessage", "m_sNoise", value); }
+		set { Schema.SetString(this.Handle, "CMessage", "m_sNoise", value); }
 	}
 
 	// m_OnShowMessage

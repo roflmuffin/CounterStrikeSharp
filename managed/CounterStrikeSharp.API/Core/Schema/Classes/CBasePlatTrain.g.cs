@@ -23,7 +23,7 @@ public partial class CBasePlatTrain : CBaseToggle
 	public string NoiseMoving
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBasePlatTrain", "m_NoiseMoving"); }
-	set { Schema.SetString(this.Handle, "CBasePlatTrain", "m_NoiseMoving", value); }
+		set { Schema.SetString(this.Handle, "CBasePlatTrain", "m_NoiseMoving", value); }
 	}
 
 	// m_NoiseArrived
@@ -31,7 +31,7 @@ public partial class CBasePlatTrain : CBaseToggle
 	public string NoiseArrived
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBasePlatTrain", "m_NoiseArrived"); }
-	set { Schema.SetString(this.Handle, "CBasePlatTrain", "m_NoiseArrived", value); }
+		set { Schema.SetString(this.Handle, "CBasePlatTrain", "m_NoiseArrived", value); }
 	}
 
 	// m_volume

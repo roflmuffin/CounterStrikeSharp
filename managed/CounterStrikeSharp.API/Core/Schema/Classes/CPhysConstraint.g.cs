@@ -23,7 +23,7 @@ public partial class CPhysConstraint : CLogicalEntity
 	public string NameAttach1
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPhysConstraint", "m_nameAttach1"); }
-	set { Schema.SetString(this.Handle, "CPhysConstraint", "m_nameAttach1", value); }
+		set { Schema.SetString(this.Handle, "CPhysConstraint", "m_nameAttach1", value); }
 	}
 
 	// m_nameAttach2
@@ -31,7 +31,7 @@ public partial class CPhysConstraint : CLogicalEntity
 	public string NameAttach2
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPhysConstraint", "m_nameAttach2"); }
-	set { Schema.SetString(this.Handle, "CPhysConstraint", "m_nameAttach2", value); }
+		set { Schema.SetString(this.Handle, "CPhysConstraint", "m_nameAttach2", value); }
 	}
 
 	// m_breakSound
@@ -39,7 +39,7 @@ public partial class CPhysConstraint : CLogicalEntity
 	public string BreakSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPhysConstraint", "m_breakSound"); }
-	set { Schema.SetString(this.Handle, "CPhysConstraint", "m_breakSound", value); }
+		set { Schema.SetString(this.Handle, "CPhysConstraint", "m_breakSound", value); }
 	}
 
 	// m_forceLimit

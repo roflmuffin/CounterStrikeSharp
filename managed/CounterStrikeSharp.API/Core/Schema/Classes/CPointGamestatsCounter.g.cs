@@ -23,7 +23,7 @@ public partial class CPointGamestatsCounter : CPointEntity
 	public string StrStatisticName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointGamestatsCounter", "m_strStatisticName"); }
-	set { Schema.SetString(this.Handle, "CPointGamestatsCounter", "m_strStatisticName", value); }
+		set { Schema.SetString(this.Handle, "CPointGamestatsCounter", "m_strStatisticName", value); }
 	}
 
 	// m_bDisabled

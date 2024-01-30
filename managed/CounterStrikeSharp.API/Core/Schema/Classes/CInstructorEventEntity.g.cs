@@ -23,7 +23,7 @@ public partial class CInstructorEventEntity : CPointEntity
 	public string Name
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CInstructorEventEntity", "m_iszName"); }
-	set { Schema.SetString(this.Handle, "CInstructorEventEntity", "m_iszName", value); }
+		set { Schema.SetString(this.Handle, "CInstructorEventEntity", "m_iszName", value); }
 	}
 
 	// m_iszHintTargetEntity
@@ -31,7 +31,7 @@ public partial class CInstructorEventEntity : CPointEntity
 	public string HintTargetEntity
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CInstructorEventEntity", "m_iszHintTargetEntity"); }
-	set { Schema.SetString(this.Handle, "CInstructorEventEntity", "m_iszHintTargetEntity", value); }
+		set { Schema.SetString(this.Handle, "CInstructorEventEntity", "m_iszHintTargetEntity", value); }
 	}
 
 	// m_hTargetPlayer

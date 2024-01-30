@@ -23,7 +23,7 @@ public partial class CTankTargetChange : CPointEntity
 	public string NewTargetName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTankTargetChange", "m_newTargetName"); }
-	set { Schema.SetString(this.Handle, "CTankTargetChange", "m_newTargetName", value); }
+		set { Schema.SetString(this.Handle, "CTankTargetChange", "m_newTargetName", value); }
 	}
 
 }

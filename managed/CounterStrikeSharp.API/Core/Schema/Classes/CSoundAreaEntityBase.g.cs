@@ -27,7 +27,7 @@ public partial class CSoundAreaEntityBase : CBaseEntity
 	public string SoundAreaType
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CSoundAreaEntityBase", "m_iszSoundAreaType"); }
-	set { Schema.SetString(this.Handle, "CSoundAreaEntityBase", "m_iszSoundAreaType", value); }
+		set { Schema.SetString(this.Handle, "CSoundAreaEntityBase", "m_iszSoundAreaType", value); }
 	}
 
 	// m_vPos

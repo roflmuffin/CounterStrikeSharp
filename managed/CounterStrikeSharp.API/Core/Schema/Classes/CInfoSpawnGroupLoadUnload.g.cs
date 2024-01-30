@@ -39,7 +39,7 @@ public partial class CInfoSpawnGroupLoadUnload : CLogicalEntity
 	public string SpawnGroupName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CInfoSpawnGroupLoadUnload", "m_iszSpawnGroupName"); }
-	set { Schema.SetString(this.Handle, "CInfoSpawnGroupLoadUnload", "m_iszSpawnGroupName", value); }
+		set { Schema.SetString(this.Handle, "CInfoSpawnGroupLoadUnload", "m_iszSpawnGroupName", value); }
 	}
 
 	// m_iszSpawnGroupFilterName
@@ -47,7 +47,7 @@ public partial class CInfoSpawnGroupLoadUnload : CLogicalEntity
 	public string SpawnGroupFilterName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CInfoSpawnGroupLoadUnload", "m_iszSpawnGroupFilterName"); }
-	set { Schema.SetString(this.Handle, "CInfoSpawnGroupLoadUnload", "m_iszSpawnGroupFilterName", value); }
+		set { Schema.SetString(this.Handle, "CInfoSpawnGroupLoadUnload", "m_iszSpawnGroupFilterName", value); }
 	}
 
 	// m_iszLandmarkName
@@ -55,7 +55,7 @@ public partial class CInfoSpawnGroupLoadUnload : CLogicalEntity
 	public string LandmarkName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CInfoSpawnGroupLoadUnload", "m_iszLandmarkName"); }
-	set { Schema.SetString(this.Handle, "CInfoSpawnGroupLoadUnload", "m_iszLandmarkName", value); }
+		set { Schema.SetString(this.Handle, "CInfoSpawnGroupLoadUnload", "m_iszLandmarkName", value); }
 	}
 
 	// m_sFixedSpawnGroupName
@@ -63,7 +63,7 @@ public partial class CInfoSpawnGroupLoadUnload : CLogicalEntity
 	public string FixedSpawnGroupName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CInfoSpawnGroupLoadUnload", "m_sFixedSpawnGroupName"); }
-	set { Schema.SetString(this.Handle, "CInfoSpawnGroupLoadUnload", "m_sFixedSpawnGroupName", value); }
+		set { Schema.SetString(this.Handle, "CInfoSpawnGroupLoadUnload", "m_sFixedSpawnGroupName", value); }
 	}
 
 	// m_flTimeoutInterval

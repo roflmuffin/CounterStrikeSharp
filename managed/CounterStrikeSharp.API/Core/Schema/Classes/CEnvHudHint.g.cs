@@ -23,7 +23,7 @@ public partial class CEnvHudHint : CPointEntity
 	public string Message
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvHudHint", "m_iszMessage"); }
-	set { Schema.SetString(this.Handle, "CEnvHudHint", "m_iszMessage", value); }
+		set { Schema.SetString(this.Handle, "CEnvHudHint", "m_iszMessage", value); }
 	}
 
 }

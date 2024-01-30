@@ -23,7 +23,7 @@ public partial class CTriggerGameEvent : CBaseTrigger
 	public string StrStartTouchEventName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTriggerGameEvent", "m_strStartTouchEventName"); }
-	set { Schema.SetString(this.Handle, "CTriggerGameEvent", "m_strStartTouchEventName", value); }
+		set { Schema.SetString(this.Handle, "CTriggerGameEvent", "m_strStartTouchEventName", value); }
 	}
 
 	// m_strEndTouchEventName
@@ -31,7 +31,7 @@ public partial class CTriggerGameEvent : CBaseTrigger
 	public string StrEndTouchEventName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTriggerGameEvent", "m_strEndTouchEventName"); }
-	set { Schema.SetString(this.Handle, "CTriggerGameEvent", "m_strEndTouchEventName", value); }
+		set { Schema.SetString(this.Handle, "CTriggerGameEvent", "m_strEndTouchEventName", value); }
 	}
 
 	// m_strTriggerID
@@ -39,7 +39,7 @@ public partial class CTriggerGameEvent : CBaseTrigger
 	public string StrTriggerID
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTriggerGameEvent", "m_strTriggerID"); }
-	set { Schema.SetString(this.Handle, "CTriggerGameEvent", "m_strTriggerID", value); }
+		set { Schema.SetString(this.Handle, "CTriggerGameEvent", "m_strTriggerID", value); }
 	}
 
 }

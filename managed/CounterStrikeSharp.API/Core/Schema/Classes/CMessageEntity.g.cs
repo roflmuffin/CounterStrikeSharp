@@ -27,7 +27,7 @@ public partial class CMessageEntity : CPointEntity
 	public string MessageText
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CMessageEntity", "m_messageText"); }
-	set { Schema.SetString(this.Handle, "CMessageEntity", "m_messageText", value); }
+		set { Schema.SetString(this.Handle, "CMessageEntity", "m_messageText", value); }
 	}
 
 	// m_drawText

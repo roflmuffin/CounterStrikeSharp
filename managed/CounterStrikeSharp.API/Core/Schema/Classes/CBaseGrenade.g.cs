@@ -59,7 +59,7 @@ public partial class CBaseGrenade : CBaseFlex
 	public string BounceSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseGrenade", "m_iszBounceSound"); }
-	set { Schema.SetString(this.Handle, "CBaseGrenade", "m_iszBounceSound", value); }
+		set { Schema.SetString(this.Handle, "CBaseGrenade", "m_iszBounceSound", value); }
 	}
 
 	// m_ExplosionSound
@@ -67,7 +67,7 @@ public partial class CBaseGrenade : CBaseFlex
 	public string ExplosionSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseGrenade", "m_ExplosionSound"); }
-	set { Schema.SetString(this.Handle, "CBaseGrenade", "m_ExplosionSound", value); }
+		set { Schema.SetString(this.Handle, "CBaseGrenade", "m_ExplosionSound", value); }
 	}
 
 	// m_hThrower

@@ -27,7 +27,7 @@ public partial class CTriggerProximity : CBaseTrigger
 	public string IszMeasureTarget
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTriggerProximity", "m_iszMeasureTarget"); }
-	set { Schema.SetString(this.Handle, "CTriggerProximity", "m_iszMeasureTarget", value); }
+		set { Schema.SetString(this.Handle, "CTriggerProximity", "m_iszMeasureTarget", value); }
 	}
 
 	// m_fRadius

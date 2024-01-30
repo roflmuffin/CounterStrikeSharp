@@ -47,7 +47,7 @@ public partial class CEnvMicrophone : CPointEntity
 	public string SpeakerName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvMicrophone", "m_iszSpeakerName"); }
-	set { Schema.SetString(this.Handle, "CEnvMicrophone", "m_iszSpeakerName", value); }
+		set { Schema.SetString(this.Handle, "CEnvMicrophone", "m_iszSpeakerName", value); }
 	}
 
 	// m_hSpeaker
@@ -67,7 +67,7 @@ public partial class CEnvMicrophone : CPointEntity
 	public string IszListenFilter
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvMicrophone", "m_iszListenFilter"); }
-	set { Schema.SetString(this.Handle, "CEnvMicrophone", "m_iszListenFilter", value); }
+		set { Schema.SetString(this.Handle, "CEnvMicrophone", "m_iszListenFilter", value); }
 	}
 
 	// m_hListenFilter

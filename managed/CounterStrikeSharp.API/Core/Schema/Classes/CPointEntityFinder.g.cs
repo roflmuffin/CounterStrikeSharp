@@ -27,7 +27,7 @@ public partial class CPointEntityFinder : CBaseEntity
 	public string FilterName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointEntityFinder", "m_iFilterName"); }
-	set { Schema.SetString(this.Handle, "CPointEntityFinder", "m_iFilterName", value); }
+		set { Schema.SetString(this.Handle, "CPointEntityFinder", "m_iFilterName", value); }
 	}
 
 	// m_hFilter
@@ -39,7 +39,7 @@ public partial class CPointEntityFinder : CBaseEntity
 	public string RefName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CPointEntityFinder", "m_iRefName"); }
-	set { Schema.SetString(this.Handle, "CPointEntityFinder", "m_iRefName", value); }
+		set { Schema.SetString(this.Handle, "CPointEntityFinder", "m_iRefName", value); }
 	}
 
 	// m_hReference

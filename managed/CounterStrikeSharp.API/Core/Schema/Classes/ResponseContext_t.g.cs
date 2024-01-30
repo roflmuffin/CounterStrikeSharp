@@ -23,7 +23,7 @@ public partial class ResponseContext_t : NativeObject
 	public string Name
 	{
 		get { return Schema.GetUtf8String(this.Handle, "ResponseContext_t", "m_iszName"); }
-	set { Schema.SetString(this.Handle, "ResponseContext_t", "m_iszName", value); }
+		set { Schema.SetString(this.Handle, "ResponseContext_t", "m_iszName", value); }
 	}
 
 	// m_iszValue
@@ -31,7 +31,7 @@ public partial class ResponseContext_t : NativeObject
 	public string Value
 	{
 		get { return Schema.GetUtf8String(this.Handle, "ResponseContext_t", "m_iszValue"); }
-	set { Schema.SetString(this.Handle, "ResponseContext_t", "m_iszValue", value); }
+		set { Schema.SetString(this.Handle, "ResponseContext_t", "m_iszValue", value); }
 	}
 
 	// m_fExpirationTime

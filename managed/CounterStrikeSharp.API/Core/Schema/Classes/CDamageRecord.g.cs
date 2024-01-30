@@ -39,7 +39,7 @@ public partial class CDamageRecord : NativeObject
 	public string PlayerDamagerName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CDamageRecord", "m_szPlayerDamagerName"); }
-	set { Schema.SetString(this.Handle, "CDamageRecord", "m_szPlayerDamagerName", value); }
+		set { Schema.SetString(this.Handle, "CDamageRecord", "m_szPlayerDamagerName", value); }
 	}
 
 	// m_szPlayerRecipientName
@@ -47,7 +47,7 @@ public partial class CDamageRecord : NativeObject
 	public string PlayerRecipientName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CDamageRecord", "m_szPlayerRecipientName"); }
-	set { Schema.SetString(this.Handle, "CDamageRecord", "m_szPlayerRecipientName", value); }
+		set { Schema.SetString(this.Handle, "CDamageRecord", "m_szPlayerRecipientName", value); }
 	}
 
 	// m_DamagerXuid

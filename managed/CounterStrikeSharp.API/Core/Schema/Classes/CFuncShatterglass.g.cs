@@ -119,7 +119,7 @@ public partial class CFuncShatterglass : CBaseModelEntity
 	public string DamagePositioningEntityName01
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncShatterglass", "m_szDamagePositioningEntityName01"); }
-	set { Schema.SetString(this.Handle, "CFuncShatterglass", "m_szDamagePositioningEntityName01", value); }
+		set { Schema.SetString(this.Handle, "CFuncShatterglass", "m_szDamagePositioningEntityName01", value); }
 	}
 
 	// m_szDamagePositioningEntityName02
@@ -127,7 +127,7 @@ public partial class CFuncShatterglass : CBaseModelEntity
 	public string DamagePositioningEntityName02
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncShatterglass", "m_szDamagePositioningEntityName02"); }
-	set { Schema.SetString(this.Handle, "CFuncShatterglass", "m_szDamagePositioningEntityName02", value); }
+		set { Schema.SetString(this.Handle, "CFuncShatterglass", "m_szDamagePositioningEntityName02", value); }
 	}
 
 	// m_szDamagePositioningEntityName03
@@ -135,7 +135,7 @@ public partial class CFuncShatterglass : CBaseModelEntity
 	public string DamagePositioningEntityName03
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncShatterglass", "m_szDamagePositioningEntityName03"); }
-	set { Schema.SetString(this.Handle, "CFuncShatterglass", "m_szDamagePositioningEntityName03", value); }
+		set { Schema.SetString(this.Handle, "CFuncShatterglass", "m_szDamagePositioningEntityName03", value); }
 	}
 
 	// m_szDamagePositioningEntityName04
@@ -143,7 +143,7 @@ public partial class CFuncShatterglass : CBaseModelEntity
 	public string DamagePositioningEntityName04
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncShatterglass", "m_szDamagePositioningEntityName04"); }
-	set { Schema.SetString(this.Handle, "CFuncShatterglass", "m_szDamagePositioningEntityName04", value); }
+		set { Schema.SetString(this.Handle, "CFuncShatterglass", "m_szDamagePositioningEntityName04", value); }
 	}
 
 	// m_vInitialDamagePositions

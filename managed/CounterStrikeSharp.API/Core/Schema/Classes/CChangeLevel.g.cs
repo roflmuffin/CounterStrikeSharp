@@ -23,7 +23,7 @@ public partial class CChangeLevel : CBaseTrigger
 	public string MapName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CChangeLevel", "m_sMapName"); }
-	set { Schema.SetString(this.Handle, "CChangeLevel", "m_sMapName", value); }
+		set { Schema.SetString(this.Handle, "CChangeLevel", "m_sMapName", value); }
 	}
 
 	// m_sLandmarkName
@@ -31,7 +31,7 @@ public partial class CChangeLevel : CBaseTrigger
 	public string LandmarkName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CChangeLevel", "m_sLandmarkName"); }
-	set { Schema.SetString(this.Handle, "CChangeLevel", "m_sLandmarkName", value); }
+		set { Schema.SetString(this.Handle, "CChangeLevel", "m_sLandmarkName", value); }
 	}
 
 	// m_OnChangeLevel

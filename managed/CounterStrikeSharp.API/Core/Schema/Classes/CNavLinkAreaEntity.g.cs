@@ -35,7 +35,7 @@ public partial class CNavLinkAreaEntity : CPointEntity
 	public string StrMovementForward
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CNavLinkAreaEntity", "m_strMovementForward"); }
-	set { Schema.SetString(this.Handle, "CNavLinkAreaEntity", "m_strMovementForward", value); }
+		set { Schema.SetString(this.Handle, "CNavLinkAreaEntity", "m_strMovementForward", value); }
 	}
 
 	// m_strMovementReverse
@@ -43,7 +43,7 @@ public partial class CNavLinkAreaEntity : CPointEntity
 	public string StrMovementReverse
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CNavLinkAreaEntity", "m_strMovementReverse"); }
-	set { Schema.SetString(this.Handle, "CNavLinkAreaEntity", "m_strMovementReverse", value); }
+		set { Schema.SetString(this.Handle, "CNavLinkAreaEntity", "m_strMovementReverse", value); }
 	}
 
 	// m_nNavLinkIdForward
@@ -63,7 +63,7 @@ public partial class CNavLinkAreaEntity : CPointEntity
 	public string StrFilterName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CNavLinkAreaEntity", "m_strFilterName"); }
-	set { Schema.SetString(this.Handle, "CNavLinkAreaEntity", "m_strFilterName", value); }
+		set { Schema.SetString(this.Handle, "CNavLinkAreaEntity", "m_strFilterName", value); }
 	}
 
 	// m_hFilter

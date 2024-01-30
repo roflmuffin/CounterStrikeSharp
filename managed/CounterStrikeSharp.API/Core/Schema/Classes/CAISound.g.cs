@@ -43,7 +43,7 @@ public partial class CAISound : CPointEntity
 	public string ProxyEntityName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CAISound", "m_iszProxyEntityName"); }
-	set { Schema.SetString(this.Handle, "CAISound", "m_iszProxyEntityName", value); }
+		set { Schema.SetString(this.Handle, "CAISound", "m_iszProxyEntityName", value); }
 	}
 
 }

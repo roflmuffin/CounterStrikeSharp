@@ -27,7 +27,7 @@ public partial class CTriggerActiveWeaponDetect : CBaseTrigger
 	public string WeaponClassName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CTriggerActiveWeaponDetect", "m_iszWeaponClassName"); }
-	set { Schema.SetString(this.Handle, "CTriggerActiveWeaponDetect", "m_iszWeaponClassName", value); }
+		set { Schema.SetString(this.Handle, "CTriggerActiveWeaponDetect", "m_iszWeaponClassName", value); }
 	}
 
 }

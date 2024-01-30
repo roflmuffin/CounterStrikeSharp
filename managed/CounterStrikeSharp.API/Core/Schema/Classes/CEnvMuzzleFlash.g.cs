@@ -27,7 +27,7 @@ public partial class CEnvMuzzleFlash : CPointEntity
 	public string ParentAttachment
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvMuzzleFlash", "m_iszParentAttachment"); }
-	set { Schema.SetString(this.Handle, "CEnvMuzzleFlash", "m_iszParentAttachment", value); }
+		set { Schema.SetString(this.Handle, "CEnvMuzzleFlash", "m_iszParentAttachment", value); }
 	}
 
 }

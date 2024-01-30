@@ -23,7 +23,7 @@ public partial class CEnvInstructorVRHint : CPointEntity
 	public string Name
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorVRHint", "m_iszName"); }
-	set { Schema.SetString(this.Handle, "CEnvInstructorVRHint", "m_iszName", value); }
+		set { Schema.SetString(this.Handle, "CEnvInstructorVRHint", "m_iszName", value); }
 	}
 
 	// m_iszHintTargetEntity
@@ -31,7 +31,7 @@ public partial class CEnvInstructorVRHint : CPointEntity
 	public string HintTargetEntity
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorVRHint", "m_iszHintTargetEntity"); }
-	set { Schema.SetString(this.Handle, "CEnvInstructorVRHint", "m_iszHintTargetEntity", value); }
+		set { Schema.SetString(this.Handle, "CEnvInstructorVRHint", "m_iszHintTargetEntity", value); }
 	}
 
 	// m_iTimeout
@@ -43,7 +43,7 @@ public partial class CEnvInstructorVRHint : CPointEntity
 	public string Caption
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorVRHint", "m_iszCaption"); }
-	set { Schema.SetString(this.Handle, "CEnvInstructorVRHint", "m_iszCaption", value); }
+		set { Schema.SetString(this.Handle, "CEnvInstructorVRHint", "m_iszCaption", value); }
 	}
 
 	// m_iszStartSound
@@ -51,7 +51,7 @@ public partial class CEnvInstructorVRHint : CPointEntity
 	public string StartSound
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorVRHint", "m_iszStartSound"); }
-	set { Schema.SetString(this.Handle, "CEnvInstructorVRHint", "m_iszStartSound", value); }
+		set { Schema.SetString(this.Handle, "CEnvInstructorVRHint", "m_iszStartSound", value); }
 	}
 
 	// m_iLayoutFileType
@@ -63,7 +63,7 @@ public partial class CEnvInstructorVRHint : CPointEntity
 	public string CustomLayoutFile
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorVRHint", "m_iszCustomLayoutFile"); }
-	set { Schema.SetString(this.Handle, "CEnvInstructorVRHint", "m_iszCustomLayoutFile", value); }
+		set { Schema.SetString(this.Handle, "CEnvInstructorVRHint", "m_iszCustomLayoutFile", value); }
 	}
 
 	// m_iAttachType

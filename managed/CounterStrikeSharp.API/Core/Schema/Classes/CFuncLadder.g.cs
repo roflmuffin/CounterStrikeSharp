@@ -59,7 +59,7 @@ public partial class CFuncLadder : CBaseModelEntity
 	public string SurfacePropName
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncLadder", "m_surfacePropName"); }
-	set { Schema.SetString(this.Handle, "CFuncLadder", "m_surfacePropName", value); }
+		set { Schema.SetString(this.Handle, "CFuncLadder", "m_surfacePropName", value); }
 	}
 
 	// m_OnPlayerGotOnLadder

@@ -59,7 +59,7 @@ public partial class CBaseDoor : CBaseToggle
 	public string NoiseMoving
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseDoor", "m_NoiseMoving"); }
-	set { Schema.SetString(this.Handle, "CBaseDoor", "m_NoiseMoving", value); }
+		set { Schema.SetString(this.Handle, "CBaseDoor", "m_NoiseMoving", value); }
 	}
 
 	// m_NoiseArrived
@@ -67,7 +67,7 @@ public partial class CBaseDoor : CBaseToggle
 	public string NoiseArrived
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseDoor", "m_NoiseArrived"); }
-	set { Schema.SetString(this.Handle, "CBaseDoor", "m_NoiseArrived", value); }
+		set { Schema.SetString(this.Handle, "CBaseDoor", "m_NoiseArrived", value); }
 	}
 
 	// m_NoiseMovingClosed
@@ -75,7 +75,7 @@ public partial class CBaseDoor : CBaseToggle
 	public string NoiseMovingClosed
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseDoor", "m_NoiseMovingClosed"); }
-	set { Schema.SetString(this.Handle, "CBaseDoor", "m_NoiseMovingClosed", value); }
+		set { Schema.SetString(this.Handle, "CBaseDoor", "m_NoiseMovingClosed", value); }
 	}
 
 	// m_NoiseArrivedClosed
@@ -83,7 +83,7 @@ public partial class CBaseDoor : CBaseToggle
 	public string NoiseArrivedClosed
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseDoor", "m_NoiseArrivedClosed"); }
-	set { Schema.SetString(this.Handle, "CBaseDoor", "m_NoiseArrivedClosed", value); }
+		set { Schema.SetString(this.Handle, "CBaseDoor", "m_NoiseArrivedClosed", value); }
 	}
 
 	// m_ChainTarget
@@ -91,7 +91,7 @@ public partial class CBaseDoor : CBaseToggle
 	public string ChainTarget
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBaseDoor", "m_ChainTarget"); }
-	set { Schema.SetString(this.Handle, "CBaseDoor", "m_ChainTarget", value); }
+		set { Schema.SetString(this.Handle, "CBaseDoor", "m_ChainTarget", value); }
 	}
 
 	// m_OnBlockedClosing

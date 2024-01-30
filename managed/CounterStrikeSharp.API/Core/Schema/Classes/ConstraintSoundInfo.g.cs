@@ -35,7 +35,7 @@ public partial class ConstraintSoundInfo : NativeObject
 	public string TravelSoundFwd
 	{
 		get { return Schema.GetUtf8String(this.Handle, "ConstraintSoundInfo", "m_iszTravelSoundFwd"); }
-	set { Schema.SetString(this.Handle, "ConstraintSoundInfo", "m_iszTravelSoundFwd", value); }
+		set { Schema.SetString(this.Handle, "ConstraintSoundInfo", "m_iszTravelSoundFwd", value); }
 	}
 
 	// m_iszTravelSoundBack
@@ -43,7 +43,7 @@ public partial class ConstraintSoundInfo : NativeObject
 	public string TravelSoundBack
 	{
 		get { return Schema.GetUtf8String(this.Handle, "ConstraintSoundInfo", "m_iszTravelSoundBack"); }
-	set { Schema.SetString(this.Handle, "ConstraintSoundInfo", "m_iszTravelSoundBack", value); }
+		set { Schema.SetString(this.Handle, "ConstraintSoundInfo", "m_iszTravelSoundBack", value); }
 	}
 
 	// m_iszReversalSounds

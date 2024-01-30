@@ -47,7 +47,7 @@ public partial class CBombTarget : CBaseTrigger
 	public string MountTarget
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CBombTarget", "m_szMountTarget"); }
-	set { Schema.SetString(this.Handle, "CBombTarget", "m_szMountTarget", value); }
+		set { Schema.SetString(this.Handle, "CBombTarget", "m_szMountTarget", value); }
 	}
 
 	// m_hInstructorHint

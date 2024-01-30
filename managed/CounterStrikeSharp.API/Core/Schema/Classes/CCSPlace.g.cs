@@ -23,7 +23,7 @@ public partial class CCSPlace : CServerOnlyModelEntity
 	public string Name
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CCSPlace", "m_name"); }
-	set { Schema.SetString(this.Handle, "CCSPlace", "m_name", value); }
+		set { Schema.SetString(this.Handle, "CCSPlace", "m_name", value); }
 	}
 
 }
