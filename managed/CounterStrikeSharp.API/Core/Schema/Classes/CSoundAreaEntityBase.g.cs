@@ -20,18 +20,18 @@ public partial class CSoundAreaEntityBase : CBaseEntity
 
 	// m_bDisabled
 	[SchemaMember("CSoundAreaEntityBase", "m_bDisabled")]
-    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CSoundAreaEntityBase", "m_bDisabled");
+	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CSoundAreaEntityBase", "m_bDisabled");
 
 	// m_iszSoundAreaType
 	[SchemaMember("CSoundAreaEntityBase", "m_iszSoundAreaType")]
-    public string SoundAreaType
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CSoundAreaEntityBase", "m_iszSoundAreaType"); }
-        set { Schema.SetString(this.Handle, "CSoundAreaEntityBase", "m_iszSoundAreaType", value); }
-    }
+	public string SoundAreaType
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CSoundAreaEntityBase", "m_iszSoundAreaType"); }
+	set { Schema.SetString(this.Handle, "CSoundAreaEntityBase", "m_iszSoundAreaType", value); }
+	}
 
 	// m_vPos
 	[SchemaMember("CSoundAreaEntityBase", "m_vPos")]
-    public Vector Pos => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundAreaEntityBase", "m_vPos");
+	public Vector Pos => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundAreaEntityBase", "m_vPos");
 
 }

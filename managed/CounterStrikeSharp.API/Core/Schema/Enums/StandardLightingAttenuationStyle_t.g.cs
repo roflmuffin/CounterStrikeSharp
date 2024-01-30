@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum StandardLightingAttenuationStyle_t : uint
 {
-    LIGHT_STYLE_OLD = 0x0,
-    LIGHT_STYLE_NEW = 0x1,
+	LIGHT_STYLE_OLD = 0x0,
+	LIGHT_STYLE_NEW = 0x1,
 }

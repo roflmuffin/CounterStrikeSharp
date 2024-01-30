@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum ValueRemapperRatchetType_t : uint
 {
-    RatchetType_Absolute = 0x0,
-    RatchetType_EachEngage = 0x1,
+	RatchetType_Absolute = 0x0,
+	RatchetType_EachEngage = 0x1,
 }

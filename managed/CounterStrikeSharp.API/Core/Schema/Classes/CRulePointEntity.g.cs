@@ -20,6 +20,6 @@ public partial class CRulePointEntity : CRuleEntity
 
 	// m_Score
 	[SchemaMember("CRulePointEntity", "m_Score")]
-    public ref Int32 Score => ref Schema.GetRef<Int32>(this.Handle, "CRulePointEntity", "m_Score");
+	public ref Int32 Score => ref Schema.GetRef<Int32>(this.Handle, "CRulePointEntity", "m_Score");
 
 }

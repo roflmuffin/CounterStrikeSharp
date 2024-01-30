@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum SceneOnPlayerDeath_t : uint
 {
-    SCENE_ONPLAYERDEATH_DO_NOTHING = 0x0,
-    SCENE_ONPLAYERDEATH_CANCEL = 0x1,
+	SCENE_ONPLAYERDEATH_DO_NOTHING = 0x0,
+	SCENE_ONPLAYERDEATH_CANCEL = 0x1,
 }

@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum CommandEntitySpecType_t : uint
 {
-    SPEC_SEARCH = 0x0,
-    SPEC_TYPES_COUNT = 0x1,
+	SPEC_SEARCH = 0x0,
+	SPEC_TYPES_COUNT = 0x1,
 }

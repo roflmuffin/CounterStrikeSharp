@@ -20,14 +20,14 @@ public partial class CNavLinkMovementVData : NativeObject
 
 	// m_bIsInterpolated
 	[SchemaMember("CNavLinkMovementVData", "m_bIsInterpolated")]
-    public ref bool IsInterpolated => ref Schema.GetRef<bool>(this.Handle, "CNavLinkMovementVData", "m_bIsInterpolated");
+	public ref bool IsInterpolated => ref Schema.GetRef<bool>(this.Handle, "CNavLinkMovementVData", "m_bIsInterpolated");
 
 	// m_unRecommendedDistance
 	[SchemaMember("CNavLinkMovementVData", "m_unRecommendedDistance")]
-    public ref UInt32 RecommendedDistance => ref Schema.GetRef<UInt32>(this.Handle, "CNavLinkMovementVData", "m_unRecommendedDistance");
+	public ref UInt32 RecommendedDistance => ref Schema.GetRef<UInt32>(this.Handle, "CNavLinkMovementVData", "m_unRecommendedDistance");
 
 	// m_vecAnimgraphVars
 	[SchemaMember("CNavLinkMovementVData", "m_vecAnimgraphVars")]
-    public NetworkedVector<CNavLinkAnimgraphVar> AnimgraphVars => Schema.GetDeclaredClass<NetworkedVector<CNavLinkAnimgraphVar>>(this.Handle, "CNavLinkMovementVData", "m_vecAnimgraphVars");
+	public NetworkedVector<CNavLinkAnimgraphVar> AnimgraphVars => Schema.GetDeclaredClass<NetworkedVector<CNavLinkAnimgraphVar>>(this.Handle, "CNavLinkMovementVData", "m_vecAnimgraphVars");
 
 }

@@ -8,7 +8,7 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum FieldNetworkOption : uint
 {
-    Auto = 0x0,
-    ForceEnable = 0x1,
-    ForceDisable = 0x2,
+	Auto = 0x0,
+	ForceEnable = 0x1,
+	ForceDisable = 0x2,
 }

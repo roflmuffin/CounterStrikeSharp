@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum BinaryNodeChildOption : uint
 {
-    Child1 = 0x0,
-    Child2 = 0x1,
+	Child1 = 0x0,
+	Child2 = 0x1,
 }

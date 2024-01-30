@@ -20,10 +20,10 @@ public partial class CPointClientUIWorldTextPanel : CPointClientUIWorldPanel
 
 	// m_messageText
 	[SchemaMember("CPointClientUIWorldTextPanel", "m_messageText")]
-    public string MessageText
-    {
-        get { return Schema.GetString(this.Handle, "CPointClientUIWorldTextPanel", "m_messageText"); }
-        set { Schema.SetString(this.Handle, "CPointClientUIWorldTextPanel", "m_messageText", value); }
-    }
+	public string MessageText
+	{
+		get { return Schema.GetString(this.Handle, "CPointClientUIWorldTextPanel", "m_messageText"); }
+		set { Schema.SetString(this.Handle, "CPointClientUIWorldTextPanel", "m_messageText", value); }
+	}
 
 }

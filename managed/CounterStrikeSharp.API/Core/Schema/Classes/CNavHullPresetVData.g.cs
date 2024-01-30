@@ -20,6 +20,6 @@ public partial class CNavHullPresetVData : NativeObject
 
 	// m_vecNavHulls
 	[SchemaMember("CNavHullPresetVData", "m_vecNavHulls")]
-    public NetworkedVector<string> NavHulls => Schema.GetDeclaredClass<NetworkedVector<string>>(this.Handle, "CNavHullPresetVData", "m_vecNavHulls");
+	public NetworkedVector<string> NavHulls => Schema.GetDeclaredClass<NetworkedVector<string>>(this.Handle, "CNavHullPresetVData", "m_vecNavHulls");
 
 }

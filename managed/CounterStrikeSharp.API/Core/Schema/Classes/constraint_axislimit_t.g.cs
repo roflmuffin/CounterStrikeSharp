@@ -20,18 +20,18 @@ public partial class constraint_axislimit_t : NativeObject
 
 	// flMinRotation
 	[SchemaMember("constraint_axislimit_t", "flMinRotation")]
-    public ref float FlMinRotation => ref Schema.GetRef<float>(this.Handle, "constraint_axislimit_t", "flMinRotation");
+	public ref float FlMinRotation => ref Schema.GetRef<float>(this.Handle, "constraint_axislimit_t", "flMinRotation");
 
 	// flMaxRotation
 	[SchemaMember("constraint_axislimit_t", "flMaxRotation")]
-    public ref float FlMaxRotation => ref Schema.GetRef<float>(this.Handle, "constraint_axislimit_t", "flMaxRotation");
+	public ref float FlMaxRotation => ref Schema.GetRef<float>(this.Handle, "constraint_axislimit_t", "flMaxRotation");
 
 	// flMotorTargetAngSpeed
 	[SchemaMember("constraint_axislimit_t", "flMotorTargetAngSpeed")]
-    public ref float FlMotorTargetAngSpeed => ref Schema.GetRef<float>(this.Handle, "constraint_axislimit_t", "flMotorTargetAngSpeed");
+	public ref float FlMotorTargetAngSpeed => ref Schema.GetRef<float>(this.Handle, "constraint_axislimit_t", "flMotorTargetAngSpeed");
 
 	// flMotorMaxTorque
 	[SchemaMember("constraint_axislimit_t", "flMotorMaxTorque")]
-    public ref float FlMotorMaxTorque => ref Schema.GetRef<float>(this.Handle, "constraint_axislimit_t", "flMotorMaxTorque");
+	public ref float FlMotorMaxTorque => ref Schema.GetRef<float>(this.Handle, "constraint_axislimit_t", "flMotorMaxTorque");
 
 }

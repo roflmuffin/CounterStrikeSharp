@@ -20,26 +20,26 @@ public partial class CMathColorBlend : CLogicalEntity
 
 	// m_flInMin
 	[SchemaMember("CMathColorBlend", "m_flInMin")]
-    public ref float InMin => ref Schema.GetRef<float>(this.Handle, "CMathColorBlend", "m_flInMin");
+	public ref float InMin => ref Schema.GetRef<float>(this.Handle, "CMathColorBlend", "m_flInMin");
 
 	// m_flInMax
 	[SchemaMember("CMathColorBlend", "m_flInMax")]
-    public ref float InMax => ref Schema.GetRef<float>(this.Handle, "CMathColorBlend", "m_flInMax");
+	public ref float InMax => ref Schema.GetRef<float>(this.Handle, "CMathColorBlend", "m_flInMax");
 
 	// m_OutColor1
 	[SchemaMember("CMathColorBlend", "m_OutColor1")]
-    public Color OutColor1
-    {
-        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CMathColorBlend", "m_OutColor1"); }
-        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CMathColorBlend", "m_OutColor1", value); }
-    }
+	public Color OutColor1
+	{
+		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CMathColorBlend", "m_OutColor1"); }
+		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CMathColorBlend", "m_OutColor1", value); }
+	}
 
 	// m_OutColor2
 	[SchemaMember("CMathColorBlend", "m_OutColor2")]
-    public Color OutColor2
-    {
-        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CMathColorBlend", "m_OutColor2"); }
-        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CMathColorBlend", "m_OutColor2", value); }
-    }
+	public Color OutColor2
+	{
+		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CMathColorBlend", "m_OutColor2"); }
+		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CMathColorBlend", "m_OutColor2", value); }
+	}
 
 }

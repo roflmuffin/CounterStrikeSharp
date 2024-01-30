@@ -20,30 +20,30 @@ public partial class CLightGlow : CBaseModelEntity
 
 	// m_nHorizontalSize
 	[SchemaMember("CLightGlow", "m_nHorizontalSize")]
-    public ref UInt32 HorizontalSize => ref Schema.GetRef<UInt32>(this.Handle, "CLightGlow", "m_nHorizontalSize");
+	public ref UInt32 HorizontalSize => ref Schema.GetRef<UInt32>(this.Handle, "CLightGlow", "m_nHorizontalSize");
 
 	// m_nVerticalSize
 	[SchemaMember("CLightGlow", "m_nVerticalSize")]
-    public ref UInt32 VerticalSize => ref Schema.GetRef<UInt32>(this.Handle, "CLightGlow", "m_nVerticalSize");
+	public ref UInt32 VerticalSize => ref Schema.GetRef<UInt32>(this.Handle, "CLightGlow", "m_nVerticalSize");
 
 	// m_nMinDist
 	[SchemaMember("CLightGlow", "m_nMinDist")]
-    public ref UInt32 MinDist => ref Schema.GetRef<UInt32>(this.Handle, "CLightGlow", "m_nMinDist");
+	public ref UInt32 MinDist => ref Schema.GetRef<UInt32>(this.Handle, "CLightGlow", "m_nMinDist");
 
 	// m_nMaxDist
 	[SchemaMember("CLightGlow", "m_nMaxDist")]
-    public ref UInt32 MaxDist => ref Schema.GetRef<UInt32>(this.Handle, "CLightGlow", "m_nMaxDist");
+	public ref UInt32 MaxDist => ref Schema.GetRef<UInt32>(this.Handle, "CLightGlow", "m_nMaxDist");
 
 	// m_nOuterMaxDist
 	[SchemaMember("CLightGlow", "m_nOuterMaxDist")]
-    public ref UInt32 OuterMaxDist => ref Schema.GetRef<UInt32>(this.Handle, "CLightGlow", "m_nOuterMaxDist");
+	public ref UInt32 OuterMaxDist => ref Schema.GetRef<UInt32>(this.Handle, "CLightGlow", "m_nOuterMaxDist");
 
 	// m_flGlowProxySize
 	[SchemaMember("CLightGlow", "m_flGlowProxySize")]
-    public ref float GlowProxySize => ref Schema.GetRef<float>(this.Handle, "CLightGlow", "m_flGlowProxySize");
+	public ref float GlowProxySize => ref Schema.GetRef<float>(this.Handle, "CLightGlow", "m_flGlowProxySize");
 
 	// m_flHDRColorScale
 	[SchemaMember("CLightGlow", "m_flHDRColorScale")]
-    public ref float HDRColorScale => ref Schema.GetRef<float>(this.Handle, "CLightGlow", "m_flHDRColorScale");
+	public ref float HDRColorScale => ref Schema.GetRef<float>(this.Handle, "CLightGlow", "m_flHDRColorScale");
 
 }

@@ -20,18 +20,18 @@ public partial class CSoundOpvarSetPathCornerEntity : CSoundOpvarSetPointEntity
 
 	// m_flDistMinSqr
 	[SchemaMember("CSoundOpvarSetPathCornerEntity", "m_flDistMinSqr")]
-    public ref float DistMinSqr => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetPathCornerEntity", "m_flDistMinSqr");
+	public ref float DistMinSqr => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetPathCornerEntity", "m_flDistMinSqr");
 
 	// m_flDistMaxSqr
 	[SchemaMember("CSoundOpvarSetPathCornerEntity", "m_flDistMaxSqr")]
-    public ref float DistMaxSqr => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetPathCornerEntity", "m_flDistMaxSqr");
+	public ref float DistMaxSqr => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetPathCornerEntity", "m_flDistMaxSqr");
 
 	// m_iszPathCornerEntityName
 	[SchemaMember("CSoundOpvarSetPathCornerEntity", "m_iszPathCornerEntityName")]
-    public string PathCornerEntityName
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CSoundOpvarSetPathCornerEntity", "m_iszPathCornerEntityName"); }
-        set { Schema.SetString(this.Handle, "CSoundOpvarSetPathCornerEntity", "m_iszPathCornerEntityName", value); }
-    }
+	public string PathCornerEntityName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CSoundOpvarSetPathCornerEntity", "m_iszPathCornerEntityName"); }
+	set { Schema.SetString(this.Handle, "CSoundOpvarSetPathCornerEntity", "m_iszPathCornerEntityName", value); }
+	}
 
 }

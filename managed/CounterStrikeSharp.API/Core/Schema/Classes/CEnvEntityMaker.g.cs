@@ -20,54 +20,54 @@ public partial class CEnvEntityMaker : CPointEntity
 
 	// m_vecEntityMins
 	[SchemaMember("CEnvEntityMaker", "m_vecEntityMins")]
-    public Vector EntityMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvEntityMaker", "m_vecEntityMins");
+	public Vector EntityMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvEntityMaker", "m_vecEntityMins");
 
 	// m_vecEntityMaxs
 	[SchemaMember("CEnvEntityMaker", "m_vecEntityMaxs")]
-    public Vector EntityMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvEntityMaker", "m_vecEntityMaxs");
+	public Vector EntityMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvEntityMaker", "m_vecEntityMaxs");
 
 	// m_hCurrentInstance
 	[SchemaMember("CEnvEntityMaker", "m_hCurrentInstance")]
-    public CHandle<CBaseEntity> CurrentInstance => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEnvEntityMaker", "m_hCurrentInstance");
+	public CHandle<CBaseEntity> CurrentInstance => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEnvEntityMaker", "m_hCurrentInstance");
 
 	// m_hCurrentBlocker
 	[SchemaMember("CEnvEntityMaker", "m_hCurrentBlocker")]
-    public CHandle<CBaseEntity> CurrentBlocker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEnvEntityMaker", "m_hCurrentBlocker");
+	public CHandle<CBaseEntity> CurrentBlocker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEnvEntityMaker", "m_hCurrentBlocker");
 
 	// m_vecBlockerOrigin
 	[SchemaMember("CEnvEntityMaker", "m_vecBlockerOrigin")]
-    public Vector BlockerOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvEntityMaker", "m_vecBlockerOrigin");
+	public Vector BlockerOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvEntityMaker", "m_vecBlockerOrigin");
 
 	// m_angPostSpawnDirection
 	[SchemaMember("CEnvEntityMaker", "m_angPostSpawnDirection")]
-    public QAngle PostSpawnDirection => Schema.GetDeclaredClass<QAngle>(this.Handle, "CEnvEntityMaker", "m_angPostSpawnDirection");
+	public QAngle PostSpawnDirection => Schema.GetDeclaredClass<QAngle>(this.Handle, "CEnvEntityMaker", "m_angPostSpawnDirection");
 
 	// m_flPostSpawnDirectionVariance
 	[SchemaMember("CEnvEntityMaker", "m_flPostSpawnDirectionVariance")]
-    public ref float PostSpawnDirectionVariance => ref Schema.GetRef<float>(this.Handle, "CEnvEntityMaker", "m_flPostSpawnDirectionVariance");
+	public ref float PostSpawnDirectionVariance => ref Schema.GetRef<float>(this.Handle, "CEnvEntityMaker", "m_flPostSpawnDirectionVariance");
 
 	// m_flPostSpawnSpeed
 	[SchemaMember("CEnvEntityMaker", "m_flPostSpawnSpeed")]
-    public ref float PostSpawnSpeed => ref Schema.GetRef<float>(this.Handle, "CEnvEntityMaker", "m_flPostSpawnSpeed");
+	public ref float PostSpawnSpeed => ref Schema.GetRef<float>(this.Handle, "CEnvEntityMaker", "m_flPostSpawnSpeed");
 
 	// m_bPostSpawnUseAngles
 	[SchemaMember("CEnvEntityMaker", "m_bPostSpawnUseAngles")]
-    public ref bool PostSpawnUseAngles => ref Schema.GetRef<bool>(this.Handle, "CEnvEntityMaker", "m_bPostSpawnUseAngles");
+	public ref bool PostSpawnUseAngles => ref Schema.GetRef<bool>(this.Handle, "CEnvEntityMaker", "m_bPostSpawnUseAngles");
 
 	// m_iszTemplate
 	[SchemaMember("CEnvEntityMaker", "m_iszTemplate")]
-    public string Template
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CEnvEntityMaker", "m_iszTemplate"); }
-        set { Schema.SetString(this.Handle, "CEnvEntityMaker", "m_iszTemplate", value); }
-    }
+	public string Template
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CEnvEntityMaker", "m_iszTemplate"); }
+	set { Schema.SetString(this.Handle, "CEnvEntityMaker", "m_iszTemplate", value); }
+	}
 
 	// m_pOutputOnSpawned
 	[SchemaMember("CEnvEntityMaker", "m_pOutputOnSpawned")]
-    public CEntityIOOutput OutputOnSpawned => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvEntityMaker", "m_pOutputOnSpawned");
+	public CEntityIOOutput OutputOnSpawned => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvEntityMaker", "m_pOutputOnSpawned");
 
 	// m_pOutputOnFailedSpawn
 	[SchemaMember("CEnvEntityMaker", "m_pOutputOnFailedSpawn")]
-    public CEntityIOOutput OutputOnFailedSpawn => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvEntityMaker", "m_pOutputOnFailedSpawn");
+	public CEntityIOOutput OutputOnFailedSpawn => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvEntityMaker", "m_pOutputOnFailedSpawn");
 
 }

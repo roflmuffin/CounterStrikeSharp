@@ -20,6 +20,6 @@ public partial class CFilterProximity : CBaseFilter
 
 	// m_flRadius
 	[SchemaMember("CFilterProximity", "m_flRadius")]
-    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CFilterProximity", "m_flRadius");
+	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CFilterProximity", "m_flRadius");
 
 }

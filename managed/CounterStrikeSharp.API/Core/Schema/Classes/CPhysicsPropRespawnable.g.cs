@@ -20,22 +20,22 @@ public partial class CPhysicsPropRespawnable : CPhysicsProp
 
 	// m_vOriginalSpawnOrigin
 	[SchemaMember("CPhysicsPropRespawnable", "m_vOriginalSpawnOrigin")]
-    public Vector OriginalSpawnOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysicsPropRespawnable", "m_vOriginalSpawnOrigin");
+	public Vector OriginalSpawnOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysicsPropRespawnable", "m_vOriginalSpawnOrigin");
 
 	// m_vOriginalSpawnAngles
 	[SchemaMember("CPhysicsPropRespawnable", "m_vOriginalSpawnAngles")]
-    public QAngle OriginalSpawnAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPhysicsPropRespawnable", "m_vOriginalSpawnAngles");
+	public QAngle OriginalSpawnAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPhysicsPropRespawnable", "m_vOriginalSpawnAngles");
 
 	// m_vOriginalMins
 	[SchemaMember("CPhysicsPropRespawnable", "m_vOriginalMins")]
-    public Vector OriginalMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysicsPropRespawnable", "m_vOriginalMins");
+	public Vector OriginalMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysicsPropRespawnable", "m_vOriginalMins");
 
 	// m_vOriginalMaxs
 	[SchemaMember("CPhysicsPropRespawnable", "m_vOriginalMaxs")]
-    public Vector OriginalMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysicsPropRespawnable", "m_vOriginalMaxs");
+	public Vector OriginalMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysicsPropRespawnable", "m_vOriginalMaxs");
 
 	// m_flRespawnDuration
 	[SchemaMember("CPhysicsPropRespawnable", "m_flRespawnDuration")]
-    public ref float RespawnDuration => ref Schema.GetRef<float>(this.Handle, "CPhysicsPropRespawnable", "m_flRespawnDuration");
+	public ref float RespawnDuration => ref Schema.GetRef<float>(this.Handle, "CPhysicsPropRespawnable", "m_flRespawnDuration");
 
 }

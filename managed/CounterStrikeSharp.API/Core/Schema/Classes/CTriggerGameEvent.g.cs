@@ -20,26 +20,26 @@ public partial class CTriggerGameEvent : CBaseTrigger
 
 	// m_strStartTouchEventName
 	[SchemaMember("CTriggerGameEvent", "m_strStartTouchEventName")]
-    public string StrStartTouchEventName
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CTriggerGameEvent", "m_strStartTouchEventName"); }
-        set { Schema.SetString(this.Handle, "CTriggerGameEvent", "m_strStartTouchEventName", value); }
-    }
+	public string StrStartTouchEventName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CTriggerGameEvent", "m_strStartTouchEventName"); }
+	set { Schema.SetString(this.Handle, "CTriggerGameEvent", "m_strStartTouchEventName", value); }
+	}
 
 	// m_strEndTouchEventName
 	[SchemaMember("CTriggerGameEvent", "m_strEndTouchEventName")]
-    public string StrEndTouchEventName
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CTriggerGameEvent", "m_strEndTouchEventName"); }
-        set { Schema.SetString(this.Handle, "CTriggerGameEvent", "m_strEndTouchEventName", value); }
-    }
+	public string StrEndTouchEventName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CTriggerGameEvent", "m_strEndTouchEventName"); }
+	set { Schema.SetString(this.Handle, "CTriggerGameEvent", "m_strEndTouchEventName", value); }
+	}
 
 	// m_strTriggerID
 	[SchemaMember("CTriggerGameEvent", "m_strTriggerID")]
-    public string StrTriggerID
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CTriggerGameEvent", "m_strTriggerID"); }
-        set { Schema.SetString(this.Handle, "CTriggerGameEvent", "m_strTriggerID", value); }
-    }
+	public string StrTriggerID
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CTriggerGameEvent", "m_strTriggerID"); }
+	set { Schema.SetString(this.Handle, "CTriggerGameEvent", "m_strTriggerID", value); }
+	}
 
 }

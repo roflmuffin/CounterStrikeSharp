@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum MoodType_t : uint
 {
-    eMoodType_Head = 0x0,
-    eMoodType_Body = 0x1,
+	eMoodType_Head = 0x0,
+	eMoodType_Body = 0x1,
 }

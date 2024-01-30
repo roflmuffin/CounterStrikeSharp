@@ -20,10 +20,10 @@ public partial class CAI_ChangeTarget : CBaseEntity
 
 	// m_iszNewTarget
 	[SchemaMember("CAI_ChangeTarget", "m_iszNewTarget")]
-    public string NewTarget
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CAI_ChangeTarget", "m_iszNewTarget"); }
-        set { Schema.SetString(this.Handle, "CAI_ChangeTarget", "m_iszNewTarget", value); }
-    }
+	public string NewTarget
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CAI_ChangeTarget", "m_iszNewTarget"); }
+	set { Schema.SetString(this.Handle, "CAI_ChangeTarget", "m_iszNewTarget", value); }
+	}
 
 }

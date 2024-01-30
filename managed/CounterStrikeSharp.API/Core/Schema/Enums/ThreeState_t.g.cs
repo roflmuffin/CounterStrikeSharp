@@ -8,7 +8,7 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum ThreeState_t : uint
 {
-    TRS_FALSE = 0x0,
-    TRS_TRUE = 0x1,
-    TRS_NONE = 0x2,
+	TRS_FALSE = 0x0,
+	TRS_TRUE = 0x1,
+	TRS_NONE = 0x2,
 }

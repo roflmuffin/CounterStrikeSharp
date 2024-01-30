@@ -20,18 +20,18 @@ public partial class CMotorController : NativeObject
 
 	// m_speed
 	[SchemaMember("CMotorController", "m_speed")]
-    public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CMotorController", "m_speed");
+	public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CMotorController", "m_speed");
 
 	// m_maxTorque
 	[SchemaMember("CMotorController", "m_maxTorque")]
-    public ref float MaxTorque => ref Schema.GetRef<float>(this.Handle, "CMotorController", "m_maxTorque");
+	public ref float MaxTorque => ref Schema.GetRef<float>(this.Handle, "CMotorController", "m_maxTorque");
 
 	// m_axis
 	[SchemaMember("CMotorController", "m_axis")]
-    public Vector Axis => Schema.GetDeclaredClass<Vector>(this.Handle, "CMotorController", "m_axis");
+	public Vector Axis => Schema.GetDeclaredClass<Vector>(this.Handle, "CMotorController", "m_axis");
 
 	// m_inertiaFactor
 	[SchemaMember("CMotorController", "m_inertiaFactor")]
-    public ref float InertiaFactor => ref Schema.GetRef<float>(this.Handle, "CMotorController", "m_inertiaFactor");
+	public ref float InertiaFactor => ref Schema.GetRef<float>(this.Handle, "CMotorController", "m_inertiaFactor");
 
 }

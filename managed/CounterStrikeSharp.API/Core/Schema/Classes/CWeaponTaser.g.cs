@@ -20,6 +20,6 @@ public partial class CWeaponTaser : CCSWeaponBaseGun
 
 	// m_fFireTime
 	[SchemaMember("CWeaponTaser", "m_fFireTime")]
-    public ref float FireTime => ref Schema.GetRef<float>(this.Handle, "CWeaponTaser", "m_fFireTime");
+	public ref float FireTime => ref Schema.GetRef<float>(this.Handle, "CWeaponTaser", "m_fFireTime");
 
 }

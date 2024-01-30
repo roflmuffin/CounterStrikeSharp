@@ -20,34 +20,34 @@ public partial class hudtextparms_t : NativeObject
 
 	// color1
 	[SchemaMember("hudtextparms_t", "color1")]
-    public Color Color1
-    {
-        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "hudtextparms_t", "color1"); }
-        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "hudtextparms_t", "color1", value); }
-    }
+	public Color Color1
+	{
+		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "hudtextparms_t", "color1"); }
+		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "hudtextparms_t", "color1", value); }
+	}
 
 	// color2
 	[SchemaMember("hudtextparms_t", "color2")]
-    public Color Color2
-    {
-        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "hudtextparms_t", "color2"); }
-        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "hudtextparms_t", "color2", value); }
-    }
+	public Color Color2
+	{
+		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "hudtextparms_t", "color2"); }
+		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "hudtextparms_t", "color2", value); }
+	}
 
 	// effect
 	[SchemaMember("hudtextparms_t", "effect")]
-    public ref byte Effect => ref Schema.GetRef<byte>(this.Handle, "hudtextparms_t", "effect");
+	public ref byte Effect => ref Schema.GetRef<byte>(this.Handle, "hudtextparms_t", "effect");
 
 	// channel
 	[SchemaMember("hudtextparms_t", "channel")]
-    public ref byte Channel => ref Schema.GetRef<byte>(this.Handle, "hudtextparms_t", "channel");
+	public ref byte Channel => ref Schema.GetRef<byte>(this.Handle, "hudtextparms_t", "channel");
 
 	// x
 	[SchemaMember("hudtextparms_t", "x")]
-    public ref float X => ref Schema.GetRef<float>(this.Handle, "hudtextparms_t", "x");
+	public ref float X => ref Schema.GetRef<float>(this.Handle, "hudtextparms_t", "x");
 
 	// y
 	[SchemaMember("hudtextparms_t", "y")]
-    public ref float Y => ref Schema.GetRef<float>(this.Handle, "hudtextparms_t", "y");
+	public ref float Y => ref Schema.GetRef<float>(this.Handle, "hudtextparms_t", "y");
 
 }

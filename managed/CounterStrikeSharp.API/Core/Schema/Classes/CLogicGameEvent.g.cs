@@ -20,10 +20,10 @@ public partial class CLogicGameEvent : CLogicalEntity
 
 	// m_iszEventName
 	[SchemaMember("CLogicGameEvent", "m_iszEventName")]
-    public string EventName
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CLogicGameEvent", "m_iszEventName"); }
-        set { Schema.SetString(this.Handle, "CLogicGameEvent", "m_iszEventName", value); }
-    }
+	public string EventName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CLogicGameEvent", "m_iszEventName"); }
+	set { Schema.SetString(this.Handle, "CLogicGameEvent", "m_iszEventName", value); }
+	}
 
 }

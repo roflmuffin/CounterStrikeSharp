@@ -8,7 +8,7 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum ForcedCrouchState_t : uint
 {
-    FORCEDCROUCH_NONE = 0x0,
-    FORCEDCROUCH_CROUCHED = 0x1,
-    FORCEDCROUCH_UNCROUCHED = 0x2,
+	FORCEDCROUCH_NONE = 0x0,
+	FORCEDCROUCH_CROUCHED = 0x1,
+	FORCEDCROUCH_UNCROUCHED = 0x2,
 }

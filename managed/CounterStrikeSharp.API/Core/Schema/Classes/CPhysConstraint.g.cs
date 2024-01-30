@@ -20,46 +20,46 @@ public partial class CPhysConstraint : CLogicalEntity
 
 	// m_nameAttach1
 	[SchemaMember("CPhysConstraint", "m_nameAttach1")]
-    public string NameAttach1
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CPhysConstraint", "m_nameAttach1"); }
-        set { Schema.SetString(this.Handle, "CPhysConstraint", "m_nameAttach1", value); }
-    }
+	public string NameAttach1
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CPhysConstraint", "m_nameAttach1"); }
+	set { Schema.SetString(this.Handle, "CPhysConstraint", "m_nameAttach1", value); }
+	}
 
 	// m_nameAttach2
 	[SchemaMember("CPhysConstraint", "m_nameAttach2")]
-    public string NameAttach2
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CPhysConstraint", "m_nameAttach2"); }
-        set { Schema.SetString(this.Handle, "CPhysConstraint", "m_nameAttach2", value); }
-    }
+	public string NameAttach2
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CPhysConstraint", "m_nameAttach2"); }
+	set { Schema.SetString(this.Handle, "CPhysConstraint", "m_nameAttach2", value); }
+	}
 
 	// m_breakSound
 	[SchemaMember("CPhysConstraint", "m_breakSound")]
-    public string BreakSound
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CPhysConstraint", "m_breakSound"); }
-        set { Schema.SetString(this.Handle, "CPhysConstraint", "m_breakSound", value); }
-    }
+	public string BreakSound
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CPhysConstraint", "m_breakSound"); }
+	set { Schema.SetString(this.Handle, "CPhysConstraint", "m_breakSound", value); }
+	}
 
 	// m_forceLimit
 	[SchemaMember("CPhysConstraint", "m_forceLimit")]
-    public ref float ForceLimit => ref Schema.GetRef<float>(this.Handle, "CPhysConstraint", "m_forceLimit");
+	public ref float ForceLimit => ref Schema.GetRef<float>(this.Handle, "CPhysConstraint", "m_forceLimit");
 
 	// m_torqueLimit
 	[SchemaMember("CPhysConstraint", "m_torqueLimit")]
-    public ref float TorqueLimit => ref Schema.GetRef<float>(this.Handle, "CPhysConstraint", "m_torqueLimit");
+	public ref float TorqueLimit => ref Schema.GetRef<float>(this.Handle, "CPhysConstraint", "m_torqueLimit");
 
 	// m_teleportTick
 	[SchemaMember("CPhysConstraint", "m_teleportTick")]
-    public ref UInt32 TeleportTick => ref Schema.GetRef<UInt32>(this.Handle, "CPhysConstraint", "m_teleportTick");
+	public ref UInt32 TeleportTick => ref Schema.GetRef<UInt32>(this.Handle, "CPhysConstraint", "m_teleportTick");
 
 	// m_minTeleportDistance
 	[SchemaMember("CPhysConstraint", "m_minTeleportDistance")]
-    public ref float MinTeleportDistance => ref Schema.GetRef<float>(this.Handle, "CPhysConstraint", "m_minTeleportDistance");
+	public ref float MinTeleportDistance => ref Schema.GetRef<float>(this.Handle, "CPhysConstraint", "m_minTeleportDistance");
 
 	// m_OnBreak
 	[SchemaMember("CPhysConstraint", "m_OnBreak")]
-    public CEntityIOOutput OnBreak => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysConstraint", "m_OnBreak");
+	public CEntityIOOutput OnBreak => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysConstraint", "m_OnBreak");
 
 }

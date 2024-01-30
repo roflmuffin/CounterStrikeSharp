@@ -20,6 +20,6 @@ public partial class CTriggerToggleSave : CBaseTrigger
 
 	// m_bDisabled
 	[SchemaMember("CTriggerToggleSave", "m_bDisabled")]
-    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CTriggerToggleSave", "m_bDisabled");
+	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CTriggerToggleSave", "m_bDisabled");
 
 }

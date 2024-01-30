@@ -20,22 +20,22 @@ public partial class CGameMoney : CRulePointEntity
 
 	// m_OnMoneySpent
 	[SchemaMember("CGameMoney", "m_OnMoneySpent")]
-    public CEntityIOOutput OnMoneySpent => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CGameMoney", "m_OnMoneySpent");
+	public CEntityIOOutput OnMoneySpent => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CGameMoney", "m_OnMoneySpent");
 
 	// m_OnMoneySpentFail
 	[SchemaMember("CGameMoney", "m_OnMoneySpentFail")]
-    public CEntityIOOutput OnMoneySpentFail => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CGameMoney", "m_OnMoneySpentFail");
+	public CEntityIOOutput OnMoneySpentFail => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CGameMoney", "m_OnMoneySpentFail");
 
 	// m_nMoney
 	[SchemaMember("CGameMoney", "m_nMoney")]
-    public ref Int32 Money => ref Schema.GetRef<Int32>(this.Handle, "CGameMoney", "m_nMoney");
+	public ref Int32 Money => ref Schema.GetRef<Int32>(this.Handle, "CGameMoney", "m_nMoney");
 
 	// m_strAwardText
 	[SchemaMember("CGameMoney", "m_strAwardText")]
-    public string StrAwardText
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CGameMoney", "m_strAwardText"); }
-        set { Schema.SetString(this.Handle, "CGameMoney", "m_strAwardText", value); }
-    }
+	public string StrAwardText
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CGameMoney", "m_strAwardText"); }
+	set { Schema.SetString(this.Handle, "CGameMoney", "m_strAwardText", value); }
+	}
 
 }

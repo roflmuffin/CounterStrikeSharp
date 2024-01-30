@@ -20,14 +20,14 @@ public partial class SpawnPoint : CServerOnlyPointEntity
 
 	// m_iPriority
 	[SchemaMember("SpawnPoint", "m_iPriority")]
-    public ref Int32 Priority => ref Schema.GetRef<Int32>(this.Handle, "SpawnPoint", "m_iPriority");
+	public ref Int32 Priority => ref Schema.GetRef<Int32>(this.Handle, "SpawnPoint", "m_iPriority");
 
 	// m_bEnabled
 	[SchemaMember("SpawnPoint", "m_bEnabled")]
-    public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "SpawnPoint", "m_bEnabled");
+	public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "SpawnPoint", "m_bEnabled");
 
 	// m_nType
 	[SchemaMember("SpawnPoint", "m_nType")]
-    public ref Int32 Type => ref Schema.GetRef<Int32>(this.Handle, "SpawnPoint", "m_nType");
+	public ref Int32 Type => ref Schema.GetRef<Int32>(this.Handle, "SpawnPoint", "m_nType");
 
 }

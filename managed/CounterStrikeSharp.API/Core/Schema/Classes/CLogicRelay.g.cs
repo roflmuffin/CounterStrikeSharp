@@ -20,30 +20,30 @@ public partial class CLogicRelay : CLogicalEntity
 
 	// m_OnTrigger
 	[SchemaMember("CLogicRelay", "m_OnTrigger")]
-    public CEntityIOOutput OnTrigger => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicRelay", "m_OnTrigger");
+	public CEntityIOOutput OnTrigger => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicRelay", "m_OnTrigger");
 
 	// m_OnSpawn
 	[SchemaMember("CLogicRelay", "m_OnSpawn")]
-    public CEntityIOOutput OnSpawn => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicRelay", "m_OnSpawn");
+	public CEntityIOOutput OnSpawn => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicRelay", "m_OnSpawn");
 
 	// m_bDisabled
 	[SchemaMember("CLogicRelay", "m_bDisabled")]
-    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CLogicRelay", "m_bDisabled");
+	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CLogicRelay", "m_bDisabled");
 
 	// m_bWaitForRefire
 	[SchemaMember("CLogicRelay", "m_bWaitForRefire")]
-    public ref bool WaitForRefire => ref Schema.GetRef<bool>(this.Handle, "CLogicRelay", "m_bWaitForRefire");
+	public ref bool WaitForRefire => ref Schema.GetRef<bool>(this.Handle, "CLogicRelay", "m_bWaitForRefire");
 
 	// m_bTriggerOnce
 	[SchemaMember("CLogicRelay", "m_bTriggerOnce")]
-    public ref bool TriggerOnce => ref Schema.GetRef<bool>(this.Handle, "CLogicRelay", "m_bTriggerOnce");
+	public ref bool TriggerOnce => ref Schema.GetRef<bool>(this.Handle, "CLogicRelay", "m_bTriggerOnce");
 
 	// m_bFastRetrigger
 	[SchemaMember("CLogicRelay", "m_bFastRetrigger")]
-    public ref bool FastRetrigger => ref Schema.GetRef<bool>(this.Handle, "CLogicRelay", "m_bFastRetrigger");
+	public ref bool FastRetrigger => ref Schema.GetRef<bool>(this.Handle, "CLogicRelay", "m_bFastRetrigger");
 
 	// m_bPassthoughCaller
 	[SchemaMember("CLogicRelay", "m_bPassthoughCaller")]
-    public ref bool PassthoughCaller => ref Schema.GetRef<bool>(this.Handle, "CLogicRelay", "m_bPassthoughCaller");
+	public ref bool PassthoughCaller => ref Schema.GetRef<bool>(this.Handle, "CLogicRelay", "m_bPassthoughCaller");
 
 }

@@ -20,14 +20,14 @@ public partial class CLogicAutosave : CLogicalEntity
 
 	// m_bForceNewLevelUnit
 	[SchemaMember("CLogicAutosave", "m_bForceNewLevelUnit")]
-    public ref bool ForceNewLevelUnit => ref Schema.GetRef<bool>(this.Handle, "CLogicAutosave", "m_bForceNewLevelUnit");
+	public ref bool ForceNewLevelUnit => ref Schema.GetRef<bool>(this.Handle, "CLogicAutosave", "m_bForceNewLevelUnit");
 
 	// m_minHitPoints
 	[SchemaMember("CLogicAutosave", "m_minHitPoints")]
-    public ref Int32 MinHitPoints => ref Schema.GetRef<Int32>(this.Handle, "CLogicAutosave", "m_minHitPoints");
+	public ref Int32 MinHitPoints => ref Schema.GetRef<Int32>(this.Handle, "CLogicAutosave", "m_minHitPoints");
 
 	// m_minHitPointsToCommit
 	[SchemaMember("CLogicAutosave", "m_minHitPointsToCommit")]
-    public ref Int32 MinHitPointsToCommit => ref Schema.GetRef<Int32>(this.Handle, "CLogicAutosave", "m_minHitPointsToCommit");
+	public ref Int32 MinHitPointsToCommit => ref Schema.GetRef<Int32>(this.Handle, "CLogicAutosave", "m_minHitPointsToCommit");
 
 }

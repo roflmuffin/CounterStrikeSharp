@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum ParticleHitboxBiasType_t : uint
 {
-    PARTICLE_HITBOX_BIAS_ENTITY = 0x0,
-    PARTICLE_HITBOX_BIAS_HITBOX = 0x1,
+	PARTICLE_HITBOX_BIAS_ENTITY = 0x0,
+	PARTICLE_HITBOX_BIAS_HITBOX = 0x1,
 }

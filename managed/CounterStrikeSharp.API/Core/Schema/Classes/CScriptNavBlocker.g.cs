@@ -20,6 +20,6 @@ public partial class CScriptNavBlocker : CFuncNavBlocker
 
 	// m_vExtent
 	[SchemaMember("CScriptNavBlocker", "m_vExtent")]
-    public Vector Extent => Schema.GetDeclaredClass<Vector>(this.Handle, "CScriptNavBlocker", "m_vExtent");
+	public Vector Extent => Schema.GetDeclaredClass<Vector>(this.Handle, "CScriptNavBlocker", "m_vExtent");
 
 }

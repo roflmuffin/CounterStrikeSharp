@@ -20,14 +20,14 @@ public partial class CBubbling : CBaseModelEntity
 
 	// m_density
 	[SchemaMember("CBubbling", "m_density")]
-    public ref Int32 Density => ref Schema.GetRef<Int32>(this.Handle, "CBubbling", "m_density");
+	public ref Int32 Density => ref Schema.GetRef<Int32>(this.Handle, "CBubbling", "m_density");
 
 	// m_frequency
 	[SchemaMember("CBubbling", "m_frequency")]
-    public ref Int32 Frequency => ref Schema.GetRef<Int32>(this.Handle, "CBubbling", "m_frequency");
+	public ref Int32 Frequency => ref Schema.GetRef<Int32>(this.Handle, "CBubbling", "m_frequency");
 
 	// m_state
 	[SchemaMember("CBubbling", "m_state")]
-    public ref Int32 State => ref Schema.GetRef<Int32>(this.Handle, "CBubbling", "m_state");
+	public ref Int32 State => ref Schema.GetRef<Int32>(this.Handle, "CBubbling", "m_state");
 
 }

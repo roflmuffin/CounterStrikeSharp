@@ -20,10 +20,10 @@ public partial class CEnvHudHint : CPointEntity
 
 	// m_iszMessage
 	[SchemaMember("CEnvHudHint", "m_iszMessage")]
-    public string Message
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CEnvHudHint", "m_iszMessage"); }
-        set { Schema.SetString(this.Handle, "CEnvHudHint", "m_iszMessage", value); }
-    }
+	public string Message
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CEnvHudHint", "m_iszMessage"); }
+	set { Schema.SetString(this.Handle, "CEnvHudHint", "m_iszMessage", value); }
+	}
 
 }

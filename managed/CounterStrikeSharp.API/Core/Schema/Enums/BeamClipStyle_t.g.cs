@@ -8,8 +8,8 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum BeamClipStyle_t : uint
 {
-    kNOCLIP = 0x0,
-    kGEOCLIP = 0x1,
-    kMODELCLIP = 0x2,
-    kBEAMCLIPSTYLE_NUMBITS = 0x2,
+	kNOCLIP = 0x0,
+	kGEOCLIP = 0x1,
+	kMODELCLIP = 0x2,
+	kBEAMCLIPSTYLE_NUMBITS = 0x2,
 }

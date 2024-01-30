@@ -20,10 +20,10 @@ public partial class CItemDefuser : CItem
 
 	// m_entitySpottedState
 	[SchemaMember("CItemDefuser", "m_entitySpottedState")]
-    public EntitySpottedState_t EntitySpottedState => Schema.GetDeclaredClass<EntitySpottedState_t>(this.Handle, "CItemDefuser", "m_entitySpottedState");
+	public EntitySpottedState_t EntitySpottedState => Schema.GetDeclaredClass<EntitySpottedState_t>(this.Handle, "CItemDefuser", "m_entitySpottedState");
 
 	// m_nSpotRules
 	[SchemaMember("CItemDefuser", "m_nSpotRules")]
-    public ref Int32 SpotRules => ref Schema.GetRef<Int32>(this.Handle, "CItemDefuser", "m_nSpotRules");
+	public ref Int32 SpotRules => ref Schema.GetRef<Int32>(this.Handle, "CItemDefuser", "m_nSpotRules");
 
 }

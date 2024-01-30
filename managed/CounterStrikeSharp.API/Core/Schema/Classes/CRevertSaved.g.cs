@@ -20,14 +20,14 @@ public partial class CRevertSaved : CModelPointEntity
 
 	// m_loadTime
 	[SchemaMember("CRevertSaved", "m_loadTime")]
-    public ref float LoadTime => ref Schema.GetRef<float>(this.Handle, "CRevertSaved", "m_loadTime");
+	public ref float LoadTime => ref Schema.GetRef<float>(this.Handle, "CRevertSaved", "m_loadTime");
 
 	// m_Duration
 	[SchemaMember("CRevertSaved", "m_Duration")]
-    public ref float Duration => ref Schema.GetRef<float>(this.Handle, "CRevertSaved", "m_Duration");
+	public ref float Duration => ref Schema.GetRef<float>(this.Handle, "CRevertSaved", "m_Duration");
 
 	// m_HoldTime
 	[SchemaMember("CRevertSaved", "m_HoldTime")]
-    public ref float HoldTime => ref Schema.GetRef<float>(this.Handle, "CRevertSaved", "m_HoldTime");
+	public ref float HoldTime => ref Schema.GetRef<float>(this.Handle, "CRevertSaved", "m_HoldTime");
 
 }

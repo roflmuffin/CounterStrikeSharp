@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum SosGroupType_t : uint
 {
-    SOS_GROUPTYPE_DYNAMIC = 0x0,
-    SOS_GROUPTYPE_STATIC = 0x1,
+	SOS_GROUPTYPE_DYNAMIC = 0x0,
+	SOS_GROUPTYPE_STATIC = 0x1,
 }

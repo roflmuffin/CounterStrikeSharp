@@ -20,14 +20,14 @@ public partial class CFogController : CBaseEntity
 
 	// m_fog
 	[SchemaMember("CFogController", "m_fog")]
-    public fogparams_t Fog => Schema.GetDeclaredClass<fogparams_t>(this.Handle, "CFogController", "m_fog");
+	public fogparams_t Fog => Schema.GetDeclaredClass<fogparams_t>(this.Handle, "CFogController", "m_fog");
 
 	// m_bUseAngles
 	[SchemaMember("CFogController", "m_bUseAngles")]
-    public ref bool UseAngles => ref Schema.GetRef<bool>(this.Handle, "CFogController", "m_bUseAngles");
+	public ref bool UseAngles => ref Schema.GetRef<bool>(this.Handle, "CFogController", "m_bUseAngles");
 
 	// m_iChangedVariables
 	[SchemaMember("CFogController", "m_iChangedVariables")]
-    public ref Int32 ChangedVariables => ref Schema.GetRef<Int32>(this.Handle, "CFogController", "m_iChangedVariables");
+	public ref Int32 ChangedVariables => ref Schema.GetRef<Int32>(this.Handle, "CFogController", "m_iChangedVariables");
 
 }

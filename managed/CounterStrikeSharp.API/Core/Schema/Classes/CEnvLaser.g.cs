@@ -20,30 +20,30 @@ public partial class CEnvLaser : CBeam
 
 	// m_iszLaserTarget
 	[SchemaMember("CEnvLaser", "m_iszLaserTarget")]
-    public string LaserTarget
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CEnvLaser", "m_iszLaserTarget"); }
-        set { Schema.SetString(this.Handle, "CEnvLaser", "m_iszLaserTarget", value); }
-    }
+	public string LaserTarget
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CEnvLaser", "m_iszLaserTarget"); }
+	set { Schema.SetString(this.Handle, "CEnvLaser", "m_iszLaserTarget", value); }
+	}
 
 	// m_pSprite
 	[SchemaMember("CEnvLaser", "m_pSprite")]
-    public CSprite? Sprite => Schema.GetPointer<CSprite>(this.Handle, "CEnvLaser", "m_pSprite");
+	public CSprite? Sprite => Schema.GetPointer<CSprite>(this.Handle, "CEnvLaser", "m_pSprite");
 
 	// m_iszSpriteName
 	[SchemaMember("CEnvLaser", "m_iszSpriteName")]
-    public string SpriteName
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CEnvLaser", "m_iszSpriteName"); }
-        set { Schema.SetString(this.Handle, "CEnvLaser", "m_iszSpriteName", value); }
-    }
+	public string SpriteName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CEnvLaser", "m_iszSpriteName"); }
+	set { Schema.SetString(this.Handle, "CEnvLaser", "m_iszSpriteName", value); }
+	}
 
 	// m_firePosition
 	[SchemaMember("CEnvLaser", "m_firePosition")]
-    public Vector FirePosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvLaser", "m_firePosition");
+	public Vector FirePosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvLaser", "m_firePosition");
 
 	// m_flStartFrame
 	[SchemaMember("CEnvLaser", "m_flStartFrame")]
-    public ref float StartFrame => ref Schema.GetRef<float>(this.Handle, "CEnvLaser", "m_flStartFrame");
+	public ref float StartFrame => ref Schema.GetRef<float>(this.Handle, "CEnvLaser", "m_flStartFrame");
 
 }

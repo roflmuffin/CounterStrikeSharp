@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum filter_t : uint
 {
-    FILTER_AND = 0x0,
-    FILTER_OR = 0x1,
+	FILTER_AND = 0x0,
+	FILTER_OR = 0x1,
 }

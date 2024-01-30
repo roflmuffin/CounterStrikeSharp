@@ -20,22 +20,22 @@ public partial class CEnvFade : CLogicalEntity
 
 	// m_fadeColor
 	[SchemaMember("CEnvFade", "m_fadeColor")]
-    public Color FadeColor
-    {
-        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CEnvFade", "m_fadeColor"); }
-        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CEnvFade", "m_fadeColor", value); }
-    }
+	public Color FadeColor
+	{
+		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CEnvFade", "m_fadeColor"); }
+		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CEnvFade", "m_fadeColor", value); }
+	}
 
 	// m_Duration
 	[SchemaMember("CEnvFade", "m_Duration")]
-    public ref float Duration => ref Schema.GetRef<float>(this.Handle, "CEnvFade", "m_Duration");
+	public ref float Duration => ref Schema.GetRef<float>(this.Handle, "CEnvFade", "m_Duration");
 
 	// m_HoldDuration
 	[SchemaMember("CEnvFade", "m_HoldDuration")]
-    public ref float HoldDuration => ref Schema.GetRef<float>(this.Handle, "CEnvFade", "m_HoldDuration");
+	public ref float HoldDuration => ref Schema.GetRef<float>(this.Handle, "CEnvFade", "m_HoldDuration");
 
 	// m_OnBeginFade
 	[SchemaMember("CEnvFade", "m_OnBeginFade")]
-    public CEntityIOOutput OnBeginFade => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvFade", "m_OnBeginFade");
+	public CEntityIOOutput OnBeginFade => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvFade", "m_OnBeginFade");
 
 }

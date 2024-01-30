@@ -20,10 +20,10 @@ public partial class RelationshipOverride_t : Relationship_t
 
 	// entity
 	[SchemaMember("RelationshipOverride_t", "entity")]
-    public CHandle<CBaseEntity> Entity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "RelationshipOverride_t", "entity");
+	public CHandle<CBaseEntity> Entity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "RelationshipOverride_t", "entity");
 
 	// classType
 	[SchemaMember("RelationshipOverride_t", "classType")]
-    public ref Class_T ClassType => ref Schema.GetRef<Class_T>(this.Handle, "RelationshipOverride_t", "classType");
+	public ref Class_T ClassType => ref Schema.GetRef<Class_T>(this.Handle, "RelationshipOverride_t", "classType");
 
 }

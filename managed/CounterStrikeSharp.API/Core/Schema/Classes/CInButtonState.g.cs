@@ -20,6 +20,6 @@ public partial class CInButtonState : NativeObject
 
 	// m_pButtonStates
 	[SchemaMember("CInButtonState", "m_pButtonStates")]
-    public Span<UInt64> ButtonStates => Schema.GetFixedArray<UInt64>(this.Handle, "CInButtonState", "m_pButtonStates", 3);
+	public Span<UInt64> ButtonStates => Schema.GetFixedArray<UInt64>(this.Handle, "CInButtonState", "m_pButtonStates", 3);
 
 }

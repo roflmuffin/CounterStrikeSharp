@@ -20,30 +20,30 @@ public partial class CSoundEventPathCornerEntity : CSoundEventEntity
 
 	// m_iszPathCorner
 	[SchemaMember("CSoundEventPathCornerEntity", "m_iszPathCorner")]
-    public string PathCorner
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CSoundEventPathCornerEntity", "m_iszPathCorner"); }
-        set { Schema.SetString(this.Handle, "CSoundEventPathCornerEntity", "m_iszPathCorner", value); }
-    }
+	public string PathCorner
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CSoundEventPathCornerEntity", "m_iszPathCorner"); }
+	set { Schema.SetString(this.Handle, "CSoundEventPathCornerEntity", "m_iszPathCorner", value); }
+	}
 
 	// m_iCountMax
 	[SchemaMember("CSoundEventPathCornerEntity", "m_iCountMax")]
-    public ref Int32 CountMax => ref Schema.GetRef<Int32>(this.Handle, "CSoundEventPathCornerEntity", "m_iCountMax");
+	public ref Int32 CountMax => ref Schema.GetRef<Int32>(this.Handle, "CSoundEventPathCornerEntity", "m_iCountMax");
 
 	// m_flDistanceMax
 	[SchemaMember("CSoundEventPathCornerEntity", "m_flDistanceMax")]
-    public ref float DistanceMax => ref Schema.GetRef<float>(this.Handle, "CSoundEventPathCornerEntity", "m_flDistanceMax");
+	public ref float DistanceMax => ref Schema.GetRef<float>(this.Handle, "CSoundEventPathCornerEntity", "m_flDistanceMax");
 
 	// m_flDistMaxSqr
 	[SchemaMember("CSoundEventPathCornerEntity", "m_flDistMaxSqr")]
-    public ref float DistMaxSqr => ref Schema.GetRef<float>(this.Handle, "CSoundEventPathCornerEntity", "m_flDistMaxSqr");
+	public ref float DistMaxSqr => ref Schema.GetRef<float>(this.Handle, "CSoundEventPathCornerEntity", "m_flDistMaxSqr");
 
 	// m_flDotProductMax
 	[SchemaMember("CSoundEventPathCornerEntity", "m_flDotProductMax")]
-    public ref float DotProductMax => ref Schema.GetRef<float>(this.Handle, "CSoundEventPathCornerEntity", "m_flDotProductMax");
+	public ref float DotProductMax => ref Schema.GetRef<float>(this.Handle, "CSoundEventPathCornerEntity", "m_flDotProductMax");
 
 	// bPlaying
 	[SchemaMember("CSoundEventPathCornerEntity", "bPlaying")]
-    public ref bool BPlaying => ref Schema.GetRef<bool>(this.Handle, "CSoundEventPathCornerEntity", "bPlaying");
+	public ref bool BPlaying => ref Schema.GetRef<bool>(this.Handle, "CSoundEventPathCornerEntity", "bPlaying");
 
 }

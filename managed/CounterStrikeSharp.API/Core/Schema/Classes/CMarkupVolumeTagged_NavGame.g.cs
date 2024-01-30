@@ -20,6 +20,6 @@ public partial class CMarkupVolumeTagged_NavGame : CMarkupVolumeWithRef
 
 	// m_bFloodFillAttribute
 	[SchemaMember("CMarkupVolumeTagged_NavGame", "m_bFloodFillAttribute")]
-    public ref bool FloodFillAttribute => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeTagged_NavGame", "m_bFloodFillAttribute");
+	public ref bool FloodFillAttribute => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeTagged_NavGame", "m_bFloodFillAttribute");
 
 }

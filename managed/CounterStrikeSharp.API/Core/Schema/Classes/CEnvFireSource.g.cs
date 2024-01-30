@@ -20,14 +20,14 @@ public partial class CEnvFireSource : CBaseEntity
 
 	// m_bEnabled
 	[SchemaMember("CEnvFireSource", "m_bEnabled")]
-    public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CEnvFireSource", "m_bEnabled");
+	public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CEnvFireSource", "m_bEnabled");
 
 	// m_radius
 	[SchemaMember("CEnvFireSource", "m_radius")]
-    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CEnvFireSource", "m_radius");
+	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CEnvFireSource", "m_radius");
 
 	// m_damage
 	[SchemaMember("CEnvFireSource", "m_damage")]
-    public ref float Damage => ref Schema.GetRef<float>(this.Handle, "CEnvFireSource", "m_damage");
+	public ref float Damage => ref Schema.GetRef<float>(this.Handle, "CEnvFireSource", "m_damage");
 
 }

@@ -20,6 +20,6 @@ public partial class CCSGameRulesProxy : CGameRulesProxy
 
 	// m_pGameRules
 	[SchemaMember("CCSGameRulesProxy", "m_pGameRules")]
-    public CCSGameRules? GameRules => Schema.GetPointer<CCSGameRules>(this.Handle, "CCSGameRulesProxy", "m_pGameRules");
+	public CCSGameRules? GameRules => Schema.GetPointer<CCSGameRules>(this.Handle, "CCSGameRulesProxy", "m_pGameRules");
 
 }

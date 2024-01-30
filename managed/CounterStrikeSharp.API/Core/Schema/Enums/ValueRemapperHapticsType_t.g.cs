@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum ValueRemapperHapticsType_t : uint
 {
-    HaticsType_Default = 0x0,
-    HaticsType_None = 0x1,
+	HaticsType_Default = 0x0,
+	HaticsType_None = 0x1,
 }

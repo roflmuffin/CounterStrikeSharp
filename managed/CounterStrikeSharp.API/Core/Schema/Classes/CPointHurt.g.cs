@@ -20,30 +20,30 @@ public partial class CPointHurt : CPointEntity
 
 	// m_nDamage
 	[SchemaMember("CPointHurt", "m_nDamage")]
-    public ref Int32 Damage => ref Schema.GetRef<Int32>(this.Handle, "CPointHurt", "m_nDamage");
+	public ref Int32 Damage => ref Schema.GetRef<Int32>(this.Handle, "CPointHurt", "m_nDamage");
 
 	// m_bitsDamageType
 	[SchemaMember("CPointHurt", "m_bitsDamageType")]
-    public ref Int32 BitsDamageType => ref Schema.GetRef<Int32>(this.Handle, "CPointHurt", "m_bitsDamageType");
+	public ref Int32 BitsDamageType => ref Schema.GetRef<Int32>(this.Handle, "CPointHurt", "m_bitsDamageType");
 
 	// m_flRadius
 	[SchemaMember("CPointHurt", "m_flRadius")]
-    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CPointHurt", "m_flRadius");
+	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CPointHurt", "m_flRadius");
 
 	// m_flDelay
 	[SchemaMember("CPointHurt", "m_flDelay")]
-    public ref float Delay => ref Schema.GetRef<float>(this.Handle, "CPointHurt", "m_flDelay");
+	public ref float Delay => ref Schema.GetRef<float>(this.Handle, "CPointHurt", "m_flDelay");
 
 	// m_strTarget
 	[SchemaMember("CPointHurt", "m_strTarget")]
-    public string StrTarget
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CPointHurt", "m_strTarget"); }
-        set { Schema.SetString(this.Handle, "CPointHurt", "m_strTarget", value); }
-    }
+	public string StrTarget
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CPointHurt", "m_strTarget"); }
+	set { Schema.SetString(this.Handle, "CPointHurt", "m_strTarget", value); }
+	}
 
 	// m_pActivator
 	[SchemaMember("CPointHurt", "m_pActivator")]
-    public CHandle<CBaseEntity> Activator => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointHurt", "m_pActivator");
+	public CHandle<CBaseEntity> Activator => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointHurt", "m_pActivator");
 
 }

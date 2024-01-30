@@ -20,10 +20,10 @@ public partial class CLogicCompare : CLogicalEntity
 
 	// m_flInValue
 	[SchemaMember("CLogicCompare", "m_flInValue")]
-    public ref float InValue => ref Schema.GetRef<float>(this.Handle, "CLogicCompare", "m_flInValue");
+	public ref float InValue => ref Schema.GetRef<float>(this.Handle, "CLogicCompare", "m_flInValue");
 
 	// m_flCompareValue
 	[SchemaMember("CLogicCompare", "m_flCompareValue")]
-    public ref float CompareValue => ref Schema.GetRef<float>(this.Handle, "CLogicCompare", "m_flCompareValue");
+	public ref float CompareValue => ref Schema.GetRef<float>(this.Handle, "CLogicCompare", "m_flCompareValue");
 
 }

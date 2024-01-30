@@ -20,10 +20,10 @@ public partial class CTriggerBuoyancy : CBaseTrigger
 
 	// m_BuoyancyHelper
 	[SchemaMember("CTriggerBuoyancy", "m_BuoyancyHelper")]
-    public CBuoyancyHelper BuoyancyHelper => Schema.GetDeclaredClass<CBuoyancyHelper>(this.Handle, "CTriggerBuoyancy", "m_BuoyancyHelper");
+	public CBuoyancyHelper BuoyancyHelper => Schema.GetDeclaredClass<CBuoyancyHelper>(this.Handle, "CTriggerBuoyancy", "m_BuoyancyHelper");
 
 	// m_flFluidDensity
 	[SchemaMember("CTriggerBuoyancy", "m_flFluidDensity")]
-    public ref float FluidDensity => ref Schema.GetRef<float>(this.Handle, "CTriggerBuoyancy", "m_flFluidDensity");
+	public ref float FluidDensity => ref Schema.GetRef<float>(this.Handle, "CTriggerBuoyancy", "m_flFluidDensity");
 
 }

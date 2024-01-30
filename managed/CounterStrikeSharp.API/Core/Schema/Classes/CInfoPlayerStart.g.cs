@@ -20,6 +20,6 @@ public partial class CInfoPlayerStart : CPointEntity
 
 	// m_bDisabled
 	[SchemaMember("CInfoPlayerStart", "m_bDisabled")]
-    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CInfoPlayerStart", "m_bDisabled");
+	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CInfoPlayerStart", "m_bDisabled");
 
 }

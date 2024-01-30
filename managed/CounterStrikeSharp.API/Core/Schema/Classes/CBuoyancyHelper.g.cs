@@ -20,6 +20,6 @@ public partial class CBuoyancyHelper : NativeObject
 
 	// m_flFluidDensity
 	[SchemaMember("CBuoyancyHelper", "m_flFluidDensity")]
-    public ref float FluidDensity => ref Schema.GetRef<float>(this.Handle, "CBuoyancyHelper", "m_flFluidDensity");
+	public ref float FluidDensity => ref Schema.GetRef<float>(this.Handle, "CBuoyancyHelper", "m_flFluidDensity");
 
 }

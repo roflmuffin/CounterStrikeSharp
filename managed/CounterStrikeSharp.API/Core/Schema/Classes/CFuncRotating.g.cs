@@ -20,62 +20,62 @@ public partial class CFuncRotating : CBaseModelEntity
 
 	// m_vecMoveAng
 	[SchemaMember("CFuncRotating", "m_vecMoveAng")]
-    public QAngle MoveAng => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncRotating", "m_vecMoveAng");
+	public QAngle MoveAng => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncRotating", "m_vecMoveAng");
 
 	// m_flFanFriction
 	[SchemaMember("CFuncRotating", "m_flFanFriction")]
-    public ref float FanFriction => ref Schema.GetRef<float>(this.Handle, "CFuncRotating", "m_flFanFriction");
+	public ref float FanFriction => ref Schema.GetRef<float>(this.Handle, "CFuncRotating", "m_flFanFriction");
 
 	// m_flAttenuation
 	[SchemaMember("CFuncRotating", "m_flAttenuation")]
-    public ref float Attenuation => ref Schema.GetRef<float>(this.Handle, "CFuncRotating", "m_flAttenuation");
+	public ref float Attenuation => ref Schema.GetRef<float>(this.Handle, "CFuncRotating", "m_flAttenuation");
 
 	// m_flVolume
 	[SchemaMember("CFuncRotating", "m_flVolume")]
-    public ref float Volume => ref Schema.GetRef<float>(this.Handle, "CFuncRotating", "m_flVolume");
+	public ref float Volume => ref Schema.GetRef<float>(this.Handle, "CFuncRotating", "m_flVolume");
 
 	// m_flTargetSpeed
 	[SchemaMember("CFuncRotating", "m_flTargetSpeed")]
-    public ref float TargetSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncRotating", "m_flTargetSpeed");
+	public ref float TargetSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncRotating", "m_flTargetSpeed");
 
 	// m_flMaxSpeed
 	[SchemaMember("CFuncRotating", "m_flMaxSpeed")]
-    public ref float MaxSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncRotating", "m_flMaxSpeed");
+	public ref float MaxSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncRotating", "m_flMaxSpeed");
 
 	// m_flBlockDamage
 	[SchemaMember("CFuncRotating", "m_flBlockDamage")]
-    public ref float BlockDamage => ref Schema.GetRef<float>(this.Handle, "CFuncRotating", "m_flBlockDamage");
+	public ref float BlockDamage => ref Schema.GetRef<float>(this.Handle, "CFuncRotating", "m_flBlockDamage");
 
 	// m_flTimeScale
 	[SchemaMember("CFuncRotating", "m_flTimeScale")]
-    public ref float TimeScale => ref Schema.GetRef<float>(this.Handle, "CFuncRotating", "m_flTimeScale");
+	public ref float TimeScale => ref Schema.GetRef<float>(this.Handle, "CFuncRotating", "m_flTimeScale");
 
 	// m_NoiseRunning
 	[SchemaMember("CFuncRotating", "m_NoiseRunning")]
-    public string NoiseRunning
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CFuncRotating", "m_NoiseRunning"); }
-        set { Schema.SetString(this.Handle, "CFuncRotating", "m_NoiseRunning", value); }
-    }
+	public string NoiseRunning
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CFuncRotating", "m_NoiseRunning"); }
+	set { Schema.SetString(this.Handle, "CFuncRotating", "m_NoiseRunning", value); }
+	}
 
 	// m_bReversed
 	[SchemaMember("CFuncRotating", "m_bReversed")]
-    public ref bool Reversed => ref Schema.GetRef<bool>(this.Handle, "CFuncRotating", "m_bReversed");
+	public ref bool Reversed => ref Schema.GetRef<bool>(this.Handle, "CFuncRotating", "m_bReversed");
 
 	// m_angStart
 	[SchemaMember("CFuncRotating", "m_angStart")]
-    public QAngle Start => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncRotating", "m_angStart");
+	public QAngle Start => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncRotating", "m_angStart");
 
 	// m_bStopAtStartPos
 	[SchemaMember("CFuncRotating", "m_bStopAtStartPos")]
-    public ref bool StopAtStartPos => ref Schema.GetRef<bool>(this.Handle, "CFuncRotating", "m_bStopAtStartPos");
+	public ref bool StopAtStartPos => ref Schema.GetRef<bool>(this.Handle, "CFuncRotating", "m_bStopAtStartPos");
 
 	// m_vecClientOrigin
 	[SchemaMember("CFuncRotating", "m_vecClientOrigin")]
-    public Vector ClientOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncRotating", "m_vecClientOrigin");
+	public Vector ClientOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncRotating", "m_vecClientOrigin");
 
 	// m_vecClientAngles
 	[SchemaMember("CFuncRotating", "m_vecClientAngles")]
-    public QAngle ClientAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncRotating", "m_vecClientAngles");
+	public QAngle ClientAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncRotating", "m_vecClientAngles");
 
 }

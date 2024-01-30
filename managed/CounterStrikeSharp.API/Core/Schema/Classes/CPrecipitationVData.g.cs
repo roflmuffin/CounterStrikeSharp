@@ -20,30 +20,30 @@ public partial class CPrecipitationVData : CEntitySubclassVDataBase
 
 	// m_flInnerDistance
 	[SchemaMember("CPrecipitationVData", "m_flInnerDistance")]
-    public ref float InnerDistance => ref Schema.GetRef<float>(this.Handle, "CPrecipitationVData", "m_flInnerDistance");
+	public ref float InnerDistance => ref Schema.GetRef<float>(this.Handle, "CPrecipitationVData", "m_flInnerDistance");
 
 	// m_nAttachType
 	[SchemaMember("CPrecipitationVData", "m_nAttachType")]
-    public ref ParticleAttachment_t AttachType => ref Schema.GetRef<ParticleAttachment_t>(this.Handle, "CPrecipitationVData", "m_nAttachType");
+	public ref ParticleAttachment_t AttachType => ref Schema.GetRef<ParticleAttachment_t>(this.Handle, "CPrecipitationVData", "m_nAttachType");
 
 	// m_bBatchSameVolumeType
 	[SchemaMember("CPrecipitationVData", "m_bBatchSameVolumeType")]
-    public ref bool BatchSameVolumeType => ref Schema.GetRef<bool>(this.Handle, "CPrecipitationVData", "m_bBatchSameVolumeType");
+	public ref bool BatchSameVolumeType => ref Schema.GetRef<bool>(this.Handle, "CPrecipitationVData", "m_bBatchSameVolumeType");
 
 	// m_nRTEnvCP
 	[SchemaMember("CPrecipitationVData", "m_nRTEnvCP")]
-    public ref Int32 RTEnvCP => ref Schema.GetRef<Int32>(this.Handle, "CPrecipitationVData", "m_nRTEnvCP");
+	public ref Int32 RTEnvCP => ref Schema.GetRef<Int32>(this.Handle, "CPrecipitationVData", "m_nRTEnvCP");
 
 	// m_nRTEnvCPComponent
 	[SchemaMember("CPrecipitationVData", "m_nRTEnvCPComponent")]
-    public ref Int32 RTEnvCPComponent => ref Schema.GetRef<Int32>(this.Handle, "CPrecipitationVData", "m_nRTEnvCPComponent");
+	public ref Int32 RTEnvCPComponent => ref Schema.GetRef<Int32>(this.Handle, "CPrecipitationVData", "m_nRTEnvCPComponent");
 
 	// m_szModifier
 	[SchemaMember("CPrecipitationVData", "m_szModifier")]
-    public string Modifier
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CPrecipitationVData", "m_szModifier"); }
-        set { Schema.SetString(this.Handle, "CPrecipitationVData", "m_szModifier", value); }
-    }
+	public string Modifier
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CPrecipitationVData", "m_szModifier"); }
+	set { Schema.SetString(this.Handle, "CPrecipitationVData", "m_szModifier", value); }
+	}
 
 }

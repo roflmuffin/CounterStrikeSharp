@@ -8,7 +8,7 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum TRAIN_CODE : uint
 {
-    TRAIN_SAFE = 0x0,
-    TRAIN_BLOCKING = 0x1,
-    TRAIN_FOLLOWING = 0x2,
+	TRAIN_SAFE = 0x0,
+	TRAIN_BLOCKING = 0x1,
+	TRAIN_FOLLOWING = 0x2,
 }

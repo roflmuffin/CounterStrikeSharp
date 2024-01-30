@@ -20,42 +20,42 @@ public partial class CFuncConveyor : CBaseModelEntity
 
 	// m_szConveyorModels
 	[SchemaMember("CFuncConveyor", "m_szConveyorModels")]
-    public string SzConveyorModels
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CFuncConveyor", "m_szConveyorModels"); }
-        set { Schema.SetString(this.Handle, "CFuncConveyor", "m_szConveyorModels", value); }
-    }
+	public string SzConveyorModels
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CFuncConveyor", "m_szConveyorModels"); }
+	set { Schema.SetString(this.Handle, "CFuncConveyor", "m_szConveyorModels", value); }
+	}
 
 	// m_flTransitionDurationSeconds
 	[SchemaMember("CFuncConveyor", "m_flTransitionDurationSeconds")]
-    public ref float TransitionDurationSeconds => ref Schema.GetRef<float>(this.Handle, "CFuncConveyor", "m_flTransitionDurationSeconds");
+	public ref float TransitionDurationSeconds => ref Schema.GetRef<float>(this.Handle, "CFuncConveyor", "m_flTransitionDurationSeconds");
 
 	// m_angMoveEntitySpace
 	[SchemaMember("CFuncConveyor", "m_angMoveEntitySpace")]
-    public QAngle MoveEntitySpace => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncConveyor", "m_angMoveEntitySpace");
+	public QAngle MoveEntitySpace => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncConveyor", "m_angMoveEntitySpace");
 
 	// m_vecMoveDirEntitySpace
 	[SchemaMember("CFuncConveyor", "m_vecMoveDirEntitySpace")]
-    public Vector MoveDirEntitySpace => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncConveyor", "m_vecMoveDirEntitySpace");
+	public Vector MoveDirEntitySpace => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncConveyor", "m_vecMoveDirEntitySpace");
 
 	// m_flTargetSpeed
 	[SchemaMember("CFuncConveyor", "m_flTargetSpeed")]
-    public ref float TargetSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncConveyor", "m_flTargetSpeed");
+	public ref float TargetSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncConveyor", "m_flTargetSpeed");
 
 	// m_nTransitionStartTick
 	[SchemaMember("CFuncConveyor", "m_nTransitionStartTick")]
-    public ref Int32 TransitionStartTick => ref Schema.GetRef<Int32>(this.Handle, "CFuncConveyor", "m_nTransitionStartTick");
+	public ref Int32 TransitionStartTick => ref Schema.GetRef<Int32>(this.Handle, "CFuncConveyor", "m_nTransitionStartTick");
 
 	// m_nTransitionDurationTicks
 	[SchemaMember("CFuncConveyor", "m_nTransitionDurationTicks")]
-    public ref Int32 TransitionDurationTicks => ref Schema.GetRef<Int32>(this.Handle, "CFuncConveyor", "m_nTransitionDurationTicks");
+	public ref Int32 TransitionDurationTicks => ref Schema.GetRef<Int32>(this.Handle, "CFuncConveyor", "m_nTransitionDurationTicks");
 
 	// m_flTransitionStartSpeed
 	[SchemaMember("CFuncConveyor", "m_flTransitionStartSpeed")]
-    public ref float TransitionStartSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncConveyor", "m_flTransitionStartSpeed");
+	public ref float TransitionStartSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncConveyor", "m_flTransitionStartSpeed");
 
 	// m_hConveyorModels
 	[SchemaMember("CFuncConveyor", "m_hConveyorModels")]
-    public NetworkedVector<CHandle<CBaseEntity>> HConveyorModels => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CFuncConveyor", "m_hConveyorModels");
+	public NetworkedVector<CHandle<CBaseEntity>> HConveyorModels => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CFuncConveyor", "m_hConveyorModels");
 
 }

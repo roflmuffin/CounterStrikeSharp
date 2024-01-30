@@ -20,14 +20,14 @@ public partial class CGameRules : NativeObject
 
 	// m_szQuestName
 	[SchemaMember("CGameRules", "m_szQuestName")]
-    public string QuestName
-    {
-        get { return Schema.GetString(this.Handle, "CGameRules", "m_szQuestName"); }
-        set { Schema.SetString(this.Handle, "CGameRules", "m_szQuestName", value); }
-    }
+	public string QuestName
+	{
+		get { return Schema.GetString(this.Handle, "CGameRules", "m_szQuestName"); }
+		set { Schema.SetString(this.Handle, "CGameRules", "m_szQuestName", value); }
+	}
 
 	// m_nQuestPhase
 	[SchemaMember("CGameRules", "m_nQuestPhase")]
-    public ref Int32 QuestPhase => ref Schema.GetRef<Int32>(this.Handle, "CGameRules", "m_nQuestPhase");
+	public ref Int32 QuestPhase => ref Schema.GetRef<Int32>(this.Handle, "CGameRules", "m_nQuestPhase");
 
 }

@@ -20,10 +20,10 @@ public partial class CFilterClass : CBaseFilter
 
 	// m_iFilterClass
 	[SchemaMember("CFilterClass", "m_iFilterClass")]
-    public string FilterClass
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CFilterClass", "m_iFilterClass"); }
-        set { Schema.SetString(this.Handle, "CFilterClass", "m_iFilterClass", value); }
-    }
+	public string FilterClass
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CFilterClass", "m_iFilterClass"); }
+	set { Schema.SetString(this.Handle, "CFilterClass", "m_iFilterClass", value); }
+	}
 
 }

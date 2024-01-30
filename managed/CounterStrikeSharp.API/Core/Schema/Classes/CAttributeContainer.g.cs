@@ -20,6 +20,6 @@ public partial class CAttributeContainer : CAttributeManager
 
 	// m_Item
 	[SchemaMember("CAttributeContainer", "m_Item")]
-    public CEconItemView Item => Schema.GetDeclaredClass<CEconItemView>(this.Handle, "CAttributeContainer", "m_Item");
+	public CEconItemView Item => Schema.GetDeclaredClass<CEconItemView>(this.Handle, "CAttributeContainer", "m_Item");
 
 }

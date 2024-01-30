@@ -20,10 +20,10 @@ public partial class CBodyComponentPoint : CBodyComponent
 
 	// m_sceneNode
 	[SchemaMember("CBodyComponentPoint", "m_sceneNode")]
-    public CGameSceneNode SceneNode => Schema.GetDeclaredClass<CGameSceneNode>(this.Handle, "CBodyComponentPoint", "m_sceneNode");
+	public CGameSceneNode SceneNode => Schema.GetDeclaredClass<CGameSceneNode>(this.Handle, "CBodyComponentPoint", "m_sceneNode");
 
 	// __m_pChainEntity
 	[SchemaMember("CBodyComponentPoint", "__m_pChainEntity")]
-    public CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "CBodyComponentPoint", "__m_pChainEntity");
+	public CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "CBodyComponentPoint", "__m_pChainEntity");
 
 }

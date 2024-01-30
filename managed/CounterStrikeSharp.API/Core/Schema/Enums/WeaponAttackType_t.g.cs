@@ -8,8 +8,8 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum WeaponAttackType_t : uint
 {
-    eInvalid = 0xFFFFFFFF,
-    ePrimary = 0x0,
-    eSecondary = 0x1,
-    eCount = 0x2,
+	eInvalid = 0xFFFFFFFF,
+	ePrimary = 0x0,
+	eSecondary = 0x1,
+	eCount = 0x2,
 }

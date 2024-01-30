@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum ShadowType_t : uint
 {
-    SHADOWS_NONE = 0x0,
-    SHADOWS_SIMPLE = 0x1,
+	SHADOWS_NONE = 0x0,
+	SHADOWS_SIMPLE = 0x1,
 }

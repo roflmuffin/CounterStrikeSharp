@@ -20,6 +20,6 @@ public partial class CAI_ExpresserWithFollowup : CAI_Expresser
 
 	// m_pPostponedFollowup
 	[SchemaMember("CAI_ExpresserWithFollowup", "m_pPostponedFollowup")]
-    public ResponseFollowup? PostponedFollowup => Schema.GetPointer<ResponseFollowup>(this.Handle, "CAI_ExpresserWithFollowup", "m_pPostponedFollowup");
+	public ResponseFollowup? PostponedFollowup => Schema.GetPointer<ResponseFollowup>(this.Handle, "CAI_ExpresserWithFollowup", "m_pPostponedFollowup");
 
 }

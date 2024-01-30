@@ -20,14 +20,14 @@ public partial class CWeaponShield : CCSWeaponBaseGun
 
 	// m_flBulletDamageAbsorbed
 	[SchemaMember("CWeaponShield", "m_flBulletDamageAbsorbed")]
-    public ref float BulletDamageAbsorbed => ref Schema.GetRef<float>(this.Handle, "CWeaponShield", "m_flBulletDamageAbsorbed");
+	public ref float BulletDamageAbsorbed => ref Schema.GetRef<float>(this.Handle, "CWeaponShield", "m_flBulletDamageAbsorbed");
 
 	// m_flLastBulletHitSoundTime
 	[SchemaMember("CWeaponShield", "m_flLastBulletHitSoundTime")]
-    public ref float LastBulletHitSoundTime => ref Schema.GetRef<float>(this.Handle, "CWeaponShield", "m_flLastBulletHitSoundTime");
+	public ref float LastBulletHitSoundTime => ref Schema.GetRef<float>(this.Handle, "CWeaponShield", "m_flLastBulletHitSoundTime");
 
 	// m_flDisplayHealth
 	[SchemaMember("CWeaponShield", "m_flDisplayHealth")]
-    public ref float DisplayHealth => ref Schema.GetRef<float>(this.Handle, "CWeaponShield", "m_flDisplayHealth");
+	public ref float DisplayHealth => ref Schema.GetRef<float>(this.Handle, "CWeaponShield", "m_flDisplayHealth");
 
 }

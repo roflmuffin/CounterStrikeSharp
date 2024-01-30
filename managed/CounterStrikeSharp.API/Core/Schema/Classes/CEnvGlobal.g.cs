@@ -20,22 +20,22 @@ public partial class CEnvGlobal : CLogicalEntity
 
 	// m_globalstate
 	[SchemaMember("CEnvGlobal", "m_globalstate")]
-    public string Globalstate
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CEnvGlobal", "m_globalstate"); }
-        set { Schema.SetString(this.Handle, "CEnvGlobal", "m_globalstate", value); }
-    }
+	public string Globalstate
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CEnvGlobal", "m_globalstate"); }
+	set { Schema.SetString(this.Handle, "CEnvGlobal", "m_globalstate", value); }
+	}
 
 	// m_triggermode
 	[SchemaMember("CEnvGlobal", "m_triggermode")]
-    public ref Int32 Triggermode => ref Schema.GetRef<Int32>(this.Handle, "CEnvGlobal", "m_triggermode");
+	public ref Int32 Triggermode => ref Schema.GetRef<Int32>(this.Handle, "CEnvGlobal", "m_triggermode");
 
 	// m_initialstate
 	[SchemaMember("CEnvGlobal", "m_initialstate")]
-    public ref Int32 Initialstate => ref Schema.GetRef<Int32>(this.Handle, "CEnvGlobal", "m_initialstate");
+	public ref Int32 Initialstate => ref Schema.GetRef<Int32>(this.Handle, "CEnvGlobal", "m_initialstate");
 
 	// m_counter
 	[SchemaMember("CEnvGlobal", "m_counter")]
-    public ref Int32 Counter => ref Schema.GetRef<Int32>(this.Handle, "CEnvGlobal", "m_counter");
+	public ref Int32 Counter => ref Schema.GetRef<Int32>(this.Handle, "CEnvGlobal", "m_counter");
 
 }

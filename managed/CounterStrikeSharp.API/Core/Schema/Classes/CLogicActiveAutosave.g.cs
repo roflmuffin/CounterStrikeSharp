@@ -20,18 +20,18 @@ public partial class CLogicActiveAutosave : CLogicAutosave
 
 	// m_TriggerHitPoints
 	[SchemaMember("CLogicActiveAutosave", "m_TriggerHitPoints")]
-    public ref Int32 TriggerHitPoints => ref Schema.GetRef<Int32>(this.Handle, "CLogicActiveAutosave", "m_TriggerHitPoints");
+	public ref Int32 TriggerHitPoints => ref Schema.GetRef<Int32>(this.Handle, "CLogicActiveAutosave", "m_TriggerHitPoints");
 
 	// m_flTimeToTrigger
 	[SchemaMember("CLogicActiveAutosave", "m_flTimeToTrigger")]
-    public ref float TimeToTrigger => ref Schema.GetRef<float>(this.Handle, "CLogicActiveAutosave", "m_flTimeToTrigger");
+	public ref float TimeToTrigger => ref Schema.GetRef<float>(this.Handle, "CLogicActiveAutosave", "m_flTimeToTrigger");
 
 	// m_flStartTime
 	[SchemaMember("CLogicActiveAutosave", "m_flStartTime")]
-    public ref float StartTime => ref Schema.GetRef<float>(this.Handle, "CLogicActiveAutosave", "m_flStartTime");
+	public ref float StartTime => ref Schema.GetRef<float>(this.Handle, "CLogicActiveAutosave", "m_flStartTime");
 
 	// m_flDangerousTime
 	[SchemaMember("CLogicActiveAutosave", "m_flDangerousTime")]
-    public ref float DangerousTime => ref Schema.GetRef<float>(this.Handle, "CLogicActiveAutosave", "m_flDangerousTime");
+	public ref float DangerousTime => ref Schema.GetRef<float>(this.Handle, "CLogicActiveAutosave", "m_flDangerousTime");
 
 }

@@ -20,6 +20,6 @@ public partial class CPhysTorque : CPhysForce
 
 	// m_axis
 	[SchemaMember("CPhysTorque", "m_axis")]
-    public Vector Axis => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysTorque", "m_axis");
+	public Vector Axis => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysTorque", "m_axis");
 
 }

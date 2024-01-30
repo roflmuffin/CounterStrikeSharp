@@ -20,38 +20,38 @@ public partial class CMathCounter : CLogicalEntity
 
 	// m_flMin
 	[SchemaMember("CMathCounter", "m_flMin")]
-    public ref float Min => ref Schema.GetRef<float>(this.Handle, "CMathCounter", "m_flMin");
+	public ref float Min => ref Schema.GetRef<float>(this.Handle, "CMathCounter", "m_flMin");
 
 	// m_flMax
 	[SchemaMember("CMathCounter", "m_flMax")]
-    public ref float Max => ref Schema.GetRef<float>(this.Handle, "CMathCounter", "m_flMax");
+	public ref float Max => ref Schema.GetRef<float>(this.Handle, "CMathCounter", "m_flMax");
 
 	// m_bHitMin
 	[SchemaMember("CMathCounter", "m_bHitMin")]
-    public ref bool HitMin => ref Schema.GetRef<bool>(this.Handle, "CMathCounter", "m_bHitMin");
+	public ref bool HitMin => ref Schema.GetRef<bool>(this.Handle, "CMathCounter", "m_bHitMin");
 
 	// m_bHitMax
 	[SchemaMember("CMathCounter", "m_bHitMax")]
-    public ref bool HitMax => ref Schema.GetRef<bool>(this.Handle, "CMathCounter", "m_bHitMax");
+	public ref bool HitMax => ref Schema.GetRef<bool>(this.Handle, "CMathCounter", "m_bHitMax");
 
 	// m_bDisabled
 	[SchemaMember("CMathCounter", "m_bDisabled")]
-    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CMathCounter", "m_bDisabled");
+	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CMathCounter", "m_bDisabled");
 
 	// m_OnHitMin
 	[SchemaMember("CMathCounter", "m_OnHitMin")]
-    public CEntityIOOutput OnHitMin => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathCounter", "m_OnHitMin");
+	public CEntityIOOutput OnHitMin => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathCounter", "m_OnHitMin");
 
 	// m_OnHitMax
 	[SchemaMember("CMathCounter", "m_OnHitMax")]
-    public CEntityIOOutput OnHitMax => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathCounter", "m_OnHitMax");
+	public CEntityIOOutput OnHitMax => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathCounter", "m_OnHitMax");
 
 	// m_OnChangedFromMin
 	[SchemaMember("CMathCounter", "m_OnChangedFromMin")]
-    public CEntityIOOutput OnChangedFromMin => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathCounter", "m_OnChangedFromMin");
+	public CEntityIOOutput OnChangedFromMin => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathCounter", "m_OnChangedFromMin");
 
 	// m_OnChangedFromMax
 	[SchemaMember("CMathCounter", "m_OnChangedFromMax")]
-    public CEntityIOOutput OnChangedFromMax => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathCounter", "m_OnChangedFromMax");
+	public CEntityIOOutput OnChangedFromMax => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMathCounter", "m_OnChangedFromMax");
 
 }

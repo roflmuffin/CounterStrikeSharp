@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum ChoiceBlendMethod : uint
 {
-    SingleBlendTime = 0x0,
-    PerChoiceBlendTimes = 0x1,
+	SingleBlendTime = 0x0,
+	PerChoiceBlendTimes = 0x1,
 }

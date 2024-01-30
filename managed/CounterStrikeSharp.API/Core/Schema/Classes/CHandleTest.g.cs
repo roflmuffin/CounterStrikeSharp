@@ -20,10 +20,10 @@ public partial class CHandleTest : CBaseEntity
 
 	// m_Handle
 	[SchemaMember("CHandleTest", "m_Handle")]
-    public CHandle<CBaseEntity> TestHandle => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CHandleTest", "m_Handle");
+	public CHandle<CBaseEntity> TestHandle => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CHandleTest", "m_Handle");
 
 	// m_bSendHandle
 	[SchemaMember("CHandleTest", "m_bSendHandle")]
-    public ref bool SendHandle => ref Schema.GetRef<bool>(this.Handle, "CHandleTest", "m_bSendHandle");
+	public ref bool SendHandle => ref Schema.GetRef<bool>(this.Handle, "CHandleTest", "m_bSendHandle");
 
 }

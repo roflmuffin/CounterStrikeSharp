@@ -20,6 +20,6 @@ public partial class CHostageExpresserShim : CBaseCombatCharacter
 
 	// m_pExpresser
 	[SchemaMember("CHostageExpresserShim", "m_pExpresser")]
-    public CAI_Expresser? Expresser => Schema.GetPointer<CAI_Expresser>(this.Handle, "CHostageExpresserShim", "m_pExpresser");
+	public CAI_Expresser? Expresser => Schema.GetPointer<CAI_Expresser>(this.Handle, "CHostageExpresserShim", "m_pExpresser");
 
 }

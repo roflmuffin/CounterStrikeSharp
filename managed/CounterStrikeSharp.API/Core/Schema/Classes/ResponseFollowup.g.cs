@@ -20,54 +20,54 @@ public partial class ResponseFollowup : NativeObject
 
 	// followup_concept
 	[SchemaMember("ResponseFollowup", "followup_concept")]
-    public string Followup_concept
-    {
-        get { return Schema.GetString(this.Handle, "ResponseFollowup", "followup_concept"); }
-        set { Schema.SetString(this.Handle, "ResponseFollowup", "followup_concept", value); }
-    }
+	public string Followup_concept
+	{
+		get { return Schema.GetString(this.Handle, "ResponseFollowup", "followup_concept"); }
+		set { Schema.SetString(this.Handle, "ResponseFollowup", "followup_concept", value); }
+	}
 
 	// followup_contexts
 	[SchemaMember("ResponseFollowup", "followup_contexts")]
-    public string Followup_contexts
-    {
-        get { return Schema.GetString(this.Handle, "ResponseFollowup", "followup_contexts"); }
-        set { Schema.SetString(this.Handle, "ResponseFollowup", "followup_contexts", value); }
-    }
+	public string Followup_contexts
+	{
+		get { return Schema.GetString(this.Handle, "ResponseFollowup", "followup_contexts"); }
+		set { Schema.SetString(this.Handle, "ResponseFollowup", "followup_contexts", value); }
+	}
 
 	// followup_delay
 	[SchemaMember("ResponseFollowup", "followup_delay")]
-    public ref float Followup_delay => ref Schema.GetRef<float>(this.Handle, "ResponseFollowup", "followup_delay");
+	public ref float Followup_delay => ref Schema.GetRef<float>(this.Handle, "ResponseFollowup", "followup_delay");
 
 	// followup_target
 	[SchemaMember("ResponseFollowup", "followup_target")]
-    public string Followup_target
-    {
-        get { return Schema.GetString(this.Handle, "ResponseFollowup", "followup_target"); }
-        set { Schema.SetString(this.Handle, "ResponseFollowup", "followup_target", value); }
-    }
+	public string Followup_target
+	{
+		get { return Schema.GetString(this.Handle, "ResponseFollowup", "followup_target"); }
+		set { Schema.SetString(this.Handle, "ResponseFollowup", "followup_target", value); }
+	}
 
 	// followup_entityiotarget
 	[SchemaMember("ResponseFollowup", "followup_entityiotarget")]
-    public string Followup_entityiotarget
-    {
-        get { return Schema.GetString(this.Handle, "ResponseFollowup", "followup_entityiotarget"); }
-        set { Schema.SetString(this.Handle, "ResponseFollowup", "followup_entityiotarget", value); }
-    }
+	public string Followup_entityiotarget
+	{
+		get { return Schema.GetString(this.Handle, "ResponseFollowup", "followup_entityiotarget"); }
+		set { Schema.SetString(this.Handle, "ResponseFollowup", "followup_entityiotarget", value); }
+	}
 
 	// followup_entityioinput
 	[SchemaMember("ResponseFollowup", "followup_entityioinput")]
-    public string Followup_entityioinput
-    {
-        get { return Schema.GetString(this.Handle, "ResponseFollowup", "followup_entityioinput"); }
-        set { Schema.SetString(this.Handle, "ResponseFollowup", "followup_entityioinput", value); }
-    }
+	public string Followup_entityioinput
+	{
+		get { return Schema.GetString(this.Handle, "ResponseFollowup", "followup_entityioinput"); }
+		set { Schema.SetString(this.Handle, "ResponseFollowup", "followup_entityioinput", value); }
+	}
 
 	// followup_entityiodelay
 	[SchemaMember("ResponseFollowup", "followup_entityiodelay")]
-    public ref float Followup_entityiodelay => ref Schema.GetRef<float>(this.Handle, "ResponseFollowup", "followup_entityiodelay");
+	public ref float Followup_entityiodelay => ref Schema.GetRef<float>(this.Handle, "ResponseFollowup", "followup_entityiodelay");
 
 	// bFired
 	[SchemaMember("ResponseFollowup", "bFired")]
-    public ref bool BFired => ref Schema.GetRef<bool>(this.Handle, "ResponseFollowup", "bFired");
+	public ref bool BFired => ref Schema.GetRef<bool>(this.Handle, "ResponseFollowup", "bFired");
 
 }

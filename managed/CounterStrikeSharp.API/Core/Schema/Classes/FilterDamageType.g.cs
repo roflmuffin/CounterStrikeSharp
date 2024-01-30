@@ -20,6 +20,6 @@ public partial class FilterDamageType : CBaseFilter
 
 	// m_iDamageType
 	[SchemaMember("FilterDamageType", "m_iDamageType")]
-    public ref Int32 DamageType => ref Schema.GetRef<Int32>(this.Handle, "FilterDamageType", "m_iDamageType");
+	public ref Int32 DamageType => ref Schema.GetRef<Int32>(this.Handle, "FilterDamageType", "m_iDamageType");
 
 }

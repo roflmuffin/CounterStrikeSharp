@@ -20,18 +20,18 @@ public partial class CTriggerSoundscape : CBaseTrigger
 
 	// m_hSoundscape
 	[SchemaMember("CTriggerSoundscape", "m_hSoundscape")]
-    public CHandle<CEnvSoundscapeTriggerable> Soundscape => Schema.GetDeclaredClass<CHandle<CEnvSoundscapeTriggerable>>(this.Handle, "CTriggerSoundscape", "m_hSoundscape");
+	public CHandle<CEnvSoundscapeTriggerable> Soundscape => Schema.GetDeclaredClass<CHandle<CEnvSoundscapeTriggerable>>(this.Handle, "CTriggerSoundscape", "m_hSoundscape");
 
 	// m_SoundscapeName
 	[SchemaMember("CTriggerSoundscape", "m_SoundscapeName")]
-    public string SoundscapeName
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CTriggerSoundscape", "m_SoundscapeName"); }
-        set { Schema.SetString(this.Handle, "CTriggerSoundscape", "m_SoundscapeName", value); }
-    }
+	public string SoundscapeName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CTriggerSoundscape", "m_SoundscapeName"); }
+	set { Schema.SetString(this.Handle, "CTriggerSoundscape", "m_SoundscapeName", value); }
+	}
 
 	// m_spectators
 	[SchemaMember("CTriggerSoundscape", "m_spectators")]
-    public NetworkedVector<CHandle<CBasePlayerPawn>> Spectators => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBasePlayerPawn>>>(this.Handle, "CTriggerSoundscape", "m_spectators");
+	public NetworkedVector<CHandle<CBasePlayerPawn>> Spectators => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBasePlayerPawn>>>(this.Handle, "CTriggerSoundscape", "m_spectators");
 
 }

@@ -20,18 +20,18 @@ public partial class CConstantForceController : NativeObject
 
 	// m_linear
 	[SchemaMember("CConstantForceController", "m_linear")]
-    public Vector Linear => Schema.GetDeclaredClass<Vector>(this.Handle, "CConstantForceController", "m_linear");
+	public Vector Linear => Schema.GetDeclaredClass<Vector>(this.Handle, "CConstantForceController", "m_linear");
 
 	// m_angular
 	[SchemaMember("CConstantForceController", "m_angular")]
-    public Vector Angular => Schema.GetDeclaredClass<Vector>(this.Handle, "CConstantForceController", "m_angular");
+	public Vector Angular => Schema.GetDeclaredClass<Vector>(this.Handle, "CConstantForceController", "m_angular");
 
 	// m_linearSave
 	[SchemaMember("CConstantForceController", "m_linearSave")]
-    public Vector LinearSave => Schema.GetDeclaredClass<Vector>(this.Handle, "CConstantForceController", "m_linearSave");
+	public Vector LinearSave => Schema.GetDeclaredClass<Vector>(this.Handle, "CConstantForceController", "m_linearSave");
 
 	// m_angularSave
 	[SchemaMember("CConstantForceController", "m_angularSave")]
-    public Vector AngularSave => Schema.GetDeclaredClass<Vector>(this.Handle, "CConstantForceController", "m_angularSave");
+	public Vector AngularSave => Schema.GetDeclaredClass<Vector>(this.Handle, "CConstantForceController", "m_angularSave");
 
 }

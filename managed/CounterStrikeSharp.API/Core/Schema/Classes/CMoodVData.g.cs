@@ -20,6 +20,6 @@ public partial class CMoodVData : NativeObject
 
 	// m_nMoodType
 	[SchemaMember("CMoodVData", "m_nMoodType")]
-    public ref MoodType_t MoodType => ref Schema.GetRef<MoodType_t>(this.Handle, "CMoodVData", "m_nMoodType");
+	public ref MoodType_t MoodType => ref Schema.GetRef<MoodType_t>(this.Handle, "CMoodVData", "m_nMoodType");
 
 }

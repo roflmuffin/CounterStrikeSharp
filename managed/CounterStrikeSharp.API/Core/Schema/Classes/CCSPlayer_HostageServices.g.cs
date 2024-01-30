@@ -20,10 +20,10 @@ public partial class CCSPlayer_HostageServices : CPlayerPawnComponent
 
 	// m_hCarriedHostage
 	[SchemaMember("CCSPlayer_HostageServices", "m_hCarriedHostage")]
-    public CHandle<CBaseEntity> CarriedHostage => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSPlayer_HostageServices", "m_hCarriedHostage");
+	public CHandle<CBaseEntity> CarriedHostage => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSPlayer_HostageServices", "m_hCarriedHostage");
 
 	// m_hCarriedHostageProp
 	[SchemaMember("CCSPlayer_HostageServices", "m_hCarriedHostageProp")]
-    public CHandle<CBaseEntity> CarriedHostageProp => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSPlayer_HostageServices", "m_hCarriedHostageProp");
+	public CHandle<CBaseEntity> CarriedHostageProp => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSPlayer_HostageServices", "m_hCarriedHostageProp");
 
 }

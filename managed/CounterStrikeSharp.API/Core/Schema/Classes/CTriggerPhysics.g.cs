@@ -20,54 +20,54 @@ public partial class CTriggerPhysics : CBaseTrigger
 
 	// m_gravityScale
 	[SchemaMember("CTriggerPhysics", "m_gravityScale")]
-    public ref float GravityScale => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_gravityScale");
+	public ref float GravityScale => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_gravityScale");
 
 	// m_linearLimit
 	[SchemaMember("CTriggerPhysics", "m_linearLimit")]
-    public ref float LinearLimit => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_linearLimit");
+	public ref float LinearLimit => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_linearLimit");
 
 	// m_linearDamping
 	[SchemaMember("CTriggerPhysics", "m_linearDamping")]
-    public ref float LinearDamping => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_linearDamping");
+	public ref float LinearDamping => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_linearDamping");
 
 	// m_angularLimit
 	[SchemaMember("CTriggerPhysics", "m_angularLimit")]
-    public ref float AngularLimit => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_angularLimit");
+	public ref float AngularLimit => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_angularLimit");
 
 	// m_angularDamping
 	[SchemaMember("CTriggerPhysics", "m_angularDamping")]
-    public ref float AngularDamping => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_angularDamping");
+	public ref float AngularDamping => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_angularDamping");
 
 	// m_linearForce
 	[SchemaMember("CTriggerPhysics", "m_linearForce")]
-    public ref float LinearForce => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_linearForce");
+	public ref float LinearForce => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_linearForce");
 
 	// m_flFrequency
 	[SchemaMember("CTriggerPhysics", "m_flFrequency")]
-    public ref float Frequency => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_flFrequency");
+	public ref float Frequency => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_flFrequency");
 
 	// m_flDampingRatio
 	[SchemaMember("CTriggerPhysics", "m_flDampingRatio")]
-    public ref float DampingRatio => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_flDampingRatio");
+	public ref float DampingRatio => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_flDampingRatio");
 
 	// m_vecLinearForcePointAt
 	[SchemaMember("CTriggerPhysics", "m_vecLinearForcePointAt")]
-    public Vector LinearForcePointAt => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerPhysics", "m_vecLinearForcePointAt");
+	public Vector LinearForcePointAt => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerPhysics", "m_vecLinearForcePointAt");
 
 	// m_bCollapseToForcePoint
 	[SchemaMember("CTriggerPhysics", "m_bCollapseToForcePoint")]
-    public ref bool CollapseToForcePoint => ref Schema.GetRef<bool>(this.Handle, "CTriggerPhysics", "m_bCollapseToForcePoint");
+	public ref bool CollapseToForcePoint => ref Schema.GetRef<bool>(this.Handle, "CTriggerPhysics", "m_bCollapseToForcePoint");
 
 	// m_vecLinearForcePointAtWorld
 	[SchemaMember("CTriggerPhysics", "m_vecLinearForcePointAtWorld")]
-    public Vector LinearForcePointAtWorld => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerPhysics", "m_vecLinearForcePointAtWorld");
+	public Vector LinearForcePointAtWorld => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerPhysics", "m_vecLinearForcePointAtWorld");
 
 	// m_vecLinearForceDirection
 	[SchemaMember("CTriggerPhysics", "m_vecLinearForceDirection")]
-    public Vector LinearForceDirection => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerPhysics", "m_vecLinearForceDirection");
+	public Vector LinearForceDirection => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerPhysics", "m_vecLinearForceDirection");
 
 	// m_bConvertToDebrisWhenPossible
 	[SchemaMember("CTriggerPhysics", "m_bConvertToDebrisWhenPossible")]
-    public ref bool ConvertToDebrisWhenPossible => ref Schema.GetRef<bool>(this.Handle, "CTriggerPhysics", "m_bConvertToDebrisWhenPossible");
+	public ref bool ConvertToDebrisWhenPossible => ref Schema.GetRef<bool>(this.Handle, "CTriggerPhysics", "m_bConvertToDebrisWhenPossible");
 
 }

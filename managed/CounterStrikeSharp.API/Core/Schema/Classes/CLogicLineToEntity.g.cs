@@ -20,18 +20,18 @@ public partial class CLogicLineToEntity : CLogicalEntity
 
 	// m_SourceName
 	[SchemaMember("CLogicLineToEntity", "m_SourceName")]
-    public string SourceName
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CLogicLineToEntity", "m_SourceName"); }
-        set { Schema.SetString(this.Handle, "CLogicLineToEntity", "m_SourceName", value); }
-    }
+	public string SourceName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CLogicLineToEntity", "m_SourceName"); }
+	set { Schema.SetString(this.Handle, "CLogicLineToEntity", "m_SourceName", value); }
+	}
 
 	// m_StartEntity
 	[SchemaMember("CLogicLineToEntity", "m_StartEntity")]
-    public CHandle<CBaseEntity> StartEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CLogicLineToEntity", "m_StartEntity");
+	public CHandle<CBaseEntity> StartEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CLogicLineToEntity", "m_StartEntity");
 
 	// m_EndEntity
 	[SchemaMember("CLogicLineToEntity", "m_EndEntity")]
-    public CHandle<CBaseEntity> EndEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CLogicLineToEntity", "m_EndEntity");
+	public CHandle<CBaseEntity> EndEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CLogicLineToEntity", "m_EndEntity");
 
 }

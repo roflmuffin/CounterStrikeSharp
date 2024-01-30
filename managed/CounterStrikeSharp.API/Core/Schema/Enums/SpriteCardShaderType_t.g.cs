@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum SpriteCardShaderType_t : uint
 {
-    SPRITECARD_SHADER_BASE = 0x0,
-    SPRITECARD_SHADER_CUSTOM = 0x1,
+	SPRITECARD_SHADER_BASE = 0x0,
+	SPRITECARD_SHADER_CUSTOM = 0x1,
 }

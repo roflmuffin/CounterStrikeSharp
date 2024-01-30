@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum attributeprovidertypes_t : uint
 {
-    PROVIDER_GENERIC = 0x0,
-    PROVIDER_WEAPON = 0x1,
+	PROVIDER_GENERIC = 0x0,
+	PROVIDER_WEAPON = 0x1,
 }

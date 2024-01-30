@@ -20,38 +20,38 @@ public partial class CDynamicLight : CBaseModelEntity
 
 	// m_ActualFlags
 	[SchemaMember("CDynamicLight", "m_ActualFlags")]
-    public ref byte ActualFlags => ref Schema.GetRef<byte>(this.Handle, "CDynamicLight", "m_ActualFlags");
+	public ref byte ActualFlags => ref Schema.GetRef<byte>(this.Handle, "CDynamicLight", "m_ActualFlags");
 
 	// m_Flags
 	[SchemaMember("CDynamicLight", "m_Flags")]
-    public ref byte DynamicLightFlags => ref Schema.GetRef<byte>(this.Handle, "CDynamicLight", "m_Flags");
+	public ref byte DynamicLightFlags => ref Schema.GetRef<byte>(this.Handle, "CDynamicLight", "m_Flags");
 
 	// m_LightStyle
 	[SchemaMember("CDynamicLight", "m_LightStyle")]
-    public ref byte LightStyle => ref Schema.GetRef<byte>(this.Handle, "CDynamicLight", "m_LightStyle");
+	public ref byte LightStyle => ref Schema.GetRef<byte>(this.Handle, "CDynamicLight", "m_LightStyle");
 
 	// m_On
 	[SchemaMember("CDynamicLight", "m_On")]
-    public ref bool On => ref Schema.GetRef<bool>(this.Handle, "CDynamicLight", "m_On");
+	public ref bool On => ref Schema.GetRef<bool>(this.Handle, "CDynamicLight", "m_On");
 
 	// m_Radius
 	[SchemaMember("CDynamicLight", "m_Radius")]
-    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CDynamicLight", "m_Radius");
+	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CDynamicLight", "m_Radius");
 
 	// m_Exponent
 	[SchemaMember("CDynamicLight", "m_Exponent")]
-    public ref Int32 Exponent => ref Schema.GetRef<Int32>(this.Handle, "CDynamicLight", "m_Exponent");
+	public ref Int32 Exponent => ref Schema.GetRef<Int32>(this.Handle, "CDynamicLight", "m_Exponent");
 
 	// m_InnerAngle
 	[SchemaMember("CDynamicLight", "m_InnerAngle")]
-    public ref float InnerAngle => ref Schema.GetRef<float>(this.Handle, "CDynamicLight", "m_InnerAngle");
+	public ref float InnerAngle => ref Schema.GetRef<float>(this.Handle, "CDynamicLight", "m_InnerAngle");
 
 	// m_OuterAngle
 	[SchemaMember("CDynamicLight", "m_OuterAngle")]
-    public ref float OuterAngle => ref Schema.GetRef<float>(this.Handle, "CDynamicLight", "m_OuterAngle");
+	public ref float OuterAngle => ref Schema.GetRef<float>(this.Handle, "CDynamicLight", "m_OuterAngle");
 
 	// m_SpotRadius
 	[SchemaMember("CDynamicLight", "m_SpotRadius")]
-    public ref float SpotRadius => ref Schema.GetRef<float>(this.Handle, "CDynamicLight", "m_SpotRadius");
+	public ref float SpotRadius => ref Schema.GetRef<float>(this.Handle, "CDynamicLight", "m_SpotRadius");
 
 }

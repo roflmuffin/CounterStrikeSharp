@@ -20,10 +20,10 @@ public partial class CGamePlayerZone : CRuleBrushEntity
 
 	// m_OnPlayerInZone
 	[SchemaMember("CGamePlayerZone", "m_OnPlayerInZone")]
-    public CEntityIOOutput OnPlayerInZone => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CGamePlayerZone", "m_OnPlayerInZone");
+	public CEntityIOOutput OnPlayerInZone => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CGamePlayerZone", "m_OnPlayerInZone");
 
 	// m_OnPlayerOutZone
 	[SchemaMember("CGamePlayerZone", "m_OnPlayerOutZone")]
-    public CEntityIOOutput OnPlayerOutZone => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CGamePlayerZone", "m_OnPlayerOutZone");
+	public CEntityIOOutput OnPlayerOutZone => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CGamePlayerZone", "m_OnPlayerOutZone");
 
 }

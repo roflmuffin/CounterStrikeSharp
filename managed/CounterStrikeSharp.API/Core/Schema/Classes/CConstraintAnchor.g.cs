@@ -20,6 +20,6 @@ public partial class CConstraintAnchor : CBaseAnimGraph
 
 	// m_massScale
 	[SchemaMember("CConstraintAnchor", "m_massScale")]
-    public ref float MassScale => ref Schema.GetRef<float>(this.Handle, "CConstraintAnchor", "m_massScale");
+	public ref float MassScale => ref Schema.GetRef<float>(this.Handle, "CConstraintAnchor", "m_massScale");
 
 }

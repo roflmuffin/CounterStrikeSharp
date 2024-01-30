@@ -20,10 +20,10 @@ public partial class CCSPlayerController_DamageServices : CPlayerControllerCompo
 
 	// m_nSendUpdate
 	[SchemaMember("CCSPlayerController_DamageServices", "m_nSendUpdate")]
-    public ref Int32 SendUpdate => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_DamageServices", "m_nSendUpdate");
+	public ref Int32 SendUpdate => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_DamageServices", "m_nSendUpdate");
 
 	// m_DamageList
 	[SchemaMember("CCSPlayerController_DamageServices", "m_DamageList")]
-    public NetworkedVector<CDamageRecord> DamageList => Schema.GetDeclaredClass<NetworkedVector<CDamageRecord>>(this.Handle, "CCSPlayerController_DamageServices", "m_DamageList");
+	public NetworkedVector<CDamageRecord> DamageList => Schema.GetDeclaredClass<NetworkedVector<CDamageRecord>>(this.Handle, "CCSPlayerController_DamageServices", "m_DamageList");
 
 }

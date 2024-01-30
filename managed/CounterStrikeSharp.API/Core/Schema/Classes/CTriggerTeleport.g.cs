@@ -20,18 +20,18 @@ public partial class CTriggerTeleport : CBaseTrigger
 
 	// m_iLandmark
 	[SchemaMember("CTriggerTeleport", "m_iLandmark")]
-    public string Landmark
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CTriggerTeleport", "m_iLandmark"); }
-        set { Schema.SetString(this.Handle, "CTriggerTeleport", "m_iLandmark", value); }
-    }
+	public string Landmark
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CTriggerTeleport", "m_iLandmark"); }
+	set { Schema.SetString(this.Handle, "CTriggerTeleport", "m_iLandmark", value); }
+	}
 
 	// m_bUseLandmarkAngles
 	[SchemaMember("CTriggerTeleport", "m_bUseLandmarkAngles")]
-    public ref bool UseLandmarkAngles => ref Schema.GetRef<bool>(this.Handle, "CTriggerTeleport", "m_bUseLandmarkAngles");
+	public ref bool UseLandmarkAngles => ref Schema.GetRef<bool>(this.Handle, "CTriggerTeleport", "m_bUseLandmarkAngles");
 
 	// m_bMirrorPlayer
 	[SchemaMember("CTriggerTeleport", "m_bMirrorPlayer")]
-    public ref bool MirrorPlayer => ref Schema.GetRef<bool>(this.Handle, "CTriggerTeleport", "m_bMirrorPlayer");
+	public ref bool MirrorPlayer => ref Schema.GetRef<bool>(this.Handle, "CTriggerTeleport", "m_bMirrorPlayer");
 
 }

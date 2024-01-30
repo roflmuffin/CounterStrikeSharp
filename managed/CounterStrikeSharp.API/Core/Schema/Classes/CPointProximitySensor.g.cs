@@ -20,10 +20,10 @@ public partial class CPointProximitySensor : CPointEntity
 
 	// m_bDisabled
 	[SchemaMember("CPointProximitySensor", "m_bDisabled")]
-    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CPointProximitySensor", "m_bDisabled");
+	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CPointProximitySensor", "m_bDisabled");
 
 	// m_hTargetEntity
 	[SchemaMember("CPointProximitySensor", "m_hTargetEntity")]
-    public CHandle<CBaseEntity> TargetEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointProximitySensor", "m_hTargetEntity");
+	public CHandle<CBaseEntity> TargetEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointProximitySensor", "m_hTargetEntity");
 
 }

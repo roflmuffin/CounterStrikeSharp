@@ -20,26 +20,26 @@ public partial class CPointPulse : CBaseEntity
 
 	// m_sNameFixupStaticPrefix
 	[SchemaMember("CPointPulse", "m_sNameFixupStaticPrefix")]
-    public string NameFixupStaticPrefix
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CPointPulse", "m_sNameFixupStaticPrefix"); }
-        set { Schema.SetString(this.Handle, "CPointPulse", "m_sNameFixupStaticPrefix", value); }
-    }
+	public string NameFixupStaticPrefix
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CPointPulse", "m_sNameFixupStaticPrefix"); }
+	set { Schema.SetString(this.Handle, "CPointPulse", "m_sNameFixupStaticPrefix", value); }
+	}
 
 	// m_sNameFixupParent
 	[SchemaMember("CPointPulse", "m_sNameFixupParent")]
-    public string NameFixupParent
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CPointPulse", "m_sNameFixupParent"); }
-        set { Schema.SetString(this.Handle, "CPointPulse", "m_sNameFixupParent", value); }
-    }
+	public string NameFixupParent
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CPointPulse", "m_sNameFixupParent"); }
+	set { Schema.SetString(this.Handle, "CPointPulse", "m_sNameFixupParent", value); }
+	}
 
 	// m_sNameFixupLocal
 	[SchemaMember("CPointPulse", "m_sNameFixupLocal")]
-    public string NameFixupLocal
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CPointPulse", "m_sNameFixupLocal"); }
-        set { Schema.SetString(this.Handle, "CPointPulse", "m_sNameFixupLocal", value); }
-    }
+	public string NameFixupLocal
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CPointPulse", "m_sNameFixupLocal"); }
+	set { Schema.SetString(this.Handle, "CPointPulse", "m_sNameFixupLocal", value); }
+	}
 
 }

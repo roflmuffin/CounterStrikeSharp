@@ -20,10 +20,10 @@ public partial class CFuncNavBlocker : CBaseModelEntity
 
 	// m_bDisabled
 	[SchemaMember("CFuncNavBlocker", "m_bDisabled")]
-    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CFuncNavBlocker", "m_bDisabled");
+	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CFuncNavBlocker", "m_bDisabled");
 
 	// m_nBlockedTeamNumber
 	[SchemaMember("CFuncNavBlocker", "m_nBlockedTeamNumber")]
-    public ref Int32 BlockedTeamNumber => ref Schema.GetRef<Int32>(this.Handle, "CFuncNavBlocker", "m_nBlockedTeamNumber");
+	public ref Int32 BlockedTeamNumber => ref Schema.GetRef<Int32>(this.Handle, "CFuncNavBlocker", "m_nBlockedTeamNumber");
 
 }

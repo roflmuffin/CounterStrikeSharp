@@ -20,10 +20,10 @@ public partial class CSoundAreaEntityOrientedBox : CSoundAreaEntityBase
 
 	// m_vMin
 	[SchemaMember("CSoundAreaEntityOrientedBox", "m_vMin")]
-    public Vector Min => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundAreaEntityOrientedBox", "m_vMin");
+	public Vector Min => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundAreaEntityOrientedBox", "m_vMin");
 
 	// m_vMax
 	[SchemaMember("CSoundAreaEntityOrientedBox", "m_vMax")]
-    public Vector Max => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundAreaEntityOrientedBox", "m_vMax");
+	public Vector Max => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundAreaEntityOrientedBox", "m_vMax");
 
 }

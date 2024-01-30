@@ -20,6 +20,6 @@ public partial class CTriggerDetectExplosion : CBaseTrigger
 
 	// m_OnDetectedExplosion
 	[SchemaMember("CTriggerDetectExplosion", "m_OnDetectedExplosion")]
-    public CEntityIOOutput OnDetectedExplosion => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerDetectExplosion", "m_OnDetectedExplosion");
+	public CEntityIOOutput OnDetectedExplosion => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerDetectExplosion", "m_OnDetectedExplosion");
 
 }

@@ -20,10 +20,10 @@ public partial class Relationship_t : NativeObject
 
 	// disposition
 	[SchemaMember("Relationship_t", "disposition")]
-    public ref Disposition_t Disposition => ref Schema.GetRef<Disposition_t>(this.Handle, "Relationship_t", "disposition");
+	public ref Disposition_t Disposition => ref Schema.GetRef<Disposition_t>(this.Handle, "Relationship_t", "disposition");
 
 	// priority
 	[SchemaMember("Relationship_t", "priority")]
-    public ref Int32 Priority => ref Schema.GetRef<Int32>(this.Handle, "Relationship_t", "priority");
+	public ref Int32 Priority => ref Schema.GetRef<Int32>(this.Handle, "Relationship_t", "priority");
 
 }

@@ -8,7 +8,7 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum Explosions : uint
 {
-    expRandom = 0x0,
-    expDirected = 0x1,
-    expUsePrecise = 0x2,
+	expRandom = 0x0,
+	expDirected = 0x1,
+	expUsePrecise = 0x2,
 }

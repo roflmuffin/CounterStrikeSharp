@@ -20,34 +20,34 @@ public partial class CFogVolume : CServerOnlyModelEntity
 
 	// m_fogName
 	[SchemaMember("CFogVolume", "m_fogName")]
-    public string FogName
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CFogVolume", "m_fogName"); }
-        set { Schema.SetString(this.Handle, "CFogVolume", "m_fogName", value); }
-    }
+	public string FogName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CFogVolume", "m_fogName"); }
+	set { Schema.SetString(this.Handle, "CFogVolume", "m_fogName", value); }
+	}
 
 	// m_postProcessName
 	[SchemaMember("CFogVolume", "m_postProcessName")]
-    public string PostProcessName
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CFogVolume", "m_postProcessName"); }
-        set { Schema.SetString(this.Handle, "CFogVolume", "m_postProcessName", value); }
-    }
+	public string PostProcessName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CFogVolume", "m_postProcessName"); }
+	set { Schema.SetString(this.Handle, "CFogVolume", "m_postProcessName", value); }
+	}
 
 	// m_colorCorrectionName
 	[SchemaMember("CFogVolume", "m_colorCorrectionName")]
-    public string ColorCorrectionName
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CFogVolume", "m_colorCorrectionName"); }
-        set { Schema.SetString(this.Handle, "CFogVolume", "m_colorCorrectionName", value); }
-    }
+	public string ColorCorrectionName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CFogVolume", "m_colorCorrectionName"); }
+	set { Schema.SetString(this.Handle, "CFogVolume", "m_colorCorrectionName", value); }
+	}
 
 	// m_bDisabled
 	[SchemaMember("CFogVolume", "m_bDisabled")]
-    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CFogVolume", "m_bDisabled");
+	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CFogVolume", "m_bDisabled");
 
 	// m_bInFogVolumesList
 	[SchemaMember("CFogVolume", "m_bInFogVolumesList")]
-    public ref bool InFogVolumesList => ref Schema.GetRef<bool>(this.Handle, "CFogVolume", "m_bInFogVolumesList");
+	public ref bool InFogVolumesList => ref Schema.GetRef<bool>(this.Handle, "CFogVolume", "m_bInFogVolumesList");
 
 }

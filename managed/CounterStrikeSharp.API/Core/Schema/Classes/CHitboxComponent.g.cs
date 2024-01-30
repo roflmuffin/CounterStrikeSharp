@@ -20,6 +20,6 @@ public partial class CHitboxComponent : CEntityComponent
 
 	// m_bvDisabledHitGroups
 	[SchemaMember("CHitboxComponent", "m_bvDisabledHitGroups")]
-    public Span<UInt32> DisabledHitGroups => Schema.GetFixedArray<UInt32>(this.Handle, "CHitboxComponent", "m_bvDisabledHitGroups", 1);
+	public Span<UInt32> DisabledHitGroups => Schema.GetFixedArray<UInt32>(this.Handle, "CHitboxComponent", "m_bvDisabledHitGroups", 1);
 
 }

@@ -8,5 +8,5 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum navproperties_t : uint
 {
-    NAV_IGNORE = 0x1,
+	NAV_IGNORE = 0x1,
 }

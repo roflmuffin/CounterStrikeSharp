@@ -8,7 +8,7 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum ParticleParentSetMode_t : uint
 {
-    PARTICLE_SET_PARENT_NO = 0x0,
-    PARTICLE_SET_PARENT_IMMEDIATE = 0x1,
-    PARTICLE_SET_PARENT_ROOT = 0x1,
+	PARTICLE_SET_PARENT_NO = 0x0,
+	PARTICLE_SET_PARENT_IMMEDIATE = 0x1,
+	PARTICLE_SET_PARENT_ROOT = 0x1,
 }

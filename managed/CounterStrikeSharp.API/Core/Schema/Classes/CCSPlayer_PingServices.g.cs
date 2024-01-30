@@ -20,10 +20,10 @@ public partial class CCSPlayer_PingServices : CPlayerPawnComponent
 
 	// m_flPlayerPingTokens
 	[SchemaMember("CCSPlayer_PingServices", "m_flPlayerPingTokens")]
-    public Span<float> PlayerPingTokens => Schema.GetFixedArray<float>(this.Handle, "CCSPlayer_PingServices", "m_flPlayerPingTokens", 5);
+	public Span<float> PlayerPingTokens => Schema.GetFixedArray<float>(this.Handle, "CCSPlayer_PingServices", "m_flPlayerPingTokens", 5);
 
 	// m_hPlayerPing
 	[SchemaMember("CCSPlayer_PingServices", "m_hPlayerPing")]
-    public CHandle<CBaseEntity> PlayerPing => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSPlayer_PingServices", "m_hPlayerPing");
+	public CHandle<CBaseEntity> PlayerPing => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSPlayer_PingServices", "m_hPlayerPing");
 
 }

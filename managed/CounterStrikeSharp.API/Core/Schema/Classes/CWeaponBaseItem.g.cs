@@ -20,10 +20,10 @@ public partial class CWeaponBaseItem : CCSWeaponBase
 
 	// m_SequenceCompleteTimer
 	[SchemaMember("CWeaponBaseItem", "m_SequenceCompleteTimer")]
-    public CountdownTimer SequenceCompleteTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CWeaponBaseItem", "m_SequenceCompleteTimer");
+	public CountdownTimer SequenceCompleteTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CWeaponBaseItem", "m_SequenceCompleteTimer");
 
 	// m_bRedraw
 	[SchemaMember("CWeaponBaseItem", "m_bRedraw")]
-    public ref bool Redraw => ref Schema.GetRef<bool>(this.Handle, "CWeaponBaseItem", "m_bRedraw");
+	public ref bool Redraw => ref Schema.GetRef<bool>(this.Handle, "CWeaponBaseItem", "m_bRedraw");
 
 }

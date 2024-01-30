@@ -20,6 +20,6 @@ public partial class CPhysicsWire : CBaseEntity
 
 	// m_nDensity
 	[SchemaMember("CPhysicsWire", "m_nDensity")]
-    public ref Int32 Density => ref Schema.GetRef<Int32>(this.Handle, "CPhysicsWire", "m_nDensity");
+	public ref Int32 Density => ref Schema.GetRef<Int32>(this.Handle, "CPhysicsWire", "m_nDensity");
 
 }

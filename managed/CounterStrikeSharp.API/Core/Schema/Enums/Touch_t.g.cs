@@ -8,9 +8,9 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum Touch_t : uint
 {
-    touch_none = 0x0,
-    touch_player_only = 0x1,
-    touch_npc_only = 0x2,
-    touch_player_or_npc = 0x3,
-    touch_player_or_npc_or_physicsprop = 0x4,
+	touch_none = 0x0,
+	touch_player_only = 0x1,
+	touch_npc_only = 0x2,
+	touch_player_or_npc = 0x3,
+	touch_player_or_npc_or_physicsprop = 0x4,
 }

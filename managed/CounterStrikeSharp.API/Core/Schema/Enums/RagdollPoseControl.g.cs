@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum RagdollPoseControl : uint
 {
-    Absolute = 0x0,
-    Relative = 0x1,
+	Absolute = 0x0,
+	Relative = 0x1,
 }

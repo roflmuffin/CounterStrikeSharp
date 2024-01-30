@@ -20,34 +20,34 @@ public partial class CKeepUpright : CPointEntity
 
 	// m_worldGoalAxis
 	[SchemaMember("CKeepUpright", "m_worldGoalAxis")]
-    public Vector WorldGoalAxis => Schema.GetDeclaredClass<Vector>(this.Handle, "CKeepUpright", "m_worldGoalAxis");
+	public Vector WorldGoalAxis => Schema.GetDeclaredClass<Vector>(this.Handle, "CKeepUpright", "m_worldGoalAxis");
 
 	// m_localTestAxis
 	[SchemaMember("CKeepUpright", "m_localTestAxis")]
-    public Vector LocalTestAxis => Schema.GetDeclaredClass<Vector>(this.Handle, "CKeepUpright", "m_localTestAxis");
+	public Vector LocalTestAxis => Schema.GetDeclaredClass<Vector>(this.Handle, "CKeepUpright", "m_localTestAxis");
 
 	// m_nameAttach
 	[SchemaMember("CKeepUpright", "m_nameAttach")]
-    public string NameAttach
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CKeepUpright", "m_nameAttach"); }
-        set { Schema.SetString(this.Handle, "CKeepUpright", "m_nameAttach", value); }
-    }
+	public string NameAttach
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CKeepUpright", "m_nameAttach"); }
+	set { Schema.SetString(this.Handle, "CKeepUpright", "m_nameAttach", value); }
+	}
 
 	// m_attachedObject
 	[SchemaMember("CKeepUpright", "m_attachedObject")]
-    public CHandle<CBaseEntity> AttachedObject => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CKeepUpright", "m_attachedObject");
+	public CHandle<CBaseEntity> AttachedObject => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CKeepUpright", "m_attachedObject");
 
 	// m_angularLimit
 	[SchemaMember("CKeepUpright", "m_angularLimit")]
-    public ref float AngularLimit => ref Schema.GetRef<float>(this.Handle, "CKeepUpright", "m_angularLimit");
+	public ref float AngularLimit => ref Schema.GetRef<float>(this.Handle, "CKeepUpright", "m_angularLimit");
 
 	// m_bActive
 	[SchemaMember("CKeepUpright", "m_bActive")]
-    public ref bool Active => ref Schema.GetRef<bool>(this.Handle, "CKeepUpright", "m_bActive");
+	public ref bool Active => ref Schema.GetRef<bool>(this.Handle, "CKeepUpright", "m_bActive");
 
 	// m_bDampAllRotation
 	[SchemaMember("CKeepUpright", "m_bDampAllRotation")]
-    public ref bool DampAllRotation => ref Schema.GetRef<bool>(this.Handle, "CKeepUpright", "m_bDampAllRotation");
+	public ref bool DampAllRotation => ref Schema.GetRef<bool>(this.Handle, "CKeepUpright", "m_bDampAllRotation");
 
 }

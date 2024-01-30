@@ -8,7 +8,7 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum AnimPoseControl : uint
 {
-    NoPoseControl = 0x0,
-    AbsolutePoseControl = 0x1,
-    RelativePoseControl = 0x2,
+	NoPoseControl = 0x0,
+	AbsolutePoseControl = 0x1,
+	RelativePoseControl = 0x2,
 }

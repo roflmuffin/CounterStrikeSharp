@@ -20,14 +20,14 @@ public partial class CCSPlayer_ItemServices : CPlayer_ItemServices
 
 	// m_bHasDefuser
 	[SchemaMember("CCSPlayer_ItemServices", "m_bHasDefuser")]
-    public ref bool HasDefuser => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_ItemServices", "m_bHasDefuser");
+	public ref bool HasDefuser => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_ItemServices", "m_bHasDefuser");
 
 	// m_bHasHelmet
 	[SchemaMember("CCSPlayer_ItemServices", "m_bHasHelmet")]
-    public ref bool HasHelmet => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_ItemServices", "m_bHasHelmet");
+	public ref bool HasHelmet => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_ItemServices", "m_bHasHelmet");
 
 	// m_bHasHeavyArmor
 	[SchemaMember("CCSPlayer_ItemServices", "m_bHasHeavyArmor")]
-    public ref bool HasHeavyArmor => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_ItemServices", "m_bHasHeavyArmor");
+	public ref bool HasHeavyArmor => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_ItemServices", "m_bHasHeavyArmor");
 
 }

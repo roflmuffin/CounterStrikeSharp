@@ -20,6 +20,6 @@ public partial class CEnvWind : CBaseEntity
 
 	// m_EnvWindShared
 	[SchemaMember("CEnvWind", "m_EnvWindShared")]
-    public CEnvWindShared EnvWindShared => Schema.GetDeclaredClass<CEnvWindShared>(this.Handle, "CEnvWind", "m_EnvWindShared");
+	public CEnvWindShared EnvWindShared => Schema.GetDeclaredClass<CEnvWindShared>(this.Handle, "CEnvWind", "m_EnvWindShared");
 
 }

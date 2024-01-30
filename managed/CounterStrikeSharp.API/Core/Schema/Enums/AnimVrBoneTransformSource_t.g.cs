@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum AnimVrBoneTransformSource_t : uint
 {
-    AnimVrBoneTransformSource_LiveStream = 0x0,
-    AnimVrBoneTransformSource_GripLimit = 0x1,
+	AnimVrBoneTransformSource_LiveStream = 0x0,
+	AnimVrBoneTransformSource_GripLimit = 0x1,
 }

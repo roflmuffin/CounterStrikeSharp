@@ -20,14 +20,14 @@ public partial class CSensorGrenadeProjectile : CBaseCSGrenadeProjectile
 
 	// m_fExpireTime
 	[SchemaMember("CSensorGrenadeProjectile", "m_fExpireTime")]
-    public ref float ExpireTime => ref Schema.GetRef<float>(this.Handle, "CSensorGrenadeProjectile", "m_fExpireTime");
+	public ref float ExpireTime => ref Schema.GetRef<float>(this.Handle, "CSensorGrenadeProjectile", "m_fExpireTime");
 
 	// m_fNextDetectPlayerSound
 	[SchemaMember("CSensorGrenadeProjectile", "m_fNextDetectPlayerSound")]
-    public ref float NextDetectPlayerSound => ref Schema.GetRef<float>(this.Handle, "CSensorGrenadeProjectile", "m_fNextDetectPlayerSound");
+	public ref float NextDetectPlayerSound => ref Schema.GetRef<float>(this.Handle, "CSensorGrenadeProjectile", "m_fNextDetectPlayerSound");
 
 	// m_hDisplayGrenade
 	[SchemaMember("CSensorGrenadeProjectile", "m_hDisplayGrenade")]
-    public CHandle<CBaseEntity> DisplayGrenade => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSensorGrenadeProjectile", "m_hDisplayGrenade");
+	public CHandle<CBaseEntity> DisplayGrenade => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSensorGrenadeProjectile", "m_hDisplayGrenade");
 
 }

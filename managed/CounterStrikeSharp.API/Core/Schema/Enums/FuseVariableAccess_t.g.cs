@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum FuseVariableAccess_t : byte
 {
-    WRITABLE = 0x0,
-    READ_ONLY = 0x1,
+	WRITABLE = 0x0,
+	READ_ONLY = 0x1,
 }

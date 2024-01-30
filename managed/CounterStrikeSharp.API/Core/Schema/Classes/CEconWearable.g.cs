@@ -20,10 +20,10 @@ public partial class CEconWearable : CEconEntity
 
 	// m_nForceSkin
 	[SchemaMember("CEconWearable", "m_nForceSkin")]
-    public ref Int32 ForceSkin => ref Schema.GetRef<Int32>(this.Handle, "CEconWearable", "m_nForceSkin");
+	public ref Int32 ForceSkin => ref Schema.GetRef<Int32>(this.Handle, "CEconWearable", "m_nForceSkin");
 
 	// m_bAlwaysAllow
 	[SchemaMember("CEconWearable", "m_bAlwaysAllow")]
-    public ref bool AlwaysAllow => ref Schema.GetRef<bool>(this.Handle, "CEconWearable", "m_bAlwaysAllow");
+	public ref bool AlwaysAllow => ref Schema.GetRef<bool>(this.Handle, "CEconWearable", "m_bAlwaysAllow");
 
 }

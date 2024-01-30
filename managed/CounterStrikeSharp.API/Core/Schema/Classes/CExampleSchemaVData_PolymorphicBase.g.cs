@@ -20,6 +20,6 @@ public partial class CExampleSchemaVData_PolymorphicBase : NativeObject
 
 	// m_nBase
 	[SchemaMember("CExampleSchemaVData_PolymorphicBase", "m_nBase")]
-    public ref Int32 Base => ref Schema.GetRef<Int32>(this.Handle, "CExampleSchemaVData_PolymorphicBase", "m_nBase");
+	public ref Int32 Base => ref Schema.GetRef<Int32>(this.Handle, "CExampleSchemaVData_PolymorphicBase", "m_nBase");
 
 }

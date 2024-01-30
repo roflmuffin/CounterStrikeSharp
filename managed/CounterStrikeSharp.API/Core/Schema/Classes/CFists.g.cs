@@ -20,30 +20,30 @@ public partial class CFists : CCSWeaponBase
 
 	// m_bPlayingUninterruptableAct
 	[SchemaMember("CFists", "m_bPlayingUninterruptableAct")]
-    public ref bool PlayingUninterruptableAct => ref Schema.GetRef<bool>(this.Handle, "CFists", "m_bPlayingUninterruptableAct");
+	public ref bool PlayingUninterruptableAct => ref Schema.GetRef<bool>(this.Handle, "CFists", "m_bPlayingUninterruptableAct");
 
 	// m_nUninterruptableActivity
 	[SchemaMember("CFists", "m_nUninterruptableActivity")]
-    public ref PlayerAnimEvent_t UninterruptableActivity => ref Schema.GetRef<PlayerAnimEvent_t>(this.Handle, "CFists", "m_nUninterruptableActivity");
+	public ref PlayerAnimEvent_t UninterruptableActivity => ref Schema.GetRef<PlayerAnimEvent_t>(this.Handle, "CFists", "m_nUninterruptableActivity");
 
 	// m_bRestorePrevWep
 	[SchemaMember("CFists", "m_bRestorePrevWep")]
-    public ref bool RestorePrevWep => ref Schema.GetRef<bool>(this.Handle, "CFists", "m_bRestorePrevWep");
+	public ref bool RestorePrevWep => ref Schema.GetRef<bool>(this.Handle, "CFists", "m_bRestorePrevWep");
 
 	// m_hWeaponBeforePrevious
 	[SchemaMember("CFists", "m_hWeaponBeforePrevious")]
-    public CHandle<CBasePlayerWeapon> WeaponBeforePrevious => Schema.GetDeclaredClass<CHandle<CBasePlayerWeapon>>(this.Handle, "CFists", "m_hWeaponBeforePrevious");
+	public CHandle<CBasePlayerWeapon> WeaponBeforePrevious => Schema.GetDeclaredClass<CHandle<CBasePlayerWeapon>>(this.Handle, "CFists", "m_hWeaponBeforePrevious");
 
 	// m_hWeaponPrevious
 	[SchemaMember("CFists", "m_hWeaponPrevious")]
-    public CHandle<CBasePlayerWeapon> WeaponPrevious => Schema.GetDeclaredClass<CHandle<CBasePlayerWeapon>>(this.Handle, "CFists", "m_hWeaponPrevious");
+	public CHandle<CBasePlayerWeapon> WeaponPrevious => Schema.GetDeclaredClass<CHandle<CBasePlayerWeapon>>(this.Handle, "CFists", "m_hWeaponPrevious");
 
 	// m_bDelayedHardPunchIncoming
 	[SchemaMember("CFists", "m_bDelayedHardPunchIncoming")]
-    public ref bool DelayedHardPunchIncoming => ref Schema.GetRef<bool>(this.Handle, "CFists", "m_bDelayedHardPunchIncoming");
+	public ref bool DelayedHardPunchIncoming => ref Schema.GetRef<bool>(this.Handle, "CFists", "m_bDelayedHardPunchIncoming");
 
 	// m_bDestroyAfterTaunt
 	[SchemaMember("CFists", "m_bDestroyAfterTaunt")]
-    public ref bool DestroyAfterTaunt => ref Schema.GetRef<bool>(this.Handle, "CFists", "m_bDestroyAfterTaunt");
+	public ref bool DestroyAfterTaunt => ref Schema.GetRef<bool>(this.Handle, "CFists", "m_bDestroyAfterTaunt");
 
 }

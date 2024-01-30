@@ -8,7 +8,7 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum FootPinningTimingSource : uint
 {
-    FootMotion = 0x0,
-    Tag = 0x1,
-    Parameter = 0x2,
+	FootMotion = 0x0,
+	Tag = 0x1,
+	Parameter = 0x2,
 }

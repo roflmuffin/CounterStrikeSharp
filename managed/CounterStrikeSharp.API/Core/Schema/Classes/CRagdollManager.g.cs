@@ -20,14 +20,14 @@ public partial class CRagdollManager : CBaseEntity
 
 	// m_iCurrentMaxRagdollCount
 	[SchemaMember("CRagdollManager", "m_iCurrentMaxRagdollCount")]
-    public ref sbyte CurrentMaxRagdollCount => ref Schema.GetRef<sbyte>(this.Handle, "CRagdollManager", "m_iCurrentMaxRagdollCount");
+	public ref sbyte CurrentMaxRagdollCount => ref Schema.GetRef<sbyte>(this.Handle, "CRagdollManager", "m_iCurrentMaxRagdollCount");
 
 	// m_iMaxRagdollCount
 	[SchemaMember("CRagdollManager", "m_iMaxRagdollCount")]
-    public ref Int32 MaxRagdollCount => ref Schema.GetRef<Int32>(this.Handle, "CRagdollManager", "m_iMaxRagdollCount");
+	public ref Int32 MaxRagdollCount => ref Schema.GetRef<Int32>(this.Handle, "CRagdollManager", "m_iMaxRagdollCount");
 
 	// m_bSaveImportant
 	[SchemaMember("CRagdollManager", "m_bSaveImportant")]
-    public ref bool SaveImportant => ref Schema.GetRef<bool>(this.Handle, "CRagdollManager", "m_bSaveImportant");
+	public ref bool SaveImportant => ref Schema.GetRef<bool>(this.Handle, "CRagdollManager", "m_bSaveImportant");
 
 }

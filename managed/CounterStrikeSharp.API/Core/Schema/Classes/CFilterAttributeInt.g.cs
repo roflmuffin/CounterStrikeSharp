@@ -20,6 +20,6 @@ public partial class CFilterAttributeInt : CBaseFilter
 
 	// m_sAttributeName
 	[SchemaMember("CFilterAttributeInt", "m_sAttributeName")]
-    public CUtlStringToken AttributeName => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CFilterAttributeInt", "m_sAttributeName");
+	public CUtlStringToken AttributeName => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CFilterAttributeInt", "m_sAttributeName");
 
 }

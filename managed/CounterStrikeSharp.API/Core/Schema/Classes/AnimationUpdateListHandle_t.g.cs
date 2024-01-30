@@ -20,6 +20,6 @@ public partial class AnimationUpdateListHandle_t : NativeObject
 
 	// m_Value
 	[SchemaMember("AnimationUpdateListHandle_t", "m_Value")]
-    public ref UInt32 Value => ref Schema.GetRef<UInt32>(this.Handle, "AnimationUpdateListHandle_t", "m_Value");
+	public ref UInt32 Value => ref Schema.GetRef<UInt32>(this.Handle, "AnimationUpdateListHandle_t", "m_Value");
 
 }

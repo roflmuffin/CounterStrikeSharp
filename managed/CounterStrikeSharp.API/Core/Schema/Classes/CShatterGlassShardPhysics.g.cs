@@ -20,14 +20,14 @@ public partial class CShatterGlassShardPhysics : CPhysicsProp
 
 	// m_bDebris
 	[SchemaMember("CShatterGlassShardPhysics", "m_bDebris")]
-    public ref bool Debris => ref Schema.GetRef<bool>(this.Handle, "CShatterGlassShardPhysics", "m_bDebris");
+	public ref bool Debris => ref Schema.GetRef<bool>(this.Handle, "CShatterGlassShardPhysics", "m_bDebris");
 
 	// m_hParentShard
 	[SchemaMember("CShatterGlassShardPhysics", "m_hParentShard")]
-    public ref UInt32 ParentShard => ref Schema.GetRef<UInt32>(this.Handle, "CShatterGlassShardPhysics", "m_hParentShard");
+	public ref UInt32 ParentShard => ref Schema.GetRef<UInt32>(this.Handle, "CShatterGlassShardPhysics", "m_hParentShard");
 
 	// m_ShardDesc
 	[SchemaMember("CShatterGlassShardPhysics", "m_ShardDesc")]
-    public shard_model_desc_t ShardDesc => Schema.GetDeclaredClass<shard_model_desc_t>(this.Handle, "CShatterGlassShardPhysics", "m_ShardDesc");
+	public shard_model_desc_t ShardDesc => Schema.GetDeclaredClass<shard_model_desc_t>(this.Handle, "CShatterGlassShardPhysics", "m_ShardDesc");
 
 }

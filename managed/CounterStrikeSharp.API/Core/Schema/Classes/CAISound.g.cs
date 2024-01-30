@@ -20,30 +20,30 @@ public partial class CAISound : CPointEntity
 
 	// m_iSoundType
 	[SchemaMember("CAISound", "m_iSoundType")]
-    public ref Int32 SoundType => ref Schema.GetRef<Int32>(this.Handle, "CAISound", "m_iSoundType");
+	public ref Int32 SoundType => ref Schema.GetRef<Int32>(this.Handle, "CAISound", "m_iSoundType");
 
 	// m_iSoundContext
 	[SchemaMember("CAISound", "m_iSoundContext")]
-    public ref Int32 SoundContext => ref Schema.GetRef<Int32>(this.Handle, "CAISound", "m_iSoundContext");
+	public ref Int32 SoundContext => ref Schema.GetRef<Int32>(this.Handle, "CAISound", "m_iSoundContext");
 
 	// m_iVolume
 	[SchemaMember("CAISound", "m_iVolume")]
-    public ref Int32 Volume => ref Schema.GetRef<Int32>(this.Handle, "CAISound", "m_iVolume");
+	public ref Int32 Volume => ref Schema.GetRef<Int32>(this.Handle, "CAISound", "m_iVolume");
 
 	// m_iSoundIndex
 	[SchemaMember("CAISound", "m_iSoundIndex")]
-    public ref Int32 SoundIndex => ref Schema.GetRef<Int32>(this.Handle, "CAISound", "m_iSoundIndex");
+	public ref Int32 SoundIndex => ref Schema.GetRef<Int32>(this.Handle, "CAISound", "m_iSoundIndex");
 
 	// m_flDuration
 	[SchemaMember("CAISound", "m_flDuration")]
-    public ref float Duration => ref Schema.GetRef<float>(this.Handle, "CAISound", "m_flDuration");
+	public ref float Duration => ref Schema.GetRef<float>(this.Handle, "CAISound", "m_flDuration");
 
 	// m_iszProxyEntityName
 	[SchemaMember("CAISound", "m_iszProxyEntityName")]
-    public string ProxyEntityName
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CAISound", "m_iszProxyEntityName"); }
-        set { Schema.SetString(this.Handle, "CAISound", "m_iszProxyEntityName", value); }
-    }
+	public string ProxyEntityName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CAISound", "m_iszProxyEntityName"); }
+	set { Schema.SetString(this.Handle, "CAISound", "m_iszProxyEntityName", value); }
+	}
 
 }

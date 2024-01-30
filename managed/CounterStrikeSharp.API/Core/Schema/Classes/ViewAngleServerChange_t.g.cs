@@ -20,14 +20,14 @@ public partial class ViewAngleServerChange_t : NativeObject
 
 	// nType
 	[SchemaMember("ViewAngleServerChange_t", "nType")]
-    public ref FixAngleSet_t NType => ref Schema.GetRef<FixAngleSet_t>(this.Handle, "ViewAngleServerChange_t", "nType");
+	public ref FixAngleSet_t NType => ref Schema.GetRef<FixAngleSet_t>(this.Handle, "ViewAngleServerChange_t", "nType");
 
 	// qAngle
 	[SchemaMember("ViewAngleServerChange_t", "qAngle")]
-    public QAngle QAngle => Schema.GetDeclaredClass<QAngle>(this.Handle, "ViewAngleServerChange_t", "qAngle");
+	public QAngle QAngle => Schema.GetDeclaredClass<QAngle>(this.Handle, "ViewAngleServerChange_t", "qAngle");
 
 	// nIndex
 	[SchemaMember("ViewAngleServerChange_t", "nIndex")]
-    public ref UInt32 NIndex => ref Schema.GetRef<UInt32>(this.Handle, "ViewAngleServerChange_t", "nIndex");
+	public ref UInt32 NIndex => ref Schema.GetRef<UInt32>(this.Handle, "ViewAngleServerChange_t", "nIndex");
 
 }

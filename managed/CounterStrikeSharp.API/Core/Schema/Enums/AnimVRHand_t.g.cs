@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum AnimVRHand_t : uint
 {
-    AnimVRHand_Left = 0x0,
-    AnimVRHand_Right = 0x1,
+	AnimVRHand_Left = 0x0,
+	AnimVRHand_Right = 0x1,
 }

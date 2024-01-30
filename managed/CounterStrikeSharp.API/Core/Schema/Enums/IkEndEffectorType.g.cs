@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum IkEndEffectorType : uint
 {
-    IkEndEffector_Attachment = 0x0,
-    IkEndEffector_Bone = 0x1,
+	IkEndEffector_Attachment = 0x0,
+	IkEndEffector_Bone = 0x1,
 }

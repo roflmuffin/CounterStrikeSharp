@@ -20,10 +20,10 @@ public partial class CFuncPlat : CBasePlatTrain
 
 	// m_sNoise
 	[SchemaMember("CFuncPlat", "m_sNoise")]
-    public string Noise
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CFuncPlat", "m_sNoise"); }
-        set { Schema.SetString(this.Handle, "CFuncPlat", "m_sNoise", value); }
-    }
+	public string Noise
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CFuncPlat", "m_sNoise"); }
+	set { Schema.SetString(this.Handle, "CFuncPlat", "m_sNoise", value); }
+	}
 
 }

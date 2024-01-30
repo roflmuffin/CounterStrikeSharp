@@ -20,6 +20,6 @@ public partial class CScriptTriggerHurt : CTriggerHurt
 
 	// m_vExtent
 	[SchemaMember("CScriptTriggerHurt", "m_vExtent")]
-    public Vector Extent => Schema.GetDeclaredClass<Vector>(this.Handle, "CScriptTriggerHurt", "m_vExtent");
+	public Vector Extent => Schema.GetDeclaredClass<Vector>(this.Handle, "CScriptTriggerHurt", "m_vExtent");
 
 }

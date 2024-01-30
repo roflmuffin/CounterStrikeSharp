@@ -20,18 +20,18 @@ public partial class CSoundEnt : CPointEntity
 
 	// m_iFreeSound
 	[SchemaMember("CSoundEnt", "m_iFreeSound")]
-    public ref Int32 FreeSound => ref Schema.GetRef<Int32>(this.Handle, "CSoundEnt", "m_iFreeSound");
+	public ref Int32 FreeSound => ref Schema.GetRef<Int32>(this.Handle, "CSoundEnt", "m_iFreeSound");
 
 	// m_iActiveSound
 	[SchemaMember("CSoundEnt", "m_iActiveSound")]
-    public ref Int32 ActiveSound => ref Schema.GetRef<Int32>(this.Handle, "CSoundEnt", "m_iActiveSound");
+	public ref Int32 ActiveSound => ref Schema.GetRef<Int32>(this.Handle, "CSoundEnt", "m_iActiveSound");
 
 	// m_cLastActiveSounds
 	[SchemaMember("CSoundEnt", "m_cLastActiveSounds")]
-    public ref Int32 CLastActiveSounds => ref Schema.GetRef<Int32>(this.Handle, "CSoundEnt", "m_cLastActiveSounds");
+	public ref Int32 CLastActiveSounds => ref Schema.GetRef<Int32>(this.Handle, "CSoundEnt", "m_cLastActiveSounds");
 
 	// m_SoundPool
 	[SchemaMember("CSoundEnt", "m_SoundPool")]
-    public Span<CSound> SoundPool => Schema.GetFixedArray<CSound>(this.Handle, "CSoundEnt", "m_SoundPool", 128);
+	public Span<CSound> SoundPool => Schema.GetFixedArray<CSound>(this.Handle, "CSoundEnt", "m_SoundPool", 128);
 
 }

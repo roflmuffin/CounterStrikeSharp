@@ -20,30 +20,30 @@ public partial class CLogicDistanceAutosave : CLogicalEntity
 
 	// m_iszTargetEntity
 	[SchemaMember("CLogicDistanceAutosave", "m_iszTargetEntity")]
-    public string TargetEntity
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CLogicDistanceAutosave", "m_iszTargetEntity"); }
-        set { Schema.SetString(this.Handle, "CLogicDistanceAutosave", "m_iszTargetEntity", value); }
-    }
+	public string TargetEntity
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CLogicDistanceAutosave", "m_iszTargetEntity"); }
+	set { Schema.SetString(this.Handle, "CLogicDistanceAutosave", "m_iszTargetEntity", value); }
+	}
 
 	// m_flDistanceToPlayer
 	[SchemaMember("CLogicDistanceAutosave", "m_flDistanceToPlayer")]
-    public ref float DistanceToPlayer => ref Schema.GetRef<float>(this.Handle, "CLogicDistanceAutosave", "m_flDistanceToPlayer");
+	public ref float DistanceToPlayer => ref Schema.GetRef<float>(this.Handle, "CLogicDistanceAutosave", "m_flDistanceToPlayer");
 
 	// m_bForceNewLevelUnit
 	[SchemaMember("CLogicDistanceAutosave", "m_bForceNewLevelUnit")]
-    public ref bool ForceNewLevelUnit => ref Schema.GetRef<bool>(this.Handle, "CLogicDistanceAutosave", "m_bForceNewLevelUnit");
+	public ref bool ForceNewLevelUnit => ref Schema.GetRef<bool>(this.Handle, "CLogicDistanceAutosave", "m_bForceNewLevelUnit");
 
 	// m_bCheckCough
 	[SchemaMember("CLogicDistanceAutosave", "m_bCheckCough")]
-    public ref bool CheckCough => ref Schema.GetRef<bool>(this.Handle, "CLogicDistanceAutosave", "m_bCheckCough");
+	public ref bool CheckCough => ref Schema.GetRef<bool>(this.Handle, "CLogicDistanceAutosave", "m_bCheckCough");
 
 	// m_bThinkDangerous
 	[SchemaMember("CLogicDistanceAutosave", "m_bThinkDangerous")]
-    public ref bool ThinkDangerous => ref Schema.GetRef<bool>(this.Handle, "CLogicDistanceAutosave", "m_bThinkDangerous");
+	public ref bool ThinkDangerous => ref Schema.GetRef<bool>(this.Handle, "CLogicDistanceAutosave", "m_bThinkDangerous");
 
 	// m_flDangerousTime
 	[SchemaMember("CLogicDistanceAutosave", "m_flDangerousTime")]
-    public ref float DangerousTime => ref Schema.GetRef<float>(this.Handle, "CLogicDistanceAutosave", "m_flDangerousTime");
+	public ref float DangerousTime => ref Schema.GetRef<float>(this.Handle, "CLogicDistanceAutosave", "m_flDangerousTime");
 
 }

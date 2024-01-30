@@ -20,22 +20,22 @@ public partial class ResponseContext_t : NativeObject
 
 	// m_iszName
 	[SchemaMember("ResponseContext_t", "m_iszName")]
-    public string Name
-    {
-        get { return Schema.GetUtf8String(this.Handle, "ResponseContext_t", "m_iszName"); }
-        set { Schema.SetString(this.Handle, "ResponseContext_t", "m_iszName", value); }
-    }
+	public string Name
+	{
+		get { return Schema.GetUtf8String(this.Handle, "ResponseContext_t", "m_iszName"); }
+	set { Schema.SetString(this.Handle, "ResponseContext_t", "m_iszName", value); }
+	}
 
 	// m_iszValue
 	[SchemaMember("ResponseContext_t", "m_iszValue")]
-    public string Value
-    {
-        get { return Schema.GetUtf8String(this.Handle, "ResponseContext_t", "m_iszValue"); }
-        set { Schema.SetString(this.Handle, "ResponseContext_t", "m_iszValue", value); }
-    }
+	public string Value
+	{
+		get { return Schema.GetUtf8String(this.Handle, "ResponseContext_t", "m_iszValue"); }
+	set { Schema.SetString(this.Handle, "ResponseContext_t", "m_iszValue", value); }
+	}
 
 	// m_fExpirationTime
 	[SchemaMember("ResponseContext_t", "m_fExpirationTime")]
-    public ref float ExpirationTime => ref Schema.GetRef<float>(this.Handle, "ResponseContext_t", "m_fExpirationTime");
+	public ref float ExpirationTime => ref Schema.GetRef<float>(this.Handle, "ResponseContext_t", "m_fExpirationTime");
 
 }

@@ -20,26 +20,26 @@ public partial class CPhysFixed : CPhysConstraint
 
 	// m_flLinearFrequency
 	[SchemaMember("CPhysFixed", "m_flLinearFrequency")]
-    public ref float LinearFrequency => ref Schema.GetRef<float>(this.Handle, "CPhysFixed", "m_flLinearFrequency");
+	public ref float LinearFrequency => ref Schema.GetRef<float>(this.Handle, "CPhysFixed", "m_flLinearFrequency");
 
 	// m_flLinearDampingRatio
 	[SchemaMember("CPhysFixed", "m_flLinearDampingRatio")]
-    public ref float LinearDampingRatio => ref Schema.GetRef<float>(this.Handle, "CPhysFixed", "m_flLinearDampingRatio");
+	public ref float LinearDampingRatio => ref Schema.GetRef<float>(this.Handle, "CPhysFixed", "m_flLinearDampingRatio");
 
 	// m_flAngularFrequency
 	[SchemaMember("CPhysFixed", "m_flAngularFrequency")]
-    public ref float AngularFrequency => ref Schema.GetRef<float>(this.Handle, "CPhysFixed", "m_flAngularFrequency");
+	public ref float AngularFrequency => ref Schema.GetRef<float>(this.Handle, "CPhysFixed", "m_flAngularFrequency");
 
 	// m_flAngularDampingRatio
 	[SchemaMember("CPhysFixed", "m_flAngularDampingRatio")]
-    public ref float AngularDampingRatio => ref Schema.GetRef<float>(this.Handle, "CPhysFixed", "m_flAngularDampingRatio");
+	public ref float AngularDampingRatio => ref Schema.GetRef<float>(this.Handle, "CPhysFixed", "m_flAngularDampingRatio");
 
 	// m_bEnableLinearConstraint
 	[SchemaMember("CPhysFixed", "m_bEnableLinearConstraint")]
-    public ref bool EnableLinearConstraint => ref Schema.GetRef<bool>(this.Handle, "CPhysFixed", "m_bEnableLinearConstraint");
+	public ref bool EnableLinearConstraint => ref Schema.GetRef<bool>(this.Handle, "CPhysFixed", "m_bEnableLinearConstraint");
 
 	// m_bEnableAngularConstraint
 	[SchemaMember("CPhysFixed", "m_bEnableAngularConstraint")]
-    public ref bool EnableAngularConstraint => ref Schema.GetRef<bool>(this.Handle, "CPhysFixed", "m_bEnableAngularConstraint");
+	public ref bool EnableAngularConstraint => ref Schema.GetRef<bool>(this.Handle, "CPhysFixed", "m_bEnableAngularConstraint");
 
 }

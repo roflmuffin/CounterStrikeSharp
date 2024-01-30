@@ -20,34 +20,34 @@ public partial class CTonemapController2 : CBaseEntity
 
 	// m_flAutoExposureMin
 	[SchemaMember("CTonemapController2", "m_flAutoExposureMin")]
-    public ref float AutoExposureMin => ref Schema.GetRef<float>(this.Handle, "CTonemapController2", "m_flAutoExposureMin");
+	public ref float AutoExposureMin => ref Schema.GetRef<float>(this.Handle, "CTonemapController2", "m_flAutoExposureMin");
 
 	// m_flAutoExposureMax
 	[SchemaMember("CTonemapController2", "m_flAutoExposureMax")]
-    public ref float AutoExposureMax => ref Schema.GetRef<float>(this.Handle, "CTonemapController2", "m_flAutoExposureMax");
+	public ref float AutoExposureMax => ref Schema.GetRef<float>(this.Handle, "CTonemapController2", "m_flAutoExposureMax");
 
 	// m_flTonemapPercentTarget
 	[SchemaMember("CTonemapController2", "m_flTonemapPercentTarget")]
-    public ref float TonemapPercentTarget => ref Schema.GetRef<float>(this.Handle, "CTonemapController2", "m_flTonemapPercentTarget");
+	public ref float TonemapPercentTarget => ref Schema.GetRef<float>(this.Handle, "CTonemapController2", "m_flTonemapPercentTarget");
 
 	// m_flTonemapPercentBrightPixels
 	[SchemaMember("CTonemapController2", "m_flTonemapPercentBrightPixels")]
-    public ref float TonemapPercentBrightPixels => ref Schema.GetRef<float>(this.Handle, "CTonemapController2", "m_flTonemapPercentBrightPixels");
+	public ref float TonemapPercentBrightPixels => ref Schema.GetRef<float>(this.Handle, "CTonemapController2", "m_flTonemapPercentBrightPixels");
 
 	// m_flTonemapMinAvgLum
 	[SchemaMember("CTonemapController2", "m_flTonemapMinAvgLum")]
-    public ref float TonemapMinAvgLum => ref Schema.GetRef<float>(this.Handle, "CTonemapController2", "m_flTonemapMinAvgLum");
+	public ref float TonemapMinAvgLum => ref Schema.GetRef<float>(this.Handle, "CTonemapController2", "m_flTonemapMinAvgLum");
 
 	// m_flExposureAdaptationSpeedUp
 	[SchemaMember("CTonemapController2", "m_flExposureAdaptationSpeedUp")]
-    public ref float ExposureAdaptationSpeedUp => ref Schema.GetRef<float>(this.Handle, "CTonemapController2", "m_flExposureAdaptationSpeedUp");
+	public ref float ExposureAdaptationSpeedUp => ref Schema.GetRef<float>(this.Handle, "CTonemapController2", "m_flExposureAdaptationSpeedUp");
 
 	// m_flExposureAdaptationSpeedDown
 	[SchemaMember("CTonemapController2", "m_flExposureAdaptationSpeedDown")]
-    public ref float ExposureAdaptationSpeedDown => ref Schema.GetRef<float>(this.Handle, "CTonemapController2", "m_flExposureAdaptationSpeedDown");
+	public ref float ExposureAdaptationSpeedDown => ref Schema.GetRef<float>(this.Handle, "CTonemapController2", "m_flExposureAdaptationSpeedDown");
 
 	// m_flTonemapEVSmoothingRange
 	[SchemaMember("CTonemapController2", "m_flTonemapEVSmoothingRange")]
-    public ref float TonemapEVSmoothingRange => ref Schema.GetRef<float>(this.Handle, "CTonemapController2", "m_flTonemapEVSmoothingRange");
+	public ref float TonemapEVSmoothingRange => ref Schema.GetRef<float>(this.Handle, "CTonemapController2", "m_flTonemapEVSmoothingRange");
 
 }

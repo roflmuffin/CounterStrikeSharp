@@ -20,10 +20,10 @@ public partial class CLogicNavigation : CLogicalEntity
 
 	// m_isOn
 	[SchemaMember("CLogicNavigation", "m_isOn")]
-    public ref bool IsOn => ref Schema.GetRef<bool>(this.Handle, "CLogicNavigation", "m_isOn");
+	public ref bool IsOn => ref Schema.GetRef<bool>(this.Handle, "CLogicNavigation", "m_isOn");
 
 	// m_navProperty
 	[SchemaMember("CLogicNavigation", "m_navProperty")]
-    public ref navproperties_t NavProperty => ref Schema.GetRef<navproperties_t>(this.Handle, "CLogicNavigation", "m_navProperty");
+	public ref navproperties_t NavProperty => ref Schema.GetRef<navproperties_t>(this.Handle, "CLogicNavigation", "m_navProperty");
 
 }

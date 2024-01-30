@@ -20,6 +20,6 @@ public partial class CFuncVPhysicsClip : CBaseModelEntity
 
 	// m_bDisabled
 	[SchemaMember("CFuncVPhysicsClip", "m_bDisabled")]
-    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CFuncVPhysicsClip", "m_bDisabled");
+	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CFuncVPhysicsClip", "m_bDisabled");
 
 }

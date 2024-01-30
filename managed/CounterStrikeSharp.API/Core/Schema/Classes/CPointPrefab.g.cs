@@ -20,38 +20,38 @@ public partial class CPointPrefab : CServerOnlyPointEntity
 
 	// m_targetMapName
 	[SchemaMember("CPointPrefab", "m_targetMapName")]
-    public string TargetMapName
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CPointPrefab", "m_targetMapName"); }
-        set { Schema.SetString(this.Handle, "CPointPrefab", "m_targetMapName", value); }
-    }
+	public string TargetMapName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CPointPrefab", "m_targetMapName"); }
+	set { Schema.SetString(this.Handle, "CPointPrefab", "m_targetMapName", value); }
+	}
 
 	// m_forceWorldGroupID
 	[SchemaMember("CPointPrefab", "m_forceWorldGroupID")]
-    public string ForceWorldGroupID
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CPointPrefab", "m_forceWorldGroupID"); }
-        set { Schema.SetString(this.Handle, "CPointPrefab", "m_forceWorldGroupID", value); }
-    }
+	public string ForceWorldGroupID
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CPointPrefab", "m_forceWorldGroupID"); }
+	set { Schema.SetString(this.Handle, "CPointPrefab", "m_forceWorldGroupID", value); }
+	}
 
 	// m_associatedRelayTargetName
 	[SchemaMember("CPointPrefab", "m_associatedRelayTargetName")]
-    public string AssociatedRelayTargetName
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CPointPrefab", "m_associatedRelayTargetName"); }
-        set { Schema.SetString(this.Handle, "CPointPrefab", "m_associatedRelayTargetName", value); }
-    }
+	public string AssociatedRelayTargetName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CPointPrefab", "m_associatedRelayTargetName"); }
+	set { Schema.SetString(this.Handle, "CPointPrefab", "m_associatedRelayTargetName", value); }
+	}
 
 	// m_fixupNames
 	[SchemaMember("CPointPrefab", "m_fixupNames")]
-    public ref bool FixupNames => ref Schema.GetRef<bool>(this.Handle, "CPointPrefab", "m_fixupNames");
+	public ref bool FixupNames => ref Schema.GetRef<bool>(this.Handle, "CPointPrefab", "m_fixupNames");
 
 	// m_bLoadDynamic
 	[SchemaMember("CPointPrefab", "m_bLoadDynamic")]
-    public ref bool LoadDynamic => ref Schema.GetRef<bool>(this.Handle, "CPointPrefab", "m_bLoadDynamic");
+	public ref bool LoadDynamic => ref Schema.GetRef<bool>(this.Handle, "CPointPrefab", "m_bLoadDynamic");
 
 	// m_associatedRelayEntity
 	[SchemaMember("CPointPrefab", "m_associatedRelayEntity")]
-    public CHandle<CPointPrefab> AssociatedRelayEntity => Schema.GetDeclaredClass<CHandle<CPointPrefab>>(this.Handle, "CPointPrefab", "m_associatedRelayEntity");
+	public CHandle<CPointPrefab> AssociatedRelayEntity => Schema.GetDeclaredClass<CHandle<CPointPrefab>>(this.Handle, "CPointPrefab", "m_associatedRelayEntity");
 
 }

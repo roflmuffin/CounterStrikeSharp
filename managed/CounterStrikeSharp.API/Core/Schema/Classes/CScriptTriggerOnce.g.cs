@@ -20,6 +20,6 @@ public partial class CScriptTriggerOnce : CTriggerOnce
 
 	// m_vExtent
 	[SchemaMember("CScriptTriggerOnce", "m_vExtent")]
-    public Vector Extent => Schema.GetDeclaredClass<Vector>(this.Handle, "CScriptTriggerOnce", "m_vExtent");
+	public Vector Extent => Schema.GetDeclaredClass<Vector>(this.Handle, "CScriptTriggerOnce", "m_vExtent");
 
 }

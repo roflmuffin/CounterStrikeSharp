@@ -20,18 +20,18 @@ public partial class CFootstepControl : CBaseTrigger
 
 	// m_source
 	[SchemaMember("CFootstepControl", "m_source")]
-    public string Source
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CFootstepControl", "m_source"); }
-        set { Schema.SetString(this.Handle, "CFootstepControl", "m_source", value); }
-    }
+	public string Source
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CFootstepControl", "m_source"); }
+	set { Schema.SetString(this.Handle, "CFootstepControl", "m_source", value); }
+	}
 
 	// m_destination
 	[SchemaMember("CFootstepControl", "m_destination")]
-    public string Destination
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CFootstepControl", "m_destination"); }
-        set { Schema.SetString(this.Handle, "CFootstepControl", "m_destination", value); }
-    }
+	public string Destination
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CFootstepControl", "m_destination"); }
+	set { Schema.SetString(this.Handle, "CFootstepControl", "m_destination", value); }
+	}
 
 }

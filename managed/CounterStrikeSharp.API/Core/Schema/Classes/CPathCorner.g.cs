@@ -20,14 +20,14 @@ public partial class CPathCorner : CPointEntity
 
 	// m_flWait
 	[SchemaMember("CPathCorner", "m_flWait")]
-    public ref float Wait => ref Schema.GetRef<float>(this.Handle, "CPathCorner", "m_flWait");
+	public ref float Wait => ref Schema.GetRef<float>(this.Handle, "CPathCorner", "m_flWait");
 
 	// m_flRadius
 	[SchemaMember("CPathCorner", "m_flRadius")]
-    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CPathCorner", "m_flRadius");
+	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CPathCorner", "m_flRadius");
 
 	// m_OnPass
 	[SchemaMember("CPathCorner", "m_OnPass")]
-    public CEntityIOOutput OnPass => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPathCorner", "m_OnPass");
+	public CEntityIOOutput OnPass => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPathCorner", "m_OnPass");
 
 }

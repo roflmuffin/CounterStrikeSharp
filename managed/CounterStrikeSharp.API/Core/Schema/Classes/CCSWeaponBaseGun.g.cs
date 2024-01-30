@@ -20,38 +20,38 @@ public partial class CCSWeaponBaseGun : CCSWeaponBase
 
 	// m_zoomLevel
 	[SchemaMember("CCSWeaponBaseGun", "m_zoomLevel")]
-    public ref Int32 ZoomLevel => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseGun", "m_zoomLevel");
+	public ref Int32 ZoomLevel => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseGun", "m_zoomLevel");
 
 	// m_iBurstShotsRemaining
 	[SchemaMember("CCSWeaponBaseGun", "m_iBurstShotsRemaining")]
-    public ref Int32 BurstShotsRemaining => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseGun", "m_iBurstShotsRemaining");
+	public ref Int32 BurstShotsRemaining => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseGun", "m_iBurstShotsRemaining");
 
 	// m_silencedModelIndex
 	[SchemaMember("CCSWeaponBaseGun", "m_silencedModelIndex")]
-    public ref Int32 SilencedModelIndex => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseGun", "m_silencedModelIndex");
+	public ref Int32 SilencedModelIndex => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseGun", "m_silencedModelIndex");
 
 	// m_inPrecache
 	[SchemaMember("CCSWeaponBaseGun", "m_inPrecache")]
-    public ref bool InPrecache => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBaseGun", "m_inPrecache");
+	public ref bool InPrecache => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBaseGun", "m_inPrecache");
 
 	// m_bNeedsBoltAction
 	[SchemaMember("CCSWeaponBaseGun", "m_bNeedsBoltAction")]
-    public ref bool NeedsBoltAction => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBaseGun", "m_bNeedsBoltAction");
+	public ref bool NeedsBoltAction => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBaseGun", "m_bNeedsBoltAction");
 
 	// m_bSkillReloadAvailable
 	[SchemaMember("CCSWeaponBaseGun", "m_bSkillReloadAvailable")]
-    public ref bool SkillReloadAvailable => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBaseGun", "m_bSkillReloadAvailable");
+	public ref bool SkillReloadAvailable => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBaseGun", "m_bSkillReloadAvailable");
 
 	// m_bSkillReloadLiftedReloadKey
 	[SchemaMember("CCSWeaponBaseGun", "m_bSkillReloadLiftedReloadKey")]
-    public ref bool SkillReloadLiftedReloadKey => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBaseGun", "m_bSkillReloadLiftedReloadKey");
+	public ref bool SkillReloadLiftedReloadKey => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBaseGun", "m_bSkillReloadLiftedReloadKey");
 
 	// m_bSkillBoltInterruptAvailable
 	[SchemaMember("CCSWeaponBaseGun", "m_bSkillBoltInterruptAvailable")]
-    public ref bool SkillBoltInterruptAvailable => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBaseGun", "m_bSkillBoltInterruptAvailable");
+	public ref bool SkillBoltInterruptAvailable => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBaseGun", "m_bSkillBoltInterruptAvailable");
 
 	// m_bSkillBoltLiftedFireKey
 	[SchemaMember("CCSWeaponBaseGun", "m_bSkillBoltLiftedFireKey")]
-    public ref bool SkillBoltLiftedFireKey => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBaseGun", "m_bSkillBoltLiftedFireKey");
+	public ref bool SkillBoltLiftedFireKey => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBaseGun", "m_bSkillBoltLiftedFireKey");
 
 }

@@ -20,42 +20,42 @@ public partial class CPhysicsSpring : CBaseEntity
 
 	// m_flFrequency
 	[SchemaMember("CPhysicsSpring", "m_flFrequency")]
-    public ref float Frequency => ref Schema.GetRef<float>(this.Handle, "CPhysicsSpring", "m_flFrequency");
+	public ref float Frequency => ref Schema.GetRef<float>(this.Handle, "CPhysicsSpring", "m_flFrequency");
 
 	// m_flDampingRatio
 	[SchemaMember("CPhysicsSpring", "m_flDampingRatio")]
-    public ref float DampingRatio => ref Schema.GetRef<float>(this.Handle, "CPhysicsSpring", "m_flDampingRatio");
+	public ref float DampingRatio => ref Schema.GetRef<float>(this.Handle, "CPhysicsSpring", "m_flDampingRatio");
 
 	// m_flRestLength
 	[SchemaMember("CPhysicsSpring", "m_flRestLength")]
-    public ref float RestLength => ref Schema.GetRef<float>(this.Handle, "CPhysicsSpring", "m_flRestLength");
+	public ref float RestLength => ref Schema.GetRef<float>(this.Handle, "CPhysicsSpring", "m_flRestLength");
 
 	// m_nameAttachStart
 	[SchemaMember("CPhysicsSpring", "m_nameAttachStart")]
-    public string NameAttachStart
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CPhysicsSpring", "m_nameAttachStart"); }
-        set { Schema.SetString(this.Handle, "CPhysicsSpring", "m_nameAttachStart", value); }
-    }
+	public string NameAttachStart
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CPhysicsSpring", "m_nameAttachStart"); }
+	set { Schema.SetString(this.Handle, "CPhysicsSpring", "m_nameAttachStart", value); }
+	}
 
 	// m_nameAttachEnd
 	[SchemaMember("CPhysicsSpring", "m_nameAttachEnd")]
-    public string NameAttachEnd
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CPhysicsSpring", "m_nameAttachEnd"); }
-        set { Schema.SetString(this.Handle, "CPhysicsSpring", "m_nameAttachEnd", value); }
-    }
+	public string NameAttachEnd
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CPhysicsSpring", "m_nameAttachEnd"); }
+	set { Schema.SetString(this.Handle, "CPhysicsSpring", "m_nameAttachEnd", value); }
+	}
 
 	// m_start
 	[SchemaMember("CPhysicsSpring", "m_start")]
-    public Vector Start => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysicsSpring", "m_start");
+	public Vector Start => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysicsSpring", "m_start");
 
 	// m_end
 	[SchemaMember("CPhysicsSpring", "m_end")]
-    public Vector End => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysicsSpring", "m_end");
+	public Vector End => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysicsSpring", "m_end");
 
 	// m_teleportTick
 	[SchemaMember("CPhysicsSpring", "m_teleportTick")]
-    public ref UInt32 TeleportTick => ref Schema.GetRef<UInt32>(this.Handle, "CPhysicsSpring", "m_teleportTick");
+	public ref UInt32 TeleportTick => ref Schema.GetRef<UInt32>(this.Handle, "CPhysicsSpring", "m_teleportTick");
 
 }

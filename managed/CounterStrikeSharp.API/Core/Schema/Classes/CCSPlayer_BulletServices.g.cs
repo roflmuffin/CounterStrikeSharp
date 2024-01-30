@@ -20,6 +20,6 @@ public partial class CCSPlayer_BulletServices : CPlayerPawnComponent
 
 	// m_totalHitsOnServer
 	[SchemaMember("CCSPlayer_BulletServices", "m_totalHitsOnServer")]
-    public ref Int32 TotalHitsOnServer => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayer_BulletServices", "m_totalHitsOnServer");
+	public ref Int32 TotalHitsOnServer => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayer_BulletServices", "m_totalHitsOnServer");
 
 }

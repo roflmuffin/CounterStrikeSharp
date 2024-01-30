@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum ShardSolid_t : byte
 {
-    SHARD_SOLID = 0x0,
-    SHARD_DEBRIS = 0x1,
+	SHARD_SOLID = 0x0,
+	SHARD_DEBRIS = 0x1,
 }

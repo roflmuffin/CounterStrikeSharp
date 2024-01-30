@@ -20,6 +20,6 @@ public partial class CRotDoor : CBaseDoor
 
 	// m_bSolidBsp
 	[SchemaMember("CRotDoor", "m_bSolidBsp")]
-    public ref bool SolidBsp => ref Schema.GetRef<bool>(this.Handle, "CRotDoor", "m_bSolidBsp");
+	public ref bool SolidBsp => ref Schema.GetRef<bool>(this.Handle, "CRotDoor", "m_bSolidBsp");
 
 }

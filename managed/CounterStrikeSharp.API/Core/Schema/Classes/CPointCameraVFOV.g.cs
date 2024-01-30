@@ -20,6 +20,6 @@ public partial class CPointCameraVFOV : CPointCamera
 
 	// m_flVerticalFOV
 	[SchemaMember("CPointCameraVFOV", "m_flVerticalFOV")]
-    public ref float VerticalFOV => ref Schema.GetRef<float>(this.Handle, "CPointCameraVFOV", "m_flVerticalFOV");
+	public ref float VerticalFOV => ref Schema.GetRef<float>(this.Handle, "CPointCameraVFOV", "m_flVerticalFOV");
 
 }

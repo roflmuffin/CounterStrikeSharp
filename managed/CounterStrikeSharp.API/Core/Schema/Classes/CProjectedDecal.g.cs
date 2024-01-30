@@ -20,10 +20,10 @@ public partial class CProjectedDecal : CPointEntity
 
 	// m_nTexture
 	[SchemaMember("CProjectedDecal", "m_nTexture")]
-    public ref Int32 Texture => ref Schema.GetRef<Int32>(this.Handle, "CProjectedDecal", "m_nTexture");
+	public ref Int32 Texture => ref Schema.GetRef<Int32>(this.Handle, "CProjectedDecal", "m_nTexture");
 
 	// m_flDistance
 	[SchemaMember("CProjectedDecal", "m_flDistance")]
-    public ref float Distance => ref Schema.GetRef<float>(this.Handle, "CProjectedDecal", "m_flDistance");
+	public ref float Distance => ref Schema.GetRef<float>(this.Handle, "CProjectedDecal", "m_flDistance");
 
 }

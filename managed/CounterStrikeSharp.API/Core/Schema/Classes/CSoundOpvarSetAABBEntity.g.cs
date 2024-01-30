@@ -20,38 +20,38 @@ public partial class CSoundOpvarSetAABBEntity : CSoundOpvarSetPointEntity
 
 	// m_vDistanceInnerMins
 	[SchemaMember("CSoundOpvarSetAABBEntity", "m_vDistanceInnerMins")]
-    public Vector DistanceInnerMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceInnerMins");
+	public Vector DistanceInnerMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceInnerMins");
 
 	// m_vDistanceInnerMaxs
 	[SchemaMember("CSoundOpvarSetAABBEntity", "m_vDistanceInnerMaxs")]
-    public Vector DistanceInnerMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceInnerMaxs");
+	public Vector DistanceInnerMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceInnerMaxs");
 
 	// m_vDistanceOuterMins
 	[SchemaMember("CSoundOpvarSetAABBEntity", "m_vDistanceOuterMins")]
-    public Vector DistanceOuterMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceOuterMins");
+	public Vector DistanceOuterMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceOuterMins");
 
 	// m_vDistanceOuterMaxs
 	[SchemaMember("CSoundOpvarSetAABBEntity", "m_vDistanceOuterMaxs")]
-    public Vector DistanceOuterMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceOuterMaxs");
+	public Vector DistanceOuterMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceOuterMaxs");
 
 	// m_nAABBDirection
 	[SchemaMember("CSoundOpvarSetAABBEntity", "m_nAABBDirection")]
-    public ref Int32 AABBDirection => ref Schema.GetRef<Int32>(this.Handle, "CSoundOpvarSetAABBEntity", "m_nAABBDirection");
+	public ref Int32 AABBDirection => ref Schema.GetRef<Int32>(this.Handle, "CSoundOpvarSetAABBEntity", "m_nAABBDirection");
 
 	// m_vInnerMins
 	[SchemaMember("CSoundOpvarSetAABBEntity", "m_vInnerMins")]
-    public Vector InnerMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vInnerMins");
+	public Vector InnerMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vInnerMins");
 
 	// m_vInnerMaxs
 	[SchemaMember("CSoundOpvarSetAABBEntity", "m_vInnerMaxs")]
-    public Vector InnerMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vInnerMaxs");
+	public Vector InnerMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vInnerMaxs");
 
 	// m_vOuterMins
 	[SchemaMember("CSoundOpvarSetAABBEntity", "m_vOuterMins")]
-    public Vector OuterMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vOuterMins");
+	public Vector OuterMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vOuterMins");
 
 	// m_vOuterMaxs
 	[SchemaMember("CSoundOpvarSetAABBEntity", "m_vOuterMaxs")]
-    public Vector OuterMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vOuterMaxs");
+	public Vector OuterMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vOuterMaxs");
 
 }

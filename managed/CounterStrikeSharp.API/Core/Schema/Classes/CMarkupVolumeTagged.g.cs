@@ -20,22 +20,22 @@ public partial class CMarkupVolumeTagged : CMarkupVolume
 
 	// m_bIsGroup
 	[SchemaMember("CMarkupVolumeTagged", "m_bIsGroup")]
-    public ref bool IsGroup => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeTagged", "m_bIsGroup");
+	public ref bool IsGroup => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeTagged", "m_bIsGroup");
 
 	// m_bGroupByPrefab
 	[SchemaMember("CMarkupVolumeTagged", "m_bGroupByPrefab")]
-    public ref bool GroupByPrefab => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeTagged", "m_bGroupByPrefab");
+	public ref bool GroupByPrefab => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeTagged", "m_bGroupByPrefab");
 
 	// m_bGroupByVolume
 	[SchemaMember("CMarkupVolumeTagged", "m_bGroupByVolume")]
-    public ref bool GroupByVolume => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeTagged", "m_bGroupByVolume");
+	public ref bool GroupByVolume => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeTagged", "m_bGroupByVolume");
 
 	// m_bGroupOtherGroups
 	[SchemaMember("CMarkupVolumeTagged", "m_bGroupOtherGroups")]
-    public ref bool GroupOtherGroups => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeTagged", "m_bGroupOtherGroups");
+	public ref bool GroupOtherGroups => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeTagged", "m_bGroupOtherGroups");
 
 	// m_bIsInGroup
 	[SchemaMember("CMarkupVolumeTagged", "m_bIsInGroup")]
-    public ref bool IsInGroup => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeTagged", "m_bIsInGroup");
+	public ref bool IsInGroup => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeTagged", "m_bIsInGroup");
 
 }

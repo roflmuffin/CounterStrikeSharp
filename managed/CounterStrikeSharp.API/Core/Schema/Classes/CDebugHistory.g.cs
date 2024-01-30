@@ -20,6 +20,6 @@ public partial class CDebugHistory : CBaseEntity
 
 	// m_nNpcEvents
 	[SchemaMember("CDebugHistory", "m_nNpcEvents")]
-    public ref Int32 NpcEvents => ref Schema.GetRef<Int32>(this.Handle, "CDebugHistory", "m_nNpcEvents");
+	public ref Int32 NpcEvents => ref Schema.GetRef<Int32>(this.Handle, "CDebugHistory", "m_nNpcEvents");
 
 }

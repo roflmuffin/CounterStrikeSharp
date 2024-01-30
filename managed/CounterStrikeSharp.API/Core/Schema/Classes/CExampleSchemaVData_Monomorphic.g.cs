@@ -20,10 +20,10 @@ public partial class CExampleSchemaVData_Monomorphic : NativeObject
 
 	// m_nExample1
 	[SchemaMember("CExampleSchemaVData_Monomorphic", "m_nExample1")]
-    public ref Int32 Example1 => ref Schema.GetRef<Int32>(this.Handle, "CExampleSchemaVData_Monomorphic", "m_nExample1");
+	public ref Int32 Example1 => ref Schema.GetRef<Int32>(this.Handle, "CExampleSchemaVData_Monomorphic", "m_nExample1");
 
 	// m_nExample2
 	[SchemaMember("CExampleSchemaVData_Monomorphic", "m_nExample2")]
-    public ref Int32 Example2 => ref Schema.GetRef<Int32>(this.Handle, "CExampleSchemaVData_Monomorphic", "m_nExample2");
+	public ref Int32 Example2 => ref Schema.GetRef<Int32>(this.Handle, "CExampleSchemaVData_Monomorphic", "m_nExample2");
 
 }

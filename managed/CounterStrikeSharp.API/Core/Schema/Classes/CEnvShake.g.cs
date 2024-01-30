@@ -20,46 +20,46 @@ public partial class CEnvShake : CPointEntity
 
 	// m_limitToEntity
 	[SchemaMember("CEnvShake", "m_limitToEntity")]
-    public string LimitToEntity
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CEnvShake", "m_limitToEntity"); }
-        set { Schema.SetString(this.Handle, "CEnvShake", "m_limitToEntity", value); }
-    }
+	public string LimitToEntity
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CEnvShake", "m_limitToEntity"); }
+	set { Schema.SetString(this.Handle, "CEnvShake", "m_limitToEntity", value); }
+	}
 
 	// m_Amplitude
 	[SchemaMember("CEnvShake", "m_Amplitude")]
-    public ref float Amplitude => ref Schema.GetRef<float>(this.Handle, "CEnvShake", "m_Amplitude");
+	public ref float Amplitude => ref Schema.GetRef<float>(this.Handle, "CEnvShake", "m_Amplitude");
 
 	// m_Frequency
 	[SchemaMember("CEnvShake", "m_Frequency")]
-    public ref float Frequency => ref Schema.GetRef<float>(this.Handle, "CEnvShake", "m_Frequency");
+	public ref float Frequency => ref Schema.GetRef<float>(this.Handle, "CEnvShake", "m_Frequency");
 
 	// m_Duration
 	[SchemaMember("CEnvShake", "m_Duration")]
-    public ref float Duration => ref Schema.GetRef<float>(this.Handle, "CEnvShake", "m_Duration");
+	public ref float Duration => ref Schema.GetRef<float>(this.Handle, "CEnvShake", "m_Duration");
 
 	// m_Radius
 	[SchemaMember("CEnvShake", "m_Radius")]
-    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CEnvShake", "m_Radius");
+	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CEnvShake", "m_Radius");
 
 	// m_stopTime
 	[SchemaMember("CEnvShake", "m_stopTime")]
-    public ref float StopTime => ref Schema.GetRef<float>(this.Handle, "CEnvShake", "m_stopTime");
+	public ref float StopTime => ref Schema.GetRef<float>(this.Handle, "CEnvShake", "m_stopTime");
 
 	// m_nextShake
 	[SchemaMember("CEnvShake", "m_nextShake")]
-    public ref float NextShake => ref Schema.GetRef<float>(this.Handle, "CEnvShake", "m_nextShake");
+	public ref float NextShake => ref Schema.GetRef<float>(this.Handle, "CEnvShake", "m_nextShake");
 
 	// m_currentAmp
 	[SchemaMember("CEnvShake", "m_currentAmp")]
-    public ref float CurrentAmp => ref Schema.GetRef<float>(this.Handle, "CEnvShake", "m_currentAmp");
+	public ref float CurrentAmp => ref Schema.GetRef<float>(this.Handle, "CEnvShake", "m_currentAmp");
 
 	// m_maxForce
 	[SchemaMember("CEnvShake", "m_maxForce")]
-    public Vector MaxForce => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvShake", "m_maxForce");
+	public Vector MaxForce => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvShake", "m_maxForce");
 
 	// m_shakeCallback
 	[SchemaMember("CEnvShake", "m_shakeCallback")]
-    public CPhysicsShake ShakeCallback => Schema.GetDeclaredClass<CPhysicsShake>(this.Handle, "CEnvShake", "m_shakeCallback");
+	public CPhysicsShake ShakeCallback => Schema.GetDeclaredClass<CPhysicsShake>(this.Handle, "CEnvShake", "m_shakeCallback");
 
 }

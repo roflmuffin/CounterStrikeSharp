@@ -20,6 +20,6 @@ public partial class FilterTeam : CBaseFilter
 
 	// m_iFilterTeam
 	[SchemaMember("FilterTeam", "m_iFilterTeam")]
-    public ref Int32 Value => ref Schema.GetRef<Int32>(this.Handle, "FilterTeam", "m_iFilterTeam");
+	public ref Int32 Value => ref Schema.GetRef<Int32>(this.Handle, "FilterTeam", "m_iFilterTeam");
 
 }

@@ -20,38 +20,38 @@ public partial class CCSGO_TeamPreviewCharacterPosition : CBaseEntity
 
 	// m_nVariant
 	[SchemaMember("CCSGO_TeamPreviewCharacterPosition", "m_nVariant")]
-    public ref Int32 Variant => ref Schema.GetRef<Int32>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_nVariant");
+	public ref Int32 Variant => ref Schema.GetRef<Int32>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_nVariant");
 
 	// m_nRandom
 	[SchemaMember("CCSGO_TeamPreviewCharacterPosition", "m_nRandom")]
-    public ref Int32 Random => ref Schema.GetRef<Int32>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_nRandom");
+	public ref Int32 Random => ref Schema.GetRef<Int32>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_nRandom");
 
 	// m_nOrdinal
 	[SchemaMember("CCSGO_TeamPreviewCharacterPosition", "m_nOrdinal")]
-    public ref Int32 Ordinal => ref Schema.GetRef<Int32>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_nOrdinal");
+	public ref Int32 Ordinal => ref Schema.GetRef<Int32>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_nOrdinal");
 
 	// m_sWeaponName
 	[SchemaMember("CCSGO_TeamPreviewCharacterPosition", "m_sWeaponName")]
-    public string WeaponName
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_sWeaponName"); }
-        set { Schema.SetString(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_sWeaponName", value); }
-    }
+	public string WeaponName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_sWeaponName"); }
+	set { Schema.SetString(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_sWeaponName", value); }
+	}
 
 	// m_xuid
 	[SchemaMember("CCSGO_TeamPreviewCharacterPosition", "m_xuid")]
-    public ref UInt64 Xuid => ref Schema.GetRef<UInt64>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_xuid");
+	public ref UInt64 Xuid => ref Schema.GetRef<UInt64>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_xuid");
 
 	// m_agentItem
 	[SchemaMember("CCSGO_TeamPreviewCharacterPosition", "m_agentItem")]
-    public CEconItemView AgentItem => Schema.GetDeclaredClass<CEconItemView>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_agentItem");
+	public CEconItemView AgentItem => Schema.GetDeclaredClass<CEconItemView>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_agentItem");
 
 	// m_glovesItem
 	[SchemaMember("CCSGO_TeamPreviewCharacterPosition", "m_glovesItem")]
-    public CEconItemView GlovesItem => Schema.GetDeclaredClass<CEconItemView>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_glovesItem");
+	public CEconItemView GlovesItem => Schema.GetDeclaredClass<CEconItemView>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_glovesItem");
 
 	// m_weaponItem
 	[SchemaMember("CCSGO_TeamPreviewCharacterPosition", "m_weaponItem")]
-    public CEconItemView WeaponItem => Schema.GetDeclaredClass<CEconItemView>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_weaponItem");
+	public CEconItemView WeaponItem => Schema.GetDeclaredClass<CEconItemView>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_weaponItem");
 
 }

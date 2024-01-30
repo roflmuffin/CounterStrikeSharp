@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum AnimVRHandMotionRange_t : uint
 {
-    MotionRange_WithController = 0x0,
-    MotionRange_WithoutController = 0x1,
+	MotionRange_WithController = 0x0,
+	MotionRange_WithoutController = 0x1,
 }

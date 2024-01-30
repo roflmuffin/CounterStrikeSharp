@@ -20,18 +20,18 @@ public partial class CIronSightController : NativeObject
 
 	// m_bIronSightAvailable
 	[SchemaMember("CIronSightController", "m_bIronSightAvailable")]
-    public ref bool IronSightAvailable => ref Schema.GetRef<bool>(this.Handle, "CIronSightController", "m_bIronSightAvailable");
+	public ref bool IronSightAvailable => ref Schema.GetRef<bool>(this.Handle, "CIronSightController", "m_bIronSightAvailable");
 
 	// m_flIronSightAmount
 	[SchemaMember("CIronSightController", "m_flIronSightAmount")]
-    public ref float IronSightAmount => ref Schema.GetRef<float>(this.Handle, "CIronSightController", "m_flIronSightAmount");
+	public ref float IronSightAmount => ref Schema.GetRef<float>(this.Handle, "CIronSightController", "m_flIronSightAmount");
 
 	// m_flIronSightAmountGained
 	[SchemaMember("CIronSightController", "m_flIronSightAmountGained")]
-    public ref float IronSightAmountGained => ref Schema.GetRef<float>(this.Handle, "CIronSightController", "m_flIronSightAmountGained");
+	public ref float IronSightAmountGained => ref Schema.GetRef<float>(this.Handle, "CIronSightController", "m_flIronSightAmountGained");
 
 	// m_flIronSightAmountBiased
 	[SchemaMember("CIronSightController", "m_flIronSightAmountBiased")]
-    public ref float IronSightAmountBiased => ref Schema.GetRef<float>(this.Handle, "CIronSightController", "m_flIronSightAmountBiased");
+	public ref float IronSightAmountBiased => ref Schema.GetRef<float>(this.Handle, "CIronSightController", "m_flIronSightAmountBiased");
 
 }

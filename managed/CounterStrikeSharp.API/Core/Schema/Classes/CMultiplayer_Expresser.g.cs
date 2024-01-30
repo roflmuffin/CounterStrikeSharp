@@ -20,6 +20,6 @@ public partial class CMultiplayer_Expresser : CAI_ExpresserWithFollowup
 
 	// m_bAllowMultipleScenes
 	[SchemaMember("CMultiplayer_Expresser", "m_bAllowMultipleScenes")]
-    public ref bool AllowMultipleScenes => ref Schema.GetRef<bool>(this.Handle, "CMultiplayer_Expresser", "m_bAllowMultipleScenes");
+	public ref bool AllowMultipleScenes => ref Schema.GetRef<bool>(this.Handle, "CMultiplayer_Expresser", "m_bAllowMultipleScenes");
 
 }

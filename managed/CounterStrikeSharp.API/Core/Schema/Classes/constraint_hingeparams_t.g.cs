@@ -20,18 +20,18 @@ public partial class constraint_hingeparams_t : NativeObject
 
 	// worldPosition
 	[SchemaMember("constraint_hingeparams_t", "worldPosition")]
-    public Vector WorldPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "constraint_hingeparams_t", "worldPosition");
+	public Vector WorldPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "constraint_hingeparams_t", "worldPosition");
 
 	// worldAxisDirection
 	[SchemaMember("constraint_hingeparams_t", "worldAxisDirection")]
-    public Vector WorldAxisDirection => Schema.GetDeclaredClass<Vector>(this.Handle, "constraint_hingeparams_t", "worldAxisDirection");
+	public Vector WorldAxisDirection => Schema.GetDeclaredClass<Vector>(this.Handle, "constraint_hingeparams_t", "worldAxisDirection");
 
 	// hingeAxis
 	[SchemaMember("constraint_hingeparams_t", "hingeAxis")]
-    public constraint_axislimit_t HingeAxis => Schema.GetDeclaredClass<constraint_axislimit_t>(this.Handle, "constraint_hingeparams_t", "hingeAxis");
+	public constraint_axislimit_t HingeAxis => Schema.GetDeclaredClass<constraint_axislimit_t>(this.Handle, "constraint_hingeparams_t", "hingeAxis");
 
 	// constraint
 	[SchemaMember("constraint_hingeparams_t", "constraint")]
-    public constraint_breakableparams_t Constraint => Schema.GetDeclaredClass<constraint_breakableparams_t>(this.Handle, "constraint_hingeparams_t", "constraint");
+	public constraint_breakableparams_t Constraint => Schema.GetDeclaredClass<constraint_breakableparams_t>(this.Handle, "constraint_hingeparams_t", "constraint");
 
 }

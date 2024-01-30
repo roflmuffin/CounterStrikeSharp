@@ -20,22 +20,22 @@ public partial class CEnvSpark : CPointEntity
 
 	// m_flDelay
 	[SchemaMember("CEnvSpark", "m_flDelay")]
-    public ref float Delay => ref Schema.GetRef<float>(this.Handle, "CEnvSpark", "m_flDelay");
+	public ref float Delay => ref Schema.GetRef<float>(this.Handle, "CEnvSpark", "m_flDelay");
 
 	// m_nMagnitude
 	[SchemaMember("CEnvSpark", "m_nMagnitude")]
-    public ref Int32 Magnitude => ref Schema.GetRef<Int32>(this.Handle, "CEnvSpark", "m_nMagnitude");
+	public ref Int32 Magnitude => ref Schema.GetRef<Int32>(this.Handle, "CEnvSpark", "m_nMagnitude");
 
 	// m_nTrailLength
 	[SchemaMember("CEnvSpark", "m_nTrailLength")]
-    public ref Int32 TrailLength => ref Schema.GetRef<Int32>(this.Handle, "CEnvSpark", "m_nTrailLength");
+	public ref Int32 TrailLength => ref Schema.GetRef<Int32>(this.Handle, "CEnvSpark", "m_nTrailLength");
 
 	// m_nType
 	[SchemaMember("CEnvSpark", "m_nType")]
-    public ref Int32 Type => ref Schema.GetRef<Int32>(this.Handle, "CEnvSpark", "m_nType");
+	public ref Int32 Type => ref Schema.GetRef<Int32>(this.Handle, "CEnvSpark", "m_nType");
 
 	// m_OnSpark
 	[SchemaMember("CEnvSpark", "m_OnSpark")]
-    public CEntityIOOutput OnSpark => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvSpark", "m_OnSpark");
+	public CEntityIOOutput OnSpark => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvSpark", "m_OnSpark");
 
 }

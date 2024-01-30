@@ -20,6 +20,6 @@ public partial class CBuyZone : CBaseTrigger
 
 	// m_LegacyTeamNum
 	[SchemaMember("CBuyZone", "m_LegacyTeamNum")]
-    public ref Int32 LegacyTeamNum => ref Schema.GetRef<Int32>(this.Handle, "CBuyZone", "m_LegacyTeamNum");
+	public ref Int32 LegacyTeamNum => ref Schema.GetRef<Int32>(this.Handle, "CBuyZone", "m_LegacyTeamNum");
 
 }

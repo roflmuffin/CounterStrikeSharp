@@ -20,34 +20,34 @@ public partial class CNetworkedSequenceOperation : NativeObject
 
 	// m_hSequence
 	[SchemaMember("CNetworkedSequenceOperation", "m_hSequence")]
-    public ref Int32 Sequence => ref Schema.GetRef<Int32>(this.Handle, "CNetworkedSequenceOperation", "m_hSequence");
+	public ref Int32 Sequence => ref Schema.GetRef<Int32>(this.Handle, "CNetworkedSequenceOperation", "m_hSequence");
 
 	// m_flPrevCycle
 	[SchemaMember("CNetworkedSequenceOperation", "m_flPrevCycle")]
-    public ref float PrevCycle => ref Schema.GetRef<float>(this.Handle, "CNetworkedSequenceOperation", "m_flPrevCycle");
+	public ref float PrevCycle => ref Schema.GetRef<float>(this.Handle, "CNetworkedSequenceOperation", "m_flPrevCycle");
 
 	// m_flCycle
 	[SchemaMember("CNetworkedSequenceOperation", "m_flCycle")]
-    public ref float Cycle => ref Schema.GetRef<float>(this.Handle, "CNetworkedSequenceOperation", "m_flCycle");
+	public ref float Cycle => ref Schema.GetRef<float>(this.Handle, "CNetworkedSequenceOperation", "m_flCycle");
 
 	// m_flWeight
 	[SchemaMember("CNetworkedSequenceOperation", "m_flWeight")]
-    public float Weight => Schema.GetDeclaredClass<float>(this.Handle, "CNetworkedSequenceOperation", "m_flWeight");
+	public float Weight => Schema.GetDeclaredClass<float>(this.Handle, "CNetworkedSequenceOperation", "m_flWeight");
 
 	// m_bSequenceChangeNetworked
 	[SchemaMember("CNetworkedSequenceOperation", "m_bSequenceChangeNetworked")]
-    public ref bool SequenceChangeNetworked => ref Schema.GetRef<bool>(this.Handle, "CNetworkedSequenceOperation", "m_bSequenceChangeNetworked");
+	public ref bool SequenceChangeNetworked => ref Schema.GetRef<bool>(this.Handle, "CNetworkedSequenceOperation", "m_bSequenceChangeNetworked");
 
 	// m_bDiscontinuity
 	[SchemaMember("CNetworkedSequenceOperation", "m_bDiscontinuity")]
-    public ref bool Discontinuity => ref Schema.GetRef<bool>(this.Handle, "CNetworkedSequenceOperation", "m_bDiscontinuity");
+	public ref bool Discontinuity => ref Schema.GetRef<bool>(this.Handle, "CNetworkedSequenceOperation", "m_bDiscontinuity");
 
 	// m_flPrevCycleFromDiscontinuity
 	[SchemaMember("CNetworkedSequenceOperation", "m_flPrevCycleFromDiscontinuity")]
-    public ref float PrevCycleFromDiscontinuity => ref Schema.GetRef<float>(this.Handle, "CNetworkedSequenceOperation", "m_flPrevCycleFromDiscontinuity");
+	public ref float PrevCycleFromDiscontinuity => ref Schema.GetRef<float>(this.Handle, "CNetworkedSequenceOperation", "m_flPrevCycleFromDiscontinuity");
 
 	// m_flPrevCycleForAnimEventDetection
 	[SchemaMember("CNetworkedSequenceOperation", "m_flPrevCycleForAnimEventDetection")]
-    public ref float PrevCycleForAnimEventDetection => ref Schema.GetRef<float>(this.Handle, "CNetworkedSequenceOperation", "m_flPrevCycleForAnimEventDetection");
+	public ref float PrevCycleForAnimEventDetection => ref Schema.GetRef<float>(this.Handle, "CNetworkedSequenceOperation", "m_flPrevCycleForAnimEventDetection");
 
 }

@@ -20,46 +20,46 @@ public partial class CPhysWheelConstraint : CPhysConstraint
 
 	// m_flSuspensionFrequency
 	[SchemaMember("CPhysWheelConstraint", "m_flSuspensionFrequency")]
-    public ref float SuspensionFrequency => ref Schema.GetRef<float>(this.Handle, "CPhysWheelConstraint", "m_flSuspensionFrequency");
+	public ref float SuspensionFrequency => ref Schema.GetRef<float>(this.Handle, "CPhysWheelConstraint", "m_flSuspensionFrequency");
 
 	// m_flSuspensionDampingRatio
 	[SchemaMember("CPhysWheelConstraint", "m_flSuspensionDampingRatio")]
-    public ref float SuspensionDampingRatio => ref Schema.GetRef<float>(this.Handle, "CPhysWheelConstraint", "m_flSuspensionDampingRatio");
+	public ref float SuspensionDampingRatio => ref Schema.GetRef<float>(this.Handle, "CPhysWheelConstraint", "m_flSuspensionDampingRatio");
 
 	// m_flSuspensionHeightOffset
 	[SchemaMember("CPhysWheelConstraint", "m_flSuspensionHeightOffset")]
-    public ref float SuspensionHeightOffset => ref Schema.GetRef<float>(this.Handle, "CPhysWheelConstraint", "m_flSuspensionHeightOffset");
+	public ref float SuspensionHeightOffset => ref Schema.GetRef<float>(this.Handle, "CPhysWheelConstraint", "m_flSuspensionHeightOffset");
 
 	// m_bEnableSuspensionLimit
 	[SchemaMember("CPhysWheelConstraint", "m_bEnableSuspensionLimit")]
-    public ref bool EnableSuspensionLimit => ref Schema.GetRef<bool>(this.Handle, "CPhysWheelConstraint", "m_bEnableSuspensionLimit");
+	public ref bool EnableSuspensionLimit => ref Schema.GetRef<bool>(this.Handle, "CPhysWheelConstraint", "m_bEnableSuspensionLimit");
 
 	// m_flMinSuspensionOffset
 	[SchemaMember("CPhysWheelConstraint", "m_flMinSuspensionOffset")]
-    public ref float MinSuspensionOffset => ref Schema.GetRef<float>(this.Handle, "CPhysWheelConstraint", "m_flMinSuspensionOffset");
+	public ref float MinSuspensionOffset => ref Schema.GetRef<float>(this.Handle, "CPhysWheelConstraint", "m_flMinSuspensionOffset");
 
 	// m_flMaxSuspensionOffset
 	[SchemaMember("CPhysWheelConstraint", "m_flMaxSuspensionOffset")]
-    public ref float MaxSuspensionOffset => ref Schema.GetRef<float>(this.Handle, "CPhysWheelConstraint", "m_flMaxSuspensionOffset");
+	public ref float MaxSuspensionOffset => ref Schema.GetRef<float>(this.Handle, "CPhysWheelConstraint", "m_flMaxSuspensionOffset");
 
 	// m_bEnableSteeringLimit
 	[SchemaMember("CPhysWheelConstraint", "m_bEnableSteeringLimit")]
-    public ref bool EnableSteeringLimit => ref Schema.GetRef<bool>(this.Handle, "CPhysWheelConstraint", "m_bEnableSteeringLimit");
+	public ref bool EnableSteeringLimit => ref Schema.GetRef<bool>(this.Handle, "CPhysWheelConstraint", "m_bEnableSteeringLimit");
 
 	// m_flMinSteeringAngle
 	[SchemaMember("CPhysWheelConstraint", "m_flMinSteeringAngle")]
-    public ref float MinSteeringAngle => ref Schema.GetRef<float>(this.Handle, "CPhysWheelConstraint", "m_flMinSteeringAngle");
+	public ref float MinSteeringAngle => ref Schema.GetRef<float>(this.Handle, "CPhysWheelConstraint", "m_flMinSteeringAngle");
 
 	// m_flMaxSteeringAngle
 	[SchemaMember("CPhysWheelConstraint", "m_flMaxSteeringAngle")]
-    public ref float MaxSteeringAngle => ref Schema.GetRef<float>(this.Handle, "CPhysWheelConstraint", "m_flMaxSteeringAngle");
+	public ref float MaxSteeringAngle => ref Schema.GetRef<float>(this.Handle, "CPhysWheelConstraint", "m_flMaxSteeringAngle");
 
 	// m_flSteeringAxisFriction
 	[SchemaMember("CPhysWheelConstraint", "m_flSteeringAxisFriction")]
-    public ref float SteeringAxisFriction => ref Schema.GetRef<float>(this.Handle, "CPhysWheelConstraint", "m_flSteeringAxisFriction");
+	public ref float SteeringAxisFriction => ref Schema.GetRef<float>(this.Handle, "CPhysWheelConstraint", "m_flSteeringAxisFriction");
 
 	// m_flSpinAxisFriction
 	[SchemaMember("CPhysWheelConstraint", "m_flSpinAxisFriction")]
-    public ref float SpinAxisFriction => ref Schema.GetRef<float>(this.Handle, "CPhysWheelConstraint", "m_flSpinAxisFriction");
+	public ref float SpinAxisFriction => ref Schema.GetRef<float>(this.Handle, "CPhysWheelConstraint", "m_flSpinAxisFriction");
 
 }

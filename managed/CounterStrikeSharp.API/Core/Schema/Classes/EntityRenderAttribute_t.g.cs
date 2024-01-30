@@ -20,10 +20,10 @@ public partial class EntityRenderAttribute_t : NativeObject
 
 	// m_ID
 	[SchemaMember("EntityRenderAttribute_t", "m_ID")]
-    public CUtlStringToken ID => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "EntityRenderAttribute_t", "m_ID");
+	public CUtlStringToken ID => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "EntityRenderAttribute_t", "m_ID");
 
 	// m_Values
 	[SchemaMember("EntityRenderAttribute_t", "m_Values")]
-    public Vector4D Values => Schema.GetDeclaredClass<Vector4D>(this.Handle, "EntityRenderAttribute_t", "m_Values");
+	public Vector4D Values => Schema.GetDeclaredClass<Vector4D>(this.Handle, "EntityRenderAttribute_t", "m_Values");
 
 }

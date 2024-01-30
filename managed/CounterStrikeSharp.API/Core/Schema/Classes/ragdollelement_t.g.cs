@@ -20,14 +20,14 @@ public partial class ragdollelement_t : NativeObject
 
 	// originParentSpace
 	[SchemaMember("ragdollelement_t", "originParentSpace")]
-    public Vector OriginParentSpace => Schema.GetDeclaredClass<Vector>(this.Handle, "ragdollelement_t", "originParentSpace");
+	public Vector OriginParentSpace => Schema.GetDeclaredClass<Vector>(this.Handle, "ragdollelement_t", "originParentSpace");
 
 	// parentIndex
 	[SchemaMember("ragdollelement_t", "parentIndex")]
-    public ref Int32 ParentIndex => ref Schema.GetRef<Int32>(this.Handle, "ragdollelement_t", "parentIndex");
+	public ref Int32 ParentIndex => ref Schema.GetRef<Int32>(this.Handle, "ragdollelement_t", "parentIndex");
 
 	// m_flRadius
 	[SchemaMember("ragdollelement_t", "m_flRadius")]
-    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "ragdollelement_t", "m_flRadius");
+	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "ragdollelement_t", "m_flRadius");
 
 }

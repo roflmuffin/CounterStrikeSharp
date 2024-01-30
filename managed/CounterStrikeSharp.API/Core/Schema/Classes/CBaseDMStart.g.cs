@@ -20,10 +20,10 @@ public partial class CBaseDMStart : CPointEntity
 
 	// m_Master
 	[SchemaMember("CBaseDMStart", "m_Master")]
-    public string Master
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CBaseDMStart", "m_Master"); }
-        set { Schema.SetString(this.Handle, "CBaseDMStart", "m_Master", value); }
-    }
+	public string Master
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CBaseDMStart", "m_Master"); }
+	set { Schema.SetString(this.Handle, "CBaseDMStart", "m_Master", value); }
+	}
 
 }

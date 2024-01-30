@@ -20,6 +20,6 @@ public partial class CSoundAreaEntitySphere : CSoundAreaEntityBase
 
 	// m_flRadius
 	[SchemaMember("CSoundAreaEntitySphere", "m_flRadius")]
-    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CSoundAreaEntitySphere", "m_flRadius");
+	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CSoundAreaEntitySphere", "m_flRadius");
 
 }

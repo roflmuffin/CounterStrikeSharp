@@ -20,10 +20,10 @@ public partial class CTriggerDetectBulletFire : CBaseTrigger
 
 	// m_bPlayerFireOnly
 	[SchemaMember("CTriggerDetectBulletFire", "m_bPlayerFireOnly")]
-    public ref bool PlayerFireOnly => ref Schema.GetRef<bool>(this.Handle, "CTriggerDetectBulletFire", "m_bPlayerFireOnly");
+	public ref bool PlayerFireOnly => ref Schema.GetRef<bool>(this.Handle, "CTriggerDetectBulletFire", "m_bPlayerFireOnly");
 
 	// m_OnDetectedBulletFire
 	[SchemaMember("CTriggerDetectBulletFire", "m_OnDetectedBulletFire")]
-    public CEntityIOOutput OnDetectedBulletFire => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerDetectBulletFire", "m_OnDetectedBulletFire");
+	public CEntityIOOutput OnDetectedBulletFire => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerDetectBulletFire", "m_OnDetectedBulletFire");
 
 }

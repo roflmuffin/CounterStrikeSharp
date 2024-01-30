@@ -20,58 +20,58 @@ public partial class CEnvInstructorVRHint : CPointEntity
 
 	// m_iszName
 	[SchemaMember("CEnvInstructorVRHint", "m_iszName")]
-    public string Name
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorVRHint", "m_iszName"); }
-        set { Schema.SetString(this.Handle, "CEnvInstructorVRHint", "m_iszName", value); }
-    }
+	public string Name
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorVRHint", "m_iszName"); }
+	set { Schema.SetString(this.Handle, "CEnvInstructorVRHint", "m_iszName", value); }
+	}
 
 	// m_iszHintTargetEntity
 	[SchemaMember("CEnvInstructorVRHint", "m_iszHintTargetEntity")]
-    public string HintTargetEntity
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorVRHint", "m_iszHintTargetEntity"); }
-        set { Schema.SetString(this.Handle, "CEnvInstructorVRHint", "m_iszHintTargetEntity", value); }
-    }
+	public string HintTargetEntity
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorVRHint", "m_iszHintTargetEntity"); }
+	set { Schema.SetString(this.Handle, "CEnvInstructorVRHint", "m_iszHintTargetEntity", value); }
+	}
 
 	// m_iTimeout
 	[SchemaMember("CEnvInstructorVRHint", "m_iTimeout")]
-    public ref Int32 Timeout => ref Schema.GetRef<Int32>(this.Handle, "CEnvInstructorVRHint", "m_iTimeout");
+	public ref Int32 Timeout => ref Schema.GetRef<Int32>(this.Handle, "CEnvInstructorVRHint", "m_iTimeout");
 
 	// m_iszCaption
 	[SchemaMember("CEnvInstructorVRHint", "m_iszCaption")]
-    public string Caption
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorVRHint", "m_iszCaption"); }
-        set { Schema.SetString(this.Handle, "CEnvInstructorVRHint", "m_iszCaption", value); }
-    }
+	public string Caption
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorVRHint", "m_iszCaption"); }
+	set { Schema.SetString(this.Handle, "CEnvInstructorVRHint", "m_iszCaption", value); }
+	}
 
 	// m_iszStartSound
 	[SchemaMember("CEnvInstructorVRHint", "m_iszStartSound")]
-    public string StartSound
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorVRHint", "m_iszStartSound"); }
-        set { Schema.SetString(this.Handle, "CEnvInstructorVRHint", "m_iszStartSound", value); }
-    }
+	public string StartSound
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorVRHint", "m_iszStartSound"); }
+	set { Schema.SetString(this.Handle, "CEnvInstructorVRHint", "m_iszStartSound", value); }
+	}
 
 	// m_iLayoutFileType
 	[SchemaMember("CEnvInstructorVRHint", "m_iLayoutFileType")]
-    public ref Int32 LayoutFileType => ref Schema.GetRef<Int32>(this.Handle, "CEnvInstructorVRHint", "m_iLayoutFileType");
+	public ref Int32 LayoutFileType => ref Schema.GetRef<Int32>(this.Handle, "CEnvInstructorVRHint", "m_iLayoutFileType");
 
 	// m_iszCustomLayoutFile
 	[SchemaMember("CEnvInstructorVRHint", "m_iszCustomLayoutFile")]
-    public string CustomLayoutFile
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorVRHint", "m_iszCustomLayoutFile"); }
-        set { Schema.SetString(this.Handle, "CEnvInstructorVRHint", "m_iszCustomLayoutFile", value); }
-    }
+	public string CustomLayoutFile
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CEnvInstructorVRHint", "m_iszCustomLayoutFile"); }
+	set { Schema.SetString(this.Handle, "CEnvInstructorVRHint", "m_iszCustomLayoutFile", value); }
+	}
 
 	// m_iAttachType
 	[SchemaMember("CEnvInstructorVRHint", "m_iAttachType")]
-    public ref Int32 AttachType => ref Schema.GetRef<Int32>(this.Handle, "CEnvInstructorVRHint", "m_iAttachType");
+	public ref Int32 AttachType => ref Schema.GetRef<Int32>(this.Handle, "CEnvInstructorVRHint", "m_iAttachType");
 
 	// m_flHeightOffset
 	[SchemaMember("CEnvInstructorVRHint", "m_flHeightOffset")]
-    public ref float HeightOffset => ref Schema.GetRef<float>(this.Handle, "CEnvInstructorVRHint", "m_flHeightOffset");
+	public ref float HeightOffset => ref Schema.GetRef<float>(this.Handle, "CEnvInstructorVRHint", "m_flHeightOffset");
 
 }

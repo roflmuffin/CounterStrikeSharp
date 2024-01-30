@@ -20,34 +20,34 @@ public partial class CItem : CBaseAnimGraph
 
 	// m_OnPlayerTouch
 	[SchemaMember("CItem", "m_OnPlayerTouch")]
-    public CEntityIOOutput OnPlayerTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItem", "m_OnPlayerTouch");
+	public CEntityIOOutput OnPlayerTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItem", "m_OnPlayerTouch");
 
 	// m_bActivateWhenAtRest
 	[SchemaMember("CItem", "m_bActivateWhenAtRest")]
-    public ref bool ActivateWhenAtRest => ref Schema.GetRef<bool>(this.Handle, "CItem", "m_bActivateWhenAtRest");
+	public ref bool ActivateWhenAtRest => ref Schema.GetRef<bool>(this.Handle, "CItem", "m_bActivateWhenAtRest");
 
 	// m_OnCacheInteraction
 	[SchemaMember("CItem", "m_OnCacheInteraction")]
-    public CEntityIOOutput OnCacheInteraction => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItem", "m_OnCacheInteraction");
+	public CEntityIOOutput OnCacheInteraction => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItem", "m_OnCacheInteraction");
 
 	// m_OnPlayerPickup
 	[SchemaMember("CItem", "m_OnPlayerPickup")]
-    public CEntityIOOutput OnPlayerPickup => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItem", "m_OnPlayerPickup");
+	public CEntityIOOutput OnPlayerPickup => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItem", "m_OnPlayerPickup");
 
 	// m_OnGlovePulled
 	[SchemaMember("CItem", "m_OnGlovePulled")]
-    public CEntityIOOutput OnGlovePulled => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItem", "m_OnGlovePulled");
+	public CEntityIOOutput OnGlovePulled => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItem", "m_OnGlovePulled");
 
 	// m_vOriginalSpawnOrigin
 	[SchemaMember("CItem", "m_vOriginalSpawnOrigin")]
-    public Vector OriginalSpawnOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CItem", "m_vOriginalSpawnOrigin");
+	public Vector OriginalSpawnOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CItem", "m_vOriginalSpawnOrigin");
 
 	// m_vOriginalSpawnAngles
 	[SchemaMember("CItem", "m_vOriginalSpawnAngles")]
-    public QAngle OriginalSpawnAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CItem", "m_vOriginalSpawnAngles");
+	public QAngle OriginalSpawnAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CItem", "m_vOriginalSpawnAngles");
 
 	// m_bPhysStartAsleep
 	[SchemaMember("CItem", "m_bPhysStartAsleep")]
-    public ref bool PhysStartAsleep => ref Schema.GetRef<bool>(this.Handle, "CItem", "m_bPhysStartAsleep");
+	public ref bool PhysStartAsleep => ref Schema.GetRef<bool>(this.Handle, "CItem", "m_bPhysStartAsleep");
 
 }

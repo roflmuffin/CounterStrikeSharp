@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum PulseMethodCallMode_t : uint
 {
-    SYNC_WAIT_FOR_COMPLETION = 0x0,
-    ASYNC_FIRE_AND_FORGET = 0x1,
+	SYNC_WAIT_FOR_COMPLETION = 0x0,
+	ASYNC_FIRE_AND_FORGET = 0x1,
 }

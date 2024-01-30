@@ -20,6 +20,6 @@ public partial class CFuncWall : CBaseModelEntity
 
 	// m_nState
 	[SchemaMember("CFuncWall", "m_nState")]
-    public ref Int32 State => ref Schema.GetRef<Int32>(this.Handle, "CFuncWall", "m_nState");
+	public ref Int32 State => ref Schema.GetRef<Int32>(this.Handle, "CFuncWall", "m_nState");
 
 }

@@ -20,18 +20,18 @@ public partial class CRagdollMagnet : CPointEntity
 
 	// m_bDisabled
 	[SchemaMember("CRagdollMagnet", "m_bDisabled")]
-    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CRagdollMagnet", "m_bDisabled");
+	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CRagdollMagnet", "m_bDisabled");
 
 	// m_radius
 	[SchemaMember("CRagdollMagnet", "m_radius")]
-    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CRagdollMagnet", "m_radius");
+	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CRagdollMagnet", "m_radius");
 
 	// m_force
 	[SchemaMember("CRagdollMagnet", "m_force")]
-    public ref float Force => ref Schema.GetRef<float>(this.Handle, "CRagdollMagnet", "m_force");
+	public ref float Force => ref Schema.GetRef<float>(this.Handle, "CRagdollMagnet", "m_force");
 
 	// m_axis
 	[SchemaMember("CRagdollMagnet", "m_axis")]
-    public Vector Axis => Schema.GetDeclaredClass<Vector>(this.Handle, "CRagdollMagnet", "m_axis");
+	public Vector Axis => Schema.GetDeclaredClass<Vector>(this.Handle, "CRagdollMagnet", "m_axis");
 
 }

@@ -14,24 +14,22 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CEntityInstance : NativeObject
+public partial class CEntityInstance : NativeEntity
 {
-    public CEntityInstance (IntPtr pointer) : base(pointer) {}
-
 	// m_iszPrivateVScripts
 	[SchemaMember("CEntityInstance", "m_iszPrivateVScripts")]
-    public string PrivateVScripts
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CEntityInstance", "m_iszPrivateVScripts"); }
-        set { Schema.SetString(this.Handle, "CEntityInstance", "m_iszPrivateVScripts", value); }
-    }
+	public string PrivateVScripts
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CEntityInstance", "m_iszPrivateVScripts"); }
+	set { Schema.SetString(this.Handle, "CEntityInstance", "m_iszPrivateVScripts", value); }
+	}
 
 	// m_pEntity
 	[SchemaMember("CEntityInstance", "m_pEntity")]
-    public CEntityIdentity? Entity => Schema.GetPointer<CEntityIdentity>(this.Handle, "CEntityInstance", "m_pEntity");
+	public CEntityIdentity? Entity => Schema.GetPointer<CEntityIdentity>(this.Handle, "CEntityInstance", "m_pEntity");
 
 	// m_CScriptComponent
 	[SchemaMember("CEntityInstance", "m_CScriptComponent")]
-    public CScriptComponent? CScriptComponent => Schema.GetPointer<CScriptComponent>(this.Handle, "CEntityInstance", "m_CScriptComponent");
+	public CScriptComponent? CScriptComponent => Schema.GetPointer<CScriptComponent>(this.Handle, "CEntityInstance", "m_CScriptComponent");
 
 }

@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum SosActionSortType_t : uint
 {
-    SOS_SORTTYPE_HIGHEST = 0x0,
-    SOS_SORTTYPE_LOWEST = 0x1,
+	SOS_SORTTYPE_HIGHEST = 0x0,
+	SOS_SORTTYPE_LOWEST = 0x1,
 }

@@ -20,34 +20,34 @@ public partial class CPointPush : CPointEntity
 
 	// m_bEnabled
 	[SchemaMember("CPointPush", "m_bEnabled")]
-    public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CPointPush", "m_bEnabled");
+	public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CPointPush", "m_bEnabled");
 
 	// m_flMagnitude
 	[SchemaMember("CPointPush", "m_flMagnitude")]
-    public ref float Magnitude => ref Schema.GetRef<float>(this.Handle, "CPointPush", "m_flMagnitude");
+	public ref float Magnitude => ref Schema.GetRef<float>(this.Handle, "CPointPush", "m_flMagnitude");
 
 	// m_flRadius
 	[SchemaMember("CPointPush", "m_flRadius")]
-    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CPointPush", "m_flRadius");
+	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CPointPush", "m_flRadius");
 
 	// m_flInnerRadius
 	[SchemaMember("CPointPush", "m_flInnerRadius")]
-    public ref float InnerRadius => ref Schema.GetRef<float>(this.Handle, "CPointPush", "m_flInnerRadius");
+	public ref float InnerRadius => ref Schema.GetRef<float>(this.Handle, "CPointPush", "m_flInnerRadius");
 
 	// m_flConeOfInfluence
 	[SchemaMember("CPointPush", "m_flConeOfInfluence")]
-    public ref float ConeOfInfluence => ref Schema.GetRef<float>(this.Handle, "CPointPush", "m_flConeOfInfluence");
+	public ref float ConeOfInfluence => ref Schema.GetRef<float>(this.Handle, "CPointPush", "m_flConeOfInfluence");
 
 	// m_iszFilterName
 	[SchemaMember("CPointPush", "m_iszFilterName")]
-    public string FilterName
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CPointPush", "m_iszFilterName"); }
-        set { Schema.SetString(this.Handle, "CPointPush", "m_iszFilterName", value); }
-    }
+	public string FilterName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CPointPush", "m_iszFilterName"); }
+	set { Schema.SetString(this.Handle, "CPointPush", "m_iszFilterName", value); }
+	}
 
 	// m_hFilter
 	[SchemaMember("CPointPush", "m_hFilter")]
-    public CHandle<CBaseFilter> Filter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CPointPush", "m_hFilter");
+	public CHandle<CBaseFilter> Filter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CPointPush", "m_hFilter");
 
 }

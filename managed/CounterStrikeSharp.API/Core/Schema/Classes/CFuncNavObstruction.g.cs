@@ -20,6 +20,6 @@ public partial class CFuncNavObstruction : CBaseModelEntity
 
 	// m_bDisabled
 	[SchemaMember("CFuncNavObstruction", "m_bDisabled")]
-    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CFuncNavObstruction", "m_bDisabled");
+	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CFuncNavObstruction", "m_bDisabled");
 
 }

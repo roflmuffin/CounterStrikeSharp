@@ -8,8 +8,8 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum MoveMountingAmount_t : uint
 {
-    MOVE_MOUNT_NONE = 0x0,
-    MOVE_MOUNT_LOW = 0x1,
-    MOVE_MOUNT_HIGH = 0x2,
-    MOVE_MOUNT_MAXCOUNT = 0x3,
+	MOVE_MOUNT_NONE = 0x0,
+	MOVE_MOUNT_LOW = 0x1,
+	MOVE_MOUNT_HIGH = 0x2,
+	MOVE_MOUNT_MAXCOUNT = 0x3,
 }

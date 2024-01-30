@@ -20,18 +20,18 @@ public partial class CLogicAchievement : CLogicalEntity
 
 	// m_bDisabled
 	[SchemaMember("CLogicAchievement", "m_bDisabled")]
-    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CLogicAchievement", "m_bDisabled");
+	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CLogicAchievement", "m_bDisabled");
 
 	// m_iszAchievementEventID
 	[SchemaMember("CLogicAchievement", "m_iszAchievementEventID")]
-    public string AchievementEventID
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CLogicAchievement", "m_iszAchievementEventID"); }
-        set { Schema.SetString(this.Handle, "CLogicAchievement", "m_iszAchievementEventID", value); }
-    }
+	public string AchievementEventID
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CLogicAchievement", "m_iszAchievementEventID"); }
+	set { Schema.SetString(this.Handle, "CLogicAchievement", "m_iszAchievementEventID", value); }
+	}
 
 	// m_OnFired
 	[SchemaMember("CLogicAchievement", "m_OnFired")]
-    public CEntityIOOutput OnFired => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicAchievement", "m_OnFired");
+	public CEntityIOOutput OnFired => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicAchievement", "m_OnFired");
 
 }

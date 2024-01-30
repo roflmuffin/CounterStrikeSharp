@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum Blend2DMode : uint
 {
-    Blend2DMode_General = 0x0,
-    Blend2DMode_Directional = 0x1,
+	Blend2DMode_General = 0x0,
+	Blend2DMode_Directional = 0x1,
 }

@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum AnimNodeNetworkMode : uint
 {
-    ServerAuthoritative = 0x0,
-    ClientSimulate = 0x1,
+	ServerAuthoritative = 0x0,
+	ClientSimulate = 0x1,
 }

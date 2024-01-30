@@ -8,7 +8,7 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum doorCheck_e : uint
 {
-    DOOR_CHECK_FORWARD = 0x0,
-    DOOR_CHECK_BACKWARD = 0x1,
-    DOOR_CHECK_FULL = 0x2,
+	DOOR_CHECK_FORWARD = 0x0,
+	DOOR_CHECK_BACKWARD = 0x1,
+	DOOR_CHECK_FULL = 0x2,
 }

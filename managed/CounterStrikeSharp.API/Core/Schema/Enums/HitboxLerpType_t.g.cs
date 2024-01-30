@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum HitboxLerpType_t : uint
 {
-    HITBOX_LERP_LIFETIME = 0x0,
-    HITBOX_LERP_CONSTANT = 0x1,
+	HITBOX_LERP_LIFETIME = 0x0,
+	HITBOX_LERP_CONSTANT = 0x1,
 }

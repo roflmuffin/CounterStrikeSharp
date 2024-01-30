@@ -20,10 +20,10 @@ public partial class CFuncPlatRot : CFuncPlat
 
 	// m_end
 	[SchemaMember("CFuncPlatRot", "m_end")]
-    public QAngle End => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncPlatRot", "m_end");
+	public QAngle End => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncPlatRot", "m_end");
 
 	// m_start
 	[SchemaMember("CFuncPlatRot", "m_start")]
-    public QAngle Start => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncPlatRot", "m_start");
+	public QAngle Start => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncPlatRot", "m_start");
 
 }

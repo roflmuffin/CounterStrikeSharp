@@ -20,10 +20,10 @@ public partial class CSoundStackSave : CLogicalEntity
 
 	// m_iszStackName
 	[SchemaMember("CSoundStackSave", "m_iszStackName")]
-    public string StackName
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CSoundStackSave", "m_iszStackName"); }
-        set { Schema.SetString(this.Handle, "CSoundStackSave", "m_iszStackName", value); }
-    }
+	public string StackName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CSoundStackSave", "m_iszStackName"); }
+	set { Schema.SetString(this.Handle, "CSoundStackSave", "m_iszStackName", value); }
+	}
 
 }

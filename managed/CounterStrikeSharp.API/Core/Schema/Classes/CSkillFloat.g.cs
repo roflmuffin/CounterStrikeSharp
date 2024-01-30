@@ -20,6 +20,6 @@ public partial class CSkillFloat : NativeObject
 
 	// m_pValue
 	[SchemaMember("CSkillFloat", "m_pValue")]
-    public Span<float> Value => Schema.GetFixedArray<float>(this.Handle, "CSkillFloat", "m_pValue", 4);
+	public Span<float> Value => Schema.GetFixedArray<float>(this.Handle, "CSkillFloat", "m_pValue", 4);
 
 }

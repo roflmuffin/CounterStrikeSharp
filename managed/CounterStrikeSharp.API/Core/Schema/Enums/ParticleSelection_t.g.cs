@@ -8,7 +8,7 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum ParticleSelection_t : uint
 {
-    PARTICLE_SELECTION_FIRST = 0x0,
-    PARTICLE_SELECTION_LAST = 0x1,
-    PARTICLE_SELECTION_NUMBER = 0x2,
+	PARTICLE_SELECTION_FIRST = 0x0,
+	PARTICLE_SELECTION_LAST = 0x1,
+	PARTICLE_SELECTION_NUMBER = 0x2,
 }

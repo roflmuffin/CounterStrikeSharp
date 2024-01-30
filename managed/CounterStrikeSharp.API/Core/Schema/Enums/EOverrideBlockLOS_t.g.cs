@@ -8,7 +8,7 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum EOverrideBlockLOS_t : uint
 {
-    BLOCK_LOS_DEFAULT = 0x0,
-    BLOCK_LOS_FORCE_FALSE = 0x1,
-    BLOCK_LOS_FORCE_TRUE = 0x2,
+	BLOCK_LOS_DEFAULT = 0x0,
+	BLOCK_LOS_FORCE_FALSE = 0x1,
+	BLOCK_LOS_FORCE_TRUE = 0x2,
 }

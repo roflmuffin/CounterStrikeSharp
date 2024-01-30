@@ -8,8 +8,8 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum AnimVrFingerSplay_t : uint
 {
-    AnimVrFingerSplay_Thumb_Index = 0x0,
-    AnimVrFingerSplay_Index_Middle = 0x1,
-    AnimVrFingerSplay_Middle_Ring = 0x2,
-    AnimVrFingerSplay_Ring_Pinky = 0x3,
+	AnimVrFingerSplay_Thumb_Index = 0x0,
+	AnimVrFingerSplay_Index_Middle = 0x1,
+	AnimVrFingerSplay_Middle_Ring = 0x2,
+	AnimVrFingerSplay_Ring_Pinky = 0x3,
 }

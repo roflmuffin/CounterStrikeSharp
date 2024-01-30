@@ -20,10 +20,10 @@ public partial class CScriptComponent : CEntityComponent
 
 	// m_scriptClassName
 	[SchemaMember("CScriptComponent", "m_scriptClassName")]
-    public string ScriptClassName
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CScriptComponent", "m_scriptClassName"); }
-        set { Schema.SetString(this.Handle, "CScriptComponent", "m_scriptClassName", value); }
-    }
+	public string ScriptClassName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CScriptComponent", "m_scriptClassName"); }
+	set { Schema.SetString(this.Handle, "CScriptComponent", "m_scriptClassName", value); }
+	}
 
 }

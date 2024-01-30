@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum ValueRemapperInputType_t : uint
 {
-    InputType_PlayerShootPosition = 0x0,
-    InputType_PlayerShootPositionAroundAxis = 0x1,
+	InputType_PlayerShootPosition = 0x0,
+	InputType_PlayerShootPositionAroundAxis = 0x1,
 }

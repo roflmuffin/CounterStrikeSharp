@@ -20,6 +20,6 @@ public partial class CPhysThruster : CPhysForce
 
 	// m_localOrigin
 	[SchemaMember("CPhysThruster", "m_localOrigin")]
-    public Vector LocalOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysThruster", "m_localOrigin");
+	public Vector LocalOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysThruster", "m_localOrigin");
 
 }

@@ -20,14 +20,14 @@ public partial class CTriggerActiveWeaponDetect : CBaseTrigger
 
 	// m_OnTouchedActiveWeapon
 	[SchemaMember("CTriggerActiveWeaponDetect", "m_OnTouchedActiveWeapon")]
-    public CEntityIOOutput OnTouchedActiveWeapon => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerActiveWeaponDetect", "m_OnTouchedActiveWeapon");
+	public CEntityIOOutput OnTouchedActiveWeapon => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerActiveWeaponDetect", "m_OnTouchedActiveWeapon");
 
 	// m_iszWeaponClassName
 	[SchemaMember("CTriggerActiveWeaponDetect", "m_iszWeaponClassName")]
-    public string WeaponClassName
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CTriggerActiveWeaponDetect", "m_iszWeaponClassName"); }
-        set { Schema.SetString(this.Handle, "CTriggerActiveWeaponDetect", "m_iszWeaponClassName", value); }
-    }
+	public string WeaponClassName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CTriggerActiveWeaponDetect", "m_iszWeaponClassName"); }
+	set { Schema.SetString(this.Handle, "CTriggerActiveWeaponDetect", "m_iszWeaponClassName", value); }
+	}
 
 }

@@ -20,6 +20,6 @@ public partial class CPhysicsShake : NativeObject
 
 	// m_force
 	[SchemaMember("CPhysicsShake", "m_force")]
-    public Vector Force => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysicsShake", "m_force");
+	public Vector Force => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysicsShake", "m_force");
 
 }

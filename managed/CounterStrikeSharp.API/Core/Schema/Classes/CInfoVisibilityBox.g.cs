@@ -20,14 +20,14 @@ public partial class CInfoVisibilityBox : CBaseEntity
 
 	// m_nMode
 	[SchemaMember("CInfoVisibilityBox", "m_nMode")]
-    public ref Int32 Mode => ref Schema.GetRef<Int32>(this.Handle, "CInfoVisibilityBox", "m_nMode");
+	public ref Int32 Mode => ref Schema.GetRef<Int32>(this.Handle, "CInfoVisibilityBox", "m_nMode");
 
 	// m_vBoxSize
 	[SchemaMember("CInfoVisibilityBox", "m_vBoxSize")]
-    public Vector BoxSize => Schema.GetDeclaredClass<Vector>(this.Handle, "CInfoVisibilityBox", "m_vBoxSize");
+	public Vector BoxSize => Schema.GetDeclaredClass<Vector>(this.Handle, "CInfoVisibilityBox", "m_vBoxSize");
 
 	// m_bEnabled
 	[SchemaMember("CInfoVisibilityBox", "m_bEnabled")]
-    public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CInfoVisibilityBox", "m_bEnabled");
+	public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CInfoVisibilityBox", "m_bEnabled");
 
 }

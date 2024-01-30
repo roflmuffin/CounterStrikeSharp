@@ -20,6 +20,6 @@ public partial class CFiringModeFloat : NativeObject
 
 	// m_flValues
 	[SchemaMember("CFiringModeFloat", "m_flValues")]
-    public Span<float> Values => Schema.GetFixedArray<float>(this.Handle, "CFiringModeFloat", "m_flValues", 2);
+	public Span<float> Values => Schema.GetFixedArray<float>(this.Handle, "CFiringModeFloat", "m_flValues", 2);
 
 }

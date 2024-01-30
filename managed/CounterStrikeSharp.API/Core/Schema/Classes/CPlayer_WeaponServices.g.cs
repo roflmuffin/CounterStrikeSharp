@@ -20,26 +20,26 @@ public partial class CPlayer_WeaponServices : CPlayerPawnComponent
 
 	// m_bAllowSwitchToNoWeapon
 	[SchemaMember("CPlayer_WeaponServices", "m_bAllowSwitchToNoWeapon")]
-    public ref bool AllowSwitchToNoWeapon => ref Schema.GetRef<bool>(this.Handle, "CPlayer_WeaponServices", "m_bAllowSwitchToNoWeapon");
+	public ref bool AllowSwitchToNoWeapon => ref Schema.GetRef<bool>(this.Handle, "CPlayer_WeaponServices", "m_bAllowSwitchToNoWeapon");
 
 	// m_hMyWeapons
 	[SchemaMember("CPlayer_WeaponServices", "m_hMyWeapons")]
-    public NetworkedVector<CHandle<CBasePlayerWeapon>> MyWeapons => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBasePlayerWeapon>>>(this.Handle, "CPlayer_WeaponServices", "m_hMyWeapons");
+	public NetworkedVector<CHandle<CBasePlayerWeapon>> MyWeapons => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBasePlayerWeapon>>>(this.Handle, "CPlayer_WeaponServices", "m_hMyWeapons");
 
 	// m_hActiveWeapon
 	[SchemaMember("CPlayer_WeaponServices", "m_hActiveWeapon")]
-    public CHandle<CBasePlayerWeapon> ActiveWeapon => Schema.GetDeclaredClass<CHandle<CBasePlayerWeapon>>(this.Handle, "CPlayer_WeaponServices", "m_hActiveWeapon");
+	public CHandle<CBasePlayerWeapon> ActiveWeapon => Schema.GetDeclaredClass<CHandle<CBasePlayerWeapon>>(this.Handle, "CPlayer_WeaponServices", "m_hActiveWeapon");
 
 	// m_hLastWeapon
 	[SchemaMember("CPlayer_WeaponServices", "m_hLastWeapon")]
-    public CHandle<CBasePlayerWeapon> LastWeapon => Schema.GetDeclaredClass<CHandle<CBasePlayerWeapon>>(this.Handle, "CPlayer_WeaponServices", "m_hLastWeapon");
+	public CHandle<CBasePlayerWeapon> LastWeapon => Schema.GetDeclaredClass<CHandle<CBasePlayerWeapon>>(this.Handle, "CPlayer_WeaponServices", "m_hLastWeapon");
 
 	// m_iAmmo
 	[SchemaMember("CPlayer_WeaponServices", "m_iAmmo")]
-    public Span<UInt16> Ammo => Schema.GetFixedArray<UInt16>(this.Handle, "CPlayer_WeaponServices", "m_iAmmo", 32);
+	public Span<UInt16> Ammo => Schema.GetFixedArray<UInt16>(this.Handle, "CPlayer_WeaponServices", "m_iAmmo", 32);
 
 	// m_bPreventWeaponPickup
 	[SchemaMember("CPlayer_WeaponServices", "m_bPreventWeaponPickup")]
-    public ref bool PreventWeaponPickup => ref Schema.GetRef<bool>(this.Handle, "CPlayer_WeaponServices", "m_bPreventWeaponPickup");
+	public ref bool PreventWeaponPickup => ref Schema.GetRef<bool>(this.Handle, "CPlayer_WeaponServices", "m_bPreventWeaponPickup");
 
 }

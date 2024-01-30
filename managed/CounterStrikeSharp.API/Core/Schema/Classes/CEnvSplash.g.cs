@@ -20,6 +20,6 @@ public partial class CEnvSplash : CPointEntity
 
 	// m_flScale
 	[SchemaMember("CEnvSplash", "m_flScale")]
-    public ref float Scale => ref Schema.GetRef<float>(this.Handle, "CEnvSplash", "m_flScale");
+	public ref float Scale => ref Schema.GetRef<float>(this.Handle, "CEnvSplash", "m_flScale");
 
 }

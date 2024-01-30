@@ -20,6 +20,6 @@ public partial class CScriptTriggerMultiple : CTriggerMultiple
 
 	// m_vExtent
 	[SchemaMember("CScriptTriggerMultiple", "m_vExtent")]
-    public Vector Extent => Schema.GetDeclaredClass<Vector>(this.Handle, "CScriptTriggerMultiple", "m_vExtent");
+	public Vector Extent => Schema.GetDeclaredClass<Vector>(this.Handle, "CScriptTriggerMultiple", "m_vExtent");
 
 }

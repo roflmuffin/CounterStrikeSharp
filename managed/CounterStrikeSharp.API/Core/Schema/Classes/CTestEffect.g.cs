@@ -20,22 +20,22 @@ public partial class CTestEffect : CBaseEntity
 
 	// m_iLoop
 	[SchemaMember("CTestEffect", "m_iLoop")]
-    public ref Int32 Loop => ref Schema.GetRef<Int32>(this.Handle, "CTestEffect", "m_iLoop");
+	public ref Int32 Loop => ref Schema.GetRef<Int32>(this.Handle, "CTestEffect", "m_iLoop");
 
 	// m_iBeam
 	[SchemaMember("CTestEffect", "m_iBeam")]
-    public ref Int32 IBeam => ref Schema.GetRef<Int32>(this.Handle, "CTestEffect", "m_iBeam");
+	public ref Int32 IBeam => ref Schema.GetRef<Int32>(this.Handle, "CTestEffect", "m_iBeam");
 
 	// m_pBeam
 	[SchemaMember("CTestEffect", "m_pBeam")]
-    public Span<CBeam?> PBeam => Schema.GetFixedArray<CBeam?>(this.Handle, "CTestEffect", "m_pBeam", 24);
+	public Span<CBeam?> PBeam => Schema.GetFixedArray<CBeam?>(this.Handle, "CTestEffect", "m_pBeam", 24);
 
 	// m_flBeamTime
 	[SchemaMember("CTestEffect", "m_flBeamTime")]
-    public Span<float> BeamTime => Schema.GetFixedArray<float>(this.Handle, "CTestEffect", "m_flBeamTime", 24);
+	public Span<float> BeamTime => Schema.GetFixedArray<float>(this.Handle, "CTestEffect", "m_flBeamTime", 24);
 
 	// m_flStartTime
 	[SchemaMember("CTestEffect", "m_flStartTime")]
-    public ref float StartTime => ref Schema.GetRef<float>(this.Handle, "CTestEffect", "m_flStartTime");
+	public ref float StartTime => ref Schema.GetRef<float>(this.Handle, "CTestEffect", "m_flStartTime");
 
 }

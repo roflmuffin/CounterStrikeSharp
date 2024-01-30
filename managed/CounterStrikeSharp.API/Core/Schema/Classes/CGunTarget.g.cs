@@ -20,14 +20,14 @@ public partial class CGunTarget : CBaseToggle
 
 	// m_on
 	[SchemaMember("CGunTarget", "m_on")]
-    public ref bool On => ref Schema.GetRef<bool>(this.Handle, "CGunTarget", "m_on");
+	public ref bool On => ref Schema.GetRef<bool>(this.Handle, "CGunTarget", "m_on");
 
 	// m_hTargetEnt
 	[SchemaMember("CGunTarget", "m_hTargetEnt")]
-    public CHandle<CBaseEntity> TargetEnt => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CGunTarget", "m_hTargetEnt");
+	public CHandle<CBaseEntity> TargetEnt => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CGunTarget", "m_hTargetEnt");
 
 	// m_OnDeath
 	[SchemaMember("CGunTarget", "m_OnDeath")]
-    public CEntityIOOutput OnDeath => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CGunTarget", "m_OnDeath");
+	public CEntityIOOutput OnDeath => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CGunTarget", "m_OnDeath");
 
 }

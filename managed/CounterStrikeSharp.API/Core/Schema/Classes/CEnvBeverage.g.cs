@@ -20,10 +20,10 @@ public partial class CEnvBeverage : CBaseEntity
 
 	// m_CanInDispenser
 	[SchemaMember("CEnvBeverage", "m_CanInDispenser")]
-    public ref bool CanInDispenser => ref Schema.GetRef<bool>(this.Handle, "CEnvBeverage", "m_CanInDispenser");
+	public ref bool CanInDispenser => ref Schema.GetRef<bool>(this.Handle, "CEnvBeverage", "m_CanInDispenser");
 
 	// m_nBeverageType
 	[SchemaMember("CEnvBeverage", "m_nBeverageType")]
-    public ref Int32 BeverageType => ref Schema.GetRef<Int32>(this.Handle, "CEnvBeverage", "m_nBeverageType");
+	public ref Int32 BeverageType => ref Schema.GetRef<Int32>(this.Handle, "CEnvBeverage", "m_nBeverageType");
 
 }

@@ -20,18 +20,18 @@ public partial class CCSPlayer_ActionTrackingServices : CPlayerPawnComponent
 
 	// m_hLastWeaponBeforeC4AutoSwitch
 	[SchemaMember("CCSPlayer_ActionTrackingServices", "m_hLastWeaponBeforeC4AutoSwitch")]
-    public CHandle<CBasePlayerWeapon> LastWeaponBeforeC4AutoSwitch => Schema.GetDeclaredClass<CHandle<CBasePlayerWeapon>>(this.Handle, "CCSPlayer_ActionTrackingServices", "m_hLastWeaponBeforeC4AutoSwitch");
+	public CHandle<CBasePlayerWeapon> LastWeaponBeforeC4AutoSwitch => Schema.GetDeclaredClass<CHandle<CBasePlayerWeapon>>(this.Handle, "CCSPlayer_ActionTrackingServices", "m_hLastWeaponBeforeC4AutoSwitch");
 
 	// m_bIsRescuing
 	[SchemaMember("CCSPlayer_ActionTrackingServices", "m_bIsRescuing")]
-    public ref bool IsRescuing => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_ActionTrackingServices", "m_bIsRescuing");
+	public ref bool IsRescuing => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_ActionTrackingServices", "m_bIsRescuing");
 
 	// m_weaponPurchasesThisMatch
 	[SchemaMember("CCSPlayer_ActionTrackingServices", "m_weaponPurchasesThisMatch")]
-    public WeaponPurchaseTracker_t WeaponPurchasesThisMatch => Schema.GetDeclaredClass<WeaponPurchaseTracker_t>(this.Handle, "CCSPlayer_ActionTrackingServices", "m_weaponPurchasesThisMatch");
+	public WeaponPurchaseTracker_t WeaponPurchasesThisMatch => Schema.GetDeclaredClass<WeaponPurchaseTracker_t>(this.Handle, "CCSPlayer_ActionTrackingServices", "m_weaponPurchasesThisMatch");
 
 	// m_weaponPurchasesThisRound
 	[SchemaMember("CCSPlayer_ActionTrackingServices", "m_weaponPurchasesThisRound")]
-    public WeaponPurchaseTracker_t WeaponPurchasesThisRound => Schema.GetDeclaredClass<WeaponPurchaseTracker_t>(this.Handle, "CCSPlayer_ActionTrackingServices", "m_weaponPurchasesThisRound");
+	public WeaponPurchaseTracker_t WeaponPurchasesThisRound => Schema.GetDeclaredClass<WeaponPurchaseTracker_t>(this.Handle, "CCSPlayer_ActionTrackingServices", "m_weaponPurchasesThisRound");
 
 }

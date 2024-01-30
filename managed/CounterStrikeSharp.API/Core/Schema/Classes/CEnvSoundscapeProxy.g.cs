@@ -20,10 +20,10 @@ public partial class CEnvSoundscapeProxy : CEnvSoundscape
 
 	// m_MainSoundscapeName
 	[SchemaMember("CEnvSoundscapeProxy", "m_MainSoundscapeName")]
-    public string MainSoundscapeName
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CEnvSoundscapeProxy", "m_MainSoundscapeName"); }
-        set { Schema.SetString(this.Handle, "CEnvSoundscapeProxy", "m_MainSoundscapeName", value); }
-    }
+	public string MainSoundscapeName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CEnvSoundscapeProxy", "m_MainSoundscapeName"); }
+	set { Schema.SetString(this.Handle, "CEnvSoundscapeProxy", "m_MainSoundscapeName", value); }
+	}
 
 }

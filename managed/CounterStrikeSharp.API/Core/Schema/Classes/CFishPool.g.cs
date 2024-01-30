@@ -20,30 +20,30 @@ public partial class CFishPool : CBaseEntity
 
 	// m_fishCount
 	[SchemaMember("CFishPool", "m_fishCount")]
-    public ref Int32 FishCount => ref Schema.GetRef<Int32>(this.Handle, "CFishPool", "m_fishCount");
+	public ref Int32 FishCount => ref Schema.GetRef<Int32>(this.Handle, "CFishPool", "m_fishCount");
 
 	// m_maxRange
 	[SchemaMember("CFishPool", "m_maxRange")]
-    public ref float MaxRange => ref Schema.GetRef<float>(this.Handle, "CFishPool", "m_maxRange");
+	public ref float MaxRange => ref Schema.GetRef<float>(this.Handle, "CFishPool", "m_maxRange");
 
 	// m_swimDepth
 	[SchemaMember("CFishPool", "m_swimDepth")]
-    public ref float SwimDepth => ref Schema.GetRef<float>(this.Handle, "CFishPool", "m_swimDepth");
+	public ref float SwimDepth => ref Schema.GetRef<float>(this.Handle, "CFishPool", "m_swimDepth");
 
 	// m_waterLevel
 	[SchemaMember("CFishPool", "m_waterLevel")]
-    public ref float WaterLevel => ref Schema.GetRef<float>(this.Handle, "CFishPool", "m_waterLevel");
+	public ref float WaterLevel => ref Schema.GetRef<float>(this.Handle, "CFishPool", "m_waterLevel");
 
 	// m_isDormant
 	[SchemaMember("CFishPool", "m_isDormant")]
-    public ref bool IsDormant => ref Schema.GetRef<bool>(this.Handle, "CFishPool", "m_isDormant");
+	public ref bool IsDormant => ref Schema.GetRef<bool>(this.Handle, "CFishPool", "m_isDormant");
 
 	// m_fishes
 	[SchemaMember("CFishPool", "m_fishes")]
-    public NetworkedVector<CHandle<CFish>> Fishes => Schema.GetDeclaredClass<NetworkedVector<CHandle<CFish>>>(this.Handle, "CFishPool", "m_fishes");
+	public NetworkedVector<CHandle<CFish>> Fishes => Schema.GetDeclaredClass<NetworkedVector<CHandle<CFish>>>(this.Handle, "CFishPool", "m_fishes");
 
 	// m_visTimer
 	[SchemaMember("CFishPool", "m_visTimer")]
-    public CountdownTimer VisTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CFishPool", "m_visTimer");
+	public CountdownTimer VisTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CFishPool", "m_visTimer");
 
 }

@@ -20,30 +20,30 @@ public partial class CEnvVolumetricFogVolume : CBaseEntity
 
 	// m_bActive
 	[SchemaMember("CEnvVolumetricFogVolume", "m_bActive")]
-    public ref bool Active => ref Schema.GetRef<bool>(this.Handle, "CEnvVolumetricFogVolume", "m_bActive");
+	public ref bool Active => ref Schema.GetRef<bool>(this.Handle, "CEnvVolumetricFogVolume", "m_bActive");
 
 	// m_vBoxMins
 	[SchemaMember("CEnvVolumetricFogVolume", "m_vBoxMins")]
-    public Vector BoxMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvVolumetricFogVolume", "m_vBoxMins");
+	public Vector BoxMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvVolumetricFogVolume", "m_vBoxMins");
 
 	// m_vBoxMaxs
 	[SchemaMember("CEnvVolumetricFogVolume", "m_vBoxMaxs")]
-    public Vector BoxMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvVolumetricFogVolume", "m_vBoxMaxs");
+	public Vector BoxMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvVolumetricFogVolume", "m_vBoxMaxs");
 
 	// m_bStartDisabled
 	[SchemaMember("CEnvVolumetricFogVolume", "m_bStartDisabled")]
-    public ref bool StartDisabled => ref Schema.GetRef<bool>(this.Handle, "CEnvVolumetricFogVolume", "m_bStartDisabled");
+	public ref bool StartDisabled => ref Schema.GetRef<bool>(this.Handle, "CEnvVolumetricFogVolume", "m_bStartDisabled");
 
 	// m_flStrength
 	[SchemaMember("CEnvVolumetricFogVolume", "m_flStrength")]
-    public ref float Strength => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogVolume", "m_flStrength");
+	public ref float Strength => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogVolume", "m_flStrength");
 
 	// m_nFalloffShape
 	[SchemaMember("CEnvVolumetricFogVolume", "m_nFalloffShape")]
-    public ref Int32 FalloffShape => ref Schema.GetRef<Int32>(this.Handle, "CEnvVolumetricFogVolume", "m_nFalloffShape");
+	public ref Int32 FalloffShape => ref Schema.GetRef<Int32>(this.Handle, "CEnvVolumetricFogVolume", "m_nFalloffShape");
 
 	// m_flFalloffExponent
 	[SchemaMember("CEnvVolumetricFogVolume", "m_flFalloffExponent")]
-    public ref float FalloffExponent => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogVolume", "m_flFalloffExponent");
+	public ref float FalloffExponent => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogVolume", "m_flFalloffExponent");
 
 }

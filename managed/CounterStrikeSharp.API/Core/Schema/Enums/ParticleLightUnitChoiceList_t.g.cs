@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum ParticleLightUnitChoiceList_t : uint
 {
-    PARTICLE_LIGHT_UNIT_CANDELAS = 0x0,
-    PARTICLE_LIGHT_UNIT_LUMENS = 0x1,
+	PARTICLE_LIGHT_UNIT_CANDELAS = 0x0,
+	PARTICLE_LIGHT_UNIT_LUMENS = 0x1,
 }

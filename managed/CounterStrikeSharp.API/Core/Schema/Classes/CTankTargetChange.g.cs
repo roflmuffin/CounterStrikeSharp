@@ -20,10 +20,10 @@ public partial class CTankTargetChange : CPointEntity
 
 	// m_newTargetName
 	[SchemaMember("CTankTargetChange", "m_newTargetName")]
-    public string NewTargetName
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CTankTargetChange", "m_newTargetName"); }
-        set { Schema.SetString(this.Handle, "CTankTargetChange", "m_newTargetName", value); }
-    }
+	public string NewTargetName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CTankTargetChange", "m_newTargetName"); }
+	set { Schema.SetString(this.Handle, "CTankTargetChange", "m_newTargetName", value); }
+	}
 
 }

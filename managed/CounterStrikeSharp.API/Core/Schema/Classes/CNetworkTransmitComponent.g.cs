@@ -20,6 +20,6 @@ public partial class CNetworkTransmitComponent : NativeObject
 
 	// m_nTransmitStateOwnedCounter
 	[SchemaMember("CNetworkTransmitComponent", "m_nTransmitStateOwnedCounter")]
-    public ref byte TransmitStateOwnedCounter => ref Schema.GetRef<byte>(this.Handle, "CNetworkTransmitComponent", "m_nTransmitStateOwnedCounter");
+	public ref byte TransmitStateOwnedCounter => ref Schema.GetRef<byte>(this.Handle, "CNetworkTransmitComponent", "m_nTransmitStateOwnedCounter");
 
 }

@@ -20,18 +20,18 @@ public partial class CLogicBranch : CLogicalEntity
 
 	// m_bInValue
 	[SchemaMember("CLogicBranch", "m_bInValue")]
-    public ref bool InValue => ref Schema.GetRef<bool>(this.Handle, "CLogicBranch", "m_bInValue");
+	public ref bool InValue => ref Schema.GetRef<bool>(this.Handle, "CLogicBranch", "m_bInValue");
 
 	// m_Listeners
 	[SchemaMember("CLogicBranch", "m_Listeners")]
-    public NetworkedVector<CHandle<CBaseEntity>> Listeners => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CLogicBranch", "m_Listeners");
+	public NetworkedVector<CHandle<CBaseEntity>> Listeners => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CLogicBranch", "m_Listeners");
 
 	// m_OnTrue
 	[SchemaMember("CLogicBranch", "m_OnTrue")]
-    public CEntityIOOutput OnTrue => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicBranch", "m_OnTrue");
+	public CEntityIOOutput OnTrue => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicBranch", "m_OnTrue");
 
 	// m_OnFalse
 	[SchemaMember("CLogicBranch", "m_OnFalse")]
-    public CEntityIOOutput OnFalse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicBranch", "m_OnFalse");
+	public CEntityIOOutput OnFalse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicBranch", "m_OnFalse");
 
 }

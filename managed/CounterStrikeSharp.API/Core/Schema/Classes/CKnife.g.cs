@@ -20,6 +20,6 @@ public partial class CKnife : CCSWeaponBase
 
 	// m_bFirstAttack
 	[SchemaMember("CKnife", "m_bFirstAttack")]
-    public ref bool FirstAttack => ref Schema.GetRef<bool>(this.Handle, "CKnife", "m_bFirstAttack");
+	public ref bool FirstAttack => ref Schema.GetRef<bool>(this.Handle, "CKnife", "m_bFirstAttack");
 
 }

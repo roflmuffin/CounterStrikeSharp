@@ -20,26 +20,26 @@ public partial class CEnvParticleGlow : CParticleSystem
 
 	// m_flAlphaScale
 	[SchemaMember("CEnvParticleGlow", "m_flAlphaScale")]
-    public ref float AlphaScale => ref Schema.GetRef<float>(this.Handle, "CEnvParticleGlow", "m_flAlphaScale");
+	public ref float AlphaScale => ref Schema.GetRef<float>(this.Handle, "CEnvParticleGlow", "m_flAlphaScale");
 
 	// m_flRadiusScale
 	[SchemaMember("CEnvParticleGlow", "m_flRadiusScale")]
-    public ref float RadiusScale => ref Schema.GetRef<float>(this.Handle, "CEnvParticleGlow", "m_flRadiusScale");
+	public ref float RadiusScale => ref Schema.GetRef<float>(this.Handle, "CEnvParticleGlow", "m_flRadiusScale");
 
 	// m_flSelfIllumScale
 	[SchemaMember("CEnvParticleGlow", "m_flSelfIllumScale")]
-    public ref float SelfIllumScale => ref Schema.GetRef<float>(this.Handle, "CEnvParticleGlow", "m_flSelfIllumScale");
+	public ref float SelfIllumScale => ref Schema.GetRef<float>(this.Handle, "CEnvParticleGlow", "m_flSelfIllumScale");
 
 	// m_ColorTint
 	[SchemaMember("CEnvParticleGlow", "m_ColorTint")]
-    public Color ColorTint
-    {
-        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CEnvParticleGlow", "m_ColorTint"); }
-        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CEnvParticleGlow", "m_ColorTint", value); }
-    }
+	public Color ColorTint
+	{
+		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CEnvParticleGlow", "m_ColorTint"); }
+		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CEnvParticleGlow", "m_ColorTint", value); }
+	}
 
 	// m_hTextureOverride
 	[SchemaMember("CEnvParticleGlow", "m_hTextureOverride")]
-    public CStrongHandle<InfoForResourceTypeCTextureBase> TextureOverride => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvParticleGlow", "m_hTextureOverride");
+	public CStrongHandle<InfoForResourceTypeCTextureBase> TextureOverride => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvParticleGlow", "m_hTextureOverride");
 
 }

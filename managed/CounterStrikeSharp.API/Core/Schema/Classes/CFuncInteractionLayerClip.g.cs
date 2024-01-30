@@ -20,22 +20,22 @@ public partial class CFuncInteractionLayerClip : CBaseModelEntity
 
 	// m_bDisabled
 	[SchemaMember("CFuncInteractionLayerClip", "m_bDisabled")]
-    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CFuncInteractionLayerClip", "m_bDisabled");
+	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CFuncInteractionLayerClip", "m_bDisabled");
 
 	// m_iszInteractsAs
 	[SchemaMember("CFuncInteractionLayerClip", "m_iszInteractsAs")]
-    public string InteractsAs
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CFuncInteractionLayerClip", "m_iszInteractsAs"); }
-        set { Schema.SetString(this.Handle, "CFuncInteractionLayerClip", "m_iszInteractsAs", value); }
-    }
+	public string InteractsAs
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CFuncInteractionLayerClip", "m_iszInteractsAs"); }
+	set { Schema.SetString(this.Handle, "CFuncInteractionLayerClip", "m_iszInteractsAs", value); }
+	}
 
 	// m_iszInteractsWith
 	[SchemaMember("CFuncInteractionLayerClip", "m_iszInteractsWith")]
-    public string InteractsWith
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CFuncInteractionLayerClip", "m_iszInteractsWith"); }
-        set { Schema.SetString(this.Handle, "CFuncInteractionLayerClip", "m_iszInteractsWith", value); }
-    }
+	public string InteractsWith
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CFuncInteractionLayerClip", "m_iszInteractsWith"); }
+	set { Schema.SetString(this.Handle, "CFuncInteractionLayerClip", "m_iszInteractsWith", value); }
+	}
 
 }

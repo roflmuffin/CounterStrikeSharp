@@ -8,7 +8,7 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum CanPlaySequence_t : uint
 {
-    CANNOT_PLAY = 0x0,
-    CAN_PLAY_NOW = 0x1,
-    CAN_PLAY_ENQUEUED = 0x2,
+	CANNOT_PLAY = 0x0,
+	CAN_PLAY_NOW = 0x1,
+	CAN_PLAY_ENQUEUED = 0x2,
 }

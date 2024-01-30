@@ -20,6 +20,6 @@ public partial class CCSPlayer_BuyServices : CPlayerPawnComponent
 
 	// m_vecSellbackPurchaseEntries
 	[SchemaMember("CCSPlayer_BuyServices", "m_vecSellbackPurchaseEntries")]
-    public NetworkedVector<SellbackPurchaseEntry_t> SellbackPurchaseEntries => Schema.GetDeclaredClass<NetworkedVector<SellbackPurchaseEntry_t>>(this.Handle, "CCSPlayer_BuyServices", "m_vecSellbackPurchaseEntries");
+	public NetworkedVector<SellbackPurchaseEntry_t> SellbackPurchaseEntries => Schema.GetDeclaredClass<NetworkedVector<SellbackPurchaseEntry_t>>(this.Handle, "CCSPlayer_BuyServices", "m_vecSellbackPurchaseEntries");
 
 }

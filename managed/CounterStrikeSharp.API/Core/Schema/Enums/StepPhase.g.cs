@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum StepPhase : uint
 {
-    StepPhase_OnGround = 0x0,
-    StepPhase_InAir = 0x1,
+	StepPhase_OnGround = 0x0,
+	StepPhase_InAir = 0x1,
 }

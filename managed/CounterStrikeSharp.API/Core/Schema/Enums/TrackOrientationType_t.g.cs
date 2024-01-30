@@ -8,7 +8,7 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum TrackOrientationType_t : uint
 {
-    TrackOrientation_Fixed = 0x0,
-    TrackOrientation_FacePath = 0x1,
-    TrackOrientation_FacePathAngles = 0x2,
+	TrackOrientation_Fixed = 0x0,
+	TrackOrientation_FacePath = 0x1,
+	TrackOrientation_FacePathAngles = 0x2,
 }

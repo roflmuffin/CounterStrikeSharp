@@ -20,14 +20,14 @@ public partial class CPointGamestatsCounter : CPointEntity
 
 	// m_strStatisticName
 	[SchemaMember("CPointGamestatsCounter", "m_strStatisticName")]
-    public string StrStatisticName
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CPointGamestatsCounter", "m_strStatisticName"); }
-        set { Schema.SetString(this.Handle, "CPointGamestatsCounter", "m_strStatisticName", value); }
-    }
+	public string StrStatisticName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CPointGamestatsCounter", "m_strStatisticName"); }
+	set { Schema.SetString(this.Handle, "CPointGamestatsCounter", "m_strStatisticName", value); }
+	}
 
 	// m_bDisabled
 	[SchemaMember("CPointGamestatsCounter", "m_bDisabled")]
-    public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CPointGamestatsCounter", "m_bDisabled");
+	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CPointGamestatsCounter", "m_bDisabled");
 
 }

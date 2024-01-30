@@ -20,18 +20,18 @@ public partial class CCSPlayer_UseServices : CPlayer_UseServices
 
 	// m_hLastKnownUseEntity
 	[SchemaMember("CCSPlayer_UseServices", "m_hLastKnownUseEntity")]
-    public CHandle<CBaseEntity> LastKnownUseEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSPlayer_UseServices", "m_hLastKnownUseEntity");
+	public CHandle<CBaseEntity> LastKnownUseEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSPlayer_UseServices", "m_hLastKnownUseEntity");
 
 	// m_flLastUseTimeStamp
 	[SchemaMember("CCSPlayer_UseServices", "m_flLastUseTimeStamp")]
-    public ref float LastUseTimeStamp => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_UseServices", "m_flLastUseTimeStamp");
+	public ref float LastUseTimeStamp => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_UseServices", "m_flLastUseTimeStamp");
 
 	// m_flTimeStartedHoldingUse
 	[SchemaMember("CCSPlayer_UseServices", "m_flTimeStartedHoldingUse")]
-    public ref float TimeStartedHoldingUse => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_UseServices", "m_flTimeStartedHoldingUse");
+	public ref float TimeStartedHoldingUse => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_UseServices", "m_flTimeStartedHoldingUse");
 
 	// m_flTimeLastUsedWindow
 	[SchemaMember("CCSPlayer_UseServices", "m_flTimeLastUsedWindow")]
-    public ref float TimeLastUsedWindow => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_UseServices", "m_flTimeLastUsedWindow");
+	public ref float TimeLastUsedWindow => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_UseServices", "m_flTimeLastUsedWindow");
 
 }

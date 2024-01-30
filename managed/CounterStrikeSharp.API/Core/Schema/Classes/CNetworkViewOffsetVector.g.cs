@@ -20,14 +20,14 @@ public partial class CNetworkViewOffsetVector : NativeObject
 
 	// m_vecX
 	[SchemaMember("CNetworkViewOffsetVector", "m_vecX")]
-    public float X => Schema.GetDeclaredClass<float>(this.Handle, "CNetworkViewOffsetVector", "m_vecX");
+	public float X => Schema.GetDeclaredClass<float>(this.Handle, "CNetworkViewOffsetVector", "m_vecX");
 
 	// m_vecY
 	[SchemaMember("CNetworkViewOffsetVector", "m_vecY")]
-    public float Y => Schema.GetDeclaredClass<float>(this.Handle, "CNetworkViewOffsetVector", "m_vecY");
+	public float Y => Schema.GetDeclaredClass<float>(this.Handle, "CNetworkViewOffsetVector", "m_vecY");
 
 	// m_vecZ
 	[SchemaMember("CNetworkViewOffsetVector", "m_vecZ")]
-    public float Z => Schema.GetDeclaredClass<float>(this.Handle, "CNetworkViewOffsetVector", "m_vecZ");
+	public float Z => Schema.GetDeclaredClass<float>(this.Handle, "CNetworkViewOffsetVector", "m_vecZ");
 
 }

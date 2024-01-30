@@ -20,10 +20,10 @@ public partial class Extent : NativeObject
 
 	// lo
 	[SchemaMember("Extent", "lo")]
-    public Vector Lo => Schema.GetDeclaredClass<Vector>(this.Handle, "Extent", "lo");
+	public Vector Lo => Schema.GetDeclaredClass<Vector>(this.Handle, "Extent", "lo");
 
 	// hi
 	[SchemaMember("Extent", "hi")]
-    public Vector Hi => Schema.GetDeclaredClass<Vector>(this.Handle, "Extent", "hi");
+	public Vector Hi => Schema.GetDeclaredClass<Vector>(this.Handle, "Extent", "hi");
 
 }

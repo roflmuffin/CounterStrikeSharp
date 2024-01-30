@@ -20,22 +20,22 @@ public partial class locksound_t : NativeObject
 
 	// sLockedSound
 	[SchemaMember("locksound_t", "sLockedSound")]
-    public string SLockedSound
-    {
-        get { return Schema.GetUtf8String(this.Handle, "locksound_t", "sLockedSound"); }
-        set { Schema.SetString(this.Handle, "locksound_t", "sLockedSound", value); }
-    }
+	public string SLockedSound
+	{
+		get { return Schema.GetUtf8String(this.Handle, "locksound_t", "sLockedSound"); }
+	set { Schema.SetString(this.Handle, "locksound_t", "sLockedSound", value); }
+	}
 
 	// sUnlockedSound
 	[SchemaMember("locksound_t", "sUnlockedSound")]
-    public string SUnlockedSound
-    {
-        get { return Schema.GetUtf8String(this.Handle, "locksound_t", "sUnlockedSound"); }
-        set { Schema.SetString(this.Handle, "locksound_t", "sUnlockedSound", value); }
-    }
+	public string SUnlockedSound
+	{
+		get { return Schema.GetUtf8String(this.Handle, "locksound_t", "sUnlockedSound"); }
+	set { Schema.SetString(this.Handle, "locksound_t", "sUnlockedSound", value); }
+	}
 
 	// flwaitSound
 	[SchemaMember("locksound_t", "flwaitSound")]
-    public ref float FlwaitSound => ref Schema.GetRef<float>(this.Handle, "locksound_t", "flwaitSound");
+	public ref float FlwaitSound => ref Schema.GetRef<float>(this.Handle, "locksound_t", "flwaitSound");
 
 }

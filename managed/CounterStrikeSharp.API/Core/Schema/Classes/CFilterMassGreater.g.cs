@@ -20,6 +20,6 @@ public partial class CFilterMassGreater : CBaseFilter
 
 	// m_fFilterMass
 	[SchemaMember("CFilterMassGreater", "m_fFilterMass")]
-    public ref float FilterMass => ref Schema.GetRef<float>(this.Handle, "CFilterMassGreater", "m_fFilterMass");
+	public ref float FilterMass => ref Schema.GetRef<float>(this.Handle, "CFilterMassGreater", "m_fFilterMass");
 
 }

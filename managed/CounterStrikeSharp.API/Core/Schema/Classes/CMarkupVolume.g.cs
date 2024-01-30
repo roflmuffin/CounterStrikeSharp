@@ -20,6 +20,6 @@ public partial class CMarkupVolume : CBaseModelEntity
 
 	// m_bEnabled
 	[SchemaMember("CMarkupVolume", "m_bEnabled")]
-    public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolume", "m_bEnabled");
+	public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolume", "m_bEnabled");
 
 }

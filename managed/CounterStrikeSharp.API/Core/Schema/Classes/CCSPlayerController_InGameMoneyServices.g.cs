@@ -20,26 +20,26 @@ public partial class CCSPlayerController_InGameMoneyServices : CPlayerController
 
 	// m_bReceivesMoneyNextRound
 	[SchemaMember("CCSPlayerController_InGameMoneyServices", "m_bReceivesMoneyNextRound")]
-    public ref bool ReceivesMoneyNextRound => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_bReceivesMoneyNextRound");
+	public ref bool ReceivesMoneyNextRound => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_bReceivesMoneyNextRound");
 
 	// m_iAccountMoneyEarnedForNextRound
 	[SchemaMember("CCSPlayerController_InGameMoneyServices", "m_iAccountMoneyEarnedForNextRound")]
-    public ref Int32 AccountMoneyEarnedForNextRound => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iAccountMoneyEarnedForNextRound");
+	public ref Int32 AccountMoneyEarnedForNextRound => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iAccountMoneyEarnedForNextRound");
 
 	// m_iAccount
 	[SchemaMember("CCSPlayerController_InGameMoneyServices", "m_iAccount")]
-    public ref Int32 Account => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iAccount");
+	public ref Int32 Account => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iAccount");
 
 	// m_iStartAccount
 	[SchemaMember("CCSPlayerController_InGameMoneyServices", "m_iStartAccount")]
-    public ref Int32 StartAccount => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iStartAccount");
+	public ref Int32 StartAccount => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iStartAccount");
 
 	// m_iTotalCashSpent
 	[SchemaMember("CCSPlayerController_InGameMoneyServices", "m_iTotalCashSpent")]
-    public ref Int32 TotalCashSpent => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iTotalCashSpent");
+	public ref Int32 TotalCashSpent => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iTotalCashSpent");
 
 	// m_iCashSpentThisRound
 	[SchemaMember("CCSPlayerController_InGameMoneyServices", "m_iCashSpentThisRound")]
-    public ref Int32 CashSpentThisRound => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iCashSpentThisRound");
+	public ref Int32 CashSpentThisRound => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iCashSpentThisRound");
 
 }

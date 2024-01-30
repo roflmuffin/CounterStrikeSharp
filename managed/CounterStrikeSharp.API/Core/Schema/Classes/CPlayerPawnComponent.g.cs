@@ -20,6 +20,6 @@ public partial class CPlayerPawnComponent : NativeObject
 
 	// __m_pChainEntity
 	[SchemaMember("CPlayerPawnComponent", "__m_pChainEntity")]
-    public CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "CPlayerPawnComponent", "__m_pChainEntity");
+	public CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "CPlayerPawnComponent", "__m_pChainEntity");
 
 }

@@ -20,14 +20,14 @@ public partial class CTriggerImpact : CTriggerMultiple
 
 	// m_flMagnitude
 	[SchemaMember("CTriggerImpact", "m_flMagnitude")]
-    public ref float Magnitude => ref Schema.GetRef<float>(this.Handle, "CTriggerImpact", "m_flMagnitude");
+	public ref float Magnitude => ref Schema.GetRef<float>(this.Handle, "CTriggerImpact", "m_flMagnitude");
 
 	// m_flNoise
 	[SchemaMember("CTriggerImpact", "m_flNoise")]
-    public ref float Noise => ref Schema.GetRef<float>(this.Handle, "CTriggerImpact", "m_flNoise");
+	public ref float Noise => ref Schema.GetRef<float>(this.Handle, "CTriggerImpact", "m_flNoise");
 
 	// m_flViewkick
 	[SchemaMember("CTriggerImpact", "m_flViewkick")]
-    public ref float Viewkick => ref Schema.GetRef<float>(this.Handle, "CTriggerImpact", "m_flViewkick");
+	public ref float Viewkick => ref Schema.GetRef<float>(this.Handle, "CTriggerImpact", "m_flViewkick");
 
 }

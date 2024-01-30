@@ -20,6 +20,6 @@ public partial class CFogTrigger : CBaseTrigger
 
 	// m_fog
 	[SchemaMember("CFogTrigger", "m_fog")]
-    public fogparams_t Fog => Schema.GetDeclaredClass<fogparams_t>(this.Handle, "CFogTrigger", "m_fog");
+	public fogparams_t Fog => Schema.GetDeclaredClass<fogparams_t>(this.Handle, "CFogTrigger", "m_fog");
 
 }

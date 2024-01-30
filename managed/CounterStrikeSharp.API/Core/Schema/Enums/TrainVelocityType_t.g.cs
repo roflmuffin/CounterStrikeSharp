@@ -8,7 +8,7 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum TrainVelocityType_t : uint
 {
-    TrainVelocity_Instantaneous = 0x0,
-    TrainVelocity_LinearBlend = 0x1,
-    TrainVelocity_EaseInEaseOut = 0x2,
+	TrainVelocity_Instantaneous = 0x0,
+	TrainVelocity_LinearBlend = 0x1,
+	TrainVelocity_EaseInEaseOut = 0x2,
 }

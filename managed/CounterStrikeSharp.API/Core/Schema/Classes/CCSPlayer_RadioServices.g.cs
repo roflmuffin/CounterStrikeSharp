@@ -20,22 +20,22 @@ public partial class CCSPlayer_RadioServices : CPlayerPawnComponent
 
 	// m_flGotHostageTalkTimer
 	[SchemaMember("CCSPlayer_RadioServices", "m_flGotHostageTalkTimer")]
-    public ref float GotHostageTalkTimer => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_RadioServices", "m_flGotHostageTalkTimer");
+	public ref float GotHostageTalkTimer => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_RadioServices", "m_flGotHostageTalkTimer");
 
 	// m_flDefusingTalkTimer
 	[SchemaMember("CCSPlayer_RadioServices", "m_flDefusingTalkTimer")]
-    public ref float DefusingTalkTimer => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_RadioServices", "m_flDefusingTalkTimer");
+	public ref float DefusingTalkTimer => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_RadioServices", "m_flDefusingTalkTimer");
 
 	// m_flC4PlantTalkTimer
 	[SchemaMember("CCSPlayer_RadioServices", "m_flC4PlantTalkTimer")]
-    public ref float C4PlantTalkTimer => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_RadioServices", "m_flC4PlantTalkTimer");
+	public ref float C4PlantTalkTimer => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_RadioServices", "m_flC4PlantTalkTimer");
 
 	// m_flRadioTokenSlots
 	[SchemaMember("CCSPlayer_RadioServices", "m_flRadioTokenSlots")]
-    public Span<float> RadioTokenSlots => Schema.GetFixedArray<float>(this.Handle, "CCSPlayer_RadioServices", "m_flRadioTokenSlots", 3);
+	public Span<float> RadioTokenSlots => Schema.GetFixedArray<float>(this.Handle, "CCSPlayer_RadioServices", "m_flRadioTokenSlots", 3);
 
 	// m_bIgnoreRadio
 	[SchemaMember("CCSPlayer_RadioServices", "m_bIgnoreRadio")]
-    public ref bool IgnoreRadio => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_RadioServices", "m_bIgnoreRadio");
+	public ref bool IgnoreRadio => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_RadioServices", "m_bIgnoreRadio");
 
 }

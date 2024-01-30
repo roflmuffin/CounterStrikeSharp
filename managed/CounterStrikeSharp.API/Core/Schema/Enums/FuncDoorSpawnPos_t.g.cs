@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum FuncDoorSpawnPos_t : uint
 {
-    FUNC_DOOR_SPAWN_CLOSED = 0x0,
-    FUNC_DOOR_SPAWN_OPEN = 0x1,
+	FUNC_DOOR_SPAWN_CLOSED = 0x0,
+	FUNC_DOOR_SPAWN_OPEN = 0x1,
 }

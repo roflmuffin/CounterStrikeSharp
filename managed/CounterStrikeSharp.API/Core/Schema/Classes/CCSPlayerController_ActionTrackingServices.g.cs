@@ -20,22 +20,22 @@ public partial class CCSPlayerController_ActionTrackingServices : CPlayerControl
 
 	// m_perRoundStats
 	[SchemaMember("CCSPlayerController_ActionTrackingServices", "m_perRoundStats")]
-    public NetworkedVector<CSPerRoundStats_t> PerRoundStats => Schema.GetDeclaredClass<NetworkedVector<CSPerRoundStats_t>>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_perRoundStats");
+	public NetworkedVector<CSPerRoundStats_t> PerRoundStats => Schema.GetDeclaredClass<NetworkedVector<CSPerRoundStats_t>>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_perRoundStats");
 
 	// m_matchStats
 	[SchemaMember("CCSPlayerController_ActionTrackingServices", "m_matchStats")]
-    public CSMatchStats_t MatchStats => Schema.GetDeclaredClass<CSMatchStats_t>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_matchStats");
+	public CSMatchStats_t MatchStats => Schema.GetDeclaredClass<CSMatchStats_t>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_matchStats");
 
 	// m_iNumRoundKills
 	[SchemaMember("CCSPlayerController_ActionTrackingServices", "m_iNumRoundKills")]
-    public ref Int32 NumRoundKills => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_iNumRoundKills");
+	public ref Int32 NumRoundKills => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_iNumRoundKills");
 
 	// m_iNumRoundKillsHeadshots
 	[SchemaMember("CCSPlayerController_ActionTrackingServices", "m_iNumRoundKillsHeadshots")]
-    public ref Int32 NumRoundKillsHeadshots => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_iNumRoundKillsHeadshots");
+	public ref Int32 NumRoundKillsHeadshots => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_iNumRoundKillsHeadshots");
 
 	// m_unTotalRoundDamageDealt
 	[SchemaMember("CCSPlayerController_ActionTrackingServices", "m_unTotalRoundDamageDealt")]
-    public ref UInt32 TotalRoundDamageDealt => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_unTotalRoundDamageDealt");
+	public ref UInt32 TotalRoundDamageDealt => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_unTotalRoundDamageDealt");
 
 }

@@ -20,22 +20,22 @@ public partial class CLogicCase : CLogicalEntity
 
 	// m_nCase
 	[SchemaMember("CLogicCase", "m_nCase")]
-    public Span<string> Case => Schema.GetFixedArray<string>(this.Handle, "CLogicCase", "m_nCase", 32);
+	public Span<string> Case => Schema.GetFixedArray<string>(this.Handle, "CLogicCase", "m_nCase", 32);
 
 	// m_nShuffleCases
 	[SchemaMember("CLogicCase", "m_nShuffleCases")]
-    public ref Int32 ShuffleCases => ref Schema.GetRef<Int32>(this.Handle, "CLogicCase", "m_nShuffleCases");
+	public ref Int32 ShuffleCases => ref Schema.GetRef<Int32>(this.Handle, "CLogicCase", "m_nShuffleCases");
 
 	// m_nLastShuffleCase
 	[SchemaMember("CLogicCase", "m_nLastShuffleCase")]
-    public ref Int32 LastShuffleCase => ref Schema.GetRef<Int32>(this.Handle, "CLogicCase", "m_nLastShuffleCase");
+	public ref Int32 LastShuffleCase => ref Schema.GetRef<Int32>(this.Handle, "CLogicCase", "m_nLastShuffleCase");
 
 	// m_uchShuffleCaseMap
 	[SchemaMember("CLogicCase", "m_uchShuffleCaseMap")]
-    public Span<byte> UchShuffleCaseMap => Schema.GetFixedArray<byte>(this.Handle, "CLogicCase", "m_uchShuffleCaseMap", 32);
+	public Span<byte> UchShuffleCaseMap => Schema.GetFixedArray<byte>(this.Handle, "CLogicCase", "m_uchShuffleCaseMap", 32);
 
 	// m_OnCase
 	[SchemaMember("CLogicCase", "m_OnCase")]
-    public Span<CEntityIOOutput> OnCase => Schema.GetFixedArray<CEntityIOOutput>(this.Handle, "CLogicCase", "m_OnCase", 32);
+	public Span<CEntityIOOutput> OnCase => Schema.GetFixedArray<CEntityIOOutput>(this.Handle, "CLogicCase", "m_OnCase", 32);
 
 }

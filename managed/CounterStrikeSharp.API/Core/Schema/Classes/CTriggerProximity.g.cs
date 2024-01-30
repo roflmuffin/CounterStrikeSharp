@@ -20,22 +20,22 @@ public partial class CTriggerProximity : CBaseTrigger
 
 	// m_hMeasureTarget
 	[SchemaMember("CTriggerProximity", "m_hMeasureTarget")]
-    public CHandle<CBaseEntity> HMeasureTarget => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CTriggerProximity", "m_hMeasureTarget");
+	public CHandle<CBaseEntity> HMeasureTarget => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CTriggerProximity", "m_hMeasureTarget");
 
 	// m_iszMeasureTarget
 	[SchemaMember("CTriggerProximity", "m_iszMeasureTarget")]
-    public string IszMeasureTarget
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CTriggerProximity", "m_iszMeasureTarget"); }
-        set { Schema.SetString(this.Handle, "CTriggerProximity", "m_iszMeasureTarget", value); }
-    }
+	public string IszMeasureTarget
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CTriggerProximity", "m_iszMeasureTarget"); }
+	set { Schema.SetString(this.Handle, "CTriggerProximity", "m_iszMeasureTarget", value); }
+	}
 
 	// m_fRadius
 	[SchemaMember("CTriggerProximity", "m_fRadius")]
-    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CTriggerProximity", "m_fRadius");
+	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CTriggerProximity", "m_fRadius");
 
 	// m_nTouchers
 	[SchemaMember("CTriggerProximity", "m_nTouchers")]
-    public ref Int32 Touchers => ref Schema.GetRef<Int32>(this.Handle, "CTriggerProximity", "m_nTouchers");
+	public ref Int32 Touchers => ref Schema.GetRef<Int32>(this.Handle, "CTriggerProximity", "m_nTouchers");
 
 }

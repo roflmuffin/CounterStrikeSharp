@@ -20,6 +20,6 @@ public partial class CExampleSchemaVData_PolymorphicDerivedB : CExampleSchemaVDa
 
 	// m_nDerivedB
 	[SchemaMember("CExampleSchemaVData_PolymorphicDerivedB", "m_nDerivedB")]
-    public ref Int32 DerivedB => ref Schema.GetRef<Int32>(this.Handle, "CExampleSchemaVData_PolymorphicDerivedB", "m_nDerivedB");
+	public ref Int32 DerivedB => ref Schema.GetRef<Int32>(this.Handle, "CExampleSchemaVData_PolymorphicDerivedB", "m_nDerivedB");
 
 }

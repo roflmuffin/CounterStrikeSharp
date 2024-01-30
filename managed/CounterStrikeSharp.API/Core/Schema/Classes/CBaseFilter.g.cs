@@ -20,14 +20,14 @@ public partial class CBaseFilter : CLogicalEntity
 
 	// m_bNegated
 	[SchemaMember("CBaseFilter", "m_bNegated")]
-    public ref bool Negated => ref Schema.GetRef<bool>(this.Handle, "CBaseFilter", "m_bNegated");
+	public ref bool Negated => ref Schema.GetRef<bool>(this.Handle, "CBaseFilter", "m_bNegated");
 
 	// m_OnPass
 	[SchemaMember("CBaseFilter", "m_OnPass")]
-    public CEntityIOOutput OnPass => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseFilter", "m_OnPass");
+	public CEntityIOOutput OnPass => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseFilter", "m_OnPass");
 
 	// m_OnFail
 	[SchemaMember("CBaseFilter", "m_OnFail")]
-    public CEntityIOOutput OnFail => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseFilter", "m_OnFail");
+	public CEntityIOOutput OnFail => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseFilter", "m_OnFail");
 
 }

@@ -20,22 +20,22 @@ public partial class CEconItemAttribute : NativeObject
 
 	// m_iAttributeDefinitionIndex
 	[SchemaMember("CEconItemAttribute", "m_iAttributeDefinitionIndex")]
-    public ref UInt16 AttributeDefinitionIndex => ref Schema.GetRef<UInt16>(this.Handle, "CEconItemAttribute", "m_iAttributeDefinitionIndex");
+	public ref UInt16 AttributeDefinitionIndex => ref Schema.GetRef<UInt16>(this.Handle, "CEconItemAttribute", "m_iAttributeDefinitionIndex");
 
 	// m_flValue
 	[SchemaMember("CEconItemAttribute", "m_flValue")]
-    public ref float Value => ref Schema.GetRef<float>(this.Handle, "CEconItemAttribute", "m_flValue");
+	public ref float Value => ref Schema.GetRef<float>(this.Handle, "CEconItemAttribute", "m_flValue");
 
 	// m_flInitialValue
 	[SchemaMember("CEconItemAttribute", "m_flInitialValue")]
-    public ref float InitialValue => ref Schema.GetRef<float>(this.Handle, "CEconItemAttribute", "m_flInitialValue");
+	public ref float InitialValue => ref Schema.GetRef<float>(this.Handle, "CEconItemAttribute", "m_flInitialValue");
 
 	// m_nRefundableCurrency
 	[SchemaMember("CEconItemAttribute", "m_nRefundableCurrency")]
-    public ref Int32 RefundableCurrency => ref Schema.GetRef<Int32>(this.Handle, "CEconItemAttribute", "m_nRefundableCurrency");
+	public ref Int32 RefundableCurrency => ref Schema.GetRef<Int32>(this.Handle, "CEconItemAttribute", "m_nRefundableCurrency");
 
 	// m_bSetBonus
 	[SchemaMember("CEconItemAttribute", "m_bSetBonus")]
-    public ref bool SetBonus => ref Schema.GetRef<bool>(this.Handle, "CEconItemAttribute", "m_bSetBonus");
+	public ref bool SetBonus => ref Schema.GetRef<bool>(this.Handle, "CEconItemAttribute", "m_bSetBonus");
 
 }

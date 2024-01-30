@@ -20,18 +20,18 @@ public partial class CEnvTilt : CPointEntity
 
 	// m_Duration
 	[SchemaMember("CEnvTilt", "m_Duration")]
-    public ref float Duration => ref Schema.GetRef<float>(this.Handle, "CEnvTilt", "m_Duration");
+	public ref float Duration => ref Schema.GetRef<float>(this.Handle, "CEnvTilt", "m_Duration");
 
 	// m_Radius
 	[SchemaMember("CEnvTilt", "m_Radius")]
-    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CEnvTilt", "m_Radius");
+	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CEnvTilt", "m_Radius");
 
 	// m_TiltTime
 	[SchemaMember("CEnvTilt", "m_TiltTime")]
-    public ref float TiltTime => ref Schema.GetRef<float>(this.Handle, "CEnvTilt", "m_TiltTime");
+	public ref float TiltTime => ref Schema.GetRef<float>(this.Handle, "CEnvTilt", "m_TiltTime");
 
 	// m_stopTime
 	[SchemaMember("CEnvTilt", "m_stopTime")]
-    public ref float StopTime => ref Schema.GetRef<float>(this.Handle, "CEnvTilt", "m_stopTime");
+	public ref float StopTime => ref Schema.GetRef<float>(this.Handle, "CEnvTilt", "m_stopTime");
 
 }

@@ -20,14 +20,14 @@ public partial class PhysicsRagdollPose_t : NativeObject
 
 	// __m_pChainEntity
 	[SchemaMember("PhysicsRagdollPose_t", "__m_pChainEntity")]
-    public CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "PhysicsRagdollPose_t", "__m_pChainEntity");
+	public CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "PhysicsRagdollPose_t", "__m_pChainEntity");
 
 	// m_Transforms
 	[SchemaMember("PhysicsRagdollPose_t", "m_Transforms")]
-    public NetworkedVector<CTransform> Transforms => Schema.GetDeclaredClass<NetworkedVector<CTransform>>(this.Handle, "PhysicsRagdollPose_t", "m_Transforms");
+	public NetworkedVector<CTransform> Transforms => Schema.GetDeclaredClass<NetworkedVector<CTransform>>(this.Handle, "PhysicsRagdollPose_t", "m_Transforms");
 
 	// m_hOwner
 	[SchemaMember("PhysicsRagdollPose_t", "m_hOwner")]
-    public CHandle<CBaseEntity> Owner => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "PhysicsRagdollPose_t", "m_hOwner");
+	public CHandle<CBaseEntity> Owner => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "PhysicsRagdollPose_t", "m_hOwner");
 
 }

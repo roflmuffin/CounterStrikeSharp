@@ -20,22 +20,22 @@ public partial class CLogicBranchList : CLogicalEntity
 
 	// m_nLogicBranchNames
 	[SchemaMember("CLogicBranchList", "m_nLogicBranchNames")]
-    public Span<string> LogicBranchNames => Schema.GetFixedArray<string>(this.Handle, "CLogicBranchList", "m_nLogicBranchNames", 16);
+	public Span<string> LogicBranchNames => Schema.GetFixedArray<string>(this.Handle, "CLogicBranchList", "m_nLogicBranchNames", 16);
 
 	// m_LogicBranchList
 	[SchemaMember("CLogicBranchList", "m_LogicBranchList")]
-    public NetworkedVector<CHandle<CBaseEntity>> LogicBranchList => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CLogicBranchList", "m_LogicBranchList");
+	public NetworkedVector<CHandle<CBaseEntity>> LogicBranchList => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CLogicBranchList", "m_LogicBranchList");
 
 	// m_OnAllTrue
 	[SchemaMember("CLogicBranchList", "m_OnAllTrue")]
-    public CEntityIOOutput OnAllTrue => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicBranchList", "m_OnAllTrue");
+	public CEntityIOOutput OnAllTrue => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicBranchList", "m_OnAllTrue");
 
 	// m_OnAllFalse
 	[SchemaMember("CLogicBranchList", "m_OnAllFalse")]
-    public CEntityIOOutput OnAllFalse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicBranchList", "m_OnAllFalse");
+	public CEntityIOOutput OnAllFalse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicBranchList", "m_OnAllFalse");
 
 	// m_OnMixed
 	[SchemaMember("CLogicBranchList", "m_OnMixed")]
-    public CEntityIOOutput OnMixed => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicBranchList", "m_OnMixed");
+	public CEntityIOOutput OnMixed => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicBranchList", "m_OnMixed");
 
 }

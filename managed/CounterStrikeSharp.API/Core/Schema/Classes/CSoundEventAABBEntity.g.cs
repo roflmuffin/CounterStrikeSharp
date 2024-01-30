@@ -20,10 +20,10 @@ public partial class CSoundEventAABBEntity : CSoundEventEntity
 
 	// m_vMins
 	[SchemaMember("CSoundEventAABBEntity", "m_vMins")]
-    public Vector Mins => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundEventAABBEntity", "m_vMins");
+	public Vector Mins => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundEventAABBEntity", "m_vMins");
 
 	// m_vMaxs
 	[SchemaMember("CSoundEventAABBEntity", "m_vMaxs")]
-    public Vector Maxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundEventAABBEntity", "m_vMaxs");
+	public Vector Maxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundEventAABBEntity", "m_vMaxs");
 
 }

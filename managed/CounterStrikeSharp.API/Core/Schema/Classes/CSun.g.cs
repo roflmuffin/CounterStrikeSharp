@@ -20,70 +20,70 @@ public partial class CSun : CBaseModelEntity
 
 	// m_vDirection
 	[SchemaMember("CSun", "m_vDirection")]
-    public Vector Direction => Schema.GetDeclaredClass<Vector>(this.Handle, "CSun", "m_vDirection");
+	public Vector Direction => Schema.GetDeclaredClass<Vector>(this.Handle, "CSun", "m_vDirection");
 
 	// m_clrOverlay
 	[SchemaMember("CSun", "m_clrOverlay")]
-    public Color Overlay
-    {
-        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CSun", "m_clrOverlay"); }
-        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CSun", "m_clrOverlay", value); }
-    }
+	public Color Overlay
+	{
+		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CSun", "m_clrOverlay"); }
+		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CSun", "m_clrOverlay", value); }
+	}
 
 	// m_iszEffectName
 	[SchemaMember("CSun", "m_iszEffectName")]
-    public string EffectName
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CSun", "m_iszEffectName"); }
-        set { Schema.SetString(this.Handle, "CSun", "m_iszEffectName", value); }
-    }
+	public string EffectName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CSun", "m_iszEffectName"); }
+	set { Schema.SetString(this.Handle, "CSun", "m_iszEffectName", value); }
+	}
 
 	// m_iszSSEffectName
 	[SchemaMember("CSun", "m_iszSSEffectName")]
-    public string SSEffectName
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CSun", "m_iszSSEffectName"); }
-        set { Schema.SetString(this.Handle, "CSun", "m_iszSSEffectName", value); }
-    }
+	public string SSEffectName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CSun", "m_iszSSEffectName"); }
+	set { Schema.SetString(this.Handle, "CSun", "m_iszSSEffectName", value); }
+	}
 
 	// m_bOn
 	[SchemaMember("CSun", "m_bOn")]
-    public ref bool On => ref Schema.GetRef<bool>(this.Handle, "CSun", "m_bOn");
+	public ref bool On => ref Schema.GetRef<bool>(this.Handle, "CSun", "m_bOn");
 
 	// m_bmaxColor
 	[SchemaMember("CSun", "m_bmaxColor")]
-    public ref bool BmaxColor => ref Schema.GetRef<bool>(this.Handle, "CSun", "m_bmaxColor");
+	public ref bool BmaxColor => ref Schema.GetRef<bool>(this.Handle, "CSun", "m_bmaxColor");
 
 	// m_flSize
 	[SchemaMember("CSun", "m_flSize")]
-    public ref float Size => ref Schema.GetRef<float>(this.Handle, "CSun", "m_flSize");
+	public ref float Size => ref Schema.GetRef<float>(this.Handle, "CSun", "m_flSize");
 
 	// m_flRotation
 	[SchemaMember("CSun", "m_flRotation")]
-    public ref float Rotation => ref Schema.GetRef<float>(this.Handle, "CSun", "m_flRotation");
+	public ref float Rotation => ref Schema.GetRef<float>(this.Handle, "CSun", "m_flRotation");
 
 	// m_flHazeScale
 	[SchemaMember("CSun", "m_flHazeScale")]
-    public ref float HazeScale => ref Schema.GetRef<float>(this.Handle, "CSun", "m_flHazeScale");
+	public ref float HazeScale => ref Schema.GetRef<float>(this.Handle, "CSun", "m_flHazeScale");
 
 	// m_flAlphaHaze
 	[SchemaMember("CSun", "m_flAlphaHaze")]
-    public ref float AlphaHaze => ref Schema.GetRef<float>(this.Handle, "CSun", "m_flAlphaHaze");
+	public ref float AlphaHaze => ref Schema.GetRef<float>(this.Handle, "CSun", "m_flAlphaHaze");
 
 	// m_flAlphaHdr
 	[SchemaMember("CSun", "m_flAlphaHdr")]
-    public ref float AlphaHdr => ref Schema.GetRef<float>(this.Handle, "CSun", "m_flAlphaHdr");
+	public ref float AlphaHdr => ref Schema.GetRef<float>(this.Handle, "CSun", "m_flAlphaHdr");
 
 	// m_flAlphaScale
 	[SchemaMember("CSun", "m_flAlphaScale")]
-    public ref float AlphaScale => ref Schema.GetRef<float>(this.Handle, "CSun", "m_flAlphaScale");
+	public ref float AlphaScale => ref Schema.GetRef<float>(this.Handle, "CSun", "m_flAlphaScale");
 
 	// m_flHDRColorScale
 	[SchemaMember("CSun", "m_flHDRColorScale")]
-    public ref float HDRColorScale => ref Schema.GetRef<float>(this.Handle, "CSun", "m_flHDRColorScale");
+	public ref float HDRColorScale => ref Schema.GetRef<float>(this.Handle, "CSun", "m_flHDRColorScale");
 
 	// m_flFarZScale
 	[SchemaMember("CSun", "m_flFarZScale")]
-    public ref float FarZScale => ref Schema.GetRef<float>(this.Handle, "CSun", "m_flFarZScale");
+	public ref float FarZScale => ref Schema.GetRef<float>(this.Handle, "CSun", "m_flFarZScale");
 
 }

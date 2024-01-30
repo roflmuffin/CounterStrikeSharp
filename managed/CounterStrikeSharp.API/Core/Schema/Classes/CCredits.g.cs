@@ -20,14 +20,14 @@ public partial class CCredits : CPointEntity
 
 	// m_OnCreditsDone
 	[SchemaMember("CCredits", "m_OnCreditsDone")]
-    public CEntityIOOutput OnCreditsDone => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CCredits", "m_OnCreditsDone");
+	public CEntityIOOutput OnCreditsDone => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CCredits", "m_OnCreditsDone");
 
 	// m_bRolledOutroCredits
 	[SchemaMember("CCredits", "m_bRolledOutroCredits")]
-    public ref bool RolledOutroCredits => ref Schema.GetRef<bool>(this.Handle, "CCredits", "m_bRolledOutroCredits");
+	public ref bool RolledOutroCredits => ref Schema.GetRef<bool>(this.Handle, "CCredits", "m_bRolledOutroCredits");
 
 	// m_flLogoLength
 	[SchemaMember("CCredits", "m_flLogoLength")]
-    public ref float LogoLength => ref Schema.GetRef<float>(this.Handle, "CCredits", "m_flLogoLength");
+	public ref float LogoLength => ref Schema.GetRef<float>(this.Handle, "CCredits", "m_flLogoLength");
 
 }

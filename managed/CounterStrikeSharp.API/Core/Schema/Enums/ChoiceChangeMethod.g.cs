@@ -8,7 +8,7 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum ChoiceChangeMethod : uint
 {
-    OnReset = 0x0,
-    OnCycleEnd = 0x1,
-    OnResetOrCycleEnd = 0x2,
+	OnReset = 0x0,
+	OnCycleEnd = 0x1,
+	OnResetOrCycleEnd = 0x2,
 }

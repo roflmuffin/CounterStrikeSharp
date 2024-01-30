@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum ShatterPanelMode : byte
 {
-    SHATTER_GLASS = 0x0,
-    SHATTER_DRYWALL = 0x1,
+	SHATTER_GLASS = 0x0,
+	SHATTER_DRYWALL = 0x1,
 }

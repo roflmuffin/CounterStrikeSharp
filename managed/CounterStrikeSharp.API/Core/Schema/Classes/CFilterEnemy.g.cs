@@ -20,30 +20,30 @@ public partial class CFilterEnemy : CBaseFilter
 
 	// m_iszEnemyName
 	[SchemaMember("CFilterEnemy", "m_iszEnemyName")]
-    public string EnemyName
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CFilterEnemy", "m_iszEnemyName"); }
-        set { Schema.SetString(this.Handle, "CFilterEnemy", "m_iszEnemyName", value); }
-    }
+	public string EnemyName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CFilterEnemy", "m_iszEnemyName"); }
+	set { Schema.SetString(this.Handle, "CFilterEnemy", "m_iszEnemyName", value); }
+	}
 
 	// m_flRadius
 	[SchemaMember("CFilterEnemy", "m_flRadius")]
-    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CFilterEnemy", "m_flRadius");
+	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CFilterEnemy", "m_flRadius");
 
 	// m_flOuterRadius
 	[SchemaMember("CFilterEnemy", "m_flOuterRadius")]
-    public ref float OuterRadius => ref Schema.GetRef<float>(this.Handle, "CFilterEnemy", "m_flOuterRadius");
+	public ref float OuterRadius => ref Schema.GetRef<float>(this.Handle, "CFilterEnemy", "m_flOuterRadius");
 
 	// m_nMaxSquadmatesPerEnemy
 	[SchemaMember("CFilterEnemy", "m_nMaxSquadmatesPerEnemy")]
-    public ref Int32 MaxSquadmatesPerEnemy => ref Schema.GetRef<Int32>(this.Handle, "CFilterEnemy", "m_nMaxSquadmatesPerEnemy");
+	public ref Int32 MaxSquadmatesPerEnemy => ref Schema.GetRef<Int32>(this.Handle, "CFilterEnemy", "m_nMaxSquadmatesPerEnemy");
 
 	// m_iszPlayerName
 	[SchemaMember("CFilterEnemy", "m_iszPlayerName")]
-    public string PlayerName
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CFilterEnemy", "m_iszPlayerName"); }
-        set { Schema.SetString(this.Handle, "CFilterEnemy", "m_iszPlayerName", value); }
-    }
+	public string PlayerName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CFilterEnemy", "m_iszPlayerName"); }
+	set { Schema.SetString(this.Handle, "CFilterEnemy", "m_iszPlayerName", value); }
+	}
 
 }

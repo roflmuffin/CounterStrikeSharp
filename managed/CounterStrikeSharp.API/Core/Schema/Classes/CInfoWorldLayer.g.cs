@@ -20,38 +20,38 @@ public partial class CInfoWorldLayer : CBaseEntity
 
 	// m_pOutputOnEntitiesSpawned
 	[SchemaMember("CInfoWorldLayer", "m_pOutputOnEntitiesSpawned")]
-    public CEntityIOOutput OutputOnEntitiesSpawned => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CInfoWorldLayer", "m_pOutputOnEntitiesSpawned");
+	public CEntityIOOutput OutputOnEntitiesSpawned => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CInfoWorldLayer", "m_pOutputOnEntitiesSpawned");
 
 	// m_worldName
 	[SchemaMember("CInfoWorldLayer", "m_worldName")]
-    public string WorldName
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CInfoWorldLayer", "m_worldName"); }
-        set { Schema.SetString(this.Handle, "CInfoWorldLayer", "m_worldName", value); }
-    }
+	public string WorldName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CInfoWorldLayer", "m_worldName"); }
+	set { Schema.SetString(this.Handle, "CInfoWorldLayer", "m_worldName", value); }
+	}
 
 	// m_layerName
 	[SchemaMember("CInfoWorldLayer", "m_layerName")]
-    public string LayerName
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CInfoWorldLayer", "m_layerName"); }
-        set { Schema.SetString(this.Handle, "CInfoWorldLayer", "m_layerName", value); }
-    }
+	public string LayerName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CInfoWorldLayer", "m_layerName"); }
+	set { Schema.SetString(this.Handle, "CInfoWorldLayer", "m_layerName", value); }
+	}
 
 	// m_bWorldLayerVisible
 	[SchemaMember("CInfoWorldLayer", "m_bWorldLayerVisible")]
-    public ref bool WorldLayerVisible => ref Schema.GetRef<bool>(this.Handle, "CInfoWorldLayer", "m_bWorldLayerVisible");
+	public ref bool WorldLayerVisible => ref Schema.GetRef<bool>(this.Handle, "CInfoWorldLayer", "m_bWorldLayerVisible");
 
 	// m_bEntitiesSpawned
 	[SchemaMember("CInfoWorldLayer", "m_bEntitiesSpawned")]
-    public ref bool EntitiesSpawned => ref Schema.GetRef<bool>(this.Handle, "CInfoWorldLayer", "m_bEntitiesSpawned");
+	public ref bool EntitiesSpawned => ref Schema.GetRef<bool>(this.Handle, "CInfoWorldLayer", "m_bEntitiesSpawned");
 
 	// m_bCreateAsChildSpawnGroup
 	[SchemaMember("CInfoWorldLayer", "m_bCreateAsChildSpawnGroup")]
-    public ref bool CreateAsChildSpawnGroup => ref Schema.GetRef<bool>(this.Handle, "CInfoWorldLayer", "m_bCreateAsChildSpawnGroup");
+	public ref bool CreateAsChildSpawnGroup => ref Schema.GetRef<bool>(this.Handle, "CInfoWorldLayer", "m_bCreateAsChildSpawnGroup");
 
 	// m_hLayerSpawnGroup
 	[SchemaMember("CInfoWorldLayer", "m_hLayerSpawnGroup")]
-    public ref UInt32 LayerSpawnGroup => ref Schema.GetRef<UInt32>(this.Handle, "CInfoWorldLayer", "m_hLayerSpawnGroup");
+	public ref UInt32 LayerSpawnGroup => ref Schema.GetRef<UInt32>(this.Handle, "CInfoWorldLayer", "m_hLayerSpawnGroup");
 
 }

@@ -20,22 +20,22 @@ public partial class CTriggerPush : CBaseTrigger
 
 	// m_angPushEntitySpace
 	[SchemaMember("CTriggerPush", "m_angPushEntitySpace")]
-    public QAngle PushEntitySpace => Schema.GetDeclaredClass<QAngle>(this.Handle, "CTriggerPush", "m_angPushEntitySpace");
+	public QAngle PushEntitySpace => Schema.GetDeclaredClass<QAngle>(this.Handle, "CTriggerPush", "m_angPushEntitySpace");
 
 	// m_vecPushDirEntitySpace
 	[SchemaMember("CTriggerPush", "m_vecPushDirEntitySpace")]
-    public Vector PushDirEntitySpace => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerPush", "m_vecPushDirEntitySpace");
+	public Vector PushDirEntitySpace => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerPush", "m_vecPushDirEntitySpace");
 
 	// m_bTriggerOnStartTouch
 	[SchemaMember("CTriggerPush", "m_bTriggerOnStartTouch")]
-    public ref bool TriggerOnStartTouch => ref Schema.GetRef<bool>(this.Handle, "CTriggerPush", "m_bTriggerOnStartTouch");
+	public ref bool TriggerOnStartTouch => ref Schema.GetRef<bool>(this.Handle, "CTriggerPush", "m_bTriggerOnStartTouch");
 
 	// m_flAlternateTicksFix
 	[SchemaMember("CTriggerPush", "m_flAlternateTicksFix")]
-    public ref float AlternateTicksFix => ref Schema.GetRef<float>(this.Handle, "CTriggerPush", "m_flAlternateTicksFix");
+	public ref float AlternateTicksFix => ref Schema.GetRef<float>(this.Handle, "CTriggerPush", "m_flAlternateTicksFix");
 
 	// m_flPushSpeed
 	[SchemaMember("CTriggerPush", "m_flPushSpeed")]
-    public ref float PushSpeed => ref Schema.GetRef<float>(this.Handle, "CTriggerPush", "m_flPushSpeed");
+	public ref float PushSpeed => ref Schema.GetRef<float>(this.Handle, "CTriggerPush", "m_flPushSpeed");
 
 }

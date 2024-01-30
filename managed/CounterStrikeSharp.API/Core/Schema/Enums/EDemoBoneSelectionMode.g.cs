@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum EDemoBoneSelectionMode : uint
 {
-    CaptureAllBones = 0x0,
-    CaptureSelectedBones = 0x1,
+	CaptureAllBones = 0x0,
+	CaptureSelectedBones = 0x1,
 }

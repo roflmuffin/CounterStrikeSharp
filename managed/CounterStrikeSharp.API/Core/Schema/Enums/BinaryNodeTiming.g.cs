@@ -8,7 +8,7 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum BinaryNodeTiming : uint
 {
-    UseChild1 = 0x0,
-    UseChild2 = 0x1,
-    SyncChildren = 0x2,
+	UseChild1 = 0x0,
+	UseChild2 = 0x1,
+	SyncChildren = 0x2,
 }

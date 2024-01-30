@@ -20,10 +20,10 @@ public partial class CEnvTracer : CPointEntity
 
 	// m_vecEnd
 	[SchemaMember("CEnvTracer", "m_vecEnd")]
-    public Vector End => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvTracer", "m_vecEnd");
+	public Vector End => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvTracer", "m_vecEnd");
 
 	// m_flDelay
 	[SchemaMember("CEnvTracer", "m_flDelay")]
-    public ref float Delay => ref Schema.GetRef<float>(this.Handle, "CEnvTracer", "m_flDelay");
+	public ref float Delay => ref Schema.GetRef<float>(this.Handle, "CEnvTracer", "m_flDelay");
 
 }

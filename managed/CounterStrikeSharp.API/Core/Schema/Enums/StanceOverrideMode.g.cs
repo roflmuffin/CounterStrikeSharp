@@ -8,6 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum StanceOverrideMode : uint
 {
-    Sequence = 0x0,
-    Node = 0x1,
+	Sequence = 0x0,
+	Node = 0x1,
 }

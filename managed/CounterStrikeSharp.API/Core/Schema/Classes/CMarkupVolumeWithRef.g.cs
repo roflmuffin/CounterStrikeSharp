@@ -20,14 +20,14 @@ public partial class CMarkupVolumeWithRef : CMarkupVolumeTagged
 
 	// m_bUseRef
 	[SchemaMember("CMarkupVolumeWithRef", "m_bUseRef")]
-    public ref bool UseRef => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeWithRef", "m_bUseRef");
+	public ref bool UseRef => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeWithRef", "m_bUseRef");
 
 	// m_vRefPos
 	[SchemaMember("CMarkupVolumeWithRef", "m_vRefPos")]
-    public Vector RefPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CMarkupVolumeWithRef", "m_vRefPos");
+	public Vector RefPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CMarkupVolumeWithRef", "m_vRefPos");
 
 	// m_flRefDot
 	[SchemaMember("CMarkupVolumeWithRef", "m_flRefDot")]
-    public ref float RefDot => ref Schema.GetRef<float>(this.Handle, "CMarkupVolumeWithRef", "m_flRefDot");
+	public ref float RefDot => ref Schema.GetRef<float>(this.Handle, "CMarkupVolumeWithRef", "m_flRefDot");
 
 }

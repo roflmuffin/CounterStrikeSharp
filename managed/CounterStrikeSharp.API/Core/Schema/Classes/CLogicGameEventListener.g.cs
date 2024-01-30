@@ -20,30 +20,30 @@ public partial class CLogicGameEventListener : CLogicalEntity
 
 	// m_OnEventFired
 	[SchemaMember("CLogicGameEventListener", "m_OnEventFired")]
-    public CEntityIOOutput OnEventFired => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicGameEventListener", "m_OnEventFired");
+	public CEntityIOOutput OnEventFired => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicGameEventListener", "m_OnEventFired");
 
 	// m_iszGameEventName
 	[SchemaMember("CLogicGameEventListener", "m_iszGameEventName")]
-    public string GameEventName
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CLogicGameEventListener", "m_iszGameEventName"); }
-        set { Schema.SetString(this.Handle, "CLogicGameEventListener", "m_iszGameEventName", value); }
-    }
+	public string GameEventName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CLogicGameEventListener", "m_iszGameEventName"); }
+	set { Schema.SetString(this.Handle, "CLogicGameEventListener", "m_iszGameEventName", value); }
+	}
 
 	// m_iszGameEventItem
 	[SchemaMember("CLogicGameEventListener", "m_iszGameEventItem")]
-    public string GameEventItem
-    {
-        get { return Schema.GetUtf8String(this.Handle, "CLogicGameEventListener", "m_iszGameEventItem"); }
-        set { Schema.SetString(this.Handle, "CLogicGameEventListener", "m_iszGameEventItem", value); }
-    }
+	public string GameEventItem
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CLogicGameEventListener", "m_iszGameEventItem"); }
+	set { Schema.SetString(this.Handle, "CLogicGameEventListener", "m_iszGameEventItem", value); }
+	}
 
 	// m_bEnabled
 	[SchemaMember("CLogicGameEventListener", "m_bEnabled")]
-    public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CLogicGameEventListener", "m_bEnabled");
+	public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CLogicGameEventListener", "m_bEnabled");
 
 	// m_bStartDisabled
 	[SchemaMember("CLogicGameEventListener", "m_bStartDisabled")]
-    public ref bool StartDisabled => ref Schema.GetRef<bool>(this.Handle, "CLogicGameEventListener", "m_bStartDisabled");
+	public ref bool StartDisabled => ref Schema.GetRef<bool>(this.Handle, "CLogicGameEventListener", "m_bStartDisabled");
 
 }

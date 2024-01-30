@@ -20,10 +20,10 @@ public partial class CFireSmoke : CBaseFire
 
 	// m_nFlameModelIndex
 	[SchemaMember("CFireSmoke", "m_nFlameModelIndex")]
-    public ref Int32 FlameModelIndex => ref Schema.GetRef<Int32>(this.Handle, "CFireSmoke", "m_nFlameModelIndex");
+	public ref Int32 FlameModelIndex => ref Schema.GetRef<Int32>(this.Handle, "CFireSmoke", "m_nFlameModelIndex");
 
 	// m_nFlameFromAboveModelIndex
 	[SchemaMember("CFireSmoke", "m_nFlameFromAboveModelIndex")]
-    public ref Int32 FlameFromAboveModelIndex => ref Schema.GetRef<Int32>(this.Handle, "CFireSmoke", "m_nFlameFromAboveModelIndex");
+	public ref Int32 FlameFromAboveModelIndex => ref Schema.GetRef<Int32>(this.Handle, "CFireSmoke", "m_nFlameFromAboveModelIndex");
 
 }

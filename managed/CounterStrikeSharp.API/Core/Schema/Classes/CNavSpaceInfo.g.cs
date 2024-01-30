@@ -20,6 +20,6 @@ public partial class CNavSpaceInfo : CPointEntity
 
 	// m_bCreateFlightSpace
 	[SchemaMember("CNavSpaceInfo", "m_bCreateFlightSpace")]
-    public ref bool CreateFlightSpace => ref Schema.GetRef<bool>(this.Handle, "CNavSpaceInfo", "m_bCreateFlightSpace");
+	public ref bool CreateFlightSpace => ref Schema.GetRef<bool>(this.Handle, "CNavSpaceInfo", "m_bCreateFlightSpace");
 
 }

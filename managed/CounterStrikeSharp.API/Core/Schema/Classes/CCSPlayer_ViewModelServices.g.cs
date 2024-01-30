@@ -20,6 +20,6 @@ public partial class CCSPlayer_ViewModelServices : CPlayer_ViewModelServices
 
 	// m_hViewModel
 	[SchemaMember("CCSPlayer_ViewModelServices", "m_hViewModel")]
-    public Span<CHandle<CBaseViewModel>> ViewModel => Schema.GetFixedArray<CHandle<CBaseViewModel>>(this.Handle, "CCSPlayer_ViewModelServices", "m_hViewModel", 3);
+	public Span<CHandle<CBaseViewModel>> ViewModel => Schema.GetFixedArray<CHandle<CBaseViewModel>>(this.Handle, "CCSPlayer_ViewModelServices", "m_hViewModel", 3);
 
 }

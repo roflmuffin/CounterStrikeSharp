@@ -20,30 +20,30 @@ public partial class CBaseFlex : CBaseAnimGraph
 
 	// m_flexWeight
 	[SchemaMember("CBaseFlex", "m_flexWeight")]
-    public NetworkedVector<float> FlexWeight => Schema.GetDeclaredClass<NetworkedVector<float>>(this.Handle, "CBaseFlex", "m_flexWeight");
+	public NetworkedVector<float> FlexWeight => Schema.GetDeclaredClass<NetworkedVector<float>>(this.Handle, "CBaseFlex", "m_flexWeight");
 
 	// m_vLookTargetPosition
 	[SchemaMember("CBaseFlex", "m_vLookTargetPosition")]
-    public Vector LookTargetPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseFlex", "m_vLookTargetPosition");
+	public Vector LookTargetPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseFlex", "m_vLookTargetPosition");
 
 	// m_blinktoggle
 	[SchemaMember("CBaseFlex", "m_blinktoggle")]
-    public ref bool Blinktoggle => ref Schema.GetRef<bool>(this.Handle, "CBaseFlex", "m_blinktoggle");
+	public ref bool Blinktoggle => ref Schema.GetRef<bool>(this.Handle, "CBaseFlex", "m_blinktoggle");
 
 	// m_flAllowResponsesEndTime
 	[SchemaMember("CBaseFlex", "m_flAllowResponsesEndTime")]
-    public ref float AllowResponsesEndTime => ref Schema.GetRef<float>(this.Handle, "CBaseFlex", "m_flAllowResponsesEndTime");
+	public ref float AllowResponsesEndTime => ref Schema.GetRef<float>(this.Handle, "CBaseFlex", "m_flAllowResponsesEndTime");
 
 	// m_flLastFlexAnimationTime
 	[SchemaMember("CBaseFlex", "m_flLastFlexAnimationTime")]
-    public ref float LastFlexAnimationTime => ref Schema.GetRef<float>(this.Handle, "CBaseFlex", "m_flLastFlexAnimationTime");
+	public ref float LastFlexAnimationTime => ref Schema.GetRef<float>(this.Handle, "CBaseFlex", "m_flLastFlexAnimationTime");
 
 	// m_nNextSceneEventId
 	[SchemaMember("CBaseFlex", "m_nNextSceneEventId")]
-    public ref UInt32 NextSceneEventId => ref Schema.GetRef<UInt32>(this.Handle, "CBaseFlex", "m_nNextSceneEventId");
+	public ref UInt32 NextSceneEventId => ref Schema.GetRef<UInt32>(this.Handle, "CBaseFlex", "m_nNextSceneEventId");
 
 	// m_bUpdateLayerPriorities
 	[SchemaMember("CBaseFlex", "m_bUpdateLayerPriorities")]
-    public ref bool UpdateLayerPriorities => ref Schema.GetRef<bool>(this.Handle, "CBaseFlex", "m_bUpdateLayerPriorities");
+	public ref bool UpdateLayerPriorities => ref Schema.GetRef<bool>(this.Handle, "CBaseFlex", "m_bUpdateLayerPriorities");
 
 }

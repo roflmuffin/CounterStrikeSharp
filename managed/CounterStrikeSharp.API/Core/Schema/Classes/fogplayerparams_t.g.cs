@@ -20,66 +20,66 @@ public partial class fogplayerparams_t : NativeObject
 
 	// m_hCtrl
 	[SchemaMember("fogplayerparams_t", "m_hCtrl")]
-    public CHandle<CFogController> Ctrl => Schema.GetDeclaredClass<CHandle<CFogController>>(this.Handle, "fogplayerparams_t", "m_hCtrl");
+	public CHandle<CFogController> Ctrl => Schema.GetDeclaredClass<CHandle<CFogController>>(this.Handle, "fogplayerparams_t", "m_hCtrl");
 
 	// m_flTransitionTime
 	[SchemaMember("fogplayerparams_t", "m_flTransitionTime")]
-    public ref float TransitionTime => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flTransitionTime");
+	public ref float TransitionTime => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flTransitionTime");
 
 	// m_OldColor
 	[SchemaMember("fogplayerparams_t", "m_OldColor")]
-    public Color OldColor
-    {
-        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "fogplayerparams_t", "m_OldColor"); }
-        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "fogplayerparams_t", "m_OldColor", value); }
-    }
+	public Color OldColor
+	{
+		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "fogplayerparams_t", "m_OldColor"); }
+		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "fogplayerparams_t", "m_OldColor", value); }
+	}
 
 	// m_flOldStart
 	[SchemaMember("fogplayerparams_t", "m_flOldStart")]
-    public ref float OldStart => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flOldStart");
+	public ref float OldStart => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flOldStart");
 
 	// m_flOldEnd
 	[SchemaMember("fogplayerparams_t", "m_flOldEnd")]
-    public ref float OldEnd => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flOldEnd");
+	public ref float OldEnd => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flOldEnd");
 
 	// m_flOldMaxDensity
 	[SchemaMember("fogplayerparams_t", "m_flOldMaxDensity")]
-    public ref float OldMaxDensity => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flOldMaxDensity");
+	public ref float OldMaxDensity => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flOldMaxDensity");
 
 	// m_flOldHDRColorScale
 	[SchemaMember("fogplayerparams_t", "m_flOldHDRColorScale")]
-    public ref float OldHDRColorScale => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flOldHDRColorScale");
+	public ref float OldHDRColorScale => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flOldHDRColorScale");
 
 	// m_flOldFarZ
 	[SchemaMember("fogplayerparams_t", "m_flOldFarZ")]
-    public ref float OldFarZ => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flOldFarZ");
+	public ref float OldFarZ => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flOldFarZ");
 
 	// m_NewColor
 	[SchemaMember("fogplayerparams_t", "m_NewColor")]
-    public Color NewColor
-    {
-        get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "fogplayerparams_t", "m_NewColor"); }
-        set { Schema.SetCustomMarshalledType<Color>(this.Handle, "fogplayerparams_t", "m_NewColor", value); }
-    }
+	public Color NewColor
+	{
+		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "fogplayerparams_t", "m_NewColor"); }
+		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "fogplayerparams_t", "m_NewColor", value); }
+	}
 
 	// m_flNewStart
 	[SchemaMember("fogplayerparams_t", "m_flNewStart")]
-    public ref float NewStart => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flNewStart");
+	public ref float NewStart => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flNewStart");
 
 	// m_flNewEnd
 	[SchemaMember("fogplayerparams_t", "m_flNewEnd")]
-    public ref float NewEnd => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flNewEnd");
+	public ref float NewEnd => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flNewEnd");
 
 	// m_flNewMaxDensity
 	[SchemaMember("fogplayerparams_t", "m_flNewMaxDensity")]
-    public ref float NewMaxDensity => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flNewMaxDensity");
+	public ref float NewMaxDensity => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flNewMaxDensity");
 
 	// m_flNewHDRColorScale
 	[SchemaMember("fogplayerparams_t", "m_flNewHDRColorScale")]
-    public ref float NewHDRColorScale => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flNewHDRColorScale");
+	public ref float NewHDRColorScale => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flNewHDRColorScale");
 
 	// m_flNewFarZ
 	[SchemaMember("fogplayerparams_t", "m_flNewFarZ")]
-    public ref float NewFarZ => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flNewFarZ");
+	public ref float NewFarZ => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flNewFarZ");
 
 }

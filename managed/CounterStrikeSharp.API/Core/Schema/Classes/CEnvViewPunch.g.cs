@@ -20,10 +20,10 @@ public partial class CEnvViewPunch : CPointEntity
 
 	// m_flRadius
 	[SchemaMember("CEnvViewPunch", "m_flRadius")]
-    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CEnvViewPunch", "m_flRadius");
+	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CEnvViewPunch", "m_flRadius");
 
 	// m_angViewPunch
 	[SchemaMember("CEnvViewPunch", "m_angViewPunch")]
-    public QAngle ViewPunch => Schema.GetDeclaredClass<QAngle>(this.Handle, "CEnvViewPunch", "m_angViewPunch");
+	public QAngle ViewPunch => Schema.GetDeclaredClass<QAngle>(this.Handle, "CEnvViewPunch", "m_angViewPunch");
 
 }

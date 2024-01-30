@@ -20,22 +20,22 @@ public partial class CCSGameModeRules_Deathmatch : CCSGameModeRules
 
 	// m_bFirstThink
 	[SchemaMember("CCSGameModeRules_Deathmatch", "m_bFirstThink")]
-    public ref bool FirstThink => ref Schema.GetRef<bool>(this.Handle, "CCSGameModeRules_Deathmatch", "m_bFirstThink");
+	public ref bool FirstThink => ref Schema.GetRef<bool>(this.Handle, "CCSGameModeRules_Deathmatch", "m_bFirstThink");
 
 	// m_bFirstThinkAfterConnected
 	[SchemaMember("CCSGameModeRules_Deathmatch", "m_bFirstThinkAfterConnected")]
-    public ref bool FirstThinkAfterConnected => ref Schema.GetRef<bool>(this.Handle, "CCSGameModeRules_Deathmatch", "m_bFirstThinkAfterConnected");
+	public ref bool FirstThinkAfterConnected => ref Schema.GetRef<bool>(this.Handle, "CCSGameModeRules_Deathmatch", "m_bFirstThinkAfterConnected");
 
 	// m_flDMBonusStartTime
 	[SchemaMember("CCSGameModeRules_Deathmatch", "m_flDMBonusStartTime")]
-    public ref float DMBonusStartTime => ref Schema.GetRef<float>(this.Handle, "CCSGameModeRules_Deathmatch", "m_flDMBonusStartTime");
+	public ref float DMBonusStartTime => ref Schema.GetRef<float>(this.Handle, "CCSGameModeRules_Deathmatch", "m_flDMBonusStartTime");
 
 	// m_flDMBonusTimeLength
 	[SchemaMember("CCSGameModeRules_Deathmatch", "m_flDMBonusTimeLength")]
-    public ref float DMBonusTimeLength => ref Schema.GetRef<float>(this.Handle, "CCSGameModeRules_Deathmatch", "m_flDMBonusTimeLength");
+	public ref float DMBonusTimeLength => ref Schema.GetRef<float>(this.Handle, "CCSGameModeRules_Deathmatch", "m_flDMBonusTimeLength");
 
 	// m_nDMBonusWeaponLoadoutSlot
 	[SchemaMember("CCSGameModeRules_Deathmatch", "m_nDMBonusWeaponLoadoutSlot")]
-    public ref Int16 DMBonusWeaponLoadoutSlot => ref Schema.GetRef<Int16>(this.Handle, "CCSGameModeRules_Deathmatch", "m_nDMBonusWeaponLoadoutSlot");
+	public ref Int16 DMBonusWeaponLoadoutSlot => ref Schema.GetRef<Int16>(this.Handle, "CCSGameModeRules_Deathmatch", "m_nDMBonusWeaponLoadoutSlot");
 
 }

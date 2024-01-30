@@ -20,14 +20,14 @@ public partial class CFlashbangProjectile : CBaseCSGrenadeProjectile
 
 	// m_flTimeToDetonate
 	[SchemaMember("CFlashbangProjectile", "m_flTimeToDetonate")]
-    public ref float TimeToDetonate => ref Schema.GetRef<float>(this.Handle, "CFlashbangProjectile", "m_flTimeToDetonate");
+	public ref float TimeToDetonate => ref Schema.GetRef<float>(this.Handle, "CFlashbangProjectile", "m_flTimeToDetonate");
 
 	// m_numOpponentsHit
 	[SchemaMember("CFlashbangProjectile", "m_numOpponentsHit")]
-    public ref byte NumOpponentsHit => ref Schema.GetRef<byte>(this.Handle, "CFlashbangProjectile", "m_numOpponentsHit");
+	public ref byte NumOpponentsHit => ref Schema.GetRef<byte>(this.Handle, "CFlashbangProjectile", "m_numOpponentsHit");
 
 	// m_numTeammatesHit
 	[SchemaMember("CFlashbangProjectile", "m_numTeammatesHit")]
-    public ref byte NumTeammatesHit => ref Schema.GetRef<byte>(this.Handle, "CFlashbangProjectile", "m_numTeammatesHit");
+	public ref byte NumTeammatesHit => ref Schema.GetRef<byte>(this.Handle, "CFlashbangProjectile", "m_numTeammatesHit");
 
 }

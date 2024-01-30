@@ -20,18 +20,18 @@ public partial class CSpotlightEnd : CBaseModelEntity
 
 	// m_flLightScale
 	[SchemaMember("CSpotlightEnd", "m_flLightScale")]
-    public ref float LightScale => ref Schema.GetRef<float>(this.Handle, "CSpotlightEnd", "m_flLightScale");
+	public ref float LightScale => ref Schema.GetRef<float>(this.Handle, "CSpotlightEnd", "m_flLightScale");
 
 	// m_Radius
 	[SchemaMember("CSpotlightEnd", "m_Radius")]
-    public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CSpotlightEnd", "m_Radius");
+	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CSpotlightEnd", "m_Radius");
 
 	// m_vSpotlightDir
 	[SchemaMember("CSpotlightEnd", "m_vSpotlightDir")]
-    public Vector SpotlightDir => Schema.GetDeclaredClass<Vector>(this.Handle, "CSpotlightEnd", "m_vSpotlightDir");
+	public Vector SpotlightDir => Schema.GetDeclaredClass<Vector>(this.Handle, "CSpotlightEnd", "m_vSpotlightDir");
 
 	// m_vSpotlightOrg
 	[SchemaMember("CSpotlightEnd", "m_vSpotlightOrg")]
-    public Vector SpotlightOrg => Schema.GetDeclaredClass<Vector>(this.Handle, "CSpotlightEnd", "m_vSpotlightOrg");
+	public Vector SpotlightOrg => Schema.GetDeclaredClass<Vector>(this.Handle, "CSpotlightEnd", "m_vSpotlightOrg");
 
 }

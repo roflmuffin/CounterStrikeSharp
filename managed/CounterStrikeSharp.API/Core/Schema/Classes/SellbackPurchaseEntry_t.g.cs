@@ -20,22 +20,22 @@ public partial class SellbackPurchaseEntry_t : NativeObject
 
 	// m_unDefIdx
 	[SchemaMember("SellbackPurchaseEntry_t", "m_unDefIdx")]
-    public ref UInt16 DefIdx => ref Schema.GetRef<UInt16>(this.Handle, "SellbackPurchaseEntry_t", "m_unDefIdx");
+	public ref UInt16 DefIdx => ref Schema.GetRef<UInt16>(this.Handle, "SellbackPurchaseEntry_t", "m_unDefIdx");
 
 	// m_nCost
 	[SchemaMember("SellbackPurchaseEntry_t", "m_nCost")]
-    public ref Int32 Cost => ref Schema.GetRef<Int32>(this.Handle, "SellbackPurchaseEntry_t", "m_nCost");
+	public ref Int32 Cost => ref Schema.GetRef<Int32>(this.Handle, "SellbackPurchaseEntry_t", "m_nCost");
 
 	// m_nPrevArmor
 	[SchemaMember("SellbackPurchaseEntry_t", "m_nPrevArmor")]
-    public ref Int32 PrevArmor => ref Schema.GetRef<Int32>(this.Handle, "SellbackPurchaseEntry_t", "m_nPrevArmor");
+	public ref Int32 PrevArmor => ref Schema.GetRef<Int32>(this.Handle, "SellbackPurchaseEntry_t", "m_nPrevArmor");
 
 	// m_bPrevHelmet
 	[SchemaMember("SellbackPurchaseEntry_t", "m_bPrevHelmet")]
-    public ref bool PrevHelmet => ref Schema.GetRef<bool>(this.Handle, "SellbackPurchaseEntry_t", "m_bPrevHelmet");
+	public ref bool PrevHelmet => ref Schema.GetRef<bool>(this.Handle, "SellbackPurchaseEntry_t", "m_bPrevHelmet");
 
 	// m_hItem
 	[SchemaMember("SellbackPurchaseEntry_t", "m_hItem")]
-    public CHandle<CEntityInstance> Item => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "SellbackPurchaseEntry_t", "m_hItem");
+	public CHandle<CEntityInstance> Item => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "SellbackPurchaseEntry_t", "m_hItem");
 
 }

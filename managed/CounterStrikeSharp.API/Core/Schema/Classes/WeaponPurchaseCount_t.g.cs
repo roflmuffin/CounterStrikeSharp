@@ -20,10 +20,10 @@ public partial class WeaponPurchaseCount_t : NativeObject
 
 	// m_nItemDefIndex
 	[SchemaMember("WeaponPurchaseCount_t", "m_nItemDefIndex")]
-    public ref UInt16 ItemDefIndex => ref Schema.GetRef<UInt16>(this.Handle, "WeaponPurchaseCount_t", "m_nItemDefIndex");
+	public ref UInt16 ItemDefIndex => ref Schema.GetRef<UInt16>(this.Handle, "WeaponPurchaseCount_t", "m_nItemDefIndex");
 
 	// m_nCount
 	[SchemaMember("WeaponPurchaseCount_t", "m_nCount")]
-    public ref UInt16 Count => ref Schema.GetRef<UInt16>(this.Handle, "WeaponPurchaseCount_t", "m_nCount");
+	public ref UInt16 Count => ref Schema.GetRef<UInt16>(this.Handle, "WeaponPurchaseCount_t", "m_nCount");
 
 }

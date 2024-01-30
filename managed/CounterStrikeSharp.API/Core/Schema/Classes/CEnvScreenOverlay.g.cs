@@ -20,22 +20,22 @@ public partial class CEnvScreenOverlay : CPointEntity
 
 	// m_iszOverlayNames
 	[SchemaMember("CEnvScreenOverlay", "m_iszOverlayNames")]
-    public Span<string> OverlayNames => Schema.GetFixedArray<string>(this.Handle, "CEnvScreenOverlay", "m_iszOverlayNames", 10);
+	public Span<string> OverlayNames => Schema.GetFixedArray<string>(this.Handle, "CEnvScreenOverlay", "m_iszOverlayNames", 10);
 
 	// m_flOverlayTimes
 	[SchemaMember("CEnvScreenOverlay", "m_flOverlayTimes")]
-    public Span<float> OverlayTimes => Schema.GetFixedArray<float>(this.Handle, "CEnvScreenOverlay", "m_flOverlayTimes", 10);
+	public Span<float> OverlayTimes => Schema.GetFixedArray<float>(this.Handle, "CEnvScreenOverlay", "m_flOverlayTimes", 10);
 
 	// m_flStartTime
 	[SchemaMember("CEnvScreenOverlay", "m_flStartTime")]
-    public ref float StartTime => ref Schema.GetRef<float>(this.Handle, "CEnvScreenOverlay", "m_flStartTime");
+	public ref float StartTime => ref Schema.GetRef<float>(this.Handle, "CEnvScreenOverlay", "m_flStartTime");
 
 	// m_iDesiredOverlay
 	[SchemaMember("CEnvScreenOverlay", "m_iDesiredOverlay")]
-    public ref Int32 DesiredOverlay => ref Schema.GetRef<Int32>(this.Handle, "CEnvScreenOverlay", "m_iDesiredOverlay");
+	public ref Int32 DesiredOverlay => ref Schema.GetRef<Int32>(this.Handle, "CEnvScreenOverlay", "m_iDesiredOverlay");
 
 	// m_bIsActive
 	[SchemaMember("CEnvScreenOverlay", "m_bIsActive")]
-    public ref bool IsOverlayActive => ref Schema.GetRef<bool>(this.Handle, "CEnvScreenOverlay", "m_bIsActive");
+	public ref bool IsOverlayActive => ref Schema.GetRef<bool>(this.Handle, "CEnvScreenOverlay", "m_bIsActive");
 
 }

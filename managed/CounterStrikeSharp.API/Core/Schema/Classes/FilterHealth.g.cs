@@ -20,14 +20,14 @@ public partial class FilterHealth : CBaseFilter
 
 	// m_bAdrenalineActive
 	[SchemaMember("FilterHealth", "m_bAdrenalineActive")]
-    public ref bool AdrenalineActive => ref Schema.GetRef<bool>(this.Handle, "FilterHealth", "m_bAdrenalineActive");
+	public ref bool AdrenalineActive => ref Schema.GetRef<bool>(this.Handle, "FilterHealth", "m_bAdrenalineActive");
 
 	// m_iHealthMin
 	[SchemaMember("FilterHealth", "m_iHealthMin")]
-    public ref Int32 HealthMin => ref Schema.GetRef<Int32>(this.Handle, "FilterHealth", "m_iHealthMin");
+	public ref Int32 HealthMin => ref Schema.GetRef<Int32>(this.Handle, "FilterHealth", "m_iHealthMin");
 
 	// m_iHealthMax
 	[SchemaMember("FilterHealth", "m_iHealthMax")]
-    public ref Int32 HealthMax => ref Schema.GetRef<Int32>(this.Handle, "FilterHealth", "m_iHealthMax");
+	public ref Int32 HealthMax => ref Schema.GetRef<Int32>(this.Handle, "FilterHealth", "m_iHealthMax");
 
 }

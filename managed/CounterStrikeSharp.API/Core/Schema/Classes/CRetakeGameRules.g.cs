@@ -20,22 +20,22 @@ public partial class CRetakeGameRules : NativeObject
 
 	// m_nMatchSeed
 	[SchemaMember("CRetakeGameRules", "m_nMatchSeed")]
-    public ref Int32 MatchSeed => ref Schema.GetRef<Int32>(this.Handle, "CRetakeGameRules", "m_nMatchSeed");
+	public ref Int32 MatchSeed => ref Schema.GetRef<Int32>(this.Handle, "CRetakeGameRules", "m_nMatchSeed");
 
 	// m_bBlockersPresent
 	[SchemaMember("CRetakeGameRules", "m_bBlockersPresent")]
-    public ref bool BlockersPresent => ref Schema.GetRef<bool>(this.Handle, "CRetakeGameRules", "m_bBlockersPresent");
+	public ref bool BlockersPresent => ref Schema.GetRef<bool>(this.Handle, "CRetakeGameRules", "m_bBlockersPresent");
 
 	// m_bRoundInProgress
 	[SchemaMember("CRetakeGameRules", "m_bRoundInProgress")]
-    public ref bool RoundInProgress => ref Schema.GetRef<bool>(this.Handle, "CRetakeGameRules", "m_bRoundInProgress");
+	public ref bool RoundInProgress => ref Schema.GetRef<bool>(this.Handle, "CRetakeGameRules", "m_bRoundInProgress");
 
 	// m_iFirstSecondHalfRound
 	[SchemaMember("CRetakeGameRules", "m_iFirstSecondHalfRound")]
-    public ref Int32 FirstSecondHalfRound => ref Schema.GetRef<Int32>(this.Handle, "CRetakeGameRules", "m_iFirstSecondHalfRound");
+	public ref Int32 FirstSecondHalfRound => ref Schema.GetRef<Int32>(this.Handle, "CRetakeGameRules", "m_iFirstSecondHalfRound");
 
 	// m_iBombSite
 	[SchemaMember("CRetakeGameRules", "m_iBombSite")]
-    public ref Int32 BombSite => ref Schema.GetRef<Int32>(this.Handle, "CRetakeGameRules", "m_iBombSite");
+	public ref Int32 BombSite => ref Schema.GetRef<Int32>(this.Handle, "CRetakeGameRules", "m_iBombSite");
 
 }

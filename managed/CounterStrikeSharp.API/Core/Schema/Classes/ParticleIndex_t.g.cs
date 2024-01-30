@@ -20,6 +20,6 @@ public partial class ParticleIndex_t : NativeObject
 
 	// m_Value
 	[SchemaMember("ParticleIndex_t", "m_Value")]
-    public ref Int32 Value => ref Schema.GetRef<Int32>(this.Handle, "ParticleIndex_t", "m_Value");
+	public ref Int32 Value => ref Schema.GetRef<Int32>(this.Handle, "ParticleIndex_t", "m_Value");
 
 }

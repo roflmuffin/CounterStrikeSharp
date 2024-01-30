@@ -8,8 +8,8 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum BoneTransformSpace_t : uint
 {
-    BoneTransformSpace_Invalid = 0xFFFFFFFF,
-    BoneTransformSpace_Parent = 0x0,
-    BoneTransformSpace_Model = 0x1,
-    BoneTransformSpace_World = 0x2,
+	BoneTransformSpace_Invalid = 0xFFFFFFFF,
+	BoneTransformSpace_Parent = 0x0,
+	BoneTransformSpace_Model = 0x1,
+	BoneTransformSpace_World = 0x2,
 }

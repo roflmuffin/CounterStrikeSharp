@@ -8,7 +8,7 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum IKTargetSource : uint
 {
-    IKTARGETSOURCE_Bone = 0x0,
-    IKTARGETSOURCE_AnimgraphParameter = 0x1,
-    IKTARGETSOURCE_COUNT = 0x2,
+	IKTARGETSOURCE_Bone = 0x0,
+	IKTARGETSOURCE_AnimgraphParameter = 0x1,
+	IKTARGETSOURCE_COUNT = 0x2,
 }
