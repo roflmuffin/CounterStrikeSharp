@@ -4,9 +4,9 @@ on:
   push:
     paths-ignore:
       - 'docfx/**'
-    branches: [ "main" ]
+    branches: [ "main", "dev" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "dev" ]
 
 env:
   BUILD_TYPE: Release
@@ -106,7 +106,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Generate build number
-        if: github.event_name == 'push'
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         id: buildnumber
         uses: onyxmueller/build-tag-number@v1
         with:
@@ -141,7 +141,7 @@ jobs:
           path: managed/CounterStrikeSharp.API/bin/Release
 
   publish:
-    if: github.event_name == 'push'
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     permissions:
       contents: write
     needs: [ "build_linux", "build_windows", "build_managed" ]
