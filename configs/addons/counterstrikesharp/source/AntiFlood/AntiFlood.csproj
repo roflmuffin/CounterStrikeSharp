@@ -5,6 +5,7 @@
         <Nullable>enable</Nullable>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+        <RootNamespace>AntiFlood</RootNamespace>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="CounterStrikeSharp.API" Version="1.0.159" />
