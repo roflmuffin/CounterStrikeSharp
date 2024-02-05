@@ -25,6 +25,10 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
     public class ConsoleMenuInstance : BaseMenuInstance
     {
+        public ConsoleMenuInstance(CCSPlayerController player, IMenu menu) : base(player, menu)
+        {
+        }
+        
         public ConsoleMenuInstance(CCSPlayerController player, ConsoleMenu menu, bool closeOnSelect = true) : base(player, menu, closeOnSelect)
         {
         }

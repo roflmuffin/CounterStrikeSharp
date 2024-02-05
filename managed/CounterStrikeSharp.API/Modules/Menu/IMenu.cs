@@ -39,7 +39,12 @@ namespace CounterStrikeSharp.API.Modules.Menu
         public void NextPage();
         public void PrevPage();
         public void Reset();
-        public void Close();
+
+        public void Close()
+        {
+            Reset();
+        }
+        
         public void Display();
         public void OnKeyPress(CCSPlayerController player, int key);
     }

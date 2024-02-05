@@ -59,7 +59,14 @@ namespace CounterStrikeSharp.API.Modules.Menu
     {
         private readonly BasePlugin _plugin;
         public override int NumPerPage => 5; // one less than the actual number of items per page to avoid truncated options
-
+        
+        public CenterHtmlMenuInstance(BasePlugin plugin, CCSPlayerController player, IMenu menu) : base(player, menu)
+        {
+            _plugin = plugin;
+            RemoveOnTickListener();
+            plugin.RegisterListener<Core.Listeners.OnTick>(Display);
+        }
+        
         public CenterHtmlMenuInstance(BasePlugin plugin, CCSPlayerController player, CenterHtmlMenu menu, bool closeOnSelect = true) : base(player, menu, closeOnSelect)
         {
             _plugin = plugin;
