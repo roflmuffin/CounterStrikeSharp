@@ -16,140 +16,149 @@
 
 using System.Collections.Generic;
 
-namespace CounterStrikeSharp.API.Modules.Menu
+namespace CounterStrikeSharp.API.Modules.Menu;
+
+public enum PostSelectAction
 {
-    public abstract class BaseMenu : IMenu
-    {
-        public string Title { get; set; }
-        public List<ChatMenuOption> MenuOptions { get; } = new();
+    Close,
+    Reset,
+    Nothing
+}
+
+public abstract class BaseMenu : IMenu
+{
+    public string Title { get; set; }
+    public List<ChatMenuOption> MenuOptions { get; } = new();
+    public PostSelectAction PostSelectAction { get; set; } = PostSelectAction.Close;
      
-        protected BaseMenu(string title)
-        {
-            Title = title;
-        }
+    protected BaseMenu(string title)
+    {
+        Title = title;
+    }
         
-        public virtual ChatMenuOption AddMenuOption(string display, Action<CCSPlayerController, ChatMenuOption> onSelect, bool disabled = false)
-        {
-            var option = new ChatMenuOption(display, disabled, onSelect);
-            MenuOptions.Add(option);
-            return option;
-        }
+    public virtual ChatMenuOption AddMenuOption(string display, Action<CCSPlayerController, ChatMenuOption> onSelect, bool disabled = false)
+    {
+        var option = new ChatMenuOption(display, disabled, onSelect);
+        MenuOptions.Add(option);
+        return option;
     }
+}
     
-    // This must be called ChatMenuOption to maintain backwards compatibility with the old API
-    public class ChatMenuOption
-    {
-        public string Text { get; set; }
-        public bool Disabled { get; set; }
-        public Action<CCSPlayerController, ChatMenuOption> OnSelect { get; set; }
+// This must be called ChatMenuOption to maintain backwards compatibility with the old API
+public class ChatMenuOption
+{
+    public string Text { get; set; }
+    public bool Disabled { get; set; }
+    public Action<CCSPlayerController, ChatMenuOption> OnSelect { get; set; }
 
-        public ChatMenuOption(string display, bool disabled, Action<CCSPlayerController, ChatMenuOption> onSelect)
-        {
-            Text = display;
-            Disabled = disabled;
-            OnSelect = onSelect;
-        }
+    public ChatMenuOption(string display, bool disabled, Action<CCSPlayerController, ChatMenuOption> onSelect)
+    {
+        Text = display;
+        Disabled = disabled;
+        OnSelect = onSelect;
+    }
+}
+
+public abstract class BaseMenuInstance : IMenuInstance
+{
+    public virtual int NumPerPage => 6;
+    public bool CloseOnSelect { get; set; } = true;
+    public Stack<int> PrevPageOffsets { get; } = new();
+    public IMenu Menu { get; }
+    public CCSPlayerController Player { get; }
+    public int Page { get; set; }
+    public int CurrentOffset { get; set; }
+
+    protected BaseMenuInstance(CCSPlayerController player, IMenu menu)
+    {
+        Menu = menu;
+        Player = player;
     }
 
-    public abstract class BaseMenuInstance : IMenuInstance
+    protected bool HasPrevButton => Page > 0;
+    protected bool HasNextButton => CurrentOffset + NumPerPage < Menu.MenuOptions.Count;
+    protected int MenuItemsPerPage => NumPerPage + 2 - (HasNextButton ? 1 : 0) - (HasPrevButton ? 1 : 0);
+
+    public virtual void Display()
     {
-        public virtual int NumPerPage => 6;
-        public Stack<int> PrevPageOffsets { get; } = new();
-        public IMenu Menu { get; }
-        public CCSPlayerController Player { get; }
-        public bool CloseOnSelect { get; }
-        public int Page { get; set; }
-        public int CurrentOffset { get; set; }
+        throw new NotImplementedException();
+    }
 
-        protected BaseMenuInstance(CCSPlayerController player, IMenu menu)
+    public void OnKeyPress(CCSPlayerController player, int key)
+    {
+        if (player.Handle != Player.Handle) return;
+
+        if (key == 8 && HasNextButton)
         {
-            Menu = menu;
-            Player = player;
-            CloseOnSelect = true;
+            NextPage();
+            return;
         }
 
-        protected BaseMenuInstance(CCSPlayerController player, IMenu menu, bool closeOnSelect = true)
+        if (key == 7 && HasPrevButton)
         {
-            Menu = menu;
-            Player = player;
-            CloseOnSelect = closeOnSelect;
+            PrevPage();
+            return;
         }
 
-        protected bool HasPrevButton => Page > 0;
-        protected bool HasNextButton => CurrentOffset + NumPerPage < Menu.MenuOptions.Count;
-        protected int MenuItemsPerPage => NumPerPage + 2 - (HasNextButton ? 1 : 0) - (HasPrevButton ? 1 : 0);
-
-        public virtual void Display()
+        if (key == 9)
         {
-            throw new NotImplementedException();
+            Close();
+            return;
         }
 
-        public void OnKeyPress(CCSPlayerController player, int key)
+        var desiredValue = key;
+
+        var menuItemIndex = CurrentOffset + desiredValue - 1;
+
+        if (menuItemIndex >= 0 && menuItemIndex < Menu.MenuOptions.Count)
         {
-            if (player.Handle != Player.Handle) return;
-
-            if (key == 8 && HasNextButton)
-            {
-                NextPage();
-                return;
-            }
-
-            if (key == 7 && HasPrevButton)
-            {
-                PrevPage();
-                return;
-            }
-
-            if (key == 9)
-            {
-                Close();
-                return;
-            }
-
-            var desiredValue = key;
-
-            var menuItemIndex = CurrentOffset + desiredValue - 1;
-
-            if (menuItemIndex >= 0 && menuItemIndex < Menu.MenuOptions.Count)
-            {
-                var menuOption = Menu.MenuOptions[menuItemIndex];
+            var menuOption = Menu.MenuOptions[menuItemIndex];
                 
-                if (!menuOption.Disabled)
+            if (!menuOption.Disabled)
+            {
+                menuOption.OnSelect(Player, menuOption);
+                switch (Menu.PostSelectAction)
                 {
-                    menuOption.OnSelect(Player, menuOption);
-                    if (CloseOnSelect)
-                    {
+                    case PostSelectAction.Close:
                         Close();
-                    }
+                        break;
+                    case PostSelectAction.Reset:
+                        Reset();
+                        break;
+                    case PostSelectAction.Nothing:
+                        // Do nothing
+                        break;
+                    default:
+                        throw new NotImplementedException("The specified Select Action is not supported!");
                 }
             }
         }
+    }
 
-        public virtual void Reset()
-        {
-            CurrentOffset = 0;
-            Page = 0;
-            PrevPageOffsets.Clear();
-        }
+    public virtual void Reset()
+    {
+        CurrentOffset = 0;
+        Page = 0;
+        PrevPageOffsets.Clear();
+    }
         
-        public void Close()
-        {
-            MenuManager.CloseActiveMenu(Player);
-        }
+    public void Close()
+    {
+        MenuManager.CloseActiveMenu(Player);
+    }
 
-        public void NextPage()
-        {
-            PrevPageOffsets.Push(CurrentOffset);
-            CurrentOffset += MenuItemsPerPage;
-            Page++;
-            Display();
-        }
+    public void NextPage()
+    {
+        PrevPageOffsets.Push(CurrentOffset);
+        CurrentOffset += MenuItemsPerPage;
+        Page++;
+        Display();
+    }
 
-        public void PrevPage()
-        {
-            Page--;
-            CurrentOffset = PrevPageOffsets.Pop();
-            Display();
-        }
+    public void PrevPage()
+    {
+        Page--;
+        CurrentOffset = PrevPageOffsets.Pop();
+        Display();
     }
 }
