@@ -85,11 +85,12 @@ namespace CounterStrikeSharp.API.Core
 
             for (var i = 1; i <= 9; i++)
             {
-                CommandUtils.AddStandaloneCommand("css_" + i, "Command Key Handler", (player, info) =>
+                CommandUtils.AddStandaloneCommand($"css_{i}", "Command Key Handler", (player, info) =>
                 {
                     if (player == null) return;
                     var key = Convert.ToInt32(info.GetArg(0).Split("_")[1]);
-                    ChatMenus.OnKeyPress(player, key);
+                    
+                    MenuManager.OnKeyPress(player, key);
                 });
             }
 
@@ -181,7 +182,8 @@ namespace CounterStrikeSharp.API.Core
                         }
                         catch (Exception e)
                         {
-                            info.ReplyToCommand($"Could not load plugin \"{path}\")", true);
+                            info.ReplyToCommand($"Could not load plugin \"{path}\"", true);
+                            Logger.LogError(e, "Could not load plugin \"{Path}\"", path);
                         }
                     }
                     else
@@ -207,7 +209,7 @@ namespace CounterStrikeSharp.API.Core
                     IPluginContext? plugin = _pluginContextQueryHandler.FindPluginByIdOrName(pluginIdentifier);
                     if (plugin == null)
                     {
-                        info.ReplyToCommand($"Could not unload plugin \"{pluginIdentifier}\")", true);
+                        info.ReplyToCommand($"Could not unload plugin \"{pluginIdentifier}\"", true);
                         break;
                     }
 
@@ -231,7 +233,7 @@ namespace CounterStrikeSharp.API.Core
 
                     if (plugin == null)
                     {
-                        info.ReplyToCommand($"Could not reload plugin \"{pluginIdentifier}\")", true);
+                        info.ReplyToCommand($"Could not reload plugin \"{pluginIdentifier}\"", true);
                         break;
                     }
 
@@ -288,7 +290,7 @@ namespace CounterStrikeSharp.API.Core
             CommandUtils.AddStandaloneCommand("css", "Counter-Strike Sharp options.", OnCSSCommand);
             CommandUtils.AddStandaloneCommand("css_plugins", "Counter-Strike Sharp plugin options.",
                 OnCSSPluginCommand);
-            CommandUtils.AddStandaloneCommand("css_lang", "Set Counter-Strike Sharp language", OnLangCommand);
+            CommandUtils.AddStandaloneCommand("css_lang", "Set Counter-Strike Sharp language.", OnLangCommand);
         }
     }
 }

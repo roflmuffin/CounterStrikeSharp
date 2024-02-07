@@ -27,9 +27,9 @@ public class AdminTests
     {
         var adminData = AdminManager.GetPlayerAdminData((SteamID)76561197960265731);
         Assert.NotNull(adminData);
-        Assert.Equal(125u, adminData.Immunity); // Group immunity is 125, Admin immunity is 100
+        Assert.Equal(125u, AdminManager.GetPlayerImmunity((SteamID)76561197960265731)); // Group immunity is 125, Admin immunity is 100
         AdminManager.SetPlayerImmunity((SteamID)76561197960265731, 150u);
-        Assert.Equal(150u, adminData.Immunity); // Group immunity is 125, Admin immunity is 100
+        Assert.Equal(150u, AdminManager.GetPlayerImmunity((SteamID)76561197960265731)); // Group immunity is 125, Admin immunity is 100
     }
     
     [Fact]
