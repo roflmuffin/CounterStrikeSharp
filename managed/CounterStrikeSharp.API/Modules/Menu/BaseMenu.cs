@@ -29,7 +29,7 @@ public abstract class BaseMenu : IMenu
 {
     public string Title { get; set; }
     public List<ChatMenuOption> MenuOptions { get; } = new();
-    public PostSelectAction PostSelectAction { get; set; } = PostSelectAction.Close;
+    public PostSelectAction PostSelectAction { get; set; } = PostSelectAction.Reset;
      
     protected BaseMenu(string title)
     {
