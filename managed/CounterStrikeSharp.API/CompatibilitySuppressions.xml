@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- https://learn.microsoft.com/en-us/dotnet/fundamentals/package-validation/diagnostic-ids -->
+<Suppressions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>F:CounterStrikeSharp.API.Modules.Memory.VirtualFunctions.CCSPlayerPawn_Respawn</Target>
+    <Left>.\ApiCompat\v151.dll</Left>
+    <Right>obj\Debug\net7.0\CounterStrikeSharp.API.dll</Right>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>F:CounterStrikeSharp.API.Modules.Memory.VirtualFunctions.CCSPlayerPawn_RespawnFunc</Target>
+    <Left>.\ApiCompat\v151.dll</Left>
+    <Right>obj\Debug\net7.0\CounterStrikeSharp.API.dll</Right>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:CounterStrikeSharp.API.Core.CCSPlayerPawn.Respawn</Target>
+    <Left>.\ApiCompat\v151.dll</Left>
+    <Right>obj\Debug\net7.0\CounterStrikeSharp.API.dll</Right>
+  </Suppression>
+</Suppressions>
