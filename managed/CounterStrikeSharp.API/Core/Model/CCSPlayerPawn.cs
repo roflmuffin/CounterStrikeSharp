@@ -9,13 +9,12 @@ public partial class CCSPlayerPawn
 	/// Respawn player
 	/// </summary>
 
-	[Obsolete]
+	[Obsolete("Use CCSPlayerController.Respawn() instead")]
 	public void Respawn()
 	{
 		if (!Controller.IsValid) return;
 		if (!Controller.Value.IsValid) return;
 
-		// bit of a bodge ¯\_(ツ)_/¯
-		Controller.Value.As<CCSPlayerController>().Respawn();
+		Application.Instance.Logger.LogWarning("CCSPawn.Respawn is deprecated and does nothing, use CCSPlayerController.Respawn instead");
 	}
 }
