@@ -1,5 +1,6 @@
 ﻿using System;
 using CounterStrikeSharp.API.Modules.Memory;
+using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Core;
 
