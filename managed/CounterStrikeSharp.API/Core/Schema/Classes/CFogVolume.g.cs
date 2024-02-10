@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFogVolume : CServerOnlyModelEntity
+[GenerateAutomaticInterface]
+public partial class CFogVolume : CServerOnlyModelEntity, ICFogVolume
 {
     public CFogVolume (IntPtr pointer) : base(pointer) {}
 

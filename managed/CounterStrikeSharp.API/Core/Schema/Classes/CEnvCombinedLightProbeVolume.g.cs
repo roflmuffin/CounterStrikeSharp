@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CEnvCombinedLightProbeVolume : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CEnvCombinedLightProbeVolume : CBaseEntity, ICEnvCombinedLightProbeVolume
 {
     public CEnvCombinedLightProbeVolume (IntPtr pointer) : base(pointer) {}
 

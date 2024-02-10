@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CEnvSoundscapeProxy : CEnvSoundscape
+[GenerateAutomaticInterface]
+public partial class CEnvSoundscapeProxy : CEnvSoundscape, ICEnvSoundscapeProxy
 {
     public CEnvSoundscapeProxy (IntPtr pointer) : base(pointer) {}
 

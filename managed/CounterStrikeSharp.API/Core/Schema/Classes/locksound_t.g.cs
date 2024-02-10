@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class locksound_t : NativeObject
+[GenerateAutomaticInterface]
+public partial class locksound_t : NativeObject, Ilocksound_t
 {
     public locksound_t (IntPtr pointer) : base(pointer) {}
 

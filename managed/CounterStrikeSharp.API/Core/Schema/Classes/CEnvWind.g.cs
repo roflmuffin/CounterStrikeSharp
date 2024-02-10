@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CEnvWind : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CEnvWind : CBaseEntity, ICEnvWind
 {
     public CEnvWind (IntPtr pointer) : base(pointer) {}
 

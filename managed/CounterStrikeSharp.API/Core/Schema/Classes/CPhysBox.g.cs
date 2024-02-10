@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPhysBox : CBreakable
+[GenerateAutomaticInterface]
+public partial class CPhysBox : CBreakable, ICPhysBox
 {
     public CPhysBox (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CMathColorBlend : CLogicalEntity
+[GenerateAutomaticInterface]
+public partial class CMathColorBlend : CLogicalEntity, ICMathColorBlend
 {
     public CMathColorBlend (IntPtr pointer) : base(pointer) {}
 

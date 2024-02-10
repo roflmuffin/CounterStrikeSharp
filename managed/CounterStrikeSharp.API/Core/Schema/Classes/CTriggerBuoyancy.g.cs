@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTriggerBuoyancy : CBaseTrigger
+[GenerateAutomaticInterface]
+public partial class CTriggerBuoyancy : CBaseTrigger, ICTriggerBuoyancy
 {
     public CTriggerBuoyancy (IntPtr pointer) : base(pointer) {}
 

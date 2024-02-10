@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPlayerControllerComponent : NativeObject
+[GenerateAutomaticInterface]
+public partial class CPlayerControllerComponent : NativeObject, ICPlayerControllerComponent
 {
     public CPlayerControllerComponent (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPointWorldText : CModelPointEntity
+[GenerateAutomaticInterface]
+public partial class CPointWorldText : CModelPointEntity, ICPointWorldText
 {
     public CPointWorldText (IntPtr pointer) : base(pointer) {}
 

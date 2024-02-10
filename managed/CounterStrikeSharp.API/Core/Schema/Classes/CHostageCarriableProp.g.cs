@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CHostageCarriableProp : CBaseAnimGraph
+[GenerateAutomaticInterface]
+public partial class CHostageCarriableProp : CBaseAnimGraph, ICHostageCarriableProp
 {
     public CHostageCarriableProp (IntPtr pointer) : base(pointer) {}
 

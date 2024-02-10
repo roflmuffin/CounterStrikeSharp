@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CSplineConstraint : CPhysConstraint
+[GenerateAutomaticInterface]
+public partial class CSplineConstraint : CPhysConstraint, ICSplineConstraint
 {
     public CSplineConstraint (IntPtr pointer) : base(pointer) {}
 

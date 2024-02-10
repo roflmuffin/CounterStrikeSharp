@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CLogicNavigation : CLogicalEntity
+[GenerateAutomaticInterface]
+public partial class CLogicNavigation : CLogicalEntity, ICLogicNavigation
 {
     public CLogicNavigation (IntPtr pointer) : base(pointer) {}
 

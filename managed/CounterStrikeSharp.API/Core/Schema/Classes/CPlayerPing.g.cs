@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPlayerPing : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CPlayerPing : CBaseEntity, ICPlayerPing
 {
     public CPlayerPing (IntPtr pointer) : base(pointer) {}
 

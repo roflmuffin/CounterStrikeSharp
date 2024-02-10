@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CEnvGlobal : CLogicalEntity
+[GenerateAutomaticInterface]
+public partial class CEnvGlobal : CLogicalEntity, ICEnvGlobal
 {
     public CEnvGlobal (IntPtr pointer) : base(pointer) {}
 

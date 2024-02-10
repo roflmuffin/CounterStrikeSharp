@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTriggerRemove : CBaseTrigger
+[GenerateAutomaticInterface]
+public partial class CTriggerRemove : CBaseTrigger, ICTriggerRemove
 {
     public CTriggerRemove (IntPtr pointer) : base(pointer) {}
 

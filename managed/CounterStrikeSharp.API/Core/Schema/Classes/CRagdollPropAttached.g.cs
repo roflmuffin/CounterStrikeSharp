@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CRagdollPropAttached : CRagdollProp
+[GenerateAutomaticInterface]
+public partial class CRagdollPropAttached : CRagdollProp, ICRagdollPropAttached
 {
     public CRagdollPropAttached (IntPtr pointer) : base(pointer) {}
 

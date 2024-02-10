@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CInButtonState : NativeObject
+[GenerateAutomaticInterface]
+public partial class CInButtonState : NativeObject, ICInButtonState
 {
     public CInButtonState (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPointEntityFinder : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CPointEntityFinder : CBaseEntity, ICPointEntityFinder
 {
     public CPointEntityFinder (IntPtr pointer) : base(pointer) {}
 

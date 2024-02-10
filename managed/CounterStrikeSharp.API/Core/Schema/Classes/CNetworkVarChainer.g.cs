@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CNetworkVarChainer : NativeObject
+[GenerateAutomaticInterface]
+public partial class CNetworkVarChainer : NativeObject, ICNetworkVarChainer
 {
     public CNetworkVarChainer (IntPtr pointer) : base(pointer) {}
 

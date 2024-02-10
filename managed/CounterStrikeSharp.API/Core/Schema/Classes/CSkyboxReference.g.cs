@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CSkyboxReference : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CSkyboxReference : CBaseEntity, ICSkyboxReference
 {
     public CSkyboxReference (IntPtr pointer) : base(pointer) {}
 

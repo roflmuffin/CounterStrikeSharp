@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CInstructorEventEntity : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CInstructorEventEntity : CPointEntity, ICInstructorEventEntity
 {
     public CInstructorEventEntity (IntPtr pointer) : base(pointer) {}
 

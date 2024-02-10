@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CHostageRescueZoneShim : CBaseTrigger
+[GenerateAutomaticInterface]
+public partial class CHostageRescueZoneShim : CBaseTrigger, ICHostageRescueZoneShim
 {
     public CHostageRescueZoneShim (IntPtr pointer) : base(pointer) {}
 

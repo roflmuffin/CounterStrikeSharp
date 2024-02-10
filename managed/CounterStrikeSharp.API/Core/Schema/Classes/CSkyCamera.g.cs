@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CSkyCamera : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CSkyCamera : CBaseEntity, ICSkyCamera
 {
     public CSkyCamera (IntPtr pointer) : base(pointer) {}
 

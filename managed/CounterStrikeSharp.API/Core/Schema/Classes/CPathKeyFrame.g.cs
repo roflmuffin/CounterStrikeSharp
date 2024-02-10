@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPathKeyFrame : CLogicalEntity
+[GenerateAutomaticInterface]
+public partial class CPathKeyFrame : CLogicalEntity, ICPathKeyFrame
 {
     public CPathKeyFrame (IntPtr pointer) : base(pointer) {}
 

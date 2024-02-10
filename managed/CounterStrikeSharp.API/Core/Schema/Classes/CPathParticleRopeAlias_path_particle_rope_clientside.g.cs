@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPathParticleRopeAlias_path_particle_rope_clientside : CPathParticleRope
+[GenerateAutomaticInterface]
+public partial class CPathParticleRopeAlias_path_particle_rope_clientside : CPathParticleRope, ICPathParticleRopeAlias_path_particle_rope_clientside
 {
     public CPathParticleRopeAlias_path_particle_rope_clientside (IntPtr pointer) : base(pointer) {}
 

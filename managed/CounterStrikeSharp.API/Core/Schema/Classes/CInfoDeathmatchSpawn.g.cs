@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CInfoDeathmatchSpawn : SpawnPoint
+[GenerateAutomaticInterface]
+public partial class CInfoDeathmatchSpawn : SpawnPoint, ICInfoDeathmatchSpawn
 {
     public CInfoDeathmatchSpawn (IntPtr pointer) : base(pointer) {}
 

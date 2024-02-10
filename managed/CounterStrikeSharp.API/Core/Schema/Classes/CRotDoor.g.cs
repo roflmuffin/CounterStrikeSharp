@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CRotDoor : CBaseDoor
+[GenerateAutomaticInterface]
+public partial class CRotDoor : CBaseDoor, ICRotDoor
 {
     public CRotDoor (IntPtr pointer) : base(pointer) {}
 

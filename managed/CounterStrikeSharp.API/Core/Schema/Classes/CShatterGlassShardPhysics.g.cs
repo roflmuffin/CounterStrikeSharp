@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CShatterGlassShardPhysics : CPhysicsProp
+[GenerateAutomaticInterface]
+public partial class CShatterGlassShardPhysics : CPhysicsProp, ICShatterGlassShardPhysics
 {
     public CShatterGlassShardPhysics (IntPtr pointer) : base(pointer) {}
 

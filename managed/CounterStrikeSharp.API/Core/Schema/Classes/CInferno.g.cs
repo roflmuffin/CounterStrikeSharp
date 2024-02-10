@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CInferno : CBaseModelEntity
+[GenerateAutomaticInterface]
+public partial class CInferno : CBaseModelEntity, ICInferno
 {
     public CInferno (IntPtr pointer) : base(pointer) {}
 

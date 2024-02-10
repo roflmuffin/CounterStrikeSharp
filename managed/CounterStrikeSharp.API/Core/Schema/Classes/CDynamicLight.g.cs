@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CDynamicLight : CBaseModelEntity
+[GenerateAutomaticInterface]
+public partial class CDynamicLight : CBaseModelEntity, ICDynamicLight
 {
     public CDynamicLight (IntPtr pointer) : base(pointer) {}
 

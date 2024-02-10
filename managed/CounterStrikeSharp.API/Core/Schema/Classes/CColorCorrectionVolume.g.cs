@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CColorCorrectionVolume : CBaseTrigger
+[GenerateAutomaticInterface]
+public partial class CColorCorrectionVolume : CBaseTrigger, ICColorCorrectionVolume
 {
     public CColorCorrectionVolume (IntPtr pointer) : base(pointer) {}
 

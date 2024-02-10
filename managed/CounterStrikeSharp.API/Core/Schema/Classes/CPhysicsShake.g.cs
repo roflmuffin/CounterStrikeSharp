@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPhysicsShake : NativeObject
+[GenerateAutomaticInterface]
+public partial class CPhysicsShake : NativeObject, ICPhysicsShake
 {
     public CPhysicsShake (IntPtr pointer) : base(pointer) {}
 

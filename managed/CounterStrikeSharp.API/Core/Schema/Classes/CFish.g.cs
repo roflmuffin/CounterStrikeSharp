@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFish : CBaseAnimGraph
+[GenerateAutomaticInterface]
+public partial class CFish : CBaseAnimGraph, ICFish
 {
     public CFish (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CInfoDynamicShadowHint : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CInfoDynamicShadowHint : CPointEntity, ICInfoDynamicShadowHint
 {
     public CInfoDynamicShadowHint (IntPtr pointer) : base(pointer) {}
 

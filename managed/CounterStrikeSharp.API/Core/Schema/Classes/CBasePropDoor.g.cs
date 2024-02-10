@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CBasePropDoor : CDynamicProp
+[GenerateAutomaticInterface]
+public partial class CBasePropDoor : CDynamicProp, ICBasePropDoor
 {
     public CBasePropDoor (IntPtr pointer) : base(pointer) {}
 

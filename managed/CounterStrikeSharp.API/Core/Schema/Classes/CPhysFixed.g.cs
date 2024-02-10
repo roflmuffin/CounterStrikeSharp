@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPhysFixed : CPhysConstraint
+[GenerateAutomaticInterface]
+public partial class CPhysFixed : CPhysConstraint, ICPhysFixed
 {
     public CPhysFixed (IntPtr pointer) : base(pointer) {}
 

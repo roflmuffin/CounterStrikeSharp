@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPhysicsPropRespawnable : CPhysicsProp
+[GenerateAutomaticInterface]
+public partial class CPhysicsPropRespawnable : CPhysicsProp, ICPhysicsPropRespawnable
 {
     public CPhysicsPropRespawnable (IntPtr pointer) : base(pointer) {}
 

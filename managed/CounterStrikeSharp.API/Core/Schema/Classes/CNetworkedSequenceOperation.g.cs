@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CNetworkedSequenceOperation : NativeObject
+[GenerateAutomaticInterface]
+public partial class CNetworkedSequenceOperation : NativeObject, ICNetworkedSequenceOperation
 {
     public CNetworkedSequenceOperation (IntPtr pointer) : base(pointer) {}
 

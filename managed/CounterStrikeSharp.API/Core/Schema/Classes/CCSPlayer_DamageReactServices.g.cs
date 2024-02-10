@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CCSPlayer_DamageReactServices : CPlayerPawnComponent
+[GenerateAutomaticInterface]
+public partial class CCSPlayer_DamageReactServices : CPlayerPawnComponent, ICCSPlayer_DamageReactServices
 {
     public CCSPlayer_DamageReactServices (IntPtr pointer) : base(pointer) {}
 

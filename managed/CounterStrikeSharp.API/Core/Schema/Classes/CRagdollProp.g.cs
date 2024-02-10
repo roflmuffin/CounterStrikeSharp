@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CRagdollProp : CBaseAnimGraph
+[GenerateAutomaticInterface]
+public partial class CRagdollProp : CBaseAnimGraph, ICRagdollProp
 {
     public CRagdollProp (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CEnvEntityIgniter : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CEnvEntityIgniter : CBaseEntity, ICEnvEntityIgniter
 {
     public CEnvEntityIgniter (IntPtr pointer) : base(pointer) {}
 

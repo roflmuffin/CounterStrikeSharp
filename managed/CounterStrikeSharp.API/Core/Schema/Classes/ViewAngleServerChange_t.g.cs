@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class ViewAngleServerChange_t : NativeObject
+[GenerateAutomaticInterface]
+public partial class ViewAngleServerChange_t : NativeObject, IViewAngleServerChange_t
 {
     public ViewAngleServerChange_t (IntPtr pointer) : base(pointer) {}
 

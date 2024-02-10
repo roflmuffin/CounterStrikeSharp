@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CHostage : CHostageExpresserShim
+[GenerateAutomaticInterface]
+public partial class CHostage : CHostageExpresserShim, ICHostage
 {
     public CHostage (IntPtr pointer) : base(pointer) {}
 
@@ -52,7 +53,7 @@ public partial class CHostage : CHostageExpresserShim
 
 	// m_bRemove
 	[SchemaMember("CHostage", "m_bRemove")]
-	public ref bool Remove => ref Schema.GetRef<bool>(this.Handle, "CHostage", "m_bRemove");
+	public ref bool RemoveProperty => ref Schema.GetRef<bool>(this.Handle, "CHostage", "m_bRemove");
 
 	// m_vel
 	[SchemaMember("CHostage", "m_vel")]

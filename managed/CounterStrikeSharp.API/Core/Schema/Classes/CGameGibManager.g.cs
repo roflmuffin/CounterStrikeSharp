@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CGameGibManager : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CGameGibManager : CBaseEntity, ICGameGibManager
 {
     public CGameGibManager (IntPtr pointer) : base(pointer) {}
 

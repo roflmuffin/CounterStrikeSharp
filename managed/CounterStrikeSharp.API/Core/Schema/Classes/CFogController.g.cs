@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFogController : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CFogController : CBaseEntity, ICFogController
 {
     public CFogController (IntPtr pointer) : base(pointer) {}
 

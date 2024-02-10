@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFuncWallToggle : CFuncWall
+[GenerateAutomaticInterface]
+public partial class CFuncWallToggle : CFuncWall, ICFuncWallToggle
 {
     public CFuncWallToggle (IntPtr pointer) : base(pointer) {}
 

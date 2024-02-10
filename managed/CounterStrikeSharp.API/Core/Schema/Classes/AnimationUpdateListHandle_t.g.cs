@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class AnimationUpdateListHandle_t : NativeObject
+[GenerateAutomaticInterface]
+public partial class AnimationUpdateListHandle_t : NativeObject, IAnimationUpdateListHandle_t
 {
     public AnimationUpdateListHandle_t (IntPtr pointer) : base(pointer) {}
 

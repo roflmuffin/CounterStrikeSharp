@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFuncRotating : CBaseModelEntity
+[GenerateAutomaticInterface]
+public partial class CFuncRotating : CBaseModelEntity, ICFuncRotating
 {
     public CFuncRotating (IntPtr pointer) : base(pointer) {}
 

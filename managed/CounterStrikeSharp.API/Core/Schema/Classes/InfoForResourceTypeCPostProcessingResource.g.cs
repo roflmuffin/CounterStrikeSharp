@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class InfoForResourceTypeCPostProcessingResource : NativeObject
+[GenerateAutomaticInterface]
+public partial class InfoForResourceTypeCPostProcessingResource : NativeObject, IInfoForResourceTypeCPostProcessingResource
 {
     public InfoForResourceTypeCPostProcessingResource (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CMapInfo : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CMapInfo : CPointEntity, ICMapInfo
 {
     public CMapInfo (IntPtr pointer) : base(pointer) {}
 

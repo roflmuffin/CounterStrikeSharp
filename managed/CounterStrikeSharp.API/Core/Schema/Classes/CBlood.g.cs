@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CBlood : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CBlood : CPointEntity, ICBlood
 {
     public CBlood (IntPtr pointer) : base(pointer) {}
 

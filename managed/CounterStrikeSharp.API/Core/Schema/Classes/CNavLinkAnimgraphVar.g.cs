@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CNavLinkAnimgraphVar : NativeObject
+[GenerateAutomaticInterface]
+public partial class CNavLinkAnimgraphVar : NativeObject, ICNavLinkAnimgraphVar
 {
     public CNavLinkAnimgraphVar (IntPtr pointer) : base(pointer) {}
 

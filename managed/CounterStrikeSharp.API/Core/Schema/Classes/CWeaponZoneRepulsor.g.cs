@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CWeaponZoneRepulsor : CCSWeaponBaseGun
+[GenerateAutomaticInterface]
+public partial class CWeaponZoneRepulsor : CCSWeaponBaseGun, ICWeaponZoneRepulsor
 {
     public CWeaponZoneRepulsor (IntPtr pointer) : base(pointer) {}
 

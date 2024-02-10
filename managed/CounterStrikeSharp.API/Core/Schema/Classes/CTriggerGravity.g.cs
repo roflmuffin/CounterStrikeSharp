@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTriggerGravity : CBaseTrigger
+[GenerateAutomaticInterface]
+public partial class CTriggerGravity : CBaseTrigger, ICTriggerGravity
 {
     public CTriggerGravity (IntPtr pointer) : base(pointer) {}
 

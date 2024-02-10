@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CEnableMotionFixup : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CEnableMotionFixup : CBaseEntity, ICEnableMotionFixup
 {
     public CEnableMotionFixup (IntPtr pointer) : base(pointer) {}
 

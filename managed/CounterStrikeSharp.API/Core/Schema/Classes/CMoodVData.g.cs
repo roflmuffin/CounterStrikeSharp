@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CMoodVData : NativeObject
+[GenerateAutomaticInterface]
+public partial class CMoodVData : NativeObject, ICMoodVData
 {
     public CMoodVData (IntPtr pointer) : base(pointer) {}
 

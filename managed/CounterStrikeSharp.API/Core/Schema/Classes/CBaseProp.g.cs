@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CBaseProp : CBaseAnimGraph
+[GenerateAutomaticInterface]
+public partial class CBaseProp : CBaseAnimGraph, ICBaseProp
 {
     public CBaseProp (IntPtr pointer) : base(pointer) {}
 

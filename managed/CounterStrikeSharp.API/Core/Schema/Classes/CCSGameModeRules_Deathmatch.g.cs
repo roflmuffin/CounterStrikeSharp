@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CCSGameModeRules_Deathmatch : CCSGameModeRules
+[GenerateAutomaticInterface]
+public partial class CCSGameModeRules_Deathmatch : CCSGameModeRules, ICCSGameModeRules_Deathmatch
 {
     public CCSGameModeRules_Deathmatch (IntPtr pointer) : base(pointer) {}
 

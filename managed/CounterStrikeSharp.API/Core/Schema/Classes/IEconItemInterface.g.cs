@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class IEconItemInterface : NativeObject
+[GenerateAutomaticInterface]
+public partial class IEconItemInterface : NativeObject, IIEconItemInterface
 {
     public IEconItemInterface (IntPtr pointer) : base(pointer) {}
 

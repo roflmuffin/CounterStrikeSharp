@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CNetworkVelocityVector : NativeObject
+[GenerateAutomaticInterface]
+public partial class CNetworkVelocityVector : NativeObject, ICNetworkVelocityVector
 {
     public CNetworkVelocityVector (IntPtr pointer) : base(pointer) {}
 

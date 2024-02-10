@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class ServerAuthoritativeWeaponSlot_t : NativeObject
+[GenerateAutomaticInterface]
+public partial class ServerAuthoritativeWeaponSlot_t : NativeObject, IServerAuthoritativeWeaponSlot_t
 {
     public ServerAuthoritativeWeaponSlot_t (IntPtr pointer) : base(pointer) {}
 

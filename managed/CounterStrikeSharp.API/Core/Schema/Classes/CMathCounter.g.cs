@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CMathCounter : CLogicalEntity
+[GenerateAutomaticInterface]
+public partial class CMathCounter : CLogicalEntity, ICMathCounter
 {
     public CMathCounter (IntPtr pointer) : base(pointer) {}
 

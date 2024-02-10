@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CHostageExpresserShim : CBaseCombatCharacter
+[GenerateAutomaticInterface]
+public partial class CHostageExpresserShim : CBaseCombatCharacter, ICHostageExpresserShim
 {
     public CHostageExpresserShim (IntPtr pointer) : base(pointer) {}
 

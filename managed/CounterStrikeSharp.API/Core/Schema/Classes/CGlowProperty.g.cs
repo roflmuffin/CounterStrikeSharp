@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CGlowProperty : NativeObject
+[GenerateAutomaticInterface]
+public partial class CGlowProperty : NativeObject, ICGlowProperty
 {
     public CGlowProperty (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CSensorGrenade : CBaseCSGrenade
+[GenerateAutomaticInterface]
+public partial class CSensorGrenade : CBaseCSGrenade, ICSensorGrenade
 {
     public CSensorGrenade (IntPtr pointer) : base(pointer) {}
 

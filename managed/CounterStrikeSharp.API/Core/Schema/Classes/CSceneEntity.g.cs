@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CSceneEntity : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CSceneEntity : CPointEntity, ICSceneEntity
 {
     public CSceneEntity (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CInfoLadderDismount : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CInfoLadderDismount : CBaseEntity, ICInfoLadderDismount
 {
     public CInfoLadderDismount (IntPtr pointer) : base(pointer) {}
 

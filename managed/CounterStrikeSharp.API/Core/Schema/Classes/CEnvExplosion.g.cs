@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CEnvExplosion : CModelPointEntity
+[GenerateAutomaticInterface]
+public partial class CEnvExplosion : CModelPointEntity, ICEnvExplosion
 {
     public CEnvExplosion (IntPtr pointer) : base(pointer) {}
 

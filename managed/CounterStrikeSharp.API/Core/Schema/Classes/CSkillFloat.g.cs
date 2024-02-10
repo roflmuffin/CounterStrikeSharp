@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CSkillFloat : NativeObject
+[GenerateAutomaticInterface]
+public partial class CSkillFloat : NativeObject, ICSkillFloat
 {
     public CSkillFloat (IntPtr pointer) : base(pointer) {}
 

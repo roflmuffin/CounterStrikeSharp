@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class dynpitchvol_base_t : NativeObject
+[GenerateAutomaticInterface]
+public partial class dynpitchvol_base_t : NativeObject, Idynpitchvol_base_t
 {
     public dynpitchvol_base_t (IntPtr pointer) : base(pointer) {}
 

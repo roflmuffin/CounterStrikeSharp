@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CCSPlayerController_InventoryServices : CPlayerControllerComponent
+[GenerateAutomaticInterface]
+public partial class CCSPlayerController_InventoryServices : CPlayerControllerComponent, ICCSPlayerController_InventoryServices
 {
     public CCSPlayerController_InventoryServices (IntPtr pointer) : base(pointer) {}
 

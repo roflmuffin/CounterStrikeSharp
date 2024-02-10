@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CRagdollMagnet : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CRagdollMagnet : CPointEntity, ICRagdollMagnet
 {
     public CRagdollMagnet (IntPtr pointer) : base(pointer) {}
 

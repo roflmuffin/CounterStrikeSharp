@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CGunTarget : CBaseToggle
+[GenerateAutomaticInterface]
+public partial class CGunTarget : CBaseToggle, ICGunTarget
 {
     public CGunTarget (IntPtr pointer) : base(pointer) {}
 

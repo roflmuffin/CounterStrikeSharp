@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPhysWheelConstraint : CPhysConstraint
+[GenerateAutomaticInterface]
+public partial class CPhysWheelConstraint : CPhysConstraint, ICPhysWheelConstraint
 {
     public CPhysWheelConstraint (IntPtr pointer) : base(pointer) {}
 

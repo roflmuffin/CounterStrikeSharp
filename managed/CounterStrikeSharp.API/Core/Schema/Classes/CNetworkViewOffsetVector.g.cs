@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CNetworkViewOffsetVector : NativeObject
+[GenerateAutomaticInterface]
+public partial class CNetworkViewOffsetVector : NativeObject, ICNetworkViewOffsetVector
 {
     public CNetworkViewOffsetVector (IntPtr pointer) : base(pointer) {}
 

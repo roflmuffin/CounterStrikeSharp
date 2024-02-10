@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTriggerBrush : CBaseModelEntity
+[GenerateAutomaticInterface]
+public partial class CTriggerBrush : CBaseModelEntity, ICTriggerBrush
 {
     public CTriggerBrush (IntPtr pointer) : base(pointer) {}
 

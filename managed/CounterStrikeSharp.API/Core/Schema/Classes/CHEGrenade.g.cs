@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CHEGrenade : CBaseCSGrenade
+[GenerateAutomaticInterface]
+public partial class CHEGrenade : CBaseCSGrenade, ICHEGrenade
 {
     public CHEGrenade (IntPtr pointer) : base(pointer) {}
 

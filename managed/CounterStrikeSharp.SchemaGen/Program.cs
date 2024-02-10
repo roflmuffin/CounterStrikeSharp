@@ -237,6 +237,7 @@ internal static partial class Program
         var classNameCs = SanitiseTypeName(schemaClassName);
 
         builder.AppendLine();
+        builder.AppendLine($"[GenerateAutomaticInterface]");
         builder.Append($"public partial class {classNameCs}");
 
         if (schemaClass.Parent != null)
@@ -246,6 +247,8 @@ internal static partial class Program
         {
             builder.Append($" : NativeObject");
         }
+        
+        builder.Append($", I{classNameCs}");
 
         builder.AppendLine();
         builder.AppendLine("{");

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTriggerDetectExplosion : CBaseTrigger
+[GenerateAutomaticInterface]
+public partial class CTriggerDetectExplosion : CBaseTrigger, ICTriggerDetectExplosion
 {
     public CTriggerDetectExplosion (IntPtr pointer) : base(pointer) {}
 

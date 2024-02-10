@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CMathRemap : CLogicalEntity
+[GenerateAutomaticInterface]
+public partial class CMathRemap : CLogicalEntity, ICMathRemap
 {
     public CMathRemap (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFuncMonitor : CFuncBrush
+[GenerateAutomaticInterface]
+public partial class CFuncMonitor : CFuncBrush, ICFuncMonitor
 {
     public CFuncMonitor (IntPtr pointer) : base(pointer) {}
 

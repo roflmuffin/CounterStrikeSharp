@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFists : CCSWeaponBase
+[GenerateAutomaticInterface]
+public partial class CFists : CCSWeaponBase, ICFists
 {
     public CFists (IntPtr pointer) : base(pointer) {}
 

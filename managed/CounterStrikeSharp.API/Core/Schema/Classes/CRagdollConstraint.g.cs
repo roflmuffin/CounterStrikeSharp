@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CRagdollConstraint : CPhysConstraint
+[GenerateAutomaticInterface]
+public partial class CRagdollConstraint : CPhysConstraint, ICRagdollConstraint
 {
     public CRagdollConstraint (IntPtr pointer) : base(pointer) {}
 

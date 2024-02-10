@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class constraint_breakableparams_t : NativeObject
+[GenerateAutomaticInterface]
+public partial class constraint_breakableparams_t : NativeObject, Iconstraint_breakableparams_t
 {
     public constraint_breakableparams_t (IntPtr pointer) : base(pointer) {}
 

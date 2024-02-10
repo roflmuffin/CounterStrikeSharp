@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CDecoyProjectile : CBaseCSGrenadeProjectile
+[GenerateAutomaticInterface]
+public partial class CDecoyProjectile : CBaseCSGrenadeProjectile, ICDecoyProjectile
 {
     public CDecoyProjectile (IntPtr pointer) : base(pointer) {}
 

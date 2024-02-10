@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPhysicsWire : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CPhysicsWire : CBaseEntity, ICPhysicsWire
 {
     public CPhysicsWire (IntPtr pointer) : base(pointer) {}
 

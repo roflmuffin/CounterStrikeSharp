@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPointScript : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CPointScript : CBaseEntity, ICPointScript
 {
     public CPointScript (IntPtr pointer) : base(pointer) {}
 

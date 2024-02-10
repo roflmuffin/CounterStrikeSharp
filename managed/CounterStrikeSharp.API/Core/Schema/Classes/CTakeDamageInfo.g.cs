@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTakeDamageInfo : NativeObject
+[GenerateAutomaticInterface]
+public partial class CTakeDamageInfo : NativeObject, ICTakeDamageInfo
 {
     public CTakeDamageInfo (IntPtr pointer) : base(pointer) {}
 

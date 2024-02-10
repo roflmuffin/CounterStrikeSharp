@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFuncTrain : CBasePlatTrain
+[GenerateAutomaticInterface]
+public partial class CFuncTrain : CBasePlatTrain, ICFuncTrain
 {
     public CFuncTrain (IntPtr pointer) : base(pointer) {}
 

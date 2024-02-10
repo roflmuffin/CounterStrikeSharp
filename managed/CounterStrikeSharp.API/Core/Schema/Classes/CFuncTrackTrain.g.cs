@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFuncTrackTrain : CBaseModelEntity
+[GenerateAutomaticInterface]
+public partial class CFuncTrackTrain : CBaseModelEntity, ICFuncTrackTrain
 {
     public CFuncTrackTrain (IntPtr pointer) : base(pointer) {}
 

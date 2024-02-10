@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CEnvSky : CBaseModelEntity
+[GenerateAutomaticInterface]
+public partial class CEnvSky : CBaseModelEntity, ICEnvSky
 {
     public CEnvSky (IntPtr pointer) : base(pointer) {}
 

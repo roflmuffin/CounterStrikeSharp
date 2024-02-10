@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CNavLinkAreaEntity : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CNavLinkAreaEntity : CPointEntity, ICNavLinkAreaEntity
 {
     public CNavLinkAreaEntity (IntPtr pointer) : base(pointer) {}
 

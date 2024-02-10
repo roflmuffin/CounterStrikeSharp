@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CLogicMeasureMovement : CLogicalEntity
+[GenerateAutomaticInterface]
+public partial class CLogicMeasureMovement : CLogicalEntity, ICLogicMeasureMovement
 {
     public CLogicMeasureMovement (IntPtr pointer) : base(pointer) {}
 

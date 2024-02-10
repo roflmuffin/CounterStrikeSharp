@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CRagdollPropAlias_physics_prop_ragdoll : CRagdollProp
+[GenerateAutomaticInterface]
+public partial class CRagdollPropAlias_physics_prop_ragdoll : CRagdollProp, ICRagdollPropAlias_physics_prop_ragdoll
 {
     public CRagdollPropAlias_physics_prop_ragdoll (IntPtr pointer) : base(pointer) {}
 

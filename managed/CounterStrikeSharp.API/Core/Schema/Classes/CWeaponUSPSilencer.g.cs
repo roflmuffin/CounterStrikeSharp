@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CWeaponUSPSilencer : CCSWeaponBaseGun
+[GenerateAutomaticInterface]
+public partial class CWeaponUSPSilencer : CCSWeaponBaseGun, ICWeaponUSPSilencer
 {
     public CWeaponUSPSilencer (IntPtr pointer) : base(pointer) {}
 

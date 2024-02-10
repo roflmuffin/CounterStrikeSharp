@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CInfoSpawnGroupLoadUnload : CLogicalEntity
+[GenerateAutomaticInterface]
+public partial class CInfoSpawnGroupLoadUnload : CLogicalEntity, ICInfoSpawnGroupLoadUnload
 {
     public CInfoSpawnGroupLoadUnload (IntPtr pointer) : base(pointer) {}
 

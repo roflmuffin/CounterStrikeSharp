@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CSceneListManager : CLogicalEntity
+[GenerateAutomaticInterface]
+public partial class CSceneListManager : CLogicalEntity, ICSceneListManager
 {
     public CSceneListManager (IntPtr pointer) : base(pointer) {}
 

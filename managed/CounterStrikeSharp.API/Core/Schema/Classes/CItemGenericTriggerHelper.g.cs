@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CItemGenericTriggerHelper : CBaseModelEntity
+[GenerateAutomaticInterface]
+public partial class CItemGenericTriggerHelper : CBaseModelEntity, ICItemGenericTriggerHelper
 {
     public CItemGenericTriggerHelper (IntPtr pointer) : base(pointer) {}
 

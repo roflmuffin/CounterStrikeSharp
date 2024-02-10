@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPlantedC4 : CBaseAnimGraph
+[GenerateAutomaticInterface]
+public partial class CPlantedC4 : CBaseAnimGraph, ICPlantedC4
 {
     public CPlantedC4 (IntPtr pointer) : base(pointer) {}
 

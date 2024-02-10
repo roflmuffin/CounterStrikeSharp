@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFuncTrackChange : CFuncPlatRot
+[GenerateAutomaticInterface]
+public partial class CFuncTrackChange : CFuncPlatRot, ICFuncTrackChange
 {
     public CFuncTrackChange (IntPtr pointer) : base(pointer) {}
 

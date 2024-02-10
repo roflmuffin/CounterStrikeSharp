@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CMelee : CCSWeaponBase
+[GenerateAutomaticInterface]
+public partial class CMelee : CCSWeaponBase, ICMelee
 {
     public CMelee (IntPtr pointer) : base(pointer) {}
 

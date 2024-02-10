@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFuncWater : CBaseModelEntity
+[GenerateAutomaticInterface]
+public partial class CFuncWater : CBaseModelEntity, ICFuncWater
 {
     public CFuncWater (IntPtr pointer) : base(pointer) {}
 

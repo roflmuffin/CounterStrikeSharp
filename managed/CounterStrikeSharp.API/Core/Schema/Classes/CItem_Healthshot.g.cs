@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CItem_Healthshot : CWeaponBaseItem
+[GenerateAutomaticInterface]
+public partial class CItem_Healthshot : CWeaponBaseItem, ICItem_Healthshot
 {
     public CItem_Healthshot (IntPtr pointer) : base(pointer) {}
 

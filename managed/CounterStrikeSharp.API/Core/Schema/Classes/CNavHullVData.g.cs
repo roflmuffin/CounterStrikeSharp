@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CNavHullVData : NativeObject
+[GenerateAutomaticInterface]
+public partial class CNavHullVData : NativeObject, ICNavHullVData
 {
     public CNavHullVData (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CBubbling : CBaseModelEntity
+[GenerateAutomaticInterface]
+public partial class CBubbling : CBaseModelEntity, ICBubbling
 {
     public CBubbling (IntPtr pointer) : base(pointer) {}
 

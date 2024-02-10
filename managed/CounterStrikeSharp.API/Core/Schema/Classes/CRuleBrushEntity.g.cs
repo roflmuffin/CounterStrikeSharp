@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CRuleBrushEntity : CRuleEntity
+[GenerateAutomaticInterface]
+public partial class CRuleBrushEntity : CRuleEntity, ICRuleBrushEntity
 {
     public CRuleBrushEntity (IntPtr pointer) : base(pointer) {}
 

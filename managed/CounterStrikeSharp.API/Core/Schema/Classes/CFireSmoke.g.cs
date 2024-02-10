@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFireSmoke : CBaseFire
+[GenerateAutomaticInterface]
+public partial class CFireSmoke : CBaseFire, ICFireSmoke
 {
     public CFireSmoke (IntPtr pointer) : base(pointer) {}
 

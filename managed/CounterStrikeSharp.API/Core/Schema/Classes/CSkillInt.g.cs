@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CSkillInt : NativeObject
+[GenerateAutomaticInterface]
+public partial class CSkillInt : NativeObject, ICSkillInt
 {
     public CSkillInt (IntPtr pointer) : base(pointer) {}
 

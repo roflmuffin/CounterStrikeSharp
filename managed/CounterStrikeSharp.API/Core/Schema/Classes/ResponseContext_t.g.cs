@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class ResponseContext_t : NativeObject
+[GenerateAutomaticInterface]
+public partial class ResponseContext_t : NativeObject, IResponseContext_t
 {
     public ResponseContext_t (IntPtr pointer) : base(pointer) {}
 

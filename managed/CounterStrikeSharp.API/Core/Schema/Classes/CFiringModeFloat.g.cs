@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFiringModeFloat : NativeObject
+[GenerateAutomaticInterface]
+public partial class CFiringModeFloat : NativeObject, ICFiringModeFloat
 {
     public CFiringModeFloat (IntPtr pointer) : base(pointer) {}
 

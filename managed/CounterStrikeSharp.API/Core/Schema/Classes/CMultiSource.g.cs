@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CMultiSource : CLogicalEntity
+[GenerateAutomaticInterface]
+public partial class CMultiSource : CLogicalEntity, ICMultiSource
 {
     public CMultiSource (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CLightComponent : CEntityComponent
+[GenerateAutomaticInterface]
+public partial class CLightComponent : CEntityComponent, ICLightComponent
 {
     public CLightComponent (IntPtr pointer) : base(pointer) {}
 

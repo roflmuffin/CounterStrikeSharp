@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class FilterHealth : CBaseFilter
+[GenerateAutomaticInterface]
+public partial class FilterHealth : CBaseFilter, IFilterHealth
 {
     public FilterHealth (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CSpriteAlias_env_glow : CSprite
+[GenerateAutomaticInterface]
+public partial class CSpriteAlias_env_glow : CSprite, ICSpriteAlias_env_glow
 {
     public CSpriteAlias_env_glow (IntPtr pointer) : base(pointer) {}
 

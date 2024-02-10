@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CKeepUpright : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CKeepUpright : CPointEntity, ICKeepUpright
 {
     public CKeepUpright (IntPtr pointer) : base(pointer) {}
 

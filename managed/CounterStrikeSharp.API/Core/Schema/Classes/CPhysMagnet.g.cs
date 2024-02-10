@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPhysMagnet : CBaseAnimGraph
+[GenerateAutomaticInterface]
+public partial class CPhysMagnet : CBaseAnimGraph, ICPhysMagnet
 {
     public CPhysMagnet (IntPtr pointer) : base(pointer) {}
 

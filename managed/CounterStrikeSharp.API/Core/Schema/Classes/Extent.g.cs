@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class Extent : NativeObject
+[GenerateAutomaticInterface]
+public partial class Extent : NativeObject, IExtent
 {
     public Extent (IntPtr pointer) : base(pointer) {}
 

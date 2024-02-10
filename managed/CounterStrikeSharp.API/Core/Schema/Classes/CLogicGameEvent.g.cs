@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CLogicGameEvent : CLogicalEntity
+[GenerateAutomaticInterface]
+public partial class CLogicGameEvent : CLogicalEntity, ICLogicGameEvent
 {
     public CLogicGameEvent (IntPtr pointer) : base(pointer) {}
 

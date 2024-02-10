@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFilterContext : CBaseFilter
+[GenerateAutomaticInterface]
+public partial class CFilterContext : CBaseFilter, ICFilterContext
 {
     public CFilterContext (IntPtr pointer) : base(pointer) {}
 

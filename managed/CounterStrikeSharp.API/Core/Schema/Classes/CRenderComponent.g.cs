@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CRenderComponent : CEntityComponent
+[GenerateAutomaticInterface]
+public partial class CRenderComponent : CEntityComponent, ICRenderComponent
 {
     public CRenderComponent (IntPtr pointer) : base(pointer) {}
 

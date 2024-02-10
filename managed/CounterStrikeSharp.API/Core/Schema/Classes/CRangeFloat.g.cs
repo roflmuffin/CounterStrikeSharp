@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CRangeFloat : NativeObject
+[GenerateAutomaticInterface]
+public partial class CRangeFloat : NativeObject, ICRangeFloat
 {
     public CRangeFloat (IntPtr pointer) : base(pointer) {}
 

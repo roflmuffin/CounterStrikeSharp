@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CWeaponMP7 : CCSWeaponBaseGun
+[GenerateAutomaticInterface]
+public partial class CWeaponMP7 : CCSWeaponBaseGun, ICWeaponMP7
 {
     public CWeaponMP7 (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CItemSoda : CBaseAnimGraph
+[GenerateAutomaticInterface]
+public partial class CItemSoda : CBaseAnimGraph, ICItemSoda
 {
     public CItemSoda (IntPtr pointer) : base(pointer) {}
 

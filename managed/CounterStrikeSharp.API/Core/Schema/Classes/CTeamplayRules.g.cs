@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTeamplayRules : CMultiplayRules
+[GenerateAutomaticInterface]
+public partial class CTeamplayRules : CMultiplayRules, ICTeamplayRules
 {
     public CTeamplayRules (IntPtr pointer) : base(pointer) {}
 

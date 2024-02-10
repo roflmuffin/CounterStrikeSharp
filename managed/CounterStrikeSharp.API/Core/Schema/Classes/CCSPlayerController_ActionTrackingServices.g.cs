@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CCSPlayerController_ActionTrackingServices : CPlayerControllerComponent
+[GenerateAutomaticInterface]
+public partial class CCSPlayerController_ActionTrackingServices : CPlayerControllerComponent, ICCSPlayerController_ActionTrackingServices
 {
     public CCSPlayerController_ActionTrackingServices (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CHostageAlias_info_hostage_spawn : CHostage
+[GenerateAutomaticInterface]
+public partial class CHostageAlias_info_hostage_spawn : CHostage, ICHostageAlias_info_hostage_spawn
 {
     public CHostageAlias_info_hostage_spawn (IntPtr pointer) : base(pointer) {}
 

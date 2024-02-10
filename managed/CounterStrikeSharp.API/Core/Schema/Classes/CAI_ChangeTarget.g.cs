@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CAI_ChangeTarget : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CAI_ChangeTarget : CBaseEntity, ICAI_ChangeTarget
 {
     public CAI_ChangeTarget (IntPtr pointer) : base(pointer) {}
 

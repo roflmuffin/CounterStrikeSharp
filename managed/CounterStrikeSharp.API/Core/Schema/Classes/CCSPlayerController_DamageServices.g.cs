@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CCSPlayerController_DamageServices : CPlayerControllerComponent
+[GenerateAutomaticInterface]
+public partial class CCSPlayerController_DamageServices : CPlayerControllerComponent, ICCSPlayerController_DamageServices
 {
     public CCSPlayerController_DamageServices (IntPtr pointer) : base(pointer) {}
 

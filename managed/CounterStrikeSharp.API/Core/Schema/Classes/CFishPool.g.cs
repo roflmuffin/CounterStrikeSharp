@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFishPool : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CFishPool : CBaseEntity, ICFishPool
 {
     public CFishPool (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CHitboxComponent : CEntityComponent
+[GenerateAutomaticInterface]
+public partial class CHitboxComponent : CEntityComponent, ICHitboxComponent
 {
     public CHitboxComponent (IntPtr pointer) : base(pointer) {}
 

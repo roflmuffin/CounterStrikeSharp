@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPointProximitySensor : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CPointProximitySensor : CPointEntity, ICPointProximitySensor
 {
     public CPointProximitySensor (IntPtr pointer) : base(pointer) {}
 

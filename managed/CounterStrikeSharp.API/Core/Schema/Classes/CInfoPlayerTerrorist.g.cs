@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CInfoPlayerTerrorist : SpawnPoint
+[GenerateAutomaticInterface]
+public partial class CInfoPlayerTerrorist : SpawnPoint, ICInfoPlayerTerrorist
 {
     public CInfoPlayerTerrorist (IntPtr pointer) : base(pointer) {}
 

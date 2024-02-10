@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CGameChoreoServices : IChoreoServices
+[GenerateAutomaticInterface]
+public partial class CGameChoreoServices : IChoreoServices, ICGameChoreoServices
 {
     public CGameChoreoServices (IntPtr pointer) : base(pointer) {}
 

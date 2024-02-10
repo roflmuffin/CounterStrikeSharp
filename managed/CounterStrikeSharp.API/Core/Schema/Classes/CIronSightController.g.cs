@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CIronSightController : NativeObject
+[GenerateAutomaticInterface]
+public partial class CIronSightController : NativeObject, ICIronSightController
 {
     public CIronSightController (IntPtr pointer) : base(pointer) {}
 

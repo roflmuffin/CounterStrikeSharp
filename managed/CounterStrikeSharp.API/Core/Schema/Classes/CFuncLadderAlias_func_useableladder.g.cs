@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFuncLadderAlias_func_useableladder : CFuncLadder
+[GenerateAutomaticInterface]
+public partial class CFuncLadderAlias_func_useableladder : CFuncLadder, ICFuncLadderAlias_func_useableladder
 {
     public CFuncLadderAlias_func_useableladder (IntPtr pointer) : base(pointer) {}
 

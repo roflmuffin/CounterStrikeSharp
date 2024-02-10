@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPointClientUIWorldTextPanel : CPointClientUIWorldPanel
+[GenerateAutomaticInterface]
+public partial class CPointClientUIWorldTextPanel : CPointClientUIWorldPanel, ICPointClientUIWorldTextPanel
 {
     public CPointClientUIWorldTextPanel (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CWaterBullet : CBaseAnimGraph
+[GenerateAutomaticInterface]
+public partial class CWaterBullet : CBaseAnimGraph, ICWaterBullet
 {
     public CWaterBullet (IntPtr pointer) : base(pointer) {}
 

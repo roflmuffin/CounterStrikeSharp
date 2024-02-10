@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CLogicPlayerProxy : CLogicalEntity
+[GenerateAutomaticInterface]
+public partial class CLogicPlayerProxy : CLogicalEntity, ICLogicPlayerProxy
 {
     public CLogicPlayerProxy (IntPtr pointer) : base(pointer) {}
 

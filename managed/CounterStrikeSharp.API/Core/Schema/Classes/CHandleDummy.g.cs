@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CHandleDummy : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CHandleDummy : CBaseEntity, ICHandleDummy
 {
     public CHandleDummy (IntPtr pointer) : base(pointer) {}
 

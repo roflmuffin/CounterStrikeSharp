@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CBaseCombatCharacter : CBaseFlex
+[GenerateAutomaticInterface]
+public partial class CBaseCombatCharacter : CBaseFlex, ICBaseCombatCharacter
 {
     public CBaseCombatCharacter (IntPtr pointer) : base(pointer) {}
 

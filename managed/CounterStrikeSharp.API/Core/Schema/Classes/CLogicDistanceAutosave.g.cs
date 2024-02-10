@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CLogicDistanceAutosave : CLogicalEntity
+[GenerateAutomaticInterface]
+public partial class CLogicDistanceAutosave : CLogicalEntity, ICLogicDistanceAutosave
 {
     public CLogicDistanceAutosave (IntPtr pointer) : base(pointer) {}
 

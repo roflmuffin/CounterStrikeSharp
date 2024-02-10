@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class EntitySpottedState_t : NativeObject
+[GenerateAutomaticInterface]
+public partial class EntitySpottedState_t : NativeObject, IEntitySpottedState_t
 {
     public EntitySpottedState_t (IntPtr pointer) : base(pointer) {}
 

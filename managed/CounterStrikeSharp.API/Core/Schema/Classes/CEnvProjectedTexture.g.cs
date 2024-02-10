@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CEnvProjectedTexture : CModelPointEntity
+[GenerateAutomaticInterface]
+public partial class CEnvProjectedTexture : CModelPointEntity, ICEnvProjectedTexture
 {
     public CEnvProjectedTexture (IntPtr pointer) : base(pointer) {}
 

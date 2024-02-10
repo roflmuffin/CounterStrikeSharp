@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CRectLight : CBarnLight
+[GenerateAutomaticInterface]
+public partial class CRectLight : CBarnLight, ICRectLight
 {
     public CRectLight (IntPtr pointer) : base(pointer) {}
 

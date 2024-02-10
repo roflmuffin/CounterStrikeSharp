@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CMotorController : NativeObject
+[GenerateAutomaticInterface]
+public partial class CMotorController : NativeObject, ICMotorController
 {
     public CMotorController (IntPtr pointer) : base(pointer) {}
 

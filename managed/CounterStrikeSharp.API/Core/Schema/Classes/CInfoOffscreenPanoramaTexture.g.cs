@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CInfoOffscreenPanoramaTexture : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CInfoOffscreenPanoramaTexture : CPointEntity, ICInfoOffscreenPanoramaTexture
 {
     public CInfoOffscreenPanoramaTexture (IntPtr pointer) : base(pointer) {}
 

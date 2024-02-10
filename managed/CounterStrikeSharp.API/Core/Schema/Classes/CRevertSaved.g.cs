@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CRevertSaved : CModelPointEntity
+[GenerateAutomaticInterface]
+public partial class CRevertSaved : CModelPointEntity, ICRevertSaved
 {
     public CRevertSaved (IntPtr pointer) : base(pointer) {}
 

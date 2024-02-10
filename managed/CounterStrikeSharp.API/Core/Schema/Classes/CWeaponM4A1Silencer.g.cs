@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CWeaponM4A1Silencer : CCSWeaponBaseGun
+[GenerateAutomaticInterface]
+public partial class CWeaponM4A1Silencer : CCSWeaponBaseGun, ICWeaponM4A1Silencer
 {
     public CWeaponM4A1Silencer (IntPtr pointer) : base(pointer) {}
 

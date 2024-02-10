@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFogTrigger : CBaseTrigger
+[GenerateAutomaticInterface]
+public partial class CFogTrigger : CBaseTrigger, ICFogTrigger
 {
     public CFogTrigger (IntPtr pointer) : base(pointer) {}
 

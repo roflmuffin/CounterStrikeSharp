@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPhysImpact : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CPhysImpact : CPointEntity, ICPhysImpact
 {
     public CPhysImpact (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CEnvFunnel : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CEnvFunnel : CBaseEntity, ICEnvFunnel
 {
     public CEnvFunnel (IntPtr pointer) : base(pointer) {}
 

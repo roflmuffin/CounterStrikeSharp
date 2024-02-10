@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CProjectedDecal : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CProjectedDecal : CPointEntity, ICProjectedDecal
 {
     public CProjectedDecal (IntPtr pointer) : base(pointer) {}
 

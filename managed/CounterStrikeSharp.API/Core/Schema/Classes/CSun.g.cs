@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CSun : CBaseModelEntity
+[GenerateAutomaticInterface]
+public partial class CSun : CBaseModelEntity, ICSun
 {
     public CSun (IntPtr pointer) : base(pointer) {}
 

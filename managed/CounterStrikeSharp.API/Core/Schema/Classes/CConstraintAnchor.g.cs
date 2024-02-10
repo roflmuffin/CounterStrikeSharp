@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CConstraintAnchor : CBaseAnimGraph
+[GenerateAutomaticInterface]
+public partial class CConstraintAnchor : CBaseAnimGraph, ICConstraintAnchor
 {
     public CConstraintAnchor (IntPtr pointer) : base(pointer) {}
 

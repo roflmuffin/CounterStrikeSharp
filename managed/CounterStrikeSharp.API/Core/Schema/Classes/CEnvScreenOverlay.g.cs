@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CEnvScreenOverlay : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CEnvScreenOverlay : CPointEntity, ICEnvScreenOverlay
 {
     public CEnvScreenOverlay (IntPtr pointer) : base(pointer) {}
 

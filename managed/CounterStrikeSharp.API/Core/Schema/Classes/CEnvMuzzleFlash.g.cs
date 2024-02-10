@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CEnvMuzzleFlash : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CEnvMuzzleFlash : CPointEntity, ICEnvMuzzleFlash
 {
     public CEnvMuzzleFlash (IntPtr pointer) : base(pointer) {}
 

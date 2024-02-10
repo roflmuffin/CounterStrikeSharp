@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CEconItemView : IEconItemInterface
+[GenerateAutomaticInterface]
+public partial class CEconItemView : IEconItemInterface, ICEconItemView
 {
     public CEconItemView (IntPtr pointer) : base(pointer) {}
 

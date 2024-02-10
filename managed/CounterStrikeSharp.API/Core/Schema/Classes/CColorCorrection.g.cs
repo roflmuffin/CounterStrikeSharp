@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CColorCorrection : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CColorCorrection : CBaseEntity, ICColorCorrection
 {
     public CColorCorrection (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CLogicRelay : CLogicalEntity
+[GenerateAutomaticInterface]
+public partial class CLogicRelay : CLogicalEntity, ICLogicRelay
 {
     public CLogicRelay (IntPtr pointer) : base(pointer) {}
 

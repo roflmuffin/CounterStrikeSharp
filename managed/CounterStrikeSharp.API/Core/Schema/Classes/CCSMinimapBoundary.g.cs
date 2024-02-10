@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CCSMinimapBoundary : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CCSMinimapBoundary : CBaseEntity, ICCSMinimapBoundary
 {
     public CCSMinimapBoundary (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CEnvDetailController : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CEnvDetailController : CBaseEntity, ICEnvDetailController
 {
     public CEnvDetailController (IntPtr pointer) : base(pointer) {}
 

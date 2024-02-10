@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class WeaponPurchaseCount_t : NativeObject
+[GenerateAutomaticInterface]
+public partial class WeaponPurchaseCount_t : NativeObject, IWeaponPurchaseCount_t
 {
     public WeaponPurchaseCount_t (IntPtr pointer) : base(pointer) {}
 

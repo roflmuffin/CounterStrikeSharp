@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTablet : CCSWeaponBase
+[GenerateAutomaticInterface]
+public partial class CTablet : CCSWeaponBase, ICTablet
 {
     public CTablet (IntPtr pointer) : base(pointer) {}
 

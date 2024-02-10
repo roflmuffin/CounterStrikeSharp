@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CModelState : NativeObject
+[GenerateAutomaticInterface]
+public partial class CModelState : NativeObject, ICModelState
 {
     public CModelState (IntPtr pointer) : base(pointer) {}
 

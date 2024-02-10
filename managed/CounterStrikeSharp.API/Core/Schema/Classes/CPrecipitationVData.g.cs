@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPrecipitationVData : CEntitySubclassVDataBase
+[GenerateAutomaticInterface]
+public partial class CPrecipitationVData : CEntitySubclassVDataBase, ICPrecipitationVData
 {
     public CPrecipitationVData (IntPtr pointer) : base(pointer) {}
 

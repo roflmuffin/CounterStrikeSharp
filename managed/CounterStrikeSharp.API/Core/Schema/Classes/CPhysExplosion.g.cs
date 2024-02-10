@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPhysExplosion : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CPhysExplosion : CPointEntity, ICPhysExplosion
 {
     public CPhysExplosion (IntPtr pointer) : base(pointer) {}
 

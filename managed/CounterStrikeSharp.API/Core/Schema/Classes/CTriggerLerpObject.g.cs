@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTriggerLerpObject : CBaseTrigger
+[GenerateAutomaticInterface]
+public partial class CTriggerLerpObject : CBaseTrigger, ICTriggerLerpObject
 {
     public CTriggerLerpObject (IntPtr pointer) : base(pointer) {}
 

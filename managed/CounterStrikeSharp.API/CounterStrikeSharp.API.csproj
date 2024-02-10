@@ -25,6 +25,10 @@
     <None Remove="Modules\Disabled\**" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="AutomaticInterface" Version="2.1.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="McMaster.NETCore.Plugins" Version="1.4.0" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Microsoft.DotNet.ApiCompat.Task" Version="7.0.404" />

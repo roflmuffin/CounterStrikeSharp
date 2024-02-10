@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CSpotlightEnd : CBaseModelEntity
+[GenerateAutomaticInterface]
+public partial class CSpotlightEnd : CBaseModelEntity, ICSpotlightEnd
 {
     public CSpotlightEnd (IntPtr pointer) : base(pointer) {}
 

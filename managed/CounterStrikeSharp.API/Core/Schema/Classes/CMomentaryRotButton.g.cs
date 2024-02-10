@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CMomentaryRotButton : CRotButton
+[GenerateAutomaticInterface]
+public partial class CMomentaryRotButton : CRotButton, ICMomentaryRotButton
 {
     public CMomentaryRotButton (IntPtr pointer) : base(pointer) {}
 

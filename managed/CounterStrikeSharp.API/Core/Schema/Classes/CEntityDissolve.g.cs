@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CEntityDissolve : CBaseModelEntity
+[GenerateAutomaticInterface]
+public partial class CEntityDissolve : CBaseModelEntity, ICEntityDissolve
 {
     public CEntityDissolve (IntPtr pointer) : base(pointer) {}
 
