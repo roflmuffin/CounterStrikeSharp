@@ -17,110 +17,109 @@
 using System.Text;
 using Microsoft.Extensions.Logging;
 
-namespace CounterStrikeSharp.API.Modules.Menu
+namespace CounterStrikeSharp.API.Modules.Menu;
+
+public class CenterHtmlMenu : BaseMenu
 {
-    public class CenterHtmlMenu : BaseMenu
+    public CenterHtmlMenu(string title) : base(ModifyTitle(title))
     {
-        public CenterHtmlMenu(string title) : base(ModifyTitle(title))
-        {
-        }
+    }
         
-        public override ChatMenuOption AddMenuOption(string display, Action<CCSPlayerController, ChatMenuOption> onSelect, bool disabled = false)
-        {
-            var option = new ChatMenuOption(ModifyOptionDisplay(display), disabled, onSelect);
-            MenuOptions.Add(option);
-            return option;
-        }
+    public override ChatMenuOption AddMenuOption(string display, Action<CCSPlayerController, ChatMenuOption> onSelect, bool disabled = false)
+    {
+        var option = new ChatMenuOption(ModifyOptionDisplay(display), disabled, onSelect);
+        MenuOptions.Add(option);
+        return option;
+    }
         
-        private static string ModifyTitle(string title)
+    private static string ModifyTitle(string title)
+    {
+        if (title.Length > 32)
         {
-            if (title.Length > 32)
-            {
-                Application.Instance.Logger.LogWarning("Title should not be longer than 32 characters for a CenterHtmlMenu");
-                return title[..32];
-            }
-
-            return title;
+            Application.Instance.Logger.LogWarning("Title should not be longer than 32 characters for a CenterHtmlMenu");
+            return title[..32];
         }
 
-        private static string ModifyOptionDisplay(string display)
-        {
-            if (display.Length > 26)
-            {
-                Application.Instance.Logger.LogWarning("Display should not be longer than 26 characters for a CenterHtmlMenu item");
-                return display[..26];
-            }
-
-            return display;
-        }
+        return title;
     }
 
-    public class CenterHtmlMenuInstance : BaseMenuInstance
+    private static string ModifyOptionDisplay(string display)
     {
-        private readonly BasePlugin _plugin;
-        public override int NumPerPage => 5; // one less than the actual number of items per page to avoid truncated options
-
-        public CenterHtmlMenuInstance(BasePlugin plugin, CCSPlayerController player, IMenu menu) : base(player, menu)
+        if (display.Length > 26)
         {
-            _plugin = plugin;
-            RemoveOnTickListener();
-            plugin.RegisterListener<Core.Listeners.OnTick>(Display);
+            Application.Instance.Logger.LogWarning("Display should not be longer than 26 characters for a CenterHtmlMenu item");
+            return display[..26];
         }
+
+        return display;
+    }
+}
+
+public class CenterHtmlMenuInstance : BaseMenuInstance
+{
+    private readonly BasePlugin _plugin;
+    public override int NumPerPage => 5; // one less than the actual number of items per page to avoid truncated options
         
-        public override void Display()
+    public CenterHtmlMenuInstance(BasePlugin plugin, CCSPlayerController player, IMenu menu) : base(player, menu)
+    {
+        _plugin = plugin;
+        RemoveOnTickListener();
+        plugin.RegisterListener<Core.Listeners.OnTick>(Display);
+    }
+        
+    public override void Display()
+    {
+        if (MenuManager.GetActiveMenu(Player) != this)
         {
-            if (MenuManager.GetActiveMenu(Player) != this)
-            {
-                Reset();
-                return;
-            }
+            Reset();
+            return;
+        }
             
-            var builder = new StringBuilder();
-            builder.Append($"<b><font color='yellow'>{Menu.Title}</font></b>");
+        var builder = new StringBuilder();
+        builder.Append($"<b><font color='yellow'>{Menu.Title}</font></b>");
+        builder.AppendLine("<br>");
+
+        var keyOffset = 1;
+
+        for (var i = CurrentOffset; i < Math.Min(CurrentOffset + MenuItemsPerPage, Menu.MenuOptions.Count); i++)
+        {
+            var option = Menu.MenuOptions[i];
+            string color = option.Disabled ? "grey" : "green";
+            builder.Append($"<font color='{color}'>!{keyOffset++}</font> {option.Text}");
             builder.AppendLine("<br>");
-
-            var keyOffset = 1;
-
-            for (var i = CurrentOffset; i < Math.Min(CurrentOffset + MenuItemsPerPage, Menu.MenuOptions.Count); i++)
-            {
-                var option = Menu.MenuOptions[i];
-                string color = option.Disabled ? "grey" : "green";
-                builder.Append($"<font color='{color}'>!{keyOffset++}</font> {option.Text}");
-                builder.AppendLine("<br>");
-            }
+        }
             
-            if (HasPrevButton)
-            {
-                builder.AppendFormat("<font color='yellow'>!7</font> &#60;- Prev");
-                builder.AppendLine("<br>");
-            }
-
-            if (HasNextButton)
-            {
-                builder.AppendFormat("<font color='yellow'>!8</font> -> Next");
-                builder.AppendLine("<br>");
-            }
-
-            builder.AppendFormat("<font color='red'>!9</font> -> Close");
+        if (HasPrevButton)
+        {
+            builder.AppendFormat("<font color='yellow'>!7</font> &#60;- Prev");
             builder.AppendLine("<br>");
-
-            var currentPageText = builder.ToString();
-            Player.PrintToCenterHtml(currentPageText);
         }
 
-        public override void Reset()
+        if (HasNextButton)
         {
-            base.Reset();
-            RemoveOnTickListener();
+            builder.AppendFormat("<font color='yellow'>!8</font> -> Next");
+            builder.AppendLine("<br>");
+        }
+
+        builder.AppendFormat("<font color='red'>!9</font> -> Close");
+        builder.AppendLine("<br>");
+
+        var currentPageText = builder.ToString();
+        Player.PrintToCenterHtml(currentPageText);
+    }
+
+    public override void Reset()
+    {
+        base.Reset();
+        RemoveOnTickListener();
             
-            // Send a blank message to clear the menu
-            Player.PrintToCenterHtml(" ");
-        }
+        // Send a blank message to clear the menu
+        Player.PrintToCenterHtml(" ");
+    }
 
-        private void RemoveOnTickListener()
-        {
-            var onTick = new Core.Listeners.OnTick(Display);
-            _plugin.RemoveListener("OnTick", onTick);
-        }
+    private void RemoveOnTickListener()
+    {
+        var onTick = new Core.Listeners.OnTick(Display);
+        _plugin.RemoveListener("OnTick", onTick);
     }
 }

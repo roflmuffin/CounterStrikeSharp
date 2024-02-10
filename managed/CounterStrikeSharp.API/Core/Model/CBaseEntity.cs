@@ -27,5 +27,5 @@ public partial class CBaseEntity
     /// </summary>
     public QAngle? AbsRotation => CBodyComponent?.SceneNode?.AbsRotation;
 
-    public T? GetVData<T>() where T : CEntitySubclassVDataBase => (T)Activator.CreateInstance(typeof(T),  Marshal.ReadIntPtr(SubclassID.Handle + 8));
+    public T? GetVData<T>() where T : CEntitySubclassVDataBase => (T)Activator.CreateInstance(typeof(T),  Marshal.ReadIntPtr(SubclassID.Handle + 4));
 }
