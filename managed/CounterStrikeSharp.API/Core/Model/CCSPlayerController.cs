@@ -117,7 +117,8 @@ public partial class CCSPlayerController
         if (PlayerPawn.Value == null) return;
         if (!PlayerPawn.Value.IsValid) return;
 
-        VirtualFunctions.CCSPlayerPawn_Respawn(PlayerPawn.Value.Handle);
+        // The Call To Arms update appears to have invalidated the need for CCSPlayerPawn_Respawn.
+        SetPawn(PlayerPawn.Value);
         VirtualFunction.CreateVoid<IntPtr>(Handle, GameData.GetOffset("CCSPlayerController_Respawn"))(Handle);
     }
 
