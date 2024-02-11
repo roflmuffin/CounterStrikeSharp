@@ -134,6 +134,14 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
 	[SchemaMember("CCSPlayerPawnBase", "m_bGunGameImmunity")]
 	public ref bool GunGameImmunity => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bGunGameImmunity");
 
+	// m_GunGameImmunityColor
+	[SchemaMember("CCSPlayerPawnBase", "m_GunGameImmunityColor")]
+	public Color GunGameImmunityColor
+	{
+		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CCSPlayerPawnBase", "m_GunGameImmunityColor"); }
+		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CCSPlayerPawnBase", "m_GunGameImmunityColor", value); }
+	}
+
 	// m_fMolotovDamageTime
 	[SchemaMember("CCSPlayerPawnBase", "m_fMolotovDamageTime")]
 	public ref float MolotovDamageTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_fMolotovDamageTime");

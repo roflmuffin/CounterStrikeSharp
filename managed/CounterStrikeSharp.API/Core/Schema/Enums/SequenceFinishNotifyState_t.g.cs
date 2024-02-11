@@ -6,8 +6,9 @@ using System;
 
 namespace CounterStrikeSharp.API.Core;
 
-public enum AnimVRHandMotionRange_t : uint
+public enum SequenceFinishNotifyState_t : byte
 {
-	MotionRange_WithController = 0x0,
-	MotionRange_WithoutController = 0x1,
+	eDoNotNotify = 0x0,
+	eNotifyWhenFinished = 0x1,
+	eNotifyTriggered = 0x2,
 }

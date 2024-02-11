@@ -34,6 +34,10 @@ public partial class CTriggerFan : CBaseTrigger
 	[SchemaMember("CTriggerFan", "m_flForce")]
 	public ref float Force => ref Schema.GetRef<float>(this.Handle, "CTriggerFan", "m_flForce");
 
+	// m_flRopeForceScale
+	[SchemaMember("CTriggerFan", "m_flRopeForceScale")]
+	public ref float RopeForceScale => ref Schema.GetRef<float>(this.Handle, "CTriggerFan", "m_flRopeForceScale");
+
 	// m_flPlayerForce
 	[SchemaMember("CTriggerFan", "m_flPlayerForce")]
 	public ref float PlayerForce => ref Schema.GetRef<float>(this.Handle, "CTriggerFan", "m_flPlayerForce");

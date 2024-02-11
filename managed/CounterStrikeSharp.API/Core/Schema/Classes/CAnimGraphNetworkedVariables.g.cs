@@ -54,6 +54,10 @@ public partial class CAnimGraphNetworkedVariables : NativeObject
 	[SchemaMember("CAnimGraphNetworkedVariables", "m_PredNetQuaternionVariables")]
 	public NetworkedVector<Quaternion> PredNetQuaternionVariables => Schema.GetDeclaredClass<NetworkedVector<Quaternion>>(this.Handle, "CAnimGraphNetworkedVariables", "m_PredNetQuaternionVariables");
 
+	// m_PredNetGlobalSymbolVariables
+	[SchemaMember("CAnimGraphNetworkedVariables", "m_PredNetGlobalSymbolVariables")]
+	public NetworkedVector<string> PredNetGlobalSymbolVariables => Schema.GetDeclaredClass<NetworkedVector<string>>(this.Handle, "CAnimGraphNetworkedVariables", "m_PredNetGlobalSymbolVariables");
+
 	// m_OwnerOnlyPredNetBoolVariables
 	[SchemaMember("CAnimGraphNetworkedVariables", "m_OwnerOnlyPredNetBoolVariables")]
 	public NetworkedVector<UInt32> OwnerOnlyPredNetBoolVariables => Schema.GetDeclaredClass<NetworkedVector<UInt32>>(this.Handle, "CAnimGraphNetworkedVariables", "m_OwnerOnlyPredNetBoolVariables");
@@ -89,6 +93,10 @@ public partial class CAnimGraphNetworkedVariables : NativeObject
 	// m_OwnerOnlyPredNetQuaternionVariables
 	[SchemaMember("CAnimGraphNetworkedVariables", "m_OwnerOnlyPredNetQuaternionVariables")]
 	public NetworkedVector<Quaternion> OwnerOnlyPredNetQuaternionVariables => Schema.GetDeclaredClass<NetworkedVector<Quaternion>>(this.Handle, "CAnimGraphNetworkedVariables", "m_OwnerOnlyPredNetQuaternionVariables");
+
+	// m_OwnerOnlyPredNetGlobalSymbolVariables
+	[SchemaMember("CAnimGraphNetworkedVariables", "m_OwnerOnlyPredNetGlobalSymbolVariables")]
+	public NetworkedVector<string> OwnerOnlyPredNetGlobalSymbolVariables => Schema.GetDeclaredClass<NetworkedVector<string>>(this.Handle, "CAnimGraphNetworkedVariables", "m_OwnerOnlyPredNetGlobalSymbolVariables");
 
 	// m_nBoolVariablesCount
 	[SchemaMember("CAnimGraphNetworkedVariables", "m_nBoolVariablesCount")]

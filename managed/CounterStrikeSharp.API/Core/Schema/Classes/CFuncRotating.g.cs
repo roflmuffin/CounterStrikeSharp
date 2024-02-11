@@ -18,9 +18,21 @@ public partial class CFuncRotating : CBaseModelEntity
 {
     public CFuncRotating (IntPtr pointer) : base(pointer) {}
 
-	// m_vecMoveAng
-	[SchemaMember("CFuncRotating", "m_vecMoveAng")]
-	public QAngle MoveAng => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncRotating", "m_vecMoveAng");
+	// m_OnStopped
+	[SchemaMember("CFuncRotating", "m_OnStopped")]
+	public CEntityIOOutput OnStopped => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncRotating", "m_OnStopped");
+
+	// m_OnStarted
+	[SchemaMember("CFuncRotating", "m_OnStarted")]
+	public CEntityIOOutput OnStarted => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncRotating", "m_OnStarted");
+
+	// m_OnReachedStart
+	[SchemaMember("CFuncRotating", "m_OnReachedStart")]
+	public CEntityIOOutput OnReachedStart => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncRotating", "m_OnReachedStart");
+
+	// m_localRotationVector
+	[SchemaMember("CFuncRotating", "m_localRotationVector")]
+	public Vector LocalRotationVector => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncRotating", "m_localRotationVector");
 
 	// m_flFanFriction
 	[SchemaMember("CFuncRotating", "m_flFanFriction")]
@@ -61,6 +73,14 @@ public partial class CFuncRotating : CBaseModelEntity
 	// m_bReversed
 	[SchemaMember("CFuncRotating", "m_bReversed")]
 	public ref bool Reversed => ref Schema.GetRef<bool>(this.Handle, "CFuncRotating", "m_bReversed");
+
+	// m_bAccelDecel
+	[SchemaMember("CFuncRotating", "m_bAccelDecel")]
+	public ref bool AccelDecel => ref Schema.GetRef<bool>(this.Handle, "CFuncRotating", "m_bAccelDecel");
+
+	// m_prevLocalAngles
+	[SchemaMember("CFuncRotating", "m_prevLocalAngles")]
+	public QAngle PrevLocalAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncRotating", "m_prevLocalAngles");
 
 	// m_angStart
 	[SchemaMember("CFuncRotating", "m_angStart")]

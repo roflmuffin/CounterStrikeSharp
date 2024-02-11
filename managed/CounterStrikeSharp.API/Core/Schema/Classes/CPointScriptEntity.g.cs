@@ -14,12 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class AnimationUpdateListHandle_t : NativeObject
+public partial class CPointScriptEntity : CBaseEntity
 {
-    public AnimationUpdateListHandle_t (IntPtr pointer) : base(pointer) {}
-
-	// m_Value
-	[SchemaMember("AnimationUpdateListHandle_t", "m_Value")]
-	public ref UInt32 Value => ref Schema.GetRef<UInt32>(this.Handle, "AnimationUpdateListHandle_t", "m_Value");
+    public CPointScriptEntity (IntPtr pointer) : base(pointer) {}
 
 }

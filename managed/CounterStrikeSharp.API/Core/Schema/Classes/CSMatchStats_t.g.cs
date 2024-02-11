@@ -30,6 +30,14 @@ public partial class CSMatchStats_t : CSPerRoundStats_t
 	[SchemaMember("CSMatchStats_t", "m_iEnemy3Ks")]
 	public ref Int32 Enemy3Ks => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemy3Ks");
 
+	// m_iEnemyKnifeKills
+	[SchemaMember("CSMatchStats_t", "m_iEnemyKnifeKills")]
+	public ref Int32 EnemyKnifeKills => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemyKnifeKills");
+
+	// m_iEnemyTaserKills
+	[SchemaMember("CSMatchStats_t", "m_iEnemyTaserKills")]
+	public ref Int32 EnemyTaserKills => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemyTaserKills");
+
 	// m_iEnemy2Ks
 	[SchemaMember("CSMatchStats_t", "m_iEnemy2Ks")]
 	public ref Int32 Enemy2Ks => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemy2Ks");

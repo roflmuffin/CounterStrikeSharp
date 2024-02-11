@@ -90,13 +90,13 @@ public partial class CBasePlayerController : CBaseEntity
 	[SchemaMember("CBasePlayerController", "m_bGamePaused")]
 	public ref bool GamePaused => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerController", "m_bGamePaused");
 
-	// m_nUsecTimestampLastUserCmdReceived
-	[SchemaMember("CBasePlayerController", "m_nUsecTimestampLastUserCmdReceived")]
-	public ref Int64 UsecTimestampLastUserCmdReceived => ref Schema.GetRef<Int64>(this.Handle, "CBasePlayerController", "m_nUsecTimestampLastUserCmdReceived");
-
 	// m_nLastRealCommandNumberExecuted
 	[SchemaMember("CBasePlayerController", "m_nLastRealCommandNumberExecuted")]
 	public ref Int32 LastRealCommandNumberExecuted => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerController", "m_nLastRealCommandNumberExecuted");
+
+	// m_nLastLateCommandExecuted
+	[SchemaMember("CBasePlayerController", "m_nLastLateCommandExecuted")]
+	public ref Int32 LastLateCommandExecuted => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerController", "m_nLastLateCommandExecuted");
 
 	// m_iIgnoreGlobalChat
 	[SchemaMember("CBasePlayerController", "m_iIgnoreGlobalChat")]

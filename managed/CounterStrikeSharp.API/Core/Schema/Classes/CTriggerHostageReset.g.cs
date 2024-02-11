@@ -14,8 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPointScript : CBaseEntity
+public partial class CTriggerHostageReset : CBaseTrigger
 {
-    public CPointScript (IntPtr pointer) : base(pointer) {}
+    public CTriggerHostageReset (IntPtr pointer) : base(pointer) {}
 
 }
