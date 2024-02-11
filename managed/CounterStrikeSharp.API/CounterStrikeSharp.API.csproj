@@ -3,6 +3,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GenerateCompatibilitySuppressionFile>true</GenerateCompatibilitySuppressionFile>
     <EnablePackageValidation>true</EnablePackageValidation>
     <NoWarn>$(NoWarn);CS1591;CP0003</NoWarn>
     <Nullable>enable</Nullable>
@@ -39,6 +40,7 @@
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Core\Schema\" />
     <Folder Include="Modules\Errors" />
   </ItemGroup>
   <ItemGroup>
