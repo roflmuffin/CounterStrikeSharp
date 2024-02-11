@@ -70,6 +70,14 @@ public partial class CTriggerLerpObject : CBaseTrigger
 		set { Schema.SetString(this.Handle, "CTriggerLerpObject", "m_iszLerpSound", value); }
 	}
 
+	// m_bAttachTouchingObject
+	[SchemaMember("CTriggerLerpObject", "m_bAttachTouchingObject")]
+	public ref bool AttachTouchingObject => ref Schema.GetRef<bool>(this.Handle, "CTriggerLerpObject", "m_bAttachTouchingObject");
+
+	// m_hEntityToWaitForDisconnect
+	[SchemaMember("CTriggerLerpObject", "m_hEntityToWaitForDisconnect")]
+	public CHandle<CBaseEntity> EntityToWaitForDisconnect => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CTriggerLerpObject", "m_hEntityToWaitForDisconnect");
+
 	// m_OnLerpStarted
 	[SchemaMember("CTriggerLerpObject", "m_OnLerpStarted")]
 	public CEntityIOOutput OnLerpStarted => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerLerpObject", "m_OnLerpStarted");

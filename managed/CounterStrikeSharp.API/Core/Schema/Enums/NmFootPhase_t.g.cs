@@ -6,8 +6,10 @@ using System;
 
 namespace CounterStrikeSharp.API.Core;
 
-public enum AnimVrBoneTransformSource_t : uint
+public enum NmFootPhase_t : byte
 {
-	AnimVrBoneTransformSource_LiveStream = 0x0,
-	AnimVrBoneTransformSource_GripLimit = 0x1,
+	LeftFootDown = 0x0,
+	RightFootPassing = 0x1,
+	RightFootDown = 0x2,
+	LeftFootPassing = 0x3,
 }

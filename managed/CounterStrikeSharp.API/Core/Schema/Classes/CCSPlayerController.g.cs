@@ -346,4 +346,12 @@ public partial class CCSPlayerController : CBasePlayerController
 	[SchemaMember("CCSPlayerController", "m_LastTimePlayerWasDisconnectedForPawnsRemove")]
 	public ref float LastTimePlayerWasDisconnectedForPawnsRemove => ref Schema.GetRef<float>(this.Handle, "CCSPlayerController", "m_LastTimePlayerWasDisconnectedForPawnsRemove");
 
+	// m_nSuspiciousHitCount
+	[SchemaMember("CCSPlayerController", "m_nSuspiciousHitCount")]
+	public ref UInt32 SuspiciousHitCount => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController", "m_nSuspiciousHitCount");
+
+	// m_nNonSuspiciousHitStreak
+	[SchemaMember("CCSPlayerController", "m_nNonSuspiciousHitStreak")]
+	public ref UInt32 NonSuspiciousHitStreak => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController", "m_nNonSuspiciousHitStreak");
+
 }

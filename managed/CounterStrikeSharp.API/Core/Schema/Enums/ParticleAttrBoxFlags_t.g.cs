@@ -6,8 +6,8 @@ using System;
 
 namespace CounterStrikeSharp.API.Core;
 
-public enum AnimVRHand_t : uint
+public enum ParticleAttrBoxFlags_t : uint
 {
-	AnimVRHand_Left = 0x0,
-	AnimVRHand_Right = 0x1,
+	PARTICLE_ATTR_BOX_FLAGS_NONE = 0x0,
+	PARTICLE_ATTR_BOX_FLAGS_WATER = 0x1,
 }

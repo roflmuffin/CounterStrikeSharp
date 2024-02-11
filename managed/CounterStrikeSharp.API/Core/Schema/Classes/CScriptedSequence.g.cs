@@ -118,6 +118,10 @@ public partial class CScriptedSequence : CBaseEntity
 	[SchemaMember("CScriptedSequence", "m_bSynchPostIdles")]
 	public ref bool SynchPostIdles => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bSynchPostIdles");
 
+	// m_bIgnoreLookAt
+	[SchemaMember("CScriptedSequence", "m_bIgnoreLookAt")]
+	public ref bool IgnoreLookAt => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bIgnoreLookAt");
+
 	// m_bIgnoreGravity
 	[SchemaMember("CScriptedSequence", "m_bIgnoreGravity")]
 	public ref bool IgnoreGravity => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bIgnoreGravity");
@@ -154,9 +158,9 @@ public partial class CScriptedSequence : CBaseEntity
 	[SchemaMember("CScriptedSequence", "m_flAngRate")]
 	public ref float AngRate => ref Schema.GetRef<float>(this.Handle, "CScriptedSequence", "m_flAngRate");
 
-	// m_iDelay
-	[SchemaMember("CScriptedSequence", "m_iDelay")]
-	public ref Int32 Delay => ref Schema.GetRef<Int32>(this.Handle, "CScriptedSequence", "m_iDelay");
+	// m_nNotReadySequenceCount
+	[SchemaMember("CScriptedSequence", "m_nNotReadySequenceCount")]
+	public ref Int32 NotReadySequenceCount => ref Schema.GetRef<Int32>(this.Handle, "CScriptedSequence", "m_nNotReadySequenceCount");
 
 	// m_startTime
 	[SchemaMember("CScriptedSequence", "m_startTime")]
@@ -185,14 +189,6 @@ public partial class CScriptedSequence : CBaseEntity
 	// m_sequenceStarted
 	[SchemaMember("CScriptedSequence", "m_sequenceStarted")]
 	public ref bool SequenceStarted => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_sequenceStarted");
-
-	// m_bPrevAnimatedEveryTick
-	[SchemaMember("CScriptedSequence", "m_bPrevAnimatedEveryTick")]
-	public ref bool PrevAnimatedEveryTick => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bPrevAnimatedEveryTick");
-
-	// m_bForcedAnimatedEveryTick
-	[SchemaMember("CScriptedSequence", "m_bForcedAnimatedEveryTick")]
-	public ref bool ForcedAnimatedEveryTick => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bForcedAnimatedEveryTick");
 
 	// m_bPositionRelativeToOtherEntity
 	[SchemaMember("CScriptedSequence", "m_bPositionRelativeToOtherEntity")]
@@ -237,10 +233,6 @@ public partial class CScriptedSequence : CBaseEntity
 	// m_bForceSynch
 	[SchemaMember("CScriptedSequence", "m_bForceSynch")]
 	public ref bool ForceSynch => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bForceSynch");
-
-	// m_bTargetWasAsleep
-	[SchemaMember("CScriptedSequence", "m_bTargetWasAsleep")]
-	public ref bool TargetWasAsleep => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bTargetWasAsleep");
 
 	// m_bPreventUpdateYawOnFinish
 	[SchemaMember("CScriptedSequence", "m_bPreventUpdateYawOnFinish")]

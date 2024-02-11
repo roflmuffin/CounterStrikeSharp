@@ -14,16 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CAI_ChangeTarget : CBaseEntity
+public partial class CCSWeaponBaseVDataAPI : NativeObject
 {
-    public CAI_ChangeTarget (IntPtr pointer) : base(pointer) {}
-
-	// m_iszNewTarget
-	[SchemaMember("CAI_ChangeTarget", "m_iszNewTarget")]
-	public string NewTarget
-	{
-		get { return Schema.GetUtf8String(this.Handle, "CAI_ChangeTarget", "m_iszNewTarget"); }
-		set { Schema.SetString(this.Handle, "CAI_ChangeTarget", "m_iszNewTarget", value); }
-	}
+    public CCSWeaponBaseVDataAPI (IntPtr pointer) : base(pointer) {}
 
 }

@@ -14,8 +14,12 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CCSGameModeRules_Scripted : CCSGameModeRules
+public partial class CCSGameModeRules_ArmsRace : CCSGameModeRules
 {
-    public CCSGameModeRules_Scripted (IntPtr pointer) : base(pointer) {}
+    public CCSGameModeRules_ArmsRace (IntPtr pointer) : base(pointer) {}
+
+	// m_WeaponSequence
+	[SchemaMember("CCSGameModeRules_ArmsRace", "m_WeaponSequence")]
+	public NetworkedVector<string> WeaponSequence => Schema.GetDeclaredClass<NetworkedVector<string>>(this.Handle, "CCSGameModeRules_ArmsRace", "m_WeaponSequence");
 
 }

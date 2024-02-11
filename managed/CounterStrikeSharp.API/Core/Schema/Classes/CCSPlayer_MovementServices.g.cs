@@ -118,9 +118,9 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 	[SchemaMember("CCSPlayer_MovementServices", "m_vecUp")]
 	public Vector Up => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayer_MovementServices", "m_vecUp");
 
-	// m_vecPreviouslyPredictedOrigin
-	[SchemaMember("CCSPlayer_MovementServices", "m_vecPreviouslyPredictedOrigin")]
-	public Vector PreviouslyPredictedOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayer_MovementServices", "m_vecPreviouslyPredictedOrigin");
+	// m_nGameCodeHasMovedPlayerAfterCommand
+	[SchemaMember("CCSPlayer_MovementServices", "m_nGameCodeHasMovedPlayerAfterCommand")]
+	public ref Int32 GameCodeHasMovedPlayerAfterCommand => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_nGameCodeHasMovedPlayerAfterCommand");
 
 	// m_bMadeFootstepNoise
 	[SchemaMember("CCSPlayer_MovementServices", "m_bMadeFootstepNoise")]

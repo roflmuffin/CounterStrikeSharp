@@ -214,6 +214,10 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 	[SchemaMember("CCSPlayerPawn", "m_EconGloves")]
 	public CEconItemView EconGloves => Schema.GetDeclaredClass<CEconItemView>(this.Handle, "CCSPlayerPawn", "m_EconGloves");
 
+	// m_nEconGlovesChanged
+	[SchemaMember("CCSPlayerPawn", "m_nEconGlovesChanged")]
+	public ref byte EconGlovesChanged => ref Schema.GetRef<byte>(this.Handle, "CCSPlayerPawn", "m_nEconGlovesChanged");
+
 	// m_qDeathEyeAngles
 	[SchemaMember("CCSPlayerPawn", "m_qDeathEyeAngles")]
 	public QAngle DeathEyeAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CCSPlayerPawn", "m_qDeathEyeAngles");

@@ -26,14 +26,6 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 	[SchemaMember("CBasePlayerWeaponVData", "m_bAllowFlipping")]
 	public ref bool AllowFlipping => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bAllowFlipping");
 
-	// m_bIsFullAuto
-	[SchemaMember("CBasePlayerWeaponVData", "m_bIsFullAuto")]
-	public ref bool IsFullAuto => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bIsFullAuto");
-
-	// m_nNumBullets
-	[SchemaMember("CBasePlayerWeaponVData", "m_nNumBullets")]
-	public ref Int32 NumBullets => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_nNumBullets");
-
 	// m_sMuzzleAttachment
 	[SchemaMember("CBasePlayerWeaponVData", "m_sMuzzleAttachment")]
 	public string MuzzleAttachment
@@ -85,6 +77,10 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 	// m_iRumbleEffect
 	[SchemaMember("CBasePlayerWeaponVData", "m_iRumbleEffect")]
 	public ref RumbleEffect_t RumbleEffect => ref Schema.GetRef<RumbleEffect_t>(this.Handle, "CBasePlayerWeaponVData", "m_iRumbleEffect");
+
+	// m_bLinkedCooldowns
+	[SchemaMember("CBasePlayerWeaponVData", "m_bLinkedCooldowns")]
+	public ref bool LinkedCooldowns => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bLinkedCooldowns");
 
 	// m_iSlot
 	[SchemaMember("CBasePlayerWeaponVData", "m_iSlot")]

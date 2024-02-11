@@ -106,6 +106,14 @@ public partial class CCSWeaponBaseVData : CBasePlayerWeaponVData
 	[SchemaMember("CCSWeaponBaseVData", "m_nCrosshairDeltaDistance")]
 	public ref Int32 CrosshairDeltaDistance => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseVData", "m_nCrosshairDeltaDistance");
 
+	// m_bIsFullAuto
+	[SchemaMember("CCSWeaponBaseVData", "m_bIsFullAuto")]
+	public ref bool IsFullAuto => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBaseVData", "m_bIsFullAuto");
+
+	// m_nNumBullets
+	[SchemaMember("CCSWeaponBaseVData", "m_nNumBullets")]
+	public ref Int32 NumBullets => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseVData", "m_nNumBullets");
+
 	// m_flCycleTime
 	[SchemaMember("CCSWeaponBaseVData", "m_flCycleTime")]
 	public CFiringModeFloat CycleTime => Schema.GetDeclaredClass<CFiringModeFloat>(this.Handle, "CCSWeaponBaseVData", "m_flCycleTime");
