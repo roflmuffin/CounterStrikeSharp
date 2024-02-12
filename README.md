@@ -128,4 +128,10 @@ Build
 ```bash
 cmake --build . --config Debug
 ```
+
+License
+-------
+CounterStrikeSharp is licensed under the GNU General Public License version 3. A special exemption is outlined regarding published plugins, which you can find in the [LICENSE](LICENSE) file.
+
 <img src="https://repobeats.axiom.co/api/embed/a96f228b8fa98c032070fa8dd831c967334ee553.svg" width="100%" />
+
