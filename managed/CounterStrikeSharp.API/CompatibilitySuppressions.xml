@@ -62,6 +62,12 @@
     <Right>obj\Debug\net7.0\CounterStrikeSharp.API.dll</Right>
   </Suppression>
   <Suppression>
+    <DiagnosticId>CP0001</DiagnosticId>
+    <Target>T:CounterStrikeSharp.API.Modules.Utils.CommandUtils</Target>
+    <Left>.\ApiCompat\v151.dll</Left>
+    <Right>obj\Debug\net7.0\CounterStrikeSharp.API.dll</Right>
+  </Suppression>
+  <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
     <Target>F:CounterStrikeSharp.API.Core.AnimParamType_t.ANIMPARAM_STRINGTOKEN</Target>
     <Left>.\ApiCompat\v151.dll</Left>
@@ -166,6 +172,24 @@
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
     <Target>F:CounterStrikeSharp.API.Core.PulseInstructionCode_t.TARGET_INVOKE</Target>
+    <Left>.\ApiCompat\v151.dll</Left>
+    <Right>obj\Debug\net7.0\CounterStrikeSharp.API.dll</Right>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>F:CounterStrikeSharp.API.Modules.Memory.VirtualFunctions.CCSPlayerPawn_Respawn</Target>
+    <Left>.\ApiCompat\v151.dll</Left>
+    <Right>obj\Debug\net7.0\CounterStrikeSharp.API.dll</Right>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>F:CounterStrikeSharp.API.Modules.Memory.VirtualFunctions.CCSPlayerPawn_RespawnFunc</Target>
+    <Left>.\ApiCompat\v151.dll</Left>
+    <Right>obj\Debug\net7.0\CounterStrikeSharp.API.dll</Right>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:CounterStrikeSharp.API.Core.Application.#ctor(Microsoft.Extensions.Logging.ILoggerFactory,CounterStrikeSharp.API.Core.Hosting.IScriptHostConfiguration,CounterStrikeSharp.API.Core.GameDataProvider,CounterStrikeSharp.API.Core.CoreConfig,CounterStrikeSharp.API.Core.Plugin.Host.IPluginManager,CounterStrikeSharp.API.Core.Plugin.Host.IPluginContextQueryHandler,CounterStrikeSharp.API.Core.Translations.IPlayerLanguageManager)</Target>
     <Left>.\ApiCompat\v151.dll</Left>
     <Right>obj\Debug\net7.0\CounterStrikeSharp.API.dll</Right>
   </Suppression>
@@ -279,6 +303,12 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:CounterStrikeSharp.API.Core.CCSPlayerPawn.Respawn</Target>
+    <Left>.\ApiCompat\v151.dll</Left>
+    <Right>obj\Debug\net7.0\CounterStrikeSharp.API.dll</Right>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:CounterStrikeSharp.API.Core.CDynamicProp.get_AnimateOnServer</Target>
     <Left>.\ApiCompat\v151.dll</Left>
     <Right>obj\Debug\net7.0\CounterStrikeSharp.API.dll</Right>
@@ -310,6 +340,12 @@
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:CounterStrikeSharp.API.Core.CFuncRotating.get_MoveAng</Target>
+    <Left>.\ApiCompat\v151.dll</Left>
+    <Right>obj\Debug\net7.0\CounterStrikeSharp.API.dll</Right>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:CounterStrikeSharp.API.Core.CoreConfig.#ctor(CounterStrikeSharp.API.Core.Hosting.IScriptHostConfiguration,Microsoft.Extensions.Logging.ILogger{CounterStrikeSharp.API.Core.CoreConfig})</Target>
     <Left>.\ApiCompat\v151.dll</Left>
     <Right>obj\Debug\net7.0\CounterStrikeSharp.API.dll</Right>
   </Suppression>
@@ -388,6 +424,24 @@
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:CounterStrikeSharp.API.Core.CTriggerPush.get_PushSpeed</Target>
+    <Left>.\ApiCompat\v151.dll</Left>
+    <Right>obj\Debug\net7.0\CounterStrikeSharp.API.dll</Right>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:CounterStrikeSharp.API.Core.Plugin.Host.PluginManager.#ctor(CounterStrikeSharp.API.Core.Hosting.IScriptHostConfiguration,Microsoft.Extensions.Logging.ILogger{CounterStrikeSharp.API.Core.Plugin.Host.PluginManager},System.IServiceProvider)</Target>
+    <Left>.\ApiCompat\v151.dll</Left>
+    <Right>obj\Debug\net7.0\CounterStrikeSharp.API.dll</Right>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:CounterStrikeSharp.API.Core.Plugin.PluginContext.#ctor(System.IServiceProvider,CounterStrikeSharp.API.Core.Hosting.IScriptHostConfiguration,System.String,System.Int32)</Target>
+    <Left>.\ApiCompat\v151.dll</Left>
+    <Right>obj\Debug\net7.0\CounterStrikeSharp.API.dll</Right>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
+    <Target>P:CounterStrikeSharp.API.Core.IPlugin.CommandManager</Target>
     <Left>.\ApiCompat\v151.dll</Left>
     <Right>obj\Debug\net7.0\CounterStrikeSharp.API.dll</Right>
   </Suppression>
@@ -982,24 +1036,6 @@
   <Suppression>
     <DiagnosticId>CP0011</DiagnosticId>
     <Target>F:CounterStrikeSharp.API.Core.WeaponSound_t.WEAPON_SOUND_SPECIAL3</Target>
-    <Left>.\ApiCompat\v151.dll</Left>
-    <Right>obj\Debug\net7.0\CounterStrikeSharp.API.dll</Right>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>F:CounterStrikeSharp.API.Modules.Memory.VirtualFunctions.CCSPlayerPawn_Respawn</Target>
-    <Left>.\ApiCompat\v151.dll</Left>
-    <Right>obj\Debug\net7.0\CounterStrikeSharp.API.dll</Right>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>F:CounterStrikeSharp.API.Modules.Memory.VirtualFunctions.CCSPlayerPawn_RespawnFunc</Target>
-    <Left>.\ApiCompat\v151.dll</Left>
-    <Right>obj\Debug\net7.0\CounterStrikeSharp.API.dll</Right>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:CounterStrikeSharp.API.Core.CCSPlayerPawn.Respawn</Target>
     <Left>.\ApiCompat\v151.dll</Left>
     <Right>obj\Debug\net7.0\CounterStrikeSharp.API.dll</Right>
   </Suppression>
