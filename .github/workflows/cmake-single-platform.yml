@@ -4,9 +4,9 @@ on:
   push:
     paths-ignore:
       - 'docfx/**'
-    branches: [ "main" ]
+    branches: [ "main", "dev" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "dev" ]
 
 env:
   BUILD_TYPE: Release
@@ -98,7 +98,7 @@ jobs:
         run: echo "GITHUB_SHA_SHORT=${GITHUB_SHA::7}" >> $GITHUB_ENV
 
       - name: Fallback build number
-        if: github.event_name == 'pull_request'
+        if: ${{ github.event_name == 'pull_request' || github.ref != 'refs/heads/main' }}
         shell: bash
         run: echo "BUILD_NUMBER=0" >> $GITHUB_ENV
 
@@ -106,7 +106,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Generate build number
-        if: github.event_name == 'push'
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         id: buildnumber
         uses: onyxmueller/build-tag-number@v1
         with:
@@ -141,7 +141,7 @@ jobs:
           path: managed/CounterStrikeSharp.API/bin/Release
 
   publish:
-    if: github.event_name == 'push'
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     permissions:
       contents: write
     needs: [ "build_linux", "build_windows", "build_managed" ]
@@ -196,6 +196,7 @@ jobs:
           (cd build/windows && zip -qq -r ../../counterstrikesharp-with-runtime-build-${{ needs.build_managed.outputs.buildnumber }}-windows-${{ env.GITHUB_SHA_SHORT }}.zip *)
 
       - name: Release
+        id: release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: v${{ needs.build_managed.outputs.buildnumber }}
@@ -209,3 +210,10 @@ jobs:
         run: |
           dotnet nuget push build/api/CounterStrikeSharp.API.1.0.${{ needs.build_managed.outputs.buildnumber }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
           dotnet nuget push build/api/CounterStrikeSharp.API.1.0.${{ needs.build_managed.outputs.buildnumber }}.snupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+      - name: Send Notification to Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@0.3.2
+        with:
+          args: "A new release of CS# has been tagged (v${{ needs.build_managed.outputs.buildnumber }}) at ${{ steps.release.outputs.url }}"
