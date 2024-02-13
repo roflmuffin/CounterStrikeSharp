@@ -48,12 +48,11 @@ namespace CounterStrikeSharp.API.Core
         private readonly IPluginContextQueryHandler _pluginContextQueryHandler;
         private readonly IPlayerLanguageManager _playerLanguageManager;
         private readonly ICommandManager _commandManager;
-        private readonly IServiceScopeFactory _serviceScopeFactory;
 
         public Application(ILoggerFactory loggerFactory, IScriptHostConfiguration scriptHostConfiguration,
             GameDataProvider gameDataProvider, CoreConfig coreConfig, IPluginManager pluginManager,
             IPluginContextQueryHandler pluginContextQueryHandler, IPlayerLanguageManager playerLanguageManager,
-            IServiceScopeFactory serviceScopeFactory)
+            ICommandManager commandManager)
         {
             Logger = loggerFactory.CreateLogger("Core");
             _scriptHostConfiguration = scriptHostConfiguration;
@@ -62,8 +61,7 @@ namespace CounterStrikeSharp.API.Core
             _pluginManager = pluginManager;
             _pluginContextQueryHandler = pluginContextQueryHandler;
             _playerLanguageManager = playerLanguageManager;
-            _serviceScopeFactory = serviceScopeFactory;
-            _commandManager = _serviceScopeFactory.CreateScope().ServiceProvider.GetRequiredService<ICommandManager>();
+            _commandManager = commandManager;
             _instance = this;
         }
 
@@ -77,7 +75,7 @@ namespace CounterStrikeSharp.API.Core
             var adminPath = Path.Combine(_scriptHostConfiguration.RootPath, "configs", "admins.json");
             Logger.LogInformation("Loading Admins from {Path}", adminPath);
             AdminManager.LoadAdminData(adminPath);
-            
+
             var adminGroupsPath = Path.Combine(_scriptHostConfiguration.RootPath, "configs", "admin_groups.json");
             Logger.LogInformation("Loading Admin Groups from {Path}", adminGroupsPath);
             AdminManager.LoadAdminGroups(adminGroupsPath);
@@ -253,17 +251,19 @@ namespace CounterStrikeSharp.API.Core
             }
         }
 
-        [CommandHelper(usage: "[language code, e.g. \"de\", \"pl\", \"en\"]", whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
+        [CommandHelper(usage: "[language code, e.g. \"de\", \"pl\", \"en\"]",
+            whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
         private void OnLangCommand(CCSPlayerController? player, CommandInfo command)
         {
             if (player == null) return;
-            
+
             SteamID steamId = (SteamID)player.SteamID;
 
             if (command.ArgCount == 1)
             {
                 var language = _playerLanguageManager.GetLanguage(steamId);
-                command.ReplyToCommand(string.Format("Current language is \"{0}\" ({1})", language.Name, language.NativeName));
+                command.ReplyToCommand(string.Format("Current language is \"{0}\" ({1})", language.Name,
+                    language.NativeName));
                 return;
             }
 
@@ -271,7 +271,7 @@ namespace CounterStrikeSharp.API.Core
             {
                 return;
             }
-            
+
             try
             {
                 var language = command.GetArg(1);
