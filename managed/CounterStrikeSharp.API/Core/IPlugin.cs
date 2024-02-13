@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -17,6 +17,7 @@
 using System;
 using CounterStrikeSharp.API.Core.Commands;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Core
@@ -55,6 +56,8 @@ namespace CounterStrikeSharp.API.Core
         string ModulePath { get; internal set; }
 
         ILogger Logger { get; set; }
+        
+        IStringLocalizer Localizer { get; set; }
         
         ICommandManager CommandManager { get; set; }
 

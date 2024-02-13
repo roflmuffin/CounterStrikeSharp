@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Entities;
+using CounterStrikeSharp.API.Modules.Utils;
 
 namespace CounterStrikeSharp.API.Modules.Admin
 {
@@ -64,18 +66,18 @@ namespace CounterStrikeSharp.API.Modules.Admin
             // Loop over each of the admins. If one of our admins is in a group,
             // add the flags from the group to their admin definition and change
             // the admin's immunity if it's higher.
-            foreach (var adminData in Admins.Values)
+            foreach (var (admin, data) in Admins)
             {
-                var groups = adminData.Groups;
+                var groups = data.Groups;
                 foreach (var group in groups)
                 {
                     // roflmuffin is probably smart enough to condense this function down ;)
                     if (Groups.TryGetValue(group, out var groupData))
                     {
-                        adminData.Flags.UnionWith(groupData.Flags);
-                        if (groupData.Immunity > adminData.Immunity)
+                        AddPlayerPermissions(admin, groupData.Flags.ToArray());
+                        if (groupData.Immunity > data.Immunity)
                         {
-                            adminData.Immunity = groupData.Immunity;
+                            data.Immunity = groupData.Immunity;
                         }
                     }
                 }
@@ -93,9 +95,21 @@ namespace CounterStrikeSharp.API.Modules.Admin
             // This is here for cases where the server console is attempting to call commands.
             // The server console should have access to all commands, regardless of groups.
             if (player == null) return true;
-            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return false; }
-            var playerData = GetPlayerAdminData((SteamID)player.AuthorizedSteamID);
-            return playerData?.Groups.IsSupersetOf(groups) ?? false;
+            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot || player.IsHLTV) { return false; }
+
+            var playerData = GetPlayerAdminData(player.AuthorizedSteamID);
+            if (playerData == null) return false;
+
+            var playerGroups = groups.ToHashSet();
+            foreach (var domain in playerData.Flags)
+            {
+                if (playerData.DomainHasRootFlag(domain.Key))
+                {
+                    playerGroups.ExceptWith(groups.Where(group => group.Contains(domain.Key + '/')));
+                }
+            }
+
+            return playerData.Groups.IsSupersetOf(playerGroups);
         }
 
         /// <summary>
@@ -104,31 +118,44 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// <param name="steamId">SteamID of the player.</param>
         /// <param name="groups">Groups to check for.</param>
         /// <returns>True if a player is part of all of the groups provided, false if not.</returns>
-        public static bool PlayerInGroup(SteamID steamId, params string[] groups)
+        public static bool PlayerInGroup(SteamID? steamId, params string[] groups)
         {
+            if (steamId == null) return false;
             var playerData = GetPlayerAdminData(steamId);
-            return playerData?.Groups.IsSupersetOf(groups) ?? false;
+            if (playerData == null) return false;
+
+            var playerGroups = groups.ToHashSet<string>();
+            foreach (var domain in playerData.Flags)
+            {
+                if (playerData.DomainHasRootFlag(domain.Key))
+                {
+                    playerGroups.ExceptWith(groups.Where(group => group.Contains(domain.Key + '/')));
+                }
+            }
+
+            return playerData.Groups.IsSupersetOf(playerGroups);
         }
 
-        /// <summary>
-        /// Adds a player to a group.
-        /// </summary>
-        /// <param name="player">Player controller.</param>
-        /// <param name="groups">Groups to add the player to.</param>
-        public static void AddPlayerToGroup(CCSPlayerController? player, params string[] groups)
+		/// <summary>
+		/// Adds a player to a group. This does NOT modify the immunity of the player (see SetPlayerImmunity).
+		/// </summary>
+		/// <param name="player">Player controller.</param>
+		/// <param name="groups">Groups to add the player to.</param>
+		public static void AddPlayerToGroup(CCSPlayerController? player, params string[] groups)
         {
             if (player == null) return;
-            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return; }
-            AddPlayerToGroup((SteamID)player.AuthorizedSteamID, groups);
+            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot || player.IsHLTV) { return; }
+            AddPlayerToGroup(player.AuthorizedSteamID, groups);
         }
 
         /// <summary>
-        /// Adds a player to a group.
+        /// Adds a player to a group. This does NOT modify the immunity of the player (see SetPlayerImmunity).
         /// </summary>
         /// <param name="steamId">SteamID of the player.</param>
         /// <param name="groups">Groups to add the player to.</param>
-        public static void AddPlayerToGroup(SteamID steamId, params string[] groups)
+        public static void AddPlayerToGroup(SteamID? steamId, params string[] groups)
         {
+            if (steamId == null) return;
             var data = GetPlayerAdminData(steamId);
             if (data == null)
             {
@@ -144,7 +171,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             {
                 if (Groups.TryGetValue(group, out var groupDef))
                 {
-                    data.Flags.UnionWith(groupDef.Flags);
+                    AddPlayerPermissions(steamId, groupDef.Flags.ToArray());
                     groupDef.CommandOverrides.ToList().ForEach(x => data.CommandOverrides[x.Key] = x.Value);
                 }
             }
@@ -160,8 +187,8 @@ namespace CounterStrikeSharp.API.Modules.Admin
         public static void RemovePlayerFromGroup(CCSPlayerController? player, bool removeInheritedFlags = true, params string[] groups)
         {
             if (player == null) return;
-            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot) { return; }
-            RemovePlayerFromGroup((SteamID)player.AuthorizedSteamID, true, groups);
+            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot || player.IsHLTV) { return; }
+            RemovePlayerFromGroup(player.AuthorizedSteamID, true, groups);
         }
 
         /// <summary>
@@ -170,8 +197,9 @@ namespace CounterStrikeSharp.API.Modules.Admin
         /// <param name="steamId">SteamID of the player.</param>
         /// <param name="removeInheritedFlags">If true, all of the flags that the player inherited from being in the group will be removed.</param>
         /// <param name="groups"></param>
-        public static void RemovePlayerFromGroup(SteamID steamId, bool removeInheritedFlags = true, params string[] groups)
+        public static void RemovePlayerFromGroup(SteamID? steamId, bool removeInheritedFlags = true, params string[] groups)
         {
+            if (steamId == null) return;
             var data = GetPlayerAdminData(steamId);
             if (data == null) return;
 
@@ -183,7 +211,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
                 {
                     if (Groups.TryGetValue(group, out var groupDef))
                     {
-                        data.Flags.ExceptWith(groupDef.Flags);
+                        RemovePlayerPermissions(steamId, groupDef.Flags.ToArray());
                     }
                 }
             }

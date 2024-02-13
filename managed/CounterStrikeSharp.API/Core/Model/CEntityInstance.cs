@@ -58,6 +58,24 @@ public partial class CEntityInstance : IEquatable<CEntityInstance>
     {
         return !Equals(left, right);
     }
+    
+    /// <summary>
+    /// Calls a named input method on an entity.
+    /// <example>
+    /// <code>
+    /// entity.AcceptInput("Break");
+    /// </code>
+    /// </example>
+    /// </summary>
+    /// <param name="inputName">Input action name</param>
+    /// <param name="activator">Entity which initiated the action, <see langword="null"/> for no entity</param>
+    /// <param name="caller">Entity that is sending the event, <see langword="null"/> for no entity</param>
+    /// <param name="value">String variant value to send with the event</param>
+    /// <param name="outputId">Unknown, defaults to 0</param>
+    public void AcceptInput(string inputName, CEntityInstance? activator = null, CEntityInstance? caller = null, string value = "", int outputId = 0)
+    {
+        VirtualFunctions.AcceptInput(Handle, inputName, activator?.Handle ?? IntPtr.Zero, caller?.Handle ?? IntPtr.Zero, value, 0);
+    }
 }
 
 public partial class CEntityIdentity

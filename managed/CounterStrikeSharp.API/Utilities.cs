@@ -21,8 +21,10 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
+using CounterStrikeSharp.API.Core.Logging;
 using CounterStrikeSharp.API.Modules.Commands.Targeting;
 using CounterStrikeSharp.API.Modules.Entities;
+using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API
 {
@@ -75,12 +77,47 @@ namespace CounterStrikeSharp.API
             return new Target(pattern).GetTarget(player);
         }
 
+        public static bool RemoveItemByDesignerName(this CCSPlayerController player, string designerName)
+        {
+            return RemoveItemByDesignerName(player, designerName, false);
+        }
+
+        public static bool RemoveItemByDesignerName(this CCSPlayerController player, string designerName, bool shouldRemoveEntity)
+        {
+            CHandle<CBasePlayerWeapon>? item = null;
+            if (player.PlayerPawn.Value == null || player.PlayerPawn.Value.WeaponServices == null) return false;
+
+            foreach(var weapon in player.PlayerPawn.Value.WeaponServices.MyWeapons)
+            {
+                if (weapon is not { IsValid: true, Value.IsValid: true }) 
+                    continue;
+                if (weapon.Value.DesignerName != designerName) 
+                    continue;
+
+                item = weapon;
+            }
+            
+            if (item != null && item.Value != null)
+            {
+                player.PlayerPawn.Value.RemovePlayerItem(item.Value);
+
+                if (shouldRemoveEntity)
+                {
+                    item.Value.Remove();
+                }
+
+                return true;
+            }
+            
+            return false;
+        }
+
         public static IEnumerable<T> FindAllEntitiesByDesignerName<T>(string designerName) where T : CEntityInstance
         {
             var pEntity = new CEntityIdentity(EntitySystem.FirstActiveEntity);
             for (; pEntity != null && pEntity.Handle != IntPtr.Zero; pEntity = pEntity.Next)
             {
-                if (!pEntity.DesignerName.Contains(designerName)) continue;
+                if (pEntity.DesignerName == null || !pEntity.DesignerName.Contains(designerName)) continue;
                 yield return new PointerTo<T>(pEntity.Handle).Value;
             }
         }
@@ -101,9 +138,9 @@ namespace CounterStrikeSharp.API
         {
             List<CCSPlayerController> players = new();
 
-            for (int i = 1; i <= Server.MaxPlayers; i++)
+            for (int i = 0; i < Server.MaxPlayers; i++)
             {
-                var controller = GetPlayerFromIndex(i);
+                var controller = GetPlayerFromSlot(i);
 
                 if (!controller.IsValid || controller.UserId == -1)
                     continue;
@@ -149,6 +186,50 @@ namespace CounterStrikeSharp.API
                 Marshal.Copy(nativeUtf8, buffer, 0, buffer.Length);
                 return Encoding.UTF8.GetString(buffer);
             }
+        }
+
+        public static T? GetPointer<T>(IntPtr pointer) where T : NativeObject
+        {
+            var pointerTo = Marshal.ReadIntPtr(pointer);
+            if (pointerTo == IntPtr.Zero)
+            {
+                return null;
+            }
+
+            return (T)Activator.CreateInstance(typeof(T), pointerTo)!;
+        }
+        
+        private static int FindSchemaChain(string className) => Schema.GetSchemaOffset(className, "__m_pChainEntity");
+
+        /// <summary>
+        /// Marks a field as changed for network transmission.
+        /// Not all schema fields are network enabled, so please check the schema before using this.
+        /// </summary>
+        /// <param name="entity">Entity to update</param>
+        /// <param name="className" example="CBaseEntity">Schema field class name</param>
+        /// <param name="fieldName" example="m_iHealth">Schema field name</param>
+        /// <param name="extraOffset">Any additional offset to the schema field</param>
+        public static void SetStateChanged(CBaseEntity entity, string className, string fieldName, int extraOffset = 0)
+        {
+            if (!Schema.IsSchemaFieldNetworked(className, fieldName))
+            {
+                Application.Instance.Logger.LogWarning("Field {ClassName}:{FieldName} is not networked, but SetStateChanged was called on it.", className, fieldName);
+                return;
+            }
+            
+            int offset = Schema.GetSchemaOffset(className, fieldName);
+            int chainOffset = FindSchemaChain(className);
+
+            if (chainOffset != 0)
+            {
+                VirtualFunctions.NetworkStateChanged(entity.Handle + chainOffset, offset + extraOffset, 0xFFFFFFFF);
+                return;
+            }
+
+            VirtualFunctions.StateChanged(entity.NetworkTransmitComponent.Handle, entity.Handle, offset + extraOffset, -1, -1);
+
+            entity.LastNetworkChange = Server.CurrentTime;
+            entity.IsSteadyState.Clear();
         }
     }
 }

@@ -49,6 +49,9 @@ public:  // hooks
                             const char *);
     void AddTaskForNextFrame(std::function<void()> &&task);
 
+    void Hook_RegisterLoopMode(const char* pszLoopModeName, ILoopModeFactory *pLoopModeFactory, void **ppGlobalPointer);
+    IEngineService* Hook_FindService(const char* serviceName);
+
 public:
     const char *GetAuthor() override;
     const char *GetName() override;
@@ -61,6 +64,7 @@ public:
 
 private:
     std::vector<std::function<void()>> m_nextTasks;
+    std::mutex m_nextTasksLock;
 };
 
 static ScriptCallback *on_activate_callback;

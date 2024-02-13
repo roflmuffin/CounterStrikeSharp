@@ -14,14 +14,17 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using CounterStrikeSharp.API.Core.Commands;
 using CounterStrikeSharp.API.Core.Hosting;
 using CounterStrikeSharp.API.Core.Plugin;
 using CounterStrikeSharp.API.Core.Plugin.Host;
+using CounterStrikeSharp.API.Core.Translations;
 using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Modules.Commands;
+using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Menu;
 using CounterStrikeSharp.API.Modules.Utils;
 using Microsoft.Extensions.DependencyInjection;
@@ -43,12 +46,13 @@ namespace CounterStrikeSharp.API.Core
         private readonly CoreConfig _coreConfig;
         private readonly IPluginManager _pluginManager;
         private readonly IPluginContextQueryHandler _pluginContextQueryHandler;
+        private readonly IPlayerLanguageManager _playerLanguageManager;
         private readonly ICommandManager _commandManager;
         private readonly IServiceScopeFactory _serviceScopeFactory;
 
         public Application(ILoggerFactory loggerFactory, IScriptHostConfiguration scriptHostConfiguration,
             GameDataProvider gameDataProvider, CoreConfig coreConfig, IPluginManager pluginManager,
-            IPluginContextQueryHandler pluginContextQueryHandler, ICommandManager commandManager,
+            IPluginContextQueryHandler pluginContextQueryHandler, IPlayerLanguageManager playerLanguageManager,
             IServiceScopeFactory serviceScopeFactory)
         {
             Logger = loggerFactory.CreateLogger("Core");
@@ -57,8 +61,6 @@ namespace CounterStrikeSharp.API.Core
             _coreConfig = coreConfig;
             _pluginManager = pluginManager;
             _pluginContextQueryHandler = pluginContextQueryHandler;
-            _commandManager = commandManager;
-            _serviceScopeFactory = serviceScopeFactory;
             _instance = this;
         }
 
@@ -69,13 +71,13 @@ namespace CounterStrikeSharp.API.Core
             _coreConfig.Load();
             _gameDataProvider.Load();
 
-            var adminGroupsPath = Path.Combine(_scriptHostConfiguration.RootPath, "configs", "admin_groups.json");
-            Logger.LogInformation("Loading Admin Groups from {Path}", adminGroupsPath);
-            AdminManager.LoadAdminGroups(adminGroupsPath);
-
             var adminPath = Path.Combine(_scriptHostConfiguration.RootPath, "configs", "admins.json");
             Logger.LogInformation("Loading Admins from {Path}", adminPath);
             AdminManager.LoadAdminData(adminPath);
+            
+            var adminGroupsPath = Path.Combine(_scriptHostConfiguration.RootPath, "configs", "admin_groups.json");
+            Logger.LogInformation("Loading Admin Groups from {Path}", adminGroupsPath);
+            AdminManager.LoadAdminGroups(adminGroupsPath);
 
             var overridePath = Path.Combine(_scriptHostConfiguration.RootPath, "configs", "admin_overrides.json");
             Logger.LogInformation("Loading Admin Command Overrides from {Path}", overridePath);
@@ -95,7 +97,7 @@ namespace CounterStrikeSharp.API.Core
                     {
                         if (player == null) return;
                         var key = Convert.ToInt32(info.GetArg(0).Split("_")[1]);
-                        ChatMenus.OnKeyPress(player, key);
+                        MenuManager.OnKeyPress(player, key);
                     }));
             }
         }
@@ -107,7 +109,7 @@ namespace CounterStrikeSharp.API.Core
 
             info.ReplyToCommand(
                 "  CounterStrikeSharp was created and is maintained by Michael \"roflmuffin\" Wilson.\n" +
-                "  Counter-Strike Sharp uses code borrowed from SourceMod, Source.Python, FiveM, Saul Rennison and CS2Fixes.\n" +
+                "  Counter-Strike Sharp uses code borrowed from SourceMod, Source.Python, FiveM, Saul Rennison, source2gen and CS2Fixes.\n" +
                 "  See ACKNOWLEDGEMENTS.md for more information.\n" +
                 "  Current API Version: " + currentVersion, true);
             return;
@@ -147,7 +149,7 @@ namespace CounterStrikeSharp.API.Core
                 case "start":
                 case "load":
                 {
-                    if (info.ArgCount < 2)
+                    if (info.ArgCount < 3)
                     {
                         info.ReplyToCommand(
                             "Valid usage: css_plugins start/load [relative plugin path || absolute plugin path] (e.g \"TestPlugin\", \"plugins/TestPlugin/TestPlugin.dll\")\n",
@@ -177,7 +179,8 @@ namespace CounterStrikeSharp.API.Core
                         }
                         catch (Exception e)
                         {
-                            info.ReplyToCommand($"Could not load plugin \"{path}\")", true);
+                            info.ReplyToCommand($"Could not load plugin \"{path}\"", true);
+                            Logger.LogError(e, "Could not load plugin \"{Path}\"", path);
                         }
                     }
                     else
@@ -191,7 +194,7 @@ namespace CounterStrikeSharp.API.Core
                 case "stop":
                 case "unload":
                 {
-                    if (info.ArgCount < 2)
+                    if (info.ArgCount < 3)
                     {
                         info.ReplyToCommand(
                             "Valid usage: css_plugins stop/unload [plugin name || #plugin id] (e.g \"TestPlugin\", \"1\")\n",
@@ -203,7 +206,7 @@ namespace CounterStrikeSharp.API.Core
                     IPluginContext? plugin = _pluginContextQueryHandler.FindPluginByIdOrName(pluginIdentifier);
                     if (plugin == null)
                     {
-                        info.ReplyToCommand($"Could not unload plugin \"{pluginIdentifier}\")", true);
+                        info.ReplyToCommand($"Could not unload plugin \"{pluginIdentifier}\"", true);
                         break;
                     }
 
@@ -214,7 +217,7 @@ namespace CounterStrikeSharp.API.Core
                 case "restart":
                 case "reload":
                 {
-                    if (info.ArgCount < 2)
+                    if (info.ArgCount < 3)
                     {
                         info.ReplyToCommand(
                             "Valid usage: css_plugins restart/reload [plugin name || #plugin id] (e.g \"TestPlugin\", \"#1\")\n",
@@ -227,7 +230,7 @@ namespace CounterStrikeSharp.API.Core
 
                     if (plugin == null)
                     {
-                        info.ReplyToCommand($"Could not reload plugin \"{pluginIdentifier}\")", true);
+                        info.ReplyToCommand($"Could not reload plugin \"{pluginIdentifier}\"", true);
                         break;
                     }
 
@@ -244,6 +247,38 @@ namespace CounterStrikeSharp.API.Core
                                         "  restart / reload - Reloads a plugin currently loaded."
                         , true);
                     break;
+            }
+        }
+
+        [CommandHelper(usage: "[language code, e.g. \"de\", \"pl\", \"en\"]", whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
+        private void OnLangCommand(CCSPlayerController? player, CommandInfo command)
+        {
+            if (player == null) return;
+            
+            SteamID steamId = (SteamID)player.SteamID;
+
+            if (command.ArgCount == 1)
+            {
+                var language = _playerLanguageManager.GetLanguage(steamId);
+                command.ReplyToCommand(string.Format("Current language is \"{0}\" ({1})", language.Name, language.NativeName));
+                return;
+            }
+
+            if (command.ArgCount != 2)
+            {
+                return;
+            }
+            
+            try
+            {
+                var language = command.GetArg(1);
+                var cultureInfo = CultureInfo.GetCultures(CultureTypes.AllCultures).Single(x => x.Name == language);
+                _playerLanguageManager.SetLanguage(steamId, cultureInfo);
+                command.ReplyToCommand($"Language set to {cultureInfo.NativeName}");
+            }
+            catch (InvalidOperationException)
+            {
+                command.ReplyToCommand("Language not found.");
             }
         }
 

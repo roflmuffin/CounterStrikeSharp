@@ -1,7 +1,5 @@
-using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Utils;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 using CounterStrikeSharp.API.Core.Commands;
@@ -45,6 +43,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             Admins.Clear();
             var rootDir = new FileInfo(Assembly.GetExecutingAssembly().Location).Directory.Parent;
             LoadAdminData(Path.Combine(rootDir.FullName, "configs", "admins.json"));
+            MergeGroupPermsIntoAdmins();
         }
 
         [RequiresPermissions(permissions: "@css/generic")]
@@ -53,7 +52,11 @@ namespace CounterStrikeSharp.API.Modules.Admin
         {
             foreach (var (steamId, data) in Admins)
             {
-                command.ReplyToCommand($"{steamId.SteamId64}, {steamId.SteamId2} - {string.Join(", ", data.Flags)}");
+                command.ReplyToCommand($"{steamId.SteamId64}, {steamId.SteamId2} - FLAGS: ");
+                foreach (var domain in data.Flags.Keys)
+                {
+                    command.ReplyToCommand($"   Domain {domain}: {string.Join(", ", data.Flags[domain])}");
+                }
             }
         }
 
@@ -64,6 +67,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             Groups.Clear();
             var rootDir = new FileInfo(Assembly.GetExecutingAssembly().Location).Directory.Parent;
             LoadAdminGroups(Path.Combine(rootDir.FullName, "configs", "admin_groups.json"));
+            MergeGroupPermsIntoAdmins();
         }
 
         [RequiresPermissions(permissions: "@css/generic")]

@@ -2,7 +2,7 @@
 
 CounterStrikeSharp is a server side modding framework for Counter-Strike: Global Offensive. This project attempts to implement a .NET Core scripting layer on top of a Metamod Source Plugin, allowing developers to create plugins that interact with the game server in a modern language (C#) to facilitate the creation of maintainable and testable code.
 
-[Come and join our Discord](https://discord.gg/X7r3PmuYKq)
+[Come and join our Discord](https://discord.gg/eAZU3guKWU)
 
 ## History
 
@@ -14,7 +14,7 @@ Due to the architectural changes of CS2, the plugin is being rebuilt on the grou
 
 Download the latest build from [here](https://github.com/roflmuffin/CounterStrikeSharp/releases). (Download the with runtime version if this is your first time installing).
 
-Detailed installation instructions can be found in the [docs](https://docs.cssharp.dev/guides/getting-started/).
+Detailed installation instructions can be found in the [docs](https://docs.cssharp.dev/docs/guides/getting-started.html).
 
 ## What works?
 
@@ -39,11 +39,11 @@ These features are the core of the platform and work pretty well/have a low risk
 
 ## Links
 
-- [Join the Discord](https://discord.gg/X7r3PmuYKq): Ask questions, provide suggestions
+- [Join the Discord](https://discord.gg/eAZU3guKWU): Ask questions, provide suggestions
 - [Read the docs](https://docs.cssharp.dev/): Getting started guide, hello world plugin example
 - [Issue tracker](https://github.com/roflmuffin/CounterStrikeSharp/issues): Raise any issues here
 - [Builds](https://github.com/roflmuffin/CounterStrikeSharp/actions): Download latest unstable dev snapshot
-- [Install Docs](https://docs.cssharp.dev/guides/getting-started/): Installation instructions
+- [Install Docs](https://docs.cssharp.dev/docs/guides/getting-started.html): Installation instructions
 - [Example Plugin](managed/TestPlugin/TestPlugin.cs): Test plugin with basic functionality
 
 ## Examples
@@ -91,8 +91,8 @@ public class HelloWorldPlugin : BasePlugin
 
 ## Credits
 
-A lot of code has been borrowed from SourceMod as well as Source.Python, two pioneering source engine plugin frameworks which this project lends a lot of its credit to.
-I've also used the scripting context & native system that is implemented in FiveM for GTA5. Also shoutout to the [CS2Fixes](https://github.com/Source2ZE/CS2Fixes) project for providing good reverse-engineering information so shortly after CS2 release.
+A lot of code has been borrowed from [SourceMod](https://github.com/alliedmodders/sourcemod) as well as [Source.Python](https://github.com/Source-Python-Dev-Team/Source.Python), two pioneering source engine plugin frameworks which this project lends a lot of its credit to.
+I've also used the scripting context & native system that is implemented in [FiveM](https://github.com/citizenfx/fivem) for GTA5. Also shoutout to the [CS2Fixes](https://github.com/Source2ZE/CS2Fixes) project for providing good reverse-engineering information so shortly after CS2 release.
 
 ## How to Build
 
@@ -128,3 +128,4 @@ Build
 ```bash
 cmake --build . --config Debug
 ```
+<img src="https://repobeats.axiom.co/api/embed/a96f228b8fa98c032070fa8dd831c967334ee553.svg" width="100%" />

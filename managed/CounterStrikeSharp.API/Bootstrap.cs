@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -8,7 +9,7 @@ using CounterStrikeSharp.API.Core.Hosting;
 using CounterStrikeSharp.API.Core.Logging;
 using CounterStrikeSharp.API.Core.Plugin;
 using CounterStrikeSharp.API.Core.Plugin.Host;
-using CounterStrikeSharp.API.Modules.Admin;
+using CounterStrikeSharp.API.Core.Translations;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -40,7 +41,6 @@ public static class Bootstrap
                     services.AddSingleton<IScriptHostConfiguration, ScriptHostConfiguration>();
                     services.AddScoped<Application>();
                     services.AddSingleton<IPluginManager, PluginManager>();
-                    services.AddTransient<IPluginContextQueryHandler, PluginContextQueryHandler>();
                     services.AddSingleton<ICommandManager, CommandManager>();
 
                     services.Scan(i => i.FromCallingAssembly()

@@ -45,30 +45,50 @@ namespace counterstrikesharp {
 class ScriptCallback;
 class CBaseEntityWrapper;
 
-class CPlayer {
+enum ListenOverride
+{
+    Listen_Default = 0,
+    Listen_Mute,
+    Listen_Hear
+};
+
+enum VoiceFlagValue
+{
+    Speak_Normal = 0,
+    Speak_Muted = 1 << 0,
+    Speak_All = 1 << 1,
+    Speak_ListenAll = 1 << 2,
+    Speak_Team = 1 << 3,
+    Speak_ListenTeam = 1 << 4,
+};
+
+typedef uint8_t VoiceFlag_t;
+
+class CPlayer
+{
     friend class PlayerManager;
 
-public:
+  public:
     CPlayer();
 
-public:
-    void Initialize(const char *name, const char *ip, CPlayerSlot slot);
+  public:
+    void Initialize(const char* name, const char* ip, CPlayerSlot slot);
     void Connect();
     void Disconnect();
-    IPlayerInfo *GetPlayerInfo() const;
+    IPlayerInfo* GetPlayerInfo() const;
     bool WasCountedAsInGame() const;
     int GetUserId();
     bool IsAuthStringValidated() const;
     void Authorize();
 
-public:
-    const char *GetName() const;
-    const CSteamID *GetSteamId();
-    void SetSteamId(const CSteamID *steam_id);
+  public:
+    const char* GetName() const;
+    const CSteamID* GetSteamId();
+    void SetSteamId(const CSteamID* steam_id);
     bool IsConnected() const;
     bool IsFakeClient() const;
     bool IsAuthorized() const;
-    void PrintToConsole(const char *message) const;
+    void PrintToConsole(const char* message) const;
     //    void PrintToChat(const char *message);
     //    void PrintToHint(const char *message);
     //    void PrintToCenter(const char *message);
@@ -76,26 +96,30 @@ public:
     Vector GetAbsOrigin() const;
     bool IsAlive() const;
     bool IsInGame() const;
-    void Kick(const char *kickReason);
-    const char *GetWeaponName() const;
+    void Kick(const char* kickReason);
+    const char* GetWeaponName() const;
     void ChangeTeam(int team) const;
     int GetTeam() const;
     int GetArmor() const;
     int GetFrags() const;
     int GetDeaths() const;
-    const char *GetKeyValue(const char *key) const;
+    const char* GetKeyValue(const char* key) const;
     Vector GetMaxSize() const;
     Vector GetMinSize() const;
     int GetMaxHealth() const;
-    const char *GetIpAddress() const;
-    const char *GetModelName() const;
+    const char* GetIpAddress() const;
+    const char* GetModelName() const;
     int GetUserId() const;
     float GetTimeConnected() const;
     float GetLatency() const;
+    void SetListen(CPlayerSlot slot, ListenOverride listen);
+    void SetVoiceFlags(VoiceFlag_t flags);
+    VoiceFlag_t GetVoiceFlags();
+    ListenOverride GetListen(CPlayerSlot slot) const;
 
-public:
+  public:
     std::string m_name;
-    IPlayerInfo *m_info = nullptr;
+    IPlayerInfo* m_info = nullptr;
     std::string m_auth_id;
     bool m_is_connected = false;
     bool m_is_fake_client = false;
@@ -105,72 +129,64 @@ public:
     CPlayerSlot m_slot = CPlayerSlot(-1);
     const CSteamID* m_steamId;
     std::string m_ip_address;
-    void SetName(const char *name);
-    INetChannelInfo *GetNetInfo() const;
+    ListenOverride m_listenMap[66] = {};
+    VoiceFlag_t m_voiceFlag = 0;
+    CPlayerBitVec m_selfMutes[64] = {};
+    void SetName(const char* name);
+    INetChannelInfo* GetNetInfo() const;
 };
 
-class PlayerManager : public GlobalClass {
+class PlayerManager : public GlobalClass
+{
     friend class CPlayer;
 
-public:
+  public:
     PlayerManager();
     void OnStartup() override;
     void OnAllInitialized() override;
-    bool OnClientConnect(CPlayerSlot slot,
-                         const char *pszName,
-                         uint64 xuid,
-                         const char *pszNetworkID,
-                         bool unk1,
-                         CBufferString *pRejectReason);
-    bool OnClientConnect_Post(CPlayerSlot slot,
-                              const char *pszName,
-                              uint64 xuid,
-                              const char *pszNetworkID,
-                              bool unk1,
-                              CBufferString *pRejectReason);
-    void OnClientPutInServer(CPlayerSlot slot, char const *pszName, int type, uint64 xuid);
-    void OnClientDisconnect(CPlayerSlot slot,
-                            ENetworkDisconnectionReason reason,
-                            const char *pszName,
-                            uint64 xuid,
-                            const char *pszNetworkID);
-    void OnClientDisconnect_Post(CPlayerSlot slot,
-                                 ENetworkDisconnectionReason reason,
-                                 const char *pszName,
-                                 uint64 xuid,
-                                 const char *pszNetworkID) const;
+    bool OnClientConnect(CPlayerSlot slot, const char* pszName, uint64 xuid,
+                         const char* pszNetworkID, bool unk1, CBufferString* pRejectReason);
+    bool OnClientConnect_Post(CPlayerSlot slot, const char* pszName, uint64 xuid,
+                              const char* pszNetworkID, bool unk1, CBufferString* pRejectReason);
+    void OnClientPutInServer(CPlayerSlot slot, char const* pszName, int type, uint64 xuid);
+    void OnClientDisconnect(CPlayerSlot slot, ENetworkDisconnectionReason reason,
+                            const char* pszName, uint64 xuid, const char* pszNetworkID);
+    void OnClientDisconnect_Post(CPlayerSlot slot, ENetworkDisconnectionReason reason,
+                                 const char* pszName, uint64 xuid, const char* pszNetworkID) const;
+    void OnClientVoice(CPlayerSlot slot) const;
     void OnAuthorized(CPlayer* player) const;
-    void OnServerActivate(edict_t *pEdictList, int edictCount, int clientMax) const;
+    void OnServerActivate(edict_t* pEdictList, int edictCount, int clientMax) const;
     void OnThink(bool last_tick) const;
     void OnShutdown() override;
     void OnLevelEnd() override;
-    void OnClientCommand(CPlayerSlot slot, const CCommand &args) const;
+    void OnClientCommand(CPlayerSlot slot, const CCommand& args) const;
     int ListenClient() const;
     void RunAuthChecks();
 
-public:
+  public:
     int NumPlayers() const;
     int MaxClients() const;
-    CPlayer *GetPlayerBySlot(int client) const;
-    CPlayer *GetClientOfUserId(int user_id) const;
+    CPlayer* GetPlayerBySlot(int client) const;
+    CPlayer* GetClientOfUserId(int user_id) const;
 
-private:
-    void InvalidatePlayer(CPlayer *pPlayer) const;
+  private:
+    void InvalidatePlayer(CPlayer* pPlayer) const;
 
-    CPlayer *m_players;
+    CPlayer* m_players;
     int m_max_clients = 0;
     int m_player_count = 0;
-    int *m_user_id_lookup;
+    int* m_user_id_lookup;
     int m_listen_client;
     bool m_is_listen_server;
     float m_last_auth_check_time = 0;
 
-    ScriptCallback *m_on_client_connect_callback;
-    ScriptCallback *m_on_client_put_in_server_callback;
-    ScriptCallback *m_on_client_connected_callback;
-    ScriptCallback *m_on_client_disconnect_callback;
-    ScriptCallback *m_on_client_disconnect_post_callback;
-    ScriptCallback *m_on_client_authorized_callback;
+    ScriptCallback* m_on_client_connect_callback;
+    ScriptCallback* m_on_client_put_in_server_callback;
+    ScriptCallback* m_on_client_connected_callback;
+    ScriptCallback* m_on_client_disconnect_callback;
+    ScriptCallback* m_on_client_disconnect_post_callback;
+    ScriptCallback* m_on_client_voice_callback;
+    ScriptCallback* m_on_client_authorized_callback;
 };
 
-}  // namespace counterstrikesharp
+} // namespace counterstrikesharp

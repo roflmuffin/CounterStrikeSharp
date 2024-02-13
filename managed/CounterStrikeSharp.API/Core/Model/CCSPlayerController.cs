@@ -10,17 +10,13 @@ namespace CounterStrikeSharp.API.Core;
 
 public partial class CCSPlayerController
 {
-    public int? UserId
-    {
-        get
-        {
-            return NativeAPI.GetUseridFromIndex((int)this.Index);
-        }
-    }
+    public int? UserId => NativeAPI.GetUseridFromIndex((int)Index);
+    public CsTeam Team => (CsTeam)TeamNum;
 
     public IntPtr GiveNamedItem(string item)
     {
         if (!PlayerPawn.IsValid) return 0;
+        if (PlayerPawn.Value == null) return 0;
         if (!PlayerPawn.Value.IsValid) return 0;
         if (PlayerPawn.Value.ItemServices == null) return 0;
 
@@ -35,7 +31,7 @@ public partial class CCSPlayerController
             return IntPtr.Zero;
         }
 
-        return this.GiveNamedItem(itemString);
+        return GiveNamedItem(itemString);
     }
 
     public void PrintToConsole(string message)
@@ -45,12 +41,12 @@ public partial class CCSPlayerController
 
     public void PrintToChat(string message)
     {
-        VirtualFunctions.ClientPrint(this.Handle, HudDestination.Chat, message, 0, 0, 0, 0);
+        VirtualFunctions.ClientPrint(Handle, HudDestination.Chat, message, 0, 0, 0, 0);
     }
 
     public void PrintToCenter(string message)
     {
-        VirtualFunctions.ClientPrint(this.Handle, HudDestination.Center, message, 0, 0, 0, 0);
+        VirtualFunctions.ClientPrint(Handle, HudDestination.Center, message, 0, 0, 0, 0);
     }
 
     public void PrintToCenterHtml(string message) => PrintToCenterHtml(message, 5);
@@ -72,14 +68,16 @@ public partial class CCSPlayerController
     public void DropActiveWeapon()
     {
         if (!PlayerPawn.IsValid) return;
+        if (PlayerPawn.Value == null) return;
         if (!PlayerPawn.Value.IsValid) return;
         if (PlayerPawn.Value.ItemServices == null) return;
         if (PlayerPawn.Value.WeaponServices == null) return;
         if (!PlayerPawn.Value.WeaponServices.ActiveWeapon.IsValid) return;
 
         CCSPlayer_ItemServices itemServices = new CCSPlayer_ItemServices(PlayerPawn.Value.ItemServices.Handle);
-        CCSPlayer_WeaponServices weponServices = new CCSPlayer_WeaponServices(PlayerPawn.Value.WeaponServices.Handle);
-        itemServices.DropActivePlayerWeapon(weponServices.ActiveWeapon.Value);
+        CCSPlayer_WeaponServices weaponServices = new CCSPlayer_WeaponServices(PlayerPawn.Value.WeaponServices.Handle);
+        
+        itemServices.DropActivePlayerWeapon(weaponServices.ActiveWeapon.Value);
     }
 
     /// <summary>
@@ -88,6 +86,7 @@ public partial class CCSPlayerController
     public void RemoveWeapons()
     {
         if (!PlayerPawn.IsValid) return;
+        if (PlayerPawn.Value == null) return;
         if (!PlayerPawn.Value.IsValid) return;
         if (PlayerPawn.Value.ItemServices == null) return;
 
@@ -103,6 +102,7 @@ public partial class CCSPlayerController
     public void CommitSuicide(bool explode, bool force)
     {
         if (!PlayerPawn.IsValid) return;
+        if (PlayerPawn.Value == null) return;
         if (!PlayerPawn.Value.IsValid) return;
 
         PlayerPawn.Value.CommitSuicide(explode, force);
@@ -114,9 +114,11 @@ public partial class CCSPlayerController
     public void Respawn()
     {
         if (!PlayerPawn.IsValid) return;
+        if (PlayerPawn.Value == null) return;
         if (!PlayerPawn.Value.IsValid) return;
 
-        VirtualFunctions.CCSPlayerPawn_Respawn(PlayerPawn.Value.Handle);
+        // The Call To Arms update appears to have invalidated the need for CCSPlayerPawn_Respawn.
+        SetPawn(PlayerPawn.Value);
         VirtualFunction.CreateVoid<IntPtr>(Handle, GameData.GetOffset("CCSPlayerController_Respawn"))(Handle);
     }
 
@@ -128,7 +130,7 @@ public partial class CCSPlayerController
     /// <param name="team">The team to switch to</param>
     public void SwitchTeam(CsTeam team)
     {
-        VirtualFunctions.SwitchTeam(this.Handle, (byte)team);
+        VirtualFunctions.SwitchTeam(Handle, (byte)team);
     }
 
     /// <summary>
@@ -151,7 +153,7 @@ public partial class CCSPlayerController
     /// <returns>ConVar string value</returns>
     public string GetConVarValue(string conVar)
     {
-        return NativeAPI.GetClientConvarValue(this.Slot, conVar);
+        return NativeAPI.GetClientConvarValue(Slot, conVar);
     }
 
     public string GetConVarValue(ConVar? conVar)
@@ -177,7 +179,7 @@ public partial class CCSPlayerController
             throw new InvalidOperationException("'SetFakeClientConVar' can only be called for fake clients (bots)");
         }
 
-        NativeAPI.SetFakeClientConvarValue(this.Slot, conVar, value);
+        NativeAPI.SetFakeClientConvarValue(Slot, conVar, value);
     }
 
     /// <summary>
@@ -202,6 +204,21 @@ public partial class CCSPlayerController
 
     public void ExecuteClientCommand(string command) => NativeAPI.IssueClientCommand(Slot, command);
 
+    /// <summary>
+    /// Overrides who a player can hear in voice chat.
+    /// </summary>
+    /// <param name="sender">Player talking in the voice chat</param>
+    /// <param name="override">Whether the talker should be heard</param>
+    public void SetListenOverride(CCSPlayerController sender, ListenOverride @override)
+    {
+        NativeAPI.SetClientListening(Handle, sender.Handle, (Byte)@override);
+    }
+    
+    public ListenOverride GetListenOverride(CCSPlayerController sender)
+    {
+        return NativeAPI.GetClientListening(Handle, sender.Handle);
+    }
+
     public int Slot => (int)Index - 1;
 
     /// <summary>
@@ -211,8 +228,8 @@ public partial class CCSPlayerController
     {
         get
         {
-            if (!this.IsValid) return null;
-            var authorizedSteamId = NativeAPI.GetPlayerAuthorizedSteamid(this.Slot);
+            if (!IsValid) return null;
+            var authorizedSteamId = NativeAPI.GetPlayerAuthorizedSteamid(Slot);
             if ((long)authorizedSteamId == -1) return null;
 
             return (SteamID)authorizedSteamId;
@@ -227,11 +244,20 @@ public partial class CCSPlayerController
     {
         get
         {
-            if (!this.IsValid) return null;
-            var ipAddress = NativeAPI.GetPlayerIpAddress(this.Slot);
+            if (!IsValid) return null;
+            var ipAddress = NativeAPI.GetPlayerIpAddress(Slot);
             if (string.IsNullOrWhiteSpace(ipAddress)) return null;
 
             return ipAddress;
         }
+    }
+
+    /// <summary>
+    /// Determines how the player interacts with voice chat.
+    /// </summary>
+    public VoiceFlags VoiceFlags
+    {
+        get => (VoiceFlags)NativeAPI.GetClientVoiceFlags(Handle);
+        set => NativeAPI.SetClientVoiceFlags(Handle, (Byte)value);
     }
 }

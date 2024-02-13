@@ -3,10 +3,11 @@
     <TargetFramework>net7.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GenerateCompatibilitySuppressionFile>true</GenerateCompatibilitySuppressionFile>
     <EnablePackageValidation>true</EnablePackageValidation>
-    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <NoWarn>$(NoWarn);CS1591;CP0003</NoWarn>
     <Nullable>enable</Nullable>
-    
+	<GenerateCompatibilitySuppressionFile>true</GenerateCompatibilitySuppressionFile>
     <Authors>Roflmuffin</Authors>
     <Description>Official server side runtime assembly for CounterStrikeSharp</Description>
     <PackageProjectUrl>http://docs.cssharp.dev/</PackageProjectUrl>
@@ -16,6 +17,10 @@
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApiCompatValidateAssemblies>true</ApiCompatValidateAssemblies>
+    <ApiCompatContractAssembly>.\ApiCompat\v151.dll</ApiCompatContractAssembly>
+  </PropertyGroup>
   <ItemGroup>
     <None Remove="Modules\Commands\CommandInfo" />
     <None Remove="Modules\Disabled\**" />
@@ -23,8 +28,10 @@
   <ItemGroup>
     <PackageReference Include="McMaster.NETCore.Plugins" Version="1.4.0" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Microsoft.DotNet.ApiCompat.Task" Version="7.0.404" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="7.0.3" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
     <PackageReference Include="Scrutor" Version="4.2.2" />
     <PackageReference Include="Serilog.Extensions.Logging" Version="7.0.0" />
@@ -33,6 +40,7 @@
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Core\Schema\" />
     <Folder Include="Modules\Errors" />
   </ItemGroup>
   <ItemGroup>
