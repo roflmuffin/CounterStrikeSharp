@@ -176,7 +176,7 @@ namespace CounterStrikeSharp.API.Core.Plugin
                         method?.Invoke(pluginServiceCollection, new object[] { serviceCollection });
                     }
                 }
-                serviceCollection.AddScoped<ICommandManager>((x) => _commandManager);
+                serviceCollection.AddScoped<ICommandManager>(_ => _commandManager);
                 serviceCollection.Decorate<ICommandManager>((inner, provider) =>
                     new PluginCommandManagerDecorator(inner, this, provider.GetRequiredService<ILogger<PluginCommandManagerDecorator>>()));
                 serviceCollection.AddSingleton<IPluginContext>(this);
