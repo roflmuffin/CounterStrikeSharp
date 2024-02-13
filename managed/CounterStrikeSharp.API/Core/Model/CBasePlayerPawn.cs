@@ -21,6 +21,12 @@ public partial class CBasePlayerPawn
     /// <param name="weapon"></param>
     public void RemovePlayerItem(CBasePlayerWeapon weapon)
     {
-        VirtualFunctions.RemovePlayerItemVirtual(Handle, weapon.Handle);
+        var weaponServices = Handle.WeaponServices;
+        if (weaponServices == null)
+        {
+            return;
+        }
+
+        VirtualFunction.CreateVoid<IntPtr, CBasePlayerWeapon>(weaponServices.Handle, GameData.GetOffset("CPlayer_WeaponServices_RemovePlayerItem"))(weaponServices.Handle, weapon.Handle);
     }
 }
