@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
+using CounterStrikeSharp.API.Core.Translations;
 using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Modules.Commands;
 using Microsoft.Extensions.Logging;
@@ -31,7 +33,7 @@ public class CommandManager : ICommandManager
 
         _commandDefinitions[definition.Name].Add(definition);
 
-        _logger.LogDebug("Registering standalone command {Command}", definition.Name);
+        _logger.LogDebug("Registering command {Command}", definition.Name);
 
         if (!isRegistered)
         {
@@ -43,7 +45,7 @@ public class CommandManager : ICommandManager
 
     public void RemoveCommand(CommandDefinition definition)
     {
-        _logger.LogDebug("Removing standalone command {Command}", definition.Name);
+        _logger.LogDebug("Removing command {Command}", definition.Name);
 
         if (_commandDefinitions.TryGetValue(definition.Name, out var commandDefinition))
         {
@@ -63,6 +65,8 @@ public class CommandManager : ICommandManager
         var info = new CommandInfo(commandInfo, caller);
 
         var name = info.GetArg(0).ToLower();
+        
+        using var temporaryCulture = new WithTemporaryCulture(caller.GetLanguage());
 
         if (_commandDefinitions.TryGetValue(name, out var handler))
         {
@@ -70,41 +74,48 @@ public class CommandManager : ICommandManager
             {
                 var methodInfo = command.Callback?.GetMethodInfo();
 
-                if (!AdminManager.CommandIsOverriden(name))
+                // We do not need to do permission checks on commands executed from the server console.
+                // The server will always be allowed to execute commands (unless marked as client only like above)
+                if (caller != null) 
                 {
                     // Do not execute command if we do not have the correct permissions.
-                    var permissions = methodInfo?.GetCustomAttributes<BaseRequiresPermissions>();
-                    if (permissions != null)
+                    var adminData = AdminManager.GetPlayerAdminData(caller!.AuthorizedSteamID);
+                    var permissionsToCheck = new List<BaseRequiresPermissions>();
+
+
+                    // If our command is overriden, we dynamically create a new permissions attribute
+                    // based on the data that is stored in admin_overrides.json.
+                    if (AdminManager.CommandIsOverriden(name))
                     {
-                        foreach (var attr in permissions)
+                        var data = AdminManager.GetCommandOverrideData(name);
+                        if (data != null)
                         {
-                            attr.Command = name;
-                            if (!attr.CanExecuteCommand(caller))
-                            {
-                                info.ReplyToCommand(
-                                    "[CSS] You do not have the correct permissions to execute this command.");
-                                return;
-                            }
+                            var attrType = (data.CheckType == "all") ? typeof(RequiresPermissions) : typeof(RequiresPermissionsOr);
+                            var attr = (BaseRequiresPermissions)Activator.CreateInstance(attrType, args: AdminManager.GetPermissionOverrides(name));
+
+                            if (attr != null) permissionsToCheck.Add(attr);
                         }
                     }
-                }
-                // If this command has it's permissions overriden, we will do an AND check for all permissions.
-                else
-                {
-                    // I don't know if this is the most sane implementation of this, can be edited in code review.
-                    var data = AdminManager.GetCommandOverrideData(name);
-                    if (data != null)
+                    // The permissions for this command are not being overriden here, so we
+                    // grab the permissions to check straight from the attribute.
+                    else
                     {
-                        var attrType = (data.CheckType == "all")
-                            ? typeof(RequiresPermissions)
-                            : typeof(RequiresPermissionsOr);
-                        var attr = (BaseRequiresPermissions)Activator.CreateInstance(attrType,
-                            args: AdminManager.GetPermissionOverrides(name));
+                        var permissions = methodInfo?.GetCustomAttributes<BaseRequiresPermissions>();
+                        if (permissions != null) permissionsToCheck.AddRange(permissions);
+                    }
+
+                    foreach (var attr in permissionsToCheck)
+                    {
                         attr.Command = name;
                         if (!attr.CanExecuteCommand(caller))
                         {
-                            info.ReplyToCommand(
-                                "[CSS] You do not have the correct permissions to execute this command.");
+                            var responseStr = (attr.GetType() == typeof(RequiresPermissions)) ?
+                            "You are missing the correct permissions" : "You do not have one of the correct permissions";
+
+                            var flags = attr.Permissions.Except(adminData?.GetAllFlags() ?? new HashSet<string>());
+                            flags = flags.Except(adminData?.Groups ?? new HashSet<string>());
+                            info.ReplyToCommand($"[CSS] {responseStr} ({string.Join(", ", flags)}) to execute this command.");
+
                             return;
                         }
                     }
@@ -118,32 +129,24 @@ public class CommandManager : ICommandManager
                     {
                         case CommandUsage.CLIENT_AND_SERVER: break; // Allow command through.
                         case CommandUsage.CLIENT_ONLY:
-                            if (caller == null || !caller.IsValid)
-                            {
-                                info.ReplyToCommand("[CSS] This command can only be executed by clients.");
-                                return;
-                            }
-
+                            if (caller == null || !caller.IsValid) { info.ReplyToCommand("[CSS] This command can only be executed by clients."); return; }
                             break;
                         case CommandUsage.SERVER_ONLY:
-                            if (caller != null && caller.IsValid)
-                            {
-                                info.ReplyToCommand("[CSS] This command can only be executed by the server.");
-                                return;
-                            }
-
+                            if (caller != null && caller.IsValid) { info.ReplyToCommand("[CSS] This command can only be executed by the server."); return; }
                             break;
-                        default:
-                            throw new ArgumentException(
-                                "Unrecognised CommandUsage value passed in CommandHelperAttribute.");
+                        default: throw new ArgumentException("Unrecognised CommandUsage value passed in CommandHelperAttribute.");
                     }
 
                     // Technically the command itself counts as the first argument, 
                     // but we'll just ignore that for this check.
-                    if (command.MinArgs != 0 && info.ArgCount - 1 < command.MinArgs)
+                    if (helperAttribute.MinArgs != 0 && info.ArgCount - 1 < helperAttribute.MinArgs)
                     {
-                        info.ReplyToCommand(
-                            $"[CSS] Expected usage: \"!{name} {command.UsageHint}\".");
+                        // Remove the "css_" from the beginning of the command name if it's present.
+                        // Most of the time, users will be calling commands from chat.
+                        var commandCalled = info.ArgByIndex(0);
+                        var properCommandName = (commandCalled.StartsWith("css_")) ? commandCalled.Replace("css_", "") : commandCalled;
+
+                        info.ReplyToCommand($"[CSS] Expected usage: \"!{properCommandName} {helperAttribute.Usage}\".");
                         return;
                     }
                 }

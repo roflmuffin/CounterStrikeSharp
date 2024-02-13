@@ -61,6 +61,9 @@ namespace CounterStrikeSharp.API.Core
             _coreConfig = coreConfig;
             _pluginManager = pluginManager;
             _pluginContextQueryHandler = pluginContextQueryHandler;
+            _playerLanguageManager = playerLanguageManager;
+            _serviceScopeFactory = serviceScopeFactory;
+            _commandManager = _serviceScopeFactory.CreateScope().ServiceProvider.GetRequiredService<ICommandManager>();
             _instance = this;
         }
 

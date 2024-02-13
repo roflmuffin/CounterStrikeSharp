@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using CounterStrikeSharp.API.Modules.Admin.Permissions;
 using CounterStrikeSharp.API.Modules.Commands;
 
 namespace CounterStrikeSharp.API.Core.Commands;

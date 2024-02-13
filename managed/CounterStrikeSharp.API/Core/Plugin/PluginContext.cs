@@ -178,7 +178,7 @@ namespace CounterStrikeSharp.API.Core.Plugin
                 }
                 serviceCollection.AddScoped<ICommandManager>((x) => _commandManager);
                 serviceCollection.Decorate<ICommandManager>((inner, provider) =>
-                    new PluginCommandManagerDecorator(inner));
+                    new PluginCommandManagerDecorator(inner, this, provider.GetRequiredService<ILogger<PluginCommandManagerDecorator>>()));
                 serviceCollection.AddSingleton<IPluginContext>(this);
                 serviceCollection.TryAddSingleton<IStringLocalizerFactory, JsonStringLocalizerFactory>();
                 serviceCollection.TryAddTransient(typeof(IStringLocalizer<>), typeof(StringLocalizer<>));
