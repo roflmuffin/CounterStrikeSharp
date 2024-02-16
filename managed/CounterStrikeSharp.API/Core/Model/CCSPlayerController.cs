@@ -202,7 +202,19 @@ public partial class CCSPlayerController
     /// </summary>
     public PlayerButtons Buttons => (PlayerButtons)Pawn.Value.MovementServices!.Buttons.ButtonStates[0];
 
+    /// <summary>
+    /// Issue the specified command to the specified client (mimics that client typing the command at the console).
+    /// Note: Only works for some commands, marked with the FCVAR_CLIENT_CAN_EXECUTE flag (not many).
+    /// </summary>
+    /// <param name="command"></param>
     public void ExecuteClientCommand(string command) => NativeAPI.IssueClientCommand(Slot, command);
+
+    /// <summary>
+    /// Issue the specified command directly from the server (mimics the server executing the command with the given player context).
+    /// <remarks>Works with server commands like `kill`, `explode`, `noclip`, etc. </remarks>
+    /// </summary>
+    /// <param name="command"></param>
+    public void ExecuteClientCommandFromServer(string command) => NativeAPI.IssueClientCommandFromServer(Slot, command);
 
     /// <summary>
     /// Overrides who a player can hear in voice chat.

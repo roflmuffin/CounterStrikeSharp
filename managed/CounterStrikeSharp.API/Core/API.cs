@@ -124,12 +124,23 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
-        public static void IssueClientCommand(int clientindex, string command){
+        public static void IssueClientCommand(int slot, string command){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.Push(clientindex);
+			ScriptContext.GlobalScriptContext.Push(slot);
 			ScriptContext.GlobalScriptContext.Push(command);
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xCA5BA982);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static void IssueClientCommandFromServer(int slot, string command){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(slot);
+			ScriptContext.GlobalScriptContext.Push(command);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x85376751);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
 			}
