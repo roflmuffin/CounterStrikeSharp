@@ -488,15 +488,10 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
         }
-        
-        /// <summary>
-        /// Used to bind a fake ConVar to a plugin command. Only required for ConVars that are not public properties of the plugin class.
-        /// </summary>
-        /// <param name="convar"></param>
-        /// <typeparam name="T"></typeparam>
-        public void RegisterFakeConVars(object instance)
+
+        public void RegisterFakeConVars(Type type, object instance = null)
         {
-            var convars = instance.GetType()
+            var convars = type
                 .GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
                 .Where(prop => prop.FieldType.IsGenericType && 
                                prop.FieldType.GetGenericTypeDefinition() == typeof(FakeConVar<>));
@@ -519,6 +514,16 @@ namespace CounterStrikeSharp.API.Core
                     executeCommandMethod.Invoke(propValue, new object[] {caller, command});
                 });
             }
+        }
+        
+        /// <summary>
+        /// Used to bind a fake ConVar to a plugin command. Only required for ConVars that are not public properties of the plugin class.
+        /// </summary>
+        /// <param name="convar"></param>
+        /// <typeparam name="T"></typeparam>
+        public void RegisterFakeConVars(object instance)
+        {
+            RegisterFakeConVars(instance.GetType(), instance);
         }
 
         public void HookEntityOutput(string classname, string outputName, EntityIO.EntityOutputHandler handler, HookMode mode = HookMode.Pre)
