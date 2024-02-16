@@ -1,15 +1,12 @@
 ﻿using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes;
-using CounterStrikeSharp.API.Core.Attributes.Registration;
-using CounterStrikeSharp.API.Modules.Admin;
-using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API.Modules.Cvars.Validators;
 
 namespace WithFakeConvars;
 
-[MinimumApiVersion(80)]
+[MinimumApiVersion(168)]
 public class WithFakeConvarsPlugin : BasePlugin
 {
     public override string ModuleName => "Example: With Fake Convars";
