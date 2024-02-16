@@ -27,6 +27,7 @@ using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Timers;
 using CounterStrikeSharp.API.Modules.Config;
+using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API.Modules.Entities;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
@@ -394,6 +395,7 @@ namespace CounterStrikeSharp.API.Core
             this.RegisterAttributeHandlers(instance);
             this.RegisterConsoleCommandAttributeHandlers(instance);
             this.RegisterEntityOutputAttributeHandlers(instance);
+            this.RegisterFakeConVars(instance);
         }
 
         public void InitializeConfig(object instance, Type pluginType)
@@ -484,6 +486,38 @@ namespace CounterStrikeSharp.API.Core
                 {
                     HookEntityOutput(outputInfo.Classname, outputInfo.OutputName, handler.CreateDelegate<EntityIO.EntityOutputHandler>(instance));
                 }
+            }
+        }
+        
+        /// <summary>
+        /// Used to bind a fake ConVar to a plugin command. Only required for ConVars that are not public properties of the plugin class.
+        /// </summary>
+        /// <param name="convar"></param>
+        /// <typeparam name="T"></typeparam>
+        public void RegisterFakeConVars(object instance)
+        {
+            var convars = instance.GetType()
+                .GetFields(BindingFlags.Public | BindingFlags.Instance)
+                .Where(prop => prop.FieldType.IsGenericType && 
+                               prop.FieldType.GetGenericTypeDefinition() == typeof(FakeConVar<>));
+            
+            foreach (var prop in convars)
+            {
+                object propValue = prop.GetValue(instance); // FakeConvar<?> instance
+                var propValueType = prop.FieldType.GenericTypeArguments[0];
+                var name = prop.FieldType.GetProperty("Name", BindingFlags.Public | BindingFlags.Instance)
+                    .GetValue(propValue);
+                
+                var description = prop.FieldType.GetProperty("Description", BindingFlags.Public | BindingFlags.Instance)
+                    .GetValue(propValue);
+
+                MethodInfo executeCommandMethod = prop.FieldType
+                    .GetMethod("ExecuteCommand", BindingFlags.Instance | BindingFlags.NonPublic);
+              
+                this.AddCommand((string)name, (string) description, (caller, command) =>
+                {
+                    executeCommandMethod.Invoke(propValue, new object[] {caller, command});
+                });
             }
         }
 
