@@ -20,6 +20,8 @@ public class FakeConVar<T> where T : IComparable<T>
 
     public string Name { get; }
     public string Description { get; }
+    
+    public event EventHandler<T> ValueChanged;
 
     private T _value;
 
@@ -106,5 +108,6 @@ public class FakeConVar<T> where T : IComparable<T>
         }
 
         _value = value;
+        ValueChanged?.Invoke(this, _value);
     }
 }
