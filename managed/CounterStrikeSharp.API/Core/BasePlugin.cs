@@ -497,7 +497,7 @@ namespace CounterStrikeSharp.API.Core
         public void RegisterFakeConVars(object instance)
         {
             var convars = instance.GetType()
-                .GetFields(BindingFlags.Public | BindingFlags.Instance)
+                .GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
                 .Where(prop => prop.FieldType.IsGenericType && 
                                prop.FieldType.GetGenericTypeDefinition() == typeof(FakeConVar<>));
             
