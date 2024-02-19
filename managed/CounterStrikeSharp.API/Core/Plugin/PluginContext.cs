@@ -176,9 +176,10 @@ namespace CounterStrikeSharp.API.Core.Plugin
                         method?.Invoke(pluginServiceCollection, new object[] { serviceCollection });
                     }
                 }
-                serviceCollection.AddScoped<ICommandManager>(_ => _commandManager);
-                serviceCollection.Decorate<ICommandManager>((inner, provider) =>
-                    new PluginCommandManagerDecorator(inner, this, provider.GetRequiredService<ILogger<PluginCommandManagerDecorator>>()));
+                
+                serviceCollection.AddScoped<ICommandManager>(c => _commandManager);
+                serviceCollection.DecorateSingleton<ICommandManager, PluginCommandManagerDecorator>();
+
                 serviceCollection.AddSingleton<IPluginContext>(this);
                 serviceCollection.TryAddSingleton<IStringLocalizerFactory, JsonStringLocalizerFactory>();
                 serviceCollection.TryAddTransient(typeof(IStringLocalizer<>), typeof(StringLocalizer<>));
