@@ -15,16 +15,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 namespace CounterStrikeSharp.API.Core;
 
 [GenerateAutomaticInterface]
-public partial class CAI_ChangeTarget : CBaseEntity, ICAI_ChangeTarget
+public partial class CTriggerHostageReset : CBaseTrigger, ICTriggerHostageReset
 {
-    public CAI_ChangeTarget (IntPtr pointer) : base(pointer) {}
-
-	// m_iszNewTarget
-	[SchemaMember("CAI_ChangeTarget", "m_iszNewTarget")]
-	public string NewTarget
-	{
-		get { return Schema.GetUtf8String(this.Handle, "CAI_ChangeTarget", "m_iszNewTarget"); }
-		set { Schema.SetString(this.Handle, "CAI_ChangeTarget", "m_iszNewTarget", value); }
-	}
+    public CTriggerHostageReset (IntPtr pointer) : base(pointer) {}
 
 }

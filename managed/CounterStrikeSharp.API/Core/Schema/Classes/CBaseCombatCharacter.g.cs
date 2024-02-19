@@ -47,10 +47,6 @@ public partial class CBaseCombatCharacter : CBaseFlex, ICBaseCombatCharacter
 	[SchemaMember("CBaseCombatCharacter", "m_bloodColor")]
 	public ref Int32 BloodColor => ref Schema.GetRef<Int32>(this.Handle, "CBaseCombatCharacter", "m_bloodColor");
 
-	// m_navMeshID
-	[SchemaMember("CBaseCombatCharacter", "m_navMeshID")]
-	public ref Int32 NavMeshID => ref Schema.GetRef<Int32>(this.Handle, "CBaseCombatCharacter", "m_navMeshID");
-
 	// m_iDamageCount
 	[SchemaMember("CBaseCombatCharacter", "m_iDamageCount")]
 	public ref Int32 DamageCount => ref Schema.GetRef<Int32>(this.Handle, "CBaseCombatCharacter", "m_iDamageCount");

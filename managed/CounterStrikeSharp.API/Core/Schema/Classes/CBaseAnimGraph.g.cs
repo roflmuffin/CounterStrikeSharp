@@ -23,10 +23,6 @@ public partial class CBaseAnimGraph : CBaseModelEntity, ICBaseAnimGraph
 	[SchemaMember("CBaseAnimGraph", "m_bInitiallyPopulateInterpHistory")]
 	public ref bool InitiallyPopulateInterpHistory => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraph", "m_bInitiallyPopulateInterpHistory");
 
-	// m_bShouldAnimateDuringGameplayPause
-	[SchemaMember("CBaseAnimGraph", "m_bShouldAnimateDuringGameplayPause")]
-	public ref bool ShouldAnimateDuringGameplayPause => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraph", "m_bShouldAnimateDuringGameplayPause");
-
 	// m_pChoreoServices
 	[SchemaMember("CBaseAnimGraph", "m_pChoreoServices")]
 	public IChoreoServices? ChoreoServices => Schema.GetPointer<IChoreoServices>(this.Handle, "CBaseAnimGraph", "m_pChoreoServices");
@@ -43,9 +39,9 @@ public partial class CBaseAnimGraph : CBaseModelEntity, ICBaseAnimGraph
 	[SchemaMember("CBaseAnimGraph", "m_vLastSlopeCheckPos")]
 	public Vector LastSlopeCheckPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseAnimGraph", "m_vLastSlopeCheckPos");
 
-	// m_bAnimGraphDirty
-	[SchemaMember("CBaseAnimGraph", "m_bAnimGraphDirty")]
-	public ref bool AnimGraphDirty => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraph", "m_bAnimGraphDirty");
+	// m_bAnimationUpdateScheduled
+	[SchemaMember("CBaseAnimGraph", "m_bAnimationUpdateScheduled")]
+	public ref bool AnimationUpdateScheduled => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraph", "m_bAnimationUpdateScheduled");
 
 	// m_vecForce
 	[SchemaMember("CBaseAnimGraph", "m_vecForce")]

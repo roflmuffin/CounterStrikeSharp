@@ -63,4 +63,16 @@ public partial class CCSPlayer_WeaponServices : CPlayer_WeaponServices, ICCSPlay
 	[SchemaMember("CCSPlayer_WeaponServices", "m_bPickedUpWeapon")]
 	public ref bool PickedUpWeapon => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_WeaponServices", "m_bPickedUpWeapon");
 
+	// m_bDisableAutoDeploy
+	[SchemaMember("CCSPlayer_WeaponServices", "m_bDisableAutoDeploy")]
+	public ref bool DisableAutoDeploy => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_WeaponServices", "m_bDisableAutoDeploy");
+
+	// m_nOldShootPositionHistoryCount
+	[SchemaMember("CCSPlayer_WeaponServices", "m_nOldShootPositionHistoryCount")]
+	public ref UInt32 OldShootPositionHistoryCount => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayer_WeaponServices", "m_nOldShootPositionHistoryCount");
+
+	// m_nOldInputHistoryCount
+	[SchemaMember("CCSPlayer_WeaponServices", "m_nOldInputHistoryCount")]
+	public ref UInt32 OldInputHistoryCount => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayer_WeaponServices", "m_nOldInputHistoryCount");
+
 }

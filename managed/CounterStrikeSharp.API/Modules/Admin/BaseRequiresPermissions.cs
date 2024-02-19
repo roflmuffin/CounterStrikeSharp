@@ -34,9 +34,9 @@ namespace CounterStrikeSharp.API.Modules.Admin
             if (caller?.AuthorizedSteamID == null) return false;
             var adminData = AdminManager.GetPlayerAdminData(caller.AuthorizedSteamID);
             if (adminData == null) return false;
-            if (adminData.CommandOverrides.ContainsKey(Command))
+            if (adminData.CommandOverrides.TryGetValue(Command, out var command))
             {
-                return adminData.CommandOverrides[Command];
+                return command;
             }
 
             return true;

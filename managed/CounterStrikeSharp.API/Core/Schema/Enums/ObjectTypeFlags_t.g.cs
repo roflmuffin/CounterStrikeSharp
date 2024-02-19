@@ -9,9 +9,6 @@ namespace CounterStrikeSharp.API.Core;
 public enum ObjectTypeFlags_t : uint
 {
 	OBJECT_TYPE_NONE = 0x0,
-	OBJECT_TYPE_IMAGE_LOD = 0x1,
-	OBJECT_TYPE_GEOMETRY_LOD = 0x2,
-	OBJECT_TYPE_DECAL = 0x4,
 	OBJECT_TYPE_MODEL = 0x8,
 	OBJECT_TYPE_BLOCK_LIGHT = 0x10,
 	OBJECT_TYPE_NO_SHADOWS = 0x20,

@@ -19,7 +19,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
 
     public static partial class AdminManager
     {
-        private static Dictionary<string, CommandData> CommandOverrides = new();
+        private static Dictionary<string, CommandData> CommandOverrides = new(StringComparer.InvariantCultureIgnoreCase);
         public static void LoadCommandOverrides(string overridePath)
         {
             try

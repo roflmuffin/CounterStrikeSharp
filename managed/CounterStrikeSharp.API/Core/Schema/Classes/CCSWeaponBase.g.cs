@@ -91,6 +91,10 @@ public partial class CCSWeaponBase : CBasePlayerWeapon, ICCSWeaponBase
 	[SchemaMember("CCSWeaponBase", "m_flLastDeployTime")]
 	public ref float LastDeployTime => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flLastDeployTime");
 
+	// m_nLastEmptySoundCmdNum
+	[SchemaMember("CCSWeaponBase", "m_nLastEmptySoundCmdNum")]
+	public ref Int32 LastEmptySoundCmdNum => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_nLastEmptySoundCmdNum");
+
 	// m_nViewModelIndex
 	[SchemaMember("CCSWeaponBase", "m_nViewModelIndex")]
 	public ref UInt32 ViewModelIndex => ref Schema.GetRef<UInt32>(this.Handle, "CCSWeaponBase", "m_nViewModelIndex");
@@ -258,5 +262,9 @@ public partial class CCSWeaponBase : CBasePlayerWeapon, ICCSWeaponBase
 	// m_iNumEmptyAttacks
 	[SchemaMember("CCSWeaponBase", "m_iNumEmptyAttacks")]
 	public ref Int32 NumEmptyAttacks => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_iNumEmptyAttacks");
+
+	// m_flWatTickOffset
+	[SchemaMember("CCSWeaponBase", "m_flWatTickOffset")]
+	public ref float WatTickOffset => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flWatTickOffset");
 
 }

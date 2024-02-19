@@ -15,12 +15,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 namespace CounterStrikeSharp.API.Core;
 
 [GenerateAutomaticInterface]
-public partial class AnimationUpdateListHandle_t : NativeObject, IAnimationUpdateListHandle_t
+public partial class CCSWeaponBaseVDataAPI : NativeObject, ICCSWeaponBaseVDataAPI
 {
-    public AnimationUpdateListHandle_t (IntPtr pointer) : base(pointer) {}
-
-	// m_Value
-	[SchemaMember("AnimationUpdateListHandle_t", "m_Value")]
-	public ref UInt32 Value => ref Schema.GetRef<UInt32>(this.Handle, "AnimationUpdateListHandle_t", "m_Value");
+    public CCSWeaponBaseVDataAPI (IntPtr pointer) : base(pointer) {}
 
 }

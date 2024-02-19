@@ -43,6 +43,10 @@ public partial class CCSPlayerController_InventoryServices : CPlayerControllerCo
 	[SchemaMember("CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsFriendly")]
 	public ref Int32 PersonaDataPublicCommendsFriendly => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsFriendly");
 
+	// m_nPersonaDataXpTrailLevel
+	[SchemaMember("CCSPlayerController_InventoryServices", "m_nPersonaDataXpTrailLevel")]
+	public ref Int32 PersonaDataXpTrailLevel => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_InventoryServices", "m_nPersonaDataXpTrailLevel");
+
 	// m_unEquippedPlayerSprayIDs
 	[SchemaMember("CCSPlayerController_InventoryServices", "m_unEquippedPlayerSprayIDs")]
 	public Span<UInt32> EquippedPlayerSprayIDs => Schema.GetFixedArray<UInt32>(this.Handle, "CCSPlayerController_InventoryServices", "m_unEquippedPlayerSprayIDs", 1);

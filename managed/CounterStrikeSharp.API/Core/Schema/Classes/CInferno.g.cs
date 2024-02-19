@@ -103,6 +103,10 @@ public partial class CInferno : CBaseModelEntity, ICInferno
 	[SchemaMember("CInferno", "m_nMaxFlames")]
 	public ref Int32 MaxFlames => ref Schema.GetRef<Int32>(this.Handle, "CInferno", "m_nMaxFlames");
 
+	// m_nSpreadCount
+	[SchemaMember("CInferno", "m_nSpreadCount")]
+	public ref Int32 SpreadCount => ref Schema.GetRef<Int32>(this.Handle, "CInferno", "m_nSpreadCount");
+
 	// m_BookkeepingTimer
 	[SchemaMember("CInferno", "m_BookkeepingTimer")]
 	public CountdownTimer BookkeepingTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CInferno", "m_BookkeepingTimer");

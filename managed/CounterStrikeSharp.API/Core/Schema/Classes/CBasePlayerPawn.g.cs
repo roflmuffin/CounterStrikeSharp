@@ -115,4 +115,8 @@ public partial class CBasePlayerPawn : CBaseCombatCharacter, ICBasePlayerPawn
 	[SchemaMember("CBasePlayerPawn", "m_iHltvReplayEntity")]
 	public CEntityIndex HltvReplayEntity => Schema.GetDeclaredClass<CEntityIndex>(this.Handle, "CBasePlayerPawn", "m_iHltvReplayEntity");
 
+	// m_sndOpvarLatchData
+	[SchemaMember("CBasePlayerPawn", "m_sndOpvarLatchData")]
+	public NetworkedVector<sndopvarlatchdata_t> SndOpvarLatchData => Schema.GetDeclaredClass<NetworkedVector<sndopvarlatchdata_t>>(this.Handle, "CBasePlayerPawn", "m_sndOpvarLatchData");
+
 }

@@ -807,6 +807,82 @@ public partial class CCSGameRules : CTeamplayRules, ICCSGameRules
 	[SchemaMember("CCSGameRules", "m_bPlayedTeamIntroVO")]
 	public ref bool PlayedTeamIntroVO => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bPlayedTeamIntroVO");
 
+	// m_iRoundEndWinnerTeam
+	[SchemaMember("CCSGameRules", "m_iRoundEndWinnerTeam")]
+	public ref Int32 RoundEndWinnerTeam => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndWinnerTeam");
+
+	// m_eRoundEndReason
+	[SchemaMember("CCSGameRules", "m_eRoundEndReason")]
+	public ref Int32 RoundEndReason => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_eRoundEndReason");
+
+	// m_bRoundEndShowTimerDefend
+	[SchemaMember("CCSGameRules", "m_bRoundEndShowTimerDefend")]
+	public ref bool RoundEndShowTimerDefend => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bRoundEndShowTimerDefend");
+
+	// m_iRoundEndTimerTime
+	[SchemaMember("CCSGameRules", "m_iRoundEndTimerTime")]
+	public ref Int32 RoundEndTimerTime => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndTimerTime");
+
+	// m_sRoundEndFunFactToken
+	[SchemaMember("CCSGameRules", "m_sRoundEndFunFactToken")]
+	public string RoundEndFunFactToken
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CCSGameRules", "m_sRoundEndFunFactToken"); }
+		set { Schema.SetString(this.Handle, "CCSGameRules", "m_sRoundEndFunFactToken", value); }
+	}
+
+	// m_iRoundEndFunFactPlayerSlot
+	[SchemaMember("CCSGameRules", "m_iRoundEndFunFactPlayerSlot")]
+	public ref Int32 RoundEndFunFactPlayerSlot => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndFunFactPlayerSlot");
+
+	// m_iRoundEndFunFactData1
+	[SchemaMember("CCSGameRules", "m_iRoundEndFunFactData1")]
+	public ref Int32 RoundEndFunFactData1 => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndFunFactData1");
+
+	// m_iRoundEndFunFactData2
+	[SchemaMember("CCSGameRules", "m_iRoundEndFunFactData2")]
+	public ref Int32 RoundEndFunFactData2 => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndFunFactData2");
+
+	// m_iRoundEndFunFactData3
+	[SchemaMember("CCSGameRules", "m_iRoundEndFunFactData3")]
+	public ref Int32 RoundEndFunFactData3 => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndFunFactData3");
+
+	// m_sRoundEndMessage
+	[SchemaMember("CCSGameRules", "m_sRoundEndMessage")]
+	public string RoundEndMessage
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CCSGameRules", "m_sRoundEndMessage"); }
+		set { Schema.SetString(this.Handle, "CCSGameRules", "m_sRoundEndMessage", value); }
+	}
+
+	// m_iRoundEndPlayerCount
+	[SchemaMember("CCSGameRules", "m_iRoundEndPlayerCount")]
+	public ref Int32 RoundEndPlayerCount => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndPlayerCount");
+
+	// m_bRoundEndNoMusic
+	[SchemaMember("CCSGameRules", "m_bRoundEndNoMusic")]
+	public ref bool RoundEndNoMusic => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bRoundEndNoMusic");
+
+	// m_iRoundEndLegacy
+	[SchemaMember("CCSGameRules", "m_iRoundEndLegacy")]
+	public ref Int32 RoundEndLegacy => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndLegacy");
+
+	// m_nRoundEndCount
+	[SchemaMember("CCSGameRules", "m_nRoundEndCount")]
+	public ref byte RoundEndCount => ref Schema.GetRef<byte>(this.Handle, "CCSGameRules", "m_nRoundEndCount");
+
+	// m_iRoundStartRoundNumber
+	[SchemaMember("CCSGameRules", "m_iRoundStartRoundNumber")]
+	public ref Int32 RoundStartRoundNumber => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iRoundStartRoundNumber");
+
+	// m_nRoundStartCount
+	[SchemaMember("CCSGameRules", "m_nRoundStartCount")]
+	public ref byte RoundStartCount => ref Schema.GetRef<byte>(this.Handle, "CCSGameRules", "m_nRoundStartCount");
+
+	// m_nRoundStartTicks
+	[SchemaMember("CCSGameRules", "m_nRoundStartTicks")]
+	public NetworkedVector<Int32> RoundStartTicks => Schema.GetDeclaredClass<NetworkedVector<Int32>>(this.Handle, "CCSGameRules", "m_nRoundStartTicks");
+
 	// m_flLastPerfSampleTime
 	[SchemaMember("CCSGameRules", "m_flLastPerfSampleTime")]
 	public ref double LastPerfSampleTime => ref Schema.GetRef<double>(this.Handle, "CCSGameRules", "m_flLastPerfSampleTime");

@@ -33,4 +33,8 @@ public partial class CEntityInstance : NativeEntity, ICEntityInstance
 	[SchemaMember("CEntityInstance", "m_CScriptComponent")]
 	public CScriptComponent? CScriptComponent => Schema.GetPointer<CScriptComponent>(this.Handle, "CEntityInstance", "m_CScriptComponent");
 
+	// m_bVisibleinPVS
+	[SchemaMember("CEntityInstance", "m_bVisibleinPVS")]
+	public ref bool VisibleinPVS => ref Schema.GetRef<bool>(this.Handle, "CEntityInstance", "m_bVisibleinPVS");
+
 }

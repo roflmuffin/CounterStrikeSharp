@@ -6,9 +6,9 @@ using System;
 
 namespace CounterStrikeSharp.API.Core;
 
-public enum RenderMultisampleType_t : uint
+public enum RenderMultisampleType_t : byte
 {
-	RENDER_MULTISAMPLE_INVALID = 0xFFFFFFFF,
+	RENDER_MULTISAMPLE_INVALID = 0xFF,
 	RENDER_MULTISAMPLE_NONE = 0x0,
 	RENDER_MULTISAMPLE_2X = 0x1,
 	RENDER_MULTISAMPLE_4X = 0x2,

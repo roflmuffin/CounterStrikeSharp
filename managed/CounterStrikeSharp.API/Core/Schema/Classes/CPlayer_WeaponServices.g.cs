@@ -19,10 +19,6 @@ public partial class CPlayer_WeaponServices : CPlayerPawnComponent, ICPlayer_Wea
 {
     public CPlayer_WeaponServices (IntPtr pointer) : base(pointer) {}
 
-	// m_bAllowSwitchToNoWeapon
-	[SchemaMember("CPlayer_WeaponServices", "m_bAllowSwitchToNoWeapon")]
-	public ref bool AllowSwitchToNoWeapon => ref Schema.GetRef<bool>(this.Handle, "CPlayer_WeaponServices", "m_bAllowSwitchToNoWeapon");
-
 	// m_hMyWeapons
 	[SchemaMember("CPlayer_WeaponServices", "m_hMyWeapons")]
 	public NetworkedVector<CHandle<CBasePlayerWeapon>> MyWeapons => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBasePlayerWeapon>>>(this.Handle, "CPlayer_WeaponServices", "m_hMyWeapons");

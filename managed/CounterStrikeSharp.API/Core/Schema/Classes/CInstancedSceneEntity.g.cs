@@ -39,4 +39,12 @@ public partial class CInstancedSceneEntity : CSceneEntity, ICInstancedSceneEntit
 	[SchemaMember("CInstancedSceneEntity", "m_bIsBackground")]
 	public ref bool IsBackground => ref Schema.GetRef<bool>(this.Handle, "CInstancedSceneEntity", "m_bIsBackground");
 
+	// m_bRemoveOnCompletion
+	[SchemaMember("CInstancedSceneEntity", "m_bRemoveOnCompletion")]
+	public ref bool RemoveOnCompletion => ref Schema.GetRef<bool>(this.Handle, "CInstancedSceneEntity", "m_bRemoveOnCompletion");
+
+	// m_hTarget
+	[SchemaMember("CInstancedSceneEntity", "m_hTarget")]
+	public CHandle<CBaseEntity> Target => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CInstancedSceneEntity", "m_hTarget");
+
 }

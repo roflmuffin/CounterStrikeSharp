@@ -51,21 +51,17 @@ public partial class CDynamicProp : CBreakableProp, ICDynamicProp
 	[SchemaMember("CDynamicProp", "m_OnAnimReachedEnd")]
 	public CEntityIOOutput OnAnimReachedEnd => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CDynamicProp", "m_OnAnimReachedEnd");
 
-	// m_iszDefaultAnim
-	[SchemaMember("CDynamicProp", "m_iszDefaultAnim")]
-	public string DefaultAnim
+	// m_iszIdleAnim
+	[SchemaMember("CDynamicProp", "m_iszIdleAnim")]
+	public string IdleAnim
 	{
-		get { return Schema.GetUtf8String(this.Handle, "CDynamicProp", "m_iszDefaultAnim"); }
-		set { Schema.SetString(this.Handle, "CDynamicProp", "m_iszDefaultAnim", value); }
+		get { return Schema.GetUtf8String(this.Handle, "CDynamicProp", "m_iszIdleAnim"); }
+		set { Schema.SetString(this.Handle, "CDynamicProp", "m_iszIdleAnim", value); }
 	}
 
-	// m_nDefaultAnimLoopMode
-	[SchemaMember("CDynamicProp", "m_nDefaultAnimLoopMode")]
-	public ref AnimLoopMode_t DefaultAnimLoopMode => ref Schema.GetRef<AnimLoopMode_t>(this.Handle, "CDynamicProp", "m_nDefaultAnimLoopMode");
-
-	// m_bAnimateOnServer
-	[SchemaMember("CDynamicProp", "m_bAnimateOnServer")]
-	public ref bool AnimateOnServer => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bAnimateOnServer");
+	// m_nIdleAnimLoopMode
+	[SchemaMember("CDynamicProp", "m_nIdleAnimLoopMode")]
+	public ref AnimLoopMode_t IdleAnimLoopMode => ref Schema.GetRef<AnimLoopMode_t>(this.Handle, "CDynamicProp", "m_nIdleAnimLoopMode");
 
 	// m_bRandomizeCycle
 	[SchemaMember("CDynamicProp", "m_bRandomizeCycle")]
@@ -74,10 +70,6 @@ public partial class CDynamicProp : CBreakableProp, ICDynamicProp
 	// m_bStartDisabled
 	[SchemaMember("CDynamicProp", "m_bStartDisabled")]
 	public ref bool StartDisabled => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bStartDisabled");
-
-	// m_bScriptedMovement
-	[SchemaMember("CDynamicProp", "m_bScriptedMovement")]
-	public ref bool ScriptedMovement => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bScriptedMovement");
 
 	// m_bFiredStartEndOutput
 	[SchemaMember("CDynamicProp", "m_bFiredStartEndOutput")]

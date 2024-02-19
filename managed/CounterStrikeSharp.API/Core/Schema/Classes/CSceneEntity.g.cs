@@ -299,6 +299,14 @@ public partial class CSceneEntity : CPointEntity, ICSceneEntity
 		set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszSoundName", value); }
 	}
 
+	// m_iszSequenceName
+	[SchemaMember("CSceneEntity", "m_iszSequenceName")]
+	public string SequenceName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_iszSequenceName"); }
+		set { Schema.SetString(this.Handle, "CSceneEntity", "m_iszSequenceName", value); }
+	}
+
 	// m_hActor
 	[SchemaMember("CSceneEntity", "m_hActor")]
 	public CHandle<CBaseFlex> Actor => Schema.GetDeclaredClass<CHandle<CBaseFlex>>(this.Handle, "CSceneEntity", "m_hActor");

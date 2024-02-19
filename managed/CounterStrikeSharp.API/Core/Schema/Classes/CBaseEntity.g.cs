@@ -39,6 +39,10 @@ public partial class CBaseEntity : CEntityInstance, ICBaseEntity
 	[SchemaMember("CBaseEntity", "m_nLastThinkTick")]
 	public ref Int32 LastThinkTick => ref Schema.GetRef<Int32>(this.Handle, "CBaseEntity", "m_nLastThinkTick");
 
+	// m_nDisableContextThinkStartTick
+	[SchemaMember("CBaseEntity", "m_nDisableContextThinkStartTick")]
+	public ref Int32 DisableContextThinkStartTick => ref Schema.GetRef<Int32>(this.Handle, "CBaseEntity", "m_nDisableContextThinkStartTick");
+
 	// m_isSteadyState
 	[SchemaMember("CBaseEntity", "m_isSteadyState")]
 	public Span<byte> IsSteadyState => Schema.GetFixedArray<byte>(this.Handle, "CBaseEntity", "m_isSteadyState", 8);
@@ -83,6 +87,10 @@ public partial class CBaseEntity : CEntityInstance, ICBaseEntity
 	[SchemaMember("CBaseEntity", "m_nTakeDamageFlags")]
 	public ref TakeDamageFlags_t TakeDamageFlags => ref Schema.GetRef<TakeDamageFlags_t>(this.Handle, "CBaseEntity", "m_nTakeDamageFlags");
 
+	// m_bIsPlatform
+	[SchemaMember("CBaseEntity", "m_bIsPlatform")]
+	public ref bool IsPlatform => ref Schema.GetRef<bool>(this.Handle, "CBaseEntity", "m_bIsPlatform");
+
 	// m_MoveCollide
 	[SchemaMember("CBaseEntity", "m_MoveCollide")]
 	public ref MoveCollide_t MoveCollide => ref Schema.GetRef<MoveCollide_t>(this.Handle, "CBaseEntity", "m_MoveCollide");
@@ -90,6 +98,10 @@ public partial class CBaseEntity : CEntityInstance, ICBaseEntity
 	// m_MoveType
 	[SchemaMember("CBaseEntity", "m_MoveType")]
 	public ref MoveType_t MoveType => ref Schema.GetRef<MoveType_t>(this.Handle, "CBaseEntity", "m_MoveType");
+
+	// m_nActualMoveType
+	[SchemaMember("CBaseEntity", "m_nActualMoveType")]
+	public ref MoveType_t ActualMoveType => ref Schema.GetRef<MoveType_t>(this.Handle, "CBaseEntity", "m_nActualMoveType");
 
 	// m_nWaterTouch
 	[SchemaMember("CBaseEntity", "m_nWaterTouch")]
@@ -111,10 +123,6 @@ public partial class CBaseEntity : CEntityInstance, ICBaseEntity
 		set { Schema.SetString(this.Handle, "CBaseEntity", "m_target", value); }
 	}
 
-	// m_flMoveDoneTime
-	[SchemaMember("CBaseEntity", "m_flMoveDoneTime")]
-	public ref float MoveDoneTime => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flMoveDoneTime");
-
 	// m_hDamageFilter
 	[SchemaMember("CBaseEntity", "m_hDamageFilter")]
 	public CHandle<CBaseFilter> DamageFilter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CBaseEntity", "m_hDamageFilter");
@@ -126,6 +134,10 @@ public partial class CBaseEntity : CEntityInstance, ICBaseEntity
 		get { return Schema.GetUtf8String(this.Handle, "CBaseEntity", "m_iszDamageFilterName"); }
 		set { Schema.SetString(this.Handle, "CBaseEntity", "m_iszDamageFilterName", value); }
 	}
+
+	// m_flMoveDoneTime
+	[SchemaMember("CBaseEntity", "m_flMoveDoneTime")]
+	public ref float MoveDoneTime => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flMoveDoneTime");
 
 	// m_nSubclassID
 	[SchemaMember("CBaseEntity", "m_nSubclassID")]
@@ -258,10 +270,6 @@ public partial class CBaseEntity : CEntityInstance, ICBaseEntity
 	// m_flWaterLevel
 	[SchemaMember("CBaseEntity", "m_flWaterLevel")]
 	public ref float WaterLevel => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flWaterLevel");
-
-	// m_bSimulatedEveryTick
-	[SchemaMember("CBaseEntity", "m_bSimulatedEveryTick")]
-	public ref bool SimulatedEveryTick => ref Schema.GetRef<bool>(this.Handle, "CBaseEntity", "m_bSimulatedEveryTick");
 
 	// m_bAnimatedEveryTick
 	[SchemaMember("CBaseEntity", "m_bAnimatedEveryTick")]

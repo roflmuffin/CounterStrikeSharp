@@ -107,6 +107,10 @@ public partial class CSoundOpvarSetPointEntity : CSoundOpvarSetPointBase, ICSoun
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_vPathingListenerPos")]
 	public Vector PathingListenerPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetPointEntity", "m_vPathingListenerPos");
 
+	// m_vPathingDirection
+	[SchemaMember("CSoundOpvarSetPointEntity", "m_vPathingDirection")]
+	public Vector PathingDirection => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetPointEntity", "m_vPathingDirection");
+
 	// m_nPathingSourceIndex
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_nPathingSourceIndex")]
 	public ref Int32 PathingSourceIndex => ref Schema.GetRef<Int32>(this.Handle, "CSoundOpvarSetPointEntity", "m_nPathingSourceIndex");

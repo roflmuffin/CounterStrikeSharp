@@ -19,14 +19,6 @@ public partial class CCSGameModeRules_Deathmatch : CCSGameModeRules, ICCSGameMod
 {
     public CCSGameModeRules_Deathmatch (IntPtr pointer) : base(pointer) {}
 
-	// m_bFirstThink
-	[SchemaMember("CCSGameModeRules_Deathmatch", "m_bFirstThink")]
-	public ref bool FirstThink => ref Schema.GetRef<bool>(this.Handle, "CCSGameModeRules_Deathmatch", "m_bFirstThink");
-
-	// m_bFirstThinkAfterConnected
-	[SchemaMember("CCSGameModeRules_Deathmatch", "m_bFirstThinkAfterConnected")]
-	public ref bool FirstThinkAfterConnected => ref Schema.GetRef<bool>(this.Handle, "CCSGameModeRules_Deathmatch", "m_bFirstThinkAfterConnected");
-
 	// m_flDMBonusStartTime
 	[SchemaMember("CCSGameModeRules_Deathmatch", "m_flDMBonusStartTime")]
 	public ref float DMBonusStartTime => ref Schema.GetRef<float>(this.Handle, "CCSGameModeRules_Deathmatch", "m_flDMBonusStartTime");
