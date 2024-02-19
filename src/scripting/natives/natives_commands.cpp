@@ -55,7 +55,8 @@ static void AddCommandListener(ScriptContext& script_context)
     auto callback = script_context.GetArgument<CallbackT>(1);
     auto post = script_context.GetArgument<bool>(2);
 
-    globals::conCommandManager.AddCommandListener(name, callback, post ? HookMode::Post : HookMode::Pre);
+    globals::conCommandManager.AddCommandListener(name, callback,
+                                                  post ? HookMode::Post : HookMode::Pre);
 }
 
 static void RemoveCommandListener(ScriptContext& script_context)
@@ -64,7 +65,8 @@ static void RemoveCommandListener(ScriptContext& script_context)
     auto callback = script_context.GetArgument<CallbackT>(1);
     auto post = script_context.GetArgument<bool>(2);
 
-    globals::conCommandManager.RemoveCommandListener(name, callback, post ? HookMode::Post : HookMode::Pre);
+    globals::conCommandManager.RemoveCommandListener(name, callback,
+                                                     post ? HookMode::Post : HookMode::Pre);
 }
 
 static int CommandGetArgCount(ScriptContext& script_context)
@@ -118,10 +120,27 @@ static const char* CommandGetArgByIndex(ScriptContext& script_context)
 
 static void IssueClientCommand(ScriptContext& script_context)
 {
-    auto entity_index = script_context.GetArgument<int>(0);
+    auto slot = script_context.GetArgument<int>(0);
     auto command = script_context.GetArgument<const char*>(1);
 
-    globals::engine->ClientCommand(CPlayerSlot(entity_index), command);
+    globals::engine->ClientCommand(CPlayerSlot(slot), command);
+}
+
+static void IssueClientCommandFromServer(ScriptContext& script_context)
+{
+    auto slot = script_context.GetArgument<int>(0);
+    auto pszCommand = script_context.GetArgument<const char*>(1);
+
+    CCommand args;
+    args.Tokenize(pszCommand);
+
+    auto handle = globals::cvars->FindCommand(args.Arg(0));
+    if (!handle.IsValid())
+        return;
+
+    CCommandContext context(CommandTarget_t::CT_NO_TARGET, CPlayerSlot(slot));
+
+    globals::cvars->DispatchConCommand(handle, context, args);
 }
 
 static const char* GetClientConVarValue(ScriptContext& script_context)
@@ -180,6 +199,8 @@ REGISTER_NATIVES(commands, {
     ScriptEngine::RegisterNativeHandler("SET_CONVAR_STRING_VALUE", SetConVarStringValue);
 
     ScriptEngine::RegisterNativeHandler("ISSUE_CLIENT_COMMAND", IssueClientCommand);
+    ScriptEngine::RegisterNativeHandler("ISSUE_CLIENT_COMMAND_FROM_SERVER",
+                                        IssueClientCommandFromServer);
     ScriptEngine::RegisterNativeHandler("GET_CLIENT_CONVAR_VALUE", GetClientConVarValue);
     ScriptEngine::RegisterNativeHandler("SET_FAKE_CLIENT_CONVAR_VALUE", SetFakeClientConVarValue);
 })
