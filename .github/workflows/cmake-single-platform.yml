@@ -133,7 +133,7 @@ jobs:
       - name: Publish artifacts
         run: |
           dotnet publish -c Release /p:Version=1.0.${{ env.BUILD_NUMBER }} managed/CounterStrikeSharp.API
-          dotnet pack -c Release /p:Version=1.0.${{ env.BUILD_NUMBER }} managed/CounterStrikeSharp.API   
+          dotnet pack -c Release /p:Version=1.0.${{ env.BUILD_NUMBER }} managed/CounterStrikeSharp.API
 
       - uses: actions/upload-artifact@v3
         with:
@@ -185,7 +185,7 @@ jobs:
           curl -s -L https://download.visualstudio.microsoft.com/download/pr/dc2c0a53-85a8-4fda-a283-fa28adb5fbe2/8ccade5bc400a5bb40cd9240f003b45c/aspnetcore-runtime-7.0.11-linux-x64.tar.gz \
           | tar xvz -C build/linux/addons/counterstrikesharp/dotnet
           mv build/linux/addons/counterstrikesharp/dotnet/shared/Microsoft.NETCore.App/7.0.11/* build/linux/addons/counterstrikesharp/dotnet/shared/Microsoft.NETCore.App/
-          
+
           mkdir -p build/windows/addons/counterstrikesharp/dotnet
           curl -s -L https://download.visualstudio.microsoft.com/download/pr/a99861c8-2e00-4587-aaef-60366ca77307/a44ceec2c5d34165ae881600f52edc43/aspnetcore-runtime-7.0.11-win-x64.zip -o dotnet.zip
           unzip -qq dotnet.zip -d build/windows/addons/counterstrikesharp/dotnet
@@ -216,4 +216,7 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         uses: Ilshidur/action-discord@0.3.2
         with:
-          args: "A new release of CS# has been tagged (v${{ needs.build_managed.outputs.buildnumber }}) at ${{ steps.release.outputs.url }}"
+          args: |
+            A new release of CS# has been tagged (v${{ needs.build_managed.outputs.buildnumber }}) at ${{ steps.release.outputs.url }}
+
+            > ${{ fromJSON(steps.release.outputs.assets)[0].label }}
