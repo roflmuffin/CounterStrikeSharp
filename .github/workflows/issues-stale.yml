@@ -1,0 +1,24 @@
+name: Mark stale issues
+
+on:
+  schedule:
+  - cron: '28 3 * * *'
+
+jobs:
+  stale:
+
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+
+    steps:
+    - uses: actions/stale@v5
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        days-before-issue-stale: 14
+        days-before-issue-close: 14
+        stale-issue-label: 'no-recent-activity'
+        only-labels: 'needs-author-action'
+        stale-issue-message: 'This issue has been automatically marked `no-recent-activity` because it has not had any activity for 14 days. It will be closed if no further activity occurs within 14 more days. Any new comment (by anyone, not necessarily the author) will remove no-recent-activity.'
+        close-issue-message: 'This issue will now be closed since it had been marked `no-recent-activity` but received no further activity in the past 14 days.'

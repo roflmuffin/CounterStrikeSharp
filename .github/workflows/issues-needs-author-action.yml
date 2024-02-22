@@ -1,0 +1,21 @@
+name: Add comment for needs-author-action
+
+on:
+  issues:
+    types:
+      - labeled
+
+jobs:
+  add-comment:
+    if: github.event.label.name == 'needs-author-action'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Add comment
+        run: gh issue comment "$NUMBER" --body "$BODY"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
+          BODY: This issue has been marked `needs-author-action` and may be missing some important information.
