@@ -349,6 +349,7 @@ HookResult ConCommandManager::ExecuteCommandCallbacks(const char* name, const CC
     }
 
     if (!pInfo) {
+        m_cmd_contexts.erase(&args);
         return result;
     }
 
@@ -366,6 +367,7 @@ HookResult ConCommandManager::ExecuteCommandCallbacks(const char* name, const CC
         auto thisResult = pCallback->ScriptContext().GetResult<HookResult>();
 
         if (thisResult >= HookResult::Handled) {
+            m_cmd_contexts.erase(&args);
             return thisResult;
         } else if (thisResult > result) {
             result = thisResult;
