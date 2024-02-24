@@ -173,6 +173,8 @@ public class Schema
         {
             Unsafe.Write((void*)(handle.ToInt64() + i), bytes[i]);
         }
+        
+        Unsafe.Write((void*)(handle.ToInt64() + bytes.Length), 0);
     }
     
     public static T GetCustomMarshalledType<T>(IntPtr pointer, string className, string memberName)
