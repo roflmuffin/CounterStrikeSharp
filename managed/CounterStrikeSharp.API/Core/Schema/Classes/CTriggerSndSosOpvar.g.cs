@@ -75,7 +75,7 @@ public partial class CTriggerSndSosOpvar : CBaseTrigger
 	public string OpvarNameChar
 	{
 		get { return Schema.GetString(this.Handle, "CTriggerSndSosOpvar", "m_opvarNameChar"); }
-		set { Schema.SetString(this.Handle, "CTriggerSndSosOpvar", "m_opvarNameChar", value); }
+		set { Schema.SetStringBytes(this.Handle, "CTriggerSndSosOpvar", "m_opvarNameChar", value, 256); }
 	}
 
 	// m_stackNameChar
@@ -83,7 +83,7 @@ public partial class CTriggerSndSosOpvar : CBaseTrigger
 	public string StackNameChar
 	{
 		get { return Schema.GetString(this.Handle, "CTriggerSndSosOpvar", "m_stackNameChar"); }
-		set { Schema.SetString(this.Handle, "CTriggerSndSosOpvar", "m_stackNameChar", value); }
+		set { Schema.SetStringBytes(this.Handle, "CTriggerSndSosOpvar", "m_stackNameChar", value, 256); }
 	}
 
 	// m_operatorNameChar
@@ -91,7 +91,7 @@ public partial class CTriggerSndSosOpvar : CBaseTrigger
 	public string OperatorNameChar
 	{
 		get { return Schema.GetString(this.Handle, "CTriggerSndSosOpvar", "m_operatorNameChar"); }
-		set { Schema.SetString(this.Handle, "CTriggerSndSosOpvar", "m_operatorNameChar", value); }
+		set { Schema.SetStringBytes(this.Handle, "CTriggerSndSosOpvar", "m_operatorNameChar", value, 256); }
 	}
 
 	// m_VecNormPos

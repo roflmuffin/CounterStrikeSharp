@@ -39,7 +39,7 @@ public partial class CPlayerPing : CBaseEntity
 	public string PlaceName
 	{
 		get { return Schema.GetString(this.Handle, "CPlayerPing", "m_szPlaceName"); }
-		set { Schema.SetString(this.Handle, "CPlayerPing", "m_szPlaceName", value); }
+		set { Schema.SetStringBytes(this.Handle, "CPlayerPing", "m_szPlaceName", value, 18); }
 	}
 
 }

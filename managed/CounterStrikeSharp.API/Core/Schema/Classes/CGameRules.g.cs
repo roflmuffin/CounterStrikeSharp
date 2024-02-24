@@ -23,7 +23,7 @@ public partial class CGameRules : NativeObject
 	public string QuestName
 	{
 		get { return Schema.GetString(this.Handle, "CGameRules", "m_szQuestName"); }
-		set { Schema.SetString(this.Handle, "CGameRules", "m_szQuestName", value); }
+		set { Schema.SetStringBytes(this.Handle, "CGameRules", "m_szQuestName", value, 128); }
 	}
 
 	// m_nQuestPhase

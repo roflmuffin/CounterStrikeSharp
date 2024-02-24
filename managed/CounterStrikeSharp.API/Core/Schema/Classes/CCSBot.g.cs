@@ -31,7 +31,7 @@ public partial class CCSBot : CBot
 	public string Name
 	{
 		get { return Schema.GetString(this.Handle, "CCSBot", "m_name"); }
-		set { Schema.SetString(this.Handle, "CCSBot", "m_name", value); }
+		set { Schema.SetStringBytes(this.Handle, "CCSBot", "m_name", value, 64); }
 	}
 
 	// m_combatRange
