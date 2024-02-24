@@ -42,4 +42,26 @@ public class ChatColors
 
     [Obsolete("Use ChatColors.DarkRed instead.")]
     public static char Darkred = '\x02';
+
+    /// <summary>
+    /// Returns a chat color for a player based on their team.
+    /// <remarks>Blue for CT, Yellow for T, LightPurple for Spectator</remarks>
+    /// </summary>
+    /// <exception cref="Exception"></exception>
+    public static char ForPlayer(CCSPlayerController player)
+    {
+        switch (player.Team)
+        {
+            case CsTeam.None:
+                return ChatColors.White;
+            case CsTeam.Spectator:
+                return ChatColors.LightPurple;
+            case CsTeam.CounterTerrorist:
+                return ChatColors.LightBlue;
+            case CsTeam.Terrorist:
+                return ChatColors.Yellow;
+            default:
+                throw new Exception("Invalid color.");
+        }
+    }
 }
