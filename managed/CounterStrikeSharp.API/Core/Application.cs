@@ -112,7 +112,7 @@ namespace CounterStrikeSharp.API.Core
                 "  CounterStrikeSharp was created and is maintained by Michael \"roflmuffin\" Wilson.\n" +
                 "  Counter-Strike Sharp uses code borrowed from SourceMod, Source.Python, FiveM, Saul Rennison, source2gen and CS2Fixes.\n" +
                 "  See ACKNOWLEDGEMENTS.md for more information.\n" +
-                "  Current API Version: " + currentVersion, true);
+                "  Current API Version: " + currentVersion);
             return;
         }
 
@@ -124,8 +124,7 @@ namespace CounterStrikeSharp.API.Core
                 case "list":
                 {
                     info.ReplyToCommand(
-                        $"  List of all plugins currently loaded by CounterStrikeSharp: {_pluginManager.GetLoadedPlugins().Count()} plugins loaded.",
-                        true);
+                        $"  List of all plugins currently loaded by CounterStrikeSharp: {_pluginManager.GetLoadedPlugins().Count()} plugins loaded.");
 
                     foreach (var plugin in _pluginManager.GetLoadedPlugins())
                     {
@@ -142,7 +141,7 @@ namespace CounterStrikeSharp.API.Core
                             sb.Append(plugin.Plugin.ModuleDescription);
                         }
 
-                        info.ReplyToCommand(sb.ToString(), true);
+                        info.ReplyToCommand(sb.ToString());
                     }
 
                     break;
@@ -153,8 +152,7 @@ namespace CounterStrikeSharp.API.Core
                     if (info.ArgCount < 3)
                     {
                         info.ReplyToCommand(
-                            "Valid usage: css_plugins start/load [relative plugin path || absolute plugin path] (e.g \"TestPlugin\", \"plugins/TestPlugin/TestPlugin.dll\")\n",
-                            true);
+                            "Valid usage: css_plugins start/load [relative plugin path || absolute plugin path] (e.g \"TestPlugin\", \"plugins/TestPlugin/TestPlugin.dll\")\n");
                         break;
                     }
 
@@ -180,7 +178,7 @@ namespace CounterStrikeSharp.API.Core
                         }
                         catch (Exception e)
                         {
-                            info.ReplyToCommand($"Could not load plugin \"{path}\"", true);
+                            info.ReplyToCommand($"Could not load plugin \"{path}\"");
                             Logger.LogError(e, "Could not load plugin \"{Path}\"", path);
                         }
                     }
@@ -198,8 +196,7 @@ namespace CounterStrikeSharp.API.Core
                     if (info.ArgCount < 3)
                     {
                         info.ReplyToCommand(
-                            "Valid usage: css_plugins stop/unload [plugin name || #plugin id] (e.g \"TestPlugin\", \"1\")\n",
-                            true);
+                            "Valid usage: css_plugins stop/unload [plugin name || #plugin id] (e.g \"TestPlugin\", \"1\")\n");
                         break;
                     }
 
@@ -207,7 +204,7 @@ namespace CounterStrikeSharp.API.Core
                     IPluginContext? plugin = _pluginContextQueryHandler.FindPluginByIdOrName(pluginIdentifier);
                     if (plugin == null)
                     {
-                        info.ReplyToCommand($"Could not unload plugin \"{pluginIdentifier}\"", true);
+                        info.ReplyToCommand($"Could not unload plugin \"{pluginIdentifier}\"");
                         break;
                     }
 
@@ -221,8 +218,7 @@ namespace CounterStrikeSharp.API.Core
                     if (info.ArgCount < 3)
                     {
                         info.ReplyToCommand(
-                            "Valid usage: css_plugins restart/reload [plugin name || #plugin id] (e.g \"TestPlugin\", \"#1\")\n",
-                            true);
+                            "Valid usage: css_plugins restart/reload [plugin name || #plugin id] (e.g \"TestPlugin\", \"#1\")\n");
                         break;
                     }
 
@@ -231,7 +227,7 @@ namespace CounterStrikeSharp.API.Core
 
                     if (plugin == null)
                     {
-                        info.ReplyToCommand($"Could not reload plugin \"{pluginIdentifier}\"", true);
+                        info.ReplyToCommand($"Could not reload plugin \"{pluginIdentifier}\"");
                         break;
                     }
 
@@ -245,8 +241,7 @@ namespace CounterStrikeSharp.API.Core
                                         "  list - List all plugins currently loaded.\n" +
                                         "  start / load - Loads a plugin not currently loaded.\n" +
                                         "  stop / unload - Unloads a plugin currently loaded.\n" +
-                                        "  restart / reload - Reloads a plugin currently loaded."
-                        , true);
+                                        "  restart / reload - Reloads a plugin currently loaded.");
                     break;
             }
         }

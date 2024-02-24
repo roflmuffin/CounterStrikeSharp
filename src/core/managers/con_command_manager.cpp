@@ -309,7 +309,7 @@ bool ConCommandManager::RemoveValveCommand(const char* name)
 }
 
 HookResult ConCommandManager::ExecuteCommandCallbacks(const char* name, const CCommandContext& ctx,
-                                                      const CCommand& args, HookMode mode)
+                                                      const CCommand& args, HookMode mode, CommandCallingContext callingContext)
 {
     CSSHARP_CORE_TRACE("[ConCommandManager::ExecuteCommandCallbacks][{}]: {}",
                        mode == Pre ? "Pre" : "Post", name);
@@ -318,6 +318,8 @@ HookResult ConCommandManager::ExecuteCommandCallbacks(const char* name, const CC
     HookResult result = HookResult::Continue;
 
     auto globalCallback = mode == HookMode::Pre ? m_global_cmd.callback_pre : m_global_cmd.callback_post;
+
+    m_cmd_contexts[&args] = callingContext;
 
     if (globalCallback->GetFunctionCount() > 0) {
         globalCallback->ScriptContext().Reset();
@@ -347,6 +349,7 @@ HookResult ConCommandManager::ExecuteCommandCallbacks(const char* name, const CC
     }
 
     if (!pInfo) {
+        m_cmd_contexts.erase(&args);
         return result;
     }
 
@@ -364,11 +367,14 @@ HookResult ConCommandManager::ExecuteCommandCallbacks(const char* name, const CC
         auto thisResult = pCallback->ScriptContext().GetResult<HookResult>();
 
         if (thisResult >= HookResult::Handled) {
+            m_cmd_contexts.erase(&args);
             return thisResult;
         } else if (thisResult > result) {
             result = thisResult;
         }
     }
+
+    m_cmd_contexts.erase(&args);
 
     return result;
 }
@@ -380,7 +386,7 @@ void ConCommandManager::Hook_DispatchConCommand(ConCommandHandle cmd, const CCom
 
     CSSHARP_CORE_TRACE("[ConCommandManager::Hook_DispatchConCommand]: {}", name);
 
-    auto result = ExecuteCommandCallbacks(name, ctx, args, HookMode::Pre);
+    auto result = ExecuteCommandCallbacks(name, ctx, args, HookMode::Pre, CommandCallingContext::Console);
     if (result >= HookResult::Handled) {
         RETURN_META(MRES_SUPERCEDE);
     }
@@ -391,7 +397,7 @@ void ConCommandManager::Hook_DispatchConCommand_Post(ConCommandHandle cmd,
 {
     const char* name = args.Arg(0);
 
-    auto result = ExecuteCommandCallbacks(name, ctx, args, HookMode::Post);
+    auto result = ExecuteCommandCallbacks(name, ctx, args, HookMode::Post, CommandCallingContext::Console);
     if (result >= HookResult::Handled) {
         RETURN_META(MRES_SUPERCEDE);
     }
@@ -399,6 +405,10 @@ void ConCommandManager::Hook_DispatchConCommand_Post(ConCommandHandle cmd,
 bool ConCommandManager::IsValidValveCommand(const char* name) {
     ConCommandHandle pCmd = globals::cvars->FindCommand(name);
     return pCmd.IsValid();
+}
+
+CommandCallingContext ConCommandManager::GetCommandCallingContext(CCommand* args) {
+    return m_cmd_contexts[args];
 }
 
 } // namespace counterstrikesharp

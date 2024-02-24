@@ -530,7 +530,7 @@ namespace TestPlugin
         [ConsoleCommand("cssharp_attribute", "This is a custom attribute event")]
         public void OnCommand(CCSPlayerController? player, CommandInfo command)
         {
-            command.ReplyToCommand("cssharp_attribute called", true);
+            command.ReplyToCommand("cssharp_attribute called");
         }
 
         [ConsoleCommand("css_changelevel", "Changes map")]
