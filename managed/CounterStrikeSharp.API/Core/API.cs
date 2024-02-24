@@ -1,6 +1,7 @@
 
 using System;
 using CounterStrikeSharp.API.Modules.Memory;
+using CounterStrikeSharp.API.Modules.Commands;
 
 namespace CounterStrikeSharp.API.Core
 {
@@ -121,6 +122,17 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
 			return (string)ScriptContext.GlobalScriptContext.GetResult(typeof(string));
+			}
+		}
+
+        public static CommandCallingContext CommandGetCallingContext(IntPtr command){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(command);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x886D0EB6);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (CommandCallingContext)ScriptContext.GlobalScriptContext.GetResult(typeof(CommandCallingContext));
 			}
 		}
 

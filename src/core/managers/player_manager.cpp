@@ -314,7 +314,7 @@ void PlayerManager::OnClientCommand(CPlayerSlot slot, const CCommand& args) cons
     globals::voiceManager.OnClientCommand(slot, args);
 
     auto result = globals::conCommandManager.ExecuteCommandCallbacks(
-        cmd, CCommandContext(CommandTarget_t::CT_NO_TARGET, slot), args, HookMode::Pre);
+        cmd, CCommandContext(CommandTarget_t::CT_NO_TARGET, slot), args, HookMode::Pre, CommandCallingContext::Console);
 
     if (result >= HookResult::Handled) {
         RETURN_META(MRES_SUPERCEDE);

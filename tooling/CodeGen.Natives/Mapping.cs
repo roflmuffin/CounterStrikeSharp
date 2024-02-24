@@ -67,6 +67,8 @@ public class Mapping
                 return "ListenOverride";
             case "DataType_t":
                 return "DataType";
+            case "CommandCallingContext":
+                return "CommandCallingContext";
             case "any":
                 return "T";
         }
