@@ -23,7 +23,7 @@ public partial class CPointClientUIWorldTextPanel : CPointClientUIWorldPanel
 	public string MessageText
 	{
 		get { return Schema.GetString(this.Handle, "CPointClientUIWorldTextPanel", "m_messageText"); }
-		set { Schema.SetString(this.Handle, "CPointClientUIWorldTextPanel", "m_messageText", value); }
+		set { Schema.SetStringBytes(this.Handle, "CPointClientUIWorldTextPanel", "m_messageText", value, 512); }
 	}
 
 }

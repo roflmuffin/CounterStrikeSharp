@@ -67,7 +67,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 	public string LastPlaceName
 	{
 		get { return Schema.GetString(this.Handle, "CCSPlayerPawn", "m_szLastPlaceName"); }
-		set { Schema.SetString(this.Handle, "CCSPlayerPawn", "m_szLastPlaceName", value); }
+		set { Schema.SetStringBytes(this.Handle, "CCSPlayerPawn", "m_szLastPlaceName", value, 18); }
 	}
 
 	// m_bInHostageResetZone
@@ -199,7 +199,7 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 	public string RagdollDamageWeaponName
 	{
 		get { return Schema.GetString(this.Handle, "CCSPlayerPawn", "m_szRagdollDamageWeaponName"); }
-		set { Schema.SetString(this.Handle, "CCSPlayerPawn", "m_szRagdollDamageWeaponName", value); }
+		set { Schema.SetStringBytes(this.Handle, "CCSPlayerPawn", "m_szRagdollDamageWeaponName", value, 64); }
 	}
 
 	// m_bRagdollDamageHeadshot

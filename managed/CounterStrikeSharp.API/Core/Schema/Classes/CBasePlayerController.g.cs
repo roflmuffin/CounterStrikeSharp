@@ -55,7 +55,7 @@ public partial class CBasePlayerController : CBaseEntity
 	public string PlayerName
 	{
 		get { return Schema.GetString(this.Handle, "CBasePlayerController", "m_iszPlayerName"); }
-		set { Schema.SetString(this.Handle, "CBasePlayerController", "m_iszPlayerName", value); }
+		set { Schema.SetStringBytes(this.Handle, "CBasePlayerController", "m_iszPlayerName", value, 128); }
 	}
 
 	// m_szNetworkIDString

@@ -195,7 +195,7 @@ public partial class CCSGameRules : CTeamplayRules
 	public string TournamentEventName
 	{
 		get { return Schema.GetString(this.Handle, "CCSGameRules", "m_szTournamentEventName"); }
-		set { Schema.SetString(this.Handle, "CCSGameRules", "m_szTournamentEventName", value); }
+		set { Schema.SetStringBytes(this.Handle, "CCSGameRules", "m_szTournamentEventName", value, 512); }
 	}
 
 	// m_szTournamentEventStage
@@ -203,7 +203,7 @@ public partial class CCSGameRules : CTeamplayRules
 	public string TournamentEventStage
 	{
 		get { return Schema.GetString(this.Handle, "CCSGameRules", "m_szTournamentEventStage"); }
-		set { Schema.SetString(this.Handle, "CCSGameRules", "m_szTournamentEventStage", value); }
+		set { Schema.SetStringBytes(this.Handle, "CCSGameRules", "m_szTournamentEventStage", value, 512); }
 	}
 
 	// m_szMatchStatTxt
@@ -211,7 +211,7 @@ public partial class CCSGameRules : CTeamplayRules
 	public string MatchStatTxt
 	{
 		get { return Schema.GetString(this.Handle, "CCSGameRules", "m_szMatchStatTxt"); }
-		set { Schema.SetString(this.Handle, "CCSGameRules", "m_szMatchStatTxt", value); }
+		set { Schema.SetStringBytes(this.Handle, "CCSGameRules", "m_szMatchStatTxt", value, 512); }
 	}
 
 	// m_szTournamentPredictionsTxt
@@ -219,7 +219,7 @@ public partial class CCSGameRules : CTeamplayRules
 	public string TournamentPredictionsTxt
 	{
 		get { return Schema.GetString(this.Handle, "CCSGameRules", "m_szTournamentPredictionsTxt"); }
-		set { Schema.SetString(this.Handle, "CCSGameRules", "m_szTournamentPredictionsTxt", value); }
+		set { Schema.SetStringBytes(this.Handle, "CCSGameRules", "m_szTournamentPredictionsTxt", value, 512); }
 	}
 
 	// m_nTournamentPredictionsPct

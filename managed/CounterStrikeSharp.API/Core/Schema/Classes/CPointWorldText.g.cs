@@ -23,7 +23,7 @@ public partial class CPointWorldText : CModelPointEntity
 	public string MessageText
 	{
 		get { return Schema.GetString(this.Handle, "CPointWorldText", "m_messageText"); }
-		set { Schema.SetString(this.Handle, "CPointWorldText", "m_messageText", value); }
+		set { Schema.SetStringBytes(this.Handle, "CPointWorldText", "m_messageText", value, 512); }
 	}
 
 	// m_FontName
@@ -31,7 +31,7 @@ public partial class CPointWorldText : CModelPointEntity
 	public string FontName
 	{
 		get { return Schema.GetString(this.Handle, "CPointWorldText", "m_FontName"); }
-		set { Schema.SetString(this.Handle, "CPointWorldText", "m_FontName", value); }
+		set { Schema.SetStringBytes(this.Handle, "CPointWorldText", "m_FontName", value, 64); }
 	}
 
 	// m_bEnabled

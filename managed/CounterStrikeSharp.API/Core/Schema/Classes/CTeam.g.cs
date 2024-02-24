@@ -35,7 +35,7 @@ public partial class CTeam : CBaseEntity
 	public string Teamname
 	{
 		get { return Schema.GetString(this.Handle, "CTeam", "m_szTeamname"); }
-		set { Schema.SetString(this.Handle, "CTeam", "m_szTeamname", value); }
+		set { Schema.SetStringBytes(this.Handle, "CTeam", "m_szTeamname", value, 129); }
 	}
 
 }

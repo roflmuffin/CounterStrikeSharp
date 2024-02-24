@@ -23,7 +23,7 @@ public partial class CParticleSystem : CBaseModelEntity
 	public string SnapshotFileName
 	{
 		get { return Schema.GetString(this.Handle, "CParticleSystem", "m_szSnapshotFileName"); }
-		set { Schema.SetString(this.Handle, "CParticleSystem", "m_szSnapshotFileName", value); }
+		set { Schema.SetStringBytes(this.Handle, "CParticleSystem", "m_szSnapshotFileName", value, 512); }
 	}
 
 	// m_bActive

@@ -278,11 +278,24 @@ internal static partial class Program
             builder.AppendLine($"\t// {field.Name}");
             builder.AppendLine($"\t[SchemaMember(\"{schemaClassName}\", \"{field.Name}\")]");
 
-            if (field.Type is { Category: SchemaTypeCategory.FixedArray, CsTypeName: "string" } or
-                { Category: SchemaTypeCategory.Ptr, CsTypeName: "string" })
+            if (field.Type is { Category: SchemaTypeCategory.Ptr, CsTypeName: "string" })
             {
                 var getter = $"return Schema.GetString({handleParams});";
-                var setter = $"Schema.SetString({handleParams}, value);";
+                var setter = $"Schema.SetString({handleParams}, value{(field.Type.ArraySize != null ? ", " + field.Type.ArraySize : "")});";
+                builder.AppendLine(
+                    $"\tpublic {SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)}");
+                builder.AppendLine($"\t{{");
+                builder.AppendLine(
+                    $"\t\tget {{ {getter} }}");
+                builder.AppendLine(
+                    $"\t\tset {{ {setter} }}");
+                builder.AppendLine($"\t}}");
+                builder.AppendLine();
+            }
+            if (field.Type is { Category: SchemaTypeCategory.FixedArray, CsTypeName: "string" })
+            {
+                var getter = $"return Schema.GetString({handleParams});";
+                var setter = $"Schema.SetStringBytes({handleParams}, value, {field.Type.ArraySize});";
                 builder.AppendLine(
                     $"\tpublic {SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)}");
                 builder.AppendLine($"\t{{");

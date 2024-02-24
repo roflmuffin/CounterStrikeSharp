@@ -35,7 +35,7 @@ public partial class CCSTeam : CTeam
 	public string TeamMatchStat
 	{
 		get { return Schema.GetString(this.Handle, "CCSTeam", "m_szTeamMatchStat"); }
-		set { Schema.SetString(this.Handle, "CCSTeam", "m_szTeamMatchStat", value); }
+		set { Schema.SetStringBytes(this.Handle, "CCSTeam", "m_szTeamMatchStat", value, 512); }
 	}
 
 	// m_numMapVictories
@@ -59,7 +59,7 @@ public partial class CCSTeam : CTeam
 	public string ClanTeamname
 	{
 		get { return Schema.GetString(this.Handle, "CCSTeam", "m_szClanTeamname"); }
-		set { Schema.SetString(this.Handle, "CCSTeam", "m_szClanTeamname", value); }
+		set { Schema.SetStringBytes(this.Handle, "CCSTeam", "m_szClanTeamname", value, 129); }
 	}
 
 	// m_iClanID
@@ -71,7 +71,7 @@ public partial class CCSTeam : CTeam
 	public string TeamFlagImage
 	{
 		get { return Schema.GetString(this.Handle, "CCSTeam", "m_szTeamFlagImage"); }
-		set { Schema.SetString(this.Handle, "CCSTeam", "m_szTeamFlagImage", value); }
+		set { Schema.SetStringBytes(this.Handle, "CCSTeam", "m_szTeamFlagImage", value, 8); }
 	}
 
 	// m_szTeamLogoImage
@@ -79,7 +79,7 @@ public partial class CCSTeam : CTeam
 	public string TeamLogoImage
 	{
 		get { return Schema.GetString(this.Handle, "CCSTeam", "m_szTeamLogoImage"); }
-		set { Schema.SetString(this.Handle, "CCSTeam", "m_szTeamLogoImage", value); }
+		set { Schema.SetStringBytes(this.Handle, "CCSTeam", "m_szTeamLogoImage", value, 8); }
 	}
 
 	// m_flNextResourceTime

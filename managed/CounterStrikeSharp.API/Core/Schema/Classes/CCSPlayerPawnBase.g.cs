@@ -243,7 +243,7 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
 	public string MenuStringBuffer
 	{
 		get { return Schema.GetString(this.Handle, "CCSPlayerPawnBase", "m_MenuStringBuffer"); }
-		set { Schema.SetString(this.Handle, "CCSPlayerPawnBase", "m_MenuStringBuffer", value); }
+		set { Schema.SetStringBytes(this.Handle, "CCSPlayerPawnBase", "m_MenuStringBuffer", value, 1024); }
 	}
 
 	// m_fIntroCamTime
