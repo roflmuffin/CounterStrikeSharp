@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CAISound : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CAISound : CPointEntity, ICAISound
 {
     public CAISound (IntPtr pointer) : base(pointer) {}
 

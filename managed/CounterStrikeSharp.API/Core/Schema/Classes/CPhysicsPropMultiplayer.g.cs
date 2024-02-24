@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPhysicsPropMultiplayer : CPhysicsProp
+[GenerateAutomaticInterface]
+public partial class CPhysicsPropMultiplayer : CPhysicsProp, ICPhysicsPropMultiplayer
 {
     public CPhysicsPropMultiplayer (IntPtr pointer) : base(pointer) {}
 

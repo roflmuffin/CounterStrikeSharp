@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CSound : NativeObject
+[GenerateAutomaticInterface]
+public partial class CSound : NativeObject, ICSound
 {
     public CSound (IntPtr pointer) : base(pointer) {}
 

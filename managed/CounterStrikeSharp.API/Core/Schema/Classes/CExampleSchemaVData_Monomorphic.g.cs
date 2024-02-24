@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CExampleSchemaVData_Monomorphic : NativeObject
+[GenerateAutomaticInterface]
+public partial class CExampleSchemaVData_Monomorphic : NativeObject, ICExampleSchemaVData_Monomorphic
 {
     public CExampleSchemaVData_Monomorphic (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPhysBallSocket : CPhysConstraint
+[GenerateAutomaticInterface]
+public partial class CPhysBallSocket : CPhysConstraint, ICPhysBallSocket
 {
     public CPhysBallSocket (IntPtr pointer) : base(pointer) {}
 

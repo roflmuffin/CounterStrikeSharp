@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPrecipitation : CBaseTrigger
+[GenerateAutomaticInterface]
+public partial class CPrecipitation : CBaseTrigger, ICPrecipitation
 {
     public CPrecipitation (IntPtr pointer) : base(pointer) {}
 

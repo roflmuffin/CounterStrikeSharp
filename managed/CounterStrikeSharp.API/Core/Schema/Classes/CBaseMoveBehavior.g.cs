@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CBaseMoveBehavior : CPathKeyFrame
+[GenerateAutomaticInterface]
+public partial class CBaseMoveBehavior : CPathKeyFrame, ICBaseMoveBehavior
 {
     public CBaseMoveBehavior (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CServerRagdollTrigger : CBaseTrigger
+[GenerateAutomaticInterface]
+public partial class CServerRagdollTrigger : CBaseTrigger, ICServerRagdollTrigger
 {
     public CServerRagdollTrigger (IntPtr pointer) : base(pointer) {}
 

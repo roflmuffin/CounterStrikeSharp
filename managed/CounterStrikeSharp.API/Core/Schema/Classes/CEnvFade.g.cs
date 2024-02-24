@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CEnvFade : CLogicalEntity
+[GenerateAutomaticInterface]
+public partial class CEnvFade : CLogicalEntity, ICEnvFade
 {
     public CEnvFade (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CInfoInstructorHintBombTargetA : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CInfoInstructorHintBombTargetA : CPointEntity, ICInfoInstructorHintBombTargetA
 {
     public CInfoInstructorHintBombTargetA (IntPtr pointer) : base(pointer) {}
 

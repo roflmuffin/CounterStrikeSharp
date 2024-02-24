@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CCommentaryAuto : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CCommentaryAuto : CBaseEntity, ICCommentaryAuto
 {
     public CCommentaryAuto (IntPtr pointer) : base(pointer) {}
 

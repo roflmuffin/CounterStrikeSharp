@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class InfoForResourceTypeCTextureBase : NativeObject
+[GenerateAutomaticInterface]
+public partial class InfoForResourceTypeCTextureBase : NativeObject, IInfoForResourceTypeCTextureBase
 {
     public InfoForResourceTypeCTextureBase (IntPtr pointer) : base(pointer) {}
 

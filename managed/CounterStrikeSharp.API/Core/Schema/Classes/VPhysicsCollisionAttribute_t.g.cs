@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class VPhysicsCollisionAttribute_t : NativeObject
+[GenerateAutomaticInterface]
+public partial class VPhysicsCollisionAttribute_t : NativeObject, IVPhysicsCollisionAttribute_t
 {
     public VPhysicsCollisionAttribute_t (IntPtr pointer) : base(pointer) {}
 

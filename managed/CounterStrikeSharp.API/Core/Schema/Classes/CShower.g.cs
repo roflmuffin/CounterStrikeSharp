@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CShower : CModelPointEntity
+[GenerateAutomaticInterface]
+public partial class CShower : CModelPointEntity, ICShower
 {
     public CShower (IntPtr pointer) : base(pointer) {}
 

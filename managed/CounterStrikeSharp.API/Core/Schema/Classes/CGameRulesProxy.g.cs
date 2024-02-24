@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CGameRulesProxy : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CGameRulesProxy : CBaseEntity, ICGameRulesProxy
 {
     public CGameRulesProxy (IntPtr pointer) : base(pointer) {}
 

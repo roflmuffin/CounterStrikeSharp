@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTankTargetChange : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CTankTargetChange : CPointEntity, ICTankTargetChange
 {
     public CTankTargetChange (IntPtr pointer) : base(pointer) {}
 

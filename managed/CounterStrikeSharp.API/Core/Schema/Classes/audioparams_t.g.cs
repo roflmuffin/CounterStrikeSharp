@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class audioparams_t : NativeObject
+[GenerateAutomaticInterface]
+public partial class audioparams_t : NativeObject, Iaudioparams_t
 {
     public audioparams_t (IntPtr pointer) : base(pointer) {}
 

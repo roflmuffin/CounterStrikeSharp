@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CSoundStackSave : CLogicalEntity
+[GenerateAutomaticInterface]
+public partial class CSoundStackSave : CLogicalEntity, ICSoundStackSave
 {
     public CSoundStackSave (IntPtr pointer) : base(pointer) {}
 

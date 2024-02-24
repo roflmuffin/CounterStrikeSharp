@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPostProcessingVolume : CBaseTrigger
+[GenerateAutomaticInterface]
+public partial class CPostProcessingVolume : CBaseTrigger, ICPostProcessingVolume
 {
     public CPostProcessingVolume (IntPtr pointer) : base(pointer) {}
 

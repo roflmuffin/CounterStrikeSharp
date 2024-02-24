@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CBot : NativeObject
+[GenerateAutomaticInterface]
+public partial class CBot : NativeObject, ICBot
 {
     public CBot (IntPtr pointer) : base(pointer) {}
 

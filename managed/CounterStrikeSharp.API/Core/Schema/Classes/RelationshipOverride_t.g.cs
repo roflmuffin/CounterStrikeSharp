@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class RelationshipOverride_t : Relationship_t
+[GenerateAutomaticInterface]
+public partial class RelationshipOverride_t : Relationship_t, IRelationshipOverride_t
 {
     public RelationshipOverride_t (IntPtr pointer) : base(pointer) {}
 

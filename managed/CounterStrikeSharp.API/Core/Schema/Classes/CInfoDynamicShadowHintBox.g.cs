@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CInfoDynamicShadowHintBox : CInfoDynamicShadowHint
+[GenerateAutomaticInterface]
+public partial class CInfoDynamicShadowHintBox : CInfoDynamicShadowHint, ICInfoDynamicShadowHintBox
 {
     public CInfoDynamicShadowHintBox (IntPtr pointer) : base(pointer) {}
 

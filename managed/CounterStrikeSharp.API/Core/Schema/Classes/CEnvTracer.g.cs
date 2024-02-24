@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CEnvTracer : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CEnvTracer : CPointEntity, ICEnvTracer
 {
     public CEnvTracer (IntPtr pointer) : base(pointer) {}
 

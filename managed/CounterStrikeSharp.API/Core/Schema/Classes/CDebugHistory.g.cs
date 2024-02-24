@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CDebugHistory : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CDebugHistory : CBaseEntity, ICDebugHistory
 {
     public CDebugHistory (IntPtr pointer) : base(pointer) {}
 

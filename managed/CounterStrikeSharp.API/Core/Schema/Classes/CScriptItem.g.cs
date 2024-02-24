@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CScriptItem : CItem
+[GenerateAutomaticInterface]
+public partial class CScriptItem : CItem, ICScriptItem
 {
     public CScriptItem (IntPtr pointer) : base(pointer) {}
 

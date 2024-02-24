@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTriggerGameEvent : CBaseTrigger
+[GenerateAutomaticInterface]
+public partial class CTriggerGameEvent : CBaseTrigger, ICTriggerGameEvent
 {
     public CTriggerGameEvent (IntPtr pointer) : base(pointer) {}
 

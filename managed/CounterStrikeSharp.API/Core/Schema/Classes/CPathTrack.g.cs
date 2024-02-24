@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPathTrack : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CPathTrack : CPointEntity, ICPathTrack
 {
     public CPathTrack (IntPtr pointer) : base(pointer) {}
 

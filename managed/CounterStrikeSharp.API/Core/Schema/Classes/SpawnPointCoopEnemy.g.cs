@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class SpawnPointCoopEnemy : SpawnPoint
+[GenerateAutomaticInterface]
+public partial class SpawnPointCoopEnemy : SpawnPoint, ISpawnPointCoopEnemy
 {
     public SpawnPointCoopEnemy (IntPtr pointer) : base(pointer) {}
 

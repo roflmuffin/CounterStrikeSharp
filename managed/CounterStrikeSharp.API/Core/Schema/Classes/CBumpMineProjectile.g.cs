@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CBumpMineProjectile : CBaseGrenade
+[GenerateAutomaticInterface]
+public partial class CBumpMineProjectile : CBaseGrenade, ICBumpMineProjectile
 {
     public CBumpMineProjectile (IntPtr pointer) : base(pointer) {}
 

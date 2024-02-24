@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFootstepControl : CBaseTrigger
+[GenerateAutomaticInterface]
+public partial class CFootstepControl : CBaseTrigger, ICFootstepControl
 {
     public CFootstepControl (IntPtr pointer) : base(pointer) {}
 

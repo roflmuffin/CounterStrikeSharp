@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class magnetted_objects_t : NativeObject
+[GenerateAutomaticInterface]
+public partial class magnetted_objects_t : NativeObject, Imagnetted_objects_t
 {
     public magnetted_objects_t (IntPtr pointer) : base(pointer) {}
 

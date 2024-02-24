@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFuncMoveLinearAlias_momentary_door : CFuncMoveLinear
+[GenerateAutomaticInterface]
+public partial class CFuncMoveLinearAlias_momentary_door : CFuncMoveLinear, ICFuncMoveLinearAlias_momentary_door
 {
     public CFuncMoveLinearAlias_momentary_door (IntPtr pointer) : base(pointer) {}
 

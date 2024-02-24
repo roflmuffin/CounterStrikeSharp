@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CAmbientGeneric : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CAmbientGeneric : CPointEntity, ICAmbientGeneric
 {
     public CAmbientGeneric (IntPtr pointer) : base(pointer) {}
 

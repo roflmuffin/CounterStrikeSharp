@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTriggerProximity : CBaseTrigger
+[GenerateAutomaticInterface]
+public partial class CTriggerProximity : CBaseTrigger, ICTriggerProximity
 {
     public CTriggerProximity (IntPtr pointer) : base(pointer) {}
 

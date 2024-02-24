@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPlayerVisibility : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CPlayerVisibility : CBaseEntity, ICPlayerVisibility
 {
     public CPlayerVisibility (IntPtr pointer) : base(pointer) {}
 

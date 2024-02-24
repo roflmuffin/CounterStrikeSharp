@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CChangeLevel : CBaseTrigger
+[GenerateAutomaticInterface]
+public partial class CChangeLevel : CBaseTrigger, ICChangeLevel
 {
     public CChangeLevel (IntPtr pointer) : base(pointer) {}
 

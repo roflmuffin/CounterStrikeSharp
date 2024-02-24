@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class InfoForResourceTypeIParticleSystemDefinition : NativeObject
+[GenerateAutomaticInterface]
+public partial class InfoForResourceTypeIParticleSystemDefinition : NativeObject, IInfoForResourceTypeIParticleSystemDefinition
 {
     public InfoForResourceTypeIParticleSystemDefinition (IntPtr pointer) : base(pointer) {}
 

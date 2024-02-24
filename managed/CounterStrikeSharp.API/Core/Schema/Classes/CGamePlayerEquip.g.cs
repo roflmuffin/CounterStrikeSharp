@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CGamePlayerEquip : CRulePointEntity
+[GenerateAutomaticInterface]
+public partial class CGamePlayerEquip : CRulePointEntity, ICGamePlayerEquip
 {
     public CGamePlayerEquip (IntPtr pointer) : base(pointer) {}
 

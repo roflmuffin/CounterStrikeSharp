@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPhysThruster : CPhysForce
+[GenerateAutomaticInterface]
+public partial class CPhysThruster : CPhysForce, ICPhysThruster
 {
     public CPhysThruster (IntPtr pointer) : base(pointer) {}
 

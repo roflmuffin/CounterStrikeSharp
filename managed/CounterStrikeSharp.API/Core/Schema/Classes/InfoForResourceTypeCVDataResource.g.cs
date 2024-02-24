@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class InfoForResourceTypeCVDataResource : NativeObject
+[GenerateAutomaticInterface]
+public partial class InfoForResourceTypeCVDataResource : NativeObject, IInfoForResourceTypeCVDataResource
 {
     public InfoForResourceTypeCVDataResource (IntPtr pointer) : base(pointer) {}
 

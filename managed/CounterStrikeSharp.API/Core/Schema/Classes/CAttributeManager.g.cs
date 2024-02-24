@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CAttributeManager : NativeObject
+[GenerateAutomaticInterface]
+public partial class CAttributeManager : NativeObject, ICAttributeManager
 {
     public CAttributeManager (IntPtr pointer) : base(pointer) {}
 

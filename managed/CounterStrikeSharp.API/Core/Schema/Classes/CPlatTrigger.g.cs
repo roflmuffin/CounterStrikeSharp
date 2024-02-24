@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPlatTrigger : CBaseModelEntity
+[GenerateAutomaticInterface]
+public partial class CPlatTrigger : CBaseModelEntity, ICPlatTrigger
 {
     public CPlatTrigger (IntPtr pointer) : base(pointer) {}
 

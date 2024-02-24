@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFuncLadder : CBaseModelEntity
+[GenerateAutomaticInterface]
+public partial class CFuncLadder : CBaseModelEntity, ICFuncLadder
 {
     public CFuncLadder (IntPtr pointer) : base(pointer) {}
 

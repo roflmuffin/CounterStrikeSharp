@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CDynamicPropAlias_prop_dynamic_override : CDynamicProp
+[GenerateAutomaticInterface]
+public partial class CDynamicPropAlias_prop_dynamic_override : CDynamicProp, ICDynamicPropAlias_prop_dynamic_override
 {
     public CDynamicPropAlias_prop_dynamic_override (IntPtr pointer) : base(pointer) {}
 

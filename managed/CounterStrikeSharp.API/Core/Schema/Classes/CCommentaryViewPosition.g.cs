@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CCommentaryViewPosition : CSprite
+[GenerateAutomaticInterface]
+public partial class CCommentaryViewPosition : CSprite, ICCommentaryViewPosition
 {
     public CCommentaryViewPosition (IntPtr pointer) : base(pointer) {}
 

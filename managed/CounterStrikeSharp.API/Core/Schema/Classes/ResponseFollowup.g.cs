@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class ResponseFollowup : NativeObject
+[GenerateAutomaticInterface]
+public partial class ResponseFollowup : NativeObject, IResponseFollowup
 {
     public ResponseFollowup (IntPtr pointer) : base(pointer) {}
 

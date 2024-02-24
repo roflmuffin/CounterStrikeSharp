@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class ConstraintSoundInfo : NativeObject
+[GenerateAutomaticInterface]
+public partial class ConstraintSoundInfo : NativeObject, IConstraintSoundInfo
 {
     public ConstraintSoundInfo (IntPtr pointer) : base(pointer) {}
 

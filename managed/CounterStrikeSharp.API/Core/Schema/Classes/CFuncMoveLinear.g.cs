@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFuncMoveLinear : CBaseToggle
+[GenerateAutomaticInterface]
+public partial class CFuncMoveLinear : CBaseToggle, ICFuncMoveLinear
 {
     public CFuncMoveLinear (IntPtr pointer) : base(pointer) {}
 

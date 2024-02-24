@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CSkeletonInstance : CGameSceneNode
+[GenerateAutomaticInterface]
+public partial class CSkeletonInstance : CGameSceneNode, ICSkeletonInstance
 {
     public CSkeletonInstance (IntPtr pointer) : base(pointer) {}
 

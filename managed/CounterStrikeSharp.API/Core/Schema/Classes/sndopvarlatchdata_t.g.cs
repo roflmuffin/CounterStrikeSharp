@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class sndopvarlatchdata_t : NativeObject
+[GenerateAutomaticInterface]
+public partial class sndopvarlatchdata_t : NativeObject, Isndopvarlatchdata_t
 {
     public sndopvarlatchdata_t (IntPtr pointer) : base(pointer) {}
 

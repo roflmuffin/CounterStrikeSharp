@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CLogicCompare : CLogicalEntity
+[GenerateAutomaticInterface]
+public partial class CLogicCompare : CLogicalEntity, ICLogicCompare
 {
     public CLogicCompare (IntPtr pointer) : base(pointer) {}
 

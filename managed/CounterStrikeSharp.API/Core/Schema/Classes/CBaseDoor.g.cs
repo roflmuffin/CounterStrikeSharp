@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CBaseDoor : CBaseToggle
+[GenerateAutomaticInterface]
+public partial class CBaseDoor : CBaseToggle, ICBaseDoor
 {
     public CBaseDoor (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class ISkeletonAnimationController : NativeObject
+[GenerateAutomaticInterface]
+public partial class ISkeletonAnimationController : NativeObject, IISkeletonAnimationController
 {
     public ISkeletonAnimationController (IntPtr pointer) : base(pointer) {}
 

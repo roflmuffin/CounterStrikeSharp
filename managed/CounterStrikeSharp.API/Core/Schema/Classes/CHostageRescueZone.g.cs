@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CHostageRescueZone : CHostageRescueZoneShim
+[GenerateAutomaticInterface]
+public partial class CHostageRescueZone : CHostageRescueZoneShim, ICHostageRescueZone
 {
     public CHostageRescueZone (IntPtr pointer) : base(pointer) {}
 

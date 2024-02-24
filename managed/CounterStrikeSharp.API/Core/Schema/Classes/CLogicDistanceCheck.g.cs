@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CLogicDistanceCheck : CLogicalEntity
+[GenerateAutomaticInterface]
+public partial class CLogicDistanceCheck : CLogicalEntity, ICLogicDistanceCheck
 {
     public CLogicDistanceCheck (IntPtr pointer) : base(pointer) {}
 

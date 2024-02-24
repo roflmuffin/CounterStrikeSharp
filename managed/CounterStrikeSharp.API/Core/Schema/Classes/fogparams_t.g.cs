@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class fogparams_t : NativeObject
+[GenerateAutomaticInterface]
+public partial class fogparams_t : NativeObject, Ifogparams_t
 {
     public fogparams_t (IntPtr pointer) : base(pointer) {}
 

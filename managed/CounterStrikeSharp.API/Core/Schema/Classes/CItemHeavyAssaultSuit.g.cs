@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CItemHeavyAssaultSuit : CItemAssaultSuit
+[GenerateAutomaticInterface]
+public partial class CItemHeavyAssaultSuit : CItemAssaultSuit, ICItemHeavyAssaultSuit
 {
     public CItemHeavyAssaultSuit (IntPtr pointer) : base(pointer) {}
 

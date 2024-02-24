@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CKnife : CCSWeaponBase
+[GenerateAutomaticInterface]
+public partial class CKnife : CCSWeaponBase, ICKnife
 {
     public CKnife (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFilterProximity : CBaseFilter
+[GenerateAutomaticInterface]
+public partial class CFilterProximity : CBaseFilter, ICFilterProximity
 {
     public CFilterProximity (IntPtr pointer) : base(pointer) {}
 

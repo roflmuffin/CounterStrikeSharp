@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CInfoTeleportDestination : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CInfoTeleportDestination : CPointEntity, ICInfoTeleportDestination
 {
     public CInfoTeleportDestination (IntPtr pointer) : base(pointer) {}
 

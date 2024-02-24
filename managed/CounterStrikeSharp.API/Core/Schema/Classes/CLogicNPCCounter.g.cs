@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CLogicNPCCounter : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CLogicNPCCounter : CBaseEntity, ICLogicNPCCounter
 {
     public CLogicNPCCounter (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTriggerPhysics : CBaseTrigger
+[GenerateAutomaticInterface]
+public partial class CTriggerPhysics : CBaseTrigger, ICTriggerPhysics
 {
     public CTriggerPhysics (IntPtr pointer) : base(pointer) {}
 

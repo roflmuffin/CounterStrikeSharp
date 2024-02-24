@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CRotButton : CBaseButton
+[GenerateAutomaticInterface]
+public partial class CRotButton : CBaseButton, ICRotButton
 {
     public CRotButton (IntPtr pointer) : base(pointer) {}
 

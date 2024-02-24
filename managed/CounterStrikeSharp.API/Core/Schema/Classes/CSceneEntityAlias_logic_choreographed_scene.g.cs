@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CSceneEntityAlias_logic_choreographed_scene : CSceneEntity
+[GenerateAutomaticInterface]
+public partial class CSceneEntityAlias_logic_choreographed_scene : CSceneEntity, ICSceneEntityAlias_logic_choreographed_scene
 {
     public CSceneEntityAlias_logic_choreographed_scene (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class VelocitySampler : NativeObject
+[GenerateAutomaticInterface]
+public partial class VelocitySampler : NativeObject, IVelocitySampler
 {
     public VelocitySampler (IntPtr pointer) : base(pointer) {}
 

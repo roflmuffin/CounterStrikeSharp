@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CMapVetoPickController : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CMapVetoPickController : CBaseEntity, ICMapVetoPickController
 {
     public CMapVetoPickController (IntPtr pointer) : base(pointer) {}
 

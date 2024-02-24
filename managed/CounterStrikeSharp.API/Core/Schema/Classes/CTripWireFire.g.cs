@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTripWireFire : CBaseCSGrenade
+[GenerateAutomaticInterface]
+public partial class CTripWireFire : CBaseCSGrenade, ICTripWireFire
 {
     public CTripWireFire (IntPtr pointer) : base(pointer) {}
 

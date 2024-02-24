@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CBaseModelEntity : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CBaseModelEntity : CBaseEntity, ICBaseModelEntity
 {
     public CBaseModelEntity (IntPtr pointer) : base(pointer) {}
 

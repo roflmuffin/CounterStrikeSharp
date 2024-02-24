@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPointCamera : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CPointCamera : CBaseEntity, ICPointCamera
 {
     public CPointCamera (IntPtr pointer) : base(pointer) {}
 

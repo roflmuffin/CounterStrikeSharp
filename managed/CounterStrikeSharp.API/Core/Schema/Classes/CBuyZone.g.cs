@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CBuyZone : CBaseTrigger
+[GenerateAutomaticInterface]
+public partial class CBuyZone : CBaseTrigger, ICBuyZone
 {
     public CBuyZone (IntPtr pointer) : base(pointer) {}
 

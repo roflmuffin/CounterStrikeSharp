@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CSoundEventEntityAlias_snd_event_point : CSoundEventEntity
+[GenerateAutomaticInterface]
+public partial class CSoundEventEntityAlias_snd_event_point : CSoundEventEntity, ICSoundEventEntityAlias_snd_event_point
 {
     public CSoundEventEntityAlias_snd_event_point (IntPtr pointer) : base(pointer) {}
 

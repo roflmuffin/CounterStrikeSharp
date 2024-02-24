@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPointCameraVFOV : CPointCamera
+[GenerateAutomaticInterface]
+public partial class CPointCameraVFOV : CPointCamera, ICPointCameraVFOV
 {
     public CPointCameraVFOV (IntPtr pointer) : base(pointer) {}
 

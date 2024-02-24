@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CLogicalEntity : CServerOnlyEntity
+[GenerateAutomaticInterface]
+public partial class CLogicalEntity : CServerOnlyEntity, ICLogicalEntity
 {
     public CLogicalEntity (IntPtr pointer) : base(pointer) {}
 

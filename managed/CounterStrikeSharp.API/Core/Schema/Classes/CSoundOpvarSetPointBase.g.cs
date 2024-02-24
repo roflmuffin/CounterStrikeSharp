@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CSoundOpvarSetPointBase : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CSoundOpvarSetPointBase : CBaseEntity, ICSoundOpvarSetPointBase
 {
     public CSoundOpvarSetPointBase (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CSpriteOriented : CSprite
+[GenerateAutomaticInterface]
+public partial class CSpriteOriented : CSprite, ICSpriteOriented
 {
     public CSpriteOriented (IntPtr pointer) : base(pointer) {}
 

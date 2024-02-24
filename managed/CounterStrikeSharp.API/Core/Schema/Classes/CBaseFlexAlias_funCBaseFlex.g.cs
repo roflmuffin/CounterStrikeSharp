@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CBaseFlexAlias_funCBaseFlex : CBaseFlex
+[GenerateAutomaticInterface]
+public partial class CBaseFlexAlias_funCBaseFlex : CBaseFlex, ICBaseFlexAlias_funCBaseFlex
 {
     public CBaseFlexAlias_funCBaseFlex (IntPtr pointer) : base(pointer) {}
 

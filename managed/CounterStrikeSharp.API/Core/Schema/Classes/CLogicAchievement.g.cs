@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CLogicAchievement : CLogicalEntity
+[GenerateAutomaticInterface]
+public partial class CLogicAchievement : CLogicalEntity, ICLogicAchievement
 {
     public CLogicAchievement (IntPtr pointer) : base(pointer) {}
 

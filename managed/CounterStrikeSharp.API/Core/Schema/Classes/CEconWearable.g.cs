@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CEconWearable : CEconEntity
+[GenerateAutomaticInterface]
+public partial class CEconWearable : CEconEntity, ICEconWearable
 {
     public CEconWearable (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CConstantForceController : NativeObject
+[GenerateAutomaticInterface]
+public partial class CConstantForceController : NativeObject, ICConstantForceController
 {
     public CConstantForceController (IntPtr pointer) : base(pointer) {}
 

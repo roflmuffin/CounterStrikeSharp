@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CAI_ChangeHintGroup : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CAI_ChangeHintGroup : CBaseEntity, ICAI_ChangeHintGroup
 {
     public CAI_ChangeHintGroup (IntPtr pointer) : base(pointer) {}
 

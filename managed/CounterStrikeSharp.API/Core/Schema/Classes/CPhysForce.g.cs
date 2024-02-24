@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPhysForce : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CPhysForce : CPointEntity, ICPhysForce
 {
     public CPhysForce (IntPtr pointer) : base(pointer) {}
 

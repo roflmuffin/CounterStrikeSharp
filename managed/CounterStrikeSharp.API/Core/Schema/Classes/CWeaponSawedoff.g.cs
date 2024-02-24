@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CWeaponSawedoff : CCSWeaponBase
+[GenerateAutomaticInterface]
+public partial class CWeaponSawedoff : CCSWeaponBase, ICWeaponSawedoff
 {
     public CWeaponSawedoff (IntPtr pointer) : base(pointer) {}
 

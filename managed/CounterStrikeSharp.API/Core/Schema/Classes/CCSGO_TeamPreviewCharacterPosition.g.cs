@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CCSGO_TeamPreviewCharacterPosition : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CCSGO_TeamPreviewCharacterPosition : CBaseEntity, ICCSGO_TeamPreviewCharacterPosition
 {
     public CCSGO_TeamPreviewCharacterPosition (IntPtr pointer) : base(pointer) {}
 

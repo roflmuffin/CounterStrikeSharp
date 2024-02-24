@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class ParticleIndex_t : NativeObject
+[GenerateAutomaticInterface]
+public partial class ParticleIndex_t : NativeObject, IParticleIndex_t
 {
     public ParticleIndex_t (IntPtr pointer) : base(pointer) {}
 

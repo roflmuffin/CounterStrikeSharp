@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFuncNavBlocker : CBaseModelEntity
+[GenerateAutomaticInterface]
+public partial class CFuncNavBlocker : CBaseModelEntity, ICFuncNavBlocker
 {
     public CFuncNavBlocker (IntPtr pointer) : base(pointer) {}
 

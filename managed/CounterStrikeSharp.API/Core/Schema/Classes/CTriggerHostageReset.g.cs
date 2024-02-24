@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTriggerHostageReset : CBaseTrigger
+[GenerateAutomaticInterface]
+public partial class CTriggerHostageReset : CBaseTrigger, ICTriggerHostageReset
 {
     public CTriggerHostageReset (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CScriptNavBlocker : CFuncNavBlocker
+[GenerateAutomaticInterface]
+public partial class CScriptNavBlocker : CFuncNavBlocker, ICScriptNavBlocker
 {
     public CScriptNavBlocker (IntPtr pointer) : base(pointer) {}
 

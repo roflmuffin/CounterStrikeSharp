@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CLogicActiveAutosave : CLogicAutosave
+[GenerateAutomaticInterface]
+public partial class CLogicActiveAutosave : CLogicAutosave, ICLogicActiveAutosave
 {
     public CLogicActiveAutosave (IntPtr pointer) : base(pointer) {}
 

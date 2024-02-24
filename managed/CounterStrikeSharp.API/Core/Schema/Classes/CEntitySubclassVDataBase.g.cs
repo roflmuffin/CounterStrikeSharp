@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CEntitySubclassVDataBase : NativeObject
+[GenerateAutomaticInterface]
+public partial class CEntitySubclassVDataBase : NativeObject, ICEntitySubclassVDataBase
 {
     public CEntitySubclassVDataBase (IntPtr pointer) : base(pointer) {}
 

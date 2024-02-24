@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFuncShatterglass : CBaseModelEntity
+[GenerateAutomaticInterface]
+public partial class CFuncShatterglass : CBaseModelEntity, ICFuncShatterglass
 {
     public CFuncShatterglass (IntPtr pointer) : base(pointer) {}
 

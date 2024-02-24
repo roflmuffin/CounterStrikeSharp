@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CCSPlayerController_InGameMoneyServices : CPlayerControllerComponent
+[GenerateAutomaticInterface]
+public partial class CCSPlayerController_InGameMoneyServices : CPlayerControllerComponent, ICCSPlayerController_InGameMoneyServices
 {
     public CCSPlayerController_InGameMoneyServices (IntPtr pointer) : base(pointer) {}
 

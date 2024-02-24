@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CScriptTriggerOnce : CTriggerOnce
+[GenerateAutomaticInterface]
+public partial class CScriptTriggerOnce : CTriggerOnce, ICScriptTriggerOnce
 {
     public CScriptTriggerOnce (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTriggerFan : CBaseTrigger
+[GenerateAutomaticInterface]
+public partial class CTriggerFan : CBaseTrigger, ICTriggerFan
 {
     public CTriggerFan (IntPtr pointer) : base(pointer) {}
 

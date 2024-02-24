@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFuncIllusionary : CBaseModelEntity
+[GenerateAutomaticInterface]
+public partial class CFuncIllusionary : CBaseModelEntity, ICFuncIllusionary
 {
     public CFuncIllusionary (IntPtr pointer) : base(pointer) {}
 

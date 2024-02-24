@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class EntityRenderAttribute_t : NativeObject
+[GenerateAutomaticInterface]
+public partial class EntityRenderAttribute_t : NativeObject, IEntityRenderAttribute_t
 {
     public EntityRenderAttribute_t (IntPtr pointer) : base(pointer) {}
 

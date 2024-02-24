@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFuncConveyor : CBaseModelEntity
+[GenerateAutomaticInterface]
+public partial class CFuncConveyor : CBaseModelEntity, ICFuncConveyor
 {
     public CFuncConveyor (IntPtr pointer) : base(pointer) {}
 

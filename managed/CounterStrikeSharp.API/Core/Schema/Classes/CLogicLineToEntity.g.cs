@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CLogicLineToEntity : CLogicalEntity
+[GenerateAutomaticInterface]
+public partial class CLogicLineToEntity : CLogicalEntity, ICLogicLineToEntity
 {
     public CLogicLineToEntity (IntPtr pointer) : base(pointer) {}
 

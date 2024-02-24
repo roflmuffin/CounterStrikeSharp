@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class shard_model_desc_t : NativeObject
+[GenerateAutomaticInterface]
+public partial class shard_model_desc_t : NativeObject, Ishard_model_desc_t
 {
     public shard_model_desc_t (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CCSGOViewModel : CPredictedViewModel
+[GenerateAutomaticInterface]
+public partial class CCSGOViewModel : CPredictedViewModel, ICCSGOViewModel
 {
     public CCSGOViewModel (IntPtr pointer) : base(pointer) {}
 

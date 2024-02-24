@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFuncPropRespawnZone : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CFuncPropRespawnZone : CBaseEntity, ICFuncPropRespawnZone
 {
     public CFuncPropRespawnZone (IntPtr pointer) : base(pointer) {}
 

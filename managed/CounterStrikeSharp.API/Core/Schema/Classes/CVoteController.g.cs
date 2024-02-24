@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CVoteController : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CVoteController : CBaseEntity, ICVoteController
 {
     public CVoteController (IntPtr pointer) : base(pointer) {}
 

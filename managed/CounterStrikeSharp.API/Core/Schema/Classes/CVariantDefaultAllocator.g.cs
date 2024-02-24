@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CVariantDefaultAllocator : NativeObject
+[GenerateAutomaticInterface]
+public partial class CVariantDefaultAllocator : NativeObject, ICVariantDefaultAllocator
 {
     public CVariantDefaultAllocator (IntPtr pointer) : base(pointer) {}
 

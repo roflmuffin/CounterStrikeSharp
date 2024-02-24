@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTonemapController2 : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CTonemapController2 : CBaseEntity, ICTonemapController2
 {
     public CTonemapController2 (IntPtr pointer) : base(pointer) {}
 

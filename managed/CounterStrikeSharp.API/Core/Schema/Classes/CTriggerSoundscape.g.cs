@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTriggerSoundscape : CBaseTrigger
+[GenerateAutomaticInterface]
+public partial class CTriggerSoundscape : CBaseTrigger, ICTriggerSoundscape
 {
     public CTriggerSoundscape (IntPtr pointer) : base(pointer) {}
 

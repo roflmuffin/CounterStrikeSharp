@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CEnvSoundscapeTriggerableAlias_snd_soundscape_triggerable : CEnvSoundscapeTriggerable
+[GenerateAutomaticInterface]
+public partial class CEnvSoundscapeTriggerableAlias_snd_soundscape_triggerable : CEnvSoundscapeTriggerable, ICEnvSoundscapeTriggerableAlias_snd_soundscape_triggerable
 {
     public CEnvSoundscapeTriggerableAlias_snd_soundscape_triggerable (IntPtr pointer) : base(pointer) {}
 

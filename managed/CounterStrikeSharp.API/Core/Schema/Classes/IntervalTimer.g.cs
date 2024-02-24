@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class IntervalTimer : NativeObject
+[GenerateAutomaticInterface]
+public partial class IntervalTimer : NativeObject, IIntervalTimer
 {
     public IntervalTimer (IntPtr pointer) : base(pointer) {}
 

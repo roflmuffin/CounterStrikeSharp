@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFire : CBaseModelEntity
+[GenerateAutomaticInterface]
+public partial class CFire : CBaseModelEntity, ICFire
 {
     public CFire (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CCSGameModeRules : NativeObject
+[GenerateAutomaticInterface]
+public partial class CCSGameModeRules : NativeObject, ICCSGameModeRules
 {
     public CCSGameModeRules (IntPtr pointer) : base(pointer) {}
 

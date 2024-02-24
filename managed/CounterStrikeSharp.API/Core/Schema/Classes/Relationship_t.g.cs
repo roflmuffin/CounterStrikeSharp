@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class Relationship_t : NativeObject
+[GenerateAutomaticInterface]
+public partial class Relationship_t : NativeObject, IRelationship_t
 {
     public Relationship_t (IntPtr pointer) : base(pointer) {}
 

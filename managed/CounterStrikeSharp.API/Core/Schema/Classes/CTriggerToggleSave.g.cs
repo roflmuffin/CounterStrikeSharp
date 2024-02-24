@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTriggerToggleSave : CBaseTrigger
+[GenerateAutomaticInterface]
+public partial class CTriggerToggleSave : CBaseTrigger, ICTriggerToggleSave
 {
     public CTriggerToggleSave (IntPtr pointer) : base(pointer) {}
 

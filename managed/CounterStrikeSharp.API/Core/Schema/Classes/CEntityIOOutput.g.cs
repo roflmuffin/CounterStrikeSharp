@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CEntityIOOutput : NativeObject
+[GenerateAutomaticInterface]
+public partial class CEntityIOOutput : NativeObject, ICEntityIOOutput
 {
     public CEntityIOOutput (IntPtr pointer) : base(pointer) {}
 

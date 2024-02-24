@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CHandleTest : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CHandleTest : CBaseEntity, ICHandleTest
 {
     public CHandleTest (IntPtr pointer) : base(pointer) {}
 

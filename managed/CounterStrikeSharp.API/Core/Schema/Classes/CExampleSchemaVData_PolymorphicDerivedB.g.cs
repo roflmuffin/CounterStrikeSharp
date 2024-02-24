@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CExampleSchemaVData_PolymorphicDerivedB : CExampleSchemaVData_PolymorphicBase
+[GenerateAutomaticInterface]
+public partial class CExampleSchemaVData_PolymorphicDerivedB : CExampleSchemaVData_PolymorphicBase, ICExampleSchemaVData_PolymorphicDerivedB
 {
     public CExampleSchemaVData_PolymorphicDerivedB (IntPtr pointer) : base(pointer) {}
 

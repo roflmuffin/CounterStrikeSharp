@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFuncElectrifiedVolume : CFuncBrush
+[GenerateAutomaticInterface]
+public partial class CFuncElectrifiedVolume : CFuncBrush, ICFuncElectrifiedVolume
 {
     public CFuncElectrifiedVolume (IntPtr pointer) : base(pointer) {}
 

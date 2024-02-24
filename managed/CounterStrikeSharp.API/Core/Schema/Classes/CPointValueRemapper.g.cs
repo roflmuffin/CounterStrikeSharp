@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPointValueRemapper : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CPointValueRemapper : CBaseEntity, ICPointValueRemapper
 {
     public CPointValueRemapper (IntPtr pointer) : base(pointer) {}
 

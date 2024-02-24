@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPropDoorRotating : CBasePropDoor
+[GenerateAutomaticInterface]
+public partial class CPropDoorRotating : CBasePropDoor, ICPropDoorRotating
 {
     public CPropDoorRotating (IntPtr pointer) : base(pointer) {}
 

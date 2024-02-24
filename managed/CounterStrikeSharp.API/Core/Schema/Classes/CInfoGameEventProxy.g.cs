@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CInfoGameEventProxy : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CInfoGameEventProxy : CPointEntity, ICInfoGameEventProxy
 {
     public CInfoGameEventProxy (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTriggerVolume : CBaseModelEntity
+[GenerateAutomaticInterface]
+public partial class CTriggerVolume : CBaseModelEntity, ICTriggerVolume
 {
     public CTriggerVolume (IntPtr pointer) : base(pointer) {}
 

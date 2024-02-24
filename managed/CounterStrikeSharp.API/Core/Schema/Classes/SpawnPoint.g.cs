@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class SpawnPoint : CServerOnlyPointEntity
+[GenerateAutomaticInterface]
+public partial class SpawnPoint : CServerOnlyPointEntity, ISpawnPoint
 {
     public SpawnPoint (IntPtr pointer) : base(pointer) {}
 

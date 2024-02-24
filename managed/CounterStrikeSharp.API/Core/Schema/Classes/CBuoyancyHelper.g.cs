@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CBuoyancyHelper : NativeObject
+[GenerateAutomaticInterface]
+public partial class CBuoyancyHelper : NativeObject, ICBuoyancyHelper
 {
     public CBuoyancyHelper (IntPtr pointer) : base(pointer) {}
 

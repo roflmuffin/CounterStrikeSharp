@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CEnvBeam : CBeam
+[GenerateAutomaticInterface]
+public partial class CEnvBeam : CBeam, ICEnvBeam
 {
     public CEnvBeam (IntPtr pointer) : base(pointer) {}
 

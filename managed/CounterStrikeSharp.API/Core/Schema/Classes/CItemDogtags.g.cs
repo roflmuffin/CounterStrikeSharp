@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CItemDogtags : CItem
+[GenerateAutomaticInterface]
+public partial class CItemDogtags : CItem, ICItemDogtags
 {
     public CItemDogtags (IntPtr pointer) : base(pointer) {}
 

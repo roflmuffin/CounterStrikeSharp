@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CAI_Expresser : NativeObject
+[GenerateAutomaticInterface]
+public partial class CAI_Expresser : NativeObject, ICAI_Expresser
 {
     public CAI_Expresser (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CCSPlayer_RadioServices : CPlayerPawnComponent
+[GenerateAutomaticInterface]
+public partial class CCSPlayer_RadioServices : CPlayerPawnComponent, ICCSPlayer_RadioServices
 {
     public CCSPlayer_RadioServices (IntPtr pointer) : base(pointer) {}
 

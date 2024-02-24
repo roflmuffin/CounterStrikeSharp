@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTriggerTeleport : CBaseTrigger
+[GenerateAutomaticInterface]
+public partial class CTriggerTeleport : CBaseTrigger, ICTriggerTeleport
 {
     public CTriggerTeleport (IntPtr pointer) : base(pointer) {}
 

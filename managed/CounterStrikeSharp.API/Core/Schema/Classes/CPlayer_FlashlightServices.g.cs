@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPlayer_FlashlightServices : CPlayerPawnComponent
+[GenerateAutomaticInterface]
+public partial class CPlayer_FlashlightServices : CPlayerPawnComponent, ICPlayer_FlashlightServices
 {
     public CPlayer_FlashlightServices (IntPtr pointer) : base(pointer) {}
 

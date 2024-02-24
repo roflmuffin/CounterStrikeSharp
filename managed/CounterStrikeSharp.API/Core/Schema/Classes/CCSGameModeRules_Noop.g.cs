@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CCSGameModeRules_Noop : CCSGameModeRules
+[GenerateAutomaticInterface]
+public partial class CCSGameModeRules_Noop : CCSGameModeRules, ICCSGameModeRules_Noop
 {
     public CCSGameModeRules_Noop (IntPtr pointer) : base(pointer) {}
 

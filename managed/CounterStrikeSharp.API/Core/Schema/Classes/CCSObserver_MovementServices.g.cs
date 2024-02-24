@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CCSObserver_MovementServices : CPlayer_MovementServices
+[GenerateAutomaticInterface]
+public partial class CCSObserver_MovementServices : CPlayer_MovementServices, ICCSObserver_MovementServices
 {
     public CCSObserver_MovementServices (IntPtr pointer) : base(pointer) {}
 

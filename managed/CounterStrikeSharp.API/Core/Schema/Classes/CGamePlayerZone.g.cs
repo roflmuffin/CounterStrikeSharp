@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CGamePlayerZone : CRuleBrushEntity
+[GenerateAutomaticInterface]
+public partial class CGamePlayerZone : CRuleBrushEntity, ICGamePlayerZone
 {
     public CGamePlayerZone (IntPtr pointer) : base(pointer) {}
 

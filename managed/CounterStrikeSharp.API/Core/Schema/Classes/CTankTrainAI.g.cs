@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTankTrainAI : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CTankTrainAI : CPointEntity, ICTankTrainAI
 {
     public CTankTrainAI (IntPtr pointer) : base(pointer) {}
 

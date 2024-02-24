@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFireCrackerBlast : CInferno
+[GenerateAutomaticInterface]
+public partial class CFireCrackerBlast : CInferno, ICFireCrackerBlast
 {
     public CFireCrackerBlast (IntPtr pointer) : base(pointer) {}
 

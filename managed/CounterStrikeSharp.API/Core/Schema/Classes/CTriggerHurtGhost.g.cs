@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTriggerHurtGhost : CTriggerHurt
+[GenerateAutomaticInterface]
+public partial class CTriggerHurtGhost : CTriggerHurt, ICTriggerHurtGhost
 {
     public CTriggerHurtGhost (IntPtr pointer) : base(pointer) {}
 

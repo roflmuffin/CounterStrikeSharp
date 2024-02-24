@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPhysicalButton : CBaseButton
+[GenerateAutomaticInterface]
+public partial class CPhysicalButton : CBaseButton, ICPhysicalButton
 {
     public CPhysicalButton (IntPtr pointer) : base(pointer) {}
 

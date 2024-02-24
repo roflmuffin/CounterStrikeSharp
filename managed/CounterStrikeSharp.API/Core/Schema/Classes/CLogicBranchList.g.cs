@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CLogicBranchList : CLogicalEntity
+[GenerateAutomaticInterface]
+public partial class CLogicBranchList : CLogicalEntity, ICLogicBranchList
 {
     public CLogicBranchList (IntPtr pointer) : base(pointer) {}
 

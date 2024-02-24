@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class IChoreoServices : NativeObject
+[GenerateAutomaticInterface]
+public partial class IChoreoServices : NativeObject, IIChoreoServices
 {
     public IChoreoServices (IntPtr pointer) : base(pointer) {}
 

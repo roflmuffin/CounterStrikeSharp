@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CBaseAnimGraphController : CSkeletonAnimationController
+[GenerateAutomaticInterface]
+public partial class CBaseAnimGraphController : CSkeletonAnimationController, ICBaseAnimGraphController
 {
     public CBaseAnimGraphController (IntPtr pointer) : base(pointer) {}
 

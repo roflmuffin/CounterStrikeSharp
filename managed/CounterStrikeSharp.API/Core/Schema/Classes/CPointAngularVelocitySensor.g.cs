@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPointAngularVelocitySensor : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CPointAngularVelocitySensor : CPointEntity, ICPointAngularVelocitySensor
 {
     public CPointAngularVelocitySensor (IntPtr pointer) : base(pointer) {}
 

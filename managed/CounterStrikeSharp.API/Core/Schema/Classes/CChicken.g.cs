@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CChicken : CDynamicProp
+[GenerateAutomaticInterface]
+public partial class CChicken : CDynamicProp, ICChicken
 {
     public CChicken (IntPtr pointer) : base(pointer) {}
 

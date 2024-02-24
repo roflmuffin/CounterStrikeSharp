@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CEnvMicrophone : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CEnvMicrophone : CPointEntity, ICEnvMicrophone
 {
     public CEnvMicrophone (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTriggerBombReset : CBaseTrigger
+[GenerateAutomaticInterface]
+public partial class CTriggerBombReset : CBaseTrigger, ICTriggerBombReset
 {
     public CTriggerBombReset (IntPtr pointer) : base(pointer) {}
 

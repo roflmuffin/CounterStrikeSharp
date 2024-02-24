@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CBaseToggle : CBaseModelEntity
+[GenerateAutomaticInterface]
+public partial class CBaseToggle : CBaseModelEntity, ICBaseToggle
 {
     public CBaseToggle (IntPtr pointer) : base(pointer) {}
 

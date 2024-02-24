@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CSMatchStats_t : CSPerRoundStats_t
+[GenerateAutomaticInterface]
+public partial class CSMatchStats_t : CSPerRoundStats_t, ICSMatchStats_t
 {
     public CSMatchStats_t (IntPtr pointer) : base(pointer) {}
 

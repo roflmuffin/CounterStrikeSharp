@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class InfoForResourceTypeIMaterial2 : NativeObject
+[GenerateAutomaticInterface]
+public partial class InfoForResourceTypeIMaterial2 : NativeObject, IInfoForResourceTypeIMaterial2
 {
     public InfoForResourceTypeIMaterial2 (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CEntityBlocker : CBaseModelEntity
+[GenerateAutomaticInterface]
+public partial class CEntityBlocker : CBaseModelEntity, ICEntityBlocker
 {
     public CEntityBlocker (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPointCommentaryNode : CBaseAnimGraph
+[GenerateAutomaticInterface]
+public partial class CPointCommentaryNode : CBaseAnimGraph, ICPointCommentaryNode
 {
     public CPointCommentaryNode (IntPtr pointer) : base(pointer) {}
 

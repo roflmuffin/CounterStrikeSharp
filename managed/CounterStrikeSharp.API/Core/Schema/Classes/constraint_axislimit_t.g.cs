@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class constraint_axislimit_t : NativeObject
+[GenerateAutomaticInterface]
+public partial class constraint_axislimit_t : NativeObject, Iconstraint_axislimit_t
 {
     public constraint_axislimit_t (IntPtr pointer) : base(pointer) {}
 

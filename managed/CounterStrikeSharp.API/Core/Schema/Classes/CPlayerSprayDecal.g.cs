@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPlayerSprayDecal : CModelPointEntity
+[GenerateAutomaticInterface]
+public partial class CPlayerSprayDecal : CModelPointEntity, ICPlayerSprayDecal
 {
     public CPlayerSprayDecal (IntPtr pointer) : base(pointer) {}
 

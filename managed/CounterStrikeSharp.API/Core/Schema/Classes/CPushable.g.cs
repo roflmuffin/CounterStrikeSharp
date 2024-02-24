@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPushable : CBreakable
+[GenerateAutomaticInterface]
+public partial class CPushable : CBreakable, ICPushable
 {
     public CPushable (IntPtr pointer) : base(pointer) {}
 

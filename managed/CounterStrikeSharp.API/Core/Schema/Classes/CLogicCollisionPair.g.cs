@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CLogicCollisionPair : CLogicalEntity
+[GenerateAutomaticInterface]
+public partial class CLogicCollisionPair : CLogicalEntity, ICLogicCollisionPair
 {
     public CLogicCollisionPair (IntPtr pointer) : base(pointer) {}
 

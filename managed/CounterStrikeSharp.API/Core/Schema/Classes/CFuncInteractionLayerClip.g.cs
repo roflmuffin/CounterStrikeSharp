@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFuncInteractionLayerClip : CBaseModelEntity
+[GenerateAutomaticInterface]
+public partial class CFuncInteractionLayerClip : CBaseModelEntity, ICFuncInteractionLayerClip
 {
     public CFuncInteractionLayerClip (IntPtr pointer) : base(pointer) {}
 

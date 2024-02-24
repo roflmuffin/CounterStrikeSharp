@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CEnvVolumetricFogVolume : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CEnvVolumetricFogVolume : CBaseEntity, ICEnvVolumetricFogVolume
 {
     public CEnvVolumetricFogVolume (IntPtr pointer) : base(pointer) {}
 

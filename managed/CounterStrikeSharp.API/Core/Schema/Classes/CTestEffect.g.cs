@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTestEffect : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CTestEffect : CBaseEntity, ICTestEffect
 {
     public CTestEffect (IntPtr pointer) : base(pointer) {}
 

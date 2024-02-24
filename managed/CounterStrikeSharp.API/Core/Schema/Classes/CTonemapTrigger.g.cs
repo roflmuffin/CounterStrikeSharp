@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTonemapTrigger : CBaseTrigger
+[GenerateAutomaticInterface]
+public partial class CTonemapTrigger : CBaseTrigger, ICTonemapTrigger
 {
     public CTonemapTrigger (IntPtr pointer) : base(pointer) {}
 

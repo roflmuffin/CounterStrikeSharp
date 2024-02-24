@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CDynamicProp : CBreakableProp
+[GenerateAutomaticInterface]
+public partial class CDynamicProp : CBreakableProp, ICDynamicProp
 {
     public CDynamicProp (IntPtr pointer) : base(pointer) {}
 

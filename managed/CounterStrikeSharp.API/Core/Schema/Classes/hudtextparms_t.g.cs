@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class hudtextparms_t : NativeObject
+[GenerateAutomaticInterface]
+public partial class hudtextparms_t : NativeObject, Ihudtextparms_t
 {
     public hudtextparms_t (IntPtr pointer) : base(pointer) {}
 

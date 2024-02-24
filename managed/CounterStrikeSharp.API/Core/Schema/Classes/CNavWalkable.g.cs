@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CNavWalkable : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CNavWalkable : CPointEntity, ICNavWalkable
 {
     public CNavWalkable (IntPtr pointer) : base(pointer) {}
 

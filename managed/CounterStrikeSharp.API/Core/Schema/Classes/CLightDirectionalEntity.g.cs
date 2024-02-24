@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CLightDirectionalEntity : CLightEntity
+[GenerateAutomaticInterface]
+public partial class CLightDirectionalEntity : CLightEntity, ICLightDirectionalEntity
 {
     public CLightDirectionalEntity (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CMultiplayer_Expresser : CAI_ExpresserWithFollowup
+[GenerateAutomaticInterface]
+public partial class CMultiplayer_Expresser : CAI_ExpresserWithFollowup, ICMultiplayer_Expresser
 {
     public CMultiplayer_Expresser (IntPtr pointer) : base(pointer) {}
 

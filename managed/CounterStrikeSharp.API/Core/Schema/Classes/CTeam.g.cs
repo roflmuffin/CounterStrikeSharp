@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTeam : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CTeam : CBaseEntity, ICTeam
 {
     public CTeam (IntPtr pointer) : base(pointer) {}
 

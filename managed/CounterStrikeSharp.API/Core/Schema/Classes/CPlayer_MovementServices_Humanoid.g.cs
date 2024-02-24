@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPlayer_MovementServices_Humanoid : CPlayer_MovementServices
+[GenerateAutomaticInterface]
+public partial class CPlayer_MovementServices_Humanoid : CPlayer_MovementServices, ICPlayer_MovementServices_Humanoid
 {
     public CPlayer_MovementServices_Humanoid (IntPtr pointer) : base(pointer) {}
 

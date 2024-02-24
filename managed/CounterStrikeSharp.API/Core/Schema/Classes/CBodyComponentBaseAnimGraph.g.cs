@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CBodyComponentBaseAnimGraph : CBodyComponentSkeletonInstance
+[GenerateAutomaticInterface]
+public partial class CBodyComponentBaseAnimGraph : CBodyComponentSkeletonInstance, ICBodyComponentBaseAnimGraph
 {
     public CBodyComponentBaseAnimGraph (IntPtr pointer) : base(pointer) {}
 

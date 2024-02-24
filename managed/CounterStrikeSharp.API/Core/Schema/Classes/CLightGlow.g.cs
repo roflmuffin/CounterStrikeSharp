@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CLightGlow : CBaseModelEntity
+[GenerateAutomaticInterface]
+public partial class CLightGlow : CBaseModelEntity, ICLightGlow
 {
     public CLightGlow (IntPtr pointer) : base(pointer) {}
 

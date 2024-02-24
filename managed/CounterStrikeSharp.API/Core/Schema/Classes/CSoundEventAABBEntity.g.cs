@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CSoundEventAABBEntity : CSoundEventEntity
+[GenerateAutomaticInterface]
+public partial class CSoundEventAABBEntity : CSoundEventEntity, ICSoundEventAABBEntity
 {
     public CSoundEventAABBEntity (IntPtr pointer) : base(pointer) {}
 

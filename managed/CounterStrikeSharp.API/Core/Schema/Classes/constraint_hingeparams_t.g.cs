@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class constraint_hingeparams_t : NativeObject
+[GenerateAutomaticInterface]
+public partial class constraint_hingeparams_t : NativeObject, Iconstraint_hingeparams_t
 {
     public constraint_hingeparams_t (IntPtr pointer) : base(pointer) {}
 

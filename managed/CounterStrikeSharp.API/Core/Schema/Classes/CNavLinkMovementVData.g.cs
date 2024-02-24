@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CNavLinkMovementVData : NativeObject
+[GenerateAutomaticInterface]
+public partial class CNavLinkMovementVData : NativeObject, ICNavLinkMovementVData
 {
     public CNavLinkMovementVData (IntPtr pointer) : base(pointer) {}
 

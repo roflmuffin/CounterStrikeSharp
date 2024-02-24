@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFuncWall : CBaseModelEntity
+[GenerateAutomaticInterface]
+public partial class CFuncWall : CBaseModelEntity, ICFuncWall
 {
     public CFuncWall (IntPtr pointer) : base(pointer) {}
 

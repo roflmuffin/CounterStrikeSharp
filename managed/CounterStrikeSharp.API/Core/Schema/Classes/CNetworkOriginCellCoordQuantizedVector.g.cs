@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CNetworkOriginCellCoordQuantizedVector : NativeObject
+[GenerateAutomaticInterface]
+public partial class CNetworkOriginCellCoordQuantizedVector : NativeObject, ICNetworkOriginCellCoordQuantizedVector
 {
     public CNetworkOriginCellCoordQuantizedVector (IntPtr pointer) : base(pointer) {}
 

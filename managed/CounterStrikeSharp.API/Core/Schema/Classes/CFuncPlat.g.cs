@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFuncPlat : CBasePlatTrain
+[GenerateAutomaticInterface]
+public partial class CFuncPlat : CBasePlatTrain, ICFuncPlat
 {
     public CFuncPlat (IntPtr pointer) : base(pointer) {}
 

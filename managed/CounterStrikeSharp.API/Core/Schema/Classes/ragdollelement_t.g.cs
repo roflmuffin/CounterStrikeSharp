@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class ragdollelement_t : NativeObject
+[GenerateAutomaticInterface]
+public partial class ragdollelement_t : NativeObject, Iragdollelement_t
 {
     public ragdollelement_t (IntPtr pointer) : base(pointer) {}
 

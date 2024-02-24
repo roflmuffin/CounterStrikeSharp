@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPointGiveAmmo : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CPointGiveAmmo : CPointEntity, ICPointGiveAmmo
 {
     public CPointGiveAmmo (IntPtr pointer) : base(pointer) {}
 

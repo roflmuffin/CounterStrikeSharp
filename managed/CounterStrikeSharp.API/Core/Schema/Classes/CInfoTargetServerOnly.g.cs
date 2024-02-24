@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CInfoTargetServerOnly : CServerOnlyPointEntity
+[GenerateAutomaticInterface]
+public partial class CInfoTargetServerOnly : CServerOnlyPointEntity, ICInfoTargetServerOnly
 {
     public CInfoTargetServerOnly (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CEnvCubemapFog : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CEnvCubemapFog : CBaseEntity, ICEnvCubemapFog
 {
     public CEnvCubemapFog (IntPtr pointer) : base(pointer) {}
 

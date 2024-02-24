@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CEnvFireSensor : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CEnvFireSensor : CBaseEntity, ICEnvFireSensor
 {
     public CEnvFireSensor (IntPtr pointer) : base(pointer) {}
 

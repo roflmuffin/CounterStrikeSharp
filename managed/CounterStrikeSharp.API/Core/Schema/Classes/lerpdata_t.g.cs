@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class lerpdata_t : NativeObject
+[GenerateAutomaticInterface]
+public partial class lerpdata_t : NativeObject, Ilerpdata_t
 {
     public lerpdata_t (IntPtr pointer) : base(pointer) {}
 

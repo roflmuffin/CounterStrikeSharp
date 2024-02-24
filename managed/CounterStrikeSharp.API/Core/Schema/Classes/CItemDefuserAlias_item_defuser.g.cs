@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CItemDefuserAlias_item_defuser : CItemDefuser
+[GenerateAutomaticInterface]
+public partial class CItemDefuserAlias_item_defuser : CItemDefuser, ICItemDefuserAlias_item_defuser
 {
     public CItemDefuserAlias_item_defuser (IntPtr pointer) : base(pointer) {}
 

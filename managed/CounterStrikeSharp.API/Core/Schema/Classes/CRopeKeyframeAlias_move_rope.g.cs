@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CRopeKeyframeAlias_move_rope : CRopeKeyframe
+[GenerateAutomaticInterface]
+public partial class CRopeKeyframeAlias_move_rope : CRopeKeyframe, ICRopeKeyframeAlias_move_rope
 {
     public CRopeKeyframeAlias_move_rope (IntPtr pointer) : base(pointer) {}
 

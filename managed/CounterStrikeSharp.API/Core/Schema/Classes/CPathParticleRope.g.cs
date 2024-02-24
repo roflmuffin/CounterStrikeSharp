@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPathParticleRope : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CPathParticleRope : CBaseEntity, ICPathParticleRope
 {
     public CPathParticleRope (IntPtr pointer) : base(pointer) {}
 

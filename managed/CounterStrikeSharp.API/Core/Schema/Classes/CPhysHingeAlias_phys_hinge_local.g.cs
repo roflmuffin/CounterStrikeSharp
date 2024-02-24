@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPhysHingeAlias_phys_hinge_local : CPhysHinge
+[GenerateAutomaticInterface]
+public partial class CPhysHingeAlias_phys_hinge_local : CPhysHinge, ICPhysHingeAlias_phys_hinge_local
 {
     public CPhysHingeAlias_phys_hinge_local (IntPtr pointer) : base(pointer) {}
 

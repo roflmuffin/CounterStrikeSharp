@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CRagdollManager : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CRagdollManager : CBaseEntity, ICRagdollManager
 {
     public CRagdollManager (IntPtr pointer) : base(pointer) {}
 

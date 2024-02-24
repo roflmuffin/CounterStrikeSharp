@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CCSPlayer_CameraServices : CCSPlayerBase_CameraServices
+[GenerateAutomaticInterface]
+public partial class CCSPlayer_CameraServices : CCSPlayerBase_CameraServices, ICCSPlayer_CameraServices
 {
     public CCSPlayer_CameraServices (IntPtr pointer) : base(pointer) {}
 

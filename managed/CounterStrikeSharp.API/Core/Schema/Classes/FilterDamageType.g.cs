@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class FilterDamageType : CBaseFilter
+[GenerateAutomaticInterface]
+public partial class FilterDamageType : CBaseFilter, IFilterDamageType
 {
     public FilterDamageType (IntPtr pointer) : base(pointer) {}
 

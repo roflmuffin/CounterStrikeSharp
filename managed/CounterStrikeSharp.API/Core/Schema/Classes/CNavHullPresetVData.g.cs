@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CNavHullPresetVData : NativeObject
+[GenerateAutomaticInterface]
+public partial class CNavHullPresetVData : NativeObject, ICNavHullPresetVData
 {
     public CNavHullPresetVData (IntPtr pointer) : base(pointer) {}
 

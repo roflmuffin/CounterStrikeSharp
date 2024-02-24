@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CGameSceneNode : NativeObject
+[GenerateAutomaticInterface]
+public partial class CGameSceneNode : NativeObject, ICGameSceneNode
 {
     public CGameSceneNode (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CInfoVisibilityBox : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CInfoVisibilityBox : CBaseEntity, ICInfoVisibilityBox
 {
     public CInfoVisibilityBox (IntPtr pointer) : base(pointer) {}
 

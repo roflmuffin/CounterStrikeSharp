@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CGradientFog : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CGradientFog : CBaseEntity, ICGradientFog
 {
     public CGradientFog (IntPtr pointer) : base(pointer) {}
 

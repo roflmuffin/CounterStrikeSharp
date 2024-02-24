@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class thinkfunc_t : NativeObject
+[GenerateAutomaticInterface]
+public partial class thinkfunc_t : NativeObject, Ithinkfunc_t
 {
     public thinkfunc_t (IntPtr pointer) : base(pointer) {}
 

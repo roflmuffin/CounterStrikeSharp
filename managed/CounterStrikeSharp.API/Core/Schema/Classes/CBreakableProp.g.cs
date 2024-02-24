@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CBreakableProp : CBaseProp
+[GenerateAutomaticInterface]
+public partial class CBreakableProp : CBaseProp, ICBreakableProp
 {
     public CBreakableProp (IntPtr pointer) : base(pointer) {}
 

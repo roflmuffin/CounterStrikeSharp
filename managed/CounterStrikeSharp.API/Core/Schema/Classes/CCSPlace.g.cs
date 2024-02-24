@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CCSPlace : CServerOnlyModelEntity
+[GenerateAutomaticInterface]
+public partial class CCSPlace : CServerOnlyModelEntity, ICCSPlace
 {
     public CCSPlace (IntPtr pointer) : base(pointer) {}
 

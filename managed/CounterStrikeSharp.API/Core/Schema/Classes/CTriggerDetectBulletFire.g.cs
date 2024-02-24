@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTriggerDetectBulletFire : CBaseTrigger
+[GenerateAutomaticInterface]
+public partial class CTriggerDetectBulletFire : CBaseTrigger, ICTriggerDetectBulletFire
 {
     public CTriggerDetectBulletFire (IntPtr pointer) : base(pointer) {}
 

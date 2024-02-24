@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CBreachCharge : CCSWeaponBase
+[GenerateAutomaticInterface]
+public partial class CBreachCharge : CCSWeaponBase, ICBreachCharge
 {
     public CBreachCharge (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFuncBrush : CBaseModelEntity
+[GenerateAutomaticInterface]
+public partial class CFuncBrush : CBaseModelEntity, ICFuncBrush
 {
     public CFuncBrush (IntPtr pointer) : base(pointer) {}
 

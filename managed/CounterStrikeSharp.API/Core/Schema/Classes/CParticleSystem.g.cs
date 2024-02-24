@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CParticleSystem : CBaseModelEntity
+[GenerateAutomaticInterface]
+public partial class CParticleSystem : CBaseModelEntity, ICParticleSystem
 {
     public CParticleSystem (IntPtr pointer) : base(pointer) {}
 

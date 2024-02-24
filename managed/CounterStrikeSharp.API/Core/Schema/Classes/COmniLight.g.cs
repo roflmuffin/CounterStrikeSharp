@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class COmniLight : CBarnLight
+[GenerateAutomaticInterface]
+public partial class COmniLight : CBarnLight, ICOmniLight
 {
     public COmniLight (IntPtr pointer) : base(pointer) {}
 

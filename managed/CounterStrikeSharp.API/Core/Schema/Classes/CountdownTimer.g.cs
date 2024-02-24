@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CountdownTimer : NativeObject
+[GenerateAutomaticInterface]
+public partial class CountdownTimer : NativeObject, ICountdownTimer
 {
     public CountdownTimer (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPointGamestatsCounter : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CPointGamestatsCounter : CPointEntity, ICPointGamestatsCounter
 {
     public CPointGamestatsCounter (IntPtr pointer) : base(pointer) {}
 

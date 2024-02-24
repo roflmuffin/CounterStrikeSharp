@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPlayer_CameraServices : CPlayerPawnComponent
+[GenerateAutomaticInterface]
+public partial class CPlayer_CameraServices : CPlayerPawnComponent, ICPlayer_CameraServices
 {
     public CPlayer_CameraServices (IntPtr pointer) : base(pointer) {}
 

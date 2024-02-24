@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFuncVehicleClip : CBaseModelEntity
+[GenerateAutomaticInterface]
+public partial class CFuncVehicleClip : CBaseModelEntity, ICFuncVehicleClip
 {
     public CFuncVehicleClip (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CCollisionProperty : NativeObject
+[GenerateAutomaticInterface]
+public partial class CCollisionProperty : NativeObject, ICCollisionProperty
 {
     public CCollisionProperty (IntPtr pointer) : base(pointer) {}
 

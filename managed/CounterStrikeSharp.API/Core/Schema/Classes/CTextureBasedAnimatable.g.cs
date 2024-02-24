@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTextureBasedAnimatable : CBaseModelEntity
+[GenerateAutomaticInterface]
+public partial class CTextureBasedAnimatable : CBaseModelEntity, ICTextureBasedAnimatable
 {
     public CTextureBasedAnimatable (IntPtr pointer) : base(pointer) {}
 

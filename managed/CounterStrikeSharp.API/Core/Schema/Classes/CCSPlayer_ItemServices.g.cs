@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CCSPlayer_ItemServices : CPlayer_ItemServices
+[GenerateAutomaticInterface]
+public partial class CCSPlayer_ItemServices : CPlayer_ItemServices, ICCSPlayer_ItemServices
 {
     public CCSPlayer_ItemServices (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPathCornerCrash : CPathCorner
+[GenerateAutomaticInterface]
+public partial class CPathCornerCrash : CPathCorner, ICPathCornerCrash
 {
     public CPathCornerCrash (IntPtr pointer) : base(pointer) {}
 

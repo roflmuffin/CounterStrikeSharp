@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CBasePlayerVData : CEntitySubclassVDataBase
+[GenerateAutomaticInterface]
+public partial class CBasePlayerVData : CEntitySubclassVDataBase, ICBasePlayerVData
 {
     public CBasePlayerVData (IntPtr pointer) : base(pointer) {}
 

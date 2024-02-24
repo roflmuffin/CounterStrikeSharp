@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CMessage : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CMessage : CPointEntity, ICMessage
 {
     public CMessage (IntPtr pointer) : base(pointer) {}
 

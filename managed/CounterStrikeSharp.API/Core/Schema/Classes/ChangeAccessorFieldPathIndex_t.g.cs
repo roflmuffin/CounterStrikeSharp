@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class ChangeAccessorFieldPathIndex_t : NativeObject
+[GenerateAutomaticInterface]
+public partial class ChangeAccessorFieldPathIndex_t : NativeObject, IChangeAccessorFieldPathIndex_t
 {
     public ChangeAccessorFieldPathIndex_t (IntPtr pointer) : base(pointer) {}
 

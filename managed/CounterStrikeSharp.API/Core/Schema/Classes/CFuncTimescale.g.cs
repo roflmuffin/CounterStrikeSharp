@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFuncTimescale : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CFuncTimescale : CBaseEntity, ICFuncTimescale
 {
     public CFuncTimescale (IntPtr pointer) : base(pointer) {}
 

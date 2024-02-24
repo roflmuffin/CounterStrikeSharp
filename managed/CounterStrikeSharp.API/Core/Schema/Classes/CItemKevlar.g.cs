@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CItemKevlar : CItem
+[GenerateAutomaticInterface]
+public partial class CItemKevlar : CItem, ICItemKevlar
 {
     public CItemKevlar (IntPtr pointer) : base(pointer) {}
 

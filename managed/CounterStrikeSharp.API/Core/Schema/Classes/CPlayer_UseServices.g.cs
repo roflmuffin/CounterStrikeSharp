@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPlayer_UseServices : CPlayerPawnComponent
+[GenerateAutomaticInterface]
+public partial class CPlayer_UseServices : CPlayerPawnComponent, ICPlayer_UseServices
 {
     public CPlayer_UseServices (IntPtr pointer) : base(pointer) {}
 

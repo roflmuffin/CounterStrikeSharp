@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CSoundAreaEntityOrientedBox : CSoundAreaEntityBase
+[GenerateAutomaticInterface]
+public partial class CSoundAreaEntityOrientedBox : CSoundAreaEntityBase, ICSoundAreaEntityOrientedBox
 {
     public CSoundAreaEntityOrientedBox (IntPtr pointer) : base(pointer) {}
 

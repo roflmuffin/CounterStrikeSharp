@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CInfoPlayerStart : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CInfoPlayerStart : CPointEntity, ICInfoPlayerStart
 {
     public CInfoPlayerStart (IntPtr pointer) : base(pointer) {}
 

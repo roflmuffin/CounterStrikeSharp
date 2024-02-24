@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFuncVPhysicsClip : CBaseModelEntity
+[GenerateAutomaticInterface]
+public partial class CFuncVPhysicsClip : CBaseModelEntity, ICFuncVPhysicsClip
 {
     public CFuncVPhysicsClip (IntPtr pointer) : base(pointer) {}
 

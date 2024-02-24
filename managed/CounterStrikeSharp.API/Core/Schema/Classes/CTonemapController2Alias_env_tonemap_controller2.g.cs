@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTonemapController2Alias_env_tonemap_controller2 : CTonemapController2
+[GenerateAutomaticInterface]
+public partial class CTonemapController2Alias_env_tonemap_controller2 : CTonemapController2, ICTonemapController2Alias_env_tonemap_controller2
 {
     public CTonemapController2Alias_env_tonemap_controller2 (IntPtr pointer) : base(pointer) {}
 

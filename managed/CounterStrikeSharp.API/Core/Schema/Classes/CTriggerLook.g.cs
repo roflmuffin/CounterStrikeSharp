@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTriggerLook : CTriggerOnce
+[GenerateAutomaticInterface]
+public partial class CTriggerLook : CTriggerOnce, ICTriggerLook
 {
     public CTriggerLook (IntPtr pointer) : base(pointer) {}
 

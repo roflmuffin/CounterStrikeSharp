@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CCSPlayer_ViewModelServices : CPlayer_ViewModelServices
+[GenerateAutomaticInterface]
+public partial class CCSPlayer_ViewModelServices : CPlayer_ViewModelServices, ICCSPlayer_ViewModelServices
 {
     public CCSPlayer_ViewModelServices (IntPtr pointer) : base(pointer) {}
 

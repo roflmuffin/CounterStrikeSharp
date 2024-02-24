@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CCSGO_TeamSelectCounterTerroristPosition : CCSGO_TeamSelectCharacterPosition
+[GenerateAutomaticInterface]
+public partial class CCSGO_TeamSelectCounterTerroristPosition : CCSGO_TeamSelectCharacterPosition, ICCSGO_TeamSelectCounterTerroristPosition
 {
     public CCSGO_TeamSelectCounterTerroristPosition (IntPtr pointer) : base(pointer) {}
 

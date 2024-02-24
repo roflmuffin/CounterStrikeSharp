@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CCSObserverPawn : CCSPlayerPawnBase
+[GenerateAutomaticInterface]
+public partial class CCSObserverPawn : CCSPlayerPawnBase, ICCSObserverPawn
 {
     public CCSObserverPawn (IntPtr pointer) : base(pointer) {}
 

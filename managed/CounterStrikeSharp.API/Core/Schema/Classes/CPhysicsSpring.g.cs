@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPhysicsSpring : CBaseEntity
+[GenerateAutomaticInterface]
+public partial class CPhysicsSpring : CBaseEntity, ICPhysicsSpring
 {
     public CPhysicsSpring (IntPtr pointer) : base(pointer) {}
 

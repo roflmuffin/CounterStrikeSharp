@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPhysicsProp : CBreakableProp
+[GenerateAutomaticInterface]
+public partial class CPhysicsProp : CBreakableProp, ICPhysicsProp
 {
     public CPhysicsProp (IntPtr pointer) : base(pointer) {}
 

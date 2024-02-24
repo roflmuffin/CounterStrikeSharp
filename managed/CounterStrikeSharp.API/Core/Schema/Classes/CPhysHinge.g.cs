@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPhysHinge : CPhysConstraint
+[GenerateAutomaticInterface]
+public partial class CPhysHinge : CPhysConstraint, ICPhysHinge
 {
     public CPhysHinge (IntPtr pointer) : base(pointer) {}
 

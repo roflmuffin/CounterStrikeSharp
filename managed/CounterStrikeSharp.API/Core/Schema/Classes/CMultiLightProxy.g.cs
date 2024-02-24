@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CMultiLightProxy : CLogicalEntity
+[GenerateAutomaticInterface]
+public partial class CMultiLightProxy : CLogicalEntity, ICMultiLightProxy
 {
     public CMultiLightProxy (IntPtr pointer) : base(pointer) {}
 

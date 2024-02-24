@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CBodyComponentPoint : CBodyComponent
+[GenerateAutomaticInterface]
+public partial class CBodyComponentPoint : CBodyComponent, ICBodyComponentPoint
 {
     public CBodyComponentPoint (IntPtr pointer) : base(pointer) {}
 

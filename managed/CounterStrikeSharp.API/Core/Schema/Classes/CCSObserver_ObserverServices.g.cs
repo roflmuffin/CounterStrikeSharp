@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CCSObserver_ObserverServices : CPlayer_ObserverServices
+[GenerateAutomaticInterface]
+public partial class CCSObserver_ObserverServices : CPlayer_ObserverServices, ICCSObserver_ObserverServices
 {
     public CCSObserver_ObserverServices (IntPtr pointer) : base(pointer) {}
 

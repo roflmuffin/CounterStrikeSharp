@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPrecipitationBlocker : CBaseModelEntity
+[GenerateAutomaticInterface]
+public partial class CPrecipitationBlocker : CBaseModelEntity, ICPrecipitationBlocker
 {
     public CPrecipitationBlocker (IntPtr pointer) : base(pointer) {}
 

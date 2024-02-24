@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CAK47 : CCSWeaponBaseGun
+[GenerateAutomaticInterface]
+public partial class CAK47 : CCSWeaponBaseGun, ICAK47
 {
     public CAK47 (IntPtr pointer) : base(pointer) {}
 

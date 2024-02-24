@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CMarkupVolumeTagged_Nav : CMarkupVolumeTagged
+[GenerateAutomaticInterface]
+public partial class CMarkupVolumeTagged_Nav : CMarkupVolumeTagged, ICMarkupVolumeTagged_Nav
 {
     public CMarkupVolumeTagged_Nav (IntPtr pointer) : base(pointer) {}
 

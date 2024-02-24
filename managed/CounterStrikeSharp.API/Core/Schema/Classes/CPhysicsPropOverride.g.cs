@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPhysicsPropOverride : CPhysicsProp
+[GenerateAutomaticInterface]
+public partial class CPhysicsPropOverride : CPhysicsProp, ICPhysicsPropOverride
 {
     public CPhysicsPropOverride (IntPtr pointer) : base(pointer) {}
 

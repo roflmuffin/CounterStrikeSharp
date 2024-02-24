@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class PhysicsRagdollPose_t : NativeObject
+[GenerateAutomaticInterface]
+public partial class PhysicsRagdollPose_t : NativeObject, IPhysicsRagdollPose_t
 {
     public PhysicsRagdollPose_t (IntPtr pointer) : base(pointer) {}
 

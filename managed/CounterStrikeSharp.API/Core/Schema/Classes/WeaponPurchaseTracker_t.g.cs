@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class WeaponPurchaseTracker_t : NativeObject
+[GenerateAutomaticInterface]
+public partial class WeaponPurchaseTracker_t : NativeObject, IWeaponPurchaseTracker_t
 {
     public WeaponPurchaseTracker_t (IntPtr pointer) : base(pointer) {}
 

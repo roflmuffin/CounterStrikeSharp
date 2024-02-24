@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPhysMotor : CLogicalEntity
+[GenerateAutomaticInterface]
+public partial class CPhysMotor : CLogicalEntity, ICPhysMotor
 {
     public CPhysMotor (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CSPerRoundStats_t : NativeObject
+[GenerateAutomaticInterface]
+public partial class CSPerRoundStats_t : NativeObject, ICSPerRoundStats_t
 {
     public CSPerRoundStats_t (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class COrnamentProp : CDynamicProp
+[GenerateAutomaticInterface]
+public partial class COrnamentProp : CDynamicProp, ICOrnamentProp
 {
     public COrnamentProp (IntPtr pointer) : base(pointer) {}
 

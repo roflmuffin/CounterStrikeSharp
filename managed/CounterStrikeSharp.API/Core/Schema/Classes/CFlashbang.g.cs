@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CFlashbang : CBaseCSGrenade
+[GenerateAutomaticInterface]
+public partial class CFlashbang : CBaseCSGrenade, ICFlashbang
 {
     public CFlashbang (IntPtr pointer) : base(pointer) {}
 

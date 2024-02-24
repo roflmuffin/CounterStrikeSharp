@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CTouchExpansionComponent : CEntityComponent
+[GenerateAutomaticInterface]
+public partial class CTouchExpansionComponent : CEntityComponent, ICTouchExpansionComponent
 {
     public CTouchExpansionComponent (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class sky3dparams_t : NativeObject
+[GenerateAutomaticInterface]
+public partial class sky3dparams_t : NativeObject, Isky3dparams_t
 {
     public sky3dparams_t (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CLogicEventListener : CLogicalEntity
+[GenerateAutomaticInterface]
+public partial class CLogicEventListener : CLogicalEntity, ICLogicEventListener
 {
     public CLogicEventListener (IntPtr pointer) : base(pointer) {}
 

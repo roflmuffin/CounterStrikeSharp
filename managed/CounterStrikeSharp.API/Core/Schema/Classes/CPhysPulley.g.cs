@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPhysPulley : CPhysConstraint
+[GenerateAutomaticInterface]
+public partial class CPhysPulley : CPhysConstraint, ICPhysPulley
 {
     public CPhysPulley (IntPtr pointer) : base(pointer) {}
 

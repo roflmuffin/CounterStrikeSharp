@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class SellbackPurchaseEntry_t : NativeObject
+[GenerateAutomaticInterface]
+public partial class SellbackPurchaseEntry_t : NativeObject, ISellbackPurchaseEntry_t
 {
     public SellbackPurchaseEntry_t (IntPtr pointer) : base(pointer) {}
 

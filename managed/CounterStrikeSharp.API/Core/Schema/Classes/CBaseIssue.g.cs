@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CBaseIssue : NativeObject
+[GenerateAutomaticInterface]
+public partial class CBaseIssue : NativeObject, ICBaseIssue
 {
     public CBaseIssue (IntPtr pointer) : base(pointer) {}
 

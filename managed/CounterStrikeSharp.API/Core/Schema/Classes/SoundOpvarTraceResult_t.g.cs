@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class SoundOpvarTraceResult_t : NativeObject
+[GenerateAutomaticInterface]
+public partial class SoundOpvarTraceResult_t : NativeObject, ISoundOpvarTraceResult_t
 {
     public SoundOpvarTraceResult_t (IntPtr pointer) : base(pointer) {}
 

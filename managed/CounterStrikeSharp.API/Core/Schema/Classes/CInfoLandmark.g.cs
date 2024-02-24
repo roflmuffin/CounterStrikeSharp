@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CInfoLandmark : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CInfoLandmark : CPointEntity, ICInfoLandmark
 {
     public CInfoLandmark (IntPtr pointer) : base(pointer) {}
 

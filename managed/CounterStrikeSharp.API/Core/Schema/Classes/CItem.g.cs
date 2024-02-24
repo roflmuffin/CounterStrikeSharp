@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CItem : CBaseAnimGraph
+[GenerateAutomaticInterface]
+public partial class CItem : CBaseAnimGraph, ICItem
 {
     public CItem (IntPtr pointer) : base(pointer) {}
 

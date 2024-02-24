@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPointClientUIDialog : CBaseClientUIEntity
+[GenerateAutomaticInterface]
+public partial class CPointClientUIDialog : CBaseClientUIEntity, ICPointClientUIDialog
 {
     public CPointClientUIDialog (IntPtr pointer) : base(pointer) {}
 

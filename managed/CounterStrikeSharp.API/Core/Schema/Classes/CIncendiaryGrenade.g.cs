@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CIncendiaryGrenade : CMolotovGrenade
+[GenerateAutomaticInterface]
+public partial class CIncendiaryGrenade : CMolotovGrenade, ICIncendiaryGrenade
 {
     public CIncendiaryGrenade (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CBaseDMStart : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CBaseDMStart : CPointEntity, ICBaseDMStart
 {
     public CBaseDMStart (IntPtr pointer) : base(pointer) {}
 

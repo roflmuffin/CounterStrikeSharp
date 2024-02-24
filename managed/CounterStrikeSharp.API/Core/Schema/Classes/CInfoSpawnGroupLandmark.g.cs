@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CInfoSpawnGroupLandmark : CPointEntity
+[GenerateAutomaticInterface]
+public partial class CInfoSpawnGroupLandmark : CPointEntity, ICInfoSpawnGroupLandmark
 {
     public CInfoSpawnGroupLandmark (IntPtr pointer) : base(pointer) {}
 

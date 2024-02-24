@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CCoopBonusCoin : CDynamicProp
+[GenerateAutomaticInterface]
+public partial class CCoopBonusCoin : CDynamicProp, ICCoopBonusCoin
 {
     public CCoopBonusCoin (IntPtr pointer) : base(pointer) {}
 

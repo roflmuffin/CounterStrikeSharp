@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CSmokeGrenade : CBaseCSGrenade
+[GenerateAutomaticInterface]
+public partial class CSmokeGrenade : CBaseCSGrenade, ICSmokeGrenade
 {
     public CSmokeGrenade (IntPtr pointer) : base(pointer) {}
 

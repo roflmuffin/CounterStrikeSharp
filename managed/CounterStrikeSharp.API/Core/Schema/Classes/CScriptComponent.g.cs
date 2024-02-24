@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CScriptComponent : CEntityComponent
+[GenerateAutomaticInterface]
+public partial class CScriptComponent : CEntityComponent, ICScriptComponent
 {
     public CScriptComponent (IntPtr pointer) : base(pointer) {}
 

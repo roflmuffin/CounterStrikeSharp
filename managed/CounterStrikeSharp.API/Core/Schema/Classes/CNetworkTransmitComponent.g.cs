@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CNetworkTransmitComponent : NativeObject
+[GenerateAutomaticInterface]
+public partial class CNetworkTransmitComponent : NativeObject, ICNetworkTransmitComponent
 {
     public CNetworkTransmitComponent (IntPtr pointer) : base(pointer) {}
 

@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CLightOrthoEntity : CLightEntity
+[GenerateAutomaticInterface]
+public partial class CLightOrthoEntity : CLightEntity, ICLightOrthoEntity
 {
     public CLightOrthoEntity (IntPtr pointer) : base(pointer) {}
 

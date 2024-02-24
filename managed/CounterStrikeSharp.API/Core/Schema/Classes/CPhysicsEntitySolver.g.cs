@@ -14,7 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPhysicsEntitySolver : CLogicalEntity
+[GenerateAutomaticInterface]
+public partial class CPhysicsEntitySolver : CLogicalEntity, ICPhysicsEntitySolver
 {
     public CPhysicsEntitySolver (IntPtr pointer) : base(pointer) {}
 
