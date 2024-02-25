@@ -17,6 +17,7 @@
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using CounterStrikeSharp.API.Core.Commands;
 using CounterStrikeSharp.API.Core.Hosting;
 using CounterStrikeSharp.API.Core.Plugin;
 using CounterStrikeSharp.API.Core.Plugin.Host;
@@ -26,6 +27,7 @@ using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Menu;
 using CounterStrikeSharp.API.Modules.Utils;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Core
@@ -34,6 +36,7 @@ namespace CounterStrikeSharp.API.Core
     {
         private static Application _instance = null!;
         public ILogger Logger { get; }
+
         public static Application Instance => _instance!;
 
         public static string RootDirectory => Instance._scriptHostConfiguration.RootPath;
@@ -44,10 +47,12 @@ namespace CounterStrikeSharp.API.Core
         private readonly IPluginManager _pluginManager;
         private readonly IPluginContextQueryHandler _pluginContextQueryHandler;
         private readonly IPlayerLanguageManager _playerLanguageManager;
+        private readonly ICommandManager _commandManager;
 
         public Application(ILoggerFactory loggerFactory, IScriptHostConfiguration scriptHostConfiguration,
             GameDataProvider gameDataProvider, CoreConfig coreConfig, IPluginManager pluginManager,
-            IPluginContextQueryHandler pluginContextQueryHandler, IPlayerLanguageManager playerLanguageManager)
+            IPluginContextQueryHandler pluginContextQueryHandler, IPlayerLanguageManager playerLanguageManager,
+            ICommandManager commandManager)
         {
             Logger = loggerFactory.CreateLogger("Core");
             _scriptHostConfiguration = scriptHostConfiguration;
@@ -56,6 +61,7 @@ namespace CounterStrikeSharp.API.Core
             _pluginManager = pluginManager;
             _pluginContextQueryHandler = pluginContextQueryHandler;
             _playerLanguageManager = playerLanguageManager;
+            _commandManager = commandManager;
             _instance = this;
         }
 
@@ -69,7 +75,7 @@ namespace CounterStrikeSharp.API.Core
             var adminPath = Path.Combine(_scriptHostConfiguration.RootPath, "configs", "admins.json");
             Logger.LogInformation("Loading Admins from {Path}", adminPath);
             AdminManager.LoadAdminData(adminPath);
-            
+
             var adminGroupsPath = Path.Combine(_scriptHostConfiguration.RootPath, "configs", "admin_groups.json");
             Logger.LogInformation("Loading Admin Groups from {Path}", adminGroupsPath);
             AdminManager.LoadAdminGroups(adminGroupsPath);
@@ -81,24 +87,23 @@ namespace CounterStrikeSharp.API.Core
             AdminManager.MergeGroupPermsIntoAdmins();
             AdminManager.AddCommands();
 
+            RegisterPluginCommands();
+
             _pluginManager.Load();
 
             for (var i = 1; i <= 9; i++)
             {
-                CommandUtils.AddStandaloneCommand($"css_{i}", "Command Key Handler", (player, info) =>
-                {
-                    if (player == null) return;
-                    var key = Convert.ToInt32(info.GetArg(0).Split("_")[1]);
-                    
-                    MenuManager.OnKeyPress(player, key);
-                });
+                _commandManager.RegisterCommand(new($"css_{i}", "Command Key Handler",
+                    (player, info) =>
+                    {
+                        if (player == null) return;
+                        var key = Convert.ToInt32(info.GetArg(0).Split("_")[1]);
+                        MenuManager.OnKeyPress(player, key);
+                    }));
             }
-
-            RegisterPluginCommands();
         }
 
         [RequiresPermissions("@css/generic")]
-        [CommandHelper(whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
         private void OnCSSCommand(CCSPlayerController? caller, CommandInfo info)
         {
             var currentVersion = Api.GetVersion();
@@ -107,18 +112,11 @@ namespace CounterStrikeSharp.API.Core
                 "  CounterStrikeSharp was created and is maintained by Michael \"roflmuffin\" Wilson.\n" +
                 "  Counter-Strike Sharp uses code borrowed from SourceMod, Source.Python, FiveM, Saul Rennison, source2gen and CS2Fixes.\n" +
                 "  See ACKNOWLEDGEMENTS.md for more information.\n" +
-                "  Current API Version: " + currentVersion, true);
+                "  Current API Version: " + currentVersion);
             return;
         }
 
         [RequiresPermissions("@css/generic")]
-        [CommandHelper(minArgs: 1,
-            usage: "[option]\n" +
-                   "  list - List all plugins currently loaded.\n" +
-                   "  start / load - Loads a plugin not currently loaded.\n" +
-                   "  stop / unload - Unloads a plugin currently loaded.\n" +
-                   "  restart / reload - Reloads a plugin currently loaded.",
-            whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
         private void OnCSSPluginCommand(CCSPlayerController? caller, CommandInfo info)
         {
             switch (info.GetArg(1))
@@ -126,8 +124,7 @@ namespace CounterStrikeSharp.API.Core
                 case "list":
                 {
                     info.ReplyToCommand(
-                        $"  List of all plugins currently loaded by CounterStrikeSharp: {_pluginManager.GetLoadedPlugins().Count()} plugins loaded.",
-                        true);
+                        $"  List of all plugins currently loaded by CounterStrikeSharp: {_pluginManager.GetLoadedPlugins().Count()} plugins loaded.");
 
                     foreach (var plugin in _pluginManager.GetLoadedPlugins())
                     {
@@ -144,7 +141,7 @@ namespace CounterStrikeSharp.API.Core
                             sb.Append(plugin.Plugin.ModuleDescription);
                         }
 
-                        info.ReplyToCommand(sb.ToString(), true);
+                        info.ReplyToCommand(sb.ToString());
                     }
 
                     break;
@@ -155,8 +152,7 @@ namespace CounterStrikeSharp.API.Core
                     if (info.ArgCount < 3)
                     {
                         info.ReplyToCommand(
-                            "Valid usage: css_plugins start/load [relative plugin path || absolute plugin path] (e.g \"TestPlugin\", \"plugins/TestPlugin/TestPlugin.dll\")\n",
-                            true);
+                            "Valid usage: css_plugins start/load [relative plugin path || absolute plugin path] (e.g \"TestPlugin\", \"plugins/TestPlugin/TestPlugin.dll\")\n");
                         break;
                     }
 
@@ -182,7 +178,7 @@ namespace CounterStrikeSharp.API.Core
                         }
                         catch (Exception e)
                         {
-                            info.ReplyToCommand($"Could not load plugin \"{path}\"", true);
+                            info.ReplyToCommand($"Could not load plugin \"{path}\"");
                             Logger.LogError(e, "Could not load plugin \"{Path}\"", path);
                         }
                     }
@@ -200,8 +196,7 @@ namespace CounterStrikeSharp.API.Core
                     if (info.ArgCount < 3)
                     {
                         info.ReplyToCommand(
-                            "Valid usage: css_plugins stop/unload [plugin name || #plugin id] (e.g \"TestPlugin\", \"1\")\n",
-                            true);
+                            "Valid usage: css_plugins stop/unload [plugin name || #plugin id] (e.g \"TestPlugin\", \"1\")\n");
                         break;
                     }
 
@@ -209,7 +204,7 @@ namespace CounterStrikeSharp.API.Core
                     IPluginContext? plugin = _pluginContextQueryHandler.FindPluginByIdOrName(pluginIdentifier);
                     if (plugin == null)
                     {
-                        info.ReplyToCommand($"Could not unload plugin \"{pluginIdentifier}\"", true);
+                        info.ReplyToCommand($"Could not unload plugin \"{pluginIdentifier}\"");
                         break;
                     }
 
@@ -223,8 +218,7 @@ namespace CounterStrikeSharp.API.Core
                     if (info.ArgCount < 3)
                     {
                         info.ReplyToCommand(
-                            "Valid usage: css_plugins restart/reload [plugin name || #plugin id] (e.g \"TestPlugin\", \"#1\")\n",
-                            true);
+                            "Valid usage: css_plugins restart/reload [plugin name || #plugin id] (e.g \"TestPlugin\", \"#1\")\n");
                         break;
                     }
 
@@ -233,7 +227,7 @@ namespace CounterStrikeSharp.API.Core
 
                     if (plugin == null)
                     {
-                        info.ReplyToCommand($"Could not reload plugin \"{pluginIdentifier}\"", true);
+                        info.ReplyToCommand($"Could not reload plugin \"{pluginIdentifier}\"");
                         break;
                     }
 
@@ -247,23 +241,24 @@ namespace CounterStrikeSharp.API.Core
                                         "  list - List all plugins currently loaded.\n" +
                                         "  start / load - Loads a plugin not currently loaded.\n" +
                                         "  stop / unload - Unloads a plugin currently loaded.\n" +
-                                        "  restart / reload - Reloads a plugin currently loaded."
-                        , true);
+                                        "  restart / reload - Reloads a plugin currently loaded.");
                     break;
             }
         }
 
-        [CommandHelper(usage: "[language code, e.g. \"de\", \"pl\", \"en\"]", whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
+        [CommandHelper(usage: "[language code, e.g. \"de\", \"pl\", \"en\"]",
+            whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
         private void OnLangCommand(CCSPlayerController? player, CommandInfo command)
         {
             if (player == null) return;
-            
+
             SteamID steamId = (SteamID)player.SteamID;
 
             if (command.ArgCount == 1)
             {
                 var language = _playerLanguageManager.GetLanguage(steamId);
-                command.ReplyToCommand(string.Format("Current language is \"{0}\" ({1})", language.Name, language.NativeName));
+                command.ReplyToCommand(string.Format("Current language is \"{0}\" ({1})", language.Name,
+                    language.NativeName));
                 return;
             }
 
@@ -271,7 +266,7 @@ namespace CounterStrikeSharp.API.Core
             {
                 return;
             }
-            
+
             try
             {
                 var language = command.GetArg(1);
@@ -287,10 +282,21 @@ namespace CounterStrikeSharp.API.Core
 
         private void RegisterPluginCommands()
         {
-            CommandUtils.AddStandaloneCommand("css", "Counter-Strike Sharp options.", OnCSSCommand);
-            CommandUtils.AddStandaloneCommand("css_plugins", "Counter-Strike Sharp plugin options.",
-                OnCSSPluginCommand);
-            CommandUtils.AddStandaloneCommand("css_lang", "Set Counter-Strike Sharp language.", OnLangCommand);
+            _commandManager.RegisterCommand(new("css", "Counter-Strike Sharp options.", OnCSSCommand)
+            {
+                ExecutableBy = CommandUsage.CLIENT_AND_SERVER,
+            });
+            _commandManager.RegisterCommand(new("css_plugins", "Counter-Strike Sharp plugin options.",
+                OnCSSPluginCommand)
+            {
+                ExecutableBy = CommandUsage.CLIENT_AND_SERVER,
+                MinArgs = 1,
+                UsageHint = "[option]\n" +
+                            "  list - List all plugins currently loaded.\n" +
+                            "  start / load - Loads a plugin not currently loaded.\n" +
+                            "  stop / unload - Unloads a plugin currently loaded.\n" +
+                            "  restart / reload - Reloads a plugin currently loaded.",
+            });
         }
     }
 }

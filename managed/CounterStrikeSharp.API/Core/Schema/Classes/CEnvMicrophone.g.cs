@@ -87,7 +87,7 @@ public partial class CEnvMicrophone : CPointEntity
 	public string LastSound
 	{
 		get { return Schema.GetString(this.Handle, "CEnvMicrophone", "m_szLastSound"); }
-		set { Schema.SetString(this.Handle, "CEnvMicrophone", "m_szLastSound", value); }
+		set { Schema.SetStringBytes(this.Handle, "CEnvMicrophone", "m_szLastSound", value, 256); }
 	}
 
 	// m_iLastRoutedFrame

@@ -84,6 +84,9 @@ bool gameLoopInitialized = false;
 GetLegacyGameEventListener_t* GetLegacyGameEventListener = nullptr;
 std::thread::id gameThreadId;
 
+// Based on 64 fixed tick rate
+const float engine_fixed_tick_interval = 0.015625f;
+
 void Initialize()
 {
     modules::engine = new modules::CModule(ROOTBIN, "engine2");

@@ -118,6 +118,13 @@ static const char* CommandGetArgByIndex(ScriptContext& script_context)
     return command->Arg(index);
 }
 
+static CommandCallingContext CommandGetCallingContext(ScriptContext& script_context)
+{
+    auto* command = script_context.GetArgument<CCommand*>(0);
+
+    return globals::conCommandManager.GetCommandCallingContext(command);
+}
+
 static void IssueClientCommand(ScriptContext& script_context)
 {
     auto slot = script_context.GetArgument<int>(0);
@@ -194,6 +201,7 @@ REGISTER_NATIVES(commands, {
     ScriptEngine::RegisterNativeHandler("COMMAND_GET_ARG_STRING", CommandGetArgString);
     ScriptEngine::RegisterNativeHandler("COMMAND_GET_COMMAND_STRING", CommandGetCommandString);
     ScriptEngine::RegisterNativeHandler("COMMAND_GET_ARG_BY_INDEX", CommandGetArgByIndex);
+    ScriptEngine::RegisterNativeHandler("COMMAND_GET_CALLING_CONTEXT", CommandGetCallingContext);
 
     ScriptEngine::RegisterNativeHandler("FIND_CONVAR", FindConVar);
     ScriptEngine::RegisterNativeHandler("SET_CONVAR_STRING_VALUE", SetConVarStringValue);

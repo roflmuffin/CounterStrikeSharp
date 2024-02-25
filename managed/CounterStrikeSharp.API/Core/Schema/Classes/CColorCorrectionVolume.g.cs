@@ -43,7 +43,7 @@ public partial class CColorCorrectionVolume : CBaseTrigger
 	public string LookupFilename
 	{
 		get { return Schema.GetString(this.Handle, "CColorCorrectionVolume", "m_lookupFilename"); }
-		set { Schema.SetString(this.Handle, "CColorCorrectionVolume", "m_lookupFilename", value); }
+		set { Schema.SetStringBytes(this.Handle, "CColorCorrectionVolume", "m_lookupFilename", value, 512); }
 	}
 
 	// m_LastEnterWeight
