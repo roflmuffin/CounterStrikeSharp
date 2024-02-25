@@ -502,20 +502,20 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
-        public static void QueueTaskForNextFrame(IntPtr callback){
+        public static void QueueTaskForNextFrame(InputArgument callback){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.Push(callback);
+			ScriptContext.GlobalScriptContext.Push((InputArgument)callback);
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x9FE394D8);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
 			}
 		}
 
-        public static void QueueTaskForNextWorldUpdate(IntPtr callback){
+        public static void QueueTaskForNextWorldUpdate(InputArgument callback){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.Push(callback);
+			ScriptContext.GlobalScriptContext.Push((InputArgument)callback);
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xAD51A0C9);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
