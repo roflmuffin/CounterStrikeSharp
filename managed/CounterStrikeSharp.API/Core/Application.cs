@@ -245,20 +245,17 @@ namespace CounterStrikeSharp.API.Core
                     break;
             }
         }
-
-        [CommandHelper(usage: "[language code, e.g. \"de\", \"pl\", \"en\"]",
-            whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
+        
         private void OnLangCommand(CCSPlayerController? player, CommandInfo command)
         {
             if (player == null) return;
 
-            SteamID steamId = (SteamID)player.SteamID;
+            var steamId = (SteamID)player.SteamID;
 
             if (command.ArgCount == 1)
             {
                 var language = _playerLanguageManager.GetLanguage(steamId);
-                command.ReplyToCommand(string.Format("Current language is \"{0}\" ({1})", language.Name,
-                    language.NativeName));
+                command.ReplyToCommand($"Current language is \"{language.Name}\" ({language.NativeName})");
                 return;
             }
 
@@ -296,6 +293,11 @@ namespace CounterStrikeSharp.API.Core
                             "  start / load - Loads a plugin not currently loaded.\n" +
                             "  stop / unload - Unloads a plugin currently loaded.\n" +
                             "  restart / reload - Reloads a plugin currently loaded.",
+            });
+            _commandManager.RegisterCommand(new("css_lang", "Set Counter-Strike Sharp language.", OnLangCommand)
+            {
+                ExecutableBy = CommandUsage.CLIENT_AND_SERVER,
+                UsageHint = "[language code, e.g. \"de\", \"pl\", \"en\"]",
             });
         }
     }
