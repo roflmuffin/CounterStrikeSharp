@@ -43,7 +43,7 @@ public class FakeConVar<T> where T : IComparable<T>
 
         if (args.ArgCount < 2)
         {
-            if (Flags.HasFlag(ConVarFlags.FCVAR_PROTECTED))
+            if (Flags.HasFlag(ConVarFlags.FCVAR_PROTECTED) && player != null)
             {
                 args.ReplyToCommand($"{args.GetArg(0)} = <protected>");
             }
