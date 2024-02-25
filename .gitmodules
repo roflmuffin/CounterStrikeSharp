@@ -23,3 +23,6 @@
 [submodule "libraries/asmjit"]
 	path = libraries/asmjit
 	url = https://github.com/asmjit/asmjit
+[submodule "configs/addons/counterstrikesharp/source/RockTheVote"]
+	path = configs/addons/counterstrikesharp/source/RockTheVote
+	url = https://github.com/abnerfs/cs2-rockthevote
