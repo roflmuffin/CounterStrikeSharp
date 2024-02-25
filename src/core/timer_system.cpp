@@ -107,7 +107,7 @@ void TimerSystem::OnGameFrame(bool simulating)
             m_has_map_simulated = true;
         }
     } else {
-        timers::universal_time += globals::getGlobalVars()->interval_per_tick;
+        timers::universal_time += globals::engine_fixed_tick_interval;
     }
 
     m_last_ticked_time = globals::getGlobalVars()->curtime;

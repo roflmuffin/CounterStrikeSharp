@@ -14,47 +14,45 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-namespace CounterStrikeSharp.API.Modules.Menu
+namespace CounterStrikeSharp.API.Modules.Menu;
+
+public class ConsoleMenu : BaseMenu
 {
-    public class ConsoleMenu : BaseMenu
+    public ConsoleMenu(string title) : base(title)
     {
-        public ConsoleMenu(string title) : base(title)
-        {
-        }
+    }
+}
+
+public class ConsoleMenuInstance : BaseMenuInstance
+{
+    public ConsoleMenuInstance(CCSPlayerController player, IMenu menu) : base(player, menu)
+    {
     }
 
-    public class ConsoleMenuInstance : BaseMenuInstance
+    public override void Display()
     {
-        public ConsoleMenuInstance(CCSPlayerController player, IMenu menu) : base(player, menu)
+        Player.PrintToConsole(Menu.Title);
+        Player.PrintToConsole("---");
+
+        var keyOffset = 1;
+
+        for (var i = CurrentOffset;
+             i < Math.Min(CurrentOffset + MenuItemsPerPage, Menu.MenuOptions.Count);
+             i++)
         {
+            var option = Menu.MenuOptions[i];
+
+            Player.PrintToConsole($"{(option.Disabled ? "[Enabled]" : "[Disabled] - ")} css_{keyOffset++} {option.Text}");
+        }
+            
+        if (HasPrevButton)
+        {
+            Player.PrintToConsole("css_7 -> Prev");
         }
 
-        public override void Display()
+        if (HasNextButton)
         {
-            Player.PrintToConsole(Menu.Title);
-            Player.PrintToConsole("---");
-
-            var keyOffset = 1;
-
-            for (var i = CurrentOffset;
-                 i < Math.Min(CurrentOffset + MenuItemsPerPage, Menu.MenuOptions.Count);
-                 i++)
-            {
-                var option = Menu.MenuOptions[i];
-
-                Player.PrintToConsole(
-                    $" {(option.Disabled ? "[Enabled]" : "[Disabled] - ")} !{keyOffset++} {option.Text}");
-            }
-            
-            if (HasPrevButton)
-            {
-                Player.PrintToConsole($"!7 -> Prev");
-            }
-
-            if (HasNextButton)
-            {
-                Player.PrintToConsole($"!8 -> Next");
-            }
+            Player.PrintToConsole("css_8 -> Next");
         }
     }
 }

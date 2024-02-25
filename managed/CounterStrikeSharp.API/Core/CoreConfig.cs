@@ -25,6 +25,7 @@ using CounterStrikeSharp.API.Modules.Commands;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using CounterStrikeSharp.API.Core.Commands;
 using CounterStrikeSharp.API.Core.Hosting;
 using CounterStrikeSharp.API.Core.Logging;
 using Microsoft.Extensions.Hosting;
@@ -101,12 +102,15 @@ namespace CounterStrikeSharp.API.Core
     {
         private static CoreConfigData _coreConfig = new CoreConfigData();
 
+        private readonly ICommandManager _commandManager;
         private readonly ILogger<CoreConfig> _logger;
 
         private readonly string _coreConfigPath;
+        private bool _commandsRegistered = false;
 
-        public CoreConfig(IScriptHostConfiguration scriptHostConfiguration, ILogger<CoreConfig> logger)
+        public CoreConfig(IScriptHostConfiguration scriptHostConfiguration, ICommandManager commandManager, ILogger<CoreConfig> logger)
         {
+            _commandManager = commandManager;
             _logger = logger;
             _coreConfigPath = Path.Join(scriptHostConfiguration.ConfigsPath, "core.json");
         }
@@ -120,9 +124,14 @@ namespace CounterStrikeSharp.API.Core
 
         public void Load()
         {
-            CommandUtils.AddStandaloneCommand("css_core_reload", "Reloads the core configuration file.",
-                ReloadCoreConfigCommand);
-
+            if (!_commandsRegistered)
+            {
+                _commandManager.RegisterCommand(new CommandDefinition("css_core_reload",
+                    "Reloads the core configuration file.",
+                    ReloadCoreConfigCommand));
+                _commandsRegistered = true;
+            }
+            
             if (!File.Exists(_coreConfigPath))
             {
                 _logger.LogWarning(
