@@ -52,22 +52,26 @@ namespace CounterStrikeSharp.API
             return (T?)Activator.CreateInstance(typeof(T), VirtualFunctions.UTIL_CreateEntityByName(name, -1));
         }
 
-        public static CCSPlayerController GetPlayerFromIndex(int index)
+		[Obsolete("Use Players.GetPlayerFromIndex instead")]
+		public static CCSPlayerController GetPlayerFromIndex(int index)
         {
             return Utilities.GetEntityFromIndex<CCSPlayerController>(index);
         }
 
-        public static CCSPlayerController GetPlayerFromSlot(int slot)
+		[Obsolete("Use Players.GetPlayerFromSlot instead")]
+		public static CCSPlayerController GetPlayerFromSlot(int slot)
         {
             return Utilities.GetEntityFromIndex<CCSPlayerController>(slot + 1);
         }
 
-        public static CCSPlayerController GetPlayerFromUserid(int userid)
+		[Obsolete("Use Players.GetPlayerFromUserid instead")]
+		public static CCSPlayerController GetPlayerFromUserid(int userid)
         {
             return Utilities.GetEntityFromIndex<CCSPlayerController>((userid & 0xFF) + 1);
         }
 
-        public static CCSPlayerController? GetPlayerFromSteamId(ulong steamId)
+		[Obsolete("Use Players.GetPlayerFromSteamId instead")]
+		public static CCSPlayerController? GetPlayerFromSteamId(ulong steamId)
         {
             return Utilities.GetPlayers().FirstOrDefault(player => player.AuthorizedSteamID == (SteamID)steamId);
         }
@@ -130,11 +134,12 @@ namespace CounterStrikeSharp.API
                 yield return new PointerTo<CEntityInstance>(pEntity.Handle).Value;
             }
         }
-        
-        /// <summary>
-        /// Returns a list of <see cref="CCSPlayerController"/> that are valid and have a valid <see cref="CCSPlayerController.UserId"/> >= 0
-        /// </summary>
-        public static List<CCSPlayerController> GetPlayers()
+
+		/// <summary>
+		/// Returns a list of <see cref="CCSPlayerController"/> that are valid and have a valid <see cref="CCSPlayerController.UserId"/> >= 0
+		/// </summary>
+		[Obsolete("Use Players.GetPlayers instead")]
+		public static List<CCSPlayerController> GetPlayers()
         {
             List<CCSPlayerController> players = new();
 
