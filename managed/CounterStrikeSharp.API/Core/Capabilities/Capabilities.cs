@@ -11,7 +11,7 @@ public static class Capabilities
 
         PluginCapability<T>.Providers[capability.Name].Add(supplier);
     }
-    
+
     public static void RegisterPlayerCapability<T>(PlayerCapability<T> capability,
         Func<CCSPlayerController, T> supplier) where T : class
     {
@@ -20,14 +20,6 @@ public static class Capabilities
             PlayerCapability<T>.Providers.Add(capability.Name, new());
         }
 
-        PlayerCapability<T>.Providers[capability.Name].Add(entity =>
-        {
-            if (entity is CCSPlayerController player)
-            {
-                return supplier(player);
-            }
-
-            throw new InvalidOperationException($"Cannot get {capability} from non-player entity");
-        });
+        PlayerCapability<T>.Providers[capability.Name].Add(supplier);
     }
 }
