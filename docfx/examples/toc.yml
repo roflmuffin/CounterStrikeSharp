@@ -3,6 +3,8 @@ items:
     href: HelloWorld.md
   - name: Commands
     href: WithCommands.md
+  - name: Fake ConVars
+    href: WithFakeConvars.md
   - name: Config
     href: WithConfig.md
   - name: Dependency Injection

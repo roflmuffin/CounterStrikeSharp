@@ -23,6 +23,7 @@ namespace CounterStrikeSharp.API
     [Flags]
     public enum ConVarFlags : Int64
     {
+        FCVAR_NONE = 0,
         FCVAR_LINKED_CONCOMMAND = (1 << 0),
 
         FCVAR_DEVELOPMENTONLY =
