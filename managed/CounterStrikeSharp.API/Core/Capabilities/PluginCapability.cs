@@ -2,10 +2,10 @@
 
 namespace CounterStrikeSharp.API.Core.Capabilities;
 
-public sealed class PluginCapability<T> where T : class
+public sealed class PluginCapability<T>
 {
     public string Name { get; }
-    internal static readonly Dictionary<string, List<Func<T?>>> Providers = new();
+    internal static readonly Dictionary<string, List<Func<T>>> Providers = new();
 
     public PluginCapability(string name)
     {
@@ -16,13 +16,9 @@ public sealed class PluginCapability<T> where T : class
     {
         foreach (var provider in Providers[Name])
         {
-            var ret = provider();
-            if (ret != null)
-            {
-                return ret;
-            }
+            return provider();
         }
 
-        return null;
+        return default;
     }
 }

@@ -19,6 +19,9 @@ public class WithSharedTypesPlugin : BasePlugin
     // IBalanceHandler is defined in MySharedTypes.Contracts, which is a shared library and placed in the `shared/` subfolder.
     public static PlayerCapability<IBalanceHandler> BalanceCapability { get; } = new("myplugin:balance");
     
+    // Declares a player capability of a primitive type, in this case, a decimal.
+    public static PlayerCapability<Decimal> BalanceCapabilityDecimal { get; } = new("myplugin:balance_decimal");
+    
     // Plugin capabilities are similar to player capabilities, but they are not tied to a player, and are just generic APIs
     // that are exposed by a plugin. In this case, we expose a balance service, which is used to clear all balances.
     public static PluginCapability<IBalanceService> BalanceServiceCapability { get; } = new("myplugin:balance_service");
@@ -28,6 +31,7 @@ public class WithSharedTypesPlugin : BasePlugin
         // Register the capability implementations here. Note that plugins don't need to register an implementation if it is already implemented in another plugin.
         Capabilities.RegisterPlayerCapability(BalanceCapability, player => new BalanceHandler(player));
         Capabilities.RegisterPluginCapability(BalanceServiceCapability, () => new BalanceService());
+        Capabilities.RegisterPlayerCapability(BalanceCapabilityDecimal, (player) => new BalanceHandler(player).Balance);
 
         AddCommand("css_balance", "Gets your current balance", (player, info) =>
         {

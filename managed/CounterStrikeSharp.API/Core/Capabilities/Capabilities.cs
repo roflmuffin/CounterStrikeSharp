@@ -2,7 +2,7 @@
 
 public static class Capabilities
 {
-    public static void RegisterPluginCapability<T>(PluginCapability<T> capability, Func<T> supplier) where T : class
+    public static void RegisterPluginCapability<T>(PluginCapability<T> capability, Func<T> supplier)
     {
         if (!PluginCapability<T>.Providers.ContainsKey(capability.Name))
         {
@@ -13,7 +13,7 @@ public static class Capabilities
     }
 
     public static void RegisterPlayerCapability<T>(PlayerCapability<T> capability,
-        Func<CCSPlayerController, T> supplier) where T : class
+        Func<CCSPlayerController, T> supplier)
     {
         if (!PlayerCapability<T>.Providers.ContainsKey(capability.Name))
         {

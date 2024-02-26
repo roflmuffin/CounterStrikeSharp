@@ -2,10 +2,10 @@
 
 namespace CounterStrikeSharp.API.Core.Capabilities;
 
-public sealed class PlayerCapability<T> where T : class
+public sealed class PlayerCapability<T>
 {
     public string Name { get; }
-    internal static readonly Dictionary<string, List<Func<CCSPlayerController, T?>>> Providers = new();
+    internal static readonly Dictionary<string, List<Func<CCSPlayerController, T>>> Providers = new();
 
     public PlayerCapability(string name)
     {
@@ -16,13 +16,9 @@ public sealed class PlayerCapability<T> where T : class
     {
         foreach (var provider in Providers[Name])
         {
-            var ret = provider(entity);
-            if (ret != null)
-            {
-                return ret;
-            }
+            return provider(entity);
         }
 
-        return null;
+        return default;
     }
 }

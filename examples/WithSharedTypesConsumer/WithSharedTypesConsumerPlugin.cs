@@ -15,6 +15,7 @@ public class WithSharedTypesConsumerPlugin : BasePlugin
     public override string ModuleDescription => "A simple plugin that utilises the balance api from another plugin";
 
     public static PlayerCapability<IBalanceHandler> BalanceCapability { get; } = new("myplugin:balance");
+    public static PlayerCapability<Decimal> BalanceCapabilityDecimal { get; } = new("myplugin:balance_decimal");
 
     public static PluginCapability<IBalanceService> BalanceServiceCapability { get; } = new("myplugin:balance_service");
     
@@ -40,6 +41,12 @@ public class WithSharedTypesConsumerPlugin : BasePlugin
             var balance = BalanceCapability.Get(player);
             if (balance == null) return;
             player.PrintToChat($"Your balance is now {balance.Balance}");
+        });
+        
+        AddCommand("css_decimalbalance", "Gets your current balance", (player, info) =>
+        {
+            if (player == null) return;
+            player.PrintToChat($"Your balance is {BalanceCapabilityDecimal.Get(player)}");
         });
     }
 
