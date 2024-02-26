@@ -175,6 +175,8 @@ namespace CounterStrikeSharp.API.Core
                         try
                         {
                             _pluginManager.LoadPlugin(path);
+                            plugin = _pluginContextQueryHandler.FindPluginByModulePath(path);
+                            plugin.Plugin.OnAllPluginsLoaded(false);
                         }
                         catch (Exception e)
                         {
@@ -185,6 +187,7 @@ namespace CounterStrikeSharp.API.Core
                     else
                     {
                         plugin.Load(false);
+                        plugin.Plugin.OnAllPluginsLoaded(false);
                     }
 
                     break;
@@ -233,6 +236,7 @@ namespace CounterStrikeSharp.API.Core
 
                     plugin.Unload(true);
                     plugin.Load(true);
+                    plugin.Plugin.OnAllPluginsLoaded(true);
                     break;
                 }
 

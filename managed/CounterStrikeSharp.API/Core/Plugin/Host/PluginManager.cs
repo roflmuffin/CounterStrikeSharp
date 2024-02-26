@@ -60,6 +60,11 @@ public class PluginManager : IPluginManager
                 _logger.LogError(e, "Failed to load plugin from {Path}", path);
             }
         }
+        
+        foreach (var plugin in _loadedPluginContexts)
+        {
+            plugin.Plugin.OnAllPluginsLoaded(false);
+        }
     }
 
     public IEnumerable<PluginContext> GetLoadedPlugins()

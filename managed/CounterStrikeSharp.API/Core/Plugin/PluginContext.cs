@@ -110,6 +110,7 @@ namespace CounterStrikeSharp.API.Core.Plugin
                 Loader = eventargs.Loader;
                 Unload(hotReload: true);
                 Load(hotReload: true);
+                Plugin.OnAllPluginsLoaded(hotReload: true);
             });
             
             return Task.CompletedTask;

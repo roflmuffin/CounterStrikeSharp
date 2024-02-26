@@ -72,6 +72,10 @@ namespace CounterStrikeSharp.API.Core
         public virtual void Unload(bool hotReload)
         {
         }
+        
+        public virtual void OnAllPluginsLoaded(bool hotReload)
+        {
+        }
 
         public class CallbackSubscriber : IDisposable
         {
