@@ -53,6 +53,11 @@ struct CaseInsensitiveComparator {
 namespace counterstrikesharp {
 class ScriptCallback;
 
+enum CommandCallingContext {
+    Console = 0,
+    Chat = 1,
+};
+
 class ConCommandInfo {
     friend class ConCommandManager;
 
@@ -91,11 +96,13 @@ public:
     void Hook_DispatchConCommand(ConCommandHandle cmd, const CCommandContext& ctx, const CCommand& args);
     void Hook_DispatchConCommand_Post(ConCommandHandle cmd, const CCommandContext& ctx, const CCommand& args);
     HookResult ExecuteCommandCallbacks(const char* name, const CCommandContext& ctx,
-                                       const CCommand& args, HookMode mode);
+                                       const CCommand& args, HookMode mode, CommandCallingContext callingContext);
 
+    CommandCallingContext GetCommandCallingContext(CCommand* args);
 private:
     std::vector<ConCommandInfo*> m_cmd_list;
     std::map<std::string, ConCommandInfo*, CaseInsensitiveComparator> m_cmd_lookup;
+    std::map<const CCommand*, CommandCallingContext> m_cmd_contexts;
     ConCommandInfo m_global_cmd = ConCommandInfo(true);
 };
 

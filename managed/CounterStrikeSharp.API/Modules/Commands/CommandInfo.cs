@@ -44,10 +44,37 @@ namespace CounterStrikeSharp.API.Modules.Commands
         public string ArgByIndex(int index) => NativeAPI.CommandGetArgByIndex(Handle, index);
         public string GetArg(int index) => NativeAPI.CommandGetArgByIndex(Handle, index);
         
+        /// <summary>
+        /// Whether or not the command was sent via Console or Chat.
+        /// </summary>
+        public CommandCallingContext CallingContext => NativeAPI.CommandGetCallingContext(Handle);
+        
+        [Obsolete("Console parameter is now automatically set based on the context of the command.", true)]
         public void ReplyToCommand(string message, bool console = false) {
             if (CallingPlayer != null) 
             {
                 if (console) { CallingPlayer.PrintToConsole(message); }
+                else CallingPlayer.PrintToChat(message);
+            }
+            else 
+            {
+                Server.PrintToConsole(message);    
+            }
+        }
+
+        /// <summary>
+        /// Replies to the command with a message.
+        /// <remarks>
+        /// If the command was sent via Chat, <see cref="CCSPlayerController.PrintToChat"/> is used, otherwise <see cref="CCSPlayerController.PrintToConsole"/> is used.
+        /// If sent from the server console/RCON, <see cref="Server.PrintToConsole"/> is used.
+        /// </remarks>
+        /// </summary>
+        /// <param name="message">Message to send</param>
+        public void ReplyToCommand(string message)
+        {
+            if (CallingPlayer != null) 
+            {
+                if (CallingContext == CommandCallingContext.Console) { CallingPlayer.PrintToConsole(message); }
                 else CallingPlayer.PrintToChat(message);
             }
             else 

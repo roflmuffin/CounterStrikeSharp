@@ -21,8 +21,8 @@ TRACE_FILTER_PROXY_SET_TRACE_TYPE_CALLBACK: trace_filter:pointer, callback:point
 TRACE_FILTER_PROXY_SET_SHOULD_HIT_ENTITY_CALLBACK: trace_filter:pointer, callback:pointer -> void
 NEW_TRACE_RESULT: -> pointer
 GET_TICKED_TIME: -> double
-QUEUE_TASK_FOR_NEXT_FRAME: callback:pointer -> void
-QUEUE_TASK_FOR_NEXT_WORLD_UPDATE: callback:pointer -> void
+QUEUE_TASK_FOR_NEXT_FRAME: callback:func -> void
+QUEUE_TASK_FOR_NEXT_WORLD_UPDATE: callback:func -> void
 GET_VALVE_INTERFACE: interfaceType:int, interfaceName:string -> pointer
 GET_COMMAND_PARAM_VALUE: param:string, dataType:DataType_t, defaultValue:any -> any
 PRINT_TO_SERVER_CONSOLE: msg:string -> void

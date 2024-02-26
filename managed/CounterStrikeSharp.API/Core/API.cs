@@ -1,6 +1,7 @@
 
 using System;
 using CounterStrikeSharp.API.Modules.Memory;
+using CounterStrikeSharp.API.Modules.Commands;
 
 namespace CounterStrikeSharp.API.Core
 {
@@ -124,12 +125,34 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
-        public static void IssueClientCommand(int clientindex, string command){
+        public static CommandCallingContext CommandGetCallingContext(IntPtr command){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.Push(clientindex);
+			ScriptContext.GlobalScriptContext.Push(command);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x886D0EB6);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (CommandCallingContext)ScriptContext.GlobalScriptContext.GetResult(typeof(CommandCallingContext));
+			}
+		}
+
+        public static void IssueClientCommand(int slot, string command){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(slot);
 			ScriptContext.GlobalScriptContext.Push(command);
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xCA5BA982);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static void IssueClientCommandFromServer(int slot, string command){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(slot);
+			ScriptContext.GlobalScriptContext.Push(command);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x85376751);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
 			}
@@ -479,20 +502,20 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
-        public static void QueueTaskForNextFrame(IntPtr callback){
+        public static void QueueTaskForNextFrame(InputArgument callback){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.Push(callback);
+			ScriptContext.GlobalScriptContext.Push((InputArgument)callback);
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x9FE394D8);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
 			}
 		}
 
-        public static void QueueTaskForNextWorldUpdate(IntPtr callback){
+        public static void QueueTaskForNextWorldUpdate(InputArgument callback){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.Push(callback);
+			ScriptContext.GlobalScriptContext.Push((InputArgument)callback);
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xAD51A0C9);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
