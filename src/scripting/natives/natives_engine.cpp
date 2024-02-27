@@ -61,7 +61,7 @@ bool IsMapValid(ScriptContext& script_context)
 
 float GetTickInterval(ScriptContext& script_context)
 {
-    return globals::getGlobalVars()->interval_per_tick;
+    return globals::engine_fixed_tick_interval;
 }
 
 float GetCurrentTime(ScriptContext& script_context) { return globals::getGlobalVars()->curtime; }

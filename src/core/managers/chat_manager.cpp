@@ -114,7 +114,7 @@ void ChatManager::InternalDispatch(CBaseEntity* pPlayerController, const char* s
     if (pPlayerController == nullptr) {
         globals::conCommandManager.ExecuteCommandCallbacks(
             fullCommand.Arg(0), CCommandContext(CommandTarget_t::CT_NO_TARGET, CPlayerSlot(-1)),
-            fullCommand, HookMode::Pre);
+            fullCommand, HookMode::Pre, CommandCallingContext::Chat);
         return;
     }
 
@@ -123,6 +123,6 @@ void ChatManager::InternalDispatch(CBaseEntity* pPlayerController, const char* s
 
     globals::conCommandManager.ExecuteCommandCallbacks(
         fullCommand.Arg(0), CCommandContext(CommandTarget_t::CT_NO_TARGET, slot), fullCommand,
-        HookMode::Pre);
+        HookMode::Pre, CommandCallingContext::Chat);
 }
 } // namespace counterstrikesharp

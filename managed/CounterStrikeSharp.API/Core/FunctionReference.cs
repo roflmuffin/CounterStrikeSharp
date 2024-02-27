@@ -22,9 +22,22 @@ using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Core
 {
+    /// <summary>
+    /// Describes the lifetime of a function reference.
+    /// </summary>
+    public enum FunctionLifetime
+    {
+        /// <summary>Delegate will be removed after the first invocation.</summary> 
+        SingleUse,
+        /// <summary>Delegate will remain in memory for the lifetime of the application.</summary>
+        Permanent
+    }
+    
     public class FunctionReference
     {
         private readonly Delegate m_method;
+        
+        public FunctionLifetime Lifetime { get; set; } = FunctionLifetime.Permanent;
 
         public unsafe delegate void CallbackDelegate(fxScriptContext* context);
         private CallbackDelegate s_callback;
@@ -59,12 +72,13 @@ namespace CounterStrikeSharp.API.Core
                             if (typeof(NativeObject).IsAssignableFrom(param.ParameterType))
                             {
                                 obj = Activator.CreateInstance(param.ParameterType,
-                                    new[] {scriptContext.GetArgument(typeof(IntPtr), i)});
+                                    new[] { scriptContext.GetArgument(typeof(IntPtr), i) });
                             }
                             else
                             {
                                 obj = scriptContext.GetArgument(param.ParameterType, i);
                             }
+
                             return obj;
                         }).ToArray();
 
@@ -78,6 +92,15 @@ namespace CounterStrikeSharp.API.Core
                     catch (Exception e)
                     {
                         Application.Instance.Logger.LogError(e, "Error invoking callback");
+                    }
+                    finally
+                    {
+                        if (Lifetime == FunctionLifetime.SingleUse)
+                        {
+                            Remove(Identifier);
+                            if (references.ContainsKey(m_method))
+                                references.Remove(m_method);
+                        }
                     }
                 });
                 s_callback = dg;
@@ -98,7 +121,7 @@ namespace CounterStrikeSharp.API.Core
             var referenceId = Register(reference);
 
             reference.Identifier = referenceId;
-
+            
             return reference;
         }
 
