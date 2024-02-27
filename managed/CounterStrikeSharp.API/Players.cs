@@ -16,32 +16,11 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 using CounterStrikeSharp.API.Modules.Entities;
-using CounterStrikeSharp.API.Modules.Memory;
-using CounterStrikeSharp.API.Modules.Utils;
-
 namespace CounterStrikeSharp.API
 {
 	public class Players
 	{
-		/// <summary>
-		/// Checks to see if a <see cref="CCSPlayerController"/> is ready to be used and manipulated.
-		/// </summary>
-		private static bool IsPlayerReady(CCSPlayerController? player, bool ignoreAuth = false)
-		{
-			if (player is null) return false;
-			if (!player.IsValid) return false;
-			if (player.Slot < 0) return false;
-			if (player.UserId == -1) return false;
-			if (player.IsHLTV) return false;
-			if (player.Connected != PlayerConnectedState.PlayerConnected) return false;
-			if (!ignoreAuth && player.AuthorizedSteamID is null) return false;
-
-			return true;
-		}
-
 		/// <summary>
 		/// Returns a list of <see cref="CCSPlayerController"/> which is guaranteed to have all valid players.
 		/// </summary>
@@ -51,10 +30,8 @@ namespace CounterStrikeSharp.API
 
 			for (int i = 0; i < Server.MaxPlayers; i++)
 			{
-				// This calls IsPlayerReady().
-				var controller = GetPlayerFromSlot(i);
-
-				if (controller is null || !controller.IsValid || controller.UserId == -1)
+				var controller = Utilities.GetEntityFromIndex<CCSPlayerController>(i + 1);
+				if (!Guard.IsPlayerReady(controller)) 
 					continue;
 
 				players.Add(controller);
@@ -67,33 +44,60 @@ namespace CounterStrikeSharp.API
 		/// Grabs a <see cref="CCSPlayerController"/> via entity index. 
 		/// </summary>
 		/// <param name="index">Entity index.</param>
-		public static CCSPlayerController? GetPlayerFromIndex(int index)
+		/// <exception cref="InvalidOperationException">Player is not valid</exception>
+		public static CCSPlayerController GetPlayerFromIndex(int index)
 		{
 			var player = Utilities.GetEntityFromIndex<CCSPlayerController>(index);
-			if (!IsPlayerReady(player)) return null;
+			if (!Guard.IsPlayerReady(player))
+			{
+				throw new InvalidOperationException("Player is not valid");
+			}
 			return player;
 		}
 
-
-		public static CCSPlayerController? GetPlayerFromSlot(int slot)
+		/// <summary>
+		/// Grabs a <see cref="CCSPlayerController"/> via player slot. 
+		/// </summary>
+		/// <param name="slot">Player slot.</param>
+		/// <exception cref="InvalidOperationException">Player is not valid</exception>
+		public static CCSPlayerController GetPlayerFromSlot(int slot)
 		{
 			var player = Utilities.GetEntityFromIndex<CCSPlayerController>(slot + 1);
-			if (!IsPlayerReady(player)) return null;
+			if (!Guard.IsPlayerReady(player))
+			{
+				throw new InvalidOperationException("Player is not valid");
+			}
 			return player;
 		}
 
-		public static CCSPlayerController? GetPlayerFromUserid(int userid)
+		/// <summary>
+		/// Grabs a <see cref="CCSPlayerController"/> via User ID. 
+		/// </summary>
+		/// <param name="userid">User ID.</param>
+		/// <exception cref="InvalidOperationException">Player is not valid</exception>
+		public static CCSPlayerController GetPlayerFromUserid(int userid)
 		{
 			var player = Utilities.GetEntityFromIndex<CCSPlayerController>((userid & 0xFF) + 1);
-			if (!IsPlayerReady(player)) return null;
+			if (!Guard.IsPlayerReady(player))
+			{
+				throw new InvalidOperationException("Player is not valid");
+			}
 			return player;
 		}
 
-		public static CCSPlayerController? GetPlayerFromSteamId(ulong steamId)
+		/// <summary>
+		/// Grabs a <see cref="CCSPlayerController"/> via Steam ID. 
+		/// </summary>
+		/// <param name="steamId">SteamID.</param>
+		/// <exception cref="InvalidOperationException">Player is not valid</exception>
+		public static CCSPlayerController GetPlayerFromSteamId(ulong steamId)
 		{
 			var player = GetPlayers().FirstOrDefault(player => player.AuthorizedSteamID == (SteamID)steamId);
-			if (!IsPlayerReady(player)) return null;
-			return player;
+			if (!Guard.IsPlayerReady(player))
+			{
+				throw new InvalidOperationException("Player is not valid");
+			}
+			return player!;
 		}
 	}
 }
