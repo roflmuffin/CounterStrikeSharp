@@ -32,7 +32,12 @@ public partial class CEntityInstance : IEquatable<CEntityInstance>
     
     public string DesignerName => IsValid ? Entity?.DesignerName : null;
 
-    public void Remove() => VirtualFunctions.UTIL_Remove(this.Handle);
+    public void Remove()
+    {
+        Guard.IsValidEntity(this);
+
+        VirtualFunctions.UTIL_Remove(this.Handle);
+    }
     
     public bool Equals(CEntityInstance? other)
     {
@@ -58,7 +63,7 @@ public partial class CEntityInstance : IEquatable<CEntityInstance>
     {
         return !Equals(left, right);
     }
-    
+
     /// <summary>
     /// Calls a named input method on an entity.
     /// <example>
@@ -72,8 +77,11 @@ public partial class CEntityInstance : IEquatable<CEntityInstance>
     /// <param name="caller">Entity that is sending the event, <see langword="null"/> for no entity</param>
     /// <param name="value">String variant value to send with the event</param>
     /// <param name="outputId">Unknown, defaults to 0</param>
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
     public void AcceptInput(string inputName, CEntityInstance? activator = null, CEntityInstance? caller = null, string value = "", int outputId = 0)
     {
+        Guard.IsValidEntity(this);
+
         VirtualFunctions.AcceptInput(Handle, inputName, activator?.Handle ?? IntPtr.Zero, caller?.Handle ?? IntPtr.Zero, value, 0);
     }
 }
