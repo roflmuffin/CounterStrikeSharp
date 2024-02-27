@@ -153,6 +153,7 @@ unsigned long GetPlayerAuthorizedSteamID(ScriptContext& script_context) {
 
     auto pPlayer = globals::playerManager.GetPlayerBySlot(iSlot);
     if (pPlayer == nullptr || !pPlayer->m_is_authorized) {
+        script_context.ThrowNativeError("Could not find player authorization state");
         return -1;
     }
 
@@ -169,6 +170,7 @@ const char* GetPlayerIpAddress(ScriptContext& script_context) {
 
     auto pPlayer = globals::playerManager.GetPlayerBySlot(iSlot);
     if (pPlayer == nullptr) {
+        script_context.ThrowNativeError("Could not find player IP address");
         return nullptr;
     }
 
