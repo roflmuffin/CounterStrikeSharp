@@ -62,7 +62,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
         {
             CommandOverrides.TryGetValue(commandName, out var overrideDef);
             if (overrideDef == null) return false;
-            return overrideDef.Enabled && overrideDef?.Flags.Count() > 0;
+            return overrideDef.Enabled;
         }
 
         /// <summary>
