@@ -31,7 +31,7 @@ class CGameSystem : public CBaseGameSystem
 
     void Shutdown() override
     {
-        CSSHARP_CORE_INFO("CGameSystem::Shutdown\n");
+        CSSHARP_CORE_INFO("CGameSystem::Shutdown");
         delete sm_Factory;
     }
 
