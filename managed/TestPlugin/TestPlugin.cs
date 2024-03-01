@@ -35,6 +35,7 @@ using CounterStrikeSharp.API.Modules.Menu;
 using CounterStrikeSharp.API.Modules.Utils;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
+using static CounterStrikeSharp.API.Core.Listeners;
 
 namespace TestPlugin
 {
@@ -166,6 +167,14 @@ namespace TestPlugin
 
                 return HookResult.Continue;
             }), HookMode.Pre);
+
+            // Precache resources
+            RegisterListener<Listeners.OnServerPrecacheResources>((manifest) =>
+            {
+                manifest.PrecacheResource("path/to/model");
+                manifest.PrecacheResource("path/to/material");
+                manifest.PrecacheResource("path/to/particle");
+            });
         }
 
         private void SetupConvars()

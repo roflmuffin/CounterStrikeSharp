@@ -90,6 +90,8 @@ SET(SOURCE_FILES
     src/core/managers/voice_manager.cpp
     src/core/managers/voice_manager.h
     src/scripting/natives/natives_dynamichooks.cpp
+    src/core/game_system.h
+    src/core/game_system.cpp
 )
 
 
