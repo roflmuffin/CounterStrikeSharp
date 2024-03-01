@@ -171,9 +171,9 @@ namespace TestPlugin
             // Precache resources
             RegisterListener<Listeners.OnServerPrecacheResources>((manifest) =>
             {
-                manifest.PrecacheResource("path/to/model");
-                manifest.PrecacheResource("path/to/material");
-                manifest.PrecacheResource("path/to/particle");
+                manifest.AddResource("path/to/model");
+                manifest.AddResource("path/to/material");
+                manifest.AddResource("path/to/particle");
             });
         }
 

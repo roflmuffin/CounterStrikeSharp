@@ -214,7 +214,7 @@
       "linux": "\\x4C\\x8B\\x35\\x2A\\x2A\\x2A\\x2A\\x4D\\x85\\xF6\\x75\\x2D\\xE9\\x2A\\x2A\\x2A\\x2A\\x0F\\x1F\\x40\\x00\\x48\\x8B\\x05"
     }
   },
-  "CEntityResourceManifest_AddResourceInternal": {
+  "CEntityResourceManifest_AddResource": {
     "offsets": {
       "windows": 2,
       "linux": 2

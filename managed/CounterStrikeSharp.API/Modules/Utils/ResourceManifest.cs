@@ -9,12 +9,12 @@ namespace CounterStrikeSharp.API.Modules.Utils
 {
     public class ResourceManifest : NativeObject
     {
-        private Action<nint, string> AddResourceInternal;
+        private Action<nint, string> _AddResource;
         public ResourceManifest(nint pointer) : base(pointer)
         {
-            AddResourceInternal = VirtualFunction.CreateVoid<nint, string>(Handle, GameData.GetOffset("CEntityResourceManifest_AddResourceInternal"));
+            _AddResource = VirtualFunction.CreateVoid<nint, string>(Handle, GameData.GetOffset("CEntityResourceManifest_AddResource"));
         }
 
-        public void PrecacheResource(string resourcePath) => AddResourceInternal(Handle, resourcePath);
+        public void AddResource(string resourcePath) => _AddResource(Handle, resourcePath);
     }
 }
