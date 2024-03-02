@@ -20,6 +20,8 @@
 #include "core/global_listener.h"
 #include "scripting/script_engine.h"
 
+#include "core/game_system.h"
+
 namespace counterstrikesharp {
 class ScriptCallback;
 
@@ -31,7 +33,8 @@ public:
     void OnShutdown() override;
     void* GetEconItemSystem();
     bool IsPaused();
-    void AddTaskForNextWorldUpdate(std::function<void()> &&task);
+    void AddTaskForNextWorldUpdate(std::function<void()>&& task);
+    void OnPrecacheResources(IEntityResourceManifest* pResourceManifest);
 
 private:
     void ServerHibernationUpdate(bool bHibernating);
@@ -50,6 +53,8 @@ private:
     ScriptCallback *on_server_pre_fatal_shutdown;
     ScriptCallback *on_server_update_when_not_in_game;
     ScriptCallback *on_server_pre_world_update;
+
+    ScriptCallback *on_server_precache_resources;
 
     std::vector<std::function<void()>> m_nextWorldUpdateTasks;
     std::mutex m_nextWorldUpdateTasksLock;

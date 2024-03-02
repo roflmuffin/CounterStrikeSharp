@@ -2,6 +2,7 @@
 using System;
 using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Modules.Entities;
+using CounterStrikeSharp.API.Modules.Utils;
 
 namespace CounterStrikeSharp.API.Core
 {
@@ -154,5 +155,13 @@ namespace CounterStrikeSharp.API.Core
         /// <param name="simulating"><see langword="true"/> if simulating, <see langword="false"/> otherwise</param>
         [ListenerName("OnServerPreWorldUpdate")]
         public delegate void OnServerPreWorldUpdate(bool simulating);
+
+
+        /// <summary>
+        /// Called when the server precaching resources (only when initial startup / changing map).
+        /// </summary>
+        /// <param name="manifest">Resource Manifest</param>
+        [ListenerName("OnServerPrecacheResources")]
+        public delegate void OnServerPrecacheResources(ResourceManifest manifest);
     }
 }
