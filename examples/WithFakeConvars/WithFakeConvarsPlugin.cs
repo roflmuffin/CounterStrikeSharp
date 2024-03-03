@@ -6,7 +6,7 @@ using CounterStrikeSharp.API.Modules.Cvars.Validators;
 
 namespace WithFakeConvars;
 
-[MinimumApiVersion(168)]
+[MinimumApiVersion(175)]
 public class WithFakeConvarsPlugin : BasePlugin
 {
     public override string ModuleName => "Example: With Fake Convars";

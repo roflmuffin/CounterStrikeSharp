@@ -1,5 +1,4 @@
 using System;
-
 using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Entities.Constants;
@@ -10,10 +9,13 @@ namespace CounterStrikeSharp.API.Core;
 
 public partial class CBasePlayerController
 {
-	public void SetPawn(CBasePlayerPawn? pawn)
-	{
-		if (pawn is null) return;
-		if (!pawn.IsValid) return;
-		VirtualFunctions.CBasePlayerController_SetPawnFunc.Invoke(this, pawn, true, false);
-	}
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
+    public void SetPawn(CBasePlayerPawn? pawn)
+    {
+        Guard.IsValidEntity(this);
+
+        if (pawn is null) return;
+        if (!pawn.IsValid) return;
+        VirtualFunctions.CBasePlayerController_SetPawnFunc.Invoke(this, pawn, true, false);
+    }
 }
