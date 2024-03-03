@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Loader;
 using CounterStrikeSharp.API.Core.Commands;
 using CounterStrikeSharp.API.Core.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,6 +31,23 @@ public class PluginManager : IPluginManager
             .Select(dir => Path.Combine(dir, Path.GetFileName(dir) + ".dll"))
             .Where(File.Exists)
             .ToArray();
+        
+        var sharedDirectory = Directory.GetDirectories(_scriptHostConfiguration.SharedPath);
+        var sharedAssemblyPaths = sharedDirectory
+            .Select(dir => Path.Combine(dir, Path.GetFileName(dir) + ".dll"))
+            .Where(File.Exists)
+            .ToArray();
+
+        foreach (var sharedAssemblyPath in sharedAssemblyPaths)
+        {
+            try
+            {
+               AssemblyLoadContext.Default.LoadFromAssemblyPath(sharedAssemblyPath);
+            } catch (Exception e)
+            {
+                _logger.LogError(e, "Failed to load shared assembly from {Path}", sharedAssemblyPath);
+            }
+        }
 
         foreach (var path in pluginAssemblyPaths)
         {
@@ -41,6 +59,11 @@ public class PluginManager : IPluginManager
             {
                 _logger.LogError(e, "Failed to load plugin from {Path}", path);
             }
+        }
+        
+        foreach (var plugin in _loadedPluginContexts)
+        {
+            plugin.Plugin.OnAllPluginsLoaded(false);
         }
     }
 

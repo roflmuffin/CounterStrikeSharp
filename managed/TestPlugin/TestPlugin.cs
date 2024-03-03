@@ -176,6 +176,11 @@ namespace TestPlugin
                 manifest.AddResource("path/to/particle");
             });
         }
+        
+        public override void OnAllPluginsLoaded(bool hotReload)
+        {
+            Logger.LogInformation("All plugins loaded!");
+        }
 
         private void SetupConvars()
         {
