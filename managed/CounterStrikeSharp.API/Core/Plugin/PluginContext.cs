@@ -18,6 +18,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using CounterStrikeSharp.API.Core.Attributes;
+using CounterStrikeSharp.API.Core.Capabilities;
 using CounterStrikeSharp.API.Core.Commands;
 using CounterStrikeSharp.API.Core.Hosting;
 using CounterStrikeSharp.API.Core.Logging;
@@ -76,7 +77,7 @@ namespace CounterStrikeSharp.API.Core.Plugin
                     config.IsUnloadable = true;
                     config.PreferSharedTypes = true;
                 });
-
+            
             if (CoreConfig.PluginHotReloadEnabled)
             {
                 _fileWatcher = new FileSystemWatcher
@@ -119,12 +120,12 @@ namespace CounterStrikeSharp.API.Core.Plugin
         public void Load(bool hotReload = false)
         {
             if (State == PluginState.Loaded) return;
-
+            
             using (Loader.EnterContextualReflection())
             {
                 var defaultAssembly = Loader.LoadDefaultAssembly();
 
-                Type pluginType = defaultAssembly.GetTypes()
+                Type pluginType = defaultAssembly.GetExportedTypes()
                     .FirstOrDefault(t => typeof(IPlugin).IsAssignableFrom(t));
 
                 if (pluginType == null) throw new Exception("Unable to find plugin in assembly");
