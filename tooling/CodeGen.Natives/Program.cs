@@ -23,7 +23,7 @@ namespace CodeGen.Natives
         static void Main(string[] args)
         {
             Generators.GenerateNatives();
-            Generators.GenerateGameEvents();
+            Generators.GenerateGameEvents().GetAwaiter().GetResult();
         }
     }
 }
