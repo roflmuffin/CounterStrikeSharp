@@ -78,7 +78,6 @@ public class PluginManager : IPluginManager
 
             if (!_sharedAssemblies.TryGetValue(name.FullName, out var assembly))
             {
-                _logger.LogError("Failed to use existing shared assembly: {Name}", name);
                 return null;
             }
 
@@ -99,7 +98,14 @@ public class PluginManager : IPluginManager
 
         foreach (var plugin in _loadedPluginContexts)
         {
-            plugin.Plugin.OnAllPluginsLoaded(false);
+            try
+            {
+                plugin.Plugin?.OnAllPluginsLoaded(false);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, "OnAllPluginsLoaded failed");
+            }
         }
     }
 
