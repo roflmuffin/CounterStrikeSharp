@@ -15,6 +15,7 @@
  */
 
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -99,7 +100,7 @@ namespace CounterStrikeSharp.API.Core
                         {
                             Remove(Identifier);
                             if (references.ContainsKey(m_method))
-                                references.Remove(m_method);
+                                references.Remove(m_method, out _);
                         }
                     }
                 });
@@ -112,9 +113,9 @@ namespace CounterStrikeSharp.API.Core
 
         public static FunctionReference Create(Delegate method)
         {
-            if (references.ContainsKey(method))
+            if (references.TryGetValue(method, out var existingReference))
             {
-                return references[method];
+                return existingReference;
             }
 
             var reference = new FunctionReference(method);
@@ -125,11 +126,11 @@ namespace CounterStrikeSharp.API.Core
             return reference;
         }
 
-        private static Dictionary<int, FunctionReference> ms_references = new Dictionary<int, FunctionReference>();
+        private static ConcurrentDictionary<int, FunctionReference> ms_references = new ConcurrentDictionary<int, FunctionReference>();
         private static int ms_referenceId;
 
-        private static Dictionary<Delegate, FunctionReference> references =
-            new Dictionary<Delegate, FunctionReference>();
+        private static ConcurrentDictionary<Delegate, FunctionReference> references =
+            new ConcurrentDictionary<Delegate, FunctionReference>();
 
         private static int Register(FunctionReference reference)
         {
@@ -162,7 +163,7 @@ namespace CounterStrikeSharp.API.Core
         {
             if (ms_references.TryGetValue(reference, out var funcRef))
             {
-                ms_references.Remove(reference);
+                ms_references.Remove(reference, out _);
 
                 Application.Instance.Logger.LogDebug("Removing function/callback reference: {Reference}", reference);
             }
