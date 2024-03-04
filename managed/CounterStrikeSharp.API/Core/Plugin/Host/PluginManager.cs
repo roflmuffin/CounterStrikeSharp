@@ -98,7 +98,14 @@ public class PluginManager : IPluginManager
 
         foreach (var plugin in _loadedPluginContexts)
         {
-            plugin.Plugin.OnAllPluginsLoaded(false);
+            try
+            {
+                plugin.Plugin?.OnAllPluginsLoaded(false);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, "OnAllPluginsLoaded failed");
+            }
         }
     }
 
