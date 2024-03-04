@@ -19,6 +19,8 @@
 #include "core/log.h"
 #include "scripting/callback_manager.h"
 
+#include "core/game_system.h"
+
 SH_DECL_HOOK1_void(ISource2Server, ServerHibernationUpdate, SH_NOATTRIB, 0, bool);
 SH_DECL_HOOK0_void(ISource2Server, GameServerSteamAPIActivated, SH_NOATTRIB, 0);
 SH_DECL_HOOK0_void(ISource2Server, GameServerSteamAPIDeactivated, SH_NOATTRIB, 0);
@@ -56,6 +58,8 @@ void ServerManager::OnAllInitialized() {
     on_server_pre_fatal_shutdown = globals::callbackManager.CreateCallback("OnPreFatalShutdown");
     on_server_update_when_not_in_game = globals::callbackManager.CreateCallback("OnUpdateWhenNotInGame");
     on_server_pre_world_update = globals::callbackManager.CreateCallback("OnServerPreWorldUpdate");
+
+    on_server_precache_resources = globals::callbackManager.CreateCallback("OnServerPrecacheResources");
 }
 
 void ServerManager::OnShutdown() {
@@ -81,6 +85,8 @@ void ServerManager::OnShutdown() {
     globals::callbackManager.ReleaseCallback(on_server_pre_fatal_shutdown);
     globals::callbackManager.ReleaseCallback(on_server_update_when_not_in_game);
     globals::callbackManager.ReleaseCallback(on_server_pre_world_update);
+    
+    globals::callbackManager.ReleaseCallback(on_server_precache_resources);
 }
 
 void* ServerManager::GetEconItemSystem()
@@ -197,4 +203,16 @@ void ServerManager::AddTaskForNextWorldUpdate(std::function<void()>&& task)
     std::lock_guard<std::mutex> lock(m_nextWorldUpdateTasksLock);
     m_nextWorldUpdateTasks.push_back(std::forward<decltype(task)>(task));
 }
+
+void ServerManager::OnPrecacheResources(IEntityResourceManifest* pResourceManifest)
+{
+    CSSHARP_CORE_TRACE("Precache resources");
+    auto callback = globals::serverManager.on_server_precache_resources;
+    if (callback && callback->GetFunctionCount()) {
+        callback->ScriptContext().Reset();
+        callback->ScriptContext().Push(pResourceManifest);
+        callback->Execute();
+    }
+}
+
 }  // namespace counterstrikesharp

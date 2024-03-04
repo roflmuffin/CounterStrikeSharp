@@ -20,6 +20,7 @@
 #include "core/log.h"
 #include "core/coreconfig.h"
 #include "core/gameconfig.h"
+#include "core/game_system.h"
 #include "core/timer_system.h"
 #include "core/utils.h"
 #include "core/managers/entity_manager.h"
@@ -143,6 +144,12 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
     if (!globals::dotnetManager.Initialize()) {
         CSSHARP_CORE_ERROR("Failed to initialize .NET runtime");
     }
+
+    if (!InitGameSystems()) {
+        CSSHARP_CORE_ERROR("Failed to initialize GameSystem!");
+        return false;
+    }
+    CSSHARP_CORE_INFO("Initialized GameSystem.");
 
     CSSHARP_CORE_INFO("Hooks added.");
 
