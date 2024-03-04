@@ -106,6 +106,11 @@ public class CommandManager : ICommandManager
 
                     foreach (var attr in permissionsToCheck)
                     {
+                        if (attr.Permissions.Count == 0)
+                        {
+                            continue;
+                        }
+
                         attr.Command = name;
                         if (!attr.CanExecuteCommand(caller))
                         {
