@@ -78,7 +78,6 @@ public class PluginManager : IPluginManager
 
             if (!_sharedAssemblies.TryGetValue(name.FullName, out var assembly))
             {
-                _logger.LogError("Failed to use existing shared assembly: {Name}", name);
                 return null;
             }
 
