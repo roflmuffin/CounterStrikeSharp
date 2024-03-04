@@ -103,8 +103,8 @@ if (LINUX)
     )
 endif()
 
-set(PROTO_DIRS -I${CMAKE_CURRENT_SOURCE_DIR}/libraries/GameTracking-CS2/Protobufs)
-file(GLOB PROTOS "${CMAKE_CURRENT_SOURCE_DIR}/libraries/GameTracking-CS2/Protobufs/*.proto")
+set(PROTO_DIRS -I${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo)
+file(GLOB PROTOS "${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo/*.proto")
 
 ## Generate protobuf source & headers
 if (LINUX)
