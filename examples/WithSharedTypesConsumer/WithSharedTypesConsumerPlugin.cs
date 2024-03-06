@@ -6,7 +6,7 @@ using MySharedTypes.Contracts;
 
 namespace WithSharedTypesConsumer;
 
-[MinimumApiVersion(142)]
+[MinimumApiVersion(184)]
 public class WithSharedTypesConsumerPlugin : BasePlugin
 {
     public override string ModuleName => "Example: Shared Types (Consumer)";
