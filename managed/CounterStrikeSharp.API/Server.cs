@@ -48,8 +48,7 @@ namespace CounterStrikeSharp.API
         /// </summary>
         public static Task NextFrame(Action task)
         {
-            var functionReference = FunctionReference.Create(task);
-            functionReference.Lifetime = FunctionLifetime.SingleUse;
+            var functionReference = FunctionReference.Create(task, FunctionLifetime.SingleUse);
             NativeAPI.QueueTaskForNextFrame(functionReference);
             return functionReference.CompletionTask;
         }
@@ -61,8 +60,7 @@ namespace CounterStrikeSharp.API
         /// <param name="task"></param>
         public static Task NextWorldUpdate(Action task)
         {
-            var functionReference = FunctionReference.Create(task);
-            functionReference.Lifetime = FunctionLifetime.SingleUse;
+            var functionReference = FunctionReference.Create(task, FunctionLifetime.SingleUse);
             NativeAPI.QueueTaskForNextWorldUpdate(functionReference);
             return functionReference.CompletionTask;
         }

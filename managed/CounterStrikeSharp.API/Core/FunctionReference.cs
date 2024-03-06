@@ -117,14 +117,15 @@ namespace CounterStrikeSharp.API.Core
 
         public int Identifier { get; private set; }
 
-        public static FunctionReference Create(Delegate method)
+        public static FunctionReference Create(Delegate method, FunctionLifetime lifetime = FunctionLifetime.Permanent)
         {
-            if (references.TryGetValue(method, out var existingReference))
+            // We always want to create a new reference if the lifetime is single use.
+            if (lifetime == FunctionLifetime.Permanent && references.TryGetValue(method, out var existingReference))
             {
                 return existingReference;
             }
 
-            var reference = new FunctionReference(method);
+            var reference = new FunctionReference(method) { Lifetime = lifetime };
             var referenceId = Register(reference);
 
             reference.Identifier = referenceId;
@@ -132,21 +133,26 @@ namespace CounterStrikeSharp.API.Core
             return reference;
         }
 
-        private static ConcurrentDictionary<int, FunctionReference> ms_references = new ConcurrentDictionary<int, FunctionReference>();
+        private static ConcurrentDictionary<int, FunctionReference> ms_references = new();
+        
         private static int ms_referenceId;
+        private static object ms_referencesLock = new object();
 
-        private static ConcurrentDictionary<Delegate, FunctionReference> references =
-            new ConcurrentDictionary<Delegate, FunctionReference>();
+        private static ConcurrentDictionary<Delegate, FunctionReference> references = new();
+
 
         private static int Register(FunctionReference reference)
         {
-            var thisRefId = ms_referenceId;
-            ms_references[thisRefId] = reference;
-            references[reference.m_method] = reference;
-
-            unchecked { ms_referenceId++; }
-
-            return thisRefId;
+            lock (ms_referencesLock)
+            {
+                var thisRefId = ms_referenceId;
+                ms_references[thisRefId] = reference;
+                references[reference.m_method] = reference;
+                
+                unchecked { ms_referenceId++; }
+                
+                return thisRefId;
+            }
         }
 
         public static FunctionReference Get(int reference)
@@ -170,7 +176,7 @@ namespace CounterStrikeSharp.API.Core
             if (ms_references.TryGetValue(reference, out var funcRef))
             {
                 ms_references.Remove(reference, out _);
-
+            
                 Application.Instance.Logger.LogDebug("Removing function/callback reference: {Reference}", reference);
             }
         }
