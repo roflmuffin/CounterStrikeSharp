@@ -43,13 +43,33 @@ namespace CounterStrikeSharp.API
         public static void PrecacheModel(string name) => NativeAPI.PrecacheModel(name);
 
         /// <summary>
-        /// Queue a task to be executed on the next game frame.
-        /// <remarks>Does not execute if the server is hibernating.</remarks>
+        /// <inheritdoc cref="NextFrame"/>
+        /// Returns Task that completes once the synchronous task has been completed.
         /// </summary>
-        public static Task NextFrame(Action task)
+        public static Task NextFrameAsync(Action task)
         {
             var functionReference = FunctionReference.Create(task, FunctionLifetime.SingleUse);
             NativeAPI.QueueTaskForNextFrame(functionReference);
+            return functionReference.CompletionTask;
+        }
+
+        /// <summary>
+        /// Queue a task to be executed on the next game frame.
+        /// <remarks>Does not execute if the server is hibernating.</remarks>
+        /// </summary>
+        public static void NextFrame(Action task)
+        {
+            NextFrameAsync(task);
+        }
+        
+        /// <summary>
+        /// <inheritdoc cref="NextWorldUpdate"/>
+        /// Returns Task that completes once the synchronous task has been completed.
+        /// </summary>
+        public static Task NextWorldUpdateAsync(Action task)
+        {
+            var functionReference = FunctionReference.Create(task, FunctionLifetime.SingleUse);
+            NativeAPI.QueueTaskForNextWorldUpdate(functionReference);
             return functionReference.CompletionTask;
         }
         
@@ -58,11 +78,9 @@ namespace CounterStrikeSharp.API
         /// <remarks>Executes if the server is hibernating.</remarks>
         /// </summary>
         /// <param name="task"></param>
-        public static Task NextWorldUpdate(Action task)
+        public static void NextWorldUpdate(Action task)
         {
-            var functionReference = FunctionReference.Create(task, FunctionLifetime.SingleUse);
-            NativeAPI.QueueTaskForNextWorldUpdate(functionReference);
-            return functionReference.CompletionTask;
+            NextWorldUpdateAsync(task);
         }
 
         public static void PrintToChatAll(string message)
