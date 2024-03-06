@@ -19,6 +19,7 @@
 #include "core/globals.h"
 #include "core/global_listener.h"
 #include "scripting/script_engine.h"
+#include <concurrentqueue.h>
 
 #include "core/game_system.h"
 
@@ -56,8 +57,7 @@ private:
 
     ScriptCallback *on_server_precache_resources;
 
-    std::vector<std::function<void()>> m_nextWorldUpdateTasks;
-    std::mutex m_nextWorldUpdateTasksLock;
+    moodycamel::ConcurrentQueue<std::function<void()>> m_nextWorldUpdateTasks;
 };
 
 }  // namespace counterstrikesharp

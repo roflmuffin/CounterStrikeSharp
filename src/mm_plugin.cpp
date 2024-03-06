@@ -193,9 +193,7 @@ void CounterStrikeSharpMMPlugin::AllPluginsLoaded()
 
 void CounterStrikeSharpMMPlugin::AddTaskForNextFrame(std::function<void()>&& task)
 {
-   
-    std::lock_guard<std::mutex> lock(m_nextTasksLock);
-    m_nextTasks.push_back(std::forward<decltype(task)>(task));
+    m_nextTasks.try_enqueue(std::forward<decltype(task)>(task));
 }
 
 void CounterStrikeSharpMMPlugin::Hook_GameFrame(bool simulating, bool bFirstTick, bool bLastTick)
@@ -208,19 +206,18 @@ void CounterStrikeSharpMMPlugin::Hook_GameFrame(bool simulating, bool bFirstTick
      */
     globals::timerSystem.OnGameFrame(simulating);
 
-    std::lock_guard<std::mutex> lock(m_nextTasksLock);
+    std::vector<std::function<void()>> out_list(1024);
 
-    if (m_nextTasks.empty())
-        return;
+    auto size = m_nextTasks.try_dequeue_bulk(out_list.begin(), 1024);
 
-    CSSHARP_CORE_TRACE("Executing queued tasks of size: {0} on tick number {1}", m_nextTasks.size(),
-                       globals::getGlobalVars()->tickcount);
+    if (size > 0) {
+        CSSHARP_CORE_TRACE("Executing queued tasks of size: {0} on tick number {1}", size,
+                           globals::getGlobalVars()->tickcount);
 
-    for (size_t i = 0; i < m_nextTasks.size(); i++) {
-        m_nextTasks[i]();
+        for (size_t i = 0; i < size; i++) {
+            out_list[i]();
+        }
     }
-
-    m_nextTasks.clear();
 }
 
 // Potentially might not work

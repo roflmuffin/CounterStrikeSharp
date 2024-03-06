@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
@@ -42,14 +43,34 @@ namespace CounterStrikeSharp.API
         public static void PrecacheModel(string name) => NativeAPI.PrecacheModel(name);
 
         /// <summary>
+        /// <inheritdoc cref="NextFrame"/>
+        /// Returns Task that completes once the synchronous task has been completed.
+        /// </summary>
+        public static Task NextFrameAsync(Action task)
+        {
+            var functionReference = FunctionReference.Create(task, FunctionLifetime.SingleUse);
+            NativeAPI.QueueTaskForNextFrame(functionReference);
+            return functionReference.CompletionTask;
+        }
+
+        /// <summary>
         /// Queue a task to be executed on the next game frame.
         /// <remarks>Does not execute if the server is hibernating.</remarks>
         /// </summary>
         public static void NextFrame(Action task)
         {
-            var functionReference = FunctionReference.Create(task);
-            functionReference.Lifetime = FunctionLifetime.SingleUse;
-            NativeAPI.QueueTaskForNextFrame(functionReference);
+            NextFrameAsync(task);
+        }
+        
+        /// <summary>
+        /// <inheritdoc cref="NextWorldUpdate"/>
+        /// Returns Task that completes once the synchronous task has been completed.
+        /// </summary>
+        public static Task NextWorldUpdateAsync(Action task)
+        {
+            var functionReference = FunctionReference.Create(task, FunctionLifetime.SingleUse);
+            NativeAPI.QueueTaskForNextWorldUpdate(functionReference);
+            return functionReference.CompletionTask;
         }
         
         /// <summary>
@@ -59,9 +80,7 @@ namespace CounterStrikeSharp.API
         /// <param name="task"></param>
         public static void NextWorldUpdate(Action task)
         {
-            var functionReference = FunctionReference.Create(task);
-            functionReference.Lifetime = FunctionLifetime.SingleUse;
-            NativeAPI.QueueTaskForNextWorldUpdate(functionReference);
+            NextWorldUpdateAsync(task);
         }
 
         public static void PrintToChatAll(string message)

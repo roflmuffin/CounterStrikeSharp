@@ -14,11 +14,9 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Core
@@ -30,140 +28,149 @@ namespace CounterStrikeSharp.API.Core
     {
         /// <summary>Delegate will be removed after the first invocation.</summary> 
         SingleUse,
-        /// <summary>Delegate will remain in memory for the lifetime of the application.</summary>
+
+        /// <summary>Delegate will remain in memory for the lifetime of the application (or until <see cref="FunctionReference.Remove"/> is called).</summary>
         Permanent
     }
-    
+
+    /// <summary>
+    /// Represents a reference to a function that can be called from native code.
+    /// </summary>
     public class FunctionReference
     {
-        private readonly Delegate m_method;
-        
-        public FunctionLifetime Lifetime { get; set; } = FunctionLifetime.Permanent;
-
         public unsafe delegate void CallbackDelegate(fxScriptContext* context);
-        private CallbackDelegate s_callback;
 
-        private FunctionReference(Delegate method)
+        private static readonly ConcurrentDictionary<int, FunctionReference> IdToFunctionReferencesMap = new();
+        private static readonly ConcurrentDictionary<Delegate, FunctionReference> TargetMethodToFunctionReferencesMap = new();
+
+        private static readonly object ReferenceCounterLock = new();
+        private static int _referenceCounter;
+
+        private readonly Delegate _targetMethod;
+        private readonly CallbackDelegate _nativeCallback;
+
+        private readonly TaskCompletionSource _taskCompletionSource = new();
+
+        private FunctionReference(Delegate method, FunctionLifetime lifetime)
         {
-            m_method = method;
-
-            unsafe
-            {
-                var dg = new CallbackDelegate((fxScriptContext* context) =>
-                {
-                    try
-                    {
-                        var scriptContext = new ScriptContext(context);
-
-                        if (method.Method.GetParameters().FirstOrDefault()?.ParameterType == typeof(ScriptContext))
-                        {
-                            var returnO = m_method.DynamicInvoke(scriptContext);
-                            if (returnO != null)
-                            {
-                                scriptContext.SetResult(returnO, context);
-                            }
-
-                            return;
-                        }
-
-                        var paramsList = method.Method.GetParameters().Select((x, i) =>
-                        {
-                            var param = method.Method.GetParameters()[i];
-                            object obj = null;
-                            if (typeof(NativeObject).IsAssignableFrom(param.ParameterType))
-                            {
-                                obj = Activator.CreateInstance(param.ParameterType,
-                                    new[] { scriptContext.GetArgument(typeof(IntPtr), i) });
-                            }
-                            else
-                            {
-                                obj = scriptContext.GetArgument(param.ParameterType, i);
-                            }
-
-                            return obj;
-                        }).ToArray();
-
-                        var returnObj = m_method.DynamicInvoke(paramsList);
-
-                        if (returnObj != null)
-                        {
-                            scriptContext.SetResult(returnObj, context);
-                        }
-                    }
-                    catch (Exception e)
-                    {
-                        Application.Instance.Logger.LogError(e, "Error invoking callback");
-                    }
-                    finally
-                    {
-                        if (Lifetime == FunctionLifetime.SingleUse)
-                        {
-                            Remove(Identifier);
-                            if (references.ContainsKey(m_method))
-                                references.Remove(m_method, out _);
-                        }
-                    }
-                });
-                s_callback = dg;
-            }
-
+            Lifetime = lifetime;
+            _targetMethod = method;
+            _nativeCallback = CreateWrappedCallback();
         }
+        
+        /// <summary>
+        /// <inheritdoc cref="FunctionLifetime"/>
+        /// </summary>
+        public FunctionLifetime Lifetime { get; }
+
+        /// <summary>
+        /// For <see cref="FunctionLifetime.SingleUse"/> function references, this task will complete when
+        /// the function has finished invoking.
+        /// </summary>
+        public Task CompletionTask => _taskCompletionSource.Task;
 
         public int Identifier { get; private set; }
 
-        public static FunctionReference Create(Delegate method)
+        private unsafe CallbackDelegate CreateWrappedCallback()
         {
-            if (references.TryGetValue(method, out var existingReference))
+            return context =>
+            {
+                try
+                {
+                    var scriptContext = new ScriptContext(context);
+
+                    // Allow for manual handling of the script context
+                    if (_targetMethod.Method.GetParameters().FirstOrDefault()?.ParameterType == typeof(ScriptContext))
+                    {
+                        var returnValue = _targetMethod.DynamicInvoke(scriptContext);
+                        if (returnValue != null)
+                        {
+                            scriptContext.SetResult(returnValue, context);
+                        }
+
+                        return;
+                    }
+
+                    var parameterList = _targetMethod.Method.GetParameters().Select((_, i) =>
+                    {
+                        var parameter = _targetMethod.Method.GetParameters()[i];
+                        return scriptContext.GetArgument(parameter.ParameterType, i);
+                    }).ToArray();
+
+                    var returnObj = _targetMethod.DynamicInvoke(parameterList);
+
+                    if (returnObj != null)
+                    {
+                        scriptContext.SetResult(returnObj, context);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Application.Instance.Logger.LogError(e, "Error invoking callback");
+                }
+                finally
+                {
+                    if (Lifetime == FunctionLifetime.SingleUse)
+                    {
+                        RemoveSelf();
+                    }
+
+                    _taskCompletionSource.TrySetResult();
+                }
+            };
+        }
+
+        public static FunctionReference Create(Delegate method, FunctionLifetime lifetime = FunctionLifetime.Permanent)
+        {
+            // We always want to create a new reference if the lifetime is single use.
+            if (lifetime == FunctionLifetime.Permanent && TargetMethodToFunctionReferencesMap.TryGetValue(method, out var existingReference))
             {
                 return existingReference;
             }
 
-            var reference = new FunctionReference(method);
+            var reference = new FunctionReference(method, lifetime);
             var referenceId = Register(reference);
 
             reference.Identifier = referenceId;
-            
+
             return reference;
         }
 
-        private static ConcurrentDictionary<int, FunctionReference> ms_references = new ConcurrentDictionary<int, FunctionReference>();
-        private static int ms_referenceId;
-
-        private static ConcurrentDictionary<Delegate, FunctionReference> references =
-            new ConcurrentDictionary<Delegate, FunctionReference>();
 
         private static int Register(FunctionReference reference)
         {
-            var thisRefId = ms_referenceId;
-            ms_references[thisRefId] = reference;
-            references[reference.m_method] = reference;
-
-            unchecked { ms_referenceId++; }
-
-            return thisRefId;
-        }
-
-        public static FunctionReference Get(int reference)
-        {
-            if (ms_references.ContainsKey(reference))
+            lock (ReferenceCounterLock)
             {
-                return ms_references[reference];
-            }
+                var thisRefId = _referenceCounter;
+                IdToFunctionReferencesMap[thisRefId] = reference;
+                TargetMethodToFunctionReferencesMap[reference._targetMethod] = reference;
 
-            return null;
+                unchecked
+                {
+                    _referenceCounter++;
+                }
+
+                return thisRefId;
+            }
         }
-        
-        public IntPtr GetFunctionPointer()
+
+        public IntPtr GetFunctionPointer() => Marshal.GetFunctionPointerForDelegate(_nativeCallback);
+
+        private void RemoveSelf()
         {
-            IntPtr cb = Marshal.GetFunctionPointerForDelegate(s_callback);
-            return cb;
+            Remove(Identifier);
         }
 
         public static void Remove(int reference)
         {
-            if (ms_references.TryGetValue(reference, out var funcRef))
+            if (IdToFunctionReferencesMap.TryGetValue(reference, out var functionReference))
             {
-                ms_references.Remove(reference, out _);
+                if (TargetMethodToFunctionReferencesMap.ContainsKey(functionReference._targetMethod))
+                {
+                    TargetMethodToFunctionReferencesMap.Remove(functionReference._targetMethod, out _);
+                }
+
+                IdToFunctionReferencesMap.Remove(reference, out _);
 
                 Application.Instance.Logger.LogDebug("Removing function/callback reference: {Reference}", reference);
             }
