@@ -19,6 +19,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Core
@@ -39,6 +40,9 @@ namespace CounterStrikeSharp.API.Core
         private readonly Delegate m_method;
         
         public FunctionLifetime Lifetime { get; set; } = FunctionLifetime.Permanent;
+        
+        private readonly TaskCompletionSource _tcs = new();
+        public Task CompletionTask => _tcs.Task;
 
         public unsafe delegate void CallbackDelegate(fxScriptContext* context);
         private CallbackDelegate s_callback;
@@ -102,6 +106,8 @@ namespace CounterStrikeSharp.API.Core
                             if (references.ContainsKey(m_method))
                                 references.Remove(m_method, out _);
                         }
+
+                        _tcs.TrySetResult();
                     }
                 });
                 s_callback = dg;

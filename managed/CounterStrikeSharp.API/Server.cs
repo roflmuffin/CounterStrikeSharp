@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
@@ -45,11 +46,12 @@ namespace CounterStrikeSharp.API
         /// Queue a task to be executed on the next game frame.
         /// <remarks>Does not execute if the server is hibernating.</remarks>
         /// </summary>
-        public static void NextFrame(Action task)
+        public static Task NextFrame(Action task)
         {
             var functionReference = FunctionReference.Create(task);
             functionReference.Lifetime = FunctionLifetime.SingleUse;
             NativeAPI.QueueTaskForNextFrame(functionReference);
+            return functionReference.CompletionTask;
         }
         
         /// <summary>
@@ -57,11 +59,12 @@ namespace CounterStrikeSharp.API
         /// <remarks>Executes if the server is hibernating.</remarks>
         /// </summary>
         /// <param name="task"></param>
-        public static void NextWorldUpdate(Action task)
+        public static Task NextWorldUpdate(Action task)
         {
             var functionReference = FunctionReference.Create(task);
             functionReference.Lifetime = FunctionLifetime.SingleUse;
             NativeAPI.QueueTaskForNextWorldUpdate(functionReference);
+            return functionReference.CompletionTask;
         }
 
         public static void PrintToChatAll(string message)

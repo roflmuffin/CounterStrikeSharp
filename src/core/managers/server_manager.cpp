@@ -20,6 +20,7 @@
 #include "scripting/callback_manager.h"
 
 #include "core/game_system.h"
+#include <concurrentqueue.h>
 
 SH_DECL_HOOK1_void(ISource2Server, ServerHibernationUpdate, SH_NOATTRIB, 0, bool);
 SH_DECL_HOOK0_void(ISource2Server, GameServerSteamAPIActivated, SH_NOATTRIB, 0);
@@ -176,17 +177,17 @@ void ServerManager::UpdateWhenNotInGame(float flFrameTime)
 
 void ServerManager::PreWorldUpdate(bool bSimulating)
 {
-    std::lock_guard<std::mutex> lock(m_nextWorldUpdateTasksLock);
+    std::vector<std::function<void()>> out_list(1024);
 
-    if (!m_nextWorldUpdateTasks.empty()) {
-        CSSHARP_CORE_TRACE("Executing queued tasks of size: {0} at time {1}", m_nextWorldUpdateTasks.size(),
-                       globals::getGlobalVars()->curtime);
+    auto size = m_nextWorldUpdateTasks.try_dequeue_bulk(out_list.begin(), 1024);
 
-        for (size_t i = 0; i < m_nextWorldUpdateTasks.size(); i++) {
-            m_nextWorldUpdateTasks[i]();
+    if (size > 0) {
+        CSSHARP_CORE_TRACE("Executing queued tasks of size: {0} at time {1}", size,
+                           globals::getGlobalVars()->curtime);
+
+        for (size_t i = 0; i < size; i++) {
+            out_list[i]();
         }
-
-        m_nextWorldUpdateTasks.clear();
     }
 
     auto callback = globals::serverManager.on_server_pre_world_update;
@@ -200,8 +201,7 @@ void ServerManager::PreWorldUpdate(bool bSimulating)
 
 void ServerManager::AddTaskForNextWorldUpdate(std::function<void()>&& task)
 {
-    std::lock_guard<std::mutex> lock(m_nextWorldUpdateTasksLock);
-    m_nextWorldUpdateTasks.push_back(std::forward<decltype(task)>(task));
+    m_nextWorldUpdateTasks.enqueue(std::forward<decltype(task)>(task));
 }
 
 void ServerManager::OnPrecacheResources(IEntityResourceManifest* pResourceManifest)
