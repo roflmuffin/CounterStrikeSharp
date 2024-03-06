@@ -5,7 +5,7 @@ using MySharedTypes.Contracts;
 
 namespace WithSharedTypes;
 
-[MinimumApiVersion(143)]
+[MinimumApiVersion(184)]
 public class WithSharedTypesPlugin : BasePlugin
 {
     public override string ModuleName => "Example: Shared Types";
