@@ -75,6 +75,7 @@ public partial class CCSPlayerController
             Userid = this
         };
         @event.FireEventToClient(this);
+        @event.Free();
     }
 
     /// <summary>

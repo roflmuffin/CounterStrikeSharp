@@ -32,12 +32,16 @@ namespace CounterStrikeSharp.API.Modules.Events
 
     public class GameEvent : NativeObject
     {
+        // Used to track freeable state for manually created events.
+        private bool _freeable = false;
+        
         public GameEvent(IntPtr pointer) : base(pointer)
         {
         }
         
         public GameEvent(string name, bool force) : this(NativeAPI.CreateEvent(name, force))
         {
+            _freeable = true;
         }
         
         public string EventName => NativeAPI.GetEventName(Handle);
@@ -121,8 +125,28 @@ namespace CounterStrikeSharp.API.Modules.Events
 
         protected void SetEntityIndex(string name, int value) => NativeAPI.SetEventEntityIndex(Handle, name, value);
 
-        public void FireEvent(bool dontBroadcast) => NativeAPI.FireEvent(Handle, dontBroadcast);
-        
+        public void FireEvent(bool dontBroadcast)
+        {
+            NativeAPI.FireEvent(Handle, dontBroadcast);
+            _freeable = false;
+        }
+
         public void FireEventToClient(CCSPlayerController player) => NativeAPI.FireEventToClient(Handle, (int)player.Index);
+        
+        /// <summary>
+        /// Used to manually free the event.
+        /// <remarks>If <see cref="FireEvent"/> is called, Free will be called automatically.</remarks>
+        /// </summary>
+        public void Free()
+        {
+            if (!_freeable)
+            {
+                throw new InvalidOperationException("Event is not able to be freed.");
+            }
+            
+            NativeAPI.FreeEvent(Handle);
+
+            _freeable = false;
+        }
     }
 }
