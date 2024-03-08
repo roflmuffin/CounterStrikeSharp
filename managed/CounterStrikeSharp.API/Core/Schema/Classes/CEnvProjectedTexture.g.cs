@@ -115,7 +115,7 @@ public partial class CEnvProjectedTexture : CModelPointEntity
 	public string SpotlightTextureName
 	{
 		get { return Schema.GetString(this.Handle, "CEnvProjectedTexture", "m_SpotlightTextureName"); }
-		set { Schema.SetString(this.Handle, "CEnvProjectedTexture", "m_SpotlightTextureName", value); }
+		set { Schema.SetStringBytes(this.Handle, "CEnvProjectedTexture", "m_SpotlightTextureName", value, 512); }
 	}
 
 	// m_nSpotlightTextureFrame

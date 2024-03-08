@@ -1,6 +1,7 @@
 HOOK_EVENT: name:string, callback:func, isPost:bool -> void
 UNHOOK_EVENT: name:string, callback:func, isPost:bool -> void
 CREATE_EVENT: name:string, force:bool -> pointer
+FREE_EVENT: gameEvent:pointer -> void
 FIRE_EVENT: gameEvent:pointer, dontBroadcast:bool -> void
 FIRE_EVENT_TO_CLIENT: gameEvent:pointer, clientIndex:int -> void
 GET_EVENT_NAME: gameEvent:pointer -> string

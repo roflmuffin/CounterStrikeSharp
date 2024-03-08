@@ -29,6 +29,12 @@
 namespace counterstrikesharp {
 
 CBaseEntity* GetEntityFromIndex(ScriptContext& script_context) {
+    if (!globals::entitySystem)
+    {
+        script_context.ThrowNativeError("Entity system is not yet initialized");
+        return nullptr;
+    }
+
     auto entityIndex = script_context.GetArgument<int>(0);
 
     return globals::entitySystem->GetBaseEntity(CEntityIndex(entityIndex));
@@ -47,6 +53,11 @@ const char* GetDesignerName(ScriptContext& scriptContext) {
 }
 
 void* GetEntityPointerFromHandle(ScriptContext& scriptContext) {
+    if (!globals::entitySystem) {
+        scriptContext.ThrowNativeError("Entity system is not yet initialized");
+        return nullptr;
+    }
+
     auto handle = scriptContext.GetArgument<CEntityHandle*>(0);
 
     if (!handle->IsValid()) {
@@ -57,6 +68,11 @@ void* GetEntityPointerFromHandle(ScriptContext& scriptContext) {
 }
 
 void* GetEntityPointerFromRef(ScriptContext& scriptContext) {
+    if (!globals::entitySystem) {
+        scriptContext.ThrowNativeError("Entity system yet is not initialized");
+        return nullptr;
+    }
+
     auto ref = scriptContext.GetArgument<unsigned int>(0);
 
     if (ref == INVALID_EHANDLE_INDEX) {
@@ -87,6 +103,11 @@ unsigned int GetRefFromEntityPointer(ScriptContext& scriptContext) {
 }
 
 bool IsRefValidEntity(ScriptContext& scriptContext) {
+    if (!globals::entitySystem) {
+        scriptContext.ThrowNativeError("Entity system yet is not initialized");
+        return false;
+    }
+
     auto ref = scriptContext.GetArgument<unsigned int>(0);
 
     if (ref == INVALID_EHANDLE_INDEX) {
@@ -110,10 +131,20 @@ void PrintToConsole(ScriptContext& scriptContext) {
 }
 
 CEntityIdentity* GetFirstActiveEntity(ScriptContext& script_context) {
+    if (!globals::entitySystem) {
+        script_context.ThrowNativeError("Entity system yet is not initialized");
+        return nullptr;
+    }
+
     return globals::entitySystem->m_EntityList.m_pFirstActiveEntity;
 }
 
 void* GetConcreteEntityListPointer(ScriptContext& script_context) {
+    if (!globals::entitySystem) {
+        script_context.ThrowNativeError("Entity system yet is not initialized");
+        return nullptr;
+    }
+
     return &globals::entitySystem->m_EntityList;
 }
 

@@ -132,7 +132,6 @@ namespace CounterStrikeSharp.API.Modules.Admin
                 foreach (var adminDef in adminsFromFile.Values)
                 {
                     adminDef.InitalizeFlags();
-                    Console.WriteLine($"Domains: {adminDef.Flags.Count}");
 
                     if (SteamID.TryParse(adminDef.Identity, out var steamId))
                     {

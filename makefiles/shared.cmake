@@ -51,6 +51,7 @@ include_directories(
     libraries/tl
     libraries/funchook/include
     libraries/DynoHook/src
+    libraries/moodycamel
     libraries
 )
 

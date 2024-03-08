@@ -23,6 +23,7 @@
     #include <sh_vector.h>
     #include <vector>
     #include "entitysystem.h"
+    #include "concurrentqueue.h"
 
 namespace counterstrikesharp {
 class ScriptCallback;
@@ -63,8 +64,7 @@ public:
     const char *GetLogTag() override;
 
 private:
-    std::vector<std::function<void()>> m_nextTasks;
-    std::mutex m_nextTasksLock;
+    moodycamel::ConcurrentQueue<std::function<void()>> m_nextTasks;
 };
 
 static ScriptCallback *on_activate_callback;

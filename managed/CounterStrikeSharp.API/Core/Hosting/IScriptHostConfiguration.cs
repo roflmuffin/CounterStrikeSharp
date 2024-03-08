@@ -19,6 +19,12 @@ public interface IScriptHostConfiguration
     string PluginPath { get; }
     
     /// <summary>
+    /// Gets the absolute path to the directory that contains CounterStrikeSharp plugin shared APIS.
+    /// e.g. /game/csgo/addons/counterstrikesharp/shared
+    /// </summary>
+    string SharedPath { get; }
+    
+    /// <summary>
     /// Gets the absolute path to the directory that contains CounterStrikeSharp configs.
     /// e.g. /game/csgo/addons/counterstrikesharp/configs
     /// </summary>

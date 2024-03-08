@@ -9,3 +9,6 @@
 
 - name: Global Listeners
   href: global-listeners.md
+
+- name: Shared Plugin API
+  href: shared-plugin-api.md

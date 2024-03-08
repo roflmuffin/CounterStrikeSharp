@@ -30,16 +30,25 @@ public partial class Generators
         public string? Comment { get; set; }
     }
 
-    private static List<GameEvent> GetGameEvents()
+    private static HttpClient _httpClient = new HttpClient();
+    private static string BaseUrl = "https://raw.githubusercontent.com/SteamDatabase/GameTracking-CS2/master/";
+
+    private static List<string> GameEventFiles = new List<string>()
     {
-        // temporary, not committing resource files directly to git for now
-        var pathToSearch = @"/home/michael/Steam/cs2-ds/game/csgo/events/resource";
-        if (!Directory.Exists(pathToSearch)) Environment.Exit(0);
+        "game/core/pak01_dir/resource/core.gameevents",
+        "game/csgo/pak01_dir/resource/game.gameevents",
+        "game/csgo/pak01_dir/resource/mod.gameevents"
+    };
+
+    private static async Task<List<GameEvent>> GetGameEvents()
+    {
         var allGameEvents = new Dictionary<string, GameEvent>();
 
-        foreach (string file in Directory.EnumerateFiles(pathToSearch, "*.gameevents", SearchOption.AllDirectories).OrderBy(Path.GetFileName))
+        foreach (string url in GameEventFiles)
+        // foreach (string file in Directory.EnumerateFiles(pathToSearch, "*.gameevents", SearchOption.AllDirectories).OrderBy(Path.GetFileName))
         {
-            var deserialized = VdfConvert.Deserialize(File.ReadAllText(file));
+            var file = await _httpClient.GetStringAsync($"{BaseUrl}/{url}");
+            var deserialized = VdfConvert.Deserialize(file);
 
             var properties =
                 deserialized.Value.Where(x => x.Type == VTokenType.Property);
@@ -79,12 +88,9 @@ public partial class Generators
         return allGameEvents.Values.ToList();
     }
 
-    public static void GenerateGameEvents()
+    public static async Task GenerateGameEvents()
     {
-        var pathToSearch = @"/home/michael/Steam/cs2-ds/game/csgo/events/resource";
-        if (!Directory.Exists(pathToSearch)) return;
-            
-        var allGameEvents = GetGameEvents();
+        var allGameEvents = await GetGameEvents();
 
         var gameEventsString = string.Join("\n", allGameEvents.OrderBy(x => x.NamePascalCase).Select(gameEvent =>
         {

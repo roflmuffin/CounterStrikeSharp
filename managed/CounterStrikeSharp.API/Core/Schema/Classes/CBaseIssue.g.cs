@@ -23,7 +23,7 @@ public partial class CBaseIssue : NativeObject
 	public string TypeString
 	{
 		get { return Schema.GetString(this.Handle, "CBaseIssue", "m_szTypeString"); }
-		set { Schema.SetString(this.Handle, "CBaseIssue", "m_szTypeString", value); }
+		set { Schema.SetStringBytes(this.Handle, "CBaseIssue", "m_szTypeString", value, 64); }
 	}
 
 	// m_szDetailsString
@@ -31,7 +31,7 @@ public partial class CBaseIssue : NativeObject
 	public string DetailsString
 	{
 		get { return Schema.GetString(this.Handle, "CBaseIssue", "m_szDetailsString"); }
-		set { Schema.SetString(this.Handle, "CBaseIssue", "m_szDetailsString", value); }
+		set { Schema.SetStringBytes(this.Handle, "CBaseIssue", "m_szDetailsString", value, 260); }
 	}
 
 	// m_iNumYesVotes

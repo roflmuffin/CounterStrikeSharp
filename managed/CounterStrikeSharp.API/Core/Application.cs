@@ -130,11 +130,11 @@ namespace CounterStrikeSharp.API.Core
                     {
                         var sb = new StringBuilder();
                         sb.AppendFormat("  [#{0}:{1}]: \"{2}\" ({3})", plugin.PluginId,
-                            plugin.State.ToString().ToUpper(), plugin.Plugin.ModuleName,
-                            plugin.Plugin.ModuleVersion);
-                        if (!string.IsNullOrEmpty(plugin.Plugin.ModuleAuthor))
+                            plugin.State.ToString().ToUpper(), plugin.Plugin?.ModuleName ?? "Unknown",
+                            plugin.Plugin?.ModuleVersion ?? "Unknown");
+                        if (!string.IsNullOrEmpty(plugin.Plugin?.ModuleAuthor))
                             sb.AppendFormat(" by {0}", plugin.Plugin.ModuleAuthor);
-                        if (!string.IsNullOrEmpty(plugin.Plugin.ModuleDescription))
+                        if (!string.IsNullOrEmpty(plugin.Plugin?.ModuleDescription))
                         {
                             sb.Append("\n");
                             sb.Append("    ");
@@ -175,6 +175,8 @@ namespace CounterStrikeSharp.API.Core
                         try
                         {
                             _pluginManager.LoadPlugin(path);
+                            plugin = _pluginContextQueryHandler.FindPluginByModulePath(path);
+                            plugin.Plugin.OnAllPluginsLoaded(false);
                         }
                         catch (Exception e)
                         {
@@ -185,6 +187,7 @@ namespace CounterStrikeSharp.API.Core
                     else
                     {
                         plugin.Load(false);
+                        plugin.Plugin.OnAllPluginsLoaded(false);
                     }
 
                     break;
@@ -233,6 +236,7 @@ namespace CounterStrikeSharp.API.Core
 
                     plugin.Unload(true);
                     plugin.Load(true);
+                    plugin.Plugin.OnAllPluginsLoaded(true);
                     break;
                 }
 
@@ -245,20 +249,17 @@ namespace CounterStrikeSharp.API.Core
                     break;
             }
         }
-
-        [CommandHelper(usage: "[language code, e.g. \"de\", \"pl\", \"en\"]",
-            whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
+        
         private void OnLangCommand(CCSPlayerController? player, CommandInfo command)
         {
             if (player == null) return;
 
-            SteamID steamId = (SteamID)player.SteamID;
+            var steamId = (SteamID)player.SteamID;
 
             if (command.ArgCount == 1)
             {
                 var language = _playerLanguageManager.GetLanguage(steamId);
-                command.ReplyToCommand(string.Format("Current language is \"{0}\" ({1})", language.Name,
-                    language.NativeName));
+                command.ReplyToCommand($"Current language is \"{language.Name}\" ({language.NativeName})");
                 return;
             }
 
@@ -296,6 +297,11 @@ namespace CounterStrikeSharp.API.Core
                             "  start / load - Loads a plugin not currently loaded.\n" +
                             "  stop / unload - Unloads a plugin currently loaded.\n" +
                             "  restart / reload - Reloads a plugin currently loaded.",
+            });
+            _commandManager.RegisterCommand(new("css_lang", "Set Counter-Strike Sharp language.", OnLangCommand)
+            {
+                ExecutableBy = CommandUsage.CLIENT_AND_SERVER,
+                UsageHint = "[language code, e.g. \"de\", \"pl\", \"en\"]",
             });
         }
     }

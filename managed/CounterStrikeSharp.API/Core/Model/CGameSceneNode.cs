@@ -23,8 +23,11 @@ public partial class CGameSceneNode
     /// <summary>
     /// Gets the <see cref="CSkeletonInstance"/> instance from the node.
     /// </summary>
+    /// <exception cref="InvalidOperationException">GameSceneNode points to null</exception>
     public CSkeletonInstance GetSkeletonInstance()
     {
+        if (Handle == IntPtr.Zero) throw new InvalidOperationException("GameSceneNode points to null.");
+
         return new CSkeletonInstance(VirtualFunction.Create<nint, nint>(Handle, GameData.GetOffset("CGameSceneNode_GetSkeletonInstance"))(Handle));
     }
 }

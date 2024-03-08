@@ -102,9 +102,18 @@ public class AdminTests
     [Fact]
     public void ShouldAddCommandPermissionOverridesAtRuntime()
     {
-        Assert.False(AdminManager.CommandIsOverriden("runtime_command"));
-        AdminManager.AddPermissionOverride("runtime_command", "@runtime/override");
-        Assert.True(AdminManager.CommandIsOverriden("runtime_command"));
-        Assert.Equal("@runtime/override", AdminManager.GetPermissionOverrides("runtime_command").Single());
+        Assert.False(AdminManager.CommandIsOverriden("runtime_command_a"));
+        AdminManager.AddPermissionOverride("runtime_command_a", "@runtime/override");
+        Assert.True(AdminManager.CommandIsOverriden("runtime_command_a"));
+        Assert.Equal("@runtime/override", AdminManager.GetPermissionOverrides("runtime_command_a").Single());
+    }
+
+    [Fact]
+    public void ShouldAddCommandPermissionOverridesWithEmpty()
+    {
+        Assert.False(AdminManager.CommandIsOverriden("runtime_command_b"));
+        AdminManager.AddPermissionOverride("runtime_command_b");
+        Assert.True(AdminManager.CommandIsOverriden("runtime_command_b"));
+        Assert.False(AdminManager.GetPermissionOverrides("runtime_command_b").Any());
     }
 }

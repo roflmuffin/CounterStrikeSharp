@@ -14,12 +14,12 @@
 [submodule "libraries/dyncall"]
 	path = libraries/dyncall
 	url = https://github.com/LWJGL-CI/dyncall
-[submodule "libraries/GameTracking-CS2"]
-	path = libraries/GameTracking-CS2
-	url = https://github.com/SteamDatabase/GameTracking-CS2
 [submodule "libraries/DynoHook"]
 	path = libraries/DynoHook
 	url = https://github.com/qubka/DynoHook
 [submodule "libraries/asmjit"]
 	path = libraries/asmjit
 	url = https://github.com/asmjit/asmjit
+[submodule "libraries/Protobufs"]
+	path = libraries/Protobufs
+	url = https://github.com/SteamDatabase/Protobufs

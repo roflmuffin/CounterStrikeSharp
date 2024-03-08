@@ -67,7 +67,7 @@ public partial class CEconItemView : IEconItemInterface
 	public string CustomName
 	{
 		get { return Schema.GetString(this.Handle, "CEconItemView", "m_szCustomName"); }
-		set { Schema.SetString(this.Handle, "CEconItemView", "m_szCustomName", value); }
+		set { Schema.SetStringBytes(this.Handle, "CEconItemView", "m_szCustomName", value, 161); }
 	}
 
 	// m_szCustomNameOverride
@@ -75,7 +75,7 @@ public partial class CEconItemView : IEconItemInterface
 	public string CustomNameOverride
 	{
 		get { return Schema.GetString(this.Handle, "CEconItemView", "m_szCustomNameOverride"); }
-		set { Schema.SetString(this.Handle, "CEconItemView", "m_szCustomNameOverride", value); }
+		set { Schema.SetStringBytes(this.Handle, "CEconItemView", "m_szCustomNameOverride", value, 161); }
 	}
 
 }

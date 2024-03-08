@@ -26,6 +26,6 @@ public partial class CCSGameRules
     /// </summary>
     public void TerminateRound(float delay, RoundEndReason roundEndReason)
     {
-        VirtualFunctions.TerminateRound(Handle, roundEndReason, delay);
+        VirtualFunctions.TerminateRound(Handle, roundEndReason, delay, 0, 0);
     }
 }

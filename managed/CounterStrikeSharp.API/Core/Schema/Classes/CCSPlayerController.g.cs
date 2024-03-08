@@ -111,7 +111,7 @@ public partial class CCSPlayerController : CBasePlayerController
 	public string ClanName
 	{
 		get { return Schema.GetString(this.Handle, "CCSPlayerController", "m_szClanName"); }
-		set { Schema.SetString(this.Handle, "CCSPlayerController", "m_szClanName", value); }
+		set { Schema.SetStringBytes(this.Handle, "CCSPlayerController", "m_szClanName", value, 32); }
 	}
 
 	// m_iCoachingTeam
