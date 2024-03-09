@@ -3,5 +3,6 @@
     "SilentChatTrigger": [ "/" ],
     "FollowCS2ServerGuidelines": true,
     "PluginHotReloadEnabled": true,
+    "PluginAutoLoadEnabled": true,
     "ServerLanguage": "en"
 }

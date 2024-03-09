@@ -29,6 +29,7 @@ class CCoreConfig
     std::vector<std::string> SilentChatTrigger = { std::string("/") };
     bool FollowCS2ServerGuidelines = true;
     bool PluginHotReloadEnabled = true;
+    bool PluginAutoLoadEnabled = true;
     std::string ServerLanguage = "en";
 
     using json = nlohmann::json;

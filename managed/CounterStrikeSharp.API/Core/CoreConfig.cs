@@ -50,6 +50,9 @@ namespace CounterStrikeSharp.API.Core
         [JsonPropertyName("PluginHotReloadEnabled")]
         public bool PluginHotReloadEnabled { get; set; } = true;
         
+        [JsonPropertyName("PluginAutoLoadEnabled")]
+        public bool PluginAutoLoadEnabled { get; set; } = true;
+        
         [JsonPropertyName("ServerLanguage")]
         public string ServerLanguage { get; set; } = "en";
     }
@@ -95,7 +98,13 @@ namespace CounterStrikeSharp.API.Core
         /// </summary>
         public static bool PluginHotReloadEnabled => _coreConfig.PluginHotReloadEnabled;
         
+        /// <summary>
+        /// When enabled, plugins are automatically loaded from the plugins directory on server start.
+        /// </summary>
+        public static bool PluginAutoLoadEnabled => _coreConfig.PluginAutoLoadEnabled;
+        
         public static string ServerLanguage => _coreConfig.ServerLanguage;
+        
     }
 
     public partial class CoreConfig : IStartupService
