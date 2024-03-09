@@ -84,18 +84,21 @@ public class PluginManager : IPluginManager
             return assembly;
         };
 
-        foreach (var path in pluginAssemblyPaths)
+        if (CoreConfig.PluginAutoLoadEnabled)
         {
-            try
+            foreach (var path in pluginAssemblyPaths)
             {
-                LoadPlugin(path);
-            }
-            catch (Exception e)
-            {
-                _logger.LogError(e, "Failed to load plugin from {Path}", path);
+                try
+                {
+                    LoadPlugin(path);
+                }
+                catch (Exception e)
+                {
+                    _logger.LogError(e, "Failed to load plugin from {Path}", path);
+                }
             }
         }
-
+        
         foreach (var plugin in _loadedPluginContexts)
         {
             try
