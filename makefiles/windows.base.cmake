@@ -18,4 +18,5 @@ set(COUNTER_STRIKE_SHARP_LINK_LIBRARIES
     distorm
     funchook-static
     dynohook
+    libprotobuf
 )

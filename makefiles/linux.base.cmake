@@ -28,4 +28,5 @@ SET(
         distorm
         funchook-static
         dynohook
+        protobuf
 )

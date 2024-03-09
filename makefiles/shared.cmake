@@ -31,7 +31,7 @@ add_definitions(-DMETA_IS_SOURCE2)
 
 include_directories(
     ${SOURCESDK}
-    ${SOURCESDK}/thirdparty/protobuf-3.21.8/src
+    # ${SOURCESDK}/thirdparty/protobuf-3.21.8/src
     ${SOURCESDK}/common
     ${SOURCESDK}/game/shared
     ${SOURCESDK}/game/server
@@ -45,9 +45,11 @@ include_directories(
     ${SOURCESDK}/public/entity2
     ${METAMOD_DIR}/core
     ${METAMOD_DIR}/core/sourcehook
+    libraries/Protobufs/csgo
     libraries/dyncall/dynload
     libraries/dyncall/dyncall
     libraries/spdlog/include
+    libraries/protobuf
     libraries/tl
     libraries/funchook/include
     libraries/DynoHook/src

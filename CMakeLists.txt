@@ -5,10 +5,14 @@ project(counterstrikesharp C CXX ASM)
 
 include("makefiles/shared.cmake")
 
+set(protobuf_MSVC_STATIC_RUNTIME OFF)
+set(protobuf_BUILD_SHARED_LIBS OFF)
+
 add_subdirectory(libraries/spdlog)
 add_subdirectory(libraries/dyncall)
 add_subdirectory(libraries/funchook)
 add_subdirectory(libraries/DynoHook)
+add_subdirectory(libraries/protobuf/cmake)
 
 set_property(TARGET dynohook PROPERTY DYNO_ARCH_X86 64)
 set_property(TARGET funchook-static PROPERTY POSITION_INDEPENDENT_CODE ON)
@@ -22,6 +26,9 @@ SET(SOURCE_FILES
     libraries/hl2sdk-cs2/entity2/entityidentity.cpp
     libraries/hl2sdk-cs2/entity2/entitysystem.cpp
     libraries/hl2sdk-cs2/entity2/entitykeyvalues.cpp
+    libraries/Protobufs/csgo/network_connection.pb.cc
+    libraries/Protobufs/csgo/networkbasetypes.pb.cc
+    libraries/Protobufs/csgo/cs_gameevents.pb.cc
     libraries/dotnet/hostfxr.h
     libraries/dotnet/coreclr_delegates.h
     libraries/metamod-source/core/sourcehook/sourcehook.cpp
@@ -115,9 +122,9 @@ endif()
 
 add_custom_command(
         OUTPUT protobuf_output_stamp
-        COMMAND ${PROTOC_EXECUTABLE} --proto_path=thirdparty/protobuf-3.21.8/src --proto_path=common --cpp_out=common common/network_connection.proto
+        COMMAND ${PROTOC_EXECUTABLE} --proto_path=${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2/thirdparty/protobuf-3.21.8/src --proto_path=${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo --cpp_out=. network_connection.proto cs_gameevents.proto networkbasetypes.proto cstrike15_usermessages.proto cstrike15_gcmessages.proto steammessages.proto engine_gcmessages.proto gcsdk_gcmessages.proto
         COMMENT "Generating protobuf file"
-        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo
         VERBATIM
 )
 

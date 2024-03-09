@@ -31,6 +31,8 @@
 #include "scripting/script_engine.h"
 #include "entity2/entitysystem.h"
 #include "interfaces/cs2_interfaces.h"
+#include "cs_gameevents.pb.h"
+#include "cstrike15_usermessages.pb.h"
 
 counterstrikesharp::GlobalClass* counterstrikesharp::GlobalClass::head = nullptr;
 
@@ -71,6 +73,8 @@ SH_DECL_HOOK3_void(INetworkServerService, StartupServer, SH_NOATTRIB, 0,
                    const GameSessionConfiguration_t&, ISource2WorldSession*, const char*);
 SH_DECL_HOOK3_void(IEngineServiceMgr, RegisterLoopMode, SH_NOATTRIB, 0, const char *, ILoopModeFactory *, void **);
 SH_DECL_HOOK1(IEngineServiceMgr, FindService, SH_NOATTRIB, 0, IEngineService*, const char*);
+SH_DECL_HOOK8_void(IGameEventSystem, PostEventAbstract, SH_NOATTRIB, 0, CSplitScreenSlot, bool, int, const uint64*,
+                   INetworkSerializable*, const void*, unsigned long, NetChannelBufType_t)
 
 CounterStrikeSharpMMPlugin gPlugin;
 
@@ -140,6 +144,7 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
                         &CounterStrikeSharpMMPlugin::Hook_StartupServer, true);
     SH_ADD_HOOK_MEMFUNC(IEngineServiceMgr, RegisterLoopMode, globals::engineServiceManager, this, &CounterStrikeSharpMMPlugin::Hook_RegisterLoopMode, false);
     SH_ADD_HOOK_MEMFUNC(IEngineServiceMgr, FindService, globals::engineServiceManager, this, &CounterStrikeSharpMMPlugin::Hook_FindService, true);
+    SH_ADD_HOOK_MEMFUNC(IGameEventSystem, PostEventAbstract, globals::gameEventSystem, this, &CounterStrikeSharpMMPlugin::Hook_PostEvent, false);
 
     if (!globals::dotnetManager.Initialize()) {
         CSSHARP_CORE_ERROR("Failed to initialize .NET runtime");
@@ -178,6 +183,7 @@ bool CounterStrikeSharpMMPlugin::Unload(char* error, size_t maxlen)
                            &CounterStrikeSharpMMPlugin::Hook_GameFrame, true);
     SH_REMOVE_HOOK_MEMFUNC(INetworkServerService, StartupServer, globals::networkServerService,
                            this, &CounterStrikeSharpMMPlugin::Hook_StartupServer, true);
+    SH_REMOVE_HOOK_MEMFUNC(IGameEventSystem, PostEventAbstract, globals::gameEventSystem, this, &CounterStrikeSharpMMPlugin::Hook_PostEvent, false);
 
     globals::callbackManager.ReleaseCallback(on_activate_callback);
 
@@ -218,6 +224,55 @@ void CounterStrikeSharpMMPlugin::Hook_GameFrame(bool simulating, bool bFirstTick
             out_list[i]();
         }
     }
+}
+
+void GetPropertyByName(const ::google::protobuf::Message& message, const std::string& name) {
+    const ::google::protobuf::Descriptor* descriptor = message.GetDescriptor();
+    const ::google::protobuf::FieldDescriptor* field = descriptor->FindFieldByName(name);
+
+    int k = 0;
+
+    if (field) {
+        // Use reflection to get the value based on field->type()
+        // ... (handling different field types)
+    } else {
+        // Handle field not found
+    }
+}
+
+void CounterStrikeSharpMMPlugin::Hook_PostEvent(CSplitScreenSlot nSlot, bool bLocalOnly,
+                                                int nClientCount, const uint64* clients,
+                                                INetworkSerializable* pEvent, const void* pData,
+                                                unsigned long nSize, NetChannelBufType_t bufType)
+{
+        NetMessageInfo_t *info = pEvent->GetNetMessageInfo();
+
+        CSSHARP_CORE_INFO("Message ID: {}", info->m_MessageId);
+
+        if (info->m_MessageId == CS_UM_ProcessSpottedEntityUpdate) {
+            auto base_message = static_cast<google::protobuf::Message*>((CCSUsrMsg_ProcessSpottedEntityUpdate_SpottedEntityUpdate*)pData);
+            if (base_message) {
+                auto descriptor = base_message->GetDescriptor();
+//
+//                if (descriptor != nullptr) {
+//                    auto weaponId = descriptor->FindFieldByName("weapon_id");
+//                    if (weaponId != nullptr) {
+//                        CSSHARP_CORE_INFO("Weapon ID {}", weaponId->DebugString());
+//                    }
+//                }
+            }
+
+        }
+
+
+//        if (info->m_MessageId == GE_FireBulletsId)
+//        {
+//            CMsgTEFireBullets *msg = (CMsgTEFireBullets *)pData;
+//
+//            auto descriptor = msg->GetDescriptor();
+//
+//            CSSHARP_CORE_INFO("Fire Bullets: {}, Weapon ID: {}", info->m_MessageId, msg->weapon_id());
+//        }
 }
 
 // Potentially might not work

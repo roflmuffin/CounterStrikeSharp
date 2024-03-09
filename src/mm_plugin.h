@@ -52,6 +52,8 @@ public:  // hooks
 
     void Hook_RegisterLoopMode(const char* pszLoopModeName, ILoopModeFactory *pLoopModeFactory, void **ppGlobalPointer);
     IEngineService* Hook_FindService(const char* serviceName);
+    void Hook_PostEvent(CSplitScreenSlot nSlot, bool bLocalOnly, int nClientCount, const uint64* clients,
+                        INetworkSerializable* pEvent, const void* pData, unsigned long nSize, NetChannelBufType_t bufType);
 
 public:
     const char *GetAuthor() override;

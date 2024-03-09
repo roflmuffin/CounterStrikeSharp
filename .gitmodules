@@ -23,3 +23,6 @@
 [submodule "libraries/Protobufs"]
 	path = libraries/Protobufs
 	url = https://github.com/SteamDatabase/Protobufs
+[submodule "libraries/protobuf"]
+	path = libraries/protobuf
+	url = https://github.com/protocolbuffers/protobuf
