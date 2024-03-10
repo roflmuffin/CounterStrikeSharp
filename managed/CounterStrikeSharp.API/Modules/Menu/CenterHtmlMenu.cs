@@ -101,8 +101,11 @@ public class CenterHtmlMenuInstance : BaseMenuInstance
             builder.AppendLine("<br>");
         }
 
-        builder.AppendFormat("<font color='red'>!9</font> -> Close");
-        builder.AppendLine("<br>");
+        if (Menu.ExitButton)
+        {
+            builder.AppendFormat("<font color='red'>!9</font> -> Close");
+            builder.AppendLine("<br>");
+        }
 
         var currentPageText = builder.ToString();
         Player.PrintToCenterHtml(currentPageText);
