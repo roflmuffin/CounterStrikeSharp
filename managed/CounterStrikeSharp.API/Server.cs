@@ -28,12 +28,18 @@ namespace CounterStrikeSharp.API
 {
     public class Server
     {
+        /// <summary>
+        /// Duration of a single game tick in seconds, based on a 64 tick server (hard coded in CS2).
+        /// </summary>
         public static float TickInterval => 0.015625f;
 
+        /// <summary>
+        /// Executes a command on the server, as if it was entered from the console.
+        /// </summary>
+        /// <param name="command"></param>
         public static void ExecuteCommand(string command) => NativeAPI.IssueServerCommand(command);
 
         public static string MapName => NativeAPI.GetMapName();
-        // public static void PrintToConsole(string message) => NativeAPI.PrintToConsole(message);
 
         /// <summary>
         /// Returns the total time the server has been running in seconds.
