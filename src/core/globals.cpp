@@ -1,6 +1,7 @@
 #include "mm_plugin.h"
 #include "core/globals.h"
 #include "core/managers/player_manager.h"
+#include "core/tick_scheduler.h"
 #include "iserver.h"
 #include "managers/event_manager.h"
 #include "scripting/callback_manager.h"
@@ -79,6 +80,7 @@ EntityManager entityManager;
 ChatManager chatManager;
 ServerManager serverManager;
 VoiceManager voiceManager;
+TickScheduler tickScheduler;
 
 bool gameLoopInitialized = false;
 GetLegacyGameEventListener_t* GetLegacyGameEventListener = nullptr;
