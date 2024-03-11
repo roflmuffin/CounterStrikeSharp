@@ -69,12 +69,9 @@ namespace CounterStrikeSharp.API
         /// See <see cref="TickCount"/> to retrieve the current tick.
         /// <remarks>Does not execute if the server is hibernating.</remarks>
         /// </summary>
-        public static Task RunOnTick(int tick, Action task)
+        public static void RunOnTick(int tick, Action task)
         {
             RunOnTickAsync(tick, task);
-            var functionReference = FunctionReference.Create(task, FunctionLifetime.SingleUse);
-            NativeAPI.QueueTaskForFrame(tick, functionReference);
-            return functionReference.CompletionTask;
         }
 
         /// <summary>
