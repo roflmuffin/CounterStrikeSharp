@@ -78,7 +78,7 @@ public abstract class BaseMenuInstance : IMenuInstance
 
     protected bool HasPrevButton => Page > 0;
     protected bool HasNextButton => Menu.MenuOptions.Count > NumPerPage && CurrentOffset + NumPerPage < Menu.MenuOptions.Count;
-    protected int MenuItemsPerPage => NumPerPage;
+    protected virtual int MenuItemsPerPage => NumPerPage;
 
     public virtual void Display()
     {
@@ -143,7 +143,7 @@ public abstract class BaseMenuInstance : IMenuInstance
         PrevPageOffsets.Clear();
     }
         
-    public void Close()
+    public virtual void Close()
     {
         MenuManager.CloseActiveMenu(Player);
     }

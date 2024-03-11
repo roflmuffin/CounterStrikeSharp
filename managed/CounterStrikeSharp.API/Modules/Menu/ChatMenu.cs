@@ -18,10 +18,11 @@ using CounterStrikeSharp.API.Modules.Utils;
 
 namespace CounterStrikeSharp.API.Modules.Menu;
 
-public class ChatMenu: BaseMenu
+public class ChatMenu : BaseMenu
 {
     public ChatMenu(string title) : base(title)
     {
+        ExitButton = false;
     }
 }
 
