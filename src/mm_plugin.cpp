@@ -22,6 +22,7 @@
 #include "core/gameconfig.h"
 #include "core/game_system.h"
 #include "core/timer_system.h"
+#include "core/tick_scheduler.h"
 #include "core/utils.h"
 #include "core/managers/entity_manager.h"
 #include "igameeventsystem.h"
@@ -48,6 +49,7 @@ DLL_EXPORT void InvokeNative(counterstrikesharp::fxNativeContext& context)
 
     if (context.nativeIdentifier != counterstrikesharp::hash_string_const("QUEUE_TASK_FOR_NEXT_FRAME") &&
         context.nativeIdentifier != counterstrikesharp::hash_string_const("QUEUE_TASK_FOR_NEXT_WORLD_UPDATE") &&
+        context.nativeIdentifier != counterstrikesharp::hash_string_const("QUEUE_TASK_FOR_FRAME") &&
         counterstrikesharp::globals::gameThreadId != std::this_thread::get_id())
     {
         counterstrikesharp::ScriptContextRaw scriptContext(context);
@@ -216,6 +218,16 @@ void CounterStrikeSharpMMPlugin::Hook_GameFrame(bool simulating, bool bFirstTick
 
         for (size_t i = 0; i < size; i++) {
             out_list[i]();
+        }
+    }
+
+    auto callbacks = globals::tickScheduler.getCallbacks(globals::getGlobalVars()->tickcount);
+    if (callbacks.size() > 0) {
+        CSSHARP_CORE_TRACE("Executing frame specific tasks of size: {0} on tick number {1}", callbacks.size(),
+                           globals::getGlobalVars()->tickcount);
+
+        for (auto& callback : callbacks) {
+            callback();
         }
     }
 }

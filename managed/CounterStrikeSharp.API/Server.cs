@@ -28,7 +28,7 @@ namespace CounterStrikeSharp.API
 {
     public class Server
     {
-        public static float TickInterval => NativeAPI.GetTickInterval();
+        public static float TickInterval => 0.015625f;
 
         public static void ExecuteCommand(string command) => NativeAPI.IssueServerCommand(command);
 
@@ -36,11 +36,46 @@ namespace CounterStrikeSharp.API
         // public static void PrintToConsole(string message) => NativeAPI.PrintToConsole(message);
 
         public static double TickedTime => NativeAPI.GetTickedTime();
+        
+        /// <summary>
+        /// Returns the current time in seconds, as an interval of the server's tick interval.
+        /// e.g. 70.046875 would represent 70 seconds of uptime and the 4483rd tick of the server (70.046875 / 0.015625).
+        /// </summary>
         public static float CurrentTime => NativeAPI.GetCurrentTime();
+        
+        /// <summary>
+        /// Returns the current tick count.
+        /// This value is incremented every frame, but only when the server is not hibernating.
+        /// CS2 is a 64 tick server, so the value will increment by 64 every second.
+        /// </summary>
         public static int TickCount => NativeAPI.GetTickCount();
         public static float GameFrameTime => NativeAPI.GetGameFrameTime();
         public static double EngineTime => NativeAPI.GetEngineTime();
         public static void PrecacheModel(string name) => NativeAPI.PrecacheModel(name);
+        
+        /// <summary>
+        /// <inheritdoc cref="RunOnTick"/>
+        /// Returns Task that completes once the synchronous task has been completed.
+        /// </summary>
+        public static Task RunOnTickAsync(int tick, Action task)
+        {
+            var functionReference = FunctionReference.Create(task, FunctionLifetime.SingleUse);
+            NativeAPI.QueueTaskForFrame(tick, functionReference);
+            return functionReference.CompletionTask;
+        }
+        
+        /// <summary>
+        /// Queue a task to be executed on the specified tick.
+        /// See <see cref="TickCount"/> to retrieve the current tick.
+        /// <remarks>Does not execute if the server is hibernating.</remarks>
+        /// </summary>
+        public static Task RunOnTick(int tick, Action task)
+        {
+            RunOnTickAsync(tick, task);
+            var functionReference = FunctionReference.Create(task, FunctionLifetime.SingleUse);
+            NativeAPI.QueueTaskForFrame(tick, functionReference);
+            return functionReference.CompletionTask;
+        }
 
         /// <summary>
         /// <inheritdoc cref="NextFrame"/>
