@@ -315,16 +315,6 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
-        public static float GetGameFrameTime(){
-			lock (ScriptContext.GlobalScriptContext.Lock) {
-			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.SetIdentifier(0x97E331CA);
-			ScriptContext.GlobalScriptContext.Invoke();
-			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (float)ScriptContext.GlobalScriptContext.GetResult(typeof(float));
-			}
-		}
-
         public static double GetEngineTime(){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();

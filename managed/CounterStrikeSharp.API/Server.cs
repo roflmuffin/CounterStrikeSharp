@@ -35,12 +35,17 @@ namespace CounterStrikeSharp.API
         public static string MapName => NativeAPI.GetMapName();
         // public static void PrintToConsole(string message) => NativeAPI.PrintToConsole(message);
 
+        /// <summary>
+        /// Returns the total time the server has been running in seconds.
+        /// </summary>
+        /// <remarks>Does not increment when server is hibernating</remarks>
         public static double TickedTime => NativeAPI.GetTickedTime();
         
         /// <summary>
-        /// Returns the current time in seconds, as an interval of the server's tick interval.
-        /// e.g. 70.046875 would represent 70 seconds of uptime and the 4483rd tick of the server (70.046875 / 0.015625).
+        /// Returns the current map time in seconds, as an interval of the server's tick interval.
+        /// e.g. 70.046875 would represent 70 seconds of map time and the 4483rd tick of the server (70.046875 / 0.015625).
         /// </summary>
+        /// <remarks>Increments even when server is hibernating</remarks>
         public static float CurrentTime => NativeAPI.GetCurrentTime();
         
         /// <summary>
@@ -49,8 +54,13 @@ namespace CounterStrikeSharp.API
         /// CS2 is a 64 tick server, so the value will increment by 64 every second.
         /// </summary>
         public static int TickCount => NativeAPI.GetTickCount();
-        public static float GameFrameTime => NativeAPI.GetGameFrameTime();
+        
+        /// <summary>
+        /// Returns the total time the server has been running in seconds.
+        /// </summary>
+        /// <remarks>Increments even when server is hibernating</remarks>
         public static double EngineTime => NativeAPI.GetEngineTime();
+        
         public static void PrecacheModel(string name) => NativeAPI.PrecacheModel(name);
         
         /// <summary>
