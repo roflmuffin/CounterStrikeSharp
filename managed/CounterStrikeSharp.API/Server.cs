@@ -49,8 +49,7 @@ namespace CounterStrikeSharp.API
         public static float CurrentTime => NativeAPI.GetCurrentTime();
         
         /// <summary>
-        /// Returns the current tick count.
-        /// This value is incremented every frame, but only when the server is not hibernating.
+        /// Returns the current map tick count.
         /// CS2 is a 64 tick server, so the value will increment by 64 every second.
         /// </summary>
         public static int TickCount => NativeAPI.GetTickCount();
