@@ -51,6 +51,7 @@ bool CCoreConfig::Init(char* conf_error, int conf_error_size)
         SilentChatTrigger = m_json.value("SilentChatTrigger", SilentChatTrigger);
         FollowCS2ServerGuidelines = m_json.value("FollowCS2ServerGuidelines", FollowCS2ServerGuidelines);
         PluginHotReloadEnabled = m_json.value("PluginHotReloadEnabled", PluginHotReloadEnabled);
+        PluginAutoLoadEnabled = m_json.value("PluginAutoLoadEnabled", PluginAutoLoadEnabled);
         ServerLanguage = m_json.value("ServerLanguage", ServerLanguage);
     } catch (const std::exception& ex) {
         V_snprintf(conf_error, conf_error_size, "Failed to parse CoreConfig file: %s", ex.what());

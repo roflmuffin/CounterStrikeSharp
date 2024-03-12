@@ -27,9 +27,9 @@ public class AdminTests
     {
         var adminData = AdminManager.GetPlayerAdminData((SteamID)76561197960265731);
         Assert.NotNull(adminData);
-        Assert.Equal(125u, adminData.Immunity); // Group immunity is 125, Admin immunity is 100
+        Assert.Equal(125u, AdminManager.GetPlayerImmunity((SteamID)76561197960265731)); // Group immunity is 125, Admin immunity is 100
         AdminManager.SetPlayerImmunity((SteamID)76561197960265731, 150u);
-        Assert.Equal(150u, adminData.Immunity); // Group immunity is 125, Admin immunity is 100
+        Assert.Equal(150u, AdminManager.GetPlayerImmunity((SteamID)76561197960265731)); // Group immunity is 125, Admin immunity is 100
     }
     
     [Fact]
@@ -102,9 +102,18 @@ public class AdminTests
     [Fact]
     public void ShouldAddCommandPermissionOverridesAtRuntime()
     {
-        Assert.False(AdminManager.CommandIsOverriden("runtime_command"));
-        AdminManager.AddPermissionOverride("runtime_command", "@runtime/override");
-        Assert.True(AdminManager.CommandIsOverriden("runtime_command"));
-        Assert.Equal("@runtime/override", AdminManager.GetPermissionOverrides("runtime_command").Single());
+        Assert.False(AdminManager.CommandIsOverriden("runtime_command_a"));
+        AdminManager.AddPermissionOverride("runtime_command_a", "@runtime/override");
+        Assert.True(AdminManager.CommandIsOverriden("runtime_command_a"));
+        Assert.Equal("@runtime/override", AdminManager.GetPermissionOverrides("runtime_command_a").Single());
+    }
+
+    [Fact]
+    public void ShouldAddCommandPermissionOverridesWithEmpty()
+    {
+        Assert.False(AdminManager.CommandIsOverriden("runtime_command_b"));
+        AdminManager.AddPermissionOverride("runtime_command_b");
+        Assert.True(AdminManager.CommandIsOverriden("runtime_command_b"));
+        Assert.False(AdminManager.GetPermissionOverrides("runtime_command_b").Any());
     }
 }

@@ -4,7 +4,7 @@ rm -rf temp/ generated/
 mkdir -p temp generated
 mkdir -p generated
 
-cp ../../libraries/GameTracking-CS2/Protobufs/*.proto temp/
+cp ../../libraries/Protobufs/csgo/*.proto temp/
 cp -r google/ temp/
 
 for file in temp/*.proto; do

@@ -20,8 +20,11 @@ namespace CounterStrikeSharp.API.Core;
 
 public partial class CBaseModelEntity
 {
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
     public void SetModel(string model)
     {
+        Guard.IsValidEntity(this);
+
         VirtualFunctions.SetModel(Handle, model);
     }
 }

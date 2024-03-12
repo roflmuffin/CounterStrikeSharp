@@ -209,8 +209,11 @@ namespace CounterStrikeSharp.API
         /// <param name="className" example="CBaseEntity">Schema field class name</param>
         /// <param name="fieldName" example="m_iHealth">Schema field name</param>
         /// <param name="extraOffset">Any additional offset to the schema field</param>
+        /// <exception cref="InvalidOperationException">Entity is not valid</exception>
         public static void SetStateChanged(CBaseEntity entity, string className, string fieldName, int extraOffset = 0)
         {
+            Guard.IsValidEntity(entity);
+
             if (!Schema.IsSchemaFieldNetworked(className, fieldName))
             {
                 Application.Instance.Logger.LogWarning("Field {ClassName}:{FieldName} is not networked, but SetStateChanged was called on it.", className, fieldName);

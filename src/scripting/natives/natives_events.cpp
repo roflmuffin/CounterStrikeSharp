@@ -63,7 +63,7 @@ static void FireEvent(ScriptContext &script_context) {
 }
 
 
- static void FireEventToClient(ScriptContext& script_context) {
+static void FireEventToClient(ScriptContext& script_context) {
     auto game_event = script_context.GetArgument<IGameEvent*>(0);
     int entityIndex = script_context.GetArgument<int>(1);
     if (!game_event) {
@@ -76,7 +76,17 @@ static void FireEvent(ScriptContext &script_context) {
     }
 
     pListener->FireGameEvent(game_event);
- }
+}
+
+static void FreeEvent(ScriptContext& script_context) {
+    auto game_event = script_context.GetArgument<IGameEvent*>(0);
+    if (!game_event) {
+            script_context.ThrowNativeError("Invalid game event");
+    }
+
+    globals::gameEventManager->FreeEvent(game_event);
+    managed_game_events.erase(std::remove(managed_game_events.begin(), managed_game_events.end(), game_event), managed_game_events.end());
+}
 
 static const char *GetEventName(ScriptContext &script_context) {
     IGameEvent *game_event = script_context.GetArgument<IGameEvent *>(0);
@@ -263,6 +273,7 @@ REGISTER_NATIVES(events, {
     ScriptEngine::RegisterNativeHandler("HOOK_EVENT", HookEvent);
     ScriptEngine::RegisterNativeHandler("UNHOOK_EVENT", UnhookEvent);
     ScriptEngine::RegisterNativeHandler("CREATE_EVENT", CreateEvent);
+    ScriptEngine::RegisterNativeHandler("FREE_EVENT", FreeEvent);
     ScriptEngine::RegisterNativeHandler("FIRE_EVENT", FireEvent);
     ScriptEngine::RegisterNativeHandler("FIRE_EVENT_TO_CLIENT", FireEventToClient);
 

@@ -35,6 +35,7 @@ using CounterStrikeSharp.API.Modules.Menu;
 using CounterStrikeSharp.API.Modules.Utils;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
+using static CounterStrikeSharp.API.Core.Listeners;
 
 namespace TestPlugin
 {
@@ -166,6 +167,19 @@ namespace TestPlugin
 
                 return HookResult.Continue;
             }), HookMode.Pre);
+
+            // Precache resources
+            RegisterListener<Listeners.OnServerPrecacheResources>((manifest) =>
+            {
+                manifest.AddResource("path/to/model");
+                manifest.AddResource("path/to/material");
+                manifest.AddResource("path/to/particle");
+            });
+        }
+        
+        public override void OnAllPluginsLoaded(bool hotReload)
+        {
+            Logger.LogInformation("All plugins loaded!");
         }
 
         private void SetupConvars()
@@ -331,7 +345,7 @@ namespace TestPlugin
 
         private void SetupMenus()
         {
-            // Chat Menu Example
+            // [Legacy] Chat Menu Example
             var largeMenu = new ChatMenu("Test Menu");
             for (int i = 1; i < 26; i++)
             {
@@ -530,7 +544,7 @@ namespace TestPlugin
         [ConsoleCommand("cssharp_attribute", "This is a custom attribute event")]
         public void OnCommand(CCSPlayerController? player, CommandInfo command)
         {
-            command.ReplyToCommand("cssharp_attribute called", true);
+            command.ReplyToCommand("cssharp_attribute called");
         }
 
         [ConsoleCommand("css_changelevel", "Changes map")]

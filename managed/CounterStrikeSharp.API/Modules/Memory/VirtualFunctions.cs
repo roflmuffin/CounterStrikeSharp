@@ -46,10 +46,10 @@ public static class VirtualFunctions
 
     public static Action<IntPtr, string> SetModel = SetModelFunc.Invoke;
 
-    public static MemoryFunctionVoid<nint, RoundEndReason, float> TerminateRoundFunc =
+    public static MemoryFunctionVoid<nint, RoundEndReason, float, nint, byte> TerminateRoundFunc =
         new(GameData.GetSignature("CCSGameRules_TerminateRound"));
 
-    public static Action<IntPtr, RoundEndReason, float> TerminateRound = TerminateRoundFunc.Invoke;
+    public static Action<IntPtr, RoundEndReason, float, nint, byte> TerminateRound = TerminateRoundFunc.Invoke;
 
     public static MemoryFunctionWithReturn<string, int, IntPtr> UTIL_CreateEntityByNameFunc =
         new(GameData.GetSignature("UTIL_CreateEntityByName"));
@@ -60,13 +60,14 @@ public static class VirtualFunctions
         new(GameData.GetSignature("CBaseEntity_DispatchSpawn"));
 
     public static Action<IntPtr, IntPtr> CBaseEntity_DispatchSpawn = CBaseEntity_DispatchSpawnFunc.Invoke;
-    
-    public static MemoryFunctionVoid<IntPtr> CCSPlayerPawn_RespawnFunc = new(GameData.GetSignature("CCSPlayerPawn_Respawn"));
 
-    public static Action<IntPtr> CCSPlayerPawn_Respawn = CCSPlayerPawn_RespawnFunc.Invoke;
-    
-    public static MemoryFunctionVoid<CEntityInstance, CTakeDamageInfo> CBaseEntity_TakeDamageOldFunc = new (GameData.GetSignature("CBaseEntity_TakeDamageOld"));
+    public static MemoryFunctionVoid<CBasePlayerController, CBasePlayerPawn, bool, bool> CBasePlayerController_SetPawnFunc = new (GameData.GetSignature("CBasePlayerController_SetPawn"));
+
+	public static MemoryFunctionVoid<CEntityInstance, CTakeDamageInfo> CBaseEntity_TakeDamageOldFunc = new (GameData.GetSignature("CBaseEntity_TakeDamageOld"));
     public static Action<CEntityInstance, CTakeDamageInfo> CBaseEntity_TakeDamageOld = CBaseEntity_TakeDamageOldFunc.Invoke;
+    
+    public static MemoryFunctionWithReturn<CCSPlayer_WeaponServices, CBasePlayerWeapon, bool> CCSPlayer_WeaponServices_CanUseFunc = new(GameData.GetSignature("CCSPlayer_WeaponServices_CanUse"));
+    public static Func<CCSPlayer_WeaponServices, CBasePlayerWeapon, bool> CCSPlayer_WeaponServices_CanUse = CCSPlayer_WeaponServices_CanUseFunc.Invoke;
     
     public static MemoryFunctionVoid<CCSPlayerPawnBase> CCSPlayerPawnBase_PostThinkFunc = new (GameData.GetSignature("CCSPlayerPawnBase_PostThink"));
     public static Action<CCSPlayerPawnBase> CCSPlayerPawnBase_PostThink = CCSPlayerPawnBase_PostThinkFunc.Invoke;

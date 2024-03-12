@@ -47,6 +47,7 @@ class CallbackManager;
 class ConVarManager;
 class PlayerManager;
 class MenuManager;
+class TickScheduler;
 class TimerSystem;
 class ChatCommands;
 class HookManager;
@@ -100,6 +101,7 @@ extern ChatCommands chatCommands;
 extern ChatManager chatManager;
 extern ServerManager serverManager;
 extern VoiceManager voiceManager;
+extern TickScheduler tickScheduler;
 
 extern HookManager hookManager;
 extern SourceHook::ISourceHook *source_hook;
@@ -109,6 +111,8 @@ extern CounterStrikeSharpMMPlugin *mmPlugin;
 extern ISmmAPI *ismm;
 extern CCoreConfig* coreConfig;
 extern CGameConfig* gameConfig;
+
+extern const float engine_fixed_tick_interval;
 
 typedef IGameEventListener2 *GetLegacyGameEventListener_t(CPlayerSlot slot);
 

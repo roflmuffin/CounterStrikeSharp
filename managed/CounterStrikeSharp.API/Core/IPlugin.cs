@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -15,6 +15,7 @@
  */
 
 using System;
+using CounterStrikeSharp.API.Core.Commands;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
@@ -52,11 +53,21 @@ namespace CounterStrikeSharp.API.Core
         /// </summary>
         void Unload(bool hotReload);
 
+        /// <summary>
+        /// Will be called by CounterStrikeSharp after all plugins have been loaded.
+        /// This will also be called for convenience after a reload or a late l oad, so that you don't have to handle
+        /// re-wiring everything.
+        /// </summary>
+        /// <param name="hotReload"></param>
+        void OnAllPluginsLoaded(bool hotReload);
+
         string ModulePath { get; internal set; }
 
         ILogger Logger { get; set; }
         
         IStringLocalizer Localizer { get; set; }
+        
+        ICommandManager CommandManager { get; set; }
 
         void RegisterAllAttributes(object instance);
 

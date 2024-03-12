@@ -10,17 +10,16 @@ namespace CounterStrikeSharp.API.Core;
 
 public partial class CCSPlayerController
 {
-    public int? UserId
-    {
-        get
-        {
-            return NativeAPI.GetUseridFromIndex((int)this.Index);
-        }
-    }
+    public int? UserId => NativeAPI.GetUseridFromIndex((int)Index);
+    public CsTeam Team => (CsTeam)TeamNum;
 
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
     public IntPtr GiveNamedItem(string item)
     {
+        Guard.IsValidEntity(this);
+
         if (!PlayerPawn.IsValid) return 0;
+        if (PlayerPawn.Value == null) return 0;
         if (!PlayerPawn.Value.IsValid) return 0;
         if (PlayerPawn.Value.ItemServices == null) return 0;
 
@@ -35,28 +34,40 @@ public partial class CCSPlayerController
             return IntPtr.Zero;
         }
 
-        return this.GiveNamedItem(itemString);
+        return GiveNamedItem(itemString);
     }
 
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
     public void PrintToConsole(string message)
     {
+        Guard.IsValidEntity(this);
+
         NativeAPI.PrintToConsole((int)Index, $"{message}\n\0");
     }
 
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
     public void PrintToChat(string message)
     {
-        VirtualFunctions.ClientPrint(this.Handle, HudDestination.Chat, message, 0, 0, 0, 0);
+        Guard.IsValidEntity(this);
+
+        VirtualFunctions.ClientPrint(Handle, HudDestination.Chat, message, 0, 0, 0, 0);
     }
 
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
     public void PrintToCenter(string message)
     {
-        VirtualFunctions.ClientPrint(this.Handle, HudDestination.Center, message, 0, 0, 0, 0);
+        Guard.IsValidEntity(this);
+
+        VirtualFunctions.ClientPrint(Handle, HudDestination.Center, message, 0, 0, 0, 0);
     }
 
     public void PrintToCenterHtml(string message) => PrintToCenterHtml(message, 5);
-    
+
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
     public void PrintToCenterHtml(string message, int duration)
     {
+        Guard.IsValidEntity(this);
+
         var @event = new EventShowSurvivalRespawnStatus(true)
         {
             LocToken = message,
@@ -64,30 +75,38 @@ public partial class CCSPlayerController
             Userid = this
         };
         @event.FireEventToClient(this);
+        @event.Free();
     }
 
     /// <summary>
     /// Drops the active player weapon on the ground.
     /// </summary>
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
     public void DropActiveWeapon()
     {
+        Guard.IsValidEntity(this);
         if (!PlayerPawn.IsValid) return;
+        if (PlayerPawn.Value == null) return;
         if (!PlayerPawn.Value.IsValid) return;
         if (PlayerPawn.Value.ItemServices == null) return;
         if (PlayerPawn.Value.WeaponServices == null) return;
         if (!PlayerPawn.Value.WeaponServices.ActiveWeapon.IsValid) return;
 
         CCSPlayer_ItemServices itemServices = new CCSPlayer_ItemServices(PlayerPawn.Value.ItemServices.Handle);
-        CCSPlayer_WeaponServices weponServices = new CCSPlayer_WeaponServices(PlayerPawn.Value.WeaponServices.Handle);
-        itemServices.DropActivePlayerWeapon(weponServices.ActiveWeapon.Value);
+        CCSPlayer_WeaponServices weaponServices = new CCSPlayer_WeaponServices(PlayerPawn.Value.WeaponServices.Handle);
+        
+        itemServices.DropActivePlayerWeapon(weaponServices.ActiveWeapon.Value);
     }
 
     /// <summary>
     /// Removes every weapon from the player.
     /// </summary>
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
     public void RemoveWeapons()
     {
+        Guard.IsValidEntity(this);
         if (!PlayerPawn.IsValid) return;
+        if (PlayerPawn.Value == null) return;
         if (!PlayerPawn.Value.IsValid) return;
         if (PlayerPawn.Value.ItemServices == null) return;
 
@@ -100,9 +119,12 @@ public partial class CCSPlayerController
     /// </summary>
     /// <param name="explode"></param>
     /// <param name="force"></param>
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
     public void CommitSuicide(bool explode, bool force)
     {
+        Guard.IsValidEntity(this);
         if (!PlayerPawn.IsValid) return;
+        if (PlayerPawn.Value == null) return;
         if (!PlayerPawn.Value.IsValid) return;
 
         PlayerPawn.Value.CommitSuicide(explode, force);
@@ -111,12 +133,16 @@ public partial class CCSPlayerController
     /// <summary>
     /// Respawn player
     /// </summary>
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
     public void Respawn()
     {
+        Guard.IsValidEntity(this);
         if (!PlayerPawn.IsValid) return;
+        if (PlayerPawn.Value == null) return;
         if (!PlayerPawn.Value.IsValid) return;
 
-        VirtualFunctions.CCSPlayerPawn_Respawn(PlayerPawn.Value.Handle);
+        // The Call To Arms update appears to have invalidated the need for CCSPlayerPawn_Respawn.
+        SetPawn(PlayerPawn.Value);
         VirtualFunction.CreateVoid<IntPtr>(Handle, GameData.GetOffset("CCSPlayerController_Respawn"))(Handle);
     }
 
@@ -126,9 +152,12 @@ public partial class CCSPlayerController
     /// Forcibly switches the team of the player, the player will remain alive and keep their weapons.
     /// </summary>
     /// <param name="team">The team to switch to</param>
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
     public void SwitchTeam(CsTeam team)
     {
-        VirtualFunctions.SwitchTeam(this.Handle, (byte)team);
+        Guard.IsValidEntity(this);
+
+        VirtualFunctions.SwitchTeam(Handle, (byte)team);
     }
 
     /// <summary>
@@ -138,8 +167,11 @@ public partial class CCSPlayerController
     /// </remarks>
     /// </summary>
     /// <param name="team">The team to change to</param>
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
     public void ChangeTeam(CsTeam team)
     {
+        Guard.IsValidEntity(this);
+
         VirtualFunction.CreateVoid<IntPtr, CsTeam>(Handle, GameData.GetOffset("CCSPlayerController_ChangeTeam"))(Handle,
             team);
     }
@@ -149,9 +181,12 @@ public partial class CCSPlayerController
     /// </summary>
     /// <param name="conVar">Name of the convar to retrieve</param>
     /// <returns>ConVar string value</returns>
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
     public string GetConVarValue(string conVar)
     {
-        return NativeAPI.GetClientConvarValue(this.Slot, conVar);
+        Guard.IsValidEntity(this);
+
+        return NativeAPI.GetClientConvarValue(Slot, conVar);
     }
 
     public string GetConVarValue(ConVar? conVar)
@@ -169,15 +204,14 @@ public partial class CCSPlayerController
     /// </summary>
     /// <param name="conVar">Console variable name</param>
     /// <param name="value">String value to set</param>
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
     /// <exception cref="InvalidOperationException">Player is not a bot</exception>
     public void SetFakeClientConVar(string conVar, string value)
     {
-        if (!IsBot)
-        {
-            throw new InvalidOperationException("'SetFakeClientConVar' can only be called for fake clients (bots)");
-        }
+        Guard.IsValidEntity(this);
+        if (!IsBot) throw new InvalidOperationException("'SetFakeClientConVar' can only be called for fake clients (bots)");
 
-        NativeAPI.SetFakeClientConvarValue(this.Slot, conVar, value);
+        NativeAPI.SetFakeClientConvarValue(Slot, conVar, value);
     }
 
     /// <summary>
@@ -200,20 +234,50 @@ public partial class CCSPlayerController
     /// </summary>
     public PlayerButtons Buttons => (PlayerButtons)Pawn.Value.MovementServices!.Buttons.ButtonStates[0];
 
-    public void ExecuteClientCommand(string command) => NativeAPI.IssueClientCommand(Slot, command);
+    /// <summary>
+    /// Issue the specified command to the specified client (mimics that client typing the command at the console).
+    /// Note: Only works for some commands, marked with the FCVAR_CLIENT_CAN_EXECUTE flag (not many).
+    /// </summary>
+    /// <param name="command"></param>
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
+    public void ExecuteClientCommand(string command)
+    {
+        Guard.IsValidEntity(this);
+
+        NativeAPI.IssueClientCommand(Slot, command);
+    }
+
+    /// <summary>
+    /// Issue the specified command directly from the server (mimics the server executing the command with the given player context).
+    /// <remarks>Works with server commands like `kill`, `explode`, `noclip`, etc. </remarks>
+    /// </summary>
+    /// <param name="command"></param>
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
+    public void ExecuteClientCommandFromServer(string command)
+    {
+        Guard.IsValidEntity(this);
+
+        NativeAPI.IssueClientCommandFromServer(Slot, command);
+    }
 
     /// <summary>
     /// Overrides who a player can hear in voice chat.
     /// </summary>
     /// <param name="sender">Player talking in the voice chat</param>
     /// <param name="override">Whether the talker should be heard</param>
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
     public void SetListenOverride(CCSPlayerController sender, ListenOverride @override)
     {
+        Guard.IsValidEntity(this);
+
         NativeAPI.SetClientListening(Handle, sender.Handle, (Byte)@override);
     }
-    
+
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
     public ListenOverride GetListenOverride(CCSPlayerController sender)
     {
+        Guard.IsValidEntity(this);
+
         return NativeAPI.GetClientListening(Handle, sender.Handle);
     }
 
@@ -222,28 +286,32 @@ public partial class CCSPlayerController
     /// <summary>
     /// Returns the authorized SteamID of this user which has been validated with the SteamAPI.
     /// </summary>
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
     public SteamID? AuthorizedSteamID
     {
         get
         {
-            if (!this.IsValid) return null;
-            var authorizedSteamId = NativeAPI.GetPlayerAuthorizedSteamid(this.Slot);
+            Guard.IsValidEntity(this);
+
+            var authorizedSteamId = NativeAPI.GetPlayerAuthorizedSteamid(Slot);
             if ((long)authorizedSteamId == -1) return null;
 
             return (SteamID)authorizedSteamId;
         }
     }
-    
+
     /// <summary>
     /// Returns the IP address (and possibly port) of this player.
     /// <remarks>Returns 127.0.0.1 if the player is a bot.</remarks>
     /// </summary>
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
     public string? IpAddress
     {
         get
         {
-            if (!this.IsValid) return null;
-            var ipAddress = NativeAPI.GetPlayerIpAddress(this.Slot);
+            Guard.IsValidEntity(this);
+
+            var ipAddress = NativeAPI.GetPlayerIpAddress(Slot);
             if (string.IsNullOrWhiteSpace(ipAddress)) return null;
 
             return ipAddress;
@@ -253,11 +321,19 @@ public partial class CCSPlayerController
     /// <summary>
     /// Determines how the player interacts with voice chat.
     /// </summary>
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
     public VoiceFlags VoiceFlags
     {
-        get => (VoiceFlags)NativeAPI.GetClientVoiceFlags(Handle);
+        get
+        {
+            Guard.IsValidEntity(this);
+
+            return (VoiceFlags)NativeAPI.GetClientVoiceFlags(Handle);
+        }
         set
         {
+            Guard.IsValidEntity(this);
+
             NativeAPI.SetClientVoiceFlags(Handle, (Byte)value);
         }
     }

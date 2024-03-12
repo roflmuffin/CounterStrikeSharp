@@ -18,8 +18,10 @@ SET(SOURCE_FILES
     src/mm_plugin.h
     libraries/hl2sdk-cs2/tier1/convar.cpp
     libraries/hl2sdk-cs2/tier1/generichash.cpp
+    libraries/hl2sdk-cs2/tier1/keyvalues3.cpp
     libraries/hl2sdk-cs2/entity2/entityidentity.cpp
     libraries/hl2sdk-cs2/entity2/entitysystem.cpp
+    libraries/hl2sdk-cs2/entity2/entitykeyvalues.cpp
     libraries/dotnet/hostfxr.h
     libraries/dotnet/coreclr_delegates.h
     libraries/metamod-source/core/sourcehook/sourcehook.cpp
@@ -47,6 +49,8 @@ SET(SOURCE_FILES
     src/core/managers/event_manager.cpp
     src/core/timer_system.h
     src/core/timer_system.cpp
+    src/core/tick_scheduler.h
+    src/core/tick_scheduler.cpp
     src/scripting/autonative.h
     src/scripting/natives/natives_engine.cpp
     src/core/engine_trace.h
@@ -88,6 +92,8 @@ SET(SOURCE_FILES
     src/core/managers/voice_manager.cpp
     src/core/managers/voice_manager.h
     src/scripting/natives/natives_dynamichooks.cpp
+    src/core/game_system.h
+    src/core/game_system.cpp
 )
 
 
@@ -99,8 +105,8 @@ if (LINUX)
     )
 endif()
 
-set(PROTO_DIRS -I${CMAKE_CURRENT_SOURCE_DIR}/libraries/GameTracking-CS2/Protobufs)
-file(GLOB PROTOS "${CMAKE_CURRENT_SOURCE_DIR}/libraries/GameTracking-CS2/Protobufs/*.proto")
+set(PROTO_DIRS -I${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo)
+file(GLOB PROTOS "${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo/*.proto")
 
 ## Generate protobuf source & headers
 if (LINUX)

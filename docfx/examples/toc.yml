@@ -3,6 +3,8 @@ items:
     href: HelloWorld.md
   - name: Commands
     href: WithCommands.md
+  - name: Fake ConVars
+    href: WithFakeConvars.md
   - name: Config
     href: WithConfig.md
   - name: Dependency Injection
@@ -13,6 +15,8 @@ items:
     href: WithGameEventHandlers.md
   - name: Database (Dapper)
     href: WithDatabase.md
+  - name: Shared Plugin Types
+    href: WithSharedTypes.md
   - name: Translations
     href: WithTranslations.md
   - name: Voice Overrides
