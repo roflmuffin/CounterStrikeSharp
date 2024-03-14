@@ -37,7 +37,10 @@ public:
     void AddTaskForNextWorldUpdate(std::function<void()>&& task);
     void OnPrecacheResources(IEntityResourceManifest* pResourceManifest);
 
-private:
+    void OnPreEntityThink();
+    void OnPostEntityThink();
+
+  private:
     void ServerHibernationUpdate(bool bHibernating);
     void GameServerSteamAPIActivated();
     void GameServerSteamAPIDeactivated();
@@ -56,6 +59,9 @@ private:
     ScriptCallback *on_server_pre_world_update;
 
     ScriptCallback *on_server_precache_resources;
+
+    ScriptCallback *on_server_pre_entity_think;
+    ScriptCallback *on_server_post_entity_think;
 
     moodycamel::ConcurrentQueue<std::function<void()>> m_nextWorldUpdateTasks;
 };
