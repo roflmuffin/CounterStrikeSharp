@@ -50,6 +50,18 @@ void EntityManager::OnAllInitialized()
     funchook_prepare(m_hook, (void**)&m_pFireOutputInternal, (void*)&DetourFireOutputInternal);
     funchook_install(m_hook, 0);
 
+    m_pEmitSoundFilter =
+        reinterpret_cast<CBaseEntity_EmitSoundFilter>(modules::server->FindSignature(
+    globals::gameConfig->GetSignature("CBaseEntity_EmitSoundFilter")));
+
+    if (m_pEmitSoundFilter == nullptr) {
+        CSSHARP_CORE_CRITICAL(
+            "Failed to find signature for \'CBaseEntity_EmitSoundFilter\'");
+        return;
+    }
+
+    CSSHARP_CORE_INFO("SoundFilter -> {0}", (void*) m_pEmitSoundFilter);
+
     // Listener is added in ServerStartup as entity system is not initialised at this stage.
 }
 

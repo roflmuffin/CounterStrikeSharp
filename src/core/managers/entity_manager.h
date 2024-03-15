@@ -27,6 +27,8 @@
 
 #include <variant.h>
 
+#include "core/emitsound_t.h"
+
 namespace counterstrikesharp {
 class ScriptCallback;
 
@@ -110,5 +112,9 @@ static void DetourFireOutputInternal(CEntityIOOutput* const pThis, CEntityInstan
                                      CEntityInstance* pCaller, const CVariant* const value, float flDelay);
 
 static FireOutputInternal m_pFireOutputInternal = nullptr;
+
+typedef SndOpEventGuid_t(__fastcall* CBaseEntity_EmitSoundFilter)(IRecipientFilter& filter,
+                                                 CEntityIndex ent, const EmitSound_t& params);
+static CBaseEntity_EmitSoundFilter m_pEmitSoundFilter = nullptr;
 
 }  // namespace counterstrikesharp

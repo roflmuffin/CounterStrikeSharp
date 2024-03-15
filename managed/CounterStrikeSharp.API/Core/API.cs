@@ -714,6 +714,27 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static void EmitSoundFilter(uint entindex, string soundname, soundlevel_t soundlevel, int pitch, float volume, int channel, int soundflags, int recipientscount, object[] recipients){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(entindex);
+			ScriptContext.GlobalScriptContext.Push(soundname);
+			ScriptContext.GlobalScriptContext.Push(soundlevel);
+			ScriptContext.GlobalScriptContext.Push(pitch);
+			ScriptContext.GlobalScriptContext.Push(volume);
+			ScriptContext.GlobalScriptContext.Push(channel);
+			ScriptContext.GlobalScriptContext.Push(soundflags);
+			ScriptContext.GlobalScriptContext.Push(recipientscount);
+			foreach (var obj in recipients)
+			{
+				ScriptContext.GlobalScriptContext.Push(obj);
+			}
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x43C4A2B3);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
         public static void HookEvent(string name, InputArgument callback, bool ispost){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();

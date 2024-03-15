@@ -12,3 +12,4 @@ GET_PLAYER_AUTHORIZED_STEAMID: slot:int -> uint64
 GET_PLAYER_IP_ADDRESS: slot:int -> string
 HOOK_ENTITY_OUTPUT: classname:string, outputName:string, callback:func, mode:HookMode -> void
 UNHOOK_ENTITY_OUTPUT: classname:string, outputName:string, callback:func, mode:HookMode -> void
+EMIT_SOUND_FILTER: entIndex:uint, soundName:string, soundLevel:soundlevel_t, pitch:int, volume:float, channel:int, soundFlags:int, recipientsCount:int, recipients:object[] -> void

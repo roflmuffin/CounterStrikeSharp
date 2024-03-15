@@ -41,4 +41,14 @@ public partial class CBaseEntity
 
         return (T) Activator.CreateInstance(typeof(T), Marshal.ReadIntPtr(SubclassID.Handle + 4));
     }
+
+    public void EmitSound(string soundName, soundlevel_t soundLevel = soundlevel_t.SNDLVL_NORM, int pitch = 100, float volume = 1f, int channel = 0, int soundFlags = 0, CRecipientFilter? filter = null)
+    {
+        Guard.IsValidEntity(this);
+
+        if (filter != null)
+            NativeAPI.EmitSoundFilter(Index, soundName, soundLevel, pitch, volume, channel, soundFlags, filter.GetRecipientCount(), filter.GetRecipientsArray());
+        else
+            NativeAPI.EmitSoundFilter(Index, soundName, soundLevel, pitch, volume, channel, soundFlags, 0, Array.Empty<object>());
+    }
 }

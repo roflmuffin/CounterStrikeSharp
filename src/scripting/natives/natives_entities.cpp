@@ -26,6 +26,8 @@
 
 #include <public/entity2/entitysystem.h>
 
+#include "core/recipientfilter.h"
+
 namespace counterstrikesharp {
 
 CBaseEntity* GetEntityFromIndex(ScriptContext& script_context) {
@@ -69,7 +71,7 @@ void* GetEntityPointerFromHandle(ScriptContext& scriptContext) {
 
 void* GetEntityPointerFromRef(ScriptContext& scriptContext) {
     if (!globals::entitySystem) {
-        scriptContext.ThrowNativeError("Entity system yet is not initialized");
+        scriptContext.ThrowNativeError("Entity system is not yet initialized");
         return nullptr;
     }
 
@@ -104,7 +106,7 @@ unsigned int GetRefFromEntityPointer(ScriptContext& scriptContext) {
 
 bool IsRefValidEntity(ScriptContext& scriptContext) {
     if (!globals::entitySystem) {
-        scriptContext.ThrowNativeError("Entity system yet is not initialized");
+        scriptContext.ThrowNativeError("Entity system is not yet initialized");
         return false;
     }
 
@@ -193,6 +195,41 @@ void UnhookEntityOutput(ScriptContext& script_context)
     globals::entityManager.UnhookEntityOutput(szClassname, szOutput, callback, mode);
 }
 
+void EmitSoundFilter(ScriptContext& script_context)
+{
+    auto entIndex = script_context.GetArgument<unsigned int>(0);
+    auto soundName = script_context.GetArgument<const char*>(1);
+    auto soundLvl = script_context.GetArgument<soundlevel_t>(2);
+    auto pitch = script_context.GetArgument<int>(3);
+    auto volume = script_context.GetArgument<float>(4);
+    auto channel = script_context.GetArgument<int>(5);
+    auto soundFlags = script_context.GetArgument<int>(6);
+
+    CRecipientFilter filter;
+    EmitSound_t params;
+
+    params.m_pSoundName = soundName;
+    params.m_SoundLevel = soundLvl;
+    params.m_nPitch = pitch;
+    params.m_flVolume = volume;
+    params.m_nChannel = channel;
+    params.m_nFlags = soundFlags;
+
+    auto recipientCount = script_context.GetArgument<int>(7);
+    
+    // If managed side defined recipient players, add them
+    if (recipientCount != 0)
+    {
+        for (int i = 0; i < recipientCount; ++i)
+            filter.AddRecipient(script_context.GetArgument<int>(8 + i));
+    } else // else we add all the valid players into filter
+    {
+        filter.AddAllPlayers();
+    }
+
+    m_pEmitSoundFilter(filter, CEntityIndex(entIndex), params);
+}
+
 REGISTER_NATIVES(entities, {
     ScriptEngine::RegisterNativeHandler("GET_ENTITY_FROM_INDEX", GetEntityFromIndex);
     ScriptEngine::RegisterNativeHandler("GET_USERID_FROM_INDEX", GetUserIdFromIndex);
@@ -209,5 +246,6 @@ REGISTER_NATIVES(entities, {
     ScriptEngine::RegisterNativeHandler("GET_PLAYER_IP_ADDRESS", GetPlayerIpAddress);
     ScriptEngine::RegisterNativeHandler("HOOK_ENTITY_OUTPUT", HookEntityOutput);
     ScriptEngine::RegisterNativeHandler("UNHOOK_ENTITY_OUTPUT", UnhookEntityOutput);
+    ScriptEngine::RegisterNativeHandler("EMIT_SOUND_FILTER", EmitSoundFilter);
 })
 }  // namespace counterstrikesharp
