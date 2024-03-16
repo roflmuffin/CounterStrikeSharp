@@ -43,7 +43,8 @@ public:
         m_Recipients.RemoveAll();
 
         for (int i = 0; i < 64; i++) {
-            if (!counterstrikesharp::globals::playerManager.GetPlayerBySlot(i))
+            counterstrikesharp::CPlayer* player = counterstrikesharp::globals::playerManager.GetPlayerBySlot(i);
+            if (player == nullptr || !player->IsConnected() || !player->IsAuthorized())
                 continue;
 
             AddRecipient(i);

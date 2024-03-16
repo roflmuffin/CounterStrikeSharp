@@ -227,7 +227,10 @@ void EmitSoundFilter(ScriptContext& script_context)
         filter.AddAllPlayers();
     }
 
-    m_pEmitSoundFilter(filter, CEntityIndex(entIndex), params);
+    ConMsg("recipient result -> %d\n", filter.GetRecipientCount());
+
+    SndOpEventGuid_t guid;
+    CBaseEntity_EmitSoundFilter(guid, filter, CEntityIndex(entIndex), params);
 }
 
 REGISTER_NATIVES(entities, {

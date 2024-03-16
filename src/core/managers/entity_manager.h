@@ -113,8 +113,7 @@ static void DetourFireOutputInternal(CEntityIOOutput* const pThis, CEntityInstan
 
 static FireOutputInternal m_pFireOutputInternal = nullptr;
 
-typedef SndOpEventGuid_t(__fastcall* CBaseEntity_EmitSoundFilter)(IRecipientFilter& filter,
-                                                 CEntityIndex ent, const EmitSound_t& params);
-static CBaseEntity_EmitSoundFilter m_pEmitSoundFilter = nullptr;
-
+inline void(__fastcall* CBaseEntity_EmitSoundFilter)(SndOpEventGuid_t& guid,
+                                                     IRecipientFilter& filter,
+                                                     CEntityIndex ent, const EmitSound_t& params);
 }  // namespace counterstrikesharp
