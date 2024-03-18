@@ -28,19 +28,66 @@ namespace CounterStrikeSharp.API
 {
     public class Server
     {
-        public static float TickInterval => NativeAPI.GetTickInterval();
+        /// <summary>
+        /// Duration of a single game tick in seconds, based on a 64 tick server (hard coded in CS2).
+        /// </summary>
+        public static float TickInterval => 0.015625f;
 
+        /// <summary>
+        /// Executes a command on the server, as if it was entered from the console.
+        /// </summary>
+        /// <param name="command"></param>
         public static void ExecuteCommand(string command) => NativeAPI.IssueServerCommand(command);
 
         public static string MapName => NativeAPI.GetMapName();
-        // public static void PrintToConsole(string message) => NativeAPI.PrintToConsole(message);
 
+        /// <summary>
+        /// Returns the total time the server has been running in seconds.
+        /// </summary>
+        /// <remarks>Does not increment when server is hibernating</remarks>
         public static double TickedTime => NativeAPI.GetTickedTime();
+        
+        /// <summary>
+        /// Returns the current map time in seconds, as an interval of the server's tick interval.
+        /// e.g. 70.046875 would represent 70 seconds of map time and the 4483rd tick of the server (70.046875 / 0.015625).
+        /// </summary>
+        /// <remarks>Increments even when server is hibernating</remarks>
         public static float CurrentTime => NativeAPI.GetCurrentTime();
+        
+        /// <summary>
+        /// Returns the current map tick count.
+        /// CS2 is a 64 tick server, so the value will increment by 64 every second.
+        /// </summary>
         public static int TickCount => NativeAPI.GetTickCount();
-        public static float GameFrameTime => NativeAPI.GetGameFrameTime();
+        
+        /// <summary>
+        /// Returns the total time the server has been running in seconds.
+        /// </summary>
+        /// <remarks>Increments even when server is hibernating</remarks>
         public static double EngineTime => NativeAPI.GetEngineTime();
+        
         public static void PrecacheModel(string name) => NativeAPI.PrecacheModel(name);
+        
+        /// <summary>
+        /// <inheritdoc cref="RunOnTick"/>
+        /// Returns Task that completes once the synchronous task has been completed.
+        /// </summary>
+        public static Task RunOnTickAsync(int tick, Action task)
+        {
+            var functionReference = FunctionReference.Create(task, FunctionLifetime.SingleUse);
+            NativeAPI.QueueTaskForFrame(tick, functionReference);
+            return functionReference.CompletionTask;
+        }
+        
+        /// <summary>
+        /// Queue a task to be executed on the specified tick.
+        /// See <see cref="TickCount"/> to retrieve the current tick.
+        /// <remarks>Does not execute if the server is hibernating.</remarks>
+        /// </summary>
+        public static void RunOnTick(int tick, Action task)
+        {
+            RunOnTickAsync(tick, task);
+        }
 
         /// <summary>
         /// <inheritdoc cref="NextFrame"/>

@@ -49,6 +49,8 @@ SET(SOURCE_FILES
     src/core/managers/event_manager.cpp
     src/core/timer_system.h
     src/core/timer_system.cpp
+    src/core/tick_scheduler.h
+    src/core/tick_scheduler.cpp
     src/scripting/autonative.h
     src/scripting/natives/natives_engine.cpp
     src/core/engine_trace.h
