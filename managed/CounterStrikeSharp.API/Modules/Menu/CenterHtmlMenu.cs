@@ -24,14 +24,15 @@ public class CenterHtmlMenu : BaseMenu
     public CenterHtmlMenu(string title) : base(ModifyTitle(title))
     {
     }
-        
-    public override ChatMenuOption AddMenuOption(string display, Action<CCSPlayerController, ChatMenuOption> onSelect, bool disabled = false)
+
+    public override ChatMenuOption AddMenuOption(string display, Action<CCSPlayerController, ChatMenuOption> onSelect,
+        bool disabled = false)
     {
         var option = new ChatMenuOption(ModifyOptionDisplay(display), disabled, onSelect);
         MenuOptions.Add(option);
         return option;
     }
-        
+
     private static string ModifyTitle(string title)
     {
         if (title.Length > 32)
@@ -59,14 +60,15 @@ public class CenterHtmlMenuInstance : BaseMenuInstance
 {
     private readonly BasePlugin _plugin;
     public override int NumPerPage => 5; // one less than the actual number of items per page to avoid truncated options
-        
+    protected override int MenuItemsPerPage => (Menu.ExitButton ? 0 : 1) + ((HasPrevButton && HasNextButton) ? NumPerPage - 1 : NumPerPage);
+
     public CenterHtmlMenuInstance(BasePlugin plugin, CCSPlayerController player, IMenu menu) : base(player, menu)
     {
         _plugin = plugin;
         RemoveOnTickListener();
         plugin.RegisterListener<Core.Listeners.OnTick>(Display);
     }
-        
+
     public override void Display()
     {
         if (MenuManager.GetActiveMenu(Player) != this)
@@ -74,7 +76,7 @@ public class CenterHtmlMenuInstance : BaseMenuInstance
             Reset();
             return;
         }
-            
+
         var builder = new StringBuilder();
         builder.Append($"<b><font color='yellow'>{Menu.Title}</font></b>");
         builder.AppendLine("<br>");
@@ -88,7 +90,7 @@ public class CenterHtmlMenuInstance : BaseMenuInstance
             builder.Append($"<font color='{color}'>!{keyOffset++}</font> {option.Text}");
             builder.AppendLine("<br>");
         }
-            
+
         if (HasPrevButton)
         {
             builder.AppendFormat("<font color='yellow'>!7</font> &#60;- Prev");
@@ -101,18 +103,21 @@ public class CenterHtmlMenuInstance : BaseMenuInstance
             builder.AppendLine("<br>");
         }
 
-        builder.AppendFormat("<font color='red'>!9</font> -> Close");
-        builder.AppendLine("<br>");
+        if (Menu.ExitButton)
+        {
+            builder.AppendFormat("<font color='red'>!9</font> -> Close");
+            builder.AppendLine("<br>");
+        }
 
         var currentPageText = builder.ToString();
         Player.PrintToCenterHtml(currentPageText);
     }
 
-    public override void Reset()
+    public override void Close()
     {
-        base.Reset();
+        base.Close();
         RemoveOnTickListener();
-            
+
         // Send a blank message to clear the menu
         Player.PrintToCenterHtml(" ");
     }
