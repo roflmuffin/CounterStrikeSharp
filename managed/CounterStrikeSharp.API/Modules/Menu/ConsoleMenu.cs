@@ -21,6 +21,11 @@ public class ConsoleMenu : BaseMenu
     public ConsoleMenu(string title) : base(title)
     {
     }
+
+    public override void Open(CCSPlayerController player)
+    {
+        MenuManager.OpenConsoleMenu(player, this);
+    }
 }
 
 public class ConsoleMenuInstance : BaseMenuInstance

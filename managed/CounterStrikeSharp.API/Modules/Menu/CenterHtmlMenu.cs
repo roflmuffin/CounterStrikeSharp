@@ -21,8 +21,22 @@ namespace CounterStrikeSharp.API.Modules.Menu;
 
 public class CenterHtmlMenu : BaseMenu
 {
+    private readonly BasePlugin? _plugin;
+
+    public CenterHtmlMenu(string title, BasePlugin plugin) : base(ModifyTitle(title))
+    {
+        _plugin = plugin;
+    }
+    
     public CenterHtmlMenu(string title) : base(ModifyTitle(title))
     {
+    }
+    
+    public override void Open(CCSPlayerController player)
+    {
+        if (_plugin == null) return; 
+        
+        MenuManager.OpenCenterHtmlMenu(_plugin, player, this);
     }
 
     public override ChatMenuOption AddMenuOption(string display, Action<CCSPlayerController, ChatMenuOption> onSelect,
