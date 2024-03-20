@@ -215,12 +215,12 @@ void EmitSoundFilter(ScriptContext& script_context)
     params.m_flVolume = volume;
     params.m_nChannel = channel;
     params.m_nFlags = soundFlags;
-
-    auto recipientCount = script_context.GetArgument<int>(8);
     
     // If managed side defined recipient players, add them
     if (suppliedCustomFilter)
     {
+        auto recipientCount = script_context.GetArgument<int>(8);
+
         for (int i = 0; i < recipientCount; ++i)
             filter.AddRecipient(script_context.GetArgument<int>(9 + i));
     } else // else we add all the valid players into filter
