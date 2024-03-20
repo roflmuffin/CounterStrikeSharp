@@ -1118,6 +1118,16 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static void RemoveAllNetworkVectorElements(IntPtr vec){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(vec);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x67206C08);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
         public static short GetSchemaOffset(string classname, string propname){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();

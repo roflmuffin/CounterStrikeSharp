@@ -42,7 +42,7 @@ public class ConsoleMenuInstance : BaseMenuInstance
         {
             var option = Menu.MenuOptions[i];
 
-            Player.PrintToConsole($"{(option.Disabled ? "[Enabled]" : "[Disabled] - ")} css_{keyOffset++} {option.Text}");
+            Player.PrintToConsole($"{(option.Disabled ? "[Disabled] - " : "[Enabled]")} css_{keyOffset++} {option.Text}");
         }
             
         if (HasPrevButton)
@@ -53,6 +53,11 @@ public class ConsoleMenuInstance : BaseMenuInstance
         if (HasNextButton)
         {
             Player.PrintToConsole("css_8 -> Next");
+        }
+        
+        if (Menu.ExitButton)
+        {
+            Player.PrintToConsole("css_9 -> Close");
         }
     }
 }
