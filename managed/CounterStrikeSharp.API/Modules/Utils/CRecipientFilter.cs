@@ -13,24 +13,27 @@
  *  You should have received a copy of the GNU General Public License
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
-
 namespace CounterStrikeSharp.API.Modules.Utils;
 
+/// <summary>
+/// A generic filter for determining whom to send message/sounds etc.
+/// to and providing a bit of additional state information
+/// </summary>
 public class CRecipientFilter
 {
     private List<int> recipients = new();
 
     public int GetRecipientCount() => recipients.Count;
 
-    public int GetRecipientIndex(int slot)
+    public int GetRecipientByIndex(int index)
     {
-        if (slot < 0 || slot > GetRecipientCount())
+        if (index < 0 || index > GetRecipientCount())
             return -1;
 
-        return recipients[slot];
+        return recipients[index];
     }
 
-    public void AddRecipient(int slot) => recipients.Add(slot);
+    public void AddRecipient(int playerSlot) => recipients.Add(playerSlot);
 
-    public object[] GetRecipientsArray() => recipients.Cast<object>().ToArray(); // This is so pain in the ass
+    internal object[] GetRecipientsArray() => recipients.Cast<object>().ToArray(); // For NativeAPI call
 }

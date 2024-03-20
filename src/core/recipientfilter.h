@@ -44,7 +44,7 @@ public:
 
         for (int i = 0; i < 64; i++) {
             counterstrikesharp::CPlayer* player = counterstrikesharp::globals::playerManager.GetPlayerBySlot(i);
-            if (player == nullptr || !player->IsConnected() || !player->IsAuthorized())
+            if (player == nullptr || !player->IsConnected()) // Since the cssharp doesn't remove player from the array
                 continue;
 
             AddRecipient(i);

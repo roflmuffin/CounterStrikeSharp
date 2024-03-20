@@ -204,6 +204,7 @@ void EmitSoundFilter(ScriptContext& script_context)
     auto volume = script_context.GetArgument<float>(4);
     auto channel = script_context.GetArgument<int>(5);
     auto soundFlags = script_context.GetArgument<int>(6);
+    auto suppliedCustomFilter = script_context.GetArgument<bool>(7);
 
     CRecipientFilter filter;
     EmitSound_t params;
@@ -215,19 +216,17 @@ void EmitSoundFilter(ScriptContext& script_context)
     params.m_nChannel = channel;
     params.m_nFlags = soundFlags;
 
-    auto recipientCount = script_context.GetArgument<int>(7);
+    auto recipientCount = script_context.GetArgument<int>(8);
     
     // If managed side defined recipient players, add them
-    if (recipientCount != 0)
+    if (suppliedCustomFilter)
     {
         for (int i = 0; i < recipientCount; ++i)
-            filter.AddRecipient(script_context.GetArgument<int>(8 + i));
+            filter.AddRecipient(script_context.GetArgument<int>(9 + i));
     } else // else we add all the valid players into filter
     {
         filter.AddAllPlayers();
     }
-
-    ConMsg("recipient result -> %d\n", filter.GetRecipientCount());
 
     SndOpEventGuid_t guid;
     CBaseEntity_EmitSoundFilter(guid, filter, CEntityIndex(entIndex), params);

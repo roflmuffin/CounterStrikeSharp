@@ -42,13 +42,24 @@ public partial class CBaseEntity
         return (T) Activator.CreateInstance(typeof(T), Marshal.ReadIntPtr(SubclassID.Handle + 4));
     }
 
+    /// <summary>
+    /// Plays a sound on an entity.
+    /// </summary>
+    /// <param name="soundName">Sound event name</param>
+    /// <param name="soundLevel">A modifier for the distance this sound will reach.</param>
+    /// <param name="pitch">The pitch applied to the sound. 100 means the pitch is not changed.</param>
+    /// <param name="volume">The volume of the sound, not working currently.</param>
+    /// <param name="channel">The sound channel.</param>
+    /// <param name="soundFlags">The flags of the sound.</param>
+    /// <param name="filter">If set, the sound will only be networked to the clients in the filter.</param>
+    /// <exception cref="InvalidOperationException">Invalid entity</exception>
     public void EmitSound(string soundName, soundlevel_t soundLevel = soundlevel_t.SNDLVL_NORM, int pitch = 100, float volume = 1f, int channel = 0, int soundFlags = 0, CRecipientFilter? filter = null)
     {
         Guard.IsValidEntity(this);
 
         if (filter != null)
-            NativeAPI.EmitSoundFilter(Index, soundName, soundLevel, pitch, volume, channel, soundFlags, filter.GetRecipientCount(), filter.GetRecipientsArray());
+            NativeAPI.EmitSoundFilter(this.Index, soundName, soundLevel, pitch, volume, channel, soundFlags, true, filter.GetRecipientCount(), filter.GetRecipientsArray());
         else
-            NativeAPI.EmitSoundFilter(Index, soundName, soundLevel, pitch, volume, channel, soundFlags, 0, Array.Empty<object>());
+            NativeAPI.EmitSoundFilter(this.Index, soundName, soundLevel, pitch, volume, channel, soundFlags, false, 0, Array.Empty<object>());
     }
 }

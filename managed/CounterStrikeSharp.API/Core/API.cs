@@ -714,7 +714,7 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
-        public static void EmitSoundFilter(uint entindex, string soundname, soundlevel_t soundlevel, int pitch, float volume, int channel, int soundflags, int recipientscount, object[] recipients){
+        public static void EmitSoundFilter(uint entindex, string soundname, soundlevel_t soundlevel, int pitch, float volume, int channel, int soundflags, bool suppliedCustomFilter, int recipientscount, object[] recipients){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
 			ScriptContext.GlobalScriptContext.Push(entindex);
@@ -724,6 +724,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.Push(volume);
 			ScriptContext.GlobalScriptContext.Push(channel);
 			ScriptContext.GlobalScriptContext.Push(soundflags);
+			ScriptContext.GlobalScriptContext.Push(suppliedCustomFilter);
 			ScriptContext.GlobalScriptContext.Push(recipientscount);
 			foreach (var obj in recipients)
 			{
