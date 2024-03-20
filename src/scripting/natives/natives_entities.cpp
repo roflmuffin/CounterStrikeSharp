@@ -228,8 +228,12 @@ void EmitSoundFilter(ScriptContext& script_context)
         filter.AddAllPlayers();
     }
 
+#ifdef _WIN32
     SndOpEventGuid_t guid;
     CBaseEntity_EmitSoundFilter(guid, filter, CEntityIndex(entIndex), params);
+#else
+    SndOpEventGuid_t guid = CBaseEntity_EmitSoundFilter(filter, CEntityIndex(entIndex), params);
+#endif
 }
 
 REGISTER_NATIVES(entities, {

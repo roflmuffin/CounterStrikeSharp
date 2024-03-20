@@ -113,7 +113,13 @@ static void DetourFireOutputInternal(CEntityIOOutput* const pThis, CEntityInstan
 
 static FireOutputInternal m_pFireOutputInternal = nullptr;
 
-inline void(*CBaseEntity_EmitSoundFilter)(SndOpEventGuid_t& guid,
-                                                     IRecipientFilter& filter,
-                                                     CEntityIndex ent, const EmitSound_t& params);
+#ifdef _WIN32
+inline void(__fastcall* CBaseEntity_EmitSoundFilter)(SndOpEventGuid_t& guid, IRecipientFilter& filter,
+                                                                 CEntityIndex ent,
+                                                                 const EmitSound_t& params);
+#else
+inline SndOpEventGuid_t(*CBaseEntity_EmitSoundFilter)(IRecipientFilter& filter,
+                                                                 CEntityIndex ent,
+                                                                 const EmitSound_t& params);
+#endif
 }  // namespace counterstrikesharp
