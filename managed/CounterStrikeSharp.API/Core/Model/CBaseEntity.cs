@@ -44,11 +44,12 @@ public partial class CBaseEntity
 
     /// <summary>
     /// Plays a sound on an entity.
+    /// WARNING: Parameters might not work on the sound event other than soundName and filter
     /// </summary>
     /// <param name="soundName">Sound event name</param>
     /// <param name="soundLevel">A modifier for the distance this sound will reach.</param>
     /// <param name="pitch">The pitch applied to the sound. 100 means the pitch is not changed.</param>
-    /// <param name="volume">The volume of the sound, not working currently.</param>
+    /// <param name="volume">The volume of the sound.</param>
     /// <param name="channel">The sound channel.</param>
     /// <param name="soundFlags">The flags of the sound.</param>
     /// <param name="filter">If set, the sound will only be networked to the clients in the filter.</param>
