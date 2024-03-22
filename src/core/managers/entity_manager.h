@@ -111,6 +111,6 @@ static void DetourFireOutputInternal(CEntityIOOutput* const pThis, CEntityInstan
 
 static FireOutputInternal m_pFireOutputInternal = nullptr;
 
-inline void (*CBaseEntity_DispatchSpawn)(CBaseEntity* entity, CEntityKeyValues* keyValues);
+inline void (*CBaseEntity_DispatchSpawn)(void* entity, CEntityKeyValues* keyValues);
 
 }  // namespace counterstrikesharp
