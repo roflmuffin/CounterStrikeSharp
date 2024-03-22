@@ -14,6 +14,7 @@ public class DynamicHook : NativeObject
         return NativeAPI.DynamicHookGetParam<T>(Handle, (int)typeof(T).ToValidDataType(), index);
     }
 
+    [Obsolete("Use GetReturn<T>() instead")]
     public T GetReturn<T>(int index)
     {
         return GetReturn<T>();
