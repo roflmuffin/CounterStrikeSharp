@@ -30,7 +30,8 @@ public abstract class BaseMenu : IMenu
     public string Title { get; set; }
     public List<ChatMenuOption> MenuOptions { get; } = new();
     public PostSelectAction PostSelectAction { get; set; } = PostSelectAction.Reset;
-     
+    public bool ExitButton { get; set; } = true;
+    
     protected BaseMenu(string title)
     {
         Title = title;
@@ -76,8 +77,8 @@ public abstract class BaseMenuInstance : IMenuInstance
     }
 
     protected bool HasPrevButton => Page > 0;
-    protected bool HasNextButton => CurrentOffset + NumPerPage < Menu.MenuOptions.Count;
-    protected int MenuItemsPerPage => NumPerPage + 2 - (HasNextButton ? 1 : 0) - (HasPrevButton ? 1 : 0);
+    protected bool HasNextButton => Menu.MenuOptions.Count > NumPerPage && CurrentOffset + NumPerPage < Menu.MenuOptions.Count;
+    protected virtual int MenuItemsPerPage => NumPerPage;
 
     public virtual void Display()
     {
@@ -142,7 +143,7 @@ public abstract class BaseMenuInstance : IMenuInstance
         PrevPageOffsets.Clear();
     }
         
-    public void Close()
+    public virtual void Close()
     {
         MenuManager.CloseActiveMenu(Player);
     }
