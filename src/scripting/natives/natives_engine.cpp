@@ -20,6 +20,8 @@
 #include <filesystem.h>
 #include <public/worldsize.h>
 
+#include "entitykeyvalues.h"
+
 // clang-format off
 #include "mm_plugin.h"
 #include "core/engine_trace.h"
@@ -304,6 +306,172 @@ void PrintToServerConsole(ScriptContext& scriptContext) {
     META_CONPRINT(message);
 }
 
+enum KeyValuesType_t : unsigned int
+{
+    TYPE_BOOL,
+    TYPE_INT,
+    TYPE_UINT,
+    TYPE_INT64,
+    TYPE_UINT64,
+    TYPE_FLOAT,
+    TYPE_DOUBLE,
+    TYPE_STRING,
+    TYPE_POINTER,
+    TYPE_STRING_TOKEN,
+    TYPE_EHANDLE,
+    TYPE_COLOR,
+    TYPE_VECTOR,
+    TYPE_VECTOR2D,
+    TYPE_VECTOR4D,
+    TYPE_QUATERNION,
+    TYPE_QANGLE,
+    TYPE_MATRIX3X4
+};
+
+CEntityKeyValues* CreateEntityKeyValues(ScriptContext& scriptContext)
+{
+    auto count = scriptContext.GetArgument<int>(0);
+    if (count == 0) {
+        return nullptr;
+    }
+
+    CEntityKeyValues* pKeyValues = new CEntityKeyValues();
+    pKeyValues->EnableLogging(true);
+
+    int offset = 1;
+    for (int i = 0; i < count; ++i) {
+        const char* key = scriptContext.GetArgument<const char*>(offset);
+        KeyValuesType_t _type = scriptContext.GetArgument<KeyValuesType_t>(offset + 1);
+        switch (_type) {
+        case counterstrikesharp::TYPE_BOOL:
+            pKeyValues->SetBool(key, scriptContext.GetArgument<bool>(offset + 2));
+            offset += 3;
+            break;
+        case counterstrikesharp::TYPE_INT:
+            pKeyValues->SetInt(key, scriptContext.GetArgument<int>(offset + 2));
+            offset += 3;
+            break;
+        case counterstrikesharp::TYPE_UINT:
+            pKeyValues->SetUint(key, scriptContext.GetArgument<unsigned int>(offset + 2));
+            offset += 3;
+            break;
+        case counterstrikesharp::TYPE_INT64:
+            pKeyValues->SetInt64(key, scriptContext.GetArgument<long>(offset + 2));
+            offset += 3;
+            break;
+        case counterstrikesharp::TYPE_UINT64:
+            pKeyValues->SetUint64(key, scriptContext.GetArgument<unsigned long>(offset + 2));
+            offset += 3;
+            break;
+        case counterstrikesharp::TYPE_FLOAT:
+            pKeyValues->SetFloat(key, scriptContext.GetArgument<float>(offset + 2));
+            offset += 3;
+            break;
+        case counterstrikesharp::TYPE_DOUBLE:
+            pKeyValues->SetDouble(key, scriptContext.GetArgument<double>(offset + 2));
+            offset += 3;
+            break;
+        case counterstrikesharp::TYPE_STRING:
+            pKeyValues->SetString(key, scriptContext.GetArgument<const char*>(offset + 2));
+            offset += 3;
+            break;
+        case counterstrikesharp::TYPE_POINTER:
+            pKeyValues->SetPtr(key, scriptContext.GetArgument<void*>(offset + 2));
+            offset += 3;
+            break;
+        case counterstrikesharp::TYPE_STRING_TOKEN:
+            pKeyValues->SetStringToken(key, scriptContext.GetArgument<unsigned int>(offset + 2));
+            offset += 3;
+            break;
+        case counterstrikesharp::TYPE_EHANDLE:
+            pKeyValues->SetEHandle(key, scriptContext.GetArgument<unsigned int>(offset + 2));
+            offset += 3;
+            break;
+        case counterstrikesharp::TYPE_COLOR: {
+            char r = scriptContext.GetArgument<char>(offset + 2);
+            char g = scriptContext.GetArgument<char>(offset + 3);
+            char b = scriptContext.GetArgument<char>(offset + 4);
+            char a = scriptContext.GetArgument<char>(offset + 5);
+
+            pKeyValues->SetColor(key, Color(r, g, b, a));
+            offset += 6;
+            break;
+        }
+        case counterstrikesharp::TYPE_VECTOR: {
+            float x = scriptContext.GetArgument<float>(offset + 2);
+            float y = scriptContext.GetArgument<float>(offset + 3);
+            float z = scriptContext.GetArgument<float>(offset + 4);
+
+            pKeyValues->SetVector(key, Vector(x, y, z));
+            offset += 5;
+            break;
+        }
+        case counterstrikesharp::TYPE_VECTOR2D: {
+            float x = scriptContext.GetArgument<float>(offset + 2);
+            float y = scriptContext.GetArgument<float>(offset + 3);
+
+            pKeyValues->SetVector2D(key, Vector2D(x, y));
+            offset += 4;
+            break;
+        }
+        case counterstrikesharp::TYPE_VECTOR4D: {
+            float x = scriptContext.GetArgument<float>(offset + 2);
+            float y = scriptContext.GetArgument<float>(offset + 3);
+            float z = scriptContext.GetArgument<float>(offset + 4);
+            float w = scriptContext.GetArgument<float>(offset + 5);
+
+            pKeyValues->SetVector4D(key, Vector4D(x, y, z, w));
+            offset += 6;
+            break;
+        }
+        case counterstrikesharp::TYPE_QUATERNION: {
+            float x = scriptContext.GetArgument<float>(offset + 2);
+            float y = scriptContext.GetArgument<float>(offset + 3);
+            float z = scriptContext.GetArgument<float>(offset + 4);
+            float w = scriptContext.GetArgument<float>(offset + 5);
+
+            pKeyValues->SetQuaternion(key, Quaternion(x, y, z, w));
+            offset += 6;
+            break;
+        }
+        case counterstrikesharp::TYPE_QANGLE: {
+            float x = scriptContext.GetArgument<float>(offset + 2);
+            float y = scriptContext.GetArgument<float>(offset + 3);
+            float z = scriptContext.GetArgument<float>(offset + 4);
+
+            pKeyValues->SetQAngle(key, QAngle(x, y, z));
+            offset += 5;
+            break;
+        }
+        case counterstrikesharp::TYPE_MATRIX3X4: {
+            float m11 = scriptContext.GetArgument<float>(offset + 2);
+            float m12 = scriptContext.GetArgument<float>(offset + 3);
+            float m13 = scriptContext.GetArgument<float>(offset + 4);
+            float m14 = scriptContext.GetArgument<float>(offset + 5);
+
+            float m21 = scriptContext.GetArgument<float>(offset + 6);
+            float m22 = scriptContext.GetArgument<float>(offset + 7);
+            float m23 = scriptContext.GetArgument<float>(offset + 8);
+            float m24 = scriptContext.GetArgument<float>(offset + 9);
+
+            float m31 = scriptContext.GetArgument<float>(offset + 10);
+            float m32 = scriptContext.GetArgument<float>(offset + 11);
+            float m33 = scriptContext.GetArgument<float>(offset + 12);
+            float m34 = scriptContext.GetArgument<float>(offset + 13);
+
+            pKeyValues->SetMatrix3x4(
+                key, matrix3x4_t(m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34));
+            offset += 14;
+            break;
+        }
+        default:
+            break;
+        }
+    }
+
+    return pKeyValues;
+}
+
 CREATE_GETTER_FUNCTION(Trace, bool, DidHit, CGameTrace*, obj->DidHit());
 CREATE_GETTER_FUNCTION(TraceResult, CBaseEntity*, Entity, CGameTrace*, obj->m_pEnt);
 
@@ -345,5 +513,6 @@ REGISTER_NATIVES(engine, {
     ScriptEngine::RegisterNativeHandler("GET_VALVE_INTERFACE", GetValveInterface);
     ScriptEngine::RegisterNativeHandler("GET_COMMAND_PARAM_VALUE", GetCommandParamValue);
     ScriptEngine::RegisterNativeHandler("PRINT_TO_SERVER_CONSOLE", PrintToServerConsole);
+    ScriptEngine::RegisterNativeHandler("CREATE_ENTITY_KEYVALUES", CreateEntityKeyValues);
 })
 } // namespace counterstrikesharp

@@ -46,6 +46,16 @@ void EntityManager::OnAllInitialized()
         return;
     }
 
+    CBaseEntity_DispatchSpawn =
+        (decltype(CBaseEntity_DispatchSpawn))((modules::server->FindSignature(
+            globals::gameConfig->GetSignature("CBaseEntity_DispatchSpawn"))));
+
+    if (!CBaseEntity_DispatchSpawn) {
+        CSSHARP_CORE_CRITICAL(
+            "Failed to find signature for \'CBaseEntity_DispatchSpawn\'");
+        return;
+    }
+
     auto m_hook = funchook_create();
     funchook_prepare(m_hook, (void**)&m_pFireOutputInternal, (void*)&DetourFireOutputInternal);
     funchook_install(m_hook, 0);

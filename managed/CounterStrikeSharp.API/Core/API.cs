@@ -558,6 +558,21 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static IntPtr CreateEntityKeyvalues(int count, object[] values){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(count);
+			foreach (var obj in values)
+			{
+				ScriptContext.GlobalScriptContext.Push(obj);
+			}
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xCB11F1F5);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			}
+		}
+
         public static IntPtr GetEntityFromIndex(int index){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
@@ -709,6 +724,21 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.Push((InputArgument)callback);
 			ScriptContext.GlobalScriptContext.Push(mode);
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x87DBD139);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static void DispatchSpawn(IntPtr entity, int count, object[] values){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(entity);
+			ScriptContext.GlobalScriptContext.Push(count);
+			foreach (var obj in values)
+			{
+				ScriptContext.GlobalScriptContext.Push(obj);
+			}
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xAE01E931);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
 			}
