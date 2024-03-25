@@ -46,6 +46,14 @@ public abstract class BaseMenu : IMenu
     }
 
     public abstract void Open(CCSPlayerController player);
+
+    public void OpenToAll()
+    {
+        foreach (var players in Utilities.GetPlayers())
+        {
+            Open(players);
+        }
+    }
 }
 
 // This must be called ChatMenuOption to maintain backwards compatibility with the old API

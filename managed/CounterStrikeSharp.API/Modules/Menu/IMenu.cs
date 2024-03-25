@@ -31,6 +31,7 @@ public interface IMenu
         
     ChatMenuOption AddMenuOption(string display, Action<CCSPlayerController, ChatMenuOption> onSelect, bool disabled = false);
     void Open(CCSPlayerController player);
+    void OpenToAll();
 }
 
 public interface IMenuInstance
