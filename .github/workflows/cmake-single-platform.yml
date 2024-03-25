@@ -37,7 +37,7 @@ jobs:
       - name: Fallback build number
         if: ${{ github.event_name == 'pull_request' || github.ref != 'refs/heads/main' }}
         shell: bash
-        run: echo "BUILD_NUMBER=999" >> $GITHUB_ENV
+        run: echo "BUILD_NUMBER=0" >> $GITHUB_ENV
 
       - name: Visual Studio environment
         shell: cmd
@@ -89,7 +89,7 @@ jobs:
       - name: Fallback build number
         if: ${{ github.event_name == 'pull_request' || github.ref != 'refs/heads/main' }}
         shell: bash
-        run: echo "BUILD_NUMBER=999" >> $GITHUB_ENV
+        run: echo "BUILD_NUMBER=0" >> $GITHUB_ENV
 
       - uses: actions/checkout@v3
         with:
@@ -125,7 +125,7 @@ jobs:
       - name: Fallback build number
         if: ${{ github.event_name == 'pull_request' || github.ref != 'refs/heads/main' }}
         shell: bash
-        run: echo "BUILD_NUMBER=999" >> $GITHUB_ENV
+        run: echo "BUILD_NUMBER=0" >> $GITHUB_ENV
 
       # We don't need expensive submodules for the managed side.
       - uses: actions/checkout@v3
