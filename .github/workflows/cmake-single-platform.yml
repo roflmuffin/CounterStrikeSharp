@@ -39,6 +39,10 @@ jobs:
         shell: bash
         run: echo "BUILD_NUMBER=0" >> $GITHUB_ENV
 
+      - name: Main build number
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+        run: echo "BUILD_NUMBER=${{ needs.setup.outputs.buildnumber }}" >> $GITHUB_ENV
+
       - name: Visual Studio environment
         shell: cmd
         run: |
@@ -91,6 +95,10 @@ jobs:
         shell: bash
         run: echo "BUILD_NUMBER=0" >> $GITHUB_ENV
 
+      - name: Main build number
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+        run: echo "BUILD_NUMBER=${{ needs.setup.outputs.buildnumber }}" >> $GITHUB_ENV
+
       - uses: actions/checkout@v3
         with:
           submodules: "recursive"
@@ -126,6 +134,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' || github.ref != 'refs/heads/main' }}
         shell: bash
         run: echo "BUILD_NUMBER=0" >> $GITHUB_ENV
+
+      - name: Main build number
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+        run: echo "BUILD_NUMBER=${{ needs.setup.outputs.buildnumber }}" >> $GITHUB_ENV
 
       # We don't need expensive submodules for the managed side.
       - uses: actions/checkout@v3
