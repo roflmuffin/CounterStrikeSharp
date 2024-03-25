@@ -49,9 +49,9 @@ public abstract class BaseMenu : IMenu
 
     public void OpenToAll()
     {
-        foreach (var players in Utilities.GetPlayers())
+        foreach (var player in Utilities.GetPlayers())
         {
-            Open(players);
+            Open(player);
         }
     }
 }
