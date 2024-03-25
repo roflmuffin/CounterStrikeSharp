@@ -1,63 +1,74 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <EnableDynamicLoading>true</EnableDynamicLoading>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <GenerateCompatibilitySuppressionFile>true</GenerateCompatibilitySuppressionFile>
-    <EnablePackageValidation>true</EnablePackageValidation>
-    <NoWarn>$(NoWarn);CS1591;CP0003</NoWarn>
-    <Nullable>enable</Nullable>
-	<GenerateCompatibilitySuppressionFile>true</GenerateCompatibilitySuppressionFile>
-    <Authors>Roflmuffin</Authors>
-    <Description>Official server side runtime assembly for CounterStrikeSharp</Description>
-    <PackageProjectUrl>http://docs.cssharp.dev/</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/roflmuffin/CounterStrikeSharp</RepositoryUrl>
-    <PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <!-- <GenerateCompatibilitySuppressionFile>true</GenerateCompatibilitySuppressionFile> -->
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApiCompatValidateAssemblies>true</ApiCompatValidateAssemblies>
-    <ApiCompatContractAssembly>.\ApiCompat\v151.dll</ApiCompatContractAssembly>
-  </PropertyGroup>
-  <ItemGroup>
-    <None Remove="Modules\Commands\CommandInfo" />
-    <None Remove="Modules\Disabled\**" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="McMaster.NETCore.Plugins" Version="1.4.0" />
-    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="Microsoft.DotNet.ApiCompat.Task" Version="7.0.404" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="7.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="7.0.3" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
-    <PackageReference Include="Scrutor" Version="4.2.2" />
-    <PackageReference Include="Serilog.Extensions.Logging" Version="7.0.0" />
-    <PackageReference Include="Serilog.Sinks.Console" Version="5.0.0" />
-    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
-    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Core\Schema\" />
-    <Folder Include="Modules\Errors" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="Modules\Disabled\**" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Remove="Modules\Disabled\**" />
-  </ItemGroup>
-  <PropertyGroup />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
-<!--  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">-->
-<!--    <Exec Command="dotnet run &#45;&#45;project ../../tooling/CodeGen.Natives" />-->
-<!--  </Target>-->
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <EnableDynamicLoading>true</EnableDynamicLoading>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <GenerateCompatibilitySuppressionFile>true</GenerateCompatibilitySuppressionFile>
+        <EnablePackageValidation>true</EnablePackageValidation>
+        <NoWarn>$(NoWarn);CS1591;CP0003</NoWarn>
+        <Nullable>enable</Nullable>
+        <GenerateCompatibilitySuppressionFile>true</GenerateCompatibilitySuppressionFile>
+        <Authors>Roflmuffin</Authors>
+        <Description>Official server side runtime assembly for CounterStrikeSharp</Description>
+        <PackageProjectUrl>http://docs.cssharp.dev/</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/roflmuffin/CounterStrikeSharp</RepositoryUrl>
+        <PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <SourceControlInformationFeatureSupported>true</SourceControlInformationFeatureSupported>
+        <!-- <GenerateCompatibilitySuppressionFile>true</GenerateCompatibilitySuppressionFile> -->
+    </PropertyGroup>
+    <PropertyGroup>
+        <ApiCompatValidateAssemblies>true</ApiCompatValidateAssemblies>
+        <ApiCompatContractAssembly>.\ApiCompat\v151.dll</ApiCompatContractAssembly>
+    </PropertyGroup>
+    <ItemGroup>
+        <None Remove="Modules\Commands\CommandInfo"/>
+        <None Remove="Modules\Disabled\**"/>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="McMaster.NETCore.Plugins" Version="1.4.0"/>
+        <PackageReference Include="Microsoft.CSharp" Version="4.7.0"/>
+        <PackageReference Include="Microsoft.DotNet.ApiCompat.Task" Version="8.0.203"/>
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="8.0.3"/>
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0"/>
+        <PackageReference Include="Scrutor" Version="4.2.2"/>
+        <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0"/>
+        <PackageReference Include="Serilog.Sinks.Console" Version="5.0.0"/>
+        <PackageReference Include="Serilog.Sinks.File" Version="5.0.0"/>
+        <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0"/>
+    </ItemGroup>
+    <ItemGroup>
+        <Folder Include="Core\Schema\"/>
+        <Folder Include="Modules\Errors"/>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Remove="Modules\Disabled\**"/>
+    </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Remove="Modules\Disabled\**"/>
+    </ItemGroup>
+    <PropertyGroup/>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+    <Target Name="SetSourceRevisionId" BeforeTargets="InitializeSourceControlInformation">
+        <Exec
+                Command="git describe --long --always --exclude=* --abbrev=7"
+                ConsoleToMSBuild="True"
+                IgnoreExitCode="False"
+        >
+            <Output PropertyName="SourceRevisionId" TaskParameter="ConsoleOutput"/>
+        </Exec>
+    </Target>
+
+    <!--  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">-->
+    <!--    <Exec Command="dotnet run &#45;&#45;project ../../tooling/CodeGen.Natives" />-->
+    <!--  </Target>-->
 </Project>
