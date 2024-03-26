@@ -156,12 +156,25 @@ namespace CounterStrikeSharp.API.Core
         [ListenerName("OnServerPreWorldUpdate")]
         public delegate void OnServerPreWorldUpdate(bool simulating);
 
-
         /// <summary>
         /// Called when the server precaching resources (only when initial startup / changing map).
         /// </summary>
         /// <param name="manifest">Resource Manifest</param>
         [ListenerName("OnServerPrecacheResources")]
         public delegate void OnServerPrecacheResources(ResourceManifest manifest);
+
+        /// <summary>
+        /// Called every frame before entities think.
+        /// This handler should avoid containing expensive operations.
+        /// </summary>
+        [ListenerName("OnServerPreEntityThink")]
+        public delegate void OnServerPreEntityThink();
+
+        /// <summary>
+        /// Called every frame after entities think.
+        /// This handler should avoid containing expensive operations.
+        /// </summary>
+        [ListenerName("OnServerPostEntityThink")]
+        public delegate void OnServerPostEntityThink();
     }
 }

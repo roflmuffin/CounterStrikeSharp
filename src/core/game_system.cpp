@@ -64,3 +64,15 @@ GS_EVENT_MEMBER(CGameSystem, BuildGameSessionManifest)
 
     counterstrikesharp::globals::serverManager.OnPrecacheResources(pResourceManifest);
 }
+
+// Called every frame before entities think
+GS_EVENT_MEMBER(CGameSystem, ServerPreEntityThink)
+{
+    counterstrikesharp::globals::serverManager.OnPreEntityThink();
+}
+
+// Called every frame after entities think
+GS_EVENT_MEMBER(CGameSystem, ServerPostEntityThink)
+{
+    counterstrikesharp::globals::serverManager.OnPostEntityThink();
+}

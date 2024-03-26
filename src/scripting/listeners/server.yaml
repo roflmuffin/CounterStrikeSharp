@@ -5,3 +5,6 @@ OnHostNameChanged: hostname:string
 PreFatalShutdown:
 UpdateWhenNotInGame: frameTime:float
 PreWorldUpdate: simulating:bool
+OnPrecacheResources: resourceManifest:pointer
+OnPreEntityThink:
+OnPostEntityThink:    
