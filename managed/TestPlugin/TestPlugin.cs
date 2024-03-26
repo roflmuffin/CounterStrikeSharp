@@ -654,6 +654,17 @@ namespace TestPlugin
             player.GiveNamedItem("weapon_tec9");
         }
 
+        [ConsoleCommand("css_emitsound", "EmitSoundTest")]
+        public void OnEmitSOund(CCSPlayerController? player, CommandInfo command)
+        {
+            if (player == null) return;
+            if (!player.PlayerPawn.IsValid) return;
+
+            CRecipientFilter filter = new();
+            filter.AddRecipient(player.Slot);
+            player.PlayerPawn.Value.EmitSound("sas.negative01", soundlevel_t.SNDLVL_NONE, 100, 1, 2, 0, filter);
+        }
+
         private HookResult GenericEventHandler<T>(T @event, GameEventInfo info) where T : GameEvent
         {
             Logger.LogInformation("Event found {Pointer:X}, event name: {EventName}, dont broadcast: {DontBroadcast}",
