@@ -20,16 +20,18 @@ namespace CounterStrikeSharp.API.Modules.Menu;
 
 public interface IMenu
 {
-    public string Title { get; set; }
-    public List<ChatMenuOption> MenuOptions { get; }
-    public PostSelectAction PostSelectAction
+    string Title { get; set; }
+    List<ChatMenuOption> MenuOptions { get; }
+    PostSelectAction PostSelectAction
     {
         get { throw new NotImplementedException(); }
         set { throw new NotImplementedException(); }
     }
-    public bool ExitButton { get; set; }
+    bool ExitButton { get; set; }
         
-    public ChatMenuOption AddMenuOption(string display, Action<CCSPlayerController, ChatMenuOption> onSelect, bool disabled = false);
+    ChatMenuOption AddMenuOption(string display, Action<CCSPlayerController, ChatMenuOption> onSelect, bool disabled = false);
+    void Open(CCSPlayerController player);
+    void OpenToAll();
 }
 
 public interface IMenuInstance

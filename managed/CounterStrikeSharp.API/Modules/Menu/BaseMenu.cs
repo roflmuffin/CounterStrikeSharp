@@ -31,20 +31,31 @@ public abstract class BaseMenu : IMenu
     public List<ChatMenuOption> MenuOptions { get; } = new();
     public PostSelectAction PostSelectAction { get; set; } = PostSelectAction.Reset;
     public bool ExitButton { get; set; } = true;
-    
+
     protected BaseMenu(string title)
     {
         Title = title;
     }
-        
-    public virtual ChatMenuOption AddMenuOption(string display, Action<CCSPlayerController, ChatMenuOption> onSelect, bool disabled = false)
+
+    public virtual ChatMenuOption AddMenuOption(string display, Action<CCSPlayerController, ChatMenuOption> onSelect,
+        bool disabled = false)
     {
         var option = new ChatMenuOption(display, disabled, onSelect);
         MenuOptions.Add(option);
         return option;
     }
+
+    public abstract void Open(CCSPlayerController player);
+
+    public void OpenToAll()
+    {
+        foreach (var player in Utilities.GetPlayers())
+        {
+            Open(player);
+        }
+    }
 }
-    
+
 // This must be called ChatMenuOption to maintain backwards compatibility with the old API
 public class ChatMenuOption
 {
@@ -114,7 +125,7 @@ public abstract class BaseMenuInstance : IMenuInstance
         if (menuItemIndex >= 0 && menuItemIndex < Menu.MenuOptions.Count)
         {
             var menuOption = Menu.MenuOptions[menuItemIndex];
-                
+
             if (!menuOption.Disabled)
             {
                 menuOption.OnSelect(Player, menuOption);
@@ -142,7 +153,7 @@ public abstract class BaseMenuInstance : IMenuInstance
         Page = 0;
         PrevPageOffsets.Clear();
     }
-        
+
     public virtual void Close()
     {
         MenuManager.CloseActiveMenu(Player);
