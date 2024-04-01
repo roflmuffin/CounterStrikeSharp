@@ -24,6 +24,11 @@ public class ChatMenu : BaseMenu
     {
         ExitButton = false;
     }
+    
+    public override void Open(CCSPlayerController player)
+    {
+        MenuManager.OpenChatMenu(player, this);
+    }
 }
 
 public class ChatMenuInstance : BaseMenuInstance
