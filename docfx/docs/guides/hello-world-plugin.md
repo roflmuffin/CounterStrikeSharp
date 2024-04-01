@@ -9,7 +9,7 @@ How to write your first plugin for CounterStrikeSharp
 
 ## Creating a New Project
 
-First, ensure you have the relevant .NET 7.0 SDK for your platform installed on your machine. You can find the links to the latest downloads on the <a href="https://dotnet.microsoft.com/en-us/download/dotnet/7.0" target="_blank"> official Microsoft download page</a>.
+First, ensure you have the relevant .NET 8.0 SDK for your platform installed on your machine. You can find the links to the latest downloads on the <a href="https://dotnet.microsoft.com/en-us/download/dotnet/8.0" target="_blank"> official Microsoft download page</a>.
 
 ### Creating a Class Library
 
@@ -25,7 +25,7 @@ Use your IDE (Visual Studio/Rider) to add a reference to the `CounterStrikeSharp
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
@@ -65,7 +65,7 @@ public class HelloWorldPlugin : BasePlugin
 }
 ```
 
-Now build your project using your ide or the `dotnet build` command. You should now have a built binary file in your `bin/Debug/net7.0` subdirectory in the project.
+Now build your project using your ide or the `dotnet build` command. You should now have a built binary file in your `bin/Debug/net8.0` subdirectory in the project.
 
 ### Installing your Plugin
 

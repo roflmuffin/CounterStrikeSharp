@@ -33,6 +33,9 @@
 #include "entity2/entitysystem.h"
 #include "interfaces/cs2_interfaces.h"
 
+#define VERSION_STRING "v" BUILD_NUMBER " @ " GITHUB_SHA
+#define BUILD_TIMESTAMP __DATE__ " " __TIME__
+
 counterstrikesharp::GlobalClass* counterstrikesharp::GlobalClass::head = nullptr;
 
 CGameEntitySystem *GameEntitySystem()
@@ -265,9 +268,9 @@ bool CounterStrikeSharpMMPlugin::Unpause(char* error, size_t maxlen) { return tr
 
 const char* CounterStrikeSharpMMPlugin::GetLicense() { return "GNU GPLv3"; }
 
-const char* CounterStrikeSharpMMPlugin::GetVersion() { return "0.1.0"; }
+const char* CounterStrikeSharpMMPlugin::GetVersion() { return VERSION_STRING; }
 
-const char* CounterStrikeSharpMMPlugin::GetDate() { return __DATE__; }
+const char* CounterStrikeSharpMMPlugin::GetDate() { return BUILD_TIMESTAMP; }
 
 const char* CounterStrikeSharpMMPlugin::GetLogTag() { return "CSSHARP"; }
 
