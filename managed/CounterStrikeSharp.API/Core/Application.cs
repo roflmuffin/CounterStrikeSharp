@@ -106,13 +106,13 @@ namespace CounterStrikeSharp.API.Core
         [RequiresPermissions("@css/generic")]
         private void OnCSSCommand(CCSPlayerController? caller, CommandInfo info)
         {
-            var currentVersion = Api.GetVersion();
+            var versionString = $"v{Api.GetVersion()} ({Api.GetVersionString()})";
 
             info.ReplyToCommand(
                 "  CounterStrikeSharp was created and is maintained by Michael \"roflmuffin\" Wilson.\n" +
                 "  Counter-Strike Sharp uses code borrowed from SourceMod, Source.Python, FiveM, Saul Rennison, source2gen and CS2Fixes.\n" +
                 "  See ACKNOWLEDGEMENTS.md for more information.\n" +
-                "  Current API Version: " + currentVersion);
+                "  Current API Version: " + versionString);
             return;
         }
 

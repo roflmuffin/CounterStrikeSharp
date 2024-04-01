@@ -29,6 +29,18 @@ set(SOURCESDK_LIB ${SOURCESDK}/lib)
 
 add_definitions(-DMETA_IS_SOURCE2)
 
+if(DEFINED ENV{GITHUB_SHA_SHORT})
+    add_definitions(-DGITHUB_SHA="$ENV{GITHUB_SHA_SHORT}")
+else()
+    add_definitions(-DGITHUB_SHA="Local")
+endif()
+
+if(DEFINED ENV{BUILD_NUMBER})
+    add_definitions(-DBUILD_NUMBER="$ENV{BUILD_NUMBER}")
+else()
+    add_definitions(-DBUILD_NUMBER="0")
+endif()
+
 include_directories(
     ${SOURCESDK}
     ${SOURCESDK}/thirdparty/protobuf-3.21.8/src
