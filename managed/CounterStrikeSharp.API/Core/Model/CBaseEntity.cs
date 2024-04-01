@@ -29,7 +29,7 @@ public partial class CBaseEntity
             NativeAPI.DispatchSpawn(this.Handle, count, values);
         }
         else
-            VirtualFunctions.CBaseEntity_DispatchSpawn(this.Handle, IntPtr.Zero);
+            NativeAPI.DispatchSpawn(this.Handle, 0, Array.Empty<object>());
     }
 
     /// <summary>
