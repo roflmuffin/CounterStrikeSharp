@@ -507,6 +507,17 @@ namespace CounterStrikeSharp.API.Core
             EntitySingleOutputHooks.Remove(handler);
         }
 
+        public string Localize(string key, params object[] args)
+        {
+            return Localizer[key, args];
+        }
+
+        public string Localize(CCSPlayerController player, string key, params object[] args)
+        {
+            using WithTemporaryCulture temporaryCulture = new WithTemporaryCulture(player.GetLanguage());
+            return Localizer[key, args];
+        }
+
         public void Dispose()
         {
             Dispose(true);
