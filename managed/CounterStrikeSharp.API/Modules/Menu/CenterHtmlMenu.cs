@@ -28,13 +28,18 @@ public class CenterHtmlMenu : BaseMenu
         _plugin = plugin;
     }
     
+    [Obsolete("Use the constructor that takes a BasePlugin")]
     public CenterHtmlMenu(string title) : base(ModifyTitle(title))
     {
     }
     
     public override void Open(CCSPlayerController player)
     {
-        if (_plugin == null) return; 
+        if (_plugin == null)
+        {
+            throw new InvalidOperationException("This method is unsupported with the CenterHtmlMenu constructor used." +
+                                                "Please provide a BasePlugin in the constructor.");
+        }; 
         
         MenuManager.OpenCenterHtmlMenu(_plugin, player, this);
     }
