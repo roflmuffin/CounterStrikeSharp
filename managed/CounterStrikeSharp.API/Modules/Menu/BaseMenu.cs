@@ -28,6 +28,7 @@ public enum PostSelectAction
 public abstract class BaseMenu : IMenu
 {
     public string Title { get; set; }
+
     public List<ChatMenuOption> MenuOptions { get; } = new();
     public PostSelectAction PostSelectAction { get; set; } = PostSelectAction.Reset;
     public bool ExitButton { get; set; } = true;
