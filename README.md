@@ -1,6 +1,6 @@
 # CounterStrikeSharp
 
-CounterStrikeSharp is a server side modding framework for Counter-Strike: Global Offensive. This project attempts to implement a .NET Core scripting layer on top of a Metamod Source Plugin, allowing developers to create plugins that interact with the game server in a modern language (C#) to facilitate the creation of maintainable and testable code.
+CounterStrikeSharp is a server side modding framework for Counter-Strike 2. This project implements a .NET 8 scripting layer on top of a Metamod Source Plugin, allowing developers to create plugins that interact with the game server in a modern language (C#) to facilitate the creation of maintainable and testable code.
 
 [Come and join our Discord](https://discord.gg/eAZU3guKWU)
 
@@ -18,14 +18,12 @@ Detailed installation instructions can be found in the [docs](https://docs.cssha
 
 ## What works?
 
-_(Note, these were features in the previous VSP.NET project, but have not been implemented yet in this project)_
-
 These features are the core of the platform and work pretty well/have a low risk of causing issues.
 
 - [x] Console Commands, Server Commands (e.g. css_mycommand)
 - [x] Chat Commands with `!` and `/` prefixes (e.g. !mycommand)
-- [ ] **(In Progress)** Console Variables
-- [x] Game Event Handlers & Custom Events (e.g. player_death)
+- [x] Fake Console Variables (commands which mimic ConVar behaviour as these have not been fully reverse engineered) 
+- [x] Game Event Handlers & Firing of Events (e.g. player_death)
   - [x] Basic event value get/set (string, bool, int32, float)
   - [x] Complex event values get/set (ehandle, pawn, player controller)
 - [x] Game Tick Based Timers (e.g. repeating map timers)
@@ -34,7 +32,7 @@ These features are the core of the platform and work pretty well/have a low risk
   - [x] Client Listeners (e.g. connect, disconnect, put in server)
   - [x] OnMapStart
   - [x] OnTick
-- [x] Server Information (current map, game time, tick rate, model precaching)
+- [x] Server Information (current map, game time)
 - [x] Schema System Access (access player values like current weapon, money, location etc.)
 
 ## Links
