@@ -20,6 +20,12 @@ namespace CounterStrikeSharp.API.Modules.Menu;
 
 public class ChatMenu : BaseMenu
 {
+    public char TitleColor { get; set; } = ChatColors.Yellow;
+    public char EnabledColor { get; set; } = ChatColors.Green;
+    public char DisabledColor { get; set; } = ChatColors.Grey;
+    public char PrevPageColor { get; set; } = ChatColors.Yellow;
+    public char NextPageColor { get; set; } = ChatColors.Yellow;
+    public char CloseColor { get; set; } = ChatColors.Red;
     public ChatMenu(string title) : base(title)
     {
         ExitButton = false;
@@ -39,30 +45,35 @@ public class ChatMenuInstance : BaseMenuInstance
 
     public override void Display()
     {
-        Player.PrintToChat(Menu.Title);
+        if (Menu is not ChatMenu chatMenu)
+        {
+            return;
+        }
+
+        Player.PrintToChat($" {chatMenu.TitleColor} {chatMenu.Title}");
         Player.PrintToChat("---");
 
         var keyOffset = 1;
         for (var i = CurrentOffset; i < Math.Min(CurrentOffset + MenuItemsPerPage, Menu.MenuOptions.Count); i++)
         {
             var option = Menu.MenuOptions[i];
-
-            Player.PrintToChat($" {(option.Disabled ? ChatColors.Grey : ChatColors.Green)} !{keyOffset++} {ChatColors.Default}{option.Text}");
+            char color = option.Disabled ? chatMenu.DisabledColor : chatMenu.EnabledColor;
+            Player.PrintToChat($" {color} !{keyOffset++} {ChatColors.Default}{option.Text}");
         }
 
         if (HasPrevButton)
         {
-            Player.PrintToChat($" {ChatColors.Yellow}!7 {ChatColors.Default}-> Prev");
+            Player.PrintToChat($" {chatMenu.PrevPageColor}!7 {ChatColors.Default}-> Prev");
         }
             
         if (HasNextButton)
         {
-            Player.PrintToChat($" {ChatColors.Yellow}!8 {ChatColors.Default}-> Next");
+            Player.PrintToChat($" {chatMenu.NextPageColor}!8 {ChatColors.Default}-> Next");
         }
 
         if (Menu.ExitButton)
         {
-            Player.PrintToChat($" {ChatColors.Red}!9 {ChatColors.Default}-> Close");
+            Player.PrintToChat($" {chatMenu.CloseColor}!9 {ChatColors.Default}-> Close");
         }
     }
 }

@@ -22,6 +22,12 @@ namespace CounterStrikeSharp.API.Modules.Menu;
 public class CenterHtmlMenu : BaseMenu
 {
     private readonly BasePlugin? _plugin;
+    public string TitleColor { get; set; } = "yellow";
+    public string EnabledColor { get; set; } = "green";
+    public string DisabledColor { get; set; } = "grey";
+    public string PrevPageColor { get; set; } = "yellow";
+    public string NextPageColor { get; set; } = "yellow";
+    public string CloseColor { get; set; } = "red";
 
     public CenterHtmlMenu(string title, BasePlugin plugin) : base(ModifyTitle(title))
     {
@@ -32,7 +38,7 @@ public class CenterHtmlMenu : BaseMenu
     public CenterHtmlMenu(string title) : base(ModifyTitle(title))
     {
     }
-    
+
     public override void Open(CCSPlayerController player)
     {
         if (_plugin == null)
@@ -96,35 +102,40 @@ public class CenterHtmlMenuInstance : BaseMenuInstance
             return;
         }
 
+        if (Menu is not CenterHtmlMenu centerHtmlMenu)
+        {
+            return;
+        }
+
         var builder = new StringBuilder();
-        builder.Append($"<b><font color='yellow'>{Menu.Title}</font></b>");
+        builder.Append($"<b><font color='{centerHtmlMenu.TitleColor}'>{centerHtmlMenu.Title}</font></b>");
         builder.AppendLine("<br>");
 
         var keyOffset = 1;
 
-        for (var i = CurrentOffset; i < Math.Min(CurrentOffset + MenuItemsPerPage, Menu.MenuOptions.Count); i++)
+        for (var i = CurrentOffset; i < Math.Min(CurrentOffset + MenuItemsPerPage, centerHtmlMenu.MenuOptions.Count); i++)
         {
-            var option = Menu.MenuOptions[i];
-            string color = option.Disabled ? "grey" : "green";
+            var option = centerHtmlMenu.MenuOptions[i];
+            string color = option.Disabled ? centerHtmlMenu.DisabledColor : centerHtmlMenu.EnabledColor;
             builder.Append($"<font color='{color}'>!{keyOffset++}</font> {option.Text}");
             builder.AppendLine("<br>");
         }
 
         if (HasPrevButton)
         {
-            builder.AppendFormat("<font color='yellow'>!7</font> &#60;- Prev");
+            builder.AppendFormat($"<font color='{centerHtmlMenu.PrevPageColor}'>!7</font> &#60;- Prev");
             builder.AppendLine("<br>");
         }
 
         if (HasNextButton)
         {
-            builder.AppendFormat("<font color='yellow'>!8</font> -> Next");
+            builder.AppendFormat($"<font color='{centerHtmlMenu.NextPageColor}'>!8</font> -> Next");
             builder.AppendLine("<br>");
         }
 
-        if (Menu.ExitButton)
+        if (centerHtmlMenu.ExitButton)
         {
-            builder.AppendFormat("<font color='red'>!9</font> -> Close");
+            builder.AppendFormat($"<font color='{centerHtmlMenu.CloseColor}'>!9</font> -> Close");
             builder.AppendLine("<br>");
         }
 
