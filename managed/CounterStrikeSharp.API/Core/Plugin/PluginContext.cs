@@ -31,6 +31,7 @@ using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using ILogger = Microsoft.Extensions.Logging.ILogger;
+using Microsoft.Extensions.Configuration;
 
 namespace CounterStrikeSharp.API.Core.Plugin
 {
@@ -57,10 +58,14 @@ namespace CounterStrikeSharp.API.Core.Plugin
         // TOOD: ServiceCollection
         private ILogger _logger = CoreLogging.Factory.CreateLogger<PluginContext>();
 
-        public PluginContext(IServiceProvider applicationServiceProvider, ICommandManager commandManager,
+        public PluginContext(
+            IServiceProvider applicationServiceProvider,
+            ICommandManager commandManager,
             IScriptHostConfiguration hostConfiguration,
-            string path, int id)
+            string path,
+            int id)
         {
+            _applicationServiceProvider = applicationServiceProvider;
             _commandManager = commandManager;
             _hostConfiguration = hostConfiguration;
             _path = path;
@@ -125,7 +130,7 @@ namespace CounterStrikeSharp.API.Core.Plugin
             {
                 var defaultAssembly = Loader.LoadDefaultAssembly();
 
-                Type pluginType = defaultAssembly.GetExportedTypes()
+                Type pluginType = defaultAssembly?.GetExportedTypes()
                     .FirstOrDefault(t => typeof(IPlugin).IsAssignableFrom(t));
 
                 if (pluginType == null) throw new Exception("Unable to find plugin in assembly");
@@ -139,6 +144,19 @@ namespace CounterStrikeSharp.API.Core.Plugin
                         .WithSingletonLifetime()
                 );
 
+                // Configuration
+                var pluginName = Path.GetDirectoryName(_path);
+
+                var configurationBuilder = new ConfigurationBuilder()
+                    .SetBasePath(_path)
+                    .AddJsonFile($"{pluginName}.example.json", optional: true, reloadOnChange: true)
+                    .AddJsonFile($"{pluginName}.json", optional: true, reloadOnChange: true)
+                    .AddJsonFile($"appsettings.json", optional: true, reloadOnChange: true);
+
+                var configuration = configurationBuilder.Build();
+                serviceCollection.AddSingleton<IConfiguration>(configuration);
+
+                // Logging
                 serviceCollection.AddLogging(builder =>
                 {
                     builder.ClearProviders();
@@ -163,6 +181,7 @@ namespace CounterStrikeSharp.API.Core.Plugin
                         .CreateLogger());
                 });
 
+                // Nested dependency injection
                 Type interfaceType = typeof(IPluginServiceCollection<>).MakeGenericType(pluginType);
                 Type[] serviceCollectionConfiguratorTypes = AppDomain.CurrentDomain.GetAssemblies()
                     .SelectMany(assembly => assembly.GetTypes())
@@ -214,7 +233,6 @@ namespace CounterStrikeSharp.API.Core.Plugin
                 Plugin.Localizer = ServiceProvider.GetRequiredService<IStringLocalizer>();
                 Plugin.Logger = ServiceProvider.GetRequiredService<ILoggerFactory>().CreateLogger(pluginType);
 
-                Plugin.InitializeConfig(Plugin, pluginType);
                 Plugin.Load(hotReload);
 
                 _logger.LogInformation("Finished loading plugin {Name}", Plugin.ModuleName);

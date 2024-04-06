@@ -14,20 +14,13 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Reflection;
 using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
-using CounterStrikeSharp.API.Core.Translations;
 using CounterStrikeSharp.API.Core.Commands;
-using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Timers;
-using CounterStrikeSharp.API.Modules.Config;
 using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API.Modules.Entities;
 using Microsoft.Extensions.Localization;
@@ -314,31 +307,6 @@ namespace CounterStrikeSharp.API.Core
             this.RegisterConsoleCommandAttributeHandlers(instance);
             this.RegisterEntityOutputAttributeHandlers(instance);
             this.RegisterFakeConVars(instance);
-        }
-
-        public void InitializeConfig(object instance, Type pluginType)
-        {
-            Type[] interfaces = pluginType.GetInterfaces();
-            Func<Type, bool> predicate = (i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IPluginConfig<>));
-
-            // if the plugin has set a configuration type (implements IPluginConfig<>)
-            if (interfaces.Any(predicate))
-            {
-                // IPluginConfig<>
-                Type @interface = interfaces.Where(predicate).FirstOrDefault()!;
-
-                // custom config type passed as generic
-                Type genericType = @interface!.GetGenericArguments().First();
-
-                var config = typeof(ConfigManager)
-                    .GetMethod("Load")!
-                    .MakeGenericMethod(genericType)
-                    .Invoke(null, new object[] { Path.GetFileName(ModuleDirectory) }) as IBasePluginConfig;
-
-                // we KNOW that we can do this "safely"
-                pluginType.GetRuntimeMethod("OnConfigParsed", new Type[] { genericType })
-                    .Invoke(instance, new object[] { config });
-            }
         }
 
         /// <summary>

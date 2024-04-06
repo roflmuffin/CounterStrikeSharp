@@ -1,38 +1,29 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes;
+using Microsoft.Extensions.Options;
 
 namespace WithConfig;
 
-public class SampleConfig : BasePluginConfig
+public class SampleConfig
 {
-    [JsonPropertyName("ChatPrefix")] public string ChatPrefix { get; set; } = "My Cool Plugin";
+    [MaxLength(25)]
+    public string ChatPrefix { get; set; } = "My Cool Plugin";
 
-    [JsonPropertyName("ChatInterval")] public float ChatInterval { get; set; } = 60;
+    [Range(0, 60)]
+    public float ChatInterval { get; set; } = 60;
 }
 
 [MinimumApiVersion(80)]
-public class WithConfigPlugin : BasePlugin, IPluginConfig<SampleConfig>
+public class WithConfigPlugin : BasePlugin
 {
     public override string ModuleName => "Example: With Config";
     public override string ModuleVersion => "1.0.0";
 
-    public SampleConfig Config { get; set; }
-
-    public void OnConfigParsed(SampleConfig config)
+    public WithConfigPlugin(IOptions<SampleConfig> config)
     {
-        // Do manual verification of the config and override any invalid values 
-        if (config.ChatInterval > 60)
-        {
-            config.ChatInterval = 60;
-        }
-
-        if (config.ChatPrefix.Length > 25)
-        {
-            throw new Exception($"Invalid value has been set to config value 'ChatPrefix': {config.ChatPrefix}");
-        }
-
-        // Once we've validated the config, we can set it to the instance
-        Config = config;
+        Config = config.Value;
     }
+
+    public SampleConfig Config { get; set; }
 }

@@ -14,9 +14,7 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using System;
 using CounterStrikeSharp.API.Core.Commands;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
@@ -70,7 +68,5 @@ namespace CounterStrikeSharp.API.Core
         ICommandManager CommandManager { get; set; }
 
         void RegisterAllAttributes(object instance);
-
-        void InitializeConfig(object instance, Type pluginType);
     }
 }

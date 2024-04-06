@@ -1,8 +1,8 @@
-﻿using System;
-using CounterStrikeSharp.API.Core;
+﻿using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Commands;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace TestPlugin;
 
@@ -32,5 +32,9 @@ public class TestPluginServiceCollection : IPluginServiceCollection<SamplePlugin
     public void ConfigureServices(IServiceCollection serviceCollection)
     {
         serviceCollection.AddScoped<TestInjectedClass>();
+        
+        serviceCollection
+            .AddOptions<SampleConfig>()
+            .BindConfiguration(string.Empty);
     }
 }

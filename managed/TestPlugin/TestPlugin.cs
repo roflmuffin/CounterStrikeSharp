@@ -24,7 +24,6 @@ using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
-using CounterStrikeSharp.API.Core.Translations;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -33,21 +32,21 @@ using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Menu;
 using CounterStrikeSharp.API.Modules.Utils;
-using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
-using static CounterStrikeSharp.API.Core.Listeners;
+using Microsoft.Extensions.Options;
+
 
 namespace TestPlugin
 {
-    public class SampleConfig : BasePluginConfig
+    public class SampleConfig
     {
-        [JsonPropertyName("IsPluginEnabled")] public bool IsPluginEnabled { get; set; } = true;
+        public bool IsPluginEnabled { get; set; } = true;
 
-        [JsonPropertyName("LogPrefix")] public string LogPrefix { get; set; } = "CSSharp";
+        public string LogPrefix { get; set; } = "CSSharp";
     }
 
     [MinimumApiVersion(80)]
-    public class SamplePlugin : BasePlugin, IPluginConfig<SampleConfig>
+    public class SamplePlugin : BasePlugin
     {
         public override string ModuleName => "Sample Plugin";
         public override string ModuleVersion => "v1.0.0";
@@ -58,17 +57,11 @@ namespace TestPlugin
 
         public SampleConfig Config { get; set; }
 
-        // This method is called right before `Load` is called
-        public void OnConfigParsed(SampleConfig config)
-        {
-            // Save config instance
-            Config = config;
-        }
-
         private TestInjectedClass _testInjectedClass;
 
-        public SamplePlugin(TestInjectedClass testInjectedClass)
+        public SamplePlugin(IOptions<SampleConfig> config, TestInjectedClass testInjectedClass)
         {
+            Config = config.Value;
             _testInjectedClass = testInjectedClass;
         }
 
