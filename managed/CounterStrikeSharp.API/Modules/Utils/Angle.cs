@@ -14,9 +14,6 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using System;
-using CounterStrikeSharp.API.Core;
-
 namespace CounterStrikeSharp.API.Modules.Utils
 {
     /// <summary>
@@ -30,6 +27,8 @@ namespace CounterStrikeSharp.API.Modules.Utils
     /// </summary>
     public class Angle : NativeObject
     {
+        public static readonly Angle Zero = new();
+        
         public Angle(IntPtr pointer) : base(pointer)
         {
         }
@@ -46,8 +45,6 @@ namespace CounterStrikeSharp.API.Modules.Utils
             this.Y = y ?? 0;
             this.Z = z ?? 0;
         }
-        
-        
 
         #region Accessors
 

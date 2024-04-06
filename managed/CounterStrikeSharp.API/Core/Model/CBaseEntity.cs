@@ -15,6 +15,18 @@ public partial class CBaseEntity
         VirtualFunction.CreateVoid<IntPtr, IntPtr, IntPtr, IntPtr>(Handle, GameData.GetOffset("CBaseEntity_Teleport"))(
             Handle, position.Handle, angles.Handle, velocity.Handle);
     }
+    
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
+    public void Teleport(Vector position, QAngle angles)
+    {
+        Teleport(position, angles, AbsVelocity);
+    }
+    
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
+    public void Teleport(Vector position)
+    {
+        Teleport(position, AbsRotation ?? QAngle.Zero, AbsVelocity);
+    }
 
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
     public void DispatchSpawn()
