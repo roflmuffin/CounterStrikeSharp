@@ -18,10 +18,11 @@ using CounterStrikeSharp.API.Modules.Utils;
 
 namespace CounterStrikeSharp.API.Modules.Menu;
 
-public class ChatMenu: BaseMenu
+public class ChatMenu : BaseMenu
 {
     public ChatMenu(string title) : base(title)
     {
+        ExitButton = false;
     }
 }
 
@@ -37,15 +38,11 @@ public class ChatMenuInstance : BaseMenuInstance
         Player.PrintToChat("---");
 
         var keyOffset = 1;
-
-        for (var i = CurrentOffset;
-             i < Math.Min(CurrentOffset + MenuItemsPerPage, Menu.MenuOptions.Count);
-             i++)
+        for (var i = CurrentOffset; i < Math.Min(CurrentOffset + MenuItemsPerPage, Menu.MenuOptions.Count); i++)
         {
             var option = Menu.MenuOptions[i];
 
-            Player.PrintToChat(
-                $" {(option.Disabled ? ChatColors.Grey : ChatColors.Green)} !{keyOffset++} {ChatColors.Default}{option.Text}");
+            Player.PrintToChat($" {(option.Disabled ? ChatColors.Grey : ChatColors.Green)} !{keyOffset++} {ChatColors.Default}{option.Text}");
         }
 
         if (HasPrevButton)
@@ -56,6 +53,11 @@ public class ChatMenuInstance : BaseMenuInstance
         if (HasNextButton)
         {
             Player.PrintToChat($" {ChatColors.Yellow}!8 {ChatColors.Default}-> Next");
+        }
+
+        if (Menu.ExitButton)
+        {
+            Player.PrintToChat($" {ChatColors.Red}!9 {ChatColors.Default}-> Close");
         }
     }
 }

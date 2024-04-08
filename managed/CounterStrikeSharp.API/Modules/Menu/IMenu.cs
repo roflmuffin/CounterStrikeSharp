@@ -27,6 +27,7 @@ public interface IMenu
         get { throw new NotImplementedException(); }
         set { throw new NotImplementedException(); }
     }
+    public bool ExitButton { get; set; }
         
     public ChatMenuOption AddMenuOption(string display, Action<CCSPlayerController, ChatMenuOption> onSelect, bool disabled = false);
 }
