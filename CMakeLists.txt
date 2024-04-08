@@ -99,6 +99,8 @@ SET(SOURCE_FILES
     src/scripting/natives/natives_dynamichooks.cpp
     src/core/game_system.h
     src/core/game_system.cpp
+    src/core/UserMessage.h
+    src/core/UserMessage.cpp
 )
 
 

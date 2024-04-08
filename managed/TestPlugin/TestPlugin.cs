@@ -133,6 +133,22 @@ namespace TestPlugin
                 return HookResult.Stop;
 
             }));
+            
+            HookUserMessage(118, um =>
+            {
+                var author = um.ReadString("param1");
+                var message = um.ReadString("param2");
+                
+                Logger.LogInformation("Chat message from {Author}: {Message}", author, message);
+
+                if (message.Contains("foobar"))
+                {
+                    um.SetString("param2", message.Replace("foobar", "replaced"));
+                    return HookResult.Continue;
+                }
+
+                return HookResult.Continue;
+            });
 
             // Precache resources
             RegisterListener<Listeners.OnServerPrecacheResources>((manifest) =>

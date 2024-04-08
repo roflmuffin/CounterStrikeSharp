@@ -55,25 +55,4 @@ class UserMessageManager : public GlobalClass
     std::map<int, UserMessageHook*> m_hooksMap;
 };
 
-class UserMessage
-{
-  private:
-    const google::protobuf::Message *msgBuffer = nullptr;
-    INetworkSerializable *msgSerializable = nullptr;
-
-  public:
-    UserMessage(const google::protobuf::Message *msgBuffer, INetworkSerializable *msgSerializable)
-        : msgBuffer(msgBuffer), msgSerializable(msgSerializable) {}
-    ~UserMessage()
-    {
-    }
-
-    std::string GetMessageName();
-    int GetMessageID();
-    bool HasField(std::string fieldName);
-    bool GetInt32OrUnsignedOrEnum(const char* szFieldName, int32* out);
-    bool SetInt32OrUnsignedOrEnum(const char* szFieldName, int32 value);
-    const google::protobuf::Message* GetProtobufMessage();
-};
-
 } // namespace counterstrikesharp

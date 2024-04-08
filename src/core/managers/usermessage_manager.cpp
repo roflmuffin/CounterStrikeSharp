@@ -21,7 +21,7 @@
 #include "igameeventsystem.h"
 #include "scripting/callback_manager.h"
 #include "core/log.h"
-#include <schema.h>
+#include "core/UserMessage.h"
 #include <entity2/entitysystem.h>
 
 using namespace google;
@@ -126,14 +126,16 @@ void UserMessageManager::Hook_PostEvent(CSplitScreenSlot nSlot, bool bLocalOnly,
                                                 INetworkSerializable* pEvent, const void* pData,
                                                 unsigned long nSize, NetChannelBufType_t bufType)
 {
-    // Message( "Hook_PostEvent(%d, %d, %d, %lli)\n", nSlot, bLocalOnly, nClientCount, clients );
+    // Message( "Hook_PostEvent(%d, %d, %d, %lli)\n", nSlot, bLocalOnly, nRecipientCount, clients );
     // Need to explicitly get a pointer to the right function as it's overloaded and SH_CALL can't resolve that
     static void (IGameEventSystem::*PostEventAbstract)(CSplitScreenSlot, bool, int, const uint64 *,
                                                        INetworkSerializable *, const void *, unsigned long, NetChannelBufType_t) = &IGameEventSystem::PostEventAbstract;
 
     const google::protobuf::Message *msgBuffer = reinterpret_cast<const google::protobuf::Message*>(pData);
 
-    auto message = UserMessage(msgBuffer, pEvent);
+    auto message = UserMessage(const_cast<protobuf::Message*>(msgBuffer), pEvent, nClientCount, const_cast<uint64*>(clients));
+
+    CSSHARP_CORE_INFO("Message: [{}]:{}", message.GetMessageID(), message.GetDebugString());
 
     auto iMessageID = message.GetMessageID();
     auto I = m_hooksMap.find(iMessageID);
@@ -175,67 +177,5 @@ void UserMessageManager::Hook_PostEvent(CSplitScreenSlot nSlot, bool bLocalOnly,
 
     RETURN_META(MRES_IGNORED);
 }
-
-int UserMessage::GetMessageID() {
-    return msgSerializable->GetNetMessageInfo()->m_MessageId;
-}
-
-std::string UserMessage::GetMessageName() { return msgSerializable->GetUnscopedName(); }
-
-bool UserMessage::HasField(std::string fieldName) {
-    const google::protobuf::Descriptor *descriptor = msgBuffer->GetDescriptor();
-    const google::protobuf::FieldDescriptor *field = descriptor->FindFieldByName(fieldName);
-
-    if(field == nullptr || (field->label() == google::protobuf::FieldDescriptor::LABEL_REPEATED)) {
-        return false;
-    }
-
-    return this->msgBuffer->GetReflection()->HasField(*this->msgBuffer, field);
-}
-bool UserMessage::GetInt32OrUnsignedOrEnum(const char* szFieldName, int32* out) {
-    if (!HasField(szFieldName)) return false;
-
-    const google::protobuf::Descriptor *descriptor = msgBuffer->GetDescriptor();
-    const google::protobuf::FieldDescriptor *field = descriptor->FindFieldByName(szFieldName);
-    google::protobuf::FieldDescriptor::CppType fieldType = field->cpp_type();
-
-    if (fieldType == google::protobuf::FieldDescriptor::CPPTYPE_UINT32)
-        *out = (int32)msgBuffer->GetReflection()->GetUInt32(*msgBuffer, field);
-    else if (fieldType == google::protobuf::FieldDescriptor::CPPTYPE_INT32)
-        *out = msgBuffer->GetReflection()->GetInt32(*msgBuffer, field);
-    else // CPPTYPE_ENUM
-        *out = msgBuffer->GetReflection()->GetEnum(*msgBuffer, field)->number();
-
-    return true;
-}
-
-bool UserMessage::SetInt32OrUnsignedOrEnum(const char* szFieldName, int32 value) {
-    if (!HasField(szFieldName)) return false;
-
-    const google::protobuf::Descriptor *descriptor = msgBuffer->GetDescriptor();
-    const google::protobuf::FieldDescriptor *field = descriptor->FindFieldByName(szFieldName);
-    google::protobuf::FieldDescriptor::CppType fieldType = field->cpp_type();
-
-    if (fieldType == protobuf::FieldDescriptor::CPPTYPE_UINT32)
-    {
-        msgBuffer->GetReflection()->SetUInt32(const_cast<protobuf::Message*>(msgBuffer), field, (uint32)value);
-    }
-    else if (fieldType == protobuf::FieldDescriptor::CPPTYPE_INT32)
-    {
-        msgBuffer->GetReflection()->SetInt32(const_cast<protobuf::Message*>(msgBuffer), field, value);
-    }
-    else // CPPTYPE_ENUM
-    {
-        const protobuf::EnumValueDescriptor *pEnumValue = field->enum_type()->FindValueByNumber(value);
-        if (!pEnumValue)
-            return false;
-
-        msgBuffer->GetReflection()->SetEnum(const_cast<protobuf::Message*>(msgBuffer), field, pEnumValue);
-    }
-}
-
-
-const google::protobuf::Message* UserMessage::GetProtobufMessage() { return msgBuffer; }
-
 
 } // namespace counterstrikesharp
