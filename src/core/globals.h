@@ -55,6 +55,7 @@ class EntityManager;
 class ChatManager;
 class ServerManager;
 class VoiceManager;
+class UserMessageManager;
 class CCoreConfig;
 class CGameConfig;
 
@@ -101,6 +102,7 @@ extern ChatCommands chatCommands;
 extern ChatManager chatManager;
 extern ServerManager serverManager;
 extern VoiceManager voiceManager;
+extern UserMessageManager userMessageManager;
 extern TickScheduler tickScheduler;
 
 extern HookManager hookManager;

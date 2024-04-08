@@ -69,6 +69,8 @@ public class Mapping
                 return "DataType";
             case "CommandCallingContext":
                 return "CommandCallingContext";
+            case "UserMessage":
+                return "UserMessage";
             case "any":
                 return "T";
         }

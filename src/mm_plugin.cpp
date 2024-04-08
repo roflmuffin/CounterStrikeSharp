@@ -85,8 +85,6 @@ SH_DECL_HOOK3_void(INetworkServerService, StartupServer, SH_NOATTRIB, 0,
                    const GameSessionConfiguration_t&, ISource2WorldSession*, const char*);
 SH_DECL_HOOK3_void(IEngineServiceMgr, RegisterLoopMode, SH_NOATTRIB, 0, const char *, ILoopModeFactory *, void **);
 SH_DECL_HOOK1(IEngineServiceMgr, FindService, SH_NOATTRIB, 0, IEngineService*, const char*);
-SH_DECL_HOOK8_void(IGameEventSystem, PostEventAbstract, SH_NOATTRIB, 0, CSplitScreenSlot, bool, int, const uint64*,
-                   INetworkSerializable*, const void*, unsigned long, NetChannelBufType_t)
 
 CounterStrikeSharpMMPlugin gPlugin;
 
@@ -156,7 +154,6 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
                         &CounterStrikeSharpMMPlugin::Hook_StartupServer, true);
     SH_ADD_HOOK_MEMFUNC(IEngineServiceMgr, RegisterLoopMode, globals::engineServiceManager, this, &CounterStrikeSharpMMPlugin::Hook_RegisterLoopMode, false);
     SH_ADD_HOOK_MEMFUNC(IEngineServiceMgr, FindService, globals::engineServiceManager, this, &CounterStrikeSharpMMPlugin::Hook_FindService, true);
-    SH_ADD_HOOK_MEMFUNC(IGameEventSystem, PostEventAbstract, globals::gameEventSystem, this, &CounterStrikeSharpMMPlugin::Hook_PostEvent, false);
 
     if (!globals::dotnetManager.Initialize()) {
         CSSHARP_CORE_ERROR("Failed to initialize .NET runtime");
@@ -195,7 +192,6 @@ bool CounterStrikeSharpMMPlugin::Unload(char* error, size_t maxlen)
                            &CounterStrikeSharpMMPlugin::Hook_GameFrame, true);
     SH_REMOVE_HOOK_MEMFUNC(INetworkServerService, StartupServer, globals::networkServerService,
                            this, &CounterStrikeSharpMMPlugin::Hook_StartupServer, true);
-    SH_REMOVE_HOOK_MEMFUNC(IGameEventSystem, PostEventAbstract, globals::gameEventSystem, this, &CounterStrikeSharpMMPlugin::Hook_PostEvent, false);
 
     globals::callbackManager.ReleaseCallback(on_activate_callback);
 
@@ -260,28 +256,6 @@ void GetPropertyByName(const ::google::protobuf::Message& message, const std::st
     } else {
         // Handle field not found
     }
-}
-
-void CounterStrikeSharpMMPlugin::Hook_PostEvent(CSplitScreenSlot nSlot, bool bLocalOnly,
-                                                int nClientCount, const uint64* clients,
-                                                INetworkSerializable* pEvent, const void* pData,
-                                                unsigned long nSize, NetChannelBufType_t bufType)
-{
-        NetMessageInfo_t *info = pEvent->GetNetMessageInfo();
-
-        CSSHARP_CORE_INFO("Message ID: {}", info->m_MessageId);
-
-        const google::protobuf::Message *msgBuffer = reinterpret_cast<const google::protobuf::Message*>(pData);
-
-        std::vector<const google::protobuf::FieldDescriptor *> fields;
-        msgBuffer->GetReflection()->ListFields(*msgBuffer, &fields);
-
-        // log all fields
-        for (auto field : fields)
-        {
-            CSSHARP_CORE_INFO("Field: {}", field->name());
-        }
-
 }
 
 // Potentially might not work

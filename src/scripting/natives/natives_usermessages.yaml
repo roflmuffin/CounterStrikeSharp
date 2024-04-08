@@ -1,0 +1,5 @@
+HOOK_USERMESSAGE: messageId:int, callback:func, mode:HookMode -> void
+UNHOOK_USERMESSAGE: messageId:int, callback:func, mode:HookMode -> void
+USERMESSAGE_HASFIELD: message:UserMessage, name:string -> bool
+USERMESSAGE_READINT: message:UserMessage, name:string -> int
+USERMESSAGE_SETINT: message:UserMessage, name:string, value:int -> void

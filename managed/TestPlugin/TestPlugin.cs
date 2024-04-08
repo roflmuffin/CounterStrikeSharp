@@ -117,56 +117,22 @@ namespace TestPlugin
             
             _testInjectedClass.Hello();
 
-            VirtualFunctions.CBaseTrigger_StartTouchFunc.Hook(h =>
+            HookUserMessage(452, (um =>
             {
-                var trigger = h.GetParam<CBaseTrigger>(0);
-                var entity = h.GetParam<CBaseEntity>(1);
+                var weaponId = um.ReadInt("weapon_id");
+                var soundType = um.ReadInt("sound_type");
+                var itemDefIndex = um.ReadInt("item_def_index");
                 
-                Logger.LogInformation("Trigger {Trigger} touched by {Entity}", trigger.DesignerName, entity.DesignerName);
+                Logger.LogInformation("Weapon was fired with ID: {WeaponId}, Sound Type: {SoundType}, Item Def Index: {ItemDefIndex}",
+                    weaponId, soundType, itemDefIndex);
                 
-                return HookResult.Continue;
-            }, HookMode.Post);
-            
-            VirtualFunctions.CBaseTrigger_EndTouchFunc.Hook(h =>
-            {
-                var trigger = h.GetParam<CBaseTrigger>(0);
-                var entity = h.GetParam<CBaseEntity>(1);
-                
-                Logger.LogInformation("Trigger left {Trigger} by {Entity}", trigger.DesignerName, entity.DesignerName);
-                
-                return HookResult.Continue;
-            }, HookMode.Post);
-            
-            VirtualFunctions.UTIL_RemoveFunc.Hook(hook =>
-            {
-                var entityInstance = hook.GetParam<CEntityInstance>(0);
-                Logger.LogInformation("Removed entity {EntityIndex}", entityInstance.Index);
+                um.SetInt("weapon_id", 0);
+                um.SetInt("sound_type", 2);
+                um.SetInt("item_def_index", 9);
 
-                return HookResult.Continue;
-            }, HookMode.Post);
-            
-            VirtualFunctions.CBaseEntity_TakeDamageOldFunc.Hook((h =>
-            {
-                var victim = h.GetParam<CEntityInstance>(0);
-                var damageInfo = h.GetParam<CTakeDamageInfo>(1);
-                
-                if (damageInfo.Inflictor.Value.DesignerName == "inferno")
-                {
-                    var inferno = new CInferno(damageInfo.Inflictor.Value.Handle);
-                    Logger.LogInformation("Owner of inferno is {Owner}",  inferno.OwnerEntity);
+                return HookResult.Stop;
 
-                    if (victim == inferno.OwnerEntity.Value)
-                    {
-                        damageInfo.Damage = 0;
-                    }
-                    else
-                    {
-                        damageInfo.Damage = 150;
-                    }
-                }
-
-                return HookResult.Continue;
-            }), HookMode.Pre);
+            }));
 
             // Precache resources
             RegisterListener<Listeners.OnServerPrecacheResources>((manifest) =>

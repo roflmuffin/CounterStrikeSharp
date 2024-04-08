@@ -90,9 +90,12 @@ SET(SOURCE_FILES
     src/core/managers/server_manager.cpp
     src/core/managers/server_manager.h
     src/scripting/natives/natives_server.cpp
+    src/scripting/natives/natives_usermessages.cpp
     libraries/nlohmann/json.hpp
     src/core/managers/voice_manager.cpp
     src/core/managers/voice_manager.h
+    src/core/managers/usermessage_manager.cpp
+    src/core/managers/usermessage_manager.h
     src/scripting/natives/natives_dynamichooks.cpp
     src/core/game_system.h
     src/core/game_system.cpp

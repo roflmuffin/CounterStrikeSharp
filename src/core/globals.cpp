@@ -22,6 +22,7 @@
 #include "core/managers/entity_manager.h"
 #include "core/managers/server_manager.h"
 #include "core/managers/voice_manager.h"
+#include "core/managers/usermessage_manager.h"
 #include <public/game/server/iplayerinfo.h>
 #include <public/entity2/entitysystem.h>
 
@@ -80,6 +81,7 @@ EntityManager entityManager;
 ChatManager chatManager;
 ServerManager serverManager;
 VoiceManager voiceManager;
+UserMessageManager userMessageManager;
 TickScheduler tickScheduler;
 
 bool gameLoopInitialized = false;
