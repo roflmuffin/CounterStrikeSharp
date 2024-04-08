@@ -11,7 +11,6 @@ add_subdirectory(libraries/spdlog)
 add_subdirectory(libraries/dyncall)
 add_subdirectory(libraries/funchook)
 add_subdirectory(libraries/DynoHook)
-add_subdirectory(libraries/protobuf/cmake)
 
 set_property(TARGET dynohook PROPERTY DYNO_ARCH_X86 64)
 set_property(TARGET funchook-static PROPERTY POSITION_INDEPENDENT_CODE ON)

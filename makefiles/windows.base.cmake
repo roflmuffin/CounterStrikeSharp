@@ -4,7 +4,7 @@ add_definitions(
 )
 
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /Zi")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4819 /wd4828 /wd5033 /permissive- /utf-8 /wd4005")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4819 /wd4828 /wd5033 /permissive- /utf-8 /wd4005 /MP")
 set(CMAKE_SHARED_LINKER_FLAGS_RELEASE "${CMAKE_SHARED_LINKER_FLAGS_RELEASE} /OPT:REF /OPT:ICF")
 set(CMAKE_SHARED_LINKER_FLAGS_DEBUG "${CMAKE_SHARED_LINKER_FLAGS_DEBUG} /NODEFAULTLIB:libcmt")
 
@@ -13,8 +13,7 @@ set(COUNTER_STRIKE_SHARP_LINK_LIBRARIES
     ${SOURCESDK_LIB}/public/win64/tier1.lib
     ${SOURCESDK_LIB}/public/win64/interfaces.lib
     ${SOURCESDK_LIB}/public/win64/mathlib.lib
-    "${LIBRARIES_DIR}/protobuf-lib/$<$<CONFIG:Debug>:Debug>$<$<NOT:$<CONFIG:Debug>>:Release>/libprotobufd.lib"
-    # ${SOURCESDK_LIB}/public/win64/2015/libprotobuf.lib
+    "${LIBRARIES_DIR}/protobuf-lib/$<$<CONFIG:Debug>:Debug>$<$<NOT:$<CONFIG:Debug>>:Release>/libprotobuf$<$<CONFIG:Debug>:d>.lib"
     spdlog
     dynload_s
     dyncall_s

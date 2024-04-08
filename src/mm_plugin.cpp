@@ -271,21 +271,16 @@ void CounterStrikeSharpMMPlugin::Hook_PostEvent(CSplitScreenSlot nSlot, bool bLo
 
         CSSHARP_CORE_INFO("Message ID: {}", info->m_MessageId);
 
-
-
-        google::protobuf::Message *msgBuffer = (google::protobuf::Message*)pData;
-
-        CSSHARP_CORE_INFO("{}", msgBuffer->DebugString().c_str());
-
+        const google::protobuf::Message *msgBuffer = reinterpret_cast<const google::protobuf::Message*>(pData);
 
         std::vector<const google::protobuf::FieldDescriptor *> fields;
-//        msgBuffer->GetReflection()->ListFields(*msgBuffer, &fields);
-//
-//        // log all fields
-//        for (auto field : fields)
-//        {
-//            CSSHARP_CORE_INFO("Field: {}", field->name());
-//        }
+        msgBuffer->GetReflection()->ListFields(*msgBuffer, &fields);
+
+        // log all fields
+        for (auto field : fields)
+        {
+            CSSHARP_CORE_INFO("Field: {}", field->name());
+        }
 
 }
 
