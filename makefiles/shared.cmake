@@ -21,6 +21,7 @@ endif()
 
 set(CMAKE_STATIC_LIBRARY_PREFIX "")
 
+set(LIBRARIES_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libraries)
 set(SOURCESDK_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2)
 set(METAMOD_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libraries/metamod-source)
 
@@ -31,7 +32,7 @@ add_definitions(-DMETA_IS_SOURCE2)
 
 include_directories(
     ${SOURCESDK}
-    # ${SOURCESDK}/thirdparty/protobuf-3.21.8/src
+    ${SOURCESDK}/thirdparty/protobuf-3.21.8/src
     ${SOURCESDK}/common
     ${SOURCESDK}/game/shared
     ${SOURCESDK}/game/server
@@ -49,7 +50,7 @@ include_directories(
     libraries/dyncall/dynload
     libraries/dyncall/dyncall
     libraries/spdlog/include
-    libraries/protobuf
+    # libraries/protobuf
     libraries/tl
     libraries/funchook/include
     libraries/DynoHook/src

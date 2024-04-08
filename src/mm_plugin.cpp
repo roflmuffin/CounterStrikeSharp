@@ -34,6 +34,13 @@
 #include "interfaces/cs2_interfaces.h"
 #include "cs_gameevents.pb.h"
 #include "cstrike15_usermessages.pb.h"
+#include "netmessages.pb.h"
+#include "usermessages.pb.h"
+#include "networkbasetypes.pb.h"
+#include "gameevents.pb.h"
+#include "clientmessages.pb.h"
+#include "te.pb.h"
+#include "cs_usercmd.pb.h"
 
 counterstrikesharp::GlobalClass* counterstrikesharp::GlobalClass::head = nullptr;
 
@@ -261,30 +268,22 @@ void CounterStrikeSharpMMPlugin::Hook_PostEvent(CSplitScreenSlot nSlot, bool bLo
 
         CSSHARP_CORE_INFO("Message ID: {}", info->m_MessageId);
 
-        if (info->m_MessageId == CS_UM_ProcessSpottedEntityUpdate) {
-            auto base_message = static_cast<google::protobuf::Message*>((CCSUsrMsg_ProcessSpottedEntityUpdate_SpottedEntityUpdate*)pData);
-            if (base_message) {
-                auto descriptor = base_message->GetDescriptor();
+
+
+        google::protobuf::Message *msgBuffer = (google::protobuf::Message*)pData;
+
+        CSSHARP_CORE_INFO("{}", msgBuffer->DebugString().c_str());
+
+
+        std::vector<const google::protobuf::FieldDescriptor *> fields;
+//        msgBuffer->GetReflection()->ListFields(*msgBuffer, &fields);
 //
-//                if (descriptor != nullptr) {
-//                    auto weaponId = descriptor->FindFieldByName("weapon_id");
-//                    if (weaponId != nullptr) {
-//                        CSSHARP_CORE_INFO("Weapon ID {}", weaponId->DebugString());
-//                    }
-//                }
-            }
-
-        }
-
-
-//        if (info->m_MessageId == GE_FireBulletsId)
+//        // log all fields
+//        for (auto field : fields)
 //        {
-//            CMsgTEFireBullets *msg = (CMsgTEFireBullets *)pData;
-//
-//            auto descriptor = msg->GetDescriptor();
-//
-//            CSSHARP_CORE_INFO("Fire Bullets: {}, Weapon ID: {}", info->m_MessageId, msg->weapon_id());
+//            CSSHARP_CORE_INFO("Field: {}", field->name());
 //        }
+
 }
 
 // Potentially might not work

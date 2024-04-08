@@ -5,8 +5,7 @@ project(counterstrikesharp C CXX ASM)
 
 include("makefiles/shared.cmake")
 
-set(protobuf_MSVC_STATIC_RUNTIME OFF)
-set(protobuf_BUILD_SHARED_LIBS OFF)
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 
 add_subdirectory(libraries/spdlog)
 add_subdirectory(libraries/dyncall)
@@ -26,9 +25,6 @@ SET(SOURCE_FILES
     libraries/hl2sdk-cs2/entity2/entityidentity.cpp
     libraries/hl2sdk-cs2/entity2/entitysystem.cpp
     libraries/hl2sdk-cs2/entity2/entitykeyvalues.cpp
-    libraries/Protobufs/csgo/network_connection.pb.cc
-    libraries/Protobufs/csgo/networkbasetypes.pb.cc
-    libraries/Protobufs/csgo/cs_gameevents.pb.cc
     libraries/dotnet/hostfxr.h
     libraries/dotnet/coreclr_delegates.h
     libraries/metamod-source/core/sourcehook/sourcehook.cpp
@@ -124,13 +120,29 @@ endif()
 
 add_custom_command(
         OUTPUT protobuf_output_stamp
-        COMMAND ${PROTOC_EXECUTABLE} --proto_path=${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2/thirdparty/protobuf-3.21.8/src --proto_path=${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo --cpp_out=. network_connection.proto cs_gameevents.proto networkbasetypes.proto cstrike15_usermessages.proto cstrike15_gcmessages.proto steammessages.proto engine_gcmessages.proto gcsdk_gcmessages.proto
+        COMMAND ${PROTOC_EXECUTABLE} --proto_path=${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2/thirdparty/protobuf-3.21.8/src --proto_path=${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo --cpp_out=. network_connection.proto cs_gameevents.proto networkbasetypes.proto cstrike15_usermessages.proto cstrike15_gcmessages.proto steammessages.proto engine_gcmessages.proto gcsdk_gcmessages.proto netmessages.proto usermessages.proto gameevents.proto clientmessages.proto te.proto cs_usercmd.proto usercmd.proto
         COMMENT "Generating protobuf file"
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo
         VERBATIM
 )
 
-SET(SOURCE_FILES ${SOURCE_FILES} protobuf_output_stamp)
+# SET(SOURCE_FILES ${SOURCE_FILES} protobuf_output_stamp)
+SET(SOURCE_FILES ${SOURCE_FILES}
+        libraries/Protobufs/csgo/network_connection.pb.cc
+        libraries/Protobufs/csgo/networkbasetypes.pb.cc
+        libraries/Protobufs/csgo/cs_gameevents.pb.cc
+        libraries/Protobufs/csgo/engine_gcmessages.pb.cc
+        libraries/Protobufs/csgo/gcsdk_gcmessages.pb.cc
+        libraries/Protobufs/csgo/cstrike15_gcmessages.pb.cc
+        libraries/Protobufs/csgo/cstrike15_usermessages.pb.cc
+        libraries/Protobufs/csgo/netmessages.pb.cc
+        libraries/Protobufs/csgo/steammessages.pb.cc
+        libraries/Protobufs/csgo/usermessages.pb.cc
+        libraries/Protobufs/csgo/gameevents.pb.cc
+        libraries/Protobufs/csgo/clientmessages.pb.cc
+        libraries/Protobufs/csgo/te.pb.cc
+        # libraries/Protobufs/csgo/cs_usercmd.pb.cc
+)
 
 # Sources
 add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${NATIVES_SOURCES} ${CONVERSIONS_SOURCES} ${CONVERSIONS_HEADERS})
