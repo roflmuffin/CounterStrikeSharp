@@ -96,6 +96,14 @@ dotnet_naming_rule.pascal_case_for_public_fields.style    = pascal_case_style
 dotnet_naming_symbols.public_fields.applicable_kinds = field, property
 dotnet_naming_symbols.public_fields.applicable_accessibilities = public
 
+# static fields can be any case
+dotnet_naming_rule.any_case_for_static_fields.severity = silent
+dotnet_naming_rule.any_case_for_static_fields.symbols  = static_fields
+dotnet_naming_rule.any_case_for_static_fields.style    = any_case_style
+dotnet_naming_symbols.static_fields.applicable_kinds = field
+dotnet_naming_symbols.static_fields.required_modifiers = static
+dotnet_naming_style.any_case_style.capitalization = all_lower
+
 # Namespace settings
 # file_scoped namespaces
 csharp_style_namespace_declarations = file_scoped
@@ -103,3 +111,6 @@ dotnet_diagnostic.IDE0161.severity = error
 
 # no unused using/import statements
 dotnet_diagnostic.IDE0005.severity = error
+
+[**/Modules/Memory/**.cs]
+dotnet_diagnostic.IDE1006.severity = none

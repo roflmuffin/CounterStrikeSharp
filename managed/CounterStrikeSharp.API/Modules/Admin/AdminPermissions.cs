@@ -10,7 +10,10 @@ public partial class AdminData
 {
     [JsonPropertyName("identity")] public required string Identity { get; init; }
     // Flags loaded from file. Do not use this for actual comparisons.
+
+    #pragma warning disable IDE1006
     [JsonPropertyName("flags")] public HashSet<string> _flags { get; init; } = new();
+    #pragma warning restore IDE1006
 
     [JsonPropertyName("immunity")] public uint Immunity { get; set; } = 0;
     [JsonPropertyName("command_overrides")] public Dictionary<string, bool> CommandOverrides { get; init; } = new();
@@ -493,7 +496,7 @@ public static partial class AdminManager
     /// Returns the immunity value for a player.
     /// </summary>
     /// <param name="player">Player controller.</param>
-    /// <returns> If an immunity value is present in "configs/admins_groups.json" 
+    /// <returns> If an immunity value is present in "configs/admins_groups.json"
     /// and in "configs/admins.json", the returned value will be the greater of the two.
     /// If the value is overriden with SetPlayerImmunity, that value is returned instead.</returns>
     public static uint GetPlayerImmunity(CCSPlayerController? player)
@@ -508,7 +511,7 @@ public static partial class AdminManager
     /// Returns the immunity value for a player.
     /// </summary>
     /// <param name="steamId">Steam ID of the player.</param>
-    /// <returns> If an immunity value is present in "configs/admins_groups.json" 
+    /// <returns> If an immunity value is present in "configs/admins_groups.json"
     /// and in "configs/admins.json", the returned value will be the greater of the two.
     /// If the value is overriden with SetPlayerImmunity, that value is returned instead.</returns>
     public static uint GetPlayerImmunity(SteamID? steamId)

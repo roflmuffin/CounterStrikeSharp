@@ -22,7 +22,7 @@
  * This file has been modified from its original form for use in this program
  * under GNU Lesser General Public License, version 2.
  */
-
+#pragma warning disable IDE1006 // Naming Styles
 using System.Collections.Concurrent;
 using System.Runtime.InteropServices;
 using System.Security;
@@ -496,3 +496,4 @@ public class ScriptContext
         return $"ScriptContext{{numArgs={m_extContext.numArguments}}}";
     }
 }
+#pragma warning restore IDE1006 // Naming Styles

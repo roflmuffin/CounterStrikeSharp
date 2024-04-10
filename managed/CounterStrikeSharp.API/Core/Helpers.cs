@@ -21,9 +21,9 @@ namespace CounterStrikeSharp.API.Core;
 
 public static class Helpers
 {
-    private const string dllPath = "counterstrikesharp";
+    private const string DllPath = "counterstrikesharp";
 
     [SecurityCritical]
-    [DllImport(dllPath, EntryPoint = "InvokeNative")]
+    [DllImport(DllPath, EntryPoint = "InvokeNative")]
     public static extern void InvokeNative(IntPtr ptr);
 }
