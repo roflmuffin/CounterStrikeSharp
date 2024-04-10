@@ -33,14 +33,10 @@
 #include "gameconfig.h"
 
 #include <cstdio>
-#include <string_view>
-
 #include "memory_module.h"
 #include "metamod_oslink.h"
 #include "wchartypes.h"
 
-#include <iostream>
-#include <ranges>
 #include <vector>
 
 #if __linux__
