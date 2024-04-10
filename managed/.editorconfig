@@ -101,3 +101,5 @@ dotnet_naming_symbols.public_fields.applicable_accessibilities = public
 csharp_style_namespace_declarations = file_scoped
 dotnet_diagnostic.IDE0161.severity = error
 
+# no unused using/import statements
+dotnet_diagnostic.IDE0005.severity = error
