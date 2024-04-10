@@ -104,6 +104,12 @@ dotnet_naming_symbols.static_fields.applicable_kinds = field
 dotnet_naming_symbols.static_fields.required_modifiers = static
 dotnet_naming_style.any_case_style.capitalization = all_lower
 
+# types and namespaces can be any case
+dotnet_naming_rule.any_case_for_types_and_namespaces.severity = silent
+dotnet_naming_rule.any_case_for_types_and_namespaces.symbols  = types_and_namespaces
+dotnet_naming_rule.any_case_for_types_and_namespaces.style    = any_case_style
+dotnet_naming_symbols.types_and_namespaces.applicable_kinds = class, struct, interface, enum, delegate, namespace
+
 # Namespace settings
 # file_scoped namespaces
 csharp_style_namespace_declarations = file_scoped
