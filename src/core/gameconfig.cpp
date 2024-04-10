@@ -218,14 +218,14 @@ std::vector<int16_t> CGameConfig::HexToByte(std::string_view src)
     auto split = std::views::split(src, pattern);
 
     for (auto&& str : split) {
-        if (str.empty()) {
+        if (str.empty()) [[unlikely]] {
             continue;
         }
 
         // std::string_view(std::subrange) constructor only exists in C++23 or above
         const std::string_view byte(str.begin(), str.end());
 
-        if (byte == wildcard) {
+        if (byte.starts_with(wildcard)) {
             result.emplace_back(-1);
             continue;
         }

@@ -122,7 +122,6 @@ int GetModuleInformation(void *hModule, void **base, size_t *length) {
 #endif
 
 void* FindSignature(const char* moduleName, const char* bytesStr) {
-    // TODO: cache modules
     auto module = dlmount(moduleName);
     if (module == nullptr) {
         return nullptr;
