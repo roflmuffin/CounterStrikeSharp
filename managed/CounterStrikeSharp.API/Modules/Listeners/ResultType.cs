@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -14,13 +14,12 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-namespace CounterStrikeSharp.API.Modules.Listeners
+namespace CounterStrikeSharp.API.Modules.Listeners;
+
+public enum ResultType
 {
-    public enum ResultType
-    {
-        Continue,
-        Changed,
-        Handled,
-        Stop
-    }
+    Continue,
+    Changed,
+    Handled,
+    Stop
 }

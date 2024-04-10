@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright (c) 2014 Bas Timmer/NTAuthority et al.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -29,472 +29,471 @@ using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
 
-namespace CounterStrikeSharp.API.Core
+namespace CounterStrikeSharp.API.Core;
+
+public class NativeException : Exception
 {
-	public class NativeException : Exception
-	{
-		public NativeException(string message) : base(message)
-		{
-		}
-	}
+    public NativeException(string message) : base(message)
+    {
+    }
+}
 
-	[StructLayout(LayoutKind.Sequential)]
-	[Serializable]
-	public unsafe struct fxScriptContext
-	{
-		public int numArguments;
-		public int numResults;
-		public int hasError;
+[StructLayout(LayoutKind.Sequential)]
+[Serializable]
+public unsafe struct fxScriptContext
+{
+    public int numArguments;
+    public int numResults;
+    public int hasError;
 
-		public ulong nativeIdentifier;
-		public fixed byte functionData[8 * 32];
-        public fixed byte result[8];
+    public ulong nativeIdentifier;
+    public fixed byte functionData[8 * 32];
+    public fixed byte result[8];
+}
+
+public class ScriptContext
+{
+    [ThreadStatic]
+    private static ScriptContext _globalScriptContext;
+
+    public static ScriptContext GlobalScriptContext
+    {
+        get
+        {
+            if (_globalScriptContext == null) _globalScriptContext = new ScriptContext();
+            return _globalScriptContext;
+        }
     }
 
-	public class ScriptContext
-	{
-		[ThreadStatic]
-		private static ScriptContext _globalScriptContext;
+    public unsafe ScriptContext()
+    {
+    }
 
-		public static ScriptContext GlobalScriptContext
-		{
-			get
-			{
-				if (_globalScriptContext == null) _globalScriptContext = new ScriptContext();
-				return _globalScriptContext;
-			}
-		}
+    public unsafe ScriptContext(fxScriptContext* context)
+    {
+        m_extContext = *context;
+    }
 
-        public unsafe ScriptContext()
-		{
-		}
+    private readonly ConcurrentQueue<Action> ms_finalizers = new ConcurrentQueue<Action>();
 
-        public unsafe ScriptContext(fxScriptContext* context)
+    private readonly object ms_lock = new object();
+
+    internal object Lock => ms_lock;
+
+    internal fxScriptContext m_extContext = new fxScriptContext();
+
+    [SecuritySafeCritical]
+    public void Reset()
+    {
+        InternalReset();
+    }
+
+    [SecurityCritical]
+    private void InternalReset()
+    {
+        m_extContext.numArguments = 0;
+        m_extContext.numResults = 0;
+        m_extContext.hasError = 0;
+        //CleanUp();
+    }
+
+    [SecuritySafeCritical]
+    public void Invoke()
+    {
+        InvokeNativeInternal();
+        GlobalCleanUp();
+    }
+
+    [SecurityCritical]
+    private void InvokeNativeInternal()
+    {
+        unsafe
         {
-            m_extContext = *context;
+            fixed (fxScriptContext* cxt = &m_extContext)
+            {
+                Helpers.InvokeNative(new IntPtr(cxt));
+            }
         }
+    }
 
-		private readonly ConcurrentQueue<Action> ms_finalizers = new ConcurrentQueue<Action>();
-
-		private readonly object ms_lock = new object();
-
-		internal object Lock => ms_lock;
-
-		internal fxScriptContext m_extContext = new fxScriptContext();
-
-		[SecuritySafeCritical]
-		public void Reset()
-		{
-			InternalReset();
-		}
-
-		[SecurityCritical]
-		private void InternalReset()
-		{
-			m_extContext.numArguments = 0;
-			m_extContext.numResults = 0;
-            m_extContext.hasError = 0;
-            //CleanUp();
-        }
-
-		[SecuritySafeCritical]
-		public void Invoke()
-		{
-			InvokeNativeInternal();
-			GlobalCleanUp();
-		}
-
-		[SecurityCritical]
-		private void InvokeNativeInternal()
-		{
-			unsafe
-			{
-				fixed (fxScriptContext* cxt = &m_extContext)
-				{
-					Helpers.InvokeNative(new IntPtr(cxt));
-				}
-			}
-		}
-
-		public unsafe byte[] GetBytes()
-		{
-			fixed (fxScriptContext* context = &m_extContext)
-			{
-				byte[] arr = new byte[8 * 32];
-				Marshal.Copy((IntPtr)context->functionData, arr, 0, 8 * 32);
-
-				return arr;
-			}
-		}
-
-		public unsafe IntPtr GetContextUnderlyingAddress()
-		{
-			fixed (fxScriptContext* context = &m_extContext)
-			{
-				return (IntPtr)context;
-			}
-		}
-
-		[SecuritySafeCritical]
-		public void Push(object arg)
-		{
-			PushInternal(arg);
-		}
-
-        [SecuritySafeCritical]
-		public unsafe void SetResult(object arg, fxScriptContext* cxt)
-		{
-            SetResultInternal(cxt, arg);
-		}
-
-        [SecurityCritical]
-		private unsafe void PushInternal(object arg)
-		{
-			fixed (fxScriptContext* context = &m_extContext)
-			{
-				Push(context, arg);
-			}
-		}
-
-		[SecurityCritical]
-		public unsafe void SetIdentifier(ulong arg)
-		{
-			fixed (fxScriptContext* context = &m_extContext)
-			{
-				context->nativeIdentifier = arg;
-			}
-		}
-
-		public unsafe void CheckErrors()
-		{
-			fixed (fxScriptContext* context = &m_extContext)
-			{
-				if (Convert.ToBoolean(context->hasError))
-				{
-					string error = GetResult<string>();
-					Reset();
-					throw new NativeException(error);
-				}
-			}
-
-		}
-
-		[SecurityCritical]
-		internal unsafe void Push(fxScriptContext* context, object arg)
-		{
-			if (arg == null)
-			{
-				arg = 0;
-			}
-
-			if (arg.GetType().IsEnum)
-			{
-				arg = Convert.ChangeType(arg, arg.GetType().GetEnumUnderlyingType());
-			}
-
-			if (arg is string)
-			{
-				var str = (string)Convert.ChangeType(arg, typeof(string));
-				PushString(context, str);
-
-				return;
-			}
-			else if (arg is InputArgument ia)
-			{
-				Push(context, ia.Value);
-
-				return;
-			}
-			else if (arg is NativeObject nativeObject)
-			{
-				Push(context, (InputArgument)nativeObject);
-				return;
-			}
-			else if (arg is NativeEntity nativeValue)
-			{
-				Push(context, (InputArgument)nativeValue);
-				return;
-			}
-
-			if (Marshal.SizeOf(arg.GetType()) <= 8)
-			{
-				PushUnsafe(context, arg);
-			}
-
-			context->numArguments++;
-		}
-
-        [SecurityCritical]
-        internal unsafe void SetResultInternal(fxScriptContext* context, object arg)
+    public unsafe byte[] GetBytes()
+    {
+        fixed (fxScriptContext* context = &m_extContext)
         {
-            if (arg == null)
-            {
-                arg = 0;
-            }
+            byte[] arr = new byte[8 * 32];
+            Marshal.Copy((IntPtr)context->functionData, arr, 0, 8 * 32);
 
-            if (arg.GetType().IsEnum)
-            {
-                arg = Convert.ChangeType(arg, arg.GetType().GetEnumUnderlyingType());
-            }
-
-            if (arg is string)
-            {
-                var str = (string)Convert.ChangeType(arg, typeof(string));
-                SetResultString(context, str);
-
-                return;
-            }
-            else if (arg is InputArgument ia)
-            {
-                SetResultInternal(context, ia.Value);
-
-                return;
-            }
-
-            if (Marshal.SizeOf(arg.GetType()) <= 8)
-            {
-                SetResultUnsafe(context, arg);
-            }
+            return arr;
         }
+    }
 
-		[SecurityCritical]
-		internal unsafe void PushUnsafe(fxScriptContext* cxt, object arg)
-		{
-			*(long*)(&cxt->functionData[8 * cxt->numArguments]) = 0;
-			Marshal.StructureToPtr(arg, new IntPtr(cxt->functionData + (8 * cxt->numArguments)), true);
-		}
-
-        [SecurityCritical]
-        internal unsafe void SetResultUnsafe(fxScriptContext* cxt, object arg)
+    public unsafe IntPtr GetContextUnderlyingAddress()
+    {
+        fixed (fxScriptContext* context = &m_extContext)
         {
-            *(long*)(&cxt->result[0]) = 0;
-            Marshal.StructureToPtr(arg, new IntPtr(cxt->result), true);
+            return (IntPtr)context;
         }
+    }
 
-        [SecurityCritical]
-		internal unsafe void PushString(string str)
-		{
-			fixed (fxScriptContext* cxt = &m_extContext)
-			{
-				PushString(cxt, str);
-			}
-		}
+    [SecuritySafeCritical]
+    public void Push(object arg)
+    {
+        PushInternal(arg);
+    }
 
-		[SecurityCritical]
-		internal unsafe void PushString(fxScriptContext* cxt, string str)
-		{
-			var ptr = IntPtr.Zero;
+    [SecuritySafeCritical]
+    public unsafe void SetResult(object arg, fxScriptContext* cxt)
+    {
+        SetResultInternal(cxt, arg);
+    }
 
-			if (str != null)
-			{
-				var b = Encoding.UTF8.GetBytes(str);
-
-				ptr = Marshal.AllocHGlobal(b.Length + 1);
-
-				Marshal.Copy(b, 0, ptr, b.Length);
-				Marshal.WriteByte(ptr, b.Length, 0);
-
-				ms_finalizers.Enqueue(() => Free(ptr));
-			}
-
-			unsafe
-			{
-				*(IntPtr*)(&cxt->functionData[8 * cxt->numArguments]) = ptr;
-			}
-
-			cxt->numArguments++;
-		}
-
-        [SecurityCritical]
-        internal unsafe void SetResultString(fxScriptContext* cxt, string str)
+    [SecurityCritical]
+    private unsafe void PushInternal(object arg)
+    {
+        fixed (fxScriptContext* context = &m_extContext)
         {
-            var ptr = IntPtr.Zero;
+            Push(context, arg);
+        }
+    }
 
-            if (str != null)
+    [SecurityCritical]
+    public unsafe void SetIdentifier(ulong arg)
+    {
+        fixed (fxScriptContext* context = &m_extContext)
+        {
+            context->nativeIdentifier = arg;
+        }
+    }
+
+    public unsafe void CheckErrors()
+    {
+        fixed (fxScriptContext* context = &m_extContext)
+        {
+            if (Convert.ToBoolean(context->hasError))
             {
-                var b = Encoding.UTF8.GetBytes(str);
-
-                ptr = Marshal.AllocHGlobal(b.Length + 1);
-
-                Marshal.Copy(b, 0, ptr, b.Length);
-                Marshal.WriteByte(ptr, b.Length, 0);
-
-                ms_finalizers.Enqueue(() => Free(ptr));
-            }
-
-            unsafe
-            {
-                *(IntPtr*)(&cxt->result[8]) = ptr;
+                string error = GetResult<string>();
+                Reset();
+                throw new NativeException(error);
             }
         }
 
-		[SecuritySafeCritical]
-		private void Free(IntPtr ptr)
-		{
-			Marshal.FreeHGlobal(ptr);
-		}
+    }
 
-		[SecuritySafeCritical]
-		public T GetArgument<T>(int index)
-		{
-			return (T)GetArgument(typeof(T), index);
-		}
+    [SecurityCritical]
+    internal unsafe void Push(fxScriptContext* context, object arg)
+    {
+        if (arg == null)
+        {
+            arg = 0;
+        }
 
-		[SecuritySafeCritical]
-		public object GetArgument(Type type, int index)
-		{
-			return GetArgumentHelper(type, index);
-		}
+        if (arg.GetType().IsEnum)
+        {
+            arg = Convert.ChangeType(arg, arg.GetType().GetEnumUnderlyingType());
+        }
 
-		[SecurityCritical]
-		internal unsafe object GetArgument(fxScriptContext* cxt, Type type, int index)
-		{
-			return GetArgumentHelper(cxt, type, index);
-		}
+        if (arg is string)
+        {
+            var str = (string)Convert.ChangeType(arg, typeof(string));
+            PushString(context, str);
 
-		[SecurityCritical]
-		private unsafe object GetArgumentHelper(Type type, int index)
-		{
-			fixed (fxScriptContext* cxt = &m_extContext)
-			{
-				return GetArgumentHelper(cxt, type, index);
-			}
-		}
+            return;
+        }
+        else if (arg is InputArgument ia)
+        {
+            Push(context, ia.Value);
 
-		[SecurityCritical]
-		private unsafe object GetArgumentHelper(fxScriptContext* context, Type type, int index)
-		{
-			return GetResult(type, &context->functionData[index * 8]);
-		}
+            return;
+        }
+        else if (arg is NativeObject nativeObject)
+        {
+            Push(context, (InputArgument)nativeObject);
+            return;
+        }
+        else if (arg is NativeEntity nativeValue)
+        {
+            Push(context, (InputArgument)nativeValue);
+            return;
+        }
 
-		[SecuritySafeCritical]
-		public T GetResult<T>()
-		{
-			return (T)GetResult(typeof(T));
-		}
+        if (Marshal.SizeOf(arg.GetType()) <= 8)
+        {
+            PushUnsafe(context, arg);
+        }
 
-		[SecuritySafeCritical]
-		public object GetResult(Type type)
-		{
-			return GetResultHelper(type);
-		}
+        context->numArguments++;
+    }
 
-		[SecurityCritical]
-		internal unsafe object GetResult(fxScriptContext* cxt, Type type)
-		{
-			return GetResultHelper(cxt, type);
-		}
+    [SecurityCritical]
+    internal unsafe void SetResultInternal(fxScriptContext* context, object arg)
+    {
+        if (arg == null)
+        {
+            arg = 0;
+        }
 
-		[SecurityCritical]
-		private unsafe object GetResultHelper(Type type)
-		{
-			fixed (fxScriptContext* cxt = &m_extContext)
-			{
-				return GetResultHelper(cxt, type);
-			}
-		}
+        if (arg.GetType().IsEnum)
+        {
+            arg = Convert.ChangeType(arg, arg.GetType().GetEnumUnderlyingType());
+        }
 
-		[SecurityCritical]
-		private unsafe object GetResultHelper(fxScriptContext* context, Type type)
-		{
-			return GetResult(type, &context->result[0]);
-		}
+        if (arg is string)
+        {
+            var str = (string)Convert.ChangeType(arg, typeof(string));
+            SetResultString(context, str);
 
-		[SecurityCritical]
-		internal unsafe object GetResult(Type type, byte* ptr)
-		{
-			if (type == typeof(string))
-			{
-				var nativeUtf8 = *(IntPtr*)&ptr[0];
+            return;
+        }
+        else if (arg is InputArgument ia)
+        {
+            SetResultInternal(context, ia.Value);
 
-				if (nativeUtf8 == IntPtr.Zero)
-				{
-					return null;
-				}
+            return;
+        }
 
-				var len = 0;
-				while (Marshal.ReadByte(nativeUtf8, len) != 0)
-				{
-					++len;
-				}
+        if (Marshal.SizeOf(arg.GetType()) <= 8)
+        {
+            SetResultUnsafe(context, arg);
+        }
+    }
 
-				var buffer = new byte[len];
-				Marshal.Copy(nativeUtf8, buffer, 0, buffer.Length);
-				return Encoding.UTF8.GetString(buffer);
-			}
+    [SecurityCritical]
+    internal unsafe void PushUnsafe(fxScriptContext* cxt, object arg)
+    {
+        *(long*)(&cxt->functionData[8 * cxt->numArguments]) = 0;
+        Marshal.StructureToPtr(arg, new IntPtr(cxt->functionData + (8 * cxt->numArguments)), true);
+    }
 
-			if (typeof(NativeObject).IsAssignableFrom(type))
-			{
-				var pointer = (IntPtr)GetResult(typeof(IntPtr), ptr);
-				return Activator.CreateInstance(type, pointer);
-			}
+    [SecurityCritical]
+    internal unsafe void SetResultUnsafe(fxScriptContext* cxt, object arg)
+    {
+        *(long*)(&cxt->result[0]) = 0;
+        Marshal.StructureToPtr(arg, new IntPtr(cxt->result), true);
+    }
 
-			if (type == typeof(object))
-			{
-				// var dataPtr = *(IntPtr*)&ptr[0];
-				// var dataLength = *(long*)&ptr[8];
-				//
-				// byte[] data = new byte[dataLength];
-				// Marshal.Copy(dataPtr, data, 0, (int)dataLength);
+    [SecurityCritical]
+    internal unsafe void PushString(string str)
+    {
+        fixed (fxScriptContext* cxt = &m_extContext)
+        {
+            PushString(cxt, str);
+        }
+    }
 
-				return null;
-				//return MsgPackDeserializer.Deserialize(data);
-			}
+    [SecurityCritical]
+    internal unsafe void PushString(fxScriptContext* cxt, string str)
+    {
+        var ptr = IntPtr.Zero;
 
-			if (type.IsEnum)
-			{
-				return Enum.ToObject(type, (int)GetResult(typeof(int), ptr));
-			}
+        if (str != null)
+        {
+            var b = Encoding.UTF8.GetBytes(str);
 
-			if (Marshal.SizeOf(type) <= 8)
-			{
-				return GetResultInternal(type, ptr);
-			}
+            ptr = Marshal.AllocHGlobal(b.Length + 1);
 
-			return null;
-		}
+            Marshal.Copy(b, 0, ptr, b.Length);
+            Marshal.WriteByte(ptr, b.Length, 0);
 
-		[SecurityCritical]
-		private unsafe object GetResultInternal(Type type, byte* ptr)
-		{
-			var obj = Marshal.PtrToStructure(new IntPtr(ptr), type);
-			return obj;
-		}
+            ms_finalizers.Enqueue(() => Free(ptr));
+        }
+
+        unsafe
+        {
+            *(IntPtr*)(&cxt->functionData[8 * cxt->numArguments]) = ptr;
+        }
+
+        cxt->numArguments++;
+    }
+
+    [SecurityCritical]
+    internal unsafe void SetResultString(fxScriptContext* cxt, string str)
+    {
+        var ptr = IntPtr.Zero;
+
+        if (str != null)
+        {
+            var b = Encoding.UTF8.GetBytes(str);
+
+            ptr = Marshal.AllocHGlobal(b.Length + 1);
+
+            Marshal.Copy(b, 0, ptr, b.Length);
+            Marshal.WriteByte(ptr, b.Length, 0);
+
+            ms_finalizers.Enqueue(() => Free(ptr));
+        }
+
+        unsafe
+        {
+            *(IntPtr*)(&cxt->result[8]) = ptr;
+        }
+    }
+
+    [SecuritySafeCritical]
+    private void Free(IntPtr ptr)
+    {
+        Marshal.FreeHGlobal(ptr);
+    }
+
+    [SecuritySafeCritical]
+    public T GetArgument<T>(int index)
+    {
+        return (T)GetArgument(typeof(T), index);
+    }
+
+    [SecuritySafeCritical]
+    public object GetArgument(Type type, int index)
+    {
+        return GetArgumentHelper(type, index);
+    }
+
+    [SecurityCritical]
+    internal unsafe object GetArgument(fxScriptContext* cxt, Type type, int index)
+    {
+        return GetArgumentHelper(cxt, type, index);
+    }
+
+    [SecurityCritical]
+    private unsafe object GetArgumentHelper(Type type, int index)
+    {
+        fixed (fxScriptContext* cxt = &m_extContext)
+        {
+            return GetArgumentHelper(cxt, type, index);
+        }
+    }
+
+    [SecurityCritical]
+    private unsafe object GetArgumentHelper(fxScriptContext* context, Type type, int index)
+    {
+        return GetResult(type, &context->functionData[index * 8]);
+    }
+
+    [SecuritySafeCritical]
+    public T GetResult<T>()
+    {
+        return (T)GetResult(typeof(T));
+    }
+
+    [SecuritySafeCritical]
+    public object GetResult(Type type)
+    {
+        return GetResultHelper(type);
+    }
+
+    [SecurityCritical]
+    internal unsafe object GetResult(fxScriptContext* cxt, Type type)
+    {
+        return GetResultHelper(cxt, type);
+    }
+
+    [SecurityCritical]
+    private unsafe object GetResultHelper(Type type)
+    {
+        fixed (fxScriptContext* cxt = &m_extContext)
+        {
+            return GetResultHelper(cxt, type);
+        }
+    }
+
+    [SecurityCritical]
+    private unsafe object GetResultHelper(fxScriptContext* context, Type type)
+    {
+        return GetResult(type, &context->result[0]);
+    }
+
+    [SecurityCritical]
+    internal unsafe object GetResult(Type type, byte* ptr)
+    {
+        if (type == typeof(string))
+        {
+            var nativeUtf8 = *(IntPtr*)&ptr[0];
+
+            if (nativeUtf8 == IntPtr.Zero)
+            {
+                return null;
+            }
+
+            var len = 0;
+            while (Marshal.ReadByte(nativeUtf8, len) != 0)
+            {
+                ++len;
+            }
+
+            var buffer = new byte[len];
+            Marshal.Copy(nativeUtf8, buffer, 0, buffer.Length);
+            return Encoding.UTF8.GetString(buffer);
+        }
+
+        if (typeof(NativeObject).IsAssignableFrom(type))
+        {
+            var pointer = (IntPtr)GetResult(typeof(IntPtr), ptr);
+            return Activator.CreateInstance(type, pointer);
+        }
+
+        if (type == typeof(object))
+        {
+            // var dataPtr = *(IntPtr*)&ptr[0];
+            // var dataLength = *(long*)&ptr[8];
+            //
+            // byte[] data = new byte[dataLength];
+            // Marshal.Copy(dataPtr, data, 0, (int)dataLength);
+
+            return null;
+            //return MsgPackDeserializer.Deserialize(data);
+        }
+
+        if (type.IsEnum)
+        {
+            return Enum.ToObject(type, (int)GetResult(typeof(int), ptr));
+        }
+
+        if (Marshal.SizeOf(type) <= 8)
+        {
+            return GetResultInternal(type, ptr);
+        }
+
+        return null;
+    }
+
+    [SecurityCritical]
+    private unsafe object GetResultInternal(Type type, byte* ptr)
+    {
+        var obj = Marshal.PtrToStructure(new IntPtr(ptr), type);
+        return obj;
+    }
 
 
-		[SecurityCritical]
-		internal unsafe string ErrorHandler(byte* error)
-		{
-			if (error != null)
-			{
-				var errorStart = error;
-				int length = 0;
+    [SecurityCritical]
+    internal unsafe string ErrorHandler(byte* error)
+    {
+        if (error != null)
+        {
+            var errorStart = error;
+            int length = 0;
 
-				for (var p = errorStart; *p != 0; p++)
-				{
-					length++;
-				}
+            for (var p = errorStart; *p != 0; p++)
+            {
+                length++;
+            }
 
-				return Encoding.UTF8.GetString(errorStart, length);
-			}
+            return Encoding.UTF8.GetString(errorStart, length);
+        }
 
-			return "Native invocation failed.";
-		}
+        return "Native invocation failed.";
+    }
 
-		internal void GlobalCleanUp()
-		{
-			lock (ms_lock)
-			{
-				while (ms_finalizers.TryDequeue(out var cb))
-				{
-					cb();
-				}
-			}
-		}
+    internal void GlobalCleanUp()
+    {
+        lock (ms_lock)
+        {
+            while (ms_finalizers.TryDequeue(out var cb))
+            {
+                cb();
+            }
+        }
+    }
 
-		public override string ToString()
-		{
-			return $"ScriptContext{{numArgs={m_extContext.numArguments}}}";
-		}
-	}
+    public override string ToString()
+    {
+        return $"ScriptContext{{numArgs={m_extContext.numArguments}}}";
+    }
 }

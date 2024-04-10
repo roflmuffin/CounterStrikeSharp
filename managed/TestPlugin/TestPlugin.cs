@@ -24,7 +24,6 @@ using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
-using CounterStrikeSharp.API.Core.Translations;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -33,9 +32,7 @@ using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Menu;
 using CounterStrikeSharp.API.Modules.Utils;
-using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
-using static CounterStrikeSharp.API.Core.Listeners;
 
 namespace TestPlugin;
 
@@ -117,73 +114,59 @@ public class SamplePlugin : BasePlugin, IPluginConfig<SampleConfig>
 
         _testInjectedClass.Hello();
 
-        HookUserMessage(452, (um =>
+        VirtualFunctions.CBaseTrigger_StartTouchFunc.Hook(h =>
         {
-            var weaponId = um.ReadInt("weapon_id");
-            var soundType = um.ReadInt("sound_type");
-            var itemDefIndex = um.ReadInt("item_def_index");
+            var trigger = h.GetParam<CBaseTrigger>(0);
+            var entity = h.GetParam<CBaseEntity>(1);
 
-            VirtualFunctions.CBaseTrigger_StartTouchFunc.Hook(h =>
-            {
-                var trigger = h.GetParam<CBaseTrigger>(0);
-                var entity = h.GetParam<CBaseEntity>(1);
-                
-                Logger.LogInformation("Trigger {Trigger} touched by {Entity}", trigger.DesignerName, entity.DesignerName);
-                
-                return HookResult.Continue;
-            }, HookMode.Post);
-            
-            VirtualFunctions.CBaseTrigger_EndTouchFunc.Hook(h =>
-            {
-                var trigger = h.GetParam<CBaseTrigger>(0);
-                var entity = h.GetParam<CBaseEntity>(1);
-                
-                Logger.LogInformation("Trigger left {Trigger} by {Entity}", trigger.DesignerName, entity.DesignerName);
-                
-                return HookResult.Continue;
-            }, HookMode.Post);
-            
-            VirtualFunctions.UTIL_RemoveFunc.Hook(hook =>
-            {
-                var entityInstance = hook.GetParam<CEntityInstance>(0);
-                Logger.LogInformation("Removed entity {EntityIndex}", entityInstance.Index);
+            Logger.LogInformation("Trigger {Trigger} touched by {Entity}", trigger.DesignerName, entity.DesignerName);
 
-                return HookResult.Continue;
-            }, HookMode.Post);
-            
-            VirtualFunctions.CBaseEntity_TakeDamageOldFunc.Hook((h =>
+            return HookResult.Continue;
+        }, HookMode.Post);
+
+        VirtualFunctions.CBaseTrigger_EndTouchFunc.Hook(h =>
+        {
+            var trigger = h.GetParam<CBaseTrigger>(0);
+            var entity = h.GetParam<CBaseEntity>(1);
+
+            Logger.LogInformation("Trigger left {Trigger} by {Entity}", trigger.DesignerName, entity.DesignerName);
+
+            return HookResult.Continue;
+        }, HookMode.Post);
+
+        VirtualFunctions.UTIL_RemoveFunc.Hook(hook =>
+        {
+            var entityInstance = hook.GetParam<CEntityInstance>(0);
+            Logger.LogInformation("Removed entity {EntityIndex}", entityInstance.Index);
+
+            return HookResult.Continue;
+        }, HookMode.Post);
+
+        VirtualFunctions.CBaseEntity_TakeDamageOldFunc.Hook((h =>
+        {
+            var victim = h.GetParam<CEntityInstance>(0);
+            var damageInfo = h.GetParam<CTakeDamageInfo>(1);
+
+            if (damageInfo.Inflictor.Value.DesignerName == "inferno")
             {
-                var victim = h.GetParam<CEntityInstance>(0);
-                var damageInfo = h.GetParam<CTakeDamageInfo>(1);
-                
-                if (damageInfo.Inflictor.Value.DesignerName == "inferno")
+                var inferno = new CInferno(damageInfo.Inflictor.Value.Handle);
+                Logger.LogInformation("Owner of inferno is {Owner}",  inferno.OwnerEntity);
+
+                if (victim == inferno.OwnerEntity.Value)
                 {
-                    var inferno = new CInferno(damageInfo.Inflictor.Value.Handle);
-                    Logger.LogInformation("Owner of inferno is {Owner}",  inferno.OwnerEntity);
-
-                    if (victim == inferno.OwnerEntity.Value)
-                    {
-                        damageInfo.Damage = 0;
-                    }
-                    else
-                    {
-                        damageInfo.Damage = 150;
-                    }
+                    damageInfo.Damage = 0;
                 }
+                else
+                {
+                    damageInfo.Damage = 150;
+                }
+            }
 
-                return HookResult.Continue;
-            }), HookMode.Pre);
+            return HookResult.Continue;
+        }), HookMode.Pre);
 
-            // Precache resources
-            RegisterListener<Listeners.OnServerPrecacheResources>((manifest) =>
-            {
-                manifest.AddResource("path/to/model");
-                manifest.AddResource("path/to/material");
-                manifest.AddResource("path/to/particle");
-            });
-        }
-        
-        public override void OnAllPluginsLoaded(bool hotReload)
+        // Precache resources
+        RegisterListener<Listeners.OnServerPrecacheResources>((manifest) =>
         {
             manifest.AddResource("path/to/model");
             manifest.AddResource("path/to/material");

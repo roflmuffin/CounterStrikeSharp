@@ -20,14 +20,13 @@ using System.Runtime.InteropServices;
 using System.Text;
 using CounterStrikeSharp.API.Core;
 
-namespace CounterStrikeSharp.API.Modules.Utils
-{
-    public class NetworkedString : NativeObject
-    {
-        public NetworkedString(IntPtr pointer) : base(pointer)
-        {
-        }
+namespace CounterStrikeSharp.API.Modules.Utils;
 
-        public string Value => Utilities.ReadStringUtf8(Handle);
+public class NetworkedString : NativeObject
+{
+    public NetworkedString(IntPtr pointer) : base(pointer)
+    {
     }
+
+    public string Value => Utilities.ReadStringUtf8(Handle);
 }

@@ -18,28 +18,27 @@ using System;
 using System.Runtime.CompilerServices;
 using CounterStrikeSharp.API.Core;
 
-namespace CounterStrikeSharp.API.Modules.Utils
-{
-    public class QAngle : NativeObject
-    {
-        public QAngle(IntPtr pointer) : base(pointer)
-        {
-        }
-        
-        public QAngle(float? x = null, float? y = null, float? z = null) : this(NativeAPI.AngleNew())
-        {
-            this.X = x ?? 0;
-            this.Y = y ?? 0;
-            this.Z = z ?? 0;
-        }
+namespace CounterStrikeSharp.API.Modules.Utils;
 
-        public unsafe ref float X => ref Unsafe.Add(ref *(float*)Handle.ToPointer(), 0);
-        public unsafe ref float Y => ref Unsafe.Add(ref *(float*)Handle, 1);
-        public unsafe ref float Z => ref Unsafe.Add(ref *(float*)Handle, 2);
-        
-        public override string ToString()
-        {
-            return $"{X:n2} {Y:n2} {Z:n2}";
-        }
+public class QAngle : NativeObject
+{
+    public QAngle(IntPtr pointer) : base(pointer)
+    {
+    }
+
+    public QAngle(float? x = null, float? y = null, float? z = null) : this(NativeAPI.AngleNew())
+    {
+        this.X = x ?? 0;
+        this.Y = y ?? 0;
+        this.Z = z ?? 0;
+    }
+
+    public unsafe ref float X => ref Unsafe.Add(ref *(float*)Handle.ToPointer(), 0);
+    public unsafe ref float Y => ref Unsafe.Add(ref *(float*)Handle, 1);
+    public unsafe ref float Z => ref Unsafe.Add(ref *(float*)Handle, 2);
+
+    public override string ToString()
+    {
+        return $"{X:n2} {Y:n2} {Z:n2}";
     }
 }

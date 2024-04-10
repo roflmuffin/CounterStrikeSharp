@@ -3,10 +3,10 @@ using System;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Commands;
 
-namespace CounterStrikeSharp.API.Core
-{
-    public class NativeAPI {
-        
+namespace CounterStrikeSharp.API.Core;
+
+public class NativeAPI {
+    
         public static bool AddListener(string name, InputArgument callback){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
@@ -1423,5 +1423,4 @@ namespace CounterStrikeSharp.API.Core
 			return (uint)ScriptContext.GlobalScriptContext.GetResult(typeof(uint));
 			}
 		}
-    }
 }

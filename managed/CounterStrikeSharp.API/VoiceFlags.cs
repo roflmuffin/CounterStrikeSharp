@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -14,23 +14,22 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-namespace CounterStrikeSharp.API
-{
-    [Flags]
-    public enum VoiceFlags : Byte
-    {
-        Normal = 0,
-        Muted = (1 << 0),
-        All = (1 << 1),
-        ListenAll = (1 << 2),
-        Team = (1 << 3),
-        ListenTeam = (1 << 4),
-    }
+namespace CounterStrikeSharp.API;
 
-    public enum ListenOverride
-    {
-        Default = 0,
-        Mute,
-        Hear
-    }
+[Flags]
+public enum VoiceFlags : Byte
+{
+    Normal = 0,
+    Muted = (1 << 0),
+    All = (1 << 1),
+    ListenAll = (1 << 2),
+    Team = (1 << 3),
+    ListenTeam = (1 << 4),
+}
+
+public enum ListenOverride
+{
+    Default = 0,
+    Mute,
+    Hear
 }

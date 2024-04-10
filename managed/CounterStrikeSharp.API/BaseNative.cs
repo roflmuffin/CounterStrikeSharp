@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -20,29 +20,28 @@ using System.Reflection.Metadata;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace CounterStrikeSharp.API
-{
-    public abstract class NativeObject
-    {
-        public IntPtr Handle { get; internal set; }
+namespace CounterStrikeSharp.API;
 
-        protected NativeObject(IntPtr pointer)
-        {
-            Handle = pointer;
-        }
-        
-        /// <summary>
-        /// Returns a new instance of the specified type using the pointer from the passed in object.
-        /// </summary>
-        /// <remarks>
-        /// Useful for creating a new instance of a class that inherits from NativeObject.
-        /// e.g. <code>var weaponServices = playerWeaponServices.As&lt;CCSPlayer_WeaponServices&gt;();</code>
-        /// </remarks>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        public T As<T>() where T : NativeObject
-        {
-            return (T)Activator.CreateInstance(typeof(T), this.Handle);
-        }
+public abstract class NativeObject
+{
+    public IntPtr Handle { get; internal set; }
+
+    protected NativeObject(IntPtr pointer)
+    {
+        Handle = pointer;
+    }
+
+    /// <summary>
+    /// Returns a new instance of the specified type using the pointer from the passed in object.
+    /// </summary>
+    /// <remarks>
+    /// Useful for creating a new instance of a class that inherits from NativeObject.
+    /// e.g. <code>var weaponServices = playerWeaponServices.As&lt;CCSPlayer_WeaponServices&gt;();</code>
+    /// </remarks>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    public T As<T>() where T : NativeObject
+    {
+        return (T)Activator.CreateInstance(typeof(T), this.Handle);
     }
 }

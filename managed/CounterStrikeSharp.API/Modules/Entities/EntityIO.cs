@@ -14,26 +14,25 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-namespace CounterStrikeSharp.API.Modules.Entities
+namespace CounterStrikeSharp.API.Modules.Entities;
+
+public class EntityIO
 {
-    public class EntityIO
+    public delegate HookResult EntityOutputHandler(CEntityIOOutput output, string name, CEntityInstance activator, CEntityInstance caller, CVariant value, float delay);
+
+    internal class EntityOutputCallback
     {
-        public delegate HookResult EntityOutputHandler(CEntityIOOutput output, string name, CEntityInstance activator, CEntityInstance caller, CVariant value, float delay);
+        public string Classname;
 
-        internal class EntityOutputCallback
+        public string Output;
+
+        public EntityOutputHandler Handler;
+
+        public EntityOutputCallback(string classname, string output, EntityOutputHandler handler)
         {
-            public string Classname;
-
-            public string Output;
-
-            public EntityOutputHandler Handler;
-
-            public EntityOutputCallback(string classname, string output, EntityOutputHandler handler)
-            {
-                Classname = classname;
-                Output = output;
-                Handler = handler;
-            }
+            Classname = classname;
+            Output = output;
+            Handler = handler;
         }
     }
 }

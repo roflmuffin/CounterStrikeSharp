@@ -20,57 +20,56 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
-namespace CounterStrikeSharp.API.Core
+namespace CounterStrikeSharp.API.Core;
+
+/// <summary>
+/// Interface which every CounterStrikeSharp plugin must implement. Module will be created with parameterless constructor and then Load method will be called.
+/// </summary>
+public interface IPlugin : IDisposable
 {
     /// <summary>
-    /// Interface which every CounterStrikeSharp plugin must implement. Module will be created with parameterless constructor and then Load method will be called.
+    /// Name of the plugin.
     /// </summary>
-    public interface IPlugin : IDisposable
-    {
-        /// <summary>
-        /// Name of the plugin.
-        /// </summary>
-        string ModuleName { get; }
+    string ModuleName { get; }
 
-        /// <summary>
-        /// Module version.
-        /// </summary>
-        string ModuleVersion { get; }
+    /// <summary>
+    /// Module version.
+    /// </summary>
+    string ModuleVersion { get; }
 
-        string ModuleAuthor { get; }
+    string ModuleAuthor { get; }
 
-        string ModuleDescription { get; }
+    string ModuleDescription { get; }
 
-        /// <summary>
-        /// This method is called by CounterStrikeSharp on plugin load and should be treated as plugin constructor.
-        /// Called with `true` on a hot reload (DLL file replaced in plugins folder)
-        /// </summary>
-        void Load(bool hotReload);
+    /// <summary>
+    /// This method is called by CounterStrikeSharp on plugin load and should be treated as plugin constructor.
+    /// Called with `true` on a hot reload (DLL file replaced in plugins folder)
+    /// </summary>
+    void Load(bool hotReload);
 
-        /// <summary>
-        /// Will be called by CounterStrikeSharp on plugin unload. In this method the plugin should cleanup any extra resources.
-        /// Event handlers, listeners etc. will automatically be deregistered.
-        /// </summary>
-        void Unload(bool hotReload);
+    /// <summary>
+    /// Will be called by CounterStrikeSharp on plugin unload. In this method the plugin should cleanup any extra resources.
+    /// Event handlers, listeners etc. will automatically be deregistered.
+    /// </summary>
+    void Unload(bool hotReload);
 
-        /// <summary>
-        /// Will be called by CounterStrikeSharp after all plugins have been loaded.
-        /// This will also be called for convenience after a reload or a late l oad, so that you don't have to handle
-        /// re-wiring everything.
-        /// </summary>
-        /// <param name="hotReload"></param>
-        void OnAllPluginsLoaded(bool hotReload);
+    /// <summary>
+    /// Will be called by CounterStrikeSharp after all plugins have been loaded.
+    /// This will also be called for convenience after a reload or a late l oad, so that you don't have to handle
+    /// re-wiring everything.
+    /// </summary>
+    /// <param name="hotReload"></param>
+    void OnAllPluginsLoaded(bool hotReload);
 
-        string ModulePath { get; internal set; }
+    string ModulePath { get; internal set; }
 
-        ILogger Logger { get; set; }
-        
-        IStringLocalizer Localizer { get; set; }
-        
-        ICommandManager CommandManager { get; set; }
+    ILogger Logger { get; set; }
 
-        void RegisterAllAttributes(object instance);
+    IStringLocalizer Localizer { get; set; }
 
-        void InitializeConfig(object instance, Type pluginType);
-    }
+    ICommandManager CommandManager { get; set; }
+
+    void RegisterAllAttributes(object instance);
+
+    void InitializeConfig(object instance, Type pluginType);
 }

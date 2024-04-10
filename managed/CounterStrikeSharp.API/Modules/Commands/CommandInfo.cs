@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -17,70 +17,70 @@
 using System;
 using CounterStrikeSharp.API.Core;
 
-namespace CounterStrikeSharp.API.Modules.Commands
+namespace CounterStrikeSharp.API.Modules.Commands;
+
+public class CommandInfo
 {
-    public class CommandInfo
+    public delegate void CommandCallback(CCSPlayerController? player, CommandInfo commandInfo);
+
+    public delegate HookResult CommandListenerCallback(CCSPlayerController? player, CommandInfo commandInfo);
+
+    public CCSPlayerController? CallingPlayer { get; }
+
+    public IntPtr Handle { get; }
+
+    internal CommandInfo(IntPtr pointer, CCSPlayerController? player)
     {
-        public delegate void CommandCallback(CCSPlayerController? player, CommandInfo commandInfo);
-        
-        public delegate HookResult CommandListenerCallback(CCSPlayerController? player, CommandInfo commandInfo);
+        Handle = pointer;
+        CallingPlayer = player;
+    }
 
-        public CCSPlayerController? CallingPlayer { get; }
-        
-        public IntPtr Handle { get; }
-        
-        internal CommandInfo(IntPtr pointer, CCSPlayerController? player) 
+    public int ArgCount => NativeAPI.CommandGetArgCount(Handle);
+
+    public string ArgString => NativeAPI.CommandGetArgString(Handle);
+
+    public string GetCommandString => NativeAPI.CommandGetCommandString(Handle);
+
+    public string ArgByIndex(int index) => NativeAPI.CommandGetArgByIndex(Handle, index);
+    public string GetArg(int index) => NativeAPI.CommandGetArgByIndex(Handle, index);
+
+    /// <summary>
+    /// Whether or not the command was sent via Console or Chat.
+    /// </summary>
+    public CommandCallingContext CallingContext => NativeAPI.CommandGetCallingContext(Handle);
+
+    [Obsolete("Console parameter is now automatically set based on the context of the command.", true)]
+    public void ReplyToCommand(string message, bool console = false)
+    {
+        if (CallingPlayer != null)
         {
-            Handle = pointer;
-            CallingPlayer = player;
+            if (console) { CallingPlayer.PrintToConsole(message); }
+            else CallingPlayer.PrintToChat(message);
         }
-
-        public int ArgCount => NativeAPI.CommandGetArgCount(Handle);
-
-        public string ArgString => NativeAPI.CommandGetArgString(Handle);
-
-        public string GetCommandString => NativeAPI.CommandGetCommandString(Handle);
-
-        public string ArgByIndex(int index) => NativeAPI.CommandGetArgByIndex(Handle, index);
-        public string GetArg(int index) => NativeAPI.CommandGetArgByIndex(Handle, index);
-        
-        /// <summary>
-        /// Whether or not the command was sent via Console or Chat.
-        /// </summary>
-        public CommandCallingContext CallingContext => NativeAPI.CommandGetCallingContext(Handle);
-        
-        [Obsolete("Console parameter is now automatically set based on the context of the command.", true)]
-        public void ReplyToCommand(string message, bool console = false) {
-            if (CallingPlayer != null) 
-            {
-                if (console) { CallingPlayer.PrintToConsole(message); }
-                else CallingPlayer.PrintToChat(message);
-            }
-            else 
-            {
-                Server.PrintToConsole(message);    
-            }
-        }
-
-        /// <summary>
-        /// Replies to the command with a message.
-        /// <remarks>
-        /// If the command was sent via Chat, <see cref="CCSPlayerController.PrintToChat"/> is used, otherwise <see cref="CCSPlayerController.PrintToConsole"/> is used.
-        /// If sent from the server console/RCON, <see cref="Server.PrintToConsole"/> is used.
-        /// </remarks>
-        /// </summary>
-        /// <param name="message">Message to send</param>
-        public void ReplyToCommand(string message)
+        else
         {
-            if (CallingPlayer != null) 
-            {
-                if (CallingContext == CommandCallingContext.Console) { CallingPlayer.PrintToConsole(message); }
-                else CallingPlayer.PrintToChat(message);
-            }
-            else 
-            {
-                Server.PrintToConsole(message);    
-            }
+            Server.PrintToConsole(message);
+        }
+    }
+
+    /// <summary>
+    /// Replies to the command with a message.
+    /// <remarks>
+    /// If the command was sent via Chat, <see cref="CCSPlayerController.PrintToChat"/> is used, otherwise <see cref="CCSPlayerController.PrintToConsole"/> is used.
+    /// If sent from the server console/RCON, <see cref="Server.PrintToConsole"/> is used.
+    /// </remarks>
+    /// </summary>
+    /// <param name="message">Message to send</param>
+    public void ReplyToCommand(string message)
+    {
+        if (CallingPlayer != null)
+        {
+            if (CallingContext == CommandCallingContext.Console) { CallingPlayer.PrintToConsole(message); }
+            else CallingPlayer.PrintToChat(message);
+        }
+        else
+        {
+            Server.PrintToConsole(message);
         }
     }
 }

@@ -16,20 +16,19 @@
 
 using System;
 
-namespace CounterStrikeSharp.API.Modules.Entities
+namespace CounterStrikeSharp.API.Modules.Entities;
+
+public class BaseEntity : NativeObject
 {
-    public class BaseEntity : NativeObject
+    public int Index { get; init; }
+
+    public BaseEntity(int index, IntPtr handle) : base(handle)
     {
-        public int Index { get; init; }
+        Index = index;
+    }
 
-        public BaseEntity(int index, IntPtr handle) : base(handle)
-        {
-            Index = index;
-        }
-
-        public override string ToString()
-        {
-            return string.Format($"[BaseEntity index={Index}, handle={Handle}");
-        }
+    public override string ToString()
+    {
+        return string.Format($"[BaseEntity index={Index}, handle={Handle}");
     }
 }

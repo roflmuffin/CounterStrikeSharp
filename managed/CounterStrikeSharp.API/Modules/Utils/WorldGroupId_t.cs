@@ -18,14 +18,13 @@ using System;
 using System.Runtime.CompilerServices;
 using CounterStrikeSharp.API.Core;
 
-namespace CounterStrikeSharp.API.Modules.Utils
-{
-    public class WorldGroupId_t : NativeObject
-    {
-        public WorldGroupId_t(IntPtr pointer) : base(pointer)
-        {
-        }
+namespace CounterStrikeSharp.API.Modules.Utils;
 
-        public unsafe ref uint Value => ref Unsafe.Add(ref *(uint*)Handle.ToPointer(), 0);
+public class WorldGroupId_t : NativeObject
+{
+    public WorldGroupId_t(IntPtr pointer) : base(pointer)
+    {
     }
+
+    public unsafe ref uint Value => ref Unsafe.Add(ref *(uint*)Handle.ToPointer(), 0);
 }

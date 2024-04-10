@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
 namespace CounterStrikeSharp.API.Modules.Utils;
 
 [Flags]
-public enum PlayerFlags: uint
+public enum PlayerFlags : uint
 {
     FL_ONGROUND = 1 << 0, // At rest / on the ground
     FL_DUCKING = 1 << 1, // Player flag -- Player is fully crouched
