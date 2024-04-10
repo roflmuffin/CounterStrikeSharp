@@ -28,10 +28,10 @@ public interface IMenu
         set { throw new NotImplementedException(); }
     }
     bool ExitButton { get; set; }
-        
+
     ChatMenuOption AddMenuOption(string display, Action<CCSPlayerController, ChatMenuOption> onSelect, bool disabled = false);
-    void Open(CCSPlayerController player);
-    void OpenToAll();
+    void Open(CCSPlayerController player) {}
+    void OpenToAll() {}
 }
 
 public interface IMenuInstance
@@ -43,7 +43,7 @@ public interface IMenuInstance
     protected int CurrentOffset { get; }
     protected int NumPerPage { get; }
     protected Stack<int> PrevPageOffsets { get; }
-        
+
     public void NextPage();
     public void PrevPage();
     public void Reset();
@@ -53,7 +53,7 @@ public interface IMenuInstance
         // Fallback for backwards compatibility
         throw new NotImplementedException();
     }
-        
+
     public void Display();
     public void OnKeyPress(CCSPlayerController player, int key);
 }
