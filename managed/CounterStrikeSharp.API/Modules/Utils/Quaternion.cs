@@ -14,18 +14,15 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using System;
 using System.Runtime.CompilerServices;
-using CounterStrikeSharp.API.Core;
 
-namespace CounterStrikeSharp.API.Modules.Utils
+namespace CounterStrikeSharp.API.Modules.Utils;
+
+public class Quaternion : NativeObject
 {
-    public class Quaternion : NativeObject
+    public Quaternion(IntPtr pointer) : base(pointer)
     {
-        public Quaternion(IntPtr pointer) : base(pointer)
-        {
-        }
-
-        public unsafe ref float Value => ref Unsafe.Add(ref *(float*)Handle.ToPointer(), 0);
     }
+
+    public unsafe ref float Value => ref Unsafe.Add(ref *(float*)Handle.ToPointer(), 0);
 }

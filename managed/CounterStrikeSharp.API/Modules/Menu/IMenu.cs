@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -14,8 +14,6 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using System.Collections.Generic;
-
 namespace CounterStrikeSharp.API.Modules.Menu;
 
 public interface IMenu
@@ -28,10 +26,10 @@ public interface IMenu
         set { throw new NotImplementedException(); }
     }
     bool ExitButton { get; set; }
-        
+
     ChatMenuOption AddMenuOption(string display, Action<CCSPlayerController, ChatMenuOption> onSelect, bool disabled = false);
-    void Open(CCSPlayerController player);
-    void OpenToAll();
+    void Open(CCSPlayerController player) { }
+    void OpenToAll() { }
 }
 
 public interface IMenuInstance
@@ -43,7 +41,7 @@ public interface IMenuInstance
     protected int CurrentOffset { get; }
     protected int NumPerPage { get; }
     protected Stack<int> PrevPageOffsets { get; }
-        
+
     public void NextPage();
     public void PrevPage();
     public void Reset();
@@ -53,7 +51,7 @@ public interface IMenuInstance
         // Fallback for backwards compatibility
         throw new NotImplementedException();
     }
-        
+
     public void Display();
     public void OnKeyPress(CCSPlayerController player, int key);
 }

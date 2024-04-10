@@ -13,7 +13,7 @@ public class SteamIdTests
     public void ValidateSteamId(ulong parseValue, ulong steamId64, string steamId2, string steamId3, int steamId32, SteamAccountType accountType, SteamAccountInstance accountInstance, SteamAccountUniverse accountUniverse, bool valid)
     {
         var steamId = new SteamID(parseValue);
-        
+
         Assert.Equal(steamId64, steamId.SteamId64);
         Assert.Equal(steamId2, steamId.SteamId2);
         Assert.Equal(steamId3, steamId.SteamId3);
@@ -23,7 +23,7 @@ public class SteamIdTests
         Assert.Equal(accountUniverse, steamId.AccountUniverse);
         Assert.Equal(valid, steamId.IsValid());
     }
-    
+
     [Theory]
     [InlineData(76561197960524373ul, 76561197960524373ul)]
     [InlineData("STEAM_0:1:129322", 76561197960524373ul)]
@@ -32,18 +32,18 @@ public class SteamIdTests
     {
         Assert.Equal(longValue, ((SteamID)parseable).SteamId64);
     }
-    
+
     [Fact]
     public void CanUseValueEquality()
     {
         var steamId1 = new SteamID(76561197960524373ul);
         var steamId2 = new SteamID(76561197960524373ul);
         var steamId3 = new SteamID(76561197960265728ul);
-        
+
         Assert.True(steamId1 == steamId2);
         Assert.True(steamId1 != steamId3);
     }
-    
+
     [Fact]
     public void ThrowsOutOfRangeException()
     {

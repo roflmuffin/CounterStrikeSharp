@@ -30,7 +30,7 @@ public class WithGameEventHandlersPlugin : BasePlugin
             return HookResult.Continue;
         }, HookMode.Pre);
     }
-    
+
     // Subscriptions can be added via an attribute
     [GameEventHandler]
     public HookResult OnPlayerBlind(EventPlayerBlind @event, GameEventInfo info)

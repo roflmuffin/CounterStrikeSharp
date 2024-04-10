@@ -1,5 +1,4 @@
 using System.Globalization;
-using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Plugin;
 using CounterStrikeSharp.API.Core.Translations;
 using Microsoft.Extensions.Localization;
@@ -18,7 +17,7 @@ public class TranslationTests
         pluginContextMock.SetupGet(x => x.FilePath).Returns(TestUtils.GetTestPath("test_plugin.dll"));
         _factory = new JsonStringLocalizerFactory(pluginContextMock.Object);
         _localizer = _factory.Create(this.GetType());
-        
+
         // This is generally derived from the core config, but for the sake of these tests we default to `en`.
         var serverCulture = CultureInfo.GetCultureInfo("en");
         CultureInfo.DefaultThreadCurrentUICulture = serverCulture;
@@ -34,7 +33,7 @@ public class TranslationTests
         {
             Assert.Equal("This is the english translation", _localizer["test.translation"]);
         }
-        
+
         using (new WithTemporaryCulture(CultureInfo.InvariantCulture))
         {
             Assert.Equal("This is the english translation", _localizer["test.translation"]);
@@ -49,7 +48,7 @@ public class TranslationTests
         {
             Assert.Equal("This is the english (GB) translation", _localizer["test.translation"]);
         }
-        
+
         using (new WithTemporaryCulture(CultureInfo.GetCultureInfo("fr")))
         {
             Assert.Equal("This is the french translation", _localizer["test.translation"]);
@@ -81,7 +80,7 @@ public class TranslationTests
     {
         Assert.Equal("This number has 2 decimal places 0.25", _localizer["test.format", 0.251]);
     }
-    
+
     [Fact]
     public void HandlesColorFormatting()
     {

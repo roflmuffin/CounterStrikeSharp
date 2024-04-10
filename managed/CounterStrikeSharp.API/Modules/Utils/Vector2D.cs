@@ -14,19 +14,16 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using System;
 using System.Runtime.CompilerServices;
-using CounterStrikeSharp.API.Core;
 
-namespace CounterStrikeSharp.API.Modules.Utils
+namespace CounterStrikeSharp.API.Modules.Utils;
+
+public class Vector2D : NativeObject
 {
-    public class Vector2D : NativeObject
+    public Vector2D(IntPtr pointer) : base(pointer)
     {
-        public Vector2D(IntPtr pointer) : base(pointer)
-        {
-        }
-
-        public unsafe ref float X => ref Unsafe.Add(ref *(float*)Handle.ToPointer(), 0);
-        public unsafe ref float Y => ref Unsafe.Add(ref *(float*)Handle, 1);
     }
+
+    public unsafe ref float X => ref Unsafe.Add(ref *(float*)Handle.ToPointer(), 0);
+    public unsafe ref float Y => ref Unsafe.Add(ref *(float*)Handle, 1);
 }

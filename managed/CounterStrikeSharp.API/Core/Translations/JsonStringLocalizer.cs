@@ -1,7 +1,4 @@
-using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Resources;
 using Microsoft.Extensions.Localization;
 
 namespace CounterStrikeSharp.API.Core.Translations;
@@ -10,13 +7,13 @@ public class JsonStringLocalizer : IStringLocalizer
 {
     private readonly JsonResourceManager _resourceManager;
     private readonly JsonStringProvider _resourceStringProvider;
-    
+
     public JsonStringLocalizer(string langPath)
     {
         _resourceManager = new JsonResourceManager(langPath);
         _resourceStringProvider = new(_resourceManager);
     }
-    
+
     public IEnumerable<LocalizedString> GetAllStrings(bool includeParentCultures)
     {
         return GetAllStrings(includeParentCultures, CultureInfo.CurrentUICulture);
@@ -52,7 +49,7 @@ public class JsonStringLocalizer : IStringLocalizer
             return new LocalizedString(name, value, resourceNotFound: format == null);
         }
     }
-    
+
     protected string? GetStringSafely(string name, CultureInfo? culture = null)
     {
         if (name == null)
@@ -63,13 +60,13 @@ public class JsonStringLocalizer : IStringLocalizer
         culture = culture ?? CultureInfo.CurrentUICulture;
 
         var result = _resourceManager.GetString(name, culture);
-        
+
         // Fallback to en if running in invariant mode.
         if (result == null && culture.Equals(CultureInfo.InvariantCulture))
         {
             result = _resourceManager.GetFallbackString(name);
         }
-        
+
         // Fallback to the default culture (en-US) if the resource is not found for the current culture.
         if (result == null && !culture.Equals(CultureInfo.DefaultThreadCurrentUICulture))
         {
@@ -78,7 +75,7 @@ public class JsonStringLocalizer : IStringLocalizer
 
         return result?.ReplaceColorTags();
     }
-    
+
     protected virtual IEnumerable<LocalizedString> GetAllStrings(bool includeParentCultures, CultureInfo culture)
     {
         if (culture == null)
@@ -96,7 +93,7 @@ public class JsonStringLocalizer : IStringLocalizer
             yield return new LocalizedString(name, value ?? name, resourceNotFound: value == null);
         }
     }
-    
+
     private IEnumerable<string> GetResourceNamesFromCultureHierarchy(CultureInfo startingCulture)
     {
         var currentCulture = startingCulture;

@@ -1,4 +1,3 @@
-using CounterStrikeSharp.API.Core.Hosting;
 using CounterStrikeSharp.API.Core.Plugin;
 using Microsoft.Extensions.Localization;
 

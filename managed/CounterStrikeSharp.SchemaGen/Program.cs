@@ -1,11 +1,10 @@
-﻿/**
+/**
  * This project has been copied & modified from the demofile-net project under the MIT license.
  * See ACKNOWLEDGEMENTS file for more information.
  * https://github.com/saul/demofile-net
  */
 
 using System.Collections.Immutable;
-using System.Diagnostics;
 using System.Text;
 using System.Text.Json;
 using QuickGraph;
@@ -171,7 +170,7 @@ internal static partial class Program
         {
             search.Compute(networkClassName);
         }
-        
+
         // Clear output directory
         if (Directory.Exists(outputPath))
         {

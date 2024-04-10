@@ -1,6 +1,3 @@
-using System;
-using CounterStrikeSharp.API.Core;
-
 namespace CounterStrikeSharp.API.Modules.Memory;
 
 public record ValveInterface

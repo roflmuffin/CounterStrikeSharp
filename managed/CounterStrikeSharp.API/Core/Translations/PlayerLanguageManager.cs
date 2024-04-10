@@ -7,14 +7,14 @@ namespace CounterStrikeSharp.API.Core.Translations;
 public class PlayerLanguageManager : IPlayerLanguageManager
 {
     private readonly ConcurrentDictionary<SteamID, CultureInfo> _playerLanguages = new();
-    
+
     public static IPlayerLanguageManager Instance { get; private set; } = null!;
 
     public PlayerLanguageManager()
     {
         Instance = this;
     }
-    
+
     public void SetLanguage(SteamID steamId, CultureInfo cultureInfo)
     {
         _playerLanguages[steamId] = cultureInfo;

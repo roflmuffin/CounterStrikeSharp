@@ -1,4 +1,4 @@
-﻿namespace CounterStrikeSharp.API.Modules.Cvars.Validators;
+namespace CounterStrikeSharp.API.Modules.Cvars.Validators;
 
 public interface IValidator<in T>
 {

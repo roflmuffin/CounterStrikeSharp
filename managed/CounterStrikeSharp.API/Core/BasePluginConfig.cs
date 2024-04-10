@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -16,17 +16,16 @@
 
 using System.Text.Json.Serialization;
 
-namespace CounterStrikeSharp.API.Core
-{
-    public interface IBasePluginConfig
-    {
-        [JsonPropertyName("ConfigVersion")]
-        int Version { get; set; }
-    }
+namespace CounterStrikeSharp.API.Core;
 
-    public class BasePluginConfig : IBasePluginConfig
-    {
-        [JsonPropertyName("ConfigVersion")]
-        public virtual int Version { get; set; } = 1;
-    }
+public interface IBasePluginConfig
+{
+    [JsonPropertyName("ConfigVersion")]
+    int Version { get; set; }
+}
+
+public class BasePluginConfig : IBasePluginConfig
+{
+    [JsonPropertyName("ConfigVersion")]
+    public virtual int Version { get; set; } = 1;
 }

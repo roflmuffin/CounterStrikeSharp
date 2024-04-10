@@ -1,4 +1,3 @@
-﻿using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;

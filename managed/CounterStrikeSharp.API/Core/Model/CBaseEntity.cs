@@ -1,4 +1,3 @@
-﻿using System;
 using System.Runtime.InteropServices;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
@@ -39,6 +38,6 @@ public partial class CBaseEntity
     {
         Guard.IsValidEntity(this);
 
-        return (T) Activator.CreateInstance(typeof(T), Marshal.ReadIntPtr(SubclassID.Handle + 4));
+        return (T)Activator.CreateInstance(typeof(T), Marshal.ReadIntPtr(SubclassID.Handle + 4));
     }
 }

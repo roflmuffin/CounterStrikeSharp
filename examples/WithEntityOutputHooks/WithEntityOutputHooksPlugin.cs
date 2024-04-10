@@ -18,11 +18,11 @@ public class WithEntityOutputHooksPlugin : BasePlugin
         HookEntityOutput("weapon_knife", "OnPlayerPickup", (CEntityIOOutput output, string name, CEntityInstance activator, CEntityInstance caller, CVariant value, float delay) =>
         {
             Logger.LogInformation("weapon_knife called OnPlayerPickup ({name}, {activator}, {caller}, {delay})", name, activator.DesignerName, caller.DesignerName, delay);
-            
+
             return HookResult.Continue;
         });
     }
-    
+
     // Output hooks can use wildcards to match multiple entities
     [EntityOutputHook("*", "OnPlayerPickup")]
     public HookResult OnPickup(CEntityIOOutput output, string name, CEntityInstance activator, CEntityInstance caller, CVariant value, float delay)
@@ -31,7 +31,7 @@ public class WithEntityOutputHooksPlugin : BasePlugin
 
         return HookResult.Continue;
     }
-    
+
     // Output hooks can use wildcards to match multiple output names
     [EntityOutputHook("func_buyzone", "*")]
     public HookResult OnTouchStart(CEntityIOOutput output, string name, CEntityInstance activator, CEntityInstance caller, CVariant value, float delay)

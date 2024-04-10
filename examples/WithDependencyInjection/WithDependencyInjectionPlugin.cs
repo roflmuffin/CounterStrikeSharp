@@ -14,12 +14,12 @@ public class WithDependencyInjectionPlugin : BasePlugin
     public override string ModuleDescription => "An example plugin that uses dependency injection.";
 
     private readonly TestInjectedClass _testInjectedClass;
-    
+
     public WithDependencyInjectionPlugin(TestInjectedClass testInjectedClass)
     {
         _testInjectedClass = testInjectedClass;
     }
-    
+
     public override void Load(bool hotReload)
     {
         _testInjectedClass.SayHello();

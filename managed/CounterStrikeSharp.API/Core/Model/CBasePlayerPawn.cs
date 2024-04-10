@@ -1,4 +1,3 @@
-﻿using System;
 using CounterStrikeSharp.API.Modules.Memory;
 
 namespace CounterStrikeSharp.API.Core;
@@ -15,7 +14,7 @@ public partial class CBasePlayerPawn
     {
         Guard.IsValidEntity(this);
 
-        VirtualFunction.CreateVoid<IntPtr, bool, bool>(Handle,  GameData.GetOffset("CBasePlayerPawn_CommitSuicide"))(Handle, explode, force);
+        VirtualFunction.CreateVoid<IntPtr, bool, bool>(Handle, GameData.GetOffset("CBasePlayerPawn_CommitSuicide"))(Handle, explode, force);
     }
 
     /// <summary>

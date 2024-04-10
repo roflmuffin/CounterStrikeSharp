@@ -1,5 +1,3 @@
-﻿using System;
-
 namespace CounterStrikeSharp.API.Core.Attributes;
 
 [AttributeUsage(AttributeTargets.Class)]

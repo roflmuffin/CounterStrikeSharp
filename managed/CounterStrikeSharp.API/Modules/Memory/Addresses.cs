@@ -1,7 +1,3 @@
-using System.IO;
-using System.Runtime.InteropServices;
-using CounterStrikeSharp.API.Core;
-
 namespace CounterStrikeSharp.API.Modules.Memory;
 
 public class Addresses

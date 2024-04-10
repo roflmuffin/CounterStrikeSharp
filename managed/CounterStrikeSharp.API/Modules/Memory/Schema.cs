@@ -1,11 +1,7 @@
-using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
-using CounterStrikeSharp.API.Core;
 
 namespace CounterStrikeSharp.API.Modules.Memory;
 
@@ -52,7 +48,7 @@ public class Schema
         "m_nActiveCoinRank",
         "m_nMusicID",
     };
-    
+
     public static int GetClassSize(string className) => NativeAPI.GetSchemaClassSize(className);
 
     public static short GetSchemaOffset(string className, string propertyName)
@@ -71,7 +67,7 @@ public class Schema
 
         return offset;
     }
-    
+
     public static bool IsSchemaFieldNetworked(string className, string propertyName)
     {
         return NativeAPI.IsSchemaFieldNetworked(className, propertyName);
@@ -151,7 +147,7 @@ public class Schema
     {
         return GetSchemaValue<string>(pointer, className, memberName);
     }
-    
+
     /// <summary>
     /// Reads a UTF8 encoded string from the specified pointer, class name, and member name.
     /// These are for networked strings, which need to be read differently.
@@ -164,32 +160,32 @@ public class Schema
     {
         return Utilities.ReadStringUtf8(pointer + GetSchemaOffset(className, memberName));
     }
-    
+
     // Used to write to `string_t` and `char*` pointer type strings
     public unsafe static void SetString(IntPtr pointer, string className, string memberName, string value)
     {
         SetSchemaValue(pointer, className, memberName, value);
     }
-    
+
     // Used to write to the char[] specified at the schema location, i.e. char m_iszPlayerName[128]; 
     internal unsafe static void SetStringBytes(IntPtr pointer, string className, string memberName, string value, int maxLength)
     {
         var handle = GetSchemaValue<IntPtr>(pointer, className, memberName);
-        
+
         var bytes = Encoding.UTF8.GetBytes(value);
         if (bytes.Length > maxLength)
         {
             throw new ArgumentException($"String length exceeds maximum length of {maxLength}");
         }
-        
+
         for (int i = 0; i < bytes.Length; i++)
         {
             Unsafe.Write((void*)(handle.ToInt64() + i), bytes[i]);
         }
-        
+
         Unsafe.Write((void*)(handle.ToInt64() + bytes.Length), 0);
     }
-    
+
     public static T GetCustomMarshalledType<T>(IntPtr pointer, string className, string memberName)
     {
         var type = typeof(T);
@@ -201,7 +197,7 @@ public class Schema
 
         return (T)result;
     }
-    
+
     public static void SetCustomMarshalledType<T>(IntPtr pointer, string className, string memberName, T value)
     {
         var type = typeof(T);

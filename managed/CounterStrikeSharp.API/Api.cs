@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using CounterStrikeSharp.API.Core;
+using System.Reflection;
 
 namespace CounterStrikeSharp.API;
 
@@ -13,7 +12,7 @@ public class Api
     {
         return Assembly.GetAssembly(typeof(BasePlugin))!.GetName().Version!.Build;
     }
-    
+
     /// <summary>
     /// Returns the assembly version of CounterStrikeSharp running on the server as a string including git commit hash
     /// </summary>

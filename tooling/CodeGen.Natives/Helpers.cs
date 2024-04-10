@@ -17,12 +17,12 @@ public static class Helpers
 
         return path;
     }
-    
+
     public static string ToPascalCase(this string str)
     {
         return Regex.Replace(str.ToLower(), "(?:^|_| +)(.)", match => match.Groups[1].Value.ToUpper());
     }
-    
+
     public static string ToCamelCase(this string str)
     {
         str = str.ToPascalCase();

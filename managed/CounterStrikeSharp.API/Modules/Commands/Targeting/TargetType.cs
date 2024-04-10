@@ -1,4 +1,4 @@
-﻿namespace CounterStrikeSharp.API.Modules.Commands.Targeting;
+namespace CounterStrikeSharp.API.Modules.Commands.Targeting;
 
 public enum TargetType
 {

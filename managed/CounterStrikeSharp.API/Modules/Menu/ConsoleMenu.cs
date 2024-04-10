@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -49,7 +49,7 @@ public class ConsoleMenuInstance : BaseMenuInstance
 
             Player.PrintToConsole($"{(option.Disabled ? "[Disabled] - " : "[Enabled]")} css_{keyOffset++} {option.Text}");
         }
-            
+
         if (HasPrevButton)
         {
             Player.PrintToConsole("css_7 -> Prev");
@@ -59,7 +59,7 @@ public class ConsoleMenuInstance : BaseMenuInstance
         {
             Player.PrintToConsole("css_8 -> Next");
         }
-        
+
         if (Menu.ExitButton)
         {
             Player.PrintToConsole("css_9 -> Close");

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using CounterStrikeSharp.API.Core.Plugin;
 using Microsoft.Extensions.Logging;
 
@@ -24,7 +23,7 @@ public class PluginCommandManagerDecorator : ICommandManager, IDisposable
 
     public void RegisterCommand(CommandDefinition definition)
     {
-        _inner.RegisterCommand(definition);        
+        _inner.RegisterCommand(definition);
         _trackedCommands.Add(definition);
         _logger.LogDebug("Registered command {Command} from plugin {Plugin}", definition.Name, _pluginContext.Plugin.ModuleName);
     }

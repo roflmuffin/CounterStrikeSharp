@@ -1,4 +1,4 @@
-﻿namespace CounterStrikeSharp.API.Modules.Cvars.Validators;
+namespace CounterStrikeSharp.API.Modules.Cvars.Validators;
 
 public class RangeValidator<T> : IValidator<T> where T : IComparable<T>
 {

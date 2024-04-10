@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Entities.Constants;
 using CounterStrikeSharp.API.Modules.Memory.DynamicFunctions;
 using CounterStrikeSharp.API.Modules.Utils;
@@ -61,27 +57,27 @@ public static class VirtualFunctions
 
     public static Action<IntPtr, IntPtr> CBaseEntity_DispatchSpawn = CBaseEntity_DispatchSpawnFunc.Invoke;
 
-    public static MemoryFunctionVoid<CBasePlayerController, CBasePlayerPawn, bool, bool> CBasePlayerController_SetPawnFunc = new (GameData.GetSignature("CBasePlayerController_SetPawn"));
+    public static MemoryFunctionVoid<CBasePlayerController, CBasePlayerPawn, bool, bool> CBasePlayerController_SetPawnFunc = new(GameData.GetSignature("CBasePlayerController_SetPawn"));
 
-	public static MemoryFunctionVoid<CEntityInstance, CTakeDamageInfo> CBaseEntity_TakeDamageOldFunc = new (GameData.GetSignature("CBaseEntity_TakeDamageOld"));
+    public static MemoryFunctionVoid<CEntityInstance, CTakeDamageInfo> CBaseEntity_TakeDamageOldFunc = new(GameData.GetSignature("CBaseEntity_TakeDamageOld"));
     public static Action<CEntityInstance, CTakeDamageInfo> CBaseEntity_TakeDamageOld = CBaseEntity_TakeDamageOldFunc.Invoke;
-    
+
     public static MemoryFunctionWithReturn<CCSPlayer_WeaponServices, CBasePlayerWeapon, bool> CCSPlayer_WeaponServices_CanUseFunc = new(GameData.GetSignature("CCSPlayer_WeaponServices_CanUse"));
     public static Func<CCSPlayer_WeaponServices, CBasePlayerWeapon, bool> CCSPlayer_WeaponServices_CanUse = CCSPlayer_WeaponServices_CanUseFunc.Invoke;
-    
-    public static MemoryFunctionVoid<CCSPlayerPawnBase> CCSPlayerPawnBase_PostThinkFunc = new (GameData.GetSignature("CCSPlayerPawnBase_PostThink"));
+
+    public static MemoryFunctionVoid<CCSPlayerPawnBase> CCSPlayerPawnBase_PostThinkFunc = new(GameData.GetSignature("CCSPlayerPawnBase_PostThink"));
     public static Action<CCSPlayerPawnBase> CCSPlayerPawnBase_PostThink = CCSPlayerPawnBase_PostThinkFunc.Invoke;
-    
-    public static MemoryFunctionVoid<CBaseTrigger, CBaseEntity> CBaseTrigger_StartTouchFunc = new (GameData.GetSignature("CBaseTrigger_StartTouch"));
+
+    public static MemoryFunctionVoid<CBaseTrigger, CBaseEntity> CBaseTrigger_StartTouchFunc = new(GameData.GetSignature("CBaseTrigger_StartTouch"));
     public static Action<CBaseTrigger, CBaseEntity> CBaseTrigger_StartTouch = CBaseTrigger_StartTouchFunc.Invoke;
-    
-    public static MemoryFunctionVoid<CBaseTrigger, CBaseEntity> CBaseTrigger_EndTouchFunc = new (GameData.GetSignature("CBaseTrigger_EndTouch"));
+
+    public static MemoryFunctionVoid<CBaseTrigger, CBaseEntity> CBaseTrigger_EndTouchFunc = new(GameData.GetSignature("CBaseTrigger_EndTouch"));
     public static Action<CBaseTrigger, CBaseEntity> CBaseTrigger_EndTouch = CBaseTrigger_EndTouchFunc.Invoke;
-    
-    public static MemoryFunctionVoid<IntPtr, IntPtr>  RemovePlayerItemFunc =
+
+    public static MemoryFunctionVoid<IntPtr, IntPtr> RemovePlayerItemFunc =
         new(GameData.GetSignature("CBasePlayerPawn_RemovePlayerItem"));
     public static Action<IntPtr, IntPtr> RemovePlayerItemVirtual = RemovePlayerItemFunc.Invoke;
-    
+
     public static MemoryFunctionVoid<IntPtr, string, IntPtr, IntPtr, string, int> AcceptInputFunc = new(GameData.GetSignature("CEntityInstance_AcceptInput"));
     public static Action<IntPtr, string, IntPtr, IntPtr, string, int> AcceptInput = AcceptInputFunc.Invoke;
 

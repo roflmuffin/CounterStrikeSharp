@@ -1,4 +1,3 @@
-﻿using System.IO;
 using Microsoft.Extensions.Hosting;
 
 namespace CounterStrikeSharp.API.Core.Hosting;

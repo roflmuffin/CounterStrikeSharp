@@ -14,18 +14,15 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using System;
 using System.Runtime.CompilerServices;
-using CounterStrikeSharp.API.Core;
 
-namespace CounterStrikeSharp.API.Modules.Utils
+namespace CounterStrikeSharp.API.Modules.Utils;
+
+public class WorldGroupId_t : NativeObject
 {
-    public class WorldGroupId_t : NativeObject
+    public WorldGroupId_t(IntPtr pointer) : base(pointer)
     {
-        public WorldGroupId_t(IntPtr pointer) : base(pointer)
-        {
-        }
-
-        public unsafe ref uint Value => ref Unsafe.Add(ref *(uint*)Handle.ToPointer(), 0);
     }
+
+    public unsafe ref uint Value => ref Unsafe.Add(ref *(uint*)Handle.ToPointer(), 0);
 }

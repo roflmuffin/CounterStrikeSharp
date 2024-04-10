@@ -93,11 +93,10 @@ using System;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Commands;
 
-namespace CounterStrikeSharp.API.Core
-{{
-    public class NativeAPI {{
-        {nativesString}
-    }}
+namespace CounterStrikeSharp.API.Core;
+
+public class NativeAPI {{
+    {nativesString}
 }}
 ";
 

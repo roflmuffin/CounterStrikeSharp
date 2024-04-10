@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@ public partial class CCSPlayer_ItemServices
     /// <exception cref="InvalidOperationException">ItemServices points to null</exception>
     public void DropActivePlayerWeapon(CBasePlayerWeapon activeWeapon)
     {
-        if(Handle == IntPtr.Zero)
+        if (Handle == IntPtr.Zero)
             throw new InvalidOperationException("ItemServices points to null.");
 
         Guard.IsValidEntity(activeWeapon);

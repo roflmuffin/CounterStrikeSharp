@@ -1,4 +1,4 @@
-﻿namespace CounterStrikeSharp.SchemaGen;
+namespace CounterStrikeSharp.SchemaGen;
 
 public record SchemaEnumItem(
     string Name,

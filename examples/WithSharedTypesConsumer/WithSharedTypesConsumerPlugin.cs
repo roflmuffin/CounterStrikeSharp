@@ -18,7 +18,7 @@ public class WithSharedTypesConsumerPlugin : BasePlugin
     public static PlayerCapability<Decimal> BalanceCapabilityDecimal { get; } = new("myplugin:balance_decimal");
 
     public static PluginCapability<IBalanceService> BalanceServiceCapability { get; } = new("myplugin:balance_service");
-    
+
     public override void Load(bool hotReload)
     {
         AddCommand("css_subtract", "Subtracts 50 from your balance", (player, info) =>
@@ -29,7 +29,7 @@ public class WithSharedTypesConsumerPlugin : BasePlugin
             balance.Subtract(50);
             player.PrintToChat($"Your balance is now {balance.Balance}");
         });
-        
+
         AddCommand("css_clearbalances", "Clears all balances", (player, info) =>
         {
             if (player == null) return;
@@ -42,7 +42,7 @@ public class WithSharedTypesConsumerPlugin : BasePlugin
             if (balance == null) return;
             player.PrintToChat($"Your balance is now {balance.Balance}");
         });
-        
+
         AddCommand("css_decimalbalance", "Gets your current balance", (player, info) =>
         {
             if (player == null) return;

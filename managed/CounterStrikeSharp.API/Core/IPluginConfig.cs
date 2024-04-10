@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -14,19 +14,18 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-namespace CounterStrikeSharp.API.Core
-{
-    /// <summary>
-    /// An interface that describes a plugin configuration.
-    /// </summary>
-    public interface IPluginConfig<T> where T: IBasePluginConfig, new()
-    {
-        T Config { get; set; }
+namespace CounterStrikeSharp.API.Core;
 
-        /// <summary>
-        /// Called when the `ConfigManager` has parsed the configuration file for this plugin
-        /// </summary>
-        /// <param name="config">Parsed config instance</param>
-        public void OnConfigParsed(T config);
-    }
+/// <summary>
+/// An interface that describes a plugin configuration.
+/// </summary>
+public interface IPluginConfig<T> where T : IBasePluginConfig, new()
+{
+    T Config { get; set; }
+
+    /// <summary>
+    /// Called when the `ConfigManager` has parsed the configuration file for this plugin
+    /// </summary>
+    /// <param name="config">Parsed config instance</param>
+    public void OnConfigParsed(T config);
 }

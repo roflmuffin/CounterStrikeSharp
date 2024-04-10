@@ -1,5 +1,3 @@
-﻿using System.Collections.Generic;
-
 namespace CounterStrikeSharp.API.Core.Capabilities;
 
 public sealed class PlayerCapability<T>

@@ -1,5 +1,3 @@
-﻿using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using System.Runtime.Loader;
 using CounterStrikeSharp.API.Core.Capabilities;
@@ -46,7 +44,7 @@ public class PluginManager : IPluginManager
             .Select(dir => Path.Combine(dir, Path.GetFileName(dir) + ".dll"))
             .Where(File.Exists)
             .ToArray();
-        
+
         foreach (var sharedAssemblyPath in sharedAssemblyPaths)
         {
             try
@@ -98,7 +96,7 @@ public class PluginManager : IPluginManager
                 }
             }
         }
-        
+
         foreach (var plugin in _loadedPluginContexts)
         {
             try

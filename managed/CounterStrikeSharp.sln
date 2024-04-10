@@ -40,6 +40,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySharedTypes.Contracts", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WithSharedTypesConsumer", "..\examples\WithSharedTypesConsumer\WithSharedTypesConsumer.csproj", "{76AD7BB0-A096-4336-83E2-B32CAE4E9933}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{26E73597-4938-419D-B327-912B9CA987E2}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

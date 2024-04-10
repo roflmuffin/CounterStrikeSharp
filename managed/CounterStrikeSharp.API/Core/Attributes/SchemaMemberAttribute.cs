@@ -1,4 +1,4 @@
-﻿namespace CounterStrikeSharp.API.Core.Attributes;
+namespace CounterStrikeSharp.API.Core.Attributes;
 
 [AttributeUsage(AttributeTargets.Property)]
 public class SchemaMemberAttribute : Attribute

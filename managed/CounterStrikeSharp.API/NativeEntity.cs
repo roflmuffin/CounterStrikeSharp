@@ -1,4 +1,3 @@
-using System.Runtime.InteropServices;
 using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Utils;
 

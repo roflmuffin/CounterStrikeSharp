@@ -120,7 +120,7 @@ public partial class Generators
                 {string.Join("\n", propertyDefinition)}
             }}";
         }));
-        
+
 
         var result = $@"
 using System;
@@ -133,7 +133,7 @@ namespace CounterStrikeSharp.API.Core
     {gameEventsString}
 }}
 ";
-        
+
         Console.WriteLine($"Generated C# bindings for {allGameEvents.Count} game events successfully.");
 
         File.WriteAllText(Path.Join(Helpers.GetRootDirectory(), "managed/CounterStrikeSharp.API/Core/GameEvents.g.cs"),

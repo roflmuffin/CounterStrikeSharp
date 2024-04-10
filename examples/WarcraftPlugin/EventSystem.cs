@@ -45,7 +45,7 @@ namespace WarcraftPlugin
 
             victim?.GetWarcraftPlayer()?.GetRace()?.InvokeEvent("player_hurt", @event);
             attacker?.GetWarcraftPlayer()?.GetRace()?.InvokeEvent("player_hurt_other", @event);
-            
+
             return HookResult.Continue;
         }
 
@@ -115,7 +115,7 @@ namespace WarcraftPlugin
             attacker?.GetWarcraftPlayer()?.GetRace()?.InvokeEvent("player_kill", @event);
 
             WarcraftPlugin.Instance.EffectManager.ClearEffects(victim);
-            
+
             return HookResult.Continue;
         }
     }

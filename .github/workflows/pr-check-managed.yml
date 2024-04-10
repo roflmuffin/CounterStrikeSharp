@@ -1,0 +1,37 @@
+name: PR Checks - Managed
+
+on:
+  pull_request: 
+    branches: ["main", "dev"]
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      # We don't need expensive submodules for the managed side.
+      - uses: actions/checkout@v3
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Install dependencies
+        run: dotnet restore managed/CounterStrikeSharp.sln
+
+      - name: Lint (dotnet format)
+        run: |
+          dotnet format whitespace managed/CounterStrikeSharp.sln --verbosity normal --verify-no-changes
+          dotnet format style managed/CounterStrikeSharp.sln --verbosity normal --verify-no-changes
+          
+      - name: Run tests
+        run: dotnet test --logger trx --results-directory "TestResults" managed/CounterStrikeSharp.API.Tests/CounterStrikeSharp.API.Tests.csproj
+
+      - name: Upload dotnet test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: TestResults

@@ -1,9 +1,6 @@
-using System;
-using System.IO;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Core;
-using ILogger = Microsoft.Extensions.Logging.ILogger;
 
 namespace CounterStrikeSharp.API.Core.Logging;
 

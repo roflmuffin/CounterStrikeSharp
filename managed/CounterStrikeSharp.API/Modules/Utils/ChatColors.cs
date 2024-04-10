@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -43,7 +43,7 @@ public class ChatColors
     [Obsolete("Use ChatColors.DarkRed instead.")]
     public static char Darkred = '\x02';
 
-    
+
     /// <summary>
     /// Returns a chat color based on a team.
     /// <remarks>Blue for CT, Yellow for T, LightPurple for Spectator</remarks>
