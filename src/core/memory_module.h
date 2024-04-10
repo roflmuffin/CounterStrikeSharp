@@ -24,8 +24,6 @@
 #include "strtools.h"
 #include "metamod_oslink.h"
 
-#include <format>
-#include <inttypes.h>
 #include <vector>
 #undef snprintf
 
