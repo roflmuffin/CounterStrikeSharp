@@ -114,3 +114,6 @@ dotnet_diagnostic.IDE0005.severity = error
 
 [**/Modules/Memory/**.cs]
 dotnet_diagnostic.IDE1006.severity = none
+
+[{**/*.g.cs,API.cs}]
+generated_code = true
