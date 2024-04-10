@@ -8,7 +8,7 @@ namespace CounterStrikeSharp.API.Modules.Admin;
 
 public partial class AdminData
 {
-    [JsonPropertyName("identity")] public required string Identity { get; init; }
+     [JsonPropertyName("identity")] public required string Identity { get; init; }
     // Flags loaded from file. Do not use this for actual comparisons.
 
 #pragma warning disable IDE1006
