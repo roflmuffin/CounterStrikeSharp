@@ -23,6 +23,10 @@
 #include "interface.h"
 #include "strtools.h"
 #include "metamod_oslink.h"
+
+#include <format>
+#include <inttypes.h>
+#include <vector>
 #undef snprintf
 
 namespace counterstrikesharp::modules {
@@ -34,7 +38,7 @@ class CModule
 
     void* FindSignature(const char* signature);
 
-    void* FindSignature(const byte* pData, size_t iSigLength);
+    void* FindSignature(const std::vector<int16_t>& sigBytes);
 
     void* FindInterface(const char* name);
 
