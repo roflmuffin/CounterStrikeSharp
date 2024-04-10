@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ public class ChatMenu : BaseMenu
     {
         ExitButton = false;
     }
-    
+
     public override void Open(CCSPlayerController player)
     {
         MenuManager.OpenChatMenu(player, this);
@@ -65,7 +65,7 @@ public class ChatMenuInstance : BaseMenuInstance
         {
             Player.PrintToChat($" {chatMenu.PrevPageColor}!7 {ChatColors.Default}-> Prev");
         }
-            
+
         if (HasNextButton)
         {
             Player.PrintToChat($" {chatMenu.NextPageColor}!8 {ChatColors.Default}-> Next");
@@ -77,7 +77,7 @@ public class ChatMenuInstance : BaseMenuInstance
         }
     }
 }
-    
+
 public static class ChatMenus
 {
     [Obsolete("Use MenuManager.OpenChatMenu instead")]

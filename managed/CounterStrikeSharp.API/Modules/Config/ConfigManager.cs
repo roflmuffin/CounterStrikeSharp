@@ -14,13 +14,9 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using System;
-using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Text.Json;
-
-using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Logging;
 using Microsoft.Extensions.Logging;
 

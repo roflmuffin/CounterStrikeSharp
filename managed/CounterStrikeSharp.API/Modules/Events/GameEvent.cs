@@ -14,10 +14,6 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using System;
-using CounterStrikeSharp.API.Core;
-using CounterStrikeSharp.API.Modules.Entities;
-
 namespace CounterStrikeSharp.API.Modules.Events;
 
 public class EventAttribute : Attribute

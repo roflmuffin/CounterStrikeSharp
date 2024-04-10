@@ -14,9 +14,6 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using System;
-using CounterStrikeSharp.API.Core;
-
 namespace CounterStrikeSharp.API.Modules.Commands;
 
 public class CommandInfo

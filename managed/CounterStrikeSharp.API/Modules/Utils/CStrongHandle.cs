@@ -1,6 +1,4 @@
-using System;
 using System.Runtime.CompilerServices;
-using CounterStrikeSharp.API.Core;
 
 namespace CounterStrikeSharp.API.Modules.Utils;
 

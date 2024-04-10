@@ -1,5 +1,3 @@
-﻿using System;
-
 namespace CounterStrikeSharp.API.Modules.Memory.DynamicFunctions;
 
 #pragma warning disable CS8601 // Possible null reference assignment.

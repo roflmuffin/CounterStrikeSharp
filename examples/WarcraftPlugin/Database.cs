@@ -152,7 +152,7 @@ UPDATE `raceinformation` SET `currentXP` = @currentXp,
             foreach (var player in playerEntities)
             {
                 if (!player.IsValid) continue;
-                
+
                 var wcPlayer = WarcraftPlugin.Instance.GetWcPlayer(player);
                 if (wcPlayer == null) continue;
 

@@ -1,4 +1,3 @@
-﻿using System.Collections.Generic;
 using System.ComponentModel;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Cvars.Validators;
@@ -54,17 +53,17 @@ public class FakeConVar<T> where T : IComparable<T>
 
             return;
         }
-        
+
         if (Flags.HasFlag(ConVarFlags.FCVAR_CHEAT))
         {
             var cheats = ConVar.Find("sv_cheats")!.GetPrimitiveValue<bool>();
             if (!cheats)
             {
                 args.ReplyToCommand($"SV: Convar '{Name}' is cheat protected, change ignored");
-                return; 
+                return;
             }
         }
-        
+
         if (player != null)
         {
             return;

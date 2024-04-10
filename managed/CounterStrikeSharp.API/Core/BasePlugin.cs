@@ -19,11 +19,11 @@ using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
 using CounterStrikeSharp.API.Core.Commands;
 using CounterStrikeSharp.API.Modules.Commands;
-using CounterStrikeSharp.API.Modules.Events;
-using CounterStrikeSharp.API.Modules.Timers;
 using CounterStrikeSharp.API.Modules.Config;
 using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API.Modules.Entities;
+using CounterStrikeSharp.API.Modules.Events;
+using CounterStrikeSharp.API.Modules.Timers;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
@@ -430,9 +430,9 @@ public abstract class BasePlugin : IPlugin
             MethodInfo executeCommandMethod = prop.FieldType
                 .GetMethod("ExecuteCommand", BindingFlags.Instance | BindingFlags.NonPublic);
 
-            this.AddCommand((string)name, (string) description, (caller, command) =>
+            this.AddCommand((string)name, (string)description, (caller, command) =>
             {
-                executeCommandMethod.Invoke(propValue, new object[] {caller, command});
+                executeCommandMethod.Invoke(propValue, new object[] { caller, command });
             });
         }
     }

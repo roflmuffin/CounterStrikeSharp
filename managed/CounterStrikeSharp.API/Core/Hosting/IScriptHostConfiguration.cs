@@ -1,4 +1,4 @@
-﻿namespace CounterStrikeSharp.API.Core.Hosting;
+namespace CounterStrikeSharp.API.Core.Hosting;
 
 
 /// <summary>
@@ -11,25 +11,25 @@ public interface IScriptHostConfiguration
     /// e.g. /game/csgo/addons/counterstrikesharp
     /// </summary>
     string RootPath { get; }
-    
+
     /// <summary>
     /// Gets the absolute path to the directory that contains CounterStrikeSharp plugins.
     /// e.g. /game/csgo/addons/counterstrikesharp/plugins
     /// </summary>
     string PluginPath { get; }
-    
+
     /// <summary>
     /// Gets the absolute path to the directory that contains CounterStrikeSharp plugin shared APIS.
     /// e.g. /game/csgo/addons/counterstrikesharp/shared
     /// </summary>
     string SharedPath { get; }
-    
+
     /// <summary>
     /// Gets the absolute path to the directory that contains CounterStrikeSharp configs.
     /// e.g. /game/csgo/addons/counterstrikesharp/configs
     /// </summary>
     string ConfigsPath { get; }
-    
+
     /// <summary>
     /// Gets the absolute path to the directory that contains CounterStrikeSharp game data.
     /// e.g. /game/csgo/addons/counterstrikesharp/gamedata

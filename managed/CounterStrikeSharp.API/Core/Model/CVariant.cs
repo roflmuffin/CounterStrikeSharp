@@ -1,4 +1,4 @@
-﻿namespace CounterStrikeSharp.API.Core;
+namespace CounterStrikeSharp.API.Core;
 
 /// <summary>
 /// Placeholder for CVariant

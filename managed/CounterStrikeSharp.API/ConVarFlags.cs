@@ -14,10 +14,6 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace CounterStrikeSharp.API;
 
 [Flags]

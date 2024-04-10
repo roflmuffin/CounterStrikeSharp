@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@ public class CenterHtmlMenu : BaseMenu
     {
         _plugin = plugin;
     }
-    
+
     [Obsolete("Use the constructor that takes a BasePlugin")]
     public CenterHtmlMenu(string title) : base(ModifyTitle(title))
     {
@@ -45,8 +45,8 @@ public class CenterHtmlMenu : BaseMenu
         {
             throw new InvalidOperationException("This method is unsupported with the CenterHtmlMenu constructor used." +
                                                 "Please provide a BasePlugin in the constructor.");
-        }; 
-        
+        };
+
         MenuManager.OpenCenterHtmlMenu(_plugin, player, this);
     }
 

@@ -1,5 +1,3 @@
-using System;
-
 namespace CounterStrikeSharp.API.Modules.Utils;
 
 [Flags]

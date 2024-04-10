@@ -1,4 +1,4 @@
-﻿namespace CounterStrikeSharp.API.Core.Plugin.Host;
+namespace CounterStrikeSharp.API.Core.Plugin.Host;
 
 public interface IPluginContextQueryHandler
 {

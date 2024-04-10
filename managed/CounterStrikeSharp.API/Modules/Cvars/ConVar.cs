@@ -1,6 +1,4 @@
-﻿using System;
 using System.Runtime.CompilerServices;
-using CounterStrikeSharp.API.Core;
 
 namespace CounterStrikeSharp.API.Modules.Cvars;
 
@@ -127,7 +125,7 @@ public class ConVar
                 throw new InvalidOperationException(
                     $"ConVar is a {Type} but you are trying to get a string value.");
             }
-            
+
             NativeAPI.SetConvarStringValue(Handle, value);
         }
     }

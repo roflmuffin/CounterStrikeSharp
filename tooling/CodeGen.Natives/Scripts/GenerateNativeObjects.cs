@@ -101,7 +101,7 @@ public partial class Generators
     private static string CleanName(string value) => value.Replace("::", "__").Replace(" ", "");
 
     record MemberRow(string VarType, string VarName, int? Offset);
-    
+
 
     public static void GenerateNativeObjects()
     {
@@ -117,16 +117,16 @@ public partial class Generators
                 return x;
             });
         });
-        
+
         var supportedTypes =
             new HashSet<string>(new[] { "int", "int32", "float", "bool", "uint8", "float32", "char", "uint32", "uint64", "Vector" });
-        
+
         foreach (var name in allSchemas.SelectMany(x => x.Enums ?? Enumerable.Empty<Enum>()).DistinctBy(x => x.EnumName)
                      .Select(x => CleanName(x.EnumName)))
         {
             supportedTypes.Add(name);
         }
-        
+
         foreach (var c in allClasses)
         {
             supportedTypes.Add(CleanName(c.ClassName));
@@ -134,7 +134,7 @@ public partial class Generators
         }
 
         var addedMembers = new HashSet<string>();
-        
+
         var addedClasses = new HashSet<string>();
         var allClassDefinitions = allClasses.Select(c =>
         {
@@ -152,7 +152,7 @@ public partial class Generators
 
         [[members]]
     }}";
-            
+
             var networkVarMembers =
                 c.Metadata?.Where(x => x.Type != "Unknown").Select(x => new MemberRow(CleanName(x.VarType), x.VarName, null)) ??
                 Enumerable.Empty<MemberRow>();
@@ -166,7 +166,7 @@ public partial class Generators
                 .Select(m =>
                 {
                     var mappedVarType = MapVarTypeToCSharpType(m.VarType);
-                    
+
                     var returnData = $@"
         public {mappedVarType} {m.VarName} 
         {{
@@ -181,7 +181,7 @@ public partial class Generators
             addedClasses.Add(className);
             return classDefinition;
         }).Where(x => x != null).ToArray();
-        
+
         var result = $@"
 using System;
 using CounterStrikeSharp.API.Modules.Events;
@@ -195,7 +195,7 @@ namespace CounterStrikeSharp.API.Core
     [[template]]
 }}
 ";
-        
+
         var allEnums = allSchemas.SelectMany(x => x.Enums ?? Enumerable.Empty<Enum>()).DistinctBy(x => x.EnumName)
             .Select(e =>
             {
@@ -204,13 +204,13 @@ namespace CounterStrikeSharp.API.Core
         {string.Join(",\n\t\t", e.Members.Select(m => $"{m.Name} = {m.Value}"))}
     }}";
             });
-        
+
         File.WriteAllText(Path.Join(Helpers.GetRootDirectory(), "managed/CounterStrikeSharp.API/Core/Objects.g.cs"),
             result.Replace("[[template]]", string.Join("\n", allClassDefinitions)));
-        
+
         Console.WriteLine($"Generated C# bindings for {allClassDefinitions.Length} native object classes successfully.");
-        
-        File.WriteAllText(Path.Join(Helpers.GetRootDirectory(), "managed/CounterStrikeSharp.API/Core/Enums.g.cs"), 
-            result.Replace("[[template]]",  string.Join("\n", allEnums)));
+
+        File.WriteAllText(Path.Join(Helpers.GetRootDirectory(), "managed/CounterStrikeSharp.API/Core/Enums.g.cs"),
+            result.Replace("[[template]]", string.Join("\n", allEnums)));
     }
 }

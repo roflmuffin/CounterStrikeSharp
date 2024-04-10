@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using CounterStrikeSharp.API.Core.Translations;
 using CounterStrikeSharp.API.Modules.Admin;
@@ -65,7 +63,7 @@ public class CommandManager : ICommandManager
         var info = new CommandInfo(commandInfo, caller);
 
         var name = info.GetArg(0).ToLower();
-        
+
         using var temporaryCulture = new WithTemporaryCulture(caller.GetLanguage());
 
         if (_commandDefinitions.TryGetValue(name, out var handler))
@@ -76,7 +74,7 @@ public class CommandManager : ICommandManager
 
                 // We do not need to do permission checks on commands executed from the server console.
                 // The server will always be allowed to execute commands (unless marked as client only like above)
-                if (caller != null) 
+                if (caller != null)
                 {
                     // Do not execute command if we do not have the correct permissions.
                     var adminData = AdminManager.GetPlayerAdminData(caller!.AuthorizedSteamID);

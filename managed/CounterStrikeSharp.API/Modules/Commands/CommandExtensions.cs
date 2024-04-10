@@ -1,4 +1,4 @@
-﻿using CounterStrikeSharp.API.Modules.Commands.Targeting;
+using CounterStrikeSharp.API.Modules.Commands.Targeting;
 
 namespace CounterStrikeSharp.API.Modules.Commands;
 

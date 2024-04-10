@@ -14,9 +14,7 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using System;
 using System.Numerics;
-using System.Runtime.InteropServices;
 using System.Security;
 
 namespace CounterStrikeSharp.API.Core;

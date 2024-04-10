@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@ public partial class VirtualFunctionWithReturn<TResult>
     {
         this.Function = VirtualFunction.Create<TResult>(signature);
     }
-    
+
     public VirtualFunctionWithReturn(string signature, string binarypath)
     {
         this.Function = VirtualFunction.Create<TResult>(signature, binarypath);

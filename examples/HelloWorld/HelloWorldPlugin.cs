@@ -16,7 +16,7 @@ public class HelloWorldPlugin : BasePlugin
     {
         Logger.LogInformation("Hello World! We are loading!");
     }
-    
+
     public override void Unload(bool hotReload)
     {
         Logger.LogInformation("Hello World! We are unloading!");

@@ -150,7 +150,7 @@ public class SamplePlugin : BasePlugin, IPluginConfig<SampleConfig>
             if (damageInfo.Inflictor.Value.DesignerName == "inferno")
             {
                 var inferno = new CInferno(damageInfo.Inflictor.Value.Handle);
-                Logger.LogInformation("Owner of inferno is {Owner}",  inferno.OwnerEntity);
+                Logger.LogInformation("Owner of inferno is {Owner}", inferno.OwnerEntity);
 
                 if (victim == inferno.OwnerEntity.Value)
                 {

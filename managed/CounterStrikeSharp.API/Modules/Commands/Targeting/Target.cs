@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Utils;
 
@@ -11,7 +9,7 @@ public class Target
     private TargetType Type { get; }
     private string Raw { get; }
     private string Slug { get; }
-    
+
     private static readonly Dictionary<string, TargetType> TargetTypeMap = new(StringComparer.OrdinalIgnoreCase)
     {
         { "@all", TargetType.GroupAll },
@@ -48,7 +46,7 @@ public class Target
         {
             return false;
         }
-        
+
         slug = target.TrimStart('#');
         if (slug.StartsWith("STEAM")) targetType = TargetType.IdSteamEscaped;
         else if (!ulong.TryParse(slug, out _)) targetType = TargetType.ExplicitName;
@@ -120,7 +118,7 @@ public class Target
     public TargetResult GetTarget(CCSPlayerController? caller)
     {
         var players = Utilities.GetPlayers().Where(player => TargetPredicate(player, caller)).ToList();
-        
+
         return new TargetResult() { Players = players };
     }
 }

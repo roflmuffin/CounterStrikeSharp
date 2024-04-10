@@ -14,12 +14,6 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using System;
-using System.Collections.Generic;
-using System.Reflection.Metadata;
-using System.Runtime.InteropServices;
-using System.Text;
-
 namespace CounterStrikeSharp.API;
 
 public abstract class NativeObject

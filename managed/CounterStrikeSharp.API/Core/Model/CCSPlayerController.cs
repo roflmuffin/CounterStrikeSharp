@@ -1,5 +1,3 @@
-using System;
-
 using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Entities.Constants;
@@ -26,7 +24,7 @@ public partial class CCSPlayerController
         return VirtualFunctions.GiveNamedItem(PlayerPawn.Value.ItemServices.Handle, item, 0, 0, 0, 0);
     }
 
-    public IntPtr GiveNamedItem(CsItem item) 
+    public IntPtr GiveNamedItem(CsItem item)
     {
         string? itemString = EnumUtils.GetEnumMemberAttributeValue(item);
         if (string.IsNullOrWhiteSpace(itemString))
@@ -94,7 +92,7 @@ public partial class CCSPlayerController
 
         CCSPlayer_ItemServices itemServices = new CCSPlayer_ItemServices(PlayerPawn.Value.ItemServices.Handle);
         CCSPlayer_WeaponServices weaponServices = new CCSPlayer_WeaponServices(PlayerPawn.Value.WeaponServices.Handle);
-        
+
         itemServices.DropActivePlayerWeapon(weaponServices.ActiveWeapon.Value);
     }
 

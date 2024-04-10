@@ -14,11 +14,6 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using CounterStrikeSharp.API.Core;
-
 #pragma warning disable CS8601 // Possible null reference assignment.
 
 namespace CounterStrikeSharp.API.Modules.Memory;

@@ -1,4 +1,4 @@
-﻿namespace CounterStrikeSharp.API.Modules.Utils;
+namespace CounterStrikeSharp.API.Modules.Utils;
 
 public enum CsTeam : byte
 {

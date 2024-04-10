@@ -14,15 +14,12 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using CounterStrikeSharp.API.Core.Attributes;
-using CounterStrikeSharp.API.Core.Capabilities;
 using CounterStrikeSharp.API.Core.Commands;
 using CounterStrikeSharp.API.Core.Hosting;
 using CounterStrikeSharp.API.Core.Logging;
-using CounterStrikeSharp.API.Core.Plugin.Host;
 using CounterStrikeSharp.API.Core.Translations;
 using McMaster.NETCore.Plugins;
 using Microsoft.Extensions.DependencyInjection;

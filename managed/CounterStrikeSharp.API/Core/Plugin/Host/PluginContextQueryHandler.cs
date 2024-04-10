@@ -1,5 +1,3 @@
-﻿using System.Linq;
-
 namespace CounterStrikeSharp.API.Core.Plugin.Host;
 
 public class PluginContextQueryHandler : IPluginContextQueryHandler

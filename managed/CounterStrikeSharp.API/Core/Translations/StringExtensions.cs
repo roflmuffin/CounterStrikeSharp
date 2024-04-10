@@ -1,4 +1,3 @@
-using System.Reflection;
 using CounterStrikeSharp.API.Modules.Utils;
 
 namespace CounterStrikeSharp.API.Core.Translations;

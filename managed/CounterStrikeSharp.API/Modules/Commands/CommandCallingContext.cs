@@ -1,4 +1,4 @@
-﻿namespace CounterStrikeSharp.API.Modules.Commands;
+namespace CounterStrikeSharp.API.Modules.Commands;
 
 public enum CommandCallingContext
 {

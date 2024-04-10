@@ -14,9 +14,6 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using System;
-using System.Collections.Generic;
-using CounterStrikeSharp.API.Core;
 using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Modules.Memory;

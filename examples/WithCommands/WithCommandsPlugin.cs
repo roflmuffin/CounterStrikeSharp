@@ -49,7 +49,7 @@ public class WithCommandsPlugin : BasePlugin
 
         commandInfo.ReplyToCommand($"Hello {name}");
     }
-    
+
     // Permissions can be added to commands using the `RequiresPermissions` attribute.
     // See the admin documentation for more information on permissions.
     [RequiresPermissions("@css/kick")]
@@ -57,7 +57,7 @@ public class WithCommandsPlugin : BasePlugin
     public void OnSpecialCommand(CCSPlayerController? player, CommandInfo commandInfo)
     {
         var id = commandInfo.GetArg(1);
-        
+
         Server.ExecuteCommand($"kick {id}");
     }
 }

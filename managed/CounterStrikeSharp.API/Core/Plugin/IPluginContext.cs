@@ -1,4 +1,4 @@
-﻿namespace CounterStrikeSharp.API.Core.Plugin;
+namespace CounterStrikeSharp.API.Core.Plugin;
 
 public interface IPluginContext
 {

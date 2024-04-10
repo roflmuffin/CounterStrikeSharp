@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -35,7 +31,7 @@ public class Offsets
 public sealed class GameDataProvider : IStartupService
 {
     private readonly string _gameDataDirectoryPath;
-    public Dictionary<string,LoadedGameData> Methods;
+    public Dictionary<string, LoadedGameData> Methods;
     private readonly ILogger<GameDataProvider> _logger;
 
     public GameDataProvider(IScriptHostConfiguration scriptHostConfiguration, ILogger<GameDataProvider> logger)
@@ -43,7 +39,7 @@ public sealed class GameDataProvider : IStartupService
         _logger = logger;
         _gameDataDirectoryPath = scriptHostConfiguration.GameDataPath;
     }
-    
+
     public void Load()
     {
         try
@@ -61,10 +57,10 @@ public sealed class GameDataProvider : IStartupService
                     {
                         _logger.LogWarning("GameData Method \"{Key}\" loaded a duplicate entry from {filePath}.", loadedMethod.Key, filePath);
                     }
-                    
+
                     Methods[loadedMethod.Key] = loadedMethod.Value;
                 }
-                
+
                 if (loadedMethods != null)
                 {
                     _logger.LogInformation("Successfully loaded {Count} game data entries from {Path}", loadedMethods.Count, filePath);
@@ -80,12 +76,12 @@ public sealed class GameDataProvider : IStartupService
             _logger.LogError(ex, "Failed to load game data");
         }
     }
-} 
+}
 
 public static class GameData
 {
     internal static GameDataProvider GameDataProvider { get; set; } = null!;
-    
+
     public static string GetSignature(string key)
     {
         Application.Instance.Logger.LogDebug("Getting signature: {Key}", key);

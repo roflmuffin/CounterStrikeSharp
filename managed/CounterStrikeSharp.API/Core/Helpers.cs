@@ -14,9 +14,6 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using System;
-using System.Linq;
-using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security;
 

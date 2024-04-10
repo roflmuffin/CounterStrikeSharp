@@ -14,11 +14,6 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using CounterStrikeSharp.API.Core;
-
 namespace CounterStrikeSharp.API.Modules.Memory;
 
 #pragma warning disable CS8601 // Possible null reference assignment.
@@ -341,7 +336,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath,  arguments,
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments,
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return () => NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, new object[] { });

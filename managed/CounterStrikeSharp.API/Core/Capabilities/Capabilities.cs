@@ -1,4 +1,4 @@
-﻿namespace CounterStrikeSharp.API.Core.Capabilities;
+namespace CounterStrikeSharp.API.Core.Capabilities;
 
 public static class Capabilities
 {

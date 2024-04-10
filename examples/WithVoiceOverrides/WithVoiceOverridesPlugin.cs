@@ -31,7 +31,7 @@ public class WithVoiceOverridesPlugin : BasePlugin
             command.ReplyToCommand("Can hear both teams");
         }
     }
-    
+
     [ConsoleCommand("css_muteself")]
     public void OnMuteSelfCommand(CCSPlayerController? caller, CommandInfo command)
     {
@@ -48,7 +48,7 @@ public class WithVoiceOverridesPlugin : BasePlugin
             command.ReplyToCommand("Muted yourself");
         }
     }
-    
+
     [ConsoleCommand("css_muteothers")]
     [CommandHelper(minArgs: 1, usage: "[target]")]
     public void OnMuteOthersCommand(CCSPlayerController? caller, CommandInfo command)
@@ -56,7 +56,7 @@ public class WithVoiceOverridesPlugin : BasePlugin
         if (caller is null) return;
 
         var targetResult = command.GetArgTargetResult(1);
-        
+
         foreach (var player in targetResult.Players)
         {
             if (player == caller) continue;
@@ -74,6 +74,6 @@ public class WithVoiceOverridesPlugin : BasePlugin
                 command.ReplyToCommand($"Muted {player.PlayerName}");
             }
         }
-        
+
     }
 }

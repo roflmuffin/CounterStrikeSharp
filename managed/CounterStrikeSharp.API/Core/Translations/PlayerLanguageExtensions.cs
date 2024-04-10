@@ -11,7 +11,7 @@ public static class PlayerLanguageExtensions
     public static CultureInfo GetLanguage(this CCSPlayerController? player)
     {
         if (player == null || !player.IsValid) return PlayerLanguageManager.Instance.GetDefaultLanguage();
-        
+
         return PlayerLanguageManager.Instance.GetLanguage((SteamID)player.SteamID);
     }
 }
