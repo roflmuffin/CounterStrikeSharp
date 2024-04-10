@@ -11,9 +11,9 @@ public partial class AdminData
     [JsonPropertyName("identity")] public required string Identity { get; init; }
     // Flags loaded from file. Do not use this for actual comparisons.
 
-    #pragma warning disable IDE1006
+#pragma warning disable IDE1006
     [JsonPropertyName("flags")] public HashSet<string> _flags { get; init; } = new();
-    #pragma warning restore IDE1006
+#pragma warning restore IDE1006
 
     [JsonPropertyName("immunity")] public uint Immunity { get; set; } = 0;
     [JsonPropertyName("command_overrides")] public Dictionary<string, bool> CommandOverrides { get; init; } = new();
