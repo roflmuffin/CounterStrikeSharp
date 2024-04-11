@@ -91435,7 +91435,7 @@
       "items": [
         {
           "name": "AMMO_POSITION_INVALID",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "AMMO_POSITION_PRIMARY",
@@ -91456,7 +91456,7 @@
       "items": [
         {
           "name": "ANIM_LOOP_MODE_INVALID",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "ANIM_LOOP_MODE_NOT_LOOPING",
@@ -91626,7 +91626,7 @@
       "items": [
         {
           "name": "ANIMSCRIPT_TYPE_INVALID",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "ANIMSCRIPT_FUSE_GENERAL",
@@ -92208,7 +92208,7 @@
       "items": [
         {
           "name": "BoneTransformSpace_Invalid",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "BoneTransformSpace_Parent",
@@ -93072,7 +93072,7 @@
       "items": [
         {
           "name": "DETAIL_2_COMBO_UNINITIALIZED",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "DETAIL_2_COMBO_OFF",
@@ -93342,7 +93342,7 @@
       "items": [
         {
           "name": "ENTITY_DISSOLVE_INVALID",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "ENTITY_DISSOLVE_NORMAL",
@@ -93384,7 +93384,7 @@
       "items": [
         {
           "name": "ENTITY_IO_TARGET_INVALID",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "ENTITY_IO_TARGET_ENTITYNAME",
@@ -93405,7 +93405,7 @@
       "items": [
         {
           "name": "SUBCLASS_SCOPE_NONE",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "SUBCLASS_SCOPE_PRECIPITATION",
@@ -94014,7 +94014,7 @@
       "items": [
         {
           "name": "HITGROUP_INVALID",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "HITGROUP_GENERIC",
@@ -94301,7 +94301,7 @@
         },
         {
           "name": "IN_ALL",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "IN_ATTACK",
@@ -94745,7 +94745,7 @@
       "items": [
         {
           "name": "MISSING_PARENT_DO_NOTHING",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "MISSING_PARENT_KILL",
@@ -94766,7 +94766,7 @@
       "items": [
         {
           "name": "MODEL_BONE_FLEX_INVALID",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "MODEL_BONE_FLEX_TX",
@@ -94787,7 +94787,7 @@
       "items": [
         {
           "name": "MODEL_CONFIG_ATTACHMENT_INVALID",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "MODEL_CONFIG_ATTACHMENT_BONE_OR_ATTACHMENT",
@@ -95008,7 +95008,7 @@
       "items": [
         {
           "name": "eInvalid",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "eWalk",
@@ -95033,7 +95033,7 @@
       "items": [
         {
           "name": "Default",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "CloseCircle",
@@ -95531,7 +95531,7 @@
       "items": [
         {
           "name": "PATTACH_INVALID",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "PATTACH_ABSORIGIN",
@@ -95637,7 +95637,7 @@
         },
         {
           "name": "COLLISION_MODE_DISABLED",
-          "value": -1
+          "value": 18446744073709551615
         }
       ]
     },
@@ -95812,7 +95812,7 @@
       "items": [
         {
           "name": "PARTICLE_ENDCAP_ALWAYS_ON",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "PARTICLE_ENDCAP_ENDCAP_OFF",
@@ -95846,7 +95846,7 @@
       "items": [
         {
           "name": "PF_BIAS_TYPE_INVALID",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "PF_BIAS_TYPE_STANDARD",
@@ -95871,7 +95871,7 @@
       "items": [
         {
           "name": "PF_INPUT_MODE_INVALID",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "PF_INPUT_MODE_CLAMPED",
@@ -95892,7 +95892,7 @@
       "items": [
         {
           "name": "PF_MAP_TYPE_INVALID",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "PF_MAP_TYPE_DIRECT",
@@ -95929,7 +95929,7 @@
       "items": [
         {
           "name": "PF_RANDOM_MODE_INVALID",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "PF_RANDOM_MODE_CONSTANT",
@@ -95950,7 +95950,7 @@
       "items": [
         {
           "name": "PF_TYPE_INVALID",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "PF_TYPE_LITERAL",
@@ -96199,7 +96199,7 @@
         },
         {
           "name": "PARTICLE_LIGHTING_PER_PIXEL",
-          "value": -1
+          "value": 18446744073709551615
         }
       ]
     },
@@ -96351,7 +96351,7 @@
       "items": [
         {
           "name": "PARTICLE_PIN_DISTANCE_NONE",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "PARTICLE_PIN_DISTANCE_NEIGHBOR",
@@ -96467,7 +96467,7 @@
       "items": [
         {
           "name": "PARTICLE_SEQUENCE_CROP_OVERRIDE_DEFAULT",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "PARTICLE_SEQUENCE_CROP_OVERRIDE_FORCE_OFF",
@@ -96668,7 +96668,7 @@
       "items": [
         {
           "name": "PVEC_TYPE_INVALID",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "PVEC_TYPE_LITERAL",
@@ -96888,7 +96888,7 @@
       "items": [
         {
           "name": "PlayerNeverConnected",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "PlayerConnected",
@@ -97562,7 +97562,7 @@
       "items": [
         {
           "name": "PVAL_INVALID",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "PVAL_BOOL",
@@ -97851,7 +97851,7 @@
       "items": [
         {
           "name": "RENDER_MULTISAMPLE_INVALID",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "RENDER_MULTISAMPLE_NONE",
@@ -97945,7 +97945,7 @@
       "items": [
         {
           "name": "RENDER_SLOT_INVALID",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "RENDER_SLOT_PER_VERTEX",
@@ -97987,7 +97987,7 @@
       "items": [
         {
           "name": "RUMBLE_INVALID",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "RUMBLE_STOP_ALL",
@@ -98100,7 +98100,7 @@
       "items": [
         {
           "name": "SCALAR_EXPRESSION_UNINITIALIZED",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "SCALAR_EXPRESSION_ADD",
@@ -98217,7 +98217,7 @@
       "items": [
         {
           "name": "SS_ONDEATH_NOT_APPLICABLE",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "SS_ONDEATH_UNDEFINED",
@@ -98740,7 +98740,7 @@
         },
         {
           "name": "ALL_CONTEXTS",
-          "value": -1048576
+          "value": 18446744073708503040
         },
         {
           "name": "ALL_SCENTS",
@@ -98996,7 +98996,7 @@
       "items": [
         {
           "name": "STANCE_CURRENT",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "STANCE_DEFAULT",
@@ -99454,7 +99454,7 @@
       "items": [
         {
           "name": "FILTER_UNKNOWN",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "FILTER_LOWPASS",
@@ -99760,7 +99760,7 @@
       "items": [
         {
           "name": "VECTOR_EXPRESSION_UNINITIALIZED",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "VECTOR_EXPRESSION_ADD",
@@ -99801,7 +99801,7 @@
       "items": [
         {
           "name": "VECTOR_FLOAT_EXPRESSION_UNINITIALIZED",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "VECTOR_FLOAT_EXPRESSION_DOTPRODUCT",
@@ -99922,7 +99922,7 @@
       "items": [
         {
           "name": "eInvalid",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "ePrimary",
@@ -100488,7 +100488,7 @@
       "items": [
         {
           "name": "GEAR_SLOT_INVALID",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "GEAR_SLOT_RIFLE",
@@ -100561,11 +100561,11 @@
       "items": [
         {
           "name": "LOADOUT_SLOT_PROMOTED",
-          "value": -2
+          "value": 18446744073709551614
         },
         {
           "name": "LOADOUT_SLOT_INVALID",
-          "value": -1
+          "value": 18446744073709551615
         },
         {
           "name": "LOADOUT_SLOT_MELEE",
