@@ -522,7 +522,6 @@ namespace CounterStrikeSharp.API.Core
         /// <param name="handler">Handler to call</param>
         public void HookEntityOutput(string classname, string outputName, EntityIO.EntityOutputHandler handler, HookMode mode = HookMode.Pre)
         {
-            new StringReader().ReadLineAsync()
             var subscriber = new CallbackSubscriber(handler, handler,
                 () => UnhookEntityOutput(classname, outputName, handler));
 
