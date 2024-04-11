@@ -20,7 +20,6 @@
 #pragma once
 
 #include "cgameresourceserviceserver.h"
-#include "cschemasystem.h"
 
 namespace counterstrikesharp {
 namespace interfaces {
