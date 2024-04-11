@@ -549,11 +549,6 @@ float CPlayer::GetTimeConnected() const
     return GetNetInfo()->GetTimeConnected();
 }
 
-float CPlayer::GetLatency() const
-{
-    return GetNetInfo()->GetLatency(FLOW_INCOMING) + GetNetInfo()->GetLatency(FLOW_OUTGOING);
-}
-
 void CPlayer::SetListen(CPlayerSlot slot, ListenOverride listen)
 {
     m_listenMap[slot.Get()] = listen;
