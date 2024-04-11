@@ -41,7 +41,6 @@ void* CModule::FindSignature(const char* signature)
         return nullptr;
     }
 
-    size_t iSigLength = 0;
     auto pData = CGameConfig::HexToByte(signature);
     if (pData.empty()) [[unlikely]]
         return nullptr;
