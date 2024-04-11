@@ -105,6 +105,7 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
                     INTERFACEVERSION_SERVERGAMECLIENTS);
     GET_V_IFACE_ANY(GetEngineFactory, globals::networkServerService, INetworkServerService,
                     NETWORKSERVERSERVICE_INTERFACE_VERSION);
+    GET_V_IFACE_ANY(GetEngineFactory, globals::schemaSystem, CSchemaSystem, SCHEMASYSTEM_INTERFACE_VERSION);
     GET_V_IFACE_ANY(GetEngineFactory, globals::gameEventSystem, IGameEventSystem,
                     GAMEEVENTSYSTEM_INTERFACE_VERSION);
     GET_V_IFACE_ANY(GetEngineFactory, globals::engineServiceManager, IEngineServiceMgr,

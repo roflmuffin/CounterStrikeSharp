@@ -10654,13 +10654,6 @@
             "category": 0,
             "name": "bool"
           }
-        },
-        {
-          "name": "m_bDroppedFromDeath",
-          "type": {
-            "category": 0,
-            "name": "bool"
-          }
         }
       ],
       "parent": "CCSWeaponBase"
@@ -12804,6 +12797,13 @@
           }
         },
         {
+          "name": "m_nSpawnPointsRandomSeed",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        },
+        {
           "name": "m_bFirstConnected",
           "type": {
             "category": 0,
@@ -13238,6 +13238,13 @@
           }
         },
         {
+          "name": "m_bRespawningAllRespawnablePlayers",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
           "name": "m_iNextCTSpawnPoint",
           "type": {
             "category": 0,
@@ -13245,10 +13252,24 @@
           }
         },
         {
+          "name": "m_flCTSpawnPointUsedTime",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
           "name": "m_iNextTerroristSpawnPoint",
           "type": {
             "category": 0,
             "name": "int32"
+          }
+        },
+        {
+          "name": "m_flTerroristSpawnPointUsedTime",
+          "type": {
+            "category": 0,
+            "name": "float32"
           }
         },
         {
@@ -13609,18 +13630,6 @@
           "type": {
             "category": 0,
             "name": "uint8"
-          }
-        },
-        {
-          "name": "m_nRoundStartTicks",
-          "type": {
-            "atomic": 2,
-            "category": 4,
-            "inner": {
-              "category": 0,
-              "name": "int32"
-            },
-            "name": "CUtlVector< int32 >"
           }
         },
         {
@@ -14292,6 +14301,34 @@
               "name": "EKillTypes_t"
             },
             "name": "CNetworkUtlVectorBase< EKillTypes_t >"
+          }
+        },
+        {
+          "name": "m_bMvpNoMusic",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_eMvpReason",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        },
+        {
+          "name": "m_iMusicKitID",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        },
+        {
+          "name": "m_iMusicKitMVPs",
+          "type": {
+            "category": 0,
+            "name": "int32"
           }
         },
         {
@@ -15339,17 +15376,10 @@
           }
         },
         {
-          "name": "m_bInvalidSteamLogonDelayed",
+          "name": "m_flIdleTimeSinceLastAction",
           "type": {
             "category": 0,
-            "name": "bool"
-          }
-        },
-        {
-          "name": "m_flLastAction",
-          "type": {
-            "category": 5,
-            "name": "GameTime_t"
+            "name": "float32"
           }
         },
         {
@@ -42187,13 +42217,6 @@
           "type": {
             "category": 5,
             "name": "GameTime_t"
-          }
-        },
-        {
-          "name": "m_bPlantedAfterPickup",
-          "type": {
-            "category": 0,
-            "name": "bool"
           }
         },
         {
@@ -97606,8 +97629,12 @@
           "value": 15
         },
         {
-          "name": "PVAL_COUNT",
+          "name": "PVAL_PANORAMA_PANEL_HANDLE",
           "value": 16
+        },
+        {
+          "name": "PVAL_COUNT",
+          "value": 17
         }
       ]
     },

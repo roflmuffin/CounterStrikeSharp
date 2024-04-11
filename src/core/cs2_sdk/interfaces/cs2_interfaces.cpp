@@ -32,7 +32,5 @@ void interfaces::Initialize() {
     g_pCVar = (ICvar*)modules::tier0->FindInterface(CVAR_INTERFACE_VERSION);
     g_pSource2GameEntities = (ISource2GameEntities*)modules::server->FindInterface(
         SOURCE2GAMEENTITIES_INTERFACE_VERSION);
-    pSchemaSystem =
-        (CSchemaSystem*)modules::schemasystem->FindInterface(SCHEMASYSTEM_INTERFACE_VERSION);
 }
 }  // namespace counterstrikesharp
