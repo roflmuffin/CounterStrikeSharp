@@ -363,15 +363,15 @@ namespace CounterStrikeSharp.API.Modules.Utils
             return this.IsEqualTol(v, 0.01f);
         }
 
-        public override string ToString()
-        {
-            return $"{X:n2} {Y:n2} {Z:n2}";
-        }
-
         #endregion
 
         protected override void OnDispose()
         {
         }*/
+        
+        public override string ToString()
+        {
+            return $"{X:n2} {Y:n2} {Z:n2}";
+        }
     }
 }
