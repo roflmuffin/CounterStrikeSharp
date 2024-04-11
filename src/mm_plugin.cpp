@@ -173,7 +173,7 @@ void CounterStrikeSharpMMPlugin::Hook_StartupServer(const GameSessionConfigurati
     globals::timerSystem.OnStartupServer();
 
     on_activate_callback->ScriptContext().Reset();
-    on_activate_callback->ScriptContext().Push(globals::getGlobalVars()->mapname);
+    on_activate_callback->ScriptContext().Push(globals::getGlobalVars()->mapname.ToCStr());
     on_activate_callback->Execute();
 }
 
