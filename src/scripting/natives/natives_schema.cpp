@@ -24,8 +24,6 @@
 #include "schema.h"
 #include "core/function.h"
 #include "core/coreconfig.h"
-#include "interfaces/cschemasystem.h"
-#include "core/cs2_sdk/interfaces/cschemasystem.h"
 #include "interfaces/cs2_interfaces.h"
 #include <schemasystem.h>
 
