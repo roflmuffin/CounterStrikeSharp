@@ -114,10 +114,6 @@ public partial class CPlantedC4 : CBaseAnimGraph
 	[SchemaMember("CPlantedC4", "m_flNextBotBeepTime")]
 	public ref float NextBotBeepTime => ref Schema.GetRef<float>(this.Handle, "CPlantedC4", "m_flNextBotBeepTime");
 
-	// m_bPlantedAfterPickup
-	[SchemaMember("CPlantedC4", "m_bPlantedAfterPickup")]
-	public ref bool PlantedAfterPickup => ref Schema.GetRef<bool>(this.Handle, "CPlantedC4", "m_bPlantedAfterPickup");
-
 	// m_angCatchUpToPlayerEye
 	[SchemaMember("CPlantedC4", "m_angCatchUpToPlayerEye")]
 	public QAngle CatchUpToPlayerEye => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPlantedC4", "m_angCatchUpToPlayerEye");

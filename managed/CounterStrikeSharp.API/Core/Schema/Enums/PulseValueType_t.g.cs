@@ -25,5 +25,6 @@ public enum PulseValueType_t : uint
 	PVAL_CURSOR_FLOW = 0xD,
 	PVAL_ANY = 0xE,
 	PVAL_SCHEMA_ENUM = 0xF,
-	PVAL_COUNT = 0x10,
+	PVAL_PANORAMA_PANEL_HANDLE = 0x10,
+	PVAL_COUNT = 0x11,
 }

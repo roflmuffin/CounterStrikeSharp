@@ -62,8 +62,4 @@ public partial class CC4 : CCSWeaponBase
 	[SchemaMember("CC4", "m_bBombPlanted")]
 	public ref bool BombPlanted => ref Schema.GetRef<bool>(this.Handle, "CC4", "m_bBombPlanted");
 
-	// m_bDroppedFromDeath
-	[SchemaMember("CC4", "m_bDroppedFromDeath")]
-	public ref bool DroppedFromDeath => ref Schema.GetRef<bool>(this.Handle, "CC4", "m_bDroppedFromDeath");
-
 }

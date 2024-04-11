@@ -202,13 +202,9 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
 	[SchemaMember("CCSPlayerPawnBase", "m_iShouldHaveCash")]
 	public ref Int32 ShouldHaveCash => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawnBase", "m_iShouldHaveCash");
 
-	// m_bInvalidSteamLogonDelayed
-	[SchemaMember("CCSPlayerPawnBase", "m_bInvalidSteamLogonDelayed")]
-	public ref bool InvalidSteamLogonDelayed => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bInvalidSteamLogonDelayed");
-
-	// m_flLastAction
-	[SchemaMember("CCSPlayerPawnBase", "m_flLastAction")]
-	public ref float LastAction => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flLastAction");
+	// m_flIdleTimeSinceLastAction
+	[SchemaMember("CCSPlayerPawnBase", "m_flIdleTimeSinceLastAction")]
+	public ref float IdleTimeSinceLastAction => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flIdleTimeSinceLastAction");
 
 	// m_flNameChangeHistory
 	[SchemaMember("CCSPlayerPawnBase", "m_flNameChangeHistory")]
