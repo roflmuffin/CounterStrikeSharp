@@ -450,6 +450,10 @@ public partial class CCSGameRules : CTeamplayRules
 	[SchemaMember("CCSGameRules", "m_arrSelectedHostageSpawnIndices")]
 	public NetworkedVector<Int32> SelectedHostageSpawnIndices => Schema.GetDeclaredClass<NetworkedVector<Int32>>(this.Handle, "CCSGameRules", "m_arrSelectedHostageSpawnIndices");
 
+	// m_nSpawnPointsRandomSeed
+	[SchemaMember("CCSGameRules", "m_nSpawnPointsRandomSeed")]
+	public ref Int32 SpawnPointsRandomSeed => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nSpawnPointsRandomSeed");
+
 	// m_bFirstConnected
 	[SchemaMember("CCSGameRules", "m_bFirstConnected")]
 	public ref bool FirstConnected => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bFirstConnected");
@@ -686,13 +690,25 @@ public partial class CCSGameRules : CTeamplayRules
 	[SchemaMember("CCSGameRules", "m_TerroristSpawnPointsMasterList")]
 	public NetworkedVector<SpawnPoint?> TerroristSpawnPointsMasterList => Schema.GetDeclaredClass<NetworkedVector<SpawnPoint?>>(this.Handle, "CCSGameRules", "m_TerroristSpawnPointsMasterList");
 
+	// m_bRespawningAllRespawnablePlayers
+	[SchemaMember("CCSGameRules", "m_bRespawningAllRespawnablePlayers")]
+	public ref bool RespawningAllRespawnablePlayers => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bRespawningAllRespawnablePlayers");
+
 	// m_iNextCTSpawnPoint
 	[SchemaMember("CCSGameRules", "m_iNextCTSpawnPoint")]
 	public ref Int32 NextCTSpawnPoint => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iNextCTSpawnPoint");
 
+	// m_flCTSpawnPointUsedTime
+	[SchemaMember("CCSGameRules", "m_flCTSpawnPointUsedTime")]
+	public ref float CTSpawnPointUsedTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flCTSpawnPointUsedTime");
+
 	// m_iNextTerroristSpawnPoint
 	[SchemaMember("CCSGameRules", "m_iNextTerroristSpawnPoint")]
 	public ref Int32 NextTerroristSpawnPoint => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iNextTerroristSpawnPoint");
+
+	// m_flTerroristSpawnPointUsedTime
+	[SchemaMember("CCSGameRules", "m_flTerroristSpawnPointUsedTime")]
+	public ref float TerroristSpawnPointUsedTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flTerroristSpawnPointUsedTime");
 
 	// m_CTSpawnPoints
 	[SchemaMember("CCSGameRules", "m_CTSpawnPoints")]
@@ -877,10 +893,6 @@ public partial class CCSGameRules : CTeamplayRules
 	// m_nRoundStartCount
 	[SchemaMember("CCSGameRules", "m_nRoundStartCount")]
 	public ref byte RoundStartCount => ref Schema.GetRef<byte>(this.Handle, "CCSGameRules", "m_nRoundStartCount");
-
-	// m_nRoundStartTicks
-	[SchemaMember("CCSGameRules", "m_nRoundStartTicks")]
-	public NetworkedVector<Int32> RoundStartTicks => Schema.GetDeclaredClass<NetworkedVector<Int32>>(this.Handle, "CCSGameRules", "m_nRoundStartTicks");
 
 	// m_flLastPerfSampleTime
 	[SchemaMember("CCSGameRules", "m_flLastPerfSampleTime")]

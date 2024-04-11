@@ -294,6 +294,22 @@ public partial class CCSPlayerController : CBasePlayerController
 	[SchemaMember("CCSPlayerController", "m_vecKills")]
 	public NetworkedVector<EKillTypes_t> Kills => Schema.GetDeclaredClass<NetworkedVector<EKillTypes_t>>(this.Handle, "CCSPlayerController", "m_vecKills");
 
+	// m_bMvpNoMusic
+	[SchemaMember("CCSPlayerController", "m_bMvpNoMusic")]
+	public ref bool MvpNoMusic => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bMvpNoMusic");
+
+	// m_eMvpReason
+	[SchemaMember("CCSPlayerController", "m_eMvpReason")]
+	public ref Int32 MvpReason => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_eMvpReason");
+
+	// m_iMusicKitID
+	[SchemaMember("CCSPlayerController", "m_iMusicKitID")]
+	public ref Int32 MusicKitID => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iMusicKitID");
+
+	// m_iMusicKitMVPs
+	[SchemaMember("CCSPlayerController", "m_iMusicKitMVPs")]
+	public ref Int32 MusicKitMVPs => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iMusicKitMVPs");
+
 	// m_iMVPs
 	[SchemaMember("CCSPlayerController", "m_iMVPs")]
 	public ref Int32 MVPs => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iMVPs");

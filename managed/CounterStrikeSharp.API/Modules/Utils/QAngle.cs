@@ -14,14 +14,14 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using System;
 using System.Runtime.CompilerServices;
-using CounterStrikeSharp.API.Core;
 
 namespace CounterStrikeSharp.API.Modules.Utils
 {
     public class QAngle : NativeObject
     {
+        public static readonly QAngle Zero = new();
+        
         public QAngle(IntPtr pointer) : base(pointer)
         {
         }
