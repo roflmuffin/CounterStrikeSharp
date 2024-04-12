@@ -223,7 +223,12 @@ std::vector<int16_t> CGameConfig::HexToByte(std::string_view src)
         }
 
         // std::string_view(std::subrange) constructor only exists in C++23 or above
-        const std::string_view byte(str.begin(), str.end());
+        // use this when compiler is GCC >= 12.1 or Clang >= 16
+        // const std::string_view byte(str.begin(), str.end());
+        
+        // a workaround for GCC < 12.1, it doesn't work with Clang < 16
+        // https://stackoverflow.com/a/48403210
+        std::string_view byte (&*str.begin(), std::ranges::distance(str));
 
         if (byte.starts_with(wildcard)) {
             result.emplace_back(-1);
