@@ -84,6 +84,7 @@ Checks: >
   -readability-function-cognitive-complexity,
   -readability-convert-member-functions-to-static,
   -readability-implicit-bool-conversion,
+  -readability-redundant-access-specifiers,
   -bugprone-narrowing-conversions,
   -bugprone-easily-swappable-parameters,
   -bugprone-implicit-widening-of-multiplication-result,
@@ -114,4 +115,3 @@ CheckOptions:
   readability-identifier-naming.PointerParameterHungarianPrefix: On
   readability-identifier-naming.PointerParameterCase: CamelCase
   readability-identifier-naming.HungarianNotation.UserDefinedType.std::string: s
-

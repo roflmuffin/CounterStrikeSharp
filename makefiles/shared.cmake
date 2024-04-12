@@ -1,9 +1,9 @@
-if (UNIX AND NOT APPLE)
-    set(LINUX TRUE)
+if(UNIX AND NOT APPLE)
+  set(LINUX TRUE)
 endif()
 
-if (WIN32 AND NOT MSVC)
-    message(FATAL "MSVC restricted.")
+if(WIN32 AND NOT MSVC)
+  message(FATAL "MSVC restricted.")
 endif()
 
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING
@@ -14,9 +14,9 @@ set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING
 # TODO: Use C++20 instead.
 set(CMAKE_CXX_STANDARD 17)
 
-if (LINUX)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
+if(LINUX)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
 endif()
 
 set(CMAKE_STATIC_LIBRARY_PREFIX "")
@@ -30,15 +30,15 @@ set(SOURCESDK_LIB ${SOURCESDK}/lib)
 add_definitions(-DMETA_IS_SOURCE2)
 
 if(DEFINED ENV{GITHUB_SHA_SHORT})
-    add_definitions(-DGITHUB_SHA="$ENV{GITHUB_SHA_SHORT}")
+  add_definitions(-DGITHUB_SHA="$ENV{GITHUB_SHA_SHORT}")
 else()
-    add_definitions(-DGITHUB_SHA="Local")
+  add_definitions(-DGITHUB_SHA="Local")
 endif()
 
 if(DEFINED ENV{BUILD_NUMBER})
-    add_definitions(-DBUILD_NUMBER="$ENV{BUILD_NUMBER}")
+  add_definitions(-DBUILD_NUMBER="$ENV{BUILD_NUMBER}")
 else()
-    add_definitions(-DBUILD_NUMBER="0")
+  add_definitions(-DBUILD_NUMBER="0")
 endif()
 
 include_directories(
