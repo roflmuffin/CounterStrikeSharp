@@ -1,21 +1,72 @@
 BasedOnStyle: LLVM
+
+# Spacing
 IndentWidth: 4
-ColumnLimit: 100
+UseTab: Never
+ColumnLimit: 140
+
+# Line Endings
+LineEnding: LF
+InsertNewlineAtEOF: true
 DerivePointerAlignment: false
-PointerAlignment: Left
+
 AlignAfterOpenBracket: Align
 KeepEmptyLinesAtTheStartOfBlocks: false
-SortIncludes: false
 SpaceBeforeParens: ControlStatements
 AllowAllArgumentsOnNextLine: true
-AllowShortIfStatementsOnASingleLine: false
-IndentCaseLabels: false
+IndentCaseLabels: true
+
+# Line Breaks
 BreakBeforeBraces: Custom
 BraceWrapping:
+  AfterCaseLabel: true
   AfterClass: true
-  AfterStruct: true
+  AfterControlStatement: Always
   AfterEnum: true
-  AfterUnion: true
-  AfterNamespace: false
   AfterFunction: true
+  AfterNamespace: false
+  AfterStruct: true
+  AfterUnion: true
+  AfterExternBlock: true
+  BeforeCatch: true
+  BeforeElse: true
+  BeforeLambdaBody: false
+  BeforeWhile: false
   IndentBraces: false
+  SplitEmptyFunction: true
+  SplitEmptyRecord: true
+  SplitEmptyNamespace: true
+
+PointerAlignment: Left
+SortIncludes: CaseSensitive
+IncludeBlocks: Regroup
+IncludeCategories:
+  # External headers in <> with extension or /
+  - Regex: '<[-\w\/-_]+[\.\/][-\w\/-_]+>'
+    Priority: 2
+  # Standard headers in <>
+  - Regex: '<[-\w\/-_]+>'
+    Priority: 3
+  # Local headers in ""
+  - Regex: '"[-\w\/-_]*"'
+    Priority: 4
+
+ReflowComments: true
+CompactNamespaces: false
+Cpp11BracedListStyle: false
+
+AlignConsecutiveMacros:
+  Enabled: true
+  AcrossEmptyLines: false
+  AcrossComments: false
+
+AlignEscapedNewlines: Left
+AlignTrailingComments: Never
+
+AllowShortBlocksOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: OnlyFirstIf
+AllowShortLambdasOnASingleLine: Empty
+BinPackArguments: true
+BinPackParameters: false
+
+LambdaBodyIndentation: OuterScope
