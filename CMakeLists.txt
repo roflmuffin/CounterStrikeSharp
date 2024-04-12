@@ -121,7 +121,7 @@ add_custom_command(
     VERBATIM
 )
 
-set(SOURCE_FILES ${SOURCE_FILES} protobuf_output_stamp)
+# set(SOURCE_FILES ${SOURCE_FILES} protobuf_output_stamp)
 
 # Sources
 add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${NATIVES_SOURCES} ${CONVERSIONS_SOURCES} ${CONVERSIONS_HEADERS})
@@ -135,15 +135,17 @@ target_include_directories(
 
 if(LINUX)
   include("makefiles/linux.base.cmake")
-  set_target_properties(${PROJECT_NAME} PROPERTIES
-                        PREFIX ""
-                        LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/addons/counterstrikesharp/bin/linuxsteamrt64"
+  set_target_properties(
+      ${PROJECT_NAME} PROPERTIES
+      PREFIX ""
+      LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/addons/counterstrikesharp/bin/linuxsteamrt64"
   )
 elseif(WIN32)
   include("makefiles/windows.base.cmake")
-  set_target_properties(${PROJECT_NAME} PROPERTIES
-                        PREFIX ""
-                        LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/addons/counterstrikesharp/bin/win64"
+  set_target_properties(
+      ${PROJECT_NAME} PROPERTIES
+      PREFIX ""
+      LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/addons/counterstrikesharp/bin/win64"
   )
 endif()
 
