@@ -157,7 +157,7 @@ void* CGameConfig::ResolveSignature(const char* name)
             CSSHARP_CORE_ERROR("Invalid symbol for {}\n", name);
             return nullptr;
         }
-        address = dlsym((*module)->m_hModule, symbol);
+        address = (*module)->FindSymbol(symbol);
     } else {
         const char* signature = this->GetSignature(name);
         if (!signature) {
@@ -167,6 +167,7 @@ void* CGameConfig::ResolveSignature(const char* name)
         size_t iLength = 0;
         byte* pSignature = HexToByte(signature, iLength);
         if (!pSignature) {
+            CSSHARP_CORE_INFO("Cannot convert signature \"{}\" to bytes.", signature);
             return nullptr;
         }
         address = (*module)->FindSignature(pSignature, iLength);
@@ -228,7 +229,7 @@ byte* CGameConfig::HexToByte(const char* src, size_t& length)
     uint8_t* dest = new uint8_t[length];
     int byteCount = HexStringToUint8Array(src, dest, length);
     if (byteCount <= 0) {
-        CSSHARP_CORE_INFO("Invalid hex format %s\n", src);
+        CSSHARP_CORE_INFO("Invalid hex format {}\n", src);
         return nullptr;
     }
     return dest;
