@@ -16,9 +16,11 @@
 
 #pragma once
 
-#include "core/globals.h"
 #include "core/global_listener.h"
 #include "scripting/script_engine.h"
+
+class CCommand;
+class CPlayerSlot;
 
 namespace counterstrikesharp {
 class ScriptCallback;
@@ -32,6 +34,7 @@ class VoiceManager : public GlobalClass
     void OnShutdown() override;
     bool SetClientListening(CPlayerSlot iReceiver, CPlayerSlot iSender, bool bListen);
     void OnClientCommand(CPlayerSlot slot, const CCommand& args);
+
   private:
 };
 

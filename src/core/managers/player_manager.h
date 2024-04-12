@@ -33,12 +33,20 @@
 
 #include <string>
 
+#include "bitvec.h"
+#include "const.h"
 #include "core/global_listener.h"
 #include "core/globals.h"
+#include "network_connection.pb.h"
+#include "playerslot.h"
 
 class CBaseEntity;
 class INetChannelInfo;
 class IPlayerInfo;
+class CSteamID;
+class QAngle;
+class Vector;
+class CCommand;
 struct edict_t;
 
 namespace counterstrikesharp {
@@ -143,15 +151,15 @@ class PlayerManager : public GlobalClass
     PlayerManager();
     void OnStartup() override;
     void OnAllInitialized() override;
-    bool OnClientConnect(CPlayerSlot slot, const char* pszName, uint64 xuid,
-                         const char* pszNetworkID, bool unk1, CBufferString* pRejectReason);
-    bool OnClientConnect_Post(CPlayerSlot slot, const char* pszName, uint64 xuid,
-                              const char* pszNetworkID, bool unk1, CBufferString* pRejectReason);
+    bool
+    OnClientConnect(CPlayerSlot slot, const char* pszName, uint64 xuid, const char* pszNetworkID, bool unk1, CBufferString* pRejectReason);
+    bool OnClientConnect_Post(
+        CPlayerSlot slot, const char* pszName, uint64 xuid, const char* pszNetworkID, bool unk1, CBufferString* pRejectReason);
     void OnClientPutInServer(CPlayerSlot slot, char const* pszName, int type, uint64 xuid);
-    void OnClientDisconnect(CPlayerSlot slot, ENetworkDisconnectionReason reason,
-                            const char* pszName, uint64 xuid, const char* pszNetworkID);
-    void OnClientDisconnect_Post(CPlayerSlot slot, ENetworkDisconnectionReason reason,
-                                 const char* pszName, uint64 xuid, const char* pszNetworkID) const;
+    void
+    OnClientDisconnect(CPlayerSlot slot, ENetworkDisconnectionReason reason, const char* pszName, uint64 xuid, const char* pszNetworkID);
+    void OnClientDisconnect_Post(
+        CPlayerSlot slot, ENetworkDisconnectionReason reason, const char* pszName, uint64 xuid, const char* pszNetworkID) const;
     void OnClientVoice(CPlayerSlot slot) const;
     void OnAuthorized(CPlayer* player) const;
     void OnServerActivate(edict_t* pEdictList, int edictCount, int clientMax) const;
