@@ -604,7 +604,7 @@ namespace CounterStrikeSharp.API.Core
                 return "";
 
             using WithTemporaryCulture temporaryCulture = new WithTemporaryCulture(player.GetLanguage());
-                return Localizer[key];
+            return Localizer[key];
         }
 
         public string Localize(CCSPlayerController player, string key, params object[] args)
@@ -613,7 +613,7 @@ namespace CounterStrikeSharp.API.Core
                 return "";
 
             using WithTemporaryCulture temporaryCulture = new WithTemporaryCulture(player.GetLanguage());
-                return Localizer[key, args];
+            return Localizer[key, args];
         }
 
         public void Dispose()
