@@ -33,8 +33,7 @@ class CGameConfig
     void* ResolveSignature(const char* name);
 
     static std::string GetDirectoryName(const std::string& directoryPathInput);
-    static int HexStringToUint8Array(const char* hexString, uint8_t* byteArray, size_t maxBytes);
-    static byte* HexToByte(const char* src, size_t& length);
+    static std::vector<int16_t> HexToByte(std::string_view src);
 
   private:
     std::string m_sPath;

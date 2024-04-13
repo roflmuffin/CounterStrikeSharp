@@ -23,6 +23,10 @@ namespace CounterStrikeSharp.API.Modules.Commands
     {
         public delegate void CommandCallback(CCSPlayerController? player, CommandInfo commandInfo);
         
+        /// <summary>
+        /// Command listener callback.
+        /// <returns>If returning <see cref="HookResult.Handled"/> or higher, will prevent the command from executing.</returns>
+        /// </summary>
         public delegate HookResult CommandListenerCallback(CCSPlayerController? player, CommandInfo commandInfo);
 
         public CCSPlayerController? CallingPlayer { get; }

@@ -37,6 +37,7 @@ class IGameEventSystem;
 class CounterStrikeSharpMMPlugin;
 class CGameEntitySystem;
 class IGameEventListener2;
+class CSchemaSystem;
 
 namespace counterstrikesharp {
 class EntityListener;
@@ -75,6 +76,7 @@ extern IFileSystem *fileSystem;
 extern IServerGameDLL *serverGameDll;
 extern IServerGameClients *serverGameClients;
 extern INetworkServerService *networkServerService;
+extern CSchemaSystem *schemaSystem;
 extern IServerTools *serverTools;
 extern IPhysics *physics;
 extern IPhysicsCollision *physicsCollision;
