@@ -72,7 +72,7 @@ void Initialize()
             std::string_view name = info->dlpi_name;
 
             if (!name.ends_with(MODULE_EXT))
-                continue;
+                return 0;
 
             if (name.find("csgo/addons") != std::string_view::npos)
                 return 0;
