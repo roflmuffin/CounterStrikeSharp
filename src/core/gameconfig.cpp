@@ -165,11 +165,11 @@ void* CGameConfig::ResolveSignature(const char* name)
             return nullptr;
         }
         size_t iLength = 0;
-        byte* pSignature = HexToByte(signature, iLength);
-        if (!pSignature) {
+        auto pSignature = HexToByte(signature);
+        if (pSignature.empty()) {
             return nullptr;
         }
-        address = (*module)->FindSignature(pSignature, iLength);
+        address = (*module)->FindSignature(pSignature);
     }
 
     if (!address) {
@@ -190,47 +190,63 @@ std::string CGameConfig::GetDirectoryName(const std::string& directoryPathInput)
     return "";
 }
 
-int CGameConfig::HexStringToUint8Array(const char* hexString, uint8_t* byteArray, size_t maxBytes)
+std::vector<int16_t> CGameConfig::HexToByte(std::string_view src)
 {
-    if (!hexString) {
-        printf("Invalid hex string.\n");
+    if (src.empty()) {
+        return {};
+    }
+
+    auto hex_char_to_byte = [](char c) -> int16_t {
+        if (c >= '0' && c <= '9')
+            return c - '0';
+        if (c >= 'A' && c <= 'F')
+            return c - 'A' + 10;
+        if (c >= 'a' && c <= 'f')
+            return c - 'a' + 10;
+
+        // a valid hex char can never go up to 0xFF
         return -1;
-    }
+    };
 
-    size_t hexStringLength = strlen(hexString);
-    size_t byteCount = hexStringLength / 4; // Each "\\x" represents one byte.
+    std::vector<int16_t> result{};
 
-    if (hexStringLength % 4 != 0 || byteCount == 0 || byteCount > maxBytes) {
-        printf("Invalid hex string format or byte count.\n");
-        return -1; // Return an error code.
-    }
+    const bool is_code_style = src[0] == '\\';
 
-    for (size_t i = 0; i < hexStringLength; i += 4) {
-        if (sscanf(hexString + i, "\\x%2hhX", &byteArray[i / 4]) != 1) {
-            printf("Failed to parse hex string at position %zu.\n", i);
-            return -1; // Return an error code.
+    const std::string_view pattern = is_code_style ? R"(\x)" : " ";
+    const std::string_view wildcard = is_code_style ? "2A" : "?";
+
+    auto split = std::views::split(src, pattern);
+
+    for (auto&& str : split) {
+        if (str.empty()) [[unlikely]] {
+            continue;
         }
+
+        // std::string_view(std::subrange) constructor only exists in C++23 or above
+        // use this when compiler is GCC >= 12.1 or Clang >= 16
+        // const std::string_view byte(str.begin(), str.end());
+        
+        // a workaround for GCC < 12.1, it doesn't work with Clang < 16
+        // https://stackoverflow.com/a/48403210
+        std::string_view byte (&*str.begin(), std::ranges::distance(str));
+
+        if (byte.starts_with(wildcard)) {
+            result.emplace_back(-1);
+            continue;
+        }
+
+        const auto high = hex_char_to_byte(byte[0]);
+        const auto low = hex_char_to_byte(byte[1]);
+
+        // if then is malformed, return nothing
+        // maybe print error message here?
+        if (high == 0xFF || low == 0xFF) [[unlikely]] {
+            return {};
+        }
+
+        result.emplace_back((high << 4) | low);
     }
 
-    byteArray[byteCount] = '\0'; // Add a null-terminating character.
-
-    return byteCount; // Return the number of bytes successfully converted.
-}
-
-byte* CGameConfig::HexToByte(const char* src, size_t& length)
-{
-    if (!src || strlen(src) <= 0) {
-        CSSHARP_CORE_INFO("Invalid hex string\n");
-        return nullptr;
-    }
-
-    length = strlen(src) / 4;
-    uint8_t* dest = new uint8_t[length];
-    int byteCount = HexStringToUint8Array(src, dest, length);
-    if (byteCount <= 0) {
-        CSSHARP_CORE_INFO("Invalid hex format %s\n", src);
-        return nullptr;
-    }
-    return dest;
+    return result;
 }
 } // namespace counterstrikesharp
