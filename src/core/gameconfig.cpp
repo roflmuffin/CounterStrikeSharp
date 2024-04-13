@@ -231,7 +231,7 @@ std::vector<int16_t> CGameConfig::HexToByte(std::string_view src)
             continue;
         }
 
-        if (str.size() < 2) [[unlikely]] {
+        if (byte.size() < 2) [[unlikely]] {
             return {};
         }
 
