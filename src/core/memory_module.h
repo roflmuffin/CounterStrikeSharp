@@ -33,7 +33,6 @@
 #include "interface.h"
 #include "strtools.h"
 #include "metamod_oslink.h"
-
 #undef snprintf
 
 namespace counterstrikesharp::modules {
@@ -59,9 +58,8 @@ class CModule
 #else
     CModule(std::string_view path, struct dl_phdr_info* info);
 #endif
-    void* FindSignature(const char* signature);
 
-    void* FindSignature(const byte* pData, size_t iSigLength);
+    void* FindSignature(const char* signature);
 
     void* FindInterface(std::string_view name);
 
@@ -88,8 +86,10 @@ class CModule
 #else
     void DumpSymbols(ElfW(Dyn) * dyn);
 #endif
+
     std::optional<std::vector<std::uint8_t>> GetOriginalBytes(const std::vector<std::uint8_t>& disk_data, std::uintptr_t rva, std::size_t size);
 
+    void* FindSignature(const std::vector<int16_t>& sigBytes);
 };
 
 } // namespace counterstrikesharp::modules

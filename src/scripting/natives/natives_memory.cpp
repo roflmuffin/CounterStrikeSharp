@@ -26,19 +26,6 @@
 namespace counterstrikesharp {
 std::vector<ValveFunction*> m_managed_ptrs;
 
-byte* ConvertToByteArray(const char* str, size_t* outLength)
-{
-    size_t len = strlen(str) / 4; // Every byte is represented as \xHH
-    byte* result = (byte*)malloc(len);
-
-    for (size_t i = 0, j = 0; i < len; ++i, j += 4) {
-        sscanf(str + j, "\\x%2hhx", &result[i]);
-    }
-
-    *outLength = len;
-    return result;
-}
-
 void* FindSignatureNative(ScriptContext& scriptContext)
 {
     auto moduleName = scriptContext.GetArgument<const char*>(0);

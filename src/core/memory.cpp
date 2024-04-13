@@ -19,12 +19,7 @@
  * This file has been modified for use in CounterStrikeSharp.
  */
 
-#include <cstdlib>
-#include <cstring>
-
-#include "globals.h"
-#include "log.h"
-
+#include "gameconfig.h"
 #include "memory_module.h"
 
 void* FindSignature(const char* moduleName, const char* bytesStr) {

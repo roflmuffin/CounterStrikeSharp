@@ -42,11 +42,10 @@ void Initialize()
         // a hack way to do so
         std::string name(w_name.begin(), w_name.end());
 
-        std::replace(name.begin(), name.end(), '\\', '/');
+        std::ranges::replace(name, '\\', '/');
 
         // check for extension first
-        // TODO: use ends_with when C++ standard is 20
-        if (name.find_last_of(MODULE_EXT) == std::string::npos)
+        if (!name.ends_with(MODULE_EXT))
             continue;
 
         // no addons
@@ -72,8 +71,8 @@ void Initialize()
         [](struct dl_phdr_info* info, size_t, void*) {
             std::string_view name = info->dlpi_name;
 
-            if (name.find_last_of(MODULE_EXT) == std::string_view::npos)
-                return 0;
+            if (!name.ends_with(MODULE_EXT))
+                continue;
 
             if (name.find("csgo/addons") != std::string_view::npos)
                 return 0;
@@ -98,10 +97,10 @@ CModule* GetModuleByName(std::string name)
 {
 #ifdef _WIN32
     // or add this in GetGameDirectory()?
-    std::replace(name.begin(), name.end(), '\\', '/');
+    std::ranges::replace(name, '\\', '/');
 #endif
 
-    const auto it = std::find_if(moduleList.begin(), moduleList.end(), [name](const auto& i) {
+    const auto it = std::ranges::find_if(moduleList, [name](const auto& i) {
         return i.first.find(name) != std::string::npos;
     });
 
@@ -138,9 +137,8 @@ CModule::CModule(std::string_view path, std::uint64_t base)
     m_baseAddress = base;
     m_size = nt_header->OptionalHeader.SizeOfImage;
 
-    const bool should_read_from_disk =
-        std::any_of(modules_to_read_from_disk.begin(), modules_to_read_from_disk.end(),
-                    [&](const auto& i) { return m_pszModule == i; });
+    const bool should_read_from_disk = std::ranges::any_of(modules_to_read_from_disk,
+                            [&](const auto& i) { return m_pszModule == i; });
 
     std::vector<std::uint8_t> disk_data{};
     if (should_read_from_disk) {
@@ -197,9 +195,8 @@ CModule::CModule(std::string_view path, dl_phdr_info* info)
     m_pszPath = path.data();
     m_baseAddress = info->dlpi_addr;
 
-    const bool should_read_from_disk =
-        std::any_of(modules_to_read_from_disk.begin(), modules_to_read_from_disk.end(),
-                    [&](const auto& i) { return m_pszModule == i; });
+    const bool should_read_from_disk = std::ranges::any_of(modules_to_read_from_disk,
+                            [&](const auto& i) { return m_pszModule == i; });
 
     std::vector<std::uint8_t> disk_data{};
     if (should_read_from_disk) {
@@ -437,31 +434,36 @@ void* CModule::FindSignature(const char* signature)
         return nullptr;
     }
 
-    size_t iSigLength = 0;
-    byte* pData = CGameConfig::HexToByte(signature, iSigLength);
+    auto pData = CGameConfig::HexToByte(signature);
+    if (pData.empty()) [[unlikely]] {
+        CSSHARP_CORE_ERROR("Cannot convert signture \"{}\" to bytes", signature);
+        return nullptr;
+    }
 
-    return this->FindSignature(pData, iSigLength);
+    return this->FindSignature(pData);
 }
 
-void* CModule::FindSignature(const byte* pData, size_t iSigLength)
+void* CModule::FindSignature(const std::vector<int16_t>& sigBytes)
 {
     for (auto&& segment : m_vecSegments) {
         const auto size = segment.bytes.size();
         auto* data = segment.bytes.data();
 
-        auto first_byte = pData[0];
-        std::uint8_t* end = data + size - iSigLength;
+        auto first_byte = sigBytes[0];
+        std::uint8_t* end = data + size - sigBytes.size();
 
         for (std::uint8_t* current = data; current <= end; ++current) {
-            if (first_byte != 0x2A)
+            if (first_byte != -1)
                 current = std::find(current, end, first_byte);
 
             if (current == end) {
                 break;
             }
 
-            if (std::equal(pData + 1, pData + iSigLength, current + 1,
-                           [](auto opt, auto byte) { return opt == 0x2A || opt == byte; })) {
+            if (std::equal(sigBytes.begin() + 1, sigBytes.end(), current + 1,
+                           [](auto opt, auto byte) {
+                               return opt == -1 || opt == byte;
+                           })) {
                 return reinterpret_cast<void*>(current - data + segment.address);
             }
         }
@@ -530,7 +532,6 @@ void* CModule::FindInterface(std::string_view name)
 void* CModule::FindSymbol(const std::string& name)
 {
     if (const auto it = _symbols.find(name); it != _symbols.end()) {
-        CSSHARP_CORE_INFO("Found symbol {}", name);
         return reinterpret_cast<void*>(it->second);
     }
 
