@@ -19,7 +19,6 @@
 #include <vector>
 
 #include "core/global_listener.h"
-#include "core/globals.h"
 #include "scripting/script_engine.h"
 
 namespace counterstrikesharp {
@@ -69,8 +68,7 @@ class CallbackPair
     CallbackPair();
     CallbackPair(bool bNoCallbacks);
     ~CallbackPair();
-    bool HasCallbacks() const
-    { return pre->GetFunctionCount() > 0 || post->GetFunctionCount() > 0; }
+    bool HasCallbacks() const { return pre->GetFunctionCount() > 0 || post->GetFunctionCount() > 0; }
 
   public:
     ScriptCallback* pre;

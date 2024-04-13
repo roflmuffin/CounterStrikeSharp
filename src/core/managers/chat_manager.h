@@ -19,9 +19,12 @@
 #include <map>
 #include <vector>
 
-#include "core/globals.h"
 #include "core/global_listener.h"
+#include "core/globals.h"
 #include "scripting/script_engine.h"
+
+class CBaseEntity;
+class CCommand;
 
 namespace counterstrikesharp {
 class ScriptCallback;
@@ -54,16 +57,15 @@ class ChatManager : public GlobalClass
 
     bool OnSayCommandPre(CBaseEntity* pController, CCommand& args);
     void OnSayCommandPost(CBaseEntity* pController, CCommand& args);
+
   private:
-    void InternalDispatch(CBaseEntity* pPlayerController, const char* szTriggerPhrase,
-                          CCommand& pFullCommand);
+    void InternalDispatch(CBaseEntity* pPlayerController, const char* szTriggerPhrase, CCommand& pFullCommand);
 
     std::vector<ChatCommandInfo*> m_cmd_list;
     std::map<std::string, ChatCommandInfo*> m_cmd_lookup;
 };
 
-static void DetourHostSay(CBaseEntity* pController, CCommand& args, bool teamonly, int unk1,
-                          const char* unk2);
+static void DetourHostSay(CBaseEntity* pController, CCommand& args, bool teamonly, int unk1, const char* unk2);
 static HostSay m_pHostSay = nullptr;
 
 } // namespace counterstrikesharp

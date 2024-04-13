@@ -12,3 +12,23 @@ trim_trailing_whitespace = true
 
 [*.json]
 indent_size = 2
+
+[{CMakeLists.txt,*.cmake,*.rst}]
+indent_size = 2
+indent_style = space
+ij_continuation_indent_size = 4
+ij_cmake_align_command_call_r_par = false
+ij_cmake_align_control_flow_r_par = false
+ij_cmake_align_multiline_parameters_in_calls = true
+ij_cmake_force_commands_case = 1
+ij_cmake_keep_blank_lines_in_code = 1
+ij_cmake_space_before_for_parentheses = false
+ij_cmake_space_before_if_parentheses = false
+ij_cmake_space_before_method_call_parentheses = false
+ij_cmake_space_before_method_parentheses = false
+ij_cmake_space_before_while_parentheses = false
+ij_cmake_spaces_within_for_parentheses = false
+ij_cmake_spaces_within_if_parentheses = false
+ij_cmake_spaces_within_method_call_parentheses = false
+ij_cmake_spaces_within_method_parentheses = false
+ij_cmake_spaces_within_while_parentheses = false
