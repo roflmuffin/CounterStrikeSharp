@@ -136,7 +136,7 @@ class CModule;
 void Initialize();
 CModule* GetModuleByName(std::string name);
 
-extern std::unordered_map<std::string, std::unique_ptr<CModule>> moduleList;
+extern std::unordered_map<std::string, std::unique_ptr<CModule>> moduleMap;
 
 extern CModule *engine;
 extern CModule *tier0;

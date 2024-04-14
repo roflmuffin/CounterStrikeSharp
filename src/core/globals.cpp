@@ -28,7 +28,7 @@
 namespace counterstrikesharp {
 
 namespace modules {
-std::unordered_map<std::string, std::unique_ptr<CModule>> moduleList {}; 
+std::unordered_map<std::string, std::unique_ptr<CModule>> moduleMap {}; 
 CModule* engine = nullptr;
 CModule* tier0 = nullptr;
 CModule* server = nullptr;

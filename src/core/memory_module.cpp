@@ -23,7 +23,7 @@
 namespace counterstrikesharp::modules {
 void Initialize()
 {
-    if (!moduleList.empty())
+    if (!moduleMap.empty())
         return;
 
 #ifdef _WIN32
@@ -64,7 +64,7 @@ void Initialize()
         if (!mod->IsInitialized())
             continue;
 
-        moduleList.emplace(name, std::move(mod));
+        moduleMap.emplace(name, std::move(mod));
     }
 #else
     dl_iterate_phdr(
@@ -86,7 +86,7 @@ void Initialize()
             if (!mod->IsInitialized())
                 return 0;
 
-            moduleList.emplace(name, std::move(mod));
+            moduleMap.emplace(name, std::move(mod));
             return 0;
         },
         nullptr);
@@ -100,11 +100,11 @@ CModule* GetModuleByName(std::string name)
     std::ranges::replace(name, '\\', '/');
 #endif
 
-    const auto it = std::ranges::find_if(moduleList, [name](const auto& i) {
+    const auto it = std::ranges::find_if(moduleMap, [name](const auto& i) {
         return i.first.find(name) != std::string::npos;
     });
 
-    if (it == moduleList.end()) {
+    if (it == moduleMap.end()) {
         CSSHARP_CORE_ERROR("Cannot find module {}.", name);
 
         return nullptr;
