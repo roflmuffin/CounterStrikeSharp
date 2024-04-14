@@ -145,7 +145,7 @@ namespace CounterStrikeSharp.API
                 if (!controller.IsValid || controller.UserId == -1)
                     continue;
                 
-                if (!controller.SteamID.ToString().Length != 17)
+                if (controller.SteamID.ToString().Length != 17 || string.IsNullOrEmpty(controller.IpAddress) || controller.Connected != PlayerConnectedState.PlayerConnected)
                     continue;
 
                 players.Add(controller);
