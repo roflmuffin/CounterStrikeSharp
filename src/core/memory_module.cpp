@@ -26,7 +26,7 @@
 namespace counterstrikesharp::modules {
 void Initialize()
 {
-    if (!moduleMap.empty())
+    if (!moduleList.empty())
         return;
 
 #ifdef _WIN32
@@ -67,7 +67,7 @@ void Initialize()
         if (!mod->IsInitialized())
             continue;
 
-        moduleMap.emplace(name, std::move(mod));
+        moduleList.emplace_back(std::move(mod));
     }
 #else
     dl_iterate_phdr(
@@ -85,16 +85,11 @@ void Initialize()
             if (!isFromGameBin && !isFromRootBin)
                 return 0;
 
-            // hack fix for libserver.so, no idea why this happens
-            constexpr std::string_view token = "bin/linuxsteamrt64/../../";
-            if (auto pos = name.find(token); pos != std::string::npos)
-                name = name.erase(pos, token.size());
-
             auto mod = std::make_unique<CModule>(name, info);
             if (!mod->IsInitialized())
                 return 0;
 
-            moduleMap.emplace(name, std::move(mod));
+            moduleList.emplace_back(std::move(mod));
             return 0;
         },
         nullptr);
@@ -108,17 +103,17 @@ CModule* GetModuleByName(std::string name)
     std::ranges::replace(name, '\\', '/');
 #endif
 
-    const auto it = std::ranges::find_if(moduleMap, [name](const auto& i) {
-        return i.first.find(name) != std::string::npos;
+    const auto it = std::ranges::find_if(moduleList, [name](const std::unique_ptr<CModule>& i) {
+        return name.ends_with(i->m_pszModule);
     });
 
-    if (it == moduleMap.end()) {
+    if (it == moduleList.end()) {
         CSSHARP_CORE_ERROR("Cannot find module {}", name);
 
         return nullptr;
     }
 
-    return it->second.get();
+    return it->get();
 }
 
 constexpr std::array modules_to_read_from_disk = {
