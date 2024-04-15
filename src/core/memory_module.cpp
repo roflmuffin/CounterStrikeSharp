@@ -1,10 +1,13 @@
 #include "core/memory_module.h"
 #include "core/globals.h"
 #include "platform.h"
+#include <algorithm>
 #include <cstddef>
 #include <cstdint>
+#include <filesystem>
 #include <memory>
 #include <string_view>
+#include <algorithm>
 
 #if _WIN32
 #include <Psapi.h>
@@ -69,18 +72,23 @@ void Initialize()
 #else
     dl_iterate_phdr(
         [](struct dl_phdr_info* info, size_t, void*) {
-            std::string_view name = info->dlpi_name;
+            std::string name = info->dlpi_name;
 
             if (!name.ends_with(MODULE_EXT))
                 return 0;
 
-            if (name.find("csgo/addons") != std::string_view::npos)
+            if (name.find("csgo/addons") != std::string::npos)
                 return 0;
 
-            bool isFromRootBin = name.find(ROOTBIN) != std::string_view::npos;
-            bool isFromGameBin = name.find(GAMEBIN) != std::string_view::npos;
+            bool isFromRootBin = name.find(ROOTBIN) != std::string::npos;
+            bool isFromGameBin = name.find(GAMEBIN) != std::string::npos;
             if (!isFromGameBin && !isFromRootBin)
                 return 0;
+
+            // hack fix for libserver.so, no idea why this happens
+            constexpr std::string_view token = "bin/linuxsteamrt64/../../";
+            if (auto pos = name.find(token); pos != std::string::npos)
+                name = name.erase(pos, token.size());
 
             auto mod = std::make_unique<CModule>(name, info);
             if (!mod->IsInitialized())
@@ -105,7 +113,7 @@ CModule* GetModuleByName(std::string name)
     });
 
     if (it == moduleMap.end()) {
-        CSSHARP_CORE_ERROR("Cannot find module {}.", name);
+        CSSHARP_CORE_ERROR("Cannot find module {}", name);
 
         return nullptr;
     }
