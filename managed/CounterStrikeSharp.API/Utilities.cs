@@ -61,7 +61,7 @@ namespace CounterStrikeSharp.API
         public static CCSPlayerController? GetPlayerFromIndex(int index)
         {
             var player = GetEntityFromIndex<CCSPlayerController>(index);
-            if (player == null || player.DesignerName != "player")
+            if (player == null || player.DesignerName != "cs_player_controller")
             {
                 return null;
             }
