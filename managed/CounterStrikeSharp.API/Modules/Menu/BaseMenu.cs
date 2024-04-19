@@ -125,25 +125,34 @@ public abstract class BaseMenuInstance : IMenuInstance
 
         if (menuItemIndex >= 0 && menuItemIndex < Menu.MenuOptions.Count)
         {
-            var menuOption = Menu.MenuOptions[menuItemIndex];
+            InvokeOptionCallback(Menu.MenuOptions[menuItemIndex]);
+        }
+    }
 
-            if (!menuOption.Disabled)
+    public int GetExtraButtonCount()
+    {
+        return (HasNextButton ? 1 : 0) + (HasPrevButton ? 1 : 0) + (((Menu as BaseMenu)!.ExitButton) ? 1 : 0);
+    }
+
+    internal virtual void InvokeOptionCallback(ChatMenuOption menuOption)
+    {
+        if (!menuOption.Disabled)
+        {
+            menuOption.OnSelect(Player, menuOption);
+
+            switch (Menu.PostSelectAction)
             {
-                menuOption.OnSelect(Player, menuOption);
-                switch (Menu.PostSelectAction)
-                {
-                    case PostSelectAction.Close:
-                        Close();
-                        break;
-                    case PostSelectAction.Reset:
-                        Reset();
-                        break;
-                    case PostSelectAction.Nothing:
-                        // Do nothing
-                        break;
-                    default:
-                        throw new NotImplementedException("The specified Select Action is not supported!");
-                }
+                case PostSelectAction.Close:
+                    Close();
+                    break;
+                case PostSelectAction.Reset:
+                    Reset();
+                    break;
+                case PostSelectAction.Nothing:
+                    // Do nothing
+                    break;
+                default:
+                    throw new NotImplementedException("The specified Select Action is not supported!");
             }
         }
     }
@@ -160,7 +169,7 @@ public abstract class BaseMenuInstance : IMenuInstance
         MenuManager.CloseActiveMenu(Player);
     }
 
-    public void NextPage()
+    public virtual void NextPage()
     {
         PrevPageOffsets.Push(CurrentOffset);
         CurrentOffset += MenuItemsPerPage;
@@ -168,10 +177,16 @@ public abstract class BaseMenuInstance : IMenuInstance
         Display();
     }
 
-    public void PrevPage()
+    public virtual void PrevPage()
     {
         Page--;
         CurrentOffset = PrevPageOffsets.Pop();
         Display();
+    }
+
+    public virtual int GetPagesCount()
+    {
+        int pages = (int)Math.Ceiling(Menu.MenuOptions.Count / (float)MenuItemsPerPage);
+        return pages > 0 ? pages : 1;
     }
 }
