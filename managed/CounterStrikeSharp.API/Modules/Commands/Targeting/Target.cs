@@ -12,6 +12,7 @@ public class Target
     private TargetType Type { get; }
     private string Raw { get; }
     private string Slug { get; }
+    private CCSGameRules GameRules { get; set; } = Utilities.FindAllEntitiesByDesignerName<CCSGameRulesProxy>("cs_gamerules").FirstOrDefault()!.GameRules!;
     
     public static readonly IReadOnlyDictionary<string, TargetType> TargetTypeMap = new Dictionary<string, TargetType>(StringComparer.OrdinalIgnoreCase)
     {
@@ -114,13 +115,6 @@ public class Target
 
     public CCSPlayerController? GetClientAimTarget(CCSPlayerController player)
     {
-        CCSGameRules? GameRules = Utilities.FindAllEntitiesByDesignerName<CCSGameRulesProxy>("cs_gamerules").FirstOrDefault()?.GameRules;
-
-        if (GameRules == null)
-        {
-            return null;
-        }
-
         VirtualFunctionWithReturn<IntPtr, IntPtr, IntPtr> findPickerEntity = new(GameRules.Handle, 28);
         CBaseEntity target = new(findPickerEntity.Invoke(GameRules.Handle, player.Handle));
 
