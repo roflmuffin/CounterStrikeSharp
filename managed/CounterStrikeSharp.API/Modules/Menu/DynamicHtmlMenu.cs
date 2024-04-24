@@ -294,14 +294,22 @@ public class DynamicHtmlMenuInstance : BaseMenuInstance
         }
     }
 
-    public void SelectNextOption()
+    public bool SelectNextOption()
     {
+        if ((CurrentSelectionIndex + 1) >= CurrentMenuOptions?.Count)
+            return false;
+
         SetCurrentSelection(++CurrentSelectionIndex);
+        return true;
     }
 
-    public void SelectPreviousOption()
+    public bool SelectPreviousOption()
     {
+        if ((CurrentSelectionIndex - 1) < 0)
+            return false;
+
         SetCurrentSelection(--CurrentSelectionIndex);
+        return true;
     }
 
     public void InvokeSelection()
