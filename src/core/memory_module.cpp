@@ -415,6 +415,7 @@ CModule::GetOriginalBytes(const std::vector<std::uint8_t>& disk_data, std::uintp
                 return reinterpret_cast<std::uintptr_t>(data + (address - delta));
             }
         }
+        return std::nullopt;
 #else
         // on linux you can just read from rva
         return reinterpret_cast<std::uintptr_t>(data + address);
