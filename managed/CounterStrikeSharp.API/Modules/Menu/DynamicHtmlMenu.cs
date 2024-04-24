@@ -220,7 +220,16 @@ public class DynamicHtmlMenuInstance : BaseMenuInstance
         for (var i = 0; i < menuOptions.Count; i++)
         {
             var option = menuOptions[i];
-            DisplayOption(dynamicHtmlMenu, option, CurrentSelectionIndex == i, builder);
+
+            if (CurrentSelectionIndex == i)
+            {
+                builder.Append($"<font color='{dynamicHtmlMenu.SelectedColor}'>{dynamicHtmlMenu.SelectedFormatter(option.Text)}</font>");
+            } else
+            {
+                builder.Append($"<font color='{(option.Disabled ? dynamicHtmlMenu.DisabledColor : dynamicHtmlMenu.EnabledColor)}'>{option.Text}</font>");
+            }
+
+            builder.AppendLine("<br>");
         }
 
         if (!dynamicHtmlMenu.CustomResolver && Player.Buttons != 0 && (Server.CurrentTime - LastPressedButtonTime) >= DelayBetweenButtonPress)
@@ -348,19 +357,6 @@ public class DynamicHtmlMenuInstance : BaseMenuInstance
         {
             Application.Instance.Logger.LogError("Invalid menu option selected (index {0})", menuItemIndex);
         }
-    }
-
-    private void DisplayOption(DynamicHtmlMenu dynamicHtmlMenu, ChatMenuOption option, bool selected, StringBuilder builder)
-    {
-        if (selected)
-        {
-            builder.Append($"<font color='{dynamicHtmlMenu.SelectedColor}'>{dynamicHtmlMenu.SelectedFormatter(option.Text)}</font>");
-        } else
-        {
-            builder.Append($"<font color='{(option.Disabled ? dynamicHtmlMenu.DisabledColor : dynamicHtmlMenu.EnabledColor)}'>{option.Text}</font>");
-        }
-
-        builder.AppendLine("<br>");
     }
 
     // these had to be rewritten in the same way instead of calling the base method because calling Display() while switching pages were messing with the options ranging for some reason
