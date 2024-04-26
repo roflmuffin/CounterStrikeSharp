@@ -2,21 +2,63 @@
 <!-- https://learn.microsoft.com/en-us/dotnet/fundamentals/package-validation/diagnostic-ids -->
 <Suppressions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>F:CounterStrikeSharp.API.Core.BasePlugin.ConvarChangeHandlers</Target>
+    <Left>.\ApiCompat\v202.dll</Left>
+    <Right>obj\Debug\net8.0\CounterStrikeSharp.API.dll</Right>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:CounterStrikeSharp.API.Core.CC4.get_DroppedFromDeath</Target>
+    <Left>.\ApiCompat\v202.dll</Left>
+    <Right>obj\Debug\net8.0\CounterStrikeSharp.API.dll</Right>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:CounterStrikeSharp.API.Core.CCSGameRules.get_RoundStartTicks</Target>
+    <Left>.\ApiCompat\v202.dll</Left>
+    <Right>obj\Debug\net8.0\CounterStrikeSharp.API.dll</Right>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:CounterStrikeSharp.API.Core.CCSPlayerPawnBase.get_InvalidSteamLogonDelayed</Target>
+    <Left>.\ApiCompat\v202.dll</Left>
+    <Right>obj\Debug\net8.0\CounterStrikeSharp.API.dll</Right>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:CounterStrikeSharp.API.Core.CCSPlayerPawnBase.get_LastAction</Target>
+    <Left>.\ApiCompat\v202.dll</Left>
+    <Right>obj\Debug\net8.0\CounterStrikeSharp.API.dll</Right>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:CounterStrikeSharp.API.Core.CPlantedC4.get_PlantedAfterPickup</Target>
+    <Left>.\ApiCompat\v202.dll</Left>
+    <Right>obj\Debug\net8.0\CounterStrikeSharp.API.dll</Right>
+  </Suppression>
+  <Suppression>
     <DiagnosticId>CP0005</DiagnosticId>
     <Target>M:CounterStrikeSharp.API.Modules.Menu.BaseMenu.Open(CounterStrikeSharp.API.Core.CCSPlayerController)</Target>
     <Left>.\ApiCompat\v202.dll</Left>
-    <Right>obj\Release\net8.0\CounterStrikeSharp.API.dll</Right>
+    <Right>obj\Debug\net8.0\CounterStrikeSharp.API.dll</Right>
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0006</DiagnosticId>
     <Target>M:CounterStrikeSharp.API.Modules.Menu.IMenu.Open(CounterStrikeSharp.API.Core.CCSPlayerController)</Target>
     <Left>.\ApiCompat\v202.dll</Left>
-    <Right>obj\Release\net8.0\CounterStrikeSharp.API.dll</Right>
+    <Right>obj\Debug\net8.0\CounterStrikeSharp.API.dll</Right>
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0006</DiagnosticId>
     <Target>M:CounterStrikeSharp.API.Modules.Menu.IMenu.OpenToAll</Target>
     <Left>.\ApiCompat\v202.dll</Left>
-    <Right>obj\Release\net8.0\CounterStrikeSharp.API.dll</Right>
+    <Right>obj\Debug\net8.0\CounterStrikeSharp.API.dll</Right>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0011</DiagnosticId>
+    <Target>F:CounterStrikeSharp.API.Core.PulseValueType_t.PVAL_COUNT</Target>
+    <Left>.\ApiCompat\v202.dll</Left>
+    <Right>obj\Debug\net8.0\CounterStrikeSharp.API.dll</Right>
   </Suppression>
 </Suppressions>

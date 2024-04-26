@@ -781,7 +781,42 @@
           }
         },
         {
-          "name": "m_flChainLength",
+          "name": "m_flErrorSplineRotationMax",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flErrorSplineTranslationMax",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flErrorSplineScaleMax",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flErrorQuantizationRotationMax",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flErrorQuantizationTranslationMax",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flErrorQuantizationScaleMax",
           "type": {
             "category": 0,
             "name": "float32"
@@ -1569,7 +1604,7 @@
     "CAnimDemoCaptureSettings": {
       "fields": [
         {
-          "name": "m_rangeBoneChainLength",
+          "name": "m_vecErrorRangeSplineRotation",
           "type": {
             "atomic": 0,
             "category": 4,
@@ -1577,7 +1612,7 @@
           }
         },
         {
-          "name": "m_rangeMaxSplineErrorRotation",
+          "name": "m_vecErrorRangeSplineTranslation",
           "type": {
             "atomic": 0,
             "category": 4,
@@ -1585,17 +1620,11 @@
           }
         },
         {
-          "name": "m_flMaxSplineErrorTranslation",
+          "name": "m_vecErrorRangeSplineScale",
           "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
-          "name": "m_flMaxSplineErrorScale",
-          "type": {
-            "category": 0,
-            "name": "float32"
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector2D"
           }
         },
         {
@@ -1613,24 +1642,27 @@
           }
         },
         {
-          "name": "m_flMaxQuantizationErrorRotation",
+          "name": "m_vecErrorRangeQuantizationRotation",
           "type": {
-            "category": 0,
-            "name": "float32"
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector2D"
           }
         },
         {
-          "name": "m_flMaxQuantizationErrorTranslation",
+          "name": "m_vecErrorRangeQuantizationTranslation",
           "type": {
-            "category": 0,
-            "name": "float32"
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector2D"
           }
         },
         {
-          "name": "m_flMaxQuantizationErrorScale",
+          "name": "m_vecErrorRangeQuantizationScale",
           "type": {
-            "category": 0,
-            "name": "float32"
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector2D"
           }
         },
         {
@@ -4827,6 +4859,13 @@
           }
         },
         {
+          "name": "m_fPinPullTime",
+          "type": {
+            "category": 5,
+            "name": "GameTime_t"
+          }
+        },
+        {
           "name": "m_bJustPulledPin",
           "type": {
             "category": 0,
@@ -6332,7 +6371,7 @@
               "category": 0,
               "name": "char"
             },
-            "name": "char[260]"
+            "name": "char[4096]"
           }
         },
         {
@@ -12865,6 +12904,13 @@
           }
         },
         {
+          "name": "m_fAvgPlayerRank",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
           "name": "m_pQueuedMatchmakingReservationString",
           "type": {
             "category": 1,
@@ -14521,7 +14567,7 @@
           }
         },
         {
-          "name": "m_iAccountMoneyEarnedForNextRound",
+          "name": "m_iMoneyEarnedForNextRound",
           "type": {
             "category": 0,
             "name": "int32"
@@ -14715,19 +14761,6 @@
           }
         },
         {
-          "name": "m_hPreviousModel",
-          "type": {
-            "atomic": 1,
-            "category": 4,
-            "inner": {
-              "category": 5,
-              "name": "InfoForResourceTypeCModel"
-            },
-            "name": "CStrongHandle< InfoForResourceTypeCModel >",
-            "outer": "CStrongHandle"
-          }
-        },
-        {
           "name": "m_bHasFemaleVoice",
           "type": {
             "category": 0,
@@ -14765,6 +14798,24 @@
           "type": {
             "category": 0,
             "name": "bool"
+          }
+        },
+        {
+          "name": "m_TouchingBuyZones",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "atomic": 1,
+              "category": 4,
+              "inner": {
+                "category": 5,
+                "name": "CBaseEntity"
+              },
+              "name": "CHandle< CBaseEntity >",
+              "outer": "CHandle"
+            },
+            "name": "CUtlVector< CHandle< CBaseEntity > >"
           }
         },
         {
@@ -14845,7 +14896,7 @@
           }
         },
         {
-          "name": "m_flLandseconds",
+          "name": "m_flLandingTimeSeconds",
           "type": {
             "category": 0,
             "name": "float32"
@@ -15035,42 +15086,75 @@
             "category": 0,
             "name": "bool"
           }
-        }
-      ],
-      "parent": "CCSPlayerPawnBase"
-    },
-    "CCSPlayerPawnAPI": {
-      "fields": []
-    },
-    "CCSPlayerPawnBase": {
-      "fields": [
+        },
         {
-          "name": "m_CTouchExpansionComponent",
+          "name": "m_bLeftHanded",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_fSwitchedHandednessTime",
           "type": {
             "category": 5,
-            "name": "CTouchExpansionComponent"
+            "name": "GameTime_t"
           }
         },
         {
-          "name": "m_pPingServices",
+          "name": "m_flViewmodelOffsetX",
           "type": {
-            "category": 1,
-            "inner": {
-              "category": 5,
-              "name": "CCSPlayer_PingServices"
-            },
-            "name": "CCSPlayer_PingServices*"
+            "category": 0,
+            "name": "float32"
           }
         },
         {
-          "name": "m_pViewModelServices",
+          "name": "m_flViewmodelOffsetY",
           "type": {
-            "category": 1,
-            "inner": {
-              "category": 5,
-              "name": "CPlayer_ViewModelServices"
-            },
-            "name": "CPlayer_ViewModelServices*"
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flViewmodelOffsetZ",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flViewmodelFOV",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_bIsWalking",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_fLastGivenDefuserTime",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_fLastGivenBombTime",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flDealtDamageToEnemyMostRecentTimestamp",
+          "type": {
+            "category": 0,
+            "name": "float32"
           }
         },
         {
@@ -15088,37 +15172,25 @@
           }
         },
         {
-          "name": "m_hOriginalController",
-          "type": {
-            "atomic": 1,
-            "category": 4,
-            "inner": {
-              "category": 5,
-              "name": "CCSPlayerController"
-            },
-            "name": "CHandle< CCSPlayerController >",
-            "outer": "CHandle"
-          }
-        },
-        {
-          "name": "m_blindUntilTime",
-          "type": {
-            "category": 5,
-            "name": "GameTime_t"
-          }
-        },
-        {
-          "name": "m_blindStartTime",
-          "type": {
-            "category": 5,
-            "name": "GameTime_t"
-          }
-        },
-        {
           "name": "m_allowAutoFollowTime",
           "type": {
             "category": 5,
             "name": "GameTime_t"
+          }
+        },
+        {
+          "name": "m_bResetArmorNextSpawn",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_nLastKillerIndex",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CEntityIndex"
           }
         },
         {
@@ -15136,85 +15208,7 @@
           }
         },
         {
-          "name": "m_iPlayerState",
-          "type": {
-            "category": 6,
-            "name": "CSPlayerState"
-          }
-        },
-        {
-          "name": "m_chickenIdleSoundTimer",
-          "type": {
-            "category": 5,
-            "name": "CountdownTimer"
-          }
-        },
-        {
-          "name": "m_chickenJumpSoundTimer",
-          "type": {
-            "category": 5,
-            "name": "CountdownTimer"
-          }
-        },
-        {
-          "name": "m_vecLastBookmarkedPosition",
-          "type": {
-            "atomic": 0,
-            "category": 4,
-            "name": "Vector"
-          }
-        },
-        {
-          "name": "m_flLastDistanceTraveledNotice",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
-          "name": "m_flAccumulatedDistanceTraveled",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
-          "name": "m_flLastFriendlyFireDamageReductionRatio",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
-          "name": "m_bRespawning",
-          "type": {
-            "category": 0,
-            "name": "bool"
-          }
-        },
-        {
-          "name": "m_nLastPickupPriority",
-          "type": {
-            "category": 0,
-            "name": "int32"
-          }
-        },
-        {
-          "name": "m_flLastPickupPriorityTime",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
           "name": "m_bIsScoped",
-          "type": {
-            "category": 0,
-            "name": "bool"
-          }
-        },
-        {
-          "name": "m_bIsWalking",
           "type": {
             "category": 0,
             "name": "bool"
@@ -15249,215 +15243,10 @@
           }
         },
         {
-          "name": "m_fImmuneToGunGameDamageTime",
-          "type": {
-            "category": 5,
-            "name": "GameTime_t"
-          }
-        },
-        {
-          "name": "m_bGunGameImmunity",
-          "type": {
-            "category": 0,
-            "name": "bool"
-          }
-        },
-        {
-          "name": "m_GunGameImmunityColor",
-          "type": {
-            "atomic": 0,
-            "category": 4,
-            "name": "Color"
-          }
-        },
-        {
-          "name": "m_fMolotovDamageTime",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
-          "name": "m_bHasMovedSinceSpawn",
-          "type": {
-            "category": 0,
-            "name": "bool"
-          }
-        },
-        {
-          "name": "m_bCanMoveDuringFreezePeriod",
-          "type": {
-            "category": 0,
-            "name": "bool"
-          }
-        },
-        {
-          "name": "m_flGuardianTooFarDistFrac",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
-          "name": "m_flNextGuardianTooFarHurtTime",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
-          "name": "m_flDetectedByEnemySensorTime",
-          "type": {
-            "category": 5,
-            "name": "GameTime_t"
-          }
-        },
-        {
-          "name": "m_flDealtDamageToEnemyMostRecentTimestamp",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
-          "name": "m_flLastEquippedHelmetTime",
-          "type": {
-            "category": 5,
-            "name": "GameTime_t"
-          }
-        },
-        {
-          "name": "m_flLastEquippedArmorTime",
-          "type": {
-            "category": 5,
-            "name": "GameTime_t"
-          }
-        },
-        {
-          "name": "m_nHeavyAssaultSuitCooldownRemaining",
-          "type": {
-            "category": 0,
-            "name": "int32"
-          }
-        },
-        {
-          "name": "m_bResetArmorNextSpawn",
-          "type": {
-            "category": 0,
-            "name": "bool"
-          }
-        },
-        {
-          "name": "m_flLastBumpMineBumpTime",
-          "type": {
-            "category": 5,
-            "name": "GameTime_t"
-          }
-        },
-        {
           "name": "m_flEmitSoundTime",
           "type": {
             "category": 5,
             "name": "GameTime_t"
-          }
-        },
-        {
-          "name": "m_iNumSpawns",
-          "type": {
-            "category": 0,
-            "name": "int32"
-          }
-        },
-        {
-          "name": "m_iShouldHaveCash",
-          "type": {
-            "category": 0,
-            "name": "int32"
-          }
-        },
-        {
-          "name": "m_flIdleTimeSinceLastAction",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
-          "name": "m_flNameChangeHistory",
-          "type": {
-            "category": 3,
-            "inner": {
-              "category": 0,
-              "name": "float32"
-            },
-            "name": "float32[5]"
-          }
-        },
-        {
-          "name": "m_fLastGivenDefuserTime",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
-          "name": "m_fLastGivenBombTime",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
-          "name": "m_bHasNightVision",
-          "type": {
-            "category": 0,
-            "name": "bool"
-          }
-        },
-        {
-          "name": "m_bNightVisionOn",
-          "type": {
-            "category": 0,
-            "name": "bool"
-          }
-        },
-        {
-          "name": "m_fNextRadarUpdateTime",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
-          "name": "m_flLastMoneyUpdateTime",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
-          "name": "m_MenuStringBuffer",
-          "type": {
-            "category": 3,
-            "inner": {
-              "category": 0,
-              "name": "char"
-            },
-            "name": "char[1024]"
-          }
-        },
-        {
-          "name": "m_fIntroCamTime",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
-          "name": "m_nMyCollisionGroup",
-          "type": {
-            "category": 0,
-            "name": "int32"
           }
         },
         {
@@ -15468,17 +15257,276 @@
           }
         },
         {
-          "name": "m_bKilledByTaser",
+          "name": "m_iBombSiteIndex",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CEntityIndex"
+          }
+        },
+        {
+          "name": "m_nWhichBombZone",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        },
+        {
+          "name": "m_bInBombZoneTrigger",
           "type": {
             "category": 0,
             "name": "bool"
           }
         },
         {
-          "name": "m_iMoveState",
+          "name": "m_bWasInBombZoneTrigger",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_iShotsFired",
           "type": {
             "category": 0,
             "name": "int32"
+          }
+        },
+        {
+          "name": "m_flFlinchStack",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flVelocityModifier",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flHitHeading",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_nHitBodyPart",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        },
+        {
+          "name": "m_vecTotalBulletForce",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector"
+          }
+        },
+        {
+          "name": "m_bWaitForNoAttack",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_ignoreLadderJumpTime",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_NumEnemiesKilledThisRound",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        },
+        {
+          "name": "m_bKilledByHeadshot",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_LastHitBox",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        },
+        {
+          "name": "m_LastHealth",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        },
+        {
+          "name": "m_pBot",
+          "type": {
+            "category": 1,
+            "inner": {
+              "category": 5,
+              "name": "CCSBot"
+            },
+            "name": "CCSBot*"
+          }
+        },
+        {
+          "name": "m_bBotAllowActive",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_thirdPersonHeading",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "QAngle"
+          }
+        },
+        {
+          "name": "m_flSlopeDropOffset",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flSlopeDropHeight",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_vHeadConstraintOffset",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector"
+          }
+        },
+        {
+          "name": "m_nLastPickupPriority",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        },
+        {
+          "name": "m_flLastPickupPriorityTime",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_ArmorValue",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        },
+        {
+          "name": "m_unCurrentEquipmentValue",
+          "type": {
+            "category": 0,
+            "name": "uint16"
+          }
+        },
+        {
+          "name": "m_unRoundStartEquipmentValue",
+          "type": {
+            "category": 0,
+            "name": "uint16"
+          }
+        },
+        {
+          "name": "m_unFreezetimeEndEquipmentValue",
+          "type": {
+            "category": 0,
+            "name": "uint16"
+          }
+        },
+        {
+          "name": "m_iLastWeaponFireUsercmd",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        },
+        {
+          "name": "m_flLastFriendlyFireDamageReductionRatio",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_bIsSpawning",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_iDeathFlags",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        },
+        {
+          "name": "m_bHasDeathInfo",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_flDeathInfoTime",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_vecDeathInfoOrigin",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector"
+          }
+        },
+        {
+          "name": "m_vecPlayerPatchEconIndices",
+          "type": {
+            "category": 3,
+            "inner": {
+              "category": 0,
+              "name": "uint32"
+            },
+            "name": "uint32[5]"
+          }
+        },
+        {
+          "name": "m_GunGameImmunityColor",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Color"
           }
         },
         {
@@ -15554,105 +15602,119 @@
             },
             "name": "Vector[2]"
           }
+        }
+      ],
+      "parent": "CCSPlayerPawnBase"
+    },
+    "CCSPlayerPawnAPI": {
+      "fields": []
+    },
+    "CCSPlayerPawnBase": {
+      "fields": [
+        {
+          "name": "m_CTouchExpansionComponent",
+          "type": {
+            "category": 5,
+            "name": "CTouchExpansionComponent"
+          }
         },
         {
-          "name": "m_bDiedAirborne",
+          "name": "m_pPingServices",
+          "type": {
+            "category": 1,
+            "inner": {
+              "category": 5,
+              "name": "CCSPlayer_PingServices"
+            },
+            "name": "CCSPlayer_PingServices*"
+          }
+        },
+        {
+          "name": "m_pViewModelServices",
+          "type": {
+            "category": 1,
+            "inner": {
+              "category": 5,
+              "name": "CPlayer_ViewModelServices"
+            },
+            "name": "CPlayer_ViewModelServices*"
+          }
+        },
+        {
+          "name": "m_blindUntilTime",
+          "type": {
+            "category": 5,
+            "name": "GameTime_t"
+          }
+        },
+        {
+          "name": "m_blindStartTime",
+          "type": {
+            "category": 5,
+            "name": "GameTime_t"
+          }
+        },
+        {
+          "name": "m_iPlayerState",
+          "type": {
+            "category": 6,
+            "name": "CSPlayerState"
+          }
+        },
+        {
+          "name": "m_bRespawning",
           "type": {
             "category": 0,
             "name": "bool"
           }
         },
         {
-          "name": "m_iBombSiteIndex",
+          "name": "m_fImmuneToGunGameDamageTime",
           "type": {
-            "atomic": 0,
-            "category": 4,
-            "name": "CEntityIndex"
+            "category": 5,
+            "name": "GameTime_t"
           }
         },
         {
-          "name": "m_nWhichBombZone",
-          "type": {
-            "category": 0,
-            "name": "int32"
-          }
-        },
-        {
-          "name": "m_bInBombZoneTrigger",
+          "name": "m_bGunGameImmunity",
           "type": {
             "category": 0,
             "name": "bool"
           }
         },
         {
-          "name": "m_bWasInBombZoneTrigger",
+          "name": "m_fMolotovDamageTime",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_bHasMovedSinceSpawn",
           "type": {
             "category": 0,
             "name": "bool"
           }
         },
         {
-          "name": "m_iDirection",
+          "name": "m_iNumSpawns",
           "type": {
             "category": 0,
             "name": "int32"
           }
         },
         {
-          "name": "m_iShotsFired",
-          "type": {
-            "category": 0,
-            "name": "int32"
-          }
-        },
-        {
-          "name": "m_ArmorValue",
-          "type": {
-            "category": 0,
-            "name": "int32"
-          }
-        },
-        {
-          "name": "m_flFlinchStack",
+          "name": "m_flIdleTimeSinceLastAction",
           "type": {
             "category": 0,
             "name": "float32"
           }
         },
         {
-          "name": "m_flVelocityModifier",
+          "name": "m_fNextRadarUpdateTime",
           "type": {
             "category": 0,
             "name": "float32"
-          }
-        },
-        {
-          "name": "m_flHitHeading",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
-          "name": "m_nHitBodyPart",
-          "type": {
-            "category": 0,
-            "name": "int32"
-          }
-        },
-        {
-          "name": "m_iHostagesKilled",
-          "type": {
-            "category": 0,
-            "name": "int32"
-          }
-        },
-        {
-          "name": "m_vecTotalBulletForce",
-          "type": {
-            "atomic": 0,
-            "category": 4,
-            "name": "Vector"
           }
         },
         {
@@ -15684,151 +15746,11 @@
           }
         },
         {
-          "name": "m_bWaitForNoAttack",
-          "type": {
-            "category": 0,
-            "name": "bool"
-          }
-        },
-        {
-          "name": "m_flLowerBodyYawTarget",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
-          "name": "m_bStrafing",
-          "type": {
-            "category": 0,
-            "name": "bool"
-          }
-        },
-        {
-          "name": "m_lastStandingPos",
-          "type": {
-            "atomic": 0,
-            "category": 4,
-            "name": "Vector"
-          }
-        },
-        {
-          "name": "m_ignoreLadderJumpTime",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
-          "name": "m_ladderSurpressionTimer",
-          "type": {
-            "category": 5,
-            "name": "CountdownTimer"
-          }
-        },
-        {
-          "name": "m_lastLadderNormal",
-          "type": {
-            "atomic": 0,
-            "category": 4,
-            "name": "Vector"
-          }
-        },
-        {
-          "name": "m_lastLadderPos",
-          "type": {
-            "atomic": 0,
-            "category": 4,
-            "name": "Vector"
-          }
-        },
-        {
-          "name": "m_thirdPersonHeading",
-          "type": {
-            "atomic": 0,
-            "category": 4,
-            "name": "QAngle"
-          }
-        },
-        {
-          "name": "m_flSlopeDropOffset",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
-          "name": "m_flSlopeDropHeight",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
-          "name": "m_vHeadConstraintOffset",
-          "type": {
-            "atomic": 0,
-            "category": 4,
-            "name": "Vector"
-          }
-        },
-        {
-          "name": "m_iLastWeaponFireUsercmd",
-          "type": {
-            "category": 0,
-            "name": "int32"
-          }
-        },
-        {
           "name": "m_angEyeAngles",
           "type": {
             "atomic": 0,
             "category": 4,
             "name": "QAngle"
-          }
-        },
-        {
-          "name": "m_bVCollisionInitted",
-          "type": {
-            "category": 0,
-            "name": "bool"
-          }
-        },
-        {
-          "name": "m_storedSpawnPosition",
-          "type": {
-            "atomic": 0,
-            "category": 4,
-            "name": "Vector"
-          }
-        },
-        {
-          "name": "m_storedSpawnAngle",
-          "type": {
-            "atomic": 0,
-            "category": 4,
-            "name": "QAngle"
-          }
-        },
-        {
-          "name": "m_bIsSpawning",
-          "type": {
-            "category": 0,
-            "name": "bool"
-          }
-        },
-        {
-          "name": "m_bHideTargetID",
-          "type": {
-            "category": 0,
-            "name": "bool"
-          }
-        },
-        {
-          "name": "m_nNumDangerZoneDamageHits",
-          "type": {
-            "category": 0,
-            "name": "int32"
           }
         },
         {
@@ -15846,71 +15768,6 @@
           }
         },
         {
-          "name": "m_nLastKillerIndex",
-          "type": {
-            "atomic": 0,
-            "category": 4,
-            "name": "CEntityIndex"
-          }
-        },
-        {
-          "name": "m_nLastConcurrentKilled",
-          "type": {
-            "category": 0,
-            "name": "int32"
-          }
-        },
-        {
-          "name": "m_nDeathCamMusic",
-          "type": {
-            "category": 0,
-            "name": "int32"
-          }
-        },
-        {
-          "name": "m_iAddonBits",
-          "type": {
-            "category": 0,
-            "name": "int32"
-          }
-        },
-        {
-          "name": "m_iPrimaryAddon",
-          "type": {
-            "category": 0,
-            "name": "int32"
-          }
-        },
-        {
-          "name": "m_iSecondaryAddon",
-          "type": {
-            "category": 0,
-            "name": "int32"
-          }
-        },
-        {
-          "name": "m_currentDeafnessFilter",
-          "type": {
-            "atomic": 0,
-            "category": 4,
-            "name": "CUtlStringToken"
-          }
-        },
-        {
-          "name": "m_NumEnemiesKilledThisSpawn",
-          "type": {
-            "category": 0,
-            "name": "int32"
-          }
-        },
-        {
-          "name": "m_NumEnemiesKilledThisRound",
-          "type": {
-            "category": 0,
-            "name": "int32"
-          }
-        },
-        {
           "name": "m_NumEnemiesAtRoundStart",
           "type": {
             "category": 0,
@@ -15922,24 +15779,6 @@
           "type": {
             "category": 0,
             "name": "bool"
-          }
-        },
-        {
-          "name": "m_vecPlayerPatchEconIndices",
-          "type": {
-            "category": 3,
-            "inner": {
-              "category": 0,
-              "name": "uint32"
-            },
-            "name": "uint32[5]"
-          }
-        },
-        {
-          "name": "m_iDeathFlags",
-          "type": {
-            "category": 0,
-            "name": "int32"
           }
         },
         {
@@ -15955,113 +15794,23 @@
           }
         },
         {
-          "name": "m_unCurrentEquipmentValue",
-          "type": {
-            "category": 0,
-            "name": "uint16"
-          }
-        },
-        {
-          "name": "m_unRoundStartEquipmentValue",
-          "type": {
-            "category": 0,
-            "name": "uint16"
-          }
-        },
-        {
-          "name": "m_unFreezetimeEndEquipmentValue",
-          "type": {
-            "category": 0,
-            "name": "uint16"
-          }
-        },
-        {
-          "name": "m_nSurvivalTeamNumber",
-          "type": {
-            "category": 0,
-            "name": "int32"
-          }
-        },
-        {
-          "name": "m_bHasDeathInfo",
-          "type": {
-            "category": 0,
-            "name": "bool"
-          }
-        },
-        {
-          "name": "m_flDeathInfoTime",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
-          "name": "m_vecDeathInfoOrigin",
-          "type": {
-            "atomic": 0,
-            "category": 4,
-            "name": "Vector"
-          }
-        },
-        {
-          "name": "m_bKilledByHeadshot",
-          "type": {
-            "category": 0,
-            "name": "bool"
-          }
-        },
-        {
-          "name": "m_LastHitBox",
-          "type": {
-            "category": 0,
-            "name": "int32"
-          }
-        },
-        {
-          "name": "m_LastHealth",
-          "type": {
-            "category": 0,
-            "name": "int32"
-          }
-        },
-        {
-          "name": "m_flLastCollisionCeiling",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
-          "name": "m_flLastCollisionCeilingChangeTime",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
-          "name": "m_pBot",
-          "type": {
-            "category": 1,
-            "inner": {
-              "category": 5,
-              "name": "CCSBot"
-            },
-            "name": "CCSBot*"
-          }
-        },
-        {
-          "name": "m_bBotAllowActive",
-          "type": {
-            "category": 0,
-            "name": "bool"
-          }
-        },
-        {
           "name": "m_bCommittingSuicideOnTeamChange",
           "type": {
             "category": 0,
             "name": "bool"
+          }
+        },
+        {
+          "name": "m_hOriginalController",
+          "type": {
+            "atomic": 1,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "CCSPlayerController"
+            },
+            "name": "CHandle< CCSPlayerController >",
+            "outer": "CHandle"
           }
         }
       ],
@@ -16689,13 +16438,6 @@
           }
         },
         {
-          "name": "m_flTimeStartedHoldingUse",
-          "type": {
-            "category": 5,
-            "name": "GameTime_t"
-          }
-        },
-        {
           "name": "m_flTimeLastUsedWindow",
           "type": {
             "category": 5,
@@ -16861,6 +16603,13 @@
         },
         {
           "name": "m_bDisableAutoDeploy",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_bIsPickingUpGroundWeapon",
           "type": {
             "category": 0,
             "name": "bool"
@@ -17330,6 +17079,20 @@
           "type": {
             "category": 0,
             "name": "int32"
+          }
+        },
+        {
+          "name": "m_iMostRecentTeamNumber",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        },
+        {
+          "name": "m_bDroppedNearBuyZone",
+          "type": {
+            "category": 0,
+            "name": "bool"
           }
         },
         {
@@ -19987,9 +19750,9 @@
             "category": 4,
             "inner": {
               "category": 5,
-              "name": "CCSPlayerPawnBase"
+              "name": "CCSPlayerPawn"
             },
-            "name": "CHandle< CCSPlayerPawnBase >",
+            "name": "CHandle< CCSPlayerPawn >",
             "outer": "CHandle"
           }
         },
@@ -20000,9 +19763,9 @@
             "category": 4,
             "inner": {
               "category": 5,
-              "name": "CCSPlayerPawnBase"
+              "name": "CCSPlayerPawn"
             },
-            "name": "CHandle< CCSPlayerPawnBase >",
+            "name": "CHandle< CCSPlayerPawn >",
             "outer": "CHandle"
           }
         },
@@ -30200,8 +29963,7 @@
               "category": 5,
               "name": "CCSPlayerPawnBase"
             },
-            "name": "CHandle< CCSPlayerPawnBase >",
-            "outer": "CHandle"
+            "name": "CHandle< CCSPlayerPawnBase >"
           }
         },
         {
@@ -57600,6 +57362,13 @@
             "category": 5,
             "name": "GameTime_t"
           }
+        },
+        {
+          "name": "m_nLastAttackTick",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
         }
       ],
       "parent": "CCSWeaponBaseGun"
@@ -71832,7 +71601,7 @@
               "category": 0,
               "name": "char"
             },
-            "name": "char[260]"
+            "name": "char[4096]"
           }
         },
         {
@@ -98740,7 +98509,7 @@
         },
         {
           "name": "ALL_CONTEXTS",
-          "value": 18446744073708503040
+          "value": 4293918720
         },
         {
           "name": "ALL_SCENTS",
@@ -100057,6 +99826,10 @@
         {
           "name": "eUserInitiatedSwitchToLast",
           "value": 2
+        },
+        {
+          "name": "eUserInitiatedSwitchHands",
+          "value": 3
         }
       ]
     },

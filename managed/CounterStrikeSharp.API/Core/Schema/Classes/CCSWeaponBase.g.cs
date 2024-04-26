@@ -194,6 +194,14 @@ public partial class CCSWeaponBase : CBasePlayerWeapon
 	[SchemaMember("CCSWeaponBase", "m_iOriginalTeamNumber")]
 	public ref Int32 OriginalTeamNumber => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_iOriginalTeamNumber");
 
+	// m_iMostRecentTeamNumber
+	[SchemaMember("CCSWeaponBase", "m_iMostRecentTeamNumber")]
+	public ref Int32 MostRecentTeamNumber => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_iMostRecentTeamNumber");
+
+	// m_bDroppedNearBuyZone
+	[SchemaMember("CCSWeaponBase", "m_bDroppedNearBuyZone")]
+	public ref bool DroppedNearBuyZone => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bDroppedNearBuyZone");
+
 	// m_flNextAttackRenderTimeOffset
 	[SchemaMember("CCSWeaponBase", "m_flNextAttackRenderTimeOffset")]
 	public ref float NextAttackRenderTimeOffset => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flNextAttackRenderTimeOffset");
