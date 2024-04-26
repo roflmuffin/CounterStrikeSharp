@@ -24,9 +24,8 @@
 #include "schema.h"
 #include "core/function.h"
 #include "core/coreconfig.h"
-#include "interfaces/cschemasystem.h"
-#include "core/cs2_sdk/interfaces/cschemasystem.h"
 #include "interfaces/cs2_interfaces.h"
+#include <schemasystem.h>
 
 namespace counterstrikesharp {
 
@@ -59,13 +58,13 @@ int GetSchemaClassSize(ScriptContext& script_context)
     auto className = script_context.GetArgument<const char*>(0);
 
     CSchemaSystemTypeScope* pType =
-        interfaces::pSchemaSystem->FindTypeScopeForModule(MODULE_PREFIX "server" MODULE_EXT);
+        globals::schemaSystem->FindTypeScopeForModule(MODULE_PREFIX "server" MODULE_EXT);
 
-    SchemaClassInfoData_t* pClassInfo = pType->FindDeclaredClass(className);
+    SchemaClassInfoData_t* pClassInfo = pType->FindDeclaredClass(className).Get();
     if (!pClassInfo)
         return -1;
 
-    return pClassInfo->m_size;
+    return pClassInfo->m_nSize;
 }
 
 void GetSchemaValueByName(ScriptContext& script_context)

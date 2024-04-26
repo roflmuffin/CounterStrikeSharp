@@ -30,11 +30,14 @@
 #include <Psapi.h>
 #endif
 
-#include <cstdio>
+#include "gameconfig.h"
 
+#include <cstdio>
 #include "memory_module.h"
 #include "metamod_oslink.h"
 #include "wchartypes.h"
+
+#include <vector>
 
 #if __linux__
 struct ModuleInfo {
@@ -118,29 +121,13 @@ int GetModuleInformation(void *hModule, void **base, size_t *length) {
 }
 #endif
 
-byte *ConvertToByteArray(const char *str, size_t *outLength) {
-    size_t len = strlen(str) / 4;  // Every byte is represented as \xHH
-    byte *result = (byte *)malloc(len);
-
-    for (size_t i = 0, j = 0; i < len; ++i, j += 4) {
-        sscanf(str + j, "\\x%2hhx", &result[i]);
-    }
-
-    *outLength = len;
-    return result;
-}
-
-
 void* FindSignature(const char* moduleName, const char* bytesStr) {
-    size_t iSigLength;
-    auto sigBytes = ConvertToByteArray(bytesStr, &iSigLength);
-
     auto module = dlmount(moduleName);
     if (module == nullptr) {
         return nullptr;
     }
 
-    void *moduleBase;
+    void* moduleBase;
     size_t moduleSize;
 #if __linux__
     if (GetModuleInformation(module, &moduleBase, &moduleSize) != 0) {
@@ -154,18 +141,30 @@ void* FindSignature(const char* moduleName, const char* bytesStr) {
     moduleSize = m_hModuleInfo.SizeOfImage;
 #endif
 
-    unsigned char *pMemory;
-    void *returnAddr = nullptr;
+    auto sigBytes = counterstrikesharp::CGameConfig::HexToByte(bytesStr);
 
-    pMemory = (byte *)moduleBase;
+    if (sigBytes.empty()) {
+        return nullptr;
+    }
 
-    for (size_t i = 0; i < moduleSize; i++) {
-        size_t matches = 0;
-        while (*(pMemory + i + matches) == sigBytes[matches] || sigBytes[matches] == '\x2A') {
-            matches++;
-            if (matches == iSigLength) {
-                returnAddr = (void *)(pMemory + i);
-            }
+    void* returnAddr = nullptr;
+
+    const auto first_byte = sigBytes[0];
+
+    auto pMemory = (byte*)moduleBase;
+    std::uint8_t* end = pMemory + moduleSize - sigBytes.size();
+
+    for (std::uint8_t* current = pMemory; current <= end; ++current) {
+        if (first_byte != -1)
+            current = std::find(current, end, first_byte);
+
+        if (current == end) {
+            break;
+        }
+
+        if (std::equal(sigBytes.begin() + 1, sigBytes.end(), current + 1,
+                           [](auto opt, auto byte) { return opt == -1 || opt == byte; })) {
+            return current;
         }
     }
 

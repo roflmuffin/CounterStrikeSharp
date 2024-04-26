@@ -70,7 +70,6 @@ SET(SOURCE_FILES
     src/core/memory_module.h
     src/core/memory_module.cpp
     src/core/cs2_sdk/interfaces/cgameresourceserviceserver.h
-    src/core/cs2_sdk/interfaces/cschemasystem.h
     src/core/cs2_sdk/interfaces/cs2_interfaces.h
     src/core/cs2_sdk/interfaces/cs2_interfaces.cpp
     src/core/cs2_sdk/schema.h

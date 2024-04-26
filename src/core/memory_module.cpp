@@ -41,29 +41,35 @@ void* CModule::FindSignature(const char* signature)
         return nullptr;
     }
 
-    size_t iSigLength = 0;
-    byte* pData = CGameConfig::HexToByte(signature, iSigLength);
+    auto pData = CGameConfig::HexToByte(signature);
+    if (pData.empty()) [[unlikely]]
+        return nullptr;
 
-    return this->FindSignature(pData, iSigLength);
+    return this->FindSignature(pData);
 }
 
-void* CModule::FindSignature(const byte* pData, size_t iSigLength)
+void* CModule::FindSignature(const std::vector<int16_t>& sigBytes)
 {
-    unsigned char* pMemory;
-    void* return_addr = nullptr;
+    const auto first_byte = sigBytes[0];
 
-    pMemory = (byte*)m_base;
+    auto pMemory = (std::uint8_t*)m_base;
+    std::uint8_t* end = pMemory + m_size - sigBytes.size();
 
-    for (size_t i = 0; i < m_size; i++) {
-        size_t Matches = 0;
-        while (*(pMemory + i + Matches) == pData[Matches] || pData[Matches] == '\x2A') {
-            Matches++;
-            if (Matches == iSigLength)
-                return_addr = (void*)(pMemory + i);
+    for (std::uint8_t* current = pMemory; current <= end; ++current) {
+        if (first_byte != -1)
+            current = std::find(current, end, first_byte);
+
+        if (current == end) {
+            break;
+        }
+
+        if (std::equal(sigBytes.begin() + 1, sigBytes.end(), current + 1,
+                       [](auto opt, auto byte) { return opt == -1 || opt == byte; })) {
+            return current;
         }
     }
 
-    return return_addr;
+    return nullptr;
 }
 
 void* CModule::FindInterface(const char* name)

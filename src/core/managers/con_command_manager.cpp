@@ -38,11 +38,12 @@
 
 #include "scripting/callback_manager.h"
 #include "core/log.h"
-#include "core/cs2_sdk/interfaces/cschemasystem.h"
 #include "core/utils.h"
 #include "core/memory.h"
 #include "interfaces/cs2_interfaces.h"
+#include <schematypes.h>
 #include <nlohmann/json.hpp>
+#include <schemasystem.h>
 
 #include "metamod_oslink.h"
 using json = nlohmann::json;
@@ -51,26 +52,35 @@ namespace counterstrikesharp {
 
 json WriteTypeJson(json obj, CSchemaType* current_type)
 {
-    obj["name"] = current_type->m_name_;
-    obj["category"] = current_type->type_category;
+    obj["name"] = current_type->m_sTypeName.Get();
+    obj["category"] = current_type->m_eTypeCategory;
 
-    if (current_type->type_category == Schema_Atomic) {
-        obj["atomic"] = current_type->atomic_category;
+    if (current_type->m_eTypeCategory == SCHEMA_TYPE_ATOMIC) {
+        obj["atomic"] = current_type->m_eAtomicCategory;
 
-        if (current_type->atomic_category == Atomic_T &&
-            current_type->m_atomic_t_.generic_type != nullptr) {
-            obj["outer"] = current_type->m_atomic_t_.generic_type->m_name_;
+        if (current_type->m_eAtomicCategory == SCHEMA_ATOMIC_T) {
+            auto atomicTType = static_cast<CSchemaType_Atomic_T*>(current_type);
+
+            if (atomicTType->m_pAtomicInfo != nullptr) {
+                obj["outer"] = atomicTType->m_pAtomicInfo->m_pszName1;
+            }
         }
 
-        if (current_type->atomic_category == Atomic_T ||
-            current_type->atomic_category == Atomic_CollectionOfT) {
-            obj["inner"] =
-                WriteTypeJson(json::object(), current_type->m_atomic_t_.template_typename);
+        if (current_type->m_eAtomicCategory == SCHEMA_ATOMIC_T ||
+            current_type->m_eAtomicCategory == SCHEMA_ATOMIC_COLLECTION_OF_T) {
+
+            auto atomicType = static_cast<CSchemaType_Atomic_T*>(current_type);
+
+            if (atomicType->GetInnerType().Get() != nullptr) {
+                obj["inner"] = WriteTypeJson(json::object(), atomicType->GetInnerType().Get());
+            }
         }
-    } else if (current_type->type_category == Schema_FixedArray) {
-        obj["inner"] = WriteTypeJson(json::object(), current_type->m_array_.element_type_);
-    } else if (current_type->type_category == Schema_Ptr) {
-        obj["inner"] = WriteTypeJson(json::object(), current_type->m_schema_type_);
+    } else if (current_type->m_eTypeCategory == SCHEMA_TYPE_FIXED_ARRAY) {
+        auto fixedArrayType = static_cast<CSchemaType_FixedArray*>(current_type);
+        obj["inner"] = WriteTypeJson(json::object(), fixedArrayType->m_pElementType);
+    } else if (current_type->m_eTypeCategory == SCHEMA_TYPE_PTR) {
+        auto ptrType = static_cast<CSchemaType_Ptr*>(current_type);
+        obj["inner"] = WriteTypeJson(json::object(), ptrType->m_pObjectType);
     }
 
     return obj;
@@ -102,53 +112,53 @@ CON_COMMAND(dump_schema, "dump schema symbols")
     }
 
     CSchemaSystemTypeScope* pType =
-        interfaces::pSchemaSystem->FindTypeScopeForModule(MODULE_PREFIX "server" MODULE_EXT);
+        globals::schemaSystem->FindTypeScopeForModule(MODULE_PREFIX "server" MODULE_EXT);
 
     json j;
     j["classes"] = json::object();
     j["enums"] = json::object();
 
     for (const auto& line : classNames) {
-        SchemaClassInfoData_t* pClassInfo = pType->FindDeclaredClass(line.c_str());
+        auto* pClassInfo = pType->FindDeclaredClass(line.c_str()).Get();
         if (!pClassInfo)
             continue;
 
-        short fieldsSize = pClassInfo->m_align;
-        SchemaClassFieldData_t* pFields = pClassInfo->m_fields;
+        short fieldsSize = pClassInfo->m_nFieldCount;
+        SchemaClassFieldData_t* pFields = pClassInfo->m_pFields;
 
-        j["classes"][pClassInfo->m_name] = json::object();
-        if (pClassInfo->m_schema_parent) {
-            j["classes"][pClassInfo->m_name]["parent"] =
-                pClassInfo->m_schema_parent->m_class->m_name;
+        j["classes"][pClassInfo->m_pszName] = json::object();
+        if (pClassInfo->m_pBaseClasses) {
+            j["classes"][pClassInfo->m_pszName]["parent"] =
+                pClassInfo->m_pBaseClasses->m_pClass->m_pszName;
         }
 
-        j["classes"][pClassInfo->m_name]["fields"] = json::array();
+        j["classes"][pClassInfo->m_pszName]["fields"] = json::array();
 
         for (int i = 0; i < fieldsSize; ++i) {
             SchemaClassFieldData_t& field = pFields[i];
 
-            j["classes"][pClassInfo->m_name]["fields"].push_back({
-                {"name", field.m_name},
-                {"type", WriteTypeJson(json::object(), field.m_type)},
+            j["classes"][pClassInfo->m_pszName]["fields"].push_back({
+                {"name", field.m_pszName},
+                {"type", WriteTypeJson(json::object(), field.m_pType)},
             });
         }
     }
 
     for (const auto& line : enumNames) {
-        auto* pEnumInfo = pType->FindDeclaredEnum(line.c_str());
+        auto* pEnumInfo = pType->FindDeclaredEnum(line.c_str()).Get();
         if (!pEnumInfo)
             continue;
 
-        j["enums"][pEnumInfo->m_binding_name_] = json::object();
-        j["enums"][pEnumInfo->m_binding_name_]["align"] = pEnumInfo->m_align_;
-        j["enums"][pEnumInfo->m_binding_name_]["items"] = json::array();
+        j["enums"][pEnumInfo->m_pszName] = json::object();
+        j["enums"][pEnumInfo->m_pszName]["align"] = pEnumInfo->m_nSize;
+        j["enums"][pEnumInfo->m_pszName]["items"] = json::array();
 
-        for (int i = 0; i < pEnumInfo->m_size_; ++i) {
-            auto& field = pEnumInfo->m_enum_info_[i];
+        for (int i = 0; i < pEnumInfo->m_nEnumeratorCount; ++i) {
+            auto& field = pEnumInfo->m_pEnumerators[i];
 
-            j["enums"][pEnumInfo->m_binding_name_]["items"].push_back({
-                {"name", field.m_name},
-                {"value", field.m_value},
+            j["enums"][pEnumInfo->m_pszName]["items"].push_back({
+                {"name", field.m_pszName},
+                {"value", field.m_nValue},
             });
         }
     }
