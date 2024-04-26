@@ -486,6 +486,10 @@ public partial class CCSGameRules : CTeamplayRules
 	[SchemaMember("CCSGameRules", "m_numQueuedMatchmakingAccounts")]
 	public ref UInt32 NumQueuedMatchmakingAccounts => ref Schema.GetRef<UInt32>(this.Handle, "CCSGameRules", "m_numQueuedMatchmakingAccounts");
 
+	// m_fAvgPlayerRank
+	[SchemaMember("CCSGameRules", "m_fAvgPlayerRank")]
+	public ref float AvgPlayerRank => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_fAvgPlayerRank");
+
 	// m_pQueuedMatchmakingReservationString
 	[SchemaMember("CCSGameRules", "m_pQueuedMatchmakingReservationString")]
 	public string QueuedMatchmakingReservationString
