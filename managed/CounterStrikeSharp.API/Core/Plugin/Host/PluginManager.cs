@@ -36,7 +36,7 @@ public class PluginManager : IPluginManager
             config => { config.PreferSharedTypes = true; });
         var assembly = loader.LoadDefaultAssembly();
 
-        _sharedAssemblies[assembly.GetName().FullName] = assembly;
+        _sharedAssemblies[assembly.GetName().Name] = assembly;
     }
 
     private void LoadSharedLibraries()
@@ -76,7 +76,7 @@ public class PluginManager : IPluginManager
                 _loadedSharedLibs = true;
             }
 
-            if (!_sharedAssemblies.TryGetValue(name.FullName, out var assembly))
+            if (!_sharedAssemblies.TryGetValue(name.Name, out var assembly))
             {
                 return null;
             }
