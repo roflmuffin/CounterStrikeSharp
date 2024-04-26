@@ -4646,6 +4646,14 @@ namespace CounterStrikeSharp.API.Core
                     get => Get<int>("hitgroup");
                     set => Set<int>("hitgroup", value);
                 }
+
+                
+                // attacker was in midair
+                public bool Attackerinair 
+                {
+                    get => Get<bool>("attackerinair");
+                    set => Set<bool>("attackerinair", value);
+                }
             }
 
             [EventName("player_decal")]
