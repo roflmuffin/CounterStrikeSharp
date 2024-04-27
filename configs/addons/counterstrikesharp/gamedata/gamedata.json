@@ -81,6 +81,12 @@
       "linux": "\\x48\\x85\\xF6\\x0F\\x84\\x2A\\x2A\\x2A\\x2A\\x55\\x31\\xC9\\x48\\x89\\xE5\\x41\\x55\\x49\\x89\\xFD"
     }
   },
+  "CCSPlayer_ItemServices_GiveNamedItem": {
+    "offsets": {
+      "windows": 17,
+      "linux": 18
+    }
+  },
   "CCSPlayer_ItemServices_DropActivePlayerWeapon": {
     "offsets": {
       "windows": 18,

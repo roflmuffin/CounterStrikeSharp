@@ -16,17 +16,22 @@ public partial class CCSPlayerController
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
     public IntPtr GiveNamedItem(string item)
     {
-        Guard.IsValidEntity(this);
-
-        if (!PlayerPawn.IsValid) return 0;
-        if (PlayerPawn.Value == null) return 0;
-        if (!PlayerPawn.Value.IsValid) return 0;
-        if (PlayerPawn.Value.ItemServices == null) return 0;
-
-        return VirtualFunctions.GiveNamedItem(PlayerPawn.Value.ItemServices.Handle, item, 0, 0, 0, 0);
+        return GiveNamedItem<CEntityInstance>(item)?.Handle ?? IntPtr.Zero;
     }
 
-    public IntPtr GiveNamedItem(CsItem item) 
+    public T? GiveNamedItem<T>(string item) where T : CEntityInstance
+    {
+        Guard.IsValidEntity(this);
+
+        if (!PlayerPawn.IsValid) return null;
+        if (PlayerPawn.Value == null) return null;;
+        if (!PlayerPawn.Value.IsValid) return null;
+        if (PlayerPawn.Value.ItemServices == null) return null;
+
+        return PlayerPawn.Value.ItemServices.As<CCSPlayer_ItemServices>().GiveNamedItem<T>(item);
+    }
+
+    public IntPtr GiveNamedItem(CsItem item)
     {
         string? itemString = EnumUtils.GetEnumMemberAttributeValue(item);
         if (string.IsNullOrWhiteSpace(itemString))
@@ -94,7 +99,7 @@ public partial class CCSPlayerController
 
         CCSPlayer_ItemServices itemServices = new CCSPlayer_ItemServices(PlayerPawn.Value.ItemServices.Handle);
         CCSPlayer_WeaponServices weaponServices = new CCSPlayer_WeaponServices(PlayerPawn.Value.WeaponServices.Handle);
-        
+
         itemServices.DropActivePlayerWeapon(weaponServices.ActiveWeapon.Value);
     }
 
