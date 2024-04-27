@@ -31,7 +31,7 @@ public partial class CBaseIssue : NativeObject
 	public string DetailsString
 	{
 		get { return Schema.GetString(this.Handle, "CBaseIssue", "m_szDetailsString"); }
-		set { Schema.SetStringBytes(this.Handle, "CBaseIssue", "m_szDetailsString", value, 260); }
+		set { Schema.SetStringBytes(this.Handle, "CBaseIssue", "m_szDetailsString", value, 4096); }
 	}
 
 	// m_iNumYesVotes
