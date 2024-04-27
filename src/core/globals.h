@@ -8,6 +8,8 @@
 
 #include <thread>
 
+#include <memory>
+
 #include "ISmmAPI.h"
 #include "eiface.h"
 #include "iserver.h"
@@ -130,6 +132,11 @@ CGlobalVars *getGlobalVars();
 
 namespace modules {
 class CModule;
+
+void Initialize();
+CModule* GetModuleByName(std::string name);
+
+extern std::vector<std::unique_ptr<CModule>> moduleList;
 
 extern CModule *engine;
 extern CModule *tier0;

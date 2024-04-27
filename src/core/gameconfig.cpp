@@ -157,19 +157,15 @@ void* CGameConfig::ResolveSignature(const char* name)
             CSSHARP_CORE_ERROR("Invalid symbol for {}\n", name);
             return nullptr;
         }
-        address = dlsym((*module)->m_hModule, symbol);
+        address = (*module)->FindSymbol(symbol);
     } else {
         const char* signature = this->GetSignature(name);
         if (!signature) {
             CSSHARP_CORE_ERROR("Failed to find signature for {}\n", name);
             return nullptr;
         }
-        size_t iLength = 0;
-        auto pSignature = HexToByte(signature);
-        if (pSignature.empty()) {
-            return nullptr;
-        }
-        address = (*module)->FindSignature(pSignature);
+
+        address = (*module)->FindSignature(signature);
     }
 
     if (!address) {
@@ -233,6 +229,10 @@ std::vector<int16_t> CGameConfig::HexToByte(std::string_view src)
         if (byte.starts_with(wildcard)) {
             result.emplace_back(-1);
             continue;
+        }
+
+        if (byte.size() < 2) [[unlikely]] {
+            return {};
         }
 
         const auto high = hex_char_to_byte(byte[0]);
