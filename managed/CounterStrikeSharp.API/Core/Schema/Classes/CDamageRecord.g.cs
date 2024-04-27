@@ -20,11 +20,11 @@ public partial class CDamageRecord : NativeObject
 
 	// m_PlayerDamager
 	[SchemaMember("CDamageRecord", "m_PlayerDamager")]
-	public CHandle<CCSPlayerPawnBase> PlayerDamager => Schema.GetDeclaredClass<CHandle<CCSPlayerPawnBase>>(this.Handle, "CDamageRecord", "m_PlayerDamager");
+	public CHandle<CCSPlayerPawn> PlayerDamager => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CDamageRecord", "m_PlayerDamager");
 
 	// m_PlayerRecipient
 	[SchemaMember("CDamageRecord", "m_PlayerRecipient")]
-	public CHandle<CCSPlayerPawnBase> PlayerRecipient => Schema.GetDeclaredClass<CHandle<CCSPlayerPawnBase>>(this.Handle, "CDamageRecord", "m_PlayerRecipient");
+	public CHandle<CCSPlayerPawn> PlayerRecipient => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CDamageRecord", "m_PlayerRecipient");
 
 	// m_hPlayerControllerDamager
 	[SchemaMember("CDamageRecord", "m_hPlayerControllerDamager")]

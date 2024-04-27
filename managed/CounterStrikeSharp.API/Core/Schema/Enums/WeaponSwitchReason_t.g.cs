@@ -11,4 +11,5 @@ public enum WeaponSwitchReason_t : uint
 	eDrawn = 0x0,
 	eEquipped = 0x1,
 	eUserInitiatedSwitchToLast = 0x2,
+	eUserInitiatedSwitchHands = 0x3,
 }
