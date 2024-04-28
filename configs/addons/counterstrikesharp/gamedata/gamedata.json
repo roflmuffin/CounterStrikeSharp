@@ -2,22 +2,22 @@
   "UTIL_ClientPrintAll": {
     "signatures": {
       "library": "server",
-      "windows": "\\x48\\x89\\x5C\\x24\\x08\\x48\\x89\\x6C\\x24\\x10\\x48\\x89\\x74\\x24\\x18\\x57\\x48\\x81\\xEC\\x70\\x01\\x2A\\x2A\\x8B\\xE9",
-      "linux": "\\x55\\x48\\x89\\xE5\\x41\\x57\\x49\\x89\\xD7\\x41\\x56\\x49\\x89\\xF6\\x41\\x55\\x41\\x89\\xFD"
+      "windows": "48 89 5C 24 08 48 89 6C 24 10 48 89 74 24 18 57 48 81 EC 70 01 ? ? 8B E9",
+      "linux": "55 48 89 E5 41 57 49 89 D7 41 56 49 89 F6 41 55 41 89 FD"
     }
   },
   "ClientPrint": {
     "signatures": {
       "library": "server",
-      "windows": "\\x48\\x85\\xC9\\x0F\\x84\\x2A\\x2A\\x2A\\x2A\\x48\\x8B\\xC4\\x48\\x89\\x58\\x18",
-      "linux": "\\x55\\x48\\x89\\xE5\\x41\\x57\\x49\\x89\\xCF\\x41\\x56\\x49\\x89\\xD6\\x41\\x55\\x41\\x89\\xF5\\x41\\x54\\x4C\\x8D\\xA5\\xA0\\xFE\\xFF\\xFF"
+      "windows": "48 85 C9 0F 84 ? ? ? ? 48 8B C4 48 89 58 18",
+      "linux": "55 48 89 E5 41 57 49 89 CF 41 56 49 89 D6 41 55 41 89 F5 41 54 4C 8D A5 A0 FE FF FF"
     }
   },
   "CCSPlayerController_SwitchTeam": {
     "signatures": {
       "library": "server",
-      "windows": "\\x40\\x56\\x57\\x48\\x81\\xEC\\x2A\\x2A\\x2A\\x2A\\x48\\x8B\\xF9\\x8B\\xF2\\x8B\\xCA",
-      "linux": "\\x55\\x48\\x89\\xE5\\x41\\x55\\x49\\x89\\xFD\\x89\\xF7"
+      "windows": "40 56 57 48 81 EC ? ? ? ? 48 8B F9 8B F2 8B CA",
+      "linux": "55 48 89 E5 41 55 49 89 FD 89 F7"
     }
   },
   "CCSPlayerController_ChangeTeam": {
@@ -35,50 +35,50 @@
   "CBasePlayerController_SetPawn": {
     "signatures": {
       "library": "server",
-      "windows": "\\x44\\x88\\x4C\\x24\\x20\\x55\\x57\\x41\\x54\\x41\\x56\\x41\\x57\\x48\\x8D\\x6C\\x24\\x2A\\x48\\x81\\xEC\\x2A",
-      "linux": "\\x55\\x48\\x89\\xE5\\x41\\x57\\x41\\x56\\x41\\x55\\x41\\x54\\x49\\x89\\xFC\\x53\\x48\\x89\\xF3\\x48\\x81\\xEC\\xC8\\x00\\x00\\x00"
+      "windows": "44 88 4C 24 20 55 57 41 54 41 56 41 57 48 8D 6C 24 ? 48 81 EC ?",
+      "linux": "55 48 89 E5 41 57 41 56 41 55 41 54 49 89 FC 53 48 89 F3 48 81 EC C8 00 00 00"
     }
   },
   "CCSPlayerPawnBase_PostThink": {
     "signatures": {
       "library": "server",
-      "windows": "\\x48\\x2A\\x2A\\x55\\x53\\x56\\x57\\x41\\x2A\\x48\\x2A\\x2A\\x2A\\x48\\x2A\\x2A\\x2A\\x2A\\x2A\\x2A\\x4C\\x89\\x68",
-      "linux": "\\x55\\x48\\x89\\xE5\\x41\\x56\\x41\\x55\\x41\\x54\\x53\\x48\\x89\\xFB\\x48\\x83\\xEC\\x30\\xE8\\x2A\\x2A\\x2A\\x2A"
+      "windows": "48 ? ? 55 53 56 57 41 ? 48 ? ? ? 48 ? ? ? ? ? ? 4C 89 68",
+      "linux": "55 48 89 E5 41 56 41 55 41 54 53 48 89 FB 48 83 EC 30 E8 ? ? ? ?"
     }
   },
   "GiveNamedItem": {
     "signatures": {
       "library": "server",
-      "windows": "\\x48\\x89\\x5C\\x24\\x2A\\x48\\x89\\x74\\x24\\x2A\\x55\\x57\\x41\\x2A\\x41\\x2A\\x41\\x2A\\x48\\x2A\\x2A\\x2A\\x2A\\x48\\x2A\\x2A\\x2A\\x2A\\x2A\\x2A\\x4D\\x2A\\x2A\\x48",
-      "linux": "\\x55\\x48\\x89\\xE5\\x41\\x57\\x41\\x56\\x49\\x89\\xD6\\x41\\x55\\x49\\x89\\xFD\\x41\\x54\\x48"
+      "windows": "48 89 5C 24 ? 48 89 74 24 ? 55 57 41 ? 41 ? 41 ? 48 ? ? ? ? 48 ? ? ? ? ? ? 4D ? ? 48",
+      "linux": "55 48 89 E5 41 57 41 56 49 89 D6 41 55 49 89 FD 41 54 48"
     }
   },
   "UTIL_Remove": {
     "signatures": {
       "library": "server",
-      "windows": "\\x48\\x85\\xC9\\x74\\x2A\\x48\\x8B\\xD1\\x48\\x8B\\x0D\\x2A\\x2A\\x2A\\x2A",
-      "linux": "\\x48\\x89\\xFE\\x48\\x85\\xFF\\x74\\x2A\\x48\\x8D\\x05\\x2A\\x2A\\x2A\\x2A\\x48"
+      "windows": "48 85 C9 74 ? 48 8B D1 48 8B 0D ? ? ? ?",
+      "linux": "48 89 FE 48 85 FF 74 ? 48 8D 05 ? ? ? ? 48"
     }
   },
   "Host_Say": {
     "signatures": {
       "library": "server",
-      "windows": "\\x44\\x89\\x4C\\x24\\x20\\x44\\x88\\x44\\x24\\x18",
-      "linux": "\\x55\\x48\\x89\\xE5\\x41\\x57\\x49\\x89\\xFF\\x41\\x56\\x41\\x55\\x41\\x54\\x4D\\x89\\xC4"
+      "windows": "44 89 4C 24 20 44 88 44 24 18",
+      "linux": "55 48 89 E5 41 57 49 89 FF 41 56 41 55 41 54 4D 89 C4"
     }
   },
   "CBaseModelEntity_SetModel": {
     "signatures": {
       "library": "server",
-      "windows": "\\x48\\x89\\x5C\\x24\\x2A\\x48\\x89\\x7C\\x24\\x2A\\x55\\x48\\x8B\\xEC\\x48\\x83\\xEC\\x50\\x48\\x8B\\xF9\\x4C\\x8B\\xC2",
-      "linux": "\\x55\\x48\\x89\\xF2\\x48\\x89\\xE5\\x41\\x54\\x49\\x89\\xFC\\x48\\x8D\\x7D\\xE0\\x48\\x83\\xEC\\x2A\\x48\\x8D\\x05\\x2A\\x2A\\x2A\\x2A\\x48\\x8B\\x30\\x48\\x8B\\x06"
+      "windows": "48 89 5C 24 ? 48 89 7C 24 ? 55 48 8B EC 48 83 EC 50 48 8B F9 4C 8B C2",
+      "linux": "55 48 89 F2 48 89 E5 41 54 49 89 FC 48 8D 7D E0 48 83 EC ? 48 8D 05 ? ? ? ? 48 8B 30 48 8B 06"
     }
   },
   "CCSPlayer_WeaponServices_CanUse": {
     "signatures": {
       "library": "server",
-      "windows": "\\x48\\x89\\x5C\\x24\\x10\\x48\\x89\\x6C\\x24\\x18\\x56\\x57\\x41\\x56\\x48\\x83\\xEC\\x30\\x80\\xB9\\xA0\\x00\\x00\\x00\\x00",
-      "linux": "\\x48\\x85\\xF6\\x0F\\x84\\x2A\\x2A\\x2A\\x2A\\x55\\x31\\xC9\\x48\\x89\\xE5\\x41\\x55\\x49\\x89\\xFD"
+      "windows": "48 89 5C 24 10 48 89 6C 24 18 56 57 41 56 48 83 EC 30 80 B9 A0 00 00 00 00",
+      "linux": "48 85 F6 0F 84 ? ? ? ? 55 31 C9 48 89 E5 41 55 49 89 FD"
     }
   },
   "CCSPlayer_ItemServices_GiveNamedItem": {
@@ -108,36 +108,36 @@
   "CCSGameRules_TerminateRound": {
     "signatures": {
       "library": "server",
-      "windows": "\\x48\\x2A\\x2A\\x4C\\x89\\x48\\x2A\\x48\\x89\\x48\\x2A\\x55\\x41",
-      "linux": "\\x55\\x48\\x89\\xE5\\x41\\x57\\x41\\x56\\x41\\x55\\x41\\x54\\x49\\x89\\xFC\\x53\\x48\\x81\\xEC\\xE8\\x01\\x00\\x00\\x48\\x8D\\x05\\x2A\\x2A\\x2A\\x2A"
+      "windows": "48 ? ? 4C 89 48 ? 48 89 48 ? 55 41",
+      "linux": "55 48 89 E5 41 57 41 56 41 55 41 54 49 89 FC 53 48 81 EC E8 01 00 00 48 8D 05 ? ? ? ?"
     }
   },
   "UTIL_CreateEntityByName": {
     "signatures": {
       "library": "server",
-      "windows": "\\x48\\x83\\xEC\\x48\\xC6\\x44\\x24\\x30\\x00",
-      "linux": "\\x48\\x8D\\x05\\x2A\\x2A\\x2A\\x2A\\x55\\x48\\x89\\xFA"
+      "windows": "48 83 EC 48 C6 44 24 30 00",
+      "linux": "48 8D 05 ? ? ? ? 55 48 89 FA"
     }
   },
   "CBaseEntity_DispatchSpawn": {
     "signatures": {
       "library": "server",
-      "windows": "\\x48\\x89\\x5C\\x24\\x10\\x57\\x48\\x83\\xEC\\x30\\x48\\x8B\\xDA\\x48\\x8B\\xF9\\x48\\x85\\xC9",
-      "linux": "\\x48\\x85\\xFF\\x74\\x2A\\x55\\x48\\x89\\xE5\\x41\\x56"
+      "windows": "48 89 5C 24 10 57 48 83 EC 30 48 8B DA 48 8B F9 48 85 C9",
+      "linux": "48 85 FF 74 ? 55 48 89 E5 41 56"
     }
   },
   "CEntityInstance_AcceptInput": {
     "signatures": {
       "library": "server",
-      "windows": "\\x48\\x89\\x5C\\x24\\x10\\x48\\x89\\x74\\x24\\x18\\x57\\x48\\x83\\xEC\\x40\\x49\\x8B\\xF0",
-      "linux": "\\x55\\x48\\x89\\xE5\\x41\\x57\\x49\\x89\\xFF\\x41\\x56\\x48\\x8D\\x7D\\xC0"
+      "windows": "48 89 5C 24 10 48 89 74 24 18 57 48 83 EC 40 49 8B F0",
+      "linux": "55 48 89 E5 41 57 49 89 FF 41 56 48 8D 7D C0"
     }
   },
   "LegacyGameEventListener": {
     "signatures": {
       "library": "server",
-      "windows": "\\x48\\x8B\\x15\\x2A\\x2A\\x2A\\x2A\\x48\\x85\\xD2\\x74\\x2A\\x85\\xC9\\x74",
-      "linux": "\\x48\\x8B\\x05\\x2A\\x2A\\x2A\\x2A\\x48\\x85\\xC0\\x74\\x2A\\x83\\xFF\\x3F\\x76\\x2A\\x31\\xC0"
+      "windows": "48 8B 15 ? ? ? ? 48 85 D2 74 ? 85 C9 74",
+      "linux": "48 8B 05 ? ? ? ? 48 85 C0 74 ? 83 FF 3F 76 ? 31 C0"
     }
   },
   "CBasePlayerPawn_CommitSuicide": {
@@ -149,8 +149,8 @@
   "CBasePlayerPawn_RemovePlayerItem": {
     "signatures": {
       "library": "server",
-      "windows": "\\x48\\x2A\\x2A\\x0F\\x84\\x2A\\x2A\\x2A\\x2A\\x48\\x89\\x5C\\x24\\x2A\\x57\\x48\\x2A\\x2A\\x2A\\x48\\x2A\\x2A\\x48\\x2A\\x2A\\xE8",
-      "linux": "\\x55\\x48\\x89\\x2A\\x41\\x2A\\x49\\x89\\x2A\\x41\\x2A\\x49\\x89\\x2A\\xE8\\x2A\\x2A\\x2A\\x2A\\x49\\x39"
+      "windows": "48 ? ? 0F 84 ? ? ? ? 48 89 5C 24 ? 57 48 ? ? ? 48 ? ? 48 ? ? E8",
+      "linux": "55 48 89 ? 41 ? 49 89 ? 41 ? 49 89 ? E8 ? ? ? ? 49 39"
     }
   },
   "CBaseEntity_Teleport": {
@@ -162,36 +162,36 @@
   "CBaseEntity_TakeDamageOld": {
     "signatures": {
       "library": "server",
-      "windows": "\\x40\\x56\\x57\\x48\\x83\\xEC\\x58\\x48\\x8B\\x41\\x10",
-      "linux": "\\x55\\x48\\x89\\xE5\\x41\\x57\\x41\\x56\\x41\\x55\\x41\\x54\\x49\\x89\\xFC\\x53\\x48\\x83\\xEC\\x38\\x4C\\x8D\\x2D\\x2A\\x2A\\x2A\\x2A\\x49\\x8B\\x7D\\x00\\x48\\x85\\xFF\\x0F\\x84\\x2A\\x2A\\x2A\\x2A"
+      "windows": "40 56 57 48 83 EC 58 48 8B 41 10",
+      "linux": "55 48 89 E5 41 57 41 56 41 55 41 54 49 89 FC 53 48 83 EC 38 4C 8D 2D ? ? ? ? 49 8B 7D 00 48 85 FF 0F 84 ? ? ? ?"
     }
   },
   "CBaseTrigger_StartTouch": {
     "signatures": {
       "library": "server",
-      "windows": "\\x41\\x56\\x41\\x57\\x48\\x83\\xEC\\x58\\x48\\x8B\\x01",
-      "linux": "\\x55\\x48\\x89\\xE5\\x41\\x56\\x49\\x89\\xF6\\x41\\x55\\x49\\x89\\xFD\\x41\\x54\\x53\\xBB"
+      "windows": "41 56 41 57 48 83 EC 58 48 8B 01",
+      "linux": "55 48 89 E5 41 56 49 89 F6 41 55 49 89 FD 41 54 53 BB"
     }
   },
   "CBaseTrigger_EndTouch": {
     "signatures": {
       "library": "server",
-      "windows": "\\x40\\x53\\x57\\x41\\x55\\x48\\x83\\xEC\\x40",
-      "linux": "\\x55\\xBA\\xFF\\xFF\\xFF\\xFF\\x48\\x89\\xE5\\x41\\x57\\x41\\x56\\x41\\x55\\x49\\x89\\xF5\\x41"
+      "windows": "40 53 57 41 55 48 83 EC 40",
+      "linux": "55 BA FF FF FF FF 48 89 E5 41 57 41 56 41 55 49 89 F5 41"
     }
   },
   "StateChanged": {
     "signatures": {
       "library": "server",
-      "windows": "\\x40\\x55\\x53\\x56\\x41\\x55\\x41\\x57\\x48\\x8D\\x6C\\x24\\xB0",
-      "linux": "\\x55\\x48\\x89\\xE5\\x41\\x57\\x41\\x56\\x41\\x55\\x41\\x54\\x53\\x89\\xD3"
+      "windows": "40 55 53 56 41 55 41 57 48 8D 6C 24 B0",
+      "linux": "55 48 89 E5 41 57 41 56 41 55 41 54 53 89 D3"
     }
   },
   "NetworkStateChanged": {
     "signatures": {
       "library": "server",
-      "windows": "\\x4C\\x8B\\xC9\\x48\\x8B\\x09\\x48\\x85\\xC9\\x74\\x2A\\x48\\x8B\\x41\\x10",
-      "linux": "\\x4C\\x8B\\x07\\x4D\\x85\\xC0\\x74\\x2A\\x49\\x8B\\x40\\x10"
+      "windows": "4C 8B C9 48 8B 09 48 85 C9 74 ? 48 8B 41 10",
+      "linux": "4C 8B 07 4D 85 C0 74 ? 49 8B 40 10"
     }
   },
   "GameEntitySystem": {
@@ -209,15 +209,15 @@
   "CEntityIOOutput_FireOutputInternal": {
     "signatures": {
       "library": "server",
-      "windows": "\\x4C\\x89\\x4C\\x24\\x20\\x53\\x55\\x57\\x41\\x54\\x41\\x56\\x48\\x81\\xEC",
-      "linux": "\\x55\\x48\\x89\\xE5\\x41\\x57\\x41\\x56\\x41\\x55\\x41\\x54\\x49\\x89\\xD4\\x53\\x48\\x89\\xF3\\x48\\x83\\xEC\\x58"
+      "windows": "4C 89 4C 24 20 53 55 57 41 54 41 56 48 81 EC",
+      "linux": "55 48 89 E5 41 57 41 56 41 55 41 54 49 89 D4 53 48 89 F3 48 83 EC 58"
     }
   },
   "IGameSystem_InitAllSystems_pFirst": {
     "signatures": {
       "library": "server",
-      "windows": "\\x48\\x8B\\x1D\\x2A\\x2A\\x2A\\x2A\\x48\\x85\\xDB\\x0F\\x84\\x2A\\x2A\\x2A\\x2A\\xBE\\x2A\\x2A\\x2A\\x2A\\x0F\\x1F\\x00\\x48\\x8B\\x7B\\x10",
-      "linux": "\\x4C\\x8B\\x35\\x2A\\x2A\\x2A\\x2A\\x4D\\x85\\xF6\\x75\\x2D\\xE9\\x2A\\x2A\\x2A\\x2A\\x0F\\x1F\\x40\\x00\\x48\\x8B\\x05"
+      "windows": "48 8B 1D ? ? ? ? 48 85 DB 0F 84 ? ? ? ? BE ? ? ? ? 0F 1F 00 48 8B 7B 10",
+      "linux": "4C 8B 35 ? ? ? ? 4D 85 F6 75 2D E9 ? ? ? ? 0F 1F 40 00 48 8B 05"
     }
   },
   "CEntityResourceManifest_AddResource": {
