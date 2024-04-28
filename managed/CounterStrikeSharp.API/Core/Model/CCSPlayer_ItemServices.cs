@@ -45,4 +45,13 @@ public partial class CCSPlayer_ItemServices
 
         VirtualFunction.CreateVoid<nint>(Handle, GameData.GetOffset("CCSPlayer_ItemServices_RemoveWeapons"))(Handle);
     }
+
+    public T? GiveNamedItem<T>(string item) where T : CEntityInstance
+    {
+        var pointer = VirtualFunction.Create<nint, string, nint>(Handle, GameData.GetOffset("CCSPlayer_ItemServices_GiveNamedItem"))(Handle, item);
+        if (pointer == IntPtr.Zero)
+            return null;
+
+        return (T)Activator.CreateInstance(typeof(T), pointer)!;
+    }
 }
