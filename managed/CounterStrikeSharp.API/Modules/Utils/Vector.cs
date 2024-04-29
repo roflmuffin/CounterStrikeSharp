@@ -14,6 +14,7 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
+using System.Numerics;
 using System.Runtime.CompilerServices;
 
 namespace CounterStrikeSharp.API.Modules.Utils
@@ -27,10 +28,14 @@ namespace CounterStrikeSharp.API.Modules.Utils
     /// <item><term>Z</term><description>+up/-down</description></item>
     /// </list>
     /// </summary>
-    public class Vector : NativeObject
+    public class Vector : NativeObject,
+        IAdditionOperators<Vector, Vector, Vector>,
+        ISubtractionOperators<Vector, Vector, Vector>,
+        IMultiplyOperators<Vector, float, Vector>,
+        IDivisionOperators<Vector, float, Vector>
     {
         public static readonly Vector Zero = new();
-        
+
         public Vector(IntPtr pointer) : base(pointer)
         {
         }
@@ -45,7 +50,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
         public unsafe ref float X => ref Unsafe.Add(ref *(float*)Handle, 0);
         public unsafe ref float Y => ref Unsafe.Add(ref *(float*)Handle, 1);
         public unsafe ref float Z => ref Unsafe.Add(ref *(float*)Handle, 2);
-        
+
         /// <summary>
         /// Returns a copy of the vector with values replaced.
         /// </summary>
@@ -75,7 +80,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
             this.Z += vector.Z;
         }
 
-        
+
         /// <summary>
         /// Returns an angle that represents the normal of the vector.
         /// </summary>
@@ -181,7 +186,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
         public bool IsZero() => NativeAPI.VectorIsZero(Handle);
 
         /// <summary>
-        /// Returns the Euclidean length of the vector: √x² + y² + z² 
+        /// Returns the Euclidean length of the vector: √x² + y² + z²
         /// </summary>
         /// <returns>Euclidean length of vector</returns>
         public float Length() => NativeAPI.VectorLength(Handle);
@@ -235,7 +240,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
             var returnVal = new Vector();
             NativePINVOKE.VectorRotate__SWIG_1(ptr, angle.Handle(), returnVal.Handle());
             Set(returnVal);
-        }        
+        }
 
         /// <summary>
         /// Copies X, Y and Z into this Vector
@@ -296,21 +301,23 @@ namespace CounterStrikeSharp.API.Modules.Utils
 
         public float this[int i]
         {
-            get {
+            get
+            {
                 switch (i)
                 {
                     case 0:
                         return this.X;
                     case 1:
                         return this.Y;
-                        case 2: 
-                    return this.Z;
+                    case 2:
+                        return this.Z;
                 }
 
                 return 0;
             }
-            set {
-                 switch (i)
+            set
+            {
+                switch (i)
                 {
                     case 0:
                         this.X = value;
@@ -318,7 +325,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
                     case 1:
                         this.Y = value;
                         break;
-                    case 2: 
+                    case 2:
                         this.Z = value;
                         break;
                 }
@@ -368,7 +375,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
             return $"{X:n2} {Y:n2} {Z:n2}";
         }
 
-        /*       
+        /*
 
         */
     }
