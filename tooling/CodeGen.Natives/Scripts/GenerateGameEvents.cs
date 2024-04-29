@@ -28,6 +28,32 @@ public partial class Generators
         public string NamePascalCase => Name.ToPascalCase();
         public string MappedType => Mapping.GetCSharpTypeFromGameEventType(Type);
         public string? Comment { get; set; }
+
+        public string Getter
+        {
+            get
+            {
+                if (MappedType == "CCSPlayerController?")
+                {
+                    return $"GetPlayer(\"{Name}\")";
+                }
+
+                return $"Get<{MappedType}>(\"{Name}\")";
+            }
+        }
+
+        public string Setter
+        {
+            get
+            {
+                if (MappedType == "CCSPlayerController?")
+                {
+                    return $"SetPlayer(\"{Name}\", value)";
+                }
+
+                return $"Set<{MappedType}>(\"{Name}\", value)";
+            }
+        }
     }
 
     private static HttpClient _httpClient = new HttpClient();
@@ -88,6 +114,8 @@ public partial class Generators
         return allGameEvents.Values.ToList();
     }
 
+
+
     public static async Task GenerateGameEvents()
     {
         var allGameEvents = await GetGameEvents();
@@ -102,12 +130,12 @@ public partial class Generators
                     : key.NamePascalCase;
 
                 return $@"
-                
+
                 {(!string.IsNullOrEmpty(key.Comment) ? "// " + key.Comment : "")}
-                public {key.MappedType} {propertyName} 
+                public {key.MappedType} {propertyName}
                 {{
-                    get => Get<{key.MappedType}>(""{key.Name}"");
-                    set => Set<{key.MappedType}>(""{key.Name}"", value);
+                    get => {key.Getter};
+                    set => {key.Setter};
                 }}";
             });
             return $@"
@@ -120,9 +148,10 @@ public partial class Generators
                 {string.Join("\n", propertyDefinition)}
             }}";
         }));
-        
+
 
         var result = $@"
+#nullable enable
 using System;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -132,8 +161,9 @@ namespace CounterStrikeSharp.API.Core
 {{
     {gameEventsString}
 }}
+#nullable restore
 ";
-        
+
         Console.WriteLine($"Generated C# bindings for {allGameEvents.Count} game events successfully.");
 
         File.WriteAllText(Path.Join(Helpers.GetRootDirectory(), "managed/CounterStrikeSharp.API/Core/GameEvents.g.cs"),
