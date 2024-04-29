@@ -24,7 +24,7 @@ public partial class CCSPlayerController
         Guard.IsValidEntity(this);
 
         if (!PlayerPawn.IsValid) return null;
-        if (PlayerPawn.Value == null) return null;;
+        if (PlayerPawn.Value == null) return null; ;
         if (!PlayerPawn.Value.IsValid) return null;
         if (PlayerPawn.Value.ItemServices == null) return null;
 
@@ -64,6 +64,14 @@ public partial class CCSPlayerController
         Guard.IsValidEntity(this);
 
         VirtualFunctions.ClientPrint(Handle, HudDestination.Center, message, 0, 0, 0, 0);
+    }
+
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
+    public void PrintToCenterAlert(string message)
+    {
+        Guard.IsValidEntity(this);
+
+        VirtualFunctions.ClientPrint(Handle, HudDestination.Alert, message, 0, 0, 0, 0);
     }
 
     public void PrintToCenterHtml(string message) => PrintToCenterHtml(message, 5);
