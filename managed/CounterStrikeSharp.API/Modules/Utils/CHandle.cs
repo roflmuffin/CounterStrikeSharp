@@ -2,6 +2,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using CounterStrikeSharp.API.Modules.Entities;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CounterStrikeSharp.API.Modules.Utils;
 
@@ -55,28 +56,23 @@ public class CHandle<T> : IEquatable<CHandle<T>> where T : NativeEntity
     }
 
 
+    /// <inheritdoc cref="Get"/>
+    public T? Value => Get();
+
     /// <summary>
     /// Retrieves the instance of the entity this handle refers to.
     /// </summary>
-    public T? Value
+    public T? Get()
     {
-        get
-        {
-            if (!IsValid)
-                return null;
+        if (!IsValid)
+            return null;
 
-            var entity = EntitySystem.GetEntityByHandle(this);
-            if (entity == null)
-                return null;
+        var entity = EntitySystem.GetEntityByHandle(this);
+        if (entity == null)
+            return null;
 
-            return (T)Activator.CreateInstance(typeof(T), entity);
-        }
+        return (T)Activator.CreateInstance(typeof(T), entity)!;
     }
-
-    /// <summary>
-    /// <inheritdoc cref="Value"/>
-    /// </summary>
-    public T? Get() => Value;
 
     public override string ToString() => IsValid ? $"Index = {Index}, Serial = {SerialNum}" : "<invalid>";
 
