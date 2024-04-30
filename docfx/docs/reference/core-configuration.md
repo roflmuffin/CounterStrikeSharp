@@ -28,7 +28,6 @@ receive a ban.
 > [!NOTE]
 > Disable this option at your own risk.
 
-
 ## PluginHotReloadEnabled
 
 When enabled, plugins are automatically reloaded when their .dll file is updated.
@@ -40,3 +39,11 @@ When enabled, plugins are automatically loaded from the plugins directory on ser
 ## ServerLanguage
 
 Configures the default language to use for server commands & messages. The format for the culture name based on RFC 4646 is `languagecode2-country`/`regioncode2`, where `languagecode2` is the two-letter language code and `country/regioncode2` is the two-letter subculture code. Examples include `ja-JP` for Japanese (Japan) and `en-US` for English (United States). Defaults to "en".
+
+## SteamAuth
+
+Configures the strictness of "AuthorisedSteamID" on the server. Defaults to "Strict". Options are:
+
+-   "Strict": CS# will only grant permissions to users if the server is currently connected to steam and the user has passed auth checks.
+-   "Flexible" CS# will try to use the users checked steam auth, but failing that will use standard SteamID.
+-   "Off": CS# will always just use the standard SteamID.

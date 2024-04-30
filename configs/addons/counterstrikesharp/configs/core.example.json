@@ -1,8 +1,13 @@
 {
-    "PublicChatTrigger": [ "!" ],
-    "SilentChatTrigger": [ "/" ],
-    "FollowCS2ServerGuidelines": true,
-    "PluginHotReloadEnabled": true,
-    "PluginAutoLoadEnabled": true,
-    "ServerLanguage": "en"
+  "PublicChatTrigger": [
+    "!"
+  ],
+  "SilentChatTrigger": [
+    "/"
+  ],
+  "FollowCS2ServerGuidelines": true,
+  "PluginHotReloadEnabled": true,
+  "PluginAutoLoadEnabled": true,
+  "ServerLanguage": "en",
+  "SteamAuth": "Strict"
 }
