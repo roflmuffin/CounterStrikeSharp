@@ -111,4 +111,15 @@ static void DetourFireOutputInternal(CEntityIOOutput* const pThis, CEntityInstan
 
 static FireOutputInternal m_pFireOutputInternal = nullptr;
 
+// Do it in here because i didn't found a good place to do this
+inline void (*CEntityInstance_AcceptInput)(CEntityInstance* pThis, const char* pInputName, CEntityInstance* pActivator, CEntityInstance* pCaller, variant_t* value, int nOutputID);
+
+inline void (*CEntitySystem_AddEntityIOEvent)(CEntitySystem* pEntitySystem,
+                                              CEntityInstance* pTarget,
+                                              const char* pInputName,
+                                              CEntityInstance* pActivator,
+                                              CEntityInstance* pCaller,
+                                              variant_t* value,
+                                              float delay,
+                                              int nOutputID);
 }  // namespace counterstrikesharp

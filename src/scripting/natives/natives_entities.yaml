@@ -12,3 +12,5 @@ GET_PLAYER_AUTHORIZED_STEAMID: slot:int -> uint64
 GET_PLAYER_IP_ADDRESS: slot:int -> string
 HOOK_ENTITY_OUTPUT: classname:string, outputName:string, callback:func, mode:HookMode -> void
 UNHOOK_ENTITY_OUTPUT: classname:string, outputName:string, callback:func, mode:HookMode -> void
+ACCEPT_INPUT: pThis:pointer, inputName:string, activator:pointer, caller:pointer, value:string, outputID:int -> void
+ADD_ENTITY_IO_EVENT: pTarget:pointer, inputName:string, activator:pointer, caller:pointer, value:string, delay:float, outputID:int -> void

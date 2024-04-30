@@ -133,6 +133,13 @@
       "linux": "55 48 89 E5 41 57 49 89 FF 41 56 48 8D 7D C0"
     }
   },
+  "CEntitySystem_AddEntityIOEvent": {
+    "signatures": {
+      "library": "server",
+      "windows": "48 89 5C 24 ? 48 89 74 24 ? 57 48 ? ? ? 49 ? ? 48 ? ? 48 ? ? 74",
+      "linux": "55 41 BA FF FF FF FF"
+    }
+  },
   "LegacyGameEventListener": {
     "signatures": {
       "library": "server",
