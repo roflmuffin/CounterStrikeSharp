@@ -116,7 +116,7 @@ add_custom_command(
     VERBATIM
 )
 
-# set(SOURCE_FILES ${SOURCE_FILES} protobuf_output_stamp)
+set(SOURCE_FILES ${SOURCE_FILES} protobuf_output_stamp)
 
 # Sources
 add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${NATIVES_SOURCES} ${CONVERSIONS_SOURCES} ${CONVERSIONS_HEADERS})
