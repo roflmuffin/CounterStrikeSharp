@@ -195,6 +195,8 @@ void UnhookEntityOutput(ScriptContext& script_context)
 
 void AcceptInput(ScriptContext& script_context)
 {
+    if (!CEntityInstance_AcceptInput) return;
+
     CEntityInstance* pThis = script_context.GetArgument<CEntityInstance*>(0);
     const char* pInputName = script_context.GetArgument<const char*>(1);
     CEntityInstance* pActivator = script_context.GetArgument<CEntityInstance*>(2);
@@ -208,6 +210,8 @@ void AcceptInput(ScriptContext& script_context)
 
 void AddEntityIOEvent(ScriptContext& script_context)
 {
+    if (!CEntitySystem_AddEntityIOEvent) return;
+
     CEntityInstance* pTarget = script_context.GetArgument<CEntityInstance*>(0);
     const char* pInputName = script_context.GetArgument<const char*>(1);
     CEntityInstance* pActivator = script_context.GetArgument<CEntityInstance*>(2);

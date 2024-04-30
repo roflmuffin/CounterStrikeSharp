@@ -52,7 +52,6 @@ void EntityManager::OnAllInitialized()
     if (!CEntityInstance_AcceptInput)
     {
         CSSHARP_CORE_CRITICAL("Failed to find signature for \'CEntityInstance_AcceptInput\'");
-        return;
     }
 
     CEntitySystem_AddEntityIOEvent = decltype(CEntitySystem_AddEntityIOEvent)(
@@ -61,7 +60,6 @@ void EntityManager::OnAllInitialized()
     if (!CEntitySystem_AddEntityIOEvent)
     {
         CSSHARP_CORE_CRITICAL("Failed to find signature for \'CEntitySystem_AddEntityIOEvent\'");
-        return;
     }
 
     auto m_hook = funchook_create();
