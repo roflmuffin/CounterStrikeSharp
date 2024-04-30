@@ -24,18 +24,14 @@ using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
-using CounterStrikeSharp.API.Core.Translations;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Entities.Constants;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Memory;
-using CounterStrikeSharp.API.Modules.Menu;
 using CounterStrikeSharp.API.Modules.Utils;
-using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
-using static CounterStrikeSharp.API.Core.Listeners;
 
 namespace TestPlugin
 {
@@ -56,7 +52,7 @@ namespace TestPlugin
 
         public override string ModuleDescription => "A playground of features used for testing";
 
-        public SampleConfig Config { get; set; }
+        public SampleConfig Config { get; set; } = null!;
 
         // This method is called right before `Load` is called
         public void OnConfigParsed(SampleConfig config)
@@ -94,7 +90,6 @@ namespace TestPlugin
             SetupGameEvents();
             SetupListeners();
             SetupCommands();
-            SetupMenus();
             SetupEntityOutputHooks();
 
             // ValveInterface provides pointers to loaded modules via Interface Name exposed from the engine (e.g. Source2Server001)
@@ -114,69 +109,10 @@ namespace TestPlugin
             var virtualFunc = VirtualFunction.Create<IntPtr>(server.Pointer, 91);
             var result = virtualFunc() - 8;
             Logger.LogInformation("Result of virtual func call is {Pointer:X}", result);
-            
+
             _testInjectedClass.Hello();
-
-            VirtualFunctions.CBaseTrigger_StartTouchFunc.Hook(h =>
-            {
-                var trigger = h.GetParam<CBaseTrigger>(0);
-                var entity = h.GetParam<CBaseEntity>(1);
-                
-                Logger.LogInformation("Trigger {Trigger} touched by {Entity}", trigger.DesignerName, entity.DesignerName);
-                
-                return HookResult.Continue;
-            }, HookMode.Post);
-            
-            VirtualFunctions.CBaseTrigger_EndTouchFunc.Hook(h =>
-            {
-                var trigger = h.GetParam<CBaseTrigger>(0);
-                var entity = h.GetParam<CBaseEntity>(1);
-                
-                Logger.LogInformation("Trigger left {Trigger} by {Entity}", trigger.DesignerName, entity.DesignerName);
-                
-                return HookResult.Continue;
-            }, HookMode.Post);
-            
-            VirtualFunctions.UTIL_RemoveFunc.Hook(hook =>
-            {
-                var entityInstance = hook.GetParam<CEntityInstance>(0);
-                Logger.LogInformation("Removed entity {EntityIndex}", entityInstance.Index);
-
-                return HookResult.Continue;
-            }, HookMode.Post);
-            
-            VirtualFunctions.CBaseEntity_TakeDamageOldFunc.Hook((h =>
-            {
-                var victim = h.GetParam<CEntityInstance>(0);
-                var damageInfo = h.GetParam<CTakeDamageInfo>(1);
-                
-                if (damageInfo.Inflictor.Value.DesignerName == "inferno")
-                {
-                    var inferno = new CInferno(damageInfo.Inflictor.Value.Handle);
-                    Logger.LogInformation("Owner of inferno is {Owner}",  inferno.OwnerEntity);
-
-                    if (victim == inferno.OwnerEntity.Value)
-                    {
-                        damageInfo.Damage = 0;
-                    }
-                    else
-                    {
-                        damageInfo.Damage = 150;
-                    }
-                }
-
-                return HookResult.Continue;
-            }), HookMode.Pre);
-
-            // Precache resources
-            RegisterListener<Listeners.OnServerPrecacheResources>((manifest) =>
-            {
-                manifest.AddResource("path/to/model");
-                manifest.AddResource("path/to/material");
-                manifest.AddResource("path/to/particle");
-            });
         }
-        
+
         public override void OnAllPluginsLoaded(bool hotReload)
         {
             Logger.LogInformation("All plugins loaded!");
@@ -186,8 +122,7 @@ namespace TestPlugin
         {
             RegisterListener<Listeners.OnMapStart>(name =>
             {
-                var cheatsCvar = ConVar.Find("sv_cheats");
-                cheatsCvar.SetValue(true);
+                ConVar.FindRequired("sv_cheats").SetValue(true);
 
                 var numericCvar = ConVar.Find("mp_warmuptime");
                 Logger.LogInformation("mp_warmuptime = {Value}", numericCvar?.GetPrimitiveValue<float>());
@@ -204,67 +139,73 @@ namespace TestPlugin
         {
             // Register Game Event Handlers
             RegisterEventHandler<EventPlayerConnect>(GenericEventHandler, HookMode.Pre);
-            RegisterEventHandler<EventPlayerChat>(((@event, info) =>
-            {
-                var entity = new CCSPlayerController(NativeAPI.GetEntityFromIndex(@event.Userid));
-                if (!entity.IsValid)
-                {
-                    Logger.LogInformation("invalid entity");
-                    return HookResult.Continue;
-                }
+            RegisterEventHandler<EventPlayerBlind>(GenericEventHandler);
 
-                entity.PrintToChat($"You said {@event.Text}");
+            // Mirrors a chat message back to the player
+            RegisterEventHandler<EventPlayerChat>(((@event, _) =>
+            {
+                var player = Utilities.GetPlayerFromIndex(@event.Userid);
+                if (player == null) return HookResult.Continue;
+
+                player.PrintToChat($"You said {@event.Text}");
                 return HookResult.Continue;
             }));
+
             RegisterEventHandler<EventPlayerDeath>((@event, info) =>
             {
-                // You can use `info.DontBroadcast` to set the dont broadcast flag on the event.
+                // You can use `info.DontBroadcast` to set the don't broadcast flag on the event.
                 if (new Random().NextSingle() > 0.5f)
                 {
-                    @event.Attacker.PrintToChat($"Skipping player_death broadcast at {Server.CurrentTime}");
+                    @event.Attacker?.PrintToChat($"Skipping player_death broadcast at {Server.CurrentTime}");
                     info.DontBroadcast = true;
                 }
 
                 return HookResult.Continue;
             }, HookMode.Pre);
-            
+
             RegisterEventHandler<EventGrenadeBounce>((@event, info) =>
             {
-                Logger.LogInformation("Player {Player} grenade bounce", @event.Userid.PlayerName);
+                Logger.LogInformation("Player \"{Player}\" grenade bounce", @event.Userid!.PlayerName);
 
                 return HookResult.Continue;
             }, HookMode.Pre);
+
             RegisterEventHandler<EventPlayerSpawn>((@event, info) =>
             {
-                if (!@event.Userid.IsValid) return 0;
-                if (!@event.Userid.PlayerPawn.IsValid) return 0;
+                var player = @event.Userid;
+                var playerPawn = player?.PlayerPawn.Get();
+                if (player == null || playerPawn == null) return HookResult.Continue;
 
                 Logger.LogInformation("Player spawned with entity index: {EntityIndex} & User ID: {UserId}",
-                    @event.Userid.Index, @event.Userid.UserId);
+                    playerPawn.Index, player.UserId);
 
                 return HookResult.Continue;
             });
-            RegisterEventHandler<EventPlayerBlind>(GenericEventHandler);
+
             RegisterEventHandler<EventBulletImpact>((@event, info) =>
             {
                 var player = @event.Userid;
-                var pawn = player.PlayerPawn.Value;
-                var activeWeapon = @event.Userid.PlayerPawn.Value.WeaponServices?.ActiveWeapon.Value;
-                var weapons = @event.Userid.PlayerPawn.Value.WeaponServices?.MyWeapons;
+                var pawn = player?.PlayerPawn.Get();
+                var activeWeapon = pawn?.WeaponServices?.ActiveWeapon.Get();
+
+                if (pawn == null) return HookResult.Continue;
 
                 Server.NextFrame(() =>
                 {
-                    var weaponServices = player.PlayerPawn.Value.WeaponServices.As<CCSPlayer_WeaponServices>();
-                    player.PrintToChat(weaponServices.ActiveWeapon.Value?.DesignerName);    
+                    player?.PrintToChat(activeWeapon?.DesignerName ?? "No Active Weapon");
                 });
-                
-                // Set player to random colour
-                player.PlayerPawn.Value.Render = Color.FromArgb(Random.Shared.Next(0, 255),
-                    Random.Shared.Next(0, 255), Random.Shared.Next(0, 255));
-                Utilities.SetStateChanged(player.PlayerPawn.Value, "CBaseModelEntity", "m_clrRender");
 
-                activeWeapon.ReserveAmmo[0] = 250;
-                activeWeapon.Clip1 = 250;
+                // Set player to random colour
+                pawn.Render = Color.FromArgb(Random.Shared.Next(0, 255),
+                    Random.Shared.Next(0, 255), Random.Shared.Next(0, 255));
+                Utilities.SetStateChanged(pawn, "CBaseModelEntity", "m_clrRender");
+
+                // Give player 5 health and set their reserve ammo to 250
+                if (activeWeapon != null)
+                {
+                    activeWeapon.ReserveAmmo[0] = 250;
+                    activeWeapon.Clip1 = 250;
+                }
 
                 pawn.Health += 5;
                 Utilities.SetStateChanged(pawn, "CBaseEntity", "m_iHealth");
@@ -279,20 +220,19 @@ namespace TestPlugin
 
                 foreach (var player in playerEntities)
                 {
-                    //var player = new CCSPlayerController(entInst.Handle);
-                    if (player.InGameMoneyServices != null) player.InGameMoneyServices.Account = 1337;
+                    player.InGameMoneyServices!.Account = 1337;
                 }
 
-                // Grab everything starting with cs_, but we'll only mainpulate cs_gamerules.
+                // Grab everything starting with cs_, but we'll only manipulate cs_gamerules.
                 // Note: this iterates through all entities, so is an expensive operation.
-                var csEntities = Utilities.FindAllEntitiesByDesignerName<CBaseEntity>("cs_");
-                Logger.LogInformation("Amount of cs_* entities: {Count}", csEntities.Count());
+                var csEntities = Utilities.FindAllEntitiesByDesignerName<CBaseEntity>("cs_").ToArray();
+                Logger.LogInformation("Amount of cs_* entities: {Count}", csEntities.Length);
 
-                foreach (var entity in csEntities)
+                foreach (var entity in csEntities.Where(x => x.DesignerName == "cs_gamerules"))
                 {
-                    if (entity.DesignerName != "cs_gamerules") continue;
-                    var gamerulesEnt = new CCSGameRules(entity.Handle);
-                    gamerulesEnt.CTTimeOutActive = true;
+                    // It's safe to cast to `CCSGameRules` here as we know the entity is a cs_gamerules entity.
+                    var gameRules = entity.As<CCSGameRules>();
+                    gameRules.CTTimeOutActive = true;
                 }
 
                 return HookResult.Continue;
@@ -301,26 +241,32 @@ namespace TestPlugin
 
         private void SetupListeners()
         {
+            // Precache resources
+            RegisterListener<Listeners.OnServerPrecacheResources>((manifest) =>
+            {
+                manifest.AddResource("path/to/model");
+                manifest.AddResource("path/to/material");
+                manifest.AddResource("path/to/particle");
+            });
+
             // Hook global listeners defined by CounterStrikeSharp
             RegisterListener<Listeners.OnMapStart>(mapName =>
             {
                 Logger.LogInformation("Map {Map} has started!", mapName);
             });
             RegisterListener<Listeners.OnMapEnd>(() => { Logger.LogInformation($"Map has ended."); });
-            RegisterListener<Listeners.OnClientConnect>((index, name, ip) =>
+            RegisterListener<Listeners.OnClientConnect>((playerSlot, name, ip) =>
             {
                 Logger.LogInformation("Client {Name} from {Ip} has connected!", name, ip);
             });
-            RegisterListener<Listeners.OnClientAuthorized>((index, id) =>
+            RegisterListener<Listeners.OnClientAuthorized>((playerSlot, steamId) =>
             {
-                Logger.LogInformation("Client {Index} with address {Id}", index, id);
+                Logger.LogInformation("Client {Index} with address {Id}", playerSlot, steamId);
             });
 
             RegisterListener<Listeners.OnEntitySpawned>(entity =>
             {
-                var designerName = entity.DesignerName;
-
-                switch (designerName)
+                switch (entity.DesignerName)
                 {
                     case "smokegrenade_projectile":
                         var projectile = entity.As<CSmokeGrenadeProjectile>();
@@ -328,8 +274,8 @@ namespace TestPlugin
                         Server.NextFrame(() =>
                         {
                             projectile.SmokeColor.X = Random.Shared.NextSingle() * 255.0f;
-                            projectile.SmokeColor.X = Random.Shared.NextSingle() * 255.0f;
-                            projectile.SmokeColor.X = Random.Shared.NextSingle() * 255.0f;
+                            projectile.SmokeColor.Y = Random.Shared.NextSingle() * 255.0f;
+                            projectile.SmokeColor.Z = Random.Shared.NextSingle() * 255.0f;
                             Logger.LogInformation("Smoke grenade spawned with color {SmokeColor}",
                                 projectile.SmokeColor);
                         });
@@ -341,58 +287,6 @@ namespace TestPlugin
                         return;
                 }
             });
-        }
-
-        private void SetupMenus()
-        {
-            // [Legacy] Chat Menu Example
-            var largeMenu = new ChatMenu("Test Menu");
-            for (int i = 1; i < 26; i++)
-            {
-                var i1 = i;
-                largeMenu.AddMenuOption(new Random().NextSingle().ToString(),
-                    (player, option) => player.PrintToChat($"You just selected {option.Text}"), i1 % 5 == 0);
-            }
-
-            var giveItemMenu = new ChatMenu("Small Menu");
-            var handleGive = (CCSPlayerController player, ChatMenuOption option) =>
-            {
-                player.GiveNamedItem(option.Text);
-            };
-
-            giveItemMenu.AddMenuOption("weapon_ak47", handleGive);
-            giveItemMenu.AddMenuOption("weapon_p250", handleGive);
-
-            AddCommand("css_target", "Target Test", (player, info) =>
-            {
-                if (player == null) return;
-
-                var targetResult = info.GetArgTargetResult(1);
-
-                if (!targetResult.Any())
-                {
-                    player.PrintToChat("No players found.");
-                    return;
-                }
-                
-                foreach (var result in targetResult.Players)
-                {
-                    player.PrintToChat($"Target found: {result?.PlayerName}");
-                }
-            });
-            
-            AddCommand("css_menu", "Opens example menu", (player, info) => { ChatMenus.OpenMenu(player, largeMenu); });
-            AddCommand("css_gunmenu", "Gun Menu", (player, info) => { ChatMenus.OpenMenu(player, giveItemMenu); });
-
-            for (int i = 1; i <= 9; i++)
-            {
-                AddCommand("css_" + i, "Command Key Handler", (player, info) =>
-                {
-                    if (player == null) return;
-                    var key = Convert.ToInt32(info.GetArg(0).Split("_")[1]);
-                    ChatMenus.OnKeyPress(player, key);
-                });
-            }
         }
 
         private void SetupCommands()
@@ -407,24 +301,17 @@ namespace TestPlugin
                         ((SteamID)player.SteamID).SteamId2, info.ArgString);
                 });
 
-            AddCommand("css_changeteam", "change team", (player, info) =>
+            AddCommand("css_changeteam", "change team", (player, _) =>
             {
-                if (player?.IsValid != true) return;
+                if (player == null) return;
 
-                if ((CsTeam)player.TeamNum == CsTeam.Terrorist)
-                {
-                    player.ChangeTeam(CsTeam.CounterTerrorist);
-                }
-                else
-                {
-                    player.ChangeTeam(CsTeam.Terrorist);
-                }
+                player.ChangeTeam((CsTeam)player.TeamNum == CsTeam.Terrorist ? CsTeam.CounterTerrorist : CsTeam.Terrorist);
             });
 
             // Listens for any client use of the command `jointeam`.
             AddCommandListener("jointeam", (player, info) =>
             {
-                Logger.LogInformation("{PlayerName} just did a jointeam (pre) [{ArgString}]", player.PlayerName,
+                Logger.LogInformation("{PlayerName} just did a jointeam (pre) [{ArgString}]", player?.PlayerName,
                     info.ArgString);
 
                 return HookResult.Continue;
@@ -433,21 +320,21 @@ namespace TestPlugin
 
         private void SetupEntityOutputHooks()
         {
-            HookEntityOutput("weapon_knife", "OnPlayerPickup", (output, name, activator, caller, value, delay) =>
+            HookEntityOutput("weapon_knife", "OnPlayerPickup", (output, _, activator, caller, _, delay) =>
             {
                 Logger.LogInformation("weapon_knife called OnPlayerPickup ({name}, {activator}, {caller}, {delay})", output.Description.Name, activator.DesignerName, caller.DesignerName, delay);
 
                 return HookResult.Continue;
             });
-            
-            HookEntityOutput("*", "*", (output, name, activator, caller, value, delay) =>
+
+            HookEntityOutput("*", "*", (output, _, activator, caller, _, delay) =>
             {
                 Logger.LogInformation("All EntityOutput ({name}, {activator}, {caller}, {delay})", output.Description.Name, activator.DesignerName, caller.DesignerName, delay);
 
                 return HookResult.Continue;
             });
-            
-            HookEntityOutput("*", "OnStartTouch", (output, name, activator, caller, value, delay) =>
+
+            HookEntityOutput("*", "OnStartTouch", (_, name, activator, caller, _, delay) =>
             {
                 Logger.LogInformation("OnStartTouch: ({name}, {activator}, {caller}, {delay})", name, activator.DesignerName, caller.DesignerName, delay);
                 return HookResult.Continue;
@@ -475,44 +362,43 @@ namespace TestPlugin
         public void OnKillme(CCSPlayerController? player, CommandInfo command)
         {
             if (player == null) return;
-            if (!player.PlayerPawn.IsValid) return;
+            var pawn = player.PlayerPawn.Get();
+            if (pawn == null) return;
 
-            player.PlayerPawn.Value.CommitSuicide(true, true);
+            pawn.CommitSuicide(true, true);
         }
-        
+
         [CommandHelper(minArgs: 1, usage: "[weaponName]")]
         [ConsoleCommand("css_strip", "Removes weapon by name")]
         public void OnStripActiveWeapon(CCSPlayerController? player, CommandInfo command)
         {
-            if (player == null) return;
-            if (!player.PlayerPawn.IsValid) return;
-            
+            if (player == null || player.PlayerPawn.Get() == null) return;
+
             player.RemoveItemByDesignerName(command.GetArg(1));
         }
-        
+
         [ConsoleCommand("css_stripweapons", "Removes player weapons")]
         public void OnStripWeapons(CCSPlayerController? player, CommandInfo command)
         {
-            if (player == null) return;
-            if (!player.PlayerPawn.IsValid) return;
+            if (player == null || player.PlayerPawn.Get() == null) return;
 
             player.RemoveWeapons();
         }
-        
+
         [ConsoleCommand("css_teleportup", "Teleports the player up")]
         public void OnTeleport(CCSPlayerController? player, CommandInfo command)
         {
             if (player == null) return;
-            if (!player.PlayerPawn.IsValid) return;
+            var pawn = player.PlayerPawn.Get();
+            if (pawn == null) return;
 
-            player.PlayerPawn.Value.Teleport(player.PlayerPawn.Value.AbsOrigin.With(z: player.PlayerPawn.Value.AbsOrigin.Z + 100), player.PlayerPawn.Value.AbsRotation, new Vector(IntPtr.Zero));
+            pawn.Teleport(pawn.AbsOrigin!.With(z: pawn.AbsOrigin.Z + 100), pawn.AbsRotation, new Vector(IntPtr.Zero));
         }
-        
+
         [ConsoleCommand("css_respawn", "Respawns the player")]
         public void OnRespawn(CCSPlayerController? player, CommandInfo command)
         {
-            if (player == null) return;
-            if (!player.PlayerPawn.IsValid) return;
+            if (player == null || player.PlayerPawn.Get() == null) return;
 
             player.Respawn();
         }
@@ -527,7 +413,7 @@ namespace TestPlugin
                 entity.AcceptInput("Break");
             }
         }
-        
+
         [ConsoleCommand("css_fov", "Sets the player's FOV")]
         [CommandHelper(minArgs: 1, usage: "[fov]")]
         public void OnFovCommand(CCSPlayerController? player, CommandInfo command)
@@ -557,7 +443,7 @@ namespace TestPlugin
             }
             else
             {
-                player.PrintToChat($"Level  \"{mapName}\" is invalid.");
+                command.ReplyToCommand($"Level  \"{mapName}\" is invalid.");
             }
         }
 
@@ -565,15 +451,19 @@ namespace TestPlugin
         public void OnCommandGuns(CCSPlayerController? player, CommandInfo command)
         {
             if (player == null) return;
-            if (!player.PlayerPawn.IsValid) return;
+            var pawn = player.PlayerPawn.Get();
+            if (pawn == null) return;
 
-            foreach (var weapon in player.PlayerPawn.Value.WeaponServices.MyWeapons)
+            foreach (var weapon in pawn.WeaponServices!.MyWeapons)
             {
-                var vData = weapon.Value.As<CCSWeaponBase>().VData;
-                command.ReplyToCommand(string.Format("{0}, {1}, {2}, {3}, {4}, {5}", vData.Name, vData.GearSlot, vData.Price, vData.WeaponCategory, vData.WeaponType, vData.KillAward));
+                var vData = weapon.Get()?.As<CCSWeaponBase>().VData;
+                if (vData == null) continue;
+
+                command.ReplyToCommand(
+                    $"{vData.Name}, {vData.GearSlot}, {vData.Price}, {vData.WeaponCategory}, {vData.WeaponType}, {vData.KillAward}");
             }
         }
-        
+
         [ConsoleCommand("css_entities", "List entities")]
         public void OnCommandEntities(CCSPlayerController? player, CommandInfo command)
         {
@@ -581,13 +471,13 @@ namespace TestPlugin
             {
                 command.ReplyToCommand($"{entity.Index}:{entity.DesignerName}");
             }
-            
+
             foreach (var entity in Utilities.FindAllEntitiesByDesignerName<CBaseEntity>("cs_"))
             {
                 command.ReplyToCommand($"{entity.Index}:{entity.DesignerName}");
             }
         }
-        
+
         [ConsoleCommand("css_colors", "List Chat Colors")]
         public void OnCommandColors(CCSPlayerController? player, CommandInfo command)
         {
@@ -599,14 +489,14 @@ namespace TestPlugin
                 command.ReplyToCommand($" {(char)i}Color 0x{i:x}");
             }
         }
-        
+
         [ConsoleCommand("css_localetest", "Test Translations")]
         public void OnCommandLocaleTest(CCSPlayerController? player, CommandInfo command)
         {
             Logger.LogInformation("Current Culture is {Culture}", CultureInfo.CurrentCulture);
             command.ReplyToCommand(Localizer["testPlugin.maxPlayersAnnouncement", Server.MaxPlayers]);
         }
-        
+
         [ConsoleCommand("css_sound", "Play a sound to client")]
         public void OnCommandSound(CCSPlayerController? player, CommandInfo command)
         {

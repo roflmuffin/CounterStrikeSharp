@@ -2,7 +2,6 @@
 .cmake/
 cmake-build-*/
 .kdev4/
-.vscode/
 generated/
 
 # configure_file auto generated.

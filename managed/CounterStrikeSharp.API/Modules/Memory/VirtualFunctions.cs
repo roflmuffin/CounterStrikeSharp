@@ -89,7 +89,7 @@ public static class VirtualFunctions
         new(GameData.GetSignature("StateChanged"));
     public static Action<IntPtr, IntPtr, int, short, short> StateChanged = StateChangedFunc.Invoke;
 
-    public static MemoryFunctionVoid<IntPtr, int, long> NetworkStateChangedFunc = new("NetworkStateChanged");
+    public static MemoryFunctionVoid<IntPtr, int, long> NetworkStateChangedFunc = new(GameData.GetSignature("NetworkStateChanged"));
     public static Action<IntPtr, int, long> NetworkStateChanged = NetworkStateChangedFunc.Invoke;
 
 }

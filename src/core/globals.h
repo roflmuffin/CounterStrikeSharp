@@ -8,6 +8,8 @@
 
 #include <thread>
 
+#include <memory>
+
 #include "ISmmAPI.h"
 #include "eiface.h"
 #include "iserver.h"
@@ -37,6 +39,7 @@ class IGameEventSystem;
 class CounterStrikeSharpMMPlugin;
 class CGameEntitySystem;
 class IGameEventListener2;
+class CSchemaSystem;
 
 namespace counterstrikesharp {
 class EntityListener;
@@ -75,6 +78,7 @@ extern IFileSystem *fileSystem;
 extern IServerGameDLL *serverGameDll;
 extern IServerGameClients *serverGameClients;
 extern INetworkServerService *networkServerService;
+extern CSchemaSystem *schemaSystem;
 extern IServerTools *serverTools;
 extern IPhysics *physics;
 extern IPhysicsCollision *physicsCollision;
@@ -128,6 +132,11 @@ CGlobalVars *getGlobalVars();
 
 namespace modules {
 class CModule;
+
+void Initialize();
+CModule* GetModuleByName(std::string name);
+
+extern std::vector<std::unique_ptr<CModule>> moduleList;
 
 extern CModule *engine;
 extern CModule *tier0;

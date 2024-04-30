@@ -88,7 +88,7 @@ public class Mapping
             case "player_controller":
             case "player_pawn":
             case "player_controller_and_pawn":
-                return "CCSPlayerController";
+                return "CCSPlayerController?";
             case "ehandle":
                 return "IntPtr";
             case "uint64":

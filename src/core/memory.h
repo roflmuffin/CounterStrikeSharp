@@ -12,7 +12,4 @@
 #define MODULE_EXT ".so"
 #endif
 
-#if __linux__
-int GetModuleInformation(void *hModule, void **base, size_t *length);
-#endif
 void* FindSignature(const char* moduleName, const char* bytesStr);

@@ -42,9 +42,15 @@ namespace CounterStrikeSharp.API
                 .Where(x => flags.HasFlag(x)).AsEnumerable();
         }
 
-        public static T GetEntityFromIndex<T>(int index) where T : CEntityInstance
+        public static T? GetEntityFromIndex<T>(int index) where T : CEntityInstance
         {
-            return (T)Activator.CreateInstance(typeof(T), NativeAPI.GetEntityFromIndex(index))!;
+            var entityPtr = EntitySystem.GetEntityByIndex((uint)index);
+            if (entityPtr is null || entityPtr == IntPtr.Zero)
+            {
+                return null;
+            }
+
+            return (T)Activator.CreateInstance(typeof(T), entityPtr)!;
         }
 
         public static T? CreateEntityByName<T>(string name) where T : CBaseEntity
@@ -52,19 +58,25 @@ namespace CounterStrikeSharp.API
             return (T?)Activator.CreateInstance(typeof(T), VirtualFunctions.UTIL_CreateEntityByName(name, -1));
         }
 
-        public static CCSPlayerController GetPlayerFromIndex(int index)
+        public static CCSPlayerController? GetPlayerFromIndex(int index)
         {
-            return Utilities.GetEntityFromIndex<CCSPlayerController>(index);
+            var player = GetEntityFromIndex<CCSPlayerController>(index);
+            if (player == null || player.DesignerName != "cs_player_controller")
+            {
+                return null;
+            }
+
+            return player;
         }
 
-        public static CCSPlayerController GetPlayerFromSlot(int slot)
+        public static CCSPlayerController? GetPlayerFromSlot(int slot)
         {
-            return Utilities.GetEntityFromIndex<CCSPlayerController>(slot + 1);
+            return GetPlayerFromIndex(slot + 1);
         }
 
-        public static CCSPlayerController GetPlayerFromUserid(int userid)
+        public static CCSPlayerController? GetPlayerFromUserid(int userid)
         {
-            return Utilities.GetEntityFromIndex<CCSPlayerController>((userid & 0xFF) + 1);
+            return GetPlayerFromIndex((userid & 0xFF) + 1);
         }
 
         public static CCSPlayerController? GetPlayerFromSteamId(ulong steamId)
@@ -87,16 +99,16 @@ namespace CounterStrikeSharp.API
             CHandle<CBasePlayerWeapon>? item = null;
             if (player.PlayerPawn.Value == null || player.PlayerPawn.Value.WeaponServices == null) return false;
 
-            foreach(var weapon in player.PlayerPawn.Value.WeaponServices.MyWeapons)
+            foreach (var weapon in player.PlayerPawn.Value.WeaponServices.MyWeapons)
             {
-                if (weapon is not { IsValid: true, Value.IsValid: true }) 
+                if (weapon is not { IsValid: true, Value.IsValid: true })
                     continue;
-                if (weapon.Value.DesignerName != designerName) 
+                if (weapon.Value.DesignerName != designerName)
                     continue;
 
                 item = weapon;
             }
-            
+
             if (item != null && item.Value != null)
             {
                 player.PlayerPawn.Value.RemovePlayerItem(item.Value);
@@ -108,7 +120,7 @@ namespace CounterStrikeSharp.API
 
                 return true;
             }
-            
+
             return false;
         }
 
@@ -121,7 +133,7 @@ namespace CounterStrikeSharp.API
                 yield return new PointerTo<T>(pEntity.Handle).Value;
             }
         }
-        
+
         public static IEnumerable<CEntityInstance> GetAllEntities()
         {
             var pEntity = new CEntityIdentity(EntitySystem.FirstActiveEntity);
@@ -130,7 +142,7 @@ namespace CounterStrikeSharp.API
                 yield return new PointerTo<CEntityInstance>(pEntity.Handle).Value;
             }
         }
-        
+
         /// <summary>
         /// Returns a list of <see cref="CCSPlayerController"/> that are valid and have a valid <see cref="CCSPlayerController.UserId"/> >= 0
         /// </summary>
@@ -142,7 +154,7 @@ namespace CounterStrikeSharp.API
             {
                 var controller = GetPlayerFromSlot(i);
 
-                if (!controller.IsValid || controller.UserId == -1)
+                if (controller == null || !controller.IsValid || controller.Connected != PlayerConnectedState.PlayerConnected)
                     continue;
 
                 players.Add(controller);
@@ -198,7 +210,7 @@ namespace CounterStrikeSharp.API
 
             return (T)Activator.CreateInstance(typeof(T), pointerTo)!;
         }
-        
+
         private static int FindSchemaChain(string className) => Schema.GetSchemaOffset(className, "__m_pChainEntity");
 
         /// <summary>
@@ -216,10 +228,11 @@ namespace CounterStrikeSharp.API
 
             if (!Schema.IsSchemaFieldNetworked(className, fieldName))
             {
-                Application.Instance.Logger.LogWarning("Field {ClassName}:{FieldName} is not networked, but SetStateChanged was called on it.", className, fieldName);
+                Application.Instance.Logger.LogWarning(
+                    "Field {ClassName}:{FieldName} is not networked, but SetStateChanged was called on it.", className, fieldName);
                 return;
             }
-            
+
             int offset = Schema.GetSchemaOffset(className, fieldName);
             int chainOffset = FindSchemaChain(className);
 

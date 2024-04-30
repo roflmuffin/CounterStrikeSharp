@@ -16,17 +16,17 @@ public partial class CCSPlayerController
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
     public IntPtr GiveNamedItem(string item)
     {
-        Guard.IsValidEntity(this);
-
-        if (!PlayerPawn.IsValid) return 0;
-        if (PlayerPawn.Value == null) return 0;
-        if (!PlayerPawn.Value.IsValid) return 0;
-        if (PlayerPawn.Value.ItemServices == null) return 0;
-
-        return VirtualFunctions.GiveNamedItem(PlayerPawn.Value.ItemServices.Handle, item, 0, 0, 0, 0);
+        return GiveNamedItem<CEntityInstance>(item)?.Handle ?? IntPtr.Zero;
     }
 
-    public IntPtr GiveNamedItem(CsItem item) 
+    public T? GiveNamedItem<T>(string item) where T : CEntityInstance
+    {
+        Guard.IsValidEntity(this);
+
+        return PlayerPawn.Value?.ItemServices?.As<CCSPlayer_ItemServices>().GiveNamedItem<T>(item);
+    }
+
+    public IntPtr GiveNamedItem(CsItem item)
     {
         string? itemString = EnumUtils.GetEnumMemberAttributeValue(item);
         if (string.IsNullOrWhiteSpace(itemString))
@@ -61,6 +61,14 @@ public partial class CCSPlayerController
         VirtualFunctions.ClientPrint(Handle, HudDestination.Center, message, 0, 0, 0, 0);
     }
 
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
+    public void PrintToCenterAlert(string message)
+    {
+        Guard.IsValidEntity(this);
+
+        VirtualFunctions.ClientPrint(Handle, HudDestination.Alert, message, 0, 0, 0, 0);
+    }
+
     public void PrintToCenterHtml(string message) => PrintToCenterHtml(message, 5);
 
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
@@ -85,17 +93,13 @@ public partial class CCSPlayerController
     public void DropActiveWeapon()
     {
         Guard.IsValidEntity(this);
-        if (!PlayerPawn.IsValid) return;
-        if (PlayerPawn.Value == null) return;
-        if (!PlayerPawn.Value.IsValid) return;
-        if (PlayerPawn.Value.ItemServices == null) return;
-        if (PlayerPawn.Value.WeaponServices == null) return;
-        if (!PlayerPawn.Value.WeaponServices.ActiveWeapon.IsValid) return;
 
-        CCSPlayer_ItemServices itemServices = new CCSPlayer_ItemServices(PlayerPawn.Value.ItemServices.Handle);
-        CCSPlayer_WeaponServices weaponServices = new CCSPlayer_WeaponServices(PlayerPawn.Value.WeaponServices.Handle);
-        
-        itemServices.DropActivePlayerWeapon(weaponServices.ActiveWeapon.Value);
+        var itemServices = PlayerPawn.Value?.ItemServices?.As<CCSPlayer_ItemServices>();
+        var activeWeapon = PlayerPawn.Value?.WeaponServices?.ActiveWeapon.Value;
+
+        if (activeWeapon == null || itemServices == null) return;
+
+        itemServices.DropActivePlayerWeapon(activeWeapon);
     }
 
     /// <summary>
@@ -105,13 +109,8 @@ public partial class CCSPlayerController
     public void RemoveWeapons()
     {
         Guard.IsValidEntity(this);
-        if (!PlayerPawn.IsValid) return;
-        if (PlayerPawn.Value == null) return;
-        if (!PlayerPawn.Value.IsValid) return;
-        if (PlayerPawn.Value.ItemServices == null) return;
 
-        CCSPlayer_ItemServices itemServices = new CCSPlayer_ItemServices(PlayerPawn.Value.ItemServices.Handle);
-        itemServices.RemoveWeapons();
+        PlayerPawn.Value?.ItemServices?.As<CCSPlayer_ItemServices>().RemoveWeapons();
     }
 
     /// <summary>
@@ -123,11 +122,8 @@ public partial class CCSPlayerController
     public void CommitSuicide(bool explode, bool force)
     {
         Guard.IsValidEntity(this);
-        if (!PlayerPawn.IsValid) return;
-        if (PlayerPawn.Value == null) return;
-        if (!PlayerPawn.Value.IsValid) return;
 
-        PlayerPawn.Value.CommitSuicide(explode, force);
+        PlayerPawn.Value?.CommitSuicide(explode, force);
     }
 
     /// <summary>
@@ -137,9 +133,7 @@ public partial class CCSPlayerController
     public void Respawn()
     {
         Guard.IsValidEntity(this);
-        if (!PlayerPawn.IsValid) return;
         if (PlayerPawn.Value == null) return;
-        if (!PlayerPawn.Value.IsValid) return;
 
         // The Call To Arms update appears to have invalidated the need for CCSPlayerPawn_Respawn.
         SetPawn(PlayerPawn.Value);

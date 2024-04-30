@@ -22,9 +22,9 @@ public partial class CCSPlayerController_InGameMoneyServices : CPlayerController
 	[SchemaMember("CCSPlayerController_InGameMoneyServices", "m_bReceivesMoneyNextRound")]
 	public ref bool ReceivesMoneyNextRound => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_bReceivesMoneyNextRound");
 
-	// m_iAccountMoneyEarnedForNextRound
-	[SchemaMember("CCSPlayerController_InGameMoneyServices", "m_iAccountMoneyEarnedForNextRound")]
-	public ref Int32 AccountMoneyEarnedForNextRound => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iAccountMoneyEarnedForNextRound");
+	// m_iMoneyEarnedForNextRound
+	[SchemaMember("CCSPlayerController_InGameMoneyServices", "m_iMoneyEarnedForNextRound")]
+	public ref Int32 MoneyEarnedForNextRound => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iMoneyEarnedForNextRound");
 
 	// m_iAccount
 	[SchemaMember("CCSPlayerController_InGameMoneyServices", "m_iAccount")]
