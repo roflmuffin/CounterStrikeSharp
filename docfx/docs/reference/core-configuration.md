@@ -42,7 +42,7 @@ Configures the default language to use for server commands & messages. The forma
 
 ## SteamAuth
 
-Configures the strictness of "AuthorisedSteamID" on the server. Defaults to "Strict". Options are:
+Configures the strictness of "AuthorizedSteamID" on the server. Defaults to "Strict". Options are:
 
 -   "Strict": CS# will only grant permissions to users if the server is currently connected to steam and the user has passed auth checks.
 -   "Flexible" CS# will try to use the users checked steam auth, but failing that will use standard SteamID.
