@@ -3,10 +3,12 @@ using System.Numerics;
 
 namespace CounterStrikeSharp.API.Modules.Utils
 {
+    /// <summary>
+    /// EntityKeyValues
+    /// WARNING: This is intended to only use with DispatchSpawn for now!
+    /// </summary>
     public class CEntityKeyValues
     {
-        internal nint Pointer = 0;
-
         internal Dictionary<string, KeyValueContainer> keyValues = new();
 
         // Getter
@@ -26,7 +28,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
         public Vector2? GetVector2D(string key, Vector2? defaultValue = null) => GetValue(key, defaultValue);
         public Vector4? GetVector4D(string key, Vector4? defaultValue = null) => GetValue(key, defaultValue);
         public Vector4? GetQuaternion(string key, Vector4? defaultValue = null) => GetValue(key, defaultValue);
-        public Angle? GetAngle(string key, Angle? defaultValue = null) => GetValue(key, defaultValue);
+        public QAngle? GetAngle(string key, QAngle? defaultValue = null) => GetValue(key, defaultValue);
         public Matrix3x4? GetMatrix3x4(string key, Matrix3x4? defaultValue = null) => GetValue(key, defaultValue);
 
         // Setter
@@ -46,10 +48,12 @@ namespace CounterStrikeSharp.API.Modules.Utils
         public void SetVector2D(string key, Vector2 value) => SetValue<Vector2>(key, KeyValuesType.TYPE_VECTOR2D, value);
         public void SetVector4D(string key, Vector4 value) => SetValue<Vector4>(key, KeyValuesType.TYPE_VECTOR4D, value);
         public void SetQuaternion(string key, Vector4 value) => SetValue<Vector4>(key, KeyValuesType.TYPE_QUATERNION, value); // Same class with Vector4D
-        public void SetAngle(string key, Angle value) => SetValue<Angle>(key, KeyValuesType.TYPE_QANGLE, value);
+        public void SetAngle(string key, QAngle value) => SetValue<Angle>(key, KeyValuesType.TYPE_QANGLE, value);
         public void SetMatrix3x4(string key, Matrix3x4 value) => SetValue<Matrix3x4>(key, KeyValuesType.TYPE_MATRIX3X4, value);
 
         public bool Remove(string key) => keyValues.Remove(key);
+        public void Clear() => keyValues.Clear();
+        public int Count => keyValues.Count;
 
         internal void SetValue<T>(string key, KeyValuesType type, object value)
         {
@@ -161,14 +165,6 @@ namespace CounterStrikeSharp.API.Modules.Utils
 
             return keyValues.Count;
         }
-
-        public void Create()
-        {
-            int count = Build(out object[] list);
-            Pointer = NativeAPI.CreateEntityKeyvalues(count, list);
-        }
-
-        public nint GetPointer() => Pointer;
 
         internal class KeyValueContainer
         {

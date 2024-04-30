@@ -221,13 +221,13 @@ void DispatchSpawn(ScriptContext& scriptContext)
 {
     auto entity = scriptContext.GetArgument<void*>(0);
     auto count = scriptContext.GetArgument<int>(1);
+
     if (count == 0) {
         CBaseEntity_DispatchSpawn(entity, nullptr);
         return;
     }
 
     CEntityKeyValues* pKeyValues = new CEntityKeyValues();
-    pKeyValues->EnableLogging(true);
 
     int offset = 2;
     for (int i = 0; i < count; ++i) {
