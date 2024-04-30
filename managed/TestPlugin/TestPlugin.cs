@@ -122,7 +122,7 @@ namespace TestPlugin
         {
             RegisterListener<Listeners.OnMapStart>(name =>
             {
-                ConVar.FindRequired("sv_cheats").SetValue(true);
+                ConVar.Find("sv_cheats")?.SetValue(true);
 
                 var numericCvar = ConVar.Find("mp_warmuptime");
                 Logger.LogInformation("mp_warmuptime = {Value}", numericCvar?.GetPrimitiveValue<float>());
@@ -355,6 +355,17 @@ namespace TestPlugin
             Logger.LogInformation("Player {Name} has connected! (pre)", @event.Name);
 
             return HookResult.Continue;
+        }
+
+        [ConsoleCommand("css_testinput", "Test AcceptInput and AddEntityIOEvent")]
+        public void OnTestInput(CCSPlayerController? player, CommandInfo command)
+        {
+            if (player == null) return;
+            var pawn = player.PlayerPawn.Get();
+            if (pawn == null) return;
+
+            pawn!.AcceptInput("SetHealth", null, null, "50");
+            pawn!.AddEntityIOEvent("SetHealth", null, null, "75", 5);
         }
 
         [ConsoleCommand("css_killmeplease", "Kills the player")]

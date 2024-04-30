@@ -65,7 +65,7 @@ public partial class CEntityInstance : IEquatable<CEntityInstance>
     }
 
     /// <summary>
-    /// Calls a named input method on an entity.
+    /// Calls a named input method on an entity, this will bypass the map IO event queue system.
     /// <example>
     /// <code>
     /// entity.AcceptInput("Break");
@@ -82,7 +82,30 @@ public partial class CEntityInstance : IEquatable<CEntityInstance>
     {
         Guard.IsValidEntity(this);
 
-        VirtualFunctions.AcceptInput(Handle, inputName, activator?.Handle ?? IntPtr.Zero, caller?.Handle ?? IntPtr.Zero, value, 0);
+        NativeAPI.AcceptInput(Handle, inputName, activator?.Handle ?? IntPtr.Zero, caller?.Handle ?? IntPtr.Zero, value, outputId);
+    }
+
+
+    /// <summary>
+    /// Calls a named input method on an entity, conforming to the map IO event queue system.
+    /// <example>
+    /// <code>
+    /// entity.AddEntityIOEvent("Break");
+    /// </code>
+    /// </example>
+    /// </summary>
+    /// <param name="inputName">Input action name</param>
+    /// <param name="activator">Entity which initiated the action, <see langword="null"/> for no entity</param>
+    /// <param name="caller">Entity that is sending the event, <see langword="null"/> for no entity</param>
+    /// <param name="value">String variant value to send with the event</param>
+    /// <param name="delay">Delay in seconds before calling the input</param>
+    /// <param name="outputId">Unknown, defaults to 0</param>
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
+    public void AddEntityIOEvent(string inputName, CEntityInstance? activator = null, CEntityInstance? caller = null, string value = "", float delay = 0, int outputId = 0)
+    {
+        Guard.IsValidEntity(this);
+
+        NativeAPI.AddEntityIoEvent(Handle, inputName, activator?.Handle ?? IntPtr.Zero, caller?.Handle ?? IntPtr.Zero, value, delay, outputId);
     }
 }
 
