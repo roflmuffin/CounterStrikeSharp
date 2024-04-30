@@ -26,6 +26,14 @@ CCoreConfig::CCoreConfig(const std::string& path) { m_sPath = path; }
 
 CCoreConfig::~CCoreConfig() = default;
 
+// map TaskState values to JSON as strings
+NLOHMANN_JSON_SERIALIZE_ENUM(SteamAuthStrictness,
+                             {
+                                 { Strict, "Strict" },
+                                 { Flexible, "Flexible" },
+                                 { Off, "Off" },
+                             })
+
 bool CCoreConfig::Init(char* conf_error, int conf_error_size)
 {
     std::ifstream ifs(std::string(m_sPath + ".json"));
@@ -58,7 +66,7 @@ bool CCoreConfig::Init(char* conf_error, int conf_error_size)
         PluginHotReloadEnabled = m_json.value("PluginHotReloadEnabled", PluginHotReloadEnabled);
         PluginAutoLoadEnabled = m_json.value("PluginAutoLoadEnabled", PluginAutoLoadEnabled);
         ServerLanguage = m_json.value("ServerLanguage", ServerLanguage);
-        SteamAuth = m_json.value("SteamAuth", SteamAuth);
+        SteamAuth = m_json["SteamAuth"].template get<SteamAuthStrictness>();
     }
     catch (const std::exception& ex)
     {

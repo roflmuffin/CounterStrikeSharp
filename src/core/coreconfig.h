@@ -24,6 +24,13 @@
 
 namespace counterstrikesharp {
 
+enum SteamAuthStrictness
+{
+    Strict,
+    Flexible,
+    Off
+};
+
 class CCoreConfig
 {
   public:
@@ -33,7 +40,7 @@ class CCoreConfig
     bool PluginHotReloadEnabled = true;
     bool PluginAutoLoadEnabled = true;
     std::string ServerLanguage = "en";
-    std::string SteamAuth = "Strict";
+    SteamAuthStrictness SteamAuth = Strict;
 
     using json = nlohmann::json;
     CCoreConfig(const std::string& path);

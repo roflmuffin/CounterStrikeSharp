@@ -178,12 +178,12 @@ unsigned long GetPlayerAuthorizedSteamID(ScriptContext& script_context)
         return -1;
     }
 
-    if (V_strcasecmp(globals::coreConfig->SteamAuth.c_str(), "Off") == 0)
+    if (globals::coreConfig->SteamAuth == Off)
     {
         return globals::engine->GetClientSteamID(pPlayer->GetSlot())->ConvertToUint64();
     }
 
-    if (V_strcasecmp(globals::coreConfig->SteamAuth.c_str(), "Flexible") == 0)
+    if (globals::coreConfig->SteamAuth == Flexible)
     {
         auto pSteamId = pPlayer->GetSteamId();
         if (pSteamId == nullptr)
