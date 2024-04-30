@@ -122,7 +122,7 @@ namespace TestPlugin
         {
             RegisterListener<Listeners.OnMapStart>(name =>
             {
-                ConVar.FindRequired("sv_cheats").SetValue(true);
+                ConVar.Find("sv_cheats")?.SetValue(true);
 
                 var numericCvar = ConVar.Find("mp_warmuptime");
                 Logger.LogInformation("mp_warmuptime = {Value}", numericCvar?.GetPrimitiveValue<float>());

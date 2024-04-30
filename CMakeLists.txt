@@ -5,6 +5,8 @@ project(counterstrikesharp C CXX ASM)
 
 include("makefiles/shared.cmake")
 
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+
 add_subdirectory(libraries/spdlog)
 add_subdirectory(libraries/dyncall)
 add_subdirectory(libraries/funchook)
@@ -14,6 +16,7 @@ set_property(TARGET dynohook PROPERTY DYNO_ARCH_X86 64)
 set_property(TARGET funchook-static PROPERTY POSITION_INDEPENDENT_CODE ON)
 
 SET(SOURCE_FILES
+    libraries/hl2sdk-cs2/public/tier0/memoverride.cpp
     src/mm_plugin.cpp
     src/mm_plugin.h
     libraries/hl2sdk-cs2/tier1/convar.cpp
@@ -96,13 +99,13 @@ SET(SOURCE_FILES
 )
 
 
-if (LINUX)
+#if (LINUX)
     # memoverride.cpp is not usable on CMake Windows, cuz CMake default link libraries (seems) always link ucrt.lib
-    set(SOURCE_FILES
-        ${SOURCE_FILES}
-        libraries/hl2sdk-cs2/public/tier0/memoverride.cpp
-    )
-endif()
+#    set(SOURCE_FILES
+#        ${SOURCE_FILES}
+#        libraries/hl2sdk-cs2/public/tier0/memoverride.cpp
+#    )
+#endif()
 
 set(PROTO_DIRS -I${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo)
 file(GLOB PROTOS "${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo/*.proto")

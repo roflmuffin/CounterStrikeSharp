@@ -6,6 +6,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
     /// <summary>
     /// EntityKeyValues
     /// WARNING: This is intended to only use with DispatchSpawn for now!
+    /// TODO: Might need more works with vector and angle classes, because this is only managed side, no need to alloc memory on unmanaged side, but still need to compatible to original vector classes
     /// </summary>
     public class CEntityKeyValues
     {
@@ -179,7 +180,11 @@ namespace CounterStrikeSharp.API.Modules.Utils
 
             public KeyValuesType GetContainerType() => type;
             public T Get<T>() => (T)value;
+
+            // Shut visual studio up
+            #pragma warning disable 8601
             public void Set<T>(T val) => value = val;
+            #pragma warning restore
         }
 
         internal enum KeyValuesType : uint
