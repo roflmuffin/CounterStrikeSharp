@@ -28,17 +28,23 @@ namespace CounterStrikeSharp.API.Core
     public interface IPlugin : IDisposable
     {
         /// <summary>
-        /// Name of the plugin.
+        /// Name of the plugin as it will appear in the plugin list.
         /// </summary>
         string ModuleName { get; }
 
         /// <summary>
-        /// Module version.
+        /// Module version as it will appear in the plugin list.
         /// </summary>
         string ModuleVersion { get; }
 
+        /// <summary>
+        /// Author of the plugin as it will appear in the plugin list.
+        /// </summary>
         string ModuleAuthor { get; }
 
+        /// <summary>
+        /// Brief description of the plugin as it will appear in the plugin list.
+        /// </summary>
         string ModuleDescription { get; }
 
         /// <summary>
@@ -61,12 +67,15 @@ namespace CounterStrikeSharp.API.Core
         /// <param name="hotReload"></param>
         void OnAllPluginsLoaded(bool hotReload);
 
+        /// <summary>
+        /// The path to the plugin's DLL file.
+        /// </summary>
         string ModulePath { get; internal set; }
 
         ILogger Logger { get; set; }
-        
+
         IStringLocalizer Localizer { get; set; }
-        
+
         ICommandManager CommandManager { get; set; }
 
         void RegisterAllAttributes(object instance);

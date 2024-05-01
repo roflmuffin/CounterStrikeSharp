@@ -81,15 +81,12 @@ public static class VirtualFunctions
     public static MemoryFunctionVoid<IntPtr, IntPtr>  RemovePlayerItemFunc =
         new(GameData.GetSignature("CBasePlayerPawn_RemovePlayerItem"));
     public static Action<IntPtr, IntPtr> RemovePlayerItemVirtual = RemovePlayerItemFunc.Invoke;
-    
-    public static MemoryFunctionVoid<IntPtr, string, IntPtr, IntPtr, string, int> AcceptInputFunc = new(GameData.GetSignature("CEntityInstance_AcceptInput"));
-    public static Action<IntPtr, string, IntPtr, IntPtr, string, int> AcceptInput = AcceptInputFunc.Invoke;
 
     public static MemoryFunctionVoid<IntPtr, IntPtr, int, short, short> StateChangedFunc =
         new(GameData.GetSignature("StateChanged"));
     public static Action<IntPtr, IntPtr, int, short, short> StateChanged = StateChangedFunc.Invoke;
 
-    public static MemoryFunctionVoid<IntPtr, int, long> NetworkStateChangedFunc = new("NetworkStateChanged");
+    public static MemoryFunctionVoid<IntPtr, int, long> NetworkStateChangedFunc = new(GameData.GetSignature("NetworkStateChanged"));
     public static Action<IntPtr, int, long> NetworkStateChanged = NetworkStateChangedFunc.Invoke;
 
 }

@@ -123,9 +123,6 @@ namespace CounterStrikeSharp.API.Core
         public readonly Dictionary<Delegate, CallbackSubscriber> CommandListeners =
             new Dictionary<Delegate, CallbackSubscriber>();
 
-        public readonly Dictionary<Delegate, CallbackSubscriber> ConvarChangeHandlers =
-            new Dictionary<Delegate, CallbackSubscriber>();
-
         public readonly Dictionary<Delegate, CallbackSubscriber> Listeners =
             new Dictionary<Delegate, CallbackSubscriber>();
 
@@ -160,7 +157,23 @@ namespace CounterStrikeSharp.API.Core
             var name = typeof(T).GetCustomAttribute<EventNameAttribute>()?.Name;
             RegisterEventHandlerInternal(name, handler, hookMode == HookMode.Post);
         }
+        
+        /// <summary>
+        /// De-registers a game event handler.
+        /// </summary>
+        /// <inheritdoc cref="RegisterEventHandler{T}"/>
+        public void DeregisterEventHandler<T>(GameEventHandler<T> handler, HookMode hookMode = HookMode.Post) where T : GameEvent
+        {
+            var name = typeof(T).GetCustomAttribute<EventNameAttribute>()!.Name;
+            
+            if (!Handlers.TryGetValue(handler, out var subscriber)) return;
 
+            NativeAPI.UnhookEvent(name, subscriber.GetInputArgument(), hookMode == HookMode.Post);
+            FunctionReference.Remove(subscriber.GetReferenceIdentifier());
+            Handlers.Remove(handler);
+        }
+
+        [Obsolete("Use the generic version of this method")]
         public void DeregisterEventHandler(string name, Delegate handler, bool post)
         {
             if (!Handlers.TryGetValue(handler, out var subscriber)) return;
@@ -188,6 +201,12 @@ namespace CounterStrikeSharp.API.Core
             CommandManager.RegisterCommand(definition);
         }
 
+        /// <summary>
+        /// Adds a command listener which will be called before or after the command is executed on the server by a player.
+        /// </summary>
+        /// <param name="name">Name of the command, e.g. `jointeam`</param>
+        /// <param name="handler">Code to run when command is executed. Return <see cref="HookResult.Handled"/> or higher to prevent command execution.</param>
+        /// <param name="mode">Whether to hook before or after the command is executed.</param>
         public void AddCommandListener(string? name, CommandInfo.CommandListenerCallback handler, HookMode mode = HookMode.Pre)
         {
             var wrappedHandler = new Func<int, IntPtr, HookResult>((i, ptr) =>
@@ -203,6 +222,11 @@ namespace CounterStrikeSharp.API.Core
             CommandListeners[handler] = subscriber;
         }
 
+        /// <summary>
+        /// Removes a server command.
+        /// </summary>
+        /// <param name="name">The name of the command.</param>
+        /// <param name="handler">The callback function to be invoked when the command is executed.</param>
         public void RemoveCommand(string name, CommandInfo.CommandCallback handler)
         {
             if (CommandHandlers.ContainsKey(handler))
@@ -216,6 +240,10 @@ namespace CounterStrikeSharp.API.Core
             }
         }
 
+        /// <summary>
+        /// Remove a command listener.
+        /// </summary>
+        /// <inheritdoc cref="AddCommandListener"/>
         public void RemoveCommandListener(string name, CommandInfo.CommandListenerCallback handler, HookMode mode)
         {
             if (CommandListeners.ContainsKey(handler))
@@ -229,39 +257,24 @@ namespace CounterStrikeSharp.API.Core
             }
         }
 
-        /*
-
-        public void HookConVarChange(ConVar convar, ConVar.ConVarChangedCallback handler)
-        {
-            var wrappedHandler = new Action<IntPtr, string, string>((ptr, oldVal, newVal) =>
-            {
-                handler?.Invoke(new ConVar(ptr), oldVal, newVal);
-            });
-
-            var subscriber = new CallbackSubscriber(convar, handler, wrappedHandler);
-            NativeAPI.HookConvarChange(convar.Handle, subscriber.GetInputArgument());
-            ConvarChangeHandlers[handler] = subscriber;
-        }
-
-        public void UnhookConVarChange(ConVar convar, ConVar.ConVarChangedCallback handler)
-        {
-            if (ConvarChangeHandlers.ContainsKey(handler))
-            {
-                var subscriber = ConvarChangeHandlers[handler];
-
-                NativeAPI.UnhookConvarChange(convar.Handle, subscriber.GetInputArgument());
-                FunctionReference.Remove(subscriber.GetReferenceIdentifier());
-                CommandHandlers.Remove(handler);
-            }
-        }*/
-
-        // Adds global listener, e.g. OnTick, OnClientConnect
+        /// <summary>
+        /// Registers a global listener, e.g. <see cref="Listeners.OnTick"/>, <see cref="Listeners.OnClientConnect"/>.
+        /// </summary>
+        /// <param name="handler"></param>
+        /// <typeparam name="T">Listener delegate type</typeparam>
+        /// <exception cref="ArgumentException">Invalid listener <see cref="T"/> provided</exception>
+        /// <example>
+        /// <code lang="C#">
+        /// RegisterListener&lt;Listeners.OnTick&gt;(OnTick);
+        /// </code>
+        /// </example>
         public void RegisterListener<T>(T handler) where T : Delegate
         {
             var listenerName = typeof(T).GetCustomAttribute<ListenerNameAttribute>()?.Name;
             if (string.IsNullOrEmpty(listenerName))
             {
-                throw new Exception("Listener of type T is invalid and does not have a name attribute");
+                throw new ArgumentException("Listener of type T is invalid and does not have a name attribute",
+                    nameof(T));
             }
 
             var parameterTypes = typeof(T).GetMethod("Invoke").GetParameters().Select(p => p.ParameterType).ToArray();
@@ -292,6 +305,34 @@ namespace CounterStrikeSharp.API.Core
             Listeners[handler] = subscriber;
         }
 
+        /// <summary>
+        /// Removes a global listener.
+        /// </summary>
+        /// <param name="handler"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <exception cref="ArgumentException">Invalid listener <see cref="T"/> provided</exception>
+        public void RemoveListener<T>(T handler) where T : Delegate
+        {
+            var listenerName = typeof(T).GetCustomAttribute<ListenerNameAttribute>()?.Name;
+            if (string.IsNullOrEmpty(listenerName))
+            {
+                throw new ArgumentException("Listener of type T is invalid and does not have a name attribute",
+                    nameof(T));
+            }
+            
+            if (!Listeners.TryGetValue(handler, out var subscriber)) return;
+            
+            NativeAPI.RemoveListener(listenerName, subscriber.GetInputArgument());
+            FunctionReference.Remove(subscriber.GetReferenceIdentifier());
+            Listeners.Remove(handler);
+        }
+
+        /// <summary>
+        /// Removes a global listener.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="handler"></param>
+        [Obsolete("Use the generic version of this method")]
         public void RemoveListener(string name, Delegate handler)
         {
             if (!Listeners.TryGetValue(handler, out var subscriber)) return;
@@ -301,6 +342,14 @@ namespace CounterStrikeSharp.API.Core
             Listeners.Remove(handler);
         }
 
+        /// <summary>
+        /// Adds a timer that will call the given callback after the specified amount of seconds.
+        /// By default will only run once unless the <see cref="TimerFlags.REPEAT"/> flag is set.
+        /// </summary>
+        /// <param name="interval">Interval/Delay in seconds</param>
+        /// <param name="callback">Code to run when timer elapses</param>
+        /// <param name="flags">Controls if the timer is a one-off, repeat or stops on map change etc.</param>
+        /// <returns>An instance of the <see cref="Timer"/></returns>
         public Timer AddTimer(float interval, Action callback, TimerFlags? flags = null)
         {
             var timer = new Timer(interval, callback, flags ?? 0);
@@ -308,7 +357,11 @@ namespace CounterStrikeSharp.API.Core
             return timer;
         }
 
-
+        /// <summary>
+        /// Registers all attribute handlers on the given instance.
+        /// Can be used to register event handlers, console commands, entity outputs etc. from classes that are not derived from `BasePlugin`.
+        /// </summary>
+        /// <param name="instance"></param>
         public void RegisterAllAttributes(object instance)
         {
             this.RegisterAttributeHandlers(instance);
@@ -343,7 +396,7 @@ namespace CounterStrikeSharp.API.Core
         }
 
         /// <summary>
-        /// Registers all game event handlers that are decorated with the `[GameEventHandler]` attribute.
+        /// Registers all game event handlers that are decorated with the <see cref="GameEventHandlerAttribute"/> attribute.
         /// </summary>
         /// <param name="instance">The instance of the object where the event handlers are defined.</param>
         public void RegisterAttributeHandlers(object instance)
@@ -373,6 +426,10 @@ namespace CounterStrikeSharp.API.Core
             }
         }
 
+        /// <summary>
+        /// Registers all console command handlers that are decorated with the <see cref="ConsoleCommandAttribute"/> attribute.
+        /// </summary>
+        /// <param name="instance">The instance of the object where the console command handlers are defined.</param>
         public void RegisterConsoleCommandAttributeHandlers(object instance)
         {
             var eventHandlers = instance.GetType()
@@ -400,6 +457,10 @@ namespace CounterStrikeSharp.API.Core
             }
         }
 
+        /// <summary>
+        /// Registers all entity output handlers that are decorated with the <see cref="EntityOutputHookAttribute"/> attribute.
+        /// </summary>
+        /// <param name="instance">The instance of the object where entity output hook handlers are defined.</param>
         public void RegisterEntityOutputAttributeHandlers(object instance)
         {
             var handlers = instance.GetType()
@@ -454,6 +515,12 @@ namespace CounterStrikeSharp.API.Core
             RegisterFakeConVars(instance.GetType(), instance);
         }
 
+        /// <summary>
+        /// Hooks an <a href="https://developer.valvesoftware.com/wiki/Inputs_and_Outputs">entity output</a>.
+        /// </summary>
+        /// <param name="classname">Classname to hook, or `*` for wildcard</param>
+        /// <param name="outputName">Output name to hook, or `*` for wildcard</param>
+        /// <param name="handler">Handler to call</param>
         public void HookEntityOutput(string classname, string outputName, EntityIO.EntityOutputHandler handler, HookMode mode = HookMode.Pre)
         {
             var subscriber = new CallbackSubscriber(handler, handler,
@@ -481,6 +548,10 @@ namespace CounterStrikeSharp.API.Core
             Handlers.Remove(handler);
         }
 
+        /// <summary>
+        /// Unhooks an entity output.
+        /// </summary>
+        /// <inheritdoc cref="HookEntityOutput"/>
         public void UnhookEntityOutput(string classname, string outputName, EntityIO.EntityOutputHandler handler, HookMode mode = HookMode.Pre)
         {
             if (!EntityOutputHooks.TryGetValue(handler, out var subscriber)) return;
@@ -490,6 +561,12 @@ namespace CounterStrikeSharp.API.Core
             EntityOutputHooks.Remove(handler);
         }
 
+        /// <summary>
+        /// Hooks an entity output for a single entity instance.
+        /// </summary>
+        /// <param name="entityInstance">Entity instance to hook</param>
+        /// <param name="outputName">Output name to hook, or `*` for wildcard</param>
+        /// <param name="handler">Handler to call</param>
         public void HookSingleEntityOutput(CEntityInstance entityInstance, string outputName, EntityIO.EntityOutputHandler handler)
         {
             // since we wrap around the plugin handler we need to do this to ensure that the plugin callback is only called
@@ -513,6 +590,10 @@ namespace CounterStrikeSharp.API.Core
             EntitySingleOutputHooks[handler] = new EntityIO.EntityOutputCallback(entityInstance.DesignerName, outputName, internalHandler);
         }
 
+        /// <summary>
+        /// Unhooks an entity output for a single entity instance.
+        /// </summary>
+        /// <inheritdoc cref="HookSingleEntityOutput"/>
         public void UnhookSingleEntityOutput(CEntityInstance entityInstance, string outputName, EntityIO.EntityOutputHandler handler)
         {
             UnhookSingleEntityOutputInternal(entityInstance.DesignerName, outputName, handler);
@@ -549,10 +630,6 @@ namespace CounterStrikeSharp.API.Core
             foreach (var subscriber in CommandListeners.Values)
             {
                 subscriber.Dispose();
-            }
-
-            foreach (var kv in ConvarChangeHandlers)
-            {
             }
 
             foreach (var subscriber in Listeners.Values)

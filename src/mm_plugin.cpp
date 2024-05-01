@@ -114,6 +114,7 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
                     INTERFACEVERSION_SERVERGAMECLIENTS);
     GET_V_IFACE_ANY(GetEngineFactory, globals::networkServerService, INetworkServerService,
                     NETWORKSERVERSERVICE_INTERFACE_VERSION);
+    GET_V_IFACE_ANY(GetEngineFactory, globals::schemaSystem, CSchemaSystem, SCHEMASYSTEM_INTERFACE_VERSION);
     GET_V_IFACE_ANY(GetEngineFactory, globals::gameEventSystem, IGameEventSystem,
                     GAMEEVENTSYSTEM_INTERFACE_VERSION);
     GET_V_IFACE_ANY(GetEngineFactory, globals::engineServiceManager, IEngineServiceMgr,
@@ -182,7 +183,7 @@ void CounterStrikeSharpMMPlugin::Hook_StartupServer(const GameSessionConfigurati
     globals::timerSystem.OnStartupServer();
 
     on_activate_callback->ScriptContext().Reset();
-    on_activate_callback->ScriptContext().Push(globals::getGlobalVars()->mapname);
+    on_activate_callback->ScriptContext().Push(globals::getGlobalVars()->mapname.ToCStr());
     on_activate_callback->Execute();
 }
 

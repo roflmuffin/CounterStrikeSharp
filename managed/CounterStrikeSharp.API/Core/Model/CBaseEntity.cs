@@ -8,10 +8,14 @@ namespace CounterStrikeSharp.API.Core;
 public partial class CBaseEntity
 {
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
-    public void Teleport(Vector position, QAngle angles, Vector velocity)
+    public void Teleport(Vector? position = null, QAngle? angles = null, Vector? velocity = null)
     {
         Guard.IsValidEntity(this);
 
+        position ??= AbsOrigin!;
+        angles ??= AbsRotation!;
+        velocity ??= AbsVelocity;
+        
         VirtualFunction.CreateVoid<IntPtr, IntPtr, IntPtr, IntPtr>(Handle, GameData.GetOffset("CBaseEntity_Teleport"))(
             Handle, position.Handle, angles.Handle, velocity.Handle);
     }
@@ -39,6 +43,6 @@ public partial class CBaseEntity
     {
         Guard.IsValidEntity(this);
 
-        return (T) Activator.CreateInstance(typeof(T), Marshal.ReadIntPtr(SubclassID.Handle + 4));
+        return (T)Activator.CreateInstance(typeof(T), Marshal.ReadIntPtr(SubclassID.Handle + 4));
     }
 }

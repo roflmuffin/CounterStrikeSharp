@@ -111,7 +111,6 @@ class CPlayer
     const char* GetModelName() const;
     int GetUserId() const;
     float GetTimeConnected() const;
-    float GetLatency() const;
     void SetListen(CPlayerSlot slot, ListenOverride listen);
     void SetVoiceFlags(VoiceFlag_t flags);
     VoiceFlag_t GetVoiceFlags();

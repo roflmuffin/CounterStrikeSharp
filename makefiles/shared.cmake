@@ -11,8 +11,7 @@ set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING
     FORCE
 )
 
-# TODO: Use C++20 instead.
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 
 if (LINUX)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
@@ -56,6 +55,7 @@ include_directories(
     ${SOURCESDK}/public/entity2
     ${SOURCESDK}/public/game/server
     ${SOURCESDK}/public/entity2
+    ${SOURCESDK}/public/schemasystem
     ${METAMOD_DIR}/core
     ${METAMOD_DIR}/core/sourcehook
     libraries/Protobufs/csgo

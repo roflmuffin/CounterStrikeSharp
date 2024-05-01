@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.Frozen;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -12,7 +13,7 @@ public class Target
     private string Raw { get; }
     private string Slug { get; }
     
-    private static readonly Dictionary<string, TargetType> TargetTypeMap = new(StringComparer.OrdinalIgnoreCase)
+    public static readonly IReadOnlyDictionary<string, TargetType> TargetTypeMap = new Dictionary<string, TargetType>(StringComparer.OrdinalIgnoreCase)
     {
         { "@all", TargetType.GroupAll },
         { "@bots", TargetType.GroupBots },
@@ -24,7 +25,7 @@ public class Target
         { "@ct", TargetType.TeamCt },
         { "@t", TargetType.TeamT },
         { "@spec", TargetType.TeamSpec }
-    };
+    }.ToFrozenDictionary();
 
 
     private static bool ConstTargetType(string target, out TargetType targetType)

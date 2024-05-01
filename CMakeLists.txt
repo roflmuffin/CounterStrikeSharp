@@ -15,7 +15,8 @@ add_subdirectory(libraries/DynoHook)
 set_property(TARGET dynohook PROPERTY DYNO_ARCH_X86 64)
 set_property(TARGET funchook-static PROPERTY POSITION_INDEPENDENT_CODE ON)
 
-SET(SOURCE_FILES
+set(SOURCE_FILES
+    libraries/hl2sdk-cs2/public/tier0/memoverride.cpp
     src/mm_plugin.cpp
     src/mm_plugin.h
     libraries/hl2sdk-cs2/tier1/convar.cpp
@@ -72,7 +73,6 @@ SET(SOURCE_FILES
     src/core/memory_module.h
     src/core/memory_module.cpp
     src/core/cs2_sdk/interfaces/cgameresourceserviceserver.h
-    src/core/cs2_sdk/interfaces/cschemasystem.h
     src/core/cs2_sdk/interfaces/cs2_interfaces.h
     src/core/cs2_sdk/interfaces/cs2_interfaces.cpp
     src/core/cs2_sdk/schema.h
@@ -103,31 +103,22 @@ SET(SOURCE_FILES
     src/core/UserMessage.cpp
 )
 
-
-if (LINUX)
-    # memoverride.cpp is not usable on CMake Windows, cuz CMake default link libraries (seems) always link ucrt.lib
-    set(SOURCE_FILES
-        ${SOURCE_FILES}
-        libraries/hl2sdk-cs2/public/tier0/memoverride.cpp
-    )
-endif()
-
 set(PROTO_DIRS -I${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo)
 file(GLOB PROTOS "${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo/*.proto")
 
 ## Generate protobuf source & headers
-if (LINUX)
+if(LINUX)
     set(PROTOC_EXECUTABLE ${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2/devtools/bin/linux/protoc)
 elseif(WIN32)
     set(PROTOC_EXECUTABLE ${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2/devtools/bin/protoc.exe)
 endif()
 
 add_custom_command(
-        OUTPUT protobuf_output_stamp
+    OUTPUT protobuf_output_stamp
         COMMAND ${PROTOC_EXECUTABLE} --proto_path=${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2/thirdparty/protobuf-3.21.8/src --proto_path=${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo --cpp_out=. network_connection.proto cs_gameevents.proto networkbasetypes.proto cstrike15_usermessages.proto cstrike15_gcmessages.proto steammessages.proto engine_gcmessages.proto gcsdk_gcmessages.proto netmessages.proto usermessages.proto gameevents.proto clientmessages.proto te.proto cs_usercmd.proto usercmd.proto
-        COMMENT "Generating protobuf file"
+    COMMENT "Generating protobuf file"
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo
-        VERBATIM
+    VERBATIM
 )
 
 # SET(SOURCE_FILES ${SOURCE_FILES} protobuf_output_stamp)
@@ -152,33 +143,31 @@ SET(SOURCE_FILES ${SOURCE_FILES}
 add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${NATIVES_SOURCES} ${CONVERSIONS_SOURCES} ${CONVERSIONS_HEADERS})
 
 target_include_directories(
-        ${PROJECT_NAME}
-        PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/src
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/core/cs2_sdk
+    ${PROJECT_NAME}
+    PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/src
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/core/cs2_sdk
 )
 
-if (LINUX)
+if(LINUX)
     include("makefiles/linux.base.cmake")
     set_target_properties(${PROJECT_NAME} PROPERTIES
-        PREFIX ""
-        LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/addons/counterstrikesharp/bin/linuxsteamrt64"
+                          PREFIX ""
+                          LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/addons/counterstrikesharp/bin/linuxsteamrt64"
     )
 elseif(WIN32)
     include("makefiles/windows.base.cmake")
     set_target_properties(${PROJECT_NAME} PROPERTIES
-        PREFIX ""
-        LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/addons/counterstrikesharp/bin/win64"
+                          PREFIX ""
+                          LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/addons/counterstrikesharp/bin/win64"
     )
 endif()
-
-
 
 # Libraries
 target_link_libraries(${PROJECT_NAME} ${COUNTER_STRIKE_SHARP_LINK_LIBRARIES})
 
 add_custom_command(
-        TARGET ${PROJECT_NAME} PRE_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_SOURCE_DIR}/configs ${CMAKE_BINARY_DIR}
+    TARGET ${PROJECT_NAME} PRE_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_SOURCE_DIR}/configs ${CMAKE_BINARY_DIR}
 )

@@ -193,6 +193,45 @@ void UnhookEntityOutput(ScriptContext& script_context)
     globals::entityManager.UnhookEntityOutput(szClassname, szOutput, callback, mode);
 }
 
+void AcceptInput(ScriptContext& script_context)
+{
+    if (!CEntityInstance_AcceptInput)
+    {
+        script_context.ThrowNativeError("Failed to find signature for \'CEntityInstance_AcceptInput\'");
+        return;
+    }
+
+    CEntityInstance* pThis = script_context.GetArgument<CEntityInstance*>(0);
+    const char* pInputName = script_context.GetArgument<const char*>(1);
+    CEntityInstance* pActivator = script_context.GetArgument<CEntityInstance*>(2);
+    CEntityInstance* pCaller = script_context.GetArgument<CEntityInstance*>(3);
+    const char* value = script_context.GetArgument<const char*>(4);
+    int outputID = script_context.GetArgument<int>(5);
+
+    variant_t _value = variant_t(value);
+    CEntityInstance_AcceptInput(pThis, pInputName, pActivator, pCaller, &_value, outputID);
+}
+
+void AddEntityIOEvent(ScriptContext& script_context)
+{
+    if (!CEntitySystem_AddEntityIOEvent)
+    {
+        script_context.ThrowNativeError("Failed to find signature for \'CEntitySystem_AddEntityIOEvent\'");
+        return;
+    }
+
+    CEntityInstance* pTarget = script_context.GetArgument<CEntityInstance*>(0);
+    const char* pInputName = script_context.GetArgument<const char*>(1);
+    CEntityInstance* pActivator = script_context.GetArgument<CEntityInstance*>(2);
+    CEntityInstance* pCaller = script_context.GetArgument<CEntityInstance*>(3);
+    const char* value = script_context.GetArgument<const char*>(4);
+    float delay = script_context.GetArgument<float>(5);
+    int outputID = script_context.GetArgument<int>(6);
+
+    variant_t _value = variant_t(value);
+    CEntitySystem_AddEntityIOEvent(GameEntitySystem(), pTarget, pInputName, pActivator, pCaller, &_value, delay, outputID);
+}
+
 REGISTER_NATIVES(entities, {
     ScriptEngine::RegisterNativeHandler("GET_ENTITY_FROM_INDEX", GetEntityFromIndex);
     ScriptEngine::RegisterNativeHandler("GET_USERID_FROM_INDEX", GetUserIdFromIndex);
@@ -209,5 +248,7 @@ REGISTER_NATIVES(entities, {
     ScriptEngine::RegisterNativeHandler("GET_PLAYER_IP_ADDRESS", GetPlayerIpAddress);
     ScriptEngine::RegisterNativeHandler("HOOK_ENTITY_OUTPUT", HookEntityOutput);
     ScriptEngine::RegisterNativeHandler("UNHOOK_ENTITY_OUTPUT", UnhookEntityOutput);
+    ScriptEngine::RegisterNativeHandler("ACCEPT_INPUT", AcceptInput);
+    ScriptEngine::RegisterNativeHandler("ADD_ENTITY_IO_EVENT", AddEntityIOEvent);
 })
 }  // namespace counterstrikesharp
