@@ -12,35 +12,28 @@
  * This sample plugin is public domain.
  */
 
+// clang-format off
 #include "mm_plugin.h"
 
 #include <cstdio>
 
-#include "clientmessages.pb.h"
-#include "core/coreconfig.h"
-#include "core/game_system.h"
-#include "core/gameconfig.h"
 #include "core/global_listener.h"
 #include "core/log.h"
-#include "core/managers/entity_manager.h"
-#include "core/tick_scheduler.h"
+#include "core/coreconfig.h"
+#include "core/gameconfig.h"
+#include "core/game_system.h"
 #include "core/timer_system.h"
+#include "core/tick_scheduler.h"
 #include "core/utils.h"
-#include "cs_gameevents.pb.h"
-#include "cs_usercmd.pb.h"
-#include "cstrike15_usermessages.pb.h"
-#include "entity2/entitysystem.h"
-#include "gameevents.pb.h"
+#include "core/managers/entity_manager.h"
 #include "igameeventsystem.h"
-#include "interfaces/cs2_interfaces.h"
 #include "iserver.h"
-#include "netmessages.pb.h"
-#include "networkbasetypes.pb.h"
 #include "scripting/callback_manager.h"
 #include "scripting/dotnet_host.h"
 #include "scripting/script_engine.h"
-#include "te.pb.h"
-#include "usermessages.pb.h"
+#include "entity2/entitysystem.h"
+#include "interfaces/cs2_interfaces.h"
+// clang-format on
 
 #define VERSION_STRING  "v" BUILD_NUMBER " @ " GITHUB_SHA
 #define BUILD_TIMESTAMP __DATE__ " " __TIME__

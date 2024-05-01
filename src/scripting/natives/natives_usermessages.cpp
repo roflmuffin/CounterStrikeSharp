@@ -123,7 +123,7 @@ static void PbReadInt64(ScriptContext& scriptContext)
     GET_MESSAGE_OR_ERR();
     GET_FIELD_NAME_OR_ERR();
 
-    int64_t returnValue;
+    int64 returnValue;
 
     auto index = scriptContext.GetArgument<int>(2);
 
@@ -299,7 +299,7 @@ static void PbSetInt64(ScriptContext& scriptContext)
     GET_MESSAGE_OR_ERR();
     GET_FIELD_NAME_OR_ERR();
 
-    auto value = scriptContext.GetArgument<int64_t>(2);
+    auto value = scriptContext.GetArgument<int64>(2);
     auto index = scriptContext.GetArgument<int>(3);
 
     if (index < 0)
@@ -419,7 +419,7 @@ static void PbAddInt64(ScriptContext& scriptContext)
     GET_MESSAGE_OR_ERR();
     GET_FIELD_NAME_OR_ERR();
 
-    auto value = scriptContext.GetArgument<int64_t>(2);
+    auto value = scriptContext.GetArgument<int64>(2);
 
     if (!message->AddInt64OrUnsigned(fieldName, value))
     {
