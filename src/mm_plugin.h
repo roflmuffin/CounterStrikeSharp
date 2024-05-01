@@ -17,16 +17,14 @@
 
 // clang-format off
 #include <ISmmPlugin.h>
+#include <functional>
+#include <iserver.h>
 #include <igameevents.h>
 #include <iplayerinfo.h>
-#include <iserver.h>
 #include <sh_vector.h>
-
-#include <functional>
 #include <vector>
-
-#include "concurrentqueue.h"
 #include "entitysystem.h"
+#include "concurrentqueue.h"
 // clang-format on
 
 namespace counterstrikesharp {
