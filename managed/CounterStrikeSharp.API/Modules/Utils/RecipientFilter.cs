@@ -22,17 +22,17 @@ namespace CounterStrikeSharp.API.Modules.Utils;
 /// A generic filter for determining whom to send message/sounds etc.
 /// to and providing a bit of additional state information
 /// </summary>
-public class RecipientFilter : IEnumerable<CCSPlayerController>, IMarshalToNative
+public class RecipientFilter : IList<CCSPlayerController>, IMarshalToNative
 {
-    public RecipientFilter()
-    {
-    }
+    private readonly List<CCSPlayerController> _recipients = new();
+
+    public RecipientFilter() { }
 
     public RecipientFilter(params CCSPlayerController[] slots)
     {
         foreach (var slot in slots)
         {
-            AddRecipient(slot);
+            Add(slot);
         }
     }
 
@@ -40,17 +40,43 @@ public class RecipientFilter : IEnumerable<CCSPlayerController>, IMarshalToNativ
     {
         foreach (var slot in slots)
         {
-            AddRecipient(slot);
+            Add(slot);
         }
     }
 
-    private readonly List<CCSPlayerController> _recipients = new();
+    public IEnumerable<object> GetNativeObject()
+    {
+        ulong recipientMask = 0;
+        foreach (var recipient in _recipients)
+        {
+            recipientMask |= (ulong)1 << recipient.Slot;
+        }
 
-    public CCSPlayerController this[int index] => _recipients[index];
+        yield return recipientMask;
+    }
 
-    public void AddRecipient(CCSPlayerController player) => _recipients.Add(player);
+    public int IndexOf(CCSPlayerController item)
+    {
+        return _recipients.IndexOf(item);
+    }
 
-    public void AddRecipient(int slot)
+    public void Insert(int index, CCSPlayerController item)
+    {
+        _recipients.Insert(index, item);
+    }
+
+    public void RemoveAt(int index)
+    {
+        _recipients.RemoveAt(index);
+    }
+
+    public CCSPlayerController this[int index]
+    {
+        get => _recipients[index];
+        set => throw new NotImplementedException();
+    }
+
+    public void Add(int slot)
     {
         var player = Utilities.GetPlayerFromSlot(slot);
         if (player == null)
@@ -76,15 +102,33 @@ public class RecipientFilter : IEnumerable<CCSPlayerController>, IMarshalToNativ
         return GetEnumerator();
     }
 
-    public IEnumerable<object> GetNativeObject()
+    public void Add(CCSPlayerController item)
     {
-        ulong recipientMask = 0;
-        foreach (var recipient in _recipients)
-        {
-            recipientMask |= (ulong)1 << recipient.Slot;
-        }
-
-        yield return recipientMask;
+        _recipients.Add(item);
     }
+
+    public void Clear()
+    {
+        _recipients.Clear();
+    }
+
+    public bool Contains(CCSPlayerController item)
+    {
+        return _recipients.Contains(item);
+    }
+
+    public void CopyTo(CCSPlayerController[] array, int arrayIndex)
+    {
+        _recipients.CopyTo(array, arrayIndex);
+    }
+
+    public bool Remove(CCSPlayerController item)
+    {
+        return _recipients.Remove(item);
+    }
+
+    public int Count => _recipients.Count;
+    public bool IsReadOnly => false;
+
 }
 

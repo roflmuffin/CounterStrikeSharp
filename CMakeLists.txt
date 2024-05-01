@@ -115,35 +115,50 @@ elseif(WIN32)
     set(PROTOC_EXECUTABLE ${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2/devtools/bin/protoc.exe)
 endif()
 
-add_custom_command(
-    OUTPUT protobuf_output_stamp
-    COMMAND ${PROTOC_EXECUTABLE} --proto_path=${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2/thirdparty/protobuf-3.21.8/src --proto_path=${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo --cpp_out=. network_connection.proto cs_gameevents.proto networkbasetypes.proto cstrike15_usermessages.proto cstrike15_gcmessages.proto steammessages.proto engine_gcmessages.proto gcsdk_gcmessages.proto netmessages.proto usermessages.proto gameevents.proto clientmessages.proto te.proto cs_usercmd.proto usercmd.proto
-    COMMENT "Generating protobuf file"
+set(PROTO_SRC_FILES
+    network_connection.proto
+    cs_gameevents.proto
+    networkbasetypes.proto
+    cstrike15_usermessages.proto
+    cstrike15_gcmessages.proto
+    steammessages.proto
+    engine_gcmessages.proto
+    gcsdk_gcmessages.proto
+    netmessages.proto
+    usermessages.proto
+    gameevents.proto
+    clientmessages.proto
+    te.proto
+    cs_usercmd.proto
+    usercmd.proto
+)
+
+set(PROTO_GEN_CPP
+    network_connection.pb.cc
+    networkbasetypes.pb.cc
+    cs_gameevents.pb.cc
+    engine_gcmessages.pb.cc
+    gcsdk_gcmessages.pb.cc
+    cstrike15_gcmessages.pb.cc
+    cstrike15_usermessages.pb.cc
+    netmessages.pb.cc
+    steammessages.pb.cc
+    usermessages.pb.cc
+    gameevents.pb.cc
+    clientmessages.pb.cc
+    te.pb.cc
+)
+
+add_custom_target(
+    proto_gen_cpp
+    BYPRODUCTS ${PROTO_GEN_CPP}
+    COMMAND ${PROTOC_EXECUTABLE} --proto_path=${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2/thirdparty/protobuf-3.21.8/src --proto_path=${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo --cpp_out=. ${PROTO_SRC_FILES}
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo
-    VERBATIM
 )
 
-set(SOURCE_FILES ${SOURCE_FILES} protobuf_output_stamp)
+add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${PROTO_GEN_CPP} ${NATIVES_SOURCES} ${CONVERSIONS_SOURCES} ${CONVERSIONS_HEADERS})
 
-set(SOURCE_FILES ${SOURCE_FILES}
-    libraries/Protobufs/csgo/network_connection.pb.cc
-    libraries/Protobufs/csgo/networkbasetypes.pb.cc
-    libraries/Protobufs/csgo/cs_gameevents.pb.cc
-    libraries/Protobufs/csgo/engine_gcmessages.pb.cc
-    libraries/Protobufs/csgo/gcsdk_gcmessages.pb.cc
-    libraries/Protobufs/csgo/cstrike15_gcmessages.pb.cc
-    libraries/Protobufs/csgo/cstrike15_usermessages.pb.cc
-    libraries/Protobufs/csgo/netmessages.pb.cc
-    libraries/Protobufs/csgo/steammessages.pb.cc
-    libraries/Protobufs/csgo/usermessages.pb.cc
-    libraries/Protobufs/csgo/gameevents.pb.cc
-    libraries/Protobufs/csgo/clientmessages.pb.cc
-    libraries/Protobufs/csgo/te.pb.cc
-    # libraries/Protobufs/csgo/cs_usercmd.pb.cc
-)
-
-# Sources
-add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${NATIVES_SOURCES} ${CONVERSIONS_SOURCES} ${CONVERSIONS_HEADERS})
+target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo")
 
 target_include_directories(
     ${PROJECT_NAME}
