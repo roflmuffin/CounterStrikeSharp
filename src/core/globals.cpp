@@ -1,3 +1,4 @@
+// clang-format off
 #include "mm_plugin.h"
 #include "core/globals.h"
 #include "core/managers/player_manager.h"
@@ -25,6 +26,7 @@
 #include "core/managers/usermessage_manager.h"
 #include <public/game/server/iplayerinfo.h>
 #include <public/entity2/entitysystem.h>
+// clang-format on
 
 namespace counterstrikesharp {
 
@@ -48,6 +50,7 @@ IUniformRandomStream* randomStream = nullptr;
 IEngineTrace* engineTrace = nullptr;
 IEngineSound* engineSound = nullptr;
 IEngineServiceMgr* engineServiceManager = nullptr;
+INetworkMessages* networkMessages = nullptr;
 INetworkStringTableContainer* netStringTables = nullptr;
 CGlobalVars* globalVars = nullptr;
 IFileSystem* fileSystem = nullptr;
@@ -107,10 +110,11 @@ void Initialize()
 
     entitySystem = interfaces::pGameResourceServiceServer->GetGameEntitySystem();
 
-    GetLegacyGameEventListener = reinterpret_cast<GetLegacyGameEventListener_t*>(modules::server->FindSignature(
-            globals::gameConfig->GetSignature("LegacyGameEventListener")));
+    GetLegacyGameEventListener = reinterpret_cast<GetLegacyGameEventListener_t*>(
+        modules::server->FindSignature(globals::gameConfig->GetSignature("LegacyGameEventListener")));
 
-    if (int offset = -1; (offset = gameConfig->GetOffset("GameEventManager")) != -1) {
+    if (int offset = -1; (offset = gameConfig->GetOffset("GameEventManager")) != -1)
+    {
         gameEventManager = (IGameEventManager2*)(CALL_VIRTUAL(uintptr_t, offset, server) - 8);
     }
 }
@@ -120,7 +124,8 @@ CGlobalVars* getGlobalVars()
 {
     INetworkGameServer* server = networkServerService->GetIGameServer();
 
-    if (!server) {
+    if (!server)
+    {
         return nullptr;
     }
 

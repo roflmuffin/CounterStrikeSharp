@@ -101,6 +101,7 @@ set(SOURCE_FILES
     src/core/game_system.cpp
     src/core/UserMessage.h
     src/core/UserMessage.cpp
+    src/core/UserMessageScaffolder.h
 )
 
 set(PROTO_DIRS -I${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo)
@@ -115,28 +116,28 @@ endif()
 
 add_custom_command(
     OUTPUT protobuf_output_stamp
-        COMMAND ${PROTOC_EXECUTABLE} --proto_path=${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2/thirdparty/protobuf-3.21.8/src --proto_path=${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo --cpp_out=. network_connection.proto cs_gameevents.proto networkbasetypes.proto cstrike15_usermessages.proto cstrike15_gcmessages.proto steammessages.proto engine_gcmessages.proto gcsdk_gcmessages.proto netmessages.proto usermessages.proto gameevents.proto clientmessages.proto te.proto cs_usercmd.proto usercmd.proto
+    COMMAND ${PROTOC_EXECUTABLE} --proto_path=${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2/thirdparty/protobuf-3.21.8/src --proto_path=${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo --cpp_out=. network_connection.proto cs_gameevents.proto networkbasetypes.proto cstrike15_usermessages.proto cstrike15_gcmessages.proto steammessages.proto engine_gcmessages.proto gcsdk_gcmessages.proto netmessages.proto usermessages.proto gameevents.proto clientmessages.proto te.proto cs_usercmd.proto usercmd.proto
     COMMENT "Generating protobuf file"
-        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo
     VERBATIM
 )
 
 # SET(SOURCE_FILES ${SOURCE_FILES} protobuf_output_stamp)
-SET(SOURCE_FILES ${SOURCE_FILES}
-        libraries/Protobufs/csgo/network_connection.pb.cc
-        libraries/Protobufs/csgo/networkbasetypes.pb.cc
-        libraries/Protobufs/csgo/cs_gameevents.pb.cc
-        libraries/Protobufs/csgo/engine_gcmessages.pb.cc
-        libraries/Protobufs/csgo/gcsdk_gcmessages.pb.cc
-        libraries/Protobufs/csgo/cstrike15_gcmessages.pb.cc
-        libraries/Protobufs/csgo/cstrike15_usermessages.pb.cc
-        libraries/Protobufs/csgo/netmessages.pb.cc
-        libraries/Protobufs/csgo/steammessages.pb.cc
-        libraries/Protobufs/csgo/usermessages.pb.cc
-        libraries/Protobufs/csgo/gameevents.pb.cc
-        libraries/Protobufs/csgo/clientmessages.pb.cc
-        libraries/Protobufs/csgo/te.pb.cc
-        # libraries/Protobufs/csgo/cs_usercmd.pb.cc
+set(SOURCE_FILES ${SOURCE_FILES}
+    libraries/Protobufs/csgo/network_connection.pb.cc
+    libraries/Protobufs/csgo/networkbasetypes.pb.cc
+    libraries/Protobufs/csgo/cs_gameevents.pb.cc
+    libraries/Protobufs/csgo/engine_gcmessages.pb.cc
+    libraries/Protobufs/csgo/gcsdk_gcmessages.pb.cc
+    libraries/Protobufs/csgo/cstrike15_gcmessages.pb.cc
+    libraries/Protobufs/csgo/cstrike15_usermessages.pb.cc
+    libraries/Protobufs/csgo/netmessages.pb.cc
+    libraries/Protobufs/csgo/steammessages.pb.cc
+    libraries/Protobufs/csgo/usermessages.pb.cc
+    libraries/Protobufs/csgo/gameevents.pb.cc
+    libraries/Protobufs/csgo/clientmessages.pb.cc
+    libraries/Protobufs/csgo/te.pb.cc
+    # libraries/Protobufs/csgo/cs_usercmd.pb.cc
 )
 
 # Sources

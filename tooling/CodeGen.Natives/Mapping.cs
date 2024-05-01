@@ -73,6 +73,8 @@ public class Mapping
                 return "CommandCallingContext";
             case "UserMessage":
                 return "UserMessage";
+            case "RecipientFilter":
+                return "RecipientFilter";
             case "any":
                 return "T";
         }

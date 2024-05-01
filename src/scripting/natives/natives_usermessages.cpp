@@ -13,25 +13,32 @@
  *  You should have received a copy of the GNU General Public License
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
+// clang-format off
+
+#include "core/UserMessage.h"
 #include "core/globals.h"
 #include "core/log.h"
-
 #include "core/managers/usermessage_manager.h"
+#include "igameeventsystem.h"
 #include "scripting/autonative.h"
-#include "core/UserMessage.h"
+
+#include "core/recipientfilters.h"
+
+// clang-format on
 
 namespace counterstrikesharp {
 
-#define GET_MESSAGE_OR_ERR()                                                                       \
-    auto message = scriptContext.GetArgument<UserMessage*>(0);                                     \
-    if (message == nullptr || message->GetMessageID() < 0) {                                       \
-        scriptContext.ThrowNativeError("Invalid message");                                         \
-        return;                                                                                    \
+#define GET_MESSAGE_OR_ERR()                                   \
+    auto message = scriptContext.GetArgument<UserMessage*>(0); \
+    if (message == nullptr || message->GetMessageID() < 0)     \
+    {                                                          \
+        scriptContext.ThrowNativeError("Invalid message");     \
+        return;                                                \
     }
 
 #define GET_FIELD_NAME_OR_ERR() const char* fieldName = scriptContext.GetArgument<const char*>(1);
 
-std::vector<UserMessage *> managed_usermessages;
+std::vector<UserMessage*> managed_usermessages;
 
 static void HookUserMessage(ScriptContext& script_context)
 {
@@ -57,7 +64,8 @@ static void GetInt32OrUnsignedOrEnum(ScriptContext& script_context)
     auto fieldName = script_context.GetArgument<const char*>(1);
 
     int returnValue;
-    if (!message->GetInt32OrUnsignedOrEnum(fieldName, &returnValue)) {
+    if (!message->GetInt32OrUnsignedOrEnum(fieldName, &returnValue))
+    {
         script_context.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
                                         message->GetProtobufMessage()->GetTypeName().c_str());
         return;
@@ -72,7 +80,8 @@ static void SetInt32OrUnsignedOrEnum(ScriptContext& script_context)
     auto fieldName = script_context.GetArgument<const char*>(1);
     auto value = script_context.GetArgument<int>(2);
 
-    if (!message->SetInt32OrUnsignedOrEnum(fieldName, value)) {
+    if (!message->SetInt32OrUnsignedOrEnum(fieldName, value))
+    {
         script_context.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
                                         message->GetProtobufMessage()->GetTypeName().c_str());
     }
@@ -87,16 +96,20 @@ static void PbReadInt(ScriptContext& scriptContext)
 
     auto index = scriptContext.GetArgument<int>(2);
 
-    if (index < 0) {
-        if (!message->GetInt32OrUnsignedOrEnum(fieldName, &returnValue)) {
+    if (index < 0)
+    {
+        if (!message->GetInt32OrUnsignedOrEnum(fieldName, &returnValue))
+        {
             scriptContext.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
                                            message->GetProtobufMessage()->GetTypeName().c_str());
             return;
         }
-    } else {
-        if (!message->GetRepeatedInt32OrUnsignedOrEnum(fieldName, index, &returnValue)) {
-            scriptContext.ThrowNativeError("Invalid field \"%s\"[%d] for message \"%s\"", fieldName,
-                                           index,
+    }
+    else
+    {
+        if (!message->GetRepeatedInt32OrUnsignedOrEnum(fieldName, index, &returnValue))
+        {
+            scriptContext.ThrowNativeError("Invalid field \"%s\"[%d] for message \"%s\"", fieldName, index,
                                            message->GetProtobufMessage()->GetTypeName().c_str());
             return;
         }
@@ -114,16 +127,20 @@ static void PbReadInt64(ScriptContext& scriptContext)
 
     auto index = scriptContext.GetArgument<int>(2);
 
-    if (index < 0) {
-        if (!message->GetInt64OrUnsigned(fieldName, &returnValue)) {
+    if (index < 0)
+    {
+        if (!message->GetInt64OrUnsigned(fieldName, &returnValue))
+        {
             scriptContext.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
                                            message->GetProtobufMessage()->GetTypeName().c_str());
             return;
         }
-    } else {
-        if (!message->GetRepeatedInt64OrUnsigned(fieldName, index, &returnValue)) {
-            scriptContext.ThrowNativeError("Invalid field \"%s\"[%d] for message \"%s\"", fieldName,
-                                           index,
+    }
+    else
+    {
+        if (!message->GetRepeatedInt64OrUnsigned(fieldName, index, &returnValue))
+        {
+            scriptContext.ThrowNativeError("Invalid field \"%s\"[%d] for message \"%s\"", fieldName, index,
                                            message->GetProtobufMessage()->GetTypeName().c_str());
             return;
         }
@@ -141,16 +158,20 @@ static void PbReadFloat(ScriptContext& scriptContext)
 
     auto index = scriptContext.GetArgument<int>(2);
 
-    if (index < 0) {
-        if (!message->GetFloatOrDouble(fieldName, &returnValue)) {
+    if (index < 0)
+    {
+        if (!message->GetFloatOrDouble(fieldName, &returnValue))
+        {
             scriptContext.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
                                            message->GetProtobufMessage()->GetTypeName().c_str());
             return;
         }
-    } else {
-        if (!message->GetRepeatedFloatOrDouble(fieldName, index, &returnValue)) {
-            scriptContext.ThrowNativeError("Invalid field \"%s\"[%d] for message \"%s\"", fieldName,
-                                           index,
+    }
+    else
+    {
+        if (!message->GetRepeatedFloatOrDouble(fieldName, index, &returnValue))
+        {
+            scriptContext.ThrowNativeError("Invalid field \"%s\"[%d] for message \"%s\"", fieldName, index,
                                            message->GetProtobufMessage()->GetTypeName().c_str());
             return;
         }
@@ -168,16 +189,20 @@ static void PbReadBool(ScriptContext& scriptContext)
 
     auto index = scriptContext.GetArgument<int>(2);
 
-    if (index < 0) {
-        if (!message->GetBool(fieldName, &returnValue)) {
+    if (index < 0)
+    {
+        if (!message->GetBool(fieldName, &returnValue))
+        {
             scriptContext.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
                                            message->GetProtobufMessage()->GetTypeName().c_str());
             return;
         }
-    } else {
-        if (!message->GetRepeatedBool(fieldName, index, &returnValue)) {
-            scriptContext.ThrowNativeError("Invalid field \"%s\"[%d] for message \"%s\"", fieldName,
-                                           index,
+    }
+    else
+    {
+        if (!message->GetRepeatedBool(fieldName, index, &returnValue))
+        {
+            scriptContext.ThrowNativeError("Invalid field \"%s\"[%d] for message \"%s\"", fieldName, index,
                                            message->GetProtobufMessage()->GetTypeName().c_str());
             return;
         }
@@ -195,16 +220,20 @@ static void PbReadString(ScriptContext& scriptContext)
 
     auto index = scriptContext.GetArgument<int>(2);
 
-    if (index < 0) {
-        if (!message->GetString(fieldName, returnValue)) {
+    if (index < 0)
+    {
+        if (!message->GetString(fieldName, returnValue))
+        {
             scriptContext.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
                                            message->GetProtobufMessage()->GetTypeName().c_str());
             return;
         }
-    } else {
-        if (!message->GetRepeatedString(fieldName, index, returnValue)) {
-            scriptContext.ThrowNativeError("Invalid field \"%s\"[%d] for message \"%s\"", fieldName,
-                                           index,
+    }
+    else
+    {
+        if (!message->GetRepeatedString(fieldName, index, returnValue))
+        {
+            scriptContext.ThrowNativeError("Invalid field \"%s\"[%d] for message \"%s\"", fieldName, index,
                                            message->GetProtobufMessage()->GetTypeName().c_str());
             return;
         }
@@ -222,7 +251,8 @@ static void PbGetRepeatedFieldCount(ScriptContext& scriptContext)
 
     auto count = message->GetRepeatedFieldCount(fieldName);
 
-    if (count == -1) {
+    if (count == -1)
+    {
         return scriptContext.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
                                               message->GetProtobufMessage()->GetTypeName().c_str());
     }
@@ -246,15 +276,19 @@ static void PbSetInt(ScriptContext& scriptContext)
     auto value = scriptContext.GetArgument<int>(2);
     auto index = scriptContext.GetArgument<int>(3);
 
-    if (index < 0) {
-        if (!message->SetInt32OrUnsignedOrEnum(fieldName, value)) {
+    if (index < 0)
+    {
+        if (!message->SetInt32OrUnsignedOrEnum(fieldName, value))
+        {
             scriptContext.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
                                            message->GetProtobufMessage()->GetTypeName().c_str());
         }
-    } else {
-        if (!message->SetRepeatedInt32OrUnsignedOrEnum(fieldName, index, value)) {
-            scriptContext.ThrowNativeError("Invalid field \"%s\"[%d] for message \"%s\"", fieldName,
-                                           index,
+    }
+    else
+    {
+        if (!message->SetRepeatedInt32OrUnsignedOrEnum(fieldName, index, value))
+        {
+            scriptContext.ThrowNativeError("Invalid field \"%s\"[%d] for message \"%s\"", fieldName, index,
                                            message->GetProtobufMessage()->GetTypeName().c_str());
         }
     }
@@ -268,15 +302,19 @@ static void PbSetInt64(ScriptContext& scriptContext)
     auto value = scriptContext.GetArgument<int64_t>(2);
     auto index = scriptContext.GetArgument<int>(3);
 
-    if (index < 0) {
-        if (!message->SetInt64OrUnsigned(fieldName, value)) {
+    if (index < 0)
+    {
+        if (!message->SetInt64OrUnsigned(fieldName, value))
+        {
             scriptContext.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
                                            message->GetProtobufMessage()->GetTypeName().c_str());
         }
-    } else {
-        if (!message->SetRepeatedInt64OrUnsigned(fieldName, index, value)) {
-            scriptContext.ThrowNativeError("Invalid field \"%s\"[%d] for message \"%s\"", fieldName,
-                                           index,
+    }
+    else
+    {
+        if (!message->SetRepeatedInt64OrUnsigned(fieldName, index, value))
+        {
+            scriptContext.ThrowNativeError("Invalid field \"%s\"[%d] for message \"%s\"", fieldName, index,
                                            message->GetProtobufMessage()->GetTypeName().c_str());
         }
     }
@@ -290,15 +328,19 @@ static void PbSetFloat(ScriptContext& scriptContext)
     auto value = scriptContext.GetArgument<float>(2);
     auto index = scriptContext.GetArgument<int>(3);
 
-    if (index < 0) {
-        if (!message->SetFloatOrDouble(fieldName, value)) {
+    if (index < 0)
+    {
+        if (!message->SetFloatOrDouble(fieldName, value))
+        {
             scriptContext.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
                                            message->GetProtobufMessage()->GetTypeName().c_str());
         }
-    } else {
-        if (!message->SetRepeatedFloatOrDouble(fieldName, index, value)) {
-            scriptContext.ThrowNativeError("Invalid field \"%s\"[%d] for message \"%s\"", fieldName,
-                                           index,
+    }
+    else
+    {
+        if (!message->SetRepeatedFloatOrDouble(fieldName, index, value))
+        {
+            scriptContext.ThrowNativeError("Invalid field \"%s\"[%d] for message \"%s\"", fieldName, index,
                                            message->GetProtobufMessage()->GetTypeName().c_str());
         }
     }
@@ -312,15 +354,19 @@ static void PbSetBool(ScriptContext& scriptContext)
     auto value = scriptContext.GetArgument<bool>(2);
     auto index = scriptContext.GetArgument<int>(3);
 
-    if (index < 0) {
-        if (!message->SetBool(fieldName, value)) {
+    if (index < 0)
+    {
+        if (!message->SetBool(fieldName, value))
+        {
             scriptContext.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
                                            message->GetProtobufMessage()->GetTypeName().c_str());
         }
-    } else {
-        if (!message->SetRepeatedBool(fieldName, index, value)) {
-            scriptContext.ThrowNativeError("Invalid field \"%s\"[%d] for message \"%s\"", fieldName,
-                                           index,
+    }
+    else
+    {
+        if (!message->SetRepeatedBool(fieldName, index, value))
+        {
+            scriptContext.ThrowNativeError("Invalid field \"%s\"[%d] for message \"%s\"", fieldName, index,
                                            message->GetProtobufMessage()->GetTypeName().c_str());
         }
     }
@@ -336,15 +382,19 @@ static void PbSetString(ScriptContext& scriptContext)
 
     CSSHARP_CORE_INFO("Setting value: {}", value);
 
-    if (index < 0) {
-        if (!message->SetString(fieldName, value)) {
+    if (index < 0)
+    {
+        if (!message->SetString(fieldName, value))
+        {
             scriptContext.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
                                            message->GetProtobufMessage()->GetTypeName().c_str());
         }
-    } else {
-        if (!message->SetRepeatedString(fieldName, index, value)) {
-            scriptContext.ThrowNativeError("Invalid field \"%s\"[%d] for message \"%s\"", fieldName,
-                                           index,
+    }
+    else
+    {
+        if (!message->SetRepeatedString(fieldName, index, value))
+        {
+            scriptContext.ThrowNativeError("Invalid field \"%s\"[%d] for message \"%s\"", fieldName, index,
                                            message->GetProtobufMessage()->GetTypeName().c_str());
         }
     }
@@ -357,7 +407,8 @@ static void PbAddInt(ScriptContext& scriptContext)
 
     auto value = scriptContext.GetArgument<int>(2);
 
-    if (!message->AddInt32OrUnsignedOrEnum(fieldName, value)) {
+    if (!message->AddInt32OrUnsignedOrEnum(fieldName, value))
+    {
         scriptContext.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
                                        message->GetProtobufMessage()->GetTypeName().c_str());
     }
@@ -370,7 +421,8 @@ static void PbAddInt64(ScriptContext& scriptContext)
 
     auto value = scriptContext.GetArgument<int64_t>(2);
 
-    if (!message->AddInt64OrUnsigned(fieldName, value)) {
+    if (!message->AddInt64OrUnsigned(fieldName, value))
+    {
         scriptContext.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
                                        message->GetProtobufMessage()->GetTypeName().c_str());
     }
@@ -383,7 +435,8 @@ static void PbAddFloat(ScriptContext& scriptContext)
 
     auto value = scriptContext.GetArgument<float>(2);
 
-    if (!message->AddFloatOrDouble(fieldName, value)) {
+    if (!message->AddFloatOrDouble(fieldName, value))
+    {
         scriptContext.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
                                        message->GetProtobufMessage()->GetTypeName().c_str());
     }
@@ -396,7 +449,8 @@ static void PbAddBool(ScriptContext& scriptContext)
 
     auto value = scriptContext.GetArgument<bool>(2);
 
-    if (!message->AddBool(fieldName, value)) {
+    if (!message->AddBool(fieldName, value))
+    {
         scriptContext.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
                                        message->GetProtobufMessage()->GetTypeName().c_str());
     }
@@ -409,7 +463,8 @@ static void PbAddString(ScriptContext& scriptContext)
 
     auto value = scriptContext.GetArgument<const char*>(2);
 
-    if (!message->AddString(fieldName, value)) {
+    if (!message->AddString(fieldName, value))
+    {
         scriptContext.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
                                        message->GetProtobufMessage()->GetTypeName().c_str());
     }
@@ -422,20 +477,22 @@ static void PbRemoveRepeatedFieldValue(ScriptContext& scriptContext)
 
     auto index = scriptContext.GetArgument<int>(2);
 
-    if (!message->RemoveRepeatedFieldValue(fieldName, index)) {
-        scriptContext.ThrowNativeError("Invalid field \"%s\"[%d] for message \"%s\"", fieldName,
-                                       index,
+    if (!message->RemoveRepeatedFieldValue(fieldName, index))
+    {
+        scriptContext.ThrowNativeError("Invalid field \"%s\"[%d] for message \"%s\"", fieldName, index,
                                        message->GetProtobufMessage()->GetTypeName().c_str());
     }
 }
 
-static void PbReadMessage(ScriptContext& scriptContext) {
+static void PbReadMessage(ScriptContext& scriptContext)
+{
     GET_MESSAGE_OR_ERR();
     GET_FIELD_NAME_OR_ERR();
 
     google::protobuf::Message* subMessage = nullptr;
 
-    if (!message->GetMessage(fieldName, &subMessage)) {
+    if (!message->GetMessage(fieldName, &subMessage))
+    {
         scriptContext.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
                                        message->GetProtobufMessage()->GetTypeName().c_str());
         return;
@@ -446,7 +503,8 @@ static void PbReadMessage(ScriptContext& scriptContext) {
     scriptContext.SetResult(subUserMessage);
 }
 
-static void PbReadRepeatedMessage(ScriptContext& scriptContext) {
+static void PbReadRepeatedMessage(ScriptContext& scriptContext)
+{
     GET_MESSAGE_OR_ERR();
     GET_FIELD_NAME_OR_ERR();
 
@@ -454,7 +512,8 @@ static void PbReadRepeatedMessage(ScriptContext& scriptContext) {
 
     auto index = scriptContext.GetArgument<int>(2);
 
-    if (!message->GetRepeatedMessage(fieldName, index, &subMessage)) {
+    if (!message->GetRepeatedMessage(fieldName, index, &subMessage))
+    {
         scriptContext.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
                                        message->GetProtobufMessage()->GetTypeName().c_str());
         return;
@@ -465,13 +524,15 @@ static void PbReadRepeatedMessage(ScriptContext& scriptContext) {
     scriptContext.SetResult(subUserMessage);
 }
 
-static void PbAddMessage(ScriptContext& scriptContext) {
+static void PbAddMessage(ScriptContext& scriptContext)
+{
     GET_MESSAGE_OR_ERR();
     GET_FIELD_NAME_OR_ERR();
 
-    google::protobuf::Message *subMessage;
+    google::protobuf::Message* subMessage;
 
-    if (!message->AddMessage(fieldName, &subMessage)) {
+    if (!message->AddMessage(fieldName, &subMessage))
+    {
         scriptContext.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
                                        message->GetProtobufMessage()->GetTypeName().c_str());
         return;
@@ -482,10 +543,55 @@ static void PbAddMessage(ScriptContext& scriptContext) {
     scriptContext.SetResult(subUserMessage);
 }
 
-static void PbGetDebugString(ScriptContext& scriptContext) {
+static void PbGetDebugString(ScriptContext& scriptContext)
+{
     GET_MESSAGE_OR_ERR();
 
     scriptContext.SetResult(message->GetDebugString().c_str());
+}
+
+static void UserMessageCreate(ScriptContext& scriptContext)
+{
+    auto messageName = scriptContext.GetArgument<const char*>(0);
+    auto message = new UserMessage(messageName);
+
+    if (message->GetProtobufMessage() == nullptr)
+    {
+        scriptContext.ThrowNativeError("Failed to create user message: %s", messageName);
+        return;
+    }
+
+    managed_usermessages.push_back(message);
+
+    CSSHARP_CORE_TRACE("Size of managed_usermessages: {}", managed_usermessages.size());
+
+    scriptContext.SetResult(message);
+}
+
+static void UserMessageSend(ScriptContext& scriptContext)
+{
+    auto message = scriptContext.GetArgument<UserMessage*>(0);
+    auto recipientMask = scriptContext.GetArgument<uint64>(1);
+
+    CRecipientFilter filter{};
+    filter.AddRecipientsFromMask(recipientMask);
+
+    CSSHARP_CORE_TRACE("Serializable Message: {}, Protobuf Message: {}, Number of Recipients: {}", (void*)message->GetSerializableMessage(),
+                       (void*)message->GetProtobufMessage(), filter.GetRecipientCount());
+
+    globals::gameEventSystem->PostEventAbstract(0, false, &filter, message->GetSerializableMessage(), message->GetProtobufMessage(), 0);
+}
+
+static void UserMessageDelete(ScriptContext& scriptContext)
+{
+    auto message = scriptContext.GetArgument<UserMessage*>(0);
+
+    auto it = std::find(managed_usermessages.begin(), managed_usermessages.end(), message);
+    if (it != managed_usermessages.end())
+    {
+        managed_usermessages.erase(it);
+        delete message;
+    }
 }
 
 REGISTER_NATIVES(usermessages, {
@@ -512,6 +618,9 @@ REGISTER_NATIVES(usermessages, {
     ScriptEngine::RegisterNativeHandler("PB_READMESSAGE", PbReadMessage);
     ScriptEngine::RegisterNativeHandler("PB_READREPEATEDMESSAGE", PbReadRepeatedMessage);
     ScriptEngine::RegisterNativeHandler("PB_ADDMESSAGE", PbAddMessage);
-        ScriptEngine::RegisterNativeHandler("PB_GETDEBUGSTRING", PbGetDebugString);
+    ScriptEngine::RegisterNativeHandler("PB_GETDEBUGSTRING", PbGetDebugString);
+    ScriptEngine::RegisterNativeHandler("USERMESSAGE_CREATE", UserMessageCreate);
+    ScriptEngine::RegisterNativeHandler("USERMESSAGE_SEND", UserMessageSend);
+    ScriptEngine::RegisterNativeHandler("USERMESSAGE_DELETE", UserMessageDelete);
 })
 } // namespace counterstrikesharp
