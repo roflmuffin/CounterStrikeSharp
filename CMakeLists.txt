@@ -102,6 +102,7 @@ set(SOURCE_FILES
     src/core/UserMessage.h
     src/core/UserMessage.cpp
     src/core/UserMessageScaffolder.h
+    src/core/recipientfilters.h
 )
 
 set(PROTO_DIRS -I${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo)
@@ -122,7 +123,8 @@ add_custom_command(
     VERBATIM
 )
 
-# SET(SOURCE_FILES ${SOURCE_FILES} protobuf_output_stamp)
+set(SOURCE_FILES ${SOURCE_FILES} protobuf_output_stamp)
+
 set(SOURCE_FILES ${SOURCE_FILES}
     libraries/Protobufs/csgo/network_connection.pb.cc
     libraries/Protobufs/csgo/networkbasetypes.pb.cc
