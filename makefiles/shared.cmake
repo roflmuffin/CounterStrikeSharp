@@ -1,8 +1,8 @@
-if (UNIX AND NOT APPLE)
+if(UNIX AND NOT APPLE)
     set(LINUX TRUE)
 endif()
 
-if (WIN32 AND NOT MSVC)
+if(WIN32 AND NOT MSVC)
     message(FATAL "MSVC restricted.")
 endif()
 
@@ -13,7 +13,7 @@ set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING
 
 set(CMAKE_CXX_STANDARD 20)
 
-if (LINUX)
+if(LINUX)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
 endif()
@@ -39,6 +39,10 @@ if(DEFINED ENV{BUILD_NUMBER})
     add_definitions(-DBUILD_NUMBER="$ENV{BUILD_NUMBER}")
 else()
     add_definitions(-DBUILD_NUMBER="0")
+endif()
+
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    add_compile_definitions(_GLIBCXX_USE_CXX11_ABI=0)
 endif()
 
 include_directories(
