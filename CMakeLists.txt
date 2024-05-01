@@ -152,7 +152,12 @@ set(PROTO_GEN_CPP
 add_custom_target(
     proto_gen_cpp
     BYPRODUCTS ${PROTO_GEN_CPP}
-    COMMAND ${PROTOC_EXECUTABLE} --proto_path=${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2/thirdparty/protobuf-3.21.8/src --proto_path=${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo --cpp_out=. ${PROTO_SRC_FILES}
+    COMMAND ${PROTOC_EXECUTABLE}
+    --proto_path=${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2/thirdparty/protobuf-3.21.8/src
+    --proto_path=${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo
+    --cpp_out=.
+    --cpp_out=${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2/common
+    ${PROTO_SRC_FILES}
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo
 )
 
