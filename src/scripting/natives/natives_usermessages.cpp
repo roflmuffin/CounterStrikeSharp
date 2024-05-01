@@ -239,8 +239,6 @@ static void PbReadString(ScriptContext& scriptContext)
         }
     }
 
-    CSSHARP_CORE_INFO("Read string: {}", returnValue);
-
     scriptContext.SetResult(returnValue.c_str());
 }
 
@@ -379,8 +377,6 @@ static void PbSetString(ScriptContext& scriptContext)
 
     auto value = strdup(std::string(scriptContext.GetArgument<const char*>(2)).c_str());
     auto index = scriptContext.GetArgument<int>(3);
-
-    CSSHARP_CORE_INFO("Setting value: {}", value);
 
     if (index < 0)
     {
@@ -563,8 +559,6 @@ static void UserMessageCreate(ScriptContext& scriptContext)
 
     managed_usermessages.push_back(message);
 
-    CSSHARP_CORE_TRACE("Size of managed_usermessages: {}", managed_usermessages.size());
-
     scriptContext.SetResult(message);
 }
 
@@ -575,9 +569,6 @@ static void UserMessageSend(ScriptContext& scriptContext)
 
     CRecipientFilter filter{};
     filter.AddRecipientsFromMask(recipientMask);
-
-    CSSHARP_CORE_TRACE("Serializable Message: {}, Protobuf Message: {}, Number of Recipients: {}", (void*)message->GetSerializableMessage(),
-                       (void*)message->GetProtobufMessage(), filter.GetRecipientCount());
 
     globals::gameEventSystem->PostEventAbstract(0, false, &filter, message->GetSerializableMessage(), message->GetProtobufMessage(), 0);
 }
