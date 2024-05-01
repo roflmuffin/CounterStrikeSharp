@@ -6,7 +6,7 @@ project(counterstrikesharp C CXX ASM)
 include("makefiles/shared.cmake")
 
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
-set(protobuf_BUILD_TESTS OFF CACHE BOOL)
+set(protobuf_BUILD_TESTS OFF)
 set(protobuf_BUILD_SHARED_LIBS)
 
 add_subdirectory(libraries/spdlog)
