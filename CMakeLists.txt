@@ -105,71 +105,30 @@ set(SOURCE_FILES
     src/core/recipientfilters.h
 )
 
-set(PROTO_DIRS -I${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo)
-file(GLOB PROTOS "${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo/*.proto")
-
-## Generate protobuf source & headers
-if(LINUX)
-    set(PROTOC_EXECUTABLE ${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2/devtools/bin/linux/protoc)
-elseif(WIN32)
-    set(PROTOC_EXECUTABLE ${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2/devtools/bin/protoc.exe)
-endif()
-
-set(PROTO_SRC_FILES
-    network_connection.proto
-    cs_gameevents.proto
-    networkbasetypes.proto
-    cstrike15_usermessages.proto
-    cstrike15_gcmessages.proto
-    steammessages.proto
-    engine_gcmessages.proto
-    gcsdk_gcmessages.proto
-    netmessages.proto
-    usermessages.proto
-    gameevents.proto
-    clientmessages.proto
-    te.proto
-    cs_usercmd.proto
-    usercmd.proto
-)
-
 set(PROTO_GEN_CPP
-    network_connection.pb.cc
-    networkbasetypes.pb.cc
-    cs_gameevents.pb.cc
-    engine_gcmessages.pb.cc
-    gcsdk_gcmessages.pb.cc
-    cstrike15_gcmessages.pb.cc
-    cstrike15_usermessages.pb.cc
-    netmessages.pb.cc
-    steammessages.pb.cc
-    usermessages.pb.cc
-    gameevents.pb.cc
-    clientmessages.pb.cc
-    te.pb.cc
-)
-
-add_custom_target(
-    proto_gen_cpp
-    BYPRODUCTS ${PROTO_GEN_CPP}
-    COMMAND ${PROTOC_EXECUTABLE}
-    --proto_path=${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2/thirdparty/protobuf-3.21.8/src
-    --proto_path=${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo
-    --cpp_out=.
-    --cpp_out=${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2/common
-    ${PROTO_SRC_FILES}
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo
+    src/protobuf/generated/network_connection.pb.cc
+    src/protobuf/generated/networkbasetypes.pb.cc
+    src/protobuf/generated/cs_gameevents.pb.cc
+    src/protobuf/generated/engine_gcmessages.pb.cc
+    src/protobuf/generated/gcsdk_gcmessages.pb.cc
+    src/protobuf/generated/cstrike15_gcmessages.pb.cc
+    src/protobuf/generated/cstrike15_usermessages.pb.cc
+    src/protobuf/generated/netmessages.pb.cc
+    src/protobuf/generated/steammessages.pb.cc
+    src/protobuf/generated/usermessages.pb.cc
+    src/protobuf/generated/gameevents.pb.cc
+    src/protobuf/generated/clientmessages.pb.cc
+    src/protobuf/generated/te.pb.cc
 )
 
 add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${PROTO_GEN_CPP} ${NATIVES_SOURCES} ${CONVERSIONS_SOURCES} ${CONVERSIONS_HEADERS})
-
-target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo")
 
 target_include_directories(
     ${PROJECT_NAME}
     PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/src
     ${CMAKE_CURRENT_SOURCE_DIR}/src/core/cs2_sdk
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/protobuf/generated
 )
 
 if(LINUX)
