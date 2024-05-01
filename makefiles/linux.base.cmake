@@ -20,12 +20,11 @@ set(
     ${SOURCESDK_LIB}/linux64/tier1.a
     ${SOURCESDK_LIB}/linux64/interfaces.a
     ${SOURCESDK_LIB}/linux64/mathlib.a
-    ${SOURCESDK_LIB}/linux64/release/libprotobuf.a
-    # "${LIBRARIES_DIR}/protobuf-lib/$<$<CONFIG:Debug>:Debug>$<$<NOT:$<CONFIG:Debug>>:Release>/libprotobuf$<$<CONFIG:Debug>:d>.a"
     spdlog
     dynload_s
     dyncall_s
     distorm
     funchook-static
     dynohook
+    libprotobuf
 )

@@ -26,3 +26,6 @@
 [submodule "libraries/protobuf"]
 	path = libraries/protobuf
 	url = https://github.com/protocolbuffers/protobuf
+[submodule "libraries/protobuf-lib"]
+	path = libraries/protobuf-lib
+	url = https://github.com/noahbkim/cs2s-protobuf
