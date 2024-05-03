@@ -357,6 +357,17 @@ namespace TestPlugin
             return HookResult.Continue;
         }
 
+        [ConsoleCommand("css_testinput", "Test AcceptInput and AddEntityIOEvent")]
+        public void OnTestInput(CCSPlayerController? player, CommandInfo command)
+        {
+            if (player == null) return;
+            var pawn = player.PlayerPawn.Get();
+            if (pawn == null) return;
+
+            pawn!.AcceptInput("SetHealth", null, null, "50");
+            pawn!.AddEntityIOEvent("SetHealth", null, null, "75", 5);
+        }
+
         [ConsoleCommand("css_killmeplease", "Kills the player")]
         [ConsoleCommand("css_killme", "Kills the player")]
         public void OnKillme(CCSPlayerController? player, CommandInfo command)

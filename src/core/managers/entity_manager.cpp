@@ -50,10 +50,26 @@ void EntityManager::OnAllInitialized()
         (decltype(CBaseEntity_DispatchSpawn))((modules::server->FindSignature(
             globals::gameConfig->GetSignature("CBaseEntity_DispatchSpawn"))));
 
-    if (!CBaseEntity_DispatchSpawn) {
-        CSSHARP_CORE_CRITICAL(
-            "Failed to find signature for \'CBaseEntity_DispatchSpawn\'");
+    if (!CBaseEntity_DispatchSpawn) 
+    {
+        CSSHARP_CORE_CRITICAL("Failed to find signature for \'CBaseEntity_DispatchSpawn\'");
         return;
+    }
+
+    CEntityInstance_AcceptInput = decltype(CEntityInstance_AcceptInput)(
+        modules::server->FindSignature(globals::gameConfig->GetSignature("CEntityInstance_AcceptInput")));
+
+    if (!CEntityInstance_AcceptInput)
+    {
+        CSSHARP_CORE_CRITICAL("Failed to find signature for \'CEntityInstance_AcceptInput\'");
+    }
+
+    CEntitySystem_AddEntityIOEvent = decltype(CEntitySystem_AddEntityIOEvent)(
+        modules::server->FindSignature(globals::gameConfig->GetSignature("CEntitySystem_AddEntityIOEvent")));
+
+    if (!CEntitySystem_AddEntityIOEvent)
+    {
+        CSSHARP_CORE_CRITICAL("Failed to find signature for \'CEntitySystem_AddEntityIOEvent\'");
     }
 
     auto m_hook = funchook_create();
