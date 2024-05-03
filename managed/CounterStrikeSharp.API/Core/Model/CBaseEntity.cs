@@ -27,8 +27,6 @@ public partial class CBaseEntity
 
         if (keyValues != null)
         {
-            // keyValues.Create();
-            // VirtualFunctions.CBaseEntity_DispatchSpawn(this.Handle, keyValues.GetPointer());
             int count = keyValues.Build(out object[] values);
             NativeAPI.DispatchSpawn(this.Handle, count, values);
         }

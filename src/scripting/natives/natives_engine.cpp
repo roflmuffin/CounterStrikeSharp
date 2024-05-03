@@ -20,8 +20,6 @@
 #include <filesystem.h>
 #include <public/worldsize.h>
 
-#include "entitykeyvalues.h"
-
 // clang-format off
 #include "mm_plugin.h"
 #include "core/engine_trace.h"
