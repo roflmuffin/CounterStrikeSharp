@@ -6,7 +6,6 @@ namespace CounterStrikeSharp.API.Modules.Utils
     /// <summary>
     /// EntityKeyValues
     /// WARNING: This is intended to only use with DispatchSpawn for now!
-    /// TODO: Might need more works with vector and angle classes, because this is only managed side, no need to alloc memory on unmanaged side, but still need to compatible to original vector classes
     /// </summary>
     public class CEntityKeyValues
     {
@@ -29,7 +28,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
         public Vector2? GetVector2D(string key, Vector2? defaultValue = null) => GetValue(key, defaultValue);
         public Vector4? GetVector4D(string key, Vector4? defaultValue = null) => GetValue(key, defaultValue);
         public Vector4? GetQuaternion(string key, Vector4? defaultValue = null) => GetValue(key, defaultValue);
-        public QAngle? GetAngle(string key, QAngle? defaultValue = null) => GetValue(key, defaultValue);
+        public EKVAngle? GetAngle(string key, EKVAngle? defaultValue = null) => GetValue(key, defaultValue);
         public Matrix3x4? GetMatrix3x4(string key, Matrix3x4? defaultValue = null) => GetValue(key, defaultValue);
 
         // Setter
@@ -45,11 +44,11 @@ namespace CounterStrikeSharp.API.Modules.Utils
         public void SetStringToken(string key, uint value) => SetValue<uint>(key, KeyValuesType.TYPE_STRING_TOKEN, value); // Essentially is integer
         public void SetEHandle(string key, CEntityHandle value) => SetValue<CEntityHandle>(key, KeyValuesType.TYPE_EHANDLE, value);
         public void SetColor(string key, Color value) => SetValue<Color>(key, KeyValuesType.TYPE_COLOR, value);
-        public void SetVector(string key, Vector3 value) => SetValue<Vector3>(key, KeyValuesType.TYPE_VECTOR, value);
-        public void SetVector2D(string key, Vector2 value) => SetValue<Vector2>(key, KeyValuesType.TYPE_VECTOR2D, value);
-        public void SetVector4D(string key, Vector4 value) => SetValue<Vector4>(key, KeyValuesType.TYPE_VECTOR4D, value);
-        public void SetQuaternion(string key, Vector4 value) => SetValue<Vector4>(key, KeyValuesType.TYPE_QUATERNION, value); // Same class with Vector4D
-        public void SetAngle(string key, QAngle value) => SetValue<QAngle>(key, KeyValuesType.TYPE_QANGLE, value);
+        public void SetVector(string key, float x, float y, float z) => SetValue<Vector3>(key, KeyValuesType.TYPE_VECTOR, new Vector3(x, y, z));
+        public void SetVector2D(string key, float x, float y) => SetValue<Vector2>(key, KeyValuesType.TYPE_VECTOR2D, new Vector2(x, y));
+        public void SetVector4D(string key, float x, float y, float z, float w) => SetValue<Vector4>(key, KeyValuesType.TYPE_VECTOR4D, new Vector4(x, y, z, w));
+        public void SetQuaternion(string key, float x, float y, float z, float w) => SetValue<Vector4>(key, KeyValuesType.TYPE_QUATERNION, new Vector4(x, y, z, w)); // Same class with Vector4
+        public void SetAngle(string key, float pitch, float yaw, float roll) => SetValue<EKVAngle>(key, KeyValuesType.TYPE_QANGLE, new EKVAngle(pitch, yaw, roll));
         public void SetMatrix3x4(string key, Matrix3x4 value) => SetValue<Matrix3x4>(key, KeyValuesType.TYPE_MATRIX3X4, value);
 
         public bool Remove(string key) => keyValues.Remove(key);
@@ -98,7 +97,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
                 {
                     // Special type handle
                     case KeyValuesType.TYPE_EHANDLE:
-                        valueLists.Add(kv.Value.Get<CounterStrikeSharp.API.Modules.Utils.CEntityHandle>().Raw);
+                        valueLists.Add(kv.Value.Get<CEntityHandle>().Raw);
                         break;
 
                     case KeyValuesType.TYPE_COLOR:
@@ -133,10 +132,10 @@ namespace CounterStrikeSharp.API.Modules.Utils
                         break;
 
                     case KeyValuesType.TYPE_QANGLE:
-                        Angle qAng = kv.Value.Get<Angle>();
-                        valueLists.Add(qAng.X);
-                        valueLists.Add(qAng.Y);
-                        valueLists.Add(qAng.Z);
+                        EKVAngle qAng = kv.Value.Get<EKVAngle>();
+                        valueLists.Add(qAng.Pitch);
+                        valueLists.Add(qAng.Yaw);
+                        valueLists.Add(qAng.Roll);
                         break;
 
                     case KeyValuesType.TYPE_MATRIX3X4:
@@ -207,6 +206,24 @@ namespace CounterStrikeSharp.API.Modules.Utils
             TYPE_QUATERNION,
             TYPE_QANGLE,
             TYPE_MATRIX3X4
+        }
+
+        /// <summary>
+        /// EKVAngle
+        /// Have to add this specificly for EntityKeyValues
+        /// </summary>
+        public class EKVAngle
+        {
+            public float Pitch;
+            public float Yaw;
+            public float Roll;
+
+            public EKVAngle(float pitch, float yaw, float roll)
+            {
+                this.Pitch = pitch;
+                this.Yaw = yaw;
+                this.Roll = roll;
+            }
         }
     }
 }
