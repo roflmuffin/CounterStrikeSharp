@@ -1,4 +1,11 @@
 {
-    "name": "SteamRT Sniper SDK",
-    "image": "registry.gitlab.steamos.cloud/steamrt/sniper/sdk:latest"
+  "name": "SteamRT Sniper SDK",
+  "image": "registry.gitlab.steamos.cloud/steamrt/sniper/sdk:latest",
+  "customizations": { 
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools"
+      ]
+    }
   }
+}
