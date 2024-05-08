@@ -1,0 +1,4 @@
+{
+    "name": "SteamRT Sniper SDK",
+    "image": "registry.gitlab.steamos.cloud/steamrt/sniper/sdk:latest"
+  }
