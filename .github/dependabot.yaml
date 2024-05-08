@@ -5,6 +5,7 @@ updates:
     directory: "/"
     allow:
       - dependency-name: "libraries/hl2sdk-cs2"
+      - dependency-name: "libraries/metamod-source"
     schedule:
       interval: "daily"
     commit-message:
