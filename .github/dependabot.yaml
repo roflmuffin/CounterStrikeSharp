@@ -1,0 +1,11 @@
+version: 2
+updates:
+  # Update the submodule in libraries/hl2sdk-cs2 every day
+  - package-ecosystem: "gitsubmodule"
+    directory: "/"
+    allow:
+      - dependency-name: "libraries/hl2sdk-cs2"
+    schedule:
+      interval: "daily"
+    commit-message:
+      prefix: "chore(deps): update hl2sdk"
