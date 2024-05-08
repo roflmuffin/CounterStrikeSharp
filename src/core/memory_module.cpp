@@ -43,10 +43,10 @@ void Initialize()
         // a hack way to do so
         std::string name(w_name.begin(), w_name.end());
 
-        std::ranges::replace(name, '\\', '/');
+        std::replace(name.begin(), name.end(), '\\', '/');
 
         // check for extension first
-        if (!name.ends_with(MODULE_EXT)) continue;
+        if (name.rfind(MODULE_EXT) != name.length() - strlen(MODULE_EXT)) continue;
 
         // no addons
         if (name.find(R"(csgo/addons/)") != std::string::npos) continue;
@@ -63,7 +63,8 @@ void Initialize()
         moduleList.emplace_back(std::move(mod));
     }
 #else
-    dl_iterate_phdr([](struct dl_phdr_info* info, size_t, void*) {
+    dl_iterate_phdr(
+        [](struct dl_phdr_info* info, size_t, void*) {
         std::string name = info->dlpi_name;
 
         if (name.rfind(MODULE_EXT) != name.length() - strlen(MODULE_EXT)) return 0;
@@ -79,7 +80,8 @@ void Initialize()
 
         moduleList.emplace_back(std::move(mod));
         return 0;
-    }, nullptr);
+    },
+        nullptr);
 #endif
 }
 
@@ -87,11 +89,11 @@ CModule* GetModuleByName(std::string name)
 {
 #ifdef _WIN32
     // or add this in GetGameDirectory()?
-    std::ranges::replace(name, '\\', '/');
+    std::replace(name.begin(), name.end(), '\\', '/');
 #endif
 
     const auto it = std::find_if(moduleList.begin(), moduleList.end(), [&name](const std::unique_ptr<CModule>& i) {
-        return i->m_pszModule.size() > 0 && name.size() >= i->m_pszModule.size() &&
+        return !i->m_pszModule.empty() && name.size() >= i->m_pszModule.size() &&
                name.substr(name.size() - i->m_pszModule.size()) == i->m_pszModule;
     });
 
@@ -131,7 +133,7 @@ CModule::CModule(std::string_view path, std::uint64_t base)
     m_baseAddress = base;
     m_size = nt_header->OptionalHeader.SizeOfImage;
 
-    const bool should_read_from_disk = std::ranges::any_of(modules_to_read_from_disk, [&](const auto& i) {
+    const bool should_read_from_disk = std::any_of(modules_to_read_from_disk.begin(), modules_to_read_from_disk.end(), [&](const auto& i) {
         return m_pszModule == i;
     });
 
