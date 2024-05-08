@@ -9,4 +9,4 @@ updates:
     schedule:
       interval: "daily"
     commit-message:
-      prefix: "chore(deps): update hl2sdk"
+      prefix: "chore(deps)"
