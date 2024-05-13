@@ -19,14 +19,14 @@
 #include <map>
 #include <vector>
 
-#include "core/globals.h"
 #include "core/global_listener.h"
+#include "core/globals.h"
 #include "scripting/script_engine.h"
 
 namespace counterstrikesharp {
 class ScriptCallback;
 
-typedef void (*HostSay)(CBaseEntity*, CCommand&, bool, int, const char*);
+typedef void (*HostSay)(CEntityInstance*, CCommand&, bool, int, const char*);
 
 class ChatCommandInfo
 {
@@ -52,18 +52,17 @@ class ChatManager : public GlobalClass
     void OnAllInitialized() override;
     void OnShutdown() override;
 
-    bool OnSayCommandPre(CBaseEntity* pController, CCommand& args);
-    void OnSayCommandPost(CBaseEntity* pController, CCommand& args);
+    bool OnSayCommandPre(CEntityInstance* pController, CCommand& args);
+    void OnSayCommandPost(CEntityInstance* pController, CCommand& args);
+
   private:
-    void InternalDispatch(CBaseEntity* pPlayerController, const char* szTriggerPhrase,
-                          CCommand& pFullCommand);
+    void InternalDispatch(CEntityInstance* pPlayerController, const char* szTriggerPhrase, CCommand& pFullCommand);
 
     std::vector<ChatCommandInfo*> m_cmd_list;
     std::map<std::string, ChatCommandInfo*> m_cmd_lookup;
 };
 
-static void DetourHostSay(CBaseEntity* pController, CCommand& args, bool teamonly, int unk1,
-                          const char* unk2);
+static void DetourHostSay(CEntityInstance* pController, CCommand& args, bool teamonly, int unk1, const char* unk2);
 static HostSay m_pHostSay = nullptr;
 
 } // namespace counterstrikesharp
