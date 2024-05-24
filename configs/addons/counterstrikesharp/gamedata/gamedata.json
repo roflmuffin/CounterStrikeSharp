@@ -151,7 +151,7 @@
     "signatures": {
       "library": "server",
       "windows": "48 8B 15 ? ? ? ? 48 85 D2 74 ? 85 C9 74",
-      "linux": "48 8B 05 ? ? ? ? 48 85 C0 74 ? 83 FF 3F 76 ? 31 C0"
+      "linux": "48 8B 05 ? ? ? ? 48 85 C0 74 ? 85 FF"
     }
   },
   "CBasePlayerPawn_CommitSuicide": {
