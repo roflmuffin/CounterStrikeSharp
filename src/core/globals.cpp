@@ -37,6 +37,7 @@ CModule* vscript = nullptr;
 } // namespace modules
 
 namespace globals {
+IVEngineServer2* engineServer2 = nullptr;
 IVEngineServer* engine = nullptr;
 IGameEventManager2* gameEventManager = nullptr;
 IGameEventSystem* gameEventSystem = nullptr;
@@ -105,25 +106,17 @@ void Initialize()
 
     entitySystem = interfaces::pGameResourceServiceServer->GetGameEntitySystem();
 
-    GetLegacyGameEventListener = reinterpret_cast<GetLegacyGameEventListener_t*>(modules::server->FindSignature(
-            globals::gameConfig->GetSignature("LegacyGameEventListener")));
+    GetLegacyGameEventListener = reinterpret_cast<GetLegacyGameEventListener_t*>(
+        modules::server->FindSignature(globals::gameConfig->GetSignature("LegacyGameEventListener")));
 
-    if (int offset = -1; (offset = gameConfig->GetOffset("GameEventManager")) != -1) {
+    if (int offset = -1; (offset = gameConfig->GetOffset("GameEventManager")) != -1)
+    {
         gameEventManager = (IGameEventManager2*)(CALL_VIRTUAL(uintptr_t, offset, server) - 8);
     }
 }
 
 int source_hook_pluginid = 0;
-CGlobalVars* getGlobalVars()
-{
-    INetworkGameServer* server = networkServerService->GetIGameServer();
-
-    if (!server) {
-        return nullptr;
-    }
-
-    return networkServerService->GetIGameServer()->GetGlobals();
-}
+CGlobalVars* getGlobalVars() { return engineServer2->GetServerGlobals(); }
 
 } // namespace globals
 } // namespace counterstrikesharp
