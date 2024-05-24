@@ -1,3 +1,4 @@
+// clang-format off
 #include "mm_plugin.h"
 #include "core/globals.h"
 #include "core/managers/player_manager.h"
@@ -24,6 +25,9 @@
 #include "core/managers/voice_manager.h"
 #include <public/game/server/iplayerinfo.h>
 #include <public/entity2/entitysystem.h>
+
+#include <funchook.h>
+// clang-format on
 
 namespace counterstrikesharp {
 
@@ -87,6 +91,7 @@ TickScheduler tickScheduler;
 
 bool gameLoopInitialized = false;
 GetLegacyGameEventListener_t* GetLegacyGameEventListener = nullptr;
+GameEventManagerInit_t* GameEventManagerInit = nullptr;
 std::thread::id gameThreadId;
 
 // Based on 64 fixed tick rate
@@ -109,10 +114,27 @@ void Initialize()
     GetLegacyGameEventListener = reinterpret_cast<GetLegacyGameEventListener_t*>(
         modules::server->FindSignature(globals::gameConfig->GetSignature("LegacyGameEventListener")));
 
-    if (int offset = -1; (offset = gameConfig->GetOffset("GameEventManager")) != -1)
+    GameEventManagerInit = reinterpret_cast<GameEventManagerInit_t*>(
+        modules::server->FindSignature(globals::gameConfig->GetSignature("CGameEventManager_Init")));
+
+    if (GameEventManagerInit == nullptr)
     {
-        gameEventManager = (IGameEventManager2*)(CALL_VIRTUAL(uintptr_t, offset, server) - 8);
+        CSSHARP_CORE_ERROR("Failed to find signature for \'GameEventManagerInit\'");
+        return;
     }
+
+    auto m_hook = funchook_create();
+    funchook_prepare(m_hook, (void**)&GameEventManagerInit, (void*)&DetourGameEventManagerInit);
+    funchook_install(m_hook, 0);
+}
+
+void DetourGameEventManagerInit(IGameEventManager2* pGameEventManager)
+{
+    gameEventManager = pGameEventManager;
+
+    GameEventManagerInit(pGameEventManager);
+
+    eventManager.OnAllInitialized_Post();
 }
 
 int source_hook_pluginid = 0;

@@ -119,7 +119,10 @@ extern CGameConfig* gameConfig;
 
 extern const float engine_fixed_tick_interval;
 
+typedef void GameEventManagerInit_t(IGameEventManager2* gameEventManager);
 typedef IGameEventListener2* GetLegacyGameEventListener_t(CPlayerSlot slot);
+
+static void DetourGameEventManagerInit(IGameEventManager2* gameEventManager);
 
 extern bool gameLoopInitialized;
 extern GetLegacyGameEventListener_t* GetLegacyGameEventListener;
