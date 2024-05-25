@@ -28,8 +28,8 @@
   },
   "CCSPlayerController_Respawn": {
     "offsets": {
-      "windows": 244,
-      "linux": 246
+      "windows": 254,
+      "linux": 256
     }
   },
   "CBasePlayerController_SetPawn": {
