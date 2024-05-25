@@ -34,10 +34,6 @@ public partial class CSound : NativeObject
 	[SchemaMember("CSound", "m_flOcclusionScale")]
 	public ref float OcclusionScale => ref Schema.GetRef<float>(this.Handle, "CSound", "m_flOcclusionScale");
 
-	// m_iType
-	[SchemaMember("CSound", "m_iType")]
-	public ref Int32 Type => ref Schema.GetRef<Int32>(this.Handle, "CSound", "m_iType");
-
 	// m_iNextAudible
 	[SchemaMember("CSound", "m_iNextAudible")]
 	public ref Int32 NextAudible => ref Schema.GetRef<Int32>(this.Handle, "CSound", "m_iNextAudible");

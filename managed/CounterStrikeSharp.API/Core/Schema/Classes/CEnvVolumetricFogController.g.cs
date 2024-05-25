@@ -114,6 +114,10 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 	[SchemaMember("CEnvVolumetricFogController", "m_bEnableIndirect")]
 	public ref bool EnableIndirect => ref Schema.GetRef<bool>(this.Handle, "CEnvVolumetricFogController", "m_bEnableIndirect");
 
+	// m_bIndirectUseLPVs
+	[SchemaMember("CEnvVolumetricFogController", "m_bIndirectUseLPVs")]
+	public ref bool IndirectUseLPVs => ref Schema.GetRef<bool>(this.Handle, "CEnvVolumetricFogController", "m_bIndirectUseLPVs");
+
 	// m_bIsMaster
 	[SchemaMember("CEnvVolumetricFogController", "m_bIsMaster")]
 	public ref bool IsMaster => ref Schema.GetRef<bool>(this.Handle, "CEnvVolumetricFogController", "m_bIsMaster");
@@ -125,6 +129,18 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 	// m_nForceRefreshCount
 	[SchemaMember("CEnvVolumetricFogController", "m_nForceRefreshCount")]
 	public ref Int32 ForceRefreshCount => ref Schema.GetRef<Int32>(this.Handle, "CEnvVolumetricFogController", "m_nForceRefreshCount");
+
+	// m_fNoiseSpeed
+	[SchemaMember("CEnvVolumetricFogController", "m_fNoiseSpeed")]
+	public ref float NoiseSpeed => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogController", "m_fNoiseSpeed");
+
+	// m_fNoiseStrength
+	[SchemaMember("CEnvVolumetricFogController", "m_fNoiseStrength")]
+	public ref float NoiseStrength => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogController", "m_fNoiseStrength");
+
+	// m_vNoiseScale
+	[SchemaMember("CEnvVolumetricFogController", "m_vNoiseScale")]
+	public Vector NoiseScale => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvVolumetricFogController", "m_vNoiseScale");
 
 	// m_bFirstTime
 	[SchemaMember("CEnvVolumetricFogController", "m_bFirstTime")]

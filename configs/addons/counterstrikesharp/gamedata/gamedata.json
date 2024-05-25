@@ -22,21 +22,21 @@
   },
   "CCSPlayerController_ChangeTeam": {
     "offsets": {
-      "windows": 93,
-      "linux": 92
+      "windows": 98,
+      "linux": 97
     }
   },
   "CCSPlayerController_Respawn": {
     "offsets": {
-      "windows": 244,
-      "linux": 246
+      "windows": 254,
+      "linux": 256
     }
   },
   "CBasePlayerController_SetPawn": {
     "signatures": {
       "library": "server",
-      "windows": "44 88 4C 24 20 55 57 41 54 41 56 41 57 48 8D 6C 24 ? 48 81 EC ?",
-      "linux": "55 48 89 E5 41 57 41 56 41 55 41 54 49 89 FC 53 48 89 F3 48 81 EC C8 00 00 00"
+      "windows": "44 88 4C 24 ? 55 56 57 41 54 41 56 48 8D 6C 24 ?",
+      "linux": "55 48 89 E5 41 57 41 56 41 89 D6 41 55 49 89 FD 41 54 45 89 C4"
     }
   },
   "CCSPlayerPawnBase_PostThink": {
@@ -46,11 +46,18 @@
       "linux": "55 48 89 E5 41 56 41 55 41 54 53 48 89 FB 48 83 EC 30 E8 ? ? ? ?"
     }
   },
+  "CGameEventManager_Init": {
+    "signatures": {
+      "library": "server",
+      "windows": "40 53 48 83 EC 20 48 8B 01 48 8B D9 FF 50 10",
+      "linux": "55 48 89 E5 41 54 49 89 FC 48 83 EC 08 48 8B 07 FF 50 18"
+    }
+  },
   "GiveNamedItem": {
     "signatures": {
       "library": "server",
       "windows": "48 89 5C 24 ? 48 89 74 24 ? 55 57 41 ? 41 ? 41 ? 48 ? ? ? ? 48 ? ? ? ? ? ? 4D ? ? 48",
-      "linux": "55 48 89 E5 41 57 41 56 49 89 D6 41 55 49 89 FD 41 54 48"
+      "linux": "55 48 89 E5 41 57 41 56 45 31 F6 41 55 49 89 CD"
     }
   },
   "UTIL_Remove": {
@@ -64,7 +71,7 @@
     "signatures": {
       "library": "server",
       "windows": "44 89 4C 24 20 44 88 44 24 18",
-      "linux": "55 48 89 E5 41 57 49 89 FF 41 56 41 55 41 54 4D 89 C4"
+      "linux": "55 48 89 E5 41 57 41 56 41 89 D6 41 55 4D 89 C5"
     }
   },
   "CBaseModelEntity_SetModel": {
@@ -108,8 +115,8 @@
   "CCSGameRules_TerminateRound": {
     "signatures": {
       "library": "server",
-      "windows": "48 ? ? 4C 89 48 ? 48 89 48 ? 55 41",
-      "linux": "55 48 89 E5 41 57 41 56 41 55 41 54 49 89 FC 53 48 81 EC E8 01 00 00 48 8D 05 ? ? ? ?"
+      "windows": "48 8B C4 4C 89 48 ? 48 89 48 ? 55 56",
+      "linux": "55 48 89 E5 41 57 41 56 41 55 41 54 49 89 FC 53 48 81 EC 88 00 00 00 48 8D 05 ? ? ? ?"
     }
   },
   "UTIL_CreateEntityByName": {
@@ -144,13 +151,13 @@
     "signatures": {
       "library": "server",
       "windows": "48 8B 15 ? ? ? ? 48 85 D2 74 ? 85 C9 74",
-      "linux": "48 8B 05 ? ? ? ? 48 85 C0 74 ? 83 FF 3F 76 ? 31 C0"
+      "linux": "48 8B 05 ? ? ? ? 48 85 C0 74 ? 85 FF"
     }
   },
   "CBasePlayerPawn_CommitSuicide": {
     "offsets": {
-      "windows": 360,
-      "linux": 360
+      "windows": 372,
+      "linux": 372
     }
   },
   "CBasePlayerPawn_RemovePlayerItem": {
@@ -162,15 +169,15 @@
   },
   "CBaseEntity_Teleport": {
     "offsets": {
-      "windows": 149,
-      "linux": 148
+      "windows": 155,
+      "linux": 154
     }
   },
   "CBaseEntity_TakeDamageOld": {
     "signatures": {
       "library": "server",
-      "windows": "40 56 57 48 83 EC 58 48 8B 41 10",
-      "linux": "55 48 89 E5 41 57 41 56 41 55 41 54 49 89 FC 53 48 83 EC 38 4C 8D 2D ? ? ? ? 49 8B 7D 00 48 85 FF 0F 84 ? ? ? ?"
+      "windows": "48 89 74 24 20 57 48 83 EC 60 48 8B 41 10",
+      "linux": "55 48 89 E5 41 57 41 56 41 55 41 54 49 89 FC 53 48 83 EC 48 4C 8D 2D ? ? ? ? 49 8B 7D 00 48 85 FF 0F 84 ? ? ? ?"
     }
   },
   "CBaseTrigger_StartTouch": {

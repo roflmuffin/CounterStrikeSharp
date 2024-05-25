@@ -54,6 +54,10 @@ public partial class CBaseTrigger : CBaseToggle
 	[SchemaMember("CBaseTrigger", "m_OnTouching")]
 	public CEntityIOOutput OnTouching => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseTrigger", "m_OnTouching");
 
+	// m_OnTouchingEachEntity
+	[SchemaMember("CBaseTrigger", "m_OnTouchingEachEntity")]
+	public CEntityIOOutput OnTouchingEachEntity => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseTrigger", "m_OnTouchingEachEntity");
+
 	// m_OnNotTouching
 	[SchemaMember("CBaseTrigger", "m_OnNotTouching")]
 	public CEntityIOOutput OnNotTouching => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseTrigger", "m_OnNotTouching");

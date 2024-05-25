@@ -18,9 +18,9 @@ public partial class CPhysBallSocket : CPhysConstraint
 {
     public CPhysBallSocket (IntPtr pointer) : base(pointer) {}
 
-	// m_flFriction
-	[SchemaMember("CPhysBallSocket", "m_flFriction")]
-	public ref float Friction => ref Schema.GetRef<float>(this.Handle, "CPhysBallSocket", "m_flFriction");
+	// m_flJointFriction
+	[SchemaMember("CPhysBallSocket", "m_flJointFriction")]
+	public ref float JointFriction => ref Schema.GetRef<float>(this.Handle, "CPhysBallSocket", "m_flJointFriction");
 
 	// m_bEnableSwingLimit
 	[SchemaMember("CPhysBallSocket", "m_bEnableSwingLimit")]

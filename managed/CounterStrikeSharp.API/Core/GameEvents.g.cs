@@ -937,6 +937,22 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("clientside_reload_custom_econ")]
+            public class EventClientsideReloadCustomEcon : GameEvent
+            {
+                public EventClientsideReloadCustomEcon(IntPtr pointer) : base(pointer){}
+                public EventClientsideReloadCustomEcon(bool force) : base("clientside_reload_custom_econ", force){}
+
+                
+
+                
+                public string Steamid
+                {
+                    get => Get<string>("steamid");
+                    set => Set<string>("steamid", value);
+                }
+            }
+
             [EventName("cs_game_disconnected")]
             public class EventCsGameDisconnected : GameEvent
             {
@@ -3726,54 +3742,6 @@ namespace CounterStrikeSharp.API.Core
                 public EventItemSchemaInitialized(bool force) : base("item_schema_initialized", force){}
 
                 
-            }
-
-            [EventName("items_gifted")]
-            public class EventItemsGifted : GameEvent
-            {
-                public EventItemsGifted(IntPtr pointer) : base(pointer){}
-                public EventItemsGifted(bool force) : base("items_gifted", force){}
-
-                
-
-                // entity used by player
-                public CCSPlayerController? Player
-                {
-                    get => GetPlayer("player");
-                    set => SetPlayer("player", value);
-                }
-
-
-                
-                public long Itemdef
-                {
-                    get => Get<long>("itemdef");
-                    set => Set<long>("itemdef", value);
-                }
-
-
-                
-                public int Numgifts
-                {
-                    get => Get<int>("numgifts");
-                    set => Set<int>("numgifts", value);
-                }
-
-
-                
-                public long Giftidx
-                {
-                    get => Get<long>("giftidx");
-                    set => Set<long>("giftidx", value);
-                }
-
-
-                
-                public long Accountid
-                {
-                    get => Get<long>("accountid");
-                    set => Set<long>("accountid", value);
-                }
             }
 
             [EventName("jointeam_failed")]
@@ -6578,15 +6546,6 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
-            [EventName("tr_exit_hint_trigger")]
-            public class EventTrExitHintTrigger : GameEvent
-            {
-                public EventTrExitHintTrigger(IntPtr pointer) : base(pointer){}
-                public EventTrExitHintTrigger(bool force) : base("tr_exit_hint_trigger", force){}
-
-                
-            }
-
             [EventName("trial_time_expired")]
             public class EventTrialTimeExpired : GameEvent
             {
@@ -6601,72 +6560,6 @@ namespace CounterStrikeSharp.API.Core
                     get => GetPlayer("userid");
                     set => SetPlayer("userid", value);
                 }
-            }
-
-            [EventName("tr_mark_best_time")]
-            public class EventTrMarkBestTime : GameEvent
-            {
-                public EventTrMarkBestTime(IntPtr pointer) : base(pointer){}
-                public EventTrMarkBestTime(bool force) : base("tr_mark_best_time", force){}
-
-                
-
-                
-                public long Time
-                {
-                    get => Get<long>("time");
-                    set => Set<long>("time", value);
-                }
-            }
-
-            [EventName("tr_mark_complete")]
-            public class EventTrMarkComplete : GameEvent
-            {
-                public EventTrMarkComplete(IntPtr pointer) : base(pointer){}
-                public EventTrMarkComplete(bool force) : base("tr_mark_complete", force){}
-
-                
-
-                
-                public int Complete
-                {
-                    get => Get<int>("complete");
-                    set => Set<int>("complete", value);
-                }
-            }
-
-            [EventName("tr_player_flashbanged")]
-            public class EventTrPlayerFlashbanged : GameEvent
-            {
-                public EventTrPlayerFlashbanged(IntPtr pointer) : base(pointer){}
-                public EventTrPlayerFlashbanged(bool force) : base("tr_player_flashbanged", force){}
-
-                
-
-                // user ID of the player banged
-                public CCSPlayerController? Userid
-                {
-                    get => GetPlayer("userid");
-                    set => SetPlayer("userid", value);
-                }
-            }
-
-            [EventName("tr_show_exit_msgbox")]
-            public class EventTrShowExitMsgbox : GameEvent
-            {
-                public EventTrShowExitMsgbox(IntPtr pointer) : base(pointer){}
-                public EventTrShowExitMsgbox(bool force) : base("tr_show_exit_msgbox", force){}
-
-                
-            }
-
-            [EventName("tr_show_finish_msgbox")]
-            public class EventTrShowFinishMsgbox : GameEvent
-            {
-                public EventTrShowFinishMsgbox(IntPtr pointer) : base(pointer){}
-                public EventTrShowFinishMsgbox(bool force) : base("tr_show_finish_msgbox", force){}
-
-                
             }
 
             [EventName("ugc_file_download_finished")]
@@ -7222,22 +7115,6 @@ namespace CounterStrikeSharp.API.Core
                 {
                     get => Get<long>("entindex");
                     set => Set<long>("entindex", value);
-                }
-            }
-
-            [EventName("weapon_outofammo")]
-            public class EventWeaponOutofammo : GameEvent
-            {
-                public EventWeaponOutofammo(IntPtr pointer) : base(pointer){}
-                public EventWeaponOutofammo(bool force) : base("weapon_outofammo", force){}
-
-                
-
-                
-                public CCSPlayerController? Userid
-                {
-                    get => GetPlayer("userid");
-                    set => SetPlayer("userid", value);
                 }
             }
 

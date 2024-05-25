@@ -38,10 +38,6 @@ public partial class CTriggerSndSosOpvar : CBaseTrigger
 	[SchemaMember("CTriggerSndSosOpvar", "m_flMaxVal")]
 	public ref float MaxVal => ref Schema.GetRef<float>(this.Handle, "CTriggerSndSosOpvar", "m_flMaxVal");
 
-	// m_flWait
-	[SchemaMember("CTriggerSndSosOpvar", "m_flWait")]
-	public ref float Wait => ref Schema.GetRef<float>(this.Handle, "CTriggerSndSosOpvar", "m_flWait");
-
 	// m_opvarName
 	[SchemaMember("CTriggerSndSosOpvar", "m_opvarName")]
 	public string OpvarName

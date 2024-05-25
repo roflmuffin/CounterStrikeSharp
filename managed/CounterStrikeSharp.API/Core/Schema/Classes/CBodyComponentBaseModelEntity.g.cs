@@ -18,8 +18,4 @@ public partial class CBodyComponentBaseModelEntity : CBodyComponentSkeletonInsta
 {
     public CBodyComponentBaseModelEntity (IntPtr pointer) : base(pointer) {}
 
-	// __m_pChainEntity
-	[SchemaMember("CBodyComponentBaseModelEntity", "__m_pChainEntity")]
-	public CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "CBodyComponentBaseModelEntity", "__m_pChainEntity");
-
 }
