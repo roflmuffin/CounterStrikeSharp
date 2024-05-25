@@ -46,4 +46,36 @@ public partial class CEnvVolumetricFogVolume : CBaseEntity
 	[SchemaMember("CEnvVolumetricFogVolume", "m_flFalloffExponent")]
 	public ref float FalloffExponent => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogVolume", "m_flFalloffExponent");
 
+	// m_flHeightFogDepth
+	[SchemaMember("CEnvVolumetricFogVolume", "m_flHeightFogDepth")]
+	public ref float HeightFogDepth => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogVolume", "m_flHeightFogDepth");
+
+	// m_fHeightFogEdgeWidth
+	[SchemaMember("CEnvVolumetricFogVolume", "m_fHeightFogEdgeWidth")]
+	public ref float HeightFogEdgeWidth => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogVolume", "m_fHeightFogEdgeWidth");
+
+	// m_fIndirectLightStrength
+	[SchemaMember("CEnvVolumetricFogVolume", "m_fIndirectLightStrength")]
+	public ref float IndirectLightStrength => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogVolume", "m_fIndirectLightStrength");
+
+	// m_fSunLightStrength
+	[SchemaMember("CEnvVolumetricFogVolume", "m_fSunLightStrength")]
+	public ref float SunLightStrength => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogVolume", "m_fSunLightStrength");
+
+	// m_fNoiseStrength
+	[SchemaMember("CEnvVolumetricFogVolume", "m_fNoiseStrength")]
+	public ref float NoiseStrength => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogVolume", "m_fNoiseStrength");
+
+	// m_bOverrideIndirectLightStrength
+	[SchemaMember("CEnvVolumetricFogVolume", "m_bOverrideIndirectLightStrength")]
+	public ref bool OverrideIndirectLightStrength => ref Schema.GetRef<bool>(this.Handle, "CEnvVolumetricFogVolume", "m_bOverrideIndirectLightStrength");
+
+	// m_bOverrideSunLightStrength
+	[SchemaMember("CEnvVolumetricFogVolume", "m_bOverrideSunLightStrength")]
+	public ref bool OverrideSunLightStrength => ref Schema.GetRef<bool>(this.Handle, "CEnvVolumetricFogVolume", "m_bOverrideSunLightStrength");
+
+	// m_bOverrideNoiseStrength
+	[SchemaMember("CEnvVolumetricFogVolume", "m_bOverrideNoiseStrength")]
+	public ref bool OverrideNoiseStrength => ref Schema.GetRef<bool>(this.Handle, "CEnvVolumetricFogVolume", "m_bOverrideNoiseStrength");
+
 }

@@ -21,4 +21,5 @@ public enum AnimVectorSource : uint
 	WayPointPosition = 0xA,
 	GoalPosition = 0xB,
 	RootMotionVelocity = 0xC,
+	ManualTarget_WorldSpace = 0xD,
 }

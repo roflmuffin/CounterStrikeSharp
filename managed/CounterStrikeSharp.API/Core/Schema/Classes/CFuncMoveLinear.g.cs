@@ -62,10 +62,6 @@ public partial class CFuncMoveLinear : CBaseToggle
 	[SchemaMember("CFuncMoveLinear", "m_flStartPosition")]
 	public ref float StartPosition => ref Schema.GetRef<float>(this.Handle, "CFuncMoveLinear", "m_flStartPosition");
 
-	// m_flMoveDistance
-	[SchemaMember("CFuncMoveLinear", "m_flMoveDistance")]
-	public ref float MoveDistance => ref Schema.GetRef<float>(this.Handle, "CFuncMoveLinear", "m_flMoveDistance");
-
 	// m_OnFullyOpen
 	[SchemaMember("CFuncMoveLinear", "m_OnFullyOpen")]
 	public CEntityIOOutput OnFullyOpen => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMoveLinear", "m_OnFullyOpen");

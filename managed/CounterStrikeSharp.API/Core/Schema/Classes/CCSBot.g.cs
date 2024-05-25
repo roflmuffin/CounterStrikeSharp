@@ -18,10 +18,6 @@ public partial class CCSBot : CBot
 {
     public CCSBot (IntPtr pointer) : base(pointer) {}
 
-	// m_lastCoopSpawnPoint
-	[SchemaMember("CCSBot", "m_lastCoopSpawnPoint")]
-	public CHandle<SpawnPointCoopEnemy> LastCoopSpawnPoint => Schema.GetDeclaredClass<CHandle<SpawnPointCoopEnemy>>(this.Handle, "CCSBot", "m_lastCoopSpawnPoint");
-
 	// m_eyePosition
 	[SchemaMember("CCSBot", "m_eyePosition")]
 	public Vector EyePosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSBot", "m_eyePosition");

@@ -22,13 +22,9 @@ public partial class CChicken : CDynamicProp
 	[SchemaMember("CChicken", "m_AttributeManager")]
 	public CAttributeContainer AttributeManager => Schema.GetDeclaredClass<CAttributeContainer>(this.Handle, "CChicken", "m_AttributeManager");
 
-	// m_OriginalOwnerXuidLow
-	[SchemaMember("CChicken", "m_OriginalOwnerXuidLow")]
-	public ref UInt32 OriginalOwnerXuidLow => ref Schema.GetRef<UInt32>(this.Handle, "CChicken", "m_OriginalOwnerXuidLow");
-
-	// m_OriginalOwnerXuidHigh
-	[SchemaMember("CChicken", "m_OriginalOwnerXuidHigh")]
-	public ref UInt32 OriginalOwnerXuidHigh => ref Schema.GetRef<UInt32>(this.Handle, "CChicken", "m_OriginalOwnerXuidHigh");
+	// m_sActivityFinishedTag
+	[SchemaMember("CChicken", "m_sActivityFinishedTag")]
+	public CUtlStringToken ActivityFinishedTag => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CChicken", "m_sActivityFinishedTag");
 
 	// m_updateTimer
 	[SchemaMember("CChicken", "m_updateTimer")]
@@ -54,9 +50,13 @@ public partial class CChicken : CDynamicProp
 	[SchemaMember("CChicken", "m_vFallVelocity")]
 	public Vector FallVelocity => Schema.GetDeclaredClass<Vector>(this.Handle, "CChicken", "m_vFallVelocity");
 
-	// m_activity
-	[SchemaMember("CChicken", "m_activity")]
-	public ref ChickenActivity Activity => ref Schema.GetRef<ChickenActivity>(this.Handle, "CChicken", "m_activity");
+	// m_desiredActivity
+	[SchemaMember("CChicken", "m_desiredActivity")]
+	public ref ChickenActivity DesiredActivity => ref Schema.GetRef<ChickenActivity>(this.Handle, "CChicken", "m_desiredActivity");
+
+	// m_currentActivity
+	[SchemaMember("CChicken", "m_currentActivity")]
+	public ref ChickenActivity CurrentActivity => ref Schema.GetRef<ChickenActivity>(this.Handle, "CChicken", "m_currentActivity");
 
 	// m_activityTimer
 	[SchemaMember("CChicken", "m_activityTimer")]

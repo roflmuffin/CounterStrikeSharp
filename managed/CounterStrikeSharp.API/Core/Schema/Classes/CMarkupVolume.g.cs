@@ -18,8 +18,8 @@ public partial class CMarkupVolume : CBaseModelEntity
 {
     public CMarkupVolume (IntPtr pointer) : base(pointer) {}
 
-	// m_bEnabled
-	[SchemaMember("CMarkupVolume", "m_bEnabled")]
-	public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolume", "m_bEnabled");
+	// m_bDisabled
+	[SchemaMember("CMarkupVolume", "m_bDisabled")]
+	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolume", "m_bDisabled");
 
 }
