@@ -43,16 +43,17 @@ namespace counterstrikesharp {
 
 const char* GetMapName(ScriptContext& script_context)
 {
-    if (globals::getGlobalVars() == nullptr)
+    auto globalVars = globals::getGlobalVars();
+    if (globalVars == nullptr)
+    {
+        script_context.ThrowNativeError("Global Variables not initialized yet.");
         return nullptr;
+    }
 
-    return globals::getGlobalVars()->mapname.ToCStr();
+    return globalVars->mapname.ToCStr();
 }
 
-const char* GetGameDirectory(ScriptContext& script_context)
-{
-    return strdup(Plat_GetGameDirectory());
-}
+const char* GetGameDirectory(ScriptContext& script_context) { return strdup(Plat_GetGameDirectory()); }
 
 bool IsMapValid(ScriptContext& script_context)
 {
@@ -60,18 +61,42 @@ bool IsMapValid(ScriptContext& script_context)
     return globals::engine->IsMapValid(mapname) != 0;
 }
 
-float GetTickInterval(ScriptContext& script_context)
+float GetTickInterval(ScriptContext& script_context) { return globals::engine_fixed_tick_interval; }
+
+float GetCurrentTime(ScriptContext& script_context)
 {
-    return globals::engine_fixed_tick_interval;
+    auto globalVars = globals::getGlobalVars();
+    if (globalVars == nullptr)
+    {
+        script_context.ThrowNativeError("Global Variables not initialized yet.");
+        return -1;
+    }
+
+    return globalVars->curtime;
 }
 
-float GetCurrentTime(ScriptContext& script_context) { return globals::getGlobalVars()->curtime; }
+int GetTickCount(ScriptContext& script_context)
+{
+    auto globalVars = globals::getGlobalVars();
+    if (globalVars == nullptr)
+    {
+        script_context.ThrowNativeError("Global Variables not initialized yet.");
+        return -1;
+    }
 
-int GetTickCount(ScriptContext& script_context) { return globals::getGlobalVars()->tickcount; }
+    return globalVars->tickcount;
+}
 
 float GetGameFrameTime(ScriptContext& script_context)
 {
-    return globals::getGlobalVars()->frametime;
+    auto globalVars = globals::getGlobalVars();
+    if (globalVars == nullptr)
+    {
+        script_context.ThrowNativeError("Global Variables not initialized yet.");
+        return -1;
+    }
+
+    return globalVars->frametime;
 }
 
 double GetEngineTime(ScriptContext& script_context) { return Plat_FloatTime(); }
@@ -79,7 +104,8 @@ double GetEngineTime(ScriptContext& script_context) { return Plat_FloatTime(); }
 int GetMaxClients(ScriptContext& script_context)
 {
     auto globalVars = globals::getGlobalVars();
-    if (globalVars == nullptr) {
+    if (globalVars == nullptr)
+    {
         script_context.ThrowNativeError("Global Variables not initialized yet.");
         return -1;
     }
@@ -152,10 +178,13 @@ Ray_t* CreateRay1(ScriptContext& script_context)
 
     Ray_t* pRay = new Ray_t;
 
-    if (ray_type == RayType_EndPoint) {
+    if (ray_type == RayType_EndPoint)
+    {
         pRay->Init(*vec1, *vec2);
         return pRay;
-    } else if (ray_type == RayType_Infinite) {
+    }
+    else if (ray_type == RayType_Infinite)
+    {
         QAngle angles;
         Vector endVec;
         angles.Init(vec2->x, vec2->y, vec2->z);
@@ -200,10 +229,7 @@ CSimpleTraceFilter* NewSimpleTraceFilter(ScriptContext& script_context)
     return new CSimpleTraceFilter(index_to_ignore);
 }
 
-TraceFilterProxy* NewTraceFilterProxy(ScriptContext& script_context)
-{
-    return new TraceFilterProxy();
-}
+TraceFilterProxy* NewTraceFilterProxy(ScriptContext& script_context) { return new TraceFilterProxy(); }
 
 void TraceFilterProxySetTraceTypeCallback(ScriptContext& script_context)
 {
@@ -228,7 +254,9 @@ void QueueTaskForNextFrame(ScriptContext& script_context)
     auto func = script_context.GetArgument<void*>(0);
 
     typedef void(voidfunc)(void);
-    globals::mmPlugin->AddTaskForNextFrame([func]() { reinterpret_cast<voidfunc*>(func)(); });
+    globals::mmPlugin->AddTaskForNextFrame([func]() {
+        reinterpret_cast<voidfunc*>(func)();
+    });
 }
 
 void QueueTaskForNextWorldUpdate(ScriptContext& script_context)
@@ -236,7 +264,9 @@ void QueueTaskForNextWorldUpdate(ScriptContext& script_context)
     auto func = script_context.GetArgument<void*>(0);
 
     typedef void(voidfunc)(void);
-    globals::serverManager.AddTaskForNextWorldUpdate([func]() { reinterpret_cast<voidfunc*>(func)(); });
+    globals::serverManager.AddTaskForNextWorldUpdate([func]() {
+        reinterpret_cast<voidfunc*>(func)();
+    });
 }
 
 void QueueTaskForFrame(ScriptContext& script_context)
@@ -259,15 +289,19 @@ void* GetValveInterface(ScriptContext& scriptContext)
     auto [interfaceType, interfaceName] = scriptContext.GetArguments<InterfaceType, const char*>();
 
     CreateInterfaceFn factoryFn;
-    if (interfaceType == Server) {
+    if (interfaceType == Server)
+    {
         factoryFn = globals::ismm->GetServerFactory();
-    } else if (interfaceType == Engine) {
+    }
+    else if (interfaceType == Engine)
+    {
         factoryFn = globals::ismm->GetEngineFactory();
     }
 
     auto foundInterface = globals::ismm->VInterfaceMatch(factoryFn, interfaceName);
 
-    if (foundInterface == nullptr) {
+    if (foundInterface == nullptr)
+    {
         scriptContext.ThrowNativeError("Could not find interface");
     }
 
@@ -280,25 +314,24 @@ void GetCommandParamValue(ScriptContext& scriptContext)
     auto paramType = scriptContext.GetArgument<DataType_t>(1);
 
     int iContextIndex = 2;
-    switch (paramType) {
-    case DATA_TYPE_STRING:
-        scriptContext.SetResult(CommandLine()->ParmValue(
-            paramName, scriptContext.GetArgument<const char*>(iContextIndex)));
-        return;
-    case DATA_TYPE_INT:
-        scriptContext.SetResult(
-            CommandLine()->ParmValue(paramName, scriptContext.GetArgument<int>(iContextIndex)));
-        return;
-    case DATA_TYPE_FLOAT:
-        scriptContext.SetResult(
-            CommandLine()->ParmValue(paramName, scriptContext.GetArgument<float>(iContextIndex)));
-        return;
+    switch (paramType)
+    {
+        case DATA_TYPE_STRING:
+            scriptContext.SetResult(CommandLine()->ParmValue(paramName, scriptContext.GetArgument<const char*>(iContextIndex)));
+            return;
+        case DATA_TYPE_INT:
+            scriptContext.SetResult(CommandLine()->ParmValue(paramName, scriptContext.GetArgument<int>(iContextIndex)));
+            return;
+        case DATA_TYPE_FLOAT:
+            scriptContext.SetResult(CommandLine()->ParmValue(paramName, scriptContext.GetArgument<float>(iContextIndex)));
+            return;
     }
 
     scriptContext.ThrowNativeError("Invalid param type");
 }
 
-void PrintToServerConsole(ScriptContext& scriptContext) {
+void PrintToServerConsole(ScriptContext& scriptContext)
+{
     auto message = scriptContext.GetArgument<const char*>(0);
 
     META_CONPRINT(message);
@@ -330,10 +363,8 @@ REGISTER_NATIVES(engine, {
     ScriptEngine::RegisterNativeHandler("TRACE_RESULT_ENTITY", TraceResultGetEntity);
 
     ScriptEngine::RegisterNativeHandler("NEW_TRACE_FILTER_PROXY", NewTraceFilterProxy);
-    ScriptEngine::RegisterNativeHandler("TRACE_FILTER_PROXY_SET_TRACE_TYPE_CALLBACK",
-                                        TraceFilterProxySetTraceTypeCallback);
-    ScriptEngine::RegisterNativeHandler("TRACE_FILTER_PROXY_SET_SHOULD_HIT_ENTITY_CALLBACK",
-                                        TraceFilterProxySetShouldHitEntityCallback);
+    ScriptEngine::RegisterNativeHandler("TRACE_FILTER_PROXY_SET_TRACE_TYPE_CALLBACK", TraceFilterProxySetTraceTypeCallback);
+    ScriptEngine::RegisterNativeHandler("TRACE_FILTER_PROXY_SET_SHOULD_HIT_ENTITY_CALLBACK", TraceFilterProxySetShouldHitEntityCallback);
 
     ScriptEngine::RegisterNativeHandler("CREATE_RAY_1", CreateRay1);
     ScriptEngine::RegisterNativeHandler("CREATE_RAY_2", CreateRay2);
