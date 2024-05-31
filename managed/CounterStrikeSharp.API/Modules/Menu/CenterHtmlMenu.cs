@@ -33,7 +33,7 @@ public class CenterHtmlMenu : BaseMenu
     {
         _plugin = plugin;
     }
-    
+
     [Obsolete("Use the constructor that takes a BasePlugin")]
     public CenterHtmlMenu(string title) : base(ModifyTitle(title))
     {
@@ -45,8 +45,8 @@ public class CenterHtmlMenu : BaseMenu
         {
             throw new InvalidOperationException("This method is unsupported with the CenterHtmlMenu constructor used." +
                                                 "Please provide a BasePlugin in the constructor.");
-        }; 
-        
+        }
+
         MenuManager.OpenCenterHtmlMenu(_plugin, player, this);
     }
 
@@ -123,19 +123,20 @@ public class CenterHtmlMenuInstance : BaseMenuInstance
 
         if (HasPrevButton)
         {
-            builder.AppendFormat($"<font color='{centerHtmlMenu.PrevPageColor}'>!7</font> &#60;- Prev");
+            builder.AppendFormat(
+                $"<font color='{centerHtmlMenu.PrevPageColor}'>!7</font> &#60;- {Application.Localizer["menu.button.previous"]}");
             builder.AppendLine("<br>");
         }
 
         if (HasNextButton)
         {
-            builder.AppendFormat($"<font color='{centerHtmlMenu.NextPageColor}'>!8</font> -> Next");
+            builder.AppendFormat($"<font color='{centerHtmlMenu.NextPageColor}'>!8</font> -> {Application.Localizer["menu.button.next"]}");
             builder.AppendLine("<br>");
         }
 
         if (centerHtmlMenu.ExitButton)
         {
-            builder.AppendFormat($"<font color='{centerHtmlMenu.CloseColor}'>!9</font> -> Close");
+            builder.AppendFormat($"<font color='{centerHtmlMenu.CloseColor}'>!9</font> -> {Application.Localizer["menu.button.close"]}");
             builder.AppendLine("<br>");
         }
 

@@ -49,20 +49,20 @@ public class ConsoleMenuInstance : BaseMenuInstance
 
             Player.PrintToConsole($"{(option.Disabled ? "[Disabled] - " : "[Enabled]")} css_{keyOffset++} {option.Text}");
         }
-            
+
         if (HasPrevButton)
         {
-            Player.PrintToConsole("css_7 -> Prev");
+            Player.PrintToConsole($"css_7 -> {Application.Localizer["menu.button.previous"]}");
         }
 
         if (HasNextButton)
         {
-            Player.PrintToConsole("css_8 -> Next");
+            Player.PrintToConsole($"css_8 -> {Application.Localizer["menu.button.next"]}");
         }
-        
+
         if (Menu.ExitButton)
         {
-            Player.PrintToConsole("css_9 -> Close");
+            Player.PrintToConsole($"css_9 -> {Application.Localizer["menu.button.close"]}");
         }
     }
 }
