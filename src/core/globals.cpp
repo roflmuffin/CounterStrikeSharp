@@ -28,6 +28,7 @@
 namespace counterstrikesharp {
 
 namespace modules {
+std::vector<std::unique_ptr<CModule>> moduleList{};
 CModule* engine = nullptr;
 CModule* tier0 = nullptr;
 CModule* server = nullptr;
@@ -92,11 +93,13 @@ const float engine_fixed_tick_interval = 0.015625f;
 
 void Initialize()
 {
-    modules::engine = new modules::CModule(ROOTBIN, "engine2");
-    modules::tier0 = new modules::CModule(ROOTBIN, "tier0");
-    modules::server = new modules::CModule(GAMEBIN, "server");
-    modules::schemasystem = new modules::CModule(ROOTBIN, "schemasystem");
-    modules::vscript = new modules::CModule(ROOTBIN, "vscript");
+    modules::Initialize();
+
+    modules::engine = modules::GetModuleByName(MODULE_PREFIX "engine2" MODULE_EXT);
+    modules::tier0 = modules::GetModuleByName(MODULE_PREFIX "tier0" MODULE_EXT);
+    modules::server = modules::GetModuleByName(MODULE_PREFIX "server" MODULE_EXT);
+    modules::schemasystem = modules::GetModuleByName(MODULE_PREFIX "schemasystem" MODULE_EXT);
+    modules::vscript = modules::GetModuleByName(MODULE_PREFIX "vscript" MODULE_EXT);
 
     interfaces::Initialize();
 

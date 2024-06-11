@@ -11,7 +11,6 @@ set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING
     FORCE
 )
 
-# TODO: Use C++20 instead.
 set(CMAKE_CXX_STANDARD 20)
 
 if (LINUX)

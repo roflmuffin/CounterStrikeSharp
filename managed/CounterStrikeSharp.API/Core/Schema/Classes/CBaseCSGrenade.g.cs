@@ -54,6 +54,10 @@ public partial class CBaseCSGrenade : CCSWeaponBase
 	[SchemaMember("CBaseCSGrenade", "m_fDropTime")]
 	public ref float DropTime => ref Schema.GetRef<float>(this.Handle, "CBaseCSGrenade", "m_fDropTime");
 
+	// m_fPinPullTime
+	[SchemaMember("CBaseCSGrenade", "m_fPinPullTime")]
+	public ref float PinPullTime => ref Schema.GetRef<float>(this.Handle, "CBaseCSGrenade", "m_fPinPullTime");
+
 	// m_bJustPulledPin
 	[SchemaMember("CBaseCSGrenade", "m_bJustPulledPin")]
 	public ref bool JustPulledPin => ref Schema.GetRef<bool>(this.Handle, "CBaseCSGrenade", "m_bJustPulledPin");
