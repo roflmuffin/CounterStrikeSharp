@@ -134,7 +134,7 @@ public abstract class BaseMenuInstance : IMenuInstance
         return (HasNextButton ? 1 : 0) + (HasPrevButton ? 1 : 0) + (((Menu as BaseMenu)!.ExitButton) ? 1 : 0);
     }
 
-    internal virtual void InvokeOptionCallback(ChatMenuOption menuOption)
+    protected virtual void InvokeOptionCallback(ChatMenuOption menuOption)
     {
         if (!menuOption.Disabled)
         {
