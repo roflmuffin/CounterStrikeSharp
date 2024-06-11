@@ -58,14 +58,6 @@ public static class MenuManager
         ActiveMenus[player.Handle].Display();
     }
 
-    public static void OpenDynamicHtmlMenu(BasePlugin plugin, CCSPlayerController player, DynamicHtmlMenu menu)
-    {
-        CloseActiveMenu(player);
-
-        ActiveMenus[player.Handle] = new DynamicHtmlMenuInstance(plugin, player, menu);
-        ActiveMenus[player.Handle].Display();
-    }
-
     public static void OpenConsoleMenu(CCSPlayerController player, ConsoleMenu menu)
     {
         CloseActiveMenu(player);
