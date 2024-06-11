@@ -16,6 +16,7 @@
 
 using CounterStrikeSharp.API.Modules.Entities.Constants;
 using CounterStrikeSharp.API.Modules.Memory;
+using System.Runtime.InteropServices;
 
 namespace CounterStrikeSharp.API.Core;
 
@@ -26,6 +27,9 @@ public partial class CCSGameRules
     /// </summary>
     public void TerminateRound(float delay, RoundEndReason roundEndReason)
     {
-        VirtualFunctions.TerminateRound(Handle, roundEndReason, delay, 0, 0);
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            VirtualFunctions.TerminateRound(Handle, delay, roundEndReason, 0, 0);
+        else
+            VirtualFunctions.TerminateRoundLinux(Handle, roundEndReason, 0, 0, delay);
     }
 }
