@@ -50,8 +50,8 @@ public partial class CPathKeyFrame : CLogicalEntity
 	[SchemaMember("CPathKeyFrame", "m_pPrevKey")]
 	public CPathKeyFrame? PrevKey => Schema.GetPointer<CPathKeyFrame>(this.Handle, "CPathKeyFrame", "m_pPrevKey");
 
-	// m_flSpeed
-	[SchemaMember("CPathKeyFrame", "m_flSpeed")]
-	public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CPathKeyFrame", "m_flSpeed");
+	// m_flMoveSpeed
+	[SchemaMember("CPathKeyFrame", "m_flMoveSpeed")]
+	public ref float MoveSpeed => ref Schema.GetRef<float>(this.Handle, "CPathKeyFrame", "m_flMoveSpeed");
 
 }

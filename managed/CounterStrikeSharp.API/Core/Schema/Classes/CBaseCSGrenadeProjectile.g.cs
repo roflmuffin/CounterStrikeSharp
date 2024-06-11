@@ -54,10 +54,6 @@ public partial class CBaseCSGrenadeProjectile : CBaseGrenade
 	[SchemaMember("CBaseCSGrenadeProjectile", "m_bDetonationRecorded")]
 	public ref bool DetonationRecorded => ref Schema.GetRef<bool>(this.Handle, "CBaseCSGrenadeProjectile", "m_bDetonationRecorded");
 
-	// m_flDetonateTime
-	[SchemaMember("CBaseCSGrenadeProjectile", "m_flDetonateTime")]
-	public ref float DetonateTime => ref Schema.GetRef<float>(this.Handle, "CBaseCSGrenadeProjectile", "m_flDetonateTime");
-
 	// m_nItemIndex
 	[SchemaMember("CBaseCSGrenadeProjectile", "m_nItemIndex")]
 	public ref UInt16 ItemIndex => ref Schema.GetRef<UInt16>(this.Handle, "CBaseCSGrenadeProjectile", "m_nItemIndex");

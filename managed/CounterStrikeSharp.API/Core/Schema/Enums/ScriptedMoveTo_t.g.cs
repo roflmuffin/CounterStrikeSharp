@@ -8,10 +8,10 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum ScriptedMoveTo_t : uint
 {
-	CINE_MOVETO_WAIT = 0x0,
-	CINE_MOVETO_WALK = 0x1,
-	CINE_MOVETO_RUN = 0x2,
-	CINE_MOVETO_CUSTOM = 0x3,
-	CINE_MOVETO_TELEPORT = 0x4,
-	CINE_MOVETO_WAIT_FACING = 0x5,
+	eWait = 0x0,
+	eMoveWithGait = 0x3,
+	eTeleport = 0x4,
+	eWaitFacing = 0x5,
+	eObsoleteBackCompat1 = 0x1,
+	eObsoleteBackCompat2 = 0x2,
 }

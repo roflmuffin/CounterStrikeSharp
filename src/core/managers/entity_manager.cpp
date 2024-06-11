@@ -46,6 +46,22 @@ void EntityManager::OnAllInitialized()
         return;
     }
 
+    CEntityInstance_AcceptInput = decltype(CEntityInstance_AcceptInput)(
+        modules::server->FindSignature(globals::gameConfig->GetSignature("CEntityInstance_AcceptInput")));
+
+    if (!CEntityInstance_AcceptInput)
+    {
+        CSSHARP_CORE_CRITICAL("Failed to find signature for \'CEntityInstance_AcceptInput\'");
+    }
+
+    CEntitySystem_AddEntityIOEvent = decltype(CEntitySystem_AddEntityIOEvent)(
+        modules::server->FindSignature(globals::gameConfig->GetSignature("CEntitySystem_AddEntityIOEvent")));
+
+    if (!CEntitySystem_AddEntityIOEvent)
+    {
+        CSSHARP_CORE_CRITICAL("Failed to find signature for \'CEntitySystem_AddEntityIOEvent\'");
+    }
+
     auto m_hook = funchook_create();
     funchook_prepare(m_hook, (void**)&m_pFireOutputInternal, (void*)&DetourFireOutputInternal);
     funchook_install(m_hook, 0);

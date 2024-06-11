@@ -23,12 +23,7 @@ public partial class CCSPlayerController
     {
         Guard.IsValidEntity(this);
 
-        if (!PlayerPawn.IsValid) return null;
-        if (PlayerPawn.Value == null) return null; ;
-        if (!PlayerPawn.Value.IsValid) return null;
-        if (PlayerPawn.Value.ItemServices == null) return null;
-
-        return PlayerPawn.Value.ItemServices.As<CCSPlayer_ItemServices>().GiveNamedItem<T>(item);
+        return PlayerPawn.Value?.ItemServices?.As<CCSPlayer_ItemServices>().GiveNamedItem<T>(item);
     }
 
     public IntPtr GiveNamedItem(CsItem item)
@@ -98,17 +93,13 @@ public partial class CCSPlayerController
     public void DropActiveWeapon()
     {
         Guard.IsValidEntity(this);
-        if (!PlayerPawn.IsValid) return;
-        if (PlayerPawn.Value == null) return;
-        if (!PlayerPawn.Value.IsValid) return;
-        if (PlayerPawn.Value.ItemServices == null) return;
-        if (PlayerPawn.Value.WeaponServices == null) return;
-        if (!PlayerPawn.Value.WeaponServices.ActiveWeapon.IsValid) return;
 
-        CCSPlayer_ItemServices itemServices = new CCSPlayer_ItemServices(PlayerPawn.Value.ItemServices.Handle);
-        CCSPlayer_WeaponServices weaponServices = new CCSPlayer_WeaponServices(PlayerPawn.Value.WeaponServices.Handle);
+        var itemServices = PlayerPawn.Value?.ItemServices?.As<CCSPlayer_ItemServices>();
+        var activeWeapon = PlayerPawn.Value?.WeaponServices?.ActiveWeapon.Value;
 
-        itemServices.DropActivePlayerWeapon(weaponServices.ActiveWeapon.Value);
+        if (activeWeapon == null || itemServices == null) return;
+
+        itemServices.DropActivePlayerWeapon(activeWeapon);
     }
 
     /// <summary>
@@ -118,13 +109,8 @@ public partial class CCSPlayerController
     public void RemoveWeapons()
     {
         Guard.IsValidEntity(this);
-        if (!PlayerPawn.IsValid) return;
-        if (PlayerPawn.Value == null) return;
-        if (!PlayerPawn.Value.IsValid) return;
-        if (PlayerPawn.Value.ItemServices == null) return;
 
-        CCSPlayer_ItemServices itemServices = new CCSPlayer_ItemServices(PlayerPawn.Value.ItemServices.Handle);
-        itemServices.RemoveWeapons();
+        PlayerPawn.Value?.ItemServices?.As<CCSPlayer_ItemServices>().RemoveWeapons();
     }
 
     /// <summary>
@@ -136,11 +122,8 @@ public partial class CCSPlayerController
     public void CommitSuicide(bool explode, bool force)
     {
         Guard.IsValidEntity(this);
-        if (!PlayerPawn.IsValid) return;
-        if (PlayerPawn.Value == null) return;
-        if (!PlayerPawn.Value.IsValid) return;
 
-        PlayerPawn.Value.CommitSuicide(explode, force);
+        PlayerPawn.Value?.CommitSuicide(explode, force);
     }
 
     /// <summary>
@@ -150,9 +133,7 @@ public partial class CCSPlayerController
     public void Respawn()
     {
         Guard.IsValidEntity(this);
-        if (!PlayerPawn.IsValid) return;
         if (PlayerPawn.Value == null) return;
-        if (!PlayerPawn.Value.IsValid) return;
 
         // The Call To Arms update appears to have invalidated the need for CCSPlayerPawn_Respawn.
         SetPawn(PlayerPawn.Value);

@@ -42,10 +42,6 @@ public partial class CBaseCombatCharacter : CBaseFlex
 	[SchemaMember("CBaseCombatCharacter", "m_bApplyStressDamage")]
 	public ref bool ApplyStressDamage => ref Schema.GetRef<bool>(this.Handle, "CBaseCombatCharacter", "m_bApplyStressDamage");
 
-	// m_bloodColor
-	[SchemaMember("CBaseCombatCharacter", "m_bloodColor")]
-	public ref Int32 BloodColor => ref Schema.GetRef<Int32>(this.Handle, "CBaseCombatCharacter", "m_bloodColor");
-
 	// m_iDamageCount
 	[SchemaMember("CBaseCombatCharacter", "m_iDamageCount")]
 	public ref Int32 DamageCount => ref Schema.GetRef<Int32>(this.Handle, "CBaseCombatCharacter", "m_iDamageCount");
