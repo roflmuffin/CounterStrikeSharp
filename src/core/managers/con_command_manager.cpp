@@ -64,7 +64,7 @@ json WriteTypeJson(json obj, CSchemaType* current_type)
 
             if (atomicTType->m_pAtomicInfo != nullptr)
             {
-                obj["outer"] = atomicTType->m_pAtomicInfo->m_pszName1;
+                obj["outer"] = atomicTType->m_pAtomicInfo->m_pszName;
             }
         }
 
@@ -83,7 +83,7 @@ json WriteTypeJson(json obj, CSchemaType* current_type)
         auto fixedArrayType = static_cast<CSchemaType_FixedArray*>(current_type);
         obj["inner"] = WriteTypeJson(json::object(), fixedArrayType->m_pElementType);
     }
-    else if (current_type->m_eTypeCategory == SCHEMA_TYPE_PTR)
+    else if (current_type->m_eTypeCategory == SCHEMA_TYPE_POINTER)
     {
         auto ptrType = static_cast<CSchemaType_Ptr*>(current_type);
         obj["inner"] = WriteTypeJson(json::object(), ptrType->m_pObjectType);
