@@ -46,15 +46,18 @@ namespace CounterStrikeSharp.API.Core
 
         [JsonPropertyName("FollowCS2ServerGuidelines")]
         public bool FollowCS2ServerGuidelines { get; set; } = true;
-        
+
         [JsonPropertyName("PluginHotReloadEnabled")]
         public bool PluginHotReloadEnabled { get; set; } = true;
-        
+
         [JsonPropertyName("PluginAutoLoadEnabled")]
         public bool PluginAutoLoadEnabled { get; set; } = true;
-        
+
         [JsonPropertyName("ServerLanguage")]
         public string ServerLanguage { get; set; } = "en";
+
+        [JsonPropertyName("SteamAuth")]
+        public string SteamAuth { get; set; } = "Strict";
     }
 
     /// <summary>
@@ -97,14 +100,25 @@ namespace CounterStrikeSharp.API.Core
         /// When enabled, plugins are automatically reloaded when their .dll file is updated.
         /// </summary>
         public static bool PluginHotReloadEnabled => _coreConfig.PluginHotReloadEnabled;
-        
+
         /// <summary>
         /// When enabled, plugins are automatically loaded from the plugins directory on server start.
         /// </summary>
         public static bool PluginAutoLoadEnabled => _coreConfig.PluginAutoLoadEnabled;
-        
+
         public static string ServerLanguage => _coreConfig.ServerLanguage;
-        
+
+        /// <summary>
+        /// Configures the strictness of <see cref="CCSPlayerController.AuthorizedSteamID"/>
+        ///
+        /// <list type="bullet">
+        /// <item>"Strict": CS# will only grant permissions to users if the server is currently connected to steam and the user has passed auth checks.</item>
+        /// <item>"Flexible" CS# will try to use the users checked steam auth, but failing that will use standard SteamID.</item>
+        /// <item>"Off": CS# will always just use the standard SteamID.</item>
+        /// </list>
+        /// </summary>
+        public static string SteamAuth => _coreConfig.SteamAuth;
+
     }
 
     public partial class CoreConfig : IStartupService
@@ -140,7 +154,7 @@ namespace CounterStrikeSharp.API.Core
                     ReloadCoreConfigCommand));
                 _commandsRegistered = true;
             }
-            
+
             if (!File.Exists(_coreConfigPath))
             {
                 _logger.LogWarning(
@@ -181,12 +195,12 @@ namespace CounterStrikeSharp.API.Core
                     serverCulture = CultureInfo.InvariantCulture;
                 }
             }
-            
+
             CultureInfo.DefaultThreadCurrentUICulture = serverCulture;
             CultureInfo.DefaultThreadCurrentCulture = serverCulture;
             CultureInfo.CurrentUICulture = serverCulture;
             CultureInfo.CurrentCulture = serverCulture;
-            
+
             _logger.LogInformation("Successfully loaded core configuration");
         }
     }

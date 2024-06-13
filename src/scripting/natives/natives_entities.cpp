@@ -19,6 +19,8 @@
 #include <ios>
 #include <sstream>
 
+
+#include "core/coreconfig.h"
 #include "core/log.h"
 #include "core/managers/entity_manager.h"
 #include "core/managers/player_manager.h"
@@ -172,18 +174,40 @@ unsigned long GetPlayerAuthorizedSteamID(ScriptContext& script_context)
     auto iSlot = script_context.GetArgument<int>(0);
 
     auto pPlayer = globals::playerManager.GetPlayerBySlot(iSlot);
-    if (pPlayer == nullptr || !pPlayer->m_is_authorized)
+    if (pPlayer == nullptr)
+    {
+        return -1;
+    }
+
+    if (globals::coreConfig->SteamAuth == Off)
+    {
+        return globals::engine->GetClientSteamID(pPlayer->GetSlot())->ConvertToUint64();
+    }
+
+    if (globals::coreConfig->SteamAuth == Flexible)
+    {
+        auto pSteamId = pPlayer->GetSteamId();
+        if (pSteamId == nullptr)
+        {
+            return globals::engine->GetClientSteamID(pPlayer->GetSlot())->ConvertToUint64();
+        }
+
+        return pSteamId->ConvertToUint64();
+    }
+
+    // Default to "Strict"
+    if (!pPlayer->m_is_authorized)
     {
         return -1;
     }
 
     auto pSteamId = pPlayer->GetSteamId();
-    if (pSteamId == nullptr)
+    if (pSteamId != nullptr)
     {
-        return -1;
+        return pSteamId->ConvertToUint64();
     }
 
-    return pSteamId->ConvertToUint64();
+    return -1;
 }
 
 const char* GetPlayerIpAddress(ScriptContext& script_context)
