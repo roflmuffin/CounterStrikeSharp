@@ -237,7 +237,7 @@
   "CEntityResourceManifest_AddResource": {
     "offsets": {
       "windows": 2,
-      "linux": 2
+      "linux": 0
     }
   }
 }
