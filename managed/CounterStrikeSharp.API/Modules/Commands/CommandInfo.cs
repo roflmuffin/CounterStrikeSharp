@@ -15,7 +15,6 @@
  */
 
 using System;
-using System.Text;
 using CounterStrikeSharp.API.Core;
 
 namespace CounterStrikeSharp.API.Modules.Commands
