@@ -32,46 +32,52 @@
 #pragma once
 
 #include <map>
+#include <string>
 #include <vector>
 
-#include "core/globals.h"
 #include "core/global_listener.h"
-#include "scripting/script_engine.h"
-#include <string>
+#include "core/globals.h"
 #include "playerslot.h"
+#include "scripting/script_engine.h"
 
-struct CaseInsensitiveComparator {
-    bool operator()(const std::string& lhs, const std::string& rhs) const {
-        return std::lexicographical_compare(
-            lhs.begin(), lhs.end(),
-            rhs.begin(), rhs.end(),
-            [](char a, char b) { return std::tolower(a) < std::tolower(b); }
-        );
+struct CaseInsensitiveComparator
+{
+    bool operator()(const std::string& lhs, const std::string& rhs) const
+    {
+        return std::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end(), [](char a, char b) {
+            return std::tolower(a) < std::tolower(b);
+        });
     }
 };
 
 namespace counterstrikesharp {
+
+void UnlockConVars();
+void UnlockConCommands();
+
 class ScriptCallback;
 
-enum CommandCallingContext {
+enum CommandCallingContext
+{
     Console = 0,
     Chat = 1,
 };
 
-class ConCommandInfo {
+class ConCommandInfo
+{
     friend class ConCommandManager;
 
-public:
-  ConCommandInfo();
-  ConCommandInfo(bool bNoCallbacks);
+  public:
+    ConCommandInfo();
+    ConCommandInfo(bool bNoCallbacks);
     ~ConCommandInfo();
 
-public:
+  public:
     void HookChange(CallbackT callback, bool post);
     void UnhookChange(CallbackT callback, bool post);
     ScriptCallback* GetCallback() { return callback_pre; }
 
-private:
+  private:
     ConCommandRefAbstract p_cmd;
     ConCommand* command;
     ScriptCallback* callback_pre;
@@ -79,10 +85,11 @@ private:
     bool server_only;
 };
 
-class ConCommandManager : public GlobalClass {
+class ConCommandManager : public GlobalClass
+{
     friend class ConCommandInfo;
 
-public:
+  public:
     ConCommandManager();
     ~ConCommandManager();
     void OnAllInitialized() override;
@@ -95,15 +102,16 @@ public:
     bool RemoveValveCommand(const char* name);
     void Hook_DispatchConCommand(ConCommandHandle cmd, const CCommandContext& ctx, const CCommand& args);
     void Hook_DispatchConCommand_Post(ConCommandHandle cmd, const CCommandContext& ctx, const CCommand& args);
-    HookResult ExecuteCommandCallbacks(const char* name, const CCommandContext& ctx,
-                                       const CCommand& args, HookMode mode, CommandCallingContext callingContext);
+    HookResult ExecuteCommandCallbacks(
+        const char* name, const CCommandContext& ctx, const CCommand& args, HookMode mode, CommandCallingContext callingContext);
 
     CommandCallingContext GetCommandCallingContext(CCommand* args);
-private:
+
+  private:
     std::vector<ConCommandInfo*> m_cmd_list;
     std::map<std::string, ConCommandInfo*, CaseInsensitiveComparator> m_cmd_lookup;
     std::map<const CCommand*, CommandCallingContext> m_cmd_contexts;
     ConCommandInfo m_global_cmd = ConCommandInfo(true);
 };
 
-}  // namespace counterstrikesharp
+} // namespace counterstrikesharp
