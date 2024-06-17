@@ -16,22 +16,23 @@
 
 #include <cstdio>
 
+#include "core/coreconfig.h"
+#include "core/game_system.h"
+#include "core/gameconfig.h"
 #include "core/global_listener.h"
 #include "core/log.h"
-#include "core/coreconfig.h"
-#include "core/gameconfig.h"
-#include "core/game_system.h"
-#include "core/timer_system.h"
-#include "core/tick_scheduler.h"
-#include "core/utils.h"
 #include "core/managers/entity_manager.h"
+#include "core/tick_scheduler.h"
+#include "core/timer_system.h"
+#include "core/utils.h"
+#include "entity2/entitysystem.h"
 #include "igameeventsystem.h"
+#include "interfaces/cs2_interfaces.h"
 #include "iserver.h"
 #include "scripting/callback_manager.h"
 #include "scripting/dotnet_host.h"
 #include "scripting/script_engine.h"
-#include "entity2/entitysystem.h"
-#include "interfaces/cs2_interfaces.h"
+#include "tier0/vprof.h"
 
 #define VERSION_STRING  "v" BUILD_NUMBER " @ " GITHUB_SHA
 #define BUILD_TIMESTAMP __DATE__ " " __TIME__
@@ -203,6 +204,7 @@ void CounterStrikeSharpMMPlugin::Hook_GameFrame(bool simulating, bool bFirstTick
      * true  | game is ticking
      * false | game is not ticking
      */
+    VPROF_BUDGET("CS#::Hook_GameFrame", "CS# On Frame");
     globals::timerSystem.OnGameFrame(simulating);
 
     std::vector<std::function<void()>> out_list(1024);
