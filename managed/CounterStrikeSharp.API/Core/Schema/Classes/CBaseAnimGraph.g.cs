@@ -54,8 +54,8 @@ public partial class CBaseAnimGraph : CBaseModelEntity
 	[SchemaMember("CBaseAnimGraph", "m_pRagdollPose")]
 	public PhysicsRagdollPose_t? RagdollPose => Schema.GetPointer<PhysicsRagdollPose_t>(this.Handle, "CBaseAnimGraph", "m_pRagdollPose");
 
-	// m_bClientRagdoll
-	[SchemaMember("CBaseAnimGraph", "m_bClientRagdoll")]
-	public ref bool ClientRagdoll => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraph", "m_bClientRagdoll");
+	// m_bRagdollClientSide
+	[SchemaMember("CBaseAnimGraph", "m_bRagdollClientSide")]
+	public ref bool RagdollClientSide => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraph", "m_bRagdollClientSide");
 
 }

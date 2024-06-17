@@ -58,10 +58,6 @@ public partial class CTriggerLook : CTriggerOnce
 	[SchemaMember("CTriggerLook", "m_bUseVelocity")]
 	public ref bool UseVelocity => ref Schema.GetRef<bool>(this.Handle, "CTriggerLook", "m_bUseVelocity");
 
-	// m_hActivator
-	[SchemaMember("CTriggerLook", "m_hActivator")]
-	public CHandle<CBaseEntity> Activator => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CTriggerLook", "m_hActivator");
-
 	// m_bTestOcclusion
 	[SchemaMember("CTriggerLook", "m_bTestOcclusion")]
 	public ref bool TestOcclusion => ref Schema.GetRef<bool>(this.Handle, "CTriggerLook", "m_bTestOcclusion");

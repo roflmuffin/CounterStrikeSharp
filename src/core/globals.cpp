@@ -23,9 +23,10 @@
 #include "core/managers/entity_manager.h"
 #include "core/managers/server_manager.h"
 #include "core/managers/voice_manager.h"
-#include "core/managers/usermessage_manager.h"
 #include <public/game/server/iplayerinfo.h>
 #include <public/entity2/entitysystem.h>
+
+#include <funchook.h>
 // clang-format on
 
 namespace counterstrikesharp {
@@ -40,6 +41,7 @@ CModule* vscript = nullptr;
 } // namespace modules
 
 namespace globals {
+IVEngineServer2* engineServer2 = nullptr;
 IVEngineServer* engine = nullptr;
 IGameEventManager2* gameEventManager = nullptr;
 IGameEventSystem* gameEventSystem = nullptr;
@@ -50,7 +52,6 @@ IUniformRandomStream* randomStream = nullptr;
 IEngineTrace* engineTrace = nullptr;
 IEngineSound* engineSound = nullptr;
 IEngineServiceMgr* engineServiceManager = nullptr;
-INetworkMessages* networkMessages = nullptr;
 INetworkStringTableContainer* netStringTables = nullptr;
 CGlobalVars* globalVars = nullptr;
 IFileSystem* fileSystem = nullptr;
@@ -86,11 +87,11 @@ EntityManager entityManager;
 ChatManager chatManager;
 ServerManager serverManager;
 VoiceManager voiceManager;
-UserMessageManager userMessageManager;
 TickScheduler tickScheduler;
 
 bool gameLoopInitialized = false;
 GetLegacyGameEventListener_t* GetLegacyGameEventListener = nullptr;
+GameEventManagerInit_t* GameEventManagerInit = nullptr;
 std::thread::id gameThreadId;
 
 // Based on 64 fixed tick rate
@@ -113,24 +114,31 @@ void Initialize()
     GetLegacyGameEventListener = reinterpret_cast<GetLegacyGameEventListener_t*>(
         modules::server->FindSignature(globals::gameConfig->GetSignature("LegacyGameEventListener")));
 
-    if (int offset = -1; (offset = gameConfig->GetOffset("GameEventManager")) != -1)
+    GameEventManagerInit = reinterpret_cast<GameEventManagerInit_t*>(
+        modules::server->FindSignature(globals::gameConfig->GetSignature("CGameEventManager_Init")));
+
+    if (GameEventManagerInit == nullptr)
     {
-        gameEventManager = (IGameEventManager2*)(CALL_VIRTUAL(uintptr_t, offset, server) - 8);
+        CSSHARP_CORE_ERROR("Failed to find signature for \'GameEventManagerInit\'");
+        return;
     }
+
+    auto m_hook = funchook_create();
+    funchook_prepare(m_hook, (void**)&GameEventManagerInit, (void*)&DetourGameEventManagerInit);
+    funchook_install(m_hook, 0);
+}
+
+void DetourGameEventManagerInit(IGameEventManager2* pGameEventManager)
+{
+    gameEventManager = pGameEventManager;
+
+    GameEventManagerInit(pGameEventManager);
+
+    eventManager.OnAllInitialized_Post();
 }
 
 int source_hook_pluginid = 0;
-CGlobalVars* getGlobalVars()
-{
-    INetworkGameServer* server = networkServerService->GetIGameServer();
-
-    if (!server)
-    {
-        return nullptr;
-    }
-
-    return networkServerService->GetIGameServer()->GetGlobals();
-}
+CGlobalVars* getGlobalVars() { return engineServer2->GetServerGlobals(); }
 
 } // namespace globals
 } // namespace counterstrikesharp

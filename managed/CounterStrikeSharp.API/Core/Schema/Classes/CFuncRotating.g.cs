@@ -58,10 +58,6 @@ public partial class CFuncRotating : CBaseModelEntity
 	[SchemaMember("CFuncRotating", "m_flBlockDamage")]
 	public ref float BlockDamage => ref Schema.GetRef<float>(this.Handle, "CFuncRotating", "m_flBlockDamage");
 
-	// m_flTimeScale
-	[SchemaMember("CFuncRotating", "m_flTimeScale")]
-	public ref float TimeScale => ref Schema.GetRef<float>(this.Handle, "CFuncRotating", "m_flTimeScale");
-
 	// m_NoiseRunning
 	[SchemaMember("CFuncRotating", "m_NoiseRunning")]
 	public string NoiseRunning

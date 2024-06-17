@@ -94,14 +94,6 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
 	[SchemaMember("CCSPlayerPawnBase", "m_angEyeAngles")]
 	public QAngle EyeAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CCSPlayerPawnBase", "m_angEyeAngles");
 
-	// m_bHud_MiniScoreHidden
-	[SchemaMember("CCSPlayerPawnBase", "m_bHud_MiniScoreHidden")]
-	public ref bool Hud_MiniScoreHidden => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bHud_MiniScoreHidden");
-
-	// m_bHud_RadarHidden
-	[SchemaMember("CCSPlayerPawnBase", "m_bHud_RadarHidden")]
-	public ref bool Hud_RadarHidden => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bHud_RadarHidden");
-
 	// m_NumEnemiesAtRoundStart
 	[SchemaMember("CCSPlayerPawnBase", "m_NumEnemiesAtRoundStart")]
 	public ref Int32 NumEnemiesAtRoundStart => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawnBase", "m_NumEnemiesAtRoundStart");
@@ -109,10 +101,6 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
 	// m_wasNotKilledNaturally
 	[SchemaMember("CCSPlayerPawnBase", "m_wasNotKilledNaturally")]
 	public ref bool WasNotKilledNaturally => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_wasNotKilledNaturally");
-
-	// m_hPet
-	[SchemaMember("CCSPlayerPawnBase", "m_hPet")]
-	public CHandle<CChicken> Pet => Schema.GetDeclaredClass<CHandle<CChicken>>(this.Handle, "CCSPlayerPawnBase", "m_hPet");
 
 	// m_bCommittingSuicideOnTeamChange
 	[SchemaMember("CCSPlayerPawnBase", "m_bCommittingSuicideOnTeamChange")]

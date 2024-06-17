@@ -14,38 +14,40 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-#include "scripting/autonative.h"
-#include "scripting/script_engine.h"
-#include "core/managers/player_manager.h"
 #include <public/entity2/entitysystem.h>
 
+#include "core/managers/player_manager.h"
+#include "scripting/autonative.h"
+#include "scripting/script_engine.h"
 
 namespace counterstrikesharp {
 
 void SetClientListening(ScriptContext& scriptContext)
 {
-    auto receiver = scriptContext.GetArgument<CBaseEntity*>(0);
-    auto sender = scriptContext.GetArgument<CBaseEntity*>(1);
+    auto receiver = scriptContext.GetArgument<CEntityInstance*>(0);
+    auto sender = scriptContext.GetArgument<CEntityInstance*>(1);
     auto listen = scriptContext.GetArgument<ListenOverride>(2);
 
-    if (!receiver) {
+    if (!receiver)
+    {
         scriptContext.ThrowNativeError("Receiver is a null pointer");
         return;
     }
 
-    if (!sender) {
+    if (!sender)
+    {
         scriptContext.ThrowNativeError("Sender is a null pointer");
         return;
     }
 
     auto iSenderSlot = sender->GetEntityIndex().Get() - 1;
 
-    if (iSenderSlot < 0 || iSenderSlot >= globals::getGlobalVars()->maxClients)
-        scriptContext.ThrowNativeError("Invalid sender");
+    if (iSenderSlot < 0 || iSenderSlot >= globals::getGlobalVars()->maxClients) scriptContext.ThrowNativeError("Invalid sender");
 
     auto pPlayer = globals::playerManager.GetPlayerBySlot(receiver->GetEntityIndex().Get() - 1);
 
-    if (pPlayer == nullptr) {
+    if (pPlayer == nullptr)
+    {
         scriptContext.ThrowNativeError("Invalid receiver");
         return;
     }
@@ -55,27 +57,29 @@ void SetClientListening(ScriptContext& scriptContext)
 
 ListenOverride GetClientListening(ScriptContext& scriptContext)
 {
-    auto receiver = scriptContext.GetArgument<CBaseEntity*>(0);
-    auto sender = scriptContext.GetArgument<CBaseEntity*>(1);
+    auto receiver = scriptContext.GetArgument<CEntityInstance*>(0);
+    auto sender = scriptContext.GetArgument<CEntityInstance*>(1);
 
-    if (!receiver) {
+    if (!receiver)
+    {
         scriptContext.ThrowNativeError("Receiver is a null pointer");
         return Listen_Default;
     }
 
-    if (!sender) {
+    if (!sender)
+    {
         scriptContext.ThrowNativeError("Sender is a null pointer");
         return Listen_Default;
     }
 
     auto iSenderSlot = sender->GetEntityIndex().Get() - 1;
 
-    if (iSenderSlot < 0 || iSenderSlot >= globals::getGlobalVars()->maxClients)
-        scriptContext.ThrowNativeError("Invalid sender");
+    if (iSenderSlot < 0 || iSenderSlot >= globals::getGlobalVars()->maxClients) scriptContext.ThrowNativeError("Invalid sender");
 
     auto pPlayer = globals::playerManager.GetPlayerBySlot(receiver->GetEntityIndex().Get() - 1);
 
-    if (pPlayer == nullptr) {
+    if (pPlayer == nullptr)
+    {
         scriptContext.ThrowNativeError("Invalid receiver");
         return Listen_Default;
     }
@@ -85,16 +89,18 @@ ListenOverride GetClientListening(ScriptContext& scriptContext)
 
 void SetClientVoiceFlags(ScriptContext& scriptContext)
 {
-    auto client = scriptContext.GetArgument<CBaseEntity*>(0);
+    auto client = scriptContext.GetArgument<CEntityInstance*>(0);
     auto flags = scriptContext.GetArgument<VoiceFlag_t>(1);
 
-    if (!client) {
+    if (!client)
+    {
         scriptContext.ThrowNativeError("Receiver is a null pointer");
         return;
     }
     auto pPlayer = globals::playerManager.GetPlayerBySlot(client->GetEntityIndex().Get() - 1);
 
-    if (pPlayer == nullptr) {
+    if (pPlayer == nullptr)
+    {
         scriptContext.ThrowNativeError("Invalid receiver");
         return;
     }
@@ -104,16 +110,18 @@ void SetClientVoiceFlags(ScriptContext& scriptContext)
 
 VoiceFlag_t GetClientVoiceFlags(ScriptContext& scriptContext)
 {
-    auto client = scriptContext.GetArgument<CBaseEntity*>(0);
+    auto client = scriptContext.GetArgument<CEntityInstance*>(0);
 
-    if (!client) {
+    if (!client)
+    {
         scriptContext.ThrowNativeError("Receiver is a null pointer");
         return VoiceFlag_t{};
     }
 
     auto pPlayer = globals::playerManager.GetPlayerBySlot(client->GetEntityIndex().Get() - 1);
 
-    if (pPlayer == nullptr) {
+    if (pPlayer == nullptr)
+    {
         scriptContext.ThrowNativeError("Invalid receiver");
     }
 

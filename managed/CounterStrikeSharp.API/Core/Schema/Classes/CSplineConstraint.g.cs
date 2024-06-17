@@ -18,4 +18,8 @@ public partial class CSplineConstraint : CPhysConstraint
 {
     public CSplineConstraint (IntPtr pointer) : base(pointer) {}
 
+	// m_vAnchorOffsetRestore
+	[SchemaMember("CSplineConstraint", "m_vAnchorOffsetRestore")]
+	public Vector AnchorOffsetRestore => Schema.GetDeclaredClass<Vector>(this.Handle, "CSplineConstraint", "m_vAnchorOffsetRestore");
+
 }

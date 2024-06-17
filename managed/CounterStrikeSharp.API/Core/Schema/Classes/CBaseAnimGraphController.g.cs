@@ -30,6 +30,10 @@ public partial class CBaseAnimGraphController : CSkeletonAnimationController
 	[SchemaMember("CBaseAnimGraphController", "m_flSoundSyncTime")]
 	public ref float SoundSyncTime => ref Schema.GetRef<float>(this.Handle, "CBaseAnimGraphController", "m_flSoundSyncTime");
 
+	// m_nActiveIKChainMask
+	[SchemaMember("CBaseAnimGraphController", "m_nActiveIKChainMask")]
+	public ref UInt32 ActiveIKChainMask => ref Schema.GetRef<UInt32>(this.Handle, "CBaseAnimGraphController", "m_nActiveIKChainMask");
+
 	// m_hSequence
 	[SchemaMember("CBaseAnimGraphController", "m_hSequence")]
 	public ref Int32 Sequence => ref Schema.GetRef<Int32>(this.Handle, "CBaseAnimGraphController", "m_hSequence");

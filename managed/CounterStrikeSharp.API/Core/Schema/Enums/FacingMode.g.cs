@@ -6,9 +6,11 @@ using System;
 
 namespace CounterStrikeSharp.API.Core;
 
-public enum FacingMode : uint
+public enum FacingMode : byte
 {
-	FacingMode_Manual = 0x0,
-	FacingMode_Path = 0x1,
-	FacingMode_LookTarget = 0x2,
+	FacingMode_Invalid = 0x0,
+	FacingMode_Manual = 0x1,
+	FacingMode_Path = 0x2,
+	FacingMode_LookTarget = 0x3,
+	FacingMode_ManualPosition = 0x4,
 }

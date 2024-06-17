@@ -6,7 +6,6 @@
 #undef protected
 #undef private
 
-// clang-format off
 #include <thread>
 
 #include <memory>
@@ -15,7 +14,6 @@
 #include "eiface.h"
 #include "iserver.h"
 #include <sourcehook/sourcehook.h>
-// clang-format on
 
 class IGameEventManager2;
 class IPlayerInfoManager;
@@ -28,7 +26,6 @@ class IEngineServiceMgr;
 class INetworkStringTableContainer;
 class CGlobalVars;
 class IFileSystem;
-class INetworkMessages;
 class IServerTools;
 class IPhysics;
 class IPhysicsCollision;
@@ -61,13 +58,13 @@ class EntityManager;
 class ChatManager;
 class ServerManager;
 class VoiceManager;
-class UserMessageManager;
 class CCoreConfig;
 class CGameConfig;
 
 namespace globals {
 
 extern IVEngineServer* engine;
+extern IVEngineServer2* engineServer2;
 extern IGameEventManager2* gameEventManager;
 extern IPlayerInfoManager* playerinfoManager;
 extern IBotManager* botManager;
@@ -76,7 +73,6 @@ extern IUniformRandomStream* randomStream;
 extern IEngineTrace* engineTrace;
 extern IEngineSound* engineSound;
 extern IEngineServiceMgr* engineServiceManager;
-extern INetworkMessages* networkMessages;
 extern INetworkStringTableContainer* netStringTables;
 extern CGlobalVars* globalVars;
 extern IFileSystem* fileSystem;
@@ -110,7 +106,6 @@ extern ChatCommands chatCommands;
 extern ChatManager chatManager;
 extern ServerManager serverManager;
 extern VoiceManager voiceManager;
-extern UserMessageManager userMessageManager;
 extern TickScheduler tickScheduler;
 
 extern HookManager hookManager;
@@ -124,7 +119,10 @@ extern CGameConfig* gameConfig;
 
 extern const float engine_fixed_tick_interval;
 
+typedef void GameEventManagerInit_t(IGameEventManager2* gameEventManager);
 typedef IGameEventListener2* GetLegacyGameEventListener_t(CPlayerSlot slot);
+
+static void DetourGameEventManagerInit(IGameEventManager2* gameEventManager);
 
 extern bool gameLoopInitialized;
 extern GetLegacyGameEventListener_t* GetLegacyGameEventListener;

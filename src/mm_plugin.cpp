@@ -12,7 +12,6 @@
  * This sample plugin is public domain.
  */
 
-// clang-format off
 #include "mm_plugin.h"
 
 #include <cstdio>
@@ -33,7 +32,6 @@
 #include "scripting/script_engine.h"
 #include "entity2/entitysystem.h"
 #include "interfaces/cs2_interfaces.h"
-// clang-format on
 
 #define VERSION_STRING  "v" BUILD_NUMBER " @ " GITHUB_SHA
 #define BUILD_TIMESTAMP __DATE__ " " __TIME__
@@ -93,6 +91,7 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
 
     CSSHARP_CORE_INFO("Initializing");
 
+    GET_V_IFACE_CURRENT(GetEngineFactory, globals::engineServer2, IVEngineServer2, SOURCE2ENGINETOSERVER_INTERFACE_VERSION);
     GET_V_IFACE_CURRENT(GetEngineFactory, globals::engine, IVEngineServer, INTERFACEVERSION_VENGINESERVER);
     GET_V_IFACE_CURRENT(GetEngineFactory, globals::cvars, ICvar, CVAR_INTERFACE_VERSION);
     GET_V_IFACE_ANY(GetServerFactory, globals::server, IServerGameDLL, INTERFACEVERSION_SERVERGAMEDLL);
@@ -101,7 +100,6 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
     GET_V_IFACE_ANY(GetEngineFactory, globals::schemaSystem, CSchemaSystem, SCHEMASYSTEM_INTERFACE_VERSION);
     GET_V_IFACE_ANY(GetEngineFactory, globals::gameEventSystem, IGameEventSystem, GAMEEVENTSYSTEM_INTERFACE_VERSION);
     GET_V_IFACE_ANY(GetEngineFactory, globals::engineServiceManager, IEngineServiceMgr, ENGINESERVICEMGR_INTERFACE_VERSION);
-    GET_V_IFACE_ANY(GetEngineFactory, globals::networkMessages, INetworkMessages, NETWORKMESSAGES_INTERFACE_VERSION);
 
     auto coreconfig_path = std::string(utils::ConfigsDirectory() + "/core");
     globals::coreConfig = new CCoreConfig(coreconfig_path);
@@ -231,24 +229,6 @@ void CounterStrikeSharpMMPlugin::Hook_GameFrame(bool simulating, bool bFirstTick
         {
             callback();
         }
-    }
-}
-
-void GetPropertyByName(const ::google::protobuf::Message& message, const std::string& name)
-{
-    const ::google::protobuf::Descriptor* descriptor = message.GetDescriptor();
-    const ::google::protobuf::FieldDescriptor* field = descriptor->FindFieldByName(name);
-
-    int k = 0;
-
-    if (field)
-    {
-        // Use reflection to get the value based on field->type()
-        // ... (handling different field types)
-    }
-    else
-    {
-        // Handle field not found
     }
 }
 

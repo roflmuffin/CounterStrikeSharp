@@ -32,6 +32,6 @@ public partial class CBlood : CPointEntity
 
 	// m_Color
 	[SchemaMember("CBlood", "m_Color")]
-	public ref Int32 Color => ref Schema.GetRef<Int32>(this.Handle, "CBlood", "m_Color");
+	public ref BloodType Color => ref Schema.GetRef<BloodType>(this.Handle, "CBlood", "m_Color");
 
 }

@@ -86,6 +86,10 @@ public partial class CScriptedSequence : CBaseEntity
 	[SchemaMember("CScriptedSequence", "m_nMoveTo")]
 	public ref ScriptedMoveTo_t MoveTo => ref Schema.GetRef<ScriptedMoveTo_t>(this.Handle, "CScriptedSequence", "m_nMoveTo");
 
+	// m_nMoveToGait
+	[SchemaMember("CScriptedSequence", "m_nMoveToGait")]
+	public ref MovementGait_t MoveToGait => ref Schema.GetRef<MovementGait_t>(this.Handle, "CScriptedSequence", "m_nMoveToGait");
+
 	// m_bIsPlayingPreIdle
 	[SchemaMember("CScriptedSequence", "m_bIsPlayingPreIdle")]
 	public ref bool IsPlayingPreIdle => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bIsPlayingPreIdle");
@@ -101,6 +105,46 @@ public partial class CScriptedSequence : CBaseEntity
 	// m_bIsPlayingPostIdle
 	[SchemaMember("CScriptedSequence", "m_bIsPlayingPostIdle")]
 	public ref bool IsPlayingPostIdle => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bIsPlayingPostIdle");
+
+	// m_bDontRotateOther
+	[SchemaMember("CScriptedSequence", "m_bDontRotateOther")]
+	public ref bool DontRotateOther => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bDontRotateOther");
+
+	// m_bIsRepeatable
+	[SchemaMember("CScriptedSequence", "m_bIsRepeatable")]
+	public ref bool IsRepeatable => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bIsRepeatable");
+
+	// m_bShouldLeaveCorpse
+	[SchemaMember("CScriptedSequence", "m_bShouldLeaveCorpse")]
+	public ref bool ShouldLeaveCorpse => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bShouldLeaveCorpse");
+
+	// m_bStartOnSpawn
+	[SchemaMember("CScriptedSequence", "m_bStartOnSpawn")]
+	public ref bool StartOnSpawn => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bStartOnSpawn");
+
+	// m_bDisallowInterrupts
+	[SchemaMember("CScriptedSequence", "m_bDisallowInterrupts")]
+	public ref bool DisallowInterrupts => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bDisallowInterrupts");
+
+	// m_bCanOverrideNPCState
+	[SchemaMember("CScriptedSequence", "m_bCanOverrideNPCState")]
+	public ref bool CanOverrideNPCState => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bCanOverrideNPCState");
+
+	// m_bDontTeleportAtEnd
+	[SchemaMember("CScriptedSequence", "m_bDontTeleportAtEnd")]
+	public ref bool DontTeleportAtEnd => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bDontTeleportAtEnd");
+
+	// m_bHighPriority
+	[SchemaMember("CScriptedSequence", "m_bHighPriority")]
+	public ref bool HighPriority => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bHighPriority");
+
+	// m_bHideDebugComplaints
+	[SchemaMember("CScriptedSequence", "m_bHideDebugComplaints")]
+	public ref bool HideDebugComplaints => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bHideDebugComplaints");
+
+	// m_bContinueOnDeath
+	[SchemaMember("CScriptedSequence", "m_bContinueOnDeath")]
+	public ref bool ContinueOnDeath => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bContinueOnDeath");
 
 	// m_bLoopPreIdleSequence
 	[SchemaMember("CScriptedSequence", "m_bLoopPreIdleSequence")]
@@ -182,9 +226,9 @@ public partial class CScriptedSequence : CBaseEntity
 	[SchemaMember("CScriptedSequence", "m_savedCollisionGroup")]
 	public ref Int32 SavedCollisionGroup => ref Schema.GetRef<Int32>(this.Handle, "CScriptedSequence", "m_savedCollisionGroup");
 
-	// m_interruptable
-	[SchemaMember("CScriptedSequence", "m_interruptable")]
-	public ref bool Interruptable => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_interruptable");
+	// m_bInterruptable
+	[SchemaMember("CScriptedSequence", "m_bInterruptable")]
+	public ref bool Interruptable => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bInterruptable");
 
 	// m_sequenceStarted
 	[SchemaMember("CScriptedSequence", "m_sequenceStarted")]
@@ -217,10 +261,6 @@ public partial class CScriptedSequence : CBaseEntity
 	// m_bAllowCustomInterruptConditions
 	[SchemaMember("CScriptedSequence", "m_bAllowCustomInterruptConditions")]
 	public ref bool AllowCustomInterruptConditions => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bAllowCustomInterruptConditions");
-
-	// m_hLastFoundEntity
-	[SchemaMember("CScriptedSequence", "m_hLastFoundEntity")]
-	public CHandle<CBaseEntity> LastFoundEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CScriptedSequence", "m_hLastFoundEntity");
 
 	// m_hForcedTarget
 	[SchemaMember("CScriptedSequence", "m_hForcedTarget")]

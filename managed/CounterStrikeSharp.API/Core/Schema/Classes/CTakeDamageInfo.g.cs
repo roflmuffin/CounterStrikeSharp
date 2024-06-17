@@ -50,6 +50,10 @@ public partial class CTakeDamageInfo : NativeObject
 	[SchemaMember("CTakeDamageInfo", "m_flDamage")]
 	public ref float Damage => ref Schema.GetRef<float>(this.Handle, "CTakeDamageInfo", "m_flDamage");
 
+	// m_flTotalledDamage
+	[SchemaMember("CTakeDamageInfo", "m_flTotalledDamage")]
+	public ref float TotalledDamage => ref Schema.GetRef<float>(this.Handle, "CTakeDamageInfo", "m_flTotalledDamage");
+
 	// m_bitsDamageType
 	[SchemaMember("CTakeDamageInfo", "m_bitsDamageType")]
 	public ref Int32 BitsDamageType => ref Schema.GetRef<Int32>(this.Handle, "CTakeDamageInfo", "m_bitsDamageType");

@@ -9,10 +9,10 @@ namespace CounterStrikeSharp.API.Core;
 public enum ChickenActivity : uint
 {
 	IDLE = 0x0,
-	WALK = 0x1,
-	RUN = 0x2,
-	HOP = 0x3,
-	JUMP = 0x4,
-	GLIDE = 0x5,
-	LAND = 0x6,
+	SQUAT = 0x1,
+	WALK = 0x2,
+	RUN = 0x3,
+	GLIDE = 0x4,
+	LAND = 0x5,
+	PANIC = 0x6,
 }
