@@ -15,6 +15,7 @@
  */
 
 using System;
+using System.Text;
 using CounterStrikeSharp.API.Core;
 
 namespace CounterStrikeSharp.API.Modules.Commands
@@ -47,7 +48,24 @@ namespace CounterStrikeSharp.API.Modules.Commands
 
         public string ArgByIndex(int index) => NativeAPI.CommandGetArgByIndex(Handle, index);
         public string GetArg(int index) => NativeAPI.CommandGetArgByIndex(Handle, index);
-        
+        public IEnumerable<string> GetArgs(int startIndex, int endIndex = -1)
+        {
+            if (endIndex == -1)
+            {
+                endIndex = ArgCount;
+            }
+
+            if (startIndex < 0 || endIndex < 0 || startIndex > endIndex)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            for (int i = startIndex; i < endIndex; i++)
+            {
+                yield return GetArg(i);
+            }
+        }
+
         /// <summary>
         /// Whether or not the command was sent via Console or Chat.
         /// </summary>
