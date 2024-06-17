@@ -35,8 +35,8 @@ SH_DECL_HOOK8_void(IGameEventSystem,
                    bool,
                    int,
                    const uint64*,
-                   INetworkSerializable*,
-                   const void*,
+                   INetworkMessageInternal*,
+                   const CNetMessage*,
                    unsigned long,
                    NetChannelBufType_t)
 
@@ -156,17 +156,20 @@ SH_DECL_HOOK8_void(IGameEventSystem,
     }
 
     void UserMessageManager::Hook_PostEvent(CSplitScreenSlot nSlot, bool bLocalOnly, int nClientCount, const uint64* clients,
-                                            INetworkSerializable* pEvent, const void* pData, unsigned long nSize,
+                                            INetworkMessageInternal* pEvent, const CNetMessage* pData, unsigned long nSize,
                                             NetChannelBufType_t bufType)
     {
         // Message( "Hook_PostEvent(%d, %d, %d, %lli)\n", nSlot, bLocalOnly, nRecipientCount, clients );
         // Need to explicitly get a pointer to the right function as it's overloaded and SH_CALL can't resolve that
-        static void (IGameEventSystem::*PostEventAbstract)(CSplitScreenSlot, bool, int, const uint64*, INetworkSerializable*, const void*,
-                                                           unsigned long, NetChannelBufType_t) = &IGameEventSystem::PostEventAbstract;
+        static void (IGameEventSystem::*PostEventAbstract)(CSplitScreenSlot, bool, int, const uint64*, INetworkMessageInternal*,
+                                                           const CNetMessage*, unsigned long, NetChannelBufType_t) =
+            &IGameEventSystem::PostEventAbstract;
 
         const google::protobuf::Message* msgBuffer = reinterpret_cast<const google::protobuf::Message*>(pData);
+        msgBuffer->PrintDebugString();
 
-        auto message = UserMessage(const_cast<protobuf::Message*>(msgBuffer), pEvent, nClientCount, const_cast<uint64*>(clients));
+        auto message = UserMessage(const_cast<protobuf::Message*>(msgBuffer), const_cast<CNetMessage*>(pData), pEvent, nClientCount,
+                                   const_cast<uint64*>(clients));
 
         auto iMessageID = message.GetMessageID();
         auto I = m_hooksMap.find(iMessageID);

@@ -16,11 +16,11 @@
 
 #pragma once
 
-#include "core/globals.h"
 #include "core/global_listener.h"
-#include "scripting/script_engine.h"
-#include "networksystem/inetworkserializer.h"
+#include "core/globals.h"
 #include "inetchannel.h"
+#include "networksystem/inetworkserializer.h"
+#include "scripting/script_engine.h"
 
 namespace counterstrikesharp {
 class ScriptCallback;
@@ -44,8 +44,14 @@ class UserMessageManager : public GlobalClass
     ~UserMessageManager();
     void OnAllInitialized() override;
     void OnShutdown() override;
-    void Hook_PostEvent(CSplitScreenSlot nSlot, bool bLocalOnly, int nClientCount, const uint64* clients,
-                        INetworkSerializable* pEvent, const void* pData, unsigned long nSize, NetChannelBufType_t bufType);
+    void Hook_PostEvent(CSplitScreenSlot nSlot,
+                        bool bLocalOnly,
+                        int nClientCount,
+                        const uint64* clients,
+                        INetworkMessageInternal* pEvent,
+                        const CNetMessage* pData,
+                        unsigned long nSize,
+                        NetChannelBufType_t bufType);
 
     void UnhookUserMessage(int messageId, CallbackT fnCallback, HookMode mode);
     void HookUserMessage(int messageId, CallbackT fnCallback, HookMode mode);
