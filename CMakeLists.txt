@@ -56,8 +56,6 @@ set(SOURCE_FILES
     src/core/tick_scheduler.cpp
     src/scripting/autonative.h
     src/scripting/natives/natives_engine.cpp
-    src/core/engine_trace.h
-    src/core/engine_trace.cpp
     src/scripting/natives/natives_callbacks.cpp
     src/core/managers/player_manager.h
     src/core/managers/player_manager.cpp

@@ -43,6 +43,7 @@ class ScriptCallback
   private:
     std::vector<CallbackT> m_functions;
     std::string m_name;
+    std::string m_profile_name;
     ScriptContextRaw m_script_context_raw;
     fxNativeContext m_root_context;
 };
@@ -69,8 +70,7 @@ class CallbackPair
     CallbackPair();
     CallbackPair(bool bNoCallbacks);
     ~CallbackPair();
-    bool HasCallbacks() const
-    { return pre->GetFunctionCount() > 0 || post->GetFunctionCount() > 0; }
+    bool HasCallbacks() const { return pre->GetFunctionCount() > 0 || post->GetFunctionCount() > 0; }
 
   public:
     ScriptCallback* pre;

@@ -39,6 +39,7 @@
 
 #include <algorithm>
 
+#include "core/coreconfig.h"
 #include "core/log.h"
 #include "core/memory.h"
 #include "core/utils.h"
@@ -64,7 +65,7 @@ json WriteTypeJson(json obj, CSchemaType* current_type)
 
             if (atomicTType->m_pAtomicInfo != nullptr)
             {
-                obj["outer"] = atomicTType->m_pAtomicInfo->m_pszName1;
+                obj["outer"] = atomicTType->m_pAtomicInfo->m_pszName;
             }
         }
 
@@ -83,7 +84,7 @@ json WriteTypeJson(json obj, CSchemaType* current_type)
         auto fixedArrayType = static_cast<CSchemaType_FixedArray*>(current_type);
         obj["inner"] = WriteTypeJson(json::object(), fixedArrayType->m_pElementType);
     }
-    else if (current_type->m_eTypeCategory == SCHEMA_TYPE_PTR)
+    else if (current_type->m_eTypeCategory == SCHEMA_TYPE_POINTER)
     {
         auto ptrType = static_cast<CSchemaType_Ptr*>(current_type);
         obj["inner"] = WriteTypeJson(json::object(), ptrType->m_pObjectType);
@@ -203,6 +204,63 @@ void ConCommandManager::OnAllInitialized()
 
     m_global_cmd.callback_pre = globals::callbackManager.CreateCallback("OnClientCommandGlobalPre");
     m_global_cmd.callback_post = globals::callbackManager.CreateCallback("OnClientCommandGlobalPost");
+
+    if (globals::coreConfig->UnlockConCommands)
+    {
+        UnlockConCommands();
+    }
+
+    if (globals::coreConfig->UnlockConVars)
+    {
+        UnlockConVars();
+    }
+}
+
+static uint64 flagsToRemove = (FCVAR_HIDDEN | FCVAR_DEVELOPMENTONLY | FCVAR_MISSING0 | FCVAR_MISSING1 | FCVAR_MISSING2 | FCVAR_MISSING3);
+
+void UnlockConVars()
+{
+    int unhiddenConVars = 0;
+
+    ConVar* currentCvar = nullptr;
+    ConVarHandle currentCvarHandle;
+    currentCvarHandle.Set(0);
+
+    do
+    {
+        currentCvar = globals::cvars->GetConVar(currentCvarHandle);
+
+        currentCvarHandle.Set(currentCvarHandle.Get() + 1);
+
+        if (!currentCvar) continue;
+
+        if (!(currentCvar->flags & flagsToRemove)) continue;
+
+        currentCvar->flags &= ~flagsToRemove;
+        unhiddenConVars++;
+    } while (currentCvar);
+}
+
+void UnlockConCommands()
+{
+    int unhiddenConCommands = 0;
+
+    ConCommand* currentConCommand = nullptr;
+    ConCommand* invalidConCommand = globals::cvars->GetCommand(ConCommandHandle());
+    ConCommandHandle conCommandHandle;
+    conCommandHandle.Set(0);
+
+    do
+    {
+        currentConCommand = globals::cvars->GetCommand(conCommandHandle);
+
+        conCommandHandle.Set(conCommandHandle.Get() + 1);
+
+        if (!currentConCommand || currentConCommand == invalidConCommand || !(currentConCommand->GetFlags() & flagsToRemove)) continue;
+
+        currentConCommand->RemoveFlags(flagsToRemove);
+        unhiddenConCommands++;
+    } while (currentConCommand && currentConCommand != invalidConCommand);
 }
 
 void ConCommandManager::OnShutdown()

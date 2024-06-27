@@ -79,7 +79,7 @@ public class HelloWorldPlugin : BasePlugin
         return HookResult.Continue;
     }
 
-    [ConsoleCommand("issue_warning", "Issue warning to player")]
+    [ConsoleCommand("css_issue_warning", "Issue warning to player")]
     public void OnCommand(CCSPlayerController? player, CommandInfo command)
     {
         Logger.LogWarning("Player shouldn't be doing that");
