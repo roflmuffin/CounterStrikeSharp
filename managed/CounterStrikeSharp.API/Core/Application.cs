@@ -28,6 +28,7 @@ using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Menu;
 using CounterStrikeSharp.API.Modules.Utils;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Core
@@ -39,6 +40,8 @@ namespace CounterStrikeSharp.API.Core
 
         public static Application Instance => _instance!;
 
+        public static IStringLocalizer Localizer => Instance._localizer;
+
         public static string RootDirectory => Instance._scriptHostConfiguration.RootPath;
 
         private readonly IScriptHostConfiguration _scriptHostConfiguration;
@@ -48,11 +51,12 @@ namespace CounterStrikeSharp.API.Core
         private readonly IPluginContextQueryHandler _pluginContextQueryHandler;
         private readonly IPlayerLanguageManager _playerLanguageManager;
         private readonly ICommandManager _commandManager;
+        private readonly IStringLocalizer _localizer;
 
         public Application(ILoggerFactory loggerFactory, IScriptHostConfiguration scriptHostConfiguration,
             GameDataProvider gameDataProvider, CoreConfig coreConfig, IPluginManager pluginManager,
             IPluginContextQueryHandler pluginContextQueryHandler, IPlayerLanguageManager playerLanguageManager,
-            ICommandManager commandManager)
+            ICommandManager commandManager, IStringLocalizer localizer)
         {
             Logger = loggerFactory.CreateLogger("Core");
             _scriptHostConfiguration = scriptHostConfiguration;
@@ -62,6 +66,7 @@ namespace CounterStrikeSharp.API.Core
             _pluginContextQueryHandler = pluginContextQueryHandler;
             _playerLanguageManager = playerLanguageManager;
             _commandManager = commandManager;
+            _localizer = localizer;
             _instance = this;
         }
 
@@ -249,7 +254,7 @@ namespace CounterStrikeSharp.API.Core
                     break;
             }
         }
-        
+
         private void OnLangCommand(CCSPlayerController? player, CommandInfo command)
         {
             if (player == null) return;
