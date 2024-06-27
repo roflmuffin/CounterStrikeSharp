@@ -22,12 +22,14 @@ namespace CounterStrikeSharp.API.Core;
 
 public partial class CCSGameRules
 {
+    private static readonly bool IsWindowsPlatform = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+
     /// <summary>
     /// Terminate the round with the given delay and reason.
     /// </summary>
     public void TerminateRound(float delay, RoundEndReason roundEndReason)
     {
-        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+        if (IsWindowsPlatform)
             VirtualFunctions.TerminateRound(Handle, delay, roundEndReason, 0, 0);
         else
             VirtualFunctions.TerminateRoundLinux(Handle, roundEndReason, 0, 0, delay);
