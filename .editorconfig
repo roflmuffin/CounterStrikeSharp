@@ -10,5 +10,5 @@ indent_size = 4
 max_line_length = 140
 trim_trailing_whitespace = true
 
-[*.json]
+[{*.json,*.yaml,*.yml}]
 indent_size = 2
