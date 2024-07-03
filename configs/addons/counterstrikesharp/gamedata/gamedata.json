@@ -36,7 +36,7 @@
     "signatures": {
       "library": "server",
       "windows": "44 88 4C 24 ? 55 56 57 41 54 41 56 48 8D 6C 24 ?",
-      "linux": "55 48 89 E5 41 57 41 56 41 55 49 89 FD 41 54 45 89 C4"
+      "linux": "55 48 89 E5 41 57 41 56 41 89 D6 41 55 49 89 FD 41 54 45 89 C4"
     }
   },
   "CCSPlayerPawnBase_PostThink": {
