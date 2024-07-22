@@ -279,15 +279,13 @@ std::vector<dyno::DataObject> ConvertArgsToDynoHook(const std::vector<DataType_t
 void ValveFunction::AddHook(CallbackT callable, bool post)
 {
     dyno::HookManager& manager = dyno::HookManager::Get();
+    dyno::Hook* hook = manager.hook((void*)m_ulAddr, [this] {
 #ifdef _WIN32
-    dyno::Hook* hook = manager.hook((void*)m_ulAddr, [this] {
         return new dyno::x64MsFastcall(ConvertArgsToDynoHook(m_Args), static_cast<dyno::DataType>(this->m_eReturnType));
-    });
 #else
-    dyno::Hook* hook = manager.hook((void*)m_ulAddr, [this] {
         return new dyno::x64SystemVcall(ConvertArgsToDynoHook(m_Args), static_cast<dyno::DataType>(this->m_eReturnType));
-    });
 #endif
+    });
     g_HookMap[hook] = this;
     hook->addCallback(dyno::HookType::Post, (dyno::HookHandler*)&HookHandler);
     hook->addCallback(dyno::HookType::Pre, (dyno::HookHandler*)&HookHandler);
@@ -306,15 +304,13 @@ void ValveFunction::AddHook(CallbackT callable, bool post)
 }
 void ValveFunction::RemoveHook(CallbackT callable, bool post) {
     dyno::HookManager& manager = dyno::HookManager::Get();
+    dyno::Hook* hook = manager.hook((void*)m_ulAddr, [this] {
 #ifdef _WIN32
-    dyno::Hook* hook = manager.hook((void*)m_ulAddr, [this] {
         return new dyno::x64MsFastcall(ConvertArgsToDynoHook(m_Args), static_cast<dyno::DataType>(this->m_eReturnType));
-    });
 #else
-    dyno::Hook* hook = manager.hook((void*)m_ulAddr, [this] {
         return new dyno::x64SystemVcall(ConvertArgsToDynoHook(m_Args), static_cast<dyno::DataType>(this->m_eReturnType));
-    });
 #endif
+    });
     g_HookMap[hook] = this;
 
     if (post) {
