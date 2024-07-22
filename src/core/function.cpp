@@ -35,7 +35,12 @@
 #include "pch.h"
 #include "dynohook/core.h"
 #include "dynohook/manager.h"
+
+#ifdef _WIN32
+#include "dynohook/conventions/x64/x64MsFastcall.h"
+#else
 #include "dynohook/conventions/x64/x64SystemVcall.h"
+#endif
 
 namespace counterstrikesharp {
 
@@ -274,10 +279,15 @@ std::vector<dyno::DataObject> ConvertArgsToDynoHook(const std::vector<DataType_t
 void ValveFunction::AddHook(CallbackT callable, bool post)
 {
     dyno::HookManager& manager = dyno::HookManager::Get();
+#ifdef _WIN32
     dyno::Hook* hook = manager.hook((void*)m_ulAddr, [this] {
-        return new dyno::x64SystemVcall(ConvertArgsToDynoHook(m_Args),
-                                        static_cast<dyno::DataType>(this->m_eReturnType));
+        return new dyno::x64MsFastcall(ConvertArgsToDynoHook(m_Args), static_cast<dyno::DataType>(this->m_eReturnType));
     });
+#else
+    dyno::Hook* hook = manager.hook((void*)m_ulAddr, [this] {
+        return new dyno::x64SystemVcall(ConvertArgsToDynoHook(m_Args), static_cast<dyno::DataType>(this->m_eReturnType));
+    });
+#endif
     g_HookMap[hook] = this;
     hook->addCallback(dyno::HookType::Post, (dyno::HookHandler*)&HookHandler);
     hook->addCallback(dyno::HookType::Pre, (dyno::HookHandler*)&HookHandler);
@@ -296,10 +306,15 @@ void ValveFunction::AddHook(CallbackT callable, bool post)
 }
 void ValveFunction::RemoveHook(CallbackT callable, bool post) {
     dyno::HookManager& manager = dyno::HookManager::Get();
+#ifdef _WIN32
     dyno::Hook* hook = manager.hook((void*)m_ulAddr, [this] {
-        return new dyno::x64SystemVcall(ConvertArgsToDynoHook(m_Args),
-                                        static_cast<dyno::DataType>(this->m_eReturnType));
+        return new dyno::x64MsFastcall(ConvertArgsToDynoHook(m_Args), static_cast<dyno::DataType>(this->m_eReturnType));
     });
+#else
+    dyno::Hook* hook = manager.hook((void*)m_ulAddr, [this] {
+        return new dyno::x64SystemVcall(ConvertArgsToDynoHook(m_Args), static_cast<dyno::DataType>(this->m_eReturnType));
+    });
+#endif
     g_HookMap[hook] = this;
 
     if (post) {
