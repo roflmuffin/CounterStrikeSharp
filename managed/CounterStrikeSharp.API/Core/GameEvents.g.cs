@@ -716,6 +716,86 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
+            [EventName("bullet_damage")]
+            public class EventBulletDamage : GameEvent
+            {
+                public EventBulletDamage(IntPtr pointer) : base(pointer){}
+                public EventBulletDamage(bool force) : base("bullet_damage", force){}
+
+                
+
+                // player index who was hurt
+                public CCSPlayerController? Victim
+                {
+                    get => GetPlayer("victim");
+                    set => SetPlayer("victim", value);
+                }
+
+
+                // player index who attacked
+                public CCSPlayerController? Attacker
+                {
+                    get => GetPlayer("attacker");
+                    set => SetPlayer("attacker", value);
+                }
+
+
+                // how far the bullet travelled before it hit the player
+                public float Distance
+                {
+                    get => Get<float>("distance");
+                    set => Set<float>("distance", value);
+                }
+
+
+                // direction vector of the bullet
+                public float DamageDirX
+                {
+                    get => Get<float>("damage_dir_x");
+                    set => Set<float>("damage_dir_x", value);
+                }
+
+
+                // direction vector of the bullet
+                public float DamageDirY
+                {
+                    get => Get<float>("damage_dir_y");
+                    set => Set<float>("damage_dir_y", value);
+                }
+
+
+                // direction vector of the bullet
+                public float DamageDirZ
+                {
+                    get => Get<float>("damage_dir_z");
+                    set => Set<float>("damage_dir_z", value);
+                }
+
+
+                // how many surfaces were penetrated
+                public int NumPenetrations
+                {
+                    get => Get<int>("num_penetrations");
+                    set => Set<int>("num_penetrations", value);
+                }
+
+
+                // was the shooter noscoped?
+                public bool NoScope
+                {
+                    get => Get<bool>("no_scope");
+                    set => Set<bool>("no_scope", value);
+                }
+
+
+                // was the shooter jumping?
+                public bool InAir
+                {
+                    get => Get<bool>("in_air");
+                    set => Set<bool>("in_air", value);
+                }
+            }
+
             [EventName("bullet_flight_resolution")]
             public class EventBulletFlightResolution : GameEvent
             {
