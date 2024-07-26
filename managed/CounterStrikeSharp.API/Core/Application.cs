@@ -204,7 +204,23 @@ namespace CounterStrikeSharp.API.Core
                     }
 
                     var pluginIdentifier = info.GetArg(2);
-                    IPluginContext? plugin = _pluginContextQueryHandler.FindPluginByIdOrName(pluginIdentifier);
+                    string path;
+                    if (!pluginIdentifier.EndsWith(".dll"))
+                    {
+                        path = Path.Combine(_scriptHostConfiguration.RootPath, $"plugins/{pluginIdentifier}/{pluginIdentifier}.dll");
+                    }
+                    else
+                    {
+                        path = Path.Combine(_scriptHostConfiguration.RootPath, pluginIdentifier);
+                    }
+
+                    var plugin = _pluginContextQueryHandler.FindPluginByModulePath(path);
+
+                    if (plugin == null)
+                    {
+                        plugin = _pluginContextQueryHandler.FindPluginByIdOrName(pluginIdentifier);
+                    }
+
                     if (plugin == null)
                     {
                         info.ReplyToCommand($"Could not unload plugin \"{pluginIdentifier}\"");
@@ -249,7 +265,7 @@ namespace CounterStrikeSharp.API.Core
                     break;
             }
         }
-        
+
         private void OnLangCommand(CCSPlayerController? player, CommandInfo command)
         {
             if (player == null) return;
