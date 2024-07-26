@@ -94,10 +94,6 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
 	[SchemaMember("CCSPlayerPawnBase", "m_angEyeAngles")]
 	public QAngle EyeAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CCSPlayerPawnBase", "m_angEyeAngles");
 
-	// m_NumEnemiesAtRoundStart
-	[SchemaMember("CCSPlayerPawnBase", "m_NumEnemiesAtRoundStart")]
-	public ref Int32 NumEnemiesAtRoundStart => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawnBase", "m_NumEnemiesAtRoundStart");
-
 	// m_wasNotKilledNaturally
 	[SchemaMember("CCSPlayerPawnBase", "m_wasNotKilledNaturally")]
 	public ref bool WasNotKilledNaturally => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_wasNotKilledNaturally");

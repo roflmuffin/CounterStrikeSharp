@@ -370,10 +370,6 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 	[SchemaMember("CCSPlayerPawn", "m_ignoreLadderJumpTime")]
 	public ref float IgnoreLadderJumpTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawn", "m_ignoreLadderJumpTime");
 
-	// m_NumEnemiesKilledThisRound
-	[SchemaMember("CCSPlayerPawn", "m_NumEnemiesKilledThisRound")]
-	public ref Int32 NumEnemiesKilledThisRound => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawn", "m_NumEnemiesKilledThisRound");
-
 	// m_bKilledByHeadshot
 	[SchemaMember("CCSPlayerPawn", "m_bKilledByHeadshot")]
 	public ref bool KilledByHeadshot => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bKilledByHeadshot");
