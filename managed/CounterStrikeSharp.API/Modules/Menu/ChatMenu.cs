@@ -26,11 +26,12 @@ public class ChatMenu : BaseMenu
     public char PrevPageColor { get; set; } = ChatColors.Yellow;
     public char NextPageColor { get; set; } = ChatColors.Yellow;
     public char CloseColor { get; set; } = ChatColors.Red;
+
     public ChatMenu(string title) : base(title)
     {
         ExitButton = false;
     }
-    
+
     public override void Open(CCSPlayerController player)
     {
         MenuManager.OpenChatMenu(player, this);
@@ -63,21 +64,21 @@ public class ChatMenuInstance : BaseMenuInstance
 
         if (HasPrevButton)
         {
-            Player.PrintToChat($" {chatMenu.PrevPageColor}!7 {ChatColors.Default}-> Prev");
+            Player.PrintToChat($" {chatMenu.PrevPageColor}!7 {ChatColors.Default}-> {Application.Localizer["menu.button.previous"]}");
         }
-            
+
         if (HasNextButton)
         {
-            Player.PrintToChat($" {chatMenu.NextPageColor}!8 {ChatColors.Default}-> Next");
+            Player.PrintToChat($" {chatMenu.NextPageColor}!8 {ChatColors.Default}-> {Application.Localizer["menu.button.next"]}");
         }
 
         if (Menu.ExitButton)
         {
-            Player.PrintToChat($" {chatMenu.CloseColor}!9 {ChatColors.Default}-> Close");
+            Player.PrintToChat($" {chatMenu.CloseColor}!9 {ChatColors.Default}-> {Application.Localizer["menu.button.close"]}");
         }
     }
 }
-    
+
 public static class ChatMenus
 {
     [Obsolete("Use MenuManager.OpenChatMenu instead")]
