@@ -6,14 +6,14 @@
 #undef protected
 #undef private
 
-#include <thread>
+#include <sourcehook/sourcehook.h>
 
 #include <memory>
+#include <thread>
 
 #include "ISmmAPI.h"
 #include "eiface.h"
 #include "iserver.h"
-#include <sourcehook/sourcehook.h>
 
 class IGameEventManager2;
 class IPlayerInfoManager;
@@ -26,6 +26,7 @@ class IEngineServiceMgr;
 class INetworkStringTableContainer;
 class CGlobalVars;
 class IFileSystem;
+class INetworkMessages;
 class IServerTools;
 class IPhysics;
 class IPhysicsCollision;
@@ -73,6 +74,7 @@ extern IUniformRandomStream* randomStream;
 extern IEngineTrace* engineTrace;
 extern IEngineSound* engineSound;
 extern IEngineServiceMgr* engineServiceManager;
+extern INetworkMessages* networkMessages;
 extern INetworkStringTableContainer* netStringTables;
 extern CGlobalVars* globalVars;
 extern IFileSystem* fileSystem;

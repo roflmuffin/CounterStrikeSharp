@@ -54,6 +54,8 @@ public class Mapping
                 return "void";
             case "uint64":
                 return "ulong";
+            case "long":
+                return "long";
             case "func":
             case "callback":
                 return "InputArgument";
@@ -69,6 +71,10 @@ public class Mapping
                 return "DataType";
             case "CommandCallingContext":
                 return "CommandCallingContext";
+            case "UserMessage":
+                return "UserMessage";
+            case "RecipientFilter":
+                return "RecipientFilter";
             case "any":
                 return "T";
         }

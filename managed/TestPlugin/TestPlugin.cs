@@ -111,6 +111,58 @@ namespace TestPlugin
             Logger.LogInformation("Result of virtual func call is {Pointer:X}", result);
 
             _testInjectedClass.Hello();
+
+            HookUserMessage(452, (um => {
+                var weaponId = um.ReadInt("weapon_id");
+                var soundType = um.ReadInt("sound_type");
+                var itemDefIndex = um.ReadInt("item_def_index");
+                Logger.LogInformation("Weapon was fired with ID: {WeaponId}, Sound Type: {SoundType}, Item Def Index: {ItemDefIndex}",
+                    weaponId, soundType, itemDefIndex);
+                um.SetInt("weapon_id", 0);
+                um.SetInt("sound_type", 2);
+                um.SetInt("item_def_index", 9);
+
+                return HookResult.Stop;
+            }));
+
+            HookUserMessage(118, um => {
+                Logger.LogInformation(um.DebugString);
+
+                var author = um.ReadString("param1");
+                var message = um.ReadString("param2");
+                Logger.LogInformation("Chat message from {Author}: {Message}", author, message);
+                if (message.Contains("foobar"))
+                {
+                    um.SetString("param2", message.Replace("foobar", "replaced"));
+                }
+
+                if (message.Contains("stop"))
+                {
+                    return HookResult.Stop;
+                }
+
+                return HookResult.Continue;
+            });
+        }
+
+        [ConsoleCommand("foobar")]
+        public void OnCommandFoobar(CCSPlayerController? player, CommandInfo command)
+        {
+            using var message = NativeAPI.UsermessageCreate("CUserMessageSayText2");
+            Logger.LogInformation("Created user message CCSUsrMsg_Shake {Message:x}", message.Handle);
+
+            message.SetString("messagename", "Cstrike_Chat_CT_Loc");
+            message.SetString("param1", "Hello");
+            message.SetString("param2", "Hello");
+            message.SetString("param3", "CTSpawn");
+            message.SetString("param4", "");
+            message.SetBool("chat", true);
+            message.SetInt("entityindex", (int)(player?.Index ?? 0));
+
+            var recipientFilter = new RecipientFilter();
+                recipientFilter.AddAllPlayers();
+
+            NativeAPI.UsermessageSend(message, recipientFilter);
         }
 
         public override void OnAllPluginsLoaded(bool hotReload)
@@ -158,6 +210,19 @@ namespace TestPlugin
                 {
                     @event.Attacker?.PrintToChat($"Skipping player_death broadcast at {Server.CurrentTime}");
                     info.DontBroadcast = true;
+                }
+
+                if (@event.Attacker != null)
+                {
+                    var message = NativeAPI.UsermessageCreate("Shake");
+                    Logger.LogInformation("Created user message CCSUsrMsg_Shake {Message:x}", message.Handle);
+
+                    message.SetFloat("duration", 2);
+                    message.SetFloat("amplitude", 5);
+                    message.SetFloat("frequency", 10f);
+                    message.SetInt("command", 0);
+
+                    NativeAPI.UsermessageSend(message, new RecipientFilter(@event.Attacker.Slot));
                 }
 
                 return HookResult.Continue;

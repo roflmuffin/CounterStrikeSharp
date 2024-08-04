@@ -20,6 +20,7 @@ endif()
 
 set(CMAKE_STATIC_LIBRARY_PREFIX "")
 
+set(LIBRARIES_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libraries)
 set(SOURCESDK_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2)
 set(METAMOD_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libraries/metamod-source)
 
@@ -40,6 +41,10 @@ else()
     add_definitions(-DBUILD_NUMBER="0")
 endif()
 
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    add_compile_definitions(_GLIBCXX_USE_CXX11_ABI=0)
+endif()
+
 include_directories(
     ${SOURCESDK}
     ${SOURCESDK}/thirdparty/protobuf-3.21.8/src
@@ -57,9 +62,11 @@ include_directories(
     ${SOURCESDK}/public/schemasystem
     ${METAMOD_DIR}/core
     ${METAMOD_DIR}/core/sourcehook
+    libraries/Protobufs/csgo
     libraries/dyncall/dynload
     libraries/dyncall/dyncall
     libraries/spdlog/include
+    # libraries/protobuf
     libraries/tl
     libraries/funchook/include
     libraries/DynoHook/src
