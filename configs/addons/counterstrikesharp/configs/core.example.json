@@ -4,5 +4,7 @@
     "FollowCS2ServerGuidelines": true,
     "PluginHotReloadEnabled": true,
     "PluginAutoLoadEnabled": true,
-    "ServerLanguage": "en"
+    "ServerLanguage": "en",
+    "UnlockConCommands": true,
+    "UnlockConVars": true
 }

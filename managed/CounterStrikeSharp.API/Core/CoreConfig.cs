@@ -46,15 +46,21 @@ namespace CounterStrikeSharp.API.Core
 
         [JsonPropertyName("FollowCS2ServerGuidelines")]
         public bool FollowCS2ServerGuidelines { get; set; } = true;
-        
+
         [JsonPropertyName("PluginHotReloadEnabled")]
         public bool PluginHotReloadEnabled { get; set; } = true;
-        
+
         [JsonPropertyName("PluginAutoLoadEnabled")]
         public bool PluginAutoLoadEnabled { get; set; } = true;
-        
+
         [JsonPropertyName("ServerLanguage")]
         public string ServerLanguage { get; set; } = "en";
+
+        [JsonPropertyName("UnlockConCommands")]
+        public bool UnlockConCommands { get; set; } = true;
+
+        [JsonPropertyName("UnlockConVars")]
+        public bool UnlockConVars { get; set; } = true;
     }
 
     /// <summary>
@@ -97,14 +103,18 @@ namespace CounterStrikeSharp.API.Core
         /// When enabled, plugins are automatically reloaded when their .dll file is updated.
         /// </summary>
         public static bool PluginHotReloadEnabled => _coreConfig.PluginHotReloadEnabled;
-        
+
         /// <summary>
         /// When enabled, plugins are automatically loaded from the plugins directory on server start.
         /// </summary>
         public static bool PluginAutoLoadEnabled => _coreConfig.PluginAutoLoadEnabled;
-        
+
         public static string ServerLanguage => _coreConfig.ServerLanguage;
-        
+
+        public static bool UnlockConCommands => _coreConfig.UnlockConCommands;
+
+        public static bool UnlockConVars => _coreConfig.UnlockConVars;
+
     }
 
     public partial class CoreConfig : IStartupService
@@ -140,7 +150,7 @@ namespace CounterStrikeSharp.API.Core
                     ReloadCoreConfigCommand));
                 _commandsRegistered = true;
             }
-            
+
             if (!File.Exists(_coreConfigPath))
             {
                 _logger.LogWarning(
@@ -181,12 +191,12 @@ namespace CounterStrikeSharp.API.Core
                     serverCulture = CultureInfo.InvariantCulture;
                 }
             }
-            
+
             CultureInfo.DefaultThreadCurrentUICulture = serverCulture;
             CultureInfo.DefaultThreadCurrentCulture = serverCulture;
             CultureInfo.CurrentUICulture = serverCulture;
             CultureInfo.CurrentCulture = serverCulture;
-            
+
             _logger.LogInformation("Successfully loaded core configuration");
         }
     }

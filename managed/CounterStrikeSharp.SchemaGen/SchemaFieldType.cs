@@ -15,7 +15,7 @@ public record SchemaFieldType
         this.Atomic = Atomic;
         this.Inner = Inner;
 
-        if (this.Name == "GameTime_t")
+        if (this.Name == "GameTime_t" || this.Name == "CNetworkedQuantizedFloat")
         {
             this.Category = SchemaTypeCategory.Builtin;
             this.Name = "float32";
@@ -99,7 +99,8 @@ public record SchemaFieldType
     {
         SchemaTypeCategory.Builtin => BuiltinToCsKeyword(Name),
         SchemaTypeCategory.Ptr => IsString
-            ? "string" : $"{Inner!.CsTypeName}?",
+            ? "string"
+            : $"{Inner!.CsTypeName}?",
         SchemaTypeCategory.FixedArray => IsString
             ? "string"
             : $"{Inner!.CsTypeName}[]",

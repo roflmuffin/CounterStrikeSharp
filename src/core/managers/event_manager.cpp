@@ -33,6 +33,7 @@
 
 #include "core/log.h"
 #include "scripting/callback_manager.h"
+#include "vprof.h"
 
 SH_DECL_HOOK2(IGameEventManager2, FireEvent, SH_NOATTRIB, 0, bool, IGameEvent*, bool);
 
@@ -211,6 +212,7 @@ bool EventManager::OnFireEvent(IGameEvent* pEvent, bool bDontBroadcast)
             pCallback->ScriptContext().Push(pEvent);
             pCallback->ScriptContext().Push(&override);
 
+            VPROF_BUDGET("CS#::OnFireEvent", "CS# Event Hooks");
             for (auto fnMethodToCall : pCallback->GetFunctions())
             {
                 if (!fnMethodToCall) continue;
@@ -257,6 +259,8 @@ bool EventManager::OnFireEventPost(IGameEvent* pEvent, bool bDontBroadcast)
 
         if (pCallback)
         {
+            VPROF_BUDGET("CS#::OnFireEventPost", "CS# Event Hooks");
+
             auto pEventCopy = m_EventCopies.top();
             CSSHARP_CORE_TRACE("Pushing event `{}` pointer: {}, dont broadcast: {}, post: {}", pEventCopy->GetName(), (void*)pEventCopy,
                                bDontBroadcast, true);

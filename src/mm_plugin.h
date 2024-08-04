@@ -12,6 +12,8 @@
  * This sample plugin is public domain.
  */
 
+#define VPROF_LEVEL 1
+
 #ifndef _INCLUDE_METAMOD_SOURCE_STUB_PLUGIN_H_
 #define _INCLUDE_METAMOD_SOURCE_STUB_PLUGIN_H_
 

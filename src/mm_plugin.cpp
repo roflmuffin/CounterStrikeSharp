@@ -32,6 +32,7 @@
 #include "scripting/callback_manager.h"
 #include "scripting/dotnet_host.h"
 #include "scripting/script_engine.h"
+#include "tier0/vprof.h"
 
 #define VERSION_STRING  "v" BUILD_NUMBER " @ " GITHUB_SHA
 #define BUILD_TIMESTAMP __DATE__ " " __TIME__
@@ -204,6 +205,7 @@ void CounterStrikeSharpMMPlugin::Hook_GameFrame(bool simulating, bool bFirstTick
      * true  | game is ticking
      * false | game is not ticking
      */
+    VPROF_BUDGET("CS#::Hook_GameFrame", "CS# On Frame");
     globals::timerSystem.OnGameFrame(simulating);
 
     std::vector<std::function<void()>> out_list(1024);
