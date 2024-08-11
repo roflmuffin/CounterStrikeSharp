@@ -480,64 +480,64 @@ static void PbRemoveRepeatedFieldValue(ScriptContext& scriptContext)
     }
 }
 
-static void PbReadMessage(ScriptContext& scriptContext)
-{
-    GET_MESSAGE_OR_ERR();
-    GET_FIELD_NAME_OR_ERR();
-
-    google::protobuf::Message* subMessage = nullptr;
-
-    if (!message->GetMessage(fieldName, &subMessage))
-    {
-        scriptContext.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
-                                       message->GetProtobufMessage()->GetTypeName().c_str());
-        return;
-    }
-
-    auto subUserMessage = new UserMessage(subMessage);
-    managed_usermessages.push_back(subUserMessage);
-    scriptContext.SetResult(subUserMessage);
-}
-
-static void PbReadRepeatedMessage(ScriptContext& scriptContext)
-{
-    GET_MESSAGE_OR_ERR();
-    GET_FIELD_NAME_OR_ERR();
-
-    const google::protobuf::Message* subMessage = nullptr;
-
-    auto index = scriptContext.GetArgument<int>(2);
-
-    if (!message->GetRepeatedMessage(fieldName, index, &subMessage))
-    {
-        scriptContext.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
-                                       message->GetProtobufMessage()->GetTypeName().c_str());
-        return;
-    }
-
-    auto subUserMessage = new UserMessage(const_cast<google::protobuf::Message*>(subMessage));
-    managed_usermessages.push_back(subUserMessage);
-    scriptContext.SetResult(subUserMessage);
-}
-
-static void PbAddMessage(ScriptContext& scriptContext)
-{
-    GET_MESSAGE_OR_ERR();
-    GET_FIELD_NAME_OR_ERR();
-
-    google::protobuf::Message* subMessage;
-
-    if (!message->AddMessage(fieldName, &subMessage))
-    {
-        scriptContext.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
-                                       message->GetProtobufMessage()->GetTypeName().c_str());
-        return;
-    }
-
-    auto subUserMessage = new UserMessage(subMessage);
-    managed_usermessages.push_back(subUserMessage);
-    scriptContext.SetResult(subUserMessage);
-}
+// static void PbReadMessage(ScriptContext& scriptContext)
+//{
+//     GET_MESSAGE_OR_ERR();
+//     GET_FIELD_NAME_OR_ERR();
+//
+//     google::protobuf::Message* subMessage = nullptr;
+//
+//     if (!message->GetMessage(fieldName, &subMessage))
+//     {
+//         scriptContext.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
+//                                        message->GetProtobufMessage()->GetTypeName().c_str());
+//         return;
+//     }
+//
+//     auto subUserMessage = new UserMessage(subMessage);
+//     managed_usermessages.push_back(subUserMessage);
+//     scriptContext.SetResult(subUserMessage);
+// }
+//
+// static void PbReadRepeatedMessage(ScriptContext& scriptContext)
+//{
+//     GET_MESSAGE_OR_ERR();
+//     GET_FIELD_NAME_OR_ERR();
+//
+//     const google::protobuf::Message* subMessage = nullptr;
+//
+//     auto index = scriptContext.GetArgument<int>(2);
+//
+//     if (!message->GetRepeatedMessage(fieldName, index, &subMessage))
+//     {
+//         scriptContext.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
+//                                        message->GetProtobufMessage()->GetTypeName().c_str());
+//         return;
+//     }
+//
+//     auto subUserMessage = new UserMessage(const_cast<google::protobuf::Message*>(subMessage));
+//     managed_usermessages.push_back(subUserMessage);
+//     scriptContext.SetResult(subUserMessage);
+// }
+//
+// static void PbAddMessage(ScriptContext& scriptContext)
+//{
+//    GET_MESSAGE_OR_ERR();
+//    GET_FIELD_NAME_OR_ERR();
+//
+//    google::protobuf::Message* subMessage;
+//
+//    if (!message->AddMessage(fieldName, &subMessage))
+//    {
+//        scriptContext.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
+//                                       message->GetProtobufMessage()->GetTypeName().c_str());
+//        return;
+//    }
+//
+//    auto subUserMessage = new UserMessage(subMessage);
+//    managed_usermessages.push_back(subUserMessage);
+//    scriptContext.SetResult(subUserMessage);
+//}
 
 static void PbGetDebugString(ScriptContext& scriptContext)
 {
@@ -565,12 +565,14 @@ static void UserMessageCreate(ScriptContext& scriptContext)
 static void UserMessageSend(ScriptContext& scriptContext)
 {
     auto message = scriptContext.GetArgument<UserMessage*>(0);
-    auto recipientMask = scriptContext.GetArgument<uint64>(1);
+    auto recipientId = scriptContext.GetArgument<uint64>(1);
 
-    CRecipientFilter filter{};
-    filter.AddRecipientsFromMask(recipientMask);
+    //    CRecipientFilter filter{};
+    //    filter.AddRecipientsFromMask(recipientMask);
 
-    globals::gameEventSystem->PostEventAbstract(0, false, &filter, message->GetSerializableMessage(), message->GetProtobufMessage(), 0);
+    auto pNetChan = reinterpret_cast<INetChannel*>(globals::engine->GetPlayerNetInfo(recipientId));
+
+    if (pNetChan) pNetChan->SendNetMessage(message->GetSerializableMessage(), message->GetProtobufMessage(), BUF_DEFAULT);
 }
 
 static void UserMessageDelete(ScriptContext& scriptContext)
@@ -606,9 +608,9 @@ REGISTER_NATIVES(usermessages, {
     ScriptEngine::RegisterNativeHandler("PB_ADDBOOL", PbAddBool);
     ScriptEngine::RegisterNativeHandler("PB_ADDSTRING", PbAddString);
     ScriptEngine::RegisterNativeHandler("PB_REMOVEREPEATEDFIELDVALUE", PbRemoveRepeatedFieldValue);
-    ScriptEngine::RegisterNativeHandler("PB_READMESSAGE", PbReadMessage);
-    ScriptEngine::RegisterNativeHandler("PB_READREPEATEDMESSAGE", PbReadRepeatedMessage);
-    ScriptEngine::RegisterNativeHandler("PB_ADDMESSAGE", PbAddMessage);
+    //    ScriptEngine::RegisterNativeHandler("PB_READMESSAGE", PbReadMessage);
+    //    ScriptEngine::RegisterNativeHandler("PB_READREPEATEDMESSAGE", PbReadRepeatedMessage);
+    //    ScriptEngine::RegisterNativeHandler("PB_ADDMESSAGE", PbAddMessage);
     ScriptEngine::RegisterNativeHandler("PB_GETDEBUGSTRING", PbGetDebugString);
     ScriptEngine::RegisterNativeHandler("USERMESSAGE_CREATE", UserMessageCreate);
     ScriptEngine::RegisterNativeHandler("USERMESSAGE_SEND", UserMessageSend);

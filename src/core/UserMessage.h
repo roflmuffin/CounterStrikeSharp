@@ -72,7 +72,7 @@ using namespace google;
         return false;                                             \
     };
 
-class INetworkSerializable;
+class INetworkMessageInternal;
 namespace google::protobuf {
 class Message;
 }
@@ -96,19 +96,26 @@ static inline size_t SafeStrcpy(char* dest, size_t maxlength, const char* src)
 class UserMessage
 {
   public:
-    UserMessage(google::protobuf::Message* msgBuffer, INetworkSerializable* msgSerializable, int nRecipientCount, uint64* recipientMask)
-        : msg(msgBuffer), msgSerializable(msgSerializable), nRecipientCount(nRecipientCount), recipientMask(recipientMask)
+    //        UserMessage(google::protobuf::Message* msgBuffer, INetworkMessageInternal* msgSerializable, int nRecipientCount, uint64*
+    //        recipientMask)
+    //            : msg(msgBuffer), msgSerializable(msgSerializable), nRecipientCount(nRecipientCount), recipientMask(recipientMask)
+    //        {
+    //        }
+    //
+    //        UserMessage(google::protobuf::Message* msgBuffer) : msg(msgBuffer->) {}
+
+    UserMessage(INetworkMessageInternal* msgSerializable, const CNetMessage* message, int nRecipientCount, uint64* recipientMask)
+        : msgSerializable(msgSerializable), nRecipientCount(nRecipientCount), recipientMask(recipientMask),
+          msg(const_cast<CNetMessage*>(message)->ToPB<protobuf::Message>())
     {
     }
-
-    UserMessage(google::protobuf::Message* msgBuffer) : msg(msgBuffer) {}
 
     UserMessage(std::string msgName)
     {
         this->msgSerializable = globals::networkMessages->FindNetworkMessagePartial(msgName.c_str());
         if (!this->msgSerializable) return;
 
-        this->msg = CreateMessagePrototype(this->GetMessageID());
+        this->msg = this->msgSerializable->AllocateMessage()->ToPB<protobuf::Message>();
     }
 
     ~UserMessage() {}
@@ -116,12 +123,12 @@ class UserMessage
     std::string GetMessageName();
     int GetMessageID();
     bool HasField(std::string fieldName);
-    const google::protobuf::Message* GetProtobufMessage();
-    INetworkSerializable* GetSerializableMessage() { return msgSerializable; }
+    const CNetMessagePB<google::protobuf::Message>* GetProtobufMessage();
+    INetworkMessageInternal* GetSerializableMessage() { return msgSerializable; }
 
   private:
-    google::protobuf::Message* msg = nullptr;
-    INetworkSerializable* msgSerializable = nullptr;
+    CNetMessagePB<google::protobuf::Message>* msg = nullptr;
+    INetworkMessageInternal* msgSerializable = nullptr;
     int nRecipientCount = 0;
     uint64* recipientMask = nullptr;
 

@@ -168,8 +168,7 @@ SH_DECL_HOOK8_void(IGameEventSystem,
         const google::protobuf::Message* msgBuffer = reinterpret_cast<const google::protobuf::Message*>(pData);
         msgBuffer->PrintDebugString();
 
-        auto message = UserMessage(const_cast<protobuf::Message*>(msgBuffer), const_cast<CNetMessage*>(pData), pEvent, nClientCount,
-                                   const_cast<uint64*>(clients));
+        auto message = UserMessage(pEvent, pData, nClientCount, const_cast<uint64*>(clients));
 
         auto iMessageID = message.GetMessageID();
         auto I = m_hooksMap.find(iMessageID);
