@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes;
@@ -22,18 +22,29 @@ public class WithTranslationsPlugin : BasePlugin
         // A global `Localizer` is provided on the plugin instance.
         // You can also use dependency injection to inject `IStringLocalizer` in your own services.
         Logger.LogInformation("This message is in the server language: {Message}", Localizer["test.translation"]);
-        
+
         // IStringLocalizer can accept standard string format arguments.
         // "This number has 2 decimal places {0:n2}" -> "This number has 2 decimal places 123.55"
         Logger.LogInformation(Localizer["test.format", 123.551]);
-        
+
         // This message has colour codes
         Server.PrintToChatAll(Localizer["test.colors"]);
 
         // This message has colour codes and formatted values
         Server.PrintToChatAll(Localizer["test.colors.withformat", 123.551]);
+
+        // This prints the message to all players in their respective language
+        PrintToAllPlayersLocalized("test.format", 123.456);
     }
-    
+
+    void PrintToAllPlayersLocalized(string key, params object[] args)
+    {
+        foreach (var player in Utilities.GetPlayers().Where(x => x.IsValid))
+        {
+            player.PrintToChat(Localizer.ForPlayer(player, key, args));
+        }
+    }
+
     [ConsoleCommand("css_replylanguage", "Test Translations")]
     public void OnCommandReplyLanguage(CCSPlayerController? player, CommandInfo command)
     {
