@@ -27,7 +27,7 @@ set(METAMOD_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libraries/metamod-source)
 set(SOURCESDK ${SOURCESDK_DIR}/${BRANCH})
 set(SOURCESDK_LIB ${SOURCESDK}/lib)
 
-add_definitions(-DMETA_IS_SOURCE2)
+add_definitions(-DMETA_IS_SOURCE2 -D_ITERATOR_DEBUG_LEVEL=0)
 
 if(DEFINED ENV{GITHUB_SHA_SHORT})
     add_definitions(-DGITHUB_SHA="$ENV{GITHUB_SHA_SHORT}")
@@ -75,3 +75,5 @@ include_directories(
 )
 
 include(${CMAKE_CURRENT_LIST_DIR}/metamod/configure_metamod.cmake)
+
+

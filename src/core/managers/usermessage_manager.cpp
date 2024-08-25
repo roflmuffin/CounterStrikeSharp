@@ -165,8 +165,7 @@ SH_DECL_HOOK8_void(IGameEventSystem,
                                                            const CNetMessage*, unsigned long, NetChannelBufType_t) =
             &IGameEventSystem::PostEventAbstract;
 
-        const google::protobuf::Message* msgBuffer = reinterpret_cast<const google::protobuf::Message*>(pData);
-        msgBuffer->PrintDebugString();
+        auto msgBuffer = pData->ToPB<google::protobuf::Message>();
 
         auto message = UserMessage(pEvent, pData, nClientCount, const_cast<uint64*>(clients));
 
