@@ -7,6 +7,7 @@ include("makefiles/shared.cmake")
 
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
+set(FUNCHOOK_BUILD_TESTS OFF)
 #set(protobuf_BUILD_TESTS OFF)
 #set(protobuf_BUILD_SHARED_LIBS)
 
