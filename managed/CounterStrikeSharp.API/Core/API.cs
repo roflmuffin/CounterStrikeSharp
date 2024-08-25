@@ -1495,43 +1495,6 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
-        public static UserMessage PbReadmessage(UserMessage message, string name){
-			lock (ScriptContext.GlobalScriptContext.Lock) {
-			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.Push(message);
-			ScriptContext.GlobalScriptContext.Push(name);
-			ScriptContext.GlobalScriptContext.SetIdentifier(0x6F43DCB1);
-			ScriptContext.GlobalScriptContext.Invoke();
-			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (UserMessage)ScriptContext.GlobalScriptContext.GetResult(typeof(UserMessage));
-			}
-		}
-
-        public static UserMessage PbReadrepeatedmessage(UserMessage message, string name, int index){
-			lock (ScriptContext.GlobalScriptContext.Lock) {
-			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.Push(message);
-			ScriptContext.GlobalScriptContext.Push(name);
-			ScriptContext.GlobalScriptContext.Push(index);
-			ScriptContext.GlobalScriptContext.SetIdentifier(0x1D194CA7);
-			ScriptContext.GlobalScriptContext.Invoke();
-			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (UserMessage)ScriptContext.GlobalScriptContext.GetResult(typeof(UserMessage));
-			}
-		}
-
-        public static UserMessage PbAddmessage(UserMessage message, string name){
-			lock (ScriptContext.GlobalScriptContext.Lock) {
-			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.Push(message);
-			ScriptContext.GlobalScriptContext.Push(name);
-			ScriptContext.GlobalScriptContext.SetIdentifier(0x9B0BACA2);
-			ScriptContext.GlobalScriptContext.Invoke();
-			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (UserMessage)ScriptContext.GlobalScriptContext.GetResult(typeof(UserMessage));
-			}
-		}
-
         public static string PbGetdebugstring(UserMessage message){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();

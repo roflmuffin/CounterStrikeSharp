@@ -40,9 +40,9 @@ public class UserMessage : NativeObject, IDisposable
     public void AddDouble(string fieldName, double value) => NativeAPI.PbAddfloat(this, fieldName, (float)value);
     public void AddString(string fieldName, string value) => NativeAPI.PbAddstring(this, fieldName, value);
     public void AddBool(string fieldName, bool value) => NativeAPI.PbAddbool(this, fieldName, value);
-    public UserMessage ReadMessage(string fieldName) => NativeAPI.PbReadmessage(this, fieldName);
-    public UserMessage ReadRepeatedMessage(string fieldName, int index ) => NativeAPI.PbReadrepeatedmessage(this, fieldName, index);
-    public UserMessage AddMessage(string fieldName) => NativeAPI.PbAddmessage(this, fieldName);
+    // public UserMessage ReadMessage(string fieldName) => NativeAPI.PbReadmessage(this, fieldName);
+    // public UserMessage ReadRepeatedMessage(string fieldName, int index ) => NativeAPI.PbReadrepeatedmessage(this, fieldName, index);
+    // public UserMessage AddMessage(string fieldName) => NativeAPI.PbAddmessage(this, fieldName);
 
     public string DebugString => NativeAPI.PbGetdebugstring(this);
 

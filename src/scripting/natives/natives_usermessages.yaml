@@ -18,9 +18,9 @@ PB_ADDFLOAT: message:UserMessage, name:string, value:float -> void
 PB_ADDBOOL: message:UserMessage, name:string, value:bool -> void
 PB_ADDSTRING: message:UserMessage, name:string, value:string -> void
 PB_REMOVEREPEATEDFIELDVALUE: message:UserMessage, name:string, index:int -> void
-PB_READMESSAGE: message:UserMessage, name:string -> UserMessage
-PB_READREPEATEDMESSAGE: message:UserMessage, name:string, index:int -> UserMessage
-PB_ADDMESSAGE: message:UserMessage, name:string -> UserMessage
+#PB_READMESSAGE: message:UserMessage, name:string -> UserMessage
+#PB_READREPEATEDMESSAGE: message:UserMessage, name:string, index:int -> UserMessage
+#PB_ADDMESSAGE: message:UserMessage, name:string -> UserMessage
 PB_GETDEBUGSTRING: message:UserMessage -> string
 USERMESSAGE_CREATE: name:string -> UserMessage
 USERMESSAGE_SEND: message:UserMessage, recipientFilter:RecipientFilter -> void

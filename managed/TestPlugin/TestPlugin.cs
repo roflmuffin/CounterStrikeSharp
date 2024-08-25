@@ -165,6 +165,20 @@ namespace TestPlugin
             NativeAPI.UsermessageSend(message, recipientFilter);
         }
 
+        [ConsoleCommand("css_shake")]
+        public void OnCommandFooBar(CCSPlayerController? player, CommandInfo command)
+        {
+            var message = NativeAPI.UsermessageCreate("Shake");
+            Logger.LogInformation("Created user message CCSUsrMsg_Shake {Message:x}", message.Handle);
+
+            message.SetFloat("duration", 2);
+            message.SetFloat("amplitude", 5);
+            message.SetFloat("frequency", 10f);
+            message.SetInt("command", 0);
+
+            NativeAPI.UsermessageSend(message, new RecipientFilter(@player.Slot));
+        }
+
         public override void OnAllPluginsLoaded(bool hotReload)
         {
             Logger.LogInformation("All plugins loaded!");

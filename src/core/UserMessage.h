@@ -96,14 +96,6 @@ static inline size_t SafeStrcpy(char* dest, size_t maxlength, const char* src)
 class UserMessage
 {
   public:
-    //        UserMessage(google::protobuf::Message* msgBuffer, INetworkMessageInternal* msgSerializable, int nRecipientCount, uint64*
-    //        recipientMask)
-    //            : msg(msgBuffer), msgSerializable(msgSerializable), nRecipientCount(nRecipientCount), recipientMask(recipientMask)
-    //        {
-    //        }
-    //
-    //        UserMessage(google::protobuf::Message* msgBuffer) : msg(msgBuffer->) {}
-
     UserMessage(INetworkMessageInternal* msgSerializable, const CNetMessage* message, int nRecipientCount, uint64* recipientMask)
         : msgSerializable(msgSerializable), nRecipientCount(nRecipientCount), recipientMask(recipientMask),
           msg(const_cast<CNetMessage*>(message)->ToPB<protobuf::Message>())
