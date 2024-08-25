@@ -10,9 +10,14 @@ namespace CounterStrikeSharp.API.Modules.Memory;
 
 public static class VirtualFunctions
 {
+    public static MemoryFunctionVoid<nint, nint, byte, nint, nint, nint, nint, nint> UTIL_SayText2FilterFunc =
+        new(GameData.GetSignature("UTIL_SayText2Filter"));
+
+    public static Action<nint, nint, byte, nint, nint, nint, nint, nint> UTIL_SayText2Filter =
+        UTIL_SayText2FilterFunc.Invoke;
+
     public static MemoryFunctionVoid<IntPtr, HudDestination, string, IntPtr, IntPtr, IntPtr, IntPtr> ClientPrintFunc =
-        new(
-            GameData.GetSignature("ClientPrint"));
+        new(GameData.GetSignature("ClientPrint"));
 
     public static Action<IntPtr, HudDestination, string, IntPtr, IntPtr, IntPtr, IntPtr> ClientPrint =
         ClientPrintFunc.Invoke;
