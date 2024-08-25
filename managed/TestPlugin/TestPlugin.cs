@@ -112,7 +112,8 @@ namespace TestPlugin
 
             _testInjectedClass.Hello();
 
-            HookUserMessage(452, (um => {
+            HookUserMessage(452, (um =>
+            {
                 var weaponId = um.ReadInt("weapon_id");
                 var soundType = um.ReadInt("sound_type");
                 var itemDefIndex = um.ReadInt("item_def_index");
@@ -125,7 +126,8 @@ namespace TestPlugin
                 return HookResult.Stop;
             }));
 
-            HookUserMessage(118, um => {
+            HookUserMessage(118, um =>
+            {
                 Logger.LogInformation(um.DebugString);
 
                 var author = um.ReadString("param1");
@@ -135,6 +137,8 @@ namespace TestPlugin
                 {
                     um.SetString("param2", message.Replace("foobar", "replaced"));
                 }
+
+                um.SetString("param1", $"[{um.ReadString("param1").ToUpper()}]");
 
                 if (message.Contains("stop"))
                 {
@@ -160,7 +164,7 @@ namespace TestPlugin
             message.SetInt("entityindex", (int)(player?.Index ?? 0));
 
             var recipientFilter = new RecipientFilter();
-                recipientFilter.AddAllPlayers();
+            recipientFilter.AddAllPlayers();
 
             NativeAPI.UsermessageSend(message, recipientFilter);
         }

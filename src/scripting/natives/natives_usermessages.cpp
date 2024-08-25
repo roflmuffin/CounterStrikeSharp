@@ -522,22 +522,22 @@ static void PbRemoveRepeatedFieldValue(ScriptContext& scriptContext)
 //
 // static void PbAddMessage(ScriptContext& scriptContext)
 //{
-//    GET_MESSAGE_OR_ERR();
-//    GET_FIELD_NAME_OR_ERR();
+//     GET_MESSAGE_OR_ERR();
+//     GET_FIELD_NAME_OR_ERR();
 //
-//    google::protobuf::Message* subMessage;
+//     google::protobuf::Message* subMessage;
 //
-//    if (!message->AddMessage(fieldName, &subMessage))
-//    {
-//        scriptContext.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
-//                                       message->GetProtobufMessage()->GetTypeName().c_str());
-//        return;
-//    }
+//     if (!message->AddMessage(fieldName, &subMessage))
+//     {
+//         scriptContext.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
+//                                        message->GetProtobufMessage()->GetTypeName().c_str());
+//         return;
+//     }
 //
-//    auto subUserMessage = new UserMessage(subMessage);
-//    managed_usermessages.push_back(subUserMessage);
-//    scriptContext.SetResult(subUserMessage);
-//}
+//     auto subUserMessage = new UserMessage(subMessage);
+//     managed_usermessages.push_back(subUserMessage);
+//     scriptContext.SetResult(subUserMessage);
+// }
 
 static void PbGetDebugString(ScriptContext& scriptContext)
 {
@@ -565,14 +565,12 @@ static void UserMessageCreate(ScriptContext& scriptContext)
 static void UserMessageSend(ScriptContext& scriptContext)
 {
     auto message = scriptContext.GetArgument<UserMessage*>(0);
-    auto recipientId = scriptContext.GetArgument<uint64>(1);
+    auto recipientMask = scriptContext.GetArgument<uint64>(1);
 
-    //    CRecipientFilter filter{};
-    //    filter.AddRecipientsFromMask(recipientMask);
+    CRecipientFilter filter{};
+    filter.AddRecipientsFromMask(recipientMask);
 
-    auto pNetChan = reinterpret_cast<INetChannel*>(globals::engine->GetPlayerNetInfo(recipientId));
-
-    if (pNetChan) pNetChan->SendNetMessage(message->GetSerializableMessage(), message->GetProtobufMessage(), BUF_DEFAULT);
+    globals::gameEventSystem->PostEventAbstract(0, false, &filter, message->GetSerializableMessage(), message->GetProtobufMessage(), 0);
 }
 
 static void UserMessageDelete(ScriptContext& scriptContext)
