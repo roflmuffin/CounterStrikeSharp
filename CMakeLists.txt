@@ -102,7 +102,6 @@ set(SOURCE_FILES
     src/core/game_system.cpp
     src/core/UserMessage.h
     src/core/UserMessage.cpp
-    src/core/UserMessageScaffolder.h
     src/core/recipientfilters.h
 )
 

@@ -18,7 +18,6 @@
 
 #include <networksystem/inetworkmessages.h>
 
-#include "UserMessageScaffolder.h"
 #include "core/globals.h"
 #include "log.h"
 #include "networkbasetypes.pb.h"

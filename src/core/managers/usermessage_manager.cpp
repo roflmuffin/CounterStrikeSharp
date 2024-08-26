@@ -159,12 +159,6 @@ SH_DECL_HOOK8_void(IGameEventSystem,
                                             INetworkMessageInternal* pEvent, const CNetMessage* pData, unsigned long nSize,
                                             NetChannelBufType_t bufType)
     {
-        // Message( "Hook_PostEvent(%d, %d, %d, %lli)\n", nSlot, bLocalOnly, nRecipientCount, clients );
-        // Need to explicitly get a pointer to the right function as it's overloaded and SH_CALL can't resolve that
-        static void (IGameEventSystem::*PostEventAbstract)(CSplitScreenSlot, bool, int, const uint64*, INetworkMessageInternal*,
-                                                           const CNetMessage*, unsigned long, NetChannelBufType_t) =
-            &IGameEventSystem::PostEventAbstract;
-
         auto message = UserMessage(pEvent, pData, nClientCount, const_cast<uint64*>(clients));
 
         auto iMessageID = message.GetMessageID();
