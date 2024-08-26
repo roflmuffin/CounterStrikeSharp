@@ -6,7 +6,6 @@ project(counterstrikesharp C CXX ASM)
 include("makefiles/shared.cmake")
 
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
-set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 #set(protobuf_BUILD_TESTS OFF)
 #set(protobuf_BUILD_SHARED_LIBS)
 
@@ -18,7 +17,6 @@ add_subdirectory(libraries/DynoHook)
 
 set_property(TARGET dynohook PROPERTY DYNO_ARCH_X86 64)
 set_property(TARGET funchook-static PROPERTY POSITION_INDEPENDENT_CODE ON)
-set(FUNCHOOK_BUILD_TESTS OFF)
 
 set(SOURCE_FILES
     libraries/hl2sdk-cs2/public/tier0/memoverride.cpp
