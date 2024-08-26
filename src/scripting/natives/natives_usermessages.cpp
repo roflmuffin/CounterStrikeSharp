@@ -546,6 +546,20 @@ static void PbGetDebugString(ScriptContext& scriptContext)
     scriptContext.SetResult(message->GetDebugString().c_str());
 }
 
+static void UserMessageFindMessageIdByName(ScriptContext& scriptContext)
+{
+    auto messageName = scriptContext.GetArgument<const char*>(0);
+    auto message = globals::networkMessages->FindNetworkMessagePartial(messageName);
+
+    if (message == nullptr)
+    {
+        scriptContext.ThrowNativeError("Could not find user message: %s", messageName);
+        return;
+    }
+
+    scriptContext.SetResult(message->GetNetMessageInfo()->m_MessageId);
+}
+
 static void UserMessageCreate(ScriptContext& scriptContext)
 {
     auto messageName = scriptContext.GetArgument<const char*>(0);
@@ -562,13 +576,33 @@ static void UserMessageCreate(ScriptContext& scriptContext)
     scriptContext.SetResult(message);
 }
 
-static void UserMessageSend(ScriptContext& scriptContext)
+static void UserMessageGetRecipients(ScriptContext& scriptContext)
+{
+    auto message = scriptContext.GetArgument<UserMessage*>(0);
+
+    if (message == nullptr)
+    {
+        scriptContext.ThrowNativeError("Invalid message");
+        return;
+    }
+
+    scriptContext.SetResult(message->GetRecipientMask() ? *message->GetRecipientMask() : 0);
+}
+
+static void UserMessageSetRecipients(ScriptContext& scriptContext)
 {
     auto message = scriptContext.GetArgument<UserMessage*>(0);
     auto recipientMask = scriptContext.GetArgument<uint64>(1);
 
+    *message->GetRecipientMask() = recipientMask;
+}
+
+static void UserMessageSend(ScriptContext& scriptContext)
+{
+    auto message = scriptContext.GetArgument<UserMessage*>(0);
+
     CRecipientFilter filter{};
-    filter.AddRecipientsFromMask(recipientMask);
+    filter.AddRecipientsFromMask(message->GetRecipientMask() ? *message->GetRecipientMask() : 0);
 
     globals::gameEventSystem->PostEventAbstract(0, false, &filter, message->GetSerializableMessage(), message->GetProtobufMessage(), 0);
 }
@@ -583,6 +617,45 @@ static void UserMessageDelete(ScriptContext& scriptContext)
         managed_usermessages.erase(it);
         delete message;
     }
+}
+
+static void UserMessageGetMessageId(ScriptContext& scriptContext)
+{
+    auto message = scriptContext.GetArgument<UserMessage*>(0);
+
+    if (message == nullptr || message->GetSerializableMessage() == nullptr)
+    {
+        scriptContext.ThrowNativeError("Invalid message");
+        return;
+    }
+
+    scriptContext.SetResult(message->GetMessageID());
+}
+
+static void UserMessageGetMessageName(ScriptContext& scriptContext)
+{
+    auto message = scriptContext.GetArgument<UserMessage*>(0);
+
+    if (message == nullptr || message->GetSerializableMessage() == nullptr)
+    {
+        scriptContext.ThrowNativeError("Invalid message");
+        return;
+    }
+
+    scriptContext.SetResult(message->GetSerializableMessage()->GetUnscopedName());
+}
+
+static void UserMessageGetMessageTypeName(ScriptContext& scriptContext)
+{
+    auto message = scriptContext.GetArgument<UserMessage*>(0);
+
+    if (message == nullptr || message->GetProtobufMessage() == nullptr)
+    {
+        scriptContext.ThrowNativeError("Invalid message");
+        return;
+    }
+
+    scriptContext.SetResult(message->GetProtobufMessage()->GetTypeName().c_str());
 }
 
 REGISTER_NATIVES(usermessages, {
@@ -610,8 +683,14 @@ REGISTER_NATIVES(usermessages, {
     //    ScriptEngine::RegisterNativeHandler("PB_READREPEATEDMESSAGE", PbReadRepeatedMessage);
     //    ScriptEngine::RegisterNativeHandler("PB_ADDMESSAGE", PbAddMessage);
     ScriptEngine::RegisterNativeHandler("PB_GETDEBUGSTRING", PbGetDebugString);
+    ScriptEngine::RegisterNativeHandler("USERMESSAGE_FINDMESSAGEIDBYNAME", UserMessageFindMessageIdByName);
     ScriptEngine::RegisterNativeHandler("USERMESSAGE_CREATE", UserMessageCreate);
+    ScriptEngine::RegisterNativeHandler("USERMESSAGE_GETRECIPIENTS", UserMessageGetRecipients);
+    ScriptEngine::RegisterNativeHandler("USERMESSAGE_SETRECIPIENTS", UserMessageSetRecipients);
     ScriptEngine::RegisterNativeHandler("USERMESSAGE_SEND", UserMessageSend);
     ScriptEngine::RegisterNativeHandler("USERMESSAGE_DELETE", UserMessageDelete);
+    ScriptEngine::RegisterNativeHandler("USERMESSAGE_GETID", UserMessageGetMessageId);
+    ScriptEngine::RegisterNativeHandler("USERMESSAGE_GETNAME", UserMessageGetMessageName);
+    ScriptEngine::RegisterNativeHandler("USERMESSAGE_GETTYPE", UserMessageGetMessageTypeName);
 })
 } // namespace counterstrikesharp

@@ -30,6 +30,7 @@ using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Entities.Constants;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Memory;
+using CounterStrikeSharp.API.Modules.UserMessages;
 using CounterStrikeSharp.API.Modules.Utils;
 using Microsoft.Extensions.Logging;
 
@@ -112,23 +113,41 @@ namespace TestPlugin
 
             _testInjectedClass.Hello();
 
-            HookUserMessage(452, (um =>
+            Server.NextFrame(() =>
             {
-                var weaponId = um.ReadInt("weapon_id");
-                var soundType = um.ReadInt("sound_type");
-                var itemDefIndex = um.ReadInt("item_def_index");
-                Logger.LogInformation("Weapon was fired with ID: {WeaponId}, Sound Type: {SoundType}, Item Def Index: {ItemDefIndex}",
-                    weaponId, soundType, itemDefIndex);
-                um.SetInt("weapon_id", 0);
-                um.SetInt("sound_type", 2);
-                um.SetInt("item_def_index", 9);
+                // Find IdByName is only available once the server is fully initialised, which happens after the Load method.
+                // This is why we have to use NextFrame to ensure the server is fully initialised before calling it.
+                HookUserMessage(UserMessage.FindIdByName("CMsgTEFireBullets"), (um =>
+                {
+                    var weaponId = um.ReadInt("weapon_id");
+                    var soundType = um.ReadInt("sound_type");
+                    var itemDefIndex = um.ReadInt("item_def_index");
+                    Logger.LogInformation("Weapon was fired with ID: {WeaponId}, Sound Type: {SoundType}, Item Def Index: {ItemDefIndex}, ({Name}, {Id})",
+                        weaponId, soundType, itemDefIndex, um.Name, um.Id);
+                    um.SetInt("weapon_id", 0);
+                    um.SetInt("sound_type", 2);
+                    um.SetInt("item_def_index", 9);
 
-                return HookResult.Stop;
-            }));
+                    for (var i = 0; i < um.Recipients.Count; i++)
+                    {
+                        Logger.LogInformation("Recipient {Index}: {Name}", i, um.Recipients[i].PlayerName);
+                    }
+
+                    return HookResult.Stop;
+                }));
+            });
+
 
             HookUserMessage(118, um =>
             {
                 Logger.LogInformation(um.DebugString);
+
+                Logger.LogInformation("Mask is first {M}", um.Recipients.GetRecipientMask());
+
+                for (var i = 0; i < um.Recipients.Count; i++)
+                {
+                    Logger.LogInformation("Recipient {Index}: {Name}", i, um.Recipients[i].PlayerName);
+                }
 
                 var author = um.ReadString("param1");
                 var message = um.ReadString("param2");
@@ -145,6 +164,13 @@ namespace TestPlugin
                     return HookResult.Stop;
                 }
 
+                if (Random.Shared.NextSingle() > 0.5f)
+                {
+                    um.Recipients.Remove(Utilities.GetPlayerFromSlot(0));
+                }
+
+                Logger.LogInformation("Mask is {M}", um.Recipients.GetRecipientMask());
+
                 return HookResult.Continue;
             });
         }
@@ -152,7 +178,7 @@ namespace TestPlugin
         [ConsoleCommand("foobar")]
         public void OnCommandFoobar(CCSPlayerController? player, CommandInfo command)
         {
-            using var message = NativeAPI.UsermessageCreate("CUserMessageSayText2");
+            using var message = UserMessage.FromPartialName("CUserMessageSayText2");
             Logger.LogInformation("Created user message CCSUsrMsg_Shake {Message:x}", message.Handle);
 
             message.SetString("messagename", "Cstrike_Chat_CT_Loc");
@@ -163,7 +189,7 @@ namespace TestPlugin
             message.SetBool("chat", true);
             message.SetInt("entityindex", (int)(player?.Index ?? 0));
 
-            message.Send(new RecipientFilter().AddAllPlayers());
+            message.Send(player);
         }
 
         [ConsoleCommand("css_shake")]
@@ -171,7 +197,7 @@ namespace TestPlugin
         {
             if (player == null) return;
 
-            var message = NativeAPI.UsermessageCreate("Shake");
+            var message = UserMessage.FromPartialName("Shake");
             Logger.LogInformation("Created user message CCSUsrMsg_Shake {Message:x}", message.Handle);
 
             message.SetFloat("duration", 2);
@@ -231,7 +257,7 @@ namespace TestPlugin
 
                 if (@event.Attacker != null)
                 {
-                    var message = NativeAPI.UsermessageCreate("Shake");
+                    var message = UserMessage.FromPartialName("Shake");
                     Logger.LogInformation("Created user message CCSUsrMsg_Shake {Message:x}", message.Handle);
 
                     message.SetFloat("duration", 2);
@@ -239,7 +265,7 @@ namespace TestPlugin
                     message.SetFloat("frequency", 10f);
                     message.SetInt("command", 0);
 
-                    NativeAPI.UsermessageSend(message, new RecipientFilter(@event.Attacker.Slot));
+                    message.Send(@event.Attacker);
                 }
 
                 return HookResult.Continue;

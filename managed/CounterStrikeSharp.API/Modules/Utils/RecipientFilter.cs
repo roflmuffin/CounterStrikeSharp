@@ -26,7 +26,11 @@ public class RecipientFilter : IList<CCSPlayerController>, IMarshalToNative
 {
     private readonly List<CCSPlayerController> _recipients = new();
 
-    public RecipientFilter() { }
+    internal Action? CollectionChanged;
+
+    public RecipientFilter()
+    {
+    }
 
     public RecipientFilter(params CCSPlayerController[] slots)
     {
@@ -44,7 +48,23 @@ public class RecipientFilter : IList<CCSPlayerController>, IMarshalToNative
         }
     }
 
+    public RecipientFilter(ulong mask)
+    {
+        for (var i = 0; i < 64; i++)
+        {
+            if ((mask & ((ulong)1 << i)) != 0)
+            {
+                Add(i);
+            }
+        }
+    }
+
     public IEnumerable<object> GetNativeObject()
+    {
+        yield return GetRecipientMask();
+    }
+
+    public ulong GetRecipientMask()
     {
         ulong recipientMask = 0;
         foreach (var recipient in _recipients)
@@ -52,7 +72,7 @@ public class RecipientFilter : IList<CCSPlayerController>, IMarshalToNative
             recipientMask |= (ulong)1 << recipient.Slot;
         }
 
-        yield return recipientMask;
+        return recipientMask;
     }
 
     public int IndexOf(CCSPlayerController item)
@@ -63,11 +83,13 @@ public class RecipientFilter : IList<CCSPlayerController>, IMarshalToNative
     public void Insert(int index, CCSPlayerController item)
     {
         _recipients.Insert(index, item);
+        CollectionChanged?.Invoke();
     }
 
     public void RemoveAt(int index)
     {
         _recipients.RemoveAt(index);
+        CollectionChanged?.Invoke();
     }
 
     public CCSPlayerController this[int index]
@@ -85,13 +107,13 @@ public class RecipientFilter : IList<CCSPlayerController>, IMarshalToNative
         }
 
         _recipients.Add(player);
+        CollectionChanged?.Invoke();
     }
 
-    public RecipientFilter AddAllPlayers()
+    public void AddAllPlayers()
     {
         _recipients.AddRange(Utilities.GetPlayers());
-
-        return this;
+        CollectionChanged?.Invoke();
     }
 
     public IEnumerator<CCSPlayerController> GetEnumerator()
@@ -107,11 +129,13 @@ public class RecipientFilter : IList<CCSPlayerController>, IMarshalToNative
     public void Add(CCSPlayerController item)
     {
         _recipients.Add(item);
+        CollectionChanged?.Invoke();
     }
 
     public void Clear()
     {
         _recipients.Clear();
+        CollectionChanged?.Invoke();
     }
 
     public bool Contains(CCSPlayerController item)
@@ -126,7 +150,9 @@ public class RecipientFilter : IList<CCSPlayerController>, IMarshalToNative
 
     public bool Remove(CCSPlayerController item)
     {
-        return _recipients.Remove(item);
+        var success = _recipients.Remove(item);
+        CollectionChanged?.Invoke();
+        return success;
     }
 
     public int Count => _recipients.Count;

@@ -22,6 +22,12 @@ PB_REMOVEREPEATEDFIELDVALUE: message:UserMessage, name:string, index:int -> void
 #PB_READREPEATEDMESSAGE: message:UserMessage, name:string, index:int -> UserMessage
 #PB_ADDMESSAGE: message:UserMessage, name:string -> UserMessage
 PB_GETDEBUGSTRING: message:UserMessage -> string
-USERMESSAGE_CREATE: name:string -> UserMessage
-USERMESSAGE_SEND: message:UserMessage, recipientFilter:RecipientFilter -> void
+USERMESSAGE_GETRECIPIENTS: message:UserMessage -> uint64
+USERMESSAGE_SETRECIPIENTS: message:UserMessage, recipients:uint64 -> void
+USERMESSAGE_FINDMESSAGEIDBYNAME: name:string -> int
+USERMESSAGE_CREATE: name:string -> pointer
+USERMESSAGE_SEND: message:UserMessage -> void
 USERMESSAGE_DELETE: message:UserMessage -> void
+USERMESSAGE_GETID: message:UserMessage -> int
+USERMESSAGE_GETNAME: message:UserMessage -> string
+USERMESSAGE_GETTYPE: message:UserMessage -> string

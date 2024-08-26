@@ -1506,22 +1506,54 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
-        public static UserMessage UsermessageCreate(string name){
+        public static ulong UsermessageGetrecipients(UserMessage message){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(message);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x70CDDEBE);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (ulong)ScriptContext.GlobalScriptContext.GetResult(typeof(ulong));
+			}
+		}
+
+        public static void UsermessageSetrecipients(UserMessage message, ulong recipients){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(message);
+			ScriptContext.GlobalScriptContext.Push(recipients);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xB4ED43AA);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static int UsermessageFindmessageidbyname(string name){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(name);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x22CD6C9F);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (int)ScriptContext.GlobalScriptContext.GetResult(typeof(int));
+			}
+		}
+
+        public static IntPtr UsermessageCreate(string name){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
 			ScriptContext.GlobalScriptContext.Push(name);
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xE8E83344);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (UserMessage)ScriptContext.GlobalScriptContext.GetResult(typeof(UserMessage));
+			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
 			}
 		}
 
-        public static void UsermessageSend(UserMessage message, RecipientFilter recipientfilter){
+        public static void UsermessageSend(UserMessage message){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
 			ScriptContext.GlobalScriptContext.Push(message);
-			ScriptContext.GlobalScriptContext.Push(recipientfilter);
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x24EB6B3C);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
@@ -1535,6 +1567,39 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xE10465D9);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static int UsermessageGetid(UserMessage message){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(message);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xC17BA71B);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (int)ScriptContext.GlobalScriptContext.GetResult(typeof(int));
+			}
+		}
+
+        public static string UsermessageGetname(UserMessage message){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(message);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xEFE0FD1);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (string)ScriptContext.GlobalScriptContext.GetResult(typeof(string));
+			}
+		}
+
+        public static string UsermessageGettype(UserMessage message){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(message);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xEF4842E);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (string)ScriptContext.GlobalScriptContext.GetResult(typeof(string));
 			}
 		}
 
