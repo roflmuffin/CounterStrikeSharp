@@ -6,11 +6,14 @@ project(counterstrikesharp C CXX ASM)
 include("makefiles/shared.cmake")
 
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+#set(protobuf_BUILD_TESTS OFF)
+#set(protobuf_BUILD_SHARED_LIBS)
 
 add_subdirectory(libraries/spdlog)
 add_subdirectory(libraries/dyncall)
 add_subdirectory(libraries/funchook)
 add_subdirectory(libraries/DynoHook)
+# add_subdirectory(libraries/protobuf-lib)
 
 set_property(TARGET dynohook PROPERTY DYNO_ARCH_X86 64)
 set_property(TARGET funchook-static PROPERTY POSITION_INDEPENDENT_CODE ON)
@@ -88,42 +91,44 @@ set(SOURCE_FILES
     src/core/managers/server_manager.cpp
     src/core/managers/server_manager.h
     src/scripting/natives/natives_server.cpp
+    src/scripting/natives/natives_usermessages.cpp
     libraries/nlohmann/json.hpp
     src/core/managers/voice_manager.cpp
     src/core/managers/voice_manager.h
+    src/core/managers/usermessage_manager.cpp
+    src/core/managers/usermessage_manager.h
     src/scripting/natives/natives_dynamichooks.cpp
     src/core/game_system.h
     src/core/game_system.cpp
+    src/core/UserMessage.h
+    src/core/UserMessage.cpp
+    src/core/recipientfilters.h
 )
 
-set(PROTO_DIRS -I${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo)
-file(GLOB PROTOS "${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo/*.proto")
-
-## Generate protobuf source & headers
-if(LINUX)
-    set(PROTOC_EXECUTABLE ${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2/devtools/bin/linux/protoc)
-elseif(WIN32)
-    set(PROTOC_EXECUTABLE ${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2/devtools/bin/protoc.exe)
-endif()
-
-add_custom_command(
-    OUTPUT protobuf_output_stamp
-    COMMAND ${PROTOC_EXECUTABLE} --proto_path=thirdparty/protobuf-3.21.8/src --proto_path=common --cpp_out=common common/network_connection.proto
-    COMMENT "Generating protobuf file"
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2
-    VERBATIM
+set(PROTO_GEN_CPP
+    src/protobuf/generated/network_connection.pb.cc
+    src/protobuf/generated/networkbasetypes.pb.cc
+    src/protobuf/generated/cs_gameevents.pb.cc
+    src/protobuf/generated/engine_gcmessages.pb.cc
+    src/protobuf/generated/gcsdk_gcmessages.pb.cc
+    src/protobuf/generated/cstrike15_gcmessages.pb.cc
+    src/protobuf/generated/cstrike15_usermessages.pb.cc
+    src/protobuf/generated/netmessages.pb.cc
+    src/protobuf/generated/steammessages.pb.cc
+    src/protobuf/generated/usermessages.pb.cc
+    src/protobuf/generated/gameevents.pb.cc
+    src/protobuf/generated/clientmessages.pb.cc
+    src/protobuf/generated/te.pb.cc
 )
 
-set(SOURCE_FILES ${SOURCE_FILES} protobuf_output_stamp)
-
-# Sources
-add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${NATIVES_SOURCES} ${CONVERSIONS_SOURCES} ${CONVERSIONS_HEADERS})
+add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${PROTO_GEN_CPP} ${NATIVES_SOURCES} ${CONVERSIONS_SOURCES} ${CONVERSIONS_HEADERS})
 
 target_include_directories(
     ${PROJECT_NAME}
     PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/src
     ${CMAKE_CURRENT_SOURCE_DIR}/src/core/cs2_sdk
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/protobuf/generated
 )
 
 if(LINUX)
