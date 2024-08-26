@@ -39,6 +39,7 @@
 
 #include <algorithm>
 
+#include "core/coreconfig.h"
 #include "core/log.h"
 #include "core/memory.h"
 #include "core/utils.h"
@@ -64,7 +65,7 @@ json WriteTypeJson(json obj, CSchemaType* current_type)
 
             if (atomicTType->m_pAtomicInfo != nullptr)
             {
-                obj["outer"] = atomicTType->m_pAtomicInfo->m_pszName1;
+                obj["outer"] = atomicTType->m_pAtomicInfo->m_pszName;
             }
         }
 
@@ -83,7 +84,7 @@ json WriteTypeJson(json obj, CSchemaType* current_type)
         auto fixedArrayType = static_cast<CSchemaType_FixedArray*>(current_type);
         obj["inner"] = WriteTypeJson(json::object(), fixedArrayType->m_pElementType);
     }
-    else if (current_type->m_eTypeCategory == SCHEMA_TYPE_PTR)
+    else if (current_type->m_eTypeCategory == SCHEMA_TYPE_POINTER)
     {
         auto ptrType = static_cast<CSchemaType_Ptr*>(current_type);
         obj["inner"] = WriteTypeJson(json::object(), ptrType->m_pObjectType);
@@ -94,44 +95,47 @@ json WriteTypeJson(json obj, CSchemaType* current_type)
 
 CON_COMMAND(dump_schema, "dump schema symbols")
 {
-    std::vector<std::string> classNames;
-    std::vector<std::string> enumNames;
-    // Reading these from a static file since I cannot seem to get the
-    // CSchemaSystemTypeScope->GetClasses() to return anything on linux.
-    std::ifstream inputClasses(utils::GamedataDirectory() + "/schema_classes.txt");
-    std::ifstream inputEnums(utils::GamedataDirectory() + "/schema_enums.txt");
     std::ofstream output(utils::GamedataDirectory() + "/schema.json");
-    std::string line;
-
-    while (std::getline(inputClasses, line))
-    {
-        if (!line.empty() && line.back() == '\r')
-        {
-            line.pop_back();
-        }
-        classNames.push_back(line);
-    }
-
-    while (std::getline(inputEnums, line))
-    {
-        if (!line.empty() && line.back() == '\r')
-        {
-            line.pop_back();
-        }
-        enumNames.push_back(line);
-    }
 
     CSchemaSystemTypeScope* pType = globals::schemaSystem->FindTypeScopeForModule(MODULE_PREFIX "server" MODULE_EXT);
+
+    auto index = pType->m_DeclaredClasses.m_Map.FirstInorder();
+    std::vector<CSchemaClassInfo*> classes;
+    do
+    {
+        classes.push_back(pType->m_DeclaredClasses.m_Map.Element(index)->m_pClassInfo);
+        index = pType->m_DeclaredClasses.m_Map.NextInorder(index);
+    } while (index != pType->m_DeclaredClasses.m_Map.InvalidIndex());
+
+    index = pType->m_DeclaredEnums.m_Map.FirstInorder();
+    std::vector<CSchemaEnumInfo*> enums;
+    do
+    {
+        enums.push_back(pType->m_DeclaredEnums.m_Map.Element(index)->m_pEnumInfo);
+        index = pType->m_DeclaredEnums.m_Map.NextInorder(index);
+    } while (index != pType->m_DeclaredEnums.m_Map.InvalidIndex());
+
+    pType = globals::schemaSystem->GlobalTypeScope();
+    index = pType->m_DeclaredClasses.m_Map.FirstInorder();
+    do
+    {
+        classes.push_back(pType->m_DeclaredClasses.m_Map.Element(index)->m_pClassInfo);
+        index = pType->m_DeclaredClasses.m_Map.NextInorder(index);
+    } while (index != pType->m_DeclaredClasses.m_Map.InvalidIndex());
+
+    index = pType->m_DeclaredEnums.m_Map.FirstInorder();
+    do
+    {
+        enums.push_back(pType->m_DeclaredEnums.m_Map.Element(index)->m_pEnumInfo);
+        index = pType->m_DeclaredEnums.m_Map.NextInorder(index);
+    } while (index != pType->m_DeclaredEnums.m_Map.InvalidIndex());
 
     json j;
     j["classes"] = json::object();
     j["enums"] = json::object();
 
-    for (const auto& line : classNames)
+    for (const auto& pClassInfo : classes)
     {
-        auto* pClassInfo = pType->FindDeclaredClass(line.c_str()).Get();
-        if (!pClassInfo) continue;
-
         short fieldsSize = pClassInfo->m_nFieldCount;
         SchemaClassFieldData_t* pFields = pClassInfo->m_pFields;
 
@@ -154,11 +158,8 @@ CON_COMMAND(dump_schema, "dump schema symbols")
         }
     }
 
-    for (const auto& line : enumNames)
+    for (const auto& pEnumInfo : enums)
     {
-        auto* pEnumInfo = pType->FindDeclaredEnum(line.c_str()).Get();
-        if (!pEnumInfo) continue;
-
         j["enums"][pEnumInfo->m_pszName] = json::object();
         j["enums"][pEnumInfo->m_pszName]["align"] = pEnumInfo->m_nSize;
         j["enums"][pEnumInfo->m_pszName]["items"] = json::array();
@@ -203,6 +204,63 @@ void ConCommandManager::OnAllInitialized()
 
     m_global_cmd.callback_pre = globals::callbackManager.CreateCallback("OnClientCommandGlobalPre");
     m_global_cmd.callback_post = globals::callbackManager.CreateCallback("OnClientCommandGlobalPost");
+
+    if (globals::coreConfig->UnlockConCommands)
+    {
+        UnlockConCommands();
+    }
+
+    if (globals::coreConfig->UnlockConVars)
+    {
+        UnlockConVars();
+    }
+}
+
+static uint64 flagsToRemove = (FCVAR_HIDDEN | FCVAR_DEVELOPMENTONLY | FCVAR_MISSING0 | FCVAR_MISSING1 | FCVAR_MISSING2 | FCVAR_MISSING3);
+
+void UnlockConVars()
+{
+    int unhiddenConVars = 0;
+
+    ConVar* currentCvar = nullptr;
+    ConVarHandle currentCvarHandle;
+    currentCvarHandle.Set(0);
+
+    do
+    {
+        currentCvar = globals::cvars->GetConVar(currentCvarHandle);
+
+        currentCvarHandle.Set(currentCvarHandle.Get() + 1);
+
+        if (!currentCvar) continue;
+
+        if (!(currentCvar->flags & flagsToRemove)) continue;
+
+        currentCvar->flags &= ~flagsToRemove;
+        unhiddenConVars++;
+    } while (currentCvar);
+}
+
+void UnlockConCommands()
+{
+    int unhiddenConCommands = 0;
+
+    ConCommand* currentConCommand = nullptr;
+    ConCommand* invalidConCommand = globals::cvars->GetCommand(ConCommandHandle());
+    ConCommandHandle conCommandHandle;
+    conCommandHandle.Set(0);
+
+    do
+    {
+        currentConCommand = globals::cvars->GetCommand(conCommandHandle);
+
+        conCommandHandle.Set(conCommandHandle.Get() + 1);
+
+        if (!currentConCommand || currentConCommand == invalidConCommand || !(currentConCommand->GetFlags() & flagsToRemove)) continue;
+
+        currentConCommand->RemoveFlags(flagsToRemove);
+        unhiddenConCommands++;
+    } while (currentConCommand && currentConCommand != invalidConCommand);
 }
 
 void ConCommandManager::OnShutdown()

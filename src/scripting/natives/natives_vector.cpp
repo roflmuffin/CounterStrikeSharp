@@ -21,55 +21,62 @@
 
 namespace counterstrikesharp {
 
-CREATE_GETTER_FUNCTION(Vector, float, Length, Vector *, obj->Length());
-CREATE_GETTER_FUNCTION(Vector, float, Length2D, Vector *, obj->Length2D());
-CREATE_GETTER_FUNCTION(Vector, float, LengthSqr, Vector *, obj->LengthSqr());
-CREATE_GETTER_FUNCTION(Vector, float, Length2DSqr, Vector *, obj->Length2DSqr());
-CREATE_GETTER_FUNCTION(Vector, float, IsZero, Vector *, obj->IsZero());
+CREATE_GETTER_FUNCTION(Vector, float, Length, Vector*, obj->Length());
+CREATE_GETTER_FUNCTION(Vector, float, Length2D, Vector*, obj->Length2D());
+CREATE_GETTER_FUNCTION(Vector, float, LengthSqr, Vector*, obj->LengthSqr());
+CREATE_GETTER_FUNCTION(Vector, float, Length2DSqr, Vector*, obj->Length2DSqr());
+CREATE_GETTER_FUNCTION(Vector, bool, IsZero, Vector*, obj->IsZero());
 
-CREATE_GETTER_FUNCTION(Vector, float, X, Vector *, obj->x);
-CREATE_GETTER_FUNCTION(Vector, float, Y, Vector *, obj->y);
-CREATE_GETTER_FUNCTION(Vector, float, Z, Vector *, obj->z);
+CREATE_GETTER_FUNCTION(Vector, float, X, Vector*, obj->x);
+CREATE_GETTER_FUNCTION(Vector, float, Y, Vector*, obj->y);
+CREATE_GETTER_FUNCTION(Vector, float, Z, Vector*, obj->z);
 
-CREATE_SETTER_FUNCTION(Vector, float, X, Vector *, obj->x = value);
-CREATE_SETTER_FUNCTION(Vector, float, Y, Vector *, obj->y = value);
-CREATE_SETTER_FUNCTION(Vector, float, Z, Vector *, obj->z = value);
+CREATE_SETTER_FUNCTION(Vector, float, X, Vector*, obj->x = value);
+CREATE_SETTER_FUNCTION(Vector, float, Y, Vector*, obj->y = value);
+CREATE_SETTER_FUNCTION(Vector, float, Z, Vector*, obj->z = value);
 
 // TODO: These need to be cleared out somehow
-std::vector<Vector *> managed_vectors;
+std::vector<Vector*> managed_vectors;
 
-Vector *VectorNew(ScriptContext &script_context) {
+Vector* VectorNew(ScriptContext& script_context)
+{
     auto vec = new Vector();
     managed_vectors.push_back(vec);
     return vec;
 }
 
 // TODO: These need to be cleared out somehow
-std::vector<QAngle *> managed_angles;
+std::vector<QAngle*> managed_angles;
 
-QAngle *AngleNew(ScriptContext &script_context) {
+QAngle* AngleNew(ScriptContext& script_context)
+{
     auto ang = new QAngle();
     managed_angles.push_back(ang);
     return ang;
 }
 
-void NativeVectorAngles(ScriptContext &script_context) {
-    auto vec = script_context.GetArgument<Vector *>(0);
-    auto pseudoUpVector = script_context.GetArgument<Vector *>(1);
-    auto outAngle = script_context.GetArgument<QAngle *>(2);
+void NativeVectorAngles(ScriptContext& script_context)
+{
+    auto vec = script_context.GetArgument<Vector*>(0);
+    auto pseudoUpVector = script_context.GetArgument<Vector*>(1);
+    auto outAngle = script_context.GetArgument<QAngle*>(2);
 
-    if (!pseudoUpVector) {
+    if (!pseudoUpVector)
+    {
         VectorAngles(*vec, *outAngle);
-    } else {
+    }
+    else
+    {
         VectorAngles(*vec, *pseudoUpVector, *outAngle);
     }
 }
 
-void NativeAngleVectors(ScriptContext &script_context) {
-    auto vec = script_context.GetArgument<QAngle *>(0);
-    auto fwd = script_context.GetArgument<Vector *>(1);
-    auto right = script_context.GetArgument<Vector *>(2);
-    auto up = script_context.GetArgument<Vector *>(3);
+void NativeAngleVectors(ScriptContext& script_context)
+{
+    auto vec = script_context.GetArgument<QAngle*>(0);
+    auto fwd = script_context.GetArgument<Vector*>(1);
+    auto right = script_context.GetArgument<Vector*>(2);
+    auto up = script_context.GetArgument<Vector*>(3);
 
     AngleVectors(*vec, fwd, right, up);
 }
@@ -92,6 +99,6 @@ REGISTER_NATIVES(vector, {
     ScriptEngine::RegisterNativeHandler("VECTOR_LENGTH_2D", VectorGetLength2D);
     ScriptEngine::RegisterNativeHandler("VECTOR_LENGTH_SQR", VectorGetLengthSqr);
     ScriptEngine::RegisterNativeHandler("VECTOR_LENGTH_2D_SQR", VectorGetLength2DSqr);
-    ScriptEngine::RegisterNativeHandler("VECTOR_IS_ZERO", VectorGetLengthSqr);
+    ScriptEngine::RegisterNativeHandler("VECTOR_IS_ZERO", VectorGetIsZero);
 })
-}  // namespace counterstrikesharp
+} // namespace counterstrikesharp

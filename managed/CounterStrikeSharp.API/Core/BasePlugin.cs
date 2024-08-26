@@ -30,6 +30,7 @@ using CounterStrikeSharp.API.Modules.Timers;
 using CounterStrikeSharp.API.Modules.Config;
 using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API.Modules.Entities;
+using CounterStrikeSharp.API.Modules.UserMessages;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
@@ -527,6 +528,24 @@ namespace CounterStrikeSharp.API.Core
 
             NativeAPI.HookEntityOutput(classname, outputName, subscriber.GetInputArgument(), mode);
             EntityOutputHooks[handler] = subscriber;
+        }
+        
+        public void HookUserMessage(int messageId, UserMessage.UserMessageHandler handler, HookMode mode = HookMode.Pre)
+        {
+            var subscriber = new CallbackSubscriber(handler, handler,
+                () => UnhookUserMessage(messageId, handler));
+
+            NativeAPI.HookUsermessage(messageId, subscriber.GetInputArgument(), mode);
+            Handlers[handler] = subscriber;
+        }
+        
+        public void UnhookUserMessage(int messageId, UserMessage.UserMessageHandler handler, HookMode mode = HookMode.Pre)
+        {
+            if (!Handlers.TryGetValue(handler, out var subscriber)) return;
+
+            NativeAPI.UnhookUsermessage(messageId, subscriber.GetInputArgument(), mode);
+            FunctionReference.Remove(subscriber.GetReferenceIdentifier());
+            Handlers.Remove(handler);
         }
 
         /// <summary>

@@ -52,7 +52,7 @@ public partial class CBaseAnimGraphController : CSkeletonAnimationController
 
 	// m_flPlaybackRate
 	[SchemaMember("CBaseAnimGraphController", "m_flPlaybackRate")]
-	public float PlaybackRate => Schema.GetDeclaredClass<float>(this.Handle, "CBaseAnimGraphController", "m_flPlaybackRate");
+	public ref float PlaybackRate => ref Schema.GetRef<float>(this.Handle, "CBaseAnimGraphController", "m_flPlaybackRate");
 
 	// m_nNotifyState
 	[SchemaMember("CBaseAnimGraphController", "m_nNotifyState")]
