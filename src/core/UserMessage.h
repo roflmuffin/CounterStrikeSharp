@@ -112,6 +112,16 @@ class UserMessage
         this->recipientMask = new uint64(0);
     }
 
+    UserMessage(int msgId)
+    {
+        manuallyAllocated = true;
+        this->msgSerializable = globals::networkMessages->FindNetworkMessageById(msgId);
+        if (!this->msgSerializable) return;
+
+        this->msg = this->msgSerializable->AllocateMessage()->ToPB<protobuf::Message>();
+        this->recipientMask = new uint64(0);
+    }
+
     ~UserMessage()
     {
         if (manuallyAllocated) delete this->recipientMask;

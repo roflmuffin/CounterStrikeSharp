@@ -565,9 +565,25 @@ static void UserMessageCreate(ScriptContext& scriptContext)
     auto messageName = scriptContext.GetArgument<const char*>(0);
     auto message = new UserMessage(messageName);
 
-    if (message->GetProtobufMessage() == nullptr)
+    if (message->GetSerializableMessage() == nullptr)
     {
         scriptContext.ThrowNativeError("Failed to create user message: %s", messageName);
+        return;
+    }
+
+    managed_usermessages.push_back(message);
+
+    scriptContext.SetResult(message);
+}
+
+static void UserMessageCreateById(ScriptContext& scriptContext)
+{
+    auto messageId = scriptContext.GetArgument<int>(0);
+    auto message = new UserMessage(messageId);
+
+    if (message->GetSerializableMessage() == nullptr)
+    {
+        scriptContext.ThrowNativeError("Failed to create user message: %d", messageId);
         return;
     }
 
@@ -685,6 +701,7 @@ REGISTER_NATIVES(usermessages, {
     ScriptEngine::RegisterNativeHandler("PB_GETDEBUGSTRING", PbGetDebugString);
     ScriptEngine::RegisterNativeHandler("USERMESSAGE_FINDMESSAGEIDBYNAME", UserMessageFindMessageIdByName);
     ScriptEngine::RegisterNativeHandler("USERMESSAGE_CREATE", UserMessageCreate);
+    ScriptEngine::RegisterNativeHandler("USERMESSAGE_CREATEBYID", UserMessageCreateById);
     ScriptEngine::RegisterNativeHandler("USERMESSAGE_GETRECIPIENTS", UserMessageGetRecipients);
     ScriptEngine::RegisterNativeHandler("USERMESSAGE_SETRECIPIENTS", UserMessageSetRecipients);
     ScriptEngine::RegisterNativeHandler("USERMESSAGE_SEND", UserMessageSend);

@@ -1550,6 +1550,17 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static IntPtr UsermessageCreatebyid(int id){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(id);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xBC758632);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			}
+		}
+
         public static void UsermessageSend(UserMessage message){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();

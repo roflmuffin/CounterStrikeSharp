@@ -17,11 +17,17 @@ public class UserMessage : NativeObject, IDisposable
 
     /// <summary>
     /// Creates a new user message with a given network message name partial match.
-    ///
     /// </summary>
     /// <param name="name"></param>
     /// <throws>if the name is not a valid network message name</throws>
     public static UserMessage FromPartialName(string name) => new(NativeAPI.UsermessageCreate(name));
+
+    /// <summary>
+    /// Creates a new user message with a given network message ID.
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    public static UserMessage FromId(int id) => new(NativeAPI.UsermessageCreatebyid(id));
 
     /// <summary>
     /// Finds a network message ID by name.
