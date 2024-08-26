@@ -1,4 +1,6 @@
-﻿namespace CounterStrikeSharp.API.Modules.UserMessages;
+﻿using CounterStrikeSharp.API.Modules.Utils;
+
+namespace CounterStrikeSharp.API.Modules.UserMessages;
 
 public class UserMessage : NativeObject, IDisposable
 {
@@ -43,6 +45,8 @@ public class UserMessage : NativeObject, IDisposable
     // public UserMessage ReadMessage(string fieldName) => NativeAPI.PbReadmessage(this, fieldName);
     // public UserMessage ReadRepeatedMessage(string fieldName, int index ) => NativeAPI.PbReadrepeatedmessage(this, fieldName, index);
     // public UserMessage AddMessage(string fieldName) => NativeAPI.PbAddmessage(this, fieldName);
+
+    public void Send(RecipientFilter recipientFilter) => NativeAPI.UsermessageSend(this, recipientFilter);
 
     public string DebugString => NativeAPI.PbGetdebugstring(this);
 

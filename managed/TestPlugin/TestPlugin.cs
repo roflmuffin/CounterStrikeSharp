@@ -163,15 +163,14 @@ namespace TestPlugin
             message.SetBool("chat", true);
             message.SetInt("entityindex", (int)(player?.Index ?? 0));
 
-            var recipientFilter = new RecipientFilter();
-            recipientFilter.AddAllPlayers();
-
-            NativeAPI.UsermessageSend(message, recipientFilter);
+            message.Send(new RecipientFilter().AddAllPlayers());
         }
 
         [ConsoleCommand("css_shake")]
         public void OnCommandFooBar(CCSPlayerController? player, CommandInfo command)
         {
+            if (player == null) return;
+
             var message = NativeAPI.UsermessageCreate("Shake");
             Logger.LogInformation("Created user message CCSUsrMsg_Shake {Message:x}", message.Handle);
 
@@ -180,7 +179,7 @@ namespace TestPlugin
             message.SetFloat("frequency", 10f);
             message.SetInt("command", 0);
 
-            NativeAPI.UsermessageSend(message, new RecipientFilter(@player.Slot));
+            message.Send(player);
         }
 
         public override void OnAllPluginsLoaded(bool hotReload)

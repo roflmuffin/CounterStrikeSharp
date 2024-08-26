@@ -87,9 +87,11 @@ public class RecipientFilter : IList<CCSPlayerController>, IMarshalToNative
         _recipients.Add(player);
     }
 
-    public void AddAllPlayers()
+    public RecipientFilter AddAllPlayers()
     {
         _recipients.AddRange(Utilities.GetPlayers());
+
+        return this;
     }
 
     public IEnumerator<CCSPlayerController> GetEnumerator()
@@ -129,6 +131,8 @@ public class RecipientFilter : IList<CCSPlayerController>, IMarshalToNative
 
     public int Count => _recipients.Count;
     public bool IsReadOnly => false;
+
+    public static implicit operator RecipientFilter(CCSPlayerController player) => new(player);
 
 }
 
