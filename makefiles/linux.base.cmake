@@ -30,5 +30,4 @@ set(
     distorm
     funchook-static
     dynohook
-    libprotobuf
 )
