@@ -560,6 +560,17 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static void DisconnectClient(int slot, int reason){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(slot);
+			ScriptContext.GlobalScriptContext.Push(reason);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x799EE9C3);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
         public static IntPtr GetEntityFromIndex(int index){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();

@@ -26,3 +26,4 @@ QUEUE_TASK_FOR_NEXT_WORLD_UPDATE: callback:func -> void
 GET_VALVE_INTERFACE: interfaceType:int, interfaceName:string -> pointer
 GET_COMMAND_PARAM_VALUE: param:string, dataType:DataType_t, defaultValue:any -> any
 PRINT_TO_SERVER_CONSOLE: msg:string -> void
+DISCONNECT_CLIENT: slot:int, reason:int -> void
