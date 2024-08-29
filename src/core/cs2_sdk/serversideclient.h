@@ -56,5 +56,3 @@ class CServerSideClient : public INetworkMessageProcessingPreFilter
     [[maybe_unused]] char pad12[0x882];
     bool m_bFullyAuthenticated; // 2490 | 2506
 };
-
-CServerSideClient* GetClientBySlot(CPlayerSlot slot);
