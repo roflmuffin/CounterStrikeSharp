@@ -340,4 +340,9 @@ public partial class CCSPlayerController
             NativeAPI.SetClientVoiceFlags(Handle, (Byte)value);
         }
     }
+
+    public void ReplicateConVar(string conVar, string value)
+    {
+        NativeAPI.ReplicateConvar(Slot, conVar, value);
+    }
 }

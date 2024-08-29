@@ -165,6 +165,7 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
 
 void CounterStrikeSharpMMPlugin::Hook_StartupServer(const GameSessionConfiguration_t& config, ISource2WorldSession*, const char*)
 {
+    globals::networkGameServer = globals::networkServerService->GetIGameServer();
     globals::entitySystem = interfaces::pGameResourceServiceServer->GetGameEntitySystem();
     globals::entitySystem->AddListenerEntity(&globals::entityManager.entityListener);
     globals::timerSystem.OnStartupServer();
