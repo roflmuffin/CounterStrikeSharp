@@ -12,6 +12,7 @@ libraries/mono/
 
 CMakeSettings.json
 
+build-*/
 build/
 build_test/
 

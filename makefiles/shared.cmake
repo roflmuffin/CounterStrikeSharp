@@ -62,11 +62,9 @@ include_directories(
     ${SOURCESDK}/public/schemasystem
     ${METAMOD_DIR}/core
     ${METAMOD_DIR}/core/sourcehook
-    libraries/Protobufs/csgo
     libraries/dyncall/dynload
     libraries/dyncall/dyncall
     libraries/spdlog/include
-    # libraries/protobuf
     libraries/tl
     libraries/funchook/include
     libraries/DynoHook/src
