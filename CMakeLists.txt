@@ -6,17 +6,16 @@ project(counterstrikesharp C CXX ASM)
 include("makefiles/shared.cmake")
 
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
-#set(protobuf_BUILD_TESTS OFF)
-#set(protobuf_BUILD_SHARED_LIBS)
 
 add_subdirectory(libraries/spdlog)
 add_subdirectory(libraries/dyncall)
 add_subdirectory(libraries/funchook)
 add_subdirectory(libraries/DynoHook)
-# add_subdirectory(libraries/protobuf-lib)
 
 set_property(TARGET dynohook PROPERTY DYNO_ARCH_X86 64)
 set_property(TARGET funchook-static PROPERTY POSITION_INDEPENDENT_CODE ON)
+
+include("makefiles/protobuf.cmake")
 
 set(SOURCE_FILES
     libraries/hl2sdk-cs2/public/tier0/memoverride.cpp
@@ -105,30 +104,13 @@ set(SOURCE_FILES
     src/core/recipientfilters.h
 )
 
-set(PROTO_GEN_CPP
-    src/protobuf/generated/network_connection.pb.cc
-    src/protobuf/generated/networkbasetypes.pb.cc
-    src/protobuf/generated/cs_gameevents.pb.cc
-    src/protobuf/generated/engine_gcmessages.pb.cc
-    src/protobuf/generated/gcsdk_gcmessages.pb.cc
-    src/protobuf/generated/cstrike15_gcmessages.pb.cc
-    src/protobuf/generated/cstrike15_usermessages.pb.cc
-    src/protobuf/generated/netmessages.pb.cc
-    src/protobuf/generated/steammessages.pb.cc
-    src/protobuf/generated/usermessages.pb.cc
-    src/protobuf/generated/gameevents.pb.cc
-    src/protobuf/generated/clientmessages.pb.cc
-    src/protobuf/generated/te.pb.cc
-)
-
-add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${PROTO_GEN_CPP} ${NATIVES_SOURCES} ${CONVERSIONS_SOURCES} ${CONVERSIONS_HEADERS})
+add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${NATIVES_SOURCES} ${CONVERSIONS_SOURCES} ${CONVERSIONS_HEADERS})
 
 target_include_directories(
     ${PROJECT_NAME}
     PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/src
     ${CMAKE_CURRENT_SOURCE_DIR}/src/core/cs2_sdk
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/protobuf/generated
 )
 
 if(LINUX)
@@ -146,7 +128,7 @@ elseif(WIN32)
 endif()
 
 # Libraries
-target_link_libraries(${PROJECT_NAME} ${COUNTER_STRIKE_SHARP_LINK_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${COUNTER_STRIKE_SHARP_LINK_LIBRARIES} Protobufs)
 
 add_custom_command(
     TARGET ${PROJECT_NAME} PRE_BUILD

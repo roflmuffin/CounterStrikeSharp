@@ -1,10 +1,10 @@
 using System;
-
 using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Entities.Constants;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
+using CounterStrikeSharp.API.ValveConstants.Protobuf;
 
 namespace CounterStrikeSharp.API.Core;
 
@@ -239,6 +239,15 @@ public partial class CCSPlayerController
         Guard.IsValidEntity(this);
 
         NativeAPI.IssueClientCommand(Slot, command);
+    }
+
+    /// <summary>
+    /// Disconnects a player from the server with the specified reason.
+    /// </summary>
+    /// <param name="reason"></param>
+    public void Disconnect(NetworkDisconnectionReason reason)
+    {
+        NativeAPI.DisconnectClient(Slot, (int)reason);
     }
 
     /// <summary>

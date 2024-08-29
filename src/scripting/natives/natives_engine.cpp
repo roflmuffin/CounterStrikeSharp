@@ -224,6 +224,20 @@ void PrintToServerConsole(ScriptContext& scriptContext)
     META_CONPRINT(message);
 }
 
+void DisconnectClient(ScriptContext& scriptContext)
+{
+    auto slot = scriptContext.GetArgument<int>(0);
+    auto disconnectReason = scriptContext.GetArgument<ENetworkDisconnectionReason>(1);
+
+    if (!ENetworkDisconnectionReason_IsValid(disconnectReason))
+    {
+        scriptContext.ThrowNativeError("Invalid disconnect reason");
+        return;
+    }
+
+    globals::engineServer2->DisconnectClient(slot, disconnectReason);
+}
+
 REGISTER_NATIVES(engine, {
     ScriptEngine::RegisterNativeHandler("GET_GAME_DIRECTORY", GetGameDirectory);
     ScriptEngine::RegisterNativeHandler("GET_MAP_NAME", GetMapName);
@@ -248,5 +262,6 @@ REGISTER_NATIVES(engine, {
     ScriptEngine::RegisterNativeHandler("GET_VALVE_INTERFACE", GetValveInterface);
     ScriptEngine::RegisterNativeHandler("GET_COMMAND_PARAM_VALUE", GetCommandParamValue);
     ScriptEngine::RegisterNativeHandler("PRINT_TO_SERVER_CONSOLE", PrintToServerConsole);
+    ScriptEngine::RegisterNativeHandler("DISCONNECT_CLIENT", DisconnectClient);
 })
 } // namespace counterstrikesharp

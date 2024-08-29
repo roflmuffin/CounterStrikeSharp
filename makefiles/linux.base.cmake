@@ -19,7 +19,6 @@ set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--exclude-libs=l
 
 set(
     COUNTER_STRIKE_SHARP_LINK_LIBRARIES
-    ${SOURCESDK_LIB}/linux64/release/libprotobuf.a
     ${SOURCESDK_LIB}/linux64/libtier0.so
     ${SOURCESDK_LIB}/linux64/tier1.a
     ${SOURCESDK_LIB}/linux64/interfaces.a
