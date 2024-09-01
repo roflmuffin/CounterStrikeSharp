@@ -37,7 +37,67 @@ _fieldtypes GetVariantType(ScriptContext& script_context)
     return pVariant->m_type;
 }
 
+static int GetVariantInt(ScriptContext& script_context)
+{
+    variant_t* pVariant = script_context.GetArgument<variant_t*>(0);
+    if (!pVariant)
+    {
+        script_context.ThrowNativeError("Invalid variant pointer");
+        return 0;
+    }
+    return pVariant->m_int;
+}
+
+static uint GetVariantUInt(ScriptContext& script_context)
+{
+    variant_t* pVariant = script_context.GetArgument<variant_t*>(0);
+    if (!pVariant)
+    {
+        script_context.ThrowNativeError("Invalid variant pointer");
+        return 0;
+    }
+    return pVariant->m_uint;
+}
+
+static float GetVariantFloat(ScriptContext& script_context)
+{
+    variant_t* pVariant = script_context.GetArgument<variant_t*>(0);
+    if (!pVariant)
+    {
+        script_context.ThrowNativeError("Invalid variant pointer");
+        return 0;
+    }
+    return pVariant->m_float;
+}
+
+static const char* GetVariantString(ScriptContext& script_context)
+{
+    variant_t* pVariant = script_context.GetArgument<variant_t*>(0);
+    if (!pVariant)
+    {
+        script_context.ThrowNativeError("Invalid variant pointer");
+        return nullptr;
+    }
+    return pVariant->m_pszString;
+}
+
+static bool GetVariantBool(ScriptContext& script_context)
+{
+    variant_t* pVariant = script_context.GetArgument<variant_t*>(0);
+    if (!pVariant)
+    {
+        script_context.ThrowNativeError("Invalid variant pointer");
+        return false;
+    }
+    return pVariant->m_bool;
+}
+
 REGISTER_NATIVES(cvariant, {
     ScriptEngine::RegisterNativeHandler("GET_VARIANT_TYPE", GetVariantType);
+    ScriptEngine::RegisterNativeHandler("GET_VARIANT_INT", GetVariantInt);
+    ScriptEngine::RegisterNativeHandler("GET_VARIANT_UINT", GetVariantUInt);
+    ScriptEngine::RegisterNativeHandler("GET_VARIANT_FLOAT", GetVariantFloat);
+    ScriptEngine::RegisterNativeHandler("GET_VARIANT_STRING", GetVariantString);
+    ScriptEngine::RegisterNativeHandler("GET_VARIANT_BOOL", GetVariantBool);
 })
 } // namespace counterstrikesharp
