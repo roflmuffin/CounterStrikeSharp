@@ -218,6 +218,17 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static string GetStringFromSymbolLarge(IntPtr ppointer){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(ppointer);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x600A804B);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (string)ScriptContext.GlobalScriptContext.GetResult(typeof(string));
+			}
+		}
+
         public static uint GetVariantType(IntPtr pvariant){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
