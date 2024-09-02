@@ -83,6 +83,8 @@ namespace CounterStrikeSharp.API.Core
 
 		internal fxScriptContext m_extContext = new fxScriptContext();
 
+        internal bool isCleanupLocked = false;
+
 		[SecuritySafeCritical]
 		public void Reset()
 		{
@@ -101,8 +103,16 @@ namespace CounterStrikeSharp.API.Core
 		[SecuritySafeCritical]
 		public void Invoke()
 		{
-			InvokeNativeInternal();
-			GlobalCleanUp();
+            if (!isCleanupLocked)
+            {
+                isCleanupLocked = true;
+                InvokeNativeInternal();
+                GlobalCleanUp();
+                isCleanupLocked = false;
+                return;
+            }
+
+            InvokeNativeInternal();
 		}
 
 		[SecurityCritical]
