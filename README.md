@@ -6,7 +6,7 @@
     <a href=https://github.com/roflmuffin/CounterStrikeSharp/releases><img src=https://img.shields.io/github/v/release/roflmuffin/CounterStrikeSharp?style=flat-square&label=latest></a>
     <a href=https://github.com/roflmuffin/CounterStrikeSharp/releases><img src=https://img.shields.io/github/release-date/roflmuffin/CounterStrikeSharp?style=flat-square&label=last%20release></a>
   <a href=https://github.com/roflmuffin/CounterStrikeSharp/releases><img src=https://img.shields.io/github/downloads/roflmuffin/CounterStrikeSharp/total.svg?style=flat-square alt=downloads></a>
-  <a href=https://discord.gg/ezYScXR><img src=https://img.shields.io/discord/1160907911501991946?logo=discord&cacheSeconds=3500&style=flat-square alt="chat on discord"></a>
+  <a href=https://discord.gg/eAZU3guKWU><img src=https://img.shields.io/discord/1160907911501991946?logo=discord&cacheSeconds=3500&style=flat-square alt="chat on discord"></a>
 </div>
 <br>
 
