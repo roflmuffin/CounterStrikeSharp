@@ -1,14 +1,18 @@
-# CounterStrikeSharp
+<div align=right>Table of Contents ↗️</div>
+
+<h1 align=center><code>CounterStrikeSharp</code></h1>
+
+<div align=center>
+    <a href=https://github.com/roflmuffin/CounterStrikeSharp/releases><img src=https://img.shields.io/github/v/release/roflmuffin/CounterStrikeSharp?style=flat-square&label=latest></a>
+    <a href=https://github.com/roflmuffin/CounterStrikeSharp/releases><img src=https://img.shields.io/github/release-date/roflmuffin/CounterStrikeSharp?style=flat-square&label=last%20release></a>
+  <a href=https://github.com/roflmuffin/CounterStrikeSharp/releases><img src=https://img.shields.io/github/downloads/roflmuffin/CounterStrikeSharp/total.svg?style=flat-square alt=downloads></a>
+  <a href=https://discord.gg/ezYScXR><img src=https://img.shields.io/discord/1160907911501991946?logo=discord&cacheSeconds=3500&style=flat-square alt="chat on discord"></a>
+</div>
+<br>
 
 CounterStrikeSharp is a server side modding framework for Counter-Strike 2. This project implements a .NET 8 scripting layer on top of a Metamod Source Plugin, allowing developers to create plugins that interact with the game server in a modern language (C#) to facilitate the creation of maintainable and testable code.
 
 [Come and join our Discord](https://discord.gg/eAZU3guKWU)
-
-## History
-
-This project is an ongoing migration of a previous project (titled [VSP.NET](https://github.com/roflmuffin/vspdotnet)) whereby a scripting layer was added to a Valve Server Plugin for CSGO.
-
-Due to the architectural changes of CS2, the plugin is being rebuilt on the ground up, to support Linux 64-bit, something which was previously impossible.
 
 ## Install
 
