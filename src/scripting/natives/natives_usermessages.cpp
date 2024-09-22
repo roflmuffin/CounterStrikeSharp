@@ -620,7 +620,13 @@ static void UserMessageSend(ScriptContext& scriptContext)
     CRecipientFilter filter{};
     filter.AddRecipientsFromMask(message->GetRecipientMask() ? *message->GetRecipientMask() : 0);
 
-    globals::gameEventSystem->PostEventAbstract(0, false, &filter, message->GetSerializableMessage(), message->GetProtobufMessage(), 0);
+    // This is for calling send in a UM hook, if calling normal send using the UM instance from the UM hook, it will cause an inifinite loop, then crashing the server
+    static void (IGameEventSystem::*PostEventAbstract)(CSplitScreenSlot, bool, IRecipientFilter*, INetworkMessageInternal*, const CNetMessage*, unsigned long) = &IGameEventSystem::PostEventAbstract;
+
+    if (message->IsManuallyAllocated())
+        globals::gameEventSystem->PostEventAbstract(0, false, &filter, message->GetSerializableMessage(), message->GetProtobufMessage(), 0);
+    else
+        SH_CALL(globals::gameEventSystem, PostEventAbstract)(0, false, &filter, message->GetSerializableMessage(), message->GetProtobufMessage(), 0);
 }
 
 static void UserMessageDelete(ScriptContext& scriptContext)

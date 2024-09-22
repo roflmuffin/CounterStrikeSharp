@@ -132,6 +132,7 @@ class UserMessage
     const CNetMessagePB<google::protobuf::Message>* GetProtobufMessage();
     INetworkMessageInternal* GetSerializableMessage() { return msgSerializable; }
     uint64* GetRecipientMask() { return recipientMask; }
+    bool IsManuallyAllocated() { return manuallyAllocated; }
 
   private:
     CNetMessagePB<google::protobuf::Message>* msg = nullptr;
