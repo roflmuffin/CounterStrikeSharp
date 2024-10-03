@@ -71,7 +71,7 @@
     "signatures": {
       "library": "server",
       "windows": "44 89 4C 24 20 44 88 44 24 18",
-      "linux": "55 48 89 E5 41 57 41 56 41 89 D6 41 55 4D 89 C5"
+      "linux": "55 48 89 E5 41 57 41 56 41 89 F6 41 55 4D 89 C5"
     }
   },
   "CBaseModelEntity_SetModel": {
@@ -175,9 +175,9 @@
   },
   "CBaseEntity_TakeDamageOld": {
     "signatures": {
-      "library": "server",
-      "windows": "48 89 74 24 20 57 48 83 EC 60 48 8B 41 10",
-      "linux": "55 48 89 E5 41 57 41 56 41 55 41 54 49 89 FC 53 48 83 EC 48 4C 8D 2D ? ? ? ? 49 8B 7D 00 48 85 FF 0F 84 ? ? ? ?"
+	    "library": "server",
+      "windows": "48 89 74 24 20 57 48 81 EC ?? 00 00 00 48 8B 41 10 48 8B FA",
+      "linux": "55 48 89 E5 41 57 41 56 41 55 41 54 49 89 FC 53 48 83 EC 58 4C 8D 3D ? ? ? ? 49 8B 3F 48 85 FF"
     }
   },
   "CBaseTrigger_StartTouch": {
@@ -197,7 +197,7 @@
   "StateChanged": {
     "signatures": {
       "library": "server",
-      "windows": "40 ? 53 56 41 ? 41 ? 48 ? ? ? ? 48 ? ? ? ? ? ? 48 ? ? 45",
+      "windows": "40 ? 53 56 41 ? 41 ? 48 ? ? ? ? 48 ? ? ? ? ? ? 48 ? ? ? 8B",
       "linux": "55 48 89 E5 41 57 41 56 41 55 41 54 53 89 D3"
     }
   },
@@ -230,8 +230,8 @@
   "IGameSystem_InitAllSystems_pFirst": {
     "signatures": {
       "library": "server",
-      "windows": "48 8B 1D ? ? ? ? 48 85 DB 0F 84 ? ? ? ? BE ? ? ? ? 0F 1F 00 48 8B 7B 10",
-      "linux": "4C 8B 35 ? ? ? ? 4D 85 F6 75 2D E9 ? ? ? ? 0F 1F 40 00 48 8B 05"
+      "windows": "48 8B 3D ? ? ? ? 48 85 FF 0F ? ? ? ? ? BE FF FF 00 00",
+      "linux": "4C 8B 35 ? ? ? ? 4D 85 F6 75 33 E9"
     }
   },
   "CEntityResourceManifest_AddResource": {
