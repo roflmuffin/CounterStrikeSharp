@@ -22,8 +22,8 @@
   },
   "CCSPlayerController_ChangeTeam": {
     "offsets": {
-      "windows": 98,
-      "linux": 97
+      "windows": 100,
+      "linux": 99
     }
   },
   "CCSPlayerController_Respawn": {
