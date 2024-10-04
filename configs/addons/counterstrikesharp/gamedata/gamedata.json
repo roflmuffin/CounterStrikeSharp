@@ -102,8 +102,8 @@
   },
   "CCSPlayer_ItemServices_RemoveWeapons": {
     "offsets": {
-      "windows": 19,
-      "linux": 20
+      "windows": 21,
+      "linux": 22
     }
   },
   "CGameSceneNode_GetSkeletonInstance": {
