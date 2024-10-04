@@ -106,7 +106,7 @@ void VoiceManager::OnClientCommand(CPlayerSlot slot, const CCommand& args)
 
     if (!pPlayer) return;
 
-    if (args.ArgC() > 1 && stricmp(args.Arg(0), "vban") == 0)
+    if (args.ArgC() > 1 && V_stricmp(args.Arg(0), "vban") == 0)
     {
         // clients just refuse to send vban for indexes over 32 and all 4 fields are just the same number, so we only get the first one
         // for (int i = 1; (i < args.ArgC()) && (i < 3); i++) {
