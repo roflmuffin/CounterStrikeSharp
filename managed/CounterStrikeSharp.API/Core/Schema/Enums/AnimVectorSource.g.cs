@@ -9,7 +9,7 @@ namespace CounterStrikeSharp.API.Core;
 public enum AnimVectorSource : uint
 {
 	MoveDirection = 0x0,
-	FacingDirection = 0x1,
+	FacingPosition = 0x1,
 	LookDirection = 0x2,
 	VectorParameter = 0x3,
 	WayPointDirection = 0x4,

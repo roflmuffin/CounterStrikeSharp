@@ -82,6 +82,10 @@ public partial class CPointCamera : CBaseEntity
 	[SchemaMember("CPointCamera", "m_bCanHLTVUse")]
 	public ref bool CanHLTVUse => ref Schema.GetRef<bool>(this.Handle, "CPointCamera", "m_bCanHLTVUse");
 
+	// m_bAlignWithParent
+	[SchemaMember("CPointCamera", "m_bAlignWithParent")]
+	public ref bool AlignWithParent => ref Schema.GetRef<bool>(this.Handle, "CPointCamera", "m_bAlignWithParent");
+
 	// m_bDofEnabled
 	[SchemaMember("CPointCamera", "m_bDofEnabled")]
 	public ref bool DofEnabled => ref Schema.GetRef<bool>(this.Handle, "CPointCamera", "m_bDofEnabled");

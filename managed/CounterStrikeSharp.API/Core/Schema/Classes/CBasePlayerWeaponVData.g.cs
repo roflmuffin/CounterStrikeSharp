@@ -26,13 +26,9 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 	[SchemaMember("CBasePlayerWeaponVData", "m_bAllowFlipping")]
 	public ref bool AllowFlipping => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bAllowFlipping");
 
-	// m_sMuzzleAttachment
-	[SchemaMember("CBasePlayerWeaponVData", "m_sMuzzleAttachment")]
-	public string MuzzleAttachment
-	{
-		get { return Schema.GetUtf8String(this.Handle, "CBasePlayerWeaponVData", "m_sMuzzleAttachment"); }
-		set { Schema.SetString(this.Handle, "CBasePlayerWeaponVData", "m_sMuzzleAttachment", value); }
-	}
+	// m_bLinkedCooldowns
+	[SchemaMember("CBasePlayerWeaponVData", "m_bLinkedCooldowns")]
+	public ref bool LinkedCooldowns => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bLinkedCooldowns");
 
 	// m_iFlags
 	[SchemaMember("CBasePlayerWeaponVData", "m_iFlags")]
@@ -62,6 +58,10 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 	[SchemaMember("CBasePlayerWeaponVData", "m_iDefaultClip2")]
 	public ref Int32 DefaultClip2 => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iDefaultClip2");
 
+	// m_bReserveAmmoAsClips
+	[SchemaMember("CBasePlayerWeaponVData", "m_bReserveAmmoAsClips")]
+	public ref bool ReserveAmmoAsClips => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bReserveAmmoAsClips");
+
 	// m_iWeight
 	[SchemaMember("CBasePlayerWeaponVData", "m_iWeight")]
 	public ref Int32 Weight => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iWeight");
@@ -77,10 +77,6 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 	// m_iRumbleEffect
 	[SchemaMember("CBasePlayerWeaponVData", "m_iRumbleEffect")]
 	public ref RumbleEffect_t RumbleEffect => ref Schema.GetRef<RumbleEffect_t>(this.Handle, "CBasePlayerWeaponVData", "m_iRumbleEffect");
-
-	// m_bLinkedCooldowns
-	[SchemaMember("CBasePlayerWeaponVData", "m_bLinkedCooldowns")]
-	public ref bool LinkedCooldowns => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bLinkedCooldowns");
 
 	// m_iSlot
 	[SchemaMember("CBasePlayerWeaponVData", "m_iSlot")]

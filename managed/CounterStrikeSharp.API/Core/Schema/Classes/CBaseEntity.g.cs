@@ -86,9 +86,9 @@ public partial class CBaseEntity : CEntityInstance
 	[SchemaMember("CBaseEntity", "m_nTakeDamageFlags")]
 	public ref TakeDamageFlags_t TakeDamageFlags => ref Schema.GetRef<TakeDamageFlags_t>(this.Handle, "CBaseEntity", "m_nTakeDamageFlags");
 
-	// m_bIsPlatform
-	[SchemaMember("CBaseEntity", "m_bIsPlatform")]
-	public ref bool IsPlatform => ref Schema.GetRef<bool>(this.Handle, "CBaseEntity", "m_bIsPlatform");
+	// m_nPlatformType
+	[SchemaMember("CBaseEntity", "m_nPlatformType")]
+	public ref EntityPlatformTypes_t PlatformType => ref Schema.GetRef<EntityPlatformTypes_t>(this.Handle, "CBaseEntity", "m_nPlatformType");
 
 	// m_MoveCollide
 	[SchemaMember("CBaseEntity", "m_MoveCollide")]

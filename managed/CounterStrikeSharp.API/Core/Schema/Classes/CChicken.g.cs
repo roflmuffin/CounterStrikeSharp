@@ -22,10 +22,6 @@ public partial class CChicken : CDynamicProp
 	[SchemaMember("CChicken", "m_AttributeManager")]
 	public CAttributeContainer AttributeManager => Schema.GetDeclaredClass<CAttributeContainer>(this.Handle, "CChicken", "m_AttributeManager");
 
-	// m_sActivityFinishedTag
-	[SchemaMember("CChicken", "m_sActivityFinishedTag")]
-	public CUtlStringToken ActivityFinishedTag => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "CChicken", "m_sActivityFinishedTag");
-
 	// m_updateTimer
 	[SchemaMember("CChicken", "m_updateTimer")]
 	public CountdownTimer UpdateTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_updateTimer");
@@ -114,21 +110,9 @@ public partial class CChicken : CDynamicProp
 	[SchemaMember("CChicken", "m_bInJump")]
 	public ref bool InJump => ref Schema.GetRef<bool>(this.Handle, "CChicken", "m_bInJump");
 
-	// m_isWaitingForLeader
-	[SchemaMember("CChicken", "m_isWaitingForLeader")]
-	public ref bool IsWaitingForLeader => ref Schema.GetRef<bool>(this.Handle, "CChicken", "m_isWaitingForLeader");
-
 	// m_repathTimer
 	[SchemaMember("CChicken", "m_repathTimer")]
 	public CountdownTimer RepathTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_repathTimer");
-
-	// m_inhibitDoorTimer
-	[SchemaMember("CChicken", "m_inhibitDoorTimer")]
-	public CountdownTimer InhibitDoorTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_inhibitDoorTimer");
-
-	// m_inhibitObstacleAvoidanceTimer
-	[SchemaMember("CChicken", "m_inhibitObstacleAvoidanceTimer")]
-	public CountdownTimer InhibitObstacleAvoidanceTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_inhibitObstacleAvoidanceTimer");
 
 	// m_vecPathGoal
 	[SchemaMember("CChicken", "m_vecPathGoal")]
@@ -141,14 +125,6 @@ public partial class CChicken : CDynamicProp
 	// m_followMinuteTimer
 	[SchemaMember("CChicken", "m_followMinuteTimer")]
 	public CountdownTimer FollowMinuteTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_followMinuteTimer");
-
-	// m_vecLastEggPoopPosition
-	[SchemaMember("CChicken", "m_vecLastEggPoopPosition")]
-	public Vector LastEggPoopPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CChicken", "m_vecLastEggPoopPosition");
-
-	// m_vecEggsPooped
-	[SchemaMember("CChicken", "m_vecEggsPooped")]
-	public NetworkedVector<CHandle<CBaseEntity>> EggsPooped => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CChicken", "m_vecEggsPooped");
 
 	// m_BlockDirectionTimer
 	[SchemaMember("CChicken", "m_BlockDirectionTimer")]
