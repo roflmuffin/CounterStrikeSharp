@@ -66,6 +66,10 @@ public partial class CSoundOpvarSetPointEntity : CSoundOpvarSetPointBase
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_bSetValueOnDisable")]
 	public ref bool SetValueOnDisable => ref Schema.GetRef<bool>(this.Handle, "CSoundOpvarSetPointEntity", "m_bSetValueOnDisable");
 
+	// m_bReloading
+	[SchemaMember("CSoundOpvarSetPointEntity", "m_bReloading")]
+	public ref bool Reloading => ref Schema.GetRef<bool>(this.Handle, "CSoundOpvarSetPointEntity", "m_bReloading");
+
 	// m_nSimulationMode
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_nSimulationMode")]
 	public ref Int32 SimulationMode => ref Schema.GetRef<Int32>(this.Handle, "CSoundOpvarSetPointEntity", "m_nSimulationMode");

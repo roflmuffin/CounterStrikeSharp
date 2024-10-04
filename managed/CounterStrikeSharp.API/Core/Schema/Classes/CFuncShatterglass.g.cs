@@ -18,26 +18,6 @@ public partial class CFuncShatterglass : CBaseModelEntity
 {
     public CFuncShatterglass (IntPtr pointer) : base(pointer) {}
 
-	// m_hGlassMaterialDamaged
-	[SchemaMember("CFuncShatterglass", "m_hGlassMaterialDamaged")]
-	public CStrongHandle<InfoForResourceTypeIMaterial2> GlassMaterialDamaged => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CFuncShatterglass", "m_hGlassMaterialDamaged");
-
-	// m_hGlassMaterialUndamaged
-	[SchemaMember("CFuncShatterglass", "m_hGlassMaterialUndamaged")]
-	public CStrongHandle<InfoForResourceTypeIMaterial2> GlassMaterialUndamaged => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CFuncShatterglass", "m_hGlassMaterialUndamaged");
-
-	// m_hConcreteMaterialEdgeFace
-	[SchemaMember("CFuncShatterglass", "m_hConcreteMaterialEdgeFace")]
-	public CStrongHandle<InfoForResourceTypeIMaterial2> ConcreteMaterialEdgeFace => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CFuncShatterglass", "m_hConcreteMaterialEdgeFace");
-
-	// m_hConcreteMaterialEdgeCaps
-	[SchemaMember("CFuncShatterglass", "m_hConcreteMaterialEdgeCaps")]
-	public CStrongHandle<InfoForResourceTypeIMaterial2> ConcreteMaterialEdgeCaps => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CFuncShatterglass", "m_hConcreteMaterialEdgeCaps");
-
-	// m_hConcreteMaterialEdgeFins
-	[SchemaMember("CFuncShatterglass", "m_hConcreteMaterialEdgeFins")]
-	public CStrongHandle<InfoForResourceTypeIMaterial2> ConcreteMaterialEdgeFins => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CFuncShatterglass", "m_hConcreteMaterialEdgeFins");
-
 	// m_matPanelTransform
 	[SchemaMember("CFuncShatterglass", "m_matPanelTransform")]
 	public matrix3x4_t MatPanelTransform => Schema.GetDeclaredClass<matrix3x4_t>(this.Handle, "CFuncShatterglass", "m_matPanelTransform");
@@ -53,14 +33,6 @@ public partial class CFuncShatterglass : CBaseModelEntity
 	// m_PanelSize
 	[SchemaMember("CFuncShatterglass", "m_PanelSize")]
 	public Vector2D PanelSize => Schema.GetDeclaredClass<Vector2D>(this.Handle, "CFuncShatterglass", "m_PanelSize");
-
-	// m_vecPanelNormalWs
-	[SchemaMember("CFuncShatterglass", "m_vecPanelNormalWs")]
-	public Vector PanelNormalWs => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncShatterglass", "m_vecPanelNormalWs");
-
-	// m_nNumShardsEverCreated
-	[SchemaMember("CFuncShatterglass", "m_nNumShardsEverCreated")]
-	public ref Int32 NumShardsEverCreated => ref Schema.GetRef<Int32>(this.Handle, "CFuncShatterglass", "m_nNumShardsEverCreated");
 
 	// m_flLastShatterSoundEmitTime
 	[SchemaMember("CFuncShatterglass", "m_flLastShatterSoundEmitTime")]
@@ -93,10 +65,6 @@ public partial class CFuncShatterglass : CBaseModelEntity
 	// m_bBroken
 	[SchemaMember("CFuncShatterglass", "m_bBroken")]
 	public ref bool Broken => ref Schema.GetRef<bool>(this.Handle, "CFuncShatterglass", "m_bBroken");
-
-	// m_bHasRateLimitedShards
-	[SchemaMember("CFuncShatterglass", "m_bHasRateLimitedShards")]
-	public ref bool HasRateLimitedShards => ref Schema.GetRef<bool>(this.Handle, "CFuncShatterglass", "m_bHasRateLimitedShards");
 
 	// m_bGlassNavIgnore
 	[SchemaMember("CFuncShatterglass", "m_bGlassNavIgnore")]
@@ -154,6 +122,10 @@ public partial class CFuncShatterglass : CBaseModelEntity
 	[SchemaMember("CFuncShatterglass", "m_vExtraDamagePositions")]
 	public NetworkedVector<Vector> ExtraDamagePositions => Schema.GetDeclaredClass<NetworkedVector<Vector>>(this.Handle, "CFuncShatterglass", "m_vExtraDamagePositions");
 
+	// m_vInitialPanelVertices
+	[SchemaMember("CFuncShatterglass", "m_vInitialPanelVertices")]
+	public NetworkedVector<Vector4D> InitialPanelVertices => Schema.GetDeclaredClass<NetworkedVector<Vector4D>>(this.Handle, "CFuncShatterglass", "m_vInitialPanelVertices");
+
 	// m_OnBroken
 	[SchemaMember("CFuncShatterglass", "m_OnBroken")]
 	public CEntityIOOutput OnBroken => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncShatterglass", "m_OnBroken");
@@ -161,5 +133,9 @@ public partial class CFuncShatterglass : CBaseModelEntity
 	// m_iSurfaceType
 	[SchemaMember("CFuncShatterglass", "m_iSurfaceType")]
 	public ref byte SurfaceType => ref Schema.GetRef<byte>(this.Handle, "CFuncShatterglass", "m_iSurfaceType");
+
+	// m_hMaterialDamageBase
+	[SchemaMember("CFuncShatterglass", "m_hMaterialDamageBase")]
+	public CStrongHandle<InfoForResourceTypeIMaterial2> MaterialDamageBase => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "CFuncShatterglass", "m_hMaterialDamageBase");
 
 }

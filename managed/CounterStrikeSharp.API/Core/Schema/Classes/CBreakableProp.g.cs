@@ -66,6 +66,26 @@ public partial class CBreakableProp : CBaseProp
 	[SchemaMember("CBreakableProp", "m_flPreventDamageBeforeTime")]
 	public ref float PreventDamageBeforeTime => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_flPreventDamageBeforeTime");
 
+	// m_BreakableContentsType
+	[SchemaMember("CBreakableProp", "m_BreakableContentsType")]
+	public ref BreakableContentsType_t BreakableContentsType => ref Schema.GetRef<BreakableContentsType_t>(this.Handle, "CBreakableProp", "m_BreakableContentsType");
+
+	// m_strBreakableContentsPropGroupOverride
+	[SchemaMember("CBreakableProp", "m_strBreakableContentsPropGroupOverride")]
+	public string StrBreakableContentsPropGroupOverride
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CBreakableProp", "m_strBreakableContentsPropGroupOverride"); }
+		set { Schema.SetString(this.Handle, "CBreakableProp", "m_strBreakableContentsPropGroupOverride", value); }
+	}
+
+	// m_strBreakableContentsParticleOverride
+	[SchemaMember("CBreakableProp", "m_strBreakableContentsParticleOverride")]
+	public string StrBreakableContentsParticleOverride
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CBreakableProp", "m_strBreakableContentsParticleOverride"); }
+		set { Schema.SetString(this.Handle, "CBreakableProp", "m_strBreakableContentsParticleOverride", value); }
+	}
+
 	// m_bHasBreakPiecesOrCommands
 	[SchemaMember("CBreakableProp", "m_bHasBreakPiecesOrCommands")]
 	public ref bool HasBreakPiecesOrCommands => ref Schema.GetRef<bool>(this.Handle, "CBreakableProp", "m_bHasBreakPiecesOrCommands");

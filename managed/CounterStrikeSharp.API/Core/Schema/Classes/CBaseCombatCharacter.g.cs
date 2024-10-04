@@ -26,10 +26,6 @@ public partial class CBaseCombatCharacter : CBaseFlex
 	[SchemaMember("CBaseCombatCharacter", "m_hMyWearables")]
 	public NetworkedVector<CHandle<CEconWearable>> MyWearables => Schema.GetDeclaredClass<NetworkedVector<CHandle<CEconWearable>>>(this.Handle, "CBaseCombatCharacter", "m_hMyWearables");
 
-	// m_flFieldOfView
-	[SchemaMember("CBaseCombatCharacter", "m_flFieldOfView")]
-	public ref float FieldOfView => ref Schema.GetRef<float>(this.Handle, "CBaseCombatCharacter", "m_flFieldOfView");
-
 	// m_impactEnergyScale
 	[SchemaMember("CBaseCombatCharacter", "m_impactEnergyScale")]
 	public ref float ImpactEnergyScale => ref Schema.GetRef<float>(this.Handle, "CBaseCombatCharacter", "m_impactEnergyScale");

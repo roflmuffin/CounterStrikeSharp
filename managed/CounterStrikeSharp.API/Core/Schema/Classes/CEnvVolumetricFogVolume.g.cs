@@ -78,4 +78,8 @@ public partial class CEnvVolumetricFogVolume : CBaseEntity
 	[SchemaMember("CEnvVolumetricFogVolume", "m_bOverrideNoiseStrength")]
 	public ref bool OverrideNoiseStrength => ref Schema.GetRef<bool>(this.Handle, "CEnvVolumetricFogVolume", "m_bOverrideNoiseStrength");
 
+	// m_bAllowLPVIndirect
+	[SchemaMember("CEnvVolumetricFogVolume", "m_bAllowLPVIndirect")]
+	public ref bool AllowLPVIndirect => ref Schema.GetRef<bool>(this.Handle, "CEnvVolumetricFogVolume", "m_bAllowLPVIndirect");
+
 }

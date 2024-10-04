@@ -15,5 +15,6 @@ public enum ParticleFloatMapType_t : uint
 	PF_MAP_TYPE_REMAP_BIASED = 0x3,
 	PF_MAP_TYPE_CURVE = 0x4,
 	PF_MAP_TYPE_NOTCHED = 0x5,
-	PF_MAP_TYPE_COUNT = 0x6,
+	PF_MAP_TYPE_ROUND = 0x6,
+	PF_MAP_TYPE_COUNT = 0x7,
 }

@@ -22,10 +22,6 @@ public partial class CPhysBox : CBreakable
 	[SchemaMember("CPhysBox", "m_damageType")]
 	public ref Int32 DamageType => ref Schema.GetRef<Int32>(this.Handle, "CPhysBox", "m_damageType");
 
-	// m_massScale
-	[SchemaMember("CPhysBox", "m_massScale")]
-	public ref float MassScale => ref Schema.GetRef<float>(this.Handle, "CPhysBox", "m_massScale");
-
 	// m_damageToEnableMotion
 	[SchemaMember("CPhysBox", "m_damageToEnableMotion")]
 	public ref Int32 DamageToEnableMotion => ref Schema.GetRef<Int32>(this.Handle, "CPhysBox", "m_damageToEnableMotion");

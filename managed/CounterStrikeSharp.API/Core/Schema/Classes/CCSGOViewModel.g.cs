@@ -22,12 +22,4 @@ public partial class CCSGOViewModel : CPredictedViewModel
 	[SchemaMember("CCSGOViewModel", "m_bShouldIgnoreOffsetAndAccuracy")]
 	public ref bool ShouldIgnoreOffsetAndAccuracy => ref Schema.GetRef<bool>(this.Handle, "CCSGOViewModel", "m_bShouldIgnoreOffsetAndAccuracy");
 
-	// m_nWeaponParity
-	[SchemaMember("CCSGOViewModel", "m_nWeaponParity")]
-	public ref UInt32 WeaponParity => ref Schema.GetRef<UInt32>(this.Handle, "CCSGOViewModel", "m_nWeaponParity");
-
-	// m_nOldWeaponParity
-	[SchemaMember("CCSGOViewModel", "m_nOldWeaponParity")]
-	public ref UInt32 OldWeaponParity => ref Schema.GetRef<UInt32>(this.Handle, "CCSGOViewModel", "m_nOldWeaponParity");
-
 }

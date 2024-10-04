@@ -54,9 +54,13 @@ public partial class CTakeDamageInfo : NativeObject
 	[SchemaMember("CTakeDamageInfo", "m_flTotalledDamage")]
 	public ref float TotalledDamage => ref Schema.GetRef<float>(this.Handle, "CTakeDamageInfo", "m_flTotalledDamage");
 
+	// m_flTotalledDamageAbsorbed
+	[SchemaMember("CTakeDamageInfo", "m_flTotalledDamageAbsorbed")]
+	public ref float TotalledDamageAbsorbed => ref Schema.GetRef<float>(this.Handle, "CTakeDamageInfo", "m_flTotalledDamageAbsorbed");
+
 	// m_bitsDamageType
 	[SchemaMember("CTakeDamageInfo", "m_bitsDamageType")]
-	public ref Int32 BitsDamageType => ref Schema.GetRef<Int32>(this.Handle, "CTakeDamageInfo", "m_bitsDamageType");
+	public ref DamageTypes_t BitsDamageType => ref Schema.GetRef<DamageTypes_t>(this.Handle, "CTakeDamageInfo", "m_bitsDamageType");
 
 	// m_iDamageCustom
 	[SchemaMember("CTakeDamageInfo", "m_iDamageCustom")]
@@ -78,6 +82,10 @@ public partial class CTakeDamageInfo : NativeObject
 	[SchemaMember("CTakeDamageInfo", "m_bShouldSpark")]
 	public ref bool ShouldSpark => ref Schema.GetRef<bool>(this.Handle, "CTakeDamageInfo", "m_bShouldSpark");
 
+	// m_flDamageAbsorbed
+	[SchemaMember("CTakeDamageInfo", "m_flDamageAbsorbed")]
+	public ref float DamageAbsorbed => ref Schema.GetRef<float>(this.Handle, "CTakeDamageInfo", "m_flDamageAbsorbed");
+
 	// m_nDamageFlags
 	[SchemaMember("CTakeDamageInfo", "m_nDamageFlags")]
 	public ref TakeDamageFlags_t DamageFlags => ref Schema.GetRef<TakeDamageFlags_t>(this.Handle, "CTakeDamageInfo", "m_nDamageFlags");
@@ -85,6 +93,10 @@ public partial class CTakeDamageInfo : NativeObject
 	// m_nNumObjectsPenetrated
 	[SchemaMember("CTakeDamageInfo", "m_nNumObjectsPenetrated")]
 	public ref Int32 NumObjectsPenetrated => ref Schema.GetRef<Int32>(this.Handle, "CTakeDamageInfo", "m_nNumObjectsPenetrated");
+
+	// m_flFriendlyFireDamageReductionRatio
+	[SchemaMember("CTakeDamageInfo", "m_flFriendlyFireDamageReductionRatio")]
+	public ref float FriendlyFireDamageReductionRatio => ref Schema.GetRef<float>(this.Handle, "CTakeDamageInfo", "m_flFriendlyFireDamageReductionRatio");
 
 	// m_bInTakeDamageFlow
 	[SchemaMember("CTakeDamageInfo", "m_bInTakeDamageFlow")]
