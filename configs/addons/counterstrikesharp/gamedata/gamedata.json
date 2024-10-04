@@ -90,8 +90,8 @@
   },
   "CCSPlayer_ItemServices_GiveNamedItem": {
     "offsets": {
-      "windows": 17,
-      "linux": 18
+      "windows": 19,
+      "linux": 20
     }
   },
   "CCSPlayer_ItemServices_DropActivePlayerWeapon": {
