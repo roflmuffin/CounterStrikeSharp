@@ -1,4 +1,4 @@
-﻿/**
+/**
  * This project has been copied & modified from the demofile-net project under the MIT license.
  * See ACKNOWLEDGEMENTS file for more information.
  * https://github.com/saul/demofile-net
@@ -31,7 +31,8 @@ internal static partial class Program
         "SimpleConstraintSoundProfile::SimpleConstraintsSoundProfileKeypoints_t",
         "MoodAnimationLayer_t",
         "SoundeventPathCornerPairNetworked_t",
-        "AISound_t"
+        "AISound_t",
+        "CAttachmentNameSymbolWithStorage"
     };
 
     private static readonly IReadOnlySet<string> IgnoreClassWildcards = new HashSet<string>
