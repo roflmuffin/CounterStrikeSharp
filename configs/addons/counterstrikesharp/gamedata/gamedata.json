@@ -96,8 +96,8 @@
   },
   "CCSPlayer_ItemServices_DropActivePlayerWeapon": {
     "offsets": {
-      "windows": 18,
-      "linux": 19
+      "windows": 20,
+      "linux": 21
     }
   },
   "CCSPlayer_ItemServices_RemoveWeapons": {
