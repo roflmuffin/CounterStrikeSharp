@@ -20,6 +20,6 @@ public partial class ChangeAccessorFieldPathIndex_t : NativeObject
 
 	// m_Value
 	[SchemaMember("ChangeAccessorFieldPathIndex_t", "m_Value")]
-	public ref Int16 Value => ref Schema.GetRef<Int16>(this.Handle, "ChangeAccessorFieldPathIndex_t", "m_Value");
+	public ref Int32 Value => ref Schema.GetRef<Int32>(this.Handle, "ChangeAccessorFieldPathIndex_t", "m_Value");
 
 }

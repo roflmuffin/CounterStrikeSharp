@@ -18,10 +18,6 @@ public partial class PhysicsRagdollPose_t : NativeObject
 {
     public PhysicsRagdollPose_t (IntPtr pointer) : base(pointer) {}
 
-	// __m_pChainEntity
-	[SchemaMember("PhysicsRagdollPose_t", "__m_pChainEntity")]
-	public CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "PhysicsRagdollPose_t", "__m_pChainEntity");
-
 	// m_Transforms
 	[SchemaMember("PhysicsRagdollPose_t", "m_Transforms")]
 	public NetworkedVector<CTransform> Transforms => Schema.GetDeclaredClass<NetworkedVector<CTransform>>(this.Handle, "PhysicsRagdollPose_t", "m_Transforms");

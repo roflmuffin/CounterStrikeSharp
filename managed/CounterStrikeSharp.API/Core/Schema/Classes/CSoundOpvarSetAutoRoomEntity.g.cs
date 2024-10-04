@@ -22,6 +22,10 @@ public partial class CSoundOpvarSetAutoRoomEntity : CSoundOpvarSetPointEntity
 	[SchemaMember("CSoundOpvarSetAutoRoomEntity", "m_traceResults")]
 	public NetworkedVector<SoundOpvarTraceResult_t> TraceResults => Schema.GetDeclaredClass<NetworkedVector<SoundOpvarTraceResult_t>>(this.Handle, "CSoundOpvarSetAutoRoomEntity", "m_traceResults");
 
+	// m_doorwayPairs
+	[SchemaMember("CSoundOpvarSetAutoRoomEntity", "m_doorwayPairs")]
+	public NetworkedVector<AutoRoomDoorwayPairs_t> DoorwayPairs => Schema.GetDeclaredClass<NetworkedVector<AutoRoomDoorwayPairs_t>>(this.Handle, "CSoundOpvarSetAutoRoomEntity", "m_doorwayPairs");
+
 	// m_flSize
 	[SchemaMember("CSoundOpvarSetAutoRoomEntity", "m_flSize")]
 	public ref float Size => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetAutoRoomEntity", "m_flSize");

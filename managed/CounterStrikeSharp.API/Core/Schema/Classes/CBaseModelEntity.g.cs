@@ -62,6 +62,10 @@ public partial class CBaseModelEntity : CBaseEntity
 	[SchemaMember("CBaseModelEntity", "m_bRenderToCubemaps")]
 	public ref bool RenderToCubemaps => ref Schema.GetRef<bool>(this.Handle, "CBaseModelEntity", "m_bRenderToCubemaps");
 
+	// m_bNoInterpolate
+	[SchemaMember("CBaseModelEntity", "m_bNoInterpolate")]
+	public ref bool NoInterpolate => ref Schema.GetRef<bool>(this.Handle, "CBaseModelEntity", "m_bNoInterpolate");
+
 	// m_Collision
 	[SchemaMember("CBaseModelEntity", "m_Collision")]
 	public CCollisionProperty Collision => Schema.GetDeclaredClass<CCollisionProperty>(this.Handle, "CBaseModelEntity", "m_Collision");

@@ -24,7 +24,7 @@ public partial class CPointHurt : CPointEntity
 
 	// m_bitsDamageType
 	[SchemaMember("CPointHurt", "m_bitsDamageType")]
-	public ref Int32 BitsDamageType => ref Schema.GetRef<Int32>(this.Handle, "CPointHurt", "m_bitsDamageType");
+	public ref DamageTypes_t BitsDamageType => ref Schema.GetRef<DamageTypes_t>(this.Handle, "CPointHurt", "m_bitsDamageType");
 
 	// m_flRadius
 	[SchemaMember("CPointHurt", "m_flRadius")]
