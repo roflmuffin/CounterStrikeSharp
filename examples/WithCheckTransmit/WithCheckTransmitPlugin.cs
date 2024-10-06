@@ -53,9 +53,9 @@ public class WithCheckTransmitPlugin : BasePlugin
                 // We can use the slot to get the player the info belongs to
                 CCSPlayerController? infoPlayer = Utilities.GetPlayerFromSlot(slot);
 
-                // If no player is found, we can return
+                // If no player is found, we can continue
                 if (infoPlayer == null)
-                    return;
+                    continue;
 
                 // Otherwise, lets do the work:
 
@@ -96,9 +96,9 @@ public class WithCheckTransmitPlugin : BasePlugin
                 // We can use the slot to get the player the info belongs to
                 CCSPlayerController? infoPlayer = Utilities.GetPlayerFromSlot(slot);
 
-                // If no player is found, we can return
+                // If no player is found, we can continue
                 if (infoPlayer == null)
-                    return;
+                    continue;
 
                 // Otherwise, lets do the work:
 
