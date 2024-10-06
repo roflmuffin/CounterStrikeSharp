@@ -63,7 +63,7 @@ namespace CounterStrikeSharp.API.Core.Memory
         /// <summary>
         /// Returns the total amount of released resources since startup.
         /// </summary>
-        public int TotalReleased { get; private set; } = 0;
+        public ulong TotalReleased { get; private set; } = 0;
 
         /// <summary>
         /// Returns how much resources were released last time.
@@ -167,7 +167,7 @@ namespace CounterStrikeSharp.API.Core.Memory
                 int difference = Math.Abs(totalCountAfter - totalCount);
 
                 LastReleased = totalCountAfter == 0 ? totalCount : difference;
-                TotalReleased += LastReleased;
+                TotalReleased += (ulong)LastReleased;
                 LastUpdated = DateTime.UtcNow;
 
                 if (LastReleased > 0)
