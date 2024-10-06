@@ -24,8 +24,7 @@ using static CounterStrikeSharp.API.Modules.Utils.CEntityKeyValues;
 namespace CounterStrikeSharp.API.Modules.Utils
 {
     /// <summary>
-    /// EntityKeyValues
-    /// <b>WARNING: This is intended to only use with <see cref="CBaseEntity.DispatchSpawn"/> for now!</b>
+    /// <b>WARNING: This is intended to be only used with <see cref="CBaseEntity.DispatchSpawn"/> for now!</b>
     /// </summary>
     public class CEntityKeyValues : Dictionary<string, KeyValueContainer>
     {
