@@ -16,6 +16,7 @@
 
 #include <vector>
 
+#include "core/log.h"
 #include "scripting/autonative.h"
 #include "scripting/script_engine.h"
 
@@ -35,7 +36,6 @@ CREATE_SETTER_FUNCTION(Vector, float, X, Vector*, obj->x = value);
 CREATE_SETTER_FUNCTION(Vector, float, Y, Vector*, obj->y = value);
 CREATE_SETTER_FUNCTION(Vector, float, Z, Vector*, obj->z = value);
 
-// TODO: These need to be cleared out somehow
 std::vector<Vector*> managed_vectors;
 
 Vector* VectorNew(ScriptContext& script_context)
@@ -45,7 +45,42 @@ Vector* VectorNew(ScriptContext& script_context)
     return vec;
 }
 
-// TODO: These need to be cleared out somehow
+int VectorCount(ScriptContext& script_context)
+{
+    return managed_vectors.size();
+}
+
+void VectorDel(ScriptContext& script_context)
+{
+    auto vec = script_context.GetArgument<Vector*>(0);
+    auto it = std::find(managed_vectors.begin(), managed_vectors.end(), vec);
+
+    if (it != managed_vectors.end()) 
+    {
+        CSSHARP_CORE_INFO("Releasing Vector: {}", (void*)vec);
+        managed_vectors.erase(it);
+        
+#ifdef _WIN32
+        _try
+        {
+            delete *it;
+        }
+        _except (EXCEPTION_ACCESS_VIOLATION)
+        {
+            script_context.ThrowNativeError("Invalid Vector reference: %p (EXCEPTION_ACCESS_VIOLATION)", vec);
+        }
+#else
+        delete *it;
+#endif
+    } else 
+    {
+        if (managed_vectors.size() != 0)
+        {
+            script_context.ThrowNativeError("Invalid Vector reference: %p", vec);
+        }
+    }
+}
+
 std::vector<QAngle*> managed_angles;
 
 QAngle* AngleNew(ScriptContext& script_context)
@@ -53,6 +88,42 @@ QAngle* AngleNew(ScriptContext& script_context)
     auto ang = new QAngle();
     managed_angles.push_back(ang);
     return ang;
+}
+
+int AngleCount(ScriptContext& script_context)
+{
+    return managed_angles.size();
+}
+
+void AngleDel(ScriptContext& script_context)
+{
+    auto ang = script_context.GetArgument<QAngle*>(0);
+    auto it = std::find(managed_angles.begin(), managed_angles.end(), ang);
+
+    if (it != managed_angles.end()) 
+    {
+        CSSHARP_CORE_INFO("Releasing QAngle: {}", (void*)ang);
+        managed_angles.erase(it);
+
+#ifdef _WIN32
+        _try
+        {
+            delete *it;
+        }
+        _except (EXCEPTION_ACCESS_VIOLATION)
+        {
+            script_context.ThrowNativeError("Invalid QAngle reference: %p (EXCEPTION_ACCESS_VIOLATION)", ang);
+        }
+#else
+        delete *it;
+#endif
+    } else 
+    {
+        if (managed_angles.size() != 0)
+        {
+            script_context.ThrowNativeError("Invalid angle reference: %p", ang);
+        }
+    }
 }
 
 void NativeVectorAngles(ScriptContext& script_context)
@@ -84,6 +155,12 @@ void NativeAngleVectors(ScriptContext& script_context)
 REGISTER_NATIVES(vector, {
     ScriptEngine::RegisterNativeHandler("VECTOR_NEW", VectorNew);
     ScriptEngine::RegisterNativeHandler("ANGLE_NEW", AngleNew);
+
+    ScriptEngine::RegisterNativeHandler("VECTOR_DELETE", VectorDel);
+    ScriptEngine::RegisterNativeHandler("ANGLE_DELETE", AngleDel);
+
+    ScriptEngine::RegisterNativeHandler("VECTOR_COUNT", VectorCount);
+    ScriptEngine::RegisterNativeHandler("ANGLE_COUNT", AngleCount);
 
     ScriptEngine::RegisterNativeHandler("VECTOR_SET_X", VectorSetX);
     ScriptEngine::RegisterNativeHandler("VECTOR_SET_Y", VectorSetY);

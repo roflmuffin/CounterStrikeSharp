@@ -1,5 +1,9 @@
 VECTOR_NEW: -> pointer
 ANGLE_NEW: -> pointer
+VECTOR_DELETE: vector:pointer -> void
+ANGLE_DELETE: angle:pointer -> void
+VECTOR_COUNT: -> int
+ANGLE_COUNT: -> int
 VECTOR_GET_X: vector:pointer -> float
 VECTOR_GET_Y: vector:pointer -> float
 VECTOR_GET_Z: vector:pointer -> float
