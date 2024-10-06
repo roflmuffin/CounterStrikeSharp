@@ -152,7 +152,7 @@ namespace CounterStrikeSharp.API.Core.Memory
 
                 State = MemoryManagerState.InProgress;
 
-                _logger.LogInformation("Releasing {0} disposable memory resources...", totalCount);
+                _logger.LogInformation("Running garbage collector ({0} disposable memory in total)", totalCount);
 
                 // some may go to gen1 or even gen2, but even those are released when this nondeterministic wonder wants so
                 GC.Collect(0, GCCollectionMode.Default, true);
@@ -163,13 +163,16 @@ namespace CounterStrikeSharp.API.Core.Memory
                 // this part is wrong here as there is a chance that new ones are instantiated during this time
                 // however, this is not used yet, not even sure it will be as it only serves statistics (TODO: fix)
                 int totalCountAfter = CurrentResources;
-                int difference = totalCountAfter - totalCount;
+                int difference = Math.Abs(totalCountAfter - totalCount);
 
                 LastReleased = totalCountAfter == 0 ? totalCount : difference;
                 TotalReleased += LastReleased;
                 LastUpdated = DateTime.UtcNow;
 
-                _logger.LogInformation("Released {0} disposable memory resources. ({1} remains)", LastReleased, CurrentResources);
+                if (LastReleased > 0)
+                {
+                    _logger.LogInformation("Released {0} leaking memory resources. ({1} remains)", LastReleased, CurrentResources);
+                }
             }
         }
     }
