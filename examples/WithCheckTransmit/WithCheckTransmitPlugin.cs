@@ -41,6 +41,9 @@ public class WithCheckTransmitPlugin : BasePlugin
                     // is the player and its pawn valid
                     p.IsValid && p.Pawn.IsValid &&
 
+                    // we shouldn't hide ourselves
+                    p.Slot != infoPlayer.Slot &&
+
                     // is the player is in the same team
                     p.Team == infoPlayer.Team &&
 
