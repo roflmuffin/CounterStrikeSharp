@@ -67,46 +67,83 @@ namespace CounterStrikeSharp.API.Modules.Utils
 
         internal Dictionary<string, KeyValueContainer> keyValues = new Dictionary<string, KeyValueContainer>();
 
-        // Getter
+#region GETTER
         public bool GetBool(string key, bool defaultValue = false) => GetValue(key, defaultValue);
-        public int GetInt(string key, int defaultValue = 0) => GetValue(key, defaultValue);
-        public uint GetUInt(string key, uint defaultValue = 0) => GetValue(key, defaultValue);
-        public long GetInt64(string key, long defaultValue = 0) => GetValue(key, defaultValue);
-        public ulong GetUInt64(string key, ulong defaultValue = 0) => GetValue(key, defaultValue);
-        public float GetFloat(string key, float defaultValue = 0) => GetValue(key, defaultValue);
-        public double GetDouble(string key, double defaultValue = 0) => GetValue(key, defaultValue);
-        public string GetString(string key, string defaultValue = "") => GetValue(key, defaultValue);
-        public nint GetPointer(string key, nint defaultValue = 0) => GetValue(key, defaultValue);
-        public uint GetStringToken(string key, uint defaultValue = 0) => GetValue(key, defaultValue);
-        public CEntityHandle? GetEHandle(string key, CEntityHandle? defaultValue = null) => GetValue(key, defaultValue);
-        public Color GetColor(string key) => GetValue(key, Color.Empty);
-        public Vector3? GetVector(string key, Vector3? defaultValue = null) => GetValue(key, defaultValue);
-        public Vector2? GetVector2D(string key, Vector2? defaultValue = null) => GetValue(key, defaultValue);
-        public Vector4? GetVector4D(string key, Vector4? defaultValue = null) => GetValue(key, defaultValue);
-        public Vector4? GetQuaternion(string key, Vector4? defaultValue = null) => GetValue(key, defaultValue);
-        public QAngle? GetAngle(string key, QAngle? defaultValue = null) => GetValue(key, defaultValue);
-        public Matrix3x4? GetMatrix3x4(string key, Matrix3x4? defaultValue = null) => GetValue(key, defaultValue);
 
-        // Setter
+        public int GetInt(string key, int defaultValue = 0) => GetValue(key, defaultValue);
+
+        public uint GetUInt(string key, uint defaultValue = 0) => GetValue(key, defaultValue);
+
+        public long GetInt64(string key, long defaultValue = 0) => GetValue(key, defaultValue);
+
+        public ulong GetUInt64(string key, ulong defaultValue = 0) => GetValue(key, defaultValue);
+
+        public float GetFloat(string key, float defaultValue = 0) => GetValue(key, defaultValue);
+
+        public double GetDouble(string key, double defaultValue = 0) => GetValue(key, defaultValue);
+
+        public string GetString(string key, string defaultValue = "") => GetValue(key, defaultValue);
+
+        public nint GetPointer(string key, nint defaultValue = 0) => GetValue(key, defaultValue);
+
+        public uint GetStringToken(string key, uint defaultValue = 0) => GetValue(key, defaultValue);
+
+        public CEntityHandle? GetEHandle(string key, CEntityHandle? defaultValue = null) => GetValue(key, defaultValue);
+
+        public Color GetColor(string key) => GetValue(key, Color.Empty);
+
+        public Vector? GetVector(string key, Vector? defaultValue = null) => GetValue(key, defaultValue);
+
+        public Vector2? GetVector2D(string key, Vector2? defaultValue = null) => GetValue(key, defaultValue);
+
+        public Vector4? GetVector4D(string key, Vector4? defaultValue = null) => GetValue(key, defaultValue);
+
+        public Vector4? GetQuaternion(string key, Vector4? defaultValue = null) => GetValue(key, defaultValue);
+
+        public QAngle? GetAngle(string key, QAngle? defaultValue = null) => GetValue(key, defaultValue);
+
+        public Matrix3x4? GetMatrix3x4(string key, Matrix3x4? defaultValue = null) => GetValue(key, defaultValue);
+#endregion
+
+#region SETTER
         public void SetBool(string key, bool value) => SetValue<bool>(key, KeyValuesType.TYPE_BOOL, value);
+
         public void SetInt(string key, int value) => SetValue<int>(key, KeyValuesType.TYPE_INT, value);
+
         public void SetUInt(string key, uint value) => SetValue<uint>(key, KeyValuesType.TYPE_UINT, value);
+
         public void SetInt64(string key, long value) => SetValue<long>(key, KeyValuesType.TYPE_INT64, value);
+
         public void SetUInt64(string key, ulong value) => SetValue<ulong>(key, KeyValuesType.TYPE_UINT64, value);
+
         public void SetFloat(string key, float value) => SetValue<float>(key, KeyValuesType.TYPE_FLOAT, value);
+
         public void SetDouble(string key, double value) => SetValue<double>(key, KeyValuesType.TYPE_DOUBLE, value);
+
         public void SetString(string key, string value) => SetValue<string>(key, KeyValuesType.TYPE_STRING, value);
+
         public void SetPointer(string key, nint value) => SetValue<nint>(key, KeyValuesType.TYPE_POINTER, value);
+
         public void SetStringToken(string key, uint value) => SetValue<uint>(key, KeyValuesType.TYPE_STRING_TOKEN, value); // Essentially is integer
+
         public void SetEHandle(string key, CEntityHandle value) => SetValue<CEntityHandle>(key, KeyValuesType.TYPE_EHANDLE, value);
+
         public void SetColor(string key, Color value) => SetValue<Color>(key, KeyValuesType.TYPE_COLOR, value);
+
         public void SetVector(string key, float x, float y, float z) => SetValue<Vector3>(key, KeyValuesType.TYPE_VECTOR, new Vector3(x, y, z));
+
         public void SetVector2D(string key, float x, float y) => SetValue<Vector2>(key, KeyValuesType.TYPE_VECTOR2D, new Vector2(x, y));
+
         public void SetVector4D(string key, float x, float y, float z, float w) => SetValue<Vector4>(key, KeyValuesType.TYPE_VECTOR4D, new Vector4(x, y, z, w));
+
         public void SetQuaternion(string key, float x, float y, float z, float w) => SetValue<Vector4>(key, KeyValuesType.TYPE_QUATERNION, new Vector4(x, y, z, w)); // Same class with Vector4
+
         public void SetAngle(string key, float pitch, float yaw, float roll) => SetValue<QAngle>(key, KeyValuesType.TYPE_QANGLE, new QAngle(pitch, yaw, roll));
+
         public void SetAngle(string key, QAngle angle) => SetValue<QAngle>(key, KeyValuesType.TYPE_QANGLE, angle);
+
         public void SetMatrix3x4(string key, Matrix3x4 value) => SetValue<Matrix3x4>(key, KeyValuesType.TYPE_MATRIX3X4, value);
+#endregion
 
         public bool Remove(string key) => keyValues.Remove(key);
         public void Clear() => keyValues.Clear();
@@ -115,11 +152,14 @@ namespace CounterStrikeSharp.API.Modules.Utils
         internal void SetValue<T>(string key, KeyValuesType type, object value)
         {
             if (value == null)
+            {
                 throw new ArgumentNullException("Value can't be null!");
+            }    
 
             if (keyValues.TryGetValue(key, out KeyValueContainer? v))
+            {
                 v.Set(value);
-            else
+            } else
             {
                 KeyValueContainer container = new(type, value);
                 keyValues.Add(key, container);
@@ -142,9 +182,9 @@ namespace CounterStrikeSharp.API.Modules.Utils
                 return 0;
             }
 
-            List<object> valueLists = new();
+            List<object> valueLists = new List<object>();
 
-            foreach (var kv in keyValues)
+            foreach (KeyValuePair<string, KeyValueContainer> kv in keyValues)
             {
                 valueLists.Add(kv.Key);
                 KeyValuesType _type = kv.Value.GetContainerType();
@@ -165,7 +205,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
                         break;
 
                     case KeyValuesType.TYPE_VECTOR:
-                        Vector3 vec = kv.Value.Get<Vector3>();
+                        Vector vec = kv.Value.Get<Vector>();
                         valueLists.Add(vec.X);
                         valueLists.Add(vec.Y);
                         valueLists.Add(vec.Z);
@@ -218,7 +258,6 @@ namespace CounterStrikeSharp.API.Modules.Utils
             }
 
             list = valueLists.ToArray();
-
             return keyValues.Count;
         }
     }
