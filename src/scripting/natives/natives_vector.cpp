@@ -63,14 +63,16 @@ void VectorDel(ScriptContext& script_context)
 #ifdef _WIN32
         _try
         {
-            delete *it;
+            vec->~Vector();
+            MemAlloc_Free(vec);
         }
         _except (EXCEPTION_ACCESS_VIOLATION)
         {
             script_context.ThrowNativeError("Invalid Vector reference: %p (EXCEPTION_ACCESS_VIOLATION)", vec);
         }
 #else
-        delete *it;
+        vec->~Vector();
+        MemAlloc_Free(vec);
 #endif
     } else 
     {
@@ -108,14 +110,16 @@ void AngleDel(ScriptContext& script_context)
 #ifdef _WIN32
         _try
         {
-            delete *it;
+            ang->~QAngle();
+            MemAlloc_Free(ang);
         }
         _except (EXCEPTION_ACCESS_VIOLATION)
         {
             script_context.ThrowNativeError("Invalid QAngle reference: %p (EXCEPTION_ACCESS_VIOLATION)", ang);
         }
 #else
-        delete *it;
+        ang->~QAngle();
+        MemAlloc_Free(ang);
 #endif
     } else 
     {
