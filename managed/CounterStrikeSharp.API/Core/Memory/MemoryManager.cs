@@ -18,6 +18,8 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using CounterStrikeSharp.API.Core.Commands;
+using CounterStrikeSharp.API.Modules.Admin;
+using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Memory;
 
 using Microsoft.Extensions.Logging;
@@ -35,7 +37,7 @@ namespace CounterStrikeSharp.API.Core.Memory
         Idle,
 
         /// <summary>
-        /// Currently releasing resources. Normally after this it will enter the idle state if there is nothing else going on.
+        /// Currently releasing resources. Normally after this it will enter <see cref="Idle"/> if there is nothing else going on.
         /// </summary>
         InProgress,
 
@@ -45,7 +47,7 @@ namespace CounterStrikeSharp.API.Core.Memory
         Stopped,
 
         /// <summary>
-        /// Halted, once it can continue it will enter the <see cref="Idle"/> state.
+        /// Halted, once it can continue it will enter the <see cref="Idle"/> or <see cref="InProgress"/> state.
         /// </summary>
         Halted,
 
@@ -89,7 +91,7 @@ namespace CounterStrikeSharp.API.Core.Memory
 
         private readonly ICommandManager _commandManager;
 
-        private readonly Thread _thread;
+        private Thread _thread;
 
         public MemoryManager(ILogger<MemoryManager> logger, ICommandManager commandManager)
         {
@@ -99,24 +101,108 @@ namespace CounterStrikeSharp.API.Core.Memory
             _thread = new Thread(BackgroundThread);
         }
 
+        [RequiresPermissions("@css/generic")]
+        private void OnCommand(CCSPlayerController? caller, CommandInfo info)
+        {
+            switch (info.GetArg(1))
+            {
+                case "stats":
+                {
+                    PrintStatistics(info);
+                } break;
+
+                case "start":
+                {
+                    Start();
+                } break;
+
+                case "stop":
+                {
+                    Stop(true);
+                } break;
+
+                case "pause":
+                {
+                    Stop(false);
+                }  break;
+
+                case "resume":
+                {
+                    Resume();
+                } break;
+
+                default:
+                {
+                    info.ReplyToCommand("Valid usage: css_memorymanager [option]\n" +
+                                               "  stats - Print garbage collector statistics.\n" +
+                                               "  start - Starts the memory manager that handles leaking resources.\n" +
+                                               "  stop - Stops the memory manager.\n" +
+                                               "  pause - Stops the memory manager.\n" +
+                                               "  resume - Resumes the memory manager.\n");
+                } break;
+            }
+        }
+
         public void Load()
         {
-            if (CoreConfig.EnableMemoryManager)
+            _commandManager.RegisterCommand(new("css_memorymanager", "Counter-Strike Sharp Memory Manager options.",
+                OnCommand)
             {
-                Start();
-            }
+                ExecutableBy = CommandUsage.CLIENT_AND_SERVER,
+                MinArgs = 1,
+                UsageHint = "[option]\n" +
+                            "  stats - Print garbage collector statistics.\n" +
+                            "  start - Starts the memory manager that handles leaking resources.\n" +
+                            "  stop - Stops the memory manager.\n" +
+                            "  pause - Stops the memory manager.\n" +
+                            "  resume - Resumes the memory manager.\n",
+            });
+
+            Start();
+        }
+
+        public void PrintStatistics(CommandInfo info)
+        {
+            info.ReplyToCommand("Memory Manager Statistics:\n" +
+                                      $"State: {State}\n" +
+                                      $"Total Released: {TotalReleased}\n" +
+                                      $"Last Released: {LastReleased}\n" +
+                                      $"Current Resources: {CurrentResources}\n" +
+                                      $"Last Updated: {LastUpdated.ToString("yyyy.MM.dd hh:mm:ss tt")} (UTC)");
         }
 
         public void Start()
         {
-            _thread.Start();
-            _logger.LogInformation("Service has been started");
+            if (CoreConfig.EnableMemoryManager)
+            {
+                _logger.LogInformation("Starting service...");
+
+                try
+                {
+                    _thread.Start();
+                } catch (ThreadStateException)
+                {
+                    _thread = new Thread(BackgroundThread);
+                    _thread.Start();
+                } catch (Exception e)
+                {
+                    _logger.LogCritical("Exception occured: '{0}' ({1})", e.Message, e);
+                }
+            }
         }
 
         public void Stop(bool forceStop = false)
         {
             if (forceStop)
             {
+                if (State == MemoryManagerState.Stopped)
+                {
+                    _logger.LogInformation("Service is already stopped");
+                    return;
+                }
+
+                _logger.LogInformation("Stopping service... (might take a while)");
+
                 Task.Run(() =>
                 {
                     State = MemoryManagerState.Stopped;
@@ -126,24 +212,43 @@ namespace CounterStrikeSharp.API.Core.Memory
                 });
             } else
             {
+                if (State == MemoryManagerState.Halted)
+                {
+                    _logger.LogInformation("Service is already paused");
+                    return;
+                }
+
                 State = MemoryManagerState.Halted;
                 _logger.LogInformation("Service has been halted");
             }
         }
 
+        public void Resume()
+        {
+            if (State != MemoryManagerState.Halted)
+            {
+                _logger.LogWarning("Unable to resume service (state: {0})", State);
+                return;
+            }
+
+            State = MemoryManagerState.Idle;
+            _logger.LogInformation("Service has been resumed");
+        }
+
         private void BackgroundThread()
         {
+            _logger.LogInformation("Service has been started");
+            State = MemoryManagerState.Idle;
+
             while (State != MemoryManagerState.Stopped)
             {
-                State = MemoryManagerState.Idle;
-
                 Thread.Sleep(CoreConfig.MemoryManagerInterval);
-
-                if (State == MemoryManagerState.Halted)
-                    continue;
 
                 if (State == MemoryManagerState.Stopped)
                     break;
+
+                if (State == MemoryManagerState.Halted)
+                    continue;
 
                 int totalCount = CurrentResources;
 
@@ -169,6 +274,7 @@ namespace CounterStrikeSharp.API.Core.Memory
                 LastReleased = totalCountAfter == 0 ? totalCount : difference;
                 TotalReleased += (ulong)LastReleased;
                 LastUpdated = DateTime.UtcNow;
+                State = MemoryManagerState.Idle;
 
                 if (LastReleased > 0)
                 {
@@ -176,6 +282,11 @@ namespace CounterStrikeSharp.API.Core.Memory
                 } else
                 {
                     Thread.Sleep(CoreConfig.MemoryManagerInterval);
+                }
+
+                if (State == MemoryManagerState.InProgress)
+                {
+                    State = MemoryManagerState.Idle;
                 }
             }
         }
