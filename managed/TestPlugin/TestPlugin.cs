@@ -15,6 +15,7 @@
  */
 
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -299,6 +300,25 @@ namespace TestPlugin
 
                         // Server.NextFrame(() => { flashbang.Remove(); });
                         return;
+                }
+            });
+
+            // Hide every door (prop_door_rotating) for everyone as a test
+            RegisterListener<Listeners.CheckTransmit>((CCheckTransmitInfoList infoList, int infoCount) =>
+            {
+                IEnumerable<CPropDoorRotating> doors = Utilities.FindAllEntitiesByDesignerName<CPropDoorRotating>("prop_door_rotating");
+
+                if (!doors.Any())
+                    return;
+
+                for (int i = 0; i < infoCount; i++)
+                {
+                    (CCheckTransmitInfo info, int _) = infoList.Get(i);
+
+                    foreach (CPropDoorRotating door in doors)
+                    {
+                        info.TransmitEntity.Clear(door.Index);
+                    }
                 }
             });
         }
