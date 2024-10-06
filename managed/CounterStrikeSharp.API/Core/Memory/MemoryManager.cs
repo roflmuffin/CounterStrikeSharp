@@ -299,7 +299,6 @@ namespace CounterStrikeSharp.API.Core.Memory
                 LastReleased = totalCountAfter == 0 ? totalCount : difference;
                 TotalReleased += (ulong)LastReleased;
                 LastUpdated = DateTime.UtcNow;
-                State = MemoryManagerState.Idle;
 
                 if (LastReleased > 0)
                 {
