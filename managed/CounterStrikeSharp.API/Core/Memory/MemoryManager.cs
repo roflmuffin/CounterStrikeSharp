@@ -185,6 +185,18 @@ namespace CounterStrikeSharp.API.Core.Memory
         {
             if (CoreConfig.EnableMemoryManager)
             {
+                if (State == MemoryManagerState.Idle || State == MemoryManagerState.InProgress)
+                {
+                    _logger.LogInformation("Service is already running");
+                    return;
+                }
+
+                if (State == MemoryManagerState.Halted)
+                {
+                    _logger.LogInformation("Service should be resumed, not started");
+                    return;
+                }
+
                 _logger.LogInformation("Starting service...");
 
                 try
