@@ -173,6 +173,9 @@ namespace CounterStrikeSharp.API.Core.Memory
                 if (LastReleased > 0)
                 {
                     _logger.LogInformation("Released {0} leaking memory resources in {1}ms ({2} remains)", LastReleased, (LastUpdated - startTime).TotalMilliseconds, CurrentResources);
+                } else
+                {
+                    Thread.Sleep(CoreConfig.MemoryManagerInterval);
                 }
             }
         }
