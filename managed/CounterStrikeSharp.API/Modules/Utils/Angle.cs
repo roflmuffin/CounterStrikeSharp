@@ -382,8 +382,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
         /// <returns></returns>
         public static int GetTotalCount()
         {
-            // we only return 0 currently because this class is the same as 'QAngle' and this would mess up in 'MemoryManager'.
-            return 0;
+            return NativeAPI.AngleCount();
         }
 
         public override string ToString()
