@@ -153,6 +153,7 @@ namespace CounterStrikeSharp.API.Core.Memory
                 State = MemoryManagerState.InProgress;
 
                 _logger.LogInformation("Running garbage collector ({0} disposable memory in total)", totalCount);
+                DateTime startTime = DateTime.UtcNow;
 
                 // some may go to gen1 or even gen2, but even those are released when this nondeterministic wonder wants so
                 GC.Collect(0, GCCollectionMode.Default, true);
@@ -171,7 +172,7 @@ namespace CounterStrikeSharp.API.Core.Memory
 
                 if (LastReleased > 0)
                 {
-                    _logger.LogInformation("Released {0} leaking memory resources. ({1} remains)", LastReleased, CurrentResources);
+                    _logger.LogInformation("Released {0} leaking memory resources in {1}ms ({2} remains)", LastReleased, (LastUpdated - startTime).TotalMilliseconds, CurrentResources);
                 }
             }
         }
