@@ -1,4 +1,4 @@
-/*
+﻿/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -17,6 +17,8 @@
 using System.Numerics;
 using System.Runtime.CompilerServices;
 
+using CounterStrikeSharp.API.Modules.Memory;
+
 namespace CounterStrikeSharp.API.Modules.Utils
 {
     /// <summary>
@@ -28,7 +30,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
     /// <item><term>Z</term><description>+up/-down</description></item>
     /// </list>
     /// </summary>
-    public class Vector : NativeObject,
+    public class Vector : DisposableMemory,
         IAdditionOperators<Vector, Vector, Vector>,
         ISubtractionOperators<Vector, Vector, Vector>,
         IMultiplyOperators<Vector, float, Vector>,
@@ -369,6 +371,20 @@ namespace CounterStrikeSharp.API.Modules.Utils
         }
 
         */
+
+        public override void ReleaseUnmanaged()
+        {
+            NativeAPI.VectorDelete(Handle);
+        }
+
+        /// <summary>
+        /// Returns the total amount of instances.
+        /// </summary>
+        /// <returns></returns>
+        public static int GetTotalCount()
+        {
+            return NativeAPI.VectorCount();
+        }
 
         public override string ToString()
         {
