@@ -46,7 +46,10 @@ static IGameEvent *CreateEvent(ScriptContext &script_context) {
     bool force = script_context.GetArgument<bool>(1);
 
     auto pEvent = globals::gameEventManager->CreateEvent(name, force);
-    managed_game_events.push_back(pEvent);
+
+    if (pEvent != nullptr) {
+        managed_game_events.push_back(pEvent);
+    }
 
     return pEvent;
 }
