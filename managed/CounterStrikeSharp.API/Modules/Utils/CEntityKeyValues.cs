@@ -59,7 +59,9 @@ namespace CounterStrikeSharp.API.Modules.Utils
             }
 
             public KeyValuesType GetContainerType() => type;
+
             public T Get<T>() => (T)value;
+
 #pragma warning disable 8601
             public void Set<T>(T val) => value = val;
 #pragma warning restore
@@ -146,7 +148,9 @@ namespace CounterStrikeSharp.API.Modules.Utils
 #endregion
 
         public bool Remove(string key) => keyValues.Remove(key);
+
         public void Clear() => keyValues.Clear();
+
         public int Count => keyValues.Count;
 
         internal void SetValue<T>(string key, KeyValuesType type, object value)
@@ -161,7 +165,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
                 v.Set(value);
             } else
             {
-                KeyValueContainer container = new(type, value);
+                KeyValueContainer container = new KeyValueContainer(type, value);
                 keyValues.Add(key, container);
             }
         }
@@ -189,9 +193,9 @@ namespace CounterStrikeSharp.API.Modules.Utils
                 valueLists.Add(kv.Key);
                 KeyValuesType _type = kv.Value.GetContainerType();
                 valueLists.Add(_type);
+
                 switch (_type)
                 {
-                    // Special type handle
                     case KeyValuesType.TYPE_EHANDLE:
                         valueLists.Add(kv.Value.Get<CEntityHandle>().Raw);
                         break;
@@ -217,7 +221,6 @@ namespace CounterStrikeSharp.API.Modules.Utils
                         valueLists.Add(vec2D.Y);
                         break;
 
-                    // Same thing, idk why valve seperate this
                     case KeyValuesType.TYPE_VECTOR4D:
                     case KeyValuesType.TYPE_QUATERNION:
                         Vector4 vec4D = kv.Value.Get<Vector4>();
@@ -250,7 +253,6 @@ namespace CounterStrikeSharp.API.Modules.Utils
                         valueLists.Add(matrix.M34);
                         break;
 
-                    // C# default type handle
                     default:
                         valueLists.Add(kv.Value.Get<object>());
                         break;
