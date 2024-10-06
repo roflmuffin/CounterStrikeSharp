@@ -14,7 +14,6 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -156,7 +155,7 @@ namespace CounterStrikeSharp.API.Core.Memory
                 _logger.LogInformation("Releasing {0} disposable memory resources...", totalCount);
 
                 // some may go to gen1 or even gen2, but even those are released when this nondeterministic wonder wants so
-                GC.Collect(0, GCCollectionMode.Forced, true);
+                GC.Collect(0, GCCollectionMode.Default, true);
 
                 // this might be obsolete with 'blocking: false'?
                 GC.WaitForPendingFinalizers();
@@ -168,9 +167,9 @@ namespace CounterStrikeSharp.API.Core.Memory
 
                 LastReleased = totalCountAfter == 0 ? totalCount : difference;
                 TotalReleased += LastReleased;
-
-                _logger.LogInformation("Released {0} disposable memory resources.", LastReleased);
                 LastUpdated = DateTime.UtcNow;
+
+                _logger.LogInformation("Released {0} disposable memory resources. ({1} remains)", LastReleased, CurrentResources);
             }
         }
     }
