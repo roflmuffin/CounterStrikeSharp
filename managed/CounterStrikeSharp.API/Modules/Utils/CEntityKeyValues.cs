@@ -17,37 +17,41 @@
 using System.Drawing;
 using System.Numerics;
 
+using static CounterStrikeSharp.API.Modules.Utils.CEntityKeyValues;
+
+// TODO: change from System.Numerics to exposed native values (Vector2D, Vector4D, Quaternion)
+
 namespace CounterStrikeSharp.API.Modules.Utils
 {
-    internal enum KeyValuesType : uint
-    {
-        TYPE_BOOL,
-        TYPE_INT,
-        TYPE_UINT,
-        TYPE_INT64,
-        TYPE_UINT64,
-        TYPE_FLOAT,
-        TYPE_DOUBLE,
-        TYPE_STRING,
-        TYPE_POINTER,
-        TYPE_STRING_TOKEN,
-        TYPE_EHANDLE,
-        TYPE_COLOR,
-        TYPE_VECTOR,
-        TYPE_VECTOR2D,
-        TYPE_VECTOR4D,
-        TYPE_QUATERNION,
-        TYPE_QANGLE,
-        TYPE_MATRIX3X4
-    }
-
     /// <summary>
     /// EntityKeyValues
     /// <b>WARNING: This is intended to only use with <see cref="CBaseEntity.DispatchSpawn"/> for now!</b>
     /// </summary>
-    public class CEntityKeyValues
+    public class CEntityKeyValues : Dictionary<string, KeyValueContainer>
     {
-        internal class KeyValueContainer
+        public enum KeyValuesType : uint
+        {
+            TYPE_BOOL,
+            TYPE_INT,
+            TYPE_UINT,
+            TYPE_INT64,
+            TYPE_UINT64,
+            TYPE_FLOAT,
+            TYPE_DOUBLE,
+            TYPE_STRING,
+            TYPE_POINTER,
+            TYPE_STRING_TOKEN,
+            TYPE_EHANDLE,
+            TYPE_COLOR,
+            TYPE_VECTOR,
+            TYPE_VECTOR2D,
+            TYPE_VECTOR4D,
+            TYPE_QUATERNION,
+            TYPE_QANGLE,
+            TYPE_MATRIX3X4
+        }
+
+        public class KeyValueContainer
         {
             private KeyValuesType type;
             private object value;
@@ -62,12 +66,8 @@ namespace CounterStrikeSharp.API.Modules.Utils
 
             public T Get<T>() => (T)value;
 
-#pragma warning disable 8601
-            public void Set<T>(T val) => value = val;
-#pragma warning restore
+            public void Set<T>(T val) => value = (object)val!;
         }
-
-        internal Dictionary<string, KeyValueContainer> keyValues = new Dictionary<string, KeyValueContainer>();
 
 #region GETTER
         public bool GetBool(string key, bool defaultValue = false) => GetValue(key, defaultValue);
@@ -126,7 +126,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
 
         public void SetPointer(string key, nint value) => SetValue<nint>(key, KeyValuesType.TYPE_POINTER, value);
 
-        public void SetStringToken(string key, uint value) => SetValue<uint>(key, KeyValuesType.TYPE_STRING_TOKEN, value); // Essentially is integer
+        public void SetStringToken(string key, uint value) => SetValue<uint>(key, KeyValuesType.TYPE_STRING_TOKEN, value);
 
         public void SetEHandle(string key, CEntityHandle value) => SetValue<CEntityHandle>(key, KeyValuesType.TYPE_EHANDLE, value);
 
@@ -136,9 +136,15 @@ namespace CounterStrikeSharp.API.Modules.Utils
 
         public void SetVector2D(string key, float x, float y) => SetValue<Vector2>(key, KeyValuesType.TYPE_VECTOR2D, new Vector2(x, y));
 
+        public void SetVector2D(string key, Vector2 value) => SetValue<Vector2>(key, KeyValuesType.TYPE_VECTOR2D, value);
+
         public void SetVector4D(string key, float x, float y, float z, float w) => SetValue<Vector4>(key, KeyValuesType.TYPE_VECTOR4D, new Vector4(x, y, z, w));
 
-        public void SetQuaternion(string key, float x, float y, float z, float w) => SetValue<Vector4>(key, KeyValuesType.TYPE_QUATERNION, new Vector4(x, y, z, w)); // Same class with Vector4
+        public void SetVector4D(string key, Vector4 value) => SetValue<Vector4>(key, KeyValuesType.TYPE_VECTOR4D, value);
+
+        public void SetQuaternion(string key, float x, float y, float z, float w) => SetValue<Vector4>(key, KeyValuesType.TYPE_QUATERNION, new Vector4(x, y, z, w));
+
+        public void SetQuaternion(string key, Vector4 value) => SetValue<Vector4>(key, KeyValuesType.TYPE_QUATERNION, value);
 
         public void SetAngle(string key, float pitch, float yaw, float roll) => SetValue<QAngle>(key, KeyValuesType.TYPE_QANGLE, new QAngle(pitch, yaw, roll));
 
@@ -147,12 +153,6 @@ namespace CounterStrikeSharp.API.Modules.Utils
         public void SetMatrix3x4(string key, Matrix3x4 value) => SetValue<Matrix3x4>(key, KeyValuesType.TYPE_MATRIX3X4, value);
 #endregion
 
-        public bool Remove(string key) => keyValues.Remove(key);
-
-        public void Clear() => keyValues.Clear();
-
-        public int Count => keyValues.Count;
-
         internal void SetValue<T>(string key, KeyValuesType type, object value)
         {
             if (value == null)
@@ -160,19 +160,19 @@ namespace CounterStrikeSharp.API.Modules.Utils
                 throw new ArgumentNullException("Value can't be null!");
             }    
 
-            if (keyValues.TryGetValue(key, out KeyValueContainer? v))
+            if (this.TryGetValue(key, out KeyValueContainer? v))
             {
                 v.Set(value);
             } else
             {
                 KeyValueContainer container = new KeyValueContainer(type, value);
-                keyValues.Add(key, container);
+                this.Add(key, container);
             }
         }
 
         internal T GetValue<T>(string key, T defaultValue)
         {
-            if (keyValues.TryGetValue(key, out KeyValueContainer? v))
+            if (this.TryGetValue(key, out KeyValueContainer? v))
                 return v.Get<T>();
 
             return defaultValue;
@@ -180,7 +180,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
 
         internal int Build(out object[] list)
         {
-            if (keyValues.Count == 0)
+            if (this.Count == 0)
             {
                 list = Array.Empty<object>();
                 return 0;
@@ -188,7 +188,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
 
             List<object> valueLists = new List<object>();
 
-            foreach (KeyValuePair<string, KeyValueContainer> kv in keyValues)
+            foreach (KeyValuePair<string, KeyValueContainer> kv in this)
             {
                 valueLists.Add(kv.Key);
                 KeyValuesType _type = kv.Value.GetContainerType();
@@ -260,7 +260,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
             }
 
             list = valueLists.ToArray();
-            return keyValues.Count;
+            return this.Count;
         }
     }
 }
