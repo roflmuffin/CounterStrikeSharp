@@ -188,6 +188,9 @@ namespace CounterStrikeSharp.API.Core.Memory
                 {
                     _logger.LogCritical("Exception occured: '{0}' ({1})", e.Message, e);
                 }
+            } else
+            {
+                _logger.LogError("Unable to start 'MemoryManager' with CoreConfig option '{0}' disabled.", "EnableMemoryManager");
             }
         }
 
