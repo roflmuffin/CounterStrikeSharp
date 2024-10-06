@@ -87,6 +87,14 @@ namespace CounterStrikeSharp.API.Core.Memory
         /// </summary>
         public MemoryManagerState State { get; private set; } = MemoryManagerState.Unknown;
 
+        public long TotalMemory => GC.GetTotalMemory(false);
+
+        public long TotalAllocated => GC.GetTotalAllocatedBytes();
+
+        public double TotalMemoryMB => (TotalMemory / (1024.0 * 1024.0));
+
+        public double TotalAllocatedMB => (TotalAllocated / (1024.0 * 1024.0));
+
         private readonly ILogger<MemoryManager> _logger;
 
         private readonly ICommandManager _commandManager;
@@ -168,7 +176,9 @@ namespace CounterStrikeSharp.API.Core.Memory
                                       $"Total Released: {TotalReleased}\n" +
                                       $"Last Released: {LastReleased}\n" +
                                       $"Current Resources: {CurrentResources}\n" +
-                                      $"Last Updated: {LastUpdated.ToString("yyyy.MM.dd hh:mm:ss tt")} (UTC)");
+                                      $"Last Updated: {LastUpdated.ToString("yyyy.MM.dd hh:mm:ss tt")} (UTC)\n" +
+                                      $"Heap Memory Usage: ~{TotalMemoryMB:F5} MB ({TotalMemory} bytes)\n" +
+                                      $"Total Allocated Bytes: ~{TotalAllocatedMB:F5} MB ({TotalAllocated} bytes)");
         }
 
         public void Start()
