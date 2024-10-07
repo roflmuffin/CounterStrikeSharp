@@ -174,7 +174,7 @@ void MemAlloc_FreePointer(ScriptContext& script_context)
 #endif
 }
 
-void MemAlloc_Allocate(ScriptContext& script_context)
+void* MemAlloc_Allocate(ScriptContext& script_context)
 {
     size_t size = script_context.GetArgument<size_t>(0);
     return MemAlloc_Alloc(size);
