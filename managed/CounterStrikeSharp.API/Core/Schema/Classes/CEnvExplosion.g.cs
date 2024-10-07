@@ -48,7 +48,11 @@ public partial class CEnvExplosion : CModelPointEntity
 
 	// m_iCustomDamageType
 	[SchemaMember("CEnvExplosion", "m_iCustomDamageType")]
-	public ref Int32 CustomDamageType => ref Schema.GetRef<Int32>(this.Handle, "CEnvExplosion", "m_iCustomDamageType");
+	public ref DamageTypes_t CustomDamageType => ref Schema.GetRef<DamageTypes_t>(this.Handle, "CEnvExplosion", "m_iCustomDamageType");
+
+	// m_bCreateDebris
+	[SchemaMember("CEnvExplosion", "m_bCreateDebris")]
+	public ref bool CreateDebris => ref Schema.GetRef<bool>(this.Handle, "CEnvExplosion", "m_bCreateDebris");
 
 	// m_iszExplosionType
 	[SchemaMember("CEnvExplosion", "m_iszExplosionType")]

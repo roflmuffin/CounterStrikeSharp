@@ -1,4 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.RegularExpressions;
 
 namespace CounterStrikeSharp.SchemaGen;
@@ -31,7 +31,7 @@ public record SchemaFieldType
             this.Category = SchemaTypeCategory.Builtin;
             this.Name = "uint8";
         }
-        else if (this.Name == "CBitVec< 64 >")
+        else if (this.Name == "CBitVec< 64 >" || this.Name == "CTypedBitVec< 64 >")
         {
             this.Category = SchemaTypeCategory.FixedArray;
             this.Inner = new SchemaFieldType("uint8", SchemaTypeCategory.Builtin, null, null);
@@ -92,7 +92,7 @@ public record SchemaFieldType
             SchemaAtomicCategory.Collection => $"NetworkedVector<{inner!.CsTypeName}>",
             SchemaAtomicCategory.Unknown => "CBitVec",
             SchemaAtomicCategory.TT => "Unknown",
-            _ => throw new ArgumentOutOfRangeException(nameof(atomic), atomic, $"Unsupported atomic: {atomic}")
+            _ => throw new ArgumentOutOfRangeException(nameof(atomic), atomic, $"Unsupported atomic: {atomic}, {name}, {inner?.CsTypeName}")
         };
 
     public string CsTypeName => Category switch

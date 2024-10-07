@@ -138,8 +138,8 @@ public partial class CEnvWindShared : NativeObject
 	[SchemaMember("CEnvWindShared", "m_flWindSpeedVariation")]
 	public ref float WindSpeedVariation => ref Schema.GetRef<float>(this.Handle, "CEnvWindShared", "m_flWindSpeedVariation");
 
-	// m_iEntIndex
-	[SchemaMember("CEnvWindShared", "m_iEntIndex")]
-	public CEntityIndex EntIndex => Schema.GetDeclaredClass<CEntityIndex>(this.Handle, "CEnvWindShared", "m_iEntIndex");
+	// m_hEntOwner
+	[SchemaMember("CEnvWindShared", "m_hEntOwner")]
+	public CHandle<CBaseEntity> EntOwner => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEnvWindShared", "m_hEntOwner");
 
 }

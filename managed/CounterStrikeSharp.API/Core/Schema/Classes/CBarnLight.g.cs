@@ -190,6 +190,10 @@ public partial class CBarnLight : CBaseModelEntity
 	[SchemaMember("CBarnLight", "m_flFogScale")]
 	public ref float FogScale => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flFogScale");
 
+	// m_bFogMixedShadows
+	[SchemaMember("CBarnLight", "m_bFogMixedShadows")]
+	public ref bool FogMixedShadows => ref Schema.GetRef<bool>(this.Handle, "CBarnLight", "m_bFogMixedShadows");
+
 	// m_flFadeSizeStart
 	[SchemaMember("CBarnLight", "m_flFadeSizeStart")]
 	public ref float FadeSizeStart => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flFadeSizeStart");
@@ -230,8 +234,88 @@ public partial class CBarnLight : CBaseModelEntity
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBExtent")]
 	public Vector PrecomputedOBBExtent => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent");
 
+	// m_nPrecomputedSubFrusta
+	[SchemaMember("CBarnLight", "m_nPrecomputedSubFrusta")]
+	public ref Int32 PrecomputedSubFrusta => ref Schema.GetRef<Int32>(this.Handle, "CBarnLight", "m_nPrecomputedSubFrusta");
+
+	// m_vPrecomputedOBBOrigin0
+	[SchemaMember("CBarnLight", "m_vPrecomputedOBBOrigin0")]
+	public Vector PrecomputedOBBOrigin0 => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin0");
+
+	// m_vPrecomputedOBBAngles0
+	[SchemaMember("CBarnLight", "m_vPrecomputedOBBAngles0")]
+	public QAngle PrecomputedOBBAngles0 => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles0");
+
+	// m_vPrecomputedOBBExtent0
+	[SchemaMember("CBarnLight", "m_vPrecomputedOBBExtent0")]
+	public Vector PrecomputedOBBExtent0 => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent0");
+
+	// m_vPrecomputedOBBOrigin1
+	[SchemaMember("CBarnLight", "m_vPrecomputedOBBOrigin1")]
+	public Vector PrecomputedOBBOrigin1 => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin1");
+
+	// m_vPrecomputedOBBAngles1
+	[SchemaMember("CBarnLight", "m_vPrecomputedOBBAngles1")]
+	public QAngle PrecomputedOBBAngles1 => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles1");
+
+	// m_vPrecomputedOBBExtent1
+	[SchemaMember("CBarnLight", "m_vPrecomputedOBBExtent1")]
+	public Vector PrecomputedOBBExtent1 => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent1");
+
+	// m_vPrecomputedOBBOrigin2
+	[SchemaMember("CBarnLight", "m_vPrecomputedOBBOrigin2")]
+	public Vector PrecomputedOBBOrigin2 => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin2");
+
+	// m_vPrecomputedOBBAngles2
+	[SchemaMember("CBarnLight", "m_vPrecomputedOBBAngles2")]
+	public QAngle PrecomputedOBBAngles2 => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles2");
+
+	// m_vPrecomputedOBBExtent2
+	[SchemaMember("CBarnLight", "m_vPrecomputedOBBExtent2")]
+	public Vector PrecomputedOBBExtent2 => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent2");
+
+	// m_vPrecomputedOBBOrigin3
+	[SchemaMember("CBarnLight", "m_vPrecomputedOBBOrigin3")]
+	public Vector PrecomputedOBBOrigin3 => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin3");
+
+	// m_vPrecomputedOBBAngles3
+	[SchemaMember("CBarnLight", "m_vPrecomputedOBBAngles3")]
+	public QAngle PrecomputedOBBAngles3 => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles3");
+
+	// m_vPrecomputedOBBExtent3
+	[SchemaMember("CBarnLight", "m_vPrecomputedOBBExtent3")]
+	public Vector PrecomputedOBBExtent3 => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent3");
+
+	// m_vPrecomputedOBBOrigin4
+	[SchemaMember("CBarnLight", "m_vPrecomputedOBBOrigin4")]
+	public Vector PrecomputedOBBOrigin4 => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin4");
+
+	// m_vPrecomputedOBBAngles4
+	[SchemaMember("CBarnLight", "m_vPrecomputedOBBAngles4")]
+	public QAngle PrecomputedOBBAngles4 => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles4");
+
+	// m_vPrecomputedOBBExtent4
+	[SchemaMember("CBarnLight", "m_vPrecomputedOBBExtent4")]
+	public Vector PrecomputedOBBExtent4 => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent4");
+
+	// m_vPrecomputedOBBOrigin5
+	[SchemaMember("CBarnLight", "m_vPrecomputedOBBOrigin5")]
+	public Vector PrecomputedOBBOrigin5 => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin5");
+
+	// m_vPrecomputedOBBAngles5
+	[SchemaMember("CBarnLight", "m_vPrecomputedOBBAngles5")]
+	public QAngle PrecomputedOBBAngles5 => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles5");
+
+	// m_vPrecomputedOBBExtent5
+	[SchemaMember("CBarnLight", "m_vPrecomputedOBBExtent5")]
+	public Vector PrecomputedOBBExtent5 => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent5");
+
 	// m_bPvsModifyEntity
 	[SchemaMember("CBarnLight", "m_bPvsModifyEntity")]
 	public ref bool PvsModifyEntity => ref Schema.GetRef<bool>(this.Handle, "CBarnLight", "m_bPvsModifyEntity");
+
+	// m_VisClusters
+	[SchemaMember("CBarnLight", "m_VisClusters")]
+	public NetworkedVector<UInt16> VisClusters => Schema.GetDeclaredClass<NetworkedVector<UInt16>>(this.Handle, "CBarnLight", "m_VisClusters");
 
 }

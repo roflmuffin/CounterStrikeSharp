@@ -46,6 +46,14 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 	[SchemaMember("CEnvVolumetricFogController", "m_flIndirectStrength")]
 	public ref float IndirectStrength => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogController", "m_flIndirectStrength");
 
+	// m_nVolumeDepth
+	[SchemaMember("CEnvVolumetricFogController", "m_nVolumeDepth")]
+	public ref Int32 VolumeDepth => ref Schema.GetRef<Int32>(this.Handle, "CEnvVolumetricFogController", "m_nVolumeDepth");
+
+	// m_fFirstVolumeSliceThickness
+	[SchemaMember("CEnvVolumetricFogController", "m_fFirstVolumeSliceThickness")]
+	public ref float FirstVolumeSliceThickness => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogController", "m_fFirstVolumeSliceThickness");
+
 	// m_nIndirectTextureDimX
 	[SchemaMember("CEnvVolumetricFogController", "m_nIndirectTextureDimX")]
 	public ref Int32 IndirectTextureDimX => ref Schema.GetRef<Int32>(this.Handle, "CEnvVolumetricFogController", "m_nIndirectTextureDimX");

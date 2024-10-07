@@ -434,10 +434,6 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 	[SchemaMember("CCSPlayerPawn", "m_iLastWeaponFireUsercmd")]
 	public ref Int32 LastWeaponFireUsercmd => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawn", "m_iLastWeaponFireUsercmd");
 
-	// m_flLastFriendlyFireDamageReductionRatio
-	[SchemaMember("CCSPlayerPawn", "m_flLastFriendlyFireDamageReductionRatio")]
-	public ref float LastFriendlyFireDamageReductionRatio => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawn", "m_flLastFriendlyFireDamageReductionRatio");
-
 	// m_bIsSpawning
 	[SchemaMember("CCSPlayerPawn", "m_bIsSpawning")]
 	public ref bool IsSpawning => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bIsSpawning");
@@ -501,5 +497,13 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 	// m_vecVelocityHistory
 	[SchemaMember("CCSPlayerPawn", "m_vecVelocityHistory")]
 	public Span<Vector> VelocityHistory => Schema.GetFixedArray<Vector>(this.Handle, "CCSPlayerPawn", "m_vecVelocityHistory", 2);
+
+	// m_PredictedDamageTags
+	[SchemaMember("CCSPlayerPawn", "m_PredictedDamageTags")]
+	public NetworkedVector<PredictedDamageTag_t> PredictedDamageTags => Schema.GetDeclaredClass<NetworkedVector<PredictedDamageTag_t>>(this.Handle, "CCSPlayerPawn", "m_PredictedDamageTags");
+
+	// m_nHighestAppliedDamageTagTick
+	[SchemaMember("CCSPlayerPawn", "m_nHighestAppliedDamageTagTick")]
+	public ref Int32 HighestAppliedDamageTagTick => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawn", "m_nHighestAppliedDamageTagTick");
 
 }

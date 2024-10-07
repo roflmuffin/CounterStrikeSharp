@@ -767,6 +767,26 @@
         }
       ]
     },
+    "AutoRoomDoorwayPairs_t": {
+      "fields": [
+        {
+          "name": "vP1",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector"
+          }
+        },
+        {
+          "name": "vP2",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector"
+          }
+        }
+      ]
+    },
     "BakedLightingInfo_t": {
       "fields": [
         {
@@ -1244,7 +1264,21 @@
           }
         },
         {
+          "name": "m_hParameterCameraOnly",
+          "type": {
+            "category": 5,
+            "name": "CAnimParamHandle"
+          }
+        },
+        {
           "name": "m_hParameterWeaponDepenetrationDistance",
+          "type": {
+            "category": 5,
+            "name": "CAnimParamHandle"
+          }
+        },
+        {
+          "name": "m_hParameterWeaponDepenetrationDelta",
           "type": {
             "category": 5,
             "name": "CAnimParamHandle"
@@ -1982,6 +2016,14 @@
               "name": "CAnimMovement"
             },
             "name": "CUtlVector< CAnimMovement >"
+          }
+        },
+        {
+          "name": "m_xInitialOffset",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CTransform"
           }
         },
         {
@@ -4005,6 +4047,19 @@
             },
             "name": "CUtlVector< CBufferString >"
           }
+        },
+        {
+          "name": "m_AdditionalExtRefs",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "atomic": 0,
+              "category": 4,
+              "name": "CStrongHandleVoid"
+            },
+            "name": "CUtlVector< CStrongHandleVoid >"
+          }
         }
       ]
     },
@@ -4767,6 +4822,13 @@
           }
         },
         {
+          "name": "m_bFogMixedShadows",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
           "name": "m_flFadeSizeStart",
           "type": {
             "category": 0,
@@ -4842,10 +4904,173 @@
           }
         },
         {
+          "name": "m_nPrecomputedSubFrusta",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        },
+        {
+          "name": "m_vPrecomputedOBBOrigin0",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector"
+          }
+        },
+        {
+          "name": "m_vPrecomputedOBBAngles0",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "QAngle"
+          }
+        },
+        {
+          "name": "m_vPrecomputedOBBExtent0",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector"
+          }
+        },
+        {
+          "name": "m_vPrecomputedOBBOrigin1",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector"
+          }
+        },
+        {
+          "name": "m_vPrecomputedOBBAngles1",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "QAngle"
+          }
+        },
+        {
+          "name": "m_vPrecomputedOBBExtent1",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector"
+          }
+        },
+        {
+          "name": "m_vPrecomputedOBBOrigin2",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector"
+          }
+        },
+        {
+          "name": "m_vPrecomputedOBBAngles2",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "QAngle"
+          }
+        },
+        {
+          "name": "m_vPrecomputedOBBExtent2",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector"
+          }
+        },
+        {
+          "name": "m_vPrecomputedOBBOrigin3",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector"
+          }
+        },
+        {
+          "name": "m_vPrecomputedOBBAngles3",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "QAngle"
+          }
+        },
+        {
+          "name": "m_vPrecomputedOBBExtent3",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector"
+          }
+        },
+        {
+          "name": "m_vPrecomputedOBBOrigin4",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector"
+          }
+        },
+        {
+          "name": "m_vPrecomputedOBBAngles4",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "QAngle"
+          }
+        },
+        {
+          "name": "m_vPrecomputedOBBExtent4",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector"
+          }
+        },
+        {
+          "name": "m_vPrecomputedOBBOrigin5",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector"
+          }
+        },
+        {
+          "name": "m_vPrecomputedOBBAngles5",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "QAngle"
+          }
+        },
+        {
+          "name": "m_vPrecomputedOBBExtent5",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector"
+          }
+        },
+        {
           "name": "m_bPvsModifyEntity",
           "type": {
             "category": 0,
             "name": "bool"
+          }
+        },
+        {
+          "name": "m_VisClusters",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 0,
+              "name": "uint16"
+            },
+            "name": "CNetworkUtlVectorBase< uint16 >"
           }
         }
       ],
@@ -4916,14 +5141,10 @@
           }
         },
         {
-          "name": "m_pRagdollPose",
+          "name": "m_RagdollPose",
           "type": {
-            "category": 1,
-            "inner": {
-              "category": 5,
-              "name": "PhysicsRagdollPose_t"
-            },
-            "name": "PhysicsRagdollPose_t*"
+            "category": 5,
+            "name": "PhysicsRagdollPose_t"
           }
         },
         {
@@ -5613,13 +5834,6 @@
           }
         },
         {
-          "name": "m_flFieldOfView",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
           "name": "m_impactEnergyScale",
           "type": {
             "category": 0,
@@ -5715,7 +5929,7 @@
               "category": 5,
               "name": "CConstraintSlave"
             },
-            "name": "CUtlVector< CConstraintSlave >"
+            "name": "CUtlLeanVector< CConstraintSlave >"
           }
         },
         {
@@ -6005,7 +6219,7 @@
           "type": {
             "atomic": 4,
             "category": 4,
-            "name": "CBitVec< 64 >"
+            "name": "CTypedBitVec< 64 >"
           }
         },
         {
@@ -6078,10 +6292,10 @@
           }
         },
         {
-          "name": "m_bIsPlatform",
+          "name": "m_nPlatformType",
           "type": {
-            "category": 0,
-            "name": "bool"
+            "category": 6,
+            "name": "EntityPlatformTypes_t"
           }
         },
         {
@@ -6927,6 +7141,13 @@
         },
         {
           "name": "m_bRenderToCubemaps",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_bNoInterpolate",
           "type": {
             "category": 0,
             "name": "bool"
@@ -7835,6 +8056,23 @@
           }
         },
         {
+          "name": "m_sToolsOnlyOwnerModelName",
+          "type": {
+            "atomic": 1,
+            "category": 4,
+            "inner": {
+              "atomic": 1,
+              "category": 4,
+              "inner": {
+                "category": 5,
+                "name": "InfoForResourceTypeCModel"
+              },
+              "name": "CWeakHandle< InfoForResourceTypeCModel >"
+            },
+            "name": "CResourceNameTyped< CWeakHandle< InfoForResourceTypeCModel > >"
+          }
+        },
+        {
           "name": "m_bBuiltRightHanded",
           "type": {
             "category": 0,
@@ -7853,7 +8091,7 @@
           "type": {
             "atomic": 0,
             "category": 4,
-            "name": "CUtlString"
+            "name": "CAttachmentNameSymbolWithStorage"
           }
         },
         {
@@ -7871,6 +8109,13 @@
               "name": "CWeakHandle< InfoForResourceTypeIParticleSystemDefinition >"
             },
             "name": "CResourceNameTyped< CWeakHandle< InfoForResourceTypeIParticleSystemDefinition > >"
+          }
+        },
+        {
+          "name": "m_bLinkedCooldowns",
+          "type": {
+            "category": 0,
+            "name": "bool"
           }
         },
         {
@@ -7923,6 +8168,13 @@
           }
         },
         {
+          "name": "m_bReserveAmmoAsClips",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
           "name": "m_iWeight",
           "type": {
             "category": 0,
@@ -7951,21 +8203,6 @@
           }
         },
         {
-          "name": "m_bLinkedCooldowns",
-          "type": {
-            "category": 0,
-            "name": "bool"
-          }
-        },
-        {
-          "name": "m_aShootSounds",
-          "type": {
-            "atomic": 3,
-            "category": 4,
-            "name": "CUtlOrderedMap< WeaponSound_t, CSoundEventName >"
-          }
-        },
-        {
           "name": "m_iSlot",
           "type": {
             "category": 0,
@@ -7977,6 +8214,14 @@
           "type": {
             "category": 0,
             "name": "int32"
+          }
+        },
+        {
+          "name": "m_aShootSounds",
+          "type": {
+            "atomic": 3,
+            "category": 4,
+            "name": "CUtlOrderedMap< WeaponSound_t, CSoundEventName >"
           }
         }
       ],
@@ -8444,6 +8689,20 @@
           "type": {
             "category": 0,
             "name": "bool"
+          }
+        },
+        {
+          "name": "m_flMotionVectorScaleU",
+          "type": {
+            "category": 5,
+            "name": "CParticleCollectionRendererFloatInput"
+          }
+        },
+        {
+          "name": "m_flMotionVectorScaleV",
+          "type": {
+            "category": 5,
+            "name": "CParticleCollectionRendererFloatInput"
           }
         },
         {
@@ -10484,6 +10743,29 @@
           }
         },
         {
+          "name": "m_BreakableContentsType",
+          "type": {
+            "category": 6,
+            "name": "BreakableContentsType_t"
+          }
+        },
+        {
+          "name": "m_strBreakableContentsPropGroupOverride",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CUtlString"
+          }
+        },
+        {
+          "name": "m_strBreakableContentsParticleOverride",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CUtlString"
+          }
+        },
+        {
           "name": "m_bHasBreakPiecesOrCommands",
           "type": {
             "category": 0,
@@ -10978,10 +11260,66 @@
     "CBuoyancyHelper": {
       "fields": [
         {
+          "name": "m_nFluidType",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CUtlStringToken"
+          }
+        },
+        {
           "name": "m_flFluidDensity",
           "type": {
             "category": 0,
             "name": "float32"
+          }
+        },
+        {
+          "name": "m_vecFractionOfWheelSubmergedForWheelFriction",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 0,
+              "name": "float32"
+            },
+            "name": "CUtlVector< float32 >"
+          }
+        },
+        {
+          "name": "m_vecWheelFrictionScales",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 0,
+              "name": "float32"
+            },
+            "name": "CUtlVector< float32 >"
+          }
+        },
+        {
+          "name": "m_vecFractionOfWheelSubmergedForWheelDrag",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 0,
+              "name": "float32"
+            },
+            "name": "CUtlVector< float32 >"
+          }
+        },
+        {
+          "name": "m_vecWheelDrag",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 0,
+              "name": "float32"
+            },
+            "name": "CUtlVector< float32 >"
           }
         }
       ]
@@ -12188,23 +12526,22 @@
             "category": 0,
             "name": "bool"
           }
-        },
-        {
-          "name": "m_nWeaponParity",
-          "type": {
-            "category": 0,
-            "name": "uint32"
-          }
-        },
-        {
-          "name": "m_nOldWeaponParity",
-          "type": {
-            "category": 0,
-            "name": "uint32"
-          }
         }
       ],
       "parent": "CPredictedViewModel"
+    },
+    "CCSGOViewModel_GraphController": {
+      "fields": [
+        {
+          "name": "m_sReloadComplete",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CAnimGraphTagOptionalRef"
+          }
+        }
+      ],
+      "parent": "CAnimGraphControllerBase"
     },
     "CCSGO_TeamIntroCharacterPosition": {
       "fields": [],
@@ -15588,13 +15925,6 @@
           }
         },
         {
-          "name": "m_flLastFriendlyFireDamageReductionRatio",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
           "name": "m_bIsSpawning",
           "type": {
             "category": 0,
@@ -15721,6 +16051,25 @@
               "name": "Vector"
             },
             "name": "Vector[2]"
+          }
+        },
+        {
+          "name": "m_PredictedDamageTags",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "PredictedDamageTag_t"
+            },
+            "name": "CUtlVectorEmbeddedNetworkVar< PredictedDamageTag_t >"
+          }
+        },
+        {
+          "name": "m_nHighestAppliedDamageTagTick",
+          "type": {
+            "category": 0,
+            "name": "int32"
           }
         }
       ],
@@ -16288,6 +16637,13 @@
           }
         },
         {
+          "name": "m_flGroundMoveEfficiency",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
           "name": "m_nOldWaterLevel",
           "type": {
             "category": 0,
@@ -16418,6 +16774,13 @@
         },
         {
           "name": "m_flMaxJumpHeightThisJump",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flMaxJumpHeightLastJump",
           "type": {
             "category": 0,
             "name": "float32"
@@ -16715,6 +17078,9 @@
         }
       ],
       "parent": "CPlayer_WeaponServices"
+    },
+    "CCSPointPulseAPI": {
+      "fields": []
     },
     "CCSPointScript": {
       "fields": [
@@ -18294,14 +18660,6 @@
           }
         },
         {
-          "name": "m_sActivityFinishedTag",
-          "type": {
-            "atomic": 0,
-            "category": 4,
-            "name": "CUtlStringToken"
-          }
-        },
-        {
           "name": "m_updateTimer",
           "type": {
             "category": 5,
@@ -18470,28 +18828,7 @@
           }
         },
         {
-          "name": "m_isWaitingForLeader",
-          "type": {
-            "category": 0,
-            "name": "bool"
-          }
-        },
-        {
           "name": "m_repathTimer",
-          "type": {
-            "category": 5,
-            "name": "CountdownTimer"
-          }
-        },
-        {
-          "name": "m_inhibitDoorTimer",
-          "type": {
-            "category": 5,
-            "name": "CountdownTimer"
-          }
-        },
-        {
-          "name": "m_inhibitObstacleAvoidanceTimer",
           "type": {
             "category": 5,
             "name": "CountdownTimer"
@@ -18517,32 +18854,6 @@
           "type": {
             "category": 5,
             "name": "CountdownTimer"
-          }
-        },
-        {
-          "name": "m_vecLastEggPoopPosition",
-          "type": {
-            "atomic": 0,
-            "category": 4,
-            "name": "Vector"
-          }
-        },
-        {
-          "name": "m_vecEggsPooped",
-          "type": {
-            "atomic": 2,
-            "category": 4,
-            "inner": {
-              "atomic": 1,
-              "category": 4,
-              "inner": {
-                "category": 5,
-                "name": "CBaseEntity"
-              },
-              "name": "CHandle< CBaseEntity >",
-              "outer": "CHandle"
-            },
-            "name": "CUtlVector< CHandle< CBaseEntity > >"
           }
         },
         {
@@ -18583,6 +18894,26 @@
               "name": "bool"
             },
             "name": "CAnimGraphParamRef< bool >"
+          }
+        },
+        {
+          "name": "m_sActivityFinished",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CAnimGraphTagRef"
+          }
+        },
+        {
+          "name": "m_paramTurnAngle",
+          "type": {
+            "atomic": 1,
+            "category": 4,
+            "inner": {
+              "category": 0,
+              "name": "float32"
+            },
+            "name": "CAnimGraphParamRef< float32 >"
           }
         }
       ],
@@ -20517,6 +20848,13 @@
       "fields": [
         {
           "name": "m_bCreateNavObstacle",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_bNavObstacleUpdatesOverridden",
           "type": {
             "category": 0,
             "name": "bool"
@@ -22465,8 +22803,15 @@
         {
           "name": "m_iCustomDamageType",
           "type": {
+            "category": 6,
+            "name": "DamageTypes_t"
+          }
+        },
+        {
+          "name": "m_bCreateDebris",
+          "type": {
             "category": 0,
-            "name": "int32"
+            "name": "bool"
           }
         },
         {
@@ -24148,6 +24493,20 @@
           }
         },
         {
+          "name": "m_nVolumeDepth",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        },
+        {
+          "name": "m_fFirstVolumeSliceThickness",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
           "name": "m_nIndirectTextureDimX",
           "type": {
             "category": 0,
@@ -24442,6 +24801,13 @@
             "category": 0,
             "name": "bool"
           }
+        },
+        {
+          "name": "m_bAllowLPVIndirect",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
         }
       ],
       "parent": "CBaseEntity"
@@ -24675,11 +25041,16 @@
           }
         },
         {
-          "name": "m_iEntIndex",
+          "name": "m_hEntOwner",
           "type": {
-            "atomic": 0,
+            "atomic": 1,
             "category": 4,
-            "name": "CEntityIndex"
+            "inner": {
+              "category": 5,
+              "name": "CBaseEntity"
+            },
+            "name": "CHandle< CBaseEntity >",
+            "outer": "CHandle"
           }
         }
       ]
@@ -27398,6 +27769,13 @@
     "CFuncMover": {
       "fields": [
         {
+          "name": "m_bCreateMovableNavMesh",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
           "name": "m_iszPathName",
           "type": {
             "atomic": 0,
@@ -27518,7 +27896,21 @@
           }
         },
         {
+          "name": "m_flDistanceToReachMaxSpeed",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
           "name": "m_flTimeToReachZeroSpeed",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flDistanceToReachZeroSpeed",
           "type": {
             "category": 0,
             "name": "float32"
@@ -27558,43 +27950,116 @@
           }
         },
         {
-          "name": "m_bMatchPathNodeUp",
+          "name": "m_iszStartForwardSound",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CUtlSymbolLarge"
+          }
+        },
+        {
+          "name": "m_iszLoopForwardSound",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CUtlSymbolLarge"
+          }
+        },
+        {
+          "name": "m_iszStopForwardSound",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CUtlSymbolLarge"
+          }
+        },
+        {
+          "name": "m_iszStartReverseSound",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CUtlSymbolLarge"
+          }
+        },
+        {
+          "name": "m_iszLoopReverseSound",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CUtlSymbolLarge"
+          }
+        },
+        {
+          "name": "m_iszStopReverseSound",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CUtlSymbolLarge"
+          }
+        },
+        {
+          "name": "m_iszArriveAtDestinationSound",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CUtlSymbolLarge"
+          }
+        },
+        {
+          "name": "m_OnMovementEnd",
+          "type": {
+            "category": 5,
+            "name": "CEntityIOOutput"
+          }
+        },
+        {
+          "name": "m_bStartAtEnd",
           "type": {
             "category": 0,
             "name": "bool"
           }
         },
         {
-          "name": "m_bFacePlayer",
+          "name": "m_eOrientationUpdate",
           "type": {
-            "category": 0,
-            "name": "bool"
+            "category": 6,
+            "name": "CFuncMover::OrientationUpdate_t"
           }
         },
         {
-          "name": "m_flTimeStartRoll",
+          "name": "m_flTimeStartOrientationChange",
           "type": {
             "category": 5,
             "name": "GameTime_t"
           }
         },
         {
-          "name": "m_vOriginalUp",
-          "type": {
-            "atomic": 0,
-            "category": 4,
-            "name": "Vector"
-          }
-        },
-        {
-          "name": "m_flTimeToRollToNewUp",
+          "name": "m_flTimeToBlendToNewOrientation",
           "type": {
             "category": 0,
             "name": "float32"
           }
+        },
+        {
+          "name": "m_flDurationBlendToNewOrientationRan",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_qOriginalOrientation",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Quaternion"
+          }
         }
       ],
       "parent": "CBaseModelEntity"
+    },
+    "CFuncMoverAPI": {
+      "fields": []
     },
     "CFuncNavBlocker": {
       "fields": [
@@ -27805,71 +28270,6 @@
     "CFuncShatterglass": {
       "fields": [
         {
-          "name": "m_hGlassMaterialDamaged",
-          "type": {
-            "atomic": 1,
-            "category": 4,
-            "inner": {
-              "category": 5,
-              "name": "InfoForResourceTypeIMaterial2"
-            },
-            "name": "CStrongHandle< InfoForResourceTypeIMaterial2 >",
-            "outer": "CStrongHandle"
-          }
-        },
-        {
-          "name": "m_hGlassMaterialUndamaged",
-          "type": {
-            "atomic": 1,
-            "category": 4,
-            "inner": {
-              "category": 5,
-              "name": "InfoForResourceTypeIMaterial2"
-            },
-            "name": "CStrongHandle< InfoForResourceTypeIMaterial2 >",
-            "outer": "CStrongHandle"
-          }
-        },
-        {
-          "name": "m_hConcreteMaterialEdgeFace",
-          "type": {
-            "atomic": 1,
-            "category": 4,
-            "inner": {
-              "category": 5,
-              "name": "InfoForResourceTypeIMaterial2"
-            },
-            "name": "CStrongHandle< InfoForResourceTypeIMaterial2 >",
-            "outer": "CStrongHandle"
-          }
-        },
-        {
-          "name": "m_hConcreteMaterialEdgeCaps",
-          "type": {
-            "atomic": 1,
-            "category": 4,
-            "inner": {
-              "category": 5,
-              "name": "InfoForResourceTypeIMaterial2"
-            },
-            "name": "CStrongHandle< InfoForResourceTypeIMaterial2 >",
-            "outer": "CStrongHandle"
-          }
-        },
-        {
-          "name": "m_hConcreteMaterialEdgeFins",
-          "type": {
-            "atomic": 1,
-            "category": 4,
-            "inner": {
-              "category": 5,
-              "name": "InfoForResourceTypeIMaterial2"
-            },
-            "name": "CStrongHandle< InfoForResourceTypeIMaterial2 >",
-            "outer": "CStrongHandle"
-          }
-        },
-        {
           "name": "m_matPanelTransform",
           "type": {
             "atomic": 0,
@@ -27903,21 +28303,6 @@
             "atomic": 0,
             "category": 4,
             "name": "Vector2D"
-          }
-        },
-        {
-          "name": "m_vecPanelNormalWs",
-          "type": {
-            "atomic": 0,
-            "category": 4,
-            "name": "Vector"
-          }
-        },
-        {
-          "name": "m_nNumShardsEverCreated",
-          "type": {
-            "category": 0,
-            "name": "int32"
           }
         },
         {
@@ -27971,13 +28356,6 @@
         },
         {
           "name": "m_bBroken",
-          "type": {
-            "category": 0,
-            "name": "bool"
-          }
-        },
-        {
-          "name": "m_bHasRateLimitedShards",
           "type": {
             "category": 0,
             "name": "bool"
@@ -28070,6 +28448,19 @@
           }
         },
         {
+          "name": "m_vInitialPanelVertices",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "atomic": 0,
+              "category": 4,
+              "name": "Vector4D"
+            },
+            "name": "CUtlVector< Vector4D >"
+          }
+        },
+        {
           "name": "m_OnBroken",
           "type": {
             "category": 5,
@@ -28081,6 +28472,19 @@
           "type": {
             "category": 0,
             "name": "uint8"
+          }
+        },
+        {
+          "name": "m_hMaterialDamageBase",
+          "type": {
+            "atomic": 1,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "InfoForResourceTypeIMaterial2"
+            },
+            "name": "CStrongHandle< InfoForResourceTypeIMaterial2 >",
+            "outer": "CStrongHandle"
           }
         }
       ],
@@ -29326,6 +29730,26 @@
           }
         },
         {
+          "name": "m_hDestEntity",
+          "type": {
+            "atomic": 1,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "CBaseEntity"
+            },
+            "name": "CHandle< CBaseEntity >",
+            "outer": "CHandle"
+          }
+        },
+        {
+          "name": "m_flLockedSpeed",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
           "name": "m_flAngRate",
           "type": {
             "category": 0,
@@ -29393,6 +29817,60 @@
           "type": {
             "category": 0,
             "name": "bool"
+          }
+        }
+      ]
+    },
+    "CGameScriptedMoveDef_t": {
+      "fields": [
+        {
+          "name": "m_nType",
+          "type": {
+            "category": 6,
+            "name": "ScriptedMoveType_t"
+          }
+        },
+        {
+          "name": "m_vDestOffset",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector"
+          }
+        },
+        {
+          "name": "m_hDestEntity",
+          "type": {
+            "atomic": 1,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "CBaseEntity"
+            },
+            "name": "CHandle< CBaseEntity >",
+            "outer": "CHandle"
+          }
+        },
+        {
+          "name": "m_angDest",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "QAngle"
+          }
+        },
+        {
+          "name": "m_flDuration",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flAngRate",
+          "type": {
+            "category": 0,
+            "name": "float32"
           }
         }
       ]
@@ -31223,6 +31701,21 @@
           "type": {
             "category": 0,
             "name": "bool"
+          }
+        },
+        {
+          "name": "m_bIsMaster",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_pPawnSubclass",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CGlobalSymbol"
           }
         }
       ],
@@ -34756,17 +35249,17 @@
           }
         },
         {
-          "name": "m_nFirstMeshlet",
-          "type": {
-            "category": 0,
-            "name": "uint32"
-          }
-        },
-        {
           "name": "m_nNumMeshlets",
           "type": {
             "category": 0,
             "name": "uint16"
+          }
+        },
+        {
+          "name": "m_nFirstMeshlet",
+          "type": {
+            "category": 0,
+            "name": "uint32"
           }
         },
         {
@@ -36778,6 +37271,20 @@
           }
         },
         {
+          "name": "m_OnPassThroughForward",
+          "type": {
+            "category": 5,
+            "name": "CEntityIOOutput"
+          }
+        },
+        {
+          "name": "m_OnPassThroughReverse",
+          "type": {
+            "category": 5,
+            "name": "CEntityIOOutput"
+          }
+        },
+        {
           "name": "m_hMover",
           "type": {
             "atomic": 1,
@@ -37119,6 +37626,20 @@
           "type": {
             "category": 0,
             "name": "int32"
+          }
+        },
+        {
+          "name": "m_flowMapGenerationEnabled",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_flowMapNodeMaxRadius",
+          "type": {
+            "category": 0,
+            "name": "float32"
           }
         }
       ]
@@ -37871,6 +38392,174 @@
       ],
       "parent": "IParticleEffect"
     },
+    "CNmAdditiveBlendTask": {
+      "fields": [],
+      "parent": "CNmBlendTaskBase"
+    },
+    "CNmAndNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_conditionNodeIndices",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 0,
+              "name": "int16"
+            },
+            "name": "CUtlLeanVectorFixedGrowable< int16, 4 >"
+          }
+        }
+      ],
+      "parent": "CNmBoolValueNode::CDefinition"
+    },
+    "CNmAnimationPoseNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nPoseTimeValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_nDataSlotIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_inputTimeRemapRange",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Range_t"
+          }
+        },
+        {
+          "name": "m_flUserSpecifiedTime",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_bUseFramesAsInput",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        }
+      ],
+      "parent": "CNmPoseNode::CDefinition"
+    },
+    "CNmBitFlags": {
+      "fields": [
+        {
+          "name": "m_flags",
+          "type": {
+            "category": 0,
+            "name": "uint32"
+          }
+        }
+      ]
+    },
+    "CNmBlend1DNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_parameterization",
+          "type": {
+            "category": 5,
+            "name": "CNmParameterizedBlendNode::Parameterization_t"
+          }
+        }
+      ],
+      "parent": "CNmParameterizedBlendNode::CDefinition"
+    },
+    "CNmBlend2DNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_sourceNodeIndices",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 0,
+              "name": "int16"
+            },
+            "name": "CUtlVectorFixedGrowable< int16, 5 >"
+          }
+        },
+        {
+          "name": "m_nInputParameterNodeIdx0",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_nInputParameterNodeIdx1",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_values",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "atomic": 0,
+              "category": 4,
+              "name": "Vector2D"
+            },
+            "name": "CUtlVectorFixedGrowable< Vector2D, 10 >"
+          }
+        },
+        {
+          "name": "m_indices",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 0,
+              "name": "uint8"
+            },
+            "name": "CUtlVectorFixedGrowable< uint8, 30 >"
+          }
+        },
+        {
+          "name": "m_hullIndices",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 0,
+              "name": "uint8"
+            },
+            "name": "CUtlVectorFixedGrowable< uint8, 10 >"
+          }
+        },
+        {
+          "name": "m_bAllowLooping",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        }
+      ],
+      "parent": "CNmPoseNode::CDefinition"
+    },
+    "CNmBlendTask": {
+      "fields": [],
+      "parent": "CNmBlendTaskBase"
+    },
+    "CNmBlendTaskBase": {
+      "fields": [],
+      "parent": "CNmTask"
+    },
     "CNmBoneMask": {
       "fields": [
         {
@@ -37902,6 +38591,103 @@
         }
       ]
     },
+    "CNmBoneMaskBlendNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nSourceMaskNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_nTargetMaskNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_nBlendWeightValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        }
+      ],
+      "parent": "CNmBoneMaskValueNode::CDefinition"
+    },
+    "CNmBoneMaskNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_boneMaskID",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CGlobalSymbol"
+          }
+        }
+      ],
+      "parent": "CNmBoneMaskValueNode::CDefinition"
+    },
+    "CNmBoneMaskSelectorNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_defaultMaskNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_parameterValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_switchDynamically",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_maskNodeIndices",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 0,
+              "name": "int16"
+            },
+            "name": "CUtlVectorFixedGrowable< int16, 7 >"
+          }
+        },
+        {
+          "name": "m_parameterValues",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "atomic": 0,
+              "category": 4,
+              "name": "CGlobalSymbol"
+            },
+            "name": "CUtlVectorFixedGrowable< CGlobalSymbol, 7 >"
+          }
+        },
+        {
+          "name": "m_flBlendTimeSeconds",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        }
+      ],
+      "parent": "CNmBoneMaskValueNode::CDefinition"
+    },
     "CNmBoneMaskValueNode::CDefinition": {
       "fields": [],
       "parent": "CNmValueNode::CDefinition"
@@ -37909,6 +38695,109 @@
     "CNmBoolValueNode::CDefinition": {
       "fields": [],
       "parent": "CNmValueNode::CDefinition"
+    },
+    "CNmCachedBoolNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nInputValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_mode",
+          "type": {
+            "category": 6,
+            "name": "NmCachedValueMode_t"
+          }
+        }
+      ],
+      "parent": "CNmBoolValueNode::CDefinition"
+    },
+    "CNmCachedFloatNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nInputValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_mode",
+          "type": {
+            "category": 6,
+            "name": "NmCachedValueMode_t"
+          }
+        }
+      ],
+      "parent": "CNmFloatValueNode::CDefinition"
+    },
+    "CNmCachedIDNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nInputValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_mode",
+          "type": {
+            "category": 6,
+            "name": "NmCachedValueMode_t"
+          }
+        }
+      ],
+      "parent": "CNmIDValueNode::CDefinition"
+    },
+    "CNmCachedPoseReadTask": {
+      "fields": [],
+      "parent": "CNmTask"
+    },
+    "CNmCachedPoseWriteTask": {
+      "fields": [],
+      "parent": "CNmTask"
+    },
+    "CNmCachedTargetNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nInputValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_mode",
+          "type": {
+            "category": 6,
+            "name": "NmCachedValueMode_t"
+          }
+        }
+      ],
+      "parent": "CNmTargetValueNode::CDefinition"
+    },
+    "CNmCachedVectorNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nInputValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_mode",
+          "type": {
+            "category": 6,
+            "name": "NmCachedValueMode_t"
+          }
+        }
+      ],
+      "parent": "CNmVectorValueNode::CDefinition"
     },
     "CNmChildGraphNode::CDefinition": {
       "fields": [
@@ -38045,6 +38934,97 @@
       ],
       "parent": "CNmPoseNode::CDefinition"
     },
+    "CNmClipSelectorNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_optionNodeIndices",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 0,
+              "name": "int16"
+            },
+            "name": "CUtlLeanVectorFixedGrowable< int16, 5 >"
+          }
+        },
+        {
+          "name": "m_conditionNodeIndices",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 0,
+              "name": "int16"
+            },
+            "name": "CUtlLeanVectorFixedGrowable< int16, 5 >"
+          }
+        }
+      ],
+      "parent": "CNmPoseNode::CDefinition"
+    },
+    "CNmConstBoolNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_bValue",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        }
+      ],
+      "parent": "CNmBoolValueNode::CDefinition"
+    },
+    "CNmConstFloatNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_flValue",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        }
+      ],
+      "parent": "CNmFloatValueNode::CDefinition"
+    },
+    "CNmConstIDNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_value",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CGlobalSymbol"
+          }
+        }
+      ],
+      "parent": "CNmIDValueNode::CDefinition"
+    },
+    "CNmConstTargetNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_value",
+          "type": {
+            "category": 5,
+            "name": "CNmTarget"
+          }
+        }
+      ],
+      "parent": "CNmTargetValueNode::CDefinition"
+    },
+    "CNmConstVectorNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_value",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector"
+          }
+        }
+      ],
+      "parent": "CNmVectorValueNode::CDefinition"
+    },
     "CNmControlParameterBoolNode::CDefinition": {
       "fields": [],
       "parent": "CNmBoolValueNode::CDefinition"
@@ -38065,20 +39045,68 @@
       "fields": [],
       "parent": "CNmVectorValueNode::CDefinition"
     },
+    "CNmCurrentSyncEventIDNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nSourceStateNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        }
+      ],
+      "parent": "CNmIDValueNode::CDefinition"
+    },
+    "CNmCurrentSyncEventIndexNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nSourceStateNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        }
+      ],
+      "parent": "CNmFloatValueNode::CDefinition"
+    },
+    "CNmCurrentSyncEventPercentageThroughNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nSourceStateNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        }
+      ],
+      "parent": "CNmFloatValueNode::CDefinition"
+    },
+    "CNmDurationScaleNode::CDefinition": {
+      "fields": [],
+      "parent": "CNmSpeedScaleBaseNode::CDefinition"
+    },
     "CNmEvent": {
       "fields": [
         {
-          "name": "m_flStartTime",
+          "name": "m_flStartTimeSeconds",
           "type": {
             "category": 0,
             "name": "float32"
           }
         },
         {
-          "name": "m_flDuration",
+          "name": "m_flDurationSeconds",
           "type": {
             "category": 0,
             "name": "float32"
+          }
+        },
+        {
+          "name": "m_syncID",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CGlobalSymbol"
           }
         }
       ]
@@ -38086,6 +39114,356 @@
     "CNmExternalGraphNode::CDefinition": {
       "fields": [],
       "parent": "CNmPoseNode::CDefinition"
+    },
+    "CNmFixedWeightBoneMaskNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_flBoneWeight",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        }
+      ],
+      "parent": "CNmBoneMaskValueNode::CDefinition"
+    },
+    "CNmFloatAbsNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nInputValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        }
+      ],
+      "parent": "CNmFloatValueNode::CDefinition"
+    },
+    "CNmFloatAngleMathNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nInputValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_operation",
+          "type": {
+            "category": 6,
+            "name": "CNmFloatAngleMathNode::Operation_t"
+          }
+        }
+      ],
+      "parent": "CNmFloatValueNode::CDefinition"
+    },
+    "CNmFloatClampNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nInputValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_clampRange",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Range_t"
+          }
+        }
+      ],
+      "parent": "CNmFloatValueNode::CDefinition"
+    },
+    "CNmFloatComparisonNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nInputValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_nComparandValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_comparison",
+          "type": {
+            "category": 6,
+            "name": "CNmFloatComparisonNode::Comparison_t"
+          }
+        },
+        {
+          "name": "m_flEpsilon",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flComparisonValue",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        }
+      ],
+      "parent": "CNmBoolValueNode::CDefinition"
+    },
+    "CNmFloatCurveNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nInputValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_curve",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CPiecewiseCurve"
+          }
+        }
+      ],
+      "parent": "CNmFloatValueNode::CDefinition"
+    },
+    "CNmFloatEaseNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_flEaseTime",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flStartValue",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_nInputValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_easingOp",
+          "type": {
+            "category": 6,
+            "name": "NmEasingOperation_t"
+          }
+        },
+        {
+          "name": "m_bUseStartValue",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        }
+      ],
+      "parent": "CNmFloatValueNode::CDefinition"
+    },
+    "CNmFloatMathNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nInputValueNodeIdxA",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_nInputValueNodeIdxB",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_bReturnAbsoluteResult",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_operator",
+          "type": {
+            "category": 6,
+            "name": "CNmFloatMathNode::Operator_t"
+          }
+        },
+        {
+          "name": "m_flValueB",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        }
+      ],
+      "parent": "CNmFloatValueNode::CDefinition"
+    },
+    "CNmFloatRangeComparisonNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_range",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Range_t"
+          }
+        },
+        {
+          "name": "m_nInputValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_bIsInclusiveCheck",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        }
+      ],
+      "parent": "CNmBoolValueNode::CDefinition"
+    },
+    "CNmFloatRemapNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nInputValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_inputRange",
+          "type": {
+            "category": 5,
+            "name": "CNmFloatRemapNode::RemapRange_t"
+          }
+        },
+        {
+          "name": "m_outputRange",
+          "type": {
+            "category": 5,
+            "name": "CNmFloatRemapNode::RemapRange_t"
+          }
+        }
+      ],
+      "parent": "CNmFloatValueNode::CDefinition"
+    },
+    "CNmFloatRemapNode::RemapRange_t": {
+      "fields": [
+        {
+          "name": "m_flBegin",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flEnd",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        }
+      ]
+    },
+    "CNmFloatSelectorNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_conditionNodeIndices",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 0,
+              "name": "int16"
+            },
+            "name": "CUtlVectorFixedGrowable< int16, 5 >"
+          }
+        },
+        {
+          "name": "m_values",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 0,
+              "name": "float32"
+            },
+            "name": "CUtlVectorFixedGrowable< float32, 5 >"
+          }
+        },
+        {
+          "name": "m_flDefaultValue",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flEaseTime",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_easingOp",
+          "type": {
+            "category": 6,
+            "name": "NmEasingOperation_t"
+          }
+        }
+      ],
+      "parent": "CNmFloatValueNode::CDefinition"
+    },
+    "CNmFloatSwitchNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nSwitchValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_nTrueValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_nFalseValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        }
+      ],
+      "parent": "CNmFloatValueNode::CDefinition"
     },
     "CNmFloatValueNode::CDefinition": {
       "fields": [],
@@ -38102,6 +39480,77 @@
         }
       ],
       "parent": "CNmEvent"
+    },
+    "CNmFootEventConditionNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nSourceStateNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_phaseCondition",
+          "type": {
+            "category": 6,
+            "name": "NmFootPhaseCondition_t"
+          }
+        },
+        {
+          "name": "m_eventConditionRules",
+          "type": {
+            "category": 5,
+            "name": "CNmBitFlags"
+          }
+        }
+      ],
+      "parent": "CNmBoolValueNode::CDefinition"
+    },
+    "CNmFootstepEventIDNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nSourceStateNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_eventConditionRules",
+          "type": {
+            "category": 5,
+            "name": "CNmBitFlags"
+          }
+        }
+      ],
+      "parent": "CNmIDValueNode::CDefinition"
+    },
+    "CNmFootstepEventPercentageThroughNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nSourceStateNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_phaseCondition",
+          "type": {
+            "category": 6,
+            "name": "NmFootPhaseCondition_t"
+          }
+        },
+        {
+          "name": "m_eventConditionRules",
+          "type": {
+            "category": 5,
+            "name": "CNmBitFlags"
+          }
+        }
+      ],
+      "parent": "CNmFloatValueNode::CDefinition"
     },
     "CNmFrameSnapEvent": {
       "fields": [
@@ -38234,6 +39683,27 @@
             },
             "name": "CUtlVector< CNmGraphDefinition::ExternalGraphSlot_t >"
           }
+        },
+        {
+          "name": "m_nodePaths",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "atomic": 0,
+              "category": 4,
+              "name": "CUtlString"
+            },
+            "name": "CUtlVector< CUtlString >"
+          }
+        },
+        {
+          "name": "m_runtimeVersionID",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "V_uuid_t"
+          }
         }
       ]
     },
@@ -38308,6 +39778,38 @@
         }
       ]
     },
+    "CNmIDComparisonNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nInputValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_comparison",
+          "type": {
+            "category": 6,
+            "name": "CNmIDComparisonNode::Comparison_t"
+          }
+        },
+        {
+          "name": "m_comparisionIDs",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "atomic": 0,
+              "category": 4,
+              "name": "CGlobalSymbol"
+            },
+            "name": "CUtlLeanVectorFixedGrowable< CGlobalSymbol, 4 >"
+          }
+        }
+      ],
+      "parent": "CNmBoolValueNode::CDefinition"
+    },
     "CNmIDEvent": {
       "fields": [
         {
@@ -38321,9 +39823,167 @@
       ],
       "parent": "CNmEvent"
     },
+    "CNmIDEventConditionNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nSourceStateNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_eventConditionRules",
+          "type": {
+            "category": 5,
+            "name": "CNmBitFlags"
+          }
+        },
+        {
+          "name": "m_eventIDs",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "atomic": 0,
+              "category": 4,
+              "name": "CGlobalSymbol"
+            },
+            "name": "CUtlVectorFixedGrowable< CGlobalSymbol, 5 >"
+          }
+        }
+      ],
+      "parent": "CNmBoolValueNode::CDefinition"
+    },
+    "CNmIDEventNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nSourceStateNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_eventConditionRules",
+          "type": {
+            "category": 5,
+            "name": "CNmBitFlags"
+          }
+        },
+        {
+          "name": "m_defaultValue",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CGlobalSymbol"
+          }
+        }
+      ],
+      "parent": "CNmIDValueNode::CDefinition"
+    },
+    "CNmIDEventPercentageThroughNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nSourceStateNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_eventConditionRules",
+          "type": {
+            "category": 5,
+            "name": "CNmBitFlags"
+          }
+        },
+        {
+          "name": "m_eventID",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CGlobalSymbol"
+          }
+        }
+      ],
+      "parent": "CNmBoolValueNode::CDefinition"
+    },
+    "CNmIDToFloatNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nInputValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_defaultValue",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_IDs",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "atomic": 0,
+              "category": 4,
+              "name": "CGlobalSymbol"
+            },
+            "name": "CUtlLeanVectorFixedGrowable< CGlobalSymbol, 5 >"
+          }
+        },
+        {
+          "name": "m_values",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 0,
+              "name": "float32"
+            },
+            "name": "CUtlLeanVectorFixedGrowable< float32, 5 >"
+          }
+        }
+      ],
+      "parent": "CNmFloatValueNode::CDefinition"
+    },
     "CNmIDValueNode::CDefinition": {
       "fields": [],
       "parent": "CNmValueNode::CDefinition"
+    },
+    "CNmIKRig": {
+      "fields": [
+        {
+          "name": "m_skeleton",
+          "type": {
+            "atomic": 1,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "InfoForResourceTypeCNmSkeleton"
+            },
+            "name": "CStrongHandle< InfoForResourceTypeCNmSkeleton >"
+          }
+        }
+      ]
+    },
+    "CNmIsTargetSetNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nInputValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        }
+      ],
+      "parent": "CNmBoolValueNode::CDefinition"
     },
     "CNmLayerBlendNode::CDefinition": {
       "fields": [
@@ -38350,7 +40010,7 @@
               "category": 5,
               "name": "CNmLayerBlendNode::LayerDefinition_t"
             },
-            "name": "CUtlLeanVectorFixedGrowable< CNmLayerBlendNode::LayerDefinition_t >"
+            "name": "CUtlLeanVectorFixedGrowable< CNmLayerBlendNode::LayerDefinition_t, 3 >"
           }
         }
       ],
@@ -38417,8 +40077,235 @@
       ]
     },
     "CNmLegacyEvent": {
+      "fields": [
+        {
+          "name": "m_animEventClassName",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CUtlString"
+          }
+        },
+        {
+          "name": "m_KV",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "KeyValues3"
+          }
+        }
+      ],
+      "parent": "CNmEvent"
+    },
+    "CNmModelSpaceBlendTask": {
+      "fields": [],
+      "parent": "CNmBlendTaskBase"
+    },
+    "CNmNotNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nInputValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        }
+      ],
+      "parent": "CNmBoolValueNode::CDefinition"
+    },
+    "CNmOrNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_conditionNodeIndices",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 0,
+              "name": "int16"
+            },
+            "name": "CUtlLeanVectorFixedGrowable< int16, 4 >"
+          }
+        }
+      ],
+      "parent": "CNmBoolValueNode::CDefinition"
+    },
+    "CNmOrientationWarpEvent": {
       "fields": [],
       "parent": "CNmEvent"
+    },
+    "CNmOrientationWarpNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nClipReferenceNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_nTargetValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_bIsOffsetNode",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_bIsOffsetRelativeToCharacter",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_samplingMode",
+          "type": {
+            "category": 6,
+            "name": "CNmRootMotionData::SamplingMode_t"
+          }
+        }
+      ],
+      "parent": "CNmPoseNode::CDefinition"
+    },
+    "CNmOverlayBlendTask": {
+      "fields": [],
+      "parent": "CNmBlendTaskBase"
+    },
+    "CNmParameterizedBlendNode::BlendRange_t": {
+      "fields": [
+        {
+          "name": "m_nInputIdx0",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_nInputIdx1",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_parameterValueRange",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Range_t"
+          }
+        }
+      ]
+    },
+    "CNmParameterizedBlendNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_sourceNodeIndices",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 0,
+              "name": "int16"
+            },
+            "name": "CUtlVectorFixedGrowable< int16, 5 >"
+          }
+        },
+        {
+          "name": "m_nInputParameterValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_bAllowLooping",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        }
+      ],
+      "parent": "CNmPoseNode::CDefinition"
+    },
+    "CNmParameterizedBlendNode::Parameterization_t": {
+      "fields": [
+        {
+          "name": "m_blendRanges",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "CNmParameterizedBlendNode::BlendRange_t"
+            },
+            "name": "CUtlLeanVectorFixedGrowable< CNmParameterizedBlendNode::BlendRange_t, 5 >"
+          }
+        },
+        {
+          "name": "m_parameterRange",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Range_t"
+          }
+        }
+      ]
+    },
+    "CNmParameterizedClipSelectorNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_optionNodeIndices",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 0,
+              "name": "int16"
+            },
+            "name": "CUtlLeanVectorFixedGrowable< int16, 5 >"
+          }
+        },
+        {
+          "name": "m_parameterNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        }
+      ],
+      "parent": "CNmPoseNode::CDefinition"
+    },
+    "CNmParameterizedSelectorNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_optionNodeIndices",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 0,
+              "name": "int16"
+            },
+            "name": "CUtlLeanVectorFixedGrowable< int16, 5 >"
+          }
+        },
+        {
+          "name": "m_parameterNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        }
+      ],
+      "parent": "CNmPoseNode::CDefinition"
     },
     "CNmPassthroughNode::CDefinition": {
       "fields": [
@@ -38435,6 +40322,14 @@
     "CNmPoseNode::CDefinition": {
       "fields": [],
       "parent": "CNmGraphNode::CDefinition"
+    },
+    "CNmReferencePoseNode::CDefinition": {
+      "fields": [],
+      "parent": "CNmPoseNode::CDefinition"
+    },
+    "CNmReferencePoseTask": {
+      "fields": [],
+      "parent": "CNmTask"
     },
     "CNmRootMotionData": {
       "fields": [
@@ -38481,6 +40376,105 @@
           }
         }
       ]
+    },
+    "CNmRootMotionEvent": {
+      "fields": [
+        {
+          "name": "m_flBlendTimeSeconds",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        }
+      ],
+      "parent": "CNmEvent"
+    },
+    "CNmRootMotionOverrideNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_desiredMovingVelocityNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_desiredFacingDirectionNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_linearVelocityLimitNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_angularVelocityLimitNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_maxLinearVelocity",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_maxAngularVelocityRadians",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_overrideFlags",
+          "type": {
+            "category": 5,
+            "name": "CNmBitFlags"
+          }
+        }
+      ],
+      "parent": "CNmPassthroughNode::CDefinition"
+    },
+    "CNmSampleTask": {
+      "fields": [],
+      "parent": "CNmTask"
+    },
+    "CNmSelectorNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_optionNodeIndices",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 0,
+              "name": "int16"
+            },
+            "name": "CUtlLeanVectorFixedGrowable< int16, 5 >"
+          }
+        },
+        {
+          "name": "m_conditionNodeIndices",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 0,
+              "name": "int16"
+            },
+            "name": "CUtlLeanVectorFixedGrowable< int16, 5 >"
+          }
+        }
+      ],
+      "parent": "CNmPoseNode::CDefinition"
     },
     "CNmSkeleton": {
       "fields": [
@@ -38564,10 +40558,109 @@
         }
       ]
     },
+    "CNmSpeedScaleBaseNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nInputValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_flDefaultInputValue",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        }
+      ],
+      "parent": "CNmPassthroughNode::CDefinition"
+    },
+    "CNmSpeedScaleNode::CDefinition": {
+      "fields": [],
+      "parent": "CNmSpeedScaleBaseNode::CDefinition"
+    },
+    "CNmStateCompletedConditionNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nSourceStateNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_nTransitionDurationOverrideNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_flTransitionDurationSeconds",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        }
+      ],
+      "parent": "CNmBoolValueNode::CDefinition"
+    },
+    "CNmStateEventConditionNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nSourceStateNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_eventConditionRules",
+          "type": {
+            "category": 5,
+            "name": "CNmBitFlags"
+          }
+        },
+        {
+          "name": "m_conditions",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "CNmStateEventConditionNode::Condition_t"
+            },
+            "name": "CUtlVectorFixedGrowable< CNmStateEventConditionNode::Condition_t, 5 >"
+          }
+        }
+      ],
+      "parent": "CNmBoolValueNode::CDefinition"
+    },
+    "CNmStateEventConditionNode::Condition_t": {
+      "fields": [
+        {
+          "name": "m_eventID",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CGlobalSymbol"
+          }
+        },
+        {
+          "name": "m_eventTypeCondition",
+          "type": {
+            "category": 6,
+            "name": "NmStateEventTypeCondition_t"
+          }
+        }
+      ]
+    },
     "CNmStateMachineNode::CDefinition": {
       "fields": [
         {
-          "name": "m_stateDefinition",
+          "name": "m_stateDefinitions",
           "type": {
             "atomic": 2,
             "category": 4,
@@ -38575,7 +40668,7 @@
               "category": 5,
               "name": "CNmStateMachineNode::StateDefinition_t"
             },
-            "name": "CUtlLeanVectorFixedGrowable< CNmStateMachineNode::StateDefinition_t >"
+            "name": "CUtlLeanVectorFixedGrowable< CNmStateMachineNode::StateDefinition_t, 5 >"
           }
         },
         {
@@ -38598,14 +40691,14 @@
           }
         },
         {
-          "name": "m_entryConditionNodeIdx",
+          "name": "m_nEntryConditionNodeIdx",
           "type": {
             "category": 0,
             "name": "int16"
           }
         },
         {
-          "name": "m_transitionDefinition",
+          "name": "m_transitionDefinitions",
           "type": {
             "atomic": 2,
             "category": 4,
@@ -38613,7 +40706,7 @@
               "category": 5,
               "name": "CNmStateMachineNode::TransitionDefinition_t"
             },
-            "name": "CUtlLeanVectorFixedGrowable< CNmStateMachineNode::TransitionDefinition_t >"
+            "name": "CUtlLeanVectorFixedGrowable< CNmStateMachineNode::TransitionDefinition_t, 5 >"
           }
         }
       ]
@@ -38669,7 +40762,7 @@
               "category": 4,
               "name": "CGlobalSymbol"
             },
-            "name": "CUtlLeanVectorFixedGrowable< CGlobalSymbol >"
+            "name": "CUtlLeanVectorFixedGrowable< CGlobalSymbol, 3 >"
           }
         },
         {
@@ -38682,7 +40775,7 @@
               "category": 4,
               "name": "CGlobalSymbol"
             },
-            "name": "CUtlLeanVectorFixedGrowable< CGlobalSymbol >"
+            "name": "CUtlLeanVectorFixedGrowable< CGlobalSymbol, 3 >"
           }
         },
         {
@@ -38695,7 +40788,7 @@
               "category": 4,
               "name": "CGlobalSymbol"
             },
-            "name": "CUtlLeanVectorFixedGrowable< CGlobalSymbol >"
+            "name": "CUtlLeanVectorFixedGrowable< CGlobalSymbol, 3 >"
           }
         },
         {
@@ -38707,7 +40800,7 @@
               "category": 5,
               "name": "CNmStateNode::TimedEvent_t"
             },
-            "name": "CUtlLeanVectorFixedGrowable< CNmStateNode::TimedEvent_t >"
+            "name": "CUtlLeanVectorFixedGrowable< CNmStateNode::TimedEvent_t, 1 >"
           }
         },
         {
@@ -38719,7 +40812,7 @@
               "category": 5,
               "name": "CNmStateNode::TimedEvent_t"
             },
-            "name": "CUtlLeanVectorFixedGrowable< CNmStateNode::TimedEvent_t >"
+            "name": "CUtlLeanVectorFixedGrowable< CNmStateNode::TimedEvent_t, 1 >"
           }
         },
         {
@@ -38764,13 +40857,39 @@
           }
         },
         {
-          "name": "m_timeValue",
+          "name": "m_flTimeValueSeconds",
           "type": {
             "category": 0,
             "name": "float32"
           }
         }
       ]
+    },
+    "CNmSyncEventIndexConditionNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nSourceStateNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_triggerMode",
+          "type": {
+            "category": 6,
+            "name": "CNmSyncEventIndexConditionNode::TriggerMode_t"
+          }
+        },
+        {
+          "name": "m_syncEventIdx",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        }
+      ],
+      "parent": "CNmBoolValueNode::CDefinition"
     },
     "CNmSyncTrack": {
       "fields": [
@@ -38783,7 +40902,7 @@
               "category": 5,
               "name": "CNmSyncTrack::Event_t"
             },
-            "name": "CUtlLeanVectorFixedGrowable< CNmSyncTrack::Event_t >"
+            "name": "CUtlLeanVectorFixedGrowable< CNmSyncTrack::Event_t, 10 >"
           }
         },
         {
@@ -38888,9 +41007,219 @@
         }
       ]
     },
+    "CNmTargetInfoNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nInputValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_infoType",
+          "type": {
+            "category": 6,
+            "name": "CNmTargetInfoNode::Info_t"
+          }
+        },
+        {
+          "name": "m_bIsWorldSpaceTarget",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        }
+      ],
+      "parent": "CNmFloatValueNode::CDefinition"
+    },
+    "CNmTargetOffsetNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nInputValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_bIsBoneSpaceOffset",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_rotationOffset",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Quaternion"
+          }
+        },
+        {
+          "name": "m_translationOffset",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector"
+          }
+        }
+      ],
+      "parent": "CNmTargetValueNode::CDefinition"
+    },
+    "CNmTargetPointNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nInputValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_bIsWorldSpaceTarget",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        }
+      ],
+      "parent": "CNmVectorValueNode::CDefinition"
+    },
     "CNmTargetValueNode::CDefinition": {
       "fields": [],
       "parent": "CNmValueNode::CDefinition"
+    },
+    "CNmTargetWarpEvent": {
+      "fields": [
+        {
+          "name": "m_rule",
+          "type": {
+            "category": 6,
+            "name": "NmTargetWarpRule_t"
+          }
+        },
+        {
+          "name": "m_algorithm",
+          "type": {
+            "category": 6,
+            "name": "NmTargetWarpAlgorithm_t"
+          }
+        }
+      ],
+      "parent": "CNmEvent"
+    },
+    "CNmTargetWarpNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nClipReferenceNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_nTargetValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_samplingMode",
+          "type": {
+            "category": 6,
+            "name": "CNmRootMotionData::SamplingMode_t"
+          }
+        },
+        {
+          "name": "m_bAllowTargetUpdate",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_flSamplingPositionErrorThresholdSq",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flMaxTangentLength",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flLerpFallbackDistanceThreshold",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flTargetUpdateDistanceThreshold",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flTargetUpdateAngleThresholdRadians",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        }
+      ],
+      "parent": "CNmPoseNode::CDefinition"
+    },
+    "CNmTask": {
+      "fields": []
+    },
+    "CNmTimeConditionNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_sourceStateNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_nInputValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_flComparand",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_type",
+          "type": {
+            "category": 6,
+            "name": "CNmTimeConditionNode::ComparisonType_t"
+          }
+        },
+        {
+          "name": "m_operator",
+          "type": {
+            "category": 6,
+            "name": "CNmTimeConditionNode::Operator_t"
+          }
+        }
+      ],
+      "parent": "CNmBoolValueNode::CDefinition"
     },
     "CNmTransitionEvent": {
       "fields": [
@@ -38912,17 +41241,51 @@
       ],
       "parent": "CNmEvent"
     },
-    "CNmTransitionNode::CDefinition": {
+    "CNmTransitionEventConditionNode::CDefinition": {
       "fields": [
         {
-          "name": "m_targetCNmStateNodeIdx",
+          "name": "m_requireRuleID",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CGlobalSymbol"
+          }
+        },
+        {
+          "name": "m_eventConditionRules",
+          "type": {
+            "category": 5,
+            "name": "CNmBitFlags"
+          }
+        },
+        {
+          "name": "m_nSourceStateNodeIdx",
           "type": {
             "category": 0,
             "name": "int16"
           }
         },
         {
-          "name": "m_durationOverrideNodeIdx",
+          "name": "m_ruleCondition",
+          "type": {
+            "category": 6,
+            "name": "NmTransitionRuleCondition_t"
+          }
+        }
+      ],
+      "parent": "CNmBoolValueNode::CDefinition"
+    },
+    "CNmTransitionNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nTargetStateNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_nDurationOverrideNodeIdx",
           "type": {
             "category": 0,
             "name": "int16"
@@ -38966,8 +41329,8 @@
         {
           "name": "m_transitionOptions",
           "type": {
-            "category": 6,
-            "name": "CNmTransitionNode::TransitionOptions_t"
+            "category": 5,
+            "name": "CNmBitFlags"
           }
         },
         {
@@ -38998,9 +41361,81 @@
       "fields": [],
       "parent": "CNmGraphNode::CDefinition"
     },
+    "CNmVectorCreateNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_inputVectorValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_inputValueXNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_inputValueYNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_inputValueZNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        }
+      ],
+      "parent": "CNmVectorValueNode::CDefinition"
+    },
+    "CNmVectorInfoNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nInputValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_desiredInfo",
+          "type": {
+            "category": 6,
+            "name": "CNmVectorInfoNode::Info_t"
+          }
+        }
+      ],
+      "parent": "CNmFloatValueNode::CDefinition"
+    },
+    "CNmVectorNegateNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nInputValueNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        }
+      ],
+      "parent": "CNmVectorValueNode::CDefinition"
+    },
     "CNmVectorValueNode::CDefinition": {
       "fields": [],
       "parent": "CNmValueNode::CDefinition"
+    },
+    "CNmVelocityBasedSpeedScaleNode::CDefinition": {
+      "fields": [],
+      "parent": "CNmSpeedScaleBaseNode::CDefinition"
+    },
+    "CNmVelocityBlendNode::CDefinition": {
+      "fields": [],
+      "parent": "CNmParameterizedBlendNode::CDefinition"
     },
     "CNmVirtualParameterBoneMaskNode::CDefinition": {
       "fields": [
@@ -39074,6 +41509,14 @@
       ],
       "parent": "CNmVectorValueNode::CDefinition"
     },
+    "CNmZeroPoseNode::CDefinition": {
+      "fields": [],
+      "parent": "CNmPoseNode::CDefinition"
+    },
+    "CNmZeroPoseTask": {
+      "fields": [],
+      "parent": "CNmTask"
+    },
     "CNullEntity": {
       "fields": [],
       "parent": "CBaseEntity"
@@ -39108,6 +41551,25 @@
       "fields": [],
       "parent": "CBaseConstraint"
     },
+    "COrientationWarpUpdateNode": {
+      "fields": [
+        {
+          "name": "m_hFacingPositionParameter",
+          "type": {
+            "category": 5,
+            "name": "CAnimParamHandle"
+          }
+        },
+        {
+          "name": "m_turnDamping",
+          "type": {
+            "category": 5,
+            "name": "CAnimInputDamping"
+          }
+        }
+      ],
+      "parent": "CUnaryUpdateNode"
+    },
     "COrnamentProp": {
       "fields": [
         {
@@ -39120,6 +41582,23 @@
         }
       ],
       "parent": "CDynamicProp"
+    },
+    "CPairedSequenceComponentUpdater": {
+      "fields": [],
+      "parent": "CAnimComponentUpdater"
+    },
+    "CPairedSequenceUpdateNode": {
+      "fields": [
+        {
+          "name": "m_sPairedSequenceRole",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CGlobalSymbol"
+          }
+        }
+      ],
+      "parent": "CSequenceUpdateNodeBase"
     },
     "CParamSpanUpdater": {
       "fields": [
@@ -39549,6 +42028,13 @@
           "type": {
             "category": 0,
             "name": "float32"
+          }
+        },
+        {
+          "name": "m_nRoundType",
+          "type": {
+            "category": 6,
+            "name": "ParticleFloatRoundType_t"
           }
         },
         {
@@ -41462,6 +43948,9 @@
       ],
       "parent": "CBaseEntity"
     },
+    "CPathSimpleAPI": {
+      "fields": []
+    },
     "CPathTrack": {
       "fields": [
         {
@@ -41605,13 +44094,6 @@
           "type": {
             "category": 0,
             "name": "int32"
-          }
-        },
-        {
-          "name": "m_massScale",
-          "type": {
-            "category": 0,
-            "name": "float32"
           }
         },
         {
@@ -42655,6 +45137,20 @@
             "category": 0,
             "name": "float32"
           }
+        },
+        {
+          "name": "m_heatConductivity",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flashpoint",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
         }
       ]
     },
@@ -43135,6 +45631,43 @@
           }
         },
         {
+          "name": "m_CrateType",
+          "type": {
+            "category": 6,
+            "name": "CPhysicsProp::CrateType_t"
+          }
+        },
+        {
+          "name": "m_strItemClass",
+          "type": {
+            "category": 3,
+            "inner": {
+              "atomic": 0,
+              "category": 4,
+              "name": "CUtlSymbolLarge"
+            },
+            "name": "CUtlSymbolLarge[4]"
+          }
+        },
+        {
+          "name": "m_nItemCount",
+          "type": {
+            "category": 3,
+            "inner": {
+              "category": 0,
+              "name": "int32"
+            },
+            "name": "int32[4]"
+          }
+        },
+        {
+          "name": "m_bRemovableForAmmoBalancing",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
           "name": "m_bAwake",
           "type": {
             "category": 0,
@@ -43313,6 +45846,13 @@
           "type": {
             "category": 0,
             "name": "int32"
+          }
+        },
+        {
+          "name": "m_AttributeManager",
+          "type": {
+            "category": 5,
+            "name": "CAttributeContainer"
           }
         },
         {
@@ -44641,6 +47181,13 @@
           }
         },
         {
+          "name": "m_bAlignWithParent",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
           "name": "m_bDofEnabled",
           "type": {
             "category": 0,
@@ -44728,6 +47275,18 @@
         }
       ],
       "parent": "CPointCamera"
+    },
+    "CPointChildModifier": {
+      "fields": [
+        {
+          "name": "m_bOrphanInsteadOfDeletingChildrenOnRemove",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        }
+      ],
+      "parent": "CPointEntity"
     },
     "CPointClientCommand": {
       "fields": [],
@@ -45327,8 +47886,8 @@
         {
           "name": "m_bitsDamageType",
           "type": {
-            "category": 0,
-            "name": "int32"
+            "category": 6,
+            "name": "DamageTypes_t"
           }
         },
         {
@@ -46949,6 +49508,13 @@
             "category": 5,
             "name": "CPulse_BlackboardReference"
           }
+        },
+        {
+          "name": "m_bSelfReference",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
         }
       ],
       "parent": "CPulseCell_Inflow_BaseEntrypoint"
@@ -47130,7 +49696,7 @@
               "category": 0,
               "name": "uint8"
             },
-            "name": "CUtlVectorFixedGrowable< uint8 >"
+            "name": "CUtlVectorFixedGrowable< uint8, 8 >"
           }
         },
         {
@@ -47314,6 +49880,35 @@
     },
     "CPulseCell_Outflow_ScriptedSequence": {
       "fields": [
+        {
+          "name": "m_szSyncGroup",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CUtlString"
+          }
+        },
+        {
+          "name": "m_nExpectedNumSequencesInSyncGroup",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        },
+        {
+          "name": "m_bEnsureOnNavmeshOnFinish",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_bDontTeleportAtEnd",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
         {
           "name": "m_scriptedSequenceDataMain",
           "type": {
@@ -47600,6 +50195,19 @@
       ],
       "parent": "CPulseCell_BaseFlow"
     },
+    "CPulseCell_Step_SetAnimGraphParam": {
+      "fields": [
+        {
+          "name": "m_ParamName",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CUtlString"
+          }
+        }
+      ],
+      "parent": "CPulseCell_BaseFlow"
+    },
     "CPulseCell_Step_TestDomainCreateFakeEntity": {
       "fields": [],
       "parent": "CPulseCell_BaseFlow"
@@ -47821,6 +50429,19 @@
         }
       ]
     },
+    "CPulseCell_Unknown": {
+      "fields": [
+        {
+          "name": "m_UnknownKeys",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "KeyValues3"
+          }
+        }
+      ],
+      "parent": "CPulseCell_Base"
+    },
     "CPulseCell_Val_TestDomainFindEntityByName": {
       "fields": [],
       "parent": "CPulseCell_BaseValue"
@@ -47853,6 +50474,10 @@
           }
         }
       ],
+      "parent": "CPulseCell_BaseValue"
+    },
+    "CPulseCell_Value_RandomFloat": {
+      "fields": [],
       "parent": "CPulseCell_BaseValue"
     },
     "CPulseCell_Value_RandomInt": {
@@ -47917,7 +50542,8 @@
       "fields": []
     },
     "CPulseExecCursor": {
-      "fields": []
+      "fields": [],
+      "parent": "IGapHost_YieldingCursor"
     },
     "CPulseGraphComponentBase": {
       "fields": [
@@ -47959,6 +50585,14 @@
         },
         {
           "name": "m_sNameFixupLocal",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CUtlSymbolLarge"
+          }
+        },
+        {
+          "name": "m_sProceduralWorldNameForRelays",
           "type": {
             "atomic": 0,
             "category": 4,
@@ -48327,17 +50961,10 @@
         }
       ]
     },
-    "CPulseServerCursor": {
-      "fields": [],
-      "parent": "CPulseExecCursor"
-    },
     "CPulseServerFuncs": {
       "fields": []
     },
     "CPulseServerFuncs_Sounds": {
-      "fields": []
-    },
-    "CPulseTestFuncs_DerivedDomain": {
       "fields": []
     },
     "CPulseTestFuncs_LibraryA": {
@@ -49726,6 +52353,18 @@
           }
         },
         {
+          "name": "m_hairPositionOffsets",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 0,
+              "name": "uint32"
+            },
+            "name": "CUtlVector< uint32 >"
+          }
+        },
+        {
           "name": "m_hSimParamsMat",
           "type": {
             "atomic": 1,
@@ -49787,13 +52426,6 @@
           }
         },
         {
-          "name": "m_flSumOfAllHairLengths",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
           "name": "m_bEnableSimulation",
           "type": {
             "category": 0,
@@ -49813,7 +52445,7 @@
               "category": 5,
               "name": "CSceneObjectData"
             },
-            "name": "CUtlVectorFixedGrowable< CSceneObjectData >"
+            "name": "CUtlLeanVectorFixedGrowable< CSceneObjectData, 1 >"
           }
         },
         {
@@ -49829,7 +52461,7 @@
               },
               "name": "CBaseConstraint*"
             },
-            "name": "CUtlVector< CBaseConstraint* >"
+            "name": "CUtlLeanVector< CBaseConstraint* >"
           }
         },
         {
@@ -51726,7 +54358,7 @@
               "category": 5,
               "name": "CMaterialDrawDescriptor"
             },
-            "name": "CUtlVector< CMaterialDrawDescriptor >"
+            "name": "CUtlLeanVector< CMaterialDrawDescriptor >"
           }
         },
         {
@@ -51738,7 +54370,7 @@
               "category": 5,
               "name": "AABB_t"
             },
-            "name": "CUtlVector< AABB_t >"
+            "name": "CUtlLeanVector< AABB_t >"
           }
         },
         {
@@ -51750,7 +54382,7 @@
               "category": 5,
               "name": "CMeshletDescriptor"
             },
-            "name": "CUtlVector< CMeshletDescriptor >"
+            "name": "CUtlLeanVector< CMeshletDescriptor >"
           }
         },
         {
@@ -52147,6 +54779,13 @@
           }
         },
         {
+          "name": "m_nHeldWeaponBehavior",
+          "type": {
+            "category": 6,
+            "name": "ScriptedHeldWeaponBehavior_t"
+          }
+        },
+        {
           "name": "m_bIsPlayingPreIdle",
           "type": {
             "category": 0,
@@ -52340,6 +54979,13 @@
           "type": {
             "category": 0,
             "name": "float32"
+          }
+        },
+        {
+          "name": "m_bWaitUntilMoveCompletesToStartAnimation",
+          "type": {
+            "category": 0,
+            "name": "bool"
           }
         },
         {
@@ -53825,8 +56471,46 @@
         }
       ]
     },
+    "CSequenceTagSpans": {
+      "fields": [
+        {
+          "name": "m_sSequenceName",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CGlobalSymbol"
+          }
+        },
+        {
+          "name": "m_tags",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "TagSpan_t"
+            },
+            "name": "CUtlVector< TagSpan_t >"
+          }
+        }
+      ]
+    },
     "CSequenceUpdateNode": {
       "fields": [
+        {
+          "name": "m_hSequence",
+          "type": {
+            "category": 5,
+            "name": "HSequence"
+          }
+        },
+        {
+          "name": "m_duration",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
         {
           "name": "m_paramSpans",
           "type": {
@@ -53845,23 +56529,14 @@
             },
             "name": "CUtlVector< TagSpan_t >"
           }
-        },
-        {
-          "name": "m_hSequence",
-          "type": {
-            "category": 5,
-            "name": "HSequence"
-          }
-        },
+        }
+      ],
+      "parent": "CSequenceUpdateNodeBase"
+    },
+    "CSequenceUpdateNodeBase": {
+      "fields": [
         {
           "name": "m_playbackSpeed",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
-          "name": "m_duration",
           "type": {
             "category": 0,
             "name": "float32"
@@ -54062,13 +56737,6 @@
           }
         },
         {
-          "name": "m_nParentPanelsNthShard",
-          "type": {
-            "category": 0,
-            "name": "int32"
-          }
-        },
-        {
           "name": "m_nSubShardGeneration",
           "type": {
             "category": 0,
@@ -54132,13 +56800,6 @@
           "type": {
             "category": 5,
             "name": "GameTime_t"
-          }
-        },
-        {
-          "name": "m_bShatterRateLimited",
-          "type": {
-            "category": 0,
-            "name": "bool"
           }
         },
         {
@@ -54928,6 +57589,105 @@
       ],
       "parent": "CSosGroupActionSchema"
     },
+    "CSosGroupActionSoundeventCountSchema": {
+      "fields": [
+        {
+          "name": "m_bExcludeStoppedSounds",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_strCountKeyName",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CUtlString"
+          }
+        }
+      ],
+      "parent": "CSosGroupActionSchema"
+    },
+    "CSosGroupActionSoundeventMinMaxValuesSchema": {
+      "fields": [
+        {
+          "name": "m_strQueryPublicFieldName",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CUtlString"
+          }
+        },
+        {
+          "name": "m_strDelayPublicFieldName",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CUtlString"
+          }
+        },
+        {
+          "name": "m_bExcludeStoppedSounds",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_bExcludeDelayedSounds",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_bExcludeSoundsBelowThreshold",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_flExcludeSoundsMinThresholdValue",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_bExcludSoundsAboveThreshold",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_flExcludeSoundsMaxThresholdValue",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_strMinValueName",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CUtlString"
+          }
+        },
+        {
+          "name": "m_strMaxValueName",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CUtlString"
+          }
+        }
+      ],
+      "parent": "CSosGroupActionSchema"
+    },
     "CSosGroupActionSoundeventPrioritySchema": {
       "fields": [
         {
@@ -55332,6 +58092,84 @@
       ],
       "parent": "CSoundAreaEntityBase"
     },
+    "CSoundContainerReference": {
+      "fields": [
+        {
+          "name": "m_bUseReference",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_sound",
+          "type": {
+            "atomic": 1,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "InfoForResourceTypeCVoiceContainerBase"
+            },
+            "name": "CStrongHandle< InfoForResourceTypeCVoiceContainerBase >"
+          }
+        },
+        {
+          "name": "m_pSound",
+          "type": {
+            "category": 1,
+            "inner": {
+              "category": 5,
+              "name": "CVoiceContainerBase"
+            },
+            "name": "CVoiceContainerBase*"
+          }
+        }
+      ]
+    },
+    "CSoundContainerReferenceArray": {
+      "fields": [
+        {
+          "name": "m_bUseReference",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_sounds",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "atomic": 1,
+              "category": 4,
+              "inner": {
+                "category": 5,
+                "name": "InfoForResourceTypeCVoiceContainerBase"
+              },
+              "name": "CStrongHandle< InfoForResourceTypeCVoiceContainerBase >"
+            },
+            "name": "CUtlVector< CStrongHandle< InfoForResourceTypeCVoiceContainerBase > >"
+          }
+        },
+        {
+          "name": "m_pSounds",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 1,
+              "inner": {
+                "category": 5,
+                "name": "CVoiceContainerBase"
+              },
+              "name": "CVoiceContainerBase*"
+            },
+            "name": "CUtlVector< CVoiceContainerBase* >"
+          }
+        }
+      ]
+    },
     "CSoundEnt": {
       "fields": [
         {
@@ -55499,6 +58337,13 @@
           "type": {
             "category": 5,
             "name": "CEntityIOOutput"
+          }
+        },
+        {
+          "name": "m_flClientCullRadius",
+          "type": {
+            "category": 0,
+            "name": "float32"
           }
         },
         {
@@ -55751,6 +58596,18 @@
               "name": "SoundOpvarTraceResult_t"
             },
             "name": "CUtlVector< SoundOpvarTraceResult_t >"
+          }
+        },
+        {
+          "name": "m_doorwayPairs",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "AutoRoomDoorwayPairs_t"
+            },
+            "name": "CUtlVector< AutoRoomDoorwayPairs_t >"
           }
         },
         {
@@ -56093,6 +58950,13 @@
         },
         {
           "name": "m_bSetValueOnDisable",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_bReloading",
           "type": {
             "category": 0,
             "name": "bool"
@@ -57203,10 +60067,17 @@
           }
         },
         {
-          "name": "m_bitsDamageType",
+          "name": "m_flTotalledDamageAbsorbed",
           "type": {
             "category": 0,
-            "name": "int32"
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_bitsDamageType",
+          "type": {
+            "category": 6,
+            "name": "DamageTypes_t"
           }
         },
         {
@@ -57245,6 +60116,13 @@
           }
         },
         {
+          "name": "m_flDamageAbsorbed",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
           "name": "m_nDamageFlags",
           "type": {
             "category": 6,
@@ -57256,6 +60134,13 @@
           "type": {
             "category": 0,
             "name": "int32"
+          }
+        },
+        {
+          "name": "m_flFriendlyFireDamageReductionRatio",
+          "type": {
+            "category": 0,
+            "name": "float32"
           }
         },
         {
@@ -57317,6 +60202,13 @@
           "type": {
             "category": 0,
             "name": "int32"
+          }
+        },
+        {
+          "name": "m_flTotalledDamageAbsorbed",
+          "type": {
+            "category": 0,
+            "name": "float32"
           }
         }
       ]
@@ -57435,6 +60327,56 @@
       ],
       "parent": "CPointEntity"
     },
+    "CTargetSelectorUpdateNode": {
+      "fields": [
+        {
+          "name": "m_children",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "CAnimUpdateNodeRef"
+            },
+            "name": "CUtlVector< CAnimUpdateNodeRef >"
+          }
+        },
+        {
+          "name": "m_hPositionParameter",
+          "type": {
+            "category": 5,
+            "name": "CAnimParamHandle"
+          }
+        },
+        {
+          "name": "m_hFacePositionParameter",
+          "type": {
+            "category": 5,
+            "name": "CAnimParamHandle"
+          }
+        }
+      ],
+      "parent": "CAnimUpdateNodeBase"
+    },
+    "CTargetWarpUpdateNode": {
+      "fields": [
+        {
+          "name": "m_hPositionParameter",
+          "type": {
+            "category": 5,
+            "name": "CAnimParamHandle"
+          }
+        },
+        {
+          "name": "m_hFacePositionParameter",
+          "type": {
+            "category": 5,
+            "name": "CAnimParamHandle"
+          }
+        }
+      ],
+      "parent": "CUnaryUpdateNode"
+    },
     "CTaskHandshakeAnimTag": {
       "fields": [],
       "parent": "CHandshakeAnimTagBase"
@@ -57505,6 +60447,35 @@
     "CTeamplayRules": {
       "fields": [],
       "parent": "CMultiplayRules"
+    },
+    "CTestBlendContainer": {
+      "fields": [
+        {
+          "name": "m_firstSound",
+          "type": {
+            "atomic": 1,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "InfoForResourceTypeCVoiceContainerBase"
+            },
+            "name": "CStrongHandle< InfoForResourceTypeCVoiceContainerBase >"
+          }
+        },
+        {
+          "name": "m_secondSound",
+          "type": {
+            "atomic": 1,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "InfoForResourceTypeCVoiceContainerBase"
+            },
+            "name": "CStrongHandle< InfoForResourceTypeCVoiceContainerBase >"
+          }
+        }
+      ],
+      "parent": "CVoiceContainerBase"
     },
     "CTestDomainDerived_Cursor": {
       "fields": [
@@ -58290,8 +61261,8 @@
         {
           "name": "m_bitsDamageInflict",
           "type": {
-            "category": 0,
-            "name": "int32"
+            "category": 6,
+            "name": "DamageTypes_t"
           }
         },
         {
@@ -59100,6 +62071,13 @@
             "category": 0,
             "name": "bool"
           }
+        },
+        {
+          "name": "m_bCheckDestIfClearForPlayer",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
         }
       ],
       "parent": "CBaseTrigger"
@@ -59470,26 +62448,14 @@
           }
         },
         {
-          "name": "m_bHideAnalyzers",
+          "name": "m_pEnvelopeAnalyzer",
           "type": {
-            "category": 0,
-            "name": "bool"
-          }
-        },
-        {
-          "name": "m_analysisContainers",
-          "type": {
-            "atomic": 2,
-            "category": 4,
+            "category": 1,
             "inner": {
-              "category": 1,
-              "inner": {
-                "category": 5,
-                "name": "CVoiceContainerAnalysisBase"
-              },
-              "name": "CVoiceContainerAnalysisBase*"
+              "category": 5,
+              "name": "CVoiceContainerAnalysisBase"
             },
-            "name": "CUtlVector< CVoiceContainerAnalysisBase* >"
+            "name": "CVoiceContainerAnalysisBase*"
           }
         }
       ]
@@ -59499,25 +62465,15 @@
         {
           "name": "m_firstSound",
           "type": {
-            "atomic": 1,
-            "category": 4,
-            "inner": {
-              "category": 5,
-              "name": "InfoForResourceTypeCVoiceContainerBase"
-            },
-            "name": "CStrongHandle< InfoForResourceTypeCVoiceContainerBase >"
+            "category": 5,
+            "name": "CSoundContainerReference"
           }
         },
         {
           "name": "m_secondSound",
           "type": {
-            "atomic": 1,
-            "category": 4,
-            "inner": {
-              "category": 5,
-              "name": "InfoForResourceTypeCVoiceContainerBase"
-            },
-            "name": "CStrongHandle< InfoForResourceTypeCVoiceContainerBase >"
+            "category": 5,
+            "name": "CSoundContainerReference"
           }
         },
         {
@@ -59550,9 +62506,13 @@
       "parent": "CVoiceContainerBase"
     },
     "CVoiceContainerDefault": {
+      "fields": [],
+      "parent": "CVoiceContainerBase"
+    },
+    "CVoiceContainerEnvelope": {
       "fields": [
         {
-          "name": "m_vsndReference",
+          "name": "m_sound",
           "type": {
             "atomic": 1,
             "category": 4,
@@ -59561,6 +62521,17 @@
               "name": "InfoForResourceTypeCVoiceContainerBase"
             },
             "name": "CStrongHandle< InfoForResourceTypeCVoiceContainerBase >"
+          }
+        },
+        {
+          "name": "m_analysisContainer",
+          "type": {
+            "category": 1,
+            "inner": {
+              "category": 5,
+              "name": "CVoiceContainerAnalysisBase"
+            },
+            "name": "CVoiceContainerAnalysisBase*"
           }
         }
       ],
@@ -59591,6 +62562,91 @@
         }
       ],
       "parent": "CVoiceContainerAnalysisBase"
+    },
+    "CVoiceContainerGranulator": {
+      "fields": [
+        {
+          "name": "m_flGrainLength",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flGrainCrossfadeAmount",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flStartJitter",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flPlaybackJitter",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_sourceAudio",
+          "type": {
+            "atomic": 1,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "InfoForResourceTypeCVoiceContainerBase"
+            },
+            "name": "CStrongHandle< InfoForResourceTypeCVoiceContainerBase >"
+          }
+        }
+      ],
+      "parent": "CVoiceContainerBase"
+    },
+    "CVoiceContainerLoopTrigger": {
+      "fields": [
+        {
+          "name": "m_sound",
+          "type": {
+            "category": 5,
+            "name": "CSoundContainerReference"
+          }
+        },
+        {
+          "name": "m_flRetriggerTimeMin",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flRetriggerTimeMax",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flFadeTime",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_bCrossFade",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        }
+      ],
+      "parent": "CVoiceContainerBase"
     },
     "CVoiceContainerNull": {
       "fields": [],
@@ -59689,27 +62745,128 @@
           }
         },
         {
-          "name": "m_bRetrigger",
+          "name": "m_soundsToPlay",
           "type": {
-            "category": 0,
-            "name": "bool"
+            "category": 5,
+            "name": "CSoundContainerReferenceArray"
           }
         },
+        {
+          "name": "m_fProbabilityWeights",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 0,
+              "name": "float32"
+            },
+            "name": "CUtlVector< float32 >"
+          }
+        }
+      ],
+      "parent": "CVoiceContainerBase"
+    },
+    "CVoiceContainerSet": {
+      "fields": [
         {
           "name": "m_soundsToPlay",
           "type": {
             "atomic": 2,
             "category": 4,
             "inner": {
-              "atomic": 1,
-              "category": 4,
-              "inner": {
-                "category": 5,
-                "name": "InfoForResourceTypeCVoiceContainerBase"
-              },
-              "name": "CStrongHandle< InfoForResourceTypeCVoiceContainerBase >"
+              "category": 5,
+              "name": "CVoiceContainerSetElement"
             },
-            "name": "CUtlVector< CStrongHandle< InfoForResourceTypeCVoiceContainerBase > >"
+            "name": "CUtlVector< CVoiceContainerSetElement >"
+          }
+        }
+      ],
+      "parent": "CVoiceContainerBase"
+    },
+    "CVoiceContainerSetElement": {
+      "fields": [
+        {
+          "name": "m_sound",
+          "type": {
+            "category": 5,
+            "name": "CSoundContainerReference"
+          }
+        },
+        {
+          "name": "m_flVolumeDB",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        }
+      ]
+    },
+    "CVoiceContainerShapedNoise": {
+      "fields": [
+        {
+          "name": "m_bUseCurveForFrequency",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_flFrequency",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_frequencySweep",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CPiecewiseCurve"
+          }
+        },
+        {
+          "name": "m_bUseCurveForResonance",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_flResonance",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_resonanceSweep",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CPiecewiseCurve"
+          }
+        },
+        {
+          "name": "m_bUseCurveForAmplitude",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_flGainInDecibels",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_gainSweep",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CPiecewiseCurve"
           }
         }
       ],
@@ -59857,14 +63014,10 @@
             "atomic": 2,
             "category": 4,
             "inner": {
-              "category": 1,
-              "inner": {
-                "category": 5,
-                "name": "CVoiceContainerBase"
-              },
-              "name": "CVoiceContainerBase*"
+              "category": 5,
+              "name": "CSoundContainerReference"
             },
-            "name": "CUtlVector< CVoiceContainerBase* >"
+            "name": "CUtlVector< CSoundContainerReference >"
           }
         }
       ],
@@ -60341,6 +63494,26 @@
     "CWorld": {
       "fields": [],
       "parent": "CBaseModelEntity"
+    },
+    "CWorldCompositionChunkReferenceElement_t": {
+      "fields": [
+        {
+          "name": "m_strMapToLoad",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CUtlString"
+          }
+        },
+        {
+          "name": "m_strLandmarkName",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CUtlString"
+          }
+        }
+      ]
     },
     "CZeroPoseUpdateNode": {
       "fields": [],
@@ -61763,6 +64936,13 @@
           "type": {
             "category": 5,
             "name": "CPerParticleFloatInput"
+          }
+        },
+        {
+          "name": "m_bIncludeRadii",
+          "type": {
+            "category": 0,
+            "name": "bool"
           }
         }
       ],
@@ -65966,6 +69146,48 @@
             "atomic": 0,
             "category": 4,
             "name": "CUtlString"
+          }
+        },
+        {
+          "name": "m_bStartAsleep",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_flPlayerWakeRadius",
+          "type": {
+            "category": 5,
+            "name": "CParticleCollectionFloatInput"
+          }
+        },
+        {
+          "name": "m_flVehicleWakeRadius",
+          "type": {
+            "category": 5,
+            "name": "CParticleCollectionFloatInput"
+          }
+        },
+        {
+          "name": "m_bUseHighQualitySimulation",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_nMaxParticleCount",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        },
+        {
+          "name": "m_bRespectExclusionVolumes",
+          "type": {
+            "category": 0,
+            "name": "bool"
           }
         },
         {
@@ -72596,6 +75818,20 @@
             "category": 0,
             "name": "float32"
           }
+        },
+        {
+          "name": "m_bBBoxOnly",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_bCubeRoot",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
         }
       ],
       "parent": "CParticleFunctionPreEmission"
@@ -73965,6 +77201,32 @@
       ],
       "parent": "CParticleFunctionRenderer"
     },
+    "C_OP_RenderClientPhysicsImpulse": {
+      "fields": [
+        {
+          "name": "m_flRadius",
+          "type": {
+            "category": 5,
+            "name": "CPerParticleFloatInput"
+          }
+        },
+        {
+          "name": "m_flMagnitude",
+          "type": {
+            "category": 5,
+            "name": "CPerParticleFloatInput"
+          }
+        },
+        {
+          "name": "m_nSimIdFilter",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        }
+      ],
+      "parent": "CParticleFunctionRenderer"
+    },
     "C_OP_RenderClothForce": {
       "fields": [],
       "parent": "CParticleFunctionRenderer"
@@ -74836,6 +78098,20 @@
           }
         },
         {
+          "name": "m_bFog",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_flFogScale",
+          "type": {
+            "category": 5,
+            "name": "CPerParticleFloatInput"
+          }
+        },
+        {
           "name": "m_flLuminaireRadius",
           "type": {
             "category": 5,
@@ -75416,10 +78692,10 @@
           }
         },
         {
-          "name": "m_nLOD",
+          "name": "m_fSizeCullScale",
           "type": {
-            "category": 0,
-            "name": "int32"
+            "category": 5,
+            "name": "CParticleCollectionFloatInput"
           }
         },
         {
@@ -77581,6 +80857,13 @@
           }
         },
         {
+          "name": "m_bUseAvgParticlePos",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
           "name": "m_nSetParent",
           "type": {
             "category": 6,
@@ -79285,6 +82568,27 @@
           }
         },
         {
+          "name": "m_flNeighborDistance",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flFacingStrength",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_bUseAABB",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
           "name": "m_nCPBroadcast",
           "type": {
             "category": 0,
@@ -79615,7 +82919,7 @@
           "name": "m_Value",
           "type": {
             "category": 0,
-            "name": "int16"
+            "name": "int32"
           }
         }
       ]
@@ -79832,24 +83136,6 @@
           "type": {
             "category": 6,
             "name": "DebugOverlayBits_t"
-          }
-        }
-      ]
-    },
-    "ConceptHistory_t": {
-      "fields": [
-        {
-          "name": "timeSpoken",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
-          "name": "m_response",
-          "type": {
-            "category": 5,
-            "name": "CRR_Response"
           }
         }
       ]
@@ -80099,6 +83385,13 @@
         },
         {
           "name": "m_bComputeDynamicMeshTensionAfterAnimation",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_bSmoothNormalsAcrossUvSeams",
           "type": {
             "category": 0,
             "name": "bool"
@@ -80692,7 +83985,15 @@
       ]
     },
     "EventClientProcessNetworking_t": {
-      "fields": []
+      "fields": [
+        {
+          "name": "m_nTickCount",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        }
+      ]
     },
     "EventClientSceneSystemThreadStateChange_t": {
       "fields": [
@@ -80793,6 +84094,13 @@
     "EventServerAdvanceTick_t": {
       "fields": [],
       "parent": "EventAdvanceTick_t"
+    },
+    "EventServerBeginAsyncPostTickWork_t": {
+      "fields": [],
+      "parent": "EventPostAdvanceTick_t"
+    },
+    "EventServerEndAsyncPostTickWork_t": {
+      "fields": []
     },
     "EventServerPollNetworking_t": {
       "fields": [],
@@ -81018,6 +84326,124 @@
         }
       ]
     },
+    "FeAntiTunnelProbeBuild_t": {
+      "fields": [
+        {
+          "name": "flWeight",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "flActivationDistance",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "flBias",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "flCurvature",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "nFlags",
+          "type": {
+            "category": 0,
+            "name": "uint32"
+          }
+        },
+        {
+          "name": "nProbeNode",
+          "type": {
+            "category": 0,
+            "name": "uint16"
+          }
+        },
+        {
+          "name": "targetNodes",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 0,
+              "name": "uint16"
+            },
+            "name": "CUtlVector< uint16 >"
+          }
+        }
+      ]
+    },
+    "FeAntiTunnelProbe_t": {
+      "fields": [
+        {
+          "name": "flWeight",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "nFlags",
+          "type": {
+            "category": 0,
+            "name": "uint32"
+          }
+        },
+        {
+          "name": "nProbeNode",
+          "type": {
+            "category": 0,
+            "name": "uint16"
+          }
+        },
+        {
+          "name": "nCount",
+          "type": {
+            "category": 0,
+            "name": "uint16"
+          }
+        },
+        {
+          "name": "nBegin",
+          "type": {
+            "category": 0,
+            "name": "uint32"
+          }
+        },
+        {
+          "name": "flActivationDistance",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "flCurvatureRadius",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "flBias",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        }
+      ]
+    },
     "FeAxialEdgeBend_t": {
       "fields": [
         {
@@ -81160,6 +84586,25 @@
         }
       ],
       "parent": "FeBoxRigid_t"
+    },
+    "FeBuildSDFRigid_t": {
+      "fields": [
+        {
+          "name": "m_nPriority",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        },
+        {
+          "name": "m_nVertexMapHash",
+          "type": {
+            "category": 0,
+            "name": "uint32"
+          }
+        }
+      ],
+      "parent": "FeSDFRigid_t"
     },
     "FeBuildSphereRigid_t": {
       "fields": [
@@ -81492,6 +84937,92 @@
         },
         {
           "name": "flWeight",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        }
+      ]
+    },
+    "FeHingeLimitBuild_t": {
+      "fields": [
+        {
+          "name": "nNode",
+          "type": {
+            "category": 3,
+            "inner": {
+              "category": 0,
+              "name": "uint16"
+            },
+            "name": "uint16[6]"
+          }
+        },
+        {
+          "name": "nFlags",
+          "type": {
+            "category": 0,
+            "name": "uint32"
+          }
+        },
+        {
+          "name": "flLimitCW",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "flLimitCCW",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        }
+      ]
+    },
+    "FeHingeLimit_t": {
+      "fields": [
+        {
+          "name": "nNode",
+          "type": {
+            "category": 3,
+            "inner": {
+              "category": 0,
+              "name": "uint16"
+            },
+            "name": "uint16[6]"
+          }
+        },
+        {
+          "name": "nFlags",
+          "type": {
+            "category": 0,
+            "name": "uint32"
+          }
+        },
+        {
+          "name": "flWeight4",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "flWeight5",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "flAngleCenter",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "flAngleExtents",
           "type": {
             "category": 0,
             "name": "float32"
@@ -81851,6 +85382,13 @@
           }
         },
         {
+          "name": "m_nSDFRigidIndex",
+          "type": {
+            "category": 0,
+            "name": "uint16"
+          }
+        },
+        {
           "name": "m_nCollisionPlaneIndex",
           "type": {
             "category": 0,
@@ -81898,6 +85436,94 @@
           "type": {
             "category": 0,
             "name": "float32"
+          }
+        }
+      ]
+    },
+    "FeSDFRigid_t": {
+      "fields": [
+        {
+          "name": "vLocalMin",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector"
+          }
+        },
+        {
+          "name": "vLocalMax",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector"
+          }
+        },
+        {
+          "name": "flBounciness",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "nNode",
+          "type": {
+            "category": 0,
+            "name": "uint16"
+          }
+        },
+        {
+          "name": "nCollisionMask",
+          "type": {
+            "category": 0,
+            "name": "uint16"
+          }
+        },
+        {
+          "name": "nVertexMapIndex",
+          "type": {
+            "category": 0,
+            "name": "uint16"
+          }
+        },
+        {
+          "name": "nFlags",
+          "type": {
+            "category": 0,
+            "name": "uint16"
+          }
+        },
+        {
+          "name": "m_Distances",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 0,
+              "name": "float32"
+            },
+            "name": "CUtlVector< float32 >"
+          }
+        },
+        {
+          "name": "m_nWidth",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        },
+        {
+          "name": "m_nHeight",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        },
+        {
+          "name": "m_nDepth",
+          "type": {
+            "category": 0,
+            "name": "int32"
           }
         }
       ]
@@ -83707,8 +87333,19 @@
     "IEconItemInterface": {
       "fields": []
     },
+    "IGapHost_Cursor": {
+      "fields": [],
+      "parent": "IGapHost_ExecLog"
+    },
+    "IGapHost_ExecLog": {
+      "fields": []
+    },
     "IGapHost_GameEntity": {
       "fields": []
+    },
+    "IGapHost_YieldingCursor": {
+      "fields": [],
+      "parent": "IGapHost_Cursor"
     },
     "IHasAttributes": {
       "fields": []
@@ -83892,6 +87529,9 @@
       "fields": []
     },
     "InfoForResourceTypeCNmGraphVariation": {
+      "fields": []
+    },
+    "InfoForResourceTypeCNmIKRig": {
       "fields": []
     },
     "InfoForResourceTypeCNmSkeleton": {
@@ -86641,6 +90281,42 @@
           }
         },
         {
+          "name": "m_HingeLimits",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "FeHingeLimit_t"
+            },
+            "name": "CUtlVector< FeHingeLimit_t >"
+          }
+        },
+        {
+          "name": "m_AntiTunnelProbes",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "FeAntiTunnelProbe_t"
+            },
+            "name": "CUtlVector< FeAntiTunnelProbe_t >"
+          }
+        },
+        {
+          "name": "m_AntiTunnelTargetNodes",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 0,
+              "name": "uint16"
+            },
+            "name": "CUtlVector< uint16 >"
+          }
+        },
+        {
           "name": "m_AxialEdges",
           "type": {
             "atomic": 2,
@@ -87091,6 +90767,18 @@
           }
         },
         {
+          "name": "m_SDFRigids",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "FeSDFRigid_t"
+            },
+            "name": "CUtlVector< FeSDFRigid_t >"
+          }
+        },
+        {
           "name": "m_BoxRigids",
           "type": {
             "atomic": 2,
@@ -87359,6 +91047,13 @@
           }
         },
         {
+          "name": "m_flLocalDrag1",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
           "name": "m_nRodVelocitySmoothIterations",
           "type": {
             "category": 0,
@@ -87454,13 +91149,6 @@
     },
     "PhysicsRagdollPose_t": {
       "fields": [
-        {
-          "name": "__m_pChainEntity",
-          "type": {
-            "category": 5,
-            "name": "CNetworkVarChainer"
-          }
-        },
         {
           "name": "m_Transforms",
           "type": {
@@ -87920,6 +91608,38 @@
         }
       ]
     },
+    "PredictedDamageTag_t": {
+      "fields": [
+        {
+          "name": "nTagTick",
+          "type": {
+            "category": 5,
+            "name": "GameTick_t"
+          }
+        },
+        {
+          "name": "flFlinchModSmall",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "flFlinchModLarge",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "flFriendlyFireDamageReductionRatio",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        }
+      ]
+    },
     "PulseCursorID_t": {
       "fields": [
         {
@@ -88294,6 +92014,27 @@
             "atomic": 0,
             "category": 4,
             "name": "CUtlString"
+          }
+        },
+        {
+          "name": "m_nMoveTo",
+          "type": {
+            "category": 6,
+            "name": "ScriptedMoveTo_t"
+          }
+        },
+        {
+          "name": "m_nMoveToGait",
+          "type": {
+            "category": 6,
+            "name": "MovementGait_t"
+          }
+        },
+        {
+          "name": "m_nHeldWeaponBehavior",
+          "type": {
+            "category": 6,
+            "name": "ScriptedHeldWeaponBehavior_t"
           }
         },
         {
@@ -89455,6 +93196,27 @@
             "atomic": 0,
             "category": 4,
             "name": "CUtlString"
+          }
+        },
+        {
+          "name": "m_bUserFriendlyNameSealed",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_bUserFriendlyNameLong",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_nToolMaterialHash",
+          "type": {
+            "category": 0,
+            "name": "uint32"
           }
         }
       ]
@@ -92965,6 +96727,27 @@
             "category": 0,
             "name": "float32"
           }
+        },
+        {
+          "name": "m_flElasticity",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flElasticDamping",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flPlasticity",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
         }
       ]
     },
@@ -93339,6 +97122,42 @@
         }
       ]
     },
+    "WaterWheelDrag_t": {
+      "fields": [
+        {
+          "name": "m_flFractionOfWheelSubmerged",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flWheelDrag",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        }
+      ]
+    },
+    "WaterWheelFrictionScale_t": {
+      "fields": [
+        {
+          "name": "m_flFractionOfWheelSubmerged",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flFrictionScale",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        }
+      ]
+    },
     "WeaponPurchaseCount_t": {
       "fields": [
         {
@@ -93627,6 +97446,13 @@
             "category": 5,
             "name": "BakedLightingInfo_t"
           }
+        },
+        {
+          "name": "m_bHasBakedGeometryFlag",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
         }
       ]
     },
@@ -93676,6 +97502,9 @@
           }
         }
       ]
+    },
+    "WrappedPhysicsJoint_t": {
+      "fields": []
     },
     "audioparams_t": {
       "fields": [
@@ -94531,7 +98360,20 @@
           }
         },
         {
-          "name": "m_hMaterial",
+          "name": "m_hMaterialBase",
+          "type": {
+            "atomic": 1,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "InfoForResourceTypeIMaterial2"
+            },
+            "name": "CStrongHandle< InfoForResourceTypeIMaterial2 >",
+            "outer": "CStrongHandle"
+          }
+        },
+        {
+          "name": "m_hMaterialDamageOverlay",
           "type": {
             "atomic": 1,
             "category": 4,
@@ -94548,13 +98390,6 @@
           "type": {
             "category": 6,
             "name": "ShardSolid_t"
-          }
-        },
-        {
-          "name": "m_ShatterPanelMode",
-          "type": {
-            "category": 6,
-            "name": "ShatterPanelMode"
           }
         },
         {
@@ -94592,6 +98427,19 @@
               "name": "Vector2D"
             },
             "name": "CNetworkUtlVectorBase< Vector2D >"
+          }
+        },
+        {
+          "name": "m_vInitialPanelVertices",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "atomic": 0,
+              "category": 4,
+              "name": "Vector4D"
+            },
+            "name": "CNetworkUtlVectorBase< Vector4D >"
           }
         },
         {
@@ -94798,6 +98646,14 @@
         {
           "name": "SOS_ACTION_COUNT_ENVELOPE",
           "value": 7
+        },
+        {
+          "name": "SOS_ACTION_SOUNDEVENT_COUNT",
+          "value": 8
+        },
+        {
+          "name": "SOS_ACTION_SOUNDEVENT_MIN_MAX_VALUES",
+          "value": 9
         }
       ]
     },
@@ -95204,7 +99060,7 @@
           "value": 0
         },
         {
-          "name": "FacingDirection",
+          "name": "FacingPosition",
           "value": 1
         },
         {
@@ -95674,6 +99530,27 @@
         }
       ]
     },
+    "BreakableContentsType_t": {
+      "align": 4,
+      "items": [
+        {
+          "name": "BC_DEFAULT",
+          "value": 0
+        },
+        {
+          "name": "BC_EMPTY",
+          "value": 1
+        },
+        {
+          "name": "BC_PROP_GROUP_OVERRIDE",
+          "value": 2
+        },
+        {
+          "name": "BC_PARTICLE_SYSTEM_OVERRIDE",
+          "value": 3
+        }
+      ]
+    },
     "BrushSolidities_e": {
       "align": 4,
       "items": [
@@ -95733,6 +99610,68 @@
         }
       ]
     },
+    "CDebugOverlayCombinedTypes_t": {
+      "align": 4,
+      "items": [
+        {
+          "name": "ALL",
+          "value": 0
+        },
+        {
+          "name": "ANY",
+          "value": 1
+        },
+        {
+          "name": "COUNT",
+          "value": 2
+        }
+      ]
+    },
+    "CDebugOverlayFilterType_t": {
+      "align": 4,
+      "items": [
+        {
+          "name": "NONE",
+          "value": 0
+        },
+        {
+          "name": "TEXT",
+          "value": 1
+        },
+        {
+          "name": "ENTITY",
+          "value": 2
+        },
+        {
+          "name": "COUNT",
+          "value": 3
+        },
+        {
+          "name": "TACTICAL_SEARCH",
+          "value": 4
+        },
+        {
+          "name": "AI_SCHEDULE",
+          "value": 5
+        },
+        {
+          "name": "AI_TASK",
+          "value": 6
+        },
+        {
+          "name": "AI_EVENT",
+          "value": 7
+        },
+        {
+          "name": "END_SIM_HISTORY_TYPES",
+          "value": 8
+        },
+        {
+          "name": "COMBINED",
+          "value": 18446744073709551615
+        }
+      ]
+    },
     "CFuncMover::Move_t": {
       "align": 4,
       "items": [
@@ -95747,6 +99686,35 @@
         {
           "name": "MOVE_STOP_AT_END",
           "value": 2
+        }
+      ]
+    },
+    "CFuncMover::OrientationUpdate_t": {
+      "align": 4,
+      "items": [
+        {
+          "name": "ORIENTATION_FORWARD_PATH",
+          "value": 0
+        },
+        {
+          "name": "ORIENTATION_FORWARD_PATH_AND_FIXED_PITCH",
+          "value": 1
+        },
+        {
+          "name": "ORIENTATION_FORWARD_PATH_AND_UP_CONTROL_POINT",
+          "value": 2
+        },
+        {
+          "name": "ORIENTATION_MATCH_CONTROL_POINT",
+          "value": 3
+        },
+        {
+          "name": "ORIENTATION_FIXED",
+          "value": 4
+        },
+        {
+          "name": "ORIENTATION_FACE_PLAYER",
+          "value": 5
         }
       ]
     },
@@ -95788,6 +99756,216 @@
         }
       ]
     },
+    "CNmFloatAngleMathNode::Operation_t": {
+      "align": 1,
+      "items": [
+        {
+          "name": "ClampTo180",
+          "value": 0
+        },
+        {
+          "name": "ClampTo360",
+          "value": 1
+        },
+        {
+          "name": "FlipHemisphere",
+          "value": 2
+        },
+        {
+          "name": "FlipHemisphereNegate",
+          "value": 3
+        }
+      ]
+    },
+    "CNmFloatComparisonNode::Comparison_t": {
+      "align": 1,
+      "items": [
+        {
+          "name": "GreaterThanEqual",
+          "value": 0
+        },
+        {
+          "name": "LessThanEqual",
+          "value": 1
+        },
+        {
+          "name": "NearEqual",
+          "value": 2
+        },
+        {
+          "name": "GreaterThan",
+          "value": 3
+        },
+        {
+          "name": "LessThan",
+          "value": 4
+        }
+      ]
+    },
+    "CNmFloatMathNode::Operator_t": {
+      "align": 1,
+      "items": [
+        {
+          "name": "Add",
+          "value": 0
+        },
+        {
+          "name": "Sub",
+          "value": 1
+        },
+        {
+          "name": "Mul",
+          "value": 2
+        },
+        {
+          "name": "Div",
+          "value": 3
+        }
+      ]
+    },
+    "CNmIDComparisonNode::Comparison_t": {
+      "align": 1,
+      "items": [
+        {
+          "name": "Matches",
+          "value": 0
+        },
+        {
+          "name": "DoesntMatch",
+          "value": 1
+        }
+      ]
+    },
+    "CNmRootMotionData::SamplingMode_t": {
+      "align": 1,
+      "items": [
+        {
+          "name": "Delta",
+          "value": 0
+        },
+        {
+          "name": "WorldSpace",
+          "value": 1
+        }
+      ]
+    },
+    "CNmRootMotionOverrideNode::OverrideFlags_t": {
+      "align": 1,
+      "items": [
+        {
+          "name": "AllowMoveX",
+          "value": 0
+        },
+        {
+          "name": "AllowMoveY",
+          "value": 1
+        },
+        {
+          "name": "AllowMoveZ",
+          "value": 2
+        },
+        {
+          "name": "AllowFacingPitch",
+          "value": 3
+        },
+        {
+          "name": "ListenForEvents",
+          "value": 4
+        }
+      ]
+    },
+    "CNmSyncEventIndexConditionNode::TriggerMode_t": {
+      "align": 1,
+      "items": [
+        {
+          "name": "ExactlyAtEventIndex",
+          "value": 0
+        },
+        {
+          "name": "GreaterThanEqualToEventIndex",
+          "value": 1
+        }
+      ]
+    },
+    "CNmTargetInfoNode::Info_t": {
+      "align": 4,
+      "items": [
+        {
+          "name": "AngleHorizontal",
+          "value": 0
+        },
+        {
+          "name": "AngleVertical",
+          "value": 1
+        },
+        {
+          "name": "Distance",
+          "value": 2
+        },
+        {
+          "name": "DistanceHorizontalOnly",
+          "value": 3
+        },
+        {
+          "name": "DistanceVerticalOnly",
+          "value": 4
+        },
+        {
+          "name": "DeltaOrientationX",
+          "value": 5
+        },
+        {
+          "name": "DeltaOrientationY",
+          "value": 6
+        },
+        {
+          "name": "DeltaOrientationZ",
+          "value": 7
+        }
+      ]
+    },
+    "CNmTimeConditionNode::ComparisonType_t": {
+      "align": 1,
+      "items": [
+        {
+          "name": "PercentageThroughState",
+          "value": 0
+        },
+        {
+          "name": "PercentageThroughSyncEvent",
+          "value": 1
+        },
+        {
+          "name": "ElapsedTime",
+          "value": 2
+        },
+        {
+          "name": "LoopCount",
+          "value": 3
+        }
+      ]
+    },
+    "CNmTimeConditionNode::Operator_t": {
+      "align": 1,
+      "items": [
+        {
+          "name": "LessThan",
+          "value": 0
+        },
+        {
+          "name": "LessThanEqual",
+          "value": 1
+        },
+        {
+          "name": "GreaterThan",
+          "value": 2
+        },
+        {
+          "name": "GreaterThanEqual",
+          "value": 3
+        }
+      ]
+    },
     "CNmTransitionNode::TransitionOptions_t": {
       "align": 1,
       "items": [
@@ -95805,23 +99983,65 @@
         },
         {
           "name": "MatchSourceTime",
-          "value": 4
+          "value": 3
         },
         {
           "name": "MatchSyncEventIndex",
-          "value": 8
+          "value": 4
         },
         {
           "name": "MatchSyncEventID",
-          "value": 16
+          "value": 5
         },
         {
           "name": "MatchSyncEventPercentage",
-          "value": 32
+          "value": 6
         },
         {
           "name": "PreferClosestSyncEventID",
-          "value": 64
+          "value": 7
+        }
+      ]
+    },
+    "CNmVectorInfoNode::Info_t": {
+      "align": 1,
+      "items": [
+        {
+          "name": "X",
+          "value": 0
+        },
+        {
+          "name": "Y",
+          "value": 1
+        },
+        {
+          "name": "Z",
+          "value": 2
+        },
+        {
+          "name": "Length",
+          "value": 3
+        },
+        {
+          "name": "AngleHorizontal",
+          "value": 4
+        },
+        {
+          "name": "AngleVertical",
+          "value": 5
+        }
+      ]
+    },
+    "CPhysicsProp::CrateType_t": {
+      "align": 4,
+      "items": [
+        {
+          "name": "CRATE_SPECIFIC_ITEM",
+          "value": 0
+        },
+        {
+          "name": "CRATE_TYPE_COUNT",
+          "value": 1
         }
       ]
     },
@@ -96214,6 +100434,14 @@
         {
           "name": "PANIC",
           "value": 6
+        },
+        {
+          "name": "TRICK",
+          "value": 7
+        },
+        {
+          "name": "TURN_IN_PLACE",
+          "value": 8
         }
       ]
     },
@@ -97012,6 +101240,19 @@
         }
       ]
     },
+    "EProceduralRagdollWeightIndexPropagationMethod": {
+      "align": 4,
+      "items": [
+        {
+          "name": "Bone",
+          "value": 0
+        },
+        {
+          "name": "BoneAndChildren",
+          "value": 1
+        }
+      ]
+    },
     "EPulseGraphExecutionHistoryFlag": {
       "align": 4,
       "items": [
@@ -97108,6 +101349,23 @@
         }
       ]
     },
+    "EntityDistanceMode_t": {
+      "align": 4,
+      "items": [
+        {
+          "name": "eOriginToOrigin",
+          "value": 0
+        },
+        {
+          "name": "eCenterToCenter",
+          "value": 1
+        },
+        {
+          "name": "eAxisToAxis",
+          "value": 2
+        }
+      ]
+    },
     "EntityDormancyType_t": {
       "align": 4,
       "items": [
@@ -97143,6 +101401,23 @@
         {
           "name": "ENTITY_IO_TARGET_ENTITYNAME_OR_CLASSNAME",
           "value": 7
+        }
+      ]
+    },
+    "EntityPlatformTypes_t": {
+      "align": 1,
+      "items": [
+        {
+          "name": "ENTITY_NOT_PLATFORM",
+          "value": 0
+        },
+        {
+          "name": "ENTITY_PLATFORM_PLAYER_FOLLOWS_YAW",
+          "value": 1
+        },
+        {
+          "name": "ENTITY_PLATFORM_PLAYER_IGNORES_YAW",
+          "value": 2
         }
       ]
     },
@@ -97701,52 +101976,64 @@
           "value": 31
         },
         {
-          "name": "AE_CL_WEAPON_TRANSITION_INTO_HAND",
+          "name": "AE_DISABLE_PLATFORM",
           "value": 32
         },
         {
-          "name": "AE_CL_BODYGROUP_SET_TO_CLIP",
+          "name": "AE_ENABLE_PLATFORM",
           "value": 33
         },
         {
-          "name": "AE_CL_BODYGROUP_SET_TO_NEXTCLIP",
+          "name": "AE_ANIMGRAPH_SET_PARAM",
           "value": 34
         },
         {
-          "name": "AE_SV_SHOW_SILENCER",
+          "name": "AE_CL_WEAPON_TRANSITION_INTO_HAND",
           "value": 35
         },
         {
-          "name": "AE_SV_ATTACH_SILENCER_COMPLETE",
+          "name": "AE_CL_BODYGROUP_SET_TO_CLIP",
           "value": 36
         },
         {
-          "name": "AE_SV_HIDE_SILENCER",
+          "name": "AE_CL_BODYGROUP_SET_TO_NEXTCLIP",
           "value": 37
         },
         {
-          "name": "AE_SV_DETACH_SILENCER_COMPLETE",
+          "name": "AE_SV_SHOW_SILENCER",
           "value": 38
         },
         {
-          "name": "AE_CL_EJECT_MAG",
+          "name": "AE_SV_ATTACH_SILENCER_COMPLETE",
           "value": 39
         },
         {
-          "name": "AE_WPN_COMPLETE_RELOAD",
+          "name": "AE_SV_HIDE_SILENCER",
           "value": 40
         },
         {
-          "name": "AE_WPN_HEALTHSHOT_INJECT",
+          "name": "AE_SV_DETACH_SILENCER_COMPLETE",
           "value": 41
         },
         {
-          "name": "AE_CL_C4_SCREEN_TEXT",
+          "name": "AE_CL_EJECT_MAG",
           "value": 42
         },
         {
-          "name": "AE_GRENADE_THROW_COMPLETE",
+          "name": "AE_WPN_COMPLETE_RELOAD",
           "value": 43
+        },
+        {
+          "name": "AE_WPN_HEALTHSHOT_INJECT",
+          "value": 44
+        },
+        {
+          "name": "AE_CL_C4_SCREEN_TEXT",
+          "value": 45
+        },
+        {
+          "name": "AE_GRENADE_THROW_COMPLETE",
+          "value": 46
         }
       ]
     },
@@ -99167,6 +103454,19 @@
         }
       ]
     },
+    "NmCachedValueMode_t": {
+      "align": 4,
+      "items": [
+        {
+          "name": "OnEntry",
+          "value": 0
+        },
+        {
+          "name": "OnExit",
+          "value": 1
+        }
+      ]
+    },
     "NmEasingFunction_t": {
       "align": 1,
       "items": [
@@ -99305,6 +103605,47 @@
         }
       ]
     },
+    "NmEventConditionRules_t": {
+      "align": 1,
+      "items": [
+        {
+          "name": "LimitSearchToSourceState",
+          "value": 0
+        },
+        {
+          "name": "IgnoreInactiveEvents",
+          "value": 1
+        },
+        {
+          "name": "PreferHighestWeight",
+          "value": 2
+        },
+        {
+          "name": "PreferHighestProgress",
+          "value": 3
+        },
+        {
+          "name": "OperatorOr",
+          "value": 4
+        },
+        {
+          "name": "OperatorAnd",
+          "value": 5
+        },
+        {
+          "name": "SearchOnlyStateEvents",
+          "value": 6
+        },
+        {
+          "name": "SearchOnlyAnimEvents",
+          "value": 7
+        },
+        {
+          "name": "SearchBothStateAndAnimEvents",
+          "value": 8
+        }
+      ]
+    },
     "NmFootPhaseCondition_t": {
       "align": 1,
       "items": [
@@ -99421,7 +103762,7 @@
           "value": 1
         },
         {
-          "name": "GlobalSpace",
+          "name": "ModelSpace",
           "value": 2
         }
       ]
@@ -99443,6 +103784,73 @@
         },
         {
           "name": "IgnoreTarget",
+          "value": 3
+        }
+      ]
+    },
+    "NmStateEventTypeCondition_t": {
+      "align": 1,
+      "items": [
+        {
+          "name": "Entry",
+          "value": 0
+        },
+        {
+          "name": "FullyInState",
+          "value": 1
+        },
+        {
+          "name": "Exit",
+          "value": 2
+        },
+        {
+          "name": "Timed",
+          "value": 3
+        },
+        {
+          "name": "Any",
+          "value": 4
+        }
+      ]
+    },
+    "NmTargetWarpAlgorithm_t": {
+      "align": 1,
+      "items": [
+        {
+          "name": "Lerp",
+          "value": 0
+        },
+        {
+          "name": "Hermite",
+          "value": 1
+        },
+        {
+          "name": "HermiteFeaturePreserving",
+          "value": 2
+        },
+        {
+          "name": "Bezier",
+          "value": 3
+        }
+      ]
+    },
+    "NmTargetWarpRule_t": {
+      "align": 1,
+      "items": [
+        {
+          "name": "WarpXY",
+          "value": 0
+        },
+        {
+          "name": "WarpZ",
+          "value": 1
+        },
+        {
+          "name": "WarpXYZ",
+          "value": 2
+        },
+        {
+          "name": "RotationOnly",
           "value": 3
         }
       ]
@@ -99539,6 +103947,14 @@
         {
           "name": "OBJECT_TYPE_STATIC_CUBE_MAP",
           "value": 32768
+        },
+        {
+          "name": "OBJECT_TYPE_DISABLE_VIS_CULLING",
+          "value": 65536
+        },
+        {
+          "name": "OBJECT_TYPE_BAKED_GEOMETRY",
+          "value": 131072
         }
       ]
     },
@@ -100127,8 +104543,12 @@
           "value": 5
         },
         {
-          "name": "PF_MAP_TYPE_COUNT",
+          "name": "PF_MAP_TYPE_ROUND",
           "value": 6
+        },
+        {
+          "name": "PF_MAP_TYPE_COUNT",
+          "value": 7
         }
       ]
     },
@@ -100150,6 +104570,31 @@
         {
           "name": "PF_RANDOM_MODE_COUNT",
           "value": 2
+        }
+      ]
+    },
+    "ParticleFloatRoundType_t": {
+      "align": 4,
+      "items": [
+        {
+          "name": "PF_ROUND_TYPE_INVALID",
+          "value": 18446744073709551615
+        },
+        {
+          "name": "PF_ROUND_TYPE_NEAREST",
+          "value": 0
+        },
+        {
+          "name": "PF_ROUND_TYPE_FLOOR",
+          "value": 1
+        },
+        {
+          "name": "PF_ROUND_TYPE_CEIL",
+          "value": 2
+        },
+        {
+          "name": "PF_ROUND_TYPE_COUNT",
+          "value": 3
         }
       ]
     },
@@ -101099,6 +105544,10 @@
         {
           "name": "Sequential",
           "value": 3
+        },
+        {
+          "name": "RandomWeights",
+          "value": 4
         }
       ]
     },
@@ -101842,60 +106291,68 @@
           "value": 58
         },
         {
-          "name": "EQ_EHANDLE",
+          "name": "EQ_SCHEMA_ENUM",
           "value": 59
         },
         {
-          "name": "EQ_PANEL_HANDLE",
+          "name": "EQ_EHANDLE",
           "value": 60
         },
         {
-          "name": "EQ_OPAQUE_HANDLE",
+          "name": "EQ_PANEL_HANDLE",
           "value": 61
         },
         {
-          "name": "EQ_TEST_HANDLE",
+          "name": "EQ_OPAQUE_HANDLE",
           "value": 62
         },
         {
-          "name": "NE_BOOL",
+          "name": "EQ_TEST_HANDLE",
           "value": 63
         },
         {
-          "name": "NE_INT",
+          "name": "NE_BOOL",
           "value": 64
         },
         {
-          "name": "NE_FLOAT",
+          "name": "NE_INT",
           "value": 65
         },
         {
-          "name": "NE_STRING",
+          "name": "NE_FLOAT",
           "value": 66
         },
         {
-          "name": "NE_ENTITY_NAME",
+          "name": "NE_STRING",
           "value": 67
         },
         {
-          "name": "NE_EHANDLE",
+          "name": "NE_ENTITY_NAME",
           "value": 68
         },
         {
-          "name": "NE_PANEL_HANDLE",
+          "name": "NE_SCHEMA_ENUM",
           "value": 69
         },
         {
-          "name": "NE_OPAQUE_HANDLE",
+          "name": "NE_EHANDLE",
           "value": 70
         },
         {
-          "name": "NE_TEST_HANDLE",
+          "name": "NE_PANEL_HANDLE",
           "value": 71
         },
         {
-          "name": "GET_CONST_INLINE_STORAGE",
+          "name": "NE_OPAQUE_HANDLE",
           "value": 72
+        },
+        {
+          "name": "NE_TEST_HANDLE",
+          "value": 73
+        },
+        {
+          "name": "GET_CONST_INLINE_STORAGE",
+          "value": 74
         }
       ]
     },
@@ -102027,40 +106484,44 @@
           "value": 9
         },
         {
-          "name": "PVAL_ENTITY_NAME",
+          "name": "PVAL_SNDEVT_NAME",
           "value": 10
         },
         {
-          "name": "PVAL_OPAQUE_HANDLE",
+          "name": "PVAL_ENTITY_NAME",
           "value": 11
         },
         {
-          "name": "PVAL_TYPESAFE_INT",
+          "name": "PVAL_OPAQUE_HANDLE",
           "value": 12
         },
         {
-          "name": "PVAL_CURSOR_FLOW",
+          "name": "PVAL_TYPESAFE_INT",
           "value": 13
         },
         {
-          "name": "PVAL_ANY",
+          "name": "PVAL_CURSOR_FLOW",
           "value": 14
         },
         {
-          "name": "PVAL_SCHEMA_ENUM",
+          "name": "PVAL_ANY",
           "value": 15
         },
         {
-          "name": "PVAL_PANORAMA_PANEL_HANDLE",
+          "name": "PVAL_SCHEMA_ENUM",
           "value": 16
         },
         {
-          "name": "PVAL_TEST_HANDLE",
+          "name": "PVAL_PANORAMA_PANEL_HANDLE",
           "value": 17
         },
         {
-          "name": "PVAL_COUNT",
+          "name": "PVAL_TEST_HANDLE",
           "value": 18
+        },
+        {
+          "name": "PVAL_COUNT",
+          "value": 19
         }
       ]
     },
@@ -102670,6 +107131,27 @@
         }
       ]
     },
+    "ScriptedHeldWeaponBehavior_t": {
+      "align": 4,
+      "items": [
+        {
+          "name": "eInvalid",
+          "value": 18446744073709551615
+        },
+        {
+          "name": "eHolster",
+          "value": 0
+        },
+        {
+          "name": "eDeploy",
+          "value": 1
+        },
+        {
+          "name": "eDrop",
+          "value": 2
+        }
+      ]
+    },
     "ScriptedMoveTo_t": {
       "align": 4,
       "items": [
@@ -102965,25 +107447,8 @@
           "value": 2
         },
         {
-          "name": "SHATTERDRYWALL_CHUNKS",
-          "value": 3
-        },
-        {
           "name": "SHATTERGLASS_EXPLOSIVE",
-          "value": 4
-        }
-      ]
-    },
-    "ShatterPanelMode": {
-      "align": 1,
-      "items": [
-        {
-          "name": "SHATTER_GLASS",
-          "value": 0
-        },
-        {
-          "name": "SHATTER_DRYWALL",
-          "value": 1
+          "value": 3
         }
       ]
     },
@@ -103218,6 +107683,10 @@
         {
           "name": "SOUND_FLAG_PANIC_NPCS",
           "value": 128
+        },
+        {
+          "name": "SOUND_FLAG_SQUAD_ONLY",
+          "value": 256
         }
       ]
     },
@@ -103269,8 +107738,16 @@
           "value": 10
         },
         {
-          "name": "NUM_AI_SOUND_TYPES",
+          "name": "SOUND_WARN_FRIENDS",
           "value": 11
+        },
+        {
+          "name": "SOUND_FOOD",
+          "value": 12
+        },
+        {
+          "name": "NUM_AI_SOUND_TYPES",
+          "value": 13
         }
       ]
     },
@@ -103757,16 +108234,20 @@
           "value": 2048
         },
         {
-          "name": "DMG_LASTDFLAG",
-          "value": 2048
-        },
-        {
-          "name": "DFLAG_IGNORE_ARMOR",
+          "name": "DFLAG_SUPPRESS_INTERRUPT_FLINCH",
           "value": 4096
         },
         {
-          "name": "DFLAG_SUPPRESS_UTILREMOVE",
+          "name": "DMG_LASTDFLAG",
+          "value": 4096
+        },
+        {
+          "name": "DFLAG_IGNORE_ARMOR",
           "value": 8192
+        },
+        {
+          "name": "DFLAG_SUPPRESS_UTILREMOVE",
+          "value": 16384
         }
       ]
     },

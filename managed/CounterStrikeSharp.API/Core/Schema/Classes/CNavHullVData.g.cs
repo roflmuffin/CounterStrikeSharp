@@ -62,4 +62,12 @@ public partial class CNavHullVData : NativeObject
 	[SchemaMember("CNavHullVData", "m_agentBorderErosion")]
 	public ref Int32 AgentBorderErosion => ref Schema.GetRef<Int32>(this.Handle, "CNavHullVData", "m_agentBorderErosion");
 
+	// m_flowMapGenerationEnabled
+	[SchemaMember("CNavHullVData", "m_flowMapGenerationEnabled")]
+	public ref bool FlowMapGenerationEnabled => ref Schema.GetRef<bool>(this.Handle, "CNavHullVData", "m_flowMapGenerationEnabled");
+
+	// m_flowMapNodeMaxRadius
+	[SchemaMember("CNavHullVData", "m_flowMapNodeMaxRadius")]
+	public ref float FlowMapNodeMaxRadius => ref Schema.GetRef<float>(this.Handle, "CNavHullVData", "m_flowMapNodeMaxRadius");
+
 }
