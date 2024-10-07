@@ -157,6 +157,12 @@ void MemAlloc_FreePointer(ScriptContext& script_context)
 {
     void* ptr = script_context.GetArgument<void*>(0);
 
+    if (!ptr)
+    {
+        script_context.ThrowNativeError("Null pointer reference: %p", ptr);
+        return;
+    }
+
     // TODO: replace with CSSHARP_CORE_TRACE
     CSSHARP_CORE_INFO("Releasing pointer: {}", ptr);
 
