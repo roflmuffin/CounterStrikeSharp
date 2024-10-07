@@ -46,7 +46,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
 
         public static int GetSizeAligned(nint pointer)
         {
-            return NativeAPI.MemAllocGetsizeAligned(pointer);
+            return NativeAPI.MemAllocGetSizeAligned(pointer);
         }
 
         /// <summary>

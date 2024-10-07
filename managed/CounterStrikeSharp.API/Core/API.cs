@@ -1186,11 +1186,11 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
-        public static int MemAllocGetsizeAligned(IntPtr pointer){
+        public static int MemAllocGetSizeAligned(IntPtr pointer){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
 			ScriptContext.GlobalScriptContext.Push(pointer);
-			ScriptContext.GlobalScriptContext.SetIdentifier(0xA438740D);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x814A9CB2);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
 			return (int)ScriptContext.GlobalScriptContext.GetResult(typeof(int));

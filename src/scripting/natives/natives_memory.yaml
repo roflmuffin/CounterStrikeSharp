@@ -10,6 +10,6 @@ REMOVE_ALL_NETWORK_VECTOR_ELEMENTS: vec:pointer -> void
 MEM_ALLOC_ALLOCATE: size:int -> pointer
 MEM_ALLOC_ALLOCATE_ALIGNED: size:int, align:int -> pointer
 MEM_ALLOC_REALLOCATE_ALIGNED: pointer:pointer, size:int, align:int -> pointer
-MEM_ALLOC_GETSIZE_ALIGNED: pointer:pointer -> int
+MEM_ALLOC_GET_SIZE_ALIGNED: pointer:pointer -> int
 MEM_ALLOC_FREE_POINTER: pointer:pointer -> void
 MEM_ALLOC_FREE_POINTER_ALIGNED: pointer:pointer -> void
