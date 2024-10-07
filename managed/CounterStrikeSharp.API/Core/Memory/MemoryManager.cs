@@ -141,7 +141,7 @@ namespace CounterStrikeSharp.API.Core.Memory
 
                 default:
                 {
-                    info.ReplyToCommand("Valid usage: css_memorymanager [option]\n" +
+                    info.ReplyToCommand("Valid usage: css_memory [option]\n" +
                                                "  stats - Print garbage collector statistics.\n" +
                                                "  start - Starts the memory manager that handles leaking resources.\n" +
                                                "  stop - Stops the memory manager.\n" +
@@ -153,7 +153,7 @@ namespace CounterStrikeSharp.API.Core.Memory
 
         public void Load()
         {
-            _commandManager.RegisterCommand(new("css_memorymanager", "Counter-Strike Sharp Memory Manager options.",
+            _commandManager.RegisterCommand(new("css_memory", "Counter-Strike Sharp Memory Manager options.",
                 OnCommand)
             {
                 ExecutableBy = CommandUsage.CLIENT_AND_SERVER,
