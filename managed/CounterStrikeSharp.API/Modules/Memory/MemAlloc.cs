@@ -29,12 +29,42 @@ namespace CounterStrikeSharp.API.Modules.Memory
         }
 
         /// <summary>
+        /// Indirect allocation using 'MemAlloc'
+        /// </summary>
+        /// <param name="size"></param>
+        /// <param name="align"></param>
+        /// <returns></returns>
+        public static nint AllocateAligned(int size, int align)
+        {
+            return NativeAPI.MemAllocAllocateAligned(size, align);
+        }
+
+        public static nint ReallocateAligned(nint pointer, int size, int align)
+        {
+            return NativeAPI.MemAllocReallocateAligned(pointer, size, align);
+        }
+
+        public static int GetSizeAligned(nint pointer)
+        {
+            return NativeAPI.MemAllocGetsizeAligned(pointer);
+        }
+
+        /// <summary>
         /// Release pointer using 'MemAlloc'
         /// </summary>
         /// <param name="ptr"></param>
         public static void Free(nint ptr)
         {
             NativeAPI.MemAllocFreePointer(ptr);
+        }
+
+        /// <summary>
+        /// Release pointer using 'MemAlloc'
+        /// </summary>
+        /// <param name="ptr"></param>
+        public static void FreeAligned(nint ptr)
+        {
+            NativeAPI.MemAllocFreePointerAligned(ptr);
         }
     }
 }
