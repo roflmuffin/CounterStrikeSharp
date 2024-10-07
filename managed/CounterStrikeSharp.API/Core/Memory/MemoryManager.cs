@@ -169,7 +169,7 @@ namespace CounterStrikeSharp.API.Core.Memory
             Start();
         }
 
-        public void PrintStatistics(CommandInfo info)
+        private void PrintStatistics(CommandInfo info)
         {
             info.ReplyToCommand("Memory Manager Statistics:\n" +
                                       $"State: {State}\n" +
