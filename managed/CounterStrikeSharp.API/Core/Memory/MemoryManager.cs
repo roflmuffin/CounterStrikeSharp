@@ -282,6 +282,7 @@ namespace CounterStrikeSharp.API.Core.Memory
 
                 State = MemoryManagerState.InProgress;
 
+                // TODO: replace with 'LogTrace'
                 _logger.LogInformation("Running garbage collector ({0} disposable memory in total)", totalCount);
                 DateTime startTime = DateTime.UtcNow;
 
@@ -307,6 +308,7 @@ namespace CounterStrikeSharp.API.Core.Memory
 
                 if (LastReleased > 0)
                 {
+                    // TODO: replace with 'LogTrace'
                     _logger.LogInformation("Released {0} leaking memory resources in {1}ms ({2} remains)", LastReleased, (LastUpdated - startTime).TotalMilliseconds, CurrentResources);
                 } else
                 {
