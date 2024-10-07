@@ -16,7 +16,7 @@
 
 namespace CounterStrikeSharp.API.Modules.Memory
 {
-    public class DisposableMemory : NativeObject, IDisposableMemory
+    public abstract class DisposableMemory : NativeObject, IDisposableMemory
     {
         internal static int _instances;
 
