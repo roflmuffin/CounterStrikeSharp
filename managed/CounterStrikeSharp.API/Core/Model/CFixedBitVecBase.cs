@@ -23,15 +23,13 @@ namespace CounterStrikeSharp.API.Core
     public unsafe struct CFixedBitVecBase
     {
         private const int LOG2_BITS_PER_INT = 5;
-        private const int MAX_EDICT_BITS = 14;
         private const int BITS_PER_INT = 32;
-        private const int MAX_EDICTS = 1 << MAX_EDICT_BITS;
 
         private readonly uint* m_Ints;
 
         public void Clear(int bitNum)
         {
-            if (!(bitNum >= 0 && bitNum < MAX_EDICTS))
+            if (!(bitNum >= 0 && bitNum < Utilities.MaxEdicts))
                 return;
 
             uint* pInt = m_Ints + BitVec_Int(bitNum);
@@ -45,7 +43,7 @@ namespace CounterStrikeSharp.API.Core
 
         public bool Contains(int bitNum)
         {
-            if (!(bitNum >= 0 && bitNum < MAX_EDICTS))
+            if (!(bitNum >= 0 && bitNum < Utilities.MaxEdicts))
                 return false;
 
             uint* pInt = m_Ints + BitVec_Int(bitNum);
