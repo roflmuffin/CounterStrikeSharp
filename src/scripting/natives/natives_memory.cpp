@@ -153,6 +153,27 @@ void RemoveAllNetworkVectorElements(ScriptContext& script_context)
     vec->RemoveAll();
 }
 
+void MemAlloc_FreePointer(ScriptContext& script_context)
+{
+    void* ptr = script_context.GetArgument<void*>(0);
+
+    // TODO: replace with CSSHARP_CORE_TRACE
+    CSSHARP_CORE_INFO("Releasing pointer: {}", ptr);
+
+#ifdef _WIN32
+    _try
+    {
+        MemAlloc_Free(ptr);
+    }
+    _except (EXCEPTION_ACCESS_VIOLATION)
+    {
+        script_context.ThrowNativeError("Invalid pointer reference: %p (EXCEPTION_ACCESS_VIOLATION)", ptr);
+    }
+#else
+    MemAlloc_Free(ptr);
+#endif
+}
+
 REGISTER_NATIVES(memory, {
     ScriptEngine::RegisterNativeHandler("CREATE_VIRTUAL_FUNCTION", CreateVirtualFunction);
     ScriptEngine::RegisterNativeHandler("CREATE_VIRTUAL_FUNCTION_BY_SIGNATURE",
@@ -164,5 +185,7 @@ REGISTER_NATIVES(memory, {
     ScriptEngine::RegisterNativeHandler("GET_NETWORK_VECTOR_SIZE", GetNetworkVectorSize);
     ScriptEngine::RegisterNativeHandler("GET_NETWORK_VECTOR_ELEMENT_AT", GetNetworkVectorElementAt);
     ScriptEngine::RegisterNativeHandler("REMOVE_ALL_NETWORK_VECTOR_ELEMENTS", RemoveAllNetworkVectorElements);
+
+    ScriptEngine::RegisterNativeHandler("MEM_ALLOC_FREE_POINTER", MemAlloc_FreePointer);
 })
 } // namespace counterstrikesharp

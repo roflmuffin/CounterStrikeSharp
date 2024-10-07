@@ -1150,6 +1150,16 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static void MemAllocFreePointer(IntPtr pointer){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(pointer);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xC2100D1D);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
         public static short GetSchemaOffset(string classname, string propname){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
@@ -1642,46 +1652,6 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
 			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
-			}
-		}
-
-        public static void VectorDelete(IntPtr vector){
-			lock (ScriptContext.GlobalScriptContext.Lock) {
-			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.Push(vector);
-			ScriptContext.GlobalScriptContext.SetIdentifier(0x82187C1A);
-			ScriptContext.GlobalScriptContext.Invoke();
-			ScriptContext.GlobalScriptContext.CheckErrors();
-			}
-		}
-
-        public static void AngleDelete(IntPtr angle){
-			lock (ScriptContext.GlobalScriptContext.Lock) {
-			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.Push(angle);
-			ScriptContext.GlobalScriptContext.SetIdentifier(0xC622DA22);
-			ScriptContext.GlobalScriptContext.Invoke();
-			ScriptContext.GlobalScriptContext.CheckErrors();
-			}
-		}
-
-        public static int VectorCount(){
-			lock (ScriptContext.GlobalScriptContext.Lock) {
-			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.SetIdentifier(0x2A4502C0);
-			ScriptContext.GlobalScriptContext.Invoke();
-			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (int)ScriptContext.GlobalScriptContext.GetResult(typeof(int));
-			}
-		}
-
-        public static int AngleCount(){
-			lock (ScriptContext.GlobalScriptContext.Lock) {
-			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.SetIdentifier(0xB7A887F8);
-			ScriptContext.GlobalScriptContext.Invoke();
-			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (int)ScriptContext.GlobalScriptContext.GetResult(typeof(int));
 			}
 		}
 
