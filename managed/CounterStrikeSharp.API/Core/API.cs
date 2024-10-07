@@ -1150,6 +1150,17 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static IntPtr MemAllocAllocate(int size){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(size);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x9F81F710);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			}
+		}
+
         public static void MemAllocFreePointer(IntPtr pointer){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();

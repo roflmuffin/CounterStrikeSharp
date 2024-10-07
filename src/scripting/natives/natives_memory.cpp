@@ -174,6 +174,12 @@ void MemAlloc_FreePointer(ScriptContext& script_context)
 #endif
 }
 
+void MemAlloc_Allocate(ScriptContext& script_context)
+{
+    size_t size = script_context.GetArgument<size_t>(0);
+    return MemAlloc_Alloc(size);
+}
+
 REGISTER_NATIVES(memory, {
     ScriptEngine::RegisterNativeHandler("CREATE_VIRTUAL_FUNCTION", CreateVirtualFunction);
     ScriptEngine::RegisterNativeHandler("CREATE_VIRTUAL_FUNCTION_BY_SIGNATURE",
@@ -186,6 +192,7 @@ REGISTER_NATIVES(memory, {
     ScriptEngine::RegisterNativeHandler("GET_NETWORK_VECTOR_ELEMENT_AT", GetNetworkVectorElementAt);
     ScriptEngine::RegisterNativeHandler("REMOVE_ALL_NETWORK_VECTOR_ELEMENTS", RemoveAllNetworkVectorElements);
 
+    ScriptEngine::RegisterNativeHandler("MEM_ALLOC_ALLOCATE", MemAlloc_Allocate);
     ScriptEngine::RegisterNativeHandler("MEM_ALLOC_FREE_POINTER", MemAlloc_FreePointer);
 })
 } // namespace counterstrikesharp
