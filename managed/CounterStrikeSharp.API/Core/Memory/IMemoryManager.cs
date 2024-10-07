@@ -23,5 +23,7 @@ namespace CounterStrikeSharp.API.Core.Memory
         public void Start();
 
         public void Stop(bool forceStop = false);
+
+        public void Resume();
     }
 }
