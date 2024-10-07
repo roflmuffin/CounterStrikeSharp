@@ -300,17 +300,17 @@ namespace CounterStrikeSharp.API.Core.Memory
                 TotalReleased += (ulong)LastReleased;
                 LastUpdated = DateTime.UtcNow;
 
+                if (State == MemoryManagerState.InProgress)
+                {
+                    State = MemoryManagerState.Idle;
+                }
+
                 if (LastReleased > 0)
                 {
                     _logger.LogInformation("Released {0} leaking memory resources in {1}ms ({2} remains)", LastReleased, (LastUpdated - startTime).TotalMilliseconds, CurrentResources);
                 } else
                 {
                     Thread.Sleep(CoreConfig.MemoryManagerInterval);
-                }
-
-                if (State == MemoryManagerState.InProgress)
-                {
-                    State = MemoryManagerState.Idle;
                 }
             }
         }
