@@ -371,20 +371,6 @@ namespace CounterStrikeSharp.API.Modules.Utils
         {
         }*/
 
-        public override void ReleaseUnmanaged()
-        {
-            NativeAPI.AngleDelete(Handle);
-        }
-
-        /// <summary>
-        /// Returns the total amount of instances.
-        /// </summary>
-        /// <returns></returns>
-        public static int GetTotalCount()
-        {
-            return NativeAPI.AngleCount();
-        }
-
         public override string ToString()
         {
             return $"{X:n2} {Y:n2} {Z:n2}";

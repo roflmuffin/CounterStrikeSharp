@@ -372,20 +372,6 @@ namespace CounterStrikeSharp.API.Modules.Utils
 
         */
 
-        public override void ReleaseUnmanaged()
-        {
-            NativeAPI.VectorDelete(Handle);
-        }
-
-        /// <summary>
-        /// Returns the total amount of instances.
-        /// </summary>
-        /// <returns></returns>
-        public static int GetTotalCount()
-        {
-            return NativeAPI.VectorCount();
-        }
-
         public override string ToString()
         {
             return $"{X:n2} {Y:n2} {Z:n2}";

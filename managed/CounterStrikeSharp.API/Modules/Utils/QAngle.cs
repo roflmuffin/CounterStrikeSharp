@@ -39,20 +39,6 @@ namespace CounterStrikeSharp.API.Modules.Utils
         public unsafe ref float Y => ref Unsafe.Add(ref *(float*)Handle, 1);
         public unsafe ref float Z => ref Unsafe.Add(ref *(float*)Handle, 2);
 
-        public override void ReleaseUnmanaged()
-        {
-            NativeAPI.AngleDelete(Handle);
-        }
-
-        /// <summary>
-        /// Returns the total amount of instances.
-        /// </summary>
-        /// <returns></returns>
-        public static int GetTotalCount()
-        {
-            return NativeAPI.AngleCount();
-        }
-
         public override string ToString()
         {
             return $"{X:n2} {Y:n2} {Z:n2}";

@@ -67,6 +67,8 @@ namespace CounterStrikeSharp.API.Modules.Memory
             { }
 
         public virtual void ReleaseUnmanaged()
-            { }
+        {
+            NativeAPI.MemAllocFreePointer(Handle);
+        }
     }
 }
