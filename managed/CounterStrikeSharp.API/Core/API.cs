@@ -283,6 +283,61 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static void SetVariantInt(IntPtr pvariant, int value){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(pvariant);
+			ScriptContext.GlobalScriptContext.Push(value);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x801EC403);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static void SetVariantUint(IntPtr pvariant, uint value){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(pvariant);
+			ScriptContext.GlobalScriptContext.Push(value);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x83EC7436);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static void SetVariantFloat(IntPtr pvariant, float value){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(pvariant);
+			ScriptContext.GlobalScriptContext.Push(value);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x266E8A0);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static void SetVariantString(IntPtr pvariant, string value){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(pvariant);
+			ScriptContext.GlobalScriptContext.Push(value);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x2450A3E5);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static void SetVariantBool(IntPtr pvariant, bool value){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(pvariant);
+			ScriptContext.GlobalScriptContext.Push(value);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x83F1967E);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
         public static T DynamicHookGetReturn<T>(IntPtr hook, int datatype){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();

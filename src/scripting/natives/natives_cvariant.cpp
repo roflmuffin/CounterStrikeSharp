@@ -92,12 +92,84 @@ static bool GetVariantBool(ScriptContext& script_context)
     return pVariant->m_bool;
 }
 
+static void SetVariantInt(ScriptContext& script_context)
+{
+    variant_t* pVariant = script_context.GetArgument<variant_t*>(0);
+    if (!pVariant)
+    {
+        script_context.ThrowNativeError("Invalid variant pointer");
+        return;
+    }
+
+    int value = script_context.GetArgument<int>(1);
+    pVariant->m_int = value;
+}
+
+static void SetVariantUInt(ScriptContext& script_context)
+{
+    variant_t* pVariant = script_context.GetArgument<variant_t*>(0);
+    if (!pVariant)
+    {
+        script_context.ThrowNativeError("Invalid variant pointer");
+        return;
+    }
+
+    uint value = script_context.GetArgument<uint>(1);
+    pVariant->m_uint = value;
+}
+
+static void SetVariantFloat(ScriptContext& script_context)
+{
+    variant_t* pVariant = script_context.GetArgument<variant_t*>(0);
+    if (!pVariant)
+    {
+        script_context.ThrowNativeError("Invalid variant pointer");
+        return;
+    }
+
+    float value = script_context.GetArgument<float>(1);
+    pVariant->m_float = value;
+}
+
+static void SetVariantString(ScriptContext& script_context)
+{
+    variant_t* pVariant = script_context.GetArgument<variant_t*>(0);
+    if (!pVariant)
+    {
+        script_context.ThrowNativeError("Invalid variant pointer");
+        return;
+    }
+
+    const char* value = script_context.GetArgument<const char*>(1);
+    pVariant->m_pszString = value;
+}
+
+static void SetVariantBool(ScriptContext& script_context)
+{
+    variant_t* pVariant = script_context.GetArgument<variant_t*>(0);
+    if (!pVariant)
+    {
+        script_context.ThrowNativeError("Invalid variant pointer");
+        return;
+    }
+
+    bool value = script_context.GetArgument<bool>(1);
+    pVariant->m_bool = value;
+}
+
 REGISTER_NATIVES(cvariant, {
     ScriptEngine::RegisterNativeHandler("GET_VARIANT_TYPE", GetVariantType);
+
     ScriptEngine::RegisterNativeHandler("GET_VARIANT_INT", GetVariantInt);
     ScriptEngine::RegisterNativeHandler("GET_VARIANT_UINT", GetVariantUInt);
     ScriptEngine::RegisterNativeHandler("GET_VARIANT_FLOAT", GetVariantFloat);
     ScriptEngine::RegisterNativeHandler("GET_VARIANT_STRING", GetVariantString);
     ScriptEngine::RegisterNativeHandler("GET_VARIANT_BOOL", GetVariantBool);
+
+    ScriptEngine::RegisterNativeHandler("SET_VARIANT_INT", SetVariantInt);
+    ScriptEngine::RegisterNativeHandler("SET_VARIANT_UINT", SetVariantUInt);
+    ScriptEngine::RegisterNativeHandler("SET_VARIANT_FLOAT", SetVariantFloat);
+    ScriptEngine::RegisterNativeHandler("SET_VARIANT_STRING", SetVariantString);
+    ScriptEngine::RegisterNativeHandler("SET_VARIANT_BOOL", SetVariantBool);
 })
 } // namespace counterstrikesharp
