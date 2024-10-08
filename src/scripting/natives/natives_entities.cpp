@@ -450,7 +450,7 @@ void EntityKeyValuesGetValue(ScriptContext& script_context)
 
         case counterstrikesharp::TYPE_INT64:
         {
-            script_context.SetResult(keyValues->GetUint64(key));
+            script_context.SetResult(keyValues->GetInt64(key));
         } break;
 
         case counterstrikesharp::TYPE_UINT64:
