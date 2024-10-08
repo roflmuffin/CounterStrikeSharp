@@ -42,5 +42,10 @@ namespace CounterStrikeSharp.API.Modules.Utils
             this.Z = z ?? 0;
             this.W = w ?? 0;
         }
+
+        public override string ToString()
+        {
+            return $"{X:n2} {Y:n2} {Z:n2} {W:n2}";
+        }
     }
 }

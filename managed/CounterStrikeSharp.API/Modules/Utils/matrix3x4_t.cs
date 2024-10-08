@@ -46,4 +46,11 @@ public partial class matrix3x4_t : NativeObject
         this[2, 3] = m23 ?? 0;
     }
 
+    public override string ToString()
+    {
+        return $"{this[0, 0]:n2} {this[0, 1]:n2} {this[0, 2]:n2} {this[0, 3]:n2}\n" +
+               $"{this[1, 0]:n2} {this[1, 1]:n2} {this[1, 2]:n2} {this[1, 3]:n2}\n" +
+               $"{this[2, 0]:n2} {this[2, 1]:n2} {this[2, 2]:n2} {this[2, 3]:n2}";
+    }
+
 }
