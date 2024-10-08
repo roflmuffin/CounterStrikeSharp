@@ -490,43 +490,43 @@ void EntityKeyValuesGetValue(ScriptContext& script_context)
 
         case counterstrikesharp::TYPE_COLOR:
         {
-            script_context.SetResult(keyValues->GetColor(key));
+            script_context.SetResult(new Color(keyValues->GetColor(key)));
             break;
         }
 
         case counterstrikesharp::TYPE_VECTOR:
         {
-            script_context.SetResult(keyValues->GetVector(key));
+            script_context.SetResult(new Vector(keyValues->GetVector(key)));
             break;
         }
 
         case counterstrikesharp::TYPE_VECTOR2D:
         {
-            script_context.SetResult(keyValues->GetVector2D(key));
+            script_context.SetResult(new Vector2D(keyValues->GetVector2D(key)));
             break;
         }
 
         case counterstrikesharp::TYPE_VECTOR4D:
         {
-            script_context.SetResult(keyValues->GetVector4D(key));
+            script_context.SetResult(new Vector4D(keyValues->GetVector4D(key)));
             break;
         }
 
         case counterstrikesharp::TYPE_QUATERNION:
         {
-            script_context.SetResult(keyValues->GetQuaternion(key));
+            script_context.SetResult(new Quaternion(keyValues->GetQuaternion(key)));
             break;
         }
 
         case counterstrikesharp::TYPE_QANGLE:
         {
-            script_context.SetResult(keyValues->GetQAngle(key));
+            script_context.SetResult(new QAngle(keyValues->GetQAngle(key)));
             break;
         }
 
         case counterstrikesharp::TYPE_MATRIX3X4:
         {
-            script_context.SetResult(keyValues->GetMatrix3x4(key));
+            script_context.SetResult(new matrix3x4_t(keyValues->GetMatrix3x4(key)));
             break;
         }
 
