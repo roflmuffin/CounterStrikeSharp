@@ -19,37 +19,138 @@ using System.Drawing;
 namespace CounterStrikeSharp.API.Modules.Utils
 {
     /// <summary>
+    /// <b>WARNING: This is intended to be only used with <see cref="CEntityKeyValues"/> for now!</b>
+    /// </summary>
+    public enum KeyValuesType : uint
+    {
+        TYPE_BOOL,
+        TYPE_INT,
+        TYPE_UINT,
+        TYPE_INT64,
+        TYPE_UINT64,
+        TYPE_FLOAT,
+        TYPE_DOUBLE,
+        TYPE_STRING,
+        TYPE_POINTER,
+        TYPE_STRING_TOKEN,
+        TYPE_EHANDLE,
+        TYPE_COLOR,
+        TYPE_VECTOR,
+        TYPE_VECTOR2D,
+        TYPE_VECTOR4D,
+        TYPE_QUATERNION,
+        TYPE_QANGLE,
+        TYPE_MATRIX3X4
+    }
+
+    /// <summary>
     /// <b>WARNING: This is intended to be only used with <see cref="CBaseEntity.DispatchSpawn"/> for now!</b>
     /// </summary>
     public class CEntityKeyValues : NativeObject
     {
-        internal enum KeyValuesType : uint
-        {
-            TYPE_BOOL,
-            TYPE_INT,
-            TYPE_UINT,
-            TYPE_INT64,
-            TYPE_UINT64,
-            TYPE_FLOAT,
-            TYPE_DOUBLE,
-            TYPE_STRING,
-            TYPE_POINTER,
-            TYPE_STRING_TOKEN,
-            TYPE_EHANDLE,
-            TYPE_COLOR,
-            TYPE_VECTOR,
-            TYPE_VECTOR2D,
-            TYPE_VECTOR4D,
-            TYPE_QUATERNION,
-            TYPE_QANGLE,
-            TYPE_MATRIX3X4
-        }
-
         public CEntityKeyValues() : base(NativeAPI.EntityKeyValuesNew())
             { }
 
         public CEntityKeyValues(nint pointer) : base(pointer)
             { }
+
+        public object? this[string key, KeyValuesType type]
+        {
+            get
+            {
+                return type switch
+                {
+                    KeyValuesType.TYPE_BOOL => GetBool(key),
+                    KeyValuesType.TYPE_INT => GetInt(key),
+                    KeyValuesType.TYPE_UINT => GetUInt(key),
+                    KeyValuesType.TYPE_INT64 => GetInt64(key),
+                    KeyValuesType.TYPE_UINT64 => GetUInt64(key),
+                    KeyValuesType.TYPE_FLOAT => GetFloat(key),
+                    KeyValuesType.TYPE_DOUBLE => GetDouble(key),
+                    KeyValuesType.TYPE_STRING => GetString(key),
+                    KeyValuesType.TYPE_POINTER => GetPointer(key),
+                    KeyValuesType.TYPE_STRING_TOKEN => GetStringToken(key),
+                    KeyValuesType.TYPE_EHANDLE => GetEHandle(key),
+                    KeyValuesType.TYPE_COLOR => GetColor(key),
+                    KeyValuesType.TYPE_VECTOR => GetVector(key),
+                    KeyValuesType.TYPE_VECTOR2D => GetVector2D(key),
+                    KeyValuesType.TYPE_VECTOR4D => GetVector4D(key),
+                    KeyValuesType.TYPE_QUATERNION => GetQuaternion(key),
+                    KeyValuesType.TYPE_QANGLE => GetAngle(key),
+                    KeyValuesType.TYPE_MATRIX3X4 => GetMatrix3x4(key),
+                    _ => null
+                };
+            }
+
+            set
+            {
+#pragma warning disable CS8605 // Unboxing a possibly null value.
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+#pragma warning disable CS8604 // Possible null reference argument.
+                switch (type)
+                {
+                    case KeyValuesType.TYPE_BOOL:
+                        SetBool(key, (bool)value);
+                        break;
+                    case KeyValuesType.TYPE_INT:
+                        SetInt(key, (int)value);
+                        break;
+                    case KeyValuesType.TYPE_UINT:
+                        SetUInt(key, (uint)value);
+                        break;
+                    case KeyValuesType.TYPE_INT64:
+                        SetInt64(key, (long)value);
+                        break;
+                    case KeyValuesType.TYPE_UINT64:
+                        SetUInt64(key, (ulong)value);
+                        break;
+                    case KeyValuesType.TYPE_FLOAT:
+                        SetFloat(key, (float)value);
+                        break;
+                    case KeyValuesType.TYPE_DOUBLE:
+                        SetDouble(key, (double)value);
+                        break;
+                    case KeyValuesType.TYPE_STRING:
+                        SetString(key, (string)value);
+                        break;
+                    case KeyValuesType.TYPE_POINTER:
+                        SetPointer(key, (nint)value);
+                        break;
+                    case KeyValuesType.TYPE_STRING_TOKEN:
+                        SetStringToken(key, (CUtlStringToken)value);
+                        break;
+                    case KeyValuesType.TYPE_EHANDLE:
+                        SetEHandle(key, (CEntityHandle)value);
+                        break;
+                    case KeyValuesType.TYPE_COLOR:
+                        SetColor(key, (Color)value);
+                        break;
+                    case KeyValuesType.TYPE_VECTOR:
+                        SetVector(key, (Vector)value);
+                        break;
+                    case KeyValuesType.TYPE_VECTOR2D:
+                        SetVector2D(key, (Vector2D)value);
+                        break;
+                    case KeyValuesType.TYPE_VECTOR4D:
+                        SetVector4D(key, (Vector4D)value);
+                        break;
+                    case KeyValuesType.TYPE_QUATERNION:
+                        SetQuaternion(key, (Quaternion)value);
+                        break;
+                    case KeyValuesType.TYPE_QANGLE:
+                        SetAngle(key, (QAngle)value);
+                        break;
+                    case KeyValuesType.TYPE_MATRIX3X4:
+                        SetMatrix3x4(key, (matrix3x4_t)value);
+                        break;
+                    default:
+                        throw new InvalidOperationException("Unsupported KeyValuesType.");
+                }
+#pragma warning restore CS8605 // Unboxing a possibly null value.
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+#pragma warning restore CS8604 // Possible null reference argument.
+            }
+        }
 
 #region GETTER
         public bool GetBool(string key, bool defaultValue = false) => GetValue<bool>(key, KeyValuesType.TYPE_BOOL, defaultValue);
