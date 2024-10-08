@@ -206,10 +206,10 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
-        public static string GetStringFromSymbolLarge(IntPtr ppointer){
+        public static string GetStringFromSymbolLarge(IntPtr pointer){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.Push(ppointer);
+			ScriptContext.GlobalScriptContext.Push(pointer);
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x600A804B);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
