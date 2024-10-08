@@ -23,7 +23,6 @@
  * under GNU Lesser General Public License, version 2.
  */
 
-using System;
 using System.Collections.Concurrent;
 using System.Drawing;
 using System.Runtime.InteropServices;
@@ -454,6 +453,12 @@ namespace CounterStrikeSharp.API.Core
             {
                 var pointer = (IntPtr)GetResult(typeof(IntPtr), ptr);
                 return Marshaling.ColorMarshaler.NativeToManaged(pointer);
+            }
+
+            // this one only works if the 'Raw'/uint is passed, otherwise big bum
+            if (type == typeof(CEntityHandle))
+            {
+                return new CEntityHandle((uint)GetResult(typeof(uint), ptr));
             }
 
 			if (type == typeof(object))

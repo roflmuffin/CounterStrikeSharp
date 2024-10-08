@@ -347,7 +347,7 @@ void EntityKeyValuesSetValue(ScriptContext& script_context)
             break;
 
         case counterstrikesharp::TYPE_EHANDLE:
-            keyValues->SetEHandle(key, script_context.GetArgument<unsigned int>(offset));
+            keyValues->SetEHandle(key, CEntityHandle(script_context.GetArgument<unsigned int>(offset)));
             break;
 
         case counterstrikesharp::TYPE_COLOR:
