@@ -18,3 +18,4 @@ DISPATCH_SPAWN: entity:pointer, keyvalues:pointer -> void
 ENTITY_KEY_VALUES_NEW: -> pointer
 ENTITY_KEY_VALUES_GET_VALUE: keyvalues:pointer, key:string, type:uint -> any
 ENTITY_KEY_VALUES_SET_VALUE: keyvalues:pointer, key:string, type:uint, arguments:object[] -> void
+ENTITY_KEY_VALUES_HAS_VALUE: keyvalues:pointer, key:string -> bool

@@ -808,6 +808,18 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static bool EntityKeyValuesHasValue(IntPtr keyvalues, string key){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(keyvalues);
+			ScriptContext.GlobalScriptContext.Push(key);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xD3E04DA0);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (bool)ScriptContext.GlobalScriptContext.GetResult(typeof(bool));
+			}
+		}
+
         public static void HookEvent(string name, InputArgument callback, bool ispost){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();

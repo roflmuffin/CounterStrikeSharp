@@ -290,6 +290,13 @@ CEntityKeyValues* EntityKeyValuesNew(ScriptContext& script_context)
     return new CEntityKeyValues();
 }
 
+bool EntityKeyValuesHasValue(ScriptContext& script_context)
+{
+    CEntityKeyValues* keyValues = script_context.GetArgument<CEntityKeyValues*>(0);
+    const char* key = script_context.GetArgument<const char*>(1);
+    return keyValues->HasValue(key);
+}
+
 void EntityKeyValuesSetValue(ScriptContext& script_context)
 {
     CEntityKeyValues* keyValues = script_context.GetArgument<CEntityKeyValues*>(0);
@@ -558,5 +565,6 @@ REGISTER_NATIVES(entities, {
     ScriptEngine::RegisterNativeHandler("ENTITY_KEY_VALUES_NEW", EntityKeyValuesNew);
     ScriptEngine::RegisterNativeHandler("ENTITY_KEY_VALUES_GET_VALUE", EntityKeyValuesGetValue);
     ScriptEngine::RegisterNativeHandler("ENTITY_KEY_VALUES_SET_VALUE", EntityKeyValuesSetValue);
+    ScriptEngine::RegisterNativeHandler("ENTITY_KEY_VALUES_HAS_VALUE", EntityKeyValuesHasValue);
 })
 } // namespace counterstrikesharp

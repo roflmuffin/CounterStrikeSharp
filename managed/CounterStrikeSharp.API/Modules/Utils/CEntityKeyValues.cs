@@ -137,6 +137,11 @@ namespace CounterStrikeSharp.API.Modules.Utils
         public void SetMatrix3x4(string key, matrix3x4_t value) => SetValue<matrix3x4_t>(key, KeyValuesType.TYPE_MATRIX3X4, value);
 #endregion
 
+        public bool HasValue(string key)
+        {
+            return NativeAPI.EntityKeyValuesHasValue(Handle, key);
+        }
+
         internal void SetValue<T>(string key, KeyValuesType type, T value)
         {
             List<object> arguments = new List<object>();
