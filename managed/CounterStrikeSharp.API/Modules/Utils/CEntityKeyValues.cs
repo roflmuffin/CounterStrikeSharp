@@ -15,9 +15,6 @@
  */
 
 using System.Drawing;
-using System.Numerics;
-
-// TODO: change from System.Numerics to exposed native values (Vector2D, Vector4D, Quaternion)
 
 namespace CounterStrikeSharp.API.Modules.Utils
 {
@@ -69,7 +66,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
 
         public double GetDouble(string key, double defaultValue = 0) => GetValue<double>(key, KeyValuesType.TYPE_DOUBLE, defaultValue);
 
-        public string GetString(string key, string defaultValue = "") => GetValue<string>(key, KeyValuesType.TYPE_STRING, defaultValue);
+        public string? GetString(string key, string defaultValue = "") => GetValue<string>(key, KeyValuesType.TYPE_STRING, defaultValue);
 
         public nint GetPointer(string key, nint defaultValue = 0) => GetValue<nint>(key, KeyValuesType.TYPE_POINTER, defaultValue);
 
@@ -81,15 +78,15 @@ namespace CounterStrikeSharp.API.Modules.Utils
 
         public Vector? GetVector(string key, Vector? defaultValue = null) => GetValue<Vector?>(key, KeyValuesType.TYPE_VECTOR, defaultValue);
 
-        public Vector2? GetVector2D(string key, Vector2? defaultValue = null) => GetValue<Vector2?>(key, KeyValuesType.TYPE_VECTOR2D, defaultValue);
+        public Vector2D? GetVector2D(string key, Vector2D? defaultValue = null) => GetValue<Vector2D>(key, KeyValuesType.TYPE_VECTOR2D, defaultValue);
 
-        public Vector4? GetVector4D(string key, Vector4? defaultValue = null) => GetValue<Vector4?>(key, KeyValuesType.TYPE_VECTOR4D, defaultValue);
+        public Vector4D? GetVector4D(string key, Vector4D? defaultValue = null) => GetValue<Vector4D?>(key, KeyValuesType.TYPE_VECTOR4D, defaultValue);
 
-        public Vector4? GetQuaternion(string key, Vector4? defaultValue = null) => GetValue<Vector4?>(key, KeyValuesType.TYPE_QUATERNION, defaultValue);
+        public Quaternion? GetQuaternion(string key, Quaternion? defaultValue = null) => GetValue<Quaternion?>(key, KeyValuesType.TYPE_QUATERNION, defaultValue);
 
         public QAngle? GetAngle(string key, QAngle? defaultValue = null) => GetValue<QAngle?>(key, KeyValuesType.TYPE_QANGLE, defaultValue);
 
-        public Matrix3x4? GetMatrix3x4(string key, Matrix3x4? defaultValue = null) => GetValue<Matrix3x4?>(key, KeyValuesType.TYPE_MATRIX3X4, defaultValue);
+        public matrix3x4_t? GetMatrix3x4(string key, matrix3x4_t? defaultValue = null) => GetValue<matrix3x4_t?>(key, KeyValuesType.TYPE_MATRIX3X4, defaultValue);
 #endregion
 
 #region SETTER
@@ -117,25 +114,25 @@ namespace CounterStrikeSharp.API.Modules.Utils
 
         public void SetColor(string key, Color value) => SetValue<Color>(key, KeyValuesType.TYPE_COLOR, value);
 
-        public void SetVector(string key, float x, float y, float z) => SetValue<Vector3>(key, KeyValuesType.TYPE_VECTOR, new Vector3(x, y, z));
+        public void SetVector(string key, float x, float y, float z) => SetValue<Vector>(key, KeyValuesType.TYPE_VECTOR, new Vector(x, y, z));
 
-        public void SetVector2D(string key, float x, float y) => SetValue<Vector2>(key, KeyValuesType.TYPE_VECTOR2D, new Vector2(x, y));
+        public void SetVector2D(string key, float x, float y) => SetValue<Vector2D>(key, KeyValuesType.TYPE_VECTOR2D, new Vector2D(x, y));
 
-        public void SetVector2D(string key, Vector2 value) => SetValue<Vector2>(key, KeyValuesType.TYPE_VECTOR2D, value);
+        public void SetVector2D(string key, Vector2D value) => SetValue<Vector2D>(key, KeyValuesType.TYPE_VECTOR2D, value);
 
-        public void SetVector4D(string key, float x, float y, float z, float w) => SetValue<Vector4>(key, KeyValuesType.TYPE_VECTOR4D, new Vector4(x, y, z, w));
+        public void SetVector4D(string key, float x, float y, float z, float w) => SetValue<Vector4D>(key, KeyValuesType.TYPE_VECTOR4D, new Vector4D(x, y, z, w));
 
-        public void SetVector4D(string key, Vector4 value) => SetValue<Vector4>(key, KeyValuesType.TYPE_VECTOR4D, value);
+        public void SetVector4D(string key, Vector4D value) => SetValue<Vector4D>(key, KeyValuesType.TYPE_VECTOR4D, value);
 
-        public void SetQuaternion(string key, float x, float y, float z, float w) => SetValue<Vector4>(key, KeyValuesType.TYPE_QUATERNION, new Vector4(x, y, z, w));
+        public void SetQuaternion(string key, float x, float y, float z, float w) => SetValue<Quaternion>(key, KeyValuesType.TYPE_QUATERNION, new Quaternion(x, y, z, w));
 
-        public void SetQuaternion(string key, Vector4 value) => SetValue<Vector4>(key, KeyValuesType.TYPE_QUATERNION, value);
+        public void SetQuaternion(string key, Quaternion value) => SetValue<Quaternion>(key, KeyValuesType.TYPE_QUATERNION, value);
 
         public void SetAngle(string key, float pitch, float yaw, float roll) => SetValue<QAngle>(key, KeyValuesType.TYPE_QANGLE, new QAngle(pitch, yaw, roll));
 
         public void SetAngle(string key, QAngle angle) => SetValue<QAngle>(key, KeyValuesType.TYPE_QANGLE, angle);
 
-        public void SetMatrix3x4(string key, Matrix3x4 value) => SetValue<Matrix3x4>(key, KeyValuesType.TYPE_MATRIX3X4, value);
+        public void SetMatrix3x4(string key, matrix3x4_t value) => SetValue<matrix3x4_t>(key, KeyValuesType.TYPE_MATRIX3X4, value);
 #endregion
 
         internal void SetValue<T>(string key, KeyValuesType type, T value)
@@ -175,8 +172,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
 
                 case KeyValuesType.TYPE_VECTOR2D:
                     {
-                        // TODO: Change to 'Vector2D'
-                        if (value is Vector2 vector)
+                        if (value is Vector2D vector)
                         {
                             arguments.Add(vector.X);
                             arguments.Add(vector.Y);
@@ -185,8 +181,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
 
                 case KeyValuesType.TYPE_VECTOR4D:
                     {
-                        // TODO: Change to 'Vector4D'
-                        if (value is Vector4 vector)
+                        if (value is Vector4D vector)
                         {
                             arguments.Add(vector.X);
                             arguments.Add(vector.Y);
@@ -197,13 +192,12 @@ namespace CounterStrikeSharp.API.Modules.Utils
 
                 case KeyValuesType.TYPE_QUATERNION:
                     {
-                        // TODO: Change to 'Quaternion'
-                        if (value is Vector4 vector)
+                        if (value is Quaternion quaternion)
                         {
-                            arguments.Add(vector.X);
-                            arguments.Add(vector.Y);
-                            arguments.Add(vector.Z);
-                            arguments.Add(vector.W);
+                            arguments.Add(quaternion.X);
+                            arguments.Add(quaternion.Y);
+                            arguments.Add(quaternion.Z);
+                            arguments.Add(quaternion.W);
                         } else { BadTypeHandler(key, type, value); }
                     } break;
 
@@ -219,20 +213,22 @@ namespace CounterStrikeSharp.API.Modules.Utils
 
                 case KeyValuesType.TYPE_MATRIX3X4:
                     {
-                        if (value is Matrix3x4 matrix)
+                        if (value is matrix3x4_t matrix)
                         {
-                            arguments.Add(matrix.M11);
-                            arguments.Add(matrix.M12);
-                            arguments.Add(matrix.M13);
-                            arguments.Add(matrix.M14);
-                            arguments.Add(matrix.M21);
-                            arguments.Add(matrix.M22);
-                            arguments.Add(matrix.M23);
-                            arguments.Add(matrix.M24);
-                            arguments.Add(matrix.M31);
-                            arguments.Add(matrix.M32);
-                            arguments.Add(matrix.M33);
-                            arguments.Add(matrix.M34);
+                            arguments.Add(matrix[1, 1]);
+                            arguments.Add(matrix[1, 2]);
+                            arguments.Add(matrix[1, 3]);
+                            arguments.Add(matrix[1, 4]);
+
+                            arguments.Add(matrix[2, 1]);
+                            arguments.Add(matrix[2, 2]);
+                            arguments.Add(matrix[2, 3]);
+                            arguments.Add(matrix[2, 4]);
+
+                            arguments.Add(matrix[3, 1]);
+                            arguments.Add(matrix[3, 2]);
+                            arguments.Add(matrix[3, 3]);
+                            arguments.Add(matrix[3, 4]);
                         } else { BadTypeHandler(key, type, value); }
                     } break;
 
@@ -244,7 +240,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
             NativeAPI.EntityKeyValuesSetValue(key, (uint)type, arguments.ToArray());
         }
 
-        internal T GetValue<T>(string key, KeyValuesType type, T defaultValue)
+        internal T? GetValue<T>(string key, KeyValuesType type, T? defaultValue)
         {
             return NativeAPI.EntityKeyValuesGetValue<T>(key, (uint)type) ?? defaultValue;
         }
