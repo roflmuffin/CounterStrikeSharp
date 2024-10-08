@@ -116,6 +116,8 @@ namespace CounterStrikeSharp.API.Modules.Utils
 
         public void SetVector(string key, float x, float y, float z) => SetValue<Vector>(key, KeyValuesType.TYPE_VECTOR, new Vector(x, y, z));
 
+        public void SetVector(string key, Vector vector) => SetValue<Vector>(key, KeyValuesType.TYPE_VECTOR, vector);
+
         public void SetVector2D(string key, float x, float y) => SetValue<Vector2D>(key, KeyValuesType.TYPE_VECTOR2D, new Vector2D(x, y));
 
         public void SetVector2D(string key, Vector2D value) => SetValue<Vector2D>(key, KeyValuesType.TYPE_VECTOR2D, value);
