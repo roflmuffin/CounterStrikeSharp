@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <!-- https://learn.microsoft.com/en-us/dotnet/fundamentals/package-validation/diagnostic-ids -->
-<Suppressions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<Suppressions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Suppression>
     <DiagnosticId>CP0001</DiagnosticId>
     <Target>T:CounterStrikeSharp.API.Core.CCoopBonusCoin</Target>
@@ -1120,54 +1120,6 @@
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:CounterStrikeSharp.API.Core.CCSPlayerPawnBase.get_InvalidSteamLogonDelayed</Target>
-    <Left>.\ApiCompat\v202.dll</Left>
-    <Right>obj\Debug\net8.0\CounterStrikeSharp.API.dll</Right>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:CounterStrikeSharp.API.Core.CCSPlayerPawnBase.get_IsDefusing</Target>
-    <Left>.\ApiCompat\v202.dll</Left>
-    <Right>obj\Debug\net8.0\CounterStrikeSharp.API.dll</Right>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:CounterStrikeSharp.API.Core.CCSPlayerPawnBase.get_IsGrabbingHostage</Target>
-    <Left>.\ApiCompat\v202.dll</Left>
-    <Right>obj\Debug\net8.0\CounterStrikeSharp.API.dll</Right>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:CounterStrikeSharp.API.Core.CCSPlayerPawnBase.get_IsScoped</Target>
-    <Left>.\ApiCompat\v202.dll</Left>
-    <Right>obj\Debug\net8.0\CounterStrikeSharp.API.dll</Right>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:CounterStrikeSharp.API.Core.CCSPlayerPawnBase.get_IsSpawning</Target>
-    <Left>.\ApiCompat\v202.dll</Left>
-    <Right>obj\Debug\net8.0\CounterStrikeSharp.API.dll</Right>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:CounterStrikeSharp.API.Core.CCSPlayerPawnBase.get_IsWalking</Target>
-    <Left>.\ApiCompat\v202.dll</Left>
-    <Right>obj\Debug\net8.0\CounterStrikeSharp.API.dll</Right>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:CounterStrikeSharp.API.Core.CCSPlayerPawnBase.get_KilledByHeadshot</Target>
-    <Left>.\ApiCompat\v202.dll</Left>
-    <Right>obj\Debug\net8.0\CounterStrikeSharp.API.dll</Right>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:CounterStrikeSharp.API.Core.CCSPlayerPawnBase.get_KilledByTaser</Target>
-    <Left>.\ApiCompat\v202.dll</Left>
-    <Right>obj\Debug\net8.0\CounterStrikeSharp.API.dll</Right>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:CounterStrikeSharp.API.Core.CCSPlayerPawnBase.get_LadderSurpressionTimer</Target>
     <Left>.\ApiCompat\v202.dll</Left>
     <Right>obj\Debug\net8.0\CounterStrikeSharp.API.dll</Right>
   </Suppression>
