@@ -315,40 +315,40 @@ void EntityKeyValuesSetValue(ScriptContext& script_context)
             break;
 
         case counterstrikesharp::TYPE_UINT:
-           keyValues->SetUint(key, script_context.GetArgument<uint>(offset));
-           break;
+            keyValues->SetUint(key, script_context.GetArgument<uint>(offset));
+            break;
 
         case counterstrikesharp::TYPE_INT64:
-           keyValues->SetInt64(key, script_context.GetArgument<int64>(offset));
-           break;
+            keyValues->SetInt64(key, script_context.GetArgument<int64>(offset));
+            break;
 
         case counterstrikesharp::TYPE_UINT64:
-           keyValues->SetUint64(key, script_context.GetArgument<uint64>(offset));
-           break;
+            keyValues->SetUint64(key, script_context.GetArgument<uint64>(offset));
+            break;
 
         case counterstrikesharp::TYPE_FLOAT:
-           keyValues->SetFloat(key, script_context.GetArgument<float>(offset));
-           break;
+            keyValues->SetFloat(key, script_context.GetArgument<float>(offset));
+            break;
 
         case counterstrikesharp::TYPE_DOUBLE:
-           keyValues->SetDouble(key, script_context.GetArgument<double>(offset));
-           break;
+            keyValues->SetDouble(key, script_context.GetArgument<double>(offset));
+            break;
 
         case counterstrikesharp::TYPE_STRING:
-           keyValues->SetString(key, script_context.GetArgument<const char*>(offset));
-           break;
+            keyValues->SetString(key, script_context.GetArgument<const char*>(offset));
+            break;
 
         case counterstrikesharp::TYPE_POINTER:
-           keyValues->SetPtr(key, script_context.GetArgument<void*>(offset));
-           break;
+            keyValues->SetPtr(key, script_context.GetArgument<void*>(offset));
+            break;
 
         case counterstrikesharp::TYPE_STRING_TOKEN:
-           keyValues->SetStringToken(key, script_context.GetArgument<unsigned int>(offset));
-           break;
+            keyValues->SetStringToken(key, script_context.GetArgument<unsigned int>(offset));
+            break;
 
         case counterstrikesharp::TYPE_EHANDLE:
-           keyValues->SetEHandle(key, script_context.GetArgument<unsigned int>(offset));
-           break;
+            keyValues->SetEHandle(key, script_context.GetArgument<unsigned int>(offset));
+            break;
 
         case counterstrikesharp::TYPE_COLOR:
         {
