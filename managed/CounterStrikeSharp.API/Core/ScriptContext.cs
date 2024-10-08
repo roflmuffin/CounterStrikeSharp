@@ -456,6 +456,7 @@ namespace CounterStrikeSharp.API.Core
             }
 
             // this one only works if the 'Raw'/uint is passed, otherwise big bum
+            // maybe do this with a marshaler?!
             if (type == typeof(CEntityHandle))
             {
                 return new CEntityHandle((uint)GetResult(typeof(uint), ptr));
