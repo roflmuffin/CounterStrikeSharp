@@ -315,15 +315,15 @@ void EntityKeyValuesSetValue(ScriptContext& script_context)
             break;
 
         case counterstrikesharp::TYPE_UINT:
-           keyValues->SetUint(key, script_context.GetArgument<unsigned int>(offset));
+           keyValues->SetUint(key, script_context.GetArgument<uint>(offset));
            break;
 
         case counterstrikesharp::TYPE_INT64:
-           keyValues->SetInt64(key, script_context.GetArgument<long>(offset));
+           keyValues->SetInt64(key, script_context.GetArgument<int64>(offset));
            break;
 
         case counterstrikesharp::TYPE_UINT64:
-           keyValues->SetUint64(key, script_context.GetArgument<unsigned long>(offset));
+           keyValues->SetUint64(key, script_context.GetArgument<uint64>(offset));
            break;
 
         case counterstrikesharp::TYPE_FLOAT:
