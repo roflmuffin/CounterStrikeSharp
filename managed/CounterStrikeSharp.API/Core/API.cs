@@ -206,6 +206,7 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+<<<<<<< HEAD
         public static void ReplicateConvar(int clientslot, string convarname, string convarvalue){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
@@ -219,9 +220,12 @@ namespace CounterStrikeSharp.API.Core
 		}
 
         public static string GetStringFromSymbolLarge(IntPtr ppointer){
+=======
+        public static string GetStringFromSymbolLarge(IntPtr pointer){
+>>>>>>> 7b947cf (Update API)
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.Push(ppointer);
+			ScriptContext.GlobalScriptContext.Push(pointer);
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x600A804B);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
