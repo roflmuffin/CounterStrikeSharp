@@ -54,7 +54,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
         public CEntityKeyValues(nint pointer) : base(pointer)
             { }
 
-        #region GETTER
+#region GETTER
         public bool GetBool(string key, bool defaultValue = false) => GetValue<bool>(key, KeyValuesType.TYPE_BOOL, defaultValue);
 
         public int GetInt(string key, int defaultValue = 0) => GetValue<int>(key, KeyValuesType.TYPE_INT, defaultValue);
