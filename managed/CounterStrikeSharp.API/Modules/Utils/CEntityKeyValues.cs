@@ -323,20 +323,20 @@ namespace CounterStrikeSharp.API.Modules.Utils
                     {
                         if (value is matrix3x4_t matrix)
                         {
+                            arguments.Add(matrix[0, 0]);
+                            arguments.Add(matrix[0, 1]);
+                            arguments.Add(matrix[0, 2]);
+                            arguments.Add(matrix[0, 3]);
+
+                            arguments.Add(matrix[1, 0]);
                             arguments.Add(matrix[1, 1]);
                             arguments.Add(matrix[1, 2]);
                             arguments.Add(matrix[1, 3]);
-                            arguments.Add(matrix[1, 4]);
 
+                            arguments.Add(matrix[2, 0]);
                             arguments.Add(matrix[2, 1]);
                             arguments.Add(matrix[2, 2]);
                             arguments.Add(matrix[2, 3]);
-                            arguments.Add(matrix[2, 4]);
-
-                            arguments.Add(matrix[3, 1]);
-                            arguments.Add(matrix[3, 2]);
-                            arguments.Add(matrix[3, 3]);
-                            arguments.Add(matrix[3, 4]);
                         } else { BadTypeHandler(key, type, value); }
                     } break;
 
