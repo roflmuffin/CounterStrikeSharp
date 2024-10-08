@@ -30,8 +30,7 @@ public partial class CBaseEntity
 
         if (keyValues != null)
         {
-            int count = keyValues.Build(out object[] values);
-            NativeAPI.DispatchSpawn(Handle, count, values);
+            NativeAPI.DispatchSpawn(Handle, keyValues.Handle);
         } else
         {
             VirtualFunctions.CBaseEntity_DispatchSpawn(Handle, IntPtr.Zero);

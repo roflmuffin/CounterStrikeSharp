@@ -237,12 +237,12 @@ namespace CounterStrikeSharp.API.Modules.Utils
                     break;
             }
 
-            NativeAPI.EntityKeyValuesSetValue(key, (uint)type, arguments.ToArray());
+            NativeAPI.EntityKeyValuesSetValue(Handle, key, (uint)type, arguments.ToArray());
         }
 
         internal T? GetValue<T>(string key, KeyValuesType type, T? defaultValue)
         {
-            return NativeAPI.EntityKeyValuesGetValue<T>(key, (uint)type) ?? defaultValue;
+            return NativeAPI.EntityKeyValuesGetValue<T>(Handle, key, (uint)type) ?? defaultValue;
         }
 
         internal void BadTypeHandler<T>(string key, KeyValuesType type, T value)
