@@ -100,14 +100,14 @@ public class Schema
     {
         if (pointer == IntPtr.Zero) throw new ArgumentNullException(nameof(pointer), "Schema target points to null.");
 
-        if (typeof(DisposableMemory).IsAssignableFrom(typeof(T)) || (typeof(T).IsGenericType && typeof(DisposableMemory).IsAssignableFrom(typeof(T).GetGenericTypeDefinition())))
+        object? instance = Activator.CreateInstance(typeof(T), pointer + GetSchemaOffset(className, memberName));
+
+        if (DisposableMemory.IsDisposableType(typeof(T)))
         {
-            object? instance = Activator.CreateInstance(typeof(T), pointer + GetSchemaOffset(className, memberName));
             DisposableMemory.MarkAsPure(instance);
-            return (T)instance;
         }
 
-        return (T)Activator.CreateInstance(typeof(T), pointer + GetSchemaOffset(className, memberName));
+        return (T)instance;
     }
 
     public static unsafe ref T GetRef<T>(IntPtr pointer, string className, string memberName)
@@ -147,13 +147,7 @@ public class Schema
 
         Span<T> span = new((void*)(pointer + GetSchemaOffset(className, memberName)), count);
 
-        if (typeof(DisposableMemory).IsAssignableFrom(typeof(T)) || (typeof(T).IsGenericType && typeof(DisposableMemory).IsAssignableFrom(typeof(T).GetGenericTypeDefinition())))
-        {
-            foreach (T instance in span)
-            {
-                DisposableMemory.MarkAsPure(instance);
-            }
-        }
+        // TODO: once we get a correct implementation for this method check for `DisposableMemory` instances and mark them as pure
 
         return span;
     }
