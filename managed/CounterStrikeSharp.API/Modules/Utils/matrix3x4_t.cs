@@ -22,6 +22,30 @@ public partial class matrix3x4_t : NativeObject
 {
     public unsafe ref float this[int row, int column] => ref Unsafe.Add(ref *(float*)Handle, row * 4 + column);
 
+    public float M00 => this[0, 0];
+
+    public float M01 => this[0, 1];
+
+    public float M02 => this[0, 2];
+
+    public float M03 => this[0, 3];
+
+    public float M10 => this[1, 0];
+
+    public float M11 => this[1, 1];
+
+    public float M12 => this[1, 2];
+
+    public float M13 => this[1, 3];
+
+    public float M20 => this[2, 0];
+
+    public float M21 => this[2, 1];
+
+    public float M22 => this[2, 2];
+
+    public float M23 => this[2, 3];
+
     public matrix3x4_t(IntPtr pointer) : base(pointer)
     {
     }
