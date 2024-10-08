@@ -100,18 +100,10 @@ public class Schema
     {
         if (pointer == IntPtr.Zero) throw new ArgumentNullException(nameof(pointer), "Schema target points to null.");
 
-        if (typeof(DisposableMemory).IsAssignableFrom(typeof(T)))
+        if (typeof(DisposableMemory).IsAssignableFrom(typeof(T)) || (typeof(T).IsGenericType && typeof(DisposableMemory).IsAssignableFrom(typeof(T).GetGenericTypeDefinition())))
         {
             object? instance = Activator.CreateInstance(typeof(T), pointer + GetSchemaOffset(className, memberName));
-
-            if (instance is DisposableMemory disposable)
-            {
-                disposable.PurePointer = true;
-
-                // we should not count these as they are not handled by us.
-                DisposableMemory.Instances--;
-            }
-
+            DisposableMemory.MarkAsPure(instance);
             return (T)instance;
         }
 
@@ -154,6 +146,15 @@ public class Schema
         if (pointer == IntPtr.Zero) throw new ArgumentNullException(nameof(pointer), "Schema target points to null.");
 
         Span<T> span = new((void*)(pointer + GetSchemaOffset(className, memberName)), count);
+
+        if (typeof(DisposableMemory).IsAssignableFrom(typeof(T)) || (typeof(T).IsGenericType && typeof(DisposableMemory).IsAssignableFrom(typeof(T).GetGenericTypeDefinition())))
+        {
+            foreach (T instance in span)
+            {
+                DisposableMemory.MarkAsPure(instance);
+            }
+        }
+
         return span;
     }
 

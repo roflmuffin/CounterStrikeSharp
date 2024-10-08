@@ -81,5 +81,16 @@ namespace CounterStrikeSharp.API.Modules.Memory
         {
             MemAlloc.Free(Handle);
         }
+
+        internal static void MarkAsPure(object? instance)
+        {
+            if (instance != null && instance is DisposableMemory disposable)
+            {
+                disposable.PurePointer = true;
+
+                // we should not count these as they are not handled by us.
+                Instances--;
+            }
+        }
     }
 }
