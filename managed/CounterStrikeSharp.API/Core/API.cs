@@ -773,6 +773,43 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static IntPtr EntityKeyValuesNew(){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x445FE212);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			}
+		}
+
+        public static T EntityKeyValuesGetValue<T>(string key, uint type){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(key);
+			ScriptContext.GlobalScriptContext.Push(type);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xA9A569AC);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (T)ScriptContext.GlobalScriptContext.GetResult(typeof(T));
+			}
+		}
+
+        public static void EntityKeyValuesSetValue(string key, uint type, object[] arguments){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(key);
+			ScriptContext.GlobalScriptContext.Push(type);
+			foreach (var obj in arguments)
+			{
+				ScriptContext.GlobalScriptContext.Push(obj);
+			}
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x60234AB8);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
         public static void HookEvent(string name, InputArgument callback, bool ispost){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();

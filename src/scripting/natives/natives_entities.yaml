@@ -15,3 +15,6 @@ UNHOOK_ENTITY_OUTPUT: classname:string, outputName:string, callback:func, mode:H
 ACCEPT_INPUT: pThis:pointer, inputName:string, activator:pointer, caller:pointer, value:string, outputID:int -> void
 ADD_ENTITY_IO_EVENT: pTarget:pointer, inputName:string, activator:pointer, caller:pointer, value:string, delay:float, outputID:int -> void
 DISPATCH_SPAWN: entity:pointer, count:int, values:object[] -> void
+ENTITY_KEY_VALUES_NEW: -> pointer
+ENTITY_KEY_VALUES_GET_VALUE: key:string, type:uint -> any
+ENTITY_KEY_VALUES_SET_VALUE: key:string, type:uint, arguments:object[] -> void

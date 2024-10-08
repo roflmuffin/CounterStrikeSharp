@@ -17,8 +17,6 @@
 using System.Drawing;
 using System.Numerics;
 
-using static CounterStrikeSharp.API.Modules.Utils.CEntityKeyValues;
-
 // TODO: change from System.Numerics to exposed native values (Vector2D, Vector4D, Quaternion)
 
 namespace CounterStrikeSharp.API.Modules.Utils
@@ -26,9 +24,9 @@ namespace CounterStrikeSharp.API.Modules.Utils
     /// <summary>
     /// <b>WARNING: This is intended to be only used with <see cref="CBaseEntity.DispatchSpawn"/> for now!</b>
     /// </summary>
-    public class CEntityKeyValues : Dictionary<string, KeyValueContainer>
+    public class CEntityKeyValues : NativeObject
     {
-        public enum KeyValuesType : uint
+        internal enum KeyValuesType : uint
         {
             TYPE_BOOL,
             TYPE_INT,
@@ -50,60 +48,48 @@ namespace CounterStrikeSharp.API.Modules.Utils
             TYPE_MATRIX3X4
         }
 
-        public class KeyValueContainer
-        {
-            private KeyValuesType type;
-            private object value;
+        public CEntityKeyValues() : base(NativeAPI.EntityKeyValuesNew())
+            { }
 
-            public KeyValueContainer(KeyValuesType type, object value)
-            {
-                this.type = type;
-                this.value = value;
-            }
+        public CEntityKeyValues(nint pointer) : base(pointer)
+            { }
 
-            public KeyValuesType GetContainerType() => type;
+        #region GETTER
+        public bool GetBool(string key, bool defaultValue = false) => GetValue<bool>(key, KeyValuesType.TYPE_BOOL, defaultValue);
 
-            public T Get<T>() => (T)value;
+        public int GetInt(string key, int defaultValue = 0) => GetValue<int>(key, KeyValuesType.TYPE_INT, defaultValue);
 
-            public void Set<T>(T val) => value = (object)val!;
-        }
+        public uint GetUInt(string key, uint defaultValue = 0) => GetValue<uint>(key, KeyValuesType.TYPE_UINT, defaultValue);
 
-#region GETTER
-        public bool GetBool(string key, bool defaultValue = false) => GetValue(key, defaultValue);
+        public long GetInt64(string key, long defaultValue = 0) => GetValue<long>(key, KeyValuesType.TYPE_INT64, defaultValue);
 
-        public int GetInt(string key, int defaultValue = 0) => GetValue(key, defaultValue);
+        public ulong GetUInt64(string key, ulong defaultValue = 0) => GetValue<ulong>(key, KeyValuesType.TYPE_UINT64, defaultValue);
 
-        public uint GetUInt(string key, uint defaultValue = 0) => GetValue(key, defaultValue);
+        public float GetFloat(string key, float defaultValue = 0) => GetValue<float>(key, KeyValuesType.TYPE_FLOAT, defaultValue);
 
-        public long GetInt64(string key, long defaultValue = 0) => GetValue(key, defaultValue);
+        public double GetDouble(string key, double defaultValue = 0) => GetValue<double>(key, KeyValuesType.TYPE_DOUBLE, defaultValue);
 
-        public ulong GetUInt64(string key, ulong defaultValue = 0) => GetValue(key, defaultValue);
+        public string GetString(string key, string defaultValue = "") => GetValue<string>(key, KeyValuesType.TYPE_STRING, defaultValue);
 
-        public float GetFloat(string key, float defaultValue = 0) => GetValue(key, defaultValue);
+        public nint GetPointer(string key, nint defaultValue = 0) => GetValue<nint>(key, KeyValuesType.TYPE_POINTER, defaultValue);
 
-        public double GetDouble(string key, double defaultValue = 0) => GetValue(key, defaultValue);
+        public uint GetStringToken(string key, uint defaultValue = 0) => GetValue<uint>(key, KeyValuesType.TYPE_STRING_TOKEN, defaultValue);
 
-        public string GetString(string key, string defaultValue = "") => GetValue(key, defaultValue);
+        public CEntityHandle? GetEHandle(string key, CEntityHandle? defaultValue = null) => GetValue<CEntityHandle?>(key, KeyValuesType.TYPE_EHANDLE, defaultValue);
 
-        public nint GetPointer(string key, nint defaultValue = 0) => GetValue(key, defaultValue);
+        public Color GetColor(string key) => GetValue<Color>(key, KeyValuesType.TYPE_COLOR, Color.Empty);
 
-        public uint GetStringToken(string key, uint defaultValue = 0) => GetValue(key, defaultValue);
+        public Vector? GetVector(string key, Vector? defaultValue = null) => GetValue<Vector?>(key, KeyValuesType.TYPE_VECTOR, defaultValue);
 
-        public CEntityHandle? GetEHandle(string key, CEntityHandle? defaultValue = null) => GetValue(key, defaultValue);
+        public Vector2? GetVector2D(string key, Vector2? defaultValue = null) => GetValue<Vector2?>(key, KeyValuesType.TYPE_VECTOR2D, defaultValue);
 
-        public Color GetColor(string key) => GetValue(key, Color.Empty);
+        public Vector4? GetVector4D(string key, Vector4? defaultValue = null) => GetValue<Vector4?>(key, KeyValuesType.TYPE_VECTOR4D, defaultValue);
 
-        public Vector? GetVector(string key, Vector? defaultValue = null) => GetValue(key, defaultValue);
+        public Vector4? GetQuaternion(string key, Vector4? defaultValue = null) => GetValue<Vector4?>(key, KeyValuesType.TYPE_QUATERNION, defaultValue);
 
-        public Vector2? GetVector2D(string key, Vector2? defaultValue = null) => GetValue(key, defaultValue);
+        public QAngle? GetAngle(string key, QAngle? defaultValue = null) => GetValue<QAngle?>(key, KeyValuesType.TYPE_QANGLE, defaultValue);
 
-        public Vector4? GetVector4D(string key, Vector4? defaultValue = null) => GetValue(key, defaultValue);
-
-        public Vector4? GetQuaternion(string key, Vector4? defaultValue = null) => GetValue(key, defaultValue);
-
-        public QAngle? GetAngle(string key, QAngle? defaultValue = null) => GetValue(key, defaultValue);
-
-        public Matrix3x4? GetMatrix3x4(string key, Matrix3x4? defaultValue = null) => GetValue(key, defaultValue);
+        public Matrix3x4? GetMatrix3x4(string key, Matrix3x4? defaultValue = null) => GetValue<Matrix3x4?>(key, KeyValuesType.TYPE_MATRIX3X4, defaultValue);
 #endregion
 
 #region SETTER
@@ -152,114 +138,120 @@ namespace CounterStrikeSharp.API.Modules.Utils
         public void SetMatrix3x4(string key, Matrix3x4 value) => SetValue<Matrix3x4>(key, KeyValuesType.TYPE_MATRIX3X4, value);
 #endregion
 
-        internal void SetValue<T>(string key, KeyValuesType type, object value)
+        internal void SetValue<T>(string key, KeyValuesType type, T value)
         {
-            if (value == null)
-            {
-                throw new ArgumentNullException("Value can't be null!");
-            }    
+            List<object> arguments = new List<object>();
 
-            if (this.TryGetValue(key, out KeyValueContainer? v))
+            switch (type)
             {
-                v.Set(value);
-            } else
-            {
-                KeyValueContainer container = new KeyValueContainer(type, value);
-                this.Add(key, container);
+                case KeyValuesType.TYPE_EHANDLE:
+                    {
+                        if (value is CEntityHandle entityHandle)
+                        {
+                            arguments.Add(entityHandle.Raw);
+                        } else { BadTypeHandler(key, type, value); }
+                    } break;
+
+                case KeyValuesType.TYPE_COLOR:
+                    {
+                        if (value is Color color)
+                        {
+                            arguments.Add(color.R);
+                            arguments.Add(color.G);
+                            arguments.Add(color.B);
+                            arguments.Add(color.A);
+                        } else { BadTypeHandler(key, type, value); }
+                    } break;
+
+                case KeyValuesType.TYPE_VECTOR:
+                    {
+                        if (value is Vector vector)
+                        {
+                            arguments.Add(vector.X);
+                            arguments.Add(vector.Y);
+                            arguments.Add(vector.Z);
+                        } else { BadTypeHandler(key, type, value); }
+                    } break;
+
+                case KeyValuesType.TYPE_VECTOR2D:
+                    {
+                        // TODO: Change to 'Vector2D'
+                        if (value is Vector2 vector)
+                        {
+                            arguments.Add(vector.X);
+                            arguments.Add(vector.Y);
+                        } else { BadTypeHandler(key, type, value); }
+                    } break;
+
+                case KeyValuesType.TYPE_VECTOR4D:
+                    {
+                        // TODO: Change to 'Vector4D'
+                        if (value is Vector4 vector)
+                        {
+                            arguments.Add(vector.X);
+                            arguments.Add(vector.Y);
+                            arguments.Add(vector.Z);
+                            arguments.Add(vector.W);
+                        } else { BadTypeHandler(key, type, value); }
+                    } break;
+
+                case KeyValuesType.TYPE_QUATERNION:
+                    {
+                        // TODO: Change to 'Quaternion'
+                        if (value is Vector4 vector)
+                        {
+                            arguments.Add(vector.X);
+                            arguments.Add(vector.Y);
+                            arguments.Add(vector.Z);
+                            arguments.Add(vector.W);
+                        } else { BadTypeHandler(key, type, value); }
+                    } break;
+
+                case KeyValuesType.TYPE_QANGLE:
+                    {
+                        if (value is QAngle angle)
+                        {
+                            arguments.Add(angle.X);
+                            arguments.Add(angle.Y);
+                            arguments.Add(angle.Z);
+                        } else { BadTypeHandler(key, type, value); }
+                    } break;
+
+                case KeyValuesType.TYPE_MATRIX3X4:
+                    {
+                        if (value is Matrix3x4 matrix)
+                        {
+                            arguments.Add(matrix.M11);
+                            arguments.Add(matrix.M12);
+                            arguments.Add(matrix.M13);
+                            arguments.Add(matrix.M14);
+                            arguments.Add(matrix.M21);
+                            arguments.Add(matrix.M22);
+                            arguments.Add(matrix.M23);
+                            arguments.Add(matrix.M24);
+                            arguments.Add(matrix.M31);
+                            arguments.Add(matrix.M32);
+                            arguments.Add(matrix.M33);
+                            arguments.Add(matrix.M34);
+                        } else { BadTypeHandler(key, type, value); }
+                    } break;
+
+                default:
+                    arguments.Add((object)value!);
+                    break;
             }
+
+            NativeAPI.EntityKeyValuesSetValue(key, (uint)type, arguments.ToArray());
         }
 
-        internal T GetValue<T>(string key, T defaultValue)
+        internal T GetValue<T>(string key, KeyValuesType type, T defaultValue)
         {
-            if (this.TryGetValue(key, out KeyValueContainer? v))
-                return v.Get<T>();
-
-            return defaultValue;
+            return NativeAPI.EntityKeyValuesGetValue<T>(key, (uint)type) ?? defaultValue;
         }
 
-        internal int Build(out object[] list)
+        internal void BadTypeHandler<T>(string key, KeyValuesType type, T value)
         {
-            if (this.Count == 0)
-            {
-                list = Array.Empty<object>();
-                return 0;
-            }
-
-            List<object> valueLists = new List<object>();
-
-            foreach (KeyValuePair<string, KeyValueContainer> kv in this)
-            {
-                valueLists.Add(kv.Key);
-                KeyValuesType _type = kv.Value.GetContainerType();
-                valueLists.Add(_type);
-
-                switch (_type)
-                {
-                    case KeyValuesType.TYPE_EHANDLE:
-                        valueLists.Add(kv.Value.Get<CEntityHandle>().Raw);
-                        break;
-
-                    case KeyValuesType.TYPE_COLOR:
-                        Color color = kv.Value.Get<Color>();
-                        valueLists.Add(color.R);
-                        valueLists.Add(color.G);
-                        valueLists.Add(color.B);
-                        valueLists.Add(color.A);
-                        break;
-
-                    case KeyValuesType.TYPE_VECTOR:
-                        Vector vec = kv.Value.Get<Vector>();
-                        valueLists.Add(vec.X);
-                        valueLists.Add(vec.Y);
-                        valueLists.Add(vec.Z);
-                        break;
-
-                    case KeyValuesType.TYPE_VECTOR2D:
-                        Vector2 vec2D = kv.Value.Get<Vector2>();
-                        valueLists.Add(vec2D.X);
-                        valueLists.Add(vec2D.Y);
-                        break;
-
-                    case KeyValuesType.TYPE_VECTOR4D:
-                    case KeyValuesType.TYPE_QUATERNION:
-                        Vector4 vec4D = kv.Value.Get<Vector4>();
-                        valueLists.Add(vec4D.X);
-                        valueLists.Add(vec4D.Y);
-                        valueLists.Add(vec4D.Z);
-                        valueLists.Add(vec4D.W);
-                        break;
-
-                    case KeyValuesType.TYPE_QANGLE:
-                        QAngle qAng = kv.Value.Get<QAngle>();
-                        valueLists.Add(qAng.X);
-                        valueLists.Add(qAng.Y);
-                        valueLists.Add(qAng.Z);
-                        break;
-
-                    case KeyValuesType.TYPE_MATRIX3X4:
-                        Matrix3x4 matrix = kv.Value.Get<Matrix3x4>();
-                        valueLists.Add(matrix.M11);
-                        valueLists.Add(matrix.M12);
-                        valueLists.Add(matrix.M13);
-                        valueLists.Add(matrix.M14);
-                        valueLists.Add(matrix.M21);
-                        valueLists.Add(matrix.M22);
-                        valueLists.Add(matrix.M23);
-                        valueLists.Add(matrix.M24);
-                        valueLists.Add(matrix.M31);
-                        valueLists.Add(matrix.M32);
-                        valueLists.Add(matrix.M33);
-                        valueLists.Add(matrix.M34);
-                        break;
-
-                    default:
-                        valueLists.Add(kv.Value.Get<object>());
-                        break;
-                }
-            }
-
-            list = valueLists.ToArray();
-            return this.Count;
+            throw new ArgumentException($"Bad type for EntityKeyValues: got '{typeof(T)}' expected: '{type}'");
         }
     }
 }
