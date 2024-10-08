@@ -43,6 +43,11 @@ namespace CounterStrikeSharp.API.Modules.Memory
             set => _disposed = value;
         }
 
+        /// <summary>
+        /// This is only <see langword="true"/> if the <see cref="NativeObject.Handle"/> under the hood is purely from the game.
+        /// </summary>
+        internal bool PurePointer { get; set; } = false;
+
         public DisposableMemory(IntPtr ptr) : base(ptr)
         {
             Instances++;
@@ -50,12 +55,18 @@ namespace CounterStrikeSharp.API.Modules.Memory
 
         ~DisposableMemory()
         {
-            (this as IDisposableMemory).DisposeInternal();
-            Instances--;
+            if (!PurePointer)
+            {
+                (this as IDisposableMemory).DisposeInternal();
+                Instances--;
+            }
         }
 
         public virtual void Dispose()
         {
+            if (PurePointer)
+                return;
+
             // Dont call finalizer
             GC.SuppressFinalize(this);
 

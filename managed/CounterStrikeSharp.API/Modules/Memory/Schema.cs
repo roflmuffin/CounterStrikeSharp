@@ -100,6 +100,21 @@ public class Schema
     {
         if (pointer == IntPtr.Zero) throw new ArgumentNullException(nameof(pointer), "Schema target points to null.");
 
+        if (typeof(DisposableMemory).IsAssignableFrom(typeof(T)))
+        {
+            object? instance = Activator.CreateInstance(typeof(T), pointer + GetSchemaOffset(className, memberName));
+
+            if (instance is DisposableMemory disposable)
+            {
+                disposable.PurePointer = true;
+
+                // we should not count these as they are not handled by us.
+                DisposableMemory.Instances--;
+            }
+
+            return (T)instance;
+        }
+
         return (T)Activator.CreateInstance(typeof(T), pointer + GetSchemaOffset(className, memberName));
     }
 
