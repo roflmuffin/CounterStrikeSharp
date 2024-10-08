@@ -25,6 +25,7 @@
 
 using System;
 using System.Collections.Concurrent;
+using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
@@ -448,6 +449,12 @@ namespace CounterStrikeSharp.API.Core
 				var pointer = (IntPtr)GetResult(typeof(IntPtr), ptr);
 				return Activator.CreateInstance(type, pointer);
 			}
+
+            if (type == typeof(Color))
+            {
+                var pointer = (IntPtr)GetResult(typeof(IntPtr), ptr);
+                return Marshaling.ColorMarshaler.NativeToManaged(pointer);
+            }
 
 			if (type == typeof(object))
 			{
