@@ -343,7 +343,7 @@ void EntityKeyValuesSetValue(ScriptContext& script_context)
             break;
 
         case counterstrikesharp::TYPE_STRING_TOKEN:
-            keyValues->SetStringToken(key, script_context.GetArgument<unsigned int>(offset));
+            keyValues->SetStringToken(key, CUtlStringToken(script_context.GetArgument<unsigned int>(offset)));
             break;
 
         case counterstrikesharp::TYPE_EHANDLE:
@@ -487,7 +487,7 @@ void EntityKeyValuesGetValue(ScriptContext& script_context)
 
         case counterstrikesharp::TYPE_STRING_TOKEN:
         {
-            script_context.SetResult(keyValues->GetStringToken(key));
+            script_context.SetResult(keyValues->GetStringToken(key).GetHashCode());
         } break;
 
         case counterstrikesharp::TYPE_EHANDLE:

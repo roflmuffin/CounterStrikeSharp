@@ -117,7 +117,8 @@ namespace CounterStrikeSharp.API.Modules.Utils
                         SetPointer(key, (nint)value);
                         break;
                     case KeyValuesType.TYPE_STRING_TOKEN:
-                        SetStringToken(key, (CUtlStringToken)value);
+                        // TODO: use 'CUtlStringToken' once we have it
+                        SetStringToken(key, (uint)value);
                         break;
                     case KeyValuesType.TYPE_EHANDLE:
                         SetEHandle(key, (CEntityHandle)value);
@@ -171,7 +172,8 @@ namespace CounterStrikeSharp.API.Modules.Utils
 
         public nint GetPointer(string key, nint defaultValue = 0) => GetValue<nint>(key, KeyValuesType.TYPE_POINTER, defaultValue);
 
-        public CUtlStringToken? GetStringToken(string key, CUtlStringToken? defaultValue = null) => GetValue<CUtlStringToken>(key, KeyValuesType.TYPE_STRING_TOKEN, defaultValue);
+        // TODO: use 'CUtlStringToken' once we have it
+        public uint GetStringToken(string key, uint defaultValue = 0) => GetValue<uint>(key, KeyValuesType.TYPE_STRING_TOKEN, defaultValue);
 
         public CEntityHandle? GetEHandle(string key, CEntityHandle? defaultValue = null) => GetValue<CEntityHandle?>(key, KeyValuesType.TYPE_EHANDLE, defaultValue);
 
@@ -209,7 +211,8 @@ namespace CounterStrikeSharp.API.Modules.Utils
 
         public void SetPointer(string key, nint value) => SetValue<nint>(key, KeyValuesType.TYPE_POINTER, value);
 
-        public void SetStringToken(string key, CUtlStringToken value) => SetValue<CUtlStringToken>(key, KeyValuesType.TYPE_STRING_TOKEN, value);
+        // TODO: use 'CUtlStringToken' once we have it
+        public void SetStringToken(string key, uint value) => SetValue<uint>(key, KeyValuesType.TYPE_STRING_TOKEN, value);
 
         public void SetEHandle(string key, CEntityHandle value) => SetValue<CEntityHandle>(key, KeyValuesType.TYPE_EHANDLE, value);
 
