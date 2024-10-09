@@ -41,6 +41,20 @@ namespace CounterStrikeSharp.API.Core
             Clear((int)BitNum);
         }
 
+        public void Write(int bitNum)
+        {
+            if (!(bitNum >= 0 && bitNum < Utilities.MaxEdicts))
+                return;
+
+            uint* pInt = m_Ints + BitVec_Int(bitNum);
+            *pInt |= (uint)BitVec_Bit(bitNum);
+        }
+
+        public void Write(uint bitNum)
+        {
+            Write((int)bitNum);
+        }
+
         public bool Contains(int bitNum)
         {
             if (!(bitNum >= 0 && bitNum < Utilities.MaxEdicts))
