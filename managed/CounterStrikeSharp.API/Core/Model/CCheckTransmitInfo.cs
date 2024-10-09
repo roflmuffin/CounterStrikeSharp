@@ -24,7 +24,7 @@ namespace CounterStrikeSharp.API.Core
         /// <summary>
         /// Entity n is already marked for transmission
         /// </summary>
-        public CFixedBitVecBase TransmitEntity;
+        public CFixedBitVecBase TransmitEntities;
     };
 
     public sealed class CCheckTransmitInfoList : NativeObject
