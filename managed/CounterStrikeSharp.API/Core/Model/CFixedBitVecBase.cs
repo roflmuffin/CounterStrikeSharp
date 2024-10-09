@@ -27,13 +27,19 @@ namespace CounterStrikeSharp.API.Core
 
         private readonly uint* m_Ints;
 
+        public void Add(CEntityInstance entityInstance) => Write(entityInstance.Index);
+
         public void Add(int bitNum) => Write(bitNum);
 
         public void Add(uint bitNum) => Write(bitNum);
 
+        public void Remove(CEntityInstance entityInstance) => Clear(entityInstance.Index);
+
         public void Remove(int bitNum) => Clear(bitNum);
 
         public void Remove(uint bitNum) => Clear(bitNum);
+
+        public bool Contains(CEntityInstance entityInstance) => Contains(entityInstance.Index);
 
         public bool Contains(uint bitNum) => Contains((int)bitNum);
 
