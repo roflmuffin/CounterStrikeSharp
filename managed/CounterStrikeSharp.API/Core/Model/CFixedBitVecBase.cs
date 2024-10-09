@@ -43,6 +43,10 @@ namespace CounterStrikeSharp.API.Core
 
         public bool Contains(uint bitNum) => Contains((int)bitNum);
 
+        private void Clear(uint bitNum) => Clear((int)bitNum);
+
+        private void Write(uint bitNum) => Write((int)bitNum);
+
         private void Clear(int bitNum)
         {
             if (!(bitNum >= 0 && bitNum < Utilities.MaxEdicts))
@@ -52,11 +56,6 @@ namespace CounterStrikeSharp.API.Core
             *pInt &= ~(uint)BitVec_Bit(bitNum);
         }
 
-        private void Clear(uint bitNum)
-        {
-            Clear((int)bitNum);
-        }
-
         private void Write(int bitNum)
         {
             if (!(bitNum >= 0 && bitNum < Utilities.MaxEdicts))
@@ -64,11 +63,6 @@ namespace CounterStrikeSharp.API.Core
 
             uint* pInt = m_Ints + BitVec_Int(bitNum);
             *pInt |= (uint)BitVec_Bit(bitNum);
-        }
-
-        private void Write(uint bitNum)
-        {
-            Write((int)bitNum);
         }
 
         public bool Contains(int bitNum)
