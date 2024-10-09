@@ -1,6 +1,4 @@
-﻿using System.Reflection.Metadata;
-
-namespace CounterStrikeSharp.API.Core;
+﻿namespace CounterStrikeSharp.API.Core;
 
 public class CUtlSymbolLarge : NativeObject
 {

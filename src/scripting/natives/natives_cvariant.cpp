@@ -19,8 +19,6 @@
 #include <ios>
 #include <sstream>
 
-#include "core/log.h"
-#include "core/memory.h"
 #include "scripting/autonative.h"
 #include "scripting/script_engine.h"
 
