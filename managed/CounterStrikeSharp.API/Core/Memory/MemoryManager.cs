@@ -260,6 +260,11 @@ namespace CounterStrikeSharp.API.Core.Memory
             _logger.LogInformation("Service has been resumed");
         }
 
+        public void ForceCollect(int generation, GCCollectionMode mode, bool blocking)
+        {
+            GC.Collect(generation, mode, blocking);
+        }
+
         private void BackgroundThread()
         {
             _logger.LogInformation("Service has been started");
@@ -287,7 +292,7 @@ namespace CounterStrikeSharp.API.Core.Memory
                 DateTime startTime = DateTime.UtcNow;
 
                 // some may go to gen1 or even gen2, but even those are released when this nondeterministic wonder wants so
-                GC.Collect(0, GCCollectionMode.Default, true);
+                ForceCollect(0, GCCollectionMode.Default, true);
 
                 // this might be obsolete with 'blocking: false'?
                 GC.WaitForPendingFinalizers();

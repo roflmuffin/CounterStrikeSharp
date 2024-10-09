@@ -25,5 +25,7 @@ namespace CounterStrikeSharp.API.Core.Memory
         public void Stop(bool forceStop = false);
 
         public void Resume();
+
+        public void ForceCollect(int generation, GCCollectionMode mode, bool blocking);
     }
 }
