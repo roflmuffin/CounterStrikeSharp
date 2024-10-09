@@ -72,7 +72,7 @@ public class WithCheckTransmitPlugin : BasePlugin
                 // Otherwise, lets clear the door entity indexes from the info list so they won't be transmitted
                 foreach (CPropDoorRotating door in doors)
                 {
-                    info.TransmitEntities.Clear(door.Index);
+                    info.TransmitEntities.Remove(door);
                 }
 
                 // NOTE: this is a barebone example, saving data and doing sanity checks is up to you.
@@ -121,7 +121,7 @@ public class WithCheckTransmitPlugin : BasePlugin
                 {
                     // Calling 'Clear' will remove the entity index of the target player pawn from the transmission list
                     // so it won't be transmitted for the 'infoPlayer' player.
-                    info.TransmitEntities.Clear(targetPlayer.Pawn.Index);
+                    info.TransmitEntities.Remove(targetPlayer.Pawn);
                 }
             }
         });
