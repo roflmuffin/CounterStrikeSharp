@@ -204,6 +204,26 @@ namespace CounterStrikeSharp.API.Core.Plugin
 
                 if (Plugin == null) throw new Exception("Unable to create plugin instance");
 
+                /* Version Priority order:
+                 *  ModuleVersion override
+                 *  Assembly.GetName().Version
+                 *  "<unknown>"
+                 */
+                if (Plugin is BasePlugin basePlugin)
+                {
+                    // if no override we look for assembly version
+                    if (basePlugin._version == "<unknown>")
+                    {
+                        Version? assemblyVersion = defaultAssembly.GetName().Version;
+
+                        // if its set, we use that, otherwise it remains "<unknown>"
+                        if (assemblyVersion != null)
+                        {
+                            basePlugin._version = assemblyVersion.ToString();
+                        }
+                    }
+                }
+
                 State = PluginState.Loading;
 
                 Plugin.ModulePath = _path;
