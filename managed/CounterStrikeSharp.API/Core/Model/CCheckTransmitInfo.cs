@@ -18,13 +18,20 @@ using System.Runtime.InteropServices;
 
 namespace CounterStrikeSharp.API.Core
 {
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Explicit)]
     public struct CCheckTransmitInfo
     {
         /// <summary>
         /// Entity n is already marked for transmission
         /// </summary>
+        [FieldOffset(0x0)]
         public CFixedBitVecBase TransmitEntities;
+
+        /// <summary>
+        /// Entity n is always send even if not in PVS (HLTV and Replay only)
+        /// </summary>
+        [FieldOffset(0x8)]
+        public CFixedBitVecBase TransmitAlways;
     };
 
     public sealed class CCheckTransmitInfoList : NativeObject
