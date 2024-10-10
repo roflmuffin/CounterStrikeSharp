@@ -39,6 +39,14 @@ class CEntityListener : public IEntityListener {
     void OnEntityParentChanged(CEntityInstance *pEntity, CEntityInstance *pNewParent) override;
 };
 
+class CCheckTransmitInfoList {
+public:
+    CCheckTransmitInfoList(CCheckTransmitInfo** pInfoInfoList, int nInfoCount);
+private:
+    CCheckTransmitInfo** infoList;
+    int infoCount;
+};
+
 class EntityManager : public GlobalClass {
     friend CEntityListener;
 public:

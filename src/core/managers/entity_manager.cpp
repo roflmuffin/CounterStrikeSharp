@@ -32,6 +32,8 @@ EntityManager::EntityManager() {}
 
 EntityManager::~EntityManager() {}
 
+CCheckTransmitInfoList::CCheckTransmitInfoList(CCheckTransmitInfo** pInfoInfoList, int nInfoCount) : infoList(pInfoInfoList), infoCount(nInfoCount) {}
+
 void EntityManager::OnAllInitialized()
 {
     SH_ADD_HOOK_MEMFUNC(ISource2GameEntities, CheckTransmit, globals::gameEntities, this, &EntityManager::CheckTransmit, true);
@@ -169,10 +171,13 @@ void EntityManager::CheckTransmit(CCheckTransmitInfo** pInfoInfoList, int nInfoC
     auto callback = globals::entityManager.check_transmit;
 
 	if (callback && callback->GetFunctionCount()) {
+        CCheckTransmitInfoList* infoList = new CCheckTransmitInfoList(pInfoInfoList, nInfoCount);
+
         callback->ScriptContext().Reset();
-        callback->ScriptContext().Push(pInfoInfoList);
-        callback->ScriptContext().Push(nInfoCount);
+        callback->ScriptContext().Push(infoList);
         callback->Execute();
+
+        delete infoList;
     }
 }
 
