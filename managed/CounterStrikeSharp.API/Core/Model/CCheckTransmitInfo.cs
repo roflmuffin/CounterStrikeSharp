@@ -71,9 +71,23 @@ namespace CounterStrikeSharp.API.Core
             if (index < 0 || index >= Count)
             {
                 throw new ArgumentOutOfRangeException("index");
-            }    
+            }
 
-            return (Marshal.PtrToStructure<CCheckTransmitInfo>(*((*(nint**)Inner) + index)), *(int*)((byte*)(*((*(nint**)Inner) + index)) + CheckTransmitPlayerSlotOffset));
+            // 'base.Handle' holds the pointer for our 'CCheckTransmitInfoList' wrapper class
+
+            // Get the pointer to the array of 'CCheckTransmitInfo'
+            nint* infoListPtr = *(nint**)Inner; // Dereference 'Inner' to get the pointer to the array
+
+            // Access the specific 'CCheckTransmitInfo*'
+            nint infoPtr = *(infoListPtr + index);
+
+            // Retrieve the 'CCheckTransmitInfo' from the pointer
+            CCheckTransmitInfo info = Marshal.PtrToStructure<CCheckTransmitInfo>(infoPtr);
+
+            // Get player slot from the 'infoPtr' using the 'CheckTransmitPlayerSlotOffset' offset
+            int playerSlot = *(int*)((byte*)infoPtr + CheckTransmitPlayerSlotOffset);
+
+            return (info, playerSlot);
         }
 
         public IEnumerator<(CFixedBitVecBase, CCSPlayerController?)> GetEnumerator()
