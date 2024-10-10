@@ -304,20 +304,21 @@ namespace TestPlugin
             });
 
             // Hide every door (prop_door_rotating) for everyone as a test
-            RegisterListener<Listeners.CheckTransmit>((CCheckTransmitInfoList infoList, int infoCount) =>
+            RegisterListener<Listeners.CheckTransmit>((CCheckTransmitInfoList infoList) =>
             {
                 IEnumerable<CPropDoorRotating> doors = Utilities.FindAllEntitiesByDesignerName<CPropDoorRotating>("prop_door_rotating");
 
                 if (!doors.Any())
                     return;
 
-                for (int i = 0; i < infoCount; i++)
+                foreach ((CFixedBitVecBase transmitEntities, CCSPlayerController? player) in infoList)
                 {
-                    (CCheckTransmitInfo info, int _) = infoList.Get(i);
+                    if (player == null)
+                        continue;
 
                     foreach (CPropDoorRotating door in doors)
                     {
-                        info.TransmitEntities.Remove(door);
+                        transmitEntities.Remove(door);
                     }
                 }
             });

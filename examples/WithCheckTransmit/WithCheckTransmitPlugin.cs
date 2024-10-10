@@ -34,7 +34,7 @@ public class WithCheckTransmitPlugin : BasePlugin
         });
 
         // In this example, we will hide every door for players that have enabled the option with the command 'nodoors'
-        RegisterListener<Listeners.CheckTransmit>((CCheckTransmitInfoList infoList, int infoCount) =>
+        RegisterListener<Listeners.CheckTransmit>((CCheckTransmitInfoList infoList) =>
         {
             // Get the list of the currently available doors (prop_door_rotating)
             IEnumerable<CPropDoorRotating> doors = Utilities.FindAllEntitiesByDesignerName<CPropDoorRotating>("prop_door_rotating");
@@ -44,17 +44,10 @@ public class WithCheckTransmitPlugin : BasePlugin
                 return;
 
             // Go through every received info
-            for (int i = 0; i < infoCount; i++)
+            foreach ((CFixedBitVecBase transmitEntities, CCSPlayerController? player) in infoList)
             {
-                // The 'Get' function returns a tuple with the info for the given index, also the slot the info belongs to.
-                // You should never pass an integer outside of the boundaries! (0 <= index < infoCount)
-                (CCheckTransmitInfo info, int slot) = infoList.Get(i);
-
-                // We can use the slot to get the player the info belongs to
-                CCSPlayerController? infoPlayer = Utilities.GetPlayerFromSlot(slot);
-
                 // If no player is found, we can continue
-                if (infoPlayer == null)
+                if (player == null)
                     continue;
 
                 // Otherwise, lets do the work:
@@ -62,17 +55,17 @@ public class WithCheckTransmitPlugin : BasePlugin
                 // Check if we should clear or not:
 
                 // If we have no data saved for this player, then we should not continue
-                if (!ShouldSeeDoors.ContainsKey(infoPlayer.Slot))
+                if (!ShouldSeeDoors.ContainsKey(player.Slot))
                     continue;
 
                 // If this value is true, then this player should see doors
-                if (ShouldSeeDoors[infoPlayer.Slot])
+                if (ShouldSeeDoors[player.Slot])
                     continue;
 
-                // Otherwise, lets clear the door entity indexes from the info list so they won't be transmitted
+                // Otherwise, lets remove the door entity indexes from the info list so they won't be transmitted
                 foreach (CPropDoorRotating door in doors)
                 {
-                    info.TransmitEntities.Remove(door);
+                    transmitEntities.Remove(door);
                 }
 
                 // NOTE: this is a barebone example, saving data and doing sanity checks is up to you.
@@ -81,23 +74,16 @@ public class WithCheckTransmitPlugin : BasePlugin
 
         // In this example, we will hide other players in the same team as the player.
         // NOTE: 'Hiding' players requires extra work to do, killing non-transmitted players results in crash.
-        RegisterListener<Listeners.CheckTransmit>((CCheckTransmitInfoList infoList, int infoCount) =>
+        RegisterListener<Listeners.CheckTransmit>((CCheckTransmitInfoList infoList) =>
         {
             // Get the list of the current players, we only work with this value later on
             List<CCSPlayerController> players = Utilities.GetPlayers();
 
             // Go through every received info
-            for (int i = 0; i < infoCount; i++)
+            foreach ((CFixedBitVecBase transmitEntities, CCSPlayerController? player) in infoList)
             {
-                // The 'Get' function returns a tuple with the info for the given index, also the slot the info belongs to.
-                // You should never pass an integer outside of the boundaries! (0 <= index < infoCount)
-                (CCheckTransmitInfo info, int slot) = infoList.Get(i);
-
-                // We can use the slot to get the player the info belongs to
-                CCSPlayerController? infoPlayer = Utilities.GetPlayerFromSlot(slot);
-
                 // If no player is found, we can continue
-                if (infoPlayer == null)
+                if (player == null)
                     continue;
 
                 // Otherwise, lets do the work:
@@ -108,10 +94,10 @@ public class WithCheckTransmitPlugin : BasePlugin
                     p.IsValid && p.Pawn.IsValid &&
 
                     // we shouldn't hide ourselves
-                    p.Slot != infoPlayer.Slot &&
+                    p.Slot != player.Slot &&
 
                     // is the player is in the same team
-                    p.Team == infoPlayer.Team &&
+                    p.Team == player.Team &&
 
                     // is alive
                     p.PlayerPawn.Value?.LifeState == (byte)LifeState_t.LIFE_ALIVE
@@ -119,9 +105,9 @@ public class WithCheckTransmitPlugin : BasePlugin
 
                 foreach (CCSPlayerController targetPlayer in targetPlayers)
                 {
-                    // Calling 'Clear' will remove the entity index of the target player pawn from the transmission list
-                    // so it won't be transmitted for the 'infoPlayer' player.
-                    info.TransmitEntities.Remove(targetPlayer.Pawn);
+                    // Calling 'Remove' will clear the entity index of the target player pawn from the transmission list
+                    // so it won't be transmitted for the 'player'.
+                    transmitEntities.Remove(targetPlayer.Pawn);
                 }
             }
         });
