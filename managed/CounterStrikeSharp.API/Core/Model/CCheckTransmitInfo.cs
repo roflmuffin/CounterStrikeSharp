@@ -68,7 +68,7 @@ namespace CounterStrikeSharp.API.Core
         /// <returns></returns>
         public unsafe (CCheckTransmitInfo, int) Get(int index)
         {
-            if (index < 0 || index >= Count)
+            if (index < 0 || index >= this.Count)
             {
                 throw new ArgumentOutOfRangeException("index");
             }
