@@ -76,7 +76,7 @@ namespace CounterStrikeSharp.API.Core
             // 'base.Handle' holds the pointer for our 'CCheckTransmitInfoList' wrapper class
 
             // Get the pointer to the array of 'CCheckTransmitInfo'
-            nint* infoListPtr = *(nint**)Inner; // Dereference 'Inner' to get the pointer to the array
+            nint* infoListPtr = *(nint**)this.Inner; // Dereference 'Inner' to get the pointer to the array
 
             // Access the specific 'CCheckTransmitInfo*'
             nint infoPtr = *(infoListPtr + index);
