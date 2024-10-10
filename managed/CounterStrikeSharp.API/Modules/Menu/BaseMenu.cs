@@ -90,6 +90,7 @@ public abstract class BaseMenuInstance : IMenuInstance
 
     protected bool HasPrevButton => Page > 0;
     protected bool HasNextButton => Menu.MenuOptions.Count > NumPerPage && CurrentOffset + NumPerPage < Menu.MenuOptions.Count;
+    protected bool HasExitButton => Menu.ExitButton;
     protected virtual int MenuItemsPerPage => NumPerPage;
 
     public virtual void Display()
@@ -113,7 +114,7 @@ public abstract class BaseMenuInstance : IMenuInstance
             return;
         }
 
-        if (key == 9)
+        if (key == 9 && HasExitButton)
         {
             Close();
             return;
