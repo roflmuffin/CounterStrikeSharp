@@ -311,14 +311,14 @@ namespace TestPlugin
                 if (!doors.Any())
                     return;
 
-                foreach ((CFixedBitVecBase transmitEntities, CCSPlayerController? player) in infoList)
+                foreach ((CCheckTransmitInfo info, CCSPlayerController? player) in infoList)
                 {
                     if (player == null)
                         continue;
 
                     foreach (CPropDoorRotating door in doors)
                     {
-                        transmitEntities.Remove(door);
+                        info.TransmitEntities.Remove(door);
                     }
                 }
             });

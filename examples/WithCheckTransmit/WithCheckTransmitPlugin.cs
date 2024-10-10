@@ -44,7 +44,7 @@ public class WithCheckTransmitPlugin : BasePlugin
                 return;
 
             // Go through every received info
-            foreach ((CFixedBitVecBase transmitEntities, CCSPlayerController? player) in infoList)
+            foreach ((CCheckTransmitInfo info, CCSPlayerController? player) in infoList)
             {
                 // If no player is found, we can continue
                 if (player == null)
@@ -65,7 +65,7 @@ public class WithCheckTransmitPlugin : BasePlugin
                 // Otherwise, lets remove the door entity indexes from the info list so they won't be transmitted
                 foreach (CPropDoorRotating door in doors)
                 {
-                    transmitEntities.Remove(door);
+                    info.TransmitEntities.Remove(door);
                 }
 
                 // NOTE: this is a barebone example, saving data and doing sanity checks is up to you.
@@ -80,7 +80,7 @@ public class WithCheckTransmitPlugin : BasePlugin
             List<CCSPlayerController> players = Utilities.GetPlayers();
 
             // Go through every received info
-            foreach ((CFixedBitVecBase transmitEntities, CCSPlayerController? player) in infoList)
+            foreach ((CCheckTransmitInfo info, CCSPlayerController? player) in infoList)
             {
                 // If no player is found, we can continue
                 if (player == null)
@@ -107,7 +107,7 @@ public class WithCheckTransmitPlugin : BasePlugin
                 {
                     // Calling 'Remove' will clear the entity index of the target player pawn from the transmission list
                     // so it won't be transmitted for the 'player'.
-                    transmitEntities.Remove(targetPlayer.Pawn);
+                    info.TransmitEntities.Remove(targetPlayer.Pawn);
                 }
             }
         });
