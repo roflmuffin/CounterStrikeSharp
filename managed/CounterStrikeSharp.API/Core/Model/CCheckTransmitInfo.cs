@@ -49,7 +49,7 @@ namespace CounterStrikeSharp.API.Core
         /// <summary>
         /// Get transmit info for the given index.
         /// </summary>
-        /// <param name="index">Index of the info you want to retrieve from the list, should be between 0 and 'infoCount' - 1</param>
+        /// <param name="index">Index of the info you want to retrieve from the list, should be between 0 and '<see cref="Count"/>' - 1</param>
         /// <returns></returns>
         public (CCheckTransmitInfo, CCSPlayerController?) this[int index]
         {
@@ -64,9 +64,9 @@ namespace CounterStrikeSharp.API.Core
         /// <summary>
         /// Get transmit info for the given index.
         /// </summary>
-        /// <param name="index">Index of the info you want to retrieve from the list, should be between 0 and 'infoCount' - 1</param>
+        /// <param name="index">Index of the info you want to retrieve from the list, should be between 0 and '<see cref="Count"/>' - 1</param>
         /// <returns></returns>
-        public unsafe (CCheckTransmitInfo, int) Get(int index)
+        private unsafe (CCheckTransmitInfo, int) Get(int index)
         {
             if (index < 0 || index >= this.Count)
             {
