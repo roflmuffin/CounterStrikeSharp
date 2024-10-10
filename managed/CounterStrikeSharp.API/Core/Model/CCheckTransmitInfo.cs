@@ -14,6 +14,7 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
+using System.Collections;
 using System.Runtime.InteropServices;
 
 namespace CounterStrikeSharp.API.Core
@@ -34,11 +35,13 @@ namespace CounterStrikeSharp.API.Core
         public CFixedBitVecBase TransmitAlways;
     };
 
-    public sealed class CCheckTransmitInfoList : NativeObject
+    public sealed class CCheckTransmitInfoList : NativeObject, IReadOnlyList<(CFixedBitVecBase, CCSPlayerController?)>
     {
         private int CheckTransmitPlayerSlotOffset = GameData.GetOffset("CheckTransmitPlayerSlot");
 
         private unsafe nint* Inner => (nint*)base.Handle;
+
+        public unsafe int Count { get => (int)(*(this.Inner + 1)); }
 
         public unsafe CCheckTransmitInfoList(IntPtr pointer) : base(pointer)
             { }
@@ -48,9 +51,38 @@ namespace CounterStrikeSharp.API.Core
         /// </summary>
         /// <param name="index">Index of the info you want to retrieve from the list, should be between 0 and 'infoCount' - 1</param>
         /// <returns></returns>
+        public (CFixedBitVecBase, CCSPlayerController?) this[int index]
+        {
+            get
+            {
+                // Ideally throw here if out of range
+                var (transmit, slot) = this.Get(index);
+                CCSPlayerController? player = Utilities.GetPlayerFromSlot(slot);
+                return (transmit.TransmitEntities, player);
+            }
+        }
+
+        /// <summary>
+        /// Get transmit info for the given index.
+        /// </summary>
+        /// <param name="index">Index of the info you want to retrieve from the list, should be between 0 and 'infoCount' - 1</param>
+        /// <returns></returns>
         public unsafe (CCheckTransmitInfo, int) Get(int index)
         {
-            return (Marshal.PtrToStructure<CCheckTransmitInfo>(this.Inner[index]), (int)(*(byte*)(this.Inner[index] + CheckTransmitPlayerSlotOffset)));
+            return (Marshal.PtrToStructure<CCheckTransmitInfo>(*((*(nint**)Inner) + index)), *(int*)((byte*)(*((*(nint**)Inner) + index)) + CheckTransmitPlayerSlotOffset));
+        }
+
+        public IEnumerator<(CFixedBitVecBase, CCSPlayerController?)> GetEnumerator()
+        {
+            for (int i = 0; i < this.Count; i++)
+            {
+                yield return this[i];
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }
