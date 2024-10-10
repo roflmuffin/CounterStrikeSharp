@@ -40,6 +40,8 @@ namespace CounterStrikeSharp.API.Core
     {
         private bool _disposed;
 
+        internal string _version = "<unknown>";
+
         public BasePlugin()
         {
             RegisterListener<Listeners.OnMapEnd>(() =>
@@ -52,7 +54,7 @@ namespace CounterStrikeSharp.API.Core
         }
 
         public abstract string ModuleName { get; }
-        public abstract string ModuleVersion { get; }
+        public virtual string ModuleVersion { get => _version; }
         
         public virtual string ModuleAuthor { get; }
         
