@@ -55,7 +55,6 @@ namespace CounterStrikeSharp.API.Core
         {
             get
             {
-                // Ideally throw here if out of range
                 var (transmit, slot) = this.Get(index);
                 CCSPlayerController? player = Utilities.GetPlayerFromSlot(slot);
                 return (transmit.TransmitEntities, player);
@@ -69,6 +68,11 @@ namespace CounterStrikeSharp.API.Core
         /// <returns></returns>
         public unsafe (CCheckTransmitInfo, int) Get(int index)
         {
+            if (index < 0 || index >= Count)
+            {
+                throw new ArgumentOutOfRangeException("index");
+            }    
+
             return (Marshal.PtrToStructure<CCheckTransmitInfo>(*((*(nint**)Inner) + index)), *(int*)((byte*)(*((*(nint**)Inner) + index)) + CheckTransmitPlayerSlotOffset));
         }
 
