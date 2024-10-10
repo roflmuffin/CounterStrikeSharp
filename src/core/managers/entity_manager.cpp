@@ -170,7 +170,7 @@ void EntityManager::CheckTransmit(CCheckTransmitInfo** pInfoInfoList, int nInfoC
 {
     auto callback = globals::entityManager.check_transmit;
 
-	if (callback && callback->GetFunctionCount()) {
+    if (callback && callback->GetFunctionCount()) {
         CCheckTransmitInfoList* infoList = new CCheckTransmitInfoList(pInfoInfoList, nInfoCount);
 
         callback->ScriptContext().Reset();
