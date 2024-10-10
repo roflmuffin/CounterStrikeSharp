@@ -1,4 +1,4 @@
-/*
+﻿/*
  *  This file is part of CounterStrikeSharp.
  *  CounterStrikeSharp is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -14,17 +14,18 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using System.Runtime.CompilerServices;
-using CounterStrikeSharp.API.Modules.Memory;
-
-namespace CounterStrikeSharp.API.Modules.Utils
+namespace CounterStrikeSharp.API.Core.Memory
 {
-    public class Quaternion : DisposableMemory
+    public interface IMemoryManager
     {
-        public Quaternion(IntPtr pointer) : base(pointer)
-        {
-        }
+        public void Load();
 
-        public unsafe ref float Value => ref Unsafe.Add(ref *(float*)Handle.ToPointer(), 0);
+        public void Start();
+
+        public void Stop(bool forceStop = false);
+
+        public void Resume();
+
+        public void ForceCollect(int generation, GCCollectionMode mode, bool blocking);
     }
 }
