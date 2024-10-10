@@ -168,8 +168,7 @@ namespace CounterStrikeSharp.API.Core
         /// Called when checking transmit on entities.
         /// </summary>
         /// <param name="infoList">Transmit info list</param>
-        /// <param name="infoCount">Amount of info inside the list</param>
         [ListenerName("CheckTransmit")]
-        public delegate void CheckTransmit([CastFrom(typeof(nint))]CCheckTransmitInfoList infoList, int infoCount);
+        public delegate void CheckTransmit([CastFrom(typeof(nint))]CCheckTransmitInfoList infoList);
     }
 }
