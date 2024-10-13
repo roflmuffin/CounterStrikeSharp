@@ -69,7 +69,7 @@ namespace CounterStrikeSharp.API
         /// <summary>
         /// Returns the time spent on last server or client frame
         /// </summary>
-        public static float FrameTime => NativeAPI.GetGameframeTime();
+        public static float FrameTime => NativeAPI.GetGameFrameTime();
 
         public static void PrecacheModel(string name) => NativeAPI.PrecacheModel(name);
 
