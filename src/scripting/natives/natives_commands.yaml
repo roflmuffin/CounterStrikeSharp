@@ -13,3 +13,4 @@ FIND_CONVAR: name:string -> pointer
 SET_CONVAR_STRING_VALUE: convar:pointer,value:string -> void
 GET_CLIENT_CONVAR_VALUE: clientIndex:int,convarName:string -> string
 SET_FAKE_CLIENT_CONVAR_VALUE: clientIndex:int,convarName:string,convarValue:string -> void
+REPLICATE_CONVAR: clientSlot:int,convarName:string,convarValue:string -> void

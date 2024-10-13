@@ -24,6 +24,8 @@
 #include "core/managers/server_manager.h"
 #include "core/managers/voice_manager.h"
 #include "core/managers/usermessage_manager.h"
+#include "serversideclient.h"
+#include "utlvector.h"
 #include <public/game/server/iplayerinfo.h>
 #include <public/entity2/entitysystem.h>
 
@@ -31,6 +33,14 @@
 // clang-format on
 
 namespace counterstrikesharp {
+
+CUtlVector<CServerSideClient*>* GetClientList()
+{
+    if (!globals::networkGameServer) return nullptr;
+
+    static int offset = globals::gameConfig->GetOffset("CNetworkGameServer_ClientList");
+    return (CUtlVector<CServerSideClient*>*)(&globals::networkGameServer[offset]);
+}
 
 namespace modules {
 std::vector<std::unique_ptr<CModule>> moduleList{};
@@ -53,6 +63,7 @@ IUniformRandomStream* randomStream = nullptr;
 IEngineTrace* engineTrace = nullptr;
 IEngineSound* engineSound = nullptr;
 IEngineServiceMgr* engineServiceManager = nullptr;
+INetworkGameServer* networkGameServer = nullptr;
 INetworkMessages* networkMessages = nullptr;
 INetworkStringTableContainer* netStringTables = nullptr;
 CGlobalVars* globalVars = nullptr;
