@@ -12,7 +12,7 @@ public class CVariant : NativeObject
 
     public fieldtype_t FieldType => (fieldtype_t)NativeAPI.GetVariantType(Handle);
 
-    public T Get<T>(string name)
+    public T Get<T>()
     {
         var type = typeof(T);
         object result = type switch
@@ -28,7 +28,7 @@ public class CVariant : NativeObject
         return (T)result;
     }
 
-    public void Set<T>(string name, T value)
+    public void Set<T>(T value)
     {
         var type = typeof(T);
         switch (type)
