@@ -10,27 +10,6 @@ namespace CounterStrikeSharp.API.Modules.Memory;
 
 public static class VirtualFunctions
 {
-    public enum AcquireMethod : int
-    {
-        PickUp = 0,
-        Buy,
-    };
-
-    public enum AcquireResult : int
-    {
-        Allowed = 0,
-        InvalidItem,
-        AlreadyOwned,
-        AlreadyPurchased,
-        ReachedGrenadeTypeLimit,
-        ReachedGrenadeTotalLimit,
-        NotAllowedByTeam,
-        NotAllowedByMap,
-        NotAllowedByMode,
-        NotAllowedForPurchase,
-        NotAllowedByProhibition,
-    };
-
     public static MemoryFunctionVoid<IntPtr, HudDestination, string, IntPtr, IntPtr, IntPtr, IntPtr> ClientPrintFunc =
         new(GameData.GetSignature("ClientPrint"));
 
