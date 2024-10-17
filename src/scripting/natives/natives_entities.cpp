@@ -15,6 +15,7 @@
  */
 
 #include <public/entity2/entitysystem.h>
+#include "entitykeyvalues.h"
 
 #include <ios>
 #include <sstream>
@@ -27,6 +28,27 @@
 #include "scripting/script_engine.h"
 
 namespace counterstrikesharp {
+enum KeyValuesType_t : unsigned int
+{
+    TYPE_BOOL,
+    TYPE_INT,
+    TYPE_UINT,
+    TYPE_INT64,
+    TYPE_UINT64,
+    TYPE_FLOAT,
+    TYPE_DOUBLE,
+    TYPE_STRING,
+    TYPE_POINTER,
+    TYPE_STRING_TOKEN,
+    TYPE_EHANDLE,
+    TYPE_COLOR,
+    TYPE_VECTOR,
+    TYPE_VECTOR2D,
+    TYPE_VECTOR4D,
+    TYPE_QUATERNION,
+    TYPE_QANGLE,
+    TYPE_MATRIX3X4
+};
 
 CEntityInstance* GetEntityFromIndex(ScriptContext& script_context)
 {
@@ -256,6 +278,272 @@ void AddEntityIOEvent(ScriptContext& script_context)
     CEntitySystem_AddEntityIOEvent(GameEntitySystem(), pTarget, pInputName, pActivator, pCaller, &_value, delay, outputID);
 }
 
+void DispatchSpawn(ScriptContext& scriptContext)
+{
+    auto entity = scriptContext.GetArgument<void*>(0);
+    auto keyValues = scriptContext.GetArgument<CEntityKeyValues*>(1);
+    CBaseEntity_DispatchSpawn(entity, keyValues);
+}
+
+CEntityKeyValues* EntityKeyValuesNew(ScriptContext& script_context)
+{
+    return new CEntityKeyValues();
+}
+
+bool EntityKeyValuesHasValue(ScriptContext& script_context)
+{
+    CEntityKeyValues* keyValues = script_context.GetArgument<CEntityKeyValues*>(0);
+    const char* key = script_context.GetArgument<const char*>(1);
+    return keyValues->HasValue(key);
+}
+
+void EntityKeyValuesSetValue(ScriptContext& script_context)
+{
+    CEntityKeyValues* keyValues = script_context.GetArgument<CEntityKeyValues*>(0);
+    const char* key = script_context.GetArgument<const char*>(1);
+    KeyValuesType_t type = script_context.GetArgument<KeyValuesType_t>(2);
+
+    int offset = 3;
+
+    switch (type) {
+        case counterstrikesharp::TYPE_BOOL:
+            keyValues->SetBool(key, script_context.GetArgument<bool>(offset));
+            break;
+
+        case counterstrikesharp::TYPE_INT:
+            keyValues->SetInt(key, script_context.GetArgument<int>(offset));
+            break;
+
+        case counterstrikesharp::TYPE_UINT:
+            keyValues->SetUint(key, script_context.GetArgument<uint>(offset));
+            break;
+
+        case counterstrikesharp::TYPE_INT64:
+            keyValues->SetInt64(key, script_context.GetArgument<int64>(offset));
+            break;
+
+        case counterstrikesharp::TYPE_UINT64:
+            keyValues->SetUint64(key, script_context.GetArgument<uint64>(offset));
+            break;
+
+        case counterstrikesharp::TYPE_FLOAT:
+            keyValues->SetFloat(key, script_context.GetArgument<float>(offset));
+            break;
+
+        case counterstrikesharp::TYPE_DOUBLE:
+            keyValues->SetDouble(key, script_context.GetArgument<double>(offset));
+            break;
+
+        case counterstrikesharp::TYPE_STRING:
+            keyValues->SetString(key, script_context.GetArgument<const char*>(offset));
+            break;
+
+        case counterstrikesharp::TYPE_POINTER:
+            keyValues->SetPtr(key, script_context.GetArgument<void*>(offset));
+            break;
+
+        case counterstrikesharp::TYPE_STRING_TOKEN:
+            keyValues->SetStringToken(key, CUtlStringToken(script_context.GetArgument<unsigned int>(offset)));
+            break;
+
+        case counterstrikesharp::TYPE_EHANDLE:
+            keyValues->SetEHandle(key, CEntityHandle(script_context.GetArgument<unsigned int>(offset)));
+            break;
+
+        case counterstrikesharp::TYPE_COLOR:
+        {
+            char r = script_context.GetArgument<char>(offset);
+            char g = script_context.GetArgument<char>(offset + 1);
+            char b = script_context.GetArgument<char>(offset + 2);
+            char a = script_context.GetArgument<char>(offset + 3);
+            keyValues->SetColor(key, Color(r, g, b, a));
+            break;
+        }
+
+        case counterstrikesharp::TYPE_VECTOR:
+        {
+            float x = script_context.GetArgument<float>(offset);
+            float y = script_context.GetArgument<float>(offset + 1);
+            float z = script_context.GetArgument<float>(offset + 2);
+            keyValues->SetVector(key, Vector(x, y, z));
+            break;
+        }
+
+        case counterstrikesharp::TYPE_VECTOR2D:
+        {
+            float x = script_context.GetArgument<float>(offset);
+            float y = script_context.GetArgument<float>(offset + 1);
+            keyValues->SetVector2D(key, Vector2D(x, y));
+            break;
+        }
+
+        case counterstrikesharp::TYPE_VECTOR4D:
+        {
+            float x = script_context.GetArgument<float>(offset);
+            float y = script_context.GetArgument<float>(offset + 1);
+            float z = script_context.GetArgument<float>(offset + 2);
+            float w = script_context.GetArgument<float>(offset + 3);
+            keyValues->SetVector4D(key, Vector4D(x, y, z, w));
+            break;
+        }
+
+        case counterstrikesharp::TYPE_QUATERNION:
+        {
+            float x = script_context.GetArgument<float>(offset);
+            float y = script_context.GetArgument<float>(offset + 1);
+            float z = script_context.GetArgument<float>(offset + 2);
+            float w = script_context.GetArgument<float>(offset + 3);
+            keyValues->SetQuaternion(key, Quaternion(x, y, z, w));
+            break;
+        }
+
+        case counterstrikesharp::TYPE_QANGLE:
+        {
+            float x = script_context.GetArgument<float>(offset);
+            float y = script_context.GetArgument<float>(offset + 1);
+            float z = script_context.GetArgument<float>(offset + 2);
+            keyValues->SetQAngle(key, QAngle(x, y, z));
+            break;
+        }
+
+        case counterstrikesharp::TYPE_MATRIX3X4:
+        {
+            float m11 = script_context.GetArgument<float>(offset);
+            float m12 = script_context.GetArgument<float>(offset + 1);
+            float m13 = script_context.GetArgument<float>(offset + 2);
+            float m14 = script_context.GetArgument<float>(offset + 3);
+
+            float m21 = script_context.GetArgument<float>(offset + 4);
+            float m22 = script_context.GetArgument<float>(offset + 5);
+            float m23 = script_context.GetArgument<float>(offset + 6);
+            float m24 = script_context.GetArgument<float>(offset + 7);
+
+            float m31 = script_context.GetArgument<float>(offset + 8);
+            float m32 = script_context.GetArgument<float>(offset + 9);
+            float m33 = script_context.GetArgument<float>(offset + 10);
+            float m34 = script_context.GetArgument<float>(offset + 11);
+
+            keyValues->SetMatrix3x4(key, matrix3x4_t(m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34));
+            break;
+        }
+
+        default:
+            script_context.ThrowNativeError("Invalid KeyValues Type! ({})", type);
+            break;
+    }
+}
+
+void EntityKeyValuesGetValue(ScriptContext& script_context)
+{
+    CEntityKeyValues* keyValues = script_context.GetArgument<CEntityKeyValues*>(0);
+    const char* key = script_context.GetArgument<const char*>(1);
+    KeyValuesType_t type = script_context.GetArgument<KeyValuesType_t>(2);
+
+    switch (type) {
+        case counterstrikesharp::TYPE_BOOL:
+        {
+            script_context.SetResult(keyValues->GetBool(key));
+        } break;
+
+        case counterstrikesharp::TYPE_INT:
+        {
+            script_context.SetResult(keyValues->GetInt(key));
+        } break;
+
+        case counterstrikesharp::TYPE_UINT:
+        {
+            script_context.SetResult(keyValues->GetUint(key));
+        } break;
+
+        case counterstrikesharp::TYPE_INT64:
+        {
+            script_context.SetResult(keyValues->GetInt64(key));
+        } break;
+
+        case counterstrikesharp::TYPE_UINT64:
+        {
+            script_context.SetResult(keyValues->GetUint64(key));
+        } break;
+
+        case counterstrikesharp::TYPE_FLOAT:
+        {
+            script_context.SetResult(keyValues->GetFloat(key));
+        } break;
+
+        case counterstrikesharp::TYPE_DOUBLE:
+        {
+            script_context.SetResult(keyValues->GetDouble(key));
+        } break;
+
+        case counterstrikesharp::TYPE_STRING:
+        {
+            script_context.SetResult(keyValues->GetString(key));
+        } break;
+
+        case counterstrikesharp::TYPE_POINTER:
+        {
+            script_context.SetResult(keyValues->GetPtr(key));
+        } break;
+
+        case counterstrikesharp::TYPE_STRING_TOKEN:
+        {
+            script_context.SetResult(keyValues->GetStringToken(key).GetHashCode());
+        } break;
+
+        case counterstrikesharp::TYPE_EHANDLE:
+        {
+            script_context.SetResult(keyValues->GetEHandle(key));
+        } break;
+
+        case counterstrikesharp::TYPE_COLOR:
+        {
+            script_context.SetResult(new Color(keyValues->GetColor(key)));
+            break;
+        }
+
+        case counterstrikesharp::TYPE_VECTOR:
+        {
+            script_context.SetResult(new Vector(keyValues->GetVector(key)));
+            break;
+        }
+
+        case counterstrikesharp::TYPE_VECTOR2D:
+        {
+            script_context.SetResult(new Vector2D(keyValues->GetVector2D(key)));
+            break;
+        }
+
+        case counterstrikesharp::TYPE_VECTOR4D:
+        {
+            script_context.SetResult(new Vector4D(keyValues->GetVector4D(key)));
+            break;
+        }
+
+        case counterstrikesharp::TYPE_QUATERNION:
+        {
+            script_context.SetResult(new Quaternion(keyValues->GetQuaternion(key)));
+            break;
+        }
+
+        case counterstrikesharp::TYPE_QANGLE:
+        {
+            script_context.SetResult(new QAngle(keyValues->GetQAngle(key)));
+            break;
+        }
+
+        case counterstrikesharp::TYPE_MATRIX3X4:
+        {
+            script_context.SetResult(new matrix3x4_t(keyValues->GetMatrix3x4(key)));
+            break;
+        }
+
+        default:
+        {
+            script_context.ThrowNativeError("Invalid KeyValues Type! ({})", type);
+        } break;
+    }
+}
+
 REGISTER_NATIVES(entities, {
     ScriptEngine::RegisterNativeHandler("GET_ENTITY_FROM_INDEX", GetEntityFromIndex);
     ScriptEngine::RegisterNativeHandler("GET_USERID_FROM_INDEX", GetUserIdFromIndex);
@@ -273,5 +561,10 @@ REGISTER_NATIVES(entities, {
     ScriptEngine::RegisterNativeHandler("UNHOOK_ENTITY_OUTPUT", UnhookEntityOutput);
     ScriptEngine::RegisterNativeHandler("ACCEPT_INPUT", AcceptInput);
     ScriptEngine::RegisterNativeHandler("ADD_ENTITY_IO_EVENT", AddEntityIOEvent);
+    ScriptEngine::RegisterNativeHandler("DISPATCH_SPAWN", DispatchSpawn);
+    ScriptEngine::RegisterNativeHandler("ENTITY_KEY_VALUES_NEW", EntityKeyValuesNew);
+    ScriptEngine::RegisterNativeHandler("ENTITY_KEY_VALUES_GET_VALUE", EntityKeyValuesGetValue);
+    ScriptEngine::RegisterNativeHandler("ENTITY_KEY_VALUES_SET_VALUE", EntityKeyValuesSetValue);
+    ScriptEngine::RegisterNativeHandler("ENTITY_KEY_VALUES_HAS_VALUE", EntityKeyValuesHasValue);
 })
 } // namespace counterstrikesharp

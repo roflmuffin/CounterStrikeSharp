@@ -14,21 +14,35 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using System;
 using System.Runtime.CompilerServices;
-using CounterStrikeSharp.API.Core;
 
 namespace CounterStrikeSharp.API.Modules.Utils
 {
     public class Vector4D : NativeObject
     {
+        public unsafe ref float X => ref Unsafe.Add(ref *(float*)Handle.ToPointer(), 0);
+
+        public unsafe ref float Y => ref Unsafe.Add(ref *(float*)Handle.ToPointer(), 1);
+
+        public unsafe ref float Z => ref Unsafe.Add(ref *(float*)Handle.ToPointer(), 2);
+
+        public unsafe ref float W => ref Unsafe.Add(ref *(float*)Handle.ToPointer(), 3);
+
         public Vector4D(IntPtr pointer) : base(pointer)
         {
         }
 
-        public unsafe ref float X => ref Unsafe.Add(ref *(float*)Handle.ToPointer(), 0);
-        public unsafe ref float Y => ref Unsafe.Add(ref *(float*)Handle, 1);
-        public unsafe ref float Z => ref Unsafe.Add(ref *(float*)Handle, 2);
-        public unsafe ref float W => ref Unsafe.Add(ref *(float*)Handle, 3);
+        public Vector4D(float? x = null, float? y = null, float? z = null, float? w = null) : this(NativeAPI.Vector4dNew())
+        {
+            this.X = x ?? 0;
+            this.Y = y ?? 0;
+            this.Z = z ?? 0;
+            this.W = w ?? 0;
+        }
+
+        public override string ToString()
+        {
+            return $"{X:n2} {Y:n2} {Z:n2} {W:n2}";
+        }
     }
 }
