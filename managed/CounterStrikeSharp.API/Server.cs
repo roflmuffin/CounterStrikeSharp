@@ -46,28 +46,33 @@ namespace CounterStrikeSharp.API
         /// </summary>
         /// <remarks>Does not increment when server is hibernating</remarks>
         public static double TickedTime => NativeAPI.GetTickedTime();
-        
+
         /// <summary>
         /// Returns the current map time in seconds, as an interval of the server's tick interval.
         /// e.g. 70.046875 would represent 70 seconds of map time and the 4483rd tick of the server (70.046875 / 0.015625).
         /// </summary>
         /// <remarks>Increments even when server is hibernating</remarks>
         public static float CurrentTime => NativeAPI.GetCurrentTime();
-        
+
         /// <summary>
         /// Returns the current map tick count.
         /// CS2 is a 64 tick server, so the value will increment by 64 every second.
         /// </summary>
         public static int TickCount => NativeAPI.GetTickCount();
-        
+
         /// <summary>
         /// Returns the total time the server has been running in seconds.
         /// </summary>
         /// <remarks>Increments even when server is hibernating</remarks>
         public static double EngineTime => NativeAPI.GetEngineTime();
-        
+
+        /// <summary>
+        /// Returns the time spent on last server or client frame
+        /// </summary>
+        public static float FrameTime => NativeAPI.GetGameFrameTime();
+
         public static void PrecacheModel(string name) => NativeAPI.PrecacheModel(name);
-        
+
         /// <summary>
         /// <inheritdoc cref="RunOnTick"/>
         /// Returns Task that completes once the synchronous task has been completed.
@@ -78,7 +83,7 @@ namespace CounterStrikeSharp.API
             NativeAPI.QueueTaskForFrame(tick, functionReference);
             return functionReference.CompletionTask;
         }
-        
+
         /// <summary>
         /// Queue a task to be executed on the specified tick.
         /// See <see cref="TickCount"/> to retrieve the current tick.
@@ -108,7 +113,7 @@ namespace CounterStrikeSharp.API
         {
             NextFrameAsync(task);
         }
-        
+
         /// <summary>
         /// <inheritdoc cref="NextWorldUpdate"/>
         /// Returns Task that completes once the synchronous task has been completed.
@@ -119,7 +124,7 @@ namespace CounterStrikeSharp.API
             NativeAPI.QueueTaskForNextWorldUpdate(functionReference);
             return functionReference.CompletionTask;
         }
-        
+
         /// <summary>
         /// Queue a task to be executed on the next pre world update.
         /// <remarks>Executes if the server is hibernating.</remarks>
