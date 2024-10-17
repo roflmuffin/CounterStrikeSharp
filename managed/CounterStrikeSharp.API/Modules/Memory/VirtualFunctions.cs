@@ -11,8 +11,7 @@ namespace CounterStrikeSharp.API.Modules.Memory;
 public static class VirtualFunctions
 {
     public static MemoryFunctionVoid<IntPtr, HudDestination, string, IntPtr, IntPtr, IntPtr, IntPtr> ClientPrintFunc =
-        new(
-            GameData.GetSignature("ClientPrint"));
+        new(GameData.GetSignature("ClientPrint"));
 
     public static Action<IntPtr, HudDestination, string, IntPtr, IntPtr, IntPtr, IntPtr> ClientPrint =
         ClientPrintFunc.Invoke;
@@ -68,7 +67,13 @@ public static class VirtualFunctions
     
     public static MemoryFunctionWithReturn<CCSPlayer_WeaponServices, CBasePlayerWeapon, bool> CCSPlayer_WeaponServices_CanUseFunc = new(GameData.GetSignature("CCSPlayer_WeaponServices_CanUse"));
     public static Func<CCSPlayer_WeaponServices, CBasePlayerWeapon, bool> CCSPlayer_WeaponServices_CanUse = CCSPlayer_WeaponServices_CanUseFunc.Invoke;
-    
+
+    public static MemoryFunctionWithReturn<int, string, CCSWeaponBaseVData> GetCSWeaponDataFromKeyFunc = new(GameData.GetSignature("GetCSWeaponDataFromKey"));
+    public static Func<int, string, CCSWeaponBaseVData> GetCSWeaponDataFromKey = GetCSWeaponDataFromKeyFunc.Invoke;
+
+    public static MemoryFunctionWithReturn<CCSPlayer_ItemServices, CEconItemView, AcquireMethod, IntPtr, AcquireResult> CCSPlayer_ItemServices_CanAcquireFunc = new(GameData.GetSignature("CCSPlayer_ItemServices_CanAcquire"));
+    public static Func<CCSPlayer_ItemServices, CEconItemView, AcquireMethod, IntPtr, AcquireResult> CCSPlayer_ItemServices_CanAcquire = CCSPlayer_ItemServices_CanAcquireFunc.Invoke;
+
     public static MemoryFunctionVoid<CCSPlayerPawnBase> CCSPlayerPawnBase_PostThinkFunc = new (GameData.GetSignature("CCSPlayerPawnBase_PostThink"));
     public static Action<CCSPlayerPawnBase> CCSPlayerPawnBase_PostThink = CCSPlayerPawnBase_PostThinkFunc.Invoke;
     
