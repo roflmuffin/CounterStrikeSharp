@@ -57,8 +57,8 @@ public partial class CCSPlayer_ItemServices
         return (T)Activator.CreateInstance(typeof(T), pointer)!;
     }
 
-    public AcquireResult CanAcquire(CEconItemView itemview, AcquireMethod method, IntPtr? nativeobject)
+    public AcquireResult CanAcquire(CEconItemView itemView, AcquireMethod method, IntPtr unknown = 0)
     {
-        return VirtualFunctions.CCSPlayer_ItemServices_CanAcquireFunc.Invoke(this, itemview, method, nativeobject ?? 0);
+        return VirtualFunctions.CCSPlayer_ItemServices_CanAcquireFunc.Invoke(this, itemView, method, unknown);
     }
 }
