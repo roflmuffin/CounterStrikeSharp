@@ -15,6 +15,8 @@
  */
 
 using CounterStrikeSharp.API.Modules.Memory;
+using CounterStrikeSharp.API.Modules.Memory.DynamicFunctions;
+using CounterStrikeSharp.API.Modules.Utils;
 
 namespace CounterStrikeSharp.API.Core;
 
@@ -53,5 +55,10 @@ public partial class CCSPlayer_ItemServices
             return null;
 
         return (T)Activator.CreateInstance(typeof(T), pointer)!;
+    }
+
+    public AcquireResult CanAcquire(CEconItemView itemView, AcquireMethod method, IntPtr unknown = 0)
+    {
+        return VirtualFunctions.CCSPlayer_ItemServices_CanAcquireFunc.Invoke(this, itemView, method, unknown);
     }
 }

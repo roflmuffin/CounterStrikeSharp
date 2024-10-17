@@ -88,6 +88,20 @@
       "linux": "55 48 8D 15 ? ? ? ? 48 89 E5 41 55 49 89 FD 41 54 49 89 F4"
     }
   },
+  "CCSPlayer_ItemServices_CanAcquire": {
+    "signatures": {
+      "library": "server",
+      "windows": "48 8B C4 44 89 40 18 48 89 48 08 55 56",
+      "linux": " 55 48 89 E5 41 57 41 56 48 8D 45 CC"
+    }
+  },
+  "GetCSWeaponDataFromKey": {
+    "signatures": {
+      "library": "server",
+      "windows": "48 89 5C 24 CC 48 89 74 24 CC 57 48 83 EC 20 48 8B FA 8B",
+      "linux": " 55 48 89 E5 41 57 41 56 41 89 FE 41 55 41 54 45"
+    }
+  },
   "CCSPlayer_ItemServices_GiveNamedItem": {
     "offsets": {
       "windows": 19,
