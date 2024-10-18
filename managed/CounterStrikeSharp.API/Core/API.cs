@@ -206,6 +206,18 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static void ReplicateConvar(int clientslot, string convarname, string convarvalue){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(clientslot);
+			ScriptContext.GlobalScriptContext.Push(convarname);
+			ScriptContext.GlobalScriptContext.Push(convarvalue);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xC8728BEC);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
         public static T DynamicHookGetReturn<T>(IntPtr hook, int datatype){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
