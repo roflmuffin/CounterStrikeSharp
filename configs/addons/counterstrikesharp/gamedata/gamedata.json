@@ -91,8 +91,8 @@
   "CCSPlayer_ItemServices_CanAcquire": {
     "signatures": {
       "library": "server",
-      "windows": "48 8B C4 44 89 40 18 48 89 48 08 55 56",
-      "linux": " 55 48 89 E5 41 57 41 56 48 8D 45 CC"
+      "windows": "48 8B C4 44 89 40 ? 48 89 50 ? 48 89 48",
+      "linux": "55 48 89 E5 41 57 41 56 41 55 49 89 CD 41 54 53 48 83 EC"
     }
   },
   "GetCSWeaponDataFromKey": {
