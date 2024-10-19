@@ -245,7 +245,7 @@ REGISTER_NATIVES(engine, {
     ScriptEngine::RegisterNativeHandler("GET_TICK_INTERVAL", GetTickInterval);
     ScriptEngine::RegisterNativeHandler("GET_TICK_COUNT", GetTickCount);
     ScriptEngine::RegisterNativeHandler("GET_CURRENT_TIME", GetCurrentTime);
-    ScriptEngine::RegisterNativeHandler("GET_GAMEFRAME_TIME", GetGameFrameTime);
+    ScriptEngine::RegisterNativeHandler("GET_GAME_FRAME_TIME", GetGameFrameTime);
     ScriptEngine::RegisterNativeHandler("GET_ENGINE_TIME", GetEngineTime);
     ScriptEngine::RegisterNativeHandler("GET_MAX_CLIENTS", GetMaxClients);
     ScriptEngine::RegisterNativeHandler("ISSUE_SERVER_COMMAND", ServerCommand);
