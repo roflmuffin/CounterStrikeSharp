@@ -91,15 +91,15 @@
   "CCSPlayer_ItemServices_CanAcquire": {
     "signatures": {
       "library": "server",
-      "windows": "48 8B C4 44 89 40 18 48 89 48 08 55 56",
-      "linux": " 55 48 89 E5 41 57 41 56 48 8D 45 CC"
+      "windows": "48 8B C4 44 89 40 ? 48 89 50 ? 48 89 48",
+      "linux": "55 48 89 E5 41 57 41 56 41 55 49 89 CD 41 54 53 48 83 EC"
     }
   },
   "GetCSWeaponDataFromKey": {
     "signatures": {
       "library": "server",
-      "windows": "48 89 5C 24 CC 48 89 74 24 CC 57 48 83 EC 20 48 8B FA 8B",
-      "linux": " 55 48 89 E5 41 57 41 56 41 89 FE 41 55 41 54 45"
+      "windows": "48 89 5C 24 ? 48 89 74 24 ? 57 48 83 EC ? 48 8B FA 8B F1 48 85 D2 0F 84",
+      "linux": "55 48 89 E5 41 57 41 56 41 89 FE 41 55 41 54 45"
     }
   },
   "CCSPlayer_ItemServices_GiveNamedItem": {
