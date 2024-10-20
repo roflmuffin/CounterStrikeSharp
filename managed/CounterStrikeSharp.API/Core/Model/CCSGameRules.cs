@@ -28,4 +28,18 @@ public partial class CCSGameRules
     {
         VirtualFunctions.TerminateRound(Handle, roundEndReason, delay, 0, 0);
     }
+
+    public CCSPlayerController? GetClientAimTarget(CCSPlayerController player)
+    {
+        VirtualFunctionWithReturn<IntPtr, IntPtr, IntPtr> findPickerEntity = new(Handle, 28);
+
+        CBaseEntity target = new(findPickerEntity.Invoke(Handle, player.Handle));
+
+        if (target.DesignerName == "player")
+        {
+            return target.As<CCSPlayerPawn>().OriginalController.Value;
+        }
+
+        return null;
+    }
 }
