@@ -84,7 +84,7 @@
   "CCSPlayer_WeaponServices_CanUse": {
     "signatures": {
       "library": "server",
-      "windows": "48 89 5C 24 ? 48 89 6C 24 ? 56 57 41 56 48 83 EC 30 48 8B 01",
+      "windows": "48 89 5C 24 ? 48 89 6C 24 ? 56 57 41 56 48 83 EC ? 48 8B 01 48 8B FA",
       "linux": "55 48 8D 15 ? ? ? ? 48 89 E5 41 55 49 89 FD 41 54 49 89 F4"
     }
   },
@@ -170,8 +170,8 @@
   },
   "CBasePlayerPawn_CommitSuicide": {
     "offsets": {
-      "windows": 377,
-      "linux": 377
+      "windows": 380,
+      "linux": 380
     }
   },
   "CBasePlayerPawn_RemovePlayerItem": {
