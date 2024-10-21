@@ -15,6 +15,8 @@ public class Target
     private string Raw { get; }
     private string Slug { get; }
 
+    internal CCSGameRulesProxy? _gameRulesEntity = null;
+
     public static readonly IReadOnlyDictionary<string, TargetType> TargetTypeMap = new Dictionary<string, TargetType>(StringComparer.OrdinalIgnoreCase)
     {
         { "@all", TargetType.GroupAll },
@@ -109,15 +111,16 @@ public class Target
 
     public TargetResult GetTarget(CCSPlayerController? caller)
     {
-        CCSGameRules? gameRules = null;
-
         if (Type == TargetType.PlayerAim)
         {
-            gameRules = Utilities.FindAllEntitiesByDesignerName<CCSGameRulesProxy>("cs_gamerules").FirstOrDefault()?.GameRules;
+            if (_gameRulesEntity == null || !_gameRulesEntity.IsValid)
+            {
+                _gameRulesEntity = Utilities.FindAllEntitiesByDesignerName<CCSGameRulesProxy>("cs_gamerules").FirstOrDefault();
+            }
+
+            return new TargetResult() { Players = Utilities.GetPlayers().Where(player => TargetPredicate(player, caller, _gameRulesEntity!.GameRules)).ToList() };
         }
 
-        var players = Utilities.GetPlayers().Where(player => TargetPredicate(player, caller, gameRules)).ToList();
-
-        return new TargetResult() { Players = players };
+        return new TargetResult() { Players = Utilities.GetPlayers().Where(player => TargetPredicate(player, caller)).ToList() };
     }
 }
