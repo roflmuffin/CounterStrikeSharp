@@ -14,6 +14,7 @@ public enum TargetType
     GroupNotMe, // @!me
 
     PlayerMe, // @me
+    PlayerAim, // @aim
 
     IdUserid, // #4
     IdSteamEscaped, // "#STEAM_0:1:8614"

@@ -16,6 +16,7 @@
 
 using CounterStrikeSharp.API.Modules.Entities.Constants;
 using CounterStrikeSharp.API.Modules.Memory;
+using CounterStrikeSharp.API.Modules.Utils;
 
 namespace CounterStrikeSharp.API.Core;
 
@@ -27,5 +28,34 @@ public partial class CCSGameRules
     public void TerminateRound(float delay, RoundEndReason roundEndReason)
     {
         VirtualFunctions.TerminateRound(Handle, roundEndReason, delay, 0, 0);
+    }
+
+    public T? FindPickerEntity<T>(CBasePlayerController player)
+        where T : CBaseEntity
+    {
+        VirtualFunctionWithReturn<CCSGameRules, CBasePlayerController, CBaseEntity?> CCSGameRules_FindPickerEntity = new (Handle, GameData.GetOffset("CCSGameRules_FindPickerEntity"));
+        CBaseEntity? entity = CCSGameRules_FindPickerEntity.Invoke(this, player);
+
+        if (entity == null || !entity.IsValid)
+        {
+            return null;
+        }
+
+        return entity.As<T>();
+    }
+
+    public CCSPlayerController? GetClientAimTarget(CCSPlayerController player)
+    {
+        CCSPlayerPawn? pawn = FindPickerEntity<CCSPlayerPawn>(player);
+
+        if (pawn == null || !pawn.IsValid)
+            return null;
+
+        if (pawn.DesignerName == "player")
+        {
+            return pawn.OriginalController.Value;
+        }
+
+        return null;
     }
 }
