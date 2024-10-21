@@ -35,7 +35,7 @@ namespace CounterStrikeSharp.API.Core
         public CFixedBitVecBase TransmitAlways;
     };
 
-    public sealed class CCheckTransmitInfoList : NativeObject, IReadOnlyList<(CCheckTransmitInfo, CCSPlayerController?)>
+    public sealed class CCheckTransmitInfoList : NativeObject, IReadOnlyList<(CCheckTransmitInfo info, CCSPlayerController? player)>
     {
         private int CheckTransmitPlayerSlotOffset = GameData.GetOffset("CheckTransmitPlayerSlot");
 
@@ -51,7 +51,7 @@ namespace CounterStrikeSharp.API.Core
         /// </summary>
         /// <param name="index">Index of the info you want to retrieve from the list, should be between 0 and '<see cref="Count"/>' - 1</param>
         /// <returns></returns>
-        public (CCheckTransmitInfo, CCSPlayerController?) this[int index]
+        public (CCheckTransmitInfo info, CCSPlayerController? player) this[int index]
         {
             get
             {
