@@ -117,10 +117,8 @@ public class Target
             {
                 _gameRulesEntity = Utilities.FindAllEntitiesByDesignerName<CCSGameRulesProxy>("cs_gamerules").FirstOrDefault();
             }
-
-            return new TargetResult() { Players = Utilities.GetPlayers().Where(player => TargetPredicate(player, caller, _gameRulesEntity!.GameRules)).ToList() };
         }
 
-        return new TargetResult() { Players = Utilities.GetPlayers().Where(player => TargetPredicate(player, caller)).ToList() };
+        return new TargetResult() { Players = Utilities.GetPlayers().Where(player => TargetPredicate(player, caller, _gameRulesEntity?.GameRules)).ToList() };
     }
 }
