@@ -83,7 +83,7 @@ public class Target
         }
     }
 
-    private bool TargetPredicate(CCSPlayerController player, CCSPlayerController? caller, CCSGameRules? gameRules)
+    private bool TargetPredicate(CCSPlayerController player, CCSPlayerController? caller, CCSGameRules? gameRules = null)
     {
         return Type switch
         {
