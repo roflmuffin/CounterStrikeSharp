@@ -30,15 +30,30 @@ public partial class CCSGameRules
         VirtualFunctions.TerminateRound(Handle, roundEndReason, delay, 0, 0);
     }
 
+    public T? FindPickerEntity<T>(CBasePlayerController player)
+        where T : CBaseEntity
+    {
+        VirtualFunctionWithReturn<CCSGameRules, CBasePlayerController, CBaseEntity?> CCSGameRules_FindPickerEntity = new (Handle, GameData.GetOffset("CCSGameRules_FindPickerEntity"));
+        CBaseEntity? entity = CCSGameRules_FindPickerEntity.Invoke(this, player);
+
+        if (entity == null || !entity.IsValid)
+        {
+            return null;
+        }
+
+        return entity.As<T>();
+    }
+
     public CCSPlayerController? GetClientAimTarget(CCSPlayerController player)
     {
-        VirtualFunctionWithReturn<IntPtr, IntPtr, IntPtr> findPickerEntity = new(Handle, GameData.GetOffset("CCSGameRules_FindPickerEntity"));
+        CCSPlayerPawn? pawn = FindPickerEntity<CCSPlayerPawn>(player);
 
-        CBaseEntity target = new(findPickerEntity.Invoke(Handle, player.Handle));
+        if (pawn == null || !pawn.IsValid)
+            return null;
 
-        if (target.DesignerName == "player")
+        if (pawn.DesignerName == "player")
         {
-            return target.As<CCSPlayerPawn>().OriginalController.Value;
+            return pawn.OriginalController.Value;
         }
 
         return null;
