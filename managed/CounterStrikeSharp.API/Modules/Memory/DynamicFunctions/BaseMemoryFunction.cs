@@ -9,6 +9,8 @@ public abstract class BaseMemoryFunction : NativeObject
 {
     private static Dictionary<string, IntPtr> _createdFunctions = new();
 
+    private static Dictionary<IntPtr, Dictionary<int, IntPtr>> _createdOffsetFunctions = new();
+
     private static IntPtr CreateValveFunctionBySignature(string signature, DataType returnType,
         DataType[] argumentTypes)
     {
@@ -47,6 +49,30 @@ public abstract class BaseMemoryFunction : NativeObject
         return function;
     }
 
+    private static IntPtr CreateValveFunctionByOffset(IntPtr objectPtr, int offset, DataType returnType,
+        DataType[] argumentTypes)
+    {
+        if (!_createdOffsetFunctions.TryGetValue(objectPtr, out var createdFunctions))
+        {
+            createdFunctions = new Dictionary<int, IntPtr>();
+            _createdOffsetFunctions[objectPtr] = createdFunctions;
+        }
+
+        if (!createdFunctions.TryGetValue(offset, out var function))
+        {
+            try
+            {
+                function = NativeAPI.CreateVirtualFunction(objectPtr, offset,
+                    argumentTypes.Length, (int)returnType, argumentTypes.Cast<object>().ToArray());
+                createdFunctions[offset] = function;
+            } catch (Exception)
+            {
+            }
+        }
+
+        return function;
+    }
+
     public BaseMemoryFunction(string signature, DataType returnType, DataType[] parameters) : base(
         CreateValveFunctionBySignature(signature, returnType, parameters))
     {
@@ -54,6 +80,14 @@ public abstract class BaseMemoryFunction : NativeObject
 
     public BaseMemoryFunction(string signature, string binarypath, DataType returnType, DataType[] parameters) : base(
         CreateValveFunctionBySignature(signature, binarypath, returnType, parameters))
+    {
+    }
+
+    /// <summary>
+    /// <b>WARNING:</b> this is only supposed to be used with <see cref="VirtualFunctionVoid"/> and <see cref="VirtualFunctionWithReturn{TResult}"/>
+    /// </summary>
+    internal BaseMemoryFunction(IntPtr objectPtr, int offset, DataType returnType, DataType[] parameters) : base(
+        CreateValveFunctionByOffset(objectPtr, offset, returnType, parameters))
     {
     }
 
