@@ -28,7 +28,7 @@ SH_DECL_HOOK7_void(ISource2GameEntities, CheckTransmit, SH_NOATTRIB, 0, CCheckTr
 
 namespace counterstrikesharp {
 
-EntityManager::EntityManager() {}
+EntityManager::EntityManager()
 
 EntityManager::~EntityManager() {}
 

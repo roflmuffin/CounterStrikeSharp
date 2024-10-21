@@ -27,6 +27,8 @@
 
 #include <variant.h>
 
+#include "vprof.h"
+
 namespace counterstrikesharp {
 class ScriptCallback;
 
@@ -66,6 +68,8 @@ private:
     ScriptCallback *on_entity_deleted_callback;
     ScriptCallback *on_entity_parent_changed_callback;
     ScriptCallback *check_transmit;
+
+    std::string m_profile_name;
 };
 
 
