@@ -94,6 +94,7 @@ extern ISource2Server* server;
 extern CGlobalEntityList* globalEntityList;
 extern EntityListener entityListener;
 extern CGameEntitySystem* entitySystem;
+extern ISource2GameEntities* gameEntities;
 
 extern EventManager eventManager;
 extern UserMessageManager userMessageManager;
