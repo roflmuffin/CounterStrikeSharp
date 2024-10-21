@@ -83,11 +83,11 @@ public class Target
         }
     }
 
-    private bool TargetPredicate(CCSPlayerController player, CCSPlayerController? caller, CCSGameRules gameRules)
+    private bool TargetPredicate(CCSPlayerController player, CCSPlayerController? caller, CCSGameRules? gameRules)
     {
         return Type switch
         {
-            TargetType.PlayerAim => caller != null && player == gameRules.GetClientAimTarget(caller),
+            TargetType.PlayerAim => caller != null && player == gameRules!.GetClientAimTarget(caller),
             TargetType.TeamCt => player.Team == CsTeam.CounterTerrorist,
             TargetType.TeamT => player.Team == CsTeam.Terrorist,
             TargetType.TeamSpec => player.Team == CsTeam.Spectator,
@@ -109,7 +109,12 @@ public class Target
 
     public TargetResult GetTarget(CCSPlayerController? caller)
     {
-        CCSGameRules? gameRules = Utilities.FindAllEntitiesByDesignerName<CCSGameRulesProxy>("cs_gamerules").FirstOrDefault()?.GameRules;
+        CCSGameRules? gameRules = null;
+
+        if (Type == TargetType.PlayerAim)
+        {
+            gameRules = Utilities.FindAllEntitiesByDesignerName<CCSGameRulesProxy>("cs_gamerules").FirstOrDefault()?.GameRules;
+        }
 
         var players = Utilities.GetPlayers().Where(player => TargetPredicate(player, caller, gameRules)).ToList();
 

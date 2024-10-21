@@ -16,6 +16,7 @@
 
 using CounterStrikeSharp.API.Modules.Entities.Constants;
 using CounterStrikeSharp.API.Modules.Memory;
+using CounterStrikeSharp.API.Modules.Utils;
 
 namespace CounterStrikeSharp.API.Core;
 
@@ -31,7 +32,7 @@ public partial class CCSGameRules
 
     public CCSPlayerController? GetClientAimTarget(CCSPlayerController player)
     {
-        VirtualFunctionWithReturn<IntPtr, IntPtr, IntPtr> findPickerEntity = new(Handle, 28);
+        VirtualFunctionWithReturn<IntPtr, IntPtr, IntPtr> findPickerEntity = new(Handle, GameData.GetOffset("CCSGameRules_FindPickerEntity"));
 
         CBaseEntity target = new(findPickerEntity.Invoke(Handle, player.Handle));
 
