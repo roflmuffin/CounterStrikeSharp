@@ -168,6 +168,8 @@ void EntityManager::UnhookEntityOutput(const char* szClassname, const char* szOu
 
 void EntityManager::CheckTransmit(CCheckTransmitInfo** pInfoInfoList, int nInfoCount, CBitVec<16384>& unionTransmitEdicts, const Entity2Networkable_t** pNetworkables, const uint16* pEntityIndicies, int nEntityIndices, bool bEnablePVSBits)
 {
+    VPROF_BUDGET(m_profile_name.c_str(), "CS# CheckTransmit");
+    
     auto callback = globals::entityManager.check_transmit;
 
     if (callback && callback->GetFunctionCount()) {
