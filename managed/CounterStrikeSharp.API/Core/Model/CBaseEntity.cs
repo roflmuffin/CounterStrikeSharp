@@ -26,7 +26,7 @@ public partial class CBaseEntity
             _handle = playerPawn.Handle;
         }
 
-        VirtualFunction.CreateVoid<IntPtr, IntPtr, IntPtr, IntPtr>(_handle, GameData.GetOffset("CBaseEntity_Teleport"))(Handle, _position, _angles, _velocity);
+        VirtualFunction.CreateVoid<IntPtr, IntPtr, IntPtr, IntPtr>(_handle, GameData.GetOffset("CBaseEntity_Teleport"))(_handle, _position, _angles, _velocity);
     }
 
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
