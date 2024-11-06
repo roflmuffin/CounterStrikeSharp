@@ -253,5 +253,11 @@
       "windows": 2,
       "linux": 0
     }
+  },
+  "CheckTransmitPlayerSlot": {
+    "offsets": {
+      "windows": 584,
+      "linux": 584
+    }
   }
 }
