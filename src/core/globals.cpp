@@ -78,6 +78,7 @@ ISmmAPI* ismm = nullptr;
 CGameEntitySystem* entitySystem = nullptr;
 CCoreConfig* coreConfig = nullptr;
 CGameConfig* gameConfig = nullptr;
+ISource2GameEntities* gameEntities = nullptr;
 
 // Custom Managers
 CallbackManager callbackManager;
