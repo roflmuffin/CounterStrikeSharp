@@ -20,7 +20,7 @@ using CounterStrikeSharp.API.Core;
 
 namespace CounterStrikeSharp.API.Modules.Commands
 {
-    public partial class CommandInfo
+    public class CommandInfo
     {
         public delegate void CommandCallback(CCSPlayerController? player, CommandInfo commandInfo);
         
