@@ -15,11 +15,12 @@
  */
 
 using System;
+using System.Text.RegularExpressions;
 using CounterStrikeSharp.API.Core;
 
 namespace CounterStrikeSharp.API.Modules.Commands
 {
-    public class CommandInfo
+    public partial class CommandInfo
     {
         public delegate void CommandCallback(CCSPlayerController? player, CommandInfo commandInfo);
         
@@ -47,7 +48,47 @@ namespace CounterStrikeSharp.API.Modules.Commands
 
         public string ArgByIndex(int index) => NativeAPI.CommandGetArgByIndex(Handle, index);
         public string GetArg(int index) => NativeAPI.CommandGetArgByIndex(Handle, index);
-        
+
+        private static readonly Regex RegexArgs = new(@"(?:""([^""]+)""|\S+)", RegexOptions.Compiled);
+
+        public List<string> GetArgs()
+        {
+            MatchCollection matches = RegexArgs.Matches(ArgString);
+
+            var args = new List<string>();
+
+            foreach (Match match in matches)
+            {
+                if (match.Groups[1].Success)
+                {
+                    args.Add(match.Groups[1].Value);
+                }
+                else
+                {
+                    args.Add(match.Value);
+                }
+            }
+
+            return args;
+        }
+
+        public List<string> GetArgs(int startIndex, int endIndex = -1)
+        {
+            var args = GetArgs();
+
+            if (endIndex == -1)
+            {
+                endIndex = args.Count;
+            }
+
+            if (startIndex < 0 || startIndex >= args.Count || endIndex < 0 || endIndex > args.Count || startIndex > endIndex)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            return args.GetRange(startIndex, endIndex - startIndex);
+        }
+
         /// <summary>
         /// Whether or not the command was sent via Console or Chat.
         /// </summary>
