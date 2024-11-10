@@ -11,7 +11,6 @@ using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
 using CounterStrikeSharp.API.Core.Attributes;
-using CounterStrikeSharp.API.Modules.Memory.DynamicFunctions;
 
 namespace CounterStrikeSharp.API.Core;
 
