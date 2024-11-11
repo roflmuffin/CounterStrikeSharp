@@ -17,14 +17,10 @@ jobs:
       contents: write
     runs-on: ubuntu-latest
     outputs:
-      buildnumber: ${{ steps.buildnumber.outputs.build_number }}
+      buildnumber: "288"  # Fixed build number
     steps:
-      - name: Generate build number
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-        id: buildnumber
-        uses: onyxmueller/build-tag-number@v1
-        with:
-          token: ${{secrets.github_token}}
+      - name: Set fixed build number
+        run: echo "buildnumber=288" >> $GITHUB_ENV  # Set buildnumber to fixed version 288
 
   build_windows:
     needs: setup
@@ -37,11 +33,11 @@ jobs:
       - name: Fallback build number
         if: ${{ github.event_name == 'pull_request' || github.ref != 'refs/heads/main' }}
         shell: bash
-        run: echo "BUILD_NUMBER=0" >> $GITHUB_ENV
+        run: echo "BUILD_NUMBER=288" >> $GITHUB_ENV  # Use fixed build number
 
       - name: Main build number
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-        run: echo "BUILD_NUMBER=${{ needs.setup.outputs.buildnumber }}" >> $GITHUB_ENV
+        run: echo "BUILD_NUMBER=288" >> $GITHUB_ENV  # Use fixed build number
 
       - name: Visual Studio environment
         shell: cmd
@@ -76,13 +72,12 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: counterstrikesharp-build-windows-${{ env.GITHUB_SHA_SHORT }}
+          name: counterstrikesharp-build-windows-288-${{ env.GITHUB_SHA_SHORT }}
           path: build/output/
 
   build_linux:
     needs: setup
     runs-on: ubuntu-latest
-    # Could not figure out how to run in a container only on some matrix paths, so I've split it out into its own build.
     container:
       image: registry.gitlab.steamos.cloud/steamrt/sniper/sdk:latest
     steps:
@@ -93,11 +88,11 @@ jobs:
       - name: Fallback build number
         if: ${{ github.event_name == 'pull_request' || github.ref != 'refs/heads/main' }}
         shell: bash
-        run: echo "BUILD_NUMBER=0" >> $GITHUB_ENV
+        run: echo "BUILD_NUMBER=288" >> $GITHUB_ENV  # Use fixed build number
 
       - name: Main build number
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-        run: echo "BUILD_NUMBER=${{ needs.setup.outputs.buildnumber }}" >> $GITHUB_ENV
+        run: echo "BUILD_NUMBER=288" >> $GITHUB_ENV  # Use fixed build number
 
       - uses: actions/checkout@v3
         with:
@@ -117,7 +112,7 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: counterstrikesharp-build-linux-${{ env.GITHUB_SHA_SHORT }}
+          name: counterstrikesharp-build-linux-288-${{ env.GITHUB_SHA_SHORT }}
           path: build/output/
 
   build_managed:
@@ -133,16 +128,15 @@ jobs:
       - name: Fallback build number
         if: ${{ github.event_name == 'pull_request' || github.ref != 'refs/heads/main' }}
         shell: bash
-        run: echo "BUILD_NUMBER=0" >> $GITHUB_ENV
+        run: echo "BUILD_NUMBER=288" >> $GITHUB_ENV  # Use fixed build number
 
       - name: Main build number
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-        run: echo "BUILD_NUMBER=${{ needs.setup.outputs.buildnumber }}" >> $GITHUB_ENV
+        run: echo "BUILD_NUMBER=288" >> $GITHUB_ENV  # Use fixed build number
 
-      # We don't need expensive submodules for the managed side.
       - uses: actions/checkout@v3
 
-      - name: Build runtime v${{ env.BUILD_NUMBER }}
+      - name: Build runtime v288
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: "8.0.x"
@@ -162,12 +156,12 @@ jobs:
 
       - name: Publish artifacts
         run: |
-          dotnet publish -c Release /p:Version=1.0.${{ env.BUILD_NUMBER }} managed/CounterStrikeSharp.API
-          dotnet pack -c Release /p:Version=1.0.${{ env.BUILD_NUMBER }} managed/CounterStrikeSharp.API
+          dotnet publish -c Release /p:Version=1.0.288 managed/CounterStrikeSharp.API
+          dotnet pack -c Release /p:Version=1.0.288 managed/CounterStrikeSharp.API
 
       - uses: actions/upload-artifact@v3
         with:
-          name: counterstrikesharp-build-api-${{ env.GITHUB_SHA_SHORT }}
+          name: counterstrikesharp-build-api-288-${{ env.GITHUB_SHA_SHORT }}
           path: managed/CounterStrikeSharp.API/bin/Release
 
   publish:
@@ -183,20 +177,19 @@ jobs:
 
       - uses: actions/download-artifact@v3
         with:
-          name: counterstrikesharp-build-windows-${{ env.GITHUB_SHA_SHORT }}
+          name: counterstrikesharp-build-windows-288-${{ env.GITHUB_SHA_SHORT }}
           path: build/windows
 
       - uses: actions/download-artifact@v3
         with:
-          name: counterstrikesharp-build-linux-${{ env.GITHUB_SHA_SHORT }}
+          name: counterstrikesharp-build-linux-288-${{ env.GITHUB_SHA_SHORT }}
           path: build/linux
 
       - uses: actions/download-artifact@v3
         with:
-          name: counterstrikesharp-build-api-${{ env.GITHUB_SHA_SHORT }}
+          name: counterstrikesharp-build-api-288-${{ env.GITHUB_SHA_SHORT }}
           path: build/api
 
-      # TODO: This stuff should really be in a matrix
       - name: Add API to Artifacts
         run: |
           mkdir -p build/linux/addons/counterstrikesharp/api
@@ -206,8 +199,8 @@ jobs:
 
       - name: Zip Builds
         run: |
-          (cd build/linux && zip -qq -r ../../counterstrikesharp-build-${{ needs.setup.outputs.buildnumber }}-linux-${{ env.GITHUB_SHA_SHORT }}.zip *)
-          (cd build/windows && zip -qq -r ../../counterstrikesharp-build-${{ needs.setup.outputs.buildnumber }}-windows-${{ env.GITHUB_SHA_SHORT }}.zip *)
+          (cd build/linux && zip -qq -r ../../counterstrikesharp-build-288-linux-${{ env.GITHUB_SHA_SHORT }}.zip *)
+          (cd build/windows && zip -qq -r ../../counterstrikesharp-build-288-windows-${{ env.GITHUB_SHA_SHORT }}.zip *)
 
       - name: Add dotnet runtime
         run: |
@@ -219,30 +212,30 @@ jobs:
           curl -s -L https://download.visualstudio.microsoft.com/download/pr/086d1dd6-57a5-437a-a1ef-549cf702fb48/dd4a8fe6c53a1016a414d6f2925c1323/aspnetcore-runtime-8.0.3-win-x64.zip -o dotnet.zip
           unzip -qq dotnet.zip -d build/windows/addons/counterstrikesharp/dotnet
 
-      - name: Zip Builds
+      - name: Zip Builds with runtime
         run: |
-          (cd build/linux && zip -qq -r ../../counterstrikesharp-with-runtime-build-${{ needs.setup.outputs.buildnumber }}-linux-${{ env.GITHUB_SHA_SHORT }}.zip *)
-          (cd build/windows && zip -qq -r ../../counterstrikesharp-with-runtime-build-${{ needs.setup.outputs.buildnumber }}-windows-${{ env.GITHUB_SHA_SHORT }}.zip *)
+          (cd build/linux && zip -qq -r ../../counterstrikesharp-with-runtime-build-288-linux-${{ env.GITHUB_SHA_SHORT }}.zip *)
+          (cd build/windows && zip -qq -r ../../counterstrikesharp-with-runtime-build-288-windows-${{ env.GITHUB_SHA_SHORT }}.zip *)
 
       - name: Release
         id: release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: v${{ needs.setup.outputs.buildnumber }}
+          tag_name: v288  # Fixed version tag
           files: |
-            counterstrikesharp-build-${{ needs.setup.outputs.buildnumber }}-windows-${{ env.GITHUB_SHA_SHORT }}.zip
-            counterstrikesharp-with-runtime-build-${{ needs.setup.outputs.buildnumber }}-windows-${{ env.GITHUB_SHA_SHORT }}.zip
-            counterstrikesharp-build-${{ needs.setup.outputs.buildnumber }}-linux-${{ env.GITHUB_SHA_SHORT }}.zip
-            counterstrikesharp-with-runtime-build-${{ needs.setup.outputs.buildnumber }}-linux-${{ env.GITHUB_SHA_SHORT }}.zip
+            counterstrikesharp-build-288-windows-${{ env.GITHUB_SHA_SHORT }}.zip
+            counterstrikesharp-with-runtime-build-288-windows-${{ env.GITHUB_SHA_SHORT }}.zip
+            counterstrikesharp-build-288-linux-${{ env.GITHUB_SHA_SHORT }}.zip
+            counterstrikesharp-with-runtime-build-288-linux-${{ env.GITHUB_SHA_SHORT }}.zip
 
       - name: Publish NuGet package
         run: |
-          dotnet nuget push build/api/CounterStrikeSharp.API.1.0.${{ needs.setup.outputs.buildnumber }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
-          dotnet nuget push build/api/CounterStrikeSharp.API.1.0.${{ needs.setup.outputs.buildnumber }}.snupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+          dotnet nuget push build/api/CounterStrikeSharp.API.1.0.288.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+          dotnet nuget push build/api/CounterStrikeSharp.API.1.0.288.snupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
       - name: Send Notification to Discord
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         uses: Ilshidur/action-discord@0.3.2
         with:
-          args: "A new release of CS# has been tagged (v${{ needs.setup.outputs.buildnumber }}) at ${{ steps.release.outputs.url }}"
+          args: "A new release of CS# has been tagged (v288) at ${{ steps.release.outputs.url }}"
