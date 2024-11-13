@@ -101,13 +101,11 @@ public class RecipientFilter : IList<CCSPlayerController>, IMarshalToNative
     public void Add(int slot)
     {
         var player = Utilities.GetPlayerFromSlot(slot);
-        if (player == null)
+        if (player != null)
         {
-            throw new ArgumentException($"Player with slot {slot} not found");
+            _recipients.Add(player);
+            CollectionChanged?.Invoke();
         }
-
-        _recipients.Add(player);
-        CollectionChanged?.Invoke();
     }
 
     public void AddAllPlayers()
