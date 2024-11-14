@@ -49,44 +49,17 @@ namespace CounterStrikeSharp.API.Modules.Commands
         public string ArgByIndex(int index) => NativeAPI.CommandGetArgByIndex(Handle, index);
         public string GetArg(int index) => NativeAPI.CommandGetArgByIndex(Handle, index);
 
-        private static readonly Regex RegexArgs = new(@"(?:""([^""]+)""|\S+)", RegexOptions.Compiled);
-
-        public List<string> GetArgs()
+        public IEnumerable<string> GetArgs(int startIndex = 0, int endIndex = -1)
         {
-            MatchCollection matches = RegexArgs.Matches(ArgString);
+            var args = ArgString.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            int lastIndex = args.Length - 1;
 
-            var args = new List<string>();
+            startIndex = Math.Clamp(startIndex, 0, lastIndex);
+            endIndex = Math.Clamp(endIndex < 0 ? lastIndex : endIndex, startIndex, lastIndex);
 
-            foreach (Match match in matches)
-            {
-                if (match.Groups[1].Success)
-                {
-                    args.Add(match.Groups[1].Value);
-                }
-                else
-                {
-                    args.Add(match.Value);
-                }
-            }
-
-            return args;
-        }
-
-        public List<string> GetArgs(int startIndex, int endIndex = -1)
-        {
-            var args = GetArgs();
-
-            if (endIndex == -1)
-            {
-                endIndex = args.Count;
-            }
-
-            if (startIndex < 0 || startIndex >= args.Count || endIndex < 0 || endIndex > args.Count || startIndex > endIndex)
-            {
-                throw new ArgumentOutOfRangeException();
-            }
-
-            return args.GetRange(startIndex, endIndex - startIndex);
+            return startIndex == endIndex ?
+                [args[startIndex]] :
+                args[startIndex..(endIndex + 1)];
         }
 
         /// <summary>
