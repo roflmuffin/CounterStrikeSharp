@@ -4,16 +4,13 @@ namespace CounterStrikeSharp.API.Modules.Extensions;
 
 public static class PluginConfigExtensions
 {
-    public static JsonSerializerOptions JsonSerializerOptions => _jsonSerializerOptions;
-
-    static PluginConfigExtensions()
+    private static readonly JsonSerializerOptions _jsonSerializerOptions = new()
     {
-        JsonSerializerOptions = new JsonSerializerOptions
-        {
-            WriteIndented = true,
-            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault
-        };
-    }
+        WriteIndented = true,
+        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault
+    };
+
+    public static JsonSerializerOptions JsonSerializerOptions => _jsonSerializerOptions;
 
     /// <summary>
     /// Gets the configuration file path
