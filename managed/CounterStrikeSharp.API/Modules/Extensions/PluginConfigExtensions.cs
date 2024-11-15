@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using System.Reflection;
 
 namespace CounterStrikeSharp.API.Modules.Extensions;
 
@@ -6,8 +7,7 @@ public static class PluginConfigExtensions
 {
     private static readonly JsonSerializerOptions _jsonSerializerOptions = new()
     {
-        WriteIndented = true,
-        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault
+        WriteIndented = true
     };
 
     public static JsonSerializerOptions JsonSerializerOptions => _jsonSerializerOptions;
