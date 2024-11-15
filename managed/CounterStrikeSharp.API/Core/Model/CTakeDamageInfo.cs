@@ -11,7 +11,7 @@ public partial class CTakeDamageInfo
     /// Returns a <see cref="HitGroup_t"/> enumeration representing the player's current hit group,
     /// or <see cref="HitGroup_t.HITGROUP_INVALID"/> if the hit group cannot be determined.
     /// </returns>
-    public HitGroup_t HitGroup()
+    public HitGroup_t GetHitGroup()
     {
         IntPtr v4 = Marshal.ReadIntPtr(Handle, 0x78);
 
