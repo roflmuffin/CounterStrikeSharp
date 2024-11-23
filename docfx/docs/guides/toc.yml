@@ -6,3 +6,6 @@
 
 - name: Dependency Injection
   href: dependency-injection.md
+
+- name: Referencing Players
+  href: referencing-players.md
