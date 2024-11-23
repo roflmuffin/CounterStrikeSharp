@@ -54,6 +54,9 @@ The specific subclass of `GameEvent` will provide strongly typed parameters from
 
 These event properties are mutable so you can update them as normal and they will update in the event instance.
 
+> [!CAUTION]
+> `GameEvent` instances and their properties will cease to exist after the event listener function is called, which means that you will encounter errors when accessing properties in timers and functions like `Server.NextFrame()`. You should store the value of properties in variables before calling functions like `Server.NextFrame()` so you can read the data safely.
+
 ## Preventing Broadcast
 
 You can modify a game event so that it does not get broadcast to clients by modifying the `bool info.DontBroadcast` property. e.g.
