@@ -2,7 +2,7 @@ on:
   push:
     branches:
       - main
-  repository_dispatch:  
+  workflow_dispatch:  
 
 permissions:
   contents: read
