@@ -2,6 +2,7 @@ on:
   push:
     branches:
       - main
+  repository_dispatch:  
 
 permissions:
   contents: read
