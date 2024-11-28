@@ -21,6 +21,8 @@ items:
     href: WithTranslations.md
   - name: User Messages
     href: WithUserMessages.md
+  - name: Client Messages
+    href: WithClientMessages.md
   - name: Voice Overrides
     href: WithVoiceOverrides.md
   - name: Warcraft Plugin

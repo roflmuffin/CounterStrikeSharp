@@ -1,0 +1,37 @@
+HOOK_CLIENTMESSAGE: messageId:int, callback:func, mode:HookMode -> void
+UNHOOK_CLIENTMESSAGE: messageId:int, callback:func, mode:HookMode -> void
+CM_PB_HASFIELD: message:ClientMessage, name:string -> bool
+CM_PB_READINT: message:ClientMessage, name:string, index:int -> int
+CM_PB_READINT64: message:ClientMessage, name:string, index:int -> long
+CM_PB_READFLOAT: message:ClientMessage, name:string, index:int -> float
+CM_PB_READBOOL: message:ClientMessage, name:string, index:int -> bool
+CM_PB_READSTRING: message:ClientMessage, name:string, index:int -> string
+CM_PB_READBYTES: message:ClientMessage, name:string, index:int -> byte[]
+CM_PB_GETREPEATEDFIELDCOUNT: message:ClientMessage, name:string -> int
+CM_PB_SETINT: message:ClientMessage, name:string, value:int, index:int -> void
+CM_PB_SETINT64: message:ClientMessage, name:string, value:long, index:int -> void
+CM_PB_SETFLOAT: message:ClientMessage, name:string, value:float, index:int -> void
+CM_PB_SETBOOL: message:ClientMessage, name:string, value:bool, index:int -> void
+CM_PB_SETSTRING: message:ClientMessage, name:string, value:string, index:int -> void
+CM_PB_SETBYTES: message:ClientMessage, name:string, value:byte[], index:int -> void
+CM_PB_ADDINT: message:ClientMessage, name:string, value:int -> void
+CM_PB_ADDINT64: message:ClientMessage, name:string, value:int64 -> void
+CM_PB_ADDFLOAT: message:ClientMessage, name:string, value:float -> void
+CM_PB_ADDBOOL: message:ClientMessage, name:string, value:bool -> void
+CM_PB_ADDSTRING: message:ClientMessage, name:string, value:string -> void
+CM_PB_REMOVEREPEATEDFIELDVALUE: message:ClientMessage, name:string, index:int -> void
+#CM_PB_READMESSAGE: message:ClientMessage, name:string -> ClientMessage
+#CM_PB_READREPEATEDMESSAGE: message:ClientMessage, name:string, index:int -> ClientMessage
+#CM_PB_ADDMESSAGE: message:ClientMessage, name:string -> ClientMessage
+CM_PB_GETDEBUGSTRING: message:ClientMessage -> string
+CLIENTMESSAGE_GETRECIPIENTS: message:ClientMessage -> uint64
+CLIENTMESSAGE_SETRECIPIENTS: message:ClientMessage, recipients:uint64 -> void
+CLIENTMESSAGE_FINDMESSAGEIDBYNAME: name:string -> int
+CLIENTMESSAGE_CREATE: name:string -> pointer
+CLIENTMESSAGE_CREATEBYID: id:int -> pointer
+CLIENTMESSAGE_SEND: message:ClientMessage -> void
+CLIENTMESSAGE_DELETE: message:ClientMessage -> void
+CLIENTMESSAGE_GETID: message:ClientMessage -> int
+CLIENTMESSAGE_GETNAME: message:ClientMessage -> string
+CLIENTMESSAGE_GETSENDER: message:ClientMessage -> int
+CLIENTMESSAGE_GETTYPE: message:ClientMessage -> string

@@ -24,6 +24,7 @@
 #include "core/managers/server_manager.h"
 #include "core/managers/voice_manager.h"
 #include "core/managers/usermessage_manager.h"
+#include "core/managers/clientmessage_manager.h"
 #include <public/game/server/iplayerinfo.h>
 #include <public/entity2/entitysystem.h>
 
@@ -92,6 +93,7 @@ ServerManager serverManager;
 VoiceManager voiceManager;
 TickScheduler tickScheduler;
 UserMessageManager userMessageManager;
+ClientMessageManager clientMessageManager;
 
 bool gameLoopInitialized = false;
 GetLegacyGameEventListener_t* GetLegacyGameEventListener = nullptr;

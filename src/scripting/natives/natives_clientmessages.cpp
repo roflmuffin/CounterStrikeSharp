@@ -15,10 +15,10 @@
  */
 // clang-format off
 
-#include "core/UserMessage.h"
+#include "core/ClientMessage.h"
 #include "core/globals.h"
 #include "core/log.h"
-#include "core/managers/usermessage_manager.h"
+#include "core/managers/clientmessage_manager.h"
 #include "igameeventsystem.h"
 #include "scripting/autonative.h"
 
@@ -28,39 +28,39 @@
 
 namespace counterstrikesharp {
 
-#define GET_MESSAGE_OR_ERR()                                   \
-    auto message = scriptContext.GetArgument<UserMessage*>(0); \
-    if (message == nullptr || message->GetMessageID() < 0)     \
-    {                                                          \
-        scriptContext.ThrowNativeError("Invalid message");     \
-        return;                                                \
+#define GET_MESSAGE_OR_ERR()                                     \
+    auto message = scriptContext.GetArgument<ClientMessage*>(0); \
+    if (message == nullptr || message->GetMessageID() < 0)       \
+    {                                                            \
+        scriptContext.ThrowNativeError("Invalid message");       \
+        return;                                                  \
     }
 
 #define GET_FIELD_NAME_OR_ERR() const char* fieldName = scriptContext.GetArgument<const char*>(1);
 
-std::vector<UserMessage*> managed_usermessages;
+std::vector<ClientMessage*> managed_clientmessages;
 
-static void HookUserMessage(ScriptContext& script_context)
+static void HookClientMessage(ScriptContext& script_context)
 {
     auto messageId = script_context.GetArgument<int>(0);
     auto callback = script_context.GetArgument<CallbackT>(1);
     auto mode = script_context.GetArgument<HookMode>(2);
 
-    globals::userMessageManager.HookUserMessage(messageId, callback, mode);
+    globals::clientMessageManager.HookClientMessage(messageId, callback, mode);
 }
 
-static void UnhookUserMessage(ScriptContext& script_context)
+static void UnhookClientMessage(ScriptContext& script_context)
 {
     auto messageId = script_context.GetArgument<int>(0);
     auto callback = script_context.GetArgument<CallbackT>(1);
     auto mode = script_context.GetArgument<HookMode>(2);
 
-    globals::userMessageManager.UnhookUserMessage(messageId, callback, mode);
+    globals::clientMessageManager.UnhookClientMessage(messageId, callback, mode);
 }
 
 static void GetInt32OrUnsignedOrEnum(ScriptContext& script_context)
 {
-    auto message = script_context.GetArgument<UserMessage*>(0);
+    auto message = script_context.GetArgument<ClientMessage*>(0);
     auto fieldName = script_context.GetArgument<const char*>(1);
 
     int returnValue;
@@ -76,7 +76,7 @@ static void GetInt32OrUnsignedOrEnum(ScriptContext& script_context)
 
 static void SetInt32OrUnsignedOrEnum(ScriptContext& script_context)
 {
-    auto message = script_context.GetArgument<UserMessage*>(0);
+    auto message = script_context.GetArgument<ClientMessage*>(0);
     auto fieldName = script_context.GetArgument<const char*>(1);
     auto value = script_context.GetArgument<int>(2);
 
@@ -242,6 +242,42 @@ static void PbReadString(ScriptContext& scriptContext)
     scriptContext.SetResult(returnValue.c_str());
 }
 
+static void PbReadBytes(ScriptContext& scriptContext)
+{
+    GET_MESSAGE_OR_ERR();
+    GET_FIELD_NAME_OR_ERR();
+
+    std::string returnValue;
+
+    auto index = scriptContext.GetArgument<int>(2);
+
+    if (index < 0)
+    {
+        if (!message->GetString(fieldName, returnValue))
+        {
+            scriptContext.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
+                                           message->GetProtobufMessage()->GetTypeName().c_str());
+            return;
+        }
+    }
+    else
+    {
+        if (!message->GetRepeatedString(fieldName, index, returnValue))
+        {
+            scriptContext.ThrowNativeError("Invalid field \"%s\"[%d] for message \"%s\"", fieldName, index,
+                                           message->GetProtobufMessage()->GetTypeName().c_str());
+            return;
+        }
+    }
+
+    int len = returnValue.length();
+    char* lenBuf = reinterpret_cast<char*>(&len);
+    std::string lenStr = std::string(lenBuf, 4);
+    returnValue = lenStr + returnValue;
+
+    scriptContext.SetResult(returnValue.c_str());
+}
+
 static void PbGetRepeatedFieldCount(ScriptContext& scriptContext)
 {
     GET_MESSAGE_OR_ERR();
@@ -396,6 +432,33 @@ static void PbSetString(ScriptContext& scriptContext)
     }
 }
 
+static void PbSetBytes(ScriptContext& scriptContext)
+{
+    GET_MESSAGE_OR_ERR();
+    GET_FIELD_NAME_OR_ERR();
+
+    auto len = *(int*)scriptContext.GetArgument<const char*>(2);
+    auto value = std::string(scriptContext.GetArgument<const char*>(2) + 4, len);
+    auto index = scriptContext.GetArgument<int>(3);
+
+    if (index < 0)
+    {
+        if (!message->SetString(fieldName, value))
+        {
+            scriptContext.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
+                                           message->GetProtobufMessage()->GetTypeName().c_str());
+        }
+    }
+    else
+    {
+        if (!message->SetRepeatedString(fieldName, index, value))
+        {
+            scriptContext.ThrowNativeError("Invalid field \"%s\"[%d] for message \"%s\"", fieldName, index,
+                                           message->GetProtobufMessage()->GetTypeName().c_str());
+        }
+    }
+}
+
 static void PbAddInt(ScriptContext& scriptContext)
 {
     GET_MESSAGE_OR_ERR();
@@ -494,9 +557,9 @@ static void PbRemoveRepeatedFieldValue(ScriptContext& scriptContext)
 //         return;
 //     }
 //
-//     auto subUserMessage = new UserMessage(subMessage);
-//     managed_usermessages.push_back(subUserMessage);
-//     scriptContext.SetResult(subUserMessage);
+//     auto subClientMessage = new ClientMessage(subMessage);
+//     managed_clientmessages.push_back(subClientMessage);
+//     scriptContext.SetResult(subClientMessage);
 // }
 //
 // static void PbReadRepeatedMessage(ScriptContext& scriptContext)
@@ -515,9 +578,9 @@ static void PbRemoveRepeatedFieldValue(ScriptContext& scriptContext)
 //         return;
 //     }
 //
-//     auto subUserMessage = new UserMessage(const_cast<google::protobuf::Message*>(subMessage));
-//     managed_usermessages.push_back(subUserMessage);
-//     scriptContext.SetResult(subUserMessage);
+//     auto subClientMessage = new ClientMessage(const_cast<google::protobuf::Message*>(subMessage));
+//     managed_clientmessages.push_back(subClientMessage);
+//     scriptContext.SetResult(subClientMessage);
 // }
 //
 // static void PbAddMessage(ScriptContext& scriptContext)
@@ -534,9 +597,9 @@ static void PbRemoveRepeatedFieldValue(ScriptContext& scriptContext)
 //         return;
 //     }
 //
-//     auto subUserMessage = new UserMessage(subMessage);
-//     managed_usermessages.push_back(subUserMessage);
-//     scriptContext.SetResult(subUserMessage);
+//     auto subClientMessage = new ClientMessage(subMessage);
+//     managed_clientmessages.push_back(subClientMessage);
+//     scriptContext.SetResult(subClientMessage);
 // }
 
 static void PbGetDebugString(ScriptContext& scriptContext)
@@ -546,55 +609,55 @@ static void PbGetDebugString(ScriptContext& scriptContext)
     scriptContext.SetResult(message->GetDebugString().c_str());
 }
 
-static void UserMessageFindMessageIdByName(ScriptContext& scriptContext)
+static void ClientMessageFindMessageIdByName(ScriptContext& scriptContext)
 {
     auto messageName = scriptContext.GetArgument<const char*>(0);
     auto message = globals::networkMessages->FindNetworkMessagePartial(messageName);
 
     if (message == nullptr)
     {
-        scriptContext.ThrowNativeError("Could not find user message: %s", messageName);
+        scriptContext.ThrowNativeError("Could not find client message: %s", messageName);
         return;
     }
 
     scriptContext.SetResult(message->GetNetMessageInfo()->m_MessageId);
 }
 
-static void UserMessageCreate(ScriptContext& scriptContext)
+static void ClientMessageCreate(ScriptContext& scriptContext)
 {
     auto messageName = scriptContext.GetArgument<const char*>(0);
-    auto message = new UserMessage(messageName);
+    auto message = new ClientMessage(messageName);
 
     if (message->GetSerializableMessage() == nullptr)
     {
-        scriptContext.ThrowNativeError("Failed to create user message: %s", messageName);
+        scriptContext.ThrowNativeError("Failed to create client message: %s", messageName);
         return;
     }
 
-    managed_usermessages.push_back(message);
+    managed_clientmessages.push_back(message);
 
     scriptContext.SetResult(message);
 }
 
-static void UserMessageCreateById(ScriptContext& scriptContext)
+static void ClientMessageCreateById(ScriptContext& scriptContext)
 {
     auto messageId = scriptContext.GetArgument<int>(0);
-    auto message = new UserMessage(messageId);
+    auto message = new ClientMessage(messageId);
 
     if (message->GetSerializableMessage() == nullptr)
     {
-        scriptContext.ThrowNativeError("Failed to create user message: %d", messageId);
+        scriptContext.ThrowNativeError("Failed to create client message: %d", messageId);
         return;
     }
 
-    managed_usermessages.push_back(message);
+    managed_clientmessages.push_back(message);
 
     scriptContext.SetResult(message);
 }
 
-static void UserMessageGetRecipients(ScriptContext& scriptContext)
+static void ClientMessageGetRecipients(ScriptContext& scriptContext)
 {
-    auto message = scriptContext.GetArgument<UserMessage*>(0);
+    auto message = scriptContext.GetArgument<ClientMessage*>(0);
 
     if (message == nullptr)
     {
@@ -605,45 +668,39 @@ static void UserMessageGetRecipients(ScriptContext& scriptContext)
     scriptContext.SetResult(message->GetRecipientMask() ? *message->GetRecipientMask() : 0);
 }
 
-static void UserMessageSetRecipients(ScriptContext& scriptContext)
+static void ClientMessageSetRecipients(ScriptContext& scriptContext)
 {
-    auto message = scriptContext.GetArgument<UserMessage*>(0);
+    auto message = scriptContext.GetArgument<ClientMessage*>(0);
     auto recipientMask = scriptContext.GetArgument<uint64>(1);
 
     *message->GetRecipientMask() = recipientMask;
 }
 
-static void UserMessageSend(ScriptContext& scriptContext)
+static void ClientMessageSend(ScriptContext& scriptContext)
 {
-    auto message = scriptContext.GetArgument<UserMessage*>(0);
+    auto message = scriptContext.GetArgument<ClientMessage*>(0);
 
     CRecipientFilter filter{};
     filter.AddRecipientsFromMask(message->GetRecipientMask() ? *message->GetRecipientMask() : 0);
 
-    // This is for calling send in a UM hook, if calling normal send using the UM instance from the UM hook, it will cause an inifinite loop, then crashing the server
-    static void (IGameEventSystem::*PostEventAbstract)(CSplitScreenSlot, bool, IRecipientFilter*, INetworkMessageInternal*, const CNetMessage*, unsigned long) = &IGameEventSystem::PostEventAbstract;
-
-    if (message->IsManuallyAllocated())
-        globals::gameEventSystem->PostEventAbstract(0, false, &filter, message->GetSerializableMessage(), message->GetProtobufMessage(), 0);
-    else
-        SH_CALL(globals::gameEventSystem, PostEventAbstract)(0, false, &filter, message->GetSerializableMessage(), message->GetProtobufMessage(), 0);
+    globals::gameEventSystem->PostEventAbstract(0, false, &filter, message->GetSerializableMessage(), message->GetProtobufMessage(), 0);
 }
 
-static void UserMessageDelete(ScriptContext& scriptContext)
+static void ClientMessageDelete(ScriptContext& scriptContext)
 {
-    auto message = scriptContext.GetArgument<UserMessage*>(0);
+    auto message = scriptContext.GetArgument<ClientMessage*>(0);
 
-    auto it = std::find(managed_usermessages.begin(), managed_usermessages.end(), message);
-    if (it != managed_usermessages.end())
+    auto it = std::find(managed_clientmessages.begin(), managed_clientmessages.end(), message);
+    if (it != managed_clientmessages.end())
     {
-        managed_usermessages.erase(it);
+        managed_clientmessages.erase(it);
         delete message;
     }
 }
 
-static void UserMessageGetMessageId(ScriptContext& scriptContext)
+static void ClientMessageGetMessageId(ScriptContext& scriptContext)
 {
-    auto message = scriptContext.GetArgument<UserMessage*>(0);
+    auto message = scriptContext.GetArgument<ClientMessage*>(0);
 
     if (message == nullptr || message->GetSerializableMessage() == nullptr)
     {
@@ -654,9 +711,9 @@ static void UserMessageGetMessageId(ScriptContext& scriptContext)
     scriptContext.SetResult(message->GetMessageID());
 }
 
-static void UserMessageGetMessageName(ScriptContext& scriptContext)
+static void ClientMessageGetMessageName(ScriptContext& scriptContext)
 {
-    auto message = scriptContext.GetArgument<UserMessage*>(0);
+    auto message = scriptContext.GetArgument<ClientMessage*>(0);
 
     if (message == nullptr || message->GetSerializableMessage() == nullptr)
     {
@@ -667,9 +724,22 @@ static void UserMessageGetMessageName(ScriptContext& scriptContext)
     scriptContext.SetResult(message->GetSerializableMessage()->GetUnscopedName());
 }
 
-static void UserMessageGetMessageTypeName(ScriptContext& scriptContext)
+static void ClientMessageGetMessageSender(ScriptContext& scriptContext)
 {
-    auto message = scriptContext.GetArgument<UserMessage*>(0);
+    auto message = scriptContext.GetArgument<ClientMessage*>(0);
+
+    if (message == nullptr || message->GetSerializableMessage() == nullptr)
+    {
+        scriptContext.ThrowNativeError("Invalid message");
+        return;
+    }
+
+    scriptContext.SetResult(message->GetSender());
+}
+
+static void ClientMessageGetMessageTypeName(ScriptContext& scriptContext)
+{
+    auto message = scriptContext.GetArgument<ClientMessage*>(0);
 
     if (message == nullptr || message->GetProtobufMessage() == nullptr)
     {
@@ -680,40 +750,43 @@ static void UserMessageGetMessageTypeName(ScriptContext& scriptContext)
     scriptContext.SetResult(message->GetProtobufMessage()->GetTypeName().c_str());
 }
 
-REGISTER_NATIVES(usermessages, {
-    ScriptEngine::RegisterNativeHandler("HOOK_USERMESSAGE", HookUserMessage);
-    ScriptEngine::RegisterNativeHandler("UNHOOK_USERMESSAGE", UnhookUserMessage);
-    ScriptEngine::RegisterNativeHandler("UM_PB_HASFIELD", PbHasField);
-    ScriptEngine::RegisterNativeHandler("UM_PB_READINT", PbReadInt);
-    ScriptEngine::RegisterNativeHandler("UM_PB_READINT64", PbReadInt64);
-    ScriptEngine::RegisterNativeHandler("UM_PB_READFLOAT", PbReadFloat);
-    ScriptEngine::RegisterNativeHandler("UM_PB_READBOOL", PbReadBool);
-    ScriptEngine::RegisterNativeHandler("UM_PB_READSTRING", PbReadString);
-    ScriptEngine::RegisterNativeHandler("UM_PB_GETREPEATEDFIELDCOUNT", PbGetRepeatedFieldCount);
-    ScriptEngine::RegisterNativeHandler("UM_PB_SETINT", PbSetInt);
-    ScriptEngine::RegisterNativeHandler("UM_PB_SETINT64", PbSetInt64);
-    ScriptEngine::RegisterNativeHandler("UM_PB_SETFLOAT", PbSetFloat);
-    ScriptEngine::RegisterNativeHandler("UM_PB_SETBOOL", PbSetBool);
-    ScriptEngine::RegisterNativeHandler("UM_PB_SETSTRING", PbSetString);
-    ScriptEngine::RegisterNativeHandler("UM_PB_ADDINT", PbAddInt);
-    ScriptEngine::RegisterNativeHandler("UM_PB_ADDINT64", PbAddInt64);
-    ScriptEngine::RegisterNativeHandler("UM_PB_ADDFLOAT", PbAddFloat);
-    ScriptEngine::RegisterNativeHandler("UM_PB_ADDBOOL", PbAddBool);
-    ScriptEngine::RegisterNativeHandler("UM_PB_ADDSTRING", PbAddString);
-    ScriptEngine::RegisterNativeHandler("UM_PB_REMOVEREPEATEDFIELDVALUE", PbRemoveRepeatedFieldValue);
-    //    ScriptEngine::RegisterNativeHandler("UM_PB_READMESSAGE", PbReadMessage);
-    //    ScriptEngine::RegisterNativeHandler("UM_PB_READREPEATEDMESSAGE", PbReadRepeatedMessage);
-    //    ScriptEngine::RegisterNativeHandler("UM_PB_ADDMESSAGE", PbAddMessage);
-    ScriptEngine::RegisterNativeHandler("UM_PB_GETDEBUGSTRING", PbGetDebugString);
-    ScriptEngine::RegisterNativeHandler("USERMESSAGE_FINDMESSAGEIDBYNAME", UserMessageFindMessageIdByName);
-    ScriptEngine::RegisterNativeHandler("USERMESSAGE_CREATE", UserMessageCreate);
-    ScriptEngine::RegisterNativeHandler("USERMESSAGE_CREATEBYID", UserMessageCreateById);
-    ScriptEngine::RegisterNativeHandler("USERMESSAGE_GETRECIPIENTS", UserMessageGetRecipients);
-    ScriptEngine::RegisterNativeHandler("USERMESSAGE_SETRECIPIENTS", UserMessageSetRecipients);
-    ScriptEngine::RegisterNativeHandler("USERMESSAGE_SEND", UserMessageSend);
-    ScriptEngine::RegisterNativeHandler("USERMESSAGE_DELETE", UserMessageDelete);
-    ScriptEngine::RegisterNativeHandler("USERMESSAGE_GETID", UserMessageGetMessageId);
-    ScriptEngine::RegisterNativeHandler("USERMESSAGE_GETNAME", UserMessageGetMessageName);
-    ScriptEngine::RegisterNativeHandler("USERMESSAGE_GETTYPE", UserMessageGetMessageTypeName);
+REGISTER_NATIVES(clientmessages, {
+    ScriptEngine::RegisterNativeHandler("HOOK_CLIENTMESSAGE", HookClientMessage);
+    ScriptEngine::RegisterNativeHandler("UNHOOK_CLIENTMESSAGE", UnhookClientMessage);
+    ScriptEngine::RegisterNativeHandler("CM_PB_HASFIELD", PbHasField);
+    ScriptEngine::RegisterNativeHandler("CM_PB_READINT", PbReadInt);
+    ScriptEngine::RegisterNativeHandler("CM_PB_READINT64", PbReadInt64);
+    ScriptEngine::RegisterNativeHandler("CM_PB_READFLOAT", PbReadFloat);
+    ScriptEngine::RegisterNativeHandler("CM_PB_READBOOL", PbReadBool);
+    ScriptEngine::RegisterNativeHandler("CM_PB_READSTRING", PbReadString);
+    ScriptEngine::RegisterNativeHandler("CM_PB_READBYTES", PbReadBytes);
+    ScriptEngine::RegisterNativeHandler("CM_PB_GETREPEATEDFIELDCOUNT", PbGetRepeatedFieldCount);
+    ScriptEngine::RegisterNativeHandler("CM_PB_SETINT", PbSetInt);
+    ScriptEngine::RegisterNativeHandler("CM_PB_SETINT64", PbSetInt64);
+    ScriptEngine::RegisterNativeHandler("CM_PB_SETFLOAT", PbSetFloat);
+    ScriptEngine::RegisterNativeHandler("CM_PB_SETBOOL", PbSetBool);
+    ScriptEngine::RegisterNativeHandler("CM_PB_SETSTRING", PbSetString);
+    ScriptEngine::RegisterNativeHandler("CM_PB_SETBYTES", PbSetBytes);
+    ScriptEngine::RegisterNativeHandler("CM_PB_ADDINT", PbAddInt);
+    ScriptEngine::RegisterNativeHandler("CM_PB_ADDINT64", PbAddInt64);
+    ScriptEngine::RegisterNativeHandler("CM_PB_ADDFLOAT", PbAddFloat);
+    ScriptEngine::RegisterNativeHandler("CM_PB_ADDBOOL", PbAddBool);
+    ScriptEngine::RegisterNativeHandler("CM_PB_ADDSTRING", PbAddString);
+    ScriptEngine::RegisterNativeHandler("CM_PB_REMOVEREPEATEDFIELDVALUE", PbRemoveRepeatedFieldValue);
+    //    ScriptEngine::RegisterNativeHandler("CM_PB_READMESSAGE", PbReadMessage);
+    //    ScriptEngine::RegisterNativeHandler("CM_PB_READREPEATEDMESSAGE", PbReadRepeatedMessage);
+    //    ScriptEngine::RegisterNativeHandler("CM_PB_ADDMESSAGE", PbAddMessage);
+    ScriptEngine::RegisterNativeHandler("CM_PB_GETDEBUGSTRING", PbGetDebugString);
+    ScriptEngine::RegisterNativeHandler("CLIENTMESSAGE_FINDMESSAGEIDBYNAME", ClientMessageFindMessageIdByName);
+    ScriptEngine::RegisterNativeHandler("CLIENTMESSAGE_CREATE", ClientMessageCreate);
+    ScriptEngine::RegisterNativeHandler("CLIENTMESSAGE_CREATEBYID", ClientMessageCreateById);
+    ScriptEngine::RegisterNativeHandler("CLIENTMESSAGE_GETRECIPIENTS", ClientMessageGetRecipients);
+    ScriptEngine::RegisterNativeHandler("CLIENTMESSAGE_SETRECIPIENTS", ClientMessageSetRecipients);
+    ScriptEngine::RegisterNativeHandler("CLIENTMESSAGE_SEND", ClientMessageSend);
+    ScriptEngine::RegisterNativeHandler("CLIENTMESSAGE_DELETE", ClientMessageDelete);
+    ScriptEngine::RegisterNativeHandler("CLIENTMESSAGE_GETID", ClientMessageGetMessageId);
+    ScriptEngine::RegisterNativeHandler("CLIENTMESSAGE_GETNAME", ClientMessageGetMessageName);
+    ScriptEngine::RegisterNativeHandler("CLIENTMESSAGE_GETSENDER", ClientMessageGetMessageSender);
+    ScriptEngine::RegisterNativeHandler("CLIENTMESSAGE_GETTYPE", ClientMessageGetMessageTypeName);
 })
 } // namespace counterstrikesharp

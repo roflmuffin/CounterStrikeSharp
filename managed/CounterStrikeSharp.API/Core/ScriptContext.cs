@@ -210,6 +210,12 @@ namespace CounterStrikeSharp.API.Core
 
 				return;
 			}
+            else if (arg is byte[])
+            {
+                PushBytes(context, (byte[])arg);
+
+                return;
+            }
 			else if (arg is InputArgument ia)
 			{
 				Push(context, ia.Value);
@@ -261,6 +267,12 @@ namespace CounterStrikeSharp.API.Core
             {
                 var str = (string)Convert.ChangeType(arg, typeof(string));
                 SetResultString(context, str);
+
+                return;
+            }
+            if (arg is byte[])
+            {
+                SetResultBytes(context, (byte[])arg);
 
                 return;
             }
@@ -326,6 +338,32 @@ namespace CounterStrikeSharp.API.Core
 		}
 
         [SecurityCritical]
+        internal unsafe void PushBytes(fxScriptContext* cxt, byte[] bytes)
+        {
+            var ptr = IntPtr.Zero;
+
+            if (bytes != null)
+            {
+                ptr = Marshal.AllocHGlobal(bytes.Length + 4);
+
+                byte[] lenBytes = BitConverter.GetBytes(bytes.Length);
+
+                Marshal.Copy(lenBytes, 0, ptr, 4);
+
+                Marshal.Copy(bytes, 0, ptr + 4, bytes.Length);
+
+                ms_finalizers.Enqueue(() => Free(ptr));
+            }
+
+            unsafe
+            {
+                *(IntPtr*)(&cxt->functionData[8 * cxt->numArguments]) = ptr;
+            }
+
+            cxt->numArguments++;
+        }
+
+        [SecurityCritical]
         internal unsafe void SetResultString(fxScriptContext* cxt, string str)
         {
             var ptr = IntPtr.Zero;
@@ -348,7 +386,27 @@ namespace CounterStrikeSharp.API.Core
             }
         }
 
-		[SecuritySafeCritical]
+        [SecurityCritical]
+        internal unsafe void SetResultBytes(fxScriptContext* cxt, byte[] bytes)
+        {
+            var ptr = IntPtr.Zero;
+
+            if (bytes != null)
+            {
+                ptr = Marshal.AllocHGlobal(bytes.Length);
+
+                Marshal.Copy(bytes, 0, ptr, bytes.Length);
+
+                ms_finalizers.Enqueue(() => Free(ptr));
+            }
+
+            unsafe
+            {
+                *(IntPtr*)(&cxt->result[8]) = ptr;
+            }
+        }
+
+        [SecuritySafeCritical]
 		private void Free(IntPtr ptr)
 		{
 			Marshal.FreeHGlobal(ptr);
@@ -443,7 +501,37 @@ namespace CounterStrikeSharp.API.Core
 				return Encoding.UTF8.GetString(buffer);
 			}
 
-			if (typeof(NativeObject).IsAssignableFrom(type))
+            if (type == typeof(byte[]))
+            {
+                var nativeLen = *(IntPtr*)&ptr[0];
+
+                if (nativeLen == IntPtr.Zero)
+                {
+                    return null;
+                }
+
+                var dataLen = Marshal.ReadInt32(nativeLen);
+
+                if (dataLen == 0)
+                {
+                    return null;
+                }
+
+                var nativeData = nativeLen + 4;
+
+                var len = 0;
+                while(len < dataLen)
+                {
+                    Marshal.ReadByte(nativeData, len);
+                    ++len;
+                }
+
+                var buffer = new byte[len];
+                Marshal.Copy(nativeData, buffer, 0, buffer.Length);
+                return buffer;
+            }
+
+            if (typeof(NativeObject).IsAssignableFrom(type))
 			{
 				var pointer = (IntPtr)GetResult(typeof(IntPtr), ptr);
 				return Activator.CreateInstance(type, pointer);

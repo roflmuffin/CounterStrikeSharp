@@ -31,6 +31,7 @@ using CounterStrikeSharp.API.Modules.Config;
 using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.UserMessages;
+using CounterStrikeSharp.API.Modules.ClientMessages;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
@@ -538,12 +539,30 @@ namespace CounterStrikeSharp.API.Core
             NativeAPI.HookUsermessage(messageId, subscriber.GetInputArgument(), mode);
             Handlers[handler] = subscriber;
         }
-        
+
         public void UnhookUserMessage(int messageId, UserMessage.UserMessageHandler handler, HookMode mode = HookMode.Pre)
         {
             if (!Handlers.TryGetValue(handler, out var subscriber)) return;
 
             NativeAPI.UnhookUsermessage(messageId, subscriber.GetInputArgument(), mode);
+            FunctionReference.Remove(subscriber.GetReferenceIdentifier());
+            Handlers.Remove(handler);
+        }
+
+        public void HookClientMessage(int messageId, ClientMessage.ClientMessageHandler handler, HookMode mode = HookMode.Pre)
+        {
+            var subscriber = new CallbackSubscriber(handler, handler,
+                () => UnhookClientMessage(messageId, handler));
+
+            NativeAPI.HookClientmessage(messageId, subscriber.GetInputArgument(), mode);
+            Handlers[handler] = subscriber;
+        }
+
+        public void UnhookClientMessage(int messageId, ClientMessage.ClientMessageHandler handler, HookMode mode = HookMode.Pre)
+        {
+            if (!Handlers.TryGetValue(handler, out var subscriber)) return;
+
+            NativeAPI.UnhookClientmessage(messageId, subscriber.GetInputArgument(), mode);
             FunctionReference.Remove(subscriber.GetReferenceIdentifier());
             Handlers.Remove(handler);
         }
