@@ -271,7 +271,7 @@ CModule::CModule(std::string_view path, dl_phdr_info* info)
     if (!m_hModule)
         CSSHARP_CORE_ERROR("Could not find {}", m_pszPath);
 
-    if (int e = GetModuleInformation(m_hModule, &m_base, &m_size, m_sections))
+    if (int e = GetModuleInformation(m_hModule, &m_base, &m_size, m_vecSections))
     	CSSHARP_CORE_ERROR("Failed to get module info for {}, error {}", m_pszPath, e);
 
     m_bInitialized = true;
@@ -583,11 +583,11 @@ void* CModule::FindSymbol(const std::string& name)
     return nullptr;
 }
 
-Section* CModule::GetSection(const std::string_view name)
+Sections* CModule::GetSection(const std::string_view name)
 {
-    for (auto& section : m_sections)
+    for (auto& section : m_vecSections)
     {
-        if (section.m_szName == name) return &section;
+        if (section.name == name) return &section;
     }
 
     return nullptr;
@@ -603,12 +603,12 @@ void CModule::InitializeSections()
 
     for (int i = 0; i < pNtHeader->FileHeader.NumberOfSections; i++)
     {
-        Section section;
-        section.m_szName = (char*)pSectionHeader[i].Name;
-        section.m_pBase = (void*)((uint8_t*)m_base + pSectionHeader[i].VirtualAddress);
-        section.m_iSize = pSectionHeader[i].SizeOfRawData;
+        Sections section;
+        section.name = (char*)pSectionHeader[i].Name;
+        section.pBase = (void*)((uint8_t*)m_base + pSectionHeader[i].VirtualAddress);
+        section.size = pSectionHeader[i].SizeOfRawData;
 
-        m_sections.push_back(std::move(section));
+        m_vecSections.push_back(std::move(section));
     }
 }
 #endif
@@ -627,7 +627,7 @@ void* CModule::FindVirtualTable(const std::string& name, int32_t offset)
 
     std::string decoratedTableName = ".?AV" + name + "@@";
 
-    SignatureIterator sigIt(runTimeData->m_pBase, runTimeData->m_iSize, (const byte*)decoratedTableName.c_str(),
+    SignatureIterator sigIt(runTimeData->pBase, runTimeData->size, (const byte*)decoratedTableName.c_str(),
                             decoratedTableName.size() + 1);
     void* typeDescriptor = sigIt.FindNext(false);
 
@@ -643,7 +643,7 @@ void* CModule::FindVirtualTable(const std::string& name, int32_t offset)
 
     CSSHARP_CORE_TRACE("RTTI Type Descriptor RVA: 0x{}", rttiTDRva);
 
-    SignatureIterator sigIt2(readOnlyData->m_pBase, readOnlyData->m_iSize, (const byte*)&rttiTDRva, sizeof(uint32_t));
+    SignatureIterator sigIt2(readOnlyData->pBase, readOnlyData->size, (const byte*)&rttiTDRva, sizeof(uint32_t));
 
     while (void* completeObjectLocator = sigIt2.FindNext(false))
     {
@@ -654,7 +654,7 @@ void* CModule::FindVirtualTable(const std::string& name, int32_t offset)
         // check RTTI Complete Object Locator vtable offset
         if (*(int32_t*)((uintptr_t)completeObjectLocator - 0x8) != offset) continue;
 
-        SignatureIterator sigIt3(readOnlyData->m_pBase, readOnlyData->m_iSize, (const byte*)&completeObjectLocatorHeader, sizeof(void*));
+        SignatureIterator sigIt3(readOnlyData->pBase, readOnlyData->size, (const byte*)&completeObjectLocatorHeader, sizeof(void*));
         void* vtable = sigIt3.FindNext(false);
 
         if (!vtable)
@@ -683,7 +683,7 @@ void* CModule::FindVirtualTable(const std::string& name, int32_t offset)
 
     std::string decoratedTableName = std::to_string(name.length()) + name;
 
-    SignatureIterator sigIt(readOnlyData->m_pBase, readOnlyData->m_iSize, (const byte*)decoratedTableName.c_str(),
+    SignatureIterator sigIt(readOnlyData->pBase, readOnlyData->size, (const byte*)decoratedTableName.c_str(),
                             decoratedTableName.size() + 1);
     void* classNameString = sigIt.FindNext(false);
 
@@ -693,7 +693,7 @@ void* CModule::FindVirtualTable(const std::string& name, int32_t offset)
         return nullptr;
     }
 
-    SignatureIterator sigIt2(readOnlyRelocations->m_pBase, readOnlyRelocations->m_iSize, (const byte*)&classNameString, sizeof(void*));
+    SignatureIterator sigIt2(readOnlyRelocations->pBase, readOnlyRelocations->size, (const byte*)&classNameString, sizeof(void*));
     void* typeName = sigIt2.FindNext(false);
 
     if (!typeName)
@@ -709,7 +709,7 @@ void* CModule::FindVirtualTable(const std::string& name, int32_t offset)
         auto section = GetSection(sectionName);
         if (!section) continue;
 
-        SignatureIterator sigIt3(section->m_pBase, section->m_iSize, (const byte*)&typeInfo, sizeof(void*));
+        SignatureIterator sigIt3(section->pBase, section->size, (const byte*)&typeInfo, sizeof(void*));
 
         while (void* vtable = sigIt3.FindNext(false))
         {
@@ -723,7 +723,7 @@ void* CModule::FindVirtualTable(const std::string& name, int32_t offset)
 #endif
 
 #ifndef _WIN32
-int CModule::GetModuleInformation(HINSTANCE hModule, void** base, size_t* length, std::vector<Section>& sections)
+int CModule::GetModuleInformation(HINSTANCE hModule, void** base, size_t* length, std::vector<Sections>& sections)
 {
 	link_map* lmap;
 	if (dlinfo(hModule, RTLD_DI_LINKMAP, &lmap) != 0)
@@ -766,10 +766,10 @@ int CModule::GetModuleInformation(HINSTANCE hModule, void** base, size_t* length
 				if (*(strTab + shdr->sh_name) == '\0')
 					continue;
 
-				Section section;
-				section.m_szName = strTab + shdr->sh_name;
-				section.m_pBase = reinterpret_cast<void*>(lmap->l_addr + shdr->sh_addr);
-				section.m_iSize = shdr->sh_size;
+				Sections section;
+				section.name = strTab + shdr->sh_name;
+				section.pBase = reinterpret_cast<void*>(lmap->l_addr + shdr->sh_addr);
+				section.size = shdr->sh_size;
 				sections.push_back(section);
 			}
 

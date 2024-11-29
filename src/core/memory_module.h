@@ -50,11 +50,11 @@ struct Segments
     std::vector<std::uint8_t> bytes{};
 };
 
-struct Section
+struct Sections
 {
-	std::string m_szName;
-	void* m_pBase;
-	size_t m_iSize;
+	std::string name;
+	void* pBase;
+	size_t size;
 };
 
 class SignatureIterator
@@ -117,7 +117,7 @@ class CModule
     HINSTANCE m_hModule;
     void* m_base{};
     size_t m_size{};
-    std::vector<Section> m_sections;
+    std::vector<Sections> m_vecSections{};
 
   private:
     bool m_bInitialized{};
@@ -143,10 +143,10 @@ class CModule
  #endif
 
 #ifndef _WIN32
-int GetModuleInformation(HINSTANCE module, void** base, size_t* length, std::vector<Section>& sections);
+int GetModuleInformation(HINSTANCE module, void** base, size_t* length, std::vector<Sections>& sections);
 #endif
 
-    Section* GetSection(const std::string_view name);
+    Sections* GetSection(const std::string_view name);
 };
 
 } // namespace counterstrikesharp::modules
