@@ -393,9 +393,13 @@ namespace CounterStrikeSharp.API.Core
 
             if (bytes != null)
             {
-                ptr = Marshal.AllocHGlobal(bytes.Length);
+				ptr = Marshal.AllocHGlobal(bytes.Length + 4);
 
-                Marshal.Copy(bytes, 0, ptr, bytes.Length);
+                byte[] lenBytes = BitConverter.GetBytes(bytes.Length);
+
+                Marshal.Copy(lenBytes, 0, ptr, 4);
+
+                Marshal.Copy(bytes, 0, ptr + 4, bytes.Length);
 
                 ms_finalizers.Enqueue(() => Free(ptr));
             }
