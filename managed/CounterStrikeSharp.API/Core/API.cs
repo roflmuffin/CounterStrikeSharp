@@ -1636,7 +1636,7 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
-		public static void HookClientmessage(int messageid, InputArgument callback, HookMode mode)
+		public static void HookClientMessage(int messageid, InputArgument callback, HookMode mode)
         {
             lock (ScriptContext.GlobalScriptContext.Lock)
             {
@@ -1650,7 +1650,7 @@ namespace CounterStrikeSharp.API.Core
             }
         }
 
-        public static void UnhookClientmessage(int messageid, InputArgument callback, HookMode mode)
+        public static void UnhookClientMessage(int messageid, InputArgument callback, HookMode mode)
         {
             lock (ScriptContext.GlobalScriptContext.Lock)
             {
@@ -1969,7 +1969,7 @@ namespace CounterStrikeSharp.API.Core
             }
         }
 
-        public static ulong ClientmessageGetrecipients(ClientMessage message){
+        public static ulong ClientMessageGetrecipients(ClientMessage message){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
 			ScriptContext.GlobalScriptContext.Push(message);
@@ -1980,7 +1980,7 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
-        public static void ClientmessageSetrecipients(ClientMessage message, ulong recipients){
+        public static void ClientMessageSetrecipients(ClientMessage message, ulong recipients){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
 			ScriptContext.GlobalScriptContext.Push(message);
@@ -1991,7 +1991,7 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
-        public static int ClientmessageFindmessageidbyname(string name)
+        public static int ClientMessageFindmessageidbyname(string name)
         {
             lock (ScriptContext.GlobalScriptContext.Lock)
             {
@@ -2004,7 +2004,7 @@ namespace CounterStrikeSharp.API.Core
             }
         }
 
-        public static IntPtr ClientmessageCreate(string name)
+        public static IntPtr ClientMessageCreate(string name)
         {
             lock (ScriptContext.GlobalScriptContext.Lock)
             {
@@ -2017,7 +2017,7 @@ namespace CounterStrikeSharp.API.Core
             }
         }
 
-        public static IntPtr ClientmessageCreatebyid(int id)
+        public static IntPtr ClientMessageCreatebyid(int id)
         {
             lock (ScriptContext.GlobalScriptContext.Lock)
             {
@@ -2030,7 +2030,7 @@ namespace CounterStrikeSharp.API.Core
             }
         }
 
-        public static void ClientmessageSend(ClientMessage message)
+        public static void ClientMessageSend(ClientMessage message)
         {
             lock (ScriptContext.GlobalScriptContext.Lock)
             {
@@ -2042,7 +2042,7 @@ namespace CounterStrikeSharp.API.Core
             }
         }
 
-        public static void ClientmessageDelete(ClientMessage message)
+        public static void ClientMessageDelete(ClientMessage message)
         {
             lock (ScriptContext.GlobalScriptContext.Lock)
             {
@@ -2054,7 +2054,7 @@ namespace CounterStrikeSharp.API.Core
             }
         }
 
-        public static int ClientmessageGetid(ClientMessage message)
+        public static int ClientMessageGetid(ClientMessage message)
         {
             lock (ScriptContext.GlobalScriptContext.Lock)
             {
@@ -2067,7 +2067,7 @@ namespace CounterStrikeSharp.API.Core
             }
         }
 
-        public static string ClientmessageGetname(ClientMessage message)
+        public static string ClientMessageGetname(ClientMessage message)
         {
             lock (ScriptContext.GlobalScriptContext.Lock)
             {
@@ -2080,7 +2080,7 @@ namespace CounterStrikeSharp.API.Core
             }
         }
 
-        public static int ClientmessageGetsender(ClientMessage message)
+        public static int ClientMessageGetsender(ClientMessage message)
         {
             lock (ScriptContext.GlobalScriptContext.Lock)
             {
@@ -2093,7 +2093,7 @@ namespace CounterStrikeSharp.API.Core
             }
         }
 
-        public static string ClientmessageGettype(ClientMessage message)
+        public static string ClientMessageGettype(ClientMessage message)
         {
             lock (ScriptContext.GlobalScriptContext.Lock)
             {

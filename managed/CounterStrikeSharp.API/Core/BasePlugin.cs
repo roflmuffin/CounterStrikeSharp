@@ -554,7 +554,7 @@ namespace CounterStrikeSharp.API.Core
             var subscriber = new CallbackSubscriber(handler, handler,
                 () => UnhookClientMessage(messageId, handler));
 
-            NativeAPI.HookClientmessage(messageId, subscriber.GetInputArgument(), mode);
+            NativeAPI.HookClientMessage(messageId, subscriber.GetInputArgument(), mode);
             Handlers[handler] = subscriber;
         }
 
@@ -562,7 +562,7 @@ namespace CounterStrikeSharp.API.Core
         {
             if (!Handlers.TryGetValue(handler, out var subscriber)) return;
 
-            NativeAPI.UnhookClientmessage(messageId, subscriber.GetInputArgument(), mode);
+            NativeAPI.UnhookClientMessage(messageId, subscriber.GetInputArgument(), mode);
             FunctionReference.Remove(subscriber.GetReferenceIdentifier());
             Handlers.Remove(handler);
         }

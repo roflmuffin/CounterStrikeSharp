@@ -11,8 +11,8 @@ public class ClientMessage : NativeObject, IDisposable
 
     public ClientMessage(IntPtr pointer) : base(pointer)
     {
-        Recipients = new RecipientFilter(NativeAPI.ClientmessageGetrecipients(this));
-        Recipients.CollectionChanged = () => NativeAPI.ClientmessageSetrecipients(this, Recipients.GetRecipientMask());
+        Recipients = new RecipientFilter(NativeAPI.ClientMessageGetrecipients(this));
+        Recipients.CollectionChanged = () => NativeAPI.ClientMessageSetrecipients(this, Recipients.GetRecipientMask());
     }
 
     /// <summary>
@@ -20,14 +20,14 @@ public class ClientMessage : NativeObject, IDisposable
     /// </summary>
     /// <param name="name"></param>
     /// <throws>if the name is not a valid network message name</throws>
-    public static ClientMessage FromPartialName(string name) => new(NativeAPI.ClientmessageCreate(name));
+    public static ClientMessage FromPartialName(string name) => new(NativeAPI.ClientMessageCreate(name));
 
     /// <summary>
     /// Creates a new client message with a given network message ID.
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    public static ClientMessage FromId(int id) => new(NativeAPI.ClientmessageCreatebyid(id));
+    public static ClientMessage FromId(int id) => new(NativeAPI.ClientMessageCreatebyid(id));
 
     /// <summary>
     /// Finds a network message ID by name.
@@ -36,7 +36,7 @@ public class ClientMessage : NativeObject, IDisposable
     /// Avoid calling this method from <see cref="IPlugin.Load"/>
     /// </remarks>
     /// </summary>
-    public static int FindIdByName(string name) => NativeAPI.ClientmessageFindmessageidbyname(name);
+    public static int FindIdByName(string name) => NativeAPI.ClientMessageFindmessageidbyname(name);
 
     public bool HasField(string fieldName) => NativeAPI.PbHasfield(this, fieldName);
 
@@ -82,7 +82,7 @@ public class ClientMessage : NativeObject, IDisposable
     // public ClientMessage ReadRepeatedMessage(string fieldName, int index ) => NativeAPI.PbReadrepeatedmessage(this, fieldName, index);
     // public ClientMessage AddMessage(string fieldName) => NativeAPI.PbAddmessage(this, fieldName);
 
-    public void Send() => NativeAPI.ClientmessageSend(this);
+    public void Send() => NativeAPI.ClientMessageSend(this);
 
     public void Send(RecipientFilter recipientFilter)
     {
@@ -94,25 +94,25 @@ public class ClientMessage : NativeObject, IDisposable
     /// Returns the network message name of this client message.
     /// <example>CMsgTEFireBullets [452]</example>
     /// </summary>
-    public string Name => NativeAPI.ClientmessageGetname(this);
+    public string Name => NativeAPI.ClientMessageGetname(this);
 
     /// <summary>
     /// Returns the network message ID of this client message.
     /// <example>452</example>
     /// </summary>
-    public int Id => NativeAPI.ClientmessageGetid(this);
+    public int Id => NativeAPI.ClientMessageGetid(this);
 
     /// <summary>
     /// Returns the network message sender of this client message.
     /// <example>0</example>
     /// </summary>
-    public int Sender => NativeAPI.ClientmessageGetsender(this);
+    public int Sender => NativeAPI.ClientMessageGetsender(this);
 
     /// <summary>
     /// Returns the protobuf message type of this client message.
     /// <example>CMsgTEFireBullets</example>
     /// </summary>
-    public string Type => NativeAPI.ClientmessageGettype(this);
+    public string Type => NativeAPI.ClientMessageGettype(this);
 
     /// <summary>
     /// Returns the debug string of this client message, as defined by protobuf.  
@@ -125,13 +125,13 @@ public class ClientMessage : NativeObject, IDisposable
         set
         {
             _recipients = value;
-            NativeAPI.ClientmessageSetrecipients(this, _recipients.GetRecipientMask());
+            NativeAPI.ClientMessageSetrecipients(this, _recipients.GetRecipientMask());
         }
     }
 	
     private void ReleaseUnmanagedResources()
     {
-        Server.NextFrame(() => { NativeAPI.ClientmessageDelete(this); });
+        Server.NextFrame(() => { NativeAPI.ClientMessageDelete(this); });
     }
 
     public void Dispose()

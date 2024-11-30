@@ -26,7 +26,7 @@ SH_DECL_MANUALHOOK2(FilterMessage, 0, 0, 0, bool, const CNetMessage*, INetChanne
         void* serverSideClientVTable = reinterpret_cast<void*>(modules::engine->FindVirtualTable(name, globals::gameConfig->GetOffset(name)));
         if (serverSideClientVTable == nullptr)
         {
-            CSSHARP_CORE_ERROR("Failed to find signature for \'%s\'", name);
+            CSSHARP_CORE_ERROR("Failed to find vtable for \'%s\'", name);
             return;
         }
 
