@@ -88,6 +88,7 @@ public class AdminTests
         AdminManager.AddPlayerToGroup(new SteamID("STEAM_0:1:3"), "#css/root");
         var adminData = AdminManager.GetPlayerAdminData(new SteamID("STEAM_0:1:3"));
         Assert.NotNull(adminData);
+        Assert.True(adminData.Groups.Any());
         Assert.Equal("#css/root", adminData.Groups.Single());
     }
     
@@ -134,6 +135,78 @@ public class AdminTests
     }
 
     [Fact]
+    public void ShouldRequiresPermissionsPass()
+    {
+        Assert.False(AdminManager.PlayerHasPermissions((SteamID)76561197960265738, "@css/ban"));
+        AdminManager.AddPlayerPermissions((SteamID)76561197960265738, "@css/ban");
+        Assert.True(AdminManager.PlayerHasPermissions((SteamID)76561197960265738, "@css/ban"));
+
+        var requirePerms = new RequiresPermissions("@css/ban");
+        Assert.NotNull(requirePerms);
+        Assert.True(requirePerms.CanExecuteCommand((SteamID)76561197960265738));
+    }
+
+    [Fact]
+    public void ShouldRequiresPermissionsOrPassSameDomain()
+    {
+        Assert.False(AdminManager.PlayerHasPermissions((SteamID)76561197960265739, "@css/ban"));
+        AdminManager.AddPlayerPermissions((SteamID)76561197960265739, "@css/ban");
+        Assert.True(AdminManager.PlayerHasPermissions((SteamID)76561197960265739, "@css/ban"));
+
+        var requirePerms = new RequiresPermissionsOr("@css/ban", "@css/kick");
+        Assert.NotNull(requirePerms);
+        Assert.True(requirePerms.CanExecuteCommand((SteamID)76561197960265739));
+    }
+
+    [Fact]
+    public void ShouldRequiresPermissionsOrPassDifferentDomains()
+    {
+        Assert.False(AdminManager.PlayerHasPermissions((SteamID)76561197960265740, "@css/ban"));
+        AdminManager.AddPlayerPermissions((SteamID)76561197960265740, "@css/ban");
+        Assert.True(AdminManager.PlayerHasPermissions((SteamID)76561197960265740, "@css/ban"));
+
+        var requirePerms = new RequiresPermissionsOr("@css/ban", "@domain2/flag");
+        Assert.NotNull(requirePerms);
+        Assert.True(requirePerms.CanExecuteCommand((SteamID)76561197960265740));
+    }
+
+    [Fact]
+    public void ShouldRequiresPermissionsCheckFail()
+    {
+        Assert.False(AdminManager.PlayerHasPermissions((SteamID)76561197960265735, "@css/ban"));
+        AdminManager.AddPlayerPermissions((SteamID)76561197960265735, "@css/ban");
+        Assert.True(AdminManager.PlayerHasPermissions((SteamID)76561197960265735, "@css/ban"));
+
+        var requirePerms = new RequiresPermissions("@css/kick");
+        Assert.NotNull(requirePerms);
+        Assert.False(requirePerms.CanExecuteCommand((SteamID)76561197960265735));
+    }
+
+    [Fact]
+    public void ShouldRequiresPermissionsOrCheckFailSameDomain()
+    {
+        Assert.False(AdminManager.PlayerHasPermissions((SteamID)76561197960265736, "@css/ban"));
+        AdminManager.AddPlayerPermissions((SteamID)76561197960265736, "@css/ban");
+        Assert.True(AdminManager.PlayerHasPermissions((SteamID)76561197960265736, "@css/ban"));
+
+        var requirePerms = new RequiresPermissionsOr("@css/kick", "@css/vote");
+        Assert.NotNull(requirePerms);
+        Assert.False(requirePerms.CanExecuteCommand((SteamID)76561197960265736));
+    }
+
+    [Fact]
+    public void ShouldRequiresPermissionsOrCheckFailDifferentDomains()
+    {
+        Assert.False(AdminManager.PlayerHasPermissions((SteamID)76561197960265737, "@css/ban"));
+        AdminManager.AddPlayerPermissions((SteamID)76561197960265737, "@css/ban");
+        Assert.True(AdminManager.PlayerHasPermissions((SteamID)76561197960265737, "@css/ban"));
+
+        var requirePerms = new RequiresPermissionsOr("@css/kick", "@domain2/flag");
+        Assert.NotNull(requirePerms);
+        Assert.False(requirePerms.CanExecuteCommand((SteamID)76561197960265737));
+    }
+
+    [Fact]
     public void ShouldAllowRootFlagInRequiresPermissionsOr()
     {
         Assert.False(AdminManager.PlayerHasPermissions((SteamID)76561197960265733, "@css/root"));
@@ -144,7 +217,7 @@ public class AdminTests
         Assert.NotNull(adminData);
         Assert.True(adminData.DomainHasRootFlag("css"));
 
-        var requirePerms = new RequiresPermissionsOr("@css/ban", "@domain2/flag");
+        var requirePerms = new RequiresPermissionsOr("@css/ban", "@css/kick", "@domain2/flag");
         Assert.NotNull(requirePerms);
         Assert.True(requirePerms.CanExecuteCommand((SteamID)76561197960265733));
     }
