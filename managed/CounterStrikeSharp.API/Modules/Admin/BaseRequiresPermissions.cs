@@ -27,13 +27,15 @@ namespace CounterStrikeSharp.API.Modules.Admin
             Command = "";
         }
 
-        public virtual bool CanExecuteCommand(CCSPlayerController? caller)
+        public virtual bool CanExecuteCommand(SteamID? steamID)
         {
+            if (steamID is null) return false;
+
+            var adminData = AdminManager.GetPlayerAdminData(steamID);
+            if (adminData is null) return false;
+
             // If we have a command in the "command_overrides" section in "configs/admins.json",
             // we skip the checks below and just return the defined value.
-            if (caller?.AuthorizedSteamID == null) return false;
-            var adminData = AdminManager.GetPlayerAdminData(caller.AuthorizedSteamID);
-            if (adminData == null) return false;
             if (adminData.CommandOverrides.TryGetValue(Command, out var command))
             {
                 return command;

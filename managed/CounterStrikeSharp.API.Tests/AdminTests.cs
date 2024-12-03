@@ -116,4 +116,36 @@ public class AdminTests
         Assert.True(AdminManager.CommandIsOverriden("runtime_command_b"));
         Assert.False(AdminManager.GetPermissionOverrides("runtime_command_b").Any());
     }
+
+    [Fact]
+    public void ShouldAllowRootFlagInRequiresPermissions()
+    {
+        Assert.False(AdminManager.PlayerHasPermissions((SteamID)76561197960265732, "@css/root"));
+        AdminManager.AddPlayerPermissions((SteamID)76561197960265732, "@css/root");
+        Assert.True(AdminManager.PlayerHasPermissions((SteamID)76561197960265732, "@css/root"));
+
+        var adminData = AdminManager.GetPlayerAdminData((SteamID)76561197960265732);
+        Assert.NotNull(adminData);
+        Assert.True(adminData.DomainHasRootFlag("css"));
+
+        var requirePerms = new RequiresPermissions("@css/ban");
+        Assert.NotNull(requirePerms);
+        Assert.True(requirePerms.CanExecuteCommand((SteamID)76561197960265732));
+    }
+
+    [Fact]
+    public void ShouldAllowRootFlagInRequiresPermissionsOr()
+    {
+        Assert.False(AdminManager.PlayerHasPermissions((SteamID)76561197960265733, "@css/root"));
+        AdminManager.AddPlayerPermissions((SteamID)76561197960265733, "@css/root");
+        Assert.True(AdminManager.PlayerHasPermissions((SteamID)76561197960265733, "@css/root"));
+
+        var adminData = AdminManager.GetPlayerAdminData((SteamID)76561197960265733);
+        Assert.NotNull(adminData);
+        Assert.True(adminData.DomainHasRootFlag("css"));
+
+        var requirePerms = new RequiresPermissionsOr("@css/ban", "@domain2/flag");
+        Assert.NotNull(requirePerms);
+        Assert.True(requirePerms.CanExecuteCommand((SteamID)76561197960265733));
+    }
 }

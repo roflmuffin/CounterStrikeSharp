@@ -11,16 +11,16 @@ namespace CounterStrikeSharp.API.Modules.Admin
     {
         public RequiresPermissionsOr(params string[] permissions) : base(permissions) { }
 
-        public override bool CanExecuteCommand(CCSPlayerController? caller)
+        public override bool CanExecuteCommand(SteamID? steamID)
         {
-            if (caller == null) return true;
-            if (AdminManager.PlayerHasCommandOverride(caller, Command))
+            if (steamID == null) return true;
+            if (AdminManager.PlayerHasCommandOverride(steamID, Command))
             {
-                return AdminManager.GetPlayerCommandOverrideState(caller, Command);
+                return AdminManager.GetPlayerCommandOverrideState(steamID, Command);
             }
-            if (!base.CanExecuteCommand(caller)) return false;
+            if (!base.CanExecuteCommand(steamID)) return false;
 
-            var adminData = AdminManager.GetPlayerAdminData(caller.AuthorizedSteamID);
+            var adminData = AdminManager.GetPlayerAdminData(steamID);
             if (adminData == null) return false;
             
             // Check to see if the caller has a root flag for any of the domains in our permissions.
