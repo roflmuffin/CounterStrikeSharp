@@ -1,4 +1,8 @@
 VECTOR_NEW: -> pointer
+VECTOR2D_NEW: -> pointer
+VECTOR4D_NEW: -> pointer
+MATRIX3X4_NEW: -> pointer
+QUATERNION_NEW: -> pointer
 ANGLE_NEW: -> pointer
 VECTOR_GET_X: vector:pointer -> float
 VECTOR_GET_Y: vector:pointer -> float
