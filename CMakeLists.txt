@@ -91,16 +91,21 @@ set(SOURCE_FILES
     src/core/managers/server_manager.h
     src/scripting/natives/natives_server.cpp
     src/scripting/natives/natives_usermessages.cpp
+    src/scripting/natives/natives_clientmessages.cpp
     libraries/nlohmann/json.hpp
     src/core/managers/voice_manager.cpp
     src/core/managers/voice_manager.h
     src/core/managers/usermessage_manager.cpp
     src/core/managers/usermessage_manager.h
+    src/core/managers/clientmessage_manager.cpp
+    src/core/managers/clientmessage_manager.h
     src/scripting/natives/natives_dynamichooks.cpp
     src/core/game_system.h
     src/core/game_system.cpp
     src/core/UserMessage.h
     src/core/UserMessage.cpp
+    src/core/ClientMessage.h
+    src/core/ClientMessage.cpp
     src/core/recipientfilters.h
 )
 
