@@ -23,34 +23,34 @@
         <ApiCompatContractAssembly>.\ApiCompat\v202.dll</ApiCompatContractAssembly>
     </PropertyGroup>
     <ItemGroup>
-        <None Remove="Modules\Commands\CommandInfo"/>
-        <None Remove="Modules\Disabled\**"/>
+        <None Remove="Modules\Commands\CommandInfo" />
+        <None Remove="Modules\Disabled\**" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="McMaster.NETCore.Plugins" Version="1.4.0"/>
-        <PackageReference Include="Microsoft.CSharp" Version="4.7.0"/>
-        <PackageReference Include="Microsoft.DotNet.ApiCompat.Task" Version="8.0.203"/>
-        <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0"/>
-        <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0"/>
-        <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="8.0.3"/>
-        <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0"/>
-        <PackageReference Include="Scrutor" Version="4.2.2"/>
-        <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0"/>
-        <PackageReference Include="Serilog.Sinks.Console" Version="5.0.0"/>
-        <PackageReference Include="Serilog.Sinks.File" Version="5.0.0"/>
-        <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0"/>
+        <PackageReference Include="McMaster.NETCore.Plugins" Version="1.4.0" />
+        <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+        <PackageReference Include="Microsoft.DotNet.ApiCompat.Task" Version="8.0.203" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="8.0.3" />
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+        <PackageReference Include="Scrutor" Version="4.2.2" />
+        <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0" />
+        <PackageReference Include="Serilog.Sinks.Console" Version="5.0.0" />
+        <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+        <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
     </ItemGroup>
     <ItemGroup>
-        <Folder Include="Core\Schema\"/>
-        <Folder Include="Modules\Errors"/>
+        <Folder Include="Core\Schema\" />
+        <Folder Include="Modules\Errors" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Remove="Modules\Disabled\**"/>
+        <Compile Remove="Modules\Disabled\**" />
     </ItemGroup>
     <ItemGroup>
-        <EmbeddedResource Remove="Modules\Disabled\**"/>
+        <EmbeddedResource Remove="Modules\Disabled\**" />
     </ItemGroup>
-    <PropertyGroup/>
+    <PropertyGroup />
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
@@ -58,12 +58,8 @@
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
     <Target Name="SetSourceRevisionId" BeforeTargets="InitializeSourceControlInformation">
-        <Exec
-                Command="git describe --long --always --exclude=* --abbrev=7"
-                ConsoleToMSBuild="True"
-                IgnoreExitCode="False"
-        >
-            <Output PropertyName="SourceRevisionId" TaskParameter="ConsoleOutput"/>
+        <Exec Command="git describe --long --always --exclude=* --abbrev=7" ConsoleToMSBuild="True" IgnoreExitCode="False">
+            <Output PropertyName="SourceRevisionId" TaskParameter="ConsoleOutput" />
         </Exec>
     </Target>
 
