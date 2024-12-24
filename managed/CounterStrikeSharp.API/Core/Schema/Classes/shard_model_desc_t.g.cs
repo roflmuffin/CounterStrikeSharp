@@ -22,17 +22,17 @@ public partial class shard_model_desc_t : NativeObject
 	[SchemaMember("shard_model_desc_t", "m_nModelID")]
 	public ref Int32 ModelID => ref Schema.GetRef<Int32>(this.Handle, "shard_model_desc_t", "m_nModelID");
 
-	// m_hMaterial
-	[SchemaMember("shard_model_desc_t", "m_hMaterial")]
-	public CStrongHandle<InfoForResourceTypeIMaterial2> Material => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "shard_model_desc_t", "m_hMaterial");
+	// m_hMaterialBase
+	[SchemaMember("shard_model_desc_t", "m_hMaterialBase")]
+	public CStrongHandle<InfoForResourceTypeIMaterial2> MaterialBase => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "shard_model_desc_t", "m_hMaterialBase");
+
+	// m_hMaterialDamageOverlay
+	[SchemaMember("shard_model_desc_t", "m_hMaterialDamageOverlay")]
+	public CStrongHandle<InfoForResourceTypeIMaterial2> MaterialDamageOverlay => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeIMaterial2>>(this.Handle, "shard_model_desc_t", "m_hMaterialDamageOverlay");
 
 	// m_solid
 	[SchemaMember("shard_model_desc_t", "m_solid")]
 	public ref ShardSolid_t Solid => ref Schema.GetRef<ShardSolid_t>(this.Handle, "shard_model_desc_t", "m_solid");
-
-	// m_ShatterPanelMode
-	[SchemaMember("shard_model_desc_t", "m_ShatterPanelMode")]
-	public ref ShatterPanelMode ShatterPanelMode => ref Schema.GetRef<ShatterPanelMode>(this.Handle, "shard_model_desc_t", "m_ShatterPanelMode");
 
 	// m_vecPanelSize
 	[SchemaMember("shard_model_desc_t", "m_vecPanelSize")]
@@ -49,6 +49,10 @@ public partial class shard_model_desc_t : NativeObject
 	// m_vecPanelVertices
 	[SchemaMember("shard_model_desc_t", "m_vecPanelVertices")]
 	public NetworkedVector<Vector2D> PanelVertices => Schema.GetDeclaredClass<NetworkedVector<Vector2D>>(this.Handle, "shard_model_desc_t", "m_vecPanelVertices");
+
+	// m_vInitialPanelVertices
+	[SchemaMember("shard_model_desc_t", "m_vInitialPanelVertices")]
+	public NetworkedVector<Vector4D> InitialPanelVertices => Schema.GetDeclaredClass<NetworkedVector<Vector4D>>(this.Handle, "shard_model_desc_t", "m_vInitialPanelVertices");
 
 	// m_flGlassHalfThickness
 	[SchemaMember("shard_model_desc_t", "m_flGlassHalfThickness")]

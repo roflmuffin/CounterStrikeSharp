@@ -42,8 +42,8 @@ public partial class CSoundEventPathCornerEntity : CSoundEventEntity
 	[SchemaMember("CSoundEventPathCornerEntity", "m_flDotProductMax")]
 	public ref float DotProductMax => ref Schema.GetRef<float>(this.Handle, "CSoundEventPathCornerEntity", "m_flDotProductMax");
 
-	// bPlaying
-	[SchemaMember("CSoundEventPathCornerEntity", "bPlaying")]
-	public ref bool BPlaying => ref Schema.GetRef<bool>(this.Handle, "CSoundEventPathCornerEntity", "bPlaying");
+	// m_bPlaying
+	[SchemaMember("CSoundEventPathCornerEntity", "m_bPlaying")]
+	public ref bool Playing => ref Schema.GetRef<bool>(this.Handle, "CSoundEventPathCornerEntity", "m_bPlaying");
 
 }

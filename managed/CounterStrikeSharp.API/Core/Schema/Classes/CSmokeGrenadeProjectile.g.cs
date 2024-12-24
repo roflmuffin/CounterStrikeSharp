@@ -50,4 +50,8 @@ public partial class CSmokeGrenadeProjectile : CBaseCSGrenadeProjectile
 	[SchemaMember("CSmokeGrenadeProjectile", "m_fllastSimulationTime")]
 	public ref float FllastSimulationTime => ref Schema.GetRef<float>(this.Handle, "CSmokeGrenadeProjectile", "m_fllastSimulationTime");
 
+	// m_bExplodeFromInferno
+	[SchemaMember("CSmokeGrenadeProjectile", "m_bExplodeFromInferno")]
+	public ref bool ExplodeFromInferno => ref Schema.GetRef<bool>(this.Handle, "CSmokeGrenadeProjectile", "m_bExplodeFromInferno");
+
 }

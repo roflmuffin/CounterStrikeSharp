@@ -18,6 +18,10 @@ public partial class CGameRules : NativeObject
 {
     public CGameRules (IntPtr pointer) : base(pointer) {}
 
+	// __m_pChainEntity
+	[SchemaMember("CGameRules", "__m_pChainEntity")]
+	public CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "CGameRules", "__m_pChainEntity");
+
 	// m_szQuestName
 	[SchemaMember("CGameRules", "m_szQuestName")]
 	public string QuestName
@@ -29,5 +33,17 @@ public partial class CGameRules : NativeObject
 	// m_nQuestPhase
 	[SchemaMember("CGameRules", "m_nQuestPhase")]
 	public ref Int32 QuestPhase => ref Schema.GetRef<Int32>(this.Handle, "CGameRules", "m_nQuestPhase");
+
+	// m_nTotalPausedTicks
+	[SchemaMember("CGameRules", "m_nTotalPausedTicks")]
+	public ref Int32 TotalPausedTicks => ref Schema.GetRef<Int32>(this.Handle, "CGameRules", "m_nTotalPausedTicks");
+
+	// m_nPauseStartTick
+	[SchemaMember("CGameRules", "m_nPauseStartTick")]
+	public ref Int32 PauseStartTick => ref Schema.GetRef<Int32>(this.Handle, "CGameRules", "m_nPauseStartTick");
+
+	// m_bGamePaused
+	[SchemaMember("CGameRules", "m_bGamePaused")]
+	public ref bool GamePaused => ref Schema.GetRef<bool>(this.Handle, "CGameRules", "m_bGamePaused");
 
 }

@@ -38,13 +38,25 @@ public partial class CPhysicsProp : CBreakableProp
 	[SchemaMember("CPhysicsProp", "m_OnPlayerUse")]
 	public CEntityIOOutput OnPlayerUse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysicsProp", "m_OnPlayerUse");
 
+	// m_OnOutOfWorld
+	[SchemaMember("CPhysicsProp", "m_OnOutOfWorld")]
+	public CEntityIOOutput OnOutOfWorld => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysicsProp", "m_OnOutOfWorld");
+
 	// m_OnPlayerPickup
 	[SchemaMember("CPhysicsProp", "m_OnPlayerPickup")]
 	public CEntityIOOutput OnPlayerPickup => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysicsProp", "m_OnPlayerPickup");
 
-	// m_OnOutOfWorld
-	[SchemaMember("CPhysicsProp", "m_OnOutOfWorld")]
-	public CEntityIOOutput OnOutOfWorld => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysicsProp", "m_OnOutOfWorld");
+	// m_bForceNavIgnore
+	[SchemaMember("CPhysicsProp", "m_bForceNavIgnore")]
+	public ref bool ForceNavIgnore => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bForceNavIgnore");
+
+	// m_bNoNavmeshBlocker
+	[SchemaMember("CPhysicsProp", "m_bNoNavmeshBlocker")]
+	public ref bool NoNavmeshBlocker => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bNoNavmeshBlocker");
+
+	// m_bForceNpcExclude
+	[SchemaMember("CPhysicsProp", "m_bForceNpcExclude")]
+	public ref bool ForceNpcExclude => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bForceNpcExclude");
 
 	// m_massScale
 	[SchemaMember("CPhysicsProp", "m_massScale")]
@@ -122,18 +134,6 @@ public partial class CPhysicsProp : CBreakableProp
 		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CPhysicsProp", "m_glowColor", value); }
 	}
 
-	// m_bForceNavIgnore
-	[SchemaMember("CPhysicsProp", "m_bForceNavIgnore")]
-	public ref bool ForceNavIgnore => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bForceNavIgnore");
-
-	// m_bNoNavmeshBlocker
-	[SchemaMember("CPhysicsProp", "m_bNoNavmeshBlocker")]
-	public ref bool NoNavmeshBlocker => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bNoNavmeshBlocker");
-
-	// m_bForceNpcExclude
-	[SchemaMember("CPhysicsProp", "m_bForceNpcExclude")]
-	public ref bool ForceNpcExclude => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bForceNpcExclude");
-
 	// m_bShouldAutoConvertBackFromDebris
 	[SchemaMember("CPhysicsProp", "m_bShouldAutoConvertBackFromDebris")]
 	public ref bool ShouldAutoConvertBackFromDebris => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bShouldAutoConvertBackFromDebris");
@@ -150,12 +150,24 @@ public partial class CPhysicsProp : CBreakableProp
 	[SchemaMember("CPhysicsProp", "m_bEnableUseOutput")]
 	public ref bool EnableUseOutput => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bEnableUseOutput");
 
+	// m_CrateType
+	[SchemaMember("CPhysicsProp", "m_CrateType")]
+	public ref CPhysicsPropCrateType_t CrateType => ref Schema.GetRef<CPhysicsPropCrateType_t>(this.Handle, "CPhysicsProp", "m_CrateType");
+
+	// m_strItemClass
+	[SchemaMember("CPhysicsProp", "m_strItemClass")]
+	public Span<string> StrItemClass => Schema.GetFixedArray<string>(this.Handle, "CPhysicsProp", "m_strItemClass", 4);
+
+	// m_nItemCount
+	[SchemaMember("CPhysicsProp", "m_nItemCount")]
+	public Span<Int32> ItemCount => Schema.GetFixedArray<Int32>(this.Handle, "CPhysicsProp", "m_nItemCount", 4);
+
+	// m_bRemovableForAmmoBalancing
+	[SchemaMember("CPhysicsProp", "m_bRemovableForAmmoBalancing")]
+	public ref bool RemovableForAmmoBalancing => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bRemovableForAmmoBalancing");
+
 	// m_bAwake
 	[SchemaMember("CPhysicsProp", "m_bAwake")]
 	public ref bool Awake => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bAwake");
-
-	// m_nCollisionGroupOverride
-	[SchemaMember("CPhysicsProp", "m_nCollisionGroupOverride")]
-	public ref Int32 CollisionGroupOverride => ref Schema.GetRef<Int32>(this.Handle, "CPhysicsProp", "m_nCollisionGroupOverride");
 
 }

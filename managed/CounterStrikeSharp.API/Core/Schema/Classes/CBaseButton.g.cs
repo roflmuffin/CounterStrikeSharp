@@ -58,6 +58,14 @@ public partial class CBaseButton : CBaseToggle
 		set { Schema.SetString(this.Handle, "CBaseButton", "m_sUnlockedSound", value); }
 	}
 
+	// m_sOverrideAnticipationName
+	[SchemaMember("CBaseButton", "m_sOverrideAnticipationName")]
+	public string OverrideAnticipationName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CBaseButton", "m_sOverrideAnticipationName"); }
+		set { Schema.SetString(this.Handle, "CBaseButton", "m_sOverrideAnticipationName", value); }
+	}
+
 	// m_bLocked
 	[SchemaMember("CBaseButton", "m_bLocked")]
 	public ref bool Locked => ref Schema.GetRef<bool>(this.Handle, "CBaseButton", "m_bLocked");

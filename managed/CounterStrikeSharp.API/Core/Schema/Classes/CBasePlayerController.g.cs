@@ -30,6 +30,10 @@ public partial class CBasePlayerController : CBaseEntity
 	[SchemaMember("CBasePlayerController", "m_hPawn")]
 	public CHandle<CBasePlayerPawn> Pawn => Schema.GetDeclaredClass<CHandle<CBasePlayerPawn>>(this.Handle, "CBasePlayerController", "m_hPawn");
 
+	// m_bKnownTeamMismatch
+	[SchemaMember("CBasePlayerController", "m_bKnownTeamMismatch")]
+	public ref bool KnownTeamMismatch => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerController", "m_bKnownTeamMismatch");
+
 	// m_nSplitScreenSlot
 	[SchemaMember("CBasePlayerController", "m_nSplitScreenSlot")]
 	public ref Int32 SplitScreenSlot => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerController", "m_nSplitScreenSlot");
@@ -89,14 +93,6 @@ public partial class CBasePlayerController : CBaseEntity
 	// m_bGamePaused
 	[SchemaMember("CBasePlayerController", "m_bGamePaused")]
 	public ref bool GamePaused => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerController", "m_bGamePaused");
-
-	// m_nLastRealCommandNumberExecuted
-	[SchemaMember("CBasePlayerController", "m_nLastRealCommandNumberExecuted")]
-	public ref Int32 LastRealCommandNumberExecuted => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerController", "m_nLastRealCommandNumberExecuted");
-
-	// m_nLastLateCommandExecuted
-	[SchemaMember("CBasePlayerController", "m_nLastLateCommandExecuted")]
-	public ref Int32 LastLateCommandExecuted => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerController", "m_nLastLateCommandExecuted");
 
 	// m_iIgnoreGlobalChat
 	[SchemaMember("CBasePlayerController", "m_iIgnoreGlobalChat")]

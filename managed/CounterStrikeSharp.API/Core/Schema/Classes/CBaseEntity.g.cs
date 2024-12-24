@@ -38,9 +38,9 @@ public partial class CBaseEntity : CEntityInstance
 	[SchemaMember("CBaseEntity", "m_nLastThinkTick")]
 	public ref Int32 LastThinkTick => ref Schema.GetRef<Int32>(this.Handle, "CBaseEntity", "m_nLastThinkTick");
 
-	// m_nDisableContextThinkStartTick
-	[SchemaMember("CBaseEntity", "m_nDisableContextThinkStartTick")]
-	public ref Int32 DisableContextThinkStartTick => ref Schema.GetRef<Int32>(this.Handle, "CBaseEntity", "m_nDisableContextThinkStartTick");
+	// m_bDisabledContextThinks
+	[SchemaMember("CBaseEntity", "m_bDisabledContextThinks")]
+	public ref bool DisabledContextThinks => ref Schema.GetRef<bool>(this.Handle, "CBaseEntity", "m_bDisabledContextThinks");
 
 	// m_isSteadyState
 	[SchemaMember("CBaseEntity", "m_isSteadyState")]
@@ -86,9 +86,9 @@ public partial class CBaseEntity : CEntityInstance
 	[SchemaMember("CBaseEntity", "m_nTakeDamageFlags")]
 	public ref TakeDamageFlags_t TakeDamageFlags => ref Schema.GetRef<TakeDamageFlags_t>(this.Handle, "CBaseEntity", "m_nTakeDamageFlags");
 
-	// m_bIsPlatform
-	[SchemaMember("CBaseEntity", "m_bIsPlatform")]
-	public ref bool IsPlatform => ref Schema.GetRef<bool>(this.Handle, "CBaseEntity", "m_bIsPlatform");
+	// m_nPlatformType
+	[SchemaMember("CBaseEntity", "m_nPlatformType")]
+	public ref EntityPlatformTypes_t PlatformType => ref Schema.GetRef<EntityPlatformTypes_t>(this.Handle, "CBaseEntity", "m_nPlatformType");
 
 	// m_MoveCollide
 	[SchemaMember("CBaseEntity", "m_MoveCollide")]
@@ -250,6 +250,10 @@ public partial class CBaseEntity : CEntityInstance
 	[SchemaMember("CBaseEntity", "m_hGroundEntity")]
 	public CHandle<CBaseEntity> GroundEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBaseEntity", "m_hGroundEntity");
 
+	// m_nGroundBodyIndex
+	[SchemaMember("CBaseEntity", "m_nGroundBodyIndex")]
+	public ref Int32 GroundBodyIndex => ref Schema.GetRef<Int32>(this.Handle, "CBaseEntity", "m_nGroundBodyIndex");
+
 	// m_flFriction
 	[SchemaMember("CBaseEntity", "m_flFriction")]
 	public ref float Friction => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flFriction");
@@ -337,5 +341,9 @@ public partial class CBaseEntity : CEntityInstance
 	// m_flVPhysicsUpdateLocalTime
 	[SchemaMember("CBaseEntity", "m_flVPhysicsUpdateLocalTime")]
 	public ref float VPhysicsUpdateLocalTime => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flVPhysicsUpdateLocalTime");
+
+	// m_nBloodType
+	[SchemaMember("CBaseEntity", "m_nBloodType")]
+	public ref BloodType BloodType => ref Schema.GetRef<BloodType>(this.Handle, "CBaseEntity", "m_nBloodType");
 
 }

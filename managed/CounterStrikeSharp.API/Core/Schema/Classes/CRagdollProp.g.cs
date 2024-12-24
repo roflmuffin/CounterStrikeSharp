@@ -86,10 +86,6 @@ public partial class CRagdollProp : CBaseAnimGraph
 	[SchemaMember("CRagdollProp", "m_flLastOriginChangeTime")]
 	public ref float LastOriginChangeTime => ref Schema.GetRef<float>(this.Handle, "CRagdollProp", "m_flLastOriginChangeTime");
 
-	// m_nBloodColor
-	[SchemaMember("CRagdollProp", "m_nBloodColor")]
-	public ref Int32 BloodColor => ref Schema.GetRef<Int32>(this.Handle, "CRagdollProp", "m_nBloodColor");
-
 	// m_strOriginClassName
 	[SchemaMember("CRagdollProp", "m_strOriginClassName")]
 	public string StrOriginClassName

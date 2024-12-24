@@ -6,6 +6,7 @@ updates:
     allow:
       - dependency-name: "libraries/hl2sdk-cs2"
       - dependency-name: "libraries/metamod-source"
+      - dependency-name: "libraries/Protobufs"
     schedule:
       interval: "daily"
     commit-message:

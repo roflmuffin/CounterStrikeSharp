@@ -130,6 +130,14 @@ public partial class CSceneEntity : CPointEntity
 	[SchemaMember("CSceneEntity", "m_hTarget8")]
 	public CHandle<CBaseEntity> HTarget8 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget8");
 
+	// m_sTargetAttachment
+	[SchemaMember("CSceneEntity", "m_sTargetAttachment")]
+	public string TargetAttachment
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CSceneEntity", "m_sTargetAttachment"); }
+		set { Schema.SetString(this.Handle, "CSceneEntity", "m_sTargetAttachment", value); }
+	}
+
 	// m_bIsPlayingBack
 	[SchemaMember("CSceneEntity", "m_bIsPlayingBack")]
 	public ref bool IsPlayingBack => ref Schema.GetRef<bool>(this.Handle, "CSceneEntity", "m_bIsPlayingBack");
@@ -213,6 +221,10 @@ public partial class CSceneEntity : CPointEntity
 	// m_bBreakOnNonIdle
 	[SchemaMember("CSceneEntity", "m_bBreakOnNonIdle")]
 	public ref bool BreakOnNonIdle => ref Schema.GetRef<bool>(this.Handle, "CSceneEntity", "m_bBreakOnNonIdle");
+
+	// m_bSceneFinished
+	[SchemaMember("CSceneEntity", "m_bSceneFinished")]
+	public ref bool SceneFinished => ref Schema.GetRef<bool>(this.Handle, "CSceneEntity", "m_bSceneFinished");
 
 	// m_hActorList
 	[SchemaMember("CSceneEntity", "m_hActorList")]

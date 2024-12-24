@@ -33,3 +33,9 @@ public class ColorMarshaler : ICustomMarshal<Color>
         Marshal.WriteInt32(pointer, (managedObj.A << 24) | (managedObj.B << 16) | (managedObj.G << 8) | managedObj.R);
     }
 }
+
+internal interface IMarshalToNative
+{
+    // Returns the object format that will be passed to the native API when marshalled by the script context.
+    IEnumerable<object> GetNativeObject();
+}

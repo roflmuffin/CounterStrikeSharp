@@ -18,6 +18,10 @@ public partial class CBreakableProp : CBaseProp
 {
     public CBreakableProp (IntPtr pointer) : base(pointer) {}
 
+	// m_CPropDataComponent
+	[SchemaMember("CBreakableProp", "m_CPropDataComponent")]
+	public CPropDataComponent CPropDataComponent => Schema.GetDeclaredClass<CPropDataComponent>(this.Handle, "CBreakableProp", "m_CPropDataComponent");
+
 	// m_OnBreak
 	[SchemaMember("CBreakableProp", "m_OnBreak")]
 	public CEntityIOOutput OnBreak => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBreakableProp", "m_OnBreak");
@@ -42,6 +46,14 @@ public partial class CBreakableProp : CBaseProp
 	[SchemaMember("CBreakableProp", "m_flPressureDelay")]
 	public ref float PressureDelay => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_flPressureDelay");
 
+	// m_flDefBurstScale
+	[SchemaMember("CBreakableProp", "m_flDefBurstScale")]
+	public ref float DefBurstScale => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_flDefBurstScale");
+
+	// m_vDefBurstOffset
+	[SchemaMember("CBreakableProp", "m_vDefBurstOffset")]
+	public Vector DefBurstOffset => Schema.GetDeclaredClass<Vector>(this.Handle, "CBreakableProp", "m_vDefBurstOffset");
+
 	// m_hBreaker
 	[SchemaMember("CBreakableProp", "m_hBreaker")]
 	public CHandle<CBaseEntity> Breaker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBreakableProp", "m_hBreaker");
@@ -50,45 +62,29 @@ public partial class CBreakableProp : CBaseProp
 	[SchemaMember("CBreakableProp", "m_PerformanceMode")]
 	public ref PerformanceMode_t PerformanceMode => ref Schema.GetRef<PerformanceMode_t>(this.Handle, "CBreakableProp", "m_PerformanceMode");
 
-	// m_flDmgModBullet
-	[SchemaMember("CBreakableProp", "m_flDmgModBullet")]
-	public ref float DmgModBullet => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_flDmgModBullet");
-
-	// m_flDmgModClub
-	[SchemaMember("CBreakableProp", "m_flDmgModClub")]
-	public ref float DmgModClub => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_flDmgModClub");
-
-	// m_flDmgModExplosive
-	[SchemaMember("CBreakableProp", "m_flDmgModExplosive")]
-	public ref float DmgModExplosive => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_flDmgModExplosive");
-
-	// m_flDmgModFire
-	[SchemaMember("CBreakableProp", "m_flDmgModFire")]
-	public ref float DmgModFire => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_flDmgModFire");
-
-	// m_iszPhysicsDamageTableName
-	[SchemaMember("CBreakableProp", "m_iszPhysicsDamageTableName")]
-	public string PhysicsDamageTableName
-	{
-		get { return Schema.GetUtf8String(this.Handle, "CBreakableProp", "m_iszPhysicsDamageTableName"); }
-		set { Schema.SetString(this.Handle, "CBreakableProp", "m_iszPhysicsDamageTableName", value); }
-	}
-
-	// m_iszBasePropData
-	[SchemaMember("CBreakableProp", "m_iszBasePropData")]
-	public string BasePropData
-	{
-		get { return Schema.GetUtf8String(this.Handle, "CBreakableProp", "m_iszBasePropData"); }
-		set { Schema.SetString(this.Handle, "CBreakableProp", "m_iszBasePropData", value); }
-	}
-
-	// m_iInteractions
-	[SchemaMember("CBreakableProp", "m_iInteractions")]
-	public ref Int32 Interactions => ref Schema.GetRef<Int32>(this.Handle, "CBreakableProp", "m_iInteractions");
-
 	// m_flPreventDamageBeforeTime
 	[SchemaMember("CBreakableProp", "m_flPreventDamageBeforeTime")]
 	public ref float PreventDamageBeforeTime => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_flPreventDamageBeforeTime");
+
+	// m_BreakableContentsType
+	[SchemaMember("CBreakableProp", "m_BreakableContentsType")]
+	public ref BreakableContentsType_t BreakableContentsType => ref Schema.GetRef<BreakableContentsType_t>(this.Handle, "CBreakableProp", "m_BreakableContentsType");
+
+	// m_strBreakableContentsPropGroupOverride
+	[SchemaMember("CBreakableProp", "m_strBreakableContentsPropGroupOverride")]
+	public string StrBreakableContentsPropGroupOverride
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CBreakableProp", "m_strBreakableContentsPropGroupOverride"); }
+		set { Schema.SetString(this.Handle, "CBreakableProp", "m_strBreakableContentsPropGroupOverride", value); }
+	}
+
+	// m_strBreakableContentsParticleOverride
+	[SchemaMember("CBreakableProp", "m_strBreakableContentsParticleOverride")]
+	public string StrBreakableContentsParticleOverride
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CBreakableProp", "m_strBreakableContentsParticleOverride"); }
+		set { Schema.SetString(this.Handle, "CBreakableProp", "m_strBreakableContentsParticleOverride", value); }
+	}
 
 	// m_bHasBreakPiecesOrCommands
 	[SchemaMember("CBreakableProp", "m_bHasBreakPiecesOrCommands")]

@@ -40,7 +40,7 @@ public partial class CTriggerHurt : CBaseTrigger
 
 	// m_bitsDamageInflict
 	[SchemaMember("CTriggerHurt", "m_bitsDamageInflict")]
-	public ref Int32 BitsDamageInflict => ref Schema.GetRef<Int32>(this.Handle, "CTriggerHurt", "m_bitsDamageInflict");
+	public ref DamageTypes_t BitsDamageInflict => ref Schema.GetRef<DamageTypes_t>(this.Handle, "CTriggerHurt", "m_bitsDamageInflict");
 
 	// m_damageModel
 	[SchemaMember("CTriggerHurt", "m_damageModel")]

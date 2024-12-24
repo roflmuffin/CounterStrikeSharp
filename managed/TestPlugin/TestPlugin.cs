@@ -15,6 +15,7 @@
  */
 
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -30,6 +31,7 @@ using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Entities.Constants;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Memory;
+using CounterStrikeSharp.API.Modules.UserMessages;
 using CounterStrikeSharp.API.Modules.Utils;
 using Microsoft.Extensions.Logging;
 
@@ -160,6 +162,19 @@ namespace TestPlugin
                     info.DontBroadcast = true;
                 }
 
+                if (@event.Attacker != null)
+                {
+                    var message = UserMessage.FromPartialName("Shake");
+                    Logger.LogInformation("Created user message CCSUsrMsg_Shake {Message:x}", message.Handle);
+
+                    message.SetFloat("duration", 2);
+                    message.SetFloat("amplitude", 5);
+                    message.SetFloat("frequency", 10f);
+                    message.SetInt("command", 0);
+
+                    message.Send(@event.Attacker);
+                }
+
                 return HookResult.Continue;
             }, HookMode.Pre);
 
@@ -283,8 +298,28 @@ namespace TestPlugin
                     case "flashbang_projectile":
                         var flashbang = entity.As<CBaseCSGrenadeProjectile>();
 
-                        Server.NextFrame(() => { flashbang.Remove(); });
+                        // Server.NextFrame(() => { flashbang.Remove(); });
                         return;
+                }
+            });
+
+            // Hide every door (prop_door_rotating) for everyone as a test
+            RegisterListener<Listeners.CheckTransmit>((CCheckTransmitInfoList infoList) =>
+            {
+                IEnumerable<CPropDoorRotating> doors = Utilities.FindAllEntitiesByDesignerName<CPropDoorRotating>("prop_door_rotating");
+
+                if (!doors.Any())
+                    return;
+
+                foreach ((CCheckTransmitInfo info, CCSPlayerController? player) in infoList)
+                {
+                    if (player == null)
+                        continue;
+
+                    foreach (CPropDoorRotating door in doors)
+                    {
+                        info.TransmitEntities.Remove(door);
+                    }
                 }
             });
         }

@@ -182,10 +182,6 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 	[SchemaMember("CFuncTrackTrain", "m_bAccelToSpeed")]
 	public ref bool AccelToSpeed => ref Schema.GetRef<bool>(this.Handle, "CFuncTrackTrain", "m_bAccelToSpeed");
 
-	// m_flTimeScale
-	[SchemaMember("CFuncTrackTrain", "m_flTimeScale")]
-	public ref float TimeScale => ref Schema.GetRef<float>(this.Handle, "CFuncTrackTrain", "m_flTimeScale");
-
 	// m_flNextMPSoundTime
 	[SchemaMember("CFuncTrackTrain", "m_flNextMPSoundTime")]
 	public ref float NextMPSoundTime => ref Schema.GetRef<float>(this.Handle, "CFuncTrackTrain", "m_flNextMPSoundTime");

@@ -40,7 +40,7 @@ public partial class CBaseFlex : CBaseAnimGraph
 
 	// m_nNextSceneEventId
 	[SchemaMember("CBaseFlex", "m_nNextSceneEventId")]
-	public ref UInt32 NextSceneEventId => ref Schema.GetRef<UInt32>(this.Handle, "CBaseFlex", "m_nNextSceneEventId");
+	public SceneEventId_t NextSceneEventId => Schema.GetDeclaredClass<SceneEventId_t>(this.Handle, "CBaseFlex", "m_nNextSceneEventId");
 
 	// m_bUpdateLayerPriorities
 	[SchemaMember("CBaseFlex", "m_bUpdateLayerPriorities")]

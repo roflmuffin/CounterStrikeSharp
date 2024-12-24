@@ -11,4 +11,5 @@ public enum PulseCursorExecResult_t : uint
 	Succeeded = 0x0,
 	Canceled = 0x1,
 	Failed = 0x2,
+	OngoingNotify = 0x3,
 }

@@ -62,6 +62,10 @@ public partial class CSoundEventEntity : CBaseEntity
 	[SchemaMember("CSoundEventEntity", "m_onSoundFinished")]
 	public CEntityIOOutput OnSoundFinished => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CSoundEventEntity", "m_onSoundFinished");
 
+	// m_flClientCullRadius
+	[SchemaMember("CSoundEventEntity", "m_flClientCullRadius")]
+	public ref float ClientCullRadius => ref Schema.GetRef<float>(this.Handle, "CSoundEventEntity", "m_flClientCullRadius");
+
 	// m_iszSoundName
 	[SchemaMember("CSoundEventEntity", "m_iszSoundName")]
 	public string SoundName
@@ -73,5 +77,9 @@ public partial class CSoundEventEntity : CBaseEntity
 	// m_hSource
 	[SchemaMember("CSoundEventEntity", "m_hSource")]
 	public CHandle<CEntityInstance> Source => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CSoundEventEntity", "m_hSource");
+
+	// m_nEntityIndexSelection
+	[SchemaMember("CSoundEventEntity", "m_nEntityIndexSelection")]
+	public ref Int32 EntityIndexSelection => ref Schema.GetRef<Int32>(this.Handle, "CSoundEventEntity", "m_nEntityIndexSelection");
 
 }

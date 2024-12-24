@@ -18,6 +18,10 @@ public partial class CBreakable : CBaseModelEntity
 {
     public CBreakable (IntPtr pointer) : base(pointer) {}
 
+	// m_CPropDataComponent
+	[SchemaMember("CBreakable", "m_CPropDataComponent")]
+	public CPropDataComponent CPropDataComponent => Schema.GetDeclaredClass<CPropDataComponent>(this.Handle, "CBreakable", "m_CPropDataComponent");
+
 	// m_Material
 	[SchemaMember("CBreakable", "m_Material")]
 	public ref Materials Material => ref Schema.GetRef<Materials>(this.Handle, "CBreakable", "m_Material");
@@ -65,42 +69,6 @@ public partial class CBreakable : CBaseModelEntity
 	// m_OnBreak
 	[SchemaMember("CBreakable", "m_OnBreak")]
 	public CEntityIOOutput OnBreak => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBreakable", "m_OnBreak");
-
-	// m_flDmgModBullet
-	[SchemaMember("CBreakable", "m_flDmgModBullet")]
-	public ref float DmgModBullet => ref Schema.GetRef<float>(this.Handle, "CBreakable", "m_flDmgModBullet");
-
-	// m_flDmgModClub
-	[SchemaMember("CBreakable", "m_flDmgModClub")]
-	public ref float DmgModClub => ref Schema.GetRef<float>(this.Handle, "CBreakable", "m_flDmgModClub");
-
-	// m_flDmgModExplosive
-	[SchemaMember("CBreakable", "m_flDmgModExplosive")]
-	public ref float DmgModExplosive => ref Schema.GetRef<float>(this.Handle, "CBreakable", "m_flDmgModExplosive");
-
-	// m_flDmgModFire
-	[SchemaMember("CBreakable", "m_flDmgModFire")]
-	public ref float DmgModFire => ref Schema.GetRef<float>(this.Handle, "CBreakable", "m_flDmgModFire");
-
-	// m_iszPhysicsDamageTableName
-	[SchemaMember("CBreakable", "m_iszPhysicsDamageTableName")]
-	public string PhysicsDamageTableName
-	{
-		get { return Schema.GetUtf8String(this.Handle, "CBreakable", "m_iszPhysicsDamageTableName"); }
-		set { Schema.SetString(this.Handle, "CBreakable", "m_iszPhysicsDamageTableName", value); }
-	}
-
-	// m_iszBasePropData
-	[SchemaMember("CBreakable", "m_iszBasePropData")]
-	public string BasePropData
-	{
-		get { return Schema.GetUtf8String(this.Handle, "CBreakable", "m_iszBasePropData"); }
-		set { Schema.SetString(this.Handle, "CBreakable", "m_iszBasePropData", value); }
-	}
-
-	// m_iInteractions
-	[SchemaMember("CBreakable", "m_iInteractions")]
-	public ref Int32 Interactions => ref Schema.GetRef<Int32>(this.Handle, "CBreakable", "m_iInteractions");
 
 	// m_PerformanceMode
 	[SchemaMember("CBreakable", "m_PerformanceMode")]

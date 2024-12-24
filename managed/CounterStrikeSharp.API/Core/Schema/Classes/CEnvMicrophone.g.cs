@@ -26,9 +26,13 @@ public partial class CEnvMicrophone : CPointEntity
 	[SchemaMember("CEnvMicrophone", "m_hMeasureTarget")]
 	public CHandle<CBaseEntity> MeasureTarget => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEnvMicrophone", "m_hMeasureTarget");
 
-	// m_nSoundMask
-	[SchemaMember("CEnvMicrophone", "m_nSoundMask")]
-	public ref Int32 SoundMask => ref Schema.GetRef<Int32>(this.Handle, "CEnvMicrophone", "m_nSoundMask");
+	// m_nSoundType
+	[SchemaMember("CEnvMicrophone", "m_nSoundType")]
+	public ref SoundTypes_t SoundType => ref Schema.GetRef<SoundTypes_t>(this.Handle, "CEnvMicrophone", "m_nSoundType");
+
+	// m_nSoundFlags
+	[SchemaMember("CEnvMicrophone", "m_nSoundFlags")]
+	public ref SoundFlags_t SoundFlags => ref Schema.GetRef<SoundFlags_t>(this.Handle, "CEnvMicrophone", "m_nSoundFlags");
 
 	// m_flSensitivity
 	[SchemaMember("CEnvMicrophone", "m_flSensitivity")]

@@ -20,14 +20,14 @@ public partial class CNetworkVelocityVector : NativeObject
 
 	// m_vecX
 	[SchemaMember("CNetworkVelocityVector", "m_vecX")]
-	public float X => Schema.GetDeclaredClass<float>(this.Handle, "CNetworkVelocityVector", "m_vecX");
+	public ref float X => ref Schema.GetRef<float>(this.Handle, "CNetworkVelocityVector", "m_vecX");
 
 	// m_vecY
 	[SchemaMember("CNetworkVelocityVector", "m_vecY")]
-	public float Y => Schema.GetDeclaredClass<float>(this.Handle, "CNetworkVelocityVector", "m_vecY");
+	public ref float Y => ref Schema.GetRef<float>(this.Handle, "CNetworkVelocityVector", "m_vecY");
 
 	// m_vecZ
 	[SchemaMember("CNetworkVelocityVector", "m_vecZ")]
-	public float Z => Schema.GetDeclaredClass<float>(this.Handle, "CNetworkVelocityVector", "m_vecZ");
+	public ref float Z => ref Schema.GetRef<float>(this.Handle, "CNetworkVelocityVector", "m_vecZ");
 
 }

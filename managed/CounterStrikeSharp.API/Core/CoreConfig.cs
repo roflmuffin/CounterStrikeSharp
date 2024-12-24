@@ -56,6 +56,12 @@ namespace CounterStrikeSharp.API.Core
         [JsonPropertyName("ServerLanguage")]
         public string ServerLanguage { get; set; } = "en";
 
+        [JsonPropertyName("UnlockConCommands")]
+        public bool UnlockConCommands { get; set; } = true;
+
+        [JsonPropertyName("UnlockConVars")]
+        public bool UnlockConVars { get; set; } = true;
+
         [JsonPropertyName("SteamAuth")]
         public string SteamAuth { get; set; } = "Strict";
     }
@@ -108,6 +114,11 @@ namespace CounterStrikeSharp.API.Core
 
         public static string ServerLanguage => _coreConfig.ServerLanguage;
 
+        public static bool UnlockConCommands => _coreConfig.UnlockConCommands;
+
+        public static bool UnlockConVars => _coreConfig.UnlockConVars;
+
+
         /// <summary>
         /// Configures the strictness of <see cref="CCSPlayerController.AuthorizedSteamID"/>
         ///
@@ -155,27 +166,28 @@ namespace CounterStrikeSharp.API.Core
                 _commandsRegistered = true;
             }
 
-            if (!File.Exists(_coreConfigPath))
+            if (File.Exists(_coreConfigPath))
+            {
+                try
+                {
+                    var data = JsonSerializer.Deserialize<CoreConfigData>(File.ReadAllText(_coreConfigPath),
+                        new JsonSerializerOptions() { ReadCommentHandling = JsonCommentHandling.Skip });
+    
+                    if (data != null)
+                    {
+                        _coreConfig = data;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogWarning(ex, "Failed to load core configuration, fallback values will be used");
+                }
+            }
+            else
             {
                 _logger.LogWarning(
                     "Core configuration could not be found at path \"{CoreConfigPath}\", fallback values will be used.",
                     _coreConfigPath);
-                return;
-            }
-
-            try
-            {
-                var data = JsonSerializer.Deserialize<CoreConfigData>(File.ReadAllText(_coreConfigPath),
-                    new JsonSerializerOptions() { ReadCommentHandling = JsonCommentHandling.Skip });
-
-                if (data != null)
-                {
-                    _coreConfig = data;
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogWarning(ex, "Failed to load core configuration, fallback values will be used");
             }
 
             var serverCulture = CultureInfo.GetCultures(CultureTypes.AllCultures)

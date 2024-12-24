@@ -18,14 +18,6 @@ public partial class CCSGameRules : CTeamplayRules
 {
     public CCSGameRules (IntPtr pointer) : base(pointer) {}
 
-	// __m_pChainEntity
-	[SchemaMember("CCSGameRules", "__m_pChainEntity")]
-	public CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "CCSGameRules", "__m_pChainEntity");
-
-	// m_coopMissionManager
-	[SchemaMember("CCSGameRules", "m_coopMissionManager")]
-	public CHandle<CBaseEntity> CoopMissionManager => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSGameRules", "m_coopMissionManager");
-
 	// m_bFreezePeriod
 	[SchemaMember("CCSGameRules", "m_bFreezePeriod")]
 	public ref bool FreezePeriod => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bFreezePeriod");
@@ -42,21 +34,9 @@ public partial class CCSGameRules : CTeamplayRules
 	[SchemaMember("CCSGameRules", "m_fWarmupPeriodStart")]
 	public ref float WarmupPeriodStart => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_fWarmupPeriodStart");
 
-	// m_nTotalPausedTicks
-	[SchemaMember("CCSGameRules", "m_nTotalPausedTicks")]
-	public ref Int32 TotalPausedTicks => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nTotalPausedTicks");
-
-	// m_nPauseStartTick
-	[SchemaMember("CCSGameRules", "m_nPauseStartTick")]
-	public ref Int32 PauseStartTick => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nPauseStartTick");
-
 	// m_bServerPaused
 	[SchemaMember("CCSGameRules", "m_bServerPaused")]
 	public ref bool ServerPaused => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bServerPaused");
-
-	// m_bGamePaused
-	[SchemaMember("CCSGameRules", "m_bGamePaused")]
-	public ref bool GamePaused => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bGamePaused");
 
 	// m_bTerroristTimeOutActive
 	[SchemaMember("CCSGameRules", "m_bTerroristTimeOutActive")]
@@ -246,46 +226,6 @@ public partial class CCSGameRules : CTeamplayRules
 	[SchemaMember("CCSGameRules", "m_bIsHltvActive")]
 	public ref bool IsHltvActive => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bIsHltvActive");
 
-	// m_nGuardianModeWaveNumber
-	[SchemaMember("CCSGameRules", "m_nGuardianModeWaveNumber")]
-	public ref Int32 GuardianModeWaveNumber => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nGuardianModeWaveNumber");
-
-	// m_nGuardianModeSpecialKillsRemaining
-	[SchemaMember("CCSGameRules", "m_nGuardianModeSpecialKillsRemaining")]
-	public ref Int32 GuardianModeSpecialKillsRemaining => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nGuardianModeSpecialKillsRemaining");
-
-	// m_nGuardianModeSpecialWeaponNeeded
-	[SchemaMember("CCSGameRules", "m_nGuardianModeSpecialWeaponNeeded")]
-	public ref Int32 GuardianModeSpecialWeaponNeeded => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nGuardianModeSpecialWeaponNeeded");
-
-	// m_nGuardianGrenadesToGiveBots
-	[SchemaMember("CCSGameRules", "m_nGuardianGrenadesToGiveBots")]
-	public ref Int32 GuardianGrenadesToGiveBots => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nGuardianGrenadesToGiveBots");
-
-	// m_nNumHeaviesToSpawn
-	[SchemaMember("CCSGameRules", "m_nNumHeaviesToSpawn")]
-	public ref Int32 NumHeaviesToSpawn => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nNumHeaviesToSpawn");
-
-	// m_numGlobalGiftsGiven
-	[SchemaMember("CCSGameRules", "m_numGlobalGiftsGiven")]
-	public ref UInt32 NumGlobalGiftsGiven => ref Schema.GetRef<UInt32>(this.Handle, "CCSGameRules", "m_numGlobalGiftsGiven");
-
-	// m_numGlobalGifters
-	[SchemaMember("CCSGameRules", "m_numGlobalGifters")]
-	public ref UInt32 NumGlobalGifters => ref Schema.GetRef<UInt32>(this.Handle, "CCSGameRules", "m_numGlobalGifters");
-
-	// m_numGlobalGiftsPeriodSeconds
-	[SchemaMember("CCSGameRules", "m_numGlobalGiftsPeriodSeconds")]
-	public ref UInt32 NumGlobalGiftsPeriodSeconds => ref Schema.GetRef<UInt32>(this.Handle, "CCSGameRules", "m_numGlobalGiftsPeriodSeconds");
-
-	// m_arrFeaturedGiftersAccounts
-	[SchemaMember("CCSGameRules", "m_arrFeaturedGiftersAccounts")]
-	public Span<UInt32> FeaturedGiftersAccounts => Schema.GetFixedArray<UInt32>(this.Handle, "CCSGameRules", "m_arrFeaturedGiftersAccounts", 4);
-
-	// m_arrFeaturedGiftersGifts
-	[SchemaMember("CCSGameRules", "m_arrFeaturedGiftersGifts")]
-	public Span<UInt32> FeaturedGiftersGifts => Schema.GetFixedArray<UInt32>(this.Handle, "CCSGameRules", "m_arrFeaturedGiftersGifts", 4);
-
 	// m_arrProhibitedItemIndices
 	[SchemaMember("CCSGameRules", "m_arrProhibitedItemIndices")]
 	public Span<UInt16> ProhibitedItemIndices => Schema.GetFixedArray<UInt16>(this.Handle, "CCSGameRules", "m_arrProhibitedItemIndices", 100);
@@ -326,10 +266,6 @@ public partial class CCSGameRules : CTeamplayRules
 	[SchemaMember("CCSGameRules", "m_bCTCantBuy")]
 	public ref bool CTCantBuy => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bCTCantBuy");
 
-	// m_flGuardianBuyUntilTime
-	[SchemaMember("CCSGameRules", "m_flGuardianBuyUntilTime")]
-	public ref float GuardianBuyUntilTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flGuardianBuyUntilTime");
-
 	// m_iMatchStats_RoundResults
 	[SchemaMember("CCSGameRules", "m_iMatchStats_RoundResults")]
 	public Span<Int32> MatchStats_RoundResults => Schema.GetFixedArray<Int32>(this.Handle, "CCSGameRules", "m_iMatchStats_RoundResults", 30);
@@ -365,10 +301,6 @@ public partial class CCSGameRules : CTeamplayRules
 	// m_MinimapVerticalSectionHeights
 	[SchemaMember("CCSGameRules", "m_MinimapVerticalSectionHeights")]
 	public Span<float> MinimapVerticalSectionHeights => Schema.GetFixedArray<float>(this.Handle, "CCSGameRules", "m_MinimapVerticalSectionHeights", 8);
-
-	// m_bDontIncrementCoopWave
-	[SchemaMember("CCSGameRules", "m_bDontIncrementCoopWave")]
-	public ref bool DontIncrementCoopWave => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bDontIncrementCoopWave");
 
 	// m_bSpawnedTerrorHuntHeavy
 	[SchemaMember("CCSGameRules", "m_bSpawnedTerrorHuntHeavy")]
@@ -530,26 +462,6 @@ public partial class CCSGameRules : CTeamplayRules
 	[SchemaMember("CCSGameRules", "m_flMatchInfoDecidedTime")]
 	public ref float MatchInfoDecidedTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flMatchInfoDecidedTime");
 
-	// m_flCoopRespawnAndHealTime
-	[SchemaMember("CCSGameRules", "m_flCoopRespawnAndHealTime")]
-	public ref float CoopRespawnAndHealTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flCoopRespawnAndHealTime");
-
-	// m_coopBonusCoinsFound
-	[SchemaMember("CCSGameRules", "m_coopBonusCoinsFound")]
-	public ref Int32 CoopBonusCoinsFound => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_coopBonusCoinsFound");
-
-	// m_coopBonusPistolsOnly
-	[SchemaMember("CCSGameRules", "m_coopBonusPistolsOnly")]
-	public ref bool CoopBonusPistolsOnly => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_coopBonusPistolsOnly");
-
-	// m_coopPlayersInDeploymentZone
-	[SchemaMember("CCSGameRules", "m_coopPlayersInDeploymentZone")]
-	public ref bool CoopPlayersInDeploymentZone => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_coopPlayersInDeploymentZone");
-
-	// m_coopMissionDeadPlayerRespawnEnabled
-	[SchemaMember("CCSGameRules", "m_coopMissionDeadPlayerRespawnEnabled")]
-	public ref bool CoopMissionDeadPlayerRespawnEnabled => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_coopMissionDeadPlayerRespawnEnabled");
-
 	// mTeamDMLastWinningTeamNumber
 	[SchemaMember("CCSGameRules", "mTeamDMLastWinningTeamNumber")]
 	public ref Int32 MTeamDMLastWinningTeamNumber => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "mTeamDMLastWinningTeamNumber");
@@ -585,10 +497,6 @@ public partial class CCSGameRules : CTeamplayRules
 	// m_iMaxNumCTs
 	[SchemaMember("CCSGameRules", "m_iMaxNumCTs")]
 	public ref Int32 MaxNumCTs => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iMaxNumCTs");
-
-	// m_iLoserBonus
-	[SchemaMember("CCSGameRules", "m_iLoserBonus")]
-	public ref Int32 LoserBonus => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iLoserBonus");
 
 	// m_iLoserBonusMostRecentTeam
 	[SchemaMember("CCSGameRules", "m_iLoserBonusMostRecentTeam")]
@@ -766,10 +674,6 @@ public partial class CCSGameRules : CTeamplayRules
 	[SchemaMember("CCSGameRules", "m_bHasTriggeredRoundStartMusic")]
 	public ref bool HasTriggeredRoundStartMusic => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bHasTriggeredRoundStartMusic");
 
-	// m_bHasTriggeredCoopSpawnReset
-	[SchemaMember("CCSGameRules", "m_bHasTriggeredCoopSpawnReset")]
-	public ref bool HasTriggeredCoopSpawnReset => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bHasTriggeredCoopSpawnReset");
-
 	// m_bSwitchingTeamsAtRoundReset
 	[SchemaMember("CCSGameRules", "m_bSwitchingTeamsAtRoundReset")]
 	public ref bool SwitchingTeamsAtRoundReset => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bSwitchingTeamsAtRoundReset");
@@ -785,14 +689,6 @@ public partial class CCSGameRules : CTeamplayRules
 	// m_RetakeRules
 	[SchemaMember("CCSGameRules", "m_RetakeRules")]
 	public CRetakeGameRules RetakeRules => Schema.GetDeclaredClass<CRetakeGameRules>(this.Handle, "CCSGameRules", "m_RetakeRules");
-
-	// m_GuardianBotSkillLevelMax
-	[SchemaMember("CCSGameRules", "m_GuardianBotSkillLevelMax")]
-	public ref Int32 GuardianBotSkillLevelMax => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_GuardianBotSkillLevelMax");
-
-	// m_GuardianBotSkillLevelMin
-	[SchemaMember("CCSGameRules", "m_GuardianBotSkillLevelMin")]
-	public ref Int32 GuardianBotSkillLevelMin => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_GuardianBotSkillLevelMin");
 
 	// m_arrTeamUniqueKillWeaponsMatch
 	[SchemaMember("CCSGameRules", "m_arrTeamUniqueKillWeaponsMatch")]
@@ -901,9 +797,5 @@ public partial class CCSGameRules : CTeamplayRules
 	// m_flLastPerfSampleTime
 	[SchemaMember("CCSGameRules", "m_flLastPerfSampleTime")]
 	public ref double LastPerfSampleTime => ref Schema.GetRef<double>(this.Handle, "CCSGameRules", "m_flLastPerfSampleTime");
-
-	// m_bSkipNextServerPerfSample
-	[SchemaMember("CCSGameRules", "m_bSkipNextServerPerfSample")]
-	public ref bool SkipNextServerPerfSample => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bSkipNextServerPerfSample");
 
 }

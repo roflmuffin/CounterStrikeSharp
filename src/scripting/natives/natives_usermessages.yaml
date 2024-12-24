@@ -1,0 +1,34 @@
+HOOK_USERMESSAGE: messageId:int, callback:func, mode:HookMode -> void
+UNHOOK_USERMESSAGE: messageId:int, callback:func, mode:HookMode -> void
+PB_HASFIELD: message:UserMessage, name:string -> bool
+PB_READINT: message:UserMessage, name:string, index:int -> int
+PB_READINT64: message:UserMessage, name:string, index:int -> long
+PB_READFLOAT: message:UserMessage, name:string, index:int -> float
+PB_READBOOL: message:UserMessage, name:string, index:int -> bool
+PB_READSTRING: message:UserMessage, name:string, index:int -> string
+PB_GETREPEATEDFIELDCOUNT: message:UserMessage, name:string -> int
+PB_SETINT: message:UserMessage, name:string, value:int, index:int -> void
+PB_SETINT64: message:UserMessage, name:string, value:long, index:int -> void
+PB_SETFLOAT: message:UserMessage, name:string, value:float, index:int -> void
+PB_SETBOOL: message:UserMessage, name:string, value:bool, index:int -> void
+PB_SETSTRING: message:UserMessage, name:string, value:string, index:int -> void
+PB_ADDINT: message:UserMessage, name:string, value:int -> void
+PB_ADDINT64: message:UserMessage, name:string, value:int64 -> void
+PB_ADDFLOAT: message:UserMessage, name:string, value:float -> void
+PB_ADDBOOL: message:UserMessage, name:string, value:bool -> void
+PB_ADDSTRING: message:UserMessage, name:string, value:string -> void
+PB_REMOVEREPEATEDFIELDVALUE: message:UserMessage, name:string, index:int -> void
+#PB_READMESSAGE: message:UserMessage, name:string -> UserMessage
+#PB_READREPEATEDMESSAGE: message:UserMessage, name:string, index:int -> UserMessage
+#PB_ADDMESSAGE: message:UserMessage, name:string -> UserMessage
+PB_GETDEBUGSTRING: message:UserMessage -> string
+USERMESSAGE_GETRECIPIENTS: message:UserMessage -> uint64
+USERMESSAGE_SETRECIPIENTS: message:UserMessage, recipients:uint64 -> void
+USERMESSAGE_FINDMESSAGEIDBYNAME: name:string -> int
+USERMESSAGE_CREATE: name:string -> pointer
+USERMESSAGE_CREATEBYID: id:int -> pointer
+USERMESSAGE_SEND: message:UserMessage -> void
+USERMESSAGE_DELETE: message:UserMessage -> void
+USERMESSAGE_GETID: message:UserMessage -> int
+USERMESSAGE_GETNAME: message:UserMessage -> string
+USERMESSAGE_GETTYPE: message:UserMessage -> string

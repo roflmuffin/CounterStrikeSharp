@@ -36,14 +36,14 @@ public partial class CNetworkOriginCellCoordQuantizedVector : NativeObject
 
 	// m_vecX
 	[SchemaMember("CNetworkOriginCellCoordQuantizedVector", "m_vecX")]
-	public float X => Schema.GetDeclaredClass<float>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_vecX");
+	public ref float X => ref Schema.GetRef<float>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_vecX");
 
 	// m_vecY
 	[SchemaMember("CNetworkOriginCellCoordQuantizedVector", "m_vecY")]
-	public float Y => Schema.GetDeclaredClass<float>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_vecY");
+	public ref float Y => ref Schema.GetRef<float>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_vecY");
 
 	// m_vecZ
 	[SchemaMember("CNetworkOriginCellCoordQuantizedVector", "m_vecZ")]
-	public float Z => Schema.GetDeclaredClass<float>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_vecZ");
+	public ref float Z => ref Schema.GetRef<float>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_vecZ");
 
 }

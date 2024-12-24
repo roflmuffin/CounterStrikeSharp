@@ -40,6 +40,8 @@ class CCoreConfig
     bool PluginHotReloadEnabled = true;
     bool PluginAutoLoadEnabled = true;
     std::string ServerLanguage = "en";
+    bool UnlockConCommands = true;
+    bool UnlockConVars = true;
     SteamAuthStrictness SteamAuth = Strict;
 
     using json = nlohmann::json;

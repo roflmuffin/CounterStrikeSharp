@@ -22,14 +22,6 @@ public partial class CChicken : CDynamicProp
 	[SchemaMember("CChicken", "m_AttributeManager")]
 	public CAttributeContainer AttributeManager => Schema.GetDeclaredClass<CAttributeContainer>(this.Handle, "CChicken", "m_AttributeManager");
 
-	// m_OriginalOwnerXuidLow
-	[SchemaMember("CChicken", "m_OriginalOwnerXuidLow")]
-	public ref UInt32 OriginalOwnerXuidLow => ref Schema.GetRef<UInt32>(this.Handle, "CChicken", "m_OriginalOwnerXuidLow");
-
-	// m_OriginalOwnerXuidHigh
-	[SchemaMember("CChicken", "m_OriginalOwnerXuidHigh")]
-	public ref UInt32 OriginalOwnerXuidHigh => ref Schema.GetRef<UInt32>(this.Handle, "CChicken", "m_OriginalOwnerXuidHigh");
-
 	// m_updateTimer
 	[SchemaMember("CChicken", "m_updateTimer")]
 	public CountdownTimer UpdateTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_updateTimer");
@@ -54,9 +46,13 @@ public partial class CChicken : CDynamicProp
 	[SchemaMember("CChicken", "m_vFallVelocity")]
 	public Vector FallVelocity => Schema.GetDeclaredClass<Vector>(this.Handle, "CChicken", "m_vFallVelocity");
 
-	// m_activity
-	[SchemaMember("CChicken", "m_activity")]
-	public ref ChickenActivity Activity => ref Schema.GetRef<ChickenActivity>(this.Handle, "CChicken", "m_activity");
+	// m_desiredActivity
+	[SchemaMember("CChicken", "m_desiredActivity")]
+	public ref ChickenActivity DesiredActivity => ref Schema.GetRef<ChickenActivity>(this.Handle, "CChicken", "m_desiredActivity");
+
+	// m_currentActivity
+	[SchemaMember("CChicken", "m_currentActivity")]
+	public ref ChickenActivity CurrentActivity => ref Schema.GetRef<ChickenActivity>(this.Handle, "CChicken", "m_currentActivity");
 
 	// m_activityTimer
 	[SchemaMember("CChicken", "m_activityTimer")]
@@ -114,21 +110,9 @@ public partial class CChicken : CDynamicProp
 	[SchemaMember("CChicken", "m_bInJump")]
 	public ref bool InJump => ref Schema.GetRef<bool>(this.Handle, "CChicken", "m_bInJump");
 
-	// m_isWaitingForLeader
-	[SchemaMember("CChicken", "m_isWaitingForLeader")]
-	public ref bool IsWaitingForLeader => ref Schema.GetRef<bool>(this.Handle, "CChicken", "m_isWaitingForLeader");
-
 	// m_repathTimer
 	[SchemaMember("CChicken", "m_repathTimer")]
 	public CountdownTimer RepathTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_repathTimer");
-
-	// m_inhibitDoorTimer
-	[SchemaMember("CChicken", "m_inhibitDoorTimer")]
-	public CountdownTimer InhibitDoorTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_inhibitDoorTimer");
-
-	// m_inhibitObstacleAvoidanceTimer
-	[SchemaMember("CChicken", "m_inhibitObstacleAvoidanceTimer")]
-	public CountdownTimer InhibitObstacleAvoidanceTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_inhibitObstacleAvoidanceTimer");
 
 	// m_vecPathGoal
 	[SchemaMember("CChicken", "m_vecPathGoal")]
@@ -141,14 +125,6 @@ public partial class CChicken : CDynamicProp
 	// m_followMinuteTimer
 	[SchemaMember("CChicken", "m_followMinuteTimer")]
 	public CountdownTimer FollowMinuteTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_followMinuteTimer");
-
-	// m_vecLastEggPoopPosition
-	[SchemaMember("CChicken", "m_vecLastEggPoopPosition")]
-	public Vector LastEggPoopPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CChicken", "m_vecLastEggPoopPosition");
-
-	// m_vecEggsPooped
-	[SchemaMember("CChicken", "m_vecEggsPooped")]
-	public NetworkedVector<CHandle<CBaseEntity>> EggsPooped => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CChicken", "m_vecEggsPooped");
 
 	// m_BlockDirectionTimer
 	[SchemaMember("CChicken", "m_BlockDirectionTimer")]

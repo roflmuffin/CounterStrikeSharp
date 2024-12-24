@@ -1,4 +1,4 @@
-﻿/**
+/**
  * This project has been copied & modified from the demofile-net project under the MIT license.
  * See ACKNOWLEDGEMENTS file for more information.
  * https://github.com/saul/demofile-net
@@ -29,7 +29,10 @@ internal static partial class Program
         "SpawnPointCoopEnemy::BotDefaultBehavior_t",
         "CLogicBranchList::LogicBranchListenerLastState_t",
         "SimpleConstraintSoundProfile::SimpleConstraintsSoundProfileKeypoints_t",
-        "MoodAnimationLayer_t"
+        "MoodAnimationLayer_t",
+        "SoundeventPathCornerPairNetworked_t",
+        "AISound_t",
+        "CAttachmentNameSymbolWithStorage"
     };
 
     private static readonly IReadOnlySet<string> IgnoreClassWildcards = new HashSet<string>
@@ -292,6 +295,7 @@ internal static partial class Program
                 builder.AppendLine($"\t}}");
                 builder.AppendLine();
             }
+
             if (field.Type is { Category: SchemaTypeCategory.FixedArray, CsTypeName: "string" })
             {
                 var getter = $"return Schema.GetString({handleParams});";

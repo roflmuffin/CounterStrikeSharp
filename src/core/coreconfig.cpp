@@ -66,6 +66,8 @@ bool CCoreConfig::Init(char* conf_error, int conf_error_size)
         PluginHotReloadEnabled = m_json.value("PluginHotReloadEnabled", PluginHotReloadEnabled);
         PluginAutoLoadEnabled = m_json.value("PluginAutoLoadEnabled", PluginAutoLoadEnabled);
         ServerLanguage = m_json.value("ServerLanguage", ServerLanguage);
+        UnlockConCommands = m_json.value("UnlockConCommands", UnlockConCommands);
+        UnlockConVars = m_json.value("UnlockConVars", UnlockConVars);
         SteamAuth = m_json["SteamAuth"].template get<SteamAuthStrictness>();
     }
     catch (const std::exception& ex)

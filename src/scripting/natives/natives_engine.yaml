@@ -6,6 +6,7 @@ GET_CURRENT_TIME: -> float
 GET_TICK_COUNT: -> int
 GET_ENGINE_TIME: -> double
 GET_MAX_CLIENTS: -> int
+GET_GAME_FRAME_TIME: -> float
 ISSUE_SERVER_COMMAND: command:string -> void
 PRECACHE_MODEL: name:string -> void
 PRECACHE_SOUND: name:string, preload:bool -> bool
@@ -26,3 +27,4 @@ QUEUE_TASK_FOR_NEXT_WORLD_UPDATE: callback:func -> void
 GET_VALVE_INTERFACE: interfaceType:int, interfaceName:string -> pointer
 GET_COMMAND_PARAM_VALUE: param:string, dataType:DataType_t, defaultValue:any -> any
 PRINT_TO_SERVER_CONSOLE: msg:string -> void
+DISCONNECT_CLIENT: slot:int, reason:int -> void

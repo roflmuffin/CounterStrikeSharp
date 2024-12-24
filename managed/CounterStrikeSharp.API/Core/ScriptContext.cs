@@ -28,6 +28,7 @@ using System.Collections.Concurrent;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
+using CounterStrikeSharp.API.Modules.Utils;
 
 namespace CounterStrikeSharp.API.Core
 {
@@ -82,6 +83,8 @@ namespace CounterStrikeSharp.API.Core
 
 		internal fxScriptContext m_extContext = new fxScriptContext();
 
+        internal bool isCleanupLocked = false;
+
 		[SecuritySafeCritical]
 		public void Reset()
 		{
@@ -100,8 +103,16 @@ namespace CounterStrikeSharp.API.Core
 		[SecuritySafeCritical]
 		public void Invoke()
 		{
-			InvokeNativeInternal();
-			GlobalCleanUp();
+            if (!isCleanupLocked)
+            {
+                isCleanupLocked = true;
+                InvokeNativeInternal();
+                GlobalCleanUp();
+                isCleanupLocked = false;
+                return;
+            }
+
+            InvokeNativeInternal();
 		}
 
 		[SecurityCritical]
@@ -205,6 +216,15 @@ namespace CounterStrikeSharp.API.Core
 
 				return;
 			}
+            else if (arg is IMarshalToNative marshalToNative)
+            {
+                foreach (var value in marshalToNative.GetNativeObject())
+                {
+                    Push(context ,value);
+                }
+
+                return;
+            }
 			else if (arg is NativeObject nativeObject)
 			{
 				Push(context, (InputArgument)nativeObject);

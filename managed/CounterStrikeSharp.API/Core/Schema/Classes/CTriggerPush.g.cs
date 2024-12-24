@@ -30,4 +30,24 @@ public partial class CTriggerPush : CBaseTrigger
 	[SchemaMember("CTriggerPush", "m_bTriggerOnStartTouch")]
 	public ref bool TriggerOnStartTouch => ref Schema.GetRef<bool>(this.Handle, "CTriggerPush", "m_bTriggerOnStartTouch");
 
+	// m_bUsePathSimple
+	[SchemaMember("CTriggerPush", "m_bUsePathSimple")]
+	public ref bool UsePathSimple => ref Schema.GetRef<bool>(this.Handle, "CTriggerPush", "m_bUsePathSimple");
+
+	// m_iszPathSimpleName
+	[SchemaMember("CTriggerPush", "m_iszPathSimpleName")]
+	public string PathSimpleName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CTriggerPush", "m_iszPathSimpleName"); }
+		set { Schema.SetString(this.Handle, "CTriggerPush", "m_iszPathSimpleName", value); }
+	}
+
+	// m_PathSimple
+	[SchemaMember("CTriggerPush", "m_PathSimple")]
+	public CPathSimple? PathSimple => Schema.GetPointer<CPathSimple>(this.Handle, "CTriggerPush", "m_PathSimple");
+
+	// m_splinePushType
+	[SchemaMember("CTriggerPush", "m_splinePushType")]
+	public ref UInt32 SplinePushType => ref Schema.GetRef<UInt32>(this.Handle, "CTriggerPush", "m_splinePushType");
+
 }

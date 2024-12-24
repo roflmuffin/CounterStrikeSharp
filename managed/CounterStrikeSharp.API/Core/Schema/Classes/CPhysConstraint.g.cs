@@ -34,6 +34,30 @@ public partial class CPhysConstraint : CLogicalEntity
 		set { Schema.SetString(this.Handle, "CPhysConstraint", "m_nameAttach2", value); }
 	}
 
+	// m_hAttach1
+	[SchemaMember("CPhysConstraint", "m_hAttach1")]
+	public CHandle<CBaseEntity> Attach1 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysConstraint", "m_hAttach1");
+
+	// m_hAttach2
+	[SchemaMember("CPhysConstraint", "m_hAttach2")]
+	public CHandle<CBaseEntity> Attach2 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysConstraint", "m_hAttach2");
+
+	// m_nameAttachment1
+	[SchemaMember("CPhysConstraint", "m_nameAttachment1")]
+	public string NameAttachment1
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CPhysConstraint", "m_nameAttachment1"); }
+		set { Schema.SetString(this.Handle, "CPhysConstraint", "m_nameAttachment1", value); }
+	}
+
+	// m_nameAttachment2
+	[SchemaMember("CPhysConstraint", "m_nameAttachment2")]
+	public string NameAttachment2
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CPhysConstraint", "m_nameAttachment2"); }
+		set { Schema.SetString(this.Handle, "CPhysConstraint", "m_nameAttachment2", value); }
+	}
+
 	// m_breakSound
 	[SchemaMember("CPhysConstraint", "m_breakSound")]
 	public string BreakSound
@@ -57,6 +81,10 @@ public partial class CPhysConstraint : CLogicalEntity
 	// m_minTeleportDistance
 	[SchemaMember("CPhysConstraint", "m_minTeleportDistance")]
 	public ref float MinTeleportDistance => ref Schema.GetRef<float>(this.Handle, "CPhysConstraint", "m_minTeleportDistance");
+
+	// m_bSnapObjectPositions
+	[SchemaMember("CPhysConstraint", "m_bSnapObjectPositions")]
+	public ref bool SnapObjectPositions => ref Schema.GetRef<bool>(this.Handle, "CPhysConstraint", "m_bSnapObjectPositions");
 
 	// m_OnBreak
 	[SchemaMember("CPhysConstraint", "m_OnBreak")]

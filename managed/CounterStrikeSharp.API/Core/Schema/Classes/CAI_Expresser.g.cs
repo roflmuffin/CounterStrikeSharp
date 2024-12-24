@@ -46,6 +46,10 @@ public partial class CAI_Expresser : NativeObject
 	[SchemaMember("CAI_Expresser", "m_bConsiderSceneInvolvementAsSpeech")]
 	public ref bool ConsiderSceneInvolvementAsSpeech => ref Schema.GetRef<bool>(this.Handle, "CAI_Expresser", "m_bConsiderSceneInvolvementAsSpeech");
 
+	// m_bSceneEntityDisabled
+	[SchemaMember("CAI_Expresser", "m_bSceneEntityDisabled")]
+	public ref bool SceneEntityDisabled => ref Schema.GetRef<bool>(this.Handle, "CAI_Expresser", "m_bSceneEntityDisabled");
+
 	// m_nLastSpokenPriority
 	[SchemaMember("CAI_Expresser", "m_nLastSpokenPriority")]
 	public ref Int32 LastSpokenPriority => ref Schema.GetRef<Int32>(this.Handle, "CAI_Expresser", "m_nLastSpokenPriority");

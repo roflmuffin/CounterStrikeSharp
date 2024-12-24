@@ -34,4 +34,8 @@ public partial class CTriggerTeleport : CBaseTrigger
 	[SchemaMember("CTriggerTeleport", "m_bMirrorPlayer")]
 	public ref bool MirrorPlayer => ref Schema.GetRef<bool>(this.Handle, "CTriggerTeleport", "m_bMirrorPlayer");
 
+	// m_bCheckDestIfClearForPlayer
+	[SchemaMember("CTriggerTeleport", "m_bCheckDestIfClearForPlayer")]
+	public ref bool CheckDestIfClearForPlayer => ref Schema.GetRef<bool>(this.Handle, "CTriggerTeleport", "m_bCheckDestIfClearForPlayer");
+
 }

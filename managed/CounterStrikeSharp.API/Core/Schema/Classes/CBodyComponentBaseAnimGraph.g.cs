@@ -22,8 +22,4 @@ public partial class CBodyComponentBaseAnimGraph : CBodyComponentSkeletonInstanc
 	[SchemaMember("CBodyComponentBaseAnimGraph", "m_animationController")]
 	public CBaseAnimGraphController AnimationController => Schema.GetDeclaredClass<CBaseAnimGraphController>(this.Handle, "CBodyComponentBaseAnimGraph", "m_animationController");
 
-	// __m_pChainEntity
-	[SchemaMember("CBodyComponentBaseAnimGraph", "__m_pChainEntity")]
-	public CNetworkVarChainer __m_pChainEntity => Schema.GetDeclaredClass<CNetworkVarChainer>(this.Handle, "CBodyComponentBaseAnimGraph", "__m_pChainEntity");
-
 }

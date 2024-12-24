@@ -22,6 +22,10 @@ public partial class CItem : CBaseAnimGraph
 	[SchemaMember("CItem", "m_OnPlayerTouch")]
 	public CEntityIOOutput OnPlayerTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItem", "m_OnPlayerTouch");
 
+	// m_OnPlayerPickup
+	[SchemaMember("CItem", "m_OnPlayerPickup")]
+	public CEntityIOOutput OnPlayerPickup => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItem", "m_OnPlayerPickup");
+
 	// m_bActivateWhenAtRest
 	[SchemaMember("CItem", "m_bActivateWhenAtRest")]
 	public ref bool ActivateWhenAtRest => ref Schema.GetRef<bool>(this.Handle, "CItem", "m_bActivateWhenAtRest");
@@ -29,10 +33,6 @@ public partial class CItem : CBaseAnimGraph
 	// m_OnCacheInteraction
 	[SchemaMember("CItem", "m_OnCacheInteraction")]
 	public CEntityIOOutput OnCacheInteraction => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItem", "m_OnCacheInteraction");
-
-	// m_OnPlayerPickup
-	[SchemaMember("CItem", "m_OnPlayerPickup")]
-	public CEntityIOOutput OnPlayerPickup => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CItem", "m_OnPlayerPickup");
 
 	// m_OnGlovePulled
 	[SchemaMember("CItem", "m_OnGlovePulled")]

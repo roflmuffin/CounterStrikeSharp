@@ -20,11 +20,11 @@ public partial class CAISound : CPointEntity
 
 	// m_iSoundType
 	[SchemaMember("CAISound", "m_iSoundType")]
-	public ref Int32 SoundType => ref Schema.GetRef<Int32>(this.Handle, "CAISound", "m_iSoundType");
+	public ref SoundTypes_t SoundType => ref Schema.GetRef<SoundTypes_t>(this.Handle, "CAISound", "m_iSoundType");
 
-	// m_iSoundContext
-	[SchemaMember("CAISound", "m_iSoundContext")]
-	public ref Int32 SoundContext => ref Schema.GetRef<Int32>(this.Handle, "CAISound", "m_iSoundContext");
+	// m_iSoundFlags
+	[SchemaMember("CAISound", "m_iSoundFlags")]
+	public ref SoundFlags_t SoundFlags => ref Schema.GetRef<SoundFlags_t>(this.Handle, "CAISound", "m_iSoundFlags");
 
 	// m_iVolume
 	[SchemaMember("CAISound", "m_iVolume")]

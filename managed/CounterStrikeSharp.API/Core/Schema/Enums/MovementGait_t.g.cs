@@ -9,8 +9,9 @@ namespace CounterStrikeSharp.API.Core;
 public enum MovementGait_t : byte
 {
 	eInvalid = 0xFF,
-	eWalk = 0x0,
-	eJog = 0x1,
-	eRun = 0x2,
-	eSprint = 0x3,
+	eSlow = 0x0,
+	eMedium = 0x1,
+	eFast = 0x2,
+	eVeryFast = 0x3,
+	eCount = 0x4,
 }

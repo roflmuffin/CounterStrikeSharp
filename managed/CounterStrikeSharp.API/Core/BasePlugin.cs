@@ -30,6 +30,7 @@ using CounterStrikeSharp.API.Modules.Timers;
 using CounterStrikeSharp.API.Modules.Config;
 using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API.Modules.Entities;
+using CounterStrikeSharp.API.Modules.UserMessages;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
@@ -115,9 +116,6 @@ namespace CounterStrikeSharp.API.Core
 
         public readonly Dictionary<Delegate, CallbackSubscriber> Handlers =
             new Dictionary<Delegate, CallbackSubscriber>();
-
-        public readonly Dictionary<Delegate, CallbackSubscriber> CommandHandlers =
-            new Dictionary<Delegate, CallbackSubscriber>();
         
         public readonly Dictionary<Delegate, CallbackSubscriber> CommandListeners =
             new Dictionary<Delegate, CallbackSubscriber>();
@@ -130,6 +128,8 @@ namespace CounterStrikeSharp.API.Core
 
         internal readonly Dictionary<Delegate, EntityIO.EntityOutputCallback> EntitySingleOutputHooks =
             new Dictionary<Delegate, EntityIO.EntityOutputCallback>();
+
+        public readonly List<CommandDefinition> CommandDefinitions = new List<CommandDefinition>();
 
         public readonly List<Timer> Timers = new List<Timer>();
         
@@ -192,11 +192,13 @@ namespace CounterStrikeSharp.API.Core
         public void AddCommand(string name, string description, CommandInfo.CommandCallback handler)
         {
             var definition = new CommandDefinition(name, description, handler);
+            CommandDefinitions.Add(definition);
             CommandManager.RegisterCommand(definition);
         }
         
         private void AddCommand(CommandDefinition definition)
         {
+            CommandDefinitions.Add(definition);
             CommandManager.RegisterCommand(definition);
         }
 
@@ -228,14 +230,13 @@ namespace CounterStrikeSharp.API.Core
         /// <param name="handler">The callback function to be invoked when the command is executed.</param>
         public void RemoveCommand(string name, CommandInfo.CommandCallback handler)
         {
-            if (CommandHandlers.ContainsKey(handler))
+            var definition = CommandDefinitions.FirstOrDefault(
+                definition => definition.Name == name && definition.Callback == handler);
+
+            if (definition != null)
             {
-                var subscriber = CommandHandlers[handler];
-
-                NativeAPI.RemoveCommand(name, subscriber.GetInputArgument());
-
-                FunctionReference.Remove(subscriber.GetReferenceIdentifier());
-                CommandHandlers.Remove(handler);
+                CommandDefinitions.Remove(definition);
+                CommandManager.RemoveCommand(definition);
             }
         }
 
@@ -528,6 +529,24 @@ namespace CounterStrikeSharp.API.Core
             NativeAPI.HookEntityOutput(classname, outputName, subscriber.GetInputArgument(), mode);
             EntityOutputHooks[handler] = subscriber;
         }
+        
+        public void HookUserMessage(int messageId, UserMessage.UserMessageHandler handler, HookMode mode = HookMode.Pre)
+        {
+            var subscriber = new CallbackSubscriber(handler, handler,
+                () => UnhookUserMessage(messageId, handler));
+
+            NativeAPI.HookUsermessage(messageId, subscriber.GetInputArgument(), mode);
+            Handlers[handler] = subscriber;
+        }
+        
+        public void UnhookUserMessage(int messageId, UserMessage.UserMessageHandler handler, HookMode mode = HookMode.Pre)
+        {
+            if (!Handlers.TryGetValue(handler, out var subscriber)) return;
+
+            NativeAPI.UnhookUsermessage(messageId, subscriber.GetInputArgument(), mode);
+            FunctionReference.Remove(subscriber.GetReferenceIdentifier());
+            Handlers.Remove(handler);
+        }
 
         /// <summary>
         /// Unhooks an entity output.
@@ -602,11 +621,6 @@ namespace CounterStrikeSharp.API.Core
             {
                 subscriber.Dispose();
             }
-
-            foreach (var subscriber in CommandHandlers.Values)
-            {
-                subscriber.Dispose();
-            }
             
             foreach (var subscriber in CommandListeners.Values)
             {
@@ -621,6 +635,11 @@ namespace CounterStrikeSharp.API.Core
             foreach (var subscriber in EntityOutputHooks.Values)
             {
                 subscriber.Dispose();
+            }
+
+            foreach (var definition in CommandDefinitions)
+            {
+                CommandManager.RemoveCommand(definition);
             }
 
             foreach (var timer in Timers)

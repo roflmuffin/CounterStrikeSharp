@@ -9,5 +9,7 @@
   "PluginHotReloadEnabled": true,
   "PluginAutoLoadEnabled": true,
   "ServerLanguage": "en",
+  "UnlockConCommands": true,
+  "UnlockConVars": true,
   "SteamAuth": "Strict"
 }

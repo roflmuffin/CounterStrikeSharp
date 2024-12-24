@@ -22,6 +22,10 @@ public partial class CDynamicProp : CBreakableProp
 	[SchemaMember("CDynamicProp", "m_bCreateNavObstacle")]
 	public ref bool CreateNavObstacle => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bCreateNavObstacle");
 
+	// m_bNavObstacleUpdatesOverridden
+	[SchemaMember("CDynamicProp", "m_bNavObstacleUpdatesOverridden")]
+	public ref bool NavObstacleUpdatesOverridden => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bNavObstacleUpdatesOverridden");
+
 	// m_bUseHitboxesForRenderBox
 	[SchemaMember("CDynamicProp", "m_bUseHitboxesForRenderBox")]
 	public ref bool UseHitboxesForRenderBox => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bUseHitboxesForRenderBox");

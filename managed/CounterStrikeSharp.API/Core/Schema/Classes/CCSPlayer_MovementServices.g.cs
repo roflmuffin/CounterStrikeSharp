@@ -98,6 +98,10 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 	[SchemaMember("CCSPlayer_MovementServices", "m_bSpeedCropped")]
 	public ref bool SpeedCropped => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bSpeedCropped");
 
+	// m_flGroundMoveEfficiency
+	[SchemaMember("CCSPlayer_MovementServices", "m_flGroundMoveEfficiency")]
+	public ref float GroundMoveEfficiency => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flGroundMoveEfficiency");
+
 	// m_nOldWaterLevel
 	[SchemaMember("CCSPlayer_MovementServices", "m_nOldWaterLevel")]
 	public ref Int32 OldWaterLevel => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_nOldWaterLevel");
@@ -173,5 +177,9 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 	// m_flMaxJumpHeightThisJump
 	[SchemaMember("CCSPlayer_MovementServices", "m_flMaxJumpHeightThisJump")]
 	public ref float MaxJumpHeightThisJump => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flMaxJumpHeightThisJump");
+
+	// m_flMaxJumpHeightLastJump
+	[SchemaMember("CCSPlayer_MovementServices", "m_flMaxJumpHeightLastJump")]
+	public ref float MaxJumpHeightLastJump => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flMaxJumpHeightLastJump");
 
 }

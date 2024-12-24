@@ -26,8 +26,12 @@ public partial class CCSGameModeRules_Deathmatch : CCSGameModeRules
 	[SchemaMember("CCSGameModeRules_Deathmatch", "m_flDMBonusTimeLength")]
 	public ref float DMBonusTimeLength => ref Schema.GetRef<float>(this.Handle, "CCSGameModeRules_Deathmatch", "m_flDMBonusTimeLength");
 
-	// m_nDMBonusWeaponLoadoutSlot
-	[SchemaMember("CCSGameModeRules_Deathmatch", "m_nDMBonusWeaponLoadoutSlot")]
-	public ref Int16 DMBonusWeaponLoadoutSlot => ref Schema.GetRef<Int16>(this.Handle, "CCSGameModeRules_Deathmatch", "m_nDMBonusWeaponLoadoutSlot");
+	// m_sDMBonusWeapon
+	[SchemaMember("CCSGameModeRules_Deathmatch", "m_sDMBonusWeapon")]
+	public string DMBonusWeapon
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CCSGameModeRules_Deathmatch", "m_sDMBonusWeapon"); }
+		set { Schema.SetString(this.Handle, "CCSGameModeRules_Deathmatch", "m_sDMBonusWeapon", value); }
+	}
 
 }

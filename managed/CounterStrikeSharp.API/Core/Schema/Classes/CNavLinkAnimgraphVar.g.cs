@@ -18,12 +18,12 @@ public partial class CNavLinkAnimgraphVar : NativeObject
 {
     public CNavLinkAnimgraphVar (IntPtr pointer) : base(pointer) {}
 
-	// m_strAnimgraphVar
-	[SchemaMember("CNavLinkAnimgraphVar", "m_strAnimgraphVar")]
-	public string StrAnimgraphVar
+	// m_sAnimGraphNavlinkType
+	[SchemaMember("CNavLinkAnimgraphVar", "m_sAnimGraphNavlinkType")]
+	public string AnimGraphNavlinkType
 	{
-		get { return Schema.GetUtf8String(this.Handle, "CNavLinkAnimgraphVar", "m_strAnimgraphVar"); }
-		set { Schema.SetString(this.Handle, "CNavLinkAnimgraphVar", "m_strAnimgraphVar", value); }
+		get { return Schema.GetUtf8String(this.Handle, "CNavLinkAnimgraphVar", "m_sAnimGraphNavlinkType"); }
+		set { Schema.SetString(this.Handle, "CNavLinkAnimgraphVar", "m_sAnimGraphNavlinkType", value); }
 	}
 
 	// m_unAlignmentDegrees

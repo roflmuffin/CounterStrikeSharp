@@ -19,6 +19,8 @@ items:
     href: WithSharedTypes.md
   - name: Translations
     href: WithTranslations.md
+  - name: User Messages
+    href: WithUserMessages.md
   - name: Voice Overrides
     href: WithVoiceOverrides.md
   - name: Warcraft Plugin
