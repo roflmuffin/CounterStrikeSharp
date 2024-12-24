@@ -2497,7 +2497,36 @@
       ]
     },
     "CAnimGraphControllerBase": {
-      "fields": []
+      "fields": [
+        {
+          "name": "m_sDestructiblePartDestroyedHitGroup",
+          "type": {
+            "atomic": 1,
+            "category": 4,
+            "inner": {
+              "category": 1,
+              "inner": {
+                "category": 0,
+                "name": "char"
+              },
+              "name": "char*"
+            },
+            "name": "CAnimGraphParamOptionalRef< char* >"
+          }
+        },
+        {
+          "name": "m_nDestructiblePartDestroyedPartIndex",
+          "type": {
+            "atomic": 1,
+            "category": 4,
+            "inner": {
+              "category": 0,
+              "name": "int32"
+            },
+            "name": "CAnimGraphParamOptionalRef< int32 >"
+          }
+        }
+      ]
     },
     "CAnimGraphDebugReplay": {
       "fields": [
@@ -5153,6 +5182,13 @@
             "category": 0,
             "name": "bool"
           }
+        },
+        {
+          "name": "m_nLastDestructiblePartDestroyedAnimgraphSetTick",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
         }
       ],
       "parent": "CBaseModelEntity"
@@ -5685,14 +5721,7 @@
           }
         },
         {
-          "name": "m_bHasEverHitPlayer",
-          "type": {
-            "category": 0,
-            "name": "bool"
-          }
-        },
-        {
-          "name": "m_bClearFromPlayers",
+          "name": "m_bHasEverHitEnemy",
           "type": {
             "category": 0,
             "name": "bool"
@@ -5838,13 +5867,6 @@
           "type": {
             "category": 0,
             "name": "float32"
-          }
-        },
-        {
-          "name": "m_LastHitGroup",
-          "type": {
-            "category": 6,
-            "name": "HitGroup_t"
           }
         },
         {
@@ -7082,6 +7104,55 @@
           "type": {
             "category": 5,
             "name": "CHitboxComponent"
+          }
+        },
+        {
+          "name": "m_nDestructiblePartInitialStateDestructed0",
+          "type": {
+            "category": 6,
+            "name": "HitGroup_t"
+          }
+        },
+        {
+          "name": "m_nDestructiblePartInitialStateDestructed1",
+          "type": {
+            "category": 6,
+            "name": "HitGroup_t"
+          }
+        },
+        {
+          "name": "m_nDestructiblePartInitialStateDestructed2",
+          "type": {
+            "category": 6,
+            "name": "HitGroup_t"
+          }
+        },
+        {
+          "name": "m_nDestructiblePartInitialStateDestructed3",
+          "type": {
+            "category": 6,
+            "name": "HitGroup_t"
+          }
+        },
+        {
+          "name": "m_nDestructiblePartInitialStateDestructed4",
+          "type": {
+            "category": 6,
+            "name": "HitGroup_t"
+          }
+        },
+        {
+          "name": "m_nLastHitDestructiblePartIndex",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        },
+        {
+          "name": "m_LastHitGroup",
+          "type": {
+            "category": 6,
+            "name": "HitGroup_t"
           }
         },
         {
@@ -14452,6 +14523,13 @@
           }
         },
         {
+          "name": "m_flLastJoinTeamTime",
+          "type": {
+            "category": 5,
+            "name": "GameTime_t"
+          }
+        },
+        {
           "name": "m_szClan",
           "type": {
             "atomic": 0,
@@ -14805,15 +14883,28 @@
           }
         },
         {
-          "name": "m_vecKills",
+          "name": "m_recentKillQueue",
           "type": {
-            "atomic": 2,
-            "category": 4,
+            "category": 3,
             "inner": {
-              "category": 6,
-              "name": "EKillTypes_t"
+              "category": 0,
+              "name": "uint8"
             },
-            "name": "CNetworkUtlVectorBase< EKillTypes_t >"
+            "name": "uint8[8]"
+          }
+        },
+        {
+          "name": "m_nFirstKill",
+          "type": {
+            "category": 0,
+            "name": "uint8"
+          }
+        },
+        {
+          "name": "m_nKillCount",
+          "type": {
+            "category": 0,
+            "name": "uint8"
           }
         },
         {
@@ -14947,6 +15038,13 @@
           "type": {
             "category": 0,
             "name": "uint32"
+          }
+        },
+        {
+          "name": "m_bFireBulletsSeedSynchronized",
+          "type": {
+            "category": 0,
+            "name": "bool"
           }
         }
       ],
@@ -16487,13 +16585,6 @@
     "CCSPlayer_MovementServices": {
       "fields": [
         {
-          "name": "m_flMaxFallVelocity",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
           "name": "m_vecLadderNormal",
           "type": {
             "atomic": 0,
@@ -16717,20 +16808,6 @@
           }
         },
         {
-          "name": "m_flJumpUntil",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
-          "name": "m_flJumpVel",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
           "name": "m_fStashGrenadeParameterWhen",
           "type": {
             "category": 5,
@@ -16781,6 +16858,20 @@
         },
         {
           "name": "m_flMaxJumpHeightLastJump",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flStaminaAtJumpStart",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flAccumulatedJumpError",
           "type": {
             "category": 0,
             "name": "float32"
@@ -17611,6 +17702,13 @@
         },
         {
           "name": "m_nextPrevOwnerTouchTime",
+          "type": {
+            "category": 5,
+            "name": "GameTime_t"
+          }
+        },
+        {
+          "name": "m_nextPrevOwnerUseTime",
           "type": {
             "category": 5,
             "name": "GameTime_t"
@@ -20348,6 +20446,13 @@
           }
         },
         {
+          "name": "m_iBulletsDamage",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        },
+        {
           "name": "m_iDamage",
           "type": {
             "category": 0,
@@ -20547,6 +20652,156 @@
         }
       ],
       "parent": "CAnimComponentUpdater"
+    },
+    "CDestructiblePartRuntimeData": {
+      "fields": [
+        {
+          "name": "m_nHealthRemaining",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        }
+      ]
+    },
+    "CDestructiblePartRuntimeDataVector": {
+      "fields": [
+        {
+          "name": "m_DestructiblePartsRuntimeData",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "CDestructiblePartRuntimeData"
+            },
+            "name": "CUtlVector< CDestructiblePartRuntimeData >"
+          }
+        }
+      ]
+    },
+    "CDestructiblePartsSystemData": {
+      "fields": [
+        {
+          "name": "m_DestructiblePartsDataByHitGroup",
+          "type": {
+            "atomic": 3,
+            "category": 4,
+            "name": "CUtlOrderedMap< HitGroup_t, CDestructiblePartsSystemData_HitGroupInfoAndPartData >"
+          }
+        }
+      ]
+    },
+    "CDestructiblePartsSystemData_HitGroupInfoAndPartData": {
+      "fields": [
+        {
+          "name": "m_sName",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CUtlString"
+          }
+        },
+        {
+          "name": "m_DestructiblePartsData",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "CDestructiblePartsSystemData_PartData"
+            },
+            "name": "CUtlVector< CDestructiblePartsSystemData_PartData >"
+          }
+        },
+        {
+          "name": "m_bDisableHitGroupWhenDestroyed",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        }
+      ]
+    },
+    "CDestructiblePartsSystemData_PartData": {
+      "fields": [
+        {
+          "name": "m_sName",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CUtlString"
+          }
+        },
+        {
+          "name": "m_sBreakablePieceName",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CGlobalSymbol"
+          }
+        },
+        {
+          "name": "m_sBodyGroupName",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CGlobalSymbol"
+          }
+        },
+        {
+          "name": "m_nBodyGroupValue",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        },
+        {
+          "name": "m_sAnimGraphParamName_PartDestroyed",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CGlobalSymbol"
+          }
+        },
+        {
+          "name": "m_sAnimGraphParamName_PartNormalizedHealth",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CGlobalSymbol"
+          }
+        },
+        {
+          "name": "m_nHealth",
+          "type": {
+            "category": 5,
+            "name": "CSkillInt"
+          }
+        },
+        {
+          "name": "m_nDamagePassthroughType",
+          "type": {
+            "category": 6,
+            "name": "EDestructiblePartDamagePassThroughType"
+          }
+        },
+        {
+          "name": "m_bKillNPCOnDestruction",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_sCustomDeathHandshake",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CGlobalSymbol"
+          }
+        }
+      ]
     },
     "CDirectPlaybackTagData": {
       "fields": [
@@ -24210,14 +24465,6 @@
           }
         },
         {
-          "name": "m_soundscapeName",
-          "type": {
-            "atomic": 0,
-            "category": 4,
-            "name": "CUtlSymbolLarge"
-          }
-        },
-        {
           "name": "m_soundEventName",
           "type": {
             "atomic": 0,
@@ -24244,13 +24491,6 @@
           "type": {
             "category": 0,
             "name": "int32"
-          }
-        },
-        {
-          "name": "m_soundEventHash",
-          "type": {
-            "category": 0,
-            "name": "uint32"
           }
         },
         {
@@ -24283,9 +24523,24 @@
             "category": 0,
             "name": "bool"
           }
+        },
+        {
+          "name": "m_soundscapeName",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CUtlSymbolLarge"
+          }
+        },
+        {
+          "name": "m_soundEventHash",
+          "type": {
+            "category": 0,
+            "name": "uint32"
+          }
         }
       ],
-      "parent": "CServerOnlyEntity"
+      "parent": "CBaseEntity"
     },
     "CEnvSoundscapeAlias_snd_soundscape": {
       "fields": [],
@@ -34846,6 +35101,13 @@
         },
         {
           "name": "m_bFadePlayerVisibilityFarZ",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_bRainTraceToSkyEnabled",
           "type": {
             "category": 0,
             "name": "bool"
@@ -48679,6 +48941,17 @@
           }
         },
         {
+          "name": "m_BackgroundMaterialName",
+          "type": {
+            "category": 3,
+            "inner": {
+              "category": 0,
+              "name": "char"
+            },
+            "name": "char[64]"
+          }
+        },
+        {
           "name": "m_bEnabled",
           "type": {
             "category": 0,
@@ -48708,6 +48981,34 @@
         },
         {
           "name": "m_flDepthOffset",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_bDrawBackground",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_flBackgroundBorderWidth",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flBackgroundBorderHeight",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flBackgroundWorldToUV",
           "type": {
             "category": 0,
             "name": "float32"
@@ -51814,6 +52115,13 @@
         },
         {
           "name": "m_bSaveImportant",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_bCanTakeDamage",
           "type": {
             "category": 0,
             "name": "bool"
@@ -57267,7 +57575,21 @@
               "category": 0,
               "name": "uint8"
             },
-            "name": "CUtlVector< uint8 >"
+            "name": "CNetworkUtlVectorBase< uint8 >"
+          }
+        },
+        {
+          "name": "m_nVoxelFrameDataSize",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        },
+        {
+          "name": "m_nVoxelUpdate",
+          "type": {
+            "category": 0,
+            "name": "int32"
           }
         },
         {
@@ -87420,6 +87742,13 @@
             "category": 0,
             "name": "int32"
           }
+        },
+        {
+          "name": "m_EndEffectorRotationFixUpMode",
+          "type": {
+            "category": 6,
+            "name": "EIKEndEffectorRotationFixUpMode"
+          }
         }
       ]
     },
@@ -92093,6 +92422,13 @@
             "category": 0,
             "name": "bool"
           }
+        },
+        {
+          "name": "m_nHealthToGrant",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
         }
       ]
     },
@@ -94125,13 +94461,6 @@
               "name": "ChainToSolveData_t"
             },
             "name": "CUtlVector< ChainToSolveData_t >"
-          }
-        },
-        {
-          "name": "m_bMatchTargetOrientation",
-          "type": {
-            "category": 0,
-            "name": "bool"
           }
         }
       ]
@@ -101062,6 +101391,23 @@
         }
       ]
     },
+    "EContributionScoreFlag_t": {
+      "align": 1,
+      "items": [
+        {
+          "name": "k_EContributionScoreFlag_Default",
+          "value": 0
+        },
+        {
+          "name": "k_EContributionScoreFlag_Objective",
+          "value": 1
+        },
+        {
+          "name": "k_EContributionScoreFlag_Bullets",
+          "value": 2
+        }
+      ]
+    },
     "EDemoBoneSelectionMode": {
       "align": 4,
       "items": [
@@ -101072,6 +101418,44 @@
         {
           "name": "CaptureSelectedBones",
           "value": 1
+        }
+      ]
+    },
+    "EDestructiblePartDamagePassThroughType": {
+      "align": 4,
+      "items": [
+        {
+          "name": "Normal",
+          "value": 0
+        },
+        {
+          "name": "Absorb",
+          "value": 1
+        }
+      ]
+    },
+    "EIKEndEffectorRotationFixUpMode": {
+      "align": 4,
+      "items": [
+        {
+          "name": "None",
+          "value": 0
+        },
+        {
+          "name": "MatchTargetOrientation",
+          "value": 1
+        },
+        {
+          "name": "LookAtTargetForward",
+          "value": 2
+        },
+        {
+          "name": "MaintainParentOrientation",
+          "value": 3
+        },
+        {
+          "name": "Count",
+          "value": 4
         }
       ]
     },
