@@ -58,6 +58,10 @@ public partial class CDamageRecord : NativeObject
 	[SchemaMember("CDamageRecord", "m_RecipientXuid")]
 	public ref UInt64 RecipientXuid => ref Schema.GetRef<UInt64>(this.Handle, "CDamageRecord", "m_RecipientXuid");
 
+	// m_iBulletsDamage
+	[SchemaMember("CDamageRecord", "m_iBulletsDamage")]
+	public ref Int32 BulletsDamage => ref Schema.GetRef<Int32>(this.Handle, "CDamageRecord", "m_iBulletsDamage");
+
 	// m_iDamage
 	[SchemaMember("CDamageRecord", "m_iDamage")]
 	public ref Int32 Damage => ref Schema.GetRef<Int32>(this.Handle, "CDamageRecord", "m_iDamage");
