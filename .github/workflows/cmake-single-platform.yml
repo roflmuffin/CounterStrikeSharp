@@ -107,7 +107,7 @@ jobs:
         run: |
           mkdir -p build
           cd build
-          cmake -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} ..
+          cmake -G Ninja -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} ..
           cmake --build . --config ${{env.BUILD_TYPE}} -- -j16
 
       - name: Clean build directory
