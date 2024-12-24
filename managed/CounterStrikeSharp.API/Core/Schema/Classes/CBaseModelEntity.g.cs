@@ -26,6 +26,34 @@ public partial class CBaseModelEntity : CBaseEntity
 	[SchemaMember("CBaseModelEntity", "m_CHitboxComponent")]
 	public CHitboxComponent CHitboxComponent => Schema.GetDeclaredClass<CHitboxComponent>(this.Handle, "CBaseModelEntity", "m_CHitboxComponent");
 
+	// m_nDestructiblePartInitialStateDestructed0
+	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed0")]
+	public ref HitGroup_t DestructiblePartInitialStateDestructed0 => ref Schema.GetRef<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed0");
+
+	// m_nDestructiblePartInitialStateDestructed1
+	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed1")]
+	public ref HitGroup_t DestructiblePartInitialStateDestructed1 => ref Schema.GetRef<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed1");
+
+	// m_nDestructiblePartInitialStateDestructed2
+	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed2")]
+	public ref HitGroup_t DestructiblePartInitialStateDestructed2 => ref Schema.GetRef<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed2");
+
+	// m_nDestructiblePartInitialStateDestructed3
+	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed3")]
+	public ref HitGroup_t DestructiblePartInitialStateDestructed3 => ref Schema.GetRef<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed3");
+
+	// m_nDestructiblePartInitialStateDestructed4
+	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed4")]
+	public ref HitGroup_t DestructiblePartInitialStateDestructed4 => ref Schema.GetRef<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed4");
+
+	// m_nLastHitDestructiblePartIndex
+	[SchemaMember("CBaseModelEntity", "m_nLastHitDestructiblePartIndex")]
+	public ref Int32 LastHitDestructiblePartIndex => ref Schema.GetRef<Int32>(this.Handle, "CBaseModelEntity", "m_nLastHitDestructiblePartIndex");
+
+	// m_LastHitGroup
+	[SchemaMember("CBaseModelEntity", "m_LastHitGroup")]
+	public ref HitGroup_t LastHitGroup => ref Schema.GetRef<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_LastHitGroup");
+
 	// m_flDissolveStartTime
 	[SchemaMember("CBaseModelEntity", "m_flDissolveStartTime")]
 	public ref float DissolveStartTime => ref Schema.GetRef<float>(this.Handle, "CBaseModelEntity", "m_flDissolveStartTime");

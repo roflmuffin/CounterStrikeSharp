@@ -30,4 +30,8 @@ public partial class CRagdollManager : CBaseEntity
 	[SchemaMember("CRagdollManager", "m_bSaveImportant")]
 	public ref bool SaveImportant => ref Schema.GetRef<bool>(this.Handle, "CRagdollManager", "m_bSaveImportant");
 
+	// m_bCanTakeDamage
+	[SchemaMember("CRagdollManager", "m_bCanTakeDamage")]
+	public ref bool CanTakeDamage => ref Schema.GetRef<bool>(this.Handle, "CRagdollManager", "m_bCanTakeDamage");
+
 }

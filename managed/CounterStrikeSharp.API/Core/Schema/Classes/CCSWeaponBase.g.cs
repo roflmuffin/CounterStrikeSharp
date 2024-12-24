@@ -222,6 +222,10 @@ public partial class CCSWeaponBase : CBasePlayerWeapon
 	[SchemaMember("CCSWeaponBase", "m_nextPrevOwnerTouchTime")]
 	public ref float NextPrevOwnerTouchTime => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_nextPrevOwnerTouchTime");
 
+	// m_nextPrevOwnerUseTime
+	[SchemaMember("CCSWeaponBase", "m_nextPrevOwnerUseTime")]
+	public ref float NextPrevOwnerUseTime => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_nextPrevOwnerUseTime");
+
 	// m_hPrevOwner
 	[SchemaMember("CCSWeaponBase", "m_hPrevOwner")]
 	public CHandle<CCSPlayerPawn> PrevOwner => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSWeaponBase", "m_hPrevOwner");

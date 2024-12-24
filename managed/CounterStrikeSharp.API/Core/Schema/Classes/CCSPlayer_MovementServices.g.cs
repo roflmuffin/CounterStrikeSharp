@@ -18,10 +18,6 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 {
     public CCSPlayer_MovementServices (IntPtr pointer) : base(pointer) {}
 
-	// m_flMaxFallVelocity
-	[SchemaMember("CCSPlayer_MovementServices", "m_flMaxFallVelocity")]
-	public ref float MaxFallVelocity => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flMaxFallVelocity");
-
 	// m_vecLadderNormal
 	[SchemaMember("CCSPlayer_MovementServices", "m_vecLadderNormal")]
 	public Vector LadderNormal => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayer_MovementServices", "m_vecLadderNormal");
@@ -142,14 +138,6 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 	[SchemaMember("CCSPlayer_MovementServices", "m_flJumpPressedTime")]
 	public ref float JumpPressedTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flJumpPressedTime");
 
-	// m_flJumpUntil
-	[SchemaMember("CCSPlayer_MovementServices", "m_flJumpUntil")]
-	public ref float JumpUntil => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flJumpUntil");
-
-	// m_flJumpVel
-	[SchemaMember("CCSPlayer_MovementServices", "m_flJumpVel")]
-	public ref float JumpVel => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flJumpVel");
-
 	// m_fStashGrenadeParameterWhen
 	[SchemaMember("CCSPlayer_MovementServices", "m_fStashGrenadeParameterWhen")]
 	public ref float StashGrenadeParameterWhen => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_fStashGrenadeParameterWhen");
@@ -181,5 +169,13 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 	// m_flMaxJumpHeightLastJump
 	[SchemaMember("CCSPlayer_MovementServices", "m_flMaxJumpHeightLastJump")]
 	public ref float MaxJumpHeightLastJump => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flMaxJumpHeightLastJump");
+
+	// m_flStaminaAtJumpStart
+	[SchemaMember("CCSPlayer_MovementServices", "m_flStaminaAtJumpStart")]
+	public ref float StaminaAtJumpStart => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flStaminaAtJumpStart");
+
+	// m_flAccumulatedJumpError
+	[SchemaMember("CCSPlayer_MovementServices", "m_flAccumulatedJumpError")]
+	public ref float AccumulatedJumpError => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flAccumulatedJumpError");
 
 }
