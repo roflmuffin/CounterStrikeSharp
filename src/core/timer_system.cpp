@@ -188,21 +188,17 @@ void TimerSystem::RunFrame()
 
 void TimerSystem::RemoveMapChangeTimers()
 {
-    for (auto timer : m_once_off_timers)
-    {
-        if (timer->m_flags & TIMER_FLAG_NO_MAPCHANGE)
+    auto isMapChangeTimer = [](timers::Timer* timer) {
+        bool shouldRemove = timer->m_flags & TIMER_FLAG_NO_MAPCHANGE;
+        if (shouldRemove)
         {
-            KillTimer(timer);
+            delete timer;
         }
-    }
+        return shouldRemove;
+    };
 
-    for (auto timer : m_repeat_timers)
-    {
-        if (timer->m_flags & TIMER_FLAG_NO_MAPCHANGE)
-        {
-            KillTimer(timer);
-        }
-    }
+    std::erase_if(m_once_off_timers, isMapChangeTimer);
+    std::erase_if(m_repeat_timers, isMapChangeTimer);
 }
 
 timers::Timer* TimerSystem::CreateTimer(float interval, CallbackT callback, int flags)
