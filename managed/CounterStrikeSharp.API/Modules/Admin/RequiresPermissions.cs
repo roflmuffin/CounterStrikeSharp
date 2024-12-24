@@ -12,23 +12,23 @@ namespace CounterStrikeSharp.API.Modules.Admin
     {
         public RequiresPermissions(params string[] permissions) : base(permissions) { }
 
-        public override bool CanExecuteCommand(CCSPlayerController? caller)
+        public override bool CanExecuteCommand(SteamID? steamID)
         {
-            if (caller == null) return true;
-            if (AdminManager.PlayerHasCommandOverride(caller, Command))
+            if (steamID == null) return true;
+            if (AdminManager.PlayerHasCommandOverride(steamID, Command))
             {
-                return AdminManager.GetPlayerCommandOverrideState(caller, Command);
+                return AdminManager.GetPlayerCommandOverrideState(steamID, Command);
             }
-            if (!base.CanExecuteCommand(caller)) return false;
+            if (!base.CanExecuteCommand(steamID)) return false;
 
             var groupPermissions = Permissions.Where(perm => perm.StartsWith(PermissionCharacters.GroupPermissionChar));
             var userPermissions = Permissions.Where(perm => perm.StartsWith(PermissionCharacters.UserPermissionChar));
 
-            if (!AdminManager.PlayerHasPermissions(caller, userPermissions.ToArray()))
+            if (!AdminManager.PlayerHasPermissions(steamID, userPermissions.ToArray()))
             {
                 return false;
             }
-            if (!AdminManager.PlayerInGroup(caller, groupPermissions.ToArray()))
+            if (!AdminManager.PlayerInGroup(steamID, groupPermissions.ToArray()))
             {
                 return false;
             }
