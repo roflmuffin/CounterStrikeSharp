@@ -12,15 +12,17 @@ public partial class CBaseEntity
     public void Teleport(Vector? position = null, QAngle? angles = null, Vector? velocity = null)
     {
         Guard.IsValidEntity(this);
-    
+
         if (position == null && angles == null && velocity == null)
             throw new ArgumentNullException("No valid argument");
-    
+
         nint _position = position?.Handle ?? 0;
         nint _angles = angles?.Handle ?? 0;
         nint _velocity = velocity?.Handle ?? 0;
-    
-        VirtualFunction.CreateVoid<IntPtr, IntPtr, IntPtr, IntPtr>(Handle, GameData.GetOffset("CBaseEntity_Teleport"))(Handle, _position, _angles, _velocity);
+        nint _handle = Handle;
+
+        VirtualFunction.CreateVoid<IntPtr, IntPtr, IntPtr, IntPtr>(_handle, GameData.GetOffset("CBaseEntity_Teleport"))(_handle, _position,
+            _angles, _velocity);
     }
 
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
