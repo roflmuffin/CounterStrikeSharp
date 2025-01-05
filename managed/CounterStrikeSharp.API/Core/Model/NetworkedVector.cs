@@ -28,11 +28,11 @@ public partial class NetworkedVector<T> : NativeObject, IReadOnlyCollection<T>
     {
         get
         {
-			if (IsValidType)
-			{
-				throw new NotSupportedException("Networked vectors currently only support CHandle<T>, Vector, or QAngle");
-			}
-            
+            if (IsValidType)
+            {
+                throw new NotSupportedException("Networked vectors currently only support CHandle<T>, Vector, or QAngle");
+            }
+    
             return (T)Activator.CreateInstance(typeof(T), NativeAPI.GetNetworkVectorElementAt(Handle, index));
         }
     }
