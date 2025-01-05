@@ -50,4 +50,8 @@ public partial class CMapInfo : CPointEntity
 	[SchemaMember("CMapInfo", "m_bFadePlayerVisibilityFarZ")]
 	public ref bool FadePlayerVisibilityFarZ => ref Schema.GetRef<bool>(this.Handle, "CMapInfo", "m_bFadePlayerVisibilityFarZ");
 
+	// m_bRainTraceToSkyEnabled
+	[SchemaMember("CMapInfo", "m_bRainTraceToSkyEnabled")]
+	public ref bool RainTraceToSkyEnabled => ref Schema.GetRef<bool>(this.Handle, "CMapInfo", "m_bRainTraceToSkyEnabled");
+
 }
