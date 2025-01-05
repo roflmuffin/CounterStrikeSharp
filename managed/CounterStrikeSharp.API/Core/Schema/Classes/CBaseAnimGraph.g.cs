@@ -58,4 +58,8 @@ public partial class CBaseAnimGraph : CBaseModelEntity
 	[SchemaMember("CBaseAnimGraph", "m_bRagdollClientSide")]
 	public ref bool RagdollClientSide => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraph", "m_bRagdollClientSide");
 
+	// m_nLastDestructiblePartDestroyedAnimgraphSetTick
+	[SchemaMember("CBaseAnimGraph", "m_nLastDestructiblePartDestroyedAnimgraphSetTick")]
+	public ref Int32 LastDestructiblePartDestroyedAnimgraphSetTick => ref Schema.GetRef<Int32>(this.Handle, "CBaseAnimGraph", "m_nLastDestructiblePartDestroyedAnimgraphSetTick");
+
 }
