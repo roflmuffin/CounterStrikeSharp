@@ -12,8 +12,12 @@ namespace CounterStrikeSharp.API.Core;
 
 public partial class NetworkedVector<T> : NativeObject, IReadOnlyCollection<T>
 {
+    private readonly bool IsValidType;
+    
     public NetworkedVector(IntPtr pointer) : base(pointer)
     {
+        Type t = typeof(T);
+        IsValidType = (t.IsGenericType && t.GetGenericTypeDefinition() == typeof(CHandle<>)) || t == typeof(Vector) || t == typeof(QAngle);
     }
 
     public unsafe uint Size => Unsafe.Read<uint>((void*)Handle);
@@ -24,11 +28,11 @@ public partial class NetworkedVector<T> : NativeObject, IReadOnlyCollection<T>
     {
         get
         {
-            if (!typeof(T).IsGenericType || typeof(T).GetGenericTypeDefinition() != typeof(CHandle<>))
+            if (IsValidType)
             {
-                throw new NotSupportedException("Networked vectors currently only support CHandle<T>");
+                throw new NotSupportedException("Networked vectors currently only support CHandle<T>, Vector, or QAngle");
             }
-            
+    
             return (T)Activator.CreateInstance(typeof(T), NativeAPI.GetNetworkVectorElementAt(Handle, index));
         }
     }

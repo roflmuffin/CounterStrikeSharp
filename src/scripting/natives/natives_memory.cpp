@@ -140,7 +140,7 @@ int GetNetworkVectorSize(ScriptContext& script_context)
 
 void* GetNetworkVectorElementAt(ScriptContext& script_context)
 {
-    auto vec = script_context.GetArgument<CUtlVector<CEntityHandle>*>(0);
+    auto vec = script_context.GetArgument<CUtlVector<void*>*>(0);
     auto index = script_context.GetArgument<int>(1);
 
     return &vec->Element(index);
@@ -148,7 +148,7 @@ void* GetNetworkVectorElementAt(ScriptContext& script_context)
 
 void RemoveAllNetworkVectorElements(ScriptContext& script_context)
 {
-    auto vec = script_context.GetArgument<CUtlVector<CEntityHandle>*>(0);
+    auto vec = script_context.GetArgument<CUtlVector<void*>*>(0);
 
     vec->RemoveAll();
 }
