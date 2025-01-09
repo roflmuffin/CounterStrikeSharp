@@ -28,7 +28,7 @@ public partial class NetworkedVector<T> : NativeObject, IReadOnlyCollection<T>
     {
         get
         {
-            if (IsValidType)
+            if (!IsValidType)
             {
                 throw new NotSupportedException("Networked vectors currently only support CHandle<T>, Vector, or QAngle");
             }
