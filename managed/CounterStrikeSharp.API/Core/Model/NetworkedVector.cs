@@ -17,7 +17,7 @@ public partial class NetworkedVector<T> : NativeObject, IReadOnlyCollection<T>
     public NetworkedVector(IntPtr pointer) : base(pointer)
     {
         Type t = typeof(T);
-        IsValidType = (t.IsGenericType && t.GetGenericTypeDefinition() == typeof(CHandle<>)) || t == typeof(Vector) || t == typeof(QAngle);
+        IsValidType = !(t.IsGenericType && t.GetGenericTypeDefinition() == typeof(CHandle<>)) || t == typeof(Vector) || t == typeof(QAngle);
     }
 
     public unsafe uint Size => Unsafe.Read<uint>((void*)Handle);
