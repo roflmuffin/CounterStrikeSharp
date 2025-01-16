@@ -17,11 +17,11 @@
 #include <ios>
 #include <sstream>
 
-#include "scripting/autonative.h"
 #include "core/function.h"
-#include "scripting/script_engine.h"
-#include "core/memory.h"
 #include "core/log.h"
+#include "core/memory.h"
+#include "scripting/autonative.h"
+#include "scripting/script_engine.h"
 
 namespace counterstrikesharp {
 std::vector<ValveFunction*> m_managed_ptrs;
@@ -44,21 +44,22 @@ ValveFunction* CreateVirtualFunctionBySignature(ScriptContext& script_context)
 
     auto* function_addr = FindSignature(binary_name, signature_hex_string);
 
-    if (function_addr == nullptr) {
+    if (function_addr == nullptr)
+    {
         script_context.ThrowNativeError("Could not find signature %s", signature_hex_string);
         return nullptr;
     }
 
     auto args = std::vector<DataType_t>();
-    for (int i = 0; i < num_arguments; i++) {
+    for (int i = 0; i < num_arguments; i++)
+    {
         args.push_back(script_context.GetArgument<DataType_t>(5 + i));
     }
 
     auto function = new ValveFunction(function_addr, CONV_CDECL, args, return_type);
     function->SetSignature(signature_hex_string);
 
-    CSSHARP_CORE_TRACE("Created virtual function, pointer found at {}, signature {}", function_addr,
-                       signature_hex_string);
+    CSSHARP_CORE_TRACE("Created virtual function, pointer found at {}, signature {}", function_addr, signature_hex_string);
 
     m_managed_ptrs.push_back(function);
     return function;
@@ -72,7 +73,8 @@ ValveFunction* CreateVirtualFunction(ScriptContext& script_context)
     auto return_type = script_context.GetArgument<DataType_t>(3);
 
     void** vtable = *(void***)ptr;
-    if (!vtable) {
+    if (!vtable)
+    {
         script_context.ThrowNativeError("Failed to get the virtual function table.");
         return nullptr;
     }
@@ -80,7 +82,8 @@ ValveFunction* CreateVirtualFunction(ScriptContext& script_context)
     auto function_addr = (void*)vtable[vtable_offset];
 
     auto args = std::vector<DataType_t>();
-    for (int i = 0; i < num_arguments; i++) {
+    for (int i = 0; i < num_arguments; i++)
+    {
         args.push_back(script_context.GetArgument<DataType_t>(4 + i));
     }
 
@@ -97,7 +100,8 @@ void HookFunction(ScriptContext& script_context)
     auto callback = script_context.GetArgument<CallbackT>(1);
     auto post = script_context.GetArgument<bool>(2);
 
-    if (!function) {
+    if (!function)
+    {
         script_context.ThrowNativeError("Invalid function pointer");
         return;
     }
@@ -111,7 +115,8 @@ void UnhookFunction(ScriptContext& script_context)
     auto callback = script_context.GetArgument<CallbackT>(1);
     auto post = script_context.GetArgument<bool>(2);
 
-    if (!function) {
+    if (!function)
+    {
         script_context.ThrowNativeError("Invalid function pointer");
         return;
     }
@@ -123,7 +128,8 @@ void ExecuteVirtualFunction(ScriptContext& script_context)
 {
     auto function = script_context.GetArgument<ValveFunction*>(0);
 
-    if (!function) {
+    if (!function)
+    {
         script_context.ThrowNativeError("Invalid function pointer");
         return;
     }
@@ -140,7 +146,7 @@ int GetNetworkVectorSize(ScriptContext& script_context)
 
 void* GetNetworkVectorElementAt(ScriptContext& script_context)
 {
-    auto vec = script_context.GetArgument<CUtlVector<void*>*>(0);
+    auto vec = script_context.GetArgument<CUtlVector<CEntityHandle>*>(0);
     auto index = script_context.GetArgument<int>(1);
 
     return &vec->Element(index);
@@ -148,15 +154,14 @@ void* GetNetworkVectorElementAt(ScriptContext& script_context)
 
 void RemoveAllNetworkVectorElements(ScriptContext& script_context)
 {
-    auto vec = script_context.GetArgument<CUtlVector<void*>*>(0);
+    auto vec = script_context.GetArgument<CUtlVector<CEntityHandle>*>(0);
 
     vec->RemoveAll();
 }
 
 REGISTER_NATIVES(memory, {
     ScriptEngine::RegisterNativeHandler("CREATE_VIRTUAL_FUNCTION", CreateVirtualFunction);
-    ScriptEngine::RegisterNativeHandler("CREATE_VIRTUAL_FUNCTION_BY_SIGNATURE",
-                                        CreateVirtualFunctionBySignature);
+    ScriptEngine::RegisterNativeHandler("CREATE_VIRTUAL_FUNCTION_BY_SIGNATURE", CreateVirtualFunctionBySignature);
     ScriptEngine::RegisterNativeHandler("EXECUTE_VIRTUAL_FUNCTION", ExecuteVirtualFunction);
     ScriptEngine::RegisterNativeHandler("HOOK_FUNCTION", HookFunction);
     ScriptEngine::RegisterNativeHandler("UNHOOK_FUNCTION", UnhookFunction);
