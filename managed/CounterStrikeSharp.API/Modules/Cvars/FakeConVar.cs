@@ -76,9 +76,7 @@ public class FakeConVar<T> where T : IComparable<T>
             
             if (typeof(T) == typeof(string))
             {
-                if (argString.Length >= 2
-                    && argString.StartsWith('"')
-                    && argString.EndsWith('"'))
+                if (argString.Length >= 2 && argString.StartsWith('"') && argString.EndsWith('"'))
                 {
                     argString = argString.Substring(1, argString.Length - 2);
                 }
