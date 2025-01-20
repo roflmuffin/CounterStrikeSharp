@@ -159,6 +159,72 @@ void RemoveAllNetworkVectorElements(ScriptContext& script_context)
     vec->RemoveAll();
 }
 
+typedef void (*Release_Func)(void* ptr);
+
+static void ReleaseHelper(Release_Func func, ScriptContext& script_context, void* ptr)
+{
+    if (!ptr)
+    {
+        script_context.ThrowNativeError("Null pointer reference: %p", ptr);
+        return;
+    }
+
+    // TODO: replace with CSSHARP_CORE_TRACE
+    CSSHARP_CORE_INFO("Releasing pointer: {}", ptr);
+
+#ifdef _WIN32
+    _try
+    {
+        func(ptr);
+    }
+    _except (EXCEPTION_ACCESS_VIOLATION)
+    {
+        script_context.ThrowNativeError("Invalid pointer reference: %p (EXCEPTION_ACCESS_VIOLATION)", ptr);
+    }
+#else
+    func(ptr);
+#endif
+}
+
+void Native_MemAlloc_FreePointer(ScriptContext& script_context)
+{
+    void* ptr = script_context.GetArgument<void*>(0);
+    ReleaseHelper(MemAlloc_Free, script_context, ptr);
+}
+
+void Native_MemAlloc_FreePointerAligned(ScriptContext& script_context)
+{
+    void* ptr = script_context.GetArgument<void*>(0);
+    ReleaseHelper(MemAlloc_FreeAligned, script_context, ptr);
+}
+
+void* Native_MemAlloc_Allocate(ScriptContext& script_context)
+{
+    size_t size = script_context.GetArgument<size_t>(0);
+    return MemAlloc_Alloc(size);
+}
+
+void* Native_MemAlloc_AllocateAligned(ScriptContext& script_context)
+{
+    size_t size = script_context.GetArgument<size_t>(0);
+    size_t align = script_context.GetArgument<size_t>(1);
+    return MemAlloc_AllocAlignedUnattributed(size, align);
+}
+
+void* Native_MemAlloc_ReallocateAligned(ScriptContext& script_context)
+{
+    void* ptr = script_context.GetArgument<void*>(0);
+    size_t size = script_context.GetArgument<size_t>(1);
+    size_t align = script_context.GetArgument<size_t>(2);
+    return MemAlloc_ReallocAligned(ptr, size, align);
+}
+
+size_t Native_MemAlloc_GetSizeAligned(ScriptContext& script_context)
+{
+    void* ptr = script_context.GetArgument<void*>(0);
+    return MemAlloc_GetSizeAligned(ptr);
+}
+
 REGISTER_NATIVES(memory, {
     ScriptEngine::RegisterNativeHandler("CREATE_VIRTUAL_FUNCTION", CreateVirtualFunction);
     ScriptEngine::RegisterNativeHandler("CREATE_VIRTUAL_FUNCTION_BY_SIGNATURE", CreateVirtualFunctionBySignature);
@@ -169,5 +235,12 @@ REGISTER_NATIVES(memory, {
     ScriptEngine::RegisterNativeHandler("GET_NETWORK_VECTOR_SIZE", GetNetworkVectorSize);
     ScriptEngine::RegisterNativeHandler("GET_NETWORK_VECTOR_ELEMENT_AT", GetNetworkVectorElementAt);
     ScriptEngine::RegisterNativeHandler("REMOVE_ALL_NETWORK_VECTOR_ELEMENTS", RemoveAllNetworkVectorElements);
+
+    ScriptEngine::RegisterNativeHandler("MEM_ALLOC_ALLOCATE", Native_MemAlloc_Allocate);
+    ScriptEngine::RegisterNativeHandler("MEM_ALLOC_ALLOCATE_ALIGNED", Native_MemAlloc_Allocate);
+    ScriptEngine::RegisterNativeHandler("MEM_ALLOC_REALLOCATE_ALIGNED", Native_MemAlloc_ReallocateAligned);
+    ScriptEngine::RegisterNativeHandler("MEM_ALLOC_GETSIZE_ALIGNED", Native_MemAlloc_GetSizeAligned);
+    ScriptEngine::RegisterNativeHandler("MEM_ALLOC_FREE_POINTER", Native_MemAlloc_FreePointer);
+    ScriptEngine::RegisterNativeHandler("MEM_ALLOC_FREE_POINTER_ALIGNED", Native_MemAlloc_FreePointerAligned);
 })
 } // namespace counterstrikesharp

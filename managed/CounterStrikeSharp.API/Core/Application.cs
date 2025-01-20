@@ -19,6 +19,7 @@ using System.Linq;
 using System.Text;
 using CounterStrikeSharp.API.Core.Commands;
 using CounterStrikeSharp.API.Core.Hosting;
+using CounterStrikeSharp.API.Core.Memory;
 using CounterStrikeSharp.API.Core.Plugin;
 using CounterStrikeSharp.API.Core.Plugin.Host;
 using CounterStrikeSharp.API.Core.Translations;
@@ -48,11 +49,12 @@ namespace CounterStrikeSharp.API.Core
         private readonly IPluginContextQueryHandler _pluginContextQueryHandler;
         private readonly IPlayerLanguageManager _playerLanguageManager;
         private readonly ICommandManager _commandManager;
+        private readonly IMemoryManager _memoryManager;
 
         public Application(ILoggerFactory loggerFactory, IScriptHostConfiguration scriptHostConfiguration,
             GameDataProvider gameDataProvider, CoreConfig coreConfig, IPluginManager pluginManager,
             IPluginContextQueryHandler pluginContextQueryHandler, IPlayerLanguageManager playerLanguageManager,
-            ICommandManager commandManager)
+            ICommandManager commandManager, IMemoryManager memoryManager)
         {
             Logger = loggerFactory.CreateLogger("Core");
             _scriptHostConfiguration = scriptHostConfiguration;
@@ -62,6 +64,7 @@ namespace CounterStrikeSharp.API.Core
             _pluginContextQueryHandler = pluginContextQueryHandler;
             _playerLanguageManager = playerLanguageManager;
             _commandManager = commandManager;
+            _memoryManager = memoryManager;
             _instance = this;
         }
 
@@ -90,6 +93,7 @@ namespace CounterStrikeSharp.API.Core
             RegisterPluginCommands();
 
             _pluginManager.Load();
+            _memoryManager.Load();
 
             for (var i = 1; i <= 9; i++)
             {
