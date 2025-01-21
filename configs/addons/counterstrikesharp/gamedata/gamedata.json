@@ -265,5 +265,11 @@
       "windows": 584,
       "linux": 584
     }
+  },
+  "CServerSideClient": {
+     "offsets": {
+       "windows": 8,
+       "linux": -64
+     }
   }
 }
