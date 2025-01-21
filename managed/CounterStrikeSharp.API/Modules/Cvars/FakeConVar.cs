@@ -72,6 +72,16 @@ public class FakeConVar<T> where T : IComparable<T>
 
         try
         {
+            var argString = args.ArgString;
+            
+            if (typeof(T) == typeof(string))
+            {
+                if (argString.Length >= 2 && argString.StartsWith('"') && argString.EndsWith('"'))
+                {
+                    argString = argString.Substring(1, argString.Length - 2);
+                }
+            }
+            
             // TODO(dotnet8): Replace with IParsable<T>
             bool success = true;
             T parsedValue = default(T);
@@ -80,11 +90,11 @@ public class FakeConVar<T> where T : IComparable<T>
             {
                 try
                 {
-                    parsedValue = (T)converter.ConvertFromString(args.ArgString);
+                    parsedValue = (T)converter.ConvertFromString(argString);
                 }
                 catch
                 {
-                    success = typeof(T) == typeof(bool) && TryConvertCustomBoolean(args.ArgString, out parsedValue);
+                    success = typeof(T) == typeof(bool) && TryConvertCustomBoolean(argString, out parsedValue);
                 }
             }
 
