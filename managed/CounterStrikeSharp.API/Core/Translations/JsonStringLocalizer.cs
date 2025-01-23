@@ -10,13 +10,13 @@ public class JsonStringLocalizer : IStringLocalizer
 {
     private readonly JsonResourceManager _resourceManager;
     private readonly JsonStringProvider _resourceStringProvider;
-    
+
     public JsonStringLocalizer(string langPath)
     {
         _resourceManager = new JsonResourceManager(langPath);
         _resourceStringProvider = new(_resourceManager);
     }
-    
+
     public IEnumerable<LocalizedString> GetAllStrings(bool includeParentCultures)
     {
         return GetAllStrings(includeParentCultures, CultureInfo.CurrentUICulture);
@@ -52,7 +52,7 @@ public class JsonStringLocalizer : IStringLocalizer
             return new LocalizedString(name, value, resourceNotFound: format == null);
         }
     }
-    
+
     protected string? GetStringSafely(string name, CultureInfo? culture = null)
     {
         if (name == null)
@@ -69,16 +69,22 @@ public class JsonStringLocalizer : IStringLocalizer
         {
             result = _resourceManager.GetFallbackString(name);
         }
-        
-        // Fallback to the default culture (en-US) if the resource is not found for the current culture.
+
+        // Fallback to the default culture (whatever is in core.json) if the resource is not found for the current culture.
         if (result == null && !culture.Equals(CultureInfo.DefaultThreadCurrentUICulture))
         {
             result = _resourceManager.GetString(name, CultureInfo.DefaultThreadCurrentUICulture!);
         }
 
+        // Fallback to the default culture (en) if the resource is not found for the current culture.
+        if (result == null && !culture.Equals(CultureInfo.InvariantCulture))
+        {
+            result = _resourceManager.GetString(name, new CultureInfo("en"));
+        }
+
         return result?.ReplaceColorTags();
     }
-    
+
     protected virtual IEnumerable<LocalizedString> GetAllStrings(bool includeParentCultures, CultureInfo culture)
     {
         if (culture == null)
@@ -96,7 +102,7 @@ public class JsonStringLocalizer : IStringLocalizer
             yield return new LocalizedString(name, value ?? name, resourceNotFound: value == null);
         }
     }
-    
+
     private IEnumerable<string> GetResourceNamesFromCultureHierarchy(CultureInfo startingCulture)
     {
         var currentCulture = startingCulture;
