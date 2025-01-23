@@ -45,8 +45,7 @@ public class CenterHtmlMenu : BaseMenu
         {
             throw new InvalidOperationException("This method is unsupported with the CenterHtmlMenu constructor used." +
                                                 "Please provide a BasePlugin in the constructor.");
-        }
-        ;
+        };
 
         MenuManager.OpenCenterHtmlMenu(_plugin, player, this);
     }
