@@ -36,7 +36,7 @@ public class Target
     private static bool ConstTargetType(string target, out TargetType targetType)
     {
         targetType = TargetType.Invalid;
-        if (!target.StartsWith("@"))
+        if (!target.StartsWith('@'))
         {
             return false;
         }
@@ -50,13 +50,13 @@ public class Target
     {
         targetType = TargetType.Invalid;
         slug = null!;
-        if (!target.StartsWith("#"))
+        if (!target.StartsWith('#'))
         {
             return false;
         }
 
         slug = target.TrimStart('#');
-        if (slug.StartsWith("STEAM")) targetType = TargetType.IdSteamEscaped;
+        if (slug.StartsWith("STEAM") && slug.Contains(':')) targetType = TargetType.IdSteamEscaped;
         else if (!ulong.TryParse(slug, out _)) targetType = TargetType.ExplicitName;
         else if (slug.Length == 17) targetType = TargetType.IdSteam64;
         else targetType = TargetType.IdUserid;
@@ -101,10 +101,9 @@ public class Target
             TargetType.GroupNotMe => player.SteamID != caller?.SteamID,
             TargetType.PlayerMe => player.SteamID == caller?.SteamID,
             TargetType.IdUserid => player.UserId.ToString() == Slug,
-            TargetType.IdSteamEscaped => ((SteamID)player.SteamID).SteamId2 == Slug,
-            TargetType.IdSteam64 => ((SteamID)player.SteamID).SteamId64.ToString() == Slug,
-            TargetType.ExplicitName => player.PlayerName.Contains(Slug, StringComparison.OrdinalIgnoreCase),
-            TargetType.ImplicitName => player.PlayerName.Contains(Slug, StringComparison.OrdinalIgnoreCase),
+            TargetType.IdSteamEscaped when player.SteamID != 0 => (SteamID)player.SteamID == (SteamID)Slug,
+            TargetType.IdSteam64 => player.SteamID.ToString() == Slug,
+            TargetType.ExplicitName or TargetType.ImplicitName => player.PlayerName.Contains(Slug, StringComparison.OrdinalIgnoreCase),
             _ => false
         };
     }
