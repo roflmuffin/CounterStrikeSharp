@@ -347,4 +347,9 @@ public partial class CCSPlayerController
     {
         base.Teleport(position, angles, velocity);
     }
+
+    public void ReplicateConVar(string conVar, string value)
+    {
+        NativeAPI.ReplicateConvar(Slot, conVar, value);
+    }
 }
