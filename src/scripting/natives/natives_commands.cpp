@@ -15,13 +15,17 @@
  */
 
 #include <eiface.h>
+#include <networksystem/inetworkmessages.h>
 
 #include "scripting/autonative.h"
 #include "scripting/callback_manager.h"
 #include "core/managers/con_command_manager.h"
 #include "core/managers/player_manager.h"
+#include "core/recipientfilters.h"
+#include "igameeventsystem.h"
 #include "scripting/script_engine.h"
 #include "core/log.h"
+#include <networkbasetypes.pb.h>
 
 namespace counterstrikesharp {
 
@@ -191,6 +195,25 @@ void SetConVarStringValue(ScriptContext& script_context)
     pCvar->values = reinterpret_cast<CVValue_t**>((char*)value);
 }
 
+void ReplicateConVar(ScriptContext& script_context)
+{
+    auto slot = script_context.GetArgument<int>(0);
+    auto name = script_context.GetArgument<const char*>(1);
+    auto value = script_context.GetArgument<const char*>(2);
+
+    INetworkMessageInternal* pNetMsg = globals::networkMessages->FindNetworkMessagePartial("SetConVar");
+    auto msg = pNetMsg->AllocateMessage()->ToPB<CNETMsg_SetConVar>();
+
+    CMsg_CVars_CVar* cvarMsg = msg->mutable_convars()->add_cvars();
+    cvarMsg->set_name(name);
+    cvarMsg->set_value(value);
+
+    CSingleRecipientFilter filter(slot);
+    globals::gameEventSystem->PostEventAbstract(-1, false, &filter, pNetMsg, msg, 0);
+
+    delete msg;
+}
+
 REGISTER_NATIVES(commands, {
     ScriptEngine::RegisterNativeHandler("ADD_COMMAND", AddCommand);
     ScriptEngine::RegisterNativeHandler("REMOVE_COMMAND", RemoveCommand);
@@ -211,5 +234,6 @@ REGISTER_NATIVES(commands, {
                                         IssueClientCommandFromServer);
     ScriptEngine::RegisterNativeHandler("GET_CLIENT_CONVAR_VALUE", GetClientConVarValue);
     ScriptEngine::RegisterNativeHandler("SET_FAKE_CLIENT_CONVAR_VALUE", SetFakeClientConVarValue);
+    ScriptEngine::RegisterNativeHandler("REPLICATE_CONVAR", ReplicateConVar);
 })
 } // namespace counterstrikesharp
