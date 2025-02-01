@@ -10,7 +10,7 @@ In this guide you will learn how to install CounterStrikeSharp onto your vanilla
 If you're more of a visual person, here is a <a href="https://www.youtube.com/watch?v=FlsKzStHJuY" target="_blank">Youtube video</a> that covers everything.
 
 ## Prerequisites
-- <a href="https://www.sourcemm.net/downloads.php/?branch=master" target="_blank">Metamod: Source 2.X Dev Build</a>
+- <a href="https://www.metamodsource.net/downloads.php/?branch=master" target="_blank">Metamod: Source 2.X Dev Build</a>
 - <a href="https://github.com/roflmuffin/CounterStrikeSharp/releases" target="_blank">CounterStrikeSharp With Runtime</a>
 
 ## Installing Metamod

@@ -78,12 +78,8 @@ public partial class CBaseCSGrenadeProjectile : CBaseGrenade
 	[SchemaMember("CBaseCSGrenadeProjectile", "m_nTicksAtZeroVelocity")]
 	public ref Int32 TicksAtZeroVelocity => ref Schema.GetRef<Int32>(this.Handle, "CBaseCSGrenadeProjectile", "m_nTicksAtZeroVelocity");
 
-	// m_bHasEverHitPlayer
-	[SchemaMember("CBaseCSGrenadeProjectile", "m_bHasEverHitPlayer")]
-	public ref bool HasEverHitPlayer => ref Schema.GetRef<bool>(this.Handle, "CBaseCSGrenadeProjectile", "m_bHasEverHitPlayer");
-
-	// m_bClearFromPlayers
-	[SchemaMember("CBaseCSGrenadeProjectile", "m_bClearFromPlayers")]
-	public ref bool ClearFromPlayers => ref Schema.GetRef<bool>(this.Handle, "CBaseCSGrenadeProjectile", "m_bClearFromPlayers");
+	// m_bHasEverHitEnemy
+	[SchemaMember("CBaseCSGrenadeProjectile", "m_bHasEverHitEnemy")]
+	public ref bool HasEverHitEnemy => ref Schema.GetRef<bool>(this.Handle, "CBaseCSGrenadeProjectile", "m_bHasEverHitEnemy");
 
 }
