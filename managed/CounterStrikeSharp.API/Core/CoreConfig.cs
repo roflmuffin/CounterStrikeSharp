@@ -61,6 +61,12 @@ namespace CounterStrikeSharp.API.Core
 
         [JsonPropertyName("UnlockConVars")]
         public bool UnlockConVars { get; set; } = true;
+        
+        [JsonPropertyName("MaxHtmlMenuTitleLength")]
+        public int MaxHtmlMenuTitleLength { get; set; } = 0;
+        
+        [JsonPropertyName("MaxHtmlMenuOptionLength")]
+        public int MaxHtmlMenuOptionLength { get; set; } = 0;
     }
 
     /// <summary>
@@ -114,7 +120,10 @@ namespace CounterStrikeSharp.API.Core
         public static bool UnlockConCommands => _coreConfig.UnlockConCommands;
 
         public static bool UnlockConVars => _coreConfig.UnlockConVars;
-
+        
+        public static int MaxHtmlMenuTitleLength => _coreConfig.MaxHtmlMenuTitleLength;
+        
+        public static int MaxHtmlMenuOptionLength => _coreConfig.MaxHtmlMenuOptionLength;
     }
 
     public partial class CoreConfig : IStartupService
