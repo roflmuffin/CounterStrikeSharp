@@ -55,6 +55,9 @@ namespace CounterStrikeSharp.API.Core
 
         [JsonPropertyName("ServerLanguage")]
         public string ServerLanguage { get; set; } = "en";
+        
+        [JsonPropertyName("InlinePageOptions")]
+        public bool InlinePageOptions { get; set; } = true;
 
         [JsonPropertyName("UnlockConCommands")]
         public bool UnlockConCommands { get; set; } = true;
@@ -110,6 +113,7 @@ namespace CounterStrikeSharp.API.Core
         public static bool PluginAutoLoadEnabled => _coreConfig.PluginAutoLoadEnabled;
 
         public static string ServerLanguage => _coreConfig.ServerLanguage;
+        public static bool InlinePageOptions => _coreConfig.InlinePageOptions;
 
         public static bool UnlockConCommands => _coreConfig.UnlockConCommands;
 

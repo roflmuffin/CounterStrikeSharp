@@ -63,7 +63,33 @@ public class CenterHtmlMenuInstance : BaseMenuInstance
 {
     private readonly BasePlugin _plugin;
     public override int NumPerPage => 5; // one less than the actual number of items per page to avoid truncated options
-    protected override int MenuItemsPerPage => (Menu.ExitButton ? 0 : 1) + ((HasPrevButton && HasNextButton) ? NumPerPage - 1 : NumPerPage);
+    public bool InlinePageOptions => CoreConfig.InlinePageOptions;
+    protected override int MenuItemsPerPage
+    {
+        get
+        {
+            int count = NumPerPage;
+            if (InlinePageOptions == false)
+            {
+                if (HasExitButton == false)
+                    count++;
+
+                if (HasPrevButton == false)
+                    count++;
+
+                if (HasNextButton == false)
+                    count++;
+            }
+            else
+            {
+                count += 2;
+                if (HasExitButton || HasPrevButton || HasNextButton)
+                    count++;
+            }
+
+            return count;
+        }
+    }
 
     public CenterHtmlMenuInstance(BasePlugin plugin, CCSPlayerController player, IMenu menu) : base(player, menu)
     {
@@ -98,23 +124,26 @@ public class CenterHtmlMenuInstance : BaseMenuInstance
             builder.Append($"<font color='{color}'>!{keyOffset++}</font> {option.Text}");
             builder.AppendLine("<br>");
         }
-
+        
         if (HasPrevButton)
         {
-            builder.AppendFormat($"<font color='{centerHtmlMenu.PrevPageColor}'>!7</font> &#60;- Prev");
-            builder.AppendLine("<br>");
+            builder.AppendFormat($"<font color='{centerHtmlMenu.PrevPageColor}'>!7</font> &#60; Prev");
+            if (InlinePageOptions == false)
+                builder.AppendLine("<br>");
         }
 
         if (HasNextButton)
         {
-            builder.AppendFormat($"<font color='{centerHtmlMenu.NextPageColor}'>!8</font> -> Next");
-            builder.AppendLine("<br>");
+            builder.AppendFormat($"<font color='{centerHtmlMenu.NextPageColor}'>!8</font> > Next");
+            if (InlinePageOptions == false)
+                builder.AppendLine("<br>");
         }
 
         if (centerHtmlMenu.ExitButton)
         {
-            builder.AppendFormat($"<font color='{centerHtmlMenu.CloseColor}'>!9</font> -> Close");
-            builder.AppendLine("<br>");
+            builder.AppendFormat($"<font color='{centerHtmlMenu.CloseColor}'>!9</font> X Close");
+            if (InlinePageOptions == false)
+                builder.AppendLine("<br>");
         }
 
         var currentPageText = builder.ToString();

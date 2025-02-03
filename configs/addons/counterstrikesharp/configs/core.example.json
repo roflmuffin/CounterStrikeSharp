@@ -5,6 +5,7 @@
     "PluginHotReloadEnabled": true,
     "PluginAutoLoadEnabled": true,
     "ServerLanguage": "en",
+    "InlinePageOptions": true,
     "UnlockConCommands": true,
     "UnlockConVars": true
 }
