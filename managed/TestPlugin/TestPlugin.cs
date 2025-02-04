@@ -392,6 +392,16 @@ namespace TestPlugin
             return HookResult.Continue;
         }
 
+        [ListenerHandler<Listeners.OnClientPutInServer>]
+        public void OnClientPutInServer(int playerSlot)
+        {
+            var player = Utilities.GetPlayerFromSlot(playerSlot);
+
+            if (player == null || player.IsBot) return;
+
+            player.PrintToChat("Welcome to the server!");
+        }
+
         [ConsoleCommand("css_testinput", "Test AcceptInput and AddEntityIOEvent")]
         public void OnTestInput(CCSPlayerController? player, CommandInfo command)
         {
