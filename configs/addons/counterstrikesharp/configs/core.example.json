@@ -7,6 +7,6 @@
     "ServerLanguage": "en",
     "UnlockConCommands": true,
     "UnlockConVars": true,
-    "MaxHtmlMenuTitleLength": 0, // 0 = unlimited, previous value = 32
-    "MaxHtmlMenuOptionLength": 0, // 0 = unlimited, previous value = 26
+    "MaxHtmlMenuTitleLength": 0,
+    "MaxHtmlMenuOptionLength": 0
 }
