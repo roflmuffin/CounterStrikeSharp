@@ -74,7 +74,7 @@ jobs:
           mkdir build/output/
           mv build/addons build/output
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: counterstrikesharp-build-windows-${{ env.GITHUB_SHA_SHORT }}
           path: build/output/
@@ -115,7 +115,7 @@ jobs:
           mkdir build/output/
           mv build/addons build/output
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: counterstrikesharp-build-linux-${{ env.GITHUB_SHA_SHORT }}
           path: build/output/
@@ -154,7 +154,7 @@ jobs:
         run: dotnet test --logger trx --results-directory "TestResults-${{ env.GITHUB_SHA_SHORT }}" managed/CounterStrikeSharp.API.Tests/CounterStrikeSharp.API.Tests.csproj
 
       - name: Upload dotnet test results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: test-results-${{ env.GITHUB_SHA_SHORT }}
           path: TestResults-${{ env.GITHUB_SHA_SHORT }}
@@ -165,7 +165,7 @@ jobs:
           dotnet publish -c Release /p:Version=1.0.${{ env.BUILD_NUMBER }} managed/CounterStrikeSharp.API
           dotnet pack -c Release /p:Version=1.0.${{ env.BUILD_NUMBER }} managed/CounterStrikeSharp.API
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: counterstrikesharp-build-api-${{ env.GITHUB_SHA_SHORT }}
           path: managed/CounterStrikeSharp.API/bin/Release
@@ -181,17 +181,17 @@ jobs:
         shell: bash
         run: echo "GITHUB_SHA_SHORT=${GITHUB_SHA::7}" >> $GITHUB_ENV
 
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: counterstrikesharp-build-windows-${{ env.GITHUB_SHA_SHORT }}
           path: build/windows
 
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: counterstrikesharp-build-linux-${{ env.GITHUB_SHA_SHORT }}
           path: build/linux
 
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: counterstrikesharp-build-api-${{ env.GITHUB_SHA_SHORT }}
           path: build/api
