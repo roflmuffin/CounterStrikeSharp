@@ -396,20 +396,26 @@ namespace CounterStrikeSharp.API.Core
         }
 
         /// <summary>
-        /// Registers all game event handlers that are decorated with the <see cref="GameEventHandlerAttribute"/> attribute.
+        /// Registers all game event handlers that are decorated with the <see cref="GameEventHandlerAttribute"/> and <see cref="ListenerHandlerAttribute{T}"/> attribute.
         /// </summary>
         /// <param name="instance">The instance of the object where the event handlers are defined.</param>
         public void RegisterAttributeHandlers(object instance)
         {
-            var eventHandlers = instance.GetType()
-                .GetMethods()
+            var methods = instance.GetType().GetMethods();
+
+            var eventHandlers = methods
                 .Where(method => method.GetCustomAttribute<GameEventHandlerAttribute>() != null)
                 .Where(method =>
                     method.GetParameters().FirstOrDefault()?.ParameterType.IsSubclassOf(typeof(GameEvent)) == true)
                 .ToArray();
+            
+            var listenerHandlers = methods
+                .Where(method => method.GetCustomAttribute(typeof(ListenerHandlerAttribute<>)) != null)
+                .ToArray();
 
-            var method = typeof(BasePlugin).GetMethod("RegisterEventHandlerInternal", BindingFlags.NonPublic |
+            var registerEvent = typeof(BasePlugin).GetMethod(nameof(RegisterEventHandlerInternal), BindingFlags.NonPublic |
                 BindingFlags.Instance)!;
+            var registerListener = GetType().GetMethod(nameof(RegisterListener))!;
 
             foreach (var eventHandler in eventHandlers)
             {
@@ -421,8 +427,22 @@ namespace CounterStrikeSharp.API.Core
                 var actionType = typeof(GameEventHandler<>).MakeGenericType(parameterType);
                 var action = Delegate.CreateDelegate(actionType, instance, eventHandler);
 
-                var generic = method.MakeGenericMethod(parameterType);
-                generic.Invoke(this, new object[] { eventName, action, hookMode == HookMode.Post });
+                var registerEventGeneric = registerEvent.MakeGenericMethod(parameterType);
+                registerEventGeneric.Invoke(this, [eventName, action, hookMode == HookMode.Post]);
+            }
+
+            foreach (var listnerHandler in listenerHandlers)
+            {
+                var attribute = listnerHandler.GetCustomAttribute(typeof(ListenerHandlerAttribute<>))!;
+                var listenerType = attribute.GetType().GetGenericArguments().First();
+
+                if (listenerType.GetCustomAttribute<ListenerNameAttribute>() == null)
+                    throw new ArgumentException("Listener of type T is invalid and does not have a name attribute",
+                        listenerType.Name);
+
+                var listenerDelegate = Delegate.CreateDelegate(listenerType, instance, listnerHandler); 
+
+                registerListener.MakeGenericMethod(listenerType).Invoke(this, [listenerDelegate]);
             }
         }
 
