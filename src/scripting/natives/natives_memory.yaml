@@ -7,3 +7,9 @@ FIND_SIGNATURE: modulePath:string, signature:string -> pointer
 GET_NETWORK_VECTOR_SIZE: vec:pointer -> int
 GET_NETWORK_VECTOR_ELEMENT_AT: vec:pointer, index:int -> pointer
 REMOVE_ALL_NETWORK_VECTOR_ELEMENTS: vec:pointer -> void
+MEM_ALLOC_ALLOCATE: size:int -> pointer
+MEM_ALLOC_ALLOCATE_ALIGNED: size:int, align:int -> pointer
+MEM_ALLOC_REALLOCATE_ALIGNED: pointer:pointer, size:int, align:int -> pointer
+MEM_ALLOC_GET_SIZE_ALIGNED: pointer:pointer -> int
+MEM_ALLOC_FREE_POINTER: pointer:pointer -> void
+MEM_ALLOC_FREE_POINTER_ALIGNED: pointer:pointer -> void
