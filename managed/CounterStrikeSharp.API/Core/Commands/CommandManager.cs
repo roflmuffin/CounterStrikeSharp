@@ -117,7 +117,7 @@ public class CommandManager : ICommandManager
                         }
 
                         attr.Command = name;
-                        if (!attr.CanExecuteCommand(caller))
+                        if (!attr.CanExecuteCommand(caller.AuthorizedSteamID))
                         {
                             var responseStr = (attr.GetType() == typeof(RequiresPermissions)) ?
                             "You are missing the correct permissions" : "You do not have one of the correct permissions";
