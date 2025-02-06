@@ -7,5 +7,7 @@
     "ServerLanguage": "en",
     "InlinePageOptions": true,
     "UnlockConCommands": true,
-    "UnlockConVars": true
+    "UnlockConVars": true,
+    "MaxHtmlMenuTitleLength": 0, // 0 = unlimited, previous value = 32
+    "MaxHtmlMenuOptionLength": 0, // 0 = unlimited, previous value = 26
 }

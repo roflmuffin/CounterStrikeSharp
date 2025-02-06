@@ -29,13 +29,13 @@ public class CenterHtmlMenu : BaseMenu
     public string NextPageColor { get; set; } = "yellow";
     public string CloseColor { get; set; } = "red";
 
-    public CenterHtmlMenu(string title, BasePlugin plugin) : base(title)
+    public CenterHtmlMenu(string title, BasePlugin plugin) : base(title.TruncateHtmlTitle())
     {
         _plugin = plugin;
     }
 
     [Obsolete("Use the constructor that takes a BasePlugin")]
-    public CenterHtmlMenu(string title) : base(title)
+    public CenterHtmlMenu(string title) : base(title.TruncateHtmlTitle())
     {
     }
 
@@ -53,7 +53,7 @@ public class CenterHtmlMenu : BaseMenu
     public override ChatMenuOption AddMenuOption(string display, Action<CCSPlayerController, ChatMenuOption> onSelect,
         bool disabled = false)
     {
-        var option = new ChatMenuOption(display, disabled, onSelect);
+        var option = new ChatMenuOption(display.TruncateHtmlOption(), disabled, onSelect);
         MenuOptions.Add(option);
         return option;
     }
