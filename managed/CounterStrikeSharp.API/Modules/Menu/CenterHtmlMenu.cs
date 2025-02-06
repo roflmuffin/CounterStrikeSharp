@@ -195,15 +195,15 @@ public class CenterHtmlMenuInstance : BaseMenuInstance
             builder.AppendLine("<br>");
         }
 
-        if (hasExitButton)
-        {
-            builder.AppendFormat(closeText);
-            builder.AppendLine("<br>");
-        }
-
         if (HasNextButton)
         {
             builder.AppendFormat(nextText);
+            builder.AppendLine("<br>");
+        }
+        
+        if (hasExitButton)
+        {
+            builder.AppendFormat(closeText);
             builder.AppendLine("<br>");
         }
     }
