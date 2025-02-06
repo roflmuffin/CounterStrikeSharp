@@ -31,9 +31,9 @@ public class CenterHtmlMenu : BaseMenu
     
     public bool InlinePageOptions { get; set; } = true;
     public int MaxTitleLength { get; set; } = 0; // defaults to 0 = no limit, if enabled, recommended value is 32
-    public int MaxOptionLength  { get; set; }= 0; // defaults to 0 = no limit, if enabled, recommended value is 26
+    public int MaxOptionLength  { get; set; } = 0; // defaults to 0 = no limit, if enabled, recommended value is 26
 
-    public CenterHtmlMenu(string title, BasePlugin plugin, bool inlinePageOptions, int maxTitleLength, int maxOptionLength): base(title)
+    public CenterHtmlMenu(string title, BasePlugin plugin, bool inlinePageOptions = true, int maxTitleLength = 0, int maxOptionLength = 0): base(title)
     {
         Title = title.TruncateHtml(MaxTitleLength);
         _plugin = plugin;
