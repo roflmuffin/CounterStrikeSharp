@@ -7,19 +7,7 @@ namespace CounterStrikeSharp.API
 	{
 		private const string HTML_TAG_REGEX_PATTERN = "<[^>]+>";
 		private static readonly Regex TagRegex = new(HTML_TAG_REGEX_PATTERN, RegexOptions.Compiled);
-
-		public static string TruncateHtmlTitle(this string msg)
-		{
-			int titleMaxLength = CoreConfig.MaxHtmlMenuTitleLength;
-			return TruncateHtml(msg, titleMaxLength);
-		}
-
-		public static string TruncateHtmlOption(this string msg)
-		{
-			int titleMaxLength = CoreConfig.MaxHtmlMenuOptionLength;
-			return TruncateHtml(msg, titleMaxLength);
-		}
-
+		
 		public static string TruncateHtml(this string msg, int maxLength)
 		{
 			if (maxLength <= 0)

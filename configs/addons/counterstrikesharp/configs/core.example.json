@@ -5,9 +5,6 @@
     "PluginHotReloadEnabled": true,
     "PluginAutoLoadEnabled": true,
     "ServerLanguage": "en",
-    "InlinePageOptions": true,
     "UnlockConCommands": true,
-    "UnlockConVars": true,
-    "MaxHtmlMenuTitleLength": 0,
-    "MaxHtmlMenuOptionLength": 0
+    "UnlockConVars": true
 }

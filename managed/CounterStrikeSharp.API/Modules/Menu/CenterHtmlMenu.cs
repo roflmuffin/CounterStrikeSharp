@@ -28,15 +28,24 @@ public class CenterHtmlMenu : BaseMenu
     public string PrevPageColor { get; set; } = "yellow";
     public string NextPageColor { get; set; } = "yellow";
     public string CloseColor { get; set; } = "red";
+    
+    public bool InlinePageOptions { get; set; } = true;
+    public int MaxTitleLength { get; set; } = 0; // defaults to 0 = no limit, if enabled, recommended value is 32
+    public int MaxOptionLength  { get; set; }= 0; // defaults to 0 = no limit, if enabled, recommended value is 26
 
-    public CenterHtmlMenu(string title, BasePlugin plugin) : base(title.TruncateHtmlTitle())
+    public CenterHtmlMenu(string title, BasePlugin plugin, bool inlinePageOptions, int maxTitleLength, int maxOptionLength): base(title)
     {
+        Title = title.TruncateHtml(MaxTitleLength);
         _plugin = plugin;
+        InlinePageOptions = inlinePageOptions;
+        MaxTitleLength = maxTitleLength;
+        MaxOptionLength = maxOptionLength;
     }
 
     [Obsolete("Use the constructor that takes a BasePlugin")]
-    public CenterHtmlMenu(string title) : base(title.TruncateHtmlTitle())
+    public CenterHtmlMenu(string title) : base(title)
     {
+        Title = title.TruncateHtml(MaxTitleLength);
     }
 
     public override void Open(CCSPlayerController player)
@@ -53,7 +62,7 @@ public class CenterHtmlMenu : BaseMenu
     public override ChatMenuOption AddMenuOption(string display, Action<CCSPlayerController, ChatMenuOption> onSelect,
         bool disabled = false)
     {
-        var option = new ChatMenuOption(display.TruncateHtmlOption(), disabled, onSelect);
+        var option = new ChatMenuOption(display.TruncateHtml(MaxOptionLength), disabled, onSelect);
         MenuOptions.Add(option);
         return option;
     }
@@ -63,7 +72,7 @@ public class CenterHtmlMenuInstance : BaseMenuInstance
 {
     private readonly BasePlugin _plugin;
     public override int NumPerPage => 5; // one less than the actual number of items per page to avoid truncated options
-    public bool InlinePageOptions => CoreConfig.InlinePageOptions;
+    public bool InlinePageOptions { get; set; } = true;
     protected override int MenuItemsPerPage
     {
         get
@@ -93,6 +102,9 @@ public class CenterHtmlMenuInstance : BaseMenuInstance
         _plugin = plugin;
         RemoveOnTickListener();
         plugin.RegisterListener<Core.Listeners.OnTick>(Display);
+        
+        if (menu is CenterHtmlMenu centerHtmlMenu)
+            InlinePageOptions = centerHtmlMenu.InlinePageOptions;
     }
 
     public override void Display()
