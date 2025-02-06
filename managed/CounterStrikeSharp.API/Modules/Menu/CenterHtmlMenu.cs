@@ -72,6 +72,7 @@ public class CenterHtmlMenuInstance : BaseMenuInstance
 {
     private readonly BasePlugin _plugin;
     public override int NumPerPage => 5; // one less than the actual number of items per page to avoid truncated options
+    protected override bool HasNextButton => Menu.MenuOptions.Count > NumPerPage + 1 && CurrentOffset + NumPerPage < Menu.MenuOptions.Count;
     public bool InlinePageOptions { get; set; } = true;
     protected override int MenuItemsPerPage
     {

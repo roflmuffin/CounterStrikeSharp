@@ -52,7 +52,6 @@ public static class MenuManager
     
     public static void OpenCenterHtmlMenu(BasePlugin plugin, CCSPlayerController player, CenterHtmlMenu menu)
     {
-        
         CloseActiveMenu(player);
         
         ActiveMenus[player.Handle] = new CenterHtmlMenuInstance(plugin, player, menu);
