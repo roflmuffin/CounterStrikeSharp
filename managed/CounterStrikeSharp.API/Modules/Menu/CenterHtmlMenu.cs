@@ -71,19 +71,16 @@ public class CenterHtmlMenuInstance : BaseMenuInstance
             int count = NumPerPage;
             if (InlinePageOptions == false)
             {
-                if (HasExitButton == false)
+                if (!HasPrevButton)
                     count++;
 
-                if (HasPrevButton == false)
-                    count++;
-
-                if (HasNextButton == false)
+                if (!HasNextButton)
                     count++;
             }
             else
             {
-                count += 2;
-                if (HasExitButton || HasPrevButton || HasNextButton)
+                count++;
+                if (!HasExitButton && !HasPrevButton && !HasNextButton)
                     count++;
             }
 
@@ -125,30 +122,81 @@ public class CenterHtmlMenuInstance : BaseMenuInstance
             builder.AppendLine("<br>");
         }
         
-        if (HasPrevButton)
-        {
-            builder.AppendFormat($"<font color='{centerHtmlMenu.PrevPageColor}'>!7</font> &#60; Prev");
-            if (InlinePageOptions == false)
-                builder.AppendLine("<br>");
-        }
-
-        if (HasNextButton)
-        {
-            builder.AppendFormat($"<font color='{centerHtmlMenu.NextPageColor}'>!8</font> > Next");
-            if (InlinePageOptions == false)
-                builder.AppendLine("<br>");
-        }
-
-        if (centerHtmlMenu.ExitButton)
-        {
-            builder.AppendFormat($"<font color='{centerHtmlMenu.CloseColor}'>!9</font> X Close");
-            if (InlinePageOptions == false)
-                builder.AppendLine("<br>");
-        }
+        AddPageOptions(centerHtmlMenu, builder);
 
         var currentPageText = builder.ToString();
         Player.PrintToCenterHtml(currentPageText);
     }
+    
+    private void AddPageOptions(CenterHtmlMenu centerHtmlMenu, StringBuilder builder)
+    {
+        string prevText = $"<font color='{centerHtmlMenu.PrevPageColor}'>!7 &#60;</font> Prev";
+        string closeText = $"<font color='{centerHtmlMenu.CloseColor}'>!9 X</font> Close";
+        string nextText = $"<font color='{centerHtmlMenu.NextPageColor}'>!8 ></font> Next";
+
+        if (InlinePageOptions)
+            AddInlinePageOptions(prevText, closeText, nextText, centerHtmlMenu.ExitButton, builder);
+        else
+            AddMultilinePageOptions(prevText, closeText, nextText, centerHtmlMenu.ExitButton, builder);
+    }
+
+
+    private void AddInlinePageOptions(string prevText, string closeText, string nextText, bool hasExitButton, StringBuilder builder)
+    {
+        if (HasPrevButton && HasExitButton && HasNextButton)
+        {
+            builder.Append($"{prevText} | {closeText} | {nextText}");
+            return;
+        }
+
+        string doubleOptionSplitString = " \u200e \u200e \u200e \u200e | \u200e \u200e \u200e \u200e "; // empty characters that are not trimmed
+
+        int optionsCount = 0;
+        if (HasPrevButton)
+        {
+            builder.AppendFormat(prevText);
+            optionsCount++;
+        }
+
+        if (hasExitButton)
+        {
+            if (optionsCount++ > 0)
+                builder.Append(doubleOptionSplitString);
+
+            builder.AppendFormat(closeText);
+        }
+
+        if (HasNextButton)
+        {
+            if (optionsCount > 0)
+                builder.Append(doubleOptionSplitString);
+
+            builder.AppendFormat(nextText);
+        }
+    }
+
+    private void AddMultilinePageOptions(string prevText, string closeText, string nextText, bool hasExitButton, StringBuilder builder)
+    {
+        if (HasPrevButton)
+        {
+            builder.AppendFormat(prevText);
+            builder.AppendLine("<br>");
+        }
+
+        if (hasExitButton)
+        {
+            builder.AppendFormat(closeText);
+            builder.AppendLine("<br>");
+        }
+
+        if (HasNextButton)
+        {
+            builder.AppendFormat(nextText);
+            builder.AppendLine("<br>");
+        }
+    }
+    
+    
 
     public override void Close()
     {
