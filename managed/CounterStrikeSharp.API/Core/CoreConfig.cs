@@ -114,7 +114,6 @@ namespace CounterStrikeSharp.API.Core
         public static bool UnlockConCommands => _coreConfig.UnlockConCommands;
 
         public static bool UnlockConVars => _coreConfig.UnlockConVars;
-
     }
 
     public partial class CoreConfig : IStartupService

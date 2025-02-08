@@ -28,15 +28,24 @@ public class CenterHtmlMenu : BaseMenu
     public string PrevPageColor { get; set; } = "yellow";
     public string NextPageColor { get; set; } = "yellow";
     public string CloseColor { get; set; } = "red";
+    
+    public bool InlinePageOptions { get; set; } = true;
+    public int MaxTitleLength { get; set; } = 0; // defaults to 0 = no limit, if enabled, recommended value is 32
+    public int MaxOptionLength  { get; set; } = 0; // defaults to 0 = no limit, if enabled, recommended value is 26
 
-    public CenterHtmlMenu(string title, BasePlugin plugin) : base(title)
+    public CenterHtmlMenu(string title, BasePlugin plugin, bool inlinePageOptions = true, int maxTitleLength = 0, int maxOptionLength = 0): base(title)
     {
+        Title = title.TruncateHtml(MaxTitleLength);
         _plugin = plugin;
+        InlinePageOptions = inlinePageOptions;
+        MaxTitleLength = maxTitleLength;
+        MaxOptionLength = maxOptionLength;
     }
 
     [Obsolete("Use the constructor that takes a BasePlugin")]
     public CenterHtmlMenu(string title) : base(title)
     {
+        Title = title.TruncateHtml(MaxTitleLength);
     }
 
     public override void Open(CCSPlayerController player)
@@ -53,7 +62,7 @@ public class CenterHtmlMenu : BaseMenu
     public override ChatMenuOption AddMenuOption(string display, Action<CCSPlayerController, ChatMenuOption> onSelect,
         bool disabled = false)
     {
-        var option = new ChatMenuOption(display, disabled, onSelect);
+        var option = new ChatMenuOption(display.TruncateHtml(MaxOptionLength), disabled, onSelect);
         MenuOptions.Add(option);
         return option;
     }
@@ -63,13 +72,40 @@ public class CenterHtmlMenuInstance : BaseMenuInstance
 {
     private readonly BasePlugin _plugin;
     public override int NumPerPage => 5; // one less than the actual number of items per page to avoid truncated options
-    protected override int MenuItemsPerPage => (Menu.ExitButton ? 0 : 1) + ((HasPrevButton && HasNextButton) ? NumPerPage - 1 : NumPerPage);
+    protected override bool HasNextButton => Menu.MenuOptions.Count > NumPerPage + 1 && CurrentOffset + NumPerPage < Menu.MenuOptions.Count;
+    public bool InlinePageOptions { get; set; } = true;
+    protected override int MenuItemsPerPage
+    {
+        get
+        {
+            int count = NumPerPage;
+            if (InlinePageOptions == false)
+            {
+                if (!HasPrevButton)
+                    count++;
+
+                if (!HasNextButton)
+                    count++;
+            }
+            else
+            {
+                count++;
+                if (!HasExitButton && !HasPrevButton && !HasNextButton)
+                    count++;
+            }
+
+            return count;
+        }
+    }
 
     public CenterHtmlMenuInstance(BasePlugin plugin, CCSPlayerController player, IMenu menu) : base(player, menu)
     {
         _plugin = plugin;
         RemoveOnTickListener();
         plugin.RegisterListener<Core.Listeners.OnTick>(Display);
+        
+        if (menu is CenterHtmlMenu centerHtmlMenu)
+            InlinePageOptions = centerHtmlMenu.InlinePageOptions;
     }
 
     public override void Display()
@@ -98,28 +134,82 @@ public class CenterHtmlMenuInstance : BaseMenuInstance
             builder.Append($"<font color='{color}'>!{keyOffset++}</font> {option.Text}");
             builder.AppendLine("<br>");
         }
+        
+        AddPageOptions(centerHtmlMenu, builder);
 
+        var currentPageText = builder.ToString();
+        Player.PrintToCenterHtml(currentPageText);
+    }
+    
+    private void AddPageOptions(CenterHtmlMenu centerHtmlMenu, StringBuilder builder)
+    {
+        string prevText = $"<font color='{centerHtmlMenu.PrevPageColor}'>!7 &#60;</font> Prev";
+        string closeText = $"<font color='{centerHtmlMenu.CloseColor}'>!9 X</font> Close";
+        string nextText = $"<font color='{centerHtmlMenu.NextPageColor}'>!8 ></font> Next";
+
+        if (InlinePageOptions)
+            AddInlinePageOptions(prevText, closeText, nextText, centerHtmlMenu.ExitButton, builder);
+        else
+            AddMultilinePageOptions(prevText, closeText, nextText, centerHtmlMenu.ExitButton, builder);
+    }
+
+
+    private void AddInlinePageOptions(string prevText, string closeText, string nextText, bool hasExitButton, StringBuilder builder)
+    {
+        if (HasPrevButton && HasExitButton && HasNextButton)
+        {
+            builder.Append($"{prevText} | {closeText} | {nextText}");
+            return;
+        }
+
+        string doubleOptionSplitString = " \u200e \u200e \u200e \u200e | \u200e \u200e \u200e \u200e "; // empty characters that are not trimmed
+
+        int optionsCount = 0;
         if (HasPrevButton)
         {
-            builder.AppendFormat($"<font color='{centerHtmlMenu.PrevPageColor}'>!7</font> &#60;- Prev");
+            builder.AppendFormat(prevText);
+            optionsCount++;
+        }
+
+        if (hasExitButton)
+        {
+            if (optionsCount++ > 0)
+                builder.Append(doubleOptionSplitString);
+
+            builder.AppendFormat(closeText);
+        }
+
+        if (HasNextButton)
+        {
+            if (optionsCount > 0)
+                builder.Append(doubleOptionSplitString);
+
+            builder.AppendFormat(nextText);
+        }
+    }
+
+    private void AddMultilinePageOptions(string prevText, string closeText, string nextText, bool hasExitButton, StringBuilder builder)
+    {
+        if (HasPrevButton)
+        {
+            builder.AppendFormat(prevText);
             builder.AppendLine("<br>");
         }
 
         if (HasNextButton)
         {
-            builder.AppendFormat($"<font color='{centerHtmlMenu.NextPageColor}'>!8</font> -> Next");
+            builder.AppendFormat(nextText);
             builder.AppendLine("<br>");
         }
-
-        if (centerHtmlMenu.ExitButton)
+        
+        if (hasExitButton)
         {
-            builder.AppendFormat($"<font color='{centerHtmlMenu.CloseColor}'>!9</font> -> Close");
+            builder.AppendFormat(closeText);
             builder.AppendLine("<br>");
         }
-
-        var currentPageText = builder.ToString();
-        Player.PrintToCenterHtml(currentPageText);
     }
+    
+    
 
     public override void Close()
     {
