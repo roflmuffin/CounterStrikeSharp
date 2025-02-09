@@ -18,7 +18,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
         private Core.Listeners.OnTick _onTickDelegate;
         private Core.Listeners.CheckTransmit _checkTransmitDelegate;
-
+        private Core.Listeners.OnEntityDeleted _onEntityDeletedDelegate;
         private BasePlugin.GameEventHandler<EventRoundStart> _onRoundStartDelegate;
         public ScreenMenuInstance(BasePlugin plugin, CCSPlayerController player, ScreenMenu menu)
             : base(player, menu)
@@ -33,15 +33,27 @@ namespace CounterStrikeSharp.API.Modules.Menu
 
             _onTickDelegate = new Core.Listeners.OnTick(Update);
             _checkTransmitDelegate = new Core.Listeners.CheckTransmit(CheckTransmitListener);
+            _onEntityDeletedDelegate = new Core.Listeners.OnEntityDeleted(OnEntityDeleted);
             _plugin.RegisterListener<Core.Listeners.CheckTransmit>(_checkTransmitDelegate);
             _plugin.RegisterListener<Core.Listeners.OnTick>(_onTickDelegate);
+            _plugin.RegisterListener<Core.Listeners.OnEntityDeleted>(_onEntityDeletedDelegate);
 
 
             _onRoundStartDelegate = new BasePlugin.GameEventHandler<EventRoundStart>(OnRoundStart);
             _plugin.RegisterEventHandler<EventRoundStart>(_onRoundStartDelegate, HookMode.Pre);
+            
 
             if ((player.Buttons & PlayerButtons.Use) == 0)
                 _useHandled = false;
+        }
+        private void OnEntityDeleted(CEntityInstance entity)
+        {
+
+            uint entityIndex = entity.Index;
+            if (WorldTextOwners.ContainsKey(entityIndex))
+            {
+                WorldTextOwners.Clear();
+            }
         }
         public void CheckTransmitListener(CCheckTransmitInfoList infoList)
         {
@@ -62,7 +74,6 @@ namespace CounterStrikeSharp.API.Modules.Menu
                 }
             }
         }
-
         public HookResult OnRoundStart(EventRoundStart @event, GameEventInfo info)
         {
             if (MenuManager.GetActiveMenu(Player) != this)
@@ -449,7 +460,6 @@ namespace CounterStrikeSharp.API.Modules.Menu
                     }
                     else
                     {
-                        // Main menu navigation
                         if (Page == 0)
                         {
                             if (navCount == 2)
@@ -519,6 +529,7 @@ namespace CounterStrikeSharp.API.Modules.Menu
             {
                 _hudText.Enabled = false;
                 _hudText.AcceptInput("Kill", _hudText);
+                WorldTextOwners.Clear();
             }
             _plugin.RemoveListener("OnTick", _onTickDelegate);
         }
