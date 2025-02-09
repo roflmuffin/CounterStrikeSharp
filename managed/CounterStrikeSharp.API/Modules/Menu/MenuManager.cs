@@ -26,22 +26,36 @@ public static class MenuManager
     {
         return ActiveMenus;
     }
-    
+
     public static IMenuInstance? GetActiveMenu(CCSPlayerController player)
     {
         return !ActiveMenus.TryGetValue(player.Handle, out var value) ? null : value;
     }
-    
+
     public static void CloseActiveMenu(CCSPlayerController player)
     {
         if (ActiveMenus.TryGetValue(player.Handle, out var activeMenu))
         {
             activeMenu.Reset();
         }
-
         ActiveMenus.Remove(player.Handle);
     }
-    
+
+    public static void OpenScreenMenu(BasePlugin plugin, CCSPlayerController player, ScreenMenu menu)
+    {
+        CloseActiveMenu(player);
+        ActiveMenus[player.Handle] = new ScreenMenuInstance(plugin, player, menu);
+        ActiveMenus[player.Handle].Display();
+    }
+    public static void OpenSubMenu(BasePlugin plugin, CCSPlayerController player, ScreenMenu menu)
+    {
+        if (ActiveMenus.TryGetValue(player.Handle, out var activeMenu))
+        {
+            activeMenu.Close();
+        }
+        ActiveMenus[player.Handle] = new ScreenMenuInstance(plugin, player, menu);
+        ActiveMenus[player.Handle].Display();
+    }
     public static void OpenChatMenu(CCSPlayerController player, ChatMenu menu)
     {
         CloseActiveMenu(player);
