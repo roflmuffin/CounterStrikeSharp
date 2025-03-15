@@ -251,6 +251,7 @@ namespace CounterStrikeSharp.API
         /// <summary>
         /// metamod method 'MetaFactory' to get the pointer of api interface exposed by metamod plugins.
         /// Returns null when the interface cannot be found.
+        /// </summary>
         /// <param name="interfaceName">The interface name of metamod api, can be found in their api header file</param>
         public static IntPtr? MetaFactory(string interfaceName)
         {
