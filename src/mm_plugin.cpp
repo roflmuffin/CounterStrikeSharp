@@ -134,6 +134,7 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
     CALL_GLOBAL_LISTENER(OnAllInitialized());
 
     on_activate_callback = globals::callbackManager.CreateCallback("OnMapStart");
+    on_metamod_all_plugins_loaded_callback = globals::callbackManager.CreateCallback("OnMetamodAllPluginsLoaded");
 
     SH_ADD_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this, &CounterStrikeSharpMMPlugin::Hook_GameFrame, true);
     SH_ADD_HOOK_MEMFUNC(INetworkServerService, StartupServer, globals::networkServerService, this,
@@ -182,6 +183,7 @@ bool CounterStrikeSharpMMPlugin::Unload(char* error, size_t maxlen)
                            &CounterStrikeSharpMMPlugin::Hook_StartupServer, true);
 
     globals::callbackManager.ReleaseCallback(on_activate_callback);
+    globals::callbackManager.ReleaseCallback(on_metamod_all_plugins_loaded_callback);
 
     return true;
 }
@@ -191,6 +193,8 @@ void CounterStrikeSharpMMPlugin::AllPluginsLoaded()
     /* This is where we'd do stuff that relies on the mod or other plugins
      * being initialized (for example, cvars added and events registered).
      */
+    on_metamod_all_plugins_loaded_callback->ScriptContext().Reset();
+    on_metamod_all_plugins_loaded_callback->Execute();
 }
 
 void CounterStrikeSharpMMPlugin::AddTaskForNextFrame(std::function<void()>&& task)
