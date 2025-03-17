@@ -39,6 +39,7 @@
         <PackageReference Include="Serilog.Sinks.Console" Version="5.0.0"/>
         <PackageReference Include="Serilog.Sinks.File" Version="5.0.0"/>
         <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0"/>
+        <PackageReference Include="Tomlyn" Version="0.19.0"/>
     </ItemGroup>
     <ItemGroup>
         <Folder Include="Core\Schema\"/>
@@ -59,9 +60,9 @@
     </PropertyGroup>
     <Target Name="SetSourceRevisionId" BeforeTargets="InitializeSourceControlInformation">
         <Exec
-                Command="git describe --long --always --exclude=* --abbrev=7"
-                ConsoleToMSBuild="True"
-                IgnoreExitCode="False"
+            Command="git describe --long --always --exclude=* --abbrev=7"
+            ConsoleToMSBuild="True"
+            IgnoreExitCode="False"
         >
             <Output PropertyName="SourceRevisionId" TaskParameter="ConsoleOutput"/>
         </Exec>
