@@ -170,5 +170,11 @@ namespace CounterStrikeSharp.API.Core
         /// <param name="infoList">Transmit info list</param>
         [ListenerName("CheckTransmit")]
         public delegate void CheckTransmit([CastFrom(typeof(nint))]CCheckTransmitInfoList infoList);
+
+        /// <summary>
+        /// Called when all metamod plugins are loaded.
+        /// </summary>
+        [ListenerName("OnMetamodAllPluginsLoaded")]
+        public delegate void OnMetamodAllPluginsLoaded();
     }
 }

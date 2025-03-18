@@ -83,6 +83,7 @@ set(SOURCE_FILES
     src/scripting/natives/natives_schema.cpp
     src/scripting/natives/natives_entities.cpp
     src/scripting/natives/natives_voice.cpp
+    src/scripting/natives/natives_metamod.cpp
     src/core/managers/entity_manager.cpp
     src/core/managers/entity_manager.h
     src/core/managers/chat_manager.cpp
