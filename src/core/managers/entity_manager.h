@@ -24,6 +24,8 @@
 #include "scripting/script_engine.h"
 #include "entitysystem.h"
 #include "scripting/callback_manager.h"
+#include "entity2/entitysystem.h"
+#include "game/shared/shareddefs.h"
 
 #include <variant.h>
 
@@ -137,4 +139,16 @@ inline void (*CEntitySystem_AddEntityIOEvent)(CEntitySystem* pEntitySystem,
                                               variant_t* value,
                                               float delay,
                                               int nOutputID);
+
+
+typedef uint32 SoundEventGuid_t;
+struct SndOpEventGuid_t
+{
+    SoundEventGuid_t m_nGuid;
+    uint64 m_hStackHash;
+};
+
+inline SndOpEventGuid_t(FASTCALL* CBaseEntity_EmitSoundFilter)(IRecipientFilter& filter, CEntityIndex ent, const EmitSound_t& params);
+
+SndOpEventGuid_t* EntityEmitSoundFilter(IRecipientFilter& filter, uint32 ent, const char* pszSound, float flVolume = 1.0f, float flPitch = 1.0f);
 }  // namespace counterstrikesharp
