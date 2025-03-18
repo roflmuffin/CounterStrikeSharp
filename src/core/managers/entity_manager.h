@@ -24,7 +24,6 @@
 #include "scripting/script_engine.h"
 #include "entitysystem.h"
 #include "scripting/callback_manager.h"
-#include "entity2/entitysystem.h"
 
 #include <variant.h>
 
@@ -138,9 +137,6 @@ inline void (*CEntitySystem_AddEntityIOEvent)(CEntitySystem* pEntitySystem,
                                               variant_t* value,
                                               float delay,
                                               int nOutputID);
-
-
-
 
 typedef uint32 SoundEventGuid_t;
 
