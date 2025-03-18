@@ -257,9 +257,9 @@ void AddEntityIOEvent(ScriptContext& script_context)
     CEntitySystem_AddEntityIOEvent(GameEntitySystem(), pTarget, pInputName, pActivator, pCaller, &_value, delay, outputID);
 }
 
-SndOpEventGuid_t* EmitSoundFilter(ScriptContext& script_context)
+SoundEventGuid_t EmitSoundFilter(ScriptContext& script_context)
 {
-    auto filtermask = script_context.GetArgument<unsigned long long>(0);
+    auto filtermask = script_context.GetArgument<uint64>(0);
     auto ent = script_context.GetArgument<uint32>(1);
     auto sound = script_context.GetArgument<const char*>(2);
     auto volume = script_context.GetArgument<float>(3);
@@ -268,13 +268,8 @@ SndOpEventGuid_t* EmitSoundFilter(ScriptContext& script_context)
     CRecipientFilter filter{};
     filter.AddRecipientsFromMask(filtermask);
 
-    return EntityEmitSoundFilter(filter, ent, sound, volume, pitch);
-}
-
-void FreeSoundEventGuid(ScriptContext& script_context)
-{
-    auto pSoundEventGuid = script_context.GetArgument<SndOpEventGuid_t*>(0);
-    delete pSoundEventGuid;
+    SndOpEventGuid_t ret = EntityEmitSoundFilter(filter, ent, sound, volume, pitch);
+    return ret.m_nGuid;
 }
 
 REGISTER_NATIVES(entities, {
@@ -295,6 +290,5 @@ REGISTER_NATIVES(entities, {
     ScriptEngine::RegisterNativeHandler("ACCEPT_INPUT", AcceptInput);
     ScriptEngine::RegisterNativeHandler("ADD_ENTITY_IO_EVENT", AddEntityIOEvent);
     ScriptEngine::RegisterNativeHandler("EMIT_SOUND_FILTER", EmitSoundFilter);
-    ScriptEngine::RegisterNativeHandler("FREE_SOUND_EVENT_GUID", FreeSoundEventGuid);
 })
 } // namespace counterstrikesharp

@@ -274,20 +274,14 @@ void DetourFireOutputInternal(CEntityIOOutput* const pThis, CEntityInstance* pAc
     }
 }
 
-SndOpEventGuid_t* EntityEmitSoundFilter(IRecipientFilter& filter, uint32 ent, const char* pszSound, float flVolume, float flPitch)
+SndOpEventGuid_t EntityEmitSoundFilter(IRecipientFilter& filter, uint32 ent, const char* pszSound, float flVolume, float flPitch)
 {
     EmitSound_t params;
-    params.m_pSoundName = "CT_Water.StepLeft";
+    params.m_pSoundName = pszSound;
     params.m_flVolume = flVolume;
     params.m_nPitch = flPitch;
 
-    auto r = CBaseEntity_EmitSoundFilter(filter, ent, params);
-    return &r;
-}
-
-void FreeSoundEventGuid(SndOpEventGuid_t* pSoundEventGuid)
-{
-    delete pSoundEventGuid;
+    return CBaseEntity_EmitSoundFilter(filter, ent, params);
 }
 
 } // namespace counterstrikesharp
