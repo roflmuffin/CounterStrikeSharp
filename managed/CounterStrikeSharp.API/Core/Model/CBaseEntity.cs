@@ -54,7 +54,8 @@ public partial class CBaseEntity
     /// <summary>
     /// Emit a sound to all players.
     /// </summary>
-    public SndOpEventGuid EmitSound(string soundName, float volume = 1f, float pitch = 1f)
+    /// <returns>The sound event guid.</returns>
+    public uint EmitSound(string soundName, float volume = 1f, float pitch = 0f)
     {
         Guard.IsValidEntity(this);
         
@@ -66,13 +67,11 @@ public partial class CBaseEntity
     /// <summary>
     /// Emit a sound with a player filter. Only players in the filter will hear the sound.
     /// </summary>
-    public SndOpEventGuid EmitSoundWithFilter(RecipientFilter filter, string soundName, float volume = 1f, float pitch = 1f)
+    /// <returns>The sound event guid.</returns>
+    public uint EmitSoundWithFilter(RecipientFilter filter, string soundName, float volume = 1f, float pitch = 0f)
     {
         Guard.IsValidEntity(this);
 
-        nint pSndOpEventGuid = NativeAPI.EmitSoundFilter(filter.GetRecipientMask(), this.Index, soundName, volume, pitch);
-        var sndOpEventGuid = new SndOpEventGuid(pSndOpEventGuid); 
-        NativeAPI.FreeSoundEventGuid(pSndOpEventGuid);
-        return sndOpEventGuid;
+        return NativeAPI.EmitSoundFilter(filter.GetRecipientMask(), this.Index, soundName, volume, pitch);
     }
 }
