@@ -780,7 +780,7 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
-        public static IntPtr EmitSoundFilter(ulong filtermask, uint ent, string sound, float volume, float pitch){
+        public static uint EmitSoundFilter(ulong filtermask, uint ent, string sound, float volume, float pitch){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
 			ScriptContext.GlobalScriptContext.Push(filtermask);
@@ -791,17 +791,7 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x43C4A2B3);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
-			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
-			}
-		}
-
-        public static void FreeSoundEventGuid(IntPtr psoundeventguid){
-			lock (ScriptContext.GlobalScriptContext.Lock) {
-			ScriptContext.GlobalScriptContext.Reset();
-			ScriptContext.GlobalScriptContext.Push(psoundeventguid);
-			ScriptContext.GlobalScriptContext.SetIdentifier(0x4B96859E);
-			ScriptContext.GlobalScriptContext.Invoke();
-			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (uint)ScriptContext.GlobalScriptContext.GetResult(typeof(uint));
 			}
 		}
 
