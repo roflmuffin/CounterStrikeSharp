@@ -17,6 +17,7 @@
 #include "core/managers/entity_manager.h"
 #include "core/gameconfig.h"
 #include "core/log.h"
+#include "core/recipientfilters.h"
 
 #include <funchook.h>
 #include <vector>
@@ -70,6 +71,14 @@ void EntityManager::OnAllInitialized()
     if (!CEntitySystem_AddEntityIOEvent)
     {
         CSSHARP_CORE_CRITICAL("Failed to find signature for \'CEntitySystem_AddEntityIOEvent\'");
+    }
+
+    CBaseEntity_EmitSoundFilter = decltype(CBaseEntity_EmitSoundFilter) (
+        modules::server->FindSignature(globals::gameConfig->GetSignature("CBaseEntity_EmitSoundFilter")));
+
+    if (!CBaseEntity_EmitSoundFilter)
+    {
+        CSSHARP_CORE_CRITICAL("Failed to find signature for \'CBaseEntity_EmitSoundFilter\'");
     }
 
     auto m_hook = funchook_create();
@@ -263,6 +272,21 @@ void DetourFireOutputInternal(CEntityIOOutput* const pThis, CEntityInstance* pAc
             pCallbackPair->post->Execute();
         }
     }
+}
+
+SndOpEventGuid_t EntityEmitSoundFilter(IRecipientFilter& filter, uint32 ent, const char* pszSound, float flVolume, float flPitch)
+{
+    if (!CBaseEntity_EmitSoundFilter) {
+        CSSHARP_CORE_ERROR("[EntityManager][EmitSoundFilter] - Failed to emit a sound. Signature for \'CBaseEntity_EmitSoundFilter\' is not found. The latest update may have broken it.");
+        return SndOpEventGuid_t{};
+    }
+
+    EmitSound_t params;
+    params.m_pSoundName = pszSound;
+    params.m_flVolume = flVolume;
+    params.m_nPitch = flPitch;
+
+    return CBaseEntity_EmitSoundFilter(filter, ent, params);
 }
 
 } // namespace counterstrikesharp
