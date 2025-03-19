@@ -52,26 +52,23 @@ public partial class CBaseEntity
     }
 
     /// <summary>
-    /// Emit a sound to all players.
+    /// Emit a soundevent to all players.
     /// </summary>
+    /// <param name="soundEventName">The name of the soundevent to emit.</param>
+    /// <param name="recipients">The recipients of the soundevent.</param>
+    /// <param name="volume">The volume of the soundevent.</param>
+    /// <param name="pitch">The pitch of the soundevent.</param>
     /// <returns>The sound event guid.</returns>
-    public uint EmitSound(string soundName, float volume = 1f, float pitch = 0f)
+    public uint EmitSound(string soundEventName, RecipientFilter? recipients = null, float volume = 1f, float pitch = 0)
     {
         Guard.IsValidEntity(this);
         
-        RecipientFilter filter = new();
-        filter.AddAllPlayers();
-        return EmitSoundWithFilter(filter, soundName, volume, pitch);
-    }
+        if (recipients == null)
+        {
+            recipients = new RecipientFilter();
+            recipients.AddAllPlayers();
+        }
 
-    /// <summary>
-    /// Emit a sound with a player filter. Only players in the filter will hear the sound.
-    /// </summary>
-    /// <returns>The sound event guid.</returns>
-    public uint EmitSoundWithFilter(RecipientFilter filter, string soundName, float volume = 1f, float pitch = 0f)
-    {
-        Guard.IsValidEntity(this);
-
-        return NativeAPI.EmitSoundFilter(filter.GetRecipientMask(), this.Index, soundName, volume, pitch);
+        return NativeAPI.EmitSoundFilter(recipients.GetRecipientMask(), this.Index, soundEventName, volume, pitch);
     }
 }
