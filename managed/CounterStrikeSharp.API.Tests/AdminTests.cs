@@ -85,13 +85,33 @@ public class AdminTests
     [Fact]
     public void ShouldAddPlayerToGroup()
     {
+        // AddPlayerToGroup will create a new AdminData instance here, as "STEAM_0:1:3" does not
+        // exist internally at this stage. Afterwards, AddPlayerToGroup will add "#css/root" as
+        // a group.
         AdminManager.AddPlayerToGroup(new SteamID("STEAM_0:1:3"), "#css/root");
         var adminData = AdminManager.GetPlayerAdminData(new SteamID("STEAM_0:1:3"));
         Assert.NotNull(adminData);
         Assert.True(adminData.Groups.Any());
         Assert.Equal("#css/root", adminData.Groups.Single());
     }
-    
+
+    [Fact]
+    public void ShouldAddPlayerToGroupAtRuntime()
+    {
+        // Similar to ShouldPlayerAddToGroup, but different in that we create AdminData
+        // manually first, then add the player into the group.
+        // Aimed to resolve an issue raised on Discord by r3troattack.
+
+        AdminManager.CreateAdminData((SteamID)76561197960265999);
+        Assert.False(AdminManager.PlayerInGroup((SteamID)76561197960265999, "#css/root"));
+        AdminManager.AddPlayerToGroup((SteamID)76561197960265999, "#css/root");
+
+        var adminData = AdminManager.GetPlayerAdminData((SteamID)76561197960265999);
+        Assert.NotNull(adminData);
+        Assert.True(adminData.Groups.Any());
+        Assert.Equal("#css/root", adminData.Groups.Single());
+    }
+
     [Fact]
     public void ShouldAddPlayerPermissionOverridesAtRuntime()
     {

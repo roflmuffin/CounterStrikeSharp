@@ -1,8 +1,4 @@
-﻿using CounterStrikeSharp.API.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using CounterStrikeSharp.API.Modules.Entities;
+﻿using CounterStrikeSharp.API.Modules.Entities;
 
 namespace CounterStrikeSharp.API.Modules.Admin
 {
@@ -42,6 +38,14 @@ namespace CounterStrikeSharp.API.Modules.Admin
             }
 
             return true;
+        }
+
+        public virtual bool CanExecuteCommand(CCSPlayerController? caller)
+        {
+            if ( caller is null || caller is { IsValid: false } ) return false;
+            if ( caller.AuthorizedSteamID is null ) return false;
+
+            return CanExecuteCommand(caller.AuthorizedSteamID);
         }
     }
 }
