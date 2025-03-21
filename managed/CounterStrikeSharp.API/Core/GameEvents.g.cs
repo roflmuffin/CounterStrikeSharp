@@ -4489,14 +4489,6 @@ namespace CounterStrikeSharp.API.Core
                 }
 
 
-                // ip:port
-                public string Address
-                {
-                    get => Get<string>("address");
-                    set => Set<string>("address", value);
-                }
-
-
                 
                 public bool Bot
                 {
