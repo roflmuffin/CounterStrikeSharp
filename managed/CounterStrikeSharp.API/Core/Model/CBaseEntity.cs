@@ -26,11 +26,17 @@ public partial class CBaseEntity
     }
 
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
-    public void DispatchSpawn()
+    public void DispatchSpawn(CEntityKeyValues? keyValues = null)
     {
         Guard.IsValidEntity(this);
 
-        VirtualFunctions.CBaseEntity_DispatchSpawn(Handle, IntPtr.Zero);
+        if (keyValues != null)
+        {
+            NativeAPI.DispatchSpawn(Handle, keyValues.Handle);
+        } else
+        {
+            VirtualFunctions.CBaseEntity_DispatchSpawn(Handle, IntPtr.Zero);
+        }
     }
 
     /// <summary>
