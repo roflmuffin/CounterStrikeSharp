@@ -153,6 +153,13 @@
       "linux": "48 85 FF 74 ? 55 48 89 E5 41 56"
     }
   },
+  "CBaseEntity_EmitSoundFilter": {
+    "signatures": {
+      "library": "server",
+      "windows": "48 89 5C 24 08 48 89 6C 24 10 48 89 74 24 18 48 89 7C 24 20 41 56 48 83 EC 30 48 8B EA",
+      "linux": "55 48 89 E5 41 56 49 89 D6 41 55 41 89 F5 41 54 48 8D 35 2A 2A 2A 2A"
+    }
+  },
   "CEntityInstance_AcceptInput": {
     "signatures": {
       "library": "server",
