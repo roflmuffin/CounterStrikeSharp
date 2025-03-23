@@ -36,6 +36,17 @@ namespace CounterStrikeSharp.API.Modules.Config
         private static readonly string _pluginConfigsFolderPath;
         private static ILogger _logger = CoreLogging.Factory.CreateLogger("ConfigManager");
 
+        internal static JsonSerializerOptions JsonSerializerOptions { get; } = new()
+        {
+            WriteIndented = true,
+            ReadCommentHandling = JsonCommentHandling.Skip
+        };
+
+        internal static TomlModelOptions TomlModelOptions { get; } = new()
+        {
+            ConvertPropertyName = name => name
+        };
+
         static ConfigManager()
         {
             _rootDir = new FileInfo(Assembly.GetExecutingAssembly().Location).Directory.Parent;
@@ -110,10 +121,9 @@ namespace CounterStrikeSharp.API.Modules.Config
             switch (Path.GetExtension(path))
             {
                 case ".toml":
-                    return Toml.ToModel<T>(File.ReadAllText(path));
+                    return Toml.ToModel<T>(File.ReadAllText(path), options: TomlModelOptions);
                 case ".json":
-                    return JsonSerializer.Deserialize<T>(File.ReadAllText(path),
-                        new JsonSerializerOptions() { ReadCommentHandling = JsonCommentHandling.Skip })!;
+                    return JsonSerializer.Deserialize<T>(File.ReadAllText(path), JsonSerializerOptions)!;
             }
 
             throw new NotSupportedException("Unsupported configuration file format");
@@ -129,12 +139,11 @@ namespace CounterStrikeSharp.API.Modules.Config
             {
                 case ConfigType.Json:
                     builder.Append($"// {comment}");
-                    builder.Append(JsonSerializer.Serialize<T>(config,
-                        new JsonSerializerOptions { WriteIndented = true }));
+                    builder.Append(JsonSerializer.Serialize<T>(config, JsonSerializerOptions));
                     break;
                 case ConfigType.Toml:
                     builder.Append($"# {comment}");
-                    builder.Append(Toml.FromModel(config));
+                    builder.Append(Toml.FromModel(config, options: TomlModelOptions));
                     break;
                 default:
                     throw new NotSupportedException("Unsupported configuration file format");
