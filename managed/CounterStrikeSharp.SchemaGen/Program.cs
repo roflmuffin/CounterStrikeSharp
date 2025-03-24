@@ -194,7 +194,7 @@ internal static partial class Program
             var newBuilder = new StringBuilder(enumBuilder.ToString());
             WriteEnum(newBuilder, enumName, schemaEnum);
             File.WriteAllText(Path.Combine(outputPath, "Enums", $"{SanitiseTypeName(enumName)}.g.cs"),
-                newBuilder.ToString());
+                newBuilder.ToString().ReplaceLineEndings("\r\n"));
         }
 
         // Manually whitelist some classes
@@ -221,7 +221,7 @@ internal static partial class Program
                 visitedClassNames.Add(className);
 
                 File.WriteAllText(Path.Combine(outputPath, "Classes", $"{SanitiseTypeName(className)}.g.cs"),
-                    newBuilder.ToString());
+                    newBuilder.ToString().ReplaceLineEndings("\r\n"));
             }
         }
     }
