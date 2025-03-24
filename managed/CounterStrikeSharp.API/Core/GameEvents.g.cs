@@ -682,6 +682,30 @@ namespace CounterStrikeSharp.API.Core
                     get => GetPlayer("userid");
                     set => SetPlayer("userid", value);
                 }
+
+
+                
+                public bool PlayerHeld
+                {
+                    get => Get<bool>("player_held");
+                    set => Set<bool>("player_held", value);
+                }
+
+
+                
+                public bool PlayerThrown
+                {
+                    get => Get<bool>("player_thrown");
+                    set => Set<bool>("player_thrown", value);
+                }
+
+
+                
+                public bool PlayerDropped
+                {
+                    get => Get<bool>("player_dropped");
+                    set => Set<bool>("player_dropped", value);
+                }
             }
 
             [EventName("broken_breakable")]
@@ -2053,10 +2077,10 @@ namespace CounterStrikeSharp.API.Core
 
 
                 // Entindex of the entity they see
-                public int Subject
+                public long Subject
                 {
-                    get => Get<int>("subject");
-                    set => Set<int>("subject", value);
+                    get => Get<long>("subject");
+                    set => Set<long>("subject", value);
                 }
 
 
@@ -2333,6 +2357,14 @@ namespace CounterStrikeSharp.API.Core
                 {
                     get => Get<string>("mapname");
                     set => Set<string>("mapname", value);
+                }
+
+
+                // true if this is a transition from one map to another
+                public bool Transition
+                {
+                    get => Get<bool>("transition");
+                    set => Set<bool>("transition", value);
                 }
             }
 
@@ -3318,6 +3350,14 @@ namespace CounterStrikeSharp.API.Core
                 }
 
 
+                // entity id of the env_instructor_hint that fired the event
+                public long HintEntindex
+                {
+                    get => Get<long>("hint_entindex");
+                    set => Set<long>("hint_entindex", value);
+                }
+
+
                 // what to name the hint. For referencing it again later (e.g. a kill command for the hint instead of a timeout)
                 public string HintName
                 {
@@ -3342,7 +3382,7 @@ namespace CounterStrikeSharp.API.Core
                 }
 
 
-                // userid id of the activator
+                // playerslot of the activator
                 public CCSPlayerController? HintActivatorUserid
                 {
                     get => GetPlayer("hint_activator_userid");
@@ -3430,14 +3470,6 @@ namespace CounterStrikeSharp.API.Core
                 }
 
 
-                // gamepad bindings to use when use_binding is the onscreen icon
-                public string HintGamepadBinding
-                {
-                    get => Get<string>("hint_gamepad_binding");
-                    set => Set<string>("hint_gamepad_binding", value);
-                }
-
-
                 // if false, the hint will dissappear if the target entity is invisible
                 public bool HintAllowNodrawTarget
                 {
@@ -3468,6 +3500,62 @@ namespace CounterStrikeSharp.API.Core
                     get => Get<bool>("hint_local_player_only");
                     set => Set<bool>("hint_local_player_only", value);
                 }
+
+
+                // Game sound to play
+                public string HintStartSound
+                {
+                    get => Get<string>("hint_start_sound");
+                    set => Set<string>("hint_start_sound", value);
+                }
+
+
+                // Path for Panorama layout file
+                public string HintLayoutfile
+                {
+                    get => Get<string>("hint_layoutfile");
+                    set => Set<string>("hint_layoutfile", value);
+                }
+
+
+                // Attachment type for the Panorama panel
+                public int HintVrPanelType
+                {
+                    get => Get<int>("hint_vr_panel_type");
+                    set => Set<int>("hint_vr_panel_type", value);
+                }
+
+
+                // Height offset for attached panels
+                public float HintVrHeightOffset
+                {
+                    get => Get<float>("hint_vr_height_offset");
+                    set => Set<float>("hint_vr_height_offset", value);
+                }
+
+
+                // offset for attached panels
+                public float HintVrOffsetX
+                {
+                    get => Get<float>("hint_vr_offset_x");
+                    set => Set<float>("hint_vr_offset_x", value);
+                }
+
+
+                // offset for attached panels
+                public float HintVrOffsetY
+                {
+                    get => Get<float>("hint_vr_offset_y");
+                    set => Set<float>("hint_vr_offset_y", value);
+                }
+
+
+                // offset for attached panels
+                public float HintVrOffsetZ
+                {
+                    get => Get<float>("hint_vr_offset_z");
+                    set => Set<float>("hint_vr_offset_z", value);
+                }
             }
 
             [EventName("instructor_server_hint_stop")]
@@ -3483,6 +3571,14 @@ namespace CounterStrikeSharp.API.Core
                 {
                     get => Get<string>("hint_name");
                     set => Set<string>("hint_name", value);
+                }
+
+
+                // entity id of the env_instructor_hint that fired the event
+                public long HintEntindex
+                {
+                    get => Get<long>("hint_entindex");
+                    set => Set<long>("hint_entindex", value);
                 }
             }
 
@@ -3549,6 +3645,21 @@ namespace CounterStrikeSharp.API.Core
                 public EventInventoryUpdated(bool force) : base("inventory_updated", force){}
 
                 
+
+                
+                public int Itemdef
+                {
+                    get => Get<int>("itemdef");
+                    set => Set<int>("itemdef", value);
+                }
+
+
+                
+                public long Itemid
+                {
+                    get => Get<long>("itemid");
+                    set => Set<long>("itemid", value);
+                }
             }
 
             [EventName("item_equip")]
@@ -4434,10 +4545,18 @@ namespace CounterStrikeSharp.API.Core
 
 
                 // chatting player
-                public int Userid
+                public CCSPlayerController? Userid
                 {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
+                    get => GetPlayer("userid");
+                    set => SetPlayer("userid", value);
+                }
+
+
+                // chatting player ID
+                public int Playerid
+                {
+                    get => Get<int>("playerid");
+                    set => Set<int>("playerid", value);
                 }
 
 
@@ -5289,7 +5408,7 @@ namespace CounterStrikeSharp.API.Core
 
                 
 
-                // player
+                
                 public CCSPlayerController? Userid
                 {
                     get => GetPlayer("userid");
@@ -5329,7 +5448,15 @@ namespace CounterStrikeSharp.API.Core
                 }
 
 
-                // true if player is a bot
+                
+                public string Name
+                {
+                    get => Get<string>("name");
+                    set => Set<string>("name", value);
+                }
+
+
+                
                 public bool Isbot
                 {
                     get => Get<bool>("isbot");
@@ -6877,42 +7004,18 @@ namespace CounterStrikeSharp.API.Core
                 
 
                 
-                public int VoteOption1
+                public int Yesvotes
                 {
-                    get => Get<int>("vote_option1");
-                    set => Set<int>("vote_option1", value);
+                    get => Get<int>("yesVotes");
+                    set => Set<int>("yesVotes", value);
                 }
 
 
                 
-                public int VoteOption2
+                public int Novotes
                 {
-                    get => Get<int>("vote_option2");
-                    set => Set<int>("vote_option2", value);
-                }
-
-
-                
-                public int VoteOption3
-                {
-                    get => Get<int>("vote_option3");
-                    set => Set<int>("vote_option3", value);
-                }
-
-
-                
-                public int VoteOption4
-                {
-                    get => Get<int>("vote_option4");
-                    set => Set<int>("vote_option4", value);
-                }
-
-
-                
-                public int VoteOption5
-                {
-                    get => Get<int>("vote_option5");
-                    set => Set<int>("vote_option5", value);
+                    get => Get<int>("noVotes");
+                    set => Set<int>("noVotes", value);
                 }
 
 
@@ -7078,6 +7181,14 @@ namespace CounterStrikeSharp.API.Core
 
 
                 
+                public string Votedata
+                {
+                    get => Get<string>("votedata");
+                    set => Set<string>("votedata", value);
+                }
+
+
+                
                 public int Team
                 {
                     get => Get<int>("team");
@@ -7090,6 +7201,14 @@ namespace CounterStrikeSharp.API.Core
                 {
                     get => Get<long>("initiator");
                     set => Set<long>("initiator", value);
+                }
+
+
+                // this event is reliable
+                public int Reliable
+                {
+                    get => Get<int>("reliable");
+                    set => Set<int>("reliable", value);
                 }
             }
 
