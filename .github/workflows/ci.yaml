@@ -21,6 +21,11 @@ jobs:
       with:
         versionSpec: 6.0.x
 
+    - uses: actions/checkout@v4
+      with:
+        submodules: "recursive"
+        fetch-depth: 0
+
     - name: Execute GitVersion
       uses: gittools/actions/gitversion/execute@v1
       with:
