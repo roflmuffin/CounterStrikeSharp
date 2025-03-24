@@ -1,5 +1,12 @@
 name: CI
 
+env:
+  BUILD_TYPE: Release
+
+# Remove default permissions of GITHUB_TOKEN for security
+# https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs
+permissions: {}
+
 on:
   push:
     paths-ignore:
@@ -9,8 +16,10 @@ on:
     branches: ["main", "dev"]
   workflow_dispatch:
 
-env:
-  BUILD_TYPE: Release
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number || github.sha }}
+  cancel-in-progress: true
+
 
 jobs:
   setup:
