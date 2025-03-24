@@ -39,6 +39,13 @@ jobs:
       with:
         useConfigFile: true
 
+    - name: Set Version Env
+      shell: bash
+      run: |
+        echo "GitVersion_SemVer=${GitVersion_SemVer::7}" >> $GITHUB_ENV
+        echo "GitVersion_AssemblySemVer=${GitVersion_AssemblySemVer::7}" >> $GITHUB_ENV
+        echo "GitVersion_InformationalVersion=${GitVersion_InformationalVersion::7}" >> $GITHUB_ENV
+
   build_windows:
     needs: setup
     runs-on: windows-latest
