@@ -52,7 +52,7 @@ public partial class CLogicMeasureMovement : CLogicalEntity
 
 	// m_hTarget
 	[SchemaMember("CLogicMeasureMovement", "m_hTarget")]
-	public CHandle<CBaseEntity> Target => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CLogicMeasureMovement", "m_hTarget");
+	public new CHandle<CBaseEntity> Target => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CLogicMeasureMovement", "m_hTarget");
 
 	// m_hTargetReference
 	[SchemaMember("CLogicMeasureMovement", "m_hTargetReference")]
