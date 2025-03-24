@@ -34,7 +34,7 @@
 #include "scripting/script_engine.h"
 #include "tier0/vprof.h"
 
-#define VERSION_STRING  "v" BUILD_NUMBER " @ " GITHUB_SHA
+#define VERSION_STRING  "v" SEMVER " @ " GITHUB_SHA
 #define BUILD_TIMESTAMP __DATE__ " " __TIME__
 
 counterstrikesharp::GlobalClass* counterstrikesharp::GlobalClass::head = nullptr;
