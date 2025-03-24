@@ -8,6 +8,8 @@ env:
 permissions: {}
 
 on:
+  pull_request:
+    branches: ["main", "dev"]
   workflow_dispatch:
 
 concurrency:
