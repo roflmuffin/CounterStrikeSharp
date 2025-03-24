@@ -20,7 +20,6 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event.number || github.sha }}
   cancel-in-progress: true
 
-
 jobs:
   setup:
     runs-on: ubuntu-latest
@@ -154,16 +153,16 @@ jobs:
 
       - name: Publish artifacts
         run: |
-          dotnet publish -c Release
-          /p:Version=${{ needs.setup.outputs.gitversion_semver }} 
-          /p:AssemblyVersion=${{ needs.setup.outputs.gitversion_assemblySemver }}
-          /p:InformationalVersion=${{ needs.setup.outputs.gitversion_informationalversion }}
+          dotnet publish -c Release \
+          /p:Version=${{ needs.setup.outputs.gitversion_semver }} \
+          /p:AssemblyVersion=${{ needs.setup.outputs.gitversion_assemblySemver }} \
+          /p:InformationalVersion=${{ needs.setup.outputs.gitversion_informationalversion }} \
           managed/CounterStrikeSharp.API
           
-          dotnet pack -c Release
-          /p:Version=${{ needs.setup.outputs.gitversion_semver }}
-          /p:AssemblyVersion=${{ needs.setup.outputs.gitversion_assemblySemver }}
-          /p:InformationalVersion=${{ needs.setup.outputs.gitversion_informationalversion }}
+          dotnet pack -c Release \
+          /p:Version=${{ needs.setup.outputs.gitversion_semver }} \
+          /p:AssemblyVersion=${{ needs.setup.outputs.gitversion_assemblySemver }} \
+          /p:InformationalVersion=${{ needs.setup.outputs.gitversion_informationalversion }} \
           managed/CounterStrikeSharp.API
 
       - uses: actions/upload-artifact@v4
