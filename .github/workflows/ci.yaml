@@ -1,0 +1,230 @@
+name: Build & Publish
+
+on:
+  push:
+    paths-ignore:
+      - "docfx/**"
+    branches: ["main", "dev"]
+  pull_request:
+    branches: ["main", "dev"]
+  workflow_dispatch:
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Install GitVersion
+      uses: gittools/actions/gitversion/setup@v1
+      with:
+        versionSpec: 6.x
+
+    - name: Execute GitVersion
+      uses: gittools/actions/gitversion/execute@v1
+      with:
+        useConfigFile: true
+
+  build_windows:
+    needs: setup
+    runs-on: windows-latest
+    steps:
+      - name: Prepare env
+        shell: bash
+        run: echo "GITHUB_SHA_SHORT=${GITHUB_SHA::7}" >> $GITHUB_ENV
+
+      - name: Visual Studio environment
+        shell: cmd
+        run: |
+          :: See https://github.com/microsoft/vswhere/wiki/Find-VC
+          for /f "usebackq delims=*" %%i in (`vswhere -latest -property installationPath`) do (
+            call "%%i"\Common7\Tools\vsdevcmd.bat -arch=x64 -host_arch=x64
+          )
+
+          :: Loop over all environment variables and make them global.
+          for /f "delims== tokens=1,2" %%a in ('set') do (
+            echo>>"%GITHUB_ENV%" %%a=%%b
+          )
+
+      - uses: actions/checkout@v4
+        with:
+          submodules: "recursive"
+
+      - name: Build
+        run: |
+          mkdir -p build
+          cd build
+          cmake -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} ..
+          cmake --build . --config ${{env.BUILD_TYPE}} -- /m:16
+
+      - name: Clean build directory
+        run: |
+          mkdir -p build/addons/counterstrikesharp/bin/win64
+          mv build/${{env.BUILD_TYPE}}/*.dll build/addons/counterstrikesharp/bin/win64
+          mkdir build/output/
+          mv build/addons build/output
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: counterstrikesharp-build-windows-${env:GitVersion_SemVer}
+          path: build/output/
+
+  build_linux:
+    needs: setup
+    runs-on: ubuntu-latest
+    # Could not figure out how to run in a container only on some matrix paths, so I've split it out into its own build.
+    container:
+      image: registry.gitlab.steamos.cloud/steamrt/sniper/sdk:latest
+    steps:
+      - name: Prepare env
+        shell: bash
+        run: echo "GITHUB_SHA_SHORT=${GITHUB_SHA::7}" >> $GITHUB_ENV
+
+      - uses: actions/checkout@v4
+        with:
+          submodules: "recursive"
+
+      - name: Build
+        run: |
+          mkdir -p build
+          cd build
+          cmake -G Ninja -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} ..
+          cmake --build . --config ${{env.BUILD_TYPE}} -- -j16
+
+      - name: Clean build directory
+        run: |
+          mkdir build/output/
+          mv build/addons build/output
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: counterstrikesharp-build-linux-${env:GitVersion_SemVer}
+          path: build/output/
+
+  build_managed:
+    needs: setup
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prepare env
+        shell: bash
+        run: echo "GITHUB_SHA_SHORT=${GITHUB_SHA::7}" >> $GITHUB_ENV
+
+      # We don't need expensive submodules for the managed side.
+      - uses: actions/checkout@v4
+
+      - name: Build runtime v${env:GitVersion_SemVer}
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Install dependencies
+        run: dotnet restore managed/CounterStrikeSharp.sln
+
+      - name: Run tests
+        run: dotnet test --logger trx --results-directory "TestResults-${env:GitVersion_SemVer}" managed/CounterStrikeSharp.API.Tests/CounterStrikeSharp.API.Tests.csproj
+
+      - name: Upload dotnet test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-${env:GitVersion_SemVer}
+          path: TestResults-${env:GitVersion_SemVer}
+        if: ${{ always() }}
+
+      - name: Publish artifacts
+        run: |
+          dotnet publish -c Release \
+          /p:Version=${GitVersion_FullSemVer} \ 
+          /p:AssemblyVersion=${GitVersion_AssemblySemVer} \
+          /p:InformationalVersion=${GitVersion_InformationalVersion} \
+          managed/CounterStrikeSharp.API
+          
+          dotnet pack -c Release \
+          /p:Version=${GitVersion_FullSemVer} \ 
+          /p:AssemblyVersion=${GitVersion_AssemblySemVer} \
+          /p:InformationalVersion=${GitVersion_InformationalVersion} \
+          managed/CounterStrikeSharp.API
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: counterstrikesharp-build-api-${env:GitVersion_SemVer}
+          path: managed/CounterStrikeSharp.API/bin/Release
+
+  publish:
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    permissions:
+      contents: write
+    needs: ["setup", "build_linux", "build_windows", "build_managed"]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prepare env
+        shell: bash
+        run: echo "GITHUB_SHA_SHORT=${GITHUB_SHA::7}" >> $GITHUB_ENV
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: counterstrikesharp-build-windows-${env:GitVersion_SemVer}
+          path: build/windows
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: counterstrikesharp-build-linux-${env:GitVersion_SemVer}
+          path: build/linux
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: counterstrikesharp-build-api-${env:GitVersion_SemVer}
+          path: build/api
+
+      # TODO: This stuff should really be in a matrix
+      - name: Add API to Artifacts
+        run: |
+          mkdir -p build/linux/addons/counterstrikesharp/api
+          mkdir -p build/windows/addons/counterstrikesharp/api
+          cp -r build/api/net8.0/publish/* build/linux/addons/counterstrikesharp/api
+          cp -r build/api/net8.0/publish/* build/windows/addons/counterstrikesharp/api
+
+      - name: Zip Builds
+        run: |
+          (cd build/linux && zip -qq -r ../../counterstrikesharp-linux-${env:GitVersion_SemVer}.zip *)
+          (cd build/windows && zip -qq -r ../../counterstrikesharp-windows-${env:GitVersion_SemVer}.zip *)
+
+      - name: Add dotnet runtime
+        run: |
+          mkdir -p build/linux/addons/counterstrikesharp/dotnet
+          curl -s -L https://download.visualstudio.microsoft.com/download/pr/c1371dc2-eed2-47be-9af3-ae060dbe3c7d/bd509e0a87629764ed47608466d183e6/aspnetcore-runtime-8.0.3-linux-x64.tar.gz \
+          | tar xvz -C build/linux/addons/counterstrikesharp/dotnet
+
+          mkdir -p build/windows/addons/counterstrikesharp/dotnet
+          curl -s -L https://download.visualstudio.microsoft.com/download/pr/086d1dd6-57a5-437a-a1ef-549cf702fb48/dd4a8fe6c53a1016a414d6f2925c1323/aspnetcore-runtime-8.0.3-win-x64.zip -o dotnet.zip
+          unzip -qq dotnet.zip -d build/windows/addons/counterstrikesharp/dotnet
+
+      - name: Zip Builds
+        run: |
+          (cd build/linux && zip -qq -r ../../counterstrikesharp-with-runtime-linux-${env:GitVersion_SemVer}.zip *)
+          (cd build/windows && zip -qq -r ../../counterstrikesharp-with-runtime-windows-${env:GitVersion_SemVer}.zip *)
+
+      - name: Release
+        id: release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ needs.setup.outputs.buildnumber }}
+          files: |
+            counterstrikesharp-windows-${env:GitVersion_SemVer}.zip
+            counterstrikesharp-with-runtime-windows-${env:GitVersion_SemVer}.zip
+            counterstrikesharp-linux-${env:GitVersion_SemVer}.zip
+            counterstrikesharp-with-runtime-linux-${env:GitVersion_SemVer}.zip
+
+      - name: Publish NuGet package
+        run: |
+          dotnet nuget push build/api/CounterStrikeSharp.API.${env:GitVersion_SemVer}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+          dotnet nuget push build/api/CounterStrikeSharp.API.${env:GitVersion_SemVer}.snupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+      - name: Send Notification to Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@0.3.2
+        with:
+          args: "A new release of CS# has been tagged (v${{ needs.setup.outputs.buildnumber }}) at ${{ steps.release.outputs.url }}"
