@@ -24,7 +24,7 @@ body = """
     {% if commit.remote.pr_number %} in \
       [#{{ commit.remote.pr_number }}]({{ self::remote_url() }}/pull/{{ commit.remote.pr_number }}) \
     {%- endif %}
-    ([{{ commit.id | truncate(length=7, end="") }}]({{ commit.id }}))
+    ([{{ commit.id | truncate(length=7, end="") }}]({{ self::remote_url()}}/commit/{{ commit.id }}))
 {%- endfor -%}
 
 {%- if github -%}
@@ -78,3 +78,4 @@ topo_order = false
 # Order of commits in each group/release within the changelog.
 # Allowed values: newest, oldest
 sort_commits = "newest"
+tag_pattern = "v[0-9]+\\.[0-9]+\\.[0-9]+"
