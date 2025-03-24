@@ -20,7 +20,9 @@ body = """
     {%- set commit_message = commit.message -%}
   {%- endif -%}
   * {{ commit_message | split(pat="\n") | first | trim }}\
-    {% if commit.remote.username %} by @{{ commit.remote.username }}{%- endif -%}
+    {% if commit.remote.username and commit.remote.username != remote.github.owner %} by \
+      [@{{ commit.remote.username }}](https://github.com/{{ commit.remote.username }}) \
+    {%- endif -%}
     {% if commit.remote.pr_number %} in \
       [#{{ commit.remote.pr_number }}]({{ self::remote_url() }}/pull/{{ commit.remote.pr_number }}) \
     {%- endif %}
@@ -33,7 +35,7 @@ body = """
   ## New Contributors
 {%- endif %}\
 {% for contributor in github.contributors | filter(attribute="is_first_time", value=true) %}
-  * @{{ contributor.username }} made their first contribution
+  * [@{{ contributor.username }}](https://github.com/{{ contributor.username }}) made their first contribution
     {%- if contributor.pr_number %} in \
       [#{{ contributor.pr_number }}]({{ self::remote_url() }}/pull/{{ contributor.pr_number }}) \
     {%- endif %}
