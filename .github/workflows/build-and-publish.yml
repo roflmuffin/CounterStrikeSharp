@@ -1,4 +1,4 @@
-name: CI
+name: Build & Publish
 
 env:
   BUILD_TYPE: Release
@@ -8,13 +8,14 @@ env:
 permissions: {}
 
 on:
+  push:
+    paths-ignore:
+      - "docfx/**"
+    branches: ["main"]
+    tags:
+      - "v*"
   pull_request:
-    branches: ["main", "dev"]
-  workflow_dispatch:
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.event.number || github.sha }}
-  cancel-in-progress: true
+    branches: ["main"]
 
 jobs:
   setup:
@@ -171,9 +172,9 @@ jobs:
           path: managed/CounterStrikeSharp.API/bin/Release
 
   publish:
-    # if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-    # permissions:
-    #   contents: write
+    if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') && github.repository == 'roflmuffin/CounterStrikeSharp' }}
+    permissions:
+      contents: write
     needs: ["setup", "build_linux", "build_windows", "build_managed"]
     runs-on: ubuntu-latest
     steps:
@@ -224,23 +225,23 @@ jobs:
           (cd build/linux && zip -qq -r ../../counterstrikesharp-with-runtime-linux-${{ needs.setup.outputs.gitversion_semver }}.zip *)
           (cd build/windows && zip -qq -r ../../counterstrikesharp-with-runtime-windows-${{ needs.setup.outputs.gitversion_semver }}.zip *)
 
-      # - name: Release
-      #   id: release
-      #   uses: softprops/action-gh-release@v1
-      #   with:
-      #     tag_name: v${{ needs.setup.outputs.gitversion_semver }}
-      #     files: |
-      #       counterstrikesharp-windows-${{ needs.setup.outputs.gitversion_semver }}.zip
-      #       counterstrikesharp-with-runtime-windows-${{ needs.setup.outputs.gitversion_semver }}.zip
-      #       counterstrikesharp-linux-${{ needs.setup.outputs.gitversion_semver }}.zip
-      #       counterstrikesharp-with-runtime-linux-${{ needs.setup.outputs.gitversion_semver }}.zip
+      - name: Release
+        id: release
+        uses: softprops/action-gh-release@v1
+        with:
+          append_body: true
+          body: |
+            Please refer to [CHANGELOG.md](https://github.com/roflmuffin/CounterStrikeSharp/blob/${{ github.ref_name }}/CHANGELOG.md) for details.
+          files: |
+            counterstrikesharp-windows-${{ needs.setup.outputs.gitversion_semver }}.zip
+            counterstrikesharp-with-runtime-windows-${{ needs.setup.outputs.gitversion_semver }}.zip
+            counterstrikesharp-linux-${{ needs.setup.outputs.gitversion_semver }}.zip
+            counterstrikesharp-with-runtime-linux-${{ needs.setup.outputs.gitversion_semver }}.zip
 
       - name: Publish NuGet package
         run: |
-          echo "dry run publish" 
-          echo "${{ needs.setup.outputs.gitversion_semver }}"
-      # dotnet nuget push build/api/CounterStrikeSharp.API.${{ needs.setup.outputs.gitversion_semver }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
-      # dotnet nuget push build/api/CounterStrikeSharp.API.${{ needs.setup.outputs.gitversion_semver }}.snupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+          dotnet nuget push build/api/CounterStrikeSharp.API.${{ needs.setup.outputs.gitversion_semver }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+          dotnet nuget push build/api/CounterStrikeSharp.API.${{ needs.setup.outputs.gitversion_semver }}.snupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
       # - name: Send Notification to Discord
       #   env:
