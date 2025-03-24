@@ -96,7 +96,7 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_Collision
 	[SchemaMember("CBaseModelEntity", "m_Collision")]
-	public CCollisionProperty Collision => Schema.GetDeclaredClass<CCollisionProperty>(this.Handle, "CBaseModelEntity", "m_Collision");
+	public new CCollisionProperty Collision => Schema.GetDeclaredClass<CCollisionProperty>(this.Handle, "CBaseModelEntity", "m_Collision");
 
 	// m_Glow
 	[SchemaMember("CBaseModelEntity", "m_Glow")]
