@@ -119,7 +119,7 @@ jobs:
       # We don't need expensive submodules for the managed side.
       - uses: actions/checkout@v4
 
-      - name: Build runtime v${env:GitVersion_SemVer}
+      - name: Build runtime v${{ env.GitVersion_SemVer }}
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: "8.0.x"
@@ -139,16 +139,16 @@ jobs:
 
       - name: Publish artifacts
         run: |
-          dotnet publish -c Release \
-          /p:Version=${GitVersion_FullSemVer} \ 
-          /p:AssemblyVersion=${GitVersion_AssemblySemVer} \
-          /p:InformationalVersion=${GitVersion_InformationalVersion} \
+          dotnet publish -c Release
+          /p:Version=${GitVersion_FullSemVer} 
+          /p:AssemblyVersion=${GitVersion_AssemblySemVer}
+          /p:InformationalVersion=${GitVersion_InformationalVersion}
           managed/CounterStrikeSharp.API
           
-          dotnet pack -c Release \
-          /p:Version=${GitVersion_FullSemVer} \ 
-          /p:AssemblyVersion=${GitVersion_AssemblySemVer} \
-          /p:InformationalVersion=${GitVersion_InformationalVersion} \
+          dotnet pack -c Release
+          /p:Version=${GitVersion_FullSemVer}
+          /p:AssemblyVersion=${GitVersion_AssemblySemVer}
+          /p:InformationalVersion=${GitVersion_InformationalVersion}
           managed/CounterStrikeSharp.API
 
       - uses: actions/upload-artifact@v4
