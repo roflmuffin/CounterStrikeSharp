@@ -24,6 +24,11 @@ concurrency:
 jobs:
   setup:
     runs-on: ubuntu-latest
+    outputs:
+      gitversion_semver: ${{ steps.gitversion.outputs.semVer }}
+      gitversion_fullsemver: ${{ steps.gitversion.outputs.fullSemVer }}
+      gitversion_assemblysemver: ${{ steps.gitversion.outputs.assemblySemVer }}
+      gitversion_informationalversion: ${{ steps.gitversion.outputs.informationalVersion }}
     steps:
     - name: Install GitVersion
       uses: gittools/actions/gitversion/setup@v1
@@ -35,16 +40,10 @@ jobs:
         fetch-depth: 0
 
     - name: Execute GitVersion
+      id: gitversion
       uses: gittools/actions/gitversion/execute@v1
       with:
         useConfigFile: true
-
-    - name: Set Version Env
-      shell: bash
-      run: |
-        echo "GitVersion_SemVer=${GitVersion_SemVer::7}" >> $GITHUB_ENV
-        echo "GitVersion_AssemblySemVer=${GitVersion_AssemblySemVer::7}" >> $GITHUB_ENV
-        echo "GitVersion_InformationalVersion=${GitVersion_InformationalVersion::7}" >> $GITHUB_ENV
 
   build_windows:
     needs: setup
@@ -87,7 +86,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: counterstrikesharp-build-windows-${env:GitVersion_SemVer}
+          name: counterstrikesharp-build-windows-${{ needs.setup.outputs.gitversion_semver }}
           path: build/output/
 
   build_linux:
@@ -119,7 +118,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: counterstrikesharp-build-linux-${env:GitVersion_SemVer}
+          name: counterstrikesharp-build-linux-${{ needs.setup.outputs.gitversion_semver }}
           path: build/output/
 
   build_managed:
@@ -135,7 +134,7 @@ jobs:
       # We don't need expensive submodules for the managed side.
       - uses: actions/checkout@v4
 
-      - name: Build runtime v${{ env.GitVersion_SemVer }}
+      - name: Build runtime v${{ needs.setup.outputs.gitversion_semver }}
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: "8.0.x"
@@ -144,30 +143,30 @@ jobs:
         run: dotnet restore managed/CounterStrikeSharp.sln
 
       - name: Run tests
-        run: dotnet test --logger trx --results-directory "TestResults-${env:GitVersion_SemVer}" managed/CounterStrikeSharp.API.Tests/CounterStrikeSharp.API.Tests.csproj
+        run: dotnet test --logger trx --results-directory "TestResults-${{ needs.setup.outputs.gitversion_semver }}" managed/CounterStrikeSharp.API.Tests/CounterStrikeSharp.API.Tests.csproj
 
       - name: Upload dotnet test results
         uses: actions/upload-artifact@v4
         with:
-          name: test-results-${env:GitVersion_SemVer}
-          path: TestResults-${env:GitVersion_SemVer}
+          name: test-results-${{ needs.setup.outputs.gitversion_semver }}
+          path: TestResults-${{ needs.setup.outputs.gitversion_semver }}
         if: ${{ always() }}
 
       - name: Publish artifacts
         run: |
           dotnet publish -c Release
-          /p:Version=${GitVersion_FullSemVer} 
-          /p:AssemblyVersion=${GitVersion_AssemblySemVer}
-          /p:InformationalVersion=${GitVersion_InformationalVersion}
+          /p:Version=${{ needs.setup.outputs.gitversion_semver }} 
+          /p:AssemblyVersion=${{ needs.setup.outputs.gitversion_assemblySemver }}
+          /p:InformationalVersion=${{ needs.setup.outputs.gitversion_informationalversion }}
           managed/CounterStrikeSharp.API
           
           dotnet pack -c Release
-          /p:Version=${GitVersion_FullSemVer}
-          /p:AssemblyVersion=${GitVersion_AssemblySemVer}
-          /p:InformationalVersion=${GitVersion_InformationalVersion}
+          /p:Version=${{ needs.setup.outputs.gitversion_semver }}
+          /p:AssemblyVersion=${{ needs.setup.outputs.gitversion_assemblySemver }}
+          /p:InformationalVersion=${{ needs.setup.outputs.gitversion_informationalversion }}
           managed/CounterStrikeSharp.API
 
       - uses: actions/upload-artifact@v4
         with:
-          name: counterstrikesharp-build-api-${env:GitVersion_SemVer}
+          name: counterstrikesharp-build-api-${{ needs.setup.outputs.gitversion_semver }}
           path: managed/CounterStrikeSharp.API/bin/Release
