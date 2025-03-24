@@ -36,7 +36,7 @@ public partial class CEnvBeam : CBeam
 
 	// m_iszEndEntity
 	[SchemaMember("CEnvBeam", "m_iszEndEntity")]
-	public string EndEntity
+	public new string EndEntity
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CEnvBeam", "m_iszEndEntity"); }
 		set { Schema.SetString(this.Handle, "CEnvBeam", "m_iszEndEntity", value); }
@@ -56,7 +56,7 @@ public partial class CEnvBeam : CBeam
 
 	// m_speed
 	[SchemaMember("CEnvBeam", "m_speed")]
-	public ref Int32 Speed => ref Schema.GetRef<Int32>(this.Handle, "CEnvBeam", "m_speed");
+	public new ref Int32 Speed => ref Schema.GetRef<Int32>(this.Handle, "CEnvBeam", "m_speed");
 
 	// m_restrike
 	[SchemaMember("CEnvBeam", "m_restrike")]

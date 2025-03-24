@@ -32,7 +32,7 @@ public partial class CFishPool : CBaseEntity
 
 	// m_waterLevel
 	[SchemaMember("CFishPool", "m_waterLevel")]
-	public ref float WaterLevel => ref Schema.GetRef<float>(this.Handle, "CFishPool", "m_waterLevel");
+	public new ref float WaterLevel => ref Schema.GetRef<float>(this.Handle, "CFishPool", "m_waterLevel");
 
 	// m_isDormant
 	[SchemaMember("CFishPool", "m_isDormant")]

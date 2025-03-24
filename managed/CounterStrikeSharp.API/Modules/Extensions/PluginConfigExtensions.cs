@@ -7,7 +7,8 @@ public static class PluginConfigExtensions
 {
     private static readonly JsonSerializerOptions _jsonSerializerOptions = new()
     {
-        WriteIndented = true
+        WriteIndented = true,
+        ReadCommentHandling = JsonCommentHandling.Skip
     };
 
     public static JsonSerializerOptions JsonSerializerOptions => _jsonSerializerOptions;
@@ -62,7 +63,7 @@ public static class PluginConfigExtensions
 
             var configContent = File.ReadAllText(configPath);
 
-            var newConfig = JsonSerializer.Deserialize<T>(configContent)
+            var newConfig = JsonSerializer.Deserialize<T>(configContent, JsonSerializerOptions)
                 ?? throw new JsonException($"Deserialization failed for configuration file '{configPath}'.");
 
             foreach (var property in typeof(T).GetProperties(BindingFlags.Instance | BindingFlags.Public))
