@@ -71,6 +71,9 @@ commit_preprocessors = [
     { pattern = '\((\w+\s)?#([0-9]+)\)', replace = "" },
     { pattern = '\[no ci\]', replace = "" }
   ]
+commit_parsers = [
+    { message = "^release:", skip = true }
+]
 # Exclude commits that are not matched by any commit parser.
 filter_commits = false
 # Order releases topologically instead of chronologically.

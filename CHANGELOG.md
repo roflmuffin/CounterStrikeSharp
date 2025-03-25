@@ -1,7 +1,6 @@
 ## What's Changed in v1.0.313
 * ci: fix cliff generation ([637224d](https://github.com/roflmuffin/CounterStrikeSharp/commit/637224dc55a32e55163df64f809f9a64462e05e3))
 * ci: add changelog to release & webhook ([3aca7c3](https://github.com/roflmuffin/CounterStrikeSharp/commit/3aca7c37f1f1a1f3bb7c630d373751ddab3cb5a2))
-* release: v1.0.313 ([87f38d7](https://github.com/roflmuffin/CounterStrikeSharp/commit/87f38d72eed334dc59b2a65b6632a1ca430bb6ef))
 * chore(changelog): update cliff.toml ([5daf947](https://github.com/roflmuffin/CounterStrikeSharp/commit/5daf94791f2c468f1ff5b08c48d0f4cdd00003cc))
 * feat(config): add toml loading support  in [#804](https://github.com/roflmuffin/CounterStrikeSharp/pull/804)([c50213c](https://github.com/roflmuffin/CounterStrikeSharp/commit/c50213c4425992ab13c3555b32428d0a58694516))
 * chore: add links to contributors github page ([c02d31c](https://github.com/roflmuffin/CounterStrikeSharp/commit/c02d31cb2ee1dab4b662ba305ee0eab3c625561c))
