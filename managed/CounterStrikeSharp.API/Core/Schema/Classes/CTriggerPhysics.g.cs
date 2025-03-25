@@ -20,7 +20,7 @@ public partial class CTriggerPhysics : CBaseTrigger
 
 	// m_gravityScale
 	[SchemaMember("CTriggerPhysics", "m_gravityScale")]
-	public ref float GravityScale => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_gravityScale");
+	public new ref float GravityScale => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_gravityScale");
 
 	// m_linearLimit
 	[SchemaMember("CTriggerPhysics", "m_linearLimit")]

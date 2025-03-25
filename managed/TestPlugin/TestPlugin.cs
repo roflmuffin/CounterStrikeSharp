@@ -146,7 +146,7 @@ namespace TestPlugin
             // Mirrors a chat message back to the player
             RegisterEventHandler<EventPlayerChat>(((@event, _) =>
             {
-                var player = Utilities.GetPlayerFromIndex(@event.Userid);
+                var player = @event.Userid;
                 if (player == null) return HookResult.Continue;
 
                 player.PrintToChat($"You said {@event.Text}");
@@ -390,6 +390,16 @@ namespace TestPlugin
             Logger.LogInformation("Player {Name} has connected! (pre)", @event.Name);
 
             return HookResult.Continue;
+        }
+
+        [ListenerHandler<Listeners.OnClientPutInServer>]
+        public void OnClientPutInServer(int playerSlot)
+        {
+            var player = Utilities.GetPlayerFromSlot(playerSlot);
+
+            if (player == null || player.IsBot) return;
+
+            player.PrintToChat("Welcome to the server!");
         }
 
         [ConsoleCommand("css_testinput", "Test AcceptInput and AddEntityIOEvent")]

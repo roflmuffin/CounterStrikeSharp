@@ -64,7 +64,7 @@ public partial class CFish : CBaseAnimGraph
 
 	// m_speed
 	[SchemaMember("CFish", "m_speed")]
-	public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CFish", "m_speed");
+	public new ref float Speed => ref Schema.GetRef<float>(this.Handle, "CFish", "m_speed");
 
 	// m_desiredSpeed
 	[SchemaMember("CFish", "m_desiredSpeed")]

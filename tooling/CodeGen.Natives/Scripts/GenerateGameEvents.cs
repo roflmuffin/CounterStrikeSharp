@@ -61,8 +61,8 @@ public partial class Generators
 
     private static List<string> GameEventFiles = new List<string>()
     {
-        "game/core/pak01_dir/resource/core.gameevents",
         "game/csgo/pak01_dir/resource/game.gameevents",
+        "game/core/pak01_dir/resource/core.gameevents",
         "game/csgo/pak01_dir/resource/mod.gameevents"
     };
 

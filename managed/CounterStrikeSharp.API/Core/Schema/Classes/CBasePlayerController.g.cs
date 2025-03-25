@@ -82,10 +82,6 @@ public partial class CBasePlayerController : CBaseEntity
 	[SchemaMember("CBasePlayerController", "m_bPredict")]
 	public ref bool Predict => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerController", "m_bPredict");
 
-	// m_bAutoKickDisabled
-	[SchemaMember("CBasePlayerController", "m_bAutoKickDisabled")]
-	public ref bool AutoKickDisabled => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerController", "m_bAutoKickDisabled");
-
 	// m_bIsLowViolence
 	[SchemaMember("CBasePlayerController", "m_bIsLowViolence")]
 	public ref bool IsLowViolence => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerController", "m_bIsLowViolence");

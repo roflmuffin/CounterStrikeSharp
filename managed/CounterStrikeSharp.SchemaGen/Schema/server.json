@@ -7615,13 +7615,6 @@
           }
         },
         {
-          "name": "m_bAutoKickDisabled",
-          "type": {
-            "category": 0,
-            "name": "bool"
-          }
-        },
-        {
           "name": "m_bIsLowViolence",
           "type": {
             "category": 0,
@@ -13301,6 +13294,13 @@
           }
         },
         {
+          "name": "m_ullLocalMatchID",
+          "type": {
+            "category": 0,
+            "name": "uint64"
+          }
+        },
+        {
           "name": "m_nEndMatchMapGroupVoteTypes",
           "type": {
             "category": 3,
@@ -14655,6 +14655,13 @@
         },
         {
           "name": "m_uiAbandonRecordedReason",
+          "type": {
+            "category": 0,
+            "name": "uint32"
+          }
+        },
+        {
+          "name": "m_eNetworkDisconnectionReason",
           "type": {
             "category": 0,
             "name": "uint32"

@@ -88,7 +88,7 @@ public partial class CBeam : CBaseModelEntity
 
 	// m_fSpeed
 	[SchemaMember("CBeam", "m_fSpeed")]
-	public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CBeam", "m_fSpeed");
+	public new ref float Speed => ref Schema.GetRef<float>(this.Handle, "CBeam", "m_fSpeed");
 
 	// m_flFrame
 	[SchemaMember("CBeam", "m_flFrame")]
