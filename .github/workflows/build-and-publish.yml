@@ -182,6 +182,11 @@ jobs:
         shell: bash
         run: echo "GITHUB_SHA_SHORT=${GITHUB_SHA::7}" >> $GITHUB_ENV
 
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - uses: actions/download-artifact@v4
         with:
           name: counterstrikesharp-windows-${{ needs.setup.outputs.gitversion_semver }}
@@ -224,11 +229,6 @@ jobs:
         run: |
           (cd build/linux && zip -qq -r ../../counterstrikesharp-with-runtime-linux-${{ needs.setup.outputs.gitversion_semver }}.zip *)
           (cd build/windows && zip -qq -r ../../counterstrikesharp-with-runtime-windows-${{ needs.setup.outputs.gitversion_semver }}.zip *)
-
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       
       - name: Generate a changelog
         uses: orhun/git-cliff-action@v4
