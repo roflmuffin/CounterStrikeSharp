@@ -225,12 +225,26 @@ jobs:
           (cd build/linux && zip -qq -r ../../counterstrikesharp-with-runtime-linux-${{ needs.setup.outputs.gitversion_semver }}.zip *)
           (cd build/windows && zip -qq -r ../../counterstrikesharp-with-runtime-windows-${{ needs.setup.outputs.gitversion_semver }}.zip *)
 
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Generate a changelog
+        uses: orhun/git-cliff-action@v4
+        id: git-cliff
+        with:
+            config: cliff.toml
+            args: --current
+
       - name: Release
         id: release
         uses: softprops/action-gh-release@v1
         with:
           append_body: true
           body: |
+            ${{ steps.git-cliff.outputs.content }}
+
             Please refer to [CHANGELOG.md](https://github.com/roflmuffin/CounterStrikeSharp/blob/${{ github.ref_name }}/CHANGELOG.md) for details.
           files: |
             counterstrikesharp-windows-${{ needs.setup.outputs.gitversion_semver }}.zip
@@ -243,9 +257,12 @@ jobs:
           dotnet nuget push build/api/CounterStrikeSharp.API.${{ needs.setup.outputs.gitversion_semver }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
           dotnet nuget push build/api/CounterStrikeSharp.API.${{ needs.setup.outputs.gitversion_semver }}.snupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
-      # - name: Send Notification to Discord
-      #   env:
-      #     DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-      #   uses: Ilshidur/action-discord@0.3.2
-      #   with:
-      #     args: "A new release of CS# has been tagged (v${{ needs.setup.outputs.buildnumber }}) at ${{ steps.release.outputs.url }}"
+      - name: Send Notification to Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@0.3.2
+        with:
+          args: |
+            A new release of CS# has been tagged [v${{ needs.setup.outputs.gitversion_semver }}](${{ steps.release.outputs.url }})
+
+            ${{ steps.git-cliff.outputs.content }}
