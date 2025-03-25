@@ -51,7 +51,7 @@
         <EmbeddedResource Remove="Modules\Disabled\**" />
     </ItemGroup>
     <PropertyGroup>
-      <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+      <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
       <Version>1.0.312</Version>
       <PackageId>CounterStrikeSharp.API.Fork</PackageId>
     </PropertyGroup>
