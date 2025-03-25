@@ -146,7 +146,7 @@ namespace TestPlugin
             // Mirrors a chat message back to the player
             RegisterEventHandler<EventPlayerChat>(((@event, _) =>
             {
-                var player = Utilities.GetPlayerFromIndex(@event.Userid);
+                var player = @event.Userid;
                 if (player == null) return HookResult.Continue;
 
                 player.PrintToChat($"You said {@event.Text}");

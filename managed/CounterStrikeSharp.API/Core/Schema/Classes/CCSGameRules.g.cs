@@ -306,6 +306,10 @@ public partial class CCSGameRules : CTeamplayRules
 	[SchemaMember("CCSGameRules", "m_bSpawnedTerrorHuntHeavy")]
 	public ref bool SpawnedTerrorHuntHeavy => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bSpawnedTerrorHuntHeavy");
 
+	// m_ullLocalMatchID
+	[SchemaMember("CCSGameRules", "m_ullLocalMatchID")]
+	public ref UInt64 UllLocalMatchID => ref Schema.GetRef<UInt64>(this.Handle, "CCSGameRules", "m_ullLocalMatchID");
+
 	// m_nEndMatchMapGroupVoteTypes
 	[SchemaMember("CCSGameRules", "m_nEndMatchMapGroupVoteTypes")]
 	public Span<Int32> EndMatchMapGroupVoteTypes => Schema.GetFixedArray<Int32>(this.Handle, "CCSGameRules", "m_nEndMatchMapGroupVoteTypes", 10);

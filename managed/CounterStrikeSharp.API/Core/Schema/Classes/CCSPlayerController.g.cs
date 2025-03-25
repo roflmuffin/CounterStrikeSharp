@@ -178,6 +178,10 @@ public partial class CCSPlayerController : CBasePlayerController
 	[SchemaMember("CCSPlayerController", "m_uiAbandonRecordedReason")]
 	public ref UInt32 UiAbandonRecordedReason => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController", "m_uiAbandonRecordedReason");
 
+	// m_eNetworkDisconnectionReason
+	[SchemaMember("CCSPlayerController", "m_eNetworkDisconnectionReason")]
+	public ref UInt32 NetworkDisconnectionReason => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController", "m_eNetworkDisconnectionReason");
+
 	// m_bCannotBeKicked
 	[SchemaMember("CCSPlayerController", "m_bCannotBeKicked")]
 	public ref bool CannotBeKicked => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bCannotBeKicked");
