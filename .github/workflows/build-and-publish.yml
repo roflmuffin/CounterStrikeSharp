@@ -235,7 +235,7 @@ jobs:
         id: git-cliff
         with:
             config: cliff.toml
-            args: --current
+            args: --current -s footer
 
       - name: Release
         id: release
