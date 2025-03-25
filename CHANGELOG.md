@@ -1,3 +1,17 @@
+## What's Changed in v1.0.313
+* chore(changelog): update cliff.toml
+([5daf947](https://github.com/roflmuffin/CounterStrikeSharp/commit/5daf94791f2c468f1ff5b08c48d0f4cdd00003cc))
+* feat(config): add toml loading support in [#804](https://github.com/roflmuffin/CounterStrikeSharp/pull/804)
+([c50213c](https://github.com/roflmuffin/CounterStrikeSharp/commit/c50213c4425992ab13c3555b32428d0a58694516))
+* chore: add links to contributors github page
+([c02d31c](https://github.com/roflmuffin/CounterStrikeSharp/commit/c02d31cb2ee1dab4b662ba305ee0eab3c625561c))
+* chore: update changelog to use semantic tags
+([98cbca4](https://github.com/roflmuffin/CounterStrikeSharp/commit/98cbca44d4202d05bbf3fd1f8ec7f38255bacf4a))
+* fix(gameevents): promote `core.gameevents` to have higher priority in [#819](https://github.com/roflmuffin/CounterStrikeSharp/pull/819)
+([4cf88fc](https://github.com/roflmuffin/CounterStrikeSharp/commit/4cf88fc03e0dea699cef1a2f51ec9d7088769523))
+* chrore: Implement SemVer instead of build numbers in [#816](https://github.com/roflmuffin/CounterStrikeSharp/pull/816)
+([f1dff6d](https://github.com/roflmuffin/CounterStrikeSharp/commit/f1dff6d4d3f2b0dbf64615560e848b697d3a8904))
+
 ## What's Changed in v1.0.312
 * fix(schema): inherited schema classes with clashing properties in [#818](https://github.com/roflmuffin/CounterStrikeSharp/pull/818)
 ([414a59a](https://github.com/roflmuffin/CounterStrikeSharp/commit/414a59a36de25735088a167158c3f0891baad575))
