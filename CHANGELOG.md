@@ -5,7 +5,7 @@
 ## What's Changed in v1.0.311
 * fix(concommand): don't remove reference flags when running convar/concmd unlocker in [#817](https://github.com/roflmuffin/CounterStrikeSharp/pull/817)
 ([f1c1080](https://github.com/roflmuffin/CounterStrikeSharp/commit/f1c108087b6b176b0c08c50644575ba250b6455c))
-* [no ci] add CHANGELOG.md
+* add CHANGELOG.md
 ([47ddf42](https://github.com/roflmuffin/CounterStrikeSharp/commit/47ddf42c115ca1ea8db165c0c4ab160e39abbc9f))
 
 ## What's Changed in v1.0.310
@@ -17,7 +17,7 @@
 ([bbc621a](https://github.com/roflmuffin/CounterStrikeSharp/commit/bbc621acdc36cabf0f9b1d5ba1262129071ef536))
 
 ## What's Changed in v1.0.308
-* feat: swap terrorist colour to orange to be more in line with the game in [#813](https://github.com/roflmuffin/CounterStrikeSharp/pull/813)
+* fix: change terrorist chat colour to orange to be more in line with the game in [#813](https://github.com/roflmuffin/CounterStrikeSharp/pull/813)
 ([f7784c2](https://github.com/roflmuffin/CounterStrikeSharp/commit/f7784c26c67980830ed56d89a683661e9143affc))
 
 ## What's Changed in v1.0.307
@@ -29,7 +29,7 @@
 ([3839831](https://github.com/roflmuffin/CounterStrikeSharp/commit/3839831ea9076f0c5624c161096a27ed3189f26a))
 
 ## What's Changed in v1.0.306
-* feat: Expose `MetaFactory` to API by [@samyycX](https://github.com/samyycX) in [#801](https://github.com/roflmuffin/CounterStrikeSharp/pull/801)
+* feat: Expose Metamod `MetaFactory` to NativeAPI by [@samyycX](https://github.com/samyycX) in [#801](https://github.com/roflmuffin/CounterStrikeSharp/pull/801)
 ([54ad6c0](https://github.com/roflmuffin/CounterStrikeSharp/commit/54ad6c0b790e2725624bbf6705479fb3e22a9c31))
 * chore: fix deprecated CI steps in [#759](https://github.com/roflmuffin/CounterStrikeSharp/pull/759)
 ([7c2cc8a](https://github.com/roflmuffin/CounterStrikeSharp/commit/7c2cc8a7f6785fd34e70e34f45ee9279e88385a7))
@@ -90,7 +90,7 @@
 ## What's Changed in v1.0.295
 * Update Schema to Latest in [#721](https://github.com/roflmuffin/CounterStrikeSharp/pull/721)
 ([6b43069](https://github.com/roflmuffin/CounterStrikeSharp/commit/6b4306948ba3b378bc89546eb9441d95dea00fa9))
-* [no ci] Update getting-started.md
+* Update getting-started.md
 ([3fee00e](https://github.com/roflmuffin/CounterStrikeSharp/commit/3fee00e8c483d995331e7be341d0b4d769ff151e))
 * chore: upgrade to cxx20 in [#719](https://github.com/roflmuffin/CounterStrikeSharp/pull/719)
 ([d22af14](https://github.com/roflmuffin/CounterStrikeSharp/commit/d22af142cbde5e66dd2a586b2221eefe849e1025))
@@ -116,9 +116,9 @@
 ([6349c11](https://github.com/roflmuffin/CounterStrikeSharp/commit/6349c11d07af8ba95d280e4a0f994ccb46053ef5))
 * Shuffle player documentation, add to game event documentation by [@zonical](https://github.com/zonical) in [#685](https://github.com/roflmuffin/CounterStrikeSharp/pull/685)
 ([b2046b2](https://github.com/roflmuffin/CounterStrikeSharp/commit/b2046b21c4412c84c85ffd933119871888fe22cb))
-* [no ci] Update publish-docs.yml
+* Update publish-docs.yml
 ([3c6be48](https://github.com/roflmuffin/CounterStrikeSharp/commit/3c6be481c57464b7a5adfa901065f1695c8c3c85))
-* [no ci] Allow manual publish-docs.yml
+* Allow manual publish-docs.yml
 ([0a6fe09](https://github.com/roflmuffin/CounterStrikeSharp/commit/0a6fe0946db2d62f3d01f2abd275300fe78f37d8))
 
 ## What's Changed in v1.0.290
@@ -168,7 +168,7 @@
 * [@Interesting-exe](https://github.com/Interesting-exe) made their first contribution in [#627](https://github.com/roflmuffin/CounterStrikeSharp/pull/627)
 
 ## What's Changed in v1.0.280
-* Added GetCSWeaponDataFromKey and CCSPlayer_ItemServices_CanAcquire by [@schwarper](https://github.com/schwarper) in [#628](https://github.com/roflmuffin/CounterStrikeSharp/pull/628)
+* Add GetCSWeaponDataFromKey and CCSPlayer_ItemServices_CanAcquire by [@schwarper](https://github.com/schwarper) in [#628](https://github.com/roflmuffin/CounterStrikeSharp/pull/628)
 ([c2f212d](https://github.com/roflmuffin/CounterStrikeSharp/commit/c2f212df518c7d12c7d916be95d02e0c7af8c580))
 
 ## New Contributors
@@ -197,7 +197,7 @@
 ([b807c3e](https://github.com/roflmuffin/CounterStrikeSharp/commit/b807c3eda80330eadcbd2e018fa1a3714687f1c2))
 
 ## What's Changed in v1.0.274
-* [no ci] Update dependabot.yaml
+* Update dependabot.yaml
 ([3ede4c3](https://github.com/roflmuffin/CounterStrikeSharp/commit/3ede4c366cde8d8f46f36cadf9a30113b763a0d1))
 * fix CreateEvent leak by [@number201724](https://github.com/number201724) in [#604](https://github.com/roflmuffin/CounterStrikeSharp/pull/604)
 ([49cc91e](https://github.com/roflmuffin/CounterStrikeSharp/commit/49cc91e373b5b7cfc40d15ec34e1ed1a3a94e352))
@@ -250,9 +250,9 @@
 ## What's Changed in v1.0.264
 * fix: prevent early global cleanup when inside invoke
 ([8f59fd5](https://github.com/roflmuffin/CounterStrikeSharp/commit/8f59fd5b97bd1f62cd9b3fb6c0a08f3d374766d8))
-* [no ci] Update README
+* Update README
 ([cbeac50](https://github.com/roflmuffin/CounterStrikeSharp/commit/cbeac50e4a07b243262d4f215fcb3124a7558f74))
-* [no ci] Update README.md
+* Update README.md
 ([eba7d9c](https://github.com/roflmuffin/CounterStrikeSharp/commit/eba7d9c313e7a05f0c296f7a18cd571eba9683b2))
 
 ## What's Changed in v1.0.263
@@ -268,7 +268,7 @@
 ([bb38b1c](https://github.com/roflmuffin/CounterStrikeSharp/commit/bb38b1cb1af3df079cdf9d3227e1025d41bfa0b3))
 
 ## What's Changed in v1.0.260
-* Protobuf/Usermessages in [#435](https://github.com/roflmuffin/CounterStrikeSharp/pull/435)
+* Implement Usermessages in [#435](https://github.com/roflmuffin/CounterStrikeSharp/pull/435)
 ([10f472e](https://github.com/roflmuffin/CounterStrikeSharp/commit/10f472ec85cf7dd8f7d338c1fdf742e0d9c2355b))
 
 ## What's Changed in v1.0.259
@@ -280,7 +280,7 @@
 ([dddf24d](https://github.com/roflmuffin/CounterStrikeSharp/commit/dddf24d0f3207af59b79823a4e92b1eccdbac637))
 
 ## What's Changed in v1.0.257
-* Fix SetStateChanged by [@Yarukon](https://github.com/Yarukon) in [#541](https://github.com/roflmuffin/CounterStrikeSharp/pull/541)
+* Update SetStateChanged parameters by [@Yarukon](https://github.com/Yarukon) in [#541](https://github.com/roflmuffin/CounterStrikeSharp/pull/541)
 ([fce68cb](https://github.com/roflmuffin/CounterStrikeSharp/commit/fce68cb16067379685dbda241b29aee331d04f80))
 
 ## What's Changed in v1.0.256
@@ -378,7 +378,7 @@
 ([3240a5e](https://github.com/roflmuffin/CounterStrikeSharp/commit/3240a5e582b30e500401e7b1083351568f229575))
 
 ## What's Changed in v1.0.234
-* [Draft] Signature Fixes after 2024-05-23 CS2 update in [#461](https://github.com/roflmuffin/CounterStrikeSharp/pull/461)
+* Initial update after 2024-05-23 CS2 update in [#461](https://github.com/roflmuffin/CounterStrikeSharp/pull/461)
 ([cafc4e2](https://github.com/roflmuffin/CounterStrikeSharp/commit/cafc4e237fb51541ad6c722f2b550d8c4e2932dd))
 
 ## What's Changed in v1.0.233
@@ -390,11 +390,11 @@
 ([aec696a](https://github.com/roflmuffin/CounterStrikeSharp/commit/aec696abc097010e1b23a4060ff9e4d3d75235a8))
 
 ## What's Changed in v1.0.231
-* [no ci] chore: fix dependabot prefix
+* chore: fix dependabot prefix
 ([c01aeec](https://github.com/roflmuffin/CounterStrikeSharp/commit/c01aeec14bb136a1cf9e7803a01e3913592157a9))
 * chore(deps): update hl2sdk: bump libraries/metamod-source from `e857fbe` to `607301a` by [@dependabot[bot]](https://github.com/dependabot[bot]) in [#450](https://github.com/roflmuffin/CounterStrikeSharp/pull/450)
 ([41e7bee](https://github.com/roflmuffin/CounterStrikeSharp/commit/41e7bee85adbf01ef5efee99e2e1dbe4bf0078d8))
-* [no ci] chore: add metamod source dependabot config
+* chore: add metamod source dependabot config
 ([9834271](https://github.com/roflmuffin/CounterStrikeSharp/commit/9834271956cd28307874a77281084ee09b22703e))
 
 ## What's Changed in v1.0.230
@@ -404,7 +404,7 @@
 ## What's Changed in v1.0.229
 * chore(deps): update hl2sdk: bump libraries/hl2sdk-cs2 from `3fc8d0f` to `9ddef9a` by [@dependabot[bot]](https://github.com/dependabot[bot]) in [#446](https://github.com/roflmuffin/CounterStrikeSharp/pull/446)
 ([928bc3f](https://github.com/roflmuffin/CounterStrikeSharp/commit/928bc3f74d1b5da88c072411f6425057ee08ceae))
-* [no ci] feat: add hl2sdk-cs2 dependabot
+* feat: add hl2sdk-cs2 dependabot
 ([6a7d7db](https://github.com/roflmuffin/CounterStrikeSharp/commit/6a7d7dba4f8403c350728a3e6cbf03c62735dd5c))
 
 ## New Contributors
@@ -465,9 +465,9 @@
 ## What's Changed in v1.0.214
 * Make shared type loader less strict by [@KillStr3aK](https://github.com/KillStr3aK) in [#424](https://github.com/roflmuffin/CounterStrikeSharp/pull/424)
 ([83bc1a9](https://github.com/roflmuffin/CounterStrikeSharp/commit/83bc1a95fb7c781c7fa3ca7e707980546df9e27a))
-* [no ci] add windows install script
+* add windows install script
 ([71c694b](https://github.com/roflmuffin/CounterStrikeSharp/commit/71c694b52ea32fe60a0972b9c775abb09fb52e96))
-* [no ci] feat: add install script
+* feat: add install script
 ([a452d79](https://github.com/roflmuffin/CounterStrikeSharp/commit/a452d79ba31d70e56a57d3db545a9ce4fa8ba6d6))
 
 ## What's Changed in v1.0.213
@@ -502,17 +502,17 @@
 ([41355d0](https://github.com/roflmuffin/CounterStrikeSharp/commit/41355d05fa747a5688a2b9a58de0733cd004c2c6))
 
 ## What's Changed in v1.0.206
-* Add teleports methods by [@partiusfabaa](https://github.com/partiusfabaa) in [#399](https://github.com/roflmuffin/CounterStrikeSharp/pull/399)
+* Add teleport overloads by [@partiusfabaa](https://github.com/partiusfabaa) in [#399](https://github.com/roflmuffin/CounterStrikeSharp/pull/399)
 ([d9da15b](https://github.com/roflmuffin/CounterStrikeSharp/commit/d9da15be83dc37b869db75082c6820766ccb6071))
 * Rename ACKNOWLEDGEMENTS to ACKNOWLEDGEMENTS.md by [@B3none](https://github.com/B3none) in [#401](https://github.com/roflmuffin/CounterStrikeSharp/pull/401)
 ([75e2f6e](https://github.com/roflmuffin/CounterStrikeSharp/commit/75e2f6e8aaa2bbb81b2323a3f2c703ab7ce41e8e))
-* [no ci] add basic contributing guide
+* add basic contributing guide
 ([37b34e1](https://github.com/roflmuffin/CounterStrikeSharp/commit/37b34e1d416b65f7b3163265da04e6bee4ff4939))
 
 ## What's Changed in v1.0.205
 * Add CenterHtmlMenu button colors by [@WidovV](https://github.com/WidovV) in [#398](https://github.com/roflmuffin/CounterStrikeSharp/pull/398)
 ([5ce0464](https://github.com/roflmuffin/CounterStrikeSharp/commit/5ce04649fd973e761632d3748d60520da7e38b77))
-* [no ci] Update README.md
+* Update README.md
 ([7b7202f](https://github.com/roflmuffin/CounterStrikeSharp/commit/7b7202fe8a10ed878e1de7d78cfa80996a0869f8))
 
 ## New Contributors
@@ -659,7 +659,7 @@
 ## What's Changed in v1.0.173
 * Re-implemented css_lang command by [@B3none](https://github.com/B3none) in [#343](https://github.com/roflmuffin/CounterStrikeSharp/pull/343)
 ([6e2e25b](https://github.com/roflmuffin/CounterStrikeSharp/commit/6e2e25b96e23d0d84713eb9ea900c464cb65d2d9))
-* [no ci] remove `untriaged` label when milestoning issues
+* remove `untriaged` label when milestoning issues
 ([1142c9f](https://github.com/roflmuffin/CounterStrikeSharp/commit/1142c9f063d9d5c0ddbe49ead78943f912244974))
 
 ## What's Changed in v1.0.172
@@ -677,11 +677,11 @@
 ## What's Changed in v1.0.169
 * chore: update hl2sdk in [#336](https://github.com/roflmuffin/CounterStrikeSharp/pull/336)
 ([87f48cb](https://github.com/roflmuffin/CounterStrikeSharp/commit/87f48cb35cc947796b06a47600f002123471206c))
-* [no ci] Create FUNDING.yml 🥰
+* Create FUNDING.yml 🥰
 ([39aa430](https://github.com/roflmuffin/CounterStrikeSharp/commit/39aa4305289d591aa21131e3fcba699269f989c4))
-* [no ci] remove untriaged when author action label applied
+* remove untriaged when author action label applied
 ([a404a4d](https://github.com/roflmuffin/CounterStrikeSharp/commit/a404a4d9d536291297b83592331f354f2caf5048))
-* [no ci] add basic issue management workflows
+* add basic issue management workflows
 ([62ba298](https://github.com/roflmuffin/CounterStrikeSharp/commit/62ba29891d3060edec9b785e91209ae9f9bfd6d5))
 
 ## What's Changed in v1.0.168
@@ -691,7 +691,7 @@
 ## What's Changed in v1.0.167
 * feat: add `ExecuteClientCommandFromServer` native
 ([607e6c6](https://github.com/roflmuffin/CounterStrikeSharp/commit/607e6c61f53aa40e8b97a50d3fdec58464d46a6a))
-* [no ci] Update LICENSE
+* Update LICENSE
 ([2675d28](https://github.com/roflmuffin/CounterStrikeSharp/commit/2675d280e37fab4e7ff55337531cd8f9dcd3de4d))
 
 ## What's Changed in v1.0.166
@@ -766,7 +766,7 @@
 ([59bff4f](https://github.com/roflmuffin/CounterStrikeSharp/commit/59bff4f500dfaccacb0b53584bf678c005a87598))
 
 ## What's Changed in v1.0.150
-* V149 development by [@wiesendaniel](https://github.com/wiesendaniel) in [#279](https://github.com/roflmuffin/CounterStrikeSharp/pull/279)
+* Log exception if plugin load fails using the `load` command by [@wiesendaniel](https://github.com/wiesendaniel) in [#279](https://github.com/roflmuffin/CounterStrikeSharp/pull/279)
 ([a2581d8](https://github.com/roflmuffin/CounterStrikeSharp/commit/a2581d8e9116e3ab505029720719a82e4dd2fac5))
 * Change TerroristsPlanned to TerroristsPlanted in RoundEndReason by [@Ravid-A](https://github.com/Ravid-A)
 ([e7d190a](https://github.com/roflmuffin/CounterStrikeSharp/commit/e7d190a6f74f9ccbf30e16f8a6a92b36e037e9a4))
@@ -937,7 +937,7 @@
 ([98b2b01](https://github.com/roflmuffin/CounterStrikeSharp/commit/98b2b01992ce99054a5aac6dc5f2bafe818f2792))
 * tests: update tests, throw out of range exception <= 0
 ([a537be8](https://github.com/roflmuffin/CounterStrikeSharp/commit/a537be89e41e05a6e76b0aefc31d5212b248eb0c))
-* Fix SteamId on Windows Server #182 in [#185](https://github.com/roflmuffin/CounterStrikeSharp/pull/185)
+* Merge remote-tracking branch 'origin/main' into FixSteamIdOnWindowsServer in [#185](https://github.com/roflmuffin/CounterStrikeSharp/pull/185)
 ([c07d5d2](https://github.com/roflmuffin/CounterStrikeSharp/commit/c07d5d2aa95ffddbb12e3f6869daab1a6bd66262))
 
 ## What's Changed in v1.0.114
@@ -1184,7 +1184,7 @@
 ## What's Changed in v1.0.68
 * Add methods to respawn players by [@KillStr3aK](https://github.com/KillStr3aK) in [#114](https://github.com/roflmuffin/CounterStrikeSharp/pull/114)
 ([ea35964](https://github.com/roflmuffin/CounterStrikeSharp/commit/ea3596417a14b61da075e2a98c6a334d20aae535))
-* Additional info admin module documentation by [@abnerfs](https://github.com/abnerfs) in [#116](https://github.com/roflmuffin/CounterStrikeSharp/pull/116)
+* docs: Additional info admin module documentation by [@abnerfs](https://github.com/abnerfs) in [#116](https://github.com/roflmuffin/CounterStrikeSharp/pull/116)
 ([123f419](https://github.com/roflmuffin/CounterStrikeSharp/commit/123f41914ee729576ac4dbe56c699147edce7302))
 
 ## New Contributors
@@ -1745,7 +1745,7 @@
 ([aeae59e](https://github.com/roflmuffin/CounterStrikeSharp/commit/aeae59e77fb7b391b82c269b1012a4b62012576e))
 * feat: add initial `GetValveInterface` native
 ([e253397](https://github.com/roflmuffin/CounterStrikeSharp/commit/e253397957772b5c8d954be1731b84832b052b8b))
-* a little code refactoring by [@Muinez](https://github.com/Muinez) in [#5](https://github.com/roflmuffin/CounterStrikeSharp/pull/5)
+* Automatic event registration refactoring by [@Muinez](https://github.com/Muinez) in [#5](https://github.com/roflmuffin/CounterStrikeSharp/pull/5)
 ([7480abc](https://github.com/roflmuffin/CounterStrikeSharp/commit/7480abc929bf6779863bc7ed93a313160420b5ab))
 * feat: update game directory native, add constants/addresses namespace
 ([312ae55](https://github.com/roflmuffin/CounterStrikeSharp/commit/312ae550c8a265f1740c51852c2d0e733b18af78))
@@ -1765,7 +1765,7 @@
 ([dac9f8d](https://github.com/roflmuffin/CounterStrikeSharp/commit/dac9f8d02206a2676957b345a3f9f7c47ba0d3ae))
 * fix: order codegen items by filename
 ([b8b2b02](https://github.com/roflmuffin/CounterStrikeSharp/commit/b8b2b02ba7694cce7f98b5bb78f36ebcd286e05e))
-* improve generated event classes by [@Muinez](https://github.com/Muinez) in [#3](https://github.com/roflmuffin/CounterStrikeSharp/pull/3)
+* Improve generated event classes by [@Muinez](https://github.com/Muinez) in [#3](https://github.com/roflmuffin/CounterStrikeSharp/pull/3)
 ([5b2855e](https://github.com/roflmuffin/CounterStrikeSharp/commit/5b2855efd1cd5b0377714436bb5547530168fdbb))
 * feat: update buildkite pipeline for pull request checks
 ([811df8e](https://github.com/roflmuffin/CounterStrikeSharp/commit/811df8ee8b22509f90374b4cde0a9385f569a67b))

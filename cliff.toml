@@ -14,12 +14,7 @@ body = """
 
 {%- if version %} in {{ version }}{%- endif -%}
 {% for commit in commits %}
-  {% if commit.remote.pr_title -%}
-    {%- set commit_message = commit.remote.pr_title -%}
-  {%- else -%}
-    {%- set commit_message = commit.message -%}
-  {%- endif -%}
-  * {{ commit_message | split(pat="\n") | first | trim }}\
+  * {{ commit.message | split(pat="\n") | first | trim }}\
     {% if commit.remote.username and commit.remote.username != remote.github.owner %} by \
       [@{{ commit.remote.username }}](https://github.com/{{ commit.remote.username }}) \
     {%- endif -%}
@@ -72,7 +67,10 @@ filter_unconventional = true
 # Split commits on newlines, treating each line as an individual commit.
 split_commits = false
 # An array of regex based parsers to modify commit messages prior to further processing.
-commit_preprocessors = [{ pattern = '\((\w+\s)?#([0-9]+)\)', replace = "" }]
+commit_preprocessors = [
+    { pattern = '\((\w+\s)?#([0-9]+)\)', replace = "" },
+    { pattern = '\[no ci\]', replace = "" }
+  ]
 # Exclude commits that are not matched by any commit parser.
 filter_commits = false
 # Order releases topologically instead of chronologically.
