@@ -17,6 +17,7 @@
 #include "core/managers/entity_manager.h"
 #include "core/gameconfig.h"
 #include "core/log.h"
+#include "core/recipientfilters.h"
 
 #include <funchook.h>
 #include <vector>
@@ -24,14 +25,24 @@
 #include <public/eiface.h>
 #include "scripting/callback_manager.h"
 
+SH_DECL_HOOK7_void(ISource2GameEntities, CheckTransmit, SH_NOATTRIB, 0, CCheckTransmitInfo**, int, CBitVec<16384>&, const Entity2Networkable_t**, const uint16*, int, bool);
+
 namespace counterstrikesharp {
 
-EntityManager::EntityManager() {}
+EntityManager::EntityManager()
+{
+    m_profile_name = "EntityManager";
+}
 
 EntityManager::~EntityManager() {}
 
+CCheckTransmitInfoList::CCheckTransmitInfoList(CCheckTransmitInfo** pInfoInfoList, int nInfoCount) : infoList(pInfoInfoList), infoCount(nInfoCount) {}
+
 void EntityManager::OnAllInitialized()
 {
+    SH_ADD_HOOK_MEMFUNC(ISource2GameEntities, CheckTransmit, globals::gameEntities, this, &EntityManager::CheckTransmit, true);
+
+    check_transmit = globals::callbackManager.CreateCallback("CheckTransmit");
     on_entity_spawned_callback = globals::callbackManager.CreateCallback("OnEntitySpawned");
     on_entity_created_callback = globals::callbackManager.CreateCallback("OnEntityCreated");
     on_entity_deleted_callback = globals::callbackManager.CreateCallback("OnEntityDeleted");
@@ -62,6 +73,14 @@ void EntityManager::OnAllInitialized()
         CSSHARP_CORE_CRITICAL("Failed to find signature for \'CEntitySystem_AddEntityIOEvent\'");
     }
 
+    CBaseEntity_EmitSoundFilter = decltype(CBaseEntity_EmitSoundFilter) (
+        modules::server->FindSignature(globals::gameConfig->GetSignature("CBaseEntity_EmitSoundFilter")));
+
+    if (!CBaseEntity_EmitSoundFilter)
+    {
+        CSSHARP_CORE_CRITICAL("Failed to find signature for \'CBaseEntity_EmitSoundFilter\'");
+    }
+
     auto m_hook = funchook_create();
     funchook_prepare(m_hook, (void**)&m_pFireOutputInternal, (void*)&DetourFireOutputInternal);
     funchook_install(m_hook, 0);
@@ -75,7 +94,10 @@ void EntityManager::OnShutdown()
     globals::callbackManager.ReleaseCallback(on_entity_created_callback);
     globals::callbackManager.ReleaseCallback(on_entity_deleted_callback);
     globals::callbackManager.ReleaseCallback(on_entity_parent_changed_callback);
+    globals::callbackManager.ReleaseCallback(check_transmit);
     globals::entitySystem->RemoveListenerEntity(&entityListener);
+
+    SH_REMOVE_HOOK_MEMFUNC(ISource2GameEntities, CheckTransmit, globals::gameEntities, this, &EntityManager::CheckTransmit, true);
 }
 
 void CEntityListener::OnEntitySpawned(CEntityInstance* pEntity)
@@ -156,6 +178,23 @@ void EntityManager::UnhookEntityOutput(const char* szClassname, const char* szOu
     }
 }
 
+void EntityManager::CheckTransmit(CCheckTransmitInfo** pInfoInfoList, int nInfoCount, CBitVec<16384>& unionTransmitEdicts, const Entity2Networkable_t** pNetworkables, const uint16* pEntityIndicies, int nEntityIndices, bool bEnablePVSBits)
+{
+    VPROF_BUDGET(m_profile_name.c_str(), "CS# CheckTransmit");
+    
+    auto callback = globals::entityManager.check_transmit;
+
+    if (callback && callback->GetFunctionCount()) {
+        CCheckTransmitInfoList* infoList = new CCheckTransmitInfoList(pInfoInfoList, nInfoCount);
+
+        callback->ScriptContext().Reset();
+        callback->ScriptContext().Push(infoList);
+        callback->Execute();
+
+        delete infoList;
+    }
+}
+
 void DetourFireOutputInternal(CEntityIOOutput* const pThis, CEntityInstance* pActivator,
                               CEntityInstance* pCaller, const CVariant* const value, float flDelay)
 {
@@ -233,6 +272,21 @@ void DetourFireOutputInternal(CEntityIOOutput* const pThis, CEntityInstance* pAc
             pCallbackPair->post->Execute();
         }
     }
+}
+
+SndOpEventGuid_t EntityEmitSoundFilter(IRecipientFilter& filter, uint32 ent, const char* pszSound, float flVolume, float flPitch)
+{
+    if (!CBaseEntity_EmitSoundFilter) {
+        CSSHARP_CORE_ERROR("[EntityManager][EmitSoundFilter] - Failed to emit a sound. Signature for \'CBaseEntity_EmitSoundFilter\' is not found. The latest update may have broken it.");
+        return SndOpEventGuid_t{};
+    }
+
+    EmitSound_t params;
+    params.m_pSoundName = pszSound;
+    params.m_flVolume = flVolume;
+    params.m_nPitch = flPitch;
+
+    return CBaseEntity_EmitSoundFilter(filter, ent, params);
 }
 
 } // namespace counterstrikesharp

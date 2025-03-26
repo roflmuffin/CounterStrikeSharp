@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Entities;
+using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
 
 namespace CounterStrikeSharp.API.Modules.Commands.Targeting;
@@ -12,7 +14,9 @@ public class Target
     private TargetType Type { get; }
     private string Raw { get; }
     private string Slug { get; }
-    
+
+    internal CCSGameRulesProxy? _gameRulesEntity = null;
+
     public static readonly IReadOnlyDictionary<string, TargetType> TargetTypeMap = new Dictionary<string, TargetType>(StringComparer.OrdinalIgnoreCase)
     {
         { "@all", TargetType.GroupAll },
@@ -22,6 +26,7 @@ public class Target
         { "@dead", TargetType.GroupDead },
         { "@!me", TargetType.GroupNotMe },
         { "@me", TargetType.PlayerMe },
+        { "@aim", TargetType.PlayerAim },
         { "@ct", TargetType.TeamCt },
         { "@t", TargetType.TeamT },
         { "@spec", TargetType.TeamSpec }
@@ -31,7 +36,7 @@ public class Target
     private static bool ConstTargetType(string target, out TargetType targetType)
     {
         targetType = TargetType.Invalid;
-        if (!target.StartsWith("@"))
+        if (!target.StartsWith('@'))
         {
             return false;
         }
@@ -45,13 +50,13 @@ public class Target
     {
         targetType = TargetType.Invalid;
         slug = null!;
-        if (!target.StartsWith("#"))
+        if (!target.StartsWith('#'))
         {
             return false;
         }
-        
+
         slug = target.TrimStart('#');
-        if (slug.StartsWith("STEAM")) targetType = TargetType.IdSteamEscaped;
+        if (slug.StartsWith("STEAM") && slug.Contains(':')) targetType = TargetType.IdSteamEscaped;
         else if (!ulong.TryParse(slug, out _)) targetType = TargetType.ExplicitName;
         else if (slug.Length == 17) targetType = TargetType.IdSteam64;
         else targetType = TargetType.IdUserid;
@@ -80,48 +85,39 @@ public class Target
         }
     }
 
-    private bool TargetPredicate(CCSPlayerController player, CCSPlayerController? caller)
+    private bool TargetPredicate(CCSPlayerController player, CCSPlayerController? caller, CCSGameRules? gameRules = null)
     {
-        switch (Type)
+        return Type switch
         {
-            case TargetType.TeamCt:
-                return player.TeamNum == (byte)CsTeam.CounterTerrorist;
-            case TargetType.TeamT:
-                return player.TeamNum == (byte)CsTeam.Terrorist;
-            case TargetType.TeamSpec:
-                return player.TeamNum == (byte)CsTeam.Spectator;
-            case TargetType.GroupAll:
-                return !player.IsHLTV;
-            case TargetType.GroupBots:
-                return player.IsBot;
-            case TargetType.GroupHumans:
-                return !player.IsBot && !player.IsHLTV;
-            case TargetType.GroupAlive:
-                return player.PlayerPawn is { IsValid: true, Value.LifeState: (byte)LifeState_t.LIFE_ALIVE };
-            case TargetType.GroupDead:
-                return player.PlayerPawn is { IsValid: true, Value.LifeState: (byte)LifeState_t.LIFE_DEAD or (byte)LifeState_t.LIFE_DYING };
-            case TargetType.GroupNotMe:
-                return player.SteamID != caller?.SteamID;
-            case TargetType.PlayerMe:
-                return player.SteamID == caller?.SteamID;
-            case TargetType.IdUserid:
-                return player.UserId.ToString() == Slug;
-            case TargetType.IdSteamEscaped:
-                return ((SteamID)player.SteamID).SteamId2 == Slug;
-            case TargetType.IdSteam64:
-                return ((SteamID)player.SteamID).SteamId64.ToString() == Slug;
-            case TargetType.ExplicitName:
-            case TargetType.ImplicitName:
-                return player.PlayerName.Contains(Slug, StringComparison.OrdinalIgnoreCase);
-            default:
-                return false;
-        }
+            TargetType.PlayerAim => caller != null && player == gameRules!.GetClientAimTarget(caller),
+            TargetType.TeamCt => player.Team == CsTeam.CounterTerrorist,
+            TargetType.TeamT => player.Team == CsTeam.Terrorist,
+            TargetType.TeamSpec => player.Team == CsTeam.Spectator,
+            TargetType.GroupAll => !player.IsHLTV,
+            TargetType.GroupBots => player.IsBot,
+            TargetType.GroupHumans => !player.IsBot && !player.IsHLTV,
+            TargetType.GroupAlive => player.PlayerPawn is { IsValid: true, Value.LifeState: (byte)LifeState_t.LIFE_ALIVE },
+            TargetType.GroupDead => player.PlayerPawn is { IsValid: true, Value.LifeState: (byte)LifeState_t.LIFE_DEAD or (byte)LifeState_t.LIFE_DYING },
+            TargetType.GroupNotMe => player.SteamID != caller?.SteamID,
+            TargetType.PlayerMe => player.SteamID == caller?.SteamID,
+            TargetType.IdUserid => player.UserId.ToString() == Slug,
+            TargetType.IdSteamEscaped when player.SteamID != 0 => (SteamID)player.SteamID == (SteamID)Slug,
+            TargetType.IdSteam64 => player.SteamID.ToString() == Slug,
+            TargetType.ExplicitName or TargetType.ImplicitName => player.PlayerName.Contains(Slug, StringComparison.OrdinalIgnoreCase),
+            _ => false
+        };
     }
 
     public TargetResult GetTarget(CCSPlayerController? caller)
     {
-        var players = Utilities.GetPlayers().Where(player => TargetPredicate(player, caller)).ToList();
-        
-        return new TargetResult() { Players = players };
+        if (Type == TargetType.PlayerAim)
+        {
+            if (_gameRulesEntity == null || !_gameRulesEntity.IsValid)
+            {
+                _gameRulesEntity = Utilities.FindAllEntitiesByDesignerName<CCSGameRulesProxy>("cs_gamerules").FirstOrDefault();
+            }
+        }
+
+        return new TargetResult() { Players = Utilities.GetPlayers().Where(player => TargetPredicate(player, caller, _gameRulesEntity?.GameRules)).ToList() };
     }
 }

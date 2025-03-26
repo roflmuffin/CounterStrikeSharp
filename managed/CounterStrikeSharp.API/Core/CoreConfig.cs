@@ -151,27 +151,28 @@ namespace CounterStrikeSharp.API.Core
                 _commandsRegistered = true;
             }
 
-            if (!File.Exists(_coreConfigPath))
+            if (File.Exists(_coreConfigPath))
+            {
+                try
+                {
+                    var data = JsonSerializer.Deserialize<CoreConfigData>(File.ReadAllText(_coreConfigPath),
+                        new JsonSerializerOptions() { ReadCommentHandling = JsonCommentHandling.Skip });
+    
+                    if (data != null)
+                    {
+                        _coreConfig = data;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogWarning(ex, "Failed to load core configuration, fallback values will be used");
+                }
+            }
+            else
             {
                 _logger.LogWarning(
                     "Core configuration could not be found at path \"{CoreConfigPath}\", fallback values will be used.",
                     _coreConfigPath);
-                return;
-            }
-
-            try
-            {
-                var data = JsonSerializer.Deserialize<CoreConfigData>(File.ReadAllText(_coreConfigPath),
-                    new JsonSerializerOptions() { ReadCommentHandling = JsonCommentHandling.Skip });
-
-                if (data != null)
-                {
-                    _coreConfig = data;
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogWarning(ex, "Failed to load core configuration, fallback values will be used");
             }
 
             var serverCulture = CultureInfo.GetCultures(CultureTypes.AllCultures)

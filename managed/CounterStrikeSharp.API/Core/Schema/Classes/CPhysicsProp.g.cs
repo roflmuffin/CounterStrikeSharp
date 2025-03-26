@@ -150,6 +150,22 @@ public partial class CPhysicsProp : CBreakableProp
 	[SchemaMember("CPhysicsProp", "m_bEnableUseOutput")]
 	public ref bool EnableUseOutput => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bEnableUseOutput");
 
+	// m_CrateType
+	[SchemaMember("CPhysicsProp", "m_CrateType")]
+	public ref CPhysicsPropCrateType_t CrateType => ref Schema.GetRef<CPhysicsPropCrateType_t>(this.Handle, "CPhysicsProp", "m_CrateType");
+
+	// m_strItemClass
+	[SchemaMember("CPhysicsProp", "m_strItemClass")]
+	public Span<string> StrItemClass => Schema.GetFixedArray<string>(this.Handle, "CPhysicsProp", "m_strItemClass", 4);
+
+	// m_nItemCount
+	[SchemaMember("CPhysicsProp", "m_nItemCount")]
+	public Span<Int32> ItemCount => Schema.GetFixedArray<Int32>(this.Handle, "CPhysicsProp", "m_nItemCount", 4);
+
+	// m_bRemovableForAmmoBalancing
+	[SchemaMember("CPhysicsProp", "m_bRemovableForAmmoBalancing")]
+	public ref bool RemovableForAmmoBalancing => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bRemovableForAmmoBalancing");
+
 	// m_bAwake
 	[SchemaMember("CPhysicsProp", "m_bAwake")]
 	public ref bool Awake => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bAwake");

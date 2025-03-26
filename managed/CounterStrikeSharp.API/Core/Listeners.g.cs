@@ -163,5 +163,18 @@ namespace CounterStrikeSharp.API.Core
         /// <param name="manifest">Resource Manifest</param>
         [ListenerName("OnServerPrecacheResources")]
         public delegate void OnServerPrecacheResources(ResourceManifest manifest);
+
+        /// <summary>
+        /// Called when checking transmit on entities.
+        /// </summary>
+        /// <param name="infoList">Transmit info list</param>
+        [ListenerName("CheckTransmit")]
+        public delegate void CheckTransmit([CastFrom(typeof(nint))]CCheckTransmitInfoList infoList);
+
+        /// <summary>
+        /// Called when all metamod plugins are loaded.
+        /// </summary>
+        [ListenerName("OnMetamodAllPluginsLoaded")]
+        public delegate void OnMetamodAllPluginsLoaded();
     }
 }

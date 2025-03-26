@@ -224,6 +224,20 @@ void PrintToServerConsole(ScriptContext& scriptContext)
     META_CONPRINT(message);
 }
 
+void DisconnectClient(ScriptContext& scriptContext)
+{
+    auto slot = scriptContext.GetArgument<int>(0);
+    auto disconnectReason = scriptContext.GetArgument<ENetworkDisconnectionReason>(1);
+
+    if (!ENetworkDisconnectionReason_IsValid(disconnectReason))
+    {
+        scriptContext.ThrowNativeError("Invalid disconnect reason");
+        return;
+    }
+
+    globals::engineServer2->DisconnectClient(slot, disconnectReason);
+}
+
 REGISTER_NATIVES(engine, {
     ScriptEngine::RegisterNativeHandler("GET_GAME_DIRECTORY", GetGameDirectory);
     ScriptEngine::RegisterNativeHandler("GET_MAP_NAME", GetMapName);
@@ -231,7 +245,7 @@ REGISTER_NATIVES(engine, {
     ScriptEngine::RegisterNativeHandler("GET_TICK_INTERVAL", GetTickInterval);
     ScriptEngine::RegisterNativeHandler("GET_TICK_COUNT", GetTickCount);
     ScriptEngine::RegisterNativeHandler("GET_CURRENT_TIME", GetCurrentTime);
-    ScriptEngine::RegisterNativeHandler("GET_GAMEFRAME_TIME", GetGameFrameTime);
+    ScriptEngine::RegisterNativeHandler("GET_GAME_FRAME_TIME", GetGameFrameTime);
     ScriptEngine::RegisterNativeHandler("GET_ENGINE_TIME", GetEngineTime);
     ScriptEngine::RegisterNativeHandler("GET_MAX_CLIENTS", GetMaxClients);
     ScriptEngine::RegisterNativeHandler("ISSUE_SERVER_COMMAND", ServerCommand);
@@ -248,5 +262,6 @@ REGISTER_NATIVES(engine, {
     ScriptEngine::RegisterNativeHandler("GET_VALVE_INTERFACE", GetValveInterface);
     ScriptEngine::RegisterNativeHandler("GET_COMMAND_PARAM_VALUE", GetCommandParamValue);
     ScriptEngine::RegisterNativeHandler("PRINT_TO_SERVER_CONSOLE", PrintToServerConsole);
+    ScriptEngine::RegisterNativeHandler("DISCONNECT_CLIENT", DisconnectClient);
 })
 } // namespace counterstrikesharp

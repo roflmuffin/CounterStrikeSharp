@@ -15,6 +15,7 @@
  */
 
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -30,6 +31,7 @@ using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Entities.Constants;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Memory;
+using CounterStrikeSharp.API.Modules.UserMessages;
 using CounterStrikeSharp.API.Modules.Utils;
 using Microsoft.Extensions.Logging;
 
@@ -144,7 +146,7 @@ namespace TestPlugin
             // Mirrors a chat message back to the player
             RegisterEventHandler<EventPlayerChat>(((@event, _) =>
             {
-                var player = Utilities.GetPlayerFromIndex(@event.Userid);
+                var player = @event.Userid;
                 if (player == null) return HookResult.Continue;
 
                 player.PrintToChat($"You said {@event.Text}");
@@ -158,6 +160,19 @@ namespace TestPlugin
                 {
                     @event.Attacker?.PrintToChat($"Skipping player_death broadcast at {Server.CurrentTime}");
                     info.DontBroadcast = true;
+                }
+
+                if (@event.Attacker != null)
+                {
+                    var message = UserMessage.FromPartialName("Shake");
+                    Logger.LogInformation("Created user message CCSUsrMsg_Shake {Message:x}", message.Handle);
+
+                    message.SetFloat("duration", 2);
+                    message.SetFloat("amplitude", 5);
+                    message.SetFloat("frequency", 10f);
+                    message.SetInt("command", 0);
+
+                    message.Send(@event.Attacker);
                 }
 
                 return HookResult.Continue;
@@ -283,8 +298,28 @@ namespace TestPlugin
                     case "flashbang_projectile":
                         var flashbang = entity.As<CBaseCSGrenadeProjectile>();
 
-                        Server.NextFrame(() => { flashbang.Remove(); });
+                        // Server.NextFrame(() => { flashbang.Remove(); });
                         return;
+                }
+            });
+
+            // Hide every door (prop_door_rotating) for everyone as a test
+            RegisterListener<Listeners.CheckTransmit>((CCheckTransmitInfoList infoList) =>
+            {
+                IEnumerable<CPropDoorRotating> doors = Utilities.FindAllEntitiesByDesignerName<CPropDoorRotating>("prop_door_rotating");
+
+                if (!doors.Any())
+                    return;
+
+                foreach ((CCheckTransmitInfo info, CCSPlayerController? player) in infoList)
+                {
+                    if (player == null)
+                        continue;
+
+                    foreach (CPropDoorRotating door in doors)
+                    {
+                        info.TransmitEntities.Remove(door);
+                    }
                 }
             });
         }
@@ -355,6 +390,16 @@ namespace TestPlugin
             Logger.LogInformation("Player {Name} has connected! (pre)", @event.Name);
 
             return HookResult.Continue;
+        }
+
+        [ListenerHandler<Listeners.OnClientPutInServer>]
+        public void OnClientPutInServer(int playerSlot)
+        {
+            var player = Utilities.GetPlayerFromSlot(playerSlot);
+
+            if (player == null || player.IsBot) return;
+
+            player.PrintToChat("Welcome to the server!");
         }
 
         [ConsoleCommand("css_testinput", "Test AcceptInput and AddEntityIOEvent")]

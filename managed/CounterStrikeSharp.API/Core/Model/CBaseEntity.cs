@@ -8,16 +8,21 @@ namespace CounterStrikeSharp.API.Core;
 public partial class CBaseEntity
 {
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
+    /// <exception cref="ArgumentNullException">No valid argument</exception>
     public void Teleport(Vector? position = null, QAngle? angles = null, Vector? velocity = null)
     {
         Guard.IsValidEntity(this);
 
-        position ??= AbsOrigin!;
-        angles ??= AbsRotation!;
-        velocity ??= AbsVelocity;
-        
-        VirtualFunction.CreateVoid<IntPtr, IntPtr, IntPtr, IntPtr>(Handle, GameData.GetOffset("CBaseEntity_Teleport"))(
-            Handle, position.Handle, angles.Handle, velocity.Handle);
+        if (position == null && angles == null && velocity == null)
+            throw new ArgumentNullException("No valid argument");
+
+        nint _position = position?.Handle ?? 0;
+        nint _angles = angles?.Handle ?? 0;
+        nint _velocity = velocity?.Handle ?? 0;
+        nint _handle = Handle;
+
+        VirtualFunction.CreateVoid<IntPtr, IntPtr, IntPtr, IntPtr>(_handle, GameData.GetOffset("CBaseEntity_Teleport"))(_handle, _position,
+            _angles, _velocity);
     }
 
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
@@ -44,5 +49,26 @@ public partial class CBaseEntity
         Guard.IsValidEntity(this);
 
         return (T)Activator.CreateInstance(typeof(T), Marshal.ReadIntPtr(SubclassID.Handle + 4));
+    }
+
+    /// <summary>
+    /// Emit a soundevent to all players.
+    /// </summary>
+    /// <param name="soundEventName">The name of the soundevent to emit.</param>
+    /// <param name="recipients">The recipients of the soundevent.</param>
+    /// <param name="volume">The volume of the soundevent.</param>
+    /// <param name="pitch">The pitch of the soundevent.</param>
+    /// <returns>The sound event guid.</returns>
+    public uint EmitSound(string soundEventName, RecipientFilter? recipients = null, float volume = 1f, float pitch = 0)
+    {
+        Guard.IsValidEntity(this);
+        
+        if (recipients == null)
+        {
+            recipients = new RecipientFilter();
+            recipients.AddAllPlayers();
+        }
+
+        return NativeAPI.EmitSoundFilter(recipients.GetRecipientMask(), this.Index, soundEventName, volume, pitch);
     }
 }

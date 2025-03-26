@@ -1,10 +1,10 @@
 using System;
-
 using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Entities.Constants;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
+using CounterStrikeSharp.API.ValveConstants.Protobuf;
 
 namespace CounterStrikeSharp.API.Core;
 
@@ -242,6 +242,15 @@ public partial class CCSPlayerController
     }
 
     /// <summary>
+    /// Disconnects a player from the server with the specified reason.
+    /// </summary>
+    /// <param name="reason"></param>
+    public void Disconnect(NetworkDisconnectionReason reason)
+    {
+        NativeAPI.DisconnectClient(Slot, (int)reason);
+    }
+
+    /// <summary>
     /// Issue the specified command directly from the server (mimics the server executing the command with the given player context).
     /// <remarks>Works with server commands like `kill`, `explode`, `noclip`, etc. </remarks>
     /// </summary>
@@ -330,5 +339,17 @@ public partial class CCSPlayerController
 
             NativeAPI.SetClientVoiceFlags(Handle, (Byte)value);
         }
+    }
+
+    [Obsolete(
+        "You are trying to call Teleport on a non-physical player. Maybe you mean Pawn? (See: https://docs.cssharp.dev/docs/guides/referencing-players.html#controllers--pawns)")]
+    public new void Teleport(Vector? position = null, QAngle? angles = null, Vector? velocity = null)
+    {
+        base.Teleport(position, angles, velocity);
+    }
+
+    public void ReplicateConVar(string conVar, string value)
+    {
+        NativeAPI.ReplicateConvar(Slot, conVar, value);
     }
 }

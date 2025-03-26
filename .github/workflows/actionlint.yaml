@@ -1,0 +1,21 @@
+name: actionlint
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: ["main"]
+    paths:
+      - ".github/actions/**"
+      - ".github/workflows/**"
+
+jobs:
+  actionlint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: actionlint
+        uses: reviewdog/action-actionlint@v1
+        with:
+          reporter: github-pr-review
+          fail_on_error: true

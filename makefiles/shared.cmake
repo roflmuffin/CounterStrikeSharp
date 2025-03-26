@@ -11,7 +11,7 @@ set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING
     FORCE
 )
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 
 if(LINUX)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
@@ -20,13 +20,14 @@ endif()
 
 set(CMAKE_STATIC_LIBRARY_PREFIX "")
 
+set(LIBRARIES_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libraries)
 set(SOURCESDK_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2)
 set(METAMOD_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libraries/metamod-source)
 
 set(SOURCESDK ${SOURCESDK_DIR}/${BRANCH})
 set(SOURCESDK_LIB ${SOURCESDK}/lib)
 
-add_definitions(-DMETA_IS_SOURCE2)
+add_definitions(-DMETA_IS_SOURCE2 -D_ITERATOR_DEBUG_LEVEL=0)
 
 if(DEFINED ENV{GITHUB_SHA_SHORT})
     add_definitions(-DGITHUB_SHA="$ENV{GITHUB_SHA_SHORT}")
@@ -34,10 +35,14 @@ else()
     add_definitions(-DGITHUB_SHA="Local")
 endif()
 
-if(DEFINED ENV{BUILD_NUMBER})
-    add_definitions(-DBUILD_NUMBER="$ENV{BUILD_NUMBER}")
+if(DEFINED ENV{SEMVER})
+    add_definitions(-DSEMVER="$ENV{SEMVER}")
 else()
-    add_definitions(-DBUILD_NUMBER="0")
+    add_definitions(-DSEMVER="Local")
+endif()
+
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    add_compile_definitions(_GLIBCXX_USE_CXX11_ABI=0)
 endif()
 
 include_directories(
@@ -68,3 +73,5 @@ include_directories(
 )
 
 include(${CMAKE_CURRENT_LIST_DIR}/metamod/configure_metamod.cmake)
+
+

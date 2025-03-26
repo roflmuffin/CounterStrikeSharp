@@ -98,6 +98,10 @@ public partial class CCSPlayerController : CBasePlayerController
 	[SchemaMember("CCSPlayerController", "m_bRemoveAllItemsOnNextRoundReset")]
 	public ref bool RemoveAllItemsOnNextRoundReset => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bRemoveAllItemsOnNextRoundReset");
 
+	// m_flLastJoinTeamTime
+	[SchemaMember("CCSPlayerController", "m_flLastJoinTeamTime")]
+	public ref float LastJoinTeamTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerController", "m_flLastJoinTeamTime");
+
 	// m_szClan
 	[SchemaMember("CCSPlayerController", "m_szClan")]
 	public string Clan
@@ -173,6 +177,10 @@ public partial class CCSPlayerController : CBasePlayerController
 	// m_uiAbandonRecordedReason
 	[SchemaMember("CCSPlayerController", "m_uiAbandonRecordedReason")]
 	public ref UInt32 UiAbandonRecordedReason => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController", "m_uiAbandonRecordedReason");
+
+	// m_eNetworkDisconnectionReason
+	[SchemaMember("CCSPlayerController", "m_eNetworkDisconnectionReason")]
+	public ref UInt32 NetworkDisconnectionReason => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController", "m_eNetworkDisconnectionReason");
 
 	// m_bCannotBeKicked
 	[SchemaMember("CCSPlayerController", "m_bCannotBeKicked")]
@@ -290,9 +298,17 @@ public partial class CCSPlayerController : CBasePlayerController
 	[SchemaMember("CCSPlayerController", "m_iRoundsWon")]
 	public ref Int32 RoundsWon => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iRoundsWon");
 
-	// m_vecKills
-	[SchemaMember("CCSPlayerController", "m_vecKills")]
-	public NetworkedVector<EKillTypes_t> Kills => Schema.GetDeclaredClass<NetworkedVector<EKillTypes_t>>(this.Handle, "CCSPlayerController", "m_vecKills");
+	// m_recentKillQueue
+	[SchemaMember("CCSPlayerController", "m_recentKillQueue")]
+	public Span<byte> RecentKillQueue => Schema.GetFixedArray<byte>(this.Handle, "CCSPlayerController", "m_recentKillQueue", 8);
+
+	// m_nFirstKill
+	[SchemaMember("CCSPlayerController", "m_nFirstKill")]
+	public ref byte FirstKill => ref Schema.GetRef<byte>(this.Handle, "CCSPlayerController", "m_nFirstKill");
+
+	// m_nKillCount
+	[SchemaMember("CCSPlayerController", "m_nKillCount")]
+	public ref byte KillCount => ref Schema.GetRef<byte>(this.Handle, "CCSPlayerController", "m_nKillCount");
 
 	// m_bMvpNoMusic
 	[SchemaMember("CCSPlayerController", "m_bMvpNoMusic")]
@@ -369,5 +385,9 @@ public partial class CCSPlayerController : CBasePlayerController
 	// m_nNonSuspiciousHitStreak
 	[SchemaMember("CCSPlayerController", "m_nNonSuspiciousHitStreak")]
 	public ref UInt32 NonSuspiciousHitStreak => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController", "m_nNonSuspiciousHitStreak");
+
+	// m_bFireBulletsSeedSynchronized
+	[SchemaMember("CCSPlayerController", "m_bFireBulletsSeedSynchronized")]
+	public ref bool FireBulletsSeedSynchronized => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bFireBulletsSeedSynchronized");
 
 }

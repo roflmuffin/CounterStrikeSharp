@@ -42,6 +42,14 @@ public partial class CSmokeGrenadeProjectile : CBaseCSGrenadeProjectile
 	[SchemaMember("CSmokeGrenadeProjectile", "m_VoxelFrameData")]
 	public NetworkedVector<byte> VoxelFrameData => Schema.GetDeclaredClass<NetworkedVector<byte>>(this.Handle, "CSmokeGrenadeProjectile", "m_VoxelFrameData");
 
+	// m_nVoxelFrameDataSize
+	[SchemaMember("CSmokeGrenadeProjectile", "m_nVoxelFrameDataSize")]
+	public ref Int32 VoxelFrameDataSize => ref Schema.GetRef<Int32>(this.Handle, "CSmokeGrenadeProjectile", "m_nVoxelFrameDataSize");
+
+	// m_nVoxelUpdate
+	[SchemaMember("CSmokeGrenadeProjectile", "m_nVoxelUpdate")]
+	public ref Int32 VoxelUpdate => ref Schema.GetRef<Int32>(this.Handle, "CSmokeGrenadeProjectile", "m_nVoxelUpdate");
+
 	// m_flLastBounce
 	[SchemaMember("CSmokeGrenadeProjectile", "m_flLastBounce")]
 	public ref float LastBounce => ref Schema.GetRef<float>(this.Handle, "CSmokeGrenadeProjectile", "m_flLastBounce");
@@ -49,5 +57,9 @@ public partial class CSmokeGrenadeProjectile : CBaseCSGrenadeProjectile
 	// m_fllastSimulationTime
 	[SchemaMember("CSmokeGrenadeProjectile", "m_fllastSimulationTime")]
 	public ref float FllastSimulationTime => ref Schema.GetRef<float>(this.Handle, "CSmokeGrenadeProjectile", "m_fllastSimulationTime");
+
+	// m_bExplodeFromInferno
+	[SchemaMember("CSmokeGrenadeProjectile", "m_bExplodeFromInferno")]
+	public ref bool ExplodeFromInferno => ref Schema.GetRef<bool>(this.Handle, "CSmokeGrenadeProjectile", "m_bExplodeFromInferno");
 
 }

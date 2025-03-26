@@ -22,4 +22,16 @@ public partial class CInfoPlayerStart : CPointEntity
 	[SchemaMember("CInfoPlayerStart", "m_bDisabled")]
 	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CInfoPlayerStart", "m_bDisabled");
 
+	// m_bIsMaster
+	[SchemaMember("CInfoPlayerStart", "m_bIsMaster")]
+	public ref bool IsMaster => ref Schema.GetRef<bool>(this.Handle, "CInfoPlayerStart", "m_bIsMaster");
+
+	// m_pPawnSubclass
+	[SchemaMember("CInfoPlayerStart", "m_pPawnSubclass")]
+	public string PawnSubclass
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CInfoPlayerStart", "m_pPawnSubclass"); }
+		set { Schema.SetString(this.Handle, "CInfoPlayerStart", "m_pPawnSubclass", value); }
+	}
+
 }

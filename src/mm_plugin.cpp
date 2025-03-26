@@ -34,7 +34,7 @@
 #include "scripting/script_engine.h"
 #include "tier0/vprof.h"
 
-#define VERSION_STRING  "v" BUILD_NUMBER " @ " GITHUB_SHA
+#define VERSION_STRING  "v" SEMVER " @ " GITHUB_SHA
 #define BUILD_TIMESTAMP __DATE__ " " __TIME__
 
 counterstrikesharp::GlobalClass* counterstrikesharp::GlobalClass::head = nullptr;
@@ -101,6 +101,8 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
     GET_V_IFACE_ANY(GetEngineFactory, globals::schemaSystem, CSchemaSystem, SCHEMASYSTEM_INTERFACE_VERSION);
     GET_V_IFACE_ANY(GetEngineFactory, globals::gameEventSystem, IGameEventSystem, GAMEEVENTSYSTEM_INTERFACE_VERSION);
     GET_V_IFACE_ANY(GetEngineFactory, globals::engineServiceManager, IEngineServiceMgr, ENGINESERVICEMGR_INTERFACE_VERSION);
+    GET_V_IFACE_ANY(GetEngineFactory, globals::networkMessages, INetworkMessages, NETWORKMESSAGES_INTERFACE_VERSION);
+    GET_V_IFACE_ANY(GetServerFactory, globals::gameEntities, ISource2GameEntities, SOURCE2GAMEENTITIES_INTERFACE_VERSION);
 
     auto coreconfig_path = std::string(utils::ConfigsDirectory() + "/core");
     globals::coreConfig = new CCoreConfig(coreconfig_path);
@@ -132,6 +134,7 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
     CALL_GLOBAL_LISTENER(OnAllInitialized());
 
     on_activate_callback = globals::callbackManager.CreateCallback("OnMapStart");
+    on_metamod_all_plugins_loaded_callback = globals::callbackManager.CreateCallback("OnMetamodAllPluginsLoaded");
 
     SH_ADD_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this, &CounterStrikeSharpMMPlugin::Hook_GameFrame, true);
     SH_ADD_HOOK_MEMFUNC(INetworkServerService, StartupServer, globals::networkServerService, this,
@@ -180,6 +183,7 @@ bool CounterStrikeSharpMMPlugin::Unload(char* error, size_t maxlen)
                            &CounterStrikeSharpMMPlugin::Hook_StartupServer, true);
 
     globals::callbackManager.ReleaseCallback(on_activate_callback);
+    globals::callbackManager.ReleaseCallback(on_metamod_all_plugins_loaded_callback);
 
     return true;
 }
@@ -189,6 +193,8 @@ void CounterStrikeSharpMMPlugin::AllPluginsLoaded()
     /* This is where we'd do stuff that relies on the mod or other plugins
      * being initialized (for example, cvars added and events registered).
      */
+    on_metamod_all_plugins_loaded_callback->ScriptContext().Reset();
+    on_metamod_all_plugins_loaded_callback->Execute();
 }
 
 void CounterStrikeSharpMMPlugin::AddTaskForNextFrame(std::function<void()>&& task)

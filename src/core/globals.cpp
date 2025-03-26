@@ -23,6 +23,7 @@
 #include "core/managers/entity_manager.h"
 #include "core/managers/server_manager.h"
 #include "core/managers/voice_manager.h"
+#include "core/managers/usermessage_manager.h"
 #include <public/game/server/iplayerinfo.h>
 #include <public/entity2/entitysystem.h>
 
@@ -52,6 +53,7 @@ IUniformRandomStream* randomStream = nullptr;
 IEngineTrace* engineTrace = nullptr;
 IEngineSound* engineSound = nullptr;
 IEngineServiceMgr* engineServiceManager = nullptr;
+INetworkMessages* networkMessages = nullptr;
 INetworkStringTableContainer* netStringTables = nullptr;
 CGlobalVars* globalVars = nullptr;
 IFileSystem* fileSystem = nullptr;
@@ -76,6 +78,7 @@ ISmmAPI* ismm = nullptr;
 CGameEntitySystem* entitySystem = nullptr;
 CCoreConfig* coreConfig = nullptr;
 CGameConfig* gameConfig = nullptr;
+ISource2GameEntities* gameEntities = nullptr;
 
 // Custom Managers
 CallbackManager callbackManager;
@@ -88,6 +91,7 @@ ChatManager chatManager;
 ServerManager serverManager;
 VoiceManager voiceManager;
 TickScheduler tickScheduler;
+UserMessageManager userMessageManager;
 
 bool gameLoopInitialized = false;
 GetLegacyGameEventListener_t* GetLegacyGameEventListener = nullptr;
@@ -138,7 +142,10 @@ void DetourGameEventManagerInit(IGameEventManager2* pGameEventManager)
 }
 
 int source_hook_pluginid = 0;
-CGlobalVars* getGlobalVars() { return engineServer2->GetServerGlobals(); }
-
+CGlobalVars* getGlobalVars() {
+    INetworkGameServer* server = networkServerService->GetIGameServer();
+    if (!server) return nullptr;
+    return networkServerService->GetIGameServer()->GetGlobals();
+}
 } // namespace globals
 } // namespace counterstrikesharp

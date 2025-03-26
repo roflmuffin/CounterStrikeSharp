@@ -68,7 +68,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_iszEntity
 	[SchemaMember("CScriptedSequence", "m_iszEntity")]
-	public string Entity
+	public new string Entity
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CScriptedSequence", "m_iszEntity"); }
 		set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszEntity", value); }
@@ -89,6 +89,10 @@ public partial class CScriptedSequence : CBaseEntity
 	// m_nMoveToGait
 	[SchemaMember("CScriptedSequence", "m_nMoveToGait")]
 	public ref MovementGait_t MoveToGait => ref Schema.GetRef<MovementGait_t>(this.Handle, "CScriptedSequence", "m_nMoveToGait");
+
+	// m_nHeldWeaponBehavior
+	[SchemaMember("CScriptedSequence", "m_nHeldWeaponBehavior")]
+	public ref ScriptedHeldWeaponBehavior_t HeldWeaponBehavior => ref Schema.GetRef<ScriptedHeldWeaponBehavior_t>(this.Handle, "CScriptedSequence", "m_nHeldWeaponBehavior");
 
 	// m_bIsPlayingPreIdle
 	[SchemaMember("CScriptedSequence", "m_bIsPlayingPreIdle")]
@@ -201,6 +205,10 @@ public partial class CScriptedSequence : CBaseEntity
 	// m_flAngRate
 	[SchemaMember("CScriptedSequence", "m_flAngRate")]
 	public ref float AngRate => ref Schema.GetRef<float>(this.Handle, "CScriptedSequence", "m_flAngRate");
+
+	// m_bWaitUntilMoveCompletesToStartAnimation
+	[SchemaMember("CScriptedSequence", "m_bWaitUntilMoveCompletesToStartAnimation")]
+	public ref bool WaitUntilMoveCompletesToStartAnimation => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bWaitUntilMoveCompletesToStartAnimation");
 
 	// m_nNotReadySequenceCount
 	[SchemaMember("CScriptedSequence", "m_nNotReadySequenceCount")]

@@ -29,13 +29,13 @@ public class CenterHtmlMenu : BaseMenu
     public string NextPageColor { get; set; } = "yellow";
     public string CloseColor { get; set; } = "red";
 
-    public CenterHtmlMenu(string title, BasePlugin plugin) : base(ModifyTitle(title))
+    public CenterHtmlMenu(string title, BasePlugin plugin) : base(title)
     {
         _plugin = plugin;
     }
-    
+
     [Obsolete("Use the constructor that takes a BasePlugin")]
-    public CenterHtmlMenu(string title) : base(ModifyTitle(title))
+    public CenterHtmlMenu(string title) : base(title)
     {
     }
 
@@ -45,39 +45,17 @@ public class CenterHtmlMenu : BaseMenu
         {
             throw new InvalidOperationException("This method is unsupported with the CenterHtmlMenu constructor used." +
                                                 "Please provide a BasePlugin in the constructor.");
-        }; 
-        
+        };
+
         MenuManager.OpenCenterHtmlMenu(_plugin, player, this);
     }
 
     public override ChatMenuOption AddMenuOption(string display, Action<CCSPlayerController, ChatMenuOption> onSelect,
         bool disabled = false)
     {
-        var option = new ChatMenuOption(ModifyOptionDisplay(display), disabled, onSelect);
+        var option = new ChatMenuOption(display, disabled, onSelect);
         MenuOptions.Add(option);
         return option;
-    }
-
-    private static string ModifyTitle(string title)
-    {
-        if (title.Length > 32)
-        {
-            Application.Instance.Logger.LogWarning("Title should not be longer than 32 characters for a CenterHtmlMenu");
-            return title[..32];
-        }
-
-        return title;
-    }
-
-    private static string ModifyOptionDisplay(string display)
-    {
-        if (display.Length > 26)
-        {
-            Application.Instance.Logger.LogWarning("Display should not be longer than 26 characters for a CenterHtmlMenu item");
-            return display[..26];
-        }
-
-        return display;
     }
 }
 

@@ -15,6 +15,8 @@ add_subdirectory(libraries/DynoHook)
 set_property(TARGET dynohook PROPERTY DYNO_ARCH_X86 64)
 set_property(TARGET funchook-static PROPERTY POSITION_INDEPENDENT_CODE ON)
 
+include("makefiles/protobuf.cmake")
+
 set(SOURCE_FILES
     libraries/hl2sdk-cs2/public/tier0/memoverride.cpp
     src/mm_plugin.cpp
@@ -81,6 +83,7 @@ set(SOURCE_FILES
     src/scripting/natives/natives_schema.cpp
     src/scripting/natives/natives_entities.cpp
     src/scripting/natives/natives_voice.cpp
+    src/scripting/natives/natives_metamod.cpp
     src/core/managers/entity_manager.cpp
     src/core/managers/entity_manager.h
     src/core/managers/chat_manager.cpp
@@ -88,35 +91,20 @@ set(SOURCE_FILES
     src/core/managers/server_manager.cpp
     src/core/managers/server_manager.h
     src/scripting/natives/natives_server.cpp
+    src/scripting/natives/natives_usermessages.cpp
     libraries/nlohmann/json.hpp
     src/core/managers/voice_manager.cpp
     src/core/managers/voice_manager.h
+    src/core/managers/usermessage_manager.cpp
+    src/core/managers/usermessage_manager.h
     src/scripting/natives/natives_dynamichooks.cpp
     src/core/game_system.h
     src/core/game_system.cpp
+    src/core/UserMessage.h
+    src/core/UserMessage.cpp
+    src/core/recipientfilters.h
 )
 
-set(PROTO_DIRS -I${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo)
-file(GLOB PROTOS "${CMAKE_CURRENT_SOURCE_DIR}/libraries/Protobufs/csgo/*.proto")
-
-## Generate protobuf source & headers
-if(LINUX)
-    set(PROTOC_EXECUTABLE ${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2/devtools/bin/linux/protoc)
-elseif(WIN32)
-    set(PROTOC_EXECUTABLE ${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2/devtools/bin/protoc.exe)
-endif()
-
-add_custom_command(
-    OUTPUT protobuf_output_stamp
-    COMMAND ${PROTOC_EXECUTABLE} --proto_path=thirdparty/protobuf-3.21.8/src --proto_path=common --cpp_out=common common/network_connection.proto
-    COMMENT "Generating protobuf file"
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/libraries/hl2sdk-cs2
-    VERBATIM
-)
-
-set(SOURCE_FILES ${SOURCE_FILES} protobuf_output_stamp)
-
-# Sources
 add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${NATIVES_SOURCES} ${CONVERSIONS_SOURCES} ${CONVERSIONS_HEADERS})
 
 target_include_directories(
@@ -141,7 +129,7 @@ elseif(WIN32)
 endif()
 
 # Libraries
-target_link_libraries(${PROJECT_NAME} ${COUNTER_STRIKE_SHARP_LINK_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${COUNTER_STRIKE_SHARP_LINK_LIBRARIES} Protobufs)
 
 add_custom_command(
     TARGET ${PROJECT_NAME} PRE_BUILD

@@ -70,8 +70,13 @@ public class CommandManager : ICommandManager
 
         if (_commandDefinitions.TryGetValue(name, out var handler))
         {
-            foreach (var command in handler)
+            foreach (var command in handler.ToList())
             {
+                if (!handler.Contains(command))
+                {
+                    continue;
+                }
+
                 var methodInfo = command.Callback?.GetMethodInfo();
 
                 // We do not need to do permission checks on commands executed from the server console.
