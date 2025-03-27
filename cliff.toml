@@ -2,8 +2,8 @@
 # https://git-cliff.org/docs/configuration
 
 # [remote.github]
-# owner = "roflmuffin"
-# repo = "CounterStrikeSharp"
+owner = "roflmuffin"
+repo = "CounterStrikeSharp"
 # token = ""
 
 [changelog]
