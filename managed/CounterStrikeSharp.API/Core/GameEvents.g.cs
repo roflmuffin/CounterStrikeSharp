@@ -4545,18 +4545,10 @@ namespace CounterStrikeSharp.API.Core
 
 
                 // chatting player
-                public CCSPlayerController? Userid
+                public int Userid
                 {
-                    get => GetPlayer("userid");
-                    set => SetPlayer("userid", value);
-                }
-
-
-                // chatting player ID
-                public int Playerid
-                {
-                    get => Get<int>("playerid");
-                    set => Set<int>("playerid", value);
+                    get => Get<int>("userid");
+                    set => Set<int>("userid", value);
                 }
 
 
