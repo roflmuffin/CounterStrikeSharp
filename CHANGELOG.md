@@ -1,3 +1,10 @@
+## What's Changed in 1.0.314
+* fix: manually revert EventPlayerChat to old value  in [#827](https://github.com/roflmuffin/CounterStrikeSharp/pull/827)([2398ba0](https://github.com/roflmuffin/CounterStrikeSharp/commit/2398ba0a5deb0780cc2fb9d94849c8e427034967))
+* ci: hide release commits in changelog ([e45c204](https://github.com/roflmuffin/CounterStrikeSharp/commit/e45c20481d07a236dd8b6c79f22c42edfd1f7b5c))
+* ci: include full changelog link in discord message ([fe321ee](https://github.com/roflmuffin/CounterStrikeSharp/commit/fe321ee93de7984d3808e9df33b045aefa43ad60))
+* chore: remove footer from cliff changelog ([be19103](https://github.com/roflmuffin/CounterStrikeSharp/commit/be191035563df9786770f8c61c05527db1c9eda4))
+* chore: fix newlines in changelog ([64cb26b](https://github.com/roflmuffin/CounterStrikeSharp/commit/64cb26b86d1818841af91164f44a2c62c5667969))
+
 ## What's Changed in v1.0.313
 * ci: fix cliff generation ([637224d](https://github.com/roflmuffin/CounterStrikeSharp/commit/637224dc55a32e55163df64f809f9a64462e05e3))
 * ci: add changelog to release & webhook ([3aca7c3](https://github.com/roflmuffin/CounterStrikeSharp/commit/3aca7c37f1f1a1f3bb7c630d373751ddab3cb5a2))
