@@ -60,7 +60,8 @@ void DetourHostSay(CEntityInstance* pController, CCommand& args, bool teamonly, 
         if (pEvent)
         {
             pEvent->SetBool("teamonly", teamonly);
-            pEvent->SetInt("userid", pController->GetEntityIndex().Get() - 1);
+            pEvent->SetPlayer("userid", pController);
+            pEvent->SetInt("playerid", pController->GetEntityIndex().Get() - 1);
             pEvent->SetString("text", args[1]);
 
             globals::gameEventManager->FireEvent(pEvent, true);
