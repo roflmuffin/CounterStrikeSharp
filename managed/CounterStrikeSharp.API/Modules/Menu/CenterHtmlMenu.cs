@@ -15,7 +15,6 @@
  */
 
 using System.Text;
-using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Modules.Menu;
 
