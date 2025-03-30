@@ -5,6 +5,10 @@ description: Automatically build and deploy plugin changes to a remote developme
 
 # Automatically build and deploy your changes
 
+<sup>Adapted from the
+[original guide](https://github.com/uFloppyDisk/create-cssharp-plugin/blob/c8fca43f86a61a5e874624f2f3ed39c5271c9a55/templates/standard-plugin/docs/auto-live-hot-reloading.md).
+</sup>
+
 During development of your plugin, you may find yourself repeating a workflow
 similar to the following:
 1. Make a change to your plugin
