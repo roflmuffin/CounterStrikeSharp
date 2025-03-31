@@ -4528,38 +4528,6 @@ namespace CounterStrikeSharp.API.Core
                 }
             }
 
-            [EventName("player_chat")]
-            public class EventPlayerChat : GameEvent
-            {
-                public EventPlayerChat(IntPtr pointer) : base(pointer){}
-                public EventPlayerChat(bool force) : base("player_chat", force){}
-
-                
-
-                // true if team only chat
-                public bool Teamonly
-                {
-                    get => Get<bool>("teamonly");
-                    set => Set<bool>("teamonly", value);
-                }
-
-
-                // chatting player
-                public int Userid
-                {
-                    get => Get<int>("userid");
-                    set => Set<int>("userid", value);
-                }
-
-
-                // chat text
-                public string Text
-                {
-                    get => Get<string>("text");
-                    set => Set<string>("text", value);
-                }
-            }
-
             [EventName("player_connect")]
             public class EventPlayerConnect : GameEvent
             {

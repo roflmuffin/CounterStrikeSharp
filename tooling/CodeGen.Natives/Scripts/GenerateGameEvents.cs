@@ -119,6 +119,9 @@ public partial class Generators
     public static async Task GenerateGameEvents()
     {
         var allGameEvents = await GetGameEvents();
+        
+        // Remove the player_chat event as it's manually implemented
+        allGameEvents.RemoveAll(e => e.Name == "player_chat");
 
         var gameEventsString = string.Join("\n", allGameEvents.OrderBy(x => x.NamePascalCase).Select(gameEvent =>
         {
