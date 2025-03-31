@@ -1,17 +1,14 @@
 ﻿using System.Text.Json;
 using System.Reflection;
+using System.Runtime.Serialization;
+using CounterStrikeSharp.API.Modules.Config;
+using Tomlyn;
 
 namespace CounterStrikeSharp.API.Modules.Extensions;
 
 public static class PluginConfigExtensions
 {
-    private static readonly JsonSerializerOptions _jsonSerializerOptions = new()
-    {
-        WriteIndented = true,
-        ReadCommentHandling = JsonCommentHandling.Skip
-    };
-
-    public static JsonSerializerOptions JsonSerializerOptions => _jsonSerializerOptions;
+    public static JsonSerializerOptions JsonSerializerOptions => ConfigManager.JsonSerializerOptions;
 
     /// <summary>
     /// Gets the configuration file path
@@ -21,7 +18,24 @@ public static class PluginConfigExtensions
     public static string GetConfigPath<T>(this T _) where T : BasePluginConfig, new()
     {
         string assemblyName = typeof(T).Assembly.GetName().Name ?? string.Empty;
-        return Path.Combine(Server.GameDirectory, "csgo", "addons", "counterstrikesharp", "configs", "plugins", assemblyName, $"{assemblyName}.json");
+
+        string[] configFilePaths =
+        [
+            Path.Combine(Server.GameDirectory, "csgo", "addons", "counterstrikesharp", "configs", "plugins", assemblyName,
+                $"{assemblyName}.json"),
+            Path.Combine(Server.GameDirectory, "csgo", "addons", "counterstrikesharp", "configs", "plugins", assemblyName,
+                $"{assemblyName}.toml"),
+        ];
+
+        foreach (var path in configFilePaths)
+        {
+            if (File.Exists(path))
+            {
+                return path;
+            }
+        }
+
+        return configFilePaths[0];
     }
 
     /// <summary>
@@ -37,7 +51,22 @@ public static class PluginConfigExtensions
         {
             using var stream = new FileStream(configPath, FileMode.Create, FileAccess.Write, FileShare.None);
             using var writer = new StreamWriter(stream);
-            writer.Write(JsonSerializer.Serialize(config, JsonSerializerOptions));
+
+            switch (Path.GetExtension(configPath))
+            {
+                case ".json":
+                {
+                    writer.Write(JsonSerializer.Serialize(config, ConfigManager.JsonSerializerOptions));
+                    break;
+                }
+                case ".toml":
+                    writer.Write(Toml.FromModel(config, ConfigManager.TomlModelOptions));
+                    break;
+                default:
+                    throw new NotSupportedException($"Configuration file type '{Path.GetExtension(configPath)}' is not supported.");
+            }
+
+
         }
         catch (Exception ex)
         {
@@ -63,8 +92,22 @@ public static class PluginConfigExtensions
 
             var configContent = File.ReadAllText(configPath);
 
-            var newConfig = JsonSerializer.Deserialize<T>(configContent, JsonSerializerOptions)
-                ?? throw new JsonException($"Deserialization failed for configuration file '{configPath}'.");
+            T? newConfig = null;
+            switch (Path.GetExtension(configPath))
+            {
+                case ".json":
+                    newConfig = JsonSerializer.Deserialize<T>(configContent, ConfigManager.JsonSerializerOptions)
+                                ?? throw new JsonException($"Deserialization failed for configuration file '{configPath}'.");
+                    break;
+                case ".toml":
+                    newConfig = Toml.ToModel<T>(configContent, options: ConfigManager.TomlModelOptions);
+                    break;
+            }
+
+            if (newConfig is null)
+            {
+                throw new SerializationException($"Deserialization failed for configuration file '{configPath}'.");
+            }
 
             foreach (var property in typeof(T).GetProperties(BindingFlags.Instance | BindingFlags.Public))
             {
