@@ -1,3 +1,13 @@
+## What's Changed in 1.0.315
+* Update CCSPlayer_ItemServices_CanAcquire signature by [@schwarper](https://github.com/schwarper) in [#832](https://github.com/roflmuffin/CounterStrikeSharp/pull/832) ([0ce4a29](https://github.com/roflmuffin/CounterStrikeSharp/commit/0ce4a2903cd661c0e5702bf6db38abfc6cb340e3))
+* docs: add automatic build and deploy guide by [@uFloppyDisk](https://github.com/uFloppyDisk) in [#831](https://github.com/roflmuffin/CounterStrikeSharp/pull/831) ([33b46eb](https://github.com/roflmuffin/CounterStrikeSharp/commit/33b46eb2147224825ff2411b6973e41780f58e36))
+* fix: move EventPlayerChat to dedicated file and exclude from generator ([a27ba3b](https://github.com/roflmuffin/CounterStrikeSharp/commit/a27ba3b0058b08b5aa9ddea12d36adc9d31374d3))
+* chore(changelog): cleanup whitespace once and for all ([57286c9](https://github.com/roflmuffin/CounterStrikeSharp/commit/57286c9990db1033c3baa3c351d40d1f534b07e5))
+* chore: fix commit links in release changelog ([ae808c0](https://github.com/roflmuffin/CounterStrikeSharp/commit/ae808c05c8b1ce0287c33b0daf754c54692b5ba8))
+
+## New Contributors
+* [@uFloppyDisk](https://github.com/uFloppyDisk) made their first contribution in [#831](https://github.com/roflmuffin/CounterStrikeSharp/pull/831)
+
 ## What's Changed in v1.0.314
 * fix: manually revert EventPlayerChat to old value in [#827](https://github.com/roflmuffin/CounterStrikeSharp/pull/827) ([2398ba0](https://github.com/roflmuffin/CounterStrikeSharp/commit/2398ba0a5deb0780cc2fb9d94849c8e427034967))
 * ci: hide release commits in changelog ([e45c204](https://github.com/roflmuffin/CounterStrikeSharp/commit/e45c20481d07a236dd8b6c79f22c42edfd1f7b5c))
