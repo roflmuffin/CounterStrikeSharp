@@ -92,7 +92,7 @@
     "signatures": {
       "library": "server",
       "windows": "44 89 44 24 ? 48 89 54 24 ? 48 89 4C 24 ? 55 56 57 41 54 41 55 41 56 41 57 48 8B EC",
-      "linux": "55 48 89 E5 41 57 41 56 41 55 49 89 CD 41 54 53 48 83 EC"
+      "linux": "55 48 89 E5 41 57 41 56 48 8D 45 ? 41 55 41 54 53 48 89 CB"
     }
   },
   "GetCSWeaponDataFromKey": {
