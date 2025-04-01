@@ -50,15 +50,24 @@ namespace CounterStrikeSharp.API.Modules.Commands
 
         public IEnumerable<string> GetArgs(int startIndex = 0, int endIndex = -1)
         {
-            var args = ArgString.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            if (string.IsNullOrEmpty(ArgString))
+                return [];
+
+            string[] args = ArgString.Split(' ', StringSplitOptions.RemoveEmptyEntries);
             int lastIndex = args.Length - 1;
 
             startIndex = Math.Clamp(startIndex, 0, lastIndex);
             endIndex = Math.Clamp(endIndex < 0 ? lastIndex : endIndex, startIndex, lastIndex);
 
-            return startIndex == endIndex ?
-                [args[startIndex]] :
-                args[startIndex..(endIndex + 1)];
+            string[] selectedArgs = startIndex == endIndex
+                ? [args[startIndex]]
+                : args[startIndex..(endIndex + 1)];
+
+            return selectedArgs.Select(arg =>
+                arg.Length >= 2 && arg[0] == '"' && arg[^1] == '"'
+                    ? arg[1..^1]
+                    : arg
+            );
         }
 
         /// <summary>
