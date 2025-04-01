@@ -1,7 +1,7 @@
 # git-cliff ~ configuration file
 # https://git-cliff.org/docs/configuration
 
-# [remote.github]
+[remote.github]
 owner = "roflmuffin"
 repo = "CounterStrikeSharp"
 # token = ""
