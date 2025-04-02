@@ -85,7 +85,7 @@
     "signatures": {
       "library": "server",
       "windows": "48 89 5C 24 ? 48 89 6C 24 ? 56 57 41 56 48 83 EC ? 48 8B 01 48 8B FA",
-      "linux": "55 48 8D 15 ? ? ? ? 48 89 E5 41 55 49 89 FD 41 54 49 89 F4"
+      "linux": "E8 ? ? ? ? 48 8D 3D ? ? ? ? BE ? ? ? ? E8 ? ? ? ? 48 85 C0 0F 84 ? ? ? ? 8B 00 83 F8 01 74 10"
     }
   },
   "CCSPlayer_ItemServices_CanAcquire": {
