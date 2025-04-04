@@ -1,4 +1,8 @@
-## What's Changed in 1.0.315
+## What's Changed in v1.0.316
+* fix(gamedata): update `CCSPlayer_WeaponServices_CanUse` signature ([68e6ffa](https://github.com/roflmuffin/CounterStrikeSharp/commit/68e6ffaebe6497814d757b276a6d0371d731e61d))
+* fix: commit links in changelog finally ([2f8f370](https://github.com/roflmuffin/CounterStrikeSharp/commit/2f8f370cd3dd162dff745671a159f361e1ce487b))
+
+## What's Changed in v1.0.315
 * Update CCSPlayer_ItemServices_CanAcquire signature by [@schwarper](https://github.com/schwarper) in [#832](https://github.com/roflmuffin/CounterStrikeSharp/pull/832) ([0ce4a29](https://github.com/roflmuffin/CounterStrikeSharp/commit/0ce4a2903cd661c0e5702bf6db38abfc6cb340e3))
 * docs: add automatic build and deploy guide by [@uFloppyDisk](https://github.com/uFloppyDisk) in [#831](https://github.com/roflmuffin/CounterStrikeSharp/pull/831) ([33b46eb](https://github.com/roflmuffin/CounterStrikeSharp/commit/33b46eb2147224825ff2411b6973e41780f58e36))
 * fix: move EventPlayerChat to dedicated file and exclude from generator ([a27ba3b](https://github.com/roflmuffin/CounterStrikeSharp/commit/a27ba3b0058b08b5aa9ddea12d36adc9d31374d3))
