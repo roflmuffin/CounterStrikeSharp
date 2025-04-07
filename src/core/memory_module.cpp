@@ -15,10 +15,11 @@
 #include <winternl.h>
 #else
 #include <elf.h>
-#include <link.h>
 #include <fcntl.h>
-#include "sys/mman.h"
+#include <link.h>
 #include <sys/stat.h>
+
+#include "sys/mman.h"
 #endif
 
 #include "core/gameconfig.h"
@@ -268,11 +269,10 @@ CModule::CModule(std::string_view path, dl_phdr_info* info)
 
     m_hModule = dlmount(m_pszPath.c_str());
 
-    if (!m_hModule)
-        CSSHARP_CORE_ERROR("Could not find {}", m_pszPath);
+    if (!m_hModule) CSSHARP_CORE_ERROR("Could not find {}", m_pszPath);
 
     if (int e = GetModuleInformation(m_hModule, &m_base, &m_size, m_vecSections))
-    	CSSHARP_CORE_ERROR("Failed to get module info for {}, error {}", m_pszPath, e);
+        CSSHARP_CORE_ERROR("Failed to get module info for {}, error {}", m_pszPath, e);
 
     m_bInitialized = true;
 }
@@ -280,7 +280,7 @@ CModule::CModule(std::string_view path, dl_phdr_info* info)
 
 CModule::~CModule()
 {
-    if (m_hModule) dlclose(m_hModule);
+    // if (m_hModule) dlclose(m_hModule);
 }
 
 #ifdef _WIN32
@@ -627,8 +627,7 @@ void* CModule::FindVirtualTable(const std::string& name, int32_t offset)
 
     std::string decoratedTableName = ".?AV" + name + "@@";
 
-    SignatureIterator sigIt(runTimeData->pBase, runTimeData->size, (const byte*)decoratedTableName.c_str(),
-                            decoratedTableName.size() + 1);
+    SignatureIterator sigIt(runTimeData->pBase, runTimeData->size, (const byte*)decoratedTableName.c_str(), decoratedTableName.size() + 1);
     void* typeDescriptor = sigIt.FindNext(false);
 
     if (!typeDescriptor)
@@ -725,61 +724,60 @@ void* CModule::FindVirtualTable(const std::string& name, int32_t offset)
 #ifndef _WIN32
 int CModule::GetModuleInformation(HINSTANCE hModule, void** base, size_t* length, std::vector<Sections>& sections)
 {
-	link_map* lmap;
-	if (dlinfo(hModule, RTLD_DI_LINKMAP, &lmap) != 0)
-	{
-		dlclose(hModule);
-		return 1;
-	}
+    link_map* lmap;
+    if (dlinfo(hModule, RTLD_DI_LINKMAP, &lmap) != 0)
+    {
+        dlclose(hModule);
+        return 1;
+    }
 
-	int fd = open(lmap->l_name, O_RDONLY);
-	if (fd == -1)
-	{
-		dlclose(hModule);
-		return 2;
-	}
+    int fd = open(lmap->l_name, O_RDONLY);
+    if (fd == -1)
+    {
+        dlclose(hModule);
+        return 2;
+    }
 
-	struct stat st;
-	if (fstat(fd, &st) == 0)
-	{
-		void* map = mmap(nullptr, st.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
-		if (map != MAP_FAILED)
-		{
-			ElfW(Ehdr)* ehdr = static_cast<ElfW(Ehdr)*>(map);
-			ElfW(Shdr)* shdrs = reinterpret_cast<ElfW(Shdr)*>(reinterpret_cast<uintptr_t>(ehdr) + ehdr->e_shoff);
-			const char* strTab = reinterpret_cast<const char*>(reinterpret_cast<uintptr_t>(ehdr) + shdrs[ehdr->e_shstrndx].sh_offset);
+    struct stat st;
+    if (fstat(fd, &st) == 0)
+    {
+        void* map = mmap(nullptr, st.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
+        if (map != MAP_FAILED)
+        {
+            ElfW(Ehdr)* ehdr = static_cast<ElfW(Ehdr)*>(map);
+            ElfW(Shdr)* shdrs = reinterpret_cast<ElfW(Shdr)*>(reinterpret_cast<uintptr_t>(ehdr) + ehdr->e_shoff);
+            const char* strTab = reinterpret_cast<const char*>(reinterpret_cast<uintptr_t>(ehdr) + shdrs[ehdr->e_shstrndx].sh_offset);
 
-			for (auto i = 0; i < ehdr->e_phnum; ++i)
-			{
-				ElfW(Phdr)* phdr = reinterpret_cast<ElfW(Phdr)*>(reinterpret_cast<uintptr_t>(ehdr) + ehdr->e_phoff + i * ehdr->e_phentsize);
-				if (phdr->p_type == PT_LOAD && phdr->p_flags & PF_X)
-				{
-					*base = reinterpret_cast<void*>(lmap->l_addr + phdr->p_vaddr);
-					*length = phdr->p_filesz;
-					break;
-				}
-			}
+            for (auto i = 0; i < ehdr->e_phnum; ++i)
+            {
+                ElfW(Phdr)* phdr = reinterpret_cast<ElfW(Phdr)*>(reinterpret_cast<uintptr_t>(ehdr) + ehdr->e_phoff + i * ehdr->e_phentsize);
+                if (phdr->p_type == PT_LOAD && phdr->p_flags & PF_X)
+                {
+                    *base = reinterpret_cast<void*>(lmap->l_addr + phdr->p_vaddr);
+                    *length = phdr->p_filesz;
+                    break;
+                }
+            }
 
-			for (auto i = 0; i < ehdr->e_shnum; ++i)
-			{
-				ElfW(Shdr)* shdr = reinterpret_cast<ElfW(Shdr)*>(reinterpret_cast<uintptr_t>(shdrs) + i * ehdr->e_shentsize);
-				if (*(strTab + shdr->sh_name) == '\0')
-					continue;
+            for (auto i = 0; i < ehdr->e_shnum; ++i)
+            {
+                ElfW(Shdr)* shdr = reinterpret_cast<ElfW(Shdr)*>(reinterpret_cast<uintptr_t>(shdrs) + i * ehdr->e_shentsize);
+                if (*(strTab + shdr->sh_name) == '\0') continue;
 
-				Sections section;
-				section.name = strTab + shdr->sh_name;
-				section.pBase = reinterpret_cast<void*>(lmap->l_addr + shdr->sh_addr);
-				section.size = shdr->sh_size;
-				sections.push_back(section);
-			}
+                Sections section;
+                section.name = strTab + shdr->sh_name;
+                section.pBase = reinterpret_cast<void*>(lmap->l_addr + shdr->sh_addr);
+                section.size = shdr->sh_size;
+                sections.push_back(section);
+            }
 
-			munmap(map, st.st_size);
-		}
-	}
+            munmap(map, st.st_size);
+        }
+    }
 
-	close(fd);
+    close(fd);
 
-	return 0;
+    return 0;
 }
-#endif 
+#endif
 } // namespace counterstrikesharp::modules
