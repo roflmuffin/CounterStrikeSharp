@@ -192,7 +192,11 @@ CModule::CModule(std::string_view path, std::uint64_t base)
 
     m_hModule = dlmount(m_pszPath.c_str());
 
-    if (!m_hModule) CSSHARP_CORE_ERROR("Could not find {}", m_pszPath);
+    if (!m_hModule)
+    {
+        CSSHARP_CORE_ERROR("Could not find {}", m_pszPath);
+        return;
+    }
 
     InitializeSections();
 
@@ -269,19 +273,18 @@ CModule::CModule(std::string_view path, dl_phdr_info* info)
 
     m_hModule = dlmount(m_pszPath.c_str());
 
-    if (!m_hModule) CSSHARP_CORE_ERROR("Could not find {}", m_pszPath);
+    if (!m_hModule)
+    {
+        CSSHARP_CORE_ERROR("Could not find {}", m_pszPath);
+        return;
+    }
 
-    if (int e = GetModuleInformation(m_hModule, &m_base, &m_size, m_vecSections))
+    if (int e = GetModuleInformation(&m_base, &m_size, m_vecSections))
         CSSHARP_CORE_ERROR("Failed to get module info for {}, error {}", m_pszPath, e);
 
     m_bInitialized = true;
 }
 #endif
-
-CModule::~CModule()
-{
-    // if (m_hModule) dlclose(m_hModule);
-}
 
 #ifdef _WIN32
 void CModule::DumpSymbols()
@@ -610,6 +613,7 @@ void CModule::InitializeSections()
 
         m_vecSections.push_back(std::move(section));
     }
+    dlclose(m_hModule);
 }
 #endif
 
@@ -722,19 +726,19 @@ void* CModule::FindVirtualTable(const std::string& name, int32_t offset)
 #endif
 
 #ifndef _WIN32
-int CModule::GetModuleInformation(HINSTANCE hModule, void** base, size_t* length, std::vector<Sections>& sections)
+int CModule::GetModuleInformation(void** base, size_t* length, std::vector<Sections>& sections)
 {
     link_map* lmap;
-    if (dlinfo(hModule, RTLD_DI_LINKMAP, &lmap) != 0)
+    if (dlinfo(m_hModule, RTLD_DI_LINKMAP, &lmap) != 0)
     {
-        dlclose(hModule);
+        dlclose(m_hModule);
         return 1;
     }
 
     int fd = open(lmap->l_name, O_RDONLY);
     if (fd == -1)
     {
-        dlclose(hModule);
+        dlclose(m_hModule);
         return 2;
     }
 
@@ -776,6 +780,8 @@ int CModule::GetModuleInformation(HINSTANCE hModule, void** base, size_t* length
     }
 
     close(fd);
+
+    dlclose(m_hModule);
 
     return 0;
 }
