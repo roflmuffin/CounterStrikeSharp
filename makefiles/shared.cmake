@@ -58,7 +58,6 @@ include_directories(
     ${SOURCESDK}/public/tier1
     ${SOURCESDK}/public/entity2
     ${SOURCESDK}/public/game/server
-    ${SOURCESDK}/public/entity2
     ${SOURCESDK}/public/schemasystem
     ${METAMOD_DIR}/core
     ${METAMOD_DIR}/core/sourcehook
