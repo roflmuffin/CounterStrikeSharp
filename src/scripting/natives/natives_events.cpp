@@ -59,6 +59,7 @@ static void FireEvent(ScriptContext &script_context) {
     bool dont_broadcast = script_context.GetArgument<bool>(1);
     if (!game_event) {
         script_context.ThrowNativeError("Invalid game event");
+        return;
     }
 
     globals::gameEventManager->FireEvent(game_event, dont_broadcast);
@@ -71,11 +72,13 @@ static void FireEventToClient(ScriptContext& script_context) {
     int entityIndex = script_context.GetArgument<int>(1);
     if (!game_event) {
         script_context.ThrowNativeError("Invalid game event");
+        return;
     }
 
     IGameEventListener2* pListener = globals::GetLegacyGameEventListener(CPlayerSlot(entityIndex - 1));
     if (!pListener) {
         script_context.ThrowNativeError("Could not get player event listener");
+        return;
     }
 
     pListener->FireGameEvent(game_event);
@@ -85,6 +88,7 @@ static void FreeEvent(ScriptContext& script_context) {
     auto game_event = script_context.GetArgument<IGameEvent*>(0);
     if (!game_event) {
             script_context.ThrowNativeError("Invalid game event");
+            return;
     }
 
     globals::gameEventManager->FreeEvent(game_event);

@@ -43,6 +43,8 @@ namespace CounterStrikeSharp.API
         Bullrush = (1 << 21),
         Grenade1 = (1 << 22),   /** grenade 1 */
         Grenade2 = (1 << 23),   /** grenade 2 */
-        Attack3 = (1 << 24)
+        Attack3 = (1 << 24),
+        Scoreboard = ((ulong)1 << 33),
+        Inspect = ((ulong)1 << 35),
     }
 }
