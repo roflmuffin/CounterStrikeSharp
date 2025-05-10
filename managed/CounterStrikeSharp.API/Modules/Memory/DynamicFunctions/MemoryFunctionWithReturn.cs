@@ -31,7 +31,7 @@ public class MemoryFunctionWithReturn<TResult> : BaseMemoryFunction
     {
     }
 
-    internal MemoryFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset, typeof(TResult).ToValidDataType(),
+    internal MemoryFunctionWithReturn(IntPtr objectPtr, Type type, int offset) : base(objectPtr, type, offset, typeof(TResult).ToValidDataType(),
         Array.Empty<DataType>())
     {
     }
@@ -54,7 +54,7 @@ public class MemoryFunctionWithReturn<T1, TResult> : BaseMemoryFunction
     {
     }
 
-    internal MemoryFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset, typeof(TResult).ToValidDataType(),
+    internal MemoryFunctionWithReturn(IntPtr objectPtr, Type type, int offset) : base(objectPtr, type, offset, typeof(TResult).ToValidDataType(),
         new[] { typeof(T1).ToValidDataType() })
     {
     }
@@ -77,7 +77,7 @@ public class MemoryFunctionWithReturn<T1, T2, TResult> : BaseMemoryFunction
     {
     }
 
-    internal MemoryFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset, typeof(TResult).ToValidDataType(),
+    internal MemoryFunctionWithReturn(IntPtr objectPtr, Type type, int offset) : base(objectPtr, type, offset, typeof(TResult).ToValidDataType(),
         new[] { typeof(T1).ToValidDataType(), typeof(T2).ToValidDataType() })
     {
     }
@@ -100,7 +100,7 @@ public class MemoryFunctionWithReturn<T1, T2, T3, TResult> : BaseMemoryFunction
     {
     }
 
-    internal MemoryFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset, typeof(TResult).ToValidDataType(),
+    internal MemoryFunctionWithReturn(IntPtr objectPtr, Type type, int offset) : base(objectPtr, type, offset, typeof(TResult).ToValidDataType(),
         new[] { typeof(T1).ToValidDataType(), typeof(T2).ToValidDataType(), typeof(T3).ToValidDataType() })
     {
     }
@@ -131,7 +131,7 @@ public class MemoryFunctionWithReturn<T1, T2, T3, T4, TResult> : BaseMemoryFunct
     {
     }
 
-    internal MemoryFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset, typeof(TResult).ToValidDataType(),
+    internal MemoryFunctionWithReturn(IntPtr objectPtr, Type type, int offset) : base(objectPtr, type, offset, typeof(TResult).ToValidDataType(),
         new[]
         {
             typeof(T1).ToValidDataType(), typeof(T2).ToValidDataType(), typeof(T3).ToValidDataType(),
@@ -166,7 +166,7 @@ public class MemoryFunctionWithReturn<T1, T2, T3, T4, T5, TResult> : BaseMemoryF
     {
     }
 
-    internal MemoryFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset, typeof(TResult).ToValidDataType(),
+    internal MemoryFunctionWithReturn(IntPtr objectPtr, Type type, int offset) : base(objectPtr, type, offset, typeof(TResult).ToValidDataType(),
         new[]
         {
             typeof(T1).ToValidDataType(), typeof(T2).ToValidDataType(), typeof(T3).ToValidDataType(),
@@ -201,7 +201,7 @@ public class MemoryFunctionWithReturn<T1, T2, T3, T4, T5, T6, TResult> : BaseMem
     {
     }
 
-    internal MemoryFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset, typeof(TResult).ToValidDataType(),
+    internal MemoryFunctionWithReturn(IntPtr objectPtr, Type type, int offset) : base(objectPtr, type, offset, typeof(TResult).ToValidDataType(),
         new[]
         {
             typeof(T1).ToValidDataType(), typeof(T2).ToValidDataType(), typeof(T3).ToValidDataType(),
@@ -238,7 +238,7 @@ public class MemoryFunctionWithReturn<T1, T2, T3, T4, T5, T6, T7, TResult> : Bas
     {
     }
 
-    internal MemoryFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset, typeof(TResult).ToValidDataType(),
+    internal MemoryFunctionWithReturn(IntPtr objectPtr, Type type, int offset) : base(objectPtr, type, offset, typeof(TResult).ToValidDataType(),
         new[]
         {
             typeof(T1).ToValidDataType(), typeof(T2).ToValidDataType(), typeof(T3).ToValidDataType(),
@@ -276,7 +276,7 @@ public class MemoryFunctionWithReturn<T1, T2, T3, T4, T5, T6, T7, T8, TResult> :
     {
     }
 
-    internal MemoryFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset, typeof(TResult).ToValidDataType(),
+    internal MemoryFunctionWithReturn(IntPtr objectPtr, Type type, int offset) : base(objectPtr, type, offset, typeof(TResult).ToValidDataType(),
         new[]
         {
             typeof(T1).ToValidDataType(), typeof(T2).ToValidDataType(), typeof(T3).ToValidDataType(),
@@ -314,7 +314,7 @@ public class MemoryFunctionWithReturn<T1, T2, T3, T4, T5, T6, T7, T8, T9, TResul
     {
     }
 
-    internal MemoryFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset, typeof(TResult).ToValidDataType(),
+    internal MemoryFunctionWithReturn(IntPtr objectPtr, Type type, int offset) : base(objectPtr, type, offset, typeof(TResult).ToValidDataType(),
         new[]
         {
             typeof(T1).ToValidDataType(), typeof(T2).ToValidDataType(), typeof(T3).ToValidDataType(),
@@ -354,7 +354,7 @@ public class MemoryFunctionWithReturn<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T
     {
     }
 
-    internal MemoryFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset, typeof(TResult).ToValidDataType(),
+    internal MemoryFunctionWithReturn(IntPtr objectPtr, Type type, int offset) : base(objectPtr, type, offset, typeof(TResult).ToValidDataType(),
         new[]
         {
             typeof(T1).ToValidDataType(), typeof(T2).ToValidDataType(), typeof(T3).ToValidDataType(),

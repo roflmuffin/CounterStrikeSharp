@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using CounterStrikeSharp.API.Core;
+﻿using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Modules.Memory.DynamicFunctions;
 
@@ -9,7 +6,7 @@ public abstract class BaseMemoryFunction : NativeObject
 {
     private static Dictionary<string, IntPtr> _createdFunctions = new();
 
-    private static Dictionary<IntPtr, Dictionary<int, IntPtr>> _createdOffsetFunctions = new();
+    private static Dictionary<string, IntPtr> _createdOffsetFunctions = new();
 
     private static IntPtr CreateValveFunctionBySignature(string signature, DataType returnType,
         DataType[] argumentTypes)
@@ -49,22 +46,18 @@ public abstract class BaseMemoryFunction : NativeObject
         return function;
     }
 
-    private static IntPtr CreateValveFunctionByOffset(IntPtr objectPtr, int offset, DataType returnType,
+    private static IntPtr CreateValveFunctionByOffset(IntPtr objectPtr, Type type, int offset, DataType returnType,
         DataType[] argumentTypes)
     {
-        if (!_createdOffsetFunctions.TryGetValue(objectPtr, out var createdFunctions))
-        {
-            createdFunctions = new Dictionary<int, IntPtr>();
-            _createdOffsetFunctions[objectPtr] = createdFunctions;
-        }
+        string constructKey = $"{type.Name}_{offset}";
 
-        if (!createdFunctions.TryGetValue(offset, out var function))
+        if (!_createdOffsetFunctions.TryGetValue(constructKey, out var function))
         {
             try
             {
                 function = NativeAPI.CreateVirtualFunction(objectPtr, offset,
                     argumentTypes.Length, (int)returnType, argumentTypes.Cast<object>().ToArray());
-                createdFunctions[offset] = function;
+                _createdOffsetFunctions[constructKey] = function;
             } catch (Exception)
             {
             }
@@ -86,8 +79,8 @@ public abstract class BaseMemoryFunction : NativeObject
     /// <summary>
     /// <b>WARNING:</b> this is only supposed to be used with <see cref="VirtualFunctionVoid"/> and <see cref="VirtualFunctionWithReturn{TResult}"/>
     /// </summary>
-    internal BaseMemoryFunction(IntPtr objectPtr, int offset, DataType returnType, DataType[] parameters) : base(
-        CreateValveFunctionByOffset(objectPtr, offset, returnType, parameters))
+    internal BaseMemoryFunction(IntPtr objectPtr, Type type, int offset, DataType returnType, DataType[] parameters) : base(
+        CreateValveFunctionByOffset(objectPtr, type, offset, returnType, parameters))
     {
     }
 

@@ -18,25 +18,6 @@ using CounterStrikeSharp.API.Modules.Memory.DynamicFunctions;
 
 namespace CounterStrikeSharp.API.Modules.Memory;
 
-public partial class VirtualFunctionWithReturn<TResult> : MemoryFunctionWithReturn<TResult>
-{
-    public VirtualFunctionWithReturn(string signature) : base(signature)
-    {
-    }
-    
-    public VirtualFunctionWithReturn(string signature, string binarypath) : base(signature, binarypath)
-    {
-    }
-
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset)
-    {
-    }
-
-    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, offset)
-    {
-    }
-}
-
 public partial class VirtualFunctionWithReturn<TArg1, TResult> : MemoryFunctionWithReturn<TArg1, TResult>
 {
     public VirtualFunctionWithReturn(string signature) : base(signature)
@@ -47,11 +28,11 @@ public partial class VirtualFunctionWithReturn<TArg1, TResult> : MemoryFunctionW
     {
     }
 
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset)
+    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
     {
     }
 
-    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, offset)
+    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
     {
     }
 }
@@ -66,11 +47,11 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TResult> : MemoryFu
     {
     }
 
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset)
+    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
     {
     }
 
-    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, offset)
+    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
     {
     }
 }
@@ -85,11 +66,11 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TResult> : M
     {
     }
 
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset)
+    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
     {
     }
 
-    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, offset)
+    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
     {
     }
 }
@@ -104,11 +85,11 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TResu
     {
     }
 
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset)
+    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
     {
     }
 
-    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, offset)
+    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
     {
     }
 }
@@ -123,11 +104,11 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5
     {
     }
 
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset)
+    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
     {
     }
 
-    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, offset)
+    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
     {
     }
 }
@@ -142,11 +123,11 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5
     {
     }
 
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset)
+    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
     {
     }
 
-    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, offset)
+    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
     {
     }
 }
@@ -161,11 +142,11 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5
     {
     }
 
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset)
+    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
     {
     }
 
-    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, offset)
+    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
     {
     }
 }
@@ -180,11 +161,11 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5
     {
     }
 
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset)
+    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
     {
     }
 
-    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, offset)
+    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
     {
     }
 }
@@ -199,11 +180,11 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5
     {
     }
 
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset)
+    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
     {
     }
 
-    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, offset)
+    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
     {
     }
 }
@@ -218,11 +199,11 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5
     {
     }
 
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset)
+    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
     {
     }
 
-    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, offset)
+    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
     {
     }
 }

@@ -18,25 +18,6 @@ using CounterStrikeSharp.API.Modules.Memory.DynamicFunctions;
 
 namespace CounterStrikeSharp.API.Modules.Memory;
 
-public partial class VirtualFunctionVoid : MemoryFunctionVoid
-{
-    public VirtualFunctionVoid(string signature) : base(signature)
-    {
-    }
-
-    public VirtualFunctionVoid(string signature, string binarypath) : base(signature, binarypath)
-    {
-    }
-
-    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, offset)
-    {
-    }
-
-    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, offset)
-    {
-    }
-}
-
 public partial class VirtualFunctionVoid<TArg1> : MemoryFunctionVoid<TArg1>
 {
     public VirtualFunctionVoid(string signature) : base(signature)
@@ -47,11 +28,11 @@ public partial class VirtualFunctionVoid<TArg1> : MemoryFunctionVoid<TArg1>
     {
     }
 
-    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, offset)
+    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
     {
     }
 
-    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, offset)
+    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
     {
     }
 }
@@ -66,11 +47,11 @@ public partial class VirtualFunctionVoid<TArg1, TArg2> : MemoryFunctionVoid<TArg
     {
     }
 
-    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, offset)
+    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
     {
     }
 
-    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, offset)
+    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
     {
     }
 }
@@ -85,11 +66,11 @@ public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3> : MemoryFunctionVo
     {
     }
 
-    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, offset)
+    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
     {
     }
 
-    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, offset)
+    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
     {
     }
 }
@@ -104,11 +85,11 @@ public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4> : MemoryFun
     {
     }
 
-    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, offset)
+    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
     {
     }
 
-    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, offset)
+    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
     {
     }
 }
@@ -123,11 +104,11 @@ public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5> : Me
     {
     }
 
-    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, offset)
+    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
     {
     }
 
-    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, offset)
+    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
     {
     }
 }
@@ -142,11 +123,11 @@ public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg
     {
     }
 
-    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, offset)
+    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
     {
     }
 
-    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, offset)
+    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
     {
     }
 }
@@ -161,11 +142,11 @@ public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg
     {
     }
 
-    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, offset)
+    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
     {
     }
 
-    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, offset)
+    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
     {
     }
 }
@@ -180,11 +161,11 @@ public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg
     {
     }
 
-    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, offset)
+    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
     {
     }
 
-    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, offset)
+    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
     {
     }
 }
@@ -199,11 +180,11 @@ public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg
     {
     }
 
-    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, offset)
+    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
     {
     }
 
-    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, offset)
+    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
     {
     }
 }
@@ -218,11 +199,11 @@ public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg
     {
     }
 
-    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, offset)
+    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
     {
     }
 
-    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, offset)
+    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
     {
     }
 }
