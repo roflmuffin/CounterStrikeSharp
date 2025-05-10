@@ -818,6 +818,126 @@ namespace CounterStrikeSharp.API.Core
                     get => Get<bool>("in_air");
                     set => Set<bool>("in_air", value);
                 }
+
+
+                // shoot angle x
+                public float ShootAngX
+                {
+                    get => Get<float>("shoot_ang_x");
+                    set => Set<float>("shoot_ang_x", value);
+                }
+
+
+                // shoot angle y
+                public float ShootAngY
+                {
+                    get => Get<float>("shoot_ang_y");
+                    set => Set<float>("shoot_ang_y", value);
+                }
+
+
+                // shoot angle z
+                public float ShootAngZ
+                {
+                    get => Get<float>("shoot_ang_z");
+                    set => Set<float>("shoot_ang_z", value);
+                }
+
+
+                // aim punch x
+                public float AimPunchX
+                {
+                    get => Get<float>("aim_punch_x");
+                    set => Set<float>("aim_punch_x", value);
+                }
+
+
+                // aim punch y
+                public float AimPunchY
+                {
+                    get => Get<float>("aim_punch_y");
+                    set => Set<float>("aim_punch_y", value);
+                }
+
+
+                // aim punch z
+                public float AimPunchZ
+                {
+                    get => Get<float>("aim_punch_z");
+                    set => Set<float>("aim_punch_z", value);
+                }
+
+
+                // attack tick
+                public int AttackTickCount
+                {
+                    get => Get<int>("attack_tick_count");
+                    set => Set<int>("attack_tick_count", value);
+                }
+
+
+                // attack frac
+                public float AttackTickFrac
+                {
+                    get => Get<float>("attack_tick_frac");
+                    set => Set<float>("attack_tick_frac", value);
+                }
+
+
+                // render tick
+                public int RenderTickCount
+                {
+                    get => Get<int>("render_tick_count");
+                    set => Set<int>("render_tick_count", value);
+                }
+
+
+                // render frac
+                public float RenderTickFrac
+                {
+                    get => Get<float>("render_tick_frac");
+                    set => Set<float>("render_tick_frac", value);
+                }
+
+
+                // total inaccuracy
+                public float InaccuracyTotal
+                {
+                    get => Get<float>("inaccuracy_total");
+                    set => Set<float>("inaccuracy_total", value);
+                }
+
+
+                // move inaccuracy
+                public float InaccuracyMove
+                {
+                    get => Get<float>("inaccuracy_move");
+                    set => Set<float>("inaccuracy_move", value);
+                }
+
+
+                // air inaccuracy
+                public float InaccuracyAir
+                {
+                    get => Get<float>("inaccuracy_air");
+                    set => Set<float>("inaccuracy_air", value);
+                }
+
+
+                // recoil index. Yes this is really a float.
+                public float RecoilIndex
+                {
+                    get => Get<float>("recoil_index");
+                    set => Set<float>("recoil_index", value);
+                }
+
+
+                // lag compensation type
+                public int Type
+                {
+                    get => Get<int>("type");
+                    set => Set<int>("type", value);
+                }
             }
 
             [EventName("bullet_flight_resolution")]
