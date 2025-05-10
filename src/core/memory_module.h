@@ -32,7 +32,6 @@
 
 #include "interface.h"
 #include "strtools.h"
-#include "metamod_oslink.h"
 #undef snprintf
 
 namespace counterstrikesharp::modules {
