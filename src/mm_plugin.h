@@ -74,7 +74,9 @@ static ScriptCallback* on_activate_callback;
 static ScriptCallback* on_metamod_all_plugins_loaded_callback;
 extern CounterStrikeSharpMMPlugin gPlugin;
 
-PLUGIN_GLOBALVARS();
 
 #endif //_INCLUDE_METAMOD_SOURCE_STUB_PLUGIN_H_
 }
+
+PLUGIN_GLOBALVARS();
+
