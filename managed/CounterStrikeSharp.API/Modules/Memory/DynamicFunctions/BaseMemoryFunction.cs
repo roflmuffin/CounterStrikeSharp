@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using CounterStrikeSharp.API.Core;
-
-namespace CounterStrikeSharp.API.Modules.Memory.DynamicFunctions;
+﻿namespace CounterStrikeSharp.API.Modules.Memory.DynamicFunctions;
 
 public abstract class BaseMemoryFunction : NativeObject
 {
     private static Dictionary<string, IntPtr> _createdFunctions = new();
+
+    private static Dictionary<string, IntPtr> _createdOffsetFunctions = new();
 
     private static IntPtr CreateValveFunctionBySignature(string signature, DataType returnType,
         DataType[] argumentTypes)
@@ -47,6 +44,26 @@ public abstract class BaseMemoryFunction : NativeObject
         return function;
     }
 
+    private static IntPtr CreateValveFunctionByOffset(IntPtr objectPtr, Type type, int offset, DataType returnType,
+        DataType[] argumentTypes)
+    {
+        string constructKey = $"{type.Name}_{offset}";
+
+        if (!_createdOffsetFunctions.TryGetValue(constructKey, out var function))
+        {
+            try
+            {
+                function = NativeAPI.CreateVirtualFunction(objectPtr, offset,
+                    argumentTypes.Length, (int)returnType, argumentTypes.Cast<object>().ToArray());
+                _createdOffsetFunctions[constructKey] = function;
+            } catch (Exception)
+            {
+            }
+        }
+
+        return function;
+    }
+
     public BaseMemoryFunction(string signature, DataType returnType, DataType[] parameters) : base(
         CreateValveFunctionBySignature(signature, returnType, parameters))
     {
@@ -54,6 +71,14 @@ public abstract class BaseMemoryFunction : NativeObject
 
     public BaseMemoryFunction(string signature, string binarypath, DataType returnType, DataType[] parameters) : base(
         CreateValveFunctionBySignature(signature, binarypath, returnType, parameters))
+    {
+    }
+
+    /// <summary>
+    /// <b>WARNING:</b> this is only supposed to be used with <see cref="VirtualFunctionVoid"/> and <see cref="VirtualFunctionWithReturn{TResult}"/>
+    /// </summary>
+    internal BaseMemoryFunction(IntPtr objectPtr, Type type, int offset, DataType returnType, DataType[] parameters) : base(
+        CreateValveFunctionByOffset(objectPtr, type, offset, returnType, parameters))
     {
     }
 
