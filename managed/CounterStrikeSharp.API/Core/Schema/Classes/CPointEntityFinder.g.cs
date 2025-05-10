@@ -20,7 +20,7 @@ public partial class CPointEntityFinder : CBaseEntity
 
 	// m_hEntity
 	[SchemaMember("CPointEntityFinder", "m_hEntity")]
-	public CHandle<CBaseEntity> Entity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointEntityFinder", "m_hEntity");
+	public new CHandle<CBaseEntity> Entity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointEntityFinder", "m_hEntity");
 
 	// m_iFilterName
 	[SchemaMember("CPointEntityFinder", "m_iFilterName")]

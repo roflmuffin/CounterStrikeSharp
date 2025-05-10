@@ -86,10 +86,6 @@ public partial class CCSWeaponBase : CBasePlayerWeapon
 	[SchemaMember("CCSWeaponBase", "m_flLastTimeInAir")]
 	public ref float LastTimeInAir => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flLastTimeInAir");
 
-	// m_flLastDeployTime
-	[SchemaMember("CCSWeaponBase", "m_flLastDeployTime")]
-	public ref float LastDeployTime => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flLastDeployTime");
-
 	// m_nLastEmptySoundCmdNum
 	[SchemaMember("CCSWeaponBase", "m_nLastEmptySoundCmdNum")]
 	public ref Int32 LastEmptySoundCmdNum => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_nLastEmptySoundCmdNum");

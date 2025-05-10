@@ -44,6 +44,6 @@ public partial class CEnvLaser : CBeam
 
 	// m_flStartFrame
 	[SchemaMember("CEnvLaser", "m_flStartFrame")]
-	public ref float StartFrame => ref Schema.GetRef<float>(this.Handle, "CEnvLaser", "m_flStartFrame");
+	public new ref float StartFrame => ref Schema.GetRef<float>(this.Handle, "CEnvLaser", "m_flStartFrame");
 
 }

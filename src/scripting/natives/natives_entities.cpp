@@ -23,6 +23,7 @@
 #include "core/managers/entity_manager.h"
 #include "core/managers/player_manager.h"
 #include "core/memory.h"
+#include "core/recipientfilters.h"
 #include "scripting/autonative.h"
 #include "scripting/script_engine.h"
 
@@ -256,6 +257,21 @@ void AddEntityIOEvent(ScriptContext& script_context)
     CEntitySystem_AddEntityIOEvent(GameEntitySystem(), pTarget, pInputName, pActivator, pCaller, &_value, delay, outputID);
 }
 
+SoundEventGuid_t EmitSoundFilter(ScriptContext& script_context)
+{
+    auto filtermask = script_context.GetArgument<uint64>(0);
+    auto ent = script_context.GetArgument<uint32>(1);
+    auto sound = script_context.GetArgument<const char*>(2);
+    auto volume = script_context.GetArgument<float>(3);
+    auto pitch = script_context.GetArgument<float>(4);
+
+    CRecipientFilter filter{};
+    filter.AddRecipientsFromMask(filtermask);
+
+    SndOpEventGuid_t ret = EntityEmitSoundFilter(filter, ent, sound, volume, pitch);
+    return ret.m_nGuid;
+}
+
 REGISTER_NATIVES(entities, {
     ScriptEngine::RegisterNativeHandler("GET_ENTITY_FROM_INDEX", GetEntityFromIndex);
     ScriptEngine::RegisterNativeHandler("GET_USERID_FROM_INDEX", GetUserIdFromIndex);
@@ -273,5 +289,6 @@ REGISTER_NATIVES(entities, {
     ScriptEngine::RegisterNativeHandler("UNHOOK_ENTITY_OUTPUT", UnhookEntityOutput);
     ScriptEngine::RegisterNativeHandler("ACCEPT_INPUT", AcceptInput);
     ScriptEngine::RegisterNativeHandler("ADD_ENTITY_IO_EVENT", AddEntityIOEvent);
+    ScriptEngine::RegisterNativeHandler("EMIT_SOUND_FILTER", EmitSoundFilter);
 })
 } // namespace counterstrikesharp

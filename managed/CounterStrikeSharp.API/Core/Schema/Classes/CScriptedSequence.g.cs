@@ -68,7 +68,7 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_iszEntity
 	[SchemaMember("CScriptedSequence", "m_iszEntity")]
-	public string Entity
+	public new string Entity
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CScriptedSequence", "m_iszEntity"); }
 		set { Schema.SetString(this.Handle, "CScriptedSequence", "m_iszEntity", value); }

@@ -4,6 +4,7 @@ namespace CounterStrikeSharp.SchemaGen;
 
 public partial record SchemaClass(
     int Index,
+    string Name,
     string? Parent,
     IReadOnlyList<SchemaField> Fields)
 {

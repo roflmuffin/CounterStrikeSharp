@@ -52,7 +52,7 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_hBlocker
 	[SchemaMember("CBasePropDoor", "m_hBlocker")]
-	public CHandle<CBaseEntity> Blocker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBasePropDoor", "m_hBlocker");
+	public new CHandle<CBaseEntity> Blocker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBasePropDoor", "m_hBlocker");
 
 	// m_bFirstBlocked
 	[SchemaMember("CBasePropDoor", "m_bFirstBlocked")]

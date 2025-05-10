@@ -17,14 +17,14 @@
 #include <eiface.h>
 #include <networksystem/inetworkmessages.h>
 
-#include "scripting/autonative.h"
-#include "scripting/callback_manager.h"
+#include "core/log.h"
 #include "core/managers/con_command_manager.h"
 #include "core/managers/player_manager.h"
 #include "core/recipientfilters.h"
 #include "igameeventsystem.h"
+#include "scripting/autonative.h"
+#include "scripting/callback_manager.h"
 #include "scripting/script_engine.h"
-#include "core/log.h"
 #include <networkbasetypes.pb.h>
 
 namespace counterstrikesharp {
@@ -37,8 +37,7 @@ static void AddCommand(ScriptContext& script_context)
     auto flags = script_context.GetArgument<int>(3);
     auto callback = script_context.GetArgument<CallbackT>(4);
 
-    CSSHARP_CORE_TRACE("Adding command {}, {}, {}, {}, {}", name, description, server_only, flags,
-                       (void*)callback);
+    CSSHARP_CORE_TRACE("Adding command {}, {}, {}, {}, {}", name, description, server_only, flags, (void*)callback);
 
     globals::conCommandManager.AddValveCommand(name, description, server_only, flags);
     globals::conCommandManager.AddCommandListener(name, callback, HookMode::Pre);
@@ -59,8 +58,7 @@ static void AddCommandListener(ScriptContext& script_context)
     auto callback = script_context.GetArgument<CallbackT>(1);
     auto post = script_context.GetArgument<bool>(2);
 
-    globals::conCommandManager.AddCommandListener(name, callback,
-                                                  post ? HookMode::Post : HookMode::Pre);
+    globals::conCommandManager.AddCommandListener(name, callback, post ? HookMode::Post : HookMode::Pre);
 }
 
 static void RemoveCommandListener(ScriptContext& script_context)
@@ -69,15 +67,15 @@ static void RemoveCommandListener(ScriptContext& script_context)
     auto callback = script_context.GetArgument<CallbackT>(1);
     auto post = script_context.GetArgument<bool>(2);
 
-    globals::conCommandManager.RemoveCommandListener(name, callback,
-                                                     post ? HookMode::Post : HookMode::Pre);
+    globals::conCommandManager.RemoveCommandListener(name, callback, post ? HookMode::Post : HookMode::Pre);
 }
 
 static int CommandGetArgCount(ScriptContext& script_context)
 {
     auto command = script_context.GetArgument<CCommand*>(0);
 
-    if (!command) {
+    if (!command)
+    {
         script_context.ThrowNativeError("Invalid command.");
         return -1;
     }
@@ -89,7 +87,8 @@ static const char* CommandGetArgString(ScriptContext& script_context)
 {
     auto command = script_context.GetArgument<CCommand*>(0);
 
-    if (!command) {
+    if (!command)
+    {
         script_context.ThrowNativeError("Invalid command.");
         return nullptr;
     }
@@ -101,7 +100,8 @@ static const char* CommandGetCommandString(ScriptContext& script_context)
 {
     auto* command = script_context.GetArgument<CCommand*>(0);
 
-    if (!command) {
+    if (!command)
+    {
         script_context.ThrowNativeError("Invalid command.");
         return nullptr;
     }
@@ -114,7 +114,8 @@ static const char* CommandGetArgByIndex(ScriptContext& script_context)
     auto* command = script_context.GetArgument<CCommand*>(0);
     auto index = script_context.GetArgument<int>(1);
 
-    if (!command) {
+    if (!command)
+    {
         script_context.ThrowNativeError("Invalid command.");
         return nullptr;
     }
@@ -145,9 +146,8 @@ static void IssueClientCommandFromServer(ScriptContext& script_context)
     CCommand args;
     args.Tokenize(pszCommand);
 
-    auto handle = globals::cvars->FindCommand(args.Arg(0));
-    if (!handle.IsValid())
-        return;
+    auto handle = globals::cvars->FindConCommand(args.Arg(0));
+    if (!handle.IsValidRef()) return;
 
     CCommandContext context(CommandTarget_t::CT_NO_TARGET, CPlayerSlot(slot));
 
@@ -171,28 +171,37 @@ static void SetFakeClientConVarValue(ScriptContext& script_context)
     globals::engine->SetFakeClientConVarValue(CPlayerSlot(playerSlot), convarName, convarValue);
 }
 
-ConVar* FindConVar(ScriptContext& script_context)
+ConVarData* FindConVar(ScriptContext& script_context)
 {
     auto name = script_context.GetArgument<const char*>(0);
     auto hCvarHandle = globals::cvars->FindConVar(name, true);
 
-    if (!hCvarHandle.IsValid()) {
+    if (!hCvarHandle.IsValidRef())
+    {
         return nullptr;
     }
 
-    return globals::cvars->GetConVar(hCvarHandle);
+    return globals::cvars->GetConVarData(hCvarHandle);
 }
 
 void SetConVarStringValue(ScriptContext& script_context)
 {
-    auto pCvar = script_context.GetArgument<ConVar*>(0);
+    auto pCvar = script_context.GetArgument<ConVarData*>(0);
     auto value = script_context.GetArgument<const char*>(1);
 
-    if (!pCvar) {
+    if (!pCvar)
+    {
         script_context.ThrowNativeError("Invalid cvar.");
     }
 
-    pCvar->values = reinterpret_cast<CVValue_t**>((char*)value);
+    ConVarRefAbstract cvarRef(pCvar->GetName());
+
+    if (!cvarRef.IsValidRef() || !cvarRef.IsConVarDataAvailable())
+    {
+        script_context.ThrowNativeError("Invalid cvar.");
+    }
+
+    cvarRef.SetString(value);
 }
 
 void ReplicateConVar(ScriptContext& script_context)
@@ -230,8 +239,7 @@ REGISTER_NATIVES(commands, {
     ScriptEngine::RegisterNativeHandler("SET_CONVAR_STRING_VALUE", SetConVarStringValue);
 
     ScriptEngine::RegisterNativeHandler("ISSUE_CLIENT_COMMAND", IssueClientCommand);
-    ScriptEngine::RegisterNativeHandler("ISSUE_CLIENT_COMMAND_FROM_SERVER",
-                                        IssueClientCommandFromServer);
+    ScriptEngine::RegisterNativeHandler("ISSUE_CLIENT_COMMAND_FROM_SERVER", IssueClientCommandFromServer);
     ScriptEngine::RegisterNativeHandler("GET_CLIENT_CONVAR_VALUE", GetClientConVarValue);
     ScriptEngine::RegisterNativeHandler("SET_FAKE_CLIENT_CONVAR_VALUE", SetFakeClientConVarValue);
     ScriptEngine::RegisterNativeHandler("REPLICATE_CONVAR", ReplicateConVar);

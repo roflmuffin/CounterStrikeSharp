@@ -44,7 +44,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_eMoveType
 	[SchemaMember("CFuncMover", "m_eMoveType")]
-	public ref CFuncMoverMove_t MoveType => ref Schema.GetRef<CFuncMoverMove_t>(this.Handle, "CFuncMover", "m_eMoveType");
+	public new ref CFuncMoverMove_t MoveType => ref Schema.GetRef<CFuncMoverMove_t>(this.Handle, "CFuncMover", "m_eMoveType");
 
 	// m_bIsReversing
 	[SchemaMember("CFuncMover", "m_bIsReversing")]
@@ -52,7 +52,7 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_vTarget
 	[SchemaMember("CFuncMover", "m_vTarget")]
-	public Vector Target => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncMover", "m_vTarget");
+	public new Vector Target => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncMover", "m_vTarget");
 
 	// m_flStartSpeed
 	[SchemaMember("CFuncMover", "m_flStartSpeed")]

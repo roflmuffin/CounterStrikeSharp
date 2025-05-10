@@ -84,15 +84,15 @@
   "CCSPlayer_WeaponServices_CanUse": {
     "signatures": {
       "library": "server",
-      "windows": "48 89 5C 24 ? 48 89 6C 24 ? 56 57 41 56 48 83 EC ? 48 8B 01 48 8B FA",
-      "linux": "55 48 8D 15 ? ? ? ? 48 89 E5 41 55 49 89 FD 41 54 49 89 F4"
+      "windows": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC ? 48 8B 01 48 8B F2",
+      "linux": "55 48 8D 15 ? ? ? ? 48 89 E5 41 55 49 89 F5 41 54 49 89 FC 53 48 83 EC ? 48 8B 07 48 8B 80 ? ? ? ? 48 39 D0 0F 85 ? ? ? ? 80 BF"
     }
   },
   "CCSPlayer_ItemServices_CanAcquire": {
     "signatures": {
       "library": "server",
       "windows": "44 89 44 24 ? 48 89 54 24 ? 48 89 4C 24 ? 55 56 57 41 54 41 55 41 56 41 57 48 8B EC",
-      "linux": "55 48 89 E5 41 57 41 56 41 55 49 89 CD 41 54 53 48 83 EC"
+      "linux": "55 48 89 E5 41 57 41 56 48 8D 45 ? 41 55 41 54 53 48 89 CB"
     }
   },
   "GetCSWeaponDataFromKey": {
@@ -151,6 +151,13 @@
       "library": "server",
       "windows": "48 89 5C 24 10 57 48 83 EC 30 48 8B DA 48 8B F9 48 85 C9",
       "linux": "48 85 FF 74 ? 55 48 89 E5 41 56"
+    }
+  },
+  "CBaseEntity_EmitSoundFilter": {
+    "signatures": {
+      "library": "server",
+      "windows": "48 89 5C 24 08 48 89 6C 24 10 48 89 74 24 18 48 89 7C 24 20 41 56 48 83 EC 30 48 8B EA",
+      "linux": "55 48 89 E5 41 56 49 89 D6 41 55 41 89 F5 41 54 48"
     }
   },
   "CEntityInstance_AcceptInput": {
