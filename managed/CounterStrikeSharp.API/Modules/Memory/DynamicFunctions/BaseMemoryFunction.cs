@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-
-namespace CounterStrikeSharp.API.Modules.Memory.DynamicFunctions;
+﻿namespace CounterStrikeSharp.API.Modules.Memory.DynamicFunctions;
 
 public abstract class BaseMemoryFunction : NativeObject
 {
