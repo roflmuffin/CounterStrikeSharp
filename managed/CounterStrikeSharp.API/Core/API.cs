@@ -780,6 +780,21 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static uint EmitSoundFilter(ulong filtermask, uint ent, string sound, float volume, float pitch){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(filtermask);
+			ScriptContext.GlobalScriptContext.Push(ent);
+			ScriptContext.GlobalScriptContext.Push(sound);
+			ScriptContext.GlobalScriptContext.Push(volume);
+			ScriptContext.GlobalScriptContext.Push(pitch);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x43C4A2B3);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (uint)ScriptContext.GlobalScriptContext.GetResult(typeof(uint));
+			}
+		}
+
         public static void HookEvent(string name, InputArgument callback, bool ispost){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
@@ -1169,6 +1184,17 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x67206C08);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static IntPtr MetaFactory(string interfacename){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(interfacename);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x61521EF3);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
 			}
 		}
 

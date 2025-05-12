@@ -9,3 +9,6 @@
 
 - name: Referencing Players
   href: referencing-players.md
+
+- name: Automatically build and deploy your changes
+  href: auto-build-and-deploy.md

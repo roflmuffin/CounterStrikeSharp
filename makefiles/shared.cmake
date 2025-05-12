@@ -35,10 +35,10 @@ else()
     add_definitions(-DGITHUB_SHA="Local")
 endif()
 
-if(DEFINED ENV{BUILD_NUMBER})
-    add_definitions(-DBUILD_NUMBER="$ENV{BUILD_NUMBER}")
+if(DEFINED ENV{SEMVER})
+    add_definitions(-DSEMVER="$ENV{SEMVER}")
 else()
-    add_definitions(-DBUILD_NUMBER="0")
+    add_definitions(-DSEMVER="Local")
 endif()
 
 if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")

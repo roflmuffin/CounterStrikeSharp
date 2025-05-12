@@ -60,7 +60,7 @@ public partial class CPostProcessingVolume : CBaseTrigger
 
 	// m_bMaster
 	[SchemaMember("CPostProcessingVolume", "m_bMaster")]
-	public ref bool Master => ref Schema.GetRef<bool>(this.Handle, "CPostProcessingVolume", "m_bMaster");
+	public new ref bool Master => ref Schema.GetRef<bool>(this.Handle, "CPostProcessingVolume", "m_bMaster");
 
 	// m_bExposureControl
 	[SchemaMember("CPostProcessingVolume", "m_bExposureControl")]
