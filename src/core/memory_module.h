@@ -35,7 +35,6 @@
 #undef snprintf
 
 namespace counterstrikesharp::modules {
-
 struct Segments
 {
     Segments() = default;
@@ -45,8 +44,10 @@ struct Segments
     Segments& operator=(const Segments&) = default;
     Segments& operator=(Segments&&) = default;
 
+    std::string name{};
     std::uintptr_t address{};
     std::vector<std::uint8_t> bytes{};
+    size_t size{};
 };
 
 class CModule
@@ -64,6 +65,10 @@ class CModule
 
     void* FindSymbol(const std::string& name);
 
+    void* FindVirtualTable(const std::string& name);
+
+    Segments* GetSegment(std::string_view name);
+
     [[nodiscard]] bool IsInitialized() const { return m_bInitialized; }
 
     std::string m_pszModule{};
@@ -77,6 +82,7 @@ class CModule
     std::uintptr_t m_baseAddress{};
     std::unordered_map<std::string, std::uintptr_t> _symbols{};
     std::unordered_map<std::string, std::uintptr_t> _interfaces{};
+    std::unordered_map<std::string, std::uintptr_t> _vtables{};
     using fnCreateInterface = void*(*)(const char*);
     fnCreateInterface m_fnCreateInterface {};
 

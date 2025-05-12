@@ -152,20 +152,23 @@ CModule::CModule(std::string_view path, std::uint64_t base)
 
     auto section = IMAGE_FIRST_SECTION(nt_header);
 
-    for (auto i = 0; i < nt_header->FileHeader.NumberOfSections; i++, section++)
+    for (auto i = 0; i < nt_header->FileHeader.NumberOfSections; i++)
     {
-        const auto is_executable = (section->Characteristics & IMAGE_SCN_MEM_EXECUTE) != 0;
-        const auto is_readable = (section->Characteristics & IMAGE_SCN_MEM_READ) != 0;
+        const auto is_executable = (section[i].Characteristics & IMAGE_SCN_MEM_EXECUTE) != 0;
+        const auto is_readable = (section[i].Characteristics & IMAGE_SCN_MEM_READ) != 0;
+
+        const auto start = this->m_baseAddress + section[i].VirtualAddress;
+        const auto size = (std::min)(section[i].SizeOfRawData, section[i].Misc.VirtualSize);
+
+        auto& segment = m_vecSegments.emplace_back();
+
+        segment.name = (char*)section[i].Name;
+        segment.address = start;
+        segment.size = size;
 
         if (is_executable && is_readable)
         {
-            const auto start = this->m_baseAddress + section->VirtualAddress;
-            const auto size = (std::min)(section->SizeOfRawData, section->Misc.VirtualSize);
-            const auto data = reinterpret_cast<std::uint8_t*>(start);
-
-            auto& segment = m_vecSegments.emplace_back();
-
-            segment.address = start;
+            // we only reserve bytes for executable and readable sections
             segment.bytes.reserve(size);
 
             if (should_read_from_disk)
@@ -180,6 +183,7 @@ CModule::CModule(std::string_view path, std::uint64_t base)
                 return;
             }
 
+            const auto data = reinterpret_cast<std::uint8_t*>(start);
             segment.bytes.assign(&data[0], &data[size]);
         }
     }
@@ -239,6 +243,7 @@ CModule::CModule(std::string_view path, dl_phdr_info* info)
 
         auto& segment = m_vecSegments.emplace_back();
 
+        segment.name = (char*)section[i].Name;
         segment.address = address;
         segment.bytes.reserve(size);
 
@@ -560,6 +565,188 @@ void* CModule::FindSymbol(const std::string& name)
     }
 
     CSSHARP_CORE_ERROR("Cannot find symbol {}", name);
+    return nullptr;
+}
+
+#ifdef _WIN32
+void* CModule::FindVirtualTable(const std::string& name)
+{
+    if (_vtables.find(name) != _vtables.end())
+    {
+        return reinterpret_cast<void*>(_vtables[name]);
+    }
+
+    auto runTimeData = GetSegment(".data");
+    auto readOnlyData = GetSegment(".rdata");
+
+    if (!runTimeData || !readOnlyData)
+    {
+        CSSHARP_CORE_ERROR("Failed to find .data or .rdata segment");
+        return nullptr;
+    }
+
+    std::string decoratedTableName = ".?AV" + name + "@@";
+    size_t tableNameLength = decoratedTableName.size() + 1;
+
+    bool foundTypeDescriptor = false;
+    void* typeDescriptor = nullptr;
+
+    for (uintptr_t i = 0; i < runTimeData->size - tableNameLength; ++i)
+    {
+        if (memcmp((void*)((uintptr_t)runTimeData->address + i), decoratedTableName.c_str(), tableNameLength) == 0)
+        {
+            typeDescriptor = (void*)((uintptr_t)runTimeData->address + i);
+            foundTypeDescriptor = true;
+            break;
+        }
+    }
+
+    if (!foundTypeDescriptor)
+    {
+        CSSHARP_CORE_ERROR("Failed to find type descriptor for {}", name);
+        return nullptr;
+    }
+
+    typeDescriptor = (void*)((uintptr_t)typeDescriptor - 0x10);
+    const uint32_t rttiTDRva = (uintptr_t)typeDescriptor - (uintptr_t)m_base;
+
+    bool foundCompleteObjectLocator = false;
+    void* completeObjectLocator = nullptr;
+
+    for (uintptr_t i = 0; i < readOnlyData->size - sizeof(uint32_t); ++i)
+    {
+        if (*(uint32_t*)((uintptr_t)readOnlyData->address + i) == rttiTDRva)
+        {
+            uintptr_t completeObjectLocatorHeader = (uintptr_t)readOnlyData->address + i - 0xC;
+
+            if (*(int32_t*)completeObjectLocatorHeader != 1)
+                continue;
+
+            if (*(int32_t*)(completeObjectLocatorHeader - 0x8) != 0)
+                continue;
+
+            completeObjectLocator = (void*)completeObjectLocatorHeader;
+            foundCompleteObjectLocator = true;
+            break;
+        }
+    }
+
+    if (!foundCompleteObjectLocator)
+    {
+        CSSHARP_CORE_ERROR("Failed to find complete object locator for {}", name);
+        return nullptr;
+    }
+
+    bool foundVTable = false;
+    void* vtable = nullptr;
+
+    for (uintptr_t i = 0; i < readOnlyData->size - sizeof(void*); ++i)
+    {
+        if (*(void**)((uintptr_t)readOnlyData->address + i) == completeObjectLocator)
+        {
+            vtable = (void*)((uintptr_t)readOnlyData->address + i + 0x8);
+            foundVTable = true;
+            break;
+        }
+    }
+
+    if (!foundVTable)
+    {
+        return nullptr;
+    }
+
+    _vtables.insert({ name, reinterpret_cast<uintptr_t>(vtable) });
+    return vtable;
+}
+#else
+void* CModule::FindVirtualTable(const std::string& name)
+{
+    if (_vtables.find(name) != _vtables.end())
+    {
+        return reinterpret_cast<void*>(_vtables[name]);
+    }
+
+    auto readOnlyData = GetSegment(".rodata");
+    auto readOnlyRelocations = GetSegment(".data.rel.ro");
+
+    if (!readOnlyData || !readOnlyRelocations)
+    {
+        CSSHARP_CORE_ERROR("Failed to find .rodata or .data.rel.ro segment");
+        return nullptr;
+    }
+
+    std::string decoratedTableName = std::to_string(name.length()) + name;
+
+    void* classNameString = nullptr;
+
+    for (uintptr_t i = 0; i < readOnlyData->size - decoratedTableName.size(); ++i)
+    {
+        if (memcmp((void*)((uintptr_t)readOnlyData->address + i), decoratedTableName.c_str(), decoratedTableName.size()) == 0)
+        {
+            classNameString = (void*)((uintptr_t)readOnlyData->address + i);
+            break;
+        }
+    }
+
+    if (!classNameString)
+    {
+        CSSHARP_CORE_ERROR("Failed to find type descriptor for {}", name);
+        return nullptr;
+    }
+
+    void* typeName = nullptr;
+
+    for (uintptr_t i = 0; i < readOnlyRelocations->size - sizeof(void*); ++i)
+    {
+        if (*(void**)((uintptr_t)readOnlyRelocations->address + i) == classNameString)
+        {
+            typeName = (void*)((uintptr_t)readOnlyRelocations->address + i);
+            break;
+        }
+    }
+
+    if (!typeName)
+    {
+        CSSHARP_CORE_ERROR("Failed to find type name for {}", name);
+        return nullptr;
+    }
+
+    void* typeInfo = (void*)((uintptr_t)typeName - 0x8);
+
+    for (const auto& sectionName : { std::string_view(".data.rel.ro"), std::string_view(".data.rel.ro.local") })
+    {
+        auto section = GetSegment(sectionName);
+
+        if (!section)
+            continue;
+
+        for (uintptr_t i = 0; i < section->size - sizeof(void*); ++i)
+        {
+            if (*(void**)((uintptr_t)section->address + i) == typeInfo)
+            {
+                void* vtable = (void*)((uintptr_t)section->address + i + 0x8);
+
+                if (*(int64_t*)((uintptr_t)vtable - 0x8) == 0)
+                {
+                    _vtables.insert({ name, reinterpret_cast<uintptr_t>(vtable) });
+                    return vtable;
+                }
+            }
+        }
+    }
+
+    return nullptr;
+}
+#endif
+
+Segments* CModule::GetSegment(std::string_view name)
+{
+    for (auto&& segment : m_vecSegments)
+    {
+        if (segment.name == name)
+            return &segment;
+    }
+
     return nullptr;
 }
 } // namespace counterstrikesharp::modules
