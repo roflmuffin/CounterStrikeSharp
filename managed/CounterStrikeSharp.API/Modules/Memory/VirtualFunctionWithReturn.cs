@@ -28,11 +28,27 @@ public partial class VirtualFunctionWithReturn<TArg1, TResult> : MemoryFunctionW
     {
     }
 
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
+    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
     }
 
-    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
+    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(VTableBase vtable, int offset) : base(vtable, offset)
     {
     }
 }
@@ -47,11 +63,27 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TResult> : MemoryFu
     {
     }
 
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
+    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
     }
 
-    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
+    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(VTableBase vtable, int offset) : base(vtable, offset)
     {
     }
 }
@@ -66,11 +98,27 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TResult> : M
     {
     }
 
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
+    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
     }
 
-    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
+    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(VTableBase vtable, int offset) : base(vtable, offset)
     {
     }
 }
@@ -85,11 +133,27 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TResu
     {
     }
 
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
+    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
     }
 
-    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
+    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(VTableBase vtable, int offset) : base(vtable, offset)
     {
     }
 }
@@ -104,11 +168,27 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5
     {
     }
 
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
+    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
     }
 
-    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
+    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(VTableBase vtable, int offset) : base(vtable, offset)
     {
     }
 }
@@ -123,11 +203,27 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5
     {
     }
 
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
+    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
     }
 
-    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
+    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(VTableBase vtable, int offset) : base(vtable, offset)
     {
     }
 }
@@ -142,11 +238,27 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5
     {
     }
 
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
+    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
     }
 
-    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
+    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(VTableBase vtable, int offset) : base(vtable, offset)
     {
     }
 }
@@ -161,11 +273,27 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5
     {
     }
 
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
+    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
     }
 
-    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
+    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(VTableBase vtable, int offset) : base(vtable, offset)
     {
     }
 }
@@ -180,11 +308,27 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5
     {
     }
 
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
+    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
     }
 
-    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
+    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(VTableBase vtable, int offset) : base(vtable, offset)
     {
     }
 }
@@ -199,11 +343,27 @@ public partial class VirtualFunctionWithReturn<TArg1, TArg2, TArg3, TArg4, TArg5
     {
     }
 
-    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
+    public VirtualFunctionWithReturn(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
     }
 
-    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
+    public VirtualFunctionWithReturn(NativeObject instance, int offset) : base(instance.Handle, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionWithReturn(VTableBase vtable, int offset) : base(vtable, offset)
     {
     }
 }

@@ -28,11 +28,27 @@ public partial class VirtualFunctionVoid<TArg1> : MemoryFunctionVoid<TArg1>
     {
     }
 
-    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
+    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
     }
 
-    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
+    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(VTableBase vtable, int offset) : base(vtable, offset)
     {
     }
 }
@@ -47,11 +63,27 @@ public partial class VirtualFunctionVoid<TArg1, TArg2> : MemoryFunctionVoid<TArg
     {
     }
 
-    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
+    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
     }
 
-    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
+    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(VTableBase vtable, int offset) : base(vtable, offset)
     {
     }
 }
@@ -66,11 +98,27 @@ public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3> : MemoryFunctionVo
     {
     }
 
-    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
+    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
     }
 
-    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
+    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(VTableBase vtable, int offset) : base(vtable, offset)
     {
     }
 }
@@ -85,11 +133,27 @@ public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4> : MemoryFun
     {
     }
 
-    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
+    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
     }
 
-    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
+    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(VTableBase vtable, int offset) : base(vtable, offset)
     {
     }
 }
@@ -104,11 +168,27 @@ public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5> : Me
     {
     }
 
-    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
+    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
     }
 
-    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
+    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(VTableBase vtable, int offset) : base(vtable, offset)
     {
     }
 }
@@ -123,11 +203,27 @@ public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg
     {
     }
 
-    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
+    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
     }
 
-    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
+    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(VTableBase vtable, int offset) : base(vtable, offset)
     {
     }
 }
@@ -142,11 +238,27 @@ public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg
     {
     }
 
-    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
+    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
     }
 
-    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
+    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(VTableBase vtable, int offset) : base(vtable, offset)
     {
     }
 }
@@ -161,11 +273,27 @@ public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg
     {
     }
 
-    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
+    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
     }
 
-    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
+    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(VTableBase vtable, int offset) : base(vtable, offset)
     {
     }
 }
@@ -180,11 +308,27 @@ public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg
     {
     }
 
-    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
+    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
     }
 
-    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
+    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(VTableBase vtable, int offset) : base(vtable, offset)
     {
     }
 }
@@ -199,11 +343,27 @@ public partial class VirtualFunctionVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg
     {
     }
 
-    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, typeof(TArg1), offset)
+    public VirtualFunctionVoid(IntPtr objectPtr, int offset) : base(objectPtr, offset)
     {
     }
 
-    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, typeof(TArg1), offset)
+    public VirtualFunctionVoid(NativeObject instance, int offset) : base(instance.Handle, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(int offset) : base(typeof(TArg1).Name, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, int offset) : base(symbolName, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(string symbolName, string binaryPath, int offset) : base(symbolName, binaryPath, offset)
+    {
+    }
+
+    public VirtualFunctionVoid(VTableBase vtable, int offset) : base(vtable, offset)
     {
     }
 }

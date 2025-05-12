@@ -4,7 +4,7 @@ public abstract class BaseMemoryFunction : NativeObject
 {
     private static Dictionary<string, IntPtr> _createdFunctions = new();
 
-    private static Dictionary<string, IntPtr> _createdOffsetFunctions = new();
+    internal static Dictionary<string, IntPtr> _createdOffsetFunctions = new();
 
     private static IntPtr CreateValveFunctionBySignature(string signature, DataType returnType,
         DataType[] argumentTypes)
@@ -44,17 +44,16 @@ public abstract class BaseMemoryFunction : NativeObject
         return function;
     }
 
-    private static IntPtr CreateValveFunctionByOffset(IntPtr objectPtr, Type type, int offset, DataType returnType,
-        DataType[] argumentTypes)
+    private static IntPtr CreateValveFunctionByOffset(string symbolName, int offset, DataType returnType,
+        DataType[] argumentTypes, Func<nint> nativeCaller)
     {
-        string constructKey = $"{type.Name}_{offset}";
+        string constructKey = $"{symbolName}_{offset}";
 
         if (!_createdOffsetFunctions.TryGetValue(constructKey, out var function))
         {
             try
             {
-                function = NativeAPI.CreateVirtualFunction(objectPtr, offset,
-                    argumentTypes.Length, (int)returnType, argumentTypes.Cast<object>().ToArray());
+                function = nativeCaller();
                 _createdOffsetFunctions[constructKey] = function;
             } catch (Exception)
             {
@@ -62,6 +61,36 @@ public abstract class BaseMemoryFunction : NativeObject
         }
 
         return function;
+    }
+
+    private static IntPtr CreateValveFunctionByOffset(IntPtr objectPtr, string symbolName, int offset, DataType returnType,
+        DataType[] argumentTypes)
+    {
+        return CreateValveFunctionByOffset(symbolName, offset, returnType, argumentTypes, () =>
+        {
+            return NativeAPI.CreateVirtualFunction(objectPtr, offset, argumentTypes.Length,
+                (int)returnType, argumentTypes.Cast<object>().ToArray());
+        });
+    }
+
+    private static IntPtr CreateValveFunctionBySymbol(string symbolName, string binaryPath, int offset, DataType returnType,
+        DataType[] argumentTypes)
+    {
+        return CreateValveFunctionByOffset(symbolName, offset, returnType, argumentTypes, () =>
+        {
+            return NativeAPI.CreateVirtualFunctionBySymbol(binaryPath, symbolName, offset, argumentTypes.Length,
+                (int)returnType, argumentTypes.Cast<object>().ToArray());
+        });
+    }
+
+    private static IntPtr CreateValveFunctionFromVTable(string symbolName, IntPtr vtable, int offset, DataType returnType,
+        DataType[] argumentTypes)
+    {
+        return CreateValveFunctionByOffset(symbolName, offset, returnType, argumentTypes, () =>
+        {
+            return NativeAPI.CreateVirtualFunctionFromVTable(vtable, offset, argumentTypes.Length,
+                (int)returnType, argumentTypes.Cast<object>().ToArray());
+        });
     }
 
     public BaseMemoryFunction(string signature, DataType returnType, DataType[] parameters) : base(
@@ -75,10 +104,34 @@ public abstract class BaseMemoryFunction : NativeObject
     }
 
     /// <summary>
-    /// <b>WARNING:</b> this is only supposed to be used with <see cref="VirtualFunctionVoid"/> and <see cref="VirtualFunctionWithReturn{TResult}"/>
+    /// <b>WARNING:</b> this is only supposed to be used with <see cref="VirtualFunctionVoid{TArg1}"/> and <see cref="VirtualFunctionWithReturn{TArg1, TResult}"/> variants.
     /// </summary>
-    internal BaseMemoryFunction(IntPtr objectPtr, Type type, int offset, DataType returnType, DataType[] parameters) : base(
-        CreateValveFunctionByOffset(objectPtr, type, offset, returnType, parameters))
+    internal BaseMemoryFunction(IntPtr objectPtr, string symbolName, int offset, DataType returnType, DataType[] parameters) : base(
+        CreateValveFunctionByOffset(objectPtr, symbolName, offset, returnType, parameters))
+    {
+    }
+
+    /// <summary>
+    /// <b>WARNING:</b> this is only supposed to be used with <see cref="VirtualFunctionVoid{TArg1}"/> and <see cref="VirtualFunctionWithReturn{TArg1, TResult}"/> variants.
+    /// </summary>
+    internal BaseMemoryFunction(string symbolName, string binaryPath, int offset, DataType returnType, DataType[] parameters) : base(
+        CreateValveFunctionBySymbol(symbolName, binaryPath, offset, returnType, parameters))
+    {
+    }
+
+    /// <summary>
+    /// <b>WARNING:</b> this is only supposed to be used with <see cref="VirtualFunctionVoid{TArg1}"/> and <see cref="VirtualFunctionWithReturn{TArg1, TResult}"/> variants.
+    /// </summary>
+    internal BaseMemoryFunction(string symbolName, int offset, DataType returnType, DataType[] parameters) : base(
+        CreateValveFunctionBySymbol(symbolName, Addresses.ServerPath, offset, returnType, parameters))
+    {
+    }
+
+    /// <summary>
+    /// <b>WARNING:</b> this is only supposed to be used with <see cref="VirtualFunctionVoid{TArg1}"/> and <see cref="VirtualFunctionWithReturn{TArg1, TResult}"/> variants.
+    /// </summary>
+    internal BaseMemoryFunction(string symbolName, IntPtr vtable, int offset, DataType returnType, DataType[] parameters) : base(
+        CreateValveFunctionFromVTable(symbolName, vtable, offset, returnType, parameters))
     {
     }
 
