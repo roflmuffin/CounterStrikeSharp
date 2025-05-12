@@ -23,6 +23,14 @@
 #include "scripting/autonative.h"
 #include "scripting/script_engine.h"
 
+#include "core/memory_module.h"
+
+#ifdef _WIN32
+#define CALL_CONV CONV_THISCALL
+#else
+#define CALL_CONV CONV_CDECL
+#endif
+
 namespace counterstrikesharp {
 std::vector<ValveFunction*> m_managed_ptrs;
 
@@ -33,6 +41,32 @@ void* FindSignatureNative(ScriptContext& scriptContext)
 
     return FindSignature(moduleName, bytesStr);
 }
+
+void* FindVirtualTable(ScriptContext& scriptContext)
+{
+    auto binary_name = scriptContext.GetArgument<const char*>(0);
+    auto symbol_name = scriptContext.GetArgument<const char*>(1);
+
+    auto module = modules::GetModuleByName(binary_name);
+
+    if (!module)
+    {
+        scriptContext.ThrowNativeError("Failed to get module %s", binary_name);
+        return nullptr;
+    }
+
+    auto vtable = module->FindVirtualTable(symbol_name);
+
+    if (!vtable)
+    {
+        scriptContext.ThrowNativeError("Failed to get VTable %s from module %s", symbol_name, binary_name);
+        return nullptr;
+    }
+
+    return vtable;
+}
+
+// I think we should simplify these in the future as most of the logic is redundant
 
 ValveFunction* CreateVirtualFunctionBySignature(ScriptContext& script_context)
 {
@@ -56,7 +90,7 @@ ValveFunction* CreateVirtualFunctionBySignature(ScriptContext& script_context)
         args.push_back(script_context.GetArgument<DataType_t>(5 + i));
     }
 
-    auto function = new ValveFunction(function_addr, CONV_CDECL, args, return_type);
+    auto function = new ValveFunction(function_addr, CALL_CONV, args, return_type);
     function->SetSignature(signature_hex_string);
 
     CSSHARP_CORE_TRACE("Created virtual function, pointer found at {}, signature {}", function_addr, signature_hex_string);
@@ -81,14 +115,107 @@ ValveFunction* CreateVirtualFunction(ScriptContext& script_context)
 
     auto function_addr = (void*)vtable[vtable_offset];
 
+    if (function_addr == nullptr)
+    {
+        script_context.ThrowNativeError("Could not find virtual function at offset %i", vtable_offset);
+        return nullptr;
+    }
+
     auto args = std::vector<DataType_t>();
     for (int i = 0; i < num_arguments; i++)
     {
         args.push_back(script_context.GetArgument<DataType_t>(4 + i));
     }
 
-    auto function = new ValveFunction(function_addr, CONV_THISCALL, args, return_type);
+    auto function = new ValveFunction(function_addr, CALL_CONV, args, return_type);
     function->SetOffset(vtable_offset);
+
+    CSSHARP_CORE_TRACE("Created virtual function, pointer found at {}, offset {}", function_addr, vtable_offset);
+
+    m_managed_ptrs.push_back(function);
+    return function;
+}
+
+ValveFunction* CreateVirtualFunctionBySymbol(ScriptContext& script_context)
+{
+    auto binary_name = script_context.GetArgument<const char*>(0);
+    auto symbol_name = script_context.GetArgument<const char*>(1);
+    auto vtable_offset = script_context.GetArgument<int>(2);
+    auto num_arguments = script_context.GetArgument<int>(3);
+    auto return_type = script_context.GetArgument<DataType_t>(4);
+
+    auto module = modules::GetModuleByName(binary_name);
+
+    if (!module)
+    {
+        script_context.ThrowNativeError("Failed to get module %s", binary_name);
+        return nullptr;
+    }
+
+    auto vtable = module->FindVirtualTable(symbol_name);
+
+    if (!vtable)
+    {
+        script_context.ThrowNativeError("Failed to get VTable %s from module %s", symbol_name, binary_name);
+        return nullptr;
+    }
+
+    auto function_addr = static_cast<void**>(vtable)[vtable_offset];
+
+    if (function_addr == nullptr)
+    {
+        script_context.ThrowNativeError("Could not find virtual function at offset %i", vtable_offset);
+        return nullptr;
+    }
+
+    auto args = std::vector<DataType_t>();
+
+    for (int i = 0; i < num_arguments; i++)
+    {
+        args.push_back(script_context.GetArgument<DataType_t>(5 + i));
+    }
+
+    auto function = new ValveFunction(function_addr, CALL_CONV, args, return_type);
+    function->SetOffset(vtable_offset);
+
+    CSSHARP_CORE_TRACE("Created virtual function, pointer found at {}, symbol {}, offset {}", function_addr, symbol_name, vtable_offset);
+
+    m_managed_ptrs.push_back(function);
+    return function;
+}
+
+ValveFunction* CreateVirtualFunctionFromVTable(ScriptContext& script_context)
+{
+    auto vtable = script_context.GetArgument<void*>(0);
+    auto vtable_offset = script_context.GetArgument<int>(1);
+    auto num_arguments = script_context.GetArgument<int>(2);
+    auto return_type = script_context.GetArgument<DataType_t>(3);
+
+    if (!vtable)
+    {
+        script_context.ThrowNativeError("VTable is null");
+        return nullptr;
+    }
+
+    auto function_addr = static_cast<void**>(vtable)[vtable_offset];
+
+    if (function_addr == nullptr)
+    {
+        script_context.ThrowNativeError("Could not find virtual function at offset %i", vtable_offset);
+        return nullptr;
+    }
+
+    auto args = std::vector<DataType_t>();
+
+    for (int i = 0; i < num_arguments; i++)
+    {
+        args.push_back(script_context.GetArgument<DataType_t>(4 + i));
+    }
+
+    auto function = new ValveFunction(function_addr, CALL_CONV, args, return_type);
+    function->SetOffset(vtable_offset);
+
+    CSSHARP_CORE_TRACE("Created virtual function, pointer found at {}, offset {}", function_addr, vtable_offset);
 
     m_managed_ptrs.push_back(function);
     return function;
@@ -162,10 +289,13 @@ void RemoveAllNetworkVectorElements(ScriptContext& script_context)
 REGISTER_NATIVES(memory, {
     ScriptEngine::RegisterNativeHandler("CREATE_VIRTUAL_FUNCTION", CreateVirtualFunction);
     ScriptEngine::RegisterNativeHandler("CREATE_VIRTUAL_FUNCTION_BY_SIGNATURE", CreateVirtualFunctionBySignature);
+    ScriptEngine::RegisterNativeHandler("CREATE_VIRTUAL_FUNCTION_BY_SYMBOL", CreateVirtualFunctionBySymbol);
+    ScriptEngine::RegisterNativeHandler("CREATE_VIRTUAL_FUNCTION_FROM_V_TABLE", CreateVirtualFunctionFromVTable);
     ScriptEngine::RegisterNativeHandler("EXECUTE_VIRTUAL_FUNCTION", ExecuteVirtualFunction);
     ScriptEngine::RegisterNativeHandler("HOOK_FUNCTION", HookFunction);
     ScriptEngine::RegisterNativeHandler("UNHOOK_FUNCTION", UnhookFunction);
     ScriptEngine::RegisterNativeHandler("FIND_SIGNATURE", FindSignatureNative);
+    ScriptEngine::RegisterNativeHandler("FIND_VIRTUAL_TABLE", FindVirtualTable);
     ScriptEngine::RegisterNativeHandler("GET_NETWORK_VECTOR_SIZE", GetNetworkVectorSize);
     ScriptEngine::RegisterNativeHandler("GET_NETWORK_VECTOR_ELEMENT_AT", GetNetworkVectorElementAt);
     ScriptEngine::RegisterNativeHandler("REMOVE_ALL_NETWORK_VECTOR_ELEMENTS", RemoveAllNetworkVectorElements);
