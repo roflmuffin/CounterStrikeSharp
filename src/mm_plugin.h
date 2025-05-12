@@ -17,7 +17,6 @@
 #ifndef _INCLUDE_METAMOD_SOURCE_STUB_PLUGIN_H_
 #define _INCLUDE_METAMOD_SOURCE_STUB_PLUGIN_H_
 
-// clang-format off
 #include <ISmmPlugin.h>
 #include <functional>
 #include <iserver.h>
@@ -27,7 +26,6 @@
 #include <vector>
 #include "entitysystem.h"
 #include "concurrentqueue.h"
-// clang-format on
 
 namespace counterstrikesharp {
 class ScriptCallback;

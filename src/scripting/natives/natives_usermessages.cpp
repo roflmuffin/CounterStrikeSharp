@@ -13,8 +13,6 @@
  *  You should have received a copy of the GNU General Public License
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
-// clang-format off
-
 #include "core/UserMessage.h"
 #include "core/globals.h"
 #include "core/log.h"
@@ -23,8 +21,6 @@
 #include "scripting/autonative.h"
 
 #include "core/recipientfilters.h"
-
-// clang-format on
 
 namespace counterstrikesharp {
 

@@ -20,7 +20,6 @@
 #include <filesystem.h>
 #include <public/worldsize.h>
 
-// clang-format off
 #include "mm_plugin.h"
 #include "core/timer_system.h"
 #include "core/utils.h"
@@ -32,7 +31,6 @@
 #include "core/managers/player_manager.h"
 #include "core/managers/server_manager.h"
 #include "core/tick_scheduler.h"
-// clang-format on
 
 #if _WIN32
 #undef GetCurrentTime

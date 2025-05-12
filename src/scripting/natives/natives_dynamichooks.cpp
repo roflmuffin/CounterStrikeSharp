@@ -14,7 +14,6 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-// clang-format off
 #include "mm_plugin.h"
 #include "core/timer_system.h"
 #include "scripting/autonative.h"
@@ -23,8 +22,6 @@
 #include "pch.h"
 #include "dynohook/core.h"
 #include "dynohook/manager.h"
-
-// clang-format on
 
 namespace counterstrikesharp {
 
