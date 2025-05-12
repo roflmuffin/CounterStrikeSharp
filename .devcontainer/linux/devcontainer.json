@@ -5,6 +5,7 @@
   "customizations": {
     "vscode": {
       "extensions": [
+        "ms-dotnettools.csdevkit",
         "ms-vscode.cpptools",
         "ms-vscode.cpptools-extension-pack",
         "GitHub.copilot",

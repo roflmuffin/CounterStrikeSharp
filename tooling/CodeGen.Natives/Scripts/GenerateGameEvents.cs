@@ -107,7 +107,18 @@ public partial class Generators
                     }
                 }
 
-                allGameEvents[gameEvent.Name] = gameEvent;
+                if (allGameEvents.ContainsKey(gameEvent.Name))
+                {
+                    foreach (var key in gameEvent.Keys)
+                    {
+                        if (!allGameEvents[gameEvent.Name].Keys.Any(x => x.Name == key.Name))
+                        {
+                            allGameEvents[gameEvent.Name].Keys.Add(key);
+                        }
+                    }
+                }
+                else
+                    allGameEvents[gameEvent.Name] = gameEvent;
             }
         }
 
@@ -115,17 +126,16 @@ public partial class Generators
     }
 
 
-
     public static async Task GenerateGameEvents()
     {
         var allGameEvents = await GetGameEvents();
-        
+
         // Remove the player_chat event as it's manually implemented
         allGameEvents.RemoveAll(e => e.Name == "player_chat");
 
         var gameEventsString = string.Join("\n", allGameEvents.OrderBy(x => x.NamePascalCase).Select(gameEvent =>
         {
-            var propertyDefinition = gameEvent.Keys.Select(key =>
+            var propertyDefinition = gameEvent.Keys.OrderBy(p => p.NamePascalCase).Select(key =>
             {
                 // Hack for now, since we some params with the same name as their parent.
                 var propertyName = key.NamePascalCase == gameEvent.NamePascalCase
@@ -133,7 +143,6 @@ public partial class Generators
                     : key.NamePascalCase;
 
                 return $@"
-
                 {(!string.IsNullOrEmpty(key.Comment) ? "// " + key.Comment : "")}
                 public {key.MappedType} {propertyName}
                 {{
