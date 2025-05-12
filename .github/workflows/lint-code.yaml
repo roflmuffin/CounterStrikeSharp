@@ -22,4 +22,4 @@ jobs:
         with:
           clang-format-version: '18'
           check-path: 'src'
-          exclude-regex: 'sdk'
+          exclude-regex: '(sdk|\.proto)'
