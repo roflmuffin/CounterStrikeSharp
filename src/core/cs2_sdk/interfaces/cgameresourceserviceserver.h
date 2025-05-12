@@ -28,8 +28,7 @@ class CGameResourceService
   public:
     CGameEntitySystem* GetGameEntitySystem()
     {
-        return *reinterpret_cast<CGameEntitySystem**>(
-            (uintptr_t)(this) +
-            counterstrikesharp::globals::gameConfig->GetOffset("GameEntitySystem"));
+        return *reinterpret_cast<CGameEntitySystem**>((uintptr_t)(this) +
+                                                      counterstrikesharp::globals::gameConfig->GetOffset("GameEntitySystem"));
     }
 };

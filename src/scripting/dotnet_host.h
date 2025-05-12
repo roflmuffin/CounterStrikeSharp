@@ -21,29 +21,30 @@
 #include <unordered_map>
 #include <vector>
 
-class PluginContext {
+class PluginContext
+{
     friend class CDotNetManager;
 
-public:
-    PluginContext(std::string dll_path)
-        : m_dll_path(dll_path) {}
+  public:
+    PluginContext(std::string dll_path) : m_dll_path(dll_path) {}
 
-private:
+  private:
     std::string m_dll_path;
 };
 
-class CDotNetManager {
+class CDotNetManager
+{
     friend class PluginContext;
 
-public:
+  public:
     CDotNetManager();
     ~CDotNetManager();
 
     bool Initialize();
-    void UnloadPlugin(PluginContext *context);
+    void UnloadPlugin(PluginContext* context);
     void Shutdown();
-    PluginContext *FindContext(std::string path);
+    PluginContext* FindContext(std::string path);
 
-private:
+  private:
     std::vector<std::shared_ptr<PluginContext>> m_app_domains;
 };

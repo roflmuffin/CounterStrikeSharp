@@ -21,7 +21,8 @@
 
 namespace counterstrikesharp {
 
-timers::Timer *CreateTimer(ScriptContext &script_context) {
+timers::Timer* CreateTimer(ScriptContext& script_context)
+{
     auto interval = script_context.GetArgument<float>(0);
     auto callback = script_context.GetArgument<CallbackT>(1);
     auto flags = script_context.GetArgument<int>(2);
@@ -29,8 +30,9 @@ timers::Timer *CreateTimer(ScriptContext &script_context) {
     return globals::timerSystem.CreateTimer(interval, callback, flags);
 }
 
-void KillTimer(ScriptContext &script_context) {
-    auto timer = script_context.GetArgument<timers::Timer *>(0);
+void KillTimer(ScriptContext& script_context)
+{
+    auto timer = script_context.GetArgument<timers::Timer*>(0);
     globals::timerSystem.KillTimer(timer);
 }
 
@@ -38,4 +40,4 @@ REGISTER_NATIVES(timers, {
     ScriptEngine::RegisterNativeHandler("CREATE_TIMER", CreateTimer);
     ScriptEngine::RegisterNativeHandler("KILL_TIMER", KillTimer);
 })
-}  // namespace counterstrikesharp
+} // namespace counterstrikesharp

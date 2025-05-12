@@ -26,13 +26,13 @@
 #include <Windows.h>
 #include <direct.h>
 
-#define STR(s) L##s
-#define CH(c) L##c
+#define STR(s)        L##s
+#define CH(c)         L##c
 #define DIR_SEPARATOR L'\\'
 
 #else
-#define STR(s) s
-#define CH(c) c
+#define STR(s)        s
+#define CH(c)         c
 #define DIR_SEPARATOR '/'
 
 #include <dlfcn.h>
@@ -99,8 +99,7 @@ bool load_hostfxr()
     std::string base_dir = counterstrikesharp::utils::GetRootDirectory();
     namespace css = counterstrikesharp;
 #if _WIN32
-    std::wstring buffer =
-        std::wstring(css::widen(base_dir) + L"\\dotnet\\host\\fxr\\8.0.3\\hostfxr.dll");
+    std::wstring buffer = std::wstring(css::widen(base_dir) + L"\\dotnet\\host\\fxr\\8.0.3\\hostfxr.dll");
     CSSHARP_CORE_INFO("Loading hostfxr from {0}", css::narrow(buffer).c_str());
 #else
     std::string buffer = std::string(base_dir + "/dotnet/host/fxr/8.0.3/libhostfxr.so");
@@ -109,21 +108,21 @@ bool load_hostfxr()
 
     // Load hostfxr and get desired exports
     void* lib = load_library(buffer.c_str());
-    init_fptr = (hostfxr_initialize_for_runtime_config_fn)get_export(
-        lib, "hostfxr_initialize_for_runtime_config");
-    if (init_fptr == nullptr) {
-        CSSHARP_CORE_CRITICAL(
-            "unable to get export function: \"hostfxr_initialize_for_runtime_config\"");
+    init_fptr = (hostfxr_initialize_for_runtime_config_fn)get_export(lib, "hostfxr_initialize_for_runtime_config");
+    if (init_fptr == nullptr)
+    {
+        CSSHARP_CORE_CRITICAL("unable to get export function: \"hostfxr_initialize_for_runtime_config\"");
         return false;
     }
-    get_delegate_fptr =
-        (hostfxr_get_runtime_delegate_fn)get_export(lib, "hostfxr_get_runtime_delegate");
-    if (!get_delegate_fptr) {
+    get_delegate_fptr = (hostfxr_get_runtime_delegate_fn)get_export(lib, "hostfxr_get_runtime_delegate");
+    if (!get_delegate_fptr)
+    {
         CSSHARP_CORE_CRITICAL("unable to get export function: \"hostfxr_get_runtime_delegate\"");
         return false;
     }
     close_fptr = (hostfxr_close_fn)get_export(lib, "hostfxr_close");
-    if (!close_fptr) {
+    if (!close_fptr)
+    {
         CSSHARP_CORE_CRITICAL("unable to get export function: \"hostfxr_close\"");
         return false;
     }
@@ -139,16 +138,17 @@ load_assembly_and_get_function_pointer_fn get_dotnet_load_assembly(const char_t*
     // Load .NET Core
     void* load_assembly_and_get_function_pointer = nullptr;
     int rc = init_fptr(config_path, nullptr, &cxt);
-    if (rc != 0 || cxt == nullptr) {
+    if (rc != 0 || cxt == nullptr)
+    {
         CSSHARP_CORE_CRITICAL("Init failed: {0:x}", rc);
         close_fptr(cxt);
         return nullptr;
     }
 
     // Get the load assembly function pointer
-    rc = get_delegate_fptr(cxt, hdt_load_assembly_and_get_function_pointer,
-                           &load_assembly_and_get_function_pointer);
-    if (rc != 0 || load_assembly_and_get_function_pointer == nullptr) {
+    rc = get_delegate_fptr(cxt, hdt_load_assembly_and_get_function_pointer, &load_assembly_and_get_function_pointer);
+    if (rc != 0 || load_assembly_and_get_function_pointer == nullptr)
+    {
         CSSHARP_CORE_ERROR("Get delegate failed: {0:x}", rc);
     }
 
@@ -168,54 +168,51 @@ bool CDotNetManager::Initialize()
 
     CSSHARP_CORE_INFO("Loading .NET runtime...");
 
-    if (!load_hostfxr()) {
+    if (!load_hostfxr())
+    {
         CSSHARP_CORE_ERROR("Failed to initialize .NET runtime.");
         return false;
     }
     CSSHARP_CORE_INFO(".NET Runtime Initialised.");
     namespace css = counterstrikesharp;
 #if _WIN32
-    const auto wide_str =
-        std::wstring(css::widen(base_dir) + L"\\api\\CounterStrikeSharp.API.runtimeconfig.json");
-    CSSHARP_CORE_INFO("Loading CSS API, Runtime config: {}",
-                      counterstrikesharp::narrow(wide_str).c_str());
+    const auto wide_str = std::wstring(css::widen(base_dir) + L"\\api\\CounterStrikeSharp.API.runtimeconfig.json");
+    CSSHARP_CORE_INFO("Loading CSS API, Runtime config: {}", counterstrikesharp::narrow(wide_str).c_str());
 #else
-    std::string wide_str =
-        std::string((base_dir + "/api/CounterStrikeSharp.API.runtimeconfig.json").c_str());
+    std::string wide_str = std::string((base_dir + "/api/CounterStrikeSharp.API.runtimeconfig.json").c_str());
     CSSHARP_CORE_INFO("Loading CSS API, Runtime Config: {}", wide_str);
 #endif
 
     const auto load_assembly_and_get_function_pointer = get_dotnet_load_assembly(wide_str.c_str());
-    if (load_assembly_and_get_function_pointer == nullptr) {
+    if (load_assembly_and_get_function_pointer == nullptr)
+    {
         CSSHARP_CORE_ERROR("Failed to load CSS API.");
         return false;
     }
 
 #if _WIN32
-    const auto dotnetlib_path =
-        std::wstring(css::widen(base_dir) + L"\\api\\CounterStrikeSharp.API.dll");
+    const auto dotnetlib_path = std::wstring(css::widen(base_dir) + L"\\api\\CounterStrikeSharp.API.dll");
     CSSHARP_CORE_INFO("CSS API DLL: {}", counterstrikesharp::narrow(dotnetlib_path));
 #else
-    const std::string dotnetlib_path =
-        std::string((base_dir + "/api/CounterStrikeSharp.API.dll").c_str());
+    const std::string dotnetlib_path = std::string((base_dir + "/api/CounterStrikeSharp.API.dll").c_str());
 #endif
     const auto dotnet_type = STR("CounterStrikeSharp.API.Bootstrap, CounterStrikeSharp.API");
     // Namespace, assembly name
 
     typedef int(CORECLR_DELEGATE_CALLTYPE * custom_entry_point_fn)();
     custom_entry_point_fn entry_point = nullptr;
-    const int rc = load_assembly_and_get_function_pointer(
-        dotnetlib_path.c_str(), dotnet_type, STR("Run"), UNMANAGEDCALLERSONLY_METHOD,
-        nullptr, reinterpret_cast<void**>(&entry_point));
-    if (entry_point == nullptr) {
+    const int rc = load_assembly_and_get_function_pointer(dotnetlib_path.c_str(), dotnet_type, STR("Run"), UNMANAGEDCALLERSONLY_METHOD,
+                                                          nullptr, reinterpret_cast<void**>(&entry_point));
+    if (entry_point == nullptr)
+    {
         CSSHARP_CORE_ERROR("Trying to get entry point \"Bootstrap::Run\" but failed.");
         return false;
     }
 
-    assert(rc == 0 && entry_point != nullptr &&
-           "Failure: load_assembly_and_get_function_pointer()");
+    assert(rc == 0 && entry_point != nullptr && "Failure: load_assembly_and_get_function_pointer()");
 
-    if (const int invoke_result_code = entry_point(); invoke_result_code == 0) {
+    if (const int invoke_result_code = entry_point(); invoke_result_code == 0)
+    {
         CSSHARP_CORE_ERROR("Bootstrap::Run return failure.");
         return false;
     }

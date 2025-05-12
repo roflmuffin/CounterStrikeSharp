@@ -142,7 +142,8 @@ void DetourGameEventManagerInit(IGameEventManager2* pGameEventManager)
 }
 
 int source_hook_pluginid = 0;
-CGlobalVars* getGlobalVars() {
+CGlobalVars* getGlobalVars()
+{
     INetworkGameServer* server = networkServerService->GetIGameServer();
     if (!server) return nullptr;
     return networkServerService->GetIGameServer()->GetGlobals();

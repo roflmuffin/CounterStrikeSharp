@@ -77,8 +77,8 @@ class CModule
     std::uintptr_t m_baseAddress{};
     std::unordered_map<std::string, std::uintptr_t> _symbols{};
     std::unordered_map<std::string, std::uintptr_t> _interfaces{};
-    using fnCreateInterface = void*(*)(const char*);
-    fnCreateInterface m_fnCreateInterface {};
+    using fnCreateInterface = void* (*)(const char*);
+    fnCreateInterface m_fnCreateInterface{};
 
 #ifdef _WIN32
     void DumpSymbols();
@@ -86,7 +86,8 @@ class CModule
     void DumpSymbols(ElfW(Dyn) * dyn);
 #endif
 
-    std::optional<std::vector<std::uint8_t>> GetOriginalBytes(const std::vector<std::uint8_t>& disk_data, std::uintptr_t rva, std::size_t size);
+    std::optional<std::vector<std::uint8_t>>
+    GetOriginalBytes(const std::vector<std::uint8_t>& disk_data, std::uintptr_t rva, std::size_t size);
 
     void* FindSignature(const std::vector<int16_t>& sigBytes);
 };
