@@ -30,29 +30,28 @@
 
 #undef schema
 
-struct SchemaKey {
+struct SchemaKey
+{
     int32_t offset;
     bool networked;
 };
 
 class Z_CBaseEntity;
-void SetStateChanged(Z_CBaseEntity *pEntity, int offset);
+void SetStateChanged(Z_CBaseEntity* pEntity, int offset);
 
 inline uint32_t val_32_const = 0x811c9dc5;
 inline uint32_t prime_32_const = 0x1000193;
 inline uint64_t val_64_const = 0xcbf29ce484222325;
 inline uint64_t prime_64_const = 0x100000001b3;
 
-inline uint32_t hash_32_fnv1a_const(const char *str, const uint32_t value = val_32_const) noexcept {
-    return (str[0] == '\0')
-               ? value
-               : hash_32_fnv1a_const(&str[1], (value ^ uint32_t(str[0])) * prime_32_const);
+inline uint32_t hash_32_fnv1a_const(const char* str, const uint32_t value = val_32_const) noexcept
+{
+    return (str[0] == '\0') ? value : hash_32_fnv1a_const(&str[1], (value ^ uint32_t(str[0])) * prime_32_const);
 }
 
-inline uint64_t hash_64_fnv1a_const(const char *str, const uint64_t value = val_64_const) noexcept {
-    return (str[0] == '\0')
-               ? value
-               : hash_64_fnv1a_const(&str[1], (value ^ uint64_t(str[0])) * prime_64_const);
+inline uint64_t hash_64_fnv1a_const(const char* str, const uint64_t value = val_64_const) noexcept
+{
+    return (str[0] == '\0') ? value : hash_64_fnv1a_const(&str[1], (value ^ uint64_t(str[0])) * prime_64_const);
 }
 
 namespace schema {
@@ -95,6 +94,6 @@ static std::vector<std::string> CS2BadList = {
     "m_nMusicID",
 };
 
-int16_t FindChainOffset(const char *className);
-SchemaKey GetOffset(const char *className, uint32_t classKey, const char *memberName, uint32_t memberKey);
-}  // namespace schema
+int16_t FindChainOffset(const char* className);
+SchemaKey GetOffset(const char* className, uint32_t classKey, const char* memberName, uint32_t memberKey);
+} // namespace schema

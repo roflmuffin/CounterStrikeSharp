@@ -63,8 +63,7 @@ void Initialize()
         moduleList.emplace_back(std::move(mod));
     }
 #else
-    dl_iterate_phdr(
-        [](struct dl_phdr_info* info, size_t, void*) {
+    dl_iterate_phdr([](struct dl_phdr_info* info, size_t, void*) {
         std::string name = info->dlpi_name;
 
         if (name.rfind(MODULE_EXT) != name.length() - strlen(MODULE_EXT)) return 0;
@@ -80,8 +79,7 @@ void Initialize()
 
         moduleList.emplace_back(std::move(mod));
         return 0;
-    },
-        nullptr);
+    }, nullptr);
 #endif
 }
 
