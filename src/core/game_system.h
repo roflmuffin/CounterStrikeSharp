@@ -37,8 +37,7 @@ class CGameSystem : public CBaseGameSystem
 
     void SetGameSystemGlobalPtrs(void* pValue) override
     {
-        if (sm_Factory)
-            sm_Factory->SetGlobalPtr(pValue);
+        if (sm_Factory) sm_Factory->SetGlobalPtr(pValue);
     }
 
     bool DoesGameSystemReallocate() override { return sm_Factory->ShouldAutoAdd(); }

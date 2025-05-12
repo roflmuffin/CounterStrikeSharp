@@ -36,7 +36,8 @@ bool InitGameSystems()
     // bytes so we skip those
     uint8* ptr = (uint8*)counterstrikesharp::globals::gameConfig->ResolveSignature("IGameSystem_InitAllSystems_pFirst") + 3;
 
-    if (!ptr) {
+    if (!ptr)
+    {
         CSSHARP_CORE_ERROR("Failed to InitGameSystems, see warnings above.");
         return false;
     }
