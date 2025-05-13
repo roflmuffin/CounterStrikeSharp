@@ -137,7 +137,7 @@ public class WithVirtualFunctionsPlugin : BasePlugin
         CCSPlayerController_SwitchTeam.Unhook(OnSwitchTeam, HookMode.Pre);
 
         // 2 -> By the vtable offset (index) and an instance of the class
-        CCSPlayer_ItemServices_GiveNamedItem?.Unhook(OnSwitchTeam, HookMode.Pre);
+        CCSPlayer_ItemServices_GiveNamedItem?.Unhook(OnGiveNamedItem, HookMode.Pre);
 
         //3 -> By the vtable offset (index) and without an instance of the class
         CCSPlayerController_ChangeTeam.Unhook(OnChangeTeam, HookMode.Pre);
