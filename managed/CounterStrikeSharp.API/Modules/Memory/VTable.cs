@@ -115,10 +115,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
         public VTable() : base(typeof(TClass).Name)
             { }
 
-        public VTable(string symbolName) : base(symbolName)
-            { }
-
-        public VTable(string symbolName, string binaryPath) : base(binaryPath, symbolName)
+        public VTable(string binaryPath) : base(typeof(TClass).Name, binaryPath)
             { }
 
         public VirtualFunctionVoid<TClass> GetFunctionVoid(int index)
