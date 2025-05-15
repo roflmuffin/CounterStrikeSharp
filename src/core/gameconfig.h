@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include "core/globals.h"
 #include "core/memory_module.h"
 #include <KeyValues.h>

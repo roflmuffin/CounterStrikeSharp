@@ -23,7 +23,8 @@ std::wstring widen(const std::string& str)
 {
     std::wostringstream wstm;
     const auto& ctfacet = std::use_facet<std::ctype<wchar_t>>(wstm.getloc());
-    for (size_t i = 0; i < str.size(); ++i) {
+    for (size_t i = 0; i < str.size(); ++i)
+    {
         wstm << ctfacet.widen(str[i]);
     }
     return wstm.str();
@@ -39,9 +40,10 @@ std::string narrow(const std::wstring& str)
     // Correct code.
     const auto& ctfacet = std::use_facet<std::ctype<wchar_t>>(stm.getloc());
 
-    for (size_t i = 0; i < str.size(); ++i) {
+    for (size_t i = 0; i < str.size(); ++i)
+    {
         stm << ctfacet.narrow(str[i], 0);
     }
     return stm.str();
 }
-}
+} // namespace counterstrikesharp
