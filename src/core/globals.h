@@ -42,6 +42,7 @@ namespace counterstrikesharp {
 class EntityListener;
 class EventManager;
 class UserMessageManager;
+class ClientMessageManager;
 class ConCommandManager;
 class CallbackManager;
 class ConVarManager;
@@ -94,6 +95,7 @@ extern ISource2GameEntities* gameEntities;
 
 extern EventManager eventManager;
 extern UserMessageManager userMessageManager;
+extern ClientMessageManager clientMessageManager;
 extern ConCommandManager conCommandManager;
 extern CallbackManager callbackManager;
 extern ConVarManager convarManager;
