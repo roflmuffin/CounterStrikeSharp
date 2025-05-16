@@ -286,10 +286,6 @@ public partial class CCSGameRules : CTeamplayRules
 	[SchemaMember("CCSGameRules", "m_flNextRespawnWave")]
 	public Span<float> NextRespawnWave => Schema.GetFixedArray<float>(this.Handle, "CCSGameRules", "m_flNextRespawnWave", 32);
 
-	// m_nServerQuestID
-	[SchemaMember("CCSGameRules", "m_nServerQuestID")]
-	public ref Int32 ServerQuestID => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nServerQuestID");
-
 	// m_vMinimapMins
 	[SchemaMember("CCSGameRules", "m_vMinimapMins")]
 	public Vector MinimapMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSGameRules", "m_vMinimapMins");

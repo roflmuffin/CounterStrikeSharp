@@ -3,7 +3,6 @@
 #include <fstream>
 
 #include "log.h"
-#include "metamod_oslink.h"
 
 namespace counterstrikesharp {
 

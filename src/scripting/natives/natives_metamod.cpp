@@ -26,7 +26,5 @@ static void* MetaFactory(ScriptContext& script_context)
     return ptr;
 }
 
-REGISTER_NATIVES(metamod, {
-    ScriptEngine::RegisterNativeHandler("META_FACTORY", MetaFactory);
-})
+REGISTER_NATIVES(metamod, { ScriptEngine::RegisterNativeHandler("META_FACTORY", MetaFactory); })
 } // namespace counterstrikesharp

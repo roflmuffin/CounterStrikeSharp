@@ -20,44 +20,49 @@
 #include "scripting/autonative.h"
 #include "igameevents.h"
 
-
 namespace counterstrikesharp {
 
-std::vector<IGameEvent *> managed_game_events;
+std::vector<IGameEvent*> managed_game_events;
 
-static void HookEvent(ScriptContext &script_context) {
-    const char *name = script_context.GetArgument<const char *>(0);
+static void HookEvent(ScriptContext& script_context)
+{
+    const char* name = script_context.GetArgument<const char*>(0);
     auto callback = script_context.GetArgument<CallbackT>(1);
     auto post = script_context.GetArgument<bool>(2);
 
     globals::eventManager.HookEvent(name, callback, post);
 }
 
-static void UnhookEvent(ScriptContext &script_context) {
-    const char *name = script_context.GetArgument<const char *>(0);
+static void UnhookEvent(ScriptContext& script_context)
+{
+    const char* name = script_context.GetArgument<const char*>(0);
     auto callback = script_context.GetArgument<CallbackT>(1);
     auto post = script_context.GetArgument<bool>(2);
 
     globals::eventManager.UnhookEvent(name, callback, post);
 }
 
-static IGameEvent *CreateEvent(ScriptContext &script_context) {
-    auto name = script_context.GetArgument<const char *>(0);
+static IGameEvent* CreateEvent(ScriptContext& script_context)
+{
+    auto name = script_context.GetArgument<const char*>(0);
     bool force = script_context.GetArgument<bool>(1);
 
     auto pEvent = globals::gameEventManager->CreateEvent(name, force);
 
-    if (pEvent != nullptr) {
+    if (pEvent != nullptr)
+    {
         managed_game_events.push_back(pEvent);
     }
 
     return pEvent;
 }
 
-static void FireEvent(ScriptContext &script_context) {
-    auto game_event = script_context.GetArgument<IGameEvent *>(0);
+static void FireEvent(ScriptContext& script_context)
+{
+    auto game_event = script_context.GetArgument<IGameEvent*>(0);
     bool dont_broadcast = script_context.GetArgument<bool>(1);
-    if (!game_event) {
+    if (!game_event)
+    {
         script_context.ThrowNativeError("Invalid game event");
         return;
     }
@@ -66,17 +71,19 @@ static void FireEvent(ScriptContext &script_context) {
     managed_game_events.erase(std::remove(managed_game_events.begin(), managed_game_events.end(), game_event), managed_game_events.end());
 }
 
-
-static void FireEventToClient(ScriptContext& script_context) {
+static void FireEventToClient(ScriptContext& script_context)
+{
     auto game_event = script_context.GetArgument<IGameEvent*>(0);
     int entityIndex = script_context.GetArgument<int>(1);
-    if (!game_event) {
+    if (!game_event)
+    {
         script_context.ThrowNativeError("Invalid game event");
         return;
     }
 
     IGameEventListener2* pListener = globals::GetLegacyGameEventListener(CPlayerSlot(entityIndex - 1));
-    if (!pListener) {
+    if (!pListener)
+    {
         script_context.ThrowNativeError("Could not get player event listener");
         return;
     }
@@ -84,21 +91,25 @@ static void FireEventToClient(ScriptContext& script_context) {
     pListener->FireGameEvent(game_event);
 }
 
-static void FreeEvent(ScriptContext& script_context) {
+static void FreeEvent(ScriptContext& script_context)
+{
     auto game_event = script_context.GetArgument<IGameEvent*>(0);
-    if (!game_event) {
-            script_context.ThrowNativeError("Invalid game event");
-            return;
+    if (!game_event)
+    {
+        script_context.ThrowNativeError("Invalid game event");
+        return;
     }
 
     globals::gameEventManager->FreeEvent(game_event);
     managed_game_events.erase(std::remove(managed_game_events.begin(), managed_game_events.end(), game_event), managed_game_events.end());
 }
 
-static const char *GetEventName(ScriptContext &script_context) {
-    IGameEvent *game_event = script_context.GetArgument<IGameEvent *>(0);
+static const char* GetEventName(ScriptContext& script_context)
+{
+    IGameEvent* game_event = script_context.GetArgument<IGameEvent*>(0);
 
-    if (!game_event) {
+    if (!game_event)
+    {
         script_context.ThrowNativeError("Invalid game event");
         return nullptr;
     }
@@ -106,11 +117,13 @@ static const char *GetEventName(ScriptContext &script_context) {
     return game_event->GetName();
 }
 
-static bool GetEventBool(ScriptContext &script_context) {
-    IGameEvent *game_event = script_context.GetArgument<IGameEvent *>(0);
-    const char *key_name = script_context.GetArgument<const char *>(1);
+static bool GetEventBool(ScriptContext& script_context)
+{
+    IGameEvent* game_event = script_context.GetArgument<IGameEvent*>(0);
+    const char* key_name = script_context.GetArgument<const char*>(1);
 
-    if (!game_event) {
+    if (!game_event)
+    {
         script_context.ThrowNativeError("Invalid game event");
         return false;
     }
@@ -118,11 +131,13 @@ static bool GetEventBool(ScriptContext &script_context) {
     return game_event->GetBool(key_name);
 }
 
-static int GetEventInt(ScriptContext &script_context) {
-    IGameEvent *game_event = script_context.GetArgument<IGameEvent *>(0);
-    const char *key_name = script_context.GetArgument<const char *>(1);
+static int GetEventInt(ScriptContext& script_context)
+{
+    IGameEvent* game_event = script_context.GetArgument<IGameEvent*>(0);
+    const char* key_name = script_context.GetArgument<const char*>(1);
 
-    if (!game_event) {
+    if (!game_event)
+    {
         script_context.ThrowNativeError("Invalid game event");
         return -1;
     }
@@ -130,11 +145,13 @@ static int GetEventInt(ScriptContext &script_context) {
     return game_event->GetInt(key_name);
 }
 
-static float GetEventFloat(ScriptContext &script_context) {
-    IGameEvent *game_event = script_context.GetArgument<IGameEvent *>(0);
-    const char *key_name = script_context.GetArgument<const char *>(1);
+static float GetEventFloat(ScriptContext& script_context)
+{
+    IGameEvent* game_event = script_context.GetArgument<IGameEvent*>(0);
+    const char* key_name = script_context.GetArgument<const char*>(1);
 
-    if (!game_event) {
+    if (!game_event)
+    {
         script_context.ThrowNativeError("Invalid game event");
         return -1;
     }
@@ -142,11 +159,13 @@ static float GetEventFloat(ScriptContext &script_context) {
     return game_event->GetFloat(key_name);
 }
 
-static const char *GetEventString(ScriptContext &script_context) {
-    IGameEvent *game_event = script_context.GetArgument<IGameEvent *>(0);
-    const char *key_name = script_context.GetArgument<const char *>(1);
+static const char* GetEventString(ScriptContext& script_context)
+{
+    IGameEvent* game_event = script_context.GetArgument<IGameEvent*>(0);
+    const char* key_name = script_context.GetArgument<const char*>(1);
 
-    if (!game_event) {
+    if (!game_event)
+    {
         script_context.ThrowNativeError("Invalid game event");
         return nullptr;
     }
@@ -154,51 +173,61 @@ static const char *GetEventString(ScriptContext &script_context) {
     return game_event->GetString(key_name);
 }
 
-static void SetEventBool(ScriptContext &script_context) {
-    IGameEvent *game_event = script_context.GetArgument<IGameEvent *>(0);
-    const char *key_name = script_context.GetArgument<const char *>(1);
+static void SetEventBool(ScriptContext& script_context)
+{
+    IGameEvent* game_event = script_context.GetArgument<IGameEvent*>(0);
+    const char* key_name = script_context.GetArgument<const char*>(1);
     const bool value = script_context.GetArgument<bool>(2);
 
-    if (game_event) {
+    if (game_event)
+    {
         game_event->SetBool(key_name, value);
     }
 }
 
-static void SetEventInt(ScriptContext &script_context) {
-    IGameEvent *game_event = script_context.GetArgument<IGameEvent *>(0);
-    const char *key_name = script_context.GetArgument<const char *>(1);
+static void SetEventInt(ScriptContext& script_context)
+{
+    IGameEvent* game_event = script_context.GetArgument<IGameEvent*>(0);
+    const char* key_name = script_context.GetArgument<const char*>(1);
     const int value = script_context.GetArgument<int>(2);
 
-    if (game_event) {
+    if (game_event)
+    {
         game_event->SetInt(key_name, value);
     }
 }
 
-static void SetEventFloat(ScriptContext &script_context) {
-    IGameEvent *game_event = script_context.GetArgument<IGameEvent *>(0);
-    const char *key_name = script_context.GetArgument<const char *>(1);
+static void SetEventFloat(ScriptContext& script_context)
+{
+    IGameEvent* game_event = script_context.GetArgument<IGameEvent*>(0);
+    const char* key_name = script_context.GetArgument<const char*>(1);
     const float value = script_context.GetArgument<float>(2);
 
-    if (game_event) {
+    if (game_event)
+    {
         game_event->SetFloat(key_name, value);
     }
 }
 
-static void SetEventString(ScriptContext &script_context) {
-    IGameEvent *game_event = script_context.GetArgument<IGameEvent *>(0);
-    const char *key_name = script_context.GetArgument<const char *>(1);
-    const char *value = script_context.GetArgument<const char *>(2);
+static void SetEventString(ScriptContext& script_context)
+{
+    IGameEvent* game_event = script_context.GetArgument<IGameEvent*>(0);
+    const char* key_name = script_context.GetArgument<const char*>(1);
+    const char* value = script_context.GetArgument<const char*>(2);
 
-    if (game_event) {
+    if (game_event)
+    {
         game_event->SetString(key_name, value);
     }
 }
 
-static void *GetPlayerController(ScriptContext &scriptContext) {
-    IGameEvent *gameEvent = scriptContext.GetArgument<IGameEvent *>(0);
-    const char *keyName = scriptContext.GetArgument<const char *>(1);
+static void* GetPlayerController(ScriptContext& scriptContext)
+{
+    IGameEvent* gameEvent = scriptContext.GetArgument<IGameEvent*>(0);
+    const char* keyName = scriptContext.GetArgument<const char*>(1);
 
-    if (gameEvent == nullptr) {
+    if (gameEvent == nullptr)
+    {
         scriptContext.ThrowNativeError("Invalid game event");
         return nullptr;
     }
@@ -206,41 +235,49 @@ static void *GetPlayerController(ScriptContext &scriptContext) {
     return gameEvent->GetPlayerController(keyName);
 }
 
-static void SetPlayerController(ScriptContext &scriptContext) {
-    IGameEvent *gameEvent = scriptContext.GetArgument<IGameEvent *>(0);
-    const char *keyName = scriptContext.GetArgument<const char *>(1);
-    auto *value = scriptContext.GetArgument<CEntityInstance *>(2);
+static void SetPlayerController(ScriptContext& scriptContext)
+{
+    IGameEvent* gameEvent = scriptContext.GetArgument<IGameEvent*>(0);
+    const char* keyName = scriptContext.GetArgument<const char*>(1);
+    auto* value = scriptContext.GetArgument<CEntityInstance*>(2);
 
-    if (gameEvent != nullptr) {
+    if (gameEvent != nullptr)
+    {
         gameEvent->SetPlayer(keyName, value);
     }
 }
 
-static void SetEntity(ScriptContext &scriptContext) {
-    IGameEvent *gameEvent = scriptContext.GetArgument<IGameEvent *>(0);
-    const char *keyName = scriptContext.GetArgument<const char *>(1);
-    auto *value = scriptContext.GetArgument<CEntityInstance *>(2);
+static void SetEntity(ScriptContext& scriptContext)
+{
+    IGameEvent* gameEvent = scriptContext.GetArgument<IGameEvent*>(0);
+    const char* keyName = scriptContext.GetArgument<const char*>(1);
+    auto* value = scriptContext.GetArgument<CEntityInstance*>(2);
 
-    if (gameEvent != nullptr) {
+    if (gameEvent != nullptr)
+    {
         gameEvent->SetEntity(keyName, value);
     }
 }
 
-static void SetEntityIndex(ScriptContext &scriptContext) {
-    IGameEvent *gameEvent = scriptContext.GetArgument<IGameEvent *>(0);
-    const char *keyName = scriptContext.GetArgument<const char *>(1);
+static void SetEntityIndex(ScriptContext& scriptContext)
+{
+    IGameEvent* gameEvent = scriptContext.GetArgument<IGameEvent*>(0);
+    const char* keyName = scriptContext.GetArgument<const char*>(1);
     auto index = scriptContext.GetArgument<int>(2);
 
-    if (gameEvent != nullptr) {
+    if (gameEvent != nullptr)
+    {
         gameEvent->SetEntity(keyName, CEntityIndex{ index });
     }
 }
 
-static void *GetPlayerPawn(ScriptContext& scriptContext) {
-    IGameEvent *gameEvent = scriptContext.GetArgument<IGameEvent *>(0);
-    const char *keyName = scriptContext.GetArgument<const char *>(1);
+static void* GetPlayerPawn(ScriptContext& scriptContext)
+{
+    IGameEvent* gameEvent = scriptContext.GetArgument<IGameEvent*>(0);
+    const char* keyName = scriptContext.GetArgument<const char*>(1);
 
-    if (gameEvent == nullptr) {
+    if (gameEvent == nullptr)
+    {
         scriptContext.ThrowNativeError("Invalid game event");
         return nullptr;
     }
@@ -248,11 +285,13 @@ static void *GetPlayerPawn(ScriptContext& scriptContext) {
     return gameEvent->GetPlayerPawn(keyName);
 }
 
-static uint64 GetUint64(ScriptContext &scriptContext) {
-    IGameEvent *gameEvent = scriptContext.GetArgument<IGameEvent *>(0);
-    const char *keyName = scriptContext.GetArgument<const char *>(1);
+static uint64 GetUint64(ScriptContext& scriptContext)
+{
+    IGameEvent* gameEvent = scriptContext.GetArgument<IGameEvent*>(0);
+    const char* keyName = scriptContext.GetArgument<const char*>(1);
 
-    if (gameEvent == nullptr) {
+    if (gameEvent == nullptr)
+    {
         scriptContext.ThrowNativeError("Invalid game event");
         return 0;
     }
@@ -260,18 +299,21 @@ static uint64 GetUint64(ScriptContext &scriptContext) {
     return gameEvent->GetUint64(keyName);
 }
 
-static void SetUint64(ScriptContext &scriptContext) {
-    IGameEvent *gameEvent = scriptContext.GetArgument<IGameEvent *>(0);
-    const char *keyName = scriptContext.GetArgument<const char *>(1);
+static void SetUint64(ScriptContext& scriptContext)
+{
+    IGameEvent* gameEvent = scriptContext.GetArgument<IGameEvent*>(0);
+    const char* keyName = scriptContext.GetArgument<const char*>(1);
     auto value = scriptContext.GetArgument<uint64>(2);
 
-    if (gameEvent != nullptr) {
+    if (gameEvent != nullptr)
+    {
         gameEvent->SetUint64(keyName, value);
     }
 }
 
-static int LoadEventsFromFile(ScriptContext &script_context) {
-    auto [path, searchAll] = script_context.GetArguments<const char *, bool>();
+static int LoadEventsFromFile(ScriptContext& script_context)
+{
+    auto [path, searchAll] = script_context.GetArguments<const char*, bool>();
 
     return globals::gameEventManager->LoadEventsFromFile(path, searchAll);
 }
@@ -304,8 +346,7 @@ REGISTER_NATIVES(events, {
     ScriptEngine::RegisterNativeHandler("GET_EVENT_UINT64", GetUint64);
     ScriptEngine::RegisterNativeHandler("SET_EVENT_UINT64", SetUint64);
 
-
     ScriptEngine::RegisterNativeHandler("LOAD_EVENTS_FROM_FILE", LoadEventsFromFile);
 })
 
-}  // namespace counterstrikesharp
+} // namespace counterstrikesharp

@@ -25,6 +25,6 @@ namespace counterstrikesharp {
 namespace interfaces {
 void Initialize();
 
-inline CGameResourceService *pGameResourceServiceServer = nullptr;
-}  // namespace interfaces
-}  // namespace counterstrikesharp
+inline CGameResourceService* pGameResourceServiceServer = nullptr;
+} // namespace interfaces
+} // namespace counterstrikesharp
