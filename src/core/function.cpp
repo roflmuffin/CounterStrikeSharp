@@ -32,20 +32,10 @@
 #include "core/log.h"
 #include "dyncall/dyncall/dyncall.h"
 
-#include "pch.h"
-#include "dynohook/core.h"
-#include "dynohook/manager.h"
-
-#ifdef _WIN32
-#include "dynohook/conventions/x64/x64MsFastcall.h"
-#else
-#include "dynohook/conventions/x64/x64SystemVcall.h"
-#endif
-
 namespace counterstrikesharp {
 
 DCCallVM* g_pCallVM = dcNewCallVM(4096);
-std::map<dyno::Hook*, ValveFunction*> g_HookMap;
+std::map<dyno::IHook*, ValveFunction*> g_HookMap;
 
 // ============================================================================
 // >> GetDynCallConvention
@@ -230,11 +220,11 @@ void ValveFunction::Call(ScriptContext& script_context, int offset)
     }
 }
 
-dyno::ReturnAction HookHandler(dyno::HookType hookType, dyno::Hook& hook)
+dyno::ReturnAction HookHandler(dyno::CallbackType callbackType, dyno::IHook& hook)
 {
     auto vf = g_HookMap[&hook];
 
-    auto callback = hookType == dyno::HookType::Pre ? vf->m_precallback : vf->m_postcallback;
+    auto callback = callbackType == dyno::CallbackType::Pre ? vf->m_precallback : vf->m_postcallback;
 
     if (callback == nullptr)
     {
@@ -250,7 +240,7 @@ dyno::ReturnAction HookHandler(dyno::HookType hookType, dyno::Hook& hook)
         fnMethodToCall(&callback->ScriptContextStruct());
 
         auto result = callback->ScriptContext().GetResult<HookResult>();
-        CSSHARP_CORE_TRACE("Received hook callback result of {}, hook mode {}", result, (int)hookType);
+        CSSHARP_CORE_TRACE("Received hook callback result of {}, hook mode {}", result, (int)callbackType);
 
         if (result >= HookResult::Handled)
         {
@@ -276,17 +266,16 @@ std::vector<dyno::DataObject> ConvertArgsToDynoHook(const std::vector<DataType_t
 
 void ValveFunction::AddHook(CallbackT callable, bool post)
 {
-    dyno::HookManager& manager = dyno::HookManager::Get();
-    dyno::Hook* hook = manager.hook((void*)m_ulAddr, [this] {
-#ifdef _WIN32
-        return new dyno::x64MsFastcall(ConvertArgsToDynoHook(m_Args), static_cast<dyno::DataType>(this->m_eReturnType));
-#else
-        return new dyno::x64SystemVcall(ConvertArgsToDynoHook(m_Args), static_cast<dyno::DataType>(this->m_eReturnType));
-#endif
-    });
+    dyno::IHookManager& manager = dyno::IHookManager::Get();
+    dyno::IHook* hook = manager
+                            .hookDetour(m_ulAddr, [this] {
+        return new DEFAULT_CALLCONV(ConvertArgsToDynoHook(m_Args), static_cast<dyno::DataType>(this->m_eReturnType));
+    }).get();
+
     g_HookMap[hook] = this;
-    hook->addCallback(dyno::HookType::Post, (dyno::HookHandler*)&HookHandler);
-    hook->addCallback(dyno::HookType::Pre, (dyno::HookHandler*)&HookHandler);
+
+    hook->addCallback(dyno::CallbackType::Post, HookHandler);
+    hook->addCallback(dyno::CallbackType::Pre, HookHandler);
 
     if (post)
     {
@@ -307,14 +296,12 @@ void ValveFunction::AddHook(CallbackT callable, bool post)
 }
 void ValveFunction::RemoveHook(CallbackT callable, bool post)
 {
-    dyno::HookManager& manager = dyno::HookManager::Get();
-    dyno::Hook* hook = manager.hook((void*)m_ulAddr, [this] {
-#ifdef _WIN32
-        return new dyno::x64MsFastcall(ConvertArgsToDynoHook(m_Args), static_cast<dyno::DataType>(this->m_eReturnType));
-#else
-        return new dyno::x64SystemVcall(ConvertArgsToDynoHook(m_Args), static_cast<dyno::DataType>(this->m_eReturnType));
-#endif
-    });
+    dyno::IHookManager& manager = dyno::IHookManager::Get();
+    dyno::IHook* hook = manager
+                            .hookDetour(m_ulAddr, [this] {
+        return new DEFAULT_CALLCONV(ConvertArgsToDynoHook(m_Args), static_cast<dyno::DataType>(this->m_eReturnType));
+    }).get();
+
     g_HookMap[hook] = this;
 
     if (post)
