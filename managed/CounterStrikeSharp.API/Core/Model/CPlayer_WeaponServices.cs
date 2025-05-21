@@ -24,7 +24,7 @@ public partial class CPlayer_WeaponServices
     /// Drops player weapon.
     /// </summary>
     /// <exception cref="InvalidOperationException">WeaponServices points to null</exception>
-    public void DropWeapon(CBasePlayerWeapon weapon, Vector? vecTarget = null, Vector? velocity)
+    public void DropWeapon(CBasePlayerWeapon weapon, Vector? vecTarget = null, Vector? velocity = null)
     {
         if (Handle == IntPtr.Zero)
             throw new InvalidOperationException("WeaponServices points to null.");
