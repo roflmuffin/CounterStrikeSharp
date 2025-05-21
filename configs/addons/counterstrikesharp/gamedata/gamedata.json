@@ -114,6 +114,18 @@
       "linux": 21
     }
   },
+  "CCSPlayer_WeaponServices_DropWeapon": {
+    "offsets": {
+      "windows": 22,
+      "linux": 23
+    }
+  },
+  "CCSPlayer_WeaponServices_SelectItem": {
+    "offsets": {
+      "windows": 24,
+      "linux": 25
+    }
+  },
   "CCSPlayer_ItemServices_RemoveWeapons": {
     "offsets": {
       "windows": 21,
@@ -272,5 +284,15 @@
       "windows": 584,
       "linux": 584
     }
+  },
+  "IsPlayerPawn": {
+    "offsets": {
+      "windows": 161,
+      "linux": 160
+    }
+  },
+  "IsPlayerController": {
+    "windows": 162,
+    "linux": 161
   }
 }

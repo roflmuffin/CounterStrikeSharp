@@ -25,6 +25,28 @@ public partial class CBaseEntity
             _angles, _velocity);
     }
 
+    /// <summary>
+    /// Check if entity is controller
+    /// </summary>
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
+    public bool IsController()
+    {
+        Guard.IsValidEntity(this);
+
+        return VirtualFunction.CreateVoid<IntPtr>(Handle, GameData.GetOffset("IsPlayerController"))(Handle);
+    }
+
+    /// <summary>
+    /// Check if entity is pawn
+    /// </summary>
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
+    public bool IsPawn()
+    {
+        Guard.IsValidEntity(this);
+
+        return VirtualFunction.CreateVoid<IntPtr>(Handle, GameData.GetOffset("IsPlayerPawn"))(Handle);
+    }
+
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
     public void DispatchSpawn()
     {
@@ -62,7 +84,7 @@ public partial class CBaseEntity
     public uint EmitSound(string soundEventName, RecipientFilter? recipients = null, float volume = 1f, float pitch = 0)
     {
         Guard.IsValidEntity(this);
-        
+
         if (recipients == null)
         {
             recipients = new RecipientFilter();
