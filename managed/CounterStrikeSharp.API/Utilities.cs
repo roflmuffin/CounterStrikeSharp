@@ -115,7 +115,7 @@ namespace CounterStrikeSharp.API
 
             if (item != null && item.Value != null)
             {
-                player.PlayerPawn.Value.WeaponServices.DropWeapon(item);
+                player.PlayerPawn.Value.WeaponServices.DropWeapon(item.Value);
 
                 if (shouldRemoveEntity)
                 {
