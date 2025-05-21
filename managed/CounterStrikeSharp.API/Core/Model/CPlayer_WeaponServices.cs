@@ -31,10 +31,10 @@ public partial class CPlayer_WeaponServices
 
         Guard.IsValidEntity(weapon);
 
-        nint _position = vecTarget?.Handle ?? 0;
+        nint _target = vecTarget?.Handle ?? 0;
         nint _velocity = velocity?.Handle ?? 0;
 
-        VirtualFunction.CreateVoid<IntPtr, IntPtr, IntPtr, IntPtr>(Handle, GameData.GetOffset("CCSPlayer_WeaponServices_DropWeapon"))(Handle, weapon.Handle, _position, _velocity);
+        VirtualFunction.CreateVoid<IntPtr, IntPtr, IntPtr, IntPtr>(Handle, GameData.GetOffset("CCSPlayer_WeaponServices_DropWeapon"))(Handle, weapon.Handle, _target, _velocity);
     }
 
     /// <summary>
