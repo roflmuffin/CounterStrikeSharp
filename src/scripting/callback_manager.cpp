@@ -45,13 +45,16 @@ bool ScriptCallback::RemoveListener(CallbackT fnPluginFunction)
 
 void ScriptCallback::Execute(bool bResetContext)
 {
-    if (m_functions.empty()) {
+    if (m_functions.empty())
+    {
         ScriptContext().ThrowNativeError("Tried to execute callback without any listeners");
         CSSHARP_CORE_WARN("ScriptCallback::Execute called with no listeners (callback: '{}')", m_name);
         return;
     }
 
-    if (m_name != "OnTick" && m_name != "CheckTransmit") {
+    if (m_name != "OnTick" && m_name != "CheckTransmit" && m_name != "Timer" && m_name != "player_jump" && m_name != "weapon_fire" &&
+            m_name != "bullet_impact")
+    {
         CSSHARP_CORE_INFO("Executing callback '{}', total callbacks: {}", m_name, m_functions.size());
     }
 
@@ -59,17 +62,22 @@ void ScriptCallback::Execute(bool bResetContext)
 
     for (size_t i = 0; i < m_functions.size(); ++i)
     {
-        auto MethodToCall = m_functions[i];
+        auto fnMethodToCall = m_functions[i];
 
-        if (m_name != "OnTick" && m_name != "CheckTransmit") {
-            CSSHARP_CORE_INFO("Callback #{} pointer: {}", i, (void*)MethodToCall);
+        if (m_name != "OnTick" && m_name != "CheckTransmit" && m_name != "Timer" && m_name != "player_jump" && m_name != "weapon_fire" &&
+            m_name != "bullet_impact")
+        {
+            CSSHARP_CORE_INFO("Callback #{} pointer: {}", i, (void*)fnMethodToCall);
         }
 
-        if (MethodToCall)
+        if (fnMethodToCall)
         {
-            try {
-                MethodToCall(&ScriptContextStruct());
-            } catch (...) {
+            try
+            {
+                fnMethodToCall(&ScriptContextStruct());
+            }
+            catch (...)
+            {
                 ScriptContext().ThrowNativeError("Exception in callback execution");
                 CSSHARP_CORE_ERROR("Exception thrown inside callback '{}', index {}", m_name, i);
             }
