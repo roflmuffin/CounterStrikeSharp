@@ -51,14 +51,19 @@ void ScriptCallback::Execute(bool bResetContext)
         return;
     }
 
-    CSSHARP_CORE_INFO("Executing callback '{}', total callbacks: {}", m_name, m_functions.size());
+    if (m_name != "OnTick" && m_name != "CheckTransmit") {
+        CSSHARP_CORE_INFO("Executing callback '{}', total callbacks: {}", m_name, m_functions.size());
+    }
 
     VPROF_BUDGET(m_profile_name.c_str(), "CS# Script Callbacks");
 
     for (size_t i = 0; i < m_functions.size(); ++i)
     {
         auto MethodToCall = m_functions[i];
-        CSSHARP_CORE_INFO("Callback #{} pointer: {}", i, (void*)MethodToCall);
+
+        if (m_name != "OnTick" && m_name != "CheckTransmit") {
+            CSSHARP_CORE_INFO("Callback #{} pointer: {}", i, (void*)MethodToCall);
+        }
 
         if (MethodToCall)
         {
