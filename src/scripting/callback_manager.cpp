@@ -36,11 +36,21 @@ void ScriptCallback::AddListener(CallbackT fnPluginFunction) { m_functions.push_
 
 bool ScriptCallback::RemoveListener(CallbackT fnPluginFunction)
 {
-    bool bSuccess = true;
+    size_t nOriginalSize = m_functions.size();
+    m_functions.erase(std::ranges::remove(m_functions, fnPluginFunction).begin(), m_functions.end());
+    return m_functions.size() != nOriginalSize;
+}
 
-    m_functions.erase(std::remove(m_functions.begin(), m_functions.end(), fnPluginFunction), m_functions.end());
-
-    return bSuccess;
+bool ScriptCallback::IsContextSafe()
+{
+    try {
+        auto& Ctx = ScriptContext();
+        Ctx.GetResult<void*>();
+        return true;
+    } catch (...) {
+        CSSHARP_CORE_WARN("Context is invalid (exception during access)");
+        return false;
+    }
 }
 
 void ScriptCallback::Execute(bool bResetContext)
@@ -52,13 +62,18 @@ void ScriptCallback::Execute(bool bResetContext)
         return;
     }
 
+    if (!IsContextSafe())
+    {
+        ScriptContext().ThrowNativeError("ScriptCallback::Execute aborted due to invalid context");
+        CSSHARP_CORE_WARN("ScriptCallback::Execute aborted due to invalid context (callback: '{}')", m_name);
+        return;
+    }
+
     VPROF_BUDGET(m_profile_name.c_str(), "CS# Script Callbacks");
 
-    for (size_t i = 0; i < m_functions.size(); ++i)
+    for (size_t nI = 0; nI < m_functions.size(); ++nI)
     {
-        auto fnMethodToCall = m_functions[i];
-
-        if (fnMethodToCall)
+        if (auto fnMethodToCall = m_functions[nI])
         {
             try
             {
@@ -67,13 +82,13 @@ void ScriptCallback::Execute(bool bResetContext)
             catch (...)
             {
                 ScriptContext().ThrowNativeError("Exception in callback execution");
-                CSSHARP_CORE_ERROR("Exception thrown inside callback '{}', index {}", m_name, i);
+                CSSHARP_CORE_ERROR("Exception thrown inside callback '{}', index {}", m_name, nI);
             }
         }
         else
         {
             ScriptContext().ThrowNativeError("Null listener in callback");
-            CSSHARP_CORE_ERROR("Null function pointer in callback '{}', index {}", m_name, i);
+            CSSHARP_CORE_ERROR("Null function pointer in callback '{}', index {}", m_name, nI);
         }
     }
 
@@ -111,9 +126,9 @@ ScriptCallback* CallbackManager::FindCallback(const char* szName)
 
 void CallbackManager::ReleaseCallback(ScriptCallback* pCallback)
 {
-    auto I = std::remove_if(m_managed.begin(), m_managed.end(), [pCallback](ScriptCallback* pI) {
+    auto I = std::ranges::remove_if(m_managed, [pCallback](const ScriptCallback* pI) {
         return pCallback == pI;
-    });
+    }).begin();
 
     if (I != m_managed.end()) m_managed.erase(I, m_managed.end());
     delete pCallback;
@@ -121,8 +136,7 @@ void CallbackManager::ReleaseCallback(ScriptCallback* pCallback)
 
 bool CallbackManager::TryAddFunction(const char* szName, CallbackT fnCallable)
 {
-    auto* pCallback = FindCallback(szName);
-    if (pCallback)
+    if (auto* pCallback = FindCallback(szName))
     {
         pCallback->AddListener(fnCallable);
         return true;
@@ -133,8 +147,7 @@ bool CallbackManager::TryAddFunction(const char* szName, CallbackT fnCallable)
 
 bool CallbackManager::TryRemoveFunction(const char* szName, CallbackT fnCallable)
 {
-    auto* pCallback = FindCallback(szName);
-    if (pCallback)
+    if (auto* pCallback = FindCallback(szName))
     {
         return pCallback->RemoveListener(fnCallable);
     }

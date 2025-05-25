@@ -49,8 +49,8 @@ void EventManager::OnGameLoopInitialized()
 {
     while (!m_PendingHooks.empty())
     {
-        const auto& pendingHook = m_PendingHooks.top();
-        HookEvent(pendingHook.m_Name.c_str(), pendingHook.m_fnCallback, pendingHook.m_bPost);
+        const auto& PendingHook = m_PendingHooks.top();
+        HookEvent(PendingHook.m_Name.c_str(), PendingHook.m_fnCallback, PendingHook.m_bPost);
         m_PendingHooks.pop();
     }
 }
@@ -75,14 +75,16 @@ void EventManager::FireGameEvent(IGameEvent* pEvent) {}
 
 bool EventManager::HookEvent(const char* szName, CallbackT fnCallback, bool bPost)
 {
-    EventHook* pHook;
+    if (!szName || !fnCallback)
+    {
+        CSSHARP_CORE_WARN("[EventManager] Invalid arguments to HookEvent. szName or fnCallback is null.");
+        return false;
+    }
 
-    // Plugin load is called before game loop (and thus events file is loaded)
-    // So we defer hooking until game loop is initialized
     if (!globals::gameLoopInitialized)
     {
-        const PendingEventHook pendingHook{ szName, fnCallback, bPost };
-        m_PendingHooks.push(pendingHook);
+        const PendingEventHook PendingHook{ .m_Name = szName, .m_fnCallback = fnCallback, .m_bPost = bPost };
+        m_PendingHooks.push(PendingHook);
         return true;
     }
 
@@ -90,42 +92,63 @@ bool EventManager::HookEvent(const char* szName, CallbackT fnCallback, bool bPos
 
     if (!globals::gameEventManager->FindListener(this, szName))
     {
-        globals::gameEventManager->AddListener(this, szName, true);
+        if (!globals::gameEventManager->AddListener(this, szName, true))
+        {
+            CSSHARP_CORE_ERROR("[EventManager] Failed to add listener for event: {0}", szName);
+            return false;
+        }
     }
 
-    auto search = m_hooksMap.find(szName);
-    // If hook struct is not found
-    if (search == m_hooksMap.end())
+    EventHook* pHook = nullptr;
+
+    if (auto Search = m_hooksMap.find(szName); Search != m_hooksMap.end())
+    {
+        pHook = Search->second;
+    }
+    else
     {
         pHook = new EventHook();
+        pHook->m_Name = std::string(szName);
 
         if (bPost)
         {
             pHook->m_pPostHook = globals::callbackManager.CreateCallback(szName);
+            if (!pHook->m_pPostHook)
+            {
+                CSSHARP_CORE_ERROR("[EventManager] Failed to create post hook for event: {0}", szName);
+                delete pHook;
+                return false;
+            }
+
             pHook->m_pPostHook->AddListener(fnCallback);
         }
         else
         {
             pHook->m_pPreHook = globals::callbackManager.CreateCallback(szName);
+            if (!pHook->m_pPreHook)
+            {
+                CSSHARP_CORE_ERROR("[EventManager] Failed to create pre hook for event: {0}", szName);
+                delete pHook;
+                return false;
+            }
+
             pHook->m_pPreHook->AddListener(fnCallback);
         }
 
-        pHook->m_Name = std::string(szName);
-
         m_hooksMap[szName] = pHook;
-
         return true;
-    }
-    else
-    {
-        pHook = search->second;
     }
 
     if (bPost)
     {
         if (!pHook->m_pPostHook)
         {
-            pHook->m_pPostHook = globals::callbackManager.CreateCallback("");
+            pHook->m_pPostHook = globals::callbackManager.CreateCallback(szName);
+            if (!pHook->m_pPostHook)
+            {
+                CSSHARP_CORE_ERROR("[EventManager] Failed to create post hook (existing) for event: {0}", szName);
+                return false;
+            }
         }
 
         pHook->m_pPostHook->AddListener(fnCallback);
@@ -134,7 +157,12 @@ bool EventManager::HookEvent(const char* szName, CallbackT fnCallback, bool bPos
     {
         if (!pHook->m_pPreHook)
         {
-            pHook->m_pPreHook = globals::callbackManager.CreateCallback("");
+            pHook->m_pPreHook = globals::callbackManager.CreateCallback(szName);
+            if (!pHook->m_pPreHook)
+            {
+                CSSHARP_CORE_ERROR("[EventManager] Failed to create pre hook (existing) for event: {0}", szName);
+                return false;
+            }
         }
 
         pHook->m_pPreHook->AddListener(fnCallback);
@@ -148,13 +176,13 @@ bool EventManager::UnhookEvent(const char* szName, CallbackT fnCallback, bool bP
     EventHook* pHook;
     ScriptCallback* pCallback;
 
-    auto search = m_hooksMap.find(szName);
-    if (search == m_hooksMap.end())
+    auto Search = m_hooksMap.find(szName);
+    if (Search == m_hooksMap.end())
     {
         return false;
     }
 
-    pHook = search->second;
+    pHook = Search->second;
 
     if (bPost)
     {
@@ -199,7 +227,7 @@ bool EventManager::OnFireEvent(IGameEvent* pEvent, bool bDontBroadcast)
 
     if (I != m_hooksMap.end())
     {
-        auto pEventHook = I->second;
+        auto *pEventHook = I->second;
         m_EventStack.push(pEventHook);
         auto* pCallback = pEventHook->m_pPreHook;
 
@@ -207,10 +235,10 @@ bool EventManager::OnFireEvent(IGameEvent* pEvent, bool bDontBroadcast)
         {
             CSSHARP_CORE_TRACE("Pushing event `{}` pointer: {}, dont broadcast: {}, post: {}", szName, (void*)pEvent, bDontBroadcast,
                                false);
-            EventOverride override = { bDontBroadcast };
+            EventOverride Override = { bDontBroadcast };
             pCallback->Reset();
             pCallback->ScriptContext().Push(pEvent);
-            pCallback->ScriptContext().Push(&override);
+            pCallback->ScriptContext().Push(&Override);
 
             VPROF_BUDGET("CS#::OnFireEvent", "CS# Event Hooks");
             for (auto fnMethodToCall : pCallback->GetFunctions())
@@ -218,10 +246,10 @@ bool EventManager::OnFireEvent(IGameEvent* pEvent, bool bDontBroadcast)
                 if (!fnMethodToCall) continue;
                 fnMethodToCall(&pCallback->ScriptContextStruct());
 
-                auto result = pCallback->ScriptContext().GetResult<HookResult>();
-                bLocalDontBroadcast = override.m_bDontBroadcast;
+                const auto Result = pCallback->ScriptContext().GetResult<HookResult>();
+                bLocalDontBroadcast = Override.m_bDontBroadcast;
 
-                if (result >= HookResult::Handled)
+                if (Result >= HookResult::Handled)
                 {
                     m_EventCopies.push(globals::gameEventManager->DuplicateEvent(pEvent));
                     globals::gameEventManager->FreeEvent(pEvent);
@@ -251,7 +279,7 @@ bool EventManager::OnFireEventPost(IGameEvent* pEvent, bool bDontBroadcast)
         RETURN_META_VALUE(MRES_IGNORED, false);
     }
 
-    auto pHook = m_EventStack.top();
+    auto *pHook = m_EventStack.top();
 
     if (pHook)
     {
@@ -261,13 +289,13 @@ bool EventManager::OnFireEventPost(IGameEvent* pEvent, bool bDontBroadcast)
         {
             VPROF_BUDGET("CS#::OnFireEventPost", "CS# Event Hooks");
 
-            auto pEventCopy = m_EventCopies.top();
+            auto *pEventCopy = m_EventCopies.top();
             CSSHARP_CORE_TRACE("Pushing event `{}` pointer: {}, dont broadcast: {}, post: {}", pEventCopy->GetName(), (void*)pEventCopy,
                                bDontBroadcast, true);
-            EventOverride override = { bDontBroadcast };
+            EventOverride Override = { bDontBroadcast };
             pCallback->Reset();
             pCallback->ScriptContext().Push(pEventCopy);
-            pCallback->ScriptContext().Push(&override);
+            pCallback->ScriptContext().Push(&Override);
             pCallback->Execute();
 
             if (pEventCopy)
