@@ -71,10 +71,10 @@ class CallbackPair
     CallbackPair();
     CallbackPair(bool bNoCallbacks);
     ~CallbackPair();
-    bool HasCallbacks() const { return m_pPre->GetFunctionCount() > 0 || m_pPost->GetFunctionCount() > 0; }
+    bool HasCallbacks() const { return pre->GetFunctionCount() > 0 || post->GetFunctionCount() > 0; }
 
-    ScriptCallback* m_pPre;
-    ScriptCallback* m_pPost;
+    ScriptCallback* pre;
+    ScriptCallback* post;
 };
 
 } // namespace counterstrikesharp
