@@ -52,23 +52,11 @@ void ScriptCallback::Execute(bool bResetContext)
         return;
     }
 
-    if (m_name != "OnTick" && m_name != "CheckTransmit" && m_name != "Timer" && m_name != "player_jump" && m_name != "weapon_fire" &&
-            m_name != "bullet_impact")
-    {
-        CSSHARP_CORE_INFO("Executing callback '{}', total callbacks: {}", m_name, m_functions.size());
-    }
-
     VPROF_BUDGET(m_profile_name.c_str(), "CS# Script Callbacks");
 
     for (size_t i = 0; i < m_functions.size(); ++i)
     {
         auto fnMethodToCall = m_functions[i];
-
-        if (m_name != "OnTick" && m_name != "CheckTransmit" && m_name != "Timer" && m_name != "player_jump" && m_name != "weapon_fire" &&
-            m_name != "bullet_impact")
-        {
-            CSSHARP_CORE_INFO("Callback #{} pointer: {}", i, (void*)fnMethodToCall);
-        }
 
         if (fnMethodToCall)
         {
