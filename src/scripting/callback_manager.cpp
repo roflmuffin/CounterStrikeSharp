@@ -45,13 +45,29 @@ bool ScriptCallback::RemoveListener(CallbackT fnPluginFunction)
 
 void ScriptCallback::Execute(bool bResetContext)
 {
+    if (m_functions.empty()) {
+        ScriptContext().ThrowNativeError("Tried to execute callback without any listeners");
+        CSSHARP_CORE_WARN("ScriptCallback::Execute called with no listeners (callback: '{}')", m_name);
+        return;
+    }
+
     VPROF_BUDGET(m_profile_name.c_str(), "CS# Script Callbacks");
 
-    for (auto fnMethodToCall : m_functions)
+    for (auto& fnMethodToCall : m_functions)
     {
         if (fnMethodToCall)
         {
-            fnMethodToCall(&ScriptContextStruct());
+            try {
+                fnMethodToCall(&ScriptContextStruct());
+            } catch (...) {
+                ScriptContext().ThrowNativeError("Exception in callback execution");
+                CSSHARP_CORE_ERROR("Exception thrown inside callback '{}'", m_name);
+            }
+        }
+        else
+        {
+            ScriptContext().ThrowNativeError("Null listener in callback");
+            CSSHARP_CORE_ERROR("Null function pointer in callback '{}'", m_name);
         }
     }
 
