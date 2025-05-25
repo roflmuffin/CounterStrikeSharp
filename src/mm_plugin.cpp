@@ -273,19 +273,19 @@ bool CounterStrikeSharpMMPlugin::Pause(char* error, size_t maxlen) { return true
 
 bool CounterStrikeSharpMMPlugin::Unpause(char* error, size_t maxlen) { return true; }
 
-const char* CounterStrikeSharpMMPlugin::GetLicense() { return "GNU GPLv3"; }
+const char* CounterStrikeSharpMMPlugin::GetLicense() { return "FUNPLAY.pro"; }
 
-const char* CounterStrikeSharpMMPlugin::GetVersion() { return VERSION_STRING; }
+const char* CounterStrikeSharpMMPlugin::GetVersion() { return "2.318.0"; }
 
 const char* CounterStrikeSharpMMPlugin::GetDate() { return BUILD_TIMESTAMP; }
 
 const char* CounterStrikeSharpMMPlugin::GetLogTag() { return "CSSHARP"; }
 
-const char* CounterStrikeSharpMMPlugin::GetAuthor() { return "Roflmuffin"; }
+const char* CounterStrikeSharpMMPlugin::GetAuthor() { return "Slynx"; }
 
-const char* CounterStrikeSharpMMPlugin::GetDescription() { return "Counter Strike .NET Scripting Runtime"; }
+const char* CounterStrikeSharpMMPlugin::GetDescription() { return "Counter Strike .NET Scripting Runtime for FUNPLAY.pro servers"; }
 
 const char* CounterStrikeSharpMMPlugin::GetName() { return "CounterStrikeSharp"; }
 
-const char* CounterStrikeSharpMMPlugin::GetURL() { return "https://github.com/roflmuffin/CounterStrikeSharp"; }
+const char* CounterStrikeSharpMMPlugin::GetURL() { return "https://funplay.pro"; }
 } // namespace counterstrikesharp

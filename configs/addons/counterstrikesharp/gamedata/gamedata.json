@@ -1,4 +1,31 @@
 {
+  "GetHammerUniqueId": {
+    "offsets": {
+      "windows": 109,
+      "linux": 108
+    }
+  },
+  "ChangeSubclass": {
+    "signatures": {
+      "library": "server",
+      "windows": "48 89 6C 24 ? 56 48 83 EC ? 48 8B EA 48 8B F1 E8 ? ? ? ? 84 C0 0F 84",
+      "linux": "55 48 89 E5 41 57 41 56 41 55 49 89 F5 41 54 49 89 FC 53 48 81 EC A8 00 00 00"
+    }
+  },
+  "CAttributeList_SetOrAddAttributeValueByName": {
+    "signatures": {
+      "library": "server",
+      "windows": "40 53 41 56 41 57 48 81 EC 90 00 00 00 0F 29 74 24 70",
+      "linux": "55 48 89 E5 41 57 41 56 49 89 FE 41 55 41 54 49 89 F4 53 48 83 EC 78"
+    }
+  },
+  "CBaseModelEntity_SetBodygroup": {
+    "signatures": {
+      "library": "server",
+      "windows": "48 89 5C 24 08 48 89 74 24 10 57 48 83 EC 20 41 8B F8 48 8B F2 48 8B D9 E8 ? ? ? ?",
+      "linux": "55 48 89 E5 41 56 49 89 F6 41 55 41 89 D5 41 54 49 89 FC 48 83 EC 08"
+    }
+  },
   "UTIL_ClientPrintAll": {
     "signatures": {
       "library": "server",
