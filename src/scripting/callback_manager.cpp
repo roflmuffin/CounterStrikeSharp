@@ -51,23 +51,28 @@ void ScriptCallback::Execute(bool bResetContext)
         return;
     }
 
+    CSSHARP_CORE_INFO("Executing callback '{}', total callbacks: {}", m_name, m_functions.size());
+
     VPROF_BUDGET(m_profile_name.c_str(), "CS# Script Callbacks");
 
-    for (auto& fnMethodToCall : m_functions)
+    for (size_t i = 0; i < m_functions.size(); ++i)
     {
-        if (fnMethodToCall)
+        auto MethodToCall = m_functions[i];
+        CSSHARP_CORE_INFO("Callback #{} pointer: {}", i, (void*)MethodToCall);
+
+        if (MethodToCall)
         {
             try {
-                fnMethodToCall(&ScriptContextStruct());
+                MethodToCall(&ScriptContextStruct());
             } catch (...) {
                 ScriptContext().ThrowNativeError("Exception in callback execution");
-                CSSHARP_CORE_ERROR("Exception thrown inside callback '{}'", m_name);
+                CSSHARP_CORE_ERROR("Exception thrown inside callback '{}', index {}", m_name, i);
             }
         }
         else
         {
             ScriptContext().ThrowNativeError("Null listener in callback");
-            CSSHARP_CORE_ERROR("Null function pointer in callback '{}'", m_name);
+            CSSHARP_CORE_ERROR("Null function pointer in callback '{}', index {}", m_name, i);
         }
     }
 

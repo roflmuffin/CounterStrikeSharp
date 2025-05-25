@@ -270,8 +270,15 @@ bool EventManager::OnFireEventPost(IGameEvent* pEvent, bool bDontBroadcast)
             pCallback->ScriptContext().Push(&override);
             pCallback->Execute();
 
-            globals::gameEventManager->FreeEvent(pEventCopy);
-            m_EventCopies.pop();
+            if (pEventCopy)
+            {
+                globals::gameEventManager->FreeEvent(pEventCopy);
+                m_EventCopies.pop();
+            }
+            else
+            {
+                CSSHARP_CORE_WARN("OnFireEventPost: pEventCopy is nullptr, cannot free event");
+            }
         }
     }
 
