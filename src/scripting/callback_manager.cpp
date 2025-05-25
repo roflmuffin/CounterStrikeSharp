@@ -165,23 +165,23 @@ void CallbackManager::PrintCallbackDebug()
 }
 CallbackPair::CallbackPair()
 {
-    pre = globals::callbackManager.CreateCallback("");
-    post = globals::callbackManager.CreateCallback("");
+    m_pPre = globals::callbackManager.CreateCallback("");
+    m_pPost = globals::callbackManager.CreateCallback("");
 }
 
 CallbackPair::CallbackPair(bool bNoCallbacks)
 {
     if (!bNoCallbacks)
     {
-        pre = globals::callbackManager.CreateCallback("");
-        post = globals::callbackManager.CreateCallback("");
+        m_pPre = globals::callbackManager.CreateCallback("");
+        m_pPost = globals::callbackManager.CreateCallback("");
     }
 }
 
 CallbackPair::~CallbackPair()
 {
-    globals::callbackManager.ReleaseCallback(pre);
-    globals::callbackManager.ReleaseCallback(post);
+    globals::callbackManager.ReleaseCallback(m_pPre);
+    globals::callbackManager.ReleaseCallback(m_pPost);
 }
 
 } // namespace counterstrikesharp
