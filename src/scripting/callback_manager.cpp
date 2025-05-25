@@ -58,7 +58,6 @@ void ScriptCallback::Execute(bool bResetContext)
     if (m_functions.empty())
     {
         ScriptContext().ThrowNativeError("Tried to execute callback without any listeners");
-        CSSHARP_CORE_WARN("ScriptCallback::Execute called with no listeners (callback: '{}')", m_name);
         return;
     }
 
