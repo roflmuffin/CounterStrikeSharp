@@ -98,9 +98,7 @@ namespace CounterStrikeSharp.API
         {
             CHandle<CBasePlayerWeapon>? item = null;
 
-            if (player.PlayerPawn.Value == null
-            || !player.PlayerPawn.Value.IsValid
-            || player.PlayerPawn.Value.WeaponServices == null) return false;
+            if (player.PlayerPawn.Value == null || player.PlayerPawn.Value.WeaponServices == null) return false;
 
             foreach (var weapon in player.PlayerPawn.Value.WeaponServices.MyWeapons)
             {
