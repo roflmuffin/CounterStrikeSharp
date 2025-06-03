@@ -30,12 +30,14 @@ std::vector<std::function<void()>> TickScheduler::getCallbacks(int currentTick)
 
     std::lock_guard<std::mutex> lock(taskMutex);
 
-    if (scheduledTasks.empty()) {
+    if (scheduledTasks.empty())
+    {
         return callbacksToRun;
     }
 
     // Process tasks due for the current tick
-    while (!scheduledTasks.empty() && scheduledTasks.top().first <= currentTick) {
+    while (!scheduledTasks.empty() && scheduledTasks.top().first <= currentTick)
+    {
         callbacksToRun.push_back(scheduledTasks.top().second);
         scheduledTasks.pop();
     }

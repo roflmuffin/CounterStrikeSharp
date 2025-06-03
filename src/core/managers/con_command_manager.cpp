@@ -179,7 +179,7 @@ CON_COMMAND(dump_schema, "dump schema symbols")
     output << std::setw(2) << j << std::endl;
 }
 
-SH_DECL_HOOK3_void(ICvar, DispatchConCommand, SH_NOATTRIB, 0, ConCommandHandle, const CCommandContext&, const CCommand&);
+SH_DECL_HOOK3_void(ICvar, DispatchConCommand, SH_NOATTRIB, 0, ConCommandRef, const CCommandContext&, const CCommand&);
 
 ConCommandInfo::ConCommandInfo()
 {
@@ -222,45 +222,31 @@ void UnlockConVars()
 {
     int unhiddenConVars = 0;
 
-    ConVar* currentCvar = nullptr;
-    ConVarHandle currentCvarHandle;
-    currentCvarHandle.Set(0);
-
-    do
+    for (ConVarRefAbstract ref(ConVarRef((uint16)0)); ref.IsValidRef(); ref = ConVarRefAbstract(ConVarRef(ref.GetAccessIndex() + 1)))
     {
-        currentCvar = globals::cvars->GetConVar(currentCvarHandle);
+        if (!ref.IsFlagSet(flagsToRemove)) continue;
 
-        currentCvarHandle.Set(currentCvarHandle.Get() + 1);
-
-        if (!currentCvar) continue;
-
-        if (!(currentCvar->flags & flagsToRemove)) continue;
-
-        currentCvar->flags &= ~flagsToRemove;
+        ref.RemoveFlags(flagsToRemove);
         unhiddenConVars++;
-    } while (currentCvar);
+    }
 }
 
 void UnlockConCommands()
 {
     int unhiddenConCommands = 0;
 
-    ConCommand* currentConCommand = nullptr;
-    ConCommand* invalidConCommand = globals::cvars->GetCommand(ConCommandHandle());
-    ConCommandHandle conCommandHandle;
-    conCommandHandle.Set(0);
+    ConCommandData* currentConCommand = nullptr;
+    ConCommandData* invalidConCommand = globals::cvars->GetConCommandData(ConCommandRef());
+    ConCommandRef ref = ConCommandRef((uint16)0);
 
-    do
+    ConCommandData* data = g_pCVar->GetConCommandData(ConCommandRef());
+    for (ConCommandRef ref = ConCommandRef((uint16)0); ref.GetRawData() != data; ref = ConCommandRef(ref.GetAccessIndex() + 1))
     {
-        currentConCommand = globals::cvars->GetCommand(conCommandHandle);
+        if (!ref.IsFlagSet(flagsToRemove)) continue;
 
-        conCommandHandle.Set(conCommandHandle.Get() + 1);
-
-        if (!currentConCommand || currentConCommand == invalidConCommand || !(currentConCommand->GetFlags() & flagsToRemove)) continue;
-
-        currentConCommand->RemoveFlags(flagsToRemove);
+        ref.RemoveFlags(flagsToRemove);
         unhiddenConCommands++;
-    } while (currentConCommand && currentConCommand != invalidConCommand);
+    }
 }
 
 void ConCommandManager::OnShutdown()
@@ -301,10 +287,10 @@ void ConCommandManager::AddCommandListener(const char* name, CallbackT callback,
         pInfo = new ConCommandInfo();
         m_cmd_lookup[strName] = pInfo;
 
-        ConCommandHandle hExistingCommand = globals::cvars->FindCommand(name);
-        if (hExistingCommand.IsValid())
+        ConCommandRef hExistingCommand = globals::cvars->FindConCommand(name);
+        if (hExistingCommand.IsValidRef())
         {
-            pInfo->command = globals::cvars->GetCommand(hExistingCommand);
+            pInfo->command = globals::cvars->GetConCommandData(hExistingCommand);
         }
     }
 
@@ -353,11 +339,10 @@ void ConCommandManager::RemoveCommandListener(const char* name, CallbackT callba
 
 bool ConCommandManager::AddValveCommand(const char* name, const char* description, bool server_only, int flags)
 {
-    ConCommandHandle hExistingCommand = globals::cvars->FindCommand(name);
-    if (hExistingCommand.IsValid()) return false;
+    ConCommandRef hExistingCommand = globals::cvars->FindConCommand(name);
+    if (hExistingCommand.IsValidRef()) return false;
 
-    ConCommandRefAbstract conCommandRefAbstract;
-    auto conCommand = new ConCommand(&conCommandRefAbstract, strdup(name), CommandCallback, description ? strdup(description) : "", flags);
+    auto conCommand = new ConCommand(strdup(name), CommandCallback, description ? strdup(description) : "", flags);
 
     ConCommandInfo* pInfo = m_cmd_lookup[std::string(name)];
 
@@ -367,8 +352,7 @@ bool ConCommandManager::AddValveCommand(const char* name, const char* descriptio
         m_cmd_lookup[std::string(name)] = pInfo;
     }
 
-    pInfo->p_cmd = conCommandRefAbstract;
-    pInfo->command = conCommand;
+    pInfo->command = conCommand->GetRawData();
     pInfo->server_only = server_only;
 
     return true;
@@ -376,14 +360,14 @@ bool ConCommandManager::AddValveCommand(const char* name, const char* descriptio
 
 bool ConCommandManager::RemoveValveCommand(const char* name)
 {
-    auto hFoundCommand = globals::cvars->FindCommand(name);
+    auto hFoundCommand = globals::cvars->FindConCommand(name);
 
-    if (!hFoundCommand.IsValid())
+    if (!hFoundCommand.IsValidRef())
     {
         return false;
     }
 
-    globals::cvars->UnregisterConCommand(hFoundCommand);
+    globals::cvars->UnregisterConCommandCallbacks(hFoundCommand);
 
     auto pInfo = m_cmd_lookup[std::string(name)];
     if (!pInfo)
@@ -474,7 +458,7 @@ HookResult ConCommandManager::ExecuteCommandCallbacks(
     return result;
 }
 
-void ConCommandManager::Hook_DispatchConCommand(ConCommandHandle cmd, const CCommandContext& ctx, const CCommand& args)
+void ConCommandManager::Hook_DispatchConCommand(ConCommandRef cmd, const CCommandContext& ctx, const CCommand& args)
 {
     const char* name = args.Arg(0);
 
@@ -486,7 +470,7 @@ void ConCommandManager::Hook_DispatchConCommand(ConCommandHandle cmd, const CCom
         RETURN_META(MRES_SUPERCEDE);
     }
 }
-void ConCommandManager::Hook_DispatchConCommand_Post(ConCommandHandle cmd, const CCommandContext& ctx, const CCommand& args)
+void ConCommandManager::Hook_DispatchConCommand_Post(ConCommandRef cmd, const CCommandContext& ctx, const CCommand& args)
 {
     const char* name = args.Arg(0);
 
@@ -498,8 +482,8 @@ void ConCommandManager::Hook_DispatchConCommand_Post(ConCommandHandle cmd, const
 }
 bool ConCommandManager::IsValidValveCommand(const char* name)
 {
-    ConCommandHandle pCmd = globals::cvars->FindCommand(name);
-    return pCmd.IsValid();
+    ConCommandRef pCmd = globals::cvars->FindConCommand(name);
+    return pCmd.IsValidRef();
 }
 
 CommandCallingContext ConCommandManager::GetCommandCallingContext(CCommand* args) { return m_cmd_contexts[args]; }

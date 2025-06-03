@@ -10563,14 +10563,6 @@
         }
       ]
     },
-    "CBreachCharge": {
-      "fields": [],
-      "parent": "CCSWeaponBase"
-    },
-    "CBreachChargeProjectile": {
-      "fields": [],
-      "parent": "CBaseGrenade"
-    },
     "CBreakable": {
       "fields": [
         {
@@ -11312,14 +11304,6 @@
         }
       ],
       "parent": "CBaseModelEntity"
-    },
-    "CBumpMine": {
-      "fields": [],
-      "parent": "CCSWeaponBase"
-    },
-    "CBumpMineProjectile": {
-      "fields": [],
-      "parent": "CBaseGrenade"
     },
     "CBuoyancyHelper": {
       "fields": [
@@ -13253,13 +13237,6 @@
           }
         },
         {
-          "name": "m_nServerQuestID",
-          "type": {
-            "category": 0,
-            "name": "int32"
-          }
-        },
-        {
           "name": "m_vMinimapMins",
           "type": {
             "atomic": 0,
@@ -14431,6 +14408,13 @@
           }
         },
         {
+          "name": "m_uiCommunicationMuteFlags",
+          "type": {
+            "category": 0,
+            "name": "uint32"
+          }
+        },
+        {
           "name": "m_szCrosshairCodes",
           "type": {
             "atomic": 0,
@@ -14623,6 +14607,13 @@
           "type": {
             "category": 0,
             "name": "uint16"
+          }
+        },
+        {
+          "name": "m_rtActiveMissionPeriod",
+          "type": {
+            "category": 0,
+            "name": "uint32"
           }
         },
         {
@@ -17470,13 +17461,6 @@
         },
         {
           "name": "m_flLastTimeInAir",
-          "type": {
-            "category": 5,
-            "name": "GameTime_t"
-          }
-        },
-        {
-          "name": "m_flLastDeployTime",
           "type": {
             "category": 5,
             "name": "GameTime_t"
@@ -26480,72 +26464,6 @@
         }
       ],
       "parent": "CBaseEntity"
-    },
-    "CFists": {
-      "fields": [
-        {
-          "name": "m_bPlayingUninterruptableAct",
-          "type": {
-            "category": 0,
-            "name": "bool"
-          }
-        },
-        {
-          "name": "m_nUninterruptableActivity",
-          "type": {
-            "category": 6,
-            "name": "PlayerAnimEvent_t"
-          }
-        },
-        {
-          "name": "m_bRestorePrevWep",
-          "type": {
-            "category": 0,
-            "name": "bool"
-          }
-        },
-        {
-          "name": "m_hWeaponBeforePrevious",
-          "type": {
-            "atomic": 1,
-            "category": 4,
-            "inner": {
-              "category": 5,
-              "name": "CBasePlayerWeapon"
-            },
-            "name": "CHandle< CBasePlayerWeapon >",
-            "outer": "CHandle"
-          }
-        },
-        {
-          "name": "m_hWeaponPrevious",
-          "type": {
-            "atomic": 1,
-            "category": 4,
-            "inner": {
-              "category": 5,
-              "name": "CBasePlayerWeapon"
-            },
-            "name": "CHandle< CBasePlayerWeapon >",
-            "outer": "CHandle"
-          }
-        },
-        {
-          "name": "m_bDelayedHardPunchIncoming",
-          "type": {
-            "category": 0,
-            "name": "bool"
-          }
-        },
-        {
-          "name": "m_bDestroyAfterTaunt",
-          "type": {
-            "category": 0,
-            "name": "bool"
-          }
-        }
-      ],
-      "parent": "CCSWeaponBase"
     },
     "CFlashbang": {
       "fields": [],
@@ -35814,10 +35732,6 @@
         }
       ],
       "parent": "CLogicalEntity"
-    },
-    "CMelee": {
-      "fields": [],
-      "parent": "CCSWeaponBase"
     },
     "CMeshletDescriptor": {
       "fields": [
@@ -55647,42 +55561,6 @@
       ],
       "parent": "CAnimUpdateNodeBase"
     },
-    "CSensorGrenade": {
-      "fields": [],
-      "parent": "CBaseCSGrenade"
-    },
-    "CSensorGrenadeProjectile": {
-      "fields": [
-        {
-          "name": "m_fExpireTime",
-          "type": {
-            "category": 5,
-            "name": "GameTime_t"
-          }
-        },
-        {
-          "name": "m_fNextDetectPlayerSound",
-          "type": {
-            "category": 5,
-            "name": "GameTime_t"
-          }
-        },
-        {
-          "name": "m_hDisplayGrenade",
-          "type": {
-            "atomic": 1,
-            "category": 4,
-            "inner": {
-              "category": 5,
-              "name": "CBaseEntity"
-            },
-            "name": "CHandle< CBaseEntity >",
-            "outer": "CHandle"
-          }
-        }
-      ],
-      "parent": "CBaseCSGrenadeProjectile"
-    },
     "CSeqAutoLayer": {
       "fields": [
         {
@@ -60304,10 +60182,6 @@
       ],
       "parent": "CConcreteAnimParameter"
     },
-    "CTablet": {
-      "fields": [],
-      "parent": "CCSWeaponBase"
-    },
     "CTakeDamageInfo": {
       "fields": [
         {
@@ -62415,10 +62289,6 @@
       "fields": [],
       "parent": "CBaseTrigger"
     },
-    "CTriggerTripWire": {
-      "fields": [],
-      "parent": "CBaseTrigger"
-    },
     "CTriggerVolume": {
       "fields": [
         {
@@ -62443,14 +62313,6 @@
         }
       ],
       "parent": "CBaseModelEntity"
-    },
-    "CTripWireFire": {
-      "fields": [],
-      "parent": "CBaseCSGrenade"
-    },
-    "CTripWireFireProjectile": {
-      "fields": [],
-      "parent": "CBaseGrenade"
     },
     "CTurnHelperUpdateNode": {
       "fields": [
@@ -63755,32 +63617,6 @@
       "fields": [],
       "parent": "CCSWeaponBase"
     },
-    "CWeaponShield": {
-      "fields": [
-        {
-          "name": "m_flBulletDamageAbsorbed",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
-          "name": "m_flLastBulletHitSoundTime",
-          "type": {
-            "category": 5,
-            "name": "GameTime_t"
-          }
-        },
-        {
-          "name": "m_flDisplayHealth",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        }
-      ],
-      "parent": "CCSWeaponBaseGun"
-    },
     "CWeaponTaser": {
       "fields": [
         {
@@ -63815,10 +63651,6 @@
     "CWeaponXM1014": {
       "fields": [],
       "parent": "CCSWeaponBase"
-    },
-    "CWeaponZoneRepulsor": {
-      "fields": [],
-      "parent": "CCSWeaponBaseGun"
     },
     "CWorld": {
       "fields": [],
@@ -100418,56 +100250,24 @@
           "value": 4
         },
         {
-          "name": "k_CSPlayerBlockingUseAction_OpeningSafe",
+          "name": "k_CSPlayerBlockingUseAction_EquippingHeavyArmor",
           "value": 5
         },
         {
-          "name": "k_CSPlayerBlockingUseAction_EquippingParachute",
+          "name": "k_CSPlayerBlockingUseAction_TakingOffHeavyArmor",
           "value": 6
         },
         {
-          "name": "k_CSPlayerBlockingUseAction_EquippingHeavyArmor",
+          "name": "k_CSPlayerBlockingUseAction_MapLongUseEntity_Pickup",
           "value": 7
         },
         {
-          "name": "k_CSPlayerBlockingUseAction_EquippingContract",
+          "name": "k_CSPlayerBlockingUseAction_MapLongUseEntity_Place",
           "value": 8
         },
         {
-          "name": "k_CSPlayerBlockingUseAction_EquippingTabletUpgrade",
-          "value": 9
-        },
-        {
-          "name": "k_CSPlayerBlockingUseAction_TakingOffHeavyArmor",
-          "value": 10
-        },
-        {
-          "name": "k_CSPlayerBlockingUseAction_PayingToOpenDoor",
-          "value": 11
-        },
-        {
-          "name": "k_CSPlayerBlockingUseAction_CancelingSpawnRappelling",
-          "value": 12
-        },
-        {
-          "name": "k_CSPlayerBlockingUseAction_EquippingExoJump",
-          "value": 13
-        },
-        {
-          "name": "k_CSPlayerBlockingUseAction_PickingUpBumpMine",
-          "value": 14
-        },
-        {
-          "name": "k_CSPlayerBlockingUseAction_MapLongUseEntity_Pickup",
-          "value": 15
-        },
-        {
-          "name": "k_CSPlayerBlockingUseAction_MapLongUseEntity_Place",
-          "value": 16
-        },
-        {
           "name": "k_CSPlayerBlockingUseAction_MaxCount",
-          "value": 17
+          "value": 9
         }
       ]
     },
@@ -100652,36 +100452,8 @@
           "value": 11
         },
         {
-          "name": "WEAPONTYPE_FISTS",
-          "value": 12
-        },
-        {
-          "name": "WEAPONTYPE_BREACHCHARGE",
-          "value": 13
-        },
-        {
-          "name": "WEAPONTYPE_BUMPMINE",
-          "value": 14
-        },
-        {
-          "name": "WEAPONTYPE_TABLET",
-          "value": 15
-        },
-        {
-          "name": "WEAPONTYPE_MELEE",
-          "value": 16
-        },
-        {
-          "name": "WEAPONTYPE_SHIELD",
-          "value": 17
-        },
-        {
-          "name": "WEAPONTYPE_ZONE_REPULSOR",
-          "value": 18
-        },
-        {
           "name": "WEAPONTYPE_UNKNOWN",
-          "value": 19
+          "value": 12
         }
       ]
     },
@@ -102452,16 +102224,8 @@
           "value": 4
         },
         {
-          "name": "GRENADE_TYPE_SENSOR",
-          "value": 5
-        },
-        {
-          "name": "GRENADE_TYPE_SNOWBALL",
-          "value": 6
-        },
-        {
           "name": "GRENADE_TYPE_TOTAL",
-          "value": 7
+          "value": 5
         }
       ]
     },

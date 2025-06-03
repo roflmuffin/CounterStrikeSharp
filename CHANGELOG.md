@@ -1,3 +1,19 @@
+## What's Changed in v1.0.318
+* fix(gameevents): merge and sort game event properties if duplicate events ([073728b](https://github.com/roflmuffin/CounterStrikeSharp/commit/073728b4ceb408e797ad0003f54ed6e232c41793))
+* chore: cleanup cpp & add clang format linting in [#862](https://github.com/roflmuffin/CounterStrikeSharp/pull/862) ([6511a00](https://github.com/roflmuffin/CounterStrikeSharp/commit/6511a0098a5fa40f523411d149cca62bdfc4d132))
+* chore(build): duplicate include path: ${SOURCESDK}/public/entity2 by [@jonathan-up](https://github.com/jonathan-up) in [#756](https://github.com/roflmuffin/CounterStrikeSharp/pull/756) ([f50fb78](https://github.com/roflmuffin/CounterStrikeSharp/commit/f50fb783bb76a4984e263736ec2cc5d59b5b1bae))
+
+## New Contributors
+* [@jonathan-up](https://github.com/jonathan-up) made their first contribution in [#756](https://github.com/roflmuffin/CounterStrikeSharp/pull/756)
+
+## What's Changed in v1.0.317
+* chore(gameevents): update game events (bullet_damage changes) ([4be0634](https://github.com/roflmuffin/CounterStrikeSharp/commit/4be063462547c9894169e6c816ff34f105513fbe))
+* chore(schema): update (mainly removal of danger zone classes) ([7025b62](https://github.com/roflmuffin/CounterStrikeSharp/commit/7025b626156cf14a664c40ef9c6901c8db7217a6))
+* chore(deps): upgrade metamod & hl2sdk in [#856](https://github.com/roflmuffin/CounterStrikeSharp/pull/856) ([462ca52](https://github.com/roflmuffin/CounterStrikeSharp/commit/462ca52229d859b593f02e3001d2c819877352af))
+* chore(deps): bump libraries/Protobufs from `3d85413` to `53da9bc` by [@dependabot[bot]](https://github.com/dependabot[bot]) in [#857](https://github.com/roflmuffin/CounterStrikeSharp/pull/857) ([d7e23e8](https://github.com/roflmuffin/CounterStrikeSharp/commit/d7e23e8282e8247e99305db9bfcc45c4ff4e9012))
+* feat: add Scoreboard and Inspect buttons to `PlayerButtons` ([3ddfa71](https://github.com/roflmuffin/CounterStrikeSharp/commit/3ddfa71e3f5d785510a7e3f85ac76155a29d3479))
+* Fix potential event natives crashes by [@ipsvn](https://github.com/ipsvn) in [#852](https://github.com/roflmuffin/CounterStrikeSharp/pull/852) ([688b226](https://github.com/roflmuffin/CounterStrikeSharp/commit/688b226bcf41aca7b622b7db5f0168a70e3296ac))
+
 ## What's Changed in v1.0.316
 * fix(gamedata): update `CCSPlayer_WeaponServices_CanUse` signature ([68e6ffa](https://github.com/roflmuffin/CounterStrikeSharp/commit/68e6ffaebe6497814d757b276a6d0371d731e61d))
 * fix: commit links in changelog finally ([2f8f370](https://github.com/roflmuffin/CounterStrikeSharp/commit/2f8f370cd3dd162dff745671a159f361e1ce487b))

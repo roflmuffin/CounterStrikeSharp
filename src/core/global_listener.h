@@ -32,34 +32,37 @@
 #pragma once
 
 namespace counterstrikesharp {
-class GlobalClass {
-public:
+class GlobalClass
+{
+  public:
     virtual ~GlobalClass() = default;
 
-    GlobalClass() {
+    GlobalClass()
+    {
         m_pGlobalClassNext = GlobalClass::head;
         GlobalClass::head = this;
     }
 
-public:
+  public:
     virtual void OnStartup() {}
     virtual void OnShutdown() {}
     virtual void OnAllInitialized() {}
     virtual void OnGameLoopInitialized() {}
     virtual void OnAllInitialized_Post() {}
-    virtual void OnLevelChange(const char *mapName) {}
+    virtual void OnLevelChange(const char* mapName) {}
     virtual void OnLevelEnd() {}
 
-public:
-    GlobalClass *m_pGlobalClassNext;
-    static GlobalClass *head;
+  public:
+    GlobalClass* m_pGlobalClassNext;
+    static GlobalClass* head;
 };
-}  // namespace counterstrikesharp
+} // namespace counterstrikesharp
 
 #define CALL_GLOBAL_LISTENER(func)          \
-    GlobalClass *pBase = GlobalClass::head; \
+    GlobalClass* pBase = GlobalClass::head; \
     pBase = GlobalClass::head;              \
-    while (pBase) {                         \
+    while (pBase)                           \
+    {                                       \
         pBase->func;                        \
         pBase = pBase->m_pGlobalClassNext;  \
     }

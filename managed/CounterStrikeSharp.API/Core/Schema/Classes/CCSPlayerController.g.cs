@@ -42,6 +42,10 @@ public partial class CCSPlayerController : CBasePlayerController
 	[SchemaMember("CCSPlayerController", "m_bHasCommunicationAbuseMute")]
 	public ref bool HasCommunicationAbuseMute => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bHasCommunicationAbuseMute");
 
+	// m_uiCommunicationMuteFlags
+	[SchemaMember("CCSPlayerController", "m_uiCommunicationMuteFlags")]
+	public ref UInt32 UiCommunicationMuteFlags => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController", "m_uiCommunicationMuteFlags");
+
 	// m_szCrosshairCodes
 	[SchemaMember("CCSPlayerController", "m_szCrosshairCodes")]
 	public string CrosshairCodes
@@ -161,6 +165,10 @@ public partial class CCSPlayerController : CBasePlayerController
 	// m_unActiveQuestId
 	[SchemaMember("CCSPlayerController", "m_unActiveQuestId")]
 	public ref UInt16 ActiveQuestId => ref Schema.GetRef<UInt16>(this.Handle, "CCSPlayerController", "m_unActiveQuestId");
+
+	// m_rtActiveMissionPeriod
+	[SchemaMember("CCSPlayerController", "m_rtActiveMissionPeriod")]
+	public ref UInt32 RtActiveMissionPeriod => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController", "m_rtActiveMissionPeriod");
 
 	// m_unPlayerTvControlFlags
 	[SchemaMember("CCSPlayerController", "m_unPlayerTvControlFlags")]

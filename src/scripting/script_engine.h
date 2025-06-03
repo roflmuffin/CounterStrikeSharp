@@ -33,41 +33,46 @@
 
 namespace counterstrikesharp {
 
-enum HookResult {
+enum HookResult
+{
     Continue = 0,
     Changed = 1,
     Handled = 3,
     Stop = 4,
 };
 
-enum HookMode {
+enum HookMode
+{
     Pre = 0,
     Post = 1,
 };
 
-inline uint32_t hash_string(const char *string) {
-    unsigned long result = 5381;
-
-    for (size_t i = 0; i < strlen(string); i++) {
-        result = ((result << 5) + result) ^ string[i];
-    }
-
-    return result;
-}
-
-template<size_t N>
-constexpr uint32_t hash_string_const(char const (&string)[N])
+inline uint32_t hash_string(const char* string)
 {
     unsigned long result = 5381;
 
-    for (size_t i = 0; i < N-1; i++) {
+    for (size_t i = 0; i < strlen(string); i++)
+    {
         result = ((result << 5) + result) ^ string[i];
     }
 
     return result;
 }
 
-struct fxNativeContext {
+template <size_t N> constexpr uint32_t hash_string_const(char const (&string)[N])
+{
+    unsigned long result = 5381;
+
+    for (size_t i = 0; i < N - 1; i++)
+    {
+        result = ((result << 5) + result) ^ string[i];
+    }
+
+    return result;
+}
+
+struct fxNativeContext
+{
     int numArguments;
     int numResults;
     int hasError;
@@ -77,76 +82,83 @@ struct fxNativeContext {
     uint64_t result;
 };
 
-typedef void (*CallbackT)(fxNativeContext *);
+typedef void (*CallbackT)(fxNativeContext*);
 
-class ScriptContext {
-public:
-    enum { MaxArguments = 32, ArgumentSize = sizeof(uint64_t) };
+class ScriptContext
+{
+  public:
+    enum
+    {
+        MaxArguments = 32,
+        ArgumentSize = sizeof(uint64_t)
+    };
 
-protected:
-    void *m_argumentBuffer;
+  protected:
+    void* m_argumentBuffer;
 
     int m_numArguments;
     int m_numResults;
-    int *m_has_error;
-    uint64_t *m_nativeIdentifier;
-    void *m_result;
+    int* m_has_error;
+    uint64_t* m_nativeIdentifier;
+    void* m_result;
 
-    fxNativeContext *m_native_context;
+    fxNativeContext* m_native_context;
 
-public:
+  public:
     inline ScriptContext() = default;
 
-public:
-    void ThrowNativeError(const char *msg, ...);
+  public:
+    void ThrowNativeError(const char* msg, ...);
     bool HasError() { return *m_has_error == 1; }
     void Reset();
 
-public:
-    template <int... Is>
-    struct index {};
+  public:
+    template <int... Is> struct index
+    {
+    };
 
-    template <int N, int... Is>
-    struct gen_seq : gen_seq<N - 1, N - 1, Is...> {};
+    template <int N, int... Is> struct gen_seq : gen_seq<N - 1, N - 1, Is...>
+    {
+    };
 
-    template <int... Is>
-    struct gen_seq<0, Is...> : index<Is...> {};
+    template <int... Is> struct gen_seq<0, Is...> : index<Is...>
+    {
+    };
 
-    template <typename... Ts>
-    inline const std::tuple<Ts...> GetArguments() {
-        return GetArgumentsImpl<Ts...>(gen_seq<sizeof...(Ts)>());
-    }
+    template <typename... Ts> inline const std::tuple<Ts...> GetArguments() { return GetArgumentsImpl<Ts...>(gen_seq<sizeof...(Ts)>()); }
 
-    template <typename... Ts, int... Is>
-    inline const std::tuple<Ts...> GetArgumentsImpl(index<Is...>) {
+    template <typename... Ts, int... Is> inline const std::tuple<Ts...> GetArgumentsImpl(index<Is...>)
+    {
         return std::make_tuple(GetArgument<Ts>(Is)...);
     }
 
-    template <typename T>
-    inline const T &GetArgument(int index) {
-        auto functionData = (uint64_t *)m_argumentBuffer;
+    template <typename T> inline const T& GetArgument(int index)
+    {
+        auto functionData = (uint64_t*)m_argumentBuffer;
 
-        return *reinterpret_cast<T *>(&functionData[index]);
+        return *reinterpret_cast<T*>(&functionData[index]);
     }
 
-    template <typename T>
-    inline void SetArgument(int index, const T &value) {
-        auto functionData = (uint64_t *)m_argumentBuffer;
+    template <typename T> inline void SetArgument(int index, const T& value)
+    {
+        auto functionData = (uint64_t*)m_argumentBuffer;
 
         static_assert(sizeof(T) <= ArgumentSize, "Argument size of T");
 
-        if (sizeof(T) < ArgumentSize) {
-            *reinterpret_cast<uint64_t *>(&functionData[index]) = 0;
+        if (sizeof(T) < ArgumentSize)
+        {
+            *reinterpret_cast<uint64_t*>(&functionData[index]) = 0;
         }
 
-        *reinterpret_cast<T *>(&functionData[index]) = value;
+        *reinterpret_cast<T*>(&functionData[index]) = value;
     }
 
-    template <typename T>
-    inline const T &CheckArgument(int index) {
-        const auto &argument = GetArgument<T>(index);
+    template <typename T> inline const T& CheckArgument(int index)
+    {
+        const auto& argument = GetArgument<T>(index);
 
-        if (argument == T()) {
+        if (argument == T())
+        {
             throw std::runtime_error("Argument at index %d was null.");
         }
 
@@ -155,56 +167,61 @@ public:
 
     inline int GetArgumentCount() { return m_numArguments; }
 
-    template <typename T>
-    inline void Push(const T &value) {
-        auto functionData = (uint64_t *)m_argumentBuffer;
+    template <typename T> inline void Push(const T& value)
+    {
+        auto functionData = (uint64_t*)m_argumentBuffer;
 
         static_assert(sizeof(T) <= ArgumentSize, "Argument size of T");
 
-        if (sizeof(T) < ArgumentSize) {
-            *reinterpret_cast<uint64_t *>(&functionData[m_numArguments]) = 0;
+        if (sizeof(T) < ArgumentSize)
+        {
+            *reinterpret_cast<uint64_t*>(&functionData[m_numArguments]) = 0;
         }
 
-        *reinterpret_cast<T *>(&functionData[m_numArguments]) = value;
+        *reinterpret_cast<T*>(&functionData[m_numArguments]) = value;
         m_numArguments++;
         m_native_context->numArguments++;
     }
 
-    inline void PushString(const char *value) {
-        auto functionData = (uint64_t *)m_argumentBuffer;
+    inline void PushString(const char* value)
+    {
+        auto functionData = (uint64_t*)m_argumentBuffer;
 
-        *reinterpret_cast<const char **>(&functionData[m_numArguments]) = value;
+        *reinterpret_cast<const char**>(&functionData[m_numArguments]) = value;
     }
 
-    template <typename T>
-    inline void SetResult(const T &value) {
-        auto functionData = (uint64_t *)m_result;
+    template <typename T> inline void SetResult(const T& value)
+    {
+        auto functionData = (uint64_t*)m_result;
 
-        if (sizeof(T) < ArgumentSize) {
-            *reinterpret_cast<uint64_t *>(&functionData[0]) = 0;
+        if (sizeof(T) < ArgumentSize)
+        {
+            *reinterpret_cast<uint64_t*>(&functionData[0]) = 0;
         }
 
-        *reinterpret_cast<T *>(&functionData[0]) = value;
+        *reinterpret_cast<T*>(&functionData[0]) = value;
 
         m_numResults = 1;
         m_numArguments = 0;
     }
 
-    template <typename T>
-    inline T GetResult() {
-        auto functionData = (uint64_t *)m_result;
+    template <typename T> inline T GetResult()
+    {
+        auto functionData = (uint64_t*)m_result;
 
-        return *reinterpret_cast<T *>(functionData);
+        return *reinterpret_cast<T*>(functionData);
     }
 
-    inline void *GetArgumentBuffer() { return m_argumentBuffer; }
+    inline void* GetArgumentBuffer() { return m_argumentBuffer; }
 
     inline int GetNumArguments() { return m_native_context->numArguments; }
 };
 
-class ScriptContextRaw : public ScriptContext {
-public:
-    inline ScriptContextRaw(fxNativeContext &context) {
+class ScriptContextRaw : public ScriptContext
+{
+  public:
+    inline ScriptContextRaw(fxNativeContext& context)
+    {
         m_argumentBuffer = context.arguments;
 
         m_numArguments = context.numArguments;
@@ -215,31 +232,33 @@ public:
         m_result = &context.result;
     }
 
-    inline ScriptContextRaw() {
+    inline ScriptContextRaw()
+    {
         m_numResults = 0;
         m_numArguments = 0;
     }
 };
 
-using TNativeHandler = std::function<void(ScriptContext &)>;
+using TNativeHandler = std::function<void(ScriptContext&)>;
 
-template <typename T>
-using TypedTNativeHandler = T(ScriptContext &);
+template <typename T> using TypedTNativeHandler = T(ScriptContext&);
 
-class ScriptEngine {
-public:
+class ScriptEngine
+{
+  public:
     static tl::optional<TNativeHandler> GetNativeHandler(uint64_t nativeIdentifier);
     static tl::optional<TNativeHandler> GetNativeHandler(std::string name);
 
-    static bool CallNativeHandler(uint64_t nativeIdentifier, ScriptContext &context);
+    static bool CallNativeHandler(uint64_t nativeIdentifier, ScriptContext& context);
 
     static void RegisterNativeHandlerInt(uint64_t nativeIdentifier, TNativeHandler function);
 
-    template <typename T>
-    static void RegisterNativeHandler(const char *nativeName, TypedTNativeHandler<T> function) {
-        auto lambda = [=](counterstrikesharp::ScriptContext &context) {
+    template <typename T> static void RegisterNativeHandler(const char* nativeName, TypedTNativeHandler<T> function)
+    {
+        auto lambda = [=](counterstrikesharp::ScriptContext& context) {
             auto value = function(context);
-            if (!context.HasError()) {
+            if (!context.HasError())
+            {
                 context.SetResult(value);
             }
         };
@@ -247,13 +266,14 @@ public:
         RegisterNativeHandlerInt(hash_string(nativeName), lambda);
     }
 
-    static void RegisterNativeHandler(const char *nativeName, TypedTNativeHandler<void> function) {
+    static void RegisterNativeHandler(const char* nativeName, TypedTNativeHandler<void> function)
+    {
         RegisterNativeHandlerInt(hash_string(nativeName), function);
     }
 
-    static void InvokeNative(counterstrikesharp::fxNativeContext &context);
+    static void InvokeNative(counterstrikesharp::fxNativeContext& context);
 
-private:
+  private:
     static ScriptContextRaw m_context;
 };
-}  // namespace counterstrikesharp
+} // namespace counterstrikesharp

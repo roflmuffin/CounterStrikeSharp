@@ -66,6 +66,8 @@ class GameSessionConfiguration_t
 {
 };
 
+PLUGIN_EXPOSE(CounterStrikeSharpMMPlugin, counterstrikesharp::gPlugin);
+
 namespace counterstrikesharp {
 
 SH_DECL_HOOK3_void(IServerGameDLL, GameFrame, SH_NOATTRIB, 0, bool, bool, bool);
@@ -81,7 +83,6 @@ CounterStrikeSharpMMPlugin gPlugin;
 ConVar sample_cvar("sample_cvar", "42", 0);
 #endif
 
-PLUGIN_EXPOSE(CounterStrikeSharpMMPlugin, gPlugin);
 bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, size_t maxlen, bool late)
 {
     PLUGIN_SAVEVARS();
