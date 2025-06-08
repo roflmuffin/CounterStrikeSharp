@@ -39,6 +39,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
         DATA_TYPE_DOUBLE,
         DATA_TYPE_POINTER,
         DATA_TYPE_STRING,
+        DATA_TYPE_M128A_POINTER,
         DATA_TYPE_VARIANT
     }
 
@@ -57,6 +58,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
             { typeof(short), DataType.DATA_TYPE_SHORT },
             { typeof(sbyte), DataType.DATA_TYPE_UCHAR },
             { typeof(byte), DataType.DATA_TYPE_CHAR },
+            { typeof(M128A), DataType.DATA_TYPE_M128A_POINTER }
         };
 
         public static DataType? ToDataType(this Type type)

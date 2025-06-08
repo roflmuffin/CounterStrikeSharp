@@ -218,6 +218,19 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static T DynamicHookGetRegister<T>(IntPtr hook, int registerid, int datatype){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(hook);
+			ScriptContext.GlobalScriptContext.Push(registerid);
+			ScriptContext.GlobalScriptContext.Push(datatype);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x71A95833);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (T)ScriptContext.GlobalScriptContext.GetResult(typeof(T));
+			}
+		}
+
         public static T DynamicHookGetReturn<T>(IntPtr hook, int datatype){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();

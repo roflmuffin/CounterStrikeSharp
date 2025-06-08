@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright (c) 2014 Bas Timmer/NTAuthority et al.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -465,6 +465,21 @@ namespace CounterStrikeSharp.API.Core
 			if (type.IsEnum)
 			{
 				return Enum.ToObject(type, (int)GetResult(typeof(int), ptr));
+			}
+
+			if (type == typeof(CounterStrikeSharp.API.Modules.Memory.M128A))
+			{
+				// ptr is &context->result[0]. The actual pointer to XMM data is stored AT this location.
+				IntPtr dataPointer = *(IntPtr*)ptr; // Read the IntPtr value from the result field
+
+				if (dataPointer == IntPtr.Zero)
+				{
+					// This means C++ returned a null pointer. Handle as appropriate.
+					// For now, throwing, as the original NRE was due to the generic path returning null for M128A.
+					throw new NativeException("Native function returned a null pointer for M128A result.");
+				}
+				// Marshal the data from the location pointed to by dataPointer
+				return Marshal.PtrToStructure<CounterStrikeSharp.API.Modules.Memory.M128A>(dataPointer);
 			}
 
 			if (Marshal.SizeOf(type) <= 8)
