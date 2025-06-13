@@ -56,7 +56,7 @@ bool ScriptCallback::IsContextSafe()
     }
 }
 
-DLL_EXPORT void RegisterCallbackTrace(const char* m_name, CallbackT** m_function, const char* m_profile_name);
+DLL_EXPORT void RegisterCallbackTrace(const char* m_name, size_t count, const char* m_profile_name);
 
 void ScriptCallback::Execute(bool bResetContext)
 {
@@ -73,7 +73,7 @@ void ScriptCallback::Execute(bool bResetContext)
         return;
     }
 
-    RegisterCallbackTrace(m_name.c_str(), reinterpret_cast<CallbackT**>(m_functions.data()), m_profile_name.c_str());
+    RegisterCallbackTrace(m_name.c_str(), m_functions.size(), m_profile_name.c_str());
 
     VPROF_BUDGET(m_profile_name.c_str(), "CS# Script Callbacks");
 
