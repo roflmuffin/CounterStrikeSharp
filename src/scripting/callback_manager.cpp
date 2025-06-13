@@ -43,15 +43,20 @@ bool ScriptCallback::RemoveListener(CallbackT fnPluginFunction)
 
 bool ScriptCallback::IsContextSafe()
 {
-    try {
+    try
+    {
         auto& Ctx = ScriptContext();
         Ctx.GetResult<void*>();
         return true;
-    } catch (...) {
+    }
+    catch (...)
+    {
         CSSHARP_CORE_WARN("Context is invalid (exception during access)");
         return false;
     }
 }
+
+DLL_EXPORT void RegisterCallbackTrace(const char* m_name, CallbackT** m_function, const char* m_profile_name);
 
 void ScriptCallback::Execute(bool bResetContext)
 {
@@ -67,6 +72,8 @@ void ScriptCallback::Execute(bool bResetContext)
         CSSHARP_CORE_WARN("ScriptCallback::Execute aborted due to invalid context (callback: '{}')", m_name);
         return;
     }
+
+    RegisterCallbackTrace(m_name.c_str(), reinterpret_cast<CallbackT**>(m_functions.data()), m_profile_name.c_str());
 
     VPROF_BUDGET(m_profile_name.c_str(), "CS# Script Callbacks");
 
