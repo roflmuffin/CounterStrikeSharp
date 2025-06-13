@@ -21,9 +21,13 @@
 #include "core/log.h"
 #include "vprof.h"
 
-extern "C" DLL_EXPORT void RegisterCallbackTrace(const char* name, size_t count, const char* profile)
+DLL_EXPORT void RegisterCallbackTrace(const char* name, size_t count, const char* profile)
 {
-    // Empty
+    // Dummy logic to prevent compiler from optimizing this function away
+    volatile size_t dummy = 0;
+    dummy += (name ? name[0] : 0) + (profile ? profile[0] : 0);
+    dummy += count;
+    (void)dummy;
 }
 
 namespace counterstrikesharp {
