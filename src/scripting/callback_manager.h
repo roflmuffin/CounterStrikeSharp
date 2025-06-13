@@ -77,6 +77,4 @@ class CallbackPair
     ScriptCallback* post;
 };
 
-void RegisterCallbackTrace(const char* m_name, CallbackT** m_function, const char* m_profile_name);
-
 } // namespace counterstrikesharp

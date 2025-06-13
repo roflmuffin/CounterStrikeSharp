@@ -21,6 +21,8 @@
 #include "core/log.h"
 #include "vprof.h"
 
+DLL_EXPORT void RegisterCallbackTrace(const char* m_name, size_t count, const char* m_profile_name);
+
 namespace counterstrikesharp {
 
 ScriptCallback::ScriptCallback(const char* szName) : m_root_context(fxNativeContext{})
@@ -55,8 +57,6 @@ bool ScriptCallback::IsContextSafe()
         return false;
     }
 }
-
-DLL_EXPORT void RegisterCallbackTrace(const char* m_name, size_t count, const char* m_profile_name);
 
 void ScriptCallback::Execute(bool bResetContext)
 {
