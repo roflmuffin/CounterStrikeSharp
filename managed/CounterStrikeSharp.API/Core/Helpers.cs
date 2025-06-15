@@ -29,5 +29,8 @@ namespace CounterStrikeSharp.API.Core
         [SecurityCritical]
         [DllImport(dllPath, EntryPoint = "InvokeNative")]
         public static extern void InvokeNative(IntPtr ptr);
+
+        [DllImport(dllPath, EntryPoint = "RegisterCallbackTrace")]
+        public static extern void RegisterCallbackTrace(string name, int count, string profile, string callerStack);
     }
 }

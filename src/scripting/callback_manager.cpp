@@ -21,13 +21,31 @@
 #include "core/log.h"
 #include "vprof.h"
 
-DLL_EXPORT void RegisterCallbackTrace(const char* name, size_t count, const char* profile)
+DLL_EXPORT void RegisterCallbackTrace(const char* name, size_t count, const char* profile, const char* callerStack)
 {
     // Dummy logic to prevent compiler from optimizing this function away
-    volatile size_t dummy = 0;
-    dummy += (name ? name[0] : 0) + (profile ? profile[0] : 0);
-    dummy += count;
-    (void)dummy;
+    volatile size_t hash = 5381;
+
+    if (name)
+    {
+        for (const char* c = name; *c; ++c)
+            hash = ((hash << 5) + hash) + *c;
+    }
+
+    if (profile)
+    {
+        for (const char* c = profile; *c; ++c)
+            hash = ((hash << 5) + hash) + *c;
+    }
+
+    if (callerStack)
+    {
+        for (int i = 0; callerStack[i] && i < 128; ++i)
+            hash ^= callerStack[i];
+    }
+
+    hash ^= count;
+    (void)hash;
 }
 
 namespace counterstrikesharp {
@@ -79,8 +97,6 @@ void ScriptCallback::Execute(bool bResetContext)
         CSSHARP_CORE_WARN("ScriptCallback::Execute aborted due to invalid context (callback: '{}')", m_name);
         return;
     }
-
-    RegisterCallbackTrace(m_name.c_str(), m_functions.size(), m_profile_name.c_str());
 
     VPROF_BUDGET(m_profile_name.c_str(), "CS# Script Callbacks");
 
