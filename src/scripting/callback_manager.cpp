@@ -85,12 +85,6 @@ bool ScriptCallback::IsContextSafe()
 
 void ScriptCallback::Execute(bool bResetContext)
 {
-    if (m_functions.empty())
-    {
-        ScriptContext().ThrowNativeError("Tried to execute callback without any listeners");
-        return;
-    }
-
     if (!IsContextSafe())
     {
         ScriptContext().ThrowNativeError("ScriptCallback::Execute aborted due to invalid context");
