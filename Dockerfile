@@ -1,9 +1,7 @@
 ﻿FROM registry.gitlab.steamos.cloud/steamrt/sniper/sdk:latest
 
-# Nastav pracovní adresář (nepovinné, ale dobré)
 WORKDIR /workspace
 
-# Nainstaluj potřebné nástroje
 RUN apt update && apt install -y \
     clang-16 \
     cmake \
