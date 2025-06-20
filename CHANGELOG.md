@@ -1,3 +1,13 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+## What's Changed in v1.0.319
+* Improve FunctionReference trace logging with real user stack origin by [@SlynxCZ](https://github.com/SlynxCZ) in [#895](https://github.com/roflmuffin/CounterStrikeSharp/pull/895) ([6f66316](https://github.com/roflmuffin/CounterStrikeSharp/commit/6f663164ee887bd1fd67c3bb3aef62314ada99e2))
+
+## New Contributors
+* [@SlynxCZ](https://github.com/SlynxCZ) made their first contribution in [#895](https://github.com/roflmuffin/CounterStrikeSharp/pull/895)
+
 ## What's Changed in v1.0.318
 * fix(gameevents): merge and sort game event properties if duplicate events ([073728b](https://github.com/roflmuffin/CounterStrikeSharp/commit/073728b4ceb408e797ad0003f54ed6e232c41793))
 * chore: cleanup cpp & add clang format linting in [#862](https://github.com/roflmuffin/CounterStrikeSharp/pull/862) ([6511a00](https://github.com/roflmuffin/CounterStrikeSharp/commit/6511a0098a5fa40f523411d149cca62bdfc4d132))
