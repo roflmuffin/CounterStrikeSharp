@@ -47,6 +47,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WithUserMessages", "..\exam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WithCheckTransmit", "..\examples\WithCheckTransmit\WithCheckTransmit.csproj", "{854B06B5-0E7B-438A-BA51-3F299557F884}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WithVirtualFunctions", "..\examples\WithVirtualFunctions\WithVirtualFunctions.csproj", "{ED0905E1-F5D4-4769-89FA-F26F6DB8C4C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -137,6 +139,10 @@ Global
 		{854B06B5-0E7B-438A-BA51-3F299557F884}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{854B06B5-0E7B-438A-BA51-3F299557F884}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{854B06B5-0E7B-438A-BA51-3F299557F884}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED0905E1-F5D4-4769-89FA-F26F6DB8C4C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED0905E1-F5D4-4769-89FA-F26F6DB8C4C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED0905E1-F5D4-4769-89FA-F26F6DB8C4C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED0905E1-F5D4-4769-89FA-F26F6DB8C4C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -159,6 +165,7 @@ Global
 		{76AD7BB0-A096-4336-83E2-B32CAE4E9933} = {7DF99C35-881D-4FF2-B1C9-246BD3DECB9A}
 		{A14029BA-CADE-4F25-ADC5-48CF14332F61} = {7DF99C35-881D-4FF2-B1C9-246BD3DECB9A}
 		{854B06B5-0E7B-438A-BA51-3F299557F884} = {7DF99C35-881D-4FF2-B1C9-246BD3DECB9A}
+		{ED0905E1-F5D4-4769-89FA-F26F6DB8C4C7} = {7DF99C35-881D-4FF2-B1C9-246BD3DECB9A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {069C4CD4-BACA-446A-A6B8-0194E4F75355}

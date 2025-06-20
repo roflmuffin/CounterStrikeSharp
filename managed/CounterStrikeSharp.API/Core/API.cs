@@ -1103,6 +1103,43 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static IntPtr CreateVirtualFunctionBySymbol(string binaryname, string symbolname, int vtableoffset, int numarguments, int returntype, object[] arguments){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(binaryname);
+			ScriptContext.GlobalScriptContext.Push(symbolname);
+			ScriptContext.GlobalScriptContext.Push(vtableoffset);
+			ScriptContext.GlobalScriptContext.Push(numarguments);
+			ScriptContext.GlobalScriptContext.Push(returntype);
+			foreach (var obj in arguments)
+			{
+				ScriptContext.GlobalScriptContext.Push(obj);
+			}
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xF873189F);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			}
+		}
+
+        public static IntPtr CreateVirtualFunctionFromVTable(IntPtr pointer, int vtableoffset, int numarguments, int returntype, object[] arguments){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(pointer);
+			ScriptContext.GlobalScriptContext.Push(vtableoffset);
+			ScriptContext.GlobalScriptContext.Push(numarguments);
+			ScriptContext.GlobalScriptContext.Push(returntype);
+			foreach (var obj in arguments)
+			{
+				ScriptContext.GlobalScriptContext.Push(obj);
+			}
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xE9D17E63);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			}
+		}
+
         public static void HookFunction(IntPtr function, InputArgument hook, bool post){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
@@ -1148,6 +1185,18 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.Push(modulepath);
 			ScriptContext.GlobalScriptContext.Push(signature);
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xE9E1819B);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			}
+		}
+
+        public static IntPtr FindVirtualTable(string binarypath, string symbolname){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(binarypath);
+			ScriptContext.GlobalScriptContext.Push(symbolname);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xEA506CFF);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
 			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
