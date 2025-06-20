@@ -8,7 +8,7 @@ using CounterStrikeSharp.API.Modules.Utils;
 namespace CounterStrikeSharp.API.Core
 {
     public class NativeAPI {
-        
+
         public static bool AddListener(string name, InputArgument callback){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();

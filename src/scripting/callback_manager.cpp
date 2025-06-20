@@ -21,31 +21,30 @@
 #include "core/log.h"
 #include "vprof.h"
 
-DLL_EXPORT void RegisterCallbackTrace(const char* name, size_t count, const char* profile, const char* callerStack)
+DLL_EXPORT void RegisterCallbackTrace(const char* szName, const char* szProfile, const char* szCallerStack)
 {
     // Dummy logic to prevent compiler from optimizing this function away
-    volatile size_t hash = 5381;
+    volatile size_t nHash = 5381;
 
-    if (name)
+    if (szName)
     {
-        for (const char* c = name; *c; ++c)
-            hash = ((hash << 5) + hash) + *c;
+        for (const char* szC = szName; *szC; ++szC)
+            nHash = ((nHash << 5) + nHash) + *szC;
     }
 
-    if (profile)
+    if (szProfile)
     {
-        for (const char* c = profile; *c; ++c)
-            hash = ((hash << 5) + hash) + *c;
+        for (const char* szC = szProfile; *szC; ++szC)
+            nHash = ((nHash << 5) + nHash) + *szC;
     }
 
-    if (callerStack)
+    if (szCallerStack)
     {
-        for (int i = 0; callerStack[i] && i < 128; ++i)
-            hash ^= callerStack[i];
+        for (int iI = 0; szCallerStack[iI] && iI < 128; ++iI)
+            nHash ^= szCallerStack[iI];
     }
 
-    hash ^= count;
-    (void)hash;
+    (void)nHash;
 }
 
 namespace counterstrikesharp {

@@ -31,6 +31,6 @@ namespace CounterStrikeSharp.API.Core
         public static extern void InvokeNative(IntPtr ptr);
 
         [DllImport(dllPath, EntryPoint = "RegisterCallbackTrace")]
-        public static extern void RegisterCallbackTrace(string name, int count, string profile, string callerStack);
+        public static extern void RegisterCallbackTrace(string name, string profile, string callerStack);
     }
 }
