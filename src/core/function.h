@@ -34,9 +34,18 @@
 #include "scripting/script_engine.h"
 #include <map>
 
-namespace dyno {
-class Hook;
-}
+#include <dynohook/core.h>
+#include <dynohook/os.h>
+#include <dynohook/ihook.h>
+#include <dynohook/imanager.h>
+
+#if DYNO_PLATFORM_WINDOWS
+#include <dynohook/conventions/x64_windows_call.h>
+#define DEFAULT_CALLCONV dyno::x64WindowsCall
+#else
+#include <dynohook/conventions/x64_systemV_call.h>
+#define DEFAULT_CALLCONV dyno::x64SystemVcall
+#endif
 
 namespace counterstrikesharp {
 
