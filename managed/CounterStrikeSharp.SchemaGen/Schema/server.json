@@ -100452,8 +100452,36 @@
           "value": 11
         },
         {
-          "name": "WEAPONTYPE_UNKNOWN",
+          "name": "WEAPONTYPE_FISTS",
           "value": 12
+        },
+        {
+          "name": "WEAPONTYPE_BREACHCHARGE",
+          "value": 13
+        },
+        {
+          "name": "WEAPONTYPE_BUMPMINE",
+          "value": 14
+        },
+        {
+          "name": "WEAPONTYPE_TABLET",
+          "value": 15
+        },
+        {
+          "name": "WEAPONTYPE_MELEE",
+          "value": 16
+        },
+        {
+          "name": "WEAPONTYPE_SHIELD",
+          "value": 17
+        },
+        {
+          "name": "WEAPONTYPE_ZONE_REPULSOR",
+          "value": 18
+        },
+        {
+          "name": "WEAPONTYPE_UNKNOWN",
+          "value": 19
         }
       ]
     },

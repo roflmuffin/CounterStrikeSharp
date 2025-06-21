@@ -15,6 +15,7 @@
  */
 
 using System.Collections.Concurrent;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
@@ -26,7 +27,7 @@ namespace CounterStrikeSharp.API.Core
     /// </summary>
     public enum FunctionLifetime
     {
-        /// <summary>Delegate will be removed after the first invocation.</summary> 
+        /// <summary>Delegate will be removed after the first invocation.</summary>
         SingleUse,
 
         /// <summary>Delegate will remain in memory for the lifetime of the application (or until <see cref="FunctionReference.Remove"/> is called).</summary>
@@ -57,7 +58,7 @@ namespace CounterStrikeSharp.API.Core
             _targetMethod = method;
             _nativeCallback = CreateWrappedCallback();
         }
-        
+
         /// <summary>
         /// <inheritdoc cref="FunctionLifetime"/>
         /// </summary>
@@ -73,6 +74,25 @@ namespace CounterStrikeSharp.API.Core
 
         private unsafe CallbackDelegate CreateWrappedCallback()
         {
+            var methodName = _targetMethod.Method.DeclaringType?.FullName + "." + _targetMethod.Method.Name;
+            var profileName = "ScriptCallback::Execute::" + _targetMethod.Method.Name;
+
+            var stackTrace = new StackTrace(2, true);
+            var firstUserFrame = stackTrace.GetFrames()?.FirstOrDefault(frame =>
+            {
+                var declaring = frame.GetMethod()?.DeclaringType?.FullName;
+                return declaring != null &&
+                       !declaring.StartsWith("CounterStrikeSharp") &&
+                       !declaring.Contains("SafeExecutor") &&
+                       !declaring.Contains("FunctionReference");
+            });
+
+            string caller = firstUserFrame != null
+                ? $"{firstUserFrame.GetMethod()?.DeclaringType?.FullName}.{firstUserFrame.GetMethod()?.Name} @ {firstUserFrame.GetFileName()}:{firstUserFrame.GetFileLineNumber()}"
+                : "Unknown (no user frame)";
+
+            Helpers.RegisterCallbackTrace(methodName, 1, profileName, caller);
+
             return context =>
             {
                 try
