@@ -6,5 +6,7 @@
     "PluginAutoLoadEnabled": true,
     "ServerLanguage": "en",
     "UnlockConCommands": true,
-    "UnlockConVars": true
+    "UnlockConVars": true,
+    "EnableMemoryManager": true,
+    "MemoryManagerInterval": 10000
 }

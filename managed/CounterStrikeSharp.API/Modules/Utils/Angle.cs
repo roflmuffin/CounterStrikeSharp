@@ -14,6 +14,8 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
+using CounterStrikeSharp.API.Modules.Memory;
+
 namespace CounterStrikeSharp.API.Modules.Utils
 {
     /// <summary>
@@ -25,10 +27,10 @@ namespace CounterStrikeSharp.API.Modules.Utils
     /// <item><term>Z</term><description>roll +right/-left</description></item>
     /// </list>
     /// </summary>
-    public class Angle : NativeObject
+    public class Angle : DisposableMemory
     {
         public static readonly Angle Zero = new();
-        
+
         public Angle(IntPtr pointer) : base(pointer)
         {
         }
@@ -368,7 +370,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
         protected override void OnDispose()
         {
         }*/
-        
+
         public override string ToString()
         {
             return $"{X:n2} {Y:n2} {Z:n2}";
