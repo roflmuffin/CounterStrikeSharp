@@ -170,7 +170,7 @@ static void ReleaseHelper(Release_Func func, ScriptContext& script_context, void
     }
 
     // TODO: replace with CSSHARP_CORE_TRACE
-    CSSHARP_CORE_INFO("Releasing pointer: {}", ptr);
+    //CSSHARP_CORE_INFO("Releasing pointer: {}", ptr);
 
 #ifdef _WIN32
     _try

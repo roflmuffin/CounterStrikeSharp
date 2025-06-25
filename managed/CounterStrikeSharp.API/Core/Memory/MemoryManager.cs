@@ -115,39 +115,45 @@ namespace CounterStrikeSharp.API.Core.Memory
             switch (info.GetArg(1))
             {
                 case "stats":
-                {
-                    PrintStatistics(info);
-                } break;
+                    {
+                        PrintStatistics(info);
+                    }
+                    break;
 
                 case "start":
-                {
-                    Start();
-                } break;
+                    {
+                        Start();
+                    }
+                    break;
 
                 case "stop":
-                {
-                    Stop(true);
-                } break;
+                    {
+                        Stop(true);
+                    }
+                    break;
 
                 case "pause":
-                {
-                    Stop(false);
-                }  break;
+                    {
+                        Stop(false);
+                    }
+                    break;
 
                 case "resume":
-                {
-                    Resume();
-                } break;
+                    {
+                        Resume();
+                    }
+                    break;
 
                 default:
-                {
-                    info.ReplyToCommand("Valid usage: css_memory [option]\n" +
-                                               "  stats - Print garbage collector statistics.\n" +
-                                               "  start - Starts the memory manager that handles leaking resources.\n" +
-                                               "  stop - Stops the memory manager.\n" +
-                                               "  pause - Stops the memory manager.\n" +
-                                               "  resume - Resumes the memory manager.\n");
-                } break;
+                    {
+                        info.ReplyToCommand("Valid usage: css_memory [option]\n" +
+                                                   "  stats - Print garbage collector statistics.\n" +
+                                                   "  start - Starts the memory manager that handles leaking resources.\n" +
+                                                   "  stop - Stops the memory manager.\n" +
+                                                   "  pause - Stops the memory manager.\n" +
+                                                   "  resume - Resumes the memory manager.\n");
+                    }
+                    break;
             }
         }
 
@@ -202,15 +208,18 @@ namespace CounterStrikeSharp.API.Core.Memory
                 try
                 {
                     _thread.Start();
-                } catch (ThreadStateException)
+                }
+                catch (ThreadStateException)
                 {
                     _thread = new Thread(BackgroundThread);
                     _thread.Start();
-                } catch (Exception e)
+                }
+                catch (Exception e)
                 {
                     _logger.LogCritical("Exception occured: '{0}' ({1})", e.Message, e);
                 }
-            } else
+            }
+            else
             {
                 _logger.LogError("Unable to start 'MemoryManager' with CoreConfig option '{0}' disabled.", "EnableMemoryManager");
             }
@@ -235,7 +244,8 @@ namespace CounterStrikeSharp.API.Core.Memory
                     _thread.Join();
                     _logger.LogInformation("Service has been stopped");
                 });
-            } else
+            }
+            else
             {
                 if (State == MemoryManagerState.Halted)
                 {
@@ -288,7 +298,7 @@ namespace CounterStrikeSharp.API.Core.Memory
                 State = MemoryManagerState.InProgress;
 
                 // TODO: replace with 'LogTrace'
-                _logger.LogInformation("Running garbage collector ({0} disposable memory in total)", totalCount);
+                //_logger.LogInformation("Running garbage collector ({0} disposable memory in total)", totalCount);
                 DateTime startTime = DateTime.UtcNow;
 
                 // some may go to gen1 or even gen2, but even those are released when this nondeterministic wonder wants so
@@ -314,8 +324,9 @@ namespace CounterStrikeSharp.API.Core.Memory
                 if (LastReleased > 0)
                 {
                     // TODO: replace with 'LogTrace'
-                    _logger.LogInformation("Released {0} leaking memory resources in {1}ms ({2} remains)", LastReleased, (LastUpdated - startTime).TotalMilliseconds, CurrentResources);
-                } else
+                    //_logger.LogInformation("Released {0} leaking memory resources in {1}ms ({2} remains)", LastReleased, (LastUpdated - startTime).TotalMilliseconds, CurrentResources);
+                }
+                else
                 {
                     Thread.Sleep(CoreConfig.MemoryManagerInterval);
                 }
