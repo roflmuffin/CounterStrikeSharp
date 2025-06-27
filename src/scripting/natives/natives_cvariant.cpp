@@ -96,7 +96,7 @@ static const char* GetVariantString(ScriptContext& script_context)
         script_context.ThrowNativeError("Variant type is not string");
         return "";
     }
-    
+
     return pVariant->m_pszString;
 }
 
