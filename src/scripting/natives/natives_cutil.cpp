@@ -37,7 +37,5 @@ const char* GetStringFromSymbolLarge(ScriptContext& script_context)
     return pSymbolLarge->String();
 }
 
-REGISTER_NATIVES(cutil, {
-    ScriptEngine::RegisterNativeHandler("GET_STRING_FROM_SYMBOL_LARGE", GetStringFromSymbolLarge);
-})
+REGISTER_NATIVES(cutil, { ScriptEngine::RegisterNativeHandler("GET_STRING_FROM_SYMBOL_LARGE", GetStringFromSymbolLarge); })
 } // namespace counterstrikesharp
