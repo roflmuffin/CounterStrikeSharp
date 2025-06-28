@@ -25,7 +25,8 @@
 
 namespace counterstrikesharp {
 
-enum class DHookRegister : int {
+enum class DHookRegister : int
+{
     EAX_RAX = 0,
     EBX_RBX = 1,
     ECX_RCX = 2,
@@ -191,7 +192,8 @@ void DHookGetRegister(ScriptContext& script_context)
 
     if (reg.getType() == dyno::RegisterType::NONE)
     {
-        script_context.ThrowNativeError("Register ID %d (DynoType %d) is not available or not captured in the current hook context.", static_cast<int>(requestedRegId), static_cast<int>(dynoRegType));
+        script_context.ThrowNativeError("Register ID %d (DynoType %d) is not available or not captured in the current hook context.",
+                                        static_cast<int>(requestedRegId), static_cast<int>(dynoRegType));
         return;
     }
 
@@ -202,14 +204,17 @@ void DHookGetRegister(ScriptContext& script_context)
             void* xmm_data_ptr = *reg;
             if (xmm_data_ptr == nullptr)
             {
-                script_context.ThrowNativeError("Internal XMM register data pointer is null for register ID %d.", static_cast<int>(requestedRegId));
+                script_context.ThrowNativeError("Internal XMM register data pointer is null for register ID %d.",
+                                                static_cast<int>(requestedRegId));
                 return;
             }
             script_context.SetResult(xmm_data_ptr);
         }
         else
         {
-            script_context.ThrowNativeError("DATA_TYPE_M128A_POINTER is only valid for XMM registers (XMM0-XMM15). Requested DHookRegister ID: %d, mapped DynoType: %d", static_cast<int>(requestedRegId), static_cast<int>(dynoRegType));
+            script_context.ThrowNativeError(
+                "DATA_TYPE_M128A_POINTER is only valid for XMM registers (XMM0-XMM15). Requested DHookRegister ID: %d, mapped DynoType: %d",
+                static_cast<int>(requestedRegId), static_cast<int>(dynoRegType));
         }
     }
     else
@@ -251,9 +256,11 @@ void DHookGetRegister(ScriptContext& script_context)
                 script_context.SetResult(static_cast<unsigned long long>(regValue));
                 break;
             case DATA_TYPE_FLOAT:
+            {
                 uint32_t val32 = static_cast<uint32_t>(regValue);
                 script_context.SetResult(*reinterpret_cast<float*>(&val32));
                 break;
+            }
             case DATA_TYPE_STRING:
                 script_context.SetResult(reinterpret_cast<const char*>(regValue));
                 break;
