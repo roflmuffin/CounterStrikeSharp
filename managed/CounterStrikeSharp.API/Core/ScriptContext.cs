@@ -467,7 +467,7 @@ namespace CounterStrikeSharp.API.Core
 				return Enum.ToObject(type, (int)GetResult(typeof(int), ptr));
 			}
 
-			if (type == typeof(CounterStrikeSharp.API.Modules.Memory.M128A))
+			if (type == typeof(Memory.M128A))
 			{
 				// ptr is &context->result[0]. The actual pointer to XMM data is stored AT this location.
 				IntPtr dataPointer = *(IntPtr*)ptr; // Read the IntPtr value from the result field
@@ -479,7 +479,7 @@ namespace CounterStrikeSharp.API.Core
 					throw new NativeException("Native function returned a null pointer for M128A result.");
 				}
 				// Marshal the data from the location pointed to by dataPointer
-				return Marshal.PtrToStructure<CounterStrikeSharp.API.Modules.Memory.M128A>(dataPointer);
+				return Marshal.PtrToStructure<Memory.M128A>(dataPointer);
 			}
 
 			if (Marshal.SizeOf(type) <= 8)
