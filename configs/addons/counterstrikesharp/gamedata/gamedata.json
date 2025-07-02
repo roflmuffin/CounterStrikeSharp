@@ -57,7 +57,7 @@
     "signatures": {
       "library": "server",
       "windows": "48 89 5C 24 ? 48 89 74 24 ? 55 57 41 ? 41 ? 41 ? 48 ? ? ? ? 48 ? ? ? ? ? ? 4D ? ? 48",
-      "linux": "55 48 89 E5 41 57 41 56 4D 89 C6 41 55 49 89 D5 41 54 49 89 F4"
+      "linux": "55 48 89 E5 41 57 41 56 49 89 F6 41 55 4D 89 C5 41 54 49 89 D4"
     }
   },
   "UTIL_Remove": {
@@ -71,7 +71,7 @@
     "signatures": {
       "library": "server",
       "windows": "44 89 4C 24 20 44 88 44 24 18",
-      "linux": "55 48 89 E5 41 57 41 56 49 89 F6 41 55 4D 89 C5"
+      "linux": "55 48 89 E5 41 57 41 56 49 89 F6 41 55 4D 89 C5 41 54 49 89 FC"
     }
   },
   "CBaseModelEntity_SetModel": {
