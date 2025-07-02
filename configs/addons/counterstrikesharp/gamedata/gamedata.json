@@ -71,7 +71,7 @@
     "signatures": {
       "library": "server",
       "windows": "44 89 4C 24 20 44 88 44 24 18",
-      "linux": "55 48 89 E5 41 57 41 56 49 89 F6 41 55 4D 89 C5"
+      "linux": "55 48 89 E5 41 57 41 56 49 89 F6 41 55 4D 89 C5 41 54 49 89 FC"
     }
   },
   "CBaseModelEntity_SetModel": {
