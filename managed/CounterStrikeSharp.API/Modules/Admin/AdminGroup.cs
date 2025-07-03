@@ -105,7 +105,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             {
                 if (playerData.DomainHasRootFlag(domain.Key))
                 {
-                    playerGroups.ExceptWith(groups.Where(group => group.Contains(domain.Key + '/')));
+                    playerGroups.ExceptWith(groups.Where(group => group.Contains(domain.Key + '/')).ToArray());
                 }
             }
 
@@ -129,19 +129,19 @@ namespace CounterStrikeSharp.API.Modules.Admin
             {
                 if (playerData.DomainHasRootFlag(domain.Key))
                 {
-                    playerGroups.ExceptWith(groups.Where(group => group.Contains(domain.Key + '/')));
+                    playerGroups.ExceptWith(groups.Where(group => group.Contains(domain.Key + '/')).ToArray());
                 }
             }
 
             return playerData.Groups.IsSupersetOf(playerGroups);
         }
 
-		/// <summary>
-		/// Adds a player to a group. This does NOT modify the immunity of the player (see SetPlayerImmunity).
-		/// </summary>
-		/// <param name="player">Player controller.</param>
-		/// <param name="groups">Groups to add the player to.</param>
-		public static void AddPlayerToGroup(CCSPlayerController? player, params string[] groups)
+        /// <summary>
+        /// Adds a player to a group. This does NOT modify the immunity of the player (see SetPlayerImmunity).
+        /// </summary>
+        /// <param name="player">Player controller.</param>
+        /// <param name="groups">Groups to add the player to.</param>
+        public static void AddPlayerToGroup(CCSPlayerController? player, params string[] groups)
         {
             if (player == null) return;
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot || player.IsHLTV) { return; }

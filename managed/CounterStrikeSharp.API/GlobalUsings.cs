@@ -5,3 +5,4 @@ global using System.Linq;
 global using System.IO;
 global using System.Collections.Generic;
 global using CounterStrikeSharp.API.Core;
+global using ZLinq;

@@ -95,7 +95,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1) => NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, new object[] { arg1 });
@@ -114,7 +114,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2) =>
@@ -135,7 +135,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3) =>
@@ -158,7 +158,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4) =>
@@ -182,7 +182,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5) =>
@@ -208,7 +208,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5, arg6) => NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer,
@@ -234,7 +234,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7) =>
@@ -262,7 +262,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) =>
@@ -291,7 +291,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9) =>
@@ -321,7 +321,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10) =>
@@ -341,7 +341,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath,  arguments,
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments,
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return () => NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, new object[] { });
@@ -359,7 +359,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1) => NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, new object[] { arg1 });
@@ -378,7 +378,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2) =>
@@ -399,7 +399,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3) =>
@@ -422,7 +422,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4) =>
@@ -446,7 +446,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5) =>
@@ -472,7 +472,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5, arg6) => NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer,
@@ -498,7 +498,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7) =>
@@ -526,7 +526,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) =>
@@ -555,7 +555,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9) =>
@@ -585,7 +585,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10) =>
@@ -618,7 +618,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
         return (arg1) => { NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, new object[] { arg1 }); };
@@ -637,7 +637,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2) =>
@@ -660,7 +660,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3) =>
@@ -684,7 +684,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4) =>
@@ -711,7 +711,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5) =>
@@ -739,7 +739,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5, arg6) =>
@@ -768,7 +768,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7) =>
@@ -798,7 +798,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) =>
@@ -829,7 +829,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9) =>
@@ -861,7 +861,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10) =>
@@ -896,7 +896,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
         return (arg1) => { NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, new object[] { arg1 }); };
@@ -915,7 +915,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2) =>
@@ -938,7 +938,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3) =>
@@ -962,7 +962,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4) =>
@@ -989,7 +989,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5) =>
@@ -1017,7 +1017,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5, arg6) =>
@@ -1046,7 +1046,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7) =>
@@ -1076,7 +1076,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) =>
@@ -1107,7 +1107,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9) =>
@@ -1139,7 +1139,7 @@ public partial class VirtualFunction
             throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
         }
 
-        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
             DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10) =>

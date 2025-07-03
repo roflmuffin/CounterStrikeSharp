@@ -39,7 +39,22 @@
         <PackageReference Include="Serilog.Sinks.Console" Version="5.0.0" />
         <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
         <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
-        <PackageReference Include="Tomlyn" Version="0.19.0"/>
+        <PackageReference Include="Tomlyn" Version="0.19.0" />
+        <PackageReference Include="ZLinq" Version="1.4.12" />
+    </ItemGroup>
+    <!-- Enable ZLinq.DropInGenerator -->
+    <ItemGroup>
+        <PackageReference Include="ZLinq.DropInGenerator" Version="1.4.12">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+
+        <AssemblyAttribute Include="ZLinq.ZLinqDropInAttribute">
+            <_Parameter1></_Parameter1>
+            <_Parameter2>ZLinq.DropInGenerateTypes.Everything</_Parameter2>
+            <_Parameter2_IsLiteral>true</_Parameter2_IsLiteral>
+            <_Parameter2_TypeName>ZLinq.DropInGenerateTypes</_Parameter2_TypeName>
+        </AssemblyAttribute>
     </ItemGroup>
     <ItemGroup>
         <Folder Include="Core\Schema\" />
@@ -59,12 +74,8 @@
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
     <Target Name="SetSourceRevisionId" BeforeTargets="InitializeSourceControlInformation">
-        <Exec
-            Command="git describe --long --always --exclude=* --abbrev=7"
-            ConsoleToMSBuild="True"
-            IgnoreExitCode="False"
-        >
-            <Output PropertyName="SourceRevisionId" TaskParameter="ConsoleOutput"/>
+        <Exec Command="git describe --long --always --exclude=* --abbrev=7" ConsoleToMSBuild="True" IgnoreExitCode="False">
+            <Output PropertyName="SourceRevisionId" TaskParameter="ConsoleOutput" />
         </Exec>
     </Target>
 

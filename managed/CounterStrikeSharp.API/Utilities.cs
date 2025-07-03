@@ -16,6 +16,7 @@
 
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -25,6 +26,7 @@ using CounterStrikeSharp.API.Core.Logging;
 using CounterStrikeSharp.API.Modules.Commands.Targeting;
 using CounterStrikeSharp.API.Modules.Entities;
 using Microsoft.Extensions.Logging;
+using ZLinq;
 
 namespace CounterStrikeSharp.API
 {
@@ -261,6 +263,66 @@ namespace CounterStrikeSharp.API
                 return null;
             }
             return ptr;
+        }
+    }
+
+    public static partial class ZLinqExtensions
+    {
+        public static IEnumerable<T> AsEnumerable<TEnumerator, T>(this ZLinq.ValueEnumerable<TEnumerator, T> valueEnumerable)
+            where TEnumerator : struct, ZLinq.IValueEnumerator<T>
+#if NET9_0_OR_GREATER
+            , allows ref struct
+#endif
+        {
+            using (var e = valueEnumerable.Enumerator)
+            {
+                while (e.TryGetNext(out var current))
+                {
+                    yield return current;
+                }
+            }
+        }
+
+        public static T[] ToArray<TEnumerator, T>(this ZLinq.ValueEnumerable<TEnumerator, T> source)
+            where TEnumerator : struct, ZLinq.IValueEnumerator<T>
+#if NET9_0_OR_GREATER
+            , allows ref struct
+#endif
+        {
+            return System.Linq.Enumerable.ToArray(source.AsEnumerable());
+        }
+
+        public static List<T> ToList<TEnumerator, T>(this ZLinq.ValueEnumerable<TEnumerator, T> source)
+            where TEnumerator : struct, ZLinq.IValueEnumerator<T>
+#if NET9_0_OR_GREATER
+            , allows ref struct
+#endif
+        {
+            return System.Linq.Enumerable.ToList(source.AsEnumerable());
+        }
+
+        public static T? FirstOrDefault<TEnumerator, T>(this ZLinq.ValueEnumerable<TEnumerator, T> source)
+            where TEnumerator : struct, ZLinq.IValueEnumerator<T>
+#if NET9_0_OR_GREATER
+            , allows ref struct
+#endif
+        {
+            using var e = source.Enumerator;
+            if (e.TryGetNext(out var current))
+            {
+                return current;
+            }
+            return default;
+        }
+
+        public static T? FirstOrDefault<TEnumerator, T>(this ZLinq.ValueEnumerable<TEnumerator, T> source, Func<T, bool> predicate)
+            where TEnumerator : struct, ZLinq.IValueEnumerator<T>
+#if NET9_0_OR_GREATER
+            , allows ref struct
+#endif
+        {
+            // This can be optimized by not using AsEnumerable()
+            return System.Linq.Enumerable.FirstOrDefault(source.AsEnumerable(), predicate);
         }
     }
 }

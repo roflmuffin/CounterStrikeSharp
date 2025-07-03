@@ -72,7 +72,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
         {
             var domains = flags.Where(
                flag => flag.StartsWith(PermissionCharacters.UserPermissionChar))
-               .Distinct()
+               .DistinctBy(x => x)
                .Select(domain => domain.Split('/').First()[1..]);
 
             foreach (var domain in domains)
@@ -89,7 +89,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
         {
             var domains = flags.Where(
                flag => flag.StartsWith(PermissionCharacters.UserPermissionChar))
-               .Distinct()
+               .DistinctBy(x => x)
                .Select(domain => domain.Split('/').First()[1..]);
 
             foreach (var domain in domains)
@@ -112,7 +112,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
     public static partial class AdminManager
     {
         private static Dictionary<SteamID, AdminData> Admins = new();
-        
+
         // TODO: ServiceCollection
         private static ILogger _logger = CoreLogging.Factory.CreateLogger("AdminManager");
 
@@ -166,43 +166,43 @@ namespace CounterStrikeSharp.API.Modules.Admin
             }
         }
 
-		/// <summary>
-		/// Grabs the admin data for a player that was loaded from "configs/admins.json" and "configs/admins_groups.json".
-		/// </summary>
-		/// <param name="player">Player controller</param>
-		/// <returns>AdminData class if data found, null if not.</returns>
-		public static AdminData? GetPlayerAdminData(CCSPlayerController? player)
-		{
-			if (player == null) return null;
+        /// <summary>
+        /// Grabs the admin data for a player that was loaded from "configs/admins.json" and "configs/admins_groups.json".
+        /// </summary>
+        /// <param name="player">Player controller</param>
+        /// <returns>AdminData class if data found, null if not.</returns>
+        public static AdminData? GetPlayerAdminData(CCSPlayerController? player)
+        {
+            if (player == null) return null;
             return GetPlayerAdminData(player.AuthorizedSteamID);
-		}
+        }
 
-		/// <summary>
-		/// Grabs the admin data for a player that was loaded from "configs/admins.json" and "configs/admins_groups.json".
-		/// </summary>
-		/// <param name="steamId">SteamID object of the player.</param>
-		/// <returns>AdminData class if data found, null if not.</returns>
-		public static AdminData? GetPlayerAdminData(SteamID? steamId)
+        /// <summary>
+        /// Grabs the admin data for a player that was loaded from "configs/admins.json" and "configs/admins_groups.json".
+        /// </summary>
+        /// <param name="steamId">SteamID object of the player.</param>
+        /// <returns>AdminData class if data found, null if not.</returns>
+        public static AdminData? GetPlayerAdminData(SteamID? steamId)
         {
             if (steamId == null) return null;
             return Admins.GetValueOrDefault(steamId);
         }
 
-		/// <summary>
-		/// Removes a players admin data. This is not saved to "configs/admins.json"
-		/// </summary>
-		/// <param name="player">Player controller</param>
-		public static void RemovePlayerAdminData(CCSPlayerController? player)
-		{
-			if (player == null) return;
-			RemovePlayerAdminData(player.AuthorizedSteamID);
-		}
+        /// <summary>
+        /// Removes a players admin data. This is not saved to "configs/admins.json"
+        /// </summary>
+        /// <param name="player">Player controller</param>
+        public static void RemovePlayerAdminData(CCSPlayerController? player)
+        {
+            if (player == null) return;
+            RemovePlayerAdminData(player.AuthorizedSteamID);
+        }
 
-		/// <summary>
-		/// Removes a players admin data. This is not saved to "configs/admins.json"
-		/// </summary>
-		/// <param name="steamId">Steam ID remove admin data from.</param>
-		public static void RemovePlayerAdminData(SteamID? steamId)
+        /// <summary>
+        /// Removes a players admin data. This is not saved to "configs/admins.json"
+        /// </summary>
+        /// <param name="steamId">Steam ID remove admin data from.</param>
+        public static void RemovePlayerAdminData(SteamID? steamId)
         {
             if (steamId == null) return;
             Admins.Remove(steamId);
@@ -385,7 +385,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
             if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot || player.IsHLTV) return;
             AddPlayerPermissions(player.AuthorizedSteamID, flags);
         }
-        
+
         /// <summary>
         /// Temporarily adds a permission flag to the player. These flags are not saved to
         /// "configs/admins.json".
@@ -410,7 +410,7 @@ namespace CounterStrikeSharp.API.Modules.Admin
 
             Admins[steamId].AddFlags(flags.ToHashSet<string>());
         }
-        
+
         /// <summary>
         /// Temporarily removes a permission flag to the player. These flags are not saved to
         /// "configs/admins.json".
@@ -497,44 +497,44 @@ namespace CounterStrikeSharp.API.Modules.Admin
             Admins[steamId] = data;
         }
 
-		/// <summary>
-		/// Returns the immunity value for a player.
-		/// </summary>
-		/// <param name="player">Player controller.</param>
-		/// <returns> If an immunity value is present in "configs/admins_groups.json" 
+        /// <summary>
+        /// Returns the immunity value for a player.
+        /// </summary>
+        /// <param name="player">Player controller.</param>
+        /// <returns> If an immunity value is present in "configs/admins_groups.json" 
         /// and in "configs/admins.json", the returned value will be the greater of the two.
         /// If the value is overriden with SetPlayerImmunity, that value is returned instead.</returns>
-		public static uint GetPlayerImmunity(CCSPlayerController? player)
+        public static uint GetPlayerImmunity(CCSPlayerController? player)
         {
             if (player == null) return 0;
-			if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot || player.IsHLTV) return 0;
+            if (!player.IsValid || player.Connected != PlayerConnectedState.PlayerConnected || player.IsBot || player.IsHLTV) return 0;
 
             return GetPlayerImmunity(player.AuthorizedSteamID);
-		}
+        }
 
-		/// <summary>
-		/// Returns the immunity value for a player.
-		/// </summary>
-		/// <param name="steamId">Steam ID of the player.</param>
-		/// <returns> If an immunity value is present in "configs/admins_groups.json" 
-		/// and in "configs/admins.json", the returned value will be the greater of the two.
-		/// If the value is overriden with SetPlayerImmunity, that value is returned instead.</returns>
-		public static uint GetPlayerImmunity(SteamID? steamId)
+        /// <summary>
+        /// Returns the immunity value for a player.
+        /// </summary>
+        /// <param name="steamId">Steam ID of the player.</param>
+        /// <returns> If an immunity value is present in "configs/admins_groups.json" 
+        /// and in "configs/admins.json", the returned value will be the greater of the two.
+        /// If the value is overriden with SetPlayerImmunity, that value is returned instead.</returns>
+        public static uint GetPlayerImmunity(SteamID? steamId)
         {
-			if (steamId == null) return 0;
-			var data = GetPlayerAdminData(steamId);
-			if (data == null) return 0;
+            if (steamId == null) return 0;
+            var data = GetPlayerAdminData(steamId);
+            if (data == null) return 0;
 
             return data.Immunity;
-		}
+        }
 
-		/// <summary>
-		/// Checks to see if a player can target another player based on their immunity value.
-		/// </summary>
-		/// <param name="caller">Caller of the command.</param>
-		/// <param name="target">Target of the command.</param>
-		/// <returns></returns>
-		public static bool CanPlayerTarget(CCSPlayerController? caller, CCSPlayerController? target)
+        /// <summary>
+        /// Checks to see if a player can target another player based on their immunity value.
+        /// </summary>
+        /// <param name="caller">Caller of the command.</param>
+        /// <param name="target">Target of the command.</param>
+        /// <returns></returns>
+        public static bool CanPlayerTarget(CCSPlayerController? caller, CCSPlayerController? target)
         {
             // The server console should be able to target everyone.
             if (caller == null) return true;

@@ -57,7 +57,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
             }
 
-            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.Cast<DataType>(),
+            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
                 DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
             return (arg1) =>
@@ -79,7 +79,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
             }
 
-            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.Cast<DataType>(),
+            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
                 DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
             return (arg1, arg2) =>
@@ -102,7 +102,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
             }
 
-            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.Cast<DataType>(),
+            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
                 DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
             return (arg1, arg2, arg3) =>
@@ -127,7 +127,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
             }
 
-            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.Cast<DataType>(),
+            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
                 DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
             return (arg1, arg2, arg3, arg4) =>
@@ -154,7 +154,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
             }
 
-            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.Cast<DataType>(),
+            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
                 DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
             return (arg1, arg2, arg3, arg4, arg5) =>
@@ -183,7 +183,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
             }
 
-            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.Cast<DataType>(),
+            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
                 DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
             return (arg1, arg2, arg3, arg4, arg5, arg6) =>
@@ -213,7 +213,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
             }
 
-            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.Cast<DataType>(),
+            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
                 DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
             return (arg1, arg2, arg3, arg4, arg5, arg6, arg7) =>
@@ -244,7 +244,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
             }
 
-            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.Cast<DataType>(),
+            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
                 DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
             return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) =>
@@ -276,7 +276,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
             }
 
-            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.Cast<DataType>(),
+            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
                 DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
             return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9) =>
@@ -309,7 +309,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
             }
 
-            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.Cast<DataType>(),
+            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
                 DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
             return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10) =>
@@ -350,7 +350,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
             }
 
-            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.Cast<DataType>(),
+            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
                 (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
             return (arg1) => NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, new object[] { arg1 });
@@ -369,7 +369,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
             }
 
-            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.Cast<DataType>(),
+            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
                 (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
             return (arg1, arg2) =>
@@ -391,7 +391,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
             }
 
-            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.Cast<DataType>(),
+            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
                 (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
             return (arg1, arg2, arg3) =>
@@ -414,7 +414,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
             }
 
-            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.Cast<DataType>(),
+            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
                 (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
             return (arg1, arg2, arg3, arg4) =>
@@ -439,7 +439,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
             }
 
-            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.Cast<DataType>(),
+            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
                 (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
             return (arg1, arg2, arg3, arg4, arg5) =>
@@ -465,7 +465,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
             }
 
-            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.Cast<DataType>(),
+            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
                 (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
             return (arg1, arg2, arg3, arg4, arg5, arg6) =>
@@ -492,7 +492,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
             }
 
-            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.Cast<DataType>(),
+            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
                 (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
             return (arg1, arg2, arg3, arg4, arg5, arg6, arg7) =>
@@ -520,7 +520,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
             }
 
-            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.Cast<DataType>(),
+            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
                 (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
             return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) =>
@@ -549,7 +549,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
             }
 
-            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.Cast<DataType>(),
+            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
                 (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
             return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9) =>
@@ -579,7 +579,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
             }
 
-            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.Cast<DataType>(),
+            var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.AsValueEnumerable().Cast<DataType>().ToArray(),
                 (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
             return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10) =>
