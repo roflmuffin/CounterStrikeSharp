@@ -16,7 +16,13 @@
 #else
 #include <elf.h>
 #include <link.h>
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <sys/mman.h>
 #endif
+
+#include <cerrno>
+#include <cstring>
 
 #include "core/gameconfig.h"
 #include "core/memory.h"
@@ -125,11 +131,14 @@ CModule::CModule(std::string_view path, std::uint64_t base)
         return;
     }
 
+    m_hModule = dlmount(path.data());
     m_base = reinterpret_cast<std::uint8_t*>(base);
     m_pszModule = path.substr(path.find_last_of('/') + 1);
     m_pszPath = path;
     m_baseAddress = base;
     m_size = nt_header->OptionalHeader.SizeOfImage;
+
+    DumpSections();
 
     const bool should_read_from_disk = std::any_of(modules_to_read_from_disk.begin(), modules_to_read_from_disk.end(), [&](const auto& i) {
         return m_pszModule == i;
@@ -193,7 +202,10 @@ CModule::CModule(std::string_view path, dl_phdr_info* info)
 {
     m_pszModule = path.substr(path.find_last_of('/') + 1);
     m_pszPath = path.data();
+    m_hModule = dlmount(m_pszPath.c_str());
     m_baseAddress = info->dlpi_addr;
+
+    DumpSections();
 
     const bool should_read_from_disk = std::any_of(modules_to_read_from_disk.begin(), modules_to_read_from_disk.end(), [&](const auto& i) {
         return m_pszModule == i;
@@ -400,6 +412,87 @@ void CModule::DumpSymbols(ElfW(Dyn) * dyn)
 }
 #endif
 
+#ifdef _WIN32
+void CModule::DumpSections()
+{
+    const auto dos_header = reinterpret_cast<IMAGE_DOS_HEADER*>(m_hModule);
+    const auto nt_header = reinterpret_cast<IMAGE_NT_HEADERS64*>(reinterpret_cast<uintptr_t>(m_hModule) + dos_header->e_lfanew);
+    const auto sectionHeader = IMAGE_FIRST_SECTION(nt_header);
+
+    for (int i = 0; i < nt_header->FileHeader.NumberOfSections; i++)
+    {
+        Section section;
+        section.name = (char*)sectionHeader[i].Name;
+        section.address = (uintptr_t)((uint8_t*)m_base + sectionHeader[i].VirtualAddress);
+        section.size = sectionHeader[i].SizeOfRawData;
+
+        m_vecSections.push_back(std::move(section));
+    }
+}
+#else
+void CModule::DumpSections()
+{
+    link_map* lmap;
+
+	if (dlinfo(m_hModule, RTLD_DI_LINKMAP, &lmap) != 0)
+	{
+		dlclose(m_hModule);
+        CSSHARP_CORE_ERROR("Failed to get shared object handle for {}", m_pszPath);
+		return;
+	}
+
+	int fd = open(lmap->l_name, O_RDONLY);
+
+	if (fd == -1)
+	{
+		dlclose(m_hModule);
+        CSSHARP_CORE_ERROR("Failed to get file descriptor for {}", m_pszPath);
+		return;
+	}
+
+    struct stat st;
+
+    if (fstat(fd, &st) < 0)
+    {
+        close(fd);
+        dlclose(m_hModule);
+        CSSHARP_CORE_ERROR("Failed to get file attributes for {}", m_pszPath);
+        return;
+    }
+
+    void* map = mmap(nullptr, st.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
+
+    if (map == MAP_FAILED)
+    {
+        close(fd);
+        dlclose(m_hModule);
+        CSSHARP_CORE_ERROR("Failed to get sections for {} (mmap: {})", m_pszPath, strerror(errno));
+        return;
+    }
+
+    ElfW(Ehdr)* ehdr = static_cast<ElfW(Ehdr)*>(map);
+	ElfW(Shdr)* shdr = reinterpret_cast<ElfW(Shdr)*>(reinterpret_cast<uintptr_t>(ehdr) + ehdr->e_shoff);
+	const char* strTab = reinterpret_cast<const char*>(reinterpret_cast<uintptr_t>(ehdr) + shdr[ehdr->e_shstrndx].sh_offset);
+
+    for (int i = 0; i < ehdr->e_shnum; i++)
+    {
+        if (*(strTab + shdr[i].sh_name) == '\0')
+            continue;
+
+        Section section;
+        section.name = std::string(strTab + shdr[i].sh_name);
+        section.address = reinterpret_cast<uintptr_t>(lmap->l_addr + shdr[i].sh_addr);
+        section.size = shdr[i].sh_size;
+
+        m_vecSections.push_back(section);
+    }
+
+    munmap(map, st.st_size);
+    close(fd);
+    // dlclose(m_hModule); // we might need this later?
+}
+#endif
+
 std::optional<std::vector<std::uint8_t>>
 CModule::GetOriginalBytes(const std::vector<std::uint8_t>& disk_data, std::uintptr_t rva, std::size_t size)
 {
@@ -558,6 +651,200 @@ void* CModule::FindSymbol(const std::string& name)
     }
 
     CSSHARP_CORE_ERROR("Cannot find symbol {}", name);
+    return nullptr;
+}
+
+#ifdef _WIN32
+void* CModule::FindVirtualTable(const std::string& name)
+{
+    if (_vtables.find(name) != _vtables.end())
+    {
+        return reinterpret_cast<void*>(_vtables[name]);
+    }
+
+    auto runTimeData = GetSection(".data");
+    auto readOnlyData = GetSection(".rdata");
+
+    if (!runTimeData || !readOnlyData)
+    {
+        CSSHARP_CORE_ERROR("Failed to find .data or .rdata segment");
+        return nullptr;
+    }
+
+    std::string decoratedTableName = ".?AV" + name + "@@";
+    size_t pattern1Length = decoratedTableName.size() + 1;
+
+    bool foundTypeDescriptor = false;
+    void* typeDescriptor = nullptr;
+
+    for (size_t i = 0; i < runTimeData->size - pattern1Length; i++)
+    {
+        if (memcmp((void*)(runTimeData->address + i), decoratedTableName.c_str(), pattern1Length) == 0)
+        {
+            typeDescriptor = (void*)(runTimeData->address + i);
+            foundTypeDescriptor = true;
+            break;
+        }
+    }
+
+    if (!foundTypeDescriptor)
+    {
+        CSSHARP_CORE_ERROR("Failed to find type descriptor for {}", name);
+        return nullptr;
+    }
+
+    typeDescriptor = (void*)((uintptr_t)typeDescriptor - 0x10);
+    const uint32_t rttiTDRva = (uintptr_t)typeDescriptor - (uintptr_t)m_base;
+
+    void* completeObjectLocator = nullptr;
+
+    for (size_t i = 0; i < readOnlyData->size - sizeof(uint32_t); i++)
+    {
+        if (*(uint32_t*)(readOnlyData->address + i) == rttiTDRva)
+        {
+            uintptr_t completeObjectLocatorHeader = readOnlyData->address + i - 0xC;
+
+            if (*(int32_t*)completeObjectLocatorHeader != 1)
+                continue;
+
+            if (*(int32_t*)(completeObjectLocatorHeader - 0x8) != 0)
+                continue;
+
+            completeObjectLocator = (void*)completeObjectLocatorHeader;
+            break;
+        }
+    }
+
+    if (!completeObjectLocator)
+    {
+        CSSHARP_CORE_ERROR("Failed to find complete object locator for {}", name);
+        return nullptr;
+    }
+
+    void* vtable = nullptr;
+
+    for (size_t i = 0; i < readOnlyData->size - 0x8; i++)
+    {
+        if (*(void**)(readOnlyData->address + i) == completeObjectLocator)
+        {
+            vtable = (void*)(readOnlyData->address + i + 0x8);
+            break;
+        }
+    }
+
+    if (!vtable)
+    {
+        // CSSHARP_CORE_ERROR("Failed to find vtable for {}", name); // not sure if we need to log this as an error as there is no use of it in unmanaged as of now
+        return nullptr;
+    }
+
+    _vtables.insert({ name, reinterpret_cast<uintptr_t>(vtable) });
+    return vtable;
+}
+#else
+void* CModule::FindVirtualTable(const std::string& name)
+{
+    if (_vtables.find(name) != _vtables.end())
+    {
+        return reinterpret_cast<void*>(_vtables[name]);
+    }
+
+    auto readOnlyData = GetSection(".rodata");
+    auto readOnlyRelocations = GetSection(".data.rel.ro");
+
+    if (!readOnlyData || !readOnlyRelocations)
+    {
+        CSSHARP_CORE_ERROR("Failed to find .rodata or .data.rel.ro section");
+        return nullptr;
+    }
+
+    std::string decoratedTableName = std::to_string(name.length()) + name;
+
+    const byte* pattern1 = reinterpret_cast<const byte*>(decoratedTableName.c_str());
+    size_t pattern1Length = decoratedTableName.size() + 1;
+
+    void* classNameString = nullptr;
+
+    for (size_t i = 0; i + pattern1Length <= readOnlyData->size; i++)
+    {
+        if (memcmp((void*)(readOnlyData->address + i), pattern1, pattern1Length) == 0)
+        {
+            classNameString = (void*)(readOnlyData->address + i);
+            break;
+        }
+    }
+
+    if (!classNameString)
+    {
+        CSSHARP_CORE_ERROR("Failed to find type descriptor for {}", name);
+        return nullptr;
+    }
+
+    const byte* pattern2 = reinterpret_cast<const byte*>(&classNameString);
+    void* typeName = nullptr;
+
+    for (size_t i = 0; i + 0x8 <= readOnlyRelocations->size; i++)
+    {
+        if (memcmp((void*)(readOnlyRelocations->address + i), pattern2, 0x8) == 0)
+        {
+            typeName = (void*)(readOnlyRelocations->address + i);
+            break;
+        }
+    }
+
+    if (!typeName)
+    {
+        CSSHARP_CORE_ERROR("Failed to find type name for {}", name);
+        return nullptr;
+    }
+
+    void* typeInfo = (void*)((uintptr_t)typeName - 0x8);
+
+    void* vtable = nullptr;
+
+    for (const auto& sectionName : { std::string_view(".data.rel.ro"), std::string_view(".data.rel.ro.local") })
+    {
+        auto section = GetSection(sectionName);
+
+        if (!section)
+            continue;
+
+        for (size_t i = 0; i + 0x8 <= section->size; i++)
+        {
+            void* currentPtr = (void*)(section->address + i);
+
+            if (memcmp(currentPtr, &typeInfo, 0x8) == 0)
+            {
+                int64_t* header = (int64_t*)((uintptr_t)currentPtr - 0x8);
+
+                if (header >= (int64_t*)section->address && header < (int64_t*)(section->address + section->size) && *header == 0)
+                {
+                    vtable = (void*)((uintptr_t)currentPtr + 0x8);
+                    break;
+                }
+            }
+        }
+    }
+
+    if (!vtable)
+    {
+        // CSSHARP_CORE_ERROR("Failed to find vtable for {}", name); // not sure if we need to log this as an error as there is no use of it in unmanaged as of now
+        return nullptr;
+    }
+
+    _vtables.insert({ name, reinterpret_cast<uintptr_t>(vtable) });
+    return vtable;
+}
+#endif
+
+Section* CModule::GetSection(std::string_view name)
+{
+    for (auto&& section : m_vecSections)
+    {
+        if (section.name == name)
+            return &section;
+    }
+
     return nullptr;
 }
 } // namespace counterstrikesharp::modules
