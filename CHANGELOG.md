@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## What's Changed in v1.0.320
+* Fixes for game update 1.40.8.5 (03.07.2025) by [@AspectUnk](https://github.com/AspectUnk) in [#911](https://github.com/roflmuffin/CounterStrikeSharp/pull/911) ([bebeedf](https://github.com/roflmuffin/CounterStrikeSharp/commit/bebeedf27221e8ecffbab420272058746cc2fedd))
+
+## New Contributors
+* [@AspectUnk](https://github.com/AspectUnk) made their first contribution in [#911](https://github.com/roflmuffin/CounterStrikeSharp/pull/911)
+
 ## What's Changed in v1.0.319
 * Improve FunctionReference trace logging with real user stack origin by [@SlynxCZ](https://github.com/SlynxCZ) in [#895](https://github.com/roflmuffin/CounterStrikeSharp/pull/895) ([6f66316](https://github.com/roflmuffin/CounterStrikeSharp/commit/6f663164ee887bd1fd67c3bb3aef62314ada99e2))
 
