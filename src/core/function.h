@@ -58,6 +58,7 @@ enum DataType_t
     DATA_TYPE_DOUBLE,
     DATA_TYPE_POINTER,
     DATA_TYPE_STRING,
+    DATA_TYPE_M128A_POINTER, // Added for XMM register data (pointer to M128A)
     DATA_TYPE_VARIANT
 };
 
