@@ -1,0 +1,13 @@
+GET_VARIANT_TYPE: pVariant:pointer -> uint
+
+GET_VARIANT_INT: pVariant:pointer -> int
+GET_VARIANT_UINT: pVariant:pointer -> uint
+GET_VARIANT_FLOAT: pVariant:pointer -> float
+GET_VARIANT_STRING: pVariant:pointer -> string
+GET_VARIANT_BOOL: pVariant:pointer -> bool
+
+SET_VARIANT_INT: pVariant:pointer, value:int -> void
+SET_VARIANT_UINT: pVariant:pointer, value:uint -> void
+SET_VARIANT_FLOAT: pVariant:pointer, value:float -> void
+SET_VARIANT_STRING: pVariant:pointer, value:string -> void
+SET_VARIANT_BOOL: pVariant:pointer, value:bool -> void

@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## What's Changed in v1.0.322
+* Implement CVariant functions by [@zonical](https://github.com/zonical) in [#905](https://github.com/roflmuffin/CounterStrikeSharp/pull/905) ([124ffac](https://github.com/roflmuffin/CounterStrikeSharp/commit/124ffac7a959b1d769a7b9ab570a6706f7406d3e))
+
+## What's Changed in v1.0.321
+* Continued: Fixes for game update 1.40.8.5 (03.07.2025) by [@ianlucas](https://github.com/ianlucas) in [#917](https://github.com/roflmuffin/CounterStrikeSharp/pull/917) ([018bcba](https://github.com/roflmuffin/CounterStrikeSharp/commit/018bcba6556001c26ea0bdaf8b048008bf540597))
+
+## What's Changed in v1.0.320
+* Fixes for game update 1.40.8.5 (03.07.2025) by [@AspectUnk](https://github.com/AspectUnk) in [#911](https://github.com/roflmuffin/CounterStrikeSharp/pull/911) ([bebeedf](https://github.com/roflmuffin/CounterStrikeSharp/commit/bebeedf27221e8ecffbab420272058746cc2fedd))
+
+## New Contributors
+* [@AspectUnk](https://github.com/AspectUnk) made their first contribution in [#911](https://github.com/roflmuffin/CounterStrikeSharp/pull/911)
+
 ## What's Changed in v1.0.319
 * Improve FunctionReference trace logging with real user stack origin by [@SlynxCZ](https://github.com/SlynxCZ) in [#895](https://github.com/roflmuffin/CounterStrikeSharp/pull/895) ([6f66316](https://github.com/roflmuffin/CounterStrikeSharp/commit/6f663164ee887bd1fd67c3bb3aef62314ada99e2))
 
