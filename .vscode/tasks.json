@@ -27,6 +27,14 @@
             "options": {
                 "cwd": "${workspaceFolder}/managed/CounterStrikeSharp.API"
             }
+        },
+        {
+            "label": "generate-schema",
+            "type": "shell",
+            "command": "dotnet run -- ../CounterStrikeSharp.API/Core/Schema",
+            "options": {
+                "cwd": "${workspaceFolder}/managed/CounterStrikeSharp.SchemaGen"
+            }
         }
     ]
 }

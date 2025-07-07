@@ -13264,13 +13264,6 @@
           }
         },
         {
-          "name": "m_bSpawnedTerrorHuntHeavy",
-          "type": {
-            "category": 0,
-            "name": "bool"
-          }
-        },
-        {
           "name": "m_ullLocalMatchID",
           "type": {
             "category": 0,
@@ -16565,13 +16558,6 @@
         },
         {
           "name": "m_bHasHelmet",
-          "type": {
-            "category": 0,
-            "name": "bool"
-          }
-        },
-        {
-          "name": "m_bHasHeavyArmor",
           "type": {
             "category": 0,
             "name": "bool"
@@ -32656,10 +32642,6 @@
         }
       ],
       "parent": "CBaseModelEntity"
-    },
-    "CItemHeavyAssaultSuit": {
-      "fields": [],
-      "parent": "CItemAssaultSuit"
     },
     "CItemKevlar": {
       "fields": [],
@@ -100250,24 +100232,16 @@
           "value": 4
         },
         {
-          "name": "k_CSPlayerBlockingUseAction_EquippingHeavyArmor",
+          "name": "k_CSPlayerBlockingUseAction_MapLongUseEntity_Pickup",
           "value": 5
         },
         {
-          "name": "k_CSPlayerBlockingUseAction_TakingOffHeavyArmor",
+          "name": "k_CSPlayerBlockingUseAction_MapLongUseEntity_Place",
           "value": 6
         },
         {
-          "name": "k_CSPlayerBlockingUseAction_MapLongUseEntity_Pickup",
-          "value": 7
-        },
-        {
-          "name": "k_CSPlayerBlockingUseAction_MapLongUseEntity_Place",
-          "value": 8
-        },
-        {
           "name": "k_CSPlayerBlockingUseAction_MaxCount",
-          "value": 9
+          "value": 7
         }
       ]
     },
@@ -100452,36 +100426,8 @@
           "value": 11
         },
         {
-          "name": "WEAPONTYPE_FISTS",
-          "value": 12
-        },
-        {
-          "name": "WEAPONTYPE_BREACHCHARGE",
-          "value": 13
-        },
-        {
-          "name": "WEAPONTYPE_BUMPMINE",
-          "value": 14
-        },
-        {
-          "name": "WEAPONTYPE_TABLET",
-          "value": 15
-        },
-        {
-          "name": "WEAPONTYPE_MELEE",
-          "value": 16
-        },
-        {
-          "name": "WEAPONTYPE_SHIELD",
-          "value": 17
-        },
-        {
-          "name": "WEAPONTYPE_ZONE_REPULSOR",
-          "value": 18
-        },
-        {
           "name": "WEAPONTYPE_UNKNOWN",
-          "value": 19
+          "value": 12
         }
       ]
     },
