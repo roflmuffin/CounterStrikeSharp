@@ -298,10 +298,6 @@ public partial class CCSGameRules : CTeamplayRules
 	[SchemaMember("CCSGameRules", "m_MinimapVerticalSectionHeights")]
 	public Span<float> MinimapVerticalSectionHeights => Schema.GetFixedArray<float>(this.Handle, "CCSGameRules", "m_MinimapVerticalSectionHeights", 8);
 
-	// m_bSpawnedTerrorHuntHeavy
-	[SchemaMember("CCSGameRules", "m_bSpawnedTerrorHuntHeavy")]
-	public ref bool SpawnedTerrorHuntHeavy => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bSpawnedTerrorHuntHeavy");
-
 	// m_ullLocalMatchID
 	[SchemaMember("CCSGameRules", "m_ullLocalMatchID")]
 	public ref UInt64 UllLocalMatchID => ref Schema.GetRef<UInt64>(this.Handle, "CCSGameRules", "m_ullLocalMatchID");

@@ -26,8 +26,4 @@ public partial class CCSPlayer_ItemServices : CPlayer_ItemServices
 	[SchemaMember("CCSPlayer_ItemServices", "m_bHasHelmet")]
 	public ref bool HasHelmet => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_ItemServices", "m_bHasHelmet");
 
-	// m_bHasHeavyArmor
-	[SchemaMember("CCSPlayer_ItemServices", "m_bHasHeavyArmor")]
-	public ref bool HasHeavyArmor => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_ItemServices", "m_bHasHeavyArmor");
-
 }
