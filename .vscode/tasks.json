@@ -1,0 +1,20 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "sync",
+            "type": "shell",
+            "command": "lftp -c \"open -u $LINUX_SERVER_SFTP_USERNAME,$LINUX_SERVER_SFTP_PASSWORD $LINUX_SERVER_SFTP_HOST; mirror -R /workspaces/CounterStrikeSharp/build/addons /game/csgo/addons\"",
+            "dependsOn": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "cmake -S . -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo && cmake --build build -j$(nproc)",
+            "group": "build"
+        }
+    ]
+}
