@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## What's Changed in v1.0.322
+* Implement CVariant functions by [@zonical](https://github.com/zonical) in [#905](https://github.com/roflmuffin/CounterStrikeSharp/pull/905) ([124ffac](https://github.com/roflmuffin/CounterStrikeSharp/commit/124ffac7a959b1d769a7b9ab570a6706f7406d3e))
+
 ## What's Changed in v1.0.321
 * Continued: Fixes for game update 1.40.8.5 (03.07.2025) by [@ianlucas](https://github.com/ianlucas) in [#917](https://github.com/roflmuffin/CounterStrikeSharp/pull/917) ([018bcba](https://github.com/roflmuffin/CounterStrikeSharp/commit/018bcba6556001c26ea0bdaf8b048008bf540597))
 
