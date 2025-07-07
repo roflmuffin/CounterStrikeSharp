@@ -4,17 +4,29 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "sync",
+            "label": "sync-linux",
             "type": "shell",
-            "command": "lftp -c \"open -u $LINUX_SERVER_SFTP_USERNAME,$LINUX_SERVER_SFTP_PASSWORD $LINUX_SERVER_SFTP_HOST; mirror -R /workspaces/CounterStrikeSharp/build/addons /game/csgo/addons\"",
-            "dependsOn": "build",
+            "command": "lftp -c \"open -u $LINUX_SERVER_SFTP_USERNAME,$LINUX_SERVER_SFTP_PASSWORD $LINUX_SERVER_SFTP_HOST; mirror -R ${workspaceFolder}/build/addons /game/csgo/addons; mirror -R ${workspaceFolder}/managed/CounterStrikeSharp.API/bin/Release/net8.0/ /game/csgo/addons/counterstrikesharp/api\"",
+            "dependsOn": [
+                "build",
+                "build-api"
+            ],
             "problemMatcher": []
         },
         {
             "label": "build",
             "type": "shell",
+            "group": "build",
             "command": "cmake -S . -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo && cmake --build build -j$(nproc)",
-            "group": "build"
+        },
+        {
+            "label": "build-api",
+            "type": "shell",
+            "group": "build",
+            "command": "dotnet build -c Release",
+            "options": {
+                "cwd": "${workspaceFolder}/managed/CounterStrikeSharp.API"
+            }
         }
     ]
 }
