@@ -29,7 +29,7 @@ public class CommandTests
         mock.Verify(s => s(), Times.Once);
     }
 
-    [Fact(Skip = "This test is not suitable for automated testing.")]
+    [Fact]
     public async Task IssueServerCommand()
     {
         bool called = false;
@@ -41,7 +41,7 @@ public class CommandTests
         NativeAPI.IssueServerCommand("say Hello, world!");
         await WaitOneFrame();
 
-        Assert.True(called, "The 'say' command was issued successfully.");
+        Assert.True(called, "The 'say' command handler was not called.");
     }
 
     private async Task WaitOneFrame()
