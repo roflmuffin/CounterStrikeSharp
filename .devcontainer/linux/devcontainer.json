@@ -15,6 +15,7 @@
     }
   },
   "features": {
-    "ghcr.io/devcontainers/features/dotnet": "8.0"
+    "ghcr.io/devcontainers/features/dotnet": "8.0",
+    "ghcr.io/devcontainers/features/node": "lts"
   }
 }
