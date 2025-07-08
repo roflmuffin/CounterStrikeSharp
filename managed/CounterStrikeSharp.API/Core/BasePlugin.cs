@@ -295,8 +295,6 @@ namespace CounterStrikeSharp.API.Core
                         args[i] = Activator.CreateInstance(parameterTypes[i], new[] { args[i] });
                 }
 
-                ScriptContext.TraceWithStackCaller(handler);
-
                 handler.DynamicInvoke(args);
             });
 
@@ -354,7 +352,6 @@ namespace CounterStrikeSharp.API.Core
         /// <returns>An instance of the <see cref="Timer"/></returns>
         public Timer AddTimer(float interval, Action callback, TimerFlags? flags = null)
         {
-            ScriptContext.TraceWithStackCaller(callback);
             var timer = new Timer(interval, callback, flags ?? 0);
             Timers.Add(timer);
             return timer;
@@ -430,8 +427,6 @@ namespace CounterStrikeSharp.API.Core
                 var actionType = typeof(GameEventHandler<>).MakeGenericType(parameterType);
                 var action = Delegate.CreateDelegate(actionType, instance, eventHandler);
 
-                ScriptContext.TraceWithStackCaller(action);
-
                 var registerEventGeneric = registerEvent.MakeGenericMethod(parameterType);
                 registerEventGeneric.Invoke(this, [eventName, action, hookMode == HookMode.Post]);
             }
@@ -445,8 +440,6 @@ namespace CounterStrikeSharp.API.Core
                     throw new ArgumentException("Listener of type T is invalid and does not have a name attribute", listenerType.Name);
 
                 var listenerDelegate = Delegate.CreateDelegate(listenerType, instance, listnerHandler);
-
-                ScriptContext.TraceWithStackCaller(listenerDelegate);
 
                 registerListener.MakeGenericMethod(listenerType).Invoke(this, [listenerDelegate]);
             }
@@ -470,8 +463,6 @@ namespace CounterStrikeSharp.API.Core
                 foreach (var commandInfo in attributes)
                 {
                     var callback = eventHandler.CreateDelegate<CommandInfo.CommandCallback>(instance);
-
-                    ScriptContext.TraceWithStackCaller(callback);
 
                     var definition = new CommandDefinition()
                     {
@@ -506,8 +497,6 @@ namespace CounterStrikeSharp.API.Core
                 {
                     var del = handler.CreateDelegate<EntityIO.EntityOutputHandler>(instance);
 
-                    ScriptContext.TraceWithStackCaller(del);
-
                     HookEntityOutput(outputInfo.Classname, outputInfo.OutputName, del);
                 }
             }
@@ -539,8 +528,6 @@ namespace CounterStrikeSharp.API.Core
                     executeCommandMethod.Invoke(propValue, new object[] {caller, command});
                 };
 
-                ScriptContext.TraceWithStackCaller(callback);
-
                 AddCommand(name, description, callback);
             }
         }
@@ -563,8 +550,6 @@ namespace CounterStrikeSharp.API.Core
         /// <param name="handler">Handler to call</param>
         public void HookEntityOutput(string classname, string outputName, EntityIO.EntityOutputHandler handler, HookMode mode = HookMode.Pre)
         {
-            ScriptContext.TraceWithStackCaller(handler);
-
             var subscriber = new CallbackSubscriber(handler, handler,
                 () => UnhookEntityOutput(classname, outputName, handler));
 
@@ -574,8 +559,6 @@ namespace CounterStrikeSharp.API.Core
 
         public void HookUserMessage(int messageId, UserMessage.UserMessageHandler handler, HookMode mode = HookMode.Pre)
         {
-            ScriptContext.TraceWithStackCaller(handler);
-
             var subscriber = new CallbackSubscriber(handler, handler,
                 () => UnhookUserMessage(messageId, handler));
 
@@ -613,8 +596,6 @@ namespace CounterStrikeSharp.API.Core
         /// <param name="handler">Handler to call</param>
         public void HookSingleEntityOutput(CEntityInstance entityInstance, string outputName, EntityIO.EntityOutputHandler handler)
         {
-            ScriptContext.TraceWithStackCaller(handler);
-
             // since we wrap around the plugin handler we need to do this to ensure that the plugin callback is only called
             // if the entity instance is the same.
             EntityIO.EntityOutputHandler internalHandler = (output, name, activator, caller, value, delay) =>

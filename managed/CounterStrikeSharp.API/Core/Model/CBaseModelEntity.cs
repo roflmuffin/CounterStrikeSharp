@@ -27,4 +27,22 @@ public partial class CBaseModelEntity
 
         VirtualFunctions.SetModel(Handle, model);
     }
+
+    /// <summary>
+    /// Changes the value of a named bodygroup on this entity.
+    /// <example>
+    /// <code>
+    /// pawn.SetBodygroup("default_gloves", 1);
+    /// </code>
+    /// </example>
+    /// </summary>
+    /// <param name="groupName">The name of the bodygroup to modify (e.g. "default_gloves")</param>
+    /// <param name="value">The value to set for the bodygroup</param>
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
+    public void SetBodygroup(string groupName, int value)
+    {
+        Guard.IsValidEntity(this);
+
+        VirtualFunctions.CBaseModelEntity_SetBodygroup(Handle, groupName, value);
+    }
 }

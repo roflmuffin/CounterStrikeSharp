@@ -64,7 +64,7 @@ public static class VirtualFunctions
 
 	public static MemoryFunctionVoid<CEntityInstance, CTakeDamageInfo> CBaseEntity_TakeDamageOldFunc = new (GameData.GetSignature("CBaseEntity_TakeDamageOld"));
     public static Action<CEntityInstance, CTakeDamageInfo> CBaseEntity_TakeDamageOld = CBaseEntity_TakeDamageOldFunc.Invoke;
-    
+
     public static MemoryFunctionWithReturn<CCSPlayer_WeaponServices, CBasePlayerWeapon, bool> CCSPlayer_WeaponServices_CanUseFunc = new(GameData.GetSignature("CCSPlayer_WeaponServices_CanUse"));
     public static Func<CCSPlayer_WeaponServices, CBasePlayerWeapon, bool> CCSPlayer_WeaponServices_CanUse = CCSPlayer_WeaponServices_CanUseFunc.Invoke;
 
@@ -76,13 +76,13 @@ public static class VirtualFunctions
 
     public static MemoryFunctionVoid<CCSPlayerPawnBase> CCSPlayerPawnBase_PostThinkFunc = new (GameData.GetSignature("CCSPlayerPawnBase_PostThink"));
     public static Action<CCSPlayerPawnBase> CCSPlayerPawnBase_PostThink = CCSPlayerPawnBase_PostThinkFunc.Invoke;
-    
+
     public static MemoryFunctionVoid<CBaseTrigger, CBaseEntity> CBaseTrigger_StartTouchFunc = new (GameData.GetSignature("CBaseTrigger_StartTouch"));
     public static Action<CBaseTrigger, CBaseEntity> CBaseTrigger_StartTouch = CBaseTrigger_StartTouchFunc.Invoke;
-    
+
     public static MemoryFunctionVoid<CBaseTrigger, CBaseEntity> CBaseTrigger_EndTouchFunc = new (GameData.GetSignature("CBaseTrigger_EndTouch"));
     public static Action<CBaseTrigger, CBaseEntity> CBaseTrigger_EndTouch = CBaseTrigger_EndTouchFunc.Invoke;
-    
+
     public static MemoryFunctionVoid<IntPtr, IntPtr>  RemovePlayerItemFunc =
         new(GameData.GetSignature("CBasePlayerPawn_RemovePlayerItem"));
     public static Action<IntPtr, IntPtr> RemovePlayerItemVirtual = RemovePlayerItemFunc.Invoke;
@@ -94,4 +94,19 @@ public static class VirtualFunctions
     public static MemoryFunctionVoid<IntPtr, int, long> NetworkStateChangedFunc = new(GameData.GetSignature("NetworkStateChanged"));
     public static Action<IntPtr, int, long> NetworkStateChanged = NetworkStateChangedFunc.Invoke;
 
+    public static MemoryFunctionVoid<IntPtr, string, int> ChangeSubclassFunc =
+        new(GameData.GetSignature("ChangeSubclass"));
+
+    public static Action<IntPtr, string, int> ChangeSubclass = ChangeSubclassFunc.Invoke;
+
+    public static MemoryFunctionWithReturn<IntPtr, string, int, int> CBaseModelEntity_SetBodygroupFunc =
+        new(GameData.GetSignature("CBaseModelEntity_SetBodygroup"));
+
+    public static Func<IntPtr, string, int, int> CBaseModelEntity_SetBodygroup = CBaseModelEntity_SetBodygroupFunc.Invoke;
+
+    public static MemoryFunctionVoid<IntPtr, string, float> CAttributeList_SetOrAddAttributeValueByNameFunc =
+        new(GameData.GetSignature("CAttributeList_SetOrAddAttributeValueByName"));
+
+    public static Action<IntPtr, string, float> CAttributeList_SetOrAddAttributeValueByName =
+        CAttributeList_SetOrAddAttributeValueByNameFunc.Invoke;
 }

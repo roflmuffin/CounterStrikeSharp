@@ -19,7 +19,7 @@ public partial class CEntityInstance : IEquatable<CEntityInstance>
     public CEntityInstance(uint rawHandle) : base(rawHandle)
     {
     }
-    
+
     /// <summary>
     /// Checks that the entity handle is valid and the handle points to a valid entity
     /// </summary>
@@ -27,9 +27,9 @@ public partial class CEntityInstance : IEquatable<CEntityInstance>
 
     [Obsolete("Use Index instead", true)]
     public CEntityIndex? EntityIndex => new CEntityIndex(EntityHandle.Index);
-    
+
     public uint Index => EntityHandle.Index;
-    
+
     public string DesignerName => IsValid ? Entity?.DesignerName : null;
 
     public void Remove()
@@ -38,7 +38,7 @@ public partial class CEntityInstance : IEquatable<CEntityInstance>
 
         VirtualFunctions.UTIL_Remove(this.Handle);
     }
-    
+
     public bool Equals(CEntityInstance? other)
     {
         return this.EntityHandle.Equals(other?.EntityHandle);
@@ -84,7 +84,6 @@ public partial class CEntityInstance : IEquatable<CEntityInstance>
 
         NativeAPI.AcceptInput(Handle, inputName, activator?.Handle ?? IntPtr.Zero, caller?.Handle ?? IntPtr.Zero, value, outputId);
     }
-
 
     /// <summary>
     /// Calls a named input method on an entity, conforming to the map IO event queue system.

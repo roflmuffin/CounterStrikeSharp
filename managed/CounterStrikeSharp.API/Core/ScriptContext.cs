@@ -86,28 +86,6 @@ namespace CounterStrikeSharp.API.Core
 
         internal bool isCleanupLocked = false;
 
-        internal static void TraceWithStackCaller(Delegate method)
-        {
-            var methodName = method.Method.DeclaringType?.FullName + "." + method.Method.Name;
-            var profileName = method.Method.Name;
-
-            var trace = new StackTrace(2, true);
-            var frame = trace.GetFrames()?.FirstOrDefault(f =>
-            {
-                var declaring = f.GetMethod()?.DeclaringType?.FullName;
-                return declaring != null &&
-                       !declaring.StartsWith("CounterStrikeSharp") &&
-                       !declaring.Contains("SafeExecutor") &&
-                       !declaring.Contains("FunctionReference");
-            });
-
-            string caller = frame != null
-                ? $"{frame.GetMethod()?.DeclaringType?.FullName}.{frame.GetMethod()?.Name} @ {frame.GetFileName()}:{frame.GetFileLineNumber()}"
-                : "Unknown";
-
-            Helpers.RegisterCallbackTrace(methodName, profileName, caller);
-        }
-
 		[SecuritySafeCritical]
 		public void Reset()
 		{

@@ -123,8 +123,6 @@ namespace CounterStrikeSharp.API.Core
 
         public static FunctionReference Create(Delegate method, FunctionLifetime lifetime = FunctionLifetime.Permanent)
         {
-            ScriptContext.TraceWithStackCaller(method);
-
             // We always want to create a new reference if the lifetime is single use.
             if (lifetime == FunctionLifetime.Permanent && TargetMethodToFunctionReferencesMap.TryGetValue(method, out var existingReference))
             {

@@ -1,10 +1,4 @@
 {
-  "GetHammerUniqueId": {
-    "offsets": {
-      "windows": 109,
-      "linux": 108
-    }
-  },
   "ChangeSubclass": {
     "signatures": {
       "library": "server",
