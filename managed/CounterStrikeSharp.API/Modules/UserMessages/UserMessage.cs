@@ -53,6 +53,7 @@ public class UserMessage : NativeObject, IDisposable
     public byte[] ReadBytes(string fieldName, int? index = null)
     {
         var size = NativeAPI.PbReadbyteslength(this, fieldName, index ?? -1);
+        if (size == 0) return Array.Empty<byte>();
         var bytes = new byte[size];
         unsafe
         {
