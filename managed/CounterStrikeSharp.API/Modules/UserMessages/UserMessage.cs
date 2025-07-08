@@ -52,15 +52,15 @@ public class UserMessage : NativeObject, IDisposable
 
     public byte[] ReadBytes(string fieldName, int? index = null)
     {
+        var size = NativeAPI.PbReadbyteslength(this, fieldName, index ?? -1);
+        var bytes = new byte[size];
         unsafe
         {
-            var size = 2048;
-            byte* buffer = stackalloc byte[size];
-
-            var length = NativeAPI.PbReadbytes(this, fieldName, (IntPtr)buffer, size, index ?? -1);
-            var bytes = new byte[length];
-            Marshal.Copy((IntPtr)buffer, bytes, 0, length);
-            return bytes;
+            fixed (byte* ptr = bytes)
+            {
+                var length = NativeAPI.PbReadbytes(this, fieldName, (IntPtr)ptr, size, index ?? -1);
+                return bytes;
+            }
         }
     }
 

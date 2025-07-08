@@ -7,6 +7,7 @@ PB_READFLOAT: message:UserMessage, name:string, index:int -> float
 PB_READBOOL: message:UserMessage, name:string, index:int -> bool
 PB_READSTRING: message:UserMessage, name:string, index:int -> string
 PB_READBYTES: message:UserMessage, name:string, buffer:pointer, size:int, index:int -> int
+PB_READBYTESLENGTH: message:UserMessage, name:string, index:int -> int
 PB_GETREPEATEDFIELDCOUNT: message:UserMessage, name:string -> int
 PB_SETINT: message:UserMessage, name:string, value:int, index:int -> void
 PB_SETINT64: message:UserMessage, name:string, value:long, index:int -> void

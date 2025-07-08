@@ -1552,6 +1552,19 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static int PbReadbyteslength(UserMessage message, string name, int index){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(message);
+			ScriptContext.GlobalScriptContext.Push(name);
+			ScriptContext.GlobalScriptContext.Push(index);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xF74C465F);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (int)ScriptContext.GlobalScriptContext.GetResult(typeof(int));
+			}
+		}
+
         public static int PbGetrepeatedfieldcount(UserMessage message, string name){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();

@@ -284,6 +284,35 @@ static void PbReadBytes(ScriptContext& scriptContext)
     scriptContext.SetResult(returnValue.size());
 }
 
+static void PbReadBytesLength(ScriptContext& scriptContext)
+{
+    GET_MESSAGE_OR_ERR();
+    GET_FIELD_NAME_OR_ERR();
+
+    auto index = scriptContext.GetArgument<int>(2);
+
+    std::string returnValue;
+
+    if (index < 0)
+    {
+        if (!message->GetString(fieldName, returnValue))
+        {
+            scriptContext.ThrowNativeError("Invalid field \"%s\" for message \"%s\"", fieldName,
+                                           message->GetProtobufMessage()->GetTypeName().c_str());
+        }
+    }
+    else
+    {
+        if (!message->GetRepeatedString(fieldName, index, returnValue))
+        {
+            scriptContext.ThrowNativeError("Invalid field \"%s\"[%d] for message \"%s\"", fieldName, index,
+                                           message->GetProtobufMessage()->GetTypeName().c_str());
+        }
+    }
+
+    scriptContext.SetResult(returnValue.size());
+}
+
 static void PbGetRepeatedFieldCount(ScriptContext& scriptContext)
 {
     GET_MESSAGE_OR_ERR();
@@ -781,6 +810,7 @@ REGISTER_NATIVES(usermessages, {
     ScriptEngine::RegisterNativeHandler("PB_READBOOL", PbReadBool);
     ScriptEngine::RegisterNativeHandler("PB_READSTRING", PbReadString);
     ScriptEngine::RegisterNativeHandler("PB_READBYTES", PbReadBytes);
+    ScriptEngine::RegisterNativeHandler("PB_READBYTESLENGTH", PbReadBytesLength);
     ScriptEngine::RegisterNativeHandler("PB_GETREPEATEDFIELDCOUNT", PbGetRepeatedFieldCount);
     ScriptEngine::RegisterNativeHandler("PB_SETINT", PbSetInt);
     ScriptEngine::RegisterNativeHandler("PB_SETINT64", PbSetInt64);
