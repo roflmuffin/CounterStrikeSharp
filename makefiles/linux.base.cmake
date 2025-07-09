@@ -29,4 +29,6 @@ set(
     distorm
     funchook-static
     dynohook
+    OpenSSL::SSL
+    OpenSSL::Crypto
 )

@@ -35,6 +35,8 @@ class CCoreConfig
     std::string ServerLanguage = "en";
     bool UnlockConCommands = true;
     bool UnlockConVars = true;
+    bool AutoUpdateEnabled = true;
+    std::string AutoUpdateURL = std::string("https://gamedata.cssharp.dev");
 
     using json = nlohmann::json;
     CCoreConfig(const std::string& path);

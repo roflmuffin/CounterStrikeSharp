@@ -32,6 +32,7 @@
 #include "scripting/callback_manager.h"
 #include "scripting/dotnet_host.h"
 #include "scripting/script_engine.h"
+#include "core/gameconfig_updater.h"
 #include "tier0/vprof.h"
 
 #define VERSION_STRING  "v" SEMVER " @ " GITHUB_SHA
@@ -116,6 +117,16 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
     }
 
     CSSHARP_CORE_INFO("CoreConfig loaded.");
+
+    if (globals::coreConfig->AutoUpdateEnabled)
+    {
+        CSSHARP_CORE_INFO("AutoUpdate enabled, checking for gamedata updates...");
+
+        if (!update::TryUpdateGameConfig())
+        {
+            CSSHARP_CORE_ERROR("Failed to update game config.");
+        }
+    }
 
     auto gamedata_path = std::string(utils::GamedataDirectory() + "/gamedata.json");
     globals::gameConfig = new CGameConfig(gamedata_path);
