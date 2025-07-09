@@ -83,8 +83,6 @@ public class UserMessage : NativeObject, IDisposable
 
     public void SetBytes(string fieldName, byte[] value, int? index = null)
     {
-        if (value == null || value.Length == 0) return;
-
         unsafe
         {
             fixed (byte* ptr = value)
@@ -109,8 +107,6 @@ public class UserMessage : NativeObject, IDisposable
 
     public void AddBytes(string fieldName, byte[] value)
     {
-        if (value == null || value.Length == 0) return;
-
         unsafe
         {
             fixed (byte* ptr = value)
