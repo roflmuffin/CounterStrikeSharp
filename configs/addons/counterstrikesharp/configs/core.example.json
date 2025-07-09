@@ -6,5 +6,7 @@
     "PluginAutoLoadEnabled": true,
     "ServerLanguage": "en",
     "UnlockConCommands": true,
-    "UnlockConVars": true
+    "UnlockConVars": true,
+    "AutoUpdateEnabled": true,
+    "AutoUpdateURL": "https://gamedata.cssharp.dev"
 }
