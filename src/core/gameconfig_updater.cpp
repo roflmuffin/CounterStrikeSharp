@@ -1,8 +1,8 @@
 #include "core/gameconfig_updater.h"
 #include "core/utils.h"
 #include "core/coreconfig.h"
+#include "core/log.h"
 #include "core/globals.h"
-#include "gameconfig_updater.h"
 
 #include <string>
 #include <fstream>
@@ -10,7 +10,6 @@
 
 #define CPPHTTPLIB_OPENSSL_SUPPORT
 #include "httplib/httplib.h"
-#include "log.h"
 
 namespace counterstrikesharp::update {
 

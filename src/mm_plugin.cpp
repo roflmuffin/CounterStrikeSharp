@@ -19,6 +19,7 @@
 #include "core/coreconfig.h"
 #include "core/game_system.h"
 #include "core/gameconfig.h"
+#include "core/gameconfig_updater.h"
 #include "core/global_listener.h"
 #include "core/log.h"
 #include "core/managers/entity_manager.h"
@@ -32,7 +33,6 @@
 #include "scripting/callback_manager.h"
 #include "scripting/dotnet_host.h"
 #include "scripting/script_engine.h"
-#include "core/gameconfig_updater.h"
 #include "tier0/vprof.h"
 
 #define VERSION_STRING  "v" SEMVER " @ " GITHUB_SHA

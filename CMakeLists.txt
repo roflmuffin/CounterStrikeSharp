@@ -100,7 +100,6 @@ set(SOURCE_FILES
     src/scripting/natives/natives_server.cpp
     src/scripting/natives/natives_usermessages.cpp
     libraries/nlohmann/json.hpp
-    libraries/httplib/httplib.h
     src/core/managers/voice_manager.cpp
     src/core/managers/voice_manager.h
     src/core/managers/usermessage_manager.cpp
