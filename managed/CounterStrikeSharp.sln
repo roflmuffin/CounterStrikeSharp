@@ -47,6 +47,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WithUserMessages", "..\exam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WithCheckTransmit", "..\examples\WithCheckTransmit\WithCheckTransmit.csproj", "{854B06B5-0E7B-438A-BA51-3F299557F884}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NativeTestsPlugin", "CounterStrikeSharp.Tests.Native\NativeTestsPlugin.csproj", "{317D3A98-D5C6-40BC-9234-CDAFC033ED0F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -137,6 +139,10 @@ Global
 		{854B06B5-0E7B-438A-BA51-3F299557F884}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{854B06B5-0E7B-438A-BA51-3F299557F884}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{854B06B5-0E7B-438A-BA51-3F299557F884}.Release|Any CPU.Build.0 = Release|Any CPU
+		{317D3A98-D5C6-40BC-9234-CDAFC033ED0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{317D3A98-D5C6-40BC-9234-CDAFC033ED0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{317D3A98-D5C6-40BC-9234-CDAFC033ED0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{317D3A98-D5C6-40BC-9234-CDAFC033ED0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
