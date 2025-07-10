@@ -47,3 +47,10 @@ When enabled, will remove the `FCVAR_HIDDEN`,`FCVAR_DEVELOPMENTONLY`, `FCVAR_MIS
 ## UnlockConVars
 
 When enabled, will remove the `FCVAR_HIDDEN`,`FCVAR_DEVELOPMENTONLY`, `FCVAR_MISSING0`, `FCVAR_MISSING1`, `FCVAR_MISSING2`, `FCVAR_MISSING3` flags from all console variables.
+
+## AutoUpdateEnabled
+
+When enabled, CS# will check for any updates to the gamedata.json file and automatically update it if a new version is available.
+
+## AutoUpdateURL
+The URL to use for the auto-update feature. This URL should point to a JSON file that contains the latest version of the gamedata.json file.
