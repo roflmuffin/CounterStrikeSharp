@@ -21,33 +21,6 @@
 #include "core/log.h"
 #include "vprof.h"
 
-DLL_EXPORT void RegisterCallbackTrace(const char* name, size_t count, const char* profile, const char* callerStack)
-{
-    // Dummy logic to prevent compiler from optimizing this function away
-    volatile size_t hash = 5381;
-
-    if (name)
-    {
-        for (const char* c = name; *c; ++c)
-            hash = ((hash << 5) + hash) + *c;
-    }
-
-    if (profile)
-    {
-        for (const char* c = profile; *c; ++c)
-            hash = ((hash << 5) + hash) + *c;
-    }
-
-    if (callerStack)
-    {
-        for (int i = 0; callerStack[i] && i < 128; ++i)
-            hash ^= callerStack[i];
-    }
-
-    hash ^= count;
-    (void)hash;
-}
-
 namespace counterstrikesharp {
 
 ScriptCallback::ScriptCallback(const char* szName) : m_root_context(fxNativeContext{})

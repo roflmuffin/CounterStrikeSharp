@@ -74,25 +74,6 @@ namespace CounterStrikeSharp.API.Core
 
         private unsafe CallbackDelegate CreateWrappedCallback()
         {
-            var methodName = _targetMethod.Method.DeclaringType?.FullName + "." + _targetMethod.Method.Name;
-            var profileName = "ScriptCallback::Execute::" + _targetMethod.Method.Name;
-
-            var stackTrace = new StackTrace(2, true);
-            var firstUserFrame = stackTrace.GetFrames()?.FirstOrDefault(frame =>
-            {
-                var declaring = frame.GetMethod()?.DeclaringType?.FullName;
-                return declaring != null &&
-                       !declaring.StartsWith("CounterStrikeSharp") &&
-                       !declaring.Contains("SafeExecutor") &&
-                       !declaring.Contains("FunctionReference");
-            });
-
-            string caller = firstUserFrame != null
-                ? $"{firstUserFrame.GetMethod()?.DeclaringType?.FullName}.{firstUserFrame.GetMethod()?.Name} @ {firstUserFrame.GetFileName()}:{firstUserFrame.GetFileLineNumber()}"
-                : "Unknown (no user frame)";
-
-            Helpers.RegisterCallbackTrace(methodName, 1, profileName, caller);
-
             return context =>
             {
                 try
