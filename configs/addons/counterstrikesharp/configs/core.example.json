@@ -8,5 +8,5 @@
     "UnlockConCommands": true,
     "UnlockConVars": true,
     "AutoUpdateEnabled": true,
-    "AutoUpdateURL": "https://gamedata.cssharp.dev"
+    "AutoUpdateURL": "http://gamedata.cssharp.dev"
 }
