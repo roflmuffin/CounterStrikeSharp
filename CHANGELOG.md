@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## What's Changed in v1.0.324
+* feat: Add Automatic Gamedata Updates in [#925](https://github.com/roflmuffin/CounterStrikeSharp/pull/925) ([8ab61b0](https://github.com/roflmuffin/CounterStrikeSharp/commit/8ab61b00e8d6e1321b11a0a1c132728ae227c611))
+* chore(dev): add node to devcontainer ([c746c4e](https://github.com/roflmuffin/CounterStrikeSharp/commit/c746c4e2e789e1f8e7fff255630d53549557b2ac))
+* chore(dev): create release script ([32d3e18](https://github.com/roflmuffin/CounterStrikeSharp/commit/32d3e1865792c57510ce69e502bffffc8bc9cdd9))
+
 ## What's Changed in v1.0.323
 * feat: update schema for game update 1.40.8.5 (03.07.2025) in [#921](https://github.com/roflmuffin/CounterStrikeSharp/pull/921) ([22809e3](https://github.com/roflmuffin/CounterStrikeSharp/commit/22809e3ec6aebacfa707f79ac39a2d740f92d23b))
 * chore(dev): add build & sync commands for .NET API ([87d1973](https://github.com/roflmuffin/CounterStrikeSharp/commit/87d197309be882fd55293f2c1933226d60ec8eff))
