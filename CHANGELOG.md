@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## What's Changed in v1.0.325
+* fix: revert internal stack trace for performance in [#927](https://github.com/roflmuffin/CounterStrikeSharp/pull/927) ([260015d](https://github.com/roflmuffin/CounterStrikeSharp/commit/260015d765f7feea8eb75773cc307dfe21c3a084))
+
 ## What's Changed in v1.0.324
 * feat: Add Automatic Gamedata Updates in [#925](https://github.com/roflmuffin/CounterStrikeSharp/pull/925) ([8ab61b0](https://github.com/roflmuffin/CounterStrikeSharp/commit/8ab61b00e8d6e1321b11a0a1c132728ae227c611))
 * chore(dev): add node to devcontainer ([c746c4e](https://github.com/roflmuffin/CounterStrikeSharp/commit/c746c4e2e789e1f8e7fff255630d53549557b2ac))
