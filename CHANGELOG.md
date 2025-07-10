@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## What's Changed in v1.0.326
+* fix: remove requirement for https for game config updates in [#930](https://github.com/roflmuffin/CounterStrikeSharp/pull/930) ([ffb274d](https://github.com/roflmuffin/CounterStrikeSharp/commit/ffb274d636ea5ec6ff389644853005e46f42a756))
+* Support operating `bytes` type protobuf field by [@samyycX](https://github.com/samyycX) in [#922](https://github.com/roflmuffin/CounterStrikeSharp/pull/922) ([b5303d1](https://github.com/roflmuffin/CounterStrikeSharp/commit/b5303d15ab31beb6ea1299f9c7fd0e8cf4b5ca15))
+* fix: prefix dump_schema command to enable compat with Source2 Schema Dumper by GAMMACASE ([1a521ec](https://github.com/roflmuffin/CounterStrikeSharp/commit/1a521ec3bb10178d86d22fff6d4389cb4d8431ba))
+
 ## What's Changed in v1.0.325
 * fix: revert internal stack trace for performance in [#927](https://github.com/roflmuffin/CounterStrikeSharp/pull/927) ([260015d](https://github.com/roflmuffin/CounterStrikeSharp/commit/260015d765f7feea8eb75773cc307dfe21c3a084))
 
