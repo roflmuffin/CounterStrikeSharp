@@ -5,9 +5,6 @@ project(counterstrikesharp C CXX ASM)
 
 include("makefiles/shared.cmake")
 
-# Find OpenSSL for httplib SSL support
-find_package(OpenSSL REQUIRED)
-
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 
 add_subdirectory(libraries/spdlog)
