@@ -5,6 +5,9 @@ project(counterstrikesharp C CXX ASM)
 
 include("makefiles/shared.cmake")
 
+# Find OpenSSL for httplib SSL support
+find_package(OpenSSL REQUIRED)
+
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 
 add_subdirectory(libraries/spdlog)
@@ -43,6 +46,8 @@ set(SOURCE_FILES
     src/core/coreconfig.cpp
     src/core/gameconfig.h
     src/core/gameconfig.cpp
+    src/core/gameconfig_updater.h
+    src/core/gameconfig_updater.cpp
     src/core/log.h
     src/core/log.cpp
     src/scripting/script_engine.h

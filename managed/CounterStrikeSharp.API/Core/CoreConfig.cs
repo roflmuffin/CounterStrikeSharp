@@ -61,6 +61,12 @@ namespace CounterStrikeSharp.API.Core
 
         [JsonPropertyName("UnlockConVars")]
         public bool UnlockConVars { get; set; } = true;
+
+        [JsonPropertyName("AutoUpdateEnabled")]
+        public bool AutoUpdateEnabled { get; set; } = true;
+
+        [JsonPropertyName("AutoUpdateURL")]
+        public string AutoUpdateURL { get; set; } = "https://gamedata.cssharp.dev";
     }
 
     /// <summary>
@@ -157,7 +163,7 @@ namespace CounterStrikeSharp.API.Core
                 {
                     var data = JsonSerializer.Deserialize<CoreConfigData>(File.ReadAllText(_coreConfigPath),
                         new JsonSerializerOptions() { ReadCommentHandling = JsonCommentHandling.Skip });
-    
+
                     if (data != null)
                     {
                         _coreConfig = data;

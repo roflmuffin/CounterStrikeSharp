@@ -93,7 +93,7 @@ json WriteTypeJson(json obj, CSchemaType* current_type)
     return obj;
 }
 
-CON_COMMAND(dump_schema, "dump schema symbols")
+CON_COMMAND(css_dump_schema, "dump schema symbols")
 {
     std::ofstream output(utils::GamedataDirectory() + "/schema.json");
 
