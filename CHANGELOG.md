@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## What's Changed in v1.0.327
+* fix: update core.example.json ([a8eff60](https://github.com/roflmuffin/CounterStrikeSharp/commit/a8eff60d0ba5c0102028dfd357206a5061bcc124))
+
 ## What's Changed in v1.0.326
 * fix: remove requirement for https for game config updates in [#930](https://github.com/roflmuffin/CounterStrikeSharp/pull/930) ([ffb274d](https://github.com/roflmuffin/CounterStrikeSharp/commit/ffb274d636ea5ec6ff389644853005e46f42a756))
 * Support operating `bytes` type protobuf field by [@samyycX](https://github.com/samyycX) in [#922](https://github.com/roflmuffin/CounterStrikeSharp/pull/922) ([b5303d1](https://github.com/roflmuffin/CounterStrikeSharp/commit/b5303d15ab31beb6ea1299f9c7fd0e8cf4b5ca15))
