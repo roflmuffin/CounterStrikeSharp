@@ -120,8 +120,6 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
 
     if (globals::coreConfig->AutoUpdateEnabled)
     {
-        CSSHARP_CORE_INFO("AutoUpdate enabled, checking for gamedata updates...");
-
         if (!update::TryUpdateGameConfig())
         {
             CSSHARP_CORE_ERROR("Failed to update game config.");

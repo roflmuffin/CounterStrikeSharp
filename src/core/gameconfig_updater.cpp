@@ -8,7 +8,6 @@
 #include <fstream>
 #include <filesystem>
 
-#define CPPHTTPLIB_OPENSSL_SUPPORT
 #include "httplib/httplib.h"
 
 namespace counterstrikesharp::update {
@@ -20,6 +19,8 @@ namespace counterstrikesharp::update {
 /// @return
 bool TryUpdateGameConfig()
 {
+    CSSHARP_CORE_INFO("AutoUpdate enabled, checking for gamedata updates from {}", globals::coreConfig->AutoUpdateURL);
+
     auto gamedata_path = std::string(utils::GamedataDirectory() + "/gamedata.json");
     auto etag_path = std::string(utils::GamedataDirectory() + "/gamedata.etag");
 
