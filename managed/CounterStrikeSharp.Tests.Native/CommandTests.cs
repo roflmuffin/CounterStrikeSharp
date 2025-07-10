@@ -43,9 +43,4 @@ public class CommandTests
 
         Assert.True(called, "The 'say' command handler was not called.");
     }
-
-    private async Task WaitOneFrame()
-    {
-        await Server.RunOnTickAsync(Server.TickCount + 2, () => { }).ConfigureAwait(false);
-    }
 }
