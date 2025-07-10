@@ -6,17 +6,21 @@ PB_READINT64: message:UserMessage, name:string, index:int -> long
 PB_READFLOAT: message:UserMessage, name:string, index:int -> float
 PB_READBOOL: message:UserMessage, name:string, index:int -> bool
 PB_READSTRING: message:UserMessage, name:string, index:int -> string
+PB_READBYTES: message:UserMessage, name:string, buffer:pointer, size:int, index:int -> int
+PB_READBYTESLENGTH: message:UserMessage, name:string, index:int -> int
 PB_GETREPEATEDFIELDCOUNT: message:UserMessage, name:string -> int
 PB_SETINT: message:UserMessage, name:string, value:int, index:int -> void
 PB_SETINT64: message:UserMessage, name:string, value:long, index:int -> void
 PB_SETFLOAT: message:UserMessage, name:string, value:float, index:int -> void
 PB_SETBOOL: message:UserMessage, name:string, value:bool, index:int -> void
 PB_SETSTRING: message:UserMessage, name:string, value:string, index:int -> void
+PB_SETBYTES: message:UserMessage, name:string, buffer:pointer, size:int, index:int -> void
 PB_ADDINT: message:UserMessage, name:string, value:int -> void
 PB_ADDINT64: message:UserMessage, name:string, value:int64 -> void
 PB_ADDFLOAT: message:UserMessage, name:string, value:float -> void
 PB_ADDBOOL: message:UserMessage, name:string, value:bool -> void
 PB_ADDSTRING: message:UserMessage, name:string, value:string -> void
+PB_ADDBYTES: message:UserMessage, name:string, buffer:pointer, size:int -> void
 PB_REMOVEREPEATEDFIELDVALUE: message:UserMessage, name:string, index:int -> void
 #PB_READMESSAGE: message:UserMessage, name:string -> UserMessage
 #PB_READREPEATEDMESSAGE: message:UserMessage, name:string, index:int -> UserMessage
