@@ -35,7 +35,6 @@
 #undef snprintf
 
 namespace counterstrikesharp::modules {
-
 struct Segments
 {
     Segments() = default;
@@ -47,6 +46,20 @@ struct Segments
 
     std::uintptr_t address{};
     std::vector<std::uint8_t> bytes{};
+};
+
+struct Section
+{
+    Section() = default;
+
+    Section(const Section&) = default;
+    Section(Section&&) = default;
+    Section& operator=(const Section&) = default;
+    Section& operator=(Section&&) = default;
+
+    std::string name{};
+    std::uintptr_t address{};
+    size_t size{};
 };
 
 class CModule
@@ -64,26 +77,35 @@ class CModule
 
     void* FindSymbol(const std::string& name);
 
+    void* FindVirtualTable(const std::string& name);
+
+    Section* GetSection(std::string_view name);
+
     [[nodiscard]] bool IsInitialized() const { return m_bInitialized; }
 
     std::string m_pszModule{};
     std::string m_pszPath{};
+    void* m_hModule{};
     void* m_base{};
     size_t m_size{};
 
   private:
     bool m_bInitialized{};
     std::vector<Segments> m_vecSegments{};
+    std::vector<Section> m_vecSections{};
     std::uintptr_t m_baseAddress{};
     std::unordered_map<std::string, std::uintptr_t> _symbols{};
     std::unordered_map<std::string, std::uintptr_t> _interfaces{};
+    std::unordered_map<std::string, std::uintptr_t> _vtables{};
     using fnCreateInterface = void* (*)(const char*);
     fnCreateInterface m_fnCreateInterface{};
 
 #ifdef _WIN32
     void DumpSymbols();
+    void DumpSections();
 #else
     void DumpSymbols(ElfW(Dyn) * dyn);
+    void DumpSections();
 #endif
 
     std::optional<std::vector<std::uint8_t>>
