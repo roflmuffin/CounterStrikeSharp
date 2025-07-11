@@ -2,7 +2,7 @@
   "name": "SteamRT Sniper SDK",
   "image": "registry.gitlab.steamos.cloud/steamrt/sniper/sdk:latest",
   "updateContentCommand": "git submodule update --init --recursive",
-  "postCreateCommand": "cmake -S . -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo && cmake --build build -j$(nproc)",
+  "postCreateCommand": "cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -G Ninja && cmake --build build -j$(nproc)",
   "customizations": {
     "vscode": {
       "extensions": [
