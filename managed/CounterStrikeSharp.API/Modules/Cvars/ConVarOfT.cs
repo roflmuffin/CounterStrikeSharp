@@ -1,6 +1,3 @@
-using System;
-using System.Runtime.CompilerServices;
-using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Utils;
 
 namespace CounterStrikeSharp.API.Modules.Cvars;
@@ -25,7 +22,11 @@ public class ConVar<T>
     /// <summary>
     /// The ConVar flags as defined by <see cref="ConVarFlags"/>.
     /// </summary>
-    public ConVarFlags Flags => (ConVarFlags)NativeAPI.GetConvarFlags(AccessIndex);
+    public ConVarFlags Flags
+    {
+        get => (ConVarFlags)NativeAPI.GetConvarFlags(AccessIndex);
+        set => NativeAPI.SetConvarFlags(AccessIndex, (ulong)value);
+    }
 
     public T Value
     {
@@ -104,11 +105,6 @@ public class ConVar<T>
                         throw new InvalidOperationException(
                             $"ConVar is a {Type} but you are trying to get a {type} value.");
                     break;
-                case ConVarType.Color:
-                    if (type != typeof(Vector))
-                        throw new InvalidOperationException(
-                            $"ConVar is a {Type} but you are trying to get a {type} value.");
-                    break;
                 default:
                     throw new InvalidOperationException($"Unknown ConVar type: {Type}");
             }
@@ -118,12 +114,42 @@ public class ConVar<T>
         set => NativeAPI.SetConvarValue(AccessIndex, value);
     }
 
+    public string ValueAsString
+    {
+        get => NativeAPI.GetConvarValueAsString(AccessIndex);
+        set => NativeAPI.SetConvarValueAsString(AccessIndex, value);
+    }
+
     public static ConVar<T>? Find(string name)
     {
         var accessIndex = NativeAPI.GetConvarAccessIndexByName(name);
         if (accessIndex == 0) return null;
 
         return new ConVar<T>(accessIndex);
+    }
+
+    /// <summary>
+    /// Shorthand for checking the <see cref="ConVarFlags.FCVAR_NOTIFY"/> flag.
+    /// </summary>
+    public bool Public
+    {
+        get => Flags.HasFlag(ConVarFlags.FCVAR_NOTIFY);
+        set
+        {
+            if (value)
+            {
+                Flags |= ConVarFlags.FCVAR_NOTIFY;
+            }
+            else
+            {
+                Flags &= ~ConVarFlags.FCVAR_NOTIFY;
+            }
+        }
+    }
+
+    public override string ToString()
+    {
+        return $"ConVar [name={Name}, value={Value}, description={Description}, type={Type}, flags={Flags}]";
     }
 
     public sealed record ConVarCreationOptions

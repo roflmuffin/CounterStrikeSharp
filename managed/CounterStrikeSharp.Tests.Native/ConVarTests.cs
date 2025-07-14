@@ -193,6 +193,10 @@ public class ConVarTests
         // Test min/max constraints
         conVar.Value = 50.0f;
         Assert.Equal(25.0f, conVar.Value);
+        Assert.Equal("25.0", conVar.ValueAsString);
+
+        conVar.ValueAsString = "10.5";
+        Assert.Equal(10.5f, conVar.Value);
 
         conVar.Delete();
 

@@ -118,6 +118,55 @@ static void GetConvarAccessIndexByName(ScriptContext& script_context)
     script_context.SetResult(ref.GetAccessIndex());
 }
 
+static void GetConvarValueAsString(ScriptContext& script_context)
+{
+    auto convarAccessIndex = script_context.GetArgument<uint16>(0);
+    auto ref = ConVarRefAbstract(convarAccessIndex);
+    CSplitScreenSlot server(0);
+
+    if (!ref.IsValidRef())
+    {
+        script_context.ThrowNativeError("Invalid convar access index.");
+        return;
+    }
+
+    if (!ref.IsConVarDataValid())
+    {
+        script_context.ThrowNativeError("Convar data is not valid for access index %d.", convarAccessIndex);
+        return;
+    }
+
+    CBufferString buf;
+    ref.GetValueAsString(buf, server);
+    script_context.SetResult(buf.Get());
+}
+
+static void SetConvarValueAsString(ScriptContext& script_context)
+{
+    auto convarAccessIndex = script_context.GetArgument<uint16>(0);
+    auto ref = ConVarRefAbstract(convarAccessIndex);
+    CSplitScreenSlot server(0);
+
+    if (!ref.IsValidRef())
+    {
+        script_context.ThrowNativeError("Invalid convar access index.");
+        return;
+    }
+
+    if (!ref.IsConVarDataValid())
+    {
+        script_context.ThrowNativeError("Convar data is not valid for access index %d.", convarAccessIndex);
+        return;
+    }
+
+    auto value = script_context.GetArgument<const char*>(1);
+    if (!ref.SetString(value, server))
+    {
+        script_context.ThrowNativeError("Failed to set value for convar %s.", ref.GetName());
+        return;
+    }
+}
+
 static void GetConvarValue(ScriptContext& script_context)
 {
     auto convarAccessIndex = script_context.GetArgument<uint16>(0);
@@ -462,6 +511,8 @@ REGISTER_NATIVES(convars, {
     ScriptEngine::RegisterNativeHandler("GET_CONVAR_HELP_TEXT", GetConvarHelpText);
     ScriptEngine::RegisterNativeHandler("GET_CONVAR_ACCESS_INDEX_BY_NAME", GetConvarAccessIndexByName);
     ScriptEngine::RegisterNativeHandler("GET_CONVAR_VALUE", GetConvarValue);
+    ScriptEngine::RegisterNativeHandler("GET_CONVAR_VALUE_AS_STRING", GetConvarValueAsString);
+    ScriptEngine::RegisterNativeHandler("SET_CONVAR_VALUE_AS_STRING", SetConvarValueAsString);
     ScriptEngine::RegisterNativeHandler("SET_CONVAR_VALUE", SetConvarValue);
     ScriptEngine::RegisterNativeHandler("CREATE_CONVAR", CreateConVar);
     ScriptEngine::RegisterNativeHandler("DELETE_CONVAR", DeleteConVar);
