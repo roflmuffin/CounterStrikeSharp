@@ -289,11 +289,6 @@ static void SetConvarValue(ScriptContext& script_context)
             cvar.SetString(script_context.GetArgument<const char*>(1), server);
             break;
         }
-        case EConVarType_Color:
-        {
-            cvar.SetAs<Color>(*script_context.GetArgument<Color*>(1), server);
-            break;
-        }
         case EConVarType_Vector2:
         {
             cvar.SetAs<Vector2D>(*script_context.GetArgument<Vector2D*>(1), server);
@@ -407,11 +402,6 @@ static void CreateConVar(ScriptContext& script_context)
                 new CConVar<CUtlString>(name, flags, helpText, script_context.GetArgument<const char*>(6), hasMin,
                                         script_context.GetArgument<const char*>(7), hasMax, script_context.GetArgument<const char*>(8));
             createdConVarAccessIndex = createdConVar->GetAccessIndex();
-            break;
-        }
-        case EConVarType_Color:
-        {
-            CREATE_CVAR_PTR(Color);
             break;
         }
         case EConVarType_Vector2:
