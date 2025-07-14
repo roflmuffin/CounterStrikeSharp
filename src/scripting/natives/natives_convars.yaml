@@ -1,0 +1,8 @@
+SET_CONVAR_FLAGS: convar:uint16,flags:uint64 -> void
+GET_CONVAR_FLAGS: convar:uint16 -> uint64
+GET_CONVAR_TYPE: convar:uint16 -> int16
+GET_CONVAR_NAME: convar:uint16 -> string
+GET_CONVAR_HELP_TEXT: convar:uint16 -> string
+GET_CONVAR_ACCESS_INDEX_BY_NAME: name:string -> uint16
+GET_CONVAR_VALUE: convar:uint16 -> any
+SET_CONVAR_VALUE: convar:uint16, value:any -> void

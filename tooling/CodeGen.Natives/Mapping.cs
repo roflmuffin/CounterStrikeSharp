@@ -40,6 +40,10 @@ public class Mapping
                 return "int";
             case "uint":
                 return "uint";
+            case "int16":
+                return "short";
+            case "uint16":
+                return "ushort";
             case "bool":
                 return "bool";
             case "pointer":
