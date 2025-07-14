@@ -66,7 +66,7 @@ namespace CounterStrikeSharp.API.Core
         public bool AutoUpdateEnabled { get; set; } = true;
 
         [JsonPropertyName("AutoUpdateURL")]
-        public string AutoUpdateURL { get; set; } = "https://gamedata.cssharp.dev";
+        public string AutoUpdateURL { get; set; } = "http://gamedata.cssharp.dev";
     }
 
     /// <summary>

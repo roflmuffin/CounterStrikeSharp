@@ -18,7 +18,7 @@
             "label": "build",
             "type": "shell",
             "group": "build",
-            "command": "cmake -S . -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -G Ninja && cmake --build build -j$(nproc)",
+            "command": "cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -G Ninja && cmake --build build -j$(nproc)",
         },
         {
             "label": "build-api",
