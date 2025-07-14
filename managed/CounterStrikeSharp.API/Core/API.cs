@@ -295,12 +295,42 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
-        public static void SetConvarValue<T>(ushort convar, T value){
+        public static object SetConvarValue<T>(ushort convar, T value){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
 			ScriptContext.GlobalScriptContext.Push(convar);
 			ScriptContext.GlobalScriptContext.Push(value);
 			ScriptContext.GlobalScriptContext.SetIdentifier(0xB3DDAA0B);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (object)ScriptContext.GlobalScriptContext.GetResult(typeof(object));
+			}
+		}
+
+        public static ushort CreateConvar<T>(string name, short type, string helptext, ulong flags, bool hasmin, bool hasmax, T defaultvalue, T minvalue, T maxvalue){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(name);
+			ScriptContext.GlobalScriptContext.Push(type);
+			ScriptContext.GlobalScriptContext.Push(helptext);
+			ScriptContext.GlobalScriptContext.Push(flags);
+			ScriptContext.GlobalScriptContext.Push(hasmin);
+			ScriptContext.GlobalScriptContext.Push(hasmax);
+			ScriptContext.GlobalScriptContext.Push(defaultvalue);
+			ScriptContext.GlobalScriptContext.Push(minvalue);
+			ScriptContext.GlobalScriptContext.Push(maxvalue);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xF22079B9);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (ushort)ScriptContext.GlobalScriptContext.GetResult(typeof(ushort));
+			}
+		}
+
+        public static void DeleteConvar(ushort convar){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(convar);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xFC28F444);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
 			}

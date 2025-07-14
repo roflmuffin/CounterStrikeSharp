@@ -111,6 +111,7 @@ static void GetConvarAccessIndexByName(ScriptContext& script_context)
 
     if (!ref.IsValidRef())
     {
+        script_context.SetResult(0);
         return;
     }
 
@@ -129,7 +130,11 @@ static void GetConvarValue(ScriptContext& script_context)
         return;
     }
 
-    if (!cvar.IsConVarDataValid()) return;
+    if (!cvar.IsConVarDataValid())
+    {
+        script_context.ThrowNativeError("Convar data is not valid for access index %d.", convarAccessIndex);
+        return;
+    }
 
     switch (cvar.GetType())
     {
@@ -226,7 +231,11 @@ static void SetConvarValue(ScriptContext& script_context)
         return;
     }
 
-    if (!cvar.IsConVarDataValid()) return;
+    if (!cvar.IsConVarDataValid())
+    {
+        script_context.ThrowNativeError("Convar data is not valid for access index %d.", convarAccessIndex);
+        return;
+    }
 
     switch (cvar.GetType())
     {
@@ -312,6 +321,149 @@ static void SetConvarValue(ScriptContext& script_context)
     }
 }
 
+#define CREATE_CVAR(type)                                                                                                     \
+    auto createdConVar = new CConVar<type>(name, flags, helpText, script_context.GetArgument<type>(6), hasMin,                \
+                                           script_context.GetArgument<type>(7), hasMax, script_context.GetArgument<type>(8)); \
+    createdConVarPtr = (void*)createdConVar;                                                                                  \
+    createdConVarAccessIndex = createdConVar->GetAccessIndex();
+
+#define CREATE_CVAR_PTR(type)                                                                                                     \
+    auto createdConVar = new CConVar<type>(name, flags, helpText, *script_context.GetArgument<type*>(6), hasMin,                  \
+                                           *script_context.GetArgument<type*>(7), hasMax, *script_context.GetArgument<type*>(8)); \
+    createdConVarPtr = (void*)createdConVar;                                                                                      \
+    createdConVarAccessIndex = createdConVar->GetAccessIndex();
+
+static void CreateConVar(ScriptContext& script_context)
+{
+    auto name = script_context.GetArgument<const char*>(0);
+    auto type = script_context.GetArgument<EConVarType>(1);
+    auto helpText = script_context.GetArgument<const char*>(2);
+    auto flags = script_context.GetArgument<uint64_t>(3);
+    auto hasMin = script_context.GetArgument<bool>(4);
+    auto hasMax = script_context.GetArgument<bool>(5);
+
+    // default, min, max is 6,7,8
+
+    ConVarRefAbstract cvar(name);
+    if (cvar.IsValidRef())
+    {
+        script_context.ThrowNativeError("Convar with name '%s' already exists.", name);
+        return;
+    }
+
+    uint16 createdConVarAccessIndex = 0;
+    void* createdConVarPtr = nullptr;
+
+    switch (type)
+    {
+        case EConVarType_Int16:
+        {
+            CREATE_CVAR(int16);
+            break;
+        }
+        case EConVarType_UInt16:
+        {
+            CREATE_CVAR(uint16);
+            break;
+        }
+        case EConVarType_UInt32:
+        {
+            CREATE_CVAR(uint32);
+            break;
+        }
+        case EConVarType_Int32:
+        {
+            CREATE_CVAR(int32);
+            break;
+        }
+        case EConVarType_UInt64:
+        {
+            CREATE_CVAR(uint64);
+            break;
+        }
+        case EConVarType_Int64:
+        {
+            CREATE_CVAR(int64);
+            break;
+        }
+        case EConVarType_Bool:
+        {
+            CREATE_CVAR(bool);
+            break;
+        }
+        case EConVarType_Float32:
+        {
+            CREATE_CVAR(float32);
+            break;
+        }
+        case EConVarType_Float64:
+        {
+            CREATE_CVAR(float64);
+            break;
+        }
+        case EConVarType_String:
+        {
+            auto createdConVar =
+                new CConVar<CUtlString>(name, flags, helpText, script_context.GetArgument<const char*>(6), hasMin,
+                                        script_context.GetArgument<const char*>(7), hasMax, script_context.GetArgument<const char*>(8));
+            createdConVarAccessIndex = createdConVar->GetAccessIndex();
+            break;
+        }
+        case EConVarType_Color:
+        {
+            CREATE_CVAR_PTR(Color);
+            break;
+        }
+        case EConVarType_Vector2:
+        {
+            CREATE_CVAR_PTR(Vector2D);
+            break;
+        }
+        case EConVarType_Vector3:
+        {
+            CREATE_CVAR_PTR(Vector);
+            break;
+        }
+        case EConVarType_Vector4:
+        {
+            CREATE_CVAR_PTR(Vector4D);
+            break;
+        }
+        case EConVarType_Qangle:
+        {
+            CREATE_CVAR_PTR(QAngle);
+            break;
+        }
+        default:
+        {
+            script_context.ThrowNativeError("Unsupported convar type: %d", type);
+            return;
+        }
+    }
+
+    script_context.SetResult(createdConVarAccessIndex);
+}
+
+static void DeleteConVar(ScriptContext& script_context)
+{
+    auto convarAccessIndex = script_context.GetArgument<uint16>(0);
+    auto ref = ConVarRefAbstract(convarAccessIndex);
+
+    if (!ref.IsValidRef())
+    {
+        script_context.ThrowNativeError("Invalid convar access index.");
+        return;
+    }
+
+    if (ref.GetConVarData() == nullptr)
+    {
+        script_context.ThrowNativeError("Convar data is null.");
+        return;
+    }
+
+    ref.GetConVarData()->Invalidate();
+}
+
 REGISTER_NATIVES(convars, {
     ScriptEngine::RegisterNativeHandler("SET_CONVAR_FLAGS", SetConvarFlags);
     ScriptEngine::RegisterNativeHandler("GET_CONVAR_FLAGS", GetConvarFlags);
@@ -321,5 +473,7 @@ REGISTER_NATIVES(convars, {
     ScriptEngine::RegisterNativeHandler("GET_CONVAR_ACCESS_INDEX_BY_NAME", GetConvarAccessIndexByName);
     ScriptEngine::RegisterNativeHandler("GET_CONVAR_VALUE", GetConvarValue);
     ScriptEngine::RegisterNativeHandler("SET_CONVAR_VALUE", SetConvarValue);
+    ScriptEngine::RegisterNativeHandler("CREATE_CONVAR", CreateConVar);
+    ScriptEngine::RegisterNativeHandler("DELETE_CONVAR", DeleteConVar);
 })
 } // namespace counterstrikesharp
