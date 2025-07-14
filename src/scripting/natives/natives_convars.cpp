@@ -14,9 +14,7 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-#define private   public
-#define protected public
-
+#define private public
 #include "core/log.h"
 #include "scripting/autonative.h"
 #include "scripting/script_engine.h"
@@ -24,7 +22,6 @@
 #include <eiface.h>
 #include <convar.h>
 #undef private
-#undef protected
 
 namespace counterstrikesharp {
 
