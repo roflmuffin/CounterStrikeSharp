@@ -38,6 +38,9 @@ class ServerManager : public GlobalClass
     void AddTaskForNextWorldUpdate(std::function<void()>&& task);
     void OnPrecacheResources(IEntityResourceManifest* pResourceManifest);
 
+    ScriptCallback* on_server_pre_entity_think;
+    ScriptCallback* on_server_post_entity_think;
+
   private:
     void ServerHibernationUpdate(bool bHibernating);
     void GameServerSteamAPIActivated();
