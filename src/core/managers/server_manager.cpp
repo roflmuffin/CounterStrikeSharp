@@ -55,6 +55,8 @@ void ServerManager::OnAllInitialized()
     on_server_pre_fatal_shutdown = globals::callbackManager.CreateCallback("OnPreFatalShutdown");
     on_server_update_when_not_in_game = globals::callbackManager.CreateCallback("OnUpdateWhenNotInGame");
     on_server_pre_world_update = globals::callbackManager.CreateCallback("OnServerPreWorldUpdate");
+    on_server_pre_entity_think = globals::callbackManager.CreateCallback("OnServerPreEntityThink");
+    on_server_post_entity_think = globals::callbackManager.CreateCallback("OnServerPostEntityThink");
 
     on_server_precache_resources = globals::callbackManager.CreateCallback("OnServerPrecacheResources");
 }
@@ -79,6 +81,8 @@ void ServerManager::OnShutdown()
     globals::callbackManager.ReleaseCallback(on_server_pre_fatal_shutdown);
     globals::callbackManager.ReleaseCallback(on_server_update_when_not_in_game);
     globals::callbackManager.ReleaseCallback(on_server_pre_world_update);
+    globals::callbackManager.ReleaseCallback(on_server_pre_entity_think);
+    globals::callbackManager.ReleaseCallback(on_server_post_entity_think);
 
     globals::callbackManager.ReleaseCallback(on_server_precache_resources);
 }
