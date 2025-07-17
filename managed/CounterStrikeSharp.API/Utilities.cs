@@ -97,12 +97,14 @@ namespace CounterStrikeSharp.API
         public static bool RemoveItemByDesignerName(this CCSPlayerController player, string designerName, bool shouldRemoveEntity)
         {
             CHandle<CBasePlayerWeapon>? item = null;
+
             if (player.PlayerPawn.Value == null || player.PlayerPawn.Value.WeaponServices == null) return false;
 
             foreach (var weapon in player.PlayerPawn.Value.WeaponServices.MyWeapons)
             {
                 if (weapon is not { IsValid: true, Value.IsValid: true })
                     continue;
+
                 if (weapon.Value.DesignerName != designerName)
                     continue;
 
@@ -111,7 +113,7 @@ namespace CounterStrikeSharp.API
 
             if (item != null && item.Value != null)
             {
-                player.PlayerPawn.Value.RemovePlayerItem(item.Value);
+                player.PlayerPawn.Value.WeaponServices.DropWeapon(item.Value);
 
                 if (shouldRemoveEntity)
                 {
@@ -154,7 +156,7 @@ namespace CounterStrikeSharp.API
             {
                 var controller = GetPlayerFromSlot(i);
 
-                if (controller == null || !controller.IsValid || controller.Connected != PlayerConnectedState.PlayerConnected)
+                if (controller == null || !controller.IsValid || !controller.IsController() || controller.Connected != PlayerConnectedState.PlayerConnected)
                     continue;
 
                 players.Add(controller);
