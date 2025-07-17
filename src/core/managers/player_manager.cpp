@@ -42,6 +42,10 @@
 #include "core/timer_system.h"
 #include "scripting/callback_manager.h"
 #include <iplayerinfo.h>
+#include "player_manager.h"
+#include <entity2/entitysystem.h>
+#include "entity/dump.h"
+#include <vprof.h>
 // extern CEntitySystem *g_pEntitySystem;
 
 SH_DECL_HOOK4_void(IServerGameClients, ClientActive, SH_NOATTRIB, 0, CPlayerSlot, bool, const char*, uint64);
@@ -80,6 +84,7 @@ void PlayerManager::OnAllInitialized()
     m_on_client_disconnect_post_callback = globals::callbackManager.CreateCallback("OnClientDisconnectPost");
     m_on_client_voice_callback = globals::callbackManager.CreateCallback("OnClientVoice");
     m_on_client_authorized_callback = globals::callbackManager.CreateCallback("OnClientAuthorized");
+    m_on_player_buttons_changed_callback = globals::callbackManager.CreateCallback("OnPlayerButtonsChanged");
 }
 
 void PlayerManager::OnShutdown()
@@ -103,6 +108,7 @@ void PlayerManager::OnShutdown()
     globals::callbackManager.ReleaseCallback(m_on_client_disconnect_post_callback);
     globals::callbackManager.ReleaseCallback(m_on_client_authorized_callback);
     globals::callbackManager.ReleaseCallback(m_on_client_voice_callback);
+    globals::callbackManager.ReleaseCallback(m_on_player_buttons_changed_callback);
 }
 
 bool PlayerManager::OnClientConnect(
@@ -320,6 +326,52 @@ CPlayer* PlayerManager::GetPlayerBySlot(int client) const
     }
 
     return &m_players[client];
+}
+
+void PlayerManager::RunThink() const
+{
+    VPROF_BUDGET("CS#::PlayerManager::RunThink", "CS# On Frame");
+
+    for (int i = 0; i <= MaxClients(); i++)
+    {
+        auto player = GetPlayerBySlot(i);
+        auto pController = (CCSPlayerController*)globals::entitySystem->GetEntityInstance(CEntityIndex(i + 1));
+
+        if (!player || !pController || !pController->m_hPlayerPawn().IsValid())
+        {
+            continue;
+        }
+
+        if (((CBasePlayerController*)pController)->m_iConnected() != PlayerConnectedState::PlayerConnected) continue;
+
+        auto pawn = pController->m_hPlayerPawn().Get();
+        if (!pawn || !pawn->m_pMovementServices()) continue;
+
+        auto buttonStates = pawn->m_pMovementServices()->m_nButtons().m_pButtonStates();
+        const auto buttons = buttonStates[0];
+
+        const auto lastButtons = player->m_buttonState;
+        const auto buttonsChanged = buttons ^ lastButtons;
+
+        const auto buttonsPressedThisFrame = (~lastButtons) & buttons;
+        const auto buttonsReleasedThisFrame = lastButtons & (~buttons);
+
+        if (buttonsPressedThisFrame || buttonsReleasedThisFrame)
+        {
+            auto callback = m_on_player_buttons_changed_callback;
+
+            if (callback && callback->GetFunctionCount())
+            {
+                callback->ScriptContext().Reset();
+                callback->ScriptContext().Push(pController);
+                callback->ScriptContext().Push(buttonsPressedThisFrame);
+                callback->ScriptContext().Push(buttonsReleasedThisFrame);
+                callback->Execute();
+            }
+        }
+
+        player->m_buttonState = buttons;
+    }
 }
 
 // CPlayer *PlayerManager::GetClientOfUserId(int user_id) const

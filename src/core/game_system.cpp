@@ -22,6 +22,7 @@
 #include "core/gameconfig.h"
 #include "core/game_system.h"
 #include "core/managers/server_manager.h"
+#include "core/managers/player_manager.h"
 #include "scripting/callback_manager.h"
 #include <tier0/vprof.h>
 
@@ -76,6 +77,12 @@ GS_EVENT_MEMBER(CGameSystem, ServerPreEntityThink)
     {
         callback->ScriptContext().Reset();
         callback->Execute();
+    }
+
+    auto globals = counterstrikesharp::globals::getGlobalVars();
+    if (globals && globals->m_bInSimulation)
+    {
+        counterstrikesharp::globals::playerManager.RunThink();
     }
 }
 

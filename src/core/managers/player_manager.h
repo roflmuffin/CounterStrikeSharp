@@ -131,6 +131,7 @@ class CPlayer
     ListenOverride m_listenMap[66] = {};
     VoiceFlag_t m_voiceFlag = 0;
     CPlayerBitVec m_selfMutes[64] = {};
+    uint64 m_buttonState = ~0;
     void SetName(const char* name);
     INetChannelInfo* GetNetInfo() const;
 };
@@ -167,6 +168,7 @@ class PlayerManager : public GlobalClass
     int MaxClients() const;
     CPlayer* GetPlayerBySlot(int client) const;
     CPlayer* GetClientOfUserId(int user_id) const;
+    void RunThink() const;
 
   private:
     void InvalidatePlayer(CPlayer* pPlayer) const;
@@ -186,6 +188,8 @@ class PlayerManager : public GlobalClass
     ScriptCallback* m_on_client_disconnect_post_callback;
     ScriptCallback* m_on_client_voice_callback;
     ScriptCallback* m_on_client_authorized_callback;
+
+    ScriptCallback* m_on_player_buttons_changed_callback;
 };
 
 } // namespace counterstrikesharp
