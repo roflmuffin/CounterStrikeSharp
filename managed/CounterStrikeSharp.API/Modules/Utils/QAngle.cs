@@ -47,6 +47,11 @@ namespace CounterStrikeSharp.API.Modules.Utils
         {
             unsafe
             {
+                if (q is null)
+                {
+                    throw new ArgumentNullException(nameof(q), "Input QAngle cannot be null.");
+                }
+
                 return new Vector3(new ReadOnlySpan<float>(q.Handle.ToPointer(), 3));
             }
         }

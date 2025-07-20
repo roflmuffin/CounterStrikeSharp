@@ -362,6 +362,11 @@ namespace CounterStrikeSharp.API.Modules.Utils
         {
             unsafe
             {
+                if (v is null)
+                {
+                    throw new ArgumentNullException(nameof(v), "Input Vector cannot be null.");
+                }
+
                 return new Vector3(new ReadOnlySpan<float>(v.Handle.ToPointer(), 3));
             }
         }

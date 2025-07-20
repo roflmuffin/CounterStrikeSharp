@@ -16,7 +16,7 @@ public partial class CBaseEntity
         Guard.IsValidEntity(this);
 
         if (position == null && angles == null && velocity == null)
-            throw new ArgumentNullException("No valid argument");
+            throw new ArgumentException("At least one parameter must be specified");
 
         nint _position = position?.Handle ?? 0;
         nint _angles = angles?.Handle ?? 0;
@@ -27,7 +27,12 @@ public partial class CBaseEntity
             _angles, _velocity);
     }
 
-    /// <inheritdoc cref="Teleport(Vector?, QAngle?, Vector?)"/>
+    /// <summary>
+    /// Teleports the entity to the specified position, angles, and velocity using Vector3 parameters.
+    /// This overload is optimized for memory efficiency by directly working with a Vector3 struct.
+    /// </summary>
+    /// <exception cref="InvalidOperationException">Entity is not valid</exception>
+    /// <exception cref="ArgumentNullException">No valid argument</exception>
     public void Teleport(Vector3? position = null, Vector3? angles = null, Vector3? velocity = null)
     {
         Guard.IsValidEntity(this);
