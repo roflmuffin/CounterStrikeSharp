@@ -10,7 +10,7 @@ namespace CounterStrikeSharp.API.Core;
 public partial class CBaseEntity
 {
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
-    /// <exception cref="ArgumentNullException">No valid argument</exception>
+    /// <exception cref="ArgumentNullException">At least one parameter must be specified</exception>
     public void Teleport(Vector? position = null, QAngle? angles = null, Vector? velocity = null)
     {
         Guard.IsValidEntity(this);
@@ -32,13 +32,13 @@ public partial class CBaseEntity
     /// This overload is optimized for memory efficiency by directly working with a Vector3 struct.
     /// </summary>
     /// <exception cref="InvalidOperationException">Entity is not valid</exception>
-    /// <exception cref="ArgumentNullException">No valid argument</exception>
+    /// <exception cref="ArgumentException">At least one parameter must be specified</exception>
     public void Teleport(Vector3? position = null, Vector3? angles = null, Vector3? velocity = null)
     {
         Guard.IsValidEntity(this);
 
         if (position == null && angles == null && velocity == null)
-            throw new ArgumentNullException("No valid argument");
+            throw new ArgumentException("At least one parameter must be specified");
 
         unsafe
         {
