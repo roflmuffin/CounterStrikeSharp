@@ -66,7 +66,7 @@ public class ConVar<T> : ConVarBase
     }
 
     public ConVar(string name, string description, T defaultValue = default(T), ConVarFlags flags = ConVarFlags.FCVAR_NONE,
-        T? minValue = default, T? maxValue = default) : this(new ConVarCreationOptions
+        T? minValue = default, T? maxValue = default) : this(new ConVarCreationOptions<T>
     {
         Name = name,
         DefaultValue = defaultValue,
@@ -78,7 +78,7 @@ public class ConVar<T> : ConVarBase
     {
     }
 
-    public ConVar(ConVarCreationOptions options)
+    public ConVar(ConVarCreationOptions<T> options)
     {
         var type = typeof(T);
         var conVarType = type switch
@@ -210,14 +210,14 @@ public class ConVar<T> : ConVarBase
     {
         return $"ConVar [name={Name}, value={Value}, description={Description}, type={Type}, flags={Flags}]";
     }
+}
 
-    public sealed record ConVarCreationOptions
-    {
-        public required string Name { get; init; }
-        public required T DefaultValue { get; init; }
-        public string Description { get; init; } = string.Empty;
-        public ConVarFlags Flags { get; init; } = ConVarFlags.FCVAR_NONE;
-        public T? MinValue { get; init; }
-        public T? MaxValue { get; init; }
-    }
+public sealed record ConVarCreationOptions<T>
+{
+    public required string Name { get; init; }
+    public required T DefaultValue { get; init; }
+    public string Description { get; init; } = string.Empty;
+    public ConVarFlags Flags { get; init; } = ConVarFlags.FCVAR_NONE;
+    public T? MinValue { get; init; }
+    public T? MaxValue { get; init; }
 }

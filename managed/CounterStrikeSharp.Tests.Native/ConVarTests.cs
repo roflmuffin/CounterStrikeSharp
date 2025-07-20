@@ -112,7 +112,7 @@ public class ConVarTests
     {
         ConVar<Vector>.Find("test_vector_convar")?.Delete();
 
-        var conVar = new ConVar<Vector>(new ConVar<Vector>.ConVarCreationOptions()
+        var conVar = new ConVar<Vector>(new ConVarCreationOptions<Vector>()
         {
             Name = "test_vector_convar",
             DefaultValue = new Vector(1, 2, 3),
@@ -172,7 +172,7 @@ public class ConVarTests
     {
         ConVar<float>.Find("test_float_convar")?.Delete();
 
-        var conVar = new ConVar<float>(new ConVar<float>.ConVarCreationOptions()
+        var conVar = new ConVar<float>(new ConVarCreationOptions<float>()
         {
             Name = "test_float_convar",
             DefaultValue = 1.23f,
@@ -209,7 +209,7 @@ public class ConVarTests
     {
         ConVar<int>.Find("test_int_convar")?.Delete();
 
-        var conVar = new ConVar<int>(new ConVar<int>.ConVarCreationOptions()
+        var conVar = new ConVar<int>(new ConVarCreationOptions<int>()
         {
             Name = "test_int_convar",
             DefaultValue = 42,
