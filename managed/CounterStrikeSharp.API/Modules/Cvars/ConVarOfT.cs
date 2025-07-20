@@ -2,14 +2,9 @@ using CounterStrikeSharp.API.Modules.Utils;
 
 namespace CounterStrikeSharp.API.Modules.Cvars;
 
-public class ConVar<T>
+public class ConVarBase
 {
-    public ushort AccessIndex { get; private set; }
-
-    public ConVar(ushort accessIndex)
-    {
-        AccessIndex = accessIndex;
-    }
+    public ushort AccessIndex { get; protected set; }
 
     public string Name => NativeAPI.GetConvarName(AccessIndex);
     public string Description => NativeAPI.GetConvarHelpText(AccessIndex);
@@ -26,6 +21,95 @@ public class ConVar<T>
     {
         get => (ConVarFlags)NativeAPI.GetConvarFlags(AccessIndex);
         set => NativeAPI.SetConvarFlags(AccessIndex, (ulong)value);
+    }
+
+    public string ValueAsString
+    {
+        get => NativeAPI.GetConvarValueAsString(AccessIndex);
+        set => NativeAPI.SetConvarValueAsString(AccessIndex, value);
+    }
+
+    /// <summary>
+    /// Shorthand for checking the <see cref="ConVarFlags.FCVAR_NOTIFY"/> flag.
+    /// </summary>
+    public bool Public
+    {
+        get => Flags.HasFlag(ConVarFlags.FCVAR_NOTIFY);
+        set
+        {
+            if (value)
+            {
+                Flags |= ConVarFlags.FCVAR_NOTIFY;
+            }
+            else
+            {
+                Flags &= ~ConVarFlags.FCVAR_NOTIFY;
+            }
+        }
+    }
+
+    public void Delete()
+    {
+        if (AccessIndex == 0)
+            throw new InvalidOperationException("Cannot delete a ConVar that has not been created or found.");
+
+        NativeAPI.DeleteConvar(AccessIndex);
+        AccessIndex = 0;
+    }
+}
+
+public class ConVar<T> : ConVarBase
+{
+    public ConVar(ushort accessIndex)
+    {
+        AccessIndex = accessIndex;
+    }
+
+    public ConVar(string name, string description, T defaultValue = default(T), ConVarFlags flags = ConVarFlags.FCVAR_NONE,
+        T? minValue = default, T? maxValue = default) : this(new ConVarCreationOptions
+    {
+        Name = name,
+        DefaultValue = defaultValue,
+        Description = description,
+        Flags = flags,
+        MinValue = minValue,
+        MaxValue = maxValue
+    })
+    {
+    }
+
+    public ConVar(ConVarCreationOptions options)
+    {
+        var type = typeof(T);
+        var conVarType = type switch
+        {
+            _ when type == typeof(bool) => ConVarType.Bool,
+            _ when type == typeof(float) => ConVarType.Float32,
+            _ when type == typeof(double) => ConVarType.Float64,
+            _ when type == typeof(ushort) => ConVarType.UInt16,
+            _ when type == typeof(short) => ConVarType.Int16,
+            _ when type == typeof(uint) => ConVarType.UInt32,
+            _ when type == typeof(int) => ConVarType.Int32,
+            _ when type == typeof(long) => ConVarType.Int64,
+            _ when type == typeof(ulong) => ConVarType.UInt64,
+            _ when type == typeof(string) => ConVarType.String,
+            _ when type == typeof(QAngle) => ConVarType.Qangle,
+            _ when type == typeof(Vector2D) => ConVarType.Vector2,
+            _ when type == typeof(Vector) => ConVarType.Vector3,
+            _ when type == typeof(Vector4D) => ConVarType.Vector4,
+            _ => throw new InvalidOperationException($"Unsupported type: {type}")
+        };
+
+        AccessIndex = NativeAPI.CreateConvar(options.Name, (short)conVarType, options.Description, (UInt64)options.Flags,
+            options.MinValue != null, options.MaxValue != null,
+            options.DefaultValue,
+            options.MinValue,
+            options.MaxValue);
+
+        if (AccessIndex == 0)
+        {
+            throw new InvalidOperationException($"Failed to create ConVar '{options.Name}' with type '{type}'.");
+        }
     }
 
     public T Value
@@ -114,37 +198,12 @@ public class ConVar<T>
         set => NativeAPI.SetConvarValue(AccessIndex, value);
     }
 
-    public string ValueAsString
-    {
-        get => NativeAPI.GetConvarValueAsString(AccessIndex);
-        set => NativeAPI.SetConvarValueAsString(AccessIndex, value);
-    }
-
     public static ConVar<T>? Find(string name)
     {
         var accessIndex = NativeAPI.GetConvarAccessIndexByName(name);
         if (accessIndex == 0) return null;
 
         return new ConVar<T>(accessIndex);
-    }
-
-    /// <summary>
-    /// Shorthand for checking the <see cref="ConVarFlags.FCVAR_NOTIFY"/> flag.
-    /// </summary>
-    public bool Public
-    {
-        get => Flags.HasFlag(ConVarFlags.FCVAR_NOTIFY);
-        set
-        {
-            if (value)
-            {
-                Flags |= ConVarFlags.FCVAR_NOTIFY;
-            }
-            else
-            {
-                Flags &= ~ConVarFlags.FCVAR_NOTIFY;
-            }
-        }
     }
 
     public override string ToString()
@@ -160,54 +219,5 @@ public class ConVar<T>
         public ConVarFlags Flags { get; init; } = ConVarFlags.FCVAR_NONE;
         public T? MinValue { get; init; }
         public T? MaxValue { get; init; }
-    }
-
-    public static ConVar<T>? Create(ConVarCreationOptions options)
-    {
-        if (string.IsNullOrWhiteSpace(options.Name))
-            throw new ArgumentException("ConVar name cannot be null or whitespace.", nameof(options.Name));
-
-        return Create(options.Name, options.DefaultValue, options.Description, options.Flags, options.MinValue, options.MaxValue);
-    }
-
-    public static ConVar<T>? Create(string name, T defaultValue, string description = "", ConVarFlags flags = ConVarFlags.FCVAR_NONE,
-        T? minValue = default, T? maxValue = default)
-    {
-        var type = typeof(T);
-        var conVarType = type switch
-        {
-            _ when type == typeof(bool) => ConVarType.Bool,
-            _ when type == typeof(float) => ConVarType.Float32,
-            _ when type == typeof(double) => ConVarType.Float64,
-            _ when type == typeof(ushort) => ConVarType.UInt16,
-            _ when type == typeof(short) => ConVarType.Int16,
-            _ when type == typeof(uint) => ConVarType.UInt32,
-            _ when type == typeof(int) => ConVarType.Int32,
-            _ when type == typeof(long) => ConVarType.Int64,
-            _ when type == typeof(ulong) => ConVarType.UInt64,
-            _ when type == typeof(string) => ConVarType.String,
-            _ when type == typeof(QAngle) => ConVarType.Qangle,
-            _ when type == typeof(Vector2D) => ConVarType.Vector2,
-            _ when type == typeof(Vector) => ConVarType.Vector3,
-            _ when type == typeof(Vector4D) => ConVarType.Vector4,
-            _ => throw new InvalidOperationException($"Unsupported type: {type}")
-        };
-
-        var accessIndex = NativeAPI.CreateConvar(name, (short)conVarType, description, (UInt64)flags, minValue != null, maxValue != null,
-            defaultValue,
-            minValue,
-            maxValue);
-        if (accessIndex == 0) return null;
-
-        return new ConVar<T>(accessIndex);
-    }
-
-    public void Delete()
-    {
-        if (AccessIndex == 0)
-            throw new InvalidOperationException("Cannot delete a ConVar that has not been created or found.");
-
-        NativeAPI.DeleteConvar(AccessIndex);
-        AccessIndex = 0;
     }
 }

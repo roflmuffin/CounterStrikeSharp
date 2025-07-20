@@ -91,7 +91,7 @@ public class ConVarTests
     {
         ConVar<bool>.Find("test_bool_convar")?.Delete();
 
-        var conVar = ConVar<bool>.Create("test_bool_convar", true, "Test boolean ConVar", ConVarFlags.FCVAR_NOTIFY);
+        var conVar = new ConVar<bool>("test_bool_convar", "Test boolean ConVar", true, ConVarFlags.FCVAR_NOTIFY);
         Assert.NotNull(conVar);
         Assert.Equal("test_bool_convar", conVar.Name);
         Assert.Equal(ConVarType.Bool, conVar.Type);
@@ -112,7 +112,7 @@ public class ConVarTests
     {
         ConVar<Vector>.Find("test_vector_convar")?.Delete();
 
-        var conVar = ConVar<Vector>.Create(new()
+        var conVar = new ConVar<Vector>(new ConVar<Vector>.ConVarCreationOptions()
         {
             Name = "test_vector_convar",
             DefaultValue = new Vector(1, 2, 3),
@@ -151,7 +151,7 @@ public class ConVarTests
     {
         ConVar<string>.Find("test_string_convar")?.Delete();
 
-        var conVar = ConVar<string>.Create("test_string_convar", "default_value", "Test string ConVar", ConVarFlags.FCVAR_NOTIFY);
+        var conVar = new ConVar<string>("test_string_convar", "Test string ConVar", "default_value", ConVarFlags.FCVAR_NOTIFY);
         Assert.NotNull(conVar);
         Assert.Equal("test_string_convar", conVar.Name);
         Assert.Equal(ConVarType.String, conVar.Type);
@@ -172,7 +172,7 @@ public class ConVarTests
     {
         ConVar<float>.Find("test_float_convar")?.Delete();
 
-        var conVar = ConVar<float>.Create(new()
+        var conVar = new ConVar<float>(new ConVar<float>.ConVarCreationOptions()
         {
             Name = "test_float_convar",
             DefaultValue = 1.23f,
@@ -209,7 +209,7 @@ public class ConVarTests
     {
         ConVar<int>.Find("test_int_convar")?.Delete();
 
-        var conVar = ConVar<int>.Create(new()
+        var conVar = new ConVar<int>(new ConVar<int>.ConVarCreationOptions()
         {
             Name = "test_int_convar",
             DefaultValue = 42,
