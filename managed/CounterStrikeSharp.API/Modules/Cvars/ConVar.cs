@@ -4,6 +4,7 @@ using CounterStrikeSharp.API.Core;
 
 namespace CounterStrikeSharp.API.Modules.Cvars;
 
+[Obsolete("Use ConVar<T> instead for type-safe access to ConVars.")]
 public class ConVar
 {
     public IntPtr Handle { get; }
@@ -127,7 +128,7 @@ public class ConVar
                 throw new InvalidOperationException(
                     $"ConVar is a {Type} but you are trying to get a string value.");
             }
-            
+
             NativeAPI.SetConvarStringValue(Handle, value);
         }
     }
