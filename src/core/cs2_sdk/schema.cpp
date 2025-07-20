@@ -125,12 +125,14 @@ SchemaKey schema::GetOffset(const char* className, uint32_t classKey, const char
     return tableMap->Element(memberIndex);
 }
 
-void SetStateChanged(Z_CBaseEntity* pEntity, int offset)
+void SetStateChanged(uintptr_t entityInstance, int nOffset)
 {
-    // addresses::StateChanged(pEntity->m_NetworkTransmitComponent(), pEntity, offset, -1, -1);
-    auto vars = counterstrikesharp::globals::getGlobalVars();
+    reinterpret_cast<CEntityInstance*>(entityInstance)->NetworkStateChanged(nOffset);
+}
 
-    // if (vars) pEntity->m_lastNetworkChange = vars->curtime;
-
-    // pEntity->m_isSteadyState().ClearAll();
-};
+void ChainNetworkStateChanged(uintptr_t networkVarChainer, uint nLocalOffset)
+{
+    CEntityInstance* pEntity = *reinterpret_cast<CEntityInstance**>(networkVarChainer);
+    if (pEntity && (pEntity->m_pEntity->m_flags & EF_IS_CONSTRUCTION_IN_PROGRESS) == 0)
+        pEntity->NetworkStateChanged(nLocalOffset, -1, *reinterpret_cast<ChangeAccessorFieldPathIndex_t*>(networkVarChainer + 32));
+}
