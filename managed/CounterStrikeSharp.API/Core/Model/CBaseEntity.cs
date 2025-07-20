@@ -42,7 +42,7 @@ public partial class CBaseEntity
             if (position.HasValue)
             {
                 var pos = position.Value;
-                positionPtr = &position;
+                positionPtr = &pos;
             }
 
             if (angles.HasValue)
