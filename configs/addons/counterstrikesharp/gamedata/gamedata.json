@@ -243,8 +243,8 @@
   "IGameSystem_InitAllSystems_pFirst": {
     "signatures": {
       "library": "server",
-      "windows": "48 89 5C 24 ? 55 56 57 48 83 EC ? 48 8D 05",
-      "linux": "4C 8B 35 ? ? ? ? 4D 85 F6 75 ? E9"
+      "windows": "48 8B 1D ? ? ? ? 48 85 DB 0F 84 ? ? ? ? BD",
+      "linux": "4C 8B 35 ? ? ? ? 4D 85 F6 75"
     }
   },
   "CEntityResourceManifest_AddResource": {
