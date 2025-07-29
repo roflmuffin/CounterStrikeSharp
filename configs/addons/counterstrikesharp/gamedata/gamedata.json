@@ -2,7 +2,7 @@
   "UTIL_ClientPrintAll": {
     "signatures": {
       "library": "server",
-      "windows": "48 89 5C 24 08 48 89 6C 24 10 48 89 74 24 18 57 48 81 EC 70 01 ? ? 8B E9",
+      "windows": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC ? 8B E9 49 8B D9",
       "linux": "55 48 89 E5 41 57 4D 89 CF 41 56 4D 89 C6 41 55 49 89 CD 41 54 49 89 D4 53 48 8D"
     }
   },
@@ -16,7 +16,7 @@
   "CCSPlayerController_SwitchTeam": {
     "signatures": {
       "library": "server",
-      "windows": "40 56 57 48 81 EC ? ? ? ? 48 8B F9 8B F2 8B CA",
+      "windows": "40 53 57 48 81 EC ? ? ? ? 48 8B D9 8B FA",
       "linux": "55 48 89 E5 41 54 49 89 FC 89 F7"
     }
   },
@@ -35,7 +35,7 @@
   "CBasePlayerController_SetPawn": {
     "signatures": {
       "library": "server",
-      "windows": "48 89 74 24 ? 55 41 54 41 55 41 56 41 57 48 8D 6C 24 ? 48 81 EC ? ? ? ? 4C 8B F9",
+      "windows": "48 89 5C 24 ? 57 41 54 41 55 41 56 41 57 48 83 EC ? 4C 8B 15",
       "linux": "55 48 8D 87 10 08 00 00"
     }
   },
@@ -56,7 +56,7 @@
   "GiveNamedItem": {
     "signatures": {
       "library": "server",
-      "windows": "48 89 5C 24 ? 48 89 74 24 ? 55 57 41 55 41 56 41 57 48 8D AC 24",
+      "windows": "48 89 5C 24 ? 48 89 74 24 ? 55 57 41 55 41 56 41 57 48 8D 6C 24 ? 48 81 EC ? ? ? ? 4D 8B F9",
       "linux": "55 48 89 E5 41 57 41 56 41 55 41 54 53 48 81 EC D8 00 00 00 48 89 8D 18 FF FF FF"
     }
   },
@@ -77,28 +77,28 @@
   "CBaseModelEntity_SetModel": {
     "signatures": {
       "library": "server",
-      "windows": "48 89 5C 24 ? 48 89 7C 24 ? 55 48 8B EC 48 83 EC 50 48 8B F9 4C 8B C2",
+      "windows": "40 53 48 83 EC ? 48 8B D9 4C 8B C2 48 8B 0D ? ? ? ? 48 8D 54 24 ? 48 8B 01 FF 50 ? 48 8B 44 24 ? 48 8D 54 24 ? 48 8B CB 48 89 44 24 ? E8 ? ? ? ? 48 83 C4 ? 5B C3 CC CC CC CC CC 48 89 5C 24",
       "linux": "55 48 89 F2 48 89 E5 53 48 89 FB 48 8D 7D ? 48 83 EC ? 48 8D 05 ? ? ? ? 48 8B 30 48 8B 06 FF 50 ? 48 8B 45 ? 48 8D 75 ? 48 89 DF 48 89 45 ? E8 ? ? ? ? 48 8B 5D ? C9 C3 CC CC CC 55"
     }
   },
   "CCSPlayer_WeaponServices_CanUse": {
     "signatures": {
       "library": "server",
-      "windows": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC ? 48 8B 01 48 8B F2",
+      "windows": "48 89 5C 24 ? 48 89 6C 24 ? 56 57 41 56 48 83 EC ? 48 8B 01 48 8B FA",
       "linux": "55 48 8D 15 E8 EC FF FF"
     }
   },
   "CCSPlayer_ItemServices_CanAcquire": {
     "signatures": {
       "library": "server",
-      "windows": "44 89 44 24 ? 48 89 54 24 ? 48 89 4C 24 ? 55 56 57 41 54 41 55 41 56 41 57 48 8B EC",
+      "windows": "44 89 44 24 ? 48 89 54 24 ? 48 89 4C 24 ? 55 53 56 57 41 55 41 56 41 57 48 8B EC",
       "linux": "55 48 89 E5 41 57 41 56 41 55 49 89 CD 41 54 49 89 FC 53 48 89 F3 48 83 EC 78"
     }
   },
   "GetCSWeaponDataFromKey": {
     "signatures": {
       "library": "server",
-      "windows": "48 89 5C 24 ? 48 89 74 24 ? 57 48 83 EC ? 48 8B FA 8B F1 48 85 D2 0F 84",
+      "windows": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC ? 33 ED 48 8B FA 8B F1",
       "linux": "55 48 89 E5 41 54 53 48 81 EC 10 01 00 00 48 85 FF"
     }
   },
@@ -129,7 +129,7 @@
   "CCSGameRules_TerminateRound": {
     "signatures": {
       "library": "server",
-      "windows": "48 8B C4 4C 89 48 ? 48 89 48 ? 55 41 55",
+      "windows": "48 8B C4 4C 89 48 ? 48 89 48 ? 55 56",
       "linux": "55 48 89 E5 41 57 41 56 49 89 FE 41 55 41 54 53 48 81 EC ? ? ? ? 48 8D 05 ? ? ? ? F3 0F 11 85"
     }
   },
@@ -156,29 +156,29 @@
   "CBaseEntity_EmitSoundFilter": {
     "signatures": {
       "library": "server",
-      "windows": "48 89 5C 24 08 48 89 6C 24 10 48 89 74 24 18 48 89 7C 24 20 41 56 48 83 EC 30 48 8B EA",
+      "windows": "4C 8B DC 49 89 5B ? 49 89 6B ? 49 89 73 ? 49 89 7B ? 41 56 48 83 EC ? 49 C7 43 ? ? ? ? ? 48 8D 05 ? ? ? ? 49 89 43 ? 41 8B F8",
       "linux": "55 48 8D 05 ? ? ? ? 48 89 E5 41 57 49 89 CF 41 56 41 89 D6"
     }
   },
   "CEntityInstance_AcceptInput": {
     "signatures": {
       "library": "server",
-      "windows": "48 89 5C 24 10 48 89 74 24 18 57 48 83 EC 40 49 8B F0",
+      "windows": "E8 ? ? ? ? F6 44 24 ? ? 74 ? 48 8B 05 ? ? ? ? 48 8B 54 24 ? 48 8B 08 48 8B 01 FF 50 ? 48 83 C4 ? 5B C3 CC CC CC 48 89 5C 24",
       "linux": "55 48 89 F0 48 89 E5 41 57 49 89 FF 41 56 48 8D 7D C0"
     }
   },
   "CEntitySystem_AddEntityIOEvent": {
     "signatures": {
       "library": "server",
-      "windows": "48 89 5C 24 ? 48 89 74 24 ? 57 48 ? ? ? 49 ? ? 48 ? ? 48 ? ? 74",
+      "windows": "48 89 5C 24 ? 4C 89 4C 24 ? 48 89 4C 24 ? 55 56 57 41 54 41 55 41 56 41 57 48 83 EC ? 49 8B F9",
       "linux": "55 48 89 E5 41 55 49 89 CD 41 54 49 89 FC"
     }
   },
   "LegacyGameEventListener": {
     "signatures": {
       "library": "server",
-      "windows": "48 8B 15 ? ? ? ? 48 85 D2 74 ? 85 C9 74",
-      "linux": "48 8B 05 ? ? ? ? 48 85 C0 74 ? 83 FF ? 77 ? 48 63 FF 48 C1 E7 ? 48 8D 44 38"
+      "windows": "48 8B 15 ? ? ? ? 48 85 D2 74 ? 83 F9 ? 77 ? 48 63 C1 48 C1 E0",
+      "linux": "48 8B 05 79 2D D5 00"
     }
   },
   "CBasePlayerPawn_CommitSuicide": {
@@ -203,14 +203,14 @@
   "CBaseEntity_TakeDamageOld": {
     "signatures": {
       "library": "server",
-      "windows": "48 89 74 24 ? 57 48 81 EC 80 00 00 00 48 8B 41",
+      "windows": "48 89 74 24 ? 57 48 81 EC ? ? ? ? 48 8B 41 ? 48 8B FA",
       "linux": "55 48 89 E5 41 57 49 89 F7 41 56 41 55 41 54 53 48 89 FB 48 81 EC 88 00 00 00 F6 46 78 02"
     }
   },
   "CBaseTrigger_StartTouch": {
     "signatures": {
       "library": "server",
-      "windows": "40 57 41 57 48 83 EC 28 48 8B 01",
+      "windows": "40 57 41 56 48 83 EC ? 48 8B 01",
       "linux": "55 48 89 E5 41 57 41 56 41 55 49 89 F5 41 54 53 48 89 FB 48 83 EC ? 48 8B 07"
     }
   },
@@ -224,14 +224,14 @@
   "StateChanged": {
     "signatures": {
       "library": "server",
-      "windows": "40 55 53 56 41 56 41 57 48 8D 6C 24 ? 48 81 EC 70 01 00 00",
+      "windows": "40 55 56 57 41 55 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 80 B9",
       "linux": "55 48 89 E5 41 57 41 56 41 55 41 54 53 89 D3"
     }
   },
   "NetworkStateChanged": {
     "signatures": {
       "library": "server",
-      "windows": "4C 8B C9 48 8B 09 48 85 C9 74 ? 48 8B 41 10",
+      "windows": "48 89 5C 24 ? 48 89 74 24 ? 48 89 7C 24 ? 55 48 8B EC 48 83 EC ? 33 F6 89 55 ? 48 8B F9 44 89 45 ? 0F 57 C0 48 89 75 ? 33 D2 48 89 75 ? 33 C9 89 75 ? 41 B8 ? ? ? ? 66 0F 7F 45 ? 41 B9 ? ? ? ? 66 89 75 ? C7 45 ? ? ? ? ? C7 45 ? ? ? ? ? FF 15 ? ? ? ? 8B D8 83 F8 ? 7D ? 8D 43 ? 99 2B C2 D1 F8 8B D8 83 F8 ? 7C ? 4C 63 4D ? 48 8B 4D ? 49 C1 E1 ? F7 45 ? ? ? ? ? 44 8B C3 0F 94 C2 49 C1 E0 ? FF 15 ? ? ? ? 8B 4D ? 48 89 45 ? F7 C1 ? ? ? ? 74 ? 81 E1 ? ? ? ? 89 4D ? FF 45 ? 48 8D 4F ? 89 5D ? 48 8D 55 ? C7 00 ? ? ? ? E8 ? ? ? ? 8B 45 ? 48 8B 55 ? 89 75 ? A9 ? ? ? ? 75 ? 48 85 D2 74 ? 48 8B 05 ? ? ? ? 48 8B 08 48 8B 01 FF 50 ? 8B 45 ? 48 8B D6 48 89 55 ? 89 75 ? A9 ? ? ? ? 75 ? 48 85 D2 74 ? 48 8B 05 ? ? ? ? 48 8B 08 48 8B 01 FF 50 ? 48 8B 5C 24 ? 48 8B 74 24 ? 48 8B BC 24 ? ? ? ? 48 83 C4 ? 5D C3 CC 4C 8B 05",
       "linux": "48 8B 07 48 85 C0 74 ? 48 8B 50 10"
     }
   },
@@ -250,14 +250,14 @@
   "CEntityIOOutput_FireOutputInternal": {
     "signatures": {
       "library": "server",
-      "windows": "4C 89 4C 24 20 53 55 57 41 54 41 56 48 81 EC",
+      "windows": "4C 89 4C 24 ? 48 89 4C 24 ? 53 56",
       "linux": "55 48 89 E5 41 57 41 56 41 55 41 54 49 89 D4 53 48 89 F3 48 83 EC 58"
     }
   },
   "IGameSystem_InitAllSystems_pFirst": {
     "signatures": {
       "library": "server",
-      "windows": "48 8B 3D ? ? ? ? 48 85 FF 0F 84 ? ? ? ? BE",
+      "windows": "48 89 5C 24 ? 55 56 57 48 83 EC ? 48 8D 05",
       "linux": "4C 8B 35 ? ? ? ? 4D 85 F6 75 ? E9"
     }
   },
@@ -270,7 +270,7 @@
   "CheckTransmit": {
     "signatures": {
       "library": "server",
-      "windows": "48 8B C4 4C 89 48 ? 44 89 40 ? 48 89 50 ? 48 89 48 ? 55",
+      "windows": "48 8B C4 4C 89 48 ? 48 89 50 ? 48 89 48 ? 55 48 8D A8",
       "linux": "55 48 89 E5 41 57 41 89 D7 41 56 41 55 41 54 53 48 81 EC 78 01 00 00"
     }
   },
