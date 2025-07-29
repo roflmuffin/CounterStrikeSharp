@@ -22,13 +22,13 @@
   },
   "CCSPlayerController_ChangeTeam": {
     "offsets": {
-      "windows": 100,
+      "windows": 107,
       "linux": 106
     }
   },
   "CCSPlayerController_Respawn": {
     "offsets": {
-      "windows": 257,
+      "windows": 276,
       "linux": 278
     }
   },
@@ -135,8 +135,8 @@
   },
   "CCSGameRules_FindPickerEntity": {
     "offsets": {
-      "windows": 27,
-      "linux": 28
+      "windows": 27, // TODO
+      "linux": 28 // TODO
     }
   },
   "UTIL_CreateEntityByName": {
@@ -183,7 +183,7 @@
   },
   "CBasePlayerPawn_CommitSuicide": {
     "offsets": {
-      "windows": 380,
+      "windows": 404,
       "linux": 404
     }
   },
@@ -196,7 +196,7 @@
   },
   "CBaseEntity_Teleport": {
     "offsets": {
-      "windows": 157,
+      "windows": 166,
       "linux": 165
     }
   },
