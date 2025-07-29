@@ -157,7 +157,7 @@
     "signatures": {
       "library": "server",
       "windows": "48 89 5C 24 08 48 89 6C 24 10 48 89 74 24 18 48 89 7C 24 20 41 56 48 83 EC 30 48 8B EA",
-      "linux": "55 48 8D 05 60 7F 41 FF"
+      "linux": "55 48 8D 05 ? ? ? ? 48 89 E5 41 57 49 89 CF 41 56 41 89 D6"
     }
   },
   "CEntityInstance_AcceptInput": {
