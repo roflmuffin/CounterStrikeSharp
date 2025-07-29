@@ -150,7 +150,7 @@
     "signatures": {
       "library": "server",
       "windows": "48 89 5C 24 10 57 48 83 EC 30 48 8B DA 48 8B F9 48 85 C9",
-      "linux": "48 85 FF 74 ? 55 48 89 E5 41 56"
+      "linux": "48 85 FF 74 ? 55 48 89 E5 41 55 41 54 49 89 FC"
     }
   },
   "CBaseEntity_EmitSoundFilter": {
