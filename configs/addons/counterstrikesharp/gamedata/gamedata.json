@@ -23,13 +23,13 @@
   "CCSPlayerController_ChangeTeam": {
     "offsets": {
       "windows": 100,
-      "linux": 99
+      "linux": 106
     }
   },
   "CCSPlayerController_Respawn": {
     "offsets": {
       "windows": 257,
-      "linux": 259
+      "linux": 278
     }
   },
   "CBasePlayerController_SetPawn": {
@@ -99,7 +99,7 @@
     "signatures": {
       "library": "server",
       "windows": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC ? 33 ED 48 8B FA 8B F1",
-      "linux": "55 48 89 E5 41 54 53 48 81 EC 10 01 00 00 48 85 FF"
+      "linux": "55 48 89 E5 41 54 53 48 81 EC ? ? ? ? 48 85 FF"
     }
   },
   "CCSPlayer_ItemServices_GiveNamedItem": {
@@ -184,7 +184,7 @@
   "CBasePlayerPawn_CommitSuicide": {
     "offsets": {
       "windows": 380,
-      "linux": 380
+      "linux": 404
     }
   },
   "CBasePlayerPawn_RemovePlayerItem": {
@@ -197,7 +197,7 @@
   "CBaseEntity_Teleport": {
     "offsets": {
       "windows": 157,
-      "linux": 156
+      "linux": 165
     }
   },
   "CBaseEntity_TakeDamageOld": {
