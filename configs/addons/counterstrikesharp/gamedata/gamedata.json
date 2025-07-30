@@ -163,7 +163,7 @@
   "CEntityInstance_AcceptInput": {
     "signatures": {
       "library": "server",
-      "windows": "E8 ? ? ? ? F6 44 24 ? ? 74 ? 48 8B 05 ? ? ? ? 48 8B 54 24 ? 48 8B 08 48 8B 01 FF 50 ? 48 83 C4 ? 5B C3 CC CC CC 48 89 5C 24",
+      "windows": "89 5C 24 ? 48 89 74 24 ? 57 48 83 EC ? 49 8B F0 48 8B D9 48 8B 0D",
       "linux": "55 48 89 F0 48 89 E5 41 57 49 89 FF 41 56 48 8D 7D C0"
     }
   },
