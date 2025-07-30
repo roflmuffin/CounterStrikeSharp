@@ -10,7 +10,7 @@
     "signatures": {
       "library": "server",
       "windows": "48 85 C9 0F 84 ? ? ? ? 48 89 5C 24 ? 55",
-      "linux": "55 48 8D 05 F8 5F 8B 00"
+      "linux": "55 48 8D 05 ? ? ? ? 48 89 E5 41 57 41 89 F7 31 F6"
     }
   },
   "CCSPlayerController_SwitchTeam": {
