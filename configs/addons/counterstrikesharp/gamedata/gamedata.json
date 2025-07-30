@@ -135,8 +135,8 @@
   },
   "CCSGameRules_FindPickerEntity": {
     "offsets": {
-      "windows": 27, // TODO
-      "linux": 28 // cant find
+      "windows": 25,
+      "linux": 26
     }
   },
   "UTIL_CreateEntityByName": {
