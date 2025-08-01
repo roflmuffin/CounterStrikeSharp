@@ -94,7 +94,6 @@ UserMessageManager userMessageManager;
 bool gameLoopInitialized = false;
 GetLegacyGameEventListener_t* GetLegacyGameEventListener = nullptr;
 GameEventManagerInit_t* GameEventManagerInit = nullptr;
-// NetworkStateChanged_t* NetworkStateChanged = nullptr;
 std::thread::id gameThreadId;
 
 // Based on 64 fixed tick rate
