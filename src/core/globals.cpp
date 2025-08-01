@@ -94,6 +94,7 @@ UserMessageManager userMessageManager;
 bool gameLoopInitialized = false;
 GetLegacyGameEventListener_t* GetLegacyGameEventListener = nullptr;
 GameEventManagerInit_t* GameEventManagerInit = nullptr;
+// NetworkStateChanged_t* NetworkStateChanged = nullptr;
 std::thread::id gameThreadId;
 
 // Based on 64 fixed tick rate
@@ -138,6 +139,15 @@ void Initialize()
     if (GameEventManagerInit == nullptr)
     {
         CSSHARP_CORE_ERROR("Failed to find signature for \'GameEventManagerInit\'");
+        return;
+    }
+
+    NetworkStateChanged =
+        reinterpret_cast<NetworkStateChanged_t*>(modules::server->FindSignature(globals::gameConfig->GetSignature("NetworkStateChanged")));
+
+    if (NetworkStateChanged == nullptr)
+    {
+        CSSHARP_CORE_ERROR("Failed to find signature for \'NetworkStateChanged\'");
         return;
     }
 

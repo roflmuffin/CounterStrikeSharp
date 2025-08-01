@@ -24,6 +24,7 @@
 #include <stdint.h>
 #include "tier0/dbg.h"
 #include "utils/virtual.h"
+#include "tier1/utlvector.h"
 
 #include <string>
 #include <vector>
@@ -36,9 +37,37 @@ struct SchemaKey
     bool networked;
 };
 
-class Z_CBaseEntity;
-void SetStateChanged(uintptr_t pEntity, int offset);
-void ChainNetworkStateChanged(uintptr_t pEntity, int offset);
+class CBaseEntity;
+struct CNetworkStateChangedInfo
+{
+    CNetworkStateChangedInfo() = delete;
+
+    CNetworkStateChangedInfo(uint32_t nOffset, uint32_t nArrayIndex, uint32_t nPathIndex)
+    {
+        m_vecOffsetData.EnsureCount(1);
+        m_vecOffsetData[0] = nOffset;
+
+        unk_30 = -1;
+
+        unk_3c = 0;
+
+        m_nArrayIndex = nArrayIndex;
+        m_nPathIndex = nPathIndex;
+    }
+
+  private:
+    int m_nSize; // 0x0
+    CUtlVector<uint32_t> m_vecOffsetData; // 0x8
+    char* m_pszFieldName{}; // 0x20
+    char* m_pszFileName{}; // 0x28
+    uint32_t unk_30 = -1; // 0x30
+    uint32_t m_nArrayIndex{}; // 0x34
+    uint32_t m_nPathIndex{}; // 0x38
+    uint16_t unk_3c{}; // 0x3c
+}; // Size: 0x3e
+
+void NetworkStateChanged(uintptr_t chainEntity, uint32_t offset, uint32_t nArrayIndex = -1, uint32_t nPathIndex = -1);
+void SetStateChanged(uintptr_t pEntity, uint32_t offset, uint32_t nArrayIndex = -1, uint32_t nPathIndex = -1);
 
 constexpr uint32_t val_32_const = 0x811c9dc5;
 constexpr uint32_t prime_32_const = 0x1000193;
@@ -130,15 +159,15 @@ SchemaKey GetOffset(const char* className, uint32_t classKey, const char* member
             if (m_chain != 0 && m_key.networked)                                                                       \
             {                                                                                                          \
                 DevMsg("Found chain offset %d for %s::%s\n", m_chain, ThisClassName, #varName);                        \
-                ChainNetworkStateChanged((uintptr_t)(pThisClass) + m_chain, m_key.offset + extra_offset);              \
+                SetStateChanged((uintptr_t)(pThisClass) + m_chain, m_key.offset + extra_offset);                       \
             }                                                                                                          \
             else if (m_key.networked)                                                                                  \
             {                                                                                                          \
-                /* WIP: Works fine for most props, but inlined classes in the middle of a class will                   \
-                        need to have their this pointer corrected by the offset .*/                                    \
-                if (!IsStruct) SetStateChanged((uintptr_t)pThisClass, m_key.offset + extra_offset);                    \
-                else                                                                                                   \
-                    CALL_VIRTUAL(void, 1, pThisClass, m_key.offset + extra_offset, 0xFFFFFFFF, 0xFFFFFFFF);            \
+                /* WIP: Works fine for most props, but inlined classes in the middle of a class will \ need to have their this pointer \ \                                                                                                                   \
+                   \ corrected by the offset .*/                                                                                           \
+                if (!IsStruct) ::SetStateChanged((uintptr_t)pThisClass, m_key.offset + extra_offset);                  \
+                /* Crash here if no VTable */                                                                          \
+                /*else CALL_VIRTUAL(void, 1, pThisClass, m_key.offset + extra_offset, 0xFFFFFFFF, 0xFFFFFFFF);*/       \
             }                                                                                                          \
             *reinterpret_cast<std::add_pointer_t<type>>((uintptr_t)(pThisClass) + m_key.offset + extra_offset) = val;  \
         }                                                                                                              \

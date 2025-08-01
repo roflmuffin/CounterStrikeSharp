@@ -52,6 +52,7 @@ class CounterStrikeSharpMMPlugin : public ISmmPlugin, public IMetamodListener
     void AddTaskForNextFrame(std::function<void()>&& task);
 
     void Hook_RegisterLoopMode(const char* pszLoopModeName, ILoopModeFactory* pLoopModeFactory, void** ppGlobalPointer);
+    int Hook_LoadEventsFromFile(const char* filename, bool bSearchAll);
     IEngineService* Hook_FindService(const char* serviceName);
 
   public:
