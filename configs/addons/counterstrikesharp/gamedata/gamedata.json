@@ -262,8 +262,8 @@
   },
   "CheckTransmitPlayerSlot": {
     "offsets": {
-      "windows": 584,
-      "linux": 584
+      "windows": 576,
+      "linux": 576
     }
   }
 }
