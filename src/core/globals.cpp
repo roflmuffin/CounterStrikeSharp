@@ -141,8 +141,8 @@ void Initialize()
         return;
     }
 
-    NetworkStateChanged =
-        reinterpret_cast<NetworkStateChanged_t*>(modules::server->FindSignature(globals::gameConfig->GetSignature("NetworkStateChanged")));
+    NetworkStateChanged = reinterpret_cast<NetworkStateChanged_t*>(
+		modules::server->FindSignature(globals::gameConfig->GetSignature("NetworkStateChanged")));
 
     if (NetworkStateChanged == nullptr)
     {

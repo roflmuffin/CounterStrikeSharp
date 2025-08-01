@@ -161,14 +161,14 @@ SchemaKey GetOffset(const char* className, uint32_t classKey, const char* member
                 DevMsg("Found chain offset %d for %s::%s\n", m_chain, ThisClassName, #varName);                          \
                 SetStateChanged((uintptr_t)(pThisClass) + m_chain, m_key.offset + extra_offset);                         \
             }                                                                                                            \
-            else if (m_key.networked)                                                                                    \
-            {                                                                                                            \
-                /* WIP: Works fine for most props, but inlined classes in the middle of a class will                   \ \
-                        need to have their this pointer corrected by the offset .*/                                      \
-                if (!IsStruct) SetStateChanged((uintptr_t)pThisClass, m_key.offset + extra_offset);                      \
-                else                                                                                                     \
-                    CALL_VIRTUAL(void, 1, pThisClass, m_key.offset + extra_offset, 0xFFFFFFFF, 0xFFFFFFFF);              \
-            }                                                                                                            \
+            else if (m_key.networked)                                                                                  \
+            {                                                                                                          \
+                /* WIP: Works fine for most props, but inlined classes in the middle of a class will                   \
+                        need to have their this pointer corrected by the offset .*/                                    \
+                if (!IsStruct) SetStateChanged((uintptr_t)pThisClass, m_key.offset + extra_offset);                    \
+                else                                                                                                   \
+                    CALL_VIRTUAL(void, 1, pThisClass, m_key.offset + extra_offset, 0xFFFFFFFF, 0xFFFFFFFF);            \
+            }                                                                                                          \
             *reinterpret_cast<std::add_pointer_t<type>>((uintptr_t)(pThisClass) + m_key.offset + extra_offset) = val;    \
         }                                                                                                                \
         operator std::add_lvalue_reference_t<type>() { return Get(); }                                                   \
