@@ -375,29 +375,29 @@ void CModule::DumpSymbols(ElfW(Dyn) * dyn)
         dyn++;
     }
 
-            for (auto i = 0; i < symbol_count; i++)
-            {
-                if (!symbols[i].st_name)
-                {
-                    continue;
-                }
-
-                if (symbols[i].st_other != 0)
-                {
-                    continue;
-                }
-
-                auto address = symbols[i].st_value + m_baseAddress;
-                std::string_view name = &string_table[symbols[i].st_name];
-
-                if (name == "CreateInterface")
-                {
-                    m_fnCreateInterface = reinterpret_cast<fnCreateInterface>(address);
-                }
-
-                _symbols.insert({ name.data(), address });
-            }
+    for (auto i = 0; i < symbol_count; i++)
+    {
+        if (!symbols[i].st_name)
+        {
+            continue;
         }
+
+        if (symbols[i].st_other != 0)
+        {
+            continue;
+        }
+
+        auto address = symbols[i].st_value + m_baseAddress;
+        std::string_view name = &string_table[symbols[i].st_name];
+
+        if (name == "CreateInterface")
+        {
+            m_fnCreateInterface = reinterpret_cast<fnCreateInterface>(address);
+        }
+
+        _symbols.insert({ name.data(), address });
+    }
+}
 #endif
 
 std::optional<std::vector<std::uint8_t>>
