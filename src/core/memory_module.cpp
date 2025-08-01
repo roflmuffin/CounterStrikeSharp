@@ -182,6 +182,27 @@ CModule::CModule(std::string_view path, std::uint64_t base)
         }
     }
 
+    // Load all sections for FindVirtualTable
+    section = IMAGE_FIRST_SECTION(nt_header);
+    for (auto i = 0; i < nt_header->FileHeader.NumberOfSections; i++, section++)
+    {
+        const auto is_readable = (section->Characteristics & IMAGE_SCN_MEM_READ) != 0;
+
+        if (is_readable)
+        {
+            const auto start = this->m_baseAddress + section->VirtualAddress;
+            const auto size = (std::min)(section->SizeOfRawData, section->Misc.VirtualSize);
+
+            std::string section_name(reinterpret_cast<const char*>(section->Name),
+                                     strnlen(reinterpret_cast<const char*>(section->Name), IMAGE_SIZEOF_SHORT_NAME));
+
+            auto& sec = m_sections.emplace_back();
+            sec.m_szName = section_name;
+            sec.m_pBase = reinterpret_cast<void*>(start);
+            sec.m_iSize = size;
+        }
+    }
+
     DumpSymbols();
 
     if (m_fnCreateInterface == nullptr) return;
@@ -254,6 +275,9 @@ CModule::CModule(std::string_view path, dl_phdr_info* info)
 
         segment.bytes.assign(&data[0], &data[size]);
     }
+
+    // Load sections from disk for FindVirtualTable
+    LoadSectionsFromDisk();
 
     if (m_fnCreateInterface == nullptr) return;
 
@@ -396,6 +420,55 @@ void CModule::DumpSymbols(ElfW(Dyn) * dyn)
         }
 
         _symbols.insert({ name.data(), address });
+    }
+}
+
+void CModule::LoadSectionsFromDisk()
+{
+    std::ifstream stream(m_pszPath, std::ios::in | std::ios::binary);
+    if (!stream.good())
+    {
+        CSSHARP_CORE_ERROR("Cannot open file {} for section loading", m_pszPath);
+        return;
+    }
+
+    // Read ELF header
+    ElfW(Ehdr) elf_header{};
+    stream.read(reinterpret_cast<char*>(&elf_header), sizeof(elf_header));
+
+    if (elf_header.e_ident[EI_MAG0] != ELFMAG0 || elf_header.e_ident[EI_MAG1] != ELFMAG1 || elf_header.e_ident[EI_MAG2] != ELFMAG2 ||
+        elf_header.e_ident[EI_MAG3] != ELFMAG3)
+    {
+        CSSHARP_CORE_ERROR("Invalid ELF file: {}", m_pszPath);
+        return;
+    }
+
+    // Read section headers
+    std::vector<ElfW(Shdr)> section_headers(elf_header.e_shnum);
+    stream.seekg(elf_header.e_shoff);
+    stream.read(reinterpret_cast<char*>(section_headers.data()), elf_header.e_shnum * sizeof(ElfW(Shdr)));
+
+    // Read section header string table
+    const auto& shstrtab_header = section_headers[elf_header.e_shstrndx];
+    std::vector<char> section_names(shstrtab_header.sh_size);
+    stream.seekg(shstrtab_header.sh_offset);
+    stream.read(section_names.data(), shstrtab_header.sh_size);
+
+    for (const auto& section_header : section_headers)
+    {
+        if (section_header.sh_name >= section_names.size()) continue;
+
+        const char* section_name = &section_names[section_header.sh_name];
+
+        // Only load sections that are needed for FindVirtualTable
+        if (strcmp(section_name, ".rodata") == 0 || strcmp(section_name, ".data.rel.ro") == 0 ||
+            strcmp(section_name, ".data.rel.ro.local") == 0 || strcmp(section_name, ".data") == 0 || strcmp(section_name, ".rdata") == 0)
+        {
+            auto& sec = m_sections.emplace_back();
+            sec.m_szName = section_name;
+            sec.m_pBase = reinterpret_cast<void*>(m_baseAddress + section_header.sh_addr);
+            sec.m_iSize = section_header.sh_size;
+        }
     }
 }
 #endif
@@ -560,4 +633,114 @@ void* CModule::FindSymbol(const std::string& name)
     CSSHARP_CORE_ERROR("Cannot find symbol {}", name);
     return nullptr;
 }
+
+#ifdef _WIN32
+void* CModule::FindVirtualTable(const std::string& name)
+{
+    auto runTimeData = GetSection(".data");
+    auto readOnlyData = GetSection(".rdata");
+
+    if (!runTimeData || !readOnlyData)
+    {
+        Warning("Failed to find .data or .rdata section\n");
+        return nullptr;
+    }
+
+    std::string decoratedTableName = ".?AV" + name + "@@";
+
+    SignatureIterator sigIt(runTimeData->m_pBase, runTimeData->m_iSize, (const byte*)decoratedTableName.c_str(),
+                            decoratedTableName.size() + 1);
+    void* typeDescriptor = sigIt.FindNext(false);
+
+    if (!typeDescriptor)
+    {
+        Warning("Failed to find type descriptor for %s\n", name.c_str());
+        return nullptr;
+    }
+
+    typeDescriptor = (void*)((uintptr_t)typeDescriptor - 0x10);
+
+    const uint32_t rttiTDRva = (uintptr_t)typeDescriptor - (uintptr_t)m_base;
+
+    ConMsg("RTTI Type Descriptor RVA: 0x%p\n", rttiTDRva);
+
+    SignatureIterator sigIt2(readOnlyData->m_pBase, readOnlyData->m_iSize, (const byte*)&rttiTDRva, sizeof(uint32_t));
+
+    while (void* completeObjectLocator = sigIt2.FindNext(false))
+    {
+        auto completeObjectLocatorHeader = (uintptr_t)completeObjectLocator - 0xC;
+        // check RTTI Complete Object Locator header, always 0x1
+        if (*(int32_t*)(completeObjectLocatorHeader) != 1) continue;
+
+        // check RTTI Complete Object Locator vtable offset
+        if (*(int32_t*)((uintptr_t)completeObjectLocator - 0x8) != 0) continue;
+
+        SignatureIterator sigIt3(readOnlyData->m_pBase, readOnlyData->m_iSize, (const byte*)&completeObjectLocatorHeader, sizeof(void*));
+        void* vtable = sigIt3.FindNext(false);
+
+        if (!vtable)
+        {
+            Warning("Failed to find vtable for %s\n", name.c_str());
+            return nullptr;
+        }
+
+        return (void*)((uintptr_t)vtable + 0x8);
+    }
+
+    Warning("Failed to find RTTI Complete Object Locator for %s\n", name.c_str());
+    return nullptr;
+}
+#endif
+
+#ifndef _WIN32
+void* CModule::FindVirtualTable(const std::string& name)
+{
+    auto readOnlyData = GetSection(".rodata");
+    auto readOnlyRelocations = GetSection(".data.rel.ro");
+
+    if (!readOnlyData || !readOnlyRelocations)
+    {
+        Warning("Failed to find .rodata or .data.rel.ro section\n");
+        return nullptr;
+    }
+
+    std::string decoratedTableName = std::to_string(name.length()) + name;
+
+    SignatureIterator sigIt(readOnlyData->m_pBase, readOnlyData->m_iSize, (const byte*)decoratedTableName.c_str(),
+                            decoratedTableName.size() + 1);
+    void* classNameString = sigIt.FindNext(false);
+
+    if (!classNameString)
+    {
+        Warning("Failed to find type descriptor for %s\n", name.c_str());
+        return nullptr;
+    }
+
+    SignatureIterator sigIt2(readOnlyRelocations->m_pBase, readOnlyRelocations->m_iSize, (const byte*)&classNameString, sizeof(void*));
+    void* typeName = sigIt2.FindNext(false);
+
+    if (!typeName)
+    {
+        Warning("Failed to find type name for %s\n", name.c_str());
+        return nullptr;
+    }
+
+    void* typeInfo = (void*)((uintptr_t)typeName - 0x8);
+
+    for (const auto& sectionName : { std::string_view(".data.rel.ro"), std::string_view(".data.rel.ro.local") })
+    {
+        auto section = GetSection(sectionName);
+        if (!section) continue;
+
+        SignatureIterator sigIt3(section->m_pBase, section->m_iSize, (const byte*)&typeInfo, sizeof(void*));
+
+        while (void* vtable = sigIt3.FindNext(false))
+            if (*(int64_t*)((uintptr_t)vtable - 0x8) == 0) return (void*)((uintptr_t)vtable + 0x8);
+    }
+
+    Warning("Failed to find vtable for %s\n", name.c_str());
+    return nullptr;
+}
+#endif
+
 } // namespace counterstrikesharp::modules

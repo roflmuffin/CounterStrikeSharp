@@ -38,6 +38,8 @@
 #define VERSION_STRING  "v" SEMVER " @ " GITHUB_SHA
 #define BUILD_TIMESTAMP __DATE__ " " __TIME__
 
+int g_iLoadEventsFromFileId = -1;
+
 counterstrikesharp::GlobalClass* counterstrikesharp::GlobalClass::head = nullptr;
 
 CGameEntitySystem* GameEntitySystem() { return counterstrikesharp::globals::entitySystem; }
@@ -76,6 +78,7 @@ SH_DECL_HOOK3_void(
     INetworkServerService, StartupServer, SH_NOATTRIB, 0, const GameSessionConfiguration_t&, ISource2WorldSession*, const char*);
 SH_DECL_HOOK3_void(IEngineServiceMgr, RegisterLoopMode, SH_NOATTRIB, 0, const char*, ILoopModeFactory*, void**);
 SH_DECL_HOOK1(IEngineServiceMgr, FindService, SH_NOATTRIB, 0, IEngineService*, const char*);
+SH_DECL_HOOK2(IGameEventManager2, LoadEventsFromFile, SH_NOATTRIB, 0, int, const char*, bool);
 
 CounterStrikeSharpMMPlugin gPlugin;
 
@@ -158,6 +161,11 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
     SH_ADD_HOOK_MEMFUNC(IEngineServiceMgr, FindService, globals::engineServiceManager, this, &CounterStrikeSharpMMPlugin::Hook_FindService,
                         true);
 
+    auto pCGameEventManagerVTable = (IGameEventManager2*)modules::server->FindVirtualTable("CGameEventManager");
+
+    g_iLoadEventsFromFileId = SH_ADD_DVPHOOK(IGameEventManager2, LoadEventsFromFile, pCGameEventManagerVTable,
+                                             SH_MEMBER(this, &CounterStrikeSharpMMPlugin::Hook_LoadEventsFromFile), false);
+
     if (!globals::dotnetManager.Initialize())
     {
         CSSHARP_CORE_ERROR("Failed to initialize .NET runtime");
@@ -195,6 +203,7 @@ bool CounterStrikeSharpMMPlugin::Unload(char* error, size_t maxlen)
     SH_REMOVE_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this, &CounterStrikeSharpMMPlugin::Hook_GameFrame, true);
     SH_REMOVE_HOOK_MEMFUNC(INetworkServerService, StartupServer, globals::networkServerService, this,
                            &CounterStrikeSharpMMPlugin::Hook_StartupServer, true);
+    SH_REMOVE_HOOK_ID(g_iLoadEventsFromFileId);
 
     globals::callbackManager.ReleaseCallback(on_activate_callback);
     globals::callbackManager.ReleaseCallback(on_metamod_all_plugins_loaded_callback);
@@ -278,6 +287,13 @@ IEngineService* CounterStrikeSharpMMPlugin::Hook_FindService(const char* service
     IEngineService* pService = META_RESULT_ORIG_RET(IEngineService*);
 
     return pService;
+}
+
+int CounterStrikeSharpMMPlugin::Hook_LoadEventsFromFile(const char* filename, bool bSearchAll)
+{
+    ExecuteOnce(globals::gameEventManager = META_IFACEPTR(IGameEventManager2));
+
+    RETURN_META_VALUE(MRES_IGNORED, 0);
 }
 
 void CounterStrikeSharpMMPlugin::OnLevelShutdown() {}
