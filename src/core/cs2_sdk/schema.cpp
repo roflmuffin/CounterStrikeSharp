@@ -137,6 +137,6 @@ void SetStateChanged(uintptr_t pEntity, uint32_t offset, uint32_t nArrayIndex, u
 {
     CNetworkStateChangedInfo info(offset, nArrayIndex, nPathIndex);
 
-    static auto fnOffset = counterstrikesharp::globals::gameConfig->GetOffset("CBaseEntity::StateChanged");
+    static auto fnOffset = counterstrikesharp::globals::gameConfig->GetOffset("SetStateChanged");
     CALL_VIRTUAL(void, fnOffset, (void*)pEntity, &info);
 }
