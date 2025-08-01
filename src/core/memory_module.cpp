@@ -370,6 +370,10 @@ void CModule::DumpSymbols(ElfW(Dyn) * dyn)
         else if (dyn->d_tag == DT_SYMTAB)
         {
             symbols = reinterpret_cast<ElfW(Sym)*>(dyn->d_un.d_ptr);
+        }
+
+        dyn++;
+    }
 
             for (auto i = 0; i < symbol_count; i++)
             {
@@ -394,10 +398,6 @@ void CModule::DumpSymbols(ElfW(Dyn) * dyn)
                 _symbols.insert({ name.data(), address });
             }
         }
-
-        dyn++;
-    }
-}
 #endif
 
 std::optional<std::vector<std::uint8_t>>

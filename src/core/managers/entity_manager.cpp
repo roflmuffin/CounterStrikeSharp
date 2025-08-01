@@ -202,7 +202,7 @@ void EntityManager::CheckTransmit(CCheckTransmitInfo** pInfoInfoList,
                                   int nEntityIndices,
                                   bool bEnablePVSBits)
 {
-    VPROF_BUDGET(m_profile_name.c_str(), "CS# CheckTransmit");
+    // VPROF_BUDGET(m_profile_name.c_str(), "CS# CheckTransmit");
 
     auto callback = globals::entityManager.check_transmit;
 

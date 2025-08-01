@@ -10,7 +10,7 @@
     "signatures": {
       "library": "server",
       "windows": "48 85 C9 0F 84 ? ? ? ? 48 89 5C 24 ? 55",
-      "linux": "55 48 8D 05 F8 5F 8B 00"
+      "linux": "55 48 8D 05 ? ? ? ? 48 89 E5 41 57 41 89 F7 31 F6"
     }
   },
   "CCSPlayerController_SwitchTeam": {
@@ -22,14 +22,14 @@
   },
   "CCSPlayerController_ChangeTeam": {
     "offsets": {
-      "windows": 100,
-      "linux": 99
+      "windows": 107,
+      "linux": 106
     }
   },
   "CCSPlayerController_Respawn": {
     "offsets": {
-      "windows": 257,
-      "linux": 259
+      "windows": 276,
+      "linux": 278
     }
   },
   "CBasePlayerController_SetPawn": {
@@ -99,7 +99,7 @@
     "signatures": {
       "library": "server",
       "windows": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC ? 33 ED 48 8B FA 8B F1",
-      "linux": "55 48 89 E5 41 54 53 48 81 EC 10 01 00 00 48 85 FF"
+      "linux": "55 48 89 E5 41 54 53 48 81 EC ? ? ? ? 48 85 FF"
     }
   },
   "CCSPlayer_ItemServices_GiveNamedItem": {
@@ -135,8 +135,8 @@
   },
   "CCSGameRules_FindPickerEntity": {
     "offsets": {
-      "windows": 27,
-      "linux": 28
+      "windows": 25,
+      "linux": 26
     }
   },
   "UTIL_CreateEntityByName": {
@@ -163,7 +163,7 @@
   "CEntityInstance_AcceptInput": {
     "signatures": {
       "library": "server",
-      "windows": "E8 ? ? ? ? F6 44 24 ? ? 74 ? 48 8B 05 ? ? ? ? 48 8B 54 24 ? 48 8B 08 48 8B 01 FF 50 ? 48 83 C4 ? 5B C3 CC CC CC 48 89 5C 24",
+      "windows": "89 5C 24 ? 48 89 74 24 ? 57 48 83 EC ? 49 8B F0 48 8B D9 48 8B 0D",
       "linux": "55 48 89 F0 48 89 E5 41 57 49 89 FF 41 56 48 8D 7D C0"
     }
   },
@@ -183,8 +183,8 @@
   },
   "CBasePlayerPawn_CommitSuicide": {
     "offsets": {
-      "windows": 380,
-      "linux": 380
+      "windows": 404,
+      "linux": 404
     }
   },
   "CBasePlayerPawn_RemovePlayerItem": {
@@ -196,8 +196,8 @@
   },
   "CBaseEntity_Teleport": {
     "offsets": {
-      "windows": 157,
-      "linux": 156
+      "windows": 166,
+      "linux": 165
     }
   },
   "CBaseEntity_TakeDamageOld": {
@@ -243,8 +243,8 @@
   "IGameSystem_InitAllSystems_pFirst": {
     "signatures": {
       "library": "server",
-      "windows": "48 89 5C 24 ? 55 56 57 48 83 EC ? 48 8D 05",
-      "linux": "4C 8B 35 ? ? ? ? 4D 85 F6 75 ? E9"
+      "windows": "48 8B 1D ? ? ? ? 48 85 DB 0F 84 ? ? ? ? BD",
+      "linux": "4C 8B 35 ? ? ? ? 4D 85 F6 75"
     }
   },
   "CEntityResourceManifest_AddResource": {

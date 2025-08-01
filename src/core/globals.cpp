@@ -109,12 +109,28 @@ void Initialize()
     modules::schemasystem = modules::GetModuleByName(MODULE_PREFIX "schemasystem" MODULE_EXT);
     modules::vscript = modules::GetModuleByName(MODULE_PREFIX "vscript" MODULE_EXT);
 
-    interfaces::Initialize();
+    if (!interfaces::pGameResourceServiceServer)
+    {
+        CSSHARP_CORE_ERROR("Failed to get CGameResourceServiceServer");
+        return;
+    }
 
-    entitySystem = interfaces::pGameResourceServiceServer->GetGameEntitySystem();
+    // entitySystem = interfaces::pGameResourceServiceServer->GetGameEntitySystem();
+
+    // if (!entitySystem)
+    // {
+    //     CSSHARP_CORE_ERROR("Failed to get CGameEntitySystem from CGameResourceServiceServer");
+    //     return;
+    // }
 
     GetLegacyGameEventListener = reinterpret_cast<GetLegacyGameEventListener_t*>(
         modules::server->FindSignature(globals::gameConfig->GetSignature("LegacyGameEventListener")));
+
+    if (GetLegacyGameEventListener == nullptr)
+    {
+        CSSHARP_CORE_ERROR("Failed to find signature for \'GetLegacyGameEventListener\'");
+        return;
+    }
 
     GameEventManagerInit = reinterpret_cast<GameEventManagerInit_t*>(
         modules::server->FindSignature(globals::gameConfig->GetSignature("CGameEventManager_Init")));
