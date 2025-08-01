@@ -218,8 +218,13 @@ void EntityManager::CheckTransmit(CCheckTransmitInfo** pInfoInfoList,
     }
 }
 
-void DetourFireOutputInternal(
-    CEntityIOOutput* const pThis, CEntityInstance* pActivator, CEntityInstance* pCaller, const CVariant* const value, float flDelay)
+void DetourFireOutputInternal(CEntityIOOutput* const pThis,
+                              CEntityInstance* pActivator,
+                              CEntityInstance* pCaller,
+                              const CVariant* const value,
+                              float flDelay,
+                              void* unk1,
+                              char* unk2)
 {
     std::vector vecSearchKeys{ OutputKey_t("*", pThis->m_pDesc->m_pName), OutputKey_t("*", "*") };
 
@@ -288,7 +293,7 @@ void DetourFireOutputInternal(
         return;
     }
 
-    m_pFireOutputInternal(pThis, pActivator, pCaller, value, flDelay);
+    m_pFireOutputInternal(pThis, pActivator, pCaller, value, flDelay, unk1, unk2);
 
     for (auto pCallbackPair : vecCallbackPairs)
     {

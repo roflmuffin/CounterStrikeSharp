@@ -129,10 +129,16 @@ class CEntityIOOutput
     EntityIOOutputDesc_t* m_pDesc;
 };
 
-typedef void (*FireOutputInternal)(CEntityIOOutput* const, CEntityInstance*, CEntityInstance*, const CVariant* const, float);
+typedef void (*FireOutputInternal)(
+    CEntityIOOutput* const, CEntityInstance*, CEntityInstance*, const CVariant* const, float flDelay, void* unk1, char* unk2);
 
-static void DetourFireOutputInternal(
-    CEntityIOOutput* const pThis, CEntityInstance* pActivator, CEntityInstance* pCaller, const CVariant* const value, float flDelay);
+static void DetourFireOutputInternal(CEntityIOOutput* const pThis,
+                                     CEntityInstance* pActivator,
+                                     CEntityInstance* pCaller,
+                                     const CVariant* const value,
+                                     float flDelay,
+                                     void* unk1,
+                                     char* unk2);
 
 static FireOutputInternal m_pFireOutputInternal = nullptr;
 
