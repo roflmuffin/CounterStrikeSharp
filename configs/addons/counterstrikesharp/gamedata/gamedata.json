@@ -265,5 +265,18 @@
       "windows": 584,
       "linux": 584
     }
+  },
+  "NetworkStateChanged": {
+    "signatures": {
+      "library": "server",
+      "windows": "4C 8B C2 48 8B D1 48 8B 09",
+      "linux": "48 8B 07 48 85 C0 74 ? 48 8B 50 10"
+    }
+  },
+  "SetStateChanged": {
+    "offsets": {
+      "windows": 25,
+      "linux": 26
+    }
   }
 }

@@ -141,6 +141,15 @@ void Initialize()
         return;
     }
 
+    NetworkStateChanged =
+        reinterpret_cast<NetworkStateChanged_t*>(modules::server->FindSignature(globals::gameConfig->GetSignature("NetworkStateChanged")));
+
+    if (NetworkStateChanged == nullptr)
+    {
+        CSSHARP_CORE_ERROR("Failed to find signature for \'NetworkStateChanged\'");
+        return;
+    }
+
     auto m_hook = funchook_create();
     funchook_prepare(m_hook, (void**)&GameEventManagerInit, (void*)&DetourGameEventManagerInit);
     funchook_install(m_hook, 0);
