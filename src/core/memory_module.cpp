@@ -227,6 +227,10 @@ CModule::CModule(std::string_view path, std::uint64_t base)
 #include "tier0/memdbgon.h"
 #endif
 
+// Credits:
+// https://github.com/alliedmodders/sourcemod/blob/master/core/logic/MemoryUtils.cpp#L502-L587
+// https://github.com/komashchenko/DynLibUtils/blob/5eb95475170becfcc64fd5d32d14ec2b76dcb6d4/module_linux.cpp#L95
+// https://github.com/Source2ZE/CS2Fixes/blob/e1a7aebee8b846b9c6be514dba890646b04a7792/src/utils/plat_unix.cpp#L53
 int GetModuleInformation(HINSTANCE hModule, void** base, size_t* length, std::vector<Section>& m_sections)
 {
     link_map* lmap;
