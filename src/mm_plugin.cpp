@@ -133,7 +133,7 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
             CSSHARP_CORE_ERROR("Failed to update game config.");
         }
 #else
-        CSSHARP_CORE_WARNING("Auto-update is not currently supported on this platform.");
+        CSSHARP_CORE_WARN("Auto-update is not currently supported on this platform.");
 #endif
     }
 
