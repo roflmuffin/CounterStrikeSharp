@@ -875,6 +875,18 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static void ClientPrint(int slot, int huddestination, string msg){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(slot);
+			ScriptContext.GlobalScriptContext.Push(huddestination);
+			ScriptContext.GlobalScriptContext.Push(msg);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x8F03FA72);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
         public static IntPtr GetEntityFromIndex(int index){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
