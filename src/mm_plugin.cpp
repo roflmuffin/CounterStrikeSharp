@@ -166,17 +166,18 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
     g_iLoadEventsFromFileId = SH_ADD_DVPHOOK(IGameEventManager2, LoadEventsFromFile, pCGameEventManagerVTable,
                                              SH_MEMBER(this, &CounterStrikeSharpMMPlugin::Hook_LoadEventsFromFile), false);
 
-    if (!globals::dotnetManager.Initialize())
-    {
-        CSSHARP_CORE_ERROR("Failed to initialize .NET runtime");
-    }
-
     if (!InitGameSystems())
     {
         CSSHARP_CORE_ERROR("Failed to initialize GameSystem!");
         return false;
     }
+
     CSSHARP_CORE_INFO("Initialized GameSystem.");
+
+    if (!globals::dotnetManager.Initialize())
+    {
+        CSSHARP_CORE_ERROR("Failed to initialize .NET runtime");
+    }
 
     CSSHARP_CORE_INFO("Hooks added.");
 
@@ -190,14 +191,24 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
 void CounterStrikeSharpMMPlugin::Hook_StartupServer(const GameSessionConfiguration_t& config, ISource2WorldSession*, const char*)
 {
     globals::entitySystem = interfaces::pGameResourceServiceServer->GetGameEntitySystem();
-    globals::entitySystem->AddListenerEntity(&globals::entityManager.entityListener);
+
+    // Temporary hack until CGameEntitySystem is updated in the sdk
+#ifdef PLATFORM_LINUX
+    int offset = 8512;
+#else
+    int offset = 8480;
+#endif
+
+    auto pListeners = (CUtlVector<IEntityListener*>*)((byte*)globals::entitySystem + offset);
+
+    if (pListeners->Find(&globals::entityManager.entityListener) == -1) pListeners->AddToTail(&globals::entityManager.entityListener);
+
     globals::timerSystem.OnStartupServer();
 
     on_activate_callback->ScriptContext().Reset();
     on_activate_callback->ScriptContext().Push(globals::getGlobalVars()->mapname.ToCStr());
     on_activate_callback->Execute();
 }
-
 bool CounterStrikeSharpMMPlugin::Unload(char* error, size_t maxlen)
 {
     SH_REMOVE_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this, &CounterStrikeSharpMMPlugin::Hook_GameFrame, true);

@@ -210,11 +210,89 @@ CModule::CModule(std::string_view path, std::uint64_t base)
     m_bInitialized = true;
 }
 #else
+#ifdef __linux__
+#include "dbg.h"
+#include "sys/mman.h"
+#include <dlfcn.h>
+#include <elf.h>
+#include <fcntl.h>
+#include <libgen.h>
+#include <link.h>
+#include <locale>
+#include <stdio.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+
+#include "tier0/memdbgon.h"
+#endif
+
+int GetModuleInformation(HINSTANCE hModule, void** base, size_t* length, std::vector<Section>& m_sections)
+{
+    link_map* lmap;
+    if (dlinfo(hModule, RTLD_DI_LINKMAP, &lmap) != 0)
+    {
+        dlclose(hModule);
+        return 1;
+    }
+
+    int fd = open(lmap->l_name, O_RDONLY);
+    if (fd == -1)
+    {
+        dlclose(hModule);
+        return 2;
+    }
+
+    struct stat st;
+    if (fstat(fd, &st) == 0)
+    {
+        void* map = mmap(nullptr, st.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
+        if (map != MAP_FAILED)
+        {
+            ElfW(Ehdr)* ehdr = static_cast<ElfW(Ehdr)*>(map);
+            ElfW(Shdr)* shdrs = reinterpret_cast<ElfW(Shdr)*>(reinterpret_cast<uintptr_t>(ehdr) + ehdr->e_shoff);
+            const char* strTab = reinterpret_cast<const char*>(reinterpret_cast<uintptr_t>(ehdr) + shdrs[ehdr->e_shstrndx].sh_offset);
+
+            for (auto i = 0; i < ehdr->e_phnum; ++i)
+            {
+                ElfW(Phdr)* phdr = reinterpret_cast<ElfW(Phdr)*>(reinterpret_cast<uintptr_t>(ehdr) + ehdr->e_phoff + i * ehdr->e_phentsize);
+                if (phdr->p_type == PT_LOAD && phdr->p_flags & PF_X)
+                {
+                    *base = reinterpret_cast<void*>(lmap->l_addr + phdr->p_vaddr);
+                    *length = phdr->p_filesz;
+                    break;
+                }
+            }
+
+            for (auto i = 0; i < ehdr->e_shnum; ++i)
+            {
+                ElfW(Shdr)* shdr = reinterpret_cast<ElfW(Shdr)*>(reinterpret_cast<uintptr_t>(shdrs) + i * ehdr->e_shentsize);
+                if (*(strTab + shdr->sh_name) == '\0') continue;
+
+                Section section;
+                section.m_szName = strTab + shdr->sh_name;
+                section.m_pBase = reinterpret_cast<void*>(lmap->l_addr + shdr->sh_addr);
+                section.m_iSize = shdr->sh_size;
+                m_sections.push_back(section);
+            }
+
+            munmap(map, st.st_size);
+        }
+    }
+
+    close(fd);
+
+    return 0;
+}
+
 CModule::CModule(std::string_view path, dl_phdr_info* info)
 {
     m_pszModule = path.substr(path.find_last_of('/') + 1);
     m_pszPath = path.data();
     m_baseAddress = info->dlpi_addr;
+
+    auto module = dlmount(m_pszModule.c_str());
+    GetModuleInformation(module, &m_base, &m_size, m_sections);
 
     const bool should_read_from_disk = std::any_of(modules_to_read_from_disk.begin(), modules_to_read_from_disk.end(), [&](const auto& i) {
         return m_pszModule == i;
@@ -275,9 +353,6 @@ CModule::CModule(std::string_view path, dl_phdr_info* info)
 
         segment.bytes.assign(&data[0], &data[size]);
     }
-
-    // Load sections from disk for FindVirtualTable
-    LoadSectionsFromDisk();
 
     if (m_fnCreateInterface == nullptr) return;
 
@@ -422,55 +497,6 @@ void CModule::DumpSymbols(ElfW(Dyn) * dyn)
         _symbols.insert({ name.data(), address });
     }
 }
-
-void CModule::LoadSectionsFromDisk()
-{
-    std::ifstream stream(m_pszPath, std::ios::in | std::ios::binary);
-    if (!stream.good())
-    {
-        CSSHARP_CORE_ERROR("Cannot open file {} for section loading", m_pszPath);
-        return;
-    }
-
-    // Read ELF header
-    ElfW(Ehdr) elf_header{};
-    stream.read(reinterpret_cast<char*>(&elf_header), sizeof(elf_header));
-
-    if (elf_header.e_ident[EI_MAG0] != ELFMAG0 || elf_header.e_ident[EI_MAG1] != ELFMAG1 || elf_header.e_ident[EI_MAG2] != ELFMAG2 ||
-        elf_header.e_ident[EI_MAG3] != ELFMAG3)
-    {
-        CSSHARP_CORE_ERROR("Invalid ELF file: {}", m_pszPath);
-        return;
-    }
-
-    // Read section headers
-    std::vector<ElfW(Shdr)> section_headers(elf_header.e_shnum);
-    stream.seekg(elf_header.e_shoff);
-    stream.read(reinterpret_cast<char*>(section_headers.data()), elf_header.e_shnum * sizeof(ElfW(Shdr)));
-
-    // Read section header string table
-    const auto& shstrtab_header = section_headers[elf_header.e_shstrndx];
-    std::vector<char> section_names(shstrtab_header.sh_size);
-    stream.seekg(shstrtab_header.sh_offset);
-    stream.read(section_names.data(), shstrtab_header.sh_size);
-
-    for (const auto& section_header : section_headers)
-    {
-        if (section_header.sh_name >= section_names.size()) continue;
-
-        const char* section_name = &section_names[section_header.sh_name];
-
-        // Only load sections that are needed for FindVirtualTable
-        if (strcmp(section_name, ".rodata") == 0 || strcmp(section_name, ".data.rel.ro") == 0 ||
-            strcmp(section_name, ".data.rel.ro.local") == 0 || strcmp(section_name, ".data") == 0 || strcmp(section_name, ".rdata") == 0)
-        {
-            auto& sec = m_sections.emplace_back();
-            sec.m_szName = section_name;
-            sec.m_pBase = reinterpret_cast<void*>(m_baseAddress + section_header.sh_addr);
-            sec.m_iSize = section_header.sh_size;
-        }
-    }
-}
 #endif
 
 std::optional<std::vector<std::uint8_t>>
@@ -529,7 +555,22 @@ void* CModule::FindSignature(const char* signature)
         return nullptr;
     }
 
-    return this->FindSignature(pData);
+    auto pOld = this->FindSignature(pData);
+    auto pNew = this->FindSignatureAlternative(pData);
+
+    if (pOld != pNew)
+    {
+        CSSHARP_CORE_DEBUG(
+            "Signature {} found different pointers using different signature scanning methods. Found old address: {}, new address: {}",
+            signature, (void*)pOld, (void*)pNew);
+    }
+
+    if (pNew)
+    {
+        return pNew;
+    }
+
+    return pOld;
 }
 
 void* CModule::FindSignature(const std::vector<int16_t>& sigBytes)
@@ -557,6 +598,39 @@ void* CModule::FindSignature(const std::vector<int16_t>& sigBytes)
             {
                 return reinterpret_cast<void*>(current - data + segment.address);
             }
+        }
+    }
+
+    return nullptr;
+}
+
+void* CModule::FindSignatureAlternative(const std::vector<int16_t>& sigBytes)
+{
+    if (m_baseAddress == 0 || m_size == 0)
+    {
+        return nullptr;
+    }
+
+    auto* data = reinterpret_cast<std::uint8_t*>(m_baseAddress);
+    const auto size = m_size;
+
+    auto first_byte = sigBytes[0];
+    std::uint8_t* end = data + size - sigBytes.size();
+
+    for (std::uint8_t* current = data; current <= end; ++current)
+    {
+        if (first_byte != -1) current = std::find(current, end, first_byte);
+
+        if (current == end)
+        {
+            break;
+        }
+
+        if (std::equal(sigBytes.begin() + 1, sigBytes.end(), current + 1, [](auto opt, auto byte) {
+            return opt == -1 || opt == byte;
+        }))
+        {
+            return reinterpret_cast<void*>(current - data + m_baseAddress);
         }
     }
 

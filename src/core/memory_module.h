@@ -138,13 +138,13 @@ class CModule
     void DumpSymbols();
 #else
     void DumpSymbols(ElfW(Dyn) * dyn);
-    void LoadSectionsFromDisk();
 #endif
 
     std::optional<std::vector<std::uint8_t>>
     GetOriginalBytes(const std::vector<std::uint8_t>& disk_data, std::uintptr_t rva, std::size_t size);
 
     void* FindSignature(const std::vector<int16_t>& sigBytes);
+    void* FindSignatureAlternative(const std::vector<int16_t>& sigBytes);
 };
 
 } // namespace counterstrikesharp::modules
