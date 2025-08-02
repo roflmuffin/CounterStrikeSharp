@@ -43,51 +43,10 @@ jobs:
         with:
           useConfigFile: true
 
-  build_windows:
-    needs: setup
-    runs-on: windows-latest
-    steps:
-      - name: Prepare env
-        shell: bash
-        run: | 
-          echo "GITHUB_SHA_SHORT=${GITHUB_SHA::7}" >> $GITHUB_ENV
-          echo "SEMVER=${{ needs.setup.outputs.gitversion_semver }}" >> $GITHUB_ENV
-
-      - name: Visual Studio environment
-        shell: cmd
-        run: |
-          :: See https://github.com/microsoft/vswhere/wiki/Find-VC
-          for /f "usebackq delims=*" %%i in (`vswhere -latest -property installationPath`) do (
-            call "%%i"\Common7\Tools\vsdevcmd.bat -arch=x64 -host_arch=x64
-          )
-          :: Export environment variables globally
-          for /f "delims== tokens=1,2" %%a in ('set') do (
-            echo>>"%GITHUB_ENV%" %%a=%%b
-          )
-
-      - uses: actions/checkout@v4
-
-      - name: Build (Windows)
-        run: dotnet build CounterStrikeSharp.sln -c ${{ env.BUILD_TYPE }}
-
-      - name: Upload Windows artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: CounterStrikeSharp-Windows
-          path: |
-            **/bin/x64/${{ env.BUILD_TYPE }}/*.dll
-            **/bin/x64/${{ env.BUILD_TYPE }}/*.pdb
-            **/bin/x64/${{ env.BUILD_TYPE }}/*.xml
-
   build_linux:
     needs: setup
     runs-on: ubuntu-latest
     steps:
-      - name: Prepare env
-        run: | 
-          echo "GITHUB_SHA_SHORT=${GITHUB_SHA::7}" >> $GITHUB_ENV
-          echo "SEMVER=${{ needs.setup.outputs.gitversion_semver }}" >> $GITHUB_ENV
-
       - uses: actions/checkout@v4
 
       - name: Setup .NET
@@ -95,15 +54,43 @@ jobs:
         with:
           dotnet-version: 8.0.x
 
-      - name: Build (Linux)
-        run: dotnet build CounterStrikeSharp.sln -c ${{ env.BUILD_TYPE }}
+      - name: Restore dependencies
+        run: dotnet restore
 
-      - name: Upload Linux artifact
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Publish
+        run: dotnet publish src/CounterStrikeSharp --configuration Release --output ./publish
+
+      - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: CounterStrikeSharp-Linux
-          path: |
-            **/bin/Release/*.dll
-            **/bin/Release/*.so
-            **/bin/Release/*.pdb
-            **/bin/Release/*.xml
+          path: ./publish/**
+
+  build_windows:
+    needs: setup
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Publish
+        run: dotnet publish src/CounterStrikeSharp --configuration Release --output ./publish
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: CounterStrikeSharp-Windows
+          path: ./publish/**
