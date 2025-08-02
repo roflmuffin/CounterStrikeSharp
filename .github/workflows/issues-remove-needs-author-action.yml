@@ -1,0 +1,29 @@
+name: Add comment for needs-author-action
+
+on:
+  issue_comment: 
+    types:
+      - created
+
+jobs:
+  add-comment:
+    if: (github.event.sender.id == github.event.issue.user.id) && contains(github.event.issue.labels.*.name, 'needs-author-action')
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Remove label
+        run: gh issue edit "$NUMBER" --remove-label "$LABELS"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
+          LABELS: needs-author-action
+
+      - name: Add label
+        run: gh issue edit "$NUMBER" --add-label "$LABELS"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
+          LABELS: needs-further-triage
