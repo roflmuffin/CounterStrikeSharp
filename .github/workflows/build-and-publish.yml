@@ -3,8 +3,6 @@ name: Build & Publish
 env:
   BUILD_TYPE: Release
 
-# Remove default permissions of GITHUB_TOKEN for security
-# https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs
 permissions: {}
 
 on:
@@ -26,20 +24,20 @@ jobs:
       gitversion_assemblysemver: ${{ steps.gitversion.outputs.assemblySemVer }}
       gitversion_informationalversion: ${{ steps.gitversion.outputs.informationalVersion }}
     steps:
-    - name: Install GitVersion
-      uses: gittools/actions/gitversion/setup@v1
-      with:
-        versionSpec: 6.0.x
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v1
+        with:
+          versionSpec: 6.0.x
 
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-    - name: Execute GitVersion
-      id: gitversion
-      uses: gittools/actions/gitversion/execute@v1
-      with:
-        useConfigFile: true
+      - name: Execute GitVersion
+        id: gitversion
+        uses: gittools/actions/gitversion/execute@v1
+        with:
+          useConfigFile: true
 
   build_windows:
     needs: setup
@@ -58,8 +56,7 @@ jobs:
           for /f "usebackq delims=*" %%i in (`vswhere -latest -property installationPath`) do (
             call "%%i"\Common7\Tools\vsdevcmd.bat -arch=x64 -host_arch=x64
           )
-
-          :: Loop over all environment variables and make them global.
+          :: Export environment variables globally
           for /f "delims== tokens=1,2" %%a in ('set') do (
             echo>>"%GITHUB_ENV%" %%a=%%b
           )
@@ -75,11 +72,11 @@ jobs:
           cmake -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} ..
           cmake --build . --config ${{env.BUILD_TYPE}} -- /m:16
 
-      - name: Clean build directory
+      - name: Clean build directory and prepare output
         run: |
           mkdir -p build/addons/counterstrikesharp/bin/win64
           mv build/${{env.BUILD_TYPE}}/*.dll build/addons/counterstrikesharp/bin/win64
-          mkdir build/output/
+          mkdir -p build/output/
           mv build/addons build/output
 
       - uses: actions/upload-artifact@v4
@@ -90,7 +87,6 @@ jobs:
   build_linux:
     needs: setup
     runs-on: ubuntu-latest
-    # Could not figure out how to run in a container only on some matrix paths, so I've split it out into its own build.
     container:
       image: registry.gitlab.steamos.cloud/steamrt/sniper/sdk:latest
     steps:
@@ -111,9 +107,9 @@ jobs:
           cmake -G Ninja -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} ..
           cmake --build . --config ${{env.BUILD_TYPE}} -- -j16
 
-      - name: Clean build directory
+      - name: Clean build directory and prepare output
         run: |
-          mkdir build/output/
+          mkdir -p build/output/
           mv build/addons build/output
 
       - uses: actions/upload-artifact@v4
@@ -131,7 +127,6 @@ jobs:
         shell: bash
         run: echo "GITHUB_SHA_SHORT=${GITHUB_SHA::7}" >> $GITHUB_ENV
 
-      # We don't need expensive submodules for the managed side.
       - uses: actions/checkout@v4
 
       - name: Build runtime v${{ needs.setup.outputs.gitversion_semver }}
@@ -155,16 +150,16 @@ jobs:
       - name: Publish artifacts
         run: |
           dotnet publish -c Release \
-          /p:Version=${{ needs.setup.outputs.gitversion_semver }} \
-          /p:AssemblyVersion=${{ needs.setup.outputs.gitversion_assemblySemver }} \
-          /p:InformationalVersion=${{ needs.setup.outputs.gitversion_informationalversion }} \
-          managed/CounterStrikeSharp.API
+            /p:Version=${{ needs.setup.outputs.gitversion_semver }} \
+            /p:AssemblyVersion=${{ needs.setup.outputs.gitversion_assemblysemver }} \
+            /p:InformationalVersion=${{ needs.setup.outputs.gitversion_informationalversion }} \
+            managed/CounterStrikeSharp.API
           
           dotnet pack -c Release \
-          /p:Version=${{ needs.setup.outputs.gitversion_semver }} \
-          /p:AssemblyVersion=${{ needs.setup.outputs.gitversion_assemblySemver }} \
-          /p:InformationalVersion=${{ needs.setup.outputs.gitversion_informationalversion }} \
-          managed/CounterStrikeSharp.API
+            /p:Version=${{ needs.setup.outputs.gitversion_semver }} \
+            /p:AssemblyVersion=${{ needs.setup.outputs.gitversion_assemblysemver }} \
+            /p:InformationalVersion=${{ needs.setup.outputs.gitversion_informationalversion }} \
+            managed/CounterStrikeSharp.API
 
       - uses: actions/upload-artifact@v4
         with:
@@ -202,7 +197,6 @@ jobs:
           name: counterstrikesharp-api-${{ needs.setup.outputs.gitversion_semver }}
           path: build/api
 
-      # TODO: This stuff should really be in a matrix
       - name: Add API to Artifacts
         run: |
           mkdir -p build/linux/addons/counterstrikesharp/api
@@ -225,17 +219,17 @@ jobs:
           curl -s -L https://download.visualstudio.microsoft.com/download/pr/086d1dd6-57a5-437a-a1ef-549cf702fb48/dd4a8fe6c53a1016a414d6f2925c1323/aspnetcore-runtime-8.0.3-win-x64.zip -o dotnet.zip
           unzip -qq dotnet.zip -d build/windows/addons/counterstrikesharp/dotnet
 
-      - name: Zip Builds
+      - name: Zip Builds with runtime
         run: |
           (cd build/linux && zip -qq -r ../../counterstrikesharp-with-runtime-linux-${{ needs.setup.outputs.gitversion_semver }}.zip *)
           (cd build/windows && zip -qq -r ../../counterstrikesharp-with-runtime-windows-${{ needs.setup.outputs.gitversion_semver }}.zip *)
-      
+
       - name: Generate a changelog
         uses: orhun/git-cliff-action@v4
         id: git-cliff
         with:
-            config: cliff.toml
-            args: --current -s footer
+          config: cliff.toml
+          args: --current -s footer
 
       - name: Release
         id: release
