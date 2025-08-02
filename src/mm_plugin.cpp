@@ -125,13 +125,17 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
 
     CSSHARP_CORE_INFO("CoreConfig loaded.");
 
-    // if (globals::coreConfig->AutoUpdateEnabled)
-    // {
-    //     if (!update::TryUpdateGameConfig())
-    //     {
-    //         CSSHARP_CORE_ERROR("Failed to update game config.");
-    //     }
-    // }
+    if (globals::coreConfig->AutoUpdateEnabled)
+    {
+#ifdef _WIN32
+        if (!update::TryUpdateGameConfig())
+        {
+            CSSHARP_CORE_ERROR("Failed to update game config.");
+        }
+#else
+        CSSHARP_CORE_WARNING("Auto-update is not currently supported on this platform.");
+#endif
+    }
 
     auto gamedata_path = std::string(utils::GamedataDirectory() + "/gamedata.json");
     globals::gameConfig = new CGameConfig(gamedata_path);
