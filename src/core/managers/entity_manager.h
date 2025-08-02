@@ -29,6 +29,19 @@
 
 #include "vprof.h"
 
+class CCheckTransmitInfoHack
+{
+  public:
+    CBitVec<16384>* m_pTransmitEntity;
+
+  private:
+    [[maybe_unused]] int8_t m_pad8[568];
+
+  public:
+    int32_t m_nPlayerSlot;
+    bool m_bFullUpdate;
+};
+
 namespace counterstrikesharp {
 class ScriptCallback;
 
@@ -45,10 +58,10 @@ class CEntityListener : public IEntityListener
 class CCheckTransmitInfoList
 {
   public:
-    CCheckTransmitInfoList(CCheckTransmitInfo** pInfoInfoList, int nInfoCount);
+    CCheckTransmitInfoList(CCheckTransmitInfoHack** pInfoInfoList, int nInfoCount);
 
   private:
-    CCheckTransmitInfo** infoList;
+    CCheckTransmitInfoHack** infoList;
     int infoCount;
 };
 
@@ -67,13 +80,14 @@ class EntityManager : public GlobalClass
     std::map<OutputKey_t, CallbackPair*> m_pHookMap;
 
   private:
-    void CheckTransmit(CCheckTransmitInfo** pInfoInfoList,
-                       int nInfoCount,
-                       CBitVec<16384>& unionTransmitEdicts,
+    void CheckTransmit(ISource2GameEntities* pThis,
+                       CCheckTransmitInfoHack** ppInfoList,
+                       uint32_t infoCount,
+                       CBitVec<16384>& unionTransmitEdicts1,
+                       CBitVec<16384>& unionTransmitEdicts2,
                        const Entity2Networkable_t** pNetworkables,
                        const uint16* pEntityIndicies,
-                       int nEntityIndices,
-                       bool bEnablePVSBits);
+                       uint32_t nEntities);
 
     ScriptCallback* on_entity_spawned_callback;
     ScriptCallback* on_entity_created_callback;

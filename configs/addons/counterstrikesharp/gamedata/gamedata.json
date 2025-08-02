@@ -278,5 +278,11 @@
       "windows": 25,
       "linux": 26
     }
+  },
+  "ISource2GameEntities::CheckTransmit": {
+    "offsets": {
+      "windows": 12,
+      "linux": 13
+    }
   }
 }
