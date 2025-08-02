@@ -213,11 +213,34 @@ void SetSchemaValueByName(ScriptContext& script_context)
     }
 }
 
+void SchemaSetStateChanged(ScriptContext& script_context)
+{
+    auto instancePointer = script_context.GetArgument<void*>(0);
+    auto offset = script_context.GetArgument<uint32_t>(1);
+    auto nArrayIndex = script_context.GetArgument<uint32_t>(2);
+    auto nPathIndex = script_context.GetArgument<uint32_t>(3);
+
+    SetStateChanged(reinterpret_cast<uintptr_t>(instancePointer), offset, nArrayIndex, nPathIndex);
+}
+
+void SchemaNetworkStateChanged(ScriptContext& script_context)
+{
+    auto instancePointer = script_context.GetArgument<void*>(0);
+    auto offset = script_context.GetArgument<uint32_t>(1);
+    auto nArrayIndex = script_context.GetArgument<uint32_t>(2);
+    auto nPathIndex = script_context.GetArgument<uint32_t>(3);
+
+    NetworkStateChanged(reinterpret_cast<uintptr_t>(instancePointer), offset, nArrayIndex, nPathIndex);
+
+} // namespace counterstrikesharp
+
 REGISTER_NATIVES(schema, {
     ScriptEngine::RegisterNativeHandler("GET_SCHEMA_OFFSET", GetSchemaOffset);
     ScriptEngine::RegisterNativeHandler("IS_SCHEMA_FIELD_NETWORKED", IsSchemaFieldNetworked);
     ScriptEngine::RegisterNativeHandler("GET_SCHEMA_VALUE_BY_NAME", GetSchemaValueByName);
     ScriptEngine::RegisterNativeHandler("SET_SCHEMA_VALUE_BY_NAME", SetSchemaValueByName);
     ScriptEngine::RegisterNativeHandler("GET_SCHEMA_CLASS_SIZE", GetSchemaClassSize);
+    ScriptEngine::RegisterNativeHandler("SCHEMA_SET_STATE_CHANGED", SchemaSetStateChanged);
+    ScriptEngine::RegisterNativeHandler("SCHEMA_NETWORK_STATE_CHANGED", SchemaNetworkStateChanged);
 })
 } // namespace counterstrikesharp

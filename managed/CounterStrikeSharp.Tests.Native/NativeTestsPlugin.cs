@@ -13,6 +13,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
+
 using System;
 using System.Reflection;
 using System.Threading;
@@ -40,6 +41,7 @@ namespace NativeTestsPlugin
             gameThreadId = Thread.CurrentThread.ManagedThreadId;
             // Loading blocks the game thread, so we use NextFrame to run our tests asynchronously.
             Server.NextFrame(() => RunTests());
+            AddCommand("css_run_tests", "Runs the xUnit tests for the native plugin.", (player, info) => { RunTests(); });
         }
 
         async Task RunTests()
@@ -82,6 +84,7 @@ namespace NativeTestsPlugin
     public class SourceSynchronizationContext : SynchronizationContext
     {
         private readonly int _mainThreadId;
+
         public SourceSynchronizationContext(int mainThreadId)
         {
             _mainThreadId = mainThreadId;

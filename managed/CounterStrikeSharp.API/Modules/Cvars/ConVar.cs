@@ -1,30 +1,32 @@
-﻿using System;
-using System.Runtime.CompilerServices;
-using CounterStrikeSharp.API.Core;
+﻿using System.Runtime.CompilerServices;
 
 namespace CounterStrikeSharp.API.Modules.Cvars;
 
 public class ConVar
 {
-    public IntPtr Handle { get; }
+    public ushort AccessIndex { get; protected set; }
 
-    public ConVar(IntPtr handle)
+    public ConVar(ushort accessIndex)
     {
-        Handle = handle;
+        AccessIndex = accessIndex;
     }
 
-    public string Name => Utilities.ReadStringUtf8(Handle);
-    public string Description => Utilities.ReadStringUtf8(Handle + 32);
+    public string Name => NativeAPI.GetConvarName(AccessIndex);
+    public string Description => NativeAPI.GetConvarHelpText(AccessIndex);
 
     /// <summary>
     /// The underlying data type of the ConVar.
     /// </summary>
-    public unsafe ref ConVarType Type => ref Unsafe.AsRef<ConVarType>((void*)(Handle + 40));
+    public ConVarType Type => (ConVarType)NativeAPI.GetConvarType(AccessIndex);
 
     /// <summary>
     /// The ConVar flags as defined by <see cref="ConVarFlags"/>.
     /// </summary>
-    public unsafe ref ConVarFlags Flags => ref Unsafe.AsRef<ConVarFlags>((void*)(Handle + 48));
+    public ConVarFlags Flags
+    {
+        get => (ConVarFlags)NativeAPI.GetConvarFlags(AccessIndex);
+        set => NativeAPI.SetConvarFlags(AccessIndex, (ulong)value);
+    }
 
     /// <summary>
     /// Used to access primitive value types, i.e. <see langword="bool"/>, <see langword="float"/>, <see langword="int"/>, etc.
@@ -85,12 +87,18 @@ public class ConVar
                 throw new InvalidOperationException("Reference types must be accessed using `GetReferenceValue`");
         }
 
-        return ref Unsafe.AsRef<T>((void*)(Handle + 64));
+        var address = NativeAPI.GetConvarValueAddress(AccessIndex);
+        if (address == IntPtr.Zero)
+        {
+            throw new InvalidOperationException($"ConVar {Name} is not initialized or does not have a value.");
+        }
+
+        return ref Unsafe.AsRef<T>((void*)address);
     }
 
     public void SetValue<T>(T value)
     {
-        GetPrimitiveValue<T>() = value;
+        NativeAPI.SetConvarValue(AccessIndex, value);
     }
 
     /// <summary>
@@ -100,7 +108,7 @@ public class ConVar
     /// <returns></returns>
     public T GetNativeValue<T>() where T : NativeObject
     {
-        return (T)Activator.CreateInstance(typeof(T), Handle + 64);
+        return NativeAPI.GetConvarValue<T>(AccessIndex);
     }
 
     /// <summary>
@@ -110,26 +118,8 @@ public class ConVar
     /// </remarks>
     public string StringValue
     {
-        get
-        {
-            if (Type != ConVarType.String)
-            {
-                throw new InvalidOperationException(
-                    $"ConVar is a {Type} but you are trying to get a string value.");
-            }
-
-            return Utilities.ReadStringUtf8(Handle + 64);
-        }
-        set
-        {
-            if (Type != ConVarType.String)
-            {
-                throw new InvalidOperationException(
-                    $"ConVar is a {Type} but you are trying to get a string value.");
-            }
-            
-            NativeAPI.SetConvarStringValue(Handle, value);
-        }
+        get => NativeAPI.GetConvarValueAsString(AccessIndex);
+        set => NativeAPI.SetConvarValueAsString(AccessIndex, value);
     }
 
     /// <summary>
@@ -163,9 +153,9 @@ public class ConVar
     /// <returns></returns>
     public static ConVar? Find(string name)
     {
-        var ptr = NativeAPI.FindConvar(name);
-        if (ptr == IntPtr.Zero) return null;
+        var accessIndex = NativeAPI.GetConvarAccessIndexByName(name);
+        if (accessIndex == 0) return null;
 
-        return new ConVar(ptr);
+        return new ConVar(accessIndex);
     }
 }

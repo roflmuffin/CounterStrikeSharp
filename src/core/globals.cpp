@@ -109,12 +109,20 @@ void Initialize()
     modules::schemasystem = modules::GetModuleByName(MODULE_PREFIX "schemasystem" MODULE_EXT);
     modules::vscript = modules::GetModuleByName(MODULE_PREFIX "vscript" MODULE_EXT);
 
-    interfaces::Initialize();
-
-    entitySystem = interfaces::pGameResourceServiceServer->GetGameEntitySystem();
+    if (!interfaces::pGameResourceServiceServer)
+    {
+        CSSHARP_CORE_ERROR("Failed to get CGameResourceServiceServer");
+        return;
+    }
 
     GetLegacyGameEventListener = reinterpret_cast<GetLegacyGameEventListener_t*>(
         modules::server->FindSignature(globals::gameConfig->GetSignature("LegacyGameEventListener")));
+
+    if (GetLegacyGameEventListener == nullptr)
+    {
+        CSSHARP_CORE_ERROR("Failed to find signature for \'GetLegacyGameEventListener\'");
+        return;
+    }
 
     GameEventManagerInit = reinterpret_cast<GameEventManagerInit_t*>(
         modules::server->FindSignature(globals::gameConfig->GetSignature("CGameEventManager_Init")));
@@ -122,6 +130,15 @@ void Initialize()
     if (GameEventManagerInit == nullptr)
     {
         CSSHARP_CORE_ERROR("Failed to find signature for \'GameEventManagerInit\'");
+        return;
+    }
+
+    NetworkStateChanged =
+        reinterpret_cast<NetworkStateChanged_t*>(modules::server->FindSignature(globals::gameConfig->GetSignature("NetworkStateChanged")));
+
+    if (NetworkStateChanged == nullptr)
+    {
+        CSSHARP_CORE_ERROR("Failed to find signature for \'NetworkStateChanged\'");
         return;
     }
 
