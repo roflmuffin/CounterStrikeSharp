@@ -115,14 +115,6 @@ void Initialize()
         return;
     }
 
-    // entitySystem = interfaces::pGameResourceServiceServer->GetGameEntitySystem();
-
-    // if (!entitySystem)
-    // {
-    //     CSSHARP_CORE_ERROR("Failed to get CGameEntitySystem from CGameResourceServiceServer");
-    //     return;
-    // }
-
     GetLegacyGameEventListener = reinterpret_cast<GetLegacyGameEventListener_t*>(
         modules::server->FindSignature(globals::gameConfig->GetSignature("LegacyGameEventListener")));
 
