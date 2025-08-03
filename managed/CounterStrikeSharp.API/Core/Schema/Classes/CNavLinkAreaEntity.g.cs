@@ -46,17 +46,13 @@ public partial class CNavLinkAreaEntity : CPointEntity
 		set { Schema.SetString(this.Handle, "CNavLinkAreaEntity", "m_strMovementReverse", value); }
 	}
 
-	// m_nNavLinkIdForward
-	[SchemaMember("CNavLinkAreaEntity", "m_nNavLinkIdForward")]
-	public ref Int32 NavLinkIdForward => ref Schema.GetRef<Int32>(this.Handle, "CNavLinkAreaEntity", "m_nNavLinkIdForward");
-
-	// m_nNavLinkIdReverse
-	[SchemaMember("CNavLinkAreaEntity", "m_nNavLinkIdReverse")]
-	public ref Int32 NavLinkIdReverse => ref Schema.GetRef<Int32>(this.Handle, "CNavLinkAreaEntity", "m_nNavLinkIdReverse");
-
 	// m_bEnabled
 	[SchemaMember("CNavLinkAreaEntity", "m_bEnabled")]
 	public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CNavLinkAreaEntity", "m_bEnabled");
+
+	// m_bAllowCrossMovableConnections
+	[SchemaMember("CNavLinkAreaEntity", "m_bAllowCrossMovableConnections")]
+	public ref bool AllowCrossMovableConnections => ref Schema.GetRef<bool>(this.Handle, "CNavLinkAreaEntity", "m_bAllowCrossMovableConnections");
 
 	// m_strFilterName
 	[SchemaMember("CNavLinkAreaEntity", "m_strFilterName")]
@@ -81,5 +77,9 @@ public partial class CNavLinkAreaEntity : CPointEntity
 	// m_bIsTerminus
 	[SchemaMember("CNavLinkAreaEntity", "m_bIsTerminus")]
 	public ref bool IsTerminus => ref Schema.GetRef<bool>(this.Handle, "CNavLinkAreaEntity", "m_bIsTerminus");
+
+	// m_nSplits
+	[SchemaMember("CNavLinkAreaEntity", "m_nSplits")]
+	public ref Int32 Splits => ref Schema.GetRef<Int32>(this.Handle, "CNavLinkAreaEntity", "m_nSplits");
 
 }

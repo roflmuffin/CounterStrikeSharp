@@ -114,6 +114,10 @@ public partial class CBasePlayerController : CBaseEntity
 	[SchemaMember("CBasePlayerController", "m_steamID")]
 	public ref UInt64 SteamID => ref Schema.GetRef<UInt64>(this.Handle, "CBasePlayerController", "m_steamID");
 
+	// m_bNoClipEnabled
+	[SchemaMember("CBasePlayerController", "m_bNoClipEnabled")]
+	public ref bool NoClipEnabled => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerController", "m_bNoClipEnabled");
+
 	// m_iDesiredFOV
 	[SchemaMember("CBasePlayerController", "m_iDesiredFOV")]
 	public ref UInt32 DesiredFOV => ref Schema.GetRef<UInt32>(this.Handle, "CBasePlayerController", "m_iDesiredFOV");

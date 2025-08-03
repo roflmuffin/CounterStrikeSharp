@@ -50,10 +50,6 @@ public partial class CEntityFlame : CBaseEntity
 	[SchemaMember("CEntityFlame", "m_hAttacker")]
 	public CHandle<CBaseEntity> Attacker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEntityFlame", "m_hAttacker");
 
-	// m_iDangerSound
-	[SchemaMember("CEntityFlame", "m_iDangerSound")]
-	public ref Int32 DangerSound => ref Schema.GetRef<Int32>(this.Handle, "CEntityFlame", "m_iDangerSound");
-
 	// m_flDirectDamagePerSecond
 	[SchemaMember("CEntityFlame", "m_flDirectDamagePerSecond")]
 	public ref float DirectDamagePerSecond => ref Schema.GetRef<float>(this.Handle, "CEntityFlame", "m_flDirectDamagePerSecond");

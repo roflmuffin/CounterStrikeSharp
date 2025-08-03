@@ -74,6 +74,10 @@ public partial class CFuncMoveLinear : CBaseToggle
 	[SchemaMember("CFuncMoveLinear", "m_bCreateMovableNavMesh")]
 	public ref bool CreateMovableNavMesh => ref Schema.GetRef<bool>(this.Handle, "CFuncMoveLinear", "m_bCreateMovableNavMesh");
 
+	// m_bAllowMovableNavMeshDockingOnEntireEntity
+	[SchemaMember("CFuncMoveLinear", "m_bAllowMovableNavMeshDockingOnEntireEntity")]
+	public ref bool AllowMovableNavMeshDockingOnEntireEntity => ref Schema.GetRef<bool>(this.Handle, "CFuncMoveLinear", "m_bAllowMovableNavMeshDockingOnEntireEntity");
+
 	// m_bCreateNavObstacle
 	[SchemaMember("CFuncMoveLinear", "m_bCreateNavObstacle")]
 	public ref bool CreateNavObstacle => ref Schema.GetRef<bool>(this.Handle, "CFuncMoveLinear", "m_bCreateNavObstacle");

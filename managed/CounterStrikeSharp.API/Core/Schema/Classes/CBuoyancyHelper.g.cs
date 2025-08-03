@@ -26,6 +26,22 @@ public partial class CBuoyancyHelper : NativeObject
 	[SchemaMember("CBuoyancyHelper", "m_flFluidDensity")]
 	public ref float FluidDensity => ref Schema.GetRef<float>(this.Handle, "CBuoyancyHelper", "m_flFluidDensity");
 
+	// m_flNeutrallyBuoyantGravity
+	[SchemaMember("CBuoyancyHelper", "m_flNeutrallyBuoyantGravity")]
+	public ref float NeutrallyBuoyantGravity => ref Schema.GetRef<float>(this.Handle, "CBuoyancyHelper", "m_flNeutrallyBuoyantGravity");
+
+	// m_flNeutrallyBuoyantLinearDamping
+	[SchemaMember("CBuoyancyHelper", "m_flNeutrallyBuoyantLinearDamping")]
+	public ref float NeutrallyBuoyantLinearDamping => ref Schema.GetRef<float>(this.Handle, "CBuoyancyHelper", "m_flNeutrallyBuoyantLinearDamping");
+
+	// m_flNeutrallyBuoyantAngularDamping
+	[SchemaMember("CBuoyancyHelper", "m_flNeutrallyBuoyantAngularDamping")]
+	public ref float NeutrallyBuoyantAngularDamping => ref Schema.GetRef<float>(this.Handle, "CBuoyancyHelper", "m_flNeutrallyBuoyantAngularDamping");
+
+	// m_bNeutrallyBuoyant
+	[SchemaMember("CBuoyancyHelper", "m_bNeutrallyBuoyant")]
+	public ref bool NeutrallyBuoyant => ref Schema.GetRef<bool>(this.Handle, "CBuoyancyHelper", "m_bNeutrallyBuoyant");
+
 	// m_vecFractionOfWheelSubmergedForWheelFriction
 	[SchemaMember("CBuoyancyHelper", "m_vecFractionOfWheelSubmergedForWheelFriction")]
 	public NetworkedVector<float> FractionOfWheelSubmergedForWheelFriction => Schema.GetDeclaredClass<NetworkedVector<float>>(this.Handle, "CBuoyancyHelper", "m_vecFractionOfWheelSubmergedForWheelFriction");

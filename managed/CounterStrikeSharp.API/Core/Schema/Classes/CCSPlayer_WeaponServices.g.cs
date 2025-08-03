@@ -70,12 +70,12 @@ public partial class CCSPlayer_WeaponServices : CPlayer_WeaponServices
 	[SchemaMember("CCSPlayer_WeaponServices", "m_bIsPickingUpGroundWeapon")]
 	public ref bool IsPickingUpGroundWeapon => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_WeaponServices", "m_bIsPickingUpGroundWeapon");
 
-	// m_nOldShootPositionHistoryCount
-	[SchemaMember("CCSPlayer_WeaponServices", "m_nOldShootPositionHistoryCount")]
-	public ref UInt32 OldShootPositionHistoryCount => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayer_WeaponServices", "m_nOldShootPositionHistoryCount");
+	// m_networkAnimTiming
+	[SchemaMember("CCSPlayer_WeaponServices", "m_networkAnimTiming")]
+	public NetworkedVector<byte> NetworkAnimTiming => Schema.GetDeclaredClass<NetworkedVector<byte>>(this.Handle, "CCSPlayer_WeaponServices", "m_networkAnimTiming");
 
-	// m_nOldInputHistoryCount
-	[SchemaMember("CCSPlayer_WeaponServices", "m_nOldInputHistoryCount")]
-	public ref UInt32 OldInputHistoryCount => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayer_WeaponServices", "m_nOldInputHistoryCount");
+	// m_bBlockInspectUntilNextGraphUpdate
+	[SchemaMember("CCSPlayer_WeaponServices", "m_bBlockInspectUntilNextGraphUpdate")]
+	public ref bool BlockInspectUntilNextGraphUpdate => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_WeaponServices", "m_bBlockInspectUntilNextGraphUpdate");
 
 }

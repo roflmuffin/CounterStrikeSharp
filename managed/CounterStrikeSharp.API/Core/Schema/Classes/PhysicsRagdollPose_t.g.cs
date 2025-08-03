@@ -26,4 +26,8 @@ public partial class PhysicsRagdollPose_t : NativeObject
 	[SchemaMember("PhysicsRagdollPose_t", "m_hOwner")]
 	public CHandle<CBaseEntity> Owner => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "PhysicsRagdollPose_t", "m_hOwner");
 
+	// m_bSetFromDebugHistory
+	[SchemaMember("PhysicsRagdollPose_t", "m_bSetFromDebugHistory")]
+	public ref bool SetFromDebugHistory => ref Schema.GetRef<bool>(this.Handle, "PhysicsRagdollPose_t", "m_bSetFromDebugHistory");
+
 }

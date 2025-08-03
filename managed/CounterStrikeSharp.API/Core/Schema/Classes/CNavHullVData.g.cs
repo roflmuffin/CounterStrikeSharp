@@ -38,6 +38,14 @@ public partial class CNavHullVData : NativeObject
 	[SchemaMember("CNavHullVData", "m_agentShortHeight")]
 	public ref float AgentShortHeight => ref Schema.GetRef<float>(this.Handle, "CNavHullVData", "m_agentShortHeight");
 
+	// m_agentCrawlEnabled
+	[SchemaMember("CNavHullVData", "m_agentCrawlEnabled")]
+	public ref bool AgentCrawlEnabled => ref Schema.GetRef<bool>(this.Handle, "CNavHullVData", "m_agentCrawlEnabled");
+
+	// m_agentCrawlHeight
+	[SchemaMember("CNavHullVData", "m_agentCrawlHeight")]
+	public ref float AgentCrawlHeight => ref Schema.GetRef<float>(this.Handle, "CNavHullVData", "m_agentCrawlHeight");
+
 	// m_agentMaxClimb
 	[SchemaMember("CNavHullVData", "m_agentMaxClimb")]
 	public ref float AgentMaxClimb => ref Schema.GetRef<float>(this.Handle, "CNavHullVData", "m_agentMaxClimb");

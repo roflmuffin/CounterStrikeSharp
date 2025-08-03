@@ -46,6 +46,10 @@ public partial class CBaseDoor : CBaseToggle
 	[SchemaMember("CBaseDoor", "m_bIgnoreDebris")]
 	public ref bool IgnoreDebris => ref Schema.GetRef<bool>(this.Handle, "CBaseDoor", "m_bIgnoreDebris");
 
+	// m_bNoNPCs
+	[SchemaMember("CBaseDoor", "m_bNoNPCs")]
+	public ref bool NoNPCs => ref Schema.GetRef<bool>(this.Handle, "CBaseDoor", "m_bNoNPCs");
+
 	// m_eSpawnPosition
 	[SchemaMember("CBaseDoor", "m_eSpawnPosition")]
 	public ref FuncDoorSpawnPos_t SpawnPosition => ref Schema.GetRef<FuncDoorSpawnPos_t>(this.Handle, "CBaseDoor", "m_eSpawnPosition");

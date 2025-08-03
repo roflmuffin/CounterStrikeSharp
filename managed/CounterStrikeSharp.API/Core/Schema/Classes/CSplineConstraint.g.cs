@@ -22,4 +22,40 @@ public partial class CSplineConstraint : CPhysConstraint
 	[SchemaMember("CSplineConstraint", "m_vAnchorOffsetRestore")]
 	public Vector AnchorOffsetRestore => Schema.GetDeclaredClass<Vector>(this.Handle, "CSplineConstraint", "m_vAnchorOffsetRestore");
 
+	// m_hSplineEntity
+	[SchemaMember("CSplineConstraint", "m_hSplineEntity")]
+	public CHandle<CBaseEntity> SplineEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSplineConstraint", "m_hSplineEntity");
+
+	// m_bEnableLateralConstraint
+	[SchemaMember("CSplineConstraint", "m_bEnableLateralConstraint")]
+	public ref bool EnableLateralConstraint => ref Schema.GetRef<bool>(this.Handle, "CSplineConstraint", "m_bEnableLateralConstraint");
+
+	// m_bEnableVerticalConstraint
+	[SchemaMember("CSplineConstraint", "m_bEnableVerticalConstraint")]
+	public ref bool EnableVerticalConstraint => ref Schema.GetRef<bool>(this.Handle, "CSplineConstraint", "m_bEnableVerticalConstraint");
+
+	// m_bEnableAngularConstraint
+	[SchemaMember("CSplineConstraint", "m_bEnableAngularConstraint")]
+	public ref bool EnableAngularConstraint => ref Schema.GetRef<bool>(this.Handle, "CSplineConstraint", "m_bEnableAngularConstraint");
+
+	// m_bEnableLimit
+	[SchemaMember("CSplineConstraint", "m_bEnableLimit")]
+	public ref bool EnableLimit => ref Schema.GetRef<bool>(this.Handle, "CSplineConstraint", "m_bEnableLimit");
+
+	// m_bFireEventsOnPath
+	[SchemaMember("CSplineConstraint", "m_bFireEventsOnPath")]
+	public ref bool FireEventsOnPath => ref Schema.GetRef<bool>(this.Handle, "CSplineConstraint", "m_bFireEventsOnPath");
+
+	// m_flLinearFrequency
+	[SchemaMember("CSplineConstraint", "m_flLinearFrequency")]
+	public ref float LinearFrequency => ref Schema.GetRef<float>(this.Handle, "CSplineConstraint", "m_flLinearFrequency");
+
+	// m_flLinarDampingRatio
+	[SchemaMember("CSplineConstraint", "m_flLinarDampingRatio")]
+	public ref float LinarDampingRatio => ref Schema.GetRef<float>(this.Handle, "CSplineConstraint", "m_flLinarDampingRatio");
+
+	// m_vPreSolveAnchorPos
+	[SchemaMember("CSplineConstraint", "m_vPreSolveAnchorPos")]
+	public Vector PreSolveAnchorPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CSplineConstraint", "m_vPreSolveAnchorPos");
+
 }

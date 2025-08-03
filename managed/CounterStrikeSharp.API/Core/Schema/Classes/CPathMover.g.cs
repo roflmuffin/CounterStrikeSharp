@@ -14,7 +14,7 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CPathMover : CBaseEntity
+public partial class CPathMover : CPathSimple
 {
     public CPathMover (IntPtr pointer) : base(pointer) {}
 
@@ -22,12 +22,12 @@ public partial class CPathMover : CBaseEntity
 	[SchemaMember("CPathMover", "m_vecPathNodes")]
 	public NetworkedVector<CHandle<CMoverPathNode>> PathNodes => Schema.GetDeclaredClass<NetworkedVector<CHandle<CMoverPathNode>>>(this.Handle, "CPathMover", "m_vecPathNodes");
 
-	// m_flPathLength
-	[SchemaMember("CPathMover", "m_flPathLength")]
-	public ref float PathLength => ref Schema.GetRef<float>(this.Handle, "CPathMover", "m_flPathLength");
+	// m_vecMovers
+	[SchemaMember("CPathMover", "m_vecMovers")]
+	public NetworkedVector<CHandle<CFuncMover>> Movers => Schema.GetDeclaredClass<NetworkedVector<CHandle<CFuncMover>>>(this.Handle, "CPathMover", "m_vecMovers");
 
-	// m_bClosedLoop
-	[SchemaMember("CPathMover", "m_bClosedLoop")]
-	public ref bool ClosedLoop => ref Schema.GetRef<bool>(this.Handle, "CPathMover", "m_bClosedLoop");
+	// m_xInitialPathWorldToLocal
+	[SchemaMember("CPathMover", "m_xInitialPathWorldToLocal")]
+	public CTransform XInitialPathWorldToLocal => Schema.GetDeclaredClass<CTransform>(this.Handle, "CPathMover", "m_xInitialPathWorldToLocal");
 
 }

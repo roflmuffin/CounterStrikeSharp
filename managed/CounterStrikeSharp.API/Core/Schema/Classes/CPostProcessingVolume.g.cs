@@ -66,20 +66,4 @@ public partial class CPostProcessingVolume : CBaseTrigger
 	[SchemaMember("CPostProcessingVolume", "m_bExposureControl")]
 	public ref bool ExposureControl => ref Schema.GetRef<bool>(this.Handle, "CPostProcessingVolume", "m_bExposureControl");
 
-	// m_flRate
-	[SchemaMember("CPostProcessingVolume", "m_flRate")]
-	public ref float Rate => ref Schema.GetRef<float>(this.Handle, "CPostProcessingVolume", "m_flRate");
-
-	// m_flTonemapPercentTarget
-	[SchemaMember("CPostProcessingVolume", "m_flTonemapPercentTarget")]
-	public ref float TonemapPercentTarget => ref Schema.GetRef<float>(this.Handle, "CPostProcessingVolume", "m_flTonemapPercentTarget");
-
-	// m_flTonemapPercentBrightPixels
-	[SchemaMember("CPostProcessingVolume", "m_flTonemapPercentBrightPixels")]
-	public ref float TonemapPercentBrightPixels => ref Schema.GetRef<float>(this.Handle, "CPostProcessingVolume", "m_flTonemapPercentBrightPixels");
-
-	// m_flTonemapMinAvgLum
-	[SchemaMember("CPostProcessingVolume", "m_flTonemapMinAvgLum")]
-	public ref float TonemapMinAvgLum => ref Schema.GetRef<float>(this.Handle, "CPostProcessingVolume", "m_flTonemapMinAvgLum");
-
 }

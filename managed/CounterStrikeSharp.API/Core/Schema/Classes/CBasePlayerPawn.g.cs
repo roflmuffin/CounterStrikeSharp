@@ -58,10 +58,6 @@ public partial class CBasePlayerPawn : CBaseCombatCharacter
 	[SchemaMember("CBasePlayerPawn", "m_ServerViewAngleChanges")]
 	public NetworkedVector<ViewAngleServerChange_t> ServerViewAngleChanges => Schema.GetDeclaredClass<NetworkedVector<ViewAngleServerChange_t>>(this.Handle, "CBasePlayerPawn", "m_ServerViewAngleChanges");
 
-	// m_nHighestGeneratedServerViewAngleChangeIndex
-	[SchemaMember("CBasePlayerPawn", "m_nHighestGeneratedServerViewAngleChangeIndex")]
-	public ref UInt32 HighestGeneratedServerViewAngleChangeIndex => ref Schema.GetRef<UInt32>(this.Handle, "CBasePlayerPawn", "m_nHighestGeneratedServerViewAngleChangeIndex");
-
 	// v_angle
 	[SchemaMember("CBasePlayerPawn", "v_angle")]
 	public QAngle V_angle => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBasePlayerPawn", "v_angle");
@@ -101,6 +97,10 @@ public partial class CBasePlayerPawn : CBaseCombatCharacter
 	// m_hController
 	[SchemaMember("CBasePlayerPawn", "m_hController")]
 	public CHandle<CBasePlayerController> Controller => Schema.GetDeclaredClass<CHandle<CBasePlayerController>>(this.Handle, "CBasePlayerPawn", "m_hController");
+
+	// m_hDefaultController
+	[SchemaMember("CBasePlayerPawn", "m_hDefaultController")]
+	public CHandle<CBasePlayerController> DefaultController => Schema.GetDeclaredClass<CHandle<CBasePlayerController>>(this.Handle, "CBasePlayerPawn", "m_hDefaultController");
 
 	// m_fHltvReplayDelay
 	[SchemaMember("CBasePlayerPawn", "m_fHltvReplayDelay")]

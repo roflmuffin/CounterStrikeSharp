@@ -26,10 +26,6 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
 	[SchemaMember("CCSPlayerPawnBase", "m_pPingServices")]
 	public CCSPlayer_PingServices? PingServices => Schema.GetPointer<CCSPlayer_PingServices>(this.Handle, "CCSPlayerPawnBase", "m_pPingServices");
 
-	// m_pViewModelServices
-	[SchemaMember("CCSPlayerPawnBase", "m_pViewModelServices")]
-	public CPlayer_ViewModelServices? ViewModelServices => Schema.GetPointer<CPlayer_ViewModelServices>(this.Handle, "CCSPlayerPawnBase", "m_pViewModelServices");
-
 	// m_blindUntilTime
 	[SchemaMember("CCSPlayerPawnBase", "m_blindUntilTime")]
 	public ref float BlindUntilTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_blindUntilTime");
@@ -45,18 +41,6 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
 	// m_bRespawning
 	[SchemaMember("CCSPlayerPawnBase", "m_bRespawning")]
 	public ref bool Respawning => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bRespawning");
-
-	// m_fImmuneToGunGameDamageTime
-	[SchemaMember("CCSPlayerPawnBase", "m_fImmuneToGunGameDamageTime")]
-	public ref float ImmuneToGunGameDamageTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_fImmuneToGunGameDamageTime");
-
-	// m_bGunGameImmunity
-	[SchemaMember("CCSPlayerPawnBase", "m_bGunGameImmunity")]
-	public ref bool GunGameImmunity => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bGunGameImmunity");
-
-	// m_fMolotovDamageTime
-	[SchemaMember("CCSPlayerPawnBase", "m_fMolotovDamageTime")]
-	public ref float MolotovDamageTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_fMolotovDamageTime");
 
 	// m_bHasMovedSinceSpawn
 	[SchemaMember("CCSPlayerPawnBase", "m_bHasMovedSinceSpawn")]
@@ -93,14 +77,6 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
 	// m_angEyeAngles
 	[SchemaMember("CCSPlayerPawnBase", "m_angEyeAngles")]
 	public QAngle EyeAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CCSPlayerPawnBase", "m_angEyeAngles");
-
-	// m_wasNotKilledNaturally
-	[SchemaMember("CCSPlayerPawnBase", "m_wasNotKilledNaturally")]
-	public ref bool WasNotKilledNaturally => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_wasNotKilledNaturally");
-
-	// m_bCommittingSuicideOnTeamChange
-	[SchemaMember("CCSPlayerPawnBase", "m_bCommittingSuicideOnTeamChange")]
-	public ref bool CommittingSuicideOnTeamChange => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bCommittingSuicideOnTeamChange");
 
 	// m_hOriginalController
 	[SchemaMember("CCSPlayerPawnBase", "m_hOriginalController")]
