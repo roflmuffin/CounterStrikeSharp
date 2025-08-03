@@ -634,7 +634,7 @@ void* CModule::FindSignatureAlternative(const std::vector<int16_t>& sigBytes)
             return opt == -1 || opt == byte;
         }))
         {
-            return reinterpret_cast<void*>(current - data + m_base);
+            return reinterpret_cast<void*>(current - data + (std::uintptr_t)m_base);
         }
     }
 
