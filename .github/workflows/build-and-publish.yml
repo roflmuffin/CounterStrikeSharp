@@ -172,7 +172,7 @@ jobs:
           path: managed/CounterStrikeSharp.API/bin/Release
 
   publish:
-    if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') && github.repository == 'roflmuffin/CounterStrikeSharp' }}
+    if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') && github.repository == 'kennethenglisch/CounterStrikeSharp' }}
     permissions:
       contents: write
     needs: ["setup", "build_linux", "build_windows", "build_managed"]
@@ -251,20 +251,3 @@ jobs:
             counterstrikesharp-with-runtime-windows-${{ needs.setup.outputs.gitversion_semver }}.zip
             counterstrikesharp-linux-${{ needs.setup.outputs.gitversion_semver }}.zip
             counterstrikesharp-with-runtime-linux-${{ needs.setup.outputs.gitversion_semver }}.zip
-
-      - name: Publish NuGet package
-        run: |
-          dotnet nuget push build/api/CounterStrikeSharp.API.${{ needs.setup.outputs.gitversion_semver }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
-          dotnet nuget push build/api/CounterStrikeSharp.API.${{ needs.setup.outputs.gitversion_semver }}.snupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
-
-      - name: Send Notification to Discord
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-        uses: Ilshidur/action-discord@0.3.2
-        with:
-          args: |
-            A new release of CS# has been tagged [v${{ needs.setup.outputs.gitversion_semver }}](${{ steps.release.outputs.url }})
-
-            ${{ steps.git-cliff.outputs.content }}
-
-            Please refer to [CHANGELOG.md](https://github.com/roflmuffin/CounterStrikeSharp/blob/${{ github.ref_name }}/CHANGELOG.md) for details.
