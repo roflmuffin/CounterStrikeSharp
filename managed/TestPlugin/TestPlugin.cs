@@ -65,6 +65,15 @@ namespace TestPlugin
 
         private TestInjectedClass _testInjectedClass;
 
+        public ConVar<float> MyExampleConvar = new ConVar<float>(
+            "example_convar",
+            "An example ConVar for testing purposes",
+            42.0f,
+            ConVarFlags.FCVAR_NONE,
+            0.0f,
+            100.0f
+        );
+
         public SamplePlugin(TestInjectedClass testInjectedClass)
         {
             _testInjectedClass = testInjectedClass;
@@ -124,16 +133,16 @@ namespace TestPlugin
         {
             RegisterListener<Listeners.OnMapStart>(name =>
             {
-                ConVar.Find("sv_cheats")?.SetValue(true);
+                ConVar<bool>.Find("sv_cheats")!.Value = true;
 
-                var numericCvar = ConVar.Find("mp_warmuptime");
-                Logger.LogInformation("mp_warmuptime = {Value}", numericCvar?.GetPrimitiveValue<float>());
+                var numericCvar = ConVar<float>.Find("mp_warmuptime");
+                Logger.LogInformation("mp_warmuptime = {Value}", numericCvar?.Value);
 
-                var stringCvar = ConVar.Find("sv_skyname");
-                Logger.LogInformation("sv_skyname = {Value}", stringCvar?.StringValue);
+                var stringCvar = ConVar<string>.Find("sv_skyname");
+                Logger.LogInformation("sv_skyname = {Value}", stringCvar?.Value);
 
-                var fogCvar = ConVar.Find("fog_color");
-                Logger.LogInformation("fog_color = {Value}", fogCvar?.GetNativeValue<Vector>());
+                var fogCvar = ConVar<Vector>.Find("fog_color");
+                Logger.LogInformation("fog_color = {Value}", fogCvar?.Value);
             });
         }
 
@@ -205,10 +214,7 @@ namespace TestPlugin
 
                 if (pawn == null) return HookResult.Continue;
 
-                Server.NextFrame(() =>
-                {
-                    player?.PrintToChat(activeWeapon?.DesignerName ?? "No Active Weapon");
-                });
+                Server.NextFrame(() => { player?.PrintToChat(activeWeapon?.DesignerName ?? "No Active Weapon"); });
 
                 // Set player to random colour
                 pawn.Render = Color.FromArgb(Random.Shared.Next(0, 255),
@@ -265,10 +271,7 @@ namespace TestPlugin
             });
 
             // Hook global listeners defined by CounterStrikeSharp
-            RegisterListener<Listeners.OnMapStart>(mapName =>
-            {
-                Logger.LogInformation("Map {Map} has started!", mapName);
-            });
+            RegisterListener<Listeners.OnMapStart>(mapName => { Logger.LogInformation("Map {Map} has started!", mapName); });
             RegisterListener<Listeners.OnMapEnd>(() => { Logger.LogInformation($"Map has ended."); });
             RegisterListener<Listeners.OnClientConnect>((playerSlot, name, ip) =>
             {
@@ -357,21 +360,24 @@ namespace TestPlugin
         {
             HookEntityOutput("weapon_knife", "OnPlayerPickup", (output, _, activator, caller, _, delay) =>
             {
-                Logger.LogInformation("weapon_knife called OnPlayerPickup ({name}, {activator}, {caller}, {delay})", output.Description.Name, activator.DesignerName, caller.DesignerName, delay);
+                Logger.LogInformation("weapon_knife called OnPlayerPickup ({name}, {activator}, {caller}, {delay})",
+                    output.Description.Name, activator.DesignerName, caller.DesignerName, delay);
 
                 return HookResult.Continue;
             });
 
             HookEntityOutput("*", "*", (output, _, activator, caller, _, delay) =>
             {
-                Logger.LogInformation("All EntityOutput ({name}, {activator}, {caller}, {delay})", output.Description.Name, activator.DesignerName, caller.DesignerName, delay);
+                Logger.LogInformation("All EntityOutput ({name}, {activator}, {caller}, {delay})", output.Description.Name,
+                    activator.DesignerName, caller.DesignerName, delay);
 
                 return HookResult.Continue;
             });
 
             HookEntityOutput("*", "OnStartTouch", (_, name, activator, caller, _, delay) =>
             {
-                Logger.LogInformation("OnStartTouch: ({name}, {activator}, {caller}, {delay})", name, activator.DesignerName, caller.DesignerName, delay);
+                Logger.LogInformation("OnStartTouch: ({name}, {activator}, {caller}, {delay})", name, activator.DesignerName,
+                    caller.DesignerName, delay);
                 return HookResult.Continue;
             });
         }
@@ -609,9 +615,11 @@ namespace TestPlugin
         }
 
         [EntityOutputHook("*", "OnPlayerPickup")]
-        public HookResult OnPickup(CEntityIOOutput output, string name, CEntityInstance activator, CEntityInstance caller, CVariant value, float delay)
+        public HookResult OnPickup(CEntityIOOutput output, string name, CEntityInstance activator, CEntityInstance caller, CVariant value,
+            float delay)
         {
-            Logger.LogInformation("[EntityOutputHook Attribute] Called OnPlayerPickup ({name}, {activator}, {caller}, {delay})", name, activator.DesignerName, caller.DesignerName, delay);
+            Logger.LogInformation("[EntityOutputHook Attribute] Called OnPlayerPickup ({name}, {activator}, {caller}, {delay})", name,
+                activator.DesignerName, caller.DesignerName, delay);
 
             return HookResult.Continue;
         }
