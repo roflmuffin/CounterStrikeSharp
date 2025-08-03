@@ -253,9 +253,11 @@ void ClientPrint(ScriptContext& scriptContext)
     data->set_dest(hudDestination);
     data->add_param(message);
 
-    CSingleRecipientFilter filter(slot);
+    uint64 recipientMask = 0;
+    recipientMask |= (uint64)1 << slot;
 
-    globals::gameEventSystem->PostEventAbstract(-1, false, &filter, pNetMsg, data, 0);
+    globals::gameEventSystem->PostEventAbstract(slot, false, 1, &recipientMask, pNetMsg, data, data->ByteSizeLong(),
+                                                NetChannelBufType_t::BUF_RELIABLE);
 
     delete data;
 }
