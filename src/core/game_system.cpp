@@ -70,7 +70,7 @@ GS_EVENT_MEMBER(CGameSystem, BuildGameSessionManifest)
 
 GS_EVENT_MEMBER(CGameSystem, ServerPreEntityThink)
 {
-    VPROF_BUDGET("CS#::CGameSystem::ServerPreEntityThink", "CS# On Frame");
+    // VPROF_BUDGET("CS#::CGameSystem::ServerPreEntityThink", "CS# On Frame");
     auto callback = counterstrikesharp::globals::serverManager.on_server_pre_entity_think;
 
     if (callback && callback->GetFunctionCount())
@@ -88,7 +88,7 @@ GS_EVENT_MEMBER(CGameSystem, ServerPreEntityThink)
 
 GS_EVENT_MEMBER(CGameSystem, ServerPostEntityThink)
 {
-    VPROF_BUDGET("CS#::CGameSystem::ServerPostEntityThink", "CS# On Frame");
+    // VPROF_BUDGET("CS#::CGameSystem::ServerPostEntityThink", "CS# On Frame");
     auto callback = counterstrikesharp::globals::serverManager.on_server_post_entity_think;
 
     if (callback && callback->GetFunctionCount())

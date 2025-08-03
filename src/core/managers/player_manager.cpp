@@ -330,7 +330,7 @@ CPlayer* PlayerManager::GetPlayerBySlot(int client) const
 
 void PlayerManager::RunThink() const
 {
-    VPROF_BUDGET("CS#::PlayerManager::RunThink", "CS# On Frame");
+    // VPROF_BUDGET("CS#::PlayerManager::RunThink", "CS# On Frame");
 
     for (int i = 0; i <= MaxClients(); i++)
     {

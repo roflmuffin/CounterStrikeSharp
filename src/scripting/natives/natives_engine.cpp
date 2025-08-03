@@ -14,6 +14,8 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
+#include "igameeventsystem.h"
+
 #include <IEngineSound.h>
 #include <edict.h>
 #include <eiface.h>
@@ -28,9 +30,12 @@
 #include "core/memory.h"
 #include "core/log.h"
 #include "core/function.h"
+#include "core/recipientfilters.h"
 #include "core/managers/player_manager.h"
 #include "core/managers/server_manager.h"
 #include "core/tick_scheduler.h"
+#include "networksystem/inetworkmessages.h"
+#include "usermessages.pb.h"
 
 #if _WIN32
 #undef GetCurrentTime
@@ -59,7 +64,7 @@ float GetCurrentTime(ScriptContext& script_context) { return globals::getGlobalV
 
 int GetTickCount(ScriptContext& script_context) { return globals::getGlobalVars()->tickcount; }
 
-float GetGameFrameTime(ScriptContext& script_context) { return globals::getGlobalVars()->frametime; }
+float GetGameFrameTime(ScriptContext& script_context) { return 0; }
 
 double GetEngineTime(ScriptContext& script_context) { return Plat_FloatTime(); }
 
@@ -236,6 +241,28 @@ void DisconnectClient(ScriptContext& scriptContext)
     globals::engineServer2->DisconnectClient(slot, disconnectReason);
 }
 
+void ClientPrint(ScriptContext& scriptContext)
+{
+    auto slot = scriptContext.GetArgument<int>(0);
+    auto hudDestination = scriptContext.GetArgument<int>(1);
+    auto message = scriptContext.GetArgument<const char*>(2);
+
+    INetworkMessageInternal* pNetMsg = globals::networkMessages->FindNetworkMessagePartial("TextMsg");
+    auto data = pNetMsg->AllocateMessage()->ToPB<CUserMessageTextMsg>();
+
+    data->set_dest(hudDestination);
+    data->add_param(message);
+
+    CPlayerBitVec recipients;
+    recipients.Set(slot);
+
+    globals::gameEventSystem->PostEventAbstract(CSplitScreenSlot(-1), false, ABSOLUTE_PLAYER_LIMIT,
+                                                reinterpret_cast<const uint64*>(recipients.Base()), pNetMsg, data, 0,
+                                                NetChannelBufType_t::BUF_RELIABLE);
+
+    delete data;
+}
+
 REGISTER_NATIVES(engine, {
     ScriptEngine::RegisterNativeHandler("GET_GAME_DIRECTORY", GetGameDirectory);
     ScriptEngine::RegisterNativeHandler("GET_MAP_NAME", GetMapName);
@@ -261,5 +288,6 @@ REGISTER_NATIVES(engine, {
     ScriptEngine::RegisterNativeHandler("GET_COMMAND_PARAM_VALUE", GetCommandParamValue);
     ScriptEngine::RegisterNativeHandler("PRINT_TO_SERVER_CONSOLE", PrintToServerConsole);
     ScriptEngine::RegisterNativeHandler("DISCONNECT_CLIENT", DisconnectClient);
+    ScriptEngine::RegisterNativeHandler("CLIENT_PRINT", ClientPrint);
 })
 } // namespace counterstrikesharp

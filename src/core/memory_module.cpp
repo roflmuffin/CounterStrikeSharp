@@ -182,6 +182,27 @@ CModule::CModule(std::string_view path, std::uint64_t base)
         }
     }
 
+    // Load all sections for FindVirtualTable
+    section = IMAGE_FIRST_SECTION(nt_header);
+    for (auto i = 0; i < nt_header->FileHeader.NumberOfSections; i++, section++)
+    {
+        const auto is_readable = (section->Characteristics & IMAGE_SCN_MEM_READ) != 0;
+
+        if (is_readable)
+        {
+            const auto start = this->m_baseAddress + section->VirtualAddress;
+            const auto size = (std::min)(section->SizeOfRawData, section->Misc.VirtualSize);
+
+            std::string section_name(reinterpret_cast<const char*>(section->Name),
+                                     strnlen(reinterpret_cast<const char*>(section->Name), IMAGE_SIZEOF_SHORT_NAME));
+
+            auto& sec = m_sections.emplace_back();
+            sec.m_szName = section_name;
+            sec.m_pBase = reinterpret_cast<void*>(start);
+            sec.m_iSize = size;
+        }
+    }
+
     DumpSymbols();
 
     if (m_fnCreateInterface == nullptr) return;
@@ -189,11 +210,93 @@ CModule::CModule(std::string_view path, std::uint64_t base)
     m_bInitialized = true;
 }
 #else
+#ifdef __linux__
+#include "dbg.h"
+#include "sys/mman.h"
+#include <dlfcn.h>
+#include <elf.h>
+#include <fcntl.h>
+#include <libgen.h>
+#include <link.h>
+#include <locale>
+#include <stdio.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+
+#include "tier0/memdbgon.h"
+#endif
+
+// Credits:
+// https://github.com/alliedmodders/sourcemod/blob/master/core/logic/MemoryUtils.cpp#L502-L587
+// https://github.com/komashchenko/DynLibUtils/blob/5eb95475170becfcc64fd5d32d14ec2b76dcb6d4/module_linux.cpp#L95
+// https://github.com/Source2ZE/CS2Fixes/blob/e1a7aebee8b846b9c6be514dba890646b04a7792/src/utils/plat_unix.cpp#L53
+int GetModuleInformation(HINSTANCE hModule, void** base, size_t* length, std::vector<Section>& m_sections)
+{
+    link_map* lmap;
+    if (dlinfo(hModule, RTLD_DI_LINKMAP, &lmap) != 0)
+    {
+        dlclose(hModule);
+        return 1;
+    }
+
+    int fd = open(lmap->l_name, O_RDONLY);
+    if (fd == -1)
+    {
+        dlclose(hModule);
+        return 2;
+    }
+
+    struct stat st;
+    if (fstat(fd, &st) == 0)
+    {
+        void* map = mmap(nullptr, st.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
+        if (map != MAP_FAILED)
+        {
+            ElfW(Ehdr)* ehdr = static_cast<ElfW(Ehdr)*>(map);
+            ElfW(Shdr)* shdrs = reinterpret_cast<ElfW(Shdr)*>(reinterpret_cast<uintptr_t>(ehdr) + ehdr->e_shoff);
+            const char* strTab = reinterpret_cast<const char*>(reinterpret_cast<uintptr_t>(ehdr) + shdrs[ehdr->e_shstrndx].sh_offset);
+
+            for (auto i = 0; i < ehdr->e_phnum; ++i)
+            {
+                ElfW(Phdr)* phdr = reinterpret_cast<ElfW(Phdr)*>(reinterpret_cast<uintptr_t>(ehdr) + ehdr->e_phoff + i * ehdr->e_phentsize);
+                if (phdr->p_type == PT_LOAD && phdr->p_flags & PF_X)
+                {
+                    *base = reinterpret_cast<void*>(lmap->l_addr + phdr->p_vaddr);
+                    *length = phdr->p_filesz;
+                    break;
+                }
+            }
+
+            for (auto i = 0; i < ehdr->e_shnum; ++i)
+            {
+                ElfW(Shdr)* shdr = reinterpret_cast<ElfW(Shdr)*>(reinterpret_cast<uintptr_t>(shdrs) + i * ehdr->e_shentsize);
+                if (*(strTab + shdr->sh_name) == '\0') continue;
+
+                Section section;
+                section.m_szName = strTab + shdr->sh_name;
+                section.m_pBase = reinterpret_cast<void*>(lmap->l_addr + shdr->sh_addr);
+                section.m_iSize = shdr->sh_size;
+                m_sections.push_back(section);
+            }
+
+            munmap(map, st.st_size);
+        }
+    }
+
+    close(fd);
+
+    return 0;
+}
+
 CModule::CModule(std::string_view path, dl_phdr_info* info)
 {
     m_pszModule = path.substr(path.find_last_of('/') + 1);
     m_pszPath = path.data();
     m_baseAddress = info->dlpi_addr;
+
+    auto module = dlmount(m_pszModule.c_str());
+    GetModuleInformation(module, &m_base, &m_size, m_sections);
 
     const bool should_read_from_disk = std::any_of(modules_to_read_from_disk.begin(), modules_to_read_from_disk.end(), [&](const auto& i) {
         return m_pszModule == i;
@@ -370,32 +473,32 @@ void CModule::DumpSymbols(ElfW(Dyn) * dyn)
         else if (dyn->d_tag == DT_SYMTAB)
         {
             symbols = reinterpret_cast<ElfW(Sym)*>(dyn->d_un.d_ptr);
-
-            for (auto i = 0; i < symbol_count; i++)
-            {
-                if (!symbols[i].st_name)
-                {
-                    continue;
-                }
-
-                if (symbols[i].st_other != 0)
-                {
-                    continue;
-                }
-
-                auto address = symbols[i].st_value + m_baseAddress;
-                std::string_view name = &string_table[symbols[i].st_name];
-
-                if (name == "CreateInterface")
-                {
-                    m_fnCreateInterface = reinterpret_cast<fnCreateInterface>(address);
-                }
-
-                _symbols.insert({ name.data(), address });
-            }
         }
 
         dyn++;
+    }
+
+    for (auto i = 0; i < symbol_count; i++)
+    {
+        if (!symbols[i].st_name)
+        {
+            continue;
+        }
+
+        if (symbols[i].st_other != 0)
+        {
+            continue;
+        }
+
+        auto address = symbols[i].st_value + m_baseAddress;
+        std::string_view name = &string_table[symbols[i].st_name];
+
+        if (name == "CreateInterface")
+        {
+            m_fnCreateInterface = reinterpret_cast<fnCreateInterface>(address);
+        }
+
+        _symbols.insert({ name.data(), address });
     }
 }
 #endif
@@ -456,7 +559,22 @@ void* CModule::FindSignature(const char* signature)
         return nullptr;
     }
 
-    return this->FindSignature(pData);
+    auto pOld = this->FindSignature(pData);
+    auto pNew = this->FindSignatureAlternative(pData);
+
+    if (pOld != pNew)
+    {
+        CSSHARP_CORE_DEBUG(
+            "Signature {} found different pointers using different signature scanning methods. Found old address: {}, new address: {}",
+            signature, (void*)pOld, (void*)pNew);
+    }
+
+    if (pNew)
+    {
+        return pNew;
+    }
+
+    return pOld;
 }
 
 void* CModule::FindSignature(const std::vector<int16_t>& sigBytes)
@@ -484,6 +602,39 @@ void* CModule::FindSignature(const std::vector<int16_t>& sigBytes)
             {
                 return reinterpret_cast<void*>(current - data + segment.address);
             }
+        }
+    }
+
+    return nullptr;
+}
+
+void* CModule::FindSignatureAlternative(const std::vector<int16_t>& sigBytes)
+{
+    if (m_base == 0 || m_size == 0)
+    {
+        return nullptr;
+    }
+
+    auto* data = reinterpret_cast<std::uint8_t*>(m_base);
+    const auto size = m_size;
+
+    auto first_byte = sigBytes[0];
+    std::uint8_t* end = data + size - sigBytes.size();
+
+    for (std::uint8_t* current = data; current <= end; ++current)
+    {
+        if (first_byte != -1) current = std::find(current, end, first_byte);
+
+        if (current == end)
+        {
+            break;
+        }
+
+        if (std::equal(sigBytes.begin() + 1, sigBytes.end(), current + 1, [](auto opt, auto byte) {
+            return opt == -1 || opt == byte;
+        }))
+        {
+            return reinterpret_cast<void*>(current - data + (std::uintptr_t)m_base);
         }
     }
 
@@ -560,4 +711,114 @@ void* CModule::FindSymbol(const std::string& name)
     CSSHARP_CORE_ERROR("Cannot find symbol {}", name);
     return nullptr;
 }
+
+#ifdef _WIN32
+void* CModule::FindVirtualTable(const std::string& name)
+{
+    auto runTimeData = GetSection(".data");
+    auto readOnlyData = GetSection(".rdata");
+
+    if (!runTimeData || !readOnlyData)
+    {
+        Warning("Failed to find .data or .rdata section\n");
+        return nullptr;
+    }
+
+    std::string decoratedTableName = ".?AV" + name + "@@";
+
+    SignatureIterator sigIt(runTimeData->m_pBase, runTimeData->m_iSize, (const byte*)decoratedTableName.c_str(),
+                            decoratedTableName.size() + 1);
+    void* typeDescriptor = sigIt.FindNext(false);
+
+    if (!typeDescriptor)
+    {
+        Warning("Failed to find type descriptor for %s\n", name.c_str());
+        return nullptr;
+    }
+
+    typeDescriptor = (void*)((uintptr_t)typeDescriptor - 0x10);
+
+    const uint32_t rttiTDRva = (uintptr_t)typeDescriptor - (uintptr_t)m_base;
+
+    ConMsg("RTTI Type Descriptor RVA: 0x%p\n", rttiTDRva);
+
+    SignatureIterator sigIt2(readOnlyData->m_pBase, readOnlyData->m_iSize, (const byte*)&rttiTDRva, sizeof(uint32_t));
+
+    while (void* completeObjectLocator = sigIt2.FindNext(false))
+    {
+        auto completeObjectLocatorHeader = (uintptr_t)completeObjectLocator - 0xC;
+        // check RTTI Complete Object Locator header, always 0x1
+        if (*(int32_t*)(completeObjectLocatorHeader) != 1) continue;
+
+        // check RTTI Complete Object Locator vtable offset
+        if (*(int32_t*)((uintptr_t)completeObjectLocator - 0x8) != 0) continue;
+
+        SignatureIterator sigIt3(readOnlyData->m_pBase, readOnlyData->m_iSize, (const byte*)&completeObjectLocatorHeader, sizeof(void*));
+        void* vtable = sigIt3.FindNext(false);
+
+        if (!vtable)
+        {
+            Warning("Failed to find vtable for %s\n", name.c_str());
+            return nullptr;
+        }
+
+        return (void*)((uintptr_t)vtable + 0x8);
+    }
+
+    Warning("Failed to find RTTI Complete Object Locator for %s\n", name.c_str());
+    return nullptr;
+}
+#endif
+
+#ifndef _WIN32
+void* CModule::FindVirtualTable(const std::string& name)
+{
+    auto readOnlyData = GetSection(".rodata");
+    auto readOnlyRelocations = GetSection(".data.rel.ro");
+
+    if (!readOnlyData || !readOnlyRelocations)
+    {
+        Warning("Failed to find .rodata or .data.rel.ro section\n");
+        return nullptr;
+    }
+
+    std::string decoratedTableName = std::to_string(name.length()) + name;
+
+    SignatureIterator sigIt(readOnlyData->m_pBase, readOnlyData->m_iSize, (const byte*)decoratedTableName.c_str(),
+                            decoratedTableName.size() + 1);
+    void* classNameString = sigIt.FindNext(false);
+
+    if (!classNameString)
+    {
+        Warning("Failed to find type descriptor for %s\n", name.c_str());
+        return nullptr;
+    }
+
+    SignatureIterator sigIt2(readOnlyRelocations->m_pBase, readOnlyRelocations->m_iSize, (const byte*)&classNameString, sizeof(void*));
+    void* typeName = sigIt2.FindNext(false);
+
+    if (!typeName)
+    {
+        Warning("Failed to find type name for %s\n", name.c_str());
+        return nullptr;
+    }
+
+    void* typeInfo = (void*)((uintptr_t)typeName - 0x8);
+
+    for (const auto& sectionName : { std::string_view(".data.rel.ro"), std::string_view(".data.rel.ro.local") })
+    {
+        auto section = GetSection(sectionName);
+        if (!section) continue;
+
+        SignatureIterator sigIt3(section->m_pBase, section->m_iSize, (const byte*)&typeInfo, sizeof(void*));
+
+        while (void* vtable = sigIt3.FindNext(false))
+            if (*(int64_t*)((uintptr_t)vtable - 0x8) == 0) return (void*)((uintptr_t)vtable + 0x8);
+    }
+
+    Warning("Failed to find vtable for %s\n", name.c_str());
+    return nullptr;
+}
+#endif
+
 } // namespace counterstrikesharp::modules

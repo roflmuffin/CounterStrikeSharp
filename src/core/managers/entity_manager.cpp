@@ -25,17 +25,18 @@
 #include <public/eiface.h>
 #include "scripting/callback_manager.h"
 
-SH_DECL_HOOK7_void(ISource2GameEntities,
-                   CheckTransmit,
-                   SH_NOATTRIB,
-                   0,
-                   CCheckTransmitInfo**,
-                   int,
-                   CBitVec<16384>&,
-                   const Entity2Networkable_t**,
-                   const uint16*,
-                   int,
-                   bool);
+SH_DECL_MANUALHOOK8_void(CheckTransmit,
+                         0,
+                         0,
+                         0,
+                         ISource2GameEntities*,
+                         CCheckTransmitInfoHack**,
+                         uint32_t,
+                         CBitVec<16384>&,
+                         CBitVec<16384>&,
+                         const Entity2Networkable_t**,
+                         const uint16*,
+                         uint32_t);
 
 namespace counterstrikesharp {
 
@@ -43,14 +44,17 @@ EntityManager::EntityManager() { m_profile_name = "EntityManager"; }
 
 EntityManager::~EntityManager() {}
 
-CCheckTransmitInfoList::CCheckTransmitInfoList(CCheckTransmitInfo** pInfoInfoList, int nInfoCount)
+CCheckTransmitInfoList::CCheckTransmitInfoList(CCheckTransmitInfoHack** pInfoInfoList, int nInfoCount)
     : infoList(pInfoInfoList), infoCount(nInfoCount)
 {
 }
 
+int g_iCheckTransmit = -1;
+
 void EntityManager::OnAllInitialized()
 {
-    SH_ADD_HOOK_MEMFUNC(ISource2GameEntities, CheckTransmit, globals::gameEntities, this, &EntityManager::CheckTransmit, true);
+    SH_MANUALHOOK_RECONFIGURE(CheckTransmit, globals::gameConfig->GetOffset("ISource2GameEntities::CheckTransmit"), 0, 0);
+    g_iCheckTransmit = SH_ADD_MANUALDVPHOOK(CheckTransmit, globals::gameEntities, SH_MEMBER(this, &EntityManager::CheckTransmit), true);
 
     check_transmit = globals::callbackManager.CreateCallback("CheckTransmit");
     on_entity_spawned_callback = globals::callbackManager.CreateCallback("OnEntitySpawned");
@@ -106,8 +110,7 @@ void EntityManager::OnShutdown()
     globals::callbackManager.ReleaseCallback(on_entity_parent_changed_callback);
     globals::callbackManager.ReleaseCallback(check_transmit);
     globals::entitySystem->RemoveListenerEntity(&entityListener);
-
-    SH_REMOVE_HOOK_MEMFUNC(ISource2GameEntities, CheckTransmit, globals::gameEntities, this, &EntityManager::CheckTransmit, true);
+    SH_REMOVE_HOOK_ID(g_iCheckTransmit);
 }
 
 void CEntityListener::OnEntitySpawned(CEntityInstance* pEntity)
@@ -194,21 +197,22 @@ void EntityManager::UnhookEntityOutput(const char* szClassname, const char* szOu
     }
 }
 
-void EntityManager::CheckTransmit(CCheckTransmitInfo** pInfoInfoList,
-                                  int nInfoCount,
-                                  CBitVec<16384>& unionTransmitEdicts,
+void EntityManager::CheckTransmit(ISource2GameEntities* pThis,
+                                  CCheckTransmitInfoHack** ppInfoList,
+                                  uint32_t nInfoCount,
+                                  CBitVec<16384>& unionTransmitEdicts1,
+                                  CBitVec<16384>& unionTransmitEdicts2,
                                   const Entity2Networkable_t** pNetworkables,
                                   const uint16* pEntityIndicies,
-                                  int nEntityIndices,
-                                  bool bEnablePVSBits)
+                                  uint32_t nEntities)
 {
-    VPROF_BUDGET(m_profile_name.c_str(), "CS# CheckTransmit");
+    // VPROF_BUDGET(m_profile_name.c_str(), "CS# CheckTransmit");
 
     auto callback = globals::entityManager.check_transmit;
 
     if (callback && callback->GetFunctionCount())
     {
-        CCheckTransmitInfoList* infoList = new CCheckTransmitInfoList(pInfoInfoList, nInfoCount);
+        CCheckTransmitInfoList* infoList = new CCheckTransmitInfoList(ppInfoList, nInfoCount);
 
         callback->ScriptContext().Reset();
         callback->ScriptContext().Push(infoList);
@@ -218,8 +222,13 @@ void EntityManager::CheckTransmit(CCheckTransmitInfo** pInfoInfoList,
     }
 }
 
-void DetourFireOutputInternal(
-    CEntityIOOutput* const pThis, CEntityInstance* pActivator, CEntityInstance* pCaller, const CVariant* const value, float flDelay)
+void DetourFireOutputInternal(CEntityIOOutput* const pThis,
+                              CEntityInstance* pActivator,
+                              CEntityInstance* pCaller,
+                              const CVariant* const value,
+                              float flDelay,
+                              void* unk1,
+                              char* unk2)
 {
     std::vector vecSearchKeys{ OutputKey_t("*", pThis->m_pDesc->m_pName), OutputKey_t("*", "*") };
 
@@ -288,7 +297,7 @@ void DetourFireOutputInternal(
         return;
     }
 
-    m_pFireOutputInternal(pThis, pActivator, pCaller, value, flDelay);
+    m_pFireOutputInternal(pThis, pActivator, pCaller, value, flDelay, unk1, unk2);
 
     for (auto pCallbackPair : vecCallbackPairs)
     {
@@ -308,7 +317,7 @@ void DetourFireOutputInternal(
 
 SndOpEventGuid_t EntityEmitSoundFilter(IRecipientFilter& filter, uint32 ent, const char* pszSound, float flVolume, float flPitch)
 {
-    if (!CBaseEntity_EmitSoundFilter)
+    if (true)
     {
         CSSHARP_CORE_ERROR("[EntityManager][EmitSoundFilter] - Failed to emit a sound. Signature for \'CBaseEntity_EmitSoundFilter\' is "
                            "not found. The latest update may have broken it.");

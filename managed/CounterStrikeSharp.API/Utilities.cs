@@ -238,11 +238,11 @@ namespace CounterStrikeSharp.API
 
             if (chainOffset != 0)
             {
-                VirtualFunctions.NetworkStateChanged(entity.Handle + chainOffset, offset + extraOffset, 0xFFFFFFFF);
+                NativeAPI.SchemaNetworkStateChanged(entity.Handle + chainOffset, (uint)(offset + extraOffset), 0xFFFFFFFF, 0xFFFFFFFF);
                 return;
             }
 
-            VirtualFunctions.StateChanged(entity.NetworkTransmitComponent.Handle, entity.Handle, offset + extraOffset, -1, -1);
+            NativeAPI.SchemaSetStateChanged(entity.Handle, (uint)(offset + extraOffset), 0xFFFFFFFF, 0xFFFFFFFF);
 
             entity.LastNetworkChange = Server.CurrentTime;
             entity.IsSteadyState.Clear();
@@ -260,6 +260,7 @@ namespace CounterStrikeSharp.API
             {
                 return null;
             }
+
             return ptr;
         }
     }
