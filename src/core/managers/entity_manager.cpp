@@ -317,7 +317,7 @@ void DetourFireOutputInternal(CEntityIOOutput* const pThis,
 
 SndOpEventGuid_t EntityEmitSoundFilter(IRecipientFilter& filter, uint32 ent, const char* pszSound, float flVolume, float flPitch)
 {
-    if (!CBaseEntity_EmitSoundFilter)
+    if (true)
     {
         CSSHARP_CORE_ERROR("[EntityManager][EmitSoundFilter] - Failed to emit a sound. Signature for \'CBaseEntity_EmitSoundFilter\' is "
                            "not found. The latest update may have broken it.");
