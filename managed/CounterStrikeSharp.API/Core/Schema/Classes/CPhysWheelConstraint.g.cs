@@ -62,4 +62,8 @@ public partial class CPhysWheelConstraint : CPhysConstraint
 	[SchemaMember("CPhysWheelConstraint", "m_flSpinAxisFriction")]
 	public ref float SpinAxisFriction => ref Schema.GetRef<float>(this.Handle, "CPhysWheelConstraint", "m_flSpinAxisFriction");
 
+	// m_hSteeringMimicsEntity
+	[SchemaMember("CPhysWheelConstraint", "m_hSteeringMimicsEntity")]
+	public CHandle<CBaseEntity> SteeringMimicsEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysWheelConstraint", "m_hSteeringMimicsEntity");
+
 }

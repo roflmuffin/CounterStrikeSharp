@@ -18,8 +18,16 @@ public partial class CMarkupVolumeTagged_NavGame : CMarkupVolumeWithRef
 {
     public CMarkupVolumeTagged_NavGame (IntPtr pointer) : base(pointer) {}
 
+	// m_nScopes
+	[SchemaMember("CMarkupVolumeTagged_NavGame", "m_nScopes")]
+	public ref NavScopeFlags_t Scopes => ref Schema.GetRef<NavScopeFlags_t>(this.Handle, "CMarkupVolumeTagged_NavGame", "m_nScopes");
+
 	// m_bFloodFillAttribute
 	[SchemaMember("CMarkupVolumeTagged_NavGame", "m_bFloodFillAttribute")]
 	public ref bool FloodFillAttribute => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeTagged_NavGame", "m_bFloodFillAttribute");
+
+	// m_bSplitNavSpace
+	[SchemaMember("CMarkupVolumeTagged_NavGame", "m_bSplitNavSpace")]
+	public ref bool SplitNavSpace => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeTagged_NavGame", "m_bSplitNavSpace");
 
 }

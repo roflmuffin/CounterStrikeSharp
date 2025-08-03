@@ -38,6 +38,10 @@ public partial class CCSWeaponBaseGun : CCSWeaponBase
 	[SchemaMember("CCSWeaponBaseGun", "m_bNeedsBoltAction")]
 	public ref bool NeedsBoltAction => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBaseGun", "m_bNeedsBoltAction");
 
+	// m_nRevolverCylinderIdx
+	[SchemaMember("CCSWeaponBaseGun", "m_nRevolverCylinderIdx")]
+	public ref Int32 RevolverCylinderIdx => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseGun", "m_nRevolverCylinderIdx");
+
 	// m_bSkillReloadAvailable
 	[SchemaMember("CCSWeaponBaseGun", "m_bSkillReloadAvailable")]
 	public ref bool SkillReloadAvailable => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBaseGun", "m_bSkillReloadAvailable");

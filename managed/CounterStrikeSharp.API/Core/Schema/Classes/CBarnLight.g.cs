@@ -54,6 +54,14 @@ public partial class CBarnLight : CBaseModelEntity
 	[SchemaMember("CBarnLight", "m_nBakedShadowIndex")]
 	public ref Int32 BakedShadowIndex => ref Schema.GetRef<Int32>(this.Handle, "CBarnLight", "m_nBakedShadowIndex");
 
+	// m_nLightPathUniqueId
+	[SchemaMember("CBarnLight", "m_nLightPathUniqueId")]
+	public ref Int32 LightPathUniqueId => ref Schema.GetRef<Int32>(this.Handle, "CBarnLight", "m_nLightPathUniqueId");
+
+	// m_nLightMapUniqueId
+	[SchemaMember("CBarnLight", "m_nLightMapUniqueId")]
+	public ref Int32 LightMapUniqueId => ref Schema.GetRef<Int32>(this.Handle, "CBarnLight", "m_nLightMapUniqueId");
+
 	// m_nLuminaireShape
 	[SchemaMember("CBarnLight", "m_nLuminaireShape")]
 	public ref Int32 LuminaireShape => ref Schema.GetRef<Int32>(this.Handle, "CBarnLight", "m_nLuminaireShape");
@@ -153,6 +161,10 @@ public partial class CBarnLight : CBaseModelEntity
 	// m_bContactShadow
 	[SchemaMember("CBarnLight", "m_bContactShadow")]
 	public ref bool ContactShadow => ref Schema.GetRef<bool>(this.Handle, "CBarnLight", "m_bContactShadow");
+
+	// m_bForceShadowsEnabled
+	[SchemaMember("CBarnLight", "m_bForceShadowsEnabled")]
+	public ref bool ForceShadowsEnabled => ref Schema.GetRef<bool>(this.Handle, "CBarnLight", "m_bForceShadowsEnabled");
 
 	// m_nBounceLight
 	[SchemaMember("CBarnLight", "m_nBounceLight")]

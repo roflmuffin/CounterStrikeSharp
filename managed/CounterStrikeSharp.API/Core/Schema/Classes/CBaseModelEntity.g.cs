@@ -46,13 +46,45 @@ public partial class CBaseModelEntity : CBaseEntity
 	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed4")]
 	public ref HitGroup_t DestructiblePartInitialStateDestructed4 => ref Schema.GetRef<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed4");
 
-	// m_nLastHitDestructiblePartIndex
-	[SchemaMember("CBaseModelEntity", "m_nLastHitDestructiblePartIndex")]
-	public ref Int32 LastHitDestructiblePartIndex => ref Schema.GetRef<Int32>(this.Handle, "CBaseModelEntity", "m_nLastHitDestructiblePartIndex");
+	// m_nDestructiblePartInitialStateDestructed0_PartIndex
+	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed0_PartIndex")]
+	public ref Int32 DestructiblePartInitialStateDestructed0_PartIndex => ref Schema.GetRef<Int32>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed0_PartIndex");
+
+	// m_nDestructiblePartInitialStateDestructed1_PartIndex
+	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed1_PartIndex")]
+	public ref Int32 DestructiblePartInitialStateDestructed1_PartIndex => ref Schema.GetRef<Int32>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed1_PartIndex");
+
+	// m_nDestructiblePartInitialStateDestructed2_PartIndex
+	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed2_PartIndex")]
+	public ref Int32 DestructiblePartInitialStateDestructed2_PartIndex => ref Schema.GetRef<Int32>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed2_PartIndex");
+
+	// m_nDestructiblePartInitialStateDestructed3_PartIndex
+	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed3_PartIndex")]
+	public ref Int32 DestructiblePartInitialStateDestructed3_PartIndex => ref Schema.GetRef<Int32>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed3_PartIndex");
+
+	// m_nDestructiblePartInitialStateDestructed4_PartIndex
+	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed4_PartIndex")]
+	public ref Int32 DestructiblePartInitialStateDestructed4_PartIndex => ref Schema.GetRef<Int32>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed4_PartIndex");
+
+	// m_pDestructiblePartsSystemComponent
+	[SchemaMember("CBaseModelEntity", "m_pDestructiblePartsSystemComponent")]
+	public CDestructiblePartsSystemComponent? DestructiblePartsSystemComponent => Schema.GetPointer<CDestructiblePartsSystemComponent>(this.Handle, "CBaseModelEntity", "m_pDestructiblePartsSystemComponent");
 
 	// m_LastHitGroup
 	[SchemaMember("CBaseModelEntity", "m_LastHitGroup")]
 	public ref HitGroup_t LastHitGroup => ref Schema.GetRef<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_LastHitGroup");
+
+	// m_sLastDamageSourceName
+	[SchemaMember("CBaseModelEntity", "m_sLastDamageSourceName")]
+	public string LastDamageSourceName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CBaseModelEntity", "m_sLastDamageSourceName"); }
+		set { Schema.SetString(this.Handle, "CBaseModelEntity", "m_sLastDamageSourceName", value); }
+	}
+
+	// m_vLastDamagePosition
+	[SchemaMember("CBaseModelEntity", "m_vLastDamagePosition")]
+	public Vector LastDamagePosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseModelEntity", "m_vLastDamagePosition");
 
 	// m_flDissolveStartTime
 	[SchemaMember("CBaseModelEntity", "m_flDissolveStartTime")]

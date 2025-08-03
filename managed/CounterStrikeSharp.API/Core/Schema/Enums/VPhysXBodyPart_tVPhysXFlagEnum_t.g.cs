@@ -13,4 +13,5 @@ public enum VPhysXBodyPart_tVPhysXFlagEnum_t : uint
 	FLAG_JOINT = 0x4,
 	FLAG_MASS = 0x8,
 	FLAG_ALWAYS_DYNAMIC_ON_CLIENT = 0x10,
+	FLAG_DISABLE_CCD = 0x20,
 }

@@ -74,10 +74,6 @@ public partial class CPhysConstraint : CLogicalEntity
 	[SchemaMember("CPhysConstraint", "m_torqueLimit")]
 	public ref float TorqueLimit => ref Schema.GetRef<float>(this.Handle, "CPhysConstraint", "m_torqueLimit");
 
-	// m_teleportTick
-	[SchemaMember("CPhysConstraint", "m_teleportTick")]
-	public ref UInt32 TeleportTick => ref Schema.GetRef<UInt32>(this.Handle, "CPhysConstraint", "m_teleportTick");
-
 	// m_minTeleportDistance
 	[SchemaMember("CPhysConstraint", "m_minTeleportDistance")]
 	public ref float MinTeleportDistance => ref Schema.GetRef<float>(this.Handle, "CPhysConstraint", "m_minTeleportDistance");

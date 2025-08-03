@@ -12,4 +12,5 @@ public enum CNmFloatMathNodeOperator_t : byte
 	Sub = 0x1,
 	Mul = 0x2,
 	Div = 0x3,
+	Mod = 0x4,
 }

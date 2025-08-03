@@ -50,10 +50,6 @@ public partial class CPointTemplate : CLogicalEntity
 	[SchemaMember("CPointTemplate", "m_bAsynchronouslySpawnEntities")]
 	public ref bool AsynchronouslySpawnEntities => ref Schema.GetRef<bool>(this.Handle, "CPointTemplate", "m_bAsynchronouslySpawnEntities");
 
-	// m_pOutputOnSpawned
-	[SchemaMember("CPointTemplate", "m_pOutputOnSpawned")]
-	public CEntityIOOutput OutputOnSpawned => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointTemplate", "m_pOutputOnSpawned");
-
 	// m_clientOnlyEntityBehavior
 	[SchemaMember("CPointTemplate", "m_clientOnlyEntityBehavior")]
 	public ref PointTemplateClientOnlyEntityBehavior_t ClientOnlyEntityBehavior => ref Schema.GetRef<PointTemplateClientOnlyEntityBehavior_t>(this.Handle, "CPointTemplate", "m_clientOnlyEntityBehavior");

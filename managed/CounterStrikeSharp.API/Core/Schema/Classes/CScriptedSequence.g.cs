@@ -88,11 +88,15 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_nMoveToGait
 	[SchemaMember("CScriptedSequence", "m_nMoveToGait")]
-	public ref MovementGait_t MoveToGait => ref Schema.GetRef<MovementGait_t>(this.Handle, "CScriptedSequence", "m_nMoveToGait");
+	public ref SharedMovementGait_t MoveToGait => ref Schema.GetRef<SharedMovementGait_t>(this.Handle, "CScriptedSequence", "m_nMoveToGait");
 
 	// m_nHeldWeaponBehavior
 	[SchemaMember("CScriptedSequence", "m_nHeldWeaponBehavior")]
 	public ref ScriptedHeldWeaponBehavior_t HeldWeaponBehavior => ref Schema.GetRef<ScriptedHeldWeaponBehavior_t>(this.Handle, "CScriptedSequence", "m_nHeldWeaponBehavior");
+
+	// m_nForcedCrouchState
+	[SchemaMember("CScriptedSequence", "m_nForcedCrouchState")]
+	public ref ForcedCrouchState_t ForcedCrouchState => ref Schema.GetRef<ForcedCrouchState_t>(this.Handle, "CScriptedSequence", "m_nForcedCrouchState");
 
 	// m_bIsPlayingPreIdle
 	[SchemaMember("CScriptedSequence", "m_bIsPlayingPreIdle")]
@@ -186,6 +190,14 @@ public partial class CScriptedSequence : CBaseEntity
 	[SchemaMember("CScriptedSequence", "m_bDontAddModifiers")]
 	public ref bool DontAddModifiers => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bDontAddModifiers");
 
+	// m_bDisableAimingWhileMoving
+	[SchemaMember("CScriptedSequence", "m_bDisableAimingWhileMoving")]
+	public ref bool DisableAimingWhileMoving => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bDisableAimingWhileMoving");
+
+	// m_bIgnoreRotation
+	[SchemaMember("CScriptedSequence", "m_bIgnoreRotation")]
+	public ref bool IgnoreRotation => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bIgnoreRotation");
+
 	// m_flRadius
 	[SchemaMember("CScriptedSequence", "m_flRadius")]
 	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CScriptedSequence", "m_flRadius");
@@ -205,6 +217,10 @@ public partial class CScriptedSequence : CBaseEntity
 	// m_flAngRate
 	[SchemaMember("CScriptedSequence", "m_flAngRate")]
 	public ref float AngRate => ref Schema.GetRef<float>(this.Handle, "CScriptedSequence", "m_flAngRate");
+
+	// m_flMoveSpeed
+	[SchemaMember("CScriptedSequence", "m_flMoveSpeed")]
+	public ref float MoveSpeed => ref Schema.GetRef<float>(this.Handle, "CScriptedSequence", "m_flMoveSpeed");
 
 	// m_bWaitUntilMoveCompletesToStartAnimation
 	[SchemaMember("CScriptedSequence", "m_bWaitUntilMoveCompletesToStartAnimation")]
@@ -337,5 +353,9 @@ public partial class CScriptedSequence : CBaseEntity
 	// m_iPlayerDeathBehavior
 	[SchemaMember("CScriptedSequence", "m_iPlayerDeathBehavior")]
 	public ref Int32 PlayerDeathBehavior => ref Schema.GetRef<Int32>(this.Handle, "CScriptedSequence", "m_iPlayerDeathBehavior");
+
+	// m_bSkipFadeIn
+	[SchemaMember("CScriptedSequence", "m_bSkipFadeIn")]
+	public ref bool SkipFadeIn => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bSkipFadeIn");
 
 }

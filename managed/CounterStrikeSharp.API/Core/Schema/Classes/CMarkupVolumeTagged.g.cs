@@ -18,6 +18,14 @@ public partial class CMarkupVolumeTagged : CMarkupVolume
 {
     public CMarkupVolumeTagged (IntPtr pointer) : base(pointer) {}
 
+	// m_GroupNames
+	[SchemaMember("CMarkupVolumeTagged", "m_GroupNames")]
+	public NetworkedVector<string> GroupNames => Schema.GetDeclaredClass<NetworkedVector<string>>(this.Handle, "CMarkupVolumeTagged", "m_GroupNames");
+
+	// m_Tags
+	[SchemaMember("CMarkupVolumeTagged", "m_Tags")]
+	public NetworkedVector<string> Tags => Schema.GetDeclaredClass<NetworkedVector<string>>(this.Handle, "CMarkupVolumeTagged", "m_Tags");
+
 	// m_bIsGroup
 	[SchemaMember("CMarkupVolumeTagged", "m_bIsGroup")]
 	public ref bool IsGroup => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeTagged", "m_bIsGroup");

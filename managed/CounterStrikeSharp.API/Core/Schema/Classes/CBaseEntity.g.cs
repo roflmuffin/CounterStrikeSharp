@@ -274,9 +274,21 @@ public partial class CBaseEntity : CEntityInstance
 	[SchemaMember("CBaseEntity", "m_flWaterLevel")]
 	public ref float WaterLevel => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flWaterLevel");
 
+	// m_bGravityDisabled
+	[SchemaMember("CBaseEntity", "m_bGravityDisabled")]
+	public ref bool GravityDisabled => ref Schema.GetRef<bool>(this.Handle, "CBaseEntity", "m_bGravityDisabled");
+
 	// m_bAnimatedEveryTick
 	[SchemaMember("CBaseEntity", "m_bAnimatedEveryTick")]
 	public ref bool AnimatedEveryTick => ref Schema.GetRef<bool>(this.Handle, "CBaseEntity", "m_bAnimatedEveryTick");
+
+	// m_flActualGravityScale
+	[SchemaMember("CBaseEntity", "m_flActualGravityScale")]
+	public ref float ActualGravityScale => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flActualGravityScale");
+
+	// m_bGravityActuallyDisabled
+	[SchemaMember("CBaseEntity", "m_bGravityActuallyDisabled")]
+	public ref bool GravityActuallyDisabled => ref Schema.GetRef<bool>(this.Handle, "CBaseEntity", "m_bGravityActuallyDisabled");
 
 	// m_bDisableLowViolence
 	[SchemaMember("CBaseEntity", "m_bDisableLowViolence")]
@@ -326,10 +338,6 @@ public partial class CBaseEntity : CEntityInstance
 	[SchemaMember("CBaseEntity", "m_bLagCompensate")]
 	public ref bool LagCompensate => ref Schema.GetRef<bool>(this.Handle, "CBaseEntity", "m_bLagCompensate");
 
-	// m_flOverriddenFriction
-	[SchemaMember("CBaseEntity", "m_flOverriddenFriction")]
-	public ref float OverriddenFriction => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flOverriddenFriction");
-
 	// m_pBlocker
 	[SchemaMember("CBaseEntity", "m_pBlocker")]
 	public CHandle<CBaseEntity> Blocker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBaseEntity", "m_pBlocker");
@@ -345,5 +353,9 @@ public partial class CBaseEntity : CEntityInstance
 	// m_nBloodType
 	[SchemaMember("CBaseEntity", "m_nBloodType")]
 	public ref BloodType BloodType => ref Schema.GetRef<BloodType>(this.Handle, "CBaseEntity", "m_nBloodType");
+
+	// m_pPulseGraphInstance
+	[SchemaMember("CBaseEntity", "m_pPulseGraphInstance")]
+	public CPulseGraphInstance_ServerEntity? PulseGraphInstance => Schema.GetPointer<CPulseGraphInstance_ServerEntity>(this.Handle, "CBaseEntity", "m_pPulseGraphInstance");
 
 }

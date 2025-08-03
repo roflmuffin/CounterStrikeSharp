@@ -30,8 +30,4 @@ public partial class CFilterMultiple : CBaseFilter
 	[SchemaMember("CFilterMultiple", "m_hFilter")]
 	public Span<CHandle<CBaseEntity>> Filter => Schema.GetFixedArray<CHandle<CBaseEntity>>(this.Handle, "CFilterMultiple", "m_hFilter", 10);
 
-	// m_nFilterCount
-	[SchemaMember("CFilterMultiple", "m_nFilterCount")]
-	public ref Int32 FilterCount => ref Schema.GetRef<Int32>(this.Handle, "CFilterMultiple", "m_nFilterCount");
-
 }

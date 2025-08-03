@@ -34,10 +34,6 @@ public partial class CEnvExplosion : CModelPointEntity
 	[SchemaMember("CEnvExplosion", "m_flInnerRadius")]
 	public ref float InnerRadius => ref Schema.GetRef<float>(this.Handle, "CEnvExplosion", "m_flInnerRadius");
 
-	// m_spriteScale
-	[SchemaMember("CEnvExplosion", "m_spriteScale")]
-	public ref Int32 SpriteScale => ref Schema.GetRef<Int32>(this.Handle, "CEnvExplosion", "m_spriteScale");
-
 	// m_flDamageForce
 	[SchemaMember("CEnvExplosion", "m_flDamageForce")]
 	public ref float DamageForce => ref Schema.GetRef<float>(this.Handle, "CEnvExplosion", "m_flDamageForce");
@@ -54,14 +50,6 @@ public partial class CEnvExplosion : CModelPointEntity
 	[SchemaMember("CEnvExplosion", "m_bCreateDebris")]
 	public ref bool CreateDebris => ref Schema.GetRef<bool>(this.Handle, "CEnvExplosion", "m_bCreateDebris");
 
-	// m_iszExplosionType
-	[SchemaMember("CEnvExplosion", "m_iszExplosionType")]
-	public string ExplosionType
-	{
-		get { return Schema.GetUtf8String(this.Handle, "CEnvExplosion", "m_iszExplosionType"); }
-		set { Schema.SetString(this.Handle, "CEnvExplosion", "m_iszExplosionType", value); }
-	}
-
 	// m_iszCustomEffectName
 	[SchemaMember("CEnvExplosion", "m_iszCustomEffectName")]
 	public string CustomEffectName
@@ -77,6 +65,10 @@ public partial class CEnvExplosion : CModelPointEntity
 		get { return Schema.GetUtf8String(this.Handle, "CEnvExplosion", "m_iszCustomSoundName"); }
 		set { Schema.SetString(this.Handle, "CEnvExplosion", "m_iszCustomSoundName", value); }
 	}
+
+	// m_bSuppressParticleImpulse
+	[SchemaMember("CEnvExplosion", "m_bSuppressParticleImpulse")]
+	public ref bool SuppressParticleImpulse => ref Schema.GetRef<bool>(this.Handle, "CEnvExplosion", "m_bSuppressParticleImpulse");
 
 	// m_iClassIgnore
 	[SchemaMember("CEnvExplosion", "m_iClassIgnore")]

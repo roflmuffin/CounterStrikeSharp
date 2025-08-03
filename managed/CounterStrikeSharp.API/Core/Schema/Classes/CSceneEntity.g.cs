@@ -190,6 +190,10 @@ public partial class CSceneEntity : CPointEntity
 	[SchemaMember("CSceneEntity", "m_flAutomationTime")]
 	public ref float AutomationTime => ref Schema.GetRef<float>(this.Handle, "CSceneEntity", "m_flAutomationTime");
 
+	// m_nSpeechPriority
+	[SchemaMember("CSceneEntity", "m_nSpeechPriority")]
+	public ref Int32 SpeechPriority => ref Schema.GetRef<Int32>(this.Handle, "CSceneEntity", "m_nSpeechPriority");
+
 	// m_hWaitingForThisResumeScene
 	[SchemaMember("CSceneEntity", "m_hWaitingForThisResumeScene")]
 	public CHandle<CBaseEntity> WaitingForThisResumeScene => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hWaitingForThisResumeScene");

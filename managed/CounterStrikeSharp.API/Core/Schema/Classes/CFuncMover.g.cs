@@ -18,10 +18,6 @@ public partial class CFuncMover : CBaseModelEntity
 {
     public CFuncMover (IntPtr pointer) : base(pointer) {}
 
-	// m_bCreateMovableNavMesh
-	[SchemaMember("CFuncMover", "m_bCreateMovableNavMesh")]
-	public ref bool CreateMovableNavMesh => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bCreateMovableNavMesh");
-
 	// m_iszPathName
 	[SchemaMember("CFuncMover", "m_iszPathName")]
 	public string PathName
@@ -40,6 +36,14 @@ public partial class CFuncMover : CBaseModelEntity
 	{
 		get { return Schema.GetUtf8String(this.Handle, "CFuncMover", "m_iszPathNodeStart"); }
 		set { Schema.SetString(this.Handle, "CFuncMover", "m_iszPathNodeStart", value); }
+	}
+
+	// m_iszPathNodeEnd
+	[SchemaMember("CFuncMover", "m_iszPathNodeEnd")]
+	public string PathNodeEnd
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CFuncMover", "m_iszPathNodeEnd"); }
+		set { Schema.SetString(this.Handle, "CFuncMover", "m_iszPathNodeEnd", value); }
 	}
 
 	// m_eMoveType
@@ -73,14 +77,6 @@ public partial class CFuncMover : CBaseModelEntity
 	// m_nPreviousNodeIndex
 	[SchemaMember("CFuncMover", "m_nPreviousNodeIndex")]
 	public ref Int32 PreviousNodeIndex => ref Schema.GetRef<Int32>(this.Handle, "CFuncMover", "m_nPreviousNodeIndex");
-
-	// m_bFixedOrientation
-	[SchemaMember("CFuncMover", "m_bFixedOrientation")]
-	public ref bool FixedOrientation => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bFixedOrientation");
-
-	// m_bFixedPitch
-	[SchemaMember("CFuncMover", "m_bFixedPitch")]
-	public ref bool FixedPitch => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bFixedPitch");
 
 	// m_eSolidType
 	[SchemaMember("CFuncMover", "m_eSolidType")]
@@ -182,6 +178,10 @@ public partial class CFuncMover : CBaseModelEntity
 	[SchemaMember("CFuncMover", "m_OnMovementEnd")]
 	public CEntityIOOutput OnMovementEnd => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMover", "m_OnMovementEnd");
 
+	// m_bStartAtClosestPoint
+	[SchemaMember("CFuncMover", "m_bStartAtClosestPoint")]
+	public ref bool StartAtClosestPoint => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bStartAtClosestPoint");
+
 	// m_bStartAtEnd
 	[SchemaMember("CFuncMover", "m_bStartAtEnd")]
 	public ref bool StartAtEnd => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bStartAtEnd");
@@ -202,8 +202,136 @@ public partial class CFuncMover : CBaseModelEntity
 	[SchemaMember("CFuncMover", "m_flDurationBlendToNewOrientationRan")]
 	public ref float DurationBlendToNewOrientationRan => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flDurationBlendToNewOrientationRan");
 
-	// m_qOriginalOrientation
-	[SchemaMember("CFuncMover", "m_qOriginalOrientation")]
-	public Quaternion OriginalOrientation => Schema.GetDeclaredClass<Quaternion>(this.Handle, "CFuncMover", "m_qOriginalOrientation");
+	// m_nOriginalOrientationIndex
+	[SchemaMember("CFuncMover", "m_nOriginalOrientationIndex")]
+	public ref Int32 OriginalOrientationIndex => ref Schema.GetRef<Int32>(this.Handle, "CFuncMover", "m_nOriginalOrientationIndex");
+
+	// m_bCreateMovableNavMesh
+	[SchemaMember("CFuncMover", "m_bCreateMovableNavMesh")]
+	public ref bool CreateMovableNavMesh => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bCreateMovableNavMesh");
+
+	// m_bAllowMovableNavMeshDockingOnEntireEntity
+	[SchemaMember("CFuncMover", "m_bAllowMovableNavMeshDockingOnEntireEntity")]
+	public ref bool AllowMovableNavMeshDockingOnEntireEntity => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bAllowMovableNavMeshDockingOnEntireEntity");
+
+	// m_OnNodePassed
+	[SchemaMember("CFuncMover", "m_OnNodePassed")]
+	public CEntityIOOutput OnNodePassed => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMover", "m_OnNodePassed");
+
+	// m_iszOrientationMatchEntityName
+	[SchemaMember("CFuncMover", "m_iszOrientationMatchEntityName")]
+	public string OrientationMatchEntityName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CFuncMover", "m_iszOrientationMatchEntityName"); }
+		set { Schema.SetString(this.Handle, "CFuncMover", "m_iszOrientationMatchEntityName", value); }
+	}
+
+	// m_hOrientationMatchEntity
+	[SchemaMember("CFuncMover", "m_hOrientationMatchEntity")]
+	public CHandle<CBaseEntity> OrientationMatchEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CFuncMover", "m_hOrientationMatchEntity");
+
+	// m_flTimeToTraverseToNextNode
+	[SchemaMember("CFuncMover", "m_flTimeToTraverseToNextNode")]
+	public ref float TimeToTraverseToNextNode => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flTimeToTraverseToNextNode");
+
+	// m_vLerpToNewPosStartInPathEntitySpace
+	[SchemaMember("CFuncMover", "m_vLerpToNewPosStartInPathEntitySpace")]
+	public Vector LerpToNewPosStartInPathEntitySpace => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncMover", "m_vLerpToNewPosStartInPathEntitySpace");
+
+	// m_vLerpToNewPosEndInPathEntitySpace
+	[SchemaMember("CFuncMover", "m_vLerpToNewPosEndInPathEntitySpace")]
+	public Vector LerpToNewPosEndInPathEntitySpace => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncMover", "m_vLerpToNewPosEndInPathEntitySpace");
+
+	// m_flLerpToPositionT
+	[SchemaMember("CFuncMover", "m_flLerpToPositionT")]
+	public ref float LerpToPositionT => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flLerpToPositionT");
+
+	// m_flLerpToPositionDeltaT
+	[SchemaMember("CFuncMover", "m_flLerpToPositionDeltaT")]
+	public ref float LerpToPositionDeltaT => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flLerpToPositionDeltaT");
+
+	// m_OnLerpToPositionComplete
+	[SchemaMember("CFuncMover", "m_OnLerpToPositionComplete")]
+	public CEntityIOOutput OnLerpToPositionComplete => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMover", "m_OnLerpToPositionComplete");
+
+	// m_bIsPaused
+	[SchemaMember("CFuncMover", "m_bIsPaused")]
+	public ref bool IsPaused => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bIsPaused");
+
+	// m_eTransitionedToPathNodeAction
+	[SchemaMember("CFuncMover", "m_eTransitionedToPathNodeAction")]
+	public ref CFuncMoverTransitionToPathNodeAction_t TransitionedToPathNodeAction => ref Schema.GetRef<CFuncMoverTransitionToPathNodeAction_t>(this.Handle, "CFuncMover", "m_eTransitionedToPathNodeAction");
+
+	// m_nDelayedTeleportToNode
+	[SchemaMember("CFuncMover", "m_nDelayedTeleportToNode")]
+	public ref Int32 DelayedTeleportToNode => ref Schema.GetRef<Int32>(this.Handle, "CFuncMover", "m_nDelayedTeleportToNode");
+
+	// m_bIsVerboseLogging
+	[SchemaMember("CFuncMover", "m_bIsVerboseLogging")]
+	public ref bool IsVerboseLogging => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bIsVerboseLogging");
+
+	// m_hFollowEntity
+	[SchemaMember("CFuncMover", "m_hFollowEntity")]
+	public CHandle<CBaseEntity> FollowEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CFuncMover", "m_hFollowEntity");
+
+	// m_flFollowDistance
+	[SchemaMember("CFuncMover", "m_flFollowDistance")]
+	public ref float FollowDistance => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flFollowDistance");
+
+	// m_flFollowMinimumSpeed
+	[SchemaMember("CFuncMover", "m_flFollowMinimumSpeed")]
+	public ref float FollowMinimumSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flFollowMinimumSpeed");
+
+	// m_flCurFollowEntityT
+	[SchemaMember("CFuncMover", "m_flCurFollowEntityT")]
+	public ref float CurFollowEntityT => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flCurFollowEntityT");
+
+	// m_flCurFollowSpeed
+	[SchemaMember("CFuncMover", "m_flCurFollowSpeed")]
+	public ref float CurFollowSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flCurFollowSpeed");
+
+	// m_strOrientationFaceEntityName
+	[SchemaMember("CFuncMover", "m_strOrientationFaceEntityName")]
+	public string StrOrientationFaceEntityName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CFuncMover", "m_strOrientationFaceEntityName"); }
+		set { Schema.SetString(this.Handle, "CFuncMover", "m_strOrientationFaceEntityName", value); }
+	}
+
+	// m_hOrientationFaceEntity
+	[SchemaMember("CFuncMover", "m_hOrientationFaceEntity")]
+	public CHandle<CBaseEntity> OrientationFaceEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CFuncMover", "m_hOrientationFaceEntity");
+
+	// m_OnStart
+	[SchemaMember("CFuncMover", "m_OnStart")]
+	public CEntityIOOutput OnStart => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMover", "m_OnStart");
+
+	// m_OnStartForward
+	[SchemaMember("CFuncMover", "m_OnStartForward")]
+	public CEntityIOOutput OnStartForward => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMover", "m_OnStartForward");
+
+	// m_OnStartReverse
+	[SchemaMember("CFuncMover", "m_OnStartReverse")]
+	public CEntityIOOutput OnStartReverse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMover", "m_OnStartReverse");
+
+	// m_OnStop
+	[SchemaMember("CFuncMover", "m_OnStop")]
+	public CEntityIOOutput OnStop => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMover", "m_OnStop");
+
+	// m_OnStopped
+	[SchemaMember("CFuncMover", "m_OnStopped")]
+	public CEntityIOOutput OnStopped => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncMover", "m_OnStopped");
+
+	// m_bNextNodeReturnsCurrent
+	[SchemaMember("CFuncMover", "m_bNextNodeReturnsCurrent")]
+	public ref bool NextNodeReturnsCurrent => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bNextNodeReturnsCurrent");
+
+	// m_bStartedMoving
+	[SchemaMember("CFuncMover", "m_bStartedMoving")]
+	public ref bool StartedMoving => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bStartedMoving");
+
+	// m_eFollowEntityDirection
+	[SchemaMember("CFuncMover", "m_eFollowEntityDirection")]
+	public ref CFuncMoverFollowEntityDirection_t FollowEntityDirection => ref Schema.GetRef<CFuncMoverFollowEntityDirection_t>(this.Handle, "CFuncMover", "m_eFollowEntityDirection");
 
 }

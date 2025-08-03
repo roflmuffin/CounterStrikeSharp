@@ -30,9 +30,13 @@ public partial class CPhysBox : CBreakable
 	[SchemaMember("CPhysBox", "m_flForceToEnableMotion")]
 	public ref float ForceToEnableMotion => ref Schema.GetRef<float>(this.Handle, "CPhysBox", "m_flForceToEnableMotion");
 
-	// m_angPreferredCarryAngles
-	[SchemaMember("CPhysBox", "m_angPreferredCarryAngles")]
-	public QAngle PreferredCarryAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPhysBox", "m_angPreferredCarryAngles");
+	// m_vHoverPosePosition
+	[SchemaMember("CPhysBox", "m_vHoverPosePosition")]
+	public Vector HoverPosePosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysBox", "m_vHoverPosePosition");
+
+	// m_angHoverPoseAngles
+	[SchemaMember("CPhysBox", "m_angHoverPoseAngles")]
+	public QAngle HoverPoseAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPhysBox", "m_angHoverPoseAngles");
 
 	// m_bNotSolidToWorld
 	[SchemaMember("CPhysBox", "m_bNotSolidToWorld")]
@@ -42,9 +46,9 @@ public partial class CPhysBox : CBreakable
 	[SchemaMember("CPhysBox", "m_bEnableUseOutput")]
 	public ref bool EnableUseOutput => ref Schema.GetRef<bool>(this.Handle, "CPhysBox", "m_bEnableUseOutput");
 
-	// m_iExploitableByPlayer
-	[SchemaMember("CPhysBox", "m_iExploitableByPlayer")]
-	public ref Int32 ExploitableByPlayer => ref Schema.GetRef<Int32>(this.Handle, "CPhysBox", "m_iExploitableByPlayer");
+	// m_nHoverPoseFlags
+	[SchemaMember("CPhysBox", "m_nHoverPoseFlags")]
+	public ref HoverPoseFlags_t HoverPoseFlags => ref Schema.GetRef<HoverPoseFlags_t>(this.Handle, "CPhysBox", "m_nHoverPoseFlags");
 
 	// m_flTouchOutputPerEntityDelay
 	[SchemaMember("CPhysBox", "m_flTouchOutputPerEntityDelay")]

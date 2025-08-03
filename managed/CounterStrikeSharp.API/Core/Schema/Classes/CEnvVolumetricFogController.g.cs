@@ -22,6 +22,14 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 	[SchemaMember("CEnvVolumetricFogController", "m_flScattering")]
 	public ref float Scattering => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogController", "m_flScattering");
 
+	// m_TintColor
+	[SchemaMember("CEnvVolumetricFogController", "m_TintColor")]
+	public Color TintColor
+	{
+		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CEnvVolumetricFogController", "m_TintColor"); }
+		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CEnvVolumetricFogController", "m_TintColor", value); }
+	}
+
 	// m_flAnisotropy
 	[SchemaMember("CEnvVolumetricFogController", "m_flAnisotropy")]
 	public ref float Anisotropy => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogController", "m_flAnisotropy");
@@ -122,10 +130,6 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 	[SchemaMember("CEnvVolumetricFogController", "m_bEnableIndirect")]
 	public ref bool EnableIndirect => ref Schema.GetRef<bool>(this.Handle, "CEnvVolumetricFogController", "m_bEnableIndirect");
 
-	// m_bIndirectUseLPVs
-	[SchemaMember("CEnvVolumetricFogController", "m_bIndirectUseLPVs")]
-	public ref bool IndirectUseLPVs => ref Schema.GetRef<bool>(this.Handle, "CEnvVolumetricFogController", "m_bIndirectUseLPVs");
-
 	// m_bIsMaster
 	[SchemaMember("CEnvVolumetricFogController", "m_bIsMaster")]
 	public ref bool IsMaster => ref Schema.GetRef<bool>(this.Handle, "CEnvVolumetricFogController", "m_bIsMaster");
@@ -149,6 +153,14 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 	// m_vNoiseScale
 	[SchemaMember("CEnvVolumetricFogController", "m_vNoiseScale")]
 	public Vector NoiseScale => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvVolumetricFogController", "m_vNoiseScale");
+
+	// m_fWindSpeed
+	[SchemaMember("CEnvVolumetricFogController", "m_fWindSpeed")]
+	public ref float WindSpeed => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogController", "m_fWindSpeed");
+
+	// m_vWindDirection
+	[SchemaMember("CEnvVolumetricFogController", "m_vWindDirection")]
+	public Vector WindDirection => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvVolumetricFogController", "m_vWindDirection");
 
 	// m_bFirstTime
 	[SchemaMember("CEnvVolumetricFogController", "m_bFirstTime")]

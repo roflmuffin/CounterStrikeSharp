@@ -18,6 +18,10 @@ public partial class CPathSimple : CBaseEntity
 {
     public CPathSimple (IntPtr pointer) : base(pointer) {}
 
+	// m_CPathQueryComponent
+	[SchemaMember("CPathSimple", "m_CPathQueryComponent")]
+	public CPathQueryComponent CPathQueryComponent => Schema.GetDeclaredClass<CPathQueryComponent>(this.Handle, "CPathSimple", "m_CPathQueryComponent");
+
 	// m_pathString
 	[SchemaMember("CPathSimple", "m_pathString")]
 	public string PathString
@@ -25,5 +29,9 @@ public partial class CPathSimple : CBaseEntity
 		get { return Schema.GetUtf8String(this.Handle, "CPathSimple", "m_pathString"); }
 		set { Schema.SetString(this.Handle, "CPathSimple", "m_pathString", value); }
 	}
+
+	// m_bClosedLoop
+	[SchemaMember("CPathSimple", "m_bClosedLoop")]
+	public ref bool ClosedLoop => ref Schema.GetRef<bool>(this.Handle, "CPathSimple", "m_bClosedLoop");
 
 }
