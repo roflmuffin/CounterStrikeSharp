@@ -734,19 +734,27 @@ static void UserMessageSend(ScriptContext& scriptContext)
 {
     auto message = scriptContext.GetArgument<UserMessage*>(0);
 
-    CRecipientFilter filter{};
-    filter.AddRecipientsFromMask(message->GetRecipientMask() ? *message->GetRecipientMask() : 0);
-
     // This is for calling send in a UM hook, if calling normal send using the UM instance from the UM hook, it will cause an inifinite
     // loop, then crashing the server
-    static void (IGameEventSystem::*PostEventAbstract)(CSplitScreenSlot, bool, IRecipientFilter*, INetworkMessageInternal*,
-                                                       const CNetMessage*, unsigned long) = &IGameEventSystem::PostEventAbstract;
+    static void (IGameEventSystem::*PostEventAbstract)(CSplitScreenSlot, bool, int, const uint64*, INetworkMessageInternal*,
+                                                       const CNetMessage*, unsigned long, NetChannelBufType_t) =
+        &IGameEventSystem::PostEventAbstract;
 
-    if (message->IsManuallyAllocated())
-        globals::gameEventSystem->PostEventAbstract(0, false, &filter, message->GetSerializableMessage(), message->GetProtobufMessage(), 0);
-    else
-        SH_CALL(globals::gameEventSystem, PostEventAbstract)(0, false, &filter, message->GetSerializableMessage(),
-                                                             message->GetProtobufMessage(), 0);
+    // @hack Swap this back to CRecipientFilter when that is properly reversed so we don't have to do this crappy loop hack
+    std::vector<CPlayerSlot> recipients;
+    uint64 recipientMask = message->GetRecipientMask() ? *message->GetRecipientMask() : 0;
+    for (int i = 0; i < 64; i++)
+    {
+        if (recipientMask & ((uint64)1 << i))
+        {
+            if (message->IsManuallyAllocated())
+                globals::gameEventSystem->PostEventAbstract(i, false, 1, &recipientMask, message->GetSerializableMessage(),
+                                                            message->GetProtobufMessage(), 0, NetChannelBufType_t::BUF_RELIABLE);
+            else
+                SH_CALL(globals::gameEventSystem, PostEventAbstract)(i, false, 1, &recipientMask, message->GetSerializableMessage(),
+                                                                     message->GetProtobufMessage(), 0, NetChannelBufType_t::BUF_RELIABLE);
+        }
+    }
 }
 
 static void UserMessageDelete(ScriptContext& scriptContext)
