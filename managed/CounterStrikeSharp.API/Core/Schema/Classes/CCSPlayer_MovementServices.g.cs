@@ -78,10 +78,6 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 	[SchemaMember("CCSPlayer_MovementServices", "m_bInStuckTest")]
 	public ref bool InStuckTest => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bInStuckTest");
 
-	// m_flStuckCheckTime
-	[SchemaMember("CCSPlayer_MovementServices", "m_flStuckCheckTime")]
-	public Span<float[]> StuckCheckTime => Schema.GetFixedArray<float[]>(this.Handle, "CCSPlayer_MovementServices", "m_flStuckCheckTime", 2);
-
 	// m_nTraceCount
 	[SchemaMember("CCSPlayer_MovementServices", "m_nTraceCount")]
 	public ref Int32 TraceCount => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_nTraceCount");
@@ -177,5 +173,13 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 	// m_flAccumulatedJumpError
 	[SchemaMember("CCSPlayer_MovementServices", "m_flAccumulatedJumpError")]
 	public ref float AccumulatedJumpError => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flAccumulatedJumpError");
+
+	// m_flTicksSinceLastSurfingDetected
+	[SchemaMember("CCSPlayer_MovementServices", "m_flTicksSinceLastSurfingDetected")]
+	public ref float TicksSinceLastSurfingDetected => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flTicksSinceLastSurfingDetected");
+
+	// m_bWasSurfing
+	[SchemaMember("CCSPlayer_MovementServices", "m_bWasSurfing")]
+	public ref bool WasSurfing => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bWasSurfing");
 
 }

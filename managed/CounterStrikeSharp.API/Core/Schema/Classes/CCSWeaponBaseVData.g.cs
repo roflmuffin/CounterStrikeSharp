@@ -26,6 +26,14 @@ public partial class CCSWeaponBaseVData : CBasePlayerWeaponVData
 	[SchemaMember("CCSWeaponBaseVData", "m_WeaponCategory")]
 	public ref CSWeaponCategory WeaponCategory => ref Schema.GetRef<CSWeaponCategory>(this.Handle, "CCSWeaponBaseVData", "m_WeaponCategory");
 
+	// m_vecMuzzlePos0
+	[SchemaMember("CCSWeaponBaseVData", "m_vecMuzzlePos0")]
+	public Vector MuzzlePos0 => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSWeaponBaseVData", "m_vecMuzzlePos0");
+
+	// m_vecMuzzlePos1
+	[SchemaMember("CCSWeaponBaseVData", "m_vecMuzzlePos1")]
+	public Vector MuzzlePos1 => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSWeaponBaseVData", "m_vecMuzzlePos1");
+
 	// m_GearSlot
 	[SchemaMember("CCSWeaponBaseVData", "m_GearSlot")]
 	public ref gear_slot_t GearSlot => ref Schema.GetRef<gear_slot_t>(this.Handle, "CCSWeaponBaseVData", "m_GearSlot");
@@ -37,14 +45,6 @@ public partial class CCSWeaponBaseVData : CBasePlayerWeaponVData
 	// m_DefaultLoadoutSlot
 	[SchemaMember("CCSWeaponBaseVData", "m_DefaultLoadoutSlot")]
 	public ref loadout_slot_t DefaultLoadoutSlot => ref Schema.GetRef<loadout_slot_t>(this.Handle, "CCSWeaponBaseVData", "m_DefaultLoadoutSlot");
-
-	// m_sWrongTeamMsg
-	[SchemaMember("CCSWeaponBaseVData", "m_sWrongTeamMsg")]
-	public string WrongTeamMsg
-	{
-		get { return Schema.GetUtf8String(this.Handle, "CCSWeaponBaseVData", "m_sWrongTeamMsg"); }
-		set { Schema.SetString(this.Handle, "CCSWeaponBaseVData", "m_sWrongTeamMsg", value); }
-	}
 
 	// m_nPrice
 	[SchemaMember("CCSWeaponBaseVData", "m_nPrice")]
@@ -86,14 +86,6 @@ public partial class CCSWeaponBaseVData : CBasePlayerWeaponVData
 		set { Schema.SetString(this.Handle, "CCSWeaponBaseVData", "m_szName", value); }
 	}
 
-	// m_szAnimExtension
-	[SchemaMember("CCSWeaponBaseVData", "m_szAnimExtension")]
-	public string AnimExtension
-	{
-		get { return Schema.GetUtf8String(this.Handle, "CCSWeaponBaseVData", "m_szAnimExtension"); }
-		set { Schema.SetString(this.Handle, "CCSWeaponBaseVData", "m_szAnimExtension", value); }
-	}
-
 	// m_eSilencerType
 	[SchemaMember("CCSWeaponBaseVData", "m_eSilencerType")]
 	public ref CSWeaponSilencerType SilencerType => ref Schema.GetRef<CSWeaponSilencerType>(this.Handle, "CCSWeaponBaseVData", "m_eSilencerType");
@@ -113,6 +105,10 @@ public partial class CCSWeaponBaseVData : CBasePlayerWeaponVData
 	// m_nNumBullets
 	[SchemaMember("CCSWeaponBaseVData", "m_nNumBullets")]
 	public ref Int32 NumBullets => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseVData", "m_nNumBullets");
+
+	// m_bReloadsSingleShells
+	[SchemaMember("CCSWeaponBaseVData", "m_bReloadsSingleShells")]
+	public ref bool ReloadsSingleShells => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBaseVData", "m_bReloadsSingleShells");
 
 	// m_flCycleTime
 	[SchemaMember("CCSWeaponBaseVData", "m_flCycleTime")]
@@ -186,6 +182,14 @@ public partial class CCSWeaponBaseVData : CBasePlayerWeaponVData
 	[SchemaMember("CCSWeaponBaseVData", "m_flInaccuracyReload")]
 	public ref float InaccuracyReload => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flInaccuracyReload");
 
+	// m_flDeployDuration
+	[SchemaMember("CCSWeaponBaseVData", "m_flDeployDuration")]
+	public ref float DeployDuration => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flDeployDuration");
+
+	// m_flDisallowAttackAfterReloadStartDuration
+	[SchemaMember("CCSWeaponBaseVData", "m_flDisallowAttackAfterReloadStartDuration")]
+	public ref float DisallowAttackAfterReloadStartDuration => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flDisallowAttackAfterReloadStartDuration");
+
 	// m_nRecoilSeed
 	[SchemaMember("CCSWeaponBaseVData", "m_nRecoilSeed")]
 	public ref Int32 RecoilSeed => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseVData", "m_nRecoilSeed");
@@ -194,21 +198,9 @@ public partial class CCSWeaponBaseVData : CBasePlayerWeaponVData
 	[SchemaMember("CCSWeaponBaseVData", "m_nSpreadSeed")]
 	public ref Int32 SpreadSeed => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseVData", "m_nSpreadSeed");
 
-	// m_flTimeToIdleAfterFire
-	[SchemaMember("CCSWeaponBaseVData", "m_flTimeToIdleAfterFire")]
-	public ref float TimeToIdleAfterFire => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flTimeToIdleAfterFire");
-
-	// m_flIdleInterval
-	[SchemaMember("CCSWeaponBaseVData", "m_flIdleInterval")]
-	public ref float IdleInterval => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flIdleInterval");
-
 	// m_flAttackMovespeedFactor
 	[SchemaMember("CCSWeaponBaseVData", "m_flAttackMovespeedFactor")]
 	public ref float AttackMovespeedFactor => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flAttackMovespeedFactor");
-
-	// m_flHeatPerShot
-	[SchemaMember("CCSWeaponBaseVData", "m_flHeatPerShot")]
-	public ref float HeatPerShot => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flHeatPerShot");
 
 	// m_flInaccuracyPitchShift
 	[SchemaMember("CCSWeaponBaseVData", "m_flInaccuracyPitchShift")]
@@ -217,10 +209,6 @@ public partial class CCSWeaponBaseVData : CBasePlayerWeaponVData
 	// m_flInaccuracyAltSoundThreshold
 	[SchemaMember("CCSWeaponBaseVData", "m_flInaccuracyAltSoundThreshold")]
 	public ref float InaccuracyAltSoundThreshold => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flInaccuracyAltSoundThreshold");
-
-	// m_flBotAudibleRange
-	[SchemaMember("CCSWeaponBaseVData", "m_flBotAudibleRange")]
-	public ref float BotAudibleRange => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flBotAudibleRange");
 
 	// m_szUseRadioSubtitle
 	[SchemaMember("CCSWeaponBaseVData", "m_szUseRadioSubtitle")]
@@ -281,14 +269,6 @@ public partial class CCSWeaponBaseVData : CBasePlayerWeaponVData
 	// m_flIronSightLooseness
 	[SchemaMember("CCSWeaponBaseVData", "m_flIronSightLooseness")]
 	public ref float IronSightLooseness => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flIronSightLooseness");
-
-	// m_angPivotAngle
-	[SchemaMember("CCSWeaponBaseVData", "m_angPivotAngle")]
-	public QAngle PivotAngle => Schema.GetDeclaredClass<QAngle>(this.Handle, "CCSWeaponBaseVData", "m_angPivotAngle");
-
-	// m_vecIronSightEyePos
-	[SchemaMember("CCSWeaponBaseVData", "m_vecIronSightEyePos")]
-	public Vector IronSightEyePos => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSWeaponBaseVData", "m_vecIronSightEyePos");
 
 	// m_nDamage
 	[SchemaMember("CCSWeaponBaseVData", "m_nDamage")]

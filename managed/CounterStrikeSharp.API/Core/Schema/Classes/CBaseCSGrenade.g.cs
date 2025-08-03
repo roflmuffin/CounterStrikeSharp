@@ -46,10 +46,6 @@ public partial class CBaseCSGrenade : CCSWeaponBase
 	[SchemaMember("CBaseCSGrenade", "m_flThrowStrength")]
 	public ref float ThrowStrength => ref Schema.GetRef<float>(this.Handle, "CBaseCSGrenade", "m_flThrowStrength");
 
-	// m_flThrowStrengthApproach
-	[SchemaMember("CBaseCSGrenade", "m_flThrowStrengthApproach")]
-	public ref float ThrowStrengthApproach => ref Schema.GetRef<float>(this.Handle, "CBaseCSGrenade", "m_flThrowStrengthApproach");
-
 	// m_fDropTime
 	[SchemaMember("CBaseCSGrenade", "m_fDropTime")]
 	public ref float DropTime => ref Schema.GetRef<float>(this.Handle, "CBaseCSGrenade", "m_fDropTime");

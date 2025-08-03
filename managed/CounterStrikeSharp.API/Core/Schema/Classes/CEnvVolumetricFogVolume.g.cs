@@ -34,6 +34,10 @@ public partial class CEnvVolumetricFogVolume : CBaseEntity
 	[SchemaMember("CEnvVolumetricFogVolume", "m_bStartDisabled")]
 	public ref bool StartDisabled => ref Schema.GetRef<bool>(this.Handle, "CEnvVolumetricFogVolume", "m_bStartDisabled");
 
+	// m_bIndirectUseLPVs
+	[SchemaMember("CEnvVolumetricFogVolume", "m_bIndirectUseLPVs")]
+	public ref bool IndirectUseLPVs => ref Schema.GetRef<bool>(this.Handle, "CEnvVolumetricFogVolume", "m_bIndirectUseLPVs");
+
 	// m_flStrength
 	[SchemaMember("CEnvVolumetricFogVolume", "m_flStrength")]
 	public ref float Strength => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogVolume", "m_flStrength");
@@ -66,6 +70,18 @@ public partial class CEnvVolumetricFogVolume : CBaseEntity
 	[SchemaMember("CEnvVolumetricFogVolume", "m_fNoiseStrength")]
 	public ref float NoiseStrength => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogVolume", "m_fNoiseStrength");
 
+	// m_TintColor
+	[SchemaMember("CEnvVolumetricFogVolume", "m_TintColor")]
+	public Color TintColor
+	{
+		get { return Schema.GetCustomMarshalledType<Color>(this.Handle, "CEnvVolumetricFogVolume", "m_TintColor"); }
+		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CEnvVolumetricFogVolume", "m_TintColor", value); }
+	}
+
+	// m_bOverrideTintColor
+	[SchemaMember("CEnvVolumetricFogVolume", "m_bOverrideTintColor")]
+	public ref bool OverrideTintColor => ref Schema.GetRef<bool>(this.Handle, "CEnvVolumetricFogVolume", "m_bOverrideTintColor");
+
 	// m_bOverrideIndirectLightStrength
 	[SchemaMember("CEnvVolumetricFogVolume", "m_bOverrideIndirectLightStrength")]
 	public ref bool OverrideIndirectLightStrength => ref Schema.GetRef<bool>(this.Handle, "CEnvVolumetricFogVolume", "m_bOverrideIndirectLightStrength");
@@ -77,9 +93,5 @@ public partial class CEnvVolumetricFogVolume : CBaseEntity
 	// m_bOverrideNoiseStrength
 	[SchemaMember("CEnvVolumetricFogVolume", "m_bOverrideNoiseStrength")]
 	public ref bool OverrideNoiseStrength => ref Schema.GetRef<bool>(this.Handle, "CEnvVolumetricFogVolume", "m_bOverrideNoiseStrength");
-
-	// m_bAllowLPVIndirect
-	[SchemaMember("CEnvVolumetricFogVolume", "m_bAllowLPVIndirect")]
-	public ref bool AllowLPVIndirect => ref Schema.GetRef<bool>(this.Handle, "CEnvVolumetricFogVolume", "m_bAllowLPVIndirect");
 
 }

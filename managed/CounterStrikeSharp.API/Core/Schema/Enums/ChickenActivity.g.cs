@@ -17,4 +17,6 @@ public enum ChickenActivity : uint
 	PANIC = 0x6,
 	TRICK = 0x7,
 	TURN_IN_PLACE = 0x8,
+	FEED = 0x9,
+	SLEEP = 0xA,
 }

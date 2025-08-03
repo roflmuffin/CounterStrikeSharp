@@ -14,7 +14,7 @@ public enum NmEventConditionRules_t : byte
 	PreferHighestProgress = 0x3,
 	OperatorOr = 0x4,
 	OperatorAnd = 0x5,
-	SearchOnlyStateEvents = 0x6,
+	SearchOnlyGraphEvents = 0x6,
 	SearchOnlyAnimEvents = 0x7,
-	SearchBothStateAndAnimEvents = 0x8,
+	SearchBothGraphAndAnimEvents = 0x8,
 }

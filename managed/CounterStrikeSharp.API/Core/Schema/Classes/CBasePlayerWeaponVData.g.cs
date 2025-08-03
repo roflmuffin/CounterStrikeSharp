@@ -26,6 +26,18 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 	[SchemaMember("CBasePlayerWeaponVData", "m_bAllowFlipping")]
 	public ref bool AllowFlipping => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bAllowFlipping");
 
+	// m_nMuzzleSmokeShotThreshold
+	[SchemaMember("CBasePlayerWeaponVData", "m_nMuzzleSmokeShotThreshold")]
+	public ref byte MuzzleSmokeShotThreshold => ref Schema.GetRef<byte>(this.Handle, "CBasePlayerWeaponVData", "m_nMuzzleSmokeShotThreshold");
+
+	// m_flMuzzleSmokeTimeout
+	[SchemaMember("CBasePlayerWeaponVData", "m_flMuzzleSmokeTimeout")]
+	public ref float MuzzleSmokeTimeout => ref Schema.GetRef<float>(this.Handle, "CBasePlayerWeaponVData", "m_flMuzzleSmokeTimeout");
+
+	// m_flMuzzleSmokeDecrementRate
+	[SchemaMember("CBasePlayerWeaponVData", "m_flMuzzleSmokeDecrementRate")]
+	public ref float MuzzleSmokeDecrementRate => ref Schema.GetRef<float>(this.Handle, "CBasePlayerWeaponVData", "m_flMuzzleSmokeDecrementRate");
+
 	// m_bLinkedCooldowns
 	[SchemaMember("CBasePlayerWeaponVData", "m_bLinkedCooldowns")]
 	public ref bool LinkedCooldowns => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bLinkedCooldowns");
@@ -62,6 +74,10 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 	[SchemaMember("CBasePlayerWeaponVData", "m_bReserveAmmoAsClips")]
 	public ref bool ReserveAmmoAsClips => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bReserveAmmoAsClips");
 
+	// m_bTreatAsSingleClip
+	[SchemaMember("CBasePlayerWeaponVData", "m_bTreatAsSingleClip")]
+	public ref bool TreatAsSingleClip => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bTreatAsSingleClip");
+
 	// m_iWeight
 	[SchemaMember("CBasePlayerWeaponVData", "m_iWeight")]
 	public ref Int32 Weight => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iWeight");
@@ -77,6 +93,10 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 	// m_iRumbleEffect
 	[SchemaMember("CBasePlayerWeaponVData", "m_iRumbleEffect")]
 	public ref RumbleEffect_t RumbleEffect => ref Schema.GetRef<RumbleEffect_t>(this.Handle, "CBasePlayerWeaponVData", "m_iRumbleEffect");
+
+	// m_flDropSpeed
+	[SchemaMember("CBasePlayerWeaponVData", "m_flDropSpeed")]
+	public ref float DropSpeed => ref Schema.GetRef<float>(this.Handle, "CBasePlayerWeaponVData", "m_flDropSpeed");
 
 	// m_iSlot
 	[SchemaMember("CBasePlayerWeaponVData", "m_iSlot")]

@@ -26,13 +26,33 @@ public partial class CPhysMotor : CLogicalEntity
 		set { Schema.SetString(this.Handle, "CPhysMotor", "m_nameAttach", value); }
 	}
 
+	// m_nameAnchor
+	[SchemaMember("CPhysMotor", "m_nameAnchor")]
+	public string NameAnchor
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CPhysMotor", "m_nameAnchor"); }
+		set { Schema.SetString(this.Handle, "CPhysMotor", "m_nameAnchor", value); }
+	}
+
 	// m_hAttachedObject
 	[SchemaMember("CPhysMotor", "m_hAttachedObject")]
 	public CHandle<CBaseEntity> AttachedObject => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysMotor", "m_hAttachedObject");
 
+	// m_hAnchorObject
+	[SchemaMember("CPhysMotor", "m_hAnchorObject")]
+	public CHandle<CBaseEntity> AnchorObject => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysMotor", "m_hAnchorObject");
+
 	// m_spinUp
 	[SchemaMember("CPhysMotor", "m_spinUp")]
 	public ref float SpinUp => ref Schema.GetRef<float>(this.Handle, "CPhysMotor", "m_spinUp");
+
+	// m_spinDown
+	[SchemaMember("CPhysMotor", "m_spinDown")]
+	public ref float SpinDown => ref Schema.GetRef<float>(this.Handle, "CPhysMotor", "m_spinDown");
+
+	// m_flMotorFriction
+	[SchemaMember("CPhysMotor", "m_flMotorFriction")]
+	public ref float MotorFriction => ref Schema.GetRef<float>(this.Handle, "CPhysMotor", "m_flMotorFriction");
 
 	// m_additionalAcceleration
 	[SchemaMember("CPhysMotor", "m_additionalAcceleration")]
@@ -42,9 +62,17 @@ public partial class CPhysMotor : CLogicalEntity
 	[SchemaMember("CPhysMotor", "m_angularAcceleration")]
 	public ref float AngularAcceleration => ref Schema.GetRef<float>(this.Handle, "CPhysMotor", "m_angularAcceleration");
 
-	// m_lastTime
-	[SchemaMember("CPhysMotor", "m_lastTime")]
-	public ref float LastTime => ref Schema.GetRef<float>(this.Handle, "CPhysMotor", "m_lastTime");
+	// m_flTorqueScale
+	[SchemaMember("CPhysMotor", "m_flTorqueScale")]
+	public ref float TorqueScale => ref Schema.GetRef<float>(this.Handle, "CPhysMotor", "m_flTorqueScale");
+
+	// m_flTargetSpeed
+	[SchemaMember("CPhysMotor", "m_flTargetSpeed")]
+	public ref float TargetSpeed => ref Schema.GetRef<float>(this.Handle, "CPhysMotor", "m_flTargetSpeed");
+
+	// m_flSpeedWhenSpinUpOrSpinDownStarted
+	[SchemaMember("CPhysMotor", "m_flSpeedWhenSpinUpOrSpinDownStarted")]
+	public ref float SpeedWhenSpinUpOrSpinDownStarted => ref Schema.GetRef<float>(this.Handle, "CPhysMotor", "m_flSpeedWhenSpinUpOrSpinDownStarted");
 
 	// m_motor
 	[SchemaMember("CPhysMotor", "m_motor")]

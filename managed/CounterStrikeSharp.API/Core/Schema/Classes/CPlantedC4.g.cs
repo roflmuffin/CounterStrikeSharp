@@ -98,10 +98,6 @@ public partial class CPlantedC4 : CBaseAnimGraph
 	[SchemaMember("CPlantedC4", "m_hBombDefuser")]
 	public CHandle<CCSPlayerPawn> BombDefuser => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CPlantedC4", "m_hBombDefuser");
 
-	// m_hControlPanel
-	[SchemaMember("CPlantedC4", "m_hControlPanel")]
-	public CHandle<CBaseEntity> ControlPanel => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPlantedC4", "m_hControlPanel");
-
 	// m_iProgressBarTime
 	[SchemaMember("CPlantedC4", "m_iProgressBarTime")]
 	public ref Int32 ProgressBarTime => ref Schema.GetRef<Int32>(this.Handle, "CPlantedC4", "m_iProgressBarTime");

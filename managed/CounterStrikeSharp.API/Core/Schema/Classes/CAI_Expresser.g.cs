@@ -26,6 +26,10 @@ public partial class CAI_Expresser : NativeObject
 	[SchemaMember("CAI_Expresser", "m_flStopTalkTimeWithoutDelay")]
 	public ref float StopTalkTimeWithoutDelay => ref Schema.GetRef<float>(this.Handle, "CAI_Expresser", "m_flStopTalkTimeWithoutDelay");
 
+	// m_flQueuedSpeechTime
+	[SchemaMember("CAI_Expresser", "m_flQueuedSpeechTime")]
+	public ref float QueuedSpeechTime => ref Schema.GetRef<float>(this.Handle, "CAI_Expresser", "m_flQueuedSpeechTime");
+
 	// m_flBlockedTalkTime
 	[SchemaMember("CAI_Expresser", "m_flBlockedTalkTime")]
 	public ref float BlockedTalkTime => ref Schema.GetRef<float>(this.Handle, "CAI_Expresser", "m_flBlockedTalkTime");

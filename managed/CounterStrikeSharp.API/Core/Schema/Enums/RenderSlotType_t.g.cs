@@ -6,9 +6,9 @@ using System;
 
 namespace CounterStrikeSharp.API.Core;
 
-public enum RenderSlotType_t : uint
+public enum RenderSlotType_t : byte
 {
-	RENDER_SLOT_INVALID = 0xFFFFFFFF,
+	RENDER_SLOT_INVALID = 0xFF,
 	RENDER_SLOT_PER_VERTEX = 0x0,
 	RENDER_SLOT_PER_INSTANCE = 0x1,
 }

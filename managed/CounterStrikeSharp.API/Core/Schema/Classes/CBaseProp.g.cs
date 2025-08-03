@@ -32,6 +32,6 @@ public partial class CBaseProp : CBaseAnimGraph
 
 	// m_mPreferredCatchTransform
 	[SchemaMember("CBaseProp", "m_mPreferredCatchTransform")]
-	public matrix3x4_t MPreferredCatchTransform => Schema.GetDeclaredClass<matrix3x4_t>(this.Handle, "CBaseProp", "m_mPreferredCatchTransform");
+	public CTransform MPreferredCatchTransform => Schema.GetDeclaredClass<CTransform>(this.Handle, "CBaseProp", "m_mPreferredCatchTransform");
 
 }

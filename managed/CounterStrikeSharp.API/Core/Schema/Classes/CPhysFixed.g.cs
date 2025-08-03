@@ -42,4 +42,20 @@ public partial class CPhysFixed : CPhysConstraint
 	[SchemaMember("CPhysFixed", "m_bEnableAngularConstraint")]
 	public ref bool EnableAngularConstraint => ref Schema.GetRef<bool>(this.Handle, "CPhysFixed", "m_bEnableAngularConstraint");
 
+	// m_sBoneName1
+	[SchemaMember("CPhysFixed", "m_sBoneName1")]
+	public string BoneName1
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CPhysFixed", "m_sBoneName1"); }
+		set { Schema.SetString(this.Handle, "CPhysFixed", "m_sBoneName1", value); }
+	}
+
+	// m_sBoneName2
+	[SchemaMember("CPhysFixed", "m_sBoneName2")]
+	public string BoneName2
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CPhysFixed", "m_sBoneName2"); }
+		set { Schema.SetString(this.Handle, "CPhysFixed", "m_sBoneName2", value); }
+	}
+
 }

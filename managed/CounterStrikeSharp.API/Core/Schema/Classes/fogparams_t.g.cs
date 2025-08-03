@@ -126,9 +126,9 @@ public partial class fogparams_t : NativeObject
 	[SchemaMember("fogparams_t", "blend")]
 	public ref bool Blend => ref Schema.GetRef<bool>(this.Handle, "fogparams_t", "blend");
 
-	// m_bNoReflectionFog
-	[SchemaMember("fogparams_t", "m_bNoReflectionFog")]
-	public ref bool NoReflectionFog => ref Schema.GetRef<bool>(this.Handle, "fogparams_t", "m_bNoReflectionFog");
+	// m_bPadding2
+	[SchemaMember("fogparams_t", "m_bPadding2")]
+	public ref bool Padding2 => ref Schema.GetRef<bool>(this.Handle, "fogparams_t", "m_bPadding2");
 
 	// m_bPadding
 	[SchemaMember("fogparams_t", "m_bPadding")]

@@ -30,4 +30,8 @@ public partial class ragdollelement_t : NativeObject
 	[SchemaMember("ragdollelement_t", "m_flRadius")]
 	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "ragdollelement_t", "m_flRadius");
 
+	// m_nHeight
+	[SchemaMember("ragdollelement_t", "m_nHeight")]
+	public ref Int32 Height => ref Schema.GetRef<Int32>(this.Handle, "ragdollelement_t", "m_nHeight");
+
 }

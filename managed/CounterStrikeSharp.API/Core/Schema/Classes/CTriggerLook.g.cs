@@ -62,6 +62,10 @@ public partial class CTriggerLook : CTriggerOnce
 	[SchemaMember("CTriggerLook", "m_bTestOcclusion")]
 	public ref bool TestOcclusion => ref Schema.GetRef<bool>(this.Handle, "CTriggerLook", "m_bTestOcclusion");
 
+	// m_bTestAllVisibleOcclusion
+	[SchemaMember("CTriggerLook", "m_bTestAllVisibleOcclusion")]
+	public ref bool TestAllVisibleOcclusion => ref Schema.GetRef<bool>(this.Handle, "CTriggerLook", "m_bTestAllVisibleOcclusion");
+
 	// m_OnTimeout
 	[SchemaMember("CTriggerLook", "m_OnTimeout")]
 	public CEntityIOOutput OnTimeout => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerLook", "m_OnTimeout");

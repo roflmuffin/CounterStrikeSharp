@@ -8,7 +8,7 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum CSWeaponType : uint
 {
-  WEAPONTYPE_KNIFE = 0x0,
+	WEAPONTYPE_KNIFE = 0x0,
 	WEAPONTYPE_PISTOL = 0x1,
 	WEAPONTYPE_SUBMACHINEGUN = 0x2,
 	WEAPONTYPE_RIFLE = 0x3,

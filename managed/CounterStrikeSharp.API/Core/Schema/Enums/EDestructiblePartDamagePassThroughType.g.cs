@@ -10,4 +10,5 @@ public enum EDestructiblePartDamagePassThroughType : uint
 {
 	Normal = 0x0,
 	Absorb = 0x1,
+	InvinciblePassthrough = 0x2,
 }

@@ -74,6 +74,10 @@ public partial class CPlayer_MovementServices : CPlayerPawnComponent
 	[SchemaMember("CPlayer_MovementServices", "m_vecLastMovementImpulses")]
 	public Vector LastMovementImpulses => Schema.GetDeclaredClass<Vector>(this.Handle, "CPlayer_MovementServices", "m_vecLastMovementImpulses");
 
+	// m_vecLastFinishTickViewAngles
+	[SchemaMember("CPlayer_MovementServices", "m_vecLastFinishTickViewAngles")]
+	public QAngle LastFinishTickViewAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPlayer_MovementServices", "m_vecLastFinishTickViewAngles");
+
 	// m_vecOldViewAngles
 	[SchemaMember("CPlayer_MovementServices", "m_vecOldViewAngles")]
 	public QAngle OldViewAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPlayer_MovementServices", "m_vecOldViewAngles");

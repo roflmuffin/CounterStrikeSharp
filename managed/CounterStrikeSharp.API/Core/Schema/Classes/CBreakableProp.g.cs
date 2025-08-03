@@ -22,6 +22,10 @@ public partial class CBreakableProp : CBaseProp
 	[SchemaMember("CBreakableProp", "m_CPropDataComponent")]
 	public CPropDataComponent CPropDataComponent => Schema.GetDeclaredClass<CPropDataComponent>(this.Handle, "CBreakableProp", "m_CPropDataComponent");
 
+	// m_OnStartDeath
+	[SchemaMember("CBreakableProp", "m_OnStartDeath")]
+	public CEntityIOOutput OnStartDeath => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBreakableProp", "m_OnStartDeath");
+
 	// m_OnBreak
 	[SchemaMember("CBreakableProp", "m_OnBreak")]
 	public CEntityIOOutput OnBreak => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBreakableProp", "m_OnBreak");
@@ -142,10 +146,6 @@ public partial class CBreakableProp : CBaseProp
 	[SchemaMember("CBreakableProp", "m_flLastPhysicsInfluenceTime")]
 	public ref float LastPhysicsInfluenceTime => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_flLastPhysicsInfluenceTime");
 
-	// m_bOriginalBlockLOS
-	[SchemaMember("CBreakableProp", "m_bOriginalBlockLOS")]
-	public ref bool OriginalBlockLOS => ref Schema.GetRef<bool>(this.Handle, "CBreakableProp", "m_bOriginalBlockLOS");
-
 	// m_flDefaultFadeScale
 	[SchemaMember("CBreakableProp", "m_flDefaultFadeScale")]
 	public ref float DefaultFadeScale => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_flDefaultFadeScale");
@@ -153,14 +153,6 @@ public partial class CBreakableProp : CBaseProp
 	// m_hLastAttacker
 	[SchemaMember("CBreakableProp", "m_hLastAttacker")]
 	public CHandle<CBaseEntity> LastAttacker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBreakableProp", "m_hLastAttacker");
-
-	// m_hFlareEnt
-	[SchemaMember("CBreakableProp", "m_hFlareEnt")]
-	public CHandle<CBaseEntity> FlareEnt => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBreakableProp", "m_hFlareEnt");
-
-	// m_bUsePuntSound
-	[SchemaMember("CBreakableProp", "m_bUsePuntSound")]
-	public ref bool UsePuntSound => ref Schema.GetRef<bool>(this.Handle, "CBreakableProp", "m_bUsePuntSound");
 
 	// m_iszPuntSound
 	[SchemaMember("CBreakableProp", "m_iszPuntSound")]
@@ -170,8 +162,12 @@ public partial class CBreakableProp : CBaseProp
 		set { Schema.SetString(this.Handle, "CBreakableProp", "m_iszPuntSound", value); }
 	}
 
-	// m_noGhostCollision
-	[SchemaMember("CBreakableProp", "m_noGhostCollision")]
-	public ref bool NoGhostCollision => ref Schema.GetRef<bool>(this.Handle, "CBreakableProp", "m_noGhostCollision");
+	// m_bUsePuntSound
+	[SchemaMember("CBreakableProp", "m_bUsePuntSound")]
+	public ref bool UsePuntSound => ref Schema.GetRef<bool>(this.Handle, "CBreakableProp", "m_bUsePuntSound");
+
+	// m_bOriginalBlockLOS
+	[SchemaMember("CBreakableProp", "m_bOriginalBlockLOS")]
+	public ref bool OriginalBlockLOS => ref Schema.GetRef<bool>(this.Handle, "CBreakableProp", "m_bOriginalBlockLOS");
 
 }

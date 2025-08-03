@@ -18,10 +18,6 @@ public partial class CColorCorrectionVolume : CBaseTrigger
 {
     public CColorCorrectionVolume (IntPtr pointer) : base(pointer) {}
 
-	// m_bEnabled
-	[SchemaMember("CColorCorrectionVolume", "m_bEnabled")]
-	public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CColorCorrectionVolume", "m_bEnabled");
-
 	// m_MaxWeight
 	[SchemaMember("CColorCorrectionVolume", "m_MaxWeight")]
 	public ref float MaxWeight => ref Schema.GetRef<float>(this.Handle, "CColorCorrectionVolume", "m_MaxWeight");
@@ -29,10 +25,6 @@ public partial class CColorCorrectionVolume : CBaseTrigger
 	// m_FadeDuration
 	[SchemaMember("CColorCorrectionVolume", "m_FadeDuration")]
 	public ref float FadeDuration => ref Schema.GetRef<float>(this.Handle, "CColorCorrectionVolume", "m_FadeDuration");
-
-	// m_bStartDisabled
-	[SchemaMember("CColorCorrectionVolume", "m_bStartDisabled")]
-	public ref bool StartDisabled => ref Schema.GetRef<bool>(this.Handle, "CColorCorrectionVolume", "m_bStartDisabled");
 
 	// m_Weight
 	[SchemaMember("CColorCorrectionVolume", "m_Weight")]

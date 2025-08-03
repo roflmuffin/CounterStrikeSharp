@@ -22,6 +22,10 @@ public partial class ragdoll_t : NativeObject
 	[SchemaMember("ragdoll_t", "list")]
 	public NetworkedVector<ragdollelement_t> List => Schema.GetDeclaredClass<NetworkedVector<ragdollelement_t>>(this.Handle, "ragdoll_t", "list");
 
+	// hierarchyJoints
+	[SchemaMember("ragdoll_t", "hierarchyJoints")]
+	public NetworkedVector<ragdollhierarchyjoint_t> HierarchyJoints => Schema.GetDeclaredClass<NetworkedVector<ragdollhierarchyjoint_t>>(this.Handle, "ragdoll_t", "hierarchyJoints");
+
 	// boneIndex
 	[SchemaMember("ragdoll_t", "boneIndex")]
 	public NetworkedVector<Int32> BoneIndex => Schema.GetDeclaredClass<NetworkedVector<Int32>>(this.Handle, "ragdoll_t", "boneIndex");

@@ -11,5 +11,4 @@ public enum CNmTimeConditionNodeComparisonType_t : byte
 	PercentageThroughState = 0x0,
 	PercentageThroughSyncEvent = 0x1,
 	ElapsedTime = 0x2,
-	LoopCount = 0x3,
 }

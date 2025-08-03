@@ -18,14 +18,6 @@ public partial class CLogicRelay : CLogicalEntity
 {
     public CLogicRelay (IntPtr pointer) : base(pointer) {}
 
-	// m_OnTrigger
-	[SchemaMember("CLogicRelay", "m_OnTrigger")]
-	public CEntityIOOutput OnTrigger => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicRelay", "m_OnTrigger");
-
-	// m_OnSpawn
-	[SchemaMember("CLogicRelay", "m_OnSpawn")]
-	public CEntityIOOutput OnSpawn => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CLogicRelay", "m_OnSpawn");
-
 	// m_bDisabled
 	[SchemaMember("CLogicRelay", "m_bDisabled")]
 	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CLogicRelay", "m_bDisabled");

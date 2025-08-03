@@ -54,10 +54,6 @@ public partial class CTakeDamageInfo : NativeObject
 	[SchemaMember("CTakeDamageInfo", "m_flTotalledDamage")]
 	public ref float TotalledDamage => ref Schema.GetRef<float>(this.Handle, "CTakeDamageInfo", "m_flTotalledDamage");
 
-	// m_flTotalledDamageAbsorbed
-	[SchemaMember("CTakeDamageInfo", "m_flTotalledDamageAbsorbed")]
-	public ref float TotalledDamageAbsorbed => ref Schema.GetRef<float>(this.Handle, "CTakeDamageInfo", "m_flTotalledDamageAbsorbed");
-
 	// m_bitsDamageType
 	[SchemaMember("CTakeDamageInfo", "m_bitsDamageType")]
 	public ref DamageTypes_t BitsDamageType => ref Schema.GetRef<DamageTypes_t>(this.Handle, "CTakeDamageInfo", "m_bitsDamageType");
@@ -89,6 +85,18 @@ public partial class CTakeDamageInfo : NativeObject
 	// m_nDamageFlags
 	[SchemaMember("CTakeDamageInfo", "m_nDamageFlags")]
 	public ref TakeDamageFlags_t DamageFlags => ref Schema.GetRef<TakeDamageFlags_t>(this.Handle, "CTakeDamageInfo", "m_nDamageFlags");
+
+	// m_sDamageSourceName
+	[SchemaMember("CTakeDamageInfo", "m_sDamageSourceName")]
+	public string DamageSourceName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CTakeDamageInfo", "m_sDamageSourceName"); }
+		set { Schema.SetString(this.Handle, "CTakeDamageInfo", "m_sDamageSourceName", value); }
+	}
+
+	// m_iHitGroupId
+	[SchemaMember("CTakeDamageInfo", "m_iHitGroupId")]
+	public ref HitGroup_t HitGroupId => ref Schema.GetRef<HitGroup_t>(this.Handle, "CTakeDamageInfo", "m_iHitGroupId");
 
 	// m_nNumObjectsPenetrated
 	[SchemaMember("CTakeDamageInfo", "m_nNumObjectsPenetrated")]

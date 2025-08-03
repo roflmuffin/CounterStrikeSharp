@@ -30,9 +30,17 @@ public partial class CBaseCombatCharacter : CBaseFlex
 	[SchemaMember("CBaseCombatCharacter", "m_impactEnergyScale")]
 	public ref float ImpactEnergyScale => ref Schema.GetRef<float>(this.Handle, "CBaseCombatCharacter", "m_impactEnergyScale");
 
+	// m_nMinVehicleDamageToTempRagdoll
+	[SchemaMember("CBaseCombatCharacter", "m_nMinVehicleDamageToTempRagdoll")]
+	public ref Int32 MinVehicleDamageToTempRagdoll => ref Schema.GetRef<Int32>(this.Handle, "CBaseCombatCharacter", "m_nMinVehicleDamageToTempRagdoll");
+
 	// m_bApplyStressDamage
 	[SchemaMember("CBaseCombatCharacter", "m_bApplyStressDamage")]
 	public ref bool ApplyStressDamage => ref Schema.GetRef<bool>(this.Handle, "CBaseCombatCharacter", "m_bApplyStressDamage");
+
+	// m_bDeathEventsDispatched
+	[SchemaMember("CBaseCombatCharacter", "m_bDeathEventsDispatched")]
+	public ref bool DeathEventsDispatched => ref Schema.GetRef<bool>(this.Handle, "CBaseCombatCharacter", "m_bDeathEventsDispatched");
 
 	// m_iDamageCount
 	[SchemaMember("CBaseCombatCharacter", "m_iDamageCount")]
@@ -53,5 +61,9 @@ public partial class CBaseCombatCharacter : CBaseFlex
 	// m_nNavHullIdx
 	[SchemaMember("CBaseCombatCharacter", "m_nNavHullIdx")]
 	public ref UInt32 NavHullIdx => ref Schema.GetRef<UInt32>(this.Handle, "CBaseCombatCharacter", "m_nNavHullIdx");
+
+	// m_movementStats
+	[SchemaMember("CBaseCombatCharacter", "m_movementStats")]
+	public CMovementStatsProperty MovementStats => Schema.GetDeclaredClass<CMovementStatsProperty>(this.Handle, "CBaseCombatCharacter", "m_movementStats");
 
 }
