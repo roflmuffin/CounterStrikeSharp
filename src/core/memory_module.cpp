@@ -610,12 +610,12 @@ void* CModule::FindSignature(const std::vector<int16_t>& sigBytes)
 
 void* CModule::FindSignatureAlternative(const std::vector<int16_t>& sigBytes)
 {
-    if (m_baseAddress == 0 || m_size == 0)
+    if (m_base == 0 || m_size == 0)
     {
         return nullptr;
     }
 
-    auto* data = reinterpret_cast<std::uint8_t*>(m_baseAddress);
+    auto* data = reinterpret_cast<std::uint8_t*>(m_base);
     const auto size = m_size;
 
     auto first_byte = sigBytes[0];
@@ -634,7 +634,7 @@ void* CModule::FindSignatureAlternative(const std::vector<int16_t>& sigBytes)
             return opt == -1 || opt == byte;
         }))
         {
-            return reinterpret_cast<void*>(current - data + m_baseAddress);
+            return reinterpret_cast<void*>(current - data + m_base);
         }
     }
 
