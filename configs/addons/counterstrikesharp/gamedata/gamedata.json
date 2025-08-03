@@ -91,8 +91,8 @@
   "GetCSWeaponDataFromKey": {
     "signatures": {
       "library": "server",
-      "windows": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC ? 33 ED 48 8B FA 8B F1",
-      "linux": "55 48 89 E5 41 54 53 48 81 EC ? ? ? ? 48 85 FF"
+      "windows": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC 20 33 ED 48 8B FA 8B F1",
+      "linux": "55 31 D2 48 89 E5 53 89 FB"
     }
   },
   "CCSPlayer_ItemServices_GiveNamedItem": {
