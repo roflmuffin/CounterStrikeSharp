@@ -253,10 +253,12 @@ void ClientPrint(ScriptContext& scriptContext)
     data->set_dest(hudDestination);
     data->add_param(message);
 
-    uint64 recipientMask = 0;
-    recipientMask |= (uint64)1 << slot;
+    CPlayerBitVec recipients;
+    recipients.Set(slot);
 
-    globals::gameEventSystem->PostEventAbstract(slot, false, 1, &recipientMask, pNetMsg, data, 0, NetChannelBufType_t::BUF_RELIABLE);
+    globals::gameEventSystem->PostEventAbstract(CSplitScreenSlot(-1), false, ABSOLUTE_PLAYER_LIMIT,
+                                                reinterpret_cast<const uint64*>(recipients.Base()), pNetMsg, data, 0,
+                                                NetChannelBufType_t::BUF_RELIABLE);
 
     delete data;
 }
