@@ -256,8 +256,7 @@ void ClientPrint(ScriptContext& scriptContext)
     uint64 recipientMask = 0;
     recipientMask |= (uint64)1 << slot;
 
-    globals::gameEventSystem->PostEventAbstract(slot, false, 1, &recipientMask, pNetMsg, data, data->ByteSizeLong(),
-                                                NetChannelBufType_t::BUF_RELIABLE);
+    globals::gameEventSystem->PostEventAbstract(slot, false, 1, &recipientMask, pNetMsg, data, 0, NetChannelBufType_t::BUF_RELIABLE);
 
     delete data;
 }
