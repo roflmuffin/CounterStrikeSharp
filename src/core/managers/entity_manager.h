@@ -231,7 +231,7 @@ struct SndOpEventGuid_t
 {
     SoundEventGuid_t m_nGuid;
     uint64 m_hStackHash;
-    uint64 pad;
+    uint64 pad; // size might be incorrect
 };
 
 class CBitRecipientFilter
@@ -248,14 +248,11 @@ class CBitRecipientFilter
 
   private:
     uint64 m_Recipients;
-    bool m_bInitMessage;
     NetChannelBufType_t m_nBufType;
+    bool m_bInitMessage;
 };
 
-inline SndOpEventGuid_t*(FASTCALL* CBaseEntity_EmitSoundFilter)(SndOpEventGuid_t& ret,
-                                                                CBitRecipientFilter& filter,
-                                                                CEntityIndex ent,
-                                                                const EmitSound_t& params);
+inline SndOpEventGuid_t(FASTCALL* CBaseEntity_EmitSoundFilter)(CBitRecipientFilter& filter, CEntityIndex ent, const EmitSound_t& params);
 
 SndOpEventGuid_t
 EntityEmitSoundFilter(CBitRecipientFilter& filter, uint32 ent, const char* pszSound, float flVolume = 1.0f, float flPitch = 1.0f);

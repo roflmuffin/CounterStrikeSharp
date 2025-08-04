@@ -326,10 +326,8 @@ SndOpEventGuid_t EntityEmitSoundFilter(CBitRecipientFilter& filter, uint32 ent, 
     params.m_pSoundName = pszSound;
     params.m_flVolume = flVolume;
     params.m_nPitch = flPitch; // not working, can't fix, i think the game abandon it
-    SndOpEventGuid_t ret;
 
-    CBaseEntity_EmitSoundFilter(ret, filter, ent, params);
-    return ret;
+    return CBaseEntity_EmitSoundFilter(filter, ent, params);
 }
 
 } // namespace counterstrikesharp
