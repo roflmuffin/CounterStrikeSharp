@@ -35,11 +35,24 @@ ChatManager::ChatManager() {}
 
 ChatManager::~ChatManager() {}
 
-void ChatManager::OnAllInitialized() {}
+void ChatManager::OnAllInitialized()
+{
+    m_pHostSay = reinterpret_cast<HostSay>(modules::server->FindSignature(globals::gameConfig->GetSignature("Host_Say")));
+
+    if (m_pHostSay == nullptr)
+    {
+        CSSHARP_CORE_ERROR("Failed to find signature for \'Host_Say\'");
+        return;
+    }
+
+    auto m_hook = funchook_create();
+    funchook_prepare(m_hook, (void**)&m_pHostSay, (void*)&DetourHostSay);
+    funchook_install(m_hook, 0);
+}
 
 void ChatManager::OnShutdown() {}
 
-bool ChatManager::OnSayCommand(CEntityInstance* pController, const CCommand& args, bool teamonly)
+void DetourHostSay(CEntityInstance* pController, CCommand& args, bool teamonly, int unk1, const char* unk2)
 {
     if (pController)
     {
@@ -58,35 +71,32 @@ bool ChatManager::OnSayCommand(CEntityInstance* pController, const CCommand& arg
     bool bSilent = globals::coreConfig->IsSilentChatTrigger(args[1], prefix);
     bool bCommand = globals::coreConfig->IsPublicChatTrigger(args[1], prefix) || bSilent;
 
+    if (!bSilent)
+    {
+        m_pHostSay(pController, args, teamonly, unk1, unk2);
+    }
+
     if (bCommand)
     {
-        auto message = std::string(args.ArgS());
+        char* pszMessage = (char*)(args.ArgS() + prefix.length() + 1);
 
-        // trim quotes off message if they appear, then trim the prefix
-        // "!foobar" -> foobar
-        // !foobar -> foobar
-        if (message.size() >= 2 && message.front() == '"' && message.back() == '"')
-        {
-            message = message.substr(1, message.size() - 2);
-        }
-        message = message.substr(prefix.size());
+        // Trailing slashes are only removed if Host_Say has been called.
+        if (bSilent) pszMessage[V_strlen(pszMessage) - 1] = 0;
 
-        CCommand newArgs;
-        newArgs.Tokenize(message.c_str());
+        CCommand args;
+        args.Tokenize(pszMessage);
 
-        auto prefixedPhrase = std::string("css_") + newArgs.Arg(0);
+        auto prefixedPhrase = std::string("css_") + args.Arg(0);
         auto bValidWithPrefix = globals::conCommandManager.IsValidValveCommand(prefixedPhrase.c_str());
 
         if (bValidWithPrefix)
         {
             // Re-tokenize with a `css_` prefix if we have found that its a valid command.
-            newArgs.Tokenize(("css_" + std::string(message)).c_str());
+            args.Tokenize(("css_" + std::string(pszMessage)).c_str());
         }
 
-        globals::chatManager.OnSayCommandPost(pController, newArgs);
+        globals::chatManager.OnSayCommandPost(pController, args);
     }
-
-    return bSilent;
 }
 
 bool ChatManager::OnSayCommandPre(CEntityInstance* pController, CCommand& command) { return false; }

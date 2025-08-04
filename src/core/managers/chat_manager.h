@@ -54,7 +54,6 @@ class ChatManager : public GlobalClass
 
     bool OnSayCommandPre(CEntityInstance* pController, CCommand& args);
     void OnSayCommandPost(CEntityInstance* pController, CCommand& args);
-    static bool OnSayCommand(CEntityInstance* pController, const CCommand& args, bool teamonly);
 
   private:
     void InternalDispatch(CEntityInstance* pPlayerController, const char* szTriggerPhrase, CCommand& pFullCommand);
@@ -62,5 +61,8 @@ class ChatManager : public GlobalClass
     std::vector<ChatCommandInfo*> m_cmd_list;
     std::map<std::string, ChatCommandInfo*> m_cmd_lookup;
 };
+
+static void DetourHostSay(CEntityInstance* pController, CCommand& args, bool teamonly, int unk1, const char* unk2);
+static HostSay m_pHostSay = nullptr;
 
 } // namespace counterstrikesharp

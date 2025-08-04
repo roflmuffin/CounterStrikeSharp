@@ -467,24 +467,6 @@ void ConCommandManager::Hook_DispatchConCommand(ConCommandRef cmd, const CComman
 
     CSSHARP_CORE_TRACE("[ConCommandManager::Hook_DispatchConCommand]: {}", name);
 
-    auto slot = ctx.GetPlayerSlot();
-    bool isSay = V_strcmp(name, "say");
-    bool isTeamSay = V_strcmp(name, "say_team");
-
-    if (isSay || isTeamSay)
-    {
-        CEntityInstance* entityInstance = nullptr;
-        if (globals::entitySystem && (slot != -1))
-        {
-            entityInstance = globals::entitySystem->GetEntityInstance(CEntityIndex(slot.Get() + 1));
-        }
-
-        if (globals::chatManager.OnSayCommand(entityInstance, args, isTeamSay))
-        {
-            RETURN_META(MRES_SUPERCEDE);
-        }
-    }
-
     auto result = ExecuteCommandCallbacks(name, ctx, args, HookMode::Pre, CommandCallingContext::Console);
     if (result >= HookResult::Handled)
     {
