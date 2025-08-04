@@ -25,11 +25,10 @@
 #include <public/eiface.h>
 #include "scripting/callback_manager.h"
 
-SH_DECL_MANUALHOOK8_void(CheckTransmit,
+SH_DECL_MANUALHOOK7_void(CheckTransmit,
                          0,
                          0,
                          0,
-                         ISource2GameEntities*,
                          CCheckTransmitInfoHack**,
                          uint32_t,
                          CBitVec<16384>&,
@@ -54,8 +53,8 @@ int g_iCheckTransmit = -1;
 void EntityManager::OnAllInitialized()
 {
     SH_MANUALHOOK_RECONFIGURE(CheckTransmit, globals::gameConfig->GetOffset("ISource2GameEntities::CheckTransmit"), 0, 0);
-    g_iCheckTransmit = SH_ADD_MANUALDVPHOOK(CheckTransmit, globals::gameEntities, SH_MEMBER(this, &EntityManager::CheckTransmit), true);
-
+    g_iCheckTransmit =
+        SH_ADD_MANUALDVPHOOK(CheckTransmit, *(void**)globals::gameEntities, SH_MEMBER(this, &EntityManager::CheckTransmit), true);
     check_transmit = globals::callbackManager.CreateCallback("CheckTransmit");
     on_entity_spawned_callback = globals::callbackManager.CreateCallback("OnEntitySpawned");
     on_entity_created_callback = globals::callbackManager.CreateCallback("OnEntityCreated");
@@ -197,8 +196,7 @@ void EntityManager::UnhookEntityOutput(const char* szClassname, const char* szOu
     }
 }
 
-void EntityManager::CheckTransmit(ISource2GameEntities* pThis,
-                                  CCheckTransmitInfoHack** ppInfoList,
+void EntityManager::CheckTransmit(CCheckTransmitInfoHack** ppInfoList,
                                   uint32_t nInfoCount,
                                   CBitVec<16384>& unionTransmitEdicts1,
                                   CBitVec<16384>& unionTransmitEdicts2,
