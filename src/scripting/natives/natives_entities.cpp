@@ -254,7 +254,8 @@ void AddEntityIOEvent(ScriptContext& script_context)
     int outputID = script_context.GetArgument<int>(6);
 
     variant_t _value = variant_t(value);
-    CEntitySystem_AddEntityIOEvent(GameEntitySystem(), pTarget, pInputName, pActivator, pCaller, &_value, delay, outputID, nullptr);
+    CEntitySystem_AddEntityIOEvent(GameEntitySystem(), pTarget, pInputName, pActivator, pCaller, &_value, delay, outputID, nullptr,
+                                   nullptr);
 }
 
 SoundEventGuid_t EmitSoundFilter(ScriptContext& script_context)
