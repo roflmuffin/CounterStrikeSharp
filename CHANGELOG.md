@@ -1,3 +1,6 @@
+## What's Changed in v1.0.331
+* fix: revert chat command hooking back to detour of Host_Say ([356152a](https://github.com/roflmuffin/CounterStrikeSharp/commit/356152a567a756da47e6584d05fca331feb849aa))
+
 ## What's Changed in v1.0.330
 * fix: `CheckTransmit` hook not firing by [@samyycX](https://github.com/samyycX) in [#966](https://github.com/roflmuffin/CounterStrikeSharp/pull/966) ([529a0cb](https://github.com/roflmuffin/CounterStrikeSharp/commit/529a0cbf5b1c67396469c85f6965bdc5b2891507))
 
