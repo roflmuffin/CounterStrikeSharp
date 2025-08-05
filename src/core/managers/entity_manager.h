@@ -172,6 +172,7 @@ inline void (*CEntitySystem_AddEntityIOEvent)(CEntitySystem* pEntitySystem,
                                               variant_t* value,
                                               float delay,
                                               int nOutputID,
+                                              void*,
                                               void*);
 
 typedef uint32 SoundEventGuid_t;

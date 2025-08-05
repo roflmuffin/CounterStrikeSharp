@@ -13,7 +13,7 @@ public partial class CTakeDamageInfo
     /// </returns>
     public HitGroup_t GetHitGroup()
     {
-        IntPtr v4 = Marshal.ReadIntPtr(Handle, 0x78);
+        IntPtr v4 = Marshal.ReadIntPtr(Handle, 0x70);
 
         if (v4 == nint.Zero)
         {
