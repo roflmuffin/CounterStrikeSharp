@@ -64,7 +64,7 @@ float GetCurrentTime(ScriptContext& script_context) { return globals::getGlobalV
 
 int GetTickCount(ScriptContext& script_context) { return globals::getGlobalVars()->tickcount; }
 
-float GetGameFrameTime(ScriptContext& script_context) { return 0; }
+float GetGameFrameTime(ScriptContext& script_context) { return globals::getGlobalVars()->frametime; }
 
 double GetEngineTime(ScriptContext& script_context) { return Plat_FloatTime(); }
 
