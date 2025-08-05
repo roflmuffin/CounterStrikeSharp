@@ -47,7 +47,29 @@ namespace CounterStrikeSharp.API.Modules.Commands
 
         public string ArgByIndex(int index) => NativeAPI.CommandGetArgByIndex(Handle, index);
         public string GetArg(int index) => NativeAPI.CommandGetArgByIndex(Handle, index);
-        
+
+        public IEnumerable<string> GetArgs(int startIndex = 0, int endIndex = -1)
+        {
+            if (string.IsNullOrEmpty(ArgString))
+                return [];
+
+            string[] args = ArgString.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            int lastIndex = args.Length - 1;
+
+            startIndex = Math.Clamp(startIndex, 0, lastIndex);
+            endIndex = Math.Clamp(endIndex < 0 ? lastIndex : endIndex, startIndex, lastIndex);
+
+            string[] selectedArgs = startIndex == endIndex
+                ? [args[startIndex]]
+                : args[startIndex..(endIndex + 1)];
+
+            return selectedArgs.Select(arg =>
+                arg.Length >= 2 && arg[0] == '"' && arg[^1] == '"'
+                    ? arg[1..^1]
+                    : arg
+            );
+        }
+
         /// <summary>
         /// Whether or not the command was sent via Console or Chat.
         /// </summary>
