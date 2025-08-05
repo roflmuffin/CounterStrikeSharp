@@ -313,7 +313,7 @@ void DetourFireOutputInternal(CEntityIOOutput* const pThis,
     }
 }
 
-SndOpEventGuid_t EntityEmitSoundFilter(CBitRecipientFilter& filter, uint32 ent, const char* pszSound, float flVolume, float flPitch)
+SndOpEventGuid_t EntityEmitSoundFilter(CRecipientFilter& filter, uint32 ent, const char* pszSound, float flVolume, float flPitch)
 {
     if (!CBaseEntity_EmitSoundFilter)
     {

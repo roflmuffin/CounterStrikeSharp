@@ -217,9 +217,8 @@ void ReplicateConVar(ScriptContext& script_context)
     cvarMsg->set_name(name);
     cvarMsg->set_value(value);
 
-    uint64 recipientMask = 0;
-    recipientMask |= (uint64)1 << slot;
-    globals::gameEventSystem->PostEventAbstract(-1, false, 1, &recipientMask, pNetMsg, msg, 0, NetChannelBufType_t::BUF_RELIABLE);
+    CSingleRecipientFilter filter(slot);
+    globals::gameEventSystem->PostEventAbstract(-1, false, &filter, pNetMsg, msg, 0);
 
     delete msg;
 }
