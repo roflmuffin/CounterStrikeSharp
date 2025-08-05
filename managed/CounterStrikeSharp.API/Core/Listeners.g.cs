@@ -192,6 +192,16 @@ namespace CounterStrikeSharp.API.Core
         [ListenerName("OnPlayerButtonsChanged")]
         public delegate void OnPlayerButtonsChanged(CCSPlayerController player, PlayerButtons pressed, PlayerButtons released);
 
+
+        /// <summary>
+        /// Called when a player sends a chat message.
+        /// </summary>
+        /// <param name="player">The player who sent the chat message.</param>
+        /// <param name="message">The content of the chat message.</param>
+        /// <param name="teamChat">If the chat message was sent to team only.</param>
+        [ListenerName("OnPlayerChat")]
+        public delegate void OnPlayerChat(CCSPlayerController player, string message, bool teamChat);
+
         /// <summary>
         /// Called when all metamod plugins are loaded.
         /// </summary>
