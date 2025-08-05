@@ -266,7 +266,7 @@ SoundEventGuid_t EmitSoundFilter(ScriptContext& script_context)
     auto volume = script_context.GetArgument<float>(3);
     auto pitch = script_context.GetArgument<float>(4);
 
-    CRecipientFilter filter{};
+    CBitRecipientFilter filter{};
     filter.AddRecipientsFromMask(filtermask);
 
     SndOpEventGuid_t ret = EntityEmitSoundFilter(filter, ent, sound, volume, pitch);
