@@ -1,3 +1,8 @@
+## What's Changed in v1.0.333
+* perf: cache `Server.MaxPlayers` to improve performance of `Utilities.GetPlayers()` ([1f9c7a0](https://github.com/roflmuffin/CounterStrikeSharp/commit/1f9c7a090bf39b3bcf54a34a62962de1f4cf501b))
+* feat: add `OnPlayerChat` listener in [#973](https://github.com/roflmuffin/CounterStrikeSharp/pull/973) ([2cf2d45](https://github.com/roflmuffin/CounterStrikeSharp/commit/2cf2d45e8e2f86f6a51c1e7e6c118d9333efea58))
+* chore: apply alliedmodders hl2sdk again in [#974](https://github.com/roflmuffin/CounterStrikeSharp/pull/974) ([fa383cd](https://github.com/roflmuffin/CounterStrikeSharp/commit/fa383cda68e91ff618d2f6e2c67a17b9d25a1a11))
+
 ## What's Changed in v1.0.332
 * fix: re-enable `EmitSoundFilter` by [@samyycX](https://github.com/samyycX) in [#968](https://github.com/roflmuffin/CounterStrikeSharp/pull/968) ([dc503e7](https://github.com/roflmuffin/CounterStrikeSharp/commit/dc503e7f57a6d0320f211f00309519555a0cdd29))
 * fix: update GetHitGroup offset by [@wiruwiru](https://github.com/wiruwiru) in [#970](https://github.com/roflmuffin/CounterStrikeSharp/pull/970) ([fedfe75](https://github.com/roflmuffin/CounterStrikeSharp/commit/fedfe756012a2db8c0d4d1fd2161a05ced064924))
