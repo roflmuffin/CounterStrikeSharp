@@ -32,7 +32,6 @@ class CGameSystem : public CBaseGameSystem
     GS_EVENT(ServerPostEntityThink);
 
     virtual void unk_406(const void* const msg) override {}
-    virtual void unk_407(const void* const msg) override {}
 
     const char* GetName() const override { return "CGameSystem"; }
 
