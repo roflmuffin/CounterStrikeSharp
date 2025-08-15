@@ -26,23 +26,34 @@ bool InitGameSystems();
 
 class CGameSystem : public CBaseGameSystem
 {
-  public:
+public:
     GS_EVENT(BuildGameSessionManifest);
     GS_EVENT(ServerPreEntityThink);
     GS_EVENT(ServerPostEntityThink);
+
+    virtual void unk_406(const void* const msg) override {}
+    virtual void unk_407(const void* const msg) override {}
+
+    const char* GetName() const override { return "CGameSystem"; }
+
+    void SetGameSystemGlobalPtrs(void* pValue) override
+    {
+        if (sm_Factory)
+            sm_Factory->SetGlobalPtr(pValue);
+    }
+
+    bool DoesGameSystemReallocate() override
+    {
+        return sm_Factory && sm_Factory->ShouldAutoAdd();
+    }
+
+    void SetName(const char* pName) override {}
 
     void Shutdown() override
     {
         CSSHARP_CORE_INFO("CGameSystem::Shutdown");
         delete sm_Factory;
     }
-
-    void SetGameSystemGlobalPtrs(void* pValue) override
-    {
-        if (sm_Factory) sm_Factory->SetGlobalPtr(pValue);
-    }
-
-    bool DoesGameSystemReallocate() override { return sm_Factory->ShouldAutoAdd(); }
 
     static IGameSystemFactory* sm_Factory;
 };
