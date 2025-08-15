@@ -26,7 +26,7 @@ bool InitGameSystems();
 
 class CGameSystem : public CBaseGameSystem
 {
-public:
+  public:
     GS_EVENT(BuildGameSessionManifest);
     GS_EVENT(ServerPreEntityThink);
     GS_EVENT(ServerPostEntityThink);
@@ -38,14 +38,10 @@ public:
 
     void SetGameSystemGlobalPtrs(void* pValue) override
     {
-        if (sm_Factory)
-            sm_Factory->SetGlobalPtr(pValue);
+        if (sm_Factory) sm_Factory->SetGlobalPtr(pValue);
     }
 
-    bool DoesGameSystemReallocate() override
-    {
-        return sm_Factory && sm_Factory->ShouldAutoAdd();
-    }
+    bool DoesGameSystemReallocate() override { return sm_Factory && sm_Factory->ShouldAutoAdd(); }
 
     void SetName(const char* pName) override {}
 
