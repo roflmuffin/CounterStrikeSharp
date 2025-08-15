@@ -22,14 +22,14 @@
   },
   "CCSPlayerController_ChangeTeam": {
     "offsets": {
-      "windows": 107,
-      "linux": 106
+      "windows": 106,
+      "linux": 105
     }
   },
   "CCSPlayerController_Respawn": {
     "offsets": {
-      "windows": 276,
-      "linux": 278
+      "windows": 275,
+      "linux": 277
     }
   },
   "CBasePlayerController_SetPawn": {
@@ -189,8 +189,8 @@
   },
   "CBaseEntity_Teleport": {
     "offsets": {
-      "windows": 166,
-      "linux": 165
+      "windows": 165,
+      "linux": 164
     }
   },
   "CBaseEntity_TakeDamageOld": {
