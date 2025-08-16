@@ -22,21 +22,21 @@
   },
   "CCSPlayerController_ChangeTeam": {
     "offsets": {
-      "windows": 107,
-      "linux": 106
+      "windows": 106,
+      "linux": 105
     }
   },
   "CCSPlayerController_Respawn": {
     "offsets": {
-      "windows": 276,
-      "linux": 278
+      "windows": 275,
+      "linux": 277
     }
   },
   "CBasePlayerController_SetPawn": {
     "signatures": {
       "library": "server",
       "windows": "48 89 5C 24 ? 57 41 54 41 55 41 56 41 57 48 83 EC ? 4C 8B 15",
-      "linux": "55 48 8D 87 10 08 00 00"
+      "linux": "55 48 8D 87 ? ? ? ? 48 89 E5 41 57 45 89 C7"
     }
   },
   "CCSPlayerPawnBase_PostThink": {
@@ -78,7 +78,7 @@
     "signatures": {
       "library": "server",
       "windows": "48 89 5C 24 ? 48 89 6C 24 ? 56 57 41 56 48 83 EC ? 48 8B 01 48 8B FA",
-      "linux": "55 48 8D 15 E8 EC FF FF"
+      "linux": "55 48 8D 15 ? ? ? ? 48 89 E5 41 55 41 54 49 89 FC 53 48 89 F3 48 83 EC ? 48 8B 07 48 8B 80 ? ? ? ?"
     }
   },
   "CCSPlayer_ItemServices_CanAcquire": {
@@ -97,8 +97,8 @@
   },
   "CCSPlayer_ItemServices_GiveNamedItem": {
     "offsets": {
-      "windows": 19,
-      "linux": 20
+      "windows": 18,
+      "linux": 19
     }
   },
   "CCSPlayer_ItemServices_DropActivePlayerWeapon": {
@@ -109,8 +109,8 @@
   },
   "CCSPlayer_ItemServices_RemoveWeapons": {
     "offsets": {
-      "windows": 21,
-      "linux": 22
+      "windows": 22,
+      "linux": 23
     }
   },
   "CGameSceneNode_GetSkeletonInstance": {
@@ -189,15 +189,15 @@
   },
   "CBaseEntity_Teleport": {
     "offsets": {
-      "windows": 166,
-      "linux": 165
+      "windows": 165,
+      "linux": 164
     }
   },
   "CBaseEntity_TakeDamageOld": {
     "signatures": {
       "library": "server",
-      "windows": "48 89 74 24 ? 57 48 81 EC ? ? ? ? 48 8B 41 ? 48 8B FA",
-      "linux": "55 48 89 E5 41 57 49 89 F7 41 56 41 55 41 54 53 48 89 FB 48 81 EC 88 00 00 00 F6 46 78 02"
+      "windows": "4C 8B DC 56 57 48 81 EC ? ? ? ? 48 8B 41",
+      "linux": "55 48 89 E5 41 57 41 56 41 55 41 54 53 48 89 FB 48 81 EC ? ? ? ? 4C 8D 25 ? ? ? ? 49 8B 3C 24"
     }
   },
   "CBaseTrigger_StartTouch": {
