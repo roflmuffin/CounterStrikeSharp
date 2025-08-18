@@ -132,6 +132,12 @@
       "linux": 26
     }
   },
+  "CTakeDamageInfo_HitGroup": {
+    "offsets": {
+      "windows": 104,
+      "linux": 104
+    }
+  },
   "UTIL_CreateEntityByName": {
     "signatures": {
       "library": "server",
