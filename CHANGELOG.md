@@ -1,3 +1,9 @@
+## What's Changed in v1.0.337
+* feat(schema): add new schema classes for build 19644975 ([fc7301a](https://github.com/roflmuffin/CounterStrikeSharp/commit/fc7301a8d374ea8888f01703e43fd2d5a8bad488))
+* feat(schema): update schema classes for build 19644975 ([ef4b8f9](https://github.com/roflmuffin/CounterStrikeSharp/commit/ef4b8f9442eee6ddeadcb0fa8775c2eba7108e90))
+* fix: update `FindPickerEntity` implementation (thanks @KillStr3aK) ([245f55d](https://github.com/roflmuffin/CounterStrikeSharp/commit/245f55daf3a474bf95d0e871aa8c4117394593a3))
+* fix(gamedata): update `CBasePlayerController_SetPawn` signature ([936b88d](https://github.com/roflmuffin/CounterStrikeSharp/commit/936b88d57cc8444f22ed2e17e2a1f83e86db37ad))
+
 ## What's Changed in v1.0.336
 * fix: re-add GetHitGroup with GameData backed offset ([624ca0f](https://github.com/roflmuffin/CounterStrikeSharp/commit/624ca0f0de35da5fd7f09a7498860a2f697ff59c))
 
