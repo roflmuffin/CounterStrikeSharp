@@ -35,8 +35,8 @@
   "CBasePlayerController_SetPawn": {
     "signatures": {
       "library": "server",
-      "windows": "48 89 5C 24 ? 57 41 54 41 55 41 56 41 57 48 83 EC ? 4C 8B 15",
-      "linux": "55 48 8D 87 ? ? ? ? 48 89 E5 41 57 45 89 C7"
+      "windows": "44 88 4C 24 ? 53 57",
+      "linux": "55 48 8D 87 ? ? ? ? 48 89 E5 41 57 41 56 41 89 CE 41 55 45 89 CD"
     }
   },
   "CCSPlayerPawnBase_PostThink": {
