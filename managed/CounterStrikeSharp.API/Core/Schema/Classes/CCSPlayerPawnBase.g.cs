@@ -74,10 +74,6 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
 	[SchemaMember("CCSPlayerPawnBase", "m_iProgressBarDuration")]
 	public ref Int32 ProgressBarDuration => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawnBase", "m_iProgressBarDuration");
 
-	// m_angEyeAngles
-	[SchemaMember("CCSPlayerPawnBase", "m_angEyeAngles")]
-	public QAngle EyeAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CCSPlayerPawnBase", "m_angEyeAngles");
-
 	// m_hOriginalController
 	[SchemaMember("CCSPlayerPawnBase", "m_hOriginalController")]
 	public CHandle<CCSPlayerController> OriginalController => Schema.GetDeclaredClass<CHandle<CCSPlayerController>>(this.Handle, "CCSPlayerPawnBase", "m_hOriginalController");

@@ -13,4 +13,11 @@ public enum CNmFloatMathNodeOperator_t : byte
 	Mul = 0x2,
 	Div = 0x3,
 	Mod = 0x4,
+	Abs = 0x5,
+	Negate = 0x6,
+	Floor = 0x7,
+	Ceiling = 0x8,
+	IntegerPart = 0x9,
+	FractionalPart = 0xA,
+	InverseFractionalPart = 0xB,
 }

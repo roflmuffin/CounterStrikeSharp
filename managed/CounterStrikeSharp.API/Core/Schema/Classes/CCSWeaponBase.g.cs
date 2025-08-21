@@ -126,10 +126,6 @@ public partial class CCSWeaponBase : CBasePlayerWeapon
 	[SchemaMember("CCSWeaponBase", "m_bInReload")]
 	public ref bool InReload => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bInReload");
 
-	// m_flDisallowAttackAfterReloadStartUntilTime
-	[SchemaMember("CCSWeaponBase", "m_flDisallowAttackAfterReloadStartUntilTime")]
-	public ref float DisallowAttackAfterReloadStartUntilTime => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flDisallowAttackAfterReloadStartUntilTime");
-
 	// m_flDroppedAtTime
 	[SchemaMember("CCSWeaponBase", "m_flDroppedAtTime")]
 	public ref float DroppedAtTime => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flDroppedAtTime");

@@ -26,6 +26,14 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 	[SchemaMember("CBasePlayerWeaponVData", "m_bAllowFlipping")]
 	public ref bool AllowFlipping => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bAllowFlipping");
 
+	// m_szMuzzleFlashParticleConfig
+	[SchemaMember("CBasePlayerWeaponVData", "m_szMuzzleFlashParticleConfig")]
+	public string MuzzleFlashParticleConfig
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CBasePlayerWeaponVData", "m_szMuzzleFlashParticleConfig"); }
+		set { Schema.SetString(this.Handle, "CBasePlayerWeaponVData", "m_szMuzzleFlashParticleConfig", value); }
+	}
+
 	// m_nMuzzleSmokeShotThreshold
 	[SchemaMember("CBasePlayerWeaponVData", "m_nMuzzleSmokeShotThreshold")]
 	public ref byte MuzzleSmokeShotThreshold => ref Schema.GetRef<byte>(this.Handle, "CBasePlayerWeaponVData", "m_nMuzzleSmokeShotThreshold");

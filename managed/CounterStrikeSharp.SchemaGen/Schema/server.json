@@ -6175,13 +6175,6 @@
           }
         },
         {
-          "name": "m_iDamageCount",
-          "type": {
-            "category": 0,
-            "name": "int32"
-          }
-        },
-        {
           "name": "m_pVecRelationships",
           "type": {
             "category": 1,
@@ -7677,6 +7670,20 @@
           }
         },
         {
+          "name": "m_nDecalMode",
+          "type": {
+            "category": 6,
+            "name": "DecalMode_t"
+          }
+        },
+        {
+          "name": "m_nRequiredDecalMode",
+          "type": {
+            "category": 6,
+            "name": "DecalMode_t"
+          }
+        },
+        {
           "name": "m_ConfigEntitiesToPropagateMaterialDecalsTo",
           "type": {
             "atomic": 2,
@@ -8548,6 +8555,14 @@
               "name": "CWeakHandle< InfoForResourceTypeIParticleSystemDefinition >"
             },
             "name": "CResourceNameTyped< CWeakHandle< InfoForResourceTypeIParticleSystemDefinition > >"
+          }
+        },
+        {
+          "name": "m_szMuzzleFlashParticleConfig",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CUtlString"
           }
         },
         {
@@ -11948,6 +11963,18 @@
           }
         },
         {
+          "name": "m_squatVariation",
+          "type": {
+            "atomic": 1,
+            "category": 4,
+            "inner": {
+              "category": 0,
+              "name": "float32"
+            },
+            "name": "CAnimGraph2ParamOptionalRef< float32 >"
+          }
+        },
+        {
           "name": "m_bInWater",
           "type": {
             "atomic": 1,
@@ -12100,6 +12127,18 @@
               "name": "float32"
             },
             "name": "CAnimGraph2ParamOptionalRef< float32 >"
+          }
+        },
+        {
+          "name": "m_bIsUsingLegacyModel",
+          "type": {
+            "atomic": 1,
+            "category": 4,
+            "inner": {
+              "category": 0,
+              "name": "bool"
+            },
+            "name": "CAnimGraph2ParamOptionalRef< bool >"
           }
         },
         {
@@ -15930,6 +15969,18 @@
             },
             "name": "CUtlVectorEmbeddedNetworkVar< ServerAuthoritativeWeaponSlot_t >"
           }
+        },
+        {
+          "name": "m_vecNetworkableLoadout",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "CSNetworkableLoadout_t"
+            },
+            "name": "CUtlVectorEmbeddedNetworkVar< CSNetworkableLoadout_t >"
+          }
         }
       ],
       "parent": "CPlayerControllerComponent"
@@ -16891,6 +16942,14 @@
             "category": 0,
             "name": "float32"
           }
+        },
+        {
+          "name": "m_angEyeAngles",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "QAngle"
+          }
         }
       ],
       "parent": "CCSPlayerPawnBase"
@@ -16997,14 +17056,6 @@
           "type": {
             "category": 0,
             "name": "int32"
-          }
-        },
-        {
-          "name": "m_angEyeAngles",
-          "type": {
-            "atomic": 0,
-            "category": 4,
-            "name": "QAngle"
           }
         },
         {
@@ -18189,13 +18240,6 @@
           "type": {
             "category": 0,
             "name": "bool"
-          }
-        },
-        {
-          "name": "m_flDisallowAttackAfterReloadStartUntilTime",
-          "type": {
-            "category": 5,
-            "name": "GameTime_t"
           }
         },
         {
@@ -20673,6 +20717,13 @@
             "category": 5,
             "name": "CAnimParamHandle"
           }
+        },
+        {
+          "name": "m_bLockWhenWaning",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
         }
       ],
       "parent": "CLeafUpdateNode"
@@ -20691,6 +20742,13 @@
           "type": {
             "category": 5,
             "name": "CAnimParamHandle"
+          }
+        },
+        {
+          "name": "m_bLockWhenWaning",
+          "type": {
+            "category": 0,
+            "name": "bool"
           }
         }
       ],
@@ -21006,6 +21064,234 @@
       ],
       "parent": "CBaseEntity"
     },
+    "CDecalGroupVData": {
+      "fields": [
+        {
+          "name": "m_vecOptions",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "DecalGroupOption_t"
+            },
+            "name": "CUtlVector< DecalGroupOption_t >"
+          }
+        },
+        {
+          "name": "m_flTotalProbability",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        }
+      ]
+    },
+    "CDecalInstance": {
+      "fields": [
+        {
+          "name": "m_sDecalGroup",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CGlobalSymbol"
+          }
+        },
+        {
+          "name": "m_hMaterial",
+          "type": {
+            "atomic": 1,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "InfoForResourceTypeIMaterial2"
+            },
+            "name": "CStrongHandle< InfoForResourceTypeIMaterial2 >",
+            "outer": "CStrongHandle"
+          }
+        },
+        {
+          "name": "m_sSequenceName",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CUtlStringToken"
+          }
+        },
+        {
+          "name": "m_hEntity",
+          "type": {
+            "atomic": 1,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "CBaseEntity"
+            },
+            "name": "CHandle< CBaseEntity >",
+            "outer": "CHandle"
+          }
+        },
+        {
+          "name": "m_nBoneIndex",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        },
+        {
+          "name": "m_vPositionLS",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector"
+          }
+        },
+        {
+          "name": "m_vNormalLS",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector"
+          }
+        },
+        {
+          "name": "m_vSAxisLS",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector"
+          }
+        },
+        {
+          "name": "m_nFlags",
+          "type": {
+            "category": 6,
+            "name": "DecalFlags_t"
+          }
+        },
+        {
+          "name": "m_Color",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Color"
+          }
+        },
+        {
+          "name": "m_flWidth",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flHeight",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flDepth",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flAnimationScale",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flPlaceTime",
+          "type": {
+            "category": 5,
+            "name": "GameTime_t"
+          }
+        },
+        {
+          "name": "m_flFadeStartTime",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flFadeDuration",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flLightingOriginOffset",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_nVBSlot",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        },
+        {
+          "name": "m_flBoundingRadiusSqr",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_nSequenceIndex",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_bIsAdjacent",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_bDoDecalLightmapping",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_pNext",
+          "type": {
+            "category": 1,
+            "inner": {
+              "category": 5,
+              "name": "CDecalInstance"
+            },
+            "name": "CDecalInstance*"
+          }
+        },
+        {
+          "name": "m_pPrev",
+          "type": {
+            "category": 1,
+            "inner": {
+              "category": 5,
+              "name": "CDecalInstance"
+            },
+            "name": "CDecalInstance*"
+          }
+        }
+      ]
+    },
     "CDecoyGrenade": {
       "fields": [],
       "parent": "CBaseCSGrenade"
@@ -21136,14 +21422,6 @@
           }
         },
         {
-          "name": "m_sBodyGroupName",
-          "type": {
-            "atomic": 0,
-            "category": 4,
-            "name": "CGlobalSymbol"
-          }
-        },
-        {
           "name": "m_nBodyGroupValue",
           "type": {
             "category": 0,
@@ -21236,6 +21514,14 @@
           "type": {
             "category": 0,
             "name": "bool"
+          }
+        },
+        {
+          "name": "m_sBodyGroupName",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CGlobalSymbol"
           }
         },
         {
@@ -22130,7 +22416,7 @@
           "name": "m_nHitBox",
           "type": {
             "category": 0,
-            "name": "uint16"
+            "name": "int16"
           }
         },
         {
@@ -28882,6 +29168,286 @@
       ],
       "parent": "CBaseModelEntity"
     },
+    "CFuncRotator": {
+      "fields": [
+        {
+          "name": "m_hRotatorTarget",
+          "type": {
+            "atomic": 1,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "CBaseEntity"
+            },
+            "name": "CHandle< CBaseEntity >",
+            "outer": "CHandle"
+          }
+        },
+        {
+          "name": "m_bIsRotating",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_bIsReversing",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_flTimeToReachMaxSpeed",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flTimeToReachZeroSpeed",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flDistanceAlongArcTraveled",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flTimeToWaitOscillate",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flTimeRotationStart",
+          "type": {
+            "category": 5,
+            "name": "GameTime_t"
+          }
+        },
+        {
+          "name": "m_qLSPrevChange",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Quaternion"
+          }
+        },
+        {
+          "name": "m_qWSPrev",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Quaternion"
+          }
+        },
+        {
+          "name": "m_qWSInit",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Quaternion"
+          }
+        },
+        {
+          "name": "m_qLSInit",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Quaternion"
+          }
+        },
+        {
+          "name": "m_qLSOrientation",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Quaternion"
+          }
+        },
+        {
+          "name": "m_OnRotationStarted",
+          "type": {
+            "category": 5,
+            "name": "CEntityIOOutput"
+          }
+        },
+        {
+          "name": "m_OnRotationCompleted",
+          "type": {
+            "category": 5,
+            "name": "CEntityIOOutput"
+          }
+        },
+        {
+          "name": "m_OnOscillate",
+          "type": {
+            "category": 5,
+            "name": "CEntityIOOutput"
+          }
+        },
+        {
+          "name": "m_OnOscillateStartArrive",
+          "type": {
+            "category": 5,
+            "name": "CEntityIOOutput"
+          }
+        },
+        {
+          "name": "m_OnOscillateStartDepart",
+          "type": {
+            "category": 5,
+            "name": "CEntityIOOutput"
+          }
+        },
+        {
+          "name": "m_OnOscillateEndArrive",
+          "type": {
+            "category": 5,
+            "name": "CEntityIOOutput"
+          }
+        },
+        {
+          "name": "m_OnOscillateEndDepart",
+          "type": {
+            "category": 5,
+            "name": "CEntityIOOutput"
+          }
+        },
+        {
+          "name": "m_bOscillateDepart",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_nOscillateCount",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        },
+        {
+          "name": "m_eRotateType",
+          "type": {
+            "category": 6,
+            "name": "CFuncRotator::Rotate_t"
+          }
+        },
+        {
+          "name": "m_ePrevRotateType",
+          "type": {
+            "category": 6,
+            "name": "CFuncRotator::Rotate_t"
+          }
+        },
+        {
+          "name": "m_bHasTargetOverride",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_qOrientationOverride",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Quaternion"
+          }
+        },
+        {
+          "name": "m_eSpaceOverride",
+          "type": {
+            "category": 6,
+            "name": "RotatorTargetSpace_t"
+          }
+        },
+        {
+          "name": "m_qAngularVelocity",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "QAngle"
+          }
+        },
+        {
+          "name": "m_vLookAtForcedUp",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Vector"
+          }
+        },
+        {
+          "name": "m_strRotatorTarget",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CUtlSymbolLarge"
+          }
+        },
+        {
+          "name": "m_bRecordHistory",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_vecRotatorHistory",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "RotatorHistoryEntry_t"
+            },
+            "name": "CUtlVector< RotatorHistoryEntry_t >"
+          }
+        },
+        {
+          "name": "m_bReturningToPreviousOrientation",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_vecRotatorQueue",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "RotatorQueueEntry_t"
+            },
+            "name": "CUtlVector< RotatorQueueEntry_t >"
+          }
+        },
+        {
+          "name": "m_vecRotatorQueueHistory",
+          "type": {
+            "atomic": 2,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "RotatorHistoryEntry_t"
+            },
+            "name": "CUtlVector< RotatorHistoryEntry_t >"
+          }
+        }
+      ],
+      "parent": "CBaseModelEntity"
+    },
     "CFuncShatterglass": {
       "fields": [
         {
@@ -32396,6 +32962,46 @@
       "fields": [],
       "parent": "SpawnPoint"
     },
+    "CInfoProjectedDecal": {
+      "fields": [
+        {
+          "name": "m_hMaterial",
+          "type": {
+            "atomic": 1,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "InfoForResourceTypeIMaterial2"
+            },
+            "name": "CStrongHandle< InfoForResourceTypeIMaterial2 >",
+            "outer": "CStrongHandle"
+          }
+        },
+        {
+          "name": "m_sSequenceName",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CUtlStringToken"
+          }
+        },
+        {
+          "name": "m_flDistance",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_bNotInMultiplayer",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        }
+      ],
+      "parent": "CPointEntity"
+    },
     "CInfoSpawnGroupLandmark": {
       "fields": [],
       "parent": "CPointEntity"
@@ -35500,6 +36106,41 @@
           "type": {
             "category": 0,
             "name": "bool"
+          }
+        },
+        {
+          "name": "m_flEnvRainStrength",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flEnvPuddleRippleStrength",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flEnvPuddleRippleDirection",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flEnvWetnessCoverage",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flEnvWetnessDryingAmount",
+          "type": {
+            "category": 0,
+            "name": "float32"
           }
         }
       ],
@@ -39348,6 +39989,43 @@
       "fields": [],
       "parent": "CNmBlendTaskBase"
     },
+    "CNmAimCSNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_nVerticalAngleNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_nHorizontalAngleNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_nEnabledNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_flBlendTimeSeconds",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        }
+      ],
+      "parent": "CNmPassthroughNode::CDefinition"
+    },
+    "CNmAimCSTask": {
+      "fields": [],
+      "parent": "CNmPoseTask"
+    },
     "CNmAndNode::CDefinition": {
       "fields": [
         {
@@ -40319,7 +40997,7 @@
       ],
       "parent": "CNmIDValueNode::CDefinition"
     },
-    "CNmCurrentSyncEventIndexNode::CDefinition": {
+    "CNmCurrentSyncEventNode::CDefinition": {
       "fields": [
         {
           "name": "m_nSourceStateNodeIdx",
@@ -40329,10 +41007,10 @@
           }
         },
         {
-          "name": "m_bOnlyReturnPercentageThrough",
+          "name": "m_infoType",
           "type": {
-            "category": 0,
-            "name": "bool"
+            "category": 6,
+            "name": "CNmCurrentSyncEventNode::InfoType_t"
           }
         }
       ],
@@ -40341,6 +41019,44 @@
     "CNmDurationScaleNode::CDefinition": {
       "fields": [],
       "parent": "CNmSpeedScaleBaseNode::CDefinition"
+    },
+    "CNmEntityAttributeEventBase": {
+      "fields": [
+        {
+          "name": "m_attributeName",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CUtlString"
+          }
+        }
+      ],
+      "parent": "CNmEvent"
+    },
+    "CNmEntityAttributeFloatEvent": {
+      "fields": [
+        {
+          "name": "m_FloatValue",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CPiecewiseCurve"
+          }
+        }
+      ],
+      "parent": "CNmEntityAttributeEventBase"
+    },
+    "CNmEntityAttributeIntEvent": {
+      "fields": [
+        {
+          "name": "m_nIntValue",
+          "type": {
+            "category": 0,
+            "name": "int32"
+          }
+        }
+      ],
+      "parent": "CNmEntityAttributeEventBase"
     },
     "CNmEvent": {
       "fields": [
@@ -40378,7 +41094,7 @@
     "CNmEventConsumer": {
       "fields": []
     },
-    "CNmEventConsumerBody": {
+    "CNmEventConsumerAttributes": {
       "fields": [],
       "parent": "CNmEventConsumer"
     },
@@ -40409,18 +41125,6 @@
         }
       ],
       "parent": "CNmBoneMaskValueNode::CDefinition"
-    },
-    "CNmFloatAbsNode::CDefinition": {
-      "fields": [
-        {
-          "name": "m_nInputValueNodeIdx",
-          "type": {
-            "category": 0,
-            "name": "int16"
-          }
-        }
-      ],
-      "parent": "CNmFloatValueNode::CDefinition"
     },
     "CNmFloatAngleMathNode::CDefinition": {
       "fields": [
@@ -40501,6 +41205,61 @@
       ],
       "parent": "CNmBoolValueNode::CDefinition"
     },
+    "CNmFloatCurveEvent": {
+      "fields": [
+        {
+          "name": "m_ID",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CGlobalSymbol"
+          }
+        },
+        {
+          "name": "m_curve",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CPiecewiseCurve"
+          }
+        }
+      ],
+      "parent": "CNmEvent"
+    },
+    "CNmFloatCurveEventNode::CDefinition": {
+      "fields": [
+        {
+          "name": "m_eventID",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CGlobalSymbol"
+          }
+        },
+        {
+          "name": "m_nDefaultNodeIdx",
+          "type": {
+            "category": 0,
+            "name": "int16"
+          }
+        },
+        {
+          "name": "m_flDefaultValue",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_eventConditionRules",
+          "type": {
+            "category": 5,
+            "name": "CNmBitFlags"
+          }
+        }
+      ],
+      "parent": "CNmFloatValueNode::CDefinition"
+    },
     "CNmFloatCurveNode::CDefinition": {
       "fields": [
         {
@@ -40579,6 +41338,13 @@
         },
         {
           "name": "m_bReturnAbsoluteResult",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_bReturnNegatedResult",
           "type": {
             "category": 0,
             "name": "bool"
@@ -43209,7 +43975,7 @@
           }
         },
         {
-          "name": "m_syncEventOffsetOverrideNodeIdx",
+          "name": "m_timeOffsetOverrideNodeIdx",
           "type": {
             "category": 0,
             "name": "int16"
@@ -43237,7 +44003,7 @@
           }
         },
         {
-          "name": "m_syncEventOffset",
+          "name": "m_flTimeOffset",
           "type": {
             "category": 0,
             "name": "float32"
@@ -47816,6 +48582,13 @@
           }
         },
         {
+          "name": "m_flLastBurn",
+          "type": {
+            "category": 5,
+            "name": "GameTime_t"
+          }
+        },
+        {
           "name": "m_nDynamicContinuousContactBehavior",
           "type": {
             "category": 6,
@@ -49685,6 +50458,13 @@
           }
         },
         {
+          "name": "m_bVisibleWhenParentNoDraw",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
           "name": "m_bRenderBackface",
           "type": {
             "category": 0,
@@ -51297,25 +52077,6 @@
         }
       ]
     },
-    "CProjectedDecal": {
-      "fields": [
-        {
-          "name": "m_nTexture",
-          "type": {
-            "category": 0,
-            "name": "int32"
-          }
-        },
-        {
-          "name": "m_flDistance",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        }
-      ],
-      "parent": "CPointEntity"
-    },
     "CPropDataComponent": {
       "fields": [
         {
@@ -52843,6 +53604,25 @@
         }
       ]
     },
+    "CPulseCell_WaitForObservable": {
+      "fields": [
+        {
+          "name": "m_Condition",
+          "type": {
+            "category": 5,
+            "name": "PulseObservableBoolExpression_t"
+          }
+        },
+        {
+          "name": "m_OnTrue",
+          "type": {
+            "category": 5,
+            "name": "CPulse_ResumePoint"
+          }
+        }
+      ],
+      "parent": "CPulseCell_BaseYieldingInflow"
+    },
     "CPulseCursorFuncs": {
       "fields": []
     },
@@ -53143,9 +53923,6 @@
     "CPulseMathlib": {
       "fields": []
     },
-    "CPulseRuntimeLibModuleLocalTypeQueryRegistration": {
-      "fields": []
-    },
     "CPulseRuntimeMethodArg": {
       "fields": [
         {
@@ -53212,9 +53989,6 @@
       "fields": []
     },
     "CPulseTestScriptLib": {
-      "fields": []
-    },
-    "CPulseTestTypeQueryRegistration": {
       "fields": []
     },
     "CPulse_BlackboardReference": {
@@ -55256,6 +56030,25 @@
       ],
       "parent": "CBaseDoor"
     },
+    "CRotatorTarget": {
+      "fields": [
+        {
+          "name": "m_OnArrivedAt",
+          "type": {
+            "category": 5,
+            "name": "CEntityIOOutput"
+          }
+        },
+        {
+          "name": "m_eSpace",
+          "type": {
+            "category": 6,
+            "name": "RotatorTargetSpace_t"
+          }
+        }
+      ],
+      "parent": "CPointEntity"
+    },
     "CRuleBrushEntity": {
       "fields": [],
       "parent": "CRuleEntity"
@@ -55571,6 +56364,31 @@
         }
       ],
       "parent": "CSPerRoundStats_t"
+    },
+    "CSNetworkableLoadout_t": {
+      "fields": [
+        {
+          "name": "m_Item",
+          "type": {
+            "category": 5,
+            "name": "CEconItemView"
+          }
+        },
+        {
+          "name": "m_unTeam",
+          "type": {
+            "category": 0,
+            "name": "uint16"
+          }
+        },
+        {
+          "name": "m_unSlot",
+          "type": {
+            "category": 0,
+            "name": "uint16"
+          }
+        }
+      ]
     },
     "CSPerRoundStats_t": {
       "fields": [
@@ -58891,9 +59709,6 @@
       ],
       "parent": "CAnimActionUpdater"
     },
-    "CSharedPulseTypeQueryRegistration": {
-      "fields": []
-    },
     "CShatterGlassShard": {
       "fields": [
         {
@@ -61441,6 +62256,13 @@
           }
         },
         {
+          "name": "m_flJointFriction",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
           "name": "m_vPreSolveAnchorPos",
           "type": {
             "atomic": 0,
@@ -62275,13 +63097,6 @@
           }
         },
         {
-          "name": "m_flDamageAbsorbed",
-          "type": {
-            "category": 0,
-            "name": "float32"
-          }
-        },
-        {
           "name": "m_nDamageFlags",
           "type": {
             "category": 6,
@@ -62357,6 +63172,13 @@
           }
         },
         {
+          "name": "m_flPreModifiedDamage",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
           "name": "m_nTotalledHealthLost",
           "type": {
             "category": 0,
@@ -62364,17 +63186,10 @@
           }
         },
         {
-          "name": "m_nTotalledDamageTaken",
+          "name": "m_nTotalledDamageDealt",
           "type": {
             "category": 0,
             "name": "int32"
-          }
-        },
-        {
-          "name": "m_flTotalledDamageAbsorbed",
-          "type": {
-            "category": 0,
-            "name": "float32"
           }
         }
       ]
@@ -74123,6 +74938,124 @@
       ],
       "parent": "CParticleFunctionPreEmission"
     },
+    "C_OP_GameDecalRenderer": {
+      "fields": [
+        {
+          "name": "m_sDecalGroupName",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CGlobalSymbol"
+          }
+        },
+        {
+          "name": "m_nEventType",
+          "type": {
+            "category": 6,
+            "name": "EventTypeSelection_t"
+          }
+        },
+        {
+          "name": "m_nInteractionMask",
+          "type": {
+            "category": 6,
+            "name": "ParticleCollisionMask_t"
+          }
+        },
+        {
+          "name": "m_nCollisionGroup",
+          "type": {
+            "category": 6,
+            "name": "ParticleCollisionGroup_t"
+          }
+        },
+        {
+          "name": "m_vecStartPos",
+          "type": {
+            "category": 5,
+            "name": "CPerParticleVecInput"
+          }
+        },
+        {
+          "name": "m_vecEndPos",
+          "type": {
+            "category": 5,
+            "name": "CPerParticleVecInput"
+          }
+        },
+        {
+          "name": "m_flTraceBloat",
+          "type": {
+            "category": 5,
+            "name": "CPerParticleFloatInput"
+          }
+        },
+        {
+          "name": "m_flDecalSize",
+          "type": {
+            "category": 5,
+            "name": "CPerParticleFloatInput"
+          }
+        },
+        {
+          "name": "m_nDecalGroupIndex",
+          "type": {
+            "category": 5,
+            "name": "CPerParticleFloatInput"
+          }
+        },
+        {
+          "name": "m_flDecalRotation",
+          "type": {
+            "category": 5,
+            "name": "CPerParticleFloatInput"
+          }
+        },
+        {
+          "name": "m_vModulationColor",
+          "type": {
+            "category": 5,
+            "name": "CPerParticleVecInput"
+          }
+        },
+        {
+          "name": "m_bUseGameDefaultDecalSize",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_bRandomDecalRotation",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_bRandomlySelectDecalInGroup",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_bNoDecalsOnOwner",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_bVisualizeTraces",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        }
+      ],
+      "parent": "CParticleFunctionRenderer"
+    },
     "C_OP_GlobalLight": {
       "fields": [
         {
@@ -81545,6 +82478,13 @@
           }
         },
         {
+          "name": "m_bSequenceNumbersAreRawSequenceIndices",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
           "name": "m_nOrientationType",
           "type": {
             "category": 6,
@@ -85420,6 +86360,46 @@
       ],
       "parent": "CParticleFunctionOperator"
     },
+    "C_OP_WaterImpulseRenderer": {
+      "fields": [
+        {
+          "name": "m_vecPos",
+          "type": {
+            "category": 5,
+            "name": "CPerParticleVecInput"
+          }
+        },
+        {
+          "name": "m_flRadius",
+          "type": {
+            "category": 5,
+            "name": "CPerParticleFloatInput"
+          }
+        },
+        {
+          "name": "m_flMagnitude",
+          "type": {
+            "category": 5,
+            "name": "CPerParticleFloatInput"
+          }
+        },
+        {
+          "name": "m_flShape",
+          "type": {
+            "category": 5,
+            "name": "CPerParticleFloatInput"
+          }
+        },
+        {
+          "name": "m_nEventType",
+          "type": {
+            "category": 6,
+            "name": "EventTypeSelection_t"
+          }
+        }
+      ],
+      "parent": "CParticleFunctionRenderer"
+    },
     "C_OP_WindForce": {
       "fields": [
         {
@@ -86090,6 +87070,58 @@
         },
         {
           "name": "m_flYZ",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        }
+      ]
+    },
+    "DecalGroupOption_t": {
+      "fields": [
+        {
+          "name": "m_hMaterial",
+          "type": {
+            "atomic": 1,
+            "category": 4,
+            "inner": {
+              "category": 5,
+              "name": "InfoForResourceTypeIMaterial2"
+            },
+            "name": "CStrongHandleCopyable< InfoForResourceTypeIMaterial2 >"
+          }
+        },
+        {
+          "name": "m_sSequenceName",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "CGlobalSymbol"
+          }
+        },
+        {
+          "name": "m_flProbability",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_bEnableAngleBetweenNormalAndGravityRange",
+          "type": {
+            "category": 0,
+            "name": "bool"
+          }
+        },
+        {
+          "name": "m_flMinAngleBetweenNormalAndGravity",
+          "type": {
+            "category": 0,
+            "name": "float32"
+          }
+        },
+        {
+          "name": "m_flMaxAngleBetweenNormalAndGravity",
           "type": {
             "category": 0,
             "name": "float32"
@@ -90598,10 +91630,11 @@
           }
         },
         {
-          "name": "m_nSequenceOverride",
+          "name": "m_sSequenceOverrideName",
           "type": {
-            "category": 0,
-            "name": "int32"
+            "atomic": 0,
+            "category": 4,
+            "name": "CUtlStringToken"
           }
         }
       ]
@@ -96816,6 +97849,44 @@
         }
       ]
     },
+    "RotatorHistoryEntry_t": {
+      "fields": [
+        {
+          "name": "qInvChange",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Quaternion"
+          }
+        },
+        {
+          "name": "flTimeRotationStart",
+          "type": {
+            "category": 5,
+            "name": "GameTime_t"
+          }
+        }
+      ]
+    },
+    "RotatorQueueEntry_t": {
+      "fields": [
+        {
+          "name": "qTarget",
+          "type": {
+            "atomic": 0,
+            "category": 4,
+            "name": "Quaternion"
+          }
+        },
+        {
+          "name": "eSpace",
+          "type": {
+            "category": 6,
+            "name": "RotatorTargetSpace_t"
+          }
+        }
+      ]
+    },
     "SampleCode": {
       "fields": [
         {
@@ -97177,6 +98248,17 @@
           "type": {
             "category": 0,
             "name": "uint16"
+          }
+        }
+      ]
+    },
+    "SheetSequenceIntegerId_t": {
+      "fields": [
+        {
+          "name": "m_Value",
+          "type": {
+            "category": 0,
+            "name": "uint32"
           }
         }
       ]
@@ -103538,6 +104620,31 @@
         }
       ]
     },
+    "CFuncRotator::Rotate_t": {
+      "align": 4,
+      "items": [
+        {
+          "name": "ROTATE_LOOP",
+          "value": 0
+        },
+        {
+          "name": "ROTATE_OSCILLATE",
+          "value": 1
+        },
+        {
+          "name": "ROTATE_STOP_AT_END",
+          "value": 2
+        },
+        {
+          "name": "ROTATE_LOOK_AT_TARGET",
+          "value": 3
+        },
+        {
+          "name": "ROTATE_RETURN_TO_INITIAL_ORIENTATION",
+          "value": 4
+        }
+      ]
+    },
     "CLogicBranchList::LogicBranchListenerLastState_t": {
       "align": 4,
       "items": [
@@ -103556,6 +104663,23 @@
         {
           "name": "LOGIC_BRANCH_LISTENER_MIXED",
           "value": 3
+        }
+      ]
+    },
+    "CNmCurrentSyncEventNode::InfoType_t": {
+      "align": 1,
+      "items": [
+        {
+          "name": "IndexAndPercentage",
+          "value": 0
+        },
+        {
+          "name": "IndexOnly",
+          "value": 1
+        },
+        {
+          "name": "PercentageOnly",
+          "value": 2
         }
       ]
     },
@@ -103644,6 +104768,34 @@
         {
           "name": "Mod",
           "value": 4
+        },
+        {
+          "name": "Abs",
+          "value": 5
+        },
+        {
+          "name": "Negate",
+          "value": 6
+        },
+        {
+          "name": "Floor",
+          "value": 7
+        },
+        {
+          "name": "Ceiling",
+          "value": 8
+        },
+        {
+          "name": "IntegerPart",
+          "value": 9
+        },
+        {
+          "name": "FractionalPart",
+          "value": 10
+        },
+        {
+          "name": "InverseFractionalPart",
+          "value": 11
         }
       ]
     },
@@ -103888,6 +105040,14 @@
         {
           "name": "PreferClosestSyncEventID",
           "value": 7
+        },
+        {
+          "name": "MatchTimeInSeconds",
+          "value": 8
+        },
+        {
+          "name": "OffsetTimeInSeconds",
+          "value": 9
         }
       ]
     },
@@ -104389,16 +105549,24 @@
           "value": 8
         },
         {
-          "name": "CLASS_WORLDMODEL_GLOVES",
+          "name": "CLASS_HUDMODEL_ADDON",
           "value": 9
         },
         {
-          "name": "CLASS_DOOR",
+          "name": "CLASS_WORLDMODEL_GLOVES",
           "value": 10
         },
         {
-          "name": "NUM_CLASSIFY_CLASSES",
+          "name": "CLASS_DOOR",
           "value": 11
+        },
+        {
+          "name": "CLASS_PLANTED_C4",
+          "value": 12
+        },
+        {
+          "name": "NUM_CLASSIFY_CLASSES",
+          "value": 13
         }
       ]
     },
@@ -104513,10 +105681,6 @@
         {
           "name": "DMG_HEADSHOT",
           "value": 8388608
-        },
-        {
-          "name": "DMG_DANGERZONE",
-          "value": 16777216
         }
       ]
     },
@@ -104657,10 +105821,6 @@
           "value": 268435456
         },
         {
-          "name": "OVERLAY_WC_CHANGE_ENTITY",
-          "value": 536870912
-        },
-        {
           "name": "OVERLAY_BUDDHA_MODE",
           "value": 1073741824
         },
@@ -104707,6 +105867,73 @@
         {
           "name": "OVERLAY_MINIMAL_TEXT",
           "value": 2199023255552
+        }
+      ]
+    },
+    "DecalFlags_t": {
+      "align": 4,
+      "items": [
+        {
+          "name": "eNone",
+          "value": 0
+        },
+        {
+          "name": "eCannotClear",
+          "value": 1
+        },
+        {
+          "name": "eAll",
+          "value": 4294967295
+        },
+        {
+          "name": "eAllButCannotClear",
+          "value": 4294967294
+        }
+      ]
+    },
+    "DecalMode_t": {
+      "align": 1,
+      "items": [
+        {
+          "name": "kDecalBlood",
+          "value": 0
+        },
+        {
+          "name": "kDecalCloak",
+          "value": 1
+        },
+        {
+          "name": "kDecalMax",
+          "value": 2
+        },
+        {
+          "name": "kDecalDefault",
+          "value": 0
+        }
+      ]
+    },
+    "DecalVBType_t": {
+      "align": 4,
+      "items": [
+        {
+          "name": "eInvalid",
+          "value": 18446744073709551615
+        },
+        {
+          "name": "eStatic",
+          "value": 0
+        },
+        {
+          "name": "eDynamic",
+          "value": 1
+        },
+        {
+          "name": "eCount",
+          "value": 2
+        },
+        {
+          "name": "eFirst",
+          "value": 0
         }
       ]
     },
@@ -104935,8 +106162,12 @@
           "value": 1
         },
         {
-          "name": "InvinciblePassthrough",
+          "name": "InvincibleAbsorb",
           "value": 2
+        },
+        {
+          "name": "InvinciblePassthrough",
+          "value": 3
         }
       ]
     },
@@ -105599,10 +106830,6 @@
         {
           "name": "FL_IN_VEHICLE",
           "value": 4096
-        },
-        {
-          "name": "FL_IN_VEHICLE_TRANSPORT",
-          "value": 8192
         },
         {
           "name": "FL_GODMODE",
@@ -106631,7 +107858,7 @@
       ]
     },
     "InputLayoutVariation_t": {
-      "align": 4,
+      "align": 1,
       "items": [
         {
           "name": "INPUT_LAYOUT_VARIATION_DEFAULT",
@@ -108172,12 +109399,8 @@
           "value": 4
         },
         {
-          "name": "OBS_MODE_DIRECTED",
-          "value": 5
-        },
-        {
           "name": "NUM_OBSERVER_MODES",
-          "value": 6
+          "value": 5
         }
       ]
     },
@@ -108506,6 +109729,84 @@
         {
           "name": "PARTICLE_ATTR_BOX_FLAGS_TIMED_DECAY",
           "value": 32
+        }
+      ]
+    },
+    "ParticleCollisionGroup_t": {
+      "align": 4,
+      "items": [
+        {
+          "name": "PARTICLE_COLLISION_GROUP_DEFAULT",
+          "value": 4
+        },
+        {
+          "name": "PARTICLE_COLLISION_GROUP_DEBRIS",
+          "value": 5
+        },
+        {
+          "name": "PARTICLE_COLLISION_GROUP_INTERACTIVE",
+          "value": 7
+        },
+        {
+          "name": "PARTICLE_COLLISION_GROUP_PLAYER",
+          "value": 8
+        },
+        {
+          "name": "PARTICLE_COLLISION_GROUP_VEHICLE",
+          "value": 10
+        },
+        {
+          "name": "PARTICLE_COLLISION_GROUP_NPC",
+          "value": 12
+        },
+        {
+          "name": "PARTICLE_COLLISION_GROUP_PROPS",
+          "value": 24
+        }
+      ]
+    },
+    "ParticleCollisionMask_t": {
+      "align": 8,
+      "items": [
+        {
+          "name": "PARTICLE_MASK_ALL",
+          "value": 18446744073709551615
+        },
+        {
+          "name": "PARTICLE_MASK_SOLID",
+          "value": 798721
+        },
+        {
+          "name": "PARTICLE_MASK_WATER",
+          "value": 98304
+        },
+        {
+          "name": "PARTICLE_MASK_SOLID_WATER",
+          "value": 897025
+        },
+        {
+          "name": "PARTICLE_MASK_SHOT",
+          "value": 1839107
+        },
+        {
+          "name": "PARTICLE_MASK_SHOT_BRUSHONLY",
+          "value": 1052673
+        },
+        {
+          "name": "PARTICLE_MASK_SHOT_HULL",
+          "value": 1847297
+        },
+        {
+          "name": "PARTICLE_MASK_OPAQUE",
+          "value": 128
+        },
+        {
+          "name": "PARTICLE_MASK_DEFAULTPLAYERSOLID",
+          "value": 798737
+        },
+        {
+          "name": "PARTICLE_MASK_NPCSOLID",
+          "value": 798753
         }
       ]
     },
@@ -108923,64 +110224,68 @@
           "value": 11
         },
         {
-          "name": "PF_TYPE_RENDERER_CAMERA_DISTANCE",
+          "name": "PF_TYPE_SNAPSHOT_COUNT",
           "value": 12
         },
         {
-          "name": "PF_TYPE_RENDERER_CAMERA_DOT_PRODUCT",
+          "name": "PF_TYPE_RENDERER_CAMERA_DISTANCE",
           "value": 13
         },
         {
-          "name": "PF_TYPE_PARTICLE_NOISE",
+          "name": "PF_TYPE_RENDERER_CAMERA_DOT_PRODUCT",
           "value": 14
         },
         {
-          "name": "PF_TYPE_PARTICLE_AGE",
+          "name": "PF_TYPE_PARTICLE_NOISE",
           "value": 15
         },
         {
-          "name": "PF_TYPE_PARTICLE_AGE_NORMALIZED",
+          "name": "PF_TYPE_PARTICLE_AGE",
           "value": 16
         },
         {
-          "name": "PF_TYPE_PARTICLE_FLOAT",
+          "name": "PF_TYPE_PARTICLE_AGE_NORMALIZED",
           "value": 17
         },
         {
-          "name": "PF_TYPE_PARTICLE_INITIAL_FLOAT",
+          "name": "PF_TYPE_PARTICLE_FLOAT",
           "value": 18
         },
         {
-          "name": "PF_TYPE_PARTICLE_VECTOR_COMPONENT",
+          "name": "PF_TYPE_PARTICLE_INITIAL_FLOAT",
           "value": 19
         },
         {
-          "name": "PF_TYPE_PARTICLE_INITIAL_VECTOR_COMPONENT",
+          "name": "PF_TYPE_PARTICLE_VECTOR_COMPONENT",
           "value": 20
         },
         {
-          "name": "PF_TYPE_PARTICLE_SPEED",
+          "name": "PF_TYPE_PARTICLE_INITIAL_VECTOR_COMPONENT",
           "value": 21
         },
         {
-          "name": "PF_TYPE_PARTICLE_NUMBER",
+          "name": "PF_TYPE_PARTICLE_SPEED",
           "value": 22
         },
         {
-          "name": "PF_TYPE_PARTICLE_NUMBER_NORMALIZED",
+          "name": "PF_TYPE_PARTICLE_NUMBER",
           "value": 23
         },
         {
-          "name": "PF_TYPE_PARTICLE_SCREENSPACE_CAMERA_DISTANCE",
+          "name": "PF_TYPE_PARTICLE_NUMBER_NORMALIZED",
           "value": 24
         },
         {
-          "name": "PF_TYPE_PARTICLE_SCREENSPACE_CAMERA_DOT_PRODUCT",
+          "name": "PF_TYPE_PARTICLE_SCREENSPACE_CAMERA_DISTANCE",
           "value": 25
         },
         {
-          "name": "PF_TYPE_COUNT",
+          "name": "PF_TYPE_PARTICLE_SCREENSPACE_CAMERA_DOT_PRODUCT",
           "value": 26
+        },
+        {
+          "name": "PF_TYPE_COUNT",
+          "value": 27
         }
       ]
     },
@@ -110532,228 +111837,288 @@
           "value": 53
         },
         {
-          "name": "ADD_VEC4",
+          "name": "ADD_VEC3WS_VEC3",
           "value": 54
         },
         {
-          "name": "SUB_INT",
+          "name": "ADD_VEC3_VEC3WS",
           "value": 55
         },
         {
-          "name": "SUB_FLOAT",
+          "name": "ADD_VEC4",
           "value": 56
         },
         {
-          "name": "SUB_VEC2",
+          "name": "ADD_GAMETIME_FLOAT",
           "value": 57
         },
         {
-          "name": "SUB_VEC3",
+          "name": "ADD_FLOAT_GAMETIME",
           "value": 58
         },
         {
-          "name": "SUB_VEC4",
+          "name": "SUB_INT",
           "value": 59
         },
         {
-          "name": "MUL_INT",
+          "name": "SUB_FLOAT",
           "value": 60
         },
         {
-          "name": "MUL_FLOAT",
+          "name": "SUB_VEC2",
           "value": 61
         },
         {
-          "name": "DIV_FLOAT",
+          "name": "SUB_VEC3",
           "value": 62
         },
         {
-          "name": "MOD_INT",
+          "name": "SUB_VEC3WS_VEC3",
           "value": 63
         },
         {
-          "name": "MOD_FLOAT",
+          "name": "SUB_VEC3WS_VEC3WS",
           "value": 64
         },
         {
-          "name": "LT_INT",
+          "name": "SUB_VEC4",
           "value": 65
         },
         {
-          "name": "LT_FLOAT",
+          "name": "SUB_GAMETIME_FLOAT",
           "value": 66
         },
         {
-          "name": "LTE_INT",
+          "name": "SUB_GAMETIME",
           "value": 67
         },
         {
-          "name": "LTE_FLOAT",
+          "name": "MUL_INT",
           "value": 68
         },
         {
-          "name": "EQ_BOOL",
+          "name": "MUL_FLOAT",
           "value": 69
         },
         {
-          "name": "EQ_INT",
+          "name": "DIV_FLOAT",
           "value": 70
         },
         {
-          "name": "EQ_FLOAT",
+          "name": "MOD_INT",
           "value": 71
         },
         {
-          "name": "EQ_VEC2",
+          "name": "MOD_FLOAT",
           "value": 72
         },
         {
-          "name": "EQ_VEC3",
+          "name": "LT_INT",
           "value": 73
         },
         {
-          "name": "EQ_VEC4",
+          "name": "LT_FLOAT",
           "value": 74
         },
         {
-          "name": "EQ_STRING",
+          "name": "LT_GAMETIME",
           "value": 75
         },
         {
-          "name": "EQ_ENTITY_NAME",
+          "name": "LTE_INT",
           "value": 76
         },
         {
-          "name": "EQ_SCHEMA_ENUM",
+          "name": "LTE_FLOAT",
           "value": 77
         },
         {
-          "name": "EQ_EHANDLE",
+          "name": "LTE_GAMETIME",
           "value": 78
         },
         {
-          "name": "EQ_PANEL_HANDLE",
+          "name": "EQ_BOOL",
           "value": 79
         },
         {
-          "name": "EQ_OPAQUE_HANDLE",
+          "name": "EQ_INT",
           "value": 80
         },
         {
-          "name": "EQ_TEST_HANDLE",
+          "name": "EQ_FLOAT",
           "value": 81
         },
         {
-          "name": "EQ_COLOR_RGB",
+          "name": "EQ_VEC2",
           "value": 82
         },
         {
-          "name": "EQ_ARRAY",
+          "name": "EQ_VEC3",
           "value": 83
         },
         {
-          "name": "NE_BOOL",
+          "name": "EQ_VEC3WS",
           "value": 84
         },
         {
-          "name": "NE_INT",
+          "name": "EQ_VEC4",
           "value": 85
         },
         {
-          "name": "NE_FLOAT",
+          "name": "EQ_STRING",
           "value": 86
         },
         {
-          "name": "NE_VEC2",
+          "name": "EQ_ENTITY_NAME",
           "value": 87
         },
         {
-          "name": "NE_VEC3",
+          "name": "EQ_SCHEMA_ENUM",
           "value": 88
         },
         {
-          "name": "NE_VEC4",
+          "name": "EQ_EHANDLE",
           "value": 89
         },
         {
-          "name": "NE_STRING",
+          "name": "EQ_PANEL_HANDLE",
           "value": 90
         },
         {
-          "name": "NE_ENTITY_NAME",
+          "name": "EQ_OPAQUE_HANDLE",
           "value": 91
         },
         {
-          "name": "NE_SCHEMA_ENUM",
+          "name": "EQ_TEST_HANDLE",
           "value": 92
         },
         {
-          "name": "NE_EHANDLE",
+          "name": "EQ_COLOR_RGB",
           "value": 93
         },
         {
-          "name": "NE_PANEL_HANDLE",
+          "name": "EQ_ARRAY",
           "value": 94
         },
         {
-          "name": "NE_OPAQUE_HANDLE",
+          "name": "EQ_GAMETIME",
           "value": 95
         },
         {
-          "name": "NE_TEST_HANDLE",
+          "name": "NE_BOOL",
           "value": 96
         },
         {
-          "name": "NE_COLOR_RGB",
+          "name": "NE_INT",
           "value": 97
         },
         {
-          "name": "NE_ARRAY",
+          "name": "NE_FLOAT",
           "value": 98
         },
         {
-          "name": "SCALE_VEC3",
+          "name": "NE_VEC2",
           "value": 99
         },
         {
-          "name": "SCALE_VEC2",
+          "name": "NE_VEC3",
           "value": 100
         },
         {
-          "name": "SCALE_VEC4",
+          "name": "NE_VEC3WS",
           "value": 101
         },
         {
-          "name": "SCALE_INV_VEC3",
+          "name": "NE_VEC4",
           "value": 102
         },
         {
-          "name": "SCALE_INV_VEC2",
+          "name": "NE_STRING",
           "value": 103
         },
         {
-          "name": "SCALE_INV_VEC4",
+          "name": "NE_ENTITY_NAME",
           "value": 104
         },
         {
-          "name": "ELEMENT_ACCESS_VEC2",
+          "name": "NE_SCHEMA_ENUM",
           "value": 105
         },
         {
-          "name": "ELEMENT_ACCESS_VEC3",
+          "name": "NE_EHANDLE",
           "value": 106
         },
         {
-          "name": "ELEMENT_ACCESS_VEC4",
+          "name": "NE_PANEL_HANDLE",
           "value": 107
         },
         {
-          "name": "ELEMENT_ACCESS_COLOR_RGB",
+          "name": "NE_OPAQUE_HANDLE",
           "value": 108
         },
         {
-          "name": "GET_CONST_INLINE_STORAGE",
+          "name": "NE_TEST_HANDLE",
           "value": 109
+        },
+        {
+          "name": "NE_COLOR_RGB",
+          "value": 110
+        },
+        {
+          "name": "NE_ARRAY",
+          "value": 111
+        },
+        {
+          "name": "NE_GAMETIME",
+          "value": 112
+        },
+        {
+          "name": "SCALE_VEC3",
+          "value": 113
+        },
+        {
+          "name": "SCALE_VEC2",
+          "value": 114
+        },
+        {
+          "name": "SCALE_VEC4",
+          "value": 115
+        },
+        {
+          "name": "SCALE_INV_VEC3",
+          "value": 116
+        },
+        {
+          "name": "SCALE_INV_VEC2",
+          "value": 117
+        },
+        {
+          "name": "SCALE_INV_VEC4",
+          "value": 118
+        },
+        {
+          "name": "ELEMENT_ACCESS_VEC2",
+          "value": 119
+        },
+        {
+          "name": "ELEMENT_ACCESS_VEC3",
+          "value": 120
+        },
+        {
+          "name": "ELEMENT_ACCESS_VEC3WS",
+          "value": 121
+        },
+        {
+          "name": "ELEMENT_ACCESS_VEC4",
+          "value": 122
+        },
+        {
+          "name": "ELEMENT_ACCESS_COLOR_RGB",
+          "value": 123
+        },
+        {
+          "name": "GET_CONST_INLINE_STORAGE",
+          "value": 124
         }
       ]
     },
@@ -111102,6 +112467,10 @@
     "RenderBufferFlags_t": {
       "align": 4,
       "items": [
+        {
+          "name": "RENDER_BUFFER_USAGE_NONE",
+          "value": 0
+        },
         {
           "name": "RENDER_BUFFER_USAGE_VERTEX_BUFFER",
           "value": 1
@@ -111469,6 +112838,19 @@
         {
           "name": "SameTimeAsSource",
           "value": 4
+        }
+      ]
+    },
+    "RotatorTargetSpace_t": {
+      "align": 4,
+      "items": [
+        {
+          "name": "ROTATOR_TARGET_WORLDSPACE",
+          "value": 0
+        },
+        {
+          "name": "ROTATOR_TARGET_LOCALSPACE",
+          "value": 1
         }
       ]
     },
@@ -112186,48 +113568,6 @@
         }
       ]
     },
-    "SpawnDebugOverrideState_t": {
-      "align": 4,
-      "items": [
-        {
-          "name": "SPAWN_DEBUG_OVERRIDE_NONE",
-          "value": 0
-        },
-        {
-          "name": "SPAWN_DEBUG_OVERRIDE_FORCE_ENABLED",
-          "value": 1
-        },
-        {
-          "name": "SPAWN_DEBUG_OVERRIDE_FORCE_DISABLED",
-          "value": 2
-        }
-      ]
-    },
-    "SpawnDebugRestrictionOverrideState_t": {
-      "align": 4,
-      "items": [
-        {
-          "name": "SPAWN_DEBUG_RESTRICT_NONE",
-          "value": 0
-        },
-        {
-          "name": "SPAWN_DEBUG_RESTRICT_IGNORE_MANAGER_DISTANCE_REQS",
-          "value": 1
-        },
-        {
-          "name": "SPAWN_DEBUG_RESTRICT_IGNORE_TEMPLATE_DISTANCE_LOS_REQS",
-          "value": 2
-        },
-        {
-          "name": "SPAWN_DEBUG_RESTRICT_IGNORE_TEMPLATE_COOLDOWN_LIMITS",
-          "value": 4
-        },
-        {
-          "name": "SPAWN_DEBUG_RESTRICT_IGNORE_TARGET_COOLDOWN_LIMITS",
-          "value": 8
-        }
-      ]
-    },
     "SpriteCardPerParticleScale_t": {
       "align": 4,
       "items": [
@@ -112689,20 +114029,16 @@
           "value": 8192
         },
         {
-          "name": "DFLAGS_ONLY_DAMAGE_DESTRUCTIBLE_PARTS",
-          "value": 16384
-        },
-        {
           "name": "DMG_LASTDFLAG",
-          "value": 16384
+          "value": 8192
         },
         {
           "name": "DFLAG_IGNORE_ARMOR",
-          "value": 32768
+          "value": 16384
         },
         {
           "name": "DFLAG_SUPPRESS_UTILREMOVE",
-          "value": 65536
+          "value": 32768
         }
       ]
     },
@@ -113061,124 +114397,128 @@
           "value": 7
         },
         {
-          "name": "CMD_CONTROL_REMAP_LINEAR",
+          "name": "CMD_CONTROL_COND_COPY_IF_NEGATIVE",
           "value": 8
         },
         {
-          "name": "CMD_CONTROL_REMAP_SINE",
+          "name": "CMD_CONTROL_REMAP_LINEAR",
           "value": 9
         },
         {
-          "name": "CMD_CONTROL_REMAP_LOGLINEAR",
+          "name": "CMD_CONTROL_REMAP_SINE",
           "value": 10
         },
         {
-          "name": "CMD_CONTROL_MAX",
+          "name": "CMD_CONTROL_REMAP_LOGLINEAR",
           "value": 11
         },
         {
-          "name": "CMD_CONTROL_RESET_TIMER",
+          "name": "CMD_CONTROL_MAX",
           "value": 12
         },
         {
-          "name": "CMD_CONTROL_INCREMENT_TIMER",
+          "name": "CMD_CONTROL_RESET_TIMER",
           "value": 13
         },
         {
-          "name": "CMD_CONTROL_EVAL_ENVELOPE",
+          "name": "CMD_CONTROL_INCREMENT_TIMER",
           "value": 14
         },
         {
-          "name": "CMD_CONTROL_SINE_BLEND",
+          "name": "CMD_CONTROL_EVAL_ENVELOPE",
           "value": 15
         },
         {
-          "name": "CMD_PROCESSOR_SET_CONTROL_VALUE",
+          "name": "CMD_CONTROL_SINE_BLEND",
           "value": 16
         },
         {
-          "name": "CMD_PROCESSOR_SET_NAME_INPUT",
+          "name": "CMD_PROCESSOR_SET_CONTROL_VALUE",
           "value": 17
         },
         {
-          "name": "CMD_PROCESSOR_SET_CONTROL_ARRAYVALUE",
+          "name": "CMD_PROCESSOR_SET_NAME_INPUT",
           "value": 18
         },
         {
-          "name": "CMD_PROCESSOR_STORE_CONTROL_VALUE",
+          "name": "CMD_PROCESSOR_SET_CONTROL_ARRAYVALUE",
           "value": 19
         },
         {
-          "name": "CMD_PROCESSOR_SET_VSND_VALUE",
+          "name": "CMD_PROCESSOR_STORE_CONTROL_VALUE",
           "value": 20
         },
         {
-          "name": "CMD_SUBMIX_PROCESS",
+          "name": "CMD_PROCESSOR_SET_VSND_VALUE",
           "value": 21
         },
         {
-          "name": "CMD_SUBMIX_GENERATE",
+          "name": "CMD_SUBMIX_PROCESS",
           "value": 22
         },
         {
-          "name": "CMD_SUBMIX_GENERATE_SIDECHAIN",
+          "name": "CMD_SUBMIX_GENERATE",
           "value": 23
         },
         {
-          "name": "CMD_SUBMIX_DEBUG",
+          "name": "CMD_SUBMIX_GENERATE_SIDECHAIN",
           "value": 24
         },
         {
-          "name": "CMD_SUBMIX_MIX2x1",
+          "name": "CMD_SUBMIX_DEBUG",
           "value": 25
         },
         {
-          "name": "CMD_SUBMIX_OUTPUT",
+          "name": "CMD_SUBMIX_MIX2x1",
           "value": 26
         },
         {
-          "name": "CMD_SUBMIX_OUTPUTx2",
+          "name": "CMD_SUBMIX_OUTPUT",
           "value": 27
         },
         {
-          "name": "CMD_SUBMIX_COPY",
+          "name": "CMD_SUBMIX_OUTPUTx2",
           "value": 28
         },
         {
-          "name": "CMD_SUBMIX_ACCUMULATE",
+          "name": "CMD_SUBMIX_COPY",
           "value": 29
         },
         {
-          "name": "CMD_SUBMIX_METER",
+          "name": "CMD_SUBMIX_ACCUMULATE",
           "value": 30
         },
         {
-          "name": "CMD_SUBMIX_METER_SPECTRUM",
+          "name": "CMD_SUBMIX_METER",
           "value": 31
         },
         {
-          "name": "CMD_IMPULSERESPONSE_INPUT_STORE",
+          "name": "CMD_SUBMIX_METER_SPECTRUM",
           "value": 32
         },
         {
-          "name": "CMD_PROCESSOR_SET_IMPULSERESPONSE_VALUE",
+          "name": "CMD_IMPULSERESPONSE_INPUT_STORE",
           "value": 33
         },
         {
-          "name": "CMD_REMAP_VSND_TO_IMPULSERESPONSE",
+          "name": "CMD_PROCESSOR_SET_IMPULSERESPONSE_VALUE",
           "value": 34
         },
         {
-          "name": "CMD_IMPULSERESPONSE_RESET",
+          "name": "CMD_REMAP_VSND_TO_IMPULSERESPONSE",
           "value": 35
         },
         {
-          "name": "CMD_BLEND_VSNDS_TO_IMPULSERESPONSE",
+          "name": "CMD_IMPULSERESPONSE_RESET",
           "value": 36
         },
         {
-          "name": "CMD_IMPULSERESPONSE_DELAY",
+          "name": "CMD_BLEND_VSNDS_TO_IMPULSERESPONSE",
           "value": 37
+        },
+        {
+          "name": "CMD_IMPULSERESPONSE_DELAY",
+          "value": 38
         }
       ]
     },

@@ -54,4 +54,8 @@ public partial class CCSPlayerController_InventoryServices : CPlayerControllerCo
 	[SchemaMember("CCSPlayerController_InventoryServices", "m_vecServerAuthoritativeWeaponSlots")]
 	public NetworkedVector<ServerAuthoritativeWeaponSlot_t> ServerAuthoritativeWeaponSlots => Schema.GetDeclaredClass<NetworkedVector<ServerAuthoritativeWeaponSlot_t>>(this.Handle, "CCSPlayerController_InventoryServices", "m_vecServerAuthoritativeWeaponSlots");
 
+	// m_vecNetworkableLoadout
+	[SchemaMember("CCSPlayerController_InventoryServices", "m_vecNetworkableLoadout")]
+	public NetworkedVector<CSNetworkableLoadout_t> NetworkableLoadout => Schema.GetDeclaredClass<NetworkedVector<CSNetworkableLoadout_t>>(this.Handle, "CCSPlayerController_InventoryServices", "m_vecNetworkableLoadout");
+
 }

@@ -54,6 +54,10 @@ public partial class CSplineConstraint : CPhysConstraint
 	[SchemaMember("CSplineConstraint", "m_flLinarDampingRatio")]
 	public ref float LinarDampingRatio => ref Schema.GetRef<float>(this.Handle, "CSplineConstraint", "m_flLinarDampingRatio");
 
+	// m_flJointFriction
+	[SchemaMember("CSplineConstraint", "m_flJointFriction")]
+	public ref float JointFriction => ref Schema.GetRef<float>(this.Handle, "CSplineConstraint", "m_flJointFriction");
+
 	// m_vPreSolveAnchorPos
 	[SchemaMember("CSplineConstraint", "m_vPreSolveAnchorPos")]
 	public Vector PreSolveAnchorPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CSplineConstraint", "m_vPreSolveAnchorPos");

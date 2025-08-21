@@ -78,10 +78,6 @@ public partial class CTakeDamageInfo : NativeObject
 	[SchemaMember("CTakeDamageInfo", "m_bShouldSpark")]
 	public ref bool ShouldSpark => ref Schema.GetRef<bool>(this.Handle, "CTakeDamageInfo", "m_bShouldSpark");
 
-	// m_flDamageAbsorbed
-	[SchemaMember("CTakeDamageInfo", "m_flDamageAbsorbed")]
-	public ref float DamageAbsorbed => ref Schema.GetRef<float>(this.Handle, "CTakeDamageInfo", "m_flDamageAbsorbed");
-
 	// m_nDamageFlags
 	[SchemaMember("CTakeDamageInfo", "m_nDamageFlags")]
 	public ref TakeDamageFlags_t DamageFlags => ref Schema.GetRef<TakeDamageFlags_t>(this.Handle, "CTakeDamageInfo", "m_nDamageFlags");

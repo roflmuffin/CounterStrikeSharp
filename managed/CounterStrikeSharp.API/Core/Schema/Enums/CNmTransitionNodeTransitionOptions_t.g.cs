@@ -16,4 +16,6 @@ public enum CNmTransitionNodeTransitionOptions_t : byte
 	MatchSyncEventID = 0x5,
 	MatchSyncEventPercentage = 0x6,
 	PreferClosestSyncEventID = 0x7,
+	MatchTimeInSeconds = 0x8,
+	OffsetTimeInSeconds = 0x9,
 }

@@ -8,6 +8,7 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum RenderBufferFlags_t : uint
 {
+	RENDER_BUFFER_USAGE_NONE = 0x0,
 	RENDER_BUFFER_USAGE_VERTEX_BUFFER = 0x1,
 	RENDER_BUFFER_USAGE_INDEX_BUFFER = 0x2,
 	RENDER_BUFFER_USAGE_SHADER_RESOURCE = 0x4,

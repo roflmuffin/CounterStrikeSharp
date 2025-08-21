@@ -102,6 +102,10 @@ public partial class CPhysicsProp : CBreakableProp
 	[SchemaMember("CPhysicsProp", "m_bIsOverrideProp")]
 	public ref bool IsOverrideProp => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bIsOverrideProp");
 
+	// m_flLastBurn
+	[SchemaMember("CPhysicsProp", "m_flLastBurn")]
+	public ref float LastBurn => ref Schema.GetRef<float>(this.Handle, "CPhysicsProp", "m_flLastBurn");
+
 	// m_nDynamicContinuousContactBehavior
 	[SchemaMember("CPhysicsProp", "m_nDynamicContinuousContactBehavior")]
 	public ref DynamicContinuousContactBehavior_t DynamicContinuousContactBehavior => ref Schema.GetRef<DynamicContinuousContactBehavior_t>(this.Handle, "CPhysicsProp", "m_nDynamicContinuousContactBehavior");

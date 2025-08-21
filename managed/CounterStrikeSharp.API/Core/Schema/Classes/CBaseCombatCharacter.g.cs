@@ -42,10 +42,6 @@ public partial class CBaseCombatCharacter : CBaseFlex
 	[SchemaMember("CBaseCombatCharacter", "m_bDeathEventsDispatched")]
 	public ref bool DeathEventsDispatched => ref Schema.GetRef<bool>(this.Handle, "CBaseCombatCharacter", "m_bDeathEventsDispatched");
 
-	// m_iDamageCount
-	[SchemaMember("CBaseCombatCharacter", "m_iDamageCount")]
-	public ref Int32 DamageCount => ref Schema.GetRef<Int32>(this.Handle, "CBaseCombatCharacter", "m_iDamageCount");
-
 	// m_strRelationships
 	[SchemaMember("CBaseCombatCharacter", "m_strRelationships")]
 	public string StrRelationships

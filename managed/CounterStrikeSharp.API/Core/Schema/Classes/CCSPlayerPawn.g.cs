@@ -526,4 +526,8 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 	[SchemaMember("CCSPlayerPawn", "m_fMolotovDamageTime")]
 	public ref float MolotovDamageTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawn", "m_fMolotovDamageTime");
 
+	// m_angEyeAngles
+	[SchemaMember("CCSPlayerPawn", "m_angEyeAngles")]
+	public QAngle EyeAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CCSPlayerPawn", "m_angEyeAngles");
+
 }

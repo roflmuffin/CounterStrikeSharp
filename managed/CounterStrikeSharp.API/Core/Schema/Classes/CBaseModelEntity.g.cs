@@ -178,6 +178,14 @@ public partial class CBaseModelEntity : CBaseEntity
 	[SchemaMember("CBaseModelEntity", "m_flDecalHealHeightRate")]
 	public ref float DecalHealHeightRate => ref Schema.GetRef<float>(this.Handle, "CBaseModelEntity", "m_flDecalHealHeightRate");
 
+	// m_nDecalMode
+	[SchemaMember("CBaseModelEntity", "m_nDecalMode")]
+	public ref DecalMode_t DecalMode => ref Schema.GetRef<DecalMode_t>(this.Handle, "CBaseModelEntity", "m_nDecalMode");
+
+	// m_nRequiredDecalMode
+	[SchemaMember("CBaseModelEntity", "m_nRequiredDecalMode")]
+	public ref DecalMode_t RequiredDecalMode => ref Schema.GetRef<DecalMode_t>(this.Handle, "CBaseModelEntity", "m_nRequiredDecalMode");
+
 	// m_ConfigEntitiesToPropagateMaterialDecalsTo
 	[SchemaMember("CBaseModelEntity", "m_ConfigEntitiesToPropagateMaterialDecalsTo")]
 	public NetworkedVector<CHandle<CBaseModelEntity>> ConfigEntitiesToPropagateMaterialDecalsTo => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseModelEntity>>>(this.Handle, "CBaseModelEntity", "m_ConfigEntitiesToPropagateMaterialDecalsTo");
