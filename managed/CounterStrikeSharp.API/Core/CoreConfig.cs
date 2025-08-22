@@ -53,6 +53,9 @@ namespace CounterStrikeSharp.API.Core
         [JsonPropertyName("PluginAutoLoadEnabled")]
         public bool PluginAutoLoadEnabled { get; set; } = true;
 
+        [JsonPropertyName("UseExperimentalPluginDependencyResolver")]
+        public bool UseExperimentalPluginDependencyResolver { get; set; }
+
         [JsonPropertyName("ServerLanguage")]
         public string ServerLanguage { get; set; } = "en";
 
@@ -114,6 +117,8 @@ namespace CounterStrikeSharp.API.Core
         /// When enabled, plugins are automatically loaded from the plugins directory on server start.
         /// </summary>
         public static bool PluginAutoLoadEnabled => _coreConfig.PluginAutoLoadEnabled;
+
+        public static bool UseExperimentalPluginDependencyResolver => _coreConfig.UseExperimentalPluginDependencyResolver;
 
         public static string ServerLanguage => _coreConfig.ServerLanguage;
 
