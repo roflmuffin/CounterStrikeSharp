@@ -43,7 +43,7 @@
     "signatures": {
       "library": "server",
       "windows": "48 ? ? 55 53 56 57 41 ? 48 ? ? ? 48 ? ? ? ? ? ? 4C 89 68",
-      "linux": "55 48 89 E5 41 57 41 56 49 89 FE 41 55 41 54 53 48 83 EC 58 E8"
+      "linux": "55 48 89 E5 41 57 41 56 41 55 41 54 53 48 89 FB 48 83 EC 58 E8 ? ? ? ? F3 0F 10 83"
     }
   },
   "CGameEventManager_Init": {
@@ -278,7 +278,7 @@
       "linux": 26
     }
   },
-  "ISource2GameEntities::CheckTransmit": {
+  "ISource2GameEntities_CheckTransmit": {
     "offsets": {
       "windows": 12,
       "linux": 13
