@@ -183,7 +183,7 @@
   "CBasePlayerPawn_CommitSuicide": {
     "offsets": {
       "windows": 404,
-      "linux": 404
+      "linux": 403
     }
   },
   "CBasePlayerPawn_RemovePlayerItem": {
