@@ -1,21 +1,6 @@
-﻿/*
- *  This file is part of CounterStrikeSharp.
- *  CounterStrikeSharp is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  CounterStrikeSharp is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
- */
-
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -30,26 +15,23 @@ namespace CounterStrikeSharp.API
 {
     public static class Utilities
     {
-        // https://github.com/dotabuff/manta/blob/master/entity.go#L186-L190
+        // Max entity bits & constants
         public const int MaxEdictBits = 15;
         public const int MaxEdicts = 1 << MaxEdictBits;
         public const int NumEHandleSerialNumberBits = 17;
         public const uint InvalidEHandleIndex = 0xFFFFFFFF;
 
+        // Convert enum flags to list
         public static IEnumerable<T> FlagsToList<T>(this T flags) where T : Enum
         {
-            return Enum.GetValues(typeof(T)).Cast<T>()
-                .Where(x => flags.HasFlag(x)).AsEnumerable();
+            return Enum.GetValues(typeof(T)).Cast<T>().Where(x => flags.HasFlag(x));
         }
 
+        // Entity retrieval
         public static T? GetEntityFromIndex<T>(int index) where T : CEntityInstance
         {
             var entityPtr = EntitySystem.GetEntityByIndex((uint)index);
-            if (entityPtr is null || entityPtr == IntPtr.Zero)
-            {
-                return null;
-            }
-
+            if (entityPtr == IntPtr.Zero) return null;
             return (T)Activator.CreateInstance(typeof(T), entityPtr)!;
         }
 
@@ -58,105 +40,80 @@ namespace CounterStrikeSharp.API
             return (T?)Activator.CreateInstance(typeof(T), VirtualFunctions.UTIL_CreateEntityByName(name, -1));
         }
 
+        // Player retrieval
         public static CCSPlayerController? GetPlayerFromIndex(int index)
         {
             var player = GetEntityFromIndex<CCSPlayerController>(index);
-            if (player == null || player.DesignerName != "cs_player_controller")
-            {
-                return null;
-            }
-
-            return player;
+            return player?.DesignerName == "cs_player_controller" ? player : null;
         }
 
-        public static CCSPlayerController? GetPlayerFromSlot(int slot)
-        {
-            return GetPlayerFromIndex(slot + 1);
-        }
+        public static CCSPlayerController? GetPlayerFromSlot(int slot) => GetPlayerFromIndex(slot + 1);
+        public static CCSPlayerController? GetPlayerFromUserid(int userid) => GetPlayerFromIndex((userid & 0xFF) + 1);
+        public static CCSPlayerController? GetPlayerFromSteamId(ulong steamId) =>
+            GetPlayers().FirstOrDefault(player => player.AuthorizedSteamID == (SteamID)steamId);
 
-        public static CCSPlayerController? GetPlayerFromUserid(int userid)
-        {
-            return GetPlayerFromIndex((userid & 0xFF) + 1);
-        }
+        // Targeting
+        public static TargetResult ProcessTargetString(string pattern, CCSPlayerController player) =>
+            new Target(pattern).GetTarget(player);
 
-        public static CCSPlayerController? GetPlayerFromSteamId(ulong steamId)
-        {
-            return Utilities.GetPlayers().FirstOrDefault(player => player.AuthorizedSteamID == (SteamID)steamId);
-        }
-
-        public static TargetResult ProcessTargetString(string pattern, CCSPlayerController player)
-        {
-            return new Target(pattern).GetTarget(player);
-        }
-
-        public static bool RemoveItemByDesignerName(this CCSPlayerController player, string designerName)
-        {
-            return RemoveItemByDesignerName(player, designerName, false);
-        }
+        // Item removal
+        public static bool RemoveItemByDesignerName(this CCSPlayerController player, string designerName) =>
+            RemoveItemByDesignerName(player, designerName, false);
 
         public static bool RemoveItemByDesignerName(this CCSPlayerController player, string designerName, bool shouldRemoveEntity)
         {
+            if (player.PlayerPawn.Value?.WeaponServices == null) return false;
+
             CHandle<CBasePlayerWeapon>? item = null;
-            if (player.PlayerPawn.Value == null || player.PlayerPawn.Value.WeaponServices == null) return false;
 
             foreach (var weapon in player.PlayerPawn.Value.WeaponServices.MyWeapons)
             {
-                if (weapon is not { IsValid: true, Value.IsValid: true })
-                    continue;
-                if (weapon.Value.DesignerName != designerName)
-                    continue;
-
+                if (weapon?.IsValid != true || !weapon.Value.IsValid) continue;
+                if (weapon.Value.DesignerName != designerName) continue;
                 item = weapon;
             }
 
-            if (item != null && item.Value != null)
+            if (item?.Value != null)
             {
                 player.PlayerPawn.Value.RemovePlayerItem(item.Value);
-
-                if (shouldRemoveEntity)
-                {
-                    item.Value.Remove();
-                }
-
+                if (shouldRemoveEntity) item.Value.Remove();
                 return true;
             }
 
             return false;
         }
 
+        // Entity searches
         public static IEnumerable<T> FindAllEntitiesByDesignerName<T>(string designerName) where T : CEntityInstance
         {
-            var pEntity = new CEntityIdentity(EntitySystem.FirstActiveEntity);
-            for (; pEntity != null && pEntity.Handle != IntPtr.Zero; pEntity = pEntity.Next)
+            for (var pEntity = new CEntityIdentity(EntitySystem.FirstActiveEntity);
+                 pEntity != null && pEntity.Handle != IntPtr.Zero;
+                 pEntity = pEntity.Next)
             {
-                if (pEntity.DesignerName == null || !pEntity.DesignerName.Contains(designerName)) continue;
+                if (pEntity.DesignerName?.Contains(designerName) != true) continue;
                 yield return new PointerTo<T>(pEntity.Handle).Value;
             }
         }
 
         public static IEnumerable<CEntityInstance> GetAllEntities()
         {
-            var pEntity = new CEntityIdentity(EntitySystem.FirstActiveEntity);
-            for (; pEntity != null && pEntity.Handle != IntPtr.Zero; pEntity = pEntity.Next)
+            for (var pEntity = new CEntityIdentity(EntitySystem.FirstActiveEntity);
+                 pEntity != null && pEntity.Handle != IntPtr.Zero;
+                 pEntity = pEntity.Next)
             {
                 yield return new PointerTo<CEntityInstance>(pEntity.Handle).Value;
             }
         }
 
-        /// <summary>
-        /// Returns a list of <see cref="CCSPlayerController"/> that are valid and have a valid <see cref="CCSPlayerController.UserId"/> >= 0
-        /// </summary>
+        // Player list
         public static List<CCSPlayerController> GetPlayers()
         {
-            List<CCSPlayerController> players = new();
+            var players = new List<CCSPlayerController>();
 
             for (int i = 0; i < Server.MaxPlayers; i++)
             {
                 var controller = GetPlayerFromSlot(i);
-
-                if (controller == null || !controller.IsValid || controller.Connected != PlayerConnectedState.PlayerConnected)
-                    continue;
-
+                if (controller == null || !controller.IsValid || controller.Connected != PlayerConnectedState.PlayerConnected) continue;
                 players.Add(controller);
             }
 
@@ -177,22 +134,16 @@ namespace CounterStrikeSharp.API
             }
         }
 
+        // Pointer & string helpers
         public static unsafe string ReadStringUtf8(IntPtr ptr)
         {
             unsafe
             {
                 var nativeUtf8 = Unsafe.Read<IntPtr>((void*)ptr);
+                if (nativeUtf8 == IntPtr.Zero) return null;
 
-                if (nativeUtf8 == IntPtr.Zero)
-                {
-                    return null;
-                }
-
-                var len = 0;
-                while (Marshal.ReadByte(nativeUtf8, len) != 0)
-                {
-                    ++len;
-                }
+                int len = 0;
+                while (Marshal.ReadByte(nativeUtf8, len) != 0) len++;
 
                 var buffer = new byte[len];
                 Marshal.Copy(nativeUtf8, buffer, 0, buffer.Length);
@@ -202,26 +153,14 @@ namespace CounterStrikeSharp.API
 
         public static T? GetPointer<T>(IntPtr pointer) where T : NativeObject
         {
-            var pointerTo = Marshal.ReadIntPtr(pointer);
-            if (pointerTo == IntPtr.Zero)
-            {
-                return null;
-            }
-
-            return (T)Activator.CreateInstance(typeof(T), pointerTo)!;
+            var ptr = Marshal.ReadIntPtr(pointer);
+            if (ptr == IntPtr.Zero) return null;
+            return (T)Activator.CreateInstance(typeof(T), ptr)!;
         }
 
         private static int FindSchemaChain(string className) => Schema.GetSchemaOffset(className, "__m_pChainEntity");
 
-        /// <summary>
-        /// Marks a field as changed for network transmission.
-        /// Not all schema fields are network enabled, so please check the schema before using this.
-        /// </summary>
-        /// <param name="entity">Entity to update</param>
-        /// <param name="className" example="CBaseEntity">Schema field class name</param>
-        /// <param name="fieldName" example="m_iHealth">Schema field name</param>
-        /// <param name="extraOffset">Any additional offset to the schema field</param>
-        /// <exception cref="InvalidOperationException">Entity is not valid</exception>
+        // Networked state update
         public static void SetStateChanged(CBaseEntity entity, string className, string fieldName, int extraOffset = 0)
         {
             Guard.IsValidEntity(entity);
@@ -237,31 +176,19 @@ namespace CounterStrikeSharp.API
             int chainOffset = FindSchemaChain(className);
 
             if (chainOffset != 0)
-            {
                 NativeAPI.SchemaNetworkStateChanged(entity.Handle + chainOffset, (uint)(offset + extraOffset), 0xFFFFFFFF, 0xFFFFFFFF);
-                return;
-            }
-
-            NativeAPI.SchemaSetStateChanged(entity.Handle, (uint)(offset + extraOffset), 0xFFFFFFFF, 0xFFFFFFFF);
+            else
+                NativeAPI.SchemaSetStateChanged(entity.Handle, (uint)(offset + extraOffset), 0xFFFFFFFF, 0xFFFFFFFF);
 
             entity.LastNetworkChange = Server.CurrentTime;
             entity.IsSteadyState.Clear();
         }
 
-        /// <summary>
-        /// metamod method 'MetaFactory' to get the pointer of api interface exposed by metamod plugins.
-        /// Returns null when the interface cannot be found.
-        /// </summary>
-        /// <param name="interfaceName">The interface name of metamod api, can be found in their api header file</param>
+        // Metamod API pointer
         public static IntPtr? MetaFactory(string interfaceName)
         {
-            IntPtr ptr = NativeAPI.MetaFactory(interfaceName);
-            if (ptr == 0)
-            {
-                return null;
-            }
-
-            return ptr;
+            var ptr = NativeAPI.MetaFactory(interfaceName);
+            return ptr != IntPtr.Zero ? ptr : null;
         }
     }
 }
