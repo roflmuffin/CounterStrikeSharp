@@ -93,11 +93,12 @@ class ValveFunction
     void SetOffset(int offset) { m_offset = offset; }
     void SetSignature(const char* signature) { m_signature = signature; }
 
-    void Call(ScriptContext& args, int offset = 0);
+    void Call(ScriptContext& args, int offset = 0, bool bypass = false);
     void AddHook(CallbackT callable, bool post);
     void RemoveHook(CallbackT callable, bool post);
 
     void* m_ulAddr;
+    void* m_trampoline;
     std::vector<DataType_t> m_Args;
     DataType_t m_eReturnType;
 

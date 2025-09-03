@@ -35,17 +35,17 @@ namespace CounterStrikeSharp.API.Modules.Memory
 
         #region Void Actions
 
-        public static Action Create(IntPtr objectPtr, int offset)
+        public static Action Create(IntPtr objectPtr, int offset, bool bypasshook = false)
         {
             var arguments = Enumerable.Empty<DataType>().ToArray();
 
             var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments,
                 DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
-            return () => { NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, new object[] { }); };
+            return () => { NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook, new object[] { }); };
         }
 
-        public static Action<TArg1> CreateVoid<TArg1>(IntPtr objectPtr, int offset)
+        public static Action<TArg1> CreateVoid<TArg1>(IntPtr objectPtr, int offset, bool bypasshook = false)
         {
             var arguments = new[]
             {
@@ -62,11 +62,11 @@ namespace CounterStrikeSharp.API.Modules.Memory
 
             return (arg1) =>
             {
-                NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, new object[] { arg1 });
+                NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook, new object[] { arg1 });
             };
         }
 
-        public static Action<TArg1, TArg2> CreateVoid<TArg1, TArg2>(IntPtr objectPtr, int offset)
+        public static Action<TArg1, TArg2> CreateVoid<TArg1, TArg2>(IntPtr objectPtr, int offset, bool bypasshook = false)
         {
             var arguments = new[]
             {
@@ -84,11 +84,11 @@ namespace CounterStrikeSharp.API.Modules.Memory
 
             return (arg1, arg2) =>
             {
-                NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, new object[] { arg1, arg2 });
+                NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook, new object[] { arg1, arg2 });
             };
         }
 
-        public static Action<TArg1, TArg2, TArg3> CreateVoid<TArg1, TArg2, TArg3>(IntPtr objectPtr, int offset)
+        public static Action<TArg1, TArg2, TArg3> CreateVoid<TArg1, TArg2, TArg3>(IntPtr objectPtr, int offset, bool bypasshook = false)
         {
             var arguments = new[]
             {
@@ -107,12 +107,12 @@ namespace CounterStrikeSharp.API.Modules.Memory
 
             return (arg1, arg2, arg3) =>
             {
-                NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, new object[] { arg1, arg2, arg3 });
+                NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook, new object[] { arg1, arg2, arg3 });
             };
         }
 
         public static Action<TArg1, TArg2, TArg3, TArg4> CreateVoid<TArg1, TArg2, TArg3, TArg4>(IntPtr objectPtr,
-            int offset)
+            int offset, bool bypasshook = false)
         {
             var arguments = new[]
             {
@@ -132,13 +132,13 @@ namespace CounterStrikeSharp.API.Modules.Memory
 
             return (arg1, arg2, arg3, arg4) =>
             {
-                NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer,
+                NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook,
                     new object[] { arg1, arg2, arg3, arg4 });
             };
         }
 
         public static Action<TArg1, TArg2, TArg3, TArg4, TArg5> CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5>(
-            IntPtr objectPtr, int offset)
+            IntPtr objectPtr, int offset, bool bypasshook = false)
         {
             var arguments = new[]
             {
@@ -159,14 +159,14 @@ namespace CounterStrikeSharp.API.Modules.Memory
 
             return (arg1, arg2, arg3, arg4, arg5) =>
             {
-                NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer,
+                NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook,
                     new object[] { arg1, arg2, arg3, arg4, arg5 });
             };
         }
 
         public static Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6> CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5,
             TArg6>(
-            IntPtr objectPtr, int offset)
+            IntPtr objectPtr, int offset, bool bypasshook = false)
         {
             var arguments = new[]
             {
@@ -188,14 +188,14 @@ namespace CounterStrikeSharp.API.Modules.Memory
 
             return (arg1, arg2, arg3, arg4, arg5, arg6) =>
             {
-                NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer,
+                NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook,
                     new object[] { arg1, arg2, arg3, arg4, arg5, arg6 });
             };
         }
 
         public static Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7> CreateVoid<TArg1, TArg2, TArg3, TArg4,
             TArg5,
-            TArg6, TArg7>(IntPtr objectPtr, int offset)
+            TArg6, TArg7>(IntPtr objectPtr, int offset, bool bypasshook = false)
         {
             var arguments = new[]
             {
@@ -218,14 +218,14 @@ namespace CounterStrikeSharp.API.Modules.Memory
 
             return (arg1, arg2, arg3, arg4, arg5, arg6, arg7) =>
             {
-                NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer,
+                NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook,
                     new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7 });
             };
         }
 
         public static Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8> CreateVoid<TArg1, TArg2, TArg3,
             TArg4,
-            TArg5, TArg6, TArg7, TArg8>(IntPtr objectPtr, int offset)
+            TArg5, TArg6, TArg7, TArg8>(IntPtr objectPtr, int offset, bool bypasshook = false)
         {
             var arguments = new[]
             {
@@ -249,14 +249,14 @@ namespace CounterStrikeSharp.API.Modules.Memory
 
             return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) =>
             {
-                NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer,
+                NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook,
                     new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8 });
             };
         }
 
         public static Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9> CreateVoid<TArg1, TArg2,
             TArg3,
-            TArg4, TArg5, TArg6, TArg7, TArg8, TArg9>(IntPtr objectPtr, int offset)
+            TArg4, TArg5, TArg6, TArg7, TArg8, TArg9>(IntPtr objectPtr, int offset, bool bypasshook = false)
         {
             var arguments = new[]
             {
@@ -281,14 +281,14 @@ namespace CounterStrikeSharp.API.Modules.Memory
 
             return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9) =>
             {
-                NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer,
+                NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook,
                     new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9 });
             };
         }
 
         public static Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10> CreateVoid<TArg1,
             TArg2,
-            TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10>(IntPtr objectPtr, int offset)
+            TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10>(IntPtr objectPtr, int offset, bool bypasshook = false)
         {
             var arguments = new[]
             {
@@ -314,7 +314,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
 
             return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10) =>
             {
-                NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer,
+                NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook,
                     new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10 });
             };
         }
@@ -323,7 +323,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
 
         #region Func
 
-        public static Func<TResult> Create<TResult>(IntPtr objectPtr, int offset)
+        public static Func<TResult> Create<TResult>(IntPtr objectPtr, int offset, bool bypasshook = false)
         {
             var arguments = Enumerable.Empty<DataType>().ToArray();
 
@@ -335,10 +335,10 @@ namespace CounterStrikeSharp.API.Modules.Memory
             var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments,
                 (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
-            return () => NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, new object[] { });
+            return () => NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, bypasshook, new object[] { });
         }
 
-        public static Func<TArg1, TResult> Create<TArg1, TResult>(IntPtr objectPtr, int offset)
+        public static Func<TArg1, TResult> Create<TArg1, TResult>(IntPtr objectPtr, int offset, bool bypasshook = false)
         {
             var arguments = new[]
             {
@@ -353,10 +353,10 @@ namespace CounterStrikeSharp.API.Modules.Memory
             var virtualFunctionPointer = CreateVirtualFunction(objectPtr, offset, arguments.Cast<DataType>(),
                 (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
-            return (arg1) => NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, new object[] { arg1 });
+            return (arg1) => NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, bypasshook, new object[] { arg1 });
         }
 
-        public static Func<TArg1, TArg2, TResult> Create<TArg1, TArg2, TResult>(IntPtr objectPtr, int offset)
+        public static Func<TArg1, TArg2, TResult> Create<TArg1, TArg2, TResult>(IntPtr objectPtr, int offset, bool bypasshook = false)
         {
             var arguments = new[]
             {
@@ -373,11 +373,11 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
             return (arg1, arg2) =>
-                NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, new object[] { arg1, arg2 });
+                NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, bypasshook, new object[] { arg1, arg2 });
         }
 
         public static Func<TArg1, TArg2, TArg3, TResult> Create<TArg1, TArg2, TArg3, TResult>(IntPtr objectPtr,
-            int offset)
+            int offset, bool bypasshook = false)
         {
             var arguments = new[]
             {
@@ -395,11 +395,11 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
             return (arg1, arg2, arg3) =>
-                NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, new object[] { arg1, arg2, arg3 });
+                NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, bypasshook, new object[] { arg1, arg2, arg3 });
         }
 
         public static Func<TArg1, TArg2, TArg3, TArg4, TResult> Create<TArg1, TArg2, TArg3, TArg4, TResult>(
-            IntPtr objectPtr, int offset)
+            IntPtr objectPtr, int offset, bool bypasshook = false)
         {
             var arguments = new[]
             {
@@ -418,12 +418,12 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
             return (arg1, arg2, arg3, arg4) =>
-                NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer,
+                NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, bypasshook,
                     new object[] { arg1, arg2, arg3, arg4 });
         }
 
         public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TResult> Create<TArg1, TArg2, TArg3, TArg4, TArg5,
-            TResult>(IntPtr objectPtr, int offset)
+            TResult>(IntPtr objectPtr, int offset, bool bypasshook = false)
         {
             var arguments = new[]
             {
@@ -443,12 +443,12 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
             return (arg1, arg2, arg3, arg4, arg5) =>
-                NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer,
+                NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, bypasshook,
                     new object[] { arg1, arg2, arg3, arg4, arg5 });
         }
 
         public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TResult> Create<TArg1, TArg2, TArg3, TArg4, TArg5,
-            TArg6, TResult>(IntPtr objectPtr, int offset)
+            TArg6, TResult>(IntPtr objectPtr, int offset, bool bypasshook = false)
         {
             var arguments = new[]
             {
@@ -469,12 +469,12 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
             return (arg1, arg2, arg3, arg4, arg5, arg6) =>
-                NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer,
+                NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, bypasshook,
                     new object[] { arg1, arg2, arg3, arg4, arg5, arg6 });
         }
 
         public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TResult> Create<TArg1, TArg2, TArg3, TArg4,
-            TArg5, TArg6, TArg7, TResult>(IntPtr objectPtr, int offset)
+            TArg5, TArg6, TArg7, TResult>(IntPtr objectPtr, int offset, bool bypasshook = false)
         {
             var arguments = new[]
             {
@@ -496,12 +496,12 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
             return (arg1, arg2, arg3, arg4, arg5, arg6, arg7) =>
-                NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer,
+                NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, bypasshook,
                     new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7 });
         }
 
         public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TResult> Create<TArg1, TArg2, TArg3,
-            TArg4, TArg5, TArg6, TArg7, TArg8, TResult>(IntPtr objectPtr, int offset)
+            TArg4, TArg5, TArg6, TArg7, TArg8, TResult>(IntPtr objectPtr, int offset, bool bypasshook = false)
         {
             var arguments = new[]
             {
@@ -524,12 +524,12 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
             return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) =>
-                NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer,
+                NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, bypasshook,
                     new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8 });
         }
 
         public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult> Create<TArg1, TArg2,
-            TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult>(IntPtr objectPtr, int offset)
+            TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult>(IntPtr objectPtr, int offset, bool bypasshook = false)
         {
             var arguments = new[]
             {
@@ -553,12 +553,12 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
             return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9) =>
-                NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer,
+                NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, bypasshook,
                     new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9 });
         }
 
         public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult> Create<TArg1,
-            TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult>(IntPtr objectPtr, int offset)
+            TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult>(IntPtr objectPtr, int offset, bool bypasshook = false)
         {
             var arguments = new[]
             {
@@ -583,7 +583,7 @@ namespace CounterStrikeSharp.API.Modules.Memory
                 (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
             return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10) =>
-                NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer,
+                NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, bypasshook,
                     new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10 });
         }
 
