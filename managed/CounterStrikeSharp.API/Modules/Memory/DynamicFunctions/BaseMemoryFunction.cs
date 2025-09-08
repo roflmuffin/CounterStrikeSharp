@@ -67,13 +67,13 @@ public abstract class BaseMemoryFunction : NativeObject
         NativeAPI.UnhookFunction(Handle, handler, mode == HookMode.Post);
     }
 
-    protected T InvokeInternal<T>(bool bypass, params object[] args)
+    protected T InvokeInternal<T>(params object[] args)
     {
-        return NativeAPI.ExecuteVirtualFunction<T>(Handle, bypass, args);
+        return NativeAPI.ExecuteVirtualFunction<T>(Handle, args);
     }
 
-    protected void InvokeInternalVoid(bool bypass, params object[] args)
+    protected void InvokeInternalVoid(params object[] args)
     {
-        NativeAPI.ExecuteVirtualFunction<object>(Handle, bypass, args);
+        NativeAPI.ExecuteVirtualFunction<object>(Handle, args);
     }
 }
