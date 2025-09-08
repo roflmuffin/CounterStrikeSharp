@@ -28,7 +28,7 @@
   },
   "CCSPlayerController_Respawn": {
     "offsets": {
-      "windows": 275,
+      "windows": 274,
       "linux": 276
     }
   },
@@ -182,7 +182,7 @@
   },
   "CBasePlayerPawn_CommitSuicide": {
     "offsets": {
-      "windows": 404,
+      "windows": 403,
       "linux": 403
     }
   },
