@@ -127,6 +127,7 @@ void UnhookFunction(ScriptContext& script_context)
 void ExecuteVirtualFunction(ScriptContext& script_context)
 {
     auto function = script_context.GetArgument<ValveFunction*>(0);
+    auto bypasshook = script_context.GetArgument<bool>(1);
 
     if (!function)
     {
@@ -134,7 +135,7 @@ void ExecuteVirtualFunction(ScriptContext& script_context)
         return;
     }
 
-    function->Call(script_context, 1);
+    function->Call(script_context, 2, bypasshook);
 }
 
 int GetNetworkVectorSize(ScriptContext& script_context)

@@ -1,3 +1,12 @@
+## What's Changed in v1.0.339
+* Fixed offset values of Respawn and Slay for Windows by [@zakriamansoor47](https://github.com/zakriamansoor47) in [#1026](https://github.com/roflmuffin/CounterStrikeSharp/pull/1026) ([54f8d5e](https://github.com/roflmuffin/CounterStrikeSharp/commit/54f8d5ef95dd4aa0ccf118ff734fdf5adf6b4d32))
+
+## New Contributors
+* [@zakriamansoor47](https://github.com/zakriamansoor47) made their first contribution in [#1026](https://github.com/roflmuffin/CounterStrikeSharp/pull/1026)
+
+## What's Changed in v1.0.338
+* Update gamedata.json by [@xLeviNx](https://github.com/xLeviNx) in [#1020](https://github.com/roflmuffin/CounterStrikeSharp/pull/1020) ([72d66cb](https://github.com/roflmuffin/CounterStrikeSharp/commit/72d66cb5d52ccaa87881a40663fb7891007398e0))
+
 ## What's Changed in v1.0.337
 * feat(schema): add new schema classes for build 19644975 ([fc7301a](https://github.com/roflmuffin/CounterStrikeSharp/commit/fc7301a8d374ea8888f01703e43fd2d5a8bad488))
 * feat(schema): update schema classes for build 19644975 ([ef4b8f9](https://github.com/roflmuffin/CounterStrikeSharp/commit/ef4b8f9442eee6ddeadcb0fa8775c2eba7108e90))

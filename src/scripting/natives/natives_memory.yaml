@@ -2,7 +2,7 @@ CREATE_VIRTUAL_FUNCTION: pointer:pointer,vtableOffset:int,numArguments:int,retur
 CREATE_VIRTUAL_FUNCTION_BY_SIGNATURE: pointer:pointer,binaryName:string,signature:string,numArguments:int,returnType:int,arguments:object[] -> pointer
 HOOK_FUNCTION: function:pointer, hook:callback, post:bool -> void
 UNHOOK_FUNCTION: function:pointer, hook:callback, post:bool -> void
-EXECUTE_VIRTUAL_FUNCTION: function:pointer,arguments:object[] -> any
+EXECUTE_VIRTUAL_FUNCTION: function:pointer, bypass:bool, arguments:object[] -> any
 FIND_SIGNATURE: modulePath:string, signature:string -> pointer
 GET_NETWORK_VECTOR_SIZE: vec:pointer -> int
 GET_NETWORK_VECTOR_ELEMENT_AT: vec:pointer, index:int -> pointer
