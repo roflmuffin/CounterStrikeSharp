@@ -111,7 +111,7 @@ template <class ReturnType, class Function> ReturnType CallHelper(Function func,
 
 void CallHelperVoid(DCCallVM* vm, void* addr) { dcCallVoid(vm, (void*)addr); }
 
-void ValveFunction::Call(ScriptContext& script_context, int offset)
+void ValveFunction::Call(ScriptContext& script_context, int offset, bool bypass)
 {
     if (!IsCallable()) return;
 
@@ -174,55 +174,61 @@ void ValveFunction::Call(ScriptContext& script_context, int offset)
         }
     }
 
+    void* m_target = m_ulAddr;
+    if (bypass && m_trampoline)
+    {
+        m_target = m_trampoline;
+    }
+
     switch (m_eReturnType)
     {
         case DATA_TYPE_VOID:
-            CallHelperVoid(g_pCallVM, m_ulAddr);
+            CallHelperVoid(g_pCallVM, m_target);
             break;
         case DATA_TYPE_BOOL:
-            script_context.SetResult(CallHelper<bool>(dcCallBool, g_pCallVM, m_ulAddr));
+            script_context.SetResult(CallHelper<bool>(dcCallBool, g_pCallVM, m_target));
             break;
         case DATA_TYPE_CHAR:
-            script_context.SetResult(CallHelper<char>(dcCallChar, g_pCallVM, m_ulAddr));
+            script_context.SetResult(CallHelper<char>(dcCallChar, g_pCallVM, m_target));
             break;
         case DATA_TYPE_UCHAR:
-            script_context.SetResult(CallHelper<unsigned char>(dcCallChar, g_pCallVM, m_ulAddr));
+            script_context.SetResult(CallHelper<unsigned char>(dcCallChar, g_pCallVM, m_target));
             break;
         case DATA_TYPE_SHORT:
-            script_context.SetResult(CallHelper<short>(dcCallShort, g_pCallVM, m_ulAddr));
+            script_context.SetResult(CallHelper<short>(dcCallShort, g_pCallVM, m_target));
             break;
         case DATA_TYPE_USHORT:
-            script_context.SetResult(CallHelper<unsigned short>(dcCallShort, g_pCallVM, m_ulAddr));
+            script_context.SetResult(CallHelper<unsigned short>(dcCallShort, g_pCallVM, m_target));
             break;
         case DATA_TYPE_INT:
-            script_context.SetResult(CallHelper<int>(dcCallInt, g_pCallVM, m_ulAddr));
+            script_context.SetResult(CallHelper<int>(dcCallInt, g_pCallVM, m_target));
             break;
         case DATA_TYPE_UINT:
-            script_context.SetResult(CallHelper<unsigned int>(dcCallInt, g_pCallVM, m_ulAddr));
+            script_context.SetResult(CallHelper<unsigned int>(dcCallInt, g_pCallVM, m_target));
             break;
         case DATA_TYPE_LONG:
-            script_context.SetResult(CallHelper<long>(dcCallLong, g_pCallVM, m_ulAddr));
+            script_context.SetResult(CallHelper<long>(dcCallLong, g_pCallVM, m_target));
             break;
         case DATA_TYPE_ULONG:
-            script_context.SetResult(CallHelper<unsigned long>(dcCallLong, g_pCallVM, m_ulAddr));
+            script_context.SetResult(CallHelper<unsigned long>(dcCallLong, g_pCallVM, m_target));
             break;
         case DATA_TYPE_LONG_LONG:
-            script_context.SetResult(CallHelper<long long>(dcCallLongLong, g_pCallVM, m_ulAddr));
+            script_context.SetResult(CallHelper<long long>(dcCallLongLong, g_pCallVM, m_target));
             break;
         case DATA_TYPE_ULONG_LONG:
-            script_context.SetResult(CallHelper<unsigned long long>(dcCallLongLong, g_pCallVM, m_ulAddr));
+            script_context.SetResult(CallHelper<unsigned long long>(dcCallLongLong, g_pCallVM, m_target));
             break;
         case DATA_TYPE_FLOAT:
-            script_context.SetResult(CallHelper<float>(dcCallFloat, g_pCallVM, m_ulAddr));
+            script_context.SetResult(CallHelper<float>(dcCallFloat, g_pCallVM, m_target));
             break;
         case DATA_TYPE_DOUBLE:
-            script_context.SetResult(CallHelper<double>(dcCallDouble, g_pCallVM, m_ulAddr));
+            script_context.SetResult(CallHelper<double>(dcCallDouble, g_pCallVM, m_target));
             break;
         case DATA_TYPE_POINTER:
-            script_context.SetResult(CallHelper<void*>(dcCallPointer, g_pCallVM, m_ulAddr));
+            script_context.SetResult(CallHelper<void*>(dcCallPointer, g_pCallVM, m_target));
             break;
         case DATA_TYPE_STRING:
-            script_context.SetResult(CallHelper<const char*>(dcCallPointer, g_pCallVM, m_ulAddr));
+            script_context.SetResult(CallHelper<const char*>(dcCallPointer, g_pCallVM, m_target));
             break;
         default:
             assert(!"Unknown function return type!");
@@ -287,6 +293,7 @@ void ValveFunction::AddHook(CallbackT callable, bool post)
     g_HookMap[hook] = this;
     hook->addCallback(dyno::HookType::Post, (dyno::HookHandler*)&HookHandler);
     hook->addCallback(dyno::HookType::Pre, (dyno::HookHandler*)&HookHandler);
+    m_trampoline = hook->getOriginal();
 
     if (post)
     {
@@ -316,6 +323,7 @@ void ValveFunction::RemoveHook(CallbackT callable, bool post)
 #endif
     });
     g_HookMap[hook] = this;
+    m_trampoline = nullptr;
 
     if (post)
     {
