@@ -80,7 +80,22 @@ public partial class VirtualFunction
         var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments,
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
-        return () => NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, new object[] { });
+        return () => NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, false, new object[] { });
+    }
+
+    public static Func<TResult> Create<TResult>(string signature, bool bypasshook)
+    {
+        var arguments = Enumerable.Empty<DataType>().ToArray();
+
+        if (typeof(TResult).ToDataType() == null)
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments,
+            (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
+
+        return () => NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, bypasshook, new object[] { });
     }
 
     public static Func<TArg1, TResult> Create<TArg1, TResult>(string signature)
@@ -98,7 +113,25 @@ public partial class VirtualFunction
         var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
-        return (arg1) => NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, new object[] { arg1 });
+        return (arg1) => NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, false, new object[] { arg1 });
+    }
+
+    public static Func<TArg1, TResult> Create<TArg1, TResult>(string signature, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+            (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
+
+        return (arg1) => NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, bypasshook, new object[] { arg1 });
     }
 
     public static Func<TArg1, TArg2, TResult> Create<TArg1, TArg2, TResult>(string signature)
@@ -118,7 +151,27 @@ public partial class VirtualFunction
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2) =>
-            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, new object[] { arg1, arg2 });
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, false, new object[] { arg1, arg2 });
+    }
+
+    public static Func<TArg1, TArg2, TResult> Create<TArg1, TArg2, TResult>(string signature, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+            (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2) =>
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, bypasshook, new object[] { arg1, arg2 });
     }
 
     public static Func<TArg1, TArg2, TArg3, TResult> Create<TArg1, TArg2, TArg3, TResult>(string signature)
@@ -139,7 +192,28 @@ public partial class VirtualFunction
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3) =>
-            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, new object[] { arg1, arg2, arg3 });
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, false, new object[] { arg1, arg2, arg3 });
+    }
+
+    public static Func<TArg1, TArg2, TArg3, TResult> Create<TArg1, TArg2, TArg3, TResult>(string signature, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+            (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3) =>
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, bypasshook, new object[] { arg1, arg2, arg3 });
     }
 
     public static Func<TArg1, TArg2, TArg3, TArg4, TResult> Create<TArg1, TArg2, TArg3, TArg4, TResult>(
@@ -162,7 +236,30 @@ public partial class VirtualFunction
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4) =>
-            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, new object[] { arg1, arg2, arg3, arg4 });
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, false, new object[] { arg1, arg2, arg3, arg4 });
+    }
+
+    public static Func<TArg1, TArg2, TArg3, TArg4, TResult> Create<TArg1, TArg2, TArg3, TArg4, TResult>(
+        string signature, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType(),
+            typeof(TArg4).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+            (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3, arg4) =>
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, bypasshook, new object[] { arg1, arg2, arg3, arg4 });
     }
 
     public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TResult> Create<TArg1, TArg2, TArg3, TArg4, TArg5, TResult>(
@@ -186,7 +283,32 @@ public partial class VirtualFunction
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5) =>
-            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer,
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, false,
+                new object[] { arg1, arg2, arg3, arg4, arg5 });
+    }
+
+    public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TResult> Create<TArg1, TArg2, TArg3, TArg4, TArg5, TResult>(
+        string signature, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType(),
+            typeof(TArg4).ToDataType(),
+            typeof(TArg5).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+            (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3, arg4, arg5) =>
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, bypasshook,
                 new object[] { arg1, arg2, arg3, arg4, arg5 });
     }
 
@@ -212,7 +334,32 @@ public partial class VirtualFunction
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5, arg6) => NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer,
-            new object[] { arg1, arg2, arg3, arg4, arg5, arg6 });
+            false, new object[] { arg1, arg2, arg3, arg4, arg5, arg6 });
+    }
+
+    public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TResult> Create<TArg1, TArg2, TArg3, TArg4, TArg5,
+        TArg6, TResult>(string signature, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType(),
+            typeof(TArg4).ToDataType(),
+            typeof(TArg5).ToDataType(),
+            typeof(TArg6).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+            (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3, arg4, arg5, arg6) => NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer,
+            bypasshook, new object[] { arg1, arg2, arg3, arg4, arg5, arg6 });
     }
 
     public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TResult> Create<TArg1, TArg2, TArg3, TArg4,
@@ -238,7 +385,34 @@ public partial class VirtualFunction
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7) =>
-            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer,
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, false,
+                new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7 });
+    }
+
+    public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TResult> Create<TArg1, TArg2, TArg3, TArg4,
+        TArg5, TArg6, TArg7, TResult>(string signature, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType(),
+            typeof(TArg4).ToDataType(),
+            typeof(TArg5).ToDataType(),
+            typeof(TArg6).ToDataType(),
+            typeof(TArg7).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+            (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3, arg4, arg5, arg6, arg7) =>
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, bypasshook,
                 new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7 });
     }
 
@@ -266,7 +440,35 @@ public partial class VirtualFunction
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) =>
-            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer,
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, false,
+                new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8 });
+    }
+
+    public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TResult> Create<TArg1, TArg2, TArg3,
+        TArg4, TArg5, TArg6, TArg7, TArg8, TResult>(string signature, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType(),
+            typeof(TArg4).ToDataType(),
+            typeof(TArg5).ToDataType(),
+            typeof(TArg6).ToDataType(),
+            typeof(TArg7).ToDataType(),
+            typeof(TArg8).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+            (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) =>
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, bypasshook,
                 new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8 });
     }
 
@@ -295,7 +497,36 @@ public partial class VirtualFunction
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9) =>
-            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer,
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, false,
+                new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9 });
+    }
+
+    public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult> Create<TArg1, TArg2,
+        TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult>(string signature, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType(),
+            typeof(TArg4).ToDataType(),
+            typeof(TArg5).ToDataType(),
+            typeof(TArg6).ToDataType(),
+            typeof(TArg7).ToDataType(),
+            typeof(TArg8).ToDataType(),
+            typeof(TArg9).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+            (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9) =>
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, bypasshook,
                 new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9 });
     }
 
@@ -325,7 +556,37 @@ public partial class VirtualFunction
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10) =>
-            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer,
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, false,
+                new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10 });
+    }
+
+    public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult> Create<TArg1,
+        TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult>(string signature, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType(),
+            typeof(TArg4).ToDataType(),
+            typeof(TArg5).ToDataType(),
+            typeof(TArg6).ToDataType(),
+            typeof(TArg7).ToDataType(),
+            typeof(TArg8).ToDataType(),
+            typeof(TArg9).ToDataType(),
+            typeof(TArg10).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+            (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10) =>
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, bypasshook,
                 new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10 });
     }
 
@@ -344,7 +605,22 @@ public partial class VirtualFunction
         var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath,  arguments,
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
-        return () => NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, new object[] { });
+        return () => NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, false, new object[] { });
+    }
+
+    public static Func<TResult> Create<TResult>(string signature, string binarypath, bool bypasshook)
+    {
+        var arguments = Enumerable.Empty<DataType>().ToArray();
+
+        if (typeof(TResult).ToDataType() == null)
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath,  arguments,
+            (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
+
+        return () => NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, bypasshook, new object[] { });
     }
 
     public static Func<TArg1, TResult> Create<TArg1, TResult>(string signature, string binarypath)
@@ -362,7 +638,25 @@ public partial class VirtualFunction
         var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
-        return (arg1) => NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, new object[] { arg1 });
+        return (arg1) => NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, false, new object[] { arg1 });
+    }
+
+    public static Func<TArg1, TResult> Create<TArg1, TResult>(string signature, string binarypath, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+            (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
+
+        return (arg1) => NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, bypasshook, new object[] { arg1 });
     }
 
     public static Func<TArg1, TArg2, TResult> Create<TArg1, TArg2, TResult>(string signature, string binarypath)
@@ -382,7 +676,27 @@ public partial class VirtualFunction
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2) =>
-            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, new object[] { arg1, arg2 });
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, false, new object[] { arg1, arg2 });
+    }
+
+    public static Func<TArg1, TArg2, TResult> Create<TArg1, TArg2, TResult>(string signature, string binarypath, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+            (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2) =>
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, bypasshook, new object[] { arg1, arg2 });
     }
 
     public static Func<TArg1, TArg2, TArg3, TResult> Create<TArg1, TArg2, TArg3, TResult>(string signature, string binarypath)
@@ -403,7 +717,28 @@ public partial class VirtualFunction
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3) =>
-            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, new object[] { arg1, arg2, arg3 });
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, false, new object[] { arg1, arg2, arg3 });
+    }
+
+    public static Func<TArg1, TArg2, TArg3, TResult> Create<TArg1, TArg2, TArg3, TResult>(string signature, string binarypath, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+            (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3) =>
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, bypasshook, new object[] { arg1, arg2, arg3 });
     }
 
     public static Func<TArg1, TArg2, TArg3, TArg4, TResult> Create<TArg1, TArg2, TArg3, TArg4, TResult>(
@@ -426,7 +761,30 @@ public partial class VirtualFunction
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4) =>
-            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, new object[] { arg1, arg2, arg3, arg4 });
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, false, new object[] { arg1, arg2, arg3, arg4 });
+    }
+
+    public static Func<TArg1, TArg2, TArg3, TArg4, TResult> Create<TArg1, TArg2, TArg3, TArg4, TResult>(
+        string signature, string binarypath, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType(),
+            typeof(TArg4).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+            (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3, arg4) =>
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, bypasshook, new object[] { arg1, arg2, arg3, arg4 });
     }
 
     public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TResult> Create<TArg1, TArg2, TArg3, TArg4, TArg5, TResult>(
@@ -450,7 +808,32 @@ public partial class VirtualFunction
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5) =>
-            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer,
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, false,
+                new object[] { arg1, arg2, arg3, arg4, arg5 });
+    }
+
+    public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TResult> Create<TArg1, TArg2, TArg3, TArg4, TArg5, TResult>(
+        string signature, string binarypath, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType(),
+            typeof(TArg4).ToDataType(),
+            typeof(TArg5).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+            (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3, arg4, arg5) =>
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, bypasshook,
                 new object[] { arg1, arg2, arg3, arg4, arg5 });
     }
 
@@ -476,7 +859,32 @@ public partial class VirtualFunction
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5, arg6) => NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer,
-            new object[] { arg1, arg2, arg3, arg4, arg5, arg6 });
+            false, new object[] { arg1, arg2, arg3, arg4, arg5, arg6 });
+    }
+
+    public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TResult> Create<TArg1, TArg2, TArg3, TArg4, TArg5,
+        TArg6, TResult>(string signature, string binarypath, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType(),
+            typeof(TArg4).ToDataType(),
+            typeof(TArg5).ToDataType(),
+            typeof(TArg6).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+            (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3, arg4, arg5, arg6) => NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer,
+            bypasshook, new object[] { arg1, arg2, arg3, arg4, arg5, arg6 });
     }
 
     public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TResult> Create<TArg1, TArg2, TArg3, TArg4,
@@ -502,7 +910,34 @@ public partial class VirtualFunction
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7) =>
-            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer,
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, false,
+                new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7 });
+    }
+
+    public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TResult> Create<TArg1, TArg2, TArg3, TArg4,
+        TArg5, TArg6, TArg7, TResult>(string signature, string binarypath, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType(),
+            typeof(TArg4).ToDataType(),
+            typeof(TArg5).ToDataType(),
+            typeof(TArg6).ToDataType(),
+            typeof(TArg7).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+            (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3, arg4, arg5, arg6, arg7) =>
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, bypasshook,
                 new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7 });
     }
 
@@ -530,7 +965,35 @@ public partial class VirtualFunction
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) =>
-            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer,
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, false,
+                new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8 });
+    }
+
+    public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TResult> Create<TArg1, TArg2, TArg3,
+        TArg4, TArg5, TArg6, TArg7, TArg8, TResult>(string signature, string binarypath, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType(),
+            typeof(TArg4).ToDataType(),
+            typeof(TArg5).ToDataType(),
+            typeof(TArg6).ToDataType(),
+            typeof(TArg7).ToDataType(),
+            typeof(TArg8).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+            (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) =>
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, bypasshook,
                 new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8 });
     }
 
@@ -559,7 +1022,36 @@ public partial class VirtualFunction
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9) =>
-            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer,
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, false,
+                new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9 });
+    }
+
+    public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult> Create<TArg1, TArg2,
+        TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult>(string signature, string binarypath, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType(),
+            typeof(TArg4).ToDataType(),
+            typeof(TArg5).ToDataType(),
+            typeof(TArg6).ToDataType(),
+            typeof(TArg7).ToDataType(),
+            typeof(TArg8).ToDataType(),
+            typeof(TArg9).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+            (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9) =>
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, bypasshook,
                 new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9 });
     }
 
@@ -589,7 +1081,37 @@ public partial class VirtualFunction
             (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10) =>
-            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer,
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, false,
+                new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10 });
+    }
+
+    public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult> Create<TArg1,
+        TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult>(string signature, string binarypath, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType(),
+            typeof(TArg4).ToDataType(),
+            typeof(TArg5).ToDataType(),
+            typeof(TArg6).ToDataType(),
+            typeof(TArg7).ToDataType(),
+            typeof(TArg8).ToDataType(),
+            typeof(TArg9).ToDataType(),
+            typeof(TArg10).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+            (DataType)typeof(TResult).ToDataType()!, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10) =>
+            NativeAPI.ExecuteVirtualFunction<TResult>(virtualFunctionPointer, bypasshook,
                 new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10 });
     }
     #endregion
@@ -603,7 +1125,17 @@ public partial class VirtualFunction
         var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments,
             DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
-        return () => { NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, new object[] { }); };
+        return () => { NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, false, new object[] { }); };
+    }
+
+    public static Action CreateVoid(string signature, bool bypasshook)
+    {
+        var arguments = Enumerable.Empty<DataType>().ToArray();
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments,
+            DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
+
+        return () => { NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook, new object[] { }); };
     }
 
     public static Action<TArg1> CreateVoid<TArg1>(string signature)
@@ -621,7 +1153,25 @@ public partial class VirtualFunction
         var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
             DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
-        return (arg1) => { NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, new object[] { arg1 }); };
+        return (arg1) => { NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, false, new object[] { arg1 }); };
+    }
+
+    public static Action<TArg1> CreateVoid<TArg1>(string signature, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+            DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
+
+        return (arg1) => { NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook, new object[] { arg1 }); };
     }
 
     public static Action<TArg1, TArg2> CreateVoid<TArg1, TArg2>(string signature)
@@ -642,7 +1192,29 @@ public partial class VirtualFunction
 
         return (arg1, arg2) =>
         {
-            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, new object[] { arg1, arg2 });
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, false, new object[] { arg1, arg2 });
+        };
+    }
+
+    public static Action<TArg1, TArg2> CreateVoid<TArg1, TArg2>(string signature, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+            DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2) =>
+        {
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook, new object[] { arg1, arg2 });
         };
     }
 
@@ -665,7 +1237,30 @@ public partial class VirtualFunction
 
         return (arg1, arg2, arg3) =>
         {
-            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, new object[] { arg1, arg2, arg3 });
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, false, new object[] { arg1, arg2, arg3 });
+        };
+    }
+
+    public static Action<TArg1, TArg2, TArg3> CreateVoid<TArg1, TArg2, TArg3>(string signature, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+            DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3) =>
+        {
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook, new object[] { arg1, arg2, arg3 });
         };
     }
 
@@ -689,7 +1284,32 @@ public partial class VirtualFunction
 
         return (arg1, arg2, arg3, arg4) =>
         {
-            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer,
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, false,
+                new object[] { arg1, arg2, arg3, arg4 });
+        };
+    }
+
+    public static Action<TArg1, TArg2, TArg3, TArg4> CreateVoid<TArg1, TArg2, TArg3, TArg4>(string signature, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType(),
+            typeof(TArg4).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+            DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3, arg4) =>
+        {
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook,
                 new object[] { arg1, arg2, arg3, arg4 });
         };
     }
@@ -716,7 +1336,34 @@ public partial class VirtualFunction
 
         return (arg1, arg2, arg3, arg4, arg5) =>
         {
-            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer,
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, false,
+                new object[] { arg1, arg2, arg3, arg4, arg5 });
+        };
+    }
+
+    public static Action<TArg1, TArg2, TArg3, TArg4, TArg5> CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5>(
+        string signature, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType(),
+            typeof(TArg4).ToDataType(),
+            typeof(TArg5).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+            DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3, arg4, arg5) =>
+        {
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook,
                 new object[] { arg1, arg2, arg3, arg4, arg5 });
         };
     }
@@ -744,7 +1391,35 @@ public partial class VirtualFunction
 
         return (arg1, arg2, arg3, arg4, arg5, arg6) =>
         {
-            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer,
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, false,
+                new object[] { arg1, arg2, arg3, arg4, arg5, arg6 });
+        };
+    }
+
+    public static Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6> CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(
+        string signature, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType(),
+            typeof(TArg4).ToDataType(),
+            typeof(TArg5).ToDataType(),
+            typeof(TArg6).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+            DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3, arg4, arg5, arg6) =>
+        {
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook,
                 new object[] { arg1, arg2, arg3, arg4, arg5, arg6 });
         };
     }
@@ -773,7 +1448,36 @@ public partial class VirtualFunction
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7) =>
         {
-            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer,
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, false,
+                new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7 });
+        };
+    }
+
+    public static Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7> CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5,
+        TArg6, TArg7>(string signature, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType(),
+            typeof(TArg4).ToDataType(),
+            typeof(TArg5).ToDataType(),
+            typeof(TArg6).ToDataType(),
+            typeof(TArg7).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+            DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3, arg4, arg5, arg6, arg7) =>
+        {
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook,
                 new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7 });
         };
     }
@@ -803,7 +1507,37 @@ public partial class VirtualFunction
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) =>
         {
-            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer,
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, false,
+                new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8 });
+        };
+    }
+
+    public static Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8> CreateVoid<TArg1, TArg2, TArg3, TArg4,
+        TArg5, TArg6, TArg7, TArg8>(string signature, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType(),
+            typeof(TArg4).ToDataType(),
+            typeof(TArg5).ToDataType(),
+            typeof(TArg6).ToDataType(),
+            typeof(TArg7).ToDataType(),
+            typeof(TArg8).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+            DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) =>
+        {
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook,
                 new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8 });
         };
     }
@@ -834,7 +1568,38 @@ public partial class VirtualFunction
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9) =>
         {
-            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer,
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, false,
+                new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9 });
+        };
+    }
+
+    public static Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9> CreateVoid<TArg1, TArg2, TArg3,
+        TArg4, TArg5, TArg6, TArg7, TArg8, TArg9>(string signature, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType(),
+            typeof(TArg4).ToDataType(),
+            typeof(TArg5).ToDataType(),
+            typeof(TArg6).ToDataType(),
+            typeof(TArg7).ToDataType(),
+            typeof(TArg8).ToDataType(),
+            typeof(TArg9).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+            DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9) =>
+        {
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook,
                 new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9 });
         };
     }
@@ -866,7 +1631,39 @@ public partial class VirtualFunction
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10) =>
         {
-            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer,
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, false,
+                new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10 });
+        };
+    }
+
+    public static Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10> CreateVoid<TArg1, TArg2,
+        TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10>(string signature, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType(),
+            typeof(TArg4).ToDataType(),
+            typeof(TArg5).ToDataType(),
+            typeof(TArg6).ToDataType(),
+            typeof(TArg7).ToDataType(),
+            typeof(TArg8).ToDataType(),
+            typeof(TArg9).ToDataType(),
+            typeof(TArg10).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, arguments.Cast<DataType>(),
+            DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10) =>
+        {
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook,
                 new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10 });
         };
     }
@@ -881,7 +1678,17 @@ public partial class VirtualFunction
         var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments,
             DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
-        return () => { NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, new object[] { }); };
+        return () => { NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, false, new object[] { }); };
+    }
+
+    public static Action CreateVoid(string signature, string binarypath, bool bypasshook)
+    {
+        var arguments = Enumerable.Empty<DataType>().ToArray();
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments,
+            DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
+
+        return () => { NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook, new object[] { }); };
     }
 
     public static Action<TArg1> CreateVoid<TArg1>(string signature, string binarypath)
@@ -899,7 +1706,25 @@ public partial class VirtualFunction
         var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
             DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
 
-        return (arg1) => { NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, new object[] { arg1 }); };
+        return (arg1) => { NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, false, new object[] { arg1 }); };
+    }
+
+    public static Action<TArg1> CreateVoid<TArg1>(string signature, string binarypath, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+            DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
+
+        return (arg1) => { NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook, new object[] { arg1 }); };
     }
 
     public static Action<TArg1, TArg2> CreateVoid<TArg1, TArg2>(string signature, string binarypath)
@@ -920,7 +1745,29 @@ public partial class VirtualFunction
 
         return (arg1, arg2) =>
         {
-            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, new object[] { arg1, arg2 });
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, false, new object[] { arg1, arg2 });
+        };
+    }
+
+    public static Action<TArg1, TArg2> CreateVoid<TArg1, TArg2>(string signature, string binarypath, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+            DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2) =>
+        {
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook, new object[] { arg1, arg2 });
         };
     }
 
@@ -943,7 +1790,30 @@ public partial class VirtualFunction
 
         return (arg1, arg2, arg3) =>
         {
-            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, new object[] { arg1, arg2, arg3 });
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, false, new object[] { arg1, arg2, arg3 });
+        };
+    }
+
+    public static Action<TArg1, TArg2, TArg3> CreateVoid<TArg1, TArg2, TArg3>(string signature, string binarypath, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+            DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3) =>
+        {
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook, new object[] { arg1, arg2, arg3 });
         };
     }
 
@@ -967,7 +1837,32 @@ public partial class VirtualFunction
 
         return (arg1, arg2, arg3, arg4) =>
         {
-            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer,
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, false,
+                new object[] { arg1, arg2, arg3, arg4 });
+        };
+    }
+
+    public static Action<TArg1, TArg2, TArg3, TArg4> CreateVoid<TArg1, TArg2, TArg3, TArg4>(string signature, string binarypath, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType(),
+            typeof(TArg4).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+            DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3, arg4) =>
+        {
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook,
                 new object[] { arg1, arg2, arg3, arg4 });
         };
     }
@@ -994,7 +1889,34 @@ public partial class VirtualFunction
 
         return (arg1, arg2, arg3, arg4, arg5) =>
         {
-            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer,
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, false,
+                new object[] { arg1, arg2, arg3, arg4, arg5 });
+        };
+    }
+
+    public static Action<TArg1, TArg2, TArg3, TArg4, TArg5> CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5>(
+        string signature, string binarypath, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType(),
+            typeof(TArg4).ToDataType(),
+            typeof(TArg5).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+            DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3, arg4, arg5) =>
+        {
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook,
                 new object[] { arg1, arg2, arg3, arg4, arg5 });
         };
     }
@@ -1022,7 +1944,35 @@ public partial class VirtualFunction
 
         return (arg1, arg2, arg3, arg4, arg5, arg6) =>
         {
-            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer,
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, false,
+                new object[] { arg1, arg2, arg3, arg4, arg5, arg6 });
+        };
+    }
+
+    public static Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6> CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(
+        string signature, string binarypath, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType(),
+            typeof(TArg4).ToDataType(),
+            typeof(TArg5).ToDataType(),
+            typeof(TArg6).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+            DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3, arg4, arg5, arg6) =>
+        {
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook,
                 new object[] { arg1, arg2, arg3, arg4, arg5, arg6 });
         };
     }
@@ -1051,7 +2001,36 @@ public partial class VirtualFunction
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7) =>
         {
-            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer,
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, false,
+                new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7 });
+        };
+    }
+
+    public static Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7> CreateVoid<TArg1, TArg2, TArg3, TArg4, TArg5,
+        TArg6, TArg7>(string signature, string binarypath, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType(),
+            typeof(TArg4).ToDataType(),
+            typeof(TArg5).ToDataType(),
+            typeof(TArg6).ToDataType(),
+            typeof(TArg7).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+            DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3, arg4, arg5, arg6, arg7) =>
+        {
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook,
                 new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7 });
         };
     }
@@ -1081,7 +2060,37 @@ public partial class VirtualFunction
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) =>
         {
-            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer,
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, false,
+                new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8 });
+        };
+    }
+
+    public static Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8> CreateVoid<TArg1, TArg2, TArg3, TArg4,
+        TArg5, TArg6, TArg7, TArg8>(string signature, string binarypath, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType(),
+            typeof(TArg4).ToDataType(),
+            typeof(TArg5).ToDataType(),
+            typeof(TArg6).ToDataType(),
+            typeof(TArg7).ToDataType(),
+            typeof(TArg8).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+            DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) =>
+        {
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook,
                 new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8 });
         };
     }
@@ -1112,7 +2121,38 @@ public partial class VirtualFunction
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9) =>
         {
-            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer,
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, false,
+                new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9 });
+        };
+    }
+
+    public static Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9> CreateVoid<TArg1, TArg2, TArg3,
+        TArg4, TArg5, TArg6, TArg7, TArg8, TArg9>(string signature, string binarypath, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType(),
+            typeof(TArg4).ToDataType(),
+            typeof(TArg5).ToDataType(),
+            typeof(TArg6).ToDataType(),
+            typeof(TArg7).ToDataType(),
+            typeof(TArg8).ToDataType(),
+            typeof(TArg9).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+            DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9) =>
+        {
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook,
                 new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9 });
         };
     }
@@ -1144,7 +2184,39 @@ public partial class VirtualFunction
 
         return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10) =>
         {
-            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer,
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, false,
+                new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10 });
+        };
+    }
+
+    public static Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10> CreateVoid<TArg1, TArg2,
+        TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10>(string signature, string binarypath, bool bypasshook)
+    {
+        var arguments = new[]
+        {
+            typeof(TArg1).ToDataType(),
+            typeof(TArg2).ToDataType(),
+            typeof(TArg3).ToDataType(),
+            typeof(TArg4).ToDataType(),
+            typeof(TArg5).ToDataType(),
+            typeof(TArg6).ToDataType(),
+            typeof(TArg7).ToDataType(),
+            typeof(TArg8).ToDataType(),
+            typeof(TArg9).ToDataType(),
+            typeof(TArg10).ToDataType()
+        };
+
+        if (arguments.Any(x => x == null))
+        {
+            throw new Exception($"Invalid argument type(s) supplied to Virtual Function");
+        }
+
+        var virtualFunctionPointer = CreateVirtualFunctionBySignature(signature, binarypath, arguments.Cast<DataType>(),
+            DataType.DATA_TYPE_VOID, arguments.Cast<object>().ToArray());
+
+        return (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10) =>
+        {
+            NativeAPI.ExecuteVirtualFunction<object>(virtualFunctionPointer, bypasshook,
                 new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10 });
         };
     }

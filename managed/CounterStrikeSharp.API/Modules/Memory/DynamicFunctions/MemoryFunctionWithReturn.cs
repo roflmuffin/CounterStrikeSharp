@@ -19,7 +19,12 @@ public class MemoryFunctionWithReturn<TResult> : BaseMemoryFunction
 
     public TResult Invoke()
     {
-        return InvokeInternal<TResult>();
+        return InvokeInternal<TResult>(false);
+    }
+
+    public TResult Invoke(bool bypasshook)
+    {
+        return InvokeInternal<TResult>(bypasshook);
     }
 }
 
@@ -37,7 +42,12 @@ public class MemoryFunctionWithReturn<T1, TResult> : BaseMemoryFunction
 
     public TResult Invoke(T1 arg1)
     {
-        return InvokeInternal<TResult>(arg1);
+        return InvokeInternal<TResult>(false, arg1);
+    }
+
+    public TResult Invoke(T1 arg1, bool bypasshook)
+    {
+        return InvokeInternal<TResult>(bypasshook, arg1);
     }
 }
 
@@ -55,7 +65,12 @@ public class MemoryFunctionWithReturn<T1, T2, TResult> : BaseMemoryFunction
 
     public TResult Invoke(T1 arg1, T2 arg2)
     {
-        return InvokeInternal<TResult>(arg1, arg2);
+        return InvokeInternal<TResult>(false, arg1, arg2);
+    }
+
+    public TResult Invoke(T1 arg1, T2 arg2, bool bypasshook)
+    {
+        return InvokeInternal<TResult>(bypasshook, arg1, arg2);
     }
 }
 
@@ -73,7 +88,12 @@ public class MemoryFunctionWithReturn<T1, T2, T3, TResult> : BaseMemoryFunction
 
     public TResult Invoke(T1 arg1, T2 arg2, T3 arg3)
     {
-        return InvokeInternal<TResult>(arg1, arg2, arg3);
+        return InvokeInternal<TResult>(false, arg1, arg2, arg3);
+    }
+
+    public TResult Invoke(T1 arg1, T2 arg2, T3 arg3, bool bypasshook)
+    {
+        return InvokeInternal<TResult>(bypasshook, arg1, arg2, arg3);
     }
 }
 
@@ -99,7 +119,12 @@ public class MemoryFunctionWithReturn<T1, T2, T3, T4, TResult> : BaseMemoryFunct
 
     public TResult Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4)
     {
-        return InvokeInternal<TResult>(arg1, arg2, arg3, arg4);
+        return InvokeInternal<TResult>(false, arg1, arg2, arg3, arg4);
+    }
+
+    public TResult Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4, bool bypasshook)
+    {
+        return InvokeInternal<TResult>(bypasshook, arg1, arg2, arg3, arg4);
     }
 }
 
@@ -125,7 +150,12 @@ public class MemoryFunctionWithReturn<T1, T2, T3, T4, T5, TResult> : BaseMemoryF
 
     public TResult Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
     {
-        return InvokeInternal<TResult>(arg1, arg2, arg3, arg4, arg5);
+        return InvokeInternal<TResult>(false, arg1, arg2, arg3, arg4, arg5);
+    }
+
+    public TResult Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, bool bypasshook)
+    {
+        return InvokeInternal<TResult>(bypasshook, arg1, arg2, arg3, arg4, arg5);
     }
 }
 
@@ -151,7 +181,12 @@ public class MemoryFunctionWithReturn<T1, T2, T3, T4, T5, T6, TResult> : BaseMem
 
     public TResult Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6)
     {
-        return InvokeInternal<TResult>(arg1, arg2, arg3, arg4, arg5, arg6);
+        return InvokeInternal<TResult>(false, arg1, arg2, arg3, arg4, arg5, arg6);
+    }
+
+    public TResult Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, bool bypasshook)
+    {
+        return InvokeInternal<TResult>(bypasshook, arg1, arg2, arg3, arg4, arg5, arg6);
     }
 }
 
@@ -179,7 +214,12 @@ public class MemoryFunctionWithReturn<T1, T2, T3, T4, T5, T6, T7, TResult> : Bas
 
     public TResult Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7)
     {
-        return InvokeInternal<TResult>(arg1, arg2, arg3, arg4, arg5, arg6, arg7);
+        return InvokeInternal<TResult>(false, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
+    }
+
+    public TResult Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, bool bypasshook)
+    {
+        return InvokeInternal<TResult>(bypasshook, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
     }
 }
 
@@ -207,7 +247,12 @@ public class MemoryFunctionWithReturn<T1, T2, T3, T4, T5, T6, T7, T8, TResult> :
 
     public TResult Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8)
     {
-        return InvokeInternal<TResult>(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
+        return InvokeInternal<TResult>(false, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
+    }
+
+    public TResult Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, bool bypasshook)
+    {
+        return InvokeInternal<TResult>(bypasshook, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
     }
 }
 
@@ -235,7 +280,12 @@ public class MemoryFunctionWithReturn<T1, T2, T3, T4, T5, T6, T7, T8, T9, TResul
 
     public TResult Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9)
     {
-        return InvokeInternal<TResult>(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9);
+        return InvokeInternal<TResult>(false, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9);
+    }
+
+    public TResult Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, bool bypasshook)
+    {
+        return InvokeInternal<TResult>(bypasshook, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9);
     }
 }
 
@@ -265,7 +315,12 @@ public class MemoryFunctionWithReturn<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T
 
     public TResult Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10)
     {
-        return InvokeInternal<TResult>(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+        return InvokeInternal<TResult>(false, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+    }
+
+    public TResult Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, bool bypasshook)
+    {
+        return InvokeInternal<TResult>(bypasshook, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
     }
 }
 

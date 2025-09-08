@@ -1421,10 +1421,11 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
-        public static T ExecuteVirtualFunction<T>(IntPtr function, object[] arguments){
+        public static T ExecuteVirtualFunction<T>(IntPtr function, bool bypass, object[] arguments){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
 			ScriptContext.GlobalScriptContext.Push(function);
+			ScriptContext.GlobalScriptContext.Push(bypass);
 			foreach (var obj in arguments)
 			{
 				ScriptContext.GlobalScriptContext.Push(obj);
