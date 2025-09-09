@@ -199,10 +199,39 @@ class ScriptContext
             *reinterpret_cast<uint64_t*>(&functionData[0]) = 0;
         }
 
-        *reinterpret_cast<T*>(&functionData[0]) = value;
-
         m_numResults = 1;
         m_numArguments = 0;
+
+        if constexpr (std::is_same_v<T, const char*> || std::is_same_v<T, std::string>)
+        {
+            if constexpr (std::is_same_v<T, const char*>)
+            {
+                if (!value)
+                {
+                    *reinterpret_cast<const char**>(&functionData[0]) = nullptr;
+                    return;
+                }
+            }
+
+            // Create string copies to ensure persistent memory lifetime
+            static thread_local std::vector<std::string> stringPool;
+            static thread_local size_t poolIndex = 0;
+
+            if (stringPool.size() < 16)
+            {
+                stringPool.emplace_back();
+            }
+
+            stringPool[poolIndex % stringPool.size()] = value;
+            const char* persistentPtr = stringPool[poolIndex % stringPool.size()].c_str();
+            poolIndex++;
+
+            *reinterpret_cast<const char**>(&functionData[0]) = persistentPtr;
+        }
+        else
+        {
+            *reinterpret_cast<T*>(&functionData[0]) = value;
+        }
     }
 
     template <typename T> inline T GetResult()
