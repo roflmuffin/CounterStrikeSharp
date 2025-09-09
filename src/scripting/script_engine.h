@@ -213,18 +213,9 @@ class ScriptContext
                 }
             }
 
-            // Create string copies to ensure persistent memory lifetime
-            static thread_local std::vector<std::string> stringPool;
-            static thread_local size_t poolIndex = 0;
-
-            if (stringPool.size() < 16)
-            {
-                stringPool.emplace_back();
-            }
-
-            stringPool[poolIndex % stringPool.size()] = value;
-            const char* persistentPtr = stringPool[poolIndex % stringPool.size()].c_str();
-            poolIndex++;
+            static thread_local std::string lastResult;
+            lastResult = value;
+            const char* persistentPtr = lastResult.c_str();
 
             *reinterpret_cast<const char**>(&functionData[0]) = persistentPtr;
         }
