@@ -5,6 +5,9 @@ description: How to add inter-plugin communication to CounterStrikeSharp plugins
 
 # Shared Plugin API
 
+> [!NOTE]
+> **New (experimental)**: You can now resolve plugin dependencies directly from your local **NuGet packages cache** instead of copying every DLL into the `shared/` folder. See **Dependency Resolution** below. This feature **disabled by default.**
+
 How to expose and use shared plugin APIs between multiple plugins.
 
 ## Creating a Contract Library
@@ -65,3 +68,36 @@ balance.Add(500);
 ```
 
 This value _MUST_ be checked for null, as if there are no plugins providing implementations for a given capability, this method will return null, and you must handle this flow in your plugin.
+
+
+## Dependency Resolution
+
+CounterStrikeSharp supports two complementary ways to resolve **external** assemblies used by your plugins and shared contracts:
+
+1. **Shared Folder Resolution (manual)**: copy dependency DLLs into `shared/<PackageName>/<Assembly>.dll`.
+2. **NuGet Dependency Resolver (auto)**: when enabled, resolves missing assemblies from the local **NuGet packages root**
+
+### Enabling the NuGet Resolver
+
+Add the following property to your core config (disabled by default):
+
+```json
+{
+    ...
+    "PluginResolveNugetPackages": true
+    ...
+}
+```
+
+> [!NOTE]
+> The engine looks for assemblies in the NuGet cache defined by the `NUGET_PACKAGES` environment variable, or falls back to the default user cache (e.g., `~/.nuget/packages` on Linux/macOS, `%UserProfile%\.nuget\packages` on Windows).
+
+### Dependencies Resolution Order
+
+When the NuGet resolver is **enabled**, resolution proceeds in this general order:
+
+1. **Plugins directory** (in-place assemblies)
+2. `shared/` **folder** (existing shared assemblies mechanism)
+3. **NuGet cache** (auto-resolver)
+
+This lets you keep proven `shared/` workflows while reducing manual copying for common NuGet dependencies.
