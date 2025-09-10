@@ -37,7 +37,7 @@ public class PluginManager : IPluginManager
             config => { config.PreferSharedTypes = true; });
         var assembly = loader.LoadDefaultAssembly();
 
-        if (CoreConfig.UseExperimentalPluginDependencyResolver)
+        if (CoreConfig.PluginResolveNugetPackages)
         {
             foreach (var assemblyName in assembly.GetReferencedAssemblies())
             {
@@ -90,7 +90,7 @@ public class PluginManager : IPluginManager
 
             if (!_sharedAssemblies.TryGetValue(name.Name, out var assembly))
             {
-                if (CoreConfig.UseExperimentalPluginDependencyResolver && TryLoadExternalLibrary(name, out assembly))
+                if (CoreConfig.PluginResolveNugetPackages && TryLoadExternalLibrary(name, out assembly))
                 {
                     return assembly;
                 }
@@ -212,7 +212,7 @@ public class PluginManager : IPluginManager
             return false;
         }
 
-        assemblyPath = (string) mainAssemblyPathField.GetValue(reflectionContext)!;
+        assemblyPath = (string)mainAssemblyPathField.GetValue(reflectionContext)!;
         return !string.IsNullOrEmpty(assemblyPath);
     }
 }

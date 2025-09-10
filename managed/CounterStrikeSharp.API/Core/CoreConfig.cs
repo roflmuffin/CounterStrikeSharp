@@ -53,8 +53,8 @@ namespace CounterStrikeSharp.API.Core
         [JsonPropertyName("PluginAutoLoadEnabled")]
         public bool PluginAutoLoadEnabled { get; set; } = true;
 
-        [JsonPropertyName("UseExperimentalPluginDependencyResolver")]
-        public bool UseExperimentalPluginDependencyResolver { get; set; }
+        [JsonPropertyName("PluginResolveNugetPackages")]
+        public bool PluginResolveNugetPackages { get; set; }
 
         [JsonPropertyName("ServerLanguage")]
         public string ServerLanguage { get; set; } = "en";
@@ -118,7 +118,7 @@ namespace CounterStrikeSharp.API.Core
         /// </summary>
         public static bool PluginAutoLoadEnabled => _coreConfig.PluginAutoLoadEnabled;
 
-        public static bool UseExperimentalPluginDependencyResolver => _coreConfig.UseExperimentalPluginDependencyResolver;
+        public static bool PluginResolveNugetPackages => _coreConfig.PluginResolveNugetPackages;
 
         public static string ServerLanguage => _coreConfig.ServerLanguage;
 
