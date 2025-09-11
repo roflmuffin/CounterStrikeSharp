@@ -160,15 +160,6 @@ namespace CounterStrikeSharp.API.Core
                     // We'll assume we have a full path if we have ".dll".
                     var path = info.GetArg(2);
 
-                    if (path.StartsWith("disabled/"))
-                    {
-                        info.ReplyToCommand(
-                            $"[WARNING] Attempted to load plugin from disabled folder: '{path}'. " +
-                            "Action aborted. Move the plugin out of 'disabled/' to enable it.\n"
-                        );
-                        break;
-                    }
-
                     path = Path.Combine(
                         _scriptHostConfiguration.RootPath,
                         !path.EndsWith(".dll")
