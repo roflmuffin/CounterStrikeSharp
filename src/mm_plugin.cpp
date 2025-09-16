@@ -120,8 +120,7 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
 
     if (utils::RelativeDirectory(std::string(basePath)) == "NotFound")
     {
-        CSSHARP_CORE_WARN("Invalid base path: {}", basePath);
-        snprintf(error, maxlen, "Invalid base path: %s", basePath);
+        CSSHARP_CORE_ERROR("Invalid base path: {}", basePath);
         return false;
     }
     CSSHARP_CORE_INFO("Current root directory: {}", utils::GetRootDirectory());

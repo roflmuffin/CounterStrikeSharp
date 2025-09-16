@@ -1,4 +1,8 @@
 {
   "editor.defaultFormatter": null,
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "files.associations": {
+    "*.dbclient-js": "javascript",
+    "*.inc": "cpp"
+  }
 }
