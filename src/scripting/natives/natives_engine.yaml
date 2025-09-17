@@ -9,6 +9,7 @@ GET_MAX_CLIENTS: -> int
 GET_GAME_FRAME_TIME: -> float
 ISSUE_SERVER_COMMAND: command:string -> void
 PRECACHE_MODEL: name:string -> void
+ADD_RESOURCE: name:string -> void
 PRECACHE_SOUND: name:string, preload:bool -> bool
 IS_SOUND_PRECACHED: name:string -> bool
 GET_SOUND_DURATION: name:string -> float
