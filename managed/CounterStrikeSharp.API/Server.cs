@@ -137,11 +137,7 @@ namespace CounterStrikeSharp.API
 
         public static void PrintToChatAll(string message)
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                VirtualFunctions.ClientPrintAllLinux(HudDestination.Chat, message, 0, 0, 0, 0);
-
-            else
-                VirtualFunctions.ClientPrintAllWin(HudDestination.Chat, message, 0, 0, 0, 0, 0);
+            VirtualFunctions.ClientPrintAll(HudDestination.Chat, message, 0, 0, 0, 0, 0);
         }
 
         public static string GameDirectory => NativeAPI.GetGameDirectory();
