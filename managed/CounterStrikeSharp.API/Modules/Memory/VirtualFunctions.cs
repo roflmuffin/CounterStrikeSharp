@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Entities.Constants;
 using CounterStrikeSharp.API.Modules.Memory.DynamicFunctions;
@@ -16,11 +17,17 @@ public static class VirtualFunctions
     public static Action<IntPtr, HudDestination, string, IntPtr, IntPtr, IntPtr, IntPtr> ClientPrint =
         ClientPrintFunc.Invoke;
 
-    public static MemoryFunctionVoid<HudDestination, string, IntPtr, IntPtr, IntPtr, IntPtr, IntPtr> ClientPrintAllFunc =
+    public static MemoryFunctionVoid<HudDestination, string, IntPtr, IntPtr, IntPtr, IntPtr, IntPtr> ClientPrintAllWinFunc =
         new(GameData.GetSignature("UTIL_ClientPrintAll"));
 
-    public static Action<HudDestination, string, IntPtr, IntPtr, IntPtr, IntPtr, IntPtr> ClientPrintAll =
-        ClientPrintAllFunc.Invoke;
+    public static Action<HudDestination, string, IntPtr, IntPtr, IntPtr, IntPtr, IntPtr> ClientPrintWinAll =
+        ClientPrintAllWinFunc.Invoke;
+
+    public static MemoryFunctionVoid<HudDestination, string, IntPtr, IntPtr, IntPtr, IntPtr> ClientPrintAllLinuxFunc =
+        new(GameData.GetSignature("UTIL_ClientPrintAll"));
+
+    public static Action<HudDestination, string, IntPtr, IntPtr, IntPtr, IntPtr> ClientPrintWinAll =
+        ClientPrintAllLinuxFunc.Invoke;
 
     // void (*FnGiveNamedItem)(void* itemService,const char* pchName, void* iSubType,void* pScriptItem, void* a5,void* a6) = nullptr;
     public static MemoryFunctionWithReturn<IntPtr, string, IntPtr, IntPtr, IntPtr, IntPtr, IntPtr> GiveNamedItemFunc =
