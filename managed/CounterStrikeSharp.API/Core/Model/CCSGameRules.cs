@@ -39,13 +39,13 @@ public partial class CCSGameRules
 
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
-            VirtualFunctionWithReturn<CCSGameRules, CBasePlayerController, IntPtr?, CBaseEntity?> CCSGameRules_FindPickerEntity = new(Handle, GameData.GetOffset("CCSGameRules_FindPickerEntity"));
-            return CCSGameRules_FindPickerEntity.Invoke(this, player, null);
+            VirtualFunctionWithReturn<CCSGameRules, CBasePlayerController, IntPtr, CBaseEntity> CCSGameRules_FindPickerEntity = new(Handle, GameData.GetOffset("CCSGameRules_FindPickerEntity"));
+            return CCSGameRules_FindPickerEntity.Invoke(this, player, IntPtr.Zero);
         }
         else
         {
-            VirtualFunctionWithReturn<CCSGameRules, CBasePlayerController, IntPtr?, double, double, CBaseEntity?> CCSGameRules_FindPickerEntity = new(Handle, GameData.GetOffset("CCSGameRules_FindPickerEntity"));
-            return CCSGameRules_FindPickerEntity.Invoke(this, player, null, 0, 0); // on linux we have a fourth and fifth parameter aswell, but they are unused because the condition for them is always unmet.
+            VirtualFunctionWithReturn<CCSGameRules, CBasePlayerController, IntPtr, double, double, CBaseEntity> CCSGameRules_FindPickerEntity = new(Handle, GameData.GetOffset("CCSGameRules_FindPickerEntity"));
+            return CCSGameRules_FindPickerEntity.Invoke(this, player, IntPtr.Zero, 0, 0); // on linux we have a fourth and fifth parameter aswell, but they are unused because the condition for them is always unmet.
         }
     }
 
