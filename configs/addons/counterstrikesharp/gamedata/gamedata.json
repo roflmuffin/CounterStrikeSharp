@@ -2,7 +2,7 @@
   "UTIL_ClientPrintAll": {
     "signatures": {
       "library": "server",
-      "windows": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC ? 8B E9 49 8B D9",
+      "windows": "48 89 5C 24 08 48 89 6C 24 10 48 89 74 24 18 57 48 83 EC 60 8B E9",
       "linux": "55 48 89 E5 41 57 4D 89 CF 41 56 4D 89 C6 41 55 49 89 CD 41 54 49 89 D4 53 48 8D"
     }
   },
@@ -28,8 +28,8 @@
   },
   "CCSPlayerController_Respawn": {
     "offsets": {
-      "windows": 274,
-      "linux": 276
+      "windows": 275,
+      "linux": 277
     }
   },
   "CBasePlayerController_SetPawn": {
@@ -43,7 +43,7 @@
     "signatures": {
       "library": "server",
       "windows": "48 ? ? 55 53 56 57 41 ? 48 ? ? ? 48 ? ? ? ? ? ? 4C 89 68",
-      "linux": "55 48 89 E5 41 57 41 56 41 55 41 54 53 48 89 FB 48 83 EC 58 E8 ? ? ? ? F3 0F 10 83"
+      "linux": "55 48 89 E5 41 56 41 55 41 54 53 48 89 FB 48 83 EC 40 E8 ? ? ? ? F3 0F 10 83"
     }
   },
   "CGameEventManager_Init": {
@@ -92,7 +92,7 @@
     "signatures": {
       "library": "server",
       "windows": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC 20 33 ED 48 8B FA 8B F1",
-      "linux": "55 31 D2 48 89 E5 53 89 FB"
+      "linux": "55 48 89 E5 41 56 41 55 41 89 FD 41 54 45 31 E4"
     }
   },
   "CCSPlayer_ItemServices_GiveNamedItem": {
@@ -103,8 +103,8 @@
   },
   "CCSPlayer_ItemServices_DropActivePlayerWeapon": {
     "offsets": {
-      "windows": 20,
-      "linux": 21
+      "windows": 21,
+      "linux": 22
     }
   },
   "CCSPlayer_ItemServices_RemoveWeapons": {
@@ -149,7 +149,7 @@
     "signatures": {
       "library": "server",
       "windows": "48 89 5C 24 10 57 48 83 EC 30 48 8B DA 48 8B F9 48 85 C9",
-      "linux": "48 85 FF 74 ? 55 48 89 E5 41 55 41 54 49 89 FC"
+      "linux": "48 85 FF 74 ? 55 48 89 E5 41 55 49 89 FD"
     }
   },
   "CBaseEntity_EmitSoundFilter": {
@@ -182,8 +182,8 @@
   },
   "CBasePlayerPawn_CommitSuicide": {
     "offsets": {
-      "windows": 403,
-      "linux": 403
+      "windows": 408,
+      "linux": 408
     }
   },
   "CBasePlayerPawn_RemovePlayerItem": {
@@ -210,7 +210,7 @@
     "signatures": {
       "library": "server",
       "windows": "40 57 41 56 48 83 EC ? 48 8B 01",
-      "linux": "55 48 89 E5 41 57 41 56 41 55 49 89 F5 41 54 53 48 89 FB 48 83 EC ? 48 8B 07"
+      "linux": "55 48 89 E5 41 56 41 55 49 89 F5 41 54 53 48 89 FB 48 83 EC 10 48 8B 07"
     }
   },
   "CBaseTrigger_EndTouch": {
@@ -256,7 +256,7 @@
     "signatures": {
       "library": "server",
       "windows": "48 8B C4 4C 89 48 ? 48 89 50 ? 48 89 48 ? 55 48 8D A8",
-      "linux": "55 48 89 E5 41 57 41 89 D7 41 56 41 55 41 54 53 48 81 EC 78 01 00 00"
+      "linux": "55 48 89 E5 41 57 49 89 FF 41 56 48 8D 3D ? ? ? ? 41 55 41 89 D5"
     }
   },
   "CheckTransmitPlayerSlot": {

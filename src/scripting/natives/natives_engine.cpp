@@ -34,6 +34,7 @@
 #include "core/managers/player_manager.h"
 #include "core/managers/server_manager.h"
 #include "core/tick_scheduler.h"
+#include "core/game_system.h"
 #include "networksystem/inetworkmessages.h"
 #include "usermessages.pb.h"
 
@@ -100,6 +101,12 @@ bool PrecacheSound(ScriptContext& script_context)
     auto [name, preload] = script_context.GetArguments<const char*, bool>();
 
     return globals::engineSound->PrecacheSound(name, preload);
+}
+
+void AddResource(ScriptContext& script_context)
+{
+    auto name = script_context.GetArgument<const char*>(0);
+    m_exportResourceManifest->AddResource(name);
 }
 
 bool IsSoundPrecached(ScriptContext& script_context)
@@ -275,6 +282,7 @@ REGISTER_NATIVES(engine, {
     ScriptEngine::RegisterNativeHandler("GET_MAX_CLIENTS", GetMaxClients);
     ScriptEngine::RegisterNativeHandler("ISSUE_SERVER_COMMAND", ServerCommand);
     ScriptEngine::RegisterNativeHandler("PRECACHE_MODEL", PrecacheModel);
+    ScriptEngine::RegisterNativeHandler("ADD_RESOURCE", AddResource);
     ScriptEngine::RegisterNativeHandler("PRECACHE_SOUND", PrecacheSound);
     ScriptEngine::RegisterNativeHandler("IS_SOUND_PRECACHED", IsSoundPrecached);
     ScriptEngine::RegisterNativeHandler("GET_SOUND_DURATION", GetSoundDuration);

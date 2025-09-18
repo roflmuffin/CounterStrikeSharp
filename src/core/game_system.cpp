@@ -31,6 +31,8 @@ CBaseGameSystemFactory** CBaseGameSystemFactory::sm_pFirst = nullptr;
 CGameSystem g_GameSystem;
 IGameSystemFactory* CGameSystem::sm_Factory = nullptr;
 
+IEntityResourceManifest* m_exportResourceManifest = nullptr;
+
 // This mess is needed to get the pointer to sm_pFirst so we can insert game systems
 bool InitGameSystems()
 {
@@ -64,6 +66,8 @@ GS_EVENT_MEMBER(CGameSystem, BuildGameSessionManifest)
     IEntityResourceManifest* pResourceManifest = msg->m_pResourceManifest;
 
     CSSHARP_CORE_INFO("CGameSystem::BuildGameSessionManifest");
+
+    m_exportResourceManifest = pResourceManifest;
 
     counterstrikesharp::globals::serverManager.OnPrecacheResources(pResourceManifest);
 }

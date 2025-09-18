@@ -137,7 +137,7 @@ namespace CounterStrikeSharp.API
 
         public static void PrintToChatAll(string message)
         {
-            VirtualFunctions.ClientPrintAll(HudDestination.Chat, message, 0, 0, 0, 0);
+            VirtualFunctions.ClientPrintAll(HudDestination.Chat, message, 0, 0, 0, 0, 0);
         }
 
         public static string GameDirectory => NativeAPI.GetGameDirectory();
