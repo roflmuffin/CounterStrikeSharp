@@ -98,7 +98,10 @@ namespace CounterStrikeSharp.API
 
         public static bool RemoveItemByDesignerName(this CCSPlayerController player, string designerName)
         {
-            var weapon = player.PlayerPawn.Value?.WeaponServices?.MyWeapons.Select(w => w.Value).Where(w => w?.IsValid is true && w.DesignerName == designerName).FirstOrDefault();
+            var weapon = player.PlayerPawn.Value?.WeaponServices?.MyWeapons
+                .Select(w => w.Value)
+                .Where(w => w?.IsValid is true && w.DesignerName == designerName)
+                .FirstOrDefault();
 
             if (weapon == null)
                 return false;
@@ -110,6 +113,20 @@ namespace CounterStrikeSharp.API
         public static bool RemoveItemByDesignerName(this CCSPlayerController player, string designerName, bool _)
         {
             return RemoveItemByDesignerName(player, designerName);
+        }
+
+        public static bool RemoveItemBySlot(this CCSPlayerController player, gear_slot_t slot)
+        {
+            var weapon = player.PlayerPawn.Value?.WeaponServices?.MyWeapons
+                .Select(w => w.Value)
+                .Where(w => w?.As<CCSWeaponBase>().VData?.GearSlot == slot)
+                .FirstOrDefault();
+
+            if (weapon == null)
+                return false;
+
+            weapon.AddEntityIOEvent("Kill", weapon, delay: 0.1f);
+            return true;
         }
 
         public static IEnumerable<T> FindAllEntitiesByDesignerName<T>(string designerName) where T : CEntityInstance
