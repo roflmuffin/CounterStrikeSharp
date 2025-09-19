@@ -21,6 +21,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using CounterStrikeSharp.API.Modules.Commands.Targeting;
 using CounterStrikeSharp.API.Modules.Entities;
+using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API
 {
