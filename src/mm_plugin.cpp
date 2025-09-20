@@ -34,6 +34,10 @@
 #include "scripting/dotnet_host.h"
 #include "scripting/script_engine.h"
 #include "tier0/vprof.h"
+#include "tier0/icommandline.h"
+#include "tier1/utlstringtoken.h"
+
+DLL_IMPORT ICommandLine* CommandLine();
 
 #define VERSION_STRING  "v" SEMVER " @ " GITHUB_SHA
 #define BUILD_TIMESTAMP __DATE__ " " __TIME__
@@ -95,7 +99,8 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
 
     Log::Init();
 
-    CSSHARP_CORE_INFO("Initializing");
+    CSSHARP_CORE_INFO("Initializing with command line: {}", CommandLine()->GetCmdLine());
+    const char* basePath = CommandLine()->ParmValue(MakeStringToken("+css_basepath"), "/addons/counterstrikesharp");
 
     GET_V_IFACE_CURRENT(GetEngineFactory, globals::engineServer2, IVEngineServer2, SOURCE2ENGINETOSERVER_INTERFACE_VERSION);
     GET_V_IFACE_CURRENT(GetEngineFactory, globals::engine, IVEngineServer, INTERFACEVERSION_VENGINESERVER);
@@ -112,6 +117,13 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
     g_pCVar = globals::cvars;
     g_pSource2GameEntities = globals::gameEntities;
     interfaces::pGameResourceServiceServer = (CGameResourceService*)g_pGameResourceServiceServer;
+
+    if (utils::RelativeDirectory(std::string(basePath)) == "NotFound")
+    {
+        CSSHARP_CORE_ERROR("Invalid base path: {}", basePath);
+        return false;
+    }
+    CSSHARP_CORE_INFO("Current root directory: {}", utils::GetRootDirectory());
 
     auto coreconfig_path = std::string(utils::ConfigsDirectory() + "/core");
     globals::coreConfig = new CCoreConfig(coreconfig_path);
