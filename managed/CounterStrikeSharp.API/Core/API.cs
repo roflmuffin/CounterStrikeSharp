@@ -661,6 +661,16 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
+        public static void AddResource(string name){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(name);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x3B1DC491);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
         public static bool PrecacheSound(string name, bool preload){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
