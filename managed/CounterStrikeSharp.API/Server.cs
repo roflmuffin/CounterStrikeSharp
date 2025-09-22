@@ -142,8 +142,17 @@ namespace CounterStrikeSharp.API
 
         public static string GameDirectory => NativeAPI.GetGameDirectory();
 
-        private static readonly int _maxPlayers = NativeAPI.GetMaxClients();
-        public static int MaxPlayers => _maxPlayers;
+        private static int? _maxPlayers;
+
+        public static int MaxPlayers
+        {
+            get
+            {
+                _maxPlayers ??= NativeAPI.GetMaxClients();
+
+                return _maxPlayers.Value;
+            }
+        }
 
         public static bool IsMapValid(string mapName) => NativeAPI.IsMapValid(mapName);
 
