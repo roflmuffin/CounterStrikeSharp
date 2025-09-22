@@ -34,7 +34,12 @@ using ILogger = Microsoft.Extensions.Logging.ILogger;
 
 namespace CounterStrikeSharp.API.Core.Plugin
 {
-    public class PluginContext : IPluginContext
+    public interface ISelfPluginControl
+    {
+        void TerminateSelf(string reason);
+    }
+
+    public class PluginContext : IPluginContext, ISelfPluginControl
     {
         public PluginState State { get; set; } = PluginState.Unregistered;
         public IPlugin Plugin { get; private set; }
@@ -50,9 +55,11 @@ namespace CounterStrikeSharp.API.Core.Plugin
         private readonly string _path;
         private readonly FileSystemWatcher _fileWatcher;
         private readonly IServiceProvider _applicationServiceProvider;
-        
+
         public string FilePath => _path;
         private IServiceScope _serviceScope;
+
+        public string TerminationReason { get; private set; }
 
         // TOOD: ServiceCollection
         private ILogger _logger = CoreLogging.Factory.CreateLogger<PluginContext>();
@@ -65,7 +72,7 @@ namespace CounterStrikeSharp.API.Core.Plugin
             _hostConfiguration = hostConfiguration;
             _path = path;
             PluginId = id;
-            
+
             Loader = PluginLoader.CreateFromAssemblyFile(path,
                 new[]
                 {
@@ -77,7 +84,7 @@ namespace CounterStrikeSharp.API.Core.Plugin
                     config.IsUnloadable = true;
                     config.PreferSharedTypes = true;
                 });
-            
+
             if (CoreConfig.PluginHotReloadEnabled)
             {
                 _fileWatcher = new FileSystemWatcher
@@ -113,14 +120,14 @@ namespace CounterStrikeSharp.API.Core.Plugin
                 Load(hotReload: true);
                 Plugin.OnAllPluginsLoaded(hotReload: true);
             });
-            
+
             return Task.CompletedTask;
         }
 
         public void Load(bool hotReload = false)
         {
             if (State == PluginState.Loaded) return;
-            
+
             using (Loader.EnterContextualReflection())
             {
                 var defaultAssembly = Loader.LoadDefaultAssembly();
@@ -178,7 +185,7 @@ namespace CounterStrikeSharp.API.Core.Plugin
                         method?.Invoke(pluginServiceCollection, new object[] { serviceCollection });
                     }
                 }
-                
+
                 serviceCollection.AddScoped<ICommandManager>(c => _commandManager);
                 serviceCollection.DecorateSingleton<ICommandManager, PluginCommandManagerDecorator>();
 
@@ -215,6 +222,12 @@ namespace CounterStrikeSharp.API.Core.Plugin
                 Plugin.Logger = ServiceProvider.GetRequiredService<ILoggerFactory>().CreateLogger(pluginType);
 
                 Plugin.InitializeConfig(Plugin, pluginType);
+
+                if (Plugin is BasePlugin basePlugin)
+                {
+                    basePlugin.SelfControl = this;
+                }
+
                 Plugin.Load(hotReload);
 
                 _logger.LogInformation("Finished loading plugin {Name}", Plugin.ModuleName);
@@ -239,6 +252,22 @@ namespace CounterStrikeSharp.API.Core.Plugin
             _serviceScope.Dispose();
 
             _logger.LogInformation("Finished unloading plugin {Name}", cachedName);
+        }
+
+        public void TerminateWithReason(string reason)
+        {
+            if (State != PluginState.Loaded) return;
+
+            this.TerminationReason = reason;
+
+            _logger.LogInformation("Suspending plugin {Name} with reason: {Reason}", Plugin.ModuleName, reason);
+
+            Unload(false);
+        }
+
+        void ISelfPluginControl.TerminateSelf(string reason)
+        {
+            TerminateWithReason(reason);
         }
     }
 }
