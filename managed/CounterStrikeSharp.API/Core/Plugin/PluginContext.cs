@@ -228,7 +228,18 @@ namespace CounterStrikeSharp.API.Core.Plugin
                     basePlugin.SelfControl = this;
                 }
 
-                Plugin.Load(hotReload);
+                this.TerminationReason = string.Empty;
+                try
+                {
+                    Plugin.Load(hotReload);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Failed to load plugin {Name}", Plugin.ModuleName);
+                    this.TerminationReason = string.IsNullOrEmpty(this.TerminationReason) ? ex.Message : this.TerminationReason;
+                    Unload(hotReload);
+                    return;
+                }
 
                 _logger.LogInformation("Finished loading plugin {Name}", Plugin.ModuleName);
 
@@ -246,23 +257,43 @@ namespace CounterStrikeSharp.API.Core.Plugin
 
             _logger.LogInformation("Unloading plugin {Name}", Plugin.ModuleName);
 
-            Plugin.Unload(hotReload);
-
-            Plugin.Dispose();
-            _serviceScope.Dispose();
+            try
+            {
+                Plugin.Unload(hotReload);
+            }
+            catch
+            {
+                _logger.LogError("Failed to unload {Name} during error recovery, forcing cleanup", Plugin.ModuleName);
+                return;
+            }
+            finally
+            {
+                Plugin.Dispose();
+                _serviceScope.Dispose();
+            }
 
             _logger.LogInformation("Finished unloading plugin {Name}", cachedName);
         }
 
         public void TerminateWithReason(string reason)
         {
-            if (State != PluginState.Loaded) return;
+            if (State == PluginState.Unloaded)
+            {
+                return;
+            }
 
             this.TerminationReason = reason;
 
-            _logger.LogInformation("Suspending plugin {Name} with reason: {Reason}", Plugin.ModuleName, reason);
+            if (State == PluginState.Loading)
+            {
+                throw new Exception(reason);
+            }
 
-            Unload(false);
+            if (State == PluginState.Loaded)
+            {
+                _logger.LogInformation("Terminating plugin {Name} with reason: {Reason}", Plugin.ModuleName, reason);
+                Unload(false);
+            }
         }
 
         void ISelfPluginControl.TerminateSelf(string reason)
