@@ -63,13 +63,7 @@ namespace CounterStrikeSharp.API
                 return null;
             }
 
-            var controller = new CCSPlayerController(entityPtr.Value);
-            if (!controller.IsValid || controller.Connected != PlayerConnectedState.PlayerConnected)
-            {
-                return null;
-            }
-
-            return controller;
+            return new CCSPlayerController(entityPtr.Value);
         }
 
         public static CCSPlayerController? GetPlayerFromSlot(int slot)
@@ -160,7 +154,7 @@ namespace CounterStrikeSharp.API
             {
                 var controller = GetPlayerFromSlot(i);
 
-                if (controller == null)
+                if (controller == null || !controller.IsValid || controller.Connected != PlayerConnectedState.PlayerConnected)
                     continue;
 
                 players.Add(controller);
