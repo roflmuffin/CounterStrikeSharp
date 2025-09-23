@@ -17,6 +17,7 @@
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using CounterStrikeSharp.API.Core.Commands;
 using CounterStrikeSharp.API.Core.Hosting;
 using CounterStrikeSharp.API.Core.Plugin;
@@ -67,6 +68,9 @@ namespace CounterStrikeSharp.API.Core
 
         public void Start()
         {
+            AppDomain.CurrentDomain.UnhandledException += OnPluginTerminationException;
+            TaskScheduler.UnobservedTaskException += OnPluginTerminationExceptionFromTask;
+
             Logger.LogInformation("CounterStrikeSharp is starting up...");
 
             _coreConfig.Load();
@@ -308,6 +312,26 @@ namespace CounterStrikeSharp.API.Core
                 ExecutableBy = CommandUsage.CLIENT_AND_SERVER,
                 UsageHint = "[language code, e.g. \"de\", \"pl\", \"en\"]",
             });
+        }
+
+        private void OnPluginTerminationException(object sender, UnhandledExceptionEventArgs e)
+        {
+            if ((e.ExceptionObject as Exception) is PluginTerminationException pluginEx)
+            {
+                return;
+            }
+        }
+
+        private void OnPluginTerminationExceptionFromTask(object sender, UnobservedTaskExceptionEventArgs e)
+        {
+            foreach (var innerException in e.Exception.InnerExceptions)
+            {
+                if (innerException is PluginTerminationException pluginEx)
+                {
+                    e.SetObserved();
+                    break;
+                }
+            }
         }
     }
 }

@@ -286,10 +286,9 @@ namespace CounterStrikeSharp.API.Core.Plugin
 
             if (State == PluginState.Loading)
             {
-                throw new Exception(reason);
-            }
 
-            if (State == PluginState.Loaded)
+            }
+            else if (State == PluginState.Loaded)
             {
                 _logger.LogInformation("Terminating plugin {Name} with reason: {Reason}", Plugin.ModuleName, reason);
                 Unload(false);
@@ -299,6 +298,7 @@ namespace CounterStrikeSharp.API.Core.Plugin
         void ISelfPluginControl.TerminateSelf(string reason)
         {
             TerminateWithReason(reason);
+            throw new PluginTerminationException(reason); // Throw to prevent further execution
         }
     }
 }
