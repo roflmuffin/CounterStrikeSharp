@@ -15,34 +15,24 @@ public static class CBasePlayerWeaponExtensions
     }
 
     /// <summary>
-    /// Gets the owner of a weapon entity
+    /// Gets the econ owner of a weapon entity
     /// </summary>
     /// <param name="weapon">The weapon entity.</param>
     /// <returns>The <see cref="CCSPlayerController"/> instance for the player, or <c>null</c> if it doesn't exist.</returns>
-    public static CCSPlayerController? GetOwner(this CBasePlayerWeapon weapon)
+    public static CCSPlayerController? GetEconOwner(this CBasePlayerWeapon weapon)
     {
-        SteamID? steamId = null;
+        ulong originalXuid = weapon.OriginalOwnerXuidLow;
+        SteamID? steamId = originalXuid > 0 ? new(originalXuid) : null;
 
-        if (weapon.OriginalOwnerXuidLow > 0)
-            steamId = new(weapon.OriginalOwnerXuidLow);
+        CCSPlayerController? player = null;
 
-        CCSPlayerController? player;
+        if (steamId?.IsValid() == true)
+            player = Utilities.GetPlayers().FirstOrDefault(p =>
+                p.SteamID == steamId.SteamId64 || p.SteamID == originalXuid);
 
-        if (steamId != null && steamId.IsValid())
-        {
-            player = Utilities.GetPlayerFromSteamId(steamId.SteamId64);
+        if (player == null)
+            player = weapon.OwnerEntity.Get()?.As<CCSPlayerController>();
 
-            if (player == null)
-                player = Utilities.GetPlayerFromSteamId(weapon.OriginalOwnerXuidLow);
-        }
-        else
-        {
-            player = Utilities.GetPlayerFromIndex((int)weapon.OwnerEntity.Index);
-
-            if (player == null)
-                player = Utilities.GetPlayerFromIndex((int)weapon.As<CCSWeaponBaseGun>().OwnerEntity.Value!.Index);
-        }
-
-        return !string.IsNullOrEmpty(player?.PlayerName) ? player : null;
+        return player?.Connected == PlayerConnectedState.PlayerConnected ? player : null;
     }
 }
