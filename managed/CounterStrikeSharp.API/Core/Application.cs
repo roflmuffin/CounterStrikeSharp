@@ -68,8 +68,21 @@ namespace CounterStrikeSharp.API.Core
 
         public void Start()
         {
-            AppDomain.CurrentDomain.UnhandledException += OnPluginTerminationException;
-            TaskScheduler.UnobservedTaskException += OnPluginTerminationExceptionFromTask;
+            AppDomain.CurrentDomain.UnhandledException += (sender, e) =>
+            {
+                if ((e.ExceptionObject as Exception) is PluginTerminationException pluginEx)
+                {
+                    return;
+                }
+            };
+
+            TaskScheduler.UnobservedTaskException += (sender, e) =>
+            {
+                if (e.Exception.InnerExceptions.Any(ex => ex is PluginTerminationException))
+                {
+                    e.SetObserved();
+                }
+            };
 
             Logger.LogInformation("CounterStrikeSharp is starting up...");
 
@@ -312,26 +325,6 @@ namespace CounterStrikeSharp.API.Core
                 ExecutableBy = CommandUsage.CLIENT_AND_SERVER,
                 UsageHint = "[language code, e.g. \"de\", \"pl\", \"en\"]",
             });
-        }
-
-        private void OnPluginTerminationException(object sender, UnhandledExceptionEventArgs e)
-        {
-            if ((e.ExceptionObject as Exception) is PluginTerminationException pluginEx)
-            {
-                return;
-            }
-        }
-
-        private void OnPluginTerminationExceptionFromTask(object sender, UnobservedTaskExceptionEventArgs e)
-        {
-            foreach (var innerException in e.Exception.InnerExceptions)
-            {
-                if (innerException is PluginTerminationException pluginEx)
-                {
-                    e.SetObserved();
-                    break;
-                }
-            }
         }
     }
 }
