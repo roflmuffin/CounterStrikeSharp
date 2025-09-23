@@ -31,6 +31,7 @@ using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using ILogger = Microsoft.Extensions.Logging.ILogger;
+using System.Threading;
 
 namespace CounterStrikeSharp.API.Core.Plugin
 {
@@ -306,7 +307,14 @@ namespace CounterStrikeSharp.API.Core.Plugin
 
         void ISelfPluginControl.TerminateSelf(string reason)
         {
-            TerminateWithReason(reason);
+            if (Thread.CurrentThread.IsThreadPoolThread)
+            {
+                Server.NextFrame(() => TerminateWithReason(reason));
+            }
+            else
+            {
+                TerminateWithReason(reason);
+            }
             throw new PluginTerminationException(reason); // Throw to prevent further execution
         }
     }
