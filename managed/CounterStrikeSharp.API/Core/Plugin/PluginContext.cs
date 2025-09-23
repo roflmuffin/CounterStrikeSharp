@@ -235,8 +235,17 @@ namespace CounterStrikeSharp.API.Core.Plugin
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogError(ex, "Failed to load plugin {Name}", Plugin.ModuleName);
-                    this.TerminationReason = string.IsNullOrEmpty(this.TerminationReason) ? ex.Message : this.TerminationReason;
+                    if ((ex.InnerException ?? ex) is PluginTerminationException pluginEx)
+                    {
+                        _logger.LogCritical("Terminating plugin {Name} with reason: {Reason}", Plugin.ModuleName, pluginEx.TerminationReason);
+                        this.TerminationReason = pluginEx.TerminationReason;
+                    }
+                    else
+                    {
+                        _logger.LogError(ex, "Failed to load plugin {Name}", Plugin.ModuleName);
+                        this.TerminationReason = ex.Message ?? "Unknown";
+                    }
+
                     Unload(hotReload);
                     return;
                 }
