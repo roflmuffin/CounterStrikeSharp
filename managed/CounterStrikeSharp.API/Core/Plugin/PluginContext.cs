@@ -32,6 +32,7 @@ using Microsoft.Extensions.Logging;
 using Serilog;
 using ILogger = Microsoft.Extensions.Logging.ILogger;
 using System.Threading;
+using System;
 
 namespace CounterStrikeSharp.API.Core.Plugin
 {
@@ -287,35 +288,40 @@ namespace CounterStrikeSharp.API.Core.Plugin
 
         public void TerminateWithReason(string reason)
         {
-            if (State == PluginState.Unloaded)
-            {
-                return;
-            }
-
             this.TerminationReason = reason;
 
-            if (State == PluginState.Loading)
+            switch (State)
             {
+                case PluginState.Unloaded:
+                case PluginState.Loading:
+                    break;
+                case PluginState.Loaded:
+                    _logger.LogInformation("Terminating plugin {Name} with reason: {Reason}", Plugin.ModuleName, reason);
+                    Unload(false);
+                    break;
+            }
 
-            }
-            else if (State == PluginState.Loaded)
-            {
-                _logger.LogInformation("Terminating plugin {Name} with reason: {Reason}", Plugin.ModuleName, reason);
-                Unload(false);
-            }
+            // Force execution flow interruption via globally-handled exception to prevent stack unwinding
+            throw new PluginTerminationException(reason);
         }
 
         void ISelfPluginControl.TerminateSelf(string reason)
         {
-            if (Thread.CurrentThread.IsThreadPoolThread)
+            if (State != PluginState.Unloaded)
             {
-                Server.NextFrame(() => TerminateWithReason(reason));
+                if (Thread.CurrentThread.IsThreadPoolThread)
+                {
+                    Server.NextFrame(() => TerminateWithReason(reason));
+                }
+                else
+                {
+                    TerminateWithReason(reason);
+                }
+
+                // **Failsafe mechanism** ensures execution termination
+                // Prevents control flow leakage back to plugin execution context
+                throw new NotImplementedException();
             }
-            else
-            {
-                TerminateWithReason(reason);
-            }
-            throw new PluginTerminationException(reason); // Throw to prevent further execution
         }
     }
 }
