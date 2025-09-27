@@ -101,19 +101,19 @@ public class CenterHtmlMenuInstance : BaseMenuInstance
 
         if (HasPrevButton)
         {
-            builder.AppendFormat($"<font color='{centerHtmlMenu.PrevPageColor}'>!7</font> &#60;- Prev");
+            builder.AppendFormat($"<font color='{centerHtmlMenu.PrevPageColor}'>!7</font> &#60;- {Application.Localizer["menu.button.previous"]}");
             builder.AppendLine("<br>");
         }
 
         if (HasNextButton)
         {
-            builder.AppendFormat($"<font color='{centerHtmlMenu.NextPageColor}'>!8</font> -> Next");
+            builder.AppendFormat($"<font color='{centerHtmlMenu.NextPageColor}'>!8</font> -> {Application.Localizer["menu.button.next"]}");
             builder.AppendLine("<br>");
         }
 
         if (centerHtmlMenu.ExitButton)
         {
-            builder.AppendFormat($"<font color='{centerHtmlMenu.CloseColor}'>!9</font> -> Close");
+            builder.AppendFormat($"<font color='{centerHtmlMenu.CloseColor}'>!9</font> -> {Application.Localizer["menu.button.close"]}");
             builder.AppendLine("<br>");
         }
 
