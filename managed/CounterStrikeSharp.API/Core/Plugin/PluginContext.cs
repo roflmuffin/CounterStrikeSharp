@@ -31,10 +31,17 @@ using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using ILogger = Microsoft.Extensions.Logging.ILogger;
+using System.Threading;
+using System;
 
 namespace CounterStrikeSharp.API.Core.Plugin
 {
-    public class PluginContext : IPluginContext
+    public interface ISelfPluginControl
+    {
+        void TerminateSelf(string reason);
+    }
+
+    public class PluginContext : IPluginContext, ISelfPluginControl
     {
         public PluginState State { get; set; } = PluginState.Unregistered;
         public IPlugin Plugin { get; private set; }
@@ -50,9 +57,11 @@ namespace CounterStrikeSharp.API.Core.Plugin
         private readonly string _path;
         private readonly FileSystemWatcher _fileWatcher;
         private readonly IServiceProvider _applicationServiceProvider;
-        
+
         public string FilePath => _path;
         private IServiceScope _serviceScope;
+
+        public string TerminationReason { get; private set; }
 
         // TOOD: ServiceCollection
         private ILogger _logger = CoreLogging.Factory.CreateLogger<PluginContext>();
@@ -65,7 +74,7 @@ namespace CounterStrikeSharp.API.Core.Plugin
             _hostConfiguration = hostConfiguration;
             _path = path;
             PluginId = id;
-            
+
             Loader = PluginLoader.CreateFromAssemblyFile(path,
                 new[]
                 {
@@ -77,7 +86,7 @@ namespace CounterStrikeSharp.API.Core.Plugin
                     config.IsUnloadable = true;
                     config.PreferSharedTypes = true;
                 });
-            
+
             if (CoreConfig.PluginHotReloadEnabled)
             {
                 _fileWatcher = new FileSystemWatcher
@@ -113,14 +122,14 @@ namespace CounterStrikeSharp.API.Core.Plugin
                 Load(hotReload: true);
                 Plugin.OnAllPluginsLoaded(hotReload: true);
             });
-            
+
             return Task.CompletedTask;
         }
 
         public void Load(bool hotReload = false)
         {
             if (State == PluginState.Loaded) return;
-            
+
             using (Loader.EnterContextualReflection())
             {
                 var defaultAssembly = Loader.LoadDefaultAssembly();
@@ -178,7 +187,7 @@ namespace CounterStrikeSharp.API.Core.Plugin
                         method?.Invoke(pluginServiceCollection, new object[] { serviceCollection });
                     }
                 }
-                
+
                 serviceCollection.AddScoped<ICommandManager>(c => _commandManager);
                 serviceCollection.DecorateSingleton<ICommandManager, PluginCommandManagerDecorator>();
 
@@ -215,7 +224,33 @@ namespace CounterStrikeSharp.API.Core.Plugin
                 Plugin.Logger = ServiceProvider.GetRequiredService<ILoggerFactory>().CreateLogger(pluginType);
 
                 Plugin.InitializeConfig(Plugin, pluginType);
-                Plugin.Load(hotReload);
+
+                if (Plugin is BasePlugin basePlugin)
+                {
+                    basePlugin.SelfControl = this;
+                }
+
+                this.TerminationReason = string.Empty;
+                try
+                {
+                    Plugin.Load(hotReload);
+                }
+                catch (Exception ex)
+                {
+                    if ((ex.InnerException ?? ex) is PluginTerminationException pluginEx)
+                    {
+                        _logger.LogCritical("Terminating plugin {Name} with reason: {Reason}", Plugin.ModuleName, pluginEx.TerminationReason);
+                        this.TerminationReason = pluginEx.TerminationReason;
+                    }
+                    else
+                    {
+                        _logger.LogError(ex, "Failed to load plugin {Name}", Plugin.ModuleName);
+                        this.TerminationReason = ex.Message ?? "Unknown";
+                    }
+
+                    Unload(hotReload);
+                    return;
+                }
 
                 _logger.LogInformation("Finished loading plugin {Name}", Plugin.ModuleName);
 
@@ -233,12 +268,60 @@ namespace CounterStrikeSharp.API.Core.Plugin
 
             _logger.LogInformation("Unloading plugin {Name}", Plugin.ModuleName);
 
-            Plugin.Unload(hotReload);
-
-            Plugin.Dispose();
-            _serviceScope.Dispose();
+            try
+            {
+                Plugin.Unload(hotReload);
+            }
+            catch
+            {
+                _logger.LogError("Failed to unload {Name} during error recovery, forcing cleanup", Plugin.ModuleName);
+                return;
+            }
+            finally
+            {
+                Plugin.Dispose();
+                _serviceScope.Dispose();
+            }
 
             _logger.LogInformation("Finished unloading plugin {Name}", cachedName);
+        }
+
+        public void TerminateWithReason(string reason)
+        {
+            this.TerminationReason = reason;
+
+            switch (State)
+            {
+                case PluginState.Unloaded:
+                case PluginState.Loading:
+                    break;
+                case PluginState.Loaded:
+                    _logger.LogInformation("Terminating plugin {Name} with reason: {Reason}", Plugin.ModuleName, reason);
+                    Unload(false);
+                    break;
+            }
+
+            // Force execution flow interruption via globally-handled exception to prevent stack unwinding
+            throw new PluginTerminationException(reason);
+        }
+
+        void ISelfPluginControl.TerminateSelf(string reason)
+        {
+            if (State != PluginState.Unloaded)
+            {
+                if (Thread.CurrentThread.IsThreadPoolThread)
+                {
+                    Server.NextFrame(() => TerminateWithReason(reason));
+                }
+                else
+                {
+                    TerminateWithReason(reason);
+                }
+
+                // **Failsafe mechanism** ensures execution termination
+                // Prevents control flow leakage back to plugin execution context
+                throw new NotImplementedException();
+            }
         }
     }
 }
