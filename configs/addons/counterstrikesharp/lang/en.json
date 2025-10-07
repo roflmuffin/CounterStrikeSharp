@@ -1,0 +1,19 @@
+{
+    "all": "all players",
+    "bots": "bots",
+    "humans": "humans",
+    "alive": "alive players",
+    "dead": "dead players",
+    "notme": "all players except self",
+    "ct": "ct players",
+    "t": "t players",
+    "spec": "spec players",
+
+    "No matching client": "{white}No matching client was found.",
+    "No matching clients": "{white}No matching clients were found.",
+    "Target must be alive": "{white}This command can only be used on alive players.",
+    "Target must be dead": "{white}This command can only be used on dead players.",
+    "Unable to target": "{white}You cannot target this player.",
+    "Cannot target bot": "{white}Unable to perform this command on a bot.",
+    "More than one client matched": "{white}More than one client matched the given pattern."
+}
