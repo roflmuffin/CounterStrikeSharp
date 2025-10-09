@@ -190,7 +190,9 @@ public class Target
 
         if (tnIsMl)
         {
-            TargetTypeMap.TryGetValue(targetString, out TargetType type);
+            if (!TargetTypeMap.TryGetValue(targetString, out TargetType type))
+                type = TargetType.PlayerMe;
+
             string representativeName = type switch
             {
                 TargetType.GroupAll => Application.Localizer["all"],
@@ -199,7 +201,6 @@ public class Target
                 TargetType.GroupAlive => Application.Localizer["alive"],
                 TargetType.GroupDead => Application.Localizer["dead"],
                 TargetType.GroupNotMe => Application.Localizer["notme"],
-                TargetType.PlayerMe => players[0].PlayerName,
                 TargetType.TeamCt => Application.Localizer["ct"],
                 TargetType.TeamT => Application.Localizer["t"],
                 TargetType.TeamSpec => Application.Localizer["spec"],
