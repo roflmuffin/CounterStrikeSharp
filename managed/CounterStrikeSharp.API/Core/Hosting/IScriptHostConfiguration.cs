@@ -35,4 +35,10 @@ public interface IScriptHostConfiguration
     /// e.g. /game/csgo/addons/counterstrikesharp/gamedata
     /// </summary>
     string GameDataPath { get; }
+
+    /// <summary>
+    /// Gets the absolute path to the directory that contains CounterStrikeSharp translation files.
+    /// e.g. /game/csgo/addons/counterstrikesharp/lang
+    /// </summary>
+    string LanguagePath { get; }
 }
