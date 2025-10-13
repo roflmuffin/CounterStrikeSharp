@@ -140,15 +140,6 @@ namespace CounterStrikeSharp.API
             VirtualFunctions.ClientPrintAll(HudDestination.Chat, message, 0, 0, 0, 0, 0);
         }
 
-        public static void PrintToChatAllLocalized(string message)
-        {
-            var players = Utilities.GetPlayers();
-            foreach (var player in players)
-            {
-                player.PrintToChat(message);
-            }
-        }
-
         public static string GameDirectory => NativeAPI.GetGameDirectory();
 
         private static int? _maxPlayers;
