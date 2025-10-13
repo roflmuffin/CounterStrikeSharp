@@ -134,7 +134,6 @@ public class Target
     /// (e.g., "all", "ct") if <paramref name="tnIsMl"/> is true, or actual player names otherwise.
     /// </param>
     /// <param name="players">An output list that will be populated with the player entities matching the target string.</param>
-
     public static ProcessTargetResultFlag ProcessTargetString(CCSPlayerController? player,
         string targetString, ProcessTargetFilterFlag filter, bool tnIsMl,
         out List<string> targetname, out List<CCSPlayerController> players)
@@ -195,15 +194,15 @@ public class Target
 
             string representativeName = type switch
             {
-                TargetType.GroupAll => Application.Localizer["all"],
-                TargetType.GroupBots => Application.Localizer["bots"],
-                TargetType.GroupHumans => Application.Localizer["humans"],
-                TargetType.GroupAlive => Application.Localizer["alive"],
-                TargetType.GroupDead => Application.Localizer["dead"],
-                TargetType.GroupNotMe => Application.Localizer["notme"],
-                TargetType.TeamCt => Application.Localizer["ct"],
-                TargetType.TeamT => Application.Localizer["t"],
-                TargetType.TeamSpec => Application.Localizer["spec"],
+                TargetType.GroupAll => "all",
+                TargetType.GroupBots => "bots",
+                TargetType.GroupHumans => "humans",
+                TargetType.GroupAlive => "alive",
+                TargetType.GroupDead => "dead",
+                TargetType.GroupNotMe => "notme",
+                TargetType.TeamCt => "ct",
+                TargetType.TeamT => "t",
+                TargetType.TeamSpec => "spec",
                 _ => players[0].PlayerName
             };
             targetname.Add(representativeName);
@@ -217,6 +216,31 @@ public class Target
         }
 
         return ProcessTargetResultFlag.TargetFound;
+    }
+
+    /// <summary>
+    /// Processes a target string, finds the matching player, and applies specified filters.
+    /// </summary>
+    /// <param name="player">The player who executed the command.</param>
+    /// <param name="targetString">The target string (e.g., player name, #userid, @all).</param>
+    /// <param name="nobots">Optional. Set to true if bots should NOT be targetted</param>
+    /// <param name="immunity">Optional. Set to false to ignore target immunity.</param>
+    public static CCSPlayerController? FindTarget(CCSPlayerController player, string targetString, bool nobots = false, bool immunity = false)
+    {
+        var filter = ProcessTargetFilterFlag.FilterNoMulti;
+
+        if (nobots)
+            filter &= ProcessTargetFilterFlag.FilterNoBots;
+
+        if (immunity)
+            filter &= ProcessTargetFilterFlag.FilterNoImmunity;
+
+        var targetResultFlag = ProcessTargetString(player, targetString, filter, false, out var _, out var players);
+
+        if (targetResultFlag != ProcessTargetResultFlag.TargetFound)
+            return null;
+
+        return players.SingleOrDefault();
     }
 
     /// <summary>
