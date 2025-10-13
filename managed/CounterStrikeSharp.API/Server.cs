@@ -21,6 +21,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Core.Translations;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
 
@@ -138,6 +139,19 @@ namespace CounterStrikeSharp.API
         public static void PrintToChatAll(string message)
         {
             VirtualFunctions.ClientPrintAll(HudDestination.Chat, message, 0, 0, 0, 0, 0);
+        }
+
+        public static void PrintToChatAllEx(string message)
+        {
+            var players = Utilities.GetPlayers();
+            foreach (var player in players)
+            {
+                if (player.IsBot)
+                    continue;
+
+                using var temporaryCulture = new WithTemporaryCulture(player.GetLanguage());
+                player.PrintToChat(message);
+            }
         }
 
         public static string GameDirectory => NativeAPI.GetGameDirectory();

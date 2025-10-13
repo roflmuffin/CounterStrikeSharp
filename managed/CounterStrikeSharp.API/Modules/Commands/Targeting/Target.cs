@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Text;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -136,9 +137,9 @@ public class Target
     /// <param name="players">An output list that will be populated with the player entities matching the target string.</param>
     public static ProcessTargetResultFlag ProcessTargetString(CCSPlayerController? player,
         string targetString, ProcessTargetFilterFlag filter, bool tnIsMl,
-        out List<string> targetname, out List<CCSPlayerController> players)
+        out string targetname, out List<CCSPlayerController> players)
     {
-        targetname = [];
+        targetname = string.Empty;
         players = new Target(targetString).GetTarget(player).Players;
 
         if (players.Count == 0)
@@ -192,7 +193,7 @@ public class Target
             if (!TargetTypeMap.TryGetValue(targetString, out TargetType type))
                 type = TargetType.PlayerMe;
 
-            string representativeName = type switch
+            targetname = type switch
             {
                 TargetType.GroupAll => "all",
                 TargetType.GroupBots => "bots",
@@ -205,43 +206,40 @@ public class Target
                 TargetType.TeamSpec => "spec",
                 _ => players[0].PlayerName
             };
-            targetname.Add(representativeName);
         }
         else
         {
-            foreach (CCSPlayerController target in players)
-            {
-                targetname.Add(target.PlayerName);
-            }
+            targetname = string.Join(", ", players.Select(p => p.PlayerName));
         }
 
         return ProcessTargetResultFlag.TargetFound;
     }
 
     /// <summary>
-    /// Processes a target string, finds the matching player, and applies specified filters.
+    /// Wraps ProcessTargetString() and handles producing error messages for bad targets.
     /// </summary>
     /// <param name="player">The player who executed the command.</param>
     /// <param name="targetString">The target string (e.g., player name, #userid, @all).</param>
     /// <param name="nobots">Optional. Set to true if bots should NOT be targetted</param>
     /// <param name="immunity">Optional. Set to false to ignore target immunity.</param>
-    public static CCSPlayerController? FindTarget(CCSPlayerController player, string targetString, bool nobots = false, bool immunity = false)
+    public static CCSPlayerController? FindTarget(CCSPlayerController player, string targetString, bool nobots = false, bool immunity = true)
     {
         var filter = ProcessTargetFilterFlag.FilterNoMulti;
 
         if (nobots)
-            filter &= ProcessTargetFilterFlag.FilterNoBots;
+            filter |= ProcessTargetFilterFlag.FilterNoBots;
 
-        if (immunity)
-            filter &= ProcessTargetFilterFlag.FilterNoImmunity;
+        if (!immunity)
+            filter |= ProcessTargetFilterFlag.FilterNoImmunity;
 
-        var targetResultFlag = ProcessTargetString(player, targetString, filter, false, out var _, out var players);
+        ProcessTargetResultFlag result;
+        if ((result = ProcessTargetString(player, targetString, filter, false, out var targetname, out var players)) == ProcessTargetResultFlag.TargetFound)
+            return players[0];
 
-        if (targetResultFlag != ProcessTargetResultFlag.TargetFound)
-            return null;
-
-        return players.SingleOrDefault();
+        ReplyToTargetError(player, result);
+        return null;
     }
+
 
     /// <summary>
     /// Replies to a client with a given message describing a targetting failure reason.
