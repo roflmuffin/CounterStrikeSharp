@@ -141,19 +141,6 @@ namespace CounterStrikeSharp.API
             VirtualFunctions.ClientPrintAll(HudDestination.Chat, message, 0, 0, 0, 0, 0);
         }
 
-        public static void PrintToChatAllEx(string message)
-        {
-            var players = Utilities.GetPlayers();
-            foreach (var player in players)
-            {
-                if (player.IsBot)
-                    continue;
-
-                using var temporaryCulture = new WithTemporaryCulture(player.GetLanguage());
-                player.PrintToChat(message);
-            }
-        }
-
         public static string GameDirectory => NativeAPI.GetGameDirectory();
 
         private static int? _maxPlayers;
