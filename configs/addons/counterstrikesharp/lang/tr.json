@@ -1,4 +1,8 @@
 {
+    "menu.button.previous": "Geri",
+    "menu.button.next": "İleri",
+    "menu.button.close": "Çıkış",
+
     "all": "tüm oyuncular",
     "bots": "botlar",
     "humans": "insanlar",
