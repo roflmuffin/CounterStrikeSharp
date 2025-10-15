@@ -206,12 +206,11 @@ enum gender_t : uint8
 struct EmitSound_t
 {
     EmitSound_t()
-        : m_nChannel(0), m_pSoundName(0), m_flVolume(VOL_NORM), m_SoundLevel(SNDLVL_NONE), m_nFlags(0), m_nPitch(PITCH_NORM), m_pOrigin(0),
+        : m_pSoundName(0), m_flVolume(VOL_NORM), m_SoundLevel(SNDLVL_NONE), m_nFlags(0), m_nPitch(PITCH_NORM), m_pOrigin(0),
           m_flSoundTime(0.0f), m_pflSoundDuration(0), m_bEmitCloseCaption(true), m_bWarnOnMissingCloseCaption(false),
           m_bWarnOnDirectWaveReference(false), m_nSpeakerEntity(-1), m_UtlVecSoundOrigin(), m_nForceGuid(0), m_SpeakerGender(GENDER_NONE)
     {
     }
-    int m_nChannel;
     const char* m_pSoundName;
     float m_flVolume;
     soundlevel_t m_SoundLevel;
