@@ -1,3 +1,15 @@
+## What's Changed in v1.0.341
+* fix: update schema for update ([56e0074](https://github.com/roflmuffin/CounterStrikeSharp/commit/56e007402b49bc2d638958e34f1c783c4156ba49))
+* chore(deps): bump libraries/hl2sdk-cs2 from `bc59586` to `9310e72` by [@dependabot[bot]](https://github.com/dependabot[bot]) in [#908](https://github.com/roflmuffin/CounterStrikeSharp/pull/908) ([bf75d43](https://github.com/roflmuffin/CounterStrikeSharp/commit/bf75d430392f3813c9e279267bda8d64400630fc))
+* chore(deps): bump libraries/metamod-source from `3f3136d` to `4399ff0` by [@dependabot[bot]](https://github.com/dependabot[bot]) in [#1067](https://github.com/roflmuffin/CounterStrikeSharp/pull/1067) ([7572722](https://github.com/roflmuffin/CounterStrikeSharp/commit/7572722de4b33c9683a7da981a2cf12c3e5b6374))
+* fix: EmitSoundFilter Crash by [@himenekocn](https://github.com/himenekocn) in [#1066](https://github.com/roflmuffin/CounterStrikeSharp/pull/1066) ([638d744](https://github.com/roflmuffin/CounterStrikeSharp/commit/638d74470e27753da19d9e643fae833db4e89da1))
+* fix(update): update signatures and offsets for 1.41.1.3 Update by [@himenekocn](https://github.com/himenekocn) in [#1064](https://github.com/roflmuffin/CounterStrikeSharp/pull/1064) ([37951f2](https://github.com/roflmuffin/CounterStrikeSharp/commit/37951f287554832e334d258dd30cdf40dc285963))
+* feat: improve getplayers & RemoveItemByDesignerName by [@schwarper](https://github.com/schwarper) in [#1044](https://github.com/roflmuffin/CounterStrikeSharp/pull/1044) ([7b9df90](https://github.com/roflmuffin/CounterStrikeSharp/commit/7b9df9097cb50a1be928c0955ef764f9279adae9))
+* feat: Allow custom CS# directory for flexible server deployment (aka. `css_basepath`) by [@ELDment](https://github.com/ELDment) in [#1033](https://github.com/roflmuffin/CounterStrikeSharp/pull/1033) ([31cedca](https://github.com/roflmuffin/CounterStrikeSharp/commit/31cedca2b71052a977b70eb90750966d96751961))
+
+## New Contributors
+* [@himenekocn](https://github.com/himenekocn) made their first contribution in [#1066](https://github.com/roflmuffin/CounterStrikeSharp/pull/1066)
+
 ## What's Changed in v1.0.340
 * fix: update for CS2 09-17-25 (patch 20022951) by [@oylsister](https://github.com/oylsister) in [#1037](https://github.com/roflmuffin/CounterStrikeSharp/pull/1037) ([2c80971](https://github.com/roflmuffin/CounterStrikeSharp/commit/2c809713937675cef245b79d9ad39674b4d37fd8))
 * fix: Invalid string pointers passed by `SetResult` due to C++ memory lifecycle by [@ELDment](https://github.com/ELDment) in [#1032](https://github.com/roflmuffin/CounterStrikeSharp/pull/1032) ([44922da](https://github.com/roflmuffin/CounterStrikeSharp/commit/44922da680a5c167d5745267f849d37de35ca4b1))
