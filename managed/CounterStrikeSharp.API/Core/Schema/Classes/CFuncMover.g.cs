@@ -30,6 +30,10 @@ public partial class CFuncMover : CBaseModelEntity
 	[SchemaMember("CFuncMover", "m_hPathMover")]
 	public CHandle<CPathMover> PathMover => Schema.GetDeclaredClass<CHandle<CPathMover>>(this.Handle, "CFuncMover", "m_hPathMover");
 
+	// m_hPrevPathMover
+	[SchemaMember("CFuncMover", "m_hPrevPathMover")]
+	public CHandle<CPathMover> PrevPathMover => Schema.GetDeclaredClass<CHandle<CPathMover>>(this.Handle, "CFuncMover", "m_hPrevPathMover");
+
 	// m_iszPathNodeStart
 	[SchemaMember("CFuncMover", "m_iszPathNodeStart")]
 	public string PathNodeStart

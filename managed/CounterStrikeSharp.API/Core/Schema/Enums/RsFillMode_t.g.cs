@@ -6,8 +6,8 @@ using System;
 
 namespace CounterStrikeSharp.API.Core;
 
-public enum CNmParticleEventType_t : uint
+public enum RsFillMode_t : byte
 {
-	Create = 0x0,
-	Create_CFG = 0x1,
+	RS_FILL_SOLID = 0x0,
+	RS_FILL_WIREFRAME = 0x1,
 }

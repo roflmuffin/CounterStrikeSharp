@@ -6,8 +6,9 @@ using System;
 
 namespace CounterStrikeSharp.API.Core;
 
-public enum CNmSoundEventType_t : uint
+public enum RsCullMode_t : byte
 {
-	Play = 0x0,
-	Stop = 0x1,
+	RS_CULL_NONE = 0x0,
+	RS_CULL_BACK = 0x1,
+	RS_CULL_FRONT = 0x2,
 }

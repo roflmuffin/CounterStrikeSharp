@@ -18,8 +18,8 @@ public partial class CHitboxComponent : CEntityComponent
 {
     public CHitboxComponent (IntPtr pointer) : base(pointer) {}
 
-	// m_bvDisabledHitGroups
-	[SchemaMember("CHitboxComponent", "m_bvDisabledHitGroups")]
-	public Span<UInt32> DisabledHitGroups => Schema.GetFixedArray<UInt32>(this.Handle, "CHitboxComponent", "m_bvDisabledHitGroups", 1);
+	// m_flBoundsExpandRadius
+	[SchemaMember("CHitboxComponent", "m_flBoundsExpandRadius")]
+	public ref float BoundsExpandRadius => ref Schema.GetRef<float>(this.Handle, "CHitboxComponent", "m_flBoundsExpandRadius");
 
 }

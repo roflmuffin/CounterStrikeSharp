@@ -63,10 +63,10 @@ public static class VirtualFunctions
     public static MemoryFunctionVoid<CBasePlayerController, CBasePlayerPawn, bool, bool> CBasePlayerController_SetPawnFunc =
         new(GameData.GetSignature("CBasePlayerController_SetPawn"));
 
-    public static MemoryFunctionVoid<CEntityInstance, CTakeDamageInfo, IntPtr> CBaseEntity_TakeDamageOldFunc =
+    public static MemoryFunctionVoid<CEntityInstance, CTakeDamageInfo, CTakeDamageResult> CBaseEntity_TakeDamageOldFunc =
         new(GameData.GetSignature("CBaseEntity_TakeDamageOld"));
 
-    public static Action<CEntityInstance, CTakeDamageInfo, IntPtr> CBaseEntity_TakeDamageOld = CBaseEntity_TakeDamageOldFunc.Invoke;
+    public static Action<CEntityInstance, CTakeDamageInfo, CTakeDamageResult> CBaseEntity_TakeDamageOld = CBaseEntity_TakeDamageOldFunc.Invoke;
 
     public static MemoryFunctionWithReturn<CCSPlayer_WeaponServices, CBasePlayerWeapon, bool> CCSPlayer_WeaponServices_CanUseFunc =
         new(GameData.GetSignature("CCSPlayer_WeaponServices_CanUse"));

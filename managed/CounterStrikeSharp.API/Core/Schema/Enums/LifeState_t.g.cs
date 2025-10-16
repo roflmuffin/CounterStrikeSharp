@@ -13,4 +13,5 @@ public enum LifeState_t : uint
 	LIFE_DEAD = 0x2,
 	LIFE_RESPAWNABLE = 0x3,
 	LIFE_RESPAWNING = 0x4,
+	NUM_LIFESTATES = 0x5,
 }

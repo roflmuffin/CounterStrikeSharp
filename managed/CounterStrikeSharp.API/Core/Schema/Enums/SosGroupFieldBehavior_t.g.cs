@@ -6,8 +6,9 @@ using System;
 
 namespace CounterStrikeSharp.API.Core;
 
-public enum CNmParticleEventType_t : uint
+public enum SosGroupFieldBehavior_t : uint
 {
-	Create = 0x0,
-	Create_CFG = 0x1,
+	kIgnore = 0x0,
+	kBranch = 0x1,
+	kMatch = 0x2,
 }

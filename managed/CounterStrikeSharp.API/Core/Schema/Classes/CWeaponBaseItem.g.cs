@@ -18,9 +18,9 @@ public partial class CWeaponBaseItem : CCSWeaponBase
 {
     public CWeaponBaseItem (IntPtr pointer) : base(pointer) {}
 
-	// m_SequenceCompleteTimer
-	[SchemaMember("CWeaponBaseItem", "m_SequenceCompleteTimer")]
-	public CountdownTimer SequenceCompleteTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CWeaponBaseItem", "m_SequenceCompleteTimer");
+	// m_bSequenceInProgress
+	[SchemaMember("CWeaponBaseItem", "m_bSequenceInProgress")]
+	public ref bool SequenceInProgress => ref Schema.GetRef<bool>(this.Handle, "CWeaponBaseItem", "m_bSequenceInProgress");
 
 	// m_bRedraw
 	[SchemaMember("CWeaponBaseItem", "m_bRedraw")]

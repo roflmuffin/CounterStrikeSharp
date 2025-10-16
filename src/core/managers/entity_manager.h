@@ -205,27 +205,31 @@ enum gender_t : uint8
 
 struct EmitSound_t
 {
-    EmitSound_t()
-        : m_pSoundName(0), m_flVolume(VOL_NORM), m_SoundLevel(SNDLVL_NONE), m_nFlags(0), m_nPitch(PITCH_NORM), m_pOrigin(0),
-          m_flSoundTime(0.0f), m_pflSoundDuration(0), m_bEmitCloseCaption(true), m_bWarnOnMissingCloseCaption(false),
-          m_bWarnOnDirectWaveReference(false), m_nSpeakerEntity(-1), m_UtlVecSoundOrigin(), m_nForceGuid(0), m_SpeakerGender(GENDER_NONE)
-    {
-    }
+    // clang-format off
+	EmitSound_t() :
+		m_pSoundName( 0 ),
+		m_flVolume( VOL_NORM ),
+		m_flSoundTime( 0.0f ),
+		m_nSpeakerEntity( -1 ),
+		m_nForceGuid( 0 ),
+		m_nSourceSoundscape( 0 ),
+		m_nPitch( PITCH_NORM )
+	{
+	}
+
+    // clang-format on
     const char* m_pSoundName;
-    float m_flVolume;
-    soundlevel_t m_SoundLevel;
-    int m_nFlags;
-    int m_nPitch;
-    const Vector* m_pOrigin;
-    float m_flSoundTime;
-    float* m_pflSoundDuration;
-    bool m_bEmitCloseCaption;
-    bool m_bWarnOnMissingCloseCaption;
-    bool m_bWarnOnDirectWaveReference;
+    Vector m_vecOrigin;
+    float m_flVolume; // soundevent's volume_atten
+    float m_flSoundTime; // sound delay
     CEntityIndex m_nSpeakerEntity;
-    CUtlVector<Vector, CUtlMemory<Vector, int>> m_UtlVecSoundOrigin;
     SoundEventGuid_t m_nForceGuid;
-    gender_t m_SpeakerGender;
+    CEntityIndex m_nSourceSoundscape;
+    uint16 m_nPitch; // Pretty sure this is unused.
+    // (1<<3) overrides the source soundscape with the speaker entity.
+    // (1<<4) emits sound at specified position, otherwise attached to entity index.
+    // Possibly share the same flags as SndOpEventGuid_t.
+    uint8 m_nFlags;
 };
 
 struct SndOpEventGuid_t

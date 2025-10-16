@@ -8,6 +8,7 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum EDestructibleParts_DestroyParameterFlags : uint
 {
+	None = 0x0,
 	GenerateBreakpieces = 0x1,
 	EnableFlinches = 0x2,
 	ForceDamageApply = 0x4,
