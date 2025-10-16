@@ -14,8 +14,8 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CCSPointScriptExtensions_CCSWeaponBaseVData : NativeObject
+public partial class CCSWeaponBaseShotgun : CCSWeaponBase
 {
-    public CCSPointScriptExtensions_CCSWeaponBaseVData (IntPtr pointer) : base(pointer) {}
+    public CCSWeaponBaseShotgun (IntPtr pointer) : base(pointer) {}
 
 }

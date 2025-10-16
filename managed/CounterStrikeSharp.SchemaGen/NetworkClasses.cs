@@ -68,7 +68,6 @@ public static class NetworkClasses
         "CEnvDetailController",
         "CEnvLightProbeVolume",
         "CEnvParticleGlow",
-        "CEnvProjectedTexture",
         "CEnvSky",
         "CEnvVolumetricFogController",
         "CEnvVolumetricFogVolume",

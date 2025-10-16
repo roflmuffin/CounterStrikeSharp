@@ -58,17 +58,17 @@ public partial class CDamageRecord : NativeObject
 	[SchemaMember("CDamageRecord", "m_RecipientXuid")]
 	public ref UInt64 RecipientXuid => ref Schema.GetRef<UInt64>(this.Handle, "CDamageRecord", "m_RecipientXuid");
 
-	// m_iBulletsDamage
-	[SchemaMember("CDamageRecord", "m_iBulletsDamage")]
-	public ref Int32 BulletsDamage => ref Schema.GetRef<Int32>(this.Handle, "CDamageRecord", "m_iBulletsDamage");
+	// m_flBulletsDamage
+	[SchemaMember("CDamageRecord", "m_flBulletsDamage")]
+	public ref float BulletsDamage => ref Schema.GetRef<float>(this.Handle, "CDamageRecord", "m_flBulletsDamage");
 
-	// m_iDamage
-	[SchemaMember("CDamageRecord", "m_iDamage")]
-	public ref Int32 Damage => ref Schema.GetRef<Int32>(this.Handle, "CDamageRecord", "m_iDamage");
+	// m_flDamage
+	[SchemaMember("CDamageRecord", "m_flDamage")]
+	public ref float Damage => ref Schema.GetRef<float>(this.Handle, "CDamageRecord", "m_flDamage");
 
-	// m_iActualHealthRemoved
-	[SchemaMember("CDamageRecord", "m_iActualHealthRemoved")]
-	public ref Int32 ActualHealthRemoved => ref Schema.GetRef<Int32>(this.Handle, "CDamageRecord", "m_iActualHealthRemoved");
+	// m_flActualHealthRemoved
+	[SchemaMember("CDamageRecord", "m_flActualHealthRemoved")]
+	public ref float ActualHealthRemoved => ref Schema.GetRef<float>(this.Handle, "CDamageRecord", "m_flActualHealthRemoved");
 
 	// m_iNumHits
 	[SchemaMember("CDamageRecord", "m_iNumHits")]

@@ -206,6 +206,9 @@ internal static partial class Program
         visited.Add("CSkillInt");
         visited.Add("CRangeFloat");
         visited.Add("CNavLinkAnimgraphVar");
+        visited.Add("DecalGroupOption_t");
+        visited.Add("DestructibleHitGroupToDestroy_t");
+
 
         var classBuilder = GetTemplate(true);
 

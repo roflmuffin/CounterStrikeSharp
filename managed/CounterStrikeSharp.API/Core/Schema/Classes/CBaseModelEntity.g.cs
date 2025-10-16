@@ -68,7 +68,7 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_pDestructiblePartsSystemComponent
 	[SchemaMember("CBaseModelEntity", "m_pDestructiblePartsSystemComponent")]
-	public CDestructiblePartsSystemComponent? DestructiblePartsSystemComponent => Schema.GetPointer<CDestructiblePartsSystemComponent>(this.Handle, "CBaseModelEntity", "m_pDestructiblePartsSystemComponent");
+	public CDestructiblePartsComponent? DestructiblePartsSystemComponent => Schema.GetPointer<CDestructiblePartsComponent>(this.Handle, "CBaseModelEntity", "m_pDestructiblePartsSystemComponent");
 
 	// m_LastHitGroup
 	[SchemaMember("CBaseModelEntity", "m_LastHitGroup")]
@@ -170,14 +170,6 @@ public partial class CBaseModelEntity : CBaseEntity
 	[SchemaMember("CBaseModelEntity", "m_vDecalForwardAxis")]
 	public Vector DecalForwardAxis => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseModelEntity", "m_vDecalForwardAxis");
 
-	// m_flDecalHealBloodRate
-	[SchemaMember("CBaseModelEntity", "m_flDecalHealBloodRate")]
-	public ref float DecalHealBloodRate => ref Schema.GetRef<float>(this.Handle, "CBaseModelEntity", "m_flDecalHealBloodRate");
-
-	// m_flDecalHealHeightRate
-	[SchemaMember("CBaseModelEntity", "m_flDecalHealHeightRate")]
-	public ref float DecalHealHeightRate => ref Schema.GetRef<float>(this.Handle, "CBaseModelEntity", "m_flDecalHealHeightRate");
-
 	// m_nDecalMode
 	[SchemaMember("CBaseModelEntity", "m_nDecalMode")]
 	public ref DecalMode_t DecalMode => ref Schema.GetRef<DecalMode_t>(this.Handle, "CBaseModelEntity", "m_nDecalMode");
@@ -193,5 +185,9 @@ public partial class CBaseModelEntity : CBaseEntity
 	// m_vecViewOffset
 	[SchemaMember("CBaseModelEntity", "m_vecViewOffset")]
 	public CNetworkViewOffsetVector ViewOffset => Schema.GetDeclaredClass<CNetworkViewOffsetVector>(this.Handle, "CBaseModelEntity", "m_vecViewOffset");
+
+	// m_bvDisabledHitGroups
+	[SchemaMember("CBaseModelEntity", "m_bvDisabledHitGroups")]
+	public Span<UInt32> DisabledHitGroups => Schema.GetFixedArray<UInt32>(this.Handle, "CBaseModelEntity", "m_bvDisabledHitGroups", 1);
 
 }

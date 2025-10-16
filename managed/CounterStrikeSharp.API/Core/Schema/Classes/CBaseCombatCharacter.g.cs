@@ -30,10 +30,6 @@ public partial class CBaseCombatCharacter : CBaseFlex
 	[SchemaMember("CBaseCombatCharacter", "m_impactEnergyScale")]
 	public ref float ImpactEnergyScale => ref Schema.GetRef<float>(this.Handle, "CBaseCombatCharacter", "m_impactEnergyScale");
 
-	// m_nMinVehicleDamageToTempRagdoll
-	[SchemaMember("CBaseCombatCharacter", "m_nMinVehicleDamageToTempRagdoll")]
-	public ref Int32 MinVehicleDamageToTempRagdoll => ref Schema.GetRef<Int32>(this.Handle, "CBaseCombatCharacter", "m_nMinVehicleDamageToTempRagdoll");
-
 	// m_bApplyStressDamage
 	[SchemaMember("CBaseCombatCharacter", "m_bApplyStressDamage")]
 	public ref bool ApplyStressDamage => ref Schema.GetRef<bool>(this.Handle, "CBaseCombatCharacter", "m_bApplyStressDamage");

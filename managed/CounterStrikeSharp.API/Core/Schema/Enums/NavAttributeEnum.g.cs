@@ -6,7 +6,7 @@ using System;
 
 namespace CounterStrikeSharp.API.Core;
 
-public enum NavAttributeEnum : uint
+public enum NavAttributeEnum : ulong
 {
 	NAV_MESH_AVOID = 0x80,
 	NAV_MESH_STAIRS = 0x1000,
@@ -16,7 +16,6 @@ public enum NavAttributeEnum : uint
 	NAV_MESH_CRAWL_HEIGHT = 0x40000,
 	NAV_MESH_CROUCH = 0x10000,
 	NAV_MESH_JUMP = 0x2,
-	NAV_MESH_PRECISE = 0x4,
 	NAV_MESH_NO_JUMP = 0x8,
 	NAV_MESH_STOP = 0x10,
 	NAV_MESH_RUN = 0x20,
@@ -28,5 +27,5 @@ public enum NavAttributeEnum : uint
 	NAV_MESH_NO_MERGE = 0x2000,
 	NAV_MESH_OBSTACLE_TOP = 0x4000,
 	NAV_ATTR_FIRST_GAME_INDEX = 0x13,
-	NAV_ATTR_LAST_INDEX = 0x1F,
+	NAV_ATTR_LAST_INDEX = 0x3F,
 }

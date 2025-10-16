@@ -58,8 +58,20 @@ public partial class CSplineConstraint : CPhysConstraint
 	[SchemaMember("CSplineConstraint", "m_flJointFriction")]
 	public ref float JointFriction => ref Schema.GetRef<float>(this.Handle, "CSplineConstraint", "m_flJointFriction");
 
+	// m_flTransitionTime
+	[SchemaMember("CSplineConstraint", "m_flTransitionTime")]
+	public ref float TransitionTime => ref Schema.GetRef<float>(this.Handle, "CSplineConstraint", "m_flTransitionTime");
+
 	// m_vPreSolveAnchorPos
 	[SchemaMember("CSplineConstraint", "m_vPreSolveAnchorPos")]
 	public Vector PreSolveAnchorPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CSplineConstraint", "m_vPreSolveAnchorPos");
+
+	// m_StartTransitionTime
+	[SchemaMember("CSplineConstraint", "m_StartTransitionTime")]
+	public ref float StartTransitionTime => ref Schema.GetRef<float>(this.Handle, "CSplineConstraint", "m_StartTransitionTime");
+
+	// m_vTangentSpaceAnchorAtTransitionStart
+	[SchemaMember("CSplineConstraint", "m_vTangentSpaceAnchorAtTransitionStart")]
+	public Vector TangentSpaceAnchorAtTransitionStart => Schema.GetDeclaredClass<Vector>(this.Handle, "CSplineConstraint", "m_vTangentSpaceAnchorAtTransitionStart");
 
 }
