@@ -1,3 +1,6 @@
+## What's Changed in v1.0.342
+* fix: update Sigs & CTakeDamageResult & EmitSound_t by [@himenekocn](https://github.com/himenekocn) in [#1071](https://github.com/roflmuffin/CounterStrikeSharp/pull/1071) ([34598dd](https://github.com/roflmuffin/CounterStrikeSharp/commit/34598dd56ea2e9e18229185dc225db00a336bb5d))
+
 ## What's Changed in v1.0.341
 * fix: update schema for update ([56e0074](https://github.com/roflmuffin/CounterStrikeSharp/commit/56e007402b49bc2d638958e34f1c783c4156ba49))
 * chore(deps): bump libraries/hl2sdk-cs2 from `bc59586` to `9310e72` by [@dependabot[bot]](https://github.com/dependabot[bot]) in [#908](https://github.com/roflmuffin/CounterStrikeSharp/pull/908) ([bf75d43](https://github.com/roflmuffin/CounterStrikeSharp/commit/bf75d430392f3813c9e279267bda8d64400630fc))
