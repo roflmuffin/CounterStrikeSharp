@@ -6,8 +6,8 @@ using System;
 
 namespace CounterStrikeSharp.API.Core;
 
-public enum CNmParticleEventType_t : uint
+public enum SosActionSetParamSortType_t : uint
 {
-	Create = 0x0,
-	Create_CFG = 0x1,
+	SOS_SETPARAM_SORTTYPE_HIGHEST = 0x0,
+	SOS_SETPARAM_SORTTYPE_LOWEST = 0x1,
 }

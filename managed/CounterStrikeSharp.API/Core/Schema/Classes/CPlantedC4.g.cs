@@ -34,6 +34,10 @@ public partial class CPlantedC4 : CBaseAnimGraph
 	[SchemaMember("CPlantedC4", "m_nSourceSoundscapeHash")]
 	public ref Int32 SourceSoundscapeHash => ref Schema.GetRef<Int32>(this.Handle, "CPlantedC4", "m_nSourceSoundscapeHash");
 
+	// m_bAbortDetonationBecauseWorldIsFrozen
+	[SchemaMember("CPlantedC4", "m_bAbortDetonationBecauseWorldIsFrozen")]
+	public ref bool AbortDetonationBecauseWorldIsFrozen => ref Schema.GetRef<bool>(this.Handle, "CPlantedC4", "m_bAbortDetonationBecauseWorldIsFrozen");
+
 	// m_AttributeManager
 	[SchemaMember("CPlantedC4", "m_AttributeManager")]
 	public CAttributeContainer AttributeManager => Schema.GetDeclaredClass<CAttributeContainer>(this.Handle, "CPlantedC4", "m_AttributeManager");

@@ -18,21 +18,9 @@ public partial class CTriggerFan : CBaseTrigger
 {
     public CTriggerFan (IntPtr pointer) : base(pointer) {}
 
-	// m_vFanOrigin
-	[SchemaMember("CTriggerFan", "m_vFanOrigin")]
-	public Vector FanOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerFan", "m_vFanOrigin");
-
 	// m_vFanOriginOffset
 	[SchemaMember("CTriggerFan", "m_vFanOriginOffset")]
 	public Vector FanOriginOffset => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerFan", "m_vFanOriginOffset");
-
-	// m_vFanEnd
-	[SchemaMember("CTriggerFan", "m_vFanEnd")]
-	public Vector FanEnd => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerFan", "m_vFanEnd");
-
-	// m_vNoiseDirectionTarget
-	[SchemaMember("CTriggerFan", "m_vNoiseDirectionTarget")]
-	public Vector NoiseDirectionTarget => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerFan", "m_vNoiseDirectionTarget");
 
 	// m_vDirection
 	[SchemaMember("CTriggerFan", "m_vDirection")]
@@ -65,6 +53,22 @@ public partial class CTriggerFan : CBaseTrigger
 	// m_RampTimer
 	[SchemaMember("CTriggerFan", "m_RampTimer")]
 	public CountdownTimer RampTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CTriggerFan", "m_RampTimer");
+
+	// m_vFanOriginWS
+	[SchemaMember("CTriggerFan", "m_vFanOriginWS")]
+	public Vector FanOriginWS => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerFan", "m_vFanOriginWS");
+
+	// m_vFanOriginLS
+	[SchemaMember("CTriggerFan", "m_vFanOriginLS")]
+	public Vector FanOriginLS => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerFan", "m_vFanOriginLS");
+
+	// m_vFanEndLS
+	[SchemaMember("CTriggerFan", "m_vFanEndLS")]
+	public Vector FanEndLS => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerFan", "m_vFanEndLS");
+
+	// m_vNoiseDirectionTarget
+	[SchemaMember("CTriggerFan", "m_vNoiseDirectionTarget")]
+	public Vector NoiseDirectionTarget => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerFan", "m_vNoiseDirectionTarget");
 
 	// m_iszInfoFan
 	[SchemaMember("CTriggerFan", "m_iszInfoFan")]
