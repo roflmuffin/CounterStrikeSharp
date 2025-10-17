@@ -1,0 +1,23 @@
+{
+    „menu.button.previous“: „Zurück“,
+    „menu.button.next“: „Weiter“,
+    „menu.button.close“: „Schließen“,
+
+    „all“: „alle Spieler“,
+    „bots“: „Bots“,
+    „humans“: „Menschen“,
+    „alive”: „lebende Spieler”,
+    „dead”: „tote Spieler”,
+    „notme”: „alle Spieler außer mir selbst”,
+    „ct”: „ct Spieler”,
+    „t”: „t Spieler”,
+    „spec”: „Zuschauer Spieler”,
+
+    „No matching client“: „Es wurde kein passender Spieler gefunden.“,
+    „No matching clients“: „Es wurden keine passenden Spieler gefunden.“,
+    „Target must be alive“: „Dieser Befehl kann nur für lebende Spieler verwendet werden.“,
+    „Target must be dead“: „Dieser Befehl kann nur für tote Spieler verwendet werden.“,
+    „Unable to target“: „Sie können diesen Spieler nicht als Ziel auswählen.“,
+    „Cannot target bot“: „Dieser Befehl kann nicht für einen Bot ausgeführt werden.“,
+    „More than one client matched“: „Mehr als ein Spieler entspricht dem angegebenen Muster.“
+}
