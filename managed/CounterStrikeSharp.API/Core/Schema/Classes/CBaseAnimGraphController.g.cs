@@ -90,6 +90,10 @@ public partial class CBaseAnimGraphController : CSkeletonAnimationController
 	[SchemaMember("CBaseAnimGraphController", "m_nSerializePoseRecipeSizeAG2")]
 	public ref Int32 SerializePoseRecipeSizeAG2 => ref Schema.GetRef<Int32>(this.Handle, "CBaseAnimGraphController", "m_nSerializePoseRecipeSizeAG2");
 
+	// m_nSerializePoseRecipeVersionAG2
+	[SchemaMember("CBaseAnimGraphController", "m_nSerializePoseRecipeVersionAG2")]
+	public ref Int32 SerializePoseRecipeVersionAG2 => ref Schema.GetRef<Int32>(this.Handle, "CBaseAnimGraphController", "m_nSerializePoseRecipeVersionAG2");
+
 	// m_nGraphCreationFlagsAG2
 	[SchemaMember("CBaseAnimGraphController", "m_nGraphCreationFlagsAG2")]
 	public ref byte GraphCreationFlagsAG2 => ref Schema.GetRef<byte>(this.Handle, "CBaseAnimGraphController", "m_nGraphCreationFlagsAG2");
@@ -97,5 +101,9 @@ public partial class CBaseAnimGraphController : CSkeletonAnimationController
 	// m_nServerGraphDefReloadCountAG2
 	[SchemaMember("CBaseAnimGraphController", "m_nServerGraphDefReloadCountAG2")]
 	public ref Int32 ServerGraphDefReloadCountAG2 => ref Schema.GetRef<Int32>(this.Handle, "CBaseAnimGraphController", "m_nServerGraphDefReloadCountAG2");
+
+	// m_nServerSerializationContextIteration
+	[SchemaMember("CBaseAnimGraphController", "m_nServerSerializationContextIteration")]
+	public ref Int32 ServerSerializationContextIteration => ref Schema.GetRef<Int32>(this.Handle, "CBaseAnimGraphController", "m_nServerSerializationContextIteration");
 
 }

@@ -16,12 +16,9 @@
 
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
-using CounterStrikeSharp.API.Core.Logging;
 using CounterStrikeSharp.API.Modules.Commands.Targeting;
 using CounterStrikeSharp.API.Modules.Entities;
 using Microsoft.Extensions.Logging;
@@ -60,13 +57,13 @@ namespace CounterStrikeSharp.API
 
         public static CCSPlayerController? GetPlayerFromIndex(int index)
         {
-            var player = GetEntityFromIndex<CCSPlayerController>(index);
-            if (player == null || player.DesignerName != "cs_player_controller")
+            var entityPtr = EntitySystem.GetEntityByIndex((uint)index);
+            if (entityPtr is null || entityPtr == IntPtr.Zero)
             {
                 return null;
             }
 
-            return player;
+            return new CCSPlayerController(entityPtr.Value);
         }
 
         public static CCSPlayerController? GetPlayerFromSlot(int slot)
@@ -81,7 +78,12 @@ namespace CounterStrikeSharp.API
 
         public static CCSPlayerController? GetPlayerFromSteamId(ulong steamId)
         {
-            return Utilities.GetPlayers().FirstOrDefault(player => player.AuthorizedSteamID == (SteamID)steamId);
+            return GetPlayers().FirstOrDefault(player => player.AuthorizedSteamID == (SteamID)steamId);
+        }
+
+        public static CCSPlayerController? GetPlayerFromSteamId64(ulong steamId)
+        {
+            return GetPlayers().FirstOrDefault(player => player.SteamID == steamId);
         }
 
         public static TargetResult ProcessTargetString(string pattern, CCSPlayerController player)
@@ -91,37 +93,35 @@ namespace CounterStrikeSharp.API
 
         public static bool RemoveItemByDesignerName(this CCSPlayerController player, string designerName)
         {
-            return RemoveItemByDesignerName(player, designerName, false);
+            var weapon = player.PlayerPawn.Value?.WeaponServices?.MyWeapons
+                .Select(w => w.Value)
+                .Where(w => w?.IsValid is true && w.DesignerName == designerName)
+                .FirstOrDefault();
+
+            if (weapon == null)
+                return false;
+
+            weapon.AddEntityIOEvent("Kill", weapon, delay: 0.1f);
+            return true;
         }
 
-        public static bool RemoveItemByDesignerName(this CCSPlayerController player, string designerName, bool shouldRemoveEntity)
+        public static bool RemoveItemByDesignerName(this CCSPlayerController player, string designerName, bool _)
         {
-            CHandle<CBasePlayerWeapon>? item = null;
-            if (player.PlayerPawn.Value == null || player.PlayerPawn.Value.WeaponServices == null) return false;
+            return RemoveItemByDesignerName(player, designerName);
+        }
 
-            foreach (var weapon in player.PlayerPawn.Value.WeaponServices.MyWeapons)
-            {
-                if (weapon is not { IsValid: true, Value.IsValid: true })
-                    continue;
-                if (weapon.Value.DesignerName != designerName)
-                    continue;
+        public static bool RemoveItemBySlot(this CCSPlayerController player, gear_slot_t slot)
+        {
+            var weapon = player.PlayerPawn.Value?.WeaponServices?.MyWeapons
+                .Select(w => w.Value)
+                .Where(w => w?.As<CCSWeaponBase>().VData?.GearSlot == slot)
+                .FirstOrDefault();
 
-                item = weapon;
-            }
+            if (weapon == null)
+                return false;
 
-            if (item != null && item.Value != null)
-            {
-                player.PlayerPawn.Value.RemovePlayerItem(item.Value);
-
-                if (shouldRemoveEntity)
-                {
-                    item.Value.Remove();
-                }
-
-                return true;
-            }
-
-            return false;
+            weapon.AddEntityIOEvent("Kill", weapon, delay: 0.1f);
+            return true;
         }
 
         public static IEnumerable<T> FindAllEntitiesByDesignerName<T>(string designerName) where T : CEntityInstance

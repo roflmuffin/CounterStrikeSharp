@@ -86,4 +86,8 @@ public partial class CTriggerLerpObject : CBaseTrigger
 	[SchemaMember("CTriggerLerpObject", "m_OnLerpFinished")]
 	public CEntityIOOutput OnLerpFinished => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerLerpObject", "m_OnLerpFinished");
 
+	// m_OnDetached
+	[SchemaMember("CTriggerLerpObject", "m_OnDetached")]
+	public CEntityIOOutput OnDetached => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerLerpObject", "m_OnDetached");
+
 }

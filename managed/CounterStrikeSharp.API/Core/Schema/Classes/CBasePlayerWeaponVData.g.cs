@@ -86,6 +86,10 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 	[SchemaMember("CBasePlayerWeaponVData", "m_bTreatAsSingleClip")]
 	public ref bool TreatAsSingleClip => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bTreatAsSingleClip");
 
+	// m_bKeepLoadedAmmo
+	[SchemaMember("CBasePlayerWeaponVData", "m_bKeepLoadedAmmo")]
+	public ref bool KeepLoadedAmmo => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bKeepLoadedAmmo");
+
 	// m_iWeight
 	[SchemaMember("CBasePlayerWeaponVData", "m_iWeight")]
 	public ref Int32 Weight => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iWeight");

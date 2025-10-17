@@ -50,12 +50,12 @@ public partial class CCSPlayerController_InventoryServices : CPlayerControllerCo
 	[SchemaMember("CCSPlayerController_InventoryServices", "m_unEquippedPlayerSprayIDs")]
 	public Span<UInt32> EquippedPlayerSprayIDs => Schema.GetFixedArray<UInt32>(this.Handle, "CCSPlayerController_InventoryServices", "m_unEquippedPlayerSprayIDs", 1);
 
+	// m_unCurrentLoadoutHash
+	[SchemaMember("CCSPlayerController_InventoryServices", "m_unCurrentLoadoutHash")]
+	public ref UInt64 CurrentLoadoutHash => ref Schema.GetRef<UInt64>(this.Handle, "CCSPlayerController_InventoryServices", "m_unCurrentLoadoutHash");
+
 	// m_vecServerAuthoritativeWeaponSlots
 	[SchemaMember("CCSPlayerController_InventoryServices", "m_vecServerAuthoritativeWeaponSlots")]
 	public NetworkedVector<ServerAuthoritativeWeaponSlot_t> ServerAuthoritativeWeaponSlots => Schema.GetDeclaredClass<NetworkedVector<ServerAuthoritativeWeaponSlot_t>>(this.Handle, "CCSPlayerController_InventoryServices", "m_vecServerAuthoritativeWeaponSlots");
-
-	// m_vecNetworkableLoadout
-	[SchemaMember("CCSPlayerController_InventoryServices", "m_vecNetworkableLoadout")]
-	public NetworkedVector<CSNetworkableLoadout_t> NetworkableLoadout => Schema.GetDeclaredClass<NetworkedVector<CSNetworkableLoadout_t>>(this.Handle, "CCSPlayerController_InventoryServices", "m_vecNetworkableLoadout");
 
 }

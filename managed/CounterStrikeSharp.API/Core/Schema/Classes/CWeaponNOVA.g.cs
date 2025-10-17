@@ -14,7 +14,7 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CWeaponNOVA : CCSWeaponBase
+public partial class CWeaponNOVA : CCSWeaponBaseShotgun
 {
     public CWeaponNOVA (IntPtr pointer) : base(pointer) {}
 

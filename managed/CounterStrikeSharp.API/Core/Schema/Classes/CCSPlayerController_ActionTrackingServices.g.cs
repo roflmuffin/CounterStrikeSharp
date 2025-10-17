@@ -34,8 +34,8 @@ public partial class CCSPlayerController_ActionTrackingServices : CPlayerControl
 	[SchemaMember("CCSPlayerController_ActionTrackingServices", "m_iNumRoundKillsHeadshots")]
 	public ref Int32 NumRoundKillsHeadshots => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_iNumRoundKillsHeadshots");
 
-	// m_unTotalRoundDamageDealt
-	[SchemaMember("CCSPlayerController_ActionTrackingServices", "m_unTotalRoundDamageDealt")]
-	public ref UInt32 TotalRoundDamageDealt => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_unTotalRoundDamageDealt");
+	// m_flTotalRoundDamageDealt
+	[SchemaMember("CCSPlayerController_ActionTrackingServices", "m_flTotalRoundDamageDealt")]
+	public ref float TotalRoundDamageDealt => ref Schema.GetRef<float>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_flTotalRoundDamageDealt");
 
 }

@@ -10,5 +10,4 @@ public enum CNmParticleEventType_t : uint
 {
 	Create = 0x0,
 	Create_CFG = 0x1,
-	Stop = 0x2,
 }

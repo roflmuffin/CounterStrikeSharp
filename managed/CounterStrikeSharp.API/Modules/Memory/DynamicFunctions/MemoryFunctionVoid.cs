@@ -17,7 +17,12 @@ public class MemoryFunctionVoid : BaseMemoryFunction
 
     public void Invoke()
     {
-        InvokeInternalVoid();
+        InvokeInternalVoid(false);
+    }
+
+    public void Invoke(bool bypasshook)
+    {
+        InvokeInternalVoid(bypasshook);
     }
 }
 
@@ -35,7 +40,12 @@ public class MemoryFunctionVoid<T1> : BaseMemoryFunction
 
     public void Invoke(T1 arg1)
     {
-        InvokeInternalVoid(arg1);
+        InvokeInternalVoid(false, arg1);
+    }
+
+    public void Invoke(T1 arg1, bool bypasshook)
+    {
+        InvokeInternalVoid(bypasshook, arg1);
     }
 }
 
@@ -53,7 +63,12 @@ public class MemoryFunctionVoid<T1, T2> : BaseMemoryFunction
 
     public void Invoke(T1 arg1, T2 arg2)
     {
-        InvokeInternalVoid(arg1, arg2);
+        InvokeInternalVoid(false, arg1, arg2);
+    }
+
+    public void Invoke(T1 arg1, T2 arg2, bool bypasshook)
+    {
+        InvokeInternalVoid(bypasshook, arg1, arg2);
     }
 }
 
@@ -71,7 +86,12 @@ public class MemoryFunctionVoid<T1, T2, T3> : BaseMemoryFunction
 
     public void Invoke(T1 arg1, T2 arg2, T3 arg3)
     {
-        InvokeInternalVoid(arg1, arg2, arg3);
+        InvokeInternalVoid(false, arg1, arg2, arg3);
+    }
+
+    public void Invoke(T1 arg1, T2 arg2, T3 arg3, bool bypasshook)
+    {
+        InvokeInternalVoid(bypasshook, arg1, arg2, arg3);
     }
 }
 
@@ -97,7 +117,12 @@ public class MemoryFunctionVoid<T1, T2, T3, T4> : BaseMemoryFunction
 
     public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4)
     {
-        InvokeInternalVoid(arg1, arg2, arg3, arg4);
+        InvokeInternalVoid(false, arg1, arg2, arg3, arg4);
+    }
+
+    public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4, bool bypasshook)
+    {
+        InvokeInternalVoid(bypasshook, arg1, arg2, arg3, arg4);
     }
 }
 
@@ -125,7 +150,12 @@ public class MemoryFunctionVoid<T1, T2, T3, T4, T5> : BaseMemoryFunction
 
     public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
     {
-        InvokeInternalVoid(arg1, arg2, arg3, arg4, arg5);
+        InvokeInternalVoid(false, arg1, arg2, arg3, arg4, arg5);
+    }
+
+    public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, bool bypasshook)
+    {
+        InvokeInternalVoid(bypasshook, arg1, arg2, arg3, arg4, arg5);
     }
 }
 
@@ -153,7 +183,12 @@ public class MemoryFunctionVoid<T1, T2, T3, T4, T5, T6> : BaseMemoryFunction
 
     public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6)
     {
-        InvokeInternalVoid(arg1, arg2, arg3, arg4, arg5, arg6);
+        InvokeInternalVoid(false, arg1, arg2, arg3, arg4, arg5, arg6);
+    }
+
+    public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, bool bypasshook)
+    {
+        InvokeInternalVoid(bypasshook, arg1, arg2, arg3, arg4, arg5, arg6);
     }
 }
 
@@ -183,7 +218,12 @@ public class MemoryFunctionVoid<T1, T2, T3, T4, T5, T6, T7> : BaseMemoryFunction
 
     public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7)
     {
-        InvokeInternalVoid(arg1, arg2, arg3, arg4, arg5, arg6, arg7);
+        InvokeInternalVoid(false, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
+    }
+
+    public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, bool bypasshook)
+    {
+        InvokeInternalVoid(bypasshook, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
     }
 }
 
@@ -213,7 +253,12 @@ public class MemoryFunctionVoid<T1, T2, T3, T4, T5, T6, T7, T8> : BaseMemoryFunc
 
     public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8)
     {
-        InvokeInternalVoid(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
+        InvokeInternalVoid(false, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
+    }
+
+    public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, bool bypasshook)
+    {
+        InvokeInternalVoid(bypasshook, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
     }
 }
 
@@ -245,7 +290,12 @@ public class MemoryFunctionVoid<T1, T2, T3, T4, T5, T6, T7, T8, T9> : BaseMemory
 
     public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9)
     {
-        InvokeInternalVoid(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9);
+        InvokeInternalVoid(false, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9);
+    }
+
+    public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, bool bypasshook)
+    {
+        InvokeInternalVoid(bypasshook, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9);
     }
 }
 
@@ -277,7 +327,12 @@ public class MemoryFunctionVoid<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> : BaseM
 
     public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10)
     {
-        InvokeInternalVoid(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+        InvokeInternalVoid(false, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+    }
+
+    public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, bool bypasshook)
+    {
+        InvokeInternalVoid(bypasshook, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
     }
 }
 

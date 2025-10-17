@@ -54,10 +54,6 @@ public partial class CInferno : CBaseModelEntity
 	[SchemaMember("CInferno", "m_bInPostEffectTime")]
 	public ref bool InPostEffectTime => ref Schema.GetRef<bool>(this.Handle, "CInferno", "m_bInPostEffectTime");
 
-	// m_nFiresExtinguishCount
-	[SchemaMember("CInferno", "m_nFiresExtinguishCount")]
-	public ref Int32 FiresExtinguishCount => ref Schema.GetRef<Int32>(this.Handle, "CInferno", "m_nFiresExtinguishCount");
-
 	// m_bWasCreatedInSmoke
 	[SchemaMember("CInferno", "m_bWasCreatedInSmoke")]
 	public ref bool WasCreatedInSmoke => ref Schema.GetRef<bool>(this.Handle, "CInferno", "m_bWasCreatedInSmoke");

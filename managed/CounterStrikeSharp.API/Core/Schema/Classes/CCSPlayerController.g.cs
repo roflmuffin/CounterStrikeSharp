@@ -114,14 +114,6 @@ public partial class CCSPlayerController : CBasePlayerController
 		set { Schema.SetString(this.Handle, "CCSPlayerController", "m_szClan", value); }
 	}
 
-	// m_szClanName
-	[SchemaMember("CCSPlayerController", "m_szClanName")]
-	public string ClanName
-	{
-		get { return Schema.GetString(this.Handle, "CCSPlayerController", "m_szClanName"); }
-		set { Schema.SetStringBytes(this.Handle, "CCSPlayerController", "m_szClanName", value, 32); }
-	}
-
 	// m_iCoachingTeam
 	[SchemaMember("CCSPlayerController", "m_iCoachingTeam")]
 	public ref Int32 CoachingTeam => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iCoachingTeam");
