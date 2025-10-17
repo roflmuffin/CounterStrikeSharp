@@ -13,3 +13,4 @@
 #endif
 
 void* FindSignature(const char* moduleName, const char* bytesStr);
+void* FindVirtualTable(const char* moduleName, const char* vtableName);
