@@ -38,10 +38,6 @@ public partial class CRagdollProp : CBaseAnimGraph
 	[SchemaMember("CRagdollProp", "m_ragAngles")]
 	public NetworkedVector<QAngle> RagAngles => Schema.GetDeclaredClass<NetworkedVector<QAngle>>(this.Handle, "CRagdollProp", "m_ragAngles");
 
-	// m_hRagdollSource
-	[SchemaMember("CRagdollProp", "m_hRagdollSource")]
-	public CHandle<CBaseEntity> RagdollSource => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CRagdollProp", "m_hRagdollSource");
-
 	// m_lastUpdateTickCount
 	[SchemaMember("CRagdollProp", "m_lastUpdateTickCount")]
 	public ref UInt32 LastUpdateTickCount => ref Schema.GetRef<UInt32>(this.Handle, "CRagdollProp", "m_lastUpdateTickCount");
@@ -110,10 +106,6 @@ public partial class CRagdollProp : CBaseAnimGraph
 	[SchemaMember("CRagdollProp", "m_bHasBeenPhysgunned")]
 	public ref bool HasBeenPhysgunned => ref Schema.GetRef<bool>(this.Handle, "CRagdollProp", "m_bHasBeenPhysgunned");
 
-	// m_bShouldTeleportPhysics
-	[SchemaMember("CRagdollProp", "m_bShouldTeleportPhysics")]
-	public ref bool ShouldTeleportPhysics => ref Schema.GetRef<bool>(this.Handle, "CRagdollProp", "m_bShouldTeleportPhysics");
-
 	// m_bAllowStretch
 	[SchemaMember("CRagdollProp", "m_bAllowStretch")]
 	public ref bool AllowStretch => ref Schema.GetRef<bool>(this.Handle, "CRagdollProp", "m_bAllowStretch");
@@ -137,9 +129,5 @@ public partial class CRagdollProp : CBaseAnimGraph
 	// m_bShouldDeleteActivationRecord
 	[SchemaMember("CRagdollProp", "m_bShouldDeleteActivationRecord")]
 	public ref bool ShouldDeleteActivationRecord => ref Schema.GetRef<bool>(this.Handle, "CRagdollProp", "m_bShouldDeleteActivationRecord");
-
-	// m_bValidatePoweredRagdollPose
-	[SchemaMember("CRagdollProp", "m_bValidatePoweredRagdollPose")]
-	public ref bool ValidatePoweredRagdollPose => ref Schema.GetRef<bool>(this.Handle, "CRagdollProp", "m_bValidatePoweredRagdollPose");
 
 }

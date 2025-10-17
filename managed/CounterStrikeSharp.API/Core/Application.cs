@@ -29,6 +29,7 @@ using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Menu;
 using CounterStrikeSharp.API.Modules.Utils;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
 namespace CounterStrikeSharp.API.Core
@@ -36,6 +37,8 @@ namespace CounterStrikeSharp.API.Core
     public sealed class Application
     {
         private static Application _instance = null!;
+        public static IStringLocalizer Localizer => Instance._localizer;
+
         public ILogger Logger { get; }
 
         public static Application Instance => _instance!;
@@ -49,11 +52,12 @@ namespace CounterStrikeSharp.API.Core
         private readonly IPluginContextQueryHandler _pluginContextQueryHandler;
         private readonly IPlayerLanguageManager _playerLanguageManager;
         private readonly ICommandManager _commandManager;
+        private readonly IStringLocalizer _localizer;
 
         public Application(ILoggerFactory loggerFactory, IScriptHostConfiguration scriptHostConfiguration,
             GameDataProvider gameDataProvider, CoreConfig coreConfig, IPluginManager pluginManager,
             IPluginContextQueryHandler pluginContextQueryHandler, IPlayerLanguageManager playerLanguageManager,
-            ICommandManager commandManager)
+            ICommandManager commandManager, IStringLocalizer localizer)
         {
             Logger = loggerFactory.CreateLogger("Core");
             _scriptHostConfiguration = scriptHostConfiguration;
@@ -63,6 +67,7 @@ namespace CounterStrikeSharp.API.Core
             _pluginContextQueryHandler = pluginContextQueryHandler;
             _playerLanguageManager = playerLanguageManager;
             _commandManager = commandManager;
+            _localizer = localizer;
             _instance = this;
         }
 

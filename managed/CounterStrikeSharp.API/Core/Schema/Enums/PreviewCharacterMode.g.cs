@@ -8,6 +8,7 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum PreviewCharacterMode : uint
 {
+	INVALID = 0xFFFFFFFF,
 	DIORAMA = 0x0,
 	MAIN_MENU = 0x1,
 	BUY_MENU = 0x2,

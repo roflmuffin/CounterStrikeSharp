@@ -190,6 +190,14 @@ public partial class CCSWeaponBaseVData : CBasePlayerWeaponVData
 	[SchemaMember("CCSWeaponBaseVData", "m_flDisallowAttackAfterReloadStartDuration")]
 	public ref float DisallowAttackAfterReloadStartDuration => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBaseVData", "m_flDisallowAttackAfterReloadStartDuration");
 
+	// m_nBurstShotCount
+	[SchemaMember("CCSWeaponBaseVData", "m_nBurstShotCount")]
+	public ref Int32 BurstShotCount => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseVData", "m_nBurstShotCount");
+
+	// m_bAllowBurstHolster
+	[SchemaMember("CCSWeaponBaseVData", "m_bAllowBurstHolster")]
+	public ref bool AllowBurstHolster => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBaseVData", "m_bAllowBurstHolster");
+
 	// m_nRecoilSeed
 	[SchemaMember("CCSWeaponBaseVData", "m_nRecoilSeed")]
 	public ref Int32 RecoilSeed => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBaseVData", "m_nRecoilSeed");

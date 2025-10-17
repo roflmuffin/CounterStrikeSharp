@@ -8,8 +8,10 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum DecalMode_t : byte
 {
+	kDecalInvalid = 0xFF,
 	kDecalBlood = 0x0,
 	kDecalCloak = 0x1,
-	kDecalMax = 0x2,
+	kDecalCloakDamage = 0x2,
+	kDecalMax = 0x3,
 	kDecalDefault = 0x0,
 }

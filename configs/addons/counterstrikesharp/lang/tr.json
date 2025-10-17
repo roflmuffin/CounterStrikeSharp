@@ -1,0 +1,23 @@
+{
+    "menu.button.previous": "Geri",
+    "menu.button.next": "İleri",
+    "menu.button.close": "Çıkış",
+
+    "all": "tüm oyuncular",
+    "bots": "botlar",
+    "humans": "insanlar",
+    "alive": "hayatta olan oyuncular",
+    "dead": "ölü oyuncular",
+    "notme": "kendi hariç tüm oyuncular",
+    "ct": "CT oyuncular",
+    "t": "T oyuncular",
+    "spec": "izleyici oyuncular",
+
+    "No matching client": "{white}Eşleşen bir istemci bulunamadı.",
+    "No matching clients": "{white}Eşleşen istemciler bulunamadı.",
+    "Target must be alive": "{white}Bu komut yalnızca hayatta olan oyunculara uygulanabilir.",
+    "Target must be dead": "{white}Bu komut yalnızca ölü oyunculara uygulanabilir.",
+    "Unable to target": "{white}Bu oyuncu hedeflenemez.",
+    "Cannot target bot": "{white}Bu komut bir bota uygulanamaz.",
+    "More than one client matched": "{white}Verilen kalıba birden fazla istemci eşleşti."
+}
