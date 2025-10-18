@@ -44,6 +44,6 @@ public partial class CInstancedSceneEntity : CSceneEntity
 
 	// m_hTarget
 	[SchemaMember("CInstancedSceneEntity", "m_hTarget")]
-	public CHandle<CBaseEntity> Target => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CInstancedSceneEntity", "m_hTarget");
+	public new CHandle<CBaseEntity> Target => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CInstancedSceneEntity", "m_hTarget");
 
 }

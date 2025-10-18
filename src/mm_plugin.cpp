@@ -19,6 +19,7 @@
 #include "core/coreconfig.h"
 #include "core/game_system.h"
 #include "core/gameconfig.h"
+#include "core/gameconfig_updater.h"
 #include "core/global_listener.h"
 #include "core/log.h"
 #include "core/managers/entity_manager.h"
@@ -33,9 +34,15 @@
 #include "scripting/dotnet_host.h"
 #include "scripting/script_engine.h"
 #include "tier0/vprof.h"
+#include "tier0/icommandline.h"
+#include "tier1/utlstringtoken.h"
 
-#define VERSION_STRING  "v" BUILD_NUMBER " @ " GITHUB_SHA
+DLL_IMPORT ICommandLine* CommandLine();
+
+#define VERSION_STRING  "v" SEMVER " @ " GITHUB_SHA
 #define BUILD_TIMESTAMP __DATE__ " " __TIME__
+
+int g_iLoadEventsFromFileId = -1;
 
 counterstrikesharp::GlobalClass* counterstrikesharp::GlobalClass::head = nullptr;
 
@@ -66,6 +73,8 @@ class GameSessionConfiguration_t
 {
 };
 
+PLUGIN_EXPOSE(CounterStrikeSharpMMPlugin, counterstrikesharp::gPlugin);
+
 namespace counterstrikesharp {
 
 SH_DECL_HOOK3_void(IServerGameDLL, GameFrame, SH_NOATTRIB, 0, bool, bool, bool);
@@ -73,6 +82,7 @@ SH_DECL_HOOK3_void(
     INetworkServerService, StartupServer, SH_NOATTRIB, 0, const GameSessionConfiguration_t&, ISource2WorldSession*, const char*);
 SH_DECL_HOOK3_void(IEngineServiceMgr, RegisterLoopMode, SH_NOATTRIB, 0, const char*, ILoopModeFactory*, void**);
 SH_DECL_HOOK1(IEngineServiceMgr, FindService, SH_NOATTRIB, 0, IEngineService*, const char*);
+SH_DECL_HOOK2(IGameEventManager2, LoadEventsFromFile, SH_NOATTRIB, 0, int, const char*, bool);
 
 CounterStrikeSharpMMPlugin gPlugin;
 
@@ -81,7 +91,6 @@ CounterStrikeSharpMMPlugin gPlugin;
 ConVar sample_cvar("sample_cvar", "42", 0);
 #endif
 
-PLUGIN_EXPOSE(CounterStrikeSharpMMPlugin, gPlugin);
 bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, size_t maxlen, bool late)
 {
     PLUGIN_SAVEVARS();
@@ -90,11 +99,13 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
 
     Log::Init();
 
-    CSSHARP_CORE_INFO("Initializing");
+    CSSHARP_CORE_INFO("Initializing with command line: {}", CommandLine()->GetCmdLine());
+    const char* basePath = CommandLine()->ParmValue(MakeStringToken("+css_basepath"), "/addons/counterstrikesharp");
 
     GET_V_IFACE_CURRENT(GetEngineFactory, globals::engineServer2, IVEngineServer2, SOURCE2ENGINETOSERVER_INTERFACE_VERSION);
     GET_V_IFACE_CURRENT(GetEngineFactory, globals::engine, IVEngineServer, INTERFACEVERSION_VENGINESERVER);
     GET_V_IFACE_CURRENT(GetEngineFactory, globals::cvars, ICvar, CVAR_INTERFACE_VERSION);
+    GET_V_IFACE_CURRENT(GetEngineFactory, g_pGameResourceServiceServer, IGameResourceService, GAMERESOURCESERVICESERVER_INTERFACE_VERSION);
     GET_V_IFACE_ANY(GetServerFactory, globals::server, IServerGameDLL, INTERFACEVERSION_SERVERGAMEDLL);
     GET_V_IFACE_ANY(GetServerFactory, globals::serverGameClients, IServerGameClients, INTERFACEVERSION_SERVERGAMECLIENTS);
     GET_V_IFACE_ANY(GetEngineFactory, globals::networkServerService, INetworkServerService, NETWORKSERVERSERVICE_INTERFACE_VERSION);
@@ -103,6 +114,16 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
     GET_V_IFACE_ANY(GetEngineFactory, globals::engineServiceManager, IEngineServiceMgr, ENGINESERVICEMGR_INTERFACE_VERSION);
     GET_V_IFACE_ANY(GetEngineFactory, globals::networkMessages, INetworkMessages, NETWORKMESSAGES_INTERFACE_VERSION);
     GET_V_IFACE_ANY(GetServerFactory, globals::gameEntities, ISource2GameEntities, SOURCE2GAMEENTITIES_INTERFACE_VERSION);
+    g_pCVar = globals::cvars;
+    g_pSource2GameEntities = globals::gameEntities;
+    interfaces::pGameResourceServiceServer = (CGameResourceService*)g_pGameResourceServiceServer;
+
+    if (utils::RelativeDirectory(std::string(basePath)) == "NotFound")
+    {
+        CSSHARP_CORE_ERROR("Invalid base path: {}", basePath);
+        return false;
+    }
+    CSSHARP_CORE_INFO("Current root directory: {}", utils::GetRootDirectory());
 
     auto coreconfig_path = std::string(utils::ConfigsDirectory() + "/core");
     globals::coreConfig = new CCoreConfig(coreconfig_path);
@@ -115,6 +136,18 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
     }
 
     CSSHARP_CORE_INFO("CoreConfig loaded.");
+
+    if (globals::coreConfig->AutoUpdateEnabled)
+    {
+#ifdef _WIN32
+        if (!update::TryUpdateGameConfig())
+        {
+            CSSHARP_CORE_ERROR("Failed to update game config.");
+        }
+#else
+        CSSHARP_CORE_WARN("Auto-update is not currently supported on this platform.");
+#endif
+    }
 
     auto gamedata_path = std::string(utils::GamedataDirectory() + "/gamedata.json");
     globals::gameConfig = new CGameConfig(gamedata_path);
@@ -134,6 +167,7 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
     CALL_GLOBAL_LISTENER(OnAllInitialized());
 
     on_activate_callback = globals::callbackManager.CreateCallback("OnMapStart");
+    on_metamod_all_plugins_loaded_callback = globals::callbackManager.CreateCallback("OnMetamodAllPluginsLoaded");
 
     SH_ADD_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this, &CounterStrikeSharpMMPlugin::Hook_GameFrame, true);
     SH_ADD_HOOK_MEMFUNC(INetworkServerService, StartupServer, globals::networkServerService, this,
@@ -143,17 +177,23 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
     SH_ADD_HOOK_MEMFUNC(IEngineServiceMgr, FindService, globals::engineServiceManager, this, &CounterStrikeSharpMMPlugin::Hook_FindService,
                         true);
 
-    if (!globals::dotnetManager.Initialize())
-    {
-        CSSHARP_CORE_ERROR("Failed to initialize .NET runtime");
-    }
+    auto pCGameEventManagerVTable = (IGameEventManager2*)modules::server->FindVirtualTable("CGameEventManager");
+
+    g_iLoadEventsFromFileId = SH_ADD_DVPHOOK(IGameEventManager2, LoadEventsFromFile, pCGameEventManagerVTable,
+                                             SH_MEMBER(this, &CounterStrikeSharpMMPlugin::Hook_LoadEventsFromFile), false);
 
     if (!InitGameSystems())
     {
         CSSHARP_CORE_ERROR("Failed to initialize GameSystem!");
         return false;
     }
+
     CSSHARP_CORE_INFO("Initialized GameSystem.");
+
+    if (!globals::dotnetManager.Initialize())
+    {
+        CSSHARP_CORE_ERROR("Failed to initialize .NET runtime");
+    }
 
     CSSHARP_CORE_INFO("Hooks added.");
 
@@ -167,21 +207,33 @@ bool CounterStrikeSharpMMPlugin::Load(PluginId id, ISmmAPI* ismm, char* error, s
 void CounterStrikeSharpMMPlugin::Hook_StartupServer(const GameSessionConfiguration_t& config, ISource2WorldSession*, const char*)
 {
     globals::entitySystem = interfaces::pGameResourceServiceServer->GetGameEntitySystem();
-    globals::entitySystem->AddListenerEntity(&globals::entityManager.entityListener);
+
+    // Temporary hack until CGameEntitySystem is updated in the sdk
+#ifdef PLATFORM_LINUX
+    int offset = 8512;
+#else
+    int offset = 8480;
+#endif
+
+    auto pListeners = (CUtlVector<IEntityListener*>*)((byte*)globals::entitySystem + offset);
+
+    if (pListeners->Find(&globals::entityManager.entityListener) == -1) pListeners->AddToTail(&globals::entityManager.entityListener);
+
     globals::timerSystem.OnStartupServer();
 
     on_activate_callback->ScriptContext().Reset();
     on_activate_callback->ScriptContext().Push(globals::getGlobalVars()->mapname.ToCStr());
     on_activate_callback->Execute();
 }
-
 bool CounterStrikeSharpMMPlugin::Unload(char* error, size_t maxlen)
 {
     SH_REMOVE_HOOK_MEMFUNC(IServerGameDLL, GameFrame, globals::server, this, &CounterStrikeSharpMMPlugin::Hook_GameFrame, true);
     SH_REMOVE_HOOK_MEMFUNC(INetworkServerService, StartupServer, globals::networkServerService, this,
                            &CounterStrikeSharpMMPlugin::Hook_StartupServer, true);
+    SH_REMOVE_HOOK_ID(g_iLoadEventsFromFileId);
 
     globals::callbackManager.ReleaseCallback(on_activate_callback);
+    globals::callbackManager.ReleaseCallback(on_metamod_all_plugins_loaded_callback);
 
     return true;
 }
@@ -191,6 +243,8 @@ void CounterStrikeSharpMMPlugin::AllPluginsLoaded()
     /* This is where we'd do stuff that relies on the mod or other plugins
      * being initialized (for example, cvars added and events registered).
      */
+    on_metamod_all_plugins_loaded_callback->ScriptContext().Reset();
+    on_metamod_all_plugins_loaded_callback->Execute();
 }
 
 void CounterStrikeSharpMMPlugin::AddTaskForNextFrame(std::function<void()>&& task)
@@ -206,7 +260,7 @@ void CounterStrikeSharpMMPlugin::Hook_GameFrame(bool simulating, bool bFirstTick
      * true  | game is ticking
      * false | game is not ticking
      */
-    VPROF_BUDGET("CS#::Hook_GameFrame", "CS# On Frame");
+    // VPROF_BUDGET("CS#::Hook_GameFrame", "CS# On Frame");
     globals::timerSystem.OnGameFrame(simulating);
 
     std::vector<std::function<void()>> out_list(1024);
@@ -260,6 +314,13 @@ IEngineService* CounterStrikeSharpMMPlugin::Hook_FindService(const char* service
     IEngineService* pService = META_RESULT_ORIG_RET(IEngineService*);
 
     return pService;
+}
+
+int CounterStrikeSharpMMPlugin::Hook_LoadEventsFromFile(const char* filename, bool bSearchAll)
+{
+    ExecuteOnce(globals::gameEventManager = META_IFACEPTR(IGameEventManager2));
+
+    RETURN_META_VALUE(MRES_IGNORED, 0);
 }
 
 void CounterStrikeSharpMMPlugin::OnLevelShutdown() {}

@@ -34,6 +34,14 @@ public partial class CPointWorldText : CModelPointEntity
 		set { Schema.SetStringBytes(this.Handle, "CPointWorldText", "m_FontName", value, 64); }
 	}
 
+	// m_BackgroundMaterialName
+	[SchemaMember("CPointWorldText", "m_BackgroundMaterialName")]
+	public string BackgroundMaterialName
+	{
+		get { return Schema.GetString(this.Handle, "CPointWorldText", "m_BackgroundMaterialName"); }
+		set { Schema.SetStringBytes(this.Handle, "CPointWorldText", "m_BackgroundMaterialName", value, 64); }
+	}
+
 	// m_bEnabled
 	[SchemaMember("CPointWorldText", "m_bEnabled")]
 	public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CPointWorldText", "m_bEnabled");
@@ -53,6 +61,22 @@ public partial class CPointWorldText : CModelPointEntity
 	// m_flDepthOffset
 	[SchemaMember("CPointWorldText", "m_flDepthOffset")]
 	public ref float DepthOffset => ref Schema.GetRef<float>(this.Handle, "CPointWorldText", "m_flDepthOffset");
+
+	// m_bDrawBackground
+	[SchemaMember("CPointWorldText", "m_bDrawBackground")]
+	public ref bool DrawBackground => ref Schema.GetRef<bool>(this.Handle, "CPointWorldText", "m_bDrawBackground");
+
+	// m_flBackgroundBorderWidth
+	[SchemaMember("CPointWorldText", "m_flBackgroundBorderWidth")]
+	public ref float BackgroundBorderWidth => ref Schema.GetRef<float>(this.Handle, "CPointWorldText", "m_flBackgroundBorderWidth");
+
+	// m_flBackgroundBorderHeight
+	[SchemaMember("CPointWorldText", "m_flBackgroundBorderHeight")]
+	public ref float BackgroundBorderHeight => ref Schema.GetRef<float>(this.Handle, "CPointWorldText", "m_flBackgroundBorderHeight");
+
+	// m_flBackgroundWorldToUV
+	[SchemaMember("CPointWorldText", "m_flBackgroundWorldToUV")]
+	public ref float BackgroundWorldToUV => ref Schema.GetRef<float>(this.Handle, "CPointWorldText", "m_flBackgroundWorldToUV");
 
 	// m_Color
 	[SchemaMember("CPointWorldText", "m_Color")]

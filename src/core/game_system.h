@@ -28,6 +28,8 @@ class CGameSystem : public CBaseGameSystem
 {
   public:
     GS_EVENT(BuildGameSessionManifest);
+    GS_EVENT(ServerPreEntityThink);
+    GS_EVENT(ServerPostEntityThink);
 
     void Shutdown() override
     {
@@ -37,11 +39,27 @@ class CGameSystem : public CBaseGameSystem
 
     void SetGameSystemGlobalPtrs(void* pValue) override
     {
-        if (sm_Factory)
-            sm_Factory->SetGlobalPtr(pValue);
+        if (sm_Factory) sm_Factory->SetGlobalPtr(pValue);
     }
 
     bool DoesGameSystemReallocate() override { return sm_Factory->ShouldAutoAdd(); }
 
     static IGameSystemFactory* sm_Factory;
 };
+
+class IEntityResourceManifest
+{
+  public:
+    virtual void AddResource(const char*) = 0;
+    virtual void AddResource(const char*, void*) = 0;
+    virtual void AddResource(const char*, void*, void*, void*) = 0;
+    virtual void unk_04() = 0;
+    virtual void unk_05() = 0;
+    virtual void unk_06() = 0;
+    virtual void unk_07() = 0;
+    virtual void unk_08() = 0;
+    virtual void unk_09() = 0;
+    virtual void unk_10() = 0;
+};
+
+extern IEntityResourceManifest* m_exportResourceManifest;

@@ -34,6 +34,22 @@ public partial class CMoverPathNode : CPointEntity
 		set { Schema.SetString(this.Handle, "CMoverPathNode", "m_szParentPathUniqueID", value); }
 	}
 
+	// m_szPathNodeParameter
+	[SchemaMember("CMoverPathNode", "m_szPathNodeParameter")]
+	public string PathNodeParameter
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CMoverPathNode", "m_szPathNodeParameter"); }
+		set { Schema.SetString(this.Handle, "CMoverPathNode", "m_szPathNodeParameter", value); }
+	}
+
+	// m_OnStartFromOrInSegment
+	[SchemaMember("CMoverPathNode", "m_OnStartFromOrInSegment")]
+	public CEntityIOOutput OnStartFromOrInSegment => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMoverPathNode", "m_OnStartFromOrInSegment");
+
+	// m_OnStoppedAtOrInSegment
+	[SchemaMember("CMoverPathNode", "m_OnStoppedAtOrInSegment")]
+	public CEntityIOOutput OnStoppedAtOrInSegment => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMoverPathNode", "m_OnStoppedAtOrInSegment");
+
 	// m_OnPassThrough
 	[SchemaMember("CMoverPathNode", "m_OnPassThrough")]
 	public CEntityIOOutput OnPassThrough => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CMoverPathNode", "m_OnPassThrough");
@@ -49,5 +65,9 @@ public partial class CMoverPathNode : CPointEntity
 	// m_hMover
 	[SchemaMember("CMoverPathNode", "m_hMover")]
 	public CHandle<CPathMover> Mover => Schema.GetDeclaredClass<CHandle<CPathMover>>(this.Handle, "CMoverPathNode", "m_hMover");
+
+	// m_xWSPrevParent
+	[SchemaMember("CMoverPathNode", "m_xWSPrevParent")]
+	public CTransform XWSPrevParent => Schema.GetDeclaredClass<CTransform>(this.Handle, "CMoverPathNode", "m_xWSPrevParent");
 
 }

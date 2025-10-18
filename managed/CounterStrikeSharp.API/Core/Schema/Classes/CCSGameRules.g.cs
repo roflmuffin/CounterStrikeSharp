@@ -34,10 +34,6 @@ public partial class CCSGameRules : CTeamplayRules
 	[SchemaMember("CCSGameRules", "m_fWarmupPeriodStart")]
 	public ref float WarmupPeriodStart => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_fWarmupPeriodStart");
 
-	// m_bServerPaused
-	[SchemaMember("CCSGameRules", "m_bServerPaused")]
-	public ref bool ServerPaused => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bServerPaused");
-
 	// m_bTerroristTimeOutActive
 	[SchemaMember("CCSGameRules", "m_bTerroristTimeOutActive")]
 	public ref bool TerroristTimeOutActive => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bTerroristTimeOutActive");
@@ -286,10 +282,6 @@ public partial class CCSGameRules : CTeamplayRules
 	[SchemaMember("CCSGameRules", "m_flNextRespawnWave")]
 	public Span<float> NextRespawnWave => Schema.GetFixedArray<float>(this.Handle, "CCSGameRules", "m_flNextRespawnWave", 32);
 
-	// m_nServerQuestID
-	[SchemaMember("CCSGameRules", "m_nServerQuestID")]
-	public ref Int32 ServerQuestID => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nServerQuestID");
-
 	// m_vMinimapMins
 	[SchemaMember("CCSGameRules", "m_vMinimapMins")]
 	public Vector MinimapMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSGameRules", "m_vMinimapMins");
@@ -302,9 +294,9 @@ public partial class CCSGameRules : CTeamplayRules
 	[SchemaMember("CCSGameRules", "m_MinimapVerticalSectionHeights")]
 	public Span<float> MinimapVerticalSectionHeights => Schema.GetFixedArray<float>(this.Handle, "CCSGameRules", "m_MinimapVerticalSectionHeights", 8);
 
-	// m_bSpawnedTerrorHuntHeavy
-	[SchemaMember("CCSGameRules", "m_bSpawnedTerrorHuntHeavy")]
-	public ref bool SpawnedTerrorHuntHeavy => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bSpawnedTerrorHuntHeavy");
+	// m_ullLocalMatchID
+	[SchemaMember("CCSGameRules", "m_ullLocalMatchID")]
+	public ref UInt64 UllLocalMatchID => ref Schema.GetRef<UInt64>(this.Handle, "CCSGameRules", "m_ullLocalMatchID");
 
 	// m_nEndMatchMapGroupVoteTypes
 	[SchemaMember("CCSGameRules", "m_nEndMatchMapGroupVoteTypes")]
@@ -445,6 +437,14 @@ public partial class CCSGameRules : CTeamplayRules
 	// m_numSpectatorsCountMaxLnk
 	[SchemaMember("CCSGameRules", "m_numSpectatorsCountMaxLnk")]
 	public ref UInt32 NumSpectatorsCountMaxLnk => ref Schema.GetRef<UInt32>(this.Handle, "CCSGameRules", "m_numSpectatorsCountMaxLnk");
+
+	// m_nCTsAliveAtFreezetimeEnd
+	[SchemaMember("CCSGameRules", "m_nCTsAliveAtFreezetimeEnd")]
+	public ref Int32 CTsAliveAtFreezetimeEnd => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nCTsAliveAtFreezetimeEnd");
+
+	// m_nTerroristsAliveAtFreezetimeEnd
+	[SchemaMember("CCSGameRules", "m_nTerroristsAliveAtFreezetimeEnd")]
+	public ref Int32 TerroristsAliveAtFreezetimeEnd => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nTerroristsAliveAtFreezetimeEnd");
 
 	// m_bForceTeamChangeSilent
 	[SchemaMember("CCSGameRules", "m_bForceTeamChangeSilent")]

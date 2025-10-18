@@ -82,6 +82,10 @@ public partial class CPointClientUIWorldPanel : CBaseClientUIEntity
 	[SchemaMember("CPointClientUIWorldPanel", "m_bNoDepth")]
 	public ref bool NoDepth => ref Schema.GetRef<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bNoDepth");
 
+	// m_bVisibleWhenParentNoDraw
+	[SchemaMember("CPointClientUIWorldPanel", "m_bVisibleWhenParentNoDraw")]
+	public ref bool VisibleWhenParentNoDraw => ref Schema.GetRef<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bVisibleWhenParentNoDraw");
+
 	// m_bRenderBackface
 	[SchemaMember("CPointClientUIWorldPanel", "m_bRenderBackface")]
 	public ref bool RenderBackface => ref Schema.GetRef<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bRenderBackface");

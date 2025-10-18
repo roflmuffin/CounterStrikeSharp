@@ -1,4 +1,3 @@
-// clang-format off
 #include "mm_plugin.h"
 #include "core/globals.h"
 #include "core/managers/player_manager.h"
@@ -28,7 +27,6 @@
 #include <public/entity2/entitysystem.h>
 
 #include <funchook.h>
-// clang-format on
 
 namespace counterstrikesharp {
 
@@ -111,12 +109,20 @@ void Initialize()
     modules::schemasystem = modules::GetModuleByName(MODULE_PREFIX "schemasystem" MODULE_EXT);
     modules::vscript = modules::GetModuleByName(MODULE_PREFIX "vscript" MODULE_EXT);
 
-    interfaces::Initialize();
-
-    entitySystem = interfaces::pGameResourceServiceServer->GetGameEntitySystem();
+    if (!interfaces::pGameResourceServiceServer)
+    {
+        CSSHARP_CORE_ERROR("Failed to get CGameResourceServiceServer");
+        return;
+    }
 
     GetLegacyGameEventListener = reinterpret_cast<GetLegacyGameEventListener_t*>(
         modules::server->FindSignature(globals::gameConfig->GetSignature("LegacyGameEventListener")));
+
+    if (GetLegacyGameEventListener == nullptr)
+    {
+        CSSHARP_CORE_ERROR("Failed to find signature for \'GetLegacyGameEventListener\'");
+        return;
+    }
 
     GameEventManagerInit = reinterpret_cast<GameEventManagerInit_t*>(
         modules::server->FindSignature(globals::gameConfig->GetSignature("CGameEventManager_Init")));
@@ -124,6 +130,15 @@ void Initialize()
     if (GameEventManagerInit == nullptr)
     {
         CSSHARP_CORE_ERROR("Failed to find signature for \'GameEventManagerInit\'");
+        return;
+    }
+
+    NetworkStateChanged =
+        reinterpret_cast<NetworkStateChanged_t*>(modules::server->FindSignature(globals::gameConfig->GetSignature("NetworkStateChanged")));
+
+    if (NetworkStateChanged == nullptr)
+    {
+        CSSHARP_CORE_ERROR("Failed to find signature for \'NetworkStateChanged\'");
         return;
     }
 
@@ -142,10 +157,11 @@ void DetourGameEventManagerInit(IGameEventManager2* pGameEventManager)
 }
 
 int source_hook_pluginid = 0;
-CGlobalVars* getGlobalVars() {
-	INetworkGameServer *server = networkServerService->GetIGameServer();
-	if(!server) return nullptr;
-	return networkServerService->GetIGameServer()->GetGlobals();
+CGlobalVars* getGlobalVars()
+{
+    INetworkGameServer* server = networkServerService->GetIGameServer();
+    if (!server) return nullptr;
+    return networkServerService->GetIGameServer()->GetGlobals();
 }
 } // namespace globals
 } // namespace counterstrikesharp

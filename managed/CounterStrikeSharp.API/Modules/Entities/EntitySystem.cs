@@ -12,7 +12,7 @@ public static class EntitySystem
     private const int MaxEntities = 32768;
     private const int MaxEntitiesPerChunk = 512;
     private const int MaxChunks = MaxEntities / MaxEntitiesPerChunk;
-    private const int SizeOfEntityIdentity = 0x78;
+    private const int SizeOfEntityIdentity = 0x70;
     private const int HandleOffset = 0x10;
     private const uint InvalidEHandleIndex = 0xFFFFFFFF;
 
@@ -75,4 +75,5 @@ public static class EntitySystem
         return Schema.GetPointer<CEntityIdentity?>(pointer, "CEntityInstance", "m_pEntity")?.EntityHandle.Raw ??
                InvalidEHandleIndex;
     }
+
 }

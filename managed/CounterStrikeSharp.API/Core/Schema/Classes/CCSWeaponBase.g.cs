@@ -22,54 +22,6 @@ public partial class CCSWeaponBase : CBasePlayerWeapon
 	[SchemaMember("CCSWeaponBase", "m_bRemoveable")]
 	public ref bool Removeable => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bRemoveable");
 
-	// m_flFireSequenceStartTime
-	[SchemaMember("CCSWeaponBase", "m_flFireSequenceStartTime")]
-	public ref float FireSequenceStartTime => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flFireSequenceStartTime");
-
-	// m_nFireSequenceStartTimeChange
-	[SchemaMember("CCSWeaponBase", "m_nFireSequenceStartTimeChange")]
-	public ref Int32 FireSequenceStartTimeChange => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_nFireSequenceStartTimeChange");
-
-	// m_nFireSequenceStartTimeAck
-	[SchemaMember("CCSWeaponBase", "m_nFireSequenceStartTimeAck")]
-	public ref Int32 FireSequenceStartTimeAck => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_nFireSequenceStartTimeAck");
-
-	// m_ePlayerFireEvent
-	[SchemaMember("CCSWeaponBase", "m_ePlayerFireEvent")]
-	public ref PlayerAnimEvent_t PlayerFireEvent => ref Schema.GetRef<PlayerAnimEvent_t>(this.Handle, "CCSWeaponBase", "m_ePlayerFireEvent");
-
-	// m_ePlayerFireEventAttackType
-	[SchemaMember("CCSWeaponBase", "m_ePlayerFireEventAttackType")]
-	public ref WeaponAttackType_t PlayerFireEventAttackType => ref Schema.GetRef<WeaponAttackType_t>(this.Handle, "CCSWeaponBase", "m_ePlayerFireEventAttackType");
-
-	// m_seqIdle
-	[SchemaMember("CCSWeaponBase", "m_seqIdle")]
-	public ref Int32 SeqIdle => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_seqIdle");
-
-	// m_seqFirePrimary
-	[SchemaMember("CCSWeaponBase", "m_seqFirePrimary")]
-	public ref Int32 SeqFirePrimary => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_seqFirePrimary");
-
-	// m_seqFireSecondary
-	[SchemaMember("CCSWeaponBase", "m_seqFireSecondary")]
-	public ref Int32 SeqFireSecondary => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_seqFireSecondary");
-
-	// m_thirdPersonFireSequences
-	[SchemaMember("CCSWeaponBase", "m_thirdPersonFireSequences")]
-	public NetworkedVector<Int32> ThirdPersonFireSequences => Schema.GetDeclaredClass<NetworkedVector<Int32>>(this.Handle, "CCSWeaponBase", "m_thirdPersonFireSequences");
-
-	// m_hCurrentThirdPersonSequence
-	[SchemaMember("CCSWeaponBase", "m_hCurrentThirdPersonSequence")]
-	public ref Int32 CurrentThirdPersonSequence => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_hCurrentThirdPersonSequence");
-
-	// m_nSilencerBoneIndex
-	[SchemaMember("CCSWeaponBase", "m_nSilencerBoneIndex")]
-	public ref Int32 SilencerBoneIndex => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_nSilencerBoneIndex");
-
-	// m_thirdPersonSequences
-	[SchemaMember("CCSWeaponBase", "m_thirdPersonSequences")]
-	public Span<Int32> ThirdPersonSequences => Schema.GetFixedArray<Int32>(this.Handle, "CCSWeaponBase", "m_thirdPersonSequences", 7);
-
 	// m_bPlayerAmmoStockOnPickup
 	[SchemaMember("CCSWeaponBase", "m_bPlayerAmmoStockOnPickup")]
 	public ref bool PlayerAmmoStockOnPickup => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bPlayerAmmoStockOnPickup");
@@ -78,33 +30,29 @@ public partial class CCSWeaponBase : CBasePlayerWeapon
 	[SchemaMember("CCSWeaponBase", "m_bRequireUseToTouch")]
 	public ref bool RequireUseToTouch => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bRequireUseToTouch");
 
-	// m_iState
-	[SchemaMember("CCSWeaponBase", "m_iState")]
-	public ref CSWeaponState_t State => ref Schema.GetRef<CSWeaponState_t>(this.Handle, "CCSWeaponBase", "m_iState");
+	// m_iWeaponGameplayAnimState
+	[SchemaMember("CCSWeaponBase", "m_iWeaponGameplayAnimState")]
+	public ref WeaponGameplayAnimState WeaponGameplayAnimState => ref Schema.GetRef<WeaponGameplayAnimState>(this.Handle, "CCSWeaponBase", "m_iWeaponGameplayAnimState");
 
-	// m_flLastTimeInAir
-	[SchemaMember("CCSWeaponBase", "m_flLastTimeInAir")]
-	public ref float LastTimeInAir => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flLastTimeInAir");
+	// m_flWeaponGameplayAnimStateTimestamp
+	[SchemaMember("CCSWeaponBase", "m_flWeaponGameplayAnimStateTimestamp")]
+	public ref float WeaponGameplayAnimStateTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flWeaponGameplayAnimStateTimestamp");
 
-	// m_flLastDeployTime
-	[SchemaMember("CCSWeaponBase", "m_flLastDeployTime")]
-	public ref float LastDeployTime => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flLastDeployTime");
+	// m_flInspectCancelCompleteTime
+	[SchemaMember("CCSWeaponBase", "m_flInspectCancelCompleteTime")]
+	public ref float InspectCancelCompleteTime => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flInspectCancelCompleteTime");
+
+	// m_bInspectPending
+	[SchemaMember("CCSWeaponBase", "m_bInspectPending")]
+	public ref bool InspectPending => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bInspectPending");
+
+	// m_bInspectShouldLoop
+	[SchemaMember("CCSWeaponBase", "m_bInspectShouldLoop")]
+	public ref bool InspectShouldLoop => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bInspectShouldLoop");
 
 	// m_nLastEmptySoundCmdNum
 	[SchemaMember("CCSWeaponBase", "m_nLastEmptySoundCmdNum")]
 	public ref Int32 LastEmptySoundCmdNum => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_nLastEmptySoundCmdNum");
-
-	// m_nViewModelIndex
-	[SchemaMember("CCSWeaponBase", "m_nViewModelIndex")]
-	public ref UInt32 ViewModelIndex => ref Schema.GetRef<UInt32>(this.Handle, "CCSWeaponBase", "m_nViewModelIndex");
-
-	// m_bReloadsWithClips
-	[SchemaMember("CCSWeaponBase", "m_bReloadsWithClips")]
-	public ref bool ReloadsWithClips => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bReloadsWithClips");
-
-	// m_flTimeWeaponIdle
-	[SchemaMember("CCSWeaponBase", "m_flTimeWeaponIdle")]
-	public ref float TimeWeaponIdle => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flTimeWeaponIdle");
 
 	// m_bFireOnEmpty
 	[SchemaMember("CCSWeaponBase", "m_bFireOnEmpty")]
@@ -142,10 +90,6 @@ public partial class CCSWeaponBase : CBasePlayerWeapon
 	[SchemaMember("CCSWeaponBase", "m_fAccuracySmoothedForZoom")]
 	public ref float AccuracySmoothedForZoom => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_fAccuracySmoothedForZoom");
 
-	// m_fScopeZoomEndTime
-	[SchemaMember("CCSWeaponBase", "m_fScopeZoomEndTime")]
-	public ref float ScopeZoomEndTime => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_fScopeZoomEndTime");
-
 	// m_iRecoilIndex
 	[SchemaMember("CCSWeaponBase", "m_iRecoilIndex")]
 	public ref Int32 IRecoilIndex => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_iRecoilIndex");
@@ -169,10 +113,6 @@ public partial class CCSWeaponBase : CBasePlayerWeapon
 	// m_bInReload
 	[SchemaMember("CCSWeaponBase", "m_bInReload")]
 	public ref bool InReload => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bInReload");
-
-	// m_bReloadVisuallyComplete
-	[SchemaMember("CCSWeaponBase", "m_bReloadVisuallyComplete")]
-	public ref bool ReloadVisuallyComplete => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bReloadVisuallyComplete");
 
 	// m_flDroppedAtTime
 	[SchemaMember("CCSWeaponBase", "m_flDroppedAtTime")]
@@ -222,6 +162,10 @@ public partial class CCSWeaponBase : CBasePlayerWeapon
 	[SchemaMember("CCSWeaponBase", "m_nextPrevOwnerTouchTime")]
 	public ref float NextPrevOwnerTouchTime => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_nextPrevOwnerTouchTime");
 
+	// m_nextPrevOwnerUseTime
+	[SchemaMember("CCSWeaponBase", "m_nextPrevOwnerUseTime")]
+	public ref float NextPrevOwnerUseTime => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_nextPrevOwnerUseTime");
+
 	// m_hPrevOwner
 	[SchemaMember("CCSWeaponBase", "m_hPrevOwner")]
 	public CHandle<CCSPlayerPawn> PrevOwner => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSWeaponBase", "m_hPrevOwner");
@@ -229,6 +173,10 @@ public partial class CCSWeaponBase : CBasePlayerWeapon
 	// m_nDropTick
 	[SchemaMember("CCSWeaponBase", "m_nDropTick")]
 	public ref Int32 DropTick => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_nDropTick");
+
+	// m_bWasActiveWeaponWhenDropped
+	[SchemaMember("CCSWeaponBase", "m_bWasActiveWeaponWhenDropped")]
+	public ref bool WasActiveWeaponWhenDropped => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bWasActiveWeaponWhenDropped");
 
 	// m_donated
 	[SchemaMember("CCSWeaponBase", "m_donated")]
@@ -246,10 +194,6 @@ public partial class CCSWeaponBase : CBasePlayerWeapon
 	[SchemaMember("CCSWeaponBase", "m_bWasOwnedByTerrorist")]
 	public ref bool WasOwnedByTerrorist => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bWasOwnedByTerrorist");
 
-	// m_bFiredOutOfAmmoEvent
-	[SchemaMember("CCSWeaponBase", "m_bFiredOutOfAmmoEvent")]
-	public ref bool FiredOutOfAmmoEvent => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bFiredOutOfAmmoEvent");
-
 	// m_numRemoveUnownedWeaponThink
 	[SchemaMember("CCSWeaponBase", "m_numRemoveUnownedWeaponThink")]
 	public ref Int32 NumRemoveUnownedWeaponThink => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_numRemoveUnownedWeaponThink");
@@ -266,12 +210,12 @@ public partial class CCSWeaponBase : CBasePlayerWeapon
 	[SchemaMember("CCSWeaponBase", "m_flLastLOSTraceFailureTime")]
 	public ref float LastLOSTraceFailureTime => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flLastLOSTraceFailureTime");
 
-	// m_iNumEmptyAttacks
-	[SchemaMember("CCSWeaponBase", "m_iNumEmptyAttacks")]
-	public ref Int32 NumEmptyAttacks => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_iNumEmptyAttacks");
-
 	// m_flWatTickOffset
 	[SchemaMember("CCSWeaponBase", "m_flWatTickOffset")]
 	public ref float WatTickOffset => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flWatTickOffset");
+
+	// m_flLastShakeTime
+	[SchemaMember("CCSWeaponBase", "m_flLastShakeTime")]
+	public ref float LastShakeTime => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flLastShakeTime");
 
 }

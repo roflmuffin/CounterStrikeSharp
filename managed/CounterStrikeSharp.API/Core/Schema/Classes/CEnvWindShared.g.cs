@@ -62,34 +62,6 @@ public partial class CEnvWindShared : NativeObject
 	[SchemaMember("CEnvWindShared", "m_iGustDirChange")]
 	public ref UInt16 GustDirChange => ref Schema.GetRef<UInt16>(this.Handle, "CEnvWindShared", "m_iGustDirChange");
 
-	// m_location
-	[SchemaMember("CEnvWindShared", "m_location")]
-	public Vector Location => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvWindShared", "m_location");
-
-	// m_iszGustSound
-	[SchemaMember("CEnvWindShared", "m_iszGustSound")]
-	public ref Int32 GustSound => ref Schema.GetRef<Int32>(this.Handle, "CEnvWindShared", "m_iszGustSound");
-
-	// m_iWindDir
-	[SchemaMember("CEnvWindShared", "m_iWindDir")]
-	public ref Int32 WindDir => ref Schema.GetRef<Int32>(this.Handle, "CEnvWindShared", "m_iWindDir");
-
-	// m_flWindSpeed
-	[SchemaMember("CEnvWindShared", "m_flWindSpeed")]
-	public ref float WindSpeed => ref Schema.GetRef<float>(this.Handle, "CEnvWindShared", "m_flWindSpeed");
-
-	// m_currentWindVector
-	[SchemaMember("CEnvWindShared", "m_currentWindVector")]
-	public Vector CurrentWindVector => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvWindShared", "m_currentWindVector");
-
-	// m_CurrentSwayVector
-	[SchemaMember("CEnvWindShared", "m_CurrentSwayVector")]
-	public Vector CurrentSwayVector => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvWindShared", "m_CurrentSwayVector");
-
-	// m_PrevSwayVector
-	[SchemaMember("CEnvWindShared", "m_PrevSwayVector")]
-	public Vector PrevSwayVector => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvWindShared", "m_PrevSwayVector");
-
 	// m_iInitialWindDir
 	[SchemaMember("CEnvWindShared", "m_iInitialWindDir")]
 	public ref UInt16 InitialWindDir => ref Schema.GetRef<UInt16>(this.Handle, "CEnvWindShared", "m_iInitialWindDir");
@@ -98,6 +70,10 @@ public partial class CEnvWindShared : NativeObject
 	[SchemaMember("CEnvWindShared", "m_flInitialWindSpeed")]
 	public ref float InitialWindSpeed => ref Schema.GetRef<float>(this.Handle, "CEnvWindShared", "m_flInitialWindSpeed");
 
+	// m_location
+	[SchemaMember("CEnvWindShared", "m_location")]
+	public Vector Location => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvWindShared", "m_location");
+
 	// m_OnGustStart
 	[SchemaMember("CEnvWindShared", "m_OnGustStart")]
 	public CEntityIOOutput OnGustStart => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvWindShared", "m_OnGustStart");
@@ -105,38 +81,6 @@ public partial class CEnvWindShared : NativeObject
 	// m_OnGustEnd
 	[SchemaMember("CEnvWindShared", "m_OnGustEnd")]
 	public CEntityIOOutput OnGustEnd => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvWindShared", "m_OnGustEnd");
-
-	// m_flVariationTime
-	[SchemaMember("CEnvWindShared", "m_flVariationTime")]
-	public ref float VariationTime => ref Schema.GetRef<float>(this.Handle, "CEnvWindShared", "m_flVariationTime");
-
-	// m_flSwayTime
-	[SchemaMember("CEnvWindShared", "m_flSwayTime")]
-	public ref float SwayTime => ref Schema.GetRef<float>(this.Handle, "CEnvWindShared", "m_flSwayTime");
-
-	// m_flSimTime
-	[SchemaMember("CEnvWindShared", "m_flSimTime")]
-	public ref float SimTime => ref Schema.GetRef<float>(this.Handle, "CEnvWindShared", "m_flSimTime");
-
-	// m_flSwitchTime
-	[SchemaMember("CEnvWindShared", "m_flSwitchTime")]
-	public ref float SwitchTime => ref Schema.GetRef<float>(this.Handle, "CEnvWindShared", "m_flSwitchTime");
-
-	// m_flAveWindSpeed
-	[SchemaMember("CEnvWindShared", "m_flAveWindSpeed")]
-	public ref float AveWindSpeed => ref Schema.GetRef<float>(this.Handle, "CEnvWindShared", "m_flAveWindSpeed");
-
-	// m_bGusting
-	[SchemaMember("CEnvWindShared", "m_bGusting")]
-	public ref bool Gusting => ref Schema.GetRef<bool>(this.Handle, "CEnvWindShared", "m_bGusting");
-
-	// m_flWindAngleVariation
-	[SchemaMember("CEnvWindShared", "m_flWindAngleVariation")]
-	public ref float WindAngleVariation => ref Schema.GetRef<float>(this.Handle, "CEnvWindShared", "m_flWindAngleVariation");
-
-	// m_flWindSpeedVariation
-	[SchemaMember("CEnvWindShared", "m_flWindSpeedVariation")]
-	public ref float WindSpeedVariation => ref Schema.GetRef<float>(this.Handle, "CEnvWindShared", "m_flWindSpeedVariation");
 
 	// m_hEntOwner
 	[SchemaMember("CEnvWindShared", "m_hEntOwner")]

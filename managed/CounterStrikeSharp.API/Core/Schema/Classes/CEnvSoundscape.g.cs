@@ -14,7 +14,7 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CEnvSoundscape : CServerOnlyEntity
+public partial class CEnvSoundscape : CBaseEntity
 {
     public CEnvSoundscape (IntPtr pointer) : base(pointer) {}
 
@@ -25,14 +25,6 @@ public partial class CEnvSoundscape : CServerOnlyEntity
 	// m_flRadius
 	[SchemaMember("CEnvSoundscape", "m_flRadius")]
 	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CEnvSoundscape", "m_flRadius");
-
-	// m_soundscapeName
-	[SchemaMember("CEnvSoundscape", "m_soundscapeName")]
-	public string SoundscapeName
-	{
-		get { return Schema.GetUtf8String(this.Handle, "CEnvSoundscape", "m_soundscapeName"); }
-		set { Schema.SetString(this.Handle, "CEnvSoundscape", "m_soundscapeName", value); }
-	}
 
 	// m_soundEventName
 	[SchemaMember("CEnvSoundscape", "m_soundEventName")]
@@ -54,10 +46,6 @@ public partial class CEnvSoundscape : CServerOnlyEntity
 	[SchemaMember("CEnvSoundscape", "m_soundscapeEntityListId")]
 	public ref Int32 SoundscapeEntityListId => ref Schema.GetRef<Int32>(this.Handle, "CEnvSoundscape", "m_soundscapeEntityListId");
 
-	// m_soundEventHash
-	[SchemaMember("CEnvSoundscape", "m_soundEventHash")]
-	public ref UInt32 SoundEventHash => ref Schema.GetRef<UInt32>(this.Handle, "CEnvSoundscape", "m_soundEventHash");
-
 	// m_positionNames
 	[SchemaMember("CEnvSoundscape", "m_positionNames")]
 	public Span<string> PositionNames => Schema.GetFixedArray<string>(this.Handle, "CEnvSoundscape", "m_positionNames", 8);
@@ -69,5 +57,17 @@ public partial class CEnvSoundscape : CServerOnlyEntity
 	// m_bDisabled
 	[SchemaMember("CEnvSoundscape", "m_bDisabled")]
 	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CEnvSoundscape", "m_bDisabled");
+
+	// m_soundscapeName
+	[SchemaMember("CEnvSoundscape", "m_soundscapeName")]
+	public string SoundscapeName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CEnvSoundscape", "m_soundscapeName"); }
+		set { Schema.SetString(this.Handle, "CEnvSoundscape", "m_soundscapeName", value); }
+	}
+
+	// m_soundEventHash
+	[SchemaMember("CEnvSoundscape", "m_soundEventHash")]
+	public ref UInt32 SoundEventHash => ref Schema.GetRef<UInt32>(this.Handle, "CEnvSoundscape", "m_soundEventHash");
 
 }

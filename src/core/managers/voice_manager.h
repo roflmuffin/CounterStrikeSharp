@@ -32,6 +32,7 @@ class VoiceManager : public GlobalClass
     void OnShutdown() override;
     bool SetClientListening(CPlayerSlot iReceiver, CPlayerSlot iSender, bool bListen);
     void OnClientCommand(CPlayerSlot slot, const CCommand& args);
+
   private:
 };
 

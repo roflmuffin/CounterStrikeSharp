@@ -82,10 +82,6 @@ public partial class CBasePlayerController : CBaseEntity
 	[SchemaMember("CBasePlayerController", "m_bPredict")]
 	public ref bool Predict => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerController", "m_bPredict");
 
-	// m_bAutoKickDisabled
-	[SchemaMember("CBasePlayerController", "m_bAutoKickDisabled")]
-	public ref bool AutoKickDisabled => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerController", "m_bAutoKickDisabled");
-
 	// m_bIsLowViolence
 	[SchemaMember("CBasePlayerController", "m_bIsLowViolence")]
 	public ref bool IsLowViolence => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerController", "m_bIsLowViolence");
@@ -117,6 +113,10 @@ public partial class CBasePlayerController : CBaseEntity
 	// m_steamID
 	[SchemaMember("CBasePlayerController", "m_steamID")]
 	public ref UInt64 SteamID => ref Schema.GetRef<UInt64>(this.Handle, "CBasePlayerController", "m_steamID");
+
+	// m_bNoClipEnabled
+	[SchemaMember("CBasePlayerController", "m_bNoClipEnabled")]
+	public ref bool NoClipEnabled => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerController", "m_bNoClipEnabled");
 
 	// m_iDesiredFOV
 	[SchemaMember("CBasePlayerController", "m_iDesiredFOV")]

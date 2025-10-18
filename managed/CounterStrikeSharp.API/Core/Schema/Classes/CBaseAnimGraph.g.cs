@@ -54,8 +54,16 @@ public partial class CBaseAnimGraph : CBaseModelEntity
 	[SchemaMember("CBaseAnimGraph", "m_RagdollPose")]
 	public PhysicsRagdollPose_t RagdollPose => Schema.GetDeclaredClass<PhysicsRagdollPose_t>(this.Handle, "CBaseAnimGraph", "m_RagdollPose");
 
+	// m_bRagdollEnabled
+	[SchemaMember("CBaseAnimGraph", "m_bRagdollEnabled")]
+	public ref bool RagdollEnabled => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraph", "m_bRagdollEnabled");
+
 	// m_bRagdollClientSide
 	[SchemaMember("CBaseAnimGraph", "m_bRagdollClientSide")]
 	public ref bool RagdollClientSide => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraph", "m_bRagdollClientSide");
+
+	// m_xParentedRagdollRootInEntitySpace
+	[SchemaMember("CBaseAnimGraph", "m_xParentedRagdollRootInEntitySpace")]
+	public CTransform XParentedRagdollRootInEntitySpace => Schema.GetDeclaredClass<CTransform>(this.Handle, "CBaseAnimGraph", "m_xParentedRagdollRootInEntitySpace");
 
 }

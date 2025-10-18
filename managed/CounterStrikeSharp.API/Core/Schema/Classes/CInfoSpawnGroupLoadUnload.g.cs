@@ -70,12 +70,20 @@ public partial class CInfoSpawnGroupLoadUnload : CLogicalEntity
 	[SchemaMember("CInfoSpawnGroupLoadUnload", "m_flTimeoutInterval")]
 	public ref float TimeoutInterval => ref Schema.GetRef<float>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_flTimeoutInterval");
 
-	// m_bStreamingStarted
-	[SchemaMember("CInfoSpawnGroupLoadUnload", "m_bStreamingStarted")]
-	public ref bool StreamingStarted => ref Schema.GetRef<bool>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_bStreamingStarted");
+	// m_bAutoActivate
+	[SchemaMember("CInfoSpawnGroupLoadUnload", "m_bAutoActivate")]
+	public ref bool AutoActivate => ref Schema.GetRef<bool>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_bAutoActivate");
 
 	// m_bUnloadingStarted
 	[SchemaMember("CInfoSpawnGroupLoadUnload", "m_bUnloadingStarted")]
 	public ref bool UnloadingStarted => ref Schema.GetRef<bool>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_bUnloadingStarted");
+
+	// m_bQueueActiveSpawnGroupChange
+	[SchemaMember("CInfoSpawnGroupLoadUnload", "m_bQueueActiveSpawnGroupChange")]
+	public ref bool QueueActiveSpawnGroupChange => ref Schema.GetRef<bool>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_bQueueActiveSpawnGroupChange");
+
+	// m_bQueueFinishLoading
+	[SchemaMember("CInfoSpawnGroupLoadUnload", "m_bQueueFinishLoading")]
+	public ref bool QueueFinishLoading => ref Schema.GetRef<bool>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_bQueueFinishLoading");
 
 }

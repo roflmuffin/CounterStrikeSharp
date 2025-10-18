@@ -150,14 +150,6 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 	[SchemaMember("CCSPlayerPawn", "m_bIsBuyMenuOpen")]
 	public ref bool IsBuyMenuOpen => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bIsBuyMenuOpen");
 
-	// m_xLastHeadBoneTransform
-	[SchemaMember("CCSPlayerPawn", "m_xLastHeadBoneTransform")]
-	public CTransform XLastHeadBoneTransform => Schema.GetDeclaredClass<CTransform>(this.Handle, "CCSPlayerPawn", "m_xLastHeadBoneTransform");
-
-	// m_bLastHeadBoneTransformIsValid
-	[SchemaMember("CCSPlayerPawn", "m_bLastHeadBoneTransformIsValid")]
-	public ref bool LastHeadBoneTransformIsValid => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bLastHeadBoneTransformIsValid");
-
 	// m_lastLandTime
 	[SchemaMember("CCSPlayerPawn", "m_lastLandTime")]
 	public ref float LastLandTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawn", "m_lastLandTime");
@@ -378,10 +370,6 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 	[SchemaMember("CCSPlayerPawn", "m_LastHitBox")]
 	public ref Int32 LastHitBox => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawn", "m_LastHitBox");
 
-	// m_LastHealth
-	[SchemaMember("CCSPlayerPawn", "m_LastHealth")]
-	public ref Int32 LastHealth => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawn", "m_LastHealth");
-
 	// m_pBot
 	[SchemaMember("CCSPlayerPawn", "m_pBot")]
 	public CCSBot? Bot => Schema.GetPointer<CCSBot>(this.Handle, "CCSPlayerPawn", "m_pBot");
@@ -505,5 +493,29 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 	// m_nHighestAppliedDamageTagTick
 	[SchemaMember("CCSPlayerPawn", "m_nHighestAppliedDamageTagTick")]
 	public ref Int32 HighestAppliedDamageTagTick => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawn", "m_nHighestAppliedDamageTagTick");
+
+	// m_bCommittingSuicideOnTeamChange
+	[SchemaMember("CCSPlayerPawn", "m_bCommittingSuicideOnTeamChange")]
+	public ref bool CommittingSuicideOnTeamChange => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bCommittingSuicideOnTeamChange");
+
+	// m_wasNotKilledNaturally
+	[SchemaMember("CCSPlayerPawn", "m_wasNotKilledNaturally")]
+	public ref bool WasNotKilledNaturally => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_wasNotKilledNaturally");
+
+	// m_fImmuneToGunGameDamageTime
+	[SchemaMember("CCSPlayerPawn", "m_fImmuneToGunGameDamageTime")]
+	public ref float ImmuneToGunGameDamageTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawn", "m_fImmuneToGunGameDamageTime");
+
+	// m_bGunGameImmunity
+	[SchemaMember("CCSPlayerPawn", "m_bGunGameImmunity")]
+	public ref bool GunGameImmunity => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bGunGameImmunity");
+
+	// m_fMolotovDamageTime
+	[SchemaMember("CCSPlayerPawn", "m_fMolotovDamageTime")]
+	public ref float MolotovDamageTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawn", "m_fMolotovDamageTime");
+
+	// m_angEyeAngles
+	[SchemaMember("CCSPlayerPawn", "m_angEyeAngles")]
+	public QAngle EyeAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CCSPlayerPawn", "m_angEyeAngles");
 
 }

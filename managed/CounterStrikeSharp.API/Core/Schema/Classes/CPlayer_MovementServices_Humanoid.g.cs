@@ -66,10 +66,6 @@ public partial class CPlayer_MovementServices_Humanoid : CPlayer_MovementService
 	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_nStepside")]
 	public ref Int32 Stepside => ref Schema.GetRef<Int32>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_nStepside");
 
-	// m_iTargetVolume
-	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_iTargetVolume")]
-	public ref Int32 TargetVolume => ref Schema.GetRef<Int32>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_iTargetVolume");
-
 	// m_vecSmoothedVelocity
 	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_vecSmoothedVelocity")]
 	public Vector SmoothedVelocity => Schema.GetDeclaredClass<Vector>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_vecSmoothedVelocity");

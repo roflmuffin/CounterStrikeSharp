@@ -18,4 +18,8 @@ public partial class CWeaponCZ75a : CCSWeaponBaseGun
 {
     public CWeaponCZ75a (IntPtr pointer) : base(pointer) {}
 
+	// m_bMagazineRemoved
+	[SchemaMember("CWeaponCZ75a", "m_bMagazineRemoved")]
+	public ref bool MagazineRemoved => ref Schema.GetRef<bool>(this.Handle, "CWeaponCZ75a", "m_bMagazineRemoved");
+
 }

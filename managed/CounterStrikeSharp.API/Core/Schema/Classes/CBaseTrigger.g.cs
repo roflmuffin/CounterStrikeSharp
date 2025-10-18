@@ -18,22 +18,6 @@ public partial class CBaseTrigger : CBaseToggle
 {
     public CBaseTrigger (IntPtr pointer) : base(pointer) {}
 
-	// m_bDisabled
-	[SchemaMember("CBaseTrigger", "m_bDisabled")]
-	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CBaseTrigger", "m_bDisabled");
-
-	// m_iFilterName
-	[SchemaMember("CBaseTrigger", "m_iFilterName")]
-	public string FilterName
-	{
-		get { return Schema.GetUtf8String(this.Handle, "CBaseTrigger", "m_iFilterName"); }
-		set { Schema.SetString(this.Handle, "CBaseTrigger", "m_iFilterName", value); }
-	}
-
-	// m_hFilter
-	[SchemaMember("CBaseTrigger", "m_hFilter")]
-	public CHandle<CBaseFilter> Filter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CBaseTrigger", "m_hFilter");
-
 	// m_OnStartTouch
 	[SchemaMember("CBaseTrigger", "m_OnStartTouch")]
 	public CEntityIOOutput OnStartTouch => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseTrigger", "m_OnStartTouch");
@@ -66,8 +50,24 @@ public partial class CBaseTrigger : CBaseToggle
 	[SchemaMember("CBaseTrigger", "m_hTouchingEntities")]
 	public NetworkedVector<CHandle<CBaseEntity>> TouchingEntities => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CBaseTrigger", "m_hTouchingEntities");
 
-	// m_bClientSidePredicted
-	[SchemaMember("CBaseTrigger", "m_bClientSidePredicted")]
-	public ref bool ClientSidePredicted => ref Schema.GetRef<bool>(this.Handle, "CBaseTrigger", "m_bClientSidePredicted");
+	// m_iFilterName
+	[SchemaMember("CBaseTrigger", "m_iFilterName")]
+	public string FilterName
+	{
+		get { return Schema.GetUtf8String(this.Handle, "CBaseTrigger", "m_iFilterName"); }
+		set { Schema.SetString(this.Handle, "CBaseTrigger", "m_iFilterName", value); }
+	}
+
+	// m_hFilter
+	[SchemaMember("CBaseTrigger", "m_hFilter")]
+	public CHandle<CBaseFilter> Filter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CBaseTrigger", "m_hFilter");
+
+	// m_bDisabled
+	[SchemaMember("CBaseTrigger", "m_bDisabled")]
+	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CBaseTrigger", "m_bDisabled");
+
+	// m_bUseAsyncQueries
+	[SchemaMember("CBaseTrigger", "m_bUseAsyncQueries")]
+	public ref bool UseAsyncQueries => ref Schema.GetRef<bool>(this.Handle, "CBaseTrigger", "m_bUseAsyncQueries");
 
 }

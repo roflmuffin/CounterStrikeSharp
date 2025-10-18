@@ -30,14 +30,15 @@
  */
 
 #include "core/timer_system.h"
-#include <algorithm>
 
 #include <public/eiface.h>
 
+#include <algorithm>
+
 #include "core/globals.h"
 #include "core/log.h"
-#include "scripting/callback_manager.h"
 #include "core/managers/player_manager.h"
+#include "scripting/callback_manager.h"
 
 namespace counterstrikesharp {
 namespace timers {
@@ -46,8 +47,7 @@ double timer_next_think = 0.0f;
 } // namespace timers
 
 timers::Timer::Timer(float interval, float exec_time, CallbackT callback, int flags)
-    : m_interval(interval), m_exec_time(exec_time), m_flags(flags), m_kill_me(false),
-      m_in_exec(false)
+    : m_interval(interval), m_exec_time(exec_time), m_flags(flags), m_kill_me(false), m_in_exec(false)
 {
     m_callback = globals::callbackManager.CreateCallback("Timer");
     m_callback->AddListener(callback);
@@ -76,7 +76,8 @@ void TimerSystem::OnShutdown()
 
 void TimerSystem::OnLevelEnd()
 {
-    if (on_map_end_callback && on_map_end_callback->GetFunctionCount()) {
+    if (on_map_end_callback && on_map_end_callback->GetFunctionCount())
+    {
         on_map_end_callback->ScriptContext().Reset();
         on_map_end_callback->Execute();
     }
@@ -89,7 +90,8 @@ void TimerSystem::OnLevelEnd()
 
 void TimerSystem::OnStartupServer()
 {
-    if (m_has_map_ticked) {
+    if (m_has_map_ticked)
+    {
         CALL_GLOBAL_LISTENER(OnLevelEnd());
 
         CSSHARP_CORE_TRACE("name={0}", "LevelShutdown");
@@ -101,12 +103,16 @@ void TimerSystem::OnStartupServer()
 
 void TimerSystem::OnGameFrame(bool simulating)
 {
-    if (simulating && m_has_map_ticked) {
+    if (simulating && m_has_map_ticked)
+    {
         timers::universal_time += globals::getGlobalVars()->curtime - m_last_ticked_time;
-        if (!m_has_map_simulated) {
+        if (!m_has_map_simulated)
+        {
             m_has_map_simulated = true;
         }
-    } else {
+    }
+    else
+    {
         timers::universal_time += globals::engine_fixed_tick_interval;
     }
 
@@ -114,13 +120,15 @@ void TimerSystem::OnGameFrame(bool simulating)
     m_has_map_ticked = true;
 
     // Handle timer tick
-    if (timers::universal_time >= timers::timer_next_think) {
+    if (timers::universal_time >= timers::timer_next_think)
+    {
         RunFrame();
 
         timers::timer_next_think = CalculateNextThink(timers::timer_next_think, 0.1f);
     }
 
-    if (m_on_tick_callback_->GetFunctionCount()) {
+    if (m_on_tick_callback_->GetFunctionCount())
+    {
         m_on_tick_callback_->ScriptContext().Reset();
         m_on_tick_callback_->Execute();
     }
@@ -130,18 +138,23 @@ void TimerSystem::OnGameFrame(bool simulating)
 
 double TimerSystem::CalculateNextThink(double last_think_time, float interval)
 {
-    if (timers::universal_time - last_think_time - interval <= 0.1) {
+    if (timers::universal_time - last_think_time - interval <= 0.1)
+    {
         return last_think_time + interval;
-    } else {
+    }
+    else
+    {
         return timers::universal_time + interval;
     }
 }
 
 void TimerSystem::RunFrame()
 {
-    for (int i = m_once_off_timers.size() - 1; i >= 0; i--) {
+    for (int i = m_once_off_timers.size() - 1; i >= 0; i--)
+    {
         auto timer = m_once_off_timers[i];
-        if (timers::universal_time >= timer->m_exec_time) {
+        if (timers::universal_time >= timer->m_exec_time)
+        {
             timer->m_in_exec = true;
             timer->m_callback->ScriptContext().Reset();
             timer->m_callback->Execute();
@@ -151,14 +164,17 @@ void TimerSystem::RunFrame()
         }
     }
 
-    for (int i = m_repeat_timers.size() - 1; i >= 0; i--) {
+    for (int i = m_repeat_timers.size() - 1; i >= 0; i--)
+    {
         auto timer = m_repeat_timers[i];
-        if (timers::universal_time >= timer->m_exec_time) {
+        if (timers::universal_time >= timer->m_exec_time)
+        {
             timer->m_in_exec = true;
             timer->m_callback->ScriptContext().Reset();
             timer->m_callback->Execute();
 
-            if (timer->m_kill_me) {
+            if (timer->m_kill_me)
+            {
                 m_repeat_timers.erase(m_repeat_timers.begin() + i);
                 delete timer;
                 continue;
@@ -172,17 +188,17 @@ void TimerSystem::RunFrame()
 
 void TimerSystem::RemoveMapChangeTimers()
 {
-    for (auto timer : m_once_off_timers) {
-        if (timer->m_flags & TIMER_FLAG_NO_MAPCHANGE) {
-            KillTimer(timer);
+    auto isMapChangeTimer = [](timers::Timer* timer) {
+        bool shouldRemove = timer->m_flags & TIMER_FLAG_NO_MAPCHANGE;
+        if (shouldRemove)
+        {
+            delete timer;
         }
-    }
+        return shouldRemove;
+    };
 
-    for (auto timer : m_repeat_timers) {
-        if (timer->m_flags & TIMER_FLAG_NO_MAPCHANGE) {
-            KillTimer(timer);
-        }
-    }
+    std::erase_if(m_once_off_timers, isMapChangeTimer);
+    std::erase_if(m_repeat_timers, isMapChangeTimer);
 }
 
 timers::Timer* TimerSystem::CreateTimer(float interval, CallbackT callback, int flags)
@@ -191,7 +207,8 @@ timers::Timer* TimerSystem::CreateTimer(float interval, CallbackT callback, int 
 
     auto timer = new timers::Timer(interval, exec_time, callback, flags);
 
-    if (flags & TIMER_FLAG_REPEAT) {
+    if (flags & TIMER_FLAG_REPEAT)
+    {
         m_repeat_timers.push_back(timer);
         return timer;
     }
@@ -202,39 +219,41 @@ timers::Timer* TimerSystem::CreateTimer(float interval, CallbackT callback, int 
 
 void TimerSystem::KillTimer(timers::Timer* timer)
 {
-    if (!timer)
-        return;
+    if (!timer) return;
 
     if (std::find(m_repeat_timers.begin(), m_repeat_timers.end(), timer) == m_repeat_timers.end() &&
-        std::find(m_once_off_timers.begin(), m_once_off_timers.end(), timer) ==
-            m_once_off_timers.end()) {
+        std::find(m_once_off_timers.begin(), m_once_off_timers.end(), timer) == m_once_off_timers.end())
+    {
         return;
     }
 
-    if (timer->m_kill_me)
-        return;
+    if (timer->m_kill_me) return;
 
     // If were executing, make sure it doesn't run again next time.
-    if (timer->m_in_exec) {
+    if (timer->m_in_exec)
+    {
         timer->m_kill_me = true;
         return;
     }
 
-    if (timer->m_flags & TIMER_FLAG_REPEAT) {
-        auto it = std::remove_if(m_repeat_timers.begin(), m_repeat_timers.end(),
-                                 [timer](timers::Timer* i) { return timer == i; });
+    if (timer->m_flags & TIMER_FLAG_REPEAT)
+    {
+        auto it = std::remove_if(m_repeat_timers.begin(), m_repeat_timers.end(), [timer](timers::Timer* i) {
+            return timer == i;
+        });
 
         bool success;
-        if ((success = it != m_repeat_timers.end()))
-            m_repeat_timers.erase(it, m_repeat_timers.end());
+        if ((success = it != m_repeat_timers.end())) m_repeat_timers.erase(it, m_repeat_timers.end());
         delete timer;
-    } else {
-        auto it = std::remove_if(m_once_off_timers.begin(), m_once_off_timers.end(),
-                                 [timer](timers::Timer* i) { return timer == i; });
+    }
+    else
+    {
+        auto it = std::remove_if(m_once_off_timers.begin(), m_once_off_timers.end(), [timer](timers::Timer* i) {
+            return timer == i;
+        });
 
         bool success;
-        if ((success = it != m_once_off_timers.end()))
-            m_once_off_timers.erase(it, m_once_off_timers.end());
+        if ((success = it != m_once_off_timers.end())) m_once_off_timers.erase(it, m_once_off_timers.end());
         delete timer;
     }
 }

@@ -8,7 +8,6 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum BeginDeathLifeStateTransition_t : byte
 {
-	NO_CHANGE_IN_LIFESTATE = 0x0,
-	TRANSITION_TO_LIFESTATE_DYING = 0x1,
-	TRANSITION_TO_LIFESTATE_DEAD = 0x2,
+	TRANSITION_TO_LIFESTATE_DYING = 0x0,
+	TRANSITION_TO_LIFESTATE_DEAD = 0x1,
 }

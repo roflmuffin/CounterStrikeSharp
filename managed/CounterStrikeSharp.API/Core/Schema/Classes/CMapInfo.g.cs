@@ -50,4 +50,28 @@ public partial class CMapInfo : CPointEntity
 	[SchemaMember("CMapInfo", "m_bFadePlayerVisibilityFarZ")]
 	public ref bool FadePlayerVisibilityFarZ => ref Schema.GetRef<bool>(this.Handle, "CMapInfo", "m_bFadePlayerVisibilityFarZ");
 
+	// m_bRainTraceToSkyEnabled
+	[SchemaMember("CMapInfo", "m_bRainTraceToSkyEnabled")]
+	public ref bool RainTraceToSkyEnabled => ref Schema.GetRef<bool>(this.Handle, "CMapInfo", "m_bRainTraceToSkyEnabled");
+
+	// m_flEnvRainStrength
+	[SchemaMember("CMapInfo", "m_flEnvRainStrength")]
+	public ref float EnvRainStrength => ref Schema.GetRef<float>(this.Handle, "CMapInfo", "m_flEnvRainStrength");
+
+	// m_flEnvPuddleRippleStrength
+	[SchemaMember("CMapInfo", "m_flEnvPuddleRippleStrength")]
+	public ref float EnvPuddleRippleStrength => ref Schema.GetRef<float>(this.Handle, "CMapInfo", "m_flEnvPuddleRippleStrength");
+
+	// m_flEnvPuddleRippleDirection
+	[SchemaMember("CMapInfo", "m_flEnvPuddleRippleDirection")]
+	public ref float EnvPuddleRippleDirection => ref Schema.GetRef<float>(this.Handle, "CMapInfo", "m_flEnvPuddleRippleDirection");
+
+	// m_flEnvWetnessCoverage
+	[SchemaMember("CMapInfo", "m_flEnvWetnessCoverage")]
+	public ref float EnvWetnessCoverage => ref Schema.GetRef<float>(this.Handle, "CMapInfo", "m_flEnvWetnessCoverage");
+
+	// m_flEnvWetnessDryingAmount
+	[SchemaMember("CMapInfo", "m_flEnvWetnessDryingAmount")]
+	public ref float EnvWetnessDryingAmount => ref Schema.GetRef<float>(this.Handle, "CMapInfo", "m_flEnvWetnessDryingAmount");
+
 }

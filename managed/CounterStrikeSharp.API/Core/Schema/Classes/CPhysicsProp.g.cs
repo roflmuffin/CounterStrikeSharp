@@ -62,10 +62,6 @@ public partial class CPhysicsProp : CBreakableProp
 	[SchemaMember("CPhysicsProp", "m_massScale")]
 	public ref float MassScale => ref Schema.GetRef<float>(this.Handle, "CPhysicsProp", "m_massScale");
 
-	// m_inertiaScale
-	[SchemaMember("CPhysicsProp", "m_inertiaScale")]
-	public ref float InertiaScale => ref Schema.GetRef<float>(this.Handle, "CPhysicsProp", "m_inertiaScale");
-
 	// m_buoyancyScale
 	[SchemaMember("CPhysicsProp", "m_buoyancyScale")]
 	public ref float BuoyancyScale => ref Schema.GetRef<float>(this.Handle, "CPhysicsProp", "m_buoyancyScale");
@@ -98,10 +94,6 @@ public partial class CPhysicsProp : CBreakableProp
 	[SchemaMember("CPhysicsProp", "m_bFirstCollisionAfterLaunch")]
 	public ref bool FirstCollisionAfterLaunch => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bFirstCollisionAfterLaunch");
 
-	// m_iExploitableByPlayer
-	[SchemaMember("CPhysicsProp", "m_iExploitableByPlayer")]
-	public ref Int32 ExploitableByPlayer => ref Schema.GetRef<Int32>(this.Handle, "CPhysicsProp", "m_iExploitableByPlayer");
-
 	// m_bHasBeenAwakened
 	[SchemaMember("CPhysicsProp", "m_bHasBeenAwakened")]
 	public ref bool HasBeenAwakened => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bHasBeenAwakened");
@@ -109,6 +101,14 @@ public partial class CPhysicsProp : CBreakableProp
 	// m_bIsOverrideProp
 	[SchemaMember("CPhysicsProp", "m_bIsOverrideProp")]
 	public ref bool IsOverrideProp => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bIsOverrideProp");
+
+	// m_flLastBurn
+	[SchemaMember("CPhysicsProp", "m_flLastBurn")]
+	public ref float LastBurn => ref Schema.GetRef<float>(this.Handle, "CPhysicsProp", "m_flLastBurn");
+
+	// m_nDynamicContinuousContactBehavior
+	[SchemaMember("CPhysicsProp", "m_nDynamicContinuousContactBehavior")]
+	public ref DynamicContinuousContactBehavior_t DynamicContinuousContactBehavior => ref Schema.GetRef<DynamicContinuousContactBehavior_t>(this.Handle, "CPhysicsProp", "m_nDynamicContinuousContactBehavior");
 
 	// m_fNextCheckDisableMotionContactsTime
 	[SchemaMember("CPhysicsProp", "m_fNextCheckDisableMotionContactsTime")]
@@ -169,5 +169,9 @@ public partial class CPhysicsProp : CBreakableProp
 	// m_bAwake
 	[SchemaMember("CPhysicsProp", "m_bAwake")]
 	public ref bool Awake => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bAwake");
+
+	// m_bAttachedToReferenceFrame
+	[SchemaMember("CPhysicsProp", "m_bAttachedToReferenceFrame")]
+	public ref bool AttachedToReferenceFrame => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bAttachedToReferenceFrame");
 
 }

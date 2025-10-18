@@ -20,6 +20,6 @@ public partial class CBodyComponentPoint : CBodyComponent
 
 	// m_sceneNode
 	[SchemaMember("CBodyComponentPoint", "m_sceneNode")]
-	public CGameSceneNode SceneNode => Schema.GetDeclaredClass<CGameSceneNode>(this.Handle, "CBodyComponentPoint", "m_sceneNode");
+	public new CGameSceneNode SceneNode => Schema.GetDeclaredClass<CGameSceneNode>(this.Handle, "CBodyComponentPoint", "m_sceneNode");
 
 }

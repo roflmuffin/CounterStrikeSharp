@@ -14,7 +14,7 @@ using CounterStrikeSharp.API.Core.Attributes;
 
 namespace CounterStrikeSharp.API.Core;
 
-public partial class CWeaponXM1014 : CCSWeaponBase
+public partial class CWeaponXM1014 : CCSWeaponBaseShotgun
 {
     public CWeaponXM1014 (IntPtr pointer) : base(pointer) {}
 

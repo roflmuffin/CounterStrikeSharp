@@ -124,6 +124,9 @@ public abstract class BaseMenuInstance : IMenuInstance
 
         var menuItemIndex = CurrentOffset + desiredValue - 1;
 
+        if (Menu?.MenuOptions == null)
+            return;
+
         if (menuItemIndex >= 0 && menuItemIndex < Menu.MenuOptions.Count)
         {
             var menuOption = Menu.MenuOptions[menuItemIndex];

@@ -186,9 +186,21 @@ public partial class CLightComponent : CEntityComponent
 	[SchemaMember("CLightComponent", "m_nBakedShadowIndex")]
 	public ref Int32 BakedShadowIndex => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nBakedShadowIndex");
 
+	// m_nLightPathUniqueId
+	[SchemaMember("CLightComponent", "m_nLightPathUniqueId")]
+	public ref Int32 LightPathUniqueId => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nLightPathUniqueId");
+
+	// m_nLightMapUniqueId
+	[SchemaMember("CLightComponent", "m_nLightMapUniqueId")]
+	public ref Int32 LightMapUniqueId => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nLightMapUniqueId");
+
 	// m_bRenderToCubemaps
 	[SchemaMember("CLightComponent", "m_bRenderToCubemaps")]
 	public ref bool RenderToCubemaps => ref Schema.GetRef<bool>(this.Handle, "CLightComponent", "m_bRenderToCubemaps");
+
+	// m_bAllowSSTGeneration
+	[SchemaMember("CLightComponent", "m_bAllowSSTGeneration")]
+	public ref bool AllowSSTGeneration => ref Schema.GetRef<bool>(this.Handle, "CLightComponent", "m_bAllowSSTGeneration");
 
 	// m_nDirectLight
 	[SchemaMember("CLightComponent", "m_nDirectLight")]

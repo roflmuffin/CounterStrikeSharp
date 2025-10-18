@@ -14,6 +14,8 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
+using System.Runtime.InteropServices;
+
 using CounterStrikeSharp.API.Modules.Entities.Constants;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
@@ -30,11 +32,27 @@ public partial class CCSGameRules
         VirtualFunctions.TerminateRound(Handle, roundEndReason, delay, 0, 0);
     }
 
+    internal CBaseEntity? FindPickerEntityInternal(CBasePlayerController player)
+    {
+        // TODO: TEST!
+        // the third parameter seems to be something like `CDefaultTypedEntityInstanceFilter<CBaseEntity>` but its optional (earlier it was a string?)
+
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+        {
+            VirtualFunctionWithReturn<CCSGameRules, CBasePlayerController, IntPtr?, CBaseEntity?> CCSGameRules_FindPickerEntity = new(Handle, GameData.GetOffset("CCSGameRules_FindPickerEntity"));
+            return CCSGameRules_FindPickerEntity.Invoke(this, player, null);
+        }
+        else
+        {
+            VirtualFunctionWithReturn<CCSGameRules, CBasePlayerController, IntPtr?, double, double, CBaseEntity?> CCSGameRules_FindPickerEntity = new(Handle, GameData.GetOffset("CCSGameRules_FindPickerEntity"));
+            return CCSGameRules_FindPickerEntity.Invoke(this, player, null, 0, 0); // on linux we have a fourth and fifth parameter aswell, but they are unused because the condition for them is always unmet.
+        }
+    }
+
     public T? FindPickerEntity<T>(CBasePlayerController player)
         where T : CBaseEntity
     {
-        VirtualFunctionWithReturn<CCSGameRules, CBasePlayerController, CBaseEntity?> CCSGameRules_FindPickerEntity = new (Handle, GameData.GetOffset("CCSGameRules_FindPickerEntity"));
-        CBaseEntity? entity = CCSGameRules_FindPickerEntity.Invoke(this, player);
+        CBaseEntity? entity = FindPickerEntityInternal(player);
 
         if (entity == null || !entity.IsValid)
         {

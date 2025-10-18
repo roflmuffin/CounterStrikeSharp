@@ -22,11 +22,24 @@
 #include "gameconfig.h"
 #include "memory_module.h"
 
-void* FindSignature(const char* moduleName, const char* bytesStr) {
+void* FindSignature(const char* moduleName, const char* bytesStr)
+{
     auto module = counterstrikesharp::modules::GetModuleByName(moduleName);
-    if (module == nullptr) {
+    if (module == nullptr)
+    {
         return nullptr;
     }
 
     return module->FindSignature(bytesStr);
+}
+
+void* FindVirtualTable(const char* moduleName, const char* vtableName)
+{
+    auto module = counterstrikesharp::modules::GetModuleByName(moduleName);
+    if (module == nullptr)
+    {
+        return nullptr;
+    }
+
+    return module->FindVirtualTable(vtableName);
 }

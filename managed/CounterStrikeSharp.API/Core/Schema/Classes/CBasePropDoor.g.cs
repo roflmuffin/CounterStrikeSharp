@@ -42,6 +42,10 @@ public partial class CBasePropDoor : CDynamicProp
 	[SchemaMember("CBasePropDoor", "m_bLocked")]
 	public ref bool Locked => ref Schema.GetRef<bool>(this.Handle, "CBasePropDoor", "m_bLocked");
 
+	// m_bNoNPCs
+	[SchemaMember("CBasePropDoor", "m_bNoNPCs")]
+	public ref bool NoNPCs => ref Schema.GetRef<bool>(this.Handle, "CBasePropDoor", "m_bNoNPCs");
+
 	// m_closedPosition
 	[SchemaMember("CBasePropDoor", "m_closedPosition")]
 	public Vector ClosedPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CBasePropDoor", "m_closedPosition");
@@ -52,7 +56,7 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_hBlocker
 	[SchemaMember("CBasePropDoor", "m_hBlocker")]
-	public CHandle<CBaseEntity> Blocker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBasePropDoor", "m_hBlocker");
+	public new CHandle<CBaseEntity> Blocker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBasePropDoor", "m_hBlocker");
 
 	// m_bFirstBlocked
 	[SchemaMember("CBasePropDoor", "m_bFirstBlocked")]

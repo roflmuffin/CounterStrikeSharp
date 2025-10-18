@@ -13,6 +13,5 @@ public enum ObserverMode_t : uint
 	OBS_MODE_IN_EYE = 0x2,
 	OBS_MODE_CHASE = 0x3,
 	OBS_MODE_ROAMING = 0x4,
-	OBS_MODE_DIRECTED = 0x5,
-	NUM_OBSERVER_MODES = 0x6,
+	NUM_OBSERVER_MODES = 0x5,
 }

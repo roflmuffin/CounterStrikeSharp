@@ -38,6 +38,10 @@ public partial class CModelState : NativeObject
 	[SchemaMember("CModelState", "m_MeshGroupMask")]
 	public ref UInt64 MeshGroupMask => ref Schema.GetRef<UInt64>(this.Handle, "CModelState", "m_MeshGroupMask");
 
+	// m_nBodyGroupChoices
+	[SchemaMember("CModelState", "m_nBodyGroupChoices")]
+	public NetworkedVector<Int32> BodyGroupChoices => Schema.GetDeclaredClass<NetworkedVector<Int32>>(this.Handle, "CModelState", "m_nBodyGroupChoices");
+
 	// m_nIdealMotionType
 	[SchemaMember("CModelState", "m_nIdealMotionType")]
 	public ref sbyte IdealMotionType => ref Schema.GetRef<sbyte>(this.Handle, "CModelState", "m_nIdealMotionType");

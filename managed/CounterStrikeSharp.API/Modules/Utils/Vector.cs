@@ -297,6 +297,7 @@ namespace CounterStrikeSharp.API.Modules.Utils
             NativePINVOKE.Vector_Zero(ptr);
         }
         */
+
         #region Operators
 
         public float this[int i]
@@ -351,12 +352,27 @@ namespace CounterStrikeSharp.API.Modules.Utils
         {
             return new Vector(a.X * b, a.Y * b, a.Z * b);
         }
+
         public static Vector operator /(Vector a, float b)
         {
             return new Vector(a.X / b, a.Y / b, a.Z / b);
         }
 
+        public static explicit operator Vector3(Vector v)
+        {
+            unsafe
+            {
+                if (v is null)
+                {
+                    throw new ArgumentNullException(nameof(v), "Input Vector cannot be null.");
+                }
+
+                return new Vector3(new ReadOnlySpan<float>(v.Handle.ToPointer(), 3));
+            }
+        }
+
         #endregion
+
         /*
 
         public override bool Equals(object obj)

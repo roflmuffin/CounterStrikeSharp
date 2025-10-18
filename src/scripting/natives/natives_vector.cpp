@@ -18,6 +18,8 @@
 
 #include "scripting/autonative.h"
 #include "scripting/script_engine.h"
+#include "igameevents.h"
+#include "core/function.h"
 
 namespace counterstrikesharp {
 
@@ -37,6 +39,21 @@ CREATE_SETTER_FUNCTION(Vector, float, Z, Vector*, obj->z = value);
 
 // TODO: These need to be cleared out somehow
 std::vector<Vector*> managed_vectors;
+std::vector<QAngle*> managed_angles;
+extern std::vector<IGameEvent*> managed_game_events;
+extern std::vector<ValveFunction*> m_managed_ptrs;
+
+CON_COMMAND(css_dump_leaks, "dump css leaks")
+{
+    Msg("===== Dumping leaks =====\n");
+    Msg("\tVector: %i (%zu B)\n", managed_vectors.size(), managed_vectors.size() * sizeof(Vector));
+    Msg("\tAngles: %i (%zu B)\n", managed_angles.size(), managed_angles.size() * sizeof(QAngle));
+    Msg("\tGameEvents: %i (~B)\n", managed_game_events.size());
+    Msg("\tVirtual Functions: %i (%zu B)\n", m_managed_ptrs.size(), m_managed_ptrs.size() * sizeof(ValveFunction));
+    Msg("\tTotal size: %zu B\n", (managed_vectors.size() * sizeof(Vector)) + (managed_angles.size() * sizeof(QAngle)) +
+                                     (m_managed_ptrs.size() * sizeof(ValveFunction)));
+    Msg("===== Dumping leaks =====\n");
+}
 
 Vector* VectorNew(ScriptContext& script_context)
 {
@@ -44,9 +61,6 @@ Vector* VectorNew(ScriptContext& script_context)
     managed_vectors.push_back(vec);
     return vec;
 }
-
-// TODO: These need to be cleared out somehow
-std::vector<QAngle*> managed_angles;
 
 QAngle* AngleNew(ScriptContext& script_context)
 {

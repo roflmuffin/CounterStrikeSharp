@@ -27,6 +27,11 @@
         <None Remove="Modules\Disabled\**"/>
     </ItemGroup>
     <ItemGroup>
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+        <_Parameter1>NativeTestsPlugin</_Parameter1>
+        </AssemblyAttribute>
+    </ItemGroup>
+    <ItemGroup>
         <PackageReference Include="McMaster.NETCore.Plugins" Version="1.4.0"/>
         <PackageReference Include="Microsoft.CSharp" Version="4.7.0"/>
         <PackageReference Include="Microsoft.DotNet.ApiCompat.Task" Version="8.0.203"/>
@@ -39,6 +44,7 @@
         <PackageReference Include="Serilog.Sinks.Console" Version="5.0.0"/>
         <PackageReference Include="Serilog.Sinks.File" Version="5.0.0"/>
         <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0"/>
+        <PackageReference Include="Tomlyn" Version="0.19.0"/>
     </ItemGroup>
     <ItemGroup>
         <Folder Include="Core\Schema\"/>
@@ -59,13 +65,14 @@
     </PropertyGroup>
     <Target Name="SetSourceRevisionId" BeforeTargets="InitializeSourceControlInformation">
         <Exec
-                Command="git describe --long --always --exclude=* --abbrev=7"
-                ConsoleToMSBuild="True"
-                IgnoreExitCode="False"
+            Command="git describe --long --always --exclude=* --abbrev=7"
+            ConsoleToMSBuild="True"
+            IgnoreExitCode="False"
         >
             <Output PropertyName="SourceRevisionId" TaskParameter="ConsoleOutput"/>
         </Exec>
     </Target>
+
 
     <!--  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">-->
     <!--    <Exec Command="dotnet run &#45;&#45;project ../../tooling/CodeGen.Natives" />-->

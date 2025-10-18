@@ -6,7 +6,7 @@ using System;
 
 namespace CounterStrikeSharp.API.Core;
 
-public enum InputLayoutVariation_t : uint
+public enum InputLayoutVariation_t : byte
 {
 	INPUT_LAYOUT_VARIATION_DEFAULT = 0x0,
 	INPUT_LAYOUT_VARIATION_STREAM1_INSTANCEID = 0x1,

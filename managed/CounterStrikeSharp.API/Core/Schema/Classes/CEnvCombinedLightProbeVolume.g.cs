@@ -38,9 +38,29 @@ public partial class CEnvCombinedLightProbeVolume : CBaseEntity
 	[SchemaMember("CEnvCombinedLightProbeVolume", "m_Entity_bCustomCubemapTexture")]
 	public ref bool Entity_bCustomCubemapTexture => ref Schema.GetRef<bool>(this.Handle, "CEnvCombinedLightProbeVolume", "m_Entity_bCustomCubemapTexture");
 
-	// m_Entity_hLightProbeTexture
-	[SchemaMember("CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeTexture")]
-	public CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hLightProbeTexture => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeTexture");
+	// m_Entity_hLightProbeTexture_AmbientCube
+	[SchemaMember("CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeTexture_AmbientCube")]
+	public CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hLightProbeTexture_AmbientCube => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeTexture_AmbientCube");
+
+	// m_Entity_hLightProbeTexture_SDF
+	[SchemaMember("CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeTexture_SDF")]
+	public CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hLightProbeTexture_SDF => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeTexture_SDF");
+
+	// m_Entity_hLightProbeTexture_SH2_DC
+	[SchemaMember("CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_DC")]
+	public CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hLightProbeTexture_SH2_DC => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_DC");
+
+	// m_Entity_hLightProbeTexture_SH2_R
+	[SchemaMember("CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_R")]
+	public CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hLightProbeTexture_SH2_R => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_R");
+
+	// m_Entity_hLightProbeTexture_SH2_G
+	[SchemaMember("CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_G")]
+	public CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hLightProbeTexture_SH2_G => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_G");
+
+	// m_Entity_hLightProbeTexture_SH2_B
+	[SchemaMember("CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_B")]
+	public CStrongHandle<InfoForResourceTypeCTextureBase> Entity_hLightProbeTexture_SH2_B => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_B");
 
 	// m_Entity_hLightProbeDirectLightIndicesTexture
 	[SchemaMember("CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeDirectLightIndicesTexture")]

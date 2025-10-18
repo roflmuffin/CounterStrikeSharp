@@ -40,7 +40,8 @@ class Hook;
 
 namespace counterstrikesharp {
 
-enum DataType_t {
+enum DataType_t
+{
     DATA_TYPE_VOID,
     DATA_TYPE_BOOL,
     DATA_TYPE_CHAR,
@@ -60,7 +61,8 @@ enum DataType_t {
     DATA_TYPE_VARIANT
 };
 
-enum Protection_t {
+enum Protection_t
+{
     PROTECTION_NONE,
     PROTECTION_READ,
     PROTECTION_READ_WRITE,
@@ -69,19 +71,20 @@ enum Protection_t {
     PROTECTION_EXECUTE_READ_WRITE
 };
 
-enum Convention_t { CONV_CUSTOM, CONV_CDECL, CONV_THISCALL, CONV_STDCALL, CONV_FASTCALL };
+enum Convention_t
+{
+    CONV_CUSTOM,
+    CONV_CDECL,
+    CONV_THISCALL,
+    CONV_STDCALL,
+    CONV_FASTCALL
+};
 
-class ValveFunction {
-public:
-    ValveFunction(void* ulAddr,
-                  Convention_t callingConvention,
-                  std::vector<DataType_t> args,
-                  DataType_t returnType);
-    ValveFunction(void* ulAddr,
-                  Convention_t callingConvention,
-                  DataType_t* args,
-                  int argCount,
-                  DataType_t returnType);
+class ValveFunction
+{
+  public:
+    ValveFunction(void* ulAddr, Convention_t callingConvention, std::vector<DataType_t> args, DataType_t returnType);
+    ValveFunction(void* ulAddr, Convention_t callingConvention, DataType_t* args, int argCount, DataType_t returnType);
 
     ~ValveFunction();
 
@@ -90,11 +93,12 @@ public:
     void SetOffset(int offset) { m_offset = offset; }
     void SetSignature(const char* signature) { m_signature = signature; }
 
-    void Call(ScriptContext& args, int offset = 0);
+    void Call(ScriptContext& args, int offset = 0, bool bypass = false);
     void AddHook(CallbackT callable, bool post);
     void RemoveHook(CallbackT callable, bool post);
 
     void* m_ulAddr;
+    void* m_trampoline;
     std::vector<DataType_t> m_Args;
     DataType_t m_eReturnType;
 
@@ -110,4 +114,4 @@ public:
     ScriptCallback* m_postcallback = nullptr;
 };
 
-}  // namespace counterstrikesharp
+} // namespace counterstrikesharp

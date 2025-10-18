@@ -26,6 +26,10 @@ public partial class CRagdollProp : CBaseAnimGraph
 	[SchemaMember("CRagdollProp", "m_bStartDisabled")]
 	public ref bool StartDisabled => ref Schema.GetRef<bool>(this.Handle, "CRagdollProp", "m_bStartDisabled");
 
+	// m_ragEnabled
+	[SchemaMember("CRagdollProp", "m_ragEnabled")]
+	public NetworkedVector<bool> RagEnabled => Schema.GetDeclaredClass<NetworkedVector<bool>>(this.Handle, "CRagdollProp", "m_ragEnabled");
+
 	// m_ragPos
 	[SchemaMember("CRagdollProp", "m_ragPos")]
 	public NetworkedVector<Vector> RagPos => Schema.GetDeclaredClass<NetworkedVector<Vector>>(this.Handle, "CRagdollProp", "m_ragPos");
@@ -33,10 +37,6 @@ public partial class CRagdollProp : CBaseAnimGraph
 	// m_ragAngles
 	[SchemaMember("CRagdollProp", "m_ragAngles")]
 	public NetworkedVector<QAngle> RagAngles => Schema.GetDeclaredClass<NetworkedVector<QAngle>>(this.Handle, "CRagdollProp", "m_ragAngles");
-
-	// m_hRagdollSource
-	[SchemaMember("CRagdollProp", "m_hRagdollSource")]
-	public CHandle<CBaseEntity> RagdollSource => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CRagdollProp", "m_hRagdollSource");
 
 	// m_lastUpdateTickCount
 	[SchemaMember("CRagdollProp", "m_lastUpdateTickCount")]
@@ -106,9 +106,9 @@ public partial class CRagdollProp : CBaseAnimGraph
 	[SchemaMember("CRagdollProp", "m_bHasBeenPhysgunned")]
 	public ref bool HasBeenPhysgunned => ref Schema.GetRef<bool>(this.Handle, "CRagdollProp", "m_bHasBeenPhysgunned");
 
-	// m_bShouldTeleportPhysics
-	[SchemaMember("CRagdollProp", "m_bShouldTeleportPhysics")]
-	public ref bool ShouldTeleportPhysics => ref Schema.GetRef<bool>(this.Handle, "CRagdollProp", "m_bShouldTeleportPhysics");
+	// m_bAllowStretch
+	[SchemaMember("CRagdollProp", "m_bAllowStretch")]
+	public ref bool AllowStretch => ref Schema.GetRef<bool>(this.Handle, "CRagdollProp", "m_bAllowStretch");
 
 	// m_flBlendWeight
 	[SchemaMember("CRagdollProp", "m_flBlendWeight")]
@@ -129,9 +129,5 @@ public partial class CRagdollProp : CBaseAnimGraph
 	// m_bShouldDeleteActivationRecord
 	[SchemaMember("CRagdollProp", "m_bShouldDeleteActivationRecord")]
 	public ref bool ShouldDeleteActivationRecord => ref Schema.GetRef<bool>(this.Handle, "CRagdollProp", "m_bShouldDeleteActivationRecord");
-
-	// m_bValidatePoweredRagdollPose
-	[SchemaMember("CRagdollProp", "m_bValidatePoweredRagdollPose")]
-	public ref bool ValidatePoweredRagdollPose => ref Schema.GetRef<bool>(this.Handle, "CRagdollProp", "m_bValidatePoweredRagdollPose");
 
 }
