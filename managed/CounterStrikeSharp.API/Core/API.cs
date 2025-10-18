@@ -8,7 +8,7 @@ using CounterStrikeSharp.API.Modules.Utils;
 namespace CounterStrikeSharp.API.Core
 {
     public class NativeAPI {
-        
+
         public static bool AddListener(string name, InputArgument callback){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
@@ -656,6 +656,16 @@ namespace CounterStrikeSharp.API.Core
 			ScriptContext.GlobalScriptContext.Reset();
 			ScriptContext.GlobalScriptContext.Push(name);
 			ScriptContext.GlobalScriptContext.SetIdentifier(0x77A0C6BE);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			}
+		}
+
+        public static void AddResource(string name){
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(name);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0x3B1DC491);
 			ScriptContext.GlobalScriptContext.Invoke();
 			ScriptContext.GlobalScriptContext.CheckErrors();
 			}
@@ -1421,10 +1431,11 @@ namespace CounterStrikeSharp.API.Core
 			}
 		}
 
-        public static T ExecuteVirtualFunction<T>(IntPtr function, object[] arguments){
+        public static T ExecuteVirtualFunction<T>(IntPtr function, bool bypass, object[] arguments){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
 			ScriptContext.GlobalScriptContext.Push(function);
+			ScriptContext.GlobalScriptContext.Push(bypass);
 			foreach (var obj in arguments)
 			{
 				ScriptContext.GlobalScriptContext.Push(obj);
@@ -1447,6 +1458,18 @@ namespace CounterStrikeSharp.API.Core
 			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
 			}
 		}
+
+        public static IntPtr FindVirtualTable(string modulepath, string vtablename){
+            lock (ScriptContext.GlobalScriptContext.Lock) {
+            ScriptContext.GlobalScriptContext.Reset();
+            ScriptContext.GlobalScriptContext.Push(modulepath);
+            ScriptContext.GlobalScriptContext.Push(vtablename);
+            ScriptContext.GlobalScriptContext.SetIdentifier(0xB4A0F13C);
+            ScriptContext.GlobalScriptContext.Invoke();
+            ScriptContext.GlobalScriptContext.CheckErrors();
+            return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+            }
+        }
 
         public static int GetNetworkVectorSize(IntPtr vec){
 			lock (ScriptContext.GlobalScriptContext.Lock) {

@@ -82,6 +82,10 @@ public partial class CPhysConstraint : CLogicalEntity
 	[SchemaMember("CPhysConstraint", "m_bSnapObjectPositions")]
 	public ref bool SnapObjectPositions => ref Schema.GetRef<bool>(this.Handle, "CPhysConstraint", "m_bSnapObjectPositions");
 
+	// m_bTreatEntity1AsInfiniteMass
+	[SchemaMember("CPhysConstraint", "m_bTreatEntity1AsInfiniteMass")]
+	public ref bool TreatEntity1AsInfiniteMass => ref Schema.GetRef<bool>(this.Handle, "CPhysConstraint", "m_bTreatEntity1AsInfiniteMass");
+
 	// m_OnBreak
 	[SchemaMember("CPhysConstraint", "m_OnBreak")]
 	public CEntityIOOutput OnBreak => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPhysConstraint", "m_OnBreak");

@@ -21,6 +21,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Core.Translations;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
 
@@ -137,12 +138,22 @@ namespace CounterStrikeSharp.API
 
         public static void PrintToChatAll(string message)
         {
-            VirtualFunctions.ClientPrintAll(HudDestination.Chat, message, 0, 0, 0, 0);
+            VirtualFunctions.ClientPrintAll(HudDestination.Chat, message, 0, 0, 0, 0, 0);
         }
 
         public static string GameDirectory => NativeAPI.GetGameDirectory();
 
-        public static int MaxPlayers => NativeAPI.GetMaxClients();
+        private static int? _maxPlayers;
+
+        public static int MaxPlayers
+        {
+            get
+            {
+                _maxPlayers ??= NativeAPI.GetMaxClients();
+
+                return _maxPlayers.Value;
+            }
+        }
 
         public static bool IsMapValid(string mapName) => NativeAPI.IsMapValid(mapName);
 

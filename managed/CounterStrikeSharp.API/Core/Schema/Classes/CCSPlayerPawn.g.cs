@@ -150,14 +150,6 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 	[SchemaMember("CCSPlayerPawn", "m_bIsBuyMenuOpen")]
 	public ref bool IsBuyMenuOpen => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bIsBuyMenuOpen");
 
-	// m_xLastHeadBoneTransform
-	[SchemaMember("CCSPlayerPawn", "m_xLastHeadBoneTransform")]
-	public CTransform XLastHeadBoneTransform => Schema.GetDeclaredClass<CTransform>(this.Handle, "CCSPlayerPawn", "m_xLastHeadBoneTransform");
-
-	// m_bLastHeadBoneTransformIsValid
-	[SchemaMember("CCSPlayerPawn", "m_bLastHeadBoneTransformIsValid")]
-	public ref bool LastHeadBoneTransformIsValid => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawn", "m_bLastHeadBoneTransformIsValid");
-
 	// m_lastLandTime
 	[SchemaMember("CCSPlayerPawn", "m_lastLandTime")]
 	public ref float LastLandTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawn", "m_lastLandTime");
@@ -377,10 +369,6 @@ public partial class CCSPlayerPawn : CCSPlayerPawnBase
 	// m_LastHitBox
 	[SchemaMember("CCSPlayerPawn", "m_LastHitBox")]
 	public ref Int32 LastHitBox => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawn", "m_LastHitBox");
-
-	// m_LastHealth
-	[SchemaMember("CCSPlayerPawn", "m_LastHealth")]
-	public ref Int32 LastHealth => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawn", "m_LastHealth");
 
 	// m_pBot
 	[SchemaMember("CCSPlayerPawn", "m_pBot")]

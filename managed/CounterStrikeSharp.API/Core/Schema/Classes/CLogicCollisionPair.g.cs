@@ -34,6 +34,10 @@ public partial class CLogicCollisionPair : CLogicalEntity
 		set { Schema.SetString(this.Handle, "CLogicCollisionPair", "m_nameAttach2", value); }
 	}
 
+	// m_includeHierarchy
+	[SchemaMember("CLogicCollisionPair", "m_includeHierarchy")]
+	public ref bool IncludeHierarchy => ref Schema.GetRef<bool>(this.Handle, "CLogicCollisionPair", "m_includeHierarchy");
+
 	// m_supportMultipleEntitiesWithSameName
 	[SchemaMember("CLogicCollisionPair", "m_supportMultipleEntitiesWithSameName")]
 	public ref bool SupportMultipleEntitiesWithSameName => ref Schema.GetRef<bool>(this.Handle, "CLogicCollisionPair", "m_supportMultipleEntitiesWithSameName");

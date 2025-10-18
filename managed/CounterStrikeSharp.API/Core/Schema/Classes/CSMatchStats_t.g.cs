@@ -62,13 +62,13 @@ public partial class CSMatchStats_t : CSPerRoundStats_t
 	[SchemaMember("CSMatchStats_t", "m_iFlash_Successes")]
 	public ref Int32 Flash_Successes => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_iFlash_Successes");
 
-	// m_nHealthPointsRemovedTotal
-	[SchemaMember("CSMatchStats_t", "m_nHealthPointsRemovedTotal")]
-	public ref Int32 HealthPointsRemovedTotal => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_nHealthPointsRemovedTotal");
+	// m_flHealthPointsRemovedTotal
+	[SchemaMember("CSMatchStats_t", "m_flHealthPointsRemovedTotal")]
+	public ref float HealthPointsRemovedTotal => ref Schema.GetRef<float>(this.Handle, "CSMatchStats_t", "m_flHealthPointsRemovedTotal");
 
-	// m_nHealthPointsDealtTotal
-	[SchemaMember("CSMatchStats_t", "m_nHealthPointsDealtTotal")]
-	public ref Int32 HealthPointsDealtTotal => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_nHealthPointsDealtTotal");
+	// m_flHealthPointsDealtTotal
+	[SchemaMember("CSMatchStats_t", "m_flHealthPointsDealtTotal")]
+	public ref float HealthPointsDealtTotal => ref Schema.GetRef<float>(this.Handle, "CSMatchStats_t", "m_flHealthPointsDealtTotal");
 
 	// m_nShotsFiredTotal
 	[SchemaMember("CSMatchStats_t", "m_nShotsFiredTotal")]

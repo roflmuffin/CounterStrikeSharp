@@ -22,18 +22,6 @@ public partial class CCSWeaponBase : CBasePlayerWeapon
 	[SchemaMember("CCSWeaponBase", "m_bRemoveable")]
 	public ref bool Removeable => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bRemoveable");
 
-	// m_thirdPersonFireSequences
-	[SchemaMember("CCSWeaponBase", "m_thirdPersonFireSequences")]
-	public NetworkedVector<Int32> ThirdPersonFireSequences => Schema.GetDeclaredClass<NetworkedVector<Int32>>(this.Handle, "CCSWeaponBase", "m_thirdPersonFireSequences");
-
-	// m_hCurrentThirdPersonSequence
-	[SchemaMember("CCSWeaponBase", "m_hCurrentThirdPersonSequence")]
-	public ref Int32 CurrentThirdPersonSequence => ref Schema.GetRef<Int32>(this.Handle, "CCSWeaponBase", "m_hCurrentThirdPersonSequence");
-
-	// m_thirdPersonSequences
-	[SchemaMember("CCSWeaponBase", "m_thirdPersonSequences")]
-	public Span<Int32> ThirdPersonSequences => Schema.GetFixedArray<Int32>(this.Handle, "CCSWeaponBase", "m_thirdPersonSequences", 7);
-
 	// m_bPlayerAmmoStockOnPickup
 	[SchemaMember("CCSWeaponBase", "m_bPlayerAmmoStockOnPickup")]
 	public ref bool PlayerAmmoStockOnPickup => ref Schema.GetRef<bool>(this.Handle, "CCSWeaponBase", "m_bPlayerAmmoStockOnPickup");
@@ -225,5 +213,9 @@ public partial class CCSWeaponBase : CBasePlayerWeapon
 	// m_flWatTickOffset
 	[SchemaMember("CCSWeaponBase", "m_flWatTickOffset")]
 	public ref float WatTickOffset => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flWatTickOffset");
+
+	// m_flLastShakeTime
+	[SchemaMember("CCSWeaponBase", "m_flLastShakeTime")]
+	public ref float LastShakeTime => ref Schema.GetRef<float>(this.Handle, "CCSWeaponBase", "m_flLastShakeTime");
 
 }

@@ -34,6 +34,14 @@ void* FindSignatureNative(ScriptContext& scriptContext)
     return FindSignature(moduleName, bytesStr);
 }
 
+void* FindVirtualTableNative(ScriptContext& scriptContext)
+{
+    auto moduleName = scriptContext.GetArgument<const char*>(0);
+    auto vtableName = scriptContext.GetArgument<const char*>(1);
+
+    return FindVirtualTable(moduleName, vtableName);
+}
+
 ValveFunction* CreateVirtualFunctionBySignature(ScriptContext& script_context)
 {
     auto ptr = script_context.GetArgument<unsigned long>(0);
@@ -127,6 +135,7 @@ void UnhookFunction(ScriptContext& script_context)
 void ExecuteVirtualFunction(ScriptContext& script_context)
 {
     auto function = script_context.GetArgument<ValveFunction*>(0);
+    auto bypasshook = script_context.GetArgument<bool>(1);
 
     if (!function)
     {
@@ -134,7 +143,7 @@ void ExecuteVirtualFunction(ScriptContext& script_context)
         return;
     }
 
-    function->Call(script_context, 1);
+    function->Call(script_context, 2, bypasshook);
 }
 
 int GetNetworkVectorSize(ScriptContext& script_context)
@@ -166,6 +175,7 @@ REGISTER_NATIVES(memory, {
     ScriptEngine::RegisterNativeHandler("HOOK_FUNCTION", HookFunction);
     ScriptEngine::RegisterNativeHandler("UNHOOK_FUNCTION", UnhookFunction);
     ScriptEngine::RegisterNativeHandler("FIND_SIGNATURE", FindSignatureNative);
+    ScriptEngine::RegisterNativeHandler("FIND_VIRTUAL_TABLE", FindVirtualTableNative);
     ScriptEngine::RegisterNativeHandler("GET_NETWORK_VECTOR_SIZE", GetNetworkVectorSize);
     ScriptEngine::RegisterNativeHandler("GET_NETWORK_VECTOR_ELEMENT_AT", GetNetworkVectorElementAt);
     ScriptEngine::RegisterNativeHandler("REMOVE_ALL_NETWORK_VECTOR_ELEMENTS", RemoveAllNetworkVectorElements);

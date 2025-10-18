@@ -1,0 +1,23 @@
+{
+    "menu.button.previous": "Prev",
+    "menu.button.next": "Next",
+    "menu.button.close": "Close",
+
+    "all": "all players",
+    "bots": "bots",
+    "humans": "humans",
+    "alive": "alive players",
+    "dead": "dead players",
+    "notme": "all players except self",
+    "ct": "ct players",
+    "t": "t players",
+    "spec": "spec players",
+
+    "No matching client": "No matching client was found.",
+    "No matching clients": "No matching clients were found.",
+    "Target must be alive": "This command can only be used on alive players.",
+    "Target must be dead": "This command can only be used on dead players.",
+    "Unable to target": "You cannot target this player.",
+    "Cannot target bot": "Unable to perform this command on a bot.",
+    "More than one client matched": "More than one client matched the given pattern."
+}

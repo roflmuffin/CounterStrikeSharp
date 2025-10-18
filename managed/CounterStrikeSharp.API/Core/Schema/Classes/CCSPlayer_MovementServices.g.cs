@@ -90,10 +90,6 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 	[SchemaMember("CCSPlayer_MovementServices", "m_bSpeedCropped")]
 	public ref bool SpeedCropped => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bSpeedCropped");
 
-	// m_flGroundMoveEfficiency
-	[SchemaMember("CCSPlayer_MovementServices", "m_flGroundMoveEfficiency")]
-	public ref float GroundMoveEfficiency => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flGroundMoveEfficiency");
-
 	// m_nOldWaterLevel
 	[SchemaMember("CCSPlayer_MovementServices", "m_nOldWaterLevel")]
 	public ref Int32 OldWaterLevel => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_nOldWaterLevel");
@@ -181,5 +177,9 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 	// m_bWasSurfing
 	[SchemaMember("CCSPlayer_MovementServices", "m_bWasSurfing")]
 	public ref bool WasSurfing => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bWasSurfing");
+
+	// m_vecInputRotated
+	[SchemaMember("CCSPlayer_MovementServices", "m_vecInputRotated")]
+	public Vector InputRotated => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayer_MovementServices", "m_vecInputRotated");
 
 }
