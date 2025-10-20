@@ -51,8 +51,7 @@ void* GetVirtualTable(CModule* module, const std::string& name)
     // Windows RTTI format: .?AVClassName@@
     std::string decoratedTableName = ".?AV" + name + "@@";
 
-    SignatureIterator sigIt(runTimeData->m_pBase, runTimeData->m_iSize,
-                            (const byte*)decoratedTableName.c_str(),
+    SignatureIterator sigIt(runTimeData->m_pBase, runTimeData->m_iSize, (const byte*)decoratedTableName.c_str(),
                             decoratedTableName.size() + 1);
 
     void* typeDescriptor = sigIt.FindNext(false);
@@ -65,24 +64,20 @@ void* GetVirtualTable(CModule* module, const std::string& name)
     typeDescriptor = (void*)((uintptr_t)typeDescriptor - 0x10);
     const uint32_t rttiTDRva = (uintptr_t)typeDescriptor - (uintptr_t)module->m_base;
 
-    SignatureIterator sigIt2(readOnlyData->m_pBase, readOnlyData->m_iSize,
-                             (const byte*)&rttiTDRva, sizeof(uint32_t));
+    SignatureIterator sigIt2(readOnlyData->m_pBase, readOnlyData->m_iSize, (const byte*)&rttiTDRva, sizeof(uint32_t));
 
     while (void* completeObjectLocator = sigIt2.FindNext(false))
     {
         auto completeObjectLocatorHeader = (uintptr_t)completeObjectLocator - 0xC;
 
         // Verify RTTI Complete Object Locator header (always 0x1)
-        if (*(int32_t*)(completeObjectLocatorHeader) != 1)
-            continue;
+        if (*(int32_t*)(completeObjectLocatorHeader) != 1) continue;
 
         // Verify RTTI vtable offset (always 0)
-        if (*(int32_t*)((uintptr_t)completeObjectLocator - 0x8) != 0)
-            continue;
+        if (*(int32_t*)((uintptr_t)completeObjectLocator - 0x8) != 0) continue;
 
         // Find reference to Complete Object Locator inside .rdata
-        SignatureIterator sigIt3(readOnlyData->m_pBase, readOnlyData->m_iSize,
-                                 (const byte*)&completeObjectLocatorHeader, sizeof(void*));
+        SignatureIterator sigIt3(readOnlyData->m_pBase, readOnlyData->m_iSize, (const byte*)&completeObjectLocatorHeader, sizeof(void*));
 
         void* vtable = sigIt3.FindNext(false);
         if (!vtable)
@@ -114,9 +109,8 @@ void* GetVirtualTable(CModule* module, const std::string& name)
     // Linux RTTI format: "17CNavPhysicsInterface" etc.
     std::string decoratedTableName = std::to_string(name.length()) + name;
 
-    SignatureIterator sigIt(readOnlyData->m_pBase, readOnlyData->m_iSize,
-                                                         (const byte*)decoratedTableName.c_str(),
-                                                         decoratedTableName.size() + 1);
+    SignatureIterator sigIt(readOnlyData->m_pBase, readOnlyData->m_iSize, (const byte*)decoratedTableName.c_str(),
+                            decoratedTableName.size() + 1);
     void* classNameString = sigIt.FindNext(false);
     if (!classNameString)
     {
@@ -125,8 +119,7 @@ void* GetVirtualTable(CModule* module, const std::string& name)
     }
 
     // Find relocation referencing classNameString
-    SignatureIterator sigIt2(readOnlyRelocations->m_pBase, readOnlyRelocations->m_iSize,
-                                                          (const byte*)&classNameString, sizeof(void*));
+    SignatureIterator sigIt2(readOnlyRelocations->m_pBase, readOnlyRelocations->m_iSize, (const byte*)&classNameString, sizeof(void*));
     void* typeName = sigIt2.FindNext(false);
     if (!typeName)
     {
@@ -140,11 +133,9 @@ void* GetVirtualTable(CModule* module, const std::string& name)
     for (const auto& sectionName : { std::string_view(".data.rel.ro"), std::string_view(".data.rel.ro.local") })
     {
         auto section = module->GetSection(sectionName);
-        if (!section)
-            continue;
+        if (!section) continue;
 
-        SignatureIterator sigIt3(section->m_pBase, section->m_iSize,
-                                                              (const byte*)&typeInfo, sizeof(void*));
+        SignatureIterator sigIt3(section->m_pBase, section->m_iSize, (const byte*)&typeInfo, sizeof(void*));
 
         while (void* vtable = sigIt3.FindNext(false))
         {
@@ -169,8 +160,7 @@ void* GetVirtualTable(CModule* module, const std::string& name)
 void* FindVirtualTable(const char* moduleName, const char* vtableName)
 {
     auto module = GetModuleByName(moduleName);
-    if (module == nullptr)
-        return nullptr;
+    if (module == nullptr) return nullptr;
 
     return GetVirtualTable(module, vtableName);
 }
