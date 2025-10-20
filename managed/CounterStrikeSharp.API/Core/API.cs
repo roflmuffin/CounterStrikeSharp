@@ -1464,7 +1464,7 @@ namespace CounterStrikeSharp.API.Core
             ScriptContext.GlobalScriptContext.Reset();
             ScriptContext.GlobalScriptContext.Push(modulepath);
             ScriptContext.GlobalScriptContext.Push(vtablename);
-            ScriptContext.GlobalScriptContext.SetIdentifier(0xB4A0F13C);
+            ScriptContext.GlobalScriptContext.SetIdentifier(0xEA506CFF);
             ScriptContext.GlobalScriptContext.Invoke();
             ScriptContext.GlobalScriptContext.CheckErrors();
             return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
