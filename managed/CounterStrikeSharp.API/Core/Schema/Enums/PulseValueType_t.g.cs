@@ -39,5 +39,6 @@ public enum PulseValueType_t : uint
 	PVAL_TEST_HANDLE = 0x1B,
 	PVAL_ARRAY = 0x1C,
 	PVAL_TYPESAFE_INT64 = 0x1D,
-	PVAL_COUNT = 0x1E,
+	PVAL_PARTICLE_EHANDLE = 0x1E,
+	PVAL_COUNT = 0x1F,
 }

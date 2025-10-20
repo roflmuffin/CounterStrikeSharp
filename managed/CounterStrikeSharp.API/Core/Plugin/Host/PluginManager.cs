@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Loader;
@@ -35,6 +36,17 @@ public class PluginManager : IPluginManager
         var loader = PluginLoader.CreateFromAssemblyFile(path, new[] { typeof(IPlugin), typeof(PluginCapability<>), typeof(PlayerCapability<>) },
             config => { config.PreferSharedTypes = true; });
         var assembly = loader.LoadDefaultAssembly();
+
+        if (CoreConfig.PluginResolveNugetPackages)
+        {
+            foreach (var assemblyName in assembly.GetReferencedAssemblies())
+            {
+                if (TryLoadDependency(path, assembly.GetName().Name, assemblyName, out var dependency))
+                {
+                    _sharedAssemblies.TryAdd(dependency.GetName().Name, dependency);
+                }
+            }
+        }
 
         _sharedAssemblies[assembly.GetName().Name] = assembly;
     }
@@ -74,6 +86,11 @@ public class PluginManager : IPluginManager
 
             if (!_sharedAssemblies.TryGetValue(name.Name, out var assembly))
             {
+                if (CoreConfig.PluginResolveNugetPackages && TryLoadExternalLibrary(name, out assembly))
+                {
+                    return assembly;
+                }
+
                 return null;
             }
 
@@ -108,6 +125,57 @@ public class PluginManager : IPluginManager
         }
     }
 
+    private bool TryLoadExternalLibrary(AssemblyName assemblyName, out Assembly? assembly)
+    {
+        assembly = null;
+        if (!TryResolveReflectionAssemblyPath(out var pluginName, out var pluginPath))
+        {
+            return false;
+        }
+
+        if (!TryLoadDependency(pluginPath, pluginName, assemblyName, out assembly))
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    private bool TryLoadDependency(string pluginAssemblyPath,
+        string pluginAssemblyName,
+        AssemblyName dependencyAssemblyName,
+        out Assembly? assembly)
+    {
+        assembly = null;
+
+        var dependencyName = dependencyAssemblyName.Name!;
+        if (string.IsNullOrEmpty(pluginAssemblyPath) || _sharedAssemblies.ContainsKey(dependencyName))
+        {
+            return false;
+        }
+
+        var resolver = new PluginContextNuGetDependencyResolver(
+            rootAssemblyName: pluginAssemblyName,
+            rootAssemblyPath: Path.GetDirectoryName(pluginAssemblyPath)!,
+            assemblyName: dependencyAssemblyName);
+
+        var dependencyPath = resolver.ResolvePath();
+        if (string.IsNullOrWhiteSpace(dependencyPath))
+        {
+            return false;
+        }
+
+        var loader = PluginLoader.CreateFromAssemblyFile(dependencyPath, configure: c =>
+        {
+            c.PreferSharedTypes = true;
+        });
+
+        assembly = loader.LoadDefaultAssembly();
+        _sharedAssemblies[dependencyAssemblyName.Name!] = assembly;
+
+        return true;
+    }
+
     public IEnumerable<PluginContext> GetLoadedPlugins()
     {
         return _loadedPluginContexts;
@@ -121,6 +189,29 @@ public class PluginManager : IPluginManager
         plugin.Load();
     }
 
+    private static bool TryResolveReflectionAssemblyPath(out string? assemblyName, out string? assemblyPath)
+    {
+        assemblyPath = null;
+        assemblyName = null;
+
+        if (AssemblyLoadContext.CurrentContextualReflectionContext is var reflectionContext && reflectionContext is null)
+        {
+            return false;
+        }
+
+        var mainAssemblyPathField = reflectionContext
+            .GetType()
+            .GetField("_mainAssemblyPath", BindingFlags.NonPublic | BindingFlags.Instance);
+
+        if (mainAssemblyPathField is null)
+        {
+            return false;
+        }
+
+        assemblyPath = (string)mainAssemblyPathField.GetValue(reflectionContext)!;
+        return !string.IsNullOrEmpty(assemblyPath);
+    }
+    
     private string[] GetPluginsAssemblyPaths()
     {
         // Skip "disabled" at root level

@@ -11,17 +11,79 @@
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
+ *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#define private public
 #include "core/log.h"
 #include "scripting/autonative.h"
 #include "scripting/script_engine.h"
 
+// ---- Flag setter compatible with various SDKs ----
+template <typename T>
+concept HasAddClear = requires(T* t, uint64_t f) {
+    t->AddFlags(f);
+    t->ClearFlags(f);
+};
+
+template <typename T>
+concept HasAddRemove = requires(T* t, uint64_t f) {
+    t->AddFlags(f);
+    t->RemoveFlags(f);
+};
+
+template <typename T>
+concept HasSetFlagBit = requires(T* t, uint64_t f) {
+    t->SetFlag(f, true);
+    t->SetFlag(f, false);
+};
+
+template <typename T> void SetAllFlagsCompat(T* data, uint64_t desired)
+{
+    uint64_t cur = data->GetFlags();
+    uint64_t add = desired & ~cur;
+    uint64_t rem = cur & ~desired;
+
+    if constexpr (HasAddClear<T>)
+    {
+        if (add) data->AddFlags(add);
+        if (rem) data->ClearFlags(rem);
+    }
+    else if constexpr (HasAddRemove<T>)
+    {
+        if (add) data->AddFlags(add);
+        if (rem) data->RemoveFlags(rem);
+    }
+    else if constexpr (HasSetFlagBit<T>)
+    {
+        // Fallback: set/clear bitwise
+        for (int i = 0; i < 64; i)
+        {
+            uint64_t bit = (1ULL << i);
+            bool want = (desired & bit) != 0;
+            data->SetFlag(bit, want);
+        }
+    }
+    else
+    {
+        static_assert(sizeof(T) == 0, "ConVarData hat keine passende Flags-API (Add/Clear/Remove/SetFlag).");
+    }
+}
+// ------------------------------------------------------
+
+// First STL/SPDLOG, then SDK with the hack – and clean up immediately afterwards
+#ifdef private
+#undef private
+#endif
+#ifdef protected
+#undef protected
+#endif
+#define private public
 #include <eiface.h>
 #include <convar.h>
 #undef private
+#ifdef protected
+#undef protected
+#endif
 
 namespace counterstrikesharp {
 
@@ -37,7 +99,7 @@ static void SetConvarFlags(ScriptContext& script_context)
     }
 
     auto flags = script_context.GetArgument<uint64_t>(1);
-    ref.GetConVarData()->m_nFlags = flags;
+    SetAllFlagsCompat(ref.GetConVarData(), flags);
 }
 
 static void GetConvarFlags(ScriptContext& script_context)
@@ -51,7 +113,7 @@ static void GetConvarFlags(ScriptContext& script_context)
         return;
     }
 
-    script_context.SetResult(ref.GetConVarData()->m_nFlags);
+    script_context.SetResult(ref.GetConVarData()->GetFlags());
 }
 
 static void GetConvarType(ScriptContext& script_context)
@@ -406,8 +468,6 @@ static void CreateConVar(ScriptContext& script_context)
     auto flags = script_context.GetArgument<uint64_t>(3);
     auto hasMin = script_context.GetArgument<bool>(4);
     auto hasMax = script_context.GetArgument<bool>(5);
-
-    // default, min, max is 6,7,8
 
     ConVarRefAbstract cvar(name);
     if (cvar.IsValidRef())

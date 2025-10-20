@@ -8,6 +8,7 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum PreviewEOMCelebration : uint
 {
+	INVALID = 0xFFFFFFFF,
 	WALKUP = 0x0,
 	PUNCHING = 0x1,
 	SWAGGER = 0x2,
