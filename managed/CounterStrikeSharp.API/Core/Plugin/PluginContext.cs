@@ -279,6 +279,19 @@ namespace CounterStrikeSharp.API.Core.Plugin
             }
             finally
             {
+                if (!hotReload)
+                {
+                    try
+                    {
+                        Capabilities.Capabilities.UnregisterAll(Plugin.GetType().Assembly);
+                        _logger.LogInformation("Removed all capabilities for unloaded plugin {Name}", Plugin.ModuleName);
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogWarning(ex, "Failed to unregister capabilities for plugin {Name}", Plugin.ModuleName);
+                    }
+                }
+
                 Plugin.Dispose();
                 _serviceScope.Dispose();
             }
