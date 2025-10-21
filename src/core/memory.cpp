@@ -82,8 +82,7 @@ void* GetVirtualTable(CModule* module, const std::string& name)
         void* vtable = sigIt3.FindNext(false);
         if (!vtable)
         {
-            CSSHARP_CORE_ERROR("Failed to find vtable for {}", name
-                );
+            CSSHARP_CORE_ERROR("Failed to find vtable for {}", name);
             return nullptr;
         }
 
