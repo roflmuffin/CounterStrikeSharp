@@ -122,7 +122,7 @@ namespace CounterStrikeSharp.API.Core
 			{
 				fixed (fxScriptContext* cxt = &m_extContext)
 				{
-					Helpers.InvokeNative(new IntPtr(cxt));
+					NativeBridge.InvokeNative(new IntPtr(cxt));
 				}
 			}
 		}
