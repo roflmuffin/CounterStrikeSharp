@@ -187,7 +187,13 @@ namespace CounterStrikeSharp.API.Core
                         // If our argument doesn't end in ".dll" - try and construct a path similar to PluginName/PluginName.dll.
                         // We'll assume we have a full path if we have ".dll".
                         var path = info.GetArg(2);
-                        path = Path.Combine(_scriptHostConfiguration.RootPath, !path.EndsWith(".dll") ? $"plugins/{path}/{path}.dll" : path);
+
+                        path = Path.Combine(
+                            _scriptHostConfiguration.RootPath,
+                            !path.EndsWith(".dll")
+                                ? $"plugins/{path}/{Path.GetFileName(path)}.dll"
+                                : path
+                        );
 
                         var plugin = _pluginContextQueryHandler.FindPluginByModulePath(path);
 
