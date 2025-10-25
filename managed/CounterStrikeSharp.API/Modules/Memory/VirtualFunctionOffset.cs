@@ -25,12 +25,66 @@ namespace CounterStrikeSharp.API.Modules.Memory
 {
     public partial class VirtualFunction
     {
-        private static IntPtr CreateVirtualFunction(IntPtr objectPtr, int offset, IEnumerable<DataType> argumentTypes,
-            DataType returnType,
-            object[] arguments)
+        #region Void Cache
+
+        private const int PRIME_ONE = 31;
+        private const int PRIME_TWO = 397;
+        
+        [method: MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private readonly struct Cache(IntPtr address, int offset, int hash)
         {
-            return NativeAPI.CreateVirtualFunction(objectPtr, offset,
-                argumentTypes.Count(), (int)returnType, arguments);
+            private readonly IntPtr _address = address;
+            private readonly int _offset = offset;
+            private readonly int _hash = hash;
+        }
+        
+        private static readonly ConcurrentDictionary<Cache, IntPtr> _cache = new();
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private static int CreateHash(DataType[] argumentTypes, DataType returnType)
+        {
+            unchecked
+            {
+                var hash = (int)returnType * PRIME_ONE;
+        
+                for (var i = 0; i < argumentTypes.Length; i++)
+                {
+                    hash = (hash * PRIME_TWO) + (int)argumentTypes[i];
+                }
+        
+                return hash;
+            }
+        }
+        
+        #endregion
+        
+        [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+        private static IntPtr CreateVirtualFunction(
+            IntPtr objectPtr,
+            int offset,
+            IEnumerable<DataType> argumentTypes,
+            DataType returnType,
+            object[] arguments
+        )
+        {
+            var args = argumentTypes as DataType[] ?? [.. argumentTypes];
+            var hash = CreateHash(args, returnType);
+        
+            unsafe
+            {
+                IntPtr** tablePtr = *(IntPtr***)(IntPtr*)objectPtr;
+                var cache = new Cache(*tablePtr[offset], offset, hash);
+        
+                if (_cache.TryGetValue(cache, out var cachePtr))
+                {
+                    return cachePtr;
+                }
+        
+                var funcPtr = NativeAPI.CreateVirtualFunction(objectPtr, offset, args.Length, (int)returnType, arguments);
+                _cache[cache] = funcPtr;
+        
+                return funcPtr;
+            }
         }
 
         #region Void Actions
