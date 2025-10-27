@@ -1,3 +1,8 @@
+## What's Changed in v1.0.344
+* chore(schema): update schema to latest ([f505405](https://github.com/roflmuffin/CounterStrikeSharp/commit/f50540583d079a6cf546ca590147905ba5eb2c83))
+* fix(schema): allow for negative enum values in source schema file ([97957f6](https://github.com/roflmuffin/CounterStrikeSharp/commit/97957f62208fa782f89e9629ddde1944aaadd149))
+* chore: update devcontainer location ([0c2f1cd](https://github.com/roflmuffin/CounterStrikeSharp/commit/0c2f1cd078c0c54a6cf1fb402082b3f38c6303d2))
+
 ## What's Changed in v1.0.343
 * feat: add `BuyWithCtrl` to `AcquireMethod` enum by [@NockyCZ](https://github.com/NockyCZ) in [#697](https://github.com/roflmuffin/CounterStrikeSharp/pull/697) ([7be3294](https://github.com/roflmuffin/CounterStrikeSharp/commit/7be329466ad7d40a92608e7d6c4e2c6cd1a05a3c))
 * fix: update ConVar flag retrieval that adapts to different Source 2 SDK versions by [@Matlord93](https://github.com/Matlord93) in [#1059](https://github.com/roflmuffin/CounterStrikeSharp/pull/1059) ([a21f0b5](https://github.com/roflmuffin/CounterStrikeSharp/commit/a21f0b5277541434fa71f595d7c0c420305e9a50))
