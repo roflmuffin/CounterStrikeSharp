@@ -5,7 +5,6 @@
  */
 
 using System.Collections.Immutable;
-using System.Diagnostics;
 using System.Text;
 using System.Text.Json;
 using QuickGraph;
@@ -77,8 +76,8 @@ internal static partial class Program
     public static void Main(string[] args)
     {
         var outputPath =
-            args.SingleOrDefault() ??
-            throw new Exception("Expected a single CLI argument: <output path .cs>");
+            args.FirstOrDefault() ??
+            "../CounterStrikeSharp.API/Core/Schema";
 
         // Concat together all enums and classes
         var allEnums = new SortedDictionary<string, SchemaEnum>();
@@ -199,6 +198,7 @@ internal static partial class Program
 
         // Manually whitelist some classes
         visited.Add("CTakeDamageInfo");
+        visited.Add("CTakeDamageResult");
         visited.Add("CEntitySubclassVDataBase");
         visited.Add("CFiringModeFloat");
         visited.Add("CFiringModeInt");
@@ -302,7 +302,8 @@ internal static partial class Program
                 if (IgnoreClasses.Contains(field.Type.Inner!.Name)) continue;
             }
 
-            var requiresNewKeyword = parentFields.Any(x => x.clazz.CsPropertyNameForField(x.clazz.Name, x.field) == schemaClass.CsPropertyNameForField(schemaClassName, field));
+            var requiresNewKeyword = parentFields.Any(x =>
+                x.clazz.CsPropertyNameForField(x.clazz.Name, x.field) == schemaClass.CsPropertyNameForField(schemaClassName, field));
 
             var handleParams = $"this.Handle, \"{schemaClassName}\", \"{field.Name}\"";
 
@@ -314,7 +315,7 @@ internal static partial class Program
                 var getter = $"return Schema.GetString({handleParams});";
                 var setter = $"Schema.SetString({handleParams}, value{(field.Type.ArraySize != null ? ", " + field.Type.ArraySize : "")});";
                 builder.AppendLine(
-                    $"\tpublic {(requiresNewKeyword ? "new ": "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)}");
+                    $"\tpublic {(requiresNewKeyword ? "new " : "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)}");
                 builder.AppendLine($"\t{{");
                 builder.AppendLine(
                     $"\t\tget {{ {getter} }}");
@@ -329,7 +330,7 @@ internal static partial class Program
                 var getter = $"return Schema.GetString({handleParams});";
                 var setter = $"Schema.SetStringBytes({handleParams}, value, {field.Type.ArraySize});";
                 builder.AppendLine(
-                    $"\tpublic {(requiresNewKeyword ? "new ": "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)}");
+                    $"\tpublic {(requiresNewKeyword ? "new " : "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)}");
                 builder.AppendLine($"\t{{");
                 builder.AppendLine(
                     $"\t\tget {{ {getter} }}");
@@ -344,7 +345,7 @@ internal static partial class Program
                 var getter = $"return Schema.GetUtf8String({handleParams});";
                 var setter = $"Schema.SetString({handleParams}, value);";
                 builder.AppendLine(
-                    $"\tpublic {(requiresNewKeyword ? "new ": "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)}");
+                    $"\tpublic {(requiresNewKeyword ? "new " : "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)}");
                 builder.AppendLine($"\t{{");
                 builder.AppendLine(
                     $"\t\tget {{ {getter} }}");
@@ -358,7 +359,7 @@ internal static partial class Program
                 var getter =
                     $"Schema.GetFixedArray<{SanitiseTypeName(field.Type.Inner!.CsTypeName)}>({handleParams}, {field.Type.ArraySize});";
                 builder.AppendLine(
-                    $"\tpublic {(requiresNewKeyword ? "new ": "")}Span<{SanitiseTypeName(field.Type.Inner!.CsTypeName)}> {schemaClass.CsPropertyNameForField(schemaClassName, field)} => {getter}");
+                    $"\tpublic {(requiresNewKeyword ? "new " : "")}Span<{SanitiseTypeName(field.Type.Inner!.CsTypeName)}> {schemaClass.CsPropertyNameForField(schemaClassName, field)} => {getter}");
                 builder.AppendLine();
             }
             else if (field.Type.Category == SchemaTypeCategory.DeclaredClass &&
@@ -366,7 +367,7 @@ internal static partial class Program
             {
                 var getter = $"Schema.GetDeclaredClass<{SanitiseTypeName(field.Type.CsTypeName)}>({handleParams});";
                 builder.AppendLine(
-                    $"\tpublic {(requiresNewKeyword ? "new ": "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)} => {getter}");
+                    $"\tpublic {(requiresNewKeyword ? "new " : "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)} => {getter}");
                 builder.AppendLine();
             }
             else if ((field.Type.Category == SchemaTypeCategory.Builtin ||
@@ -375,7 +376,7 @@ internal static partial class Program
             {
                 var getter = $"ref Schema.GetRef<{SanitiseTypeName(field.Type.CsTypeName)}>({handleParams});";
                 builder.AppendLine(
-                    $"\tpublic {(requiresNewKeyword ? "new ": "")}ref {SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)} => {getter}");
+                    $"\tpublic {(requiresNewKeyword ? "new " : "")}ref {SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)} => {getter}");
                 builder.AppendLine();
             }
             else if (field.Type.Category == SchemaTypeCategory.Ptr)
@@ -384,7 +385,7 @@ internal static partial class Program
                 if (inner.Category != SchemaTypeCategory.DeclaredClass) continue;
 
                 builder.AppendLine(
-                    $"\tpublic {(requiresNewKeyword ? "new ": "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)} => Schema.GetPointer<{SanitiseTypeName(inner.CsTypeName)}>({handleParams});");
+                    $"\tpublic {(requiresNewKeyword ? "new " : "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)} => Schema.GetPointer<{SanitiseTypeName(inner.CsTypeName)}>({handleParams});");
                 builder.AppendLine();
             }
             else if (field.Type is { Category: SchemaTypeCategory.Atomic, Name: "Color" })
@@ -392,7 +393,7 @@ internal static partial class Program
                 var getter = $"return Schema.GetCustomMarshalledType<{field.Type.CsTypeName}>({handleParams});";
                 var setter = $"Schema.SetCustomMarshalledType<{field.Type.CsTypeName}>({handleParams}, value);";
                 builder.AppendLine(
-                    $"\tpublic {(requiresNewKeyword ? "new ": "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)}");
+                    $"\tpublic {(requiresNewKeyword ? "new " : "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)}");
                 builder.AppendLine($"\t{{");
                 builder.AppendLine(
                     $"\t\tget {{ {getter} }}");
@@ -405,7 +406,7 @@ internal static partial class Program
             {
                 var getter = $"Schema.GetDeclaredClass<{SanitiseTypeName(field.Type.CsTypeName)}>({handleParams});";
                 builder.AppendLine(
-                    $"\tpublic {(requiresNewKeyword ? "new ": "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)} => {getter}");
+                    $"\tpublic {(requiresNewKeyword ? "new " : "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)} => {getter}");
                 builder.AppendLine();
             }
         }
@@ -435,20 +436,28 @@ internal static partial class Program
         builder.AppendLine($"public enum {SanitiseTypeName(enumName)} : {EnumType(schemaEnum.Align)}");
         builder.AppendLine("{");
 
-        var maxValue = schemaEnum.Align switch
-        {
-            1 => byte.MaxValue,
-            2 => ushort.MaxValue,
-            4 => uint.MaxValue,
-            8 => ulong.MaxValue,
-            _ => throw new ArgumentOutOfRangeException()
-        };
-
         // Write enum items
         foreach (var enumItem in schemaEnum.Items)
         {
-            var value = enumItem.Value < maxValue ? enumItem.Value : maxValue;
-            builder.AppendLine($"\t{enumItem.Name} = 0x{value:X},");
+            string value;
+            if (schemaEnum.Align == 8)
+            {
+                value = unchecked((ulong)enumItem.Value).ToString("X");
+            }
+            else if (schemaEnum.Align == 4)
+            {
+                value = unchecked((uint)enumItem.Value).ToString("X");
+            }
+            else if (schemaEnum.Align == 2)
+            {
+                value = unchecked((ushort)enumItem.Value).ToString("X");
+            }
+            else
+            {
+                value = unchecked((byte)enumItem.Value).ToString("X");
+            }
+
+            builder.AppendLine($"\t{enumItem.Name} = 0x{value},");
         }
 
         builder.AppendLine("}");
