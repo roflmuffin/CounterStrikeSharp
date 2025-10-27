@@ -44,7 +44,142 @@ internal static partial class Program
         "Unknown"
     };
 
-    public static string SanitiseTypeName(string typeName) => typeName.Replace(":", "");
+    public static string SanitiseTypeName(string typeName) =>
+        typeName.Replace(":", "")
+            .Replace("< ", "<")
+            .Replace(" >", ">");
+
+    private static (Dictionary<string, SchemaEnum>, Dictionary<string, SchemaClass>) ConvertNewSchemaToOld(NewSchemaModule newSchema)
+    {
+        var enums = new Dictionary<string, SchemaEnum>();
+        var classes = new Dictionary<string, SchemaClass>();
+
+        var defLookup = newSchema.defs.Select((def, idx) => new { def, idx }).ToDictionary(x => x.idx, x => x.def);
+
+        for (int i = 0; i < newSchema.defs.Length; i++)
+        {
+            var def = newSchema.defs[i];
+            if (def.type == "enum" && def.traits?.fields != null)
+            {
+                var enumItems = def.traits.fields.Select(f => new SchemaEnumItem(f.name, f.value)).ToList();
+                enums[def.name] = new SchemaEnum(def.alignment ?? 4, enumItems);
+            }
+        }
+
+        for (int i = 0; i < newSchema.defs.Length; i++)
+        {
+            var def = newSchema.defs[i];
+            if (def.type == "class" && def.traits != null)
+            {
+                string? parentName = null;
+
+                if (def.traits.baseclasses != null && def.traits.baseclasses.Length > 0)
+                {
+                    var parentIdx = def.traits.baseclasses[0].ref_idx;
+                    if (defLookup.TryGetValue(parentIdx, out var parentDef))
+                    {
+                        parentName = parentDef.name;
+                    }
+                }
+
+                var fields = new List<SchemaField>();
+
+                if (def.traits.members != null)
+                {
+                    foreach (var member in def.traits.members)
+                    {
+                        if (member.traits?.subtype != null)
+                        {
+                            var fieldType = ConvertSubtypeToFieldType(member.traits.subtype, defLookup);
+                            var metadata = member.traits.metatags?.ToDictionary(m => m.name, m => m.value ?? "") ??
+                                           new Dictionary<string, string>();
+                            fields.Add(new SchemaField(member.name, fieldType, metadata));
+                        }
+                    }
+                }
+
+                classes[def.name] = new SchemaClass(i, def.name, parentName, fields);
+            }
+        }
+
+        return (enums, classes);
+    }
+
+    private static SchemaFieldType ConvertSubtypeToFieldType(SchemaSubtype subtype, Dictionary<int, SchemaDef> defLookup)
+    {
+        if (subtype.type == "ref" && subtype.ref_idx.HasValue)
+        {
+            if (defLookup.TryGetValue(subtype.ref_idx.Value, out var referencedDef))
+            {
+                return ConvertSubtypeToFieldType(new SchemaSubtype(
+                    referencedDef.type == "class"
+                        ? "declared_class"
+                        : (referencedDef.type == "enum" ? "declared_enum" : referencedDef.type),
+                    referencedDef.name,
+                    referencedDef.size,
+                    referencedDef.alignment,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ), defLookup);
+            }
+        }
+
+        SchemaTypeCategory category = subtype.type switch
+        {
+            "builtin" => SchemaTypeCategory.Builtin,
+            "atomic" => SchemaTypeCategory.Atomic,
+            "ptr" => SchemaTypeCategory.Ptr,
+            "fixed_array" => SchemaTypeCategory.FixedArray,
+            "declared_class" => SchemaTypeCategory.DeclaredClass,
+            "declared_enum" => SchemaTypeCategory.DeclaredEnum,
+            "bitfield" => SchemaTypeCategory.Bitfield,
+            _ => SchemaTypeCategory.None
+        };
+
+        SchemaAtomicCategory? atomic = null;
+        if (subtype.type == "atomic" && subtype.name != null)
+        {
+            if (subtype.name.Contains("CUtlVector") || subtype.name.Contains("CNetworkUtlVectorBase"))
+            {
+                atomic = SchemaAtomicCategory.Collection;
+            }
+            else if (subtype.name.Contains("CHandle") || subtype.name.Contains("CWeakHandle"))
+            {
+                atomic = SchemaAtomicCategory.T;
+            }
+            else
+            {
+                atomic = SchemaAtomicCategory.Basic;
+            }
+        }
+
+        SchemaFieldType? innerType = null;
+
+        if (subtype.template != null && subtype.template.Length > 0)
+        {
+            innerType = ConvertSubtypeToFieldType(subtype.template[0], defLookup);
+        }
+        else if (subtype.subtype != null)
+        {
+            innerType = ConvertSubtypeToFieldType(subtype.subtype, defLookup);
+        }
+
+        string typeName = subtype.name ?? "unknown";
+        if (category == SchemaTypeCategory.FixedArray && subtype.count.HasValue && innerType != null)
+        {
+            typeName = $"{innerType.Name}[{subtype.count.Value}]";
+        }
+
+        return new SchemaFieldType(
+            typeName,
+            category,
+            atomic,
+            innerType
+        );
+    }
 
     private static StringBuilder GetTemplate(bool includeUsings)
     {
@@ -89,16 +224,18 @@ internal static partial class Program
         {
             var schemaPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Schema", schemaFile);
 
-            var schema = JsonSerializer.Deserialize<SchemaModule>(
+            var newSchema = JsonSerializer.Deserialize<NewSchemaModule>(
                 File.ReadAllText(schemaPath),
                 SerializerOptions)!;
 
-            foreach (var (enumName, schemaEnum) in schema.Enums)
+            var (enums, classes) = ConvertNewSchemaToOld(newSchema);
+
+            foreach (var (enumName, schemaEnum) in enums)
             {
                 allEnums[enumName] = schemaEnum;
             }
 
-            foreach (var (className, schemaClass) in schema.Classes)
+            foreach (var (className, schemaClass) in classes)
             {
                 if (IgnoreClasses.Contains(className))
                     continue;
@@ -208,7 +345,6 @@ internal static partial class Program
         visited.Add("CNavLinkAnimgraphVar");
         visited.Add("DecalGroupOption_t");
         visited.Add("DestructibleHitGroupToDestroy_t");
-
 
         var classBuilder = GetTemplate(true);
 
