@@ -66,6 +66,10 @@ public partial class CCSGameRules : CTeamplayRules
 	[SchemaMember("CCSGameRules", "m_bMatchWaitingForResume")]
 	public ref bool MatchWaitingForResume => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bMatchWaitingForResume");
 
+	// m_iFreezeTime
+	[SchemaMember("CCSGameRules", "m_iFreezeTime")]
+	public ref Int32 FreezeTime => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iFreezeTime");
+
 	// m_iRoundTime
 	[SchemaMember("CCSGameRules", "m_iRoundTime")]
 	public ref Int32 RoundTime => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iRoundTime");
@@ -349,10 +353,6 @@ public partial class CCSGameRules : CTeamplayRules
 	// m_endMatchOnThink
 	[SchemaMember("CCSGameRules", "m_endMatchOnThink")]
 	public ref bool EndMatchOnThink => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_endMatchOnThink");
-
-	// m_iFreezeTime
-	[SchemaMember("CCSGameRules", "m_iFreezeTime")]
-	public ref Int32 FreezeTime => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iFreezeTime");
 
 	// m_iNumTerrorist
 	[SchemaMember("CCSGameRules", "m_iNumTerrorist")]

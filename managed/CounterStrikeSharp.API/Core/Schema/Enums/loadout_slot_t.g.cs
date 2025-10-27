@@ -8,7 +8,7 @@ namespace CounterStrikeSharp.API.Core;
 
 public enum loadout_slot_t : uint
 {
-	LOADOUT_SLOT_PROMOTED = 0xFFFFFFFF,
+	LOADOUT_SLOT_PROMOTED = 0xFFFFFFFE,
 	LOADOUT_SLOT_INVALID = 0xFFFFFFFF,
 	LOADOUT_SLOT_MELEE = 0x0,
 	LOADOUT_SLOT_C4 = 0x1,

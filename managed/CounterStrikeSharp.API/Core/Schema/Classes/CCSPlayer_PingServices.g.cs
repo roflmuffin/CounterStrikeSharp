@@ -24,6 +24,6 @@ public partial class CCSPlayer_PingServices : CPlayerPawnComponent
 
 	// m_hPlayerPing
 	[SchemaMember("CCSPlayer_PingServices", "m_hPlayerPing")]
-	public CHandle<CBaseEntity> PlayerPing => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSPlayer_PingServices", "m_hPlayerPing");
+	public CHandle<CPlayerPing> PlayerPing => Schema.GetDeclaredClass<CHandle<CPlayerPing>>(this.Handle, "CCSPlayer_PingServices", "m_hPlayerPing");
 
 }

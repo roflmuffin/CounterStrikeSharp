@@ -26,6 +26,10 @@ public partial class CTakeDamageResult : NativeObject
 	[SchemaMember("CTakeDamageResult", "m_nHealthLost")]
 	public ref Int32 HealthLost => ref Schema.GetRef<Int32>(this.Handle, "CTakeDamageResult", "m_nHealthLost");
 
+	// m_nHealthBefore
+	[SchemaMember("CTakeDamageResult", "m_nHealthBefore")]
+	public ref Int32 HealthBefore => ref Schema.GetRef<Int32>(this.Handle, "CTakeDamageResult", "m_nHealthBefore");
+
 	// m_nDamageDealt
 	[SchemaMember("CTakeDamageResult", "m_nDamageDealt")]
 	public ref Int32 DamageDealt => ref Schema.GetRef<Int32>(this.Handle, "CTakeDamageResult", "m_nDamageDealt");
