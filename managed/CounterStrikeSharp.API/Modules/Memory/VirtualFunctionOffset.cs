@@ -14,10 +14,8 @@
  *  along with CounterStrikeSharp.  If not, see <https://www.gnu.org/licenses/>. *
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using CounterStrikeSharp.API.Core;
+using System.Collections.Concurrent;
+using System.Runtime.CompilerServices;
 
 #pragma warning disable CS8601 // Possible null reference assignment.
 
@@ -25,40 +23,69 @@ namespace CounterStrikeSharp.API.Modules.Memory
 {
     public partial class VirtualFunction
     {
-        #region Void Cache
+        #region Cache
 
-        private const int PRIME_ONE = 31;
-        private const int PRIME_TWO = 397;
-        
+        private const int PRIME = 397;
+
         [method: MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private readonly struct Cache(IntPtr address, int offset, int hash)
+        private readonly struct Cache(IntPtr address, int hash) : IEquatable<Cache>
         {
             private readonly IntPtr _address = address;
-            private readonly int _offset = offset;
             private readonly int _hash = hash;
+
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            public bool Equals(Cache other)
+            {
+                return _hash == other._hash
+                    && _address == other._address;
+            }
+
+            public override bool Equals(object? obj)
+            {
+                return obj is Cache other && Equals(other);
+            }
+
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            public override int GetHashCode()
+            {
+                return _hash;
+            }
+
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            public static bool operator ==(Cache left, Cache right)
+            {
+                return left.Equals(right);
+            }
+
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            public static bool operator !=(Cache left, Cache right)
+            {
+                return !left.Equals(right);
+            }
         }
-        
+
         private static readonly ConcurrentDictionary<Cache, IntPtr> _cache = new();
-        
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static int CreateHash(DataType[] argumentTypes, DataType returnType)
+        private static int CreateHash(int offset, DataType[] argumentTypes, DataType returnType)
         {
             unchecked
             {
-                var hash = (int)returnType * PRIME_ONE;
-        
+                var hash = offset * PRIME;
+                hash = (hash * PRIME) ^ (int)returnType;
+
                 for (var i = 0; i < argumentTypes.Length; i++)
                 {
-                    hash = (hash * PRIME_TWO) + (int)argumentTypes[i];
+                    hash = (hash * PRIME) ^ (int)argumentTypes[i];
                 }
-        
+
                 return hash;
             }
         }
-        
+
         #endregion
-        
-        [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         private static IntPtr CreateVirtualFunction(
             IntPtr objectPtr,
             int offset,
@@ -68,21 +95,21 @@ namespace CounterStrikeSharp.API.Modules.Memory
         )
         {
             var args = argumentTypes as DataType[] ?? [.. argumentTypes];
-            var hash = CreateHash(args, returnType);
-        
+            var hash = CreateHash(offset, args, returnType);
+
             unsafe
             {
                 IntPtr** tablePtr = *(IntPtr***)(IntPtr*)objectPtr;
-                var cache = new Cache(*tablePtr[offset], offset, hash);
-        
+                var cache = new Cache(*tablePtr[offset], hash);
+
                 if (_cache.TryGetValue(cache, out var cachePtr))
                 {
                     return cachePtr;
                 }
-        
+
                 var funcPtr = NativeAPI.CreateVirtualFunction(objectPtr, offset, args.Length, (int)returnType, arguments);
                 _cache[cache] = funcPtr;
-        
+
                 return funcPtr;
             }
         }
