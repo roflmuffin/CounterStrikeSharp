@@ -20,11 +20,14 @@
  */
 
 #include "gameconfig.h"
+#include "log.h"
 #include "memory_module.h"
+
+using namespace counterstrikesharp::modules;
 
 void* FindSignature(const char* moduleName, const char* bytesStr)
 {
-    auto module = counterstrikesharp::modules::GetModuleByName(moduleName);
+    auto module = GetModuleByName(moduleName);
     if (module == nullptr)
     {
         return nullptr;
@@ -35,7 +38,7 @@ void* FindSignature(const char* moduleName, const char* bytesStr)
 
 void* FindVirtualTable(const char* moduleName, const char* vtableName)
 {
-    auto module = counterstrikesharp::modules::GetModuleByName(moduleName);
+    auto module = GetModuleByName(moduleName);
     if (module == nullptr)
     {
         return nullptr;
