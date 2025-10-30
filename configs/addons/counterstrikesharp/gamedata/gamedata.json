@@ -92,7 +92,7 @@
     "signatures": {
       "library": "server",
       "windows": "48 89 5C 24 ? 57 48 83 EC ? 33 FF 4C 8B CA 8B D9",
-      "linux": "55 31 D2 48 89 E5 41 57 41 56 41 55 41 54 41 89 FC"
+      "linux": "55 31 D2 48 89 E5 41 56 41 55 41 54"
     }
   },
   "CCSPlayer_ItemServices_GiveNamedItem": {

@@ -38,4 +38,8 @@ public partial class CRetakeGameRules : NativeObject
 	[SchemaMember("CRetakeGameRules", "m_iBombSite")]
 	public ref Int32 BombSite => ref Schema.GetRef<Int32>(this.Handle, "CRetakeGameRules", "m_iBombSite");
 
+	// m_hBombPlanter
+	[SchemaMember("CRetakeGameRules", "m_hBombPlanter")]
+	public CHandle<CCSPlayerPawn> BombPlanter => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CRetakeGameRules", "m_hBombPlanter");
+
 }

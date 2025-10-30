@@ -38,6 +38,10 @@ public partial class CPropDoorRotating : CBasePropDoor
 	[SchemaMember("CPropDoorRotating", "m_eCurrentOpenDirection")]
 	public ref PropDoorRotatingOpenDirection_e CurrentOpenDirection => ref Schema.GetRef<PropDoorRotatingOpenDirection_e>(this.Handle, "CPropDoorRotating", "m_eCurrentOpenDirection");
 
+	// m_eDefaultCheckDirection
+	[SchemaMember("CPropDoorRotating", "m_eDefaultCheckDirection")]
+	public ref doorCheck_e DefaultCheckDirection => ref Schema.GetRef<doorCheck_e>(this.Handle, "CPropDoorRotating", "m_eDefaultCheckDirection");
+
 	// m_flAjarAngle
 	[SchemaMember("CPropDoorRotating", "m_flAjarAngle")]
 	public ref float AjarAngle => ref Schema.GetRef<float>(this.Handle, "CPropDoorRotating", "m_flAjarAngle");

@@ -2,4 +2,4 @@
 
 public record SchemaEnumItem(
     string Name,
-    ulong Value);
+    long Value);
