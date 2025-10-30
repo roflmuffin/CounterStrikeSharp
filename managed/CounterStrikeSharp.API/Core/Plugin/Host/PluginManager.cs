@@ -74,11 +74,7 @@ public class PluginManager : IPluginManager
 
     public void Load()
     {
-        var pluginDirectories = Directory.GetDirectories(_scriptHostConfiguration.PluginPath);
-        var pluginAssemblyPaths = pluginDirectories
-            .Select(dir => Path.Combine(dir, Path.GetFileName(dir) + ".dll"))
-            .Where(File.Exists)
-            .ToArray();
+        var pluginAssemblyPaths = GetPluginsAssemblyPaths();
 
         AssemblyLoadContext.Default.Resolving += (context, name) =>
         {
@@ -214,5 +210,42 @@ public class PluginManager : IPluginManager
 
         assemblyPath = (string)mainAssemblyPathField.GetValue(reflectionContext)!;
         return !string.IsNullOrEmpty(assemblyPath);
+    }
+    
+    private string[] GetPluginsAssemblyPaths()
+    {
+        // Skip "disabled" at root level
+        var rootSubDirs = Directory.GetDirectories(_scriptHostConfiguration.PluginPath)
+            .Where(d => !Path.GetFileName(d).Equals("disabled", StringComparison.OrdinalIgnoreCase));
+
+        var pluginDirectories = new List<string>();
+
+        foreach (var subDir in rootSubDirs)
+        {
+            var stack = new Stack<string>();
+            stack.Push(subDir);
+
+            while (stack.Count > 0)
+            {
+                var currentDir = stack.Pop();
+                var dirName = Path.GetFileName(currentDir);
+                var expectedDll = Path.Combine(currentDir, dirName + ".dll");
+
+                if (File.Exists(expectedDll))
+                {
+                    pluginDirectories.Add(currentDir);
+                    // Stop scanning deeper in this directory
+                    continue;
+                }
+
+                // Add subdirectories to stack for further scanning
+                foreach (var child in Directory.GetDirectories(currentDir))
+                    stack.Push(child);
+            }
+        }
+
+        return pluginDirectories
+                .Select(d => Path.Combine(d, Path.GetFileName(d) + ".dll"))
+                .ToArray();
     }
 }
