@@ -30,7 +30,7 @@ void* FindSignature(const char* moduleName, const char* bytesStr)
         return nullptr;
     }
 
-    return module->FindSignature(bytesStr);
+    return bytesStr[0] == '@' ? module->FindSymbol(bytesStr + 1) : module->FindSignature(bytesStr);
 }
 
 void* FindVirtualTable(const char* moduleName, const char* vtableName)
