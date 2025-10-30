@@ -19,5 +19,9 @@
     "Target must be dead": "{white}Bu komut yalnızca ölü oyunculara uygulanabilir.",
     "Unable to target": "{white}Bu oyuncu hedeflenemez.",
     "Cannot target bot": "{white}Bu komut bir bota uygulanamaz.",
-    "More than one client matched": "{white}Verilen kalıba birden fazla istemci eşleşti."
+    "More than one client matched": "{white}Verilen kalıba birden fazla istemci eşleşti.",
+
+    "Missing permissions": "{white}Doğru izinlere sahip değilsiniz",
+    "Missing one permission": "{white}Doğru izinlerden birine sahip değilsiniz",
+    "Command permission denied": "[CSS] {0} ({1}) bu komutu çalıştırmak için."
 }
