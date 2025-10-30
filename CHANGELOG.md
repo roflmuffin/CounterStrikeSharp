@@ -1,3 +1,7 @@
+## What's Changed in v1.0.345
+* fix: update linux signature for GetCSWeaponDataFromKey ([b4e83df](https://github.com/roflmuffin/CounterStrikeSharp/commit/b4e83dfb4a1a1723c08ac79ea68da4ab8a0255fd))
+* feat(schema): update schema generator to use @GAMMACASE schema dumper format ([4ff2732](https://github.com/roflmuffin/CounterStrikeSharp/commit/4ff2732d8a55297c18cea6181b9022f56cd8fae3))
+
 ## What's Changed in v1.0.344
 * chore(schema): update schema to latest ([f505405](https://github.com/roflmuffin/CounterStrikeSharp/commit/f50540583d079a6cf546ca590147905ba5eb2c83))
 * fix(schema): allow for negative enum values in source schema file ([97957f6](https://github.com/roflmuffin/CounterStrikeSharp/commit/97957f62208fa782f89e9629ddde1944aaadd149))
