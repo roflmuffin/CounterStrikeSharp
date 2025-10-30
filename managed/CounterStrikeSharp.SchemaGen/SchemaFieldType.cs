@@ -16,9 +16,14 @@ public record SchemaFieldType
         this.Inner = Inner;
 
         // According to dev notes these currently have the same memory layout
-        if (this.Name == "VectorWS")
+        if (this.Name == "VectorWS" || this.Name == "RotationVector")
         {
             this.Name = "Vector";
+        }
+
+        if (this.Name == "Vector" || this.Name == "Quaternion" || this.Name == "QAngle")
+        {
+            this.Category = SchemaTypeCategory.Builtin;
         }
 
         // Kick this can
@@ -86,6 +91,9 @@ public record SchemaFieldType
         "uint64" => "UInt64",
         "bool" => "bool",
         "char" => "char",
+        "Vector" => "Vector3",
+        "Quaternion" => "Quaternion",
+        "QAngle" => "QAngle",
         _ => throw new ArgumentOutOfRangeException(nameof(name), name, $"Unknown built-in: {name}")
     };
 

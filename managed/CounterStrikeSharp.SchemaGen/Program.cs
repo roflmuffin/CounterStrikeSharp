@@ -194,6 +194,7 @@ internal static partial class Program
         {
             builder.AppendLine("using System.Diagnostics;");
             builder.AppendLine("using System.Drawing;");
+            builder.AppendLine("using System.Numerics;");
             builder.AppendLine("using CounterStrikeSharp;");
             builder.AppendLine("using CounterStrikeSharp.API.Modules.Events;");
             builder.AppendLine("using CounterStrikeSharp.API.Modules.Entities;");
@@ -510,9 +511,16 @@ internal static partial class Program
                       field.Type.Category == SchemaTypeCategory.DeclaredEnum) &&
                      !IgnoreClasses.Contains(field.Type.Name))
             {
-                var getter = $"ref Schema.GetRef<{SanitiseTypeName(field.Type.CsTypeName)}>({handleParams});";
+                var getter = $"return Schema.GetValueType<{SanitiseTypeName(field.Type.CsTypeName)}>({handleParams});";
+                var setter = $"Schema.SetValueType<{SanitiseTypeName(field.Type.CsTypeName)}>({handleParams}, value);";
                 builder.AppendLine(
-                    $"\tpublic {(requiresNewKeyword ? "new " : "")}ref {SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)} => {getter}");
+                    $"\tpublic {(requiresNewKeyword ? "new " : "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)}");
+                builder.AppendLine($"\t{{");
+                builder.AppendLine(
+                    $"\t\tget {{ {getter} }}");
+                builder.AppendLine(
+                    $"\t\tset {{ {setter} }}");
+                builder.AppendLine($"\t}}");
                 builder.AppendLine();
             }
             else if (field.Type.Category == SchemaTypeCategory.Ptr)

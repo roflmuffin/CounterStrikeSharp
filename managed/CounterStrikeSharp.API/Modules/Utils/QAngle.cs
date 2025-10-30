@@ -16,44 +16,74 @@
 
 using System.Numerics;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
 namespace CounterStrikeSharp.API.Modules.Utils
 {
-    public class QAngle : NativeObject
+    [StructLayout(LayoutKind.Sequential, Pack = 4, Size = 12)]
+    public struct QAngle
     {
-        public static readonly QAngle Zero = new();
+        public float Pitch;
+        public float Yaw;
+        public float Roll;
 
-        public QAngle(IntPtr pointer) : base(pointer)
+        public QAngle(float pitch, float yaw, float roll)
+        {
+            Pitch = pitch;
+            Yaw = yaw;
+            Roll = roll;
+        }
+
+        public QAngle(QAngle other)
+        {
+            Pitch = other.Pitch;
+            Yaw = other.Yaw;
+            Roll = other.Roll;
+        }
+
+        public QAngle(float value) : this(value, value, value)
         {
         }
 
-        public QAngle(float? x = null, float? y = null, float? z = null) : this(NativeAPI.AngleNew())
+        public static QAngle Zero => new(0, 0, 0);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static QAngle operator +(QAngle left, QAngle right) =>
+            new(left.Pitch + right.Pitch, left.Yaw + right.Yaw, left.Roll + right.Roll);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static QAngle operator -(QAngle left, QAngle right) =>
+            new(left.Pitch - right.Pitch, left.Yaw - right.Yaw, left.Roll - right.Roll);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static QAngle operator *(QAngle left, QAngle right) =>
+            new(left.Pitch * right.Pitch, left.Yaw * right.Yaw, left.Roll * right.Roll);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static QAngle operator /(QAngle left, QAngle right) =>
+            new(left.Pitch / right.Pitch, left.Yaw / right.Yaw, left.Roll / right.Roll);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static QAngle operator *(QAngle left, float b) => new(left.Pitch * b, left.Yaw * b, left.Roll * b);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static QAngle operator /(QAngle value1, float value2)
         {
-            this.X = x ?? 0;
-            this.Y = y ?? 0;
-            this.Z = z ?? 0;
+            return value1 / new QAngle(value2);
         }
 
-        public unsafe ref float X => ref Unsafe.Add(ref *(float*)Handle.ToPointer(), 0);
-        public unsafe ref float Y => ref Unsafe.Add(ref *(float*)Handle, 1);
-        public unsafe ref float Z => ref Unsafe.Add(ref *(float*)Handle, 2);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static QAngle operator -(QAngle value) => Zero - value;
 
-        public override string ToString()
-        {
-            return $"{X:n2} {Y:n2} {Z:n2}";
-        }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool operator ==(QAngle left, QAngle right) =>
+            left.Pitch == right.Pitch && left.Yaw == right.Yaw && left.Roll == right.Roll;
 
-        public static explicit operator Vector3(QAngle q)
-        {
-            unsafe
-            {
-                if (q is null)
-                {
-                    throw new ArgumentNullException(nameof(q), "Input QAngle cannot be null.");
-                }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool operator !=(QAngle left, QAngle right) => !(left == right);
 
-                return new Vector3(new ReadOnlySpan<float>(q.Handle.ToPointer(), 3));
-            }
-        }
+        public override bool Equals(object? obj) => obj is QAngle angle && this == angle;
+        public override int GetHashCode() => HashCode.Combine(Pitch, Yaw, Roll);
+        public override string ToString() => $"QAngle({Pitch}, {Yaw}, {Roll})";
     }
 }
