@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,10 +21,18 @@ public partial class AutoRoomDoorwayPairs_t : NativeObject
 
 	// vP1
 	[SchemaMember("AutoRoomDoorwayPairs_t", "vP1")]
-	public Vector VP1 => Schema.GetDeclaredClass<Vector>(this.Handle, "AutoRoomDoorwayPairs_t", "vP1");
+	public Vector3 VP1
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "AutoRoomDoorwayPairs_t", "vP1"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "AutoRoomDoorwayPairs_t", "vP1", value); }
+	}
 
 	// vP2
 	[SchemaMember("AutoRoomDoorwayPairs_t", "vP2")]
-	public Vector VP2 => Schema.GetDeclaredClass<Vector>(this.Handle, "AutoRoomDoorwayPairs_t", "vP2");
+	public Vector3 VP2
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "AutoRoomDoorwayPairs_t", "vP2"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "AutoRoomDoorwayPairs_t", "vP2", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,47 +25,91 @@ public partial class CTriggerLook : CTriggerOnce
 
 	// m_flFieldOfView
 	[SchemaMember("CTriggerLook", "m_flFieldOfView")]
-	public ref float FieldOfView => ref Schema.GetRef<float>(this.Handle, "CTriggerLook", "m_flFieldOfView");
+	public float FieldOfView
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerLook", "m_flFieldOfView"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerLook", "m_flFieldOfView", value); }
+	}
 
 	// m_flLookTime
 	[SchemaMember("CTriggerLook", "m_flLookTime")]
-	public ref float LookTime => ref Schema.GetRef<float>(this.Handle, "CTriggerLook", "m_flLookTime");
+	public float LookTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerLook", "m_flLookTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerLook", "m_flLookTime", value); }
+	}
 
 	// m_flLookTimeTotal
 	[SchemaMember("CTriggerLook", "m_flLookTimeTotal")]
-	public ref float LookTimeTotal => ref Schema.GetRef<float>(this.Handle, "CTriggerLook", "m_flLookTimeTotal");
+	public float LookTimeTotal
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerLook", "m_flLookTimeTotal"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerLook", "m_flLookTimeTotal", value); }
+	}
 
 	// m_flLookTimeLast
 	[SchemaMember("CTriggerLook", "m_flLookTimeLast")]
-	public ref float LookTimeLast => ref Schema.GetRef<float>(this.Handle, "CTriggerLook", "m_flLookTimeLast");
+	public float LookTimeLast
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerLook", "m_flLookTimeLast"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerLook", "m_flLookTimeLast", value); }
+	}
 
 	// m_flTimeoutDuration
 	[SchemaMember("CTriggerLook", "m_flTimeoutDuration")]
-	public ref float TimeoutDuration => ref Schema.GetRef<float>(this.Handle, "CTriggerLook", "m_flTimeoutDuration");
+	public float TimeoutDuration
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerLook", "m_flTimeoutDuration"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerLook", "m_flTimeoutDuration", value); }
+	}
 
 	// m_bTimeoutFired
 	[SchemaMember("CTriggerLook", "m_bTimeoutFired")]
-	public ref bool TimeoutFired => ref Schema.GetRef<bool>(this.Handle, "CTriggerLook", "m_bTimeoutFired");
+	public bool TimeoutFired
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerLook", "m_bTimeoutFired"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTriggerLook", "m_bTimeoutFired", value); }
+	}
 
 	// m_bIsLooking
 	[SchemaMember("CTriggerLook", "m_bIsLooking")]
-	public ref bool IsLooking => ref Schema.GetRef<bool>(this.Handle, "CTriggerLook", "m_bIsLooking");
+	public bool IsLooking
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerLook", "m_bIsLooking"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTriggerLook", "m_bIsLooking", value); }
+	}
 
 	// m_b2DFOV
 	[SchemaMember("CTriggerLook", "m_b2DFOV")]
-	public ref bool B2DFOV => ref Schema.GetRef<bool>(this.Handle, "CTriggerLook", "m_b2DFOV");
+	public bool B2DFOV
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerLook", "m_b2DFOV"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTriggerLook", "m_b2DFOV", value); }
+	}
 
 	// m_bUseVelocity
 	[SchemaMember("CTriggerLook", "m_bUseVelocity")]
-	public ref bool UseVelocity => ref Schema.GetRef<bool>(this.Handle, "CTriggerLook", "m_bUseVelocity");
+	public bool UseVelocity
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerLook", "m_bUseVelocity"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTriggerLook", "m_bUseVelocity", value); }
+	}
 
 	// m_bTestOcclusion
 	[SchemaMember("CTriggerLook", "m_bTestOcclusion")]
-	public ref bool TestOcclusion => ref Schema.GetRef<bool>(this.Handle, "CTriggerLook", "m_bTestOcclusion");
+	public bool TestOcclusion
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerLook", "m_bTestOcclusion"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTriggerLook", "m_bTestOcclusion", value); }
+	}
 
 	// m_bTestAllVisibleOcclusion
 	[SchemaMember("CTriggerLook", "m_bTestAllVisibleOcclusion")]
-	public ref bool TestAllVisibleOcclusion => ref Schema.GetRef<bool>(this.Handle, "CTriggerLook", "m_bTestAllVisibleOcclusion");
+	public bool TestAllVisibleOcclusion
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerLook", "m_bTestAllVisibleOcclusion"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTriggerLook", "m_bTestAllVisibleOcclusion", value); }
+	}
 
 	// m_OnTimeout
 	[SchemaMember("CTriggerLook", "m_OnTimeout")]

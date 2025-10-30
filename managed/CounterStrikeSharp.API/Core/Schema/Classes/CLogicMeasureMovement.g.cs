@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -60,10 +61,18 @@ public partial class CLogicMeasureMovement : CLogicalEntity
 
 	// m_flScale
 	[SchemaMember("CLogicMeasureMovement", "m_flScale")]
-	public ref float Scale => ref Schema.GetRef<float>(this.Handle, "CLogicMeasureMovement", "m_flScale");
+	public float Scale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLogicMeasureMovement", "m_flScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLogicMeasureMovement", "m_flScale", value); }
+	}
 
 	// m_nMeasureType
 	[SchemaMember("CLogicMeasureMovement", "m_nMeasureType")]
-	public ref Int32 MeasureType => ref Schema.GetRef<Int32>(this.Handle, "CLogicMeasureMovement", "m_nMeasureType");
+	public Int32 MeasureType
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicMeasureMovement", "m_nMeasureType"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLogicMeasureMovement", "m_nMeasureType", value); }
+	}
 
 }

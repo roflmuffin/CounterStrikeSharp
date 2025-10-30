@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,18 +21,34 @@ public partial class CMarkupVolumeWithRef : CMarkupVolumeTagged
 
 	// m_bUseRef
 	[SchemaMember("CMarkupVolumeWithRef", "m_bUseRef")]
-	public ref bool UseRef => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeWithRef", "m_bUseRef");
+	public bool UseRef
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CMarkupVolumeWithRef", "m_bUseRef"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CMarkupVolumeWithRef", "m_bUseRef", value); }
+	}
 
 	// m_vRefPosEntitySpace
 	[SchemaMember("CMarkupVolumeWithRef", "m_vRefPosEntitySpace")]
-	public Vector RefPosEntitySpace => Schema.GetDeclaredClass<Vector>(this.Handle, "CMarkupVolumeWithRef", "m_vRefPosEntitySpace");
+	public Vector3 RefPosEntitySpace
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CMarkupVolumeWithRef", "m_vRefPosEntitySpace"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CMarkupVolumeWithRef", "m_vRefPosEntitySpace", value); }
+	}
 
 	// m_vRefPosWorldSpace
 	[SchemaMember("CMarkupVolumeWithRef", "m_vRefPosWorldSpace")]
-	public Vector RefPosWorldSpace => Schema.GetDeclaredClass<Vector>(this.Handle, "CMarkupVolumeWithRef", "m_vRefPosWorldSpace");
+	public Vector3 RefPosWorldSpace
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CMarkupVolumeWithRef", "m_vRefPosWorldSpace"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CMarkupVolumeWithRef", "m_vRefPosWorldSpace", value); }
+	}
 
 	// m_flRefDot
 	[SchemaMember("CMarkupVolumeWithRef", "m_flRefDot")]
-	public ref float RefDot => ref Schema.GetRef<float>(this.Handle, "CMarkupVolumeWithRef", "m_flRefDot");
+	public float RefDot
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CMarkupVolumeWithRef", "m_flRefDot"); }
+		set { Schema.SetValueType<float>(this.Handle, "CMarkupVolumeWithRef", "m_flRefDot", value); }
+	}
 
 }

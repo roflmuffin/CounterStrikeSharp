@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -44,39 +45,75 @@ public partial class CPointWorldText : CModelPointEntity
 
 	// m_bEnabled
 	[SchemaMember("CPointWorldText", "m_bEnabled")]
-	public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CPointWorldText", "m_bEnabled");
+	public bool Enabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointWorldText", "m_bEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointWorldText", "m_bEnabled", value); }
+	}
 
 	// m_bFullbright
 	[SchemaMember("CPointWorldText", "m_bFullbright")]
-	public ref bool Fullbright => ref Schema.GetRef<bool>(this.Handle, "CPointWorldText", "m_bFullbright");
+	public bool Fullbright
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointWorldText", "m_bFullbright"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointWorldText", "m_bFullbright", value); }
+	}
 
 	// m_flWorldUnitsPerPx
 	[SchemaMember("CPointWorldText", "m_flWorldUnitsPerPx")]
-	public ref float WorldUnitsPerPx => ref Schema.GetRef<float>(this.Handle, "CPointWorldText", "m_flWorldUnitsPerPx");
+	public float WorldUnitsPerPx
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointWorldText", "m_flWorldUnitsPerPx"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointWorldText", "m_flWorldUnitsPerPx", value); }
+	}
 
 	// m_flFontSize
 	[SchemaMember("CPointWorldText", "m_flFontSize")]
-	public ref float FontSize => ref Schema.GetRef<float>(this.Handle, "CPointWorldText", "m_flFontSize");
+	public float FontSize
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointWorldText", "m_flFontSize"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointWorldText", "m_flFontSize", value); }
+	}
 
 	// m_flDepthOffset
 	[SchemaMember("CPointWorldText", "m_flDepthOffset")]
-	public ref float DepthOffset => ref Schema.GetRef<float>(this.Handle, "CPointWorldText", "m_flDepthOffset");
+	public float DepthOffset
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointWorldText", "m_flDepthOffset"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointWorldText", "m_flDepthOffset", value); }
+	}
 
 	// m_bDrawBackground
 	[SchemaMember("CPointWorldText", "m_bDrawBackground")]
-	public ref bool DrawBackground => ref Schema.GetRef<bool>(this.Handle, "CPointWorldText", "m_bDrawBackground");
+	public bool DrawBackground
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointWorldText", "m_bDrawBackground"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointWorldText", "m_bDrawBackground", value); }
+	}
 
 	// m_flBackgroundBorderWidth
 	[SchemaMember("CPointWorldText", "m_flBackgroundBorderWidth")]
-	public ref float BackgroundBorderWidth => ref Schema.GetRef<float>(this.Handle, "CPointWorldText", "m_flBackgroundBorderWidth");
+	public float BackgroundBorderWidth
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointWorldText", "m_flBackgroundBorderWidth"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointWorldText", "m_flBackgroundBorderWidth", value); }
+	}
 
 	// m_flBackgroundBorderHeight
 	[SchemaMember("CPointWorldText", "m_flBackgroundBorderHeight")]
-	public ref float BackgroundBorderHeight => ref Schema.GetRef<float>(this.Handle, "CPointWorldText", "m_flBackgroundBorderHeight");
+	public float BackgroundBorderHeight
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointWorldText", "m_flBackgroundBorderHeight"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointWorldText", "m_flBackgroundBorderHeight", value); }
+	}
 
 	// m_flBackgroundWorldToUV
 	[SchemaMember("CPointWorldText", "m_flBackgroundWorldToUV")]
-	public ref float BackgroundWorldToUV => ref Schema.GetRef<float>(this.Handle, "CPointWorldText", "m_flBackgroundWorldToUV");
+	public float BackgroundWorldToUV
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointWorldText", "m_flBackgroundWorldToUV"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointWorldText", "m_flBackgroundWorldToUV", value); }
+	}
 
 	// m_Color
 	[SchemaMember("CPointWorldText", "m_Color")]
@@ -88,14 +125,26 @@ public partial class CPointWorldText : CModelPointEntity
 
 	// m_nJustifyHorizontal
 	[SchemaMember("CPointWorldText", "m_nJustifyHorizontal")]
-	public ref PointWorldTextJustifyHorizontal_t JustifyHorizontal => ref Schema.GetRef<PointWorldTextJustifyHorizontal_t>(this.Handle, "CPointWorldText", "m_nJustifyHorizontal");
+	public PointWorldTextJustifyHorizontal_t JustifyHorizontal
+	{
+		get { return Schema.GetValueType<PointWorldTextJustifyHorizontal_t>(this.Handle, "CPointWorldText", "m_nJustifyHorizontal"); }
+		set { Schema.SetValueType<PointWorldTextJustifyHorizontal_t>(this.Handle, "CPointWorldText", "m_nJustifyHorizontal", value); }
+	}
 
 	// m_nJustifyVertical
 	[SchemaMember("CPointWorldText", "m_nJustifyVertical")]
-	public ref PointWorldTextJustifyVertical_t JustifyVertical => ref Schema.GetRef<PointWorldTextJustifyVertical_t>(this.Handle, "CPointWorldText", "m_nJustifyVertical");
+	public PointWorldTextJustifyVertical_t JustifyVertical
+	{
+		get { return Schema.GetValueType<PointWorldTextJustifyVertical_t>(this.Handle, "CPointWorldText", "m_nJustifyVertical"); }
+		set { Schema.SetValueType<PointWorldTextJustifyVertical_t>(this.Handle, "CPointWorldText", "m_nJustifyVertical", value); }
+	}
 
 	// m_nReorientMode
 	[SchemaMember("CPointWorldText", "m_nReorientMode")]
-	public ref PointWorldTextReorientMode_t ReorientMode => ref Schema.GetRef<PointWorldTextReorientMode_t>(this.Handle, "CPointWorldText", "m_nReorientMode");
+	public PointWorldTextReorientMode_t ReorientMode
+	{
+		get { return Schema.GetValueType<PointWorldTextReorientMode_t>(this.Handle, "CPointWorldText", "m_nReorientMode"); }
+		set { Schema.SetValueType<PointWorldTextReorientMode_t>(this.Handle, "CPointWorldText", "m_nReorientMode", value); }
+	}
 
 }

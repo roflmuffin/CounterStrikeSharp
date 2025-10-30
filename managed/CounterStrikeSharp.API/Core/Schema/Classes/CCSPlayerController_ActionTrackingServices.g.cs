@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,14 +29,26 @@ public partial class CCSPlayerController_ActionTrackingServices : CPlayerControl
 
 	// m_iNumRoundKills
 	[SchemaMember("CCSPlayerController_ActionTrackingServices", "m_iNumRoundKills")]
-	public ref Int32 NumRoundKills => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_iNumRoundKills");
+	public Int32 NumRoundKills
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_iNumRoundKills"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_iNumRoundKills", value); }
+	}
 
 	// m_iNumRoundKillsHeadshots
 	[SchemaMember("CCSPlayerController_ActionTrackingServices", "m_iNumRoundKillsHeadshots")]
-	public ref Int32 NumRoundKillsHeadshots => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_iNumRoundKillsHeadshots");
+	public Int32 NumRoundKillsHeadshots
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_iNumRoundKillsHeadshots"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_iNumRoundKillsHeadshots", value); }
+	}
 
 	// m_flTotalRoundDamageDealt
 	[SchemaMember("CCSPlayerController_ActionTrackingServices", "m_flTotalRoundDamageDealt")]
-	public ref float TotalRoundDamageDealt => ref Schema.GetRef<float>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_flTotalRoundDamageDealt");
+	public float TotalRoundDamageDealt
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_flTotalRoundDamageDealt"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_flTotalRoundDamageDealt", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,6 +21,10 @@ public partial class CDebugHistory : CBaseEntity
 
 	// m_nNpcEvents
 	[SchemaMember("CDebugHistory", "m_nNpcEvents")]
-	public ref Int32 NpcEvents => ref Schema.GetRef<Int32>(this.Handle, "CDebugHistory", "m_nNpcEvents");
+	public Int32 NpcEvents
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CDebugHistory", "m_nNpcEvents"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CDebugHistory", "m_nNpcEvents", value); }
+	}
 
 }

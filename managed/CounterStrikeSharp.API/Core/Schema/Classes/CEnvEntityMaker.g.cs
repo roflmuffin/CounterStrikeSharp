@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,11 +21,19 @@ public partial class CEnvEntityMaker : CPointEntity
 
 	// m_vecEntityMins
 	[SchemaMember("CEnvEntityMaker", "m_vecEntityMins")]
-	public Vector EntityMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvEntityMaker", "m_vecEntityMins");
+	public Vector3 EntityMins
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvEntityMaker", "m_vecEntityMins"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvEntityMaker", "m_vecEntityMins", value); }
+	}
 
 	// m_vecEntityMaxs
 	[SchemaMember("CEnvEntityMaker", "m_vecEntityMaxs")]
-	public Vector EntityMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvEntityMaker", "m_vecEntityMaxs");
+	public Vector3 EntityMaxs
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvEntityMaker", "m_vecEntityMaxs"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvEntityMaker", "m_vecEntityMaxs", value); }
+	}
 
 	// m_hCurrentInstance
 	[SchemaMember("CEnvEntityMaker", "m_hCurrentInstance")]
@@ -36,23 +45,43 @@ public partial class CEnvEntityMaker : CPointEntity
 
 	// m_vecBlockerOrigin
 	[SchemaMember("CEnvEntityMaker", "m_vecBlockerOrigin")]
-	public Vector BlockerOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvEntityMaker", "m_vecBlockerOrigin");
+	public Vector3 BlockerOrigin
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvEntityMaker", "m_vecBlockerOrigin"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvEntityMaker", "m_vecBlockerOrigin", value); }
+	}
 
 	// m_angPostSpawnDirection
 	[SchemaMember("CEnvEntityMaker", "m_angPostSpawnDirection")]
-	public QAngle PostSpawnDirection => Schema.GetDeclaredClass<QAngle>(this.Handle, "CEnvEntityMaker", "m_angPostSpawnDirection");
+	public QAngle PostSpawnDirection
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CEnvEntityMaker", "m_angPostSpawnDirection"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CEnvEntityMaker", "m_angPostSpawnDirection", value); }
+	}
 
 	// m_flPostSpawnDirectionVariance
 	[SchemaMember("CEnvEntityMaker", "m_flPostSpawnDirectionVariance")]
-	public ref float PostSpawnDirectionVariance => ref Schema.GetRef<float>(this.Handle, "CEnvEntityMaker", "m_flPostSpawnDirectionVariance");
+	public float PostSpawnDirectionVariance
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvEntityMaker", "m_flPostSpawnDirectionVariance"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvEntityMaker", "m_flPostSpawnDirectionVariance", value); }
+	}
 
 	// m_flPostSpawnSpeed
 	[SchemaMember("CEnvEntityMaker", "m_flPostSpawnSpeed")]
-	public ref float PostSpawnSpeed => ref Schema.GetRef<float>(this.Handle, "CEnvEntityMaker", "m_flPostSpawnSpeed");
+	public float PostSpawnSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvEntityMaker", "m_flPostSpawnSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvEntityMaker", "m_flPostSpawnSpeed", value); }
+	}
 
 	// m_bPostSpawnUseAngles
 	[SchemaMember("CEnvEntityMaker", "m_bPostSpawnUseAngles")]
-	public ref bool PostSpawnUseAngles => ref Schema.GetRef<bool>(this.Handle, "CEnvEntityMaker", "m_bPostSpawnUseAngles");
+	public bool PostSpawnUseAngles
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvEntityMaker", "m_bPostSpawnUseAngles"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvEntityMaker", "m_bPostSpawnUseAngles", value); }
+	}
 
 	// m_iszTemplate
 	[SchemaMember("CEnvEntityMaker", "m_iszTemplate")]

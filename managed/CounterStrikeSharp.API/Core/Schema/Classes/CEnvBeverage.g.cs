@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,10 +21,18 @@ public partial class CEnvBeverage : CBaseEntity
 
 	// m_CanInDispenser
 	[SchemaMember("CEnvBeverage", "m_CanInDispenser")]
-	public ref bool CanInDispenser => ref Schema.GetRef<bool>(this.Handle, "CEnvBeverage", "m_CanInDispenser");
+	public bool CanInDispenser
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvBeverage", "m_CanInDispenser"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvBeverage", "m_CanInDispenser", value); }
+	}
 
 	// m_nBeverageType
 	[SchemaMember("CEnvBeverage", "m_nBeverageType")]
-	public ref Int32 BeverageType => ref Schema.GetRef<Int32>(this.Handle, "CEnvBeverage", "m_nBeverageType");
+	public Int32 BeverageType
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvBeverage", "m_nBeverageType"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvBeverage", "m_nBeverageType", value); }
+	}
 
 }

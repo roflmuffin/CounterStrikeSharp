@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -40,18 +41,34 @@ public partial class CChangeLevel : CBaseTrigger
 
 	// m_bTouched
 	[SchemaMember("CChangeLevel", "m_bTouched")]
-	public ref bool Touched => ref Schema.GetRef<bool>(this.Handle, "CChangeLevel", "m_bTouched");
+	public bool Touched
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CChangeLevel", "m_bTouched"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CChangeLevel", "m_bTouched", value); }
+	}
 
 	// m_bNoTouch
 	[SchemaMember("CChangeLevel", "m_bNoTouch")]
-	public ref bool NoTouch => ref Schema.GetRef<bool>(this.Handle, "CChangeLevel", "m_bNoTouch");
+	public bool NoTouch
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CChangeLevel", "m_bNoTouch"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CChangeLevel", "m_bNoTouch", value); }
+	}
 
 	// m_bNewChapter
 	[SchemaMember("CChangeLevel", "m_bNewChapter")]
-	public ref bool NewChapter => ref Schema.GetRef<bool>(this.Handle, "CChangeLevel", "m_bNewChapter");
+	public bool NewChapter
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CChangeLevel", "m_bNewChapter"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CChangeLevel", "m_bNewChapter", value); }
+	}
 
 	// m_bOnChangeLevelFired
 	[SchemaMember("CChangeLevel", "m_bOnChangeLevelFired")]
-	public ref bool OnChangeLevelFired => ref Schema.GetRef<bool>(this.Handle, "CChangeLevel", "m_bOnChangeLevelFired");
+	public bool OnChangeLevelFired
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CChangeLevel", "m_bOnChangeLevelFired"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CChangeLevel", "m_bOnChangeLevelFired", value); }
+	}
 
 }

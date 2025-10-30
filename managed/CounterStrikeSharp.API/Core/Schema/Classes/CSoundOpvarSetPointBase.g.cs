@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class CSoundOpvarSetPointBase : CBaseEntity
 
 	// m_bDisabled
 	[SchemaMember("CSoundOpvarSetPointBase", "m_bDisabled")]
-	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CSoundOpvarSetPointBase", "m_bDisabled");
+	public bool Disabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CSoundOpvarSetPointBase", "m_bDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CSoundOpvarSetPointBase", "m_bDisabled", value); }
+	}
 
 	// m_hSource
 	[SchemaMember("CSoundOpvarSetPointBase", "m_hSource")]
@@ -36,7 +41,11 @@ public partial class CSoundOpvarSetPointBase : CBaseEntity
 
 	// m_vLastPosition
 	[SchemaMember("CSoundOpvarSetPointBase", "m_vLastPosition")]
-	public Vector LastPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetPointBase", "m_vLastPosition");
+	public Vector3 LastPosition
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundOpvarSetPointBase", "m_vLastPosition"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundOpvarSetPointBase", "m_vLastPosition", value); }
+	}
 
 	// m_iszStackName
 	[SchemaMember("CSoundOpvarSetPointBase", "m_iszStackName")]
@@ -64,10 +73,18 @@ public partial class CSoundOpvarSetPointBase : CBaseEntity
 
 	// m_iOpvarIndex
 	[SchemaMember("CSoundOpvarSetPointBase", "m_iOpvarIndex")]
-	public ref Int32 OpvarIndex => ref Schema.GetRef<Int32>(this.Handle, "CSoundOpvarSetPointBase", "m_iOpvarIndex");
+	public Int32 OpvarIndex
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSoundOpvarSetPointBase", "m_iOpvarIndex"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSoundOpvarSetPointBase", "m_iOpvarIndex", value); }
+	}
 
 	// m_bUseAutoCompare
 	[SchemaMember("CSoundOpvarSetPointBase", "m_bUseAutoCompare")]
-	public ref bool UseAutoCompare => ref Schema.GetRef<bool>(this.Handle, "CSoundOpvarSetPointBase", "m_bUseAutoCompare");
+	public bool UseAutoCompare
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CSoundOpvarSetPointBase", "m_bUseAutoCompare"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CSoundOpvarSetPointBase", "m_bUseAutoCompare", value); }
+	}
 
 }

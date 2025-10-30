@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,155 +21,307 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bFreezePeriod
 	[SchemaMember("CCSGameRules", "m_bFreezePeriod")]
-	public ref bool FreezePeriod => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bFreezePeriod");
+	public bool FreezePeriod
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bFreezePeriod"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bFreezePeriod", value); }
+	}
 
 	// m_bWarmupPeriod
 	[SchemaMember("CCSGameRules", "m_bWarmupPeriod")]
-	public ref bool WarmupPeriod => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bWarmupPeriod");
+	public bool WarmupPeriod
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bWarmupPeriod"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bWarmupPeriod", value); }
+	}
 
 	// m_fWarmupPeriodEnd
 	[SchemaMember("CCSGameRules", "m_fWarmupPeriodEnd")]
-	public ref float WarmupPeriodEnd => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_fWarmupPeriodEnd");
+	public float WarmupPeriodEnd
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_fWarmupPeriodEnd"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_fWarmupPeriodEnd", value); }
+	}
 
 	// m_fWarmupPeriodStart
 	[SchemaMember("CCSGameRules", "m_fWarmupPeriodStart")]
-	public ref float WarmupPeriodStart => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_fWarmupPeriodStart");
+	public float WarmupPeriodStart
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_fWarmupPeriodStart"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_fWarmupPeriodStart", value); }
+	}
 
 	// m_bTerroristTimeOutActive
 	[SchemaMember("CCSGameRules", "m_bTerroristTimeOutActive")]
-	public ref bool TerroristTimeOutActive => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bTerroristTimeOutActive");
+	public bool TerroristTimeOutActive
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bTerroristTimeOutActive"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bTerroristTimeOutActive", value); }
+	}
 
 	// m_bCTTimeOutActive
 	[SchemaMember("CCSGameRules", "m_bCTTimeOutActive")]
-	public ref bool CTTimeOutActive => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bCTTimeOutActive");
+	public bool CTTimeOutActive
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bCTTimeOutActive"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bCTTimeOutActive", value); }
+	}
 
 	// m_flTerroristTimeOutRemaining
 	[SchemaMember("CCSGameRules", "m_flTerroristTimeOutRemaining")]
-	public ref float TerroristTimeOutRemaining => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flTerroristTimeOutRemaining");
+	public float TerroristTimeOutRemaining
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_flTerroristTimeOutRemaining"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_flTerroristTimeOutRemaining", value); }
+	}
 
 	// m_flCTTimeOutRemaining
 	[SchemaMember("CCSGameRules", "m_flCTTimeOutRemaining")]
-	public ref float CTTimeOutRemaining => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flCTTimeOutRemaining");
+	public float CTTimeOutRemaining
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_flCTTimeOutRemaining"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_flCTTimeOutRemaining", value); }
+	}
 
 	// m_nTerroristTimeOuts
 	[SchemaMember("CCSGameRules", "m_nTerroristTimeOuts")]
-	public ref Int32 TerroristTimeOuts => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nTerroristTimeOuts");
+	public Int32 TerroristTimeOuts
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nTerroristTimeOuts"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nTerroristTimeOuts", value); }
+	}
 
 	// m_nCTTimeOuts
 	[SchemaMember("CCSGameRules", "m_nCTTimeOuts")]
-	public ref Int32 CTTimeOuts => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nCTTimeOuts");
+	public Int32 CTTimeOuts
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nCTTimeOuts"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nCTTimeOuts", value); }
+	}
 
 	// m_bTechnicalTimeOut
 	[SchemaMember("CCSGameRules", "m_bTechnicalTimeOut")]
-	public ref bool TechnicalTimeOut => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bTechnicalTimeOut");
+	public bool TechnicalTimeOut
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bTechnicalTimeOut"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bTechnicalTimeOut", value); }
+	}
 
 	// m_bMatchWaitingForResume
 	[SchemaMember("CCSGameRules", "m_bMatchWaitingForResume")]
-	public ref bool MatchWaitingForResume => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bMatchWaitingForResume");
+	public bool MatchWaitingForResume
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bMatchWaitingForResume"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bMatchWaitingForResume", value); }
+	}
 
 	// m_iFreezeTime
 	[SchemaMember("CCSGameRules", "m_iFreezeTime")]
-	public ref Int32 FreezeTime => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iFreezeTime");
+	public Int32 FreezeTime
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iFreezeTime"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iFreezeTime", value); }
+	}
 
 	// m_iRoundTime
 	[SchemaMember("CCSGameRules", "m_iRoundTime")]
-	public ref Int32 RoundTime => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iRoundTime");
+	public Int32 RoundTime
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundTime"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundTime", value); }
+	}
 
 	// m_fMatchStartTime
 	[SchemaMember("CCSGameRules", "m_fMatchStartTime")]
-	public ref float MatchStartTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_fMatchStartTime");
+	public float MatchStartTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_fMatchStartTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_fMatchStartTime", value); }
+	}
 
 	// m_fRoundStartTime
 	[SchemaMember("CCSGameRules", "m_fRoundStartTime")]
-	public ref float RoundStartTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_fRoundStartTime");
+	public float RoundStartTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_fRoundStartTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_fRoundStartTime", value); }
+	}
 
 	// m_flRestartRoundTime
 	[SchemaMember("CCSGameRules", "m_flRestartRoundTime")]
-	public ref float RestartRoundTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flRestartRoundTime");
+	public float RestartRoundTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_flRestartRoundTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_flRestartRoundTime", value); }
+	}
 
 	// m_bGameRestart
 	[SchemaMember("CCSGameRules", "m_bGameRestart")]
-	public ref bool GameRestart => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bGameRestart");
+	public bool GameRestart
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bGameRestart"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bGameRestart", value); }
+	}
 
 	// m_flGameStartTime
 	[SchemaMember("CCSGameRules", "m_flGameStartTime")]
-	public ref float GameStartTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flGameStartTime");
+	public float GameStartTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_flGameStartTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_flGameStartTime", value); }
+	}
 
 	// m_timeUntilNextPhaseStarts
 	[SchemaMember("CCSGameRules", "m_timeUntilNextPhaseStarts")]
-	public ref float TimeUntilNextPhaseStarts => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_timeUntilNextPhaseStarts");
+	public float TimeUntilNextPhaseStarts
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_timeUntilNextPhaseStarts"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_timeUntilNextPhaseStarts", value); }
+	}
 
 	// m_gamePhase
 	[SchemaMember("CCSGameRules", "m_gamePhase")]
-	public ref Int32 GamePhase => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_gamePhase");
+	public Int32 GamePhase
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_gamePhase"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_gamePhase", value); }
+	}
 
 	// m_totalRoundsPlayed
 	[SchemaMember("CCSGameRules", "m_totalRoundsPlayed")]
-	public ref Int32 TotalRoundsPlayed => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_totalRoundsPlayed");
+	public Int32 TotalRoundsPlayed
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_totalRoundsPlayed"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_totalRoundsPlayed", value); }
+	}
 
 	// m_nRoundsPlayedThisPhase
 	[SchemaMember("CCSGameRules", "m_nRoundsPlayedThisPhase")]
-	public ref Int32 RoundsPlayedThisPhase => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nRoundsPlayedThisPhase");
+	public Int32 RoundsPlayedThisPhase
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nRoundsPlayedThisPhase"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nRoundsPlayedThisPhase", value); }
+	}
 
 	// m_nOvertimePlaying
 	[SchemaMember("CCSGameRules", "m_nOvertimePlaying")]
-	public ref Int32 OvertimePlaying => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nOvertimePlaying");
+	public Int32 OvertimePlaying
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nOvertimePlaying"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nOvertimePlaying", value); }
+	}
 
 	// m_iHostagesRemaining
 	[SchemaMember("CCSGameRules", "m_iHostagesRemaining")]
-	public ref Int32 HostagesRemaining => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iHostagesRemaining");
+	public Int32 HostagesRemaining
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iHostagesRemaining"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iHostagesRemaining", value); }
+	}
 
 	// m_bAnyHostageReached
 	[SchemaMember("CCSGameRules", "m_bAnyHostageReached")]
-	public ref bool AnyHostageReached => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bAnyHostageReached");
+	public bool AnyHostageReached
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bAnyHostageReached"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bAnyHostageReached", value); }
+	}
 
 	// m_bMapHasBombTarget
 	[SchemaMember("CCSGameRules", "m_bMapHasBombTarget")]
-	public ref bool MapHasBombTarget => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bMapHasBombTarget");
+	public bool MapHasBombTarget
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bMapHasBombTarget"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bMapHasBombTarget", value); }
+	}
 
 	// m_bMapHasRescueZone
 	[SchemaMember("CCSGameRules", "m_bMapHasRescueZone")]
-	public ref bool MapHasRescueZone => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bMapHasRescueZone");
+	public bool MapHasRescueZone
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bMapHasRescueZone"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bMapHasRescueZone", value); }
+	}
 
 	// m_bMapHasBuyZone
 	[SchemaMember("CCSGameRules", "m_bMapHasBuyZone")]
-	public ref bool MapHasBuyZone => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bMapHasBuyZone");
+	public bool MapHasBuyZone
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bMapHasBuyZone"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bMapHasBuyZone", value); }
+	}
 
 	// m_bIsQueuedMatchmaking
 	[SchemaMember("CCSGameRules", "m_bIsQueuedMatchmaking")]
-	public ref bool IsQueuedMatchmaking => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bIsQueuedMatchmaking");
+	public bool IsQueuedMatchmaking
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bIsQueuedMatchmaking"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bIsQueuedMatchmaking", value); }
+	}
 
 	// m_nQueuedMatchmakingMode
 	[SchemaMember("CCSGameRules", "m_nQueuedMatchmakingMode")]
-	public ref Int32 QueuedMatchmakingMode => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nQueuedMatchmakingMode");
+	public Int32 QueuedMatchmakingMode
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nQueuedMatchmakingMode"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nQueuedMatchmakingMode", value); }
+	}
 
 	// m_bIsValveDS
 	[SchemaMember("CCSGameRules", "m_bIsValveDS")]
-	public ref bool IsValveDS => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bIsValveDS");
+	public bool IsValveDS
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bIsValveDS"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bIsValveDS", value); }
+	}
 
 	// m_bLogoMap
 	[SchemaMember("CCSGameRules", "m_bLogoMap")]
-	public ref bool LogoMap => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bLogoMap");
+	public bool LogoMap
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bLogoMap"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bLogoMap", value); }
+	}
 
 	// m_bPlayAllStepSoundsOnServer
 	[SchemaMember("CCSGameRules", "m_bPlayAllStepSoundsOnServer")]
-	public ref bool PlayAllStepSoundsOnServer => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bPlayAllStepSoundsOnServer");
+	public bool PlayAllStepSoundsOnServer
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bPlayAllStepSoundsOnServer"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bPlayAllStepSoundsOnServer", value); }
+	}
 
 	// m_iSpectatorSlotCount
 	[SchemaMember("CCSGameRules", "m_iSpectatorSlotCount")]
-	public ref Int32 SpectatorSlotCount => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iSpectatorSlotCount");
+	public Int32 SpectatorSlotCount
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iSpectatorSlotCount"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iSpectatorSlotCount", value); }
+	}
 
 	// m_MatchDevice
 	[SchemaMember("CCSGameRules", "m_MatchDevice")]
-	public ref Int32 MatchDevice => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_MatchDevice");
+	public Int32 MatchDevice
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_MatchDevice"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_MatchDevice", value); }
+	}
 
 	// m_bHasMatchStarted
 	[SchemaMember("CCSGameRules", "m_bHasMatchStarted")]
-	public ref bool HasMatchStarted => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bHasMatchStarted");
+	public bool HasMatchStarted
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bHasMatchStarted"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bHasMatchStarted", value); }
+	}
 
 	// m_nNextMapInMapgroup
 	[SchemaMember("CCSGameRules", "m_nNextMapInMapgroup")]
-	public ref Int32 NextMapInMapgroup => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nNextMapInMapgroup");
+	public Int32 NextMapInMapgroup
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nNextMapInMapgroup"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nNextMapInMapgroup", value); }
+	}
 
 	// m_szTournamentEventName
 	[SchemaMember("CCSGameRules", "m_szTournamentEventName")]
@@ -204,27 +357,51 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_nTournamentPredictionsPct
 	[SchemaMember("CCSGameRules", "m_nTournamentPredictionsPct")]
-	public ref Int32 TournamentPredictionsPct => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nTournamentPredictionsPct");
+	public Int32 TournamentPredictionsPct
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nTournamentPredictionsPct"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nTournamentPredictionsPct", value); }
+	}
 
 	// m_flCMMItemDropRevealStartTime
 	[SchemaMember("CCSGameRules", "m_flCMMItemDropRevealStartTime")]
-	public ref float CMMItemDropRevealStartTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flCMMItemDropRevealStartTime");
+	public float CMMItemDropRevealStartTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_flCMMItemDropRevealStartTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_flCMMItemDropRevealStartTime", value); }
+	}
 
 	// m_flCMMItemDropRevealEndTime
 	[SchemaMember("CCSGameRules", "m_flCMMItemDropRevealEndTime")]
-	public ref float CMMItemDropRevealEndTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flCMMItemDropRevealEndTime");
+	public float CMMItemDropRevealEndTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_flCMMItemDropRevealEndTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_flCMMItemDropRevealEndTime", value); }
+	}
 
 	// m_bIsDroppingItems
 	[SchemaMember("CCSGameRules", "m_bIsDroppingItems")]
-	public ref bool IsDroppingItems => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bIsDroppingItems");
+	public bool IsDroppingItems
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bIsDroppingItems"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bIsDroppingItems", value); }
+	}
 
 	// m_bIsQuestEligible
 	[SchemaMember("CCSGameRules", "m_bIsQuestEligible")]
-	public ref bool IsQuestEligible => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bIsQuestEligible");
+	public bool IsQuestEligible
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bIsQuestEligible"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bIsQuestEligible", value); }
+	}
 
 	// m_bIsHltvActive
 	[SchemaMember("CCSGameRules", "m_bIsHltvActive")]
-	public ref bool IsHltvActive => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bIsHltvActive");
+	public bool IsHltvActive
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bIsHltvActive"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bIsHltvActive", value); }
+	}
 
 	// m_arrProhibitedItemIndices
 	[SchemaMember("CCSGameRules", "m_arrProhibitedItemIndices")]
@@ -236,35 +413,67 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_numBestOfMaps
 	[SchemaMember("CCSGameRules", "m_numBestOfMaps")]
-	public ref Int32 NumBestOfMaps => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_numBestOfMaps");
+	public Int32 NumBestOfMaps
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_numBestOfMaps"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_numBestOfMaps", value); }
+	}
 
 	// m_nHalloweenMaskListSeed
 	[SchemaMember("CCSGameRules", "m_nHalloweenMaskListSeed")]
-	public ref Int32 HalloweenMaskListSeed => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nHalloweenMaskListSeed");
+	public Int32 HalloweenMaskListSeed
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nHalloweenMaskListSeed"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nHalloweenMaskListSeed", value); }
+	}
 
 	// m_bBombDropped
 	[SchemaMember("CCSGameRules", "m_bBombDropped")]
-	public ref bool BombDropped => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bBombDropped");
+	public bool BombDropped
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bBombDropped"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bBombDropped", value); }
+	}
 
 	// m_bBombPlanted
 	[SchemaMember("CCSGameRules", "m_bBombPlanted")]
-	public ref bool BombPlanted => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bBombPlanted");
+	public bool BombPlanted
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bBombPlanted"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bBombPlanted", value); }
+	}
 
 	// m_iRoundWinStatus
 	[SchemaMember("CCSGameRules", "m_iRoundWinStatus")]
-	public ref Int32 RoundWinStatus => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iRoundWinStatus");
+	public Int32 RoundWinStatus
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundWinStatus"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundWinStatus", value); }
+	}
 
 	// m_eRoundWinReason
 	[SchemaMember("CCSGameRules", "m_eRoundWinReason")]
-	public ref Int32 RoundWinReason => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_eRoundWinReason");
+	public Int32 RoundWinReason
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_eRoundWinReason"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_eRoundWinReason", value); }
+	}
 
 	// m_bTCantBuy
 	[SchemaMember("CCSGameRules", "m_bTCantBuy")]
-	public ref bool TCantBuy => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bTCantBuy");
+	public bool TCantBuy
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bTCantBuy"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bTCantBuy", value); }
+	}
 
 	// m_bCTCantBuy
 	[SchemaMember("CCSGameRules", "m_bCTCantBuy")]
-	public ref bool CTCantBuy => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bCTCantBuy");
+	public bool CTCantBuy
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bCTCantBuy"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bCTCantBuy", value); }
+	}
 
 	// m_iMatchStats_RoundResults
 	[SchemaMember("CCSGameRules", "m_iMatchStats_RoundResults")]
@@ -288,11 +497,19 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_vMinimapMins
 	[SchemaMember("CCSGameRules", "m_vMinimapMins")]
-	public Vector MinimapMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSGameRules", "m_vMinimapMins");
+	public Vector3 MinimapMins
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSGameRules", "m_vMinimapMins"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCSGameRules", "m_vMinimapMins", value); }
+	}
 
 	// m_vMinimapMaxs
 	[SchemaMember("CCSGameRules", "m_vMinimapMaxs")]
-	public Vector MinimapMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSGameRules", "m_vMinimapMaxs");
+	public Vector3 MinimapMaxs
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSGameRules", "m_vMinimapMaxs"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCSGameRules", "m_vMinimapMaxs", value); }
+	}
 
 	// m_MinimapVerticalSectionHeights
 	[SchemaMember("CCSGameRules", "m_MinimapVerticalSectionHeights")]
@@ -300,7 +517,11 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_ullLocalMatchID
 	[SchemaMember("CCSGameRules", "m_ullLocalMatchID")]
-	public ref UInt64 UllLocalMatchID => ref Schema.GetRef<UInt64>(this.Handle, "CCSGameRules", "m_ullLocalMatchID");
+	public UInt64 UllLocalMatchID
+	{
+		get { return Schema.GetValueType<UInt64>(this.Handle, "CCSGameRules", "m_ullLocalMatchID"); }
+		set { Schema.SetValueType<UInt64>(this.Handle, "CCSGameRules", "m_ullLocalMatchID", value); }
+	}
 
 	// m_nEndMatchMapGroupVoteTypes
 	[SchemaMember("CCSGameRules", "m_nEndMatchMapGroupVoteTypes")]
@@ -312,63 +533,123 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_nEndMatchMapVoteWinner
 	[SchemaMember("CCSGameRules", "m_nEndMatchMapVoteWinner")]
-	public ref Int32 EndMatchMapVoteWinner => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nEndMatchMapVoteWinner");
+	public Int32 EndMatchMapVoteWinner
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nEndMatchMapVoteWinner"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nEndMatchMapVoteWinner", value); }
+	}
 
 	// m_iNumConsecutiveCTLoses
 	[SchemaMember("CCSGameRules", "m_iNumConsecutiveCTLoses")]
-	public ref Int32 NumConsecutiveCTLoses => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iNumConsecutiveCTLoses");
+	public Int32 NumConsecutiveCTLoses
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNumConsecutiveCTLoses"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNumConsecutiveCTLoses", value); }
+	}
 
 	// m_iNumConsecutiveTerroristLoses
 	[SchemaMember("CCSGameRules", "m_iNumConsecutiveTerroristLoses")]
-	public ref Int32 NumConsecutiveTerroristLoses => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iNumConsecutiveTerroristLoses");
+	public Int32 NumConsecutiveTerroristLoses
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNumConsecutiveTerroristLoses"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNumConsecutiveTerroristLoses", value); }
+	}
 
 	// m_bHasHostageBeenTouched
 	[SchemaMember("CCSGameRules", "m_bHasHostageBeenTouched")]
-	public ref bool HasHostageBeenTouched => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bHasHostageBeenTouched");
+	public bool HasHostageBeenTouched
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bHasHostageBeenTouched"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bHasHostageBeenTouched", value); }
+	}
 
 	// m_flIntermissionStartTime
 	[SchemaMember("CCSGameRules", "m_flIntermissionStartTime")]
-	public ref float IntermissionStartTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flIntermissionStartTime");
+	public float IntermissionStartTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_flIntermissionStartTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_flIntermissionStartTime", value); }
+	}
 
 	// m_flIntermissionEndTime
 	[SchemaMember("CCSGameRules", "m_flIntermissionEndTime")]
-	public ref float IntermissionEndTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flIntermissionEndTime");
+	public float IntermissionEndTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_flIntermissionEndTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_flIntermissionEndTime", value); }
+	}
 
 	// m_bLevelInitialized
 	[SchemaMember("CCSGameRules", "m_bLevelInitialized")]
-	public ref bool LevelInitialized => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bLevelInitialized");
+	public bool LevelInitialized
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bLevelInitialized"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bLevelInitialized", value); }
+	}
 
 	// m_iTotalRoundsPlayed
 	[SchemaMember("CCSGameRules", "m_iTotalRoundsPlayed")]
-	public ref Int32 ITotalRoundsPlayed => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iTotalRoundsPlayed");
+	public Int32 ITotalRoundsPlayed
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iTotalRoundsPlayed"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iTotalRoundsPlayed", value); }
+	}
 
 	// m_iUnBalancedRounds
 	[SchemaMember("CCSGameRules", "m_iUnBalancedRounds")]
-	public ref Int32 UnBalancedRounds => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iUnBalancedRounds");
+	public Int32 UnBalancedRounds
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iUnBalancedRounds"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iUnBalancedRounds", value); }
+	}
 
 	// m_endMatchOnRoundReset
 	[SchemaMember("CCSGameRules", "m_endMatchOnRoundReset")]
-	public ref bool EndMatchOnRoundReset => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_endMatchOnRoundReset");
+	public bool EndMatchOnRoundReset
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_endMatchOnRoundReset"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_endMatchOnRoundReset", value); }
+	}
 
 	// m_endMatchOnThink
 	[SchemaMember("CCSGameRules", "m_endMatchOnThink")]
-	public ref bool EndMatchOnThink => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_endMatchOnThink");
+	public bool EndMatchOnThink
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_endMatchOnThink"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_endMatchOnThink", value); }
+	}
 
 	// m_iNumTerrorist
 	[SchemaMember("CCSGameRules", "m_iNumTerrorist")]
-	public ref Int32 NumTerrorist => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iNumTerrorist");
+	public Int32 NumTerrorist
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNumTerrorist"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNumTerrorist", value); }
+	}
 
 	// m_iNumCT
 	[SchemaMember("CCSGameRules", "m_iNumCT")]
-	public ref Int32 NumCT => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iNumCT");
+	public Int32 NumCT
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNumCT"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNumCT", value); }
+	}
 
 	// m_iNumSpawnableTerrorist
 	[SchemaMember("CCSGameRules", "m_iNumSpawnableTerrorist")]
-	public ref Int32 NumSpawnableTerrorist => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iNumSpawnableTerrorist");
+	public Int32 NumSpawnableTerrorist
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNumSpawnableTerrorist"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNumSpawnableTerrorist", value); }
+	}
 
 	// m_iNumSpawnableCT
 	[SchemaMember("CCSGameRules", "m_iNumSpawnableCT")]
-	public ref Int32 NumSpawnableCT => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iNumSpawnableCT");
+	public Int32 NumSpawnableCT
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNumSpawnableCT"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNumSpawnableCT", value); }
+	}
 
 	// m_arrSelectedHostageSpawnIndices
 	[SchemaMember("CCSGameRules", "m_arrSelectedHostageSpawnIndices")]
@@ -376,27 +657,51 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_nSpawnPointsRandomSeed
 	[SchemaMember("CCSGameRules", "m_nSpawnPointsRandomSeed")]
-	public ref Int32 SpawnPointsRandomSeed => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nSpawnPointsRandomSeed");
+	public Int32 SpawnPointsRandomSeed
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nSpawnPointsRandomSeed"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nSpawnPointsRandomSeed", value); }
+	}
 
 	// m_bFirstConnected
 	[SchemaMember("CCSGameRules", "m_bFirstConnected")]
-	public ref bool FirstConnected => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bFirstConnected");
+	public bool FirstConnected
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bFirstConnected"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bFirstConnected", value); }
+	}
 
 	// m_bCompleteReset
 	[SchemaMember("CCSGameRules", "m_bCompleteReset")]
-	public ref bool CompleteReset => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bCompleteReset");
+	public bool CompleteReset
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bCompleteReset"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bCompleteReset", value); }
+	}
 
 	// m_bPickNewTeamsOnReset
 	[SchemaMember("CCSGameRules", "m_bPickNewTeamsOnReset")]
-	public ref bool PickNewTeamsOnReset => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bPickNewTeamsOnReset");
+	public bool PickNewTeamsOnReset
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bPickNewTeamsOnReset"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bPickNewTeamsOnReset", value); }
+	}
 
 	// m_bScrambleTeamsOnRestart
 	[SchemaMember("CCSGameRules", "m_bScrambleTeamsOnRestart")]
-	public ref bool ScrambleTeamsOnRestart => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bScrambleTeamsOnRestart");
+	public bool ScrambleTeamsOnRestart
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bScrambleTeamsOnRestart"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bScrambleTeamsOnRestart", value); }
+	}
 
 	// m_bSwapTeamsOnRestart
 	[SchemaMember("CCSGameRules", "m_bSwapTeamsOnRestart")]
-	public ref bool SwapTeamsOnRestart => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bSwapTeamsOnRestart");
+	public bool SwapTeamsOnRestart
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bSwapTeamsOnRestart"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bSwapTeamsOnRestart", value); }
+	}
 
 	// m_nEndMatchTiedVotes
 	[SchemaMember("CCSGameRules", "m_nEndMatchTiedVotes")]
@@ -404,15 +709,27 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bNeedToAskPlayersForContinueVote
 	[SchemaMember("CCSGameRules", "m_bNeedToAskPlayersForContinueVote")]
-	public ref bool NeedToAskPlayersForContinueVote => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bNeedToAskPlayersForContinueVote");
+	public bool NeedToAskPlayersForContinueVote
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bNeedToAskPlayersForContinueVote"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bNeedToAskPlayersForContinueVote", value); }
+	}
 
 	// m_numQueuedMatchmakingAccounts
 	[SchemaMember("CCSGameRules", "m_numQueuedMatchmakingAccounts")]
-	public ref UInt32 NumQueuedMatchmakingAccounts => ref Schema.GetRef<UInt32>(this.Handle, "CCSGameRules", "m_numQueuedMatchmakingAccounts");
+	public UInt32 NumQueuedMatchmakingAccounts
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSGameRules", "m_numQueuedMatchmakingAccounts"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CCSGameRules", "m_numQueuedMatchmakingAccounts", value); }
+	}
 
 	// m_fAvgPlayerRank
 	[SchemaMember("CCSGameRules", "m_fAvgPlayerRank")]
-	public ref float AvgPlayerRank => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_fAvgPlayerRank");
+	public float AvgPlayerRank
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_fAvgPlayerRank"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_fAvgPlayerRank", value); }
+	}
 
 	// m_pQueuedMatchmakingReservationString
 	[SchemaMember("CCSGameRules", "m_pQueuedMatchmakingReservationString")]
@@ -424,175 +741,347 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_numTotalTournamentDrops
 	[SchemaMember("CCSGameRules", "m_numTotalTournamentDrops")]
-	public ref UInt32 NumTotalTournamentDrops => ref Schema.GetRef<UInt32>(this.Handle, "CCSGameRules", "m_numTotalTournamentDrops");
+	public UInt32 NumTotalTournamentDrops
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSGameRules", "m_numTotalTournamentDrops"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CCSGameRules", "m_numTotalTournamentDrops", value); }
+	}
 
 	// m_numSpectatorsCountMax
 	[SchemaMember("CCSGameRules", "m_numSpectatorsCountMax")]
-	public ref UInt32 NumSpectatorsCountMax => ref Schema.GetRef<UInt32>(this.Handle, "CCSGameRules", "m_numSpectatorsCountMax");
+	public UInt32 NumSpectatorsCountMax
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSGameRules", "m_numSpectatorsCountMax"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CCSGameRules", "m_numSpectatorsCountMax", value); }
+	}
 
 	// m_numSpectatorsCountMaxTV
 	[SchemaMember("CCSGameRules", "m_numSpectatorsCountMaxTV")]
-	public ref UInt32 NumSpectatorsCountMaxTV => ref Schema.GetRef<UInt32>(this.Handle, "CCSGameRules", "m_numSpectatorsCountMaxTV");
+	public UInt32 NumSpectatorsCountMaxTV
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSGameRules", "m_numSpectatorsCountMaxTV"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CCSGameRules", "m_numSpectatorsCountMaxTV", value); }
+	}
 
 	// m_numSpectatorsCountMaxLnk
 	[SchemaMember("CCSGameRules", "m_numSpectatorsCountMaxLnk")]
-	public ref UInt32 NumSpectatorsCountMaxLnk => ref Schema.GetRef<UInt32>(this.Handle, "CCSGameRules", "m_numSpectatorsCountMaxLnk");
+	public UInt32 NumSpectatorsCountMaxLnk
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSGameRules", "m_numSpectatorsCountMaxLnk"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CCSGameRules", "m_numSpectatorsCountMaxLnk", value); }
+	}
 
 	// m_nCTsAliveAtFreezetimeEnd
 	[SchemaMember("CCSGameRules", "m_nCTsAliveAtFreezetimeEnd")]
-	public ref Int32 CTsAliveAtFreezetimeEnd => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nCTsAliveAtFreezetimeEnd");
+	public Int32 CTsAliveAtFreezetimeEnd
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nCTsAliveAtFreezetimeEnd"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nCTsAliveAtFreezetimeEnd", value); }
+	}
 
 	// m_nTerroristsAliveAtFreezetimeEnd
 	[SchemaMember("CCSGameRules", "m_nTerroristsAliveAtFreezetimeEnd")]
-	public ref Int32 TerroristsAliveAtFreezetimeEnd => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nTerroristsAliveAtFreezetimeEnd");
+	public Int32 TerroristsAliveAtFreezetimeEnd
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nTerroristsAliveAtFreezetimeEnd"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nTerroristsAliveAtFreezetimeEnd", value); }
+	}
 
 	// m_bForceTeamChangeSilent
 	[SchemaMember("CCSGameRules", "m_bForceTeamChangeSilent")]
-	public ref bool ForceTeamChangeSilent => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bForceTeamChangeSilent");
+	public bool ForceTeamChangeSilent
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bForceTeamChangeSilent"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bForceTeamChangeSilent", value); }
+	}
 
 	// m_bLoadingRoundBackupData
 	[SchemaMember("CCSGameRules", "m_bLoadingRoundBackupData")]
-	public ref bool LoadingRoundBackupData => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bLoadingRoundBackupData");
+	public bool LoadingRoundBackupData
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bLoadingRoundBackupData"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bLoadingRoundBackupData", value); }
+	}
 
 	// m_nMatchInfoShowType
 	[SchemaMember("CCSGameRules", "m_nMatchInfoShowType")]
-	public ref Int32 MatchInfoShowType => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nMatchInfoShowType");
+	public Int32 MatchInfoShowType
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nMatchInfoShowType"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nMatchInfoShowType", value); }
+	}
 
 	// m_flMatchInfoDecidedTime
 	[SchemaMember("CCSGameRules", "m_flMatchInfoDecidedTime")]
-	public ref float MatchInfoDecidedTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flMatchInfoDecidedTime");
+	public float MatchInfoDecidedTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_flMatchInfoDecidedTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_flMatchInfoDecidedTime", value); }
+	}
 
 	// mTeamDMLastWinningTeamNumber
 	[SchemaMember("CCSGameRules", "mTeamDMLastWinningTeamNumber")]
-	public ref Int32 MTeamDMLastWinningTeamNumber => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "mTeamDMLastWinningTeamNumber");
+	public Int32 MTeamDMLastWinningTeamNumber
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "mTeamDMLastWinningTeamNumber"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "mTeamDMLastWinningTeamNumber", value); }
+	}
 
 	// mTeamDMLastThinkTime
 	[SchemaMember("CCSGameRules", "mTeamDMLastThinkTime")]
-	public ref float MTeamDMLastThinkTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "mTeamDMLastThinkTime");
+	public float MTeamDMLastThinkTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "mTeamDMLastThinkTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "mTeamDMLastThinkTime", value); }
+	}
 
 	// m_flTeamDMLastAnnouncementTime
 	[SchemaMember("CCSGameRules", "m_flTeamDMLastAnnouncementTime")]
-	public ref float TeamDMLastAnnouncementTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flTeamDMLastAnnouncementTime");
+	public float TeamDMLastAnnouncementTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_flTeamDMLastAnnouncementTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_flTeamDMLastAnnouncementTime", value); }
+	}
 
 	// m_iAccountTerrorist
 	[SchemaMember("CCSGameRules", "m_iAccountTerrorist")]
-	public ref Int32 AccountTerrorist => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iAccountTerrorist");
+	public Int32 AccountTerrorist
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iAccountTerrorist"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iAccountTerrorist", value); }
+	}
 
 	// m_iAccountCT
 	[SchemaMember("CCSGameRules", "m_iAccountCT")]
-	public ref Int32 AccountCT => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iAccountCT");
+	public Int32 AccountCT
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iAccountCT"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iAccountCT", value); }
+	}
 
 	// m_iSpawnPointCount_Terrorist
 	[SchemaMember("CCSGameRules", "m_iSpawnPointCount_Terrorist")]
-	public ref Int32 SpawnPointCount_Terrorist => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iSpawnPointCount_Terrorist");
+	public Int32 SpawnPointCount_Terrorist
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iSpawnPointCount_Terrorist"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iSpawnPointCount_Terrorist", value); }
+	}
 
 	// m_iSpawnPointCount_CT
 	[SchemaMember("CCSGameRules", "m_iSpawnPointCount_CT")]
-	public ref Int32 SpawnPointCount_CT => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iSpawnPointCount_CT");
+	public Int32 SpawnPointCount_CT
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iSpawnPointCount_CT"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iSpawnPointCount_CT", value); }
+	}
 
 	// m_iMaxNumTerrorists
 	[SchemaMember("CCSGameRules", "m_iMaxNumTerrorists")]
-	public ref Int32 MaxNumTerrorists => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iMaxNumTerrorists");
+	public Int32 MaxNumTerrorists
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iMaxNumTerrorists"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iMaxNumTerrorists", value); }
+	}
 
 	// m_iMaxNumCTs
 	[SchemaMember("CCSGameRules", "m_iMaxNumCTs")]
-	public ref Int32 MaxNumCTs => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iMaxNumCTs");
+	public Int32 MaxNumCTs
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iMaxNumCTs"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iMaxNumCTs", value); }
+	}
 
 	// m_iLoserBonusMostRecentTeam
 	[SchemaMember("CCSGameRules", "m_iLoserBonusMostRecentTeam")]
-	public ref Int32 LoserBonusMostRecentTeam => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iLoserBonusMostRecentTeam");
+	public Int32 LoserBonusMostRecentTeam
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iLoserBonusMostRecentTeam"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iLoserBonusMostRecentTeam", value); }
+	}
 
 	// m_tmNextPeriodicThink
 	[SchemaMember("CCSGameRules", "m_tmNextPeriodicThink")]
-	public ref float TmNextPeriodicThink => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_tmNextPeriodicThink");
+	public float TmNextPeriodicThink
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_tmNextPeriodicThink"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_tmNextPeriodicThink", value); }
+	}
 
 	// m_bVoiceWonMatchBragFired
 	[SchemaMember("CCSGameRules", "m_bVoiceWonMatchBragFired")]
-	public ref bool VoiceWonMatchBragFired => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bVoiceWonMatchBragFired");
+	public bool VoiceWonMatchBragFired
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bVoiceWonMatchBragFired"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bVoiceWonMatchBragFired", value); }
+	}
 
 	// m_fWarmupNextChatNoticeTime
 	[SchemaMember("CCSGameRules", "m_fWarmupNextChatNoticeTime")]
-	public ref float WarmupNextChatNoticeTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_fWarmupNextChatNoticeTime");
+	public float WarmupNextChatNoticeTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_fWarmupNextChatNoticeTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_fWarmupNextChatNoticeTime", value); }
+	}
 
 	// m_iHostagesRescued
 	[SchemaMember("CCSGameRules", "m_iHostagesRescued")]
-	public ref Int32 HostagesRescued => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iHostagesRescued");
+	public Int32 HostagesRescued
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iHostagesRescued"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iHostagesRescued", value); }
+	}
 
 	// m_iHostagesTouched
 	[SchemaMember("CCSGameRules", "m_iHostagesTouched")]
-	public ref Int32 HostagesTouched => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iHostagesTouched");
+	public Int32 HostagesTouched
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iHostagesTouched"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iHostagesTouched", value); }
+	}
 
 	// m_flNextHostageAnnouncement
 	[SchemaMember("CCSGameRules", "m_flNextHostageAnnouncement")]
-	public ref float NextHostageAnnouncement => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flNextHostageAnnouncement");
+	public float NextHostageAnnouncement
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_flNextHostageAnnouncement"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_flNextHostageAnnouncement", value); }
+	}
 
 	// m_bNoTerroristsKilled
 	[SchemaMember("CCSGameRules", "m_bNoTerroristsKilled")]
-	public ref bool NoTerroristsKilled => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bNoTerroristsKilled");
+	public bool NoTerroristsKilled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bNoTerroristsKilled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bNoTerroristsKilled", value); }
+	}
 
 	// m_bNoCTsKilled
 	[SchemaMember("CCSGameRules", "m_bNoCTsKilled")]
-	public ref bool NoCTsKilled => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bNoCTsKilled");
+	public bool NoCTsKilled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bNoCTsKilled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bNoCTsKilled", value); }
+	}
 
 	// m_bNoEnemiesKilled
 	[SchemaMember("CCSGameRules", "m_bNoEnemiesKilled")]
-	public ref bool NoEnemiesKilled => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bNoEnemiesKilled");
+	public bool NoEnemiesKilled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bNoEnemiesKilled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bNoEnemiesKilled", value); }
+	}
 
 	// m_bCanDonateWeapons
 	[SchemaMember("CCSGameRules", "m_bCanDonateWeapons")]
-	public ref bool CanDonateWeapons => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bCanDonateWeapons");
+	public bool CanDonateWeapons
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bCanDonateWeapons"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bCanDonateWeapons", value); }
+	}
 
 	// m_firstKillTime
 	[SchemaMember("CCSGameRules", "m_firstKillTime")]
-	public ref float FirstKillTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_firstKillTime");
+	public float FirstKillTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_firstKillTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_firstKillTime", value); }
+	}
 
 	// m_firstBloodTime
 	[SchemaMember("CCSGameRules", "m_firstBloodTime")]
-	public ref float FirstBloodTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_firstBloodTime");
+	public float FirstBloodTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_firstBloodTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_firstBloodTime", value); }
+	}
 
 	// m_hostageWasInjured
 	[SchemaMember("CCSGameRules", "m_hostageWasInjured")]
-	public ref bool HostageWasInjured => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_hostageWasInjured");
+	public bool HostageWasInjured
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_hostageWasInjured"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_hostageWasInjured", value); }
+	}
 
 	// m_hostageWasKilled
 	[SchemaMember("CCSGameRules", "m_hostageWasKilled")]
-	public ref bool HostageWasKilled => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_hostageWasKilled");
+	public bool HostageWasKilled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_hostageWasKilled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_hostageWasKilled", value); }
+	}
 
 	// m_bVoteCalled
 	[SchemaMember("CCSGameRules", "m_bVoteCalled")]
-	public ref bool VoteCalled => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bVoteCalled");
+	public bool VoteCalled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bVoteCalled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bVoteCalled", value); }
+	}
 
 	// m_bServerVoteOnReset
 	[SchemaMember("CCSGameRules", "m_bServerVoteOnReset")]
-	public ref bool ServerVoteOnReset => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bServerVoteOnReset");
+	public bool ServerVoteOnReset
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bServerVoteOnReset"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bServerVoteOnReset", value); }
+	}
 
 	// m_flVoteCheckThrottle
 	[SchemaMember("CCSGameRules", "m_flVoteCheckThrottle")]
-	public ref float VoteCheckThrottle => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flVoteCheckThrottle");
+	public float VoteCheckThrottle
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_flVoteCheckThrottle"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_flVoteCheckThrottle", value); }
+	}
 
 	// m_bBuyTimeEnded
 	[SchemaMember("CCSGameRules", "m_bBuyTimeEnded")]
-	public ref bool BuyTimeEnded => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bBuyTimeEnded");
+	public bool BuyTimeEnded
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bBuyTimeEnded"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bBuyTimeEnded", value); }
+	}
 
 	// m_nLastFreezeEndBeep
 	[SchemaMember("CCSGameRules", "m_nLastFreezeEndBeep")]
-	public ref Int32 LastFreezeEndBeep => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nLastFreezeEndBeep");
+	public Int32 LastFreezeEndBeep
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nLastFreezeEndBeep"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nLastFreezeEndBeep", value); }
+	}
 
 	// m_bTargetBombed
 	[SchemaMember("CCSGameRules", "m_bTargetBombed")]
-	public ref bool TargetBombed => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bTargetBombed");
+	public bool TargetBombed
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bTargetBombed"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bTargetBombed", value); }
+	}
 
 	// m_bBombDefused
 	[SchemaMember("CCSGameRules", "m_bBombDefused")]
-	public ref bool BombDefused => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bBombDefused");
+	public bool BombDefused
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bBombDefused"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bBombDefused", value); }
+	}
 
 	// m_bMapHasBombZone
 	[SchemaMember("CCSGameRules", "m_bMapHasBombZone")]
-	public ref bool MapHasBombZone => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bMapHasBombZone");
+	public bool MapHasBombZone
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bMapHasBombZone"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bMapHasBombZone", value); }
+	}
 
 	// m_vecMainCTSpawnPos
 	[SchemaMember("CCSGameRules", "m_vecMainCTSpawnPos")]
-	public Vector MainCTSpawnPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSGameRules", "m_vecMainCTSpawnPos");
+	public Vector3 MainCTSpawnPos
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSGameRules", "m_vecMainCTSpawnPos"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCSGameRules", "m_vecMainCTSpawnPos", value); }
+	}
 
 	// m_CTSpawnPointsMasterList
 	[SchemaMember("CCSGameRules", "m_CTSpawnPointsMasterList")]
@@ -604,23 +1093,43 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bRespawningAllRespawnablePlayers
 	[SchemaMember("CCSGameRules", "m_bRespawningAllRespawnablePlayers")]
-	public ref bool RespawningAllRespawnablePlayers => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bRespawningAllRespawnablePlayers");
+	public bool RespawningAllRespawnablePlayers
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bRespawningAllRespawnablePlayers"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bRespawningAllRespawnablePlayers", value); }
+	}
 
 	// m_iNextCTSpawnPoint
 	[SchemaMember("CCSGameRules", "m_iNextCTSpawnPoint")]
-	public ref Int32 NextCTSpawnPoint => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iNextCTSpawnPoint");
+	public Int32 NextCTSpawnPoint
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNextCTSpawnPoint"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNextCTSpawnPoint", value); }
+	}
 
 	// m_flCTSpawnPointUsedTime
 	[SchemaMember("CCSGameRules", "m_flCTSpawnPointUsedTime")]
-	public ref float CTSpawnPointUsedTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flCTSpawnPointUsedTime");
+	public float CTSpawnPointUsedTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_flCTSpawnPointUsedTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_flCTSpawnPointUsedTime", value); }
+	}
 
 	// m_iNextTerroristSpawnPoint
 	[SchemaMember("CCSGameRules", "m_iNextTerroristSpawnPoint")]
-	public ref Int32 NextTerroristSpawnPoint => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iNextTerroristSpawnPoint");
+	public Int32 NextTerroristSpawnPoint
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNextTerroristSpawnPoint"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iNextTerroristSpawnPoint", value); }
+	}
 
 	// m_flTerroristSpawnPointUsedTime
 	[SchemaMember("CCSGameRules", "m_flTerroristSpawnPointUsedTime")]
-	public ref float TerroristSpawnPointUsedTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flTerroristSpawnPointUsedTime");
+	public float TerroristSpawnPointUsedTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_flTerroristSpawnPointUsedTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_flTerroristSpawnPointUsedTime", value); }
+	}
 
 	// m_CTSpawnPoints
 	[SchemaMember("CCSGameRules", "m_CTSpawnPoints")]
@@ -632,51 +1141,99 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_bIsUnreservedGameServer
 	[SchemaMember("CCSGameRules", "m_bIsUnreservedGameServer")]
-	public ref bool IsUnreservedGameServer => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bIsUnreservedGameServer");
+	public bool IsUnreservedGameServer
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bIsUnreservedGameServer"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bIsUnreservedGameServer", value); }
+	}
 
 	// m_fAutobalanceDisplayTime
 	[SchemaMember("CCSGameRules", "m_fAutobalanceDisplayTime")]
-	public ref float AutobalanceDisplayTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_fAutobalanceDisplayTime");
+	public float AutobalanceDisplayTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_fAutobalanceDisplayTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_fAutobalanceDisplayTime", value); }
+	}
 
 	// m_bAllowWeaponSwitch
 	[SchemaMember("CCSGameRules", "m_bAllowWeaponSwitch")]
-	public ref bool AllowWeaponSwitch => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bAllowWeaponSwitch");
+	public bool AllowWeaponSwitch
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bAllowWeaponSwitch"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bAllowWeaponSwitch", value); }
+	}
 
 	// m_bRoundTimeWarningTriggered
 	[SchemaMember("CCSGameRules", "m_bRoundTimeWarningTriggered")]
-	public ref bool RoundTimeWarningTriggered => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bRoundTimeWarningTriggered");
+	public bool RoundTimeWarningTriggered
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bRoundTimeWarningTriggered"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bRoundTimeWarningTriggered", value); }
+	}
 
 	// m_phaseChangeAnnouncementTime
 	[SchemaMember("CCSGameRules", "m_phaseChangeAnnouncementTime")]
-	public ref float PhaseChangeAnnouncementTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_phaseChangeAnnouncementTime");
+	public float PhaseChangeAnnouncementTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_phaseChangeAnnouncementTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_phaseChangeAnnouncementTime", value); }
+	}
 
 	// m_fNextUpdateTeamClanNamesTime
 	[SchemaMember("CCSGameRules", "m_fNextUpdateTeamClanNamesTime")]
-	public ref float NextUpdateTeamClanNamesTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_fNextUpdateTeamClanNamesTime");
+	public float NextUpdateTeamClanNamesTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_fNextUpdateTeamClanNamesTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_fNextUpdateTeamClanNamesTime", value); }
+	}
 
 	// m_flLastThinkTime
 	[SchemaMember("CCSGameRules", "m_flLastThinkTime")]
-	public ref float LastThinkTime => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_flLastThinkTime");
+	public float LastThinkTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_flLastThinkTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_flLastThinkTime", value); }
+	}
 
 	// m_fAccumulatedRoundOffDamage
 	[SchemaMember("CCSGameRules", "m_fAccumulatedRoundOffDamage")]
-	public ref float AccumulatedRoundOffDamage => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_fAccumulatedRoundOffDamage");
+	public float AccumulatedRoundOffDamage
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_fAccumulatedRoundOffDamage"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_fAccumulatedRoundOffDamage", value); }
+	}
 
 	// m_nShorthandedBonusLastEvalRound
 	[SchemaMember("CCSGameRules", "m_nShorthandedBonusLastEvalRound")]
-	public ref Int32 ShorthandedBonusLastEvalRound => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nShorthandedBonusLastEvalRound");
+	public Int32 ShorthandedBonusLastEvalRound
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nShorthandedBonusLastEvalRound"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nShorthandedBonusLastEvalRound", value); }
+	}
 
 	// m_nMatchAbortedEarlyReason
 	[SchemaMember("CCSGameRules", "m_nMatchAbortedEarlyReason")]
-	public ref Int32 MatchAbortedEarlyReason => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nMatchAbortedEarlyReason");
+	public Int32 MatchAbortedEarlyReason
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nMatchAbortedEarlyReason"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nMatchAbortedEarlyReason", value); }
+	}
 
 	// m_bHasTriggeredRoundStartMusic
 	[SchemaMember("CCSGameRules", "m_bHasTriggeredRoundStartMusic")]
-	public ref bool HasTriggeredRoundStartMusic => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bHasTriggeredRoundStartMusic");
+	public bool HasTriggeredRoundStartMusic
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bHasTriggeredRoundStartMusic"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bHasTriggeredRoundStartMusic", value); }
+	}
 
 	// m_bSwitchingTeamsAtRoundReset
 	[SchemaMember("CCSGameRules", "m_bSwitchingTeamsAtRoundReset")]
-	public ref bool SwitchingTeamsAtRoundReset => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bSwitchingTeamsAtRoundReset");
+	public bool SwitchingTeamsAtRoundReset
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bSwitchingTeamsAtRoundReset"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bSwitchingTeamsAtRoundReset", value); }
+	}
 
 	// m_pGameModeRules
 	[SchemaMember("CCSGameRules", "m_pGameModeRules")]
@@ -700,43 +1257,83 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_nMatchEndCount
 	[SchemaMember("CCSGameRules", "m_nMatchEndCount")]
-	public ref byte MatchEndCount => ref Schema.GetRef<byte>(this.Handle, "CCSGameRules", "m_nMatchEndCount");
+	public byte MatchEndCount
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CCSGameRules", "m_nMatchEndCount"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CCSGameRules", "m_nMatchEndCount", value); }
+	}
 
 	// m_nTTeamIntroVariant
 	[SchemaMember("CCSGameRules", "m_nTTeamIntroVariant")]
-	public ref Int32 TTeamIntroVariant => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nTTeamIntroVariant");
+	public Int32 TTeamIntroVariant
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nTTeamIntroVariant"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nTTeamIntroVariant", value); }
+	}
 
 	// m_nCTTeamIntroVariant
 	[SchemaMember("CCSGameRules", "m_nCTTeamIntroVariant")]
-	public ref Int32 CTTeamIntroVariant => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_nCTTeamIntroVariant");
+	public Int32 CTTeamIntroVariant
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_nCTTeamIntroVariant"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_nCTTeamIntroVariant", value); }
+	}
 
 	// m_bTeamIntroPeriod
 	[SchemaMember("CCSGameRules", "m_bTeamIntroPeriod")]
-	public ref bool TeamIntroPeriod => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bTeamIntroPeriod");
+	public bool TeamIntroPeriod
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bTeamIntroPeriod"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bTeamIntroPeriod", value); }
+	}
 
 	// m_fTeamIntroPeriodEnd
 	[SchemaMember("CCSGameRules", "m_fTeamIntroPeriodEnd")]
-	public ref float TeamIntroPeriodEnd => ref Schema.GetRef<float>(this.Handle, "CCSGameRules", "m_fTeamIntroPeriodEnd");
+	public float TeamIntroPeriodEnd
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameRules", "m_fTeamIntroPeriodEnd"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameRules", "m_fTeamIntroPeriodEnd", value); }
+	}
 
 	// m_bPlayedTeamIntroVO
 	[SchemaMember("CCSGameRules", "m_bPlayedTeamIntroVO")]
-	public ref bool PlayedTeamIntroVO => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bPlayedTeamIntroVO");
+	public bool PlayedTeamIntroVO
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bPlayedTeamIntroVO"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bPlayedTeamIntroVO", value); }
+	}
 
 	// m_iRoundEndWinnerTeam
 	[SchemaMember("CCSGameRules", "m_iRoundEndWinnerTeam")]
-	public ref Int32 RoundEndWinnerTeam => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndWinnerTeam");
+	public Int32 RoundEndWinnerTeam
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndWinnerTeam"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndWinnerTeam", value); }
+	}
 
 	// m_eRoundEndReason
 	[SchemaMember("CCSGameRules", "m_eRoundEndReason")]
-	public ref Int32 RoundEndReason => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_eRoundEndReason");
+	public Int32 RoundEndReason
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_eRoundEndReason"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_eRoundEndReason", value); }
+	}
 
 	// m_bRoundEndShowTimerDefend
 	[SchemaMember("CCSGameRules", "m_bRoundEndShowTimerDefend")]
-	public ref bool RoundEndShowTimerDefend => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bRoundEndShowTimerDefend");
+	public bool RoundEndShowTimerDefend
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bRoundEndShowTimerDefend"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bRoundEndShowTimerDefend", value); }
+	}
 
 	// m_iRoundEndTimerTime
 	[SchemaMember("CCSGameRules", "m_iRoundEndTimerTime")]
-	public ref Int32 RoundEndTimerTime => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndTimerTime");
+	public Int32 RoundEndTimerTime
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndTimerTime"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndTimerTime", value); }
+	}
 
 	// m_sRoundEndFunFactToken
 	[SchemaMember("CCSGameRules", "m_sRoundEndFunFactToken")]
@@ -748,19 +1345,35 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iRoundEndFunFactPlayerSlot
 	[SchemaMember("CCSGameRules", "m_iRoundEndFunFactPlayerSlot")]
-	public ref Int32 RoundEndFunFactPlayerSlot => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndFunFactPlayerSlot");
+	public Int32 RoundEndFunFactPlayerSlot
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndFunFactPlayerSlot"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndFunFactPlayerSlot", value); }
+	}
 
 	// m_iRoundEndFunFactData1
 	[SchemaMember("CCSGameRules", "m_iRoundEndFunFactData1")]
-	public ref Int32 RoundEndFunFactData1 => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndFunFactData1");
+	public Int32 RoundEndFunFactData1
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndFunFactData1"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndFunFactData1", value); }
+	}
 
 	// m_iRoundEndFunFactData2
 	[SchemaMember("CCSGameRules", "m_iRoundEndFunFactData2")]
-	public ref Int32 RoundEndFunFactData2 => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndFunFactData2");
+	public Int32 RoundEndFunFactData2
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndFunFactData2"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndFunFactData2", value); }
+	}
 
 	// m_iRoundEndFunFactData3
 	[SchemaMember("CCSGameRules", "m_iRoundEndFunFactData3")]
-	public ref Int32 RoundEndFunFactData3 => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndFunFactData3");
+	public Int32 RoundEndFunFactData3
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndFunFactData3"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndFunFactData3", value); }
+	}
 
 	// m_sRoundEndMessage
 	[SchemaMember("CCSGameRules", "m_sRoundEndMessage")]
@@ -772,30 +1385,58 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_iRoundEndPlayerCount
 	[SchemaMember("CCSGameRules", "m_iRoundEndPlayerCount")]
-	public ref Int32 RoundEndPlayerCount => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndPlayerCount");
+	public Int32 RoundEndPlayerCount
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndPlayerCount"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndPlayerCount", value); }
+	}
 
 	// m_bRoundEndNoMusic
 	[SchemaMember("CCSGameRules", "m_bRoundEndNoMusic")]
-	public ref bool RoundEndNoMusic => ref Schema.GetRef<bool>(this.Handle, "CCSGameRules", "m_bRoundEndNoMusic");
+	public bool RoundEndNoMusic
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSGameRules", "m_bRoundEndNoMusic"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSGameRules", "m_bRoundEndNoMusic", value); }
+	}
 
 	// m_iRoundEndLegacy
 	[SchemaMember("CCSGameRules", "m_iRoundEndLegacy")]
-	public ref Int32 RoundEndLegacy => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndLegacy");
+	public Int32 RoundEndLegacy
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndLegacy"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundEndLegacy", value); }
+	}
 
 	// m_nRoundEndCount
 	[SchemaMember("CCSGameRules", "m_nRoundEndCount")]
-	public ref byte RoundEndCount => ref Schema.GetRef<byte>(this.Handle, "CCSGameRules", "m_nRoundEndCount");
+	public byte RoundEndCount
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CCSGameRules", "m_nRoundEndCount"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CCSGameRules", "m_nRoundEndCount", value); }
+	}
 
 	// m_iRoundStartRoundNumber
 	[SchemaMember("CCSGameRules", "m_iRoundStartRoundNumber")]
-	public ref Int32 RoundStartRoundNumber => ref Schema.GetRef<Int32>(this.Handle, "CCSGameRules", "m_iRoundStartRoundNumber");
+	public Int32 RoundStartRoundNumber
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundStartRoundNumber"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGameRules", "m_iRoundStartRoundNumber", value); }
+	}
 
 	// m_nRoundStartCount
 	[SchemaMember("CCSGameRules", "m_nRoundStartCount")]
-	public ref byte RoundStartCount => ref Schema.GetRef<byte>(this.Handle, "CCSGameRules", "m_nRoundStartCount");
+	public byte RoundStartCount
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CCSGameRules", "m_nRoundStartCount"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CCSGameRules", "m_nRoundStartCount", value); }
+	}
 
 	// m_flLastPerfSampleTime
 	[SchemaMember("CCSGameRules", "m_flLastPerfSampleTime")]
-	public ref double LastPerfSampleTime => ref Schema.GetRef<double>(this.Handle, "CCSGameRules", "m_flLastPerfSampleTime");
+	public double LastPerfSampleTime
+	{
+		get { return Schema.GetValueType<double>(this.Handle, "CCSGameRules", "m_flLastPerfSampleTime"); }
+		set { Schema.SetValueType<double>(this.Handle, "CCSGameRules", "m_flLastPerfSampleTime", value); }
+	}
 
 }

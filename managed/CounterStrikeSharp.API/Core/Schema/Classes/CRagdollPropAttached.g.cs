@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,26 +21,50 @@ public partial class CRagdollPropAttached : CRagdollProp
 
 	// m_boneIndexAttached
 	[SchemaMember("CRagdollPropAttached", "m_boneIndexAttached")]
-	public ref UInt32 BoneIndexAttached => ref Schema.GetRef<UInt32>(this.Handle, "CRagdollPropAttached", "m_boneIndexAttached");
+	public UInt32 BoneIndexAttached
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CRagdollPropAttached", "m_boneIndexAttached"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CRagdollPropAttached", "m_boneIndexAttached", value); }
+	}
 
 	// m_ragdollAttachedObjectIndex
 	[SchemaMember("CRagdollPropAttached", "m_ragdollAttachedObjectIndex")]
-	public ref UInt32 RagdollAttachedObjectIndex => ref Schema.GetRef<UInt32>(this.Handle, "CRagdollPropAttached", "m_ragdollAttachedObjectIndex");
+	public UInt32 RagdollAttachedObjectIndex
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CRagdollPropAttached", "m_ragdollAttachedObjectIndex"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CRagdollPropAttached", "m_ragdollAttachedObjectIndex", value); }
+	}
 
 	// m_attachmentPointBoneSpace
 	[SchemaMember("CRagdollPropAttached", "m_attachmentPointBoneSpace")]
-	public Vector AttachmentPointBoneSpace => Schema.GetDeclaredClass<Vector>(this.Handle, "CRagdollPropAttached", "m_attachmentPointBoneSpace");
+	public Vector3 AttachmentPointBoneSpace
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CRagdollPropAttached", "m_attachmentPointBoneSpace"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CRagdollPropAttached", "m_attachmentPointBoneSpace", value); }
+	}
 
 	// m_attachmentPointRagdollSpace
 	[SchemaMember("CRagdollPropAttached", "m_attachmentPointRagdollSpace")]
-	public Vector AttachmentPointRagdollSpace => Schema.GetDeclaredClass<Vector>(this.Handle, "CRagdollPropAttached", "m_attachmentPointRagdollSpace");
+	public Vector3 AttachmentPointRagdollSpace
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CRagdollPropAttached", "m_attachmentPointRagdollSpace"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CRagdollPropAttached", "m_attachmentPointRagdollSpace", value); }
+	}
 
 	// m_bShouldDetach
 	[SchemaMember("CRagdollPropAttached", "m_bShouldDetach")]
-	public ref bool ShouldDetach => ref Schema.GetRef<bool>(this.Handle, "CRagdollPropAttached", "m_bShouldDetach");
+	public bool ShouldDetach
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CRagdollPropAttached", "m_bShouldDetach"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CRagdollPropAttached", "m_bShouldDetach", value); }
+	}
 
 	// m_bShouldDeleteAttachedActivationRecord
 	[SchemaMember("CRagdollPropAttached", "m_bShouldDeleteAttachedActivationRecord")]
-	public ref bool ShouldDeleteAttachedActivationRecord => ref Schema.GetRef<bool>(this.Handle, "CRagdollPropAttached", "m_bShouldDeleteAttachedActivationRecord");
+	public bool ShouldDeleteAttachedActivationRecord
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CRagdollPropAttached", "m_bShouldDeleteAttachedActivationRecord"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CRagdollPropAttached", "m_bShouldDeleteAttachedActivationRecord", value); }
+	}
 
 }

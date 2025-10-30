@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,23 +21,43 @@ public partial class CRetakeGameRules : NativeObject
 
 	// m_nMatchSeed
 	[SchemaMember("CRetakeGameRules", "m_nMatchSeed")]
-	public ref Int32 MatchSeed => ref Schema.GetRef<Int32>(this.Handle, "CRetakeGameRules", "m_nMatchSeed");
+	public Int32 MatchSeed
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CRetakeGameRules", "m_nMatchSeed"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CRetakeGameRules", "m_nMatchSeed", value); }
+	}
 
 	// m_bBlockersPresent
 	[SchemaMember("CRetakeGameRules", "m_bBlockersPresent")]
-	public ref bool BlockersPresent => ref Schema.GetRef<bool>(this.Handle, "CRetakeGameRules", "m_bBlockersPresent");
+	public bool BlockersPresent
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CRetakeGameRules", "m_bBlockersPresent"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CRetakeGameRules", "m_bBlockersPresent", value); }
+	}
 
 	// m_bRoundInProgress
 	[SchemaMember("CRetakeGameRules", "m_bRoundInProgress")]
-	public ref bool RoundInProgress => ref Schema.GetRef<bool>(this.Handle, "CRetakeGameRules", "m_bRoundInProgress");
+	public bool RoundInProgress
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CRetakeGameRules", "m_bRoundInProgress"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CRetakeGameRules", "m_bRoundInProgress", value); }
+	}
 
 	// m_iFirstSecondHalfRound
 	[SchemaMember("CRetakeGameRules", "m_iFirstSecondHalfRound")]
-	public ref Int32 FirstSecondHalfRound => ref Schema.GetRef<Int32>(this.Handle, "CRetakeGameRules", "m_iFirstSecondHalfRound");
+	public Int32 FirstSecondHalfRound
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CRetakeGameRules", "m_iFirstSecondHalfRound"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CRetakeGameRules", "m_iFirstSecondHalfRound", value); }
+	}
 
 	// m_iBombSite
 	[SchemaMember("CRetakeGameRules", "m_iBombSite")]
-	public ref Int32 BombSite => ref Schema.GetRef<Int32>(this.Handle, "CRetakeGameRules", "m_iBombSite");
+	public Int32 BombSite
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CRetakeGameRules", "m_iBombSite"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CRetakeGameRules", "m_iBombSite", value); }
+	}
 
 	// m_hBombPlanter
 	[SchemaMember("CRetakeGameRules", "m_hBombPlanter")]

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,26 +29,50 @@ public partial class DynamicVolumeDef_t : NativeObject
 
 	// m_nHullIdx
 	[SchemaMember("DynamicVolumeDef_t", "m_nHullIdx")]
-	public ref Int32 HullIdx => ref Schema.GetRef<Int32>(this.Handle, "DynamicVolumeDef_t", "m_nHullIdx");
+	public Int32 HullIdx
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "DynamicVolumeDef_t", "m_nHullIdx"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "DynamicVolumeDef_t", "m_nHullIdx", value); }
+	}
 
 	// m_vSourceAnchorPos
 	[SchemaMember("DynamicVolumeDef_t", "m_vSourceAnchorPos")]
-	public Vector SourceAnchorPos => Schema.GetDeclaredClass<Vector>(this.Handle, "DynamicVolumeDef_t", "m_vSourceAnchorPos");
+	public Vector3 SourceAnchorPos
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "DynamicVolumeDef_t", "m_vSourceAnchorPos"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "DynamicVolumeDef_t", "m_vSourceAnchorPos", value); }
+	}
 
 	// m_vTargetAnchorPos
 	[SchemaMember("DynamicVolumeDef_t", "m_vTargetAnchorPos")]
-	public Vector TargetAnchorPos => Schema.GetDeclaredClass<Vector>(this.Handle, "DynamicVolumeDef_t", "m_vTargetAnchorPos");
+	public Vector3 TargetAnchorPos
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "DynamicVolumeDef_t", "m_vTargetAnchorPos"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "DynamicVolumeDef_t", "m_vTargetAnchorPos", value); }
+	}
 
 	// m_nAreaSrc
 	[SchemaMember("DynamicVolumeDef_t", "m_nAreaSrc")]
-	public ref UInt32 AreaSrc => ref Schema.GetRef<UInt32>(this.Handle, "DynamicVolumeDef_t", "m_nAreaSrc");
+	public UInt32 AreaSrc
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "DynamicVolumeDef_t", "m_nAreaSrc"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "DynamicVolumeDef_t", "m_nAreaSrc", value); }
+	}
 
 	// m_nAreaDst
 	[SchemaMember("DynamicVolumeDef_t", "m_nAreaDst")]
-	public ref UInt32 AreaDst => ref Schema.GetRef<UInt32>(this.Handle, "DynamicVolumeDef_t", "m_nAreaDst");
+	public UInt32 AreaDst
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "DynamicVolumeDef_t", "m_nAreaDst"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "DynamicVolumeDef_t", "m_nAreaDst", value); }
+	}
 
 	// m_bAttached
 	[SchemaMember("DynamicVolumeDef_t", "m_bAttached")]
-	public ref bool Attached => ref Schema.GetRef<bool>(this.Handle, "DynamicVolumeDef_t", "m_bAttached");
+	public bool Attached
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "DynamicVolumeDef_t", "m_bAttached"); }
+		set { Schema.SetValueType<bool>(this.Handle, "DynamicVolumeDef_t", "m_bAttached", value); }
+	}
 
 }

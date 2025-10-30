@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,15 +29,27 @@ public partial class CFilterEnemy : CBaseFilter
 
 	// m_flRadius
 	[SchemaMember("CFilterEnemy", "m_flRadius")]
-	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CFilterEnemy", "m_flRadius");
+	public float Radius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFilterEnemy", "m_flRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFilterEnemy", "m_flRadius", value); }
+	}
 
 	// m_flOuterRadius
 	[SchemaMember("CFilterEnemy", "m_flOuterRadius")]
-	public ref float OuterRadius => ref Schema.GetRef<float>(this.Handle, "CFilterEnemy", "m_flOuterRadius");
+	public float OuterRadius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFilterEnemy", "m_flOuterRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFilterEnemy", "m_flOuterRadius", value); }
+	}
 
 	// m_nMaxSquadmatesPerEnemy
 	[SchemaMember("CFilterEnemy", "m_nMaxSquadmatesPerEnemy")]
-	public ref Int32 MaxSquadmatesPerEnemy => ref Schema.GetRef<Int32>(this.Handle, "CFilterEnemy", "m_nMaxSquadmatesPerEnemy");
+	public Int32 MaxSquadmatesPerEnemy
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CFilterEnemy", "m_nMaxSquadmatesPerEnemy"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CFilterEnemy", "m_nMaxSquadmatesPerEnemy", value); }
+	}
 
 	// m_iszPlayerName
 	[SchemaMember("CFilterEnemy", "m_iszPlayerName")]

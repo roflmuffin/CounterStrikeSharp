@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,26 +21,50 @@ public partial class CPhysBallSocket : CPhysConstraint
 
 	// m_flJointFriction
 	[SchemaMember("CPhysBallSocket", "m_flJointFriction")]
-	public ref float JointFriction => ref Schema.GetRef<float>(this.Handle, "CPhysBallSocket", "m_flJointFriction");
+	public float JointFriction
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysBallSocket", "m_flJointFriction"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysBallSocket", "m_flJointFriction", value); }
+	}
 
 	// m_bEnableSwingLimit
 	[SchemaMember("CPhysBallSocket", "m_bEnableSwingLimit")]
-	public ref bool EnableSwingLimit => ref Schema.GetRef<bool>(this.Handle, "CPhysBallSocket", "m_bEnableSwingLimit");
+	public bool EnableSwingLimit
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysBallSocket", "m_bEnableSwingLimit"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysBallSocket", "m_bEnableSwingLimit", value); }
+	}
 
 	// m_flSwingLimit
 	[SchemaMember("CPhysBallSocket", "m_flSwingLimit")]
-	public ref float SwingLimit => ref Schema.GetRef<float>(this.Handle, "CPhysBallSocket", "m_flSwingLimit");
+	public float SwingLimit
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysBallSocket", "m_flSwingLimit"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysBallSocket", "m_flSwingLimit", value); }
+	}
 
 	// m_bEnableTwistLimit
 	[SchemaMember("CPhysBallSocket", "m_bEnableTwistLimit")]
-	public ref bool EnableTwistLimit => ref Schema.GetRef<bool>(this.Handle, "CPhysBallSocket", "m_bEnableTwistLimit");
+	public bool EnableTwistLimit
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysBallSocket", "m_bEnableTwistLimit"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysBallSocket", "m_bEnableTwistLimit", value); }
+	}
 
 	// m_flMinTwistAngle
 	[SchemaMember("CPhysBallSocket", "m_flMinTwistAngle")]
-	public ref float MinTwistAngle => ref Schema.GetRef<float>(this.Handle, "CPhysBallSocket", "m_flMinTwistAngle");
+	public float MinTwistAngle
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysBallSocket", "m_flMinTwistAngle"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysBallSocket", "m_flMinTwistAngle", value); }
+	}
 
 	// m_flMaxTwistAngle
 	[SchemaMember("CPhysBallSocket", "m_flMaxTwistAngle")]
-	public ref float MaxTwistAngle => ref Schema.GetRef<float>(this.Handle, "CPhysBallSocket", "m_flMaxTwistAngle");
+	public float MaxTwistAngle
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysBallSocket", "m_flMaxTwistAngle"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysBallSocket", "m_flMaxTwistAngle", value); }
+	}
 
 }

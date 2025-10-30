@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,10 +21,18 @@ public partial class CEnvDetailController : CBaseEntity
 
 	// m_flFadeStartDist
 	[SchemaMember("CEnvDetailController", "m_flFadeStartDist")]
-	public ref float FadeStartDist => ref Schema.GetRef<float>(this.Handle, "CEnvDetailController", "m_flFadeStartDist");
+	public float FadeStartDist
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvDetailController", "m_flFadeStartDist"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvDetailController", "m_flFadeStartDist", value); }
+	}
 
 	// m_flFadeEndDist
 	[SchemaMember("CEnvDetailController", "m_flFadeEndDist")]
-	public ref float FadeEndDist => ref Schema.GetRef<float>(this.Handle, "CEnvDetailController", "m_flFadeEndDist");
+	public float FadeEndDist
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvDetailController", "m_flFadeEndDist"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvDetailController", "m_flFadeEndDist", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,27 +21,51 @@ public partial class CPhysFixed : CPhysConstraint
 
 	// m_flLinearFrequency
 	[SchemaMember("CPhysFixed", "m_flLinearFrequency")]
-	public ref float LinearFrequency => ref Schema.GetRef<float>(this.Handle, "CPhysFixed", "m_flLinearFrequency");
+	public float LinearFrequency
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysFixed", "m_flLinearFrequency"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysFixed", "m_flLinearFrequency", value); }
+	}
 
 	// m_flLinearDampingRatio
 	[SchemaMember("CPhysFixed", "m_flLinearDampingRatio")]
-	public ref float LinearDampingRatio => ref Schema.GetRef<float>(this.Handle, "CPhysFixed", "m_flLinearDampingRatio");
+	public float LinearDampingRatio
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysFixed", "m_flLinearDampingRatio"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysFixed", "m_flLinearDampingRatio", value); }
+	}
 
 	// m_flAngularFrequency
 	[SchemaMember("CPhysFixed", "m_flAngularFrequency")]
-	public ref float AngularFrequency => ref Schema.GetRef<float>(this.Handle, "CPhysFixed", "m_flAngularFrequency");
+	public float AngularFrequency
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysFixed", "m_flAngularFrequency"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysFixed", "m_flAngularFrequency", value); }
+	}
 
 	// m_flAngularDampingRatio
 	[SchemaMember("CPhysFixed", "m_flAngularDampingRatio")]
-	public ref float AngularDampingRatio => ref Schema.GetRef<float>(this.Handle, "CPhysFixed", "m_flAngularDampingRatio");
+	public float AngularDampingRatio
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysFixed", "m_flAngularDampingRatio"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysFixed", "m_flAngularDampingRatio", value); }
+	}
 
 	// m_bEnableLinearConstraint
 	[SchemaMember("CPhysFixed", "m_bEnableLinearConstraint")]
-	public ref bool EnableLinearConstraint => ref Schema.GetRef<bool>(this.Handle, "CPhysFixed", "m_bEnableLinearConstraint");
+	public bool EnableLinearConstraint
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysFixed", "m_bEnableLinearConstraint"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysFixed", "m_bEnableLinearConstraint", value); }
+	}
 
 	// m_bEnableAngularConstraint
 	[SchemaMember("CPhysFixed", "m_bEnableAngularConstraint")]
-	public ref bool EnableAngularConstraint => ref Schema.GetRef<bool>(this.Handle, "CPhysFixed", "m_bEnableAngularConstraint");
+	public bool EnableAngularConstraint
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysFixed", "m_bEnableAngularConstraint"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysFixed", "m_bEnableAngularConstraint", value); }
+	}
 
 	// m_sBoneName1
 	[SchemaMember("CPhysFixed", "m_sBoneName1")]

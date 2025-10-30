@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -36,23 +37,43 @@ public partial class CMultiLightProxy : CLogicalEntity
 
 	// m_flLightRadiusFilter
 	[SchemaMember("CMultiLightProxy", "m_flLightRadiusFilter")]
-	public ref float LightRadiusFilter => ref Schema.GetRef<float>(this.Handle, "CMultiLightProxy", "m_flLightRadiusFilter");
+	public float LightRadiusFilter
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CMultiLightProxy", "m_flLightRadiusFilter"); }
+		set { Schema.SetValueType<float>(this.Handle, "CMultiLightProxy", "m_flLightRadiusFilter", value); }
+	}
 
 	// m_flBrightnessDelta
 	[SchemaMember("CMultiLightProxy", "m_flBrightnessDelta")]
-	public ref float BrightnessDelta => ref Schema.GetRef<float>(this.Handle, "CMultiLightProxy", "m_flBrightnessDelta");
+	public float BrightnessDelta
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CMultiLightProxy", "m_flBrightnessDelta"); }
+		set { Schema.SetValueType<float>(this.Handle, "CMultiLightProxy", "m_flBrightnessDelta", value); }
+	}
 
 	// m_bPerformScreenFade
 	[SchemaMember("CMultiLightProxy", "m_bPerformScreenFade")]
-	public ref bool PerformScreenFade => ref Schema.GetRef<bool>(this.Handle, "CMultiLightProxy", "m_bPerformScreenFade");
+	public bool PerformScreenFade
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CMultiLightProxy", "m_bPerformScreenFade"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CMultiLightProxy", "m_bPerformScreenFade", value); }
+	}
 
 	// m_flTargetBrightnessMultiplier
 	[SchemaMember("CMultiLightProxy", "m_flTargetBrightnessMultiplier")]
-	public ref float TargetBrightnessMultiplier => ref Schema.GetRef<float>(this.Handle, "CMultiLightProxy", "m_flTargetBrightnessMultiplier");
+	public float TargetBrightnessMultiplier
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CMultiLightProxy", "m_flTargetBrightnessMultiplier"); }
+		set { Schema.SetValueType<float>(this.Handle, "CMultiLightProxy", "m_flTargetBrightnessMultiplier", value); }
+	}
 
 	// m_flCurrentBrightnessMultiplier
 	[SchemaMember("CMultiLightProxy", "m_flCurrentBrightnessMultiplier")]
-	public ref float CurrentBrightnessMultiplier => ref Schema.GetRef<float>(this.Handle, "CMultiLightProxy", "m_flCurrentBrightnessMultiplier");
+	public float CurrentBrightnessMultiplier
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CMultiLightProxy", "m_flCurrentBrightnessMultiplier"); }
+		set { Schema.SetValueType<float>(this.Handle, "CMultiLightProxy", "m_flCurrentBrightnessMultiplier", value); }
+	}
 
 	// m_vecLights
 	[SchemaMember("CMultiLightProxy", "m_vecLights")]

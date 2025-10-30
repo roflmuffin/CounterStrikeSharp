@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,15 +21,27 @@ public partial class constraint_breakableparams_t : NativeObject
 
 	// strength
 	[SchemaMember("constraint_breakableparams_t", "strength")]
-	public ref float Strength => ref Schema.GetRef<float>(this.Handle, "constraint_breakableparams_t", "strength");
+	public float Strength
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "constraint_breakableparams_t", "strength"); }
+		set { Schema.SetValueType<float>(this.Handle, "constraint_breakableparams_t", "strength", value); }
+	}
 
 	// forceLimit
 	[SchemaMember("constraint_breakableparams_t", "forceLimit")]
-	public ref float ForceLimit => ref Schema.GetRef<float>(this.Handle, "constraint_breakableparams_t", "forceLimit");
+	public float ForceLimit
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "constraint_breakableparams_t", "forceLimit"); }
+		set { Schema.SetValueType<float>(this.Handle, "constraint_breakableparams_t", "forceLimit", value); }
+	}
 
 	// torqueLimit
 	[SchemaMember("constraint_breakableparams_t", "torqueLimit")]
-	public ref float TorqueLimit => ref Schema.GetRef<float>(this.Handle, "constraint_breakableparams_t", "torqueLimit");
+	public float TorqueLimit
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "constraint_breakableparams_t", "torqueLimit"); }
+		set { Schema.SetValueType<float>(this.Handle, "constraint_breakableparams_t", "torqueLimit", value); }
+	}
 
 	// bodyMassScale
 	[SchemaMember("constraint_breakableparams_t", "bodyMassScale")]
@@ -36,6 +49,10 @@ public partial class constraint_breakableparams_t : NativeObject
 
 	// isActive
 	[SchemaMember("constraint_breakableparams_t", "isActive")]
-	public ref bool IsActive => ref Schema.GetRef<bool>(this.Handle, "constraint_breakableparams_t", "isActive");
+	public bool IsActive
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "constraint_breakableparams_t", "isActive"); }
+		set { Schema.SetValueType<bool>(this.Handle, "constraint_breakableparams_t", "isActive", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,7 +25,11 @@ public partial class CEnvSoundscape : CBaseEntity
 
 	// m_flRadius
 	[SchemaMember("CEnvSoundscape", "m_flRadius")]
-	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CEnvSoundscape", "m_flRadius");
+	public float Radius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvSoundscape", "m_flRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvSoundscape", "m_flRadius", value); }
+	}
 
 	// m_soundEventName
 	[SchemaMember("CEnvSoundscape", "m_soundEventName")]
@@ -36,15 +41,27 @@ public partial class CEnvSoundscape : CBaseEntity
 
 	// m_bOverrideWithEvent
 	[SchemaMember("CEnvSoundscape", "m_bOverrideWithEvent")]
-	public ref bool OverrideWithEvent => ref Schema.GetRef<bool>(this.Handle, "CEnvSoundscape", "m_bOverrideWithEvent");
+	public bool OverrideWithEvent
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvSoundscape", "m_bOverrideWithEvent"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvSoundscape", "m_bOverrideWithEvent", value); }
+	}
 
 	// m_soundscapeIndex
 	[SchemaMember("CEnvSoundscape", "m_soundscapeIndex")]
-	public ref Int32 SoundscapeIndex => ref Schema.GetRef<Int32>(this.Handle, "CEnvSoundscape", "m_soundscapeIndex");
+	public Int32 SoundscapeIndex
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvSoundscape", "m_soundscapeIndex"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvSoundscape", "m_soundscapeIndex", value); }
+	}
 
 	// m_soundscapeEntityListId
 	[SchemaMember("CEnvSoundscape", "m_soundscapeEntityListId")]
-	public ref Int32 SoundscapeEntityListId => ref Schema.GetRef<Int32>(this.Handle, "CEnvSoundscape", "m_soundscapeEntityListId");
+	public Int32 SoundscapeEntityListId
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvSoundscape", "m_soundscapeEntityListId"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvSoundscape", "m_soundscapeEntityListId", value); }
+	}
 
 	// m_positionNames
 	[SchemaMember("CEnvSoundscape", "m_positionNames")]
@@ -56,7 +73,11 @@ public partial class CEnvSoundscape : CBaseEntity
 
 	// m_bDisabled
 	[SchemaMember("CEnvSoundscape", "m_bDisabled")]
-	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CEnvSoundscape", "m_bDisabled");
+	public bool Disabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvSoundscape", "m_bDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvSoundscape", "m_bDisabled", value); }
+	}
 
 	// m_soundscapeName
 	[SchemaMember("CEnvSoundscape", "m_soundscapeName")]
@@ -68,6 +89,10 @@ public partial class CEnvSoundscape : CBaseEntity
 
 	// m_soundEventHash
 	[SchemaMember("CEnvSoundscape", "m_soundEventHash")]
-	public ref UInt32 SoundEventHash => ref Schema.GetRef<UInt32>(this.Handle, "CEnvSoundscape", "m_soundEventHash");
+	public UInt32 SoundEventHash
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CEnvSoundscape", "m_soundEventHash"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CEnvSoundscape", "m_soundEventHash", value); }
+	}
 
 }

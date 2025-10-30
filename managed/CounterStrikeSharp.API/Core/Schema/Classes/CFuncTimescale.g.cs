@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,22 +21,42 @@ public partial class CFuncTimescale : CBaseEntity
 
 	// m_flDesiredTimescale
 	[SchemaMember("CFuncTimescale", "m_flDesiredTimescale")]
-	public ref float DesiredTimescale => ref Schema.GetRef<float>(this.Handle, "CFuncTimescale", "m_flDesiredTimescale");
+	public float DesiredTimescale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncTimescale", "m_flDesiredTimescale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncTimescale", "m_flDesiredTimescale", value); }
+	}
 
 	// m_flAcceleration
 	[SchemaMember("CFuncTimescale", "m_flAcceleration")]
-	public ref float Acceleration => ref Schema.GetRef<float>(this.Handle, "CFuncTimescale", "m_flAcceleration");
+	public float Acceleration
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncTimescale", "m_flAcceleration"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncTimescale", "m_flAcceleration", value); }
+	}
 
 	// m_flMinBlendRate
 	[SchemaMember("CFuncTimescale", "m_flMinBlendRate")]
-	public ref float MinBlendRate => ref Schema.GetRef<float>(this.Handle, "CFuncTimescale", "m_flMinBlendRate");
+	public float MinBlendRate
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncTimescale", "m_flMinBlendRate"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncTimescale", "m_flMinBlendRate", value); }
+	}
 
 	// m_flBlendDeltaMultiplier
 	[SchemaMember("CFuncTimescale", "m_flBlendDeltaMultiplier")]
-	public ref float BlendDeltaMultiplier => ref Schema.GetRef<float>(this.Handle, "CFuncTimescale", "m_flBlendDeltaMultiplier");
+	public float BlendDeltaMultiplier
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncTimescale", "m_flBlendDeltaMultiplier"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncTimescale", "m_flBlendDeltaMultiplier", value); }
+	}
 
 	// m_isStarted
 	[SchemaMember("CFuncTimescale", "m_isStarted")]
-	public ref bool IsStarted => ref Schema.GetRef<bool>(this.Handle, "CFuncTimescale", "m_isStarted");
+	public bool IsStarted
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncTimescale", "m_isStarted"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncTimescale", "m_isStarted", value); }
+	}
 
 }

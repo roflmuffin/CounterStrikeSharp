@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,19 +21,35 @@ public partial class CDynamicProp : CBreakableProp
 
 	// m_bCreateNavObstacle
 	[SchemaMember("CDynamicProp", "m_bCreateNavObstacle")]
-	public ref bool CreateNavObstacle => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bCreateNavObstacle");
+	public bool CreateNavObstacle
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CDynamicProp", "m_bCreateNavObstacle"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CDynamicProp", "m_bCreateNavObstacle", value); }
+	}
 
 	// m_bNavObstacleUpdatesOverridden
 	[SchemaMember("CDynamicProp", "m_bNavObstacleUpdatesOverridden")]
-	public ref bool NavObstacleUpdatesOverridden => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bNavObstacleUpdatesOverridden");
+	public bool NavObstacleUpdatesOverridden
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CDynamicProp", "m_bNavObstacleUpdatesOverridden"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CDynamicProp", "m_bNavObstacleUpdatesOverridden", value); }
+	}
 
 	// m_bUseHitboxesForRenderBox
 	[SchemaMember("CDynamicProp", "m_bUseHitboxesForRenderBox")]
-	public ref bool UseHitboxesForRenderBox => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bUseHitboxesForRenderBox");
+	public bool UseHitboxesForRenderBox
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CDynamicProp", "m_bUseHitboxesForRenderBox"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CDynamicProp", "m_bUseHitboxesForRenderBox", value); }
+	}
 
 	// m_bUseAnimGraph
 	[SchemaMember("CDynamicProp", "m_bUseAnimGraph")]
-	public ref bool UseAnimGraph => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bUseAnimGraph");
+	public bool UseAnimGraph
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CDynamicProp", "m_bUseAnimGraph"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CDynamicProp", "m_bUseAnimGraph", value); }
+	}
 
 	// m_pOutputAnimBegun
 	[SchemaMember("CDynamicProp", "m_pOutputAnimBegun")]
@@ -64,43 +81,83 @@ public partial class CDynamicProp : CBreakableProp
 
 	// m_nIdleAnimLoopMode
 	[SchemaMember("CDynamicProp", "m_nIdleAnimLoopMode")]
-	public ref AnimLoopMode_t IdleAnimLoopMode => ref Schema.GetRef<AnimLoopMode_t>(this.Handle, "CDynamicProp", "m_nIdleAnimLoopMode");
+	public AnimLoopMode_t IdleAnimLoopMode
+	{
+		get { return Schema.GetValueType<AnimLoopMode_t>(this.Handle, "CDynamicProp", "m_nIdleAnimLoopMode"); }
+		set { Schema.SetValueType<AnimLoopMode_t>(this.Handle, "CDynamicProp", "m_nIdleAnimLoopMode", value); }
+	}
 
 	// m_bRandomizeCycle
 	[SchemaMember("CDynamicProp", "m_bRandomizeCycle")]
-	public ref bool RandomizeCycle => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bRandomizeCycle");
+	public bool RandomizeCycle
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CDynamicProp", "m_bRandomizeCycle"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CDynamicProp", "m_bRandomizeCycle", value); }
+	}
 
 	// m_bStartDisabled
 	[SchemaMember("CDynamicProp", "m_bStartDisabled")]
-	public ref bool StartDisabled => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bStartDisabled");
+	public bool StartDisabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CDynamicProp", "m_bStartDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CDynamicProp", "m_bStartDisabled", value); }
+	}
 
 	// m_bFiredStartEndOutput
 	[SchemaMember("CDynamicProp", "m_bFiredStartEndOutput")]
-	public ref bool FiredStartEndOutput => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bFiredStartEndOutput");
+	public bool FiredStartEndOutput
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CDynamicProp", "m_bFiredStartEndOutput"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CDynamicProp", "m_bFiredStartEndOutput", value); }
+	}
 
 	// m_bForceNpcExclude
 	[SchemaMember("CDynamicProp", "m_bForceNpcExclude")]
-	public ref bool ForceNpcExclude => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bForceNpcExclude");
+	public bool ForceNpcExclude
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CDynamicProp", "m_bForceNpcExclude"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CDynamicProp", "m_bForceNpcExclude", value); }
+	}
 
 	// m_bCreateNonSolid
 	[SchemaMember("CDynamicProp", "m_bCreateNonSolid")]
-	public ref bool CreateNonSolid => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bCreateNonSolid");
+	public bool CreateNonSolid
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CDynamicProp", "m_bCreateNonSolid"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CDynamicProp", "m_bCreateNonSolid", value); }
+	}
 
 	// m_bIsOverrideProp
 	[SchemaMember("CDynamicProp", "m_bIsOverrideProp")]
-	public ref bool IsOverrideProp => ref Schema.GetRef<bool>(this.Handle, "CDynamicProp", "m_bIsOverrideProp");
+	public bool IsOverrideProp
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CDynamicProp", "m_bIsOverrideProp"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CDynamicProp", "m_bIsOverrideProp", value); }
+	}
 
 	// m_iInitialGlowState
 	[SchemaMember("CDynamicProp", "m_iInitialGlowState")]
-	public ref Int32 InitialGlowState => ref Schema.GetRef<Int32>(this.Handle, "CDynamicProp", "m_iInitialGlowState");
+	public Int32 InitialGlowState
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CDynamicProp", "m_iInitialGlowState"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CDynamicProp", "m_iInitialGlowState", value); }
+	}
 
 	// m_nGlowRange
 	[SchemaMember("CDynamicProp", "m_nGlowRange")]
-	public ref Int32 GlowRange => ref Schema.GetRef<Int32>(this.Handle, "CDynamicProp", "m_nGlowRange");
+	public Int32 GlowRange
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CDynamicProp", "m_nGlowRange"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CDynamicProp", "m_nGlowRange", value); }
+	}
 
 	// m_nGlowRangeMin
 	[SchemaMember("CDynamicProp", "m_nGlowRangeMin")]
-	public ref Int32 GlowRangeMin => ref Schema.GetRef<Int32>(this.Handle, "CDynamicProp", "m_nGlowRangeMin");
+	public Int32 GlowRangeMin
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CDynamicProp", "m_nGlowRangeMin"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CDynamicProp", "m_nGlowRangeMin", value); }
+	}
 
 	// m_glowColor
 	[SchemaMember("CDynamicProp", "m_glowColor")]
@@ -112,6 +169,10 @@ public partial class CDynamicProp : CBreakableProp
 
 	// m_nGlowTeam
 	[SchemaMember("CDynamicProp", "m_nGlowTeam")]
-	public ref Int32 GlowTeam => ref Schema.GetRef<Int32>(this.Handle, "CDynamicProp", "m_nGlowTeam");
+	public Int32 GlowTeam
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CDynamicProp", "m_nGlowTeam"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CDynamicProp", "m_nGlowTeam", value); }
+	}
 
 }

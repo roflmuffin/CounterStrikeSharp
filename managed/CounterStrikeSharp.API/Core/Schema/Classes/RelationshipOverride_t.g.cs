@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,6 +25,10 @@ public partial class RelationshipOverride_t : Relationship_t
 
 	// classType
 	[SchemaMember("RelationshipOverride_t", "classType")]
-	public ref Class_T ClassType => ref Schema.GetRef<Class_T>(this.Handle, "RelationshipOverride_t", "classType");
+	public Class_T ClassType
+	{
+		get { return Schema.GetValueType<Class_T>(this.Handle, "RelationshipOverride_t", "classType"); }
+		set { Schema.SetValueType<Class_T>(this.Handle, "RelationshipOverride_t", "classType", value); }
+	}
 
 }

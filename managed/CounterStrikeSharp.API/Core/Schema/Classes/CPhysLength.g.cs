@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,26 +21,46 @@ public partial class CPhysLength : CPhysConstraint
 
 	// m_offset
 	[SchemaMember("CPhysLength", "m_offset")]
-	public Span<Vector> Offset => Schema.GetFixedArray<Vector>(this.Handle, "CPhysLength", "m_offset", 2);
+	public Span<Vector3> Offset => Schema.GetFixedArray<Vector3>(this.Handle, "CPhysLength", "m_offset", 2);
 
 	// m_vecAttach
 	[SchemaMember("CPhysLength", "m_vecAttach")]
-	public Vector Attach => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysLength", "m_vecAttach");
+	public Vector3 Attach
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CPhysLength", "m_vecAttach"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CPhysLength", "m_vecAttach", value); }
+	}
 
 	// m_addLength
 	[SchemaMember("CPhysLength", "m_addLength")]
-	public ref float AddLength => ref Schema.GetRef<float>(this.Handle, "CPhysLength", "m_addLength");
+	public float AddLength
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysLength", "m_addLength"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysLength", "m_addLength", value); }
+	}
 
 	// m_minLength
 	[SchemaMember("CPhysLength", "m_minLength")]
-	public ref float MinLength => ref Schema.GetRef<float>(this.Handle, "CPhysLength", "m_minLength");
+	public float MinLength
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysLength", "m_minLength"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysLength", "m_minLength", value); }
+	}
 
 	// m_totalLength
 	[SchemaMember("CPhysLength", "m_totalLength")]
-	public ref float TotalLength => ref Schema.GetRef<float>(this.Handle, "CPhysLength", "m_totalLength");
+	public float TotalLength
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysLength", "m_totalLength"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysLength", "m_totalLength", value); }
+	}
 
 	// m_bEnableCollision
 	[SchemaMember("CPhysLength", "m_bEnableCollision")]
-	public ref bool EnableCollision => ref Schema.GetRef<bool>(this.Handle, "CPhysLength", "m_bEnableCollision");
+	public bool EnableCollision
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysLength", "m_bEnableCollision"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysLength", "m_bEnableCollision", value); }
+	}
 
 }

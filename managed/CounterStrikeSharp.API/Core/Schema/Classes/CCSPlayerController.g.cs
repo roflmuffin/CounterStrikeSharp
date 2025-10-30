@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -36,15 +37,27 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_iPing
 	[SchemaMember("CCSPlayerController", "m_iPing")]
-	public ref UInt32 Ping => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController", "m_iPing");
+	public UInt32 Ping
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_iPing"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_iPing", value); }
+	}
 
 	// m_bHasCommunicationAbuseMute
 	[SchemaMember("CCSPlayerController", "m_bHasCommunicationAbuseMute")]
-	public ref bool HasCommunicationAbuseMute => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bHasCommunicationAbuseMute");
+	public bool HasCommunicationAbuseMute
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bHasCommunicationAbuseMute"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bHasCommunicationAbuseMute", value); }
+	}
 
 	// m_uiCommunicationMuteFlags
 	[SchemaMember("CCSPlayerController", "m_uiCommunicationMuteFlags")]
-	public ref UInt32 UiCommunicationMuteFlags => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController", "m_uiCommunicationMuteFlags");
+	public UInt32 UiCommunicationMuteFlags
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_uiCommunicationMuteFlags"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_uiCommunicationMuteFlags", value); }
+	}
 
 	// m_szCrosshairCodes
 	[SchemaMember("CCSPlayerController", "m_szCrosshairCodes")]
@@ -56,55 +69,107 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_iPendingTeamNum
 	[SchemaMember("CCSPlayerController", "m_iPendingTeamNum")]
-	public ref byte PendingTeamNum => ref Schema.GetRef<byte>(this.Handle, "CCSPlayerController", "m_iPendingTeamNum");
+	public byte PendingTeamNum
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CCSPlayerController", "m_iPendingTeamNum"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CCSPlayerController", "m_iPendingTeamNum", value); }
+	}
 
 	// m_flForceTeamTime
 	[SchemaMember("CCSPlayerController", "m_flForceTeamTime")]
-	public ref float ForceTeamTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerController", "m_flForceTeamTime");
+	public float ForceTeamTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerController", "m_flForceTeamTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerController", "m_flForceTeamTime", value); }
+	}
 
 	// m_iCompTeammateColor
 	[SchemaMember("CCSPlayerController", "m_iCompTeammateColor")]
-	public ref Int32 CompTeammateColor => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iCompTeammateColor");
+	public Int32 CompTeammateColor
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iCompTeammateColor"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iCompTeammateColor", value); }
+	}
 
 	// m_bEverPlayedOnTeam
 	[SchemaMember("CCSPlayerController", "m_bEverPlayedOnTeam")]
-	public ref bool EverPlayedOnTeam => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bEverPlayedOnTeam");
+	public bool EverPlayedOnTeam
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bEverPlayedOnTeam"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bEverPlayedOnTeam", value); }
+	}
 
 	// m_bAttemptedToGetColor
 	[SchemaMember("CCSPlayerController", "m_bAttemptedToGetColor")]
-	public ref bool AttemptedToGetColor => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bAttemptedToGetColor");
+	public bool AttemptedToGetColor
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bAttemptedToGetColor"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bAttemptedToGetColor", value); }
+	}
 
 	// m_iTeammatePreferredColor
 	[SchemaMember("CCSPlayerController", "m_iTeammatePreferredColor")]
-	public ref Int32 TeammatePreferredColor => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iTeammatePreferredColor");
+	public Int32 TeammatePreferredColor
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iTeammatePreferredColor"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iTeammatePreferredColor", value); }
+	}
 
 	// m_bTeamChanged
 	[SchemaMember("CCSPlayerController", "m_bTeamChanged")]
-	public ref bool TeamChanged => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bTeamChanged");
+	public bool TeamChanged
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bTeamChanged"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bTeamChanged", value); }
+	}
 
 	// m_bInSwitchTeam
 	[SchemaMember("CCSPlayerController", "m_bInSwitchTeam")]
-	public ref bool InSwitchTeam => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bInSwitchTeam");
+	public bool InSwitchTeam
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bInSwitchTeam"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bInSwitchTeam", value); }
+	}
 
 	// m_bHasSeenJoinGame
 	[SchemaMember("CCSPlayerController", "m_bHasSeenJoinGame")]
-	public ref bool HasSeenJoinGame => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bHasSeenJoinGame");
+	public bool HasSeenJoinGame
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bHasSeenJoinGame"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bHasSeenJoinGame", value); }
+	}
 
 	// m_bJustBecameSpectator
 	[SchemaMember("CCSPlayerController", "m_bJustBecameSpectator")]
-	public ref bool JustBecameSpectator => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bJustBecameSpectator");
+	public bool JustBecameSpectator
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bJustBecameSpectator"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bJustBecameSpectator", value); }
+	}
 
 	// m_bSwitchTeamsOnNextRoundReset
 	[SchemaMember("CCSPlayerController", "m_bSwitchTeamsOnNextRoundReset")]
-	public ref bool SwitchTeamsOnNextRoundReset => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bSwitchTeamsOnNextRoundReset");
+	public bool SwitchTeamsOnNextRoundReset
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bSwitchTeamsOnNextRoundReset"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bSwitchTeamsOnNextRoundReset", value); }
+	}
 
 	// m_bRemoveAllItemsOnNextRoundReset
 	[SchemaMember("CCSPlayerController", "m_bRemoveAllItemsOnNextRoundReset")]
-	public ref bool RemoveAllItemsOnNextRoundReset => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bRemoveAllItemsOnNextRoundReset");
+	public bool RemoveAllItemsOnNextRoundReset
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bRemoveAllItemsOnNextRoundReset"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bRemoveAllItemsOnNextRoundReset", value); }
+	}
 
 	// m_flLastJoinTeamTime
 	[SchemaMember("CCSPlayerController", "m_flLastJoinTeamTime")]
-	public ref float LastJoinTeamTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerController", "m_flLastJoinTeamTime");
+	public float LastJoinTeamTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerController", "m_flLastJoinTeamTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerController", "m_flLastJoinTeamTime", value); }
+	}
 
 	// m_szClan
 	[SchemaMember("CCSPlayerController", "m_szClan")]
@@ -116,119 +181,235 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_iCoachingTeam
 	[SchemaMember("CCSPlayerController", "m_iCoachingTeam")]
-	public ref Int32 CoachingTeam => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iCoachingTeam");
+	public Int32 CoachingTeam
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iCoachingTeam"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iCoachingTeam", value); }
+	}
 
 	// m_nPlayerDominated
 	[SchemaMember("CCSPlayerController", "m_nPlayerDominated")]
-	public ref UInt64 PlayerDominated => ref Schema.GetRef<UInt64>(this.Handle, "CCSPlayerController", "m_nPlayerDominated");
+	public UInt64 PlayerDominated
+	{
+		get { return Schema.GetValueType<UInt64>(this.Handle, "CCSPlayerController", "m_nPlayerDominated"); }
+		set { Schema.SetValueType<UInt64>(this.Handle, "CCSPlayerController", "m_nPlayerDominated", value); }
+	}
 
 	// m_nPlayerDominatingMe
 	[SchemaMember("CCSPlayerController", "m_nPlayerDominatingMe")]
-	public ref UInt64 PlayerDominatingMe => ref Schema.GetRef<UInt64>(this.Handle, "CCSPlayerController", "m_nPlayerDominatingMe");
+	public UInt64 PlayerDominatingMe
+	{
+		get { return Schema.GetValueType<UInt64>(this.Handle, "CCSPlayerController", "m_nPlayerDominatingMe"); }
+		set { Schema.SetValueType<UInt64>(this.Handle, "CCSPlayerController", "m_nPlayerDominatingMe", value); }
+	}
 
 	// m_iCompetitiveRanking
 	[SchemaMember("CCSPlayerController", "m_iCompetitiveRanking")]
-	public ref Int32 CompetitiveRanking => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iCompetitiveRanking");
+	public Int32 CompetitiveRanking
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iCompetitiveRanking"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iCompetitiveRanking", value); }
+	}
 
 	// m_iCompetitiveWins
 	[SchemaMember("CCSPlayerController", "m_iCompetitiveWins")]
-	public ref Int32 CompetitiveWins => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iCompetitiveWins");
+	public Int32 CompetitiveWins
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iCompetitiveWins"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iCompetitiveWins", value); }
+	}
 
 	// m_iCompetitiveRankType
 	[SchemaMember("CCSPlayerController", "m_iCompetitiveRankType")]
-	public ref sbyte CompetitiveRankType => ref Schema.GetRef<sbyte>(this.Handle, "CCSPlayerController", "m_iCompetitiveRankType");
+	public sbyte CompetitiveRankType
+	{
+		get { return Schema.GetValueType<sbyte>(this.Handle, "CCSPlayerController", "m_iCompetitiveRankType"); }
+		set { Schema.SetValueType<sbyte>(this.Handle, "CCSPlayerController", "m_iCompetitiveRankType", value); }
+	}
 
 	// m_iCompetitiveRankingPredicted_Win
 	[SchemaMember("CCSPlayerController", "m_iCompetitiveRankingPredicted_Win")]
-	public ref Int32 CompetitiveRankingPredicted_Win => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iCompetitiveRankingPredicted_Win");
+	public Int32 CompetitiveRankingPredicted_Win
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iCompetitiveRankingPredicted_Win"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iCompetitiveRankingPredicted_Win", value); }
+	}
 
 	// m_iCompetitiveRankingPredicted_Loss
 	[SchemaMember("CCSPlayerController", "m_iCompetitiveRankingPredicted_Loss")]
-	public ref Int32 CompetitiveRankingPredicted_Loss => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iCompetitiveRankingPredicted_Loss");
+	public Int32 CompetitiveRankingPredicted_Loss
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iCompetitiveRankingPredicted_Loss"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iCompetitiveRankingPredicted_Loss", value); }
+	}
 
 	// m_iCompetitiveRankingPredicted_Tie
 	[SchemaMember("CCSPlayerController", "m_iCompetitiveRankingPredicted_Tie")]
-	public ref Int32 CompetitiveRankingPredicted_Tie => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iCompetitiveRankingPredicted_Tie");
+	public Int32 CompetitiveRankingPredicted_Tie
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iCompetitiveRankingPredicted_Tie"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iCompetitiveRankingPredicted_Tie", value); }
+	}
 
 	// m_nEndMatchNextMapVote
 	[SchemaMember("CCSPlayerController", "m_nEndMatchNextMapVote")]
-	public ref Int32 EndMatchNextMapVote => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_nEndMatchNextMapVote");
+	public Int32 EndMatchNextMapVote
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_nEndMatchNextMapVote"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_nEndMatchNextMapVote", value); }
+	}
 
 	// m_unActiveQuestId
 	[SchemaMember("CCSPlayerController", "m_unActiveQuestId")]
-	public ref UInt16 ActiveQuestId => ref Schema.GetRef<UInt16>(this.Handle, "CCSPlayerController", "m_unActiveQuestId");
+	public UInt16 ActiveQuestId
+	{
+		get { return Schema.GetValueType<UInt16>(this.Handle, "CCSPlayerController", "m_unActiveQuestId"); }
+		set { Schema.SetValueType<UInt16>(this.Handle, "CCSPlayerController", "m_unActiveQuestId", value); }
+	}
 
 	// m_rtActiveMissionPeriod
 	[SchemaMember("CCSPlayerController", "m_rtActiveMissionPeriod")]
-	public ref UInt32 RtActiveMissionPeriod => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController", "m_rtActiveMissionPeriod");
+	public UInt32 RtActiveMissionPeriod
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_rtActiveMissionPeriod"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_rtActiveMissionPeriod", value); }
+	}
 
 	// m_unPlayerTvControlFlags
 	[SchemaMember("CCSPlayerController", "m_unPlayerTvControlFlags")]
-	public ref UInt32 PlayerTvControlFlags => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController", "m_unPlayerTvControlFlags");
+	public UInt32 PlayerTvControlFlags
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_unPlayerTvControlFlags"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_unPlayerTvControlFlags", value); }
+	}
 
 	// m_iDraftIndex
 	[SchemaMember("CCSPlayerController", "m_iDraftIndex")]
-	public ref Int32 DraftIndex => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iDraftIndex");
+	public Int32 DraftIndex
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iDraftIndex"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iDraftIndex", value); }
+	}
 
 	// m_msQueuedModeDisconnectionTimestamp
 	[SchemaMember("CCSPlayerController", "m_msQueuedModeDisconnectionTimestamp")]
-	public ref UInt32 MsQueuedModeDisconnectionTimestamp => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController", "m_msQueuedModeDisconnectionTimestamp");
+	public UInt32 MsQueuedModeDisconnectionTimestamp
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_msQueuedModeDisconnectionTimestamp"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_msQueuedModeDisconnectionTimestamp", value); }
+	}
 
 	// m_uiAbandonRecordedReason
 	[SchemaMember("CCSPlayerController", "m_uiAbandonRecordedReason")]
-	public ref UInt32 UiAbandonRecordedReason => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController", "m_uiAbandonRecordedReason");
+	public UInt32 UiAbandonRecordedReason
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_uiAbandonRecordedReason"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_uiAbandonRecordedReason", value); }
+	}
 
 	// m_eNetworkDisconnectionReason
 	[SchemaMember("CCSPlayerController", "m_eNetworkDisconnectionReason")]
-	public ref UInt32 NetworkDisconnectionReason => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController", "m_eNetworkDisconnectionReason");
+	public UInt32 NetworkDisconnectionReason
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_eNetworkDisconnectionReason"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_eNetworkDisconnectionReason", value); }
+	}
 
 	// m_bCannotBeKicked
 	[SchemaMember("CCSPlayerController", "m_bCannotBeKicked")]
-	public ref bool CannotBeKicked => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bCannotBeKicked");
+	public bool CannotBeKicked
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bCannotBeKicked"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bCannotBeKicked", value); }
+	}
 
 	// m_bEverFullyConnected
 	[SchemaMember("CCSPlayerController", "m_bEverFullyConnected")]
-	public ref bool EverFullyConnected => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bEverFullyConnected");
+	public bool EverFullyConnected
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bEverFullyConnected"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bEverFullyConnected", value); }
+	}
 
 	// m_bAbandonAllowsSurrender
 	[SchemaMember("CCSPlayerController", "m_bAbandonAllowsSurrender")]
-	public ref bool AbandonAllowsSurrender => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bAbandonAllowsSurrender");
+	public bool AbandonAllowsSurrender
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bAbandonAllowsSurrender"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bAbandonAllowsSurrender", value); }
+	}
 
 	// m_bAbandonOffersInstantSurrender
 	[SchemaMember("CCSPlayerController", "m_bAbandonOffersInstantSurrender")]
-	public ref bool AbandonOffersInstantSurrender => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bAbandonOffersInstantSurrender");
+	public bool AbandonOffersInstantSurrender
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bAbandonOffersInstantSurrender"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bAbandonOffersInstantSurrender", value); }
+	}
 
 	// m_bDisconnection1MinWarningPrinted
 	[SchemaMember("CCSPlayerController", "m_bDisconnection1MinWarningPrinted")]
-	public ref bool Disconnection1MinWarningPrinted => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bDisconnection1MinWarningPrinted");
+	public bool Disconnection1MinWarningPrinted
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bDisconnection1MinWarningPrinted"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bDisconnection1MinWarningPrinted", value); }
+	}
 
 	// m_bScoreReported
 	[SchemaMember("CCSPlayerController", "m_bScoreReported")]
-	public ref bool ScoreReported => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bScoreReported");
+	public bool ScoreReported
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bScoreReported"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bScoreReported", value); }
+	}
 
 	// m_nDisconnectionTick
 	[SchemaMember("CCSPlayerController", "m_nDisconnectionTick")]
-	public ref Int32 DisconnectionTick => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_nDisconnectionTick");
+	public Int32 DisconnectionTick
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_nDisconnectionTick"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_nDisconnectionTick", value); }
+	}
 
 	// m_bControllingBot
 	[SchemaMember("CCSPlayerController", "m_bControllingBot")]
-	public ref bool ControllingBot => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bControllingBot");
+	public bool ControllingBot
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bControllingBot"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bControllingBot", value); }
+	}
 
 	// m_bHasControlledBotThisRound
 	[SchemaMember("CCSPlayerController", "m_bHasControlledBotThisRound")]
-	public ref bool HasControlledBotThisRound => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bHasControlledBotThisRound");
+	public bool HasControlledBotThisRound
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bHasControlledBotThisRound"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bHasControlledBotThisRound", value); }
+	}
 
 	// m_bHasBeenControlledByPlayerThisRound
 	[SchemaMember("CCSPlayerController", "m_bHasBeenControlledByPlayerThisRound")]
-	public ref bool HasBeenControlledByPlayerThisRound => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bHasBeenControlledByPlayerThisRound");
+	public bool HasBeenControlledByPlayerThisRound
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bHasBeenControlledByPlayerThisRound"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bHasBeenControlledByPlayerThisRound", value); }
+	}
 
 	// m_nBotsControlledThisRound
 	[SchemaMember("CCSPlayerController", "m_nBotsControlledThisRound")]
-	public ref Int32 BotsControlledThisRound => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_nBotsControlledThisRound");
+	public Int32 BotsControlledThisRound
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_nBotsControlledThisRound"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_nBotsControlledThisRound", value); }
+	}
 
 	// m_bCanControlObservedBot
 	[SchemaMember("CCSPlayerController", "m_bCanControlObservedBot")]
-	public ref bool CanControlObservedBot => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bCanControlObservedBot");
+	public bool CanControlObservedBot
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bCanControlObservedBot"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bCanControlObservedBot", value); }
+	}
 
 	// m_hPlayerPawn
 	[SchemaMember("CCSPlayerController", "m_hPlayerPawn")]
@@ -240,7 +421,11 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_DesiredObserverMode
 	[SchemaMember("CCSPlayerController", "m_DesiredObserverMode")]
-	public ref Int32 DesiredObserverMode => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_DesiredObserverMode");
+	public Int32 DesiredObserverMode
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_DesiredObserverMode"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_DesiredObserverMode", value); }
+	}
 
 	// m_hDesiredObserverTarget
 	[SchemaMember("CCSPlayerController", "m_hDesiredObserverTarget")]
@@ -248,39 +433,75 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_bPawnIsAlive
 	[SchemaMember("CCSPlayerController", "m_bPawnIsAlive")]
-	public ref bool PawnIsAlive => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bPawnIsAlive");
+	public bool PawnIsAlive
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bPawnIsAlive"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bPawnIsAlive", value); }
+	}
 
 	// m_iPawnHealth
 	[SchemaMember("CCSPlayerController", "m_iPawnHealth")]
-	public ref UInt32 PawnHealth => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController", "m_iPawnHealth");
+	public UInt32 PawnHealth
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_iPawnHealth"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_iPawnHealth", value); }
+	}
 
 	// m_iPawnArmor
 	[SchemaMember("CCSPlayerController", "m_iPawnArmor")]
-	public ref Int32 PawnArmor => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iPawnArmor");
+	public Int32 PawnArmor
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iPawnArmor"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iPawnArmor", value); }
+	}
 
 	// m_bPawnHasDefuser
 	[SchemaMember("CCSPlayerController", "m_bPawnHasDefuser")]
-	public ref bool PawnHasDefuser => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bPawnHasDefuser");
+	public bool PawnHasDefuser
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bPawnHasDefuser"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bPawnHasDefuser", value); }
+	}
 
 	// m_bPawnHasHelmet
 	[SchemaMember("CCSPlayerController", "m_bPawnHasHelmet")]
-	public ref bool PawnHasHelmet => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bPawnHasHelmet");
+	public bool PawnHasHelmet
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bPawnHasHelmet"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bPawnHasHelmet", value); }
+	}
 
 	// m_nPawnCharacterDefIndex
 	[SchemaMember("CCSPlayerController", "m_nPawnCharacterDefIndex")]
-	public ref UInt16 PawnCharacterDefIndex => ref Schema.GetRef<UInt16>(this.Handle, "CCSPlayerController", "m_nPawnCharacterDefIndex");
+	public UInt16 PawnCharacterDefIndex
+	{
+		get { return Schema.GetValueType<UInt16>(this.Handle, "CCSPlayerController", "m_nPawnCharacterDefIndex"); }
+		set { Schema.SetValueType<UInt16>(this.Handle, "CCSPlayerController", "m_nPawnCharacterDefIndex", value); }
+	}
 
 	// m_iPawnLifetimeStart
 	[SchemaMember("CCSPlayerController", "m_iPawnLifetimeStart")]
-	public ref Int32 PawnLifetimeStart => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iPawnLifetimeStart");
+	public Int32 PawnLifetimeStart
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iPawnLifetimeStart"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iPawnLifetimeStart", value); }
+	}
 
 	// m_iPawnLifetimeEnd
 	[SchemaMember("CCSPlayerController", "m_iPawnLifetimeEnd")]
-	public ref Int32 PawnLifetimeEnd => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iPawnLifetimeEnd");
+	public Int32 PawnLifetimeEnd
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iPawnLifetimeEnd"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iPawnLifetimeEnd", value); }
+	}
 
 	// m_iPawnBotDifficulty
 	[SchemaMember("CCSPlayerController", "m_iPawnBotDifficulty")]
-	public ref Int32 PawnBotDifficulty => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iPawnBotDifficulty");
+	public Int32 PawnBotDifficulty
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iPawnBotDifficulty"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iPawnBotDifficulty", value); }
+	}
 
 	// m_hOriginalControllerOfCurrentPawn
 	[SchemaMember("CCSPlayerController", "m_hOriginalControllerOfCurrentPawn")]
@@ -288,15 +509,27 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_iScore
 	[SchemaMember("CCSPlayerController", "m_iScore")]
-	public ref Int32 Score => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iScore");
+	public Int32 Score
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iScore"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iScore", value); }
+	}
 
 	// m_iRoundScore
 	[SchemaMember("CCSPlayerController", "m_iRoundScore")]
-	public ref Int32 RoundScore => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iRoundScore");
+	public Int32 RoundScore
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iRoundScore"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iRoundScore", value); }
+	}
 
 	// m_iRoundsWon
 	[SchemaMember("CCSPlayerController", "m_iRoundsWon")]
-	public ref Int32 RoundsWon => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iRoundsWon");
+	public Int32 RoundsWon
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iRoundsWon"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iRoundsWon", value); }
+	}
 
 	// m_recentKillQueue
 	[SchemaMember("CCSPlayerController", "m_recentKillQueue")]
@@ -304,39 +537,75 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_nFirstKill
 	[SchemaMember("CCSPlayerController", "m_nFirstKill")]
-	public ref byte FirstKill => ref Schema.GetRef<byte>(this.Handle, "CCSPlayerController", "m_nFirstKill");
+	public byte FirstKill
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CCSPlayerController", "m_nFirstKill"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CCSPlayerController", "m_nFirstKill", value); }
+	}
 
 	// m_nKillCount
 	[SchemaMember("CCSPlayerController", "m_nKillCount")]
-	public ref byte KillCount => ref Schema.GetRef<byte>(this.Handle, "CCSPlayerController", "m_nKillCount");
+	public byte KillCount
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CCSPlayerController", "m_nKillCount"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CCSPlayerController", "m_nKillCount", value); }
+	}
 
 	// m_bMvpNoMusic
 	[SchemaMember("CCSPlayerController", "m_bMvpNoMusic")]
-	public ref bool MvpNoMusic => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bMvpNoMusic");
+	public bool MvpNoMusic
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bMvpNoMusic"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bMvpNoMusic", value); }
+	}
 
 	// m_eMvpReason
 	[SchemaMember("CCSPlayerController", "m_eMvpReason")]
-	public ref Int32 MvpReason => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_eMvpReason");
+	public Int32 MvpReason
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_eMvpReason"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_eMvpReason", value); }
+	}
 
 	// m_iMusicKitID
 	[SchemaMember("CCSPlayerController", "m_iMusicKitID")]
-	public ref Int32 MusicKitID => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iMusicKitID");
+	public Int32 MusicKitID
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iMusicKitID"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iMusicKitID", value); }
+	}
 
 	// m_iMusicKitMVPs
 	[SchemaMember("CCSPlayerController", "m_iMusicKitMVPs")]
-	public ref Int32 MusicKitMVPs => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iMusicKitMVPs");
+	public Int32 MusicKitMVPs
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iMusicKitMVPs"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iMusicKitMVPs", value); }
+	}
 
 	// m_iMVPs
 	[SchemaMember("CCSPlayerController", "m_iMVPs")]
-	public ref Int32 MVPs => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iMVPs");
+	public Int32 MVPs
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iMVPs"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iMVPs", value); }
+	}
 
 	// m_nUpdateCounter
 	[SchemaMember("CCSPlayerController", "m_nUpdateCounter")]
-	public ref Int32 UpdateCounter => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_nUpdateCounter");
+	public Int32 UpdateCounter
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_nUpdateCounter"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_nUpdateCounter", value); }
+	}
 
 	// m_flSmoothedPing
 	[SchemaMember("CCSPlayerController", "m_flSmoothedPing")]
-	public ref float SmoothedPing => ref Schema.GetRef<float>(this.Handle, "CCSPlayerController", "m_flSmoothedPing");
+	public float SmoothedPing
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerController", "m_flSmoothedPing"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerController", "m_flSmoothedPing", value); }
+	}
 
 	// m_lastHeldVoteTimer
 	[SchemaMember("CCSPlayerController", "m_lastHeldVoteTimer")]
@@ -344,50 +613,98 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_bShowHints
 	[SchemaMember("CCSPlayerController", "m_bShowHints")]
-	public ref bool ShowHints => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bShowHints");
+	public bool ShowHints
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bShowHints"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bShowHints", value); }
+	}
 
 	// m_iNextTimeCheck
 	[SchemaMember("CCSPlayerController", "m_iNextTimeCheck")]
-	public ref Int32 NextTimeCheck => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController", "m_iNextTimeCheck");
+	public Int32 NextTimeCheck
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iNextTimeCheck"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController", "m_iNextTimeCheck", value); }
+	}
 
 	// m_bJustDidTeamKill
 	[SchemaMember("CCSPlayerController", "m_bJustDidTeamKill")]
-	public ref bool JustDidTeamKill => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bJustDidTeamKill");
+	public bool JustDidTeamKill
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bJustDidTeamKill"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bJustDidTeamKill", value); }
+	}
 
 	// m_bPunishForTeamKill
 	[SchemaMember("CCSPlayerController", "m_bPunishForTeamKill")]
-	public ref bool PunishForTeamKill => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bPunishForTeamKill");
+	public bool PunishForTeamKill
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bPunishForTeamKill"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bPunishForTeamKill", value); }
+	}
 
 	// m_bGaveTeamDamageWarning
 	[SchemaMember("CCSPlayerController", "m_bGaveTeamDamageWarning")]
-	public ref bool GaveTeamDamageWarning => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bGaveTeamDamageWarning");
+	public bool GaveTeamDamageWarning
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bGaveTeamDamageWarning"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bGaveTeamDamageWarning", value); }
+	}
 
 	// m_bGaveTeamDamageWarningThisRound
 	[SchemaMember("CCSPlayerController", "m_bGaveTeamDamageWarningThisRound")]
-	public ref bool GaveTeamDamageWarningThisRound => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bGaveTeamDamageWarningThisRound");
+	public bool GaveTeamDamageWarningThisRound
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bGaveTeamDamageWarningThisRound"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bGaveTeamDamageWarningThisRound", value); }
+	}
 
 	// m_dblLastReceivedPacketPlatFloatTime
 	[SchemaMember("CCSPlayerController", "m_dblLastReceivedPacketPlatFloatTime")]
-	public ref double DblLastReceivedPacketPlatFloatTime => ref Schema.GetRef<double>(this.Handle, "CCSPlayerController", "m_dblLastReceivedPacketPlatFloatTime");
+	public double DblLastReceivedPacketPlatFloatTime
+	{
+		get { return Schema.GetValueType<double>(this.Handle, "CCSPlayerController", "m_dblLastReceivedPacketPlatFloatTime"); }
+		set { Schema.SetValueType<double>(this.Handle, "CCSPlayerController", "m_dblLastReceivedPacketPlatFloatTime", value); }
+	}
 
 	// m_LastTeamDamageWarningTime
 	[SchemaMember("CCSPlayerController", "m_LastTeamDamageWarningTime")]
-	public ref float LastTeamDamageWarningTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerController", "m_LastTeamDamageWarningTime");
+	public float LastTeamDamageWarningTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerController", "m_LastTeamDamageWarningTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerController", "m_LastTeamDamageWarningTime", value); }
+	}
 
 	// m_LastTimePlayerWasDisconnectedForPawnsRemove
 	[SchemaMember("CCSPlayerController", "m_LastTimePlayerWasDisconnectedForPawnsRemove")]
-	public ref float LastTimePlayerWasDisconnectedForPawnsRemove => ref Schema.GetRef<float>(this.Handle, "CCSPlayerController", "m_LastTimePlayerWasDisconnectedForPawnsRemove");
+	public float LastTimePlayerWasDisconnectedForPawnsRemove
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerController", "m_LastTimePlayerWasDisconnectedForPawnsRemove"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerController", "m_LastTimePlayerWasDisconnectedForPawnsRemove", value); }
+	}
 
 	// m_nSuspiciousHitCount
 	[SchemaMember("CCSPlayerController", "m_nSuspiciousHitCount")]
-	public ref UInt32 SuspiciousHitCount => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController", "m_nSuspiciousHitCount");
+	public UInt32 SuspiciousHitCount
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_nSuspiciousHitCount"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_nSuspiciousHitCount", value); }
+	}
 
 	// m_nNonSuspiciousHitStreak
 	[SchemaMember("CCSPlayerController", "m_nNonSuspiciousHitStreak")]
-	public ref UInt32 NonSuspiciousHitStreak => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerController", "m_nNonSuspiciousHitStreak");
+	public UInt32 NonSuspiciousHitStreak
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_nNonSuspiciousHitStreak"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CCSPlayerController", "m_nNonSuspiciousHitStreak", value); }
+	}
 
 	// m_bFireBulletsSeedSynchronized
 	[SchemaMember("CCSPlayerController", "m_bFireBulletsSeedSynchronized")]
-	public ref bool FireBulletsSeedSynchronized => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController", "m_bFireBulletsSeedSynchronized");
+	public bool FireBulletsSeedSynchronized
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController", "m_bFireBulletsSeedSynchronized"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bFireBulletsSeedSynchronized", value); }
+	}
 
 }

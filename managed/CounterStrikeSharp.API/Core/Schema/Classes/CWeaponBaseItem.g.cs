@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,10 +21,18 @@ public partial class CWeaponBaseItem : CCSWeaponBase
 
 	// m_bSequenceInProgress
 	[SchemaMember("CWeaponBaseItem", "m_bSequenceInProgress")]
-	public ref bool SequenceInProgress => ref Schema.GetRef<bool>(this.Handle, "CWeaponBaseItem", "m_bSequenceInProgress");
+	public bool SequenceInProgress
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CWeaponBaseItem", "m_bSequenceInProgress"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CWeaponBaseItem", "m_bSequenceInProgress", value); }
+	}
 
 	// m_bRedraw
 	[SchemaMember("CWeaponBaseItem", "m_bRedraw")]
-	public ref bool Redraw => ref Schema.GetRef<bool>(this.Handle, "CWeaponBaseItem", "m_bRedraw");
+	public bool Redraw
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CWeaponBaseItem", "m_bRedraw"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CWeaponBaseItem", "m_bRedraw", value); }
+	}
 
 }

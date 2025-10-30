@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class CLogicAchievement : CLogicalEntity
 
 	// m_bDisabled
 	[SchemaMember("CLogicAchievement", "m_bDisabled")]
-	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CLogicAchievement", "m_bDisabled");
+	public bool Disabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CLogicAchievement", "m_bDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CLogicAchievement", "m_bDisabled", value); }
+	}
 
 	// m_iszAchievementEventID
 	[SchemaMember("CLogicAchievement", "m_iszAchievementEventID")]

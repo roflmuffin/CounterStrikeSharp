@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,15 +29,27 @@ public partial class CMessage : CPointEntity
 
 	// m_MessageVolume
 	[SchemaMember("CMessage", "m_MessageVolume")]
-	public ref float MessageVolume => ref Schema.GetRef<float>(this.Handle, "CMessage", "m_MessageVolume");
+	public float MessageVolume
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CMessage", "m_MessageVolume"); }
+		set { Schema.SetValueType<float>(this.Handle, "CMessage", "m_MessageVolume", value); }
+	}
 
 	// m_MessageAttenuation
 	[SchemaMember("CMessage", "m_MessageAttenuation")]
-	public ref Int32 MessageAttenuation => ref Schema.GetRef<Int32>(this.Handle, "CMessage", "m_MessageAttenuation");
+	public Int32 MessageAttenuation
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CMessage", "m_MessageAttenuation"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CMessage", "m_MessageAttenuation", value); }
+	}
 
 	// m_Radius
 	[SchemaMember("CMessage", "m_Radius")]
-	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CMessage", "m_Radius");
+	public float Radius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CMessage", "m_Radius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CMessage", "m_Radius", value); }
+	}
 
 	// m_sNoise
 	[SchemaMember("CMessage", "m_sNoise")]

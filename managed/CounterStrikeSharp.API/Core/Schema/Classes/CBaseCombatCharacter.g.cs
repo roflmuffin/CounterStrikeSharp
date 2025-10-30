@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class CBaseCombatCharacter : CBaseFlex
 
 	// m_bForceServerRagdoll
 	[SchemaMember("CBaseCombatCharacter", "m_bForceServerRagdoll")]
-	public ref bool ForceServerRagdoll => ref Schema.GetRef<bool>(this.Handle, "CBaseCombatCharacter", "m_bForceServerRagdoll");
+	public bool ForceServerRagdoll
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseCombatCharacter", "m_bForceServerRagdoll"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseCombatCharacter", "m_bForceServerRagdoll", value); }
+	}
 
 	// m_hMyWearables
 	[SchemaMember("CBaseCombatCharacter", "m_hMyWearables")]
@@ -28,15 +33,27 @@ public partial class CBaseCombatCharacter : CBaseFlex
 
 	// m_impactEnergyScale
 	[SchemaMember("CBaseCombatCharacter", "m_impactEnergyScale")]
-	public ref float ImpactEnergyScale => ref Schema.GetRef<float>(this.Handle, "CBaseCombatCharacter", "m_impactEnergyScale");
+	public float ImpactEnergyScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseCombatCharacter", "m_impactEnergyScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseCombatCharacter", "m_impactEnergyScale", value); }
+	}
 
 	// m_bApplyStressDamage
 	[SchemaMember("CBaseCombatCharacter", "m_bApplyStressDamage")]
-	public ref bool ApplyStressDamage => ref Schema.GetRef<bool>(this.Handle, "CBaseCombatCharacter", "m_bApplyStressDamage");
+	public bool ApplyStressDamage
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseCombatCharacter", "m_bApplyStressDamage"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseCombatCharacter", "m_bApplyStressDamage", value); }
+	}
 
 	// m_bDeathEventsDispatched
 	[SchemaMember("CBaseCombatCharacter", "m_bDeathEventsDispatched")]
-	public ref bool DeathEventsDispatched => ref Schema.GetRef<bool>(this.Handle, "CBaseCombatCharacter", "m_bDeathEventsDispatched");
+	public bool DeathEventsDispatched
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseCombatCharacter", "m_bDeathEventsDispatched"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseCombatCharacter", "m_bDeathEventsDispatched", value); }
+	}
 
 	// m_strRelationships
 	[SchemaMember("CBaseCombatCharacter", "m_strRelationships")]
@@ -48,11 +65,19 @@ public partial class CBaseCombatCharacter : CBaseFlex
 
 	// m_eHull
 	[SchemaMember("CBaseCombatCharacter", "m_eHull")]
-	public ref Hull_t Hull => ref Schema.GetRef<Hull_t>(this.Handle, "CBaseCombatCharacter", "m_eHull");
+	public Hull_t Hull
+	{
+		get { return Schema.GetValueType<Hull_t>(this.Handle, "CBaseCombatCharacter", "m_eHull"); }
+		set { Schema.SetValueType<Hull_t>(this.Handle, "CBaseCombatCharacter", "m_eHull", value); }
+	}
 
 	// m_nNavHullIdx
 	[SchemaMember("CBaseCombatCharacter", "m_nNavHullIdx")]
-	public ref UInt32 NavHullIdx => ref Schema.GetRef<UInt32>(this.Handle, "CBaseCombatCharacter", "m_nNavHullIdx");
+	public UInt32 NavHullIdx
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CBaseCombatCharacter", "m_nNavHullIdx"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CBaseCombatCharacter", "m_nNavHullIdx", value); }
+	}
 
 	// m_movementStats
 	[SchemaMember("CBaseCombatCharacter", "m_movementStats")]

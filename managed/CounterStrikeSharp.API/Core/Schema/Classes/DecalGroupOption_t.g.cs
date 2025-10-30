@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -32,18 +33,34 @@ public partial class DecalGroupOption_t : NativeObject
 
 	// m_flProbability
 	[SchemaMember("DecalGroupOption_t", "m_flProbability")]
-	public ref float Probability => ref Schema.GetRef<float>(this.Handle, "DecalGroupOption_t", "m_flProbability");
+	public float Probability
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "DecalGroupOption_t", "m_flProbability"); }
+		set { Schema.SetValueType<float>(this.Handle, "DecalGroupOption_t", "m_flProbability", value); }
+	}
 
 	// m_bEnableAngleBetweenNormalAndGravityRange
 	[SchemaMember("DecalGroupOption_t", "m_bEnableAngleBetweenNormalAndGravityRange")]
-	public ref bool EnableAngleBetweenNormalAndGravityRange => ref Schema.GetRef<bool>(this.Handle, "DecalGroupOption_t", "m_bEnableAngleBetweenNormalAndGravityRange");
+	public bool EnableAngleBetweenNormalAndGravityRange
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "DecalGroupOption_t", "m_bEnableAngleBetweenNormalAndGravityRange"); }
+		set { Schema.SetValueType<bool>(this.Handle, "DecalGroupOption_t", "m_bEnableAngleBetweenNormalAndGravityRange", value); }
+	}
 
 	// m_flMinAngleBetweenNormalAndGravity
 	[SchemaMember("DecalGroupOption_t", "m_flMinAngleBetweenNormalAndGravity")]
-	public ref float MinAngleBetweenNormalAndGravity => ref Schema.GetRef<float>(this.Handle, "DecalGroupOption_t", "m_flMinAngleBetweenNormalAndGravity");
+	public float MinAngleBetweenNormalAndGravity
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "DecalGroupOption_t", "m_flMinAngleBetweenNormalAndGravity"); }
+		set { Schema.SetValueType<float>(this.Handle, "DecalGroupOption_t", "m_flMinAngleBetweenNormalAndGravity", value); }
+	}
 
 	// m_flMaxAngleBetweenNormalAndGravity
 	[SchemaMember("DecalGroupOption_t", "m_flMaxAngleBetweenNormalAndGravity")]
-	public ref float MaxAngleBetweenNormalAndGravity => ref Schema.GetRef<float>(this.Handle, "DecalGroupOption_t", "m_flMaxAngleBetweenNormalAndGravity");
+	public float MaxAngleBetweenNormalAndGravity
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "DecalGroupOption_t", "m_flMaxAngleBetweenNormalAndGravity"); }
+		set { Schema.SetValueType<float>(this.Handle, "DecalGroupOption_t", "m_flMaxAngleBetweenNormalAndGravity", value); }
+	}
 
 }

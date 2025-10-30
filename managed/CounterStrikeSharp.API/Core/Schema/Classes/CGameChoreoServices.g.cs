@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,6 +29,10 @@ public partial class CGameChoreoServices : IChoreoServices
 
 	// m_flTimeStartedState
 	[SchemaMember("CGameChoreoServices", "m_flTimeStartedState")]
-	public ref float TimeStartedState => ref Schema.GetRef<float>(this.Handle, "CGameChoreoServices", "m_flTimeStartedState");
+	public float TimeStartedState
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGameChoreoServices", "m_flTimeStartedState"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGameChoreoServices", "m_flTimeStartedState", value); }
+	}
 
 }

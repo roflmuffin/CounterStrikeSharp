@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -32,6 +33,10 @@ public partial class CDestructiblePartsComponent : NativeObject
 
 	// m_nLastHitDamageLevel
 	[SchemaMember("CDestructiblePartsComponent", "m_nLastHitDamageLevel")]
-	public ref Int32 LastHitDamageLevel => ref Schema.GetRef<Int32>(this.Handle, "CDestructiblePartsComponent", "m_nLastHitDamageLevel");
+	public Int32 LastHitDamageLevel
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CDestructiblePartsComponent", "m_nLastHitDamageLevel"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CDestructiblePartsComponent", "m_nLastHitDamageLevel", value); }
+	}
 
 }

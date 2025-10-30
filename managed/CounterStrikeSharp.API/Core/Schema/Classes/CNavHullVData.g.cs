@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,62 +21,122 @@ public partial class CNavHullVData : NativeObject
 
 	// m_bAgentEnabled
 	[SchemaMember("CNavHullVData", "m_bAgentEnabled")]
-	public ref bool AgentEnabled => ref Schema.GetRef<bool>(this.Handle, "CNavHullVData", "m_bAgentEnabled");
+	public bool AgentEnabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CNavHullVData", "m_bAgentEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CNavHullVData", "m_bAgentEnabled", value); }
+	}
 
 	// m_agentRadius
 	[SchemaMember("CNavHullVData", "m_agentRadius")]
-	public ref float AgentRadius => ref Schema.GetRef<float>(this.Handle, "CNavHullVData", "m_agentRadius");
+	public float AgentRadius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CNavHullVData", "m_agentRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CNavHullVData", "m_agentRadius", value); }
+	}
 
 	// m_agentHeight
 	[SchemaMember("CNavHullVData", "m_agentHeight")]
-	public ref float AgentHeight => ref Schema.GetRef<float>(this.Handle, "CNavHullVData", "m_agentHeight");
+	public float AgentHeight
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CNavHullVData", "m_agentHeight"); }
+		set { Schema.SetValueType<float>(this.Handle, "CNavHullVData", "m_agentHeight", value); }
+	}
 
 	// m_agentShortHeightEnabled
 	[SchemaMember("CNavHullVData", "m_agentShortHeightEnabled")]
-	public ref bool AgentShortHeightEnabled => ref Schema.GetRef<bool>(this.Handle, "CNavHullVData", "m_agentShortHeightEnabled");
+	public bool AgentShortHeightEnabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CNavHullVData", "m_agentShortHeightEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CNavHullVData", "m_agentShortHeightEnabled", value); }
+	}
 
 	// m_agentShortHeight
 	[SchemaMember("CNavHullVData", "m_agentShortHeight")]
-	public ref float AgentShortHeight => ref Schema.GetRef<float>(this.Handle, "CNavHullVData", "m_agentShortHeight");
+	public float AgentShortHeight
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CNavHullVData", "m_agentShortHeight"); }
+		set { Schema.SetValueType<float>(this.Handle, "CNavHullVData", "m_agentShortHeight", value); }
+	}
 
 	// m_agentCrawlEnabled
 	[SchemaMember("CNavHullVData", "m_agentCrawlEnabled")]
-	public ref bool AgentCrawlEnabled => ref Schema.GetRef<bool>(this.Handle, "CNavHullVData", "m_agentCrawlEnabled");
+	public bool AgentCrawlEnabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CNavHullVData", "m_agentCrawlEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CNavHullVData", "m_agentCrawlEnabled", value); }
+	}
 
 	// m_agentCrawlHeight
 	[SchemaMember("CNavHullVData", "m_agentCrawlHeight")]
-	public ref float AgentCrawlHeight => ref Schema.GetRef<float>(this.Handle, "CNavHullVData", "m_agentCrawlHeight");
+	public float AgentCrawlHeight
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CNavHullVData", "m_agentCrawlHeight"); }
+		set { Schema.SetValueType<float>(this.Handle, "CNavHullVData", "m_agentCrawlHeight", value); }
+	}
 
 	// m_agentMaxClimb
 	[SchemaMember("CNavHullVData", "m_agentMaxClimb")]
-	public ref float AgentMaxClimb => ref Schema.GetRef<float>(this.Handle, "CNavHullVData", "m_agentMaxClimb");
+	public float AgentMaxClimb
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CNavHullVData", "m_agentMaxClimb"); }
+		set { Schema.SetValueType<float>(this.Handle, "CNavHullVData", "m_agentMaxClimb", value); }
+	}
 
 	// m_agentMaxSlope
 	[SchemaMember("CNavHullVData", "m_agentMaxSlope")]
-	public ref Int32 AgentMaxSlope => ref Schema.GetRef<Int32>(this.Handle, "CNavHullVData", "m_agentMaxSlope");
+	public Int32 AgentMaxSlope
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CNavHullVData", "m_agentMaxSlope"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CNavHullVData", "m_agentMaxSlope", value); }
+	}
 
 	// m_agentMaxJumpDownDist
 	[SchemaMember("CNavHullVData", "m_agentMaxJumpDownDist")]
-	public ref float AgentMaxJumpDownDist => ref Schema.GetRef<float>(this.Handle, "CNavHullVData", "m_agentMaxJumpDownDist");
+	public float AgentMaxJumpDownDist
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CNavHullVData", "m_agentMaxJumpDownDist"); }
+		set { Schema.SetValueType<float>(this.Handle, "CNavHullVData", "m_agentMaxJumpDownDist", value); }
+	}
 
 	// m_agentMaxJumpHorizDistBase
 	[SchemaMember("CNavHullVData", "m_agentMaxJumpHorizDistBase")]
-	public ref float AgentMaxJumpHorizDistBase => ref Schema.GetRef<float>(this.Handle, "CNavHullVData", "m_agentMaxJumpHorizDistBase");
+	public float AgentMaxJumpHorizDistBase
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CNavHullVData", "m_agentMaxJumpHorizDistBase"); }
+		set { Schema.SetValueType<float>(this.Handle, "CNavHullVData", "m_agentMaxJumpHorizDistBase", value); }
+	}
 
 	// m_agentMaxJumpUpDist
 	[SchemaMember("CNavHullVData", "m_agentMaxJumpUpDist")]
-	public ref float AgentMaxJumpUpDist => ref Schema.GetRef<float>(this.Handle, "CNavHullVData", "m_agentMaxJumpUpDist");
+	public float AgentMaxJumpUpDist
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CNavHullVData", "m_agentMaxJumpUpDist"); }
+		set { Schema.SetValueType<float>(this.Handle, "CNavHullVData", "m_agentMaxJumpUpDist", value); }
+	}
 
 	// m_agentBorderErosion
 	[SchemaMember("CNavHullVData", "m_agentBorderErosion")]
-	public ref Int32 AgentBorderErosion => ref Schema.GetRef<Int32>(this.Handle, "CNavHullVData", "m_agentBorderErosion");
+	public Int32 AgentBorderErosion
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CNavHullVData", "m_agentBorderErosion"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CNavHullVData", "m_agentBorderErosion", value); }
+	}
 
 	// m_flowMapGenerationEnabled
 	[SchemaMember("CNavHullVData", "m_flowMapGenerationEnabled")]
-	public ref bool FlowMapGenerationEnabled => ref Schema.GetRef<bool>(this.Handle, "CNavHullVData", "m_flowMapGenerationEnabled");
+	public bool FlowMapGenerationEnabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CNavHullVData", "m_flowMapGenerationEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CNavHullVData", "m_flowMapGenerationEnabled", value); }
+	}
 
 	// m_flowMapNodeMaxRadius
 	[SchemaMember("CNavHullVData", "m_flowMapNodeMaxRadius")]
-	public ref float FlowMapNodeMaxRadius => ref Schema.GetRef<float>(this.Handle, "CNavHullVData", "m_flowMapNodeMaxRadius");
+	public float FlowMapNodeMaxRadius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CNavHullVData", "m_flowMapNodeMaxRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CNavHullVData", "m_flowMapNodeMaxRadius", value); }
+	}
 
 }

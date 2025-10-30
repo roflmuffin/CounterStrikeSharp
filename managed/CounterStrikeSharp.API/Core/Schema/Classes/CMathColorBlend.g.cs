@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,11 +21,19 @@ public partial class CMathColorBlend : CLogicalEntity
 
 	// m_flInMin
 	[SchemaMember("CMathColorBlend", "m_flInMin")]
-	public ref float InMin => ref Schema.GetRef<float>(this.Handle, "CMathColorBlend", "m_flInMin");
+	public float InMin
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CMathColorBlend", "m_flInMin"); }
+		set { Schema.SetValueType<float>(this.Handle, "CMathColorBlend", "m_flInMin", value); }
+	}
 
 	// m_flInMax
 	[SchemaMember("CMathColorBlend", "m_flInMax")]
-	public ref float InMax => ref Schema.GetRef<float>(this.Handle, "CMathColorBlend", "m_flInMax");
+	public float InMax
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CMathColorBlend", "m_flInMax"); }
+		set { Schema.SetValueType<float>(this.Handle, "CMathColorBlend", "m_flInMax", value); }
+	}
 
 	// m_OutColor1
 	[SchemaMember("CMathColorBlend", "m_OutColor1")]

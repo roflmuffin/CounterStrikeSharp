@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -60,15 +61,27 @@ public partial class CBasePlayerPawn : CBaseCombatCharacter
 
 	// v_angle
 	[SchemaMember("CBasePlayerPawn", "v_angle")]
-	public QAngle V_angle => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBasePlayerPawn", "v_angle");
+	public QAngle V_angle
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CBasePlayerPawn", "v_angle"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CBasePlayerPawn", "v_angle", value); }
+	}
 
 	// v_anglePrevious
 	[SchemaMember("CBasePlayerPawn", "v_anglePrevious")]
-	public QAngle V_anglePrevious => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBasePlayerPawn", "v_anglePrevious");
+	public QAngle V_anglePrevious
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CBasePlayerPawn", "v_anglePrevious"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CBasePlayerPawn", "v_anglePrevious", value); }
+	}
 
 	// m_iHideHUD
 	[SchemaMember("CBasePlayerPawn", "m_iHideHUD")]
-	public ref UInt32 HideHUD => ref Schema.GetRef<UInt32>(this.Handle, "CBasePlayerPawn", "m_iHideHUD");
+	public UInt32 HideHUD
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CBasePlayerPawn", "m_iHideHUD"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CBasePlayerPawn", "m_iHideHUD", value); }
+	}
 
 	// m_skybox3d
 	[SchemaMember("CBasePlayerPawn", "m_skybox3d")]
@@ -76,19 +89,35 @@ public partial class CBasePlayerPawn : CBaseCombatCharacter
 
 	// m_fTimeLastHurt
 	[SchemaMember("CBasePlayerPawn", "m_fTimeLastHurt")]
-	public ref float TimeLastHurt => ref Schema.GetRef<float>(this.Handle, "CBasePlayerPawn", "m_fTimeLastHurt");
+	public float TimeLastHurt
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerPawn", "m_fTimeLastHurt"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerPawn", "m_fTimeLastHurt", value); }
+	}
 
 	// m_flDeathTime
 	[SchemaMember("CBasePlayerPawn", "m_flDeathTime")]
-	public ref float DeathTime => ref Schema.GetRef<float>(this.Handle, "CBasePlayerPawn", "m_flDeathTime");
+	public float DeathTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerPawn", "m_flDeathTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerPawn", "m_flDeathTime", value); }
+	}
 
 	// m_fNextSuicideTime
 	[SchemaMember("CBasePlayerPawn", "m_fNextSuicideTime")]
-	public ref float NextSuicideTime => ref Schema.GetRef<float>(this.Handle, "CBasePlayerPawn", "m_fNextSuicideTime");
+	public float NextSuicideTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerPawn", "m_fNextSuicideTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerPawn", "m_fNextSuicideTime", value); }
+	}
 
 	// m_fInitHUD
 	[SchemaMember("CBasePlayerPawn", "m_fInitHUD")]
-	public ref bool InitHUD => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerPawn", "m_fInitHUD");
+	public bool InitHUD
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerPawn", "m_fInitHUD"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerPawn", "m_fInitHUD", value); }
+	}
 
 	// m_pExpresser
 	[SchemaMember("CBasePlayerPawn", "m_pExpresser")]
@@ -104,11 +133,19 @@ public partial class CBasePlayerPawn : CBaseCombatCharacter
 
 	// m_fHltvReplayDelay
 	[SchemaMember("CBasePlayerPawn", "m_fHltvReplayDelay")]
-	public ref float HltvReplayDelay => ref Schema.GetRef<float>(this.Handle, "CBasePlayerPawn", "m_fHltvReplayDelay");
+	public float HltvReplayDelay
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerPawn", "m_fHltvReplayDelay"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerPawn", "m_fHltvReplayDelay", value); }
+	}
 
 	// m_fHltvReplayEnd
 	[SchemaMember("CBasePlayerPawn", "m_fHltvReplayEnd")]
-	public ref float HltvReplayEnd => ref Schema.GetRef<float>(this.Handle, "CBasePlayerPawn", "m_fHltvReplayEnd");
+	public float HltvReplayEnd
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerPawn", "m_fHltvReplayEnd"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerPawn", "m_fHltvReplayEnd", value); }
+	}
 
 	// m_iHltvReplayEntity
 	[SchemaMember("CBasePlayerPawn", "m_iHltvReplayEntity")]

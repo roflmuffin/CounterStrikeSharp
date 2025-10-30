@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,10 +21,18 @@ public partial class ragdollhierarchyjoint_t : NativeObject
 
 	// parentIndex
 	[SchemaMember("ragdollhierarchyjoint_t", "parentIndex")]
-	public ref Int32 ParentIndex => ref Schema.GetRef<Int32>(this.Handle, "ragdollhierarchyjoint_t", "parentIndex");
+	public Int32 ParentIndex
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "ragdollhierarchyjoint_t", "parentIndex"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "ragdollhierarchyjoint_t", "parentIndex", value); }
+	}
 
 	// childIndex
 	[SchemaMember("ragdollhierarchyjoint_t", "childIndex")]
-	public ref Int32 ChildIndex => ref Schema.GetRef<Int32>(this.Handle, "ragdollhierarchyjoint_t", "childIndex");
+	public Int32 ChildIndex
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "ragdollhierarchyjoint_t", "childIndex"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "ragdollhierarchyjoint_t", "childIndex", value); }
+	}
 
 }

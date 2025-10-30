@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,7 +25,11 @@ public partial class CRagdollProp : CBaseAnimGraph
 
 	// m_bStartDisabled
 	[SchemaMember("CRagdollProp", "m_bStartDisabled")]
-	public ref bool StartDisabled => ref Schema.GetRef<bool>(this.Handle, "CRagdollProp", "m_bStartDisabled");
+	public bool StartDisabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CRagdollProp", "m_bStartDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CRagdollProp", "m_bStartDisabled", value); }
+	}
 
 	// m_ragEnabled
 	[SchemaMember("CRagdollProp", "m_ragEnabled")]
@@ -32,7 +37,7 @@ public partial class CRagdollProp : CBaseAnimGraph
 
 	// m_ragPos
 	[SchemaMember("CRagdollProp", "m_ragPos")]
-	public NetworkedVector<Vector> RagPos => Schema.GetDeclaredClass<NetworkedVector<Vector>>(this.Handle, "CRagdollProp", "m_ragPos");
+	public NetworkedVector<Vector3> RagPos => Schema.GetDeclaredClass<NetworkedVector<Vector3>>(this.Handle, "CRagdollProp", "m_ragPos");
 
 	// m_ragAngles
 	[SchemaMember("CRagdollProp", "m_ragAngles")]
@@ -40,15 +45,27 @@ public partial class CRagdollProp : CBaseAnimGraph
 
 	// m_lastUpdateTickCount
 	[SchemaMember("CRagdollProp", "m_lastUpdateTickCount")]
-	public ref UInt32 LastUpdateTickCount => ref Schema.GetRef<UInt32>(this.Handle, "CRagdollProp", "m_lastUpdateTickCount");
+	public UInt32 LastUpdateTickCount
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CRagdollProp", "m_lastUpdateTickCount"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CRagdollProp", "m_lastUpdateTickCount", value); }
+	}
 
 	// m_allAsleep
 	[SchemaMember("CRagdollProp", "m_allAsleep")]
-	public ref bool AllAsleep => ref Schema.GetRef<bool>(this.Handle, "CRagdollProp", "m_allAsleep");
+	public bool AllAsleep
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CRagdollProp", "m_allAsleep"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CRagdollProp", "m_allAsleep", value); }
+	}
 
 	// m_bFirstCollisionAfterLaunch
 	[SchemaMember("CRagdollProp", "m_bFirstCollisionAfterLaunch")]
-	public ref bool FirstCollisionAfterLaunch => ref Schema.GetRef<bool>(this.Handle, "CRagdollProp", "m_bFirstCollisionAfterLaunch");
+	public bool FirstCollisionAfterLaunch
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CRagdollProp", "m_bFirstCollisionAfterLaunch"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CRagdollProp", "m_bFirstCollisionAfterLaunch", value); }
+	}
 
 	// m_hDamageEntity
 	[SchemaMember("CRagdollProp", "m_hDamageEntity")]
@@ -64,27 +81,51 @@ public partial class CRagdollProp : CBaseAnimGraph
 
 	// m_flLastPhysicsInfluenceTime
 	[SchemaMember("CRagdollProp", "m_flLastPhysicsInfluenceTime")]
-	public ref float LastPhysicsInfluenceTime => ref Schema.GetRef<float>(this.Handle, "CRagdollProp", "m_flLastPhysicsInfluenceTime");
+	public float LastPhysicsInfluenceTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CRagdollProp", "m_flLastPhysicsInfluenceTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CRagdollProp", "m_flLastPhysicsInfluenceTime", value); }
+	}
 
 	// m_flFadeOutStartTime
 	[SchemaMember("CRagdollProp", "m_flFadeOutStartTime")]
-	public ref float FadeOutStartTime => ref Schema.GetRef<float>(this.Handle, "CRagdollProp", "m_flFadeOutStartTime");
+	public float FadeOutStartTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CRagdollProp", "m_flFadeOutStartTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CRagdollProp", "m_flFadeOutStartTime", value); }
+	}
 
 	// m_flFadeTime
 	[SchemaMember("CRagdollProp", "m_flFadeTime")]
-	public ref float FadeTime => ref Schema.GetRef<float>(this.Handle, "CRagdollProp", "m_flFadeTime");
+	public float FadeTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CRagdollProp", "m_flFadeTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CRagdollProp", "m_flFadeTime", value); }
+	}
 
 	// m_vecLastOrigin
 	[SchemaMember("CRagdollProp", "m_vecLastOrigin")]
-	public Vector LastOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CRagdollProp", "m_vecLastOrigin");
+	public Vector3 LastOrigin
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CRagdollProp", "m_vecLastOrigin"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CRagdollProp", "m_vecLastOrigin", value); }
+	}
 
 	// m_flAwakeTime
 	[SchemaMember("CRagdollProp", "m_flAwakeTime")]
-	public ref float AwakeTime => ref Schema.GetRef<float>(this.Handle, "CRagdollProp", "m_flAwakeTime");
+	public float AwakeTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CRagdollProp", "m_flAwakeTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CRagdollProp", "m_flAwakeTime", value); }
+	}
 
 	// m_flLastOriginChangeTime
 	[SchemaMember("CRagdollProp", "m_flLastOriginChangeTime")]
-	public ref float LastOriginChangeTime => ref Schema.GetRef<float>(this.Handle, "CRagdollProp", "m_flLastOriginChangeTime");
+	public float LastOriginChangeTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CRagdollProp", "m_flLastOriginChangeTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CRagdollProp", "m_flLastOriginChangeTime", value); }
+	}
 
 	// m_strOriginClassName
 	[SchemaMember("CRagdollProp", "m_strOriginClassName")]
@@ -104,30 +145,50 @@ public partial class CRagdollProp : CBaseAnimGraph
 
 	// m_bHasBeenPhysgunned
 	[SchemaMember("CRagdollProp", "m_bHasBeenPhysgunned")]
-	public ref bool HasBeenPhysgunned => ref Schema.GetRef<bool>(this.Handle, "CRagdollProp", "m_bHasBeenPhysgunned");
+	public bool HasBeenPhysgunned
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CRagdollProp", "m_bHasBeenPhysgunned"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CRagdollProp", "m_bHasBeenPhysgunned", value); }
+	}
 
 	// m_bAllowStretch
 	[SchemaMember("CRagdollProp", "m_bAllowStretch")]
-	public ref bool AllowStretch => ref Schema.GetRef<bool>(this.Handle, "CRagdollProp", "m_bAllowStretch");
+	public bool AllowStretch
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CRagdollProp", "m_bAllowStretch"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CRagdollProp", "m_bAllowStretch", value); }
+	}
 
 	// m_flBlendWeight
 	[SchemaMember("CRagdollProp", "m_flBlendWeight")]
-	public ref float BlendWeight => ref Schema.GetRef<float>(this.Handle, "CRagdollProp", "m_flBlendWeight");
+	public float BlendWeight
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CRagdollProp", "m_flBlendWeight"); }
+		set { Schema.SetValueType<float>(this.Handle, "CRagdollProp", "m_flBlendWeight", value); }
+	}
 
 	// m_flDefaultFadeScale
 	[SchemaMember("CRagdollProp", "m_flDefaultFadeScale")]
-	public ref float DefaultFadeScale => ref Schema.GetRef<float>(this.Handle, "CRagdollProp", "m_flDefaultFadeScale");
+	public float DefaultFadeScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CRagdollProp", "m_flDefaultFadeScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CRagdollProp", "m_flDefaultFadeScale", value); }
+	}
 
 	// m_ragdollMins
 	[SchemaMember("CRagdollProp", "m_ragdollMins")]
-	public NetworkedVector<Vector> RagdollMins => Schema.GetDeclaredClass<NetworkedVector<Vector>>(this.Handle, "CRagdollProp", "m_ragdollMins");
+	public NetworkedVector<Vector3> RagdollMins => Schema.GetDeclaredClass<NetworkedVector<Vector3>>(this.Handle, "CRagdollProp", "m_ragdollMins");
 
 	// m_ragdollMaxs
 	[SchemaMember("CRagdollProp", "m_ragdollMaxs")]
-	public NetworkedVector<Vector> RagdollMaxs => Schema.GetDeclaredClass<NetworkedVector<Vector>>(this.Handle, "CRagdollProp", "m_ragdollMaxs");
+	public NetworkedVector<Vector3> RagdollMaxs => Schema.GetDeclaredClass<NetworkedVector<Vector3>>(this.Handle, "CRagdollProp", "m_ragdollMaxs");
 
 	// m_bShouldDeleteActivationRecord
 	[SchemaMember("CRagdollProp", "m_bShouldDeleteActivationRecord")]
-	public ref bool ShouldDeleteActivationRecord => ref Schema.GetRef<bool>(this.Handle, "CRagdollProp", "m_bShouldDeleteActivationRecord");
+	public bool ShouldDeleteActivationRecord
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CRagdollProp", "m_bShouldDeleteActivationRecord"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CRagdollProp", "m_bShouldDeleteActivationRecord", value); }
+	}
 
 }

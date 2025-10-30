@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,10 +21,18 @@ public partial class CSoundEventOBBEntity : CSoundEventEntity
 
 	// m_vMins
 	[SchemaMember("CSoundEventOBBEntity", "m_vMins")]
-	public Vector Mins => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundEventOBBEntity", "m_vMins");
+	public Vector3 Mins
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundEventOBBEntity", "m_vMins"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundEventOBBEntity", "m_vMins", value); }
+	}
 
 	// m_vMaxs
 	[SchemaMember("CSoundEventOBBEntity", "m_vMaxs")]
-	public Vector Maxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundEventOBBEntity", "m_vMaxs");
+	public Vector3 Maxs
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundEventOBBEntity", "m_vMaxs"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundEventOBBEntity", "m_vMaxs", value); }
+	}
 
 }

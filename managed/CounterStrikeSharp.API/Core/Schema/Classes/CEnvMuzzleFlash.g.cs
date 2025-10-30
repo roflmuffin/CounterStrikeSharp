@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class CEnvMuzzleFlash : CPointEntity
 
 	// m_flScale
 	[SchemaMember("CEnvMuzzleFlash", "m_flScale")]
-	public ref float Scale => ref Schema.GetRef<float>(this.Handle, "CEnvMuzzleFlash", "m_flScale");
+	public float Scale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvMuzzleFlash", "m_flScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvMuzzleFlash", "m_flScale", value); }
+	}
 
 	// m_iszParentAttachment
 	[SchemaMember("CEnvMuzzleFlash", "m_iszParentAttachment")]

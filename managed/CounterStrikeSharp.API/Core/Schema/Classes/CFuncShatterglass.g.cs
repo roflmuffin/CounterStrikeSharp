@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -36,51 +37,99 @@ public partial class CFuncShatterglass : CBaseModelEntity
 
 	// m_flLastShatterSoundEmitTime
 	[SchemaMember("CFuncShatterglass", "m_flLastShatterSoundEmitTime")]
-	public ref float LastShatterSoundEmitTime => ref Schema.GetRef<float>(this.Handle, "CFuncShatterglass", "m_flLastShatterSoundEmitTime");
+	public float LastShatterSoundEmitTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncShatterglass", "m_flLastShatterSoundEmitTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncShatterglass", "m_flLastShatterSoundEmitTime", value); }
+	}
 
 	// m_flLastCleanupTime
 	[SchemaMember("CFuncShatterglass", "m_flLastCleanupTime")]
-	public ref float LastCleanupTime => ref Schema.GetRef<float>(this.Handle, "CFuncShatterglass", "m_flLastCleanupTime");
+	public float LastCleanupTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncShatterglass", "m_flLastCleanupTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncShatterglass", "m_flLastCleanupTime", value); }
+	}
 
 	// m_flInitAtTime
 	[SchemaMember("CFuncShatterglass", "m_flInitAtTime")]
-	public ref float InitAtTime => ref Schema.GetRef<float>(this.Handle, "CFuncShatterglass", "m_flInitAtTime");
+	public float InitAtTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncShatterglass", "m_flInitAtTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncShatterglass", "m_flInitAtTime", value); }
+	}
 
 	// m_flGlassThickness
 	[SchemaMember("CFuncShatterglass", "m_flGlassThickness")]
-	public ref float GlassThickness => ref Schema.GetRef<float>(this.Handle, "CFuncShatterglass", "m_flGlassThickness");
+	public float GlassThickness
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncShatterglass", "m_flGlassThickness"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncShatterglass", "m_flGlassThickness", value); }
+	}
 
 	// m_flSpawnInvulnerability
 	[SchemaMember("CFuncShatterglass", "m_flSpawnInvulnerability")]
-	public ref float SpawnInvulnerability => ref Schema.GetRef<float>(this.Handle, "CFuncShatterglass", "m_flSpawnInvulnerability");
+	public float SpawnInvulnerability
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncShatterglass", "m_flSpawnInvulnerability"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncShatterglass", "m_flSpawnInvulnerability", value); }
+	}
 
 	// m_bBreakSilent
 	[SchemaMember("CFuncShatterglass", "m_bBreakSilent")]
-	public ref bool BreakSilent => ref Schema.GetRef<bool>(this.Handle, "CFuncShatterglass", "m_bBreakSilent");
+	public bool BreakSilent
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncShatterglass", "m_bBreakSilent"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncShatterglass", "m_bBreakSilent", value); }
+	}
 
 	// m_bBreakShardless
 	[SchemaMember("CFuncShatterglass", "m_bBreakShardless")]
-	public ref bool BreakShardless => ref Schema.GetRef<bool>(this.Handle, "CFuncShatterglass", "m_bBreakShardless");
+	public bool BreakShardless
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncShatterglass", "m_bBreakShardless"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncShatterglass", "m_bBreakShardless", value); }
+	}
 
 	// m_bBroken
 	[SchemaMember("CFuncShatterglass", "m_bBroken")]
-	public ref bool Broken => ref Schema.GetRef<bool>(this.Handle, "CFuncShatterglass", "m_bBroken");
+	public bool Broken
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncShatterglass", "m_bBroken"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncShatterglass", "m_bBroken", value); }
+	}
 
 	// m_bGlassNavIgnore
 	[SchemaMember("CFuncShatterglass", "m_bGlassNavIgnore")]
-	public ref bool GlassNavIgnore => ref Schema.GetRef<bool>(this.Handle, "CFuncShatterglass", "m_bGlassNavIgnore");
+	public bool GlassNavIgnore
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncShatterglass", "m_bGlassNavIgnore"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncShatterglass", "m_bGlassNavIgnore", value); }
+	}
 
 	// m_bGlassInFrame
 	[SchemaMember("CFuncShatterglass", "m_bGlassInFrame")]
-	public ref bool GlassInFrame => ref Schema.GetRef<bool>(this.Handle, "CFuncShatterglass", "m_bGlassInFrame");
+	public bool GlassInFrame
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncShatterglass", "m_bGlassInFrame"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncShatterglass", "m_bGlassInFrame", value); }
+	}
 
 	// m_bStartBroken
 	[SchemaMember("CFuncShatterglass", "m_bStartBroken")]
-	public ref bool StartBroken => ref Schema.GetRef<bool>(this.Handle, "CFuncShatterglass", "m_bStartBroken");
+	public bool StartBroken
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncShatterglass", "m_bStartBroken"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncShatterglass", "m_bStartBroken", value); }
+	}
 
 	// m_iInitialDamageType
 	[SchemaMember("CFuncShatterglass", "m_iInitialDamageType")]
-	public ref byte InitialDamageType => ref Schema.GetRef<byte>(this.Handle, "CFuncShatterglass", "m_iInitialDamageType");
+	public byte InitialDamageType
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CFuncShatterglass", "m_iInitialDamageType"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CFuncShatterglass", "m_iInitialDamageType", value); }
+	}
 
 	// m_szDamagePositioningEntityName01
 	[SchemaMember("CFuncShatterglass", "m_szDamagePositioningEntityName01")]
@@ -116,11 +165,11 @@ public partial class CFuncShatterglass : CBaseModelEntity
 
 	// m_vInitialDamagePositions
 	[SchemaMember("CFuncShatterglass", "m_vInitialDamagePositions")]
-	public NetworkedVector<Vector> InitialDamagePositions => Schema.GetDeclaredClass<NetworkedVector<Vector>>(this.Handle, "CFuncShatterglass", "m_vInitialDamagePositions");
+	public NetworkedVector<Vector3> InitialDamagePositions => Schema.GetDeclaredClass<NetworkedVector<Vector3>>(this.Handle, "CFuncShatterglass", "m_vInitialDamagePositions");
 
 	// m_vExtraDamagePositions
 	[SchemaMember("CFuncShatterglass", "m_vExtraDamagePositions")]
-	public NetworkedVector<Vector> ExtraDamagePositions => Schema.GetDeclaredClass<NetworkedVector<Vector>>(this.Handle, "CFuncShatterglass", "m_vExtraDamagePositions");
+	public NetworkedVector<Vector3> ExtraDamagePositions => Schema.GetDeclaredClass<NetworkedVector<Vector3>>(this.Handle, "CFuncShatterglass", "m_vExtraDamagePositions");
 
 	// m_vInitialPanelVertices
 	[SchemaMember("CFuncShatterglass", "m_vInitialPanelVertices")]
@@ -132,7 +181,11 @@ public partial class CFuncShatterglass : CBaseModelEntity
 
 	// m_iSurfaceType
 	[SchemaMember("CFuncShatterglass", "m_iSurfaceType")]
-	public ref byte SurfaceType => ref Schema.GetRef<byte>(this.Handle, "CFuncShatterglass", "m_iSurfaceType");
+	public byte SurfaceType
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CFuncShatterglass", "m_iSurfaceType"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CFuncShatterglass", "m_iSurfaceType", value); }
+	}
 
 	// m_hMaterialDamageBase
 	[SchemaMember("CFuncShatterglass", "m_hMaterialDamageBase")]

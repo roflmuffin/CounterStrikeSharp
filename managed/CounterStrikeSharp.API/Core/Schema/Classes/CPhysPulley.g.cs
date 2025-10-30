@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,18 +21,30 @@ public partial class CPhysPulley : CPhysConstraint
 
 	// m_position2
 	[SchemaMember("CPhysPulley", "m_position2")]
-	public Vector Position2 => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysPulley", "m_position2");
+	public Vector3 Position2
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CPhysPulley", "m_position2"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CPhysPulley", "m_position2", value); }
+	}
 
 	// m_offset
 	[SchemaMember("CPhysPulley", "m_offset")]
-	public Span<Vector> Offset => Schema.GetFixedArray<Vector>(this.Handle, "CPhysPulley", "m_offset", 2);
+	public Span<Vector3> Offset => Schema.GetFixedArray<Vector3>(this.Handle, "CPhysPulley", "m_offset", 2);
 
 	// m_addLength
 	[SchemaMember("CPhysPulley", "m_addLength")]
-	public ref float AddLength => ref Schema.GetRef<float>(this.Handle, "CPhysPulley", "m_addLength");
+	public float AddLength
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysPulley", "m_addLength"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysPulley", "m_addLength", value); }
+	}
 
 	// m_gearRatio
 	[SchemaMember("CPhysPulley", "m_gearRatio")]
-	public ref float GearRatio => ref Schema.GetRef<float>(this.Handle, "CPhysPulley", "m_gearRatio");
+	public float GearRatio
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysPulley", "m_gearRatio"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysPulley", "m_gearRatio", value); }
+	}
 
 }

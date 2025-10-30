@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,11 +21,19 @@ public partial class CVoteController : CBaseEntity
 
 	// m_iActiveIssueIndex
 	[SchemaMember("CVoteController", "m_iActiveIssueIndex")]
-	public ref Int32 ActiveIssueIndex => ref Schema.GetRef<Int32>(this.Handle, "CVoteController", "m_iActiveIssueIndex");
+	public Int32 ActiveIssueIndex
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CVoteController", "m_iActiveIssueIndex"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CVoteController", "m_iActiveIssueIndex", value); }
+	}
 
 	// m_iOnlyTeamToVote
 	[SchemaMember("CVoteController", "m_iOnlyTeamToVote")]
-	public ref Int32 OnlyTeamToVote => ref Schema.GetRef<Int32>(this.Handle, "CVoteController", "m_iOnlyTeamToVote");
+	public Int32 OnlyTeamToVote
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CVoteController", "m_iOnlyTeamToVote"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CVoteController", "m_iOnlyTeamToVote", value); }
+	}
 
 	// m_nVoteOptionCount
 	[SchemaMember("CVoteController", "m_nVoteOptionCount")]
@@ -32,11 +41,19 @@ public partial class CVoteController : CBaseEntity
 
 	// m_nPotentialVotes
 	[SchemaMember("CVoteController", "m_nPotentialVotes")]
-	public ref Int32 PotentialVotes => ref Schema.GetRef<Int32>(this.Handle, "CVoteController", "m_nPotentialVotes");
+	public Int32 PotentialVotes
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CVoteController", "m_nPotentialVotes"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CVoteController", "m_nPotentialVotes", value); }
+	}
 
 	// m_bIsYesNoVote
 	[SchemaMember("CVoteController", "m_bIsYesNoVote")]
-	public ref bool IsYesNoVote => ref Schema.GetRef<bool>(this.Handle, "CVoteController", "m_bIsYesNoVote");
+	public bool IsYesNoVote
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CVoteController", "m_bIsYesNoVote"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CVoteController", "m_bIsYesNoVote", value); }
+	}
 
 	// m_acceptingVotesTimer
 	[SchemaMember("CVoteController", "m_acceptingVotesTimer")]
@@ -56,15 +73,27 @@ public partial class CVoteController : CBaseEntity
 
 	// m_playerHoldingVote
 	[SchemaMember("CVoteController", "m_playerHoldingVote")]
-	public ref Int32 PlayerHoldingVote => ref Schema.GetRef<Int32>(this.Handle, "CVoteController", "m_playerHoldingVote");
+	public Int32 PlayerHoldingVote
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CVoteController", "m_playerHoldingVote"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CVoteController", "m_playerHoldingVote", value); }
+	}
 
 	// m_playerOverrideForVote
 	[SchemaMember("CVoteController", "m_playerOverrideForVote")]
-	public ref Int32 PlayerOverrideForVote => ref Schema.GetRef<Int32>(this.Handle, "CVoteController", "m_playerOverrideForVote");
+	public Int32 PlayerOverrideForVote
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CVoteController", "m_playerOverrideForVote"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CVoteController", "m_playerOverrideForVote", value); }
+	}
 
 	// m_nHighestCountIndex
 	[SchemaMember("CVoteController", "m_nHighestCountIndex")]
-	public ref Int32 HighestCountIndex => ref Schema.GetRef<Int32>(this.Handle, "CVoteController", "m_nHighestCountIndex");
+	public Int32 HighestCountIndex
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CVoteController", "m_nHighestCountIndex"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CVoteController", "m_nHighestCountIndex", value); }
+	}
 
 	// m_potentialIssues
 	[SchemaMember("CVoteController", "m_potentialIssues")]

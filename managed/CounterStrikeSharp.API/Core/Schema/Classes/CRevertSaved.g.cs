@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,14 +21,26 @@ public partial class CRevertSaved : CModelPointEntity
 
 	// m_loadTime
 	[SchemaMember("CRevertSaved", "m_loadTime")]
-	public ref float LoadTime => ref Schema.GetRef<float>(this.Handle, "CRevertSaved", "m_loadTime");
+	public float LoadTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CRevertSaved", "m_loadTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CRevertSaved", "m_loadTime", value); }
+	}
 
 	// m_Duration
 	[SchemaMember("CRevertSaved", "m_Duration")]
-	public ref float Duration => ref Schema.GetRef<float>(this.Handle, "CRevertSaved", "m_Duration");
+	public float Duration
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CRevertSaved", "m_Duration"); }
+		set { Schema.SetValueType<float>(this.Handle, "CRevertSaved", "m_Duration", value); }
+	}
 
 	// m_HoldTime
 	[SchemaMember("CRevertSaved", "m_HoldTime")]
-	public ref float HoldTime => ref Schema.GetRef<float>(this.Handle, "CRevertSaved", "m_HoldTime");
+	public float HoldTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CRevertSaved", "m_HoldTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CRevertSaved", "m_HoldTime", value); }
+	}
 
 }

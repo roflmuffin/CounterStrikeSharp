@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class shard_model_desc_t : NativeObject
 
 	// m_nModelID
 	[SchemaMember("shard_model_desc_t", "m_nModelID")]
-	public ref Int32 ModelID => ref Schema.GetRef<Int32>(this.Handle, "shard_model_desc_t", "m_nModelID");
+	public Int32 ModelID
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "shard_model_desc_t", "m_nModelID"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "shard_model_desc_t", "m_nModelID", value); }
+	}
 
 	// m_hMaterialBase
 	[SchemaMember("shard_model_desc_t", "m_hMaterialBase")]
@@ -32,7 +37,11 @@ public partial class shard_model_desc_t : NativeObject
 
 	// m_solid
 	[SchemaMember("shard_model_desc_t", "m_solid")]
-	public ref ShardSolid_t Solid => ref Schema.GetRef<ShardSolid_t>(this.Handle, "shard_model_desc_t", "m_solid");
+	public ShardSolid_t Solid
+	{
+		get { return Schema.GetValueType<ShardSolid_t>(this.Handle, "shard_model_desc_t", "m_solid"); }
+		set { Schema.SetValueType<ShardSolid_t>(this.Handle, "shard_model_desc_t", "m_solid", value); }
+	}
 
 	// m_vecPanelSize
 	[SchemaMember("shard_model_desc_t", "m_vecPanelSize")]
@@ -56,15 +65,27 @@ public partial class shard_model_desc_t : NativeObject
 
 	// m_flGlassHalfThickness
 	[SchemaMember("shard_model_desc_t", "m_flGlassHalfThickness")]
-	public ref float GlassHalfThickness => ref Schema.GetRef<float>(this.Handle, "shard_model_desc_t", "m_flGlassHalfThickness");
+	public float GlassHalfThickness
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "shard_model_desc_t", "m_flGlassHalfThickness"); }
+		set { Schema.SetValueType<float>(this.Handle, "shard_model_desc_t", "m_flGlassHalfThickness", value); }
+	}
 
 	// m_bHasParent
 	[SchemaMember("shard_model_desc_t", "m_bHasParent")]
-	public ref bool HasParent => ref Schema.GetRef<bool>(this.Handle, "shard_model_desc_t", "m_bHasParent");
+	public bool HasParent
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "shard_model_desc_t", "m_bHasParent"); }
+		set { Schema.SetValueType<bool>(this.Handle, "shard_model_desc_t", "m_bHasParent", value); }
+	}
 
 	// m_bParentFrozen
 	[SchemaMember("shard_model_desc_t", "m_bParentFrozen")]
-	public ref bool ParentFrozen => ref Schema.GetRef<bool>(this.Handle, "shard_model_desc_t", "m_bParentFrozen");
+	public bool ParentFrozen
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "shard_model_desc_t", "m_bParentFrozen"); }
+		set { Schema.SetValueType<bool>(this.Handle, "shard_model_desc_t", "m_bParentFrozen", value); }
+	}
 
 	// m_SurfacePropStringToken
 	[SchemaMember("shard_model_desc_t", "m_SurfacePropStringToken")]

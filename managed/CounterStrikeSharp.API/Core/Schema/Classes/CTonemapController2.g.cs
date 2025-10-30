@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,22 +21,42 @@ public partial class CTonemapController2 : CBaseEntity
 
 	// m_flAutoExposureMin
 	[SchemaMember("CTonemapController2", "m_flAutoExposureMin")]
-	public ref float AutoExposureMin => ref Schema.GetRef<float>(this.Handle, "CTonemapController2", "m_flAutoExposureMin");
+	public float AutoExposureMin
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTonemapController2", "m_flAutoExposureMin"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTonemapController2", "m_flAutoExposureMin", value); }
+	}
 
 	// m_flAutoExposureMax
 	[SchemaMember("CTonemapController2", "m_flAutoExposureMax")]
-	public ref float AutoExposureMax => ref Schema.GetRef<float>(this.Handle, "CTonemapController2", "m_flAutoExposureMax");
+	public float AutoExposureMax
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTonemapController2", "m_flAutoExposureMax"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTonemapController2", "m_flAutoExposureMax", value); }
+	}
 
 	// m_flExposureAdaptationSpeedUp
 	[SchemaMember("CTonemapController2", "m_flExposureAdaptationSpeedUp")]
-	public ref float ExposureAdaptationSpeedUp => ref Schema.GetRef<float>(this.Handle, "CTonemapController2", "m_flExposureAdaptationSpeedUp");
+	public float ExposureAdaptationSpeedUp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTonemapController2", "m_flExposureAdaptationSpeedUp"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTonemapController2", "m_flExposureAdaptationSpeedUp", value); }
+	}
 
 	// m_flExposureAdaptationSpeedDown
 	[SchemaMember("CTonemapController2", "m_flExposureAdaptationSpeedDown")]
-	public ref float ExposureAdaptationSpeedDown => ref Schema.GetRef<float>(this.Handle, "CTonemapController2", "m_flExposureAdaptationSpeedDown");
+	public float ExposureAdaptationSpeedDown
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTonemapController2", "m_flExposureAdaptationSpeedDown"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTonemapController2", "m_flExposureAdaptationSpeedDown", value); }
+	}
 
 	// m_flTonemapEVSmoothingRange
 	[SchemaMember("CTonemapController2", "m_flTonemapEVSmoothingRange")]
-	public ref float TonemapEVSmoothingRange => ref Schema.GetRef<float>(this.Handle, "CTonemapController2", "m_flTonemapEVSmoothingRange");
+	public float TonemapEVSmoothingRange
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTonemapController2", "m_flTonemapEVSmoothingRange"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTonemapController2", "m_flTonemapEVSmoothingRange", value); }
+	}
 
 }

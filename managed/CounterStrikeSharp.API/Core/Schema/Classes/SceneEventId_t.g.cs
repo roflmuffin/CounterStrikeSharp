@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,6 +21,10 @@ public partial class SceneEventId_t : NativeObject
 
 	// m_Value
 	[SchemaMember("SceneEventId_t", "m_Value")]
-	public ref UInt32 Value => ref Schema.GetRef<UInt32>(this.Handle, "SceneEventId_t", "m_Value");
+	public UInt32 Value
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "SceneEventId_t", "m_Value"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "SceneEventId_t", "m_Value", value); }
+	}
 
 }

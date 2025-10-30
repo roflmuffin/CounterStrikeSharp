@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,51 +29,99 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
 
 	// m_blindUntilTime
 	[SchemaMember("CCSPlayerPawnBase", "m_blindUntilTime")]
-	public ref float BlindUntilTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_blindUntilTime");
+	public float BlindUntilTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawnBase", "m_blindUntilTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawnBase", "m_blindUntilTime", value); }
+	}
 
 	// m_blindStartTime
 	[SchemaMember("CCSPlayerPawnBase", "m_blindStartTime")]
-	public ref float BlindStartTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_blindStartTime");
+	public float BlindStartTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawnBase", "m_blindStartTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawnBase", "m_blindStartTime", value); }
+	}
 
 	// m_iPlayerState
 	[SchemaMember("CCSPlayerPawnBase", "m_iPlayerState")]
-	public ref CSPlayerState PlayerState => ref Schema.GetRef<CSPlayerState>(this.Handle, "CCSPlayerPawnBase", "m_iPlayerState");
+	public CSPlayerState PlayerState
+	{
+		get { return Schema.GetValueType<CSPlayerState>(this.Handle, "CCSPlayerPawnBase", "m_iPlayerState"); }
+		set { Schema.SetValueType<CSPlayerState>(this.Handle, "CCSPlayerPawnBase", "m_iPlayerState", value); }
+	}
 
 	// m_bRespawning
 	[SchemaMember("CCSPlayerPawnBase", "m_bRespawning")]
-	public ref bool Respawning => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bRespawning");
+	public bool Respawning
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawnBase", "m_bRespawning"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawnBase", "m_bRespawning", value); }
+	}
 
 	// m_bHasMovedSinceSpawn
 	[SchemaMember("CCSPlayerPawnBase", "m_bHasMovedSinceSpawn")]
-	public ref bool HasMovedSinceSpawn => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerPawnBase", "m_bHasMovedSinceSpawn");
+	public bool HasMovedSinceSpawn
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerPawnBase", "m_bHasMovedSinceSpawn"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerPawnBase", "m_bHasMovedSinceSpawn", value); }
+	}
 
 	// m_iNumSpawns
 	[SchemaMember("CCSPlayerPawnBase", "m_iNumSpawns")]
-	public ref Int32 NumSpawns => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawnBase", "m_iNumSpawns");
+	public Int32 NumSpawns
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerPawnBase", "m_iNumSpawns"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerPawnBase", "m_iNumSpawns", value); }
+	}
 
 	// m_flIdleTimeSinceLastAction
 	[SchemaMember("CCSPlayerPawnBase", "m_flIdleTimeSinceLastAction")]
-	public ref float IdleTimeSinceLastAction => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flIdleTimeSinceLastAction");
+	public float IdleTimeSinceLastAction
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawnBase", "m_flIdleTimeSinceLastAction"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawnBase", "m_flIdleTimeSinceLastAction", value); }
+	}
 
 	// m_fNextRadarUpdateTime
 	[SchemaMember("CCSPlayerPawnBase", "m_fNextRadarUpdateTime")]
-	public ref float NextRadarUpdateTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_fNextRadarUpdateTime");
+	public float NextRadarUpdateTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawnBase", "m_fNextRadarUpdateTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawnBase", "m_fNextRadarUpdateTime", value); }
+	}
 
 	// m_flFlashDuration
 	[SchemaMember("CCSPlayerPawnBase", "m_flFlashDuration")]
-	public ref float FlashDuration => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flFlashDuration");
+	public float FlashDuration
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawnBase", "m_flFlashDuration"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawnBase", "m_flFlashDuration", value); }
+	}
 
 	// m_flFlashMaxAlpha
 	[SchemaMember("CCSPlayerPawnBase", "m_flFlashMaxAlpha")]
-	public ref float FlashMaxAlpha => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flFlashMaxAlpha");
+	public float FlashMaxAlpha
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawnBase", "m_flFlashMaxAlpha"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawnBase", "m_flFlashMaxAlpha", value); }
+	}
 
 	// m_flProgressBarStartTime
 	[SchemaMember("CCSPlayerPawnBase", "m_flProgressBarStartTime")]
-	public ref float ProgressBarStartTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerPawnBase", "m_flProgressBarStartTime");
+	public float ProgressBarStartTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerPawnBase", "m_flProgressBarStartTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerPawnBase", "m_flProgressBarStartTime", value); }
+	}
 
 	// m_iProgressBarDuration
 	[SchemaMember("CCSPlayerPawnBase", "m_iProgressBarDuration")]
-	public ref Int32 ProgressBarDuration => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerPawnBase", "m_iProgressBarDuration");
+	public Int32 ProgressBarDuration
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerPawnBase", "m_iProgressBarDuration"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerPawnBase", "m_iProgressBarDuration", value); }
+	}
 
 	// m_hOriginalController
 	[SchemaMember("CCSPlayerPawnBase", "m_hOriginalController")]

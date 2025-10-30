@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,10 +25,18 @@ public partial class CCredits : CPointEntity
 
 	// m_bRolledOutroCredits
 	[SchemaMember("CCredits", "m_bRolledOutroCredits")]
-	public ref bool RolledOutroCredits => ref Schema.GetRef<bool>(this.Handle, "CCredits", "m_bRolledOutroCredits");
+	public bool RolledOutroCredits
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCredits", "m_bRolledOutroCredits"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCredits", "m_bRolledOutroCredits", value); }
+	}
 
 	// m_flLogoLength
 	[SchemaMember("CCredits", "m_flLogoLength")]
-	public ref float LogoLength => ref Schema.GetRef<float>(this.Handle, "CCredits", "m_flLogoLength");
+	public float LogoLength
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCredits", "m_flLogoLength"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCredits", "m_flLogoLength", value); }
+	}
 
 }

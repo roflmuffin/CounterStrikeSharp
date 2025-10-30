@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -32,11 +33,19 @@ public partial class CModelState : NativeObject
 
 	// m_bClientClothCreationSuppressed
 	[SchemaMember("CModelState", "m_bClientClothCreationSuppressed")]
-	public ref bool ClientClothCreationSuppressed => ref Schema.GetRef<bool>(this.Handle, "CModelState", "m_bClientClothCreationSuppressed");
+	public bool ClientClothCreationSuppressed
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CModelState", "m_bClientClothCreationSuppressed"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CModelState", "m_bClientClothCreationSuppressed", value); }
+	}
 
 	// m_MeshGroupMask
 	[SchemaMember("CModelState", "m_MeshGroupMask")]
-	public ref UInt64 MeshGroupMask => ref Schema.GetRef<UInt64>(this.Handle, "CModelState", "m_MeshGroupMask");
+	public UInt64 MeshGroupMask
+	{
+		get { return Schema.GetValueType<UInt64>(this.Handle, "CModelState", "m_MeshGroupMask"); }
+		set { Schema.SetValueType<UInt64>(this.Handle, "CModelState", "m_MeshGroupMask", value); }
+	}
 
 	// m_nBodyGroupChoices
 	[SchemaMember("CModelState", "m_nBodyGroupChoices")]
@@ -44,14 +53,26 @@ public partial class CModelState : NativeObject
 
 	// m_nIdealMotionType
 	[SchemaMember("CModelState", "m_nIdealMotionType")]
-	public ref sbyte IdealMotionType => ref Schema.GetRef<sbyte>(this.Handle, "CModelState", "m_nIdealMotionType");
+	public sbyte IdealMotionType
+	{
+		get { return Schema.GetValueType<sbyte>(this.Handle, "CModelState", "m_nIdealMotionType"); }
+		set { Schema.SetValueType<sbyte>(this.Handle, "CModelState", "m_nIdealMotionType", value); }
+	}
 
 	// m_nForceLOD
 	[SchemaMember("CModelState", "m_nForceLOD")]
-	public ref sbyte ForceLOD => ref Schema.GetRef<sbyte>(this.Handle, "CModelState", "m_nForceLOD");
+	public sbyte ForceLOD
+	{
+		get { return Schema.GetValueType<sbyte>(this.Handle, "CModelState", "m_nForceLOD"); }
+		set { Schema.SetValueType<sbyte>(this.Handle, "CModelState", "m_nForceLOD", value); }
+	}
 
 	// m_nClothUpdateFlags
 	[SchemaMember("CModelState", "m_nClothUpdateFlags")]
-	public ref sbyte ClothUpdateFlags => ref Schema.GetRef<sbyte>(this.Handle, "CModelState", "m_nClothUpdateFlags");
+	public sbyte ClothUpdateFlags
+	{
+		get { return Schema.GetValueType<sbyte>(this.Handle, "CModelState", "m_nClothUpdateFlags"); }
+		set { Schema.SetValueType<sbyte>(this.Handle, "CModelState", "m_nClothUpdateFlags", value); }
+	}
 
 }

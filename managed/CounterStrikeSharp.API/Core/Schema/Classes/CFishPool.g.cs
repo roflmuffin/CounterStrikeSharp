@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,23 +21,43 @@ public partial class CFishPool : CBaseEntity
 
 	// m_fishCount
 	[SchemaMember("CFishPool", "m_fishCount")]
-	public ref Int32 FishCount => ref Schema.GetRef<Int32>(this.Handle, "CFishPool", "m_fishCount");
+	public Int32 FishCount
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CFishPool", "m_fishCount"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CFishPool", "m_fishCount", value); }
+	}
 
 	// m_maxRange
 	[SchemaMember("CFishPool", "m_maxRange")]
-	public ref float MaxRange => ref Schema.GetRef<float>(this.Handle, "CFishPool", "m_maxRange");
+	public float MaxRange
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFishPool", "m_maxRange"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFishPool", "m_maxRange", value); }
+	}
 
 	// m_swimDepth
 	[SchemaMember("CFishPool", "m_swimDepth")]
-	public ref float SwimDepth => ref Schema.GetRef<float>(this.Handle, "CFishPool", "m_swimDepth");
+	public float SwimDepth
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFishPool", "m_swimDepth"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFishPool", "m_swimDepth", value); }
+	}
 
 	// m_waterLevel
 	[SchemaMember("CFishPool", "m_waterLevel")]
-	public new ref float WaterLevel => ref Schema.GetRef<float>(this.Handle, "CFishPool", "m_waterLevel");
+	public new float WaterLevel
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFishPool", "m_waterLevel"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFishPool", "m_waterLevel", value); }
+	}
 
 	// m_isDormant
 	[SchemaMember("CFishPool", "m_isDormant")]
-	public ref bool IsDormant => ref Schema.GetRef<bool>(this.Handle, "CFishPool", "m_isDormant");
+	public bool IsDormant
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFishPool", "m_isDormant"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFishPool", "m_isDormant", value); }
+	}
 
 	// m_fishes
 	[SchemaMember("CFishPool", "m_fishes")]

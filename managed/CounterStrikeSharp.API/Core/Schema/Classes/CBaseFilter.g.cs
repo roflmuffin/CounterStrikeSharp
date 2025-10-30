@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class CBaseFilter : CLogicalEntity
 
 	// m_bNegated
 	[SchemaMember("CBaseFilter", "m_bNegated")]
-	public ref bool Negated => ref Schema.GetRef<bool>(this.Handle, "CBaseFilter", "m_bNegated");
+	public bool Negated
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseFilter", "m_bNegated"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseFilter", "m_bNegated", value); }
+	}
 
 	// m_OnPass
 	[SchemaMember("CBaseFilter", "m_OnPass")]

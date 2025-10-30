@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,26 +21,50 @@ public partial class CCSPlayer_WaterServices : CPlayer_WaterServices
 
 	// m_NextDrownDamageTime
 	[SchemaMember("CCSPlayer_WaterServices", "m_NextDrownDamageTime")]
-	public ref float NextDrownDamageTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_WaterServices", "m_NextDrownDamageTime");
+	public float NextDrownDamageTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_WaterServices", "m_NextDrownDamageTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_WaterServices", "m_NextDrownDamageTime", value); }
+	}
 
 	// m_nDrownDmgRate
 	[SchemaMember("CCSPlayer_WaterServices", "m_nDrownDmgRate")]
-	public ref Int32 DrownDmgRate => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayer_WaterServices", "m_nDrownDmgRate");
+	public Int32 DrownDmgRate
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayer_WaterServices", "m_nDrownDmgRate"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayer_WaterServices", "m_nDrownDmgRate", value); }
+	}
 
 	// m_AirFinishedTime
 	[SchemaMember("CCSPlayer_WaterServices", "m_AirFinishedTime")]
-	public ref float AirFinishedTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_WaterServices", "m_AirFinishedTime");
+	public float AirFinishedTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_WaterServices", "m_AirFinishedTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_WaterServices", "m_AirFinishedTime", value); }
+	}
 
 	// m_flWaterJumpTime
 	[SchemaMember("CCSPlayer_WaterServices", "m_flWaterJumpTime")]
-	public ref float WaterJumpTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_WaterServices", "m_flWaterJumpTime");
+	public float WaterJumpTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_WaterServices", "m_flWaterJumpTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_WaterServices", "m_flWaterJumpTime", value); }
+	}
 
 	// m_vecWaterJumpVel
 	[SchemaMember("CCSPlayer_WaterServices", "m_vecWaterJumpVel")]
-	public Vector WaterJumpVel => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayer_WaterServices", "m_vecWaterJumpVel");
+	public Vector3 WaterJumpVel
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSPlayer_WaterServices", "m_vecWaterJumpVel"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCSPlayer_WaterServices", "m_vecWaterJumpVel", value); }
+	}
 
 	// m_flSwimSoundTime
 	[SchemaMember("CCSPlayer_WaterServices", "m_flSwimSoundTime")]
-	public ref float SwimSoundTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_WaterServices", "m_flSwimSoundTime");
+	public float SwimSoundTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_WaterServices", "m_flSwimSoundTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_WaterServices", "m_flSwimSoundTime", value); }
+	}
 
 }

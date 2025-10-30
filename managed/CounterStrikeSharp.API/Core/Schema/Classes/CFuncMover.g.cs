@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -52,67 +53,131 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_eMoveType
 	[SchemaMember("CFuncMover", "m_eMoveType")]
-	public new ref CFuncMoverMove_t MoveType => ref Schema.GetRef<CFuncMoverMove_t>(this.Handle, "CFuncMover", "m_eMoveType");
+	public new CFuncMoverMove_t MoveType
+	{
+		get { return Schema.GetValueType<CFuncMoverMove_t>(this.Handle, "CFuncMover", "m_eMoveType"); }
+		set { Schema.SetValueType<CFuncMoverMove_t>(this.Handle, "CFuncMover", "m_eMoveType", value); }
+	}
 
 	// m_bIsReversing
 	[SchemaMember("CFuncMover", "m_bIsReversing")]
-	public ref bool IsReversing => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bIsReversing");
+	public bool IsReversing
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMover", "m_bIsReversing"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncMover", "m_bIsReversing", value); }
+	}
 
 	// m_vTarget
 	[SchemaMember("CFuncMover", "m_vTarget")]
-	public new Vector Target => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncMover", "m_vTarget");
+	public new Vector3 Target
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CFuncMover", "m_vTarget"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CFuncMover", "m_vTarget", value); }
+	}
 
 	// m_flStartSpeed
 	[SchemaMember("CFuncMover", "m_flStartSpeed")]
-	public ref float StartSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flStartSpeed");
+	public float StartSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flStartSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flStartSpeed", value); }
+	}
 
 	// m_flPathLocation
 	[SchemaMember("CFuncMover", "m_flPathLocation")]
-	public ref float PathLocation => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flPathLocation");
+	public float PathLocation
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flPathLocation"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flPathLocation", value); }
+	}
 
 	// m_flT
 	[SchemaMember("CFuncMover", "m_flT")]
-	public ref float T => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flT");
+	public float T
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flT"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flT", value); }
+	}
 
 	// m_nCurrentNodeIndex
 	[SchemaMember("CFuncMover", "m_nCurrentNodeIndex")]
-	public ref Int32 CurrentNodeIndex => ref Schema.GetRef<Int32>(this.Handle, "CFuncMover", "m_nCurrentNodeIndex");
+	public Int32 CurrentNodeIndex
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CFuncMover", "m_nCurrentNodeIndex"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CFuncMover", "m_nCurrentNodeIndex", value); }
+	}
 
 	// m_nPreviousNodeIndex
 	[SchemaMember("CFuncMover", "m_nPreviousNodeIndex")]
-	public ref Int32 PreviousNodeIndex => ref Schema.GetRef<Int32>(this.Handle, "CFuncMover", "m_nPreviousNodeIndex");
+	public Int32 PreviousNodeIndex
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CFuncMover", "m_nPreviousNodeIndex"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CFuncMover", "m_nPreviousNodeIndex", value); }
+	}
 
 	// m_eSolidType
 	[SchemaMember("CFuncMover", "m_eSolidType")]
-	public ref SolidType_t SolidType => ref Schema.GetRef<SolidType_t>(this.Handle, "CFuncMover", "m_eSolidType");
+	public SolidType_t SolidType
+	{
+		get { return Schema.GetValueType<SolidType_t>(this.Handle, "CFuncMover", "m_eSolidType"); }
+		set { Schema.SetValueType<SolidType_t>(this.Handle, "CFuncMover", "m_eSolidType", value); }
+	}
 
 	// m_bIsMoving
 	[SchemaMember("CFuncMover", "m_bIsMoving")]
-	public ref bool IsMoving => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bIsMoving");
+	public bool IsMoving
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMover", "m_bIsMoving"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncMover", "m_bIsMoving", value); }
+	}
 
 	// m_flTimeToReachMaxSpeed
 	[SchemaMember("CFuncMover", "m_flTimeToReachMaxSpeed")]
-	public ref float TimeToReachMaxSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flTimeToReachMaxSpeed");
+	public float TimeToReachMaxSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flTimeToReachMaxSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flTimeToReachMaxSpeed", value); }
+	}
 
 	// m_flDistanceToReachMaxSpeed
 	[SchemaMember("CFuncMover", "m_flDistanceToReachMaxSpeed")]
-	public ref float DistanceToReachMaxSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flDistanceToReachMaxSpeed");
+	public float DistanceToReachMaxSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flDistanceToReachMaxSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flDistanceToReachMaxSpeed", value); }
+	}
 
 	// m_flTimeToReachZeroSpeed
 	[SchemaMember("CFuncMover", "m_flTimeToReachZeroSpeed")]
-	public ref float TimeToReachZeroSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flTimeToReachZeroSpeed");
+	public float TimeToReachZeroSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flTimeToReachZeroSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flTimeToReachZeroSpeed", value); }
+	}
 
 	// m_flDistanceToReachZeroSpeed
 	[SchemaMember("CFuncMover", "m_flDistanceToReachZeroSpeed")]
-	public ref float DistanceToReachZeroSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flDistanceToReachZeroSpeed");
+	public float DistanceToReachZeroSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flDistanceToReachZeroSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flDistanceToReachZeroSpeed", value); }
+	}
 
 	// m_flTimeMovementStart
 	[SchemaMember("CFuncMover", "m_flTimeMovementStart")]
-	public ref float TimeMovementStart => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flTimeMovementStart");
+	public float TimeMovementStart
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flTimeMovementStart"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flTimeMovementStart", value); }
+	}
 
 	// m_flTimeMovementStop
 	[SchemaMember("CFuncMover", "m_flTimeMovementStop")]
-	public ref float TimeMovementStop => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flTimeMovementStop");
+	public float TimeMovementStop
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flTimeMovementStop"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flTimeMovementStop", value); }
+	}
 
 	// m_hStopAtNode
 	[SchemaMember("CFuncMover", "m_hStopAtNode")]
@@ -120,7 +185,11 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_flPathLocationToBeginStop
 	[SchemaMember("CFuncMover", "m_flPathLocationToBeginStop")]
-	public ref float PathLocationToBeginStop => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flPathLocationToBeginStop");
+	public float PathLocationToBeginStop
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flPathLocationToBeginStop"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flPathLocationToBeginStop", value); }
+	}
 
 	// m_iszStartForwardSound
 	[SchemaMember("CFuncMover", "m_iszStartForwardSound")]
@@ -184,39 +253,75 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_bStartAtClosestPoint
 	[SchemaMember("CFuncMover", "m_bStartAtClosestPoint")]
-	public ref bool StartAtClosestPoint => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bStartAtClosestPoint");
+	public bool StartAtClosestPoint
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMover", "m_bStartAtClosestPoint"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncMover", "m_bStartAtClosestPoint", value); }
+	}
 
 	// m_bStartAtEnd
 	[SchemaMember("CFuncMover", "m_bStartAtEnd")]
-	public ref bool StartAtEnd => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bStartAtEnd");
+	public bool StartAtEnd
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMover", "m_bStartAtEnd"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncMover", "m_bStartAtEnd", value); }
+	}
 
 	// m_eOrientationUpdate
 	[SchemaMember("CFuncMover", "m_eOrientationUpdate")]
-	public ref CFuncMoverOrientationUpdate_t OrientationUpdate => ref Schema.GetRef<CFuncMoverOrientationUpdate_t>(this.Handle, "CFuncMover", "m_eOrientationUpdate");
+	public CFuncMoverOrientationUpdate_t OrientationUpdate
+	{
+		get { return Schema.GetValueType<CFuncMoverOrientationUpdate_t>(this.Handle, "CFuncMover", "m_eOrientationUpdate"); }
+		set { Schema.SetValueType<CFuncMoverOrientationUpdate_t>(this.Handle, "CFuncMover", "m_eOrientationUpdate", value); }
+	}
 
 	// m_flTimeStartOrientationChange
 	[SchemaMember("CFuncMover", "m_flTimeStartOrientationChange")]
-	public ref float TimeStartOrientationChange => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flTimeStartOrientationChange");
+	public float TimeStartOrientationChange
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flTimeStartOrientationChange"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flTimeStartOrientationChange", value); }
+	}
 
 	// m_flTimeToBlendToNewOrientation
 	[SchemaMember("CFuncMover", "m_flTimeToBlendToNewOrientation")]
-	public ref float TimeToBlendToNewOrientation => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flTimeToBlendToNewOrientation");
+	public float TimeToBlendToNewOrientation
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flTimeToBlendToNewOrientation"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flTimeToBlendToNewOrientation", value); }
+	}
 
 	// m_flDurationBlendToNewOrientationRan
 	[SchemaMember("CFuncMover", "m_flDurationBlendToNewOrientationRan")]
-	public ref float DurationBlendToNewOrientationRan => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flDurationBlendToNewOrientationRan");
+	public float DurationBlendToNewOrientationRan
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flDurationBlendToNewOrientationRan"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flDurationBlendToNewOrientationRan", value); }
+	}
 
 	// m_nOriginalOrientationIndex
 	[SchemaMember("CFuncMover", "m_nOriginalOrientationIndex")]
-	public ref Int32 OriginalOrientationIndex => ref Schema.GetRef<Int32>(this.Handle, "CFuncMover", "m_nOriginalOrientationIndex");
+	public Int32 OriginalOrientationIndex
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CFuncMover", "m_nOriginalOrientationIndex"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CFuncMover", "m_nOriginalOrientationIndex", value); }
+	}
 
 	// m_bCreateMovableNavMesh
 	[SchemaMember("CFuncMover", "m_bCreateMovableNavMesh")]
-	public ref bool CreateMovableNavMesh => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bCreateMovableNavMesh");
+	public bool CreateMovableNavMesh
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMover", "m_bCreateMovableNavMesh"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncMover", "m_bCreateMovableNavMesh", value); }
+	}
 
 	// m_bAllowMovableNavMeshDockingOnEntireEntity
 	[SchemaMember("CFuncMover", "m_bAllowMovableNavMeshDockingOnEntireEntity")]
-	public ref bool AllowMovableNavMeshDockingOnEntireEntity => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bAllowMovableNavMeshDockingOnEntireEntity");
+	public bool AllowMovableNavMeshDockingOnEntireEntity
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMover", "m_bAllowMovableNavMeshDockingOnEntireEntity"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncMover", "m_bAllowMovableNavMeshDockingOnEntireEntity", value); }
+	}
 
 	// m_OnNodePassed
 	[SchemaMember("CFuncMover", "m_OnNodePassed")]
@@ -236,23 +341,43 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_flTimeToTraverseToNextNode
 	[SchemaMember("CFuncMover", "m_flTimeToTraverseToNextNode")]
-	public ref float TimeToTraverseToNextNode => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flTimeToTraverseToNextNode");
+	public float TimeToTraverseToNextNode
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flTimeToTraverseToNextNode"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flTimeToTraverseToNextNode", value); }
+	}
 
 	// m_vLerpToNewPosStartInPathEntitySpace
 	[SchemaMember("CFuncMover", "m_vLerpToNewPosStartInPathEntitySpace")]
-	public Vector LerpToNewPosStartInPathEntitySpace => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncMover", "m_vLerpToNewPosStartInPathEntitySpace");
+	public Vector3 LerpToNewPosStartInPathEntitySpace
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CFuncMover", "m_vLerpToNewPosStartInPathEntitySpace"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CFuncMover", "m_vLerpToNewPosStartInPathEntitySpace", value); }
+	}
 
 	// m_vLerpToNewPosEndInPathEntitySpace
 	[SchemaMember("CFuncMover", "m_vLerpToNewPosEndInPathEntitySpace")]
-	public Vector LerpToNewPosEndInPathEntitySpace => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncMover", "m_vLerpToNewPosEndInPathEntitySpace");
+	public Vector3 LerpToNewPosEndInPathEntitySpace
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CFuncMover", "m_vLerpToNewPosEndInPathEntitySpace"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CFuncMover", "m_vLerpToNewPosEndInPathEntitySpace", value); }
+	}
 
 	// m_flLerpToPositionT
 	[SchemaMember("CFuncMover", "m_flLerpToPositionT")]
-	public ref float LerpToPositionT => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flLerpToPositionT");
+	public float LerpToPositionT
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flLerpToPositionT"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flLerpToPositionT", value); }
+	}
 
 	// m_flLerpToPositionDeltaT
 	[SchemaMember("CFuncMover", "m_flLerpToPositionDeltaT")]
-	public ref float LerpToPositionDeltaT => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flLerpToPositionDeltaT");
+	public float LerpToPositionDeltaT
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flLerpToPositionDeltaT"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flLerpToPositionDeltaT", value); }
+	}
 
 	// m_OnLerpToPositionComplete
 	[SchemaMember("CFuncMover", "m_OnLerpToPositionComplete")]
@@ -260,19 +385,35 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_bIsPaused
 	[SchemaMember("CFuncMover", "m_bIsPaused")]
-	public ref bool IsPaused => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bIsPaused");
+	public bool IsPaused
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMover", "m_bIsPaused"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncMover", "m_bIsPaused", value); }
+	}
 
 	// m_eTransitionedToPathNodeAction
 	[SchemaMember("CFuncMover", "m_eTransitionedToPathNodeAction")]
-	public ref CFuncMoverTransitionToPathNodeAction_t TransitionedToPathNodeAction => ref Schema.GetRef<CFuncMoverTransitionToPathNodeAction_t>(this.Handle, "CFuncMover", "m_eTransitionedToPathNodeAction");
+	public CFuncMoverTransitionToPathNodeAction_t TransitionedToPathNodeAction
+	{
+		get { return Schema.GetValueType<CFuncMoverTransitionToPathNodeAction_t>(this.Handle, "CFuncMover", "m_eTransitionedToPathNodeAction"); }
+		set { Schema.SetValueType<CFuncMoverTransitionToPathNodeAction_t>(this.Handle, "CFuncMover", "m_eTransitionedToPathNodeAction", value); }
+	}
 
 	// m_nDelayedTeleportToNode
 	[SchemaMember("CFuncMover", "m_nDelayedTeleportToNode")]
-	public ref Int32 DelayedTeleportToNode => ref Schema.GetRef<Int32>(this.Handle, "CFuncMover", "m_nDelayedTeleportToNode");
+	public Int32 DelayedTeleportToNode
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CFuncMover", "m_nDelayedTeleportToNode"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CFuncMover", "m_nDelayedTeleportToNode", value); }
+	}
 
 	// m_bIsVerboseLogging
 	[SchemaMember("CFuncMover", "m_bIsVerboseLogging")]
-	public ref bool IsVerboseLogging => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bIsVerboseLogging");
+	public bool IsVerboseLogging
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMover", "m_bIsVerboseLogging"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncMover", "m_bIsVerboseLogging", value); }
+	}
 
 	// m_hFollowEntity
 	[SchemaMember("CFuncMover", "m_hFollowEntity")]
@@ -280,19 +421,35 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_flFollowDistance
 	[SchemaMember("CFuncMover", "m_flFollowDistance")]
-	public ref float FollowDistance => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flFollowDistance");
+	public float FollowDistance
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flFollowDistance"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flFollowDistance", value); }
+	}
 
 	// m_flFollowMinimumSpeed
 	[SchemaMember("CFuncMover", "m_flFollowMinimumSpeed")]
-	public ref float FollowMinimumSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flFollowMinimumSpeed");
+	public float FollowMinimumSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flFollowMinimumSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flFollowMinimumSpeed", value); }
+	}
 
 	// m_flCurFollowEntityT
 	[SchemaMember("CFuncMover", "m_flCurFollowEntityT")]
-	public ref float CurFollowEntityT => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flCurFollowEntityT");
+	public float CurFollowEntityT
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flCurFollowEntityT"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flCurFollowEntityT", value); }
+	}
 
 	// m_flCurFollowSpeed
 	[SchemaMember("CFuncMover", "m_flCurFollowSpeed")]
-	public ref float CurFollowSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncMover", "m_flCurFollowSpeed");
+	public float CurFollowSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncMover", "m_flCurFollowSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncMover", "m_flCurFollowSpeed", value); }
+	}
 
 	// m_strOrientationFaceEntityName
 	[SchemaMember("CFuncMover", "m_strOrientationFaceEntityName")]
@@ -328,14 +485,26 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_bNextNodeReturnsCurrent
 	[SchemaMember("CFuncMover", "m_bNextNodeReturnsCurrent")]
-	public ref bool NextNodeReturnsCurrent => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bNextNodeReturnsCurrent");
+	public bool NextNodeReturnsCurrent
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMover", "m_bNextNodeReturnsCurrent"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncMover", "m_bNextNodeReturnsCurrent", value); }
+	}
 
 	// m_bStartedMoving
 	[SchemaMember("CFuncMover", "m_bStartedMoving")]
-	public ref bool StartedMoving => ref Schema.GetRef<bool>(this.Handle, "CFuncMover", "m_bStartedMoving");
+	public bool StartedMoving
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMover", "m_bStartedMoving"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncMover", "m_bStartedMoving", value); }
+	}
 
 	// m_eFollowEntityDirection
 	[SchemaMember("CFuncMover", "m_eFollowEntityDirection")]
-	public ref CFuncMoverFollowEntityDirection_t FollowEntityDirection => ref Schema.GetRef<CFuncMoverFollowEntityDirection_t>(this.Handle, "CFuncMover", "m_eFollowEntityDirection");
+	public CFuncMoverFollowEntityDirection_t FollowEntityDirection
+	{
+		get { return Schema.GetValueType<CFuncMoverFollowEntityDirection_t>(this.Handle, "CFuncMover", "m_eFollowEntityDirection"); }
+		set { Schema.SetValueType<CFuncMoverFollowEntityDirection_t>(this.Handle, "CFuncMover", "m_eFollowEntityDirection", value); }
+	}
 
 }

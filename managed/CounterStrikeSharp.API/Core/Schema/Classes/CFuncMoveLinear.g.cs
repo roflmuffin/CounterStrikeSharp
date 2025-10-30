@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,15 +21,27 @@ public partial class CFuncMoveLinear : CBaseToggle
 
 	// m_authoredPosition
 	[SchemaMember("CFuncMoveLinear", "m_authoredPosition")]
-	public ref MoveLinearAuthoredPos_t AuthoredPosition => ref Schema.GetRef<MoveLinearAuthoredPos_t>(this.Handle, "CFuncMoveLinear", "m_authoredPosition");
+	public MoveLinearAuthoredPos_t AuthoredPosition
+	{
+		get { return Schema.GetValueType<MoveLinearAuthoredPos_t>(this.Handle, "CFuncMoveLinear", "m_authoredPosition"); }
+		set { Schema.SetValueType<MoveLinearAuthoredPos_t>(this.Handle, "CFuncMoveLinear", "m_authoredPosition", value); }
+	}
 
 	// m_angMoveEntitySpace
 	[SchemaMember("CFuncMoveLinear", "m_angMoveEntitySpace")]
-	public QAngle MoveEntitySpace => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncMoveLinear", "m_angMoveEntitySpace");
+	public QAngle MoveEntitySpace
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CFuncMoveLinear", "m_angMoveEntitySpace"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CFuncMoveLinear", "m_angMoveEntitySpace", value); }
+	}
 
 	// m_vecMoveDirParentSpace
 	[SchemaMember("CFuncMoveLinear", "m_vecMoveDirParentSpace")]
-	public Vector MoveDirParentSpace => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncMoveLinear", "m_vecMoveDirParentSpace");
+	public Vector3 MoveDirParentSpace
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CFuncMoveLinear", "m_vecMoveDirParentSpace"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CFuncMoveLinear", "m_vecMoveDirParentSpace", value); }
+	}
 
 	// m_soundStart
 	[SchemaMember("CFuncMoveLinear", "m_soundStart")]
@@ -56,11 +69,19 @@ public partial class CFuncMoveLinear : CBaseToggle
 
 	// m_flBlockDamage
 	[SchemaMember("CFuncMoveLinear", "m_flBlockDamage")]
-	public ref float BlockDamage => ref Schema.GetRef<float>(this.Handle, "CFuncMoveLinear", "m_flBlockDamage");
+	public float BlockDamage
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncMoveLinear", "m_flBlockDamage"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncMoveLinear", "m_flBlockDamage", value); }
+	}
 
 	// m_flStartPosition
 	[SchemaMember("CFuncMoveLinear", "m_flStartPosition")]
-	public ref float StartPosition => ref Schema.GetRef<float>(this.Handle, "CFuncMoveLinear", "m_flStartPosition");
+	public float StartPosition
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncMoveLinear", "m_flStartPosition"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncMoveLinear", "m_flStartPosition", value); }
+	}
 
 	// m_OnFullyOpen
 	[SchemaMember("CFuncMoveLinear", "m_OnFullyOpen")]
@@ -72,14 +93,26 @@ public partial class CFuncMoveLinear : CBaseToggle
 
 	// m_bCreateMovableNavMesh
 	[SchemaMember("CFuncMoveLinear", "m_bCreateMovableNavMesh")]
-	public ref bool CreateMovableNavMesh => ref Schema.GetRef<bool>(this.Handle, "CFuncMoveLinear", "m_bCreateMovableNavMesh");
+	public bool CreateMovableNavMesh
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMoveLinear", "m_bCreateMovableNavMesh"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncMoveLinear", "m_bCreateMovableNavMesh", value); }
+	}
 
 	// m_bAllowMovableNavMeshDockingOnEntireEntity
 	[SchemaMember("CFuncMoveLinear", "m_bAllowMovableNavMeshDockingOnEntireEntity")]
-	public ref bool AllowMovableNavMeshDockingOnEntireEntity => ref Schema.GetRef<bool>(this.Handle, "CFuncMoveLinear", "m_bAllowMovableNavMeshDockingOnEntireEntity");
+	public bool AllowMovableNavMeshDockingOnEntireEntity
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMoveLinear", "m_bAllowMovableNavMeshDockingOnEntireEntity"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncMoveLinear", "m_bAllowMovableNavMeshDockingOnEntireEntity", value); }
+	}
 
 	// m_bCreateNavObstacle
 	[SchemaMember("CFuncMoveLinear", "m_bCreateNavObstacle")]
-	public ref bool CreateNavObstacle => ref Schema.GetRef<bool>(this.Handle, "CFuncMoveLinear", "m_bCreateNavObstacle");
+	public bool CreateNavObstacle
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMoveLinear", "m_bCreateNavObstacle"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncMoveLinear", "m_bCreateNavObstacle", value); }
+	}
 
 }

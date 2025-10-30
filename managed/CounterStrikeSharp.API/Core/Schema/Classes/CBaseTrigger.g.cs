@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -64,10 +65,18 @@ public partial class CBaseTrigger : CBaseToggle
 
 	// m_bDisabled
 	[SchemaMember("CBaseTrigger", "m_bDisabled")]
-	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CBaseTrigger", "m_bDisabled");
+	public bool Disabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseTrigger", "m_bDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseTrigger", "m_bDisabled", value); }
+	}
 
 	// m_bUseAsyncQueries
 	[SchemaMember("CBaseTrigger", "m_bUseAsyncQueries")]
-	public ref bool UseAsyncQueries => ref Schema.GetRef<bool>(this.Handle, "CBaseTrigger", "m_bUseAsyncQueries");
+	public bool UseAsyncQueries
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseTrigger", "m_bUseAsyncQueries"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseTrigger", "m_bUseAsyncQueries", value); }
+	}
 
 }

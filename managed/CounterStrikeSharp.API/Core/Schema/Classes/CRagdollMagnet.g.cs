@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,18 +21,34 @@ public partial class CRagdollMagnet : CPointEntity
 
 	// m_bDisabled
 	[SchemaMember("CRagdollMagnet", "m_bDisabled")]
-	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CRagdollMagnet", "m_bDisabled");
+	public bool Disabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CRagdollMagnet", "m_bDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CRagdollMagnet", "m_bDisabled", value); }
+	}
 
 	// m_radius
 	[SchemaMember("CRagdollMagnet", "m_radius")]
-	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CRagdollMagnet", "m_radius");
+	public float Radius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CRagdollMagnet", "m_radius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CRagdollMagnet", "m_radius", value); }
+	}
 
 	// m_force
 	[SchemaMember("CRagdollMagnet", "m_force")]
-	public ref float Force => ref Schema.GetRef<float>(this.Handle, "CRagdollMagnet", "m_force");
+	public float Force
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CRagdollMagnet", "m_force"); }
+		set { Schema.SetValueType<float>(this.Handle, "CRagdollMagnet", "m_force", value); }
+	}
 
 	// m_axis
 	[SchemaMember("CRagdollMagnet", "m_axis")]
-	public Vector Axis => Schema.GetDeclaredClass<Vector>(this.Handle, "CRagdollMagnet", "m_axis");
+	public Vector3 Axis
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CRagdollMagnet", "m_axis"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CRagdollMagnet", "m_axis", value); }
+	}
 
 }

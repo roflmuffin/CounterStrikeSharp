@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,38 +21,74 @@ public partial class CSoundOpvarSetAABBEntity : CSoundOpvarSetPointEntity
 
 	// m_vDistanceInnerMins
 	[SchemaMember("CSoundOpvarSetAABBEntity", "m_vDistanceInnerMins")]
-	public Vector DistanceInnerMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceInnerMins");
+	public Vector3 DistanceInnerMins
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceInnerMins"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceInnerMins", value); }
+	}
 
 	// m_vDistanceInnerMaxs
 	[SchemaMember("CSoundOpvarSetAABBEntity", "m_vDistanceInnerMaxs")]
-	public Vector DistanceInnerMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceInnerMaxs");
+	public Vector3 DistanceInnerMaxs
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceInnerMaxs"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceInnerMaxs", value); }
+	}
 
 	// m_vDistanceOuterMins
 	[SchemaMember("CSoundOpvarSetAABBEntity", "m_vDistanceOuterMins")]
-	public Vector DistanceOuterMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceOuterMins");
+	public Vector3 DistanceOuterMins
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceOuterMins"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceOuterMins", value); }
+	}
 
 	// m_vDistanceOuterMaxs
 	[SchemaMember("CSoundOpvarSetAABBEntity", "m_vDistanceOuterMaxs")]
-	public Vector DistanceOuterMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceOuterMaxs");
+	public Vector3 DistanceOuterMaxs
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceOuterMaxs"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vDistanceOuterMaxs", value); }
+	}
 
 	// m_nAABBDirection
 	[SchemaMember("CSoundOpvarSetAABBEntity", "m_nAABBDirection")]
-	public ref Int32 AABBDirection => ref Schema.GetRef<Int32>(this.Handle, "CSoundOpvarSetAABBEntity", "m_nAABBDirection");
+	public Int32 AABBDirection
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSoundOpvarSetAABBEntity", "m_nAABBDirection"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSoundOpvarSetAABBEntity", "m_nAABBDirection", value); }
+	}
 
 	// m_vInnerMins
 	[SchemaMember("CSoundOpvarSetAABBEntity", "m_vInnerMins")]
-	public Vector InnerMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vInnerMins");
+	public Vector3 InnerMins
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vInnerMins"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vInnerMins", value); }
+	}
 
 	// m_vInnerMaxs
 	[SchemaMember("CSoundOpvarSetAABBEntity", "m_vInnerMaxs")]
-	public Vector InnerMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vInnerMaxs");
+	public Vector3 InnerMaxs
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vInnerMaxs"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vInnerMaxs", value); }
+	}
 
 	// m_vOuterMins
 	[SchemaMember("CSoundOpvarSetAABBEntity", "m_vOuterMins")]
-	public Vector OuterMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vOuterMins");
+	public Vector3 OuterMins
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vOuterMins"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vOuterMins", value); }
+	}
 
 	// m_vOuterMaxs
 	[SchemaMember("CSoundOpvarSetAABBEntity", "m_vOuterMaxs")]
-	public Vector OuterMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vOuterMaxs");
+	public Vector3 OuterMaxs
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vOuterMaxs"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundOpvarSetAABBEntity", "m_vOuterMaxs", value); }
+	}
 
 }

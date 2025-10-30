@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,6 +21,10 @@ public partial class CMarkupVolumeTagged_Nav : CMarkupVolumeTagged
 
 	// m_nScopes
 	[SchemaMember("CMarkupVolumeTagged_Nav", "m_nScopes")]
-	public ref NavScopeFlags_t Scopes => ref Schema.GetRef<NavScopeFlags_t>(this.Handle, "CMarkupVolumeTagged_Nav", "m_nScopes");
+	public NavScopeFlags_t Scopes
+	{
+		get { return Schema.GetValueType<NavScopeFlags_t>(this.Handle, "CMarkupVolumeTagged_Nav", "m_nScopes"); }
+		set { Schema.SetValueType<NavScopeFlags_t>(this.Handle, "CMarkupVolumeTagged_Nav", "m_nScopes", value); }
+	}
 
 }

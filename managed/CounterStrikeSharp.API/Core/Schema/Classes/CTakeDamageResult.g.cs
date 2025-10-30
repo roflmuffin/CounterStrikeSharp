@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,30 +25,58 @@ public partial class CTakeDamageResult : NativeObject
 
 	// m_nHealthLost
 	[SchemaMember("CTakeDamageResult", "m_nHealthLost")]
-	public ref Int32 HealthLost => ref Schema.GetRef<Int32>(this.Handle, "CTakeDamageResult", "m_nHealthLost");
+	public Int32 HealthLost
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CTakeDamageResult", "m_nHealthLost"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CTakeDamageResult", "m_nHealthLost", value); }
+	}
 
 	// m_nHealthBefore
 	[SchemaMember("CTakeDamageResult", "m_nHealthBefore")]
-	public ref Int32 HealthBefore => ref Schema.GetRef<Int32>(this.Handle, "CTakeDamageResult", "m_nHealthBefore");
+	public Int32 HealthBefore
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CTakeDamageResult", "m_nHealthBefore"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CTakeDamageResult", "m_nHealthBefore", value); }
+	}
 
 	// m_nDamageDealt
 	[SchemaMember("CTakeDamageResult", "m_nDamageDealt")]
-	public ref Int32 DamageDealt => ref Schema.GetRef<Int32>(this.Handle, "CTakeDamageResult", "m_nDamageDealt");
+	public Int32 DamageDealt
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CTakeDamageResult", "m_nDamageDealt"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CTakeDamageResult", "m_nDamageDealt", value); }
+	}
 
 	// m_flPreModifiedDamage
 	[SchemaMember("CTakeDamageResult", "m_flPreModifiedDamage")]
-	public ref float PreModifiedDamage => ref Schema.GetRef<float>(this.Handle, "CTakeDamageResult", "m_flPreModifiedDamage");
+	public float PreModifiedDamage
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTakeDamageResult", "m_flPreModifiedDamage"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTakeDamageResult", "m_flPreModifiedDamage", value); }
+	}
 
 	// m_nTotalledHealthLost
 	[SchemaMember("CTakeDamageResult", "m_nTotalledHealthLost")]
-	public ref Int32 TotalledHealthLost => ref Schema.GetRef<Int32>(this.Handle, "CTakeDamageResult", "m_nTotalledHealthLost");
+	public Int32 TotalledHealthLost
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CTakeDamageResult", "m_nTotalledHealthLost"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CTakeDamageResult", "m_nTotalledHealthLost", value); }
+	}
 
 	// m_nTotalledDamageDealt
 	[SchemaMember("CTakeDamageResult", "m_nTotalledDamageDealt")]
-	public ref Int32 TotalledDamageDealt => ref Schema.GetRef<Int32>(this.Handle, "CTakeDamageResult", "m_nTotalledDamageDealt");
+	public Int32 TotalledDamageDealt
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CTakeDamageResult", "m_nTotalledDamageDealt"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CTakeDamageResult", "m_nTotalledDamageDealt", value); }
+	}
 
 	// m_bWasDamageSuppressed
 	[SchemaMember("CTakeDamageResult", "m_bWasDamageSuppressed")]
-	public ref bool WasDamageSuppressed => ref Schema.GetRef<bool>(this.Handle, "CTakeDamageResult", "m_bWasDamageSuppressed");
+	public bool WasDamageSuppressed
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTakeDamageResult", "m_bWasDamageSuppressed"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTakeDamageResult", "m_bWasDamageSuppressed", value); }
+	}
 
 }

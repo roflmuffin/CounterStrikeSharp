@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,11 +21,19 @@ public partial class CTextureBasedAnimatable : CBaseModelEntity
 
 	// m_bLoop
 	[SchemaMember("CTextureBasedAnimatable", "m_bLoop")]
-	public ref bool Loop => ref Schema.GetRef<bool>(this.Handle, "CTextureBasedAnimatable", "m_bLoop");
+	public bool Loop
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTextureBasedAnimatable", "m_bLoop"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTextureBasedAnimatable", "m_bLoop", value); }
+	}
 
 	// m_flFPS
 	[SchemaMember("CTextureBasedAnimatable", "m_flFPS")]
-	public ref float FPS => ref Schema.GetRef<float>(this.Handle, "CTextureBasedAnimatable", "m_flFPS");
+	public float FPS
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTextureBasedAnimatable", "m_flFPS"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTextureBasedAnimatable", "m_flFPS", value); }
+	}
 
 	// m_hPositionKeys
 	[SchemaMember("CTextureBasedAnimatable", "m_hPositionKeys")]
@@ -36,18 +45,34 @@ public partial class CTextureBasedAnimatable : CBaseModelEntity
 
 	// m_vAnimationBoundsMin
 	[SchemaMember("CTextureBasedAnimatable", "m_vAnimationBoundsMin")]
-	public Vector AnimationBoundsMin => Schema.GetDeclaredClass<Vector>(this.Handle, "CTextureBasedAnimatable", "m_vAnimationBoundsMin");
+	public Vector3 AnimationBoundsMin
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CTextureBasedAnimatable", "m_vAnimationBoundsMin"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CTextureBasedAnimatable", "m_vAnimationBoundsMin", value); }
+	}
 
 	// m_vAnimationBoundsMax
 	[SchemaMember("CTextureBasedAnimatable", "m_vAnimationBoundsMax")]
-	public Vector AnimationBoundsMax => Schema.GetDeclaredClass<Vector>(this.Handle, "CTextureBasedAnimatable", "m_vAnimationBoundsMax");
+	public Vector3 AnimationBoundsMax
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CTextureBasedAnimatable", "m_vAnimationBoundsMax"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CTextureBasedAnimatable", "m_vAnimationBoundsMax", value); }
+	}
 
 	// m_flStartTime
 	[SchemaMember("CTextureBasedAnimatable", "m_flStartTime")]
-	public ref float StartTime => ref Schema.GetRef<float>(this.Handle, "CTextureBasedAnimatable", "m_flStartTime");
+	public float StartTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTextureBasedAnimatable", "m_flStartTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTextureBasedAnimatable", "m_flStartTime", value); }
+	}
 
 	// m_flStartFrame
 	[SchemaMember("CTextureBasedAnimatable", "m_flStartFrame")]
-	public ref float StartFrame => ref Schema.GetRef<float>(this.Handle, "CTextureBasedAnimatable", "m_flStartFrame");
+	public float StartFrame
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTextureBasedAnimatable", "m_flStartFrame"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTextureBasedAnimatable", "m_flStartFrame", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,71 +21,139 @@ public partial class CPropDoorRotating : CBasePropDoor
 
 	// m_vecAxis
 	[SchemaMember("CPropDoorRotating", "m_vecAxis")]
-	public Vector Axis => Schema.GetDeclaredClass<Vector>(this.Handle, "CPropDoorRotating", "m_vecAxis");
+	public Vector3 Axis
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CPropDoorRotating", "m_vecAxis"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CPropDoorRotating", "m_vecAxis", value); }
+	}
 
 	// m_flDistance
 	[SchemaMember("CPropDoorRotating", "m_flDistance")]
-	public ref float Distance => ref Schema.GetRef<float>(this.Handle, "CPropDoorRotating", "m_flDistance");
+	public float Distance
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPropDoorRotating", "m_flDistance"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPropDoorRotating", "m_flDistance", value); }
+	}
 
 	// m_eSpawnPosition
 	[SchemaMember("CPropDoorRotating", "m_eSpawnPosition")]
-	public ref PropDoorRotatingSpawnPos_t SpawnPosition => ref Schema.GetRef<PropDoorRotatingSpawnPos_t>(this.Handle, "CPropDoorRotating", "m_eSpawnPosition");
+	public PropDoorRotatingSpawnPos_t SpawnPosition
+	{
+		get { return Schema.GetValueType<PropDoorRotatingSpawnPos_t>(this.Handle, "CPropDoorRotating", "m_eSpawnPosition"); }
+		set { Schema.SetValueType<PropDoorRotatingSpawnPos_t>(this.Handle, "CPropDoorRotating", "m_eSpawnPosition", value); }
+	}
 
 	// m_eOpenDirection
 	[SchemaMember("CPropDoorRotating", "m_eOpenDirection")]
-	public ref PropDoorRotatingOpenDirection_e OpenDirection => ref Schema.GetRef<PropDoorRotatingOpenDirection_e>(this.Handle, "CPropDoorRotating", "m_eOpenDirection");
+	public PropDoorRotatingOpenDirection_e OpenDirection
+	{
+		get { return Schema.GetValueType<PropDoorRotatingOpenDirection_e>(this.Handle, "CPropDoorRotating", "m_eOpenDirection"); }
+		set { Schema.SetValueType<PropDoorRotatingOpenDirection_e>(this.Handle, "CPropDoorRotating", "m_eOpenDirection", value); }
+	}
 
 	// m_eCurrentOpenDirection
 	[SchemaMember("CPropDoorRotating", "m_eCurrentOpenDirection")]
-	public ref PropDoorRotatingOpenDirection_e CurrentOpenDirection => ref Schema.GetRef<PropDoorRotatingOpenDirection_e>(this.Handle, "CPropDoorRotating", "m_eCurrentOpenDirection");
+	public PropDoorRotatingOpenDirection_e CurrentOpenDirection
+	{
+		get { return Schema.GetValueType<PropDoorRotatingOpenDirection_e>(this.Handle, "CPropDoorRotating", "m_eCurrentOpenDirection"); }
+		set { Schema.SetValueType<PropDoorRotatingOpenDirection_e>(this.Handle, "CPropDoorRotating", "m_eCurrentOpenDirection", value); }
+	}
 
 	// m_eDefaultCheckDirection
 	[SchemaMember("CPropDoorRotating", "m_eDefaultCheckDirection")]
-	public ref doorCheck_e DefaultCheckDirection => ref Schema.GetRef<doorCheck_e>(this.Handle, "CPropDoorRotating", "m_eDefaultCheckDirection");
+	public doorCheck_e DefaultCheckDirection
+	{
+		get { return Schema.GetValueType<doorCheck_e>(this.Handle, "CPropDoorRotating", "m_eDefaultCheckDirection"); }
+		set { Schema.SetValueType<doorCheck_e>(this.Handle, "CPropDoorRotating", "m_eDefaultCheckDirection", value); }
+	}
 
 	// m_flAjarAngle
 	[SchemaMember("CPropDoorRotating", "m_flAjarAngle")]
-	public ref float AjarAngle => ref Schema.GetRef<float>(this.Handle, "CPropDoorRotating", "m_flAjarAngle");
+	public float AjarAngle
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPropDoorRotating", "m_flAjarAngle"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPropDoorRotating", "m_flAjarAngle", value); }
+	}
 
 	// m_angRotationAjarDeprecated
 	[SchemaMember("CPropDoorRotating", "m_angRotationAjarDeprecated")]
-	public QAngle RotationAjarDeprecated => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPropDoorRotating", "m_angRotationAjarDeprecated");
+	public QAngle RotationAjarDeprecated
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CPropDoorRotating", "m_angRotationAjarDeprecated"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CPropDoorRotating", "m_angRotationAjarDeprecated", value); }
+	}
 
 	// m_angRotationClosed
 	[SchemaMember("CPropDoorRotating", "m_angRotationClosed")]
-	public QAngle RotationClosed => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPropDoorRotating", "m_angRotationClosed");
+	public QAngle RotationClosed
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CPropDoorRotating", "m_angRotationClosed"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CPropDoorRotating", "m_angRotationClosed", value); }
+	}
 
 	// m_angRotationOpenForward
 	[SchemaMember("CPropDoorRotating", "m_angRotationOpenForward")]
-	public QAngle RotationOpenForward => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPropDoorRotating", "m_angRotationOpenForward");
+	public QAngle RotationOpenForward
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CPropDoorRotating", "m_angRotationOpenForward"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CPropDoorRotating", "m_angRotationOpenForward", value); }
+	}
 
 	// m_angRotationOpenBack
 	[SchemaMember("CPropDoorRotating", "m_angRotationOpenBack")]
-	public QAngle RotationOpenBack => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPropDoorRotating", "m_angRotationOpenBack");
+	public QAngle RotationOpenBack
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CPropDoorRotating", "m_angRotationOpenBack"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CPropDoorRotating", "m_angRotationOpenBack", value); }
+	}
 
 	// m_angGoal
 	[SchemaMember("CPropDoorRotating", "m_angGoal")]
-	public QAngle Goal => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPropDoorRotating", "m_angGoal");
+	public QAngle Goal
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CPropDoorRotating", "m_angGoal"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CPropDoorRotating", "m_angGoal", value); }
+	}
 
 	// m_vecForwardBoundsMin
 	[SchemaMember("CPropDoorRotating", "m_vecForwardBoundsMin")]
-	public Vector ForwardBoundsMin => Schema.GetDeclaredClass<Vector>(this.Handle, "CPropDoorRotating", "m_vecForwardBoundsMin");
+	public Vector3 ForwardBoundsMin
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CPropDoorRotating", "m_vecForwardBoundsMin"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CPropDoorRotating", "m_vecForwardBoundsMin", value); }
+	}
 
 	// m_vecForwardBoundsMax
 	[SchemaMember("CPropDoorRotating", "m_vecForwardBoundsMax")]
-	public Vector ForwardBoundsMax => Schema.GetDeclaredClass<Vector>(this.Handle, "CPropDoorRotating", "m_vecForwardBoundsMax");
+	public Vector3 ForwardBoundsMax
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CPropDoorRotating", "m_vecForwardBoundsMax"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CPropDoorRotating", "m_vecForwardBoundsMax", value); }
+	}
 
 	// m_vecBackBoundsMin
 	[SchemaMember("CPropDoorRotating", "m_vecBackBoundsMin")]
-	public Vector BackBoundsMin => Schema.GetDeclaredClass<Vector>(this.Handle, "CPropDoorRotating", "m_vecBackBoundsMin");
+	public Vector3 BackBoundsMin
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CPropDoorRotating", "m_vecBackBoundsMin"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CPropDoorRotating", "m_vecBackBoundsMin", value); }
+	}
 
 	// m_vecBackBoundsMax
 	[SchemaMember("CPropDoorRotating", "m_vecBackBoundsMax")]
-	public Vector BackBoundsMax => Schema.GetDeclaredClass<Vector>(this.Handle, "CPropDoorRotating", "m_vecBackBoundsMax");
+	public Vector3 BackBoundsMax
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CPropDoorRotating", "m_vecBackBoundsMax"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CPropDoorRotating", "m_vecBackBoundsMax", value); }
+	}
 
 	// m_bAjarDoorShouldntAlwaysOpen
 	[SchemaMember("CPropDoorRotating", "m_bAjarDoorShouldntAlwaysOpen")]
-	public ref bool AjarDoorShouldntAlwaysOpen => ref Schema.GetRef<bool>(this.Handle, "CPropDoorRotating", "m_bAjarDoorShouldntAlwaysOpen");
+	public bool AjarDoorShouldntAlwaysOpen
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPropDoorRotating", "m_bAjarDoorShouldntAlwaysOpen"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPropDoorRotating", "m_bAjarDoorShouldntAlwaysOpen", value); }
+	}
 
 	// m_hEntityBlocker
 	[SchemaMember("CPropDoorRotating", "m_hEntityBlocker")]

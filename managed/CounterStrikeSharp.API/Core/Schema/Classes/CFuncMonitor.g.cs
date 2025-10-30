@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,15 +29,27 @@ public partial class CFuncMonitor : CFuncBrush
 
 	// m_nResolutionEnum
 	[SchemaMember("CFuncMonitor", "m_nResolutionEnum")]
-	public ref Int32 ResolutionEnum => ref Schema.GetRef<Int32>(this.Handle, "CFuncMonitor", "m_nResolutionEnum");
+	public Int32 ResolutionEnum
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CFuncMonitor", "m_nResolutionEnum"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CFuncMonitor", "m_nResolutionEnum", value); }
+	}
 
 	// m_bRenderShadows
 	[SchemaMember("CFuncMonitor", "m_bRenderShadows")]
-	public ref bool RenderShadows => ref Schema.GetRef<bool>(this.Handle, "CFuncMonitor", "m_bRenderShadows");
+	public bool RenderShadows
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMonitor", "m_bRenderShadows"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncMonitor", "m_bRenderShadows", value); }
+	}
 
 	// m_bUseUniqueColorTarget
 	[SchemaMember("CFuncMonitor", "m_bUseUniqueColorTarget")]
-	public ref bool UseUniqueColorTarget => ref Schema.GetRef<bool>(this.Handle, "CFuncMonitor", "m_bUseUniqueColorTarget");
+	public bool UseUniqueColorTarget
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMonitor", "m_bUseUniqueColorTarget"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncMonitor", "m_bUseUniqueColorTarget", value); }
+	}
 
 	// m_brushModelName
 	[SchemaMember("CFuncMonitor", "m_brushModelName")]
@@ -52,14 +65,26 @@ public partial class CFuncMonitor : CFuncBrush
 
 	// m_bEnabled
 	[SchemaMember("CFuncMonitor", "m_bEnabled")]
-	public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CFuncMonitor", "m_bEnabled");
+	public bool Enabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMonitor", "m_bEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncMonitor", "m_bEnabled", value); }
+	}
 
 	// m_bDraw3DSkybox
 	[SchemaMember("CFuncMonitor", "m_bDraw3DSkybox")]
-	public ref bool Draw3DSkybox => ref Schema.GetRef<bool>(this.Handle, "CFuncMonitor", "m_bDraw3DSkybox");
+	public bool Draw3DSkybox
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMonitor", "m_bDraw3DSkybox"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncMonitor", "m_bDraw3DSkybox", value); }
+	}
 
 	// m_bStartEnabled
 	[SchemaMember("CFuncMonitor", "m_bStartEnabled")]
-	public ref bool StartEnabled => ref Schema.GetRef<bool>(this.Handle, "CFuncMonitor", "m_bStartEnabled");
+	public bool StartEnabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncMonitor", "m_bStartEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncMonitor", "m_bStartEnabled", value); }
+	}
 
 }

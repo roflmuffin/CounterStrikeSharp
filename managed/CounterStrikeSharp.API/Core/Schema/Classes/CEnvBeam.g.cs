@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class CEnvBeam : CBeam
 
 	// m_active
 	[SchemaMember("CEnvBeam", "m_active")]
-	public ref Int32 Active => ref Schema.GetRef<Int32>(this.Handle, "CEnvBeam", "m_active");
+	public Int32 Active
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvBeam", "m_active"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvBeam", "m_active", value); }
+	}
 
 	// m_spriteTexture
 	[SchemaMember("CEnvBeam", "m_spriteTexture")]
@@ -44,23 +49,43 @@ public partial class CEnvBeam : CBeam
 
 	// m_life
 	[SchemaMember("CEnvBeam", "m_life")]
-	public ref float Life => ref Schema.GetRef<float>(this.Handle, "CEnvBeam", "m_life");
+	public float Life
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvBeam", "m_life"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvBeam", "m_life", value); }
+	}
 
 	// m_boltWidth
 	[SchemaMember("CEnvBeam", "m_boltWidth")]
-	public ref float BoltWidth => ref Schema.GetRef<float>(this.Handle, "CEnvBeam", "m_boltWidth");
+	public float BoltWidth
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvBeam", "m_boltWidth"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvBeam", "m_boltWidth", value); }
+	}
 
 	// m_noiseAmplitude
 	[SchemaMember("CEnvBeam", "m_noiseAmplitude")]
-	public ref float NoiseAmplitude => ref Schema.GetRef<float>(this.Handle, "CEnvBeam", "m_noiseAmplitude");
+	public float NoiseAmplitude
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvBeam", "m_noiseAmplitude"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvBeam", "m_noiseAmplitude", value); }
+	}
 
 	// m_speed
 	[SchemaMember("CEnvBeam", "m_speed")]
-	public new ref Int32 Speed => ref Schema.GetRef<Int32>(this.Handle, "CEnvBeam", "m_speed");
+	public new Int32 Speed
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvBeam", "m_speed"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvBeam", "m_speed", value); }
+	}
 
 	// m_restrike
 	[SchemaMember("CEnvBeam", "m_restrike")]
-	public ref float Restrike => ref Schema.GetRef<float>(this.Handle, "CEnvBeam", "m_restrike");
+	public float Restrike
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvBeam", "m_restrike"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvBeam", "m_restrike", value); }
+	}
 
 	// m_iszSpriteName
 	[SchemaMember("CEnvBeam", "m_iszSpriteName")]
@@ -72,23 +97,43 @@ public partial class CEnvBeam : CBeam
 
 	// m_frameStart
 	[SchemaMember("CEnvBeam", "m_frameStart")]
-	public ref Int32 FrameStart => ref Schema.GetRef<Int32>(this.Handle, "CEnvBeam", "m_frameStart");
+	public Int32 FrameStart
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvBeam", "m_frameStart"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvBeam", "m_frameStart", value); }
+	}
 
 	// m_vEndPointWorld
 	[SchemaMember("CEnvBeam", "m_vEndPointWorld")]
-	public Vector EndPointWorld => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvBeam", "m_vEndPointWorld");
+	public Vector3 EndPointWorld
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvBeam", "m_vEndPointWorld"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvBeam", "m_vEndPointWorld", value); }
+	}
 
 	// m_vEndPointRelative
 	[SchemaMember("CEnvBeam", "m_vEndPointRelative")]
-	public Vector EndPointRelative => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvBeam", "m_vEndPointRelative");
+	public Vector3 EndPointRelative
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvBeam", "m_vEndPointRelative"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvBeam", "m_vEndPointRelative", value); }
+	}
 
 	// m_radius
 	[SchemaMember("CEnvBeam", "m_radius")]
-	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CEnvBeam", "m_radius");
+	public float Radius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvBeam", "m_radius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvBeam", "m_radius", value); }
+	}
 
 	// m_TouchType
 	[SchemaMember("CEnvBeam", "m_TouchType")]
-	public ref Touch_t TouchType => ref Schema.GetRef<Touch_t>(this.Handle, "CEnvBeam", "m_TouchType");
+	public Touch_t TouchType
+	{
+		get { return Schema.GetValueType<Touch_t>(this.Handle, "CEnvBeam", "m_TouchType"); }
+		set { Schema.SetValueType<Touch_t>(this.Handle, "CEnvBeam", "m_TouchType", value); }
+	}
 
 	// m_iFilterName
 	[SchemaMember("CEnvBeam", "m_iFilterName")]

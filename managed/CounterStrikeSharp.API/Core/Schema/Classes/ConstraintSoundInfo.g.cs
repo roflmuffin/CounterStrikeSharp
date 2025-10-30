@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,7 +29,11 @@ public partial class ConstraintSoundInfo : NativeObject
 
 	// m_forwardAxis
 	[SchemaMember("ConstraintSoundInfo", "m_forwardAxis")]
-	public Vector ForwardAxis => Schema.GetDeclaredClass<Vector>(this.Handle, "ConstraintSoundInfo", "m_forwardAxis");
+	public Vector3 ForwardAxis
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "ConstraintSoundInfo", "m_forwardAxis"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "ConstraintSoundInfo", "m_forwardAxis", value); }
+	}
 
 	// m_iszTravelSoundFwd
 	[SchemaMember("ConstraintSoundInfo", "m_iszTravelSoundFwd")]
@@ -52,10 +57,18 @@ public partial class ConstraintSoundInfo : NativeObject
 
 	// m_bPlayTravelSound
 	[SchemaMember("ConstraintSoundInfo", "m_bPlayTravelSound")]
-	public ref bool PlayTravelSound => ref Schema.GetRef<bool>(this.Handle, "ConstraintSoundInfo", "m_bPlayTravelSound");
+	public bool PlayTravelSound
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "ConstraintSoundInfo", "m_bPlayTravelSound"); }
+		set { Schema.SetValueType<bool>(this.Handle, "ConstraintSoundInfo", "m_bPlayTravelSound", value); }
+	}
 
 	// m_bPlayReversalSound
 	[SchemaMember("ConstraintSoundInfo", "m_bPlayReversalSound")]
-	public ref bool PlayReversalSound => ref Schema.GetRef<bool>(this.Handle, "ConstraintSoundInfo", "m_bPlayReversalSound");
+	public bool PlayReversalSound
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "ConstraintSoundInfo", "m_bPlayReversalSound"); }
+		set { Schema.SetValueType<bool>(this.Handle, "ConstraintSoundInfo", "m_bPlayReversalSound", value); }
+	}
 
 }

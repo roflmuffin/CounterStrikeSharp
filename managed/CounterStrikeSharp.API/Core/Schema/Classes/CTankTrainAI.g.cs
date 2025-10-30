@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,7 +29,11 @@ public partial class CTankTrainAI : CPointEntity
 
 	// m_soundPlaying
 	[SchemaMember("CTankTrainAI", "m_soundPlaying")]
-	public ref Int32 SoundPlaying => ref Schema.GetRef<Int32>(this.Handle, "CTankTrainAI", "m_soundPlaying");
+	public Int32 SoundPlaying
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CTankTrainAI", "m_soundPlaying"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CTankTrainAI", "m_soundPlaying", value); }
+	}
 
 	// m_startSoundName
 	[SchemaMember("CTankTrainAI", "m_startSoundName")]

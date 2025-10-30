@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,10 +21,18 @@ public partial class CFuncNavBlocker : CBaseModelEntity
 
 	// m_bDisabled
 	[SchemaMember("CFuncNavBlocker", "m_bDisabled")]
-	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CFuncNavBlocker", "m_bDisabled");
+	public bool Disabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncNavBlocker", "m_bDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncNavBlocker", "m_bDisabled", value); }
+	}
 
 	// m_nBlockedTeamNumber
 	[SchemaMember("CFuncNavBlocker", "m_nBlockedTeamNumber")]
-	public ref Int32 BlockedTeamNumber => ref Schema.GetRef<Int32>(this.Handle, "CFuncNavBlocker", "m_nBlockedTeamNumber");
+	public Int32 BlockedTeamNumber
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CFuncNavBlocker", "m_nBlockedTeamNumber"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CFuncNavBlocker", "m_nBlockedTeamNumber", value); }
+	}
 
 }

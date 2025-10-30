@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -36,11 +37,19 @@ public partial class CLogicDistanceCheck : CLogicalEntity
 
 	// m_flZone1Distance
 	[SchemaMember("CLogicDistanceCheck", "m_flZone1Distance")]
-	public ref float Zone1Distance => ref Schema.GetRef<float>(this.Handle, "CLogicDistanceCheck", "m_flZone1Distance");
+	public float Zone1Distance
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLogicDistanceCheck", "m_flZone1Distance"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLogicDistanceCheck", "m_flZone1Distance", value); }
+	}
 
 	// m_flZone2Distance
 	[SchemaMember("CLogicDistanceCheck", "m_flZone2Distance")]
-	public ref float Zone2Distance => ref Schema.GetRef<float>(this.Handle, "CLogicDistanceCheck", "m_flZone2Distance");
+	public float Zone2Distance
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLogicDistanceCheck", "m_flZone2Distance"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLogicDistanceCheck", "m_flZone2Distance", value); }
+	}
 
 	// m_InZone1
 	[SchemaMember("CLogicDistanceCheck", "m_InZone1")]

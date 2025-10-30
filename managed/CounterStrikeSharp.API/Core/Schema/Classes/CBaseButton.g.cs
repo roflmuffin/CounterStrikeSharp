@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,15 +21,27 @@ public partial class CBaseButton : CBaseToggle
 
 	// m_angMoveEntitySpace
 	[SchemaMember("CBaseButton", "m_angMoveEntitySpace")]
-	public QAngle MoveEntitySpace => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBaseButton", "m_angMoveEntitySpace");
+	public QAngle MoveEntitySpace
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CBaseButton", "m_angMoveEntitySpace"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CBaseButton", "m_angMoveEntitySpace", value); }
+	}
 
 	// m_fStayPushed
 	[SchemaMember("CBaseButton", "m_fStayPushed")]
-	public ref bool StayPushed => ref Schema.GetRef<bool>(this.Handle, "CBaseButton", "m_fStayPushed");
+	public bool StayPushed
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseButton", "m_fStayPushed"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseButton", "m_fStayPushed", value); }
+	}
 
 	// m_fRotating
 	[SchemaMember("CBaseButton", "m_fRotating")]
-	public ref bool Rotating => ref Schema.GetRef<bool>(this.Handle, "CBaseButton", "m_fRotating");
+	public bool Rotating
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseButton", "m_fRotating"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseButton", "m_fRotating", value); }
+	}
 
 	// m_ls
 	[SchemaMember("CBaseButton", "m_ls")]
@@ -68,19 +81,35 @@ public partial class CBaseButton : CBaseToggle
 
 	// m_bLocked
 	[SchemaMember("CBaseButton", "m_bLocked")]
-	public ref bool Locked => ref Schema.GetRef<bool>(this.Handle, "CBaseButton", "m_bLocked");
+	public bool Locked
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseButton", "m_bLocked"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseButton", "m_bLocked", value); }
+	}
 
 	// m_bDisabled
 	[SchemaMember("CBaseButton", "m_bDisabled")]
-	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CBaseButton", "m_bDisabled");
+	public bool Disabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseButton", "m_bDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseButton", "m_bDisabled", value); }
+	}
 
 	// m_flUseLockedTime
 	[SchemaMember("CBaseButton", "m_flUseLockedTime")]
-	public ref float UseLockedTime => ref Schema.GetRef<float>(this.Handle, "CBaseButton", "m_flUseLockedTime");
+	public float UseLockedTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseButton", "m_flUseLockedTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseButton", "m_flUseLockedTime", value); }
+	}
 
 	// m_bSolidBsp
 	[SchemaMember("CBaseButton", "m_bSolidBsp")]
-	public ref bool SolidBsp => ref Schema.GetRef<bool>(this.Handle, "CBaseButton", "m_bSolidBsp");
+	public bool SolidBsp
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseButton", "m_bSolidBsp"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseButton", "m_bSolidBsp", value); }
+	}
 
 	// m_OnDamaged
 	[SchemaMember("CBaseButton", "m_OnDamaged")]
@@ -104,7 +133,11 @@ public partial class CBaseButton : CBaseToggle
 
 	// m_nState
 	[SchemaMember("CBaseButton", "m_nState")]
-	public ref Int32 State => ref Schema.GetRef<Int32>(this.Handle, "CBaseButton", "m_nState");
+	public Int32 State
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseButton", "m_nState"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseButton", "m_nState", value); }
+	}
 
 	// m_hConstraint
 	[SchemaMember("CBaseButton", "m_hConstraint")]
@@ -116,7 +149,11 @@ public partial class CBaseButton : CBaseToggle
 
 	// m_bForceNpcExclude
 	[SchemaMember("CBaseButton", "m_bForceNpcExclude")]
-	public ref bool ForceNpcExclude => ref Schema.GetRef<bool>(this.Handle, "CBaseButton", "m_bForceNpcExclude");
+	public bool ForceNpcExclude
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseButton", "m_bForceNpcExclude"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseButton", "m_bForceNpcExclude", value); }
+	}
 
 	// m_sGlowEntity
 	[SchemaMember("CBaseButton", "m_sGlowEntity")]
@@ -132,7 +169,11 @@ public partial class CBaseButton : CBaseToggle
 
 	// m_usable
 	[SchemaMember("CBaseButton", "m_usable")]
-	public ref bool Usable => ref Schema.GetRef<bool>(this.Handle, "CBaseButton", "m_usable");
+	public bool Usable
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseButton", "m_usable"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseButton", "m_usable", value); }
+	}
 
 	// m_szDisplayText
 	[SchemaMember("CBaseButton", "m_szDisplayText")]

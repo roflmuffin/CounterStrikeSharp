@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,11 +21,19 @@ public partial class CTestEffect : CBaseEntity
 
 	// m_iLoop
 	[SchemaMember("CTestEffect", "m_iLoop")]
-	public ref Int32 Loop => ref Schema.GetRef<Int32>(this.Handle, "CTestEffect", "m_iLoop");
+	public Int32 Loop
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CTestEffect", "m_iLoop"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CTestEffect", "m_iLoop", value); }
+	}
 
 	// m_iBeam
 	[SchemaMember("CTestEffect", "m_iBeam")]
-	public ref Int32 IBeam => ref Schema.GetRef<Int32>(this.Handle, "CTestEffect", "m_iBeam");
+	public Int32 IBeam
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CTestEffect", "m_iBeam"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CTestEffect", "m_iBeam", value); }
+	}
 
 	// m_pBeam
 	[SchemaMember("CTestEffect", "m_pBeam")]
@@ -36,6 +45,10 @@ public partial class CTestEffect : CBaseEntity
 
 	// m_flStartTime
 	[SchemaMember("CTestEffect", "m_flStartTime")]
-	public ref float StartTime => ref Schema.GetRef<float>(this.Handle, "CTestEffect", "m_flStartTime");
+	public float StartTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTestEffect", "m_flStartTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTestEffect", "m_flStartTime", value); }
+	}
 
 }

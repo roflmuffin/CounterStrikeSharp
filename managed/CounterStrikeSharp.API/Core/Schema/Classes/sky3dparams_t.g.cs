@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,19 +21,35 @@ public partial class sky3dparams_t : NativeObject
 
 	// scale
 	[SchemaMember("sky3dparams_t", "scale")]
-	public ref Int16 Scale => ref Schema.GetRef<Int16>(this.Handle, "sky3dparams_t", "scale");
+	public Int16 Scale
+	{
+		get { return Schema.GetValueType<Int16>(this.Handle, "sky3dparams_t", "scale"); }
+		set { Schema.SetValueType<Int16>(this.Handle, "sky3dparams_t", "scale", value); }
+	}
 
 	// origin
 	[SchemaMember("sky3dparams_t", "origin")]
-	public Vector Origin => Schema.GetDeclaredClass<Vector>(this.Handle, "sky3dparams_t", "origin");
+	public Vector3 Origin
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "sky3dparams_t", "origin"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "sky3dparams_t", "origin", value); }
+	}
 
 	// bClip3DSkyBoxNearToWorldFar
 	[SchemaMember("sky3dparams_t", "bClip3DSkyBoxNearToWorldFar")]
-	public ref bool BClip3DSkyBoxNearToWorldFar => ref Schema.GetRef<bool>(this.Handle, "sky3dparams_t", "bClip3DSkyBoxNearToWorldFar");
+	public bool BClip3DSkyBoxNearToWorldFar
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "sky3dparams_t", "bClip3DSkyBoxNearToWorldFar"); }
+		set { Schema.SetValueType<bool>(this.Handle, "sky3dparams_t", "bClip3DSkyBoxNearToWorldFar", value); }
+	}
 
 	// flClip3DSkyBoxNearToWorldFarOffset
 	[SchemaMember("sky3dparams_t", "flClip3DSkyBoxNearToWorldFarOffset")]
-	public ref float FlClip3DSkyBoxNearToWorldFarOffset => ref Schema.GetRef<float>(this.Handle, "sky3dparams_t", "flClip3DSkyBoxNearToWorldFarOffset");
+	public float FlClip3DSkyBoxNearToWorldFarOffset
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "sky3dparams_t", "flClip3DSkyBoxNearToWorldFarOffset"); }
+		set { Schema.SetValueType<float>(this.Handle, "sky3dparams_t", "flClip3DSkyBoxNearToWorldFarOffset", value); }
+	}
 
 	// fog
 	[SchemaMember("sky3dparams_t", "fog")]

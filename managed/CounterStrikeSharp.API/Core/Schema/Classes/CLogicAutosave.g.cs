@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,14 +21,26 @@ public partial class CLogicAutosave : CLogicalEntity
 
 	// m_bForceNewLevelUnit
 	[SchemaMember("CLogicAutosave", "m_bForceNewLevelUnit")]
-	public ref bool ForceNewLevelUnit => ref Schema.GetRef<bool>(this.Handle, "CLogicAutosave", "m_bForceNewLevelUnit");
+	public bool ForceNewLevelUnit
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CLogicAutosave", "m_bForceNewLevelUnit"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CLogicAutosave", "m_bForceNewLevelUnit", value); }
+	}
 
 	// m_minHitPoints
 	[SchemaMember("CLogicAutosave", "m_minHitPoints")]
-	public ref Int32 MinHitPoints => ref Schema.GetRef<Int32>(this.Handle, "CLogicAutosave", "m_minHitPoints");
+	public Int32 MinHitPoints
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicAutosave", "m_minHitPoints"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLogicAutosave", "m_minHitPoints", value); }
+	}
 
 	// m_minHitPointsToCommit
 	[SchemaMember("CLogicAutosave", "m_minHitPointsToCommit")]
-	public ref Int32 MinHitPointsToCommit => ref Schema.GetRef<Int32>(this.Handle, "CLogicAutosave", "m_minHitPointsToCommit");
+	public Int32 MinHitPointsToCommit
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicAutosave", "m_minHitPointsToCommit"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLogicAutosave", "m_minHitPointsToCommit", value); }
+	}
 
 }

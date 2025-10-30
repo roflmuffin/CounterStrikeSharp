@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class CCSPlayerController_InventoryServices : CPlayerControllerCo
 
 	// m_unMusicID
 	[SchemaMember("CCSPlayerController_InventoryServices", "m_unMusicID")]
-	public ref UInt16 MusicID => ref Schema.GetRef<UInt16>(this.Handle, "CCSPlayerController_InventoryServices", "m_unMusicID");
+	public UInt16 MusicID
+	{
+		get { return Schema.GetValueType<UInt16>(this.Handle, "CCSPlayerController_InventoryServices", "m_unMusicID"); }
+		set { Schema.SetValueType<UInt16>(this.Handle, "CCSPlayerController_InventoryServices", "m_unMusicID", value); }
+	}
 
 	// m_rank
 	[SchemaMember("CCSPlayerController_InventoryServices", "m_rank")]
@@ -28,23 +33,43 @@ public partial class CCSPlayerController_InventoryServices : CPlayerControllerCo
 
 	// m_nPersonaDataPublicLevel
 	[SchemaMember("CCSPlayerController_InventoryServices", "m_nPersonaDataPublicLevel")]
-	public ref Int32 PersonaDataPublicLevel => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicLevel");
+	public Int32 PersonaDataPublicLevel
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicLevel"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicLevel", value); }
+	}
 
 	// m_nPersonaDataPublicCommendsLeader
 	[SchemaMember("CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsLeader")]
-	public ref Int32 PersonaDataPublicCommendsLeader => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsLeader");
+	public Int32 PersonaDataPublicCommendsLeader
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsLeader"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsLeader", value); }
+	}
 
 	// m_nPersonaDataPublicCommendsTeacher
 	[SchemaMember("CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsTeacher")]
-	public ref Int32 PersonaDataPublicCommendsTeacher => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsTeacher");
+	public Int32 PersonaDataPublicCommendsTeacher
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsTeacher"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsTeacher", value); }
+	}
 
 	// m_nPersonaDataPublicCommendsFriendly
 	[SchemaMember("CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsFriendly")]
-	public ref Int32 PersonaDataPublicCommendsFriendly => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsFriendly");
+	public Int32 PersonaDataPublicCommendsFriendly
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsFriendly"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsFriendly", value); }
+	}
 
 	// m_nPersonaDataXpTrailLevel
 	[SchemaMember("CCSPlayerController_InventoryServices", "m_nPersonaDataXpTrailLevel")]
-	public ref Int32 PersonaDataXpTrailLevel => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_InventoryServices", "m_nPersonaDataXpTrailLevel");
+	public Int32 PersonaDataXpTrailLevel
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController_InventoryServices", "m_nPersonaDataXpTrailLevel"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController_InventoryServices", "m_nPersonaDataXpTrailLevel", value); }
+	}
 
 	// m_unEquippedPlayerSprayIDs
 	[SchemaMember("CCSPlayerController_InventoryServices", "m_unEquippedPlayerSprayIDs")]
@@ -52,7 +77,11 @@ public partial class CCSPlayerController_InventoryServices : CPlayerControllerCo
 
 	// m_unCurrentLoadoutHash
 	[SchemaMember("CCSPlayerController_InventoryServices", "m_unCurrentLoadoutHash")]
-	public ref UInt64 CurrentLoadoutHash => ref Schema.GetRef<UInt64>(this.Handle, "CCSPlayerController_InventoryServices", "m_unCurrentLoadoutHash");
+	public UInt64 CurrentLoadoutHash
+	{
+		get { return Schema.GetValueType<UInt64>(this.Handle, "CCSPlayerController_InventoryServices", "m_unCurrentLoadoutHash"); }
+		set { Schema.SetValueType<UInt64>(this.Handle, "CCSPlayerController_InventoryServices", "m_unCurrentLoadoutHash", value); }
+	}
 
 	// m_vecServerAuthoritativeWeaponSlots
 	[SchemaMember("CCSPlayerController_InventoryServices", "m_vecServerAuthoritativeWeaponSlots")]

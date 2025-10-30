@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,23 +21,43 @@ public partial class CEnvExplosion : CModelPointEntity
 
 	// m_iMagnitude
 	[SchemaMember("CEnvExplosion", "m_iMagnitude")]
-	public ref Int32 Magnitude => ref Schema.GetRef<Int32>(this.Handle, "CEnvExplosion", "m_iMagnitude");
+	public Int32 Magnitude
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvExplosion", "m_iMagnitude"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvExplosion", "m_iMagnitude", value); }
+	}
 
 	// m_flPlayerDamage
 	[SchemaMember("CEnvExplosion", "m_flPlayerDamage")]
-	public ref float PlayerDamage => ref Schema.GetRef<float>(this.Handle, "CEnvExplosion", "m_flPlayerDamage");
+	public float PlayerDamage
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvExplosion", "m_flPlayerDamage"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvExplosion", "m_flPlayerDamage", value); }
+	}
 
 	// m_iRadiusOverride
 	[SchemaMember("CEnvExplosion", "m_iRadiusOverride")]
-	public ref Int32 RadiusOverride => ref Schema.GetRef<Int32>(this.Handle, "CEnvExplosion", "m_iRadiusOverride");
+	public Int32 RadiusOverride
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvExplosion", "m_iRadiusOverride"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvExplosion", "m_iRadiusOverride", value); }
+	}
 
 	// m_flInnerRadius
 	[SchemaMember("CEnvExplosion", "m_flInnerRadius")]
-	public ref float InnerRadius => ref Schema.GetRef<float>(this.Handle, "CEnvExplosion", "m_flInnerRadius");
+	public float InnerRadius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvExplosion", "m_flInnerRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvExplosion", "m_flInnerRadius", value); }
+	}
 
 	// m_flDamageForce
 	[SchemaMember("CEnvExplosion", "m_flDamageForce")]
-	public ref float DamageForce => ref Schema.GetRef<float>(this.Handle, "CEnvExplosion", "m_flDamageForce");
+	public float DamageForce
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvExplosion", "m_flDamageForce"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvExplosion", "m_flDamageForce", value); }
+	}
 
 	// m_hInflictor
 	[SchemaMember("CEnvExplosion", "m_hInflictor")]
@@ -44,11 +65,19 @@ public partial class CEnvExplosion : CModelPointEntity
 
 	// m_iCustomDamageType
 	[SchemaMember("CEnvExplosion", "m_iCustomDamageType")]
-	public ref DamageTypes_t CustomDamageType => ref Schema.GetRef<DamageTypes_t>(this.Handle, "CEnvExplosion", "m_iCustomDamageType");
+	public DamageTypes_t CustomDamageType
+	{
+		get { return Schema.GetValueType<DamageTypes_t>(this.Handle, "CEnvExplosion", "m_iCustomDamageType"); }
+		set { Schema.SetValueType<DamageTypes_t>(this.Handle, "CEnvExplosion", "m_iCustomDamageType", value); }
+	}
 
 	// m_bCreateDebris
 	[SchemaMember("CEnvExplosion", "m_bCreateDebris")]
-	public ref bool CreateDebris => ref Schema.GetRef<bool>(this.Handle, "CEnvExplosion", "m_bCreateDebris");
+	public bool CreateDebris
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvExplosion", "m_bCreateDebris"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvExplosion", "m_bCreateDebris", value); }
+	}
 
 	// m_iszCustomEffectName
 	[SchemaMember("CEnvExplosion", "m_iszCustomEffectName")]
@@ -68,15 +97,27 @@ public partial class CEnvExplosion : CModelPointEntity
 
 	// m_bSuppressParticleImpulse
 	[SchemaMember("CEnvExplosion", "m_bSuppressParticleImpulse")]
-	public ref bool SuppressParticleImpulse => ref Schema.GetRef<bool>(this.Handle, "CEnvExplosion", "m_bSuppressParticleImpulse");
+	public bool SuppressParticleImpulse
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvExplosion", "m_bSuppressParticleImpulse"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvExplosion", "m_bSuppressParticleImpulse", value); }
+	}
 
 	// m_iClassIgnore
 	[SchemaMember("CEnvExplosion", "m_iClassIgnore")]
-	public ref Class_T ClassIgnore => ref Schema.GetRef<Class_T>(this.Handle, "CEnvExplosion", "m_iClassIgnore");
+	public Class_T ClassIgnore
+	{
+		get { return Schema.GetValueType<Class_T>(this.Handle, "CEnvExplosion", "m_iClassIgnore"); }
+		set { Schema.SetValueType<Class_T>(this.Handle, "CEnvExplosion", "m_iClassIgnore", value); }
+	}
 
 	// m_iClassIgnore2
 	[SchemaMember("CEnvExplosion", "m_iClassIgnore2")]
-	public ref Class_T ClassIgnore2 => ref Schema.GetRef<Class_T>(this.Handle, "CEnvExplosion", "m_iClassIgnore2");
+	public Class_T ClassIgnore2
+	{
+		get { return Schema.GetValueType<Class_T>(this.Handle, "CEnvExplosion", "m_iClassIgnore2"); }
+		set { Schema.SetValueType<Class_T>(this.Handle, "CEnvExplosion", "m_iClassIgnore2", value); }
+	}
 
 	// m_iszEntityIgnoreName
 	[SchemaMember("CEnvExplosion", "m_iszEntityIgnoreName")]

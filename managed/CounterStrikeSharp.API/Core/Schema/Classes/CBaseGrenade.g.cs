@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,31 +29,59 @@ public partial class CBaseGrenade : CBaseFlex
 
 	// m_bHasWarnedAI
 	[SchemaMember("CBaseGrenade", "m_bHasWarnedAI")]
-	public ref bool HasWarnedAI => ref Schema.GetRef<bool>(this.Handle, "CBaseGrenade", "m_bHasWarnedAI");
+	public bool HasWarnedAI
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseGrenade", "m_bHasWarnedAI"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseGrenade", "m_bHasWarnedAI", value); }
+	}
 
 	// m_bIsSmokeGrenade
 	[SchemaMember("CBaseGrenade", "m_bIsSmokeGrenade")]
-	public ref bool IsSmokeGrenade => ref Schema.GetRef<bool>(this.Handle, "CBaseGrenade", "m_bIsSmokeGrenade");
+	public bool IsSmokeGrenade
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseGrenade", "m_bIsSmokeGrenade"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseGrenade", "m_bIsSmokeGrenade", value); }
+	}
 
 	// m_bIsLive
 	[SchemaMember("CBaseGrenade", "m_bIsLive")]
-	public ref bool IsLive => ref Schema.GetRef<bool>(this.Handle, "CBaseGrenade", "m_bIsLive");
+	public bool IsLive
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseGrenade", "m_bIsLive"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseGrenade", "m_bIsLive", value); }
+	}
 
 	// m_DmgRadius
 	[SchemaMember("CBaseGrenade", "m_DmgRadius")]
-	public ref float DmgRadius => ref Schema.GetRef<float>(this.Handle, "CBaseGrenade", "m_DmgRadius");
+	public float DmgRadius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseGrenade", "m_DmgRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseGrenade", "m_DmgRadius", value); }
+	}
 
 	// m_flDetonateTime
 	[SchemaMember("CBaseGrenade", "m_flDetonateTime")]
-	public ref float DetonateTime => ref Schema.GetRef<float>(this.Handle, "CBaseGrenade", "m_flDetonateTime");
+	public float DetonateTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseGrenade", "m_flDetonateTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseGrenade", "m_flDetonateTime", value); }
+	}
 
 	// m_flWarnAITime
 	[SchemaMember("CBaseGrenade", "m_flWarnAITime")]
-	public ref float WarnAITime => ref Schema.GetRef<float>(this.Handle, "CBaseGrenade", "m_flWarnAITime");
+	public float WarnAITime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseGrenade", "m_flWarnAITime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseGrenade", "m_flWarnAITime", value); }
+	}
 
 	// m_flDamage
 	[SchemaMember("CBaseGrenade", "m_flDamage")]
-	public ref float Damage => ref Schema.GetRef<float>(this.Handle, "CBaseGrenade", "m_flDamage");
+	public float Damage
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseGrenade", "m_flDamage"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseGrenade", "m_flDamage", value); }
+	}
 
 	// m_iszBounceSound
 	[SchemaMember("CBaseGrenade", "m_iszBounceSound")]
@@ -76,7 +105,11 @@ public partial class CBaseGrenade : CBaseFlex
 
 	// m_flNextAttack
 	[SchemaMember("CBaseGrenade", "m_flNextAttack")]
-	public ref float NextAttack => ref Schema.GetRef<float>(this.Handle, "CBaseGrenade", "m_flNextAttack");
+	public float NextAttack
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseGrenade", "m_flNextAttack"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseGrenade", "m_flNextAttack", value); }
+	}
 
 	// m_hOriginalThrower
 	[SchemaMember("CBaseGrenade", "m_hOriginalThrower")]

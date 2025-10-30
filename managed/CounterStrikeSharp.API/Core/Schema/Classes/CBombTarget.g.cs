@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -32,15 +33,27 @@ public partial class CBombTarget : CBaseTrigger
 
 	// m_bIsBombSiteB
 	[SchemaMember("CBombTarget", "m_bIsBombSiteB")]
-	public ref bool IsBombSiteB => ref Schema.GetRef<bool>(this.Handle, "CBombTarget", "m_bIsBombSiteB");
+	public bool IsBombSiteB
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBombTarget", "m_bIsBombSiteB"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBombTarget", "m_bIsBombSiteB", value); }
+	}
 
 	// m_bIsHeistBombTarget
 	[SchemaMember("CBombTarget", "m_bIsHeistBombTarget")]
-	public ref bool IsHeistBombTarget => ref Schema.GetRef<bool>(this.Handle, "CBombTarget", "m_bIsHeistBombTarget");
+	public bool IsHeistBombTarget
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBombTarget", "m_bIsHeistBombTarget"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBombTarget", "m_bIsHeistBombTarget", value); }
+	}
 
 	// m_bBombPlantedHere
 	[SchemaMember("CBombTarget", "m_bBombPlantedHere")]
-	public ref bool BombPlantedHere => ref Schema.GetRef<bool>(this.Handle, "CBombTarget", "m_bBombPlantedHere");
+	public bool BombPlantedHere
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBombTarget", "m_bBombPlantedHere"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBombTarget", "m_bBombPlantedHere", value); }
+	}
 
 	// m_szMountTarget
 	[SchemaMember("CBombTarget", "m_szMountTarget")]
@@ -56,6 +69,10 @@ public partial class CBombTarget : CBaseTrigger
 
 	// m_nBombSiteDesignation
 	[SchemaMember("CBombTarget", "m_nBombSiteDesignation")]
-	public ref Int32 BombSiteDesignation => ref Schema.GetRef<Int32>(this.Handle, "CBombTarget", "m_nBombSiteDesignation");
+	public Int32 BombSiteDesignation
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBombTarget", "m_nBombSiteDesignation"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBombTarget", "m_nBombSiteDesignation", value); }
+	}
 
 }

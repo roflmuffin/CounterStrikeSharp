@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,23 +21,43 @@ public partial class CTriggerFan : CBaseTrigger
 
 	// m_vFanOriginOffset
 	[SchemaMember("CTriggerFan", "m_vFanOriginOffset")]
-	public Vector FanOriginOffset => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerFan", "m_vFanOriginOffset");
+	public Vector3 FanOriginOffset
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CTriggerFan", "m_vFanOriginOffset"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CTriggerFan", "m_vFanOriginOffset", value); }
+	}
 
 	// m_vDirection
 	[SchemaMember("CTriggerFan", "m_vDirection")]
-	public Vector Direction => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerFan", "m_vDirection");
+	public Vector3 Direction
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CTriggerFan", "m_vDirection"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CTriggerFan", "m_vDirection", value); }
+	}
 
 	// m_bPushTowardsInfoTarget
 	[SchemaMember("CTriggerFan", "m_bPushTowardsInfoTarget")]
-	public ref bool PushTowardsInfoTarget => ref Schema.GetRef<bool>(this.Handle, "CTriggerFan", "m_bPushTowardsInfoTarget");
+	public bool PushTowardsInfoTarget
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerFan", "m_bPushTowardsInfoTarget"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTriggerFan", "m_bPushTowardsInfoTarget", value); }
+	}
 
 	// m_bPushAwayFromInfoTarget
 	[SchemaMember("CTriggerFan", "m_bPushAwayFromInfoTarget")]
-	public ref bool PushAwayFromInfoTarget => ref Schema.GetRef<bool>(this.Handle, "CTriggerFan", "m_bPushAwayFromInfoTarget");
+	public bool PushAwayFromInfoTarget
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerFan", "m_bPushAwayFromInfoTarget"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTriggerFan", "m_bPushAwayFromInfoTarget", value); }
+	}
 
 	// m_qNoiseDelta
 	[SchemaMember("CTriggerFan", "m_qNoiseDelta")]
-	public Quaternion NoiseDelta => Schema.GetDeclaredClass<Quaternion>(this.Handle, "CTriggerFan", "m_qNoiseDelta");
+	public Quaternion NoiseDelta
+	{
+		get { return Schema.GetValueType<Quaternion>(this.Handle, "CTriggerFan", "m_qNoiseDelta"); }
+		set { Schema.SetValueType<Quaternion>(this.Handle, "CTriggerFan", "m_qNoiseDelta", value); }
+	}
 
 	// m_hInfoFan
 	[SchemaMember("CTriggerFan", "m_hInfoFan")]
@@ -44,11 +65,19 @@ public partial class CTriggerFan : CBaseTrigger
 
 	// m_flForce
 	[SchemaMember("CTriggerFan", "m_flForce")]
-	public ref float Force => ref Schema.GetRef<float>(this.Handle, "CTriggerFan", "m_flForce");
+	public float Force
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerFan", "m_flForce"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerFan", "m_flForce", value); }
+	}
 
 	// m_bFalloff
 	[SchemaMember("CTriggerFan", "m_bFalloff")]
-	public ref bool Falloff => ref Schema.GetRef<bool>(this.Handle, "CTriggerFan", "m_bFalloff");
+	public bool Falloff
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerFan", "m_bFalloff"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTriggerFan", "m_bFalloff", value); }
+	}
 
 	// m_RampTimer
 	[SchemaMember("CTriggerFan", "m_RampTimer")]
@@ -56,19 +85,35 @@ public partial class CTriggerFan : CBaseTrigger
 
 	// m_vFanOriginWS
 	[SchemaMember("CTriggerFan", "m_vFanOriginWS")]
-	public Vector FanOriginWS => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerFan", "m_vFanOriginWS");
+	public Vector3 FanOriginWS
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CTriggerFan", "m_vFanOriginWS"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CTriggerFan", "m_vFanOriginWS", value); }
+	}
 
 	// m_vFanOriginLS
 	[SchemaMember("CTriggerFan", "m_vFanOriginLS")]
-	public Vector FanOriginLS => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerFan", "m_vFanOriginLS");
+	public Vector3 FanOriginLS
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CTriggerFan", "m_vFanOriginLS"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CTriggerFan", "m_vFanOriginLS", value); }
+	}
 
 	// m_vFanEndLS
 	[SchemaMember("CTriggerFan", "m_vFanEndLS")]
-	public Vector FanEndLS => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerFan", "m_vFanEndLS");
+	public Vector3 FanEndLS
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CTriggerFan", "m_vFanEndLS"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CTriggerFan", "m_vFanEndLS", value); }
+	}
 
 	// m_vNoiseDirectionTarget
 	[SchemaMember("CTriggerFan", "m_vNoiseDirectionTarget")]
-	public Vector NoiseDirectionTarget => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerFan", "m_vNoiseDirectionTarget");
+	public Vector3 NoiseDirectionTarget
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CTriggerFan", "m_vNoiseDirectionTarget"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CTriggerFan", "m_vNoiseDirectionTarget", value); }
+	}
 
 	// m_iszInfoFan
 	[SchemaMember("CTriggerFan", "m_iszInfoFan")]
@@ -80,46 +125,90 @@ public partial class CTriggerFan : CBaseTrigger
 
 	// m_flRopeForceScale
 	[SchemaMember("CTriggerFan", "m_flRopeForceScale")]
-	public ref float RopeForceScale => ref Schema.GetRef<float>(this.Handle, "CTriggerFan", "m_flRopeForceScale");
+	public float RopeForceScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerFan", "m_flRopeForceScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerFan", "m_flRopeForceScale", value); }
+	}
 
 	// m_flParticleForceScale
 	[SchemaMember("CTriggerFan", "m_flParticleForceScale")]
-	public ref float ParticleForceScale => ref Schema.GetRef<float>(this.Handle, "CTriggerFan", "m_flParticleForceScale");
+	public float ParticleForceScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerFan", "m_flParticleForceScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerFan", "m_flParticleForceScale", value); }
+	}
 
 	// m_flPlayerForce
 	[SchemaMember("CTriggerFan", "m_flPlayerForce")]
-	public ref float PlayerForce => ref Schema.GetRef<float>(this.Handle, "CTriggerFan", "m_flPlayerForce");
+	public float PlayerForce
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerFan", "m_flPlayerForce"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerFan", "m_flPlayerForce", value); }
+	}
 
 	// m_bPlayerWindblock
 	[SchemaMember("CTriggerFan", "m_bPlayerWindblock")]
-	public ref bool PlayerWindblock => ref Schema.GetRef<bool>(this.Handle, "CTriggerFan", "m_bPlayerWindblock");
+	public bool PlayerWindblock
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerFan", "m_bPlayerWindblock"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTriggerFan", "m_bPlayerWindblock", value); }
+	}
 
 	// m_flNPCForce
 	[SchemaMember("CTriggerFan", "m_flNPCForce")]
-	public ref float NPCForce => ref Schema.GetRef<float>(this.Handle, "CTriggerFan", "m_flNPCForce");
+	public float NPCForce
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerFan", "m_flNPCForce"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerFan", "m_flNPCForce", value); }
+	}
 
 	// m_flRampTime
 	[SchemaMember("CTriggerFan", "m_flRampTime")]
-	public ref float RampTime => ref Schema.GetRef<float>(this.Handle, "CTriggerFan", "m_flRampTime");
+	public float RampTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerFan", "m_flRampTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerFan", "m_flRampTime", value); }
+	}
 
 	// m_fNoiseDegrees
 	[SchemaMember("CTriggerFan", "m_fNoiseDegrees")]
-	public ref float NoiseDegrees => ref Schema.GetRef<float>(this.Handle, "CTriggerFan", "m_fNoiseDegrees");
+	public float NoiseDegrees
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerFan", "m_fNoiseDegrees"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerFan", "m_fNoiseDegrees", value); }
+	}
 
 	// m_fNoiseSpeed
 	[SchemaMember("CTriggerFan", "m_fNoiseSpeed")]
-	public ref float NoiseSpeed => ref Schema.GetRef<float>(this.Handle, "CTriggerFan", "m_fNoiseSpeed");
+	public float NoiseSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerFan", "m_fNoiseSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerFan", "m_fNoiseSpeed", value); }
+	}
 
 	// m_bPushPlayer
 	[SchemaMember("CTriggerFan", "m_bPushPlayer")]
-	public ref bool PushPlayer => ref Schema.GetRef<bool>(this.Handle, "CTriggerFan", "m_bPushPlayer");
+	public bool PushPlayer
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerFan", "m_bPushPlayer"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTriggerFan", "m_bPushPlayer", value); }
+	}
 
 	// m_bRampDown
 	[SchemaMember("CTriggerFan", "m_bRampDown")]
-	public ref bool RampDown => ref Schema.GetRef<bool>(this.Handle, "CTriggerFan", "m_bRampDown");
+	public bool RampDown
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerFan", "m_bRampDown"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTriggerFan", "m_bRampDown", value); }
+	}
 
 	// m_nManagerFanIdx
 	[SchemaMember("CTriggerFan", "m_nManagerFanIdx")]
-	public ref Int32 ManagerFanIdx => ref Schema.GetRef<Int32>(this.Handle, "CTriggerFan", "m_nManagerFanIdx");
+	public Int32 ManagerFanIdx
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CTriggerFan", "m_nManagerFanIdx"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CTriggerFan", "m_nManagerFanIdx", value); }
+	}
 
 }

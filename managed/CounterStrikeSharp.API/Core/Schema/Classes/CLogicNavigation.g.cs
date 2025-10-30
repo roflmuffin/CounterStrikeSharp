@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,10 +21,18 @@ public partial class CLogicNavigation : CLogicalEntity
 
 	// m_isOn
 	[SchemaMember("CLogicNavigation", "m_isOn")]
-	public ref bool IsOn => ref Schema.GetRef<bool>(this.Handle, "CLogicNavigation", "m_isOn");
+	public bool IsOn
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CLogicNavigation", "m_isOn"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CLogicNavigation", "m_isOn", value); }
+	}
 
 	// m_navProperty
 	[SchemaMember("CLogicNavigation", "m_navProperty")]
-	public ref navproperties_t NavProperty => ref Schema.GetRef<navproperties_t>(this.Handle, "CLogicNavigation", "m_navProperty");
+	public navproperties_t NavProperty
+	{
+		get { return Schema.GetValueType<navproperties_t>(this.Handle, "CLogicNavigation", "m_navProperty"); }
+		set { Schema.SetValueType<navproperties_t>(this.Handle, "CLogicNavigation", "m_navProperty", value); }
+	}
 
 }

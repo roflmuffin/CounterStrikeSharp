@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,11 +21,19 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 
 	// m_bBuiltRightHanded
 	[SchemaMember("CBasePlayerWeaponVData", "m_bBuiltRightHanded")]
-	public ref bool BuiltRightHanded => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bBuiltRightHanded");
+	public bool BuiltRightHanded
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bBuiltRightHanded"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bBuiltRightHanded", value); }
+	}
 
 	// m_bAllowFlipping
 	[SchemaMember("CBasePlayerWeaponVData", "m_bAllowFlipping")]
-	public ref bool AllowFlipping => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bAllowFlipping");
+	public bool AllowFlipping
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bAllowFlipping"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bAllowFlipping", value); }
+	}
 
 	// m_szMuzzleFlashParticleConfig
 	[SchemaMember("CBasePlayerWeaponVData", "m_szMuzzleFlashParticleConfig")]
@@ -36,86 +45,170 @@ public partial class CBasePlayerWeaponVData : CEntitySubclassVDataBase
 
 	// m_nMuzzleSmokeShotThreshold
 	[SchemaMember("CBasePlayerWeaponVData", "m_nMuzzleSmokeShotThreshold")]
-	public ref byte MuzzleSmokeShotThreshold => ref Schema.GetRef<byte>(this.Handle, "CBasePlayerWeaponVData", "m_nMuzzleSmokeShotThreshold");
+	public byte MuzzleSmokeShotThreshold
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CBasePlayerWeaponVData", "m_nMuzzleSmokeShotThreshold"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CBasePlayerWeaponVData", "m_nMuzzleSmokeShotThreshold", value); }
+	}
 
 	// m_flMuzzleSmokeTimeout
 	[SchemaMember("CBasePlayerWeaponVData", "m_flMuzzleSmokeTimeout")]
-	public ref float MuzzleSmokeTimeout => ref Schema.GetRef<float>(this.Handle, "CBasePlayerWeaponVData", "m_flMuzzleSmokeTimeout");
+	public float MuzzleSmokeTimeout
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerWeaponVData", "m_flMuzzleSmokeTimeout"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerWeaponVData", "m_flMuzzleSmokeTimeout", value); }
+	}
 
 	// m_flMuzzleSmokeDecrementRate
 	[SchemaMember("CBasePlayerWeaponVData", "m_flMuzzleSmokeDecrementRate")]
-	public ref float MuzzleSmokeDecrementRate => ref Schema.GetRef<float>(this.Handle, "CBasePlayerWeaponVData", "m_flMuzzleSmokeDecrementRate");
+	public float MuzzleSmokeDecrementRate
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerWeaponVData", "m_flMuzzleSmokeDecrementRate"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerWeaponVData", "m_flMuzzleSmokeDecrementRate", value); }
+	}
 
 	// m_bLinkedCooldowns
 	[SchemaMember("CBasePlayerWeaponVData", "m_bLinkedCooldowns")]
-	public ref bool LinkedCooldowns => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bLinkedCooldowns");
+	public bool LinkedCooldowns
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bLinkedCooldowns"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bLinkedCooldowns", value); }
+	}
 
 	// m_iFlags
 	[SchemaMember("CBasePlayerWeaponVData", "m_iFlags")]
-	public ref ItemFlagTypes_t Flags => ref Schema.GetRef<ItemFlagTypes_t>(this.Handle, "CBasePlayerWeaponVData", "m_iFlags");
+	public ItemFlagTypes_t Flags
+	{
+		get { return Schema.GetValueType<ItemFlagTypes_t>(this.Handle, "CBasePlayerWeaponVData", "m_iFlags"); }
+		set { Schema.SetValueType<ItemFlagTypes_t>(this.Handle, "CBasePlayerWeaponVData", "m_iFlags", value); }
+	}
 
 	// m_nPrimaryAmmoType
 	[SchemaMember("CBasePlayerWeaponVData", "m_nPrimaryAmmoType")]
-	public ref byte PrimaryAmmoType => ref Schema.GetRef<byte>(this.Handle, "CBasePlayerWeaponVData", "m_nPrimaryAmmoType");
+	public byte PrimaryAmmoType
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CBasePlayerWeaponVData", "m_nPrimaryAmmoType"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CBasePlayerWeaponVData", "m_nPrimaryAmmoType", value); }
+	}
 
 	// m_nSecondaryAmmoType
 	[SchemaMember("CBasePlayerWeaponVData", "m_nSecondaryAmmoType")]
-	public ref byte SecondaryAmmoType => ref Schema.GetRef<byte>(this.Handle, "CBasePlayerWeaponVData", "m_nSecondaryAmmoType");
+	public byte SecondaryAmmoType
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CBasePlayerWeaponVData", "m_nSecondaryAmmoType"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CBasePlayerWeaponVData", "m_nSecondaryAmmoType", value); }
+	}
 
 	// m_iMaxClip1
 	[SchemaMember("CBasePlayerWeaponVData", "m_iMaxClip1")]
-	public ref Int32 MaxClip1 => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iMaxClip1");
+	public Int32 MaxClip1
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iMaxClip1"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iMaxClip1", value); }
+	}
 
 	// m_iMaxClip2
 	[SchemaMember("CBasePlayerWeaponVData", "m_iMaxClip2")]
-	public ref Int32 MaxClip2 => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iMaxClip2");
+	public Int32 MaxClip2
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iMaxClip2"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iMaxClip2", value); }
+	}
 
 	// m_iDefaultClip1
 	[SchemaMember("CBasePlayerWeaponVData", "m_iDefaultClip1")]
-	public ref Int32 DefaultClip1 => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iDefaultClip1");
+	public Int32 DefaultClip1
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iDefaultClip1"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iDefaultClip1", value); }
+	}
 
 	// m_iDefaultClip2
 	[SchemaMember("CBasePlayerWeaponVData", "m_iDefaultClip2")]
-	public ref Int32 DefaultClip2 => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iDefaultClip2");
+	public Int32 DefaultClip2
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iDefaultClip2"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iDefaultClip2", value); }
+	}
 
 	// m_bReserveAmmoAsClips
 	[SchemaMember("CBasePlayerWeaponVData", "m_bReserveAmmoAsClips")]
-	public ref bool ReserveAmmoAsClips => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bReserveAmmoAsClips");
+	public bool ReserveAmmoAsClips
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bReserveAmmoAsClips"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bReserveAmmoAsClips", value); }
+	}
 
 	// m_bTreatAsSingleClip
 	[SchemaMember("CBasePlayerWeaponVData", "m_bTreatAsSingleClip")]
-	public ref bool TreatAsSingleClip => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bTreatAsSingleClip");
+	public bool TreatAsSingleClip
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bTreatAsSingleClip"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bTreatAsSingleClip", value); }
+	}
 
 	// m_bKeepLoadedAmmo
 	[SchemaMember("CBasePlayerWeaponVData", "m_bKeepLoadedAmmo")]
-	public ref bool KeepLoadedAmmo => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bKeepLoadedAmmo");
+	public bool KeepLoadedAmmo
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bKeepLoadedAmmo"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bKeepLoadedAmmo", value); }
+	}
 
 	// m_iWeight
 	[SchemaMember("CBasePlayerWeaponVData", "m_iWeight")]
-	public ref Int32 Weight => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iWeight");
+	public Int32 Weight
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iWeight"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iWeight", value); }
+	}
 
 	// m_bAutoSwitchTo
 	[SchemaMember("CBasePlayerWeaponVData", "m_bAutoSwitchTo")]
-	public ref bool AutoSwitchTo => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bAutoSwitchTo");
+	public bool AutoSwitchTo
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bAutoSwitchTo"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bAutoSwitchTo", value); }
+	}
 
 	// m_bAutoSwitchFrom
 	[SchemaMember("CBasePlayerWeaponVData", "m_bAutoSwitchFrom")]
-	public ref bool AutoSwitchFrom => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bAutoSwitchFrom");
+	public bool AutoSwitchFrom
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bAutoSwitchFrom"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerWeaponVData", "m_bAutoSwitchFrom", value); }
+	}
 
 	// m_iRumbleEffect
 	[SchemaMember("CBasePlayerWeaponVData", "m_iRumbleEffect")]
-	public ref RumbleEffect_t RumbleEffect => ref Schema.GetRef<RumbleEffect_t>(this.Handle, "CBasePlayerWeaponVData", "m_iRumbleEffect");
+	public RumbleEffect_t RumbleEffect
+	{
+		get { return Schema.GetValueType<RumbleEffect_t>(this.Handle, "CBasePlayerWeaponVData", "m_iRumbleEffect"); }
+		set { Schema.SetValueType<RumbleEffect_t>(this.Handle, "CBasePlayerWeaponVData", "m_iRumbleEffect", value); }
+	}
 
 	// m_flDropSpeed
 	[SchemaMember("CBasePlayerWeaponVData", "m_flDropSpeed")]
-	public ref float DropSpeed => ref Schema.GetRef<float>(this.Handle, "CBasePlayerWeaponVData", "m_flDropSpeed");
+	public float DropSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerWeaponVData", "m_flDropSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerWeaponVData", "m_flDropSpeed", value); }
+	}
 
 	// m_iSlot
 	[SchemaMember("CBasePlayerWeaponVData", "m_iSlot")]
-	public ref Int32 Slot => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iSlot");
+	public Int32 Slot
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iSlot"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iSlot", value); }
+	}
 
 	// m_iPosition
 	[SchemaMember("CBasePlayerWeaponVData", "m_iPosition")]
-	public ref Int32 Position => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iPosition");
+	public Int32 Position
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iPosition"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerWeaponVData", "m_iPosition", value); }
+	}
 
 }

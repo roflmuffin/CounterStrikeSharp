@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -36,18 +37,34 @@ public partial class hudtextparms_t : NativeObject
 
 	// effect
 	[SchemaMember("hudtextparms_t", "effect")]
-	public ref byte Effect => ref Schema.GetRef<byte>(this.Handle, "hudtextparms_t", "effect");
+	public byte Effect
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "hudtextparms_t", "effect"); }
+		set { Schema.SetValueType<byte>(this.Handle, "hudtextparms_t", "effect", value); }
+	}
 
 	// channel
 	[SchemaMember("hudtextparms_t", "channel")]
-	public ref byte Channel => ref Schema.GetRef<byte>(this.Handle, "hudtextparms_t", "channel");
+	public byte Channel
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "hudtextparms_t", "channel"); }
+		set { Schema.SetValueType<byte>(this.Handle, "hudtextparms_t", "channel", value); }
+	}
 
 	// x
 	[SchemaMember("hudtextparms_t", "x")]
-	public ref float X => ref Schema.GetRef<float>(this.Handle, "hudtextparms_t", "x");
+	public float X
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "hudtextparms_t", "x"); }
+		set { Schema.SetValueType<float>(this.Handle, "hudtextparms_t", "x", value); }
+	}
 
 	// y
 	[SchemaMember("hudtextparms_t", "y")]
-	public ref float Y => ref Schema.GetRef<float>(this.Handle, "hudtextparms_t", "y");
+	public float Y
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "hudtextparms_t", "y"); }
+		set { Schema.SetValueType<float>(this.Handle, "hudtextparms_t", "y", value); }
+	}
 
 }

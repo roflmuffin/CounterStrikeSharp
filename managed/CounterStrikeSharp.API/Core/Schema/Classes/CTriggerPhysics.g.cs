@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,54 +21,106 @@ public partial class CTriggerPhysics : CBaseTrigger
 
 	// m_gravityScale
 	[SchemaMember("CTriggerPhysics", "m_gravityScale")]
-	public new ref float GravityScale => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_gravityScale");
+	public new float GravityScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerPhysics", "m_gravityScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerPhysics", "m_gravityScale", value); }
+	}
 
 	// m_linearLimit
 	[SchemaMember("CTriggerPhysics", "m_linearLimit")]
-	public ref float LinearLimit => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_linearLimit");
+	public float LinearLimit
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerPhysics", "m_linearLimit"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerPhysics", "m_linearLimit", value); }
+	}
 
 	// m_linearDamping
 	[SchemaMember("CTriggerPhysics", "m_linearDamping")]
-	public ref float LinearDamping => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_linearDamping");
+	public float LinearDamping
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerPhysics", "m_linearDamping"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerPhysics", "m_linearDamping", value); }
+	}
 
 	// m_angularLimit
 	[SchemaMember("CTriggerPhysics", "m_angularLimit")]
-	public ref float AngularLimit => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_angularLimit");
+	public float AngularLimit
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerPhysics", "m_angularLimit"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerPhysics", "m_angularLimit", value); }
+	}
 
 	// m_angularDamping
 	[SchemaMember("CTriggerPhysics", "m_angularDamping")]
-	public ref float AngularDamping => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_angularDamping");
+	public float AngularDamping
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerPhysics", "m_angularDamping"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerPhysics", "m_angularDamping", value); }
+	}
 
 	// m_linearForce
 	[SchemaMember("CTriggerPhysics", "m_linearForce")]
-	public ref float LinearForce => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_linearForce");
+	public float LinearForce
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerPhysics", "m_linearForce"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerPhysics", "m_linearForce", value); }
+	}
 
 	// m_flFrequency
 	[SchemaMember("CTriggerPhysics", "m_flFrequency")]
-	public ref float Frequency => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_flFrequency");
+	public float Frequency
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerPhysics", "m_flFrequency"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerPhysics", "m_flFrequency", value); }
+	}
 
 	// m_flDampingRatio
 	[SchemaMember("CTriggerPhysics", "m_flDampingRatio")]
-	public ref float DampingRatio => ref Schema.GetRef<float>(this.Handle, "CTriggerPhysics", "m_flDampingRatio");
+	public float DampingRatio
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerPhysics", "m_flDampingRatio"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerPhysics", "m_flDampingRatio", value); }
+	}
 
 	// m_vecLinearForcePointAt
 	[SchemaMember("CTriggerPhysics", "m_vecLinearForcePointAt")]
-	public Vector LinearForcePointAt => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerPhysics", "m_vecLinearForcePointAt");
+	public Vector3 LinearForcePointAt
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CTriggerPhysics", "m_vecLinearForcePointAt"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CTriggerPhysics", "m_vecLinearForcePointAt", value); }
+	}
 
 	// m_bCollapseToForcePoint
 	[SchemaMember("CTriggerPhysics", "m_bCollapseToForcePoint")]
-	public ref bool CollapseToForcePoint => ref Schema.GetRef<bool>(this.Handle, "CTriggerPhysics", "m_bCollapseToForcePoint");
+	public bool CollapseToForcePoint
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerPhysics", "m_bCollapseToForcePoint"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTriggerPhysics", "m_bCollapseToForcePoint", value); }
+	}
 
 	// m_vecLinearForcePointAtWorld
 	[SchemaMember("CTriggerPhysics", "m_vecLinearForcePointAtWorld")]
-	public Vector LinearForcePointAtWorld => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerPhysics", "m_vecLinearForcePointAtWorld");
+	public Vector3 LinearForcePointAtWorld
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CTriggerPhysics", "m_vecLinearForcePointAtWorld"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CTriggerPhysics", "m_vecLinearForcePointAtWorld", value); }
+	}
 
 	// m_vecLinearForceDirection
 	[SchemaMember("CTriggerPhysics", "m_vecLinearForceDirection")]
-	public Vector LinearForceDirection => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerPhysics", "m_vecLinearForceDirection");
+	public Vector3 LinearForceDirection
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CTriggerPhysics", "m_vecLinearForceDirection"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CTriggerPhysics", "m_vecLinearForceDirection", value); }
+	}
 
 	// m_bConvertToDebrisWhenPossible
 	[SchemaMember("CTriggerPhysics", "m_bConvertToDebrisWhenPossible")]
-	public ref bool ConvertToDebrisWhenPossible => ref Schema.GetRef<bool>(this.Handle, "CTriggerPhysics", "m_bConvertToDebrisWhenPossible");
+	public bool ConvertToDebrisWhenPossible
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerPhysics", "m_bConvertToDebrisWhenPossible"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTriggerPhysics", "m_bConvertToDebrisWhenPossible", value); }
+	}
 
 }

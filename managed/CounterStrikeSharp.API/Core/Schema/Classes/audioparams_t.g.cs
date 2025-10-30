@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,22 +21,38 @@ public partial class audioparams_t : NativeObject
 
 	// localSound
 	[SchemaMember("audioparams_t", "localSound")]
-	public Span<Vector> LocalSound => Schema.GetFixedArray<Vector>(this.Handle, "audioparams_t", "localSound", 8);
+	public Span<Vector3> LocalSound => Schema.GetFixedArray<Vector3>(this.Handle, "audioparams_t", "localSound", 8);
 
 	// soundscapeIndex
 	[SchemaMember("audioparams_t", "soundscapeIndex")]
-	public ref Int32 SoundscapeIndex => ref Schema.GetRef<Int32>(this.Handle, "audioparams_t", "soundscapeIndex");
+	public Int32 SoundscapeIndex
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "audioparams_t", "soundscapeIndex"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "audioparams_t", "soundscapeIndex", value); }
+	}
 
 	// localBits
 	[SchemaMember("audioparams_t", "localBits")]
-	public ref byte LocalBits => ref Schema.GetRef<byte>(this.Handle, "audioparams_t", "localBits");
+	public byte LocalBits
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "audioparams_t", "localBits"); }
+		set { Schema.SetValueType<byte>(this.Handle, "audioparams_t", "localBits", value); }
+	}
 
 	// soundscapeEntityListIndex
 	[SchemaMember("audioparams_t", "soundscapeEntityListIndex")]
-	public ref Int32 SoundscapeEntityListIndex => ref Schema.GetRef<Int32>(this.Handle, "audioparams_t", "soundscapeEntityListIndex");
+	public Int32 SoundscapeEntityListIndex
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "audioparams_t", "soundscapeEntityListIndex"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "audioparams_t", "soundscapeEntityListIndex", value); }
+	}
 
 	// soundEventHash
 	[SchemaMember("audioparams_t", "soundEventHash")]
-	public ref UInt32 SoundEventHash => ref Schema.GetRef<UInt32>(this.Handle, "audioparams_t", "soundEventHash");
+	public UInt32 SoundEventHash
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "audioparams_t", "soundEventHash"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "audioparams_t", "soundEventHash", value); }
+	}
 
 }

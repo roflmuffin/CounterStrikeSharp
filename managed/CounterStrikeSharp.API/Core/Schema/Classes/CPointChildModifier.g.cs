@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,6 +21,10 @@ public partial class CPointChildModifier : CPointEntity
 
 	// m_bOrphanInsteadOfDeletingChildrenOnRemove
 	[SchemaMember("CPointChildModifier", "m_bOrphanInsteadOfDeletingChildrenOnRemove")]
-	public ref bool OrphanInsteadOfDeletingChildrenOnRemove => ref Schema.GetRef<bool>(this.Handle, "CPointChildModifier", "m_bOrphanInsteadOfDeletingChildrenOnRemove");
+	public bool OrphanInsteadOfDeletingChildrenOnRemove
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointChildModifier", "m_bOrphanInsteadOfDeletingChildrenOnRemove"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointChildModifier", "m_bOrphanInsteadOfDeletingChildrenOnRemove", value); }
+	}
 
 }

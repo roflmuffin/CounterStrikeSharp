@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,11 +21,19 @@ public partial class CPathParticleRope : CBaseEntity
 
 	// m_bStartActive
 	[SchemaMember("CPathParticleRope", "m_bStartActive")]
-	public ref bool StartActive => ref Schema.GetRef<bool>(this.Handle, "CPathParticleRope", "m_bStartActive");
+	public bool StartActive
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPathParticleRope", "m_bStartActive"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPathParticleRope", "m_bStartActive", value); }
+	}
 
 	// m_flMaxSimulationTime
 	[SchemaMember("CPathParticleRope", "m_flMaxSimulationTime")]
-	public ref float MaxSimulationTime => ref Schema.GetRef<float>(this.Handle, "CPathParticleRope", "m_flMaxSimulationTime");
+	public float MaxSimulationTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPathParticleRope", "m_flMaxSimulationTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPathParticleRope", "m_flMaxSimulationTime", value); }
+	}
 
 	// m_iszEffectName
 	[SchemaMember("CPathParticleRope", "m_iszEffectName")]
@@ -40,15 +49,27 @@ public partial class CPathParticleRope : CBaseEntity
 
 	// m_flParticleSpacing
 	[SchemaMember("CPathParticleRope", "m_flParticleSpacing")]
-	public ref float ParticleSpacing => ref Schema.GetRef<float>(this.Handle, "CPathParticleRope", "m_flParticleSpacing");
+	public float ParticleSpacing
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPathParticleRope", "m_flParticleSpacing"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPathParticleRope", "m_flParticleSpacing", value); }
+	}
 
 	// m_flSlack
 	[SchemaMember("CPathParticleRope", "m_flSlack")]
-	public ref float Slack => ref Schema.GetRef<float>(this.Handle, "CPathParticleRope", "m_flSlack");
+	public float Slack
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPathParticleRope", "m_flSlack"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPathParticleRope", "m_flSlack", value); }
+	}
 
 	// m_flRadius
 	[SchemaMember("CPathParticleRope", "m_flRadius")]
-	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CPathParticleRope", "m_flRadius");
+	public float Radius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPathParticleRope", "m_flRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPathParticleRope", "m_flRadius", value); }
+	}
 
 	// m_ColorTint
 	[SchemaMember("CPathParticleRope", "m_ColorTint")]
@@ -60,7 +81,11 @@ public partial class CPathParticleRope : CBaseEntity
 
 	// m_nEffectState
 	[SchemaMember("CPathParticleRope", "m_nEffectState")]
-	public ref Int32 EffectState => ref Schema.GetRef<Int32>(this.Handle, "CPathParticleRope", "m_nEffectState");
+	public Int32 EffectState
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CPathParticleRope", "m_nEffectState"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CPathParticleRope", "m_nEffectState", value); }
+	}
 
 	// m_iEffectIndex
 	[SchemaMember("CPathParticleRope", "m_iEffectIndex")]
@@ -68,19 +93,19 @@ public partial class CPathParticleRope : CBaseEntity
 
 	// m_PathNodes_Position
 	[SchemaMember("CPathParticleRope", "m_PathNodes_Position")]
-	public NetworkedVector<Vector> PathNodes_Position => Schema.GetDeclaredClass<NetworkedVector<Vector>>(this.Handle, "CPathParticleRope", "m_PathNodes_Position");
+	public NetworkedVector<Vector3> PathNodes_Position => Schema.GetDeclaredClass<NetworkedVector<Vector3>>(this.Handle, "CPathParticleRope", "m_PathNodes_Position");
 
 	// m_PathNodes_TangentIn
 	[SchemaMember("CPathParticleRope", "m_PathNodes_TangentIn")]
-	public NetworkedVector<Vector> PathNodes_TangentIn => Schema.GetDeclaredClass<NetworkedVector<Vector>>(this.Handle, "CPathParticleRope", "m_PathNodes_TangentIn");
+	public NetworkedVector<Vector3> PathNodes_TangentIn => Schema.GetDeclaredClass<NetworkedVector<Vector3>>(this.Handle, "CPathParticleRope", "m_PathNodes_TangentIn");
 
 	// m_PathNodes_TangentOut
 	[SchemaMember("CPathParticleRope", "m_PathNodes_TangentOut")]
-	public NetworkedVector<Vector> PathNodes_TangentOut => Schema.GetDeclaredClass<NetworkedVector<Vector>>(this.Handle, "CPathParticleRope", "m_PathNodes_TangentOut");
+	public NetworkedVector<Vector3> PathNodes_TangentOut => Schema.GetDeclaredClass<NetworkedVector<Vector3>>(this.Handle, "CPathParticleRope", "m_PathNodes_TangentOut");
 
 	// m_PathNodes_Color
 	[SchemaMember("CPathParticleRope", "m_PathNodes_Color")]
-	public NetworkedVector<Vector> PathNodes_Color => Schema.GetDeclaredClass<NetworkedVector<Vector>>(this.Handle, "CPathParticleRope", "m_PathNodes_Color");
+	public NetworkedVector<Vector3> PathNodes_Color => Schema.GetDeclaredClass<NetworkedVector<Vector3>>(this.Handle, "CPathParticleRope", "m_PathNodes_Color");
 
 	// m_PathNodes_PinEnabled
 	[SchemaMember("CPathParticleRope", "m_PathNodes_PinEnabled")]

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -32,22 +33,42 @@ public partial class CPointOrient : CBaseEntity
 
 	// m_bActive
 	[SchemaMember("CPointOrient", "m_bActive")]
-	public ref bool Active => ref Schema.GetRef<bool>(this.Handle, "CPointOrient", "m_bActive");
+	public bool Active
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointOrient", "m_bActive"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointOrient", "m_bActive", value); }
+	}
 
 	// m_nGoalDirection
 	[SchemaMember("CPointOrient", "m_nGoalDirection")]
-	public ref PointOrientGoalDirectionType_t GoalDirection => ref Schema.GetRef<PointOrientGoalDirectionType_t>(this.Handle, "CPointOrient", "m_nGoalDirection");
+	public PointOrientGoalDirectionType_t GoalDirection
+	{
+		get { return Schema.GetValueType<PointOrientGoalDirectionType_t>(this.Handle, "CPointOrient", "m_nGoalDirection"); }
+		set { Schema.SetValueType<PointOrientGoalDirectionType_t>(this.Handle, "CPointOrient", "m_nGoalDirection", value); }
+	}
 
 	// m_nConstraint
 	[SchemaMember("CPointOrient", "m_nConstraint")]
-	public ref PointOrientConstraint_t Constraint => ref Schema.GetRef<PointOrientConstraint_t>(this.Handle, "CPointOrient", "m_nConstraint");
+	public PointOrientConstraint_t Constraint
+	{
+		get { return Schema.GetValueType<PointOrientConstraint_t>(this.Handle, "CPointOrient", "m_nConstraint"); }
+		set { Schema.SetValueType<PointOrientConstraint_t>(this.Handle, "CPointOrient", "m_nConstraint", value); }
+	}
 
 	// m_flMaxTurnRate
 	[SchemaMember("CPointOrient", "m_flMaxTurnRate")]
-	public ref float MaxTurnRate => ref Schema.GetRef<float>(this.Handle, "CPointOrient", "m_flMaxTurnRate");
+	public float MaxTurnRate
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointOrient", "m_flMaxTurnRate"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointOrient", "m_flMaxTurnRate", value); }
+	}
 
 	// m_flLastGameTime
 	[SchemaMember("CPointOrient", "m_flLastGameTime")]
-	public ref float LastGameTime => ref Schema.GetRef<float>(this.Handle, "CPointOrient", "m_flLastGameTime");
+	public float LastGameTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointOrient", "m_flLastGameTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointOrient", "m_flLastGameTime", value); }
+	}
 
 }

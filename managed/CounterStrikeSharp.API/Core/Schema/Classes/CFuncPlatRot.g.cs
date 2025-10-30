@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,10 +21,18 @@ public partial class CFuncPlatRot : CFuncPlat
 
 	// m_end
 	[SchemaMember("CFuncPlatRot", "m_end")]
-	public QAngle End => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncPlatRot", "m_end");
+	public QAngle End
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CFuncPlatRot", "m_end"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CFuncPlatRot", "m_end", value); }
+	}
 
 	// m_start
 	[SchemaMember("CFuncPlatRot", "m_start")]
-	public QAngle Start => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncPlatRot", "m_start");
+	public QAngle Start
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CFuncPlatRot", "m_start"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CFuncPlatRot", "m_start", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,6 +21,10 @@ public partial class CHitboxComponent : CEntityComponent
 
 	// m_flBoundsExpandRadius
 	[SchemaMember("CHitboxComponent", "m_flBoundsExpandRadius")]
-	public ref float BoundsExpandRadius => ref Schema.GetRef<float>(this.Handle, "CHitboxComponent", "m_flBoundsExpandRadius");
+	public float BoundsExpandRadius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CHitboxComponent", "m_flBoundsExpandRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CHitboxComponent", "m_flBoundsExpandRadius", value); }
+	}
 
 }

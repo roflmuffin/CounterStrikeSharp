@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,55 +21,107 @@ public partial class CEnvCubemapFog : CBaseEntity
 
 	// m_flEndDistance
 	[SchemaMember("CEnvCubemapFog", "m_flEndDistance")]
-	public ref float EndDistance => ref Schema.GetRef<float>(this.Handle, "CEnvCubemapFog", "m_flEndDistance");
+	public float EndDistance
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flEndDistance"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flEndDistance", value); }
+	}
 
 	// m_flStartDistance
 	[SchemaMember("CEnvCubemapFog", "m_flStartDistance")]
-	public ref float StartDistance => ref Schema.GetRef<float>(this.Handle, "CEnvCubemapFog", "m_flStartDistance");
+	public float StartDistance
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flStartDistance"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flStartDistance", value); }
+	}
 
 	// m_flFogFalloffExponent
 	[SchemaMember("CEnvCubemapFog", "m_flFogFalloffExponent")]
-	public ref float FogFalloffExponent => ref Schema.GetRef<float>(this.Handle, "CEnvCubemapFog", "m_flFogFalloffExponent");
+	public float FogFalloffExponent
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flFogFalloffExponent"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flFogFalloffExponent", value); }
+	}
 
 	// m_bHeightFogEnabled
 	[SchemaMember("CEnvCubemapFog", "m_bHeightFogEnabled")]
-	public ref bool HeightFogEnabled => ref Schema.GetRef<bool>(this.Handle, "CEnvCubemapFog", "m_bHeightFogEnabled");
+	public bool HeightFogEnabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvCubemapFog", "m_bHeightFogEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvCubemapFog", "m_bHeightFogEnabled", value); }
+	}
 
 	// m_flFogHeightWidth
 	[SchemaMember("CEnvCubemapFog", "m_flFogHeightWidth")]
-	public ref float FogHeightWidth => ref Schema.GetRef<float>(this.Handle, "CEnvCubemapFog", "m_flFogHeightWidth");
+	public float FogHeightWidth
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flFogHeightWidth"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flFogHeightWidth", value); }
+	}
 
 	// m_flFogHeightEnd
 	[SchemaMember("CEnvCubemapFog", "m_flFogHeightEnd")]
-	public ref float FogHeightEnd => ref Schema.GetRef<float>(this.Handle, "CEnvCubemapFog", "m_flFogHeightEnd");
+	public float FogHeightEnd
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flFogHeightEnd"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flFogHeightEnd", value); }
+	}
 
 	// m_flFogHeightStart
 	[SchemaMember("CEnvCubemapFog", "m_flFogHeightStart")]
-	public ref float FogHeightStart => ref Schema.GetRef<float>(this.Handle, "CEnvCubemapFog", "m_flFogHeightStart");
+	public float FogHeightStart
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flFogHeightStart"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flFogHeightStart", value); }
+	}
 
 	// m_flFogHeightExponent
 	[SchemaMember("CEnvCubemapFog", "m_flFogHeightExponent")]
-	public ref float FogHeightExponent => ref Schema.GetRef<float>(this.Handle, "CEnvCubemapFog", "m_flFogHeightExponent");
+	public float FogHeightExponent
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flFogHeightExponent"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flFogHeightExponent", value); }
+	}
 
 	// m_flLODBias
 	[SchemaMember("CEnvCubemapFog", "m_flLODBias")]
-	public ref float LODBias => ref Schema.GetRef<float>(this.Handle, "CEnvCubemapFog", "m_flLODBias");
+	public float LODBias
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flLODBias"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flLODBias", value); }
+	}
 
 	// m_bActive
 	[SchemaMember("CEnvCubemapFog", "m_bActive")]
-	public ref bool Active => ref Schema.GetRef<bool>(this.Handle, "CEnvCubemapFog", "m_bActive");
+	public bool Active
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvCubemapFog", "m_bActive"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvCubemapFog", "m_bActive", value); }
+	}
 
 	// m_bStartDisabled
 	[SchemaMember("CEnvCubemapFog", "m_bStartDisabled")]
-	public ref bool StartDisabled => ref Schema.GetRef<bool>(this.Handle, "CEnvCubemapFog", "m_bStartDisabled");
+	public bool StartDisabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvCubemapFog", "m_bStartDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvCubemapFog", "m_bStartDisabled", value); }
+	}
 
 	// m_flFogMaxOpacity
 	[SchemaMember("CEnvCubemapFog", "m_flFogMaxOpacity")]
-	public ref float FogMaxOpacity => ref Schema.GetRef<float>(this.Handle, "CEnvCubemapFog", "m_flFogMaxOpacity");
+	public float FogMaxOpacity
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flFogMaxOpacity"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvCubemapFog", "m_flFogMaxOpacity", value); }
+	}
 
 	// m_nCubemapSourceType
 	[SchemaMember("CEnvCubemapFog", "m_nCubemapSourceType")]
-	public ref Int32 CubemapSourceType => ref Schema.GetRef<Int32>(this.Handle, "CEnvCubemapFog", "m_nCubemapSourceType");
+	public Int32 CubemapSourceType
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvCubemapFog", "m_nCubemapSourceType"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvCubemapFog", "m_nCubemapSourceType", value); }
+	}
 
 	// m_hSkyMaterial
 	[SchemaMember("CEnvCubemapFog", "m_hSkyMaterial")]
@@ -88,10 +141,18 @@ public partial class CEnvCubemapFog : CBaseEntity
 
 	// m_bHasHeightFogEnd
 	[SchemaMember("CEnvCubemapFog", "m_bHasHeightFogEnd")]
-	public ref bool HasHeightFogEnd => ref Schema.GetRef<bool>(this.Handle, "CEnvCubemapFog", "m_bHasHeightFogEnd");
+	public bool HasHeightFogEnd
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvCubemapFog", "m_bHasHeightFogEnd"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvCubemapFog", "m_bHasHeightFogEnd", value); }
+	}
 
 	// m_bFirstTime
 	[SchemaMember("CEnvCubemapFog", "m_bFirstTime")]
-	public ref bool FirstTime => ref Schema.GetRef<bool>(this.Handle, "CEnvCubemapFog", "m_bFirstTime");
+	public bool FirstTime
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvCubemapFog", "m_bFirstTime"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvCubemapFog", "m_bFirstTime", value); }
+	}
 
 }

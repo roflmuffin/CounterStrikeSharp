@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,11 +21,19 @@ public partial class constraint_hingeparams_t : NativeObject
 
 	// worldPosition
 	[SchemaMember("constraint_hingeparams_t", "worldPosition")]
-	public Vector WorldPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "constraint_hingeparams_t", "worldPosition");
+	public Vector3 WorldPosition
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "constraint_hingeparams_t", "worldPosition"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "constraint_hingeparams_t", "worldPosition", value); }
+	}
 
 	// worldAxisDirection
 	[SchemaMember("constraint_hingeparams_t", "worldAxisDirection")]
-	public Vector WorldAxisDirection => Schema.GetDeclaredClass<Vector>(this.Handle, "constraint_hingeparams_t", "worldAxisDirection");
+	public Vector3 WorldAxisDirection
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "constraint_hingeparams_t", "worldAxisDirection"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "constraint_hingeparams_t", "worldAxisDirection", value); }
+	}
 
 	// hingeAxis
 	[SchemaMember("constraint_hingeparams_t", "hingeAxis")]

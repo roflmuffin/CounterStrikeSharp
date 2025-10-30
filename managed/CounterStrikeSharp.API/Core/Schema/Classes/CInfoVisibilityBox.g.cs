@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,14 +21,26 @@ public partial class CInfoVisibilityBox : CBaseEntity
 
 	// m_nMode
 	[SchemaMember("CInfoVisibilityBox", "m_nMode")]
-	public ref Int32 Mode => ref Schema.GetRef<Int32>(this.Handle, "CInfoVisibilityBox", "m_nMode");
+	public Int32 Mode
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CInfoVisibilityBox", "m_nMode"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CInfoVisibilityBox", "m_nMode", value); }
+	}
 
 	// m_vBoxSize
 	[SchemaMember("CInfoVisibilityBox", "m_vBoxSize")]
-	public Vector BoxSize => Schema.GetDeclaredClass<Vector>(this.Handle, "CInfoVisibilityBox", "m_vBoxSize");
+	public Vector3 BoxSize
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CInfoVisibilityBox", "m_vBoxSize"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CInfoVisibilityBox", "m_vBoxSize", value); }
+	}
 
 	// m_bEnabled
 	[SchemaMember("CInfoVisibilityBox", "m_bEnabled")]
-	public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CInfoVisibilityBox", "m_bEnabled");
+	public bool Enabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CInfoVisibilityBox", "m_bEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CInfoVisibilityBox", "m_bEnabled", value); }
+	}
 
 }

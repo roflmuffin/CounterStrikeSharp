@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,11 +21,19 @@ public partial class CBaseDoor : CBaseToggle
 
 	// m_angMoveEntitySpace
 	[SchemaMember("CBaseDoor", "m_angMoveEntitySpace")]
-	public QAngle MoveEntitySpace => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBaseDoor", "m_angMoveEntitySpace");
+	public QAngle MoveEntitySpace
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CBaseDoor", "m_angMoveEntitySpace"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CBaseDoor", "m_angMoveEntitySpace", value); }
+	}
 
 	// m_vecMoveDirParentSpace
 	[SchemaMember("CBaseDoor", "m_vecMoveDirParentSpace")]
-	public Vector MoveDirParentSpace => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseDoor", "m_vecMoveDirParentSpace");
+	public Vector3 MoveDirParentSpace
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBaseDoor", "m_vecMoveDirParentSpace"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBaseDoor", "m_vecMoveDirParentSpace", value); }
+	}
 
 	// m_ls
 	[SchemaMember("CBaseDoor", "m_ls")]
@@ -32,31 +41,59 @@ public partial class CBaseDoor : CBaseToggle
 
 	// m_bForceClosed
 	[SchemaMember("CBaseDoor", "m_bForceClosed")]
-	public ref bool ForceClosed => ref Schema.GetRef<bool>(this.Handle, "CBaseDoor", "m_bForceClosed");
+	public bool ForceClosed
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseDoor", "m_bForceClosed"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseDoor", "m_bForceClosed", value); }
+	}
 
 	// m_bDoorGroup
 	[SchemaMember("CBaseDoor", "m_bDoorGroup")]
-	public ref bool DoorGroup => ref Schema.GetRef<bool>(this.Handle, "CBaseDoor", "m_bDoorGroup");
+	public bool DoorGroup
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseDoor", "m_bDoorGroup"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseDoor", "m_bDoorGroup", value); }
+	}
 
 	// m_bLocked
 	[SchemaMember("CBaseDoor", "m_bLocked")]
-	public ref bool Locked => ref Schema.GetRef<bool>(this.Handle, "CBaseDoor", "m_bLocked");
+	public bool Locked
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseDoor", "m_bLocked"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseDoor", "m_bLocked", value); }
+	}
 
 	// m_bIgnoreDebris
 	[SchemaMember("CBaseDoor", "m_bIgnoreDebris")]
-	public ref bool IgnoreDebris => ref Schema.GetRef<bool>(this.Handle, "CBaseDoor", "m_bIgnoreDebris");
+	public bool IgnoreDebris
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseDoor", "m_bIgnoreDebris"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseDoor", "m_bIgnoreDebris", value); }
+	}
 
 	// m_bNoNPCs
 	[SchemaMember("CBaseDoor", "m_bNoNPCs")]
-	public ref bool NoNPCs => ref Schema.GetRef<bool>(this.Handle, "CBaseDoor", "m_bNoNPCs");
+	public bool NoNPCs
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseDoor", "m_bNoNPCs"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseDoor", "m_bNoNPCs", value); }
+	}
 
 	// m_eSpawnPosition
 	[SchemaMember("CBaseDoor", "m_eSpawnPosition")]
-	public ref FuncDoorSpawnPos_t SpawnPosition => ref Schema.GetRef<FuncDoorSpawnPos_t>(this.Handle, "CBaseDoor", "m_eSpawnPosition");
+	public FuncDoorSpawnPos_t SpawnPosition
+	{
+		get { return Schema.GetValueType<FuncDoorSpawnPos_t>(this.Handle, "CBaseDoor", "m_eSpawnPosition"); }
+		set { Schema.SetValueType<FuncDoorSpawnPos_t>(this.Handle, "CBaseDoor", "m_eSpawnPosition", value); }
+	}
 
 	// m_flBlockDamage
 	[SchemaMember("CBaseDoor", "m_flBlockDamage")]
-	public ref float BlockDamage => ref Schema.GetRef<float>(this.Handle, "CBaseDoor", "m_flBlockDamage");
+	public float BlockDamage
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseDoor", "m_flBlockDamage"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseDoor", "m_flBlockDamage", value); }
+	}
 
 	// m_NoiseMoving
 	[SchemaMember("CBaseDoor", "m_NoiseMoving")]
@@ -136,18 +173,34 @@ public partial class CBaseDoor : CBaseToggle
 
 	// m_bLoopMoveSound
 	[SchemaMember("CBaseDoor", "m_bLoopMoveSound")]
-	public ref bool LoopMoveSound => ref Schema.GetRef<bool>(this.Handle, "CBaseDoor", "m_bLoopMoveSound");
+	public bool LoopMoveSound
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseDoor", "m_bLoopMoveSound"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseDoor", "m_bLoopMoveSound", value); }
+	}
 
 	// m_bCreateNavObstacle
 	[SchemaMember("CBaseDoor", "m_bCreateNavObstacle")]
-	public ref bool CreateNavObstacle => ref Schema.GetRef<bool>(this.Handle, "CBaseDoor", "m_bCreateNavObstacle");
+	public bool CreateNavObstacle
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseDoor", "m_bCreateNavObstacle"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseDoor", "m_bCreateNavObstacle", value); }
+	}
 
 	// m_isChaining
 	[SchemaMember("CBaseDoor", "m_isChaining")]
-	public ref bool IsChaining => ref Schema.GetRef<bool>(this.Handle, "CBaseDoor", "m_isChaining");
+	public bool IsChaining
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseDoor", "m_isChaining"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseDoor", "m_isChaining", value); }
+	}
 
 	// m_bIsUsable
 	[SchemaMember("CBaseDoor", "m_bIsUsable")]
-	public ref bool IsUsable => ref Schema.GetRef<bool>(this.Handle, "CBaseDoor", "m_bIsUsable");
+	public bool IsUsable
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseDoor", "m_bIsUsable"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseDoor", "m_bIsUsable", value); }
+	}
 
 }

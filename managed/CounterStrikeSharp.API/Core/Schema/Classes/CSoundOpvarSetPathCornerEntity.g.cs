@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,11 +21,19 @@ public partial class CSoundOpvarSetPathCornerEntity : CSoundOpvarSetPointEntity
 
 	// m_flDistMinSqr
 	[SchemaMember("CSoundOpvarSetPathCornerEntity", "m_flDistMinSqr")]
-	public ref float DistMinSqr => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetPathCornerEntity", "m_flDistMinSqr");
+	public float DistMinSqr
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetPathCornerEntity", "m_flDistMinSqr"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetPathCornerEntity", "m_flDistMinSqr", value); }
+	}
 
 	// m_flDistMaxSqr
 	[SchemaMember("CSoundOpvarSetPathCornerEntity", "m_flDistMaxSqr")]
-	public ref float DistMaxSqr => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetPathCornerEntity", "m_flDistMaxSqr");
+	public float DistMaxSqr
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetPathCornerEntity", "m_flDistMaxSqr"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetPathCornerEntity", "m_flDistMaxSqr", value); }
+	}
 
 	// m_iszPathCornerEntityName
 	[SchemaMember("CSoundOpvarSetPathCornerEntity", "m_iszPathCornerEntityName")]

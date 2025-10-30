@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,6 +21,10 @@ public partial class CMarkupVolume : CBaseModelEntity
 
 	// m_bDisabled
 	[SchemaMember("CMarkupVolume", "m_bDisabled")]
-	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolume", "m_bDisabled");
+	public bool Disabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CMarkupVolume", "m_bDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CMarkupVolume", "m_bDisabled", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,6 +21,10 @@ public partial class CPhysicsShake : NativeObject
 
 	// m_force
 	[SchemaMember("CPhysicsShake", "m_force")]
-	public Vector Force => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysicsShake", "m_force");
+	public Vector3 Force
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CPhysicsShake", "m_force"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CPhysicsShake", "m_force", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class CCSBot : CBot
 
 	// m_eyePosition
 	[SchemaMember("CCSBot", "m_eyePosition")]
-	public Vector EyePosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSBot", "m_eyePosition");
+	public Vector3 EyePosition
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSBot", "m_eyePosition"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCSBot", "m_eyePosition", value); }
+	}
 
 	// m_name
 	[SchemaMember("CCSBot", "m_name")]
@@ -32,11 +37,19 @@ public partial class CCSBot : CBot
 
 	// m_combatRange
 	[SchemaMember("CCSBot", "m_combatRange")]
-	public ref float CombatRange => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_combatRange");
+	public float CombatRange
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_combatRange"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_combatRange", value); }
+	}
 
 	// m_isRogue
 	[SchemaMember("CCSBot", "m_isRogue")]
-	public ref bool IsRogue => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_isRogue");
+	public bool IsRogue
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_isRogue"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_isRogue", value); }
+	}
 
 	// m_rogueTimer
 	[SchemaMember("CCSBot", "m_rogueTimer")]
@@ -44,19 +57,35 @@ public partial class CCSBot : CBot
 
 	// m_diedLastRound
 	[SchemaMember("CCSBot", "m_diedLastRound")]
-	public ref bool DiedLastRound => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_diedLastRound");
+	public bool DiedLastRound
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_diedLastRound"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_diedLastRound", value); }
+	}
 
 	// m_safeTime
 	[SchemaMember("CCSBot", "m_safeTime")]
-	public ref float SafeTime => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_safeTime");
+	public float SafeTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_safeTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_safeTime", value); }
+	}
 
 	// m_wasSafe
 	[SchemaMember("CCSBot", "m_wasSafe")]
-	public ref bool WasSafe => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_wasSafe");
+	public bool WasSafe
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_wasSafe"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_wasSafe", value); }
+	}
 
 	// m_blindFire
 	[SchemaMember("CCSBot", "m_blindFire")]
-	public ref bool BlindFire => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_blindFire");
+	public bool BlindFire
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_blindFire"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_blindFire", value); }
+	}
 
 	// m_surpriseTimer
 	[SchemaMember("CCSBot", "m_surpriseTimer")]
@@ -64,11 +93,19 @@ public partial class CCSBot : CBot
 
 	// m_bAllowActive
 	[SchemaMember("CCSBot", "m_bAllowActive")]
-	public ref bool AllowActive => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_bAllowActive");
+	public bool AllowActive
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_bAllowActive"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_bAllowActive", value); }
+	}
 
 	// m_isFollowing
 	[SchemaMember("CCSBot", "m_isFollowing")]
-	public ref bool IsFollowing => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_isFollowing");
+	public bool IsFollowing
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_isFollowing"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_isFollowing", value); }
+	}
 
 	// m_leader
 	[SchemaMember("CCSBot", "m_leader")]
@@ -76,11 +113,19 @@ public partial class CCSBot : CBot
 
 	// m_followTimestamp
 	[SchemaMember("CCSBot", "m_followTimestamp")]
-	public ref float FollowTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_followTimestamp");
+	public float FollowTimestamp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_followTimestamp"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_followTimestamp", value); }
+	}
 
 	// m_allowAutoFollowTime
 	[SchemaMember("CCSBot", "m_allowAutoFollowTime")]
-	public ref float AllowAutoFollowTime => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_allowAutoFollowTime");
+	public float AllowAutoFollowTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_allowAutoFollowTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_allowAutoFollowTime", value); }
+	}
 
 	// m_hurryTimer
 	[SchemaMember("CCSBot", "m_hurryTimer")]
@@ -100,15 +145,27 @@ public partial class CCSBot : CBot
 
 	// m_stateTimestamp
 	[SchemaMember("CCSBot", "m_stateTimestamp")]
-	public ref float StateTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_stateTimestamp");
+	public float StateTimestamp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_stateTimestamp"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_stateTimestamp", value); }
+	}
 
 	// m_isAttacking
 	[SchemaMember("CCSBot", "m_isAttacking")]
-	public ref bool IsAttacking => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_isAttacking");
+	public bool IsAttacking
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_isAttacking"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_isAttacking", value); }
+	}
 
 	// m_isOpeningDoor
 	[SchemaMember("CCSBot", "m_isOpeningDoor")]
-	public ref bool IsOpeningDoor => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_isOpeningDoor");
+	public bool IsOpeningDoor
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_isOpeningDoor"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_isOpeningDoor", value); }
+	}
 
 	// m_taskEntity
 	[SchemaMember("CCSBot", "m_taskEntity")]
@@ -116,7 +173,11 @@ public partial class CCSBot : CBot
 
 	// m_goalPosition
 	[SchemaMember("CCSBot", "m_goalPosition")]
-	public Vector GoalPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSBot", "m_goalPosition");
+	public Vector3 GoalPosition
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSBot", "m_goalPosition"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCSBot", "m_goalPosition", value); }
+	}
 
 	// m_goalEntity
 	[SchemaMember("CCSBot", "m_goalEntity")]
@@ -128,15 +189,27 @@ public partial class CCSBot : CBot
 
 	// m_avoidTimestamp
 	[SchemaMember("CCSBot", "m_avoidTimestamp")]
-	public ref float AvoidTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_avoidTimestamp");
+	public float AvoidTimestamp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_avoidTimestamp"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_avoidTimestamp", value); }
+	}
 
 	// m_isStopping
 	[SchemaMember("CCSBot", "m_isStopping")]
-	public ref bool IsStopping => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_isStopping");
+	public bool IsStopping
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_isStopping"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_isStopping", value); }
+	}
 
 	// m_hasVisitedEnemySpawn
 	[SchemaMember("CCSBot", "m_hasVisitedEnemySpawn")]
-	public ref bool HasVisitedEnemySpawn => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_hasVisitedEnemySpawn");
+	public bool HasVisitedEnemySpawn
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_hasVisitedEnemySpawn"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_hasVisitedEnemySpawn", value); }
+	}
 
 	// m_stillTimer
 	[SchemaMember("CCSBot", "m_stillTimer")]
@@ -144,15 +217,27 @@ public partial class CCSBot : CBot
 
 	// m_bEyeAnglesUnderPathFinderControl
 	[SchemaMember("CCSBot", "m_bEyeAnglesUnderPathFinderControl")]
-	public ref bool EyeAnglesUnderPathFinderControl => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_bEyeAnglesUnderPathFinderControl");
+	public bool EyeAnglesUnderPathFinderControl
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_bEyeAnglesUnderPathFinderControl"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_bEyeAnglesUnderPathFinderControl", value); }
+	}
 
 	// m_pathIndex
 	[SchemaMember("CCSBot", "m_pathIndex")]
-	public ref Int32 PathIndex => ref Schema.GetRef<Int32>(this.Handle, "CCSBot", "m_pathIndex");
+	public Int32 PathIndex
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSBot", "m_pathIndex"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSBot", "m_pathIndex", value); }
+	}
 
 	// m_areaEnteredTimestamp
 	[SchemaMember("CCSBot", "m_areaEnteredTimestamp")]
-	public ref float AreaEnteredTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_areaEnteredTimestamp");
+	public float AreaEnteredTimestamp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_areaEnteredTimestamp"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_areaEnteredTimestamp", value); }
+	}
 
 	// m_repathTimer
 	[SchemaMember("CCSBot", "m_repathTimer")]
@@ -164,7 +249,11 @@ public partial class CCSBot : CBot
 
 	// m_isFriendInTheWay
 	[SchemaMember("CCSBot", "m_isFriendInTheWay")]
-	public ref bool IsFriendInTheWay => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_isFriendInTheWay");
+	public bool IsFriendInTheWay
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_isFriendInTheWay"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_isFriendInTheWay", value); }
+	}
 
 	// m_politeTimer
 	[SchemaMember("CCSBot", "m_politeTimer")]
@@ -172,11 +261,19 @@ public partial class CCSBot : CBot
 
 	// m_isWaitingBehindFriend
 	[SchemaMember("CCSBot", "m_isWaitingBehindFriend")]
-	public ref bool IsWaitingBehindFriend => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_isWaitingBehindFriend");
+	public bool IsWaitingBehindFriend
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_isWaitingBehindFriend"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_isWaitingBehindFriend", value); }
+	}
 
 	// m_pathLadderEnd
 	[SchemaMember("CCSBot", "m_pathLadderEnd")]
-	public ref float PathLadderEnd => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_pathLadderEnd");
+	public float PathLadderEnd
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_pathLadderEnd"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_pathLadderEnd", value); }
+	}
 
 	// m_mustRunTimer
 	[SchemaMember("CCSBot", "m_mustRunTimer")]
@@ -196,27 +293,51 @@ public partial class CCSBot : CBot
 
 	// m_travelDistancePhase
 	[SchemaMember("CCSBot", "m_travelDistancePhase")]
-	public ref byte TravelDistancePhase => ref Schema.GetRef<byte>(this.Handle, "CCSBot", "m_travelDistancePhase");
+	public byte TravelDistancePhase
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CCSBot", "m_travelDistancePhase"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CCSBot", "m_travelDistancePhase", value); }
+	}
 
 	// m_hostageEscortCount
 	[SchemaMember("CCSBot", "m_hostageEscortCount")]
-	public ref byte HostageEscortCount => ref Schema.GetRef<byte>(this.Handle, "CCSBot", "m_hostageEscortCount");
+	public byte HostageEscortCount
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CCSBot", "m_hostageEscortCount"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CCSBot", "m_hostageEscortCount", value); }
+	}
 
 	// m_hostageEscortCountTimestamp
 	[SchemaMember("CCSBot", "m_hostageEscortCountTimestamp")]
-	public ref float HostageEscortCountTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_hostageEscortCountTimestamp");
+	public float HostageEscortCountTimestamp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_hostageEscortCountTimestamp"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_hostageEscortCountTimestamp", value); }
+	}
 
 	// m_desiredTeam
 	[SchemaMember("CCSBot", "m_desiredTeam")]
-	public ref Int32 DesiredTeam => ref Schema.GetRef<Int32>(this.Handle, "CCSBot", "m_desiredTeam");
+	public Int32 DesiredTeam
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSBot", "m_desiredTeam"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSBot", "m_desiredTeam", value); }
+	}
 
 	// m_hasJoined
 	[SchemaMember("CCSBot", "m_hasJoined")]
-	public ref bool HasJoined => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_hasJoined");
+	public bool HasJoined
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_hasJoined"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_hasJoined", value); }
+	}
 
 	// m_isWaitingForHostage
 	[SchemaMember("CCSBot", "m_isWaitingForHostage")]
-	public ref bool IsWaitingForHostage => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_isWaitingForHostage");
+	public bool IsWaitingForHostage
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_isWaitingForHostage"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_isWaitingForHostage", value); }
+	}
 
 	// m_inhibitWaitingForHostageTimer
 	[SchemaMember("CCSBot", "m_inhibitWaitingForHostageTimer")]
@@ -228,15 +349,27 @@ public partial class CCSBot : CBot
 
 	// m_noisePosition
 	[SchemaMember("CCSBot", "m_noisePosition")]
-	public Vector NoisePosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSBot", "m_noisePosition");
+	public Vector3 NoisePosition
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSBot", "m_noisePosition"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCSBot", "m_noisePosition", value); }
+	}
 
 	// m_noiseTravelDistance
 	[SchemaMember("CCSBot", "m_noiseTravelDistance")]
-	public ref float NoiseTravelDistance => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_noiseTravelDistance");
+	public float NoiseTravelDistance
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_noiseTravelDistance"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_noiseTravelDistance", value); }
+	}
 
 	// m_noiseTimestamp
 	[SchemaMember("CCSBot", "m_noiseTimestamp")]
-	public ref float NoiseTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_noiseTimestamp");
+	public float NoiseTimestamp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_noiseTimestamp"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_noiseTimestamp", value); }
+	}
 
 	// m_noiseSource
 	[SchemaMember("CCSBot", "m_noiseSource")]
@@ -248,51 +381,99 @@ public partial class CCSBot : CBot
 
 	// m_bentNoisePosition
 	[SchemaMember("CCSBot", "m_bentNoisePosition")]
-	public Vector BentNoisePosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSBot", "m_bentNoisePosition");
+	public Vector3 BentNoisePosition
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSBot", "m_bentNoisePosition"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCSBot", "m_bentNoisePosition", value); }
+	}
 
 	// m_bendNoisePositionValid
 	[SchemaMember("CCSBot", "m_bendNoisePositionValid")]
-	public ref bool BendNoisePositionValid => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_bendNoisePositionValid");
+	public bool BendNoisePositionValid
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_bendNoisePositionValid"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_bendNoisePositionValid", value); }
+	}
 
 	// m_lookAroundStateTimestamp
 	[SchemaMember("CCSBot", "m_lookAroundStateTimestamp")]
-	public ref float LookAroundStateTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_lookAroundStateTimestamp");
+	public float LookAroundStateTimestamp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_lookAroundStateTimestamp"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_lookAroundStateTimestamp", value); }
+	}
 
 	// m_lookAheadAngle
 	[SchemaMember("CCSBot", "m_lookAheadAngle")]
-	public ref float LookAheadAngle => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_lookAheadAngle");
+	public float LookAheadAngle
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_lookAheadAngle"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_lookAheadAngle", value); }
+	}
 
 	// m_forwardAngle
 	[SchemaMember("CCSBot", "m_forwardAngle")]
-	public ref float ForwardAngle => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_forwardAngle");
+	public float ForwardAngle
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_forwardAngle"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_forwardAngle", value); }
+	}
 
 	// m_inhibitLookAroundTimestamp
 	[SchemaMember("CCSBot", "m_inhibitLookAroundTimestamp")]
-	public ref float InhibitLookAroundTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_inhibitLookAroundTimestamp");
+	public float InhibitLookAroundTimestamp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_inhibitLookAroundTimestamp"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_inhibitLookAroundTimestamp", value); }
+	}
 
 	// m_lookAtSpot
 	[SchemaMember("CCSBot", "m_lookAtSpot")]
-	public Vector LookAtSpot => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSBot", "m_lookAtSpot");
+	public Vector3 LookAtSpot
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSBot", "m_lookAtSpot"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCSBot", "m_lookAtSpot", value); }
+	}
 
 	// m_lookAtSpotDuration
 	[SchemaMember("CCSBot", "m_lookAtSpotDuration")]
-	public ref float LookAtSpotDuration => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_lookAtSpotDuration");
+	public float LookAtSpotDuration
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_lookAtSpotDuration"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_lookAtSpotDuration", value); }
+	}
 
 	// m_lookAtSpotTimestamp
 	[SchemaMember("CCSBot", "m_lookAtSpotTimestamp")]
-	public ref float LookAtSpotTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_lookAtSpotTimestamp");
+	public float LookAtSpotTimestamp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_lookAtSpotTimestamp"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_lookAtSpotTimestamp", value); }
+	}
 
 	// m_lookAtSpotAngleTolerance
 	[SchemaMember("CCSBot", "m_lookAtSpotAngleTolerance")]
-	public ref float LookAtSpotAngleTolerance => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_lookAtSpotAngleTolerance");
+	public float LookAtSpotAngleTolerance
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_lookAtSpotAngleTolerance"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_lookAtSpotAngleTolerance", value); }
+	}
 
 	// m_lookAtSpotClearIfClose
 	[SchemaMember("CCSBot", "m_lookAtSpotClearIfClose")]
-	public ref bool LookAtSpotClearIfClose => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_lookAtSpotClearIfClose");
+	public bool LookAtSpotClearIfClose
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_lookAtSpotClearIfClose"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_lookAtSpotClearIfClose", value); }
+	}
 
 	// m_lookAtSpotAttack
 	[SchemaMember("CCSBot", "m_lookAtSpotAttack")]
-	public ref bool LookAtSpotAttack => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_lookAtSpotAttack");
+	public bool LookAtSpotAttack
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_lookAtSpotAttack"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_lookAtSpotAttack", value); }
+	}
 
 	// m_lookAtDesc
 	[SchemaMember("CCSBot", "m_lookAtDesc")]
@@ -304,15 +485,27 @@ public partial class CCSBot : CBot
 
 	// m_peripheralTimestamp
 	[SchemaMember("CCSBot", "m_peripheralTimestamp")]
-	public ref float PeripheralTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_peripheralTimestamp");
+	public float PeripheralTimestamp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_peripheralTimestamp"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_peripheralTimestamp", value); }
+	}
 
 	// m_approachPointCount
 	[SchemaMember("CCSBot", "m_approachPointCount")]
-	public ref byte ApproachPointCount => ref Schema.GetRef<byte>(this.Handle, "CCSBot", "m_approachPointCount");
+	public byte ApproachPointCount
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CCSBot", "m_approachPointCount"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CCSBot", "m_approachPointCount", value); }
+	}
 
 	// m_approachPointViewPosition
 	[SchemaMember("CCSBot", "m_approachPointViewPosition")]
-	public Vector ApproachPointViewPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSBot", "m_approachPointViewPosition");
+	public Vector3 ApproachPointViewPosition
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSBot", "m_approachPointViewPosition"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCSBot", "m_approachPointViewPosition", value); }
+	}
 
 	// m_viewSteadyTimer
 	[SchemaMember("CCSBot", "m_viewSteadyTimer")]
@@ -328,63 +521,123 @@ public partial class CCSBot : CBot
 
 	// m_spotCheckTimestamp
 	[SchemaMember("CCSBot", "m_spotCheckTimestamp")]
-	public ref float SpotCheckTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_spotCheckTimestamp");
+	public float SpotCheckTimestamp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_spotCheckTimestamp"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_spotCheckTimestamp", value); }
+	}
 
 	// m_checkedHidingSpotCount
 	[SchemaMember("CCSBot", "m_checkedHidingSpotCount")]
-	public ref Int32 CheckedHidingSpotCount => ref Schema.GetRef<Int32>(this.Handle, "CCSBot", "m_checkedHidingSpotCount");
+	public Int32 CheckedHidingSpotCount
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSBot", "m_checkedHidingSpotCount"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSBot", "m_checkedHidingSpotCount", value); }
+	}
 
 	// m_lookPitch
 	[SchemaMember("CCSBot", "m_lookPitch")]
-	public ref float LookPitch => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_lookPitch");
+	public float LookPitch
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_lookPitch"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_lookPitch", value); }
+	}
 
 	// m_lookPitchVel
 	[SchemaMember("CCSBot", "m_lookPitchVel")]
-	public ref float LookPitchVel => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_lookPitchVel");
+	public float LookPitchVel
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_lookPitchVel"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_lookPitchVel", value); }
+	}
 
 	// m_lookYaw
 	[SchemaMember("CCSBot", "m_lookYaw")]
-	public ref float LookYaw => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_lookYaw");
+	public float LookYaw
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_lookYaw"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_lookYaw", value); }
+	}
 
 	// m_lookYawVel
 	[SchemaMember("CCSBot", "m_lookYawVel")]
-	public ref float LookYawVel => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_lookYawVel");
+	public float LookYawVel
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_lookYawVel"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_lookYawVel", value); }
+	}
 
 	// m_targetSpot
 	[SchemaMember("CCSBot", "m_targetSpot")]
-	public Vector TargetSpot => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSBot", "m_targetSpot");
+	public Vector3 TargetSpot
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSBot", "m_targetSpot"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCSBot", "m_targetSpot", value); }
+	}
 
 	// m_targetSpotVelocity
 	[SchemaMember("CCSBot", "m_targetSpotVelocity")]
-	public Vector TargetSpotVelocity => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSBot", "m_targetSpotVelocity");
+	public Vector3 TargetSpotVelocity
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSBot", "m_targetSpotVelocity"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCSBot", "m_targetSpotVelocity", value); }
+	}
 
 	// m_targetSpotPredicted
 	[SchemaMember("CCSBot", "m_targetSpotPredicted")]
-	public Vector TargetSpotPredicted => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSBot", "m_targetSpotPredicted");
+	public Vector3 TargetSpotPredicted
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSBot", "m_targetSpotPredicted"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCSBot", "m_targetSpotPredicted", value); }
+	}
 
 	// m_aimError
 	[SchemaMember("CCSBot", "m_aimError")]
-	public QAngle AimError => Schema.GetDeclaredClass<QAngle>(this.Handle, "CCSBot", "m_aimError");
+	public QAngle AimError
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CCSBot", "m_aimError"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CCSBot", "m_aimError", value); }
+	}
 
 	// m_aimGoal
 	[SchemaMember("CCSBot", "m_aimGoal")]
-	public QAngle AimGoal => Schema.GetDeclaredClass<QAngle>(this.Handle, "CCSBot", "m_aimGoal");
+	public QAngle AimGoal
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CCSBot", "m_aimGoal"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CCSBot", "m_aimGoal", value); }
+	}
 
 	// m_targetSpotTime
 	[SchemaMember("CCSBot", "m_targetSpotTime")]
-	public ref float TargetSpotTime => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_targetSpotTime");
+	public float TargetSpotTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_targetSpotTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_targetSpotTime", value); }
+	}
 
 	// m_aimFocus
 	[SchemaMember("CCSBot", "m_aimFocus")]
-	public ref float AimFocus => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_aimFocus");
+	public float AimFocus
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_aimFocus"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_aimFocus", value); }
+	}
 
 	// m_aimFocusInterval
 	[SchemaMember("CCSBot", "m_aimFocusInterval")]
-	public ref float AimFocusInterval => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_aimFocusInterval");
+	public float AimFocusInterval
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_aimFocusInterval"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_aimFocusInterval", value); }
+	}
 
 	// m_aimFocusNextUpdate
 	[SchemaMember("CCSBot", "m_aimFocusNextUpdate")]
-	public ref float AimFocusNextUpdate => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_aimFocusNextUpdate");
+	public float AimFocusNextUpdate
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_aimFocusNextUpdate"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_aimFocusNextUpdate", value); }
+	}
 
 	// m_ignoreEnemiesTimer
 	[SchemaMember("CCSBot", "m_ignoreEnemiesTimer")]
@@ -396,43 +649,83 @@ public partial class CCSBot : CBot
 
 	// m_isEnemyVisible
 	[SchemaMember("CCSBot", "m_isEnemyVisible")]
-	public ref bool IsEnemyVisible => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_isEnemyVisible");
+	public bool IsEnemyVisible
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_isEnemyVisible"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_isEnemyVisible", value); }
+	}
 
 	// m_visibleEnemyParts
 	[SchemaMember("CCSBot", "m_visibleEnemyParts")]
-	public ref byte VisibleEnemyParts => ref Schema.GetRef<byte>(this.Handle, "CCSBot", "m_visibleEnemyParts");
+	public byte VisibleEnemyParts
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CCSBot", "m_visibleEnemyParts"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CCSBot", "m_visibleEnemyParts", value); }
+	}
 
 	// m_lastEnemyPosition
 	[SchemaMember("CCSBot", "m_lastEnemyPosition")]
-	public Vector LastEnemyPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSBot", "m_lastEnemyPosition");
+	public Vector3 LastEnemyPosition
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSBot", "m_lastEnemyPosition"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCSBot", "m_lastEnemyPosition", value); }
+	}
 
 	// m_lastSawEnemyTimestamp
 	[SchemaMember("CCSBot", "m_lastSawEnemyTimestamp")]
-	public ref float LastSawEnemyTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_lastSawEnemyTimestamp");
+	public float LastSawEnemyTimestamp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_lastSawEnemyTimestamp"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_lastSawEnemyTimestamp", value); }
+	}
 
 	// m_firstSawEnemyTimestamp
 	[SchemaMember("CCSBot", "m_firstSawEnemyTimestamp")]
-	public ref float FirstSawEnemyTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_firstSawEnemyTimestamp");
+	public float FirstSawEnemyTimestamp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_firstSawEnemyTimestamp"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_firstSawEnemyTimestamp", value); }
+	}
 
 	// m_currentEnemyAcquireTimestamp
 	[SchemaMember("CCSBot", "m_currentEnemyAcquireTimestamp")]
-	public ref float CurrentEnemyAcquireTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_currentEnemyAcquireTimestamp");
+	public float CurrentEnemyAcquireTimestamp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_currentEnemyAcquireTimestamp"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_currentEnemyAcquireTimestamp", value); }
+	}
 
 	// m_enemyDeathTimestamp
 	[SchemaMember("CCSBot", "m_enemyDeathTimestamp")]
-	public ref float EnemyDeathTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_enemyDeathTimestamp");
+	public float EnemyDeathTimestamp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_enemyDeathTimestamp"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_enemyDeathTimestamp", value); }
+	}
 
 	// m_friendDeathTimestamp
 	[SchemaMember("CCSBot", "m_friendDeathTimestamp")]
-	public ref float FriendDeathTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_friendDeathTimestamp");
+	public float FriendDeathTimestamp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_friendDeathTimestamp"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_friendDeathTimestamp", value); }
+	}
 
 	// m_isLastEnemyDead
 	[SchemaMember("CCSBot", "m_isLastEnemyDead")]
-	public ref bool IsLastEnemyDead => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_isLastEnemyDead");
+	public bool IsLastEnemyDead
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_isLastEnemyDead"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_isLastEnemyDead", value); }
+	}
 
 	// m_nearbyEnemyCount
 	[SchemaMember("CCSBot", "m_nearbyEnemyCount")]
-	public ref Int32 NearbyEnemyCount => ref Schema.GetRef<Int32>(this.Handle, "CCSBot", "m_nearbyEnemyCount");
+	public Int32 NearbyEnemyCount
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSBot", "m_nearbyEnemyCount"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSBot", "m_nearbyEnemyCount", value); }
+	}
 
 	// m_bomber
 	[SchemaMember("CCSBot", "m_bomber")]
@@ -440,7 +733,11 @@ public partial class CCSBot : CBot
 
 	// m_nearbyFriendCount
 	[SchemaMember("CCSBot", "m_nearbyFriendCount")]
-	public ref Int32 NearbyFriendCount => ref Schema.GetRef<Int32>(this.Handle, "CCSBot", "m_nearbyFriendCount");
+	public Int32 NearbyFriendCount
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSBot", "m_nearbyFriendCount"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSBot", "m_nearbyFriendCount", value); }
+	}
 
 	// m_closestVisibleFriend
 	[SchemaMember("CCSBot", "m_closestVisibleFriend")]
@@ -460,7 +757,11 @@ public partial class CCSBot : CBot
 
 	// m_attackedTimestamp
 	[SchemaMember("CCSBot", "m_attackedTimestamp")]
-	public ref float AttackedTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_attackedTimestamp");
+	public float AttackedTimestamp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_attackedTimestamp"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_attackedTimestamp", value); }
+	}
 
 	// m_burnedByFlamesTimer
 	[SchemaMember("CCSBot", "m_burnedByFlamesTimer")]
@@ -468,15 +769,27 @@ public partial class CCSBot : CBot
 
 	// m_lastVictimID
 	[SchemaMember("CCSBot", "m_lastVictimID")]
-	public ref Int32 LastVictimID => ref Schema.GetRef<Int32>(this.Handle, "CCSBot", "m_lastVictimID");
+	public Int32 LastVictimID
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSBot", "m_lastVictimID"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSBot", "m_lastVictimID", value); }
+	}
 
 	// m_isAimingAtEnemy
 	[SchemaMember("CCSBot", "m_isAimingAtEnemy")]
-	public ref bool IsAimingAtEnemy => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_isAimingAtEnemy");
+	public bool IsAimingAtEnemy
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_isAimingAtEnemy"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_isAimingAtEnemy", value); }
+	}
 
 	// m_isRapidFiring
 	[SchemaMember("CCSBot", "m_isRapidFiring")]
-	public ref bool IsRapidFiring => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_isRapidFiring");
+	public bool IsRapidFiring
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_isRapidFiring"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_isRapidFiring", value); }
+	}
 
 	// m_equipTimer
 	[SchemaMember("CCSBot", "m_equipTimer")]
@@ -488,7 +801,11 @@ public partial class CCSBot : CBot
 
 	// m_fireWeaponTimestamp
 	[SchemaMember("CCSBot", "m_fireWeaponTimestamp")]
-	public ref float FireWeaponTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_fireWeaponTimestamp");
+	public float FireWeaponTimestamp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_fireWeaponTimestamp"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_fireWeaponTimestamp", value); }
+	}
 
 	// m_lookForWeaponsOnGroundTimer
 	[SchemaMember("CCSBot", "m_lookForWeaponsOnGroundTimer")]
@@ -496,11 +813,19 @@ public partial class CCSBot : CBot
 
 	// m_bIsSleeping
 	[SchemaMember("CCSBot", "m_bIsSleeping")]
-	public ref bool IsSleeping => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_bIsSleeping");
+	public bool IsSleeping
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_bIsSleeping"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_bIsSleeping", value); }
+	}
 
 	// m_isEnemySniperVisible
 	[SchemaMember("CCSBot", "m_isEnemySniperVisible")]
-	public ref bool IsEnemySniperVisible => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_isEnemySniperVisible");
+	public bool IsEnemySniperVisible
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_isEnemySniperVisible"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_isEnemySniperVisible", value); }
+	}
 
 	// m_sawEnemySniperTimer
 	[SchemaMember("CCSBot", "m_sawEnemySniperTimer")]
@@ -508,27 +833,51 @@ public partial class CCSBot : CBot
 
 	// m_enemyQueueIndex
 	[SchemaMember("CCSBot", "m_enemyQueueIndex")]
-	public ref byte EnemyQueueIndex => ref Schema.GetRef<byte>(this.Handle, "CCSBot", "m_enemyQueueIndex");
+	public byte EnemyQueueIndex
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CCSBot", "m_enemyQueueIndex"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CCSBot", "m_enemyQueueIndex", value); }
+	}
 
 	// m_enemyQueueCount
 	[SchemaMember("CCSBot", "m_enemyQueueCount")]
-	public ref byte EnemyQueueCount => ref Schema.GetRef<byte>(this.Handle, "CCSBot", "m_enemyQueueCount");
+	public byte EnemyQueueCount
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CCSBot", "m_enemyQueueCount"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CCSBot", "m_enemyQueueCount", value); }
+	}
 
 	// m_enemyQueueAttendIndex
 	[SchemaMember("CCSBot", "m_enemyQueueAttendIndex")]
-	public ref byte EnemyQueueAttendIndex => ref Schema.GetRef<byte>(this.Handle, "CCSBot", "m_enemyQueueAttendIndex");
+	public byte EnemyQueueAttendIndex
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CCSBot", "m_enemyQueueAttendIndex"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CCSBot", "m_enemyQueueAttendIndex", value); }
+	}
 
 	// m_isStuck
 	[SchemaMember("CCSBot", "m_isStuck")]
-	public ref bool IsStuck => ref Schema.GetRef<bool>(this.Handle, "CCSBot", "m_isStuck");
+	public bool IsStuck
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSBot", "m_isStuck"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSBot", "m_isStuck", value); }
+	}
 
 	// m_stuckTimestamp
 	[SchemaMember("CCSBot", "m_stuckTimestamp")]
-	public ref float StuckTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_stuckTimestamp");
+	public float StuckTimestamp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_stuckTimestamp"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_stuckTimestamp", value); }
+	}
 
 	// m_stuckSpot
 	[SchemaMember("CCSBot", "m_stuckSpot")]
-	public Vector StuckSpot => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSBot", "m_stuckSpot");
+	public Vector3 StuckSpot
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSBot", "m_stuckSpot"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCSBot", "m_stuckSpot", value); }
+	}
 
 	// m_wiggleTimer
 	[SchemaMember("CCSBot", "m_wiggleTimer")]
@@ -540,7 +889,11 @@ public partial class CCSBot : CBot
 
 	// m_nextCleanupCheckTimestamp
 	[SchemaMember("CCSBot", "m_nextCleanupCheckTimestamp")]
-	public ref float NextCleanupCheckTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_nextCleanupCheckTimestamp");
+	public float NextCleanupCheckTimestamp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_nextCleanupCheckTimestamp"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_nextCleanupCheckTimestamp", value); }
+	}
 
 	// m_avgVel
 	[SchemaMember("CCSBot", "m_avgVel")]
@@ -548,23 +901,43 @@ public partial class CCSBot : CBot
 
 	// m_avgVelIndex
 	[SchemaMember("CCSBot", "m_avgVelIndex")]
-	public ref Int32 AvgVelIndex => ref Schema.GetRef<Int32>(this.Handle, "CCSBot", "m_avgVelIndex");
+	public Int32 AvgVelIndex
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSBot", "m_avgVelIndex"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSBot", "m_avgVelIndex", value); }
+	}
 
 	// m_avgVelCount
 	[SchemaMember("CCSBot", "m_avgVelCount")]
-	public ref Int32 AvgVelCount => ref Schema.GetRef<Int32>(this.Handle, "CCSBot", "m_avgVelCount");
+	public Int32 AvgVelCount
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSBot", "m_avgVelCount"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSBot", "m_avgVelCount", value); }
+	}
 
 	// m_lastOrigin
 	[SchemaMember("CCSBot", "m_lastOrigin")]
-	public Vector LastOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSBot", "m_lastOrigin");
+	public Vector3 LastOrigin
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSBot", "m_lastOrigin"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCSBot", "m_lastOrigin", value); }
+	}
 
 	// m_lastRadioRecievedTimestamp
 	[SchemaMember("CCSBot", "m_lastRadioRecievedTimestamp")]
-	public ref float LastRadioRecievedTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_lastRadioRecievedTimestamp");
+	public float LastRadioRecievedTimestamp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_lastRadioRecievedTimestamp"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_lastRadioRecievedTimestamp", value); }
+	}
 
 	// m_lastRadioSentTimestamp
 	[SchemaMember("CCSBot", "m_lastRadioSentTimestamp")]
-	public ref float LastRadioSentTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_lastRadioSentTimestamp");
+	public float LastRadioSentTimestamp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_lastRadioSentTimestamp"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_lastRadioSentTimestamp", value); }
+	}
 
 	// m_radioSubject
 	[SchemaMember("CCSBot", "m_radioSubject")]
@@ -572,14 +945,26 @@ public partial class CCSBot : CBot
 
 	// m_radioPosition
 	[SchemaMember("CCSBot", "m_radioPosition")]
-	public Vector RadioPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSBot", "m_radioPosition");
+	public Vector3 RadioPosition
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSBot", "m_radioPosition"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCSBot", "m_radioPosition", value); }
+	}
 
 	// m_voiceEndTimestamp
 	[SchemaMember("CCSBot", "m_voiceEndTimestamp")]
-	public ref float VoiceEndTimestamp => ref Schema.GetRef<float>(this.Handle, "CCSBot", "m_voiceEndTimestamp");
+	public float VoiceEndTimestamp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSBot", "m_voiceEndTimestamp"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSBot", "m_voiceEndTimestamp", value); }
+	}
 
 	// m_lastValidReactionQueueFrame
 	[SchemaMember("CCSBot", "m_lastValidReactionQueueFrame")]
-	public ref Int32 LastValidReactionQueueFrame => ref Schema.GetRef<Int32>(this.Handle, "CCSBot", "m_lastValidReactionQueueFrame");
+	public Int32 LastValidReactionQueueFrame
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSBot", "m_lastValidReactionQueueFrame"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSBot", "m_lastValidReactionQueueFrame", value); }
+	}
 
 }

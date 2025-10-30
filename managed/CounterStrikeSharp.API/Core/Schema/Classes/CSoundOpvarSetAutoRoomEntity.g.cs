@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,14 +29,26 @@ public partial class CSoundOpvarSetAutoRoomEntity : CSoundOpvarSetPointEntity
 
 	// m_flSize
 	[SchemaMember("CSoundOpvarSetAutoRoomEntity", "m_flSize")]
-	public ref float Size => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetAutoRoomEntity", "m_flSize");
+	public float Size
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetAutoRoomEntity", "m_flSize"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetAutoRoomEntity", "m_flSize", value); }
+	}
 
 	// m_flHeightTolerance
 	[SchemaMember("CSoundOpvarSetAutoRoomEntity", "m_flHeightTolerance")]
-	public ref float HeightTolerance => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetAutoRoomEntity", "m_flHeightTolerance");
+	public float HeightTolerance
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetAutoRoomEntity", "m_flHeightTolerance"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetAutoRoomEntity", "m_flHeightTolerance", value); }
+	}
 
 	// m_flSizeSqr
 	[SchemaMember("CSoundOpvarSetAutoRoomEntity", "m_flSizeSqr")]
-	public ref float SizeSqr => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetAutoRoomEntity", "m_flSizeSqr");
+	public float SizeSqr
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetAutoRoomEntity", "m_flSizeSqr"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetAutoRoomEntity", "m_flSizeSqr", value); }
+	}
 
 }

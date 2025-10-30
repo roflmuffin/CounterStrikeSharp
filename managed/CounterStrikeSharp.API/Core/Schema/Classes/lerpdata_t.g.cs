@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,19 +25,35 @@ public partial class lerpdata_t : NativeObject
 
 	// m_MoveType
 	[SchemaMember("lerpdata_t", "m_MoveType")]
-	public ref MoveType_t MoveType => ref Schema.GetRef<MoveType_t>(this.Handle, "lerpdata_t", "m_MoveType");
+	public MoveType_t MoveType
+	{
+		get { return Schema.GetValueType<MoveType_t>(this.Handle, "lerpdata_t", "m_MoveType"); }
+		set { Schema.SetValueType<MoveType_t>(this.Handle, "lerpdata_t", "m_MoveType", value); }
+	}
 
 	// m_flStartTime
 	[SchemaMember("lerpdata_t", "m_flStartTime")]
-	public ref float StartTime => ref Schema.GetRef<float>(this.Handle, "lerpdata_t", "m_flStartTime");
+	public float StartTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "lerpdata_t", "m_flStartTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "lerpdata_t", "m_flStartTime", value); }
+	}
 
 	// m_vecStartOrigin
 	[SchemaMember("lerpdata_t", "m_vecStartOrigin")]
-	public Vector StartOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "lerpdata_t", "m_vecStartOrigin");
+	public Vector3 StartOrigin
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "lerpdata_t", "m_vecStartOrigin"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "lerpdata_t", "m_vecStartOrigin", value); }
+	}
 
 	// m_qStartRot
 	[SchemaMember("lerpdata_t", "m_qStartRot")]
-	public Quaternion StartRot => Schema.GetDeclaredClass<Quaternion>(this.Handle, "lerpdata_t", "m_qStartRot");
+	public Quaternion StartRot
+	{
+		get { return Schema.GetValueType<Quaternion>(this.Handle, "lerpdata_t", "m_qStartRot"); }
+		set { Schema.SetValueType<Quaternion>(this.Handle, "lerpdata_t", "m_qStartRot", value); }
+	}
 
 	// m_nFXIndex
 	[SchemaMember("lerpdata_t", "m_nFXIndex")]

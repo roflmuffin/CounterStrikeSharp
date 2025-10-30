@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -40,43 +41,83 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_flBrightness
 	[SchemaMember("CLightComponent", "m_flBrightness")]
-	public ref float Brightness => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flBrightness");
+	public float Brightness
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flBrightness"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flBrightness", value); }
+	}
 
 	// m_flBrightnessScale
 	[SchemaMember("CLightComponent", "m_flBrightnessScale")]
-	public ref float BrightnessScale => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flBrightnessScale");
+	public float BrightnessScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flBrightnessScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flBrightnessScale", value); }
+	}
 
 	// m_flBrightnessMult
 	[SchemaMember("CLightComponent", "m_flBrightnessMult")]
-	public ref float BrightnessMult => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flBrightnessMult");
+	public float BrightnessMult
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flBrightnessMult"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flBrightnessMult", value); }
+	}
 
 	// m_flRange
 	[SchemaMember("CLightComponent", "m_flRange")]
-	public ref float Range => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flRange");
+	public float Range
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flRange"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flRange", value); }
+	}
 
 	// m_flFalloff
 	[SchemaMember("CLightComponent", "m_flFalloff")]
-	public ref float Falloff => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flFalloff");
+	public float Falloff
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flFalloff"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flFalloff", value); }
+	}
 
 	// m_flAttenuation0
 	[SchemaMember("CLightComponent", "m_flAttenuation0")]
-	public ref float Attenuation0 => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flAttenuation0");
+	public float Attenuation0
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flAttenuation0"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flAttenuation0", value); }
+	}
 
 	// m_flAttenuation1
 	[SchemaMember("CLightComponent", "m_flAttenuation1")]
-	public ref float Attenuation1 => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flAttenuation1");
+	public float Attenuation1
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flAttenuation1"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flAttenuation1", value); }
+	}
 
 	// m_flAttenuation2
 	[SchemaMember("CLightComponent", "m_flAttenuation2")]
-	public ref float Attenuation2 => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flAttenuation2");
+	public float Attenuation2
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flAttenuation2"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flAttenuation2", value); }
+	}
 
 	// m_flTheta
 	[SchemaMember("CLightComponent", "m_flTheta")]
-	public ref float Theta => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flTheta");
+	public float Theta
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flTheta"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flTheta", value); }
+	}
 
 	// m_flPhi
 	[SchemaMember("CLightComponent", "m_flPhi")]
-	public ref float Phi => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flPhi");
+	public float Phi
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flPhi"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flPhi", value); }
+	}
 
 	// m_hLightCookie
 	[SchemaMember("CLightComponent", "m_hLightCookie")]
@@ -84,43 +125,83 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_nCascades
 	[SchemaMember("CLightComponent", "m_nCascades")]
-	public ref Int32 Cascades => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nCascades");
+	public Int32 Cascades
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nCascades"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nCascades", value); }
+	}
 
 	// m_nCastShadows
 	[SchemaMember("CLightComponent", "m_nCastShadows")]
-	public ref Int32 CastShadows => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nCastShadows");
+	public Int32 CastShadows
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nCastShadows"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nCastShadows", value); }
+	}
 
 	// m_nShadowWidth
 	[SchemaMember("CLightComponent", "m_nShadowWidth")]
-	public ref Int32 ShadowWidth => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nShadowWidth");
+	public Int32 ShadowWidth
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nShadowWidth"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nShadowWidth", value); }
+	}
 
 	// m_nShadowHeight
 	[SchemaMember("CLightComponent", "m_nShadowHeight")]
-	public ref Int32 ShadowHeight => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nShadowHeight");
+	public Int32 ShadowHeight
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nShadowHeight"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nShadowHeight", value); }
+	}
 
 	// m_bRenderDiffuse
 	[SchemaMember("CLightComponent", "m_bRenderDiffuse")]
-	public ref bool RenderDiffuse => ref Schema.GetRef<bool>(this.Handle, "CLightComponent", "m_bRenderDiffuse");
+	public bool RenderDiffuse
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CLightComponent", "m_bRenderDiffuse"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CLightComponent", "m_bRenderDiffuse", value); }
+	}
 
 	// m_nRenderSpecular
 	[SchemaMember("CLightComponent", "m_nRenderSpecular")]
-	public ref Int32 RenderSpecular => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nRenderSpecular");
+	public Int32 RenderSpecular
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nRenderSpecular"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nRenderSpecular", value); }
+	}
 
 	// m_bRenderTransmissive
 	[SchemaMember("CLightComponent", "m_bRenderTransmissive")]
-	public ref bool RenderTransmissive => ref Schema.GetRef<bool>(this.Handle, "CLightComponent", "m_bRenderTransmissive");
+	public bool RenderTransmissive
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CLightComponent", "m_bRenderTransmissive"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CLightComponent", "m_bRenderTransmissive", value); }
+	}
 
 	// m_flOrthoLightWidth
 	[SchemaMember("CLightComponent", "m_flOrthoLightWidth")]
-	public ref float OrthoLightWidth => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flOrthoLightWidth");
+	public float OrthoLightWidth
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flOrthoLightWidth"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flOrthoLightWidth", value); }
+	}
 
 	// m_flOrthoLightHeight
 	[SchemaMember("CLightComponent", "m_flOrthoLightHeight")]
-	public ref float OrthoLightHeight => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flOrthoLightHeight");
+	public float OrthoLightHeight
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flOrthoLightHeight"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flOrthoLightHeight", value); }
+	}
 
 	// m_nStyle
 	[SchemaMember("CLightComponent", "m_nStyle")]
-	public ref Int32 Style => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nStyle");
+	public Int32 Style
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nStyle"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nStyle", value); }
+	}
 
 	// m_Pattern
 	[SchemaMember("CLightComponent", "m_Pattern")]
@@ -132,147 +213,291 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_nCascadeRenderStaticObjects
 	[SchemaMember("CLightComponent", "m_nCascadeRenderStaticObjects")]
-	public ref Int32 CascadeRenderStaticObjects => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nCascadeRenderStaticObjects");
+	public Int32 CascadeRenderStaticObjects
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nCascadeRenderStaticObjects"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nCascadeRenderStaticObjects", value); }
+	}
 
 	// m_flShadowCascadeCrossFade
 	[SchemaMember("CLightComponent", "m_flShadowCascadeCrossFade")]
-	public ref float ShadowCascadeCrossFade => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flShadowCascadeCrossFade");
+	public float ShadowCascadeCrossFade
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flShadowCascadeCrossFade"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flShadowCascadeCrossFade", value); }
+	}
 
 	// m_flShadowCascadeDistanceFade
 	[SchemaMember("CLightComponent", "m_flShadowCascadeDistanceFade")]
-	public ref float ShadowCascadeDistanceFade => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flShadowCascadeDistanceFade");
+	public float ShadowCascadeDistanceFade
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flShadowCascadeDistanceFade"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flShadowCascadeDistanceFade", value); }
+	}
 
 	// m_flShadowCascadeDistance0
 	[SchemaMember("CLightComponent", "m_flShadowCascadeDistance0")]
-	public ref float ShadowCascadeDistance0 => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flShadowCascadeDistance0");
+	public float ShadowCascadeDistance0
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flShadowCascadeDistance0"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flShadowCascadeDistance0", value); }
+	}
 
 	// m_flShadowCascadeDistance1
 	[SchemaMember("CLightComponent", "m_flShadowCascadeDistance1")]
-	public ref float ShadowCascadeDistance1 => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flShadowCascadeDistance1");
+	public float ShadowCascadeDistance1
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flShadowCascadeDistance1"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flShadowCascadeDistance1", value); }
+	}
 
 	// m_flShadowCascadeDistance2
 	[SchemaMember("CLightComponent", "m_flShadowCascadeDistance2")]
-	public ref float ShadowCascadeDistance2 => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flShadowCascadeDistance2");
+	public float ShadowCascadeDistance2
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flShadowCascadeDistance2"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flShadowCascadeDistance2", value); }
+	}
 
 	// m_flShadowCascadeDistance3
 	[SchemaMember("CLightComponent", "m_flShadowCascadeDistance3")]
-	public ref float ShadowCascadeDistance3 => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flShadowCascadeDistance3");
+	public float ShadowCascadeDistance3
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flShadowCascadeDistance3"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flShadowCascadeDistance3", value); }
+	}
 
 	// m_nShadowCascadeResolution0
 	[SchemaMember("CLightComponent", "m_nShadowCascadeResolution0")]
-	public ref Int32 ShadowCascadeResolution0 => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nShadowCascadeResolution0");
+	public Int32 ShadowCascadeResolution0
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nShadowCascadeResolution0"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nShadowCascadeResolution0", value); }
+	}
 
 	// m_nShadowCascadeResolution1
 	[SchemaMember("CLightComponent", "m_nShadowCascadeResolution1")]
-	public ref Int32 ShadowCascadeResolution1 => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nShadowCascadeResolution1");
+	public Int32 ShadowCascadeResolution1
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nShadowCascadeResolution1"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nShadowCascadeResolution1", value); }
+	}
 
 	// m_nShadowCascadeResolution2
 	[SchemaMember("CLightComponent", "m_nShadowCascadeResolution2")]
-	public ref Int32 ShadowCascadeResolution2 => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nShadowCascadeResolution2");
+	public Int32 ShadowCascadeResolution2
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nShadowCascadeResolution2"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nShadowCascadeResolution2", value); }
+	}
 
 	// m_nShadowCascadeResolution3
 	[SchemaMember("CLightComponent", "m_nShadowCascadeResolution3")]
-	public ref Int32 ShadowCascadeResolution3 => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nShadowCascadeResolution3");
+	public Int32 ShadowCascadeResolution3
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nShadowCascadeResolution3"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nShadowCascadeResolution3", value); }
+	}
 
 	// m_bUsesBakedShadowing
 	[SchemaMember("CLightComponent", "m_bUsesBakedShadowing")]
-	public ref bool UsesBakedShadowing => ref Schema.GetRef<bool>(this.Handle, "CLightComponent", "m_bUsesBakedShadowing");
+	public bool UsesBakedShadowing
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CLightComponent", "m_bUsesBakedShadowing"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CLightComponent", "m_bUsesBakedShadowing", value); }
+	}
 
 	// m_nShadowPriority
 	[SchemaMember("CLightComponent", "m_nShadowPriority")]
-	public ref Int32 ShadowPriority => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nShadowPriority");
+	public Int32 ShadowPriority
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nShadowPriority"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nShadowPriority", value); }
+	}
 
 	// m_nBakedShadowIndex
 	[SchemaMember("CLightComponent", "m_nBakedShadowIndex")]
-	public ref Int32 BakedShadowIndex => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nBakedShadowIndex");
+	public Int32 BakedShadowIndex
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nBakedShadowIndex"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nBakedShadowIndex", value); }
+	}
 
 	// m_nLightPathUniqueId
 	[SchemaMember("CLightComponent", "m_nLightPathUniqueId")]
-	public ref Int32 LightPathUniqueId => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nLightPathUniqueId");
+	public Int32 LightPathUniqueId
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nLightPathUniqueId"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nLightPathUniqueId", value); }
+	}
 
 	// m_nLightMapUniqueId
 	[SchemaMember("CLightComponent", "m_nLightMapUniqueId")]
-	public ref Int32 LightMapUniqueId => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nLightMapUniqueId");
+	public Int32 LightMapUniqueId
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nLightMapUniqueId"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nLightMapUniqueId", value); }
+	}
 
 	// m_bRenderToCubemaps
 	[SchemaMember("CLightComponent", "m_bRenderToCubemaps")]
-	public ref bool RenderToCubemaps => ref Schema.GetRef<bool>(this.Handle, "CLightComponent", "m_bRenderToCubemaps");
+	public bool RenderToCubemaps
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CLightComponent", "m_bRenderToCubemaps"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CLightComponent", "m_bRenderToCubemaps", value); }
+	}
 
 	// m_bAllowSSTGeneration
 	[SchemaMember("CLightComponent", "m_bAllowSSTGeneration")]
-	public ref bool AllowSSTGeneration => ref Schema.GetRef<bool>(this.Handle, "CLightComponent", "m_bAllowSSTGeneration");
+	public bool AllowSSTGeneration
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CLightComponent", "m_bAllowSSTGeneration"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CLightComponent", "m_bAllowSSTGeneration", value); }
+	}
 
 	// m_nDirectLight
 	[SchemaMember("CLightComponent", "m_nDirectLight")]
-	public ref Int32 DirectLight => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nDirectLight");
+	public Int32 DirectLight
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nDirectLight"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nDirectLight", value); }
+	}
 
 	// m_nIndirectLight
 	[SchemaMember("CLightComponent", "m_nIndirectLight")]
-	public ref Int32 IndirectLight => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nIndirectLight");
+	public Int32 IndirectLight
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nIndirectLight"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nIndirectLight", value); }
+	}
 
 	// m_flFadeMinDist
 	[SchemaMember("CLightComponent", "m_flFadeMinDist")]
-	public ref float FadeMinDist => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flFadeMinDist");
+	public float FadeMinDist
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flFadeMinDist"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flFadeMinDist", value); }
+	}
 
 	// m_flFadeMaxDist
 	[SchemaMember("CLightComponent", "m_flFadeMaxDist")]
-	public ref float FadeMaxDist => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flFadeMaxDist");
+	public float FadeMaxDist
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flFadeMaxDist"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flFadeMaxDist", value); }
+	}
 
 	// m_flShadowFadeMinDist
 	[SchemaMember("CLightComponent", "m_flShadowFadeMinDist")]
-	public ref float ShadowFadeMinDist => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flShadowFadeMinDist");
+	public float ShadowFadeMinDist
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flShadowFadeMinDist"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flShadowFadeMinDist", value); }
+	}
 
 	// m_flShadowFadeMaxDist
 	[SchemaMember("CLightComponent", "m_flShadowFadeMaxDist")]
-	public ref float ShadowFadeMaxDist => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flShadowFadeMaxDist");
+	public float ShadowFadeMaxDist
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flShadowFadeMaxDist"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flShadowFadeMaxDist", value); }
+	}
 
 	// m_bEnabled
 	[SchemaMember("CLightComponent", "m_bEnabled")]
-	public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CLightComponent", "m_bEnabled");
+	public bool Enabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CLightComponent", "m_bEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CLightComponent", "m_bEnabled", value); }
+	}
 
 	// m_bFlicker
 	[SchemaMember("CLightComponent", "m_bFlicker")]
-	public ref bool Flicker => ref Schema.GetRef<bool>(this.Handle, "CLightComponent", "m_bFlicker");
+	public bool Flicker
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CLightComponent", "m_bFlicker"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CLightComponent", "m_bFlicker", value); }
+	}
 
 	// m_bPrecomputedFieldsValid
 	[SchemaMember("CLightComponent", "m_bPrecomputedFieldsValid")]
-	public ref bool PrecomputedFieldsValid => ref Schema.GetRef<bool>(this.Handle, "CLightComponent", "m_bPrecomputedFieldsValid");
+	public bool PrecomputedFieldsValid
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CLightComponent", "m_bPrecomputedFieldsValid"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CLightComponent", "m_bPrecomputedFieldsValid", value); }
+	}
 
 	// m_vPrecomputedBoundsMins
 	[SchemaMember("CLightComponent", "m_vPrecomputedBoundsMins")]
-	public Vector PrecomputedBoundsMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CLightComponent", "m_vPrecomputedBoundsMins");
+	public Vector3 PrecomputedBoundsMins
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CLightComponent", "m_vPrecomputedBoundsMins"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CLightComponent", "m_vPrecomputedBoundsMins", value); }
+	}
 
 	// m_vPrecomputedBoundsMaxs
 	[SchemaMember("CLightComponent", "m_vPrecomputedBoundsMaxs")]
-	public Vector PrecomputedBoundsMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CLightComponent", "m_vPrecomputedBoundsMaxs");
+	public Vector3 PrecomputedBoundsMaxs
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CLightComponent", "m_vPrecomputedBoundsMaxs"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CLightComponent", "m_vPrecomputedBoundsMaxs", value); }
+	}
 
 	// m_vPrecomputedOBBOrigin
 	[SchemaMember("CLightComponent", "m_vPrecomputedOBBOrigin")]
-	public Vector PrecomputedOBBOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CLightComponent", "m_vPrecomputedOBBOrigin");
+	public Vector3 PrecomputedOBBOrigin
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CLightComponent", "m_vPrecomputedOBBOrigin"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CLightComponent", "m_vPrecomputedOBBOrigin", value); }
+	}
 
 	// m_vPrecomputedOBBAngles
 	[SchemaMember("CLightComponent", "m_vPrecomputedOBBAngles")]
-	public QAngle PrecomputedOBBAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CLightComponent", "m_vPrecomputedOBBAngles");
+	public QAngle PrecomputedOBBAngles
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CLightComponent", "m_vPrecomputedOBBAngles"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CLightComponent", "m_vPrecomputedOBBAngles", value); }
+	}
 
 	// m_vPrecomputedOBBExtent
 	[SchemaMember("CLightComponent", "m_vPrecomputedOBBExtent")]
-	public Vector PrecomputedOBBExtent => Schema.GetDeclaredClass<Vector>(this.Handle, "CLightComponent", "m_vPrecomputedOBBExtent");
+	public Vector3 PrecomputedOBBExtent
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CLightComponent", "m_vPrecomputedOBBExtent"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CLightComponent", "m_vPrecomputedOBBExtent", value); }
+	}
 
 	// m_flPrecomputedMaxRange
 	[SchemaMember("CLightComponent", "m_flPrecomputedMaxRange")]
-	public ref float PrecomputedMaxRange => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flPrecomputedMaxRange");
+	public float PrecomputedMaxRange
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flPrecomputedMaxRange"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flPrecomputedMaxRange", value); }
+	}
 
 	// m_nFogLightingMode
 	[SchemaMember("CLightComponent", "m_nFogLightingMode")]
-	public ref Int32 FogLightingMode => ref Schema.GetRef<Int32>(this.Handle, "CLightComponent", "m_nFogLightingMode");
+	public Int32 FogLightingMode
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLightComponent", "m_nFogLightingMode"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLightComponent", "m_nFogLightingMode", value); }
+	}
 
 	// m_flFogContributionStength
 	[SchemaMember("CLightComponent", "m_flFogContributionStength")]
-	public ref float FogContributionStength => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flFogContributionStength");
+	public float FogContributionStength
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flFogContributionStength"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flFogContributionStength", value); }
+	}
 
 	// m_flNearClipPlane
 	[SchemaMember("CLightComponent", "m_flNearClipPlane")]
-	public ref float NearClipPlane => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flNearClipPlane");
+	public float NearClipPlane
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flNearClipPlane"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flNearClipPlane", value); }
+	}
 
 	// m_SkyColor
 	[SchemaMember("CLightComponent", "m_SkyColor")]
@@ -284,7 +509,11 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_flSkyIntensity
 	[SchemaMember("CLightComponent", "m_flSkyIntensity")]
-	public ref float SkyIntensity => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flSkyIntensity");
+	public float SkyIntensity
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flSkyIntensity"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flSkyIntensity", value); }
+	}
 
 	// m_SkyAmbientBounce
 	[SchemaMember("CLightComponent", "m_SkyAmbientBounce")]
@@ -296,26 +525,50 @@ public partial class CLightComponent : CEntityComponent
 
 	// m_bUseSecondaryColor
 	[SchemaMember("CLightComponent", "m_bUseSecondaryColor")]
-	public ref bool UseSecondaryColor => ref Schema.GetRef<bool>(this.Handle, "CLightComponent", "m_bUseSecondaryColor");
+	public bool UseSecondaryColor
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CLightComponent", "m_bUseSecondaryColor"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CLightComponent", "m_bUseSecondaryColor", value); }
+	}
 
 	// m_bMixedShadows
 	[SchemaMember("CLightComponent", "m_bMixedShadows")]
-	public ref bool MixedShadows => ref Schema.GetRef<bool>(this.Handle, "CLightComponent", "m_bMixedShadows");
+	public bool MixedShadows
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CLightComponent", "m_bMixedShadows"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CLightComponent", "m_bMixedShadows", value); }
+	}
 
 	// m_flLightStyleStartTime
 	[SchemaMember("CLightComponent", "m_flLightStyleStartTime")]
-	public ref float LightStyleStartTime => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flLightStyleStartTime");
+	public float LightStyleStartTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flLightStyleStartTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flLightStyleStartTime", value); }
+	}
 
 	// m_flCapsuleLength
 	[SchemaMember("CLightComponent", "m_flCapsuleLength")]
-	public ref float CapsuleLength => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flCapsuleLength");
+	public float CapsuleLength
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flCapsuleLength"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flCapsuleLength", value); }
+	}
 
 	// m_flMinRoughness
 	[SchemaMember("CLightComponent", "m_flMinRoughness")]
-	public ref float MinRoughness => ref Schema.GetRef<float>(this.Handle, "CLightComponent", "m_flMinRoughness");
+	public float MinRoughness
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLightComponent", "m_flMinRoughness"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLightComponent", "m_flMinRoughness", value); }
+	}
 
 	// m_bPvsModifyEntity
 	[SchemaMember("CLightComponent", "m_bPvsModifyEntity")]
-	public ref bool PvsModifyEntity => ref Schema.GetRef<bool>(this.Handle, "CLightComponent", "m_bPvsModifyEntity");
+	public bool PvsModifyEntity
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CLightComponent", "m_bPvsModifyEntity"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CLightComponent", "m_bPvsModifyEntity", value); }
+	}
 
 }

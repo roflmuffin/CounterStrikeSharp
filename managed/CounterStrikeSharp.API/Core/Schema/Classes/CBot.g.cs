@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,46 +29,90 @@ public partial class CBot : NativeObject
 
 	// m_bHasSpawned
 	[SchemaMember("CBot", "m_bHasSpawned")]
-	public ref bool HasSpawned => ref Schema.GetRef<bool>(this.Handle, "CBot", "m_bHasSpawned");
+	public bool HasSpawned
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBot", "m_bHasSpawned"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBot", "m_bHasSpawned", value); }
+	}
 
 	// m_id
 	[SchemaMember("CBot", "m_id")]
-	public ref UInt32 Id => ref Schema.GetRef<UInt32>(this.Handle, "CBot", "m_id");
+	public UInt32 Id
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CBot", "m_id"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CBot", "m_id", value); }
+	}
 
 	// m_isRunning
 	[SchemaMember("CBot", "m_isRunning")]
-	public ref bool IsRunning => ref Schema.GetRef<bool>(this.Handle, "CBot", "m_isRunning");
+	public bool IsRunning
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBot", "m_isRunning"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBot", "m_isRunning", value); }
+	}
 
 	// m_isCrouching
 	[SchemaMember("CBot", "m_isCrouching")]
-	public ref bool IsCrouching => ref Schema.GetRef<bool>(this.Handle, "CBot", "m_isCrouching");
+	public bool IsCrouching
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBot", "m_isCrouching"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBot", "m_isCrouching", value); }
+	}
 
 	// m_forwardSpeed
 	[SchemaMember("CBot", "m_forwardSpeed")]
-	public ref float ForwardSpeed => ref Schema.GetRef<float>(this.Handle, "CBot", "m_forwardSpeed");
+	public float ForwardSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBot", "m_forwardSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBot", "m_forwardSpeed", value); }
+	}
 
 	// m_leftSpeed
 	[SchemaMember("CBot", "m_leftSpeed")]
-	public ref float LeftSpeed => ref Schema.GetRef<float>(this.Handle, "CBot", "m_leftSpeed");
+	public float LeftSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBot", "m_leftSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBot", "m_leftSpeed", value); }
+	}
 
 	// m_verticalSpeed
 	[SchemaMember("CBot", "m_verticalSpeed")]
-	public ref float VerticalSpeed => ref Schema.GetRef<float>(this.Handle, "CBot", "m_verticalSpeed");
+	public float VerticalSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBot", "m_verticalSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBot", "m_verticalSpeed", value); }
+	}
 
 	// m_buttonFlags
 	[SchemaMember("CBot", "m_buttonFlags")]
-	public ref UInt64 ButtonFlags => ref Schema.GetRef<UInt64>(this.Handle, "CBot", "m_buttonFlags");
+	public UInt64 ButtonFlags
+	{
+		get { return Schema.GetValueType<UInt64>(this.Handle, "CBot", "m_buttonFlags"); }
+		set { Schema.SetValueType<UInt64>(this.Handle, "CBot", "m_buttonFlags", value); }
+	}
 
 	// m_jumpTimestamp
 	[SchemaMember("CBot", "m_jumpTimestamp")]
-	public ref float JumpTimestamp => ref Schema.GetRef<float>(this.Handle, "CBot", "m_jumpTimestamp");
+	public float JumpTimestamp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBot", "m_jumpTimestamp"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBot", "m_jumpTimestamp", value); }
+	}
 
 	// m_viewForward
 	[SchemaMember("CBot", "m_viewForward")]
-	public Vector ViewForward => Schema.GetDeclaredClass<Vector>(this.Handle, "CBot", "m_viewForward");
+	public Vector3 ViewForward
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBot", "m_viewForward"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBot", "m_viewForward", value); }
+	}
 
 	// m_postureStackIndex
 	[SchemaMember("CBot", "m_postureStackIndex")]
-	public ref Int32 PostureStackIndex => ref Schema.GetRef<Int32>(this.Handle, "CBot", "m_postureStackIndex");
+	public Int32 PostureStackIndex
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBot", "m_postureStackIndex"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBot", "m_postureStackIndex", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,10 +25,18 @@ public partial class thinkfunc_t : NativeObject
 
 	// m_nNextThinkTick
 	[SchemaMember("thinkfunc_t", "m_nNextThinkTick")]
-	public ref Int32 NextThinkTick => ref Schema.GetRef<Int32>(this.Handle, "thinkfunc_t", "m_nNextThinkTick");
+	public Int32 NextThinkTick
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "thinkfunc_t", "m_nNextThinkTick"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "thinkfunc_t", "m_nNextThinkTick", value); }
+	}
 
 	// m_nLastThinkTick
 	[SchemaMember("thinkfunc_t", "m_nLastThinkTick")]
-	public ref Int32 LastThinkTick => ref Schema.GetRef<Int32>(this.Handle, "thinkfunc_t", "m_nLastThinkTick");
+	public Int32 LastThinkTick
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "thinkfunc_t", "m_nLastThinkTick"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "thinkfunc_t", "m_nLastThinkTick", value); }
+	}
 
 }

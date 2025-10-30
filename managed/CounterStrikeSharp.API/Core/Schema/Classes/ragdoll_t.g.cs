@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -32,10 +33,18 @@ public partial class ragdoll_t : NativeObject
 
 	// allowStretch
 	[SchemaMember("ragdoll_t", "allowStretch")]
-	public ref bool AllowStretch => ref Schema.GetRef<bool>(this.Handle, "ragdoll_t", "allowStretch");
+	public bool AllowStretch
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "ragdoll_t", "allowStretch"); }
+		set { Schema.SetValueType<bool>(this.Handle, "ragdoll_t", "allowStretch", value); }
+	}
 
 	// unused
 	[SchemaMember("ragdoll_t", "unused")]
-	public ref bool Unused => ref Schema.GetRef<bool>(this.Handle, "ragdoll_t", "unused");
+	public bool Unused
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "ragdoll_t", "unused"); }
+		set { Schema.SetValueType<bool>(this.Handle, "ragdoll_t", "unused", value); }
+	}
 
 }

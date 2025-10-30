@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class CAI_ChangeHintGroup : CBaseEntity
 
 	// m_iSearchType
 	[SchemaMember("CAI_ChangeHintGroup", "m_iSearchType")]
-	public ref Int32 SearchType => ref Schema.GetRef<Int32>(this.Handle, "CAI_ChangeHintGroup", "m_iSearchType");
+	public Int32 SearchType
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CAI_ChangeHintGroup", "m_iSearchType"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CAI_ChangeHintGroup", "m_iSearchType", value); }
+	}
 
 	// m_strSearchName
 	[SchemaMember("CAI_ChangeHintGroup", "m_strSearchName")]
@@ -40,6 +45,10 @@ public partial class CAI_ChangeHintGroup : CBaseEntity
 
 	// m_flRadius
 	[SchemaMember("CAI_ChangeHintGroup", "m_flRadius")]
-	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CAI_ChangeHintGroup", "m_flRadius");
+	public float Radius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CAI_ChangeHintGroup", "m_flRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CAI_ChangeHintGroup", "m_flRadius", value); }
+	}
 
 }

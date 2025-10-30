@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,42 +21,82 @@ public partial class CEntityDissolve : CBaseModelEntity
 
 	// m_flFadeInStart
 	[SchemaMember("CEntityDissolve", "m_flFadeInStart")]
-	public ref float FadeInStart => ref Schema.GetRef<float>(this.Handle, "CEntityDissolve", "m_flFadeInStart");
+	public float FadeInStart
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEntityDissolve", "m_flFadeInStart"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEntityDissolve", "m_flFadeInStart", value); }
+	}
 
 	// m_flFadeInLength
 	[SchemaMember("CEntityDissolve", "m_flFadeInLength")]
-	public ref float FadeInLength => ref Schema.GetRef<float>(this.Handle, "CEntityDissolve", "m_flFadeInLength");
+	public float FadeInLength
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEntityDissolve", "m_flFadeInLength"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEntityDissolve", "m_flFadeInLength", value); }
+	}
 
 	// m_flFadeOutModelStart
 	[SchemaMember("CEntityDissolve", "m_flFadeOutModelStart")]
-	public ref float FadeOutModelStart => ref Schema.GetRef<float>(this.Handle, "CEntityDissolve", "m_flFadeOutModelStart");
+	public float FadeOutModelStart
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEntityDissolve", "m_flFadeOutModelStart"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEntityDissolve", "m_flFadeOutModelStart", value); }
+	}
 
 	// m_flFadeOutModelLength
 	[SchemaMember("CEntityDissolve", "m_flFadeOutModelLength")]
-	public ref float FadeOutModelLength => ref Schema.GetRef<float>(this.Handle, "CEntityDissolve", "m_flFadeOutModelLength");
+	public float FadeOutModelLength
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEntityDissolve", "m_flFadeOutModelLength"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEntityDissolve", "m_flFadeOutModelLength", value); }
+	}
 
 	// m_flFadeOutStart
 	[SchemaMember("CEntityDissolve", "m_flFadeOutStart")]
-	public ref float FadeOutStart => ref Schema.GetRef<float>(this.Handle, "CEntityDissolve", "m_flFadeOutStart");
+	public float FadeOutStart
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEntityDissolve", "m_flFadeOutStart"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEntityDissolve", "m_flFadeOutStart", value); }
+	}
 
 	// m_flFadeOutLength
 	[SchemaMember("CEntityDissolve", "m_flFadeOutLength")]
-	public ref float FadeOutLength => ref Schema.GetRef<float>(this.Handle, "CEntityDissolve", "m_flFadeOutLength");
+	public float FadeOutLength
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEntityDissolve", "m_flFadeOutLength"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEntityDissolve", "m_flFadeOutLength", value); }
+	}
 
 	// m_flStartTime
 	[SchemaMember("CEntityDissolve", "m_flStartTime")]
-	public ref float StartTime => ref Schema.GetRef<float>(this.Handle, "CEntityDissolve", "m_flStartTime");
+	public float StartTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEntityDissolve", "m_flStartTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEntityDissolve", "m_flStartTime", value); }
+	}
 
 	// m_nDissolveType
 	[SchemaMember("CEntityDissolve", "m_nDissolveType")]
-	public ref EntityDisolveType_t DissolveType => ref Schema.GetRef<EntityDisolveType_t>(this.Handle, "CEntityDissolve", "m_nDissolveType");
+	public EntityDisolveType_t DissolveType
+	{
+		get { return Schema.GetValueType<EntityDisolveType_t>(this.Handle, "CEntityDissolve", "m_nDissolveType"); }
+		set { Schema.SetValueType<EntityDisolveType_t>(this.Handle, "CEntityDissolve", "m_nDissolveType", value); }
+	}
 
 	// m_vDissolverOrigin
 	[SchemaMember("CEntityDissolve", "m_vDissolverOrigin")]
-	public Vector DissolverOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CEntityDissolve", "m_vDissolverOrigin");
+	public Vector3 DissolverOrigin
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CEntityDissolve", "m_vDissolverOrigin"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CEntityDissolve", "m_vDissolverOrigin", value); }
+	}
 
 	// m_nMagnitude
 	[SchemaMember("CEntityDissolve", "m_nMagnitude")]
-	public ref UInt32 Magnitude => ref Schema.GetRef<UInt32>(this.Handle, "CEntityDissolve", "m_nMagnitude");
+	public UInt32 Magnitude
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CEntityDissolve", "m_nMagnitude"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CEntityDissolve", "m_nMagnitude", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,23 +25,43 @@ public partial class CInstancedSceneEntity : CSceneEntity
 
 	// m_bHadOwner
 	[SchemaMember("CInstancedSceneEntity", "m_bHadOwner")]
-	public ref bool HadOwner => ref Schema.GetRef<bool>(this.Handle, "CInstancedSceneEntity", "m_bHadOwner");
+	public bool HadOwner
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CInstancedSceneEntity", "m_bHadOwner"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CInstancedSceneEntity", "m_bHadOwner", value); }
+	}
 
 	// m_flPostSpeakDelay
 	[SchemaMember("CInstancedSceneEntity", "m_flPostSpeakDelay")]
-	public ref float PostSpeakDelay => ref Schema.GetRef<float>(this.Handle, "CInstancedSceneEntity", "m_flPostSpeakDelay");
+	public float PostSpeakDelay
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CInstancedSceneEntity", "m_flPostSpeakDelay"); }
+		set { Schema.SetValueType<float>(this.Handle, "CInstancedSceneEntity", "m_flPostSpeakDelay", value); }
+	}
 
 	// m_flPreDelay
 	[SchemaMember("CInstancedSceneEntity", "m_flPreDelay")]
-	public ref float PreDelay => ref Schema.GetRef<float>(this.Handle, "CInstancedSceneEntity", "m_flPreDelay");
+	public float PreDelay
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CInstancedSceneEntity", "m_flPreDelay"); }
+		set { Schema.SetValueType<float>(this.Handle, "CInstancedSceneEntity", "m_flPreDelay", value); }
+	}
 
 	// m_bIsBackground
 	[SchemaMember("CInstancedSceneEntity", "m_bIsBackground")]
-	public ref bool IsBackground => ref Schema.GetRef<bool>(this.Handle, "CInstancedSceneEntity", "m_bIsBackground");
+	public bool IsBackground
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CInstancedSceneEntity", "m_bIsBackground"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CInstancedSceneEntity", "m_bIsBackground", value); }
+	}
 
 	// m_bRemoveOnCompletion
 	[SchemaMember("CInstancedSceneEntity", "m_bRemoveOnCompletion")]
-	public ref bool RemoveOnCompletion => ref Schema.GetRef<bool>(this.Handle, "CInstancedSceneEntity", "m_bRemoveOnCompletion");
+	public bool RemoveOnCompletion
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CInstancedSceneEntity", "m_bRemoveOnCompletion"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CInstancedSceneEntity", "m_bRemoveOnCompletion", value); }
+	}
 
 	// m_hTarget
 	[SchemaMember("CInstancedSceneEntity", "m_hTarget")]

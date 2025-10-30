@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,15 +21,27 @@ public partial class CPathKeyFrame : CLogicalEntity
 
 	// m_Origin
 	[SchemaMember("CPathKeyFrame", "m_Origin")]
-	public Vector Origin => Schema.GetDeclaredClass<Vector>(this.Handle, "CPathKeyFrame", "m_Origin");
+	public Vector3 Origin
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CPathKeyFrame", "m_Origin"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CPathKeyFrame", "m_Origin", value); }
+	}
 
 	// m_Angles
 	[SchemaMember("CPathKeyFrame", "m_Angles")]
-	public QAngle Angles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPathKeyFrame", "m_Angles");
+	public QAngle Angles
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CPathKeyFrame", "m_Angles"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CPathKeyFrame", "m_Angles", value); }
+	}
 
 	// m_qAngle
 	[SchemaMember("CPathKeyFrame", "m_qAngle")]
-	public Quaternion Angle => Schema.GetDeclaredClass<Quaternion>(this.Handle, "CPathKeyFrame", "m_qAngle");
+	public Quaternion Angle
+	{
+		get { return Schema.GetValueType<Quaternion>(this.Handle, "CPathKeyFrame", "m_qAngle"); }
+		set { Schema.SetValueType<Quaternion>(this.Handle, "CPathKeyFrame", "m_qAngle", value); }
+	}
 
 	// m_iNextKey
 	[SchemaMember("CPathKeyFrame", "m_iNextKey")]
@@ -40,7 +53,11 @@ public partial class CPathKeyFrame : CLogicalEntity
 
 	// m_flNextTime
 	[SchemaMember("CPathKeyFrame", "m_flNextTime")]
-	public ref float NextTime => ref Schema.GetRef<float>(this.Handle, "CPathKeyFrame", "m_flNextTime");
+	public float NextTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPathKeyFrame", "m_flNextTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPathKeyFrame", "m_flNextTime", value); }
+	}
 
 	// m_pNextKey
 	[SchemaMember("CPathKeyFrame", "m_pNextKey")]
@@ -52,6 +69,10 @@ public partial class CPathKeyFrame : CLogicalEntity
 
 	// m_flMoveSpeed
 	[SchemaMember("CPathKeyFrame", "m_flMoveSpeed")]
-	public ref float MoveSpeed => ref Schema.GetRef<float>(this.Handle, "CPathKeyFrame", "m_flMoveSpeed");
+	public float MoveSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPathKeyFrame", "m_flMoveSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPathKeyFrame", "m_flMoveSpeed", value); }
+	}
 
 }

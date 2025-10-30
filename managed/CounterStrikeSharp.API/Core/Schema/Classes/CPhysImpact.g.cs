@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,11 +21,19 @@ public partial class CPhysImpact : CPointEntity
 
 	// m_damage
 	[SchemaMember("CPhysImpact", "m_damage")]
-	public ref float Damage => ref Schema.GetRef<float>(this.Handle, "CPhysImpact", "m_damage");
+	public float Damage
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysImpact", "m_damage"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysImpact", "m_damage", value); }
+	}
 
 	// m_distance
 	[SchemaMember("CPhysImpact", "m_distance")]
-	public ref float Distance => ref Schema.GetRef<float>(this.Handle, "CPhysImpact", "m_distance");
+	public float Distance
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysImpact", "m_distance"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysImpact", "m_distance", value); }
+	}
 
 	// m_directionEntityName
 	[SchemaMember("CPhysImpact", "m_directionEntityName")]

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,15 +21,27 @@ public partial class CBaseProp : CBaseAnimGraph
 
 	// m_bModelOverrodeBlockLOS
 	[SchemaMember("CBaseProp", "m_bModelOverrodeBlockLOS")]
-	public ref bool ModelOverrodeBlockLOS => ref Schema.GetRef<bool>(this.Handle, "CBaseProp", "m_bModelOverrodeBlockLOS");
+	public bool ModelOverrodeBlockLOS
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseProp", "m_bModelOverrodeBlockLOS"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseProp", "m_bModelOverrodeBlockLOS", value); }
+	}
 
 	// m_iShapeType
 	[SchemaMember("CBaseProp", "m_iShapeType")]
-	public ref Int32 ShapeType => ref Schema.GetRef<Int32>(this.Handle, "CBaseProp", "m_iShapeType");
+	public Int32 ShapeType
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseProp", "m_iShapeType"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseProp", "m_iShapeType", value); }
+	}
 
 	// m_bConformToCollisionBounds
 	[SchemaMember("CBaseProp", "m_bConformToCollisionBounds")]
-	public ref bool ConformToCollisionBounds => ref Schema.GetRef<bool>(this.Handle, "CBaseProp", "m_bConformToCollisionBounds");
+	public bool ConformToCollisionBounds
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseProp", "m_bConformToCollisionBounds"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseProp", "m_bConformToCollisionBounds", value); }
+	}
 
 	// m_mPreferredCatchTransform
 	[SchemaMember("CBaseProp", "m_mPreferredCatchTransform")]

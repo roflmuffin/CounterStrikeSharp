@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,23 +21,43 @@ public partial class CSmokeGrenadeProjectile : CBaseCSGrenadeProjectile
 
 	// m_nSmokeEffectTickBegin
 	[SchemaMember("CSmokeGrenadeProjectile", "m_nSmokeEffectTickBegin")]
-	public ref Int32 SmokeEffectTickBegin => ref Schema.GetRef<Int32>(this.Handle, "CSmokeGrenadeProjectile", "m_nSmokeEffectTickBegin");
+	public Int32 SmokeEffectTickBegin
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSmokeGrenadeProjectile", "m_nSmokeEffectTickBegin"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSmokeGrenadeProjectile", "m_nSmokeEffectTickBegin", value); }
+	}
 
 	// m_bDidSmokeEffect
 	[SchemaMember("CSmokeGrenadeProjectile", "m_bDidSmokeEffect")]
-	public ref bool DidSmokeEffect => ref Schema.GetRef<bool>(this.Handle, "CSmokeGrenadeProjectile", "m_bDidSmokeEffect");
+	public bool DidSmokeEffect
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CSmokeGrenadeProjectile", "m_bDidSmokeEffect"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CSmokeGrenadeProjectile", "m_bDidSmokeEffect", value); }
+	}
 
 	// m_nRandomSeed
 	[SchemaMember("CSmokeGrenadeProjectile", "m_nRandomSeed")]
-	public ref Int32 RandomSeed => ref Schema.GetRef<Int32>(this.Handle, "CSmokeGrenadeProjectile", "m_nRandomSeed");
+	public Int32 RandomSeed
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSmokeGrenadeProjectile", "m_nRandomSeed"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSmokeGrenadeProjectile", "m_nRandomSeed", value); }
+	}
 
 	// m_vSmokeColor
 	[SchemaMember("CSmokeGrenadeProjectile", "m_vSmokeColor")]
-	public Vector SmokeColor => Schema.GetDeclaredClass<Vector>(this.Handle, "CSmokeGrenadeProjectile", "m_vSmokeColor");
+	public Vector3 SmokeColor
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CSmokeGrenadeProjectile", "m_vSmokeColor"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CSmokeGrenadeProjectile", "m_vSmokeColor", value); }
+	}
 
 	// m_vSmokeDetonationPos
 	[SchemaMember("CSmokeGrenadeProjectile", "m_vSmokeDetonationPos")]
-	public Vector SmokeDetonationPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CSmokeGrenadeProjectile", "m_vSmokeDetonationPos");
+	public Vector3 SmokeDetonationPos
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CSmokeGrenadeProjectile", "m_vSmokeDetonationPos"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CSmokeGrenadeProjectile", "m_vSmokeDetonationPos", value); }
+	}
 
 	// m_VoxelFrameData
 	[SchemaMember("CSmokeGrenadeProjectile", "m_VoxelFrameData")]
@@ -44,26 +65,50 @@ public partial class CSmokeGrenadeProjectile : CBaseCSGrenadeProjectile
 
 	// m_nVoxelFrameDataSize
 	[SchemaMember("CSmokeGrenadeProjectile", "m_nVoxelFrameDataSize")]
-	public ref Int32 VoxelFrameDataSize => ref Schema.GetRef<Int32>(this.Handle, "CSmokeGrenadeProjectile", "m_nVoxelFrameDataSize");
+	public Int32 VoxelFrameDataSize
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSmokeGrenadeProjectile", "m_nVoxelFrameDataSize"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSmokeGrenadeProjectile", "m_nVoxelFrameDataSize", value); }
+	}
 
 	// m_nVoxelUpdate
 	[SchemaMember("CSmokeGrenadeProjectile", "m_nVoxelUpdate")]
-	public ref Int32 VoxelUpdate => ref Schema.GetRef<Int32>(this.Handle, "CSmokeGrenadeProjectile", "m_nVoxelUpdate");
+	public Int32 VoxelUpdate
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSmokeGrenadeProjectile", "m_nVoxelUpdate"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSmokeGrenadeProjectile", "m_nVoxelUpdate", value); }
+	}
 
 	// m_flLastBounce
 	[SchemaMember("CSmokeGrenadeProjectile", "m_flLastBounce")]
-	public ref float LastBounce => ref Schema.GetRef<float>(this.Handle, "CSmokeGrenadeProjectile", "m_flLastBounce");
+	public float LastBounce
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSmokeGrenadeProjectile", "m_flLastBounce"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSmokeGrenadeProjectile", "m_flLastBounce", value); }
+	}
 
 	// m_fllastSimulationTime
 	[SchemaMember("CSmokeGrenadeProjectile", "m_fllastSimulationTime")]
-	public ref float FllastSimulationTime => ref Schema.GetRef<float>(this.Handle, "CSmokeGrenadeProjectile", "m_fllastSimulationTime");
+	public float FllastSimulationTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSmokeGrenadeProjectile", "m_fllastSimulationTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSmokeGrenadeProjectile", "m_fllastSimulationTime", value); }
+	}
 
 	// m_bExplodeFromInferno
 	[SchemaMember("CSmokeGrenadeProjectile", "m_bExplodeFromInferno")]
-	public ref bool ExplodeFromInferno => ref Schema.GetRef<bool>(this.Handle, "CSmokeGrenadeProjectile", "m_bExplodeFromInferno");
+	public bool ExplodeFromInferno
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CSmokeGrenadeProjectile", "m_bExplodeFromInferno"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CSmokeGrenadeProjectile", "m_bExplodeFromInferno", value); }
+	}
 
 	// m_bDidGroundScorch
 	[SchemaMember("CSmokeGrenadeProjectile", "m_bDidGroundScorch")]
-	public ref bool DidGroundScorch => ref Schema.GetRef<bool>(this.Handle, "CSmokeGrenadeProjectile", "m_bDidGroundScorch");
+	public bool DidGroundScorch
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CSmokeGrenadeProjectile", "m_bDidGroundScorch"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CSmokeGrenadeProjectile", "m_bDidGroundScorch", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,10 +21,18 @@ public partial class CSoundAreaEntityOrientedBox : CSoundAreaEntityBase
 
 	// m_vMin
 	[SchemaMember("CSoundAreaEntityOrientedBox", "m_vMin")]
-	public Vector Min => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundAreaEntityOrientedBox", "m_vMin");
+	public Vector3 Min
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundAreaEntityOrientedBox", "m_vMin"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundAreaEntityOrientedBox", "m_vMin", value); }
+	}
 
 	// m_vMax
 	[SchemaMember("CSoundAreaEntityOrientedBox", "m_vMax")]
-	public Vector Max => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundAreaEntityOrientedBox", "m_vMax");
+	public Vector3 Max
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundAreaEntityOrientedBox", "m_vMax"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundAreaEntityOrientedBox", "m_vMax", value); }
+	}
 
 }

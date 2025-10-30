@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,14 +21,26 @@ public partial class VelocitySampler : NativeObject
 
 	// m_prevSample
 	[SchemaMember("VelocitySampler", "m_prevSample")]
-	public Vector PrevSample => Schema.GetDeclaredClass<Vector>(this.Handle, "VelocitySampler", "m_prevSample");
+	public Vector3 PrevSample
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "VelocitySampler", "m_prevSample"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "VelocitySampler", "m_prevSample", value); }
+	}
 
 	// m_fPrevSampleTime
 	[SchemaMember("VelocitySampler", "m_fPrevSampleTime")]
-	public ref float PrevSampleTime => ref Schema.GetRef<float>(this.Handle, "VelocitySampler", "m_fPrevSampleTime");
+	public float PrevSampleTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "VelocitySampler", "m_fPrevSampleTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "VelocitySampler", "m_fPrevSampleTime", value); }
+	}
 
 	// m_fIdealSampleRate
 	[SchemaMember("VelocitySampler", "m_fIdealSampleRate")]
-	public ref float IdealSampleRate => ref Schema.GetRef<float>(this.Handle, "VelocitySampler", "m_fIdealSampleRate");
+	public float IdealSampleRate
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "VelocitySampler", "m_fIdealSampleRate"); }
+		set { Schema.SetValueType<float>(this.Handle, "VelocitySampler", "m_fIdealSampleRate", value); }
+	}
 
 }

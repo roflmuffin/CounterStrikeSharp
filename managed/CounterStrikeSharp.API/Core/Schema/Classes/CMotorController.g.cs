@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,18 +21,34 @@ public partial class CMotorController : NativeObject
 
 	// m_speed
 	[SchemaMember("CMotorController", "m_speed")]
-	public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CMotorController", "m_speed");
+	public float Speed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CMotorController", "m_speed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CMotorController", "m_speed", value); }
+	}
 
 	// m_maxTorque
 	[SchemaMember("CMotorController", "m_maxTorque")]
-	public ref float MaxTorque => ref Schema.GetRef<float>(this.Handle, "CMotorController", "m_maxTorque");
+	public float MaxTorque
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CMotorController", "m_maxTorque"); }
+		set { Schema.SetValueType<float>(this.Handle, "CMotorController", "m_maxTorque", value); }
+	}
 
 	// m_axis
 	[SchemaMember("CMotorController", "m_axis")]
-	public Vector Axis => Schema.GetDeclaredClass<Vector>(this.Handle, "CMotorController", "m_axis");
+	public Vector3 Axis
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CMotorController", "m_axis"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CMotorController", "m_axis", value); }
+	}
 
 	// m_inertiaFactor
 	[SchemaMember("CMotorController", "m_inertiaFactor")]
-	public ref float InertiaFactor => ref Schema.GetRef<float>(this.Handle, "CMotorController", "m_inertiaFactor");
+	public float InertiaFactor
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CMotorController", "m_inertiaFactor"); }
+		set { Schema.SetValueType<float>(this.Handle, "CMotorController", "m_inertiaFactor", value); }
+	}
 
 }

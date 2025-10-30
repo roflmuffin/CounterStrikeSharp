@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,18 +21,34 @@ public partial class PredictedDamageTag_t : NativeObject
 
 	// nTagTick
 	[SchemaMember("PredictedDamageTag_t", "nTagTick")]
-	public ref Int32 NTagTick => ref Schema.GetRef<Int32>(this.Handle, "PredictedDamageTag_t", "nTagTick");
+	public Int32 NTagTick
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "PredictedDamageTag_t", "nTagTick"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "PredictedDamageTag_t", "nTagTick", value); }
+	}
 
 	// flFlinchModSmall
 	[SchemaMember("PredictedDamageTag_t", "flFlinchModSmall")]
-	public ref float FlFlinchModSmall => ref Schema.GetRef<float>(this.Handle, "PredictedDamageTag_t", "flFlinchModSmall");
+	public float FlFlinchModSmall
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "PredictedDamageTag_t", "flFlinchModSmall"); }
+		set { Schema.SetValueType<float>(this.Handle, "PredictedDamageTag_t", "flFlinchModSmall", value); }
+	}
 
 	// flFlinchModLarge
 	[SchemaMember("PredictedDamageTag_t", "flFlinchModLarge")]
-	public ref float FlFlinchModLarge => ref Schema.GetRef<float>(this.Handle, "PredictedDamageTag_t", "flFlinchModLarge");
+	public float FlFlinchModLarge
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "PredictedDamageTag_t", "flFlinchModLarge"); }
+		set { Schema.SetValueType<float>(this.Handle, "PredictedDamageTag_t", "flFlinchModLarge", value); }
+	}
 
 	// flFriendlyFireDamageReductionRatio
 	[SchemaMember("PredictedDamageTag_t", "flFriendlyFireDamageReductionRatio")]
-	public ref float FlFriendlyFireDamageReductionRatio => ref Schema.GetRef<float>(this.Handle, "PredictedDamageTag_t", "flFriendlyFireDamageReductionRatio");
+	public float FlFriendlyFireDamageReductionRatio
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "PredictedDamageTag_t", "flFriendlyFireDamageReductionRatio"); }
+		set { Schema.SetValueType<float>(this.Handle, "PredictedDamageTag_t", "flFriendlyFireDamageReductionRatio", value); }
+	}
 
 }

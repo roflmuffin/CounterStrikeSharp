@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,11 +21,19 @@ public partial class CMolotovProjectile : CBaseCSGrenadeProjectile
 
 	// m_bIsIncGrenade
 	[SchemaMember("CMolotovProjectile", "m_bIsIncGrenade")]
-	public ref bool IsIncGrenade => ref Schema.GetRef<bool>(this.Handle, "CMolotovProjectile", "m_bIsIncGrenade");
+	public bool IsIncGrenade
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CMolotovProjectile", "m_bIsIncGrenade"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CMolotovProjectile", "m_bIsIncGrenade", value); }
+	}
 
 	// m_bDetonated
 	[SchemaMember("CMolotovProjectile", "m_bDetonated")]
-	public ref bool Detonated => ref Schema.GetRef<bool>(this.Handle, "CMolotovProjectile", "m_bDetonated");
+	public bool Detonated
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CMolotovProjectile", "m_bDetonated"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CMolotovProjectile", "m_bDetonated", value); }
+	}
 
 	// m_stillTimer
 	[SchemaMember("CMolotovProjectile", "m_stillTimer")]
@@ -32,6 +41,10 @@ public partial class CMolotovProjectile : CBaseCSGrenadeProjectile
 
 	// m_bHasBouncedOffPlayer
 	[SchemaMember("CMolotovProjectile", "m_bHasBouncedOffPlayer")]
-	public ref bool HasBouncedOffPlayer => ref Schema.GetRef<bool>(this.Handle, "CMolotovProjectile", "m_bHasBouncedOffPlayer");
+	public bool HasBouncedOffPlayer
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CMolotovProjectile", "m_bHasBouncedOffPlayer"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CMolotovProjectile", "m_bHasBouncedOffPlayer", value); }
+	}
 
 }

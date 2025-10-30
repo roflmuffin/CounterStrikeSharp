@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,18 +21,34 @@ public partial class CPointTeleport : CServerOnlyPointEntity
 
 	// m_vSaveOrigin
 	[SchemaMember("CPointTeleport", "m_vSaveOrigin")]
-	public Vector SaveOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CPointTeleport", "m_vSaveOrigin");
+	public Vector3 SaveOrigin
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CPointTeleport", "m_vSaveOrigin"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CPointTeleport", "m_vSaveOrigin", value); }
+	}
 
 	// m_vSaveAngles
 	[SchemaMember("CPointTeleport", "m_vSaveAngles")]
-	public QAngle SaveAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPointTeleport", "m_vSaveAngles");
+	public QAngle SaveAngles
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CPointTeleport", "m_vSaveAngles"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CPointTeleport", "m_vSaveAngles", value); }
+	}
 
 	// m_bTeleportParentedEntities
 	[SchemaMember("CPointTeleport", "m_bTeleportParentedEntities")]
-	public ref bool TeleportParentedEntities => ref Schema.GetRef<bool>(this.Handle, "CPointTeleport", "m_bTeleportParentedEntities");
+	public bool TeleportParentedEntities
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointTeleport", "m_bTeleportParentedEntities"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointTeleport", "m_bTeleportParentedEntities", value); }
+	}
 
 	// m_bTeleportUseCurrentAngle
 	[SchemaMember("CPointTeleport", "m_bTeleportUseCurrentAngle")]
-	public ref bool TeleportUseCurrentAngle => ref Schema.GetRef<bool>(this.Handle, "CPointTeleport", "m_bTeleportUseCurrentAngle");
+	public bool TeleportUseCurrentAngle
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointTeleport", "m_bTeleportUseCurrentAngle"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointTeleport", "m_bTeleportUseCurrentAngle", value); }
+	}
 
 }

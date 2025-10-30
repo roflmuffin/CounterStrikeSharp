@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,18 +21,34 @@ public partial class CConstantForceController : NativeObject
 
 	// m_linear
 	[SchemaMember("CConstantForceController", "m_linear")]
-	public Vector Linear => Schema.GetDeclaredClass<Vector>(this.Handle, "CConstantForceController", "m_linear");
+	public Vector3 Linear
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CConstantForceController", "m_linear"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CConstantForceController", "m_linear", value); }
+	}
 
 	// m_angular
 	[SchemaMember("CConstantForceController", "m_angular")]
-	public Vector Angular => Schema.GetDeclaredClass<Vector>(this.Handle, "CConstantForceController", "m_angular");
+	public Vector3 Angular
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CConstantForceController", "m_angular"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CConstantForceController", "m_angular", value); }
+	}
 
 	// m_linearSave
 	[SchemaMember("CConstantForceController", "m_linearSave")]
-	public Vector LinearSave => Schema.GetDeclaredClass<Vector>(this.Handle, "CConstantForceController", "m_linearSave");
+	public Vector3 LinearSave
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CConstantForceController", "m_linearSave"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CConstantForceController", "m_linearSave", value); }
+	}
 
 	// m_angularSave
 	[SchemaMember("CConstantForceController", "m_angularSave")]
-	public Vector AngularSave => Schema.GetDeclaredClass<Vector>(this.Handle, "CConstantForceController", "m_angularSave");
+	public Vector3 AngularSave
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CConstantForceController", "m_angularSave"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CConstantForceController", "m_angularSave", value); }
+	}
 
 }

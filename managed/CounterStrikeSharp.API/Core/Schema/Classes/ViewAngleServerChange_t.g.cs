@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,14 +21,26 @@ public partial class ViewAngleServerChange_t : NativeObject
 
 	// nType
 	[SchemaMember("ViewAngleServerChange_t", "nType")]
-	public ref FixAngleSet_t NType => ref Schema.GetRef<FixAngleSet_t>(this.Handle, "ViewAngleServerChange_t", "nType");
+	public FixAngleSet_t NType
+	{
+		get { return Schema.GetValueType<FixAngleSet_t>(this.Handle, "ViewAngleServerChange_t", "nType"); }
+		set { Schema.SetValueType<FixAngleSet_t>(this.Handle, "ViewAngleServerChange_t", "nType", value); }
+	}
 
 	// qAngle
 	[SchemaMember("ViewAngleServerChange_t", "qAngle")]
-	public QAngle QAngle => Schema.GetDeclaredClass<QAngle>(this.Handle, "ViewAngleServerChange_t", "qAngle");
+	public QAngle QAngle
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "ViewAngleServerChange_t", "qAngle"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "ViewAngleServerChange_t", "qAngle", value); }
+	}
 
 	// nIndex
 	[SchemaMember("ViewAngleServerChange_t", "nIndex")]
-	public ref UInt32 NIndex => ref Schema.GetRef<UInt32>(this.Handle, "ViewAngleServerChange_t", "nIndex");
+	public UInt32 NIndex
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "ViewAngleServerChange_t", "nIndex"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "ViewAngleServerChange_t", "nIndex", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,23 +21,43 @@ public partial class CBeam : CBaseModelEntity
 
 	// m_flFrameRate
 	[SchemaMember("CBeam", "m_flFrameRate")]
-	public ref float FrameRate => ref Schema.GetRef<float>(this.Handle, "CBeam", "m_flFrameRate");
+	public float FrameRate
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBeam", "m_flFrameRate"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBeam", "m_flFrameRate", value); }
+	}
 
 	// m_flHDRColorScale
 	[SchemaMember("CBeam", "m_flHDRColorScale")]
-	public ref float HDRColorScale => ref Schema.GetRef<float>(this.Handle, "CBeam", "m_flHDRColorScale");
+	public float HDRColorScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBeam", "m_flHDRColorScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBeam", "m_flHDRColorScale", value); }
+	}
 
 	// m_flFireTime
 	[SchemaMember("CBeam", "m_flFireTime")]
-	public ref float FireTime => ref Schema.GetRef<float>(this.Handle, "CBeam", "m_flFireTime");
+	public float FireTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBeam", "m_flFireTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBeam", "m_flFireTime", value); }
+	}
 
 	// m_flDamage
 	[SchemaMember("CBeam", "m_flDamage")]
-	public ref float Damage => ref Schema.GetRef<float>(this.Handle, "CBeam", "m_flDamage");
+	public float Damage
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBeam", "m_flDamage"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBeam", "m_flDamage", value); }
+	}
 
 	// m_nNumBeamEnts
 	[SchemaMember("CBeam", "m_nNumBeamEnts")]
-	public ref byte NumBeamEnts => ref Schema.GetRef<byte>(this.Handle, "CBeam", "m_nNumBeamEnts");
+	public byte NumBeamEnts
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CBeam", "m_nNumBeamEnts"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CBeam", "m_nNumBeamEnts", value); }
+	}
 
 	// m_hBaseMaterial
 	[SchemaMember("CBeam", "m_hBaseMaterial")]
@@ -48,11 +69,19 @@ public partial class CBeam : CBaseModelEntity
 
 	// m_nBeamType
 	[SchemaMember("CBeam", "m_nBeamType")]
-	public ref BeamType_t BeamType => ref Schema.GetRef<BeamType_t>(this.Handle, "CBeam", "m_nBeamType");
+	public BeamType_t BeamType
+	{
+		get { return Schema.GetValueType<BeamType_t>(this.Handle, "CBeam", "m_nBeamType"); }
+		set { Schema.SetValueType<BeamType_t>(this.Handle, "CBeam", "m_nBeamType", value); }
+	}
 
 	// m_nBeamFlags
 	[SchemaMember("CBeam", "m_nBeamFlags")]
-	public ref UInt32 BeamFlags => ref Schema.GetRef<UInt32>(this.Handle, "CBeam", "m_nBeamFlags");
+	public UInt32 BeamFlags
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CBeam", "m_nBeamFlags"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CBeam", "m_nBeamFlags", value); }
+	}
 
 	// m_hAttachEntity
 	[SchemaMember("CBeam", "m_hAttachEntity")]
@@ -64,47 +93,91 @@ public partial class CBeam : CBaseModelEntity
 
 	// m_fWidth
 	[SchemaMember("CBeam", "m_fWidth")]
-	public ref float Width => ref Schema.GetRef<float>(this.Handle, "CBeam", "m_fWidth");
+	public float Width
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBeam", "m_fWidth"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBeam", "m_fWidth", value); }
+	}
 
 	// m_fEndWidth
 	[SchemaMember("CBeam", "m_fEndWidth")]
-	public ref float EndWidth => ref Schema.GetRef<float>(this.Handle, "CBeam", "m_fEndWidth");
+	public float EndWidth
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBeam", "m_fEndWidth"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBeam", "m_fEndWidth", value); }
+	}
 
 	// m_fFadeLength
 	[SchemaMember("CBeam", "m_fFadeLength")]
-	public ref float FadeLength => ref Schema.GetRef<float>(this.Handle, "CBeam", "m_fFadeLength");
+	public float FadeLength
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBeam", "m_fFadeLength"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBeam", "m_fFadeLength", value); }
+	}
 
 	// m_fHaloScale
 	[SchemaMember("CBeam", "m_fHaloScale")]
-	public ref float HaloScale => ref Schema.GetRef<float>(this.Handle, "CBeam", "m_fHaloScale");
+	public float HaloScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBeam", "m_fHaloScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBeam", "m_fHaloScale", value); }
+	}
 
 	// m_fAmplitude
 	[SchemaMember("CBeam", "m_fAmplitude")]
-	public ref float Amplitude => ref Schema.GetRef<float>(this.Handle, "CBeam", "m_fAmplitude");
+	public float Amplitude
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBeam", "m_fAmplitude"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBeam", "m_fAmplitude", value); }
+	}
 
 	// m_fStartFrame
 	[SchemaMember("CBeam", "m_fStartFrame")]
-	public ref float StartFrame => ref Schema.GetRef<float>(this.Handle, "CBeam", "m_fStartFrame");
+	public float StartFrame
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBeam", "m_fStartFrame"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBeam", "m_fStartFrame", value); }
+	}
 
 	// m_fSpeed
 	[SchemaMember("CBeam", "m_fSpeed")]
-	public new ref float Speed => ref Schema.GetRef<float>(this.Handle, "CBeam", "m_fSpeed");
+	public new float Speed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBeam", "m_fSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBeam", "m_fSpeed", value); }
+	}
 
 	// m_flFrame
 	[SchemaMember("CBeam", "m_flFrame")]
-	public ref float Frame => ref Schema.GetRef<float>(this.Handle, "CBeam", "m_flFrame");
+	public float Frame
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBeam", "m_flFrame"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBeam", "m_flFrame", value); }
+	}
 
 	// m_nClipStyle
 	[SchemaMember("CBeam", "m_nClipStyle")]
-	public ref BeamClipStyle_t ClipStyle => ref Schema.GetRef<BeamClipStyle_t>(this.Handle, "CBeam", "m_nClipStyle");
+	public BeamClipStyle_t ClipStyle
+	{
+		get { return Schema.GetValueType<BeamClipStyle_t>(this.Handle, "CBeam", "m_nClipStyle"); }
+		set { Schema.SetValueType<BeamClipStyle_t>(this.Handle, "CBeam", "m_nClipStyle", value); }
+	}
 
 	// m_bTurnedOff
 	[SchemaMember("CBeam", "m_bTurnedOff")]
-	public ref bool TurnedOff => ref Schema.GetRef<bool>(this.Handle, "CBeam", "m_bTurnedOff");
+	public bool TurnedOff
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBeam", "m_bTurnedOff"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBeam", "m_bTurnedOff", value); }
+	}
 
 	// m_vecEndPos
 	[SchemaMember("CBeam", "m_vecEndPos")]
-	public Vector EndPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CBeam", "m_vecEndPos");
+	public Vector3 EndPos
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBeam", "m_vecEndPos"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBeam", "m_vecEndPos", value); }
+	}
 
 	// m_hEndEntity
 	[SchemaMember("CBeam", "m_hEndEntity")]
@@ -112,6 +185,10 @@ public partial class CBeam : CBaseModelEntity
 
 	// m_nDissolveType
 	[SchemaMember("CBeam", "m_nDissolveType")]
-	public ref Int32 DissolveType => ref Schema.GetRef<Int32>(this.Handle, "CBeam", "m_nDissolveType");
+	public Int32 DissolveType
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBeam", "m_nDissolveType"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBeam", "m_nDissolveType", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,39 +25,75 @@ public partial class CPointAngularVelocitySensor : CPointEntity
 
 	// m_flThreshold
 	[SchemaMember("CPointAngularVelocitySensor", "m_flThreshold")]
-	public ref float Threshold => ref Schema.GetRef<float>(this.Handle, "CPointAngularVelocitySensor", "m_flThreshold");
+	public float Threshold
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointAngularVelocitySensor", "m_flThreshold"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointAngularVelocitySensor", "m_flThreshold", value); }
+	}
 
 	// m_nLastCompareResult
 	[SchemaMember("CPointAngularVelocitySensor", "m_nLastCompareResult")]
-	public ref Int32 LastCompareResult => ref Schema.GetRef<Int32>(this.Handle, "CPointAngularVelocitySensor", "m_nLastCompareResult");
+	public Int32 LastCompareResult
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CPointAngularVelocitySensor", "m_nLastCompareResult"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CPointAngularVelocitySensor", "m_nLastCompareResult", value); }
+	}
 
 	// m_nLastFireResult
 	[SchemaMember("CPointAngularVelocitySensor", "m_nLastFireResult")]
-	public ref Int32 LastFireResult => ref Schema.GetRef<Int32>(this.Handle, "CPointAngularVelocitySensor", "m_nLastFireResult");
+	public Int32 LastFireResult
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CPointAngularVelocitySensor", "m_nLastFireResult"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CPointAngularVelocitySensor", "m_nLastFireResult", value); }
+	}
 
 	// m_flFireTime
 	[SchemaMember("CPointAngularVelocitySensor", "m_flFireTime")]
-	public ref float FireTime => ref Schema.GetRef<float>(this.Handle, "CPointAngularVelocitySensor", "m_flFireTime");
+	public float FireTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointAngularVelocitySensor", "m_flFireTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointAngularVelocitySensor", "m_flFireTime", value); }
+	}
 
 	// m_flFireInterval
 	[SchemaMember("CPointAngularVelocitySensor", "m_flFireInterval")]
-	public ref float FireInterval => ref Schema.GetRef<float>(this.Handle, "CPointAngularVelocitySensor", "m_flFireInterval");
+	public float FireInterval
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointAngularVelocitySensor", "m_flFireInterval"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointAngularVelocitySensor", "m_flFireInterval", value); }
+	}
 
 	// m_flLastAngVelocity
 	[SchemaMember("CPointAngularVelocitySensor", "m_flLastAngVelocity")]
-	public ref float LastAngVelocity => ref Schema.GetRef<float>(this.Handle, "CPointAngularVelocitySensor", "m_flLastAngVelocity");
+	public float LastAngVelocity
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointAngularVelocitySensor", "m_flLastAngVelocity"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointAngularVelocitySensor", "m_flLastAngVelocity", value); }
+	}
 
 	// m_lastOrientation
 	[SchemaMember("CPointAngularVelocitySensor", "m_lastOrientation")]
-	public QAngle LastOrientation => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPointAngularVelocitySensor", "m_lastOrientation");
+	public QAngle LastOrientation
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CPointAngularVelocitySensor", "m_lastOrientation"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CPointAngularVelocitySensor", "m_lastOrientation", value); }
+	}
 
 	// m_vecAxis
 	[SchemaMember("CPointAngularVelocitySensor", "m_vecAxis")]
-	public Vector Axis => Schema.GetDeclaredClass<Vector>(this.Handle, "CPointAngularVelocitySensor", "m_vecAxis");
+	public Vector3 Axis
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CPointAngularVelocitySensor", "m_vecAxis"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CPointAngularVelocitySensor", "m_vecAxis", value); }
+	}
 
 	// m_bUseHelper
 	[SchemaMember("CPointAngularVelocitySensor", "m_bUseHelper")]
-	public ref bool UseHelper => ref Schema.GetRef<bool>(this.Handle, "CPointAngularVelocitySensor", "m_bUseHelper");
+	public bool UseHelper
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointAngularVelocitySensor", "m_bUseHelper"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointAngularVelocitySensor", "m_bUseHelper", value); }
+	}
 
 	// m_OnLessThan
 	[SchemaMember("CPointAngularVelocitySensor", "m_OnLessThan")]

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -68,22 +69,42 @@ public partial class CInfoSpawnGroupLoadUnload : CLogicalEntity
 
 	// m_flTimeoutInterval
 	[SchemaMember("CInfoSpawnGroupLoadUnload", "m_flTimeoutInterval")]
-	public ref float TimeoutInterval => ref Schema.GetRef<float>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_flTimeoutInterval");
+	public float TimeoutInterval
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_flTimeoutInterval"); }
+		set { Schema.SetValueType<float>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_flTimeoutInterval", value); }
+	}
 
 	// m_bAutoActivate
 	[SchemaMember("CInfoSpawnGroupLoadUnload", "m_bAutoActivate")]
-	public ref bool AutoActivate => ref Schema.GetRef<bool>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_bAutoActivate");
+	public bool AutoActivate
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_bAutoActivate"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_bAutoActivate", value); }
+	}
 
 	// m_bUnloadingStarted
 	[SchemaMember("CInfoSpawnGroupLoadUnload", "m_bUnloadingStarted")]
-	public ref bool UnloadingStarted => ref Schema.GetRef<bool>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_bUnloadingStarted");
+	public bool UnloadingStarted
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_bUnloadingStarted"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_bUnloadingStarted", value); }
+	}
 
 	// m_bQueueActiveSpawnGroupChange
 	[SchemaMember("CInfoSpawnGroupLoadUnload", "m_bQueueActiveSpawnGroupChange")]
-	public ref bool QueueActiveSpawnGroupChange => ref Schema.GetRef<bool>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_bQueueActiveSpawnGroupChange");
+	public bool QueueActiveSpawnGroupChange
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_bQueueActiveSpawnGroupChange"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_bQueueActiveSpawnGroupChange", value); }
+	}
 
 	// m_bQueueFinishLoading
 	[SchemaMember("CInfoSpawnGroupLoadUnload", "m_bQueueFinishLoading")]
-	public ref bool QueueFinishLoading => ref Schema.GetRef<bool>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_bQueueFinishLoading");
+	public bool QueueFinishLoading
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_bQueueFinishLoading"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CInfoSpawnGroupLoadUnload", "m_bQueueFinishLoading", value); }
+	}
 
 }

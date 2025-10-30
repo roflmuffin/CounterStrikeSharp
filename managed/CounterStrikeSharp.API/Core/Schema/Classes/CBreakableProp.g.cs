@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -36,27 +37,51 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_impactEnergyScale
 	[SchemaMember("CBreakableProp", "m_impactEnergyScale")]
-	public ref float ImpactEnergyScale => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_impactEnergyScale");
+	public float ImpactEnergyScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBreakableProp", "m_impactEnergyScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBreakableProp", "m_impactEnergyScale", value); }
+	}
 
 	// m_iMinHealthDmg
 	[SchemaMember("CBreakableProp", "m_iMinHealthDmg")]
-	public ref Int32 MinHealthDmg => ref Schema.GetRef<Int32>(this.Handle, "CBreakableProp", "m_iMinHealthDmg");
+	public Int32 MinHealthDmg
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBreakableProp", "m_iMinHealthDmg"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBreakableProp", "m_iMinHealthDmg", value); }
+	}
 
 	// m_preferredCarryAngles
 	[SchemaMember("CBreakableProp", "m_preferredCarryAngles")]
-	public QAngle PreferredCarryAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBreakableProp", "m_preferredCarryAngles");
+	public QAngle PreferredCarryAngles
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CBreakableProp", "m_preferredCarryAngles"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CBreakableProp", "m_preferredCarryAngles", value); }
+	}
 
 	// m_flPressureDelay
 	[SchemaMember("CBreakableProp", "m_flPressureDelay")]
-	public ref float PressureDelay => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_flPressureDelay");
+	public float PressureDelay
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBreakableProp", "m_flPressureDelay"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBreakableProp", "m_flPressureDelay", value); }
+	}
 
 	// m_flDefBurstScale
 	[SchemaMember("CBreakableProp", "m_flDefBurstScale")]
-	public ref float DefBurstScale => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_flDefBurstScale");
+	public float DefBurstScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBreakableProp", "m_flDefBurstScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBreakableProp", "m_flDefBurstScale", value); }
+	}
 
 	// m_vDefBurstOffset
 	[SchemaMember("CBreakableProp", "m_vDefBurstOffset")]
-	public Vector DefBurstOffset => Schema.GetDeclaredClass<Vector>(this.Handle, "CBreakableProp", "m_vDefBurstOffset");
+	public Vector3 DefBurstOffset
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBreakableProp", "m_vDefBurstOffset"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBreakableProp", "m_vDefBurstOffset", value); }
+	}
 
 	// m_hBreaker
 	[SchemaMember("CBreakableProp", "m_hBreaker")]
@@ -64,15 +89,27 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_PerformanceMode
 	[SchemaMember("CBreakableProp", "m_PerformanceMode")]
-	public ref PerformanceMode_t PerformanceMode => ref Schema.GetRef<PerformanceMode_t>(this.Handle, "CBreakableProp", "m_PerformanceMode");
+	public PerformanceMode_t PerformanceMode
+	{
+		get { return Schema.GetValueType<PerformanceMode_t>(this.Handle, "CBreakableProp", "m_PerformanceMode"); }
+		set { Schema.SetValueType<PerformanceMode_t>(this.Handle, "CBreakableProp", "m_PerformanceMode", value); }
+	}
 
 	// m_flPreventDamageBeforeTime
 	[SchemaMember("CBreakableProp", "m_flPreventDamageBeforeTime")]
-	public ref float PreventDamageBeforeTime => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_flPreventDamageBeforeTime");
+	public float PreventDamageBeforeTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBreakableProp", "m_flPreventDamageBeforeTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBreakableProp", "m_flPreventDamageBeforeTime", value); }
+	}
 
 	// m_BreakableContentsType
 	[SchemaMember("CBreakableProp", "m_BreakableContentsType")]
-	public ref BreakableContentsType_t BreakableContentsType => ref Schema.GetRef<BreakableContentsType_t>(this.Handle, "CBreakableProp", "m_BreakableContentsType");
+	public BreakableContentsType_t BreakableContentsType
+	{
+		get { return Schema.GetValueType<BreakableContentsType_t>(this.Handle, "CBreakableProp", "m_BreakableContentsType"); }
+		set { Schema.SetValueType<BreakableContentsType_t>(this.Handle, "CBreakableProp", "m_BreakableContentsType", value); }
+	}
 
 	// m_strBreakableContentsPropGroupOverride
 	[SchemaMember("CBreakableProp", "m_strBreakableContentsPropGroupOverride")]
@@ -92,19 +129,35 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_bHasBreakPiecesOrCommands
 	[SchemaMember("CBreakableProp", "m_bHasBreakPiecesOrCommands")]
-	public ref bool HasBreakPiecesOrCommands => ref Schema.GetRef<bool>(this.Handle, "CBreakableProp", "m_bHasBreakPiecesOrCommands");
+	public bool HasBreakPiecesOrCommands
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBreakableProp", "m_bHasBreakPiecesOrCommands"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBreakableProp", "m_bHasBreakPiecesOrCommands", value); }
+	}
 
 	// m_explodeDamage
 	[SchemaMember("CBreakableProp", "m_explodeDamage")]
-	public ref float ExplodeDamage => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_explodeDamage");
+	public float ExplodeDamage
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBreakableProp", "m_explodeDamage"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBreakableProp", "m_explodeDamage", value); }
+	}
 
 	// m_explodeRadius
 	[SchemaMember("CBreakableProp", "m_explodeRadius")]
-	public ref float ExplodeRadius => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_explodeRadius");
+	public float ExplodeRadius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBreakableProp", "m_explodeRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBreakableProp", "m_explodeRadius", value); }
+	}
 
 	// m_explosionDelay
 	[SchemaMember("CBreakableProp", "m_explosionDelay")]
-	public ref float ExplosionDelay => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_explosionDelay");
+	public float ExplosionDelay
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBreakableProp", "m_explosionDelay"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBreakableProp", "m_explosionDelay", value); }
+	}
 
 	// m_explosionBuildupSound
 	[SchemaMember("CBreakableProp", "m_explosionBuildupSound")]
@@ -144,11 +197,19 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_flLastPhysicsInfluenceTime
 	[SchemaMember("CBreakableProp", "m_flLastPhysicsInfluenceTime")]
-	public ref float LastPhysicsInfluenceTime => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_flLastPhysicsInfluenceTime");
+	public float LastPhysicsInfluenceTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBreakableProp", "m_flLastPhysicsInfluenceTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBreakableProp", "m_flLastPhysicsInfluenceTime", value); }
+	}
 
 	// m_flDefaultFadeScale
 	[SchemaMember("CBreakableProp", "m_flDefaultFadeScale")]
-	public ref float DefaultFadeScale => ref Schema.GetRef<float>(this.Handle, "CBreakableProp", "m_flDefaultFadeScale");
+	public float DefaultFadeScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBreakableProp", "m_flDefaultFadeScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBreakableProp", "m_flDefaultFadeScale", value); }
+	}
 
 	// m_hLastAttacker
 	[SchemaMember("CBreakableProp", "m_hLastAttacker")]
@@ -164,10 +225,18 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_bUsePuntSound
 	[SchemaMember("CBreakableProp", "m_bUsePuntSound")]
-	public ref bool UsePuntSound => ref Schema.GetRef<bool>(this.Handle, "CBreakableProp", "m_bUsePuntSound");
+	public bool UsePuntSound
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBreakableProp", "m_bUsePuntSound"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBreakableProp", "m_bUsePuntSound", value); }
+	}
 
 	// m_bOriginalBlockLOS
 	[SchemaMember("CBreakableProp", "m_bOriginalBlockLOS")]
-	public ref bool OriginalBlockLOS => ref Schema.GetRef<bool>(this.Handle, "CBreakableProp", "m_bOriginalBlockLOS");
+	public bool OriginalBlockLOS
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBreakableProp", "m_bOriginalBlockLOS"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBreakableProp", "m_bOriginalBlockLOS", value); }
+	}
 
 }

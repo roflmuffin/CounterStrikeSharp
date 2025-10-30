@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -40,10 +41,18 @@ public partial class CLogicGameEventListener : CLogicalEntity
 
 	// m_bEnabled
 	[SchemaMember("CLogicGameEventListener", "m_bEnabled")]
-	public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CLogicGameEventListener", "m_bEnabled");
+	public bool Enabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CLogicGameEventListener", "m_bEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CLogicGameEventListener", "m_bEnabled", value); }
+	}
 
 	// m_bStartDisabled
 	[SchemaMember("CLogicGameEventListener", "m_bStartDisabled")]
-	public ref bool StartDisabled => ref Schema.GetRef<bool>(this.Handle, "CLogicGameEventListener", "m_bStartDisabled");
+	public bool StartDisabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CLogicGameEventListener", "m_bStartDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CLogicGameEventListener", "m_bStartDisabled", value); }
+	}
 
 }

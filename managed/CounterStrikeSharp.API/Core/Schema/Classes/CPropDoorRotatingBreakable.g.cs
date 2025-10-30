@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,15 +21,27 @@ public partial class CPropDoorRotatingBreakable : CPropDoorRotating
 
 	// m_bBreakable
 	[SchemaMember("CPropDoorRotatingBreakable", "m_bBreakable")]
-	public ref bool Breakable => ref Schema.GetRef<bool>(this.Handle, "CPropDoorRotatingBreakable", "m_bBreakable");
+	public bool Breakable
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPropDoorRotatingBreakable", "m_bBreakable"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPropDoorRotatingBreakable", "m_bBreakable", value); }
+	}
 
 	// m_isAbleToCloseAreaPortals
 	[SchemaMember("CPropDoorRotatingBreakable", "m_isAbleToCloseAreaPortals")]
-	public ref bool IsAbleToCloseAreaPortals => ref Schema.GetRef<bool>(this.Handle, "CPropDoorRotatingBreakable", "m_isAbleToCloseAreaPortals");
+	public bool IsAbleToCloseAreaPortals
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPropDoorRotatingBreakable", "m_isAbleToCloseAreaPortals"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPropDoorRotatingBreakable", "m_isAbleToCloseAreaPortals", value); }
+	}
 
 	// m_currentDamageState
 	[SchemaMember("CPropDoorRotatingBreakable", "m_currentDamageState")]
-	public ref Int32 CurrentDamageState => ref Schema.GetRef<Int32>(this.Handle, "CPropDoorRotatingBreakable", "m_currentDamageState");
+	public Int32 CurrentDamageState
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CPropDoorRotatingBreakable", "m_currentDamageState"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CPropDoorRotatingBreakable", "m_currentDamageState", value); }
+	}
 
 	// m_damageStates
 	[SchemaMember("CPropDoorRotatingBreakable", "m_damageStates")]

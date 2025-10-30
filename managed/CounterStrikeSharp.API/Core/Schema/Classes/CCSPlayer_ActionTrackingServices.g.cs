@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,7 +25,11 @@ public partial class CCSPlayer_ActionTrackingServices : CPlayerPawnComponent
 
 	// m_bIsRescuing
 	[SchemaMember("CCSPlayer_ActionTrackingServices", "m_bIsRescuing")]
-	public ref bool IsRescuing => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_ActionTrackingServices", "m_bIsRescuing");
+	public bool IsRescuing
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_ActionTrackingServices", "m_bIsRescuing"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_ActionTrackingServices", "m_bIsRescuing", value); }
+	}
 
 	// m_weaponPurchasesThisMatch
 	[SchemaMember("CCSPlayer_ActionTrackingServices", "m_weaponPurchasesThisMatch")]

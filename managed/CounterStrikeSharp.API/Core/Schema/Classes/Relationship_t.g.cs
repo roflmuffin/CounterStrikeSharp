@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,10 +21,18 @@ public partial class Relationship_t : NativeObject
 
 	// disposition
 	[SchemaMember("Relationship_t", "disposition")]
-	public ref Disposition_t Disposition => ref Schema.GetRef<Disposition_t>(this.Handle, "Relationship_t", "disposition");
+	public Disposition_t Disposition
+	{
+		get { return Schema.GetValueType<Disposition_t>(this.Handle, "Relationship_t", "disposition"); }
+		set { Schema.SetValueType<Disposition_t>(this.Handle, "Relationship_t", "disposition", value); }
+	}
 
 	// priority
 	[SchemaMember("Relationship_t", "priority")]
-	public ref Int32 Priority => ref Schema.GetRef<Int32>(this.Handle, "Relationship_t", "priority");
+	public Int32 Priority
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "Relationship_t", "priority"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "Relationship_t", "priority", value); }
+	}
 
 }

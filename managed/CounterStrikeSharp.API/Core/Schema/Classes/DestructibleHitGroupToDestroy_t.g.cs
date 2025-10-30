@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,10 +21,18 @@ public partial class DestructibleHitGroupToDestroy_t : NativeObject
 
 	// m_nHitGroup
 	[SchemaMember("DestructibleHitGroupToDestroy_t", "m_nHitGroup")]
-	public ref HitGroup_t HitGroup => ref Schema.GetRef<HitGroup_t>(this.Handle, "DestructibleHitGroupToDestroy_t", "m_nHitGroup");
+	public HitGroup_t HitGroup
+	{
+		get { return Schema.GetValueType<HitGroup_t>(this.Handle, "DestructibleHitGroupToDestroy_t", "m_nHitGroup"); }
+		set { Schema.SetValueType<HitGroup_t>(this.Handle, "DestructibleHitGroupToDestroy_t", "m_nHitGroup", value); }
+	}
 
 	// m_nMaxDamageLevel
 	[SchemaMember("DestructibleHitGroupToDestroy_t", "m_nMaxDamageLevel")]
-	public ref Int32 MaxDamageLevel => ref Schema.GetRef<Int32>(this.Handle, "DestructibleHitGroupToDestroy_t", "m_nMaxDamageLevel");
+	public Int32 MaxDamageLevel
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "DestructibleHitGroupToDestroy_t", "m_nMaxDamageLevel"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "DestructibleHitGroupToDestroy_t", "m_nMaxDamageLevel", value); }
+	}
 
 }

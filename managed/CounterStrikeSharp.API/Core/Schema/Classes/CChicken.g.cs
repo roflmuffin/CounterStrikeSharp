@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,7 +29,11 @@ public partial class CChicken : CDynamicProp
 
 	// m_stuckAnchor
 	[SchemaMember("CChicken", "m_stuckAnchor")]
-	public Vector StuckAnchor => Schema.GetDeclaredClass<Vector>(this.Handle, "CChicken", "m_stuckAnchor");
+	public Vector3 StuckAnchor
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CChicken", "m_stuckAnchor"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CChicken", "m_stuckAnchor", value); }
+	}
 
 	// m_stuckTimer
 	[SchemaMember("CChicken", "m_stuckTimer")]
@@ -40,19 +45,35 @@ public partial class CChicken : CDynamicProp
 
 	// m_isOnGround
 	[SchemaMember("CChicken", "m_isOnGround")]
-	public ref bool IsOnGround => ref Schema.GetRef<bool>(this.Handle, "CChicken", "m_isOnGround");
+	public bool IsOnGround
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CChicken", "m_isOnGround"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CChicken", "m_isOnGround", value); }
+	}
 
 	// m_vFallVelocity
 	[SchemaMember("CChicken", "m_vFallVelocity")]
-	public Vector FallVelocity => Schema.GetDeclaredClass<Vector>(this.Handle, "CChicken", "m_vFallVelocity");
+	public Vector3 FallVelocity
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CChicken", "m_vFallVelocity"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CChicken", "m_vFallVelocity", value); }
+	}
 
 	// m_desiredActivity
 	[SchemaMember("CChicken", "m_desiredActivity")]
-	public ref ChickenActivity DesiredActivity => ref Schema.GetRef<ChickenActivity>(this.Handle, "CChicken", "m_desiredActivity");
+	public ChickenActivity DesiredActivity
+	{
+		get { return Schema.GetValueType<ChickenActivity>(this.Handle, "CChicken", "m_desiredActivity"); }
+		set { Schema.SetValueType<ChickenActivity>(this.Handle, "CChicken", "m_desiredActivity", value); }
+	}
 
 	// m_currentActivity
 	[SchemaMember("CChicken", "m_currentActivity")]
-	public ref ChickenActivity CurrentActivity => ref Schema.GetRef<ChickenActivity>(this.Handle, "CChicken", "m_currentActivity");
+	public ChickenActivity CurrentActivity
+	{
+		get { return Schema.GetValueType<ChickenActivity>(this.Handle, "CChicken", "m_currentActivity"); }
+		set { Schema.SetValueType<ChickenActivity>(this.Handle, "CChicken", "m_currentActivity", value); }
+	}
 
 	// m_activityTimer
 	[SchemaMember("CChicken", "m_activityTimer")]
@@ -60,7 +81,11 @@ public partial class CChicken : CDynamicProp
 
 	// m_turnRate
 	[SchemaMember("CChicken", "m_turnRate")]
-	public ref float TurnRate => ref Schema.GetRef<float>(this.Handle, "CChicken", "m_turnRate");
+	public float TurnRate
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CChicken", "m_turnRate"); }
+		set { Schema.SetValueType<float>(this.Handle, "CChicken", "m_turnRate", value); }
+	}
 
 	// m_fleeFrom
 	[SchemaMember("CChicken", "m_fleeFrom")]
@@ -80,11 +105,19 @@ public partial class CChicken : CDynamicProp
 
 	// m_flWhenZombified
 	[SchemaMember("CChicken", "m_flWhenZombified")]
-	public ref float WhenZombified => ref Schema.GetRef<float>(this.Handle, "CChicken", "m_flWhenZombified");
+	public float WhenZombified
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CChicken", "m_flWhenZombified"); }
+		set { Schema.SetValueType<float>(this.Handle, "CChicken", "m_flWhenZombified", value); }
+	}
 
 	// m_jumpedThisFrame
 	[SchemaMember("CChicken", "m_jumpedThisFrame")]
-	public ref bool JumpedThisFrame => ref Schema.GetRef<bool>(this.Handle, "CChicken", "m_jumpedThisFrame");
+	public bool JumpedThisFrame
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CChicken", "m_jumpedThisFrame"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CChicken", "m_jumpedThisFrame", value); }
+	}
 
 	// m_leader
 	[SchemaMember("CChicken", "m_leader")]
@@ -96,7 +129,11 @@ public partial class CChicken : CDynamicProp
 
 	// m_hasBeenUsed
 	[SchemaMember("CChicken", "m_hasBeenUsed")]
-	public ref bool HasBeenUsed => ref Schema.GetRef<bool>(this.Handle, "CChicken", "m_hasBeenUsed");
+	public bool HasBeenUsed
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CChicken", "m_hasBeenUsed"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CChicken", "m_hasBeenUsed", value); }
+	}
 
 	// m_jumpTimer
 	[SchemaMember("CChicken", "m_jumpTimer")]
@@ -104,11 +141,19 @@ public partial class CChicken : CDynamicProp
 
 	// m_flLastJumpTime
 	[SchemaMember("CChicken", "m_flLastJumpTime")]
-	public ref float LastJumpTime => ref Schema.GetRef<float>(this.Handle, "CChicken", "m_flLastJumpTime");
+	public float LastJumpTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CChicken", "m_flLastJumpTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CChicken", "m_flLastJumpTime", value); }
+	}
 
 	// m_bInJump
 	[SchemaMember("CChicken", "m_bInJump")]
-	public ref bool InJump => ref Schema.GetRef<bool>(this.Handle, "CChicken", "m_bInJump");
+	public bool InJump
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CChicken", "m_bInJump"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CChicken", "m_bInJump", value); }
+	}
 
 	// m_repathTimer
 	[SchemaMember("CChicken", "m_repathTimer")]
@@ -116,11 +161,19 @@ public partial class CChicken : CDynamicProp
 
 	// m_vecPathGoal
 	[SchemaMember("CChicken", "m_vecPathGoal")]
-	public Vector PathGoal => Schema.GetDeclaredClass<Vector>(this.Handle, "CChicken", "m_vecPathGoal");
+	public Vector3 PathGoal
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CChicken", "m_vecPathGoal"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CChicken", "m_vecPathGoal", value); }
+	}
 
 	// m_flActiveFollowStartTime
 	[SchemaMember("CChicken", "m_flActiveFollowStartTime")]
-	public ref float ActiveFollowStartTime => ref Schema.GetRef<float>(this.Handle, "CChicken", "m_flActiveFollowStartTime");
+	public float ActiveFollowStartTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CChicken", "m_flActiveFollowStartTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CChicken", "m_flActiveFollowStartTime", value); }
+	}
 
 	// m_followMinuteTimer
 	[SchemaMember("CChicken", "m_followMinuteTimer")]

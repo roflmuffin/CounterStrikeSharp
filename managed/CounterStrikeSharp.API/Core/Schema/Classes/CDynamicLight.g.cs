@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,38 +21,74 @@ public partial class CDynamicLight : CBaseModelEntity
 
 	// m_ActualFlags
 	[SchemaMember("CDynamicLight", "m_ActualFlags")]
-	public ref byte ActualFlags => ref Schema.GetRef<byte>(this.Handle, "CDynamicLight", "m_ActualFlags");
+	public byte ActualFlags
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CDynamicLight", "m_ActualFlags"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CDynamicLight", "m_ActualFlags", value); }
+	}
 
 	// m_Flags
 	[SchemaMember("CDynamicLight", "m_Flags")]
-	public ref byte DynamicLightFlags => ref Schema.GetRef<byte>(this.Handle, "CDynamicLight", "m_Flags");
+	public byte DynamicLightFlags
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CDynamicLight", "m_Flags"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CDynamicLight", "m_Flags", value); }
+	}
 
 	// m_LightStyle
 	[SchemaMember("CDynamicLight", "m_LightStyle")]
-	public ref byte LightStyle => ref Schema.GetRef<byte>(this.Handle, "CDynamicLight", "m_LightStyle");
+	public byte LightStyle
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CDynamicLight", "m_LightStyle"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CDynamicLight", "m_LightStyle", value); }
+	}
 
 	// m_On
 	[SchemaMember("CDynamicLight", "m_On")]
-	public ref bool On => ref Schema.GetRef<bool>(this.Handle, "CDynamicLight", "m_On");
+	public bool On
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CDynamicLight", "m_On"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CDynamicLight", "m_On", value); }
+	}
 
 	// m_Radius
 	[SchemaMember("CDynamicLight", "m_Radius")]
-	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CDynamicLight", "m_Radius");
+	public float Radius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CDynamicLight", "m_Radius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CDynamicLight", "m_Radius", value); }
+	}
 
 	// m_Exponent
 	[SchemaMember("CDynamicLight", "m_Exponent")]
-	public ref Int32 Exponent => ref Schema.GetRef<Int32>(this.Handle, "CDynamicLight", "m_Exponent");
+	public Int32 Exponent
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CDynamicLight", "m_Exponent"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CDynamicLight", "m_Exponent", value); }
+	}
 
 	// m_InnerAngle
 	[SchemaMember("CDynamicLight", "m_InnerAngle")]
-	public ref float InnerAngle => ref Schema.GetRef<float>(this.Handle, "CDynamicLight", "m_InnerAngle");
+	public float InnerAngle
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CDynamicLight", "m_InnerAngle"); }
+		set { Schema.SetValueType<float>(this.Handle, "CDynamicLight", "m_InnerAngle", value); }
+	}
 
 	// m_OuterAngle
 	[SchemaMember("CDynamicLight", "m_OuterAngle")]
-	public ref float OuterAngle => ref Schema.GetRef<float>(this.Handle, "CDynamicLight", "m_OuterAngle");
+	public float OuterAngle
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CDynamicLight", "m_OuterAngle"); }
+		set { Schema.SetValueType<float>(this.Handle, "CDynamicLight", "m_OuterAngle", value); }
+	}
 
 	// m_SpotRadius
 	[SchemaMember("CDynamicLight", "m_SpotRadius")]
-	public ref float SpotRadius => ref Schema.GetRef<float>(this.Handle, "CDynamicLight", "m_SpotRadius");
+	public float SpotRadius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CDynamicLight", "m_SpotRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CDynamicLight", "m_SpotRadius", value); }
+	}
 
 }

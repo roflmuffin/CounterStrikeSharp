@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,6 +21,10 @@ public partial class CMultiplayer_Expresser : CAI_ExpresserWithFollowup
 
 	// m_bAllowMultipleScenes
 	[SchemaMember("CMultiplayer_Expresser", "m_bAllowMultipleScenes")]
-	public ref bool AllowMultipleScenes => ref Schema.GetRef<bool>(this.Handle, "CMultiplayer_Expresser", "m_bAllowMultipleScenes");
+	public bool AllowMultipleScenes
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CMultiplayer_Expresser", "m_bAllowMultipleScenes"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CMultiplayer_Expresser", "m_bAllowMultipleScenes", value); }
+	}
 
 }

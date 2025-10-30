@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class CSplineConstraint : CPhysConstraint
 
 	// m_vAnchorOffsetRestore
 	[SchemaMember("CSplineConstraint", "m_vAnchorOffsetRestore")]
-	public Vector AnchorOffsetRestore => Schema.GetDeclaredClass<Vector>(this.Handle, "CSplineConstraint", "m_vAnchorOffsetRestore");
+	public Vector3 AnchorOffsetRestore
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CSplineConstraint", "m_vAnchorOffsetRestore"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CSplineConstraint", "m_vAnchorOffsetRestore", value); }
+	}
 
 	// m_hSplineEntity
 	[SchemaMember("CSplineConstraint", "m_hSplineEntity")]
@@ -28,50 +33,98 @@ public partial class CSplineConstraint : CPhysConstraint
 
 	// m_bEnableLateralConstraint
 	[SchemaMember("CSplineConstraint", "m_bEnableLateralConstraint")]
-	public ref bool EnableLateralConstraint => ref Schema.GetRef<bool>(this.Handle, "CSplineConstraint", "m_bEnableLateralConstraint");
+	public bool EnableLateralConstraint
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CSplineConstraint", "m_bEnableLateralConstraint"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CSplineConstraint", "m_bEnableLateralConstraint", value); }
+	}
 
 	// m_bEnableVerticalConstraint
 	[SchemaMember("CSplineConstraint", "m_bEnableVerticalConstraint")]
-	public ref bool EnableVerticalConstraint => ref Schema.GetRef<bool>(this.Handle, "CSplineConstraint", "m_bEnableVerticalConstraint");
+	public bool EnableVerticalConstraint
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CSplineConstraint", "m_bEnableVerticalConstraint"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CSplineConstraint", "m_bEnableVerticalConstraint", value); }
+	}
 
 	// m_bEnableAngularConstraint
 	[SchemaMember("CSplineConstraint", "m_bEnableAngularConstraint")]
-	public ref bool EnableAngularConstraint => ref Schema.GetRef<bool>(this.Handle, "CSplineConstraint", "m_bEnableAngularConstraint");
+	public bool EnableAngularConstraint
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CSplineConstraint", "m_bEnableAngularConstraint"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CSplineConstraint", "m_bEnableAngularConstraint", value); }
+	}
 
 	// m_bEnableLimit
 	[SchemaMember("CSplineConstraint", "m_bEnableLimit")]
-	public ref bool EnableLimit => ref Schema.GetRef<bool>(this.Handle, "CSplineConstraint", "m_bEnableLimit");
+	public bool EnableLimit
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CSplineConstraint", "m_bEnableLimit"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CSplineConstraint", "m_bEnableLimit", value); }
+	}
 
 	// m_bFireEventsOnPath
 	[SchemaMember("CSplineConstraint", "m_bFireEventsOnPath")]
-	public ref bool FireEventsOnPath => ref Schema.GetRef<bool>(this.Handle, "CSplineConstraint", "m_bFireEventsOnPath");
+	public bool FireEventsOnPath
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CSplineConstraint", "m_bFireEventsOnPath"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CSplineConstraint", "m_bFireEventsOnPath", value); }
+	}
 
 	// m_flLinearFrequency
 	[SchemaMember("CSplineConstraint", "m_flLinearFrequency")]
-	public ref float LinearFrequency => ref Schema.GetRef<float>(this.Handle, "CSplineConstraint", "m_flLinearFrequency");
+	public float LinearFrequency
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSplineConstraint", "m_flLinearFrequency"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSplineConstraint", "m_flLinearFrequency", value); }
+	}
 
 	// m_flLinarDampingRatio
 	[SchemaMember("CSplineConstraint", "m_flLinarDampingRatio")]
-	public ref float LinarDampingRatio => ref Schema.GetRef<float>(this.Handle, "CSplineConstraint", "m_flLinarDampingRatio");
+	public float LinarDampingRatio
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSplineConstraint", "m_flLinarDampingRatio"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSplineConstraint", "m_flLinarDampingRatio", value); }
+	}
 
 	// m_flJointFriction
 	[SchemaMember("CSplineConstraint", "m_flJointFriction")]
-	public ref float JointFriction => ref Schema.GetRef<float>(this.Handle, "CSplineConstraint", "m_flJointFriction");
+	public float JointFriction
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSplineConstraint", "m_flJointFriction"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSplineConstraint", "m_flJointFriction", value); }
+	}
 
 	// m_flTransitionTime
 	[SchemaMember("CSplineConstraint", "m_flTransitionTime")]
-	public ref float TransitionTime => ref Schema.GetRef<float>(this.Handle, "CSplineConstraint", "m_flTransitionTime");
+	public float TransitionTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSplineConstraint", "m_flTransitionTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSplineConstraint", "m_flTransitionTime", value); }
+	}
 
 	// m_vPreSolveAnchorPos
 	[SchemaMember("CSplineConstraint", "m_vPreSolveAnchorPos")]
-	public Vector PreSolveAnchorPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CSplineConstraint", "m_vPreSolveAnchorPos");
+	public Vector3 PreSolveAnchorPos
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CSplineConstraint", "m_vPreSolveAnchorPos"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CSplineConstraint", "m_vPreSolveAnchorPos", value); }
+	}
 
 	// m_StartTransitionTime
 	[SchemaMember("CSplineConstraint", "m_StartTransitionTime")]
-	public ref float StartTransitionTime => ref Schema.GetRef<float>(this.Handle, "CSplineConstraint", "m_StartTransitionTime");
+	public float StartTransitionTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSplineConstraint", "m_StartTransitionTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSplineConstraint", "m_StartTransitionTime", value); }
+	}
 
 	// m_vTangentSpaceAnchorAtTransitionStart
 	[SchemaMember("CSplineConstraint", "m_vTangentSpaceAnchorAtTransitionStart")]
-	public Vector TangentSpaceAnchorAtTransitionStart => Schema.GetDeclaredClass<Vector>(this.Handle, "CSplineConstraint", "m_vTangentSpaceAnchorAtTransitionStart");
+	public Vector3 TangentSpaceAnchorAtTransitionStart
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CSplineConstraint", "m_vTangentSpaceAnchorAtTransitionStart"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CSplineConstraint", "m_vTangentSpaceAnchorAtTransitionStart", value); }
+	}
 
 }

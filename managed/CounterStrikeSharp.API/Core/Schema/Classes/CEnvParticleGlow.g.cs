@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,15 +21,27 @@ public partial class CEnvParticleGlow : CParticleSystem
 
 	// m_flAlphaScale
 	[SchemaMember("CEnvParticleGlow", "m_flAlphaScale")]
-	public ref float AlphaScale => ref Schema.GetRef<float>(this.Handle, "CEnvParticleGlow", "m_flAlphaScale");
+	public float AlphaScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvParticleGlow", "m_flAlphaScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvParticleGlow", "m_flAlphaScale", value); }
+	}
 
 	// m_flRadiusScale
 	[SchemaMember("CEnvParticleGlow", "m_flRadiusScale")]
-	public ref float RadiusScale => ref Schema.GetRef<float>(this.Handle, "CEnvParticleGlow", "m_flRadiusScale");
+	public float RadiusScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvParticleGlow", "m_flRadiusScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvParticleGlow", "m_flRadiusScale", value); }
+	}
 
 	// m_flSelfIllumScale
 	[SchemaMember("CEnvParticleGlow", "m_flSelfIllumScale")]
-	public ref float SelfIllumScale => ref Schema.GetRef<float>(this.Handle, "CEnvParticleGlow", "m_flSelfIllumScale");
+	public float SelfIllumScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvParticleGlow", "m_flSelfIllumScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvParticleGlow", "m_flSelfIllumScale", value); }
+	}
 
 	// m_ColorTint
 	[SchemaMember("CEnvParticleGlow", "m_ColorTint")]

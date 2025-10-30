@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,22 +29,42 @@ public partial class CLogicDistanceAutosave : CLogicalEntity
 
 	// m_flDistanceToPlayer
 	[SchemaMember("CLogicDistanceAutosave", "m_flDistanceToPlayer")]
-	public ref float DistanceToPlayer => ref Schema.GetRef<float>(this.Handle, "CLogicDistanceAutosave", "m_flDistanceToPlayer");
+	public float DistanceToPlayer
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLogicDistanceAutosave", "m_flDistanceToPlayer"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLogicDistanceAutosave", "m_flDistanceToPlayer", value); }
+	}
 
 	// m_bForceNewLevelUnit
 	[SchemaMember("CLogicDistanceAutosave", "m_bForceNewLevelUnit")]
-	public ref bool ForceNewLevelUnit => ref Schema.GetRef<bool>(this.Handle, "CLogicDistanceAutosave", "m_bForceNewLevelUnit");
+	public bool ForceNewLevelUnit
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CLogicDistanceAutosave", "m_bForceNewLevelUnit"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CLogicDistanceAutosave", "m_bForceNewLevelUnit", value); }
+	}
 
 	// m_bCheckCough
 	[SchemaMember("CLogicDistanceAutosave", "m_bCheckCough")]
-	public ref bool CheckCough => ref Schema.GetRef<bool>(this.Handle, "CLogicDistanceAutosave", "m_bCheckCough");
+	public bool CheckCough
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CLogicDistanceAutosave", "m_bCheckCough"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CLogicDistanceAutosave", "m_bCheckCough", value); }
+	}
 
 	// m_bThinkDangerous
 	[SchemaMember("CLogicDistanceAutosave", "m_bThinkDangerous")]
-	public ref bool ThinkDangerous => ref Schema.GetRef<bool>(this.Handle, "CLogicDistanceAutosave", "m_bThinkDangerous");
+	public bool ThinkDangerous
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CLogicDistanceAutosave", "m_bThinkDangerous"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CLogicDistanceAutosave", "m_bThinkDangerous", value); }
+	}
 
 	// m_flDangerousTime
 	[SchemaMember("CLogicDistanceAutosave", "m_flDangerousTime")]
-	public ref float DangerousTime => ref Schema.GetRef<float>(this.Handle, "CLogicDistanceAutosave", "m_flDangerousTime");
+	public float DangerousTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLogicDistanceAutosave", "m_flDangerousTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLogicDistanceAutosave", "m_flDangerousTime", value); }
+	}
 
 }

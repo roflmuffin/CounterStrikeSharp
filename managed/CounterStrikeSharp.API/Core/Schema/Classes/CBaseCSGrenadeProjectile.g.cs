@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,15 +21,27 @@ public partial class CBaseCSGrenadeProjectile : CBaseGrenade
 
 	// m_vInitialPosition
 	[SchemaMember("CBaseCSGrenadeProjectile", "m_vInitialPosition")]
-	public Vector InitialPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseCSGrenadeProjectile", "m_vInitialPosition");
+	public Vector3 InitialPosition
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBaseCSGrenadeProjectile", "m_vInitialPosition"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBaseCSGrenadeProjectile", "m_vInitialPosition", value); }
+	}
 
 	// m_vInitialVelocity
 	[SchemaMember("CBaseCSGrenadeProjectile", "m_vInitialVelocity")]
-	public Vector InitialVelocity => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseCSGrenadeProjectile", "m_vInitialVelocity");
+	public Vector3 InitialVelocity
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBaseCSGrenadeProjectile", "m_vInitialVelocity"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBaseCSGrenadeProjectile", "m_vInitialVelocity", value); }
+	}
 
 	// m_nBounces
 	[SchemaMember("CBaseCSGrenadeProjectile", "m_nBounces")]
-	public ref Int32 Bounces => ref Schema.GetRef<Int32>(this.Handle, "CBaseCSGrenadeProjectile", "m_nBounces");
+	public Int32 Bounces
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseCSGrenadeProjectile", "m_nBounces"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseCSGrenadeProjectile", "m_nBounces", value); }
+	}
 
 	// m_nExplodeEffectIndex
 	[SchemaMember("CBaseCSGrenadeProjectile", "m_nExplodeEffectIndex")]
@@ -36,50 +49,98 @@ public partial class CBaseCSGrenadeProjectile : CBaseGrenade
 
 	// m_nExplodeEffectTickBegin
 	[SchemaMember("CBaseCSGrenadeProjectile", "m_nExplodeEffectTickBegin")]
-	public ref Int32 ExplodeEffectTickBegin => ref Schema.GetRef<Int32>(this.Handle, "CBaseCSGrenadeProjectile", "m_nExplodeEffectTickBegin");
+	public Int32 ExplodeEffectTickBegin
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseCSGrenadeProjectile", "m_nExplodeEffectTickBegin"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseCSGrenadeProjectile", "m_nExplodeEffectTickBegin", value); }
+	}
 
 	// m_vecExplodeEffectOrigin
 	[SchemaMember("CBaseCSGrenadeProjectile", "m_vecExplodeEffectOrigin")]
-	public Vector ExplodeEffectOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseCSGrenadeProjectile", "m_vecExplodeEffectOrigin");
+	public Vector3 ExplodeEffectOrigin
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBaseCSGrenadeProjectile", "m_vecExplodeEffectOrigin"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBaseCSGrenadeProjectile", "m_vecExplodeEffectOrigin", value); }
+	}
 
 	// m_flSpawnTime
 	[SchemaMember("CBaseCSGrenadeProjectile", "m_flSpawnTime")]
-	public ref float SpawnTime => ref Schema.GetRef<float>(this.Handle, "CBaseCSGrenadeProjectile", "m_flSpawnTime");
+	public float SpawnTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseCSGrenadeProjectile", "m_flSpawnTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseCSGrenadeProjectile", "m_flSpawnTime", value); }
+	}
 
 	// m_unOGSExtraFlags
 	[SchemaMember("CBaseCSGrenadeProjectile", "m_unOGSExtraFlags")]
-	public ref byte OGSExtraFlags => ref Schema.GetRef<byte>(this.Handle, "CBaseCSGrenadeProjectile", "m_unOGSExtraFlags");
+	public byte OGSExtraFlags
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CBaseCSGrenadeProjectile", "m_unOGSExtraFlags"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CBaseCSGrenadeProjectile", "m_unOGSExtraFlags", value); }
+	}
 
 	// m_bDetonationRecorded
 	[SchemaMember("CBaseCSGrenadeProjectile", "m_bDetonationRecorded")]
-	public ref bool DetonationRecorded => ref Schema.GetRef<bool>(this.Handle, "CBaseCSGrenadeProjectile", "m_bDetonationRecorded");
+	public bool DetonationRecorded
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseCSGrenadeProjectile", "m_bDetonationRecorded"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseCSGrenadeProjectile", "m_bDetonationRecorded", value); }
+	}
 
 	// m_nItemIndex
 	[SchemaMember("CBaseCSGrenadeProjectile", "m_nItemIndex")]
-	public ref UInt16 ItemIndex => ref Schema.GetRef<UInt16>(this.Handle, "CBaseCSGrenadeProjectile", "m_nItemIndex");
+	public UInt16 ItemIndex
+	{
+		get { return Schema.GetValueType<UInt16>(this.Handle, "CBaseCSGrenadeProjectile", "m_nItemIndex"); }
+		set { Schema.SetValueType<UInt16>(this.Handle, "CBaseCSGrenadeProjectile", "m_nItemIndex", value); }
+	}
 
 	// m_vecOriginalSpawnLocation
 	[SchemaMember("CBaseCSGrenadeProjectile", "m_vecOriginalSpawnLocation")]
-	public Vector OriginalSpawnLocation => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseCSGrenadeProjectile", "m_vecOriginalSpawnLocation");
+	public Vector3 OriginalSpawnLocation
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBaseCSGrenadeProjectile", "m_vecOriginalSpawnLocation"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBaseCSGrenadeProjectile", "m_vecOriginalSpawnLocation", value); }
+	}
 
 	// m_flLastBounceSoundTime
 	[SchemaMember("CBaseCSGrenadeProjectile", "m_flLastBounceSoundTime")]
-	public ref float LastBounceSoundTime => ref Schema.GetRef<float>(this.Handle, "CBaseCSGrenadeProjectile", "m_flLastBounceSoundTime");
+	public float LastBounceSoundTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseCSGrenadeProjectile", "m_flLastBounceSoundTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseCSGrenadeProjectile", "m_flLastBounceSoundTime", value); }
+	}
 
 	// m_vecGrenadeSpin
 	[SchemaMember("CBaseCSGrenadeProjectile", "m_vecGrenadeSpin")]
-	public Vector GrenadeSpin => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseCSGrenadeProjectile", "m_vecGrenadeSpin");
+	public Vector3 GrenadeSpin
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBaseCSGrenadeProjectile", "m_vecGrenadeSpin"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBaseCSGrenadeProjectile", "m_vecGrenadeSpin", value); }
+	}
 
 	// m_vecLastHitSurfaceNormal
 	[SchemaMember("CBaseCSGrenadeProjectile", "m_vecLastHitSurfaceNormal")]
-	public Vector LastHitSurfaceNormal => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseCSGrenadeProjectile", "m_vecLastHitSurfaceNormal");
+	public Vector3 LastHitSurfaceNormal
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBaseCSGrenadeProjectile", "m_vecLastHitSurfaceNormal"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBaseCSGrenadeProjectile", "m_vecLastHitSurfaceNormal", value); }
+	}
 
 	// m_nTicksAtZeroVelocity
 	[SchemaMember("CBaseCSGrenadeProjectile", "m_nTicksAtZeroVelocity")]
-	public ref Int32 TicksAtZeroVelocity => ref Schema.GetRef<Int32>(this.Handle, "CBaseCSGrenadeProjectile", "m_nTicksAtZeroVelocity");
+	public Int32 TicksAtZeroVelocity
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseCSGrenadeProjectile", "m_nTicksAtZeroVelocity"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseCSGrenadeProjectile", "m_nTicksAtZeroVelocity", value); }
+	}
 
 	// m_bHasEverHitEnemy
 	[SchemaMember("CBaseCSGrenadeProjectile", "m_bHasEverHitEnemy")]
-	public ref bool HasEverHitEnemy => ref Schema.GetRef<bool>(this.Handle, "CBaseCSGrenadeProjectile", "m_bHasEverHitEnemy");
+	public bool HasEverHitEnemy
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseCSGrenadeProjectile", "m_bHasEverHitEnemy"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseCSGrenadeProjectile", "m_bHasEverHitEnemy", value); }
+	}
 
 }

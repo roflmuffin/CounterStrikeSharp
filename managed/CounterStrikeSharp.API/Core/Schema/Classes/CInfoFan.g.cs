@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,15 +21,27 @@ public partial class CInfoFan : CPointEntity
 
 	// m_fFanForceMaxRadius
 	[SchemaMember("CInfoFan", "m_fFanForceMaxRadius")]
-	public ref float FanForceMaxRadius => ref Schema.GetRef<float>(this.Handle, "CInfoFan", "m_fFanForceMaxRadius");
+	public float FanForceMaxRadius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CInfoFan", "m_fFanForceMaxRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CInfoFan", "m_fFanForceMaxRadius", value); }
+	}
 
 	// m_fFanForceMinRadius
 	[SchemaMember("CInfoFan", "m_fFanForceMinRadius")]
-	public ref float FanForceMinRadius => ref Schema.GetRef<float>(this.Handle, "CInfoFan", "m_fFanForceMinRadius");
+	public float FanForceMinRadius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CInfoFan", "m_fFanForceMinRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CInfoFan", "m_fFanForceMinRadius", value); }
+	}
 
 	// m_flCurveDistRange
 	[SchemaMember("CInfoFan", "m_flCurveDistRange")]
-	public ref float CurveDistRange => ref Schema.GetRef<float>(this.Handle, "CInfoFan", "m_flCurveDistRange");
+	public float CurveDistRange
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CInfoFan", "m_flCurveDistRange"); }
+		set { Schema.SetValueType<float>(this.Handle, "CInfoFan", "m_flCurveDistRange", value); }
+	}
 
 	// m_FanForceCurveString
 	[SchemaMember("CInfoFan", "m_FanForceCurveString")]

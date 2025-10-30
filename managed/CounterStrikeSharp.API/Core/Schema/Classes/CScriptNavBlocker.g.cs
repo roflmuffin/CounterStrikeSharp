@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,6 +21,10 @@ public partial class CScriptNavBlocker : CFuncNavBlocker
 
 	// m_vExtent
 	[SchemaMember("CScriptNavBlocker", "m_vExtent")]
-	public Vector Extent => Schema.GetDeclaredClass<Vector>(this.Handle, "CScriptNavBlocker", "m_vExtent");
+	public Vector3 Extent
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CScriptNavBlocker", "m_vExtent"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CScriptNavBlocker", "m_vExtent", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,14 +29,26 @@ public partial class CEnvGlobal : CLogicalEntity
 
 	// m_triggermode
 	[SchemaMember("CEnvGlobal", "m_triggermode")]
-	public ref Int32 Triggermode => ref Schema.GetRef<Int32>(this.Handle, "CEnvGlobal", "m_triggermode");
+	public Int32 Triggermode
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvGlobal", "m_triggermode"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvGlobal", "m_triggermode", value); }
+	}
 
 	// m_initialstate
 	[SchemaMember("CEnvGlobal", "m_initialstate")]
-	public ref Int32 Initialstate => ref Schema.GetRef<Int32>(this.Handle, "CEnvGlobal", "m_initialstate");
+	public Int32 Initialstate
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvGlobal", "m_initialstate"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvGlobal", "m_initialstate", value); }
+	}
 
 	// m_counter
 	[SchemaMember("CEnvGlobal", "m_counter")]
-	public ref Int32 Counter => ref Schema.GetRef<Int32>(this.Handle, "CEnvGlobal", "m_counter");
+	public Int32 Counter
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvGlobal", "m_counter"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvGlobal", "m_counter", value); }
+	}
 
 }

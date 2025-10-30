@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -44,15 +45,27 @@ public partial class CSoundOpvarSetEntity : CBaseEntity
 
 	// m_nOpvarType
 	[SchemaMember("CSoundOpvarSetEntity", "m_nOpvarType")]
-	public ref Int32 OpvarType => ref Schema.GetRef<Int32>(this.Handle, "CSoundOpvarSetEntity", "m_nOpvarType");
+	public Int32 OpvarType
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSoundOpvarSetEntity", "m_nOpvarType"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSoundOpvarSetEntity", "m_nOpvarType", value); }
+	}
 
 	// m_nOpvarIndex
 	[SchemaMember("CSoundOpvarSetEntity", "m_nOpvarIndex")]
-	public ref Int32 OpvarIndex => ref Schema.GetRef<Int32>(this.Handle, "CSoundOpvarSetEntity", "m_nOpvarIndex");
+	public Int32 OpvarIndex
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSoundOpvarSetEntity", "m_nOpvarIndex"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSoundOpvarSetEntity", "m_nOpvarIndex", value); }
+	}
 
 	// m_flOpvarValue
 	[SchemaMember("CSoundOpvarSetEntity", "m_flOpvarValue")]
-	public ref float OpvarValue => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetEntity", "m_flOpvarValue");
+	public float OpvarValue
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetEntity", "m_flOpvarValue"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetEntity", "m_flOpvarValue", value); }
+	}
 
 	// m_OpvarValueString
 	[SchemaMember("CSoundOpvarSetEntity", "m_OpvarValueString")]
@@ -64,6 +77,10 @@ public partial class CSoundOpvarSetEntity : CBaseEntity
 
 	// m_bSetOnSpawn
 	[SchemaMember("CSoundOpvarSetEntity", "m_bSetOnSpawn")]
-	public ref bool SetOnSpawn => ref Schema.GetRef<bool>(this.Handle, "CSoundOpvarSetEntity", "m_bSetOnSpawn");
+	public bool SetOnSpawn
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CSoundOpvarSetEntity", "m_bSetOnSpawn"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CSoundOpvarSetEntity", "m_bSetOnSpawn", value); }
+	}
 
 }

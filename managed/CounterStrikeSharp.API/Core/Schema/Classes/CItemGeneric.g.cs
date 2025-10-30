@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,31 +21,59 @@ public partial class CItemGeneric : CItem
 
 	// m_bHasTriggerRadius
 	[SchemaMember("CItemGeneric", "m_bHasTriggerRadius")]
-	public ref bool HasTriggerRadius => ref Schema.GetRef<bool>(this.Handle, "CItemGeneric", "m_bHasTriggerRadius");
+	public bool HasTriggerRadius
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CItemGeneric", "m_bHasTriggerRadius"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CItemGeneric", "m_bHasTriggerRadius", value); }
+	}
 
 	// m_bHasPickupRadius
 	[SchemaMember("CItemGeneric", "m_bHasPickupRadius")]
-	public ref bool HasPickupRadius => ref Schema.GetRef<bool>(this.Handle, "CItemGeneric", "m_bHasPickupRadius");
+	public bool HasPickupRadius
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CItemGeneric", "m_bHasPickupRadius"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CItemGeneric", "m_bHasPickupRadius", value); }
+	}
 
 	// m_flPickupRadiusSqr
 	[SchemaMember("CItemGeneric", "m_flPickupRadiusSqr")]
-	public ref float PickupRadiusSqr => ref Schema.GetRef<float>(this.Handle, "CItemGeneric", "m_flPickupRadiusSqr");
+	public float PickupRadiusSqr
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CItemGeneric", "m_flPickupRadiusSqr"); }
+		set { Schema.SetValueType<float>(this.Handle, "CItemGeneric", "m_flPickupRadiusSqr", value); }
+	}
 
 	// m_flTriggerRadiusSqr
 	[SchemaMember("CItemGeneric", "m_flTriggerRadiusSqr")]
-	public ref float TriggerRadiusSqr => ref Schema.GetRef<float>(this.Handle, "CItemGeneric", "m_flTriggerRadiusSqr");
+	public float TriggerRadiusSqr
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CItemGeneric", "m_flTriggerRadiusSqr"); }
+		set { Schema.SetValueType<float>(this.Handle, "CItemGeneric", "m_flTriggerRadiusSqr", value); }
+	}
 
 	// m_flLastPickupCheck
 	[SchemaMember("CItemGeneric", "m_flLastPickupCheck")]
-	public ref float LastPickupCheck => ref Schema.GetRef<float>(this.Handle, "CItemGeneric", "m_flLastPickupCheck");
+	public float LastPickupCheck
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CItemGeneric", "m_flLastPickupCheck"); }
+		set { Schema.SetValueType<float>(this.Handle, "CItemGeneric", "m_flLastPickupCheck", value); }
+	}
 
 	// m_bPlayerCounterListenerAdded
 	[SchemaMember("CItemGeneric", "m_bPlayerCounterListenerAdded")]
-	public ref bool PlayerCounterListenerAdded => ref Schema.GetRef<bool>(this.Handle, "CItemGeneric", "m_bPlayerCounterListenerAdded");
+	public bool PlayerCounterListenerAdded
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CItemGeneric", "m_bPlayerCounterListenerAdded"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CItemGeneric", "m_bPlayerCounterListenerAdded", value); }
+	}
 
 	// m_bPlayerInTriggerRadius
 	[SchemaMember("CItemGeneric", "m_bPlayerInTriggerRadius")]
-	public ref bool PlayerInTriggerRadius => ref Schema.GetRef<bool>(this.Handle, "CItemGeneric", "m_bPlayerInTriggerRadius");
+	public bool PlayerInTriggerRadius
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CItemGeneric", "m_bPlayerInTriggerRadius"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CItemGeneric", "m_bPlayerInTriggerRadius", value); }
+	}
 
 	// m_hSpawnParticleEffect
 	[SchemaMember("CItemGeneric", "m_hSpawnParticleEffect")]
@@ -60,7 +89,11 @@ public partial class CItemGeneric : CItem
 
 	// m_bAutoStartAmbientSound
 	[SchemaMember("CItemGeneric", "m_bAutoStartAmbientSound")]
-	public ref bool AutoStartAmbientSound => ref Schema.GetRef<bool>(this.Handle, "CItemGeneric", "m_bAutoStartAmbientSound");
+	public bool AutoStartAmbientSound
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CItemGeneric", "m_bAutoStartAmbientSound"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CItemGeneric", "m_bAutoStartAmbientSound", value); }
+	}
 
 	// m_pSpawnScriptFunction
 	[SchemaMember("CItemGeneric", "m_pSpawnScriptFunction")]
@@ -152,11 +185,19 @@ public partial class CItemGeneric : CItem
 
 	// m_flPickupRadius
 	[SchemaMember("CItemGeneric", "m_flPickupRadius")]
-	public ref float PickupRadius => ref Schema.GetRef<float>(this.Handle, "CItemGeneric", "m_flPickupRadius");
+	public float PickupRadius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CItemGeneric", "m_flPickupRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CItemGeneric", "m_flPickupRadius", value); }
+	}
 
 	// m_flTriggerRadius
 	[SchemaMember("CItemGeneric", "m_flTriggerRadius")]
-	public ref float TriggerRadius => ref Schema.GetRef<float>(this.Handle, "CItemGeneric", "m_flTriggerRadius");
+	public float TriggerRadius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CItemGeneric", "m_flTriggerRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CItemGeneric", "m_flTriggerRadius", value); }
+	}
 
 	// m_pTriggerSoundEffect
 	[SchemaMember("CItemGeneric", "m_pTriggerSoundEffect")]
@@ -168,7 +209,11 @@ public partial class CItemGeneric : CItem
 
 	// m_bGlowWhenInTrigger
 	[SchemaMember("CItemGeneric", "m_bGlowWhenInTrigger")]
-	public ref bool GlowWhenInTrigger => ref Schema.GetRef<bool>(this.Handle, "CItemGeneric", "m_bGlowWhenInTrigger");
+	public bool GlowWhenInTrigger
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CItemGeneric", "m_bGlowWhenInTrigger"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CItemGeneric", "m_bGlowWhenInTrigger", value); }
+	}
 
 	// m_glowColor
 	[SchemaMember("CItemGeneric", "m_glowColor")]
@@ -180,7 +225,11 @@ public partial class CItemGeneric : CItem
 
 	// m_bUseable
 	[SchemaMember("CItemGeneric", "m_bUseable")]
-	public ref bool Useable => ref Schema.GetRef<bool>(this.Handle, "CItemGeneric", "m_bUseable");
+	public bool Useable
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CItemGeneric", "m_bUseable"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CItemGeneric", "m_bUseable", value); }
+	}
 
 	// m_hTriggerHelper
 	[SchemaMember("CItemGeneric", "m_hTriggerHelper")]

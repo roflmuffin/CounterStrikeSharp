@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -32,31 +33,59 @@ public partial class CFuncRotating : CBaseModelEntity
 
 	// m_localRotationVector
 	[SchemaMember("CFuncRotating", "m_localRotationVector")]
-	public Vector LocalRotationVector => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncRotating", "m_localRotationVector");
+	public Vector3 LocalRotationVector
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CFuncRotating", "m_localRotationVector"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CFuncRotating", "m_localRotationVector", value); }
+	}
 
 	// m_flFanFriction
 	[SchemaMember("CFuncRotating", "m_flFanFriction")]
-	public ref float FanFriction => ref Schema.GetRef<float>(this.Handle, "CFuncRotating", "m_flFanFriction");
+	public float FanFriction
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncRotating", "m_flFanFriction"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncRotating", "m_flFanFriction", value); }
+	}
 
 	// m_flAttenuation
 	[SchemaMember("CFuncRotating", "m_flAttenuation")]
-	public ref float Attenuation => ref Schema.GetRef<float>(this.Handle, "CFuncRotating", "m_flAttenuation");
+	public float Attenuation
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncRotating", "m_flAttenuation"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncRotating", "m_flAttenuation", value); }
+	}
 
 	// m_flVolume
 	[SchemaMember("CFuncRotating", "m_flVolume")]
-	public ref float Volume => ref Schema.GetRef<float>(this.Handle, "CFuncRotating", "m_flVolume");
+	public float Volume
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncRotating", "m_flVolume"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncRotating", "m_flVolume", value); }
+	}
 
 	// m_flTargetSpeed
 	[SchemaMember("CFuncRotating", "m_flTargetSpeed")]
-	public ref float TargetSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncRotating", "m_flTargetSpeed");
+	public float TargetSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncRotating", "m_flTargetSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncRotating", "m_flTargetSpeed", value); }
+	}
 
 	// m_flMaxSpeed
 	[SchemaMember("CFuncRotating", "m_flMaxSpeed")]
-	public ref float MaxSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncRotating", "m_flMaxSpeed");
+	public float MaxSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncRotating", "m_flMaxSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncRotating", "m_flMaxSpeed", value); }
+	}
 
 	// m_flBlockDamage
 	[SchemaMember("CFuncRotating", "m_flBlockDamage")]
-	public ref float BlockDamage => ref Schema.GetRef<float>(this.Handle, "CFuncRotating", "m_flBlockDamage");
+	public float BlockDamage
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncRotating", "m_flBlockDamage"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncRotating", "m_flBlockDamage", value); }
+	}
 
 	// m_NoiseRunning
 	[SchemaMember("CFuncRotating", "m_NoiseRunning")]
@@ -68,30 +97,58 @@ public partial class CFuncRotating : CBaseModelEntity
 
 	// m_bReversed
 	[SchemaMember("CFuncRotating", "m_bReversed")]
-	public ref bool Reversed => ref Schema.GetRef<bool>(this.Handle, "CFuncRotating", "m_bReversed");
+	public bool Reversed
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncRotating", "m_bReversed"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncRotating", "m_bReversed", value); }
+	}
 
 	// m_bAccelDecel
 	[SchemaMember("CFuncRotating", "m_bAccelDecel")]
-	public ref bool AccelDecel => ref Schema.GetRef<bool>(this.Handle, "CFuncRotating", "m_bAccelDecel");
+	public bool AccelDecel
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncRotating", "m_bAccelDecel"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncRotating", "m_bAccelDecel", value); }
+	}
 
 	// m_prevLocalAngles
 	[SchemaMember("CFuncRotating", "m_prevLocalAngles")]
-	public QAngle PrevLocalAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncRotating", "m_prevLocalAngles");
+	public QAngle PrevLocalAngles
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CFuncRotating", "m_prevLocalAngles"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CFuncRotating", "m_prevLocalAngles", value); }
+	}
 
 	// m_angStart
 	[SchemaMember("CFuncRotating", "m_angStart")]
-	public QAngle Start => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncRotating", "m_angStart");
+	public QAngle Start
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CFuncRotating", "m_angStart"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CFuncRotating", "m_angStart", value); }
+	}
 
 	// m_bStopAtStartPos
 	[SchemaMember("CFuncRotating", "m_bStopAtStartPos")]
-	public ref bool StopAtStartPos => ref Schema.GetRef<bool>(this.Handle, "CFuncRotating", "m_bStopAtStartPos");
+	public bool StopAtStartPos
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncRotating", "m_bStopAtStartPos"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncRotating", "m_bStopAtStartPos", value); }
+	}
 
 	// m_vecClientOrigin
 	[SchemaMember("CFuncRotating", "m_vecClientOrigin")]
-	public Vector ClientOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncRotating", "m_vecClientOrigin");
+	public Vector3 ClientOrigin
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CFuncRotating", "m_vecClientOrigin"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CFuncRotating", "m_vecClientOrigin", value); }
+	}
 
 	// m_vecClientAngles
 	[SchemaMember("CFuncRotating", "m_vecClientAngles")]
-	public QAngle ClientAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncRotating", "m_vecClientAngles");
+	public QAngle ClientAngles
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CFuncRotating", "m_vecClientAngles"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CFuncRotating", "m_vecClientAngles", value); }
+	}
 
 }

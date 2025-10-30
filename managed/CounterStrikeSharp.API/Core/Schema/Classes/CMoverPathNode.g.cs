@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,11 +21,19 @@ public partial class CMoverPathNode : CPointEntity
 
 	// m_vInTangentLocal
 	[SchemaMember("CMoverPathNode", "m_vInTangentLocal")]
-	public Vector InTangentLocal => Schema.GetDeclaredClass<Vector>(this.Handle, "CMoverPathNode", "m_vInTangentLocal");
+	public Vector3 InTangentLocal
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CMoverPathNode", "m_vInTangentLocal"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CMoverPathNode", "m_vInTangentLocal", value); }
+	}
 
 	// m_vOutTangentLocal
 	[SchemaMember("CMoverPathNode", "m_vOutTangentLocal")]
-	public Vector OutTangentLocal => Schema.GetDeclaredClass<Vector>(this.Handle, "CMoverPathNode", "m_vOutTangentLocal");
+	public Vector3 OutTangentLocal
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CMoverPathNode", "m_vOutTangentLocal"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CMoverPathNode", "m_vOutTangentLocal", value); }
+	}
 
 	// m_szParentPathUniqueID
 	[SchemaMember("CMoverPathNode", "m_szParentPathUniqueID")]

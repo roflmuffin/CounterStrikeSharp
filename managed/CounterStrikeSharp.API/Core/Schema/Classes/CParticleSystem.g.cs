@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,23 +29,43 @@ public partial class CParticleSystem : CBaseModelEntity
 
 	// m_bActive
 	[SchemaMember("CParticleSystem", "m_bActive")]
-	public ref bool Active => ref Schema.GetRef<bool>(this.Handle, "CParticleSystem", "m_bActive");
+	public bool Active
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CParticleSystem", "m_bActive"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CParticleSystem", "m_bActive", value); }
+	}
 
 	// m_bFrozen
 	[SchemaMember("CParticleSystem", "m_bFrozen")]
-	public ref bool Frozen => ref Schema.GetRef<bool>(this.Handle, "CParticleSystem", "m_bFrozen");
+	public bool Frozen
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CParticleSystem", "m_bFrozen"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CParticleSystem", "m_bFrozen", value); }
+	}
 
 	// m_flFreezeTransitionDuration
 	[SchemaMember("CParticleSystem", "m_flFreezeTransitionDuration")]
-	public ref float FreezeTransitionDuration => ref Schema.GetRef<float>(this.Handle, "CParticleSystem", "m_flFreezeTransitionDuration");
+	public float FreezeTransitionDuration
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CParticleSystem", "m_flFreezeTransitionDuration"); }
+		set { Schema.SetValueType<float>(this.Handle, "CParticleSystem", "m_flFreezeTransitionDuration", value); }
+	}
 
 	// m_nStopType
 	[SchemaMember("CParticleSystem", "m_nStopType")]
-	public ref Int32 StopType => ref Schema.GetRef<Int32>(this.Handle, "CParticleSystem", "m_nStopType");
+	public Int32 StopType
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CParticleSystem", "m_nStopType"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CParticleSystem", "m_nStopType", value); }
+	}
 
 	// m_bAnimateDuringGameplayPause
 	[SchemaMember("CParticleSystem", "m_bAnimateDuringGameplayPause")]
-	public ref bool AnimateDuringGameplayPause => ref Schema.GetRef<bool>(this.Handle, "CParticleSystem", "m_bAnimateDuringGameplayPause");
+	public bool AnimateDuringGameplayPause
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CParticleSystem", "m_bAnimateDuringGameplayPause"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CParticleSystem", "m_bAnimateDuringGameplayPause", value); }
+	}
 
 	// m_iEffectIndex
 	[SchemaMember("CParticleSystem", "m_iEffectIndex")]
@@ -52,15 +73,23 @@ public partial class CParticleSystem : CBaseModelEntity
 
 	// m_flStartTime
 	[SchemaMember("CParticleSystem", "m_flStartTime")]
-	public ref float StartTime => ref Schema.GetRef<float>(this.Handle, "CParticleSystem", "m_flStartTime");
+	public float StartTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CParticleSystem", "m_flStartTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CParticleSystem", "m_flStartTime", value); }
+	}
 
 	// m_flPreSimTime
 	[SchemaMember("CParticleSystem", "m_flPreSimTime")]
-	public ref float PreSimTime => ref Schema.GetRef<float>(this.Handle, "CParticleSystem", "m_flPreSimTime");
+	public float PreSimTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CParticleSystem", "m_flPreSimTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CParticleSystem", "m_flPreSimTime", value); }
+	}
 
 	// m_vServerControlPoints
 	[SchemaMember("CParticleSystem", "m_vServerControlPoints")]
-	public Span<Vector> ServerControlPoints => Schema.GetFixedArray<Vector>(this.Handle, "CParticleSystem", "m_vServerControlPoints", 4);
+	public Span<Vector3> ServerControlPoints => Schema.GetFixedArray<Vector3>(this.Handle, "CParticleSystem", "m_vServerControlPoints", 4);
 
 	// m_iServerControlPointAssignments
 	[SchemaMember("CParticleSystem", "m_iServerControlPointAssignments")]
@@ -72,19 +101,35 @@ public partial class CParticleSystem : CBaseModelEntity
 
 	// m_bNoSave
 	[SchemaMember("CParticleSystem", "m_bNoSave")]
-	public ref bool NoSave => ref Schema.GetRef<bool>(this.Handle, "CParticleSystem", "m_bNoSave");
+	public bool NoSave
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CParticleSystem", "m_bNoSave"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CParticleSystem", "m_bNoSave", value); }
+	}
 
 	// m_bNoFreeze
 	[SchemaMember("CParticleSystem", "m_bNoFreeze")]
-	public ref bool NoFreeze => ref Schema.GetRef<bool>(this.Handle, "CParticleSystem", "m_bNoFreeze");
+	public bool NoFreeze
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CParticleSystem", "m_bNoFreeze"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CParticleSystem", "m_bNoFreeze", value); }
+	}
 
 	// m_bNoRamp
 	[SchemaMember("CParticleSystem", "m_bNoRamp")]
-	public ref bool NoRamp => ref Schema.GetRef<bool>(this.Handle, "CParticleSystem", "m_bNoRamp");
+	public bool NoRamp
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CParticleSystem", "m_bNoRamp"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CParticleSystem", "m_bNoRamp", value); }
+	}
 
 	// m_bStartActive
 	[SchemaMember("CParticleSystem", "m_bStartActive")]
-	public ref bool StartActive => ref Schema.GetRef<bool>(this.Handle, "CParticleSystem", "m_bStartActive");
+	public bool StartActive
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CParticleSystem", "m_bStartActive"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CParticleSystem", "m_bStartActive", value); }
+	}
 
 	// m_iszEffectName
 	[SchemaMember("CParticleSystem", "m_iszEffectName")]
@@ -100,15 +145,27 @@ public partial class CParticleSystem : CBaseModelEntity
 
 	// m_nDataCP
 	[SchemaMember("CParticleSystem", "m_nDataCP")]
-	public ref Int32 DataCP => ref Schema.GetRef<Int32>(this.Handle, "CParticleSystem", "m_nDataCP");
+	public Int32 DataCP
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CParticleSystem", "m_nDataCP"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CParticleSystem", "m_nDataCP", value); }
+	}
 
 	// m_vecDataCPValue
 	[SchemaMember("CParticleSystem", "m_vecDataCPValue")]
-	public Vector DataCPValue => Schema.GetDeclaredClass<Vector>(this.Handle, "CParticleSystem", "m_vecDataCPValue");
+	public Vector3 DataCPValue
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CParticleSystem", "m_vecDataCPValue"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CParticleSystem", "m_vecDataCPValue", value); }
+	}
 
 	// m_nTintCP
 	[SchemaMember("CParticleSystem", "m_nTintCP")]
-	public ref Int32 TintCP => ref Schema.GetRef<Int32>(this.Handle, "CParticleSystem", "m_nTintCP");
+	public Int32 TintCP
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CParticleSystem", "m_nTintCP"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CParticleSystem", "m_nTintCP", value); }
+	}
 
 	// m_clrTint
 	[SchemaMember("CParticleSystem", "m_clrTint")]

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,19 +25,35 @@ public partial class CBaseFlex : CBaseAnimGraph
 
 	// m_vLookTargetPosition
 	[SchemaMember("CBaseFlex", "m_vLookTargetPosition")]
-	public Vector LookTargetPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseFlex", "m_vLookTargetPosition");
+	public Vector3 LookTargetPosition
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBaseFlex", "m_vLookTargetPosition"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBaseFlex", "m_vLookTargetPosition", value); }
+	}
 
 	// m_blinktoggle
 	[SchemaMember("CBaseFlex", "m_blinktoggle")]
-	public ref bool Blinktoggle => ref Schema.GetRef<bool>(this.Handle, "CBaseFlex", "m_blinktoggle");
+	public bool Blinktoggle
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseFlex", "m_blinktoggle"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseFlex", "m_blinktoggle", value); }
+	}
 
 	// m_flAllowResponsesEndTime
 	[SchemaMember("CBaseFlex", "m_flAllowResponsesEndTime")]
-	public ref float AllowResponsesEndTime => ref Schema.GetRef<float>(this.Handle, "CBaseFlex", "m_flAllowResponsesEndTime");
+	public float AllowResponsesEndTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseFlex", "m_flAllowResponsesEndTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseFlex", "m_flAllowResponsesEndTime", value); }
+	}
 
 	// m_flLastFlexAnimationTime
 	[SchemaMember("CBaseFlex", "m_flLastFlexAnimationTime")]
-	public ref float LastFlexAnimationTime => ref Schema.GetRef<float>(this.Handle, "CBaseFlex", "m_flLastFlexAnimationTime");
+	public float LastFlexAnimationTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseFlex", "m_flLastFlexAnimationTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseFlex", "m_flLastFlexAnimationTime", value); }
+	}
 
 	// m_nNextSceneEventId
 	[SchemaMember("CBaseFlex", "m_nNextSceneEventId")]
@@ -44,6 +61,10 @@ public partial class CBaseFlex : CBaseAnimGraph
 
 	// m_bUpdateLayerPriorities
 	[SchemaMember("CBaseFlex", "m_bUpdateLayerPriorities")]
-	public ref bool UpdateLayerPriorities => ref Schema.GetRef<bool>(this.Handle, "CBaseFlex", "m_bUpdateLayerPriorities");
+	public bool UpdateLayerPriorities
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseFlex", "m_bUpdateLayerPriorities"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseFlex", "m_bUpdateLayerPriorities", value); }
+	}
 
 }

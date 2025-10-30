@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,38 +21,74 @@ public partial class CEnvWindVolume : CBaseEntity
 
 	// m_bActive
 	[SchemaMember("CEnvWindVolume", "m_bActive")]
-	public ref bool Active => ref Schema.GetRef<bool>(this.Handle, "CEnvWindVolume", "m_bActive");
+	public bool Active
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvWindVolume", "m_bActive"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvWindVolume", "m_bActive", value); }
+	}
 
 	// m_vBoxMins
 	[SchemaMember("CEnvWindVolume", "m_vBoxMins")]
-	public Vector BoxMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvWindVolume", "m_vBoxMins");
+	public Vector3 BoxMins
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvWindVolume", "m_vBoxMins"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvWindVolume", "m_vBoxMins", value); }
+	}
 
 	// m_vBoxMaxs
 	[SchemaMember("CEnvWindVolume", "m_vBoxMaxs")]
-	public Vector BoxMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvWindVolume", "m_vBoxMaxs");
+	public Vector3 BoxMaxs
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvWindVolume", "m_vBoxMaxs"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvWindVolume", "m_vBoxMaxs", value); }
+	}
 
 	// m_bStartDisabled
 	[SchemaMember("CEnvWindVolume", "m_bStartDisabled")]
-	public ref bool StartDisabled => ref Schema.GetRef<bool>(this.Handle, "CEnvWindVolume", "m_bStartDisabled");
+	public bool StartDisabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvWindVolume", "m_bStartDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvWindVolume", "m_bStartDisabled", value); }
+	}
 
 	// m_nShape
 	[SchemaMember("CEnvWindVolume", "m_nShape")]
-	public ref Int32 Shape => ref Schema.GetRef<Int32>(this.Handle, "CEnvWindVolume", "m_nShape");
+	public Int32 Shape
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvWindVolume", "m_nShape"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvWindVolume", "m_nShape", value); }
+	}
 
 	// m_fWindSpeedMultiplier
 	[SchemaMember("CEnvWindVolume", "m_fWindSpeedMultiplier")]
-	public ref float WindSpeedMultiplier => ref Schema.GetRef<float>(this.Handle, "CEnvWindVolume", "m_fWindSpeedMultiplier");
+	public float WindSpeedMultiplier
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvWindVolume", "m_fWindSpeedMultiplier"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvWindVolume", "m_fWindSpeedMultiplier", value); }
+	}
 
 	// m_fWindTurbulenceMultiplier
 	[SchemaMember("CEnvWindVolume", "m_fWindTurbulenceMultiplier")]
-	public ref float WindTurbulenceMultiplier => ref Schema.GetRef<float>(this.Handle, "CEnvWindVolume", "m_fWindTurbulenceMultiplier");
+	public float WindTurbulenceMultiplier
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvWindVolume", "m_fWindTurbulenceMultiplier"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvWindVolume", "m_fWindTurbulenceMultiplier", value); }
+	}
 
 	// m_fWindSpeedVariationMultiplier
 	[SchemaMember("CEnvWindVolume", "m_fWindSpeedVariationMultiplier")]
-	public ref float WindSpeedVariationMultiplier => ref Schema.GetRef<float>(this.Handle, "CEnvWindVolume", "m_fWindSpeedVariationMultiplier");
+	public float WindSpeedVariationMultiplier
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvWindVolume", "m_fWindSpeedVariationMultiplier"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvWindVolume", "m_fWindSpeedVariationMultiplier", value); }
+	}
 
 	// m_fWindDirectionVariationMultiplier
 	[SchemaMember("CEnvWindVolume", "m_fWindDirectionVariationMultiplier")]
-	public ref float WindDirectionVariationMultiplier => ref Schema.GetRef<float>(this.Handle, "CEnvWindVolume", "m_fWindDirectionVariationMultiplier");
+	public float WindDirectionVariationMultiplier
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvWindVolume", "m_fWindDirectionVariationMultiplier"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvWindVolume", "m_fWindDirectionVariationMultiplier", value); }
+	}
 
 }

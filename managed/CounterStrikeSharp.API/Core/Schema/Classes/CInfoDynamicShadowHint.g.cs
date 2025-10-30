@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,19 +21,35 @@ public partial class CInfoDynamicShadowHint : CPointEntity
 
 	// m_bDisabled
 	[SchemaMember("CInfoDynamicShadowHint", "m_bDisabled")]
-	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CInfoDynamicShadowHint", "m_bDisabled");
+	public bool Disabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CInfoDynamicShadowHint", "m_bDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CInfoDynamicShadowHint", "m_bDisabled", value); }
+	}
 
 	// m_flRange
 	[SchemaMember("CInfoDynamicShadowHint", "m_flRange")]
-	public ref float Range => ref Schema.GetRef<float>(this.Handle, "CInfoDynamicShadowHint", "m_flRange");
+	public float Range
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CInfoDynamicShadowHint", "m_flRange"); }
+		set { Schema.SetValueType<float>(this.Handle, "CInfoDynamicShadowHint", "m_flRange", value); }
+	}
 
 	// m_nImportance
 	[SchemaMember("CInfoDynamicShadowHint", "m_nImportance")]
-	public ref Int32 Importance => ref Schema.GetRef<Int32>(this.Handle, "CInfoDynamicShadowHint", "m_nImportance");
+	public Int32 Importance
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CInfoDynamicShadowHint", "m_nImportance"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CInfoDynamicShadowHint", "m_nImportance", value); }
+	}
 
 	// m_nLightChoice
 	[SchemaMember("CInfoDynamicShadowHint", "m_nLightChoice")]
-	public ref Int32 LightChoice => ref Schema.GetRef<Int32>(this.Handle, "CInfoDynamicShadowHint", "m_nLightChoice");
+	public Int32 LightChoice
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CInfoDynamicShadowHint", "m_nLightChoice"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CInfoDynamicShadowHint", "m_nLightChoice", value); }
+	}
 
 	// m_hLight
 	[SchemaMember("CInfoDynamicShadowHint", "m_hLight")]

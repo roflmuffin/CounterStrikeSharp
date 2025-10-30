@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,14 +21,26 @@ public partial class CTriggerSave : CBaseTrigger
 
 	// m_bForceNewLevelUnit
 	[SchemaMember("CTriggerSave", "m_bForceNewLevelUnit")]
-	public ref bool ForceNewLevelUnit => ref Schema.GetRef<bool>(this.Handle, "CTriggerSave", "m_bForceNewLevelUnit");
+	public bool ForceNewLevelUnit
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerSave", "m_bForceNewLevelUnit"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTriggerSave", "m_bForceNewLevelUnit", value); }
+	}
 
 	// m_fDangerousTimer
 	[SchemaMember("CTriggerSave", "m_fDangerousTimer")]
-	public ref float DangerousTimer => ref Schema.GetRef<float>(this.Handle, "CTriggerSave", "m_fDangerousTimer");
+	public float DangerousTimer
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerSave", "m_fDangerousTimer"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerSave", "m_fDangerousTimer", value); }
+	}
 
 	// m_minHitPoints
 	[SchemaMember("CTriggerSave", "m_minHitPoints")]
-	public ref Int32 MinHitPoints => ref Schema.GetRef<Int32>(this.Handle, "CTriggerSave", "m_minHitPoints");
+	public Int32 MinHitPoints
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CTriggerSave", "m_minHitPoints"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CTriggerSave", "m_minHitPoints", value); }
+	}
 
 }

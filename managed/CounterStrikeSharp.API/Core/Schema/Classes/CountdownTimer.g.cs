@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,15 +21,27 @@ public partial class CountdownTimer : NativeObject
 
 	// m_duration
 	[SchemaMember("CountdownTimer", "m_duration")]
-	public ref float Duration => ref Schema.GetRef<float>(this.Handle, "CountdownTimer", "m_duration");
+	public float Duration
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CountdownTimer", "m_duration"); }
+		set { Schema.SetValueType<float>(this.Handle, "CountdownTimer", "m_duration", value); }
+	}
 
 	// m_timestamp
 	[SchemaMember("CountdownTimer", "m_timestamp")]
-	public ref float Timestamp => ref Schema.GetRef<float>(this.Handle, "CountdownTimer", "m_timestamp");
+	public float Timestamp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CountdownTimer", "m_timestamp"); }
+		set { Schema.SetValueType<float>(this.Handle, "CountdownTimer", "m_timestamp", value); }
+	}
 
 	// m_timescale
 	[SchemaMember("CountdownTimer", "m_timescale")]
-	public ref float Timescale => ref Schema.GetRef<float>(this.Handle, "CountdownTimer", "m_timescale");
+	public float Timescale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CountdownTimer", "m_timescale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CountdownTimer", "m_timescale", value); }
+	}
 
 	// m_nWorldGroupId
 	[SchemaMember("CountdownTimer", "m_nWorldGroupId")]

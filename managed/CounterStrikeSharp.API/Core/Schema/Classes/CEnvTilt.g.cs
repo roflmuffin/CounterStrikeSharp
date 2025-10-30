@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,18 +21,34 @@ public partial class CEnvTilt : CPointEntity
 
 	// m_Duration
 	[SchemaMember("CEnvTilt", "m_Duration")]
-	public ref float Duration => ref Schema.GetRef<float>(this.Handle, "CEnvTilt", "m_Duration");
+	public float Duration
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvTilt", "m_Duration"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvTilt", "m_Duration", value); }
+	}
 
 	// m_Radius
 	[SchemaMember("CEnvTilt", "m_Radius")]
-	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CEnvTilt", "m_Radius");
+	public float Radius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvTilt", "m_Radius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvTilt", "m_Radius", value); }
+	}
 
 	// m_TiltTime
 	[SchemaMember("CEnvTilt", "m_TiltTime")]
-	public ref float TiltTime => ref Schema.GetRef<float>(this.Handle, "CEnvTilt", "m_TiltTime");
+	public float TiltTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvTilt", "m_TiltTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvTilt", "m_TiltTime", value); }
+	}
 
 	// m_stopTime
 	[SchemaMember("CEnvTilt", "m_stopTime")]
-	public ref float StopTime => ref Schema.GetRef<float>(this.Handle, "CEnvTilt", "m_stopTime");
+	public float StopTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvTilt", "m_stopTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvTilt", "m_stopTime", value); }
+	}
 
 }

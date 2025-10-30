@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -36,7 +37,11 @@ public partial class CEnvInstructorVRHint : CPointEntity
 
 	// m_iTimeout
 	[SchemaMember("CEnvInstructorVRHint", "m_iTimeout")]
-	public ref Int32 Timeout => ref Schema.GetRef<Int32>(this.Handle, "CEnvInstructorVRHint", "m_iTimeout");
+	public Int32 Timeout
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvInstructorVRHint", "m_iTimeout"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvInstructorVRHint", "m_iTimeout", value); }
+	}
 
 	// m_iszCaption
 	[SchemaMember("CEnvInstructorVRHint", "m_iszCaption")]
@@ -56,7 +61,11 @@ public partial class CEnvInstructorVRHint : CPointEntity
 
 	// m_iLayoutFileType
 	[SchemaMember("CEnvInstructorVRHint", "m_iLayoutFileType")]
-	public ref Int32 LayoutFileType => ref Schema.GetRef<Int32>(this.Handle, "CEnvInstructorVRHint", "m_iLayoutFileType");
+	public Int32 LayoutFileType
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvInstructorVRHint", "m_iLayoutFileType"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvInstructorVRHint", "m_iLayoutFileType", value); }
+	}
 
 	// m_iszCustomLayoutFile
 	[SchemaMember("CEnvInstructorVRHint", "m_iszCustomLayoutFile")]
@@ -68,10 +77,18 @@ public partial class CEnvInstructorVRHint : CPointEntity
 
 	// m_iAttachType
 	[SchemaMember("CEnvInstructorVRHint", "m_iAttachType")]
-	public ref Int32 AttachType => ref Schema.GetRef<Int32>(this.Handle, "CEnvInstructorVRHint", "m_iAttachType");
+	public Int32 AttachType
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvInstructorVRHint", "m_iAttachType"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvInstructorVRHint", "m_iAttachType", value); }
+	}
 
 	// m_flHeightOffset
 	[SchemaMember("CEnvInstructorVRHint", "m_flHeightOffset")]
-	public ref float HeightOffset => ref Schema.GetRef<float>(this.Handle, "CEnvInstructorVRHint", "m_flHeightOffset");
+	public float HeightOffset
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvInstructorVRHint", "m_flHeightOffset"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvInstructorVRHint", "m_flHeightOffset", value); }
+	}
 
 }

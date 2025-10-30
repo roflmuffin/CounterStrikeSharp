@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,86 +21,170 @@ public partial class CSMatchStats_t : CSPerRoundStats_t
 
 	// m_iEnemy5Ks
 	[SchemaMember("CSMatchStats_t", "m_iEnemy5Ks")]
-	public ref Int32 Enemy5Ks => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemy5Ks");
+	public Int32 Enemy5Ks
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemy5Ks"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemy5Ks", value); }
+	}
 
 	// m_iEnemy4Ks
 	[SchemaMember("CSMatchStats_t", "m_iEnemy4Ks")]
-	public ref Int32 Enemy4Ks => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemy4Ks");
+	public Int32 Enemy4Ks
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemy4Ks"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemy4Ks", value); }
+	}
 
 	// m_iEnemy3Ks
 	[SchemaMember("CSMatchStats_t", "m_iEnemy3Ks")]
-	public ref Int32 Enemy3Ks => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemy3Ks");
+	public Int32 Enemy3Ks
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemy3Ks"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemy3Ks", value); }
+	}
 
 	// m_iEnemyKnifeKills
 	[SchemaMember("CSMatchStats_t", "m_iEnemyKnifeKills")]
-	public ref Int32 EnemyKnifeKills => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemyKnifeKills");
+	public Int32 EnemyKnifeKills
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemyKnifeKills"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemyKnifeKills", value); }
+	}
 
 	// m_iEnemyTaserKills
 	[SchemaMember("CSMatchStats_t", "m_iEnemyTaserKills")]
-	public ref Int32 EnemyTaserKills => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemyTaserKills");
+	public Int32 EnemyTaserKills
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemyTaserKills"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemyTaserKills", value); }
+	}
 
 	// m_iEnemy2Ks
 	[SchemaMember("CSMatchStats_t", "m_iEnemy2Ks")]
-	public ref Int32 Enemy2Ks => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemy2Ks");
+	public Int32 Enemy2Ks
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemy2Ks"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEnemy2Ks", value); }
+	}
 
 	// m_iUtility_Count
 	[SchemaMember("CSMatchStats_t", "m_iUtility_Count")]
-	public ref Int32 Utility_Count => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_iUtility_Count");
+	public Int32 Utility_Count
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iUtility_Count"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iUtility_Count", value); }
+	}
 
 	// m_iUtility_Successes
 	[SchemaMember("CSMatchStats_t", "m_iUtility_Successes")]
-	public ref Int32 Utility_Successes => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_iUtility_Successes");
+	public Int32 Utility_Successes
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iUtility_Successes"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iUtility_Successes", value); }
+	}
 
 	// m_iUtility_Enemies
 	[SchemaMember("CSMatchStats_t", "m_iUtility_Enemies")]
-	public ref Int32 Utility_Enemies => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_iUtility_Enemies");
+	public Int32 Utility_Enemies
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iUtility_Enemies"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iUtility_Enemies", value); }
+	}
 
 	// m_iFlash_Count
 	[SchemaMember("CSMatchStats_t", "m_iFlash_Count")]
-	public ref Int32 Flash_Count => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_iFlash_Count");
+	public Int32 Flash_Count
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iFlash_Count"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iFlash_Count", value); }
+	}
 
 	// m_iFlash_Successes
 	[SchemaMember("CSMatchStats_t", "m_iFlash_Successes")]
-	public ref Int32 Flash_Successes => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_iFlash_Successes");
+	public Int32 Flash_Successes
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iFlash_Successes"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iFlash_Successes", value); }
+	}
 
 	// m_flHealthPointsRemovedTotal
 	[SchemaMember("CSMatchStats_t", "m_flHealthPointsRemovedTotal")]
-	public ref float HealthPointsRemovedTotal => ref Schema.GetRef<float>(this.Handle, "CSMatchStats_t", "m_flHealthPointsRemovedTotal");
+	public float HealthPointsRemovedTotal
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSMatchStats_t", "m_flHealthPointsRemovedTotal"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSMatchStats_t", "m_flHealthPointsRemovedTotal", value); }
+	}
 
 	// m_flHealthPointsDealtTotal
 	[SchemaMember("CSMatchStats_t", "m_flHealthPointsDealtTotal")]
-	public ref float HealthPointsDealtTotal => ref Schema.GetRef<float>(this.Handle, "CSMatchStats_t", "m_flHealthPointsDealtTotal");
+	public float HealthPointsDealtTotal
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSMatchStats_t", "m_flHealthPointsDealtTotal"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSMatchStats_t", "m_flHealthPointsDealtTotal", value); }
+	}
 
 	// m_nShotsFiredTotal
 	[SchemaMember("CSMatchStats_t", "m_nShotsFiredTotal")]
-	public ref Int32 ShotsFiredTotal => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_nShotsFiredTotal");
+	public Int32 ShotsFiredTotal
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_nShotsFiredTotal"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_nShotsFiredTotal", value); }
+	}
 
 	// m_nShotsOnTargetTotal
 	[SchemaMember("CSMatchStats_t", "m_nShotsOnTargetTotal")]
-	public ref Int32 ShotsOnTargetTotal => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_nShotsOnTargetTotal");
+	public Int32 ShotsOnTargetTotal
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_nShotsOnTargetTotal"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_nShotsOnTargetTotal", value); }
+	}
 
 	// m_i1v1Count
 	[SchemaMember("CSMatchStats_t", "m_i1v1Count")]
-	public ref Int32 I1v1Count => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_i1v1Count");
+	public Int32 I1v1Count
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_i1v1Count"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_i1v1Count", value); }
+	}
 
 	// m_i1v1Wins
 	[SchemaMember("CSMatchStats_t", "m_i1v1Wins")]
-	public ref Int32 I1v1Wins => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_i1v1Wins");
+	public Int32 I1v1Wins
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_i1v1Wins"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_i1v1Wins", value); }
+	}
 
 	// m_i1v2Count
 	[SchemaMember("CSMatchStats_t", "m_i1v2Count")]
-	public ref Int32 I1v2Count => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_i1v2Count");
+	public Int32 I1v2Count
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_i1v2Count"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_i1v2Count", value); }
+	}
 
 	// m_i1v2Wins
 	[SchemaMember("CSMatchStats_t", "m_i1v2Wins")]
-	public ref Int32 I1v2Wins => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_i1v2Wins");
+	public Int32 I1v2Wins
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_i1v2Wins"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_i1v2Wins", value); }
+	}
 
 	// m_iEntryCount
 	[SchemaMember("CSMatchStats_t", "m_iEntryCount")]
-	public ref Int32 EntryCount => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_iEntryCount");
+	public Int32 EntryCount
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEntryCount"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEntryCount", value); }
+	}
 
 	// m_iEntryWins
 	[SchemaMember("CSMatchStats_t", "m_iEntryWins")]
-	public ref Int32 EntryWins => ref Schema.GetRef<Int32>(this.Handle, "CSMatchStats_t", "m_iEntryWins");
+	public Int32 EntryWins
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEntryWins"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEntryWins", value); }
+	}
 
 }

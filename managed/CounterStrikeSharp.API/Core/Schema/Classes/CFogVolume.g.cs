@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -44,10 +45,18 @@ public partial class CFogVolume : CServerOnlyModelEntity
 
 	// m_bDisabled
 	[SchemaMember("CFogVolume", "m_bDisabled")]
-	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CFogVolume", "m_bDisabled");
+	public bool Disabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFogVolume", "m_bDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFogVolume", "m_bDisabled", value); }
+	}
 
 	// m_bInFogVolumesList
 	[SchemaMember("CFogVolume", "m_bInFogVolumesList")]
-	public ref bool InFogVolumesList => ref Schema.GetRef<bool>(this.Handle, "CFogVolume", "m_bInFogVolumesList");
+	public bool InFogVolumesList
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFogVolume", "m_bInFogVolumesList"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFogVolume", "m_bInFogVolumesList", value); }
+	}
 
 }

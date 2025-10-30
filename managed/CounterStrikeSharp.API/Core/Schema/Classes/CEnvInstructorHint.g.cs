@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -44,11 +45,19 @@ public partial class CEnvInstructorHint : CPointEntity
 
 	// m_iTimeout
 	[SchemaMember("CEnvInstructorHint", "m_iTimeout")]
-	public ref Int32 Timeout => ref Schema.GetRef<Int32>(this.Handle, "CEnvInstructorHint", "m_iTimeout");
+	public Int32 Timeout
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvInstructorHint", "m_iTimeout"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvInstructorHint", "m_iTimeout", value); }
+	}
 
 	// m_iDisplayLimit
 	[SchemaMember("CEnvInstructorHint", "m_iDisplayLimit")]
-	public ref Int32 DisplayLimit => ref Schema.GetRef<Int32>(this.Handle, "CEnvInstructorHint", "m_iDisplayLimit");
+	public Int32 DisplayLimit
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvInstructorHint", "m_iDisplayLimit"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvInstructorHint", "m_iDisplayLimit", value); }
+	}
 
 	// m_iszIcon_Onscreen
 	[SchemaMember("CEnvInstructorHint", "m_iszIcon_Onscreen")]
@@ -92,43 +101,83 @@ public partial class CEnvInstructorHint : CPointEntity
 
 	// m_fIconOffset
 	[SchemaMember("CEnvInstructorHint", "m_fIconOffset")]
-	public ref float IconOffset => ref Schema.GetRef<float>(this.Handle, "CEnvInstructorHint", "m_fIconOffset");
+	public float IconOffset
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvInstructorHint", "m_fIconOffset"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvInstructorHint", "m_fIconOffset", value); }
+	}
 
 	// m_fRange
 	[SchemaMember("CEnvInstructorHint", "m_fRange")]
-	public ref float Range => ref Schema.GetRef<float>(this.Handle, "CEnvInstructorHint", "m_fRange");
+	public float Range
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvInstructorHint", "m_fRange"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvInstructorHint", "m_fRange", value); }
+	}
 
 	// m_iPulseOption
 	[SchemaMember("CEnvInstructorHint", "m_iPulseOption")]
-	public ref byte PulseOption => ref Schema.GetRef<byte>(this.Handle, "CEnvInstructorHint", "m_iPulseOption");
+	public byte PulseOption
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CEnvInstructorHint", "m_iPulseOption"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CEnvInstructorHint", "m_iPulseOption", value); }
+	}
 
 	// m_iAlphaOption
 	[SchemaMember("CEnvInstructorHint", "m_iAlphaOption")]
-	public ref byte AlphaOption => ref Schema.GetRef<byte>(this.Handle, "CEnvInstructorHint", "m_iAlphaOption");
+	public byte AlphaOption
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CEnvInstructorHint", "m_iAlphaOption"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CEnvInstructorHint", "m_iAlphaOption", value); }
+	}
 
 	// m_iShakeOption
 	[SchemaMember("CEnvInstructorHint", "m_iShakeOption")]
-	public ref byte ShakeOption => ref Schema.GetRef<byte>(this.Handle, "CEnvInstructorHint", "m_iShakeOption");
+	public byte ShakeOption
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CEnvInstructorHint", "m_iShakeOption"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CEnvInstructorHint", "m_iShakeOption", value); }
+	}
 
 	// m_bStatic
 	[SchemaMember("CEnvInstructorHint", "m_bStatic")]
-	public ref bool Static => ref Schema.GetRef<bool>(this.Handle, "CEnvInstructorHint", "m_bStatic");
+	public bool Static
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvInstructorHint", "m_bStatic"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvInstructorHint", "m_bStatic", value); }
+	}
 
 	// m_bNoOffscreen
 	[SchemaMember("CEnvInstructorHint", "m_bNoOffscreen")]
-	public ref bool NoOffscreen => ref Schema.GetRef<bool>(this.Handle, "CEnvInstructorHint", "m_bNoOffscreen");
+	public bool NoOffscreen
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvInstructorHint", "m_bNoOffscreen"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvInstructorHint", "m_bNoOffscreen", value); }
+	}
 
 	// m_bForceCaption
 	[SchemaMember("CEnvInstructorHint", "m_bForceCaption")]
-	public ref bool ForceCaption => ref Schema.GetRef<bool>(this.Handle, "CEnvInstructorHint", "m_bForceCaption");
+	public bool ForceCaption
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvInstructorHint", "m_bForceCaption"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvInstructorHint", "m_bForceCaption", value); }
+	}
 
 	// m_iInstanceType
 	[SchemaMember("CEnvInstructorHint", "m_iInstanceType")]
-	public ref Int32 InstanceType => ref Schema.GetRef<Int32>(this.Handle, "CEnvInstructorHint", "m_iInstanceType");
+	public Int32 InstanceType
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvInstructorHint", "m_iInstanceType"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvInstructorHint", "m_iInstanceType", value); }
+	}
 
 	// m_bSuppressRest
 	[SchemaMember("CEnvInstructorHint", "m_bSuppressRest")]
-	public ref bool SuppressRest => ref Schema.GetRef<bool>(this.Handle, "CEnvInstructorHint", "m_bSuppressRest");
+	public bool SuppressRest
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvInstructorHint", "m_bSuppressRest"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvInstructorHint", "m_bSuppressRest", value); }
+	}
 
 	// m_iszBinding
 	[SchemaMember("CEnvInstructorHint", "m_iszBinding")]
@@ -140,14 +189,26 @@ public partial class CEnvInstructorHint : CPointEntity
 
 	// m_bAllowNoDrawTarget
 	[SchemaMember("CEnvInstructorHint", "m_bAllowNoDrawTarget")]
-	public ref bool AllowNoDrawTarget => ref Schema.GetRef<bool>(this.Handle, "CEnvInstructorHint", "m_bAllowNoDrawTarget");
+	public bool AllowNoDrawTarget
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvInstructorHint", "m_bAllowNoDrawTarget"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvInstructorHint", "m_bAllowNoDrawTarget", value); }
+	}
 
 	// m_bAutoStart
 	[SchemaMember("CEnvInstructorHint", "m_bAutoStart")]
-	public ref bool AutoStart => ref Schema.GetRef<bool>(this.Handle, "CEnvInstructorHint", "m_bAutoStart");
+	public bool AutoStart
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvInstructorHint", "m_bAutoStart"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvInstructorHint", "m_bAutoStart", value); }
+	}
 
 	// m_bLocalPlayerOnly
 	[SchemaMember("CEnvInstructorHint", "m_bLocalPlayerOnly")]
-	public ref bool LocalPlayerOnly => ref Schema.GetRef<bool>(this.Handle, "CEnvInstructorHint", "m_bLocalPlayerOnly");
+	public bool LocalPlayerOnly
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvInstructorHint", "m_bLocalPlayerOnly"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvInstructorHint", "m_bLocalPlayerOnly", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -40,34 +41,66 @@ public partial class CBasePlayerVData : CEntitySubclassVDataBase
 
 	// m_flHoldBreathTime
 	[SchemaMember("CBasePlayerVData", "m_flHoldBreathTime")]
-	public ref float HoldBreathTime => ref Schema.GetRef<float>(this.Handle, "CBasePlayerVData", "m_flHoldBreathTime");
+	public float HoldBreathTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerVData", "m_flHoldBreathTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerVData", "m_flHoldBreathTime", value); }
+	}
 
 	// m_flDrowningDamageInterval
 	[SchemaMember("CBasePlayerVData", "m_flDrowningDamageInterval")]
-	public ref float DrowningDamageInterval => ref Schema.GetRef<float>(this.Handle, "CBasePlayerVData", "m_flDrowningDamageInterval");
+	public float DrowningDamageInterval
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerVData", "m_flDrowningDamageInterval"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerVData", "m_flDrowningDamageInterval", value); }
+	}
 
 	// m_nDrowningDamageInitial
 	[SchemaMember("CBasePlayerVData", "m_nDrowningDamageInitial")]
-	public ref Int32 DrowningDamageInitial => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerVData", "m_nDrowningDamageInitial");
+	public Int32 DrowningDamageInitial
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerVData", "m_nDrowningDamageInitial"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerVData", "m_nDrowningDamageInitial", value); }
+	}
 
 	// m_nDrowningDamageMax
 	[SchemaMember("CBasePlayerVData", "m_nDrowningDamageMax")]
-	public ref Int32 DrowningDamageMax => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerVData", "m_nDrowningDamageMax");
+	public Int32 DrowningDamageMax
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerVData", "m_nDrowningDamageMax"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerVData", "m_nDrowningDamageMax", value); }
+	}
 
 	// m_nWaterSpeed
 	[SchemaMember("CBasePlayerVData", "m_nWaterSpeed")]
-	public ref Int32 WaterSpeed => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerVData", "m_nWaterSpeed");
+	public Int32 WaterSpeed
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerVData", "m_nWaterSpeed"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerVData", "m_nWaterSpeed", value); }
+	}
 
 	// m_flUseRange
 	[SchemaMember("CBasePlayerVData", "m_flUseRange")]
-	public ref float UseRange => ref Schema.GetRef<float>(this.Handle, "CBasePlayerVData", "m_flUseRange");
+	public float UseRange
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerVData", "m_flUseRange"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerVData", "m_flUseRange", value); }
+	}
 
 	// m_flUseAngleTolerance
 	[SchemaMember("CBasePlayerVData", "m_flUseAngleTolerance")]
-	public ref float UseAngleTolerance => ref Schema.GetRef<float>(this.Handle, "CBasePlayerVData", "m_flUseAngleTolerance");
+	public float UseAngleTolerance
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerVData", "m_flUseAngleTolerance"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerVData", "m_flUseAngleTolerance", value); }
+	}
 
 	// m_flCrouchTime
 	[SchemaMember("CBasePlayerVData", "m_flCrouchTime")]
-	public ref float CrouchTime => ref Schema.GetRef<float>(this.Handle, "CBasePlayerVData", "m_flCrouchTime");
+	public float CrouchTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerVData", "m_flCrouchTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerVData", "m_flCrouchTime", value); }
+	}
 
 }

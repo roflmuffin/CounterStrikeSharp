@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,6 +29,10 @@ public partial class CSoundEventParameter : CBaseEntity
 
 	// m_flFloatValue
 	[SchemaMember("CSoundEventParameter", "m_flFloatValue")]
-	public ref float FloatValue => ref Schema.GetRef<float>(this.Handle, "CSoundEventParameter", "m_flFloatValue");
+	public float FloatValue
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSoundEventParameter", "m_flFloatValue"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSoundEventParameter", "m_flFloatValue", value); }
+	}
 
 }

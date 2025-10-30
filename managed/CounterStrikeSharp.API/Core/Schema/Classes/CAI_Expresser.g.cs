@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,43 +21,83 @@ public partial class CAI_Expresser : NativeObject
 
 	// m_flStopTalkTime
 	[SchemaMember("CAI_Expresser", "m_flStopTalkTime")]
-	public ref float StopTalkTime => ref Schema.GetRef<float>(this.Handle, "CAI_Expresser", "m_flStopTalkTime");
+	public float StopTalkTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CAI_Expresser", "m_flStopTalkTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CAI_Expresser", "m_flStopTalkTime", value); }
+	}
 
 	// m_flStopTalkTimeWithoutDelay
 	[SchemaMember("CAI_Expresser", "m_flStopTalkTimeWithoutDelay")]
-	public ref float StopTalkTimeWithoutDelay => ref Schema.GetRef<float>(this.Handle, "CAI_Expresser", "m_flStopTalkTimeWithoutDelay");
+	public float StopTalkTimeWithoutDelay
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CAI_Expresser", "m_flStopTalkTimeWithoutDelay"); }
+		set { Schema.SetValueType<float>(this.Handle, "CAI_Expresser", "m_flStopTalkTimeWithoutDelay", value); }
+	}
 
 	// m_flQueuedSpeechTime
 	[SchemaMember("CAI_Expresser", "m_flQueuedSpeechTime")]
-	public ref float QueuedSpeechTime => ref Schema.GetRef<float>(this.Handle, "CAI_Expresser", "m_flQueuedSpeechTime");
+	public float QueuedSpeechTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CAI_Expresser", "m_flQueuedSpeechTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CAI_Expresser", "m_flQueuedSpeechTime", value); }
+	}
 
 	// m_flBlockedTalkTime
 	[SchemaMember("CAI_Expresser", "m_flBlockedTalkTime")]
-	public ref float BlockedTalkTime => ref Schema.GetRef<float>(this.Handle, "CAI_Expresser", "m_flBlockedTalkTime");
+	public float BlockedTalkTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CAI_Expresser", "m_flBlockedTalkTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CAI_Expresser", "m_flBlockedTalkTime", value); }
+	}
 
 	// m_voicePitch
 	[SchemaMember("CAI_Expresser", "m_voicePitch")]
-	public ref Int32 VoicePitch => ref Schema.GetRef<Int32>(this.Handle, "CAI_Expresser", "m_voicePitch");
+	public Int32 VoicePitch
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CAI_Expresser", "m_voicePitch"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CAI_Expresser", "m_voicePitch", value); }
+	}
 
 	// m_flLastTimeAcceptedSpeak
 	[SchemaMember("CAI_Expresser", "m_flLastTimeAcceptedSpeak")]
-	public ref float LastTimeAcceptedSpeak => ref Schema.GetRef<float>(this.Handle, "CAI_Expresser", "m_flLastTimeAcceptedSpeak");
+	public float LastTimeAcceptedSpeak
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CAI_Expresser", "m_flLastTimeAcceptedSpeak"); }
+		set { Schema.SetValueType<float>(this.Handle, "CAI_Expresser", "m_flLastTimeAcceptedSpeak", value); }
+	}
 
 	// m_bAllowSpeakingInterrupts
 	[SchemaMember("CAI_Expresser", "m_bAllowSpeakingInterrupts")]
-	public ref bool AllowSpeakingInterrupts => ref Schema.GetRef<bool>(this.Handle, "CAI_Expresser", "m_bAllowSpeakingInterrupts");
+	public bool AllowSpeakingInterrupts
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CAI_Expresser", "m_bAllowSpeakingInterrupts"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CAI_Expresser", "m_bAllowSpeakingInterrupts", value); }
+	}
 
 	// m_bConsiderSceneInvolvementAsSpeech
 	[SchemaMember("CAI_Expresser", "m_bConsiderSceneInvolvementAsSpeech")]
-	public ref bool ConsiderSceneInvolvementAsSpeech => ref Schema.GetRef<bool>(this.Handle, "CAI_Expresser", "m_bConsiderSceneInvolvementAsSpeech");
+	public bool ConsiderSceneInvolvementAsSpeech
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CAI_Expresser", "m_bConsiderSceneInvolvementAsSpeech"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CAI_Expresser", "m_bConsiderSceneInvolvementAsSpeech", value); }
+	}
 
 	// m_bSceneEntityDisabled
 	[SchemaMember("CAI_Expresser", "m_bSceneEntityDisabled")]
-	public ref bool SceneEntityDisabled => ref Schema.GetRef<bool>(this.Handle, "CAI_Expresser", "m_bSceneEntityDisabled");
+	public bool SceneEntityDisabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CAI_Expresser", "m_bSceneEntityDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CAI_Expresser", "m_bSceneEntityDisabled", value); }
+	}
 
 	// m_nLastSpokenPriority
 	[SchemaMember("CAI_Expresser", "m_nLastSpokenPriority")]
-	public ref Int32 LastSpokenPriority => ref Schema.GetRef<Int32>(this.Handle, "CAI_Expresser", "m_nLastSpokenPriority");
+	public Int32 LastSpokenPriority
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CAI_Expresser", "m_nLastSpokenPriority"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CAI_Expresser", "m_nLastSpokenPriority", value); }
+	}
 
 	// m_pOuter
 	[SchemaMember("CAI_Expresser", "m_pOuter")]

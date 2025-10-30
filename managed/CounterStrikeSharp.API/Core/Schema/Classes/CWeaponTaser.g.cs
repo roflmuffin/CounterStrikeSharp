@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,10 +21,18 @@ public partial class CWeaponTaser : CCSWeaponBaseGun
 
 	// m_fFireTime
 	[SchemaMember("CWeaponTaser", "m_fFireTime")]
-	public ref float FireTime => ref Schema.GetRef<float>(this.Handle, "CWeaponTaser", "m_fFireTime");
+	public float FireTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CWeaponTaser", "m_fFireTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CWeaponTaser", "m_fFireTime", value); }
+	}
 
 	// m_nLastAttackTick
 	[SchemaMember("CWeaponTaser", "m_nLastAttackTick")]
-	public ref Int32 LastAttackTick => ref Schema.GetRef<Int32>(this.Handle, "CWeaponTaser", "m_nLastAttackTick");
+	public Int32 LastAttackTick
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CWeaponTaser", "m_nLastAttackTick"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CWeaponTaser", "m_nLastAttackTick", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -32,15 +33,27 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_iCurrentThinkContext
 	[SchemaMember("CBaseEntity", "m_iCurrentThinkContext")]
-	public ref Int32 CurrentThinkContext => ref Schema.GetRef<Int32>(this.Handle, "CBaseEntity", "m_iCurrentThinkContext");
+	public Int32 CurrentThinkContext
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseEntity", "m_iCurrentThinkContext"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseEntity", "m_iCurrentThinkContext", value); }
+	}
 
 	// m_nLastThinkTick
 	[SchemaMember("CBaseEntity", "m_nLastThinkTick")]
-	public ref Int32 LastThinkTick => ref Schema.GetRef<Int32>(this.Handle, "CBaseEntity", "m_nLastThinkTick");
+	public Int32 LastThinkTick
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseEntity", "m_nLastThinkTick"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseEntity", "m_nLastThinkTick", value); }
+	}
 
 	// m_bDisabledContextThinks
 	[SchemaMember("CBaseEntity", "m_bDisabledContextThinks")]
-	public ref bool DisabledContextThinks => ref Schema.GetRef<bool>(this.Handle, "CBaseEntity", "m_bDisabledContextThinks");
+	public bool DisabledContextThinks
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseEntity", "m_bDisabledContextThinks"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseEntity", "m_bDisabledContextThinks", value); }
+	}
 
 	// m_isSteadyState
 	[SchemaMember("CBaseEntity", "m_isSteadyState")]
@@ -48,7 +61,11 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_lastNetworkChange
 	[SchemaMember("CBaseEntity", "m_lastNetworkChange")]
-	public ref float LastNetworkChange => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_lastNetworkChange");
+	public float LastNetworkChange
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_lastNetworkChange"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_lastNetworkChange", value); }
+	}
 
 	// m_ResponseContexts
 	[SchemaMember("CBaseEntity", "m_ResponseContexts")]
@@ -64,55 +81,107 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_iHealth
 	[SchemaMember("CBaseEntity", "m_iHealth")]
-	public ref Int32 Health => ref Schema.GetRef<Int32>(this.Handle, "CBaseEntity", "m_iHealth");
+	public Int32 Health
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseEntity", "m_iHealth"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseEntity", "m_iHealth", value); }
+	}
 
 	// m_iMaxHealth
 	[SchemaMember("CBaseEntity", "m_iMaxHealth")]
-	public ref Int32 MaxHealth => ref Schema.GetRef<Int32>(this.Handle, "CBaseEntity", "m_iMaxHealth");
+	public Int32 MaxHealth
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseEntity", "m_iMaxHealth"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseEntity", "m_iMaxHealth", value); }
+	}
 
 	// m_lifeState
 	[SchemaMember("CBaseEntity", "m_lifeState")]
-	public ref byte LifeState => ref Schema.GetRef<byte>(this.Handle, "CBaseEntity", "m_lifeState");
+	public byte LifeState
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CBaseEntity", "m_lifeState"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CBaseEntity", "m_lifeState", value); }
+	}
 
 	// m_flDamageAccumulator
 	[SchemaMember("CBaseEntity", "m_flDamageAccumulator")]
-	public ref float DamageAccumulator => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flDamageAccumulator");
+	public float DamageAccumulator
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_flDamageAccumulator"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_flDamageAccumulator", value); }
+	}
 
 	// m_bTakesDamage
 	[SchemaMember("CBaseEntity", "m_bTakesDamage")]
-	public ref bool TakesDamage => ref Schema.GetRef<bool>(this.Handle, "CBaseEntity", "m_bTakesDamage");
+	public bool TakesDamage
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseEntity", "m_bTakesDamage"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseEntity", "m_bTakesDamage", value); }
+	}
 
 	// m_nTakeDamageFlags
 	[SchemaMember("CBaseEntity", "m_nTakeDamageFlags")]
-	public ref TakeDamageFlags_t TakeDamageFlags => ref Schema.GetRef<TakeDamageFlags_t>(this.Handle, "CBaseEntity", "m_nTakeDamageFlags");
+	public TakeDamageFlags_t TakeDamageFlags
+	{
+		get { return Schema.GetValueType<TakeDamageFlags_t>(this.Handle, "CBaseEntity", "m_nTakeDamageFlags"); }
+		set { Schema.SetValueType<TakeDamageFlags_t>(this.Handle, "CBaseEntity", "m_nTakeDamageFlags", value); }
+	}
 
 	// m_nPlatformType
 	[SchemaMember("CBaseEntity", "m_nPlatformType")]
-	public ref EntityPlatformTypes_t PlatformType => ref Schema.GetRef<EntityPlatformTypes_t>(this.Handle, "CBaseEntity", "m_nPlatformType");
+	public EntityPlatformTypes_t PlatformType
+	{
+		get { return Schema.GetValueType<EntityPlatformTypes_t>(this.Handle, "CBaseEntity", "m_nPlatformType"); }
+		set { Schema.SetValueType<EntityPlatformTypes_t>(this.Handle, "CBaseEntity", "m_nPlatformType", value); }
+	}
 
 	// m_MoveCollide
 	[SchemaMember("CBaseEntity", "m_MoveCollide")]
-	public ref MoveCollide_t MoveCollide => ref Schema.GetRef<MoveCollide_t>(this.Handle, "CBaseEntity", "m_MoveCollide");
+	public MoveCollide_t MoveCollide
+	{
+		get { return Schema.GetValueType<MoveCollide_t>(this.Handle, "CBaseEntity", "m_MoveCollide"); }
+		set { Schema.SetValueType<MoveCollide_t>(this.Handle, "CBaseEntity", "m_MoveCollide", value); }
+	}
 
 	// m_MoveType
 	[SchemaMember("CBaseEntity", "m_MoveType")]
-	public ref MoveType_t MoveType => ref Schema.GetRef<MoveType_t>(this.Handle, "CBaseEntity", "m_MoveType");
+	public MoveType_t MoveType
+	{
+		get { return Schema.GetValueType<MoveType_t>(this.Handle, "CBaseEntity", "m_MoveType"); }
+		set { Schema.SetValueType<MoveType_t>(this.Handle, "CBaseEntity", "m_MoveType", value); }
+	}
 
 	// m_nActualMoveType
 	[SchemaMember("CBaseEntity", "m_nActualMoveType")]
-	public ref MoveType_t ActualMoveType => ref Schema.GetRef<MoveType_t>(this.Handle, "CBaseEntity", "m_nActualMoveType");
+	public MoveType_t ActualMoveType
+	{
+		get { return Schema.GetValueType<MoveType_t>(this.Handle, "CBaseEntity", "m_nActualMoveType"); }
+		set { Schema.SetValueType<MoveType_t>(this.Handle, "CBaseEntity", "m_nActualMoveType", value); }
+	}
 
 	// m_nWaterTouch
 	[SchemaMember("CBaseEntity", "m_nWaterTouch")]
-	public ref byte WaterTouch => ref Schema.GetRef<byte>(this.Handle, "CBaseEntity", "m_nWaterTouch");
+	public byte WaterTouch
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CBaseEntity", "m_nWaterTouch"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CBaseEntity", "m_nWaterTouch", value); }
+	}
 
 	// m_nSlimeTouch
 	[SchemaMember("CBaseEntity", "m_nSlimeTouch")]
-	public ref byte SlimeTouch => ref Schema.GetRef<byte>(this.Handle, "CBaseEntity", "m_nSlimeTouch");
+	public byte SlimeTouch
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CBaseEntity", "m_nSlimeTouch"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CBaseEntity", "m_nSlimeTouch", value); }
+	}
 
 	// m_bRestoreInHierarchy
 	[SchemaMember("CBaseEntity", "m_bRestoreInHierarchy")]
-	public ref bool RestoreInHierarchy => ref Schema.GetRef<bool>(this.Handle, "CBaseEntity", "m_bRestoreInHierarchy");
+	public bool RestoreInHierarchy
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseEntity", "m_bRestoreInHierarchy"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseEntity", "m_bRestoreInHierarchy", value); }
+	}
 
 	// m_target
 	[SchemaMember("CBaseEntity", "m_target")]
@@ -136,7 +205,11 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_flMoveDoneTime
 	[SchemaMember("CBaseEntity", "m_flMoveDoneTime")]
-	public ref float MoveDoneTime => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flMoveDoneTime");
+	public float MoveDoneTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_flMoveDoneTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_flMoveDoneTime", value); }
+	}
 
 	// m_nSubclassID
 	[SchemaMember("CBaseEntity", "m_nSubclassID")]
@@ -144,31 +217,59 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_flAnimTime
 	[SchemaMember("CBaseEntity", "m_flAnimTime")]
-	public ref float AnimTime => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flAnimTime");
+	public float AnimTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_flAnimTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_flAnimTime", value); }
+	}
 
 	// m_flSimulationTime
 	[SchemaMember("CBaseEntity", "m_flSimulationTime")]
-	public ref float SimulationTime => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flSimulationTime");
+	public float SimulationTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_flSimulationTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_flSimulationTime", value); }
+	}
 
 	// m_flCreateTime
 	[SchemaMember("CBaseEntity", "m_flCreateTime")]
-	public ref float CreateTime => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flCreateTime");
+	public float CreateTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_flCreateTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_flCreateTime", value); }
+	}
 
 	// m_bClientSideRagdoll
 	[SchemaMember("CBaseEntity", "m_bClientSideRagdoll")]
-	public ref bool ClientSideRagdoll => ref Schema.GetRef<bool>(this.Handle, "CBaseEntity", "m_bClientSideRagdoll");
+	public bool ClientSideRagdoll
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseEntity", "m_bClientSideRagdoll"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseEntity", "m_bClientSideRagdoll", value); }
+	}
 
 	// m_ubInterpolationFrame
 	[SchemaMember("CBaseEntity", "m_ubInterpolationFrame")]
-	public ref byte InterpolationFrame => ref Schema.GetRef<byte>(this.Handle, "CBaseEntity", "m_ubInterpolationFrame");
+	public byte InterpolationFrame
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CBaseEntity", "m_ubInterpolationFrame"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CBaseEntity", "m_ubInterpolationFrame", value); }
+	}
 
 	// m_vPrevVPhysicsUpdatePos
 	[SchemaMember("CBaseEntity", "m_vPrevVPhysicsUpdatePos")]
-	public Vector PrevVPhysicsUpdatePos => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseEntity", "m_vPrevVPhysicsUpdatePos");
+	public Vector3 PrevVPhysicsUpdatePos
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBaseEntity", "m_vPrevVPhysicsUpdatePos"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBaseEntity", "m_vPrevVPhysicsUpdatePos", value); }
+	}
 
 	// m_iTeamNum
 	[SchemaMember("CBaseEntity", "m_iTeamNum")]
-	public ref byte TeamNum => ref Schema.GetRef<byte>(this.Handle, "CBaseEntity", "m_iTeamNum");
+	public byte TeamNum
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CBaseEntity", "m_iTeamNum"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CBaseEntity", "m_iTeamNum", value); }
+	}
 
 	// m_iGlobalname
 	[SchemaMember("CBaseEntity", "m_iGlobalname")]
@@ -180,11 +281,19 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_iSentToClients
 	[SchemaMember("CBaseEntity", "m_iSentToClients")]
-	public ref Int32 SentToClients => ref Schema.GetRef<Int32>(this.Handle, "CBaseEntity", "m_iSentToClients");
+	public Int32 SentToClients
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseEntity", "m_iSentToClients"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseEntity", "m_iSentToClients", value); }
+	}
 
 	// m_flSpeed
 	[SchemaMember("CBaseEntity", "m_flSpeed")]
-	public ref float Speed => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flSpeed");
+	public float Speed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_flSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_flSpeed", value); }
+	}
 
 	// m_sUniqueHammerID
 	[SchemaMember("CBaseEntity", "m_sUniqueHammerID")]
@@ -196,15 +305,27 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_spawnflags
 	[SchemaMember("CBaseEntity", "m_spawnflags")]
-	public ref UInt32 Spawnflags => ref Schema.GetRef<UInt32>(this.Handle, "CBaseEntity", "m_spawnflags");
+	public UInt32 Spawnflags
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CBaseEntity", "m_spawnflags"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CBaseEntity", "m_spawnflags", value); }
+	}
 
 	// m_nNextThinkTick
 	[SchemaMember("CBaseEntity", "m_nNextThinkTick")]
-	public ref Int32 NextThinkTick => ref Schema.GetRef<Int32>(this.Handle, "CBaseEntity", "m_nNextThinkTick");
+	public Int32 NextThinkTick
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseEntity", "m_nNextThinkTick"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseEntity", "m_nNextThinkTick", value); }
+	}
 
 	// m_nSimulationTick
 	[SchemaMember("CBaseEntity", "m_nSimulationTick")]
-	public ref Int32 SimulationTick => ref Schema.GetRef<Int32>(this.Handle, "CBaseEntity", "m_nSimulationTick");
+	public Int32 SimulationTick
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseEntity", "m_nSimulationTick"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseEntity", "m_nSimulationTick", value); }
+	}
 
 	// m_OnKilled
 	[SchemaMember("CBaseEntity", "m_OnKilled")]
@@ -212,11 +333,19 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_fFlags
 	[SchemaMember("CBaseEntity", "m_fFlags")]
-	public ref UInt32 Flags => ref Schema.GetRef<UInt32>(this.Handle, "CBaseEntity", "m_fFlags");
+	public UInt32 Flags
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CBaseEntity", "m_fFlags"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CBaseEntity", "m_fFlags", value); }
+	}
 
 	// m_vecAbsVelocity
 	[SchemaMember("CBaseEntity", "m_vecAbsVelocity")]
-	public Vector AbsVelocity => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseEntity", "m_vecAbsVelocity");
+	public Vector3 AbsVelocity
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBaseEntity", "m_vecAbsVelocity"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBaseEntity", "m_vecAbsVelocity", value); }
+	}
 
 	// m_vecVelocity
 	[SchemaMember("CBaseEntity", "m_vecVelocity")]
@@ -224,11 +353,19 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_vecBaseVelocity
 	[SchemaMember("CBaseEntity", "m_vecBaseVelocity")]
-	public Vector BaseVelocity => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseEntity", "m_vecBaseVelocity");
+	public Vector3 BaseVelocity
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBaseEntity", "m_vecBaseVelocity"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBaseEntity", "m_vecBaseVelocity", value); }
+	}
 
 	// m_nPushEnumCount
 	[SchemaMember("CBaseEntity", "m_nPushEnumCount")]
-	public ref Int32 PushEnumCount => ref Schema.GetRef<Int32>(this.Handle, "CBaseEntity", "m_nPushEnumCount");
+	public Int32 PushEnumCount
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseEntity", "m_nPushEnumCount"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseEntity", "m_nPushEnumCount", value); }
+	}
 
 	// m_pCollision
 	[SchemaMember("CBaseEntity", "m_pCollision")]
@@ -244,7 +381,11 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_fEffects
 	[SchemaMember("CBaseEntity", "m_fEffects")]
-	public ref UInt32 Effects => ref Schema.GetRef<UInt32>(this.Handle, "CBaseEntity", "m_fEffects");
+	public UInt32 Effects
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CBaseEntity", "m_fEffects"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CBaseEntity", "m_fEffects", value); }
+	}
 
 	// m_hGroundEntity
 	[SchemaMember("CBaseEntity", "m_hGroundEntity")]
@@ -252,55 +393,107 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_nGroundBodyIndex
 	[SchemaMember("CBaseEntity", "m_nGroundBodyIndex")]
-	public ref Int32 GroundBodyIndex => ref Schema.GetRef<Int32>(this.Handle, "CBaseEntity", "m_nGroundBodyIndex");
+	public Int32 GroundBodyIndex
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseEntity", "m_nGroundBodyIndex"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseEntity", "m_nGroundBodyIndex", value); }
+	}
 
 	// m_flFriction
 	[SchemaMember("CBaseEntity", "m_flFriction")]
-	public ref float Friction => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flFriction");
+	public float Friction
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_flFriction"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_flFriction", value); }
+	}
 
 	// m_flElasticity
 	[SchemaMember("CBaseEntity", "m_flElasticity")]
-	public ref float Elasticity => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flElasticity");
+	public float Elasticity
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_flElasticity"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_flElasticity", value); }
+	}
 
 	// m_flGravityScale
 	[SchemaMember("CBaseEntity", "m_flGravityScale")]
-	public ref float GravityScale => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flGravityScale");
+	public float GravityScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_flGravityScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_flGravityScale", value); }
+	}
 
 	// m_flTimeScale
 	[SchemaMember("CBaseEntity", "m_flTimeScale")]
-	public ref float TimeScale => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flTimeScale");
+	public float TimeScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_flTimeScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_flTimeScale", value); }
+	}
 
 	// m_flWaterLevel
 	[SchemaMember("CBaseEntity", "m_flWaterLevel")]
-	public ref float WaterLevel => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flWaterLevel");
+	public float WaterLevel
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_flWaterLevel"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_flWaterLevel", value); }
+	}
 
 	// m_bGravityDisabled
 	[SchemaMember("CBaseEntity", "m_bGravityDisabled")]
-	public ref bool GravityDisabled => ref Schema.GetRef<bool>(this.Handle, "CBaseEntity", "m_bGravityDisabled");
+	public bool GravityDisabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseEntity", "m_bGravityDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseEntity", "m_bGravityDisabled", value); }
+	}
 
 	// m_bAnimatedEveryTick
 	[SchemaMember("CBaseEntity", "m_bAnimatedEveryTick")]
-	public ref bool AnimatedEveryTick => ref Schema.GetRef<bool>(this.Handle, "CBaseEntity", "m_bAnimatedEveryTick");
+	public bool AnimatedEveryTick
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseEntity", "m_bAnimatedEveryTick"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseEntity", "m_bAnimatedEveryTick", value); }
+	}
 
 	// m_flActualGravityScale
 	[SchemaMember("CBaseEntity", "m_flActualGravityScale")]
-	public ref float ActualGravityScale => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flActualGravityScale");
+	public float ActualGravityScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_flActualGravityScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_flActualGravityScale", value); }
+	}
 
 	// m_bGravityActuallyDisabled
 	[SchemaMember("CBaseEntity", "m_bGravityActuallyDisabled")]
-	public ref bool GravityActuallyDisabled => ref Schema.GetRef<bool>(this.Handle, "CBaseEntity", "m_bGravityActuallyDisabled");
+	public bool GravityActuallyDisabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseEntity", "m_bGravityActuallyDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseEntity", "m_bGravityActuallyDisabled", value); }
+	}
 
 	// m_bDisableLowViolence
 	[SchemaMember("CBaseEntity", "m_bDisableLowViolence")]
-	public ref bool DisableLowViolence => ref Schema.GetRef<bool>(this.Handle, "CBaseEntity", "m_bDisableLowViolence");
+	public bool DisableLowViolence
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseEntity", "m_bDisableLowViolence"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseEntity", "m_bDisableLowViolence", value); }
+	}
 
 	// m_nWaterType
 	[SchemaMember("CBaseEntity", "m_nWaterType")]
-	public ref byte WaterType => ref Schema.GetRef<byte>(this.Handle, "CBaseEntity", "m_nWaterType");
+	public byte WaterType
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CBaseEntity", "m_nWaterType"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CBaseEntity", "m_nWaterType", value); }
+	}
 
 	// m_iEFlags
 	[SchemaMember("CBaseEntity", "m_iEFlags")]
-	public ref Int32 EFlags => ref Schema.GetRef<Int32>(this.Handle, "CBaseEntity", "m_iEFlags");
+	public Int32 EFlags
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseEntity", "m_iEFlags"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseEntity", "m_iEFlags", value); }
+	}
 
 	// m_OnUser1
 	[SchemaMember("CBaseEntity", "m_OnUser1")]
@@ -320,23 +513,43 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_iInitialTeamNum
 	[SchemaMember("CBaseEntity", "m_iInitialTeamNum")]
-	public ref Int32 InitialTeamNum => ref Schema.GetRef<Int32>(this.Handle, "CBaseEntity", "m_iInitialTeamNum");
+	public Int32 InitialTeamNum
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseEntity", "m_iInitialTeamNum"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseEntity", "m_iInitialTeamNum", value); }
+	}
 
 	// m_flNavIgnoreUntilTime
 	[SchemaMember("CBaseEntity", "m_flNavIgnoreUntilTime")]
-	public ref float NavIgnoreUntilTime => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flNavIgnoreUntilTime");
+	public float NavIgnoreUntilTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_flNavIgnoreUntilTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_flNavIgnoreUntilTime", value); }
+	}
 
 	// m_vecAngVelocity
 	[SchemaMember("CBaseEntity", "m_vecAngVelocity")]
-	public QAngle AngVelocity => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBaseEntity", "m_vecAngVelocity");
+	public QAngle AngVelocity
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CBaseEntity", "m_vecAngVelocity"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CBaseEntity", "m_vecAngVelocity", value); }
+	}
 
 	// m_bNetworkQuantizeOriginAndAngles
 	[SchemaMember("CBaseEntity", "m_bNetworkQuantizeOriginAndAngles")]
-	public ref bool NetworkQuantizeOriginAndAngles => ref Schema.GetRef<bool>(this.Handle, "CBaseEntity", "m_bNetworkQuantizeOriginAndAngles");
+	public bool NetworkQuantizeOriginAndAngles
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseEntity", "m_bNetworkQuantizeOriginAndAngles"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseEntity", "m_bNetworkQuantizeOriginAndAngles", value); }
+	}
 
 	// m_bLagCompensate
 	[SchemaMember("CBaseEntity", "m_bLagCompensate")]
-	public ref bool LagCompensate => ref Schema.GetRef<bool>(this.Handle, "CBaseEntity", "m_bLagCompensate");
+	public bool LagCompensate
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseEntity", "m_bLagCompensate"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseEntity", "m_bLagCompensate", value); }
+	}
 
 	// m_pBlocker
 	[SchemaMember("CBaseEntity", "m_pBlocker")]
@@ -344,15 +557,27 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_flLocalTime
 	[SchemaMember("CBaseEntity", "m_flLocalTime")]
-	public ref float LocalTime => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flLocalTime");
+	public float LocalTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_flLocalTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_flLocalTime", value); }
+	}
 
 	// m_flVPhysicsUpdateLocalTime
 	[SchemaMember("CBaseEntity", "m_flVPhysicsUpdateLocalTime")]
-	public ref float VPhysicsUpdateLocalTime => ref Schema.GetRef<float>(this.Handle, "CBaseEntity", "m_flVPhysicsUpdateLocalTime");
+	public float VPhysicsUpdateLocalTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseEntity", "m_flVPhysicsUpdateLocalTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseEntity", "m_flVPhysicsUpdateLocalTime", value); }
+	}
 
 	// m_nBloodType
 	[SchemaMember("CBaseEntity", "m_nBloodType")]
-	public ref BloodType BloodType => ref Schema.GetRef<BloodType>(this.Handle, "CBaseEntity", "m_nBloodType");
+	public BloodType BloodType
+	{
+		get { return Schema.GetValueType<BloodType>(this.Handle, "CBaseEntity", "m_nBloodType"); }
+		set { Schema.SetValueType<BloodType>(this.Handle, "CBaseEntity", "m_nBloodType", value); }
+	}
 
 	// m_pPulseGraphInstance
 	[SchemaMember("CBaseEntity", "m_pPulseGraphInstance")]

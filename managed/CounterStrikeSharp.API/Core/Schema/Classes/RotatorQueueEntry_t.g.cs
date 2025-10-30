@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,10 +21,18 @@ public partial class RotatorQueueEntry_t : NativeObject
 
 	// qTarget
 	[SchemaMember("RotatorQueueEntry_t", "qTarget")]
-	public Quaternion QTarget => Schema.GetDeclaredClass<Quaternion>(this.Handle, "RotatorQueueEntry_t", "qTarget");
+	public Quaternion QTarget
+	{
+		get { return Schema.GetValueType<Quaternion>(this.Handle, "RotatorQueueEntry_t", "qTarget"); }
+		set { Schema.SetValueType<Quaternion>(this.Handle, "RotatorQueueEntry_t", "qTarget", value); }
+	}
 
 	// eSpace
 	[SchemaMember("RotatorQueueEntry_t", "eSpace")]
-	public ref RotatorTargetSpace_t ESpace => ref Schema.GetRef<RotatorTargetSpace_t>(this.Handle, "RotatorQueueEntry_t", "eSpace");
+	public RotatorTargetSpace_t ESpace
+	{
+		get { return Schema.GetValueType<RotatorTargetSpace_t>(this.Handle, "RotatorQueueEntry_t", "eSpace"); }
+		set { Schema.SetValueType<RotatorTargetSpace_t>(this.Handle, "RotatorQueueEntry_t", "eSpace", value); }
+	}
 
 }

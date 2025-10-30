@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,6 +21,10 @@ public partial class CSoundEventSphereEntity : CSoundEventEntity
 
 	// m_flRadius
 	[SchemaMember("CSoundEventSphereEntity", "m_flRadius")]
-	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CSoundEventSphereEntity", "m_flRadius");
+	public float Radius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSoundEventSphereEntity", "m_flRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSoundEventSphereEntity", "m_flRadius", value); }
+	}
 
 }

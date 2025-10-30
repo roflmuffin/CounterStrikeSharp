@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,6 +21,10 @@ public partial class CEnvEntityIgniter : CBaseEntity
 
 	// m_flLifetime
 	[SchemaMember("CEnvEntityIgniter", "m_flLifetime")]
-	public ref float Lifetime => ref Schema.GetRef<float>(this.Handle, "CEnvEntityIgniter", "m_flLifetime");
+	public float Lifetime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvEntityIgniter", "m_flLifetime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvEntityIgniter", "m_flLifetime", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,34 +21,66 @@ public partial class VPhysicsCollisionAttribute_t : NativeObject
 
 	// m_nInteractsAs
 	[SchemaMember("VPhysicsCollisionAttribute_t", "m_nInteractsAs")]
-	public ref UInt64 InteractsAs => ref Schema.GetRef<UInt64>(this.Handle, "VPhysicsCollisionAttribute_t", "m_nInteractsAs");
+	public UInt64 InteractsAs
+	{
+		get { return Schema.GetValueType<UInt64>(this.Handle, "VPhysicsCollisionAttribute_t", "m_nInteractsAs"); }
+		set { Schema.SetValueType<UInt64>(this.Handle, "VPhysicsCollisionAttribute_t", "m_nInteractsAs", value); }
+	}
 
 	// m_nInteractsWith
 	[SchemaMember("VPhysicsCollisionAttribute_t", "m_nInteractsWith")]
-	public ref UInt64 InteractsWith => ref Schema.GetRef<UInt64>(this.Handle, "VPhysicsCollisionAttribute_t", "m_nInteractsWith");
+	public UInt64 InteractsWith
+	{
+		get { return Schema.GetValueType<UInt64>(this.Handle, "VPhysicsCollisionAttribute_t", "m_nInteractsWith"); }
+		set { Schema.SetValueType<UInt64>(this.Handle, "VPhysicsCollisionAttribute_t", "m_nInteractsWith", value); }
+	}
 
 	// m_nInteractsExclude
 	[SchemaMember("VPhysicsCollisionAttribute_t", "m_nInteractsExclude")]
-	public ref UInt64 InteractsExclude => ref Schema.GetRef<UInt64>(this.Handle, "VPhysicsCollisionAttribute_t", "m_nInteractsExclude");
+	public UInt64 InteractsExclude
+	{
+		get { return Schema.GetValueType<UInt64>(this.Handle, "VPhysicsCollisionAttribute_t", "m_nInteractsExclude"); }
+		set { Schema.SetValueType<UInt64>(this.Handle, "VPhysicsCollisionAttribute_t", "m_nInteractsExclude", value); }
+	}
 
 	// m_nEntityId
 	[SchemaMember("VPhysicsCollisionAttribute_t", "m_nEntityId")]
-	public ref UInt32 EntityId => ref Schema.GetRef<UInt32>(this.Handle, "VPhysicsCollisionAttribute_t", "m_nEntityId");
+	public UInt32 EntityId
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "VPhysicsCollisionAttribute_t", "m_nEntityId"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "VPhysicsCollisionAttribute_t", "m_nEntityId", value); }
+	}
 
 	// m_nOwnerId
 	[SchemaMember("VPhysicsCollisionAttribute_t", "m_nOwnerId")]
-	public ref UInt32 OwnerId => ref Schema.GetRef<UInt32>(this.Handle, "VPhysicsCollisionAttribute_t", "m_nOwnerId");
+	public UInt32 OwnerId
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "VPhysicsCollisionAttribute_t", "m_nOwnerId"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "VPhysicsCollisionAttribute_t", "m_nOwnerId", value); }
+	}
 
 	// m_nHierarchyId
 	[SchemaMember("VPhysicsCollisionAttribute_t", "m_nHierarchyId")]
-	public ref UInt16 HierarchyId => ref Schema.GetRef<UInt16>(this.Handle, "VPhysicsCollisionAttribute_t", "m_nHierarchyId");
+	public UInt16 HierarchyId
+	{
+		get { return Schema.GetValueType<UInt16>(this.Handle, "VPhysicsCollisionAttribute_t", "m_nHierarchyId"); }
+		set { Schema.SetValueType<UInt16>(this.Handle, "VPhysicsCollisionAttribute_t", "m_nHierarchyId", value); }
+	}
 
 	// m_nCollisionGroup
 	[SchemaMember("VPhysicsCollisionAttribute_t", "m_nCollisionGroup")]
-	public ref byte CollisionGroup => ref Schema.GetRef<byte>(this.Handle, "VPhysicsCollisionAttribute_t", "m_nCollisionGroup");
+	public byte CollisionGroup
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "VPhysicsCollisionAttribute_t", "m_nCollisionGroup"); }
+		set { Schema.SetValueType<byte>(this.Handle, "VPhysicsCollisionAttribute_t", "m_nCollisionGroup", value); }
+	}
 
 	// m_nCollisionFunctionMask
 	[SchemaMember("VPhysicsCollisionAttribute_t", "m_nCollisionFunctionMask")]
-	public ref byte CollisionFunctionMask => ref Schema.GetRef<byte>(this.Handle, "VPhysicsCollisionAttribute_t", "m_nCollisionFunctionMask");
+	public byte CollisionFunctionMask
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "VPhysicsCollisionAttribute_t", "m_nCollisionFunctionMask"); }
+		set { Schema.SetValueType<byte>(this.Handle, "VPhysicsCollisionAttribute_t", "m_nCollisionFunctionMask", value); }
+	}
 
 }

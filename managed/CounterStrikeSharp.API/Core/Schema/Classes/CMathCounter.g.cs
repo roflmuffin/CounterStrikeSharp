@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,23 +21,43 @@ public partial class CMathCounter : CLogicalEntity
 
 	// m_flMin
 	[SchemaMember("CMathCounter", "m_flMin")]
-	public ref float Min => ref Schema.GetRef<float>(this.Handle, "CMathCounter", "m_flMin");
+	public float Min
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CMathCounter", "m_flMin"); }
+		set { Schema.SetValueType<float>(this.Handle, "CMathCounter", "m_flMin", value); }
+	}
 
 	// m_flMax
 	[SchemaMember("CMathCounter", "m_flMax")]
-	public ref float Max => ref Schema.GetRef<float>(this.Handle, "CMathCounter", "m_flMax");
+	public float Max
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CMathCounter", "m_flMax"); }
+		set { Schema.SetValueType<float>(this.Handle, "CMathCounter", "m_flMax", value); }
+	}
 
 	// m_bHitMin
 	[SchemaMember("CMathCounter", "m_bHitMin")]
-	public ref bool HitMin => ref Schema.GetRef<bool>(this.Handle, "CMathCounter", "m_bHitMin");
+	public bool HitMin
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CMathCounter", "m_bHitMin"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CMathCounter", "m_bHitMin", value); }
+	}
 
 	// m_bHitMax
 	[SchemaMember("CMathCounter", "m_bHitMax")]
-	public ref bool HitMax => ref Schema.GetRef<bool>(this.Handle, "CMathCounter", "m_bHitMax");
+	public bool HitMax
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CMathCounter", "m_bHitMax"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CMathCounter", "m_bHitMax", value); }
+	}
 
 	// m_bDisabled
 	[SchemaMember("CMathCounter", "m_bDisabled")]
-	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CMathCounter", "m_bDisabled");
+	public bool Disabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CMathCounter", "m_bDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CMathCounter", "m_bDisabled", value); }
+	}
 
 	// m_OnHitMin
 	[SchemaMember("CMathCounter", "m_OnHitMin")]

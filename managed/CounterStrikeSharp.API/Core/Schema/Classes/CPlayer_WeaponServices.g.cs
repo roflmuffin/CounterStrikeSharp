@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -36,6 +37,10 @@ public partial class CPlayer_WeaponServices : CPlayerPawnComponent
 
 	// m_bPreventWeaponPickup
 	[SchemaMember("CPlayer_WeaponServices", "m_bPreventWeaponPickup")]
-	public ref bool PreventWeaponPickup => ref Schema.GetRef<bool>(this.Handle, "CPlayer_WeaponServices", "m_bPreventWeaponPickup");
+	public bool PreventWeaponPickup
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPlayer_WeaponServices", "m_bPreventWeaponPickup"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPlayer_WeaponServices", "m_bPreventWeaponPickup", value); }
+	}
 
 }

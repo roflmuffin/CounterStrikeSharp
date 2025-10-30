@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,55 +21,107 @@ public partial class CPointClientUIWorldPanel : CBaseClientUIEntity
 
 	// m_bIgnoreInput
 	[SchemaMember("CPointClientUIWorldPanel", "m_bIgnoreInput")]
-	public ref bool IgnoreInput => ref Schema.GetRef<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bIgnoreInput");
+	public bool IgnoreInput
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bIgnoreInput"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bIgnoreInput", value); }
+	}
 
 	// m_bLit
 	[SchemaMember("CPointClientUIWorldPanel", "m_bLit")]
-	public ref bool Lit => ref Schema.GetRef<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bLit");
+	public bool Lit
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bLit"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bLit", value); }
+	}
 
 	// m_bFollowPlayerAcrossTeleport
 	[SchemaMember("CPointClientUIWorldPanel", "m_bFollowPlayerAcrossTeleport")]
-	public ref bool FollowPlayerAcrossTeleport => ref Schema.GetRef<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bFollowPlayerAcrossTeleport");
+	public bool FollowPlayerAcrossTeleport
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bFollowPlayerAcrossTeleport"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bFollowPlayerAcrossTeleport", value); }
+	}
 
 	// m_flWidth
 	[SchemaMember("CPointClientUIWorldPanel", "m_flWidth")]
-	public ref float Width => ref Schema.GetRef<float>(this.Handle, "CPointClientUIWorldPanel", "m_flWidth");
+	public float Width
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointClientUIWorldPanel", "m_flWidth"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointClientUIWorldPanel", "m_flWidth", value); }
+	}
 
 	// m_flHeight
 	[SchemaMember("CPointClientUIWorldPanel", "m_flHeight")]
-	public ref float Height => ref Schema.GetRef<float>(this.Handle, "CPointClientUIWorldPanel", "m_flHeight");
+	public float Height
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointClientUIWorldPanel", "m_flHeight"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointClientUIWorldPanel", "m_flHeight", value); }
+	}
 
 	// m_flDPI
 	[SchemaMember("CPointClientUIWorldPanel", "m_flDPI")]
-	public ref float DPI => ref Schema.GetRef<float>(this.Handle, "CPointClientUIWorldPanel", "m_flDPI");
+	public float DPI
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointClientUIWorldPanel", "m_flDPI"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointClientUIWorldPanel", "m_flDPI", value); }
+	}
 
 	// m_flInteractDistance
 	[SchemaMember("CPointClientUIWorldPanel", "m_flInteractDistance")]
-	public ref float InteractDistance => ref Schema.GetRef<float>(this.Handle, "CPointClientUIWorldPanel", "m_flInteractDistance");
+	public float InteractDistance
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointClientUIWorldPanel", "m_flInteractDistance"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointClientUIWorldPanel", "m_flInteractDistance", value); }
+	}
 
 	// m_flDepthOffset
 	[SchemaMember("CPointClientUIWorldPanel", "m_flDepthOffset")]
-	public ref float DepthOffset => ref Schema.GetRef<float>(this.Handle, "CPointClientUIWorldPanel", "m_flDepthOffset");
+	public float DepthOffset
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointClientUIWorldPanel", "m_flDepthOffset"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointClientUIWorldPanel", "m_flDepthOffset", value); }
+	}
 
 	// m_unOwnerContext
 	[SchemaMember("CPointClientUIWorldPanel", "m_unOwnerContext")]
-	public ref UInt32 OwnerContext => ref Schema.GetRef<UInt32>(this.Handle, "CPointClientUIWorldPanel", "m_unOwnerContext");
+	public UInt32 OwnerContext
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CPointClientUIWorldPanel", "m_unOwnerContext"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CPointClientUIWorldPanel", "m_unOwnerContext", value); }
+	}
 
 	// m_unHorizontalAlign
 	[SchemaMember("CPointClientUIWorldPanel", "m_unHorizontalAlign")]
-	public ref UInt32 HorizontalAlign => ref Schema.GetRef<UInt32>(this.Handle, "CPointClientUIWorldPanel", "m_unHorizontalAlign");
+	public UInt32 HorizontalAlign
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CPointClientUIWorldPanel", "m_unHorizontalAlign"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CPointClientUIWorldPanel", "m_unHorizontalAlign", value); }
+	}
 
 	// m_unVerticalAlign
 	[SchemaMember("CPointClientUIWorldPanel", "m_unVerticalAlign")]
-	public ref UInt32 VerticalAlign => ref Schema.GetRef<UInt32>(this.Handle, "CPointClientUIWorldPanel", "m_unVerticalAlign");
+	public UInt32 VerticalAlign
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CPointClientUIWorldPanel", "m_unVerticalAlign"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CPointClientUIWorldPanel", "m_unVerticalAlign", value); }
+	}
 
 	// m_unOrientation
 	[SchemaMember("CPointClientUIWorldPanel", "m_unOrientation")]
-	public ref UInt32 Orientation => ref Schema.GetRef<UInt32>(this.Handle, "CPointClientUIWorldPanel", "m_unOrientation");
+	public UInt32 Orientation
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CPointClientUIWorldPanel", "m_unOrientation"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CPointClientUIWorldPanel", "m_unOrientation", value); }
+	}
 
 	// m_bAllowInteractionFromAllSceneWorlds
 	[SchemaMember("CPointClientUIWorldPanel", "m_bAllowInteractionFromAllSceneWorlds")]
-	public ref bool AllowInteractionFromAllSceneWorlds => ref Schema.GetRef<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bAllowInteractionFromAllSceneWorlds");
+	public bool AllowInteractionFromAllSceneWorlds
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bAllowInteractionFromAllSceneWorlds"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bAllowInteractionFromAllSceneWorlds", value); }
+	}
 
 	// m_vecCSSClasses
 	[SchemaMember("CPointClientUIWorldPanel", "m_vecCSSClasses")]
@@ -76,42 +129,82 @@ public partial class CPointClientUIWorldPanel : CBaseClientUIEntity
 
 	// m_bOpaque
 	[SchemaMember("CPointClientUIWorldPanel", "m_bOpaque")]
-	public ref bool Opaque => ref Schema.GetRef<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bOpaque");
+	public bool Opaque
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bOpaque"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bOpaque", value); }
+	}
 
 	// m_bNoDepth
 	[SchemaMember("CPointClientUIWorldPanel", "m_bNoDepth")]
-	public ref bool NoDepth => ref Schema.GetRef<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bNoDepth");
+	public bool NoDepth
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bNoDepth"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bNoDepth", value); }
+	}
 
 	// m_bVisibleWhenParentNoDraw
 	[SchemaMember("CPointClientUIWorldPanel", "m_bVisibleWhenParentNoDraw")]
-	public ref bool VisibleWhenParentNoDraw => ref Schema.GetRef<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bVisibleWhenParentNoDraw");
+	public bool VisibleWhenParentNoDraw
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bVisibleWhenParentNoDraw"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bVisibleWhenParentNoDraw", value); }
+	}
 
 	// m_bRenderBackface
 	[SchemaMember("CPointClientUIWorldPanel", "m_bRenderBackface")]
-	public ref bool RenderBackface => ref Schema.GetRef<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bRenderBackface");
+	public bool RenderBackface
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bRenderBackface"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bRenderBackface", value); }
+	}
 
 	// m_bUseOffScreenIndicator
 	[SchemaMember("CPointClientUIWorldPanel", "m_bUseOffScreenIndicator")]
-	public ref bool UseOffScreenIndicator => ref Schema.GetRef<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bUseOffScreenIndicator");
+	public bool UseOffScreenIndicator
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bUseOffScreenIndicator"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bUseOffScreenIndicator", value); }
+	}
 
 	// m_bExcludeFromSaveGames
 	[SchemaMember("CPointClientUIWorldPanel", "m_bExcludeFromSaveGames")]
-	public ref bool ExcludeFromSaveGames => ref Schema.GetRef<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bExcludeFromSaveGames");
+	public bool ExcludeFromSaveGames
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bExcludeFromSaveGames"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bExcludeFromSaveGames", value); }
+	}
 
 	// m_bGrabbable
 	[SchemaMember("CPointClientUIWorldPanel", "m_bGrabbable")]
-	public ref bool Grabbable => ref Schema.GetRef<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bGrabbable");
+	public bool Grabbable
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bGrabbable"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bGrabbable", value); }
+	}
 
 	// m_bOnlyRenderToTexture
 	[SchemaMember("CPointClientUIWorldPanel", "m_bOnlyRenderToTexture")]
-	public ref bool OnlyRenderToTexture => ref Schema.GetRef<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bOnlyRenderToTexture");
+	public bool OnlyRenderToTexture
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bOnlyRenderToTexture"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bOnlyRenderToTexture", value); }
+	}
 
 	// m_bDisableMipGen
 	[SchemaMember("CPointClientUIWorldPanel", "m_bDisableMipGen")]
-	public ref bool DisableMipGen => ref Schema.GetRef<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bDisableMipGen");
+	public bool DisableMipGen
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bDisableMipGen"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointClientUIWorldPanel", "m_bDisableMipGen", value); }
+	}
 
 	// m_nExplicitImageLayout
 	[SchemaMember("CPointClientUIWorldPanel", "m_nExplicitImageLayout")]
-	public ref Int32 ExplicitImageLayout => ref Schema.GetRef<Int32>(this.Handle, "CPointClientUIWorldPanel", "m_nExplicitImageLayout");
+	public Int32 ExplicitImageLayout
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CPointClientUIWorldPanel", "m_nExplicitImageLayout"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CPointClientUIWorldPanel", "m_nExplicitImageLayout", value); }
+	}
 
 }

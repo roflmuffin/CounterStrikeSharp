@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,23 +21,43 @@ public partial class CPlantedC4 : CBaseAnimGraph
 
 	// m_bBombTicking
 	[SchemaMember("CPlantedC4", "m_bBombTicking")]
-	public ref bool BombTicking => ref Schema.GetRef<bool>(this.Handle, "CPlantedC4", "m_bBombTicking");
+	public bool BombTicking
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPlantedC4", "m_bBombTicking"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPlantedC4", "m_bBombTicking", value); }
+	}
 
 	// m_flC4Blow
 	[SchemaMember("CPlantedC4", "m_flC4Blow")]
-	public ref float C4Blow => ref Schema.GetRef<float>(this.Handle, "CPlantedC4", "m_flC4Blow");
+	public float C4Blow
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPlantedC4", "m_flC4Blow"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPlantedC4", "m_flC4Blow", value); }
+	}
 
 	// m_nBombSite
 	[SchemaMember("CPlantedC4", "m_nBombSite")]
-	public ref Int32 BombSite => ref Schema.GetRef<Int32>(this.Handle, "CPlantedC4", "m_nBombSite");
+	public Int32 BombSite
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CPlantedC4", "m_nBombSite"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CPlantedC4", "m_nBombSite", value); }
+	}
 
 	// m_nSourceSoundscapeHash
 	[SchemaMember("CPlantedC4", "m_nSourceSoundscapeHash")]
-	public ref Int32 SourceSoundscapeHash => ref Schema.GetRef<Int32>(this.Handle, "CPlantedC4", "m_nSourceSoundscapeHash");
+	public Int32 SourceSoundscapeHash
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CPlantedC4", "m_nSourceSoundscapeHash"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CPlantedC4", "m_nSourceSoundscapeHash", value); }
+	}
 
 	// m_bAbortDetonationBecauseWorldIsFrozen
 	[SchemaMember("CPlantedC4", "m_bAbortDetonationBecauseWorldIsFrozen")]
-	public ref bool AbortDetonationBecauseWorldIsFrozen => ref Schema.GetRef<bool>(this.Handle, "CPlantedC4", "m_bAbortDetonationBecauseWorldIsFrozen");
+	public bool AbortDetonationBecauseWorldIsFrozen
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPlantedC4", "m_bAbortDetonationBecauseWorldIsFrozen"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPlantedC4", "m_bAbortDetonationBecauseWorldIsFrozen", value); }
+	}
 
 	// m_AttributeManager
 	[SchemaMember("CPlantedC4", "m_AttributeManager")]
@@ -56,7 +77,11 @@ public partial class CPlantedC4 : CBaseAnimGraph
 
 	// m_bCannotBeDefused
 	[SchemaMember("CPlantedC4", "m_bCannotBeDefused")]
-	public ref bool CannotBeDefused => ref Schema.GetRef<bool>(this.Handle, "CPlantedC4", "m_bCannotBeDefused");
+	public bool CannotBeDefused
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPlantedC4", "m_bCannotBeDefused"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPlantedC4", "m_bCannotBeDefused", value); }
+	}
 
 	// m_entitySpottedState
 	[SchemaMember("CPlantedC4", "m_entitySpottedState")]
@@ -64,39 +89,75 @@ public partial class CPlantedC4 : CBaseAnimGraph
 
 	// m_nSpotRules
 	[SchemaMember("CPlantedC4", "m_nSpotRules")]
-	public ref Int32 SpotRules => ref Schema.GetRef<Int32>(this.Handle, "CPlantedC4", "m_nSpotRules");
+	public Int32 SpotRules
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CPlantedC4", "m_nSpotRules"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CPlantedC4", "m_nSpotRules", value); }
+	}
 
 	// m_bTrainingPlacedByPlayer
 	[SchemaMember("CPlantedC4", "m_bTrainingPlacedByPlayer")]
-	public ref bool TrainingPlacedByPlayer => ref Schema.GetRef<bool>(this.Handle, "CPlantedC4", "m_bTrainingPlacedByPlayer");
+	public bool TrainingPlacedByPlayer
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPlantedC4", "m_bTrainingPlacedByPlayer"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPlantedC4", "m_bTrainingPlacedByPlayer", value); }
+	}
 
 	// m_bHasExploded
 	[SchemaMember("CPlantedC4", "m_bHasExploded")]
-	public ref bool HasExploded => ref Schema.GetRef<bool>(this.Handle, "CPlantedC4", "m_bHasExploded");
+	public bool HasExploded
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPlantedC4", "m_bHasExploded"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPlantedC4", "m_bHasExploded", value); }
+	}
 
 	// m_flTimerLength
 	[SchemaMember("CPlantedC4", "m_flTimerLength")]
-	public ref float TimerLength => ref Schema.GetRef<float>(this.Handle, "CPlantedC4", "m_flTimerLength");
+	public float TimerLength
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPlantedC4", "m_flTimerLength"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPlantedC4", "m_flTimerLength", value); }
+	}
 
 	// m_bBeingDefused
 	[SchemaMember("CPlantedC4", "m_bBeingDefused")]
-	public ref bool BeingDefused => ref Schema.GetRef<bool>(this.Handle, "CPlantedC4", "m_bBeingDefused");
+	public bool BeingDefused
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPlantedC4", "m_bBeingDefused"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPlantedC4", "m_bBeingDefused", value); }
+	}
 
 	// m_fLastDefuseTime
 	[SchemaMember("CPlantedC4", "m_fLastDefuseTime")]
-	public ref float LastDefuseTime => ref Schema.GetRef<float>(this.Handle, "CPlantedC4", "m_fLastDefuseTime");
+	public float LastDefuseTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPlantedC4", "m_fLastDefuseTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPlantedC4", "m_fLastDefuseTime", value); }
+	}
 
 	// m_flDefuseLength
 	[SchemaMember("CPlantedC4", "m_flDefuseLength")]
-	public ref float DefuseLength => ref Schema.GetRef<float>(this.Handle, "CPlantedC4", "m_flDefuseLength");
+	public float DefuseLength
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPlantedC4", "m_flDefuseLength"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPlantedC4", "m_flDefuseLength", value); }
+	}
 
 	// m_flDefuseCountDown
 	[SchemaMember("CPlantedC4", "m_flDefuseCountDown")]
-	public ref float DefuseCountDown => ref Schema.GetRef<float>(this.Handle, "CPlantedC4", "m_flDefuseCountDown");
+	public float DefuseCountDown
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPlantedC4", "m_flDefuseCountDown"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPlantedC4", "m_flDefuseCountDown", value); }
+	}
 
 	// m_bBombDefused
 	[SchemaMember("CPlantedC4", "m_bBombDefused")]
-	public ref bool BombDefused => ref Schema.GetRef<bool>(this.Handle, "CPlantedC4", "m_bBombDefused");
+	public bool BombDefused
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPlantedC4", "m_bBombDefused"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPlantedC4", "m_bBombDefused", value); }
+	}
 
 	// m_hBombDefuser
 	[SchemaMember("CPlantedC4", "m_hBombDefuser")]
@@ -104,11 +165,19 @@ public partial class CPlantedC4 : CBaseAnimGraph
 
 	// m_iProgressBarTime
 	[SchemaMember("CPlantedC4", "m_iProgressBarTime")]
-	public ref Int32 ProgressBarTime => ref Schema.GetRef<Int32>(this.Handle, "CPlantedC4", "m_iProgressBarTime");
+	public Int32 ProgressBarTime
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CPlantedC4", "m_iProgressBarTime"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CPlantedC4", "m_iProgressBarTime", value); }
+	}
 
 	// m_bVoiceAlertFired
 	[SchemaMember("CPlantedC4", "m_bVoiceAlertFired")]
-	public ref bool VoiceAlertFired => ref Schema.GetRef<bool>(this.Handle, "CPlantedC4", "m_bVoiceAlertFired");
+	public bool VoiceAlertFired
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPlantedC4", "m_bVoiceAlertFired"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPlantedC4", "m_bVoiceAlertFired", value); }
+	}
 
 	// m_bVoiceAlertPlayed
 	[SchemaMember("CPlantedC4", "m_bVoiceAlertPlayed")]
@@ -116,14 +185,26 @@ public partial class CPlantedC4 : CBaseAnimGraph
 
 	// m_flNextBotBeepTime
 	[SchemaMember("CPlantedC4", "m_flNextBotBeepTime")]
-	public ref float NextBotBeepTime => ref Schema.GetRef<float>(this.Handle, "CPlantedC4", "m_flNextBotBeepTime");
+	public float NextBotBeepTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPlantedC4", "m_flNextBotBeepTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPlantedC4", "m_flNextBotBeepTime", value); }
+	}
 
 	// m_angCatchUpToPlayerEye
 	[SchemaMember("CPlantedC4", "m_angCatchUpToPlayerEye")]
-	public QAngle CatchUpToPlayerEye => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPlantedC4", "m_angCatchUpToPlayerEye");
+	public QAngle CatchUpToPlayerEye
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CPlantedC4", "m_angCatchUpToPlayerEye"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CPlantedC4", "m_angCatchUpToPlayerEye", value); }
+	}
 
 	// m_flLastSpinDetectionTime
 	[SchemaMember("CPlantedC4", "m_flLastSpinDetectionTime")]
-	public ref float LastSpinDetectionTime => ref Schema.GetRef<float>(this.Handle, "CPlantedC4", "m_flLastSpinDetectionTime");
+	public float LastSpinDetectionTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPlantedC4", "m_flLastSpinDetectionTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPlantedC4", "m_flLastSpinDetectionTime", value); }
+	}
 
 }

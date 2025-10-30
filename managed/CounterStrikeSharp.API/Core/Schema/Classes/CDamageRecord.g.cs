@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -52,38 +53,74 @@ public partial class CDamageRecord : NativeObject
 
 	// m_DamagerXuid
 	[SchemaMember("CDamageRecord", "m_DamagerXuid")]
-	public ref UInt64 DamagerXuid => ref Schema.GetRef<UInt64>(this.Handle, "CDamageRecord", "m_DamagerXuid");
+	public UInt64 DamagerXuid
+	{
+		get { return Schema.GetValueType<UInt64>(this.Handle, "CDamageRecord", "m_DamagerXuid"); }
+		set { Schema.SetValueType<UInt64>(this.Handle, "CDamageRecord", "m_DamagerXuid", value); }
+	}
 
 	// m_RecipientXuid
 	[SchemaMember("CDamageRecord", "m_RecipientXuid")]
-	public ref UInt64 RecipientXuid => ref Schema.GetRef<UInt64>(this.Handle, "CDamageRecord", "m_RecipientXuid");
+	public UInt64 RecipientXuid
+	{
+		get { return Schema.GetValueType<UInt64>(this.Handle, "CDamageRecord", "m_RecipientXuid"); }
+		set { Schema.SetValueType<UInt64>(this.Handle, "CDamageRecord", "m_RecipientXuid", value); }
+	}
 
 	// m_flBulletsDamage
 	[SchemaMember("CDamageRecord", "m_flBulletsDamage")]
-	public ref float BulletsDamage => ref Schema.GetRef<float>(this.Handle, "CDamageRecord", "m_flBulletsDamage");
+	public float BulletsDamage
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CDamageRecord", "m_flBulletsDamage"); }
+		set { Schema.SetValueType<float>(this.Handle, "CDamageRecord", "m_flBulletsDamage", value); }
+	}
 
 	// m_flDamage
 	[SchemaMember("CDamageRecord", "m_flDamage")]
-	public ref float Damage => ref Schema.GetRef<float>(this.Handle, "CDamageRecord", "m_flDamage");
+	public float Damage
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CDamageRecord", "m_flDamage"); }
+		set { Schema.SetValueType<float>(this.Handle, "CDamageRecord", "m_flDamage", value); }
+	}
 
 	// m_flActualHealthRemoved
 	[SchemaMember("CDamageRecord", "m_flActualHealthRemoved")]
-	public ref float ActualHealthRemoved => ref Schema.GetRef<float>(this.Handle, "CDamageRecord", "m_flActualHealthRemoved");
+	public float ActualHealthRemoved
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CDamageRecord", "m_flActualHealthRemoved"); }
+		set { Schema.SetValueType<float>(this.Handle, "CDamageRecord", "m_flActualHealthRemoved", value); }
+	}
 
 	// m_iNumHits
 	[SchemaMember("CDamageRecord", "m_iNumHits")]
-	public ref Int32 NumHits => ref Schema.GetRef<Int32>(this.Handle, "CDamageRecord", "m_iNumHits");
+	public Int32 NumHits
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CDamageRecord", "m_iNumHits"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CDamageRecord", "m_iNumHits", value); }
+	}
 
 	// m_iLastBulletUpdate
 	[SchemaMember("CDamageRecord", "m_iLastBulletUpdate")]
-	public ref Int32 LastBulletUpdate => ref Schema.GetRef<Int32>(this.Handle, "CDamageRecord", "m_iLastBulletUpdate");
+	public Int32 LastBulletUpdate
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CDamageRecord", "m_iLastBulletUpdate"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CDamageRecord", "m_iLastBulletUpdate", value); }
+	}
 
 	// m_bIsOtherEnemy
 	[SchemaMember("CDamageRecord", "m_bIsOtherEnemy")]
-	public ref bool IsOtherEnemy => ref Schema.GetRef<bool>(this.Handle, "CDamageRecord", "m_bIsOtherEnemy");
+	public bool IsOtherEnemy
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CDamageRecord", "m_bIsOtherEnemy"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CDamageRecord", "m_bIsOtherEnemy", value); }
+	}
 
 	// m_killType
 	[SchemaMember("CDamageRecord", "m_killType")]
-	public ref EKillTypes_t KillType => ref Schema.GetRef<EKillTypes_t>(this.Handle, "CDamageRecord", "m_killType");
+	public EKillTypes_t KillType
+	{
+		get { return Schema.GetValueType<EKillTypes_t>(this.Handle, "CDamageRecord", "m_killType"); }
+		set { Schema.SetValueType<EKillTypes_t>(this.Handle, "CDamageRecord", "m_killType", value); }
+	}
 
 }

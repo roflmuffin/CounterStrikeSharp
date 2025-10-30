@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,27 +21,51 @@ public partial class CMapVetoPickController : CBaseEntity
 
 	// m_bPlayedIntroVcd
 	[SchemaMember("CMapVetoPickController", "m_bPlayedIntroVcd")]
-	public ref bool PlayedIntroVcd => ref Schema.GetRef<bool>(this.Handle, "CMapVetoPickController", "m_bPlayedIntroVcd");
+	public bool PlayedIntroVcd
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CMapVetoPickController", "m_bPlayedIntroVcd"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CMapVetoPickController", "m_bPlayedIntroVcd", value); }
+	}
 
 	// m_bNeedToPlayFiveSecondsRemaining
 	[SchemaMember("CMapVetoPickController", "m_bNeedToPlayFiveSecondsRemaining")]
-	public ref bool NeedToPlayFiveSecondsRemaining => ref Schema.GetRef<bool>(this.Handle, "CMapVetoPickController", "m_bNeedToPlayFiveSecondsRemaining");
+	public bool NeedToPlayFiveSecondsRemaining
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CMapVetoPickController", "m_bNeedToPlayFiveSecondsRemaining"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CMapVetoPickController", "m_bNeedToPlayFiveSecondsRemaining", value); }
+	}
 
 	// m_dblPreMatchDraftSequenceTime
 	[SchemaMember("CMapVetoPickController", "m_dblPreMatchDraftSequenceTime")]
-	public ref double DblPreMatchDraftSequenceTime => ref Schema.GetRef<double>(this.Handle, "CMapVetoPickController", "m_dblPreMatchDraftSequenceTime");
+	public double DblPreMatchDraftSequenceTime
+	{
+		get { return Schema.GetValueType<double>(this.Handle, "CMapVetoPickController", "m_dblPreMatchDraftSequenceTime"); }
+		set { Schema.SetValueType<double>(this.Handle, "CMapVetoPickController", "m_dblPreMatchDraftSequenceTime", value); }
+	}
 
 	// m_bPreMatchDraftStateChanged
 	[SchemaMember("CMapVetoPickController", "m_bPreMatchDraftStateChanged")]
-	public ref bool PreMatchDraftStateChanged => ref Schema.GetRef<bool>(this.Handle, "CMapVetoPickController", "m_bPreMatchDraftStateChanged");
+	public bool PreMatchDraftStateChanged
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CMapVetoPickController", "m_bPreMatchDraftStateChanged"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CMapVetoPickController", "m_bPreMatchDraftStateChanged", value); }
+	}
 
 	// m_nDraftType
 	[SchemaMember("CMapVetoPickController", "m_nDraftType")]
-	public ref Int32 DraftType => ref Schema.GetRef<Int32>(this.Handle, "CMapVetoPickController", "m_nDraftType");
+	public Int32 DraftType
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CMapVetoPickController", "m_nDraftType"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CMapVetoPickController", "m_nDraftType", value); }
+	}
 
 	// m_nTeamWinningCoinToss
 	[SchemaMember("CMapVetoPickController", "m_nTeamWinningCoinToss")]
-	public ref Int32 TeamWinningCoinToss => ref Schema.GetRef<Int32>(this.Handle, "CMapVetoPickController", "m_nTeamWinningCoinToss");
+	public Int32 TeamWinningCoinToss
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CMapVetoPickController", "m_nTeamWinningCoinToss"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CMapVetoPickController", "m_nTeamWinningCoinToss", value); }
+	}
 
 	// m_nTeamWithFirstChoice
 	[SchemaMember("CMapVetoPickController", "m_nTeamWithFirstChoice")]
@@ -84,14 +109,26 @@ public partial class CMapVetoPickController : CBaseEntity
 
 	// m_nCurrentPhase
 	[SchemaMember("CMapVetoPickController", "m_nCurrentPhase")]
-	public ref Int32 CurrentPhase => ref Schema.GetRef<Int32>(this.Handle, "CMapVetoPickController", "m_nCurrentPhase");
+	public Int32 CurrentPhase
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CMapVetoPickController", "m_nCurrentPhase"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CMapVetoPickController", "m_nCurrentPhase", value); }
+	}
 
 	// m_nPhaseStartTick
 	[SchemaMember("CMapVetoPickController", "m_nPhaseStartTick")]
-	public ref Int32 PhaseStartTick => ref Schema.GetRef<Int32>(this.Handle, "CMapVetoPickController", "m_nPhaseStartTick");
+	public Int32 PhaseStartTick
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CMapVetoPickController", "m_nPhaseStartTick"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CMapVetoPickController", "m_nPhaseStartTick", value); }
+	}
 
 	// m_nPhaseDurationTicks
 	[SchemaMember("CMapVetoPickController", "m_nPhaseDurationTicks")]
-	public ref Int32 PhaseDurationTicks => ref Schema.GetRef<Int32>(this.Handle, "CMapVetoPickController", "m_nPhaseDurationTicks");
+	public Int32 PhaseDurationTicks
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CMapVetoPickController", "m_nPhaseDurationTicks"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CMapVetoPickController", "m_nPhaseDurationTicks", value); }
+	}
 
 }

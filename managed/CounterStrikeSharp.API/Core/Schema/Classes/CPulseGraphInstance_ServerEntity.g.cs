@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,7 +25,11 @@ public partial class CPulseGraphInstance_ServerEntity : CBasePulseGraphInstance
 
 	// m_bActivated
 	[SchemaMember("CPulseGraphInstance_ServerEntity", "m_bActivated")]
-	public ref bool Activated => ref Schema.GetRef<bool>(this.Handle, "CPulseGraphInstance_ServerEntity", "m_bActivated");
+	public bool Activated
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPulseGraphInstance_ServerEntity", "m_bActivated"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPulseGraphInstance_ServerEntity", "m_bActivated", value); }
+	}
 
 	// m_sNameFixupStaticPrefix
 	[SchemaMember("CPulseGraphInstance_ServerEntity", "m_sNameFixupStaticPrefix")]

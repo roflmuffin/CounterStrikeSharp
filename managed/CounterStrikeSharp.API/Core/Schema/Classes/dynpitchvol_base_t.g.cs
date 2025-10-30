@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,102 +21,202 @@ public partial class dynpitchvol_base_t : NativeObject
 
 	// preset
 	[SchemaMember("dynpitchvol_base_t", "preset")]
-	public ref Int32 Preset => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "preset");
+	public Int32 Preset
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "preset"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "preset", value); }
+	}
 
 	// pitchrun
 	[SchemaMember("dynpitchvol_base_t", "pitchrun")]
-	public ref Int32 Pitchrun => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "pitchrun");
+	public Int32 Pitchrun
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "pitchrun"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "pitchrun", value); }
+	}
 
 	// pitchstart
 	[SchemaMember("dynpitchvol_base_t", "pitchstart")]
-	public ref Int32 Pitchstart => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "pitchstart");
+	public Int32 Pitchstart
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "pitchstart"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "pitchstart", value); }
+	}
 
 	// spinup
 	[SchemaMember("dynpitchvol_base_t", "spinup")]
-	public ref Int32 Spinup => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "spinup");
+	public Int32 Spinup
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "spinup"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "spinup", value); }
+	}
 
 	// spindown
 	[SchemaMember("dynpitchvol_base_t", "spindown")]
-	public ref Int32 Spindown => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "spindown");
+	public Int32 Spindown
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "spindown"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "spindown", value); }
+	}
 
 	// volrun
 	[SchemaMember("dynpitchvol_base_t", "volrun")]
-	public ref Int32 Volrun => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "volrun");
+	public Int32 Volrun
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "volrun"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "volrun", value); }
+	}
 
 	// volstart
 	[SchemaMember("dynpitchvol_base_t", "volstart")]
-	public ref Int32 Volstart => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "volstart");
+	public Int32 Volstart
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "volstart"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "volstart", value); }
+	}
 
 	// fadein
 	[SchemaMember("dynpitchvol_base_t", "fadein")]
-	public ref Int32 Fadein => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "fadein");
+	public Int32 Fadein
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "fadein"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "fadein", value); }
+	}
 
 	// fadeout
 	[SchemaMember("dynpitchvol_base_t", "fadeout")]
-	public ref Int32 Fadeout => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "fadeout");
+	public Int32 Fadeout
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "fadeout"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "fadeout", value); }
+	}
 
 	// lfotype
 	[SchemaMember("dynpitchvol_base_t", "lfotype")]
-	public ref Int32 Lfotype => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "lfotype");
+	public Int32 Lfotype
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "lfotype"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "lfotype", value); }
+	}
 
 	// lforate
 	[SchemaMember("dynpitchvol_base_t", "lforate")]
-	public ref Int32 Lforate => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "lforate");
+	public Int32 Lforate
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "lforate"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "lforate", value); }
+	}
 
 	// lfomodpitch
 	[SchemaMember("dynpitchvol_base_t", "lfomodpitch")]
-	public ref Int32 Lfomodpitch => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "lfomodpitch");
+	public Int32 Lfomodpitch
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "lfomodpitch"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "lfomodpitch", value); }
+	}
 
 	// lfomodvol
 	[SchemaMember("dynpitchvol_base_t", "lfomodvol")]
-	public ref Int32 Lfomodvol => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "lfomodvol");
+	public Int32 Lfomodvol
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "lfomodvol"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "lfomodvol", value); }
+	}
 
 	// cspinup
 	[SchemaMember("dynpitchvol_base_t", "cspinup")]
-	public ref Int32 Cspinup => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "cspinup");
+	public Int32 Cspinup
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "cspinup"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "cspinup", value); }
+	}
 
 	// cspincount
 	[SchemaMember("dynpitchvol_base_t", "cspincount")]
-	public ref Int32 Cspincount => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "cspincount");
+	public Int32 Cspincount
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "cspincount"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "cspincount", value); }
+	}
 
 	// pitch
 	[SchemaMember("dynpitchvol_base_t", "pitch")]
-	public ref Int32 Pitch => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "pitch");
+	public Int32 Pitch
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "pitch"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "pitch", value); }
+	}
 
 	// spinupsav
 	[SchemaMember("dynpitchvol_base_t", "spinupsav")]
-	public ref Int32 Spinupsav => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "spinupsav");
+	public Int32 Spinupsav
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "spinupsav"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "spinupsav", value); }
+	}
 
 	// spindownsav
 	[SchemaMember("dynpitchvol_base_t", "spindownsav")]
-	public ref Int32 Spindownsav => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "spindownsav");
+	public Int32 Spindownsav
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "spindownsav"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "spindownsav", value); }
+	}
 
 	// pitchfrac
 	[SchemaMember("dynpitchvol_base_t", "pitchfrac")]
-	public ref Int32 Pitchfrac => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "pitchfrac");
+	public Int32 Pitchfrac
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "pitchfrac"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "pitchfrac", value); }
+	}
 
 	// vol
 	[SchemaMember("dynpitchvol_base_t", "vol")]
-	public ref Int32 Vol => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "vol");
+	public Int32 Vol
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "vol"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "vol", value); }
+	}
 
 	// fadeinsav
 	[SchemaMember("dynpitchvol_base_t", "fadeinsav")]
-	public ref Int32 Fadeinsav => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "fadeinsav");
+	public Int32 Fadeinsav
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "fadeinsav"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "fadeinsav", value); }
+	}
 
 	// fadeoutsav
 	[SchemaMember("dynpitchvol_base_t", "fadeoutsav")]
-	public ref Int32 Fadeoutsav => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "fadeoutsav");
+	public Int32 Fadeoutsav
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "fadeoutsav"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "fadeoutsav", value); }
+	}
 
 	// volfrac
 	[SchemaMember("dynpitchvol_base_t", "volfrac")]
-	public ref Int32 Volfrac => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "volfrac");
+	public Int32 Volfrac
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "volfrac"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "volfrac", value); }
+	}
 
 	// lfofrac
 	[SchemaMember("dynpitchvol_base_t", "lfofrac")]
-	public ref Int32 Lfofrac => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "lfofrac");
+	public Int32 Lfofrac
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "lfofrac"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "lfofrac", value); }
+	}
 
 	// lfomult
 	[SchemaMember("dynpitchvol_base_t", "lfomult")]
-	public ref Int32 Lfomult => ref Schema.GetRef<Int32>(this.Handle, "dynpitchvol_base_t", "lfomult");
+	public Int32 Lfomult
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "lfomult"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "dynpitchvol_base_t", "lfomult", value); }
+	}
 
 }

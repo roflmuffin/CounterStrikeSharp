@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -56,14 +57,26 @@ public partial class CFuncTrackChange : CFuncPlatRot
 
 	// m_code
 	[SchemaMember("CFuncTrackChange", "m_code")]
-	public ref TRAIN_CODE Code => ref Schema.GetRef<TRAIN_CODE>(this.Handle, "CFuncTrackChange", "m_code");
+	public TRAIN_CODE Code
+	{
+		get { return Schema.GetValueType<TRAIN_CODE>(this.Handle, "CFuncTrackChange", "m_code"); }
+		set { Schema.SetValueType<TRAIN_CODE>(this.Handle, "CFuncTrackChange", "m_code", value); }
+	}
 
 	// m_targetState
 	[SchemaMember("CFuncTrackChange", "m_targetState")]
-	public ref Int32 TargetState => ref Schema.GetRef<Int32>(this.Handle, "CFuncTrackChange", "m_targetState");
+	public Int32 TargetState
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CFuncTrackChange", "m_targetState"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CFuncTrackChange", "m_targetState", value); }
+	}
 
 	// m_use
 	[SchemaMember("CFuncTrackChange", "m_use")]
-	public ref Int32 Use => ref Schema.GetRef<Int32>(this.Handle, "CFuncTrackChange", "m_use");
+	public Int32 Use
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CFuncTrackChange", "m_use"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CFuncTrackChange", "m_use", value); }
+	}
 
 }

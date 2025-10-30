@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,18 +21,34 @@ public partial class CLogicNPCCounterAABB : CLogicNPCCounter
 
 	// m_vDistanceOuterMins
 	[SchemaMember("CLogicNPCCounterAABB", "m_vDistanceOuterMins")]
-	public Vector DistanceOuterMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CLogicNPCCounterAABB", "m_vDistanceOuterMins");
+	public Vector3 DistanceOuterMins
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CLogicNPCCounterAABB", "m_vDistanceOuterMins"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CLogicNPCCounterAABB", "m_vDistanceOuterMins", value); }
+	}
 
 	// m_vDistanceOuterMaxs
 	[SchemaMember("CLogicNPCCounterAABB", "m_vDistanceOuterMaxs")]
-	public Vector DistanceOuterMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CLogicNPCCounterAABB", "m_vDistanceOuterMaxs");
+	public Vector3 DistanceOuterMaxs
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CLogicNPCCounterAABB", "m_vDistanceOuterMaxs"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CLogicNPCCounterAABB", "m_vDistanceOuterMaxs", value); }
+	}
 
 	// m_vOuterMins
 	[SchemaMember("CLogicNPCCounterAABB", "m_vOuterMins")]
-	public Vector OuterMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CLogicNPCCounterAABB", "m_vOuterMins");
+	public Vector3 OuterMins
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CLogicNPCCounterAABB", "m_vOuterMins"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CLogicNPCCounterAABB", "m_vOuterMins", value); }
+	}
 
 	// m_vOuterMaxs
 	[SchemaMember("CLogicNPCCounterAABB", "m_vOuterMaxs")]
-	public Vector OuterMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CLogicNPCCounterAABB", "m_vOuterMaxs");
+	public Vector3 OuterMaxs
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CLogicNPCCounterAABB", "m_vOuterMaxs"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CLogicNPCCounterAABB", "m_vOuterMaxs", value); }
+	}
 
 }

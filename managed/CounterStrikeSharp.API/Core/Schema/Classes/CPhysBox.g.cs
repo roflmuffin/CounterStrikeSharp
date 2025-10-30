@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,39 +21,75 @@ public partial class CPhysBox : CBreakable
 
 	// m_damageType
 	[SchemaMember("CPhysBox", "m_damageType")]
-	public ref Int32 DamageType => ref Schema.GetRef<Int32>(this.Handle, "CPhysBox", "m_damageType");
+	public Int32 DamageType
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CPhysBox", "m_damageType"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CPhysBox", "m_damageType", value); }
+	}
 
 	// m_damageToEnableMotion
 	[SchemaMember("CPhysBox", "m_damageToEnableMotion")]
-	public ref Int32 DamageToEnableMotion => ref Schema.GetRef<Int32>(this.Handle, "CPhysBox", "m_damageToEnableMotion");
+	public Int32 DamageToEnableMotion
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CPhysBox", "m_damageToEnableMotion"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CPhysBox", "m_damageToEnableMotion", value); }
+	}
 
 	// m_flForceToEnableMotion
 	[SchemaMember("CPhysBox", "m_flForceToEnableMotion")]
-	public ref float ForceToEnableMotion => ref Schema.GetRef<float>(this.Handle, "CPhysBox", "m_flForceToEnableMotion");
+	public float ForceToEnableMotion
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysBox", "m_flForceToEnableMotion"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysBox", "m_flForceToEnableMotion", value); }
+	}
 
 	// m_vHoverPosePosition
 	[SchemaMember("CPhysBox", "m_vHoverPosePosition")]
-	public Vector HoverPosePosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysBox", "m_vHoverPosePosition");
+	public Vector3 HoverPosePosition
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CPhysBox", "m_vHoverPosePosition"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CPhysBox", "m_vHoverPosePosition", value); }
+	}
 
 	// m_angHoverPoseAngles
 	[SchemaMember("CPhysBox", "m_angHoverPoseAngles")]
-	public QAngle HoverPoseAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPhysBox", "m_angHoverPoseAngles");
+	public QAngle HoverPoseAngles
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CPhysBox", "m_angHoverPoseAngles"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CPhysBox", "m_angHoverPoseAngles", value); }
+	}
 
 	// m_bNotSolidToWorld
 	[SchemaMember("CPhysBox", "m_bNotSolidToWorld")]
-	public ref bool NotSolidToWorld => ref Schema.GetRef<bool>(this.Handle, "CPhysBox", "m_bNotSolidToWorld");
+	public bool NotSolidToWorld
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysBox", "m_bNotSolidToWorld"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysBox", "m_bNotSolidToWorld", value); }
+	}
 
 	// m_bEnableUseOutput
 	[SchemaMember("CPhysBox", "m_bEnableUseOutput")]
-	public ref bool EnableUseOutput => ref Schema.GetRef<bool>(this.Handle, "CPhysBox", "m_bEnableUseOutput");
+	public bool EnableUseOutput
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysBox", "m_bEnableUseOutput"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysBox", "m_bEnableUseOutput", value); }
+	}
 
 	// m_nHoverPoseFlags
 	[SchemaMember("CPhysBox", "m_nHoverPoseFlags")]
-	public ref HoverPoseFlags_t HoverPoseFlags => ref Schema.GetRef<HoverPoseFlags_t>(this.Handle, "CPhysBox", "m_nHoverPoseFlags");
+	public HoverPoseFlags_t HoverPoseFlags
+	{
+		get { return Schema.GetValueType<HoverPoseFlags_t>(this.Handle, "CPhysBox", "m_nHoverPoseFlags"); }
+		set { Schema.SetValueType<HoverPoseFlags_t>(this.Handle, "CPhysBox", "m_nHoverPoseFlags", value); }
+	}
 
 	// m_flTouchOutputPerEntityDelay
 	[SchemaMember("CPhysBox", "m_flTouchOutputPerEntityDelay")]
-	public ref float TouchOutputPerEntityDelay => ref Schema.GetRef<float>(this.Handle, "CPhysBox", "m_flTouchOutputPerEntityDelay");
+	public float TouchOutputPerEntityDelay
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysBox", "m_flTouchOutputPerEntityDelay"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysBox", "m_flTouchOutputPerEntityDelay", value); }
+	}
 
 	// m_OnDamaged
 	[SchemaMember("CPhysBox", "m_OnDamaged")]

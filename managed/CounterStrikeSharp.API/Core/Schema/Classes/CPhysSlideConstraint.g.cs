@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,39 +21,75 @@ public partial class CPhysSlideConstraint : CPhysConstraint
 
 	// m_axisEnd
 	[SchemaMember("CPhysSlideConstraint", "m_axisEnd")]
-	public Vector AxisEnd => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysSlideConstraint", "m_axisEnd");
+	public Vector3 AxisEnd
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CPhysSlideConstraint", "m_axisEnd"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CPhysSlideConstraint", "m_axisEnd", value); }
+	}
 
 	// m_slideFriction
 	[SchemaMember("CPhysSlideConstraint", "m_slideFriction")]
-	public ref float SlideFriction => ref Schema.GetRef<float>(this.Handle, "CPhysSlideConstraint", "m_slideFriction");
+	public float SlideFriction
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysSlideConstraint", "m_slideFriction"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysSlideConstraint", "m_slideFriction", value); }
+	}
 
 	// m_systemLoadScale
 	[SchemaMember("CPhysSlideConstraint", "m_systemLoadScale")]
-	public ref float SystemLoadScale => ref Schema.GetRef<float>(this.Handle, "CPhysSlideConstraint", "m_systemLoadScale");
+	public float SystemLoadScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysSlideConstraint", "m_systemLoadScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysSlideConstraint", "m_systemLoadScale", value); }
+	}
 
 	// m_initialOffset
 	[SchemaMember("CPhysSlideConstraint", "m_initialOffset")]
-	public ref float InitialOffset => ref Schema.GetRef<float>(this.Handle, "CPhysSlideConstraint", "m_initialOffset");
+	public float InitialOffset
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysSlideConstraint", "m_initialOffset"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysSlideConstraint", "m_initialOffset", value); }
+	}
 
 	// m_bEnableLinearConstraint
 	[SchemaMember("CPhysSlideConstraint", "m_bEnableLinearConstraint")]
-	public ref bool EnableLinearConstraint => ref Schema.GetRef<bool>(this.Handle, "CPhysSlideConstraint", "m_bEnableLinearConstraint");
+	public bool EnableLinearConstraint
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysSlideConstraint", "m_bEnableLinearConstraint"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysSlideConstraint", "m_bEnableLinearConstraint", value); }
+	}
 
 	// m_bEnableAngularConstraint
 	[SchemaMember("CPhysSlideConstraint", "m_bEnableAngularConstraint")]
-	public ref bool EnableAngularConstraint => ref Schema.GetRef<bool>(this.Handle, "CPhysSlideConstraint", "m_bEnableAngularConstraint");
+	public bool EnableAngularConstraint
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysSlideConstraint", "m_bEnableAngularConstraint"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysSlideConstraint", "m_bEnableAngularConstraint", value); }
+	}
 
 	// m_flMotorFrequency
 	[SchemaMember("CPhysSlideConstraint", "m_flMotorFrequency")]
-	public ref float MotorFrequency => ref Schema.GetRef<float>(this.Handle, "CPhysSlideConstraint", "m_flMotorFrequency");
+	public float MotorFrequency
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysSlideConstraint", "m_flMotorFrequency"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysSlideConstraint", "m_flMotorFrequency", value); }
+	}
 
 	// m_flMotorDampingRatio
 	[SchemaMember("CPhysSlideConstraint", "m_flMotorDampingRatio")]
-	public ref float MotorDampingRatio => ref Schema.GetRef<float>(this.Handle, "CPhysSlideConstraint", "m_flMotorDampingRatio");
+	public float MotorDampingRatio
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysSlideConstraint", "m_flMotorDampingRatio"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysSlideConstraint", "m_flMotorDampingRatio", value); }
+	}
 
 	// m_bUseEntityPivot
 	[SchemaMember("CPhysSlideConstraint", "m_bUseEntityPivot")]
-	public ref bool UseEntityPivot => ref Schema.GetRef<bool>(this.Handle, "CPhysSlideConstraint", "m_bUseEntityPivot");
+	public bool UseEntityPivot
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysSlideConstraint", "m_bUseEntityPivot"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysSlideConstraint", "m_bUseEntityPivot", value); }
+	}
 
 	// m_soundInfo
 	[SchemaMember("CPhysSlideConstraint", "m_soundInfo")]

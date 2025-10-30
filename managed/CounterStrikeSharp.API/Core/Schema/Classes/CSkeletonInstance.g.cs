@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,15 +25,27 @@ public partial class CSkeletonInstance : CGameSceneNode
 
 	// m_bIsAnimationEnabled
 	[SchemaMember("CSkeletonInstance", "m_bIsAnimationEnabled")]
-	public ref bool IsAnimationEnabled => ref Schema.GetRef<bool>(this.Handle, "CSkeletonInstance", "m_bIsAnimationEnabled");
+	public bool IsAnimationEnabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CSkeletonInstance", "m_bIsAnimationEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CSkeletonInstance", "m_bIsAnimationEnabled", value); }
+	}
 
 	// m_bUseParentRenderBounds
 	[SchemaMember("CSkeletonInstance", "m_bUseParentRenderBounds")]
-	public ref bool UseParentRenderBounds => ref Schema.GetRef<bool>(this.Handle, "CSkeletonInstance", "m_bUseParentRenderBounds");
+	public bool UseParentRenderBounds
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CSkeletonInstance", "m_bUseParentRenderBounds"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CSkeletonInstance", "m_bUseParentRenderBounds", value); }
+	}
 
 	// m_bDisableSolidCollisionsForHierarchy
 	[SchemaMember("CSkeletonInstance", "m_bDisableSolidCollisionsForHierarchy")]
-	public ref bool DisableSolidCollisionsForHierarchy => ref Schema.GetRef<bool>(this.Handle, "CSkeletonInstance", "m_bDisableSolidCollisionsForHierarchy");
+	public bool DisableSolidCollisionsForHierarchy
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CSkeletonInstance", "m_bDisableSolidCollisionsForHierarchy"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CSkeletonInstance", "m_bDisableSolidCollisionsForHierarchy", value); }
+	}
 
 	// m_materialGroup
 	[SchemaMember("CSkeletonInstance", "m_materialGroup")]
@@ -40,6 +53,10 @@ public partial class CSkeletonInstance : CGameSceneNode
 
 	// m_nHitboxSet
 	[SchemaMember("CSkeletonInstance", "m_nHitboxSet")]
-	public ref byte HitboxSet => ref Schema.GetRef<byte>(this.Handle, "CSkeletonInstance", "m_nHitboxSet");
+	public byte HitboxSet
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CSkeletonInstance", "m_nHitboxSet"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CSkeletonInstance", "m_nHitboxSet", value); }
+	}
 
 }

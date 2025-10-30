@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,82 +29,162 @@ public partial class CSprite : CBaseModelEntity
 
 	// m_flSpriteFramerate
 	[SchemaMember("CSprite", "m_flSpriteFramerate")]
-	public ref float SpriteFramerate => ref Schema.GetRef<float>(this.Handle, "CSprite", "m_flSpriteFramerate");
+	public float SpriteFramerate
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSprite", "m_flSpriteFramerate"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSprite", "m_flSpriteFramerate", value); }
+	}
 
 	// m_flFrame
 	[SchemaMember("CSprite", "m_flFrame")]
-	public ref float Frame => ref Schema.GetRef<float>(this.Handle, "CSprite", "m_flFrame");
+	public float Frame
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSprite", "m_flFrame"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSprite", "m_flFrame", value); }
+	}
 
 	// m_flDieTime
 	[SchemaMember("CSprite", "m_flDieTime")]
-	public ref float DieTime => ref Schema.GetRef<float>(this.Handle, "CSprite", "m_flDieTime");
+	public float DieTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSprite", "m_flDieTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSprite", "m_flDieTime", value); }
+	}
 
 	// m_nBrightness
 	[SchemaMember("CSprite", "m_nBrightness")]
-	public ref UInt32 Brightness => ref Schema.GetRef<UInt32>(this.Handle, "CSprite", "m_nBrightness");
+	public UInt32 Brightness
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CSprite", "m_nBrightness"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CSprite", "m_nBrightness", value); }
+	}
 
 	// m_flBrightnessDuration
 	[SchemaMember("CSprite", "m_flBrightnessDuration")]
-	public ref float BrightnessDuration => ref Schema.GetRef<float>(this.Handle, "CSprite", "m_flBrightnessDuration");
+	public float BrightnessDuration
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSprite", "m_flBrightnessDuration"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSprite", "m_flBrightnessDuration", value); }
+	}
 
 	// m_flSpriteScale
 	[SchemaMember("CSprite", "m_flSpriteScale")]
-	public ref float SpriteScale => ref Schema.GetRef<float>(this.Handle, "CSprite", "m_flSpriteScale");
+	public float SpriteScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSprite", "m_flSpriteScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSprite", "m_flSpriteScale", value); }
+	}
 
 	// m_flScaleDuration
 	[SchemaMember("CSprite", "m_flScaleDuration")]
-	public ref float ScaleDuration => ref Schema.GetRef<float>(this.Handle, "CSprite", "m_flScaleDuration");
+	public float ScaleDuration
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSprite", "m_flScaleDuration"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSprite", "m_flScaleDuration", value); }
+	}
 
 	// m_bWorldSpaceScale
 	[SchemaMember("CSprite", "m_bWorldSpaceScale")]
-	public ref bool WorldSpaceScale => ref Schema.GetRef<bool>(this.Handle, "CSprite", "m_bWorldSpaceScale");
+	public bool WorldSpaceScale
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CSprite", "m_bWorldSpaceScale"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CSprite", "m_bWorldSpaceScale", value); }
+	}
 
 	// m_flGlowProxySize
 	[SchemaMember("CSprite", "m_flGlowProxySize")]
-	public ref float GlowProxySize => ref Schema.GetRef<float>(this.Handle, "CSprite", "m_flGlowProxySize");
+	public float GlowProxySize
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSprite", "m_flGlowProxySize"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSprite", "m_flGlowProxySize", value); }
+	}
 
 	// m_flHDRColorScale
 	[SchemaMember("CSprite", "m_flHDRColorScale")]
-	public ref float HDRColorScale => ref Schema.GetRef<float>(this.Handle, "CSprite", "m_flHDRColorScale");
+	public float HDRColorScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSprite", "m_flHDRColorScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSprite", "m_flHDRColorScale", value); }
+	}
 
 	// m_flLastTime
 	[SchemaMember("CSprite", "m_flLastTime")]
-	public ref float LastTime => ref Schema.GetRef<float>(this.Handle, "CSprite", "m_flLastTime");
+	public float LastTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSprite", "m_flLastTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSprite", "m_flLastTime", value); }
+	}
 
 	// m_flMaxFrame
 	[SchemaMember("CSprite", "m_flMaxFrame")]
-	public ref float MaxFrame => ref Schema.GetRef<float>(this.Handle, "CSprite", "m_flMaxFrame");
+	public float MaxFrame
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSprite", "m_flMaxFrame"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSprite", "m_flMaxFrame", value); }
+	}
 
 	// m_flStartScale
 	[SchemaMember("CSprite", "m_flStartScale")]
-	public ref float StartScale => ref Schema.GetRef<float>(this.Handle, "CSprite", "m_flStartScale");
+	public float StartScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSprite", "m_flStartScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSprite", "m_flStartScale", value); }
+	}
 
 	// m_flDestScale
 	[SchemaMember("CSprite", "m_flDestScale")]
-	public ref float DestScale => ref Schema.GetRef<float>(this.Handle, "CSprite", "m_flDestScale");
+	public float DestScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSprite", "m_flDestScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSprite", "m_flDestScale", value); }
+	}
 
 	// m_flScaleTimeStart
 	[SchemaMember("CSprite", "m_flScaleTimeStart")]
-	public ref float ScaleTimeStart => ref Schema.GetRef<float>(this.Handle, "CSprite", "m_flScaleTimeStart");
+	public float ScaleTimeStart
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSprite", "m_flScaleTimeStart"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSprite", "m_flScaleTimeStart", value); }
+	}
 
 	// m_nStartBrightness
 	[SchemaMember("CSprite", "m_nStartBrightness")]
-	public ref Int32 StartBrightness => ref Schema.GetRef<Int32>(this.Handle, "CSprite", "m_nStartBrightness");
+	public Int32 StartBrightness
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSprite", "m_nStartBrightness"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSprite", "m_nStartBrightness", value); }
+	}
 
 	// m_nDestBrightness
 	[SchemaMember("CSprite", "m_nDestBrightness")]
-	public ref Int32 DestBrightness => ref Schema.GetRef<Int32>(this.Handle, "CSprite", "m_nDestBrightness");
+	public Int32 DestBrightness
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSprite", "m_nDestBrightness"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSprite", "m_nDestBrightness", value); }
+	}
 
 	// m_flBrightnessTimeStart
 	[SchemaMember("CSprite", "m_flBrightnessTimeStart")]
-	public ref float BrightnessTimeStart => ref Schema.GetRef<float>(this.Handle, "CSprite", "m_flBrightnessTimeStart");
+	public float BrightnessTimeStart
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSprite", "m_flBrightnessTimeStart"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSprite", "m_flBrightnessTimeStart", value); }
+	}
 
 	// m_nSpriteWidth
 	[SchemaMember("CSprite", "m_nSpriteWidth")]
-	public ref Int32 SpriteWidth => ref Schema.GetRef<Int32>(this.Handle, "CSprite", "m_nSpriteWidth");
+	public Int32 SpriteWidth
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSprite", "m_nSpriteWidth"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSprite", "m_nSpriteWidth", value); }
+	}
 
 	// m_nSpriteHeight
 	[SchemaMember("CSprite", "m_nSpriteHeight")]
-	public ref Int32 SpriteHeight => ref Schema.GetRef<Int32>(this.Handle, "CSprite", "m_nSpriteHeight");
+	public Int32 SpriteHeight
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSprite", "m_nSpriteHeight"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSprite", "m_nSpriteHeight", value); }
+	}
 
 }

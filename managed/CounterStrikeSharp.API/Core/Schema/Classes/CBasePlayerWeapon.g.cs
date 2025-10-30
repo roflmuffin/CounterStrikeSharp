@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,27 +21,51 @@ public partial class CBasePlayerWeapon : CEconEntity
 
 	// m_nNextPrimaryAttackTick
 	[SchemaMember("CBasePlayerWeapon", "m_nNextPrimaryAttackTick")]
-	public ref Int32 NextPrimaryAttackTick => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeapon", "m_nNextPrimaryAttackTick");
+	public Int32 NextPrimaryAttackTick
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerWeapon", "m_nNextPrimaryAttackTick"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerWeapon", "m_nNextPrimaryAttackTick", value); }
+	}
 
 	// m_flNextPrimaryAttackTickRatio
 	[SchemaMember("CBasePlayerWeapon", "m_flNextPrimaryAttackTickRatio")]
-	public ref float NextPrimaryAttackTickRatio => ref Schema.GetRef<float>(this.Handle, "CBasePlayerWeapon", "m_flNextPrimaryAttackTickRatio");
+	public float NextPrimaryAttackTickRatio
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerWeapon", "m_flNextPrimaryAttackTickRatio"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerWeapon", "m_flNextPrimaryAttackTickRatio", value); }
+	}
 
 	// m_nNextSecondaryAttackTick
 	[SchemaMember("CBasePlayerWeapon", "m_nNextSecondaryAttackTick")]
-	public ref Int32 NextSecondaryAttackTick => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeapon", "m_nNextSecondaryAttackTick");
+	public Int32 NextSecondaryAttackTick
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerWeapon", "m_nNextSecondaryAttackTick"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerWeapon", "m_nNextSecondaryAttackTick", value); }
+	}
 
 	// m_flNextSecondaryAttackTickRatio
 	[SchemaMember("CBasePlayerWeapon", "m_flNextSecondaryAttackTickRatio")]
-	public ref float NextSecondaryAttackTickRatio => ref Schema.GetRef<float>(this.Handle, "CBasePlayerWeapon", "m_flNextSecondaryAttackTickRatio");
+	public float NextSecondaryAttackTickRatio
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerWeapon", "m_flNextSecondaryAttackTickRatio"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerWeapon", "m_flNextSecondaryAttackTickRatio", value); }
+	}
 
 	// m_iClip1
 	[SchemaMember("CBasePlayerWeapon", "m_iClip1")]
-	public ref Int32 Clip1 => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeapon", "m_iClip1");
+	public Int32 Clip1
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerWeapon", "m_iClip1"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerWeapon", "m_iClip1", value); }
+	}
 
 	// m_iClip2
 	[SchemaMember("CBasePlayerWeapon", "m_iClip2")]
-	public ref Int32 Clip2 => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerWeapon", "m_iClip2");
+	public Int32 Clip2
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerWeapon", "m_iClip2"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerWeapon", "m_iClip2", value); }
+	}
 
 	// m_pReserveAmmo
 	[SchemaMember("CBasePlayerWeapon", "m_pReserveAmmo")]

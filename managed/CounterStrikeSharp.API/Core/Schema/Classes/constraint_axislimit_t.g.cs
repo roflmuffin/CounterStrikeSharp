@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,18 +21,34 @@ public partial class constraint_axislimit_t : NativeObject
 
 	// flMinRotation
 	[SchemaMember("constraint_axislimit_t", "flMinRotation")]
-	public ref float FlMinRotation => ref Schema.GetRef<float>(this.Handle, "constraint_axislimit_t", "flMinRotation");
+	public float FlMinRotation
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "constraint_axislimit_t", "flMinRotation"); }
+		set { Schema.SetValueType<float>(this.Handle, "constraint_axislimit_t", "flMinRotation", value); }
+	}
 
 	// flMaxRotation
 	[SchemaMember("constraint_axislimit_t", "flMaxRotation")]
-	public ref float FlMaxRotation => ref Schema.GetRef<float>(this.Handle, "constraint_axislimit_t", "flMaxRotation");
+	public float FlMaxRotation
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "constraint_axislimit_t", "flMaxRotation"); }
+		set { Schema.SetValueType<float>(this.Handle, "constraint_axislimit_t", "flMaxRotation", value); }
+	}
 
 	// flMotorTargetAngSpeed
 	[SchemaMember("constraint_axislimit_t", "flMotorTargetAngSpeed")]
-	public ref float FlMotorTargetAngSpeed => ref Schema.GetRef<float>(this.Handle, "constraint_axislimit_t", "flMotorTargetAngSpeed");
+	public float FlMotorTargetAngSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "constraint_axislimit_t", "flMotorTargetAngSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "constraint_axislimit_t", "flMotorTargetAngSpeed", value); }
+	}
 
 	// flMotorMaxTorque
 	[SchemaMember("constraint_axislimit_t", "flMotorMaxTorque")]
-	public ref float FlMotorMaxTorque => ref Schema.GetRef<float>(this.Handle, "constraint_axislimit_t", "flMotorMaxTorque");
+	public float FlMotorMaxTorque
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "constraint_axislimit_t", "flMotorMaxTorque"); }
+		set { Schema.SetValueType<float>(this.Handle, "constraint_axislimit_t", "flMotorMaxTorque", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class CEntityIdentity : NativeObject
 
 	// m_nameStringableIndex
 	[SchemaMember("CEntityIdentity", "m_nameStringableIndex")]
-	public ref Int32 NameStringableIndex => ref Schema.GetRef<Int32>(this.Handle, "CEntityIdentity", "m_nameStringableIndex");
+	public Int32 NameStringableIndex
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEntityIdentity", "m_nameStringableIndex"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEntityIdentity", "m_nameStringableIndex", value); }
+	}
 
 	// m_name
 	[SchemaMember("CEntityIdentity", "m_name")]
@@ -40,7 +45,11 @@ public partial class CEntityIdentity : NativeObject
 
 	// m_flags
 	[SchemaMember("CEntityIdentity", "m_flags")]
-	public ref UInt32 Flags => ref Schema.GetRef<UInt32>(this.Handle, "CEntityIdentity", "m_flags");
+	public UInt32 Flags
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CEntityIdentity", "m_flags"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CEntityIdentity", "m_flags", value); }
+	}
 
 	// m_worldGroupId
 	[SchemaMember("CEntityIdentity", "m_worldGroupId")]
@@ -48,7 +57,11 @@ public partial class CEntityIdentity : NativeObject
 
 	// m_fDataObjectTypes
 	[SchemaMember("CEntityIdentity", "m_fDataObjectTypes")]
-	public ref UInt32 DataObjectTypes => ref Schema.GetRef<UInt32>(this.Handle, "CEntityIdentity", "m_fDataObjectTypes");
+	public UInt32 DataObjectTypes
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CEntityIdentity", "m_fDataObjectTypes"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CEntityIdentity", "m_fDataObjectTypes", value); }
+	}
 
 	// m_PathIndex
 	[SchemaMember("CEntityIdentity", "m_PathIndex")]

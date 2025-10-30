@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,15 +21,27 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_bDisabled
 	[SchemaMember("CPointValueRemapper", "m_bDisabled")]
-	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CPointValueRemapper", "m_bDisabled");
+	public bool Disabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointValueRemapper", "m_bDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointValueRemapper", "m_bDisabled", value); }
+	}
 
 	// m_bUpdateOnClient
 	[SchemaMember("CPointValueRemapper", "m_bUpdateOnClient")]
-	public ref bool UpdateOnClient => ref Schema.GetRef<bool>(this.Handle, "CPointValueRemapper", "m_bUpdateOnClient");
+	public bool UpdateOnClient
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointValueRemapper", "m_bUpdateOnClient"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointValueRemapper", "m_bUpdateOnClient", value); }
+	}
 
 	// m_nInputType
 	[SchemaMember("CPointValueRemapper", "m_nInputType")]
-	public ref ValueRemapperInputType_t InputType => ref Schema.GetRef<ValueRemapperInputType_t>(this.Handle, "CPointValueRemapper", "m_nInputType");
+	public ValueRemapperInputType_t InputType
+	{
+		get { return Schema.GetValueType<ValueRemapperInputType_t>(this.Handle, "CPointValueRemapper", "m_nInputType"); }
+		set { Schema.SetValueType<ValueRemapperInputType_t>(this.Handle, "CPointValueRemapper", "m_nInputType", value); }
+	}
 
 	// m_iszRemapLineStartName
 	[SchemaMember("CPointValueRemapper", "m_iszRemapLineStartName")]
@@ -56,23 +69,43 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_flMaximumChangePerSecond
 	[SchemaMember("CPointValueRemapper", "m_flMaximumChangePerSecond")]
-	public ref float MaximumChangePerSecond => ref Schema.GetRef<float>(this.Handle, "CPointValueRemapper", "m_flMaximumChangePerSecond");
+	public float MaximumChangePerSecond
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointValueRemapper", "m_flMaximumChangePerSecond"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointValueRemapper", "m_flMaximumChangePerSecond", value); }
+	}
 
 	// m_flDisengageDistance
 	[SchemaMember("CPointValueRemapper", "m_flDisengageDistance")]
-	public ref float DisengageDistance => ref Schema.GetRef<float>(this.Handle, "CPointValueRemapper", "m_flDisengageDistance");
+	public float DisengageDistance
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointValueRemapper", "m_flDisengageDistance"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointValueRemapper", "m_flDisengageDistance", value); }
+	}
 
 	// m_flEngageDistance
 	[SchemaMember("CPointValueRemapper", "m_flEngageDistance")]
-	public ref float EngageDistance => ref Schema.GetRef<float>(this.Handle, "CPointValueRemapper", "m_flEngageDistance");
+	public float EngageDistance
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointValueRemapper", "m_flEngageDistance"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointValueRemapper", "m_flEngageDistance", value); }
+	}
 
 	// m_bRequiresUseKey
 	[SchemaMember("CPointValueRemapper", "m_bRequiresUseKey")]
-	public ref bool RequiresUseKey => ref Schema.GetRef<bool>(this.Handle, "CPointValueRemapper", "m_bRequiresUseKey");
+	public bool RequiresUseKey
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointValueRemapper", "m_bRequiresUseKey"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointValueRemapper", "m_bRequiresUseKey", value); }
+	}
 
 	// m_nOutputType
 	[SchemaMember("CPointValueRemapper", "m_nOutputType")]
-	public ref ValueRemapperOutputType_t OutputType => ref Schema.GetRef<ValueRemapperOutputType_t>(this.Handle, "CPointValueRemapper", "m_nOutputType");
+	public ValueRemapperOutputType_t OutputType
+	{
+		get { return Schema.GetValueType<ValueRemapperOutputType_t>(this.Handle, "CPointValueRemapper", "m_nOutputType"); }
+		set { Schema.SetValueType<ValueRemapperOutputType_t>(this.Handle, "CPointValueRemapper", "m_nOutputType", value); }
+	}
 
 	// m_iszOutputEntityName
 	[SchemaMember("CPointValueRemapper", "m_iszOutputEntityName")]
@@ -112,55 +145,107 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_nHapticsType
 	[SchemaMember("CPointValueRemapper", "m_nHapticsType")]
-	public ref ValueRemapperHapticsType_t HapticsType => ref Schema.GetRef<ValueRemapperHapticsType_t>(this.Handle, "CPointValueRemapper", "m_nHapticsType");
+	public ValueRemapperHapticsType_t HapticsType
+	{
+		get { return Schema.GetValueType<ValueRemapperHapticsType_t>(this.Handle, "CPointValueRemapper", "m_nHapticsType"); }
+		set { Schema.SetValueType<ValueRemapperHapticsType_t>(this.Handle, "CPointValueRemapper", "m_nHapticsType", value); }
+	}
 
 	// m_nMomentumType
 	[SchemaMember("CPointValueRemapper", "m_nMomentumType")]
-	public ref ValueRemapperMomentumType_t MomentumType => ref Schema.GetRef<ValueRemapperMomentumType_t>(this.Handle, "CPointValueRemapper", "m_nMomentumType");
+	public ValueRemapperMomentumType_t MomentumType
+	{
+		get { return Schema.GetValueType<ValueRemapperMomentumType_t>(this.Handle, "CPointValueRemapper", "m_nMomentumType"); }
+		set { Schema.SetValueType<ValueRemapperMomentumType_t>(this.Handle, "CPointValueRemapper", "m_nMomentumType", value); }
+	}
 
 	// m_flMomentumModifier
 	[SchemaMember("CPointValueRemapper", "m_flMomentumModifier")]
-	public ref float MomentumModifier => ref Schema.GetRef<float>(this.Handle, "CPointValueRemapper", "m_flMomentumModifier");
+	public float MomentumModifier
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointValueRemapper", "m_flMomentumModifier"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointValueRemapper", "m_flMomentumModifier", value); }
+	}
 
 	// m_flSnapValue
 	[SchemaMember("CPointValueRemapper", "m_flSnapValue")]
-	public ref float SnapValue => ref Schema.GetRef<float>(this.Handle, "CPointValueRemapper", "m_flSnapValue");
+	public float SnapValue
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointValueRemapper", "m_flSnapValue"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointValueRemapper", "m_flSnapValue", value); }
+	}
 
 	// m_flCurrentMomentum
 	[SchemaMember("CPointValueRemapper", "m_flCurrentMomentum")]
-	public ref float CurrentMomentum => ref Schema.GetRef<float>(this.Handle, "CPointValueRemapper", "m_flCurrentMomentum");
+	public float CurrentMomentum
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointValueRemapper", "m_flCurrentMomentum"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointValueRemapper", "m_flCurrentMomentum", value); }
+	}
 
 	// m_nRatchetType
 	[SchemaMember("CPointValueRemapper", "m_nRatchetType")]
-	public ref ValueRemapperRatchetType_t RatchetType => ref Schema.GetRef<ValueRemapperRatchetType_t>(this.Handle, "CPointValueRemapper", "m_nRatchetType");
+	public ValueRemapperRatchetType_t RatchetType
+	{
+		get { return Schema.GetValueType<ValueRemapperRatchetType_t>(this.Handle, "CPointValueRemapper", "m_nRatchetType"); }
+		set { Schema.SetValueType<ValueRemapperRatchetType_t>(this.Handle, "CPointValueRemapper", "m_nRatchetType", value); }
+	}
 
 	// m_flRatchetOffset
 	[SchemaMember("CPointValueRemapper", "m_flRatchetOffset")]
-	public ref float RatchetOffset => ref Schema.GetRef<float>(this.Handle, "CPointValueRemapper", "m_flRatchetOffset");
+	public float RatchetOffset
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointValueRemapper", "m_flRatchetOffset"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointValueRemapper", "m_flRatchetOffset", value); }
+	}
 
 	// m_flInputOffset
 	[SchemaMember("CPointValueRemapper", "m_flInputOffset")]
-	public ref float InputOffset => ref Schema.GetRef<float>(this.Handle, "CPointValueRemapper", "m_flInputOffset");
+	public float InputOffset
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointValueRemapper", "m_flInputOffset"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointValueRemapper", "m_flInputOffset", value); }
+	}
 
 	// m_bEngaged
 	[SchemaMember("CPointValueRemapper", "m_bEngaged")]
-	public ref bool Engaged => ref Schema.GetRef<bool>(this.Handle, "CPointValueRemapper", "m_bEngaged");
+	public bool Engaged
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointValueRemapper", "m_bEngaged"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointValueRemapper", "m_bEngaged", value); }
+	}
 
 	// m_bFirstUpdate
 	[SchemaMember("CPointValueRemapper", "m_bFirstUpdate")]
-	public ref bool FirstUpdate => ref Schema.GetRef<bool>(this.Handle, "CPointValueRemapper", "m_bFirstUpdate");
+	public bool FirstUpdate
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointValueRemapper", "m_bFirstUpdate"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointValueRemapper", "m_bFirstUpdate", value); }
+	}
 
 	// m_flPreviousValue
 	[SchemaMember("CPointValueRemapper", "m_flPreviousValue")]
-	public ref float PreviousValue => ref Schema.GetRef<float>(this.Handle, "CPointValueRemapper", "m_flPreviousValue");
+	public float PreviousValue
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointValueRemapper", "m_flPreviousValue"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointValueRemapper", "m_flPreviousValue", value); }
+	}
 
 	// m_flPreviousUpdateTickTime
 	[SchemaMember("CPointValueRemapper", "m_flPreviousUpdateTickTime")]
-	public ref float PreviousUpdateTickTime => ref Schema.GetRef<float>(this.Handle, "CPointValueRemapper", "m_flPreviousUpdateTickTime");
+	public float PreviousUpdateTickTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointValueRemapper", "m_flPreviousUpdateTickTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointValueRemapper", "m_flPreviousUpdateTickTime", value); }
+	}
 
 	// m_vecPreviousTestPoint
 	[SchemaMember("CPointValueRemapper", "m_vecPreviousTestPoint")]
-	public Vector PreviousTestPoint => Schema.GetDeclaredClass<Vector>(this.Handle, "CPointValueRemapper", "m_vecPreviousTestPoint");
+	public Vector3 PreviousTestPoint
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CPointValueRemapper", "m_vecPreviousTestPoint"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CPointValueRemapper", "m_vecPreviousTestPoint", value); }
+	}
 
 	// m_hUsingPlayer
 	[SchemaMember("CPointValueRemapper", "m_hUsingPlayer")]
@@ -168,7 +253,11 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_flCustomOutputValue
 	[SchemaMember("CPointValueRemapper", "m_flCustomOutputValue")]
-	public ref float CustomOutputValue => ref Schema.GetRef<float>(this.Handle, "CPointValueRemapper", "m_flCustomOutputValue");
+	public float CustomOutputValue
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointValueRemapper", "m_flCustomOutputValue"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointValueRemapper", "m_flCustomOutputValue", value); }
+	}
 
 	// m_iszSoundEngage
 	[SchemaMember("CPointValueRemapper", "m_iszSoundEngage")]

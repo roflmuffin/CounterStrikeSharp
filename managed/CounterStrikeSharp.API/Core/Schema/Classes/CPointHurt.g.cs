@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,19 +21,35 @@ public partial class CPointHurt : CPointEntity
 
 	// m_nDamage
 	[SchemaMember("CPointHurt", "m_nDamage")]
-	public ref Int32 Damage => ref Schema.GetRef<Int32>(this.Handle, "CPointHurt", "m_nDamage");
+	public Int32 Damage
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CPointHurt", "m_nDamage"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CPointHurt", "m_nDamage", value); }
+	}
 
 	// m_bitsDamageType
 	[SchemaMember("CPointHurt", "m_bitsDamageType")]
-	public ref DamageTypes_t BitsDamageType => ref Schema.GetRef<DamageTypes_t>(this.Handle, "CPointHurt", "m_bitsDamageType");
+	public DamageTypes_t BitsDamageType
+	{
+		get { return Schema.GetValueType<DamageTypes_t>(this.Handle, "CPointHurt", "m_bitsDamageType"); }
+		set { Schema.SetValueType<DamageTypes_t>(this.Handle, "CPointHurt", "m_bitsDamageType", value); }
+	}
 
 	// m_flRadius
 	[SchemaMember("CPointHurt", "m_flRadius")]
-	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CPointHurt", "m_flRadius");
+	public float Radius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointHurt", "m_flRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointHurt", "m_flRadius", value); }
+	}
 
 	// m_flDelay
 	[SchemaMember("CPointHurt", "m_flDelay")]
-	public ref float Delay => ref Schema.GetRef<float>(this.Handle, "CPointHurt", "m_flDelay");
+	public float Delay
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointHurt", "m_flDelay"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointHurt", "m_flDelay", value); }
+	}
 
 	// m_strTarget
 	[SchemaMember("CPointHurt", "m_strTarget")]

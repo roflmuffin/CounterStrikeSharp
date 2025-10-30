@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,11 +21,19 @@ public partial class CNavLinkMovementVData : NativeObject
 
 	// m_bIsInterpolated
 	[SchemaMember("CNavLinkMovementVData", "m_bIsInterpolated")]
-	public ref bool IsInterpolated => ref Schema.GetRef<bool>(this.Handle, "CNavLinkMovementVData", "m_bIsInterpolated");
+	public bool IsInterpolated
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CNavLinkMovementVData", "m_bIsInterpolated"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CNavLinkMovementVData", "m_bIsInterpolated", value); }
+	}
 
 	// m_unRecommendedDistance
 	[SchemaMember("CNavLinkMovementVData", "m_unRecommendedDistance")]
-	public ref UInt32 RecommendedDistance => ref Schema.GetRef<UInt32>(this.Handle, "CNavLinkMovementVData", "m_unRecommendedDistance");
+	public UInt32 RecommendedDistance
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CNavLinkMovementVData", "m_unRecommendedDistance"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CNavLinkMovementVData", "m_unRecommendedDistance", value); }
+	}
 
 	// m_vecAnimgraphVars
 	[SchemaMember("CNavLinkMovementVData", "m_vecAnimgraphVars")]

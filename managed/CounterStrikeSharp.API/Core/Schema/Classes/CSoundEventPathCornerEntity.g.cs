@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,22 +29,42 @@ public partial class CSoundEventPathCornerEntity : CSoundEventEntity
 
 	// m_iCountMax
 	[SchemaMember("CSoundEventPathCornerEntity", "m_iCountMax")]
-	public ref Int32 CountMax => ref Schema.GetRef<Int32>(this.Handle, "CSoundEventPathCornerEntity", "m_iCountMax");
+	public Int32 CountMax
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSoundEventPathCornerEntity", "m_iCountMax"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSoundEventPathCornerEntity", "m_iCountMax", value); }
+	}
 
 	// m_flDistanceMax
 	[SchemaMember("CSoundEventPathCornerEntity", "m_flDistanceMax")]
-	public ref float DistanceMax => ref Schema.GetRef<float>(this.Handle, "CSoundEventPathCornerEntity", "m_flDistanceMax");
+	public float DistanceMax
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSoundEventPathCornerEntity", "m_flDistanceMax"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSoundEventPathCornerEntity", "m_flDistanceMax", value); }
+	}
 
 	// m_flDistMaxSqr
 	[SchemaMember("CSoundEventPathCornerEntity", "m_flDistMaxSqr")]
-	public ref float DistMaxSqr => ref Schema.GetRef<float>(this.Handle, "CSoundEventPathCornerEntity", "m_flDistMaxSqr");
+	public float DistMaxSqr
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSoundEventPathCornerEntity", "m_flDistMaxSqr"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSoundEventPathCornerEntity", "m_flDistMaxSqr", value); }
+	}
 
 	// m_flDotProductMax
 	[SchemaMember("CSoundEventPathCornerEntity", "m_flDotProductMax")]
-	public ref float DotProductMax => ref Schema.GetRef<float>(this.Handle, "CSoundEventPathCornerEntity", "m_flDotProductMax");
+	public float DotProductMax
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSoundEventPathCornerEntity", "m_flDotProductMax"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSoundEventPathCornerEntity", "m_flDotProductMax", value); }
+	}
 
 	// m_bPlaying
 	[SchemaMember("CSoundEventPathCornerEntity", "m_bPlaying")]
-	public ref bool Playing => ref Schema.GetRef<bool>(this.Handle, "CSoundEventPathCornerEntity", "m_bPlaying");
+	public bool Playing
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CSoundEventPathCornerEntity", "m_bPlaying"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CSoundEventPathCornerEntity", "m_bPlaying", value); }
+	}
 
 }

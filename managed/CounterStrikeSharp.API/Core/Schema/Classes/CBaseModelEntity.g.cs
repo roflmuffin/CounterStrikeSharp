@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,43 +29,83 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_nDestructiblePartInitialStateDestructed0
 	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed0")]
-	public ref HitGroup_t DestructiblePartInitialStateDestructed0 => ref Schema.GetRef<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed0");
+	public HitGroup_t DestructiblePartInitialStateDestructed0
+	{
+		get { return Schema.GetValueType<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed0"); }
+		set { Schema.SetValueType<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed0", value); }
+	}
 
 	// m_nDestructiblePartInitialStateDestructed1
 	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed1")]
-	public ref HitGroup_t DestructiblePartInitialStateDestructed1 => ref Schema.GetRef<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed1");
+	public HitGroup_t DestructiblePartInitialStateDestructed1
+	{
+		get { return Schema.GetValueType<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed1"); }
+		set { Schema.SetValueType<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed1", value); }
+	}
 
 	// m_nDestructiblePartInitialStateDestructed2
 	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed2")]
-	public ref HitGroup_t DestructiblePartInitialStateDestructed2 => ref Schema.GetRef<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed2");
+	public HitGroup_t DestructiblePartInitialStateDestructed2
+	{
+		get { return Schema.GetValueType<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed2"); }
+		set { Schema.SetValueType<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed2", value); }
+	}
 
 	// m_nDestructiblePartInitialStateDestructed3
 	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed3")]
-	public ref HitGroup_t DestructiblePartInitialStateDestructed3 => ref Schema.GetRef<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed3");
+	public HitGroup_t DestructiblePartInitialStateDestructed3
+	{
+		get { return Schema.GetValueType<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed3"); }
+		set { Schema.SetValueType<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed3", value); }
+	}
 
 	// m_nDestructiblePartInitialStateDestructed4
 	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed4")]
-	public ref HitGroup_t DestructiblePartInitialStateDestructed4 => ref Schema.GetRef<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed4");
+	public HitGroup_t DestructiblePartInitialStateDestructed4
+	{
+		get { return Schema.GetValueType<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed4"); }
+		set { Schema.SetValueType<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed4", value); }
+	}
 
 	// m_nDestructiblePartInitialStateDestructed0_PartIndex
 	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed0_PartIndex")]
-	public ref Int32 DestructiblePartInitialStateDestructed0_PartIndex => ref Schema.GetRef<Int32>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed0_PartIndex");
+	public Int32 DestructiblePartInitialStateDestructed0_PartIndex
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed0_PartIndex"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed0_PartIndex", value); }
+	}
 
 	// m_nDestructiblePartInitialStateDestructed1_PartIndex
 	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed1_PartIndex")]
-	public ref Int32 DestructiblePartInitialStateDestructed1_PartIndex => ref Schema.GetRef<Int32>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed1_PartIndex");
+	public Int32 DestructiblePartInitialStateDestructed1_PartIndex
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed1_PartIndex"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed1_PartIndex", value); }
+	}
 
 	// m_nDestructiblePartInitialStateDestructed2_PartIndex
 	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed2_PartIndex")]
-	public ref Int32 DestructiblePartInitialStateDestructed2_PartIndex => ref Schema.GetRef<Int32>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed2_PartIndex");
+	public Int32 DestructiblePartInitialStateDestructed2_PartIndex
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed2_PartIndex"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed2_PartIndex", value); }
+	}
 
 	// m_nDestructiblePartInitialStateDestructed3_PartIndex
 	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed3_PartIndex")]
-	public ref Int32 DestructiblePartInitialStateDestructed3_PartIndex => ref Schema.GetRef<Int32>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed3_PartIndex");
+	public Int32 DestructiblePartInitialStateDestructed3_PartIndex
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed3_PartIndex"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed3_PartIndex", value); }
+	}
 
 	// m_nDestructiblePartInitialStateDestructed4_PartIndex
 	[SchemaMember("CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed4_PartIndex")]
-	public ref Int32 DestructiblePartInitialStateDestructed4_PartIndex => ref Schema.GetRef<Int32>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed4_PartIndex");
+	public Int32 DestructiblePartInitialStateDestructed4_PartIndex
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed4_PartIndex"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseModelEntity", "m_nDestructiblePartInitialStateDestructed4_PartIndex", value); }
+	}
 
 	// m_pDestructiblePartsSystemComponent
 	[SchemaMember("CBaseModelEntity", "m_pDestructiblePartsSystemComponent")]
@@ -72,7 +113,11 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_LastHitGroup
 	[SchemaMember("CBaseModelEntity", "m_LastHitGroup")]
-	public ref HitGroup_t LastHitGroup => ref Schema.GetRef<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_LastHitGroup");
+	public HitGroup_t LastHitGroup
+	{
+		get { return Schema.GetValueType<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_LastHitGroup"); }
+		set { Schema.SetValueType<HitGroup_t>(this.Handle, "CBaseModelEntity", "m_LastHitGroup", value); }
+	}
 
 	// m_sLastDamageSourceName
 	[SchemaMember("CBaseModelEntity", "m_sLastDamageSourceName")]
@@ -84,11 +129,19 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_vLastDamagePosition
 	[SchemaMember("CBaseModelEntity", "m_vLastDamagePosition")]
-	public Vector LastDamagePosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseModelEntity", "m_vLastDamagePosition");
+	public Vector3 LastDamagePosition
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBaseModelEntity", "m_vLastDamagePosition"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBaseModelEntity", "m_vLastDamagePosition", value); }
+	}
 
 	// m_flDissolveStartTime
 	[SchemaMember("CBaseModelEntity", "m_flDissolveStartTime")]
-	public ref float DissolveStartTime => ref Schema.GetRef<float>(this.Handle, "CBaseModelEntity", "m_flDissolveStartTime");
+	public float DissolveStartTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseModelEntity", "m_flDissolveStartTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseModelEntity", "m_flDissolveStartTime", value); }
+	}
 
 	// m_OnIgnite
 	[SchemaMember("CBaseModelEntity", "m_OnIgnite")]
@@ -96,15 +149,27 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_nRenderMode
 	[SchemaMember("CBaseModelEntity", "m_nRenderMode")]
-	public ref RenderMode_t RenderMode => ref Schema.GetRef<RenderMode_t>(this.Handle, "CBaseModelEntity", "m_nRenderMode");
+	public RenderMode_t RenderMode
+	{
+		get { return Schema.GetValueType<RenderMode_t>(this.Handle, "CBaseModelEntity", "m_nRenderMode"); }
+		set { Schema.SetValueType<RenderMode_t>(this.Handle, "CBaseModelEntity", "m_nRenderMode", value); }
+	}
 
 	// m_nRenderFX
 	[SchemaMember("CBaseModelEntity", "m_nRenderFX")]
-	public ref RenderFx_t RenderFX => ref Schema.GetRef<RenderFx_t>(this.Handle, "CBaseModelEntity", "m_nRenderFX");
+	public RenderFx_t RenderFX
+	{
+		get { return Schema.GetValueType<RenderFx_t>(this.Handle, "CBaseModelEntity", "m_nRenderFX"); }
+		set { Schema.SetValueType<RenderFx_t>(this.Handle, "CBaseModelEntity", "m_nRenderFX", value); }
+	}
 
 	// m_bAllowFadeInView
 	[SchemaMember("CBaseModelEntity", "m_bAllowFadeInView")]
-	public ref bool AllowFadeInView => ref Schema.GetRef<bool>(this.Handle, "CBaseModelEntity", "m_bAllowFadeInView");
+	public bool AllowFadeInView
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseModelEntity", "m_bAllowFadeInView"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseModelEntity", "m_bAllowFadeInView", value); }
+	}
 
 	// m_clrRender
 	[SchemaMember("CBaseModelEntity", "m_clrRender")]
@@ -120,11 +185,19 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_bRenderToCubemaps
 	[SchemaMember("CBaseModelEntity", "m_bRenderToCubemaps")]
-	public ref bool RenderToCubemaps => ref Schema.GetRef<bool>(this.Handle, "CBaseModelEntity", "m_bRenderToCubemaps");
+	public bool RenderToCubemaps
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseModelEntity", "m_bRenderToCubemaps"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseModelEntity", "m_bRenderToCubemaps", value); }
+	}
 
 	// m_bNoInterpolate
 	[SchemaMember("CBaseModelEntity", "m_bNoInterpolate")]
-	public ref bool NoInterpolate => ref Schema.GetRef<bool>(this.Handle, "CBaseModelEntity", "m_bNoInterpolate");
+	public bool NoInterpolate
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseModelEntity", "m_bNoInterpolate"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseModelEntity", "m_bNoInterpolate", value); }
+	}
 
 	// m_Collision
 	[SchemaMember("CBaseModelEntity", "m_Collision")]
@@ -136,47 +209,91 @@ public partial class CBaseModelEntity : CBaseEntity
 
 	// m_flGlowBackfaceMult
 	[SchemaMember("CBaseModelEntity", "m_flGlowBackfaceMult")]
-	public ref float GlowBackfaceMult => ref Schema.GetRef<float>(this.Handle, "CBaseModelEntity", "m_flGlowBackfaceMult");
+	public float GlowBackfaceMult
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseModelEntity", "m_flGlowBackfaceMult"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseModelEntity", "m_flGlowBackfaceMult", value); }
+	}
 
 	// m_fadeMinDist
 	[SchemaMember("CBaseModelEntity", "m_fadeMinDist")]
-	public ref float FadeMinDist => ref Schema.GetRef<float>(this.Handle, "CBaseModelEntity", "m_fadeMinDist");
+	public float FadeMinDist
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseModelEntity", "m_fadeMinDist"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseModelEntity", "m_fadeMinDist", value); }
+	}
 
 	// m_fadeMaxDist
 	[SchemaMember("CBaseModelEntity", "m_fadeMaxDist")]
-	public ref float FadeMaxDist => ref Schema.GetRef<float>(this.Handle, "CBaseModelEntity", "m_fadeMaxDist");
+	public float FadeMaxDist
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseModelEntity", "m_fadeMaxDist"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseModelEntity", "m_fadeMaxDist", value); }
+	}
 
 	// m_flFadeScale
 	[SchemaMember("CBaseModelEntity", "m_flFadeScale")]
-	public ref float FadeScale => ref Schema.GetRef<float>(this.Handle, "CBaseModelEntity", "m_flFadeScale");
+	public float FadeScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseModelEntity", "m_flFadeScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseModelEntity", "m_flFadeScale", value); }
+	}
 
 	// m_flShadowStrength
 	[SchemaMember("CBaseModelEntity", "m_flShadowStrength")]
-	public ref float ShadowStrength => ref Schema.GetRef<float>(this.Handle, "CBaseModelEntity", "m_flShadowStrength");
+	public float ShadowStrength
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseModelEntity", "m_flShadowStrength"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseModelEntity", "m_flShadowStrength", value); }
+	}
 
 	// m_nObjectCulling
 	[SchemaMember("CBaseModelEntity", "m_nObjectCulling")]
-	public ref byte ObjectCulling => ref Schema.GetRef<byte>(this.Handle, "CBaseModelEntity", "m_nObjectCulling");
+	public byte ObjectCulling
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CBaseModelEntity", "m_nObjectCulling"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CBaseModelEntity", "m_nObjectCulling", value); }
+	}
 
 	// m_nAddDecal
 	[SchemaMember("CBaseModelEntity", "m_nAddDecal")]
-	public ref Int32 AddDecal => ref Schema.GetRef<Int32>(this.Handle, "CBaseModelEntity", "m_nAddDecal");
+	public Int32 AddDecal
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseModelEntity", "m_nAddDecal"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseModelEntity", "m_nAddDecal", value); }
+	}
 
 	// m_vDecalPosition
 	[SchemaMember("CBaseModelEntity", "m_vDecalPosition")]
-	public Vector DecalPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseModelEntity", "m_vDecalPosition");
+	public Vector3 DecalPosition
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBaseModelEntity", "m_vDecalPosition"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBaseModelEntity", "m_vDecalPosition", value); }
+	}
 
 	// m_vDecalForwardAxis
 	[SchemaMember("CBaseModelEntity", "m_vDecalForwardAxis")]
-	public Vector DecalForwardAxis => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseModelEntity", "m_vDecalForwardAxis");
+	public Vector3 DecalForwardAxis
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBaseModelEntity", "m_vDecalForwardAxis"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBaseModelEntity", "m_vDecalForwardAxis", value); }
+	}
 
 	// m_nDecalMode
 	[SchemaMember("CBaseModelEntity", "m_nDecalMode")]
-	public ref DecalMode_t DecalMode => ref Schema.GetRef<DecalMode_t>(this.Handle, "CBaseModelEntity", "m_nDecalMode");
+	public DecalMode_t DecalMode
+	{
+		get { return Schema.GetValueType<DecalMode_t>(this.Handle, "CBaseModelEntity", "m_nDecalMode"); }
+		set { Schema.SetValueType<DecalMode_t>(this.Handle, "CBaseModelEntity", "m_nDecalMode", value); }
+	}
 
 	// m_nRequiredDecalMode
 	[SchemaMember("CBaseModelEntity", "m_nRequiredDecalMode")]
-	public ref DecalMode_t RequiredDecalMode => ref Schema.GetRef<DecalMode_t>(this.Handle, "CBaseModelEntity", "m_nRequiredDecalMode");
+	public DecalMode_t RequiredDecalMode
+	{
+		get { return Schema.GetValueType<DecalMode_t>(this.Handle, "CBaseModelEntity", "m_nRequiredDecalMode"); }
+		set { Schema.SetValueType<DecalMode_t>(this.Handle, "CBaseModelEntity", "m_nRequiredDecalMode", value); }
+	}
 
 	// m_ConfigEntitiesToPropagateMaterialDecalsTo
 	[SchemaMember("CBaseModelEntity", "m_ConfigEntitiesToPropagateMaterialDecalsTo")]

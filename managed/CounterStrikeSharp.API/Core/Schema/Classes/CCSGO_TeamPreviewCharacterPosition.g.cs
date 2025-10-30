@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,15 +21,27 @@ public partial class CCSGO_TeamPreviewCharacterPosition : CBaseEntity
 
 	// m_nVariant
 	[SchemaMember("CCSGO_TeamPreviewCharacterPosition", "m_nVariant")]
-	public ref Int32 Variant => ref Schema.GetRef<Int32>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_nVariant");
+	public Int32 Variant
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_nVariant"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_nVariant", value); }
+	}
 
 	// m_nRandom
 	[SchemaMember("CCSGO_TeamPreviewCharacterPosition", "m_nRandom")]
-	public ref Int32 Random => ref Schema.GetRef<Int32>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_nRandom");
+	public Int32 Random
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_nRandom"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_nRandom", value); }
+	}
 
 	// m_nOrdinal
 	[SchemaMember("CCSGO_TeamPreviewCharacterPosition", "m_nOrdinal")]
-	public ref Int32 Ordinal => ref Schema.GetRef<Int32>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_nOrdinal");
+	public Int32 Ordinal
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_nOrdinal"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_nOrdinal", value); }
+	}
 
 	// m_sWeaponName
 	[SchemaMember("CCSGO_TeamPreviewCharacterPosition", "m_sWeaponName")]
@@ -40,7 +53,11 @@ public partial class CCSGO_TeamPreviewCharacterPosition : CBaseEntity
 
 	// m_xuid
 	[SchemaMember("CCSGO_TeamPreviewCharacterPosition", "m_xuid")]
-	public ref UInt64 Xuid => ref Schema.GetRef<UInt64>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_xuid");
+	public UInt64 Xuid
+	{
+		get { return Schema.GetValueType<UInt64>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_xuid"); }
+		set { Schema.SetValueType<UInt64>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_xuid", value); }
+	}
 
 	// m_agentItem
 	[SchemaMember("CCSGO_TeamPreviewCharacterPosition", "m_agentItem")]

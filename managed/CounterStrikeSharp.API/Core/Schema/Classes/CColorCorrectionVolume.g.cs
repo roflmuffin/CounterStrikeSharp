@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,15 +21,27 @@ public partial class CColorCorrectionVolume : CBaseTrigger
 
 	// m_MaxWeight
 	[SchemaMember("CColorCorrectionVolume", "m_MaxWeight")]
-	public ref float MaxWeight => ref Schema.GetRef<float>(this.Handle, "CColorCorrectionVolume", "m_MaxWeight");
+	public float MaxWeight
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrectionVolume", "m_MaxWeight"); }
+		set { Schema.SetValueType<float>(this.Handle, "CColorCorrectionVolume", "m_MaxWeight", value); }
+	}
 
 	// m_FadeDuration
 	[SchemaMember("CColorCorrectionVolume", "m_FadeDuration")]
-	public ref float FadeDuration => ref Schema.GetRef<float>(this.Handle, "CColorCorrectionVolume", "m_FadeDuration");
+	public float FadeDuration
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrectionVolume", "m_FadeDuration"); }
+		set { Schema.SetValueType<float>(this.Handle, "CColorCorrectionVolume", "m_FadeDuration", value); }
+	}
 
 	// m_Weight
 	[SchemaMember("CColorCorrectionVolume", "m_Weight")]
-	public ref float Weight => ref Schema.GetRef<float>(this.Handle, "CColorCorrectionVolume", "m_Weight");
+	public float Weight
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrectionVolume", "m_Weight"); }
+		set { Schema.SetValueType<float>(this.Handle, "CColorCorrectionVolume", "m_Weight", value); }
+	}
 
 	// m_lookupFilename
 	[SchemaMember("CColorCorrectionVolume", "m_lookupFilename")]
@@ -40,18 +53,34 @@ public partial class CColorCorrectionVolume : CBaseTrigger
 
 	// m_LastEnterWeight
 	[SchemaMember("CColorCorrectionVolume", "m_LastEnterWeight")]
-	public ref float LastEnterWeight => ref Schema.GetRef<float>(this.Handle, "CColorCorrectionVolume", "m_LastEnterWeight");
+	public float LastEnterWeight
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrectionVolume", "m_LastEnterWeight"); }
+		set { Schema.SetValueType<float>(this.Handle, "CColorCorrectionVolume", "m_LastEnterWeight", value); }
+	}
 
 	// m_LastEnterTime
 	[SchemaMember("CColorCorrectionVolume", "m_LastEnterTime")]
-	public ref float LastEnterTime => ref Schema.GetRef<float>(this.Handle, "CColorCorrectionVolume", "m_LastEnterTime");
+	public float LastEnterTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrectionVolume", "m_LastEnterTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CColorCorrectionVolume", "m_LastEnterTime", value); }
+	}
 
 	// m_LastExitWeight
 	[SchemaMember("CColorCorrectionVolume", "m_LastExitWeight")]
-	public ref float LastExitWeight => ref Schema.GetRef<float>(this.Handle, "CColorCorrectionVolume", "m_LastExitWeight");
+	public float LastExitWeight
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrectionVolume", "m_LastExitWeight"); }
+		set { Schema.SetValueType<float>(this.Handle, "CColorCorrectionVolume", "m_LastExitWeight", value); }
+	}
 
 	// m_LastExitTime
 	[SchemaMember("CColorCorrectionVolume", "m_LastExitTime")]
-	public ref float LastExitTime => ref Schema.GetRef<float>(this.Handle, "CColorCorrectionVolume", "m_LastExitTime");
+	public float LastExitTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrectionVolume", "m_LastExitTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CColorCorrectionVolume", "m_LastExitTime", value); }
+	}
 
 }

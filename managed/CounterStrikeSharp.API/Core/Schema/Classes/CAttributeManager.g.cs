@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,7 +25,11 @@ public partial class CAttributeManager : NativeObject
 
 	// m_iReapplyProvisionParity
 	[SchemaMember("CAttributeManager", "m_iReapplyProvisionParity")]
-	public ref Int32 ReapplyProvisionParity => ref Schema.GetRef<Int32>(this.Handle, "CAttributeManager", "m_iReapplyProvisionParity");
+	public Int32 ReapplyProvisionParity
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CAttributeManager", "m_iReapplyProvisionParity"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CAttributeManager", "m_iReapplyProvisionParity", value); }
+	}
 
 	// m_hOuter
 	[SchemaMember("CAttributeManager", "m_hOuter")]
@@ -32,10 +37,18 @@ public partial class CAttributeManager : NativeObject
 
 	// m_bPreventLoopback
 	[SchemaMember("CAttributeManager", "m_bPreventLoopback")]
-	public ref bool PreventLoopback => ref Schema.GetRef<bool>(this.Handle, "CAttributeManager", "m_bPreventLoopback");
+	public bool PreventLoopback
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CAttributeManager", "m_bPreventLoopback"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CAttributeManager", "m_bPreventLoopback", value); }
+	}
 
 	// m_ProviderType
 	[SchemaMember("CAttributeManager", "m_ProviderType")]
-	public ref attributeprovidertypes_t ProviderType => ref Schema.GetRef<attributeprovidertypes_t>(this.Handle, "CAttributeManager", "m_ProviderType");
+	public attributeprovidertypes_t ProviderType
+	{
+		get { return Schema.GetValueType<attributeprovidertypes_t>(this.Handle, "CAttributeManager", "m_ProviderType"); }
+		set { Schema.SetValueType<attributeprovidertypes_t>(this.Handle, "CAttributeManager", "m_ProviderType", value); }
+	}
 
 }

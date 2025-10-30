@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,6 +29,10 @@ public partial class PhysicsRagdollPose_t : NativeObject
 
 	// m_bSetFromDebugHistory
 	[SchemaMember("PhysicsRagdollPose_t", "m_bSetFromDebugHistory")]
-	public ref bool SetFromDebugHistory => ref Schema.GetRef<bool>(this.Handle, "PhysicsRagdollPose_t", "m_bSetFromDebugHistory");
+	public bool SetFromDebugHistory
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "PhysicsRagdollPose_t", "m_bSetFromDebugHistory"); }
+		set { Schema.SetValueType<bool>(this.Handle, "PhysicsRagdollPose_t", "m_bSetFromDebugHistory", value); }
+	}
 
 }

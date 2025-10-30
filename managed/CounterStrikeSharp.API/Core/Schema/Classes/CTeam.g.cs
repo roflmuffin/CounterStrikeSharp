@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,7 +29,11 @@ public partial class CTeam : CBaseEntity
 
 	// m_iScore
 	[SchemaMember("CTeam", "m_iScore")]
-	public ref Int32 Score => ref Schema.GetRef<Int32>(this.Handle, "CTeam", "m_iScore");
+	public Int32 Score
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CTeam", "m_iScore"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CTeam", "m_iScore", value); }
+	}
 
 	// m_szTeamname
 	[SchemaMember("CTeam", "m_szTeamname")]

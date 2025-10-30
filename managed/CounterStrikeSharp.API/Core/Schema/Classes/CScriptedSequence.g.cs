@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -84,183 +85,363 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_nMoveTo
 	[SchemaMember("CScriptedSequence", "m_nMoveTo")]
-	public ref ScriptedMoveTo_t MoveTo => ref Schema.GetRef<ScriptedMoveTo_t>(this.Handle, "CScriptedSequence", "m_nMoveTo");
+	public ScriptedMoveTo_t MoveTo
+	{
+		get { return Schema.GetValueType<ScriptedMoveTo_t>(this.Handle, "CScriptedSequence", "m_nMoveTo"); }
+		set { Schema.SetValueType<ScriptedMoveTo_t>(this.Handle, "CScriptedSequence", "m_nMoveTo", value); }
+	}
 
 	// m_nMoveToGait
 	[SchemaMember("CScriptedSequence", "m_nMoveToGait")]
-	public ref SharedMovementGait_t MoveToGait => ref Schema.GetRef<SharedMovementGait_t>(this.Handle, "CScriptedSequence", "m_nMoveToGait");
+	public SharedMovementGait_t MoveToGait
+	{
+		get { return Schema.GetValueType<SharedMovementGait_t>(this.Handle, "CScriptedSequence", "m_nMoveToGait"); }
+		set { Schema.SetValueType<SharedMovementGait_t>(this.Handle, "CScriptedSequence", "m_nMoveToGait", value); }
+	}
 
 	// m_nHeldWeaponBehavior
 	[SchemaMember("CScriptedSequence", "m_nHeldWeaponBehavior")]
-	public ref ScriptedHeldWeaponBehavior_t HeldWeaponBehavior => ref Schema.GetRef<ScriptedHeldWeaponBehavior_t>(this.Handle, "CScriptedSequence", "m_nHeldWeaponBehavior");
+	public ScriptedHeldWeaponBehavior_t HeldWeaponBehavior
+	{
+		get { return Schema.GetValueType<ScriptedHeldWeaponBehavior_t>(this.Handle, "CScriptedSequence", "m_nHeldWeaponBehavior"); }
+		set { Schema.SetValueType<ScriptedHeldWeaponBehavior_t>(this.Handle, "CScriptedSequence", "m_nHeldWeaponBehavior", value); }
+	}
 
 	// m_nForcedCrouchState
 	[SchemaMember("CScriptedSequence", "m_nForcedCrouchState")]
-	public ref ForcedCrouchState_t ForcedCrouchState => ref Schema.GetRef<ForcedCrouchState_t>(this.Handle, "CScriptedSequence", "m_nForcedCrouchState");
+	public ForcedCrouchState_t ForcedCrouchState
+	{
+		get { return Schema.GetValueType<ForcedCrouchState_t>(this.Handle, "CScriptedSequence", "m_nForcedCrouchState"); }
+		set { Schema.SetValueType<ForcedCrouchState_t>(this.Handle, "CScriptedSequence", "m_nForcedCrouchState", value); }
+	}
 
 	// m_bIsPlayingPreIdle
 	[SchemaMember("CScriptedSequence", "m_bIsPlayingPreIdle")]
-	public ref bool IsPlayingPreIdle => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bIsPlayingPreIdle");
+	public bool IsPlayingPreIdle
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIsPlayingPreIdle"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIsPlayingPreIdle", value); }
+	}
 
 	// m_bIsPlayingEntry
 	[SchemaMember("CScriptedSequence", "m_bIsPlayingEntry")]
-	public ref bool IsPlayingEntry => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bIsPlayingEntry");
+	public bool IsPlayingEntry
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIsPlayingEntry"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIsPlayingEntry", value); }
+	}
 
 	// m_bIsPlayingAction
 	[SchemaMember("CScriptedSequence", "m_bIsPlayingAction")]
-	public ref bool IsPlayingAction => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bIsPlayingAction");
+	public bool IsPlayingAction
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIsPlayingAction"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIsPlayingAction", value); }
+	}
 
 	// m_bIsPlayingPostIdle
 	[SchemaMember("CScriptedSequence", "m_bIsPlayingPostIdle")]
-	public ref bool IsPlayingPostIdle => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bIsPlayingPostIdle");
+	public bool IsPlayingPostIdle
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIsPlayingPostIdle"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIsPlayingPostIdle", value); }
+	}
 
 	// m_bDontRotateOther
 	[SchemaMember("CScriptedSequence", "m_bDontRotateOther")]
-	public ref bool DontRotateOther => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bDontRotateOther");
+	public bool DontRotateOther
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bDontRotateOther"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bDontRotateOther", value); }
+	}
 
 	// m_bIsRepeatable
 	[SchemaMember("CScriptedSequence", "m_bIsRepeatable")]
-	public ref bool IsRepeatable => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bIsRepeatable");
+	public bool IsRepeatable
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIsRepeatable"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIsRepeatable", value); }
+	}
 
 	// m_bShouldLeaveCorpse
 	[SchemaMember("CScriptedSequence", "m_bShouldLeaveCorpse")]
-	public ref bool ShouldLeaveCorpse => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bShouldLeaveCorpse");
+	public bool ShouldLeaveCorpse
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bShouldLeaveCorpse"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bShouldLeaveCorpse", value); }
+	}
 
 	// m_bStartOnSpawn
 	[SchemaMember("CScriptedSequence", "m_bStartOnSpawn")]
-	public ref bool StartOnSpawn => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bStartOnSpawn");
+	public bool StartOnSpawn
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bStartOnSpawn"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bStartOnSpawn", value); }
+	}
 
 	// m_bDisallowInterrupts
 	[SchemaMember("CScriptedSequence", "m_bDisallowInterrupts")]
-	public ref bool DisallowInterrupts => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bDisallowInterrupts");
+	public bool DisallowInterrupts
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bDisallowInterrupts"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bDisallowInterrupts", value); }
+	}
 
 	// m_bCanOverrideNPCState
 	[SchemaMember("CScriptedSequence", "m_bCanOverrideNPCState")]
-	public ref bool CanOverrideNPCState => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bCanOverrideNPCState");
+	public bool CanOverrideNPCState
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bCanOverrideNPCState"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bCanOverrideNPCState", value); }
+	}
 
 	// m_bDontTeleportAtEnd
 	[SchemaMember("CScriptedSequence", "m_bDontTeleportAtEnd")]
-	public ref bool DontTeleportAtEnd => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bDontTeleportAtEnd");
+	public bool DontTeleportAtEnd
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bDontTeleportAtEnd"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bDontTeleportAtEnd", value); }
+	}
 
 	// m_bHighPriority
 	[SchemaMember("CScriptedSequence", "m_bHighPriority")]
-	public ref bool HighPriority => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bHighPriority");
+	public bool HighPriority
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bHighPriority"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bHighPriority", value); }
+	}
 
 	// m_bHideDebugComplaints
 	[SchemaMember("CScriptedSequence", "m_bHideDebugComplaints")]
-	public ref bool HideDebugComplaints => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bHideDebugComplaints");
+	public bool HideDebugComplaints
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bHideDebugComplaints"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bHideDebugComplaints", value); }
+	}
 
 	// m_bContinueOnDeath
 	[SchemaMember("CScriptedSequence", "m_bContinueOnDeath")]
-	public ref bool ContinueOnDeath => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bContinueOnDeath");
+	public bool ContinueOnDeath
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bContinueOnDeath"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bContinueOnDeath", value); }
+	}
 
 	// m_bLoopPreIdleSequence
 	[SchemaMember("CScriptedSequence", "m_bLoopPreIdleSequence")]
-	public ref bool LoopPreIdleSequence => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bLoopPreIdleSequence");
+	public bool LoopPreIdleSequence
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bLoopPreIdleSequence"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bLoopPreIdleSequence", value); }
+	}
 
 	// m_bLoopActionSequence
 	[SchemaMember("CScriptedSequence", "m_bLoopActionSequence")]
-	public ref bool LoopActionSequence => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bLoopActionSequence");
+	public bool LoopActionSequence
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bLoopActionSequence"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bLoopActionSequence", value); }
+	}
 
 	// m_bLoopPostIdleSequence
 	[SchemaMember("CScriptedSequence", "m_bLoopPostIdleSequence")]
-	public ref bool LoopPostIdleSequence => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bLoopPostIdleSequence");
+	public bool LoopPostIdleSequence
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bLoopPostIdleSequence"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bLoopPostIdleSequence", value); }
+	}
 
 	// m_bSynchPostIdles
 	[SchemaMember("CScriptedSequence", "m_bSynchPostIdles")]
-	public ref bool SynchPostIdles => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bSynchPostIdles");
+	public bool SynchPostIdles
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bSynchPostIdles"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bSynchPostIdles", value); }
+	}
 
 	// m_bIgnoreLookAt
 	[SchemaMember("CScriptedSequence", "m_bIgnoreLookAt")]
-	public ref bool IgnoreLookAt => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bIgnoreLookAt");
+	public bool IgnoreLookAt
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIgnoreLookAt"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIgnoreLookAt", value); }
+	}
 
 	// m_bIgnoreGravity
 	[SchemaMember("CScriptedSequence", "m_bIgnoreGravity")]
-	public ref bool IgnoreGravity => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bIgnoreGravity");
+	public bool IgnoreGravity
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIgnoreGravity"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIgnoreGravity", value); }
+	}
 
 	// m_bDisableNPCCollisions
 	[SchemaMember("CScriptedSequence", "m_bDisableNPCCollisions")]
-	public ref bool DisableNPCCollisions => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bDisableNPCCollisions");
+	public bool DisableNPCCollisions
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bDisableNPCCollisions"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bDisableNPCCollisions", value); }
+	}
 
 	// m_bKeepAnimgraphLockedPost
 	[SchemaMember("CScriptedSequence", "m_bKeepAnimgraphLockedPost")]
-	public ref bool KeepAnimgraphLockedPost => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bKeepAnimgraphLockedPost");
+	public bool KeepAnimgraphLockedPost
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bKeepAnimgraphLockedPost"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bKeepAnimgraphLockedPost", value); }
+	}
 
 	// m_bDontAddModifiers
 	[SchemaMember("CScriptedSequence", "m_bDontAddModifiers")]
-	public ref bool DontAddModifiers => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bDontAddModifiers");
+	public bool DontAddModifiers
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bDontAddModifiers"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bDontAddModifiers", value); }
+	}
 
 	// m_bDisableAimingWhileMoving
 	[SchemaMember("CScriptedSequence", "m_bDisableAimingWhileMoving")]
-	public ref bool DisableAimingWhileMoving => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bDisableAimingWhileMoving");
+	public bool DisableAimingWhileMoving
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bDisableAimingWhileMoving"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bDisableAimingWhileMoving", value); }
+	}
 
 	// m_bIgnoreRotation
 	[SchemaMember("CScriptedSequence", "m_bIgnoreRotation")]
-	public ref bool IgnoreRotation => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bIgnoreRotation");
+	public bool IgnoreRotation
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIgnoreRotation"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIgnoreRotation", value); }
+	}
 
 	// m_flRadius
 	[SchemaMember("CScriptedSequence", "m_flRadius")]
-	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CScriptedSequence", "m_flRadius");
+	public float Radius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CScriptedSequence", "m_flRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CScriptedSequence", "m_flRadius", value); }
+	}
 
 	// m_flRepeat
 	[SchemaMember("CScriptedSequence", "m_flRepeat")]
-	public ref float Repeat => ref Schema.GetRef<float>(this.Handle, "CScriptedSequence", "m_flRepeat");
+	public float Repeat
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CScriptedSequence", "m_flRepeat"); }
+		set { Schema.SetValueType<float>(this.Handle, "CScriptedSequence", "m_flRepeat", value); }
+	}
 
 	// m_flPlayAnimFadeInTime
 	[SchemaMember("CScriptedSequence", "m_flPlayAnimFadeInTime")]
-	public ref float PlayAnimFadeInTime => ref Schema.GetRef<float>(this.Handle, "CScriptedSequence", "m_flPlayAnimFadeInTime");
+	public float PlayAnimFadeInTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CScriptedSequence", "m_flPlayAnimFadeInTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CScriptedSequence", "m_flPlayAnimFadeInTime", value); }
+	}
 
 	// m_flMoveInterpTime
 	[SchemaMember("CScriptedSequence", "m_flMoveInterpTime")]
-	public ref float MoveInterpTime => ref Schema.GetRef<float>(this.Handle, "CScriptedSequence", "m_flMoveInterpTime");
+	public float MoveInterpTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CScriptedSequence", "m_flMoveInterpTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CScriptedSequence", "m_flMoveInterpTime", value); }
+	}
 
 	// m_flAngRate
 	[SchemaMember("CScriptedSequence", "m_flAngRate")]
-	public ref float AngRate => ref Schema.GetRef<float>(this.Handle, "CScriptedSequence", "m_flAngRate");
+	public float AngRate
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CScriptedSequence", "m_flAngRate"); }
+		set { Schema.SetValueType<float>(this.Handle, "CScriptedSequence", "m_flAngRate", value); }
+	}
 
 	// m_flMoveSpeed
 	[SchemaMember("CScriptedSequence", "m_flMoveSpeed")]
-	public ref float MoveSpeed => ref Schema.GetRef<float>(this.Handle, "CScriptedSequence", "m_flMoveSpeed");
+	public float MoveSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CScriptedSequence", "m_flMoveSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CScriptedSequence", "m_flMoveSpeed", value); }
+	}
 
 	// m_bWaitUntilMoveCompletesToStartAnimation
 	[SchemaMember("CScriptedSequence", "m_bWaitUntilMoveCompletesToStartAnimation")]
-	public ref bool WaitUntilMoveCompletesToStartAnimation => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bWaitUntilMoveCompletesToStartAnimation");
+	public bool WaitUntilMoveCompletesToStartAnimation
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bWaitUntilMoveCompletesToStartAnimation"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bWaitUntilMoveCompletesToStartAnimation", value); }
+	}
 
 	// m_nNotReadySequenceCount
 	[SchemaMember("CScriptedSequence", "m_nNotReadySequenceCount")]
-	public ref Int32 NotReadySequenceCount => ref Schema.GetRef<Int32>(this.Handle, "CScriptedSequence", "m_nNotReadySequenceCount");
+	public Int32 NotReadySequenceCount
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CScriptedSequence", "m_nNotReadySequenceCount"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CScriptedSequence", "m_nNotReadySequenceCount", value); }
+	}
 
 	// m_startTime
 	[SchemaMember("CScriptedSequence", "m_startTime")]
-	public ref float StartTime => ref Schema.GetRef<float>(this.Handle, "CScriptedSequence", "m_startTime");
+	public float StartTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CScriptedSequence", "m_startTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CScriptedSequence", "m_startTime", value); }
+	}
 
 	// m_bWaitForBeginSequence
 	[SchemaMember("CScriptedSequence", "m_bWaitForBeginSequence")]
-	public ref bool WaitForBeginSequence => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bWaitForBeginSequence");
+	public bool WaitForBeginSequence
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bWaitForBeginSequence"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bWaitForBeginSequence", value); }
+	}
 
 	// m_saved_effects
 	[SchemaMember("CScriptedSequence", "m_saved_effects")]
-	public ref Int32 Saved_effects => ref Schema.GetRef<Int32>(this.Handle, "CScriptedSequence", "m_saved_effects");
+	public Int32 Saved_effects
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CScriptedSequence", "m_saved_effects"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CScriptedSequence", "m_saved_effects", value); }
+	}
 
 	// m_savedFlags
 	[SchemaMember("CScriptedSequence", "m_savedFlags")]
-	public ref Int32 SavedFlags => ref Schema.GetRef<Int32>(this.Handle, "CScriptedSequence", "m_savedFlags");
+	public Int32 SavedFlags
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CScriptedSequence", "m_savedFlags"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CScriptedSequence", "m_savedFlags", value); }
+	}
 
 	// m_savedCollisionGroup
 	[SchemaMember("CScriptedSequence", "m_savedCollisionGroup")]
-	public ref Int32 SavedCollisionGroup => ref Schema.GetRef<Int32>(this.Handle, "CScriptedSequence", "m_savedCollisionGroup");
+	public Int32 SavedCollisionGroup
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CScriptedSequence", "m_savedCollisionGroup"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CScriptedSequence", "m_savedCollisionGroup", value); }
+	}
 
 	// m_bInterruptable
 	[SchemaMember("CScriptedSequence", "m_bInterruptable")]
-	public ref bool Interruptable => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bInterruptable");
+	public bool Interruptable
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bInterruptable"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bInterruptable", value); }
+	}
 
 	// m_sequenceStarted
 	[SchemaMember("CScriptedSequence", "m_sequenceStarted")]
-	public ref bool SequenceStarted => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_sequenceStarted");
+	public bool SequenceStarted
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_sequenceStarted"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_sequenceStarted", value); }
+	}
 
 	// m_bPositionRelativeToOtherEntity
 	[SchemaMember("CScriptedSequence", "m_bPositionRelativeToOtherEntity")]
-	public ref bool PositionRelativeToOtherEntity => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bPositionRelativeToOtherEntity");
+	public bool PositionRelativeToOtherEntity
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bPositionRelativeToOtherEntity"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bPositionRelativeToOtherEntity", value); }
+	}
 
 	// m_hTargetEnt
 	[SchemaMember("CScriptedSequence", "m_hTargetEnt")]
@@ -272,19 +453,35 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bThinking
 	[SchemaMember("CScriptedSequence", "m_bThinking")]
-	public ref bool Thinking => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bThinking");
+	public bool Thinking
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bThinking"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bThinking", value); }
+	}
 
 	// m_bInitiatedSelfDelete
 	[SchemaMember("CScriptedSequence", "m_bInitiatedSelfDelete")]
-	public ref bool InitiatedSelfDelete => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bInitiatedSelfDelete");
+	public bool InitiatedSelfDelete
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bInitiatedSelfDelete"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bInitiatedSelfDelete", value); }
+	}
 
 	// m_bIsTeleportingDueToMoveTo
 	[SchemaMember("CScriptedSequence", "m_bIsTeleportingDueToMoveTo")]
-	public ref bool IsTeleportingDueToMoveTo => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bIsTeleportingDueToMoveTo");
+	public bool IsTeleportingDueToMoveTo
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIsTeleportingDueToMoveTo"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bIsTeleportingDueToMoveTo", value); }
+	}
 
 	// m_bAllowCustomInterruptConditions
 	[SchemaMember("CScriptedSequence", "m_bAllowCustomInterruptConditions")]
-	public ref bool AllowCustomInterruptConditions => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bAllowCustomInterruptConditions");
+	public bool AllowCustomInterruptConditions
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bAllowCustomInterruptConditions"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bAllowCustomInterruptConditions", value); }
+	}
 
 	// m_hForcedTarget
 	[SchemaMember("CScriptedSequence", "m_hForcedTarget")]
@@ -292,27 +489,51 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_bDontCancelOtherSequences
 	[SchemaMember("CScriptedSequence", "m_bDontCancelOtherSequences")]
-	public ref bool DontCancelOtherSequences => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bDontCancelOtherSequences");
+	public bool DontCancelOtherSequences
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bDontCancelOtherSequences"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bDontCancelOtherSequences", value); }
+	}
 
 	// m_bForceSynch
 	[SchemaMember("CScriptedSequence", "m_bForceSynch")]
-	public ref bool ForceSynch => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bForceSynch");
+	public bool ForceSynch
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bForceSynch"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bForceSynch", value); }
+	}
 
 	// m_bPreventUpdateYawOnFinish
 	[SchemaMember("CScriptedSequence", "m_bPreventUpdateYawOnFinish")]
-	public ref bool PreventUpdateYawOnFinish => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bPreventUpdateYawOnFinish");
+	public bool PreventUpdateYawOnFinish
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bPreventUpdateYawOnFinish"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bPreventUpdateYawOnFinish", value); }
+	}
 
 	// m_bEnsureOnNavmeshOnFinish
 	[SchemaMember("CScriptedSequence", "m_bEnsureOnNavmeshOnFinish")]
-	public ref bool EnsureOnNavmeshOnFinish => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bEnsureOnNavmeshOnFinish");
+	public bool EnsureOnNavmeshOnFinish
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bEnsureOnNavmeshOnFinish"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bEnsureOnNavmeshOnFinish", value); }
+	}
 
 	// m_onDeathBehavior
 	[SchemaMember("CScriptedSequence", "m_onDeathBehavior")]
-	public ref ScriptedOnDeath_t OnDeathBehavior => ref Schema.GetRef<ScriptedOnDeath_t>(this.Handle, "CScriptedSequence", "m_onDeathBehavior");
+	public ScriptedOnDeath_t OnDeathBehavior
+	{
+		get { return Schema.GetValueType<ScriptedOnDeath_t>(this.Handle, "CScriptedSequence", "m_onDeathBehavior"); }
+		set { Schema.SetValueType<ScriptedOnDeath_t>(this.Handle, "CScriptedSequence", "m_onDeathBehavior", value); }
+	}
 
 	// m_ConflictResponse
 	[SchemaMember("CScriptedSequence", "m_ConflictResponse")]
-	public ref ScriptedConflictResponse_t ConflictResponse => ref Schema.GetRef<ScriptedConflictResponse_t>(this.Handle, "CScriptedSequence", "m_ConflictResponse");
+	public ScriptedConflictResponse_t ConflictResponse
+	{
+		get { return Schema.GetValueType<ScriptedConflictResponse_t>(this.Handle, "CScriptedSequence", "m_ConflictResponse"); }
+		set { Schema.SetValueType<ScriptedConflictResponse_t>(this.Handle, "CScriptedSequence", "m_ConflictResponse", value); }
+	}
 
 	// m_OnBeginSequence
 	[SchemaMember("CScriptedSequence", "m_OnBeginSequence")]
@@ -352,10 +573,18 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_iPlayerDeathBehavior
 	[SchemaMember("CScriptedSequence", "m_iPlayerDeathBehavior")]
-	public ref Int32 PlayerDeathBehavior => ref Schema.GetRef<Int32>(this.Handle, "CScriptedSequence", "m_iPlayerDeathBehavior");
+	public Int32 PlayerDeathBehavior
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CScriptedSequence", "m_iPlayerDeathBehavior"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CScriptedSequence", "m_iPlayerDeathBehavior", value); }
+	}
 
 	// m_bSkipFadeIn
 	[SchemaMember("CScriptedSequence", "m_bSkipFadeIn")]
-	public ref bool SkipFadeIn => ref Schema.GetRef<bool>(this.Handle, "CScriptedSequence", "m_bSkipFadeIn");
+	public bool SkipFadeIn
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CScriptedSequence", "m_bSkipFadeIn"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CScriptedSequence", "m_bSkipFadeIn", value); }
+	}
 
 }

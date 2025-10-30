@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,23 +21,43 @@ public partial class CPrecipitationVData : CEntitySubclassVDataBase
 
 	// m_flInnerDistance
 	[SchemaMember("CPrecipitationVData", "m_flInnerDistance")]
-	public ref float InnerDistance => ref Schema.GetRef<float>(this.Handle, "CPrecipitationVData", "m_flInnerDistance");
+	public float InnerDistance
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPrecipitationVData", "m_flInnerDistance"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPrecipitationVData", "m_flInnerDistance", value); }
+	}
 
 	// m_nAttachType
 	[SchemaMember("CPrecipitationVData", "m_nAttachType")]
-	public ref ParticleAttachment_t AttachType => ref Schema.GetRef<ParticleAttachment_t>(this.Handle, "CPrecipitationVData", "m_nAttachType");
+	public ParticleAttachment_t AttachType
+	{
+		get { return Schema.GetValueType<ParticleAttachment_t>(this.Handle, "CPrecipitationVData", "m_nAttachType"); }
+		set { Schema.SetValueType<ParticleAttachment_t>(this.Handle, "CPrecipitationVData", "m_nAttachType", value); }
+	}
 
 	// m_bBatchSameVolumeType
 	[SchemaMember("CPrecipitationVData", "m_bBatchSameVolumeType")]
-	public ref bool BatchSameVolumeType => ref Schema.GetRef<bool>(this.Handle, "CPrecipitationVData", "m_bBatchSameVolumeType");
+	public bool BatchSameVolumeType
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPrecipitationVData", "m_bBatchSameVolumeType"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPrecipitationVData", "m_bBatchSameVolumeType", value); }
+	}
 
 	// m_nRTEnvCP
 	[SchemaMember("CPrecipitationVData", "m_nRTEnvCP")]
-	public ref Int32 RTEnvCP => ref Schema.GetRef<Int32>(this.Handle, "CPrecipitationVData", "m_nRTEnvCP");
+	public Int32 RTEnvCP
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CPrecipitationVData", "m_nRTEnvCP"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CPrecipitationVData", "m_nRTEnvCP", value); }
+	}
 
 	// m_nRTEnvCPComponent
 	[SchemaMember("CPrecipitationVData", "m_nRTEnvCPComponent")]
-	public ref Int32 RTEnvCPComponent => ref Schema.GetRef<Int32>(this.Handle, "CPrecipitationVData", "m_nRTEnvCPComponent");
+	public Int32 RTEnvCPComponent
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CPrecipitationVData", "m_nRTEnvCPComponent"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CPrecipitationVData", "m_nRTEnvCPComponent", value); }
+	}
 
 	// m_szModifier
 	[SchemaMember("CPrecipitationVData", "m_szModifier")]

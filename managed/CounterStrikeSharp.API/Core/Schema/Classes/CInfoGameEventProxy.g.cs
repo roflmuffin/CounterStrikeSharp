@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,6 +29,10 @@ public partial class CInfoGameEventProxy : CPointEntity
 
 	// m_flRange
 	[SchemaMember("CInfoGameEventProxy", "m_flRange")]
-	public ref float Range => ref Schema.GetRef<float>(this.Handle, "CInfoGameEventProxy", "m_flRange");
+	public float Range
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CInfoGameEventProxy", "m_flRange"); }
+		set { Schema.SetValueType<float>(this.Handle, "CInfoGameEventProxy", "m_flRange", value); }
+	}
 
 }

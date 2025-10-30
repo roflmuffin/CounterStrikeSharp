@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,6 +21,10 @@ public partial class CExampleSchemaVData_PolymorphicDerivedA : CExampleSchemaVDa
 
 	// m_nDerivedA
 	[SchemaMember("CExampleSchemaVData_PolymorphicDerivedA", "m_nDerivedA")]
-	public ref Int32 DerivedA => ref Schema.GetRef<Int32>(this.Handle, "CExampleSchemaVData_PolymorphicDerivedA", "m_nDerivedA");
+	public Int32 DerivedA
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CExampleSchemaVData_PolymorphicDerivedA", "m_nDerivedA"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CExampleSchemaVData_PolymorphicDerivedA", "m_nDerivedA", value); }
+	}
 
 }

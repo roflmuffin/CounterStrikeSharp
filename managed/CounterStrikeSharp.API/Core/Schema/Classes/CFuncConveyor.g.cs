@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,31 +29,59 @@ public partial class CFuncConveyor : CBaseModelEntity
 
 	// m_flTransitionDurationSeconds
 	[SchemaMember("CFuncConveyor", "m_flTransitionDurationSeconds")]
-	public ref float TransitionDurationSeconds => ref Schema.GetRef<float>(this.Handle, "CFuncConveyor", "m_flTransitionDurationSeconds");
+	public float TransitionDurationSeconds
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncConveyor", "m_flTransitionDurationSeconds"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncConveyor", "m_flTransitionDurationSeconds", value); }
+	}
 
 	// m_angMoveEntitySpace
 	[SchemaMember("CFuncConveyor", "m_angMoveEntitySpace")]
-	public QAngle MoveEntitySpace => Schema.GetDeclaredClass<QAngle>(this.Handle, "CFuncConveyor", "m_angMoveEntitySpace");
+	public QAngle MoveEntitySpace
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CFuncConveyor", "m_angMoveEntitySpace"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CFuncConveyor", "m_angMoveEntitySpace", value); }
+	}
 
 	// m_vecMoveDirEntitySpace
 	[SchemaMember("CFuncConveyor", "m_vecMoveDirEntitySpace")]
-	public Vector MoveDirEntitySpace => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncConveyor", "m_vecMoveDirEntitySpace");
+	public Vector3 MoveDirEntitySpace
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CFuncConveyor", "m_vecMoveDirEntitySpace"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CFuncConveyor", "m_vecMoveDirEntitySpace", value); }
+	}
 
 	// m_flTargetSpeed
 	[SchemaMember("CFuncConveyor", "m_flTargetSpeed")]
-	public ref float TargetSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncConveyor", "m_flTargetSpeed");
+	public float TargetSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncConveyor", "m_flTargetSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncConveyor", "m_flTargetSpeed", value); }
+	}
 
 	// m_nTransitionStartTick
 	[SchemaMember("CFuncConveyor", "m_nTransitionStartTick")]
-	public ref Int32 TransitionStartTick => ref Schema.GetRef<Int32>(this.Handle, "CFuncConveyor", "m_nTransitionStartTick");
+	public Int32 TransitionStartTick
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CFuncConveyor", "m_nTransitionStartTick"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CFuncConveyor", "m_nTransitionStartTick", value); }
+	}
 
 	// m_nTransitionDurationTicks
 	[SchemaMember("CFuncConveyor", "m_nTransitionDurationTicks")]
-	public ref Int32 TransitionDurationTicks => ref Schema.GetRef<Int32>(this.Handle, "CFuncConveyor", "m_nTransitionDurationTicks");
+	public Int32 TransitionDurationTicks
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CFuncConveyor", "m_nTransitionDurationTicks"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CFuncConveyor", "m_nTransitionDurationTicks", value); }
+	}
 
 	// m_flTransitionStartSpeed
 	[SchemaMember("CFuncConveyor", "m_flTransitionStartSpeed")]
-	public ref float TransitionStartSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncConveyor", "m_flTransitionStartSpeed");
+	public float TransitionStartSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncConveyor", "m_flTransitionStartSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncConveyor", "m_flTransitionStartSpeed", value); }
+	}
 
 	// m_hConveyorModels
 	[SchemaMember("CFuncConveyor", "m_hConveyorModels")]

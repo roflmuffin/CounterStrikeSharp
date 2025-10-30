@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,55 +25,107 @@ public partial class CBaseAnimGraphController : CSkeletonAnimationController
 
 	// m_bSequenceFinished
 	[SchemaMember("CBaseAnimGraphController", "m_bSequenceFinished")]
-	public ref bool SequenceFinished => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraphController", "m_bSequenceFinished");
+	public bool SequenceFinished
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseAnimGraphController", "m_bSequenceFinished"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseAnimGraphController", "m_bSequenceFinished", value); }
+	}
 
 	// m_flSoundSyncTime
 	[SchemaMember("CBaseAnimGraphController", "m_flSoundSyncTime")]
-	public ref float SoundSyncTime => ref Schema.GetRef<float>(this.Handle, "CBaseAnimGraphController", "m_flSoundSyncTime");
+	public float SoundSyncTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseAnimGraphController", "m_flSoundSyncTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseAnimGraphController", "m_flSoundSyncTime", value); }
+	}
 
 	// m_nActiveIKChainMask
 	[SchemaMember("CBaseAnimGraphController", "m_nActiveIKChainMask")]
-	public ref UInt32 ActiveIKChainMask => ref Schema.GetRef<UInt32>(this.Handle, "CBaseAnimGraphController", "m_nActiveIKChainMask");
+	public UInt32 ActiveIKChainMask
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CBaseAnimGraphController", "m_nActiveIKChainMask"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CBaseAnimGraphController", "m_nActiveIKChainMask", value); }
+	}
 
 	// m_hSequence
 	[SchemaMember("CBaseAnimGraphController", "m_hSequence")]
-	public ref Int32 Sequence => ref Schema.GetRef<Int32>(this.Handle, "CBaseAnimGraphController", "m_hSequence");
+	public Int32 Sequence
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseAnimGraphController", "m_hSequence"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseAnimGraphController", "m_hSequence", value); }
+	}
 
 	// m_flSeqStartTime
 	[SchemaMember("CBaseAnimGraphController", "m_flSeqStartTime")]
-	public ref float SeqStartTime => ref Schema.GetRef<float>(this.Handle, "CBaseAnimGraphController", "m_flSeqStartTime");
+	public float SeqStartTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseAnimGraphController", "m_flSeqStartTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseAnimGraphController", "m_flSeqStartTime", value); }
+	}
 
 	// m_flSeqFixedCycle
 	[SchemaMember("CBaseAnimGraphController", "m_flSeqFixedCycle")]
-	public ref float SeqFixedCycle => ref Schema.GetRef<float>(this.Handle, "CBaseAnimGraphController", "m_flSeqFixedCycle");
+	public float SeqFixedCycle
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseAnimGraphController", "m_flSeqFixedCycle"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseAnimGraphController", "m_flSeqFixedCycle", value); }
+	}
 
 	// m_nAnimLoopMode
 	[SchemaMember("CBaseAnimGraphController", "m_nAnimLoopMode")]
-	public ref AnimLoopMode_t AnimLoopMode => ref Schema.GetRef<AnimLoopMode_t>(this.Handle, "CBaseAnimGraphController", "m_nAnimLoopMode");
+	public AnimLoopMode_t AnimLoopMode
+	{
+		get { return Schema.GetValueType<AnimLoopMode_t>(this.Handle, "CBaseAnimGraphController", "m_nAnimLoopMode"); }
+		set { Schema.SetValueType<AnimLoopMode_t>(this.Handle, "CBaseAnimGraphController", "m_nAnimLoopMode", value); }
+	}
 
 	// m_flPlaybackRate
 	[SchemaMember("CBaseAnimGraphController", "m_flPlaybackRate")]
-	public ref float PlaybackRate => ref Schema.GetRef<float>(this.Handle, "CBaseAnimGraphController", "m_flPlaybackRate");
+	public float PlaybackRate
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseAnimGraphController", "m_flPlaybackRate"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseAnimGraphController", "m_flPlaybackRate", value); }
+	}
 
 	// m_nNotifyState
 	[SchemaMember("CBaseAnimGraphController", "m_nNotifyState")]
-	public ref SequenceFinishNotifyState_t NotifyState => ref Schema.GetRef<SequenceFinishNotifyState_t>(this.Handle, "CBaseAnimGraphController", "m_nNotifyState");
+	public SequenceFinishNotifyState_t NotifyState
+	{
+		get { return Schema.GetValueType<SequenceFinishNotifyState_t>(this.Handle, "CBaseAnimGraphController", "m_nNotifyState"); }
+		set { Schema.SetValueType<SequenceFinishNotifyState_t>(this.Handle, "CBaseAnimGraphController", "m_nNotifyState", value); }
+	}
 
 	// m_bNetworkedAnimationInputsChanged
 	[SchemaMember("CBaseAnimGraphController", "m_bNetworkedAnimationInputsChanged")]
-	public ref bool NetworkedAnimationInputsChanged => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraphController", "m_bNetworkedAnimationInputsChanged");
+	public bool NetworkedAnimationInputsChanged
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseAnimGraphController", "m_bNetworkedAnimationInputsChanged"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseAnimGraphController", "m_bNetworkedAnimationInputsChanged", value); }
+	}
 
 	// m_bNetworkedSequenceChanged
 	[SchemaMember("CBaseAnimGraphController", "m_bNetworkedSequenceChanged")]
-	public ref bool NetworkedSequenceChanged => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraphController", "m_bNetworkedSequenceChanged");
+	public bool NetworkedSequenceChanged
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseAnimGraphController", "m_bNetworkedSequenceChanged"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseAnimGraphController", "m_bNetworkedSequenceChanged", value); }
+	}
 
 	// m_bLastUpdateSkipped
 	[SchemaMember("CBaseAnimGraphController", "m_bLastUpdateSkipped")]
-	public ref bool LastUpdateSkipped => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraphController", "m_bLastUpdateSkipped");
+	public bool LastUpdateSkipped
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseAnimGraphController", "m_bLastUpdateSkipped"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseAnimGraphController", "m_bLastUpdateSkipped", value); }
+	}
 
 	// m_flPrevAnimUpdateTime
 	[SchemaMember("CBaseAnimGraphController", "m_flPrevAnimUpdateTime")]
-	public ref float PrevAnimUpdateTime => ref Schema.GetRef<float>(this.Handle, "CBaseAnimGraphController", "m_flPrevAnimUpdateTime");
+	public float PrevAnimUpdateTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseAnimGraphController", "m_flPrevAnimUpdateTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseAnimGraphController", "m_flPrevAnimUpdateTime", value); }
+	}
 
 	// m_hGraphDefinitionAG2
 	[SchemaMember("CBaseAnimGraphController", "m_hGraphDefinitionAG2")]
@@ -80,7 +133,11 @@ public partial class CBaseAnimGraphController : CSkeletonAnimationController
 
 	// m_bIsUsingAG2
 	[SchemaMember("CBaseAnimGraphController", "m_bIsUsingAG2")]
-	public ref bool IsUsingAG2 => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraphController", "m_bIsUsingAG2");
+	public bool IsUsingAG2
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseAnimGraphController", "m_bIsUsingAG2"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseAnimGraphController", "m_bIsUsingAG2", value); }
+	}
 
 	// m_serializedPoseRecipeAG2
 	[SchemaMember("CBaseAnimGraphController", "m_serializedPoseRecipeAG2")]
@@ -88,22 +145,42 @@ public partial class CBaseAnimGraphController : CSkeletonAnimationController
 
 	// m_nSerializePoseRecipeSizeAG2
 	[SchemaMember("CBaseAnimGraphController", "m_nSerializePoseRecipeSizeAG2")]
-	public ref Int32 SerializePoseRecipeSizeAG2 => ref Schema.GetRef<Int32>(this.Handle, "CBaseAnimGraphController", "m_nSerializePoseRecipeSizeAG2");
+	public Int32 SerializePoseRecipeSizeAG2
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseAnimGraphController", "m_nSerializePoseRecipeSizeAG2"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseAnimGraphController", "m_nSerializePoseRecipeSizeAG2", value); }
+	}
 
 	// m_nSerializePoseRecipeVersionAG2
 	[SchemaMember("CBaseAnimGraphController", "m_nSerializePoseRecipeVersionAG2")]
-	public ref Int32 SerializePoseRecipeVersionAG2 => ref Schema.GetRef<Int32>(this.Handle, "CBaseAnimGraphController", "m_nSerializePoseRecipeVersionAG2");
+	public Int32 SerializePoseRecipeVersionAG2
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseAnimGraphController", "m_nSerializePoseRecipeVersionAG2"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseAnimGraphController", "m_nSerializePoseRecipeVersionAG2", value); }
+	}
 
 	// m_nGraphCreationFlagsAG2
 	[SchemaMember("CBaseAnimGraphController", "m_nGraphCreationFlagsAG2")]
-	public ref byte GraphCreationFlagsAG2 => ref Schema.GetRef<byte>(this.Handle, "CBaseAnimGraphController", "m_nGraphCreationFlagsAG2");
+	public byte GraphCreationFlagsAG2
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CBaseAnimGraphController", "m_nGraphCreationFlagsAG2"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CBaseAnimGraphController", "m_nGraphCreationFlagsAG2", value); }
+	}
 
 	// m_nServerGraphDefReloadCountAG2
 	[SchemaMember("CBaseAnimGraphController", "m_nServerGraphDefReloadCountAG2")]
-	public ref Int32 ServerGraphDefReloadCountAG2 => ref Schema.GetRef<Int32>(this.Handle, "CBaseAnimGraphController", "m_nServerGraphDefReloadCountAG2");
+	public Int32 ServerGraphDefReloadCountAG2
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseAnimGraphController", "m_nServerGraphDefReloadCountAG2"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseAnimGraphController", "m_nServerGraphDefReloadCountAG2", value); }
+	}
 
 	// m_nServerSerializationContextIteration
 	[SchemaMember("CBaseAnimGraphController", "m_nServerSerializationContextIteration")]
-	public ref Int32 ServerSerializationContextIteration => ref Schema.GetRef<Int32>(this.Handle, "CBaseAnimGraphController", "m_nServerSerializationContextIteration");
+	public Int32 ServerSerializationContextIteration
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseAnimGraphController", "m_nServerSerializationContextIteration"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseAnimGraphController", "m_nServerSerializationContextIteration", value); }
+	}
 
 }

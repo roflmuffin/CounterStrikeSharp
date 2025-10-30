@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class CGunTarget : CBaseToggle
 
 	// m_on
 	[SchemaMember("CGunTarget", "m_on")]
-	public ref bool On => ref Schema.GetRef<bool>(this.Handle, "CGunTarget", "m_on");
+	public bool On
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CGunTarget", "m_on"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CGunTarget", "m_on", value); }
+	}
 
 	// m_hTargetEnt
 	[SchemaMember("CGunTarget", "m_hTargetEnt")]

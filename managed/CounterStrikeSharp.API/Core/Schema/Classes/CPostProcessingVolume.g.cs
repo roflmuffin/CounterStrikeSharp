@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,46 +25,90 @@ public partial class CPostProcessingVolume : CBaseTrigger
 
 	// m_flFadeDuration
 	[SchemaMember("CPostProcessingVolume", "m_flFadeDuration")]
-	public ref float FadeDuration => ref Schema.GetRef<float>(this.Handle, "CPostProcessingVolume", "m_flFadeDuration");
+	public float FadeDuration
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flFadeDuration"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flFadeDuration", value); }
+	}
 
 	// m_flMinLogExposure
 	[SchemaMember("CPostProcessingVolume", "m_flMinLogExposure")]
-	public ref float MinLogExposure => ref Schema.GetRef<float>(this.Handle, "CPostProcessingVolume", "m_flMinLogExposure");
+	public float MinLogExposure
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flMinLogExposure"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flMinLogExposure", value); }
+	}
 
 	// m_flMaxLogExposure
 	[SchemaMember("CPostProcessingVolume", "m_flMaxLogExposure")]
-	public ref float MaxLogExposure => ref Schema.GetRef<float>(this.Handle, "CPostProcessingVolume", "m_flMaxLogExposure");
+	public float MaxLogExposure
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flMaxLogExposure"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flMaxLogExposure", value); }
+	}
 
 	// m_flMinExposure
 	[SchemaMember("CPostProcessingVolume", "m_flMinExposure")]
-	public ref float MinExposure => ref Schema.GetRef<float>(this.Handle, "CPostProcessingVolume", "m_flMinExposure");
+	public float MinExposure
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flMinExposure"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flMinExposure", value); }
+	}
 
 	// m_flMaxExposure
 	[SchemaMember("CPostProcessingVolume", "m_flMaxExposure")]
-	public ref float MaxExposure => ref Schema.GetRef<float>(this.Handle, "CPostProcessingVolume", "m_flMaxExposure");
+	public float MaxExposure
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flMaxExposure"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flMaxExposure", value); }
+	}
 
 	// m_flExposureCompensation
 	[SchemaMember("CPostProcessingVolume", "m_flExposureCompensation")]
-	public ref float ExposureCompensation => ref Schema.GetRef<float>(this.Handle, "CPostProcessingVolume", "m_flExposureCompensation");
+	public float ExposureCompensation
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flExposureCompensation"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flExposureCompensation", value); }
+	}
 
 	// m_flExposureFadeSpeedUp
 	[SchemaMember("CPostProcessingVolume", "m_flExposureFadeSpeedUp")]
-	public ref float ExposureFadeSpeedUp => ref Schema.GetRef<float>(this.Handle, "CPostProcessingVolume", "m_flExposureFadeSpeedUp");
+	public float ExposureFadeSpeedUp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flExposureFadeSpeedUp"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flExposureFadeSpeedUp", value); }
+	}
 
 	// m_flExposureFadeSpeedDown
 	[SchemaMember("CPostProcessingVolume", "m_flExposureFadeSpeedDown")]
-	public ref float ExposureFadeSpeedDown => ref Schema.GetRef<float>(this.Handle, "CPostProcessingVolume", "m_flExposureFadeSpeedDown");
+	public float ExposureFadeSpeedDown
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flExposureFadeSpeedDown"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flExposureFadeSpeedDown", value); }
+	}
 
 	// m_flTonemapEVSmoothingRange
 	[SchemaMember("CPostProcessingVolume", "m_flTonemapEVSmoothingRange")]
-	public ref float TonemapEVSmoothingRange => ref Schema.GetRef<float>(this.Handle, "CPostProcessingVolume", "m_flTonemapEVSmoothingRange");
+	public float TonemapEVSmoothingRange
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flTonemapEVSmoothingRange"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPostProcessingVolume", "m_flTonemapEVSmoothingRange", value); }
+	}
 
 	// m_bMaster
 	[SchemaMember("CPostProcessingVolume", "m_bMaster")]
-	public new ref bool Master => ref Schema.GetRef<bool>(this.Handle, "CPostProcessingVolume", "m_bMaster");
+	public new bool Master
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPostProcessingVolume", "m_bMaster"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPostProcessingVolume", "m_bMaster", value); }
+	}
 
 	// m_bExposureControl
 	[SchemaMember("CPostProcessingVolume", "m_bExposureControl")]
-	public ref bool ExposureControl => ref Schema.GetRef<bool>(this.Handle, "CPostProcessingVolume", "m_bExposureControl");
+	public bool ExposureControl
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPostProcessingVolume", "m_bExposureControl"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPostProcessingVolume", "m_bExposureControl", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,6 +25,10 @@ public partial class CRotatorTarget : CPointEntity
 
 	// m_eSpace
 	[SchemaMember("CRotatorTarget", "m_eSpace")]
-	public ref RotatorTargetSpace_t Space => ref Schema.GetRef<RotatorTargetSpace_t>(this.Handle, "CRotatorTarget", "m_eSpace");
+	public RotatorTargetSpace_t Space
+	{
+		get { return Schema.GetValueType<RotatorTargetSpace_t>(this.Handle, "CRotatorTarget", "m_eSpace"); }
+		set { Schema.SetValueType<RotatorTargetSpace_t>(this.Handle, "CRotatorTarget", "m_eSpace", value); }
+	}
 
 }

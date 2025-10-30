@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,6 +21,10 @@ public partial class CWeaponCZ75a : CCSWeaponBaseGun
 
 	// m_bMagazineRemoved
 	[SchemaMember("CWeaponCZ75a", "m_bMagazineRemoved")]
-	public ref bool MagazineRemoved => ref Schema.GetRef<bool>(this.Handle, "CWeaponCZ75a", "m_bMagazineRemoved");
+	public bool MagazineRemoved
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CWeaponCZ75a", "m_bMagazineRemoved"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CWeaponCZ75a", "m_bMagazineRemoved", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,34 +25,66 @@ public partial class CEnvDecal : CBaseModelEntity
 
 	// m_flWidth
 	[SchemaMember("CEnvDecal", "m_flWidth")]
-	public ref float Width => ref Schema.GetRef<float>(this.Handle, "CEnvDecal", "m_flWidth");
+	public float Width
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvDecal", "m_flWidth"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvDecal", "m_flWidth", value); }
+	}
 
 	// m_flHeight
 	[SchemaMember("CEnvDecal", "m_flHeight")]
-	public ref float Height => ref Schema.GetRef<float>(this.Handle, "CEnvDecal", "m_flHeight");
+	public float Height
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvDecal", "m_flHeight"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvDecal", "m_flHeight", value); }
+	}
 
 	// m_flDepth
 	[SchemaMember("CEnvDecal", "m_flDepth")]
-	public ref float Depth => ref Schema.GetRef<float>(this.Handle, "CEnvDecal", "m_flDepth");
+	public float Depth
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvDecal", "m_flDepth"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvDecal", "m_flDepth", value); }
+	}
 
 	// m_nRenderOrder
 	[SchemaMember("CEnvDecal", "m_nRenderOrder")]
-	public ref UInt32 RenderOrder => ref Schema.GetRef<UInt32>(this.Handle, "CEnvDecal", "m_nRenderOrder");
+	public UInt32 RenderOrder
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CEnvDecal", "m_nRenderOrder"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CEnvDecal", "m_nRenderOrder", value); }
+	}
 
 	// m_bProjectOnWorld
 	[SchemaMember("CEnvDecal", "m_bProjectOnWorld")]
-	public ref bool ProjectOnWorld => ref Schema.GetRef<bool>(this.Handle, "CEnvDecal", "m_bProjectOnWorld");
+	public bool ProjectOnWorld
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvDecal", "m_bProjectOnWorld"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvDecal", "m_bProjectOnWorld", value); }
+	}
 
 	// m_bProjectOnCharacters
 	[SchemaMember("CEnvDecal", "m_bProjectOnCharacters")]
-	public ref bool ProjectOnCharacters => ref Schema.GetRef<bool>(this.Handle, "CEnvDecal", "m_bProjectOnCharacters");
+	public bool ProjectOnCharacters
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvDecal", "m_bProjectOnCharacters"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvDecal", "m_bProjectOnCharacters", value); }
+	}
 
 	// m_bProjectOnWater
 	[SchemaMember("CEnvDecal", "m_bProjectOnWater")]
-	public ref bool ProjectOnWater => ref Schema.GetRef<bool>(this.Handle, "CEnvDecal", "m_bProjectOnWater");
+	public bool ProjectOnWater
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvDecal", "m_bProjectOnWater"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvDecal", "m_bProjectOnWater", value); }
+	}
 
 	// m_flDepthSortBias
 	[SchemaMember("CEnvDecal", "m_flDepthSortBias")]
-	public ref float DepthSortBias => ref Schema.GetRef<float>(this.Handle, "CEnvDecal", "m_flDepthSortBias");
+	public float DepthSortBias
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvDecal", "m_flDepthSortBias"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvDecal", "m_flDepthSortBias", value); }
+	}
 
 }

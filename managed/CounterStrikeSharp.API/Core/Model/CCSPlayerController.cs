@@ -1,4 +1,5 @@
 using System;
+using System.Numerics;
 using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Entities.Constants;
@@ -343,7 +344,7 @@ public partial class CCSPlayerController
 
     [Obsolete(
         "You are trying to call Teleport on a non-physical player. Maybe you mean Pawn? (See: https://docs.cssharp.dev/docs/guides/referencing-players.html#controllers--pawns)")]
-    public new void Teleport(Vector? position = null, QAngle? angles = null, Vector? velocity = null)
+    public new void Teleport(Vector3? position = null, QAngle? angles = null, Vector3? velocity = null)
     {
         base.Teleport(position, angles, velocity);
     }

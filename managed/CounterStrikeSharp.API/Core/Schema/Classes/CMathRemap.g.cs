@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,27 +21,51 @@ public partial class CMathRemap : CLogicalEntity
 
 	// m_flInMin
 	[SchemaMember("CMathRemap", "m_flInMin")]
-	public ref float InMin => ref Schema.GetRef<float>(this.Handle, "CMathRemap", "m_flInMin");
+	public float InMin
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CMathRemap", "m_flInMin"); }
+		set { Schema.SetValueType<float>(this.Handle, "CMathRemap", "m_flInMin", value); }
+	}
 
 	// m_flInMax
 	[SchemaMember("CMathRemap", "m_flInMax")]
-	public ref float InMax => ref Schema.GetRef<float>(this.Handle, "CMathRemap", "m_flInMax");
+	public float InMax
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CMathRemap", "m_flInMax"); }
+		set { Schema.SetValueType<float>(this.Handle, "CMathRemap", "m_flInMax", value); }
+	}
 
 	// m_flOut1
 	[SchemaMember("CMathRemap", "m_flOut1")]
-	public ref float Out1 => ref Schema.GetRef<float>(this.Handle, "CMathRemap", "m_flOut1");
+	public float Out1
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CMathRemap", "m_flOut1"); }
+		set { Schema.SetValueType<float>(this.Handle, "CMathRemap", "m_flOut1", value); }
+	}
 
 	// m_flOut2
 	[SchemaMember("CMathRemap", "m_flOut2")]
-	public ref float Out2 => ref Schema.GetRef<float>(this.Handle, "CMathRemap", "m_flOut2");
+	public float Out2
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CMathRemap", "m_flOut2"); }
+		set { Schema.SetValueType<float>(this.Handle, "CMathRemap", "m_flOut2", value); }
+	}
 
 	// m_flOldInValue
 	[SchemaMember("CMathRemap", "m_flOldInValue")]
-	public ref float OldInValue => ref Schema.GetRef<float>(this.Handle, "CMathRemap", "m_flOldInValue");
+	public float OldInValue
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CMathRemap", "m_flOldInValue"); }
+		set { Schema.SetValueType<float>(this.Handle, "CMathRemap", "m_flOldInValue", value); }
+	}
 
 	// m_bEnabled
 	[SchemaMember("CMathRemap", "m_bEnabled")]
-	public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CMathRemap", "m_bEnabled");
+	public bool Enabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CMathRemap", "m_bEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CMathRemap", "m_bEnabled", value); }
+	}
 
 	// m_OnRoseAboveMin
 	[SchemaMember("CMathRemap", "m_OnRoseAboveMin")]

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -32,11 +33,19 @@ public partial class CCSPlayerResource : CBaseEntity
 
 	// m_bombsiteCenterA
 	[SchemaMember("CCSPlayerResource", "m_bombsiteCenterA")]
-	public Vector BombsiteCenterA => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayerResource", "m_bombsiteCenterA");
+	public Vector3 BombsiteCenterA
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSPlayerResource", "m_bombsiteCenterA"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCSPlayerResource", "m_bombsiteCenterA", value); }
+	}
 
 	// m_bombsiteCenterB
 	[SchemaMember("CCSPlayerResource", "m_bombsiteCenterB")]
-	public Vector BombsiteCenterB => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayerResource", "m_bombsiteCenterB");
+	public Vector3 BombsiteCenterB
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSPlayerResource", "m_bombsiteCenterB"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCSPlayerResource", "m_bombsiteCenterB", value); }
+	}
 
 	// m_hostageRescueX
 	[SchemaMember("CCSPlayerResource", "m_hostageRescueX")]
@@ -52,10 +61,18 @@ public partial class CCSPlayerResource : CBaseEntity
 
 	// m_bEndMatchNextMapAllVoted
 	[SchemaMember("CCSPlayerResource", "m_bEndMatchNextMapAllVoted")]
-	public ref bool EndMatchNextMapAllVoted => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerResource", "m_bEndMatchNextMapAllVoted");
+	public bool EndMatchNextMapAllVoted
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerResource", "m_bEndMatchNextMapAllVoted"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerResource", "m_bEndMatchNextMapAllVoted", value); }
+	}
 
 	// m_foundGoalPositions
 	[SchemaMember("CCSPlayerResource", "m_foundGoalPositions")]
-	public ref bool FoundGoalPositions => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerResource", "m_foundGoalPositions");
+	public bool FoundGoalPositions
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerResource", "m_foundGoalPositions"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerResource", "m_foundGoalPositions", value); }
+	}
 
 }

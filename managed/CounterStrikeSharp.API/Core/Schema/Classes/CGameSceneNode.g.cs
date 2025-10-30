@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -44,51 +45,99 @@ public partial class CGameSceneNode : NativeObject
 
 	// m_angRotation
 	[SchemaMember("CGameSceneNode", "m_angRotation")]
-	public QAngle Rotation => Schema.GetDeclaredClass<QAngle>(this.Handle, "CGameSceneNode", "m_angRotation");
+	public QAngle Rotation
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CGameSceneNode", "m_angRotation"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CGameSceneNode", "m_angRotation", value); }
+	}
 
 	// m_flScale
 	[SchemaMember("CGameSceneNode", "m_flScale")]
-	public ref float Scale => ref Schema.GetRef<float>(this.Handle, "CGameSceneNode", "m_flScale");
+	public float Scale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGameSceneNode", "m_flScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGameSceneNode", "m_flScale", value); }
+	}
 
 	// m_vecAbsOrigin
 	[SchemaMember("CGameSceneNode", "m_vecAbsOrigin")]
-	public Vector AbsOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CGameSceneNode", "m_vecAbsOrigin");
+	public Vector3 AbsOrigin
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CGameSceneNode", "m_vecAbsOrigin"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CGameSceneNode", "m_vecAbsOrigin", value); }
+	}
 
 	// m_angAbsRotation
 	[SchemaMember("CGameSceneNode", "m_angAbsRotation")]
-	public QAngle AbsRotation => Schema.GetDeclaredClass<QAngle>(this.Handle, "CGameSceneNode", "m_angAbsRotation");
+	public QAngle AbsRotation
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CGameSceneNode", "m_angAbsRotation"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CGameSceneNode", "m_angAbsRotation", value); }
+	}
 
 	// m_flAbsScale
 	[SchemaMember("CGameSceneNode", "m_flAbsScale")]
-	public ref float AbsScale => ref Schema.GetRef<float>(this.Handle, "CGameSceneNode", "m_flAbsScale");
+	public float AbsScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGameSceneNode", "m_flAbsScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGameSceneNode", "m_flAbsScale", value); }
+	}
 
 	// m_nParentAttachmentOrBone
 	[SchemaMember("CGameSceneNode", "m_nParentAttachmentOrBone")]
-	public ref Int16 ParentAttachmentOrBone => ref Schema.GetRef<Int16>(this.Handle, "CGameSceneNode", "m_nParentAttachmentOrBone");
+	public Int16 ParentAttachmentOrBone
+	{
+		get { return Schema.GetValueType<Int16>(this.Handle, "CGameSceneNode", "m_nParentAttachmentOrBone"); }
+		set { Schema.SetValueType<Int16>(this.Handle, "CGameSceneNode", "m_nParentAttachmentOrBone", value); }
+	}
 
 	// m_bDebugAbsOriginChanges
 	[SchemaMember("CGameSceneNode", "m_bDebugAbsOriginChanges")]
-	public ref bool DebugAbsOriginChanges => ref Schema.GetRef<bool>(this.Handle, "CGameSceneNode", "m_bDebugAbsOriginChanges");
+	public bool DebugAbsOriginChanges
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CGameSceneNode", "m_bDebugAbsOriginChanges"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CGameSceneNode", "m_bDebugAbsOriginChanges", value); }
+	}
 
 	// m_bDormant
 	[SchemaMember("CGameSceneNode", "m_bDormant")]
-	public ref bool Dormant => ref Schema.GetRef<bool>(this.Handle, "CGameSceneNode", "m_bDormant");
+	public bool Dormant
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CGameSceneNode", "m_bDormant"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CGameSceneNode", "m_bDormant", value); }
+	}
 
 	// m_bForceParentToBeNetworked
 	[SchemaMember("CGameSceneNode", "m_bForceParentToBeNetworked")]
-	public ref bool ForceParentToBeNetworked => ref Schema.GetRef<bool>(this.Handle, "CGameSceneNode", "m_bForceParentToBeNetworked");
+	public bool ForceParentToBeNetworked
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CGameSceneNode", "m_bForceParentToBeNetworked"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CGameSceneNode", "m_bForceParentToBeNetworked", value); }
+	}
 
 	// m_nHierarchicalDepth
 	[SchemaMember("CGameSceneNode", "m_nHierarchicalDepth")]
-	public ref byte HierarchicalDepth => ref Schema.GetRef<byte>(this.Handle, "CGameSceneNode", "m_nHierarchicalDepth");
+	public byte HierarchicalDepth
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CGameSceneNode", "m_nHierarchicalDepth"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CGameSceneNode", "m_nHierarchicalDepth", value); }
+	}
 
 	// m_nHierarchyType
 	[SchemaMember("CGameSceneNode", "m_nHierarchyType")]
-	public ref byte HierarchyType => ref Schema.GetRef<byte>(this.Handle, "CGameSceneNode", "m_nHierarchyType");
+	public byte HierarchyType
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CGameSceneNode", "m_nHierarchyType"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CGameSceneNode", "m_nHierarchyType", value); }
+	}
 
 	// m_nDoNotSetAnimTimeInInvalidatePhysicsCount
 	[SchemaMember("CGameSceneNode", "m_nDoNotSetAnimTimeInInvalidatePhysicsCount")]
-	public ref byte DoNotSetAnimTimeInInvalidatePhysicsCount => ref Schema.GetRef<byte>(this.Handle, "CGameSceneNode", "m_nDoNotSetAnimTimeInInvalidatePhysicsCount");
+	public byte DoNotSetAnimTimeInInvalidatePhysicsCount
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CGameSceneNode", "m_nDoNotSetAnimTimeInInvalidatePhysicsCount"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CGameSceneNode", "m_nDoNotSetAnimTimeInInvalidatePhysicsCount", value); }
+	}
 
 	// m_name
 	[SchemaMember("CGameSceneNode", "m_name")]
@@ -100,14 +149,26 @@ public partial class CGameSceneNode : NativeObject
 
 	// m_flZOffset
 	[SchemaMember("CGameSceneNode", "m_flZOffset")]
-	public ref float ZOffset => ref Schema.GetRef<float>(this.Handle, "CGameSceneNode", "m_flZOffset");
+	public float ZOffset
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGameSceneNode", "m_flZOffset"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGameSceneNode", "m_flZOffset", value); }
+	}
 
 	// m_flClientLocalScale
 	[SchemaMember("CGameSceneNode", "m_flClientLocalScale")]
-	public ref float ClientLocalScale => ref Schema.GetRef<float>(this.Handle, "CGameSceneNode", "m_flClientLocalScale");
+	public float ClientLocalScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGameSceneNode", "m_flClientLocalScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGameSceneNode", "m_flClientLocalScale", value); }
+	}
 
 	// m_vRenderOrigin
 	[SchemaMember("CGameSceneNode", "m_vRenderOrigin")]
-	public Vector RenderOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CGameSceneNode", "m_vRenderOrigin");
+	public Vector3 RenderOrigin
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CGameSceneNode", "m_vRenderOrigin"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CGameSceneNode", "m_vRenderOrigin", value); }
+	}
 
 }

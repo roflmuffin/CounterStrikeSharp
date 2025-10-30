@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -32,42 +33,82 @@ public partial class CTimerEntity : CLogicalEntity
 
 	// m_iDisabled
 	[SchemaMember("CTimerEntity", "m_iDisabled")]
-	public ref Int32 Disabled => ref Schema.GetRef<Int32>(this.Handle, "CTimerEntity", "m_iDisabled");
+	public Int32 Disabled
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CTimerEntity", "m_iDisabled"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CTimerEntity", "m_iDisabled", value); }
+	}
 
 	// m_flInitialDelay
 	[SchemaMember("CTimerEntity", "m_flInitialDelay")]
-	public ref float InitialDelay => ref Schema.GetRef<float>(this.Handle, "CTimerEntity", "m_flInitialDelay");
+	public float InitialDelay
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTimerEntity", "m_flInitialDelay"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTimerEntity", "m_flInitialDelay", value); }
+	}
 
 	// m_flRefireTime
 	[SchemaMember("CTimerEntity", "m_flRefireTime")]
-	public ref float RefireTime => ref Schema.GetRef<float>(this.Handle, "CTimerEntity", "m_flRefireTime");
+	public float RefireTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTimerEntity", "m_flRefireTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTimerEntity", "m_flRefireTime", value); }
+	}
 
 	// m_bUpDownState
 	[SchemaMember("CTimerEntity", "m_bUpDownState")]
-	public ref bool UpDownState => ref Schema.GetRef<bool>(this.Handle, "CTimerEntity", "m_bUpDownState");
+	public bool UpDownState
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTimerEntity", "m_bUpDownState"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTimerEntity", "m_bUpDownState", value); }
+	}
 
 	// m_iUseRandomTime
 	[SchemaMember("CTimerEntity", "m_iUseRandomTime")]
-	public ref Int32 UseRandomTime => ref Schema.GetRef<Int32>(this.Handle, "CTimerEntity", "m_iUseRandomTime");
+	public Int32 UseRandomTime
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CTimerEntity", "m_iUseRandomTime"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CTimerEntity", "m_iUseRandomTime", value); }
+	}
 
 	// m_bPauseAfterFiring
 	[SchemaMember("CTimerEntity", "m_bPauseAfterFiring")]
-	public ref bool PauseAfterFiring => ref Schema.GetRef<bool>(this.Handle, "CTimerEntity", "m_bPauseAfterFiring");
+	public bool PauseAfterFiring
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTimerEntity", "m_bPauseAfterFiring"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTimerEntity", "m_bPauseAfterFiring", value); }
+	}
 
 	// m_flLowerRandomBound
 	[SchemaMember("CTimerEntity", "m_flLowerRandomBound")]
-	public ref float LowerRandomBound => ref Schema.GetRef<float>(this.Handle, "CTimerEntity", "m_flLowerRandomBound");
+	public float LowerRandomBound
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTimerEntity", "m_flLowerRandomBound"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTimerEntity", "m_flLowerRandomBound", value); }
+	}
 
 	// m_flUpperRandomBound
 	[SchemaMember("CTimerEntity", "m_flUpperRandomBound")]
-	public ref float UpperRandomBound => ref Schema.GetRef<float>(this.Handle, "CTimerEntity", "m_flUpperRandomBound");
+	public float UpperRandomBound
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTimerEntity", "m_flUpperRandomBound"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTimerEntity", "m_flUpperRandomBound", value); }
+	}
 
 	// m_flRemainingTime
 	[SchemaMember("CTimerEntity", "m_flRemainingTime")]
-	public ref float RemainingTime => ref Schema.GetRef<float>(this.Handle, "CTimerEntity", "m_flRemainingTime");
+	public float RemainingTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTimerEntity", "m_flRemainingTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTimerEntity", "m_flRemainingTime", value); }
+	}
 
 	// m_bPaused
 	[SchemaMember("CTimerEntity", "m_bPaused")]
-	public ref bool Paused => ref Schema.GetRef<bool>(this.Handle, "CTimerEntity", "m_bPaused");
+	public bool Paused
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTimerEntity", "m_bPaused"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTimerEntity", "m_bPaused", value); }
+	}
 
 }

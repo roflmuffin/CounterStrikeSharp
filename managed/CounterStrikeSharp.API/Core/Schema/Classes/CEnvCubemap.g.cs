@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,70 +25,138 @@ public partial class CEnvCubemap : CBaseEntity
 
 	// m_Entity_bCustomCubemapTexture
 	[SchemaMember("CEnvCubemap", "m_Entity_bCustomCubemapTexture")]
-	public ref bool Entity_bCustomCubemapTexture => ref Schema.GetRef<bool>(this.Handle, "CEnvCubemap", "m_Entity_bCustomCubemapTexture");
+	public bool Entity_bCustomCubemapTexture
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bCustomCubemapTexture"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bCustomCubemapTexture", value); }
+	}
 
 	// m_Entity_flInfluenceRadius
 	[SchemaMember("CEnvCubemap", "m_Entity_flInfluenceRadius")]
-	public ref float Entity_flInfluenceRadius => ref Schema.GetRef<float>(this.Handle, "CEnvCubemap", "m_Entity_flInfluenceRadius");
+	public float Entity_flInfluenceRadius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvCubemap", "m_Entity_flInfluenceRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvCubemap", "m_Entity_flInfluenceRadius", value); }
+	}
 
 	// m_Entity_vBoxProjectMins
 	[SchemaMember("CEnvCubemap", "m_Entity_vBoxProjectMins")]
-	public Vector Entity_vBoxProjectMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvCubemap", "m_Entity_vBoxProjectMins");
+	public Vector3 Entity_vBoxProjectMins
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvCubemap", "m_Entity_vBoxProjectMins"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvCubemap", "m_Entity_vBoxProjectMins", value); }
+	}
 
 	// m_Entity_vBoxProjectMaxs
 	[SchemaMember("CEnvCubemap", "m_Entity_vBoxProjectMaxs")]
-	public Vector Entity_vBoxProjectMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvCubemap", "m_Entity_vBoxProjectMaxs");
+	public Vector3 Entity_vBoxProjectMaxs
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvCubemap", "m_Entity_vBoxProjectMaxs"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvCubemap", "m_Entity_vBoxProjectMaxs", value); }
+	}
 
 	// m_Entity_bMoveable
 	[SchemaMember("CEnvCubemap", "m_Entity_bMoveable")]
-	public ref bool Entity_bMoveable => ref Schema.GetRef<bool>(this.Handle, "CEnvCubemap", "m_Entity_bMoveable");
+	public bool Entity_bMoveable
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bMoveable"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bMoveable", value); }
+	}
 
 	// m_Entity_nHandshake
 	[SchemaMember("CEnvCubemap", "m_Entity_nHandshake")]
-	public ref Int32 Entity_nHandshake => ref Schema.GetRef<Int32>(this.Handle, "CEnvCubemap", "m_Entity_nHandshake");
+	public Int32 Entity_nHandshake
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvCubemap", "m_Entity_nHandshake"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvCubemap", "m_Entity_nHandshake", value); }
+	}
 
 	// m_Entity_nEnvCubeMapArrayIndex
 	[SchemaMember("CEnvCubemap", "m_Entity_nEnvCubeMapArrayIndex")]
-	public ref Int32 Entity_nEnvCubeMapArrayIndex => ref Schema.GetRef<Int32>(this.Handle, "CEnvCubemap", "m_Entity_nEnvCubeMapArrayIndex");
+	public Int32 Entity_nEnvCubeMapArrayIndex
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvCubemap", "m_Entity_nEnvCubeMapArrayIndex"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvCubemap", "m_Entity_nEnvCubeMapArrayIndex", value); }
+	}
 
 	// m_Entity_nPriority
 	[SchemaMember("CEnvCubemap", "m_Entity_nPriority")]
-	public ref Int32 Entity_nPriority => ref Schema.GetRef<Int32>(this.Handle, "CEnvCubemap", "m_Entity_nPriority");
+	public Int32 Entity_nPriority
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvCubemap", "m_Entity_nPriority"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvCubemap", "m_Entity_nPriority", value); }
+	}
 
 	// m_Entity_flEdgeFadeDist
 	[SchemaMember("CEnvCubemap", "m_Entity_flEdgeFadeDist")]
-	public ref float Entity_flEdgeFadeDist => ref Schema.GetRef<float>(this.Handle, "CEnvCubemap", "m_Entity_flEdgeFadeDist");
+	public float Entity_flEdgeFadeDist
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvCubemap", "m_Entity_flEdgeFadeDist"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvCubemap", "m_Entity_flEdgeFadeDist", value); }
+	}
 
 	// m_Entity_vEdgeFadeDists
 	[SchemaMember("CEnvCubemap", "m_Entity_vEdgeFadeDists")]
-	public Vector Entity_vEdgeFadeDists => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvCubemap", "m_Entity_vEdgeFadeDists");
+	public Vector3 Entity_vEdgeFadeDists
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvCubemap", "m_Entity_vEdgeFadeDists"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvCubemap", "m_Entity_vEdgeFadeDists", value); }
+	}
 
 	// m_Entity_flDiffuseScale
 	[SchemaMember("CEnvCubemap", "m_Entity_flDiffuseScale")]
-	public ref float Entity_flDiffuseScale => ref Schema.GetRef<float>(this.Handle, "CEnvCubemap", "m_Entity_flDiffuseScale");
+	public float Entity_flDiffuseScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvCubemap", "m_Entity_flDiffuseScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvCubemap", "m_Entity_flDiffuseScale", value); }
+	}
 
 	// m_Entity_bStartDisabled
 	[SchemaMember("CEnvCubemap", "m_Entity_bStartDisabled")]
-	public ref bool Entity_bStartDisabled => ref Schema.GetRef<bool>(this.Handle, "CEnvCubemap", "m_Entity_bStartDisabled");
+	public bool Entity_bStartDisabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bStartDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bStartDisabled", value); }
+	}
 
 	// m_Entity_bDefaultEnvMap
 	[SchemaMember("CEnvCubemap", "m_Entity_bDefaultEnvMap")]
-	public ref bool Entity_bDefaultEnvMap => ref Schema.GetRef<bool>(this.Handle, "CEnvCubemap", "m_Entity_bDefaultEnvMap");
+	public bool Entity_bDefaultEnvMap
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bDefaultEnvMap"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bDefaultEnvMap", value); }
+	}
 
 	// m_Entity_bDefaultSpecEnvMap
 	[SchemaMember("CEnvCubemap", "m_Entity_bDefaultSpecEnvMap")]
-	public ref bool Entity_bDefaultSpecEnvMap => ref Schema.GetRef<bool>(this.Handle, "CEnvCubemap", "m_Entity_bDefaultSpecEnvMap");
+	public bool Entity_bDefaultSpecEnvMap
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bDefaultSpecEnvMap"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bDefaultSpecEnvMap", value); }
+	}
 
 	// m_Entity_bIndoorCubeMap
 	[SchemaMember("CEnvCubemap", "m_Entity_bIndoorCubeMap")]
-	public ref bool Entity_bIndoorCubeMap => ref Schema.GetRef<bool>(this.Handle, "CEnvCubemap", "m_Entity_bIndoorCubeMap");
+	public bool Entity_bIndoorCubeMap
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bIndoorCubeMap"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bIndoorCubeMap", value); }
+	}
 
 	// m_Entity_bCopyDiffuseFromDefaultCubemap
 	[SchemaMember("CEnvCubemap", "m_Entity_bCopyDiffuseFromDefaultCubemap")]
-	public ref bool Entity_bCopyDiffuseFromDefaultCubemap => ref Schema.GetRef<bool>(this.Handle, "CEnvCubemap", "m_Entity_bCopyDiffuseFromDefaultCubemap");
+	public bool Entity_bCopyDiffuseFromDefaultCubemap
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bCopyDiffuseFromDefaultCubemap"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bCopyDiffuseFromDefaultCubemap", value); }
+	}
 
 	// m_Entity_bEnabled
 	[SchemaMember("CEnvCubemap", "m_Entity_bEnabled")]
-	public ref bool Entity_bEnabled => ref Schema.GetRef<bool>(this.Handle, "CEnvCubemap", "m_Entity_bEnabled");
+	public bool Entity_bEnabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bEnabled", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,22 +29,42 @@ public partial class CMarkupVolumeTagged : CMarkupVolume
 
 	// m_bIsGroup
 	[SchemaMember("CMarkupVolumeTagged", "m_bIsGroup")]
-	public ref bool IsGroup => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeTagged", "m_bIsGroup");
+	public bool IsGroup
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CMarkupVolumeTagged", "m_bIsGroup"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CMarkupVolumeTagged", "m_bIsGroup", value); }
+	}
 
 	// m_bGroupByPrefab
 	[SchemaMember("CMarkupVolumeTagged", "m_bGroupByPrefab")]
-	public ref bool GroupByPrefab => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeTagged", "m_bGroupByPrefab");
+	public bool GroupByPrefab
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CMarkupVolumeTagged", "m_bGroupByPrefab"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CMarkupVolumeTagged", "m_bGroupByPrefab", value); }
+	}
 
 	// m_bGroupByVolume
 	[SchemaMember("CMarkupVolumeTagged", "m_bGroupByVolume")]
-	public ref bool GroupByVolume => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeTagged", "m_bGroupByVolume");
+	public bool GroupByVolume
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CMarkupVolumeTagged", "m_bGroupByVolume"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CMarkupVolumeTagged", "m_bGroupByVolume", value); }
+	}
 
 	// m_bGroupOtherGroups
 	[SchemaMember("CMarkupVolumeTagged", "m_bGroupOtherGroups")]
-	public ref bool GroupOtherGroups => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeTagged", "m_bGroupOtherGroups");
+	public bool GroupOtherGroups
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CMarkupVolumeTagged", "m_bGroupOtherGroups"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CMarkupVolumeTagged", "m_bGroupOtherGroups", value); }
+	}
 
 	// m_bIsInGroup
 	[SchemaMember("CMarkupVolumeTagged", "m_bIsInGroup")]
-	public ref bool IsInGroup => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeTagged", "m_bIsInGroup");
+	public bool IsInGroup
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CMarkupVolumeTagged", "m_bIsInGroup"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CMarkupVolumeTagged", "m_bIsInGroup", value); }
+	}
 
 }

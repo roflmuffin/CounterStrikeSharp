@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class CLogicBranch : CLogicalEntity
 
 	// m_bInValue
 	[SchemaMember("CLogicBranch", "m_bInValue")]
-	public ref bool InValue => ref Schema.GetRef<bool>(this.Handle, "CLogicBranch", "m_bInValue");
+	public bool InValue
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CLogicBranch", "m_bInValue"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CLogicBranch", "m_bInValue", value); }
+	}
 
 	// m_Listeners
 	[SchemaMember("CLogicBranch", "m_Listeners")]

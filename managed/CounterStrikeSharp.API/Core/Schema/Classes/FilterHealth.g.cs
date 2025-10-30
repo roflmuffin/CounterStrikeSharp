@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,14 +21,26 @@ public partial class FilterHealth : CBaseFilter
 
 	// m_bAdrenalineActive
 	[SchemaMember("FilterHealth", "m_bAdrenalineActive")]
-	public ref bool AdrenalineActive => ref Schema.GetRef<bool>(this.Handle, "FilterHealth", "m_bAdrenalineActive");
+	public bool AdrenalineActive
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "FilterHealth", "m_bAdrenalineActive"); }
+		set { Schema.SetValueType<bool>(this.Handle, "FilterHealth", "m_bAdrenalineActive", value); }
+	}
 
 	// m_iHealthMin
 	[SchemaMember("FilterHealth", "m_iHealthMin")]
-	public ref Int32 HealthMin => ref Schema.GetRef<Int32>(this.Handle, "FilterHealth", "m_iHealthMin");
+	public Int32 HealthMin
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "FilterHealth", "m_iHealthMin"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "FilterHealth", "m_iHealthMin", value); }
+	}
 
 	// m_iHealthMax
 	[SchemaMember("FilterHealth", "m_iHealthMax")]
-	public ref Int32 HealthMax => ref Schema.GetRef<Int32>(this.Handle, "FilterHealth", "m_iHealthMax");
+	public Int32 HealthMax
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "FilterHealth", "m_iHealthMax"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "FilterHealth", "m_iHealthMax", value); }
+	}
 
 }

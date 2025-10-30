@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,18 +21,34 @@ public partial class CIronSightController : NativeObject
 
 	// m_bIronSightAvailable
 	[SchemaMember("CIronSightController", "m_bIronSightAvailable")]
-	public ref bool IronSightAvailable => ref Schema.GetRef<bool>(this.Handle, "CIronSightController", "m_bIronSightAvailable");
+	public bool IronSightAvailable
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CIronSightController", "m_bIronSightAvailable"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CIronSightController", "m_bIronSightAvailable", value); }
+	}
 
 	// m_flIronSightAmount
 	[SchemaMember("CIronSightController", "m_flIronSightAmount")]
-	public ref float IronSightAmount => ref Schema.GetRef<float>(this.Handle, "CIronSightController", "m_flIronSightAmount");
+	public float IronSightAmount
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CIronSightController", "m_flIronSightAmount"); }
+		set { Schema.SetValueType<float>(this.Handle, "CIronSightController", "m_flIronSightAmount", value); }
+	}
 
 	// m_flIronSightAmountGained
 	[SchemaMember("CIronSightController", "m_flIronSightAmountGained")]
-	public ref float IronSightAmountGained => ref Schema.GetRef<float>(this.Handle, "CIronSightController", "m_flIronSightAmountGained");
+	public float IronSightAmountGained
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CIronSightController", "m_flIronSightAmountGained"); }
+		set { Schema.SetValueType<float>(this.Handle, "CIronSightController", "m_flIronSightAmountGained", value); }
+	}
 
 	// m_flIronSightAmountBiased
 	[SchemaMember("CIronSightController", "m_flIronSightAmountBiased")]
-	public ref float IronSightAmountBiased => ref Schema.GetRef<float>(this.Handle, "CIronSightController", "m_flIronSightAmountBiased");
+	public float IronSightAmountBiased
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CIronSightController", "m_flIronSightAmountBiased"); }
+		set { Schema.SetValueType<float>(this.Handle, "CIronSightController", "m_flIronSightAmountBiased", value); }
+	}
 
 }

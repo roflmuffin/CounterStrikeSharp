@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,11 +25,19 @@ public partial class CLogicCase : CLogicalEntity
 
 	// m_nShuffleCases
 	[SchemaMember("CLogicCase", "m_nShuffleCases")]
-	public ref Int32 ShuffleCases => ref Schema.GetRef<Int32>(this.Handle, "CLogicCase", "m_nShuffleCases");
+	public Int32 ShuffleCases
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicCase", "m_nShuffleCases"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLogicCase", "m_nShuffleCases", value); }
+	}
 
 	// m_nLastShuffleCase
 	[SchemaMember("CLogicCase", "m_nLastShuffleCase")]
-	public ref Int32 LastShuffleCase => ref Schema.GetRef<Int32>(this.Handle, "CLogicCase", "m_nLastShuffleCase");
+	public Int32 LastShuffleCase
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicCase", "m_nLastShuffleCase"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLogicCase", "m_nLastShuffleCase", value); }
+	}
 
 	// m_uchShuffleCaseMap
 	[SchemaMember("CLogicCase", "m_uchShuffleCaseMap")]

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,14 +21,26 @@ public partial class SoundOpvarTraceResult_t : NativeObject
 
 	// vPos
 	[SchemaMember("SoundOpvarTraceResult_t", "vPos")]
-	public Vector VPos => Schema.GetDeclaredClass<Vector>(this.Handle, "SoundOpvarTraceResult_t", "vPos");
+	public Vector3 VPos
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "SoundOpvarTraceResult_t", "vPos"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "SoundOpvarTraceResult_t", "vPos", value); }
+	}
 
 	// bDidHit
 	[SchemaMember("SoundOpvarTraceResult_t", "bDidHit")]
-	public ref bool BDidHit => ref Schema.GetRef<bool>(this.Handle, "SoundOpvarTraceResult_t", "bDidHit");
+	public bool BDidHit
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "SoundOpvarTraceResult_t", "bDidHit"); }
+		set { Schema.SetValueType<bool>(this.Handle, "SoundOpvarTraceResult_t", "bDidHit", value); }
+	}
 
 	// flDistSqrToCenter
 	[SchemaMember("SoundOpvarTraceResult_t", "flDistSqrToCenter")]
-	public ref float FlDistSqrToCenter => ref Schema.GetRef<float>(this.Handle, "SoundOpvarTraceResult_t", "flDistSqrToCenter");
+	public float FlDistSqrToCenter
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "SoundOpvarTraceResult_t", "flDistSqrToCenter"); }
+		set { Schema.SetValueType<float>(this.Handle, "SoundOpvarTraceResult_t", "flDistSqrToCenter", value); }
+	}
 
 }

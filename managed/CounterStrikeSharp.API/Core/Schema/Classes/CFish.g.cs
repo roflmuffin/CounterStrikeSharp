@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,63 +25,123 @@ public partial class CFish : CBaseAnimGraph
 
 	// m_id
 	[SchemaMember("CFish", "m_id")]
-	public ref UInt32 Id => ref Schema.GetRef<UInt32>(this.Handle, "CFish", "m_id");
+	public UInt32 Id
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CFish", "m_id"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CFish", "m_id", value); }
+	}
 
 	// m_x
 	[SchemaMember("CFish", "m_x")]
-	public ref float X => ref Schema.GetRef<float>(this.Handle, "CFish", "m_x");
+	public float X
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFish", "m_x"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFish", "m_x", value); }
+	}
 
 	// m_y
 	[SchemaMember("CFish", "m_y")]
-	public ref float Y => ref Schema.GetRef<float>(this.Handle, "CFish", "m_y");
+	public float Y
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFish", "m_y"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFish", "m_y", value); }
+	}
 
 	// m_z
 	[SchemaMember("CFish", "m_z")]
-	public ref float Z => ref Schema.GetRef<float>(this.Handle, "CFish", "m_z");
+	public float Z
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFish", "m_z"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFish", "m_z", value); }
+	}
 
 	// m_angle
 	[SchemaMember("CFish", "m_angle")]
-	public ref float Angle => ref Schema.GetRef<float>(this.Handle, "CFish", "m_angle");
+	public float Angle
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFish", "m_angle"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFish", "m_angle", value); }
+	}
 
 	// m_angleChange
 	[SchemaMember("CFish", "m_angleChange")]
-	public ref float AngleChange => ref Schema.GetRef<float>(this.Handle, "CFish", "m_angleChange");
+	public float AngleChange
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFish", "m_angleChange"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFish", "m_angleChange", value); }
+	}
 
 	// m_forward
 	[SchemaMember("CFish", "m_forward")]
-	public Vector Forward => Schema.GetDeclaredClass<Vector>(this.Handle, "CFish", "m_forward");
+	public Vector3 Forward
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CFish", "m_forward"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CFish", "m_forward", value); }
+	}
 
 	// m_perp
 	[SchemaMember("CFish", "m_perp")]
-	public Vector Perp => Schema.GetDeclaredClass<Vector>(this.Handle, "CFish", "m_perp");
+	public Vector3 Perp
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CFish", "m_perp"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CFish", "m_perp", value); }
+	}
 
 	// m_poolOrigin
 	[SchemaMember("CFish", "m_poolOrigin")]
-	public Vector PoolOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CFish", "m_poolOrigin");
+	public Vector3 PoolOrigin
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CFish", "m_poolOrigin"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CFish", "m_poolOrigin", value); }
+	}
 
 	// m_waterLevel
 	[SchemaMember("CFish", "m_waterLevel")]
-	public ref float FishWaterLevel => ref Schema.GetRef<float>(this.Handle, "CFish", "m_waterLevel");
+	public float FishWaterLevel
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFish", "m_waterLevel"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFish", "m_waterLevel", value); }
+	}
 
 	// m_speed
 	[SchemaMember("CFish", "m_speed")]
-	public new ref float Speed => ref Schema.GetRef<float>(this.Handle, "CFish", "m_speed");
+	public new float Speed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFish", "m_speed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFish", "m_speed", value); }
+	}
 
 	// m_desiredSpeed
 	[SchemaMember("CFish", "m_desiredSpeed")]
-	public ref float DesiredSpeed => ref Schema.GetRef<float>(this.Handle, "CFish", "m_desiredSpeed");
+	public float DesiredSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFish", "m_desiredSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFish", "m_desiredSpeed", value); }
+	}
 
 	// m_calmSpeed
 	[SchemaMember("CFish", "m_calmSpeed")]
-	public ref float CalmSpeed => ref Schema.GetRef<float>(this.Handle, "CFish", "m_calmSpeed");
+	public float CalmSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFish", "m_calmSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFish", "m_calmSpeed", value); }
+	}
 
 	// m_panicSpeed
 	[SchemaMember("CFish", "m_panicSpeed")]
-	public ref float PanicSpeed => ref Schema.GetRef<float>(this.Handle, "CFish", "m_panicSpeed");
+	public float PanicSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFish", "m_panicSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFish", "m_panicSpeed", value); }
+	}
 
 	// m_avoidRange
 	[SchemaMember("CFish", "m_avoidRange")]
-	public ref float AvoidRange => ref Schema.GetRef<float>(this.Handle, "CFish", "m_avoidRange");
+	public float AvoidRange
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFish", "m_avoidRange"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFish", "m_avoidRange", value); }
+	}
 
 	// m_turnTimer
 	[SchemaMember("CFish", "m_turnTimer")]
@@ -88,7 +149,11 @@ public partial class CFish : CBaseAnimGraph
 
 	// m_turnClockwise
 	[SchemaMember("CFish", "m_turnClockwise")]
-	public ref bool TurnClockwise => ref Schema.GetRef<bool>(this.Handle, "CFish", "m_turnClockwise");
+	public bool TurnClockwise
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFish", "m_turnClockwise"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFish", "m_turnClockwise", value); }
+	}
 
 	// m_goTimer
 	[SchemaMember("CFish", "m_goTimer")]

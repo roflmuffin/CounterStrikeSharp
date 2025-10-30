@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,6 +25,10 @@ public partial class CDecalGroupVData : NativeObject
 
 	// m_flTotalProbability
 	[SchemaMember("CDecalGroupVData", "m_flTotalProbability")]
-	public ref float TotalProbability => ref Schema.GetRef<float>(this.Handle, "CDecalGroupVData", "m_flTotalProbability");
+	public float TotalProbability
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CDecalGroupVData", "m_flTotalProbability"); }
+		set { Schema.SetValueType<float>(this.Handle, "CDecalGroupVData", "m_flTotalProbability", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -36,19 +37,35 @@ public partial class CMomentaryRotButton : CRotButton
 
 	// m_lastUsed
 	[SchemaMember("CMomentaryRotButton", "m_lastUsed")]
-	public ref Int32 LastUsed => ref Schema.GetRef<Int32>(this.Handle, "CMomentaryRotButton", "m_lastUsed");
+	public Int32 LastUsed
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CMomentaryRotButton", "m_lastUsed"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CMomentaryRotButton", "m_lastUsed", value); }
+	}
 
 	// m_start
 	[SchemaMember("CMomentaryRotButton", "m_start")]
-	public QAngle Start => Schema.GetDeclaredClass<QAngle>(this.Handle, "CMomentaryRotButton", "m_start");
+	public QAngle Start
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CMomentaryRotButton", "m_start"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CMomentaryRotButton", "m_start", value); }
+	}
 
 	// m_end
 	[SchemaMember("CMomentaryRotButton", "m_end")]
-	public QAngle End => Schema.GetDeclaredClass<QAngle>(this.Handle, "CMomentaryRotButton", "m_end");
+	public QAngle End
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CMomentaryRotButton", "m_end"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CMomentaryRotButton", "m_end", value); }
+	}
 
 	// m_IdealYaw
 	[SchemaMember("CMomentaryRotButton", "m_IdealYaw")]
-	public ref float IdealYaw => ref Schema.GetRef<float>(this.Handle, "CMomentaryRotButton", "m_IdealYaw");
+	public float IdealYaw
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CMomentaryRotButton", "m_IdealYaw"); }
+		set { Schema.SetValueType<float>(this.Handle, "CMomentaryRotButton", "m_IdealYaw", value); }
+	}
 
 	// m_sNoise
 	[SchemaMember("CMomentaryRotButton", "m_sNoise")]
@@ -60,18 +77,34 @@ public partial class CMomentaryRotButton : CRotButton
 
 	// m_bUpdateTarget
 	[SchemaMember("CMomentaryRotButton", "m_bUpdateTarget")]
-	public ref bool UpdateTarget => ref Schema.GetRef<bool>(this.Handle, "CMomentaryRotButton", "m_bUpdateTarget");
+	public bool UpdateTarget
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CMomentaryRotButton", "m_bUpdateTarget"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CMomentaryRotButton", "m_bUpdateTarget", value); }
+	}
 
 	// m_direction
 	[SchemaMember("CMomentaryRotButton", "m_direction")]
-	public ref Int32 Direction => ref Schema.GetRef<Int32>(this.Handle, "CMomentaryRotButton", "m_direction");
+	public Int32 Direction
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CMomentaryRotButton", "m_direction"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CMomentaryRotButton", "m_direction", value); }
+	}
 
 	// m_returnSpeed
 	[SchemaMember("CMomentaryRotButton", "m_returnSpeed")]
-	public ref float ReturnSpeed => ref Schema.GetRef<float>(this.Handle, "CMomentaryRotButton", "m_returnSpeed");
+	public float ReturnSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CMomentaryRotButton", "m_returnSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CMomentaryRotButton", "m_returnSpeed", value); }
+	}
 
 	// m_flStartPosition
 	[SchemaMember("CMomentaryRotButton", "m_flStartPosition")]
-	public ref float StartPosition => ref Schema.GetRef<float>(this.Handle, "CMomentaryRotButton", "m_flStartPosition");
+	public float StartPosition
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CMomentaryRotButton", "m_flStartPosition"); }
+		set { Schema.SetValueType<float>(this.Handle, "CMomentaryRotButton", "m_flStartPosition", value); }
+	}
 
 }

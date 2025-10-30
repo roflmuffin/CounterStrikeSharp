@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,66 +25,130 @@ public partial class CCollisionProperty : NativeObject
 
 	// m_vecMins
 	[SchemaMember("CCollisionProperty", "m_vecMins")]
-	public Vector Mins => Schema.GetDeclaredClass<Vector>(this.Handle, "CCollisionProperty", "m_vecMins");
+	public Vector3 Mins
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vecMins"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vecMins", value); }
+	}
 
 	// m_vecMaxs
 	[SchemaMember("CCollisionProperty", "m_vecMaxs")]
-	public Vector Maxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CCollisionProperty", "m_vecMaxs");
+	public Vector3 Maxs
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vecMaxs"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vecMaxs", value); }
+	}
 
 	// m_usSolidFlags
 	[SchemaMember("CCollisionProperty", "m_usSolidFlags")]
-	public ref byte SolidFlags => ref Schema.GetRef<byte>(this.Handle, "CCollisionProperty", "m_usSolidFlags");
+	public byte SolidFlags
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CCollisionProperty", "m_usSolidFlags"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CCollisionProperty", "m_usSolidFlags", value); }
+	}
 
 	// m_nSolidType
 	[SchemaMember("CCollisionProperty", "m_nSolidType")]
-	public ref SolidType_t SolidType => ref Schema.GetRef<SolidType_t>(this.Handle, "CCollisionProperty", "m_nSolidType");
+	public SolidType_t SolidType
+	{
+		get { return Schema.GetValueType<SolidType_t>(this.Handle, "CCollisionProperty", "m_nSolidType"); }
+		set { Schema.SetValueType<SolidType_t>(this.Handle, "CCollisionProperty", "m_nSolidType", value); }
+	}
 
 	// m_triggerBloat
 	[SchemaMember("CCollisionProperty", "m_triggerBloat")]
-	public ref byte TriggerBloat => ref Schema.GetRef<byte>(this.Handle, "CCollisionProperty", "m_triggerBloat");
+	public byte TriggerBloat
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CCollisionProperty", "m_triggerBloat"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CCollisionProperty", "m_triggerBloat", value); }
+	}
 
 	// m_nSurroundType
 	[SchemaMember("CCollisionProperty", "m_nSurroundType")]
-	public ref SurroundingBoundsType_t SurroundType => ref Schema.GetRef<SurroundingBoundsType_t>(this.Handle, "CCollisionProperty", "m_nSurroundType");
+	public SurroundingBoundsType_t SurroundType
+	{
+		get { return Schema.GetValueType<SurroundingBoundsType_t>(this.Handle, "CCollisionProperty", "m_nSurroundType"); }
+		set { Schema.SetValueType<SurroundingBoundsType_t>(this.Handle, "CCollisionProperty", "m_nSurroundType", value); }
+	}
 
 	// m_CollisionGroup
 	[SchemaMember("CCollisionProperty", "m_CollisionGroup")]
-	public ref byte CollisionGroup => ref Schema.GetRef<byte>(this.Handle, "CCollisionProperty", "m_CollisionGroup");
+	public byte CollisionGroup
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CCollisionProperty", "m_CollisionGroup"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CCollisionProperty", "m_CollisionGroup", value); }
+	}
 
 	// m_nEnablePhysics
 	[SchemaMember("CCollisionProperty", "m_nEnablePhysics")]
-	public ref byte EnablePhysics => ref Schema.GetRef<byte>(this.Handle, "CCollisionProperty", "m_nEnablePhysics");
+	public byte EnablePhysics
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CCollisionProperty", "m_nEnablePhysics"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CCollisionProperty", "m_nEnablePhysics", value); }
+	}
 
 	// m_flBoundingRadius
 	[SchemaMember("CCollisionProperty", "m_flBoundingRadius")]
-	public ref float BoundingRadius => ref Schema.GetRef<float>(this.Handle, "CCollisionProperty", "m_flBoundingRadius");
+	public float BoundingRadius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCollisionProperty", "m_flBoundingRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCollisionProperty", "m_flBoundingRadius", value); }
+	}
 
 	// m_vecSpecifiedSurroundingMins
 	[SchemaMember("CCollisionProperty", "m_vecSpecifiedSurroundingMins")]
-	public Vector SpecifiedSurroundingMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CCollisionProperty", "m_vecSpecifiedSurroundingMins");
+	public Vector3 SpecifiedSurroundingMins
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vecSpecifiedSurroundingMins"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vecSpecifiedSurroundingMins", value); }
+	}
 
 	// m_vecSpecifiedSurroundingMaxs
 	[SchemaMember("CCollisionProperty", "m_vecSpecifiedSurroundingMaxs")]
-	public Vector SpecifiedSurroundingMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CCollisionProperty", "m_vecSpecifiedSurroundingMaxs");
+	public Vector3 SpecifiedSurroundingMaxs
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vecSpecifiedSurroundingMaxs"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vecSpecifiedSurroundingMaxs", value); }
+	}
 
 	// m_vecSurroundingMaxs
 	[SchemaMember("CCollisionProperty", "m_vecSurroundingMaxs")]
-	public Vector SurroundingMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CCollisionProperty", "m_vecSurroundingMaxs");
+	public Vector3 SurroundingMaxs
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vecSurroundingMaxs"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vecSurroundingMaxs", value); }
+	}
 
 	// m_vecSurroundingMins
 	[SchemaMember("CCollisionProperty", "m_vecSurroundingMins")]
-	public Vector SurroundingMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CCollisionProperty", "m_vecSurroundingMins");
+	public Vector3 SurroundingMins
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vecSurroundingMins"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vecSurroundingMins", value); }
+	}
 
 	// m_vCapsuleCenter1
 	[SchemaMember("CCollisionProperty", "m_vCapsuleCenter1")]
-	public Vector CapsuleCenter1 => Schema.GetDeclaredClass<Vector>(this.Handle, "CCollisionProperty", "m_vCapsuleCenter1");
+	public Vector3 CapsuleCenter1
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vCapsuleCenter1"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vCapsuleCenter1", value); }
+	}
 
 	// m_vCapsuleCenter2
 	[SchemaMember("CCollisionProperty", "m_vCapsuleCenter2")]
-	public Vector CapsuleCenter2 => Schema.GetDeclaredClass<Vector>(this.Handle, "CCollisionProperty", "m_vCapsuleCenter2");
+	public Vector3 CapsuleCenter2
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vCapsuleCenter2"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCollisionProperty", "m_vCapsuleCenter2", value); }
+	}
 
 	// m_flCapsuleRadius
 	[SchemaMember("CCollisionProperty", "m_flCapsuleRadius")]
-	public ref float CapsuleRadius => ref Schema.GetRef<float>(this.Handle, "CCollisionProperty", "m_flCapsuleRadius");
+	public float CapsuleRadius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCollisionProperty", "m_flCapsuleRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCollisionProperty", "m_flCapsuleRadius", value); }
+	}
 
 }

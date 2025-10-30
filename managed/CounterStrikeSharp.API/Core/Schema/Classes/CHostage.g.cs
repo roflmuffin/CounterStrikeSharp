@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -40,35 +41,67 @@ public partial class CHostage : CHostageExpresserShim
 
 	// m_nSpotRules
 	[SchemaMember("CHostage", "m_nSpotRules")]
-	public ref Int32 SpotRules => ref Schema.GetRef<Int32>(this.Handle, "CHostage", "m_nSpotRules");
+	public Int32 SpotRules
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CHostage", "m_nSpotRules"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CHostage", "m_nSpotRules", value); }
+	}
 
 	// m_uiHostageSpawnExclusionGroupMask
 	[SchemaMember("CHostage", "m_uiHostageSpawnExclusionGroupMask")]
-	public ref UInt32 UiHostageSpawnExclusionGroupMask => ref Schema.GetRef<UInt32>(this.Handle, "CHostage", "m_uiHostageSpawnExclusionGroupMask");
+	public UInt32 UiHostageSpawnExclusionGroupMask
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CHostage", "m_uiHostageSpawnExclusionGroupMask"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CHostage", "m_uiHostageSpawnExclusionGroupMask", value); }
+	}
 
 	// m_nHostageSpawnRandomFactor
 	[SchemaMember("CHostage", "m_nHostageSpawnRandomFactor")]
-	public ref UInt32 HostageSpawnRandomFactor => ref Schema.GetRef<UInt32>(this.Handle, "CHostage", "m_nHostageSpawnRandomFactor");
+	public UInt32 HostageSpawnRandomFactor
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CHostage", "m_nHostageSpawnRandomFactor"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CHostage", "m_nHostageSpawnRandomFactor", value); }
+	}
 
 	// m_bRemove
 	[SchemaMember("CHostage", "m_bRemove")]
-	public ref bool Remove => ref Schema.GetRef<bool>(this.Handle, "CHostage", "m_bRemove");
+	public bool Remove
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CHostage", "m_bRemove"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CHostage", "m_bRemove", value); }
+	}
 
 	// m_vel
 	[SchemaMember("CHostage", "m_vel")]
-	public Vector Vel => Schema.GetDeclaredClass<Vector>(this.Handle, "CHostage", "m_vel");
+	public Vector3 Vel
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CHostage", "m_vel"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CHostage", "m_vel", value); }
+	}
 
 	// m_isRescued
 	[SchemaMember("CHostage", "m_isRescued")]
-	public ref bool IsRescued => ref Schema.GetRef<bool>(this.Handle, "CHostage", "m_isRescued");
+	public bool IsRescued
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CHostage", "m_isRescued"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CHostage", "m_isRescued", value); }
+	}
 
 	// m_jumpedThisFrame
 	[SchemaMember("CHostage", "m_jumpedThisFrame")]
-	public ref bool JumpedThisFrame => ref Schema.GetRef<bool>(this.Handle, "CHostage", "m_jumpedThisFrame");
+	public bool JumpedThisFrame
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CHostage", "m_jumpedThisFrame"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CHostage", "m_jumpedThisFrame", value); }
+	}
 
 	// m_nHostageState
 	[SchemaMember("CHostage", "m_nHostageState")]
-	public ref Int32 HostageState => ref Schema.GetRef<Int32>(this.Handle, "CHostage", "m_nHostageState");
+	public Int32 HostageState
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CHostage", "m_nHostageState"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CHostage", "m_nHostageState", value); }
+	}
 
 	// m_leader
 	[SchemaMember("CHostage", "m_leader")]
@@ -84,19 +117,35 @@ public partial class CHostage : CHostageExpresserShim
 
 	// m_hasBeenUsed
 	[SchemaMember("CHostage", "m_hasBeenUsed")]
-	public ref bool HasBeenUsed => ref Schema.GetRef<bool>(this.Handle, "CHostage", "m_hasBeenUsed");
+	public bool HasBeenUsed
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CHostage", "m_hasBeenUsed"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CHostage", "m_hasBeenUsed", value); }
+	}
 
 	// m_accel
 	[SchemaMember("CHostage", "m_accel")]
-	public Vector Accel => Schema.GetDeclaredClass<Vector>(this.Handle, "CHostage", "m_accel");
+	public Vector3 Accel
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CHostage", "m_accel"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CHostage", "m_accel", value); }
+	}
 
 	// m_isRunning
 	[SchemaMember("CHostage", "m_isRunning")]
-	public ref bool IsRunning => ref Schema.GetRef<bool>(this.Handle, "CHostage", "m_isRunning");
+	public bool IsRunning
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CHostage", "m_isRunning"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CHostage", "m_isRunning", value); }
+	}
 
 	// m_isCrouching
 	[SchemaMember("CHostage", "m_isCrouching")]
-	public ref bool IsCrouching => ref Schema.GetRef<bool>(this.Handle, "CHostage", "m_isCrouching");
+	public bool IsCrouching
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CHostage", "m_isCrouching"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CHostage", "m_isCrouching", value); }
+	}
 
 	// m_jumpTimer
 	[SchemaMember("CHostage", "m_jumpTimer")]
@@ -104,7 +153,11 @@ public partial class CHostage : CHostageExpresserShim
 
 	// m_isWaitingForLeader
 	[SchemaMember("CHostage", "m_isWaitingForLeader")]
-	public ref bool IsWaitingForLeader => ref Schema.GetRef<bool>(this.Handle, "CHostage", "m_isWaitingForLeader");
+	public bool IsWaitingForLeader
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CHostage", "m_isWaitingForLeader"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CHostage", "m_isWaitingForLeader", value); }
+	}
 
 	// m_repathTimer
 	[SchemaMember("CHostage", "m_repathTimer")]
@@ -124,11 +177,19 @@ public partial class CHostage : CHostageExpresserShim
 
 	// m_isAdjusted
 	[SchemaMember("CHostage", "m_isAdjusted")]
-	public ref bool IsAdjusted => ref Schema.GetRef<bool>(this.Handle, "CHostage", "m_isAdjusted");
+	public bool IsAdjusted
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CHostage", "m_isAdjusted"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CHostage", "m_isAdjusted", value); }
+	}
 
 	// m_bHandsHaveBeenCut
 	[SchemaMember("CHostage", "m_bHandsHaveBeenCut")]
-	public ref bool HandsHaveBeenCut => ref Schema.GetRef<bool>(this.Handle, "CHostage", "m_bHandsHaveBeenCut");
+	public bool HandsHaveBeenCut
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CHostage", "m_bHandsHaveBeenCut"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CHostage", "m_bHandsHaveBeenCut", value); }
+	}
 
 	// m_hHostageGrabber
 	[SchemaMember("CHostage", "m_hHostageGrabber")]
@@ -136,42 +197,82 @@ public partial class CHostage : CHostageExpresserShim
 
 	// m_fLastGrabTime
 	[SchemaMember("CHostage", "m_fLastGrabTime")]
-	public ref float LastGrabTime => ref Schema.GetRef<float>(this.Handle, "CHostage", "m_fLastGrabTime");
+	public float LastGrabTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CHostage", "m_fLastGrabTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CHostage", "m_fLastGrabTime", value); }
+	}
 
 	// m_vecPositionWhenStartedDroppingToGround
 	[SchemaMember("CHostage", "m_vecPositionWhenStartedDroppingToGround")]
-	public Vector PositionWhenStartedDroppingToGround => Schema.GetDeclaredClass<Vector>(this.Handle, "CHostage", "m_vecPositionWhenStartedDroppingToGround");
+	public Vector3 PositionWhenStartedDroppingToGround
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CHostage", "m_vecPositionWhenStartedDroppingToGround"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CHostage", "m_vecPositionWhenStartedDroppingToGround", value); }
+	}
 
 	// m_vecGrabbedPos
 	[SchemaMember("CHostage", "m_vecGrabbedPos")]
-	public Vector GrabbedPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CHostage", "m_vecGrabbedPos");
+	public Vector3 GrabbedPos
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CHostage", "m_vecGrabbedPos"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CHostage", "m_vecGrabbedPos", value); }
+	}
 
 	// m_flRescueStartTime
 	[SchemaMember("CHostage", "m_flRescueStartTime")]
-	public ref float RescueStartTime => ref Schema.GetRef<float>(this.Handle, "CHostage", "m_flRescueStartTime");
+	public float RescueStartTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CHostage", "m_flRescueStartTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CHostage", "m_flRescueStartTime", value); }
+	}
 
 	// m_flGrabSuccessTime
 	[SchemaMember("CHostage", "m_flGrabSuccessTime")]
-	public ref float GrabSuccessTime => ref Schema.GetRef<float>(this.Handle, "CHostage", "m_flGrabSuccessTime");
+	public float GrabSuccessTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CHostage", "m_flGrabSuccessTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CHostage", "m_flGrabSuccessTime", value); }
+	}
 
 	// m_flDropStartTime
 	[SchemaMember("CHostage", "m_flDropStartTime")]
-	public ref float DropStartTime => ref Schema.GetRef<float>(this.Handle, "CHostage", "m_flDropStartTime");
+	public float DropStartTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CHostage", "m_flDropStartTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CHostage", "m_flDropStartTime", value); }
+	}
 
 	// m_nApproachRewardPayouts
 	[SchemaMember("CHostage", "m_nApproachRewardPayouts")]
-	public ref Int32 ApproachRewardPayouts => ref Schema.GetRef<Int32>(this.Handle, "CHostage", "m_nApproachRewardPayouts");
+	public Int32 ApproachRewardPayouts
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CHostage", "m_nApproachRewardPayouts"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CHostage", "m_nApproachRewardPayouts", value); }
+	}
 
 	// m_nPickupEventCount
 	[SchemaMember("CHostage", "m_nPickupEventCount")]
-	public ref Int32 PickupEventCount => ref Schema.GetRef<Int32>(this.Handle, "CHostage", "m_nPickupEventCount");
+	public Int32 PickupEventCount
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CHostage", "m_nPickupEventCount"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CHostage", "m_nPickupEventCount", value); }
+	}
 
 	// m_vecSpawnGroundPos
 	[SchemaMember("CHostage", "m_vecSpawnGroundPos")]
-	public Vector SpawnGroundPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CHostage", "m_vecSpawnGroundPos");
+	public Vector3 SpawnGroundPos
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CHostage", "m_vecSpawnGroundPos"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CHostage", "m_vecSpawnGroundPos", value); }
+	}
 
 	// m_vecHostageResetPosition
 	[SchemaMember("CHostage", "m_vecHostageResetPosition")]
-	public Vector HostageResetPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CHostage", "m_vecHostageResetPosition");
+	public Vector3 HostageResetPosition
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CHostage", "m_vecHostageResetPosition"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CHostage", "m_vecHostageResetPosition", value); }
+	}
 
 }

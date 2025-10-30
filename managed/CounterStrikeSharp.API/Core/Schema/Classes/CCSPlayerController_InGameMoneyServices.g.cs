@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,26 +21,50 @@ public partial class CCSPlayerController_InGameMoneyServices : CPlayerController
 
 	// m_bReceivesMoneyNextRound
 	[SchemaMember("CCSPlayerController_InGameMoneyServices", "m_bReceivesMoneyNextRound")]
-	public ref bool ReceivesMoneyNextRound => ref Schema.GetRef<bool>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_bReceivesMoneyNextRound");
+	public bool ReceivesMoneyNextRound
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_bReceivesMoneyNextRound"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_bReceivesMoneyNextRound", value); }
+	}
 
 	// m_iMoneyEarnedForNextRound
 	[SchemaMember("CCSPlayerController_InGameMoneyServices", "m_iMoneyEarnedForNextRound")]
-	public ref Int32 MoneyEarnedForNextRound => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iMoneyEarnedForNextRound");
+	public Int32 MoneyEarnedForNextRound
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iMoneyEarnedForNextRound"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iMoneyEarnedForNextRound", value); }
+	}
 
 	// m_iAccount
 	[SchemaMember("CCSPlayerController_InGameMoneyServices", "m_iAccount")]
-	public ref Int32 Account => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iAccount");
+	public Int32 Account
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iAccount"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iAccount", value); }
+	}
 
 	// m_iStartAccount
 	[SchemaMember("CCSPlayerController_InGameMoneyServices", "m_iStartAccount")]
-	public ref Int32 StartAccount => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iStartAccount");
+	public Int32 StartAccount
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iStartAccount"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iStartAccount", value); }
+	}
 
 	// m_iTotalCashSpent
 	[SchemaMember("CCSPlayerController_InGameMoneyServices", "m_iTotalCashSpent")]
-	public ref Int32 TotalCashSpent => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iTotalCashSpent");
+	public Int32 TotalCashSpent
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iTotalCashSpent"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iTotalCashSpent", value); }
+	}
 
 	// m_iCashSpentThisRound
 	[SchemaMember("CCSPlayerController_InGameMoneyServices", "m_iCashSpentThisRound")]
-	public ref Int32 CashSpentThisRound => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iCashSpentThisRound");
+	public Int32 CashSpentThisRound
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iCashSpentThisRound"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iCashSpentThisRound", value); }
+	}
 
 }

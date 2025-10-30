@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,11 +21,19 @@ public partial class CCSGameModeRules_Deathmatch : CCSGameModeRules
 
 	// m_flDMBonusStartTime
 	[SchemaMember("CCSGameModeRules_Deathmatch", "m_flDMBonusStartTime")]
-	public ref float DMBonusStartTime => ref Schema.GetRef<float>(this.Handle, "CCSGameModeRules_Deathmatch", "m_flDMBonusStartTime");
+	public float DMBonusStartTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameModeRules_Deathmatch", "m_flDMBonusStartTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameModeRules_Deathmatch", "m_flDMBonusStartTime", value); }
+	}
 
 	// m_flDMBonusTimeLength
 	[SchemaMember("CCSGameModeRules_Deathmatch", "m_flDMBonusTimeLength")]
-	public ref float DMBonusTimeLength => ref Schema.GetRef<float>(this.Handle, "CCSGameModeRules_Deathmatch", "m_flDMBonusTimeLength");
+	public float DMBonusTimeLength
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSGameModeRules_Deathmatch", "m_flDMBonusTimeLength"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSGameModeRules_Deathmatch", "m_flDMBonusTimeLength", value); }
+	}
 
 	// m_sDMBonusWeapon
 	[SchemaMember("CCSGameModeRules_Deathmatch", "m_sDMBonusWeapon")]

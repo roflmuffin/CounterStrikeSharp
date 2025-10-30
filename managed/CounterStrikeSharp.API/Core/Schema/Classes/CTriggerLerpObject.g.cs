@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -40,15 +41,27 @@ public partial class CTriggerLerpObject : CBaseTrigger
 
 	// m_flLerpDuration
 	[SchemaMember("CTriggerLerpObject", "m_flLerpDuration")]
-	public ref float LerpDuration => ref Schema.GetRef<float>(this.Handle, "CTriggerLerpObject", "m_flLerpDuration");
+	public float LerpDuration
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerLerpObject", "m_flLerpDuration"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerLerpObject", "m_flLerpDuration", value); }
+	}
 
 	// m_bLerpRestoreMoveType
 	[SchemaMember("CTriggerLerpObject", "m_bLerpRestoreMoveType")]
-	public ref bool LerpRestoreMoveType => ref Schema.GetRef<bool>(this.Handle, "CTriggerLerpObject", "m_bLerpRestoreMoveType");
+	public bool LerpRestoreMoveType
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerLerpObject", "m_bLerpRestoreMoveType"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTriggerLerpObject", "m_bLerpRestoreMoveType", value); }
+	}
 
 	// m_bSingleLerpObject
 	[SchemaMember("CTriggerLerpObject", "m_bSingleLerpObject")]
-	public ref bool SingleLerpObject => ref Schema.GetRef<bool>(this.Handle, "CTriggerLerpObject", "m_bSingleLerpObject");
+	public bool SingleLerpObject
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerLerpObject", "m_bSingleLerpObject"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTriggerLerpObject", "m_bSingleLerpObject", value); }
+	}
 
 	// m_vecLerpingObjects
 	[SchemaMember("CTriggerLerpObject", "m_vecLerpingObjects")]
@@ -72,7 +85,11 @@ public partial class CTriggerLerpObject : CBaseTrigger
 
 	// m_bAttachTouchingObject
 	[SchemaMember("CTriggerLerpObject", "m_bAttachTouchingObject")]
-	public ref bool AttachTouchingObject => ref Schema.GetRef<bool>(this.Handle, "CTriggerLerpObject", "m_bAttachTouchingObject");
+	public bool AttachTouchingObject
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerLerpObject", "m_bAttachTouchingObject"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTriggerLerpObject", "m_bAttachTouchingObject", value); }
+	}
 
 	// m_hEntityToWaitForDisconnect
 	[SchemaMember("CTriggerLerpObject", "m_hEntityToWaitForDisconnect")]

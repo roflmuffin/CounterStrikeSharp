@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -36,6 +37,10 @@ public partial class locksound_t : NativeObject
 
 	// flwaitSound
 	[SchemaMember("locksound_t", "flwaitSound")]
-	public ref float FlwaitSound => ref Schema.GetRef<float>(this.Handle, "locksound_t", "flwaitSound");
+	public float FlwaitSound
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "locksound_t", "flwaitSound"); }
+		set { Schema.SetValueType<float>(this.Handle, "locksound_t", "flwaitSound", value); }
+	}
 
 }

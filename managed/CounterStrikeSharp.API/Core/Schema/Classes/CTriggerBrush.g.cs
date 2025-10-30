@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -32,10 +33,18 @@ public partial class CTriggerBrush : CBaseModelEntity
 
 	// m_iInputFilter
 	[SchemaMember("CTriggerBrush", "m_iInputFilter")]
-	public ref Int32 InputFilter => ref Schema.GetRef<Int32>(this.Handle, "CTriggerBrush", "m_iInputFilter");
+	public Int32 InputFilter
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CTriggerBrush", "m_iInputFilter"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CTriggerBrush", "m_iInputFilter", value); }
+	}
 
 	// m_iDontMessageParent
 	[SchemaMember("CTriggerBrush", "m_iDontMessageParent")]
-	public ref Int32 DontMessageParent => ref Schema.GetRef<Int32>(this.Handle, "CTriggerBrush", "m_iDontMessageParent");
+	public Int32 DontMessageParent
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CTriggerBrush", "m_iDontMessageParent"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CTriggerBrush", "m_iDontMessageParent", value); }
+	}
 
 }

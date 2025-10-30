@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class IntervalTimer : NativeObject
 
 	// m_timestamp
 	[SchemaMember("IntervalTimer", "m_timestamp")]
-	public ref float Timestamp => ref Schema.GetRef<float>(this.Handle, "IntervalTimer", "m_timestamp");
+	public float Timestamp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "IntervalTimer", "m_timestamp"); }
+		set { Schema.SetValueType<float>(this.Handle, "IntervalTimer", "m_timestamp", value); }
+	}
 
 	// m_nWorldGroupId
 	[SchemaMember("IntervalTimer", "m_nWorldGroupId")]

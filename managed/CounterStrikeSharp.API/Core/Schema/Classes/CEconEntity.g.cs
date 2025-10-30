@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,27 +25,51 @@ public partial class CEconEntity : CBaseFlex
 
 	// m_OriginalOwnerXuidLow
 	[SchemaMember("CEconEntity", "m_OriginalOwnerXuidLow")]
-	public ref UInt32 OriginalOwnerXuidLow => ref Schema.GetRef<UInt32>(this.Handle, "CEconEntity", "m_OriginalOwnerXuidLow");
+	public UInt32 OriginalOwnerXuidLow
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CEconEntity", "m_OriginalOwnerXuidLow"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CEconEntity", "m_OriginalOwnerXuidLow", value); }
+	}
 
 	// m_OriginalOwnerXuidHigh
 	[SchemaMember("CEconEntity", "m_OriginalOwnerXuidHigh")]
-	public ref UInt32 OriginalOwnerXuidHigh => ref Schema.GetRef<UInt32>(this.Handle, "CEconEntity", "m_OriginalOwnerXuidHigh");
+	public UInt32 OriginalOwnerXuidHigh
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CEconEntity", "m_OriginalOwnerXuidHigh"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CEconEntity", "m_OriginalOwnerXuidHigh", value); }
+	}
 
 	// m_nFallbackPaintKit
 	[SchemaMember("CEconEntity", "m_nFallbackPaintKit")]
-	public ref Int32 FallbackPaintKit => ref Schema.GetRef<Int32>(this.Handle, "CEconEntity", "m_nFallbackPaintKit");
+	public Int32 FallbackPaintKit
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEconEntity", "m_nFallbackPaintKit"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEconEntity", "m_nFallbackPaintKit", value); }
+	}
 
 	// m_nFallbackSeed
 	[SchemaMember("CEconEntity", "m_nFallbackSeed")]
-	public ref Int32 FallbackSeed => ref Schema.GetRef<Int32>(this.Handle, "CEconEntity", "m_nFallbackSeed");
+	public Int32 FallbackSeed
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEconEntity", "m_nFallbackSeed"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEconEntity", "m_nFallbackSeed", value); }
+	}
 
 	// m_flFallbackWear
 	[SchemaMember("CEconEntity", "m_flFallbackWear")]
-	public ref float FallbackWear => ref Schema.GetRef<float>(this.Handle, "CEconEntity", "m_flFallbackWear");
+	public float FallbackWear
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEconEntity", "m_flFallbackWear"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEconEntity", "m_flFallbackWear", value); }
+	}
 
 	// m_nFallbackStatTrak
 	[SchemaMember("CEconEntity", "m_nFallbackStatTrak")]
-	public ref Int32 FallbackStatTrak => ref Schema.GetRef<Int32>(this.Handle, "CEconEntity", "m_nFallbackStatTrak");
+	public Int32 FallbackStatTrak
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEconEntity", "m_nFallbackStatTrak"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEconEntity", "m_nFallbackStatTrak", value); }
+	}
 
 	// m_hOldProvidee
 	[SchemaMember("CEconEntity", "m_hOldProvidee")]
@@ -52,6 +77,10 @@ public partial class CEconEntity : CBaseFlex
 
 	// m_iOldOwnerClass
 	[SchemaMember("CEconEntity", "m_iOldOwnerClass")]
-	public ref Int32 OldOwnerClass => ref Schema.GetRef<Int32>(this.Handle, "CEconEntity", "m_iOldOwnerClass");
+	public Int32 OldOwnerClass
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEconEntity", "m_iOldOwnerClass"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEconEntity", "m_iOldOwnerClass", value); }
+	}
 
 }

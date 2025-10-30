@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,42 +25,82 @@ public partial class CEnvWindController : CBaseEntity
 
 	// m_fDirectionVariation
 	[SchemaMember("CEnvWindController", "m_fDirectionVariation")]
-	public ref float DirectionVariation => ref Schema.GetRef<float>(this.Handle, "CEnvWindController", "m_fDirectionVariation");
+	public float DirectionVariation
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvWindController", "m_fDirectionVariation"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvWindController", "m_fDirectionVariation", value); }
+	}
 
 	// m_fSpeedVariation
 	[SchemaMember("CEnvWindController", "m_fSpeedVariation")]
-	public ref float SpeedVariation => ref Schema.GetRef<float>(this.Handle, "CEnvWindController", "m_fSpeedVariation");
+	public float SpeedVariation
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvWindController", "m_fSpeedVariation"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvWindController", "m_fSpeedVariation", value); }
+	}
 
 	// m_fTurbulence
 	[SchemaMember("CEnvWindController", "m_fTurbulence")]
-	public ref float Turbulence => ref Schema.GetRef<float>(this.Handle, "CEnvWindController", "m_fTurbulence");
+	public float Turbulence
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvWindController", "m_fTurbulence"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvWindController", "m_fTurbulence", value); }
+	}
 
 	// m_fVolumeHalfExtentXY
 	[SchemaMember("CEnvWindController", "m_fVolumeHalfExtentXY")]
-	public ref float VolumeHalfExtentXY => ref Schema.GetRef<float>(this.Handle, "CEnvWindController", "m_fVolumeHalfExtentXY");
+	public float VolumeHalfExtentXY
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvWindController", "m_fVolumeHalfExtentXY"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvWindController", "m_fVolumeHalfExtentXY", value); }
+	}
 
 	// m_fVolumeHalfExtentZ
 	[SchemaMember("CEnvWindController", "m_fVolumeHalfExtentZ")]
-	public ref float VolumeHalfExtentZ => ref Schema.GetRef<float>(this.Handle, "CEnvWindController", "m_fVolumeHalfExtentZ");
+	public float VolumeHalfExtentZ
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvWindController", "m_fVolumeHalfExtentZ"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvWindController", "m_fVolumeHalfExtentZ", value); }
+	}
 
 	// m_nVolumeResolutionXY
 	[SchemaMember("CEnvWindController", "m_nVolumeResolutionXY")]
-	public ref Int32 VolumeResolutionXY => ref Schema.GetRef<Int32>(this.Handle, "CEnvWindController", "m_nVolumeResolutionXY");
+	public Int32 VolumeResolutionXY
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvWindController", "m_nVolumeResolutionXY"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvWindController", "m_nVolumeResolutionXY", value); }
+	}
 
 	// m_nVolumeResolutionZ
 	[SchemaMember("CEnvWindController", "m_nVolumeResolutionZ")]
-	public ref Int32 VolumeResolutionZ => ref Schema.GetRef<Int32>(this.Handle, "CEnvWindController", "m_nVolumeResolutionZ");
+	public Int32 VolumeResolutionZ
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvWindController", "m_nVolumeResolutionZ"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvWindController", "m_nVolumeResolutionZ", value); }
+	}
 
 	// m_nClipmapLevels
 	[SchemaMember("CEnvWindController", "m_nClipmapLevels")]
-	public ref Int32 ClipmapLevels => ref Schema.GetRef<Int32>(this.Handle, "CEnvWindController", "m_nClipmapLevels");
+	public Int32 ClipmapLevels
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvWindController", "m_nClipmapLevels"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvWindController", "m_nClipmapLevels", value); }
+	}
 
 	// m_bIsMaster
 	[SchemaMember("CEnvWindController", "m_bIsMaster")]
-	public ref bool IsMaster => ref Schema.GetRef<bool>(this.Handle, "CEnvWindController", "m_bIsMaster");
+	public bool IsMaster
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvWindController", "m_bIsMaster"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvWindController", "m_bIsMaster", value); }
+	}
 
 	// m_bFirstTime
 	[SchemaMember("CEnvWindController", "m_bFirstTime")]
-	public ref bool FirstTime => ref Schema.GetRef<bool>(this.Handle, "CEnvWindController", "m_bFirstTime");
+	public bool FirstTime
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvWindController", "m_bFirstTime"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvWindController", "m_bFirstTime", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,11 +21,19 @@ public partial class CPathCorner : CPointEntity
 
 	// m_flWait
 	[SchemaMember("CPathCorner", "m_flWait")]
-	public ref float Wait => ref Schema.GetRef<float>(this.Handle, "CPathCorner", "m_flWait");
+	public float Wait
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPathCorner", "m_flWait"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPathCorner", "m_flWait", value); }
+	}
 
 	// m_flRadius
 	[SchemaMember("CPathCorner", "m_flRadius")]
-	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CPathCorner", "m_flRadius");
+	public float Radius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPathCorner", "m_flRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPathCorner", "m_flRadius", value); }
+	}
 
 	// m_OnPass
 	[SchemaMember("CPathCorner", "m_OnPass")]

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,6 +21,10 @@ public partial class CRotDoor : CBaseDoor
 
 	// m_bSolidBsp
 	[SchemaMember("CRotDoor", "m_bSolidBsp")]
-	public ref bool SolidBsp => ref Schema.GetRef<bool>(this.Handle, "CRotDoor", "m_bSolidBsp");
+	public bool SolidBsp
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CRotDoor", "m_bSolidBsp"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CRotDoor", "m_bSolidBsp", value); }
+	}
 
 }

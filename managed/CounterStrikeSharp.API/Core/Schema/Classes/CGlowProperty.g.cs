@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,23 +21,43 @@ public partial class CGlowProperty : NativeObject
 
 	// m_fGlowColor
 	[SchemaMember("CGlowProperty", "m_fGlowColor")]
-	public Vector GlowColor => Schema.GetDeclaredClass<Vector>(this.Handle, "CGlowProperty", "m_fGlowColor");
+	public Vector3 GlowColor
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CGlowProperty", "m_fGlowColor"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CGlowProperty", "m_fGlowColor", value); }
+	}
 
 	// m_iGlowType
 	[SchemaMember("CGlowProperty", "m_iGlowType")]
-	public ref Int32 GlowType => ref Schema.GetRef<Int32>(this.Handle, "CGlowProperty", "m_iGlowType");
+	public Int32 GlowType
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CGlowProperty", "m_iGlowType"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CGlowProperty", "m_iGlowType", value); }
+	}
 
 	// m_iGlowTeam
 	[SchemaMember("CGlowProperty", "m_iGlowTeam")]
-	public ref Int32 GlowTeam => ref Schema.GetRef<Int32>(this.Handle, "CGlowProperty", "m_iGlowTeam");
+	public Int32 GlowTeam
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CGlowProperty", "m_iGlowTeam"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CGlowProperty", "m_iGlowTeam", value); }
+	}
 
 	// m_nGlowRange
 	[SchemaMember("CGlowProperty", "m_nGlowRange")]
-	public ref Int32 GlowRange => ref Schema.GetRef<Int32>(this.Handle, "CGlowProperty", "m_nGlowRange");
+	public Int32 GlowRange
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CGlowProperty", "m_nGlowRange"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CGlowProperty", "m_nGlowRange", value); }
+	}
 
 	// m_nGlowRangeMin
 	[SchemaMember("CGlowProperty", "m_nGlowRangeMin")]
-	public ref Int32 GlowRangeMin => ref Schema.GetRef<Int32>(this.Handle, "CGlowProperty", "m_nGlowRangeMin");
+	public Int32 GlowRangeMin
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CGlowProperty", "m_nGlowRangeMin"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CGlowProperty", "m_nGlowRangeMin", value); }
+	}
 
 	// m_glowColorOverride
 	[SchemaMember("CGlowProperty", "m_glowColorOverride")]
@@ -48,22 +69,42 @@ public partial class CGlowProperty : NativeObject
 
 	// m_bFlashing
 	[SchemaMember("CGlowProperty", "m_bFlashing")]
-	public ref bool Flashing => ref Schema.GetRef<bool>(this.Handle, "CGlowProperty", "m_bFlashing");
+	public bool Flashing
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CGlowProperty", "m_bFlashing"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CGlowProperty", "m_bFlashing", value); }
+	}
 
 	// m_flGlowTime
 	[SchemaMember("CGlowProperty", "m_flGlowTime")]
-	public ref float GlowTime => ref Schema.GetRef<float>(this.Handle, "CGlowProperty", "m_flGlowTime");
+	public float GlowTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGlowProperty", "m_flGlowTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGlowProperty", "m_flGlowTime", value); }
+	}
 
 	// m_flGlowStartTime
 	[SchemaMember("CGlowProperty", "m_flGlowStartTime")]
-	public ref float GlowStartTime => ref Schema.GetRef<float>(this.Handle, "CGlowProperty", "m_flGlowStartTime");
+	public float GlowStartTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGlowProperty", "m_flGlowStartTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGlowProperty", "m_flGlowStartTime", value); }
+	}
 
 	// m_bEligibleForScreenHighlight
 	[SchemaMember("CGlowProperty", "m_bEligibleForScreenHighlight")]
-	public ref bool EligibleForScreenHighlight => ref Schema.GetRef<bool>(this.Handle, "CGlowProperty", "m_bEligibleForScreenHighlight");
+	public bool EligibleForScreenHighlight
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CGlowProperty", "m_bEligibleForScreenHighlight"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CGlowProperty", "m_bEligibleForScreenHighlight", value); }
+	}
 
 	// m_bGlowing
 	[SchemaMember("CGlowProperty", "m_bGlowing")]
-	public ref bool Glowing => ref Schema.GetRef<bool>(this.Handle, "CGlowProperty", "m_bGlowing");
+	public bool Glowing
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CGlowProperty", "m_bGlowing"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CGlowProperty", "m_bGlowing", value); }
+	}
 
 }

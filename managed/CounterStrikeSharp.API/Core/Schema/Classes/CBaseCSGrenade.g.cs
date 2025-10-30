@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,51 +21,99 @@ public partial class CBaseCSGrenade : CCSWeaponBase
 
 	// m_bRedraw
 	[SchemaMember("CBaseCSGrenade", "m_bRedraw")]
-	public ref bool Redraw => ref Schema.GetRef<bool>(this.Handle, "CBaseCSGrenade", "m_bRedraw");
+	public bool Redraw
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseCSGrenade", "m_bRedraw"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseCSGrenade", "m_bRedraw", value); }
+	}
 
 	// m_bIsHeldByPlayer
 	[SchemaMember("CBaseCSGrenade", "m_bIsHeldByPlayer")]
-	public ref bool IsHeldByPlayer => ref Schema.GetRef<bool>(this.Handle, "CBaseCSGrenade", "m_bIsHeldByPlayer");
+	public bool IsHeldByPlayer
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseCSGrenade", "m_bIsHeldByPlayer"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseCSGrenade", "m_bIsHeldByPlayer", value); }
+	}
 
 	// m_bPinPulled
 	[SchemaMember("CBaseCSGrenade", "m_bPinPulled")]
-	public ref bool PinPulled => ref Schema.GetRef<bool>(this.Handle, "CBaseCSGrenade", "m_bPinPulled");
+	public bool PinPulled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseCSGrenade", "m_bPinPulled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseCSGrenade", "m_bPinPulled", value); }
+	}
 
 	// m_bJumpThrow
 	[SchemaMember("CBaseCSGrenade", "m_bJumpThrow")]
-	public ref bool JumpThrow => ref Schema.GetRef<bool>(this.Handle, "CBaseCSGrenade", "m_bJumpThrow");
+	public bool JumpThrow
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseCSGrenade", "m_bJumpThrow"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseCSGrenade", "m_bJumpThrow", value); }
+	}
 
 	// m_bThrowAnimating
 	[SchemaMember("CBaseCSGrenade", "m_bThrowAnimating")]
-	public ref bool ThrowAnimating => ref Schema.GetRef<bool>(this.Handle, "CBaseCSGrenade", "m_bThrowAnimating");
+	public bool ThrowAnimating
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseCSGrenade", "m_bThrowAnimating"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseCSGrenade", "m_bThrowAnimating", value); }
+	}
 
 	// m_fThrowTime
 	[SchemaMember("CBaseCSGrenade", "m_fThrowTime")]
-	public ref float ThrowTime => ref Schema.GetRef<float>(this.Handle, "CBaseCSGrenade", "m_fThrowTime");
+	public float ThrowTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseCSGrenade", "m_fThrowTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseCSGrenade", "m_fThrowTime", value); }
+	}
 
 	// m_flThrowStrength
 	[SchemaMember("CBaseCSGrenade", "m_flThrowStrength")]
-	public ref float ThrowStrength => ref Schema.GetRef<float>(this.Handle, "CBaseCSGrenade", "m_flThrowStrength");
+	public float ThrowStrength
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseCSGrenade", "m_flThrowStrength"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseCSGrenade", "m_flThrowStrength", value); }
+	}
 
 	// m_fDropTime
 	[SchemaMember("CBaseCSGrenade", "m_fDropTime")]
-	public ref float DropTime => ref Schema.GetRef<float>(this.Handle, "CBaseCSGrenade", "m_fDropTime");
+	public float DropTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseCSGrenade", "m_fDropTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseCSGrenade", "m_fDropTime", value); }
+	}
 
 	// m_fPinPullTime
 	[SchemaMember("CBaseCSGrenade", "m_fPinPullTime")]
-	public ref float PinPullTime => ref Schema.GetRef<float>(this.Handle, "CBaseCSGrenade", "m_fPinPullTime");
+	public float PinPullTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseCSGrenade", "m_fPinPullTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseCSGrenade", "m_fPinPullTime", value); }
+	}
 
 	// m_bJustPulledPin
 	[SchemaMember("CBaseCSGrenade", "m_bJustPulledPin")]
-	public ref bool JustPulledPin => ref Schema.GetRef<bool>(this.Handle, "CBaseCSGrenade", "m_bJustPulledPin");
+	public bool JustPulledPin
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseCSGrenade", "m_bJustPulledPin"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseCSGrenade", "m_bJustPulledPin", value); }
+	}
 
 	// m_nNextHoldTick
 	[SchemaMember("CBaseCSGrenade", "m_nNextHoldTick")]
-	public ref Int32 NextHoldTick => ref Schema.GetRef<Int32>(this.Handle, "CBaseCSGrenade", "m_nNextHoldTick");
+	public Int32 NextHoldTick
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseCSGrenade", "m_nNextHoldTick"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseCSGrenade", "m_nNextHoldTick", value); }
+	}
 
 	// m_flNextHoldFrac
 	[SchemaMember("CBaseCSGrenade", "m_flNextHoldFrac")]
-	public ref float NextHoldFrac => ref Schema.GetRef<float>(this.Handle, "CBaseCSGrenade", "m_flNextHoldFrac");
+	public float NextHoldFrac
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseCSGrenade", "m_flNextHoldFrac"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseCSGrenade", "m_flNextHoldFrac", value); }
+	}
 
 	// m_hSwitchToWeaponAfterThrow
 	[SchemaMember("CBaseCSGrenade", "m_hSwitchToWeaponAfterThrow")]

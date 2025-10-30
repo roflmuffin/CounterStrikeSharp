@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,10 +25,18 @@ public partial class CFogController : CBaseEntity
 
 	// m_bUseAngles
 	[SchemaMember("CFogController", "m_bUseAngles")]
-	public ref bool UseAngles => ref Schema.GetRef<bool>(this.Handle, "CFogController", "m_bUseAngles");
+	public bool UseAngles
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFogController", "m_bUseAngles"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFogController", "m_bUseAngles", value); }
+	}
 
 	// m_iChangedVariables
 	[SchemaMember("CFogController", "m_iChangedVariables")]
-	public ref Int32 ChangedVariables => ref Schema.GetRef<Int32>(this.Handle, "CFogController", "m_iChangedVariables");
+	public Int32 ChangedVariables
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CFogController", "m_iChangedVariables"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CFogController", "m_iChangedVariables", value); }
+	}
 
 }

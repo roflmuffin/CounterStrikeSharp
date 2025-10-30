@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,47 +21,91 @@ public partial class CTriggerHurt : CBaseTrigger
 
 	// m_flOriginalDamage
 	[SchemaMember("CTriggerHurt", "m_flOriginalDamage")]
-	public ref float OriginalDamage => ref Schema.GetRef<float>(this.Handle, "CTriggerHurt", "m_flOriginalDamage");
+	public float OriginalDamage
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerHurt", "m_flOriginalDamage"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerHurt", "m_flOriginalDamage", value); }
+	}
 
 	// m_flDamage
 	[SchemaMember("CTriggerHurt", "m_flDamage")]
-	public ref float Damage => ref Schema.GetRef<float>(this.Handle, "CTriggerHurt", "m_flDamage");
+	public float Damage
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerHurt", "m_flDamage"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerHurt", "m_flDamage", value); }
+	}
 
 	// m_flDamageCap
 	[SchemaMember("CTriggerHurt", "m_flDamageCap")]
-	public ref float DamageCap => ref Schema.GetRef<float>(this.Handle, "CTriggerHurt", "m_flDamageCap");
+	public float DamageCap
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerHurt", "m_flDamageCap"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerHurt", "m_flDamageCap", value); }
+	}
 
 	// m_flLastDmgTime
 	[SchemaMember("CTriggerHurt", "m_flLastDmgTime")]
-	public ref float LastDmgTime => ref Schema.GetRef<float>(this.Handle, "CTriggerHurt", "m_flLastDmgTime");
+	public float LastDmgTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerHurt", "m_flLastDmgTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerHurt", "m_flLastDmgTime", value); }
+	}
 
 	// m_flForgivenessDelay
 	[SchemaMember("CTriggerHurt", "m_flForgivenessDelay")]
-	public ref float ForgivenessDelay => ref Schema.GetRef<float>(this.Handle, "CTriggerHurt", "m_flForgivenessDelay");
+	public float ForgivenessDelay
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerHurt", "m_flForgivenessDelay"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerHurt", "m_flForgivenessDelay", value); }
+	}
 
 	// m_bitsDamageInflict
 	[SchemaMember("CTriggerHurt", "m_bitsDamageInflict")]
-	public ref DamageTypes_t BitsDamageInflict => ref Schema.GetRef<DamageTypes_t>(this.Handle, "CTriggerHurt", "m_bitsDamageInflict");
+	public DamageTypes_t BitsDamageInflict
+	{
+		get { return Schema.GetValueType<DamageTypes_t>(this.Handle, "CTriggerHurt", "m_bitsDamageInflict"); }
+		set { Schema.SetValueType<DamageTypes_t>(this.Handle, "CTriggerHurt", "m_bitsDamageInflict", value); }
+	}
 
 	// m_damageModel
 	[SchemaMember("CTriggerHurt", "m_damageModel")]
-	public ref Int32 DamageModel => ref Schema.GetRef<Int32>(this.Handle, "CTriggerHurt", "m_damageModel");
+	public Int32 DamageModel
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CTriggerHurt", "m_damageModel"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CTriggerHurt", "m_damageModel", value); }
+	}
 
 	// m_bNoDmgForce
 	[SchemaMember("CTriggerHurt", "m_bNoDmgForce")]
-	public ref bool NoDmgForce => ref Schema.GetRef<bool>(this.Handle, "CTriggerHurt", "m_bNoDmgForce");
+	public bool NoDmgForce
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerHurt", "m_bNoDmgForce"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTriggerHurt", "m_bNoDmgForce", value); }
+	}
 
 	// m_vDamageForce
 	[SchemaMember("CTriggerHurt", "m_vDamageForce")]
-	public Vector DamageForce => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerHurt", "m_vDamageForce");
+	public Vector3 DamageForce
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CTriggerHurt", "m_vDamageForce"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CTriggerHurt", "m_vDamageForce", value); }
+	}
 
 	// m_thinkAlways
 	[SchemaMember("CTriggerHurt", "m_thinkAlways")]
-	public ref bool ThinkAlways => ref Schema.GetRef<bool>(this.Handle, "CTriggerHurt", "m_thinkAlways");
+	public bool ThinkAlways
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerHurt", "m_thinkAlways"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTriggerHurt", "m_thinkAlways", value); }
+	}
 
 	// m_hurtThinkPeriod
 	[SchemaMember("CTriggerHurt", "m_hurtThinkPeriod")]
-	public ref float HurtThinkPeriod => ref Schema.GetRef<float>(this.Handle, "CTriggerHurt", "m_hurtThinkPeriod");
+	public float HurtThinkPeriod
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerHurt", "m_hurtThinkPeriod"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerHurt", "m_hurtThinkPeriod", value); }
+	}
 
 	// m_OnHurt
 	[SchemaMember("CTriggerHurt", "m_OnHurt")]

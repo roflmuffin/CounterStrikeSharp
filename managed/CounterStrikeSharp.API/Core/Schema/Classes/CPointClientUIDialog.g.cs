@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,6 +25,10 @@ public partial class CPointClientUIDialog : CBaseClientUIEntity
 
 	// m_bStartEnabled
 	[SchemaMember("CPointClientUIDialog", "m_bStartEnabled")]
-	public ref bool StartEnabled => ref Schema.GetRef<bool>(this.Handle, "CPointClientUIDialog", "m_bStartEnabled");
+	public bool StartEnabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointClientUIDialog", "m_bStartEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointClientUIDialog", "m_bStartEnabled", value); }
+	}
 
 }

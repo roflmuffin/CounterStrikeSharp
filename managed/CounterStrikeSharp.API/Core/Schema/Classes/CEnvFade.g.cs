@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,11 +29,19 @@ public partial class CEnvFade : CLogicalEntity
 
 	// m_Duration
 	[SchemaMember("CEnvFade", "m_Duration")]
-	public ref float Duration => ref Schema.GetRef<float>(this.Handle, "CEnvFade", "m_Duration");
+	public float Duration
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvFade", "m_Duration"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvFade", "m_Duration", value); }
+	}
 
 	// m_HoldDuration
 	[SchemaMember("CEnvFade", "m_HoldDuration")]
-	public ref float HoldDuration => ref Schema.GetRef<float>(this.Handle, "CEnvFade", "m_HoldDuration");
+	public float HoldDuration
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvFade", "m_HoldDuration"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvFade", "m_HoldDuration", value); }
+	}
 
 	// m_OnBeginFade
 	[SchemaMember("CEnvFade", "m_OnBeginFade")]

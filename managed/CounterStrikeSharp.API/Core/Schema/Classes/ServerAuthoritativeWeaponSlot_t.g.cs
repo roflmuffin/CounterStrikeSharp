@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,14 +21,26 @@ public partial class ServerAuthoritativeWeaponSlot_t : NativeObject
 
 	// unClass
 	[SchemaMember("ServerAuthoritativeWeaponSlot_t", "unClass")]
-	public ref UInt16 UnClass => ref Schema.GetRef<UInt16>(this.Handle, "ServerAuthoritativeWeaponSlot_t", "unClass");
+	public UInt16 UnClass
+	{
+		get { return Schema.GetValueType<UInt16>(this.Handle, "ServerAuthoritativeWeaponSlot_t", "unClass"); }
+		set { Schema.SetValueType<UInt16>(this.Handle, "ServerAuthoritativeWeaponSlot_t", "unClass", value); }
+	}
 
 	// unSlot
 	[SchemaMember("ServerAuthoritativeWeaponSlot_t", "unSlot")]
-	public ref UInt16 UnSlot => ref Schema.GetRef<UInt16>(this.Handle, "ServerAuthoritativeWeaponSlot_t", "unSlot");
+	public UInt16 UnSlot
+	{
+		get { return Schema.GetValueType<UInt16>(this.Handle, "ServerAuthoritativeWeaponSlot_t", "unSlot"); }
+		set { Schema.SetValueType<UInt16>(this.Handle, "ServerAuthoritativeWeaponSlot_t", "unSlot", value); }
+	}
 
 	// unItemDefIdx
 	[SchemaMember("ServerAuthoritativeWeaponSlot_t", "unItemDefIdx")]
-	public ref UInt16 UnItemDefIdx => ref Schema.GetRef<UInt16>(this.Handle, "ServerAuthoritativeWeaponSlot_t", "unItemDefIdx");
+	public UInt16 UnItemDefIdx
+	{
+		get { return Schema.GetValueType<UInt16>(this.Handle, "ServerAuthoritativeWeaponSlot_t", "unItemDefIdx"); }
+		set { Schema.SetValueType<UInt16>(this.Handle, "ServerAuthoritativeWeaponSlot_t", "unItemDefIdx", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,6 +21,10 @@ public partial class CPhysThruster : CPhysForce
 
 	// m_localOrigin
 	[SchemaMember("CPhysThruster", "m_localOrigin")]
-	public Vector LocalOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysThruster", "m_localOrigin");
+	public Vector3 LocalOrigin
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CPhysThruster", "m_localOrigin"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CPhysThruster", "m_localOrigin", value); }
+	}
 
 }

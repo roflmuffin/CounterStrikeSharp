@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,14 +21,26 @@ public partial class CFlashbangProjectile : CBaseCSGrenadeProjectile
 
 	// m_flTimeToDetonate
 	[SchemaMember("CFlashbangProjectile", "m_flTimeToDetonate")]
-	public ref float TimeToDetonate => ref Schema.GetRef<float>(this.Handle, "CFlashbangProjectile", "m_flTimeToDetonate");
+	public float TimeToDetonate
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFlashbangProjectile", "m_flTimeToDetonate"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFlashbangProjectile", "m_flTimeToDetonate", value); }
+	}
 
 	// m_numOpponentsHit
 	[SchemaMember("CFlashbangProjectile", "m_numOpponentsHit")]
-	public ref byte NumOpponentsHit => ref Schema.GetRef<byte>(this.Handle, "CFlashbangProjectile", "m_numOpponentsHit");
+	public byte NumOpponentsHit
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CFlashbangProjectile", "m_numOpponentsHit"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CFlashbangProjectile", "m_numOpponentsHit", value); }
+	}
 
 	// m_numTeammatesHit
 	[SchemaMember("CFlashbangProjectile", "m_numTeammatesHit")]
-	public ref byte NumTeammatesHit => ref Schema.GetRef<byte>(this.Handle, "CFlashbangProjectile", "m_numTeammatesHit");
+	public byte NumTeammatesHit
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CFlashbangProjectile", "m_numTeammatesHit"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CFlashbangProjectile", "m_numTeammatesHit", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class CBaseClientUIEntity : CBaseModelEntity
 
 	// m_bEnabled
 	[SchemaMember("CBaseClientUIEntity", "m_bEnabled")]
-	public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CBaseClientUIEntity", "m_bEnabled");
+	public bool Enabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseClientUIEntity", "m_bEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseClientUIEntity", "m_bEnabled", value); }
+	}
 
 	// m_DialogXMLName
 	[SchemaMember("CBaseClientUIEntity", "m_DialogXMLName")]

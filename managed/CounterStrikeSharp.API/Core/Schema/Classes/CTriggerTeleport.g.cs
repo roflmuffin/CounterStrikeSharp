@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,14 +29,26 @@ public partial class CTriggerTeleport : CBaseTrigger
 
 	// m_bUseLandmarkAngles
 	[SchemaMember("CTriggerTeleport", "m_bUseLandmarkAngles")]
-	public ref bool UseLandmarkAngles => ref Schema.GetRef<bool>(this.Handle, "CTriggerTeleport", "m_bUseLandmarkAngles");
+	public bool UseLandmarkAngles
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerTeleport", "m_bUseLandmarkAngles"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTriggerTeleport", "m_bUseLandmarkAngles", value); }
+	}
 
 	// m_bMirrorPlayer
 	[SchemaMember("CTriggerTeleport", "m_bMirrorPlayer")]
-	public ref bool MirrorPlayer => ref Schema.GetRef<bool>(this.Handle, "CTriggerTeleport", "m_bMirrorPlayer");
+	public bool MirrorPlayer
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerTeleport", "m_bMirrorPlayer"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTriggerTeleport", "m_bMirrorPlayer", value); }
+	}
 
 	// m_bCheckDestIfClearForPlayer
 	[SchemaMember("CTriggerTeleport", "m_bCheckDestIfClearForPlayer")]
-	public ref bool CheckDestIfClearForPlayer => ref Schema.GetRef<bool>(this.Handle, "CTriggerTeleport", "m_bCheckDestIfClearForPlayer");
+	public bool CheckDestIfClearForPlayer
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerTeleport", "m_bCheckDestIfClearForPlayer"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTriggerTeleport", "m_bCheckDestIfClearForPlayer", value); }
+	}
 
 }

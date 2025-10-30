@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,63 +21,123 @@ public partial class CColorCorrection : CBaseEntity
 
 	// m_flFadeInDuration
 	[SchemaMember("CColorCorrection", "m_flFadeInDuration")]
-	public ref float FadeInDuration => ref Schema.GetRef<float>(this.Handle, "CColorCorrection", "m_flFadeInDuration");
+	public float FadeInDuration
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrection", "m_flFadeInDuration"); }
+		set { Schema.SetValueType<float>(this.Handle, "CColorCorrection", "m_flFadeInDuration", value); }
+	}
 
 	// m_flFadeOutDuration
 	[SchemaMember("CColorCorrection", "m_flFadeOutDuration")]
-	public ref float FadeOutDuration => ref Schema.GetRef<float>(this.Handle, "CColorCorrection", "m_flFadeOutDuration");
+	public float FadeOutDuration
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrection", "m_flFadeOutDuration"); }
+		set { Schema.SetValueType<float>(this.Handle, "CColorCorrection", "m_flFadeOutDuration", value); }
+	}
 
 	// m_flStartFadeInWeight
 	[SchemaMember("CColorCorrection", "m_flStartFadeInWeight")]
-	public ref float StartFadeInWeight => ref Schema.GetRef<float>(this.Handle, "CColorCorrection", "m_flStartFadeInWeight");
+	public float StartFadeInWeight
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrection", "m_flStartFadeInWeight"); }
+		set { Schema.SetValueType<float>(this.Handle, "CColorCorrection", "m_flStartFadeInWeight", value); }
+	}
 
 	// m_flStartFadeOutWeight
 	[SchemaMember("CColorCorrection", "m_flStartFadeOutWeight")]
-	public ref float StartFadeOutWeight => ref Schema.GetRef<float>(this.Handle, "CColorCorrection", "m_flStartFadeOutWeight");
+	public float StartFadeOutWeight
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrection", "m_flStartFadeOutWeight"); }
+		set { Schema.SetValueType<float>(this.Handle, "CColorCorrection", "m_flStartFadeOutWeight", value); }
+	}
 
 	// m_flTimeStartFadeIn
 	[SchemaMember("CColorCorrection", "m_flTimeStartFadeIn")]
-	public ref float TimeStartFadeIn => ref Schema.GetRef<float>(this.Handle, "CColorCorrection", "m_flTimeStartFadeIn");
+	public float TimeStartFadeIn
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrection", "m_flTimeStartFadeIn"); }
+		set { Schema.SetValueType<float>(this.Handle, "CColorCorrection", "m_flTimeStartFadeIn", value); }
+	}
 
 	// m_flTimeStartFadeOut
 	[SchemaMember("CColorCorrection", "m_flTimeStartFadeOut")]
-	public ref float TimeStartFadeOut => ref Schema.GetRef<float>(this.Handle, "CColorCorrection", "m_flTimeStartFadeOut");
+	public float TimeStartFadeOut
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrection", "m_flTimeStartFadeOut"); }
+		set { Schema.SetValueType<float>(this.Handle, "CColorCorrection", "m_flTimeStartFadeOut", value); }
+	}
 
 	// m_flMaxWeight
 	[SchemaMember("CColorCorrection", "m_flMaxWeight")]
-	public ref float MaxWeight => ref Schema.GetRef<float>(this.Handle, "CColorCorrection", "m_flMaxWeight");
+	public float MaxWeight
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrection", "m_flMaxWeight"); }
+		set { Schema.SetValueType<float>(this.Handle, "CColorCorrection", "m_flMaxWeight", value); }
+	}
 
 	// m_bStartDisabled
 	[SchemaMember("CColorCorrection", "m_bStartDisabled")]
-	public ref bool StartDisabled => ref Schema.GetRef<bool>(this.Handle, "CColorCorrection", "m_bStartDisabled");
+	public bool StartDisabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CColorCorrection", "m_bStartDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CColorCorrection", "m_bStartDisabled", value); }
+	}
 
 	// m_bEnabled
 	[SchemaMember("CColorCorrection", "m_bEnabled")]
-	public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CColorCorrection", "m_bEnabled");
+	public bool Enabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CColorCorrection", "m_bEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CColorCorrection", "m_bEnabled", value); }
+	}
 
 	// m_bMaster
 	[SchemaMember("CColorCorrection", "m_bMaster")]
-	public ref bool Master => ref Schema.GetRef<bool>(this.Handle, "CColorCorrection", "m_bMaster");
+	public bool Master
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CColorCorrection", "m_bMaster"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CColorCorrection", "m_bMaster", value); }
+	}
 
 	// m_bClientSide
 	[SchemaMember("CColorCorrection", "m_bClientSide")]
-	public ref bool ClientSide => ref Schema.GetRef<bool>(this.Handle, "CColorCorrection", "m_bClientSide");
+	public bool ClientSide
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CColorCorrection", "m_bClientSide"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CColorCorrection", "m_bClientSide", value); }
+	}
 
 	// m_bExclusive
 	[SchemaMember("CColorCorrection", "m_bExclusive")]
-	public ref bool Exclusive => ref Schema.GetRef<bool>(this.Handle, "CColorCorrection", "m_bExclusive");
+	public bool Exclusive
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CColorCorrection", "m_bExclusive"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CColorCorrection", "m_bExclusive", value); }
+	}
 
 	// m_MinFalloff
 	[SchemaMember("CColorCorrection", "m_MinFalloff")]
-	public ref float MinFalloff => ref Schema.GetRef<float>(this.Handle, "CColorCorrection", "m_MinFalloff");
+	public float MinFalloff
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrection", "m_MinFalloff"); }
+		set { Schema.SetValueType<float>(this.Handle, "CColorCorrection", "m_MinFalloff", value); }
+	}
 
 	// m_MaxFalloff
 	[SchemaMember("CColorCorrection", "m_MaxFalloff")]
-	public ref float MaxFalloff => ref Schema.GetRef<float>(this.Handle, "CColorCorrection", "m_MaxFalloff");
+	public float MaxFalloff
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrection", "m_MaxFalloff"); }
+		set { Schema.SetValueType<float>(this.Handle, "CColorCorrection", "m_MaxFalloff", value); }
+	}
 
 	// m_flCurWeight
 	[SchemaMember("CColorCorrection", "m_flCurWeight")]
-	public ref float CurWeight => ref Schema.GetRef<float>(this.Handle, "CColorCorrection", "m_flCurWeight");
+	public float CurWeight
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CColorCorrection", "m_flCurWeight"); }
+		set { Schema.SetValueType<float>(this.Handle, "CColorCorrection", "m_flCurWeight", value); }
+	}
 
 	// m_netlookupFilename
 	[SchemaMember("CColorCorrection", "m_netlookupFilename")]

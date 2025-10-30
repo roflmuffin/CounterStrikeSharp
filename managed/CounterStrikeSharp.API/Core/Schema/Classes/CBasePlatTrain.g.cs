@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -36,14 +37,26 @@ public partial class CBasePlatTrain : CBaseToggle
 
 	// m_volume
 	[SchemaMember("CBasePlatTrain", "m_volume")]
-	public ref float Volume => ref Schema.GetRef<float>(this.Handle, "CBasePlatTrain", "m_volume");
+	public float Volume
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBasePlatTrain", "m_volume"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBasePlatTrain", "m_volume", value); }
+	}
 
 	// m_flTWidth
 	[SchemaMember("CBasePlatTrain", "m_flTWidth")]
-	public ref float TWidth => ref Schema.GetRef<float>(this.Handle, "CBasePlatTrain", "m_flTWidth");
+	public float TWidth
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBasePlatTrain", "m_flTWidth"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBasePlatTrain", "m_flTWidth", value); }
+	}
 
 	// m_flTLength
 	[SchemaMember("CBasePlatTrain", "m_flTLength")]
-	public ref float TLength => ref Schema.GetRef<float>(this.Handle, "CBasePlatTrain", "m_flTLength");
+	public float TLength
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBasePlatTrain", "m_flTLength"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBasePlatTrain", "m_flTLength", value); }
+	}
 
 }

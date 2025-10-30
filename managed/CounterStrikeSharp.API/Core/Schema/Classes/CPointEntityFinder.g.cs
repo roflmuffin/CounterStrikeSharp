@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -48,7 +49,11 @@ public partial class CPointEntityFinder : CBaseEntity
 
 	// m_FindMethod
 	[SchemaMember("CPointEntityFinder", "m_FindMethod")]
-	public ref EntFinderMethod_t FindMethod => ref Schema.GetRef<EntFinderMethod_t>(this.Handle, "CPointEntityFinder", "m_FindMethod");
+	public EntFinderMethod_t FindMethod
+	{
+		get { return Schema.GetValueType<EntFinderMethod_t>(this.Handle, "CPointEntityFinder", "m_FindMethod"); }
+		set { Schema.SetValueType<EntFinderMethod_t>(this.Handle, "CPointEntityFinder", "m_FindMethod", value); }
+	}
 
 	// m_OnFoundEntity
 	[SchemaMember("CPointEntityFinder", "m_OnFoundEntity")]

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class CFilterMultiple : CBaseFilter
 
 	// m_nFilterType
 	[SchemaMember("CFilterMultiple", "m_nFilterType")]
-	public ref filter_t FilterType => ref Schema.GetRef<filter_t>(this.Handle, "CFilterMultiple", "m_nFilterType");
+	public filter_t FilterType
+	{
+		get { return Schema.GetValueType<filter_t>(this.Handle, "CFilterMultiple", "m_nFilterType"); }
+		set { Schema.SetValueType<filter_t>(this.Handle, "CFilterMultiple", "m_nFilterType", value); }
+	}
 
 	// m_iFilterName
 	[SchemaMember("CFilterMultiple", "m_iFilterName")]

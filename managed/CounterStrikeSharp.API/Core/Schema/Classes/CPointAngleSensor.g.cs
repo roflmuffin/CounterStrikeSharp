@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class CPointAngleSensor : CPointEntity
 
 	// m_bDisabled
 	[SchemaMember("CPointAngleSensor", "m_bDisabled")]
-	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CPointAngleSensor", "m_bDisabled");
+	public bool Disabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointAngleSensor", "m_bDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointAngleSensor", "m_bDisabled", value); }
+	}
 
 	// m_nLookAtName
 	[SchemaMember("CPointAngleSensor", "m_nLookAtName")]
@@ -40,19 +45,35 @@ public partial class CPointAngleSensor : CPointEntity
 
 	// m_flDuration
 	[SchemaMember("CPointAngleSensor", "m_flDuration")]
-	public ref float Duration => ref Schema.GetRef<float>(this.Handle, "CPointAngleSensor", "m_flDuration");
+	public float Duration
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointAngleSensor", "m_flDuration"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointAngleSensor", "m_flDuration", value); }
+	}
 
 	// m_flDotTolerance
 	[SchemaMember("CPointAngleSensor", "m_flDotTolerance")]
-	public ref float DotTolerance => ref Schema.GetRef<float>(this.Handle, "CPointAngleSensor", "m_flDotTolerance");
+	public float DotTolerance
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointAngleSensor", "m_flDotTolerance"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointAngleSensor", "m_flDotTolerance", value); }
+	}
 
 	// m_flFacingTime
 	[SchemaMember("CPointAngleSensor", "m_flFacingTime")]
-	public ref float FacingTime => ref Schema.GetRef<float>(this.Handle, "CPointAngleSensor", "m_flFacingTime");
+	public float FacingTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointAngleSensor", "m_flFacingTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointAngleSensor", "m_flFacingTime", value); }
+	}
 
 	// m_bFired
 	[SchemaMember("CPointAngleSensor", "m_bFired")]
-	public ref bool Fired => ref Schema.GetRef<bool>(this.Handle, "CPointAngleSensor", "m_bFired");
+	public bool Fired
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointAngleSensor", "m_bFired"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointAngleSensor", "m_bFired", value); }
+	}
 
 	// m_OnFacingLookat
 	[SchemaMember("CPointAngleSensor", "m_OnFacingLookat")]

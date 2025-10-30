@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,10 +29,18 @@ public partial class CPhysicsEntitySolver : CLogicalEntity
 
 	// m_separationDuration
 	[SchemaMember("CPhysicsEntitySolver", "m_separationDuration")]
-	public ref float SeparationDuration => ref Schema.GetRef<float>(this.Handle, "CPhysicsEntitySolver", "m_separationDuration");
+	public float SeparationDuration
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysicsEntitySolver", "m_separationDuration"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysicsEntitySolver", "m_separationDuration", value); }
+	}
 
 	// m_cancelTime
 	[SchemaMember("CPhysicsEntitySolver", "m_cancelTime")]
-	public ref float CancelTime => ref Schema.GetRef<float>(this.Handle, "CPhysicsEntitySolver", "m_cancelTime");
+	public float CancelTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysicsEntitySolver", "m_cancelTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysicsEntitySolver", "m_cancelTime", value); }
+	}
 
 }

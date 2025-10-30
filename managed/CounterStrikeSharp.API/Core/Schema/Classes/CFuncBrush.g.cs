@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,15 +21,27 @@ public partial class CFuncBrush : CBaseModelEntity
 
 	// m_iSolidity
 	[SchemaMember("CFuncBrush", "m_iSolidity")]
-	public ref BrushSolidities_e Solidity => ref Schema.GetRef<BrushSolidities_e>(this.Handle, "CFuncBrush", "m_iSolidity");
+	public BrushSolidities_e Solidity
+	{
+		get { return Schema.GetValueType<BrushSolidities_e>(this.Handle, "CFuncBrush", "m_iSolidity"); }
+		set { Schema.SetValueType<BrushSolidities_e>(this.Handle, "CFuncBrush", "m_iSolidity", value); }
+	}
 
 	// m_iDisabled
 	[SchemaMember("CFuncBrush", "m_iDisabled")]
-	public ref Int32 Disabled => ref Schema.GetRef<Int32>(this.Handle, "CFuncBrush", "m_iDisabled");
+	public Int32 Disabled
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CFuncBrush", "m_iDisabled"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CFuncBrush", "m_iDisabled", value); }
+	}
 
 	// m_bSolidBsp
 	[SchemaMember("CFuncBrush", "m_bSolidBsp")]
-	public ref bool SolidBsp => ref Schema.GetRef<bool>(this.Handle, "CFuncBrush", "m_bSolidBsp");
+	public bool SolidBsp
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncBrush", "m_bSolidBsp"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncBrush", "m_bSolidBsp", value); }
+	}
 
 	// m_iszExcludedClass
 	[SchemaMember("CFuncBrush", "m_iszExcludedClass")]
@@ -40,10 +53,18 @@ public partial class CFuncBrush : CBaseModelEntity
 
 	// m_bInvertExclusion
 	[SchemaMember("CFuncBrush", "m_bInvertExclusion")]
-	public ref bool InvertExclusion => ref Schema.GetRef<bool>(this.Handle, "CFuncBrush", "m_bInvertExclusion");
+	public bool InvertExclusion
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncBrush", "m_bInvertExclusion"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncBrush", "m_bInvertExclusion", value); }
+	}
 
 	// m_bScriptedMovement
 	[SchemaMember("CFuncBrush", "m_bScriptedMovement")]
-	public ref bool ScriptedMovement => ref Schema.GetRef<bool>(this.Handle, "CFuncBrush", "m_bScriptedMovement");
+	public bool ScriptedMovement
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncBrush", "m_bScriptedMovement"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncBrush", "m_bScriptedMovement", value); }
+	}
 
 }

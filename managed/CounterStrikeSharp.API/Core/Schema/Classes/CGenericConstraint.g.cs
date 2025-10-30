@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,183 +21,363 @@ public partial class CGenericConstraint : CPhysConstraint
 
 	// m_nLinearMotionX
 	[SchemaMember("CGenericConstraint", "m_nLinearMotionX")]
-	public ref JointMotion_t LinearMotionX => ref Schema.GetRef<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nLinearMotionX");
+	public JointMotion_t LinearMotionX
+	{
+		get { return Schema.GetValueType<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nLinearMotionX"); }
+		set { Schema.SetValueType<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nLinearMotionX", value); }
+	}
 
 	// m_nLinearMotionY
 	[SchemaMember("CGenericConstraint", "m_nLinearMotionY")]
-	public ref JointMotion_t LinearMotionY => ref Schema.GetRef<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nLinearMotionY");
+	public JointMotion_t LinearMotionY
+	{
+		get { return Schema.GetValueType<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nLinearMotionY"); }
+		set { Schema.SetValueType<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nLinearMotionY", value); }
+	}
 
 	// m_nLinearMotionZ
 	[SchemaMember("CGenericConstraint", "m_nLinearMotionZ")]
-	public ref JointMotion_t LinearMotionZ => ref Schema.GetRef<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nLinearMotionZ");
+	public JointMotion_t LinearMotionZ
+	{
+		get { return Schema.GetValueType<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nLinearMotionZ"); }
+		set { Schema.SetValueType<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nLinearMotionZ", value); }
+	}
 
 	// m_flLinearFrequencyX
 	[SchemaMember("CGenericConstraint", "m_flLinearFrequencyX")]
-	public ref float LinearFrequencyX => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flLinearFrequencyX");
+	public float LinearFrequencyX
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flLinearFrequencyX"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flLinearFrequencyX", value); }
+	}
 
 	// m_flLinearFrequencyY
 	[SchemaMember("CGenericConstraint", "m_flLinearFrequencyY")]
-	public ref float LinearFrequencyY => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flLinearFrequencyY");
+	public float LinearFrequencyY
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flLinearFrequencyY"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flLinearFrequencyY", value); }
+	}
 
 	// m_flLinearFrequencyZ
 	[SchemaMember("CGenericConstraint", "m_flLinearFrequencyZ")]
-	public ref float LinearFrequencyZ => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flLinearFrequencyZ");
+	public float LinearFrequencyZ
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flLinearFrequencyZ"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flLinearFrequencyZ", value); }
+	}
 
 	// m_flLinearDampingRatioX
 	[SchemaMember("CGenericConstraint", "m_flLinearDampingRatioX")]
-	public ref float LinearDampingRatioX => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flLinearDampingRatioX");
+	public float LinearDampingRatioX
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flLinearDampingRatioX"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flLinearDampingRatioX", value); }
+	}
 
 	// m_flLinearDampingRatioY
 	[SchemaMember("CGenericConstraint", "m_flLinearDampingRatioY")]
-	public ref float LinearDampingRatioY => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flLinearDampingRatioY");
+	public float LinearDampingRatioY
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flLinearDampingRatioY"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flLinearDampingRatioY", value); }
+	}
 
 	// m_flLinearDampingRatioZ
 	[SchemaMember("CGenericConstraint", "m_flLinearDampingRatioZ")]
-	public ref float LinearDampingRatioZ => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flLinearDampingRatioZ");
+	public float LinearDampingRatioZ
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flLinearDampingRatioZ"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flLinearDampingRatioZ", value); }
+	}
 
 	// m_flMaxLinearImpulseX
 	[SchemaMember("CGenericConstraint", "m_flMaxLinearImpulseX")]
-	public ref float MaxLinearImpulseX => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flMaxLinearImpulseX");
+	public float MaxLinearImpulseX
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flMaxLinearImpulseX"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flMaxLinearImpulseX", value); }
+	}
 
 	// m_flMaxLinearImpulseY
 	[SchemaMember("CGenericConstraint", "m_flMaxLinearImpulseY")]
-	public ref float MaxLinearImpulseY => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flMaxLinearImpulseY");
+	public float MaxLinearImpulseY
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flMaxLinearImpulseY"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flMaxLinearImpulseY", value); }
+	}
 
 	// m_flMaxLinearImpulseZ
 	[SchemaMember("CGenericConstraint", "m_flMaxLinearImpulseZ")]
-	public ref float MaxLinearImpulseZ => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flMaxLinearImpulseZ");
+	public float MaxLinearImpulseZ
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flMaxLinearImpulseZ"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flMaxLinearImpulseZ", value); }
+	}
 
 	// m_flBreakAfterTimeX
 	[SchemaMember("CGenericConstraint", "m_flBreakAfterTimeX")]
-	public ref float BreakAfterTimeX => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeX");
+	public float BreakAfterTimeX
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeX"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeX", value); }
+	}
 
 	// m_flBreakAfterTimeY
 	[SchemaMember("CGenericConstraint", "m_flBreakAfterTimeY")]
-	public ref float BreakAfterTimeY => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeY");
+	public float BreakAfterTimeY
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeY"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeY", value); }
+	}
 
 	// m_flBreakAfterTimeZ
 	[SchemaMember("CGenericConstraint", "m_flBreakAfterTimeZ")]
-	public ref float BreakAfterTimeZ => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeZ");
+	public float BreakAfterTimeZ
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeZ"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeZ", value); }
+	}
 
 	// m_flBreakAfterTimeStartTimeX
 	[SchemaMember("CGenericConstraint", "m_flBreakAfterTimeStartTimeX")]
-	public ref float BreakAfterTimeStartTimeX => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeStartTimeX");
+	public float BreakAfterTimeStartTimeX
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeStartTimeX"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeStartTimeX", value); }
+	}
 
 	// m_flBreakAfterTimeStartTimeY
 	[SchemaMember("CGenericConstraint", "m_flBreakAfterTimeStartTimeY")]
-	public ref float BreakAfterTimeStartTimeY => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeStartTimeY");
+	public float BreakAfterTimeStartTimeY
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeStartTimeY"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeStartTimeY", value); }
+	}
 
 	// m_flBreakAfterTimeStartTimeZ
 	[SchemaMember("CGenericConstraint", "m_flBreakAfterTimeStartTimeZ")]
-	public ref float BreakAfterTimeStartTimeZ => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeStartTimeZ");
+	public float BreakAfterTimeStartTimeZ
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeStartTimeZ"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeStartTimeZ", value); }
+	}
 
 	// m_flBreakAfterTimeThresholdX
 	[SchemaMember("CGenericConstraint", "m_flBreakAfterTimeThresholdX")]
-	public ref float BreakAfterTimeThresholdX => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeThresholdX");
+	public float BreakAfterTimeThresholdX
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeThresholdX"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeThresholdX", value); }
+	}
 
 	// m_flBreakAfterTimeThresholdY
 	[SchemaMember("CGenericConstraint", "m_flBreakAfterTimeThresholdY")]
-	public ref float BreakAfterTimeThresholdY => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeThresholdY");
+	public float BreakAfterTimeThresholdY
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeThresholdY"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeThresholdY", value); }
+	}
 
 	// m_flBreakAfterTimeThresholdZ
 	[SchemaMember("CGenericConstraint", "m_flBreakAfterTimeThresholdZ")]
-	public ref float BreakAfterTimeThresholdZ => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeThresholdZ");
+	public float BreakAfterTimeThresholdZ
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeThresholdZ"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flBreakAfterTimeThresholdZ", value); }
+	}
 
 	// m_flNotifyForceX
 	[SchemaMember("CGenericConstraint", "m_flNotifyForceX")]
-	public ref float NotifyForceX => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceX");
+	public float NotifyForceX
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceX"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceX", value); }
+	}
 
 	// m_flNotifyForceY
 	[SchemaMember("CGenericConstraint", "m_flNotifyForceY")]
-	public ref float NotifyForceY => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceY");
+	public float NotifyForceY
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceY"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceY", value); }
+	}
 
 	// m_flNotifyForceZ
 	[SchemaMember("CGenericConstraint", "m_flNotifyForceZ")]
-	public ref float NotifyForceZ => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceZ");
+	public float NotifyForceZ
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceZ"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceZ", value); }
+	}
 
 	// m_flNotifyForceMinTimeX
 	[SchemaMember("CGenericConstraint", "m_flNotifyForceMinTimeX")]
-	public ref float NotifyForceMinTimeX => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceMinTimeX");
+	public float NotifyForceMinTimeX
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceMinTimeX"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceMinTimeX", value); }
+	}
 
 	// m_flNotifyForceMinTimeY
 	[SchemaMember("CGenericConstraint", "m_flNotifyForceMinTimeY")]
-	public ref float NotifyForceMinTimeY => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceMinTimeY");
+	public float NotifyForceMinTimeY
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceMinTimeY"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceMinTimeY", value); }
+	}
 
 	// m_flNotifyForceMinTimeZ
 	[SchemaMember("CGenericConstraint", "m_flNotifyForceMinTimeZ")]
-	public ref float NotifyForceMinTimeZ => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceMinTimeZ");
+	public float NotifyForceMinTimeZ
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceMinTimeZ"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceMinTimeZ", value); }
+	}
 
 	// m_flNotifyForceLastTimeX
 	[SchemaMember("CGenericConstraint", "m_flNotifyForceLastTimeX")]
-	public ref float NotifyForceLastTimeX => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceLastTimeX");
+	public float NotifyForceLastTimeX
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceLastTimeX"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceLastTimeX", value); }
+	}
 
 	// m_flNotifyForceLastTimeY
 	[SchemaMember("CGenericConstraint", "m_flNotifyForceLastTimeY")]
-	public ref float NotifyForceLastTimeY => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceLastTimeY");
+	public float NotifyForceLastTimeY
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceLastTimeY"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceLastTimeY", value); }
+	}
 
 	// m_flNotifyForceLastTimeZ
 	[SchemaMember("CGenericConstraint", "m_flNotifyForceLastTimeZ")]
-	public ref float NotifyForceLastTimeZ => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceLastTimeZ");
+	public float NotifyForceLastTimeZ
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceLastTimeZ"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flNotifyForceLastTimeZ", value); }
+	}
 
 	// m_bAxisNotifiedX
 	[SchemaMember("CGenericConstraint", "m_bAxisNotifiedX")]
-	public ref bool AxisNotifiedX => ref Schema.GetRef<bool>(this.Handle, "CGenericConstraint", "m_bAxisNotifiedX");
+	public bool AxisNotifiedX
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CGenericConstraint", "m_bAxisNotifiedX"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CGenericConstraint", "m_bAxisNotifiedX", value); }
+	}
 
 	// m_bAxisNotifiedY
 	[SchemaMember("CGenericConstraint", "m_bAxisNotifiedY")]
-	public ref bool AxisNotifiedY => ref Schema.GetRef<bool>(this.Handle, "CGenericConstraint", "m_bAxisNotifiedY");
+	public bool AxisNotifiedY
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CGenericConstraint", "m_bAxisNotifiedY"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CGenericConstraint", "m_bAxisNotifiedY", value); }
+	}
 
 	// m_bAxisNotifiedZ
 	[SchemaMember("CGenericConstraint", "m_bAxisNotifiedZ")]
-	public ref bool AxisNotifiedZ => ref Schema.GetRef<bool>(this.Handle, "CGenericConstraint", "m_bAxisNotifiedZ");
+	public bool AxisNotifiedZ
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CGenericConstraint", "m_bAxisNotifiedZ"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CGenericConstraint", "m_bAxisNotifiedZ", value); }
+	}
 
 	// m_nAngularMotionX
 	[SchemaMember("CGenericConstraint", "m_nAngularMotionX")]
-	public ref JointMotion_t AngularMotionX => ref Schema.GetRef<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nAngularMotionX");
+	public JointMotion_t AngularMotionX
+	{
+		get { return Schema.GetValueType<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nAngularMotionX"); }
+		set { Schema.SetValueType<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nAngularMotionX", value); }
+	}
 
 	// m_nAngularMotionY
 	[SchemaMember("CGenericConstraint", "m_nAngularMotionY")]
-	public ref JointMotion_t AngularMotionY => ref Schema.GetRef<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nAngularMotionY");
+	public JointMotion_t AngularMotionY
+	{
+		get { return Schema.GetValueType<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nAngularMotionY"); }
+		set { Schema.SetValueType<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nAngularMotionY", value); }
+	}
 
 	// m_nAngularMotionZ
 	[SchemaMember("CGenericConstraint", "m_nAngularMotionZ")]
-	public ref JointMotion_t AngularMotionZ => ref Schema.GetRef<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nAngularMotionZ");
+	public JointMotion_t AngularMotionZ
+	{
+		get { return Schema.GetValueType<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nAngularMotionZ"); }
+		set { Schema.SetValueType<JointMotion_t>(this.Handle, "CGenericConstraint", "m_nAngularMotionZ", value); }
+	}
 
 	// m_flAngularFrequencyX
 	[SchemaMember("CGenericConstraint", "m_flAngularFrequencyX")]
-	public ref float AngularFrequencyX => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flAngularFrequencyX");
+	public float AngularFrequencyX
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flAngularFrequencyX"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flAngularFrequencyX", value); }
+	}
 
 	// m_flAngularFrequencyY
 	[SchemaMember("CGenericConstraint", "m_flAngularFrequencyY")]
-	public ref float AngularFrequencyY => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flAngularFrequencyY");
+	public float AngularFrequencyY
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flAngularFrequencyY"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flAngularFrequencyY", value); }
+	}
 
 	// m_flAngularFrequencyZ
 	[SchemaMember("CGenericConstraint", "m_flAngularFrequencyZ")]
-	public ref float AngularFrequencyZ => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flAngularFrequencyZ");
+	public float AngularFrequencyZ
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flAngularFrequencyZ"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flAngularFrequencyZ", value); }
+	}
 
 	// m_flAngularDampingRatioX
 	[SchemaMember("CGenericConstraint", "m_flAngularDampingRatioX")]
-	public ref float AngularDampingRatioX => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flAngularDampingRatioX");
+	public float AngularDampingRatioX
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flAngularDampingRatioX"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flAngularDampingRatioX", value); }
+	}
 
 	// m_flAngularDampingRatioY
 	[SchemaMember("CGenericConstraint", "m_flAngularDampingRatioY")]
-	public ref float AngularDampingRatioY => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flAngularDampingRatioY");
+	public float AngularDampingRatioY
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flAngularDampingRatioY"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flAngularDampingRatioY", value); }
+	}
 
 	// m_flAngularDampingRatioZ
 	[SchemaMember("CGenericConstraint", "m_flAngularDampingRatioZ")]
-	public ref float AngularDampingRatioZ => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flAngularDampingRatioZ");
+	public float AngularDampingRatioZ
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flAngularDampingRatioZ"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flAngularDampingRatioZ", value); }
+	}
 
 	// m_flMaxAngularImpulseX
 	[SchemaMember("CGenericConstraint", "m_flMaxAngularImpulseX")]
-	public ref float MaxAngularImpulseX => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flMaxAngularImpulseX");
+	public float MaxAngularImpulseX
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flMaxAngularImpulseX"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flMaxAngularImpulseX", value); }
+	}
 
 	// m_flMaxAngularImpulseY
 	[SchemaMember("CGenericConstraint", "m_flMaxAngularImpulseY")]
-	public ref float MaxAngularImpulseY => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flMaxAngularImpulseY");
+	public float MaxAngularImpulseY
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flMaxAngularImpulseY"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flMaxAngularImpulseY", value); }
+	}
 
 	// m_flMaxAngularImpulseZ
 	[SchemaMember("CGenericConstraint", "m_flMaxAngularImpulseZ")]
-	public ref float MaxAngularImpulseZ => ref Schema.GetRef<float>(this.Handle, "CGenericConstraint", "m_flMaxAngularImpulseZ");
+	public float MaxAngularImpulseZ
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGenericConstraint", "m_flMaxAngularImpulseZ"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGenericConstraint", "m_flMaxAngularImpulseZ", value); }
+	}
 
 	// m_NotifyForceReachedX
 	[SchemaMember("CGenericConstraint", "m_NotifyForceReachedX")]

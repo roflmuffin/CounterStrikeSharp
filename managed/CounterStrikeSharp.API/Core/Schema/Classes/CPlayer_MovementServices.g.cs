@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class CPlayer_MovementServices : CPlayerPawnComponent
 
 	// m_nImpulse
 	[SchemaMember("CPlayer_MovementServices", "m_nImpulse")]
-	public ref Int32 Impulse => ref Schema.GetRef<Int32>(this.Handle, "CPlayer_MovementServices", "m_nImpulse");
+	public Int32 Impulse
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CPlayer_MovementServices", "m_nImpulse"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CPlayer_MovementServices", "m_nImpulse", value); }
+	}
 
 	// m_nButtons
 	[SchemaMember("CPlayer_MovementServices", "m_nButtons")]
@@ -28,15 +33,27 @@ public partial class CPlayer_MovementServices : CPlayerPawnComponent
 
 	// m_nQueuedButtonDownMask
 	[SchemaMember("CPlayer_MovementServices", "m_nQueuedButtonDownMask")]
-	public ref UInt64 QueuedButtonDownMask => ref Schema.GetRef<UInt64>(this.Handle, "CPlayer_MovementServices", "m_nQueuedButtonDownMask");
+	public UInt64 QueuedButtonDownMask
+	{
+		get { return Schema.GetValueType<UInt64>(this.Handle, "CPlayer_MovementServices", "m_nQueuedButtonDownMask"); }
+		set { Schema.SetValueType<UInt64>(this.Handle, "CPlayer_MovementServices", "m_nQueuedButtonDownMask", value); }
+	}
 
 	// m_nQueuedButtonChangeMask
 	[SchemaMember("CPlayer_MovementServices", "m_nQueuedButtonChangeMask")]
-	public ref UInt64 QueuedButtonChangeMask => ref Schema.GetRef<UInt64>(this.Handle, "CPlayer_MovementServices", "m_nQueuedButtonChangeMask");
+	public UInt64 QueuedButtonChangeMask
+	{
+		get { return Schema.GetValueType<UInt64>(this.Handle, "CPlayer_MovementServices", "m_nQueuedButtonChangeMask"); }
+		set { Schema.SetValueType<UInt64>(this.Handle, "CPlayer_MovementServices", "m_nQueuedButtonChangeMask", value); }
+	}
 
 	// m_nButtonDoublePressed
 	[SchemaMember("CPlayer_MovementServices", "m_nButtonDoublePressed")]
-	public ref UInt64 ButtonDoublePressed => ref Schema.GetRef<UInt64>(this.Handle, "CPlayer_MovementServices", "m_nButtonDoublePressed");
+	public UInt64 ButtonDoublePressed
+	{
+		get { return Schema.GetValueType<UInt64>(this.Handle, "CPlayer_MovementServices", "m_nButtonDoublePressed"); }
+		set { Schema.SetValueType<UInt64>(this.Handle, "CPlayer_MovementServices", "m_nButtonDoublePressed", value); }
+	}
 
 	// m_pButtonPressedCmdNumber
 	[SchemaMember("CPlayer_MovementServices", "m_pButtonPressedCmdNumber")]
@@ -44,15 +61,27 @@ public partial class CPlayer_MovementServices : CPlayerPawnComponent
 
 	// m_nLastCommandNumberProcessed
 	[SchemaMember("CPlayer_MovementServices", "m_nLastCommandNumberProcessed")]
-	public ref UInt32 LastCommandNumberProcessed => ref Schema.GetRef<UInt32>(this.Handle, "CPlayer_MovementServices", "m_nLastCommandNumberProcessed");
+	public UInt32 LastCommandNumberProcessed
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CPlayer_MovementServices", "m_nLastCommandNumberProcessed"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CPlayer_MovementServices", "m_nLastCommandNumberProcessed", value); }
+	}
 
 	// m_nToggleButtonDownMask
 	[SchemaMember("CPlayer_MovementServices", "m_nToggleButtonDownMask")]
-	public ref UInt64 ToggleButtonDownMask => ref Schema.GetRef<UInt64>(this.Handle, "CPlayer_MovementServices", "m_nToggleButtonDownMask");
+	public UInt64 ToggleButtonDownMask
+	{
+		get { return Schema.GetValueType<UInt64>(this.Handle, "CPlayer_MovementServices", "m_nToggleButtonDownMask"); }
+		set { Schema.SetValueType<UInt64>(this.Handle, "CPlayer_MovementServices", "m_nToggleButtonDownMask", value); }
+	}
 
 	// m_flMaxspeed
 	[SchemaMember("CPlayer_MovementServices", "m_flMaxspeed")]
-	public ref float Maxspeed => ref Schema.GetRef<float>(this.Handle, "CPlayer_MovementServices", "m_flMaxspeed");
+	public float Maxspeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPlayer_MovementServices", "m_flMaxspeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPlayer_MovementServices", "m_flMaxspeed", value); }
+	}
 
 	// m_arrForceSubtickMoveWhen
 	[SchemaMember("CPlayer_MovementServices", "m_arrForceSubtickMoveWhen")]
@@ -60,22 +89,42 @@ public partial class CPlayer_MovementServices : CPlayerPawnComponent
 
 	// m_flForwardMove
 	[SchemaMember("CPlayer_MovementServices", "m_flForwardMove")]
-	public ref float ForwardMove => ref Schema.GetRef<float>(this.Handle, "CPlayer_MovementServices", "m_flForwardMove");
+	public float ForwardMove
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPlayer_MovementServices", "m_flForwardMove"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPlayer_MovementServices", "m_flForwardMove", value); }
+	}
 
 	// m_flLeftMove
 	[SchemaMember("CPlayer_MovementServices", "m_flLeftMove")]
-	public ref float LeftMove => ref Schema.GetRef<float>(this.Handle, "CPlayer_MovementServices", "m_flLeftMove");
+	public float LeftMove
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPlayer_MovementServices", "m_flLeftMove"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPlayer_MovementServices", "m_flLeftMove", value); }
+	}
 
 	// m_flUpMove
 	[SchemaMember("CPlayer_MovementServices", "m_flUpMove")]
-	public ref float UpMove => ref Schema.GetRef<float>(this.Handle, "CPlayer_MovementServices", "m_flUpMove");
+	public float UpMove
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPlayer_MovementServices", "m_flUpMove"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPlayer_MovementServices", "m_flUpMove", value); }
+	}
 
 	// m_vecLastMovementImpulses
 	[SchemaMember("CPlayer_MovementServices", "m_vecLastMovementImpulses")]
-	public Vector LastMovementImpulses => Schema.GetDeclaredClass<Vector>(this.Handle, "CPlayer_MovementServices", "m_vecLastMovementImpulses");
+	public Vector3 LastMovementImpulses
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CPlayer_MovementServices", "m_vecLastMovementImpulses"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CPlayer_MovementServices", "m_vecLastMovementImpulses", value); }
+	}
 
 	// m_vecOldViewAngles
 	[SchemaMember("CPlayer_MovementServices", "m_vecOldViewAngles")]
-	public QAngle OldViewAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPlayer_MovementServices", "m_vecOldViewAngles");
+	public QAngle OldViewAngles
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CPlayer_MovementServices", "m_vecOldViewAngles"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CPlayer_MovementServices", "m_vecOldViewAngles", value); }
+	}
 
 }

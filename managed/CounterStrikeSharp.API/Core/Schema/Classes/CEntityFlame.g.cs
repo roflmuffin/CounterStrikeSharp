@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,27 +25,51 @@ public partial class CEntityFlame : CBaseEntity
 
 	// m_bCheapEffect
 	[SchemaMember("CEntityFlame", "m_bCheapEffect")]
-	public ref bool CheapEffect => ref Schema.GetRef<bool>(this.Handle, "CEntityFlame", "m_bCheapEffect");
+	public bool CheapEffect
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEntityFlame", "m_bCheapEffect"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEntityFlame", "m_bCheapEffect", value); }
+	}
 
 	// m_flSize
 	[SchemaMember("CEntityFlame", "m_flSize")]
-	public ref float Size => ref Schema.GetRef<float>(this.Handle, "CEntityFlame", "m_flSize");
+	public float Size
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEntityFlame", "m_flSize"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEntityFlame", "m_flSize", value); }
+	}
 
 	// m_bUseHitboxes
 	[SchemaMember("CEntityFlame", "m_bUseHitboxes")]
-	public ref bool UseHitboxes => ref Schema.GetRef<bool>(this.Handle, "CEntityFlame", "m_bUseHitboxes");
+	public bool UseHitboxes
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEntityFlame", "m_bUseHitboxes"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEntityFlame", "m_bUseHitboxes", value); }
+	}
 
 	// m_iNumHitboxFires
 	[SchemaMember("CEntityFlame", "m_iNumHitboxFires")]
-	public ref Int32 NumHitboxFires => ref Schema.GetRef<Int32>(this.Handle, "CEntityFlame", "m_iNumHitboxFires");
+	public Int32 NumHitboxFires
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEntityFlame", "m_iNumHitboxFires"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEntityFlame", "m_iNumHitboxFires", value); }
+	}
 
 	// m_flHitboxFireScale
 	[SchemaMember("CEntityFlame", "m_flHitboxFireScale")]
-	public ref float HitboxFireScale => ref Schema.GetRef<float>(this.Handle, "CEntityFlame", "m_flHitboxFireScale");
+	public float HitboxFireScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEntityFlame", "m_flHitboxFireScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEntityFlame", "m_flHitboxFireScale", value); }
+	}
 
 	// m_flLifetime
 	[SchemaMember("CEntityFlame", "m_flLifetime")]
-	public ref float Lifetime => ref Schema.GetRef<float>(this.Handle, "CEntityFlame", "m_flLifetime");
+	public float Lifetime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEntityFlame", "m_flLifetime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEntityFlame", "m_flLifetime", value); }
+	}
 
 	// m_hAttacker
 	[SchemaMember("CEntityFlame", "m_hAttacker")]
@@ -52,10 +77,18 @@ public partial class CEntityFlame : CBaseEntity
 
 	// m_flDirectDamagePerSecond
 	[SchemaMember("CEntityFlame", "m_flDirectDamagePerSecond")]
-	public ref float DirectDamagePerSecond => ref Schema.GetRef<float>(this.Handle, "CEntityFlame", "m_flDirectDamagePerSecond");
+	public float DirectDamagePerSecond
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEntityFlame", "m_flDirectDamagePerSecond"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEntityFlame", "m_flDirectDamagePerSecond", value); }
+	}
 
 	// m_iCustomDamageType
 	[SchemaMember("CEntityFlame", "m_iCustomDamageType")]
-	public ref Int32 CustomDamageType => ref Schema.GetRef<Int32>(this.Handle, "CEntityFlame", "m_iCustomDamageType");
+	public Int32 CustomDamageType
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEntityFlame", "m_iCustomDamageType"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEntityFlame", "m_iCustomDamageType", value); }
+	}
 
 }

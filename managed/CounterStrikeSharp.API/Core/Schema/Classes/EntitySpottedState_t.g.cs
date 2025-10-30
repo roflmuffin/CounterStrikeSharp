@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class EntitySpottedState_t : NativeObject
 
 	// m_bSpotted
 	[SchemaMember("EntitySpottedState_t", "m_bSpotted")]
-	public ref bool Spotted => ref Schema.GetRef<bool>(this.Handle, "EntitySpottedState_t", "m_bSpotted");
+	public bool Spotted
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "EntitySpottedState_t", "m_bSpotted"); }
+		set { Schema.SetValueType<bool>(this.Handle, "EntitySpottedState_t", "m_bSpotted", value); }
+	}
 
 	// m_bSpottedByMask
 	[SchemaMember("EntitySpottedState_t", "m_bSpottedByMask")]

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -32,7 +33,11 @@ public partial class CMultiSource : CLogicalEntity
 
 	// m_iTotal
 	[SchemaMember("CMultiSource", "m_iTotal")]
-	public ref Int32 Total => ref Schema.GetRef<Int32>(this.Handle, "CMultiSource", "m_iTotal");
+	public Int32 Total
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CMultiSource", "m_iTotal"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CMultiSource", "m_iTotal", value); }
+	}
 
 	// m_globalstate
 	[SchemaMember("CMultiSource", "m_globalstate")]

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,18 +21,34 @@ public partial class ragdollelement_t : NativeObject
 
 	// originParentSpace
 	[SchemaMember("ragdollelement_t", "originParentSpace")]
-	public Vector OriginParentSpace => Schema.GetDeclaredClass<Vector>(this.Handle, "ragdollelement_t", "originParentSpace");
+	public Vector3 OriginParentSpace
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "ragdollelement_t", "originParentSpace"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "ragdollelement_t", "originParentSpace", value); }
+	}
 
 	// parentIndex
 	[SchemaMember("ragdollelement_t", "parentIndex")]
-	public ref Int32 ParentIndex => ref Schema.GetRef<Int32>(this.Handle, "ragdollelement_t", "parentIndex");
+	public Int32 ParentIndex
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "ragdollelement_t", "parentIndex"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "ragdollelement_t", "parentIndex", value); }
+	}
 
 	// m_flRadius
 	[SchemaMember("ragdollelement_t", "m_flRadius")]
-	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "ragdollelement_t", "m_flRadius");
+	public float Radius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "ragdollelement_t", "m_flRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "ragdollelement_t", "m_flRadius", value); }
+	}
 
 	// m_nHeight
 	[SchemaMember("ragdollelement_t", "m_nHeight")]
-	public ref Int32 Height => ref Schema.GetRef<Int32>(this.Handle, "ragdollelement_t", "m_nHeight");
+	public Int32 Height
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "ragdollelement_t", "m_nHeight"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "ragdollelement_t", "m_nHeight", value); }
+	}
 
 }

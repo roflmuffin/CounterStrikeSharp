@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,31 +21,59 @@ public partial class CC4 : CCSWeaponBase
 
 	// m_vecLastValidPlayerHeldPosition
 	[SchemaMember("CC4", "m_vecLastValidPlayerHeldPosition")]
-	public Vector LastValidPlayerHeldPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CC4", "m_vecLastValidPlayerHeldPosition");
+	public Vector3 LastValidPlayerHeldPosition
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CC4", "m_vecLastValidPlayerHeldPosition"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CC4", "m_vecLastValidPlayerHeldPosition", value); }
+	}
 
 	// m_vecLastValidDroppedPosition
 	[SchemaMember("CC4", "m_vecLastValidDroppedPosition")]
-	public Vector LastValidDroppedPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CC4", "m_vecLastValidDroppedPosition");
+	public Vector3 LastValidDroppedPosition
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CC4", "m_vecLastValidDroppedPosition"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CC4", "m_vecLastValidDroppedPosition", value); }
+	}
 
 	// m_bDoValidDroppedPositionCheck
 	[SchemaMember("CC4", "m_bDoValidDroppedPositionCheck")]
-	public ref bool DoValidDroppedPositionCheck => ref Schema.GetRef<bool>(this.Handle, "CC4", "m_bDoValidDroppedPositionCheck");
+	public bool DoValidDroppedPositionCheck
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CC4", "m_bDoValidDroppedPositionCheck"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CC4", "m_bDoValidDroppedPositionCheck", value); }
+	}
 
 	// m_bStartedArming
 	[SchemaMember("CC4", "m_bStartedArming")]
-	public ref bool StartedArming => ref Schema.GetRef<bool>(this.Handle, "CC4", "m_bStartedArming");
+	public bool StartedArming
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CC4", "m_bStartedArming"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CC4", "m_bStartedArming", value); }
+	}
 
 	// m_fArmedTime
 	[SchemaMember("CC4", "m_fArmedTime")]
-	public ref float ArmedTime => ref Schema.GetRef<float>(this.Handle, "CC4", "m_fArmedTime");
+	public float ArmedTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CC4", "m_fArmedTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CC4", "m_fArmedTime", value); }
+	}
 
 	// m_bBombPlacedAnimation
 	[SchemaMember("CC4", "m_bBombPlacedAnimation")]
-	public ref bool BombPlacedAnimation => ref Schema.GetRef<bool>(this.Handle, "CC4", "m_bBombPlacedAnimation");
+	public bool BombPlacedAnimation
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CC4", "m_bBombPlacedAnimation"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CC4", "m_bBombPlacedAnimation", value); }
+	}
 
 	// m_bIsPlantingViaUse
 	[SchemaMember("CC4", "m_bIsPlantingViaUse")]
-	public ref bool IsPlantingViaUse => ref Schema.GetRef<bool>(this.Handle, "CC4", "m_bIsPlantingViaUse");
+	public bool IsPlantingViaUse
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CC4", "m_bIsPlantingViaUse"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CC4", "m_bIsPlantingViaUse", value); }
+	}
 
 	// m_entitySpottedState
 	[SchemaMember("CC4", "m_entitySpottedState")]
@@ -52,7 +81,11 @@ public partial class CC4 : CCSWeaponBase
 
 	// m_nSpotRules
 	[SchemaMember("CC4", "m_nSpotRules")]
-	public ref Int32 SpotRules => ref Schema.GetRef<Int32>(this.Handle, "CC4", "m_nSpotRules");
+	public Int32 SpotRules
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CC4", "m_nSpotRules"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CC4", "m_nSpotRules", value); }
+	}
 
 	// m_bPlayedArmingBeeps
 	[SchemaMember("CC4", "m_bPlayedArmingBeeps")]
@@ -60,6 +93,10 @@ public partial class CC4 : CCSWeaponBase
 
 	// m_bBombPlanted
 	[SchemaMember("CC4", "m_bBombPlanted")]
-	public ref bool BombPlanted => ref Schema.GetRef<bool>(this.Handle, "CC4", "m_bBombPlanted");
+	public bool BombPlanted
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CC4", "m_bBombPlanted"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CC4", "m_bBombPlanted", value); }
+	}
 
 }

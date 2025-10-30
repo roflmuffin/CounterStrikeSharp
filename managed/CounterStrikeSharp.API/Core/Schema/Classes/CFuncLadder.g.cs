@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class CFuncLadder : CBaseModelEntity
 
 	// m_vecLadderDir
 	[SchemaMember("CFuncLadder", "m_vecLadderDir")]
-	public Vector LadderDir => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncLadder", "m_vecLadderDir");
+	public Vector3 LadderDir
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CFuncLadder", "m_vecLadderDir"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CFuncLadder", "m_vecLadderDir", value); }
+	}
 
 	// m_Dismounts
 	[SchemaMember("CFuncLadder", "m_Dismounts")]
@@ -28,31 +33,59 @@ public partial class CFuncLadder : CBaseModelEntity
 
 	// m_vecLocalTop
 	[SchemaMember("CFuncLadder", "m_vecLocalTop")]
-	public Vector LocalTop => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncLadder", "m_vecLocalTop");
+	public Vector3 LocalTop
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CFuncLadder", "m_vecLocalTop"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CFuncLadder", "m_vecLocalTop", value); }
+	}
 
 	// m_vecPlayerMountPositionTop
 	[SchemaMember("CFuncLadder", "m_vecPlayerMountPositionTop")]
-	public Vector PlayerMountPositionTop => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncLadder", "m_vecPlayerMountPositionTop");
+	public Vector3 PlayerMountPositionTop
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CFuncLadder", "m_vecPlayerMountPositionTop"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CFuncLadder", "m_vecPlayerMountPositionTop", value); }
+	}
 
 	// m_vecPlayerMountPositionBottom
 	[SchemaMember("CFuncLadder", "m_vecPlayerMountPositionBottom")]
-	public Vector PlayerMountPositionBottom => Schema.GetDeclaredClass<Vector>(this.Handle, "CFuncLadder", "m_vecPlayerMountPositionBottom");
+	public Vector3 PlayerMountPositionBottom
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CFuncLadder", "m_vecPlayerMountPositionBottom"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CFuncLadder", "m_vecPlayerMountPositionBottom", value); }
+	}
 
 	// m_flAutoRideSpeed
 	[SchemaMember("CFuncLadder", "m_flAutoRideSpeed")]
-	public ref float AutoRideSpeed => ref Schema.GetRef<float>(this.Handle, "CFuncLadder", "m_flAutoRideSpeed");
+	public float AutoRideSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFuncLadder", "m_flAutoRideSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFuncLadder", "m_flAutoRideSpeed", value); }
+	}
 
 	// m_bDisabled
 	[SchemaMember("CFuncLadder", "m_bDisabled")]
-	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CFuncLadder", "m_bDisabled");
+	public bool Disabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncLadder", "m_bDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncLadder", "m_bDisabled", value); }
+	}
 
 	// m_bFakeLadder
 	[SchemaMember("CFuncLadder", "m_bFakeLadder")]
-	public ref bool FakeLadder => ref Schema.GetRef<bool>(this.Handle, "CFuncLadder", "m_bFakeLadder");
+	public bool FakeLadder
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncLadder", "m_bFakeLadder"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncLadder", "m_bFakeLadder", value); }
+	}
 
 	// m_bHasSlack
 	[SchemaMember("CFuncLadder", "m_bHasSlack")]
-	public ref bool HasSlack => ref Schema.GetRef<bool>(this.Handle, "CFuncLadder", "m_bHasSlack");
+	public bool HasSlack
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CFuncLadder", "m_bHasSlack"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CFuncLadder", "m_bHasSlack", value); }
+	}
 
 	// m_surfacePropName
 	[SchemaMember("CFuncLadder", "m_surfacePropName")]

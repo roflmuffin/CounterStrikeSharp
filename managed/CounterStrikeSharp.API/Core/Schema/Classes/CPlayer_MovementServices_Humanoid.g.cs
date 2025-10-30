@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,43 +21,83 @@ public partial class CPlayer_MovementServices_Humanoid : CPlayer_MovementService
 
 	// m_flStepSoundTime
 	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_flStepSoundTime")]
-	public ref float StepSoundTime => ref Schema.GetRef<float>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_flStepSoundTime");
+	public float StepSoundTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_flStepSoundTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_flStepSoundTime", value); }
+	}
 
 	// m_flFallVelocity
 	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_flFallVelocity")]
-	public ref float FallVelocity => ref Schema.GetRef<float>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_flFallVelocity");
+	public float FallVelocity
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_flFallVelocity"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_flFallVelocity", value); }
+	}
 
 	// m_bInCrouch
 	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_bInCrouch")]
-	public ref bool InCrouch => ref Schema.GetRef<bool>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_bInCrouch");
+	public bool InCrouch
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_bInCrouch"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_bInCrouch", value); }
+	}
 
 	// m_nCrouchState
 	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_nCrouchState")]
-	public ref UInt32 CrouchState => ref Schema.GetRef<UInt32>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_nCrouchState");
+	public UInt32 CrouchState
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_nCrouchState"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_nCrouchState", value); }
+	}
 
 	// m_flCrouchTransitionStartTime
 	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_flCrouchTransitionStartTime")]
-	public ref float CrouchTransitionStartTime => ref Schema.GetRef<float>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_flCrouchTransitionStartTime");
+	public float CrouchTransitionStartTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_flCrouchTransitionStartTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_flCrouchTransitionStartTime", value); }
+	}
 
 	// m_bDucked
 	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_bDucked")]
-	public ref bool Ducked => ref Schema.GetRef<bool>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_bDucked");
+	public bool Ducked
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_bDucked"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_bDucked", value); }
+	}
 
 	// m_bDucking
 	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_bDucking")]
-	public ref bool Ducking => ref Schema.GetRef<bool>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_bDucking");
+	public bool Ducking
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_bDucking"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_bDucking", value); }
+	}
 
 	// m_bInDuckJump
 	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_bInDuckJump")]
-	public ref bool InDuckJump => ref Schema.GetRef<bool>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_bInDuckJump");
+	public bool InDuckJump
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_bInDuckJump"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_bInDuckJump", value); }
+	}
 
 	// m_groundNormal
 	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_groundNormal")]
-	public Vector GroundNormal => Schema.GetDeclaredClass<Vector>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_groundNormal");
+	public Vector3 GroundNormal
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_groundNormal"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_groundNormal", value); }
+	}
 
 	// m_flSurfaceFriction
 	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_flSurfaceFriction")]
-	public ref float SurfaceFriction => ref Schema.GetRef<float>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_flSurfaceFriction");
+	public float SurfaceFriction
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_flSurfaceFriction"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_flSurfaceFriction", value); }
+	}
 
 	// m_surfaceProps
 	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_surfaceProps")]
@@ -64,10 +105,18 @@ public partial class CPlayer_MovementServices_Humanoid : CPlayer_MovementService
 
 	// m_nStepside
 	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_nStepside")]
-	public ref Int32 Stepside => ref Schema.GetRef<Int32>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_nStepside");
+	public Int32 Stepside
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_nStepside"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_nStepside", value); }
+	}
 
 	// m_vecSmoothedVelocity
 	[SchemaMember("CPlayer_MovementServices_Humanoid", "m_vecSmoothedVelocity")]
-	public Vector SmoothedVelocity => Schema.GetDeclaredClass<Vector>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_vecSmoothedVelocity");
+	public Vector3 SmoothedVelocity
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_vecSmoothedVelocity"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_vecSmoothedVelocity", value); }
+	}
 
 }

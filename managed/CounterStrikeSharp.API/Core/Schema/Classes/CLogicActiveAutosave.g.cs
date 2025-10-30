@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,18 +21,34 @@ public partial class CLogicActiveAutosave : CLogicAutosave
 
 	// m_TriggerHitPoints
 	[SchemaMember("CLogicActiveAutosave", "m_TriggerHitPoints")]
-	public ref Int32 TriggerHitPoints => ref Schema.GetRef<Int32>(this.Handle, "CLogicActiveAutosave", "m_TriggerHitPoints");
+	public Int32 TriggerHitPoints
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicActiveAutosave", "m_TriggerHitPoints"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLogicActiveAutosave", "m_TriggerHitPoints", value); }
+	}
 
 	// m_flTimeToTrigger
 	[SchemaMember("CLogicActiveAutosave", "m_flTimeToTrigger")]
-	public ref float TimeToTrigger => ref Schema.GetRef<float>(this.Handle, "CLogicActiveAutosave", "m_flTimeToTrigger");
+	public float TimeToTrigger
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLogicActiveAutosave", "m_flTimeToTrigger"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLogicActiveAutosave", "m_flTimeToTrigger", value); }
+	}
 
 	// m_flStartTime
 	[SchemaMember("CLogicActiveAutosave", "m_flStartTime")]
-	public ref float StartTime => ref Schema.GetRef<float>(this.Handle, "CLogicActiveAutosave", "m_flStartTime");
+	public float StartTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLogicActiveAutosave", "m_flStartTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLogicActiveAutosave", "m_flStartTime", value); }
+	}
 
 	// m_flDangerousTime
 	[SchemaMember("CLogicActiveAutosave", "m_flDangerousTime")]
-	public ref float DangerousTime => ref Schema.GetRef<float>(this.Handle, "CLogicActiveAutosave", "m_flDangerousTime");
+	public float DangerousTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLogicActiveAutosave", "m_flDangerousTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLogicActiveAutosave", "m_flDangerousTime", value); }
+	}
 
 }

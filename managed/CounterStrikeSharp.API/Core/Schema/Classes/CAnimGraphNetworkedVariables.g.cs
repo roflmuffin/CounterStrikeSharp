@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -48,7 +49,7 @@ public partial class CAnimGraphNetworkedVariables : NativeObject
 
 	// m_PredNetVectorVariables
 	[SchemaMember("CAnimGraphNetworkedVariables", "m_PredNetVectorVariables")]
-	public NetworkedVector<Vector> PredNetVectorVariables => Schema.GetDeclaredClass<NetworkedVector<Vector>>(this.Handle, "CAnimGraphNetworkedVariables", "m_PredNetVectorVariables");
+	public NetworkedVector<Vector3> PredNetVectorVariables => Schema.GetDeclaredClass<NetworkedVector<Vector3>>(this.Handle, "CAnimGraphNetworkedVariables", "m_PredNetVectorVariables");
 
 	// m_PredNetQuaternionVariables
 	[SchemaMember("CAnimGraphNetworkedVariables", "m_PredNetQuaternionVariables")]
@@ -88,7 +89,7 @@ public partial class CAnimGraphNetworkedVariables : NativeObject
 
 	// m_OwnerOnlyPredNetVectorVariables
 	[SchemaMember("CAnimGraphNetworkedVariables", "m_OwnerOnlyPredNetVectorVariables")]
-	public NetworkedVector<Vector> OwnerOnlyPredNetVectorVariables => Schema.GetDeclaredClass<NetworkedVector<Vector>>(this.Handle, "CAnimGraphNetworkedVariables", "m_OwnerOnlyPredNetVectorVariables");
+	public NetworkedVector<Vector3> OwnerOnlyPredNetVectorVariables => Schema.GetDeclaredClass<NetworkedVector<Vector3>>(this.Handle, "CAnimGraphNetworkedVariables", "m_OwnerOnlyPredNetVectorVariables");
 
 	// m_OwnerOnlyPredNetQuaternionVariables
 	[SchemaMember("CAnimGraphNetworkedVariables", "m_OwnerOnlyPredNetQuaternionVariables")]
@@ -100,18 +101,34 @@ public partial class CAnimGraphNetworkedVariables : NativeObject
 
 	// m_nBoolVariablesCount
 	[SchemaMember("CAnimGraphNetworkedVariables", "m_nBoolVariablesCount")]
-	public ref Int32 BoolVariablesCount => ref Schema.GetRef<Int32>(this.Handle, "CAnimGraphNetworkedVariables", "m_nBoolVariablesCount");
+	public Int32 BoolVariablesCount
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CAnimGraphNetworkedVariables", "m_nBoolVariablesCount"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CAnimGraphNetworkedVariables", "m_nBoolVariablesCount", value); }
+	}
 
 	// m_nOwnerOnlyBoolVariablesCount
 	[SchemaMember("CAnimGraphNetworkedVariables", "m_nOwnerOnlyBoolVariablesCount")]
-	public ref Int32 OwnerOnlyBoolVariablesCount => ref Schema.GetRef<Int32>(this.Handle, "CAnimGraphNetworkedVariables", "m_nOwnerOnlyBoolVariablesCount");
+	public Int32 OwnerOnlyBoolVariablesCount
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CAnimGraphNetworkedVariables", "m_nOwnerOnlyBoolVariablesCount"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CAnimGraphNetworkedVariables", "m_nOwnerOnlyBoolVariablesCount", value); }
+	}
 
 	// m_nRandomSeedOffset
 	[SchemaMember("CAnimGraphNetworkedVariables", "m_nRandomSeedOffset")]
-	public ref Int32 RandomSeedOffset => ref Schema.GetRef<Int32>(this.Handle, "CAnimGraphNetworkedVariables", "m_nRandomSeedOffset");
+	public Int32 RandomSeedOffset
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CAnimGraphNetworkedVariables", "m_nRandomSeedOffset"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CAnimGraphNetworkedVariables", "m_nRandomSeedOffset", value); }
+	}
 
 	// m_flLastTeleportTime
 	[SchemaMember("CAnimGraphNetworkedVariables", "m_flLastTeleportTime")]
-	public ref float LastTeleportTime => ref Schema.GetRef<float>(this.Handle, "CAnimGraphNetworkedVariables", "m_flLastTeleportTime");
+	public float LastTeleportTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CAnimGraphNetworkedVariables", "m_flLastTeleportTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CAnimGraphNetworkedVariables", "m_flLastTeleportTime", value); }
+	}
 
 }

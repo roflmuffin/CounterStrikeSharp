@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -64,27 +65,51 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_flDistanceMax
 	[SchemaMember("CLogicNPCCounter", "m_flDistanceMax")]
-	public ref float DistanceMax => ref Schema.GetRef<float>(this.Handle, "CLogicNPCCounter", "m_flDistanceMax");
+	public float DistanceMax
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLogicNPCCounter", "m_flDistanceMax"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLogicNPCCounter", "m_flDistanceMax", value); }
+	}
 
 	// m_bDisabled
 	[SchemaMember("CLogicNPCCounter", "m_bDisabled")]
-	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CLogicNPCCounter", "m_bDisabled");
+	public bool Disabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CLogicNPCCounter", "m_bDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CLogicNPCCounter", "m_bDisabled", value); }
+	}
 
 	// m_nMinCountAll
 	[SchemaMember("CLogicNPCCounter", "m_nMinCountAll")]
-	public ref Int32 MinCountAll => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinCountAll");
+	public Int32 MinCountAll
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinCountAll"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinCountAll", value); }
+	}
 
 	// m_nMaxCountAll
 	[SchemaMember("CLogicNPCCounter", "m_nMaxCountAll")]
-	public ref Int32 MaxCountAll => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxCountAll");
+	public Int32 MaxCountAll
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxCountAll"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxCountAll", value); }
+	}
 
 	// m_nMinFactorAll
 	[SchemaMember("CLogicNPCCounter", "m_nMinFactorAll")]
-	public ref Int32 MinFactorAll => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinFactorAll");
+	public Int32 MinFactorAll
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinFactorAll"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinFactorAll", value); }
+	}
 
 	// m_nMaxFactorAll
 	[SchemaMember("CLogicNPCCounter", "m_nMaxFactorAll")]
-	public ref Int32 MaxFactorAll => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxFactorAll");
+	public Int32 MaxFactorAll
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxFactorAll"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxFactorAll", value); }
+	}
 
 	// m_iszNPCClassname_1
 	[SchemaMember("CLogicNPCCounter", "m_iszNPCClassname_1")]
@@ -96,31 +121,59 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_nNPCState_1
 	[SchemaMember("CLogicNPCCounter", "m_nNPCState_1")]
-	public ref Int32 NPCState_1 => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nNPCState_1");
+	public Int32 NPCState_1
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nNPCState_1"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nNPCState_1", value); }
+	}
 
 	// m_bInvertState_1
 	[SchemaMember("CLogicNPCCounter", "m_bInvertState_1")]
-	public ref bool InvertState_1 => ref Schema.GetRef<bool>(this.Handle, "CLogicNPCCounter", "m_bInvertState_1");
+	public bool InvertState_1
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CLogicNPCCounter", "m_bInvertState_1"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CLogicNPCCounter", "m_bInvertState_1", value); }
+	}
 
 	// m_nMinCount_1
 	[SchemaMember("CLogicNPCCounter", "m_nMinCount_1")]
-	public ref Int32 MinCount_1 => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinCount_1");
+	public Int32 MinCount_1
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinCount_1"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinCount_1", value); }
+	}
 
 	// m_nMaxCount_1
 	[SchemaMember("CLogicNPCCounter", "m_nMaxCount_1")]
-	public ref Int32 MaxCount_1 => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxCount_1");
+	public Int32 MaxCount_1
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxCount_1"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxCount_1", value); }
+	}
 
 	// m_nMinFactor_1
 	[SchemaMember("CLogicNPCCounter", "m_nMinFactor_1")]
-	public ref Int32 MinFactor_1 => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinFactor_1");
+	public Int32 MinFactor_1
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinFactor_1"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinFactor_1", value); }
+	}
 
 	// m_nMaxFactor_1
 	[SchemaMember("CLogicNPCCounter", "m_nMaxFactor_1")]
-	public ref Int32 MaxFactor_1 => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxFactor_1");
+	public Int32 MaxFactor_1
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxFactor_1"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxFactor_1", value); }
+	}
 
 	// m_flDefaultDist_1
 	[SchemaMember("CLogicNPCCounter", "m_flDefaultDist_1")]
-	public ref float DefaultDist_1 => ref Schema.GetRef<float>(this.Handle, "CLogicNPCCounter", "m_flDefaultDist_1");
+	public float DefaultDist_1
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLogicNPCCounter", "m_flDefaultDist_1"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLogicNPCCounter", "m_flDefaultDist_1", value); }
+	}
 
 	// m_iszNPCClassname_2
 	[SchemaMember("CLogicNPCCounter", "m_iszNPCClassname_2")]
@@ -132,31 +185,59 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_nNPCState_2
 	[SchemaMember("CLogicNPCCounter", "m_nNPCState_2")]
-	public ref Int32 NPCState_2 => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nNPCState_2");
+	public Int32 NPCState_2
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nNPCState_2"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nNPCState_2", value); }
+	}
 
 	// m_bInvertState_2
 	[SchemaMember("CLogicNPCCounter", "m_bInvertState_2")]
-	public ref bool InvertState_2 => ref Schema.GetRef<bool>(this.Handle, "CLogicNPCCounter", "m_bInvertState_2");
+	public bool InvertState_2
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CLogicNPCCounter", "m_bInvertState_2"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CLogicNPCCounter", "m_bInvertState_2", value); }
+	}
 
 	// m_nMinCount_2
 	[SchemaMember("CLogicNPCCounter", "m_nMinCount_2")]
-	public ref Int32 MinCount_2 => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinCount_2");
+	public Int32 MinCount_2
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinCount_2"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinCount_2", value); }
+	}
 
 	// m_nMaxCount_2
 	[SchemaMember("CLogicNPCCounter", "m_nMaxCount_2")]
-	public ref Int32 MaxCount_2 => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxCount_2");
+	public Int32 MaxCount_2
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxCount_2"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxCount_2", value); }
+	}
 
 	// m_nMinFactor_2
 	[SchemaMember("CLogicNPCCounter", "m_nMinFactor_2")]
-	public ref Int32 MinFactor_2 => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinFactor_2");
+	public Int32 MinFactor_2
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinFactor_2"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinFactor_2", value); }
+	}
 
 	// m_nMaxFactor_2
 	[SchemaMember("CLogicNPCCounter", "m_nMaxFactor_2")]
-	public ref Int32 MaxFactor_2 => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxFactor_2");
+	public Int32 MaxFactor_2
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxFactor_2"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxFactor_2", value); }
+	}
 
 	// m_flDefaultDist_2
 	[SchemaMember("CLogicNPCCounter", "m_flDefaultDist_2")]
-	public ref float DefaultDist_2 => ref Schema.GetRef<float>(this.Handle, "CLogicNPCCounter", "m_flDefaultDist_2");
+	public float DefaultDist_2
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLogicNPCCounter", "m_flDefaultDist_2"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLogicNPCCounter", "m_flDefaultDist_2", value); }
+	}
 
 	// m_iszNPCClassname_3
 	[SchemaMember("CLogicNPCCounter", "m_iszNPCClassname_3")]
@@ -168,30 +249,58 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_nNPCState_3
 	[SchemaMember("CLogicNPCCounter", "m_nNPCState_3")]
-	public ref Int32 NPCState_3 => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nNPCState_3");
+	public Int32 NPCState_3
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nNPCState_3"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nNPCState_3", value); }
+	}
 
 	// m_bInvertState_3
 	[SchemaMember("CLogicNPCCounter", "m_bInvertState_3")]
-	public ref bool InvertState_3 => ref Schema.GetRef<bool>(this.Handle, "CLogicNPCCounter", "m_bInvertState_3");
+	public bool InvertState_3
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CLogicNPCCounter", "m_bInvertState_3"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CLogicNPCCounter", "m_bInvertState_3", value); }
+	}
 
 	// m_nMinCount_3
 	[SchemaMember("CLogicNPCCounter", "m_nMinCount_3")]
-	public ref Int32 MinCount_3 => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinCount_3");
+	public Int32 MinCount_3
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinCount_3"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinCount_3", value); }
+	}
 
 	// m_nMaxCount_3
 	[SchemaMember("CLogicNPCCounter", "m_nMaxCount_3")]
-	public ref Int32 MaxCount_3 => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxCount_3");
+	public Int32 MaxCount_3
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxCount_3"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxCount_3", value); }
+	}
 
 	// m_nMinFactor_3
 	[SchemaMember("CLogicNPCCounter", "m_nMinFactor_3")]
-	public ref Int32 MinFactor_3 => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinFactor_3");
+	public Int32 MinFactor_3
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinFactor_3"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMinFactor_3", value); }
+	}
 
 	// m_nMaxFactor_3
 	[SchemaMember("CLogicNPCCounter", "m_nMaxFactor_3")]
-	public ref Int32 MaxFactor_3 => ref Schema.GetRef<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxFactor_3");
+	public Int32 MaxFactor_3
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxFactor_3"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CLogicNPCCounter", "m_nMaxFactor_3", value); }
+	}
 
 	// m_flDefaultDist_3
 	[SchemaMember("CLogicNPCCounter", "m_flDefaultDist_3")]
-	public ref float DefaultDist_3 => ref Schema.GetRef<float>(this.Handle, "CLogicNPCCounter", "m_flDefaultDist_3");
+	public float DefaultDist_3
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CLogicNPCCounter", "m_flDefaultDist_3"); }
+		set { Schema.SetValueType<float>(this.Handle, "CLogicNPCCounter", "m_flDefaultDist_3", value); }
+	}
 
 }

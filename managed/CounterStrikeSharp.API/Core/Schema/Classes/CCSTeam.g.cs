@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,15 +21,27 @@ public partial class CCSTeam : CTeam
 
 	// m_nLastRecievedShorthandedRoundBonus
 	[SchemaMember("CCSTeam", "m_nLastRecievedShorthandedRoundBonus")]
-	public ref Int32 LastRecievedShorthandedRoundBonus => ref Schema.GetRef<Int32>(this.Handle, "CCSTeam", "m_nLastRecievedShorthandedRoundBonus");
+	public Int32 LastRecievedShorthandedRoundBonus
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSTeam", "m_nLastRecievedShorthandedRoundBonus"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSTeam", "m_nLastRecievedShorthandedRoundBonus", value); }
+	}
 
 	// m_nShorthandedRoundBonusStartRound
 	[SchemaMember("CCSTeam", "m_nShorthandedRoundBonusStartRound")]
-	public ref Int32 ShorthandedRoundBonusStartRound => ref Schema.GetRef<Int32>(this.Handle, "CCSTeam", "m_nShorthandedRoundBonusStartRound");
+	public Int32 ShorthandedRoundBonusStartRound
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSTeam", "m_nShorthandedRoundBonusStartRound"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSTeam", "m_nShorthandedRoundBonusStartRound", value); }
+	}
 
 	// m_bSurrendered
 	[SchemaMember("CCSTeam", "m_bSurrendered")]
-	public ref bool Surrendered => ref Schema.GetRef<bool>(this.Handle, "CCSTeam", "m_bSurrendered");
+	public bool Surrendered
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSTeam", "m_bSurrendered"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSTeam", "m_bSurrendered", value); }
+	}
 
 	// m_szTeamMatchStat
 	[SchemaMember("CCSTeam", "m_szTeamMatchStat")]
@@ -40,19 +53,35 @@ public partial class CCSTeam : CTeam
 
 	// m_numMapVictories
 	[SchemaMember("CCSTeam", "m_numMapVictories")]
-	public ref Int32 NumMapVictories => ref Schema.GetRef<Int32>(this.Handle, "CCSTeam", "m_numMapVictories");
+	public Int32 NumMapVictories
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSTeam", "m_numMapVictories"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSTeam", "m_numMapVictories", value); }
+	}
 
 	// m_scoreFirstHalf
 	[SchemaMember("CCSTeam", "m_scoreFirstHalf")]
-	public ref Int32 ScoreFirstHalf => ref Schema.GetRef<Int32>(this.Handle, "CCSTeam", "m_scoreFirstHalf");
+	public Int32 ScoreFirstHalf
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSTeam", "m_scoreFirstHalf"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSTeam", "m_scoreFirstHalf", value); }
+	}
 
 	// m_scoreSecondHalf
 	[SchemaMember("CCSTeam", "m_scoreSecondHalf")]
-	public ref Int32 ScoreSecondHalf => ref Schema.GetRef<Int32>(this.Handle, "CCSTeam", "m_scoreSecondHalf");
+	public Int32 ScoreSecondHalf
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSTeam", "m_scoreSecondHalf"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSTeam", "m_scoreSecondHalf", value); }
+	}
 
 	// m_scoreOvertime
 	[SchemaMember("CCSTeam", "m_scoreOvertime")]
-	public ref Int32 ScoreOvertime => ref Schema.GetRef<Int32>(this.Handle, "CCSTeam", "m_scoreOvertime");
+	public Int32 ScoreOvertime
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSTeam", "m_scoreOvertime"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSTeam", "m_scoreOvertime", value); }
+	}
 
 	// m_szClanTeamname
 	[SchemaMember("CCSTeam", "m_szClanTeamname")]
@@ -64,7 +93,11 @@ public partial class CCSTeam : CTeam
 
 	// m_iClanID
 	[SchemaMember("CCSTeam", "m_iClanID")]
-	public ref UInt32 ClanID => ref Schema.GetRef<UInt32>(this.Handle, "CCSTeam", "m_iClanID");
+	public UInt32 ClanID
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSTeam", "m_iClanID"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CCSTeam", "m_iClanID", value); }
+	}
 
 	// m_szTeamFlagImage
 	[SchemaMember("CCSTeam", "m_szTeamFlagImage")]
@@ -84,10 +117,18 @@ public partial class CCSTeam : CTeam
 
 	// m_flNextResourceTime
 	[SchemaMember("CCSTeam", "m_flNextResourceTime")]
-	public ref float NextResourceTime => ref Schema.GetRef<float>(this.Handle, "CCSTeam", "m_flNextResourceTime");
+	public float NextResourceTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSTeam", "m_flNextResourceTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSTeam", "m_flNextResourceTime", value); }
+	}
 
 	// m_iLastUpdateSentAt
 	[SchemaMember("CCSTeam", "m_iLastUpdateSentAt")]
-	public ref Int32 LastUpdateSentAt => ref Schema.GetRef<Int32>(this.Handle, "CCSTeam", "m_iLastUpdateSentAt");
+	public Int32 LastUpdateSentAt
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSTeam", "m_iLastUpdateSentAt"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSTeam", "m_iLastUpdateSentAt", value); }
+	}
 
 }

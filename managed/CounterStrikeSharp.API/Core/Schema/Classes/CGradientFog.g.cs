@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,39 +25,75 @@ public partial class CGradientFog : CBaseEntity
 
 	// m_flFogStartDistance
 	[SchemaMember("CGradientFog", "m_flFogStartDistance")]
-	public ref float FogStartDistance => ref Schema.GetRef<float>(this.Handle, "CGradientFog", "m_flFogStartDistance");
+	public float FogStartDistance
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGradientFog", "m_flFogStartDistance"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGradientFog", "m_flFogStartDistance", value); }
+	}
 
 	// m_flFogEndDistance
 	[SchemaMember("CGradientFog", "m_flFogEndDistance")]
-	public ref float FogEndDistance => ref Schema.GetRef<float>(this.Handle, "CGradientFog", "m_flFogEndDistance");
+	public float FogEndDistance
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGradientFog", "m_flFogEndDistance"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGradientFog", "m_flFogEndDistance", value); }
+	}
 
 	// m_bHeightFogEnabled
 	[SchemaMember("CGradientFog", "m_bHeightFogEnabled")]
-	public ref bool HeightFogEnabled => ref Schema.GetRef<bool>(this.Handle, "CGradientFog", "m_bHeightFogEnabled");
+	public bool HeightFogEnabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CGradientFog", "m_bHeightFogEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CGradientFog", "m_bHeightFogEnabled", value); }
+	}
 
 	// m_flFogStartHeight
 	[SchemaMember("CGradientFog", "m_flFogStartHeight")]
-	public ref float FogStartHeight => ref Schema.GetRef<float>(this.Handle, "CGradientFog", "m_flFogStartHeight");
+	public float FogStartHeight
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGradientFog", "m_flFogStartHeight"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGradientFog", "m_flFogStartHeight", value); }
+	}
 
 	// m_flFogEndHeight
 	[SchemaMember("CGradientFog", "m_flFogEndHeight")]
-	public ref float FogEndHeight => ref Schema.GetRef<float>(this.Handle, "CGradientFog", "m_flFogEndHeight");
+	public float FogEndHeight
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGradientFog", "m_flFogEndHeight"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGradientFog", "m_flFogEndHeight", value); }
+	}
 
 	// m_flFarZ
 	[SchemaMember("CGradientFog", "m_flFarZ")]
-	public ref float FarZ => ref Schema.GetRef<float>(this.Handle, "CGradientFog", "m_flFarZ");
+	public float FarZ
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGradientFog", "m_flFarZ"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGradientFog", "m_flFarZ", value); }
+	}
 
 	// m_flFogMaxOpacity
 	[SchemaMember("CGradientFog", "m_flFogMaxOpacity")]
-	public ref float FogMaxOpacity => ref Schema.GetRef<float>(this.Handle, "CGradientFog", "m_flFogMaxOpacity");
+	public float FogMaxOpacity
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGradientFog", "m_flFogMaxOpacity"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGradientFog", "m_flFogMaxOpacity", value); }
+	}
 
 	// m_flFogFalloffExponent
 	[SchemaMember("CGradientFog", "m_flFogFalloffExponent")]
-	public ref float FogFalloffExponent => ref Schema.GetRef<float>(this.Handle, "CGradientFog", "m_flFogFalloffExponent");
+	public float FogFalloffExponent
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGradientFog", "m_flFogFalloffExponent"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGradientFog", "m_flFogFalloffExponent", value); }
+	}
 
 	// m_flFogVerticalExponent
 	[SchemaMember("CGradientFog", "m_flFogVerticalExponent")]
-	public ref float FogVerticalExponent => ref Schema.GetRef<float>(this.Handle, "CGradientFog", "m_flFogVerticalExponent");
+	public float FogVerticalExponent
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGradientFog", "m_flFogVerticalExponent"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGradientFog", "m_flFogVerticalExponent", value); }
+	}
 
 	// m_fogColor
 	[SchemaMember("CGradientFog", "m_fogColor")]
@@ -68,22 +105,42 @@ public partial class CGradientFog : CBaseEntity
 
 	// m_flFogStrength
 	[SchemaMember("CGradientFog", "m_flFogStrength")]
-	public ref float FogStrength => ref Schema.GetRef<float>(this.Handle, "CGradientFog", "m_flFogStrength");
+	public float FogStrength
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGradientFog", "m_flFogStrength"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGradientFog", "m_flFogStrength", value); }
+	}
 
 	// m_flFadeTime
 	[SchemaMember("CGradientFog", "m_flFadeTime")]
-	public ref float FadeTime => ref Schema.GetRef<float>(this.Handle, "CGradientFog", "m_flFadeTime");
+	public float FadeTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CGradientFog", "m_flFadeTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CGradientFog", "m_flFadeTime", value); }
+	}
 
 	// m_bStartDisabled
 	[SchemaMember("CGradientFog", "m_bStartDisabled")]
-	public ref bool StartDisabled => ref Schema.GetRef<bool>(this.Handle, "CGradientFog", "m_bStartDisabled");
+	public bool StartDisabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CGradientFog", "m_bStartDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CGradientFog", "m_bStartDisabled", value); }
+	}
 
 	// m_bIsEnabled
 	[SchemaMember("CGradientFog", "m_bIsEnabled")]
-	public ref bool IsEnabled => ref Schema.GetRef<bool>(this.Handle, "CGradientFog", "m_bIsEnabled");
+	public bool IsEnabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CGradientFog", "m_bIsEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CGradientFog", "m_bIsEnabled", value); }
+	}
 
 	// m_bGradientFogNeedsTextures
 	[SchemaMember("CGradientFog", "m_bGradientFogNeedsTextures")]
-	public ref bool GradientFogNeedsTextures => ref Schema.GetRef<bool>(this.Handle, "CGradientFog", "m_bGradientFogNeedsTextures");
+	public bool GradientFogNeedsTextures
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CGradientFog", "m_bGradientFogNeedsTextures"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CGradientFog", "m_bGradientFogNeedsTextures", value); }
+	}
 
 }

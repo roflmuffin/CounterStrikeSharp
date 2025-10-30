@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -32,10 +33,18 @@ public partial class CTriggerProximity : CBaseTrigger
 
 	// m_fRadius
 	[SchemaMember("CTriggerProximity", "m_fRadius")]
-	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CTriggerProximity", "m_fRadius");
+	public float Radius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerProximity", "m_fRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerProximity", "m_fRadius", value); }
+	}
 
 	// m_nTouchers
 	[SchemaMember("CTriggerProximity", "m_nTouchers")]
-	public ref Int32 Touchers => ref Schema.GetRef<Int32>(this.Handle, "CTriggerProximity", "m_nTouchers");
+	public Int32 Touchers
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CTriggerProximity", "m_nTouchers"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CTriggerProximity", "m_nTouchers", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,10 +21,18 @@ public partial class CEnvViewPunch : CPointEntity
 
 	// m_flRadius
 	[SchemaMember("CEnvViewPunch", "m_flRadius")]
-	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CEnvViewPunch", "m_flRadius");
+	public float Radius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvViewPunch", "m_flRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvViewPunch", "m_flRadius", value); }
+	}
 
 	// m_angViewPunch
 	[SchemaMember("CEnvViewPunch", "m_angViewPunch")]
-	public QAngle ViewPunch => Schema.GetDeclaredClass<QAngle>(this.Handle, "CEnvViewPunch", "m_angViewPunch");
+	public QAngle ViewPunch
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CEnvViewPunch", "m_angViewPunch"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CEnvViewPunch", "m_angViewPunch", value); }
+	}
 
 }

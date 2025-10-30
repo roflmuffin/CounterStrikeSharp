@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,6 +21,10 @@ public partial class CBuyZone : CBaseTrigger
 
 	// m_LegacyTeamNum
 	[SchemaMember("CBuyZone", "m_LegacyTeamNum")]
-	public ref Int32 LegacyTeamNum => ref Schema.GetRef<Int32>(this.Handle, "CBuyZone", "m_LegacyTeamNum");
+	public Int32 LegacyTeamNum
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBuyZone", "m_LegacyTeamNum"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBuyZone", "m_LegacyTeamNum", value); }
+	}
 
 }

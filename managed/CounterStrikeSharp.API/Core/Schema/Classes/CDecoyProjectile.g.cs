@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,18 +21,34 @@ public partial class CDecoyProjectile : CBaseCSGrenadeProjectile
 
 	// m_nDecoyShotTick
 	[SchemaMember("CDecoyProjectile", "m_nDecoyShotTick")]
-	public ref Int32 DecoyShotTick => ref Schema.GetRef<Int32>(this.Handle, "CDecoyProjectile", "m_nDecoyShotTick");
+	public Int32 DecoyShotTick
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CDecoyProjectile", "m_nDecoyShotTick"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CDecoyProjectile", "m_nDecoyShotTick", value); }
+	}
 
 	// m_shotsRemaining
 	[SchemaMember("CDecoyProjectile", "m_shotsRemaining")]
-	public ref Int32 ShotsRemaining => ref Schema.GetRef<Int32>(this.Handle, "CDecoyProjectile", "m_shotsRemaining");
+	public Int32 ShotsRemaining
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CDecoyProjectile", "m_shotsRemaining"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CDecoyProjectile", "m_shotsRemaining", value); }
+	}
 
 	// m_fExpireTime
 	[SchemaMember("CDecoyProjectile", "m_fExpireTime")]
-	public ref float ExpireTime => ref Schema.GetRef<float>(this.Handle, "CDecoyProjectile", "m_fExpireTime");
+	public float ExpireTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CDecoyProjectile", "m_fExpireTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CDecoyProjectile", "m_fExpireTime", value); }
+	}
 
 	// m_decoyWeaponDefIndex
 	[SchemaMember("CDecoyProjectile", "m_decoyWeaponDefIndex")]
-	public ref UInt16 DecoyWeaponDefIndex => ref Schema.GetRef<UInt16>(this.Handle, "CDecoyProjectile", "m_decoyWeaponDefIndex");
+	public UInt16 DecoyWeaponDefIndex
+	{
+		get { return Schema.GetValueType<UInt16>(this.Handle, "CDecoyProjectile", "m_decoyWeaponDefIndex"); }
+		set { Schema.SetValueType<UInt16>(this.Handle, "CDecoyProjectile", "m_decoyWeaponDefIndex", value); }
+	}
 
 }

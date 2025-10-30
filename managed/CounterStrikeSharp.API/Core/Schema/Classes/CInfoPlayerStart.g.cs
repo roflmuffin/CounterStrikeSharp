@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,11 +21,19 @@ public partial class CInfoPlayerStart : CPointEntity
 
 	// m_bDisabled
 	[SchemaMember("CInfoPlayerStart", "m_bDisabled")]
-	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CInfoPlayerStart", "m_bDisabled");
+	public bool Disabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CInfoPlayerStart", "m_bDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CInfoPlayerStart", "m_bDisabled", value); }
+	}
 
 	// m_bIsMaster
 	[SchemaMember("CInfoPlayerStart", "m_bIsMaster")]
-	public ref bool IsMaster => ref Schema.GetRef<bool>(this.Handle, "CInfoPlayerStart", "m_bIsMaster");
+	public bool IsMaster
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CInfoPlayerStart", "m_bIsMaster"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CInfoPlayerStart", "m_bIsMaster", value); }
+	}
 
 	// m_pPawnSubclass
 	[SchemaMember("CInfoPlayerStart", "m_pPawnSubclass")]

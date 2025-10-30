@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,15 +21,27 @@ public partial class CInfoOffscreenPanoramaTexture : CPointEntity
 
 	// m_bDisabled
 	[SchemaMember("CInfoOffscreenPanoramaTexture", "m_bDisabled")]
-	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CInfoOffscreenPanoramaTexture", "m_bDisabled");
+	public bool Disabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CInfoOffscreenPanoramaTexture", "m_bDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CInfoOffscreenPanoramaTexture", "m_bDisabled", value); }
+	}
 
 	// m_nResolutionX
 	[SchemaMember("CInfoOffscreenPanoramaTexture", "m_nResolutionX")]
-	public ref Int32 ResolutionX => ref Schema.GetRef<Int32>(this.Handle, "CInfoOffscreenPanoramaTexture", "m_nResolutionX");
+	public Int32 ResolutionX
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CInfoOffscreenPanoramaTexture", "m_nResolutionX"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CInfoOffscreenPanoramaTexture", "m_nResolutionX", value); }
+	}
 
 	// m_nResolutionY
 	[SchemaMember("CInfoOffscreenPanoramaTexture", "m_nResolutionY")]
-	public ref Int32 ResolutionY => ref Schema.GetRef<Int32>(this.Handle, "CInfoOffscreenPanoramaTexture", "m_nResolutionY");
+	public Int32 ResolutionY
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CInfoOffscreenPanoramaTexture", "m_nResolutionY"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CInfoOffscreenPanoramaTexture", "m_nResolutionY", value); }
+	}
 
 	// m_szLayoutFileName
 	[SchemaMember("CInfoOffscreenPanoramaTexture", "m_szLayoutFileName")]
@@ -52,7 +65,11 @@ public partial class CInfoOffscreenPanoramaTexture : CPointEntity
 
 	// m_nTargetChangeCount
 	[SchemaMember("CInfoOffscreenPanoramaTexture", "m_nTargetChangeCount")]
-	public ref Int32 TargetChangeCount => ref Schema.GetRef<Int32>(this.Handle, "CInfoOffscreenPanoramaTexture", "m_nTargetChangeCount");
+	public Int32 TargetChangeCount
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CInfoOffscreenPanoramaTexture", "m_nTargetChangeCount"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CInfoOffscreenPanoramaTexture", "m_nTargetChangeCount", value); }
+	}
 
 	// m_vecCSSClasses
 	[SchemaMember("CInfoOffscreenPanoramaTexture", "m_vecCSSClasses")]

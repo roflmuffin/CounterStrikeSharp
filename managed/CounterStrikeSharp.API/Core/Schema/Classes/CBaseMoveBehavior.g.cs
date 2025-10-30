@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,23 +21,43 @@ public partial class CBaseMoveBehavior : CPathKeyFrame
 
 	// m_iPositionInterpolator
 	[SchemaMember("CBaseMoveBehavior", "m_iPositionInterpolator")]
-	public ref Int32 PositionInterpolator => ref Schema.GetRef<Int32>(this.Handle, "CBaseMoveBehavior", "m_iPositionInterpolator");
+	public Int32 PositionInterpolator
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseMoveBehavior", "m_iPositionInterpolator"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseMoveBehavior", "m_iPositionInterpolator", value); }
+	}
 
 	// m_iRotationInterpolator
 	[SchemaMember("CBaseMoveBehavior", "m_iRotationInterpolator")]
-	public ref Int32 RotationInterpolator => ref Schema.GetRef<Int32>(this.Handle, "CBaseMoveBehavior", "m_iRotationInterpolator");
+	public Int32 RotationInterpolator
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseMoveBehavior", "m_iRotationInterpolator"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseMoveBehavior", "m_iRotationInterpolator", value); }
+	}
 
 	// m_flAnimStartTime
 	[SchemaMember("CBaseMoveBehavior", "m_flAnimStartTime")]
-	public ref float AnimStartTime => ref Schema.GetRef<float>(this.Handle, "CBaseMoveBehavior", "m_flAnimStartTime");
+	public float AnimStartTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseMoveBehavior", "m_flAnimStartTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseMoveBehavior", "m_flAnimStartTime", value); }
+	}
 
 	// m_flAnimEndTime
 	[SchemaMember("CBaseMoveBehavior", "m_flAnimEndTime")]
-	public ref float AnimEndTime => ref Schema.GetRef<float>(this.Handle, "CBaseMoveBehavior", "m_flAnimEndTime");
+	public float AnimEndTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseMoveBehavior", "m_flAnimEndTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseMoveBehavior", "m_flAnimEndTime", value); }
+	}
 
 	// m_flAverageSpeedAcrossFrame
 	[SchemaMember("CBaseMoveBehavior", "m_flAverageSpeedAcrossFrame")]
-	public ref float AverageSpeedAcrossFrame => ref Schema.GetRef<float>(this.Handle, "CBaseMoveBehavior", "m_flAverageSpeedAcrossFrame");
+	public float AverageSpeedAcrossFrame
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseMoveBehavior", "m_flAverageSpeedAcrossFrame"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseMoveBehavior", "m_flAverageSpeedAcrossFrame", value); }
+	}
 
 	// m_pCurrentKeyFrame
 	[SchemaMember("CBaseMoveBehavior", "m_pCurrentKeyFrame")]
@@ -56,10 +77,18 @@ public partial class CBaseMoveBehavior : CPathKeyFrame
 
 	// m_flTimeIntoFrame
 	[SchemaMember("CBaseMoveBehavior", "m_flTimeIntoFrame")]
-	public ref float TimeIntoFrame => ref Schema.GetRef<float>(this.Handle, "CBaseMoveBehavior", "m_flTimeIntoFrame");
+	public float TimeIntoFrame
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseMoveBehavior", "m_flTimeIntoFrame"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseMoveBehavior", "m_flTimeIntoFrame", value); }
+	}
 
 	// m_iDirection
 	[SchemaMember("CBaseMoveBehavior", "m_iDirection")]
-	public ref Int32 Direction => ref Schema.GetRef<Int32>(this.Handle, "CBaseMoveBehavior", "m_iDirection");
+	public Int32 Direction
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseMoveBehavior", "m_iDirection"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseMoveBehavior", "m_iDirection", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,63 +29,123 @@ public partial class CSoundOpvarSetPointEntity : CSoundOpvarSetPointBase
 
 	// m_bAutoDisable
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_bAutoDisable")]
-	public ref bool AutoDisable => ref Schema.GetRef<bool>(this.Handle, "CSoundOpvarSetPointEntity", "m_bAutoDisable");
+	public bool AutoDisable
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CSoundOpvarSetPointEntity", "m_bAutoDisable"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CSoundOpvarSetPointEntity", "m_bAutoDisable", value); }
+	}
 
 	// m_flDistanceMin
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_flDistanceMin")]
-	public ref float DistanceMin => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flDistanceMin");
+	public float DistanceMin
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flDistanceMin"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flDistanceMin", value); }
+	}
 
 	// m_flDistanceMax
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_flDistanceMax")]
-	public ref float DistanceMax => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flDistanceMax");
+	public float DistanceMax
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flDistanceMax"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flDistanceMax", value); }
+	}
 
 	// m_flDistanceMapMin
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_flDistanceMapMin")]
-	public ref float DistanceMapMin => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flDistanceMapMin");
+	public float DistanceMapMin
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flDistanceMapMin"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flDistanceMapMin", value); }
+	}
 
 	// m_flDistanceMapMax
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_flDistanceMapMax")]
-	public ref float DistanceMapMax => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flDistanceMapMax");
+	public float DistanceMapMax
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flDistanceMapMax"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flDistanceMapMax", value); }
+	}
 
 	// m_flOcclusionRadius
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_flOcclusionRadius")]
-	public ref float OcclusionRadius => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flOcclusionRadius");
+	public float OcclusionRadius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flOcclusionRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flOcclusionRadius", value); }
+	}
 
 	// m_flOcclusionMin
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_flOcclusionMin")]
-	public ref float OcclusionMin => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flOcclusionMin");
+	public float OcclusionMin
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flOcclusionMin"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flOcclusionMin", value); }
+	}
 
 	// m_flOcclusionMax
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_flOcclusionMax")]
-	public ref float OcclusionMax => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flOcclusionMax");
+	public float OcclusionMax
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flOcclusionMax"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flOcclusionMax", value); }
+	}
 
 	// m_flValSetOnDisable
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_flValSetOnDisable")]
-	public ref float ValSetOnDisable => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flValSetOnDisable");
+	public float ValSetOnDisable
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flValSetOnDisable"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flValSetOnDisable", value); }
+	}
 
 	// m_bSetValueOnDisable
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_bSetValueOnDisable")]
-	public ref bool SetValueOnDisable => ref Schema.GetRef<bool>(this.Handle, "CSoundOpvarSetPointEntity", "m_bSetValueOnDisable");
+	public bool SetValueOnDisable
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CSoundOpvarSetPointEntity", "m_bSetValueOnDisable"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CSoundOpvarSetPointEntity", "m_bSetValueOnDisable", value); }
+	}
 
 	// m_bReloading
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_bReloading")]
-	public ref bool Reloading => ref Schema.GetRef<bool>(this.Handle, "CSoundOpvarSetPointEntity", "m_bReloading");
+	public bool Reloading
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CSoundOpvarSetPointEntity", "m_bReloading"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CSoundOpvarSetPointEntity", "m_bReloading", value); }
+	}
 
 	// m_nSimulationMode
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_nSimulationMode")]
-	public ref Int32 SimulationMode => ref Schema.GetRef<Int32>(this.Handle, "CSoundOpvarSetPointEntity", "m_nSimulationMode");
+	public Int32 SimulationMode
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSoundOpvarSetPointEntity", "m_nSimulationMode"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSoundOpvarSetPointEntity", "m_nSimulationMode", value); }
+	}
 
 	// m_nVisibilitySamples
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_nVisibilitySamples")]
-	public ref Int32 VisibilitySamples => ref Schema.GetRef<Int32>(this.Handle, "CSoundOpvarSetPointEntity", "m_nVisibilitySamples");
+	public Int32 VisibilitySamples
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSoundOpvarSetPointEntity", "m_nVisibilitySamples"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSoundOpvarSetPointEntity", "m_nVisibilitySamples", value); }
+	}
 
 	// m_vDynamicProxyPoint
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_vDynamicProxyPoint")]
-	public Vector DynamicProxyPoint => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetPointEntity", "m_vDynamicProxyPoint");
+	public Vector3 DynamicProxyPoint
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundOpvarSetPointEntity", "m_vDynamicProxyPoint"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundOpvarSetPointEntity", "m_vDynamicProxyPoint", value); }
+	}
 
 	// m_flDynamicMaximumOcclusion
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_flDynamicMaximumOcclusion")]
-	public ref float DynamicMaximumOcclusion => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flDynamicMaximumOcclusion");
+	public float DynamicMaximumOcclusion
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flDynamicMaximumOcclusion"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flDynamicMaximumOcclusion", value); }
+	}
 
 	// m_hDynamicEntity
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_hDynamicEntity")]
@@ -100,22 +161,42 @@ public partial class CSoundOpvarSetPointEntity : CSoundOpvarSetPointBase
 
 	// m_flPathingDistanceNormFactor
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_flPathingDistanceNormFactor")]
-	public ref float PathingDistanceNormFactor => ref Schema.GetRef<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flPathingDistanceNormFactor");
+	public float PathingDistanceNormFactor
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flPathingDistanceNormFactor"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSoundOpvarSetPointEntity", "m_flPathingDistanceNormFactor", value); }
+	}
 
 	// m_vPathingSourcePos
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_vPathingSourcePos")]
-	public Vector PathingSourcePos => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetPointEntity", "m_vPathingSourcePos");
+	public Vector3 PathingSourcePos
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundOpvarSetPointEntity", "m_vPathingSourcePos"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundOpvarSetPointEntity", "m_vPathingSourcePos", value); }
+	}
 
 	// m_vPathingListenerPos
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_vPathingListenerPos")]
-	public Vector PathingListenerPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetPointEntity", "m_vPathingListenerPos");
+	public Vector3 PathingListenerPos
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundOpvarSetPointEntity", "m_vPathingListenerPos"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundOpvarSetPointEntity", "m_vPathingListenerPos", value); }
+	}
 
 	// m_vPathingDirection
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_vPathingDirection")]
-	public Vector PathingDirection => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundOpvarSetPointEntity", "m_vPathingDirection");
+	public Vector3 PathingDirection
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundOpvarSetPointEntity", "m_vPathingDirection"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundOpvarSetPointEntity", "m_vPathingDirection", value); }
+	}
 
 	// m_nPathingSourceIndex
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_nPathingSourceIndex")]
-	public ref Int32 PathingSourceIndex => ref Schema.GetRef<Int32>(this.Handle, "CSoundOpvarSetPointEntity", "m_nPathingSourceIndex");
+	public Int32 PathingSourceIndex
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSoundOpvarSetPointEntity", "m_nPathingSourceIndex"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSoundOpvarSetPointEntity", "m_nPathingSourceIndex", value); }
+	}
 
 }

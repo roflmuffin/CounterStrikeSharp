@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,19 +21,35 @@ public partial class CCSPlayerBase_CameraServices : CPlayer_CameraServices
 
 	// m_iFOV
 	[SchemaMember("CCSPlayerBase_CameraServices", "m_iFOV")]
-	public ref UInt32 FOV => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerBase_CameraServices", "m_iFOV");
+	public UInt32 FOV
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSPlayerBase_CameraServices", "m_iFOV"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CCSPlayerBase_CameraServices", "m_iFOV", value); }
+	}
 
 	// m_iFOVStart
 	[SchemaMember("CCSPlayerBase_CameraServices", "m_iFOVStart")]
-	public ref UInt32 FOVStart => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayerBase_CameraServices", "m_iFOVStart");
+	public UInt32 FOVStart
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSPlayerBase_CameraServices", "m_iFOVStart"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CCSPlayerBase_CameraServices", "m_iFOVStart", value); }
+	}
 
 	// m_flFOVTime
 	[SchemaMember("CCSPlayerBase_CameraServices", "m_flFOVTime")]
-	public ref float FOVTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayerBase_CameraServices", "m_flFOVTime");
+	public float FOVTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerBase_CameraServices", "m_flFOVTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerBase_CameraServices", "m_flFOVTime", value); }
+	}
 
 	// m_flFOVRate
 	[SchemaMember("CCSPlayerBase_CameraServices", "m_flFOVRate")]
-	public ref float FOVRate => ref Schema.GetRef<float>(this.Handle, "CCSPlayerBase_CameraServices", "m_flFOVRate");
+	public float FOVRate
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayerBase_CameraServices", "m_flFOVRate"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerBase_CameraServices", "m_flFOVRate", value); }
+	}
 
 	// m_hZoomOwner
 	[SchemaMember("CCSPlayerBase_CameraServices", "m_hZoomOwner")]

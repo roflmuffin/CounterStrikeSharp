@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -68,23 +69,43 @@ public partial class CPhysConstraint : CLogicalEntity
 
 	// m_forceLimit
 	[SchemaMember("CPhysConstraint", "m_forceLimit")]
-	public ref float ForceLimit => ref Schema.GetRef<float>(this.Handle, "CPhysConstraint", "m_forceLimit");
+	public float ForceLimit
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysConstraint", "m_forceLimit"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysConstraint", "m_forceLimit", value); }
+	}
 
 	// m_torqueLimit
 	[SchemaMember("CPhysConstraint", "m_torqueLimit")]
-	public ref float TorqueLimit => ref Schema.GetRef<float>(this.Handle, "CPhysConstraint", "m_torqueLimit");
+	public float TorqueLimit
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysConstraint", "m_torqueLimit"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysConstraint", "m_torqueLimit", value); }
+	}
 
 	// m_minTeleportDistance
 	[SchemaMember("CPhysConstraint", "m_minTeleportDistance")]
-	public ref float MinTeleportDistance => ref Schema.GetRef<float>(this.Handle, "CPhysConstraint", "m_minTeleportDistance");
+	public float MinTeleportDistance
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysConstraint", "m_minTeleportDistance"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysConstraint", "m_minTeleportDistance", value); }
+	}
 
 	// m_bSnapObjectPositions
 	[SchemaMember("CPhysConstraint", "m_bSnapObjectPositions")]
-	public ref bool SnapObjectPositions => ref Schema.GetRef<bool>(this.Handle, "CPhysConstraint", "m_bSnapObjectPositions");
+	public bool SnapObjectPositions
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysConstraint", "m_bSnapObjectPositions"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysConstraint", "m_bSnapObjectPositions", value); }
+	}
 
 	// m_bTreatEntity1AsInfiniteMass
 	[SchemaMember("CPhysConstraint", "m_bTreatEntity1AsInfiniteMass")]
-	public ref bool TreatEntity1AsInfiniteMass => ref Schema.GetRef<bool>(this.Handle, "CPhysConstraint", "m_bTreatEntity1AsInfiniteMass");
+	public bool TreatEntity1AsInfiniteMass
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysConstraint", "m_bTreatEntity1AsInfiniteMass"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysConstraint", "m_bTreatEntity1AsInfiniteMass", value); }
+	}
 
 	// m_OnBreak
 	[SchemaMember("CPhysConstraint", "m_OnBreak")]

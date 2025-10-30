@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,11 +29,19 @@ public partial class CPlayerPing : CBaseEntity
 
 	// m_iType
 	[SchemaMember("CPlayerPing", "m_iType")]
-	public ref Int32 Type => ref Schema.GetRef<Int32>(this.Handle, "CPlayerPing", "m_iType");
+	public Int32 Type
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CPlayerPing", "m_iType"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CPlayerPing", "m_iType", value); }
+	}
 
 	// m_bUrgent
 	[SchemaMember("CPlayerPing", "m_bUrgent")]
-	public ref bool Urgent => ref Schema.GetRef<bool>(this.Handle, "CPlayerPing", "m_bUrgent");
+	public bool Urgent
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPlayerPing", "m_bUrgent"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPlayerPing", "m_bUrgent", value); }
+	}
 
 	// m_szPlaceName
 	[SchemaMember("CPlayerPing", "m_szPlaceName")]

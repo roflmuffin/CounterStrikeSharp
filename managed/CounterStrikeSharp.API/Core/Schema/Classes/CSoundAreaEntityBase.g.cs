@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class CSoundAreaEntityBase : CBaseEntity
 
 	// m_bDisabled
 	[SchemaMember("CSoundAreaEntityBase", "m_bDisabled")]
-	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CSoundAreaEntityBase", "m_bDisabled");
+	public bool Disabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CSoundAreaEntityBase", "m_bDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CSoundAreaEntityBase", "m_bDisabled", value); }
+	}
 
 	// m_iszSoundAreaType
 	[SchemaMember("CSoundAreaEntityBase", "m_iszSoundAreaType")]
@@ -32,6 +37,10 @@ public partial class CSoundAreaEntityBase : CBaseEntity
 
 	// m_vPos
 	[SchemaMember("CSoundAreaEntityBase", "m_vPos")]
-	public Vector Pos => Schema.GetDeclaredClass<Vector>(this.Handle, "CSoundAreaEntityBase", "m_vPos");
+	public Vector3 Pos
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CSoundAreaEntityBase", "m_vPos"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundAreaEntityBase", "m_vPos", value); }
+	}
 
 }

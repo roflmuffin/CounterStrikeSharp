@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,23 +21,43 @@ public partial class CPointPush : CPointEntity
 
 	// m_bEnabled
 	[SchemaMember("CPointPush", "m_bEnabled")]
-	public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CPointPush", "m_bEnabled");
+	public bool Enabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointPush", "m_bEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointPush", "m_bEnabled", value); }
+	}
 
 	// m_flMagnitude
 	[SchemaMember("CPointPush", "m_flMagnitude")]
-	public ref float Magnitude => ref Schema.GetRef<float>(this.Handle, "CPointPush", "m_flMagnitude");
+	public float Magnitude
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointPush", "m_flMagnitude"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointPush", "m_flMagnitude", value); }
+	}
 
 	// m_flRadius
 	[SchemaMember("CPointPush", "m_flRadius")]
-	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CPointPush", "m_flRadius");
+	public float Radius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointPush", "m_flRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointPush", "m_flRadius", value); }
+	}
 
 	// m_flInnerRadius
 	[SchemaMember("CPointPush", "m_flInnerRadius")]
-	public ref float InnerRadius => ref Schema.GetRef<float>(this.Handle, "CPointPush", "m_flInnerRadius");
+	public float InnerRadius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointPush", "m_flInnerRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointPush", "m_flInnerRadius", value); }
+	}
 
 	// m_flConeOfInfluence
 	[SchemaMember("CPointPush", "m_flConeOfInfluence")]
-	public ref float ConeOfInfluence => ref Schema.GetRef<float>(this.Handle, "CPointPush", "m_flConeOfInfluence");
+	public float ConeOfInfluence
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointPush", "m_flConeOfInfluence"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointPush", "m_flConeOfInfluence", value); }
+	}
 
 	// m_iszFilterName
 	[SchemaMember("CPointPush", "m_iszFilterName")]

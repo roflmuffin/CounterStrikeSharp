@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -44,22 +45,42 @@ public partial class CCitadelSoundOpvarSetOBB : CBaseEntity
 
 	// m_vDistanceInnerMins
 	[SchemaMember("CCitadelSoundOpvarSetOBB", "m_vDistanceInnerMins")]
-	public Vector DistanceInnerMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CCitadelSoundOpvarSetOBB", "m_vDistanceInnerMins");
+	public Vector3 DistanceInnerMins
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCitadelSoundOpvarSetOBB", "m_vDistanceInnerMins"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCitadelSoundOpvarSetOBB", "m_vDistanceInnerMins", value); }
+	}
 
 	// m_vDistanceInnerMaxs
 	[SchemaMember("CCitadelSoundOpvarSetOBB", "m_vDistanceInnerMaxs")]
-	public Vector DistanceInnerMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CCitadelSoundOpvarSetOBB", "m_vDistanceInnerMaxs");
+	public Vector3 DistanceInnerMaxs
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCitadelSoundOpvarSetOBB", "m_vDistanceInnerMaxs"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCitadelSoundOpvarSetOBB", "m_vDistanceInnerMaxs", value); }
+	}
 
 	// m_vDistanceOuterMins
 	[SchemaMember("CCitadelSoundOpvarSetOBB", "m_vDistanceOuterMins")]
-	public Vector DistanceOuterMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CCitadelSoundOpvarSetOBB", "m_vDistanceOuterMins");
+	public Vector3 DistanceOuterMins
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCitadelSoundOpvarSetOBB", "m_vDistanceOuterMins"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCitadelSoundOpvarSetOBB", "m_vDistanceOuterMins", value); }
+	}
 
 	// m_vDistanceOuterMaxs
 	[SchemaMember("CCitadelSoundOpvarSetOBB", "m_vDistanceOuterMaxs")]
-	public Vector DistanceOuterMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CCitadelSoundOpvarSetOBB", "m_vDistanceOuterMaxs");
+	public Vector3 DistanceOuterMaxs
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCitadelSoundOpvarSetOBB", "m_vDistanceOuterMaxs"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCitadelSoundOpvarSetOBB", "m_vDistanceOuterMaxs", value); }
+	}
 
 	// m_nAABBDirection
 	[SchemaMember("CCitadelSoundOpvarSetOBB", "m_nAABBDirection")]
-	public ref Int32 AABBDirection => ref Schema.GetRef<Int32>(this.Handle, "CCitadelSoundOpvarSetOBB", "m_nAABBDirection");
+	public Int32 AABBDirection
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCitadelSoundOpvarSetOBB", "m_nAABBDirection"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCitadelSoundOpvarSetOBB", "m_nAABBDirection", value); }
+	}
 
 }

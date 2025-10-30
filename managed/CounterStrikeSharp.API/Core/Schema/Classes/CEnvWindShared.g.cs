@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,59 +21,115 @@ public partial class CEnvWindShared : NativeObject
 
 	// m_flStartTime
 	[SchemaMember("CEnvWindShared", "m_flStartTime")]
-	public ref float StartTime => ref Schema.GetRef<float>(this.Handle, "CEnvWindShared", "m_flStartTime");
+	public float StartTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvWindShared", "m_flStartTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvWindShared", "m_flStartTime", value); }
+	}
 
 	// m_iWindSeed
 	[SchemaMember("CEnvWindShared", "m_iWindSeed")]
-	public ref UInt32 WindSeed => ref Schema.GetRef<UInt32>(this.Handle, "CEnvWindShared", "m_iWindSeed");
+	public UInt32 WindSeed
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CEnvWindShared", "m_iWindSeed"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CEnvWindShared", "m_iWindSeed", value); }
+	}
 
 	// m_iMinWind
 	[SchemaMember("CEnvWindShared", "m_iMinWind")]
-	public ref UInt16 MinWind => ref Schema.GetRef<UInt16>(this.Handle, "CEnvWindShared", "m_iMinWind");
+	public UInt16 MinWind
+	{
+		get { return Schema.GetValueType<UInt16>(this.Handle, "CEnvWindShared", "m_iMinWind"); }
+		set { Schema.SetValueType<UInt16>(this.Handle, "CEnvWindShared", "m_iMinWind", value); }
+	}
 
 	// m_iMaxWind
 	[SchemaMember("CEnvWindShared", "m_iMaxWind")]
-	public ref UInt16 MaxWind => ref Schema.GetRef<UInt16>(this.Handle, "CEnvWindShared", "m_iMaxWind");
+	public UInt16 MaxWind
+	{
+		get { return Schema.GetValueType<UInt16>(this.Handle, "CEnvWindShared", "m_iMaxWind"); }
+		set { Schema.SetValueType<UInt16>(this.Handle, "CEnvWindShared", "m_iMaxWind", value); }
+	}
 
 	// m_windRadius
 	[SchemaMember("CEnvWindShared", "m_windRadius")]
-	public ref Int32 WindRadius => ref Schema.GetRef<Int32>(this.Handle, "CEnvWindShared", "m_windRadius");
+	public Int32 WindRadius
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvWindShared", "m_windRadius"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvWindShared", "m_windRadius", value); }
+	}
 
 	// m_iMinGust
 	[SchemaMember("CEnvWindShared", "m_iMinGust")]
-	public ref UInt16 MinGust => ref Schema.GetRef<UInt16>(this.Handle, "CEnvWindShared", "m_iMinGust");
+	public UInt16 MinGust
+	{
+		get { return Schema.GetValueType<UInt16>(this.Handle, "CEnvWindShared", "m_iMinGust"); }
+		set { Schema.SetValueType<UInt16>(this.Handle, "CEnvWindShared", "m_iMinGust", value); }
+	}
 
 	// m_iMaxGust
 	[SchemaMember("CEnvWindShared", "m_iMaxGust")]
-	public ref UInt16 MaxGust => ref Schema.GetRef<UInt16>(this.Handle, "CEnvWindShared", "m_iMaxGust");
+	public UInt16 MaxGust
+	{
+		get { return Schema.GetValueType<UInt16>(this.Handle, "CEnvWindShared", "m_iMaxGust"); }
+		set { Schema.SetValueType<UInt16>(this.Handle, "CEnvWindShared", "m_iMaxGust", value); }
+	}
 
 	// m_flMinGustDelay
 	[SchemaMember("CEnvWindShared", "m_flMinGustDelay")]
-	public ref float MinGustDelay => ref Schema.GetRef<float>(this.Handle, "CEnvWindShared", "m_flMinGustDelay");
+	public float MinGustDelay
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvWindShared", "m_flMinGustDelay"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvWindShared", "m_flMinGustDelay", value); }
+	}
 
 	// m_flMaxGustDelay
 	[SchemaMember("CEnvWindShared", "m_flMaxGustDelay")]
-	public ref float MaxGustDelay => ref Schema.GetRef<float>(this.Handle, "CEnvWindShared", "m_flMaxGustDelay");
+	public float MaxGustDelay
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvWindShared", "m_flMaxGustDelay"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvWindShared", "m_flMaxGustDelay", value); }
+	}
 
 	// m_flGustDuration
 	[SchemaMember("CEnvWindShared", "m_flGustDuration")]
-	public ref float GustDuration => ref Schema.GetRef<float>(this.Handle, "CEnvWindShared", "m_flGustDuration");
+	public float GustDuration
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvWindShared", "m_flGustDuration"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvWindShared", "m_flGustDuration", value); }
+	}
 
 	// m_iGustDirChange
 	[SchemaMember("CEnvWindShared", "m_iGustDirChange")]
-	public ref UInt16 GustDirChange => ref Schema.GetRef<UInt16>(this.Handle, "CEnvWindShared", "m_iGustDirChange");
+	public UInt16 GustDirChange
+	{
+		get { return Schema.GetValueType<UInt16>(this.Handle, "CEnvWindShared", "m_iGustDirChange"); }
+		set { Schema.SetValueType<UInt16>(this.Handle, "CEnvWindShared", "m_iGustDirChange", value); }
+	}
 
 	// m_iInitialWindDir
 	[SchemaMember("CEnvWindShared", "m_iInitialWindDir")]
-	public ref UInt16 InitialWindDir => ref Schema.GetRef<UInt16>(this.Handle, "CEnvWindShared", "m_iInitialWindDir");
+	public UInt16 InitialWindDir
+	{
+		get { return Schema.GetValueType<UInt16>(this.Handle, "CEnvWindShared", "m_iInitialWindDir"); }
+		set { Schema.SetValueType<UInt16>(this.Handle, "CEnvWindShared", "m_iInitialWindDir", value); }
+	}
 
 	// m_flInitialWindSpeed
 	[SchemaMember("CEnvWindShared", "m_flInitialWindSpeed")]
-	public ref float InitialWindSpeed => ref Schema.GetRef<float>(this.Handle, "CEnvWindShared", "m_flInitialWindSpeed");
+	public float InitialWindSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvWindShared", "m_flInitialWindSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvWindShared", "m_flInitialWindSpeed", value); }
+	}
 
 	// m_location
 	[SchemaMember("CEnvWindShared", "m_location")]
-	public Vector Location => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvWindShared", "m_location");
+	public Vector3 Location
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvWindShared", "m_location"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvWindShared", "m_location", value); }
+	}
 
 	// m_OnGustStart
 	[SchemaMember("CEnvWindShared", "m_OnGustStart")]

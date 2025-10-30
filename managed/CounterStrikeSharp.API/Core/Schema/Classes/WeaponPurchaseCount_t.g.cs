@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,10 +21,18 @@ public partial class WeaponPurchaseCount_t : NativeObject
 
 	// m_nItemDefIndex
 	[SchemaMember("WeaponPurchaseCount_t", "m_nItemDefIndex")]
-	public ref UInt16 ItemDefIndex => ref Schema.GetRef<UInt16>(this.Handle, "WeaponPurchaseCount_t", "m_nItemDefIndex");
+	public UInt16 ItemDefIndex
+	{
+		get { return Schema.GetValueType<UInt16>(this.Handle, "WeaponPurchaseCount_t", "m_nItemDefIndex"); }
+		set { Schema.SetValueType<UInt16>(this.Handle, "WeaponPurchaseCount_t", "m_nItemDefIndex", value); }
+	}
 
 	// m_nCount
 	[SchemaMember("WeaponPurchaseCount_t", "m_nCount")]
-	public ref UInt16 Count => ref Schema.GetRef<UInt16>(this.Handle, "WeaponPurchaseCount_t", "m_nCount");
+	public UInt16 Count
+	{
+		get { return Schema.GetValueType<UInt16>(this.Handle, "WeaponPurchaseCount_t", "m_nCount"); }
+		set { Schema.SetValueType<UInt16>(this.Handle, "WeaponPurchaseCount_t", "m_nCount", value); }
+	}
 
 }

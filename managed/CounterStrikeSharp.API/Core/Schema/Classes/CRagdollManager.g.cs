@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,18 +21,34 @@ public partial class CRagdollManager : CBaseEntity
 
 	// m_iCurrentMaxRagdollCount
 	[SchemaMember("CRagdollManager", "m_iCurrentMaxRagdollCount")]
-	public ref sbyte CurrentMaxRagdollCount => ref Schema.GetRef<sbyte>(this.Handle, "CRagdollManager", "m_iCurrentMaxRagdollCount");
+	public sbyte CurrentMaxRagdollCount
+	{
+		get { return Schema.GetValueType<sbyte>(this.Handle, "CRagdollManager", "m_iCurrentMaxRagdollCount"); }
+		set { Schema.SetValueType<sbyte>(this.Handle, "CRagdollManager", "m_iCurrentMaxRagdollCount", value); }
+	}
 
 	// m_iMaxRagdollCount
 	[SchemaMember("CRagdollManager", "m_iMaxRagdollCount")]
-	public ref Int32 MaxRagdollCount => ref Schema.GetRef<Int32>(this.Handle, "CRagdollManager", "m_iMaxRagdollCount");
+	public Int32 MaxRagdollCount
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CRagdollManager", "m_iMaxRagdollCount"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CRagdollManager", "m_iMaxRagdollCount", value); }
+	}
 
 	// m_bSaveImportant
 	[SchemaMember("CRagdollManager", "m_bSaveImportant")]
-	public ref bool SaveImportant => ref Schema.GetRef<bool>(this.Handle, "CRagdollManager", "m_bSaveImportant");
+	public bool SaveImportant
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CRagdollManager", "m_bSaveImportant"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CRagdollManager", "m_bSaveImportant", value); }
+	}
 
 	// m_bCanTakeDamage
 	[SchemaMember("CRagdollManager", "m_bCanTakeDamage")]
-	public ref bool CanTakeDamage => ref Schema.GetRef<bool>(this.Handle, "CRagdollManager", "m_bCanTakeDamage");
+	public bool CanTakeDamage
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CRagdollManager", "m_bCanTakeDamage"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CRagdollManager", "m_bCanTakeDamage", value); }
+	}
 
 }

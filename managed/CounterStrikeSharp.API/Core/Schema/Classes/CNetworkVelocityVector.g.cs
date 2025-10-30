@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,14 +21,26 @@ public partial class CNetworkVelocityVector : NativeObject
 
 	// m_vecX
 	[SchemaMember("CNetworkVelocityVector", "m_vecX")]
-	public ref float X => ref Schema.GetRef<float>(this.Handle, "CNetworkVelocityVector", "m_vecX");
+	public float X
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CNetworkVelocityVector", "m_vecX"); }
+		set { Schema.SetValueType<float>(this.Handle, "CNetworkVelocityVector", "m_vecX", value); }
+	}
 
 	// m_vecY
 	[SchemaMember("CNetworkVelocityVector", "m_vecY")]
-	public ref float Y => ref Schema.GetRef<float>(this.Handle, "CNetworkVelocityVector", "m_vecY");
+	public float Y
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CNetworkVelocityVector", "m_vecY"); }
+		set { Schema.SetValueType<float>(this.Handle, "CNetworkVelocityVector", "m_vecY", value); }
+	}
 
 	// m_vecZ
 	[SchemaMember("CNetworkVelocityVector", "m_vecZ")]
-	public ref float Z => ref Schema.GetRef<float>(this.Handle, "CNetworkVelocityVector", "m_vecZ");
+	public float Z
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CNetworkVelocityVector", "m_vecZ"); }
+		set { Schema.SetValueType<float>(this.Handle, "CNetworkVelocityVector", "m_vecZ", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,30 +21,58 @@ public partial class CNetworkOriginCellCoordQuantizedVector : NativeObject
 
 	// m_cellX
 	[SchemaMember("CNetworkOriginCellCoordQuantizedVector", "m_cellX")]
-	public ref UInt16 CellX => ref Schema.GetRef<UInt16>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_cellX");
+	public UInt16 CellX
+	{
+		get { return Schema.GetValueType<UInt16>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_cellX"); }
+		set { Schema.SetValueType<UInt16>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_cellX", value); }
+	}
 
 	// m_cellY
 	[SchemaMember("CNetworkOriginCellCoordQuantizedVector", "m_cellY")]
-	public ref UInt16 CellY => ref Schema.GetRef<UInt16>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_cellY");
+	public UInt16 CellY
+	{
+		get { return Schema.GetValueType<UInt16>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_cellY"); }
+		set { Schema.SetValueType<UInt16>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_cellY", value); }
+	}
 
 	// m_cellZ
 	[SchemaMember("CNetworkOriginCellCoordQuantizedVector", "m_cellZ")]
-	public ref UInt16 CellZ => ref Schema.GetRef<UInt16>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_cellZ");
+	public UInt16 CellZ
+	{
+		get { return Schema.GetValueType<UInt16>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_cellZ"); }
+		set { Schema.SetValueType<UInt16>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_cellZ", value); }
+	}
 
 	// m_nOutsideWorld
 	[SchemaMember("CNetworkOriginCellCoordQuantizedVector", "m_nOutsideWorld")]
-	public ref UInt16 OutsideWorld => ref Schema.GetRef<UInt16>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_nOutsideWorld");
+	public UInt16 OutsideWorld
+	{
+		get { return Schema.GetValueType<UInt16>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_nOutsideWorld"); }
+		set { Schema.SetValueType<UInt16>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_nOutsideWorld", value); }
+	}
 
 	// m_vecX
 	[SchemaMember("CNetworkOriginCellCoordQuantizedVector", "m_vecX")]
-	public ref float X => ref Schema.GetRef<float>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_vecX");
+	public float X
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_vecX"); }
+		set { Schema.SetValueType<float>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_vecX", value); }
+	}
 
 	// m_vecY
 	[SchemaMember("CNetworkOriginCellCoordQuantizedVector", "m_vecY")]
-	public ref float Y => ref Schema.GetRef<float>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_vecY");
+	public float Y
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_vecY"); }
+		set { Schema.SetValueType<float>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_vecY", value); }
+	}
 
 	// m_vecZ
 	[SchemaMember("CNetworkOriginCellCoordQuantizedVector", "m_vecZ")]
-	public ref float Z => ref Schema.GetRef<float>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_vecZ");
+	public float Z
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_vecZ"); }
+		set { Schema.SetValueType<float>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_vecZ", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,18 +25,34 @@ public partial class CRenderComponent : CEntityComponent
 
 	// m_bIsRenderingWithViewModels
 	[SchemaMember("CRenderComponent", "m_bIsRenderingWithViewModels")]
-	public ref bool IsRenderingWithViewModels => ref Schema.GetRef<bool>(this.Handle, "CRenderComponent", "m_bIsRenderingWithViewModels");
+	public bool IsRenderingWithViewModels
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CRenderComponent", "m_bIsRenderingWithViewModels"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CRenderComponent", "m_bIsRenderingWithViewModels", value); }
+	}
 
 	// m_nSplitscreenFlags
 	[SchemaMember("CRenderComponent", "m_nSplitscreenFlags")]
-	public ref UInt32 SplitscreenFlags => ref Schema.GetRef<UInt32>(this.Handle, "CRenderComponent", "m_nSplitscreenFlags");
+	public UInt32 SplitscreenFlags
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CRenderComponent", "m_nSplitscreenFlags"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CRenderComponent", "m_nSplitscreenFlags", value); }
+	}
 
 	// m_bEnableRendering
 	[SchemaMember("CRenderComponent", "m_bEnableRendering")]
-	public ref bool EnableRendering => ref Schema.GetRef<bool>(this.Handle, "CRenderComponent", "m_bEnableRendering");
+	public bool EnableRendering
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CRenderComponent", "m_bEnableRendering"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CRenderComponent", "m_bEnableRendering", value); }
+	}
 
 	// m_bInterpolationReadyToDraw
 	[SchemaMember("CRenderComponent", "m_bInterpolationReadyToDraw")]
-	public ref bool InterpolationReadyToDraw => ref Schema.GetRef<bool>(this.Handle, "CRenderComponent", "m_bInterpolationReadyToDraw");
+	public bool InterpolationReadyToDraw
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CRenderComponent", "m_bInterpolationReadyToDraw"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CRenderComponent", "m_bInterpolationReadyToDraw", value); }
+	}
 
 }

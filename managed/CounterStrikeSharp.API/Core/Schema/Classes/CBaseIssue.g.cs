@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -36,15 +37,27 @@ public partial class CBaseIssue : NativeObject
 
 	// m_iNumYesVotes
 	[SchemaMember("CBaseIssue", "m_iNumYesVotes")]
-	public ref Int32 NumYesVotes => ref Schema.GetRef<Int32>(this.Handle, "CBaseIssue", "m_iNumYesVotes");
+	public Int32 NumYesVotes
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseIssue", "m_iNumYesVotes"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseIssue", "m_iNumYesVotes", value); }
+	}
 
 	// m_iNumNoVotes
 	[SchemaMember("CBaseIssue", "m_iNumNoVotes")]
-	public ref Int32 NumNoVotes => ref Schema.GetRef<Int32>(this.Handle, "CBaseIssue", "m_iNumNoVotes");
+	public Int32 NumNoVotes
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseIssue", "m_iNumNoVotes"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseIssue", "m_iNumNoVotes", value); }
+	}
 
 	// m_iNumPotentialVotes
 	[SchemaMember("CBaseIssue", "m_iNumPotentialVotes")]
-	public ref Int32 NumPotentialVotes => ref Schema.GetRef<Int32>(this.Handle, "CBaseIssue", "m_iNumPotentialVotes");
+	public Int32 NumPotentialVotes
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseIssue", "m_iNumPotentialVotes"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseIssue", "m_iNumPotentialVotes", value); }
+	}
 
 	// m_pVoteController
 	[SchemaMember("CBaseIssue", "m_pVoteController")]

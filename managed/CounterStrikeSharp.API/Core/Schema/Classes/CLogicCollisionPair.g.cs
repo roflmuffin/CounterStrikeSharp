@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -36,18 +37,34 @@ public partial class CLogicCollisionPair : CLogicalEntity
 
 	// m_includeHierarchy
 	[SchemaMember("CLogicCollisionPair", "m_includeHierarchy")]
-	public ref bool IncludeHierarchy => ref Schema.GetRef<bool>(this.Handle, "CLogicCollisionPair", "m_includeHierarchy");
+	public bool IncludeHierarchy
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CLogicCollisionPair", "m_includeHierarchy"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CLogicCollisionPair", "m_includeHierarchy", value); }
+	}
 
 	// m_supportMultipleEntitiesWithSameName
 	[SchemaMember("CLogicCollisionPair", "m_supportMultipleEntitiesWithSameName")]
-	public ref bool SupportMultipleEntitiesWithSameName => ref Schema.GetRef<bool>(this.Handle, "CLogicCollisionPair", "m_supportMultipleEntitiesWithSameName");
+	public bool SupportMultipleEntitiesWithSameName
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CLogicCollisionPair", "m_supportMultipleEntitiesWithSameName"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CLogicCollisionPair", "m_supportMultipleEntitiesWithSameName", value); }
+	}
 
 	// m_disabled
 	[SchemaMember("CLogicCollisionPair", "m_disabled")]
-	public ref bool Disabled => ref Schema.GetRef<bool>(this.Handle, "CLogicCollisionPair", "m_disabled");
+	public bool Disabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CLogicCollisionPair", "m_disabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CLogicCollisionPair", "m_disabled", value); }
+	}
 
 	// m_succeeded
 	[SchemaMember("CLogicCollisionPair", "m_succeeded")]
-	public ref bool Succeeded => ref Schema.GetRef<bool>(this.Handle, "CLogicCollisionPair", "m_succeeded");
+	public bool Succeeded
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CLogicCollisionPair", "m_succeeded"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CLogicCollisionPair", "m_succeeded", value); }
+	}
 
 }

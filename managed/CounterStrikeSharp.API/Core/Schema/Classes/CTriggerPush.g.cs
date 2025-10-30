@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,19 +21,35 @@ public partial class CTriggerPush : CBaseTrigger
 
 	// m_angPushEntitySpace
 	[SchemaMember("CTriggerPush", "m_angPushEntitySpace")]
-	public QAngle PushEntitySpace => Schema.GetDeclaredClass<QAngle>(this.Handle, "CTriggerPush", "m_angPushEntitySpace");
+	public QAngle PushEntitySpace
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CTriggerPush", "m_angPushEntitySpace"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CTriggerPush", "m_angPushEntitySpace", value); }
+	}
 
 	// m_vecPushDirEntitySpace
 	[SchemaMember("CTriggerPush", "m_vecPushDirEntitySpace")]
-	public Vector PushDirEntitySpace => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerPush", "m_vecPushDirEntitySpace");
+	public Vector3 PushDirEntitySpace
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CTriggerPush", "m_vecPushDirEntitySpace"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CTriggerPush", "m_vecPushDirEntitySpace", value); }
+	}
 
 	// m_bTriggerOnStartTouch
 	[SchemaMember("CTriggerPush", "m_bTriggerOnStartTouch")]
-	public ref bool TriggerOnStartTouch => ref Schema.GetRef<bool>(this.Handle, "CTriggerPush", "m_bTriggerOnStartTouch");
+	public bool TriggerOnStartTouch
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerPush", "m_bTriggerOnStartTouch"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTriggerPush", "m_bTriggerOnStartTouch", value); }
+	}
 
 	// m_bUsePathSimple
 	[SchemaMember("CTriggerPush", "m_bUsePathSimple")]
-	public ref bool UsePathSimple => ref Schema.GetRef<bool>(this.Handle, "CTriggerPush", "m_bUsePathSimple");
+	public bool UsePathSimple
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerPush", "m_bUsePathSimple"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTriggerPush", "m_bUsePathSimple", value); }
+	}
 
 	// m_iszPathSimpleName
 	[SchemaMember("CTriggerPush", "m_iszPathSimpleName")]
@@ -48,6 +65,10 @@ public partial class CTriggerPush : CBaseTrigger
 
 	// m_splinePushType
 	[SchemaMember("CTriggerPush", "m_splinePushType")]
-	public ref UInt32 SplinePushType => ref Schema.GetRef<UInt32>(this.Handle, "CTriggerPush", "m_splinePushType");
+	public UInt32 SplinePushType
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CTriggerPush", "m_splinePushType"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CTriggerPush", "m_splinePushType", value); }
+	}
 
 }

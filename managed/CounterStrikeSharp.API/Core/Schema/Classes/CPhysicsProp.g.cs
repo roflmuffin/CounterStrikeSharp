@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -48,83 +49,163 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_bForceNavIgnore
 	[SchemaMember("CPhysicsProp", "m_bForceNavIgnore")]
-	public ref bool ForceNavIgnore => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bForceNavIgnore");
+	public bool ForceNavIgnore
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bForceNavIgnore"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bForceNavIgnore", value); }
+	}
 
 	// m_bNoNavmeshBlocker
 	[SchemaMember("CPhysicsProp", "m_bNoNavmeshBlocker")]
-	public ref bool NoNavmeshBlocker => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bNoNavmeshBlocker");
+	public bool NoNavmeshBlocker
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bNoNavmeshBlocker"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bNoNavmeshBlocker", value); }
+	}
 
 	// m_bForceNpcExclude
 	[SchemaMember("CPhysicsProp", "m_bForceNpcExclude")]
-	public ref bool ForceNpcExclude => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bForceNpcExclude");
+	public bool ForceNpcExclude
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bForceNpcExclude"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bForceNpcExclude", value); }
+	}
 
 	// m_massScale
 	[SchemaMember("CPhysicsProp", "m_massScale")]
-	public ref float MassScale => ref Schema.GetRef<float>(this.Handle, "CPhysicsProp", "m_massScale");
+	public float MassScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysicsProp", "m_massScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysicsProp", "m_massScale", value); }
+	}
 
 	// m_buoyancyScale
 	[SchemaMember("CPhysicsProp", "m_buoyancyScale")]
-	public ref float BuoyancyScale => ref Schema.GetRef<float>(this.Handle, "CPhysicsProp", "m_buoyancyScale");
+	public float BuoyancyScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysicsProp", "m_buoyancyScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysicsProp", "m_buoyancyScale", value); }
+	}
 
 	// m_damageType
 	[SchemaMember("CPhysicsProp", "m_damageType")]
-	public ref Int32 DamageType => ref Schema.GetRef<Int32>(this.Handle, "CPhysicsProp", "m_damageType");
+	public Int32 DamageType
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CPhysicsProp", "m_damageType"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CPhysicsProp", "m_damageType", value); }
+	}
 
 	// m_damageToEnableMotion
 	[SchemaMember("CPhysicsProp", "m_damageToEnableMotion")]
-	public ref Int32 DamageToEnableMotion => ref Schema.GetRef<Int32>(this.Handle, "CPhysicsProp", "m_damageToEnableMotion");
+	public Int32 DamageToEnableMotion
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CPhysicsProp", "m_damageToEnableMotion"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CPhysicsProp", "m_damageToEnableMotion", value); }
+	}
 
 	// m_flForceToEnableMotion
 	[SchemaMember("CPhysicsProp", "m_flForceToEnableMotion")]
-	public ref float ForceToEnableMotion => ref Schema.GetRef<float>(this.Handle, "CPhysicsProp", "m_flForceToEnableMotion");
+	public float ForceToEnableMotion
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysicsProp", "m_flForceToEnableMotion"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysicsProp", "m_flForceToEnableMotion", value); }
+	}
 
 	// m_bThrownByPlayer
 	[SchemaMember("CPhysicsProp", "m_bThrownByPlayer")]
-	public ref bool ThrownByPlayer => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bThrownByPlayer");
+	public bool ThrownByPlayer
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bThrownByPlayer"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bThrownByPlayer", value); }
+	}
 
 	// m_bDroppedByPlayer
 	[SchemaMember("CPhysicsProp", "m_bDroppedByPlayer")]
-	public ref bool DroppedByPlayer => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bDroppedByPlayer");
+	public bool DroppedByPlayer
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bDroppedByPlayer"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bDroppedByPlayer", value); }
+	}
 
 	// m_bTouchedByPlayer
 	[SchemaMember("CPhysicsProp", "m_bTouchedByPlayer")]
-	public ref bool TouchedByPlayer => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bTouchedByPlayer");
+	public bool TouchedByPlayer
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bTouchedByPlayer"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bTouchedByPlayer", value); }
+	}
 
 	// m_bFirstCollisionAfterLaunch
 	[SchemaMember("CPhysicsProp", "m_bFirstCollisionAfterLaunch")]
-	public ref bool FirstCollisionAfterLaunch => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bFirstCollisionAfterLaunch");
+	public bool FirstCollisionAfterLaunch
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bFirstCollisionAfterLaunch"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bFirstCollisionAfterLaunch", value); }
+	}
 
 	// m_bHasBeenAwakened
 	[SchemaMember("CPhysicsProp", "m_bHasBeenAwakened")]
-	public ref bool HasBeenAwakened => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bHasBeenAwakened");
+	public bool HasBeenAwakened
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bHasBeenAwakened"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bHasBeenAwakened", value); }
+	}
 
 	// m_bIsOverrideProp
 	[SchemaMember("CPhysicsProp", "m_bIsOverrideProp")]
-	public ref bool IsOverrideProp => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bIsOverrideProp");
+	public bool IsOverrideProp
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bIsOverrideProp"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bIsOverrideProp", value); }
+	}
 
 	// m_flLastBurn
 	[SchemaMember("CPhysicsProp", "m_flLastBurn")]
-	public ref float LastBurn => ref Schema.GetRef<float>(this.Handle, "CPhysicsProp", "m_flLastBurn");
+	public float LastBurn
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysicsProp", "m_flLastBurn"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysicsProp", "m_flLastBurn", value); }
+	}
 
 	// m_nDynamicContinuousContactBehavior
 	[SchemaMember("CPhysicsProp", "m_nDynamicContinuousContactBehavior")]
-	public ref DynamicContinuousContactBehavior_t DynamicContinuousContactBehavior => ref Schema.GetRef<DynamicContinuousContactBehavior_t>(this.Handle, "CPhysicsProp", "m_nDynamicContinuousContactBehavior");
+	public DynamicContinuousContactBehavior_t DynamicContinuousContactBehavior
+	{
+		get { return Schema.GetValueType<DynamicContinuousContactBehavior_t>(this.Handle, "CPhysicsProp", "m_nDynamicContinuousContactBehavior"); }
+		set { Schema.SetValueType<DynamicContinuousContactBehavior_t>(this.Handle, "CPhysicsProp", "m_nDynamicContinuousContactBehavior", value); }
+	}
 
 	// m_fNextCheckDisableMotionContactsTime
 	[SchemaMember("CPhysicsProp", "m_fNextCheckDisableMotionContactsTime")]
-	public ref float NextCheckDisableMotionContactsTime => ref Schema.GetRef<float>(this.Handle, "CPhysicsProp", "m_fNextCheckDisableMotionContactsTime");
+	public float NextCheckDisableMotionContactsTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysicsProp", "m_fNextCheckDisableMotionContactsTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysicsProp", "m_fNextCheckDisableMotionContactsTime", value); }
+	}
 
 	// m_iInitialGlowState
 	[SchemaMember("CPhysicsProp", "m_iInitialGlowState")]
-	public ref Int32 InitialGlowState => ref Schema.GetRef<Int32>(this.Handle, "CPhysicsProp", "m_iInitialGlowState");
+	public Int32 InitialGlowState
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CPhysicsProp", "m_iInitialGlowState"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CPhysicsProp", "m_iInitialGlowState", value); }
+	}
 
 	// m_nGlowRange
 	[SchemaMember("CPhysicsProp", "m_nGlowRange")]
-	public ref Int32 GlowRange => ref Schema.GetRef<Int32>(this.Handle, "CPhysicsProp", "m_nGlowRange");
+	public Int32 GlowRange
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CPhysicsProp", "m_nGlowRange"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CPhysicsProp", "m_nGlowRange", value); }
+	}
 
 	// m_nGlowRangeMin
 	[SchemaMember("CPhysicsProp", "m_nGlowRangeMin")]
-	public ref Int32 GlowRangeMin => ref Schema.GetRef<Int32>(this.Handle, "CPhysicsProp", "m_nGlowRangeMin");
+	public Int32 GlowRangeMin
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CPhysicsProp", "m_nGlowRangeMin"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CPhysicsProp", "m_nGlowRangeMin", value); }
+	}
 
 	// m_glowColor
 	[SchemaMember("CPhysicsProp", "m_glowColor")]
@@ -136,23 +217,43 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_bShouldAutoConvertBackFromDebris
 	[SchemaMember("CPhysicsProp", "m_bShouldAutoConvertBackFromDebris")]
-	public ref bool ShouldAutoConvertBackFromDebris => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bShouldAutoConvertBackFromDebris");
+	public bool ShouldAutoConvertBackFromDebris
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bShouldAutoConvertBackFromDebris"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bShouldAutoConvertBackFromDebris", value); }
+	}
 
 	// m_bMuteImpactEffects
 	[SchemaMember("CPhysicsProp", "m_bMuteImpactEffects")]
-	public ref bool MuteImpactEffects => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bMuteImpactEffects");
+	public bool MuteImpactEffects
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bMuteImpactEffects"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bMuteImpactEffects", value); }
+	}
 
 	// m_bAcceptDamageFromHeldObjects
 	[SchemaMember("CPhysicsProp", "m_bAcceptDamageFromHeldObjects")]
-	public ref bool AcceptDamageFromHeldObjects => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bAcceptDamageFromHeldObjects");
+	public bool AcceptDamageFromHeldObjects
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bAcceptDamageFromHeldObjects"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bAcceptDamageFromHeldObjects", value); }
+	}
 
 	// m_bEnableUseOutput
 	[SchemaMember("CPhysicsProp", "m_bEnableUseOutput")]
-	public ref bool EnableUseOutput => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bEnableUseOutput");
+	public bool EnableUseOutput
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bEnableUseOutput"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bEnableUseOutput", value); }
+	}
 
 	// m_CrateType
 	[SchemaMember("CPhysicsProp", "m_CrateType")]
-	public ref CPhysicsPropCrateType_t CrateType => ref Schema.GetRef<CPhysicsPropCrateType_t>(this.Handle, "CPhysicsProp", "m_CrateType");
+	public CPhysicsPropCrateType_t CrateType
+	{
+		get { return Schema.GetValueType<CPhysicsPropCrateType_t>(this.Handle, "CPhysicsProp", "m_CrateType"); }
+		set { Schema.SetValueType<CPhysicsPropCrateType_t>(this.Handle, "CPhysicsProp", "m_CrateType", value); }
+	}
 
 	// m_strItemClass
 	[SchemaMember("CPhysicsProp", "m_strItemClass")]
@@ -164,14 +265,26 @@ public partial class CPhysicsProp : CBreakableProp
 
 	// m_bRemovableForAmmoBalancing
 	[SchemaMember("CPhysicsProp", "m_bRemovableForAmmoBalancing")]
-	public ref bool RemovableForAmmoBalancing => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bRemovableForAmmoBalancing");
+	public bool RemovableForAmmoBalancing
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bRemovableForAmmoBalancing"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bRemovableForAmmoBalancing", value); }
+	}
 
 	// m_bAwake
 	[SchemaMember("CPhysicsProp", "m_bAwake")]
-	public ref bool Awake => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bAwake");
+	public bool Awake
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bAwake"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bAwake", value); }
+	}
 
 	// m_bAttachedToReferenceFrame
 	[SchemaMember("CPhysicsProp", "m_bAttachedToReferenceFrame")]
-	public ref bool AttachedToReferenceFrame => ref Schema.GetRef<bool>(this.Handle, "CPhysicsProp", "m_bAttachedToReferenceFrame");
+	public bool AttachedToReferenceFrame
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysicsProp", "m_bAttachedToReferenceFrame"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bAttachedToReferenceFrame", value); }
+	}
 
 }

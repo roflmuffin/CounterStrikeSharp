@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,39 +21,75 @@ public partial class CEconItemView : IEconItemInterface
 
 	// m_iItemDefinitionIndex
 	[SchemaMember("CEconItemView", "m_iItemDefinitionIndex")]
-	public ref UInt16 ItemDefinitionIndex => ref Schema.GetRef<UInt16>(this.Handle, "CEconItemView", "m_iItemDefinitionIndex");
+	public UInt16 ItemDefinitionIndex
+	{
+		get { return Schema.GetValueType<UInt16>(this.Handle, "CEconItemView", "m_iItemDefinitionIndex"); }
+		set { Schema.SetValueType<UInt16>(this.Handle, "CEconItemView", "m_iItemDefinitionIndex", value); }
+	}
 
 	// m_iEntityQuality
 	[SchemaMember("CEconItemView", "m_iEntityQuality")]
-	public ref Int32 EntityQuality => ref Schema.GetRef<Int32>(this.Handle, "CEconItemView", "m_iEntityQuality");
+	public Int32 EntityQuality
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEconItemView", "m_iEntityQuality"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEconItemView", "m_iEntityQuality", value); }
+	}
 
 	// m_iEntityLevel
 	[SchemaMember("CEconItemView", "m_iEntityLevel")]
-	public ref UInt32 EntityLevel => ref Schema.GetRef<UInt32>(this.Handle, "CEconItemView", "m_iEntityLevel");
+	public UInt32 EntityLevel
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CEconItemView", "m_iEntityLevel"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CEconItemView", "m_iEntityLevel", value); }
+	}
 
 	// m_iItemID
 	[SchemaMember("CEconItemView", "m_iItemID")]
-	public ref UInt64 ItemID => ref Schema.GetRef<UInt64>(this.Handle, "CEconItemView", "m_iItemID");
+	public UInt64 ItemID
+	{
+		get { return Schema.GetValueType<UInt64>(this.Handle, "CEconItemView", "m_iItemID"); }
+		set { Schema.SetValueType<UInt64>(this.Handle, "CEconItemView", "m_iItemID", value); }
+	}
 
 	// m_iItemIDHigh
 	[SchemaMember("CEconItemView", "m_iItemIDHigh")]
-	public ref UInt32 ItemIDHigh => ref Schema.GetRef<UInt32>(this.Handle, "CEconItemView", "m_iItemIDHigh");
+	public UInt32 ItemIDHigh
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CEconItemView", "m_iItemIDHigh"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CEconItemView", "m_iItemIDHigh", value); }
+	}
 
 	// m_iItemIDLow
 	[SchemaMember("CEconItemView", "m_iItemIDLow")]
-	public ref UInt32 ItemIDLow => ref Schema.GetRef<UInt32>(this.Handle, "CEconItemView", "m_iItemIDLow");
+	public UInt32 ItemIDLow
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CEconItemView", "m_iItemIDLow"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CEconItemView", "m_iItemIDLow", value); }
+	}
 
 	// m_iAccountID
 	[SchemaMember("CEconItemView", "m_iAccountID")]
-	public ref UInt32 AccountID => ref Schema.GetRef<UInt32>(this.Handle, "CEconItemView", "m_iAccountID");
+	public UInt32 AccountID
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CEconItemView", "m_iAccountID"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CEconItemView", "m_iAccountID", value); }
+	}
 
 	// m_iInventoryPosition
 	[SchemaMember("CEconItemView", "m_iInventoryPosition")]
-	public ref UInt32 InventoryPosition => ref Schema.GetRef<UInt32>(this.Handle, "CEconItemView", "m_iInventoryPosition");
+	public UInt32 InventoryPosition
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CEconItemView", "m_iInventoryPosition"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CEconItemView", "m_iInventoryPosition", value); }
+	}
 
 	// m_bInitialized
 	[SchemaMember("CEconItemView", "m_bInitialized")]
-	public ref bool Initialized => ref Schema.GetRef<bool>(this.Handle, "CEconItemView", "m_bInitialized");
+	public bool Initialized
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEconItemView", "m_bInitialized"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEconItemView", "m_bInitialized", value); }
+	}
 
 	// m_AttributeList
 	[SchemaMember("CEconItemView", "m_AttributeList")]

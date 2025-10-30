@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,6 +21,10 @@ public partial class CFilterMassGreater : CBaseFilter
 
 	// m_fFilterMass
 	[SchemaMember("CFilterMassGreater", "m_fFilterMass")]
-	public ref float FilterMass => ref Schema.GetRef<float>(this.Handle, "CFilterMassGreater", "m_fFilterMass");
+	public float FilterMass
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFilterMassGreater", "m_fFilterMass"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFilterMassGreater", "m_fFilterMass", value); }
+	}
 
 }

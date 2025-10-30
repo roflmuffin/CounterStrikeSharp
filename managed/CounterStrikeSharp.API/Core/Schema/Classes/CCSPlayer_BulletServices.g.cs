@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,6 +21,10 @@ public partial class CCSPlayer_BulletServices : CPlayerPawnComponent
 
 	// m_totalHitsOnServer
 	[SchemaMember("CCSPlayer_BulletServices", "m_totalHitsOnServer")]
-	public ref Int32 TotalHitsOnServer => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayer_BulletServices", "m_totalHitsOnServer");
+	public Int32 TotalHitsOnServer
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayer_BulletServices", "m_totalHitsOnServer"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayer_BulletServices", "m_totalHitsOnServer", value); }
+	}
 
 }

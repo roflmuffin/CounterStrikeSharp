@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,11 +21,19 @@ public partial class CBasePlayerController : CBaseEntity
 
 	// m_nInButtonsWhichAreToggles
 	[SchemaMember("CBasePlayerController", "m_nInButtonsWhichAreToggles")]
-	public ref UInt64 InButtonsWhichAreToggles => ref Schema.GetRef<UInt64>(this.Handle, "CBasePlayerController", "m_nInButtonsWhichAreToggles");
+	public UInt64 InButtonsWhichAreToggles
+	{
+		get { return Schema.GetValueType<UInt64>(this.Handle, "CBasePlayerController", "m_nInButtonsWhichAreToggles"); }
+		set { Schema.SetValueType<UInt64>(this.Handle, "CBasePlayerController", "m_nInButtonsWhichAreToggles", value); }
+	}
 
 	// m_nTickBase
 	[SchemaMember("CBasePlayerController", "m_nTickBase")]
-	public ref UInt32 TickBase => ref Schema.GetRef<UInt32>(this.Handle, "CBasePlayerController", "m_nTickBase");
+	public UInt32 TickBase
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CBasePlayerController", "m_nTickBase"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CBasePlayerController", "m_nTickBase", value); }
+	}
 
 	// m_hPawn
 	[SchemaMember("CBasePlayerController", "m_hPawn")]
@@ -32,11 +41,19 @@ public partial class CBasePlayerController : CBaseEntity
 
 	// m_bKnownTeamMismatch
 	[SchemaMember("CBasePlayerController", "m_bKnownTeamMismatch")]
-	public ref bool KnownTeamMismatch => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerController", "m_bKnownTeamMismatch");
+	public bool KnownTeamMismatch
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerController", "m_bKnownTeamMismatch"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerController", "m_bKnownTeamMismatch", value); }
+	}
 
 	// m_nSplitScreenSlot
 	[SchemaMember("CBasePlayerController", "m_nSplitScreenSlot")]
-	public ref Int32 SplitScreenSlot => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerController", "m_nSplitScreenSlot");
+	public Int32 SplitScreenSlot
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerController", "m_nSplitScreenSlot"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerController", "m_nSplitScreenSlot", value); }
+	}
 
 	// m_hSplitOwner
 	[SchemaMember("CBasePlayerController", "m_hSplitOwner")]
@@ -48,11 +65,19 @@ public partial class CBasePlayerController : CBaseEntity
 
 	// m_bIsHLTV
 	[SchemaMember("CBasePlayerController", "m_bIsHLTV")]
-	public ref bool IsHLTV => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerController", "m_bIsHLTV");
+	public bool IsHLTV
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerController", "m_bIsHLTV"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerController", "m_bIsHLTV", value); }
+	}
 
 	// m_iConnected
 	[SchemaMember("CBasePlayerController", "m_iConnected")]
-	public ref PlayerConnectedState Connected => ref Schema.GetRef<PlayerConnectedState>(this.Handle, "CBasePlayerController", "m_iConnected");
+	public PlayerConnectedState Connected
+	{
+		get { return Schema.GetValueType<PlayerConnectedState>(this.Handle, "CBasePlayerController", "m_iConnected"); }
+		set { Schema.SetValueType<PlayerConnectedState>(this.Handle, "CBasePlayerController", "m_iConnected", value); }
+	}
 
 	// m_iszPlayerName
 	[SchemaMember("CBasePlayerController", "m_iszPlayerName")]
@@ -72,54 +97,106 @@ public partial class CBasePlayerController : CBaseEntity
 
 	// m_fLerpTime
 	[SchemaMember("CBasePlayerController", "m_fLerpTime")]
-	public ref float LerpTime => ref Schema.GetRef<float>(this.Handle, "CBasePlayerController", "m_fLerpTime");
+	public float LerpTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerController", "m_fLerpTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerController", "m_fLerpTime", value); }
+	}
 
 	// m_bLagCompensation
 	[SchemaMember("CBasePlayerController", "m_bLagCompensation")]
-	public ref bool LagCompensation => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerController", "m_bLagCompensation");
+	public bool LagCompensation
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerController", "m_bLagCompensation"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerController", "m_bLagCompensation", value); }
+	}
 
 	// m_bPredict
 	[SchemaMember("CBasePlayerController", "m_bPredict")]
-	public ref bool Predict => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerController", "m_bPredict");
+	public bool Predict
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerController", "m_bPredict"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerController", "m_bPredict", value); }
+	}
 
 	// m_bIsLowViolence
 	[SchemaMember("CBasePlayerController", "m_bIsLowViolence")]
-	public ref bool IsLowViolence => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerController", "m_bIsLowViolence");
+	public bool IsLowViolence
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerController", "m_bIsLowViolence"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerController", "m_bIsLowViolence", value); }
+	}
 
 	// m_bGamePaused
 	[SchemaMember("CBasePlayerController", "m_bGamePaused")]
-	public ref bool GamePaused => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerController", "m_bGamePaused");
+	public bool GamePaused
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerController", "m_bGamePaused"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerController", "m_bGamePaused", value); }
+	}
 
 	// m_iIgnoreGlobalChat
 	[SchemaMember("CBasePlayerController", "m_iIgnoreGlobalChat")]
-	public ref ChatIgnoreType_t IgnoreGlobalChat => ref Schema.GetRef<ChatIgnoreType_t>(this.Handle, "CBasePlayerController", "m_iIgnoreGlobalChat");
+	public ChatIgnoreType_t IgnoreGlobalChat
+	{
+		get { return Schema.GetValueType<ChatIgnoreType_t>(this.Handle, "CBasePlayerController", "m_iIgnoreGlobalChat"); }
+		set { Schema.SetValueType<ChatIgnoreType_t>(this.Handle, "CBasePlayerController", "m_iIgnoreGlobalChat", value); }
+	}
 
 	// m_flLastPlayerTalkTime
 	[SchemaMember("CBasePlayerController", "m_flLastPlayerTalkTime")]
-	public ref float LastPlayerTalkTime => ref Schema.GetRef<float>(this.Handle, "CBasePlayerController", "m_flLastPlayerTalkTime");
+	public float LastPlayerTalkTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerController", "m_flLastPlayerTalkTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerController", "m_flLastPlayerTalkTime", value); }
+	}
 
 	// m_flLastEntitySteadyState
 	[SchemaMember("CBasePlayerController", "m_flLastEntitySteadyState")]
-	public ref float LastEntitySteadyState => ref Schema.GetRef<float>(this.Handle, "CBasePlayerController", "m_flLastEntitySteadyState");
+	public float LastEntitySteadyState
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBasePlayerController", "m_flLastEntitySteadyState"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBasePlayerController", "m_flLastEntitySteadyState", value); }
+	}
 
 	// m_nAvailableEntitySteadyState
 	[SchemaMember("CBasePlayerController", "m_nAvailableEntitySteadyState")]
-	public ref Int32 AvailableEntitySteadyState => ref Schema.GetRef<Int32>(this.Handle, "CBasePlayerController", "m_nAvailableEntitySteadyState");
+	public Int32 AvailableEntitySteadyState
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePlayerController", "m_nAvailableEntitySteadyState"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBasePlayerController", "m_nAvailableEntitySteadyState", value); }
+	}
 
 	// m_bHasAnySteadyStateEnts
 	[SchemaMember("CBasePlayerController", "m_bHasAnySteadyStateEnts")]
-	public ref bool HasAnySteadyStateEnts => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerController", "m_bHasAnySteadyStateEnts");
+	public bool HasAnySteadyStateEnts
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerController", "m_bHasAnySteadyStateEnts"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerController", "m_bHasAnySteadyStateEnts", value); }
+	}
 
 	// m_steamID
 	[SchemaMember("CBasePlayerController", "m_steamID")]
-	public ref UInt64 SteamID => ref Schema.GetRef<UInt64>(this.Handle, "CBasePlayerController", "m_steamID");
+	public UInt64 SteamID
+	{
+		get { return Schema.GetValueType<UInt64>(this.Handle, "CBasePlayerController", "m_steamID"); }
+		set { Schema.SetValueType<UInt64>(this.Handle, "CBasePlayerController", "m_steamID", value); }
+	}
 
 	// m_bNoClipEnabled
 	[SchemaMember("CBasePlayerController", "m_bNoClipEnabled")]
-	public ref bool NoClipEnabled => ref Schema.GetRef<bool>(this.Handle, "CBasePlayerController", "m_bNoClipEnabled");
+	public bool NoClipEnabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBasePlayerController", "m_bNoClipEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBasePlayerController", "m_bNoClipEnabled", value); }
+	}
 
 	// m_iDesiredFOV
 	[SchemaMember("CBasePlayerController", "m_iDesiredFOV")]
-	public ref UInt32 DesiredFOV => ref Schema.GetRef<UInt32>(this.Handle, "CBasePlayerController", "m_iDesiredFOV");
+	public UInt32 DesiredFOV
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CBasePlayerController", "m_iDesiredFOV"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CBasePlayerController", "m_iDesiredFOV", value); }
+	}
 
 }

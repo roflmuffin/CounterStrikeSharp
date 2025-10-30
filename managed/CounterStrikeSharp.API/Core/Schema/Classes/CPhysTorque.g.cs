@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,6 +21,10 @@ public partial class CPhysTorque : CPhysForce
 
 	// m_axis
 	[SchemaMember("CPhysTorque", "m_axis")]
-	public Vector Axis => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysTorque", "m_axis");
+	public Vector3 Axis
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CPhysTorque", "m_axis"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CPhysTorque", "m_axis", value); }
+	}
 
 }

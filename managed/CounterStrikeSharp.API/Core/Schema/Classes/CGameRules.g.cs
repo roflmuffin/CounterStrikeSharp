@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -32,18 +33,34 @@ public partial class CGameRules : NativeObject
 
 	// m_nQuestPhase
 	[SchemaMember("CGameRules", "m_nQuestPhase")]
-	public ref Int32 QuestPhase => ref Schema.GetRef<Int32>(this.Handle, "CGameRules", "m_nQuestPhase");
+	public Int32 QuestPhase
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CGameRules", "m_nQuestPhase"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CGameRules", "m_nQuestPhase", value); }
+	}
 
 	// m_nTotalPausedTicks
 	[SchemaMember("CGameRules", "m_nTotalPausedTicks")]
-	public ref Int32 TotalPausedTicks => ref Schema.GetRef<Int32>(this.Handle, "CGameRules", "m_nTotalPausedTicks");
+	public Int32 TotalPausedTicks
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CGameRules", "m_nTotalPausedTicks"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CGameRules", "m_nTotalPausedTicks", value); }
+	}
 
 	// m_nPauseStartTick
 	[SchemaMember("CGameRules", "m_nPauseStartTick")]
-	public ref Int32 PauseStartTick => ref Schema.GetRef<Int32>(this.Handle, "CGameRules", "m_nPauseStartTick");
+	public Int32 PauseStartTick
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CGameRules", "m_nPauseStartTick"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CGameRules", "m_nPauseStartTick", value); }
+	}
 
 	// m_bGamePaused
 	[SchemaMember("CGameRules", "m_bGamePaused")]
-	public ref bool GamePaused => ref Schema.GetRef<bool>(this.Handle, "CGameRules", "m_bGamePaused");
+	public bool GamePaused
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CGameRules", "m_bGamePaused"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CGameRules", "m_bGamePaused", value); }
+	}
 
 }

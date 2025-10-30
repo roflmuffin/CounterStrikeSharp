@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class CBaseAnimGraph : CBaseModelEntity
 
 	// m_bInitiallyPopulateInterpHistory
 	[SchemaMember("CBaseAnimGraph", "m_bInitiallyPopulateInterpHistory")]
-	public ref bool InitiallyPopulateInterpHistory => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraph", "m_bInitiallyPopulateInterpHistory");
+	public bool InitiallyPopulateInterpHistory
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseAnimGraph", "m_bInitiallyPopulateInterpHistory"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseAnimGraph", "m_bInitiallyPopulateInterpHistory", value); }
+	}
 
 	// m_pChoreoServices
 	[SchemaMember("CBaseAnimGraph", "m_pChoreoServices")]
@@ -28,27 +33,51 @@ public partial class CBaseAnimGraph : CBaseModelEntity
 
 	// m_bAnimGraphUpdateEnabled
 	[SchemaMember("CBaseAnimGraph", "m_bAnimGraphUpdateEnabled")]
-	public ref bool AnimGraphUpdateEnabled => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraph", "m_bAnimGraphUpdateEnabled");
+	public bool AnimGraphUpdateEnabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseAnimGraph", "m_bAnimGraphUpdateEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseAnimGraph", "m_bAnimGraphUpdateEnabled", value); }
+	}
 
 	// m_flMaxSlopeDistance
 	[SchemaMember("CBaseAnimGraph", "m_flMaxSlopeDistance")]
-	public ref float MaxSlopeDistance => ref Schema.GetRef<float>(this.Handle, "CBaseAnimGraph", "m_flMaxSlopeDistance");
+	public float MaxSlopeDistance
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseAnimGraph", "m_flMaxSlopeDistance"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseAnimGraph", "m_flMaxSlopeDistance", value); }
+	}
 
 	// m_vLastSlopeCheckPos
 	[SchemaMember("CBaseAnimGraph", "m_vLastSlopeCheckPos")]
-	public Vector LastSlopeCheckPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseAnimGraph", "m_vLastSlopeCheckPos");
+	public Vector3 LastSlopeCheckPos
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBaseAnimGraph", "m_vLastSlopeCheckPos"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBaseAnimGraph", "m_vLastSlopeCheckPos", value); }
+	}
 
 	// m_bAnimationUpdateScheduled
 	[SchemaMember("CBaseAnimGraph", "m_bAnimationUpdateScheduled")]
-	public ref bool AnimationUpdateScheduled => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraph", "m_bAnimationUpdateScheduled");
+	public bool AnimationUpdateScheduled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseAnimGraph", "m_bAnimationUpdateScheduled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseAnimGraph", "m_bAnimationUpdateScheduled", value); }
+	}
 
 	// m_vecForce
 	[SchemaMember("CBaseAnimGraph", "m_vecForce")]
-	public Vector Force => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseAnimGraph", "m_vecForce");
+	public Vector3 Force
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBaseAnimGraph", "m_vecForce"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBaseAnimGraph", "m_vecForce", value); }
+	}
 
 	// m_nForceBone
 	[SchemaMember("CBaseAnimGraph", "m_nForceBone")]
-	public ref Int32 ForceBone => ref Schema.GetRef<Int32>(this.Handle, "CBaseAnimGraph", "m_nForceBone");
+	public Int32 ForceBone
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseAnimGraph", "m_nForceBone"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseAnimGraph", "m_nForceBone", value); }
+	}
 
 	// m_RagdollPose
 	[SchemaMember("CBaseAnimGraph", "m_RagdollPose")]
@@ -56,11 +85,19 @@ public partial class CBaseAnimGraph : CBaseModelEntity
 
 	// m_bRagdollEnabled
 	[SchemaMember("CBaseAnimGraph", "m_bRagdollEnabled")]
-	public ref bool RagdollEnabled => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraph", "m_bRagdollEnabled");
+	public bool RagdollEnabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseAnimGraph", "m_bRagdollEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseAnimGraph", "m_bRagdollEnabled", value); }
+	}
 
 	// m_bRagdollClientSide
 	[SchemaMember("CBaseAnimGraph", "m_bRagdollClientSide")]
-	public ref bool RagdollClientSide => ref Schema.GetRef<bool>(this.Handle, "CBaseAnimGraph", "m_bRagdollClientSide");
+	public bool RagdollClientSide
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseAnimGraph", "m_bRagdollClientSide"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseAnimGraph", "m_bRagdollClientSide", value); }
+	}
 
 	// m_xParentedRagdollRootInEntitySpace
 	[SchemaMember("CBaseAnimGraph", "m_xParentedRagdollRootInEntitySpace")]

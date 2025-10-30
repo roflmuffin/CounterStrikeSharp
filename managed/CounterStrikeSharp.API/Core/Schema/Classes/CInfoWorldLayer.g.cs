@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -40,18 +41,34 @@ public partial class CInfoWorldLayer : CBaseEntity
 
 	// m_bWorldLayerVisible
 	[SchemaMember("CInfoWorldLayer", "m_bWorldLayerVisible")]
-	public ref bool WorldLayerVisible => ref Schema.GetRef<bool>(this.Handle, "CInfoWorldLayer", "m_bWorldLayerVisible");
+	public bool WorldLayerVisible
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CInfoWorldLayer", "m_bWorldLayerVisible"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CInfoWorldLayer", "m_bWorldLayerVisible", value); }
+	}
 
 	// m_bEntitiesSpawned
 	[SchemaMember("CInfoWorldLayer", "m_bEntitiesSpawned")]
-	public ref bool EntitiesSpawned => ref Schema.GetRef<bool>(this.Handle, "CInfoWorldLayer", "m_bEntitiesSpawned");
+	public bool EntitiesSpawned
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CInfoWorldLayer", "m_bEntitiesSpawned"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CInfoWorldLayer", "m_bEntitiesSpawned", value); }
+	}
 
 	// m_bCreateAsChildSpawnGroup
 	[SchemaMember("CInfoWorldLayer", "m_bCreateAsChildSpawnGroup")]
-	public ref bool CreateAsChildSpawnGroup => ref Schema.GetRef<bool>(this.Handle, "CInfoWorldLayer", "m_bCreateAsChildSpawnGroup");
+	public bool CreateAsChildSpawnGroup
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CInfoWorldLayer", "m_bCreateAsChildSpawnGroup"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CInfoWorldLayer", "m_bCreateAsChildSpawnGroup", value); }
+	}
 
 	// m_hLayerSpawnGroup
 	[SchemaMember("CInfoWorldLayer", "m_hLayerSpawnGroup")]
-	public ref UInt32 LayerSpawnGroup => ref Schema.GetRef<UInt32>(this.Handle, "CInfoWorldLayer", "m_hLayerSpawnGroup");
+	public UInt32 LayerSpawnGroup
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CInfoWorldLayer", "m_hLayerSpawnGroup"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CInfoWorldLayer", "m_hLayerSpawnGroup", value); }
+	}
 
 }

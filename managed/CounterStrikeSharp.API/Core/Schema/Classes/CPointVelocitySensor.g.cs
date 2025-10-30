@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,18 +25,34 @@ public partial class CPointVelocitySensor : CPointEntity
 
 	// m_vecAxis
 	[SchemaMember("CPointVelocitySensor", "m_vecAxis")]
-	public Vector Axis => Schema.GetDeclaredClass<Vector>(this.Handle, "CPointVelocitySensor", "m_vecAxis");
+	public Vector3 Axis
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CPointVelocitySensor", "m_vecAxis"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CPointVelocitySensor", "m_vecAxis", value); }
+	}
 
 	// m_bEnabled
 	[SchemaMember("CPointVelocitySensor", "m_bEnabled")]
-	public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CPointVelocitySensor", "m_bEnabled");
+	public bool Enabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointVelocitySensor", "m_bEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointVelocitySensor", "m_bEnabled", value); }
+	}
 
 	// m_fPrevVelocity
 	[SchemaMember("CPointVelocitySensor", "m_fPrevVelocity")]
-	public ref float PrevVelocity => ref Schema.GetRef<float>(this.Handle, "CPointVelocitySensor", "m_fPrevVelocity");
+	public float PrevVelocity
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointVelocitySensor", "m_fPrevVelocity"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointVelocitySensor", "m_fPrevVelocity", value); }
+	}
 
 	// m_flAvgInterval
 	[SchemaMember("CPointVelocitySensor", "m_flAvgInterval")]
-	public ref float AvgInterval => ref Schema.GetRef<float>(this.Handle, "CPointVelocitySensor", "m_flAvgInterval");
+	public float AvgInterval
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointVelocitySensor", "m_flAvgInterval"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointVelocitySensor", "m_flAvgInterval", value); }
+	}
 
 }

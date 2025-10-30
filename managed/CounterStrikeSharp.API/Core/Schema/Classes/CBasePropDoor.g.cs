@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_flAutoReturnDelay
 	[SchemaMember("CBasePropDoor", "m_flAutoReturnDelay")]
-	public ref float AutoReturnDelay => ref Schema.GetRef<float>(this.Handle, "CBasePropDoor", "m_flAutoReturnDelay");
+	public float AutoReturnDelay
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBasePropDoor", "m_flAutoReturnDelay"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBasePropDoor", "m_flAutoReturnDelay", value); }
+	}
 
 	// m_hDoorList
 	[SchemaMember("CBasePropDoor", "m_hDoorList")]
@@ -28,31 +33,59 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_nHardwareType
 	[SchemaMember("CBasePropDoor", "m_nHardwareType")]
-	public ref Int32 HardwareType => ref Schema.GetRef<Int32>(this.Handle, "CBasePropDoor", "m_nHardwareType");
+	public Int32 HardwareType
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePropDoor", "m_nHardwareType"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBasePropDoor", "m_nHardwareType", value); }
+	}
 
 	// m_bNeedsHardware
 	[SchemaMember("CBasePropDoor", "m_bNeedsHardware")]
-	public ref bool NeedsHardware => ref Schema.GetRef<bool>(this.Handle, "CBasePropDoor", "m_bNeedsHardware");
+	public bool NeedsHardware
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBasePropDoor", "m_bNeedsHardware"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBasePropDoor", "m_bNeedsHardware", value); }
+	}
 
 	// m_eDoorState
 	[SchemaMember("CBasePropDoor", "m_eDoorState")]
-	public ref DoorState_t DoorState => ref Schema.GetRef<DoorState_t>(this.Handle, "CBasePropDoor", "m_eDoorState");
+	public DoorState_t DoorState
+	{
+		get { return Schema.GetValueType<DoorState_t>(this.Handle, "CBasePropDoor", "m_eDoorState"); }
+		set { Schema.SetValueType<DoorState_t>(this.Handle, "CBasePropDoor", "m_eDoorState", value); }
+	}
 
 	// m_bLocked
 	[SchemaMember("CBasePropDoor", "m_bLocked")]
-	public ref bool Locked => ref Schema.GetRef<bool>(this.Handle, "CBasePropDoor", "m_bLocked");
+	public bool Locked
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBasePropDoor", "m_bLocked"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBasePropDoor", "m_bLocked", value); }
+	}
 
 	// m_bNoNPCs
 	[SchemaMember("CBasePropDoor", "m_bNoNPCs")]
-	public ref bool NoNPCs => ref Schema.GetRef<bool>(this.Handle, "CBasePropDoor", "m_bNoNPCs");
+	public bool NoNPCs
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBasePropDoor", "m_bNoNPCs"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBasePropDoor", "m_bNoNPCs", value); }
+	}
 
 	// m_closedPosition
 	[SchemaMember("CBasePropDoor", "m_closedPosition")]
-	public Vector ClosedPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CBasePropDoor", "m_closedPosition");
+	public Vector3 ClosedPosition
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBasePropDoor", "m_closedPosition"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBasePropDoor", "m_closedPosition", value); }
+	}
 
 	// m_closedAngles
 	[SchemaMember("CBasePropDoor", "m_closedAngles")]
-	public QAngle ClosedAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBasePropDoor", "m_closedAngles");
+	public QAngle ClosedAngles
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CBasePropDoor", "m_closedAngles"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CBasePropDoor", "m_closedAngles", value); }
+	}
 
 	// m_hBlocker
 	[SchemaMember("CBasePropDoor", "m_hBlocker")]
@@ -60,7 +93,11 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_bFirstBlocked
 	[SchemaMember("CBasePropDoor", "m_bFirstBlocked")]
-	public ref bool FirstBlocked => ref Schema.GetRef<bool>(this.Handle, "CBasePropDoor", "m_bFirstBlocked");
+	public bool FirstBlocked
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBasePropDoor", "m_bFirstBlocked"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBasePropDoor", "m_bFirstBlocked", value); }
+	}
 
 	// m_ls
 	[SchemaMember("CBasePropDoor", "m_ls")]
@@ -68,11 +105,19 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_bForceClosed
 	[SchemaMember("CBasePropDoor", "m_bForceClosed")]
-	public ref bool ForceClosed => ref Schema.GetRef<bool>(this.Handle, "CBasePropDoor", "m_bForceClosed");
+	public bool ForceClosed
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBasePropDoor", "m_bForceClosed"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBasePropDoor", "m_bForceClosed", value); }
+	}
 
 	// m_vecLatchWorldPosition
 	[SchemaMember("CBasePropDoor", "m_vecLatchWorldPosition")]
-	public Vector LatchWorldPosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CBasePropDoor", "m_vecLatchWorldPosition");
+	public Vector3 LatchWorldPosition
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBasePropDoor", "m_vecLatchWorldPosition"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBasePropDoor", "m_vecLatchWorldPosition", value); }
+	}
 
 	// m_hActivator
 	[SchemaMember("CBasePropDoor", "m_hActivator")]
@@ -152,7 +197,11 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_numCloseAttempts
 	[SchemaMember("CBasePropDoor", "m_numCloseAttempts")]
-	public ref Int32 NumCloseAttempts => ref Schema.GetRef<Int32>(this.Handle, "CBasePropDoor", "m_numCloseAttempts");
+	public Int32 NumCloseAttempts
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBasePropDoor", "m_numCloseAttempts"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBasePropDoor", "m_numCloseAttempts", value); }
+	}
 
 	// m_nPhysicsMaterial
 	[SchemaMember("CBasePropDoor", "m_nPhysicsMaterial")]

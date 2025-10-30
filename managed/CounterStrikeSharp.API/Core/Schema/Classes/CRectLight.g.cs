@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,6 +21,10 @@ public partial class CRectLight : CBarnLight
 
 	// m_bShowLight
 	[SchemaMember("CRectLight", "m_bShowLight")]
-	public ref bool ShowLight => ref Schema.GetRef<bool>(this.Handle, "CRectLight", "m_bShowLight");
+	public bool ShowLight
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CRectLight", "m_bShowLight"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CRectLight", "m_bShowLight", value); }
+	}
 
 }

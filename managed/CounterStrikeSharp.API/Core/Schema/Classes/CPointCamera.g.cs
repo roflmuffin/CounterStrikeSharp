@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,15 +21,27 @@ public partial class CPointCamera : CBaseEntity
 
 	// m_FOV
 	[SchemaMember("CPointCamera", "m_FOV")]
-	public ref float FOV => ref Schema.GetRef<float>(this.Handle, "CPointCamera", "m_FOV");
+	public float FOV
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_FOV"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_FOV", value); }
+	}
 
 	// m_Resolution
 	[SchemaMember("CPointCamera", "m_Resolution")]
-	public ref float Resolution => ref Schema.GetRef<float>(this.Handle, "CPointCamera", "m_Resolution");
+	public float Resolution
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_Resolution"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_Resolution", value); }
+	}
 
 	// m_bFogEnable
 	[SchemaMember("CPointCamera", "m_bFogEnable")]
-	public ref bool FogEnable => ref Schema.GetRef<bool>(this.Handle, "CPointCamera", "m_bFogEnable");
+	public bool FogEnable
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointCamera", "m_bFogEnable"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointCamera", "m_bFogEnable", value); }
+	}
 
 	// m_FogColor
 	[SchemaMember("CPointCamera", "m_FogColor")]
@@ -40,87 +53,171 @@ public partial class CPointCamera : CBaseEntity
 
 	// m_flFogStart
 	[SchemaMember("CPointCamera", "m_flFogStart")]
-	public ref float FogStart => ref Schema.GetRef<float>(this.Handle, "CPointCamera", "m_flFogStart");
+	public float FogStart
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_flFogStart"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_flFogStart", value); }
+	}
 
 	// m_flFogEnd
 	[SchemaMember("CPointCamera", "m_flFogEnd")]
-	public ref float FogEnd => ref Schema.GetRef<float>(this.Handle, "CPointCamera", "m_flFogEnd");
+	public float FogEnd
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_flFogEnd"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_flFogEnd", value); }
+	}
 
 	// m_flFogMaxDensity
 	[SchemaMember("CPointCamera", "m_flFogMaxDensity")]
-	public ref float FogMaxDensity => ref Schema.GetRef<float>(this.Handle, "CPointCamera", "m_flFogMaxDensity");
+	public float FogMaxDensity
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_flFogMaxDensity"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_flFogMaxDensity", value); }
+	}
 
 	// m_bActive
 	[SchemaMember("CPointCamera", "m_bActive")]
-	public ref bool Active => ref Schema.GetRef<bool>(this.Handle, "CPointCamera", "m_bActive");
+	public bool Active
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointCamera", "m_bActive"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointCamera", "m_bActive", value); }
+	}
 
 	// m_bUseScreenAspectRatio
 	[SchemaMember("CPointCamera", "m_bUseScreenAspectRatio")]
-	public ref bool UseScreenAspectRatio => ref Schema.GetRef<bool>(this.Handle, "CPointCamera", "m_bUseScreenAspectRatio");
+	public bool UseScreenAspectRatio
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointCamera", "m_bUseScreenAspectRatio"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointCamera", "m_bUseScreenAspectRatio", value); }
+	}
 
 	// m_flAspectRatio
 	[SchemaMember("CPointCamera", "m_flAspectRatio")]
-	public ref float AspectRatio => ref Schema.GetRef<float>(this.Handle, "CPointCamera", "m_flAspectRatio");
+	public float AspectRatio
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_flAspectRatio"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_flAspectRatio", value); }
+	}
 
 	// m_bNoSky
 	[SchemaMember("CPointCamera", "m_bNoSky")]
-	public ref bool NoSky => ref Schema.GetRef<bool>(this.Handle, "CPointCamera", "m_bNoSky");
+	public bool NoSky
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointCamera", "m_bNoSky"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointCamera", "m_bNoSky", value); }
+	}
 
 	// m_fBrightness
 	[SchemaMember("CPointCamera", "m_fBrightness")]
-	public ref float Brightness => ref Schema.GetRef<float>(this.Handle, "CPointCamera", "m_fBrightness");
+	public float Brightness
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_fBrightness"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_fBrightness", value); }
+	}
 
 	// m_flZFar
 	[SchemaMember("CPointCamera", "m_flZFar")]
-	public ref float ZFar => ref Schema.GetRef<float>(this.Handle, "CPointCamera", "m_flZFar");
+	public float ZFar
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_flZFar"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_flZFar", value); }
+	}
 
 	// m_flZNear
 	[SchemaMember("CPointCamera", "m_flZNear")]
-	public ref float ZNear => ref Schema.GetRef<float>(this.Handle, "CPointCamera", "m_flZNear");
+	public float ZNear
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_flZNear"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_flZNear", value); }
+	}
 
 	// m_bCanHLTVUse
 	[SchemaMember("CPointCamera", "m_bCanHLTVUse")]
-	public ref bool CanHLTVUse => ref Schema.GetRef<bool>(this.Handle, "CPointCamera", "m_bCanHLTVUse");
+	public bool CanHLTVUse
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointCamera", "m_bCanHLTVUse"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointCamera", "m_bCanHLTVUse", value); }
+	}
 
 	// m_bAlignWithParent
 	[SchemaMember("CPointCamera", "m_bAlignWithParent")]
-	public ref bool AlignWithParent => ref Schema.GetRef<bool>(this.Handle, "CPointCamera", "m_bAlignWithParent");
+	public bool AlignWithParent
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointCamera", "m_bAlignWithParent"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointCamera", "m_bAlignWithParent", value); }
+	}
 
 	// m_bDofEnabled
 	[SchemaMember("CPointCamera", "m_bDofEnabled")]
-	public ref bool DofEnabled => ref Schema.GetRef<bool>(this.Handle, "CPointCamera", "m_bDofEnabled");
+	public bool DofEnabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointCamera", "m_bDofEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointCamera", "m_bDofEnabled", value); }
+	}
 
 	// m_flDofNearBlurry
 	[SchemaMember("CPointCamera", "m_flDofNearBlurry")]
-	public ref float DofNearBlurry => ref Schema.GetRef<float>(this.Handle, "CPointCamera", "m_flDofNearBlurry");
+	public float DofNearBlurry
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_flDofNearBlurry"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_flDofNearBlurry", value); }
+	}
 
 	// m_flDofNearCrisp
 	[SchemaMember("CPointCamera", "m_flDofNearCrisp")]
-	public ref float DofNearCrisp => ref Schema.GetRef<float>(this.Handle, "CPointCamera", "m_flDofNearCrisp");
+	public float DofNearCrisp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_flDofNearCrisp"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_flDofNearCrisp", value); }
+	}
 
 	// m_flDofFarCrisp
 	[SchemaMember("CPointCamera", "m_flDofFarCrisp")]
-	public ref float DofFarCrisp => ref Schema.GetRef<float>(this.Handle, "CPointCamera", "m_flDofFarCrisp");
+	public float DofFarCrisp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_flDofFarCrisp"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_flDofFarCrisp", value); }
+	}
 
 	// m_flDofFarBlurry
 	[SchemaMember("CPointCamera", "m_flDofFarBlurry")]
-	public ref float DofFarBlurry => ref Schema.GetRef<float>(this.Handle, "CPointCamera", "m_flDofFarBlurry");
+	public float DofFarBlurry
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_flDofFarBlurry"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_flDofFarBlurry", value); }
+	}
 
 	// m_flDofTiltToGround
 	[SchemaMember("CPointCamera", "m_flDofTiltToGround")]
-	public ref float DofTiltToGround => ref Schema.GetRef<float>(this.Handle, "CPointCamera", "m_flDofTiltToGround");
+	public float DofTiltToGround
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_flDofTiltToGround"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_flDofTiltToGround", value); }
+	}
 
 	// m_TargetFOV
 	[SchemaMember("CPointCamera", "m_TargetFOV")]
-	public ref float TargetFOV => ref Schema.GetRef<float>(this.Handle, "CPointCamera", "m_TargetFOV");
+	public float TargetFOV
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_TargetFOV"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_TargetFOV", value); }
+	}
 
 	// m_DegreesPerSecond
 	[SchemaMember("CPointCamera", "m_DegreesPerSecond")]
-	public ref float DegreesPerSecond => ref Schema.GetRef<float>(this.Handle, "CPointCamera", "m_DegreesPerSecond");
+	public float DegreesPerSecond
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointCamera", "m_DegreesPerSecond"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointCamera", "m_DegreesPerSecond", value); }
+	}
 
 	// m_bIsOn
 	[SchemaMember("CPointCamera", "m_bIsOn")]
-	public ref bool IsOn => ref Schema.GetRef<bool>(this.Handle, "CPointCamera", "m_bIsOn");
+	public bool IsOn
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointCamera", "m_bIsOn"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointCamera", "m_bIsOn", value); }
+	}
 
 	// m_pNext
 	[SchemaMember("CPointCamera", "m_pNext")]

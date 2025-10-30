@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,47 +21,91 @@ public partial class CBaseToggle : CBaseModelEntity
 
 	// m_toggle_state
 	[SchemaMember("CBaseToggle", "m_toggle_state")]
-	public ref TOGGLE_STATE Toggle_state => ref Schema.GetRef<TOGGLE_STATE>(this.Handle, "CBaseToggle", "m_toggle_state");
+	public TOGGLE_STATE Toggle_state
+	{
+		get { return Schema.GetValueType<TOGGLE_STATE>(this.Handle, "CBaseToggle", "m_toggle_state"); }
+		set { Schema.SetValueType<TOGGLE_STATE>(this.Handle, "CBaseToggle", "m_toggle_state", value); }
+	}
 
 	// m_flMoveDistance
 	[SchemaMember("CBaseToggle", "m_flMoveDistance")]
-	public ref float MoveDistance => ref Schema.GetRef<float>(this.Handle, "CBaseToggle", "m_flMoveDistance");
+	public float MoveDistance
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseToggle", "m_flMoveDistance"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseToggle", "m_flMoveDistance", value); }
+	}
 
 	// m_flWait
 	[SchemaMember("CBaseToggle", "m_flWait")]
-	public ref float Wait => ref Schema.GetRef<float>(this.Handle, "CBaseToggle", "m_flWait");
+	public float Wait
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseToggle", "m_flWait"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseToggle", "m_flWait", value); }
+	}
 
 	// m_flLip
 	[SchemaMember("CBaseToggle", "m_flLip")]
-	public ref float Lip => ref Schema.GetRef<float>(this.Handle, "CBaseToggle", "m_flLip");
+	public float Lip
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseToggle", "m_flLip"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseToggle", "m_flLip", value); }
+	}
 
 	// m_bAlwaysFireBlockedOutputs
 	[SchemaMember("CBaseToggle", "m_bAlwaysFireBlockedOutputs")]
-	public ref bool AlwaysFireBlockedOutputs => ref Schema.GetRef<bool>(this.Handle, "CBaseToggle", "m_bAlwaysFireBlockedOutputs");
+	public bool AlwaysFireBlockedOutputs
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBaseToggle", "m_bAlwaysFireBlockedOutputs"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBaseToggle", "m_bAlwaysFireBlockedOutputs", value); }
+	}
 
 	// m_vecPosition1
 	[SchemaMember("CBaseToggle", "m_vecPosition1")]
-	public Vector Position1 => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseToggle", "m_vecPosition1");
+	public Vector3 Position1
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBaseToggle", "m_vecPosition1"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBaseToggle", "m_vecPosition1", value); }
+	}
 
 	// m_vecPosition2
 	[SchemaMember("CBaseToggle", "m_vecPosition2")]
-	public Vector Position2 => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseToggle", "m_vecPosition2");
+	public Vector3 Position2
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBaseToggle", "m_vecPosition2"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBaseToggle", "m_vecPosition2", value); }
+	}
 
 	// m_vecMoveAng
 	[SchemaMember("CBaseToggle", "m_vecMoveAng")]
-	public QAngle MoveAng => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBaseToggle", "m_vecMoveAng");
+	public QAngle MoveAng
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CBaseToggle", "m_vecMoveAng"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CBaseToggle", "m_vecMoveAng", value); }
+	}
 
 	// m_vecAngle1
 	[SchemaMember("CBaseToggle", "m_vecAngle1")]
-	public QAngle Angle1 => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBaseToggle", "m_vecAngle1");
+	public QAngle Angle1
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CBaseToggle", "m_vecAngle1"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CBaseToggle", "m_vecAngle1", value); }
+	}
 
 	// m_vecAngle2
 	[SchemaMember("CBaseToggle", "m_vecAngle2")]
-	public QAngle Angle2 => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBaseToggle", "m_vecAngle2");
+	public QAngle Angle2
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CBaseToggle", "m_vecAngle2"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CBaseToggle", "m_vecAngle2", value); }
+	}
 
 	// m_flHeight
 	[SchemaMember("CBaseToggle", "m_flHeight")]
-	public ref float Height => ref Schema.GetRef<float>(this.Handle, "CBaseToggle", "m_flHeight");
+	public float Height
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBaseToggle", "m_flHeight"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBaseToggle", "m_flHeight", value); }
+	}
 
 	// m_hActivator
 	[SchemaMember("CBaseToggle", "m_hActivator")]
@@ -68,15 +113,27 @@ public partial class CBaseToggle : CBaseModelEntity
 
 	// m_vecFinalDest
 	[SchemaMember("CBaseToggle", "m_vecFinalDest")]
-	public Vector FinalDest => Schema.GetDeclaredClass<Vector>(this.Handle, "CBaseToggle", "m_vecFinalDest");
+	public Vector3 FinalDest
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBaseToggle", "m_vecFinalDest"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBaseToggle", "m_vecFinalDest", value); }
+	}
 
 	// m_vecFinalAngle
 	[SchemaMember("CBaseToggle", "m_vecFinalAngle")]
-	public QAngle FinalAngle => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBaseToggle", "m_vecFinalAngle");
+	public QAngle FinalAngle
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CBaseToggle", "m_vecFinalAngle"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CBaseToggle", "m_vecFinalAngle", value); }
+	}
 
 	// m_movementType
 	[SchemaMember("CBaseToggle", "m_movementType")]
-	public ref Int32 MovementType => ref Schema.GetRef<Int32>(this.Handle, "CBaseToggle", "m_movementType");
+	public Int32 MovementType
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBaseToggle", "m_movementType"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBaseToggle", "m_movementType", value); }
+	}
 
 	// m_sMaster
 	[SchemaMember("CBaseToggle", "m_sMaster")]

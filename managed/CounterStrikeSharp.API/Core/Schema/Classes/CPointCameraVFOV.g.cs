@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,6 +21,10 @@ public partial class CPointCameraVFOV : CPointCamera
 
 	// m_flVerticalFOV
 	[SchemaMember("CPointCameraVFOV", "m_flVerticalFOV")]
-	public ref float VerticalFOV => ref Schema.GetRef<float>(this.Handle, "CPointCameraVFOV", "m_flVerticalFOV");
+	public float VerticalFOV
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPointCameraVFOV", "m_flVerticalFOV"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPointCameraVFOV", "m_flVerticalFOV", value); }
+	}
 
 }

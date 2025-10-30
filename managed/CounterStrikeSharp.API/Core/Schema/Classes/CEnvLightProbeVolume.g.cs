@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -56,54 +57,106 @@ public partial class CEnvLightProbeVolume : CBaseEntity
 
 	// m_Entity_vBoxMins
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_vBoxMins")]
-	public Vector Entity_vBoxMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvLightProbeVolume", "m_Entity_vBoxMins");
+	public Vector3 Entity_vBoxMins
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvLightProbeVolume", "m_Entity_vBoxMins"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvLightProbeVolume", "m_Entity_vBoxMins", value); }
+	}
 
 	// m_Entity_vBoxMaxs
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_vBoxMaxs")]
-	public Vector Entity_vBoxMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvLightProbeVolume", "m_Entity_vBoxMaxs");
+	public Vector3 Entity_vBoxMaxs
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvLightProbeVolume", "m_Entity_vBoxMaxs"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvLightProbeVolume", "m_Entity_vBoxMaxs", value); }
+	}
 
 	// m_Entity_bMoveable
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_bMoveable")]
-	public ref bool Entity_bMoveable => ref Schema.GetRef<bool>(this.Handle, "CEnvLightProbeVolume", "m_Entity_bMoveable");
+	public bool Entity_bMoveable
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvLightProbeVolume", "m_Entity_bMoveable"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvLightProbeVolume", "m_Entity_bMoveable", value); }
+	}
 
 	// m_Entity_nHandshake
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_nHandshake")]
-	public ref Int32 Entity_nHandshake => ref Schema.GetRef<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nHandshake");
+	public Int32 Entity_nHandshake
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nHandshake"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nHandshake", value); }
+	}
 
 	// m_Entity_nPriority
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_nPriority")]
-	public ref Int32 Entity_nPriority => ref Schema.GetRef<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nPriority");
+	public Int32 Entity_nPriority
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nPriority"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nPriority", value); }
+	}
 
 	// m_Entity_bStartDisabled
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_bStartDisabled")]
-	public ref bool Entity_bStartDisabled => ref Schema.GetRef<bool>(this.Handle, "CEnvLightProbeVolume", "m_Entity_bStartDisabled");
+	public bool Entity_bStartDisabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvLightProbeVolume", "m_Entity_bStartDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvLightProbeVolume", "m_Entity_bStartDisabled", value); }
+	}
 
 	// m_Entity_nLightProbeSizeX
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_nLightProbeSizeX")]
-	public ref Int32 Entity_nLightProbeSizeX => ref Schema.GetRef<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nLightProbeSizeX");
+	public Int32 Entity_nLightProbeSizeX
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nLightProbeSizeX"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nLightProbeSizeX", value); }
+	}
 
 	// m_Entity_nLightProbeSizeY
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_nLightProbeSizeY")]
-	public ref Int32 Entity_nLightProbeSizeY => ref Schema.GetRef<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nLightProbeSizeY");
+	public Int32 Entity_nLightProbeSizeY
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nLightProbeSizeY"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nLightProbeSizeY", value); }
+	}
 
 	// m_Entity_nLightProbeSizeZ
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_nLightProbeSizeZ")]
-	public ref Int32 Entity_nLightProbeSizeZ => ref Schema.GetRef<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nLightProbeSizeZ");
+	public Int32 Entity_nLightProbeSizeZ
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nLightProbeSizeZ"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nLightProbeSizeZ", value); }
+	}
 
 	// m_Entity_nLightProbeAtlasX
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_nLightProbeAtlasX")]
-	public ref Int32 Entity_nLightProbeAtlasX => ref Schema.GetRef<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nLightProbeAtlasX");
+	public Int32 Entity_nLightProbeAtlasX
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nLightProbeAtlasX"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nLightProbeAtlasX", value); }
+	}
 
 	// m_Entity_nLightProbeAtlasY
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_nLightProbeAtlasY")]
-	public ref Int32 Entity_nLightProbeAtlasY => ref Schema.GetRef<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nLightProbeAtlasY");
+	public Int32 Entity_nLightProbeAtlasY
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nLightProbeAtlasY"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nLightProbeAtlasY", value); }
+	}
 
 	// m_Entity_nLightProbeAtlasZ
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_nLightProbeAtlasZ")]
-	public ref Int32 Entity_nLightProbeAtlasZ => ref Schema.GetRef<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nLightProbeAtlasZ");
+	public Int32 Entity_nLightProbeAtlasZ
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nLightProbeAtlasZ"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvLightProbeVolume", "m_Entity_nLightProbeAtlasZ", value); }
+	}
 
 	// m_Entity_bEnabled
 	[SchemaMember("CEnvLightProbeVolume", "m_Entity_bEnabled")]
-	public ref bool Entity_bEnabled => ref Schema.GetRef<bool>(this.Handle, "CEnvLightProbeVolume", "m_Entity_bEnabled");
+	public bool Entity_bEnabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvLightProbeVolume", "m_Entity_bEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvLightProbeVolume", "m_Entity_bEnabled", value); }
+	}
 
 }

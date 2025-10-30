@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,15 +21,27 @@ public partial class CNavLinkAreaEntity : CPointEntity
 
 	// m_flWidth
 	[SchemaMember("CNavLinkAreaEntity", "m_flWidth")]
-	public ref float Width => ref Schema.GetRef<float>(this.Handle, "CNavLinkAreaEntity", "m_flWidth");
+	public float Width
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CNavLinkAreaEntity", "m_flWidth"); }
+		set { Schema.SetValueType<float>(this.Handle, "CNavLinkAreaEntity", "m_flWidth", value); }
+	}
 
 	// m_vLocatorOffset
 	[SchemaMember("CNavLinkAreaEntity", "m_vLocatorOffset")]
-	public Vector LocatorOffset => Schema.GetDeclaredClass<Vector>(this.Handle, "CNavLinkAreaEntity", "m_vLocatorOffset");
+	public Vector3 LocatorOffset
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CNavLinkAreaEntity", "m_vLocatorOffset"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CNavLinkAreaEntity", "m_vLocatorOffset", value); }
+	}
 
 	// m_qLocatorAnglesOffset
 	[SchemaMember("CNavLinkAreaEntity", "m_qLocatorAnglesOffset")]
-	public QAngle LocatorAnglesOffset => Schema.GetDeclaredClass<QAngle>(this.Handle, "CNavLinkAreaEntity", "m_qLocatorAnglesOffset");
+	public QAngle LocatorAnglesOffset
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CNavLinkAreaEntity", "m_qLocatorAnglesOffset"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CNavLinkAreaEntity", "m_qLocatorAnglesOffset", value); }
+	}
 
 	// m_strMovementForward
 	[SchemaMember("CNavLinkAreaEntity", "m_strMovementForward")]
@@ -48,11 +61,19 @@ public partial class CNavLinkAreaEntity : CPointEntity
 
 	// m_bEnabled
 	[SchemaMember("CNavLinkAreaEntity", "m_bEnabled")]
-	public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CNavLinkAreaEntity", "m_bEnabled");
+	public bool Enabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CNavLinkAreaEntity", "m_bEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CNavLinkAreaEntity", "m_bEnabled", value); }
+	}
 
 	// m_bAllowCrossMovableConnections
 	[SchemaMember("CNavLinkAreaEntity", "m_bAllowCrossMovableConnections")]
-	public ref bool AllowCrossMovableConnections => ref Schema.GetRef<bool>(this.Handle, "CNavLinkAreaEntity", "m_bAllowCrossMovableConnections");
+	public bool AllowCrossMovableConnections
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CNavLinkAreaEntity", "m_bAllowCrossMovableConnections"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CNavLinkAreaEntity", "m_bAllowCrossMovableConnections", value); }
+	}
 
 	// m_strFilterName
 	[SchemaMember("CNavLinkAreaEntity", "m_strFilterName")]
@@ -76,10 +97,18 @@ public partial class CNavLinkAreaEntity : CPointEntity
 
 	// m_bIsTerminus
 	[SchemaMember("CNavLinkAreaEntity", "m_bIsTerminus")]
-	public ref bool IsTerminus => ref Schema.GetRef<bool>(this.Handle, "CNavLinkAreaEntity", "m_bIsTerminus");
+	public bool IsTerminus
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CNavLinkAreaEntity", "m_bIsTerminus"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CNavLinkAreaEntity", "m_bIsTerminus", value); }
+	}
 
 	// m_nSplits
 	[SchemaMember("CNavLinkAreaEntity", "m_nSplits")]
-	public ref Int32 Splits => ref Schema.GetRef<Int32>(this.Handle, "CNavLinkAreaEntity", "m_nSplits");
+	public Int32 Splits
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CNavLinkAreaEntity", "m_nSplits"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CNavLinkAreaEntity", "m_nSplits", value); }
+	}
 
 }

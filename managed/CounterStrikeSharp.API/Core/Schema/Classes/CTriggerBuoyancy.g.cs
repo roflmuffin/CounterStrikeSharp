@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,6 +25,10 @@ public partial class CTriggerBuoyancy : CBaseTrigger
 
 	// m_flFluidDensity
 	[SchemaMember("CTriggerBuoyancy", "m_flFluidDensity")]
-	public ref float FluidDensity => ref Schema.GetRef<float>(this.Handle, "CTriggerBuoyancy", "m_flFluidDensity");
+	public float FluidDensity
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerBuoyancy", "m_flFluidDensity"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerBuoyancy", "m_flFluidDensity", value); }
+	}
 
 }

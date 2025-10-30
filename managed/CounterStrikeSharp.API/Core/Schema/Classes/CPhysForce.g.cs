@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,11 +29,19 @@ public partial class CPhysForce : CPointEntity
 
 	// m_force
 	[SchemaMember("CPhysForce", "m_force")]
-	public ref float Force => ref Schema.GetRef<float>(this.Handle, "CPhysForce", "m_force");
+	public float Force
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysForce", "m_force"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysForce", "m_force", value); }
+	}
 
 	// m_forceTime
 	[SchemaMember("CPhysForce", "m_forceTime")]
-	public ref float ForceTime => ref Schema.GetRef<float>(this.Handle, "CPhysForce", "m_forceTime");
+	public float ForceTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysForce", "m_forceTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysForce", "m_forceTime", value); }
+	}
 
 	// m_attachedObject
 	[SchemaMember("CPhysForce", "m_attachedObject")]
@@ -40,7 +49,11 @@ public partial class CPhysForce : CPointEntity
 
 	// m_wasRestored
 	[SchemaMember("CPhysForce", "m_wasRestored")]
-	public ref bool WasRestored => ref Schema.GetRef<bool>(this.Handle, "CPhysForce", "m_wasRestored");
+	public bool WasRestored
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysForce", "m_wasRestored"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysForce", "m_wasRestored", value); }
+	}
 
 	// m_integrator
 	[SchemaMember("CPhysForce", "m_integrator")]

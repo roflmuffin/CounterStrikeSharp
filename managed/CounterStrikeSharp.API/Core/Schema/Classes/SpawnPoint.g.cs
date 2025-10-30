@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,14 +21,26 @@ public partial class SpawnPoint : CServerOnlyPointEntity
 
 	// m_iPriority
 	[SchemaMember("SpawnPoint", "m_iPriority")]
-	public ref Int32 Priority => ref Schema.GetRef<Int32>(this.Handle, "SpawnPoint", "m_iPriority");
+	public Int32 Priority
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "SpawnPoint", "m_iPriority"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "SpawnPoint", "m_iPriority", value); }
+	}
 
 	// m_bEnabled
 	[SchemaMember("SpawnPoint", "m_bEnabled")]
-	public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "SpawnPoint", "m_bEnabled");
+	public bool Enabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "SpawnPoint", "m_bEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "SpawnPoint", "m_bEnabled", value); }
+	}
 
 	// m_nType
 	[SchemaMember("SpawnPoint", "m_nType")]
-	public ref Int32 Type => ref Schema.GetRef<Int32>(this.Handle, "SpawnPoint", "m_nType");
+	public Int32 Type
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "SpawnPoint", "m_nType"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "SpawnPoint", "m_nType", value); }
+	}
 
 }

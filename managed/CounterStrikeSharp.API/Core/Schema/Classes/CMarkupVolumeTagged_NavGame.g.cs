@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,14 +21,26 @@ public partial class CMarkupVolumeTagged_NavGame : CMarkupVolumeWithRef
 
 	// m_nScopes
 	[SchemaMember("CMarkupVolumeTagged_NavGame", "m_nScopes")]
-	public ref NavScopeFlags_t Scopes => ref Schema.GetRef<NavScopeFlags_t>(this.Handle, "CMarkupVolumeTagged_NavGame", "m_nScopes");
+	public NavScopeFlags_t Scopes
+	{
+		get { return Schema.GetValueType<NavScopeFlags_t>(this.Handle, "CMarkupVolumeTagged_NavGame", "m_nScopes"); }
+		set { Schema.SetValueType<NavScopeFlags_t>(this.Handle, "CMarkupVolumeTagged_NavGame", "m_nScopes", value); }
+	}
 
 	// m_bFloodFillAttribute
 	[SchemaMember("CMarkupVolumeTagged_NavGame", "m_bFloodFillAttribute")]
-	public ref bool FloodFillAttribute => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeTagged_NavGame", "m_bFloodFillAttribute");
+	public bool FloodFillAttribute
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CMarkupVolumeTagged_NavGame", "m_bFloodFillAttribute"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CMarkupVolumeTagged_NavGame", "m_bFloodFillAttribute", value); }
+	}
 
 	// m_bSplitNavSpace
 	[SchemaMember("CMarkupVolumeTagged_NavGame", "m_bSplitNavSpace")]
-	public ref bool SplitNavSpace => ref Schema.GetRef<bool>(this.Handle, "CMarkupVolumeTagged_NavGame", "m_bSplitNavSpace");
+	public bool SplitNavSpace
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CMarkupVolumeTagged_NavGame", "m_bSplitNavSpace"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CMarkupVolumeTagged_NavGame", "m_bSplitNavSpace", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,47 +21,91 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_vecLadderNormal
 	[SchemaMember("CCSPlayer_MovementServices", "m_vecLadderNormal")]
-	public Vector LadderNormal => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayer_MovementServices", "m_vecLadderNormal");
+	public Vector3 LadderNormal
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSPlayer_MovementServices", "m_vecLadderNormal"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCSPlayer_MovementServices", "m_vecLadderNormal", value); }
+	}
 
 	// m_nLadderSurfacePropIndex
 	[SchemaMember("CCSPlayer_MovementServices", "m_nLadderSurfacePropIndex")]
-	public ref Int32 LadderSurfacePropIndex => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_nLadderSurfacePropIndex");
+	public Int32 LadderSurfacePropIndex
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_nLadderSurfacePropIndex"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_nLadderSurfacePropIndex", value); }
+	}
 
 	// m_flDuckAmount
 	[SchemaMember("CCSPlayer_MovementServices", "m_flDuckAmount")]
-	public ref float DuckAmount => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flDuckAmount");
+	public float DuckAmount
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flDuckAmount"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flDuckAmount", value); }
+	}
 
 	// m_flDuckSpeed
 	[SchemaMember("CCSPlayer_MovementServices", "m_flDuckSpeed")]
-	public ref float DuckSpeed => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flDuckSpeed");
+	public float DuckSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flDuckSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flDuckSpeed", value); }
+	}
 
 	// m_bDuckOverride
 	[SchemaMember("CCSPlayer_MovementServices", "m_bDuckOverride")]
-	public ref bool DuckOverride => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bDuckOverride");
+	public bool DuckOverride
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bDuckOverride"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bDuckOverride", value); }
+	}
 
 	// m_bDesiresDuck
 	[SchemaMember("CCSPlayer_MovementServices", "m_bDesiresDuck")]
-	public ref bool DesiresDuck => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bDesiresDuck");
+	public bool DesiresDuck
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bDesiresDuck"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bDesiresDuck", value); }
+	}
 
 	// m_flDuckOffset
 	[SchemaMember("CCSPlayer_MovementServices", "m_flDuckOffset")]
-	public ref float DuckOffset => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flDuckOffset");
+	public float DuckOffset
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flDuckOffset"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flDuckOffset", value); }
+	}
 
 	// m_nDuckTimeMsecs
 	[SchemaMember("CCSPlayer_MovementServices", "m_nDuckTimeMsecs")]
-	public ref UInt32 DuckTimeMsecs => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayer_MovementServices", "m_nDuckTimeMsecs");
+	public UInt32 DuckTimeMsecs
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSPlayer_MovementServices", "m_nDuckTimeMsecs"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CCSPlayer_MovementServices", "m_nDuckTimeMsecs", value); }
+	}
 
 	// m_nDuckJumpTimeMsecs
 	[SchemaMember("CCSPlayer_MovementServices", "m_nDuckJumpTimeMsecs")]
-	public ref UInt32 DuckJumpTimeMsecs => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayer_MovementServices", "m_nDuckJumpTimeMsecs");
+	public UInt32 DuckJumpTimeMsecs
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSPlayer_MovementServices", "m_nDuckJumpTimeMsecs"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CCSPlayer_MovementServices", "m_nDuckJumpTimeMsecs", value); }
+	}
 
 	// m_nJumpTimeMsecs
 	[SchemaMember("CCSPlayer_MovementServices", "m_nJumpTimeMsecs")]
-	public ref UInt32 JumpTimeMsecs => ref Schema.GetRef<UInt32>(this.Handle, "CCSPlayer_MovementServices", "m_nJumpTimeMsecs");
+	public UInt32 JumpTimeMsecs
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CCSPlayer_MovementServices", "m_nJumpTimeMsecs"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CCSPlayer_MovementServices", "m_nJumpTimeMsecs", value); }
+	}
 
 	// m_flLastDuckTime
 	[SchemaMember("CCSPlayer_MovementServices", "m_flLastDuckTime")]
-	public ref float LastDuckTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flLastDuckTime");
+	public float LastDuckTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flLastDuckTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flLastDuckTime", value); }
+	}
 
 	// m_vecLastPositionAtFullCrouchSpeed
 	[SchemaMember("CCSPlayer_MovementServices", "m_vecLastPositionAtFullCrouchSpeed")]
@@ -68,118 +113,234 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_duckUntilOnGround
 	[SchemaMember("CCSPlayer_MovementServices", "m_duckUntilOnGround")]
-	public ref bool DuckUntilOnGround => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_duckUntilOnGround");
+	public bool DuckUntilOnGround
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_duckUntilOnGround"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_duckUntilOnGround", value); }
+	}
 
 	// m_bHasWalkMovedSinceLastJump
 	[SchemaMember("CCSPlayer_MovementServices", "m_bHasWalkMovedSinceLastJump")]
-	public ref bool HasWalkMovedSinceLastJump => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bHasWalkMovedSinceLastJump");
+	public bool HasWalkMovedSinceLastJump
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bHasWalkMovedSinceLastJump"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bHasWalkMovedSinceLastJump", value); }
+	}
 
 	// m_bInStuckTest
 	[SchemaMember("CCSPlayer_MovementServices", "m_bInStuckTest")]
-	public ref bool InStuckTest => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bInStuckTest");
+	public bool InStuckTest
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bInStuckTest"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bInStuckTest", value); }
+	}
 
 	// m_nTraceCount
 	[SchemaMember("CCSPlayer_MovementServices", "m_nTraceCount")]
-	public ref Int32 TraceCount => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_nTraceCount");
+	public Int32 TraceCount
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_nTraceCount"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_nTraceCount", value); }
+	}
 
 	// m_StuckLast
 	[SchemaMember("CCSPlayer_MovementServices", "m_StuckLast")]
-	public ref Int32 StuckLast => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_StuckLast");
+	public Int32 StuckLast
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_StuckLast"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_StuckLast", value); }
+	}
 
 	// m_bSpeedCropped
 	[SchemaMember("CCSPlayer_MovementServices", "m_bSpeedCropped")]
-	public ref bool SpeedCropped => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bSpeedCropped");
+	public bool SpeedCropped
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bSpeedCropped"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bSpeedCropped", value); }
+	}
 
 	// m_nOldWaterLevel
 	[SchemaMember("CCSPlayer_MovementServices", "m_nOldWaterLevel")]
-	public ref Int32 OldWaterLevel => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_nOldWaterLevel");
+	public Int32 OldWaterLevel
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_nOldWaterLevel"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_nOldWaterLevel", value); }
+	}
 
 	// m_flWaterEntryTime
 	[SchemaMember("CCSPlayer_MovementServices", "m_flWaterEntryTime")]
-	public ref float WaterEntryTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flWaterEntryTime");
+	public float WaterEntryTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flWaterEntryTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flWaterEntryTime", value); }
+	}
 
 	// m_vecForward
 	[SchemaMember("CCSPlayer_MovementServices", "m_vecForward")]
-	public Vector Forward => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayer_MovementServices", "m_vecForward");
+	public Vector3 Forward
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSPlayer_MovementServices", "m_vecForward"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCSPlayer_MovementServices", "m_vecForward", value); }
+	}
 
 	// m_vecLeft
 	[SchemaMember("CCSPlayer_MovementServices", "m_vecLeft")]
-	public Vector Left => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayer_MovementServices", "m_vecLeft");
+	public Vector3 Left
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSPlayer_MovementServices", "m_vecLeft"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCSPlayer_MovementServices", "m_vecLeft", value); }
+	}
 
 	// m_vecUp
 	[SchemaMember("CCSPlayer_MovementServices", "m_vecUp")]
-	public Vector Up => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayer_MovementServices", "m_vecUp");
+	public Vector3 Up
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSPlayer_MovementServices", "m_vecUp"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCSPlayer_MovementServices", "m_vecUp", value); }
+	}
 
 	// m_nGameCodeHasMovedPlayerAfterCommand
 	[SchemaMember("CCSPlayer_MovementServices", "m_nGameCodeHasMovedPlayerAfterCommand")]
-	public ref Int32 GameCodeHasMovedPlayerAfterCommand => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_nGameCodeHasMovedPlayerAfterCommand");
+	public Int32 GameCodeHasMovedPlayerAfterCommand
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_nGameCodeHasMovedPlayerAfterCommand"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_nGameCodeHasMovedPlayerAfterCommand", value); }
+	}
 
 	// m_bMadeFootstepNoise
 	[SchemaMember("CCSPlayer_MovementServices", "m_bMadeFootstepNoise")]
-	public ref bool MadeFootstepNoise => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bMadeFootstepNoise");
+	public bool MadeFootstepNoise
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bMadeFootstepNoise"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bMadeFootstepNoise", value); }
+	}
 
 	// m_iFootsteps
 	[SchemaMember("CCSPlayer_MovementServices", "m_iFootsteps")]
-	public ref Int32 Footsteps => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_iFootsteps");
+	public Int32 Footsteps
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_iFootsteps"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayer_MovementServices", "m_iFootsteps", value); }
+	}
 
 	// m_bOldJumpPressed
 	[SchemaMember("CCSPlayer_MovementServices", "m_bOldJumpPressed")]
-	public ref bool OldJumpPressed => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bOldJumpPressed");
+	public bool OldJumpPressed
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bOldJumpPressed"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bOldJumpPressed", value); }
+	}
 
 	// m_flJumpPressedTime
 	[SchemaMember("CCSPlayer_MovementServices", "m_flJumpPressedTime")]
-	public ref float JumpPressedTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flJumpPressedTime");
+	public float JumpPressedTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flJumpPressedTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flJumpPressedTime", value); }
+	}
 
 	// m_fStashGrenadeParameterWhen
 	[SchemaMember("CCSPlayer_MovementServices", "m_fStashGrenadeParameterWhen")]
-	public ref float StashGrenadeParameterWhen => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_fStashGrenadeParameterWhen");
+	public float StashGrenadeParameterWhen
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_fStashGrenadeParameterWhen"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_fStashGrenadeParameterWhen", value); }
+	}
 
 	// m_nButtonDownMaskPrev
 	[SchemaMember("CCSPlayer_MovementServices", "m_nButtonDownMaskPrev")]
-	public ref UInt64 ButtonDownMaskPrev => ref Schema.GetRef<UInt64>(this.Handle, "CCSPlayer_MovementServices", "m_nButtonDownMaskPrev");
+	public UInt64 ButtonDownMaskPrev
+	{
+		get { return Schema.GetValueType<UInt64>(this.Handle, "CCSPlayer_MovementServices", "m_nButtonDownMaskPrev"); }
+		set { Schema.SetValueType<UInt64>(this.Handle, "CCSPlayer_MovementServices", "m_nButtonDownMaskPrev", value); }
+	}
 
 	// m_flOffsetTickCompleteTime
 	[SchemaMember("CCSPlayer_MovementServices", "m_flOffsetTickCompleteTime")]
-	public ref float OffsetTickCompleteTime => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flOffsetTickCompleteTime");
+	public float OffsetTickCompleteTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flOffsetTickCompleteTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flOffsetTickCompleteTime", value); }
+	}
 
 	// m_flOffsetTickStashedSpeed
 	[SchemaMember("CCSPlayer_MovementServices", "m_flOffsetTickStashedSpeed")]
-	public ref float OffsetTickStashedSpeed => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flOffsetTickStashedSpeed");
+	public float OffsetTickStashedSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flOffsetTickStashedSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flOffsetTickStashedSpeed", value); }
+	}
 
 	// m_flStamina
 	[SchemaMember("CCSPlayer_MovementServices", "m_flStamina")]
-	public ref float Stamina => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flStamina");
+	public float Stamina
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flStamina"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flStamina", value); }
+	}
 
 	// m_flHeightAtJumpStart
 	[SchemaMember("CCSPlayer_MovementServices", "m_flHeightAtJumpStart")]
-	public ref float HeightAtJumpStart => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flHeightAtJumpStart");
+	public float HeightAtJumpStart
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flHeightAtJumpStart"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flHeightAtJumpStart", value); }
+	}
 
 	// m_flMaxJumpHeightThisJump
 	[SchemaMember("CCSPlayer_MovementServices", "m_flMaxJumpHeightThisJump")]
-	public ref float MaxJumpHeightThisJump => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flMaxJumpHeightThisJump");
+	public float MaxJumpHeightThisJump
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flMaxJumpHeightThisJump"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flMaxJumpHeightThisJump", value); }
+	}
 
 	// m_flMaxJumpHeightLastJump
 	[SchemaMember("CCSPlayer_MovementServices", "m_flMaxJumpHeightLastJump")]
-	public ref float MaxJumpHeightLastJump => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flMaxJumpHeightLastJump");
+	public float MaxJumpHeightLastJump
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flMaxJumpHeightLastJump"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flMaxJumpHeightLastJump", value); }
+	}
 
 	// m_flStaminaAtJumpStart
 	[SchemaMember("CCSPlayer_MovementServices", "m_flStaminaAtJumpStart")]
-	public ref float StaminaAtJumpStart => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flStaminaAtJumpStart");
+	public float StaminaAtJumpStart
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flStaminaAtJumpStart"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flStaminaAtJumpStart", value); }
+	}
 
 	// m_flAccumulatedJumpError
 	[SchemaMember("CCSPlayer_MovementServices", "m_flAccumulatedJumpError")]
-	public ref float AccumulatedJumpError => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flAccumulatedJumpError");
+	public float AccumulatedJumpError
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flAccumulatedJumpError"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flAccumulatedJumpError", value); }
+	}
 
 	// m_flTicksSinceLastSurfingDetected
 	[SchemaMember("CCSPlayer_MovementServices", "m_flTicksSinceLastSurfingDetected")]
-	public ref float TicksSinceLastSurfingDetected => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_MovementServices", "m_flTicksSinceLastSurfingDetected");
+	public float TicksSinceLastSurfingDetected
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flTicksSinceLastSurfingDetected"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_MovementServices", "m_flTicksSinceLastSurfingDetected", value); }
+	}
 
 	// m_bWasSurfing
 	[SchemaMember("CCSPlayer_MovementServices", "m_bWasSurfing")]
-	public ref bool WasSurfing => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bWasSurfing");
+	public bool WasSurfing
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bWasSurfing"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_MovementServices", "m_bWasSurfing", value); }
+	}
 
 	// m_vecInputRotated
 	[SchemaMember("CCSPlayer_MovementServices", "m_vecInputRotated")]
-	public Vector InputRotated => Schema.GetDeclaredClass<Vector>(this.Handle, "CCSPlayer_MovementServices", "m_vecInputRotated");
+	public Vector3 InputRotated
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CCSPlayer_MovementServices", "m_vecInputRotated"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CCSPlayer_MovementServices", "m_vecInputRotated", value); }
+	}
 
 }

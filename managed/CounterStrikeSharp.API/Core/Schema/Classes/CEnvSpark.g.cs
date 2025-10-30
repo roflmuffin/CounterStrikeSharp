@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,19 +21,35 @@ public partial class CEnvSpark : CPointEntity
 
 	// m_flDelay
 	[SchemaMember("CEnvSpark", "m_flDelay")]
-	public ref float Delay => ref Schema.GetRef<float>(this.Handle, "CEnvSpark", "m_flDelay");
+	public float Delay
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvSpark", "m_flDelay"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvSpark", "m_flDelay", value); }
+	}
 
 	// m_nMagnitude
 	[SchemaMember("CEnvSpark", "m_nMagnitude")]
-	public ref Int32 Magnitude => ref Schema.GetRef<Int32>(this.Handle, "CEnvSpark", "m_nMagnitude");
+	public Int32 Magnitude
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvSpark", "m_nMagnitude"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvSpark", "m_nMagnitude", value); }
+	}
 
 	// m_nTrailLength
 	[SchemaMember("CEnvSpark", "m_nTrailLength")]
-	public ref Int32 TrailLength => ref Schema.GetRef<Int32>(this.Handle, "CEnvSpark", "m_nTrailLength");
+	public Int32 TrailLength
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvSpark", "m_nTrailLength"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvSpark", "m_nTrailLength", value); }
+	}
 
 	// m_nType
 	[SchemaMember("CEnvSpark", "m_nType")]
-	public ref Int32 Type => ref Schema.GetRef<Int32>(this.Handle, "CEnvSpark", "m_nType");
+	public Int32 Type
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvSpark", "m_nType"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvSpark", "m_nType", value); }
+	}
 
 	// m_OnSpark
 	[SchemaMember("CEnvSpark", "m_OnSpark")]

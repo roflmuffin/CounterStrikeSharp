@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,18 +21,34 @@ public partial class CSpotlightEnd : CBaseModelEntity
 
 	// m_flLightScale
 	[SchemaMember("CSpotlightEnd", "m_flLightScale")]
-	public ref float LightScale => ref Schema.GetRef<float>(this.Handle, "CSpotlightEnd", "m_flLightScale");
+	public float LightScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSpotlightEnd", "m_flLightScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSpotlightEnd", "m_flLightScale", value); }
+	}
 
 	// m_Radius
 	[SchemaMember("CSpotlightEnd", "m_Radius")]
-	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CSpotlightEnd", "m_Radius");
+	public float Radius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSpotlightEnd", "m_Radius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSpotlightEnd", "m_Radius", value); }
+	}
 
 	// m_vSpotlightDir
 	[SchemaMember("CSpotlightEnd", "m_vSpotlightDir")]
-	public Vector SpotlightDir => Schema.GetDeclaredClass<Vector>(this.Handle, "CSpotlightEnd", "m_vSpotlightDir");
+	public Vector3 SpotlightDir
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CSpotlightEnd", "m_vSpotlightDir"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CSpotlightEnd", "m_vSpotlightDir", value); }
+	}
 
 	// m_vSpotlightOrg
 	[SchemaMember("CSpotlightEnd", "m_vSpotlightOrg")]
-	public Vector SpotlightOrg => Schema.GetDeclaredClass<Vector>(this.Handle, "CSpotlightEnd", "m_vSpotlightOrg");
+	public Vector3 SpotlightOrg
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CSpotlightEnd", "m_vSpotlightOrg"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CSpotlightEnd", "m_vSpotlightOrg", value); }
+	}
 
 }

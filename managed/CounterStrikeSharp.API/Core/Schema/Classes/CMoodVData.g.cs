@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,6 +21,10 @@ public partial class CMoodVData : NativeObject
 
 	// m_nMoodType
 	[SchemaMember("CMoodVData", "m_nMoodType")]
-	public ref MoodType_t MoodType => ref Schema.GetRef<MoodType_t>(this.Handle, "CMoodVData", "m_nMoodType");
+	public MoodType_t MoodType
+	{
+		get { return Schema.GetValueType<MoodType_t>(this.Handle, "CMoodVData", "m_nMoodType"); }
+		set { Schema.SetValueType<MoodType_t>(this.Handle, "CMoodVData", "m_nMoodType", value); }
+	}
 
 }

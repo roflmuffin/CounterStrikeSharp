@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,11 +21,19 @@ public partial class CShatterGlassShardPhysics : CPhysicsProp
 
 	// m_bDebris
 	[SchemaMember("CShatterGlassShardPhysics", "m_bDebris")]
-	public ref bool Debris => ref Schema.GetRef<bool>(this.Handle, "CShatterGlassShardPhysics", "m_bDebris");
+	public bool Debris
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CShatterGlassShardPhysics", "m_bDebris"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CShatterGlassShardPhysics", "m_bDebris", value); }
+	}
 
 	// m_hParentShard
 	[SchemaMember("CShatterGlassShardPhysics", "m_hParentShard")]
-	public ref UInt32 ParentShard => ref Schema.GetRef<UInt32>(this.Handle, "CShatterGlassShardPhysics", "m_hParentShard");
+	public UInt32 ParentShard
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CShatterGlassShardPhysics", "m_hParentShard"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CShatterGlassShardPhysics", "m_hParentShard", value); }
+	}
 
 	// m_ShardDesc
 	[SchemaMember("CShatterGlassShardPhysics", "m_ShardDesc")]

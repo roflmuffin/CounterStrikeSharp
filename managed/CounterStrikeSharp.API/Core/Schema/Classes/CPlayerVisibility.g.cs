@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,26 +21,50 @@ public partial class CPlayerVisibility : CBaseEntity
 
 	// m_flVisibilityStrength
 	[SchemaMember("CPlayerVisibility", "m_flVisibilityStrength")]
-	public ref float VisibilityStrength => ref Schema.GetRef<float>(this.Handle, "CPlayerVisibility", "m_flVisibilityStrength");
+	public float VisibilityStrength
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPlayerVisibility", "m_flVisibilityStrength"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPlayerVisibility", "m_flVisibilityStrength", value); }
+	}
 
 	// m_flFogDistanceMultiplier
 	[SchemaMember("CPlayerVisibility", "m_flFogDistanceMultiplier")]
-	public ref float FogDistanceMultiplier => ref Schema.GetRef<float>(this.Handle, "CPlayerVisibility", "m_flFogDistanceMultiplier");
+	public float FogDistanceMultiplier
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPlayerVisibility", "m_flFogDistanceMultiplier"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPlayerVisibility", "m_flFogDistanceMultiplier", value); }
+	}
 
 	// m_flFogMaxDensityMultiplier
 	[SchemaMember("CPlayerVisibility", "m_flFogMaxDensityMultiplier")]
-	public ref float FogMaxDensityMultiplier => ref Schema.GetRef<float>(this.Handle, "CPlayerVisibility", "m_flFogMaxDensityMultiplier");
+	public float FogMaxDensityMultiplier
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPlayerVisibility", "m_flFogMaxDensityMultiplier"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPlayerVisibility", "m_flFogMaxDensityMultiplier", value); }
+	}
 
 	// m_flFadeTime
 	[SchemaMember("CPlayerVisibility", "m_flFadeTime")]
-	public ref float FadeTime => ref Schema.GetRef<float>(this.Handle, "CPlayerVisibility", "m_flFadeTime");
+	public float FadeTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPlayerVisibility", "m_flFadeTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPlayerVisibility", "m_flFadeTime", value); }
+	}
 
 	// m_bStartDisabled
 	[SchemaMember("CPlayerVisibility", "m_bStartDisabled")]
-	public ref bool StartDisabled => ref Schema.GetRef<bool>(this.Handle, "CPlayerVisibility", "m_bStartDisabled");
+	public bool StartDisabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPlayerVisibility", "m_bStartDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPlayerVisibility", "m_bStartDisabled", value); }
+	}
 
 	// m_bIsEnabled
 	[SchemaMember("CPlayerVisibility", "m_bIsEnabled")]
-	public ref bool IsEnabled => ref Schema.GetRef<bool>(this.Handle, "CPlayerVisibility", "m_bIsEnabled");
+	public bool IsEnabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPlayerVisibility", "m_bIsEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPlayerVisibility", "m_bIsEnabled", value); }
+	}
 
 }

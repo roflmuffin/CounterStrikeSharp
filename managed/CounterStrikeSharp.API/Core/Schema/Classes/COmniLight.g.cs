@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,14 +21,26 @@ public partial class COmniLight : CBarnLight
 
 	// m_flInnerAngle
 	[SchemaMember("COmniLight", "m_flInnerAngle")]
-	public ref float InnerAngle => ref Schema.GetRef<float>(this.Handle, "COmniLight", "m_flInnerAngle");
+	public float InnerAngle
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "COmniLight", "m_flInnerAngle"); }
+		set { Schema.SetValueType<float>(this.Handle, "COmniLight", "m_flInnerAngle", value); }
+	}
 
 	// m_flOuterAngle
 	[SchemaMember("COmniLight", "m_flOuterAngle")]
-	public ref float OuterAngle => ref Schema.GetRef<float>(this.Handle, "COmniLight", "m_flOuterAngle");
+	public float OuterAngle
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "COmniLight", "m_flOuterAngle"); }
+		set { Schema.SetValueType<float>(this.Handle, "COmniLight", "m_flOuterAngle", value); }
+	}
 
 	// m_bShowLight
 	[SchemaMember("COmniLight", "m_bShowLight")]
-	public ref bool ShowLight => ref Schema.GetRef<bool>(this.Handle, "COmniLight", "m_bShowLight");
+	public bool ShowLight
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "COmniLight", "m_bShowLight"); }
+		set { Schema.SetValueType<bool>(this.Handle, "COmniLight", "m_bShowLight", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class CMovementStatsProperty : NativeObject
 
 	// m_nUseCounter
 	[SchemaMember("CMovementStatsProperty", "m_nUseCounter")]
-	public ref Int32 UseCounter => ref Schema.GetRef<Int32>(this.Handle, "CMovementStatsProperty", "m_nUseCounter");
+	public Int32 UseCounter
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CMovementStatsProperty", "m_nUseCounter"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CMovementStatsProperty", "m_nUseCounter", value); }
+	}
 
 	// m_emaMovementDirection
 	[SchemaMember("CMovementStatsProperty", "m_emaMovementDirection")]

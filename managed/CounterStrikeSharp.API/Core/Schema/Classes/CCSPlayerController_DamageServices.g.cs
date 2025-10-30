@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class CCSPlayerController_DamageServices : CPlayerControllerCompo
 
 	// m_nSendUpdate
 	[SchemaMember("CCSPlayerController_DamageServices", "m_nSendUpdate")]
-	public ref Int32 SendUpdate => ref Schema.GetRef<Int32>(this.Handle, "CCSPlayerController_DamageServices", "m_nSendUpdate");
+	public Int32 SendUpdate
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CCSPlayerController_DamageServices", "m_nSendUpdate"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController_DamageServices", "m_nSendUpdate", value); }
+	}
 
 	// m_DamageList
 	[SchemaMember("CCSPlayerController_DamageServices", "m_DamageList")]

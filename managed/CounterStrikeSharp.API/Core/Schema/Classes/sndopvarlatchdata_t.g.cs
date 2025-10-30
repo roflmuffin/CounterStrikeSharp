@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -44,10 +45,18 @@ public partial class sndopvarlatchdata_t : NativeObject
 
 	// m_flVal
 	[SchemaMember("sndopvarlatchdata_t", "m_flVal")]
-	public ref float Val => ref Schema.GetRef<float>(this.Handle, "sndopvarlatchdata_t", "m_flVal");
+	public float Val
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "sndopvarlatchdata_t", "m_flVal"); }
+		set { Schema.SetValueType<float>(this.Handle, "sndopvarlatchdata_t", "m_flVal", value); }
+	}
 
 	// m_vPos
 	[SchemaMember("sndopvarlatchdata_t", "m_vPos")]
-	public Vector Pos => Schema.GetDeclaredClass<Vector>(this.Handle, "sndopvarlatchdata_t", "m_vPos");
+	public Vector3 Pos
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "sndopvarlatchdata_t", "m_vPos"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "sndopvarlatchdata_t", "m_vPos", value); }
+	}
 
 }

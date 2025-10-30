@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -44,35 +45,67 @@ public partial class CPhysMotor : CLogicalEntity
 
 	// m_spinUp
 	[SchemaMember("CPhysMotor", "m_spinUp")]
-	public ref float SpinUp => ref Schema.GetRef<float>(this.Handle, "CPhysMotor", "m_spinUp");
+	public float SpinUp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysMotor", "m_spinUp"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysMotor", "m_spinUp", value); }
+	}
 
 	// m_spinDown
 	[SchemaMember("CPhysMotor", "m_spinDown")]
-	public ref float SpinDown => ref Schema.GetRef<float>(this.Handle, "CPhysMotor", "m_spinDown");
+	public float SpinDown
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysMotor", "m_spinDown"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysMotor", "m_spinDown", value); }
+	}
 
 	// m_flMotorFriction
 	[SchemaMember("CPhysMotor", "m_flMotorFriction")]
-	public ref float MotorFriction => ref Schema.GetRef<float>(this.Handle, "CPhysMotor", "m_flMotorFriction");
+	public float MotorFriction
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysMotor", "m_flMotorFriction"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysMotor", "m_flMotorFriction", value); }
+	}
 
 	// m_additionalAcceleration
 	[SchemaMember("CPhysMotor", "m_additionalAcceleration")]
-	public ref float AdditionalAcceleration => ref Schema.GetRef<float>(this.Handle, "CPhysMotor", "m_additionalAcceleration");
+	public float AdditionalAcceleration
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysMotor", "m_additionalAcceleration"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysMotor", "m_additionalAcceleration", value); }
+	}
 
 	// m_angularAcceleration
 	[SchemaMember("CPhysMotor", "m_angularAcceleration")]
-	public ref float AngularAcceleration => ref Schema.GetRef<float>(this.Handle, "CPhysMotor", "m_angularAcceleration");
+	public float AngularAcceleration
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysMotor", "m_angularAcceleration"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysMotor", "m_angularAcceleration", value); }
+	}
 
 	// m_flTorqueScale
 	[SchemaMember("CPhysMotor", "m_flTorqueScale")]
-	public ref float TorqueScale => ref Schema.GetRef<float>(this.Handle, "CPhysMotor", "m_flTorqueScale");
+	public float TorqueScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysMotor", "m_flTorqueScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysMotor", "m_flTorqueScale", value); }
+	}
 
 	// m_flTargetSpeed
 	[SchemaMember("CPhysMotor", "m_flTargetSpeed")]
-	public ref float TargetSpeed => ref Schema.GetRef<float>(this.Handle, "CPhysMotor", "m_flTargetSpeed");
+	public float TargetSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysMotor", "m_flTargetSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysMotor", "m_flTargetSpeed", value); }
+	}
 
 	// m_flSpeedWhenSpinUpOrSpinDownStarted
 	[SchemaMember("CPhysMotor", "m_flSpeedWhenSpinUpOrSpinDownStarted")]
-	public ref float SpeedWhenSpinUpOrSpinDownStarted => ref Schema.GetRef<float>(this.Handle, "CPhysMotor", "m_flSpeedWhenSpinUpOrSpinDownStarted");
+	public float SpeedWhenSpinUpOrSpinDownStarted
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysMotor", "m_flSpeedWhenSpinUpOrSpinDownStarted"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysMotor", "m_flSpeedWhenSpinUpOrSpinDownStarted", value); }
+	}
 
 	// m_motor
 	[SchemaMember("CPhysMotor", "m_motor")]

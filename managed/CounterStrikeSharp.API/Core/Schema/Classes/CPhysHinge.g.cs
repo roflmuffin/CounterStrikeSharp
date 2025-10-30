@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -32,11 +33,19 @@ public partial class CPhysHinge : CPhysConstraint
 
 	// m_bAtMinLimit
 	[SchemaMember("CPhysHinge", "m_bAtMinLimit")]
-	public ref bool AtMinLimit => ref Schema.GetRef<bool>(this.Handle, "CPhysHinge", "m_bAtMinLimit");
+	public bool AtMinLimit
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysHinge", "m_bAtMinLimit"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysHinge", "m_bAtMinLimit", value); }
+	}
 
 	// m_bAtMaxLimit
 	[SchemaMember("CPhysHinge", "m_bAtMaxLimit")]
-	public ref bool AtMaxLimit => ref Schema.GetRef<bool>(this.Handle, "CPhysHinge", "m_bAtMaxLimit");
+	public bool AtMaxLimit
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysHinge", "m_bAtMaxLimit"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysHinge", "m_bAtMaxLimit", value); }
+	}
 
 	// m_hinge
 	[SchemaMember("CPhysHinge", "m_hinge")]
@@ -44,43 +53,83 @@ public partial class CPhysHinge : CPhysConstraint
 
 	// m_hingeFriction
 	[SchemaMember("CPhysHinge", "m_hingeFriction")]
-	public ref float HingeFriction => ref Schema.GetRef<float>(this.Handle, "CPhysHinge", "m_hingeFriction");
+	public float HingeFriction
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysHinge", "m_hingeFriction"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysHinge", "m_hingeFriction", value); }
+	}
 
 	// m_systemLoadScale
 	[SchemaMember("CPhysHinge", "m_systemLoadScale")]
-	public ref float SystemLoadScale => ref Schema.GetRef<float>(this.Handle, "CPhysHinge", "m_systemLoadScale");
+	public float SystemLoadScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysHinge", "m_systemLoadScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysHinge", "m_systemLoadScale", value); }
+	}
 
 	// m_bIsAxisLocal
 	[SchemaMember("CPhysHinge", "m_bIsAxisLocal")]
-	public ref bool IsAxisLocal => ref Schema.GetRef<bool>(this.Handle, "CPhysHinge", "m_bIsAxisLocal");
+	public bool IsAxisLocal
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysHinge", "m_bIsAxisLocal"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysHinge", "m_bIsAxisLocal", value); }
+	}
 
 	// m_flMinRotation
 	[SchemaMember("CPhysHinge", "m_flMinRotation")]
-	public ref float MinRotation => ref Schema.GetRef<float>(this.Handle, "CPhysHinge", "m_flMinRotation");
+	public float MinRotation
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysHinge", "m_flMinRotation"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysHinge", "m_flMinRotation", value); }
+	}
 
 	// m_flMaxRotation
 	[SchemaMember("CPhysHinge", "m_flMaxRotation")]
-	public ref float MaxRotation => ref Schema.GetRef<float>(this.Handle, "CPhysHinge", "m_flMaxRotation");
+	public float MaxRotation
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysHinge", "m_flMaxRotation"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysHinge", "m_flMaxRotation", value); }
+	}
 
 	// m_flInitialRotation
 	[SchemaMember("CPhysHinge", "m_flInitialRotation")]
-	public ref float InitialRotation => ref Schema.GetRef<float>(this.Handle, "CPhysHinge", "m_flInitialRotation");
+	public float InitialRotation
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysHinge", "m_flInitialRotation"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysHinge", "m_flInitialRotation", value); }
+	}
 
 	// m_flMotorFrequency
 	[SchemaMember("CPhysHinge", "m_flMotorFrequency")]
-	public ref float MotorFrequency => ref Schema.GetRef<float>(this.Handle, "CPhysHinge", "m_flMotorFrequency");
+	public float MotorFrequency
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysHinge", "m_flMotorFrequency"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysHinge", "m_flMotorFrequency", value); }
+	}
 
 	// m_flMotorDampingRatio
 	[SchemaMember("CPhysHinge", "m_flMotorDampingRatio")]
-	public ref float MotorDampingRatio => ref Schema.GetRef<float>(this.Handle, "CPhysHinge", "m_flMotorDampingRatio");
+	public float MotorDampingRatio
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysHinge", "m_flMotorDampingRatio"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysHinge", "m_flMotorDampingRatio", value); }
+	}
 
 	// m_flAngleSpeed
 	[SchemaMember("CPhysHinge", "m_flAngleSpeed")]
-	public ref float AngleSpeed => ref Schema.GetRef<float>(this.Handle, "CPhysHinge", "m_flAngleSpeed");
+	public float AngleSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysHinge", "m_flAngleSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysHinge", "m_flAngleSpeed", value); }
+	}
 
 	// m_flAngleSpeedThreshold
 	[SchemaMember("CPhysHinge", "m_flAngleSpeedThreshold")]
-	public ref float AngleSpeedThreshold => ref Schema.GetRef<float>(this.Handle, "CPhysHinge", "m_flAngleSpeedThreshold");
+	public float AngleSpeedThreshold
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysHinge", "m_flAngleSpeedThreshold"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysHinge", "m_flAngleSpeedThreshold", value); }
+	}
 
 	// m_OnStartMoving
 	[SchemaMember("CPhysHinge", "m_OnStartMoving")]

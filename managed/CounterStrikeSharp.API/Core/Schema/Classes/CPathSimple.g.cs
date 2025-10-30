@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -32,6 +33,10 @@ public partial class CPathSimple : CBaseEntity
 
 	// m_bClosedLoop
 	[SchemaMember("CPathSimple", "m_bClosedLoop")]
-	public ref bool ClosedLoop => ref Schema.GetRef<bool>(this.Handle, "CPathSimple", "m_bClosedLoop");
+	public bool ClosedLoop
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPathSimple", "m_bClosedLoop"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPathSimple", "m_bClosedLoop", value); }
+	}
 
 }

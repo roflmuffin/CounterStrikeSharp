@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,7 +25,11 @@ public partial class fogplayerparams_t : NativeObject
 
 	// m_flTransitionTime
 	[SchemaMember("fogplayerparams_t", "m_flTransitionTime")]
-	public ref float TransitionTime => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flTransitionTime");
+	public float TransitionTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "fogplayerparams_t", "m_flTransitionTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "fogplayerparams_t", "m_flTransitionTime", value); }
+	}
 
 	// m_OldColor
 	[SchemaMember("fogplayerparams_t", "m_OldColor")]
@@ -36,23 +41,43 @@ public partial class fogplayerparams_t : NativeObject
 
 	// m_flOldStart
 	[SchemaMember("fogplayerparams_t", "m_flOldStart")]
-	public ref float OldStart => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flOldStart");
+	public float OldStart
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "fogplayerparams_t", "m_flOldStart"); }
+		set { Schema.SetValueType<float>(this.Handle, "fogplayerparams_t", "m_flOldStart", value); }
+	}
 
 	// m_flOldEnd
 	[SchemaMember("fogplayerparams_t", "m_flOldEnd")]
-	public ref float OldEnd => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flOldEnd");
+	public float OldEnd
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "fogplayerparams_t", "m_flOldEnd"); }
+		set { Schema.SetValueType<float>(this.Handle, "fogplayerparams_t", "m_flOldEnd", value); }
+	}
 
 	// m_flOldMaxDensity
 	[SchemaMember("fogplayerparams_t", "m_flOldMaxDensity")]
-	public ref float OldMaxDensity => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flOldMaxDensity");
+	public float OldMaxDensity
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "fogplayerparams_t", "m_flOldMaxDensity"); }
+		set { Schema.SetValueType<float>(this.Handle, "fogplayerparams_t", "m_flOldMaxDensity", value); }
+	}
 
 	// m_flOldHDRColorScale
 	[SchemaMember("fogplayerparams_t", "m_flOldHDRColorScale")]
-	public ref float OldHDRColorScale => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flOldHDRColorScale");
+	public float OldHDRColorScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "fogplayerparams_t", "m_flOldHDRColorScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "fogplayerparams_t", "m_flOldHDRColorScale", value); }
+	}
 
 	// m_flOldFarZ
 	[SchemaMember("fogplayerparams_t", "m_flOldFarZ")]
-	public ref float OldFarZ => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flOldFarZ");
+	public float OldFarZ
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "fogplayerparams_t", "m_flOldFarZ"); }
+		set { Schema.SetValueType<float>(this.Handle, "fogplayerparams_t", "m_flOldFarZ", value); }
+	}
 
 	// m_NewColor
 	[SchemaMember("fogplayerparams_t", "m_NewColor")]
@@ -64,22 +89,42 @@ public partial class fogplayerparams_t : NativeObject
 
 	// m_flNewStart
 	[SchemaMember("fogplayerparams_t", "m_flNewStart")]
-	public ref float NewStart => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flNewStart");
+	public float NewStart
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "fogplayerparams_t", "m_flNewStart"); }
+		set { Schema.SetValueType<float>(this.Handle, "fogplayerparams_t", "m_flNewStart", value); }
+	}
 
 	// m_flNewEnd
 	[SchemaMember("fogplayerparams_t", "m_flNewEnd")]
-	public ref float NewEnd => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flNewEnd");
+	public float NewEnd
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "fogplayerparams_t", "m_flNewEnd"); }
+		set { Schema.SetValueType<float>(this.Handle, "fogplayerparams_t", "m_flNewEnd", value); }
+	}
 
 	// m_flNewMaxDensity
 	[SchemaMember("fogplayerparams_t", "m_flNewMaxDensity")]
-	public ref float NewMaxDensity => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flNewMaxDensity");
+	public float NewMaxDensity
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "fogplayerparams_t", "m_flNewMaxDensity"); }
+		set { Schema.SetValueType<float>(this.Handle, "fogplayerparams_t", "m_flNewMaxDensity", value); }
+	}
 
 	// m_flNewHDRColorScale
 	[SchemaMember("fogplayerparams_t", "m_flNewHDRColorScale")]
-	public ref float NewHDRColorScale => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flNewHDRColorScale");
+	public float NewHDRColorScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "fogplayerparams_t", "m_flNewHDRColorScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "fogplayerparams_t", "m_flNewHDRColorScale", value); }
+	}
 
 	// m_flNewFarZ
 	[SchemaMember("fogplayerparams_t", "m_flNewFarZ")]
-	public ref float NewFarZ => ref Schema.GetRef<float>(this.Handle, "fogplayerparams_t", "m_flNewFarZ");
+	public float NewFarZ
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "fogplayerparams_t", "m_flNewFarZ"); }
+		set { Schema.SetValueType<float>(this.Handle, "fogplayerparams_t", "m_flNewFarZ", value); }
+	}
 
 }

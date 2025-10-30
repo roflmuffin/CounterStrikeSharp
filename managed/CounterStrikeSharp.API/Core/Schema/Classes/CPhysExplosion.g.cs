@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,19 +21,35 @@ public partial class CPhysExplosion : CPointEntity
 
 	// m_bExplodeOnSpawn
 	[SchemaMember("CPhysExplosion", "m_bExplodeOnSpawn")]
-	public ref bool ExplodeOnSpawn => ref Schema.GetRef<bool>(this.Handle, "CPhysExplosion", "m_bExplodeOnSpawn");
+	public bool ExplodeOnSpawn
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysExplosion", "m_bExplodeOnSpawn"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysExplosion", "m_bExplodeOnSpawn", value); }
+	}
 
 	// m_flMagnitude
 	[SchemaMember("CPhysExplosion", "m_flMagnitude")]
-	public ref float Magnitude => ref Schema.GetRef<float>(this.Handle, "CPhysExplosion", "m_flMagnitude");
+	public float Magnitude
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysExplosion", "m_flMagnitude"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysExplosion", "m_flMagnitude", value); }
+	}
 
 	// m_flDamage
 	[SchemaMember("CPhysExplosion", "m_flDamage")]
-	public ref float Damage => ref Schema.GetRef<float>(this.Handle, "CPhysExplosion", "m_flDamage");
+	public float Damage
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysExplosion", "m_flDamage"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysExplosion", "m_flDamage", value); }
+	}
 
 	// m_radius
 	[SchemaMember("CPhysExplosion", "m_radius")]
-	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CPhysExplosion", "m_radius");
+	public float Radius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysExplosion", "m_radius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysExplosion", "m_radius", value); }
+	}
 
 	// m_targetEntityName
 	[SchemaMember("CPhysExplosion", "m_targetEntityName")]
@@ -44,19 +61,35 @@ public partial class CPhysExplosion : CPointEntity
 
 	// m_flInnerRadius
 	[SchemaMember("CPhysExplosion", "m_flInnerRadius")]
-	public ref float InnerRadius => ref Schema.GetRef<float>(this.Handle, "CPhysExplosion", "m_flInnerRadius");
+	public float InnerRadius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysExplosion", "m_flInnerRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysExplosion", "m_flInnerRadius", value); }
+	}
 
 	// m_flPushScale
 	[SchemaMember("CPhysExplosion", "m_flPushScale")]
-	public ref float PushScale => ref Schema.GetRef<float>(this.Handle, "CPhysExplosion", "m_flPushScale");
+	public float PushScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysExplosion", "m_flPushScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysExplosion", "m_flPushScale", value); }
+	}
 
 	// m_bConvertToDebrisWhenPossible
 	[SchemaMember("CPhysExplosion", "m_bConvertToDebrisWhenPossible")]
-	public ref bool ConvertToDebrisWhenPossible => ref Schema.GetRef<bool>(this.Handle, "CPhysExplosion", "m_bConvertToDebrisWhenPossible");
+	public bool ConvertToDebrisWhenPossible
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysExplosion", "m_bConvertToDebrisWhenPossible"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysExplosion", "m_bConvertToDebrisWhenPossible", value); }
+	}
 
 	// m_bAffectInvulnerableEnts
 	[SchemaMember("CPhysExplosion", "m_bAffectInvulnerableEnts")]
-	public ref bool AffectInvulnerableEnts => ref Schema.GetRef<bool>(this.Handle, "CPhysExplosion", "m_bAffectInvulnerableEnts");
+	public bool AffectInvulnerableEnts
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysExplosion", "m_bAffectInvulnerableEnts"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysExplosion", "m_bAffectInvulnerableEnts", value); }
+	}
 
 	// m_OnPushedPlayer
 	[SchemaMember("CPhysExplosion", "m_OnPushedPlayer")]

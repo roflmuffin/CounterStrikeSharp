@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,7 +25,11 @@ public partial class CBreakable : CBaseModelEntity
 
 	// m_Material
 	[SchemaMember("CBreakable", "m_Material")]
-	public ref Materials Material => ref Schema.GetRef<Materials>(this.Handle, "CBreakable", "m_Material");
+	public Materials Material
+	{
+		get { return Schema.GetValueType<Materials>(this.Handle, "CBreakable", "m_Material"); }
+		set { Schema.SetValueType<Materials>(this.Handle, "CBreakable", "m_Material", value); }
+	}
 
 	// m_hBreaker
 	[SchemaMember("CBreakable", "m_hBreaker")]
@@ -32,7 +37,11 @@ public partial class CBreakable : CBaseModelEntity
 
 	// m_Explosion
 	[SchemaMember("CBreakable", "m_Explosion")]
-	public ref Explosions Explosion => ref Schema.GetRef<Explosions>(this.Handle, "CBreakable", "m_Explosion");
+	public Explosions Explosion
+	{
+		get { return Schema.GetValueType<Explosions>(this.Handle, "CBreakable", "m_Explosion"); }
+		set { Schema.SetValueType<Explosions>(this.Handle, "CBreakable", "m_Explosion", value); }
+	}
 
 	// m_iszSpawnObject
 	[SchemaMember("CBreakable", "m_iszSpawnObject")]
@@ -44,11 +53,19 @@ public partial class CBreakable : CBaseModelEntity
 
 	// m_flPressureDelay
 	[SchemaMember("CBreakable", "m_flPressureDelay")]
-	public ref float PressureDelay => ref Schema.GetRef<float>(this.Handle, "CBreakable", "m_flPressureDelay");
+	public float PressureDelay
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBreakable", "m_flPressureDelay"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBreakable", "m_flPressureDelay", value); }
+	}
 
 	// m_iMinHealthDmg
 	[SchemaMember("CBreakable", "m_iMinHealthDmg")]
-	public ref Int32 MinHealthDmg => ref Schema.GetRef<Int32>(this.Handle, "CBreakable", "m_iMinHealthDmg");
+	public Int32 MinHealthDmg
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBreakable", "m_iMinHealthDmg"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBreakable", "m_iMinHealthDmg", value); }
+	}
 
 	// m_iszPropData
 	[SchemaMember("CBreakable", "m_iszPropData")]
@@ -60,11 +77,19 @@ public partial class CBreakable : CBaseModelEntity
 
 	// m_impactEnergyScale
 	[SchemaMember("CBreakable", "m_impactEnergyScale")]
-	public ref float ImpactEnergyScale => ref Schema.GetRef<float>(this.Handle, "CBreakable", "m_impactEnergyScale");
+	public float ImpactEnergyScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBreakable", "m_impactEnergyScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBreakable", "m_impactEnergyScale", value); }
+	}
 
 	// m_nOverrideBlockLOS
 	[SchemaMember("CBreakable", "m_nOverrideBlockLOS")]
-	public ref EOverrideBlockLOS_t OverrideBlockLOS => ref Schema.GetRef<EOverrideBlockLOS_t>(this.Handle, "CBreakable", "m_nOverrideBlockLOS");
+	public EOverrideBlockLOS_t OverrideBlockLOS
+	{
+		get { return Schema.GetValueType<EOverrideBlockLOS_t>(this.Handle, "CBreakable", "m_nOverrideBlockLOS"); }
+		set { Schema.SetValueType<EOverrideBlockLOS_t>(this.Handle, "CBreakable", "m_nOverrideBlockLOS", value); }
+	}
 
 	// m_OnBreak
 	[SchemaMember("CBreakable", "m_OnBreak")]
@@ -72,7 +97,11 @@ public partial class CBreakable : CBaseModelEntity
 
 	// m_PerformanceMode
 	[SchemaMember("CBreakable", "m_PerformanceMode")]
-	public ref PerformanceMode_t PerformanceMode => ref Schema.GetRef<PerformanceMode_t>(this.Handle, "CBreakable", "m_PerformanceMode");
+	public PerformanceMode_t PerformanceMode
+	{
+		get { return Schema.GetValueType<PerformanceMode_t>(this.Handle, "CBreakable", "m_PerformanceMode"); }
+		set { Schema.SetValueType<PerformanceMode_t>(this.Handle, "CBreakable", "m_PerformanceMode", value); }
+	}
 
 	// m_hPhysicsAttacker
 	[SchemaMember("CBreakable", "m_hPhysicsAttacker")]
@@ -80,6 +109,10 @@ public partial class CBreakable : CBaseModelEntity
 
 	// m_flLastPhysicsInfluenceTime
 	[SchemaMember("CBreakable", "m_flLastPhysicsInfluenceTime")]
-	public ref float LastPhysicsInfluenceTime => ref Schema.GetRef<float>(this.Handle, "CBreakable", "m_flLastPhysicsInfluenceTime");
+	public float LastPhysicsInfluenceTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBreakable", "m_flLastPhysicsInfluenceTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBreakable", "m_flLastPhysicsInfluenceTime", value); }
+	}
 
 }

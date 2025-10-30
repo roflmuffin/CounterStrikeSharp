@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,15 +29,27 @@ public partial class CPhysMagnet : CBaseAnimGraph
 
 	// m_massScale
 	[SchemaMember("CPhysMagnet", "m_massScale")]
-	public ref float MassScale => ref Schema.GetRef<float>(this.Handle, "CPhysMagnet", "m_massScale");
+	public float MassScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysMagnet", "m_massScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysMagnet", "m_massScale", value); }
+	}
 
 	// m_forceLimit
 	[SchemaMember("CPhysMagnet", "m_forceLimit")]
-	public ref float ForceLimit => ref Schema.GetRef<float>(this.Handle, "CPhysMagnet", "m_forceLimit");
+	public float ForceLimit
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysMagnet", "m_forceLimit"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysMagnet", "m_forceLimit", value); }
+	}
 
 	// m_torqueLimit
 	[SchemaMember("CPhysMagnet", "m_torqueLimit")]
-	public ref float TorqueLimit => ref Schema.GetRef<float>(this.Handle, "CPhysMagnet", "m_torqueLimit");
+	public float TorqueLimit
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysMagnet", "m_torqueLimit"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysMagnet", "m_torqueLimit", value); }
+	}
 
 	// m_MagnettedEntities
 	[SchemaMember("CPhysMagnet", "m_MagnettedEntities")]
@@ -44,26 +57,50 @@ public partial class CPhysMagnet : CBaseAnimGraph
 
 	// m_bActive
 	[SchemaMember("CPhysMagnet", "m_bActive")]
-	public ref bool Active => ref Schema.GetRef<bool>(this.Handle, "CPhysMagnet", "m_bActive");
+	public bool Active
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysMagnet", "m_bActive"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysMagnet", "m_bActive", value); }
+	}
 
 	// m_bHasHitSomething
 	[SchemaMember("CPhysMagnet", "m_bHasHitSomething")]
-	public ref bool HasHitSomething => ref Schema.GetRef<bool>(this.Handle, "CPhysMagnet", "m_bHasHitSomething");
+	public bool HasHitSomething
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPhysMagnet", "m_bHasHitSomething"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPhysMagnet", "m_bHasHitSomething", value); }
+	}
 
 	// m_flTotalMass
 	[SchemaMember("CPhysMagnet", "m_flTotalMass")]
-	public ref float TotalMass => ref Schema.GetRef<float>(this.Handle, "CPhysMagnet", "m_flTotalMass");
+	public float TotalMass
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysMagnet", "m_flTotalMass"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysMagnet", "m_flTotalMass", value); }
+	}
 
 	// m_flRadius
 	[SchemaMember("CPhysMagnet", "m_flRadius")]
-	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CPhysMagnet", "m_flRadius");
+	public float Radius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysMagnet", "m_flRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysMagnet", "m_flRadius", value); }
+	}
 
 	// m_flNextSuckTime
 	[SchemaMember("CPhysMagnet", "m_flNextSuckTime")]
-	public ref float NextSuckTime => ref Schema.GetRef<float>(this.Handle, "CPhysMagnet", "m_flNextSuckTime");
+	public float NextSuckTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysMagnet", "m_flNextSuckTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysMagnet", "m_flNextSuckTime", value); }
+	}
 
 	// m_iMaxObjectsAttached
 	[SchemaMember("CPhysMagnet", "m_iMaxObjectsAttached")]
-	public ref Int32 MaxObjectsAttached => ref Schema.GetRef<Int32>(this.Handle, "CPhysMagnet", "m_iMaxObjectsAttached");
+	public Int32 MaxObjectsAttached
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CPhysMagnet", "m_iMaxObjectsAttached"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CPhysMagnet", "m_iMaxObjectsAttached", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -36,6 +37,10 @@ public partial class ResponseContext_t : NativeObject
 
 	// m_fExpirationTime
 	[SchemaMember("ResponseContext_t", "m_fExpirationTime")]
-	public ref float ExpirationTime => ref Schema.GetRef<float>(this.Handle, "ResponseContext_t", "m_fExpirationTime");
+	public float ExpirationTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "ResponseContext_t", "m_fExpirationTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "ResponseContext_t", "m_fExpirationTime", value); }
+	}
 
 }

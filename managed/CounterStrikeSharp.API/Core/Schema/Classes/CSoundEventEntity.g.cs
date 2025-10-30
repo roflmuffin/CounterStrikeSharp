@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,27 +21,51 @@ public partial class CSoundEventEntity : CBaseEntity
 
 	// m_bStartOnSpawn
 	[SchemaMember("CSoundEventEntity", "m_bStartOnSpawn")]
-	public ref bool StartOnSpawn => ref Schema.GetRef<bool>(this.Handle, "CSoundEventEntity", "m_bStartOnSpawn");
+	public bool StartOnSpawn
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CSoundEventEntity", "m_bStartOnSpawn"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CSoundEventEntity", "m_bStartOnSpawn", value); }
+	}
 
 	// m_bToLocalPlayer
 	[SchemaMember("CSoundEventEntity", "m_bToLocalPlayer")]
-	public ref bool ToLocalPlayer => ref Schema.GetRef<bool>(this.Handle, "CSoundEventEntity", "m_bToLocalPlayer");
+	public bool ToLocalPlayer
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CSoundEventEntity", "m_bToLocalPlayer"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CSoundEventEntity", "m_bToLocalPlayer", value); }
+	}
 
 	// m_bStopOnNew
 	[SchemaMember("CSoundEventEntity", "m_bStopOnNew")]
-	public ref bool StopOnNew => ref Schema.GetRef<bool>(this.Handle, "CSoundEventEntity", "m_bStopOnNew");
+	public bool StopOnNew
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CSoundEventEntity", "m_bStopOnNew"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CSoundEventEntity", "m_bStopOnNew", value); }
+	}
 
 	// m_bSaveRestore
 	[SchemaMember("CSoundEventEntity", "m_bSaveRestore")]
-	public ref bool SaveRestore => ref Schema.GetRef<bool>(this.Handle, "CSoundEventEntity", "m_bSaveRestore");
+	public bool SaveRestore
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CSoundEventEntity", "m_bSaveRestore"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CSoundEventEntity", "m_bSaveRestore", value); }
+	}
 
 	// m_bSavedIsPlaying
 	[SchemaMember("CSoundEventEntity", "m_bSavedIsPlaying")]
-	public ref bool SavedIsPlaying => ref Schema.GetRef<bool>(this.Handle, "CSoundEventEntity", "m_bSavedIsPlaying");
+	public bool SavedIsPlaying
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CSoundEventEntity", "m_bSavedIsPlaying"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CSoundEventEntity", "m_bSavedIsPlaying", value); }
+	}
 
 	// m_flSavedElapsedTime
 	[SchemaMember("CSoundEventEntity", "m_flSavedElapsedTime")]
-	public ref float SavedElapsedTime => ref Schema.GetRef<float>(this.Handle, "CSoundEventEntity", "m_flSavedElapsedTime");
+	public float SavedElapsedTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSoundEventEntity", "m_flSavedElapsedTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSoundEventEntity", "m_flSavedElapsedTime", value); }
+	}
 
 	// m_iszSourceEntityName
 	[SchemaMember("CSoundEventEntity", "m_iszSourceEntityName")]
@@ -64,7 +89,11 @@ public partial class CSoundEventEntity : CBaseEntity
 
 	// m_flClientCullRadius
 	[SchemaMember("CSoundEventEntity", "m_flClientCullRadius")]
-	public ref float ClientCullRadius => ref Schema.GetRef<float>(this.Handle, "CSoundEventEntity", "m_flClientCullRadius");
+	public float ClientCullRadius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CSoundEventEntity", "m_flClientCullRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CSoundEventEntity", "m_flClientCullRadius", value); }
+	}
 
 	// m_iszSoundName
 	[SchemaMember("CSoundEventEntity", "m_iszSoundName")]
@@ -80,6 +109,10 @@ public partial class CSoundEventEntity : CBaseEntity
 
 	// m_nEntityIndexSelection
 	[SchemaMember("CSoundEventEntity", "m_nEntityIndexSelection")]
-	public ref Int32 EntityIndexSelection => ref Schema.GetRef<Int32>(this.Handle, "CSoundEventEntity", "m_nEntityIndexSelection");
+	public Int32 EntityIndexSelection
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CSoundEventEntity", "m_nEntityIndexSelection"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CSoundEventEntity", "m_nEntityIndexSelection", value); }
+	}
 
 }

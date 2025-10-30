@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,10 +21,18 @@ public partial class CCSPlayer_ItemServices : CPlayer_ItemServices
 
 	// m_bHasDefuser
 	[SchemaMember("CCSPlayer_ItemServices", "m_bHasDefuser")]
-	public ref bool HasDefuser => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_ItemServices", "m_bHasDefuser");
+	public bool HasDefuser
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_ItemServices", "m_bHasDefuser"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_ItemServices", "m_bHasDefuser", value); }
+	}
 
 	// m_bHasHelmet
 	[SchemaMember("CCSPlayer_ItemServices", "m_bHasHelmet")]
-	public ref bool HasHelmet => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_ItemServices", "m_bHasHelmet");
+	public bool HasHelmet
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_ItemServices", "m_bHasHelmet"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_ItemServices", "m_bHasHelmet", value); }
+	}
 
 }

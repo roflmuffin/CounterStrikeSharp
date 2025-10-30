@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,59 +21,115 @@ public partial class CPlayerSprayDecal : CModelPointEntity
 
 	// m_nUniqueID
 	[SchemaMember("CPlayerSprayDecal", "m_nUniqueID")]
-	public ref Int32 UniqueID => ref Schema.GetRef<Int32>(this.Handle, "CPlayerSprayDecal", "m_nUniqueID");
+	public Int32 UniqueID
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CPlayerSprayDecal", "m_nUniqueID"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CPlayerSprayDecal", "m_nUniqueID", value); }
+	}
 
 	// m_unAccountID
 	[SchemaMember("CPlayerSprayDecal", "m_unAccountID")]
-	public ref UInt32 AccountID => ref Schema.GetRef<UInt32>(this.Handle, "CPlayerSprayDecal", "m_unAccountID");
+	public UInt32 AccountID
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CPlayerSprayDecal", "m_unAccountID"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CPlayerSprayDecal", "m_unAccountID", value); }
+	}
 
 	// m_unTraceID
 	[SchemaMember("CPlayerSprayDecal", "m_unTraceID")]
-	public ref UInt32 TraceID => ref Schema.GetRef<UInt32>(this.Handle, "CPlayerSprayDecal", "m_unTraceID");
+	public UInt32 TraceID
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CPlayerSprayDecal", "m_unTraceID"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CPlayerSprayDecal", "m_unTraceID", value); }
+	}
 
 	// m_rtGcTime
 	[SchemaMember("CPlayerSprayDecal", "m_rtGcTime")]
-	public ref UInt32 RtGcTime => ref Schema.GetRef<UInt32>(this.Handle, "CPlayerSprayDecal", "m_rtGcTime");
+	public UInt32 RtGcTime
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CPlayerSprayDecal", "m_rtGcTime"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CPlayerSprayDecal", "m_rtGcTime", value); }
+	}
 
 	// m_vecEndPos
 	[SchemaMember("CPlayerSprayDecal", "m_vecEndPos")]
-	public Vector EndPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CPlayerSprayDecal", "m_vecEndPos");
+	public Vector3 EndPos
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CPlayerSprayDecal", "m_vecEndPos"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CPlayerSprayDecal", "m_vecEndPos", value); }
+	}
 
 	// m_vecStart
 	[SchemaMember("CPlayerSprayDecal", "m_vecStart")]
-	public Vector Start => Schema.GetDeclaredClass<Vector>(this.Handle, "CPlayerSprayDecal", "m_vecStart");
+	public Vector3 Start
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CPlayerSprayDecal", "m_vecStart"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CPlayerSprayDecal", "m_vecStart", value); }
+	}
 
 	// m_vecLeft
 	[SchemaMember("CPlayerSprayDecal", "m_vecLeft")]
-	public Vector Left => Schema.GetDeclaredClass<Vector>(this.Handle, "CPlayerSprayDecal", "m_vecLeft");
+	public Vector3 Left
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CPlayerSprayDecal", "m_vecLeft"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CPlayerSprayDecal", "m_vecLeft", value); }
+	}
 
 	// m_vecNormal
 	[SchemaMember("CPlayerSprayDecal", "m_vecNormal")]
-	public Vector Normal => Schema.GetDeclaredClass<Vector>(this.Handle, "CPlayerSprayDecal", "m_vecNormal");
+	public Vector3 Normal
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CPlayerSprayDecal", "m_vecNormal"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CPlayerSprayDecal", "m_vecNormal", value); }
+	}
 
 	// m_nPlayer
 	[SchemaMember("CPlayerSprayDecal", "m_nPlayer")]
-	public ref Int32 Player => ref Schema.GetRef<Int32>(this.Handle, "CPlayerSprayDecal", "m_nPlayer");
+	public Int32 Player
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CPlayerSprayDecal", "m_nPlayer"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CPlayerSprayDecal", "m_nPlayer", value); }
+	}
 
 	// m_nEntity
 	[SchemaMember("CPlayerSprayDecal", "m_nEntity")]
-	public ref Int32 DecalEntity => ref Schema.GetRef<Int32>(this.Handle, "CPlayerSprayDecal", "m_nEntity");
+	public Int32 DecalEntity
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CPlayerSprayDecal", "m_nEntity"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CPlayerSprayDecal", "m_nEntity", value); }
+	}
 
 	// m_nHitbox
 	[SchemaMember("CPlayerSprayDecal", "m_nHitbox")]
-	public ref Int32 Hitbox => ref Schema.GetRef<Int32>(this.Handle, "CPlayerSprayDecal", "m_nHitbox");
+	public Int32 Hitbox
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CPlayerSprayDecal", "m_nHitbox"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CPlayerSprayDecal", "m_nHitbox", value); }
+	}
 
 	// m_flCreationTime
 	[SchemaMember("CPlayerSprayDecal", "m_flCreationTime")]
-	public ref float CreationTime => ref Schema.GetRef<float>(this.Handle, "CPlayerSprayDecal", "m_flCreationTime");
+	public float CreationTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPlayerSprayDecal", "m_flCreationTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPlayerSprayDecal", "m_flCreationTime", value); }
+	}
 
 	// m_nTintID
 	[SchemaMember("CPlayerSprayDecal", "m_nTintID")]
-	public ref Int32 TintID => ref Schema.GetRef<Int32>(this.Handle, "CPlayerSprayDecal", "m_nTintID");
+	public Int32 TintID
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CPlayerSprayDecal", "m_nTintID"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CPlayerSprayDecal", "m_nTintID", value); }
+	}
 
 	// m_nVersion
 	[SchemaMember("CPlayerSprayDecal", "m_nVersion")]
-	public ref byte Version => ref Schema.GetRef<byte>(this.Handle, "CPlayerSprayDecal", "m_nVersion");
+	public byte Version
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CPlayerSprayDecal", "m_nVersion"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CPlayerSprayDecal", "m_nVersion", value); }
+	}
 
 	// m_ubSignature
 	[SchemaMember("CPlayerSprayDecal", "m_ubSignature")]

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class CRopeKeyframe : CBaseModelEntity
 
 	// m_RopeFlags
 	[SchemaMember("CRopeKeyframe", "m_RopeFlags")]
-	public ref UInt16 RopeFlags => ref Schema.GetRef<UInt16>(this.Handle, "CRopeKeyframe", "m_RopeFlags");
+	public UInt16 RopeFlags
+	{
+		get { return Schema.GetValueType<UInt16>(this.Handle, "CRopeKeyframe", "m_RopeFlags"); }
+		set { Schema.SetValueType<UInt16>(this.Handle, "CRopeKeyframe", "m_RopeFlags", value); }
+	}
 
 	// m_iNextLinkName
 	[SchemaMember("CRopeKeyframe", "m_iNextLinkName")]
@@ -32,23 +37,43 @@ public partial class CRopeKeyframe : CBaseModelEntity
 
 	// m_Slack
 	[SchemaMember("CRopeKeyframe", "m_Slack")]
-	public ref Int16 Slack => ref Schema.GetRef<Int16>(this.Handle, "CRopeKeyframe", "m_Slack");
+	public Int16 Slack
+	{
+		get { return Schema.GetValueType<Int16>(this.Handle, "CRopeKeyframe", "m_Slack"); }
+		set { Schema.SetValueType<Int16>(this.Handle, "CRopeKeyframe", "m_Slack", value); }
+	}
 
 	// m_Width
 	[SchemaMember("CRopeKeyframe", "m_Width")]
-	public ref float Width => ref Schema.GetRef<float>(this.Handle, "CRopeKeyframe", "m_Width");
+	public float Width
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CRopeKeyframe", "m_Width"); }
+		set { Schema.SetValueType<float>(this.Handle, "CRopeKeyframe", "m_Width", value); }
+	}
 
 	// m_TextureScale
 	[SchemaMember("CRopeKeyframe", "m_TextureScale")]
-	public ref float TextureScale => ref Schema.GetRef<float>(this.Handle, "CRopeKeyframe", "m_TextureScale");
+	public float TextureScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CRopeKeyframe", "m_TextureScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CRopeKeyframe", "m_TextureScale", value); }
+	}
 
 	// m_nSegments
 	[SchemaMember("CRopeKeyframe", "m_nSegments")]
-	public ref byte Segments => ref Schema.GetRef<byte>(this.Handle, "CRopeKeyframe", "m_nSegments");
+	public byte Segments
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CRopeKeyframe", "m_nSegments"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CRopeKeyframe", "m_nSegments", value); }
+	}
 
 	// m_bConstrainBetweenEndpoints
 	[SchemaMember("CRopeKeyframe", "m_bConstrainBetweenEndpoints")]
-	public ref bool ConstrainBetweenEndpoints => ref Schema.GetRef<bool>(this.Handle, "CRopeKeyframe", "m_bConstrainBetweenEndpoints");
+	public bool ConstrainBetweenEndpoints
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CRopeKeyframe", "m_bConstrainBetweenEndpoints"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CRopeKeyframe", "m_bConstrainBetweenEndpoints", value); }
+	}
 
 	// m_strRopeMaterialModel
 	[SchemaMember("CRopeKeyframe", "m_strRopeMaterialModel")]
@@ -64,35 +89,67 @@ public partial class CRopeKeyframe : CBaseModelEntity
 
 	// m_Subdiv
 	[SchemaMember("CRopeKeyframe", "m_Subdiv")]
-	public ref byte Subdiv => ref Schema.GetRef<byte>(this.Handle, "CRopeKeyframe", "m_Subdiv");
+	public byte Subdiv
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CRopeKeyframe", "m_Subdiv"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CRopeKeyframe", "m_Subdiv", value); }
+	}
 
 	// m_nChangeCount
 	[SchemaMember("CRopeKeyframe", "m_nChangeCount")]
-	public ref byte ChangeCount => ref Schema.GetRef<byte>(this.Handle, "CRopeKeyframe", "m_nChangeCount");
+	public byte ChangeCount
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CRopeKeyframe", "m_nChangeCount"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CRopeKeyframe", "m_nChangeCount", value); }
+	}
 
 	// m_RopeLength
 	[SchemaMember("CRopeKeyframe", "m_RopeLength")]
-	public ref Int16 RopeLength => ref Schema.GetRef<Int16>(this.Handle, "CRopeKeyframe", "m_RopeLength");
+	public Int16 RopeLength
+	{
+		get { return Schema.GetValueType<Int16>(this.Handle, "CRopeKeyframe", "m_RopeLength"); }
+		set { Schema.SetValueType<Int16>(this.Handle, "CRopeKeyframe", "m_RopeLength", value); }
+	}
 
 	// m_fLockedPoints
 	[SchemaMember("CRopeKeyframe", "m_fLockedPoints")]
-	public ref byte LockedPoints => ref Schema.GetRef<byte>(this.Handle, "CRopeKeyframe", "m_fLockedPoints");
+	public byte LockedPoints
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CRopeKeyframe", "m_fLockedPoints"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CRopeKeyframe", "m_fLockedPoints", value); }
+	}
 
 	// m_bCreatedFromMapFile
 	[SchemaMember("CRopeKeyframe", "m_bCreatedFromMapFile")]
-	public ref bool CreatedFromMapFile => ref Schema.GetRef<bool>(this.Handle, "CRopeKeyframe", "m_bCreatedFromMapFile");
+	public bool CreatedFromMapFile
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CRopeKeyframe", "m_bCreatedFromMapFile"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CRopeKeyframe", "m_bCreatedFromMapFile", value); }
+	}
 
 	// m_flScrollSpeed
 	[SchemaMember("CRopeKeyframe", "m_flScrollSpeed")]
-	public ref float ScrollSpeed => ref Schema.GetRef<float>(this.Handle, "CRopeKeyframe", "m_flScrollSpeed");
+	public float ScrollSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CRopeKeyframe", "m_flScrollSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CRopeKeyframe", "m_flScrollSpeed", value); }
+	}
 
 	// m_bStartPointValid
 	[SchemaMember("CRopeKeyframe", "m_bStartPointValid")]
-	public ref bool StartPointValid => ref Schema.GetRef<bool>(this.Handle, "CRopeKeyframe", "m_bStartPointValid");
+	public bool StartPointValid
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CRopeKeyframe", "m_bStartPointValid"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CRopeKeyframe", "m_bStartPointValid", value); }
+	}
 
 	// m_bEndPointValid
 	[SchemaMember("CRopeKeyframe", "m_bEndPointValid")]
-	public ref bool EndPointValid => ref Schema.GetRef<bool>(this.Handle, "CRopeKeyframe", "m_bEndPointValid");
+	public bool EndPointValid
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CRopeKeyframe", "m_bEndPointValid"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CRopeKeyframe", "m_bEndPointValid", value); }
+	}
 
 	// m_hStartPoint
 	[SchemaMember("CRopeKeyframe", "m_hStartPoint")]

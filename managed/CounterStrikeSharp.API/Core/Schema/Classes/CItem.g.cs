@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,7 +29,11 @@ public partial class CItem : CBaseAnimGraph
 
 	// m_bActivateWhenAtRest
 	[SchemaMember("CItem", "m_bActivateWhenAtRest")]
-	public ref bool ActivateWhenAtRest => ref Schema.GetRef<bool>(this.Handle, "CItem", "m_bActivateWhenAtRest");
+	public bool ActivateWhenAtRest
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CItem", "m_bActivateWhenAtRest"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CItem", "m_bActivateWhenAtRest", value); }
+	}
 
 	// m_OnCacheInteraction
 	[SchemaMember("CItem", "m_OnCacheInteraction")]
@@ -40,14 +45,26 @@ public partial class CItem : CBaseAnimGraph
 
 	// m_vOriginalSpawnOrigin
 	[SchemaMember("CItem", "m_vOriginalSpawnOrigin")]
-	public Vector OriginalSpawnOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CItem", "m_vOriginalSpawnOrigin");
+	public Vector3 OriginalSpawnOrigin
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CItem", "m_vOriginalSpawnOrigin"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CItem", "m_vOriginalSpawnOrigin", value); }
+	}
 
 	// m_vOriginalSpawnAngles
 	[SchemaMember("CItem", "m_vOriginalSpawnAngles")]
-	public QAngle OriginalSpawnAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CItem", "m_vOriginalSpawnAngles");
+	public QAngle OriginalSpawnAngles
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CItem", "m_vOriginalSpawnAngles"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CItem", "m_vOriginalSpawnAngles", value); }
+	}
 
 	// m_bPhysStartAsleep
 	[SchemaMember("CItem", "m_bPhysStartAsleep")]
-	public ref bool PhysStartAsleep => ref Schema.GetRef<bool>(this.Handle, "CItem", "m_bPhysStartAsleep");
+	public bool PhysStartAsleep
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CItem", "m_bPhysStartAsleep"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CItem", "m_bPhysStartAsleep", value); }
+	}
 
 }

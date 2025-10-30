@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,10 +21,18 @@ public partial class CInfoDynamicShadowHintBox : CInfoDynamicShadowHint
 
 	// m_vBoxMins
 	[SchemaMember("CInfoDynamicShadowHintBox", "m_vBoxMins")]
-	public Vector BoxMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CInfoDynamicShadowHintBox", "m_vBoxMins");
+	public Vector3 BoxMins
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CInfoDynamicShadowHintBox", "m_vBoxMins"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CInfoDynamicShadowHintBox", "m_vBoxMins", value); }
+	}
 
 	// m_vBoxMaxs
 	[SchemaMember("CInfoDynamicShadowHintBox", "m_vBoxMaxs")]
-	public Vector BoxMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CInfoDynamicShadowHintBox", "m_vBoxMaxs");
+	public Vector3 BoxMaxs
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CInfoDynamicShadowHintBox", "m_vBoxMaxs"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CInfoDynamicShadowHintBox", "m_vBoxMaxs", value); }
+	}
 
 }

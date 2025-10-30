@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,19 +25,35 @@ public partial class CTriggerSndSosOpvar : CBaseTrigger
 
 	// m_flPosition
 	[SchemaMember("CTriggerSndSosOpvar", "m_flPosition")]
-	public Vector Position => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerSndSosOpvar", "m_flPosition");
+	public Vector3 Position
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CTriggerSndSosOpvar", "m_flPosition"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CTriggerSndSosOpvar", "m_flPosition", value); }
+	}
 
 	// m_flCenterSize
 	[SchemaMember("CTriggerSndSosOpvar", "m_flCenterSize")]
-	public ref float CenterSize => ref Schema.GetRef<float>(this.Handle, "CTriggerSndSosOpvar", "m_flCenterSize");
+	public float CenterSize
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerSndSosOpvar", "m_flCenterSize"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerSndSosOpvar", "m_flCenterSize", value); }
+	}
 
 	// m_flMinVal
 	[SchemaMember("CTriggerSndSosOpvar", "m_flMinVal")]
-	public ref float MinVal => ref Schema.GetRef<float>(this.Handle, "CTriggerSndSosOpvar", "m_flMinVal");
+	public float MinVal
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerSndSosOpvar", "m_flMinVal"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerSndSosOpvar", "m_flMinVal", value); }
+	}
 
 	// m_flMaxVal
 	[SchemaMember("CTriggerSndSosOpvar", "m_flMaxVal")]
-	public ref float MaxVal => ref Schema.GetRef<float>(this.Handle, "CTriggerSndSosOpvar", "m_flMaxVal");
+	public float MaxVal
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerSndSosOpvar", "m_flMaxVal"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerSndSosOpvar", "m_flMaxVal", value); }
+	}
 
 	// m_opvarName
 	[SchemaMember("CTriggerSndSosOpvar", "m_opvarName")]
@@ -64,7 +81,11 @@ public partial class CTriggerSndSosOpvar : CBaseTrigger
 
 	// m_bVolIs2D
 	[SchemaMember("CTriggerSndSosOpvar", "m_bVolIs2D")]
-	public ref bool VolIs2D => ref Schema.GetRef<bool>(this.Handle, "CTriggerSndSosOpvar", "m_bVolIs2D");
+	public bool VolIs2D
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerSndSosOpvar", "m_bVolIs2D"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTriggerSndSosOpvar", "m_bVolIs2D", value); }
+	}
 
 	// m_opvarNameChar
 	[SchemaMember("CTriggerSndSosOpvar", "m_opvarNameChar")]
@@ -92,10 +113,18 @@ public partial class CTriggerSndSosOpvar : CBaseTrigger
 
 	// m_VecNormPos
 	[SchemaMember("CTriggerSndSosOpvar", "m_VecNormPos")]
-	public Vector VecNormPos => Schema.GetDeclaredClass<Vector>(this.Handle, "CTriggerSndSosOpvar", "m_VecNormPos");
+	public Vector3 VecNormPos
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CTriggerSndSosOpvar", "m_VecNormPos"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CTriggerSndSosOpvar", "m_VecNormPos", value); }
+	}
 
 	// m_flNormCenterSize
 	[SchemaMember("CTriggerSndSosOpvar", "m_flNormCenterSize")]
-	public ref float NormCenterSize => ref Schema.GetRef<float>(this.Handle, "CTriggerSndSosOpvar", "m_flNormCenterSize");
+	public float NormCenterSize
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerSndSosOpvar", "m_flNormCenterSize"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerSndSosOpvar", "m_flNormCenterSize", value); }
+	}
 
 }

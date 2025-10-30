@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class fogparams_t : NativeObject
 
 	// dirPrimary
 	[SchemaMember("fogparams_t", "dirPrimary")]
-	public Vector DirPrimary => Schema.GetDeclaredClass<Vector>(this.Handle, "fogparams_t", "dirPrimary");
+	public Vector3 DirPrimary
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "fogparams_t", "dirPrimary"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "fogparams_t", "dirPrimary", value); }
+	}
 
 	// colorPrimary
 	[SchemaMember("fogparams_t", "colorPrimary")]
@@ -56,82 +61,162 @@ public partial class fogparams_t : NativeObject
 
 	// start
 	[SchemaMember("fogparams_t", "start")]
-	public ref float Start => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "start");
+	public float Start
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "start"); }
+		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "start", value); }
+	}
 
 	// end
 	[SchemaMember("fogparams_t", "end")]
-	public ref float End => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "end");
+	public float End
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "end"); }
+		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "end", value); }
+	}
 
 	// farz
 	[SchemaMember("fogparams_t", "farz")]
-	public ref float Farz => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "farz");
+	public float Farz
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "farz"); }
+		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "farz", value); }
+	}
 
 	// maxdensity
 	[SchemaMember("fogparams_t", "maxdensity")]
-	public ref float Maxdensity => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "maxdensity");
+	public float Maxdensity
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "maxdensity"); }
+		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "maxdensity", value); }
+	}
 
 	// exponent
 	[SchemaMember("fogparams_t", "exponent")]
-	public ref float Exponent => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "exponent");
+	public float Exponent
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "exponent"); }
+		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "exponent", value); }
+	}
 
 	// HDRColorScale
 	[SchemaMember("fogparams_t", "HDRColorScale")]
-	public ref float HDRColorScale => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "HDRColorScale");
+	public float HDRColorScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "HDRColorScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "HDRColorScale", value); }
+	}
 
 	// skyboxFogFactor
 	[SchemaMember("fogparams_t", "skyboxFogFactor")]
-	public ref float SkyboxFogFactor => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "skyboxFogFactor");
+	public float SkyboxFogFactor
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "skyboxFogFactor"); }
+		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "skyboxFogFactor", value); }
+	}
 
 	// skyboxFogFactorLerpTo
 	[SchemaMember("fogparams_t", "skyboxFogFactorLerpTo")]
-	public ref float SkyboxFogFactorLerpTo => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "skyboxFogFactorLerpTo");
+	public float SkyboxFogFactorLerpTo
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "skyboxFogFactorLerpTo"); }
+		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "skyboxFogFactorLerpTo", value); }
+	}
 
 	// startLerpTo
 	[SchemaMember("fogparams_t", "startLerpTo")]
-	public ref float StartLerpTo => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "startLerpTo");
+	public float StartLerpTo
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "startLerpTo"); }
+		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "startLerpTo", value); }
+	}
 
 	// endLerpTo
 	[SchemaMember("fogparams_t", "endLerpTo")]
-	public ref float EndLerpTo => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "endLerpTo");
+	public float EndLerpTo
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "endLerpTo"); }
+		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "endLerpTo", value); }
+	}
 
 	// maxdensityLerpTo
 	[SchemaMember("fogparams_t", "maxdensityLerpTo")]
-	public ref float MaxdensityLerpTo => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "maxdensityLerpTo");
+	public float MaxdensityLerpTo
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "maxdensityLerpTo"); }
+		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "maxdensityLerpTo", value); }
+	}
 
 	// lerptime
 	[SchemaMember("fogparams_t", "lerptime")]
-	public ref float Lerptime => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "lerptime");
+	public float Lerptime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "lerptime"); }
+		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "lerptime", value); }
+	}
 
 	// duration
 	[SchemaMember("fogparams_t", "duration")]
-	public ref float Duration => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "duration");
+	public float Duration
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "duration"); }
+		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "duration", value); }
+	}
 
 	// blendtobackground
 	[SchemaMember("fogparams_t", "blendtobackground")]
-	public ref float Blendtobackground => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "blendtobackground");
+	public float Blendtobackground
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "blendtobackground"); }
+		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "blendtobackground", value); }
+	}
 
 	// scattering
 	[SchemaMember("fogparams_t", "scattering")]
-	public ref float Scattering => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "scattering");
+	public float Scattering
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "scattering"); }
+		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "scattering", value); }
+	}
 
 	// locallightscale
 	[SchemaMember("fogparams_t", "locallightscale")]
-	public ref float Locallightscale => ref Schema.GetRef<float>(this.Handle, "fogparams_t", "locallightscale");
+	public float Locallightscale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "fogparams_t", "locallightscale"); }
+		set { Schema.SetValueType<float>(this.Handle, "fogparams_t", "locallightscale", value); }
+	}
 
 	// enable
 	[SchemaMember("fogparams_t", "enable")]
-	public ref bool Enable => ref Schema.GetRef<bool>(this.Handle, "fogparams_t", "enable");
+	public bool Enable
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "fogparams_t", "enable"); }
+		set { Schema.SetValueType<bool>(this.Handle, "fogparams_t", "enable", value); }
+	}
 
 	// blend
 	[SchemaMember("fogparams_t", "blend")]
-	public ref bool Blend => ref Schema.GetRef<bool>(this.Handle, "fogparams_t", "blend");
+	public bool Blend
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "fogparams_t", "blend"); }
+		set { Schema.SetValueType<bool>(this.Handle, "fogparams_t", "blend", value); }
+	}
 
 	// m_bPadding2
 	[SchemaMember("fogparams_t", "m_bPadding2")]
-	public ref bool Padding2 => ref Schema.GetRef<bool>(this.Handle, "fogparams_t", "m_bPadding2");
+	public bool Padding2
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "fogparams_t", "m_bPadding2"); }
+		set { Schema.SetValueType<bool>(this.Handle, "fogparams_t", "m_bPadding2", value); }
+	}
 
 	// m_bPadding
 	[SchemaMember("fogparams_t", "m_bPadding")]
-	public ref bool Padding => ref Schema.GetRef<bool>(this.Handle, "fogparams_t", "m_bPadding");
+	public bool Padding
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "fogparams_t", "m_bPadding"); }
+		set { Schema.SetValueType<bool>(this.Handle, "fogparams_t", "m_bPadding", value); }
+	}
 
 }

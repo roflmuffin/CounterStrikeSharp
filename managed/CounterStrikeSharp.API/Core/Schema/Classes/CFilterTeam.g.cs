@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,6 +21,10 @@ public partial class CFilterTeam : CBaseFilter
 
 	// m_iFilterTeam
 	[SchemaMember("CFilterTeam", "m_iFilterTeam")]
-	public ref Int32 FilterTeam => ref Schema.GetRef<Int32>(this.Handle, "CFilterTeam", "m_iFilterTeam");
+	public Int32 FilterTeam
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CFilterTeam", "m_iFilterTeam"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CFilterTeam", "m_iFilterTeam", value); }
+	}
 
 }

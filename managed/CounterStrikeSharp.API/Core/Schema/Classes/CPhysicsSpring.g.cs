@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,15 +21,27 @@ public partial class CPhysicsSpring : CBaseEntity
 
 	// m_flFrequency
 	[SchemaMember("CPhysicsSpring", "m_flFrequency")]
-	public ref float Frequency => ref Schema.GetRef<float>(this.Handle, "CPhysicsSpring", "m_flFrequency");
+	public float Frequency
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysicsSpring", "m_flFrequency"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysicsSpring", "m_flFrequency", value); }
+	}
 
 	// m_flDampingRatio
 	[SchemaMember("CPhysicsSpring", "m_flDampingRatio")]
-	public ref float DampingRatio => ref Schema.GetRef<float>(this.Handle, "CPhysicsSpring", "m_flDampingRatio");
+	public float DampingRatio
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysicsSpring", "m_flDampingRatio"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysicsSpring", "m_flDampingRatio", value); }
+	}
 
 	// m_flRestLength
 	[SchemaMember("CPhysicsSpring", "m_flRestLength")]
-	public ref float RestLength => ref Schema.GetRef<float>(this.Handle, "CPhysicsSpring", "m_flRestLength");
+	public float RestLength
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPhysicsSpring", "m_flRestLength"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPhysicsSpring", "m_flRestLength", value); }
+	}
 
 	// m_nameAttachStart
 	[SchemaMember("CPhysicsSpring", "m_nameAttachStart")]
@@ -48,14 +61,26 @@ public partial class CPhysicsSpring : CBaseEntity
 
 	// m_start
 	[SchemaMember("CPhysicsSpring", "m_start")]
-	public Vector Start => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysicsSpring", "m_start");
+	public Vector3 Start
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CPhysicsSpring", "m_start"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CPhysicsSpring", "m_start", value); }
+	}
 
 	// m_end
 	[SchemaMember("CPhysicsSpring", "m_end")]
-	public Vector End => Schema.GetDeclaredClass<Vector>(this.Handle, "CPhysicsSpring", "m_end");
+	public Vector3 End
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CPhysicsSpring", "m_end"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CPhysicsSpring", "m_end", value); }
+	}
 
 	// m_teleportTick
 	[SchemaMember("CPhysicsSpring", "m_teleportTick")]
-	public ref UInt32 TeleportTick => ref Schema.GetRef<UInt32>(this.Handle, "CPhysicsSpring", "m_teleportTick");
+	public UInt32 TeleportTick
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CPhysicsSpring", "m_teleportTick"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CPhysicsSpring", "m_teleportTick", value); }
+	}
 
 }

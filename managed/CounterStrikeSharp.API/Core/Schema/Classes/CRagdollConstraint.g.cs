@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,38 +21,74 @@ public partial class CRagdollConstraint : CPhysConstraint
 
 	// m_xmin
 	[SchemaMember("CRagdollConstraint", "m_xmin")]
-	public ref float Xmin => ref Schema.GetRef<float>(this.Handle, "CRagdollConstraint", "m_xmin");
+	public float Xmin
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CRagdollConstraint", "m_xmin"); }
+		set { Schema.SetValueType<float>(this.Handle, "CRagdollConstraint", "m_xmin", value); }
+	}
 
 	// m_xmax
 	[SchemaMember("CRagdollConstraint", "m_xmax")]
-	public ref float Xmax => ref Schema.GetRef<float>(this.Handle, "CRagdollConstraint", "m_xmax");
+	public float Xmax
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CRagdollConstraint", "m_xmax"); }
+		set { Schema.SetValueType<float>(this.Handle, "CRagdollConstraint", "m_xmax", value); }
+	}
 
 	// m_ymin
 	[SchemaMember("CRagdollConstraint", "m_ymin")]
-	public ref float Ymin => ref Schema.GetRef<float>(this.Handle, "CRagdollConstraint", "m_ymin");
+	public float Ymin
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CRagdollConstraint", "m_ymin"); }
+		set { Schema.SetValueType<float>(this.Handle, "CRagdollConstraint", "m_ymin", value); }
+	}
 
 	// m_ymax
 	[SchemaMember("CRagdollConstraint", "m_ymax")]
-	public ref float Ymax => ref Schema.GetRef<float>(this.Handle, "CRagdollConstraint", "m_ymax");
+	public float Ymax
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CRagdollConstraint", "m_ymax"); }
+		set { Schema.SetValueType<float>(this.Handle, "CRagdollConstraint", "m_ymax", value); }
+	}
 
 	// m_zmin
 	[SchemaMember("CRagdollConstraint", "m_zmin")]
-	public ref float Zmin => ref Schema.GetRef<float>(this.Handle, "CRagdollConstraint", "m_zmin");
+	public float Zmin
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CRagdollConstraint", "m_zmin"); }
+		set { Schema.SetValueType<float>(this.Handle, "CRagdollConstraint", "m_zmin", value); }
+	}
 
 	// m_zmax
 	[SchemaMember("CRagdollConstraint", "m_zmax")]
-	public ref float Zmax => ref Schema.GetRef<float>(this.Handle, "CRagdollConstraint", "m_zmax");
+	public float Zmax
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CRagdollConstraint", "m_zmax"); }
+		set { Schema.SetValueType<float>(this.Handle, "CRagdollConstraint", "m_zmax", value); }
+	}
 
 	// m_xfriction
 	[SchemaMember("CRagdollConstraint", "m_xfriction")]
-	public ref float Xfriction => ref Schema.GetRef<float>(this.Handle, "CRagdollConstraint", "m_xfriction");
+	public float Xfriction
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CRagdollConstraint", "m_xfriction"); }
+		set { Schema.SetValueType<float>(this.Handle, "CRagdollConstraint", "m_xfriction", value); }
+	}
 
 	// m_yfriction
 	[SchemaMember("CRagdollConstraint", "m_yfriction")]
-	public ref float Yfriction => ref Schema.GetRef<float>(this.Handle, "CRagdollConstraint", "m_yfriction");
+	public float Yfriction
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CRagdollConstraint", "m_yfriction"); }
+		set { Schema.SetValueType<float>(this.Handle, "CRagdollConstraint", "m_yfriction", value); }
+	}
 
 	// m_zfriction
 	[SchemaMember("CRagdollConstraint", "m_zfriction")]
-	public ref float Zfriction => ref Schema.GetRef<float>(this.Handle, "CRagdollConstraint", "m_zfriction");
+	public float Zfriction
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CRagdollConstraint", "m_zfriction"); }
+		set { Schema.SetValueType<float>(this.Handle, "CRagdollConstraint", "m_zfriction", value); }
+	}
 
 }

@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,6 +29,10 @@ public partial class CNavLinkAnimgraphVar : NativeObject
 
 	// m_unAlignmentDegrees
 	[SchemaMember("CNavLinkAnimgraphVar", "m_unAlignmentDegrees")]
-	public ref UInt32 AlignmentDegrees => ref Schema.GetRef<UInt32>(this.Handle, "CNavLinkAnimgraphVar", "m_unAlignmentDegrees");
+	public UInt32 AlignmentDegrees
+	{
+		get { return Schema.GetValueType<UInt32>(this.Handle, "CNavLinkAnimgraphVar", "m_unAlignmentDegrees"); }
+		set { Schema.SetValueType<UInt32>(this.Handle, "CNavLinkAnimgraphVar", "m_unAlignmentDegrees", value); }
+	}
 
 }

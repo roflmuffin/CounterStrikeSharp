@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,15 +21,27 @@ public partial class CAmbientGeneric : CPointEntity
 
 	// m_radius
 	[SchemaMember("CAmbientGeneric", "m_radius")]
-	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CAmbientGeneric", "m_radius");
+	public float Radius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CAmbientGeneric", "m_radius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CAmbientGeneric", "m_radius", value); }
+	}
 
 	// m_flMaxRadius
 	[SchemaMember("CAmbientGeneric", "m_flMaxRadius")]
-	public ref float MaxRadius => ref Schema.GetRef<float>(this.Handle, "CAmbientGeneric", "m_flMaxRadius");
+	public float MaxRadius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CAmbientGeneric", "m_flMaxRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CAmbientGeneric", "m_flMaxRadius", value); }
+	}
 
 	// m_iSoundLevel
 	[SchemaMember("CAmbientGeneric", "m_iSoundLevel")]
-	public ref soundlevel_t SoundLevel => ref Schema.GetRef<soundlevel_t>(this.Handle, "CAmbientGeneric", "m_iSoundLevel");
+	public soundlevel_t SoundLevel
+	{
+		get { return Schema.GetValueType<soundlevel_t>(this.Handle, "CAmbientGeneric", "m_iSoundLevel"); }
+		set { Schema.SetValueType<soundlevel_t>(this.Handle, "CAmbientGeneric", "m_iSoundLevel", value); }
+	}
 
 	// m_dpv
 	[SchemaMember("CAmbientGeneric", "m_dpv")]
@@ -36,11 +49,19 @@ public partial class CAmbientGeneric : CPointEntity
 
 	// m_fActive
 	[SchemaMember("CAmbientGeneric", "m_fActive")]
-	public ref bool Active => ref Schema.GetRef<bool>(this.Handle, "CAmbientGeneric", "m_fActive");
+	public bool Active
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CAmbientGeneric", "m_fActive"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CAmbientGeneric", "m_fActive", value); }
+	}
 
 	// m_fLooping
 	[SchemaMember("CAmbientGeneric", "m_fLooping")]
-	public ref bool Looping => ref Schema.GetRef<bool>(this.Handle, "CAmbientGeneric", "m_fLooping");
+	public bool Looping
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CAmbientGeneric", "m_fLooping"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CAmbientGeneric", "m_fLooping", value); }
+	}
 
 	// m_iszSound
 	[SchemaMember("CAmbientGeneric", "m_iszSound")]

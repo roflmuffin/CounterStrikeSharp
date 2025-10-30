@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,10 +25,18 @@ public partial class CCSPlayer_UseServices : CPlayer_UseServices
 
 	// m_flLastUseTimeStamp
 	[SchemaMember("CCSPlayer_UseServices", "m_flLastUseTimeStamp")]
-	public ref float LastUseTimeStamp => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_UseServices", "m_flLastUseTimeStamp");
+	public float LastUseTimeStamp
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_UseServices", "m_flLastUseTimeStamp"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_UseServices", "m_flLastUseTimeStamp", value); }
+	}
 
 	// m_flTimeLastUsedWindow
 	[SchemaMember("CCSPlayer_UseServices", "m_flTimeLastUsedWindow")]
-	public ref float TimeLastUsedWindow => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_UseServices", "m_flTimeLastUsedWindow");
+	public float TimeLastUsedWindow
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_UseServices", "m_flTimeLastUsedWindow"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_UseServices", "m_flTimeLastUsedWindow", value); }
+	}
 
 }

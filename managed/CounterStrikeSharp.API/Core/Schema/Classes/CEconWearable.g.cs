@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,10 +21,18 @@ public partial class CEconWearable : CEconEntity
 
 	// m_nForceSkin
 	[SchemaMember("CEconWearable", "m_nForceSkin")]
-	public ref Int32 ForceSkin => ref Schema.GetRef<Int32>(this.Handle, "CEconWearable", "m_nForceSkin");
+	public Int32 ForceSkin
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEconWearable", "m_nForceSkin"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEconWearable", "m_nForceSkin", value); }
+	}
 
 	// m_bAlwaysAllow
 	[SchemaMember("CEconWearable", "m_bAlwaysAllow")]
-	public ref bool AlwaysAllow => ref Schema.GetRef<bool>(this.Handle, "CEconWearable", "m_bAlwaysAllow");
+	public bool AlwaysAllow
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEconWearable", "m_bAlwaysAllow"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEconWearable", "m_bAlwaysAllow", value); }
+	}
 
 }

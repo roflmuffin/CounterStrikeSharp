@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,6 +21,10 @@ public partial class CFilterProximity : CBaseFilter
 
 	// m_flRadius
 	[SchemaMember("CFilterProximity", "m_flRadius")]
-	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CFilterProximity", "m_flRadius");
+	public float Radius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CFilterProximity", "m_flRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CFilterProximity", "m_flRadius", value); }
+	}
 
 }

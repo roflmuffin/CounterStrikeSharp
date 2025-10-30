@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,6 +25,10 @@ public partial class CItemDefuser : CItem
 
 	// m_nSpotRules
 	[SchemaMember("CItemDefuser", "m_nSpotRules")]
-	public ref Int32 SpotRules => ref Schema.GetRef<Int32>(this.Handle, "CItemDefuser", "m_nSpotRules");
+	public Int32 SpotRules
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CItemDefuser", "m_nSpotRules"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CItemDefuser", "m_nSpotRules", value); }
+	}
 
 }

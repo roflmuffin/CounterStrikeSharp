@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,15 +21,27 @@ public partial class CPlayer_CameraServices : CPlayerPawnComponent
 
 	// m_vecCsViewPunchAngle
 	[SchemaMember("CPlayer_CameraServices", "m_vecCsViewPunchAngle")]
-	public QAngle CsViewPunchAngle => Schema.GetDeclaredClass<QAngle>(this.Handle, "CPlayer_CameraServices", "m_vecCsViewPunchAngle");
+	public QAngle CsViewPunchAngle
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CPlayer_CameraServices", "m_vecCsViewPunchAngle"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CPlayer_CameraServices", "m_vecCsViewPunchAngle", value); }
+	}
 
 	// m_nCsViewPunchAngleTick
 	[SchemaMember("CPlayer_CameraServices", "m_nCsViewPunchAngleTick")]
-	public ref Int32 CsViewPunchAngleTick => ref Schema.GetRef<Int32>(this.Handle, "CPlayer_CameraServices", "m_nCsViewPunchAngleTick");
+	public Int32 CsViewPunchAngleTick
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CPlayer_CameraServices", "m_nCsViewPunchAngleTick"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CPlayer_CameraServices", "m_nCsViewPunchAngleTick", value); }
+	}
 
 	// m_flCsViewPunchAngleTickRatio
 	[SchemaMember("CPlayer_CameraServices", "m_flCsViewPunchAngleTickRatio")]
-	public ref float CsViewPunchAngleTickRatio => ref Schema.GetRef<float>(this.Handle, "CPlayer_CameraServices", "m_flCsViewPunchAngleTickRatio");
+	public float CsViewPunchAngleTickRatio
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPlayer_CameraServices", "m_flCsViewPunchAngleTickRatio"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPlayer_CameraServices", "m_flCsViewPunchAngleTickRatio", value); }
+	}
 
 	// m_PlayerFog
 	[SchemaMember("CPlayer_CameraServices", "m_PlayerFog")]
@@ -56,11 +69,19 @@ public partial class CPlayer_CameraServices : CPlayerPawnComponent
 
 	// m_flOldPlayerZ
 	[SchemaMember("CPlayer_CameraServices", "m_flOldPlayerZ")]
-	public ref float OldPlayerZ => ref Schema.GetRef<float>(this.Handle, "CPlayer_CameraServices", "m_flOldPlayerZ");
+	public float OldPlayerZ
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPlayer_CameraServices", "m_flOldPlayerZ"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPlayer_CameraServices", "m_flOldPlayerZ", value); }
+	}
 
 	// m_flOldPlayerViewOffsetZ
 	[SchemaMember("CPlayer_CameraServices", "m_flOldPlayerViewOffsetZ")]
-	public ref float OldPlayerViewOffsetZ => ref Schema.GetRef<float>(this.Handle, "CPlayer_CameraServices", "m_flOldPlayerViewOffsetZ");
+	public float OldPlayerViewOffsetZ
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPlayer_CameraServices", "m_flOldPlayerViewOffsetZ"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPlayer_CameraServices", "m_flOldPlayerViewOffsetZ", value); }
+	}
 
 	// m_hTriggerSoundscapeList
 	[SchemaMember("CPlayer_CameraServices", "m_hTriggerSoundscapeList")]

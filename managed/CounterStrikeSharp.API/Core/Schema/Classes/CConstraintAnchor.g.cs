@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,6 +21,10 @@ public partial class CConstraintAnchor : CBaseAnimGraph
 
 	// m_massScale
 	[SchemaMember("CConstraintAnchor", "m_massScale")]
-	public ref float MassScale => ref Schema.GetRef<float>(this.Handle, "CConstraintAnchor", "m_massScale");
+	public float MassScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CConstraintAnchor", "m_massScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CConstraintAnchor", "m_massScale", value); }
+	}
 
 }

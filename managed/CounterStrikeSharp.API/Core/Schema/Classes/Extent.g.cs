@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,10 +21,18 @@ public partial class Extent : NativeObject
 
 	// lo
 	[SchemaMember("Extent", "lo")]
-	public Vector Lo => Schema.GetDeclaredClass<Vector>(this.Handle, "Extent", "lo");
+	public Vector3 Lo
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "Extent", "lo"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "Extent", "lo", value); }
+	}
 
 	// hi
 	[SchemaMember("Extent", "hi")]
-	public Vector Hi => Schema.GetDeclaredClass<Vector>(this.Handle, "Extent", "hi");
+	public Vector3 Hi
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "Extent", "hi"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "Extent", "hi", value); }
+	}
 
 }

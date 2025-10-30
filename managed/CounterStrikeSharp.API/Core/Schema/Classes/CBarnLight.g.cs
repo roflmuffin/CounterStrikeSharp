@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,11 +21,19 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_bEnabled
 	[SchemaMember("CBarnLight", "m_bEnabled")]
-	public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CBarnLight", "m_bEnabled");
+	public bool Enabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBarnLight", "m_bEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBarnLight", "m_bEnabled", value); }
+	}
 
 	// m_nColorMode
 	[SchemaMember("CBarnLight", "m_nColorMode")]
-	public ref Int32 ColorMode => ref Schema.GetRef<Int32>(this.Handle, "CBarnLight", "m_nColorMode");
+	public Int32 ColorMode
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBarnLight", "m_nColorMode"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBarnLight", "m_nColorMode", value); }
+	}
 
 	// m_Color
 	[SchemaMember("CBarnLight", "m_Color")]
@@ -36,43 +45,83 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_flColorTemperature
 	[SchemaMember("CBarnLight", "m_flColorTemperature")]
-	public ref float ColorTemperature => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flColorTemperature");
+	public float ColorTemperature
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flColorTemperature"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flColorTemperature", value); }
+	}
 
 	// m_flBrightness
 	[SchemaMember("CBarnLight", "m_flBrightness")]
-	public ref float Brightness => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flBrightness");
+	public float Brightness
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flBrightness"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flBrightness", value); }
+	}
 
 	// m_flBrightnessScale
 	[SchemaMember("CBarnLight", "m_flBrightnessScale")]
-	public ref float BrightnessScale => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flBrightnessScale");
+	public float BrightnessScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flBrightnessScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flBrightnessScale", value); }
+	}
 
 	// m_nDirectLight
 	[SchemaMember("CBarnLight", "m_nDirectLight")]
-	public ref Int32 DirectLight => ref Schema.GetRef<Int32>(this.Handle, "CBarnLight", "m_nDirectLight");
+	public Int32 DirectLight
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBarnLight", "m_nDirectLight"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBarnLight", "m_nDirectLight", value); }
+	}
 
 	// m_nBakedShadowIndex
 	[SchemaMember("CBarnLight", "m_nBakedShadowIndex")]
-	public ref Int32 BakedShadowIndex => ref Schema.GetRef<Int32>(this.Handle, "CBarnLight", "m_nBakedShadowIndex");
+	public Int32 BakedShadowIndex
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBarnLight", "m_nBakedShadowIndex"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBarnLight", "m_nBakedShadowIndex", value); }
+	}
 
 	// m_nLightPathUniqueId
 	[SchemaMember("CBarnLight", "m_nLightPathUniqueId")]
-	public ref Int32 LightPathUniqueId => ref Schema.GetRef<Int32>(this.Handle, "CBarnLight", "m_nLightPathUniqueId");
+	public Int32 LightPathUniqueId
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBarnLight", "m_nLightPathUniqueId"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBarnLight", "m_nLightPathUniqueId", value); }
+	}
 
 	// m_nLightMapUniqueId
 	[SchemaMember("CBarnLight", "m_nLightMapUniqueId")]
-	public ref Int32 LightMapUniqueId => ref Schema.GetRef<Int32>(this.Handle, "CBarnLight", "m_nLightMapUniqueId");
+	public Int32 LightMapUniqueId
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBarnLight", "m_nLightMapUniqueId"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBarnLight", "m_nLightMapUniqueId", value); }
+	}
 
 	// m_nLuminaireShape
 	[SchemaMember("CBarnLight", "m_nLuminaireShape")]
-	public ref Int32 LuminaireShape => ref Schema.GetRef<Int32>(this.Handle, "CBarnLight", "m_nLuminaireShape");
+	public Int32 LuminaireShape
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBarnLight", "m_nLuminaireShape"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBarnLight", "m_nLuminaireShape", value); }
+	}
 
 	// m_flLuminaireSize
 	[SchemaMember("CBarnLight", "m_flLuminaireSize")]
-	public ref float LuminaireSize => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flLuminaireSize");
+	public float LuminaireSize
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flLuminaireSize"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flLuminaireSize", value); }
+	}
 
 	// m_flLuminaireAnisotropy
 	[SchemaMember("CBarnLight", "m_flLuminaireAnisotropy")]
-	public ref float LuminaireAnisotropy => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flLuminaireAnisotropy");
+	public float LuminaireAnisotropy
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flLuminaireAnisotropy"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flLuminaireAnisotropy", value); }
+	}
 
 	// m_LightStyleString
 	[SchemaMember("CBarnLight", "m_LightStyleString")]
@@ -84,7 +133,11 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_flLightStyleStartTime
 	[SchemaMember("CBarnLight", "m_flLightStyleStartTime")]
-	public ref float LightStyleStartTime => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flLightStyleStartTime");
+	public float LightStyleStartTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flLightStyleStartTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flLightStyleStartTime", value); }
+	}
 
 	// m_QueuedLightStyleStrings
 	[SchemaMember("CBarnLight", "m_QueuedLightStyleStrings")]
@@ -108,223 +161,443 @@ public partial class CBarnLight : CBaseModelEntity
 
 	// m_flShape
 	[SchemaMember("CBarnLight", "m_flShape")]
-	public ref float Shape => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flShape");
+	public float Shape
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flShape"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flShape", value); }
+	}
 
 	// m_flSoftX
 	[SchemaMember("CBarnLight", "m_flSoftX")]
-	public ref float SoftX => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flSoftX");
+	public float SoftX
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flSoftX"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flSoftX", value); }
+	}
 
 	// m_flSoftY
 	[SchemaMember("CBarnLight", "m_flSoftY")]
-	public ref float SoftY => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flSoftY");
+	public float SoftY
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flSoftY"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flSoftY", value); }
+	}
 
 	// m_flSkirt
 	[SchemaMember("CBarnLight", "m_flSkirt")]
-	public ref float Skirt => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flSkirt");
+	public float Skirt
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flSkirt"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flSkirt", value); }
+	}
 
 	// m_flSkirtNear
 	[SchemaMember("CBarnLight", "m_flSkirtNear")]
-	public ref float SkirtNear => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flSkirtNear");
+	public float SkirtNear
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flSkirtNear"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flSkirtNear", value); }
+	}
 
 	// m_vSizeParams
 	[SchemaMember("CBarnLight", "m_vSizeParams")]
-	public Vector SizeParams => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vSizeParams");
+	public Vector3 SizeParams
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vSizeParams"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vSizeParams", value); }
+	}
 
 	// m_flRange
 	[SchemaMember("CBarnLight", "m_flRange")]
-	public ref float Range => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flRange");
+	public float Range
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flRange"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flRange", value); }
+	}
 
 	// m_vShear
 	[SchemaMember("CBarnLight", "m_vShear")]
-	public Vector Shear => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vShear");
+	public Vector3 Shear
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vShear"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vShear", value); }
+	}
 
 	// m_nBakeSpecularToCubemaps
 	[SchemaMember("CBarnLight", "m_nBakeSpecularToCubemaps")]
-	public ref Int32 BakeSpecularToCubemaps => ref Schema.GetRef<Int32>(this.Handle, "CBarnLight", "m_nBakeSpecularToCubemaps");
+	public Int32 BakeSpecularToCubemaps
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBarnLight", "m_nBakeSpecularToCubemaps"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBarnLight", "m_nBakeSpecularToCubemaps", value); }
+	}
 
 	// m_vBakeSpecularToCubemapsSize
 	[SchemaMember("CBarnLight", "m_vBakeSpecularToCubemapsSize")]
-	public Vector BakeSpecularToCubemapsSize => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vBakeSpecularToCubemapsSize");
+	public Vector3 BakeSpecularToCubemapsSize
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vBakeSpecularToCubemapsSize"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vBakeSpecularToCubemapsSize", value); }
+	}
 
 	// m_nCastShadows
 	[SchemaMember("CBarnLight", "m_nCastShadows")]
-	public ref Int32 CastShadows => ref Schema.GetRef<Int32>(this.Handle, "CBarnLight", "m_nCastShadows");
+	public Int32 CastShadows
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBarnLight", "m_nCastShadows"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBarnLight", "m_nCastShadows", value); }
+	}
 
 	// m_nShadowMapSize
 	[SchemaMember("CBarnLight", "m_nShadowMapSize")]
-	public ref Int32 ShadowMapSize => ref Schema.GetRef<Int32>(this.Handle, "CBarnLight", "m_nShadowMapSize");
+	public Int32 ShadowMapSize
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBarnLight", "m_nShadowMapSize"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBarnLight", "m_nShadowMapSize", value); }
+	}
 
 	// m_nShadowPriority
 	[SchemaMember("CBarnLight", "m_nShadowPriority")]
-	public ref Int32 ShadowPriority => ref Schema.GetRef<Int32>(this.Handle, "CBarnLight", "m_nShadowPriority");
+	public Int32 ShadowPriority
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBarnLight", "m_nShadowPriority"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBarnLight", "m_nShadowPriority", value); }
+	}
 
 	// m_bContactShadow
 	[SchemaMember("CBarnLight", "m_bContactShadow")]
-	public ref bool ContactShadow => ref Schema.GetRef<bool>(this.Handle, "CBarnLight", "m_bContactShadow");
+	public bool ContactShadow
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBarnLight", "m_bContactShadow"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBarnLight", "m_bContactShadow", value); }
+	}
 
 	// m_bForceShadowsEnabled
 	[SchemaMember("CBarnLight", "m_bForceShadowsEnabled")]
-	public ref bool ForceShadowsEnabled => ref Schema.GetRef<bool>(this.Handle, "CBarnLight", "m_bForceShadowsEnabled");
+	public bool ForceShadowsEnabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBarnLight", "m_bForceShadowsEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBarnLight", "m_bForceShadowsEnabled", value); }
+	}
 
 	// m_nBounceLight
 	[SchemaMember("CBarnLight", "m_nBounceLight")]
-	public ref Int32 BounceLight => ref Schema.GetRef<Int32>(this.Handle, "CBarnLight", "m_nBounceLight");
+	public Int32 BounceLight
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBarnLight", "m_nBounceLight"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBarnLight", "m_nBounceLight", value); }
+	}
 
 	// m_flBounceScale
 	[SchemaMember("CBarnLight", "m_flBounceScale")]
-	public ref float BounceScale => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flBounceScale");
+	public float BounceScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flBounceScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flBounceScale", value); }
+	}
 
 	// m_flMinRoughness
 	[SchemaMember("CBarnLight", "m_flMinRoughness")]
-	public ref float MinRoughness => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flMinRoughness");
+	public float MinRoughness
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flMinRoughness"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flMinRoughness", value); }
+	}
 
 	// m_vAlternateColor
 	[SchemaMember("CBarnLight", "m_vAlternateColor")]
-	public Vector AlternateColor => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vAlternateColor");
+	public Vector3 AlternateColor
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vAlternateColor"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vAlternateColor", value); }
+	}
 
 	// m_fAlternateColorBrightness
 	[SchemaMember("CBarnLight", "m_fAlternateColorBrightness")]
-	public ref float AlternateColorBrightness => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_fAlternateColorBrightness");
+	public float AlternateColorBrightness
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_fAlternateColorBrightness"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_fAlternateColorBrightness", value); }
+	}
 
 	// m_nFog
 	[SchemaMember("CBarnLight", "m_nFog")]
-	public ref Int32 Fog => ref Schema.GetRef<Int32>(this.Handle, "CBarnLight", "m_nFog");
+	public Int32 Fog
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBarnLight", "m_nFog"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBarnLight", "m_nFog", value); }
+	}
 
 	// m_flFogStrength
 	[SchemaMember("CBarnLight", "m_flFogStrength")]
-	public ref float FogStrength => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flFogStrength");
+	public float FogStrength
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flFogStrength"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flFogStrength", value); }
+	}
 
 	// m_nFogShadows
 	[SchemaMember("CBarnLight", "m_nFogShadows")]
-	public ref Int32 FogShadows => ref Schema.GetRef<Int32>(this.Handle, "CBarnLight", "m_nFogShadows");
+	public Int32 FogShadows
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBarnLight", "m_nFogShadows"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBarnLight", "m_nFogShadows", value); }
+	}
 
 	// m_flFogScale
 	[SchemaMember("CBarnLight", "m_flFogScale")]
-	public ref float FogScale => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flFogScale");
+	public float FogScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flFogScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flFogScale", value); }
+	}
 
 	// m_bFogMixedShadows
 	[SchemaMember("CBarnLight", "m_bFogMixedShadows")]
-	public ref bool FogMixedShadows => ref Schema.GetRef<bool>(this.Handle, "CBarnLight", "m_bFogMixedShadows");
+	public bool FogMixedShadows
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBarnLight", "m_bFogMixedShadows"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBarnLight", "m_bFogMixedShadows", value); }
+	}
 
 	// m_flFadeSizeStart
 	[SchemaMember("CBarnLight", "m_flFadeSizeStart")]
-	public ref float FadeSizeStart => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flFadeSizeStart");
+	public float FadeSizeStart
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flFadeSizeStart"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flFadeSizeStart", value); }
+	}
 
 	// m_flFadeSizeEnd
 	[SchemaMember("CBarnLight", "m_flFadeSizeEnd")]
-	public ref float FadeSizeEnd => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flFadeSizeEnd");
+	public float FadeSizeEnd
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flFadeSizeEnd"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flFadeSizeEnd", value); }
+	}
 
 	// m_flShadowFadeSizeStart
 	[SchemaMember("CBarnLight", "m_flShadowFadeSizeStart")]
-	public ref float ShadowFadeSizeStart => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flShadowFadeSizeStart");
+	public float ShadowFadeSizeStart
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flShadowFadeSizeStart"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flShadowFadeSizeStart", value); }
+	}
 
 	// m_flShadowFadeSizeEnd
 	[SchemaMember("CBarnLight", "m_flShadowFadeSizeEnd")]
-	public ref float ShadowFadeSizeEnd => ref Schema.GetRef<float>(this.Handle, "CBarnLight", "m_flShadowFadeSizeEnd");
+	public float ShadowFadeSizeEnd
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBarnLight", "m_flShadowFadeSizeEnd"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBarnLight", "m_flShadowFadeSizeEnd", value); }
+	}
 
 	// m_bPrecomputedFieldsValid
 	[SchemaMember("CBarnLight", "m_bPrecomputedFieldsValid")]
-	public ref bool PrecomputedFieldsValid => ref Schema.GetRef<bool>(this.Handle, "CBarnLight", "m_bPrecomputedFieldsValid");
+	public bool PrecomputedFieldsValid
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBarnLight", "m_bPrecomputedFieldsValid"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBarnLight", "m_bPrecomputedFieldsValid", value); }
+	}
 
 	// m_vPrecomputedBoundsMins
 	[SchemaMember("CBarnLight", "m_vPrecomputedBoundsMins")]
-	public Vector PrecomputedBoundsMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedBoundsMins");
+	public Vector3 PrecomputedBoundsMins
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedBoundsMins"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedBoundsMins", value); }
+	}
 
 	// m_vPrecomputedBoundsMaxs
 	[SchemaMember("CBarnLight", "m_vPrecomputedBoundsMaxs")]
-	public Vector PrecomputedBoundsMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedBoundsMaxs");
+	public Vector3 PrecomputedBoundsMaxs
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedBoundsMaxs"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedBoundsMaxs", value); }
+	}
 
 	// m_vPrecomputedOBBOrigin
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBOrigin")]
-	public Vector PrecomputedOBBOrigin => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin");
+	public Vector3 PrecomputedOBBOrigin
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin", value); }
+	}
 
 	// m_vPrecomputedOBBAngles
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBAngles")]
-	public QAngle PrecomputedOBBAngles => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles");
+	public QAngle PrecomputedOBBAngles
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles", value); }
+	}
 
 	// m_vPrecomputedOBBExtent
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBExtent")]
-	public Vector PrecomputedOBBExtent => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent");
+	public Vector3 PrecomputedOBBExtent
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent", value); }
+	}
 
 	// m_nPrecomputedSubFrusta
 	[SchemaMember("CBarnLight", "m_nPrecomputedSubFrusta")]
-	public ref Int32 PrecomputedSubFrusta => ref Schema.GetRef<Int32>(this.Handle, "CBarnLight", "m_nPrecomputedSubFrusta");
+	public Int32 PrecomputedSubFrusta
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CBarnLight", "m_nPrecomputedSubFrusta"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CBarnLight", "m_nPrecomputedSubFrusta", value); }
+	}
 
 	// m_vPrecomputedOBBOrigin0
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBOrigin0")]
-	public Vector PrecomputedOBBOrigin0 => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin0");
+	public Vector3 PrecomputedOBBOrigin0
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin0"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin0", value); }
+	}
 
 	// m_vPrecomputedOBBAngles0
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBAngles0")]
-	public QAngle PrecomputedOBBAngles0 => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles0");
+	public QAngle PrecomputedOBBAngles0
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles0"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles0", value); }
+	}
 
 	// m_vPrecomputedOBBExtent0
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBExtent0")]
-	public Vector PrecomputedOBBExtent0 => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent0");
+	public Vector3 PrecomputedOBBExtent0
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent0"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent0", value); }
+	}
 
 	// m_vPrecomputedOBBOrigin1
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBOrigin1")]
-	public Vector PrecomputedOBBOrigin1 => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin1");
+	public Vector3 PrecomputedOBBOrigin1
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin1"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin1", value); }
+	}
 
 	// m_vPrecomputedOBBAngles1
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBAngles1")]
-	public QAngle PrecomputedOBBAngles1 => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles1");
+	public QAngle PrecomputedOBBAngles1
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles1"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles1", value); }
+	}
 
 	// m_vPrecomputedOBBExtent1
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBExtent1")]
-	public Vector PrecomputedOBBExtent1 => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent1");
+	public Vector3 PrecomputedOBBExtent1
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent1"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent1", value); }
+	}
 
 	// m_vPrecomputedOBBOrigin2
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBOrigin2")]
-	public Vector PrecomputedOBBOrigin2 => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin2");
+	public Vector3 PrecomputedOBBOrigin2
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin2"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin2", value); }
+	}
 
 	// m_vPrecomputedOBBAngles2
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBAngles2")]
-	public QAngle PrecomputedOBBAngles2 => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles2");
+	public QAngle PrecomputedOBBAngles2
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles2"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles2", value); }
+	}
 
 	// m_vPrecomputedOBBExtent2
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBExtent2")]
-	public Vector PrecomputedOBBExtent2 => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent2");
+	public Vector3 PrecomputedOBBExtent2
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent2"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent2", value); }
+	}
 
 	// m_vPrecomputedOBBOrigin3
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBOrigin3")]
-	public Vector PrecomputedOBBOrigin3 => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin3");
+	public Vector3 PrecomputedOBBOrigin3
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin3"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin3", value); }
+	}
 
 	// m_vPrecomputedOBBAngles3
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBAngles3")]
-	public QAngle PrecomputedOBBAngles3 => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles3");
+	public QAngle PrecomputedOBBAngles3
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles3"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles3", value); }
+	}
 
 	// m_vPrecomputedOBBExtent3
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBExtent3")]
-	public Vector PrecomputedOBBExtent3 => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent3");
+	public Vector3 PrecomputedOBBExtent3
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent3"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent3", value); }
+	}
 
 	// m_vPrecomputedOBBOrigin4
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBOrigin4")]
-	public Vector PrecomputedOBBOrigin4 => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin4");
+	public Vector3 PrecomputedOBBOrigin4
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin4"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin4", value); }
+	}
 
 	// m_vPrecomputedOBBAngles4
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBAngles4")]
-	public QAngle PrecomputedOBBAngles4 => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles4");
+	public QAngle PrecomputedOBBAngles4
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles4"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles4", value); }
+	}
 
 	// m_vPrecomputedOBBExtent4
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBExtent4")]
-	public Vector PrecomputedOBBExtent4 => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent4");
+	public Vector3 PrecomputedOBBExtent4
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent4"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent4", value); }
+	}
 
 	// m_vPrecomputedOBBOrigin5
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBOrigin5")]
-	public Vector PrecomputedOBBOrigin5 => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin5");
+	public Vector3 PrecomputedOBBOrigin5
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin5"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBOrigin5", value); }
+	}
 
 	// m_vPrecomputedOBBAngles5
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBAngles5")]
-	public QAngle PrecomputedOBBAngles5 => Schema.GetDeclaredClass<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles5");
+	public QAngle PrecomputedOBBAngles5
+	{
+		get { return Schema.GetValueType<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles5"); }
+		set { Schema.SetValueType<QAngle>(this.Handle, "CBarnLight", "m_vPrecomputedOBBAngles5", value); }
+	}
 
 	// m_vPrecomputedOBBExtent5
 	[SchemaMember("CBarnLight", "m_vPrecomputedOBBExtent5")]
-	public Vector PrecomputedOBBExtent5 => Schema.GetDeclaredClass<Vector>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent5");
+	public Vector3 PrecomputedOBBExtent5
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent5"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CBarnLight", "m_vPrecomputedOBBExtent5", value); }
+	}
 
 	// m_bPvsModifyEntity
 	[SchemaMember("CBarnLight", "m_bPvsModifyEntity")]
-	public ref bool PvsModifyEntity => ref Schema.GetRef<bool>(this.Handle, "CBarnLight", "m_bPvsModifyEntity");
+	public bool PvsModifyEntity
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBarnLight", "m_bPvsModifyEntity"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBarnLight", "m_bPvsModifyEntity", value); }
+	}
 
 	// m_VisClusters
 	[SchemaMember("CBarnLight", "m_VisClusters")]

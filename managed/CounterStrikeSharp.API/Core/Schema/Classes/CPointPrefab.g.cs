@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -44,11 +45,19 @@ public partial class CPointPrefab : CServerOnlyPointEntity
 
 	// m_fixupNames
 	[SchemaMember("CPointPrefab", "m_fixupNames")]
-	public ref bool FixupNames => ref Schema.GetRef<bool>(this.Handle, "CPointPrefab", "m_fixupNames");
+	public bool FixupNames
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointPrefab", "m_fixupNames"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointPrefab", "m_fixupNames", value); }
+	}
 
 	// m_bLoadDynamic
 	[SchemaMember("CPointPrefab", "m_bLoadDynamic")]
-	public ref bool LoadDynamic => ref Schema.GetRef<bool>(this.Handle, "CPointPrefab", "m_bLoadDynamic");
+	public bool LoadDynamic
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPointPrefab", "m_bLoadDynamic"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPointPrefab", "m_bLoadDynamic", value); }
+	}
 
 	// m_associatedRelayEntity
 	[SchemaMember("CPointPrefab", "m_associatedRelayEntity")]

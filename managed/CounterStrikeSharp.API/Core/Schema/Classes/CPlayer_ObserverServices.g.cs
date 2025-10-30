@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class CPlayer_ObserverServices : CPlayerPawnComponent
 
 	// m_iObserverMode
 	[SchemaMember("CPlayer_ObserverServices", "m_iObserverMode")]
-	public ref byte ObserverMode => ref Schema.GetRef<byte>(this.Handle, "CPlayer_ObserverServices", "m_iObserverMode");
+	public byte ObserverMode
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CPlayer_ObserverServices", "m_iObserverMode"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CPlayer_ObserverServices", "m_iObserverMode", value); }
+	}
 
 	// m_hObserverTarget
 	[SchemaMember("CPlayer_ObserverServices", "m_hObserverTarget")]
@@ -28,10 +33,18 @@ public partial class CPlayer_ObserverServices : CPlayerPawnComponent
 
 	// m_iObserverLastMode
 	[SchemaMember("CPlayer_ObserverServices", "m_iObserverLastMode")]
-	public ref ObserverMode_t ObserverLastMode => ref Schema.GetRef<ObserverMode_t>(this.Handle, "CPlayer_ObserverServices", "m_iObserverLastMode");
+	public ObserverMode_t ObserverLastMode
+	{
+		get { return Schema.GetValueType<ObserverMode_t>(this.Handle, "CPlayer_ObserverServices", "m_iObserverLastMode"); }
+		set { Schema.SetValueType<ObserverMode_t>(this.Handle, "CPlayer_ObserverServices", "m_iObserverLastMode", value); }
+	}
 
 	// m_bForcedObserverMode
 	[SchemaMember("CPlayer_ObserverServices", "m_bForcedObserverMode")]
-	public ref bool ForcedObserverMode => ref Schema.GetRef<bool>(this.Handle, "CPlayer_ObserverServices", "m_bForcedObserverMode");
+	public bool ForcedObserverMode
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CPlayer_ObserverServices", "m_bForcedObserverMode"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CPlayer_ObserverServices", "m_bForcedObserverMode", value); }
+	}
 
 }

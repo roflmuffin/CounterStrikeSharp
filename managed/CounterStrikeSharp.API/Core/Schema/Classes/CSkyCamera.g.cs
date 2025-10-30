@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,7 +29,11 @@ public partial class CSkyCamera : CBaseEntity
 
 	// m_bUseAngles
 	[SchemaMember("CSkyCamera", "m_bUseAngles")]
-	public ref bool UseAngles => ref Schema.GetRef<bool>(this.Handle, "CSkyCamera", "m_bUseAngles");
+	public bool UseAngles
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CSkyCamera", "m_bUseAngles"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CSkyCamera", "m_bUseAngles", value); }
+	}
 
 	// m_pNext
 	[SchemaMember("CSkyCamera", "m_pNext")]

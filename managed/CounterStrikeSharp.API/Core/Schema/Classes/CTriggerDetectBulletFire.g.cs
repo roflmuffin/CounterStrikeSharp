@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class CTriggerDetectBulletFire : CBaseTrigger
 
 	// m_bPlayerFireOnly
 	[SchemaMember("CTriggerDetectBulletFire", "m_bPlayerFireOnly")]
-	public ref bool PlayerFireOnly => ref Schema.GetRef<bool>(this.Handle, "CTriggerDetectBulletFire", "m_bPlayerFireOnly");
+	public bool PlayerFireOnly
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTriggerDetectBulletFire", "m_bPlayerFireOnly"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTriggerDetectBulletFire", "m_bPlayerFireOnly", value); }
+	}
 
 	// m_OnDetectedBulletFire
 	[SchemaMember("CTriggerDetectBulletFire", "m_OnDetectedBulletFire")]

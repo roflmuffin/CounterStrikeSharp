@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,6 +25,10 @@ public partial class CHandleTest : CBaseEntity
 
 	// m_bSendHandle
 	[SchemaMember("CHandleTest", "m_bSendHandle")]
-	public ref bool SendHandle => ref Schema.GetRef<bool>(this.Handle, "CHandleTest", "m_bSendHandle");
+	public bool SendHandle
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CHandleTest", "m_bSendHandle"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CHandleTest", "m_bSendHandle", value); }
+	}
 
 }

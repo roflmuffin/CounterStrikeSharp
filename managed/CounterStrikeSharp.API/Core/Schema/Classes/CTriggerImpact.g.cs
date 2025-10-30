@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,14 +21,26 @@ public partial class CTriggerImpact : CTriggerMultiple
 
 	// m_flMagnitude
 	[SchemaMember("CTriggerImpact", "m_flMagnitude")]
-	public ref float Magnitude => ref Schema.GetRef<float>(this.Handle, "CTriggerImpact", "m_flMagnitude");
+	public float Magnitude
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerImpact", "m_flMagnitude"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerImpact", "m_flMagnitude", value); }
+	}
 
 	// m_flNoise
 	[SchemaMember("CTriggerImpact", "m_flNoise")]
-	public ref float Noise => ref Schema.GetRef<float>(this.Handle, "CTriggerImpact", "m_flNoise");
+	public float Noise
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerImpact", "m_flNoise"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerImpact", "m_flNoise", value); }
+	}
 
 	// m_flViewkick
 	[SchemaMember("CTriggerImpact", "m_flViewkick")]
-	public ref float Viewkick => ref Schema.GetRef<float>(this.Handle, "CTriggerImpact", "m_flViewkick");
+	public float Viewkick
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CTriggerImpact", "m_flViewkick"); }
+		set { Schema.SetValueType<float>(this.Handle, "CTriggerImpact", "m_flViewkick", value); }
+	}
 
 }

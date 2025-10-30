@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,19 +21,35 @@ public partial class SellbackPurchaseEntry_t : NativeObject
 
 	// m_unDefIdx
 	[SchemaMember("SellbackPurchaseEntry_t", "m_unDefIdx")]
-	public ref UInt16 DefIdx => ref Schema.GetRef<UInt16>(this.Handle, "SellbackPurchaseEntry_t", "m_unDefIdx");
+	public UInt16 DefIdx
+	{
+		get { return Schema.GetValueType<UInt16>(this.Handle, "SellbackPurchaseEntry_t", "m_unDefIdx"); }
+		set { Schema.SetValueType<UInt16>(this.Handle, "SellbackPurchaseEntry_t", "m_unDefIdx", value); }
+	}
 
 	// m_nCost
 	[SchemaMember("SellbackPurchaseEntry_t", "m_nCost")]
-	public ref Int32 Cost => ref Schema.GetRef<Int32>(this.Handle, "SellbackPurchaseEntry_t", "m_nCost");
+	public Int32 Cost
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "SellbackPurchaseEntry_t", "m_nCost"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "SellbackPurchaseEntry_t", "m_nCost", value); }
+	}
 
 	// m_nPrevArmor
 	[SchemaMember("SellbackPurchaseEntry_t", "m_nPrevArmor")]
-	public ref Int32 PrevArmor => ref Schema.GetRef<Int32>(this.Handle, "SellbackPurchaseEntry_t", "m_nPrevArmor");
+	public Int32 PrevArmor
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "SellbackPurchaseEntry_t", "m_nPrevArmor"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "SellbackPurchaseEntry_t", "m_nPrevArmor", value); }
+	}
 
 	// m_bPrevHelmet
 	[SchemaMember("SellbackPurchaseEntry_t", "m_bPrevHelmet")]
-	public ref bool PrevHelmet => ref Schema.GetRef<bool>(this.Handle, "SellbackPurchaseEntry_t", "m_bPrevHelmet");
+	public bool PrevHelmet
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "SellbackPurchaseEntry_t", "m_bPrevHelmet"); }
+		set { Schema.SetValueType<bool>(this.Handle, "SellbackPurchaseEntry_t", "m_bPrevHelmet", value); }
+	}
 
 	// m_hItem
 	[SchemaMember("SellbackPurchaseEntry_t", "m_hItem")]

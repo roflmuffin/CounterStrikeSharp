@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -32,11 +33,19 @@ public partial class CPathTrack : CPointEntity
 
 	// m_flRadius
 	[SchemaMember("CPathTrack", "m_flRadius")]
-	public ref float Radius => ref Schema.GetRef<float>(this.Handle, "CPathTrack", "m_flRadius");
+	public float Radius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPathTrack", "m_flRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPathTrack", "m_flRadius", value); }
+	}
 
 	// m_length
 	[SchemaMember("CPathTrack", "m_length")]
-	public ref float Length => ref Schema.GetRef<float>(this.Handle, "CPathTrack", "m_length");
+	public float Length
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CPathTrack", "m_length"); }
+		set { Schema.SetValueType<float>(this.Handle, "CPathTrack", "m_length", value); }
+	}
 
 	// m_altName
 	[SchemaMember("CPathTrack", "m_altName")]
@@ -48,11 +57,19 @@ public partial class CPathTrack : CPointEntity
 
 	// m_nIterVal
 	[SchemaMember("CPathTrack", "m_nIterVal")]
-	public ref Int32 IterVal => ref Schema.GetRef<Int32>(this.Handle, "CPathTrack", "m_nIterVal");
+	public Int32 IterVal
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CPathTrack", "m_nIterVal"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CPathTrack", "m_nIterVal", value); }
+	}
 
 	// m_eOrientationType
 	[SchemaMember("CPathTrack", "m_eOrientationType")]
-	public ref TrackOrientationType_t OrientationType => ref Schema.GetRef<TrackOrientationType_t>(this.Handle, "CPathTrack", "m_eOrientationType");
+	public TrackOrientationType_t OrientationType
+	{
+		get { return Schema.GetValueType<TrackOrientationType_t>(this.Handle, "CPathTrack", "m_eOrientationType"); }
+		set { Schema.SetValueType<TrackOrientationType_t>(this.Handle, "CPathTrack", "m_eOrientationType", value); }
+	}
 
 	// m_OnPass
 	[SchemaMember("CPathTrack", "m_OnPass")]

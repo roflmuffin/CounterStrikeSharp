@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_flScattering
 	[SchemaMember("CEnvVolumetricFogController", "m_flScattering")]
-	public ref float Scattering => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogController", "m_flScattering");
+	public float Scattering
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flScattering"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flScattering", value); }
+	}
 
 	// m_TintColor
 	[SchemaMember("CEnvVolumetricFogController", "m_TintColor")]
@@ -32,107 +37,211 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_flAnisotropy
 	[SchemaMember("CEnvVolumetricFogController", "m_flAnisotropy")]
-	public ref float Anisotropy => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogController", "m_flAnisotropy");
+	public float Anisotropy
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flAnisotropy"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flAnisotropy", value); }
+	}
 
 	// m_flFadeSpeed
 	[SchemaMember("CEnvVolumetricFogController", "m_flFadeSpeed")]
-	public ref float FadeSpeed => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogController", "m_flFadeSpeed");
+	public float FadeSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flFadeSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flFadeSpeed", value); }
+	}
 
 	// m_flDrawDistance
 	[SchemaMember("CEnvVolumetricFogController", "m_flDrawDistance")]
-	public ref float DrawDistance => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogController", "m_flDrawDistance");
+	public float DrawDistance
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flDrawDistance"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flDrawDistance", value); }
+	}
 
 	// m_flFadeInStart
 	[SchemaMember("CEnvVolumetricFogController", "m_flFadeInStart")]
-	public ref float FadeInStart => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogController", "m_flFadeInStart");
+	public float FadeInStart
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flFadeInStart"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flFadeInStart", value); }
+	}
 
 	// m_flFadeInEnd
 	[SchemaMember("CEnvVolumetricFogController", "m_flFadeInEnd")]
-	public ref float FadeInEnd => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogController", "m_flFadeInEnd");
+	public float FadeInEnd
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flFadeInEnd"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flFadeInEnd", value); }
+	}
 
 	// m_flIndirectStrength
 	[SchemaMember("CEnvVolumetricFogController", "m_flIndirectStrength")]
-	public ref float IndirectStrength => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogController", "m_flIndirectStrength");
+	public float IndirectStrength
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flIndirectStrength"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flIndirectStrength", value); }
+	}
 
 	// m_nVolumeDepth
 	[SchemaMember("CEnvVolumetricFogController", "m_nVolumeDepth")]
-	public ref Int32 VolumeDepth => ref Schema.GetRef<Int32>(this.Handle, "CEnvVolumetricFogController", "m_nVolumeDepth");
+	public Int32 VolumeDepth
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvVolumetricFogController", "m_nVolumeDepth"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvVolumetricFogController", "m_nVolumeDepth", value); }
+	}
 
 	// m_fFirstVolumeSliceThickness
 	[SchemaMember("CEnvVolumetricFogController", "m_fFirstVolumeSliceThickness")]
-	public ref float FirstVolumeSliceThickness => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogController", "m_fFirstVolumeSliceThickness");
+	public float FirstVolumeSliceThickness
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_fFirstVolumeSliceThickness"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_fFirstVolumeSliceThickness", value); }
+	}
 
 	// m_nIndirectTextureDimX
 	[SchemaMember("CEnvVolumetricFogController", "m_nIndirectTextureDimX")]
-	public ref Int32 IndirectTextureDimX => ref Schema.GetRef<Int32>(this.Handle, "CEnvVolumetricFogController", "m_nIndirectTextureDimX");
+	public Int32 IndirectTextureDimX
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvVolumetricFogController", "m_nIndirectTextureDimX"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvVolumetricFogController", "m_nIndirectTextureDimX", value); }
+	}
 
 	// m_nIndirectTextureDimY
 	[SchemaMember("CEnvVolumetricFogController", "m_nIndirectTextureDimY")]
-	public ref Int32 IndirectTextureDimY => ref Schema.GetRef<Int32>(this.Handle, "CEnvVolumetricFogController", "m_nIndirectTextureDimY");
+	public Int32 IndirectTextureDimY
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvVolumetricFogController", "m_nIndirectTextureDimY"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvVolumetricFogController", "m_nIndirectTextureDimY", value); }
+	}
 
 	// m_nIndirectTextureDimZ
 	[SchemaMember("CEnvVolumetricFogController", "m_nIndirectTextureDimZ")]
-	public ref Int32 IndirectTextureDimZ => ref Schema.GetRef<Int32>(this.Handle, "CEnvVolumetricFogController", "m_nIndirectTextureDimZ");
+	public Int32 IndirectTextureDimZ
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvVolumetricFogController", "m_nIndirectTextureDimZ"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvVolumetricFogController", "m_nIndirectTextureDimZ", value); }
+	}
 
 	// m_vBoxMins
 	[SchemaMember("CEnvVolumetricFogController", "m_vBoxMins")]
-	public Vector BoxMins => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvVolumetricFogController", "m_vBoxMins");
+	public Vector3 BoxMins
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvVolumetricFogController", "m_vBoxMins"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvVolumetricFogController", "m_vBoxMins", value); }
+	}
 
 	// m_vBoxMaxs
 	[SchemaMember("CEnvVolumetricFogController", "m_vBoxMaxs")]
-	public Vector BoxMaxs => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvVolumetricFogController", "m_vBoxMaxs");
+	public Vector3 BoxMaxs
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvVolumetricFogController", "m_vBoxMaxs"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvVolumetricFogController", "m_vBoxMaxs", value); }
+	}
 
 	// m_bActive
 	[SchemaMember("CEnvVolumetricFogController", "m_bActive")]
-	public ref bool Active => ref Schema.GetRef<bool>(this.Handle, "CEnvVolumetricFogController", "m_bActive");
+	public bool Active
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvVolumetricFogController", "m_bActive"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvVolumetricFogController", "m_bActive", value); }
+	}
 
 	// m_flStartAnisoTime
 	[SchemaMember("CEnvVolumetricFogController", "m_flStartAnisoTime")]
-	public ref float StartAnisoTime => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartAnisoTime");
+	public float StartAnisoTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartAnisoTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartAnisoTime", value); }
+	}
 
 	// m_flStartScatterTime
 	[SchemaMember("CEnvVolumetricFogController", "m_flStartScatterTime")]
-	public ref float StartScatterTime => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartScatterTime");
+	public float StartScatterTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartScatterTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartScatterTime", value); }
+	}
 
 	// m_flStartDrawDistanceTime
 	[SchemaMember("CEnvVolumetricFogController", "m_flStartDrawDistanceTime")]
-	public ref float StartDrawDistanceTime => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartDrawDistanceTime");
+	public float StartDrawDistanceTime
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartDrawDistanceTime"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartDrawDistanceTime", value); }
+	}
 
 	// m_flStartAnisotropy
 	[SchemaMember("CEnvVolumetricFogController", "m_flStartAnisotropy")]
-	public ref float StartAnisotropy => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartAnisotropy");
+	public float StartAnisotropy
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartAnisotropy"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartAnisotropy", value); }
+	}
 
 	// m_flStartScattering
 	[SchemaMember("CEnvVolumetricFogController", "m_flStartScattering")]
-	public ref float StartScattering => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartScattering");
+	public float StartScattering
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartScattering"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartScattering", value); }
+	}
 
 	// m_flStartDrawDistance
 	[SchemaMember("CEnvVolumetricFogController", "m_flStartDrawDistance")]
-	public ref float StartDrawDistance => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartDrawDistance");
+	public float StartDrawDistance
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartDrawDistance"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flStartDrawDistance", value); }
+	}
 
 	// m_flDefaultAnisotropy
 	[SchemaMember("CEnvVolumetricFogController", "m_flDefaultAnisotropy")]
-	public ref float DefaultAnisotropy => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogController", "m_flDefaultAnisotropy");
+	public float DefaultAnisotropy
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flDefaultAnisotropy"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flDefaultAnisotropy", value); }
+	}
 
 	// m_flDefaultScattering
 	[SchemaMember("CEnvVolumetricFogController", "m_flDefaultScattering")]
-	public ref float DefaultScattering => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogController", "m_flDefaultScattering");
+	public float DefaultScattering
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flDefaultScattering"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flDefaultScattering", value); }
+	}
 
 	// m_flDefaultDrawDistance
 	[SchemaMember("CEnvVolumetricFogController", "m_flDefaultDrawDistance")]
-	public ref float DefaultDrawDistance => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogController", "m_flDefaultDrawDistance");
+	public float DefaultDrawDistance
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flDefaultDrawDistance"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_flDefaultDrawDistance", value); }
+	}
 
 	// m_bStartDisabled
 	[SchemaMember("CEnvVolumetricFogController", "m_bStartDisabled")]
-	public ref bool StartDisabled => ref Schema.GetRef<bool>(this.Handle, "CEnvVolumetricFogController", "m_bStartDisabled");
+	public bool StartDisabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvVolumetricFogController", "m_bStartDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvVolumetricFogController", "m_bStartDisabled", value); }
+	}
 
 	// m_bEnableIndirect
 	[SchemaMember("CEnvVolumetricFogController", "m_bEnableIndirect")]
-	public ref bool EnableIndirect => ref Schema.GetRef<bool>(this.Handle, "CEnvVolumetricFogController", "m_bEnableIndirect");
+	public bool EnableIndirect
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvVolumetricFogController", "m_bEnableIndirect"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvVolumetricFogController", "m_bEnableIndirect", value); }
+	}
 
 	// m_bIsMaster
 	[SchemaMember("CEnvVolumetricFogController", "m_bIsMaster")]
-	public ref bool IsMaster => ref Schema.GetRef<bool>(this.Handle, "CEnvVolumetricFogController", "m_bIsMaster");
+	public bool IsMaster
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvVolumetricFogController", "m_bIsMaster"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvVolumetricFogController", "m_bIsMaster", value); }
+	}
 
 	// m_hFogIndirectTexture
 	[SchemaMember("CEnvVolumetricFogController", "m_hFogIndirectTexture")]
@@ -140,30 +249,58 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 
 	// m_nForceRefreshCount
 	[SchemaMember("CEnvVolumetricFogController", "m_nForceRefreshCount")]
-	public ref Int32 ForceRefreshCount => ref Schema.GetRef<Int32>(this.Handle, "CEnvVolumetricFogController", "m_nForceRefreshCount");
+	public Int32 ForceRefreshCount
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvVolumetricFogController", "m_nForceRefreshCount"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvVolumetricFogController", "m_nForceRefreshCount", value); }
+	}
 
 	// m_fNoiseSpeed
 	[SchemaMember("CEnvVolumetricFogController", "m_fNoiseSpeed")]
-	public ref float NoiseSpeed => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogController", "m_fNoiseSpeed");
+	public float NoiseSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_fNoiseSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_fNoiseSpeed", value); }
+	}
 
 	// m_fNoiseStrength
 	[SchemaMember("CEnvVolumetricFogController", "m_fNoiseStrength")]
-	public ref float NoiseStrength => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogController", "m_fNoiseStrength");
+	public float NoiseStrength
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_fNoiseStrength"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_fNoiseStrength", value); }
+	}
 
 	// m_vNoiseScale
 	[SchemaMember("CEnvVolumetricFogController", "m_vNoiseScale")]
-	public Vector NoiseScale => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvVolumetricFogController", "m_vNoiseScale");
+	public Vector3 NoiseScale
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvVolumetricFogController", "m_vNoiseScale"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvVolumetricFogController", "m_vNoiseScale", value); }
+	}
 
 	// m_fWindSpeed
 	[SchemaMember("CEnvVolumetricFogController", "m_fWindSpeed")]
-	public ref float WindSpeed => ref Schema.GetRef<float>(this.Handle, "CEnvVolumetricFogController", "m_fWindSpeed");
+	public float WindSpeed
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_fWindSpeed"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvVolumetricFogController", "m_fWindSpeed", value); }
+	}
 
 	// m_vWindDirection
 	[SchemaMember("CEnvVolumetricFogController", "m_vWindDirection")]
-	public Vector WindDirection => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvVolumetricFogController", "m_vWindDirection");
+	public Vector3 WindDirection
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvVolumetricFogController", "m_vWindDirection"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvVolumetricFogController", "m_vWindDirection", value); }
+	}
 
 	// m_bFirstTime
 	[SchemaMember("CEnvVolumetricFogController", "m_bFirstTime")]
-	public ref bool FirstTime => ref Schema.GetRef<bool>(this.Handle, "CEnvVolumetricFogController", "m_bFirstTime");
+	public bool FirstTime
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvVolumetricFogController", "m_bFirstTime"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvVolumetricFogController", "m_bFirstTime", value); }
+	}
 
 }

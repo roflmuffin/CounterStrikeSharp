@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -48,6 +49,10 @@ public partial class CTestPulseIO : CLogicalEntity
 
 	// m_bAllowEmptyInputs
 	[SchemaMember("CTestPulseIO", "m_bAllowEmptyInputs")]
-	public ref bool AllowEmptyInputs => ref Schema.GetRef<bool>(this.Handle, "CTestPulseIO", "m_bAllowEmptyInputs");
+	public bool AllowEmptyInputs
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CTestPulseIO", "m_bAllowEmptyInputs"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CTestPulseIO", "m_bAllowEmptyInputs", value); }
+	}
 
 }

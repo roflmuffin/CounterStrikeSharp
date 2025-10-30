@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -40,10 +41,18 @@ public partial class CEnvLaser : CBeam
 
 	// m_firePosition
 	[SchemaMember("CEnvLaser", "m_firePosition")]
-	public Vector FirePosition => Schema.GetDeclaredClass<Vector>(this.Handle, "CEnvLaser", "m_firePosition");
+	public Vector3 FirePosition
+	{
+		get { return Schema.GetValueType<Vector3>(this.Handle, "CEnvLaser", "m_firePosition"); }
+		set { Schema.SetValueType<Vector3>(this.Handle, "CEnvLaser", "m_firePosition", value); }
+	}
 
 	// m_flStartFrame
 	[SchemaMember("CEnvLaser", "m_flStartFrame")]
-	public new ref float StartFrame => ref Schema.GetRef<float>(this.Handle, "CEnvLaser", "m_flStartFrame");
+	public new float StartFrame
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvLaser", "m_flStartFrame"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvLaser", "m_flStartFrame", value); }
+	}
 
 }

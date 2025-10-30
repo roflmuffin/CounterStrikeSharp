@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -24,23 +25,43 @@ public partial class CBuoyancyHelper : NativeObject
 
 	// m_flFluidDensity
 	[SchemaMember("CBuoyancyHelper", "m_flFluidDensity")]
-	public ref float FluidDensity => ref Schema.GetRef<float>(this.Handle, "CBuoyancyHelper", "m_flFluidDensity");
+	public float FluidDensity
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBuoyancyHelper", "m_flFluidDensity"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBuoyancyHelper", "m_flFluidDensity", value); }
+	}
 
 	// m_flNeutrallyBuoyantGravity
 	[SchemaMember("CBuoyancyHelper", "m_flNeutrallyBuoyantGravity")]
-	public ref float NeutrallyBuoyantGravity => ref Schema.GetRef<float>(this.Handle, "CBuoyancyHelper", "m_flNeutrallyBuoyantGravity");
+	public float NeutrallyBuoyantGravity
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBuoyancyHelper", "m_flNeutrallyBuoyantGravity"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBuoyancyHelper", "m_flNeutrallyBuoyantGravity", value); }
+	}
 
 	// m_flNeutrallyBuoyantLinearDamping
 	[SchemaMember("CBuoyancyHelper", "m_flNeutrallyBuoyantLinearDamping")]
-	public ref float NeutrallyBuoyantLinearDamping => ref Schema.GetRef<float>(this.Handle, "CBuoyancyHelper", "m_flNeutrallyBuoyantLinearDamping");
+	public float NeutrallyBuoyantLinearDamping
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBuoyancyHelper", "m_flNeutrallyBuoyantLinearDamping"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBuoyancyHelper", "m_flNeutrallyBuoyantLinearDamping", value); }
+	}
 
 	// m_flNeutrallyBuoyantAngularDamping
 	[SchemaMember("CBuoyancyHelper", "m_flNeutrallyBuoyantAngularDamping")]
-	public ref float NeutrallyBuoyantAngularDamping => ref Schema.GetRef<float>(this.Handle, "CBuoyancyHelper", "m_flNeutrallyBuoyantAngularDamping");
+	public float NeutrallyBuoyantAngularDamping
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CBuoyancyHelper", "m_flNeutrallyBuoyantAngularDamping"); }
+		set { Schema.SetValueType<float>(this.Handle, "CBuoyancyHelper", "m_flNeutrallyBuoyantAngularDamping", value); }
+	}
 
 	// m_bNeutrallyBuoyant
 	[SchemaMember("CBuoyancyHelper", "m_bNeutrallyBuoyant")]
-	public ref bool NeutrallyBuoyant => ref Schema.GetRef<bool>(this.Handle, "CBuoyancyHelper", "m_bNeutrallyBuoyant");
+	public bool NeutrallyBuoyant
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CBuoyancyHelper", "m_bNeutrallyBuoyant"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CBuoyancyHelper", "m_bNeutrallyBuoyant", value); }
+	}
 
 	// m_vecFractionOfWheelSubmergedForWheelFriction
 	[SchemaMember("CBuoyancyHelper", "m_vecFractionOfWheelSubmergedForWheelFriction")]

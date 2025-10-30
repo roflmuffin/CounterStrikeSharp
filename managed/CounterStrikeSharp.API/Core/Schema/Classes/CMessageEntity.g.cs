@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,7 +21,11 @@ public partial class CMessageEntity : CPointEntity
 
 	// m_radius
 	[SchemaMember("CMessageEntity", "m_radius")]
-	public ref Int32 Radius => ref Schema.GetRef<Int32>(this.Handle, "CMessageEntity", "m_radius");
+	public Int32 Radius
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CMessageEntity", "m_radius"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CMessageEntity", "m_radius", value); }
+	}
 
 	// m_messageText
 	[SchemaMember("CMessageEntity", "m_messageText")]
@@ -32,14 +37,26 @@ public partial class CMessageEntity : CPointEntity
 
 	// m_drawText
 	[SchemaMember("CMessageEntity", "m_drawText")]
-	public ref bool DrawText => ref Schema.GetRef<bool>(this.Handle, "CMessageEntity", "m_drawText");
+	public bool DrawText
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CMessageEntity", "m_drawText"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CMessageEntity", "m_drawText", value); }
+	}
 
 	// m_bDeveloperOnly
 	[SchemaMember("CMessageEntity", "m_bDeveloperOnly")]
-	public ref bool DeveloperOnly => ref Schema.GetRef<bool>(this.Handle, "CMessageEntity", "m_bDeveloperOnly");
+	public bool DeveloperOnly
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CMessageEntity", "m_bDeveloperOnly"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CMessageEntity", "m_bDeveloperOnly", value); }
+	}
 
 	// m_bEnabled
 	[SchemaMember("CMessageEntity", "m_bEnabled")]
-	public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CMessageEntity", "m_bEnabled");
+	public bool Enabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CMessageEntity", "m_bEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CMessageEntity", "m_bEnabled", value); }
+	}
 
 }

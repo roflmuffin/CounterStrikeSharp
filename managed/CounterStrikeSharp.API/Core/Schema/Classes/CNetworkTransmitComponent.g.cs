@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,6 +21,10 @@ public partial class CNetworkTransmitComponent : NativeObject
 
 	// m_nTransmitStateOwnedCounter
 	[SchemaMember("CNetworkTransmitComponent", "m_nTransmitStateOwnedCounter")]
-	public ref byte TransmitStateOwnedCounter => ref Schema.GetRef<byte>(this.Handle, "CNetworkTransmitComponent", "m_nTransmitStateOwnedCounter");
+	public byte TransmitStateOwnedCounter
+	{
+		get { return Schema.GetValueType<byte>(this.Handle, "CNetworkTransmitComponent", "m_nTransmitStateOwnedCounter"); }
+		set { Schema.SetValueType<byte>(this.Handle, "CNetworkTransmitComponent", "m_nTransmitStateOwnedCounter", value); }
+	}
 
 }

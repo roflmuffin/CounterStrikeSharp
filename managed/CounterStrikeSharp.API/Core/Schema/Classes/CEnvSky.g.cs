@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -28,7 +29,11 @@ public partial class CEnvSky : CBaseModelEntity
 
 	// m_bStartDisabled
 	[SchemaMember("CEnvSky", "m_bStartDisabled")]
-	public ref bool StartDisabled => ref Schema.GetRef<bool>(this.Handle, "CEnvSky", "m_bStartDisabled");
+	public bool StartDisabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvSky", "m_bStartDisabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvSky", "m_bStartDisabled", value); }
+	}
 
 	// m_vTintColor
 	[SchemaMember("CEnvSky", "m_vTintColor")]
@@ -48,30 +53,58 @@ public partial class CEnvSky : CBaseModelEntity
 
 	// m_flBrightnessScale
 	[SchemaMember("CEnvSky", "m_flBrightnessScale")]
-	public ref float BrightnessScale => ref Schema.GetRef<float>(this.Handle, "CEnvSky", "m_flBrightnessScale");
+	public float BrightnessScale
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvSky", "m_flBrightnessScale"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvSky", "m_flBrightnessScale", value); }
+	}
 
 	// m_nFogType
 	[SchemaMember("CEnvSky", "m_nFogType")]
-	public ref Int32 FogType => ref Schema.GetRef<Int32>(this.Handle, "CEnvSky", "m_nFogType");
+	public Int32 FogType
+	{
+		get { return Schema.GetValueType<Int32>(this.Handle, "CEnvSky", "m_nFogType"); }
+		set { Schema.SetValueType<Int32>(this.Handle, "CEnvSky", "m_nFogType", value); }
+	}
 
 	// m_flFogMinStart
 	[SchemaMember("CEnvSky", "m_flFogMinStart")]
-	public ref float FogMinStart => ref Schema.GetRef<float>(this.Handle, "CEnvSky", "m_flFogMinStart");
+	public float FogMinStart
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvSky", "m_flFogMinStart"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvSky", "m_flFogMinStart", value); }
+	}
 
 	// m_flFogMinEnd
 	[SchemaMember("CEnvSky", "m_flFogMinEnd")]
-	public ref float FogMinEnd => ref Schema.GetRef<float>(this.Handle, "CEnvSky", "m_flFogMinEnd");
+	public float FogMinEnd
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvSky", "m_flFogMinEnd"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvSky", "m_flFogMinEnd", value); }
+	}
 
 	// m_flFogMaxStart
 	[SchemaMember("CEnvSky", "m_flFogMaxStart")]
-	public ref float FogMaxStart => ref Schema.GetRef<float>(this.Handle, "CEnvSky", "m_flFogMaxStart");
+	public float FogMaxStart
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvSky", "m_flFogMaxStart"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvSky", "m_flFogMaxStart", value); }
+	}
 
 	// m_flFogMaxEnd
 	[SchemaMember("CEnvSky", "m_flFogMaxEnd")]
-	public ref float FogMaxEnd => ref Schema.GetRef<float>(this.Handle, "CEnvSky", "m_flFogMaxEnd");
+	public float FogMaxEnd
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CEnvSky", "m_flFogMaxEnd"); }
+		set { Schema.SetValueType<float>(this.Handle, "CEnvSky", "m_flFogMaxEnd", value); }
+	}
 
 	// m_bEnabled
 	[SchemaMember("CEnvSky", "m_bEnabled")]
-	public ref bool Enabled => ref Schema.GetRef<bool>(this.Handle, "CEnvSky", "m_bEnabled");
+	public bool Enabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CEnvSky", "m_bEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CEnvSky", "m_bEnabled", value); }
+	}
 
 }

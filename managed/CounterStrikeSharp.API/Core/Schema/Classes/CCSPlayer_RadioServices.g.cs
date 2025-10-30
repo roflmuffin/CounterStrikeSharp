@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -20,15 +21,27 @@ public partial class CCSPlayer_RadioServices : CPlayerPawnComponent
 
 	// m_flGotHostageTalkTimer
 	[SchemaMember("CCSPlayer_RadioServices", "m_flGotHostageTalkTimer")]
-	public ref float GotHostageTalkTimer => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_RadioServices", "m_flGotHostageTalkTimer");
+	public float GotHostageTalkTimer
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_RadioServices", "m_flGotHostageTalkTimer"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_RadioServices", "m_flGotHostageTalkTimer", value); }
+	}
 
 	// m_flDefusingTalkTimer
 	[SchemaMember("CCSPlayer_RadioServices", "m_flDefusingTalkTimer")]
-	public ref float DefusingTalkTimer => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_RadioServices", "m_flDefusingTalkTimer");
+	public float DefusingTalkTimer
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_RadioServices", "m_flDefusingTalkTimer"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_RadioServices", "m_flDefusingTalkTimer", value); }
+	}
 
 	// m_flC4PlantTalkTimer
 	[SchemaMember("CCSPlayer_RadioServices", "m_flC4PlantTalkTimer")]
-	public ref float C4PlantTalkTimer => ref Schema.GetRef<float>(this.Handle, "CCSPlayer_RadioServices", "m_flC4PlantTalkTimer");
+	public float C4PlantTalkTimer
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CCSPlayer_RadioServices", "m_flC4PlantTalkTimer"); }
+		set { Schema.SetValueType<float>(this.Handle, "CCSPlayer_RadioServices", "m_flC4PlantTalkTimer", value); }
+	}
 
 	// m_flRadioTokenSlots
 	[SchemaMember("CCSPlayer_RadioServices", "m_flRadioTokenSlots")]
@@ -36,6 +49,10 @@ public partial class CCSPlayer_RadioServices : CPlayerPawnComponent
 
 	// m_bIgnoreRadio
 	[SchemaMember("CCSPlayer_RadioServices", "m_bIgnoreRadio")]
-	public ref bool IgnoreRadio => ref Schema.GetRef<bool>(this.Handle, "CCSPlayer_RadioServices", "m_bIgnoreRadio");
+	public bool IgnoreRadio
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CCSPlayer_RadioServices", "m_bIgnoreRadio"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_RadioServices", "m_bIgnoreRadio", value); }
+	}
 
 }

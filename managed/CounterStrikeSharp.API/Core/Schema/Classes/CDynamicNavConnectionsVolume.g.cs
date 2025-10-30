@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -40,18 +41,34 @@ public partial class CDynamicNavConnectionsVolume : CTriggerMultiple
 
 	// m_bConnectionsEnabled
 	[SchemaMember("CDynamicNavConnectionsVolume", "m_bConnectionsEnabled")]
-	public ref bool ConnectionsEnabled => ref Schema.GetRef<bool>(this.Handle, "CDynamicNavConnectionsVolume", "m_bConnectionsEnabled");
+	public bool ConnectionsEnabled
+	{
+		get { return Schema.GetValueType<bool>(this.Handle, "CDynamicNavConnectionsVolume", "m_bConnectionsEnabled"); }
+		set { Schema.SetValueType<bool>(this.Handle, "CDynamicNavConnectionsVolume", "m_bConnectionsEnabled", value); }
+	}
 
 	// m_flTargetAreaSearchRadius
 	[SchemaMember("CDynamicNavConnectionsVolume", "m_flTargetAreaSearchRadius")]
-	public ref float TargetAreaSearchRadius => ref Schema.GetRef<float>(this.Handle, "CDynamicNavConnectionsVolume", "m_flTargetAreaSearchRadius");
+	public float TargetAreaSearchRadius
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CDynamicNavConnectionsVolume", "m_flTargetAreaSearchRadius"); }
+		set { Schema.SetValueType<float>(this.Handle, "CDynamicNavConnectionsVolume", "m_flTargetAreaSearchRadius", value); }
+	}
 
 	// m_flUpdateDistance
 	[SchemaMember("CDynamicNavConnectionsVolume", "m_flUpdateDistance")]
-	public ref float UpdateDistance => ref Schema.GetRef<float>(this.Handle, "CDynamicNavConnectionsVolume", "m_flUpdateDistance");
+	public float UpdateDistance
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CDynamicNavConnectionsVolume", "m_flUpdateDistance"); }
+		set { Schema.SetValueType<float>(this.Handle, "CDynamicNavConnectionsVolume", "m_flUpdateDistance", value); }
+	}
 
 	// m_flMaxConnectionDistance
 	[SchemaMember("CDynamicNavConnectionsVolume", "m_flMaxConnectionDistance")]
-	public ref float MaxConnectionDistance => ref Schema.GetRef<float>(this.Handle, "CDynamicNavConnectionsVolume", "m_flMaxConnectionDistance");
+	public float MaxConnectionDistance
+	{
+		get { return Schema.GetValueType<float>(this.Handle, "CDynamicNavConnectionsVolume", "m_flMaxConnectionDistance"); }
+		set { Schema.SetValueType<float>(this.Handle, "CDynamicNavConnectionsVolume", "m_flMaxConnectionDistance", value); }
+	}
 
 }
