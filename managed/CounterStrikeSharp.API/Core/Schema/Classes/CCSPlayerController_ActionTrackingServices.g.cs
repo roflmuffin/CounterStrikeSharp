@@ -51,4 +51,9 @@ public partial class CCSPlayerController_ActionTrackingServices : CPlayerControl
 		set { Schema.SetValueType<float>(this.Handle, "CCSPlayerController_ActionTrackingServices", "m_flTotalRoundDamageDealt", value); }
 	}
 
+	public void PerRoundStatsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_ActionTrackingServices", "m_perRoundStats");
+	public void MatchStatsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_ActionTrackingServices", "m_matchStats");
+	public void NumRoundKillsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_ActionTrackingServices", "m_iNumRoundKills");
+	public void NumRoundKillsHeadshotsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_ActionTrackingServices", "m_iNumRoundKillsHeadshots");
+	public void TotalRoundDamageDealtPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_ActionTrackingServices", "m_flTotalRoundDamageDealt");
 }

@@ -27,4 +27,5 @@ public partial class CRectLight : CBarnLight
 		set { Schema.SetValueType<bool>(this.Handle, "CRectLight", "m_bShowLight", value); }
 	}
 
+	public void ShowLightPropertyChanged() => Utilities.SetStateChanged(this, "CRectLight", "m_bShowLight");
 }

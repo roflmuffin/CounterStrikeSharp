@@ -39,4 +39,5 @@ public partial class CFogController : CBaseEntity
 		set { Schema.SetValueType<Int32>(this.Handle, "CFogController", "m_iChangedVariables", value); }
 	}
 
+	public void FogPropertyChanged() => Utilities.SetStateChanged(this, "CFogController", "m_fog");
 }

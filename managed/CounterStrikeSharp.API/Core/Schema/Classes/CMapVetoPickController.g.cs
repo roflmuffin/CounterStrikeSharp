@@ -131,4 +131,19 @@ public partial class CMapVetoPickController : CBaseEntity
 		set { Schema.SetValueType<Int32>(this.Handle, "CMapVetoPickController", "m_nPhaseDurationTicks", value); }
 	}
 
+	public void DraftTypePropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nDraftType");
+	public void TeamWinningCoinTossPropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nTeamWinningCoinToss");
+	public void TeamWithFirstChoicePropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nTeamWithFirstChoice");
+	public void VoteMapIdsListPropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nVoteMapIdsList");
+	public void AccountIDsPropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nAccountIDs");
+	public void MapId0PropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nMapId0");
+	public void MapId1PropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nMapId1");
+	public void MapId2PropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nMapId2");
+	public void MapId3PropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nMapId3");
+	public void MapId4PropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nMapId4");
+	public void MapId5PropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nMapId5");
+	public void StartingSide0PropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nStartingSide0");
+	public void CurrentPhasePropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nCurrentPhase");
+	public void PhaseStartTickPropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nPhaseStartTick");
+	public void PhaseDurationTicksPropertyChanged() => Utilities.SetStateChanged(this, "CMapVetoPickController", "m_nPhaseDurationTicks");
 }

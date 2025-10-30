@@ -555,6 +555,17 @@ internal static partial class Program
             }
         }
 
+        foreach (var field in schemaClass.Fields)
+        {
+            if (!field.IsNetworkEnabled()) continue;
+            if (IgnoreClassWildcards.Any(y => field.Type.Name.Contains(y)))
+                continue;
+
+            var name = schemaClass.CsPropertyNameForField(schemaClassName, field);
+            builder.AppendLine(
+                $"\tpublic void {name}PropertyChanged() => Utilities.SetStateChanged(this, \"{schemaClassName}\", \"{field.Name}\");");
+        }
+
         builder.AppendLine($"}}");
     }
 

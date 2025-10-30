@@ -119,4 +119,17 @@ public partial class CBaseCSGrenade : CCSWeaponBase
 	[SchemaMember("CBaseCSGrenade", "m_hSwitchToWeaponAfterThrow")]
 	public CHandle<CCSWeaponBase> SwitchToWeaponAfterThrow => Schema.GetDeclaredClass<CHandle<CCSWeaponBase>>(this.Handle, "CBaseCSGrenade", "m_hSwitchToWeaponAfterThrow");
 
+	public void RedrawPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_bRedraw");
+	public void IsHeldByPlayerPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_bIsHeldByPlayer");
+	public void PinPulledPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_bPinPulled");
+	public void JumpThrowPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_bJumpThrow");
+	public void ThrowAnimatingPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_bThrowAnimating");
+	public void ThrowTimePropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_fThrowTime");
+	public void ThrowStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_flThrowStrength");
+	public void DropTimePropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_fDropTime");
+	public void PinPullTimePropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_fPinPullTime");
+	public void JustPulledPinPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_bJustPulledPin");
+	public void NextHoldTickPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_nNextHoldTick");
+	public void NextHoldFracPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_flNextHoldFrac");
+	public void SwitchToWeaponAfterThrowPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_hSwitchToWeaponAfterThrow");
 }

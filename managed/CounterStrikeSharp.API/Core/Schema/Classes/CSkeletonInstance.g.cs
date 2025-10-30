@@ -59,4 +59,9 @@ public partial class CSkeletonInstance : CGameSceneNode
 		set { Schema.SetValueType<byte>(this.Handle, "CSkeletonInstance", "m_nHitboxSet", value); }
 	}
 
+	public void ModelStatePropertyChanged() => Utilities.SetStateChanged(this, "CSkeletonInstance", "m_modelState");
+	public void IsAnimationEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CSkeletonInstance", "m_bIsAnimationEnabled");
+	public void UseParentRenderBoundsPropertyChanged() => Utilities.SetStateChanged(this, "CSkeletonInstance", "m_bUseParentRenderBounds");
+	public void MaterialGroupPropertyChanged() => Utilities.SetStateChanged(this, "CSkeletonInstance", "m_materialGroup");
+	public void HitboxSetPropertyChanged() => Utilities.SetStateChanged(this, "CSkeletonInstance", "m_nHitboxSet");
 }

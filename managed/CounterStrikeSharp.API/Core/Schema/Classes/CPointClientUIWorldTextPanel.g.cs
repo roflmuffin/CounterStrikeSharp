@@ -27,4 +27,5 @@ public partial class CPointClientUIWorldTextPanel : CPointClientUIWorldPanel
 		set { Schema.SetStringBytes(this.Handle, "CPointClientUIWorldTextPanel", "m_messageText", value, 512); }
 	}
 
+	public void MessageTextPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldTextPanel", "m_messageText");
 }

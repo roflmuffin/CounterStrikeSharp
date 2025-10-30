@@ -127,4 +127,7 @@ public partial class CPlayer_MovementServices : CPlayerPawnComponent
 		set { Schema.SetValueType<QAngle>(this.Handle, "CPlayer_MovementServices", "m_vecOldViewAngles", value); }
 	}
 
+	public void ToggleButtonDownMaskPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_MovementServices", "m_nToggleButtonDownMask");
+	public void MaxspeedPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_MovementServices", "m_flMaxspeed");
+	public void ForceSubtickMoveWhenPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_MovementServices", "m_arrForceSubtickMoveWhen");
 }

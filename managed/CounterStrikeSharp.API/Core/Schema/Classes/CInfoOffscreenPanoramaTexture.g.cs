@@ -87,4 +87,12 @@ public partial class CInfoOffscreenPanoramaTexture : CPointEntity
 	[SchemaMember("CInfoOffscreenPanoramaTexture", "m_AdditionalTargetEntities")]
 	public NetworkedVector<CHandle<CBaseModelEntity>> AdditionalTargetEntities => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseModelEntity>>>(this.Handle, "CInfoOffscreenPanoramaTexture", "m_AdditionalTargetEntities");
 
+	public void DisabledPropertyChanged() => Utilities.SetStateChanged(this, "CInfoOffscreenPanoramaTexture", "m_bDisabled");
+	public void ResolutionXPropertyChanged() => Utilities.SetStateChanged(this, "CInfoOffscreenPanoramaTexture", "m_nResolutionX");
+	public void ResolutionYPropertyChanged() => Utilities.SetStateChanged(this, "CInfoOffscreenPanoramaTexture", "m_nResolutionY");
+	public void LayoutFileNamePropertyChanged() => Utilities.SetStateChanged(this, "CInfoOffscreenPanoramaTexture", "m_szLayoutFileName");
+	public void RenderAttrNamePropertyChanged() => Utilities.SetStateChanged(this, "CInfoOffscreenPanoramaTexture", "m_RenderAttrName");
+	public void TargetEntitiesPropertyChanged() => Utilities.SetStateChanged(this, "CInfoOffscreenPanoramaTexture", "m_TargetEntities");
+	public void TargetChangeCountPropertyChanged() => Utilities.SetStateChanged(this, "CInfoOffscreenPanoramaTexture", "m_nTargetChangeCount");
+	public void CSSClassesPropertyChanged() => Utilities.SetStateChanged(this, "CInfoOffscreenPanoramaTexture", "m_vecCSSClasses");
 }

@@ -211,4 +211,13 @@ public partial class CTriggerFan : CBaseTrigger
 		set { Schema.SetValueType<Int32>(this.Handle, "CTriggerFan", "m_nManagerFanIdx", value); }
 	}
 
+	public void FanOriginOffsetPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerFan", "m_vFanOriginOffset");
+	public void DirectionPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerFan", "m_vDirection");
+	public void PushTowardsInfoTargetPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerFan", "m_bPushTowardsInfoTarget");
+	public void PushAwayFromInfoTargetPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerFan", "m_bPushAwayFromInfoTarget");
+	public void NoiseDeltaPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerFan", "m_qNoiseDelta");
+	public void HInfoFanPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerFan", "m_hInfoFan");
+	public void ForcePropertyChanged() => Utilities.SetStateChanged(this, "CTriggerFan", "m_flForce");
+	public void FalloffPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerFan", "m_bFalloff");
+	public void RampTimerPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerFan", "m_RampTimer");
 }

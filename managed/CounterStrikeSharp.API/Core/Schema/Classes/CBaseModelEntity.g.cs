@@ -307,4 +307,29 @@ public partial class CBaseModelEntity : CBaseEntity
 	[SchemaMember("CBaseModelEntity", "m_bvDisabledHitGroups")]
 	public Span<UInt32> DisabledHitGroups => Schema.GetFixedArray<UInt32>(this.Handle, "CBaseModelEntity", "m_bvDisabledHitGroups", 1);
 
+	public void CRenderComponentPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_CRenderComponent");
+	public void CHitboxComponentPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_CHitboxComponent");
+	public void DestructiblePartsSystemComponentPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_pDestructiblePartsSystemComponent");
+	public void RenderModePropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_nRenderMode");
+	public void RenderFXPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_nRenderFX");
+	public void RenderPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_clrRender");
+	public void RenderAttributesPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_vecRenderAttributes");
+	public void RenderToCubemapsPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_bRenderToCubemaps");
+	public void NoInterpolatePropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_bNoInterpolate");
+	public void CollisionPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_Collision");
+	public void GlowPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_Glow");
+	public void GlowBackfaceMultPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_flGlowBackfaceMult");
+	public void FadeMinDistPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_fadeMinDist");
+	public void FadeMaxDistPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_fadeMaxDist");
+	public void FadeScalePropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_flFadeScale");
+	public void ShadowStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_flShadowStrength");
+	public void ObjectCullingPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_nObjectCulling");
+	public void AddDecalPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_nAddDecal");
+	public void DecalPositionPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_vDecalPosition");
+	public void DecalForwardAxisPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_vDecalForwardAxis");
+	public void DecalModePropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_nDecalMode");
+	public void RequiredDecalModePropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_nRequiredDecalMode");
+	public void ConfigEntitiesToPropagateMaterialDecalsToPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_ConfigEntitiesToPropagateMaterialDecalsTo");
+	public void ViewOffsetPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_vecViewOffset");
+	public void DisabledHitGroupsPropertyChanged() => Utilities.SetStateChanged(this, "CBaseModelEntity", "m_bvDisabledHitGroups");
 }

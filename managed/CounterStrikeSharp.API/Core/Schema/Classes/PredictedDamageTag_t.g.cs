@@ -51,4 +51,8 @@ public partial class PredictedDamageTag_t : NativeObject
 		set { Schema.SetValueType<float>(this.Handle, "PredictedDamageTag_t", "flFriendlyFireDamageReductionRatio", value); }
 	}
 
+	public void NTagTickPropertyChanged() => Utilities.SetStateChanged(this, "PredictedDamageTag_t", "nTagTick");
+	public void FlFlinchModSmallPropertyChanged() => Utilities.SetStateChanged(this, "PredictedDamageTag_t", "flFlinchModSmall");
+	public void FlFlinchModLargePropertyChanged() => Utilities.SetStateChanged(this, "PredictedDamageTag_t", "flFlinchModLarge");
+	public void FlFriendlyFireDamageReductionRatioPropertyChanged() => Utilities.SetStateChanged(this, "PredictedDamageTag_t", "flFriendlyFireDamageReductionRatio");
 }

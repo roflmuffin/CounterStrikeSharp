@@ -87,4 +87,13 @@ public partial class CEnvDecal : CBaseModelEntity
 		set { Schema.SetValueType<float>(this.Handle, "CEnvDecal", "m_flDepthSortBias", value); }
 	}
 
+	public void DecalMaterialPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDecal", "m_hDecalMaterial");
+	public void WidthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDecal", "m_flWidth");
+	public void HeightPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDecal", "m_flHeight");
+	public void DepthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDecal", "m_flDepth");
+	public void RenderOrderPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDecal", "m_nRenderOrder");
+	public void ProjectOnWorldPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDecal", "m_bProjectOnWorld");
+	public void ProjectOnCharactersPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDecal", "m_bProjectOnCharacters");
+	public void ProjectOnWaterPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDecal", "m_bProjectOnWater");
+	public void DepthSortBiasPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDecal", "m_flDepthSortBias");
 }

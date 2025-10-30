@@ -55,4 +55,9 @@ public partial class CEnvParticleGlow : CParticleSystem
 	[SchemaMember("CEnvParticleGlow", "m_hTextureOverride")]
 	public CStrongHandle<InfoForResourceTypeCTextureBase> TextureOverride => Schema.GetDeclaredClass<CStrongHandle<InfoForResourceTypeCTextureBase>>(this.Handle, "CEnvParticleGlow", "m_hTextureOverride");
 
+	public void AlphaScalePropertyChanged() => Utilities.SetStateChanged(this, "CEnvParticleGlow", "m_flAlphaScale");
+	public void RadiusScalePropertyChanged() => Utilities.SetStateChanged(this, "CEnvParticleGlow", "m_flRadiusScale");
+	public void SelfIllumScalePropertyChanged() => Utilities.SetStateChanged(this, "CEnvParticleGlow", "m_flSelfIllumScale");
+	public void ColorTintPropertyChanged() => Utilities.SetStateChanged(this, "CEnvParticleGlow", "m_ColorTint");
+	public void TextureOverridePropertyChanged() => Utilities.SetStateChanged(this, "CEnvParticleGlow", "m_hTextureOverride");
 }

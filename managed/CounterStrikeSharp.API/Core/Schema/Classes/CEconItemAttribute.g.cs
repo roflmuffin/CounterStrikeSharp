@@ -59,4 +59,9 @@ public partial class CEconItemAttribute : NativeObject
 		set { Schema.SetValueType<bool>(this.Handle, "CEconItemAttribute", "m_bSetBonus", value); }
 	}
 
+	public void AttributeDefinitionIndexPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemAttribute", "m_iAttributeDefinitionIndex");
+	public void ValuePropertyChanged() => Utilities.SetStateChanged(this, "CEconItemAttribute", "m_flValue");
+	public void InitialValuePropertyChanged() => Utilities.SetStateChanged(this, "CEconItemAttribute", "m_flInitialValue");
+	public void RefundableCurrencyPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemAttribute", "m_nRefundableCurrency");
+	public void SetBonusPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemAttribute", "m_bSetBonus");
 }

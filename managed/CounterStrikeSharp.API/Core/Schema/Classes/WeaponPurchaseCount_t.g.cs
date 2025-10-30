@@ -35,4 +35,6 @@ public partial class WeaponPurchaseCount_t : NativeObject
 		set { Schema.SetValueType<UInt16>(this.Handle, "WeaponPurchaseCount_t", "m_nCount", value); }
 	}
 
+	public void ItemDefIndexPropertyChanged() => Utilities.SetStateChanged(this, "WeaponPurchaseCount_t", "m_nItemDefIndex");
+	public void CountPropertyChanged() => Utilities.SetStateChanged(this, "WeaponPurchaseCount_t", "m_nCount");
 }

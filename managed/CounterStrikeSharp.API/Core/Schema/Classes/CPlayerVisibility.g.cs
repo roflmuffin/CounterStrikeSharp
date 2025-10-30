@@ -67,4 +67,10 @@ public partial class CPlayerVisibility : CBaseEntity
 		set { Schema.SetValueType<bool>(this.Handle, "CPlayerVisibility", "m_bIsEnabled", value); }
 	}
 
+	public void VisibilityStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerVisibility", "m_flVisibilityStrength");
+	public void FogDistanceMultiplierPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerVisibility", "m_flFogDistanceMultiplier");
+	public void FogMaxDensityMultiplierPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerVisibility", "m_flFogMaxDensityMultiplier");
+	public void FadeTimePropertyChanged() => Utilities.SetStateChanged(this, "CPlayerVisibility", "m_flFadeTime");
+	public void StartDisabledPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerVisibility", "m_bStartDisabled");
+	public void IsEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerVisibility", "m_bIsEnabled");
 }

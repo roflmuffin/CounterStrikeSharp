@@ -191,4 +191,24 @@ public partial class CBeam : CBaseModelEntity
 		set { Schema.SetValueType<Int32>(this.Handle, "CBeam", "m_nDissolveType", value); }
 	}
 
+	public void FrameRatePropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_flFrameRate");
+	public void HDRColorScalePropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_flHDRColorScale");
+	public void NumBeamEntsPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_nNumBeamEnts");
+	public void BaseMaterialPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_hBaseMaterial");
+	public void HaloIndexPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_nHaloIndex");
+	public void BeamTypePropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_nBeamType");
+	public void BeamFlagsPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_nBeamFlags");
+	public void AttachEntityPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_hAttachEntity");
+	public void AttachIndexPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_nAttachIndex");
+	public void WidthPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_fWidth");
+	public void EndWidthPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_fEndWidth");
+	public void FadeLengthPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_fFadeLength");
+	public void HaloScalePropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_fHaloScale");
+	public void AmplitudePropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_fAmplitude");
+	public void StartFramePropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_fStartFrame");
+	public void SpeedPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_fSpeed");
+	public void FramePropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_flFrame");
+	public void ClipStylePropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_nClipStyle");
+	public void TurnedOffPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_bTurnedOff");
+	public void EndPosPropertyChanged() => Utilities.SetStateChanged(this, "CBeam", "m_vecEndPos");
 }

@@ -43,4 +43,7 @@ public partial class CInfoVisibilityBox : CBaseEntity
 		set { Schema.SetValueType<bool>(this.Handle, "CInfoVisibilityBox", "m_bEnabled", value); }
 	}
 
+	public void ModePropertyChanged() => Utilities.SetStateChanged(this, "CInfoVisibilityBox", "m_nMode");
+	public void BoxSizePropertyChanged() => Utilities.SetStateChanged(this, "CInfoVisibilityBox", "m_vBoxSize");
+	public void EnabledPropertyChanged() => Utilities.SetStateChanged(this, "CInfoVisibilityBox", "m_bEnabled");
 }

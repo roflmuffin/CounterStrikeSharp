@@ -103,4 +103,14 @@ public partial class CEnvWindController : CBaseEntity
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvWindController", "m_bFirstTime", value); }
 	}
 
+	public void EnvWindSharedPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindController", "m_EnvWindShared");
+	public void DirectionVariationPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindController", "m_fDirectionVariation");
+	public void SpeedVariationPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindController", "m_fSpeedVariation");
+	public void TurbulencePropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindController", "m_fTurbulence");
+	public void VolumeHalfExtentXYPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindController", "m_fVolumeHalfExtentXY");
+	public void VolumeHalfExtentZPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindController", "m_fVolumeHalfExtentZ");
+	public void VolumeResolutionXYPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindController", "m_nVolumeResolutionXY");
+	public void VolumeResolutionZPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindController", "m_nVolumeResolutionZ");
+	public void ClipmapLevelsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindController", "m_nClipmapLevels");
+	public void IsMasterPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindController", "m_bIsMaster");
 }

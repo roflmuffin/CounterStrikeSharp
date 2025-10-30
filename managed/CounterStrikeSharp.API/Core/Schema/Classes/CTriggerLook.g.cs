@@ -123,4 +123,6 @@ public partial class CTriggerLook : CTriggerOnce
 	[SchemaMember("CTriggerLook", "m_OnEndLook")]
 	public CEntityIOOutput OnEndLook => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CTriggerLook", "m_OnEndLook");
 
+	public void TestOcclusionPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerLook", "m_bTestOcclusion");
+	public void TestAllVisibleOcclusionPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerLook", "m_bTestAllVisibleOcclusion");
 }

@@ -31,4 +31,6 @@ public partial class CCSPlayerController_DamageServices : CPlayerControllerCompo
 	[SchemaMember("CCSPlayerController_DamageServices", "m_DamageList")]
 	public NetworkedVector<CDamageRecord> DamageList => Schema.GetDeclaredClass<NetworkedVector<CDamageRecord>>(this.Handle, "CCSPlayerController_DamageServices", "m_DamageList");
 
+	public void SendUpdatePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_DamageServices", "m_nSendUpdate");
+	public void DamageListPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_DamageServices", "m_DamageList");
 }

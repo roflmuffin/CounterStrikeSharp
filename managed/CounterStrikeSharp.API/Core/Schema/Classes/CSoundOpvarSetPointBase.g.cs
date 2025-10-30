@@ -87,4 +87,9 @@ public partial class CSoundOpvarSetPointBase : CBaseEntity
 		set { Schema.SetValueType<bool>(this.Handle, "CSoundOpvarSetPointBase", "m_bUseAutoCompare", value); }
 	}
 
+	public void StackNamePropertyChanged() => Utilities.SetStateChanged(this, "CSoundOpvarSetPointBase", "m_iszStackName");
+	public void OperatorNamePropertyChanged() => Utilities.SetStateChanged(this, "CSoundOpvarSetPointBase", "m_iszOperatorName");
+	public void OpvarNamePropertyChanged() => Utilities.SetStateChanged(this, "CSoundOpvarSetPointBase", "m_iszOpvarName");
+	public void OpvarIndexPropertyChanged() => Utilities.SetStateChanged(this, "CSoundOpvarSetPointBase", "m_iOpvarIndex");
+	public void UseAutoComparePropertyChanged() => Utilities.SetStateChanged(this, "CSoundOpvarSetPointBase", "m_bUseAutoCompare");
 }

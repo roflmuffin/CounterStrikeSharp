@@ -27,4 +27,6 @@ public partial class CItemDogtags : CItem
 	[SchemaMember("CItemDogtags", "m_KillingPlayer")]
 	public CHandle<CCSPlayerPawn> KillingPlayer => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CItemDogtags", "m_KillingPlayer");
 
+	public void OwningPlayerPropertyChanged() => Utilities.SetStateChanged(this, "CItemDogtags", "m_OwningPlayer");
+	public void KillingPlayerPropertyChanged() => Utilities.SetStateChanged(this, "CItemDogtags", "m_KillingPlayer");
 }

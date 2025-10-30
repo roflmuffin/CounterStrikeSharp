@@ -155,4 +155,19 @@ public partial class CBasePlayerPawn : CBaseCombatCharacter
 	[SchemaMember("CBasePlayerPawn", "m_sndOpvarLatchData")]
 	public NetworkedVector<sndopvarlatchdata_t> SndOpvarLatchData => Schema.GetDeclaredClass<NetworkedVector<sndopvarlatchdata_t>>(this.Handle, "CBasePlayerPawn", "m_sndOpvarLatchData");
 
+	public void WeaponServicesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_pWeaponServices");
+	public void ItemServicesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_pItemServices");
+	public void AutoaimServicesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_pAutoaimServices");
+	public void ObserverServicesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_pObserverServices");
+	public void WaterServicesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_pWaterServices");
+	public void UseServicesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_pUseServices");
+	public void FlashlightServicesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_pFlashlightServices");
+	public void CameraServicesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_pCameraServices");
+	public void MovementServicesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_pMovementServices");
+	public void ServerViewAngleChangesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_ServerViewAngleChanges");
+	public void HideHUDPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_iHideHUD");
+	public void Skybox3dPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_skybox3d");
+	public void DeathTimePropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_flDeathTime");
+	public void ControllerPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_hController");
+	public void DefaultControllerPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerPawn", "m_hDefaultController");
 }

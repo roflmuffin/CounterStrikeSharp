@@ -31,4 +31,5 @@ public partial class CPointClientUIDialog : CBaseClientUIEntity
 		set { Schema.SetValueType<bool>(this.Handle, "CPointClientUIDialog", "m_bStartEnabled", value); }
 	}
 
+	public void ActivatorPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIDialog", "m_hActivator");
 }

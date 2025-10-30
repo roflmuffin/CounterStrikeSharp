@@ -131,4 +131,28 @@ public partial class CAnimGraphNetworkedVariables : NativeObject
 		set { Schema.SetValueType<float>(this.Handle, "CAnimGraphNetworkedVariables", "m_flLastTeleportTime", value); }
 	}
 
+	public void PredNetBoolVariablesPropertyChanged() => Utilities.SetStateChanged(this, "CAnimGraphNetworkedVariables", "m_PredNetBoolVariables");
+	public void PredNetByteVariablesPropertyChanged() => Utilities.SetStateChanged(this, "CAnimGraphNetworkedVariables", "m_PredNetByteVariables");
+	public void PredNetUInt16VariablesPropertyChanged() => Utilities.SetStateChanged(this, "CAnimGraphNetworkedVariables", "m_PredNetUInt16Variables");
+	public void PredNetIntVariablesPropertyChanged() => Utilities.SetStateChanged(this, "CAnimGraphNetworkedVariables", "m_PredNetIntVariables");
+	public void PredNetUInt32VariablesPropertyChanged() => Utilities.SetStateChanged(this, "CAnimGraphNetworkedVariables", "m_PredNetUInt32Variables");
+	public void PredNetUInt64VariablesPropertyChanged() => Utilities.SetStateChanged(this, "CAnimGraphNetworkedVariables", "m_PredNetUInt64Variables");
+	public void PredNetFloatVariablesPropertyChanged() => Utilities.SetStateChanged(this, "CAnimGraphNetworkedVariables", "m_PredNetFloatVariables");
+	public void PredNetVectorVariablesPropertyChanged() => Utilities.SetStateChanged(this, "CAnimGraphNetworkedVariables", "m_PredNetVectorVariables");
+	public void PredNetQuaternionVariablesPropertyChanged() => Utilities.SetStateChanged(this, "CAnimGraphNetworkedVariables", "m_PredNetQuaternionVariables");
+	public void PredNetGlobalSymbolVariablesPropertyChanged() => Utilities.SetStateChanged(this, "CAnimGraphNetworkedVariables", "m_PredNetGlobalSymbolVariables");
+	public void OwnerOnlyPredNetBoolVariablesPropertyChanged() => Utilities.SetStateChanged(this, "CAnimGraphNetworkedVariables", "m_OwnerOnlyPredNetBoolVariables");
+	public void OwnerOnlyPredNetByteVariablesPropertyChanged() => Utilities.SetStateChanged(this, "CAnimGraphNetworkedVariables", "m_OwnerOnlyPredNetByteVariables");
+	public void OwnerOnlyPredNetUInt16VariablesPropertyChanged() => Utilities.SetStateChanged(this, "CAnimGraphNetworkedVariables", "m_OwnerOnlyPredNetUInt16Variables");
+	public void OwnerOnlyPredNetIntVariablesPropertyChanged() => Utilities.SetStateChanged(this, "CAnimGraphNetworkedVariables", "m_OwnerOnlyPredNetIntVariables");
+	public void OwnerOnlyPredNetUInt32VariablesPropertyChanged() => Utilities.SetStateChanged(this, "CAnimGraphNetworkedVariables", "m_OwnerOnlyPredNetUInt32Variables");
+	public void OwnerOnlyPredNetUInt64VariablesPropertyChanged() => Utilities.SetStateChanged(this, "CAnimGraphNetworkedVariables", "m_OwnerOnlyPredNetUInt64Variables");
+	public void OwnerOnlyPredNetFloatVariablesPropertyChanged() => Utilities.SetStateChanged(this, "CAnimGraphNetworkedVariables", "m_OwnerOnlyPredNetFloatVariables");
+	public void OwnerOnlyPredNetVectorVariablesPropertyChanged() => Utilities.SetStateChanged(this, "CAnimGraphNetworkedVariables", "m_OwnerOnlyPredNetVectorVariables");
+	public void OwnerOnlyPredNetQuaternionVariablesPropertyChanged() => Utilities.SetStateChanged(this, "CAnimGraphNetworkedVariables", "m_OwnerOnlyPredNetQuaternionVariables");
+	public void OwnerOnlyPredNetGlobalSymbolVariablesPropertyChanged() => Utilities.SetStateChanged(this, "CAnimGraphNetworkedVariables", "m_OwnerOnlyPredNetGlobalSymbolVariables");
+	public void BoolVariablesCountPropertyChanged() => Utilities.SetStateChanged(this, "CAnimGraphNetworkedVariables", "m_nBoolVariablesCount");
+	public void OwnerOnlyBoolVariablesCountPropertyChanged() => Utilities.SetStateChanged(this, "CAnimGraphNetworkedVariables", "m_nOwnerOnlyBoolVariablesCount");
+	public void RandomSeedOffsetPropertyChanged() => Utilities.SetStateChanged(this, "CAnimGraphNetworkedVariables", "m_nRandomSeedOffset");
+	public void LastTeleportTimePropertyChanged() => Utilities.SetStateChanged(this, "CAnimGraphNetworkedVariables", "m_flLastTeleportTime");
 }

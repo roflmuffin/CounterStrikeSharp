@@ -91,4 +91,6 @@ public partial class CEntityFlame : CBaseEntity
 		set { Schema.SetValueType<Int32>(this.Handle, "CEntityFlame", "m_iCustomDamageType", value); }
 	}
 
+	public void EntAttachedPropertyChanged() => Utilities.SetStateChanged(this, "CEntityFlame", "m_hEntAttached");
+	public void CheapEffectPropertyChanged() => Utilities.SetStateChanged(this, "CEntityFlame", "m_bCheapEffect");
 }

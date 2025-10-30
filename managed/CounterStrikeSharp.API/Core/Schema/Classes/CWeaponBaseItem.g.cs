@@ -35,4 +35,6 @@ public partial class CWeaponBaseItem : CCSWeaponBase
 		set { Schema.SetValueType<bool>(this.Handle, "CWeaponBaseItem", "m_bRedraw", value); }
 	}
 
+	public void SequenceInProgressPropertyChanged() => Utilities.SetStateChanged(this, "CWeaponBaseItem", "m_bSequenceInProgress");
+	public void RedrawPropertyChanged() => Utilities.SetStateChanged(this, "CWeaponBaseItem", "m_bRedraw");
 }

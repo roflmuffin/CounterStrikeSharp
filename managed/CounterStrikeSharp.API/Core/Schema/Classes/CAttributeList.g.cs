@@ -27,4 +27,5 @@ public partial class CAttributeList : NativeObject
 	[SchemaMember("CAttributeList", "m_pManager")]
 	public CAttributeManager? Manager => Schema.GetPointer<CAttributeManager>(this.Handle, "CAttributeList", "m_pManager");
 
+	public void AttributesPropertyChanged() => Utilities.SetStateChanged(this, "CAttributeList", "m_Attributes");
 }

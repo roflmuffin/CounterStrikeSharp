@@ -67,4 +67,8 @@ public partial class CRagdollPropAttached : CRagdollProp
 		set { Schema.SetValueType<bool>(this.Handle, "CRagdollPropAttached", "m_bShouldDeleteAttachedActivationRecord", value); }
 	}
 
+	public void BoneIndexAttachedPropertyChanged() => Utilities.SetStateChanged(this, "CRagdollPropAttached", "m_boneIndexAttached");
+	public void RagdollAttachedObjectIndexPropertyChanged() => Utilities.SetStateChanged(this, "CRagdollPropAttached", "m_ragdollAttachedObjectIndex");
+	public void AttachmentPointBoneSpacePropertyChanged() => Utilities.SetStateChanged(this, "CRagdollPropAttached", "m_attachmentPointBoneSpace");
+	public void AttachmentPointRagdollSpacePropertyChanged() => Utilities.SetStateChanged(this, "CRagdollPropAttached", "m_attachmentPointRagdollSpace");
 }

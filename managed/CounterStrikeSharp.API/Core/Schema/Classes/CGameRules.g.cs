@@ -63,4 +63,7 @@ public partial class CGameRules : NativeObject
 		set { Schema.SetValueType<bool>(this.Handle, "CGameRules", "m_bGamePaused", value); }
 	}
 
+	public void TotalPausedTicksPropertyChanged() => Utilities.SetStateChanged(this, "CGameRules", "m_nTotalPausedTicks");
+	public void PauseStartTickPropertyChanged() => Utilities.SetStateChanged(this, "CGameRules", "m_nPauseStartTick");
+	public void GamePausedPropertyChanged() => Utilities.SetStateChanged(this, "CGameRules", "m_bGamePaused");
 }

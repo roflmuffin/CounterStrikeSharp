@@ -343,4 +343,23 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 		set { Schema.SetValueType<Vector3>(this.Handle, "CCSPlayer_MovementServices", "m_vecInputRotated", value); }
 	}
 
+	public void LadderNormalPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_vecLadderNormal");
+	public void LadderSurfacePropIndexPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_nLadderSurfacePropIndex");
+	public void DuckAmountPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_flDuckAmount");
+	public void DuckSpeedPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_flDuckSpeed");
+	public void DuckOverridePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_bDuckOverride");
+	public void DesiresDuckPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_bDesiresDuck");
+	public void DuckOffsetPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_flDuckOffset");
+	public void DuckTimeMsecsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_nDuckTimeMsecs");
+	public void DuckJumpTimeMsecsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_nDuckJumpTimeMsecs");
+	public void JumpTimeMsecsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_nJumpTimeMsecs");
+	public void LastDuckTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_flLastDuckTime");
+	public void GameCodeHasMovedPlayerAfterCommandPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_nGameCodeHasMovedPlayerAfterCommand");
+	public void OldJumpPressedPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_bOldJumpPressed");
+	public void StashGrenadeParameterWhenPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_fStashGrenadeParameterWhen");
+	public void ButtonDownMaskPrevPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_nButtonDownMaskPrev");
+	public void OffsetTickCompleteTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_flOffsetTickCompleteTime");
+	public void OffsetTickStashedSpeedPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_flOffsetTickStashedSpeed");
+	public void StaminaPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_flStamina");
+	public void WasSurfingPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_MovementServices", "m_bWasSurfing");
 }

@@ -91,4 +91,17 @@ public partial class shard_model_desc_t : NativeObject
 	[SchemaMember("shard_model_desc_t", "m_SurfacePropStringToken")]
 	public CUtlStringToken SurfacePropStringToken => Schema.GetDeclaredClass<CUtlStringToken>(this.Handle, "shard_model_desc_t", "m_SurfacePropStringToken");
 
+	public void ModelIDPropertyChanged() => Utilities.SetStateChanged(this, "shard_model_desc_t", "m_nModelID");
+	public void MaterialBasePropertyChanged() => Utilities.SetStateChanged(this, "shard_model_desc_t", "m_hMaterialBase");
+	public void MaterialDamageOverlayPropertyChanged() => Utilities.SetStateChanged(this, "shard_model_desc_t", "m_hMaterialDamageOverlay");
+	public void SolidPropertyChanged() => Utilities.SetStateChanged(this, "shard_model_desc_t", "m_solid");
+	public void PanelSizePropertyChanged() => Utilities.SetStateChanged(this, "shard_model_desc_t", "m_vecPanelSize");
+	public void StressPositionAPropertyChanged() => Utilities.SetStateChanged(this, "shard_model_desc_t", "m_vecStressPositionA");
+	public void StressPositionBPropertyChanged() => Utilities.SetStateChanged(this, "shard_model_desc_t", "m_vecStressPositionB");
+	public void PanelVerticesPropertyChanged() => Utilities.SetStateChanged(this, "shard_model_desc_t", "m_vecPanelVertices");
+	public void InitialPanelVerticesPropertyChanged() => Utilities.SetStateChanged(this, "shard_model_desc_t", "m_vInitialPanelVertices");
+	public void GlassHalfThicknessPropertyChanged() => Utilities.SetStateChanged(this, "shard_model_desc_t", "m_flGlassHalfThickness");
+	public void HasParentPropertyChanged() => Utilities.SetStateChanged(this, "shard_model_desc_t", "m_bHasParent");
+	public void ParentFrozenPropertyChanged() => Utilities.SetStateChanged(this, "shard_model_desc_t", "m_bParentFrozen");
+	public void SurfacePropStringTokenPropertyChanged() => Utilities.SetStateChanged(this, "shard_model_desc_t", "m_SurfacePropStringToken");
 }

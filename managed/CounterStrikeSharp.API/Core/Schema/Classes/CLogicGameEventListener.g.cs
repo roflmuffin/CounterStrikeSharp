@@ -55,4 +55,5 @@ public partial class CLogicGameEventListener : CLogicalEntity
 		set { Schema.SetValueType<bool>(this.Handle, "CLogicGameEventListener", "m_bStartDisabled", value); }
 	}
 
+	public void EnabledPropertyChanged() => Utilities.SetStateChanged(this, "CLogicGameEventListener", "m_bEnabled");
 }

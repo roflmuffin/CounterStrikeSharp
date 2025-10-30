@@ -35,4 +35,6 @@ public partial class CSoundAreaEntityOrientedBox : CSoundAreaEntityBase
 		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundAreaEntityOrientedBox", "m_vMax", value); }
 	}
 
+	public void MinPropertyChanged() => Utilities.SetStateChanged(this, "CSoundAreaEntityOrientedBox", "m_vMin");
+	public void MaxPropertyChanged() => Utilities.SetStateChanged(this, "CSoundAreaEntityOrientedBox", "m_vMax");
 }

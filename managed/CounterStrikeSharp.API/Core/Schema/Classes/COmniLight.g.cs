@@ -43,4 +43,7 @@ public partial class COmniLight : CBarnLight
 		set { Schema.SetValueType<bool>(this.Handle, "COmniLight", "m_bShowLight", value); }
 	}
 
+	public void InnerAnglePropertyChanged() => Utilities.SetStateChanged(this, "COmniLight", "m_flInnerAngle");
+	public void OuterAnglePropertyChanged() => Utilities.SetStateChanged(this, "COmniLight", "m_flOuterAngle");
+	public void ShowLightPropertyChanged() => Utilities.SetStateChanged(this, "COmniLight", "m_bShowLight");
 }

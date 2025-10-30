@@ -163,4 +163,22 @@ public partial class CEnvVolumetricFogVolume : CBaseEntity
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvVolumetricFogVolume", "m_bOverrideNoiseStrength", value); }
 	}
 
+	public void ActivePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_bActive");
+	public void BoxMinsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_vBoxMins");
+	public void BoxMaxsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_vBoxMaxs");
+	public void StartDisabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_bStartDisabled");
+	public void IndirectUseLPVsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_bIndirectUseLPVs");
+	public void StrengthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_flStrength");
+	public void FalloffShapePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_nFalloffShape");
+	public void FalloffExponentPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_flFalloffExponent");
+	public void HeightFogDepthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_flHeightFogDepth");
+	public void HeightFogEdgeWidthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_fHeightFogEdgeWidth");
+	public void IndirectLightStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_fIndirectLightStrength");
+	public void SunLightStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_fSunLightStrength");
+	public void NoiseStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_fNoiseStrength");
+	public void TintColorPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_TintColor");
+	public void OverrideTintColorPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_bOverrideTintColor");
+	public void OverrideIndirectLightStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_bOverrideIndirectLightStrength");
+	public void OverrideSunLightStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_bOverrideSunLightStrength");
+	public void OverrideNoiseStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogVolume", "m_bOverrideNoiseStrength");
 }

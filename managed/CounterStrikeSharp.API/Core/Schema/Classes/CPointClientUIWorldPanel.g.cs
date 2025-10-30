@@ -207,4 +207,28 @@ public partial class CPointClientUIWorldPanel : CBaseClientUIEntity
 		set { Schema.SetValueType<Int32>(this.Handle, "CPointClientUIWorldPanel", "m_nExplicitImageLayout", value); }
 	}
 
+	public void IgnoreInputPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bIgnoreInput");
+	public void LitPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bLit");
+	public void FollowPlayerAcrossTeleportPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bFollowPlayerAcrossTeleport");
+	public void WidthPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_flWidth");
+	public void HeightPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_flHeight");
+	public void DPIPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_flDPI");
+	public void InteractDistancePropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_flInteractDistance");
+	public void DepthOffsetPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_flDepthOffset");
+	public void OwnerContextPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_unOwnerContext");
+	public void HorizontalAlignPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_unHorizontalAlign");
+	public void VerticalAlignPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_unVerticalAlign");
+	public void OrientationPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_unOrientation");
+	public void AllowInteractionFromAllSceneWorldsPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bAllowInteractionFromAllSceneWorlds");
+	public void CSSClassesPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_vecCSSClasses");
+	public void OpaquePropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bOpaque");
+	public void NoDepthPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bNoDepth");
+	public void VisibleWhenParentNoDrawPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bVisibleWhenParentNoDraw");
+	public void RenderBackfacePropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bRenderBackface");
+	public void UseOffScreenIndicatorPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bUseOffScreenIndicator");
+	public void ExcludeFromSaveGamesPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bExcludeFromSaveGames");
+	public void GrabbablePropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bGrabbable");
+	public void OnlyRenderToTexturePropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bOnlyRenderToTexture");
+	public void DisableMipGenPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_bDisableMipGen");
+	public void ExplicitImageLayoutPropertyChanged() => Utilities.SetStateChanged(this, "CPointClientUIWorldPanel", "m_nExplicitImageLayout");
 }

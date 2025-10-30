@@ -83,4 +83,8 @@ public partial class CColorCorrectionVolume : CBaseTrigger
 		set { Schema.SetValueType<float>(this.Handle, "CColorCorrectionVolume", "m_LastExitTime", value); }
 	}
 
+	public void MaxWeightPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrectionVolume", "m_MaxWeight");
+	public void FadeDurationPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrectionVolume", "m_FadeDuration");
+	public void WeightPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrectionVolume", "m_Weight");
+	public void LookupFilenamePropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrectionVolume", "m_lookupFilename");
 }

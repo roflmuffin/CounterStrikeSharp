@@ -71,4 +71,12 @@ public partial class CCSGO_TeamPreviewCharacterPosition : CBaseEntity
 	[SchemaMember("CCSGO_TeamPreviewCharacterPosition", "m_weaponItem")]
 	public CEconItemView WeaponItem => Schema.GetDeclaredClass<CEconItemView>(this.Handle, "CCSGO_TeamPreviewCharacterPosition", "m_weaponItem");
 
+	public void VariantPropertyChanged() => Utilities.SetStateChanged(this, "CCSGO_TeamPreviewCharacterPosition", "m_nVariant");
+	public void RandomPropertyChanged() => Utilities.SetStateChanged(this, "CCSGO_TeamPreviewCharacterPosition", "m_nRandom");
+	public void OrdinalPropertyChanged() => Utilities.SetStateChanged(this, "CCSGO_TeamPreviewCharacterPosition", "m_nOrdinal");
+	public void WeaponNamePropertyChanged() => Utilities.SetStateChanged(this, "CCSGO_TeamPreviewCharacterPosition", "m_sWeaponName");
+	public void XuidPropertyChanged() => Utilities.SetStateChanged(this, "CCSGO_TeamPreviewCharacterPosition", "m_xuid");
+	public void AgentItemPropertyChanged() => Utilities.SetStateChanged(this, "CCSGO_TeamPreviewCharacterPosition", "m_agentItem");
+	public void GlovesItemPropertyChanged() => Utilities.SetStateChanged(this, "CCSGO_TeamPreviewCharacterPosition", "m_glovesItem");
+	public void WeaponItemPropertyChanged() => Utilities.SetStateChanged(this, "CCSGO_TeamPreviewCharacterPosition", "m_weaponItem");
 }

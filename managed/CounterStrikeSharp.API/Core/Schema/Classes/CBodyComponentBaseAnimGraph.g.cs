@@ -23,4 +23,5 @@ public partial class CBodyComponentBaseAnimGraph : CBodyComponentSkeletonInstanc
 	[SchemaMember("CBodyComponentBaseAnimGraph", "m_animationController")]
 	public CBaseAnimGraphController AnimationController => Schema.GetDeclaredClass<CBaseAnimGraphController>(this.Handle, "CBodyComponentBaseAnimGraph", "m_animationController");
 
+	public void AnimationControllerPropertyChanged() => Utilities.SetStateChanged(this, "CBodyComponentBaseAnimGraph", "m_animationController");
 }

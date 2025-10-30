@@ -119,4 +119,11 @@ public partial class CPlayer_MovementServices_Humanoid : CPlayer_MovementService
 		set { Schema.SetValueType<Vector3>(this.Handle, "CPlayer_MovementServices_Humanoid", "m_vecSmoothedVelocity", value); }
 	}
 
+	public void FallVelocityPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_MovementServices_Humanoid", "m_flFallVelocity");
+	public void InCrouchPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_MovementServices_Humanoid", "m_bInCrouch");
+	public void CrouchStatePropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_MovementServices_Humanoid", "m_nCrouchState");
+	public void CrouchTransitionStartTimePropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_MovementServices_Humanoid", "m_flCrouchTransitionStartTime");
+	public void DuckedPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_MovementServices_Humanoid", "m_bDucked");
+	public void DuckingPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_MovementServices_Humanoid", "m_bDucking");
+	public void InDuckJumpPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_MovementServices_Humanoid", "m_bInDuckJump");
 }

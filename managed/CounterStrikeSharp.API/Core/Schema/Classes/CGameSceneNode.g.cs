@@ -171,4 +171,10 @@ public partial class CGameSceneNode : NativeObject
 		set { Schema.SetValueType<Vector3>(this.Handle, "CGameSceneNode", "m_vRenderOrigin", value); }
 	}
 
+	public void HParentPropertyChanged() => Utilities.SetStateChanged(this, "CGameSceneNode", "m_hParent");
+	public void OriginPropertyChanged() => Utilities.SetStateChanged(this, "CGameSceneNode", "m_vecOrigin");
+	public void RotationPropertyChanged() => Utilities.SetStateChanged(this, "CGameSceneNode", "m_angRotation");
+	public void ScalePropertyChanged() => Utilities.SetStateChanged(this, "CGameSceneNode", "m_flScale");
+	public void NamePropertyChanged() => Utilities.SetStateChanged(this, "CGameSceneNode", "m_name");
+	public void HierarchyAttachNamePropertyChanged() => Utilities.SetStateChanged(this, "CGameSceneNode", "m_hierarchyAttachName");
 }

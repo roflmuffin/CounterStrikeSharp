@@ -79,9 +79,7 @@ public class ConVar
                         $"ConVar is a {Type} but you are trying to get a {type} value.");
                 break;
             case ConVarType.String:
-            case ConVarType.Qangle:
             case ConVarType.Vector2:
-            case ConVarType.Vector3:
             case ConVarType.Vector4:
             case ConVarType.Color:
                 throw new InvalidOperationException("Reference types must be accessed using `GetReferenceValue`");

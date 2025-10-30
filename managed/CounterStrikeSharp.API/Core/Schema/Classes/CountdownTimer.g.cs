@@ -47,4 +47,8 @@ public partial class CountdownTimer : NativeObject
 	[SchemaMember("CountdownTimer", "m_nWorldGroupId")]
 	public WorldGroupId_t WorldGroupId => Schema.GetDeclaredClass<WorldGroupId_t>(this.Handle, "CountdownTimer", "m_nWorldGroupId");
 
+	public void DurationPropertyChanged() => Utilities.SetStateChanged(this, "CountdownTimer", "m_duration");
+	public void TimestampPropertyChanged() => Utilities.SetStateChanged(this, "CountdownTimer", "m_timestamp");
+	public void TimescalePropertyChanged() => Utilities.SetStateChanged(this, "CountdownTimer", "m_timescale");
+	public void WorldGroupIdPropertyChanged() => Utilities.SetStateChanged(this, "CountdownTimer", "m_nWorldGroupId");
 }

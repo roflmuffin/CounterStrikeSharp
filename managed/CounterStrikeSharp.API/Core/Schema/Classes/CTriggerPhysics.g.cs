@@ -123,4 +123,17 @@ public partial class CTriggerPhysics : CBaseTrigger
 		set { Schema.SetValueType<bool>(this.Handle, "CTriggerPhysics", "m_bConvertToDebrisWhenPossible", value); }
 	}
 
+	public void GravityScalePropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_gravityScale");
+	public void LinearLimitPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_linearLimit");
+	public void LinearDampingPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_linearDamping");
+	public void AngularLimitPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_angularLimit");
+	public void AngularDampingPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_angularDamping");
+	public void LinearForcePropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_linearForce");
+	public void FrequencyPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_flFrequency");
+	public void DampingRatioPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_flDampingRatio");
+	public void LinearForcePointAtPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_vecLinearForcePointAt");
+	public void CollapseToForcePointPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_bCollapseToForcePoint");
+	public void LinearForcePointAtWorldPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_vecLinearForcePointAtWorld");
+	public void LinearForceDirectionPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_vecLinearForceDirection");
+	public void ConvertToDebrisWhenPossiblePropertyChanged() => Utilities.SetStateChanged(this, "CTriggerPhysics", "m_bConvertToDebrisWhenPossible");
 }

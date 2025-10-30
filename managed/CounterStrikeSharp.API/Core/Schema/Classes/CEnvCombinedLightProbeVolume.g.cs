@@ -211,4 +211,33 @@ public partial class CEnvCombinedLightProbeVolume : CBaseEntity
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvCombinedLightProbeVolume", "m_Entity_bEnabled", value); }
 	}
 
+	public void Entity_ColorPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCombinedLightProbeVolume", "m_Entity_Color");
+	public void Entity_flBrightnessPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCombinedLightProbeVolume", "m_Entity_flBrightness");
+	public void Entity_hCubemapTexturePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCombinedLightProbeVolume", "m_Entity_hCubemapTexture");
+	public void Entity_bCustomCubemapTexturePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCombinedLightProbeVolume", "m_Entity_bCustomCubemapTexture");
+	public void Entity_hLightProbeTexture_AmbientCubePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeTexture_AmbientCube");
+	public void Entity_hLightProbeTexture_SDFPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeTexture_SDF");
+	public void Entity_hLightProbeTexture_SH2_DCPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_DC");
+	public void Entity_hLightProbeTexture_SH2_RPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_R");
+	public void Entity_hLightProbeTexture_SH2_GPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_G");
+	public void Entity_hLightProbeTexture_SH2_BPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeTexture_SH2_B");
+	public void Entity_hLightProbeDirectLightIndicesTexturePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeDirectLightIndicesTexture");
+	public void Entity_hLightProbeDirectLightScalarsTexturePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeDirectLightScalarsTexture");
+	public void Entity_hLightProbeDirectLightShadowsTexturePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCombinedLightProbeVolume", "m_Entity_hLightProbeDirectLightShadowsTexture");
+	public void Entity_vBoxMinsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCombinedLightProbeVolume", "m_Entity_vBoxMins");
+	public void Entity_vBoxMaxsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCombinedLightProbeVolume", "m_Entity_vBoxMaxs");
+	public void Entity_bMoveablePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCombinedLightProbeVolume", "m_Entity_bMoveable");
+	public void Entity_nHandshakePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCombinedLightProbeVolume", "m_Entity_nHandshake");
+	public void Entity_nEnvCubeMapArrayIndexPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCombinedLightProbeVolume", "m_Entity_nEnvCubeMapArrayIndex");
+	public void Entity_nPriorityPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCombinedLightProbeVolume", "m_Entity_nPriority");
+	public void Entity_bStartDisabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCombinedLightProbeVolume", "m_Entity_bStartDisabled");
+	public void Entity_flEdgeFadeDistPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCombinedLightProbeVolume", "m_Entity_flEdgeFadeDist");
+	public void Entity_vEdgeFadeDistsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCombinedLightProbeVolume", "m_Entity_vEdgeFadeDists");
+	public void Entity_nLightProbeSizeXPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCombinedLightProbeVolume", "m_Entity_nLightProbeSizeX");
+	public void Entity_nLightProbeSizeYPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCombinedLightProbeVolume", "m_Entity_nLightProbeSizeY");
+	public void Entity_nLightProbeSizeZPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCombinedLightProbeVolume", "m_Entity_nLightProbeSizeZ");
+	public void Entity_nLightProbeAtlasXPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCombinedLightProbeVolume", "m_Entity_nLightProbeAtlasX");
+	public void Entity_nLightProbeAtlasYPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCombinedLightProbeVolume", "m_Entity_nLightProbeAtlasY");
+	public void Entity_nLightProbeAtlasZPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCombinedLightProbeVolume", "m_Entity_nLightProbeAtlasZ");
+	public void Entity_bEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCombinedLightProbeVolume", "m_Entity_bEnabled");
 }

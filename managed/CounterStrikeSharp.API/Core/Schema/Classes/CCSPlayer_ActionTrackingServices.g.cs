@@ -39,4 +39,7 @@ public partial class CCSPlayer_ActionTrackingServices : CPlayerPawnComponent
 	[SchemaMember("CCSPlayer_ActionTrackingServices", "m_weaponPurchasesThisRound")]
 	public WeaponPurchaseTracker_t WeaponPurchasesThisRound => Schema.GetDeclaredClass<WeaponPurchaseTracker_t>(this.Handle, "CCSPlayer_ActionTrackingServices", "m_weaponPurchasesThisRound");
 
+	public void IsRescuingPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_ActionTrackingServices", "m_bIsRescuing");
+	public void WeaponPurchasesThisMatchPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_ActionTrackingServices", "m_weaponPurchasesThisMatch");
+	public void WeaponPurchasesThisRoundPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_ActionTrackingServices", "m_weaponPurchasesThisRound");
 }

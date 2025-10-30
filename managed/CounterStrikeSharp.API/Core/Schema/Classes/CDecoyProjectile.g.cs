@@ -51,4 +51,5 @@ public partial class CDecoyProjectile : CBaseCSGrenadeProjectile
 		set { Schema.SetValueType<UInt16>(this.Handle, "CDecoyProjectile", "m_decoyWeaponDefIndex", value); }
 	}
 
+	public void DecoyShotTickPropertyChanged() => Utilities.SetStateChanged(this, "CDecoyProjectile", "m_nDecoyShotTick");
 }

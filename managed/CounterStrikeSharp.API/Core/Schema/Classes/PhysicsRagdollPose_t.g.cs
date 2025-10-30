@@ -35,4 +35,6 @@ public partial class PhysicsRagdollPose_t : NativeObject
 		set { Schema.SetValueType<bool>(this.Handle, "PhysicsRagdollPose_t", "m_bSetFromDebugHistory", value); }
 	}
 
+	public void TransformsPropertyChanged() => Utilities.SetStateChanged(this, "PhysicsRagdollPose_t", "m_Transforms");
+	public void OwnerPropertyChanged() => Utilities.SetStateChanged(this, "PhysicsRagdollPose_t", "m_hOwner");
 }

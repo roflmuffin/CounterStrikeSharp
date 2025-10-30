@@ -103,4 +103,9 @@ public partial class CFuncLadder : CBaseModelEntity
 	[SchemaMember("CFuncLadder", "m_OnPlayerGotOffLadder")]
 	public CEntityIOOutput OnPlayerGotOffLadder => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CFuncLadder", "m_OnPlayerGotOffLadder");
 
+	public void LadderDirPropertyChanged() => Utilities.SetStateChanged(this, "CFuncLadder", "m_vecLadderDir");
+	public void PlayerMountPositionTopPropertyChanged() => Utilities.SetStateChanged(this, "CFuncLadder", "m_vecPlayerMountPositionTop");
+	public void PlayerMountPositionBottomPropertyChanged() => Utilities.SetStateChanged(this, "CFuncLadder", "m_vecPlayerMountPositionBottom");
+	public void AutoRideSpeedPropertyChanged() => Utilities.SetStateChanged(this, "CFuncLadder", "m_flAutoRideSpeed");
+	public void FakeLadderPropertyChanged() => Utilities.SetStateChanged(this, "CFuncLadder", "m_bFakeLadder");
 }

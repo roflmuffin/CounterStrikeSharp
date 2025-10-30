@@ -31,4 +31,6 @@ public partial class CHandleTest : CBaseEntity
 		set { Schema.SetValueType<bool>(this.Handle, "CHandleTest", "m_bSendHandle", value); }
 	}
 
+	public void TestHandlePropertyChanged() => Utilities.SetStateChanged(this, "CHandleTest", "m_Handle");
+	public void SendHandlePropertyChanged() => Utilities.SetStateChanged(this, "CHandleTest", "m_bSendHandle");
 }

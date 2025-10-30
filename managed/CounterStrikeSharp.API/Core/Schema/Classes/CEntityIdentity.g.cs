@@ -83,4 +83,5 @@ public partial class CEntityIdentity : NativeObject
 	[SchemaMember("CEntityIdentity", "m_pNextByClass")]
 	public CEntityIdentity? NextByClass => Schema.GetPointer<CEntityIdentity>(this.Handle, "CEntityIdentity", "m_pNextByClass");
 
+	public void NameStringableIndexPropertyChanged() => Utilities.SetStateChanged(this, "CEntityIdentity", "m_nameStringableIndex");
 }

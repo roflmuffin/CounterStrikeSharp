@@ -127,4 +127,13 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
 	[SchemaMember("CCSPlayerPawnBase", "m_hOriginalController")]
 	public CHandle<CCSPlayerController> OriginalController => Schema.GetDeclaredClass<CHandle<CCSPlayerController>>(this.Handle, "CCSPlayerPawnBase", "m_hOriginalController");
 
+	public void CTouchExpansionComponentPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawnBase", "m_CTouchExpansionComponent");
+	public void PingServicesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawnBase", "m_pPingServices");
+	public void PlayerStatePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawnBase", "m_iPlayerState");
+	public void HasMovedSinceSpawnPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawnBase", "m_bHasMovedSinceSpawn");
+	public void FlashDurationPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawnBase", "m_flFlashDuration");
+	public void FlashMaxAlphaPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawnBase", "m_flFlashMaxAlpha");
+	public void ProgressBarStartTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawnBase", "m_flProgressBarStartTime");
+	public void ProgressBarDurationPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawnBase", "m_iProgressBarDuration");
+	public void OriginalControllerPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawnBase", "m_hOriginalController");
 }

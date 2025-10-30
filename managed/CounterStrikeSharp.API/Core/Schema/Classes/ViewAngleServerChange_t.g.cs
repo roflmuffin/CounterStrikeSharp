@@ -43,4 +43,7 @@ public partial class ViewAngleServerChange_t : NativeObject
 		set { Schema.SetValueType<UInt32>(this.Handle, "ViewAngleServerChange_t", "nIndex", value); }
 	}
 
+	public void NTypePropertyChanged() => Utilities.SetStateChanged(this, "ViewAngleServerChange_t", "nType");
+	public void QAnglePropertyChanged() => Utilities.SetStateChanged(this, "ViewAngleServerChange_t", "qAngle");
+	public void NIndexPropertyChanged() => Utilities.SetStateChanged(this, "ViewAngleServerChange_t", "nIndex");
 }

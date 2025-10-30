@@ -27,4 +27,5 @@ public partial class CSoundAreaEntitySphere : CSoundAreaEntityBase
 		set { Schema.SetValueType<float>(this.Handle, "CSoundAreaEntitySphere", "m_flRadius", value); }
 	}
 
+	public void RadiusPropertyChanged() => Utilities.SetStateChanged(this, "CSoundAreaEntitySphere", "m_flRadius");
 }

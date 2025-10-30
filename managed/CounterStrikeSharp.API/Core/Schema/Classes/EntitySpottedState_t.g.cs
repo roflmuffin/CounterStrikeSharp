@@ -31,4 +31,6 @@ public partial class EntitySpottedState_t : NativeObject
 	[SchemaMember("EntitySpottedState_t", "m_bSpottedByMask")]
 	public Span<UInt32> SpottedByMask => Schema.GetFixedArray<UInt32>(this.Handle, "EntitySpottedState_t", "m_bSpottedByMask", 2);
 
+	public void SpottedPropertyChanged() => Utilities.SetStateChanged(this, "EntitySpottedState_t", "m_bSpotted");
+	public void SpottedByMaskPropertyChanged() => Utilities.SetStateChanged(this, "EntitySpottedState_t", "m_bSpottedByMask");
 }

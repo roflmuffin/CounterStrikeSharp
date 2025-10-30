@@ -75,4 +75,12 @@ public partial class CTextureBasedAnimatable : CBaseModelEntity
 		set { Schema.SetValueType<float>(this.Handle, "CTextureBasedAnimatable", "m_flStartFrame", value); }
 	}
 
+	public void LoopPropertyChanged() => Utilities.SetStateChanged(this, "CTextureBasedAnimatable", "m_bLoop");
+	public void FPSPropertyChanged() => Utilities.SetStateChanged(this, "CTextureBasedAnimatable", "m_flFPS");
+	public void PositionKeysPropertyChanged() => Utilities.SetStateChanged(this, "CTextureBasedAnimatable", "m_hPositionKeys");
+	public void RotationKeysPropertyChanged() => Utilities.SetStateChanged(this, "CTextureBasedAnimatable", "m_hRotationKeys");
+	public void AnimationBoundsMinPropertyChanged() => Utilities.SetStateChanged(this, "CTextureBasedAnimatable", "m_vAnimationBoundsMin");
+	public void AnimationBoundsMaxPropertyChanged() => Utilities.SetStateChanged(this, "CTextureBasedAnimatable", "m_vAnimationBoundsMax");
+	public void StartTimePropertyChanged() => Utilities.SetStateChanged(this, "CTextureBasedAnimatable", "m_flStartTime");
+	public void StartFramePropertyChanged() => Utilities.SetStateChanged(this, "CTextureBasedAnimatable", "m_flStartFrame");
 }

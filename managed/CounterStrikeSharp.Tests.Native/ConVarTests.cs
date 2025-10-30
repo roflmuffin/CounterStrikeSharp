@@ -1,3 +1,4 @@
+using System.Numerics;
 using System.Threading.Tasks;
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Modules.Cvars;
@@ -66,17 +67,17 @@ public class ConVarTests
 
         var vectorConVar = ConVar.Find("fog_color");
         Assert.NotNull(vectorConVar);
-        Assert.Equal(-1, vectorConVar.GetNativeValue<Vector>().X);
-        Assert.Equal(-1, vectorConVar.GetNativeValue<Vector>().Y);
-        Assert.Equal(-1, vectorConVar.GetNativeValue<Vector>().Z);
+        Assert.Equal(-1, vectorConVar.GetPrimitiveValue<Vector3>().X);
+        Assert.Equal(-1, vectorConVar.GetPrimitiveValue<Vector3>().Y);
+        Assert.Equal(-1, vectorConVar.GetPrimitiveValue<Vector3>().Z);
 
-        var vec = vectorConVar.GetNativeValue<Vector>();
+        var vec = vectorConVar.GetPrimitiveValue<Vector3>();
         vec.X = 0;
         vec.Y = 0;
         vec.Z = 0;
-        Assert.Equal(0, vectorConVar.GetNativeValue<Vector>().X);
-        Assert.Equal(0, vectorConVar.GetNativeValue<Vector>().Y);
-        Assert.Equal(0, vectorConVar.GetNativeValue<Vector>().Z);
+        Assert.Equal(0, vectorConVar.GetPrimitiveValue<Vector3>().X);
+        Assert.Equal(0, vectorConVar.GetPrimitiveValue<Vector3>().Y);
+        Assert.Equal(0, vectorConVar.GetPrimitiveValue<Vector3>().Z);
     }
 
     [Fact]

@@ -35,4 +35,5 @@ public partial class CWeaponTaser : CCSWeaponBaseGun
 		set { Schema.SetValueType<Int32>(this.Handle, "CWeaponTaser", "m_nLastAttackTick", value); }
 	}
 
+	public void FireTimePropertyChanged() => Utilities.SetStateChanged(this, "CWeaponTaser", "m_fFireTime");
 }

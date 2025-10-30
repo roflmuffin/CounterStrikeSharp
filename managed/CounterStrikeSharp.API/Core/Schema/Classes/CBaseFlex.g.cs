@@ -67,4 +67,7 @@ public partial class CBaseFlex : CBaseAnimGraph
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseFlex", "m_bUpdateLayerPriorities", value); }
 	}
 
+	public void FlexWeightPropertyChanged() => Utilities.SetStateChanged(this, "CBaseFlex", "m_flexWeight");
+	public void LookTargetPositionPropertyChanged() => Utilities.SetStateChanged(this, "CBaseFlex", "m_vLookTargetPosition");
+	public void BlinktogglePropertyChanged() => Utilities.SetStateChanged(this, "CBaseFlex", "m_blinktoggle");
 }

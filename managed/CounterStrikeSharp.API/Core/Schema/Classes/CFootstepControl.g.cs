@@ -35,4 +35,6 @@ public partial class CFootstepControl : CBaseTrigger
 		set { Schema.SetString(this.Handle, "CFootstepControl", "m_destination", value); }
 	}
 
+	public void SourcePropertyChanged() => Utilities.SetStateChanged(this, "CFootstepControl", "m_source");
+	public void DestinationPropertyChanged() => Utilities.SetStateChanged(this, "CFootstepControl", "m_destination");
 }

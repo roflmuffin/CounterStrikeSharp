@@ -135,4 +135,19 @@ public partial class CPlayerSprayDecal : CModelPointEntity
 	[SchemaMember("CPlayerSprayDecal", "m_ubSignature")]
 	public Span<byte> Signature => Schema.GetFixedArray<byte>(this.Handle, "CPlayerSprayDecal", "m_ubSignature", 128);
 
+	public void UniqueIDPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_nUniqueID");
+	public void AccountIDPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_unAccountID");
+	public void TraceIDPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_unTraceID");
+	public void RtGcTimePropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_rtGcTime");
+	public void EndPosPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_vecEndPos");
+	public void StartPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_vecStart");
+	public void LeftPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_vecLeft");
+	public void NormalPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_vecNormal");
+	public void PlayerPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_nPlayer");
+	public void DecalEntityPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_nEntity");
+	public void HitboxPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_nHitbox");
+	public void CreationTimePropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_flCreationTime");
+	public void TintIDPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_nTintID");
+	public void VersionPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_nVersion");
+	public void SignaturePropertyChanged() => Utilities.SetStateChanged(this, "CPlayerSprayDecal", "m_ubSignature");
 }

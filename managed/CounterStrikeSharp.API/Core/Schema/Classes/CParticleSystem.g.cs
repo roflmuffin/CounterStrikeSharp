@@ -175,4 +175,19 @@ public partial class CParticleSystem : CBaseModelEntity
 		set { Schema.SetCustomMarshalledType<Color>(this.Handle, "CParticleSystem", "m_clrTint", value); }
 	}
 
+	public void SnapshotFileNamePropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_szSnapshotFileName");
+	public void ActivePropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_bActive");
+	public void FrozenPropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_bFrozen");
+	public void FreezeTransitionDurationPropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_flFreezeTransitionDuration");
+	public void StopTypePropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_nStopType");
+	public void AnimateDuringGameplayPausePropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_bAnimateDuringGameplayPause");
+	public void EffectIndexPropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_iEffectIndex");
+	public void StartTimePropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_flStartTime");
+	public void PreSimTimePropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_flPreSimTime");
+	public void ServerControlPointsPropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_vServerControlPoints");
+	public void ServerControlPointAssignmentsPropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_iServerControlPointAssignments");
+	public void ControlPointEntsPropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_hControlPointEnts");
+	public void NoSavePropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_bNoSave");
+	public void NoFreezePropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_bNoFreeze");
+	public void NoRampPropertyChanged() => Utilities.SetStateChanged(this, "CParticleSystem", "m_bNoRamp");
 }

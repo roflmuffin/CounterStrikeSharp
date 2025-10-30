@@ -43,4 +43,7 @@ public partial class CNetworkViewOffsetVector : NativeObject
 		set { Schema.SetValueType<float>(this.Handle, "CNetworkViewOffsetVector", "m_vecZ", value); }
 	}
 
+	public void XPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkViewOffsetVector", "m_vecX");
+	public void YPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkViewOffsetVector", "m_vecY");
+	public void ZPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkViewOffsetVector", "m_vecZ");
 }

@@ -159,4 +159,22 @@ public partial class CEnvCubemap : CBaseEntity
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvCubemap", "m_Entity_bEnabled", value); }
 	}
 
+	public void Entity_hCubemapTexturePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_hCubemapTexture");
+	public void Entity_bCustomCubemapTexturePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_bCustomCubemapTexture");
+	public void Entity_flInfluenceRadiusPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_flInfluenceRadius");
+	public void Entity_vBoxProjectMinsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_vBoxProjectMins");
+	public void Entity_vBoxProjectMaxsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_vBoxProjectMaxs");
+	public void Entity_bMoveablePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_bMoveable");
+	public void Entity_nHandshakePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_nHandshake");
+	public void Entity_nEnvCubeMapArrayIndexPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_nEnvCubeMapArrayIndex");
+	public void Entity_nPriorityPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_nPriority");
+	public void Entity_flEdgeFadeDistPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_flEdgeFadeDist");
+	public void Entity_vEdgeFadeDistsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_vEdgeFadeDists");
+	public void Entity_flDiffuseScalePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_flDiffuseScale");
+	public void Entity_bStartDisabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_bStartDisabled");
+	public void Entity_bDefaultEnvMapPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_bDefaultEnvMap");
+	public void Entity_bDefaultSpecEnvMapPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_bDefaultSpecEnvMap");
+	public void Entity_bIndoorCubeMapPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_bIndoorCubeMap");
+	public void Entity_bCopyDiffuseFromDefaultCubemapPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_bCopyDiffuseFromDefaultCubemap");
+	public void Entity_bEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemap", "m_Entity_bEnabled");
 }

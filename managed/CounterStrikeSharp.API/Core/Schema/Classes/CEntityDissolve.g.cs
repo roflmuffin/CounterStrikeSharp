@@ -99,4 +99,14 @@ public partial class CEntityDissolve : CBaseModelEntity
 		set { Schema.SetValueType<UInt32>(this.Handle, "CEntityDissolve", "m_nMagnitude", value); }
 	}
 
+	public void FadeInStartPropertyChanged() => Utilities.SetStateChanged(this, "CEntityDissolve", "m_flFadeInStart");
+	public void FadeInLengthPropertyChanged() => Utilities.SetStateChanged(this, "CEntityDissolve", "m_flFadeInLength");
+	public void FadeOutModelStartPropertyChanged() => Utilities.SetStateChanged(this, "CEntityDissolve", "m_flFadeOutModelStart");
+	public void FadeOutModelLengthPropertyChanged() => Utilities.SetStateChanged(this, "CEntityDissolve", "m_flFadeOutModelLength");
+	public void FadeOutStartPropertyChanged() => Utilities.SetStateChanged(this, "CEntityDissolve", "m_flFadeOutStart");
+	public void FadeOutLengthPropertyChanged() => Utilities.SetStateChanged(this, "CEntityDissolve", "m_flFadeOutLength");
+	public void StartTimePropertyChanged() => Utilities.SetStateChanged(this, "CEntityDissolve", "m_flStartTime");
+	public void DissolveTypePropertyChanged() => Utilities.SetStateChanged(this, "CEntityDissolve", "m_nDissolveType");
+	public void DissolverOriginPropertyChanged() => Utilities.SetStateChanged(this, "CEntityDissolve", "m_vDissolverOrigin");
+	public void MagnitudePropertyChanged() => Utilities.SetStateChanged(this, "CEntityDissolve", "m_nMagnitude");
 }

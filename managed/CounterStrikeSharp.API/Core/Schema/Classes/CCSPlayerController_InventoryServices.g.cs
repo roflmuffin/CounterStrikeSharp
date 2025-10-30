@@ -87,4 +87,12 @@ public partial class CCSPlayerController_InventoryServices : CPlayerControllerCo
 	[SchemaMember("CCSPlayerController_InventoryServices", "m_vecServerAuthoritativeWeaponSlots")]
 	public NetworkedVector<ServerAuthoritativeWeaponSlot_t> ServerAuthoritativeWeaponSlots => Schema.GetDeclaredClass<NetworkedVector<ServerAuthoritativeWeaponSlot_t>>(this.Handle, "CCSPlayerController_InventoryServices", "m_vecServerAuthoritativeWeaponSlots");
 
+	public void MusicIDPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InventoryServices", "m_unMusicID");
+	public void RankPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InventoryServices", "m_rank");
+	public void PersonaDataPublicLevelPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicLevel");
+	public void PersonaDataPublicCommendsLeaderPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsLeader");
+	public void PersonaDataPublicCommendsTeacherPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsTeacher");
+	public void PersonaDataPublicCommendsFriendlyPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InventoryServices", "m_nPersonaDataPublicCommendsFriendly");
+	public void PersonaDataXpTrailLevelPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InventoryServices", "m_nPersonaDataXpTrailLevel");
+	public void ServerAuthoritativeWeaponSlotsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InventoryServices", "m_vecServerAuthoritativeWeaponSlots");
 }

@@ -71,4 +71,8 @@ public partial class CInfoWorldLayer : CBaseEntity
 		set { Schema.SetValueType<UInt32>(this.Handle, "CInfoWorldLayer", "m_hLayerSpawnGroup", value); }
 	}
 
+	public void WorldNamePropertyChanged() => Utilities.SetStateChanged(this, "CInfoWorldLayer", "m_worldName");
+	public void LayerNamePropertyChanged() => Utilities.SetStateChanged(this, "CInfoWorldLayer", "m_layerName");
+	public void WorldLayerVisiblePropertyChanged() => Utilities.SetStateChanged(this, "CInfoWorldLayer", "m_bWorldLayerVisible");
+	public void EntitiesSpawnedPropertyChanged() => Utilities.SetStateChanged(this, "CInfoWorldLayer", "m_bEntitiesSpawned");
 }

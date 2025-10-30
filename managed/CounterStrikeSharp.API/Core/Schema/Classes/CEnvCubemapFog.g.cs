@@ -155,4 +155,21 @@ public partial class CEnvCubemapFog : CBaseEntity
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvCubemapFog", "m_bFirstTime", value); }
 	}
 
+	public void EndDistancePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_flEndDistance");
+	public void StartDistancePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_flStartDistance");
+	public void FogFalloffExponentPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_flFogFalloffExponent");
+	public void HeightFogEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_bHeightFogEnabled");
+	public void FogHeightWidthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_flFogHeightWidth");
+	public void FogHeightEndPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_flFogHeightEnd");
+	public void FogHeightStartPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_flFogHeightStart");
+	public void FogHeightExponentPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_flFogHeightExponent");
+	public void LODBiasPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_flLODBias");
+	public void ActivePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_bActive");
+	public void StartDisabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_bStartDisabled");
+	public void FogMaxOpacityPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_flFogMaxOpacity");
+	public void CubemapSourceTypePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_nCubemapSourceType");
+	public void SkyMaterialPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_hSkyMaterial");
+	public void SkyEntityPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_iszSkyEntity");
+	public void FogCubemapTexturePropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_hFogCubemapTexture");
+	public void HasHeightFogEndPropertyChanged() => Utilities.SetStateChanged(this, "CEnvCubemapFog", "m_bHasHeightFogEnd");
 }

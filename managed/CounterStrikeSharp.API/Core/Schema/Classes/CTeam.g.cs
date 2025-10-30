@@ -43,4 +43,8 @@ public partial class CTeam : CBaseEntity
 		set { Schema.SetStringBytes(this.Handle, "CTeam", "m_szTeamname", value, 129); }
 	}
 
+	public void PlayerControllersPropertyChanged() => Utilities.SetStateChanged(this, "CTeam", "m_aPlayerControllers");
+	public void PlayersPropertyChanged() => Utilities.SetStateChanged(this, "CTeam", "m_aPlayers");
+	public void ScorePropertyChanged() => Utilities.SetStateChanged(this, "CTeam", "m_iScore");
+	public void TeamnamePropertyChanged() => Utilities.SetStateChanged(this, "CTeam", "m_szTeamname");
 }

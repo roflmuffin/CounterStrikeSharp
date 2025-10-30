@@ -259,4 +259,10 @@ public partial class CBasePropDoor : CDynamicProp
 	[SchemaMember("CBasePropDoor", "m_OnAjarOpen")]
 	public CEntityIOOutput OnAjarOpen => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePropDoor", "m_OnAjarOpen");
 
+	public void DoorStatePropertyChanged() => Utilities.SetStateChanged(this, "CBasePropDoor", "m_eDoorState");
+	public void LockedPropertyChanged() => Utilities.SetStateChanged(this, "CBasePropDoor", "m_bLocked");
+	public void NoNPCsPropertyChanged() => Utilities.SetStateChanged(this, "CBasePropDoor", "m_bNoNPCs");
+	public void ClosedPositionPropertyChanged() => Utilities.SetStateChanged(this, "CBasePropDoor", "m_closedPosition");
+	public void ClosedAnglesPropertyChanged() => Utilities.SetStateChanged(this, "CBasePropDoor", "m_closedAngles");
+	public void MasterPropertyChanged() => Utilities.SetStateChanged(this, "CBasePropDoor", "m_hMaster");
 }

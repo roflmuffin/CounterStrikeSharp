@@ -151,4 +151,18 @@ public partial class CCollisionProperty : NativeObject
 		set { Schema.SetValueType<float>(this.Handle, "CCollisionProperty", "m_flCapsuleRadius", value); }
 	}
 
+	public void CollisionAttributePropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_collisionAttribute");
+	public void MinsPropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_vecMins");
+	public void MaxsPropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_vecMaxs");
+	public void SolidFlagsPropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_usSolidFlags");
+	public void SolidTypePropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_nSolidType");
+	public void TriggerBloatPropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_triggerBloat");
+	public void SurroundTypePropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_nSurroundType");
+	public void CollisionGroupPropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_CollisionGroup");
+	public void EnablePhysicsPropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_nEnablePhysics");
+	public void SpecifiedSurroundingMinsPropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_vecSpecifiedSurroundingMins");
+	public void SpecifiedSurroundingMaxsPropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_vecSpecifiedSurroundingMaxs");
+	public void CapsuleCenter1PropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_vCapsuleCenter1");
+	public void CapsuleCenter2PropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_vCapsuleCenter2");
+	public void CapsuleRadiusPropertyChanged() => Utilities.SetStateChanged(this, "CCollisionProperty", "m_flCapsuleRadius");
 }

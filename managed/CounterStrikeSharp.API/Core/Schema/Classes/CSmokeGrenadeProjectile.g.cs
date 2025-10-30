@@ -111,4 +111,12 @@ public partial class CSmokeGrenadeProjectile : CBaseCSGrenadeProjectile
 		set { Schema.SetValueType<bool>(this.Handle, "CSmokeGrenadeProjectile", "m_bDidGroundScorch", value); }
 	}
 
+	public void SmokeEffectTickBeginPropertyChanged() => Utilities.SetStateChanged(this, "CSmokeGrenadeProjectile", "m_nSmokeEffectTickBegin");
+	public void DidSmokeEffectPropertyChanged() => Utilities.SetStateChanged(this, "CSmokeGrenadeProjectile", "m_bDidSmokeEffect");
+	public void RandomSeedPropertyChanged() => Utilities.SetStateChanged(this, "CSmokeGrenadeProjectile", "m_nRandomSeed");
+	public void SmokeColorPropertyChanged() => Utilities.SetStateChanged(this, "CSmokeGrenadeProjectile", "m_vSmokeColor");
+	public void SmokeDetonationPosPropertyChanged() => Utilities.SetStateChanged(this, "CSmokeGrenadeProjectile", "m_vSmokeDetonationPos");
+	public void VoxelFrameDataPropertyChanged() => Utilities.SetStateChanged(this, "CSmokeGrenadeProjectile", "m_VoxelFrameData");
+	public void VoxelFrameDataSizePropertyChanged() => Utilities.SetStateChanged(this, "CSmokeGrenadeProjectile", "m_nVoxelFrameDataSize");
+	public void VoxelUpdatePropertyChanged() => Utilities.SetStateChanged(this, "CSmokeGrenadeProjectile", "m_nVoxelUpdate");
 }

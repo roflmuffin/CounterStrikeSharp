@@ -83,4 +83,12 @@ public partial class CCitadelSoundOpvarSetOBB : CBaseEntity
 		set { Schema.SetValueType<Int32>(this.Handle, "CCitadelSoundOpvarSetOBB", "m_nAABBDirection", value); }
 	}
 
+	public void StackNamePropertyChanged() => Utilities.SetStateChanged(this, "CCitadelSoundOpvarSetOBB", "m_iszStackName");
+	public void OperatorNamePropertyChanged() => Utilities.SetStateChanged(this, "CCitadelSoundOpvarSetOBB", "m_iszOperatorName");
+	public void OpvarNamePropertyChanged() => Utilities.SetStateChanged(this, "CCitadelSoundOpvarSetOBB", "m_iszOpvarName");
+	public void DistanceInnerMinsPropertyChanged() => Utilities.SetStateChanged(this, "CCitadelSoundOpvarSetOBB", "m_vDistanceInnerMins");
+	public void DistanceInnerMaxsPropertyChanged() => Utilities.SetStateChanged(this, "CCitadelSoundOpvarSetOBB", "m_vDistanceInnerMaxs");
+	public void DistanceOuterMinsPropertyChanged() => Utilities.SetStateChanged(this, "CCitadelSoundOpvarSetOBB", "m_vDistanceOuterMins");
+	public void DistanceOuterMaxsPropertyChanged() => Utilities.SetStateChanged(this, "CCitadelSoundOpvarSetOBB", "m_vDistanceOuterMaxs");
+	public void AABBDirectionPropertyChanged() => Utilities.SetStateChanged(this, "CCitadelSoundOpvarSetOBB", "m_nAABBDirection");
 }

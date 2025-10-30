@@ -187,4 +187,9 @@ public partial class CSMatchStats_t : CSPerRoundStats_t
 		set { Schema.SetValueType<Int32>(this.Handle, "CSMatchStats_t", "m_iEntryWins", value); }
 	}
 
+	public void Enemy5KsPropertyChanged() => Utilities.SetStateChanged(this, "CSMatchStats_t", "m_iEnemy5Ks");
+	public void Enemy4KsPropertyChanged() => Utilities.SetStateChanged(this, "CSMatchStats_t", "m_iEnemy4Ks");
+	public void Enemy3KsPropertyChanged() => Utilities.SetStateChanged(this, "CSMatchStats_t", "m_iEnemy3Ks");
+	public void EnemyKnifeKillsPropertyChanged() => Utilities.SetStateChanged(this, "CSMatchStats_t", "m_iEnemyKnifeKills");
+	public void EnemyTaserKillsPropertyChanged() => Utilities.SetStateChanged(this, "CSMatchStats_t", "m_iEnemyTaserKills");
 }

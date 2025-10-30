@@ -131,4 +131,14 @@ public partial class CCSTeam : CTeam
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSTeam", "m_iLastUpdateSentAt", value); }
 	}
 
+	public void SurrenderedPropertyChanged() => Utilities.SetStateChanged(this, "CCSTeam", "m_bSurrendered");
+	public void TeamMatchStatPropertyChanged() => Utilities.SetStateChanged(this, "CCSTeam", "m_szTeamMatchStat");
+	public void NumMapVictoriesPropertyChanged() => Utilities.SetStateChanged(this, "CCSTeam", "m_numMapVictories");
+	public void ScoreFirstHalfPropertyChanged() => Utilities.SetStateChanged(this, "CCSTeam", "m_scoreFirstHalf");
+	public void ScoreSecondHalfPropertyChanged() => Utilities.SetStateChanged(this, "CCSTeam", "m_scoreSecondHalf");
+	public void ScoreOvertimePropertyChanged() => Utilities.SetStateChanged(this, "CCSTeam", "m_scoreOvertime");
+	public void ClanTeamnamePropertyChanged() => Utilities.SetStateChanged(this, "CCSTeam", "m_szClanTeamname");
+	public void ClanIDPropertyChanged() => Utilities.SetStateChanged(this, "CCSTeam", "m_iClanID");
+	public void TeamFlagImagePropertyChanged() => Utilities.SetStateChanged(this, "CCSTeam", "m_szTeamFlagImage");
+	public void TeamLogoImagePropertyChanged() => Utilities.SetStateChanged(this, "CCSTeam", "m_szTeamLogoImage");
 }

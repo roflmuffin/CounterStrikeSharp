@@ -99,4 +99,9 @@ public partial class CVoteController : CBaseEntity
 	[SchemaMember("CVoteController", "m_potentialIssues")]
 	public NetworkedVector<CBaseIssue?> PotentialIssues => Schema.GetDeclaredClass<NetworkedVector<CBaseIssue?>>(this.Handle, "CVoteController", "m_potentialIssues");
 
+	public void ActiveIssueIndexPropertyChanged() => Utilities.SetStateChanged(this, "CVoteController", "m_iActiveIssueIndex");
+	public void OnlyTeamToVotePropertyChanged() => Utilities.SetStateChanged(this, "CVoteController", "m_iOnlyTeamToVote");
+	public void VoteOptionCountPropertyChanged() => Utilities.SetStateChanged(this, "CVoteController", "m_nVoteOptionCount");
+	public void PotentialVotesPropertyChanged() => Utilities.SetStateChanged(this, "CVoteController", "m_nPotentialVotes");
+	public void IsYesNoVotePropertyChanged() => Utilities.SetStateChanged(this, "CVoteController", "m_bIsYesNoVote");
 }

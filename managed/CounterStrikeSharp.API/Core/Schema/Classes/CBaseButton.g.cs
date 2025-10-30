@@ -183,4 +183,7 @@ public partial class CBaseButton : CBaseToggle
 		set { Schema.SetString(this.Handle, "CBaseButton", "m_szDisplayText", value); }
 	}
 
+	public void GlowEntityPropertyChanged() => Utilities.SetStateChanged(this, "CBaseButton", "m_glowEntity");
+	public void UsablePropertyChanged() => Utilities.SetStateChanged(this, "CBaseButton", "m_usable");
+	public void DisplayTextPropertyChanged() => Utilities.SetStateChanged(this, "CBaseButton", "m_szDisplayText");
 }

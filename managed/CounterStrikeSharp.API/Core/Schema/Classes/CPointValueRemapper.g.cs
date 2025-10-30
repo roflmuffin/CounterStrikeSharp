@@ -319,4 +319,21 @@ public partial class CPointValueRemapper : CBaseEntity
 	[SchemaMember("CPointValueRemapper", "m_OnDisengage")]
 	public CEntityIOOutput OnDisengage => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CPointValueRemapper", "m_OnDisengage");
 
+	public void DisabledPropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_bDisabled");
+	public void UpdateOnClientPropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_bUpdateOnClient");
+	public void InputTypePropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_nInputType");
+	public void RemapLineStartPropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_hRemapLineStart");
+	public void RemapLineEndPropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_hRemapLineEnd");
+	public void MaximumChangePerSecondPropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_flMaximumChangePerSecond");
+	public void DisengageDistancePropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_flDisengageDistance");
+	public void EngageDistancePropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_flEngageDistance");
+	public void RequiresUseKeyPropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_bRequiresUseKey");
+	public void OutputTypePropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_nOutputType");
+	public void OutputEntitiesPropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_hOutputEntities");
+	public void HapticsTypePropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_nHapticsType");
+	public void MomentumTypePropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_nMomentumType");
+	public void MomentumModifierPropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_flMomentumModifier");
+	public void SnapValuePropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_flSnapValue");
+	public void RatchetTypePropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_nRatchetType");
+	public void InputOffsetPropertyChanged() => Utilities.SetStateChanged(this, "CPointValueRemapper", "m_flInputOffset");
 }

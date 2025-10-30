@@ -191,4 +191,8 @@ public partial class CRagdollProp : CBaseAnimGraph
 		set { Schema.SetValueType<bool>(this.Handle, "CRagdollProp", "m_bShouldDeleteActivationRecord", value); }
 	}
 
+	public void RagEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CRagdollProp", "m_ragEnabled");
+	public void RagPosPropertyChanged() => Utilities.SetStateChanged(this, "CRagdollProp", "m_ragPos");
+	public void RagAnglesPropertyChanged() => Utilities.SetStateChanged(this, "CRagdollProp", "m_ragAngles");
+	public void BlendWeightPropertyChanged() => Utilities.SetStateChanged(this, "CRagdollProp", "m_flBlendWeight");
 }

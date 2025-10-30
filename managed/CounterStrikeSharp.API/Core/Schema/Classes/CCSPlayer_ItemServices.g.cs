@@ -35,4 +35,6 @@ public partial class CCSPlayer_ItemServices : CPlayer_ItemServices
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_ItemServices", "m_bHasHelmet", value); }
 	}
 
+	public void HasDefuserPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_ItemServices", "m_bHasDefuser");
+	public void HasHelmetPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_ItemServices", "m_bHasHelmet");
 }

@@ -115,4 +115,5 @@ public partial class CBreakable : CBaseModelEntity
 		set { Schema.SetValueType<float>(this.Handle, "CBreakable", "m_flLastPhysicsInfluenceTime", value); }
 	}
 
+	public void CPropDataComponentPropertyChanged() => Utilities.SetStateChanged(this, "CBreakable", "m_CPropDataComponent");
 }

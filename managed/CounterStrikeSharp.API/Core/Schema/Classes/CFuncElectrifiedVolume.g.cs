@@ -51,4 +51,5 @@ public partial class CFuncElectrifiedVolume : CFuncBrush
 		set { Schema.SetString(this.Handle, "CFuncElectrifiedVolume", "m_iszEffectSource", value); }
 	}
 
+	public void EffectNamePropertyChanged() => Utilities.SetStateChanged(this, "CFuncElectrifiedVolume", "m_EffectName");
 }

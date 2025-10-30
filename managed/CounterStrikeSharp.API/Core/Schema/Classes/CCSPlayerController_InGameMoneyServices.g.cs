@@ -67,4 +67,8 @@ public partial class CCSPlayerController_InGameMoneyServices : CPlayerController
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayerController_InGameMoneyServices", "m_iCashSpentThisRound", value); }
 	}
 
+	public void AccountPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InGameMoneyServices", "m_iAccount");
+	public void StartAccountPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InGameMoneyServices", "m_iStartAccount");
+	public void TotalCashSpentPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InGameMoneyServices", "m_iTotalCashSpent");
+	public void CashSpentThisRoundPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController_InGameMoneyServices", "m_iCashSpentThisRound");
 }

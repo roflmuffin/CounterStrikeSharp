@@ -27,4 +27,5 @@ public partial class CKnife : CCSWeaponBase
 		set { Schema.SetValueType<bool>(this.Handle, "CKnife", "m_bFirstAttack", value); }
 	}
 
+	public void FirstAttackPropertyChanged() => Utilities.SetStateChanged(this, "CKnife", "m_bFirstAttack");
 }

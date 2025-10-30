@@ -407,4 +407,32 @@ public partial class CCSWeaponBase : CBasePlayerWeapon
 		set { Schema.SetValueType<float>(this.Handle, "CCSWeaponBase", "m_flLastShakeTime", value); }
 	}
 
+	public void WeaponGameplayAnimStatePropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBase", "m_iWeaponGameplayAnimState");
+	public void WeaponGameplayAnimStateTimestampPropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBase", "m_flWeaponGameplayAnimStateTimestamp");
+	public void InspectCancelCompleteTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBase", "m_flInspectCancelCompleteTime");
+	public void InspectPendingPropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBase", "m_bInspectPending");
+	public void InspectShouldLoopPropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBase", "m_bInspectShouldLoop");
+	public void WeaponModePropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBase", "m_weaponMode");
+	public void AccuracyPenaltyPropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBase", "m_fAccuracyPenalty");
+	public void IRecoilIndexPropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBase", "m_iRecoilIndex");
+	public void FlRecoilIndexPropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBase", "m_flRecoilIndex");
+	public void BurstModePropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBase", "m_bBurstMode");
+	public void PostponeFireReadyTicksPropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBase", "m_nPostponeFireReadyTicks");
+	public void PostponeFireReadyFracPropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBase", "m_flPostponeFireReadyFrac");
+	public void InReloadPropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBase", "m_bInReload");
+	public void DroppedAtTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBase", "m_flDroppedAtTime");
+	public void IsHauledBackPropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBase", "m_bIsHauledBack");
+	public void SilencerOnPropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBase", "m_bSilencerOn");
+	public void TimeSilencerSwitchCompletePropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBase", "m_flTimeSilencerSwitchComplete");
+	public void OriginalTeamNumberPropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBase", "m_iOriginalTeamNumber");
+	public void MostRecentTeamNumberPropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBase", "m_iMostRecentTeamNumber");
+	public void DroppedNearBuyZonePropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBase", "m_bDroppedNearBuyZone");
+	public void NextPrevOwnerUseTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBase", "m_nextPrevOwnerUseTime");
+	public void PrevOwnerPropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBase", "m_hPrevOwner");
+	public void DropTickPropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBase", "m_nDropTick");
+	public void WasActiveWeaponWhenDroppedPropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBase", "m_bWasActiveWeaponWhenDropped");
+	public void LastShotTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBase", "m_fLastShotTime");
+	public void IronSightModePropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBase", "m_iIronSightMode");
+	public void WatTickOffsetPropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBase", "m_flWatTickOffset");
+	public void LastShakeTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBase", "m_flLastShakeTime");
 }

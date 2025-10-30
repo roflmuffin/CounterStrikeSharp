@@ -99,4 +99,8 @@ public partial class CCSWeaponBaseGun : CCSWeaponBase
 		set { Schema.SetValueType<bool>(this.Handle, "CCSWeaponBaseGun", "m_bSkillBoltLiftedFireKey", value); }
 	}
 
+	public void ZoomLevelPropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBaseGun", "m_zoomLevel");
+	public void BurstShotsRemainingPropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBaseGun", "m_iBurstShotsRemaining");
+	public void NeedsBoltActionPropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBaseGun", "m_bNeedsBoltAction");
+	public void RevolverCylinderIdxPropertyChanged() => Utilities.SetStateChanged(this, "CCSWeaponBaseGun", "m_nRevolverCylinderIdx");
 }

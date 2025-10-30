@@ -83,4 +83,12 @@ public partial class VPhysicsCollisionAttribute_t : NativeObject
 		set { Schema.SetValueType<byte>(this.Handle, "VPhysicsCollisionAttribute_t", "m_nCollisionFunctionMask", value); }
 	}
 
+	public void InteractsAsPropertyChanged() => Utilities.SetStateChanged(this, "VPhysicsCollisionAttribute_t", "m_nInteractsAs");
+	public void InteractsWithPropertyChanged() => Utilities.SetStateChanged(this, "VPhysicsCollisionAttribute_t", "m_nInteractsWith");
+	public void InteractsExcludePropertyChanged() => Utilities.SetStateChanged(this, "VPhysicsCollisionAttribute_t", "m_nInteractsExclude");
+	public void EntityIdPropertyChanged() => Utilities.SetStateChanged(this, "VPhysicsCollisionAttribute_t", "m_nEntityId");
+	public void OwnerIdPropertyChanged() => Utilities.SetStateChanged(this, "VPhysicsCollisionAttribute_t", "m_nOwnerId");
+	public void HierarchyIdPropertyChanged() => Utilities.SetStateChanged(this, "VPhysicsCollisionAttribute_t", "m_nHierarchyId");
+	public void CollisionGroupPropertyChanged() => Utilities.SetStateChanged(this, "VPhysicsCollisionAttribute_t", "m_nCollisionGroup");
+	public void CollisionFunctionMaskPropertyChanged() => Utilities.SetStateChanged(this, "VPhysicsCollisionAttribute_t", "m_nCollisionFunctionMask");
 }

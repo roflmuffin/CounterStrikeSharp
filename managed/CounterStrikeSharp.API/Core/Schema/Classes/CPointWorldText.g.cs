@@ -147,4 +147,20 @@ public partial class CPointWorldText : CModelPointEntity
 		set { Schema.SetValueType<PointWorldTextReorientMode_t>(this.Handle, "CPointWorldText", "m_nReorientMode", value); }
 	}
 
+	public void MessageTextPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_messageText");
+	public void FontNamePropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_FontName");
+	public void BackgroundMaterialNamePropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_BackgroundMaterialName");
+	public void EnabledPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_bEnabled");
+	public void FullbrightPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_bFullbright");
+	public void WorldUnitsPerPxPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_flWorldUnitsPerPx");
+	public void FontSizePropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_flFontSize");
+	public void DepthOffsetPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_flDepthOffset");
+	public void DrawBackgroundPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_bDrawBackground");
+	public void BackgroundBorderWidthPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_flBackgroundBorderWidth");
+	public void BackgroundBorderHeightPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_flBackgroundBorderHeight");
+	public void BackgroundWorldToUVPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_flBackgroundWorldToUV");
+	public void ColorPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_Color");
+	public void JustifyHorizontalPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_nJustifyHorizontal");
+	public void JustifyVerticalPropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_nJustifyVertical");
+	public void ReorientModePropertyChanged() => Utilities.SetStateChanged(this, "CPointWorldText", "m_nReorientMode");
 }

@@ -235,4 +235,14 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 		set { Schema.SetValueType<bool>(this.Handle, "CPointCommentaryNode", "m_bListenedTo", value); }
 	}
 
+	public void CommentaryFilePropertyChanged() => Utilities.SetStateChanged(this, "CPointCommentaryNode", "m_iszCommentaryFile");
+	public void HViewPositionPropertyChanged() => Utilities.SetStateChanged(this, "CPointCommentaryNode", "m_hViewPosition");
+	public void ActivePropertyChanged() => Utilities.SetStateChanged(this, "CPointCommentaryNode", "m_bActive");
+	public void StartTimePropertyChanged() => Utilities.SetStateChanged(this, "CPointCommentaryNode", "m_flStartTime");
+	public void StartTimeInCommentaryPropertyChanged() => Utilities.SetStateChanged(this, "CPointCommentaryNode", "m_flStartTimeInCommentary");
+	public void TitlePropertyChanged() => Utilities.SetStateChanged(this, "CPointCommentaryNode", "m_iszTitle");
+	public void SpeakersPropertyChanged() => Utilities.SetStateChanged(this, "CPointCommentaryNode", "m_iszSpeakers");
+	public void NodeNumberPropertyChanged() => Utilities.SetStateChanged(this, "CPointCommentaryNode", "m_iNodeNumber");
+	public void NodeNumberMaxPropertyChanged() => Utilities.SetStateChanged(this, "CPointCommentaryNode", "m_iNodeNumberMax");
+	public void ListenedToPropertyChanged() => Utilities.SetStateChanged(this, "CPointCommentaryNode", "m_bListenedTo");
 }

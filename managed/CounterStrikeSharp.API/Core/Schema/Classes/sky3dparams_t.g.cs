@@ -59,4 +59,10 @@ public partial class sky3dparams_t : NativeObject
 	[SchemaMember("sky3dparams_t", "m_nWorldGroupID")]
 	public WorldGroupId_t WorldGroupID => Schema.GetDeclaredClass<WorldGroupId_t>(this.Handle, "sky3dparams_t", "m_nWorldGroupID");
 
+	public void ScalePropertyChanged() => Utilities.SetStateChanged(this, "sky3dparams_t", "scale");
+	public void OriginPropertyChanged() => Utilities.SetStateChanged(this, "sky3dparams_t", "origin");
+	public void BClip3DSkyBoxNearToWorldFarPropertyChanged() => Utilities.SetStateChanged(this, "sky3dparams_t", "bClip3DSkyBoxNearToWorldFar");
+	public void FlClip3DSkyBoxNearToWorldFarOffsetPropertyChanged() => Utilities.SetStateChanged(this, "sky3dparams_t", "flClip3DSkyBoxNearToWorldFarOffset");
+	public void FogPropertyChanged() => Utilities.SetStateChanged(this, "sky3dparams_t", "fog");
+	public void WorldGroupIDPropertyChanged() => Utilities.SetStateChanged(this, "sky3dparams_t", "m_nWorldGroupID");
 }

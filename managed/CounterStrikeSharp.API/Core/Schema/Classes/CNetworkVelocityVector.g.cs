@@ -43,4 +43,7 @@ public partial class CNetworkVelocityVector : NativeObject
 		set { Schema.SetValueType<float>(this.Handle, "CNetworkVelocityVector", "m_vecZ", value); }
 	}
 
+	public void XPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkVelocityVector", "m_vecX");
+	public void YPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkVelocityVector", "m_vecY");
+	public void ZPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkVelocityVector", "m_vecZ");
 }

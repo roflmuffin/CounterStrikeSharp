@@ -63,4 +63,10 @@ public partial class CRetakeGameRules : NativeObject
 	[SchemaMember("CRetakeGameRules", "m_hBombPlanter")]
 	public CHandle<CCSPlayerPawn> BombPlanter => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CRetakeGameRules", "m_hBombPlanter");
 
+	public void MatchSeedPropertyChanged() => Utilities.SetStateChanged(this, "CRetakeGameRules", "m_nMatchSeed");
+	public void BlockersPresentPropertyChanged() => Utilities.SetStateChanged(this, "CRetakeGameRules", "m_bBlockersPresent");
+	public void RoundInProgressPropertyChanged() => Utilities.SetStateChanged(this, "CRetakeGameRules", "m_bRoundInProgress");
+	public void FirstSecondHalfRoundPropertyChanged() => Utilities.SetStateChanged(this, "CRetakeGameRules", "m_iFirstSecondHalfRound");
+	public void BombSitePropertyChanged() => Utilities.SetStateChanged(this, "CRetakeGameRules", "m_iBombSite");
+	public void BombPlanterPropertyChanged() => Utilities.SetStateChanged(this, "CRetakeGameRules", "m_hBombPlanter");
 }

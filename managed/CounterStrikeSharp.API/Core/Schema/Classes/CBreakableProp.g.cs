@@ -239,4 +239,5 @@ public partial class CBreakableProp : CBaseProp
 		set { Schema.SetValueType<bool>(this.Handle, "CBreakableProp", "m_bOriginalBlockLOS", value); }
 	}
 
+	public void CPropDataComponentPropertyChanged() => Utilities.SetStateChanged(this, "CBreakableProp", "m_CPropDataComponent");
 }

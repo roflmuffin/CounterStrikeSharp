@@ -35,4 +35,6 @@ public partial class CPulseGameBlackboard : CBaseEntity
 		set { Schema.SetString(this.Handle, "CPulseGameBlackboard", "m_strStateBlob", value); }
 	}
 
+	public void StrGraphNamePropertyChanged() => Utilities.SetStateChanged(this, "CPulseGameBlackboard", "m_strGraphName");
+	public void StrStateBlobPropertyChanged() => Utilities.SetStateChanged(this, "CPulseGameBlackboard", "m_strStateBlob");
 }

@@ -23,4 +23,5 @@ public partial class CAttributeContainer : CAttributeManager
 	[SchemaMember("CAttributeContainer", "m_Item")]
 	public CEconItemView Item => Schema.GetDeclaredClass<CEconItemView>(this.Handle, "CAttributeContainer", "m_Item");
 
+	public void ItemPropertyChanged() => Utilities.SetStateChanged(this, "CAttributeContainer", "m_Item");
 }

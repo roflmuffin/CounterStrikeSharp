@@ -171,4 +171,13 @@ public partial class CInferno : CBaseModelEntity
 		set { Schema.SetValueType<UInt16>(this.Handle, "CInferno", "m_nSourceItemDefIndex", value); }
 	}
 
+	public void FirePositionsPropertyChanged() => Utilities.SetStateChanged(this, "CInferno", "m_firePositions");
+	public void FireParentPositionsPropertyChanged() => Utilities.SetStateChanged(this, "CInferno", "m_fireParentPositions");
+	public void FireIsBurningPropertyChanged() => Utilities.SetStateChanged(this, "CInferno", "m_bFireIsBurning");
+	public void BurnNormalPropertyChanged() => Utilities.SetStateChanged(this, "CInferno", "m_BurnNormal");
+	public void FireCountPropertyChanged() => Utilities.SetStateChanged(this, "CInferno", "m_fireCount");
+	public void InfernoTypePropertyChanged() => Utilities.SetStateChanged(this, "CInferno", "m_nInfernoType");
+	public void FireEffectTickBeginPropertyChanged() => Utilities.SetStateChanged(this, "CInferno", "m_nFireEffectTickBegin");
+	public void FireLifetimePropertyChanged() => Utilities.SetStateChanged(this, "CInferno", "m_nFireLifetime");
+	public void InPostEffectTimePropertyChanged() => Utilities.SetStateChanged(this, "CInferno", "m_bInPostEffectTime");
 }

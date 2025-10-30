@@ -583,4 +583,40 @@ public partial class CBaseEntity : CEntityInstance
 	[SchemaMember("CBaseEntity", "m_pPulseGraphInstance")]
 	public CPulseGraphInstance_ServerEntity? PulseGraphInstance => Schema.GetPointer<CPulseGraphInstance_ServerEntity>(this.Handle, "CBaseEntity", "m_pPulseGraphInstance");
 
+	public void CBodyComponentPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_CBodyComponent");
+	public void HealthPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_iHealth");
+	public void MaxHealthPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_iMaxHealth");
+	public void LifeStatePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_lifeState");
+	public void TakesDamagePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_bTakesDamage");
+	public void TakeDamageFlagsPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_nTakeDamageFlags");
+	public void PlatformTypePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_nPlatformType");
+	public void MoveCollidePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_MoveCollide");
+	public void MoveTypePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_MoveType");
+	public void SubclassIDPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_nSubclassID");
+	public void AnimTimePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_flAnimTime");
+	public void SimulationTimePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_flSimulationTime");
+	public void CreateTimePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_flCreateTime");
+	public void ClientSideRagdollPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_bClientSideRagdoll");
+	public void InterpolationFramePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_ubInterpolationFrame");
+	public void TeamNumPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_iTeamNum");
+	public void SpeedPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_flSpeed");
+	public void SpawnflagsPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_spawnflags");
+	public void NextThinkTickPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_nNextThinkTick");
+	public void FlagsPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_fFlags");
+	public void VelocityPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_vecVelocity");
+	public void BaseVelocityPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_vecBaseVelocity");
+	public void EffectEntityPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_hEffectEntity");
+	public void OwnerEntityPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_hOwnerEntity");
+	public void EffectsPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_fEffects");
+	public void GroundEntityPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_hGroundEntity");
+	public void GroundBodyIndexPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_nGroundBodyIndex");
+	public void FrictionPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_flFriction");
+	public void ElasticityPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_flElasticity");
+	public void GravityScalePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_flGravityScale");
+	public void TimeScalePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_flTimeScale");
+	public void WaterLevelPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_flWaterLevel");
+	public void GravityDisabledPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_bGravityDisabled");
+	public void AnimatedEveryTickPropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_bAnimatedEveryTick");
+	public void NavIgnoreUntilTimePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_flNavIgnoreUntilTime");
+	public void BloodTypePropertyChanged() => Utilities.SetStateChanged(this, "CBaseEntity", "m_nBloodType");
 }

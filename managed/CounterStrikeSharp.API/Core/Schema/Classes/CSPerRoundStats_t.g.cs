@@ -123,4 +123,17 @@ public partial class CSPerRoundStats_t : NativeObject
 		set { Schema.SetValueType<Int32>(this.Handle, "CSPerRoundStats_t", "m_iEnemiesFlashed", value); }
 	}
 
+	public void KillsPropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iKills");
+	public void DeathsPropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iDeaths");
+	public void AssistsPropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iAssists");
+	public void DamagePropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iDamage");
+	public void EquipmentValuePropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iEquipmentValue");
+	public void MoneySavedPropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iMoneySaved");
+	public void KillRewardPropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iKillReward");
+	public void LiveTimePropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iLiveTime");
+	public void HeadShotKillsPropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iHeadShotKills");
+	public void ObjectivePropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iObjective");
+	public void CashEarnedPropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iCashEarned");
+	public void UtilityDamagePropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iUtilityDamage");
+	public void EnemiesFlashedPropertyChanged() => Utilities.SetStateChanged(this, "CSPerRoundStats_t", "m_iEnemiesFlashed");
 }

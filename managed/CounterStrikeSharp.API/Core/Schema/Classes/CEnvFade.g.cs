@@ -47,4 +47,5 @@ public partial class CEnvFade : CLogicalEntity
 	[SchemaMember("CEnvFade", "m_OnBeginFade")]
 	public CEntityIOOutput OnBeginFade => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CEnvFade", "m_OnBeginFade");
 
+	public void FadeColorPropertyChanged() => Utilities.SetStateChanged(this, "CEnvFade", "m_fadeColor");
 }

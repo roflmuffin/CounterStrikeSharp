@@ -87,4 +87,13 @@ public partial class CPlayer_CameraServices : CPlayerPawnComponent
 	[SchemaMember("CPlayer_CameraServices", "m_hTriggerSoundscapeList")]
 	public NetworkedVector<CHandle<CEnvSoundscapeTriggerable>> TriggerSoundscapeList => Schema.GetDeclaredClass<NetworkedVector<CHandle<CEnvSoundscapeTriggerable>>>(this.Handle, "CPlayer_CameraServices", "m_hTriggerSoundscapeList");
 
+	public void CsViewPunchAnglePropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_CameraServices", "m_vecCsViewPunchAngle");
+	public void CsViewPunchAngleTickPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_CameraServices", "m_nCsViewPunchAngleTick");
+	public void CsViewPunchAngleTickRatioPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_CameraServices", "m_flCsViewPunchAngleTickRatio");
+	public void PlayerFogPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_CameraServices", "m_PlayerFog");
+	public void ColorCorrectionCtrlPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_CameraServices", "m_hColorCorrectionCtrl");
+	public void ViewEntityPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_CameraServices", "m_hViewEntity");
+	public void TonemapControllerPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_CameraServices", "m_hTonemapController");
+	public void AudioPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_CameraServices", "m_audio");
+	public void PostProcessingVolumesPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_CameraServices", "m_PostProcessingVolumes");
 }

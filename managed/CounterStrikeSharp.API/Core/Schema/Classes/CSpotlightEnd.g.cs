@@ -51,4 +51,6 @@ public partial class CSpotlightEnd : CBaseModelEntity
 		set { Schema.SetValueType<Vector3>(this.Handle, "CSpotlightEnd", "m_vSpotlightOrg", value); }
 	}
 
+	public void LightScalePropertyChanged() => Utilities.SetStateChanged(this, "CSpotlightEnd", "m_flLightScale");
+	public void RadiusPropertyChanged() => Utilities.SetStateChanged(this, "CSpotlightEnd", "m_Radius");
 }

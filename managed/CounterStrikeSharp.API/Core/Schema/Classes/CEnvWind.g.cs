@@ -23,4 +23,5 @@ public partial class CEnvWind : CBaseEntity
 	[SchemaMember("CEnvWind", "m_EnvWindShared")]
 	public CEnvWindShared EnvWindShared => Schema.GetDeclaredClass<CEnvWindShared>(this.Handle, "CEnvWind", "m_EnvWindShared");
 
+	public void EnvWindSharedPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWind", "m_EnvWindShared");
 }

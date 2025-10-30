@@ -183,4 +183,7 @@ public partial class CChicken : CDynamicProp
 	[SchemaMember("CChicken", "m_BlockDirectionTimer")]
 	public CountdownTimer BlockDirectionTimer => Schema.GetDeclaredClass<CountdownTimer>(this.Handle, "CChicken", "m_BlockDirectionTimer");
 
+	public void AttributeManagerPropertyChanged() => Utilities.SetStateChanged(this, "CChicken", "m_AttributeManager");
+	public void JumpedThisFramePropertyChanged() => Utilities.SetStateChanged(this, "CChicken", "m_jumpedThisFrame");
+	public void LeaderPropertyChanged() => Utilities.SetStateChanged(this, "CChicken", "m_leader");
 }

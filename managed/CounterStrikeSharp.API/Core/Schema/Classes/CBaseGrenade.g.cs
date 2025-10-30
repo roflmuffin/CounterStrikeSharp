@@ -115,4 +115,9 @@ public partial class CBaseGrenade : CBaseFlex
 	[SchemaMember("CBaseGrenade", "m_hOriginalThrower")]
 	public CHandle<CCSPlayerPawn> OriginalThrower => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CBaseGrenade", "m_hOriginalThrower");
 
+	public void IsLivePropertyChanged() => Utilities.SetStateChanged(this, "CBaseGrenade", "m_bIsLive");
+	public void DmgRadiusPropertyChanged() => Utilities.SetStateChanged(this, "CBaseGrenade", "m_DmgRadius");
+	public void DetonateTimePropertyChanged() => Utilities.SetStateChanged(this, "CBaseGrenade", "m_flDetonateTime");
+	public void DamagePropertyChanged() => Utilities.SetStateChanged(this, "CBaseGrenade", "m_flDamage");
+	public void ThrowerPropertyChanged() => Utilities.SetStateChanged(this, "CBaseGrenade", "m_hThrower");
 }

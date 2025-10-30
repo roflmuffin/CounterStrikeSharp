@@ -51,4 +51,8 @@ public partial class CInfoFan : CPointEntity
 		set { Schema.SetString(this.Handle, "CInfoFan", "m_FanForceCurveString", value); }
 	}
 
+	public void FanForceMaxRadiusPropertyChanged() => Utilities.SetStateChanged(this, "CInfoFan", "m_fFanForceMaxRadius");
+	public void FanForceMinRadiusPropertyChanged() => Utilities.SetStateChanged(this, "CInfoFan", "m_fFanForceMinRadius");
+	public void CurveDistRangePropertyChanged() => Utilities.SetStateChanged(this, "CInfoFan", "m_flCurveDistRange");
+	public void FanForceCurveStringPropertyChanged() => Utilities.SetStateChanged(this, "CInfoFan", "m_FanForceCurveString");
 }

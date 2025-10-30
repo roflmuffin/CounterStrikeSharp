@@ -159,4 +159,20 @@ public partial class CRopeKeyframe : CBaseModelEntity
 	[SchemaMember("CRopeKeyframe", "m_hEndPoint")]
 	public CHandle<CBaseEntity> EndPoint => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CRopeKeyframe", "m_hEndPoint");
 
+	public void RopeFlagsPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_RopeFlags");
+	public void SlackPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_Slack");
+	public void WidthPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_Width");
+	public void TextureScalePropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_TextureScale");
+	public void SegmentsPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_nSegments");
+	public void ConstrainBetweenEndpointsPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_bConstrainBetweenEndpoints");
+	public void RopeMaterialModelIndexPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_iRopeMaterialModelIndex");
+	public void SubdivPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_Subdiv");
+	public void ChangeCountPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_nChangeCount");
+	public void RopeLengthPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_RopeLength");
+	public void LockedPointsPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_fLockedPoints");
+	public void ScrollSpeedPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_flScrollSpeed");
+	public void StartPointPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_hStartPoint");
+	public void EndPointPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_hEndPoint");
+	public void StartAttachmentPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_iStartAttachment");
+	public void EndAttachmentPropertyChanged() => Utilities.SetStateChanged(this, "CRopeKeyframe", "m_iEndAttachment");
 }

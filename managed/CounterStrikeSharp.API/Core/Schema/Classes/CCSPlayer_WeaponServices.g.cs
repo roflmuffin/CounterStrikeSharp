@@ -131,4 +131,9 @@ public partial class CCSPlayer_WeaponServices : CPlayer_WeaponServices
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayer_WeaponServices", "m_bBlockInspectUntilNextGraphUpdate", value); }
 	}
 
+	public void NextAttackPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_WeaponServices", "m_flNextAttack");
+	public void IsLookingAtWeaponPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_WeaponServices", "m_bIsLookingAtWeapon");
+	public void IsHoldingLookAtWeaponPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_WeaponServices", "m_bIsHoldingLookAtWeapon");
+	public void NetworkAnimTimingPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_WeaponServices", "m_networkAnimTiming");
+	public void BlockInspectUntilNextGraphUpdatePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_WeaponServices", "m_bBlockInspectUntilNextGraphUpdate");
 }

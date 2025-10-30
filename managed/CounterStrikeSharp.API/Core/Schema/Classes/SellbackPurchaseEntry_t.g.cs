@@ -55,4 +55,9 @@ public partial class SellbackPurchaseEntry_t : NativeObject
 	[SchemaMember("SellbackPurchaseEntry_t", "m_hItem")]
 	public CHandle<CEntityInstance> Item => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "SellbackPurchaseEntry_t", "m_hItem");
 
+	public void DefIdxPropertyChanged() => Utilities.SetStateChanged(this, "SellbackPurchaseEntry_t", "m_unDefIdx");
+	public void CostPropertyChanged() => Utilities.SetStateChanged(this, "SellbackPurchaseEntry_t", "m_nCost");
+	public void PrevArmorPropertyChanged() => Utilities.SetStateChanged(this, "SellbackPurchaseEntry_t", "m_nPrevArmor");
+	public void PrevHelmetPropertyChanged() => Utilities.SetStateChanged(this, "SellbackPurchaseEntry_t", "m_bPrevHelmet");
+	public void ItemPropertyChanged() => Utilities.SetStateChanged(this, "SellbackPurchaseEntry_t", "m_hItem");
 }

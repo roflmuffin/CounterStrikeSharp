@@ -43,4 +43,8 @@ public partial class CPlayer_WeaponServices : CPlayerPawnComponent
 		set { Schema.SetValueType<bool>(this.Handle, "CPlayer_WeaponServices", "m_bPreventWeaponPickup", value); }
 	}
 
+	public void MyWeaponsPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_WeaponServices", "m_hMyWeapons");
+	public void ActiveWeaponPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_WeaponServices", "m_hActiveWeapon");
+	public void LastWeaponPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_WeaponServices", "m_hLastWeapon");
+	public void AmmoPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_WeaponServices", "m_iAmmo");
 }

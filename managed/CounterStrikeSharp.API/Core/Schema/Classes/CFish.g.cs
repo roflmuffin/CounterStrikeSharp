@@ -179,4 +179,10 @@ public partial class CFish : CBaseAnimGraph
 	[SchemaMember("CFish", "m_visible")]
 	public NetworkedVector<CFish?> Visible => Schema.GetDeclaredClass<NetworkedVector<CFish?>>(this.Handle, "CFish", "m_visible");
 
+	public void XPropertyChanged() => Utilities.SetStateChanged(this, "CFish", "m_x");
+	public void YPropertyChanged() => Utilities.SetStateChanged(this, "CFish", "m_y");
+	public void ZPropertyChanged() => Utilities.SetStateChanged(this, "CFish", "m_z");
+	public void AnglePropertyChanged() => Utilities.SetStateChanged(this, "CFish", "m_angle");
+	public void PoolOriginPropertyChanged() => Utilities.SetStateChanged(this, "CFish", "m_poolOrigin");
+	public void FishWaterLevelPropertyChanged() => Utilities.SetStateChanged(this, "CFish", "m_waterLevel");
 }

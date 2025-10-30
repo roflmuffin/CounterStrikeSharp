@@ -303,4 +303,39 @@ public partial class CEnvVolumetricFogController : CBaseEntity
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvVolumetricFogController", "m_bFirstTime", value); }
 	}
 
+	public void ScatteringPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flScattering");
+	public void TintColorPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_TintColor");
+	public void AnisotropyPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flAnisotropy");
+	public void FadeSpeedPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flFadeSpeed");
+	public void DrawDistancePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flDrawDistance");
+	public void FadeInStartPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flFadeInStart");
+	public void FadeInEndPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flFadeInEnd");
+	public void IndirectStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flIndirectStrength");
+	public void VolumeDepthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_nVolumeDepth");
+	public void FirstVolumeSliceThicknessPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_fFirstVolumeSliceThickness");
+	public void IndirectTextureDimXPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_nIndirectTextureDimX");
+	public void IndirectTextureDimYPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_nIndirectTextureDimY");
+	public void IndirectTextureDimZPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_nIndirectTextureDimZ");
+	public void BoxMinsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_vBoxMins");
+	public void BoxMaxsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_vBoxMaxs");
+	public void ActivePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_bActive");
+	public void StartAnisoTimePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flStartAnisoTime");
+	public void StartScatterTimePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flStartScatterTime");
+	public void StartDrawDistanceTimePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flStartDrawDistanceTime");
+	public void StartAnisotropyPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flStartAnisotropy");
+	public void StartScatteringPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flStartScattering");
+	public void StartDrawDistancePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flStartDrawDistance");
+	public void DefaultAnisotropyPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flDefaultAnisotropy");
+	public void DefaultScatteringPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flDefaultScattering");
+	public void DefaultDrawDistancePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_flDefaultDrawDistance");
+	public void StartDisabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_bStartDisabled");
+	public void EnableIndirectPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_bEnableIndirect");
+	public void IsMasterPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_bIsMaster");
+	public void FogIndirectTexturePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_hFogIndirectTexture");
+	public void ForceRefreshCountPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_nForceRefreshCount");
+	public void NoiseSpeedPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_fNoiseSpeed");
+	public void NoiseStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_fNoiseStrength");
+	public void NoiseScalePropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_vNoiseScale");
+	public void WindSpeedPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_fWindSpeed");
+	public void WindDirectionPropertyChanged() => Utilities.SetStateChanged(this, "CEnvVolumetricFogController", "m_vWindDirection");
 }

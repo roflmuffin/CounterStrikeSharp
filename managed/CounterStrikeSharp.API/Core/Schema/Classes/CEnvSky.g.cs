@@ -107,4 +107,16 @@ public partial class CEnvSky : CBaseModelEntity
 		set { Schema.SetValueType<bool>(this.Handle, "CEnvSky", "m_bEnabled", value); }
 	}
 
+	public void SkyMaterialPropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_hSkyMaterial");
+	public void SkyMaterialLightingOnlyPropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_hSkyMaterialLightingOnly");
+	public void StartDisabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_bStartDisabled");
+	public void TintColorPropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_vTintColor");
+	public void TintColorLightingOnlyPropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_vTintColorLightingOnly");
+	public void BrightnessScalePropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_flBrightnessScale");
+	public void FogTypePropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_nFogType");
+	public void FogMinStartPropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_flFogMinStart");
+	public void FogMinEndPropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_flFogMinEnd");
+	public void FogMaxStartPropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_flFogMaxStart");
+	public void FogMaxEndPropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_flFogMaxEnd");
+	public void EnabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvSky", "m_bEnabled");
 }

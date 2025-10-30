@@ -183,4 +183,18 @@ public partial class CBaseAnimGraphController : CSkeletonAnimationController
 		set { Schema.SetValueType<Int32>(this.Handle, "CBaseAnimGraphController", "m_nServerSerializationContextIteration", value); }
 	}
 
+	public void AnimGraphNetworkedVarsPropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraphController", "m_animGraphNetworkedVars");
+	public void SequencePropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraphController", "m_hSequence");
+	public void SeqStartTimePropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraphController", "m_flSeqStartTime");
+	public void SeqFixedCyclePropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraphController", "m_flSeqFixedCycle");
+	public void AnimLoopModePropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraphController", "m_nAnimLoopMode");
+	public void PlaybackRatePropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraphController", "m_flPlaybackRate");
+	public void GraphDefinitionAG2PropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraphController", "m_hGraphDefinitionAG2");
+	public void IsUsingAG2PropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraphController", "m_bIsUsingAG2");
+	public void SerializedPoseRecipeAG2PropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraphController", "m_serializedPoseRecipeAG2");
+	public void SerializePoseRecipeSizeAG2PropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraphController", "m_nSerializePoseRecipeSizeAG2");
+	public void SerializePoseRecipeVersionAG2PropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraphController", "m_nSerializePoseRecipeVersionAG2");
+	public void GraphCreationFlagsAG2PropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraphController", "m_nGraphCreationFlagsAG2");
+	public void ServerGraphDefReloadCountAG2PropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraphController", "m_nServerGraphDefReloadCountAG2");
+	public void ServerSerializationContextIterationPropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraphController", "m_nServerSerializationContextIteration");
 }

@@ -43,4 +43,7 @@ public partial class CSoundAreaEntityBase : CBaseEntity
 		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundAreaEntityBase", "m_vPos", value); }
 	}
 
+	public void DisabledPropertyChanged() => Utilities.SetStateChanged(this, "CSoundAreaEntityBase", "m_bDisabled");
+	public void SoundAreaTypePropertyChanged() => Utilities.SetStateChanged(this, "CSoundAreaEntityBase", "m_iszSoundAreaType");
+	public void PosPropertyChanged() => Utilities.SetStateChanged(this, "CSoundAreaEntityBase", "m_vPos");
 }

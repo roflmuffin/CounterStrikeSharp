@@ -99,4 +99,9 @@ public partial class CC4 : CCSWeaponBase
 		set { Schema.SetValueType<bool>(this.Handle, "CC4", "m_bBombPlanted", value); }
 	}
 
+	public void StartedArmingPropertyChanged() => Utilities.SetStateChanged(this, "CC4", "m_bStartedArming");
+	public void ArmedTimePropertyChanged() => Utilities.SetStateChanged(this, "CC4", "m_fArmedTime");
+	public void BombPlacedAnimationPropertyChanged() => Utilities.SetStateChanged(this, "CC4", "m_bBombPlacedAnimation");
+	public void IsPlantingViaUsePropertyChanged() => Utilities.SetStateChanged(this, "CC4", "m_bIsPlantingViaUse");
+	public void EntitySpottedStatePropertyChanged() => Utilities.SetStateChanged(this, "CC4", "m_entitySpottedState");
 }

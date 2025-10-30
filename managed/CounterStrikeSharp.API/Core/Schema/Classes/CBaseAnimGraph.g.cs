@@ -103,4 +103,11 @@ public partial class CBaseAnimGraph : CBaseModelEntity
 	[SchemaMember("CBaseAnimGraph", "m_xParentedRagdollRootInEntitySpace")]
 	public CTransform XParentedRagdollRootInEntitySpace => Schema.GetDeclaredClass<CTransform>(this.Handle, "CBaseAnimGraph", "m_xParentedRagdollRootInEntitySpace");
 
+	public void InitiallyPopulateInterpHistoryPropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraph", "m_bInitiallyPopulateInterpHistory");
+	public void AnimGraphUpdateEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraph", "m_bAnimGraphUpdateEnabled");
+	public void ForcePropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraph", "m_vecForce");
+	public void ForceBonePropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraph", "m_nForceBone");
+	public void RagdollPosePropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraph", "m_RagdollPose");
+	public void RagdollEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraph", "m_bRagdollEnabled");
+	public void RagdollClientSidePropertyChanged() => Utilities.SetStateChanged(this, "CBaseAnimGraph", "m_bRagdollClientSide");
 }

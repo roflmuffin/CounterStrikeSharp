@@ -23,4 +23,5 @@ public partial class CBodyComponentPoint : CBodyComponent
 	[SchemaMember("CBodyComponentPoint", "m_sceneNode")]
 	public new CGameSceneNode SceneNode => Schema.GetDeclaredClass<CGameSceneNode>(this.Handle, "CBodyComponentPoint", "m_sceneNode");
 
+	public void SceneNodePropertyChanged() => Utilities.SetStateChanged(this, "CBodyComponentPoint", "m_sceneNode");
 }

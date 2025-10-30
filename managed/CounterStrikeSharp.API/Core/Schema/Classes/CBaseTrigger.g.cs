@@ -79,4 +79,5 @@ public partial class CBaseTrigger : CBaseToggle
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseTrigger", "m_bUseAsyncQueries", value); }
 	}
 
+	public void DisabledPropertyChanged() => Utilities.SetStateChanged(this, "CBaseTrigger", "m_bDisabled");
 }

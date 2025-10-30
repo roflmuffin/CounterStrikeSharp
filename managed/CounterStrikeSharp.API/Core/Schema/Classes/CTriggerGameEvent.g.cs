@@ -43,4 +43,7 @@ public partial class CTriggerGameEvent : CBaseTrigger
 		set { Schema.SetString(this.Handle, "CTriggerGameEvent", "m_strTriggerID", value); }
 	}
 
+	public void StrStartTouchEventNamePropertyChanged() => Utilities.SetStateChanged(this, "CTriggerGameEvent", "m_strStartTouchEventName");
+	public void StrEndTouchEventNamePropertyChanged() => Utilities.SetStateChanged(this, "CTriggerGameEvent", "m_strEndTouchEventName");
+	public void StrTriggerIDPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerGameEvent", "m_strTriggerID");
 }

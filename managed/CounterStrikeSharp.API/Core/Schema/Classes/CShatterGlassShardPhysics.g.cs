@@ -39,4 +39,5 @@ public partial class CShatterGlassShardPhysics : CPhysicsProp
 	[SchemaMember("CShatterGlassShardPhysics", "m_ShardDesc")]
 	public shard_model_desc_t ShardDesc => Schema.GetDeclaredClass<shard_model_desc_t>(this.Handle, "CShatterGlassShardPhysics", "m_ShardDesc");
 
+	public void ShardDescPropertyChanged() => Utilities.SetStateChanged(this, "CShatterGlassShardPhysics", "m_ShardDesc");
 }

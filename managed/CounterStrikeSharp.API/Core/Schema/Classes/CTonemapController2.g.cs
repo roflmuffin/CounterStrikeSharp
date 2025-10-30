@@ -59,4 +59,9 @@ public partial class CTonemapController2 : CBaseEntity
 		set { Schema.SetValueType<float>(this.Handle, "CTonemapController2", "m_flTonemapEVSmoothingRange", value); }
 	}
 
+	public void AutoExposureMinPropertyChanged() => Utilities.SetStateChanged(this, "CTonemapController2", "m_flAutoExposureMin");
+	public void AutoExposureMaxPropertyChanged() => Utilities.SetStateChanged(this, "CTonemapController2", "m_flAutoExposureMax");
+	public void ExposureAdaptationSpeedUpPropertyChanged() => Utilities.SetStateChanged(this, "CTonemapController2", "m_flExposureAdaptationSpeedUp");
+	public void ExposureAdaptationSpeedDownPropertyChanged() => Utilities.SetStateChanged(this, "CTonemapController2", "m_flExposureAdaptationSpeedDown");
+	public void TonemapEVSmoothingRangePropertyChanged() => Utilities.SetStateChanged(this, "CTonemapController2", "m_flTonemapEVSmoothingRange");
 }

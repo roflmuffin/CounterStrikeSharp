@@ -111,4 +111,16 @@ public partial class CPostProcessingVolume : CBaseTrigger
 		set { Schema.SetValueType<bool>(this.Handle, "CPostProcessingVolume", "m_bExposureControl", value); }
 	}
 
+	public void PostSettingsPropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_hPostSettings");
+	public void FadeDurationPropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_flFadeDuration");
+	public void MinLogExposurePropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_flMinLogExposure");
+	public void MaxLogExposurePropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_flMaxLogExposure");
+	public void MinExposurePropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_flMinExposure");
+	public void MaxExposurePropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_flMaxExposure");
+	public void ExposureCompensationPropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_flExposureCompensation");
+	public void ExposureFadeSpeedUpPropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_flExposureFadeSpeedUp");
+	public void ExposureFadeSpeedDownPropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_flExposureFadeSpeedDown");
+	public void TonemapEVSmoothingRangePropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_flTonemapEVSmoothingRange");
+	public void MasterPropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_bMaster");
+	public void ExposureControlPropertyChanged() => Utilities.SetStateChanged(this, "CPostProcessingVolume", "m_bExposureControl");
 }

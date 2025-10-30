@@ -39,4 +39,6 @@ public partial class CSkyCamera : CBaseEntity
 	[SchemaMember("CSkyCamera", "m_pNext")]
 	public CSkyCamera? Next => Schema.GetPointer<CSkyCamera>(this.Handle, "CSkyCamera", "m_pNext");
 
+	public void SkyboxDataPropertyChanged() => Utilities.SetStateChanged(this, "CSkyCamera", "m_skyboxData");
+	public void SkyboxSlotTokenPropertyChanged() => Utilities.SetStateChanged(this, "CSkyCamera", "m_skyboxSlotToken");
 }

@@ -75,4 +75,9 @@ public partial class CModelState : NativeObject
 		set { Schema.SetValueType<sbyte>(this.Handle, "CModelState", "m_nClothUpdateFlags", value); }
 	}
 
+	public void ModelPropertyChanged() => Utilities.SetStateChanged(this, "CModelState", "m_hModel");
+	public void ClientClothCreationSuppressedPropertyChanged() => Utilities.SetStateChanged(this, "CModelState", "m_bClientClothCreationSuppressed");
+	public void MeshGroupMaskPropertyChanged() => Utilities.SetStateChanged(this, "CModelState", "m_MeshGroupMask");
+	public void BodyGroupChoicesPropertyChanged() => Utilities.SetStateChanged(this, "CModelState", "m_nBodyGroupChoices");
+	public void IdealMotionTypePropertyChanged() => Utilities.SetStateChanged(this, "CModelState", "m_nIdealMotionType");
 }

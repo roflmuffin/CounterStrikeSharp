@@ -207,4 +207,18 @@ public partial class CPlantedC4 : CBaseAnimGraph
 		set { Schema.SetValueType<float>(this.Handle, "CPlantedC4", "m_flLastSpinDetectionTime", value); }
 	}
 
+	public void BombTickingPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_bBombTicking");
+	public void C4BlowPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_flC4Blow");
+	public void BombSitePropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_nBombSite");
+	public void SourceSoundscapeHashPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_nSourceSoundscapeHash");
+	public void AttributeManagerPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_AttributeManager");
+	public void CannotBeDefusedPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_bCannotBeDefused");
+	public void EntitySpottedStatePropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_entitySpottedState");
+	public void HasExplodedPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_bHasExploded");
+	public void TimerLengthPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_flTimerLength");
+	public void BeingDefusedPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_bBeingDefused");
+	public void DefuseLengthPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_flDefuseLength");
+	public void DefuseCountDownPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_flDefuseCountDown");
+	public void BombDefusedPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_bBombDefused");
+	public void BombDefuserPropertyChanged() => Utilities.SetStateChanged(this, "CPlantedC4", "m_hBombDefuser");
 }

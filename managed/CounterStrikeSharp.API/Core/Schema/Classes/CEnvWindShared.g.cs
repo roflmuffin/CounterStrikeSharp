@@ -143,4 +143,18 @@ public partial class CEnvWindShared : NativeObject
 	[SchemaMember("CEnvWindShared", "m_hEntOwner")]
 	public CHandle<CBaseEntity> EntOwner => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEnvWindShared", "m_hEntOwner");
 
+	public void StartTimePropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_flStartTime");
+	public void WindSeedPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_iWindSeed");
+	public void MinWindPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_iMinWind");
+	public void MaxWindPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_iMaxWind");
+	public void WindRadiusPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_windRadius");
+	public void MinGustPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_iMinGust");
+	public void MaxGustPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_iMaxGust");
+	public void MinGustDelayPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_flMinGustDelay");
+	public void MaxGustDelayPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_flMaxGustDelay");
+	public void GustDurationPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_flGustDuration");
+	public void GustDirChangePropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_iGustDirChange");
+	public void InitialWindDirPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_iInitialWindDir");
+	public void InitialWindSpeedPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_flInitialWindSpeed");
+	public void LocationPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_location");
 }

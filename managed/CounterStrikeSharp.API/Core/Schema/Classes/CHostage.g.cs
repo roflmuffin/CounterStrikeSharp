@@ -275,4 +275,16 @@ public partial class CHostage : CHostageExpresserShim
 		set { Schema.SetValueType<Vector3>(this.Handle, "CHostage", "m_vecHostageResetPosition", value); }
 	}
 
+	public void EntitySpottedStatePropertyChanged() => Utilities.SetStateChanged(this, "CHostage", "m_entitySpottedState");
+	public void VelPropertyChanged() => Utilities.SetStateChanged(this, "CHostage", "m_vel");
+	public void IsRescuedPropertyChanged() => Utilities.SetStateChanged(this, "CHostage", "m_isRescued");
+	public void JumpedThisFramePropertyChanged() => Utilities.SetStateChanged(this, "CHostage", "m_jumpedThisFrame");
+	public void HostageStatePropertyChanged() => Utilities.SetStateChanged(this, "CHostage", "m_nHostageState");
+	public void LeaderPropertyChanged() => Utilities.SetStateChanged(this, "CHostage", "m_leader");
+	public void ReuseTimerPropertyChanged() => Utilities.SetStateChanged(this, "CHostage", "m_reuseTimer");
+	public void HandsHaveBeenCutPropertyChanged() => Utilities.SetStateChanged(this, "CHostage", "m_bHandsHaveBeenCut");
+	public void HostageGrabberPropertyChanged() => Utilities.SetStateChanged(this, "CHostage", "m_hHostageGrabber");
+	public void RescueStartTimePropertyChanged() => Utilities.SetStateChanged(this, "CHostage", "m_flRescueStartTime");
+	public void GrabSuccessTimePropertyChanged() => Utilities.SetStateChanged(this, "CHostage", "m_flGrabSuccessTime");
+	public void DropStartTimePropertyChanged() => Utilities.SetStateChanged(this, "CHostage", "m_flDropStartTime");
 }

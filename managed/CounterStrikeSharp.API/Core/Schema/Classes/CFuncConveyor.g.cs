@@ -87,4 +87,10 @@ public partial class CFuncConveyor : CBaseModelEntity
 	[SchemaMember("CFuncConveyor", "m_hConveyorModels")]
 	public NetworkedVector<CHandle<CBaseEntity>> HConveyorModels => Schema.GetDeclaredClass<NetworkedVector<CHandle<CBaseEntity>>>(this.Handle, "CFuncConveyor", "m_hConveyorModels");
 
+	public void MoveDirEntitySpacePropertyChanged() => Utilities.SetStateChanged(this, "CFuncConveyor", "m_vecMoveDirEntitySpace");
+	public void TargetSpeedPropertyChanged() => Utilities.SetStateChanged(this, "CFuncConveyor", "m_flTargetSpeed");
+	public void TransitionStartTickPropertyChanged() => Utilities.SetStateChanged(this, "CFuncConveyor", "m_nTransitionStartTick");
+	public void TransitionDurationTicksPropertyChanged() => Utilities.SetStateChanged(this, "CFuncConveyor", "m_nTransitionDurationTicks");
+	public void TransitionStartSpeedPropertyChanged() => Utilities.SetStateChanged(this, "CFuncConveyor", "m_flTransitionStartSpeed");
+	public void HConveyorModelsPropertyChanged() => Utilities.SetStateChanged(this, "CFuncConveyor", "m_hConveyorModels");
 }

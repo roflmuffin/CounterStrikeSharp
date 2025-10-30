@@ -63,4 +63,9 @@ public partial class CCSPlayerBase_CameraServices : CPlayer_CameraServices
 	[SchemaMember("CCSPlayerBase_CameraServices", "m_hLastFogTrigger")]
 	public CHandle<CBaseEntity> LastFogTrigger => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSPlayerBase_CameraServices", "m_hLastFogTrigger");
 
+	public void FOVPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerBase_CameraServices", "m_iFOV");
+	public void FOVStartPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerBase_CameraServices", "m_iFOVStart");
+	public void FOVTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerBase_CameraServices", "m_flFOVTime");
+	public void FOVRatePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerBase_CameraServices", "m_flFOVRate");
+	public void ZoomOwnerPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerBase_CameraServices", "m_hZoomOwner");
 }

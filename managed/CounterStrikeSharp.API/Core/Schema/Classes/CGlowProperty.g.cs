@@ -107,4 +107,13 @@ public partial class CGlowProperty : NativeObject
 		set { Schema.SetValueType<bool>(this.Handle, "CGlowProperty", "m_bGlowing", value); }
 	}
 
+	public void GlowTypePropertyChanged() => Utilities.SetStateChanged(this, "CGlowProperty", "m_iGlowType");
+	public void GlowTeamPropertyChanged() => Utilities.SetStateChanged(this, "CGlowProperty", "m_iGlowTeam");
+	public void GlowRangePropertyChanged() => Utilities.SetStateChanged(this, "CGlowProperty", "m_nGlowRange");
+	public void GlowRangeMinPropertyChanged() => Utilities.SetStateChanged(this, "CGlowProperty", "m_nGlowRangeMin");
+	public void GlowColorOverridePropertyChanged() => Utilities.SetStateChanged(this, "CGlowProperty", "m_glowColorOverride");
+	public void FlashingPropertyChanged() => Utilities.SetStateChanged(this, "CGlowProperty", "m_bFlashing");
+	public void GlowTimePropertyChanged() => Utilities.SetStateChanged(this, "CGlowProperty", "m_flGlowTime");
+	public void GlowStartTimePropertyChanged() => Utilities.SetStateChanged(this, "CGlowProperty", "m_flGlowStartTime");
+	public void EligibleForScreenHighlightPropertyChanged() => Utilities.SetStateChanged(this, "CGlowProperty", "m_bEligibleForScreenHighlight");
 }

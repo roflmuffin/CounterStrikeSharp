@@ -91,4 +91,8 @@ public partial class CBaseClientUIEntity : CBaseModelEntity
 	[SchemaMember("CBaseClientUIEntity", "m_CustomOutput9")]
 	public CEntityIOOutput CustomOutput9 => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBaseClientUIEntity", "m_CustomOutput9");
 
+	public void EnabledPropertyChanged() => Utilities.SetStateChanged(this, "CBaseClientUIEntity", "m_bEnabled");
+	public void DialogXMLNamePropertyChanged() => Utilities.SetStateChanged(this, "CBaseClientUIEntity", "m_DialogXMLName");
+	public void PanelClassNamePropertyChanged() => Utilities.SetStateChanged(this, "CBaseClientUIEntity", "m_PanelClassName");
+	public void PanelIDPropertyChanged() => Utilities.SetStateChanged(this, "CBaseClientUIEntity", "m_PanelID");
 }

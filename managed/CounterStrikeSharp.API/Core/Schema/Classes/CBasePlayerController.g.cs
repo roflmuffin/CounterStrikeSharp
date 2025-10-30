@@ -199,4 +199,12 @@ public partial class CBasePlayerController : CBaseEntity
 		set { Schema.SetValueType<UInt32>(this.Handle, "CBasePlayerController", "m_iDesiredFOV", value); }
 	}
 
+	public void TickBasePropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerController", "m_nTickBase");
+	public void PawnPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerController", "m_hPawn");
+	public void KnownTeamMismatchPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerController", "m_bKnownTeamMismatch");
+	public void ConnectedPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerController", "m_iConnected");
+	public void PlayerNamePropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerController", "m_iszPlayerName");
+	public void SteamIDPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerController", "m_steamID");
+	public void NoClipEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerController", "m_bNoClipEnabled");
+	public void DesiredFOVPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerController", "m_iDesiredFOV");
 }

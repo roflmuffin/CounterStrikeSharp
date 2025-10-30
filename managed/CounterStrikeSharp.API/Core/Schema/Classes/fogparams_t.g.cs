@@ -219,4 +219,27 @@ public partial class fogparams_t : NativeObject
 		set { Schema.SetValueType<bool>(this.Handle, "fogparams_t", "m_bPadding", value); }
 	}
 
+	public void DirPrimaryPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "dirPrimary");
+	public void ColorPrimaryPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "colorPrimary");
+	public void ColorSecondaryPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "colorSecondary");
+	public void ColorPrimaryLerpToPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "colorPrimaryLerpTo");
+	public void ColorSecondaryLerpToPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "colorSecondaryLerpTo");
+	public void StartPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "start");
+	public void EndPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "end");
+	public void FarzPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "farz");
+	public void MaxdensityPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "maxdensity");
+	public void ExponentPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "exponent");
+	public void HDRColorScalePropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "HDRColorScale");
+	public void SkyboxFogFactorPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "skyboxFogFactor");
+	public void SkyboxFogFactorLerpToPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "skyboxFogFactorLerpTo");
+	public void StartLerpToPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "startLerpTo");
+	public void EndLerpToPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "endLerpTo");
+	public void MaxdensityLerpToPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "maxdensityLerpTo");
+	public void LerptimePropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "lerptime");
+	public void DurationPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "duration");
+	public void BlendtobackgroundPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "blendtobackground");
+	public void ScatteringPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "scattering");
+	public void LocallightscalePropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "locallightscale");
+	public void EnablePropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "enable");
+	public void BlendPropertyChanged() => Utilities.SetStateChanged(this, "fogparams_t", "blend");
 }

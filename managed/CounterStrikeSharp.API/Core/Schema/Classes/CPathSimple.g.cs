@@ -39,4 +39,6 @@ public partial class CPathSimple : CBaseEntity
 		set { Schema.SetValueType<bool>(this.Handle, "CPathSimple", "m_bClosedLoop", value); }
 	}
 
+	public void CPathQueryComponentPropertyChanged() => Utilities.SetStateChanged(this, "CPathSimple", "m_CPathQueryComponent");
+	public void PathStringPropertyChanged() => Utilities.SetStateChanged(this, "CPathSimple", "m_pathString");
 }

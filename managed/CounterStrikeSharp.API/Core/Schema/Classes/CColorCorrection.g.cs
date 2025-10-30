@@ -155,4 +155,15 @@ public partial class CColorCorrection : CBaseEntity
 		set { Schema.SetString(this.Handle, "CColorCorrection", "m_lookupFilename", value); }
 	}
 
+	public void FadeInDurationPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_flFadeInDuration");
+	public void FadeOutDurationPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_flFadeOutDuration");
+	public void MaxWeightPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_flMaxWeight");
+	public void EnabledPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_bEnabled");
+	public void MasterPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_bMaster");
+	public void ClientSidePropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_bClientSide");
+	public void ExclusivePropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_bExclusive");
+	public void MinFalloffPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_MinFalloff");
+	public void MaxFalloffPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_MaxFalloff");
+	public void CurWeightPropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_flCurWeight");
+	public void NetlookupFilenamePropertyChanged() => Utilities.SetStateChanged(this, "CColorCorrection", "m_netlookupFilename");
 }

@@ -35,4 +35,6 @@ public partial class CSoundEventOBBEntity : CSoundEventEntity
 		set { Schema.SetValueType<Vector3>(this.Handle, "CSoundEventOBBEntity", "m_vMaxs", value); }
 	}
 
+	public void MinsPropertyChanged() => Utilities.SetStateChanged(this, "CSoundEventOBBEntity", "m_vMins");
+	public void MaxsPropertyChanged() => Utilities.SetStateChanged(this, "CSoundEventOBBEntity", "m_vMaxs");
 }

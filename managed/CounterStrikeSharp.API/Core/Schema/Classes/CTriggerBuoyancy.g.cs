@@ -31,4 +31,5 @@ public partial class CTriggerBuoyancy : CBaseTrigger
 		set { Schema.SetValueType<float>(this.Handle, "CTriggerBuoyancy", "m_flFluidDensity", value); }
 	}
 
+	public void FluidDensityPropertyChanged() => Utilities.SetStateChanged(this, "CTriggerBuoyancy", "m_flFluidDensity");
 }

@@ -127,4 +127,5 @@ public partial class fogplayerparams_t : NativeObject
 		set { Schema.SetValueType<float>(this.Handle, "fogplayerparams_t", "m_flNewFarZ", value); }
 	}
 
+	public void CtrlPropertyChanged() => Utilities.SetStateChanged(this, "fogplayerparams_t", "m_hCtrl");
 }

@@ -115,4 +115,15 @@ public partial class CEconItemView : IEconItemInterface
 		set { Schema.SetStringBytes(this.Handle, "CEconItemView", "m_szCustomNameOverride", value, 161); }
 	}
 
+	public void ItemDefinitionIndexPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_iItemDefinitionIndex");
+	public void EntityQualityPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_iEntityQuality");
+	public void EntityLevelPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_iEntityLevel");
+	public void ItemIDHighPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_iItemIDHigh");
+	public void ItemIDLowPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_iItemIDLow");
+	public void AccountIDPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_iAccountID");
+	public void InventoryPositionPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_iInventoryPosition");
+	public void InitializedPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_bInitialized");
+	public void AttributeListPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_AttributeList");
+	public void NetworkedDynamicAttributesPropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_NetworkedDynamicAttributes");
+	public void CustomNamePropertyChanged() => Utilities.SetStateChanged(this, "CEconItemView", "m_szCustomName");
 }

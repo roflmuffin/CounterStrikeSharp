@@ -115,4 +115,16 @@ public partial class CPathParticleRope : CBaseEntity
 	[SchemaMember("CPathParticleRope", "m_PathNodes_RadiusScale")]
 	public NetworkedVector<float> PathNodes_RadiusScale => Schema.GetDeclaredClass<NetworkedVector<float>>(this.Handle, "CPathParticleRope", "m_PathNodes_RadiusScale");
 
+	public void ParticleSpacingPropertyChanged() => Utilities.SetStateChanged(this, "CPathParticleRope", "m_flParticleSpacing");
+	public void SlackPropertyChanged() => Utilities.SetStateChanged(this, "CPathParticleRope", "m_flSlack");
+	public void RadiusPropertyChanged() => Utilities.SetStateChanged(this, "CPathParticleRope", "m_flRadius");
+	public void ColorTintPropertyChanged() => Utilities.SetStateChanged(this, "CPathParticleRope", "m_ColorTint");
+	public void EffectStatePropertyChanged() => Utilities.SetStateChanged(this, "CPathParticleRope", "m_nEffectState");
+	public void EffectIndexPropertyChanged() => Utilities.SetStateChanged(this, "CPathParticleRope", "m_iEffectIndex");
+	public void PathNodes_PositionPropertyChanged() => Utilities.SetStateChanged(this, "CPathParticleRope", "m_PathNodes_Position");
+	public void PathNodes_TangentInPropertyChanged() => Utilities.SetStateChanged(this, "CPathParticleRope", "m_PathNodes_TangentIn");
+	public void PathNodes_TangentOutPropertyChanged() => Utilities.SetStateChanged(this, "CPathParticleRope", "m_PathNodes_TangentOut");
+	public void PathNodes_ColorPropertyChanged() => Utilities.SetStateChanged(this, "CPathParticleRope", "m_PathNodes_Color");
+	public void PathNodes_PinEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CPathParticleRope", "m_PathNodes_PinEnabled");
+	public void PathNodes_RadiusScalePropertyChanged() => Utilities.SetStateChanged(this, "CPathParticleRope", "m_PathNodes_RadiusScale");
 }

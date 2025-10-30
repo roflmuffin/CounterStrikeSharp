@@ -43,4 +43,7 @@ public partial class ServerAuthoritativeWeaponSlot_t : NativeObject
 		set { Schema.SetValueType<UInt16>(this.Handle, "ServerAuthoritativeWeaponSlot_t", "unItemDefIdx", value); }
 	}
 
+	public void UnClassPropertyChanged() => Utilities.SetStateChanged(this, "ServerAuthoritativeWeaponSlot_t", "unClass");
+	public void UnSlotPropertyChanged() => Utilities.SetStateChanged(this, "ServerAuthoritativeWeaponSlot_t", "unSlot");
+	public void UnItemDefIdxPropertyChanged() => Utilities.SetStateChanged(this, "ServerAuthoritativeWeaponSlot_t", "unItemDefIdx");
 }

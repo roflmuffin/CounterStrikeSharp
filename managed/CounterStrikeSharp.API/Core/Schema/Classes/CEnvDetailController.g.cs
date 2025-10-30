@@ -35,4 +35,6 @@ public partial class CEnvDetailController : CBaseEntity
 		set { Schema.SetValueType<float>(this.Handle, "CEnvDetailController", "m_flFadeEndDist", value); }
 	}
 
+	public void FadeStartDistPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDetailController", "m_flFadeStartDist");
+	public void FadeEndDistPropertyChanged() => Utilities.SetStateChanged(this, "CEnvDetailController", "m_flFadeEndDist");
 }

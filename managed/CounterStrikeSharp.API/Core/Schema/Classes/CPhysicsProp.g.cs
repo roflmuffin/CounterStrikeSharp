@@ -287,4 +287,5 @@ public partial class CPhysicsProp : CBreakableProp
 		set { Schema.SetValueType<bool>(this.Handle, "CPhysicsProp", "m_bAttachedToReferenceFrame", value); }
 	}
 
+	public void AwakePropertyChanged() => Utilities.SetStateChanged(this, "CPhysicsProp", "m_bAwake");
 }

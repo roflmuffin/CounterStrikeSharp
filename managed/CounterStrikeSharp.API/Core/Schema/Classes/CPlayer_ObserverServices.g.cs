@@ -47,4 +47,6 @@ public partial class CPlayer_ObserverServices : CPlayerPawnComponent
 		set { Schema.SetValueType<bool>(this.Handle, "CPlayer_ObserverServices", "m_bForcedObserverMode", value); }
 	}
 
+	public void ObserverModePropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_ObserverServices", "m_iObserverMode");
+	public void ObserverTargetPropertyChanged() => Utilities.SetStateChanged(this, "CPlayer_ObserverServices", "m_hObserverTarget");
 }

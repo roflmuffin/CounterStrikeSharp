@@ -51,4 +51,7 @@ public partial class CAttributeManager : NativeObject
 		set { Schema.SetValueType<attributeprovidertypes_t>(this.Handle, "CAttributeManager", "m_ProviderType", value); }
 	}
 
+	public void ReapplyProvisionParityPropertyChanged() => Utilities.SetStateChanged(this, "CAttributeManager", "m_iReapplyProvisionParity");
+	public void OuterPropertyChanged() => Utilities.SetStateChanged(this, "CAttributeManager", "m_hOuter");
+	public void ProviderTypePropertyChanged() => Utilities.SetStateChanged(this, "CAttributeManager", "m_ProviderType");
 }

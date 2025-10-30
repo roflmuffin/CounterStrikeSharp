@@ -75,4 +75,13 @@ public partial class CCSPlayerResource : CBaseEntity
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerResource", "m_foundGoalPositions", value); }
 	}
 
+	public void HostageAlivePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerResource", "m_bHostageAlive");
+	public void IsHostageFollowingSomeonePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerResource", "m_isHostageFollowingSomeone");
+	public void HostageEntityIDsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerResource", "m_iHostageEntityIDs");
+	public void BombsiteCenterAPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerResource", "m_bombsiteCenterA");
+	public void BombsiteCenterBPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerResource", "m_bombsiteCenterB");
+	public void HostageRescueXPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerResource", "m_hostageRescueX");
+	public void HostageRescueYPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerResource", "m_hostageRescueY");
+	public void HostageRescueZPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerResource", "m_hostageRescueZ");
+	public void EndMatchNextMapAllVotedPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerResource", "m_bEndMatchNextMapAllVoted");
 }

@@ -75,4 +75,5 @@ public partial class CBombTarget : CBaseTrigger
 		set { Schema.SetValueType<Int32>(this.Handle, "CBombTarget", "m_nBombSiteDesignation", value); }
 	}
 
+	public void BombPlantedHerePropertyChanged() => Utilities.SetStateChanged(this, "CBombTarget", "m_bBombPlantedHere");
 }

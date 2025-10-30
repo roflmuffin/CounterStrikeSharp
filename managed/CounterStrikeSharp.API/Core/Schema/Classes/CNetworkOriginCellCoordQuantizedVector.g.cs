@@ -75,4 +75,11 @@ public partial class CNetworkOriginCellCoordQuantizedVector : NativeObject
 		set { Schema.SetValueType<float>(this.Handle, "CNetworkOriginCellCoordQuantizedVector", "m_vecZ", value); }
 	}
 
+	public void CellXPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkOriginCellCoordQuantizedVector", "m_cellX");
+	public void CellYPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkOriginCellCoordQuantizedVector", "m_cellY");
+	public void CellZPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkOriginCellCoordQuantizedVector", "m_cellZ");
+	public void OutsideWorldPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkOriginCellCoordQuantizedVector", "m_nOutsideWorld");
+	public void XPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkOriginCellCoordQuantizedVector", "m_vecX");
+	public void YPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkOriginCellCoordQuantizedVector", "m_vecY");
+	public void ZPropertyChanged() => Utilities.SetStateChanged(this, "CNetworkOriginCellCoordQuantizedVector", "m_vecZ");
 }

@@ -91,4 +91,13 @@ public partial class CEnvWindVolume : CBaseEntity
 		set { Schema.SetValueType<float>(this.Handle, "CEnvWindVolume", "m_fWindDirectionVariationMultiplier", value); }
 	}
 
+	public void ActivePropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindVolume", "m_bActive");
+	public void BoxMinsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindVolume", "m_vBoxMins");
+	public void BoxMaxsPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindVolume", "m_vBoxMaxs");
+	public void StartDisabledPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindVolume", "m_bStartDisabled");
+	public void ShapePropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindVolume", "m_nShape");
+	public void WindSpeedMultiplierPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindVolume", "m_fWindSpeedMultiplier");
+	public void WindTurbulenceMultiplierPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindVolume", "m_fWindTurbulenceMultiplier");
+	public void WindSpeedVariationMultiplierPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindVolume", "m_fWindSpeedVariationMultiplier");
+	public void WindDirectionVariationMultiplierPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindVolume", "m_fWindDirectionVariationMultiplier");
 }

@@ -203,4 +203,5 @@ public partial class CBaseDoor : CBaseToggle
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseDoor", "m_bIsUsable", value); }
 	}
 
+	public void IsUsablePropertyChanged() => Utilities.SetStateChanged(this, "CBaseDoor", "m_bIsUsable");
 }

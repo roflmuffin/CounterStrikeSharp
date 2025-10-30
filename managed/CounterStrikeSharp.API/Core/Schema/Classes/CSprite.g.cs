@@ -187,4 +187,16 @@ public partial class CSprite : CBaseModelEntity
 		set { Schema.SetValueType<Int32>(this.Handle, "CSprite", "m_nSpriteHeight", value); }
 	}
 
+	public void SpriteMaterialPropertyChanged() => Utilities.SetStateChanged(this, "CSprite", "m_hSpriteMaterial");
+	public void AttachedToEntityPropertyChanged() => Utilities.SetStateChanged(this, "CSprite", "m_hAttachedToEntity");
+	public void AttachmentPropertyChanged() => Utilities.SetStateChanged(this, "CSprite", "m_nAttachment");
+	public void SpriteFrameratePropertyChanged() => Utilities.SetStateChanged(this, "CSprite", "m_flSpriteFramerate");
+	public void FramePropertyChanged() => Utilities.SetStateChanged(this, "CSprite", "m_flFrame");
+	public void BrightnessPropertyChanged() => Utilities.SetStateChanged(this, "CSprite", "m_nBrightness");
+	public void BrightnessDurationPropertyChanged() => Utilities.SetStateChanged(this, "CSprite", "m_flBrightnessDuration");
+	public void SpriteScalePropertyChanged() => Utilities.SetStateChanged(this, "CSprite", "m_flSpriteScale");
+	public void ScaleDurationPropertyChanged() => Utilities.SetStateChanged(this, "CSprite", "m_flScaleDuration");
+	public void WorldSpaceScalePropertyChanged() => Utilities.SetStateChanged(this, "CSprite", "m_bWorldSpaceScale");
+	public void GlowProxySizePropertyChanged() => Utilities.SetStateChanged(this, "CSprite", "m_flGlowProxySize");
+	public void HDRColorScalePropertyChanged() => Utilities.SetStateChanged(this, "CSprite", "m_flHDRColorScale");
 }

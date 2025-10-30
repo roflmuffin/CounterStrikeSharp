@@ -27,4 +27,5 @@ public partial class CWeaponCZ75a : CCSWeaponBaseGun
 		set { Schema.SetValueType<bool>(this.Handle, "CWeaponCZ75a", "m_bMagazineRemoved", value); }
 	}
 
+	public void MagazineRemovedPropertyChanged() => Utilities.SetStateChanged(this, "CWeaponCZ75a", "m_bMagazineRemoved");
 }

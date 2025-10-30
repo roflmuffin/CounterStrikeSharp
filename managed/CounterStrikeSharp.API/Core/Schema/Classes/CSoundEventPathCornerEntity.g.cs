@@ -67,4 +67,5 @@ public partial class CSoundEventPathCornerEntity : CSoundEventEntity
 		set { Schema.SetValueType<bool>(this.Handle, "CSoundEventPathCornerEntity", "m_bPlaying", value); }
 	}
 
+	public void CornerPairsNetworkedPropertyChanged() => Utilities.SetStateChanged(this, "CSoundEventPathCornerEntity", "m_vecCornerPairsNetworked");
 }

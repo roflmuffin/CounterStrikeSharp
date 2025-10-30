@@ -31,4 +31,6 @@ public partial class IntervalTimer : NativeObject
 	[SchemaMember("IntervalTimer", "m_nWorldGroupId")]
 	public WorldGroupId_t WorldGroupId => Schema.GetDeclaredClass<WorldGroupId_t>(this.Handle, "IntervalTimer", "m_nWorldGroupId");
 
+	public void TimestampPropertyChanged() => Utilities.SetStateChanged(this, "IntervalTimer", "m_timestamp");
+	public void WorldGroupIdPropertyChanged() => Utilities.SetStateChanged(this, "IntervalTimer", "m_nWorldGroupId");
 }

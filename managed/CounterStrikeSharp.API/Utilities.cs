@@ -222,9 +222,15 @@ namespace CounterStrikeSharp.API
         /// <param name="fieldName" example="m_iHealth">Schema field name</param>
         /// <param name="extraOffset">Any additional offset to the schema field</param>
         /// <exception cref="InvalidOperationException">Entity is not valid</exception>
-        public static void SetStateChanged(CBaseEntity entity, string className, string fieldName, int extraOffset = 0)
+        public static void SetStateChanged(NativeObject entity, string className, string fieldName, int extraOffset = 0)
         {
-            Guard.IsValidEntity(entity);
+            if (entity is CEntityInstance instance)
+            {
+                Guard.IsValidEntity(instance);
+            }
+
+            if (entity.Handle == IntPtr.Zero)
+                throw new InvalidOperationException("Object is not valid");
 
             if (!Schema.IsSchemaFieldNetworked(className, fieldName))
             {
@@ -244,8 +250,11 @@ namespace CounterStrikeSharp.API
 
             NativeAPI.SchemaSetStateChanged(entity.Handle, (uint)(offset + extraOffset), 0xFFFFFFFF, 0xFFFFFFFF);
 
-            entity.LastNetworkChange = Server.CurrentTime;
-            entity.IsSteadyState.Clear();
+            if (entity is CBaseEntity baseEntity)
+            {
+                baseEntity.LastNetworkChange = Server.CurrentTime;
+                baseEntity.IsSteadyState.Clear();
+            }
         }
 
         /// <summary>

@@ -143,4 +143,10 @@ public partial class CBaseCSGrenadeProjectile : CBaseGrenade
 		set { Schema.SetValueType<bool>(this.Handle, "CBaseCSGrenadeProjectile", "m_bHasEverHitEnemy", value); }
 	}
 
+	public void InitialPositionPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenadeProjectile", "m_vInitialPosition");
+	public void InitialVelocityPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenadeProjectile", "m_vInitialVelocity");
+	public void BouncesPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenadeProjectile", "m_nBounces");
+	public void ExplodeEffectIndexPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenadeProjectile", "m_nExplodeEffectIndex");
+	public void ExplodeEffectTickBeginPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenadeProjectile", "m_nExplodeEffectTickBegin");
+	public void ExplodeEffectOriginPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenadeProjectile", "m_vecExplodeEffectOrigin");
 }

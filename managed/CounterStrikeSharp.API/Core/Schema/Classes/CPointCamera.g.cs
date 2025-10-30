@@ -223,4 +223,26 @@ public partial class CPointCamera : CBaseEntity
 	[SchemaMember("CPointCamera", "m_pNext")]
 	public CPointCamera? Next => Schema.GetPointer<CPointCamera>(this.Handle, "CPointCamera", "m_pNext");
 
+	public void FOVPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_FOV");
+	public void ResolutionPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_Resolution");
+	public void FogEnablePropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_bFogEnable");
+	public void FogColorPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_FogColor");
+	public void FogStartPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flFogStart");
+	public void FogEndPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flFogEnd");
+	public void FogMaxDensityPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flFogMaxDensity");
+	public void ActivePropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_bActive");
+	public void UseScreenAspectRatioPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_bUseScreenAspectRatio");
+	public void AspectRatioPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flAspectRatio");
+	public void NoSkyPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_bNoSky");
+	public void BrightnessPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_fBrightness");
+	public void ZFarPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flZFar");
+	public void ZNearPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flZNear");
+	public void CanHLTVUsePropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_bCanHLTVUse");
+	public void AlignWithParentPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_bAlignWithParent");
+	public void DofEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_bDofEnabled");
+	public void DofNearBlurryPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flDofNearBlurry");
+	public void DofNearCrispPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flDofNearCrisp");
+	public void DofFarCrispPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flDofFarCrisp");
+	public void DofFarBlurryPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flDofFarBlurry");
+	public void DofTiltToGroundPropertyChanged() => Utilities.SetStateChanged(this, "CPointCamera", "m_flDofTiltToGround");
 }

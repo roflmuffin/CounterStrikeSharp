@@ -39,4 +39,6 @@ public partial class CDestructiblePartsComponent : NativeObject
 		set { Schema.SetValueType<Int32>(this.Handle, "CDestructiblePartsComponent", "m_nLastHitDamageLevel", value); }
 	}
 
+	public void OwnerPropertyChanged() => Utilities.SetStateChanged(this, "CDestructiblePartsComponent", "m_hOwner");
+	public void LastHitDamageLevelPropertyChanged() => Utilities.SetStateChanged(this, "CDestructiblePartsComponent", "m_nLastHitDamageLevel");
 }

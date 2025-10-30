@@ -87,4 +87,12 @@ public partial class CFuncMonitor : CFuncBrush
 		set { Schema.SetValueType<bool>(this.Handle, "CFuncMonitor", "m_bStartEnabled", value); }
 	}
 
+	public void TargetCameraPropertyChanged() => Utilities.SetStateChanged(this, "CFuncMonitor", "m_targetCamera");
+	public void ResolutionEnumPropertyChanged() => Utilities.SetStateChanged(this, "CFuncMonitor", "m_nResolutionEnum");
+	public void RenderShadowsPropertyChanged() => Utilities.SetStateChanged(this, "CFuncMonitor", "m_bRenderShadows");
+	public void UseUniqueColorTargetPropertyChanged() => Utilities.SetStateChanged(this, "CFuncMonitor", "m_bUseUniqueColorTarget");
+	public void BrushModelNamePropertyChanged() => Utilities.SetStateChanged(this, "CFuncMonitor", "m_brushModelName");
+	public void HTargetCameraPropertyChanged() => Utilities.SetStateChanged(this, "CFuncMonitor", "m_hTargetCamera");
+	public void EnabledPropertyChanged() => Utilities.SetStateChanged(this, "CFuncMonitor", "m_bEnabled");
+	public void Draw3DSkyboxPropertyChanged() => Utilities.SetStateChanged(this, "CFuncMonitor", "m_bDraw3DSkybox");
 }

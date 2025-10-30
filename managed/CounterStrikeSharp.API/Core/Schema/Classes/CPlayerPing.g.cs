@@ -51,4 +51,9 @@ public partial class CPlayerPing : CBaseEntity
 		set { Schema.SetStringBytes(this.Handle, "CPlayerPing", "m_szPlaceName", value, 18); }
 	}
 
+	public void PlayerPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerPing", "m_hPlayer");
+	public void PingedEntityPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerPing", "m_hPingedEntity");
+	public void TypePropertyChanged() => Utilities.SetStateChanged(this, "CPlayerPing", "m_iType");
+	public void UrgentPropertyChanged() => Utilities.SetStateChanged(this, "CPlayerPing", "m_bUrgent");
+	public void PlaceNamePropertyChanged() => Utilities.SetStateChanged(this, "CPlayerPing", "m_szPlaceName");
 }

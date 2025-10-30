@@ -51,4 +51,5 @@ public partial class CRagdollManager : CBaseEntity
 		set { Schema.SetValueType<bool>(this.Handle, "CRagdollManager", "m_bCanTakeDamage", value); }
 	}
 
+	public void CurrentMaxRagdollCountPropertyChanged() => Utilities.SetStateChanged(this, "CRagdollManager", "m_iCurrentMaxRagdollCount");
 }

@@ -143,4 +143,19 @@ public partial class CGradientFog : CBaseEntity
 		set { Schema.SetValueType<bool>(this.Handle, "CGradientFog", "m_bGradientFogNeedsTextures", value); }
 	}
 
+	public void GradientFogTexturePropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_hGradientFogTexture");
+	public void FogStartDistancePropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_flFogStartDistance");
+	public void FogEndDistancePropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_flFogEndDistance");
+	public void HeightFogEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_bHeightFogEnabled");
+	public void FogStartHeightPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_flFogStartHeight");
+	public void FogEndHeightPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_flFogEndHeight");
+	public void FarZPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_flFarZ");
+	public void FogMaxOpacityPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_flFogMaxOpacity");
+	public void FogFalloffExponentPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_flFogFalloffExponent");
+	public void FogVerticalExponentPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_flFogVerticalExponent");
+	public void FogColorPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_fogColor");
+	public void FogStrengthPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_flFogStrength");
+	public void FadeTimePropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_flFadeTime");
+	public void StartDisabledPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_bStartDisabled");
+	public void IsEnabledPropertyChanged() => Utilities.SetStateChanged(this, "CGradientFog", "m_bIsEnabled");
 }

@@ -83,4 +83,11 @@ public partial class CEconEntity : CBaseFlex
 		set { Schema.SetValueType<Int32>(this.Handle, "CEconEntity", "m_iOldOwnerClass", value); }
 	}
 
+	public void AttributeManagerPropertyChanged() => Utilities.SetStateChanged(this, "CEconEntity", "m_AttributeManager");
+	public void OriginalOwnerXuidLowPropertyChanged() => Utilities.SetStateChanged(this, "CEconEntity", "m_OriginalOwnerXuidLow");
+	public void OriginalOwnerXuidHighPropertyChanged() => Utilities.SetStateChanged(this, "CEconEntity", "m_OriginalOwnerXuidHigh");
+	public void FallbackPaintKitPropertyChanged() => Utilities.SetStateChanged(this, "CEconEntity", "m_nFallbackPaintKit");
+	public void FallbackSeedPropertyChanged() => Utilities.SetStateChanged(this, "CEconEntity", "m_nFallbackSeed");
+	public void FallbackWearPropertyChanged() => Utilities.SetStateChanged(this, "CEconEntity", "m_flFallbackWear");
+	public void FallbackStatTrakPropertyChanged() => Utilities.SetStateChanged(this, "CEconEntity", "m_nFallbackStatTrak");
 }

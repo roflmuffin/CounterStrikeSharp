@@ -75,4 +75,11 @@ public partial class CBasePlayerWeapon : CEconEntity
 	[SchemaMember("CBasePlayerWeapon", "m_OnPlayerUse")]
 	public CEntityIOOutput OnPlayerUse => Schema.GetDeclaredClass<CEntityIOOutput>(this.Handle, "CBasePlayerWeapon", "m_OnPlayerUse");
 
+	public void NextPrimaryAttackTickPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerWeapon", "m_nNextPrimaryAttackTick");
+	public void NextPrimaryAttackTickRatioPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerWeapon", "m_flNextPrimaryAttackTickRatio");
+	public void NextSecondaryAttackTickPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerWeapon", "m_nNextSecondaryAttackTick");
+	public void NextSecondaryAttackTickRatioPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerWeapon", "m_flNextSecondaryAttackTickRatio");
+	public void Clip1PropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerWeapon", "m_iClip1");
+	public void Clip2PropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerWeapon", "m_iClip2");
+	public void ReserveAmmoPropertyChanged() => Utilities.SetStateChanged(this, "CBasePlayerWeapon", "m_pReserveAmmo");
 }

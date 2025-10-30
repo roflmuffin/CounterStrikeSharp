@@ -91,4 +91,11 @@ public partial class CDynamicLight : CBaseModelEntity
 		set { Schema.SetValueType<float>(this.Handle, "CDynamicLight", "m_SpotRadius", value); }
 	}
 
+	public void DynamicLightFlagsPropertyChanged() => Utilities.SetStateChanged(this, "CDynamicLight", "m_Flags");
+	public void LightStylePropertyChanged() => Utilities.SetStateChanged(this, "CDynamicLight", "m_LightStyle");
+	public void RadiusPropertyChanged() => Utilities.SetStateChanged(this, "CDynamicLight", "m_Radius");
+	public void ExponentPropertyChanged() => Utilities.SetStateChanged(this, "CDynamicLight", "m_Exponent");
+	public void InnerAnglePropertyChanged() => Utilities.SetStateChanged(this, "CDynamicLight", "m_InnerAngle");
+	public void OuterAnglePropertyChanged() => Utilities.SetStateChanged(this, "CDynamicLight", "m_OuterAngle");
+	public void SpotRadiusPropertyChanged() => Utilities.SetStateChanged(this, "CDynamicLight", "m_SpotRadius");
 }

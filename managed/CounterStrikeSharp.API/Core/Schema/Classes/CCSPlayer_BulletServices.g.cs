@@ -27,4 +27,5 @@ public partial class CCSPlayer_BulletServices : CPlayerPawnComponent
 		set { Schema.SetValueType<Int32>(this.Handle, "CCSPlayer_BulletServices", "m_totalHitsOnServer", value); }
 	}
 
+	public void TotalHitsOnServerPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_BulletServices", "m_totalHitsOnServer");
 }

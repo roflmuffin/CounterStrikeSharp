@@ -23,4 +23,5 @@ public partial class CCSGameModeRules_ArmsRace : CCSGameModeRules
 	[SchemaMember("CCSGameModeRules_ArmsRace", "m_WeaponSequence")]
 	public NetworkedVector<string> WeaponSequence => Schema.GetDeclaredClass<NetworkedVector<string>>(this.Handle, "CCSGameModeRules_ArmsRace", "m_WeaponSequence");
 
+	public void WeaponSequencePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameModeRules_ArmsRace", "m_WeaponSequence");
 }

@@ -83,4 +83,5 @@ public partial class CBaseCombatCharacter : CBaseFlex
 	[SchemaMember("CBaseCombatCharacter", "m_movementStats")]
 	public CMovementStatsProperty MovementStats => Schema.GetDeclaredClass<CMovementStatsProperty>(this.Handle, "CBaseCombatCharacter", "m_movementStats");
 
+	public void MyWearablesPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCombatCharacter", "m_hMyWearables");
 }

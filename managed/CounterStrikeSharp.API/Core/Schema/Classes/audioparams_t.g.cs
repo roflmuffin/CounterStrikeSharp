@@ -55,4 +55,9 @@ public partial class audioparams_t : NativeObject
 		set { Schema.SetValueType<UInt32>(this.Handle, "audioparams_t", "soundEventHash", value); }
 	}
 
+	public void LocalSoundPropertyChanged() => Utilities.SetStateChanged(this, "audioparams_t", "localSound");
+	public void SoundscapeIndexPropertyChanged() => Utilities.SetStateChanged(this, "audioparams_t", "soundscapeIndex");
+	public void LocalBitsPropertyChanged() => Utilities.SetStateChanged(this, "audioparams_t", "localBits");
+	public void SoundscapeEntityListIndexPropertyChanged() => Utilities.SetStateChanged(this, "audioparams_t", "soundscapeEntityListIndex");
+	public void SoundEventHashPropertyChanged() => Utilities.SetStateChanged(this, "audioparams_t", "soundEventHash");
 }

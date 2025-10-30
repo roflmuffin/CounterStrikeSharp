@@ -123,4 +123,18 @@ public partial class CDamageRecord : NativeObject
 		set { Schema.SetValueType<EKillTypes_t>(this.Handle, "CDamageRecord", "m_killType", value); }
 	}
 
+	public void PlayerDamagerPropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_PlayerDamager");
+	public void PlayerRecipientPropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_PlayerRecipient");
+	public void PlayerControllerDamagerPropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_hPlayerControllerDamager");
+	public void PlayerControllerRecipientPropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_hPlayerControllerRecipient");
+	public void PlayerDamagerNamePropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_szPlayerDamagerName");
+	public void PlayerRecipientNamePropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_szPlayerRecipientName");
+	public void DamagerXuidPropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_DamagerXuid");
+	public void RecipientXuidPropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_RecipientXuid");
+	public void DamagePropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_flDamage");
+	public void ActualHealthRemovedPropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_flActualHealthRemoved");
+	public void NumHitsPropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_iNumHits");
+	public void LastBulletUpdatePropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_iLastBulletUpdate");
+	public void IsOtherEnemyPropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_bIsOtherEnemy");
+	public void KillTypePropertyChanged() => Utilities.SetStateChanged(this, "CDamageRecord", "m_killType");
 }

@@ -43,4 +43,7 @@ public partial class CCSGameModeRules_Deathmatch : CCSGameModeRules
 		set { Schema.SetString(this.Handle, "CCSGameModeRules_Deathmatch", "m_sDMBonusWeapon", value); }
 	}
 
+	public void DMBonusStartTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSGameModeRules_Deathmatch", "m_flDMBonusStartTime");
+	public void DMBonusTimeLengthPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameModeRules_Deathmatch", "m_flDMBonusTimeLength");
+	public void DMBonusWeaponPropertyChanged() => Utilities.SetStateChanged(this, "CCSGameModeRules_Deathmatch", "m_sDMBonusWeapon");
 }

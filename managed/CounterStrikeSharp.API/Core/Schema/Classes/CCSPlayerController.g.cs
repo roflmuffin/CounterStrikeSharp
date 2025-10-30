@@ -707,4 +707,57 @@ public partial class CCSPlayerController : CBasePlayerController
 		set { Schema.SetValueType<bool>(this.Handle, "CCSPlayerController", "m_bFireBulletsSeedSynchronized", value); }
 	}
 
+	public void InGameMoneyServicesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_pInGameMoneyServices");
+	public void InventoryServicesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_pInventoryServices");
+	public void ActionTrackingServicesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_pActionTrackingServices");
+	public void DamageServicesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_pDamageServices");
+	public void PingPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iPing");
+	public void HasCommunicationAbuseMutePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_bHasCommunicationAbuseMute");
+	public void UiCommunicationMuteFlagsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_uiCommunicationMuteFlags");
+	public void CrosshairCodesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_szCrosshairCodes");
+	public void PendingTeamNumPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iPendingTeamNum");
+	public void ForceTeamTimePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_flForceTeamTime");
+	public void CompTeammateColorPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iCompTeammateColor");
+	public void EverPlayedOnTeamPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_bEverPlayedOnTeam");
+	public void ClanPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_szClan");
+	public void CoachingTeamPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iCoachingTeam");
+	public void PlayerDominatedPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_nPlayerDominated");
+	public void PlayerDominatingMePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_nPlayerDominatingMe");
+	public void CompetitiveRankingPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iCompetitiveRanking");
+	public void CompetitiveWinsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iCompetitiveWins");
+	public void CompetitiveRankTypePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iCompetitiveRankType");
+	public void CompetitiveRankingPredicted_WinPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iCompetitiveRankingPredicted_Win");
+	public void CompetitiveRankingPredicted_LossPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iCompetitiveRankingPredicted_Loss");
+	public void CompetitiveRankingPredicted_TiePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iCompetitiveRankingPredicted_Tie");
+	public void EndMatchNextMapVotePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_nEndMatchNextMapVote");
+	public void ActiveQuestIdPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_unActiveQuestId");
+	public void RtActiveMissionPeriodPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_rtActiveMissionPeriod");
+	public void QuestProgressReasonPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_nQuestProgressReason");
+	public void PlayerTvControlFlagsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_unPlayerTvControlFlags");
+	public void DisconnectionTickPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_nDisconnectionTick");
+	public void ControllingBotPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_bControllingBot");
+	public void HasControlledBotThisRoundPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_bHasControlledBotThisRound");
+	public void CanControlObservedBotPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_bCanControlObservedBot");
+	public void PlayerPawnPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_hPlayerPawn");
+	public void ObserverPawnPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_hObserverPawn");
+	public void PawnIsAlivePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_bPawnIsAlive");
+	public void PawnHealthPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iPawnHealth");
+	public void PawnArmorPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iPawnArmor");
+	public void PawnHasDefuserPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_bPawnHasDefuser");
+	public void PawnHasHelmetPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_bPawnHasHelmet");
+	public void PawnCharacterDefIndexPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_nPawnCharacterDefIndex");
+	public void PawnLifetimeStartPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iPawnLifetimeStart");
+	public void PawnLifetimeEndPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iPawnLifetimeEnd");
+	public void PawnBotDifficultyPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iPawnBotDifficulty");
+	public void OriginalControllerOfCurrentPawnPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_hOriginalControllerOfCurrentPawn");
+	public void ScorePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iScore");
+	public void RecentKillQueuePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_recentKillQueue");
+	public void FirstKillPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_nFirstKill");
+	public void KillCountPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_nKillCount");
+	public void MvpNoMusicPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_bMvpNoMusic");
+	public void MvpReasonPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_eMvpReason");
+	public void MusicKitIDPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iMusicKitID");
+	public void MusicKitMVPsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iMusicKitMVPs");
+	public void MVPsPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_iMVPs");
+	public void FireBulletsSeedSynchronizedPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerController", "m_bFireBulletsSeedSynchronized");
 }

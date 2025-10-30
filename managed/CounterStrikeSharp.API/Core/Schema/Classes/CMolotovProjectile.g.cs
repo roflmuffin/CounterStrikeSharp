@@ -47,4 +47,5 @@ public partial class CMolotovProjectile : CBaseCSGrenadeProjectile
 		set { Schema.SetValueType<bool>(this.Handle, "CMolotovProjectile", "m_bHasBouncedOffPlayer", value); }
 	}
 
+	public void IsIncGrenadePropertyChanged() => Utilities.SetStateChanged(this, "CMolotovProjectile", "m_bIsIncGrenade");
 }

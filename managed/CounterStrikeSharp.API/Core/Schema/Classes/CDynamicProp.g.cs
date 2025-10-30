@@ -175,4 +175,6 @@ public partial class CDynamicProp : CBreakableProp
 		set { Schema.SetValueType<Int32>(this.Handle, "CDynamicProp", "m_nGlowTeam", value); }
 	}
 
+	public void UseHitboxesForRenderBoxPropertyChanged() => Utilities.SetStateChanged(this, "CDynamicProp", "m_bUseHitboxesForRenderBox");
+	public void UseAnimGraphPropertyChanged() => Utilities.SetStateChanged(this, "CDynamicProp", "m_bUseAnimGraph");
 }
