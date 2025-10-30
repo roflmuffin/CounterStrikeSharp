@@ -19,5 +19,9 @@
     "Target must be dead": "This command can only be used on dead players.",
     "Unable to target": "You cannot target this player.",
     "Cannot target bot": "Unable to perform this command on a bot.",
-    "More than one client matched": "More than one client matched the given pattern."
+    "More than one client matched": "More than one client matched the given pattern.",
+
+    "Missing permissions": "You are missing the correct permissions",
+    "Missing one permission": "You do not have one of the correct permissions",
+    "Command permission denied": "[CSS] {0} ({1}) to execute this command."
 }
