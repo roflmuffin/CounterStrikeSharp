@@ -20,6 +20,7 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Text.Json.Serialization;
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
@@ -45,7 +46,7 @@ namespace TestPlugin
     }
 
     [MinimumApiVersion(80)]
-    public class SamplePlugin : BasePlugin, IPluginConfig<SampleConfig>
+    public class TestPlugin : BasePlugin, IPluginConfig<SampleConfig>
     {
         public override string ModuleName => "Sample Plugin";
         public override string ModuleVersion => "v1.0.0";
@@ -65,7 +66,7 @@ namespace TestPlugin
 
         private TestInjectedClass _testInjectedClass;
 
-        public SamplePlugin(TestInjectedClass testInjectedClass)
+        public TestPlugin(TestInjectedClass testInjectedClass)
         {
             _testInjectedClass = testInjectedClass;
         }
@@ -133,7 +134,7 @@ namespace TestPlugin
                 Logger.LogInformation("sv_skyname = {Value}", stringCvar?.StringValue);
 
                 var fogCvar = ConVar.Find("fog_color");
-                Logger.LogInformation("fog_color = {Value}", fogCvar?.GetNativeValue<Vector>());
+                Logger.LogInformation("fog_color = {Value}", fogCvar?.GetPrimitiveValue<Vector3>());
             });
         }
 
@@ -205,15 +206,12 @@ namespace TestPlugin
 
                 if (pawn == null) return HookResult.Continue;
 
-                Server.NextFrame(() =>
-                {
-                    player?.PrintToChat(activeWeapon?.DesignerName ?? "No Active Weapon");
-                });
+                Server.NextFrame(() => { player?.PrintToChat(activeWeapon?.DesignerName ?? "No Active Weapon"); });
 
                 // Set player to random colour
                 pawn.Render = Color.FromArgb(Random.Shared.Next(0, 255),
                     Random.Shared.Next(0, 255), Random.Shared.Next(0, 255));
-                Utilities.SetStateChanged(pawn, "CBaseModelEntity", "m_clrRender");
+                pawn.RenderPropertyChanged();
 
                 // Give player 5 health and set their reserve ammo to 250
                 if (activeWeapon != null)
@@ -265,10 +263,7 @@ namespace TestPlugin
             });
 
             // Hook global listeners defined by CounterStrikeSharp
-            RegisterListener<Listeners.OnMapStart>(mapName =>
-            {
-                Logger.LogInformation("Map {Map} has started!", mapName);
-            });
+            RegisterListener<Listeners.OnMapStart>(mapName => { Logger.LogInformation("Map {Map} has started!", mapName); });
             RegisterListener<Listeners.OnMapEnd>(() => { Logger.LogInformation($"Map has ended."); });
             RegisterListener<Listeners.OnClientConnect>((playerSlot, name, ip) =>
             {
@@ -288,9 +283,11 @@ namespace TestPlugin
 
                         Server.NextFrame(() =>
                         {
-                            projectile.SmokeColor.X = Random.Shared.NextSingle() * 255.0f;
-                            projectile.SmokeColor.Y = Random.Shared.NextSingle() * 255.0f;
-                            projectile.SmokeColor.Z = Random.Shared.NextSingle() * 255.0f;
+                            projectile.SmokeColor = projectile.SmokeColor with
+                            {
+                                X = Random.Shared.NextSingle() * 255.0f, Y = Random.Shared.NextSingle() * 255.0f,
+                                Z = Random.Shared.NextSingle() * 255.0f
+                            };
                             Logger.LogInformation("Smoke grenade spawned with color {SmokeColor}",
                                 projectile.SmokeColor);
                         });
@@ -357,21 +354,24 @@ namespace TestPlugin
         {
             HookEntityOutput("weapon_knife", "OnPlayerPickup", (output, _, activator, caller, _, delay) =>
             {
-                Logger.LogInformation("weapon_knife called OnPlayerPickup ({name}, {activator}, {caller}, {delay})", output.Description.Name, activator.DesignerName, caller.DesignerName, delay);
+                Logger.LogInformation("weapon_knife called OnPlayerPickup ({name}, {activator}, {caller}, {delay})",
+                    output.Description.Name, activator.DesignerName, caller.DesignerName, delay);
 
                 return HookResult.Continue;
             });
 
             HookEntityOutput("*", "*", (output, _, activator, caller, _, delay) =>
             {
-                Logger.LogInformation("All EntityOutput ({name}, {activator}, {caller}, {delay})", output.Description.Name, activator.DesignerName, caller.DesignerName, delay);
+                Logger.LogInformation("All EntityOutput ({name}, {activator}, {caller}, {delay})", output.Description.Name,
+                    activator.DesignerName, caller.DesignerName, delay);
 
                 return HookResult.Continue;
             });
 
             HookEntityOutput("*", "OnStartTouch", (_, name, activator, caller, _, delay) =>
             {
-                Logger.LogInformation("OnStartTouch: ({name}, {activator}, {caller}, {delay})", name, activator.DesignerName, caller.DesignerName, delay);
+                Logger.LogInformation("OnStartTouch: ({name}, {activator}, {caller}, {delay})", name, activator.DesignerName,
+                    caller.DesignerName, delay);
                 return HookResult.Continue;
             });
         }
@@ -448,7 +448,7 @@ namespace TestPlugin
             var pawn = player.PlayerPawn.Get();
             if (pawn == null) return;
 
-            pawn.Teleport(pawn.AbsOrigin!.With(z: pawn.AbsOrigin.Z + 100), pawn.AbsRotation, new Vector(IntPtr.Zero));
+            pawn.Teleport(pawn.AbsOrigin with { Z = pawn.AbsOrigin.Z + 100 }, pawn.AbsRotation, null);
         }
 
         [ConsoleCommand("css_respawn", "Respawns the player")]
@@ -609,9 +609,11 @@ namespace TestPlugin
         }
 
         [EntityOutputHook("*", "OnPlayerPickup")]
-        public HookResult OnPickup(CEntityIOOutput output, string name, CEntityInstance activator, CEntityInstance caller, CVariant value, float delay)
+        public HookResult OnPickup(CEntityIOOutput output, string name, CEntityInstance activator, CEntityInstance caller, CVariant value,
+            float delay)
         {
-            Logger.LogInformation("[EntityOutputHook Attribute] Called OnPlayerPickup ({name}, {activator}, {caller}, {delay})", name, activator.DesignerName, caller.DesignerName, delay);
+            Logger.LogInformation("[EntityOutputHook Attribute] Called OnPlayerPickup ({name}, {activator}, {caller}, {delay})", name,
+                activator.DesignerName, caller.DesignerName, delay);
 
             return HookResult.Continue;
         }
