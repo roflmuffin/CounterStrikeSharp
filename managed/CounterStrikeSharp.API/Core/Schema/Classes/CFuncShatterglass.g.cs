@@ -33,7 +33,11 @@ public partial class CFuncShatterglass : CBaseModelEntity
 
 	// m_PanelSize
 	[SchemaMember("CFuncShatterglass", "m_PanelSize")]
-	public Vector2D PanelSize => Schema.GetDeclaredClass<Vector2D>(this.Handle, "CFuncShatterglass", "m_PanelSize");
+	public Vector2 PanelSize
+	{
+		get { return Schema.GetValueType<Vector2>(this.Handle, "CFuncShatterglass", "m_PanelSize"); }
+		set { Schema.SetValueType<Vector2>(this.Handle, "CFuncShatterglass", "m_PanelSize", value); }
+	}
 
 	// m_flLastShatterSoundEmitTime
 	[SchemaMember("CFuncShatterglass", "m_flLastShatterSoundEmitTime")]
@@ -173,7 +177,7 @@ public partial class CFuncShatterglass : CBaseModelEntity
 
 	// m_vInitialPanelVertices
 	[SchemaMember("CFuncShatterglass", "m_vInitialPanelVertices")]
-	public NetworkedVector<Vector4D> InitialPanelVertices => Schema.GetDeclaredClass<NetworkedVector<Vector4D>>(this.Handle, "CFuncShatterglass", "m_vInitialPanelVertices");
+	public NetworkedVector<Vector4> InitialPanelVertices => Schema.GetDeclaredClass<NetworkedVector<Vector4>>(this.Handle, "CFuncShatterglass", "m_vInitialPanelVertices");
 
 	// m_OnBroken
 	[SchemaMember("CFuncShatterglass", "m_OnBroken")]

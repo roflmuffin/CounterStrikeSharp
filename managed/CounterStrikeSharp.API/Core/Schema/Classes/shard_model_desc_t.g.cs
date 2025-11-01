@@ -45,23 +45,35 @@ public partial class shard_model_desc_t : NativeObject
 
 	// m_vecPanelSize
 	[SchemaMember("shard_model_desc_t", "m_vecPanelSize")]
-	public Vector2D PanelSize => Schema.GetDeclaredClass<Vector2D>(this.Handle, "shard_model_desc_t", "m_vecPanelSize");
+	public Vector2 PanelSize
+	{
+		get { return Schema.GetValueType<Vector2>(this.Handle, "shard_model_desc_t", "m_vecPanelSize"); }
+		set { Schema.SetValueType<Vector2>(this.Handle, "shard_model_desc_t", "m_vecPanelSize", value); }
+	}
 
 	// m_vecStressPositionA
 	[SchemaMember("shard_model_desc_t", "m_vecStressPositionA")]
-	public Vector2D StressPositionA => Schema.GetDeclaredClass<Vector2D>(this.Handle, "shard_model_desc_t", "m_vecStressPositionA");
+	public Vector2 StressPositionA
+	{
+		get { return Schema.GetValueType<Vector2>(this.Handle, "shard_model_desc_t", "m_vecStressPositionA"); }
+		set { Schema.SetValueType<Vector2>(this.Handle, "shard_model_desc_t", "m_vecStressPositionA", value); }
+	}
 
 	// m_vecStressPositionB
 	[SchemaMember("shard_model_desc_t", "m_vecStressPositionB")]
-	public Vector2D StressPositionB => Schema.GetDeclaredClass<Vector2D>(this.Handle, "shard_model_desc_t", "m_vecStressPositionB");
+	public Vector2 StressPositionB
+	{
+		get { return Schema.GetValueType<Vector2>(this.Handle, "shard_model_desc_t", "m_vecStressPositionB"); }
+		set { Schema.SetValueType<Vector2>(this.Handle, "shard_model_desc_t", "m_vecStressPositionB", value); }
+	}
 
 	// m_vecPanelVertices
 	[SchemaMember("shard_model_desc_t", "m_vecPanelVertices")]
-	public NetworkedVector<Vector2D> PanelVertices => Schema.GetDeclaredClass<NetworkedVector<Vector2D>>(this.Handle, "shard_model_desc_t", "m_vecPanelVertices");
+	public NetworkedVector<Vector2> PanelVertices => Schema.GetDeclaredClass<NetworkedVector<Vector2>>(this.Handle, "shard_model_desc_t", "m_vecPanelVertices");
 
 	// m_vInitialPanelVertices
 	[SchemaMember("shard_model_desc_t", "m_vInitialPanelVertices")]
-	public NetworkedVector<Vector4D> InitialPanelVertices => Schema.GetDeclaredClass<NetworkedVector<Vector4D>>(this.Handle, "shard_model_desc_t", "m_vInitialPanelVertices");
+	public NetworkedVector<Vector4> InitialPanelVertices => Schema.GetDeclaredClass<NetworkedVector<Vector4>>(this.Handle, "shard_model_desc_t", "m_vInitialPanelVertices");
 
 	// m_flGlassHalfThickness
 	[SchemaMember("shard_model_desc_t", "m_flGlassHalfThickness")]

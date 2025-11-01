@@ -5,6 +5,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 using CounterStrikeSharp;
 using CounterStrikeSharp.API.Modules.Events;
 using CounterStrikeSharp.API.Modules.Entities;
@@ -16,7 +17,7 @@ namespace CounterStrikeSharp.API.Core;
 
 public partial class CEntityInstance : NativeEntity
 {
-	// m_iszPrivateVScripts
+    	// m_iszPrivateVScripts
 	[SchemaMember("CEntityInstance", "m_iszPrivateVScripts")]
 	public string PrivateVScripts
 	{
@@ -32,4 +33,5 @@ public partial class CEntityInstance : NativeEntity
 	[SchemaMember("CEntityInstance", "m_CScriptComponent")]
 	public CScriptComponent? CScriptComponent => Schema.GetPointer<CScriptComponent>(this.Handle, "CEntityInstance", "m_CScriptComponent");
 
+	public void EntityPropertyChanged() => Utilities.SetStateChanged(this, "CEntityInstance", "m_pEntity");
 }

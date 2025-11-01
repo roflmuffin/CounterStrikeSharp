@@ -109,7 +109,11 @@ public partial class CCSPlayer_MovementServices : CPlayer_MovementServices_Human
 
 	// m_vecLastPositionAtFullCrouchSpeed
 	[SchemaMember("CCSPlayer_MovementServices", "m_vecLastPositionAtFullCrouchSpeed")]
-	public Vector2D LastPositionAtFullCrouchSpeed => Schema.GetDeclaredClass<Vector2D>(this.Handle, "CCSPlayer_MovementServices", "m_vecLastPositionAtFullCrouchSpeed");
+	public Vector2 LastPositionAtFullCrouchSpeed
+	{
+		get { return Schema.GetValueType<Vector2>(this.Handle, "CCSPlayer_MovementServices", "m_vecLastPositionAtFullCrouchSpeed"); }
+		set { Schema.SetValueType<Vector2>(this.Handle, "CCSPlayer_MovementServices", "m_vecLastPositionAtFullCrouchSpeed", value); }
+	}
 
 	// m_duckUntilOnGround
 	[SchemaMember("CCSPlayer_MovementServices", "m_duckUntilOnGround")]

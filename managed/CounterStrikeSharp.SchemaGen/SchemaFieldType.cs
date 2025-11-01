@@ -21,7 +21,8 @@ public record SchemaFieldType
             this.Name = "Vector";
         }
 
-        if (this.Name == "Vector" || this.Name == "Quaternion" || this.Name == "QAngle")
+        if (this.Name == "Vector" || this.Name == "Quaternion" || this.Name == "QAngle" || this.Name == "Vector2D" ||
+            this.Name == "Vector4D")
         {
             this.Category = SchemaTypeCategory.Builtin;
         }
@@ -92,6 +93,8 @@ public record SchemaFieldType
         "bool" => "bool",
         "char" => "char",
         "Vector" => "Vector3",
+        "Vector2D" => "Vector2",
+        "Vector4D" => "Vector4",
         "Quaternion" => "Quaternion",
         "QAngle" => "QAngle",
         _ => throw new ArgumentOutOfRangeException(nameof(name), name, $"Unknown built-in: {name}")

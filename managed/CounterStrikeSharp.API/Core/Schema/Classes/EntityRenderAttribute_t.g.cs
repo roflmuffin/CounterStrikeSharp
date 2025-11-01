@@ -25,7 +25,11 @@ public partial class EntityRenderAttribute_t : NativeObject
 
 	// m_Values
 	[SchemaMember("EntityRenderAttribute_t", "m_Values")]
-	public Vector4D Values => Schema.GetDeclaredClass<Vector4D>(this.Handle, "EntityRenderAttribute_t", "m_Values");
+	public Vector4 Values
+	{
+		get { return Schema.GetValueType<Vector4>(this.Handle, "EntityRenderAttribute_t", "m_Values"); }
+		set { Schema.SetValueType<Vector4>(this.Handle, "EntityRenderAttribute_t", "m_Values", value); }
+	}
 
 	public void IDPropertyChanged() => Utilities.SetStateChanged(this, "EntityRenderAttribute_t", "m_ID");
 	public void ValuesPropertyChanged() => Utilities.SetStateChanged(this, "EntityRenderAttribute_t", "m_Values");
