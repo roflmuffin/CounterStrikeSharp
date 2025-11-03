@@ -17,7 +17,7 @@ namespace CounterStrikeSharp.API.Core;
 
 public partial class CEntityInstance : NativeEntity
 {
-    	// m_iszPrivateVScripts
+	// m_iszPrivateVScripts
 	[SchemaMember("CEntityInstance", "m_iszPrivateVScripts")]
 	public string PrivateVScripts
 	{
