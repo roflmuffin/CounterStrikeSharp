@@ -96,7 +96,7 @@ using CounterStrikeSharp.API.Modules.Utils;
 
 namespace CounterStrikeSharp.API.Core
 {{
-    public class NativeAPI {{
+    internal static class NativeAPI {{
         {nativesString}
     }}
 }}
