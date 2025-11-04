@@ -23,7 +23,11 @@ public partial class CCSPlayer_ActionTrackingServices : CPlayerPawnComponent
 
 	// m_hLastWeaponBeforeC4AutoSwitch
 	[SchemaMember("CCSPlayer_ActionTrackingServices", "m_hLastWeaponBeforeC4AutoSwitch")]
-	public virtual CHandle<CBasePlayerWeapon> LastWeaponBeforeC4AutoSwitch => Schema.GetDeclaredClass<CHandle<CBasePlayerWeapon>>(this.Handle, "CCSPlayer_ActionTrackingServices", "m_hLastWeaponBeforeC4AutoSwitch");
+	public virtual CHandle<CBasePlayerWeapon> LastWeaponBeforeC4AutoSwitch
+	{
+		get { return Schema.GetValueType<CHandle<CBasePlayerWeapon>>(this.Handle, "CCSPlayer_ActionTrackingServices", "m_hLastWeaponBeforeC4AutoSwitch"); }
+		set { Schema.SetValueType<CHandle<CBasePlayerWeapon>>(this.Handle, "CCSPlayer_ActionTrackingServices", "m_hLastWeaponBeforeC4AutoSwitch", value); }
+	}
 
 	// m_bIsRescuing
 	[SchemaMember("CCSPlayer_ActionTrackingServices", "m_bIsRescuing")]

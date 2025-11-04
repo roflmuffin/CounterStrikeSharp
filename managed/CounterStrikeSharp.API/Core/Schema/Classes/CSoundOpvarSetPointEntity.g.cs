@@ -151,7 +151,11 @@ public partial class CSoundOpvarSetPointEntity : CSoundOpvarSetPointBase
 
 	// m_hDynamicEntity
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_hDynamicEntity")]
-	public virtual CHandle<CEntityInstance> DynamicEntity => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CSoundOpvarSetPointEntity", "m_hDynamicEntity");
+	public virtual CHandle<CEntityInstance> DynamicEntity
+	{
+		get { return Schema.GetValueType<CHandle<CEntityInstance>>(this.Handle, "CSoundOpvarSetPointEntity", "m_hDynamicEntity"); }
+		set { Schema.SetValueType<CHandle<CEntityInstance>>(this.Handle, "CSoundOpvarSetPointEntity", "m_hDynamicEntity", value); }
+	}
 
 	// m_iszDynamicEntityName
 	[SchemaMember("CSoundOpvarSetPointEntity", "m_iszDynamicEntityName")]

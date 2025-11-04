@@ -23,11 +23,19 @@ public partial class CTankTrainAI : CPointEntity
 
 	// m_hTrain
 	[SchemaMember("CTankTrainAI", "m_hTrain")]
-	public virtual CHandle<CFuncTrackTrain> Train => Schema.GetDeclaredClass<CHandle<CFuncTrackTrain>>(this.Handle, "CTankTrainAI", "m_hTrain");
+	public virtual CHandle<CFuncTrackTrain> Train
+	{
+		get { return Schema.GetValueType<CHandle<CFuncTrackTrain>>(this.Handle, "CTankTrainAI", "m_hTrain"); }
+		set { Schema.SetValueType<CHandle<CFuncTrackTrain>>(this.Handle, "CTankTrainAI", "m_hTrain", value); }
+	}
 
 	// m_hTargetEntity
 	[SchemaMember("CTankTrainAI", "m_hTargetEntity")]
-	public virtual CHandle<CBaseEntity> TargetEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CTankTrainAI", "m_hTargetEntity");
+	public virtual CHandle<CBaseEntity> TargetEntity
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CTankTrainAI", "m_hTargetEntity"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CTankTrainAI", "m_hTargetEntity", value); }
+	}
 
 	// m_soundPlaying
 	[SchemaMember("CTankTrainAI", "m_soundPlaying")]

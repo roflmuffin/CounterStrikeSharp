@@ -39,11 +39,19 @@ public partial class CPhysMotor : CLogicalEntity
 
 	// m_hAttachedObject
 	[SchemaMember("CPhysMotor", "m_hAttachedObject")]
-	public virtual CHandle<CBaseEntity> AttachedObject => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysMotor", "m_hAttachedObject");
+	public virtual CHandle<CBaseEntity> AttachedObject
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CPhysMotor", "m_hAttachedObject"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CPhysMotor", "m_hAttachedObject", value); }
+	}
 
 	// m_hAnchorObject
 	[SchemaMember("CPhysMotor", "m_hAnchorObject")]
-	public virtual CHandle<CBaseEntity> AnchorObject => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysMotor", "m_hAnchorObject");
+	public virtual CHandle<CBaseEntity> AnchorObject
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CPhysMotor", "m_hAnchorObject"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CPhysMotor", "m_hAnchorObject", value); }
+	}
 
 	// m_spinUp
 	[SchemaMember("CPhysMotor", "m_spinUp")]

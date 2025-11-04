@@ -35,7 +35,11 @@ public partial class CAttributeManager : NativeObject
 
 	// m_hOuter
 	[SchemaMember("CAttributeManager", "m_hOuter")]
-	public virtual CHandle<CBaseEntity> Outer => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CAttributeManager", "m_hOuter");
+	public virtual CHandle<CBaseEntity> Outer
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CAttributeManager", "m_hOuter"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CAttributeManager", "m_hOuter", value); }
+	}
 
 	// m_bPreventLoopback
 	[SchemaMember("CAttributeManager", "m_bPreventLoopback")]

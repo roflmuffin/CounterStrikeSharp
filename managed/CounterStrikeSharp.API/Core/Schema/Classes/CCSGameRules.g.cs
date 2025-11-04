@@ -1243,7 +1243,11 @@ public partial class CCSGameRules : CTeamplayRules
 
 	// m_hPlayerResource
 	[SchemaMember("CCSGameRules", "m_hPlayerResource")]
-	public virtual CHandle<CBaseEntity> PlayerResource => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSGameRules", "m_hPlayerResource");
+	public virtual CHandle<CBaseEntity> PlayerResource
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CCSGameRules", "m_hPlayerResource"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CCSGameRules", "m_hPlayerResource", value); }
+	}
 
 	// m_RetakeRules
 	[SchemaMember("CCSGameRules", "m_RetakeRules")]

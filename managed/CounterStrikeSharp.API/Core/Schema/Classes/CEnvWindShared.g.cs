@@ -143,7 +143,11 @@ public partial class CEnvWindShared : NativeObject
 
 	// m_hEntOwner
 	[SchemaMember("CEnvWindShared", "m_hEntOwner")]
-	public virtual CHandle<CBaseEntity> EntOwner => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEnvWindShared", "m_hEntOwner");
+	public virtual CHandle<CBaseEntity> EntOwner
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CEnvWindShared", "m_hEntOwner"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CEnvWindShared", "m_hEntOwner", value); }
+	}
 
 	public virtual void StartTimePropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_flStartTime");
 	public virtual void WindSeedPropertyChanged() => Utilities.SetStateChanged(this, "CEnvWindShared", "m_iWindSeed");

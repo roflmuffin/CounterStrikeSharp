@@ -91,7 +91,11 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_hBlocker
 	[SchemaMember("CBasePropDoor", "m_hBlocker")]
-	public virtual new CHandle<CBaseEntity> Blocker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBasePropDoor", "m_hBlocker");
+	public virtual new CHandle<CBaseEntity> Blocker
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CBasePropDoor", "m_hBlocker"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CBasePropDoor", "m_hBlocker", value); }
+	}
 
 	// m_bFirstBlocked
 	[SchemaMember("CBasePropDoor", "m_bFirstBlocked")]
@@ -123,7 +127,11 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_hActivator
 	[SchemaMember("CBasePropDoor", "m_hActivator")]
-	public virtual CHandle<CBaseEntity> Activator => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBasePropDoor", "m_hActivator");
+	public virtual CHandle<CBaseEntity> Activator
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CBasePropDoor", "m_hActivator"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CBasePropDoor", "m_hActivator", value); }
+	}
 
 	// m_SoundMoving
 	[SchemaMember("CBasePropDoor", "m_SoundMoving")]
@@ -219,7 +227,11 @@ public partial class CBasePropDoor : CDynamicProp
 
 	// m_hMaster
 	[SchemaMember("CBasePropDoor", "m_hMaster")]
-	public virtual CHandle<CBasePropDoor> Master => Schema.GetDeclaredClass<CHandle<CBasePropDoor>>(this.Handle, "CBasePropDoor", "m_hMaster");
+	public virtual CHandle<CBasePropDoor> Master
+	{
+		get { return Schema.GetValueType<CHandle<CBasePropDoor>>(this.Handle, "CBasePropDoor", "m_hMaster"); }
+		set { Schema.SetValueType<CHandle<CBasePropDoor>>(this.Handle, "CBasePropDoor", "m_hMaster", value); }
+	}
 
 	// m_OnBlockedClosing
 	[SchemaMember("CBasePropDoor", "m_OnBlockedClosing")]

@@ -67,7 +67,11 @@ public partial class CBombTarget : CBaseTrigger
 
 	// m_hInstructorHint
 	[SchemaMember("CBombTarget", "m_hInstructorHint")]
-	public virtual CHandle<CBaseEntity> InstructorHint => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBombTarget", "m_hInstructorHint");
+	public virtual CHandle<CBaseEntity> InstructorHint
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CBombTarget", "m_hInstructorHint"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CBombTarget", "m_hInstructorHint", value); }
+	}
 
 	// m_nBombSiteDesignation
 	[SchemaMember("CBombTarget", "m_nBombSiteDesignation")]

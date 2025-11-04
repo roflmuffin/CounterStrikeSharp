@@ -27,7 +27,11 @@ public partial class PhysicsRagdollPose_t : NativeObject
 
 	// m_hOwner
 	[SchemaMember("PhysicsRagdollPose_t", "m_hOwner")]
-	public virtual CHandle<CBaseEntity> Owner => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "PhysicsRagdollPose_t", "m_hOwner");
+	public virtual CHandle<CBaseEntity> Owner
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "PhysicsRagdollPose_t", "m_hOwner"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "PhysicsRagdollPose_t", "m_hOwner", value); }
+	}
 
 	// m_bSetFromDebugHistory
 	[SchemaMember("PhysicsRagdollPose_t", "m_bSetFromDebugHistory")]

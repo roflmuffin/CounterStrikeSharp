@@ -23,7 +23,11 @@ public partial class CFuncRotator : CBaseModelEntity
 
 	// m_hRotatorTarget
 	[SchemaMember("CFuncRotator", "m_hRotatorTarget")]
-	public virtual CHandle<CBaseEntity> RotatorTarget => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CFuncRotator", "m_hRotatorTarget");
+	public virtual CHandle<CBaseEntity> RotatorTarget
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CFuncRotator", "m_hRotatorTarget"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CFuncRotator", "m_hRotatorTarget", value); }
+	}
 
 	// m_bIsRotating
 	[SchemaMember("CFuncRotator", "m_bIsRotating")]

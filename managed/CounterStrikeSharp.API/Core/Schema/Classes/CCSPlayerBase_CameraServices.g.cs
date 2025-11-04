@@ -55,7 +55,11 @@ public partial class CCSPlayerBase_CameraServices : CPlayer_CameraServices
 
 	// m_hZoomOwner
 	[SchemaMember("CCSPlayerBase_CameraServices", "m_hZoomOwner")]
-	public virtual CHandle<CBaseEntity> ZoomOwner => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSPlayerBase_CameraServices", "m_hZoomOwner");
+	public virtual CHandle<CBaseEntity> ZoomOwner
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CCSPlayerBase_CameraServices", "m_hZoomOwner"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CCSPlayerBase_CameraServices", "m_hZoomOwner", value); }
+	}
 
 	// m_hTriggerFogList
 	[SchemaMember("CCSPlayerBase_CameraServices", "m_hTriggerFogList")]
@@ -63,7 +67,11 @@ public partial class CCSPlayerBase_CameraServices : CPlayer_CameraServices
 
 	// m_hLastFogTrigger
 	[SchemaMember("CCSPlayerBase_CameraServices", "m_hLastFogTrigger")]
-	public virtual CHandle<CBaseEntity> LastFogTrigger => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSPlayerBase_CameraServices", "m_hLastFogTrigger");
+	public virtual CHandle<CBaseEntity> LastFogTrigger
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CCSPlayerBase_CameraServices", "m_hLastFogTrigger"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CCSPlayerBase_CameraServices", "m_hLastFogTrigger", value); }
+	}
 
 	public virtual void FOVPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerBase_CameraServices", "m_iFOV");
 	public virtual void FOVStartPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerBase_CameraServices", "m_iFOVStart");

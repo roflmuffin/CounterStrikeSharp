@@ -127,11 +127,19 @@ public partial class CBasePlayerPawn : CBaseCombatCharacter
 
 	// m_hController
 	[SchemaMember("CBasePlayerPawn", "m_hController")]
-	public virtual CHandle<CBasePlayerController> Controller => Schema.GetDeclaredClass<CHandle<CBasePlayerController>>(this.Handle, "CBasePlayerPawn", "m_hController");
+	public virtual CHandle<CBasePlayerController> Controller
+	{
+		get { return Schema.GetValueType<CHandle<CBasePlayerController>>(this.Handle, "CBasePlayerPawn", "m_hController"); }
+		set { Schema.SetValueType<CHandle<CBasePlayerController>>(this.Handle, "CBasePlayerPawn", "m_hController", value); }
+	}
 
 	// m_hDefaultController
 	[SchemaMember("CBasePlayerPawn", "m_hDefaultController")]
-	public virtual CHandle<CBasePlayerController> DefaultController => Schema.GetDeclaredClass<CHandle<CBasePlayerController>>(this.Handle, "CBasePlayerPawn", "m_hDefaultController");
+	public virtual CHandle<CBasePlayerController> DefaultController
+	{
+		get { return Schema.GetValueType<CHandle<CBasePlayerController>>(this.Handle, "CBasePlayerPawn", "m_hDefaultController"); }
+		set { Schema.SetValueType<CHandle<CBasePlayerController>>(this.Handle, "CBasePlayerPawn", "m_hDefaultController", value); }
+	}
 
 	// m_fHltvReplayDelay
 	[SchemaMember("CBasePlayerPawn", "m_fHltvReplayDelay")]

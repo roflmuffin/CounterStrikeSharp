@@ -35,7 +35,11 @@ public partial class CBreakable : CBaseModelEntity
 
 	// m_hBreaker
 	[SchemaMember("CBreakable", "m_hBreaker")]
-	public virtual CHandle<CBaseEntity> Breaker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBreakable", "m_hBreaker");
+	public virtual CHandle<CBaseEntity> Breaker
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CBreakable", "m_hBreaker"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CBreakable", "m_hBreaker", value); }
+	}
 
 	// m_Explosion
 	[SchemaMember("CBreakable", "m_Explosion")]
@@ -107,7 +111,11 @@ public partial class CBreakable : CBaseModelEntity
 
 	// m_hPhysicsAttacker
 	[SchemaMember("CBreakable", "m_hPhysicsAttacker")]
-	public virtual CHandle<CBasePlayerPawn> PhysicsAttacker => Schema.GetDeclaredClass<CHandle<CBasePlayerPawn>>(this.Handle, "CBreakable", "m_hPhysicsAttacker");
+	public virtual CHandle<CBasePlayerPawn> PhysicsAttacker
+	{
+		get { return Schema.GetValueType<CHandle<CBasePlayerPawn>>(this.Handle, "CBreakable", "m_hPhysicsAttacker"); }
+		set { Schema.SetValueType<CHandle<CBasePlayerPawn>>(this.Handle, "CBreakable", "m_hPhysicsAttacker", value); }
+	}
 
 	// m_flLastPhysicsInfluenceTime
 	[SchemaMember("CBreakable", "m_flLastPhysicsInfluenceTime")]

@@ -31,7 +31,11 @@ public partial class CTriggerLerpObject : CBaseTrigger
 
 	// m_hLerpTarget
 	[SchemaMember("CTriggerLerpObject", "m_hLerpTarget")]
-	public virtual CHandle<CBaseEntity> HLerpTarget => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CTriggerLerpObject", "m_hLerpTarget");
+	public virtual CHandle<CBaseEntity> HLerpTarget
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CTriggerLerpObject", "m_hLerpTarget"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CTriggerLerpObject", "m_hLerpTarget", value); }
+	}
 
 	// m_iszLerpTargetAttachment
 	[SchemaMember("CTriggerLerpObject", "m_iszLerpTargetAttachment")]
@@ -99,7 +103,11 @@ public partial class CTriggerLerpObject : CBaseTrigger
 
 	// m_hEntityToWaitForDisconnect
 	[SchemaMember("CTriggerLerpObject", "m_hEntityToWaitForDisconnect")]
-	public virtual CHandle<CBaseEntity> EntityToWaitForDisconnect => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CTriggerLerpObject", "m_hEntityToWaitForDisconnect");
+	public virtual CHandle<CBaseEntity> EntityToWaitForDisconnect
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CTriggerLerpObject", "m_hEntityToWaitForDisconnect"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CTriggerLerpObject", "m_hEntityToWaitForDisconnect", value); }
+	}
 
 	// m_OnLerpStarted
 	[SchemaMember("CTriggerLerpObject", "m_OnLerpStarted")]

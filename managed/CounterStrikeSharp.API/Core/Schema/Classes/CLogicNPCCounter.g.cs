@@ -55,7 +55,11 @@ public partial class CLogicNPCCounter : CBaseEntity
 
 	// m_hSource
 	[SchemaMember("CLogicNPCCounter", "m_hSource")]
-	public virtual CHandle<CEntityInstance> Source => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CLogicNPCCounter", "m_hSource");
+	public virtual CHandle<CEntityInstance> Source
+	{
+		get { return Schema.GetValueType<CHandle<CEntityInstance>>(this.Handle, "CLogicNPCCounter", "m_hSource"); }
+		set { Schema.SetValueType<CHandle<CEntityInstance>>(this.Handle, "CLogicNPCCounter", "m_hSource", value); }
+	}
 
 	// m_iszSourceEntityName
 	[SchemaMember("CLogicNPCCounter", "m_iszSourceEntityName")]

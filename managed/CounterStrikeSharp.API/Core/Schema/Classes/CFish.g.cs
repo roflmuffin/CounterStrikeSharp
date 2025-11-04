@@ -23,7 +23,11 @@ public partial class CFish : CBaseAnimGraph
 
 	// m_pool
 	[SchemaMember("CFish", "m_pool")]
-	public virtual CHandle<CFishPool> Pool => Schema.GetDeclaredClass<CHandle<CFishPool>>(this.Handle, "CFish", "m_pool");
+	public virtual CHandle<CFishPool> Pool
+	{
+		get { return Schema.GetValueType<CHandle<CFishPool>>(this.Handle, "CFish", "m_pool"); }
+		set { Schema.SetValueType<CHandle<CFishPool>>(this.Handle, "CFish", "m_pool", value); }
+	}
 
 	// m_id
 	[SchemaMember("CFish", "m_id")]

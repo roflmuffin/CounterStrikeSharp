@@ -23,7 +23,11 @@ public partial class CTriggerSoundscape : CBaseTrigger
 
 	// m_hSoundscape
 	[SchemaMember("CTriggerSoundscape", "m_hSoundscape")]
-	public virtual CHandle<CEnvSoundscapeTriggerable> Soundscape => Schema.GetDeclaredClass<CHandle<CEnvSoundscapeTriggerable>>(this.Handle, "CTriggerSoundscape", "m_hSoundscape");
+	public virtual CHandle<CEnvSoundscapeTriggerable> Soundscape
+	{
+		get { return Schema.GetValueType<CHandle<CEnvSoundscapeTriggerable>>(this.Handle, "CTriggerSoundscape", "m_hSoundscape"); }
+		set { Schema.SetValueType<CHandle<CEnvSoundscapeTriggerable>>(this.Handle, "CTriggerSoundscape", "m_hSoundscape", value); }
+	}
 
 	// m_SoundscapeName
 	[SchemaMember("CTriggerSoundscape", "m_SoundscapeName")]

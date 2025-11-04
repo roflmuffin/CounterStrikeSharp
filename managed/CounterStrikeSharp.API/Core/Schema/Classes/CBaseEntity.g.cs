@@ -195,7 +195,11 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_hDamageFilter
 	[SchemaMember("CBaseEntity", "m_hDamageFilter")]
-	public virtual CHandle<CBaseFilter> DamageFilter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CBaseEntity", "m_hDamageFilter");
+	public virtual CHandle<CBaseFilter> DamageFilter
+	{
+		get { return Schema.GetValueType<CHandle<CBaseFilter>>(this.Handle, "CBaseEntity", "m_hDamageFilter"); }
+		set { Schema.SetValueType<CHandle<CBaseFilter>>(this.Handle, "CBaseEntity", "m_hDamageFilter", value); }
+	}
 
 	// m_iszDamageFilterName
 	[SchemaMember("CBaseEntity", "m_iszDamageFilterName")]
@@ -375,11 +379,19 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_hEffectEntity
 	[SchemaMember("CBaseEntity", "m_hEffectEntity")]
-	public virtual CHandle<CBaseEntity> EffectEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBaseEntity", "m_hEffectEntity");
+	public virtual CHandle<CBaseEntity> EffectEntity
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CBaseEntity", "m_hEffectEntity"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CBaseEntity", "m_hEffectEntity", value); }
+	}
 
 	// m_hOwnerEntity
 	[SchemaMember("CBaseEntity", "m_hOwnerEntity")]
-	public virtual CHandle<CBaseEntity> OwnerEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBaseEntity", "m_hOwnerEntity");
+	public virtual CHandle<CBaseEntity> OwnerEntity
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CBaseEntity", "m_hOwnerEntity"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CBaseEntity", "m_hOwnerEntity", value); }
+	}
 
 	// m_fEffects
 	[SchemaMember("CBaseEntity", "m_fEffects")]
@@ -391,7 +403,11 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_hGroundEntity
 	[SchemaMember("CBaseEntity", "m_hGroundEntity")]
-	public virtual CHandle<CBaseEntity> GroundEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBaseEntity", "m_hGroundEntity");
+	public virtual CHandle<CBaseEntity> GroundEntity
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CBaseEntity", "m_hGroundEntity"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CBaseEntity", "m_hGroundEntity", value); }
+	}
 
 	// m_nGroundBodyIndex
 	[SchemaMember("CBaseEntity", "m_nGroundBodyIndex")]
@@ -555,7 +571,11 @@ public partial class CBaseEntity : CEntityInstance
 
 	// m_pBlocker
 	[SchemaMember("CBaseEntity", "m_pBlocker")]
-	public virtual CHandle<CBaseEntity> Blocker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBaseEntity", "m_pBlocker");
+	public virtual CHandle<CBaseEntity> Blocker
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CBaseEntity", "m_pBlocker"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CBaseEntity", "m_pBlocker", value); }
+	}
 
 	// m_flLocalTime
 	[SchemaMember("CBaseEntity", "m_flLocalTime")]

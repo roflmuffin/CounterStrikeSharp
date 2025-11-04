@@ -39,7 +39,11 @@ public partial class CBasePlayerController : CBaseEntity
 
 	// m_hPawn
 	[SchemaMember("CBasePlayerController", "m_hPawn")]
-	public virtual CHandle<CBasePlayerPawn> Pawn => Schema.GetDeclaredClass<CHandle<CBasePlayerPawn>>(this.Handle, "CBasePlayerController", "m_hPawn");
+	public virtual CHandle<CBasePlayerPawn> Pawn
+	{
+		get { return Schema.GetValueType<CHandle<CBasePlayerPawn>>(this.Handle, "CBasePlayerController", "m_hPawn"); }
+		set { Schema.SetValueType<CHandle<CBasePlayerPawn>>(this.Handle, "CBasePlayerController", "m_hPawn", value); }
+	}
 
 	// m_bKnownTeamMismatch
 	[SchemaMember("CBasePlayerController", "m_bKnownTeamMismatch")]
@@ -59,7 +63,11 @@ public partial class CBasePlayerController : CBaseEntity
 
 	// m_hSplitOwner
 	[SchemaMember("CBasePlayerController", "m_hSplitOwner")]
-	public virtual CHandle<CBasePlayerController> SplitOwner => Schema.GetDeclaredClass<CHandle<CBasePlayerController>>(this.Handle, "CBasePlayerController", "m_hSplitOwner");
+	public virtual CHandle<CBasePlayerController> SplitOwner
+	{
+		get { return Schema.GetValueType<CHandle<CBasePlayerController>>(this.Handle, "CBasePlayerController", "m_hSplitOwner"); }
+		set { Schema.SetValueType<CHandle<CBasePlayerController>>(this.Handle, "CBasePlayerController", "m_hSplitOwner", value); }
+	}
 
 	// m_hSplitScreenPlayers
 	[SchemaMember("CBasePlayerController", "m_hSplitScreenPlayers")]

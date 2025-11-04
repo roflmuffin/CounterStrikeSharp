@@ -75,7 +75,11 @@ public partial class CEconEntity : CBaseFlex
 
 	// m_hOldProvidee
 	[SchemaMember("CEconEntity", "m_hOldProvidee")]
-	public virtual CHandle<CBaseEntity> OldProvidee => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEconEntity", "m_hOldProvidee");
+	public virtual CHandle<CBaseEntity> OldProvidee
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CEconEntity", "m_hOldProvidee"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CEconEntity", "m_hOldProvidee", value); }
+	}
 
 	// m_iOldOwnerClass
 	[SchemaMember("CEconEntity", "m_iOldOwnerClass")]

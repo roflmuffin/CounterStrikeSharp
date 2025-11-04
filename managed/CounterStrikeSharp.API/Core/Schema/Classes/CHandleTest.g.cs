@@ -23,7 +23,11 @@ public partial class CHandleTest : CBaseEntity
 
 	// m_Handle
 	[SchemaMember("CHandleTest", "m_Handle")]
-	public virtual CHandle<CBaseEntity> TestHandle => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CHandleTest", "m_Handle");
+	public virtual CHandle<CBaseEntity> TestHandle
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CHandleTest", "m_Handle"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CHandleTest", "m_Handle", value); }
+	}
 
 	// m_bSendHandle
 	[SchemaMember("CHandleTest", "m_bSendHandle")]

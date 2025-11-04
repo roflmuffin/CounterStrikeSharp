@@ -63,7 +63,11 @@ public partial class CFuncMonitor : CFuncBrush
 
 	// m_hTargetCamera
 	[SchemaMember("CFuncMonitor", "m_hTargetCamera")]
-	public virtual CHandle<CBaseEntity> HTargetCamera => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CFuncMonitor", "m_hTargetCamera");
+	public virtual CHandle<CBaseEntity> HTargetCamera
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CFuncMonitor", "m_hTargetCamera"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CFuncMonitor", "m_hTargetCamera", value); }
+	}
 
 	// m_bEnabled
 	[SchemaMember("CFuncMonitor", "m_bEnabled")]

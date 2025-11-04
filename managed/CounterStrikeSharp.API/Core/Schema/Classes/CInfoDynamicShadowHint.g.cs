@@ -55,6 +55,10 @@ public partial class CInfoDynamicShadowHint : CPointEntity
 
 	// m_hLight
 	[SchemaMember("CInfoDynamicShadowHint", "m_hLight")]
-	public virtual CHandle<CBaseEntity> Light => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CInfoDynamicShadowHint", "m_hLight");
+	public virtual CHandle<CBaseEntity> Light
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CInfoDynamicShadowHint", "m_hLight"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CInfoDynamicShadowHint", "m_hLight", value); }
+	}
 
 }

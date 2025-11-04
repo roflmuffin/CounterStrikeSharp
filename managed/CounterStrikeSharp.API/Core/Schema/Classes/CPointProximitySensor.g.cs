@@ -31,6 +31,10 @@ public partial class CPointProximitySensor : CPointEntity
 
 	// m_hTargetEntity
 	[SchemaMember("CPointProximitySensor", "m_hTargetEntity")]
-	public virtual CHandle<CBaseEntity> TargetEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointProximitySensor", "m_hTargetEntity");
+	public virtual CHandle<CBaseEntity> TargetEntity
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CPointProximitySensor", "m_hTargetEntity"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CPointProximitySensor", "m_hTargetEntity", value); }
+	}
 
 }

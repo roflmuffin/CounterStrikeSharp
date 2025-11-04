@@ -55,7 +55,11 @@ public partial class SellbackPurchaseEntry_t : NativeObject
 
 	// m_hItem
 	[SchemaMember("SellbackPurchaseEntry_t", "m_hItem")]
-	public virtual CHandle<CEntityInstance> Item => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "SellbackPurchaseEntry_t", "m_hItem");
+	public virtual CHandle<CEntityInstance> Item
+	{
+		get { return Schema.GetValueType<CHandle<CEntityInstance>>(this.Handle, "SellbackPurchaseEntry_t", "m_hItem"); }
+		set { Schema.SetValueType<CHandle<CEntityInstance>>(this.Handle, "SellbackPurchaseEntry_t", "m_hItem", value); }
+	}
 
 	public virtual void DefIdxPropertyChanged() => Utilities.SetStateChanged(this, "SellbackPurchaseEntry_t", "m_unDefIdx");
 	public virtual void CostPropertyChanged() => Utilities.SetStateChanged(this, "SellbackPurchaseEntry_t", "m_nCost");

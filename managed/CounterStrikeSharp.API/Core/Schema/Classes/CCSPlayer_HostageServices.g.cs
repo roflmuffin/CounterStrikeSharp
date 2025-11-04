@@ -23,11 +23,19 @@ public partial class CCSPlayer_HostageServices : CPlayerPawnComponent
 
 	// m_hCarriedHostage
 	[SchemaMember("CCSPlayer_HostageServices", "m_hCarriedHostage")]
-	public virtual CHandle<CBaseEntity> CarriedHostage => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSPlayer_HostageServices", "m_hCarriedHostage");
+	public virtual CHandle<CBaseEntity> CarriedHostage
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CCSPlayer_HostageServices", "m_hCarriedHostage"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CCSPlayer_HostageServices", "m_hCarriedHostage", value); }
+	}
 
 	// m_hCarriedHostageProp
 	[SchemaMember("CCSPlayer_HostageServices", "m_hCarriedHostageProp")]
-	public virtual CHandle<CBaseEntity> CarriedHostageProp => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSPlayer_HostageServices", "m_hCarriedHostageProp");
+	public virtual CHandle<CBaseEntity> CarriedHostageProp
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CCSPlayer_HostageServices", "m_hCarriedHostageProp"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CCSPlayer_HostageServices", "m_hCarriedHostageProp", value); }
+	}
 
 	public virtual void CarriedHostagePropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_HostageServices", "m_hCarriedHostage");
 	public virtual void CarriedHostagePropPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_HostageServices", "m_hCarriedHostageProp");

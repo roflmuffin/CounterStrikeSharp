@@ -23,19 +23,35 @@ public partial class CDamageRecord : NativeObject
 
 	// m_PlayerDamager
 	[SchemaMember("CDamageRecord", "m_PlayerDamager")]
-	public virtual CHandle<CCSPlayerPawn> PlayerDamager => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CDamageRecord", "m_PlayerDamager");
+	public virtual CHandle<CCSPlayerPawn> PlayerDamager
+	{
+		get { return Schema.GetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CDamageRecord", "m_PlayerDamager"); }
+		set { Schema.SetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CDamageRecord", "m_PlayerDamager", value); }
+	}
 
 	// m_PlayerRecipient
 	[SchemaMember("CDamageRecord", "m_PlayerRecipient")]
-	public virtual CHandle<CCSPlayerPawn> PlayerRecipient => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CDamageRecord", "m_PlayerRecipient");
+	public virtual CHandle<CCSPlayerPawn> PlayerRecipient
+	{
+		get { return Schema.GetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CDamageRecord", "m_PlayerRecipient"); }
+		set { Schema.SetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CDamageRecord", "m_PlayerRecipient", value); }
+	}
 
 	// m_hPlayerControllerDamager
 	[SchemaMember("CDamageRecord", "m_hPlayerControllerDamager")]
-	public virtual CHandle<CCSPlayerController> PlayerControllerDamager => Schema.GetDeclaredClass<CHandle<CCSPlayerController>>(this.Handle, "CDamageRecord", "m_hPlayerControllerDamager");
+	public virtual CHandle<CCSPlayerController> PlayerControllerDamager
+	{
+		get { return Schema.GetValueType<CHandle<CCSPlayerController>>(this.Handle, "CDamageRecord", "m_hPlayerControllerDamager"); }
+		set { Schema.SetValueType<CHandle<CCSPlayerController>>(this.Handle, "CDamageRecord", "m_hPlayerControllerDamager", value); }
+	}
 
 	// m_hPlayerControllerRecipient
 	[SchemaMember("CDamageRecord", "m_hPlayerControllerRecipient")]
-	public virtual CHandle<CCSPlayerController> PlayerControllerRecipient => Schema.GetDeclaredClass<CHandle<CCSPlayerController>>(this.Handle, "CDamageRecord", "m_hPlayerControllerRecipient");
+	public virtual CHandle<CCSPlayerController> PlayerControllerRecipient
+	{
+		get { return Schema.GetValueType<CHandle<CCSPlayerController>>(this.Handle, "CDamageRecord", "m_hPlayerControllerRecipient"); }
+		set { Schema.SetValueType<CHandle<CCSPlayerController>>(this.Handle, "CDamageRecord", "m_hPlayerControllerRecipient", value); }
+	}
 
 	// m_szPlayerDamagerName
 	[SchemaMember("CDamageRecord", "m_szPlayerDamagerName")]

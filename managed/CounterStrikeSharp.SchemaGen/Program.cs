@@ -553,6 +553,20 @@ internal static partial class Program
                 builder.AppendLine($"\t}}");
                 builder.AppendLine();
             }
+            else if (field.Type.Category == SchemaTypeCategory.Atomic && field.Type.CsTypeName.StartsWith("CHandle<"))
+            {
+                var getter = $"return Schema.GetValueType<{SanitiseTypeName(field.Type.CsTypeName)}>({handleParams});";
+                var setter = $"Schema.SetValueType<{SanitiseTypeName(field.Type.CsTypeName)}>({handleParams}, value);";
+                builder.AppendLine(
+                    $"\tpublic virtual {(requiresNewKeyword ? "new " : "")}{SanitiseTypeName(field.Type.CsTypeName)} {schemaClass.CsPropertyNameForField(schemaClassName, field)}");
+                builder.AppendLine($"\t{{");
+                builder.AppendLine(
+                    $"\t\tget {{ {getter} }}");
+                builder.AppendLine(
+                    $"\t\tset {{ {setter} }}");
+                builder.AppendLine($"\t}}");
+                builder.AppendLine();
+            }
             else if (field.Type.Category == SchemaTypeCategory.Atomic)
             {
                 var getter = $"Schema.GetDeclaredClass<{SanitiseTypeName(field.Type.CsTypeName)}>({handleParams});";

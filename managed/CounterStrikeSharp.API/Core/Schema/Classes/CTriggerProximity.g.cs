@@ -23,7 +23,11 @@ public partial class CTriggerProximity : CBaseTrigger
 
 	// m_hMeasureTarget
 	[SchemaMember("CTriggerProximity", "m_hMeasureTarget")]
-	public virtual CHandle<CBaseEntity> HMeasureTarget => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CTriggerProximity", "m_hMeasureTarget");
+	public virtual CHandle<CBaseEntity> HMeasureTarget
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CTriggerProximity", "m_hMeasureTarget"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CTriggerProximity", "m_hMeasureTarget", value); }
+	}
 
 	// m_iszMeasureTarget
 	[SchemaMember("CTriggerProximity", "m_iszMeasureTarget")]

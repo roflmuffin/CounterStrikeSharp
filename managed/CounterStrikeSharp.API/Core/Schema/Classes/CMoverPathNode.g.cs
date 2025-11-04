@@ -75,7 +75,11 @@ public partial class CMoverPathNode : CPointEntity
 
 	// m_hMover
 	[SchemaMember("CMoverPathNode", "m_hMover")]
-	public virtual CHandle<CPathMover> Mover => Schema.GetDeclaredClass<CHandle<CPathMover>>(this.Handle, "CMoverPathNode", "m_hMover");
+	public virtual CHandle<CPathMover> Mover
+	{
+		get { return Schema.GetValueType<CHandle<CPathMover>>(this.Handle, "CMoverPathNode", "m_hMover"); }
+		set { Schema.SetValueType<CHandle<CPathMover>>(this.Handle, "CMoverPathNode", "m_hMover", value); }
+	}
 
 	// m_xWSPrevParent
 	[SchemaMember("CMoverPathNode", "m_xWSPrevParent")]

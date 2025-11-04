@@ -23,7 +23,11 @@ public partial class CPointEntityFinder : CBaseEntity
 
 	// m_hEntity
 	[SchemaMember("CPointEntityFinder", "m_hEntity")]
-	public virtual new CHandle<CBaseEntity> Entity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointEntityFinder", "m_hEntity");
+	public virtual new CHandle<CBaseEntity> Entity
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CPointEntityFinder", "m_hEntity"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CPointEntityFinder", "m_hEntity", value); }
+	}
 
 	// m_iFilterName
 	[SchemaMember("CPointEntityFinder", "m_iFilterName")]
@@ -35,7 +39,11 @@ public partial class CPointEntityFinder : CBaseEntity
 
 	// m_hFilter
 	[SchemaMember("CPointEntityFinder", "m_hFilter")]
-	public virtual CHandle<CBaseFilter> Filter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CPointEntityFinder", "m_hFilter");
+	public virtual CHandle<CBaseFilter> Filter
+	{
+		get { return Schema.GetValueType<CHandle<CBaseFilter>>(this.Handle, "CPointEntityFinder", "m_hFilter"); }
+		set { Schema.SetValueType<CHandle<CBaseFilter>>(this.Handle, "CPointEntityFinder", "m_hFilter", value); }
+	}
 
 	// m_iRefName
 	[SchemaMember("CPointEntityFinder", "m_iRefName")]
@@ -47,7 +55,11 @@ public partial class CPointEntityFinder : CBaseEntity
 
 	// m_hReference
 	[SchemaMember("CPointEntityFinder", "m_hReference")]
-	public virtual CHandle<CBaseEntity> Reference => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointEntityFinder", "m_hReference");
+	public virtual CHandle<CBaseEntity> Reference
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CPointEntityFinder", "m_hReference"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CPointEntityFinder", "m_hReference", value); }
+	}
 
 	// m_FindMethod
 	[SchemaMember("CPointEntityFinder", "m_FindMethod")]

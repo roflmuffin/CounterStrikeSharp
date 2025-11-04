@@ -23,7 +23,11 @@ public partial class lerpdata_t : NativeObject
 
 	// m_hEnt
 	[SchemaMember("lerpdata_t", "m_hEnt")]
-	public virtual CHandle<CBaseEntity> Ent => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "lerpdata_t", "m_hEnt");
+	public virtual CHandle<CBaseEntity> Ent
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "lerpdata_t", "m_hEnt"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "lerpdata_t", "m_hEnt", value); }
+	}
 
 	// m_MoveType
 	[SchemaMember("lerpdata_t", "m_MoveType")]

@@ -23,11 +23,19 @@ public partial class CPlayerPing : CBaseEntity
 
 	// m_hPlayer
 	[SchemaMember("CPlayerPing", "m_hPlayer")]
-	public virtual CHandle<CCSPlayerPawn> Player => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CPlayerPing", "m_hPlayer");
+	public virtual CHandle<CCSPlayerPawn> Player
+	{
+		get { return Schema.GetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CPlayerPing", "m_hPlayer"); }
+		set { Schema.SetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CPlayerPing", "m_hPlayer", value); }
+	}
 
 	// m_hPingedEntity
 	[SchemaMember("CPlayerPing", "m_hPingedEntity")]
-	public virtual CHandle<CBaseEntity> PingedEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPlayerPing", "m_hPingedEntity");
+	public virtual CHandle<CBaseEntity> PingedEntity
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CPlayerPing", "m_hPingedEntity"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CPlayerPing", "m_hPingedEntity", value); }
+	}
 
 	// m_iType
 	[SchemaMember("CPlayerPing", "m_iType")]

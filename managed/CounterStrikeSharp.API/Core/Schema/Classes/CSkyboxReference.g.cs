@@ -27,6 +27,10 @@ public partial class CSkyboxReference : CBaseEntity
 
 	// m_hSkyCamera
 	[SchemaMember("CSkyboxReference", "m_hSkyCamera")]
-	public virtual CHandle<CSkyCamera> SkyCamera => Schema.GetDeclaredClass<CHandle<CSkyCamera>>(this.Handle, "CSkyboxReference", "m_hSkyCamera");
+	public virtual CHandle<CSkyCamera> SkyCamera
+	{
+		get { return Schema.GetValueType<CHandle<CSkyCamera>>(this.Handle, "CSkyboxReference", "m_hSkyCamera"); }
+		set { Schema.SetValueType<CHandle<CSkyCamera>>(this.Handle, "CSkyboxReference", "m_hSkyCamera", value); }
+	}
 
 }

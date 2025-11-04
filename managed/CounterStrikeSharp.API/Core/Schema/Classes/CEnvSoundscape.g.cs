@@ -71,7 +71,11 @@ public partial class CEnvSoundscape : CBaseEntity
 
 	// m_hProxySoundscape
 	[SchemaMember("CEnvSoundscape", "m_hProxySoundscape")]
-	public virtual CHandle<CEnvSoundscape> ProxySoundscape => Schema.GetDeclaredClass<CHandle<CEnvSoundscape>>(this.Handle, "CEnvSoundscape", "m_hProxySoundscape");
+	public virtual CHandle<CEnvSoundscape> ProxySoundscape
+	{
+		get { return Schema.GetValueType<CHandle<CEnvSoundscape>>(this.Handle, "CEnvSoundscape", "m_hProxySoundscape"); }
+		set { Schema.SetValueType<CHandle<CEnvSoundscape>>(this.Handle, "CEnvSoundscape", "m_hProxySoundscape", value); }
+	}
 
 	// m_bDisabled
 	[SchemaMember("CEnvSoundscape", "m_bDisabled")]

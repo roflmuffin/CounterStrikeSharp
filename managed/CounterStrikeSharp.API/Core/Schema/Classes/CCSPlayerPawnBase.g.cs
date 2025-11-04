@@ -127,7 +127,11 @@ public partial class CCSPlayerPawnBase : CBasePlayerPawn
 
 	// m_hOriginalController
 	[SchemaMember("CCSPlayerPawnBase", "m_hOriginalController")]
-	public virtual CHandle<CCSPlayerController> OriginalController => Schema.GetDeclaredClass<CHandle<CCSPlayerController>>(this.Handle, "CCSPlayerPawnBase", "m_hOriginalController");
+	public virtual CHandle<CCSPlayerController> OriginalController
+	{
+		get { return Schema.GetValueType<CHandle<CCSPlayerController>>(this.Handle, "CCSPlayerPawnBase", "m_hOriginalController"); }
+		set { Schema.SetValueType<CHandle<CCSPlayerController>>(this.Handle, "CCSPlayerPawnBase", "m_hOriginalController", value); }
+	}
 
 	public virtual void CTouchExpansionComponentPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawnBase", "m_CTouchExpansionComponent");
 	public virtual void PingServicesPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayerPawnBase", "m_pPingServices");

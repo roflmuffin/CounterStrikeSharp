@@ -51,15 +51,27 @@ public partial class CPlayer_CameraServices : CPlayerPawnComponent
 
 	// m_hColorCorrectionCtrl
 	[SchemaMember("CPlayer_CameraServices", "m_hColorCorrectionCtrl")]
-	public virtual CHandle<CColorCorrection> ColorCorrectionCtrl => Schema.GetDeclaredClass<CHandle<CColorCorrection>>(this.Handle, "CPlayer_CameraServices", "m_hColorCorrectionCtrl");
+	public virtual CHandle<CColorCorrection> ColorCorrectionCtrl
+	{
+		get { return Schema.GetValueType<CHandle<CColorCorrection>>(this.Handle, "CPlayer_CameraServices", "m_hColorCorrectionCtrl"); }
+		set { Schema.SetValueType<CHandle<CColorCorrection>>(this.Handle, "CPlayer_CameraServices", "m_hColorCorrectionCtrl", value); }
+	}
 
 	// m_hViewEntity
 	[SchemaMember("CPlayer_CameraServices", "m_hViewEntity")]
-	public virtual CHandle<CBaseEntity> ViewEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPlayer_CameraServices", "m_hViewEntity");
+	public virtual CHandle<CBaseEntity> ViewEntity
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CPlayer_CameraServices", "m_hViewEntity"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CPlayer_CameraServices", "m_hViewEntity", value); }
+	}
 
 	// m_hTonemapController
 	[SchemaMember("CPlayer_CameraServices", "m_hTonemapController")]
-	public virtual CHandle<CTonemapController2> TonemapController => Schema.GetDeclaredClass<CHandle<CTonemapController2>>(this.Handle, "CPlayer_CameraServices", "m_hTonemapController");
+	public virtual CHandle<CTonemapController2> TonemapController
+	{
+		get { return Schema.GetValueType<CHandle<CTonemapController2>>(this.Handle, "CPlayer_CameraServices", "m_hTonemapController"); }
+		set { Schema.SetValueType<CHandle<CTonemapController2>>(this.Handle, "CPlayer_CameraServices", "m_hTonemapController", value); }
+	}
 
 	// m_audio
 	[SchemaMember("CPlayer_CameraServices", "m_audio")]

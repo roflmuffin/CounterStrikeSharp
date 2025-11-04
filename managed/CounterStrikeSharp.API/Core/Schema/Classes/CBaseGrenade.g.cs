@@ -103,7 +103,11 @@ public partial class CBaseGrenade : CBaseFlex
 
 	// m_hThrower
 	[SchemaMember("CBaseGrenade", "m_hThrower")]
-	public virtual CHandle<CCSPlayerPawn> Thrower => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CBaseGrenade", "m_hThrower");
+	public virtual CHandle<CCSPlayerPawn> Thrower
+	{
+		get { return Schema.GetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CBaseGrenade", "m_hThrower"); }
+		set { Schema.SetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CBaseGrenade", "m_hThrower", value); }
+	}
 
 	// m_flNextAttack
 	[SchemaMember("CBaseGrenade", "m_flNextAttack")]
@@ -115,7 +119,11 @@ public partial class CBaseGrenade : CBaseFlex
 
 	// m_hOriginalThrower
 	[SchemaMember("CBaseGrenade", "m_hOriginalThrower")]
-	public virtual CHandle<CCSPlayerPawn> OriginalThrower => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CBaseGrenade", "m_hOriginalThrower");
+	public virtual CHandle<CCSPlayerPawn> OriginalThrower
+	{
+		get { return Schema.GetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CBaseGrenade", "m_hOriginalThrower"); }
+		set { Schema.SetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CBaseGrenade", "m_hOriginalThrower", value); }
+	}
 
 	public virtual void IsLivePropertyChanged() => Utilities.SetStateChanged(this, "CBaseGrenade", "m_bIsLive");
 	public virtual void DmgRadiusPropertyChanged() => Utilities.SetStateChanged(this, "CBaseGrenade", "m_DmgRadius");

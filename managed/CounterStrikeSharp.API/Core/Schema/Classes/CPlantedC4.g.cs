@@ -163,7 +163,11 @@ public partial class CPlantedC4 : CBaseAnimGraph
 
 	// m_hBombDefuser
 	[SchemaMember("CPlantedC4", "m_hBombDefuser")]
-	public virtual CHandle<CCSPlayerPawn> BombDefuser => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CPlantedC4", "m_hBombDefuser");
+	public virtual CHandle<CCSPlayerPawn> BombDefuser
+	{
+		get { return Schema.GetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CPlantedC4", "m_hBombDefuser"); }
+		set { Schema.SetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CPlantedC4", "m_hBombDefuser", value); }
+	}
 
 	// m_iProgressBarTime
 	[SchemaMember("CPlantedC4", "m_iProgressBarTime")]

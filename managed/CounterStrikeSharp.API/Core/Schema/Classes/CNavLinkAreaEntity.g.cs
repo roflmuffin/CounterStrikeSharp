@@ -87,7 +87,11 @@ public partial class CNavLinkAreaEntity : CPointEntity
 
 	// m_hFilter
 	[SchemaMember("CNavLinkAreaEntity", "m_hFilter")]
-	public virtual CHandle<CBaseFilter> Filter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CNavLinkAreaEntity", "m_hFilter");
+	public virtual CHandle<CBaseFilter> Filter
+	{
+		get { return Schema.GetValueType<CHandle<CBaseFilter>>(this.Handle, "CNavLinkAreaEntity", "m_hFilter"); }
+		set { Schema.SetValueType<CHandle<CBaseFilter>>(this.Handle, "CNavLinkAreaEntity", "m_hFilter", value); }
+	}
 
 	// m_OnNavLinkStart
 	[SchemaMember("CNavLinkAreaEntity", "m_OnNavLinkStart")]

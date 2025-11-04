@@ -23,11 +23,19 @@ public partial class DynamicVolumeDef_t : NativeObject
 
 	// m_source
 	[SchemaMember("DynamicVolumeDef_t", "m_source")]
-	public virtual CHandle<CBaseEntity> Source => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "DynamicVolumeDef_t", "m_source");
+	public virtual CHandle<CBaseEntity> Source
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "DynamicVolumeDef_t", "m_source"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "DynamicVolumeDef_t", "m_source", value); }
+	}
 
 	// m_target
 	[SchemaMember("DynamicVolumeDef_t", "m_target")]
-	public virtual CHandle<CBaseEntity> Target => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "DynamicVolumeDef_t", "m_target");
+	public virtual CHandle<CBaseEntity> Target
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "DynamicVolumeDef_t", "m_target"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "DynamicVolumeDef_t", "m_target", value); }
+	}
 
 	// m_nHullIdx
 	[SchemaMember("DynamicVolumeDef_t", "m_nHullIdx")]

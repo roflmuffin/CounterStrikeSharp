@@ -31,10 +31,18 @@ public partial class CLogicLineToEntity : CLogicalEntity
 
 	// m_StartEntity
 	[SchemaMember("CLogicLineToEntity", "m_StartEntity")]
-	public virtual CHandle<CBaseEntity> StartEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CLogicLineToEntity", "m_StartEntity");
+	public virtual CHandle<CBaseEntity> StartEntity
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CLogicLineToEntity", "m_StartEntity"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CLogicLineToEntity", "m_StartEntity", value); }
+	}
 
 	// m_EndEntity
 	[SchemaMember("CLogicLineToEntity", "m_EndEntity")]
-	public virtual CHandle<CBaseEntity> EndEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CLogicLineToEntity", "m_EndEntity");
+	public virtual CHandle<CBaseEntity> EndEntity
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CLogicLineToEntity", "m_EndEntity"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CLogicLineToEntity", "m_EndEntity", value); }
+	}
 
 }

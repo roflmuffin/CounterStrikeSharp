@@ -23,7 +23,11 @@ public partial class CCSPlayer_UseServices : CPlayer_UseServices
 
 	// m_hLastKnownUseEntity
 	[SchemaMember("CCSPlayer_UseServices", "m_hLastKnownUseEntity")]
-	public virtual CHandle<CBaseEntity> LastKnownUseEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSPlayer_UseServices", "m_hLastKnownUseEntity");
+	public virtual CHandle<CBaseEntity> LastKnownUseEntity
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CCSPlayer_UseServices", "m_hLastKnownUseEntity"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CCSPlayer_UseServices", "m_hLastKnownUseEntity", value); }
+	}
 
 	// m_flLastUseTimeStamp
 	[SchemaMember("CCSPlayer_UseServices", "m_flLastUseTimeStamp")]

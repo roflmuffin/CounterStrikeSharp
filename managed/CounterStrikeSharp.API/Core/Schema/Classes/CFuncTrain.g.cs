@@ -23,7 +23,11 @@ public partial class CFuncTrain : CBasePlatTrain
 
 	// m_hCurrentTarget
 	[SchemaMember("CFuncTrain", "m_hCurrentTarget")]
-	public virtual CHandle<CBaseEntity> CurrentTarget => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CFuncTrain", "m_hCurrentTarget");
+	public virtual CHandle<CBaseEntity> CurrentTarget
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CFuncTrain", "m_hCurrentTarget"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CFuncTrain", "m_hCurrentTarget", value); }
+	}
 
 	// m_activated
 	[SchemaMember("CFuncTrain", "m_activated")]
@@ -35,7 +39,11 @@ public partial class CFuncTrain : CBasePlatTrain
 
 	// m_hEnemy
 	[SchemaMember("CFuncTrain", "m_hEnemy")]
-	public virtual CHandle<CBaseEntity> Enemy => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CFuncTrain", "m_hEnemy");
+	public virtual CHandle<CBaseEntity> Enemy
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CFuncTrain", "m_hEnemy"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CFuncTrain", "m_hEnemy", value); }
+	}
 
 	// m_flBlockDamage
 	[SchemaMember("CFuncTrain", "m_flBlockDamage")]

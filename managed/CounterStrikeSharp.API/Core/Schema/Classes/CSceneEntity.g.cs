@@ -103,35 +103,67 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_hTarget1
 	[SchemaMember("CSceneEntity", "m_hTarget1")]
-	public virtual CHandle<CBaseEntity> HTarget1 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget1");
+	public virtual CHandle<CBaseEntity> HTarget1
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget1"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget1", value); }
+	}
 
 	// m_hTarget2
 	[SchemaMember("CSceneEntity", "m_hTarget2")]
-	public virtual CHandle<CBaseEntity> HTarget2 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget2");
+	public virtual CHandle<CBaseEntity> HTarget2
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget2"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget2", value); }
+	}
 
 	// m_hTarget3
 	[SchemaMember("CSceneEntity", "m_hTarget3")]
-	public virtual CHandle<CBaseEntity> HTarget3 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget3");
+	public virtual CHandle<CBaseEntity> HTarget3
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget3"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget3", value); }
+	}
 
 	// m_hTarget4
 	[SchemaMember("CSceneEntity", "m_hTarget4")]
-	public virtual CHandle<CBaseEntity> HTarget4 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget4");
+	public virtual CHandle<CBaseEntity> HTarget4
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget4"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget4", value); }
+	}
 
 	// m_hTarget5
 	[SchemaMember("CSceneEntity", "m_hTarget5")]
-	public virtual CHandle<CBaseEntity> HTarget5 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget5");
+	public virtual CHandle<CBaseEntity> HTarget5
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget5"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget5", value); }
+	}
 
 	// m_hTarget6
 	[SchemaMember("CSceneEntity", "m_hTarget6")]
-	public virtual CHandle<CBaseEntity> HTarget6 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget6");
+	public virtual CHandle<CBaseEntity> HTarget6
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget6"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget6", value); }
+	}
 
 	// m_hTarget7
 	[SchemaMember("CSceneEntity", "m_hTarget7")]
-	public virtual CHandle<CBaseEntity> HTarget7 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget7");
+	public virtual CHandle<CBaseEntity> HTarget7
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget7"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget7", value); }
+	}
 
 	// m_hTarget8
 	[SchemaMember("CSceneEntity", "m_hTarget8")]
-	public virtual CHandle<CBaseEntity> HTarget8 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget8");
+	public virtual CHandle<CBaseEntity> HTarget8
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget8"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hTarget8", value); }
+	}
 
 	// m_sTargetAttachment
 	[SchemaMember("CSceneEntity", "m_sTargetAttachment")]
@@ -255,7 +287,11 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_hWaitingForThisResumeScene
 	[SchemaMember("CSceneEntity", "m_hWaitingForThisResumeScene")]
-	public virtual CHandle<CBaseEntity> WaitingForThisResumeScene => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hWaitingForThisResumeScene");
+	public virtual CHandle<CBaseEntity> WaitingForThisResumeScene
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hWaitingForThisResumeScene"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hWaitingForThisResumeScene", value); }
+	}
 
 	// m_bWaitingForResumeScene
 	[SchemaMember("CSceneEntity", "m_bWaitingForResumeScene")]
@@ -371,7 +407,11 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_hInterruptScene
 	[SchemaMember("CSceneEntity", "m_hInterruptScene")]
-	public virtual CHandle<CSceneEntity> InterruptScene => Schema.GetDeclaredClass<CHandle<CSceneEntity>>(this.Handle, "CSceneEntity", "m_hInterruptScene");
+	public virtual CHandle<CSceneEntity> InterruptScene
+	{
+		get { return Schema.GetValueType<CHandle<CSceneEntity>>(this.Handle, "CSceneEntity", "m_hInterruptScene"); }
+		set { Schema.SetValueType<CHandle<CSceneEntity>>(this.Handle, "CSceneEntity", "m_hInterruptScene", value); }
+	}
 
 	// m_nInterruptCount
 	[SchemaMember("CSceneEntity", "m_nInterruptCount")]
@@ -447,11 +487,19 @@ public partial class CSceneEntity : CPointEntity
 
 	// m_hActor
 	[SchemaMember("CSceneEntity", "m_hActor")]
-	public virtual CHandle<CBaseFlex> Actor => Schema.GetDeclaredClass<CHandle<CBaseFlex>>(this.Handle, "CSceneEntity", "m_hActor");
+	public virtual CHandle<CBaseFlex> Actor
+	{
+		get { return Schema.GetValueType<CHandle<CBaseFlex>>(this.Handle, "CSceneEntity", "m_hActor"); }
+		set { Schema.SetValueType<CHandle<CBaseFlex>>(this.Handle, "CSceneEntity", "m_hActor", value); }
+	}
 
 	// m_hActivator
 	[SchemaMember("CSceneEntity", "m_hActivator")]
-	public virtual CHandle<CBaseEntity> Activator => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hActivator");
+	public virtual CHandle<CBaseEntity> Activator
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hActivator"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CSceneEntity", "m_hActivator", value); }
+	}
 
 	// m_BusyActor
 	[SchemaMember("CSceneEntity", "m_BusyActor")]

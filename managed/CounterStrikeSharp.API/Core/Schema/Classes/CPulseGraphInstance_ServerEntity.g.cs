@@ -23,7 +23,11 @@ public partial class CPulseGraphInstance_ServerEntity : CBasePulseGraphInstance
 
 	// m_hOwner
 	[SchemaMember("CPulseGraphInstance_ServerEntity", "m_hOwner")]
-	public virtual CHandle<CBaseEntity> Owner => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPulseGraphInstance_ServerEntity", "m_hOwner");
+	public virtual CHandle<CBaseEntity> Owner
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CPulseGraphInstance_ServerEntity", "m_hOwner"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CPulseGraphInstance_ServerEntity", "m_hOwner", value); }
+	}
 
 	// m_bActivated
 	[SchemaMember("CPulseGraphInstance_ServerEntity", "m_bActivated")]

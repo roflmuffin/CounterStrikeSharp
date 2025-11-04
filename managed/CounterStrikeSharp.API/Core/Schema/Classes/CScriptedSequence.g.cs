@@ -447,11 +447,19 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_hTargetEnt
 	[SchemaMember("CScriptedSequence", "m_hTargetEnt")]
-	public virtual CHandle<CBaseEntity> TargetEnt => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CScriptedSequence", "m_hTargetEnt");
+	public virtual CHandle<CBaseEntity> TargetEnt
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CScriptedSequence", "m_hTargetEnt"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CScriptedSequence", "m_hTargetEnt", value); }
+	}
 
 	// m_hNextCine
 	[SchemaMember("CScriptedSequence", "m_hNextCine")]
-	public virtual CHandle<CScriptedSequence> NextCine => Schema.GetDeclaredClass<CHandle<CScriptedSequence>>(this.Handle, "CScriptedSequence", "m_hNextCine");
+	public virtual CHandle<CScriptedSequence> NextCine
+	{
+		get { return Schema.GetValueType<CHandle<CScriptedSequence>>(this.Handle, "CScriptedSequence", "m_hNextCine"); }
+		set { Schema.SetValueType<CHandle<CScriptedSequence>>(this.Handle, "CScriptedSequence", "m_hNextCine", value); }
+	}
 
 	// m_bThinking
 	[SchemaMember("CScriptedSequence", "m_bThinking")]
@@ -487,7 +495,11 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_hForcedTarget
 	[SchemaMember("CScriptedSequence", "m_hForcedTarget")]
-	public virtual CHandle<CBaseAnimGraph> ForcedTarget => Schema.GetDeclaredClass<CHandle<CBaseAnimGraph>>(this.Handle, "CScriptedSequence", "m_hForcedTarget");
+	public virtual CHandle<CBaseAnimGraph> ForcedTarget
+	{
+		get { return Schema.GetValueType<CHandle<CBaseAnimGraph>>(this.Handle, "CScriptedSequence", "m_hForcedTarget"); }
+		set { Schema.SetValueType<CHandle<CBaseAnimGraph>>(this.Handle, "CScriptedSequence", "m_hForcedTarget", value); }
+	}
 
 	// m_bDontCancelOtherSequences
 	[SchemaMember("CScriptedSequence", "m_bDontCancelOtherSequences")]
@@ -571,7 +583,11 @@ public partial class CScriptedSequence : CBaseEntity
 
 	// m_hInteractionMainEntity
 	[SchemaMember("CScriptedSequence", "m_hInteractionMainEntity")]
-	public virtual CHandle<CBaseEntity> InteractionMainEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CScriptedSequence", "m_hInteractionMainEntity");
+	public virtual CHandle<CBaseEntity> InteractionMainEntity
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CScriptedSequence", "m_hInteractionMainEntity"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CScriptedSequence", "m_hInteractionMainEntity", value); }
+	}
 
 	// m_iPlayerDeathBehavior
 	[SchemaMember("CScriptedSequence", "m_iPlayerDeathBehavior")]

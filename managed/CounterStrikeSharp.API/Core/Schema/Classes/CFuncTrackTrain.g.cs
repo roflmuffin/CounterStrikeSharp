@@ -23,7 +23,11 @@ public partial class CFuncTrackTrain : CBaseModelEntity
 
 	// m_ppath
 	[SchemaMember("CFuncTrackTrain", "m_ppath")]
-	public virtual CHandle<CPathTrack> Ppath => Schema.GetDeclaredClass<CHandle<CPathTrack>>(this.Handle, "CFuncTrackTrain", "m_ppath");
+	public virtual CHandle<CPathTrack> Ppath
+	{
+		get { return Schema.GetValueType<CHandle<CPathTrack>>(this.Handle, "CFuncTrackTrain", "m_ppath"); }
+		set { Schema.SetValueType<CHandle<CPathTrack>>(this.Handle, "CFuncTrackTrain", "m_ppath", value); }
+	}
 
 	// m_length
 	[SchemaMember("CFuncTrackTrain", "m_length")]

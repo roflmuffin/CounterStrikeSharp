@@ -159,6 +159,10 @@ public partial class CPropDoorRotating : CBasePropDoor
 
 	// m_hEntityBlocker
 	[SchemaMember("CPropDoorRotating", "m_hEntityBlocker")]
-	public virtual CHandle<CEntityBlocker> EntityBlocker => Schema.GetDeclaredClass<CHandle<CEntityBlocker>>(this.Handle, "CPropDoorRotating", "m_hEntityBlocker");
+	public virtual CHandle<CEntityBlocker> EntityBlocker
+	{
+		get { return Schema.GetValueType<CHandle<CEntityBlocker>>(this.Handle, "CPropDoorRotating", "m_hEntityBlocker"); }
+		set { Schema.SetValueType<CHandle<CEntityBlocker>>(this.Handle, "CPropDoorRotating", "m_hEntityBlocker", value); }
+	}
 
 }

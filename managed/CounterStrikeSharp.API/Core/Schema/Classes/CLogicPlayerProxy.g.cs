@@ -23,7 +23,11 @@ public partial class CLogicPlayerProxy : CLogicalEntity
 
 	// m_hPlayer
 	[SchemaMember("CLogicPlayerProxy", "m_hPlayer")]
-	public virtual CHandle<CBaseEntity> Player => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CLogicPlayerProxy", "m_hPlayer");
+	public virtual CHandle<CBaseEntity> Player
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CLogicPlayerProxy", "m_hPlayer"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CLogicPlayerProxy", "m_hPlayer", value); }
+	}
 
 	// m_PlayerHasAmmo
 	[SchemaMember("CLogicPlayerProxy", "m_PlayerHasAmmo")]

@@ -31,7 +31,11 @@ public partial class CPlayer_ObserverServices : CPlayerPawnComponent
 
 	// m_hObserverTarget
 	[SchemaMember("CPlayer_ObserverServices", "m_hObserverTarget")]
-	public virtual CHandle<CBaseEntity> ObserverTarget => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPlayer_ObserverServices", "m_hObserverTarget");
+	public virtual CHandle<CBaseEntity> ObserverTarget
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CPlayer_ObserverServices", "m_hObserverTarget"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CPlayer_ObserverServices", "m_hObserverTarget", value); }
+	}
 
 	// m_iObserverLastMode
 	[SchemaMember("CPlayer_ObserverServices", "m_iObserverLastMode")]

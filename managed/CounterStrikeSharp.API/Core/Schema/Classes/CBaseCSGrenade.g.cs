@@ -119,7 +119,11 @@ public partial class CBaseCSGrenade : CCSWeaponBase
 
 	// m_hSwitchToWeaponAfterThrow
 	[SchemaMember("CBaseCSGrenade", "m_hSwitchToWeaponAfterThrow")]
-	public virtual CHandle<CCSWeaponBase> SwitchToWeaponAfterThrow => Schema.GetDeclaredClass<CHandle<CCSWeaponBase>>(this.Handle, "CBaseCSGrenade", "m_hSwitchToWeaponAfterThrow");
+	public virtual CHandle<CCSWeaponBase> SwitchToWeaponAfterThrow
+	{
+		get { return Schema.GetValueType<CHandle<CCSWeaponBase>>(this.Handle, "CBaseCSGrenade", "m_hSwitchToWeaponAfterThrow"); }
+		set { Schema.SetValueType<CHandle<CCSWeaponBase>>(this.Handle, "CBaseCSGrenade", "m_hSwitchToWeaponAfterThrow", value); }
+	}
 
 	public virtual void RedrawPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_bRedraw");
 	public virtual void IsHeldByPlayerPropertyChanged() => Utilities.SetStateChanged(this, "CBaseCSGrenade", "m_bIsHeldByPlayer");

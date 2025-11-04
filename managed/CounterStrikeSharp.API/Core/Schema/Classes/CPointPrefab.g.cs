@@ -63,6 +63,10 @@ public partial class CPointPrefab : CServerOnlyPointEntity
 
 	// m_associatedRelayEntity
 	[SchemaMember("CPointPrefab", "m_associatedRelayEntity")]
-	public virtual CHandle<CPointPrefab> AssociatedRelayEntity => Schema.GetDeclaredClass<CHandle<CPointPrefab>>(this.Handle, "CPointPrefab", "m_associatedRelayEntity");
+	public virtual CHandle<CPointPrefab> AssociatedRelayEntity
+	{
+		get { return Schema.GetValueType<CHandle<CPointPrefab>>(this.Handle, "CPointPrefab", "m_associatedRelayEntity"); }
+		set { Schema.SetValueType<CHandle<CPointPrefab>>(this.Handle, "CPointPrefab", "m_associatedRelayEntity", value); }
+	}
 
 }

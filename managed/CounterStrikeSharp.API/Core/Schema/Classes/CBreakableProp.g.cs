@@ -87,7 +87,11 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_hBreaker
 	[SchemaMember("CBreakableProp", "m_hBreaker")]
-	public virtual CHandle<CBaseEntity> Breaker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBreakableProp", "m_hBreaker");
+	public virtual CHandle<CBaseEntity> Breaker
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CBreakableProp", "m_hBreaker"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CBreakableProp", "m_hBreaker", value); }
+	}
 
 	// m_PerformanceMode
 	[SchemaMember("CBreakableProp", "m_PerformanceMode")]
@@ -195,7 +199,11 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_hPhysicsAttacker
 	[SchemaMember("CBreakableProp", "m_hPhysicsAttacker")]
-	public virtual CHandle<CBasePlayerPawn> PhysicsAttacker => Schema.GetDeclaredClass<CHandle<CBasePlayerPawn>>(this.Handle, "CBreakableProp", "m_hPhysicsAttacker");
+	public virtual CHandle<CBasePlayerPawn> PhysicsAttacker
+	{
+		get { return Schema.GetValueType<CHandle<CBasePlayerPawn>>(this.Handle, "CBreakableProp", "m_hPhysicsAttacker"); }
+		set { Schema.SetValueType<CHandle<CBasePlayerPawn>>(this.Handle, "CBreakableProp", "m_hPhysicsAttacker", value); }
+	}
 
 	// m_flLastPhysicsInfluenceTime
 	[SchemaMember("CBreakableProp", "m_flLastPhysicsInfluenceTime")]
@@ -215,7 +223,11 @@ public partial class CBreakableProp : CBaseProp
 
 	// m_hLastAttacker
 	[SchemaMember("CBreakableProp", "m_hLastAttacker")]
-	public virtual CHandle<CBaseEntity> LastAttacker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBreakableProp", "m_hLastAttacker");
+	public virtual CHandle<CBaseEntity> LastAttacker
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CBreakableProp", "m_hLastAttacker"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CBreakableProp", "m_hLastAttacker", value); }
+	}
 
 	// m_iszPuntSound
 	[SchemaMember("CBreakableProp", "m_iszPuntSound")]

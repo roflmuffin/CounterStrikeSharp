@@ -39,6 +39,10 @@ public partial class CInstructorEventEntity : CPointEntity
 
 	// m_hTargetPlayer
 	[SchemaMember("CInstructorEventEntity", "m_hTargetPlayer")]
-	public virtual CHandle<CBasePlayerPawn> TargetPlayer => Schema.GetDeclaredClass<CHandle<CBasePlayerPawn>>(this.Handle, "CInstructorEventEntity", "m_hTargetPlayer");
+	public virtual CHandle<CBasePlayerPawn> TargetPlayer
+	{
+		get { return Schema.GetValueType<CHandle<CBasePlayerPawn>>(this.Handle, "CInstructorEventEntity", "m_hTargetPlayer"); }
+		set { Schema.SetValueType<CHandle<CBasePlayerPawn>>(this.Handle, "CInstructorEventEntity", "m_hTargetPlayer", value); }
+	}
 
 }

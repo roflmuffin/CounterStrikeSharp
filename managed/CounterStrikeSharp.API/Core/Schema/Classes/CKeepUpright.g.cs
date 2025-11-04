@@ -47,7 +47,11 @@ public partial class CKeepUpright : CPointEntity
 
 	// m_attachedObject
 	[SchemaMember("CKeepUpright", "m_attachedObject")]
-	public virtual CHandle<CBaseEntity> AttachedObject => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CKeepUpright", "m_attachedObject");
+	public virtual CHandle<CBaseEntity> AttachedObject
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CKeepUpright", "m_attachedObject"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CKeepUpright", "m_attachedObject", value); }
+	}
 
 	// m_angularLimit
 	[SchemaMember("CKeepUpright", "m_angularLimit")]

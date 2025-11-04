@@ -63,11 +63,19 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_hRemapLineStart
 	[SchemaMember("CPointValueRemapper", "m_hRemapLineStart")]
-	public virtual CHandle<CBaseEntity> RemapLineStart => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointValueRemapper", "m_hRemapLineStart");
+	public virtual CHandle<CBaseEntity> RemapLineStart
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CPointValueRemapper", "m_hRemapLineStart"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CPointValueRemapper", "m_hRemapLineStart", value); }
+	}
 
 	// m_hRemapLineEnd
 	[SchemaMember("CPointValueRemapper", "m_hRemapLineEnd")]
-	public virtual CHandle<CBaseEntity> RemapLineEnd => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointValueRemapper", "m_hRemapLineEnd");
+	public virtual CHandle<CBaseEntity> RemapLineEnd
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CPointValueRemapper", "m_hRemapLineEnd"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CPointValueRemapper", "m_hRemapLineEnd", value); }
+	}
 
 	// m_flMaximumChangePerSecond
 	[SchemaMember("CPointValueRemapper", "m_flMaximumChangePerSecond")]
@@ -251,7 +259,11 @@ public partial class CPointValueRemapper : CBaseEntity
 
 	// m_hUsingPlayer
 	[SchemaMember("CPointValueRemapper", "m_hUsingPlayer")]
-	public virtual CHandle<CBasePlayerPawn> UsingPlayer => Schema.GetDeclaredClass<CHandle<CBasePlayerPawn>>(this.Handle, "CPointValueRemapper", "m_hUsingPlayer");
+	public virtual CHandle<CBasePlayerPawn> UsingPlayer
+	{
+		get { return Schema.GetValueType<CHandle<CBasePlayerPawn>>(this.Handle, "CPointValueRemapper", "m_hUsingPlayer"); }
+		set { Schema.SetValueType<CHandle<CBasePlayerPawn>>(this.Handle, "CPointValueRemapper", "m_hUsingPlayer", value); }
+	}
 
 	// m_flCustomOutputValue
 	[SchemaMember("CPointValueRemapper", "m_flCustomOutputValue")]

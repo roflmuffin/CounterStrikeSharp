@@ -39,11 +39,19 @@ public partial class CPhysConstraint : CLogicalEntity
 
 	// m_hAttach1
 	[SchemaMember("CPhysConstraint", "m_hAttach1")]
-	public virtual CHandle<CBaseEntity> Attach1 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysConstraint", "m_hAttach1");
+	public virtual CHandle<CBaseEntity> Attach1
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CPhysConstraint", "m_hAttach1"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CPhysConstraint", "m_hAttach1", value); }
+	}
 
 	// m_hAttach2
 	[SchemaMember("CPhysConstraint", "m_hAttach2")]
-	public virtual CHandle<CBaseEntity> Attach2 => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysConstraint", "m_hAttach2");
+	public virtual CHandle<CBaseEntity> Attach2
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CPhysConstraint", "m_hAttach2"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CPhysConstraint", "m_hAttach2", value); }
+	}
 
 	// m_nameAttachment1
 	[SchemaMember("CPhysConstraint", "m_nameAttachment1")]

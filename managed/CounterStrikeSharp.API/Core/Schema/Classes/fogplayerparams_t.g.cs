@@ -23,7 +23,11 @@ public partial class fogplayerparams_t : NativeObject
 
 	// m_hCtrl
 	[SchemaMember("fogplayerparams_t", "m_hCtrl")]
-	public virtual CHandle<CFogController> Ctrl => Schema.GetDeclaredClass<CHandle<CFogController>>(this.Handle, "fogplayerparams_t", "m_hCtrl");
+	public virtual CHandle<CFogController> Ctrl
+	{
+		get { return Schema.GetValueType<CHandle<CFogController>>(this.Handle, "fogplayerparams_t", "m_hCtrl"); }
+		set { Schema.SetValueType<CHandle<CFogController>>(this.Handle, "fogplayerparams_t", "m_hCtrl", value); }
+	}
 
 	// m_flTransitionTime
 	[SchemaMember("fogplayerparams_t", "m_flTransitionTime")]

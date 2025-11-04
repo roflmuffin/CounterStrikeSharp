@@ -31,6 +31,10 @@ public partial class CTriggerVolume : CBaseModelEntity
 
 	// m_hFilter
 	[SchemaMember("CTriggerVolume", "m_hFilter")]
-	public virtual CHandle<CBaseFilter> Filter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CTriggerVolume", "m_hFilter");
+	public virtual CHandle<CBaseFilter> Filter
+	{
+		get { return Schema.GetValueType<CHandle<CBaseFilter>>(this.Handle, "CTriggerVolume", "m_hFilter"); }
+		set { Schema.SetValueType<CHandle<CBaseFilter>>(this.Handle, "CTriggerVolume", "m_hFilter", value); }
+	}
 
 }

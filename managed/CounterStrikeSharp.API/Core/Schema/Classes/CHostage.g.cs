@@ -107,11 +107,19 @@ public partial class CHostage : CHostageExpresserShim
 
 	// m_leader
 	[SchemaMember("CHostage", "m_leader")]
-	public virtual CHandle<CBaseEntity> Leader => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CHostage", "m_leader");
+	public virtual CHandle<CBaseEntity> Leader
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CHostage", "m_leader"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CHostage", "m_leader", value); }
+	}
 
 	// m_lastLeader
 	[SchemaMember("CHostage", "m_lastLeader")]
-	public virtual CHandle<CCSPlayerPawnBase> LastLeader => Schema.GetDeclaredClass<CHandle<CCSPlayerPawnBase>>(this.Handle, "CHostage", "m_lastLeader");
+	public virtual CHandle<CCSPlayerPawnBase> LastLeader
+	{
+		get { return Schema.GetValueType<CHandle<CCSPlayerPawnBase>>(this.Handle, "CHostage", "m_lastLeader"); }
+		set { Schema.SetValueType<CHandle<CCSPlayerPawnBase>>(this.Handle, "CHostage", "m_lastLeader", value); }
+	}
 
 	// m_reuseTimer
 	[SchemaMember("CHostage", "m_reuseTimer")]
@@ -195,7 +203,11 @@ public partial class CHostage : CHostageExpresserShim
 
 	// m_hHostageGrabber
 	[SchemaMember("CHostage", "m_hHostageGrabber")]
-	public virtual CHandle<CCSPlayerPawn> HostageGrabber => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CHostage", "m_hHostageGrabber");
+	public virtual CHandle<CCSPlayerPawn> HostageGrabber
+	{
+		get { return Schema.GetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CHostage", "m_hHostageGrabber"); }
+		set { Schema.SetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CHostage", "m_hHostageGrabber", value); }
+	}
 
 	// m_fLastGrabTime
 	[SchemaMember("CHostage", "m_fLastGrabTime")]

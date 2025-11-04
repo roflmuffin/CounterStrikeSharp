@@ -31,7 +31,11 @@ public partial class CGunTarget : CBaseToggle
 
 	// m_hTargetEnt
 	[SchemaMember("CGunTarget", "m_hTargetEnt")]
-	public virtual CHandle<CBaseEntity> TargetEnt => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CGunTarget", "m_hTargetEnt");
+	public virtual CHandle<CBaseEntity> TargetEnt
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CGunTarget", "m_hTargetEnt"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CGunTarget", "m_hTargetEnt", value); }
+	}
 
 	// m_OnDeath
 	[SchemaMember("CGunTarget", "m_OnDeath")]

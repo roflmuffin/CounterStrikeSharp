@@ -23,7 +23,11 @@ public partial class CTriggerLook : CTriggerOnce
 
 	// m_hLookTarget
 	[SchemaMember("CTriggerLook", "m_hLookTarget")]
-	public virtual CHandle<CBaseEntity> LookTarget => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CTriggerLook", "m_hLookTarget");
+	public virtual CHandle<CBaseEntity> LookTarget
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CTriggerLook", "m_hLookTarget"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CTriggerLook", "m_hLookTarget", value); }
+	}
 
 	// m_flFieldOfView
 	[SchemaMember("CTriggerLook", "m_flFieldOfView")]

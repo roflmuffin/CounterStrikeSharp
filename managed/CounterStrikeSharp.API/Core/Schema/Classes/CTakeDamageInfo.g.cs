@@ -55,15 +55,27 @@ public partial class CTakeDamageInfo : NativeObject
 
 	// m_hInflictor
 	[SchemaMember("CTakeDamageInfo", "m_hInflictor")]
-	public virtual CHandle<CBaseEntity> Inflictor => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CTakeDamageInfo", "m_hInflictor");
+	public virtual CHandle<CBaseEntity> Inflictor
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CTakeDamageInfo", "m_hInflictor"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CTakeDamageInfo", "m_hInflictor", value); }
+	}
 
 	// m_hAttacker
 	[SchemaMember("CTakeDamageInfo", "m_hAttacker")]
-	public virtual CHandle<CBaseEntity> Attacker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CTakeDamageInfo", "m_hAttacker");
+	public virtual CHandle<CBaseEntity> Attacker
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CTakeDamageInfo", "m_hAttacker"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CTakeDamageInfo", "m_hAttacker", value); }
+	}
 
 	// m_hAbility
 	[SchemaMember("CTakeDamageInfo", "m_hAbility")]
-	public virtual CHandle<CBaseEntity> Ability => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CTakeDamageInfo", "m_hAbility");
+	public virtual CHandle<CBaseEntity> Ability
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CTakeDamageInfo", "m_hAbility"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CTakeDamageInfo", "m_hAbility", value); }
+	}
 
 	// m_flDamage
 	[SchemaMember("CTakeDamageInfo", "m_flDamage")]

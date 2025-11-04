@@ -63,7 +63,11 @@ public partial class CBaseTrigger : CBaseToggle
 
 	// m_hFilter
 	[SchemaMember("CBaseTrigger", "m_hFilter")]
-	public virtual CHandle<CBaseFilter> Filter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CBaseTrigger", "m_hFilter");
+	public virtual CHandle<CBaseFilter> Filter
+	{
+		get { return Schema.GetValueType<CHandle<CBaseFilter>>(this.Handle, "CBaseTrigger", "m_hFilter"); }
+		set { Schema.SetValueType<CHandle<CBaseFilter>>(this.Handle, "CBaseTrigger", "m_hFilter", value); }
+	}
 
 	// m_bDisabled
 	[SchemaMember("CBaseTrigger", "m_bDisabled")]

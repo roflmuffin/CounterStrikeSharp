@@ -27,7 +27,11 @@ public partial class CSprite : CBaseModelEntity
 
 	// m_hAttachedToEntity
 	[SchemaMember("CSprite", "m_hAttachedToEntity")]
-	public virtual CHandle<CBaseEntity> AttachedToEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSprite", "m_hAttachedToEntity");
+	public virtual CHandle<CBaseEntity> AttachedToEntity
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CSprite", "m_hAttachedToEntity"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CSprite", "m_hAttachedToEntity", value); }
+	}
 
 	// m_nAttachment
 	[SchemaMember("CSprite", "m_nAttachment")]

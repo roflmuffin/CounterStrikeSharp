@@ -23,11 +23,19 @@ public partial class CGameChoreoServices : IChoreoServices
 
 	// m_hOwner
 	[SchemaMember("CGameChoreoServices", "m_hOwner")]
-	public virtual CHandle<CBaseAnimGraph> Owner => Schema.GetDeclaredClass<CHandle<CBaseAnimGraph>>(this.Handle, "CGameChoreoServices", "m_hOwner");
+	public virtual CHandle<CBaseAnimGraph> Owner
+	{
+		get { return Schema.GetValueType<CHandle<CBaseAnimGraph>>(this.Handle, "CGameChoreoServices", "m_hOwner"); }
+		set { Schema.SetValueType<CHandle<CBaseAnimGraph>>(this.Handle, "CGameChoreoServices", "m_hOwner", value); }
+	}
 
 	// m_hScriptedSequence
 	[SchemaMember("CGameChoreoServices", "m_hScriptedSequence")]
-	public virtual CHandle<CScriptedSequence> ScriptedSequence => Schema.GetDeclaredClass<CHandle<CScriptedSequence>>(this.Handle, "CGameChoreoServices", "m_hScriptedSequence");
+	public virtual CHandle<CScriptedSequence> ScriptedSequence
+	{
+		get { return Schema.GetValueType<CHandle<CScriptedSequence>>(this.Handle, "CGameChoreoServices", "m_hScriptedSequence"); }
+		set { Schema.SetValueType<CHandle<CScriptedSequence>>(this.Handle, "CGameChoreoServices", "m_hScriptedSequence", value); }
+	}
 
 	// m_flTimeStartedState
 	[SchemaMember("CGameChoreoServices", "m_flTimeStartedState")]

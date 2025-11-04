@@ -31,11 +31,19 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_hPathMover
 	[SchemaMember("CFuncMover", "m_hPathMover")]
-	public virtual CHandle<CPathMover> PathMover => Schema.GetDeclaredClass<CHandle<CPathMover>>(this.Handle, "CFuncMover", "m_hPathMover");
+	public virtual CHandle<CPathMover> PathMover
+	{
+		get { return Schema.GetValueType<CHandle<CPathMover>>(this.Handle, "CFuncMover", "m_hPathMover"); }
+		set { Schema.SetValueType<CHandle<CPathMover>>(this.Handle, "CFuncMover", "m_hPathMover", value); }
+	}
 
 	// m_hPrevPathMover
 	[SchemaMember("CFuncMover", "m_hPrevPathMover")]
-	public virtual CHandle<CPathMover> PrevPathMover => Schema.GetDeclaredClass<CHandle<CPathMover>>(this.Handle, "CFuncMover", "m_hPrevPathMover");
+	public virtual CHandle<CPathMover> PrevPathMover
+	{
+		get { return Schema.GetValueType<CHandle<CPathMover>>(this.Handle, "CFuncMover", "m_hPrevPathMover"); }
+		set { Schema.SetValueType<CHandle<CPathMover>>(this.Handle, "CFuncMover", "m_hPrevPathMover", value); }
+	}
 
 	// m_iszPathNodeStart
 	[SchemaMember("CFuncMover", "m_iszPathNodeStart")]
@@ -183,7 +191,11 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_hStopAtNode
 	[SchemaMember("CFuncMover", "m_hStopAtNode")]
-	public virtual CHandle<CMoverPathNode> StopAtNode => Schema.GetDeclaredClass<CHandle<CMoverPathNode>>(this.Handle, "CFuncMover", "m_hStopAtNode");
+	public virtual CHandle<CMoverPathNode> StopAtNode
+	{
+		get { return Schema.GetValueType<CHandle<CMoverPathNode>>(this.Handle, "CFuncMover", "m_hStopAtNode"); }
+		set { Schema.SetValueType<CHandle<CMoverPathNode>>(this.Handle, "CFuncMover", "m_hStopAtNode", value); }
+	}
 
 	// m_flPathLocationToBeginStop
 	[SchemaMember("CFuncMover", "m_flPathLocationToBeginStop")]
@@ -339,7 +351,11 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_hOrientationMatchEntity
 	[SchemaMember("CFuncMover", "m_hOrientationMatchEntity")]
-	public virtual CHandle<CBaseEntity> OrientationMatchEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CFuncMover", "m_hOrientationMatchEntity");
+	public virtual CHandle<CBaseEntity> OrientationMatchEntity
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CFuncMover", "m_hOrientationMatchEntity"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CFuncMover", "m_hOrientationMatchEntity", value); }
+	}
 
 	// m_flTimeToTraverseToNextNode
 	[SchemaMember("CFuncMover", "m_flTimeToTraverseToNextNode")]
@@ -419,7 +435,11 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_hFollowEntity
 	[SchemaMember("CFuncMover", "m_hFollowEntity")]
-	public virtual CHandle<CBaseEntity> FollowEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CFuncMover", "m_hFollowEntity");
+	public virtual CHandle<CBaseEntity> FollowEntity
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CFuncMover", "m_hFollowEntity"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CFuncMover", "m_hFollowEntity", value); }
+	}
 
 	// m_flFollowDistance
 	[SchemaMember("CFuncMover", "m_flFollowDistance")]
@@ -463,7 +483,11 @@ public partial class CFuncMover : CBaseModelEntity
 
 	// m_hOrientationFaceEntity
 	[SchemaMember("CFuncMover", "m_hOrientationFaceEntity")]
-	public virtual CHandle<CBaseEntity> OrientationFaceEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CFuncMover", "m_hOrientationFaceEntity");
+	public virtual CHandle<CBaseEntity> OrientationFaceEntity
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CFuncMover", "m_hOrientationFaceEntity"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CFuncMover", "m_hOrientationFaceEntity", value); }
+	}
 
 	// m_OnStart
 	[SchemaMember("CFuncMover", "m_OnStart")]

@@ -55,11 +55,19 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 
 	// m_hViewTarget
 	[SchemaMember("CPointCommentaryNode", "m_hViewTarget")]
-	public virtual CHandle<CBaseEntity> HViewTarget => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointCommentaryNode", "m_hViewTarget");
+	public virtual CHandle<CBaseEntity> HViewTarget
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CPointCommentaryNode", "m_hViewTarget"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CPointCommentaryNode", "m_hViewTarget", value); }
+	}
 
 	// m_hViewTargetAngles
 	[SchemaMember("CPointCommentaryNode", "m_hViewTargetAngles")]
-	public virtual CHandle<CBaseEntity> ViewTargetAngles => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointCommentaryNode", "m_hViewTargetAngles");
+	public virtual CHandle<CBaseEntity> ViewTargetAngles
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CPointCommentaryNode", "m_hViewTargetAngles"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CPointCommentaryNode", "m_hViewTargetAngles", value); }
+	}
 
 	// m_iszViewPosition
 	[SchemaMember("CPointCommentaryNode", "m_iszViewPosition")]
@@ -71,11 +79,19 @@ public partial class CPointCommentaryNode : CBaseAnimGraph
 
 	// m_hViewPosition
 	[SchemaMember("CPointCommentaryNode", "m_hViewPosition")]
-	public virtual CHandle<CBaseEntity> HViewPosition => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointCommentaryNode", "m_hViewPosition");
+	public virtual CHandle<CBaseEntity> HViewPosition
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CPointCommentaryNode", "m_hViewPosition"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CPointCommentaryNode", "m_hViewPosition", value); }
+	}
 
 	// m_hViewPositionMover
 	[SchemaMember("CPointCommentaryNode", "m_hViewPositionMover")]
-	public virtual CHandle<CBaseEntity> ViewPositionMover => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointCommentaryNode", "m_hViewPositionMover");
+	public virtual CHandle<CBaseEntity> ViewPositionMover
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CPointCommentaryNode", "m_hViewPositionMover"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CPointCommentaryNode", "m_hViewPositionMover", value); }
+	}
 
 	// m_bPreventMovement
 	[SchemaMember("CPointCommentaryNode", "m_bPreventMovement")]

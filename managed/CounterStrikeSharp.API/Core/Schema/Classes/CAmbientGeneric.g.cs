@@ -83,7 +83,11 @@ public partial class CAmbientGeneric : CPointEntity
 
 	// m_hSoundSource
 	[SchemaMember("CAmbientGeneric", "m_hSoundSource")]
-	public virtual CHandle<CBaseEntity> SoundSource => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CAmbientGeneric", "m_hSoundSource");
+	public virtual CHandle<CBaseEntity> SoundSource
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CAmbientGeneric", "m_hSoundSource"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CAmbientGeneric", "m_hSoundSource", value); }
+	}
 
 	// m_nSoundSourceEntIndex
 	[SchemaMember("CAmbientGeneric", "m_nSoundSourceEntIndex")]

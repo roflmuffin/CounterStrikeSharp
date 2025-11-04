@@ -31,7 +31,11 @@ public partial class CSoundOpvarSetPointBase : CBaseEntity
 
 	// m_hSource
 	[SchemaMember("CSoundOpvarSetPointBase", "m_hSource")]
-	public virtual CHandle<CEntityInstance> Source => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CSoundOpvarSetPointBase", "m_hSource");
+	public virtual CHandle<CEntityInstance> Source
+	{
+		get { return Schema.GetValueType<CHandle<CEntityInstance>>(this.Handle, "CSoundOpvarSetPointBase", "m_hSource"); }
+		set { Schema.SetValueType<CHandle<CEntityInstance>>(this.Handle, "CSoundOpvarSetPointBase", "m_hSource", value); }
+	}
 
 	// m_iszSourceEntityName
 	[SchemaMember("CSoundOpvarSetPointBase", "m_iszSourceEntityName")]

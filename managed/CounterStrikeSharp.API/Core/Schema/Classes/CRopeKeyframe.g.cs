@@ -155,11 +155,19 @@ public partial class CRopeKeyframe : CBaseModelEntity
 
 	// m_hStartPoint
 	[SchemaMember("CRopeKeyframe", "m_hStartPoint")]
-	public virtual CHandle<CBaseEntity> StartPoint => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CRopeKeyframe", "m_hStartPoint");
+	public virtual CHandle<CBaseEntity> StartPoint
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CRopeKeyframe", "m_hStartPoint"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CRopeKeyframe", "m_hStartPoint", value); }
+	}
 
 	// m_hEndPoint
 	[SchemaMember("CRopeKeyframe", "m_hEndPoint")]
-	public virtual CHandle<CBaseEntity> EndPoint => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CRopeKeyframe", "m_hEndPoint");
+	public virtual CHandle<CBaseEntity> EndPoint
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CRopeKeyframe", "m_hEndPoint"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CRopeKeyframe", "m_hEndPoint", value); }
+	}
 
 	// m_iStartAttachment
 	[SchemaMember("CRopeKeyframe", "m_iStartAttachment")]

@@ -111,6 +111,10 @@ public partial class CPhysWheelConstraint : CPhysConstraint
 
 	// m_hSteeringMimicsEntity
 	[SchemaMember("CPhysWheelConstraint", "m_hSteeringMimicsEntity")]
-	public virtual CHandle<CBaseEntity> SteeringMimicsEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysWheelConstraint", "m_hSteeringMimicsEntity");
+	public virtual CHandle<CBaseEntity> SteeringMimicsEntity
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CPhysWheelConstraint", "m_hSteeringMimicsEntity"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CPhysWheelConstraint", "m_hSteeringMimicsEntity", value); }
+	}
 
 }

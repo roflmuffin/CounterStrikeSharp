@@ -23,7 +23,11 @@ public partial class CPointClientUIDialog : CBaseClientUIEntity
 
 	// m_hActivator
 	[SchemaMember("CPointClientUIDialog", "m_hActivator")]
-	public virtual CHandle<CBaseEntity> Activator => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointClientUIDialog", "m_hActivator");
+	public virtual CHandle<CBaseEntity> Activator
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CPointClientUIDialog", "m_hActivator"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CPointClientUIDialog", "m_hActivator", value); }
+	}
 
 	// m_bStartEnabled
 	[SchemaMember("CPointClientUIDialog", "m_bStartEnabled")]

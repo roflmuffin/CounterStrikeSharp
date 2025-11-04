@@ -39,11 +39,19 @@ public partial class CEnvEntityMaker : CPointEntity
 
 	// m_hCurrentInstance
 	[SchemaMember("CEnvEntityMaker", "m_hCurrentInstance")]
-	public virtual CHandle<CBaseEntity> CurrentInstance => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEnvEntityMaker", "m_hCurrentInstance");
+	public virtual CHandle<CBaseEntity> CurrentInstance
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CEnvEntityMaker", "m_hCurrentInstance"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CEnvEntityMaker", "m_hCurrentInstance", value); }
+	}
 
 	// m_hCurrentBlocker
 	[SchemaMember("CEnvEntityMaker", "m_hCurrentBlocker")]
-	public virtual CHandle<CBaseEntity> CurrentBlocker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEnvEntityMaker", "m_hCurrentBlocker");
+	public virtual CHandle<CBaseEntity> CurrentBlocker
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CEnvEntityMaker", "m_hCurrentBlocker"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CEnvEntityMaker", "m_hCurrentBlocker", value); }
+	}
 
 	// m_vecBlockerOrigin
 	[SchemaMember("CEnvEntityMaker", "m_vecBlockerOrigin")]

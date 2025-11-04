@@ -23,7 +23,11 @@ public partial class CInstancedSceneEntity : CSceneEntity
 
 	// m_hOwner
 	[SchemaMember("CInstancedSceneEntity", "m_hOwner")]
-	public virtual CHandle<CBaseEntity> Owner => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CInstancedSceneEntity", "m_hOwner");
+	public virtual CHandle<CBaseEntity> Owner
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CInstancedSceneEntity", "m_hOwner"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CInstancedSceneEntity", "m_hOwner", value); }
+	}
 
 	// m_bHadOwner
 	[SchemaMember("CInstancedSceneEntity", "m_bHadOwner")]
@@ -67,6 +71,10 @@ public partial class CInstancedSceneEntity : CSceneEntity
 
 	// m_hTarget
 	[SchemaMember("CInstancedSceneEntity", "m_hTarget")]
-	public virtual new CHandle<CBaseEntity> Target => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CInstancedSceneEntity", "m_hTarget");
+	public virtual new CHandle<CBaseEntity> Target
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CInstancedSceneEntity", "m_hTarget"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CInstancedSceneEntity", "m_hTarget", value); }
+	}
 
 }

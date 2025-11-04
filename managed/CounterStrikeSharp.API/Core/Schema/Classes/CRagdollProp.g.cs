@@ -71,15 +71,27 @@ public partial class CRagdollProp : CBaseAnimGraph
 
 	// m_hDamageEntity
 	[SchemaMember("CRagdollProp", "m_hDamageEntity")]
-	public virtual CHandle<CBaseEntity> DamageEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CRagdollProp", "m_hDamageEntity");
+	public virtual CHandle<CBaseEntity> DamageEntity
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CRagdollProp", "m_hDamageEntity"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CRagdollProp", "m_hDamageEntity", value); }
+	}
 
 	// m_hKiller
 	[SchemaMember("CRagdollProp", "m_hKiller")]
-	public virtual CHandle<CBaseEntity> Killer => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CRagdollProp", "m_hKiller");
+	public virtual CHandle<CBaseEntity> Killer
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CRagdollProp", "m_hKiller"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CRagdollProp", "m_hKiller", value); }
+	}
 
 	// m_hPhysicsAttacker
 	[SchemaMember("CRagdollProp", "m_hPhysicsAttacker")]
-	public virtual CHandle<CBasePlayerPawn> PhysicsAttacker => Schema.GetDeclaredClass<CHandle<CBasePlayerPawn>>(this.Handle, "CRagdollProp", "m_hPhysicsAttacker");
+	public virtual CHandle<CBasePlayerPawn> PhysicsAttacker
+	{
+		get { return Schema.GetValueType<CHandle<CBasePlayerPawn>>(this.Handle, "CRagdollProp", "m_hPhysicsAttacker"); }
+		set { Schema.SetValueType<CHandle<CBasePlayerPawn>>(this.Handle, "CRagdollProp", "m_hPhysicsAttacker", value); }
+	}
 
 	// m_flLastPhysicsInfluenceTime
 	[SchemaMember("CRagdollProp", "m_flLastPhysicsInfluenceTime")]

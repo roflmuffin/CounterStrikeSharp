@@ -31,7 +31,11 @@ public partial class CSplineConstraint : CPhysConstraint
 
 	// m_hSplineEntity
 	[SchemaMember("CSplineConstraint", "m_hSplineEntity")]
-	public virtual CHandle<CBaseEntity> SplineEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CSplineConstraint", "m_hSplineEntity");
+	public virtual CHandle<CBaseEntity> SplineEntity
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CSplineConstraint", "m_hSplineEntity"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CSplineConstraint", "m_hSplineEntity", value); }
+	}
 
 	// m_bEnableLateralConstraint
 	[SchemaMember("CSplineConstraint", "m_bEnableLateralConstraint")]

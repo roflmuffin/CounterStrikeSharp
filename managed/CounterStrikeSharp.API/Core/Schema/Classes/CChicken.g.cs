@@ -91,7 +91,11 @@ public partial class CChicken : CDynamicProp
 
 	// m_fleeFrom
 	[SchemaMember("CChicken", "m_fleeFrom")]
-	public virtual CHandle<CBaseEntity> FleeFrom => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CChicken", "m_fleeFrom");
+	public virtual CHandle<CBaseEntity> FleeFrom
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CChicken", "m_fleeFrom"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CChicken", "m_fleeFrom", value); }
+	}
 
 	// m_moveRateThrottleTimer
 	[SchemaMember("CChicken", "m_moveRateThrottleTimer")]
@@ -123,7 +127,11 @@ public partial class CChicken : CDynamicProp
 
 	// m_leader
 	[SchemaMember("CChicken", "m_leader")]
-	public virtual CHandle<CCSPlayerPawn> Leader => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CChicken", "m_leader");
+	public virtual CHandle<CCSPlayerPawn> Leader
+	{
+		get { return Schema.GetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CChicken", "m_leader"); }
+		set { Schema.SetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CChicken", "m_leader", value); }
+	}
 
 	// m_reuseTimer
 	[SchemaMember("CChicken", "m_reuseTimer")]

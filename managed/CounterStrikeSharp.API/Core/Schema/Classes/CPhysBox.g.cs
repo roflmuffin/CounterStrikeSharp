@@ -115,6 +115,10 @@ public partial class CPhysBox : CBreakable
 
 	// m_hCarryingPlayer
 	[SchemaMember("CPhysBox", "m_hCarryingPlayer")]
-	public virtual CHandle<CBasePlayerPawn> CarryingPlayer => Schema.GetDeclaredClass<CHandle<CBasePlayerPawn>>(this.Handle, "CPhysBox", "m_hCarryingPlayer");
+	public virtual CHandle<CBasePlayerPawn> CarryingPlayer
+	{
+		get { return Schema.GetValueType<CHandle<CBasePlayerPawn>>(this.Handle, "CPhysBox", "m_hCarryingPlayer"); }
+		set { Schema.SetValueType<CHandle<CBasePlayerPawn>>(this.Handle, "CPhysBox", "m_hCarryingPlayer", value); }
+	}
 
 }

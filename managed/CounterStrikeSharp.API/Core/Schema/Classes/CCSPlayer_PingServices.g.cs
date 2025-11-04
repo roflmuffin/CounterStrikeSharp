@@ -27,7 +27,11 @@ public partial class CCSPlayer_PingServices : CPlayerPawnComponent
 
 	// m_hPlayerPing
 	[SchemaMember("CCSPlayer_PingServices", "m_hPlayerPing")]
-	public virtual CHandle<CPlayerPing> PlayerPing => Schema.GetDeclaredClass<CHandle<CPlayerPing>>(this.Handle, "CCSPlayer_PingServices", "m_hPlayerPing");
+	public virtual CHandle<CPlayerPing> PlayerPing
+	{
+		get { return Schema.GetValueType<CHandle<CPlayerPing>>(this.Handle, "CCSPlayer_PingServices", "m_hPlayerPing"); }
+		set { Schema.SetValueType<CHandle<CPlayerPing>>(this.Handle, "CCSPlayer_PingServices", "m_hPlayerPing", value); }
+	}
 
 	public virtual void PlayerPingPropertyChanged() => Utilities.SetStateChanged(this, "CCSPlayer_PingServices", "m_hPlayerPing");
 }

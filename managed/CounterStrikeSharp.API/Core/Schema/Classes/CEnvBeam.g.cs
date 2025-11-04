@@ -147,7 +147,11 @@ public partial class CEnvBeam : CBeam
 
 	// m_hFilter
 	[SchemaMember("CEnvBeam", "m_hFilter")]
-	public virtual CHandle<CBaseEntity> Filter => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEnvBeam", "m_hFilter");
+	public virtual CHandle<CBaseEntity> Filter
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CEnvBeam", "m_hFilter"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CEnvBeam", "m_hFilter", value); }
+	}
 
 	// m_iszDecal
 	[SchemaMember("CEnvBeam", "m_iszDecal")]

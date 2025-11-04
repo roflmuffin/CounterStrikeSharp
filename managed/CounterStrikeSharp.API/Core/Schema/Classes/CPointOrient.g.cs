@@ -31,7 +31,11 @@ public partial class CPointOrient : CBaseEntity
 
 	// m_hTarget
 	[SchemaMember("CPointOrient", "m_hTarget")]
-	public virtual new CHandle<CBaseEntity> Target => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointOrient", "m_hTarget");
+	public virtual new CHandle<CBaseEntity> Target
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CPointOrient", "m_hTarget"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CPointOrient", "m_hTarget", value); }
+	}
 
 	// m_bActive
 	[SchemaMember("CPointOrient", "m_bActive")]

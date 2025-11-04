@@ -47,7 +47,11 @@ public partial class CPhysForce : CPointEntity
 
 	// m_attachedObject
 	[SchemaMember("CPhysForce", "m_attachedObject")]
-	public virtual CHandle<CBaseEntity> AttachedObject => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysForce", "m_attachedObject");
+	public virtual CHandle<CBaseEntity> AttachedObject
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CPhysForce", "m_attachedObject"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CPhysForce", "m_attachedObject", value); }
+	}
 
 	// m_wasRestored
 	[SchemaMember("CPhysForce", "m_wasRestored")]

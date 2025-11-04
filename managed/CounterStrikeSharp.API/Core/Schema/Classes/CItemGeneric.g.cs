@@ -155,7 +155,11 @@ public partial class CItemGeneric : CItem
 
 	// m_hPickupFilter
 	[SchemaMember("CItemGeneric", "m_hPickupFilter")]
-	public virtual CHandle<CBaseFilter> PickupFilter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CItemGeneric", "m_hPickupFilter");
+	public virtual CHandle<CBaseFilter> PickupFilter
+	{
+		get { return Schema.GetValueType<CHandle<CBaseFilter>>(this.Handle, "CItemGeneric", "m_hPickupFilter"); }
+		set { Schema.SetValueType<CHandle<CBaseFilter>>(this.Handle, "CItemGeneric", "m_hPickupFilter", value); }
+	}
 
 	// m_OnPickup
 	[SchemaMember("CItemGeneric", "m_OnPickup")]
@@ -235,6 +239,10 @@ public partial class CItemGeneric : CItem
 
 	// m_hTriggerHelper
 	[SchemaMember("CItemGeneric", "m_hTriggerHelper")]
-	public virtual CHandle<CItemGenericTriggerHelper> TriggerHelper => Schema.GetDeclaredClass<CHandle<CItemGenericTriggerHelper>>(this.Handle, "CItemGeneric", "m_hTriggerHelper");
+	public virtual CHandle<CItemGenericTriggerHelper> TriggerHelper
+	{
+		get { return Schema.GetValueType<CHandle<CItemGenericTriggerHelper>>(this.Handle, "CItemGeneric", "m_hTriggerHelper"); }
+		set { Schema.SetValueType<CHandle<CItemGenericTriggerHelper>>(this.Handle, "CItemGeneric", "m_hTriggerHelper", value); }
+	}
 
 }

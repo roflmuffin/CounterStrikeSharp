@@ -47,19 +47,35 @@ public partial class CLogicMeasureMovement : CLogicalEntity
 
 	// m_hMeasureTarget
 	[SchemaMember("CLogicMeasureMovement", "m_hMeasureTarget")]
-	public virtual CHandle<CBaseEntity> MeasureTarget => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CLogicMeasureMovement", "m_hMeasureTarget");
+	public virtual CHandle<CBaseEntity> MeasureTarget
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CLogicMeasureMovement", "m_hMeasureTarget"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CLogicMeasureMovement", "m_hMeasureTarget", value); }
+	}
 
 	// m_hMeasureReference
 	[SchemaMember("CLogicMeasureMovement", "m_hMeasureReference")]
-	public virtual CHandle<CBaseEntity> MeasureReference => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CLogicMeasureMovement", "m_hMeasureReference");
+	public virtual CHandle<CBaseEntity> MeasureReference
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CLogicMeasureMovement", "m_hMeasureReference"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CLogicMeasureMovement", "m_hMeasureReference", value); }
+	}
 
 	// m_hTarget
 	[SchemaMember("CLogicMeasureMovement", "m_hTarget")]
-	public virtual new CHandle<CBaseEntity> Target => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CLogicMeasureMovement", "m_hTarget");
+	public virtual new CHandle<CBaseEntity> Target
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CLogicMeasureMovement", "m_hTarget"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CLogicMeasureMovement", "m_hTarget", value); }
+	}
 
 	// m_hTargetReference
 	[SchemaMember("CLogicMeasureMovement", "m_hTargetReference")]
-	public virtual CHandle<CBaseEntity> TargetReference => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CLogicMeasureMovement", "m_hTargetReference");
+	public virtual CHandle<CBaseEntity> TargetReference
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CLogicMeasureMovement", "m_hTargetReference"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CLogicMeasureMovement", "m_hTargetReference", value); }
+	}
 
 	// m_flScale
 	[SchemaMember("CLogicMeasureMovement", "m_flScale")]

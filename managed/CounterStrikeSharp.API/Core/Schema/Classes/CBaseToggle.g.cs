@@ -111,7 +111,11 @@ public partial class CBaseToggle : CBaseModelEntity
 
 	// m_hActivator
 	[SchemaMember("CBaseToggle", "m_hActivator")]
-	public virtual CHandle<CBaseEntity> Activator => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBaseToggle", "m_hActivator");
+	public virtual CHandle<CBaseEntity> Activator
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CBaseToggle", "m_hActivator"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CBaseToggle", "m_hActivator", value); }
+	}
 
 	// m_vecFinalDest
 	[SchemaMember("CBaseToggle", "m_vecFinalDest")]

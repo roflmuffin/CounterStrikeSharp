@@ -63,7 +63,11 @@ public partial class CRetakeGameRules : NativeObject
 
 	// m_hBombPlanter
 	[SchemaMember("CRetakeGameRules", "m_hBombPlanter")]
-	public virtual CHandle<CCSPlayerPawn> BombPlanter => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CRetakeGameRules", "m_hBombPlanter");
+	public virtual CHandle<CCSPlayerPawn> BombPlanter
+	{
+		get { return Schema.GetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CRetakeGameRules", "m_hBombPlanter"); }
+		set { Schema.SetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CRetakeGameRules", "m_hBombPlanter", value); }
+	}
 
 	public virtual void MatchSeedPropertyChanged() => Utilities.SetStateChanged(this, "CRetakeGameRules", "m_nMatchSeed");
 	public virtual void BlockersPresentPropertyChanged() => Utilities.SetStateChanged(this, "CRetakeGameRules", "m_bBlockersPresent");

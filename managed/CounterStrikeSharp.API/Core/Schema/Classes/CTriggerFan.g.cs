@@ -63,7 +63,11 @@ public partial class CTriggerFan : CBaseTrigger
 
 	// m_hInfoFan
 	[SchemaMember("CTriggerFan", "m_hInfoFan")]
-	public virtual CHandle<CInfoFan> HInfoFan => Schema.GetDeclaredClass<CHandle<CInfoFan>>(this.Handle, "CTriggerFan", "m_hInfoFan");
+	public virtual CHandle<CInfoFan> HInfoFan
+	{
+		get { return Schema.GetValueType<CHandle<CInfoFan>>(this.Handle, "CTriggerFan", "m_hInfoFan"); }
+		set { Schema.SetValueType<CHandle<CInfoFan>>(this.Handle, "CTriggerFan", "m_hInfoFan", value); }
+	}
 
 	// m_flForce
 	[SchemaMember("CTriggerFan", "m_flForce")]

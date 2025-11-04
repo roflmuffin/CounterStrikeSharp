@@ -39,11 +39,19 @@ public partial class CPointAngleSensor : CPointEntity
 
 	// m_hTargetEntity
 	[SchemaMember("CPointAngleSensor", "m_hTargetEntity")]
-	public virtual CHandle<CBaseEntity> TargetEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointAngleSensor", "m_hTargetEntity");
+	public virtual CHandle<CBaseEntity> TargetEntity
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CPointAngleSensor", "m_hTargetEntity"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CPointAngleSensor", "m_hTargetEntity", value); }
+	}
 
 	// m_hLookAtEntity
 	[SchemaMember("CPointAngleSensor", "m_hLookAtEntity")]
-	public virtual CHandle<CBaseEntity> LookAtEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointAngleSensor", "m_hLookAtEntity");
+	public virtual CHandle<CBaseEntity> LookAtEntity
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CPointAngleSensor", "m_hLookAtEntity"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CPointAngleSensor", "m_hLookAtEntity", value); }
+	}
 
 	// m_flDuration
 	[SchemaMember("CPointAngleSensor", "m_flDuration")]

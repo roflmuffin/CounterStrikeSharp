@@ -143,11 +143,19 @@ public partial class CBaseButton : CBaseToggle
 
 	// m_hConstraint
 	[SchemaMember("CBaseButton", "m_hConstraint")]
-	public virtual CHandle<CEntityInstance> Constraint => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CBaseButton", "m_hConstraint");
+	public virtual CHandle<CEntityInstance> Constraint
+	{
+		get { return Schema.GetValueType<CHandle<CEntityInstance>>(this.Handle, "CBaseButton", "m_hConstraint"); }
+		set { Schema.SetValueType<CHandle<CEntityInstance>>(this.Handle, "CBaseButton", "m_hConstraint", value); }
+	}
 
 	// m_hConstraintParent
 	[SchemaMember("CBaseButton", "m_hConstraintParent")]
-	public virtual CHandle<CEntityInstance> ConstraintParent => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CBaseButton", "m_hConstraintParent");
+	public virtual CHandle<CEntityInstance> ConstraintParent
+	{
+		get { return Schema.GetValueType<CHandle<CEntityInstance>>(this.Handle, "CBaseButton", "m_hConstraintParent"); }
+		set { Schema.SetValueType<CHandle<CEntityInstance>>(this.Handle, "CBaseButton", "m_hConstraintParent", value); }
+	}
 
 	// m_bForceNpcExclude
 	[SchemaMember("CBaseButton", "m_bForceNpcExclude")]
@@ -167,7 +175,11 @@ public partial class CBaseButton : CBaseToggle
 
 	// m_glowEntity
 	[SchemaMember("CBaseButton", "m_glowEntity")]
-	public virtual CHandle<CBaseModelEntity> GlowEntity => Schema.GetDeclaredClass<CHandle<CBaseModelEntity>>(this.Handle, "CBaseButton", "m_glowEntity");
+	public virtual CHandle<CBaseModelEntity> GlowEntity
+	{
+		get { return Schema.GetValueType<CHandle<CBaseModelEntity>>(this.Handle, "CBaseButton", "m_glowEntity"); }
+		set { Schema.SetValueType<CHandle<CBaseModelEntity>>(this.Handle, "CBaseButton", "m_glowEntity", value); }
+	}
 
 	// m_usable
 	[SchemaMember("CBaseButton", "m_usable")]

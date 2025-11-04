@@ -315,7 +315,11 @@ public partial class CCSWeaponBase : CBasePlayerWeapon
 
 	// m_hPrevOwner
 	[SchemaMember("CCSWeaponBase", "m_hPrevOwner")]
-	public virtual CHandle<CCSPlayerPawn> PrevOwner => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSWeaponBase", "m_hPrevOwner");
+	public virtual CHandle<CCSPlayerPawn> PrevOwner
+	{
+		get { return Schema.GetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CCSWeaponBase", "m_hPrevOwner"); }
+		set { Schema.SetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CCSWeaponBase", "m_hPrevOwner", value); }
+	}
 
 	// m_nDropTick
 	[SchemaMember("CCSWeaponBase", "m_nDropTick")]

@@ -111,7 +111,11 @@ public partial class CCSBot : CBot
 
 	// m_leader
 	[SchemaMember("CCSBot", "m_leader")]
-	public virtual CHandle<CCSPlayerPawn> Leader => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_leader");
+	public virtual CHandle<CCSPlayerPawn> Leader
+	{
+		get { return Schema.GetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_leader"); }
+		set { Schema.SetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_leader", value); }
+	}
 
 	// m_followTimestamp
 	[SchemaMember("CCSBot", "m_followTimestamp")]
@@ -171,7 +175,11 @@ public partial class CCSBot : CBot
 
 	// m_taskEntity
 	[SchemaMember("CCSBot", "m_taskEntity")]
-	public virtual CHandle<CBaseEntity> TaskEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSBot", "m_taskEntity");
+	public virtual CHandle<CBaseEntity> TaskEntity
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CCSBot", "m_taskEntity"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CCSBot", "m_taskEntity", value); }
+	}
 
 	// m_goalPosition
 	[SchemaMember("CCSBot", "m_goalPosition")]
@@ -183,11 +191,19 @@ public partial class CCSBot : CBot
 
 	// m_goalEntity
 	[SchemaMember("CCSBot", "m_goalEntity")]
-	public virtual CHandle<CBaseEntity> GoalEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSBot", "m_goalEntity");
+	public virtual CHandle<CBaseEntity> GoalEntity
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CCSBot", "m_goalEntity"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CCSBot", "m_goalEntity", value); }
+	}
 
 	// m_avoid
 	[SchemaMember("CCSBot", "m_avoid")]
-	public virtual CHandle<CBaseEntity> Avoid => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CCSBot", "m_avoid");
+	public virtual CHandle<CBaseEntity> Avoid
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CCSBot", "m_avoid"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CCSBot", "m_avoid", value); }
+	}
 
 	// m_avoidTimestamp
 	[SchemaMember("CCSBot", "m_avoidTimestamp")]
@@ -647,7 +663,11 @@ public partial class CCSBot : CBot
 
 	// m_enemy
 	[SchemaMember("CCSBot", "m_enemy")]
-	public virtual CHandle<CCSPlayerPawn> Enemy => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_enemy");
+	public virtual CHandle<CCSPlayerPawn> Enemy
+	{
+		get { return Schema.GetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_enemy"); }
+		set { Schema.SetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_enemy", value); }
+	}
 
 	// m_isEnemyVisible
 	[SchemaMember("CCSBot", "m_isEnemyVisible")]
@@ -731,7 +751,11 @@ public partial class CCSBot : CBot
 
 	// m_bomber
 	[SchemaMember("CCSBot", "m_bomber")]
-	public virtual CHandle<CCSPlayerPawn> Bomber => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_bomber");
+	public virtual CHandle<CCSPlayerPawn> Bomber
+	{
+		get { return Schema.GetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_bomber"); }
+		set { Schema.SetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_bomber", value); }
+	}
 
 	// m_nearbyFriendCount
 	[SchemaMember("CCSBot", "m_nearbyFriendCount")]
@@ -743,11 +767,19 @@ public partial class CCSBot : CBot
 
 	// m_closestVisibleFriend
 	[SchemaMember("CCSBot", "m_closestVisibleFriend")]
-	public virtual CHandle<CCSPlayerPawn> ClosestVisibleFriend => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_closestVisibleFriend");
+	public virtual CHandle<CCSPlayerPawn> ClosestVisibleFriend
+	{
+		get { return Schema.GetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_closestVisibleFriend"); }
+		set { Schema.SetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_closestVisibleFriend", value); }
+	}
 
 	// m_closestVisibleHumanFriend
 	[SchemaMember("CCSBot", "m_closestVisibleHumanFriend")]
-	public virtual CHandle<CCSPlayerPawn> ClosestVisibleHumanFriend => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_closestVisibleHumanFriend");
+	public virtual CHandle<CCSPlayerPawn> ClosestVisibleHumanFriend
+	{
+		get { return Schema.GetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_closestVisibleHumanFriend"); }
+		set { Schema.SetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_closestVisibleHumanFriend", value); }
+	}
 
 	// m_attentionInterval
 	[SchemaMember("CCSBot", "m_attentionInterval")]
@@ -755,7 +787,11 @@ public partial class CCSBot : CBot
 
 	// m_attacker
 	[SchemaMember("CCSBot", "m_attacker")]
-	public virtual CHandle<CCSPlayerPawn> Attacker => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_attacker");
+	public virtual CHandle<CCSPlayerPawn> Attacker
+	{
+		get { return Schema.GetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_attacker"); }
+		set { Schema.SetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_attacker", value); }
+	}
 
 	// m_attackedTimestamp
 	[SchemaMember("CCSBot", "m_attackedTimestamp")]
@@ -943,7 +979,11 @@ public partial class CCSBot : CBot
 
 	// m_radioSubject
 	[SchemaMember("CCSBot", "m_radioSubject")]
-	public virtual CHandle<CCSPlayerPawn> RadioSubject => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_radioSubject");
+	public virtual CHandle<CCSPlayerPawn> RadioSubject
+	{
+		get { return Schema.GetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_radioSubject"); }
+		set { Schema.SetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CCSBot", "m_radioSubject", value); }
+	}
 
 	// m_radioPosition
 	[SchemaMember("CCSBot", "m_radioPosition")]

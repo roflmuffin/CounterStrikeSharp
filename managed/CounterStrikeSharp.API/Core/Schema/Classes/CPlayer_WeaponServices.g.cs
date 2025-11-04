@@ -27,11 +27,19 @@ public partial class CPlayer_WeaponServices : CPlayerPawnComponent
 
 	// m_hActiveWeapon
 	[SchemaMember("CPlayer_WeaponServices", "m_hActiveWeapon")]
-	public virtual CHandle<CBasePlayerWeapon> ActiveWeapon => Schema.GetDeclaredClass<CHandle<CBasePlayerWeapon>>(this.Handle, "CPlayer_WeaponServices", "m_hActiveWeapon");
+	public virtual CHandle<CBasePlayerWeapon> ActiveWeapon
+	{
+		get { return Schema.GetValueType<CHandle<CBasePlayerWeapon>>(this.Handle, "CPlayer_WeaponServices", "m_hActiveWeapon"); }
+		set { Schema.SetValueType<CHandle<CBasePlayerWeapon>>(this.Handle, "CPlayer_WeaponServices", "m_hActiveWeapon", value); }
+	}
 
 	// m_hLastWeapon
 	[SchemaMember("CPlayer_WeaponServices", "m_hLastWeapon")]
-	public virtual CHandle<CBasePlayerWeapon> LastWeapon => Schema.GetDeclaredClass<CHandle<CBasePlayerWeapon>>(this.Handle, "CPlayer_WeaponServices", "m_hLastWeapon");
+	public virtual CHandle<CBasePlayerWeapon> LastWeapon
+	{
+		get { return Schema.GetValueType<CHandle<CBasePlayerWeapon>>(this.Handle, "CPlayer_WeaponServices", "m_hLastWeapon"); }
+		set { Schema.SetValueType<CHandle<CBasePlayerWeapon>>(this.Handle, "CPlayer_WeaponServices", "m_hLastWeapon", value); }
+	}
 
 	// m_iAmmo
 	[SchemaMember("CPlayer_WeaponServices", "m_iAmmo")]

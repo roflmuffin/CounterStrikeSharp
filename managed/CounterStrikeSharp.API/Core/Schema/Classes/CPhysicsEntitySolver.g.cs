@@ -23,11 +23,19 @@ public partial class CPhysicsEntitySolver : CLogicalEntity
 
 	// m_hMovingEntity
 	[SchemaMember("CPhysicsEntitySolver", "m_hMovingEntity")]
-	public virtual CHandle<CBaseEntity> MovingEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysicsEntitySolver", "m_hMovingEntity");
+	public virtual CHandle<CBaseEntity> MovingEntity
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CPhysicsEntitySolver", "m_hMovingEntity"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CPhysicsEntitySolver", "m_hMovingEntity", value); }
+	}
 
 	// m_hPhysicsBlocker
 	[SchemaMember("CPhysicsEntitySolver", "m_hPhysicsBlocker")]
-	public virtual CHandle<CBaseEntity> PhysicsBlocker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPhysicsEntitySolver", "m_hPhysicsBlocker");
+	public virtual CHandle<CBaseEntity> PhysicsBlocker
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CPhysicsEntitySolver", "m_hPhysicsBlocker"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CPhysicsEntitySolver", "m_hPhysicsBlocker", value); }
+	}
 
 	// m_separationDuration
 	[SchemaMember("CPhysicsEntitySolver", "m_separationDuration")]

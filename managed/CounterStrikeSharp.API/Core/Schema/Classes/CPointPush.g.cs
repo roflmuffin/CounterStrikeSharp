@@ -71,6 +71,10 @@ public partial class CPointPush : CPointEntity
 
 	// m_hFilter
 	[SchemaMember("CPointPush", "m_hFilter")]
-	public virtual CHandle<CBaseFilter> Filter => Schema.GetDeclaredClass<CHandle<CBaseFilter>>(this.Handle, "CPointPush", "m_hFilter");
+	public virtual CHandle<CBaseFilter> Filter
+	{
+		get { return Schema.GetValueType<CHandle<CBaseFilter>>(this.Handle, "CPointPush", "m_hFilter"); }
+		set { Schema.SetValueType<CHandle<CBaseFilter>>(this.Handle, "CPointPush", "m_hFilter", value); }
+	}
 
 }

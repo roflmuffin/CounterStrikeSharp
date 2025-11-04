@@ -31,7 +31,11 @@ public partial class CDestructiblePartsComponent : NativeObject
 
 	// m_hOwner
 	[SchemaMember("CDestructiblePartsComponent", "m_hOwner")]
-	public virtual CHandle<CBaseModelEntity> Owner => Schema.GetDeclaredClass<CHandle<CBaseModelEntity>>(this.Handle, "CDestructiblePartsComponent", "m_hOwner");
+	public virtual CHandle<CBaseModelEntity> Owner
+	{
+		get { return Schema.GetValueType<CHandle<CBaseModelEntity>>(this.Handle, "CDestructiblePartsComponent", "m_hOwner"); }
+		set { Schema.SetValueType<CHandle<CBaseModelEntity>>(this.Handle, "CDestructiblePartsComponent", "m_hOwner", value); }
+	}
 
 	// m_nLastHitDamageLevel
 	[SchemaMember("CDestructiblePartsComponent", "m_nLastHitDamageLevel")]

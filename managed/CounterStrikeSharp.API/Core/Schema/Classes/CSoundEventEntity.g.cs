@@ -107,7 +107,11 @@ public partial class CSoundEventEntity : CBaseEntity
 
 	// m_hSource
 	[SchemaMember("CSoundEventEntity", "m_hSource")]
-	public virtual CHandle<CEntityInstance> Source => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CSoundEventEntity", "m_hSource");
+	public virtual CHandle<CEntityInstance> Source
+	{
+		get { return Schema.GetValueType<CHandle<CEntityInstance>>(this.Handle, "CSoundEventEntity", "m_hSource"); }
+		set { Schema.SetValueType<CHandle<CEntityInstance>>(this.Handle, "CSoundEventEntity", "m_hSource", value); }
+	}
 
 	// m_nEntityIndexSelection
 	[SchemaMember("CSoundEventEntity", "m_nEntityIndexSelection")]

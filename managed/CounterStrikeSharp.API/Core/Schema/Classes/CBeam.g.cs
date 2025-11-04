@@ -183,7 +183,11 @@ public partial class CBeam : CBaseModelEntity
 
 	// m_hEndEntity
 	[SchemaMember("CBeam", "m_hEndEntity")]
-	public virtual CHandle<CBaseEntity> EndEntity => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CBeam", "m_hEndEntity");
+	public virtual CHandle<CBaseEntity> EndEntity
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CBeam", "m_hEndEntity"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CBeam", "m_hEndEntity", value); }
+	}
 
 	// m_nDissolveType
 	[SchemaMember("CBeam", "m_nDissolveType")]

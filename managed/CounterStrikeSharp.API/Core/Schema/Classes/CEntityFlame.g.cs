@@ -23,7 +23,11 @@ public partial class CEntityFlame : CBaseEntity
 
 	// m_hEntAttached
 	[SchemaMember("CEntityFlame", "m_hEntAttached")]
-	public virtual CHandle<CBaseEntity> EntAttached => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEntityFlame", "m_hEntAttached");
+	public virtual CHandle<CBaseEntity> EntAttached
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CEntityFlame", "m_hEntAttached"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CEntityFlame", "m_hEntAttached", value); }
+	}
 
 	// m_bCheapEffect
 	[SchemaMember("CEntityFlame", "m_bCheapEffect")]
@@ -75,7 +79,11 @@ public partial class CEntityFlame : CBaseEntity
 
 	// m_hAttacker
 	[SchemaMember("CEntityFlame", "m_hAttacker")]
-	public virtual CHandle<CBaseEntity> Attacker => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CEntityFlame", "m_hAttacker");
+	public virtual CHandle<CBaseEntity> Attacker
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CEntityFlame", "m_hAttacker"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CEntityFlame", "m_hAttacker", value); }
+	}
 
 	// m_flDirectDamagePerSecond
 	[SchemaMember("CEntityFlame", "m_flDirectDamagePerSecond")]

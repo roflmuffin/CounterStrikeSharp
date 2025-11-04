@@ -23,6 +23,10 @@ public partial class CPointGiveAmmo : CPointEntity
 
 	// m_pActivator
 	[SchemaMember("CPointGiveAmmo", "m_pActivator")]
-	public virtual CHandle<CBaseEntity> Activator => Schema.GetDeclaredClass<CHandle<CBaseEntity>>(this.Handle, "CPointGiveAmmo", "m_pActivator");
+	public virtual CHandle<CBaseEntity> Activator
+	{
+		get { return Schema.GetValueType<CHandle<CBaseEntity>>(this.Handle, "CPointGiveAmmo", "m_pActivator"); }
+		set { Schema.SetValueType<CHandle<CBaseEntity>>(this.Handle, "CPointGiveAmmo", "m_pActivator", value); }
+	}
 
 }

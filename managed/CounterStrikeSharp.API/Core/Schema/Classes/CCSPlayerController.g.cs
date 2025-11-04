@@ -415,11 +415,19 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_hPlayerPawn
 	[SchemaMember("CCSPlayerController", "m_hPlayerPawn")]
-	public virtual CHandle<CCSPlayerPawn> PlayerPawn => Schema.GetDeclaredClass<CHandle<CCSPlayerPawn>>(this.Handle, "CCSPlayerController", "m_hPlayerPawn");
+	public virtual CHandle<CCSPlayerPawn> PlayerPawn
+	{
+		get { return Schema.GetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CCSPlayerController", "m_hPlayerPawn"); }
+		set { Schema.SetValueType<CHandle<CCSPlayerPawn>>(this.Handle, "CCSPlayerController", "m_hPlayerPawn", value); }
+	}
 
 	// m_hObserverPawn
 	[SchemaMember("CCSPlayerController", "m_hObserverPawn")]
-	public virtual CHandle<CCSObserverPawn> ObserverPawn => Schema.GetDeclaredClass<CHandle<CCSObserverPawn>>(this.Handle, "CCSPlayerController", "m_hObserverPawn");
+	public virtual CHandle<CCSObserverPawn> ObserverPawn
+	{
+		get { return Schema.GetValueType<CHandle<CCSObserverPawn>>(this.Handle, "CCSPlayerController", "m_hObserverPawn"); }
+		set { Schema.SetValueType<CHandle<CCSObserverPawn>>(this.Handle, "CCSPlayerController", "m_hObserverPawn", value); }
+	}
 
 	// m_DesiredObserverMode
 	[SchemaMember("CCSPlayerController", "m_DesiredObserverMode")]
@@ -431,7 +439,11 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_hDesiredObserverTarget
 	[SchemaMember("CCSPlayerController", "m_hDesiredObserverTarget")]
-	public virtual CHandle<CEntityInstance> DesiredObserverTarget => Schema.GetDeclaredClass<CHandle<CEntityInstance>>(this.Handle, "CCSPlayerController", "m_hDesiredObserverTarget");
+	public virtual CHandle<CEntityInstance> DesiredObserverTarget
+	{
+		get { return Schema.GetValueType<CHandle<CEntityInstance>>(this.Handle, "CCSPlayerController", "m_hDesiredObserverTarget"); }
+		set { Schema.SetValueType<CHandle<CEntityInstance>>(this.Handle, "CCSPlayerController", "m_hDesiredObserverTarget", value); }
+	}
 
 	// m_bPawnIsAlive
 	[SchemaMember("CCSPlayerController", "m_bPawnIsAlive")]
@@ -507,7 +519,11 @@ public partial class CCSPlayerController : CBasePlayerController
 
 	// m_hOriginalControllerOfCurrentPawn
 	[SchemaMember("CCSPlayerController", "m_hOriginalControllerOfCurrentPawn")]
-	public virtual CHandle<CCSPlayerController> OriginalControllerOfCurrentPawn => Schema.GetDeclaredClass<CHandle<CCSPlayerController>>(this.Handle, "CCSPlayerController", "m_hOriginalControllerOfCurrentPawn");
+	public virtual CHandle<CCSPlayerController> OriginalControllerOfCurrentPawn
+	{
+		get { return Schema.GetValueType<CHandle<CCSPlayerController>>(this.Handle, "CCSPlayerController", "m_hOriginalControllerOfCurrentPawn"); }
+		set { Schema.SetValueType<CHandle<CCSPlayerController>>(this.Handle, "CCSPlayerController", "m_hOriginalControllerOfCurrentPawn", value); }
+	}
 
 	// m_iScore
 	[SchemaMember("CCSPlayerController", "m_iScore")]

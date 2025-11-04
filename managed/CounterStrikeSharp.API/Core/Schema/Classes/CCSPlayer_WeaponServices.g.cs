@@ -47,7 +47,11 @@ public partial class CCSPlayer_WeaponServices : CPlayer_WeaponServices
 
 	// m_hSavedWeapon
 	[SchemaMember("CCSPlayer_WeaponServices", "m_hSavedWeapon")]
-	public virtual CHandle<CBasePlayerWeapon> SavedWeapon => Schema.GetDeclaredClass<CHandle<CBasePlayerWeapon>>(this.Handle, "CCSPlayer_WeaponServices", "m_hSavedWeapon");
+	public virtual CHandle<CBasePlayerWeapon> SavedWeapon
+	{
+		get { return Schema.GetValueType<CHandle<CBasePlayerWeapon>>(this.Handle, "CCSPlayer_WeaponServices", "m_hSavedWeapon"); }
+		set { Schema.SetValueType<CHandle<CBasePlayerWeapon>>(this.Handle, "CCSPlayer_WeaponServices", "m_hSavedWeapon", value); }
+	}
 
 	// m_nTimeToMelee
 	[SchemaMember("CCSPlayer_WeaponServices", "m_nTimeToMelee")]
