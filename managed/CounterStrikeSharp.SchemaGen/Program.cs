@@ -213,7 +213,7 @@ internal static partial class Program
     {
         var outputPath =
             args.FirstOrDefault() ??
-            "../CounterStrikeSharp.API/Core/Schema";
+            "../CounterStrikeSharp.API/Generated/Schema";
 
         // Concat together all enums and classes
         var allEnums = new SortedDictionary<string, SchemaEnum>();
