@@ -1,4 +1,3 @@
-
 using System;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.UserMessages;
@@ -8,7 +7,7 @@ using CounterStrikeSharp.API.Modules.Utils;
 namespace CounterStrikeSharp.API.Core
 {
     public class NativeAPI {
-
+        
         public static bool AddListener(string name, InputArgument callback){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
 			ScriptContext.GlobalScriptContext.Reset();
@@ -1460,16 +1459,16 @@ namespace CounterStrikeSharp.API.Core
 		}
 
         public static IntPtr FindVirtualTable(string modulepath, string vtablename){
-            lock (ScriptContext.GlobalScriptContext.Lock) {
-            ScriptContext.GlobalScriptContext.Reset();
-            ScriptContext.GlobalScriptContext.Push(modulepath);
-            ScriptContext.GlobalScriptContext.Push(vtablename);
-            ScriptContext.GlobalScriptContext.SetIdentifier(0xB4A0F13C);
-            ScriptContext.GlobalScriptContext.Invoke();
-            ScriptContext.GlobalScriptContext.CheckErrors();
-            return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
-            }
-        }
+			lock (ScriptContext.GlobalScriptContext.Lock) {
+			ScriptContext.GlobalScriptContext.Reset();
+			ScriptContext.GlobalScriptContext.Push(modulepath);
+			ScriptContext.GlobalScriptContext.Push(vtablename);
+			ScriptContext.GlobalScriptContext.SetIdentifier(0xEA506CFF);
+			ScriptContext.GlobalScriptContext.Invoke();
+			ScriptContext.GlobalScriptContext.CheckErrors();
+			return (IntPtr)ScriptContext.GlobalScriptContext.GetResult(typeof(IntPtr));
+			}
+		}
 
         public static int GetNetworkVectorSize(IntPtr vec){
 			lock (ScriptContext.GlobalScriptContext.Lock) {
